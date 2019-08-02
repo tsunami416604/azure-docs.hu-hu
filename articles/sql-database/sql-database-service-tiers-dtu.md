@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Database szolgáltatási szinteken - DTU-alapú vásárlási modell |} A Microsoft Docs
-description: Ismerje meg a szolgáltatási szintekről az egyetlen vagy készletezett adatbázisok biztosít számítási és tárolási méretek esetében a DTU-alapú vásárlási modell.
+title: Azure SQL Database szolgáltatási szintek – DTU-alapú vásárlási modell | Microsoft Docs
+description: A számítási és tárolási méretek biztosításához a DTU-alapú vásárlási modellben megismerheti az önálló és a készletezett adatbázisok szolgáltatási rétegeit.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,21 +10,20 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: 964a2931267ad2f1e2842693eadf43f8f629a084
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: c46913f24deffc7c4db95d8a77db1c49ae54b6ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357225"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566685"
 ---
-# <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Szolgáltatási szinten a DTU-alapú vásárlási modell
+# <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Szolgáltatási szintek a DTU-alapú vásárlási modellben
 
-Szolgáltatási szinten a DTU-alapú vásárlási modell által meghatározott memóriamennyiséggel rendelkeznek a csomagban foglalt tárhely, a megőrzési időszak a biztonsági mentések és a rögzített ár rögzített számítási méretű különbözteti meg. Minden szolgáltatási szinten a DTU-alapú vásárlási modell a számítási méret minimális változó rugalmasságot biztosítanak [állásidő](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/), azonban van egy kapcsoló időtartamon belül hol való kapcsolata megszakad az adatbázis számára egy rövid ideig, amely enyhíthető újrapróbálkozási logika használata. Önálló adatbázisok és rugalmas készletek számlázása óraszám alapján, a szolgáltatási szint és a számítási méret.
+A DTU-alapú vásárlási modellben a szolgáltatási szintek különböző számítási méretekből állnak, amelyek rögzített mennyiségű foglalt tárterülettel, rögzített megőrzési időtartammal rendelkeznek a biztonsági mentésekhez és a rögzített árakhoz képest. A DTU-alapú vásárlási modell minden szolgáltatási szintje rugalmasságot biztosít a számítási méretek minimális állásidővel való módosításához [](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/). van azonban egy olyan időszak, amelyben a kapcsolat megszakadt az adatbázisba rövid idő alatt, ami az újrapróbálkozási logika használatával enyhíthető. Önálló adatbázisok és rugalmas készletek számlázása óraszám alapján, a szolgáltatási szint és a számítási méret.
 
 > [!IMPORTANT]
-> Az SQL Database felügyelt példány nem támogatja a DTU-alapú vásárlási modell. További információkért lásd: [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md).
+> SQL Database felügyelt példány nem támogatja a DTU-alapú vásárlási modellt. További információkért lásd: [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md).
 > [!NOTE]
 > További információ a Virtuálismag-alapú szolgáltatásszintek: [Virtuálismag-alapú szolgáltatásszintek](sql-database-service-tiers-vcore.md). További információ a DTU-alapú szolgáltatásszintek és a Virtuálismag-alapú szolgáltatásszintek sokoldalúbbá: [vásárlási modellek az Azure SQL Database](sql-database-purchase-models.md).
 
@@ -45,7 +44,7 @@ Szolgáltatásszint kiválasztása elsődlegesen az üzleti folytonosság, táro
 |||||
 
 > [!NOTE]
-> Egy ingyenes Azure SQL database az alapszintű szolgáltatásszinten együtt ingyenes Azure-fiókra, Fedezze fel az Azure kérheti le. További információ: [felügyelt felhőbeli adatbázis létrehozása az ingyenes Azure-fiók](https://azure.microsoft.com/free/services/sql-database/).
+> Az Azure-ban az ingyenes Azure SQL Database-t az alapszintű szolgáltatási szinten érheti el. További információ: [felügyelt felhőbeli adatbázis létrehozása az ingyenes Azure-fiók](https://azure.microsoft.com/free/services/sql-database/).
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Önálló adatbázis DTU- és tárterületi korlátozásai
 
@@ -72,9 +71,9 @@ A számítási méret az önálló adatbázisok adatbázis-tranzakciós egysége
 |||||
 
 > [!IMPORTANT]
-> Jelenleg több mint 1 TB tárterület egységára prémium szinten érhető el minden régióban, kivéve: Kelet-Kína, Észak-Kína, közép-Németország, Északkelet-Németország, USA nyugati középső Régiója, USA védelmi Minisztériuma régiók és US Government központi. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB.  További információkért lásd: [P11 – P15 – aktuális korlátozások](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
+> A prémium szinten több mint 1 TB tárterület érhető el az összes régióban, kivéve a következőket: Kelet-Kína, Észak-Kína, Közép-Németország, Északkelet-Németország, USA nyugati középső régiója, US DoD régiók és USA kormányzati központja. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB.  További információ: [P11-P15 current korlátozások](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
 > [!IMPORTANT]
-> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
+> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
 
 ## <a name="dtu-benchmark"></a>DTU-teljesítményteszt
 
@@ -88,7 +87,7 @@ A teljesítményteszt és a módszereket ismerteti részletesebben az alábbi.
 
 ### <a name="benchmark-summary"></a>Számításiteljesítmény-mérési összefoglaló
 
-A teljesítményteszt többféle, az online tranzakciófeldolgozási (OLTP) munkaterhelések leggyakrabban előforduló alapszintű adatbázis-műveletek teljesítményének méri. Bár a teljesítményteszt a felhő-számítástechnika a szem előtt, az adatbázis-séma, az adatokkal való feltöltés célja, és a tranzakciók széles körben reprezentatívnak a leggyakrabban használt OLTP számítási feladatokat a alapszintű elemek is úgy lett kialakítva.
+A teljesítményteszt a leggyakrabban az online tranzakció-feldolgozási (OLTP) számítási feladatokban leggyakrabban előforduló alapszintű adatbázis-műveletek együttes teljesítményét méri. Bár a teljesítményteszt a felhő-számítástechnika a szem előtt, az adatbázis-séma, az adatokkal való feltöltés célja, és a tranzakciók széles körben reprezentatívnak a leggyakrabban használt OLTP számítási feladatokat a alapszintű elemek is úgy lett kialakítva.
 
 ### <a name="schema"></a>Séma
 

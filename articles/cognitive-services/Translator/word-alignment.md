@@ -1,6 +1,6 @@
 ---
 title: A Word igazítás – Translator Text API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: A Translator Text API word igazítás adatok fogadására.
 services: cognitive-services
 author: swmachan
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 3db5e9651e307211e9dccee20bb8d69586bb9ef1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5818d3f4d2ebed7cbcd46aadf538640914d3b7d4
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448165"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594780"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>Word igazítás információk fogadása
 
@@ -28,7 +28,7 @@ Igazítás, egy karakterlánc értékét a forrás minden szót a következő fo
 
 [[SourceTextStartIndex]: [SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
 
-Példa igazítás karakterlánc: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
+Példa igazítási sztringre: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
 
 Más szóval a kettőspont elválasztja a kezdő és záró index, a dash elkülöníti a nyelveket, és terület a szavakat osztja szét. Több szóból előfordulhat, hogy összhangba nulla, egy vagy több szóból más nyelven, és lehet, hogy a igazított szavak nem összefüggő. Zarovnání információ nem érhető el, ha az igazítási elem üres lesz. A metódus nincs hiba ebben az esetben adja vissza.
 

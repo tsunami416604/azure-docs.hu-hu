@@ -1,9 +1,9 @@
 ---
-title: Service Fabric-fürt létrehozása az Azure Portalon |} A Microsoft Docs
-description: Ismerje meg, hogyan állítható be az Azure-ban az Azure portal és az Azure Key Vault biztonságos Service Fabric-fürtön.
+title: Service Fabric-fürt létrehozása a Azure Portalban | Microsoft Docs
+description: Ismerje meg, hogyan állíthat be biztonságos Service Fabric-fürtöt az Azure-ban a Azure Portal és a Azure Key Vault használatával.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: vturecek
 ms.assetid: 426c3d13-127a-49eb-a54c-6bde7c87a83b
@@ -13,204 +13,204 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2018
-ms.author: aljo
-ms.openlocfilehash: 02312a19c687908b0e1c0e6417dc6b0a9df23912
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.author: atsenthi
+ms.openlocfilehash: 123795730e8468591bb02fa7c756ad48222dff82
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62125085"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68600023"
 ---
-# <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Service Fabric-fürt létrehozása az Azure-ban az Azure portal használatával
+# <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Service Fabric-fürt létrehozása az Azure-ban a Azure Portal használatával
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
 > * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
-Ez az egy lépésenkénti útmutató, amely végigvezeti a lépéseken, beállítása a Service Fabric-fürt (Linux vagy Windows) az Azure-ban az Azure portal használatával. Ez az útmutató végigvezeti az alábbi lépéseket:
+Ez egy lépésenkénti útmutató, amely végigvezeti egy Service Fabric-fürt (Linux vagy Windows) az Azure-ban való beállításának lépésein a Azure Portal használatával. Ez az útmutató végigvezeti a következő lépéseken:
 
-* Fürt létrehozása az Azure-ban az Azure Portalon keresztül.
-* A rendszergazdák tanúsítványok használatával hitelesíteni.
+* Hozzon létre egy fürtöt az Azure-ban a Azure Portalon keresztül.
+* A rendszergazdák hitelesítése tanúsítványokkal.
 
 > [!NOTE]
-> A speciális biztonsági beállításai, például a felhasználói hitelesítés az Azure Active Directory és a tanúsítványok alkalmazásbiztonsági beállításának [létrehozhat egy fürtöt az Azure Resource Manager][create-cluster-arm].
+> A speciális biztonsági beállítások, mint például a felhasználói hitelesítés és az alkalmazások biztonságának beállítása Azure Active Directory, [a fürt létrehozása Azure Resource Manager használatával][create-cluster-arm].
 > 
 > 
 
 ## <a name="cluster-security"></a>Fürtbiztonság 
-A Service Fabric tanúsítványokat használ a hitelesítéshez és titkosításhoz a fürtök és a rajtuk található alkalmazások különféle részeinek védelmére. További információ a tanúsítványok használata a Service Fabric: [Service Fabric-fürtök biztonsági forgatókönyveit][service-fabric-cluster-security].
+A Service Fabric tanúsítványokat használ a hitelesítéshez és titkosításhoz a fürtök és a rajtuk található alkalmazások különféle részeinek védelmére. A tanúsítványok Service Fabricban való használatával kapcsolatos további információkért lásd a [Service Fabric-fürtök biztonsági forgatókönyveit][service-fabric-cluster-security].
 
-Ha első alkalommal hoz létre egy service fabric-fürt, vagy a tesztelési feladatok futtatásához egy fürtöt telepít, továbbléphet a következő szakaszban a (**fürt létrehozása az Azure Portalon**) és a rendszer a szükséges tanúsítványok előállítása a tesztelési feladatokat futtató fürtöket. Ha egy fürtöt a termelési számítási feladatokhoz, majd olvassa tovább.
+Ha első alkalommal hoz létre Service Fabric-fürtöt, vagy fürtöt helyez üzembe a tesztelési feladatokhoz, ugorjon a következő szakaszra (**fürt létrehozása az Azure Portalon**), és a rendszer tanúsítványokat hoz létre a futtató fürtökhöz. a számítási feladatok tesztelése. Ha éles számítási feladatokhoz állít be fürtöt, akkor folytassa az olvasást.
 
-#### <a name="cluster-and-server-certificate-required"></a>Fürt és a kiszolgálói tanúsítványt (kötelező)
-Fürt biztonságossá tétele és a jogosulatlan hozzáférés elkerülése érdekében, hogy ez a tanúsítvány szükséges. Fürtbiztonság néhány módon biztosít:
+#### <a name="cluster-and-server-certificate-required"></a>Fürt és kiszolgáló tanúsítványa (kötelező)
+Ez a tanúsítvány szükséges a fürt biztonságossá tételéhez és a jogosulatlan hozzáférés megakadályozásához. Több módon biztosítja a fürt biztonságát:
 
-* **Fürt-hitelesítés:** Csomópontok közötti kommunikáció a fürt összevonási hitelesíti. Csak a is igazolnia az identitását, ezt a tanúsítványt a csomópontok csatlakozhassanak a fürthöz.
-* **Kiszolgálói hitelesítés:** Hitelesíti a fürtkezelési végpontoknak egy kezelési ügyfél, így az ügyfél felismeri, hogy ez a valódi fürtön beszél. Ezt a tanúsítványt is biztosít az SSL a HTTPS-felügyeleti API-hoz és a Service Fabric Explorert a HTTPS-kapcsolaton keresztül.
+* **Fürt hitelesítése:** A fürt-összevonás csomópont-csomópont típusú kommunikációjának hitelesítése. Csak azok a csomópontok csatlakozhatnak a fürthöz, amelyek bizonyítani tudják, hogy az identitásuk ezzel a tanúsítvánnyal is rendelkezhet.
+* **Kiszolgáló hitelesítése:** Hitelesíti a fürtszolgáltatási végpontokat egy felügyeleti ügyfélen, hogy a felügyeleti ügyfél tudja, hogy az a valódi fürthöz beszél. Ez a tanúsítvány a HTTPS kezelési API-hoz és a HTTPS-en keresztüli Service Fabric Explorerhoz is biztosít SSL-t.
 
-A tanúsítvány következő célokat, az alábbi követelményeknek kell megfelelnie:
+Ezeknek a céloknak a kiszolgálásához a tanúsítványnak meg kell felelnie a következő követelményeknek:
 
 * A tanúsítványnak tartalmaznia kell egy titkos kulcsot.
-* A kulcscseréhez használt, a személyes információcsere (.pfx) fájl exportálható a tanúsítványt kell létrehozni.
-* A tanúsítvány **tulajdonosnévnek egyeznie kell a tartomány** a Service Fabric-fürt eléréséhez használt. Ez azért szükséges, adja meg az SSL a fürt HTTPS-felügyeleti végpontjai és a Service Fabric Explorer. Az SSL-tanúsítványt egy hitelesítésszolgáltatótól (CA) nem szerezheti be a `.cloudapp.azure.com` tartományhoz. Szerzik be a fürthöz tartozó egyéni tartomány nevét. Amikor tanúsítványt igényel egy hitelesítésszolgáltatótól a tanúsítvány tulajdonosnevének egyeznie kell az a fürthöz használt egyéni tartománynév.
+* A tanúsítványt létre kell hozni a személyes információcsere (. pfx) fájlba exportálható kulcscsere-fájlhoz.
+* A tanúsítvány **tulajdonosának nevének meg kell egyeznie** a Service Fabric fürt eléréséhez használt tartománnyal. Erre azért van szükség, hogy SSL-t biztosítson a fürt HTTPS-felügyeleti végpontjai és Service Fabric Explorer számára. A `.cloudapp.azure.com` tartományhoz nem lehet SSL-tanúsítványt beszerezni a hitelesítésszolgáltatótól (CA). Szerezzen be egy egyéni tartománynevet a fürt számára. Amikor tanúsítványt kér egy HITELESÍTÉSSZOLGÁLTATÓTÓL, a tanúsítvány tulajdonosának nevének meg kell egyeznie a fürthöz használt egyéni tartománynévvel.
 
 #### <a name="client-authentication-certificates"></a>Ügyfél-hitelesítési tanúsítványok
-További ügyféltanúsítványok hitelesítése a rendszergazdák a fürt felügyeleti feladatokhoz. A Service Fabric két hozzáférési szintekkel rendelkezik: **rendszergazdai** és **olvasási jogosultsággal rendelkező felhasználó**. Legalább egy tanúsítvány rendszergazdai hozzáféréshez kell használni. A további felhasználói szintű hozzáférés érdekében a különálló tanúsítványt meg kell adni. Hozzáférés szerepkörökkel kapcsolatos további információkért lásd: [szerepköralapú hozzáférés-vezérlés a Service Fabric-ügyfelek][service-fabric-cluster-security-roles].
+További Ügyféltanúsítványok hitelesítik a rendszergazdákat a fürt felügyeleti feladataihoz. Service Fabric két hozzáférési szinttel rendelkezik: a **rendszergazda** és a **csak olvasási**jogosultsággal rendelkező felhasználó. Legalább egyetlen tanúsítványt kell használni a rendszergazdai hozzáféréshez. További felhasználói szintű hozzáféréshez külön tanúsítványt kell megadni. A hozzáférési szerepkörökkel kapcsolatos további információkért lásd: [Service Fabric ügyfelek szerepköralapú hozzáférés-vezérlése][service-fabric-cluster-security-roles].
 
-Nem kell az ügyfél-hitelesítési tanúsítványok feltöltése a Key Vault használata a Service Fabric. Ezek a tanúsítványok csak kell adni a felhasználók számára, akik jogosultak a fürt felügyeletéhez. 
+Nem kell feltöltenie az ügyfél-hitelesítési tanúsítványokat, hogy a Key Vault működjön a Service Fabricval. Ezeket a tanúsítványokat csak azokhoz a felhasználókhoz kell megadni, akik jogosultak a fürtözés kezelésére. 
 
 > [!NOTE]
-> Az Azure Active Directory ajánlott módja a fürtfelügyeleti műveleteket az ügyfelek hitelesítéséhez. Azure Active Directory használandó kell [hozzon létre egy fürtöt az Azure Resource Manager][create-cluster-arm].
+> Azure Active Directory a fürt felügyeleti műveleteihez szükséges ügyfelek hitelesítésének ajánlott módja. Azure Active Directory használatához létre kell hoznia [egy fürtöt a Azure Resource Manager használatával][create-cluster-arm].
 > 
 > 
 
-#### <a name="application-certificates-optional"></a>Tanúsítványok (nem kötelező)
-Tetszőleges számú további tanúsítványok telepíthető alkalmazás biztonsági okokból egy fürtön. Mielőtt létrehozná a fürtöt, vegye figyelembe a kell telepíteni a csomópontokon, például a tanúsítványt igénylő alkalmazásbiztonsági forgatókönyveket:
+#### <a name="application-certificates-optional"></a>Alkalmazás-tanúsítványok (nem kötelező)
+A fürtön tetszőleges számú további tanúsítvány telepíthető alkalmazás biztonsági célokra. A fürt létrehozása előtt vegye figyelembe azokat az alkalmazás-biztonsági forgatókönyveket, amelyekhez tanúsítvány szükséges a csomópontokon való telepítéshez, például:
 
-* Az alkalmazás konfigurációs értékek titkosítását és visszafejtését
-* Az adatok titkosítása az csomópont közötti replikálás során 
+* Az alkalmazás konfigurációs értékeinek titkosítása és visszafejtése
+* Adattitkosítás a csomópontok között a replikálás során 
 
-Tanúsítványok nem lehet konfigurálni, mikor [egy fürtöt az Azure Portalon keresztül](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/service-fabric/service-fabric-cluster-creation-via-portal.md). Fürt telepítéskor tanúsítványok konfigurálásához kell [hozzon létre egy fürtöt az Azure Resource Manager][create-cluster-arm]. Is adhat tanúsítványok a fürt létrehozása után.
+Az alkalmazás tanúsítványait nem lehet konfigurálni, ha [a Azure Portalon keresztül hoz létre fürtöt](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/service-fabric/service-fabric-cluster-creation-via-portal.md). Ha az alkalmazás tanúsítványait a fürt telepítési ideje szerint szeretné konfigurálni, [Azure Resource Manager használatával kell létrehoznia egy fürtöt][create-cluster-arm]. Az alkalmazáshoz tartozó tanúsítványokat a fürt létrehozása után is felveheti.
 
-## <a name="create-cluster-in-the-azure-portal"></a>Fürt létrehozása az Azure Portalon
+## <a name="create-cluster-in-the-azure-portal"></a>Fürt létrehozása a Azure Portalban
 
-Az alkalmazás igényeinek egy éles fürtöt magában foglalja a néhány tervezési segítséget nyújt, amely, erősen ajánlott, hogy Ön elolvassa és megértse az [tervezési megfontolások a Service Fabric-fürt] [ service-fabric-cluster-capacity] dokumentumot. 
+Ahhoz, hogy az alkalmazás igényeinek megfelelő üzemi fürtöt hozzon létre, némi tervezést kell végrehajtania, hogy ezzel segítse Önt, javasoljuk, hogy olvassa el és Ismerje meg a [Service Fabric-fürt tervezési szempontjait][service-fabric-cluster-capacity] ismertető dokumentumot. 
 
-### <a name="search-for-the-service-fabric-cluster-resource"></a>A Service Fabric-fürt erőforrás keresése
+### <a name="search-for-the-service-fabric-cluster-resource"></a>A Service Fabric fürterőforrás keresése
 
 Jelentkezzen be az [Azure Portalra][azure-portal].
-Kattintson a **erőforrás létrehozása** egy új erőforrás-sablon hozzáadása. Keresse meg a Service Fabric-fürt-sablon a **Marketplace** alatt **mindent**.
-Válassza ki **Service Fabric-fürt** a listából.
+Az új erőforrás-sablon hozzáadásához kattintson az **erőforrás létrehozása** elemre. A piactéren megkeresheti az Service Fabric -fürtöt a piactéren **.**
+Válassza ki **Service Fabric fürtöt** a listából.
 
-![Keresse meg a Service Fabric-fürtöket az Azure Portalon.][SearchforServiceFabricClusterTemplate]
+![Keresse meg a Azure Portal Service Fabric fürtözött sablonját.][SearchforServiceFabricClusterTemplate]
 
-Keresse meg a **Service Fabric-fürt** panelen, és kattintson **létrehozás**.
+Navigáljon a **Service Fabric-fürt** panelre, és kattintson a **Létrehozás**gombra.
 
-A **létrehozása a Service Fabric-fürt** panelen a következő négy lépésből áll:
+A **Service Fabric-fürt létrehozása** panel a következő négy lépésből áll:
 
 ### <a name="1-basics"></a>1. Alapvető beállítások
-![Képernyőkép: egy új erőforráscsoport létrehozása.][CreateRG]
+![Képernyőfelvétel új erőforráscsoport létrehozásáról.][CreateRG]
 
-Az alapvető beállítások panelen meg kell adnia az alapvető adatokat a fürt számára.
+Az alapvető beállítások panelen meg kell adnia a fürt alapszintű részleteit.
 
-1. Adja meg a fürt nevére.
-2. Adjon meg egy **felhasználónév** és **jelszó** a távoli asztal a virtuális gépek számára.
-3. Ügyeljen arra, hogy válassza ki a **előfizetés** , amelyet a fürt üzembe helyezni, különösen akkor, ha több előfizetéssel rendelkezik.
-4. Hozzon létre egy új **erőforráscsoport**. A legcélszerűbb neki a neve megegyezik a fürt, mivel ez segít a keresés, azokat később, különösen akkor, ha módosítja az üzemelő példány, vagy törölje a fürtöt szeretne.
+1. Adja meg a fürt nevét.
+2. Adja meg a virtuális gépek távoli asztalhoz tartozó felhasználónevet és **jelszót** .
+3. Ügyeljen arra, hogy válassza ki azt az előfizetést, amelyre telepíteni szeretné a fürtöt, különösen ha több előfizetéssel rendelkezik.
+4. Hozzon létre egy új **erőforráscsoportot**. A legjobb, ha ugyanazt a nevet adja, mint a fürt, mert később könnyebben megtalálhatja őket, különösen akkor, ha módosítani kívánja a központi telepítést, vagy törli a fürtöt.
    
    > [!NOTE]
-   > Bár Ön dönt, hogy használjon egy meglévő erőforráscsoportot, tanácsos hozzon létre egy új erőforráscsoportot. Így művelettel törölheti a fürtök és az összes erőforrást használ.
+   > Bár úgy is dönthet, hogy meglévő erőforráscsoportot használ, célszerű létrehozni egy új erőforráscsoportot. Így egyszerűen törölheti a fürtöket és az általa használt összes erőforrást.
    > 
    > 
-5. Válassza ki a **hely** , amelyre szeretné létrehozni a fürtöt. Ha azt tervezi, hogy már feltöltötte a key vault meglévő tanúsítványt szeretne használni, a Key vault szerepel ugyanabban a régióban kell használnia. 
+5. Válassza ki azt a **helyet** , amelyben létre szeretné hozni a fürtöt. Ha olyan meglévő tanúsítványt szeretne használni, amelyet már feltöltött egy kulcstartóba, ugyanazt a régiót kell használnia, amelyben a kulcstartó található. 
 
 ### <a name="2-cluster-configuration"></a>2. Fürtkonfiguráció
-![Hozzon létre egy csomópont típusa][CreateNodeType]
+![Csomópont típusának létrehozása][CreateNodeType]
 
-Konfigurálja a fürt csomópontjait. Csomóponttípusok határozzák meg, a Virtuálisgép-méretek, a virtuális gépek számát és azok tulajdonságait. A fürt több csomóponttípussal rendelkezhet, de az elsődleges csomóponttípushoz (az első egy Ön által meghatározott a portálon) kell rendelkeznie legalább öt virtuális gépek esetében, mivel ez a csomópont típusa, a Service Fabric-rendszerszolgáltatások kerülnek. Ne konfiguráljon **elhelyezési tulajdonságokat** , mert a rendszer automatikusan hozzáadja egy alapértelmezett elhelyezési "NodeTypeName" tulajdonságát.
+Konfigurálja a fürtcsomópontok konfigurációját. A csomópontok típusai határozzák meg a virtuálisgép-méreteket, a virtuális gépek számát és a tulajdonságaikat. A fürt több csomópontos típussal is rendelkezhet, de az elsődleges csomópont típusának (a portálon definiált elsőnek) legalább öt virtuális géppel kell rendelkeznie, mivel ez a csomópont típusa, ahol Service Fabric rendszerszolgáltatások vannak elhelyezve. Ne konfigurálja az **elhelyezési tulajdonságokat** , mert a rendszer automatikusan hozzáadja a "NodeTypeName" alapértelmezett elhelyezési tulajdonságát.
 
 > [!NOTE]
-> Egy általános forgatókönyv több csomópont esetében egy alkalmazást, amely tartalmazza az előtér-szolgáltatás és a egy háttér-szolgáltatás. Az előtér-szolgáltatást a kisebb méretű virtuális gépet (VM-méretek D2_V2 hasonlóan) a nyitott portokkal az internethez, és a háttérszolgáltatás elhelyezése nagyobb virtuális gépek (VM-méretek például D3_V2, D6_V2, D15_V2 és így tovább) portok megnyitása nélkül Internet felé néző szeretné.
+> A több csomópontos típusok gyakori forgatókönyve egy előtér-szolgáltatást és egy háttér-szolgáltatást tartalmazó alkalmazás. Az előtér-szolgáltatást kisebb virtuális gépeken (például D2_V2) kívánja elhelyezni az internetre nyitott portokkal, és a háttér-szolgáltatást nagyobb méretű virtuális gépeken (például D3_V2, D6_V2, D15_V2 stb.) helyezheti el, és az internethez csatlakozó portok nem nyílnak meg.
 > 
 
-1. Válasszon egy nevet az adott csomóponttípus (csak betűket és számokat tartalmazó 1 és 12 karakter).
-2. A minimális **mérete** virtuális gépek esetében az elsődleges csomópont típusa határozzák meg a **tartóssági szint** úgy dönt, hogy a fürt számára. A tartóssági szint alapértelmezés szerint bronz. A tartós további információkért lásd: [kiválasztása a Service Fabric-fürt tartóssági][service-fabric-cluster-durability].
-3. Válassza ki a **virtuálisgép-méret**. D sorozatú virtuális gépek SSD meghajtók rendelkeznek, és különösen ajánlott azon állapotalapú alkalmazásokhoz. Ne használjon bármely részleges maggal rendelkező virtuális gép Termékváltozata vagy 10 GB-nál kisebb rendelkezésre álló szabad kapacitás rendelkezik. Tekintse meg [tervezési szempontok a dokumentum a service fabric-fürt] [ service-fabric-cluster-capacity] nyújt segítséget a virtuális gép méretének kiválasztásával.
-4.  **Egyszeri csomópontot tartalmazó fürttel és három csomópontot tartalmazó fürt** csak tesztelési célokra szolgálnak. Ezek nem támogatottak az éles környezetben futó számítási feladatokat.
-5. Válassza ki a **kezdeti Virtuálisgép-méretezési kapacitás** a csomóponttípus. Méretezhetők felfelé és lefelé a virtuális gépek száma a csomópont típusa később, de az elsődleges csomóponttípushoz, a legalább öt, a termelési számítási feladatokhoz. Más csomóponttípusok legalább egy virtuális gép lehet. A minimális **szám** virtuális gépek az elsődleges csomópont típusa meghajtók esetében a **megbízhatóság** a fürt.  
-6. Konfigurálása **egyéni végpontok**. Ez a mező lehetővé teszi, hogy az Azure Load Balancerrel együttműködve az alkalmazások számára a nyilvános interneten keresztül elérhetővé tenni kívánt portok vesszővel elválasztott listáját adja meg. Például ha azt tervezi, a fürt webes alkalmazás üzembe helyezése, itt adhatja meg "80", hogy a forgalmat a 80-as portot a fürtbe. A végpontok további információkért lásd: [alkalmazásokkal való kommunikáció közben][service-fabric-connect-and-communicate-with-services]
-7. **Fordított proxy engedélyezése**.  A [Service Fabric fordított proxyja](service-fabric-reverseproxy.md) segít mikroszolgáltatások Service Fabric-fürtön futó felderítése és kommunikálni más szolgáltatásokkal, amelyek http-végpontokat.
-8. Térjen vissza a **fürtkonfiguráció** panel alatt **+ választható beállítások megjelenítése**, fürt konfigurálása **diagnosztikai**. Alapértelmezés szerint vannak engedélyezve a diagnosztika a fürtre, amelyek segítik a problémák elhárítása. Ha le szeretné tiltani a diagnosztikai módosítása a **állapot** kapcsolót **ki**. A diagnosztika kikapcsolása **nem** ajánlott. Ha már létrehozott Application Insights-projekttel rendelkezik, majd adjon annak a kulcsát, hogy az alkalmazások nyomkövetéseit legyenek irányítva.
-9. **DNS szolgáltatással**.  A [DNS-szolgáltatás](service-fabric-dnsservice.md) egy opcionális szolgáltatás, amely lehetővé teszi, hogy más szolgáltatásokat, a DNS protokoll használatával.
-10. Válassza ki a **Fabric frissítési módot** azt szeretné, hogy a fürt beállítása. Válassza ki **automatikus**, ha azt szeretné, hogy a rendszer automatikusan folytattuk a munkát az elérhető legújabb verzióra, és próbálja meg frissíteni a fürt hozzá. Állítsa a módot **manuális**, ha szeretne egy támogatott verzióját. A további részleteket a Fabric frissítési mód lásd: a [dokumentum Service Fabric-fürt frissítése.][service-fabric-cluster-upgrade]
+1. Válassza ki a csomópont típusának nevét (1 – 12 karakter, amely csak betűket és számokat tartalmaz).
+2. Az elsődleges csomópont típusához tartozó virtuális gépek minimális **méretét** a fürthöz választott **tartóssági szint** vezérli. A tartóssági szintek alapértelmezett értéke bronz. További információ a tartósságról: [a Service Fabric fürt tartósságának kiválasztása][service-fabric-cluster-durability].
+3. Válassza ki a **virtuális gép méretét**. A D sorozatú virtuális gépek SSD-meghajtókkal rendelkeznek, és az állapot-nyilvántartó alkalmazások esetében kifejezetten ajánlottak. Ne használjon olyan VM SKU-t, amely részleges maggal rendelkezik, vagy kevesebb, mint 10 GB szabad lemezterülettel rendelkezik. A virtuális gép méretének kiválasztásával kapcsolatos segítségért tekintse meg a [Service Fabric-fürt tervezési szempontja című dokumentumot][service-fabric-cluster-capacity] .
+4.  Az egycsomópontos **fürtök és a három csomópontos fürtök** csak tesztelési célú használatra szolgálnak. A futó éles munkaterhelések esetében nem támogatottak.
+5. Válassza ki a virtuálisgép- **méretezési csoport kezdeti kapacitását** a csomópont típusához. A csomópontokban lévő virtuális gépek számának vertikális felskálázása később, de az elsődleges csomópont típusától függően a minimum öt az éles munkaterhelések esetében. A többi csomópont-típushoz legalább egy virtuális gép tartozhat. Az elsődleges csomópont típusú virtuális gépek minimális **száma** a fürt megbízhatóságát vezérli.  
+6. **Egyéni végpontok**konfigurálása. Ebben a mezőben megadhatja a portok vesszővel tagolt listáját, amelyeket a Azure Load Balancer az alkalmazások számára elérhető nyilvános internetre kíván tenni. Ha például egy webalkalmazást szeretne üzembe helyezni a fürtön, írja be az "80" értéket, hogy engedélyezze a forgalmat a 80-es porton a fürtben. További információ a végpontokról: [kommunikáció az alkalmazásokkal][service-fabric-connect-and-communicate-with-services]
+7. **Fordított proxy engedélyezése**.  A [Service Fabric fordított proxy](service-fabric-reverseproxy.md) segíti a Service Fabric-fürtökön futó, a http-végpontokkal rendelkező más szolgáltatásokkal való kommunikációt.
+8. Vissza a **fürtkonfiguráció** panelen, a **választható beállítások megjelenítése**alatt konfigurálja a fürt **diagnosztikát**. Alapértelmezés szerint a diagnosztika engedélyezve van a fürtön, hogy segítséget nyújtson a hibák elhárításához. Ha le szeretné tiltani a diagnosztika **állapotát** , állítsa be azállapotot kikapcsolva értékre. A diagnosztika kikapcsolása **nem** ajánlott. Ha már létrehozta Application Insights projektet, majd adja meg a kulcsát, hogy az alkalmazás-Nyomkövetések hozzá legyenek irányítva.
+9. **DNS-szolgáltatás**belefoglalása.  A [DNS szolgáltatás](service-fabric-dnsservice.md) olyan választható szolgáltatás, amely lehetővé teszi más szolgáltatások keresését a DNS protokoll használatával.
+10. Válassza ki a **háló frissítési módját** , amelyre a fürtöt be szeretné állítani. Válassza az **automatikus**lehetőséget, ha azt szeretné, hogy a rendszer automatikusan vegye fel a legújabb elérhető verziót, és próbálja meg frissíteni a fürtöt. Állítsa a módot **manuálisra**, ha a támogatott verziót szeretné kiválasztani. A háló frissítési módjával kapcsolatos további részletekért tekintse meg a [fürt frissítési Service Fabricét ismertető dokumentumot.][service-fabric-cluster-upgrade]
 
 > [!NOTE]
-> Csak a Service Fabric támogatott verzióit futtató fürtöket is nyújtunk támogatást. Válassza a **manuális** módban készítésének felelősségére frissítse a fürtöt egy támogatott verziójára.
+> Csak a Service Fabric támogatott verzióit futtató fürtöket támogatjuk. A **manuális** mód kiválasztásával Ön vállalja a felelősséget, hogy a fürtöt egy támogatott verzióra frissítse.
 > 
 
 ### <a name="3-security"></a>3. Biztonság
-![Képernyőfelvétel a biztonsági konfigurációk az Azure Portalon.][BasicSecurityConfigs]
+![Képernyőkép a Azure Portal biztonsági beállításairól.][BasicSecurityConfigs]
 
-Ahhoz, hogy egy biztonságos tesztfürt létrehozásáról egyszerű az Ön számára, adtunk a **alapszintű** lehetőséget. Ha már rendelkezik egy tanúsítvánnyal, és már feltöltött, hogy a [a key vault](/azure/key-vault/) (és engedélyezve van a key vault üzembe helyezéshez), majd használja a **egyéni** lehetőség
+A biztonságos tesztelési fürt létrehozásához egyszerűen biztosítjuk az alapszintű lehetőséget. Ha már rendelkezik tanúsítvánnyal, és feltölti a kulcstartóba ( [](/azure/key-vault/) és engedélyezte a kulcstartót az üzembe helyezéshez), használja az **Egyéni** lehetőséget.
 
 #### <a name="basic-option"></a>Alapszintű beállítás
-Kövesse a képernyőn hozzáadása vagy újból felhasználhatja a meglévő kulcstároló, és adjon hozzá egy tanúsítványt. A tanúsítvány hozzáadása egy szinkron folyamat, és úgy kell várja meg a tanúsítványt létrehozni.
+A képernyők használatával hozzáadhat vagy felhasználhat egy meglévő kulcstartót, és hozzáadhat egy tanúsítványt. A tanúsítvány hozzáadása szinkron folyamat, ezért meg kell várnia a tanúsítvány létrehozását.
 
-Ellenállni a kísértésnek, a képernyőre navigál, mindaddig, amíg az előző folyamat befejeződött.
+Az előző folyamat befejezéséig ellenáll a képernyőről való navigálás kísértésének.
 
 ![CreateKeyVault]
 
-Most, hogy a key vault jön létre, a kulcstartó hozzáférési szabályzatainak szerkesztése 
+Most, hogy létrehozta a kulcstartót, szerkessze a Key Vault hozzáférési szabályzatait. 
 
 ![CreateKeyVault2]
 
-Kattintson a a **hozzáférési házirend szerkesztése**, majd **speciális hozzáférési szabályzatok megjelenítése** , és engedélyezze a hozzáférést az Azure Virtual Machines üzembe helyezéshez. Javasoljuk, hogy engedélyezze-e, valamint a sablon üzembe helyezéséhez. Miután elvégezte a választott beállításokat, ne felejtse el kattintson a **mentése** gombra, és zárja be a a **hozzáférési házirendek** ablaktáblán.
+Kattintson a **hozzáférési házirendek szerkesztése**, majd a **speciális hozzáférési szabályzatok megjelenítése** elemre, és engedélyezze az Azure Virtual Machines való hozzáférést az üzembe helyezéshez. Javasoljuk, hogy engedélyezze a sablon központi telepítését is. Ha elvégezte a beállításokat, ne felejtsen el a **Save (Mentés** ) gombra kattintani, és lépjen ki a **hozzáférési házirendek** panelről.
 
 ![CreateKeyVault3]
 
-Adja meg a tanúsítvány nevét, és kattintson a **OK**.
+Adja meg a tanúsítvány nevét, majd kattintson **az OK**gombra.
 
 ![CreateKeyVault4]
 
-#### <a name="custom-option"></a>Egyéni beállítást
-Ha már elvégezte a lépéseket, hagyja ki ebben a szakaszban a **alapszintű** lehetőséget.
+#### <a name="custom-option"></a>Egyéni beállítás
+Ugorja át ezt a szakaszt, ha már végrehajtotta az alapszintű beállítás lépéseit.
 
 ![SecurityCustomOption]
 
-Szüksége van a forrás key vaultnak, tanúsítvány URL-címe és tanúsítvány-ujjlenyomat-információit végezze el a lapon. Ha nincs kéznél legyen, nyissa meg egy másik böngészőablakban, és az Azure Portalon tegye a következőket
+A Biztonság lap elvégzéséhez szüksége lesz a forrás Key vaultra, a tanúsítvány URL-címére és a tanúsítvány ujjlenyomatára vonatkozó információkra. Ha nincs kéznél, nyisson meg egy böngészőablakot, és a Azure Portal tegye a következőket
 
-1. Keresse meg a key vault szolgáltatás.
-2. Válassza a "Tulajdonságok" lapot, és másolja erőforrás-azonosító "A forrás key vaultnak" böngésző ablakban 
+1. Navigáljon a Key Vault szolgáltatáshoz.
+2. Válassza a "tulajdonságok" fület, és másolja az "erőforrás-azonosító" kifejezést a "forrás Key Vault" értékre a másik böngészőablakban. 
 
     ![CertInfo0]
 
-3. Most válassza a "Tanúsítványok" lapot.
-4. Kattintson a tanúsítvány ujjlenyomatát, amely végigvezeti a verziók lapra.
-5. Kattintson a GUID megváltozott a jelenlegi verzió alatt látható.
+3. Most válassza a "tanúsítványok" fület.
+4. Kattintson a tanúsítvány ujjlenyomatára, amely a verziók lapra lép.
+5. Kattintson a jelenlegi verzió alatt látható GUID-azonosítóra.
 
     ![CertInfo1]
 
-6. Az alábbi képernyőképen például most meg kell lennie. A hexadecimális ujjlenyomat SHA-1 "Tanúsítvány ujjlenyomata" (a böngésző ablakához másolása
-7. Másolja a titkos kód azonosítója a "tanúsítvány URL-címe" a másik böngészőablakban.
+6. Ekkor az alábbihoz hasonló képernyőn kell megjelennie. Másolja a hexadecimális SHA-1 ujjlenyomatot a "Tanúsítvány ujjlenyomata" értékre a másik böngészőablakban
+7. Másolja a "titkos azonosító" kifejezést a "tanúsítvány URL-címe" értékre más böngészőablakban.
 
     ![CertInfo2]
 
-Ellenőrizze a **speciális beállítások konfigurálása** mezőben adja meg az ügyféltanúsítványok **rendszergazdai ügyfél** és **csak olvasható ügyfél**. Ezekben a mezőkben adja meg a rendszergazdai ügyféltanúsítvány ujjlenyomata és az olvasási jogosultsággal rendelkező felhasználó ügyféltanúsítvány ujjlenyomatát, ha van ilyen. A rendszergazdák próbál csatlakozni a fürthöz, amikor megkapják az itt megadott hozzáférés csak akkor, ha rendelkeznek, amely megfelel az ujjlenyomat-értékeket egy ujjlenyomattal rendelkező tanúsítvány.  
+Jelölje be a **Speciális beállítások konfigurálása** jelölőnégyzetet a **rendszergazdai ügyfél** és a **csak olvasási jogosultsággal**rendelkező ügyfelek tanúsítványainak megadásához. Ezekben a mezőkben adja meg a rendszergazdai ügyféltanúsítvány ujjlenyomatát és a csak olvasási jogosultsággal rendelkező felhasználói ügyféltanúsítvány ujjlenyomatát, ha van ilyen. Amikor a rendszergazdák megpróbálnak csatlakozni a fürthöz, csak akkor kapnak hozzáférést, ha az itt megadott ujjlenyomat-értékekkel egyező tanúsítvánnyal rendelkeznek.  
 
-### <a name="4-summary"></a>4. Összefoglalás
+### <a name="4-summary"></a>4. Összegzés
 
-Most már készen áll a fürt üzembe helyezéséhez. Mielőtt ezt megtenné, töltse le a tanúsítványt, keresse meg a hivatkozás a nagyméretű kék tájékoztató mezőben belül. Győződjön meg arról, hogy a tanúsítvány biztonságos helyen. szüksége lesz rá a fürthöz való csatlakozáshoz. Mivel a letöltött tanúsítvány nem rendelkezik a jelszót, javasolt egy hozzáadása.
+Most már készen áll a fürt üzembe helyezésére. Mielőtt ezt megtenné, töltse le a tanúsítványt, és tekintse meg a hivatkozáshoz tartozó nagy kék információs mezőt. Ügyeljen arra, hogy a tanúsítvány biztonságos helyen maradjon. szüksége lesz rá a fürthöz való kapcsolódáshoz. Mivel a letöltött tanúsítvány nem rendelkezik jelszóval, javasoljuk, hogy adjon hozzá egyet.
 
-A fürt létrehozásának befejezéséhez kattintson a **létrehozás**. A sablon igény szerint töltheti le.
+A fürt létrehozásának befejezéséhez kattintson a **Létrehozás**gombra. Igény szerint letöltheti a sablont.
 
-![Összefoglalás]
+![Összegzés]
 
-A létrehozás folyamatát az értesítésekben követheti nyomon. (Kattintson a „Harang” ikonra az állapotsor mellett, a képernyő jobb felső részén.) Ha a fürt létrehozásakor **A kezdőpulton rögzít** lehetőségre kattintott, a **Service Fabric-fürt üzembe helyezése** a **Kezdőpultra** rögzítve látható. Ez a folyamat hosszabb időt vesz igénybe. 
+A létrehozás folyamatát az értesítésekben követheti nyomon. (Kattintson a „Harang” ikonra az állapotsor mellett, a képernyő jobb felső részén.) Ha a fürt létrehozásakor **A kezdőpulton rögzít** lehetőségre kattintott, a **Service Fabric-fürt üzembe helyezése** a **Kezdőpultra** rögzítve látható. Ez a folyamat hosszabb időt is igénybe vehet. 
 
-A fürt Powershell vagy parancssori felület használatával a kezelési műveletek végrehajtásához, a fürthöz való csatlakozáshoz szüksége további útmutatást a [csatlakozni a fürthöz,](service-fabric-connect-to-secure-cluster.md).
+Ahhoz, hogy a PowerShell vagy a parancssori felület használatával hajtsa végre a felügyeleti műveleteket a fürtön, a fürthöz való [csatlakozásról](service-fabric-connect-to-secure-cluster.md)további tudnivalókat itt olvashat:.
 
 ## <a name="view-your-cluster-status"></a>A fürt állapotának megtekintése
-![Képernyőfelvétel a fürt részletes adatai az irányítópulton.][ClusterDashboard]
+![Képernyőkép a fürt részleteiről az irányítópulton.][ClusterDashboard]
 
-Miután a fürt létrejött, a fürt a portálon ellenőrizheti:
+A fürt létrehozása után megtekintheti a fürtöt a portálon:
 
-1. Lépjen a **Tallózás** kattintson **Service Fabric-fürtök**.
-2. Keresse meg a fürthöz, és kattintson rá.
+1. Lépjen a **Tallózás** elemre, és kattintson **Service Fabric fürtök**lehetőségre.
+2. Keresse meg a fürtöt, és kattintson rá.
 3. A fürt részletei megjelennek az irányítópulton, beleértve a fürt nyilvános végpontját és egy, a Service Fabric Explorerre mutató hivatkozást.
 
-A **figyelő csomópont** szakasz a fürt irányítópultján panel azt jelzi, hogy a megfelelő és nem kifogástalan állapotú virtuális gépek száma. További információt a fürt állapota: annak [Service Fabric health-modell bemutatása][service-fabric-health-introduction].
+A fürt irányítópult paneljének **csomópont-figyelő** szakasza a kifogástalan állapotú virtuális gépek számát jelzi. A fürt állapotával kapcsolatos további részletekért tekintse meg [Service Fabric Health Model][service-fabric-health-introduction]bevezetését.
 
 > [!NOTE]
-> Service Fabric-fürtök bizonyos számú rendelkezésre állását, és állapot - nevezik "kvórum fenntartása" megőrzése mindig fel lehet csomópontokat igényelnek. Így már általában nem biztonságos, a fürt összes gép leállítása, kivéve, ha először hajtott végre egy [teljes biztonsági mentést az állapot][service-fabric-reliable-services-backup-restore].
+> Service Fabric fürtök esetében bizonyos számú csomópontra van szükség, amely mindig a rendelkezésre állás fenntartását és az állapot megőrzését jelenti – a továbbiakban "a kvórum fenntartása". Ezért általában nem biztonságos a fürtben lévő összes gép leállítása, kivéve, ha először a [teljes biztonsági mentést][service-fabric-reliable-services-backup-restore]hajtotta végre az állapotáról.
 > 
 > 
 
-## <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Távoli csatlakozás egy virtuálisgép-méretezési példányt, vagy egy fürt csomópontja
-A NodeType mindegyike megadhatja a fürt egy virtuálisgép-méretezési beállítás első eredményezi. <!--See [Remote connect to a Virtual Machine Scale Set instance][remote-connect-to-a-vm-scale-set] for details. -->
+## <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Távoli kapcsolódás virtuálisgép-méretezési csoport példányaihoz vagy fürtcsomóponton
+A fürtben megadott NodeTypes mindegyike egy virtuálisgép-méretezési csoportba kerül, amely beállítja a beállítását. <!--See [Remote connect to a Virtual Machine Scale Set instance][remote-connect-to-a-vm-scale-set] for details. -->
 
 ## <a name="next-steps"></a>További lépések
-Ezen a ponton rendelkezik egy biztonságos fürthöz, a felügyeleti hitelesítéshez tanúsítványokat használ. Ezután [csatlakozni a fürthöz](service-fabric-connect-to-secure-cluster.md) , és ismerje meg, hogyan [titkos alkalmazáskulcsok kezelése](service-fabric-application-secret-management.md).  Emellett ismerje [Service Fabric támogatási lehetőségeinek](service-fabric-support.md).
+Ezen a ponton van egy biztonságos fürt, amely tanúsítványokat használ a felügyeleti hitelesítéshez. Ezután [kapcsolódjon a fürthöz](service-fabric-connect-to-secure-cluster.md) , és Ismerje meg, hogyan kezelheti az [alkalmazási titkokat](service-fabric-application-secret-management.md).  Emellett megismerheti [Service Fabric támogatási lehetőségeit](service-fabric-support.md).
 
 <!-- Links -->
 [azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/

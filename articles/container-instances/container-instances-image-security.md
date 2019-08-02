@@ -1,143 +1,143 @@
 ---
-title: Az Azure Container Instances biztonsági szempontok
-description: Javaslatok a képek és titkos kulcsok biztonságos Azure Container Instances szolgáltatásban, és bármely tárolóplatform általános biztonsági szempontjai
+title: Azure Container Instances biztonsági megfontolások
+description: Javaslatok a lemezképek és a titkos kulcsok biztonságossá tételéhez a Azure Container Instanceshoz, valamint általános biztonsági megfontolások bármilyen tároló platformhoz
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: dc516277d79e37500e73e1aee6b88c908acb9b1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 618d3a901698e46760d970f6d4fbc4157c5d2ea3
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943996"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325920"
 ---
-# <a name="security-considerations-for-azure-container-instances"></a>Azure Container Instances szolgáltatásban történő futtatásának biztonsági szempontjai
+# <a name="security-considerations-for-azure-container-instances"></a>A Azure Container Instances biztonsági szempontjai
 
-Ez a cikk bemutatja az Azure Container Instances használatával a tárolóalapú alkalmazások futtatásához kapcsolódó biztonsági szempontok. A témakörök a következők:
+Ez a cikk a Azure Container Instances a Container apps futtatásához való használatának biztonsági szempontjait ismerteti. A témakörök a következők:
 
 > [!div class="checklist"]
-> * **Biztonsági javaslatok** képek és titkos kulcsok kezeléséhez az Azure Container Instances szolgáltatásban
-> * **A tároló-ökoszisztéma szempontjai** tároló életciklusán bármely tároló platformhoz
+> * **Biztonsági javaslatok** a rendszerképek és a titkok kezeléséhez Azure Container instances
+> * A tároló-ökoszisztémára vonatkozó **megfontolások** a tároló életciklusa során, bármilyen tároló platform esetében
 
-## <a name="security-recommendations-for-azure-container-instances"></a>Biztonsági javaslatok az Azure Container Instances szolgáltatásban
+## <a name="security-recommendations-for-azure-container-instances"></a>A Azure Container Instances biztonsági javaslatai
 
-### <a name="use-a-private-registry"></a>Privát beállításjegyzék
+### <a name="use-a-private-registry"></a>Privát beállításjegyzék használata
 
-A tárolók egy vagy több adattárban található rendszerképekből állnak össze. Az alábbi két adattár tartozhatnak a nyilvános beállításjegyzék például [Docker Hub](https://hub.docker.com), vagy privát regisztrációs adatbázisba. Privát beállításjegyzék pedig például a [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/2.0/), amely a helyszínen vagy virtuális magánfelhőbe is telepíthető. Felhőalapú privát tárolójegyzék-szolgáltatások, többek között is használhatja [Azure Container Registry](../container-registry/container-registry-intro.md). 
+A tárolók egy vagy több adattárban található rendszerképekből állnak össze. Ezek a adattárak egy nyilvános beállításjegyzékbe, például a [Docker hub](https://hub.docker.com)-ba vagy egy privát beállításjegyzékbe tartozhatnak. Privát beállításjegyzék pedig például a [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/2.0/), amely a helyszínen vagy virtuális magánfelhőbe is telepíthető. Használhatja továbbá a felhőalapú privát tároló beállításjegyzék-szolgáltatásait is, beleértve [](../container-registry/container-registry-intro.md)a Azure Container registryt is. 
 
-A nyilvánosan elérhető tárolórendszerképek sem garantálják a biztonságot. Tárolórendszerképek több áll, és mindegyik rétegben lehetnek előfordulhat, hogy a biztonsági rések. A veszélyforrások elleni támadások csökkentése érdekében tárolja és egy privát tárolójegyzék, például az Azure Container Registry vagy a Docker Trusted Registry rendszerképek lekéréséhez. Amellett, hogy egy felügyelt privát beállításjegyzéket, az Azure Container Registry támogatja a [szolgáltatás egyszerűszolgáltatás-alapú hitelesítést](../container-registry/container-registry-authentication.md) alapszintű hitelesítési folyamatok az Azure Active Directoryn keresztül. A hitelesítés szerepkörön alapuló hozzáférés a csak olvasható (lekéréses), (leküldés) írási és tulajdonosi engedélyekkel tartalmazza.
+Egy nyilvánosan elérhető tároló-rendszerkép nem garantálja A biztonságot. A tárolók képei több szoftverből állnak, és az egyes szoftveres rétegek biztonsági réseket tartalmazhatnak. A támadások fenyegetésének csökkentése érdekében a lemezképeket privát beállításjegyzékből kell tárolnia és beolvasnia, például Azure Container Registry vagy Docker megbízható beállításjegyzékből. A felügyelt privát beállításjegyzéken kívül a Azure Container Registry támogatja az egyszerű hitelesítési folyamatok Azure Active Directoryn keresztüli egyszerű [szolgáltatás-hitelesítést](../container-registry/container-registry-authentication.md) . Ez a hitelesítés szerepköralapú hozzáférést tartalmaz írásvédett (lekéréses), írási (leküldéses) és tulajdonosi engedélyekhez.
 
-### <a name="monitor-and-scan-container-images"></a>Figyelheti, és tárolórendszerképeket vizsgálata
+### <a name="monitor-and-scan-container-images"></a>Tároló lemezképének monitorozása és vizsgálata
 
-Biztonsági monitorozási és ellenőrzési megoldásokkal [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) és [Aqua Security](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) érhetők el az Azure piactéren. Vizsgálat privát beállításjegyzékben lévő tárolórendszerképek, és azonosítja a potenciális biztonsági réseket használhatja őket. Fontos milyen részletességű beolvasásának, hogy a különböző megoldásokat biztosítson. 
+Az Azure Marketplace-en keresztül elérhetők a biztonsági monitorozási és ellenőrzési megoldások, például a [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) és az [Aqua Security](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) . Felhasználhatja a tároló-lemezképek vizsgálatát egy privát beállításjegyzékben, és azonosíthatja a lehetséges biztonsági réseket. Fontos megérteni a különböző megoldások által nyújtott vizsgálat mélységét. 
 
-### <a name="protect-credentials"></a>Hitelesítő adatok védelme
+### <a name="protect-credentials"></a>Hitelesítő adatok megóvása
 
-Tárolók több fürtök és az Azure-régiók között is terjednek. Tehát biztosítania kell bejelentkezések vagy API-hozzáférés, például jelszavak vagy jogkivonatok szükséges hitelesítő adatokat. Győződjön meg arról, hogy csak jogosultsággal rendelkező felhasználók férhetnek hozzá ezeket a tárolókat, az átvitel során, míg az inaktív. Készlet összes hitelesítő adat titkos kulcsot, és ezután a fejlesztők számára, hogy használja az újonnan felbukkanó-titkos kódok-felügyeleti eszközöket, amelyek célja a tárolóplatformokhoz igényli.  Győződjön meg arról, hogy a megoldás magában foglalja a titkosított adatbázis, a TLS-titkosítás az átvitel során, és minimális jogosultságon alapuló titkos adatok [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md). [Az Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) van egy felhőszolgáltatás, amely megvédi a titkosítási kulcsok és titkos kulcsokat (például a tanúsítványok, kapcsolati karakterláncok és jelszavak) a tárolóalapú alkalmazásokat. Mivel ezek az adatok bizalmas és a kritikus fontosságú üzleti, biztonságos hozzáférés a kulcshoz tárolók, így csak az engedélyezett alkalmazások és a felhasználók elérhetik őket.
+A tárolók különböző fürtökön és Azure-régiókban is elterjedhetnek. Ezért a bejelentkezésekhez vagy az API-hozzáférésekhez szükséges hitelesítő adatokat, például jelszavakat vagy jogkivonatokat kell biztosítania. Győződjön meg arról, hogy csak az emelt szintű felhasználók férhetnek hozzá a tárolóhoz az átvitel és a nyugalmi állapotban. Leltárba kell venni az összes hitelesítő adatot, majd a fejlesztőknek a tároló platformokhoz tervezett, új titkokat kezelő eszközöket kell használniuk.  Győződjön meg arról, hogy a megoldás tartalmaz-e titkosított adatbázisokat, TLS-titkosítást az átvitel során, valamint a legkevésbé jogosult [szerepköralapú hozzáférés](../role-based-access-control/overview.md)-vezérlést. A [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) egy felhőalapú szolgáltatás, amely védelmet biztosít a titkosítási kulcsok és a titkos kulcsoknak (például a tanúsítványoknak, a kapcsolatok karakterláncának és a jelszavaknak) a tároló alkalmazások számára. Mivel ezek az adatok bizalmasak és üzleti szempontból kritikus fontosságúak, biztonságos hozzáférést biztosítanak a kulcstartóhoz, így csak a jogosult alkalmazások és felhasználók férhetnek hozzájuk.
 
-## <a name="considerations-for-the-container-ecosystem"></a>A tároló-ökoszisztéma szempontjai
+## <a name="considerations-for-the-container-ecosystem"></a>A tároló ökoszisztémájának szempontjai
 
-A következő biztonsági intézkedések, jól megvalósítva, és hatékonyan, felügyelt segítségével biztonságos és a tároló ökoszisztéma védelme. Ezek intézkedéseket a fejlesztéstől az éles üzembe helyezését, és számos olyan tárolóvezénylőt, a gazdagépek és a platformok a alkalmazni tároló életciklusa során. 
+Az alábbi, megfelelően megvalósított és felügyelt biztonsági intézkedések segíthetnek a tároló-ökoszisztémák biztonságossá tételében és védelmében. Ezek a mértékek a tároló életciklusa, a fejlesztés és az éles üzembe helyezés, valamint a tárolók, gazdagépek és platformok széles körére vonatkoznak. 
 
-### <a name="use-vulnerability-management-as-part-of-your-container-development-lifecycle"></a>A tároló fejlesztési életciklus során részeként használja a biztonsági rések kezelése 
+### <a name="use-vulnerability-management-as-part-of-your-container-development-lifecycle"></a>A biztonsági rések kezelése a tároló fejlesztési életciklusának részeként 
 
-A hatékony biztonsági rések kezelése, a tároló fejlesztési életciklus során, a valószínűségét, hogy azonosítani és megoldani a biztonsági kérdések, mielőtt azok több súlyos hiba javítása. 
+A tárolók fejlesztési életciklusa során a biztonsági rések felügyeletének használatával javíthatja a biztonsági problémák azonosítását és megoldását, mielőtt azok komolyabb problémát jelentenek. 
 
 ### <a name="scan-for-vulnerabilities"></a>Biztonsági rések keresése 
 
-Új biztonsági rések felderítésekor mindig, így a keresése, és biztonsági rések azonosítása folyamatosan működő folyamat. Biztonsági rés tároló életciklusa során vizsgálata foglalják magukban:
+A rendszer folyamatosan észleli az új biztonsági réseket, így a biztonsági rések keresése és azonosítása folyamatos folyamat. A biztonsági rések vizsgálatának beépítése a tároló életciklusa során:
 
-* A fejlesztési folyamat utolsó ellenőrzése, végre kell hajtania egy biztonsági rések keresése a tárolók, mielőtt leküldené a képek egy nyilvános vagy privát regisztrációs adatbázisba. 
-* Továbbra is keresni a beállításjegyzék minden hibát, amely valamilyen módon hiányzik a fejlesztés során azonosítása és megoldása, amelyek valószínűleg szerepelnek a tárolórendszerképeket használt kódot újonnan felfedezett biztonsági rések tárolórendszerképek.  
+* A fejlesztési folyamat utolsó beadásakor a biztonsági rések vizsgálatát kell végrehajtani a tárolókban, mielőtt a lemezképeket nyilvános vagy privát beállításjegyzékbe szeretné elküldeni. 
+* Folytassa a tároló lemezképek vizsgálatát a beállításjegyzékben, és azonosítsa azokat a hibákat, amelyek a fejlesztés során valahogy kimaradtak, és a tárolói lemezképekben használt kódban található újonnan felderített biztonsági réseket.  
 
-### <a name="map-image-vulnerabilities-to-running-containers"></a>Térkép rendszerkép biztonsági réseket a futó tárolók 
+### <a name="map-image-vulnerabilities-to-running-containers"></a>Biztonsági rések leképezése a tárolók futtatásához 
 
-Szüksége lesz egy azt jelenti, hogy a leképezés biztonsági rések a futó tárolók, biztonsági problémák problémák elhárításáról is lehet, vagy megoldott tárolórendszerképek azonosítja.  
+A tároló lemezképében azonosított biztonsági rések leképezésére van szükség, így a biztonsági problémák csökkenthetők vagy feloldhatók.  
 
-### <a name="ensure-that-only-approved-images-are-used-in-your-environment"></a>Győződjön meg arról, hogy csak a jóváhagyott lemezképeket a környezetben használt 
+### <a name="ensure-that-only-approved-images-are-used-in-your-environment"></a>Győződjön meg arról, hogy csak a jóváhagyott lemezképek lesznek használatban a környezetben 
 
-Nincs elegendő változás- és a egy tároló-ökoszisztéma nem engedélyezi az ismeretlen tárolókhoz is volatilitás. Csak a jóváhagyott tárolórendszerképek engedélyezése. Figyelheti, és letilthatja az jóvá nem hagyott tárolórendszerképek tartalmaznak eszközökkel és folyamatokkal. 
+A tároló ökoszisztémájában elég változás és volatilitás van, anélkül, hogy az ismeretlen tárolókat is engedélyezi. Csak a jóváhagyott tárolók lemezképének engedélyezése. A nem jóváhagyott tárolók rendszerképének figyelésére és megelőzésére szolgáló eszközökkel és folyamatokkal rendelkezik. 
 
-Hatékony módszer a csökkentve a támadási felületet, és meggátolja, hogy a fejlesztők számára kritikus fontosságú biztonsági hibát vét, hogy irányíthatja a tárolórendszerképek a fejlesztési környezetben. Például előfordulhat, hogy akár alaprendszerképként, lehetőleg letisztult egyetlen Linux-disztribúció engedélyezését (Alpine CoreOS helyett vagy Ubuntu), a potenciális támadások felület minimalizálása érdekében. 
+A támadási felület csökkentésének hatékony módja, és annak megakadályozása, hogy a fejlesztők kritikus biztonsági hibákkal irányítsák a tárolók rendszerképeinek áramlását a fejlesztési környezetbe. Előfordulhat például, hogy egy adott Linux-disztribúciót kihelyez egy alaprendszerképként, lehetőleg egy sovány (alpesi vagy CoreOS), amely az Ubuntu helyett az egyiket, az esetleges támadások felszínének csökkentése érdekében. 
 
-Lemezkép-aláírást vagy az ujjlenyomat, amely lehetővé teszi, hogy a tárolók sértetlenségének ellenőrzése felügyeleti lánc láncolatától biztosíthat. Például az Azure Container Registry támogatja a Docker [megbízhatósági tartalom](https://docs.docker.com/engine/security/trust/content_trust) modell, amely lehetővé teszi, hogy a rendszerkép-közzétevők rendszerkép található, akkor lesznek leküldve a beállításjegyzék aláírásához, és a lemezkép a felhasználók a lekéréses csak aláírt lemezképek.
+A képaláírás vagy az ujjlenyomatok olyan felügyeleti láncot biztosítanak, amely lehetővé teszi a tárolók integritásának ellenőrzését. A Azure Container Registry támogatja például a Docker [tartalmi megbízhatósági](https://docs.docker.com/engine/security/trust/content_trust) modelljét, amely lehetővé teszi a képkiadók számára, hogy a beállításjegyzékbe leküldött képeket írják alá, és a felhasználók csak az aláírt lemezképek lekérését.
 
-### <a name="permit-only-approved-registries"></a>Csak a jóváhagyott beállításjegyzékek engedélyezése 
+### <a name="permit-only-approved-registries"></a>Csak jóváhagyott kibocsátásiegység-forgalmi jegyzékek engedélyezése 
 
-Egy bővítmény, biztosítsa, hogy a környezet használja csak a jóváhagyott lemezképeket, hogy csak a jóváhagyott tárolóregisztrációs adatbázis használatát teszi lehetővé. Nincs szükség a jóváhagyott tároló-beállításjegyzékek csökkenti a fenyegetéseknek való kockázati, korlátozza a potenciális ismeretlen biztonsági réseket, és a biztonsági problémák bevezetésével. 
+Egy bővítmény, amely biztosítja, hogy a környezet csak a jóváhagyott lemezképeket használja, csak a jóváhagyott tároló-nyilvántartások használatát engedélyezi. A jóváhagyott tároló-nyilvántartások használatának megkövetelése csökkenti a kockázatot, ha korlátozza az ismeretlen biztonsági rések vagy biztonsági problémák bevezetésének lehetséges lehetőségét. 
 
-### <a name="ensure-the-integrity-of-images-throughout-the-lifecycle"></a>Képek a teljes életciklusán sértetlenségének biztosítása 
+### <a name="ensure-the-integrity-of-images-throughout-the-lifecycle"></a>A rendszerképek integritásának biztosítása az életciklus során 
 
-Tároló életciklusa során biztonság kezelése része a tárolórendszerképeket a beállításjegyzék integritásának biztosításához és, módosítani vagy éles környezetben helyezi üzembe. 
+A biztonság kezelésének része a tároló életciklusa során a tároló lemezképek integritásának biztosítása a beállításjegyzékben, valamint azok módosítása vagy üzembe helyezése éles környezetben. 
 
-* Rendszerképek biztonsági résekről, akár kisebb, nem engedélyezhető egy éles környezetben való futtatásához. Ideális esetben az éles környezetben telepített összes rendszerkép elérhető kevesen privát beállításjegyzékben lévő kell menteni. Maradjon kicsi annak érdekében, hogy kezelhető legyen hatékonyan éles képek számát.
+* A biztonsági réseket, akár kisebbeket is tartalmazó rendszerképeket nem szabad éles környezetben futtatni. Ideális esetben az éles környezetben üzembe helyezett összes lemezképet egy kiválasztott privát beállításjegyzékbe kell menteni. Tartsa meg az éles rendszerképek számát, hogy azok hatékonyan felügyelhetők legyenek.
 
-* Mivel a tárolórendszerképekben lévő szoftverek származása egy nyilvánosan elérhető tárolórendszerképek nehezen deríthető, hozhat létre képeket a forrás-, hogy ismerjük a réteg eredetét. Ha a saját készítésű tárolórendszerképben jelentkezik valamilyen biztonsági rés, könnyebben található rá megoldás. Nyilvános rendszerképek ügyfelek kellene javítást, vagy szerezze be egy másik, biztonságos rendszerképet a közzétevőtől nyilvános rendszerkép gyökerében található. 
+* Mivel nehezen lehet kijelölni a szoftver forrását egy nyilvánosan elérhető tároló-rendszerképből, lemezképeket építhet ki a forrásból a réteg eredetének megismerése érdekében. Ha a saját készítésű tárolórendszerképben jelentkezik valamilyen biztonsági rés, könnyebben található rá megoldás. Nyilvános rendszerképpel az ügyfeleknek meg kell találniuk egy nyilvános rendszerkép gyökerét, hogy kijavítsák vagy egy másik biztonságos rendszerképet kapjanak a közzétevőtől. 
 
-* Egy éles környezetben üzembe helyezett alaposan ellenőrzött rendszerképek az alkalmazás teljes élettartama a vírusdefiníciók naprakészségének nem garantált. Biztonsági rések jelenhetnek meg a rendszerkép korábban nem ismert vagy az éles környezetben való üzembe helyezés után bevezetett rétegeiben. 
+* Az éles környezetben üzembe helyezett, alaposan beolvasott lemezképek nem garantáltan naprakészek az alkalmazás élettartama szempontjából. Biztonsági rések jelenhetnek meg a rendszerkép korábban nem ismert vagy az éles környezetben való üzembe helyezés után bevezetett rétegeiben. 
 
-  Elavult vagy egy ideje nem frissített rendszerképek azonosítása érdekében éles környezetben üzembe helyezett rendszerképeket rendszeresen naplózza. Kék-zöld üzembe helyezéssel és működés közbeni frissítési mechanizmusokkal használatával lehet, hogy a tárolórendszerképek állásidő nélküli frissítése. A kiszűrhető az előző szakaszban leírt eszközök segítségével. 
+  Az éles környezetben üzembe helyezett rendszerképeket az elavult vagy nem frissített rendszerképek azonosítására használják fel rendszeresen. Előfordulhat, hogy a kék-zöld telepítési módszertant és a működés közbeni frissítési mechanizmusokat használja a tároló lemezképének állásidő nélküli frissítéséhez. A rendszerképeket az előző szakaszban ismertetett eszközök segítségével ellenőrizheti. 
 
-* Használhat egy folyamatos integrációs (CI) folyamat integrált biztonsági biztonságos lemezképeket, és azok leküldése a privát tárolójegyzék ellenőrzése. A CI megoldásba beépített biztonságirés-ellenőrzési funkció biztosítja, hogy az összes teszten megfelelő rendszerképek kerüljenek a privát beállításjegyzékbe, ahonnan az éles számítási feladatok üzembe helyezése történik. 
+* A folyamatos integrációs (CI) folyamat integrált biztonsági ellenőrzéssel gondoskodik a biztonságos rendszerképek létrehozásáról és a privát beállításjegyzékbe való leküldéséről. A CI megoldásba beépített biztonságirés-ellenőrzési funkció biztosítja, hogy az összes teszten megfelelő rendszerképek kerüljenek a privát beállításjegyzékbe, ahonnan az éles számítási feladatok üzembe helyezése történik. 
 
-  CI folyamat meghiúsul biztosítja, hogy a sebezhető rendszerképek nem kerülnek a privát beállításjegyzékbe, hogy éles számítási feladatok üzembe helyezéséhez használt. Automatizálja a rendszerképek biztonsági ellenőrzése, ha sok rendszerkép van is. Máskülönben a rendszerképek manuális vizsgálata rendkívül hosszadalmas és sok hibalehetőséget tartalmazó folyamat lenne. 
+  A CI-folyamat meghibásodása biztosítja, hogy a sebezhető lemezképek ne legyenek leküldve az éles számítási feladatok üzembe helyezéséhez használt privát beállításjegyzékbe. Emellett automatizálja a rendszerképek biztonsági vizsgálatát is, ha jelentős számú kép van. Máskülönben a rendszerképek manuális vizsgálata rendkívül hosszadalmas és sok hibalehetőséget tartalmazó folyamat lenne. 
 
-### <a name="enforce-least-privileges-in-runtime"></a>Minimálisan a futtatókörnyezeti kényszerítése 
+### <a name="enforce-least-privileges-in-runtime"></a>A legalacsonyabb jogosultságok betartatása futásidőben 
 
-A legalacsonyabb jogosultságok fogalma alapvető biztonsági szempontból ajánlott, hogy a tárolók is vonatkozik. Egy biztonsági rés van ki, általában lehetővé teszi a támadók hozzáférést és jogosultságokat a sérült alkalmazás vagy folyamat egyenlő. Annak biztosítása, hogy a tárolók a legalacsonyabb szintű jogosultságokat kapnak, és hozzáférés szükséges a feladatot a fenyegetéseknek való kockázati csökkenti. 
+A minimális jogosultságok fogalma egy alapszintű biztonsági eljárás, amely a tárolók esetében is érvényes. Sebezhetőség kihasználása esetén általában a támadók hozzáférhetnek a feltört alkalmazáshoz vagy folyamathoz tartozó jogosultságokkal. Annak biztosítása, hogy a tárolók a lehető legalacsonyabb jogosultságokkal működjenek, és a feladatok elvégzéséhez szükséges hozzáférés csökkenti a kockázatot. 
 
-### <a name="reduce-the-container-attack-surface-by-removing-unneeded-privileges"></a>A tároló támadási felület csökkentése a szükségtelen jogosultságokkal eltávolításával 
+### <a name="reduce-the-container-attack-surface-by-removing-unneeded-privileges"></a>Csökkentse a tároló támadási felületét a szükségtelen jogosultságok eltávolításával 
 
-A potenciális támadási felületet is minimalizálhatja a használaton kívüli vagy szükségtelen folyamatok vagy jogosultságokkal távolítsa el a tároló-futtatókörnyezet. Legfelső szintű rendszerjogosultságú tárolók futnak. Ha egy rosszindulatú felhasználó vagy a számítási feladat lehet kilépni egy emelt szintű tárolóban, a tárolót fog futni legfelső szintű az adott rendszerben.
+A potenciális támadási felületet is csökkentheti, ha eltávolítja a nem használt vagy szükségtelen folyamatokat vagy jogosultságokat a tároló futtatókörnyezetből. A Kiemelt jogosultságú tárolók root-ként futnak. Ha egy rosszindulatú felhasználó vagy munkaterhelés kikerül egy emelt szintű tárolóba, a tároló ezt követően a rendszer gyökerét fogja futtatni.
 
-### <a name="whitelist-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Engedélyezett fájlokat és végrehajtható fájlok a tároló elérésére vagy futtatására van engedélyezve. 
+### <a name="whitelist-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Engedélyezési fájlok és végrehajtható fájlok, amelyeket a tároló elérhet vagy futtathat 
 
-A változók vagy unknowns számának csökkentését segítségével biztosítja a stabil és megbízható környezetet. Egy jól bevált módszerrel kitettségének kockázata, tárolók hozzáféréssel rendelkezzenek, vagy csak előzetesen Futtatás vagy engedélyezési listához hozzáadni kívánt fájlok és végrehajtható fájlok korlátozásával.  
+A változók és az ismeretlenk számának csökkentése segít fenntartani a stabil és megbízható környezetet. A tárolók korlátozása, hogy csak az előjóváhagyott vagy engedélyezett fájlok elérésére vagy futtatására legyenek jogosultak, és a végrehajtható fájlok kipróbált módon korlátozzák a kockázatot.  
 
-Egy engedélyezési lista kezelése az elejétől megadásuk sokkal könnyebbé válik. Engedélyezett mérhető, ellenőrzési és kezelhetőség, megtudhatja, mely fájlokat és a végrehajtható fájlok az alkalmazás megfelelő működéséhez szükségesek. 
+Ez sokkal könnyebben kezelhető, ha a rendszer az elejéről implementálja az engedélyezési listát. Az engedélyezési lista a szabályozás és kezelhetőség mértékét mutatja be, amelyből megtudhatja, hogy az alkalmazás megfelelően működjön-e, és milyen fájlokra és végrehajtható fájlokra van szükség. 
 
-Egy engedélyezési lista nem csak csökkentve a támadási felületet, de is adja meg a referenciakonfiguráció a rendellenességeket, és megakadályozza a "zajos szomszédok" és a tároló kiscsoportos forgatókönyvek a használati esetek. 
+Az engedélyezési lista nem csupán csökkenti a támadási felületet, de a rendellenességeket is megadhatja, és megelőzheti a "zajos szomszéd" és a "Container breakout" forgatókönyvek használati eseteit. 
 
-### <a name="enforce-network-segmentation-on-running-containers"></a>A futó tárolók hálózati szegmentálást kényszerítése  
+### <a name="enforce-network-segmentation-on-running-containers"></a>Hálózati szegmentálás kényszerített futtatása a futó tárolók esetében  
 
-A biztonsági kockázatoktól egy másik alhálózatban az egyik alhálózat tárolók védelme érdekében karbantartása hálózati szegmentálást (vagy a nano-szegmentálást) vagy a futó tárolók között elkülönítése. Karbantartása hálózati szegmentálást is szükséges lehet a tárolók használatával az iparágban, amelyek megfelelnek a megfelelőségi megbízások szükségesek.  
+Az egyik alhálózatban lévő tárolók védelmének biztosítása érdekében egy másik alhálózaton lévő biztonsági kockázatokkal kell fenntartani a hálózati szegmentálást (vagy a nano szegmentálást) vagy a futó tárolók közötti elkülönítést. A hálózati szegmentálás fenntartása a megfelelőségi megbízatások teljesítéséhez szükséges tárolók használata esetén is szükséges lehet.  
 
-Például a partner eszköz [Aqua](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) egy automatizált módszert biztosít a nano-szegmentálást. Tengerkék futásidejű tároló hálózati tevékenységek figyelése. Azonosítja, hogy az összes bejövő és kimenő hálózati kapcsolatot és-tárolókról más tárolók, szolgáltatások, IP-címek és a nyilvános interneten. A nano-szegmentálást automatikusan létrejön a megfigyelt adatforgalomban alapján. 
+Az [Aqua](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) partneri eszköz például automatizált megközelítést biztosít a nano-szegmentáláshoz. Az Aqua figyeli a tároló hálózati tevékenységeit futtatókörnyezetben. Ez azonosítja az összes bejövő és kimenő hálózati kapcsolatot más tárolókkal, szolgáltatásokkal, IP-címekkel és a nyilvános internettel. A nano-szegmentáció automatikusan jön létre a figyelt forgalom alapján. 
 
-### <a name="monitor-container-activity-and-user-access"></a>Tároló tevékenység és a felhasználói hozzáférés figyelése 
+### <a name="monitor-container-activity-and-user-access"></a>Tároló tevékenység és felhasználói hozzáférés figyelése 
 
-Csakúgy, mint bármely informatikai környezetben konzisztens módon a tároló-ökoszisztéma gyorsan azonosíthatja a gyanús vagy rosszindulatú tevékenység célszerű figyelemmel tevékenység és a felhasználói hozzáférés. Az Azure biztosít a tároló monitorozási megoldásokat, többek között:
+Más informatikai környezetekhez hasonlóan a tároló-ökoszisztémával kapcsolatos tevékenység-és felhasználói hozzáférés következetes monitorozásával gyorsan azonosíthatja a gyanús vagy kártékony tevékenységeket. Az Azure tároló-figyelési megoldásokat biztosít, többek között:
 
-* [A tárolók az Azure Monitor](../azure-monitor/insights/container-insights-overview.md) figyelése az Azure Kubernetes Service (AKS) az üzemeltetett Kubernetes-környezetekből üzembe helyezett munkaterhelések teljesítményét. Tárolók az Azure Monitor lehetővé teszi gyűjtését memória és a mérőszámok a processzor teljesítménye látható-e a tartományvezérlők, a csomópontok és a Kubernetes, a metrikák API-n keresztül a rendelkezésre álló tárolók. 
+* [Azure monitor a tárolók](../azure-monitor/insights/container-insights-overview.md) számára az Azure Kubernetes szolgáltatásban (ak) üzemeltetett Kubernetes környezetekben üzembe helyezett számítási feladatok teljesítményének figyeléséhez. Tárolók az Azure Monitor lehetővé teszi gyűjtését memória és a mérőszámok a processzor teljesítménye látható-e a tartományvezérlők, a csomópontok és a Kubernetes, a metrikák API-n keresztül a rendelkezésre álló tárolók. 
 
-* A [Azure Tárolómonitorozási megoldás](../azure-monitor/insights/containers.md) segít megtekinthető és kezelhető a Docker és a Windows más tárológazdagép egyetlen helyen. Példa:
+* Az [Azure Container monitoring megoldás](../azure-monitor/insights/containers.md) segítségével egyetlen helyen tekintheti meg és kezelheti a többi Docker-és Windows-tároló gazdagépét. Példa:
 
-  * Megtekintheti a részletes naplózási információkat, amelyek használják tárolókhoz parancsok láthatók. 
-  * Végezzen hibaelhárítást a tárolók megtekintésével és központosított naplók keresése távolról megtekintheti a Docker és a Windows gazdagépekre nélkül.  
-  * Tárolók, amelyek lehetnek zajos és a felhasználó felesleges erőforrások a gazdagépen található.
-  * Központi Processzor, memória, tárolási és hálózati használatának és teljesítményének adatait tárolók megtekintéséhez.  
+  * Tekintse meg a tárolók által használt parancsokat megjelenítő részletes naplózási információkat. 
+  * A tárolók hibaelhárítása központi naplók megtekintésével és keresésével anélkül, hogy távolról kellene megtekintenie a Docker-vagy a Windows-gazdagépeket.  
+  * Olyan tárolók keresése, amelyek zajosak lehetnek, és a gazdagépen felesleges erőforrásokat fogyasztanak.
+  * Megtekintheti a tárolók központi CPU-, memória-, tárterület-és hálózati használati és teljesítmény-információit.  
 
-  A megoldás többek között a Docker Swarm, DC/OS, a nem felügyelt Kubernetes, a Service Fabric és Red Hat OpenShift tárolóvezénylőt támogat. 
+  A megoldás támogatja a tároló-szervezőket, például a Docker Swarm, a DC/OS, a nem felügyelt Kubernetes, a Service Fabric és a Red Hat OpenShift. 
 
-### <a name="monitor-container-resource-activity"></a>Tároló-erőforrás tevékenység figyelése 
+### <a name="monitor-container-resource-activity"></a>Tároló-erőforrás figyelése tevékenység 
 
-Figyelése az erőforrás, például fájlok, hálózati és más erőforrások, amelyek a tárolók eléréséhez. Felügyeleti erőforrás-tevékenység és a használat akkor hasznos, az alkalmazásteljesítmény-figyelő- és biztonsági intézkedésként. 
+Figyelje az erőforrás-tevékenységeket, például a fájlokat, a hálózatot és a tárolók által használt egyéb erőforrásokat. A figyelés erőforrás-tevékenység és a felhasználás egyaránt hasznos a teljesítmény monitorozása és biztonsági mértékeként. 
 
-[Az Azure Monitor](../azure-monitor/overview.md) lehetővé teszi, hogy alapvető metrikákat, a vizsgálati naplók és a diagnosztikai naplók gyűjteményét azáltal, hogy az Azure-szolgáltatásokhoz figyelés. A tevékenységnaplók például elárulják, hogy mikor történt az új erőforrások létrehozása vagy módosítása. 
+[Azure monitor](../azure-monitor/overview.md) lehetővé teszi az Azure-szolgáltatások alapszintű figyelését azáltal, hogy lehetővé teszi a metrikák, a tevékenységek naplói és a diagnosztikai naplók gyűjtését. A tevékenységnaplók például elárulják, hogy mikor történt az új erőforrások létrehozása vagy módosítása. 
 
-Rendelkezésre állnak olyan metrikák, amelyek a virtuális gépek különböző erőforrásairól, sőt a virtuális gépen futó operációs rendszerről biztosítanak teljesítménystatisztikát. Az adatokat megtekintheti az Azure Portal valamelyik böngészőjében, és riasztásokat hozhat létre a metrikák alapján. Az Azure Monitor biztosítja a leggyorsabb metrikák folyamat (1 perces lefelé 5 perc), így a kritikus fontosságú riasztások és értesítések kell használni. 
+Rendelkezésre állnak olyan metrikák, amelyek a virtuális gépek különböző erőforrásairól, sőt a virtuális gépen futó operációs rendszerről biztosítanak teljesítménystatisztikát. Az adatokat megtekintheti az Azure Portal valamelyik böngészőjében, és riasztásokat hozhat létre a metrikák alapján. Azure Monitor biztosítja a leggyorsabb metrikai folyamatot (5 percen belül 1 percet), ezért a kritikus fontosságú riasztások és értesítések esetében érdemes használni. 
 
-### <a name="log-all-container-administrative-user-access-for-auditing"></a>Minden tároló rendszergazdai felhasználói hozzáférés naplózásának naplózása 
+### <a name="log-all-container-administrative-user-access-for-auditing"></a>Az összes tároló rendszergazdai felhasználói hozzáférésének naplózása naplózáshoz 
 
-A tároló ökoszisztéma, a tároló-beállításjegyzék és a tárolórendszerkép rendszergazdai hozzáféréssel pontos auditnaplót karbantartása. Ezek a naplók naplózási célokra szükség lehet, és a biztonsági incidensek után lesz hasznos Törvényszéki bizonyítékaként. Használhatja a [Azure Tárolómonitorozási megoldás](../azure-monitor/insights/containers.md) e cél eléréséhez. 
+A tároló ökoszisztémájának, a tároló-beállításjegyzéknek és a tároló lemezképeknek való rendszergazdai hozzáférés pontos naplózási nyomvonalának fenntartása. Előfordulhat, hogy ezek a naplók naplózási célokra szükségesek, és a biztonsági incidensek után törvényszéki bizonyítékként lesznek hasznosak. Erre a célra használhatja az [Azure Container monitoring megoldást](../azure-monitor/insights/containers.md) . 
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ az megoldásaival a tároló biztonsági rések kezelése [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) és [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/).
+* További információ a tárolók sebezhetőségének kezeléséről a [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) és az [Aqua biztonságával](https://www.aquasec.com/solutions/azure-container-security/)kapcsolatos megoldásokkal.
 
-* Tudjon meg többet [tárolóbiztonság az Azure-ban](https://azure.microsoft.com/resources/container-security-in-microsoft-azure/).
+* További információ a [tárolók biztonságáról az Azure-ban](https://azure.microsoft.com/resources/container-security-in-microsoft-azure/).

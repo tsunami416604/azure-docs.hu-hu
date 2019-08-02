@@ -1,7 +1,7 @@
 ---
-title: Ragadó olvasó SDK-referencia
+title: A részletes olvasó SDK-referenciája
 titleSuffix: Azure Cognitive Services
-description: A ragadó olvasó SDK-referencia
+description: A alámerülés olvasó SDK-ra vonatkozó referenciák
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,51 +10,51 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 485e8626af4266492e02d4f9fbe4af486e10c082
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 1a616bce8c161825853b1966769d9505595d95de
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718388"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688315"
 ---
-# <a name="immersive-reader-sdk-reference"></a>Ragadó olvasó SDK-referencia
+# <a name="immersive-reader-sdk-reference"></a>A részletes olvasó SDK-referenciája
 
-Az olvasó ragadó SDK egy JavaScript-függvénytárat, amely lehetővé teszi, hogy a ragadó olvasó integrálható a webes alkalmazások.
+A lebilincselő olvasó SDK egy JavaScript-kódtár, amely lehetővé teszi a magával ragadó olvasó integrálását a webalkalmazásba.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkciók
 
-Az SDK-t tesz elérhetővé egyetlen függvényben `ImmersiveReader.launchAsync(token, resourceName, content, options)`.
+Az SDK egyetlen függvényt `ImmersiveReader.launchAsync(token, subdomain, content, options)`tesz elérhetővé.
 
 ### <a name="launchasync"></a>launchAsync
 
-Elindítja a ragadó olvasó belül egy `iframe` webalkalmazásban.
+Elindítja az olvasót a webalkalmazáson belül `iframe` .
 
 ```typescript
-launchAsync(token: string, resourceName: string, content: Content, options?: Options): Promise<HTMLDivElement>;
+launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
 ```
 
 #### <a name="parameters"></a>Paraméterek
 
 | Name (Név) | Típus | Leírás |
 | ---- | ---- |------------ |
-| `token` | Karakterlánc | A hozzáférési jogkivonatot szerezni a hívást a `issueToken` végpont. |
-| `resourceName` | sztring | Fenntartva. Meg kell `null`. |
-| `content` | [Tartalom](#content) | A ragadó olvasó jelennek meg a tartalmat tartalmazó objektumot. |
-| `options` | [Beállítások](#options) | Beállítások konfigurálása a ragadó olvasó bizonyos viselkedéseinek. Választható. |
+| `token` | Karakterlánc | Az Azure AD hitelesítési jogkivonata. Lásd: [Azure ad-hitelesítés – útmutató](./azure-active-directory-authentication.md). |
+| `subdomain` | Karakterlánc | Az Azure-beli magától elolvasó erőforrás egyedi altartománya. Lásd: [Azure ad-hitelesítés – útmutató](./azure-active-directory-authentication.md). |
+| `content` | [Tartalom](#content) | Egy objektum, amely a magába foglaló olvasóban megjelenítendő tartalmat tartalmazza. |
+| `options` | [Beállítások](#options) | Beállítások a magával ragadó olvasó bizonyos viselkedésének konfigurálásához. Választható. |
 
-#### <a name="returns"></a>adja vissza
+#### <a name="returns"></a>Visszatérési érték
 
-Értéket ad vissza egy `Promise<HTMLDivElement>` amely szünteti meg, amikor a ragadó olvasó be van töltve. A `Promise` feloldja egy `div` elem, amelynek egyetlen alárendelt van egy `iframe` elem, amely tartalmazza a ragadó olvasó lapot.
+Egy olyan `Promise<HTMLDivElement>` értéket ad vissza, amely feloldja a magával ragadó olvasó betöltését. A `Promise` megoldás egy `div` olyan elemre lesz feloldva, amelynek csak `iframe` a gyermeke egy olyan elem, amely tartalmazza az olvasó oldalát.
 
 #### <a name="exceptions"></a>Kivételek
 
-A visszaadott `Promise` a rendszer elutasítja az [ `Error` ](#error) objektumot, ha a ragadó olvasó nem sikerül betölteni. További információkért lásd: a [hibakódok](#error-codes).
+A visszaadott `Promise` [`Error`](#error) objektum akkor kerül elutasításra, ha a magával ragadó olvasó nem töltődik be. További információ: hibakódok. [](#error-codes)
 
 ## <a name="types"></a>Típusok
 
 ### <a name="content"></a>Tartalom
 
-A tartalma a ragadó olvasó jelennek meg.
+A lebilincselő olvasóban megjelenítendő tartalmat tartalmazza.
 
 ```typescript
 {
@@ -71,12 +71,12 @@ A tartalma a ragadó olvasó jelennek meg.
 
 | MIME-típus | Leírás |
 | --------- | ----------- |
-| egyszerű szöveg | Egyszerű szöveg. |
-| alkalmazás/mathml + xml | Matematikai Markup Language (MathML). [További információk](https://developer.mozilla.org/en-US/docs/Web/MathML).
+| szöveg/egyszerű | Egyszerű szöveg. |
+| Application/MathML + XML | Matematikai Markup Language (MathML). [További információk](https://developer.mozilla.org/en-US/docs/Web/MathML).
 
 ### <a name="options"></a>Beállítások
 
-A ragadó olvasó bizonyos viselkedéseinek konfiguráló tulajdonságait tartalmazza.
+Azokat a tulajdonságokat tartalmazza, amelyek a magába foglaló olvasó bizonyos viselkedéseit konfigurálják.
 
 ```typescript
 {
@@ -89,7 +89,7 @@ A ragadó olvasó bizonyos viselkedéseinek konfiguráló tulajdonságait tartal
 
 ### <a name="error"></a>Hiba
 
-A hibával kapcsolatos információkat tartalmazza.
+A hibával kapcsolatos információkat tartalmaz.
 
 ```typescript
 {
@@ -102,13 +102,13 @@ A hibával kapcsolatos információkat tartalmazza.
 
 | Kód | Leírás |
 | ---- | ----------- |
-| BadArgument | A megadott argumentum érvénytelen, lásd: `message` részleteiről. |
-| Időtúllépés | A ragadó olvasó nem sikerült betölteni a megadott időkorláton belül. |
+| BadArgument | A megadott argumentum érvénytelen. a `message` részletekért tekintse meg a következőt:. |
+| Időtúllépés | Nem sikerült betölteni a magával ragadó olvasót a megadott időkorláton belül. |
 | TokenExpired| A megadott jogkivonat lejárt. |
 
-## <a name="launching-the-immersive-reader"></a>A ragadó olvasó indítása
+## <a name="launching-the-immersive-reader"></a>A lebilincselő olvasó elindítása
 
-Az SDK alapértelmezett stílusának indításakor a ragadó olvasó gomb biztosít. Használja a `immersive-reader-button` osztály attribútumot a Stílusszerkesztő engedélyezéséhez.
+Az SDK alapértelmezett stílust biztosít a magával ragadó olvasó indítására szolgáló gombhoz. A `immersive-reader-button` Class attribútum használatával engedélyezze ezt a stílust.
 
 ```html
 <div class='immersive-reader-button'></div>
@@ -116,17 +116,17 @@ Az SDK alapértelmezett stílusának indításakor a ragadó olvasó gomb biztos
 
 ### <a name="optional-attributes"></a>Nem kötelező attribútumok
 
-A következő attribútumok segítségével konfigurálhatja a gomb megjelenését és működését.
+A gomb megjelenésének és működésének konfigurálásához használja a következő attribútumokat.
 
 | Attribútum | Leírás |
 | --------- | ----------- |
-| `data-button-style` | Beállítja a gomb stílusát. Lehet `icon`, `text`, vagy `iconAndText`. Alapértelmezés szerint a `icon`. |
-| `data-locale` | A területi beállítása például `en-US`, `fr-FR`. Az alapértelmezett angol nyelven. |
-| `data-icon-px-size` | Beállítja az ikon méretét (képpontban). Az alapértelmezett 20px. |
+| `data-button-style` | Beállítja a gomb stílusát. `icon`Lehet, `text`, vagy `iconAndText`. Alapértelmezés szerint a `icon`. |
+| `data-locale` | A területi beállítás, például `en-US` `fr-FR`:. Az alapértelmezett érték az angol. |
+| `data-icon-px-size` | Beállítja az ikon méretét képpontban megadva. Az alapértelmezett érték a 20px. |
 
-## <a name="browser-support"></a>Böngésző támogatása
+## <a name="browser-support"></a>Böngésző-támogatás
 
-Az alábbi böngészők legújabb verzióját használja a legjobb élményt a ragadó Reader.
+Használja az alábbi böngészők legújabb verzióit a legjobb élmény érdekében a teljes olvasóval.
 
 * Microsoft Edge
 * Internet Explorer 11
@@ -136,5 +136,5 @@ Az alábbi böngészők legújabb verzióját használja a legjobb élményt a r
 
 ## <a name="next-steps"></a>További lépések
 
-* Fedezze fel a [ragadó olvasó SDK a Githubon](https://github.com/Microsoft/immersive-reader-sdk)
-* [Rövid útmutató: Hozzon létre egy webalkalmazást, amely elindítja a ragadó Reader (C#)](./quickstart.md)
+* Ismerje [meg](https://github.com/microsoft/immersive-reader-sdk) az olvasót a githubon
+* [Rövid útmutató: Hozzon létre egy webalkalmazást, amely elindítja aC#lebilincselő olvasót ()](./quickstart.md)

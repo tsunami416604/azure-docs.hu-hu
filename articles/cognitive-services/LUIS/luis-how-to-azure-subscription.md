@@ -1,7 +1,7 @@
 ---
-title: Előfizetői azonosítók
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Nem kell használni az ingyenes első-1000 végpont lekérdezések előfizetői azonosítók létrehozása. Ha megjelenik egy _kvótájából_ hiba történt egy HTTP 403-as és 429-es formájában, kell hozzon létre egy kulcsot, és rendelje hozzá az alkalmazáshoz.
+title: Előfizetés kulcsa – LUIS
+titleSuffix: Azure Cognitive Services
+description: Az ingyenes első-1000 Endpoint-lekérdezések használatához nem kell előfizetési kulcsokat létrehoznia. Ha _a hiba a_ http 403 vagy 429 formátumban érkezik, létre kell hoznia egy kulcsot, és hozzá kell rendelnie az alkalmazáshoz.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: diberry
-ms.openlocfilehash: dedc498ebc910b448b1684136c288b2045780e00
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: c7e23c78b5d03b834d593bd2b53958c3379c51f2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797954"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560527"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Előfizetési kulcsok használata a LUIS-appal
 
-Language Understanding (LUIS) első használatakor nem kell előfizetői azonosítók létrehozása. 1000 végpont lekérdezések először kapnak. 
+Ha először használja a Language Understanding (LUIS), nem kell előfizetési kulcsokat létrehoznia. Az 1000-es végponti lekérdezésekkel kezdődik. 
 
 Teszteléshez és prototípus csak az ingyenes (F0) csomagot használja. Éles rendszerek esetén használhatja a [fizetős](https://aka.ms/luis-price-tier) szint. Ne használja a [kulcs létrehozási](luis-concept-keys.md#authoring-key) végpont lekérdezések éles környezetben.
 
@@ -28,11 +28,11 @@ Teszteléshez és prototípus csak az ingyenes (F0) csomagot használja. Éles r
 <a name="create-luis-service"></a>
 <a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
 
-## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Előrejelzési végpont futásidejű erőforrás létrehozása az Azure Portalon
+## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Előrejelzési végpont futásidejű erőforrásának létrehozása a Azure Portal
 
-Hoz létre a [előrejelzési végponti erőforrás](get-started-portal-deploy-app.md#create-the-endpoint-resource) az Azure Portalon. Ehhez az erőforráshoz csak használandó végpont előrejelzési lekérdezések. Ne használja ezt az erőforrást módosítások az alkalmazás szerzői műveletekhez részben.
+Az előrejelzési [végpont erőforrását](get-started-portal-deploy-app.md#create-the-endpoint-resource) a Azure Portal hozza létre. Ez az erőforrás csak végpont-előrejelző lekérdezésekhez használható. Ne használja ezt az erőforrást az alkalmazás módosításainak létrehozásához.
 
-A Language Understanding erőforrás vagy a Cognitive Services-erőforrás is létrehozhat. Language Understanding erőforrás létrehozásakor, a bevált gyakorlat az postpend az erőforrástípust az erőforrás neve. 
+Language Understanding erőforrást vagy Cognitive Services erőforrást is létrehozhat. Ha Language Understanding-erőforrást hoz létre, akkor célszerű postpend az erőforrás nevét. 
 
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
@@ -47,19 +47,19 @@ A Language Understanding erőforrás vagy a Cognitive Services-erőforrás is l�
 <a name="assign-endpoint-key"></a>
 <a name="assign-resource"></a>
 
-### <a name="using-resource-from-luis-portal"></a>A LUIS-portál használata
+### <a name="using-resource-from-luis-portal"></a>A LUIS-portál erőforrásának használata
 
-Ha a LUIS-portálról az erőforrás használja, nem kell tudni, hogy a kulcs és a hely. Ehelyett, ismernie kell az erőforrás-bérlő, előfizetés és erőforrás neve.
+Ha a LUIS-portálon keresztül használja az erőforrást, nem kell tudnia a kulcsot és a helyet. Ehelyett ismernie kell az erőforrás-bérlőt, az előfizetést és az erőforrás nevét.
 
-Egyszer, [hozzárendelése](#assign-resource-key-to-luis-app-in-luis-portal) az erőforrást a LUIS-alkalmazás a LUIS-portálon, a kulcs és a helyen az lekérdezés előrejelzési végpont URL-cím a kezelés szakaszhoz részeként biztosított **kulcsokat és a végpont beállításait** lap.
+Miután a [](#assign-resource-key-to-luis-app-in-luis-portal) Luis-portálon hozzárendelte az erőforrást a Luis-alkalmazáshoz, a kulcs és a hely a lekérdezés-előrejelzési végpont URL-címének részeként van megadva a kezelés szakasz **kulcsok és végpont beállításai** lapján.
  
-### <a name="using-resource-from-rest-api-or-sdk"></a>A REST API vagy SDK használata
+### <a name="using-resource-from-rest-api-or-sdk"></a>Erőforrás használata REST API vagy SDK-ból
 
-Ha az erőforrás a REST-API(s) vagy az SDK-t használ, akkor a kulcs és a hely ismernie kell. Ez az információ áll rendelkezésre a kezelés szakaszhoz lekérdezés előrejelzési végpont URL-címbe **kulcsokat és a végpont beállításait** oldal, valamint az Azure Portalon, az erőforrás áttekintése és a kulcsok oldalon látható módon.
+Ha az erőforrást a REST API (ok) ból vagy az SDK-ból használja, ismernie kell a kulcsot és a helyet. Ezek az információk a lekérdezés-előrejelzési végpont URL-címének részeként jelennek meg a kezelés szakasz **kulcsok és végpont beállításai** lapján, valamint a Azure Portal az erőforrás áttekintése és kulcsok oldalain.
 
-## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Az erőforráskulcs hozzárendelése a LUIS-portál a LUIS-alkalmazás
+## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Erőforrás-kulcs kiosztása LUIS-alkalmazáshoz a LUIS Portalon
 
-Minden alkalommal, amikor egy új erőforrást hoz létre a LUIS, kell [az erőforrás hozzárendelése a LUIS-alkalmazásokon](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal). Miután van hozzárendelve, nem kell újra el ezt a lépést, ha nem hoz létre egy új erőforrást. Létrehozhat egy új erőforrást, bontsa ki a régiók, az alkalmazás vagy egy előrejelzési lekérdezések nagyobb számának támogatásához.
+Minden alkalommal, amikor új-erőforrást hoz létre a LUIS számára, [hozzá kell rendelnie az erőforrást a Luis alkalmazáshoz](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal). A hozzárendelés után ezt a lépést csak akkor kell végrehajtania, ha új erőforrást hoz létre. Létrehozhat egy új erőforrást az alkalmazás régiói kibontásához, vagy nagyobb számú előrejelzési lekérdezés támogatásához.
 
 <!-- content moved to luis-reference-regions.md, need replacement links-->
 <a name="regions-and-keys"></a>
@@ -102,7 +102,7 @@ A leképezések és azok pontszámok is vannak-e a végpont naplók tartalmazza.
 ### <a name="enable-bing-spell-checker"></a>A Bing helyesírás-ellenőrzés engedélyezése 
 Az a **végpont URL-beállítások**, a **Bing helyesírás-ellenőrzővel** váltógomb lehetővé teszi, hogy a LUIS, mielőtt előrejelzési kijavítsa a hibásan leírt szavakat. Hozzon létre egy  **[kulcs a Bing Spell Check](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)** . 
 
-Adja hozzá a **helyesírás-ellenőrzés = true** sztringet és a **bing – helyesírás-ellenőrzés-subscription-key = {YOUR_BING_KEY_HERE}** . Cserélje le a `{YOUR_BING_KEY_HERE}` és a Bing helyesírás-ellenőrző kulcs.
+Adja hozzá a **helyesírás = True** querystring paramétert és a **Bing-Spell-Check-előfizetés-Key = {YOUR_BING_KEY_HERE}** értéket. Cserélje le a `{YOUR_BING_KEY_HERE}` és a Bing helyesírás-ellenőrző kulcs.
 
 ```JSON
 {
@@ -122,11 +122,11 @@ További tudnivalók a közzététel [régiók](luis-reference-regions.md) több
 
 ## <a name="assign-resource-without-luis-portal"></a>Rendelje hozzá a LUIS-portál nélküli erőforráshoz
 
-Például egy CI/CD-folyamat automation célból érdemes automatizálni a LUIS-alkalmazásokon LUIS erőforrás hozzárendelését. Ehhez hajtsa végre a következő lépéseket kell:
+Például egy CI/CD-folyamat automation célból érdemes automatizálni a LUIS-alkalmazásokon LUIS erőforrás hozzárendelését. Ehhez a következő lépéseket kell elvégeznie:
 
 1. Egy Azure Resource Manager a token beszerzése [webhely](https://resources.azure.com/api/token?plaintext=true). Ez a token hamarosan lejár, azonnal használható. A kérelem egy Azure Resource Manager-jogkivonatát adja vissza.
 
-    ![Azure Resource Manager-token és az Azure Resource Manager-tokent kap](./media/luis-manage-keys/get-arm-token.png)
+    ![Azure Resource Manager jogkivonat igénylése és Azure Resource Manager token fogadása](./media/luis-manage-keys/get-arm-token.png)
 
 1. A jogkivonat használatával kérhet a LUIS-erőforrások, előfizetések között a [LUIS lekérése az azure-fiókok API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c), a felhasználói fiók rendelkezik hozzáféréssel. 
 
@@ -153,42 +153,42 @@ Például egy CI/CD-folyamat automation célból érdemes automatizálni a LUIS-
 
     Ha ez az API sikeres volt, a 201 - létrehozott állapotát adja vissza. 
 
-## <a name="change-pricing-tier"></a>A tarifacsomag módosítása
+## <a name="change-pricing-tier"></a>Tarifacsomag-váltás
 
 1.  A [Azure](https://portal.azure.com), keresse meg a LUIS-előfizetés. Válassza ki a LUIS-előfizetést.
     ![Keresse meg a LUIS-előfizetés](./media/luis-usage-tiers/find.png)
-1.  Válassza ki **tarifacsomag** az elérhető tarifacsomagok láthatók. 
+1.  A rendelkezésre álló díjszabási szintek megtekintéséhez válassza az **árképzési szintet** . 
     ![Árképzési szintek megtekintése](./media/luis-usage-tiers/subscription.png)
-1.  Válassza ki a árképzési szint, és válasszon **kiválasztása** menteni a módosítást. 
+1.  Válassza ki a díjszabási szintet, és válassza a **kiválasztás** lehetőséget a módosítás mentéséhez. 
     ![A LUIS fizetési szint módosítása](./media/luis-usage-tiers/plans.png)
 1.  Ha a díjszabás módosítása befejeződött, egy előugró ablak ellenőrzi az új tarifacsomag. 
     ![A LUIS támogatási csomag ellenőrzése](./media/luis-usage-tiers/updated.png)
 1. Ne felejtse el [rendelje hozzá a végpont kulcs](#assign-endpoint-key) a a **közzététel** lapon, és használhatja az összes endpoint lekérdezés. 
 
-## <a name="fix-http-status-code-403-and-429"></a>Hárítsa el a HTTP-állapotkód: 403-as és 429-es
+## <a name="fix-http-status-code-403-and-429"></a>A 403-es és a 429-es HTTP-állapotkód javítása
 
-Hibaüzenetet 403-as és 429 állapotkódok Ha túllépi a tranzakció / másodperc vagy tarifacsomag havi tranzakciók.
+A 403-es és a 429-es hibakód akkor jelenik meg, ha az árképzési szinten a másodpercenkénti tranzakciók száma vagy a havi tranzakció.
 
-### <a name="when-you-receive-an-http-403-error-status-code"></a>Amikor megjelenik egy HTTP 403-as hibakód állapota:
+### <a name="when-you-receive-an-http-403-error-status-code"></a>HTTP 403-es hiba állapotának kódja esetén
 
-Amikor az összes ingyenes 1000 végpont lekérdezések használhatja, vagy a tarifacsomag havi tranzakciók kvóta, kap egy HTTP 403-as hibakód állapota. 
+Ha az összes ingyenes 1000-végpontot lekérdezi, vagy túllépi a díjszabási csomag havi tranzakciós kvótáját, a rendszer HTTP 403 hibakódot kap. 
 
-Ez a hiba javításához egyaránt szüksége [tarifacsomagra](luis-how-to-azure-subscription.md#change-pricing-tier) magasabb szintre vagy [hozzon létre egy új erőforrást](get-started-portal-deploy-app.md#create-the-endpoint-resource) és [rendelje hozzá az alkalmazás](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
+Ennek a hibának a kijavításához módosítania kell [az árképzési szintet](luis-how-to-azure-subscription.md#change-pricing-tier) egy magasabb szintű csomagra, vagy [létre kell hoznia egy új erőforrást](get-started-portal-deploy-app.md#create-the-endpoint-resource) , és hozzá kell rendelnie az [alkalmazáshoz](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
 
-Ez a hiba-megoldások a következők:
+A hiba megoldásai a következők:
 
-* Az a [az Azure portal](https://portal.azure.com), az ismertetése, erőforrás, a nyelv a **erőforrás-kezelés -> tarifacsomag**, módosítsa a tarifacsomagot TPS magasabb szintre. Nem kell az erőforrás már hozzá van rendelve a Language Understanding app, nincs semmi, a Language Understanding portálon.
-*  Ha a felhasználás meghaladja a legmagasabb tarifacsomagot, további Language Understanding erőforrások hozzáadása egy előtti terheléselosztó tartománynévcímkéje őket a. A [Language Understanding tároló](luis-container-howto.md) a Kubernetes vagy a Docker Compose segítségével ezt.
+* A [Azure Portal](https://portal.azure.com)a Language Understanding erőforráson az **Erőforrás-kezelés – > díjszabási**szinten módosítsa az árképzési szintet magasabb TPS szintjére. Ha az erőforrás már hozzá van rendelve a Language Understanding alkalmazáshoz, semmit nem kell tennie a Language Understanding portálon.
+*  Ha a használat meghaladja a legmagasabb szintű díjszabást, vegyen fel további Language Understanding erőforrásokat egy terheléselosztó elé. A Kubernetes vagy Docker-összeállítással rendelkező [Language Understanding-tároló](luis-container-howto.md) segíthet ennek elvégzésében.
 
-### <a name="when-you-receive-an-http-429-error-status-code"></a>Amikor megjelenik egy HTTP 429-es hibakód állapota:
+### <a name="when-you-receive-an-http-429-error-status-code"></a>HTTP 429-es hiba állapotának kódja esetén
 
-Ezzel az állapotkóddal van adott vissza, ha a tranzakciók másodpercenkénti meghaladja a tarifacsomagot.  
+Ezt az állapotkódot akkor adja vissza a rendszer, ha a másodpercenkénti tranzakciók száma meghaladja a díjszabási szintet.  
 
-Megoldások a következők:
+A megoldások a következők:
 
-* Is [tarifacsomag növelése](#change-pricing-tier), ha nem, a legmagasabb szintű.
-* Ha a felhasználás meghaladja a legmagasabb tarifacsomagot, további Language Understanding erőforrások hozzáadása egy előtti terheléselosztó tartománynévcímkéje őket a. A [Language Understanding tároló](luis-container-howto.md) a Kubernetes vagy a Docker Compose segítségével ezt.
-* Akkor is gate az ügyfélkérelmek alkalmazás az egy [újrapróbálkozási szabályzat](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) megvalósítása saját kezűleg Ha ezzel az állapotkóddal. 
+* Megnövelheti [az árképzési szintet](#change-pricing-tier), ha nem a legmagasabb szintű szinten van.
+* Ha a használat meghaladja a legmagasabb szintű díjszabást, vegyen fel további Language Understanding erőforrásokat egy terheléselosztó elé. A Kubernetes vagy Docker-összeállítással rendelkező [Language Understanding-tároló](luis-container-howto.md) segíthet ennek elvégzésében.
+* Az ügyfélalkalmazás kérelmeit megadhatja az újrapróbálkozási [szabályzattal](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) , amelyet Ön saját maga is végrehajthat, amikor megkapja ezt az állapotkódot. 
 
 ## <a name="viewing-summary-usage"></a>Összefoglaló használat megtekintése
 A LUIS-használati adatokat megtekintheti az Azure-ban. A **áttekintése** lapon többek között a hívások és hibák legutóbbi összegző információit jeleníti meg. Ha Ön kérést egy LUIS végpontot, majd azonnal tekintse meg a **áttekintőlapján**, akár öt perc alatt jelenik meg a használat engedélyezése.

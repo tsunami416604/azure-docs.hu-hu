@@ -1,8 +1,8 @@
 ---
-title: Az Azure SQL Data Warehouse olyan tranzakciók használatával |} A Microsoft Docs
-description: Tippek a tranzakciók végrehajtása az Azure SQL Data Warehouse-megoldások fejlesztése.
+title: Tranzakciók használata a Azure SQL Data Warehouseban | Microsoft Docs
+description: Tippek a tranzakciók megvalósításához Azure SQL Data Warehouse a megoldások fejlesztéséhez.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,33 +10,33 @@ ms.subservice: development
 ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: b6f95607c7cfc574d647be3046cef4a4b61906f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f00f8a25d0abf3af6d76b372b44145546a79879
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65861754"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479609"
 ---
-# <a name="using-transactions-in-sql-data-warehouse"></a>Az SQL Data Warehouse olyan tranzakciók használatával
-Tippek a tranzakciók végrehajtása az Azure SQL Data Warehouse-megoldások fejlesztése.
+# <a name="using-transactions-in-sql-data-warehouse"></a>Tranzakciók használata a SQL Data Warehouseban
+Tippek a tranzakciók megvalósításához Azure SQL Data Warehouse a megoldások fejlesztéséhez.
 
-## <a name="what-to-expect"></a>Mi várható?
-Hiányol, mert az SQL Data Warehouse támogatja a tranzakciókat az adatraktár-számítási feladat részeként. Azonban kell biztosítják az SQL Data Warehouse teljesítményét nagy mennyiségű egyes funkciók korlátozva az SQL Server képest. Ez a cikk kiemeli a különbségeket, és felsorolja a többi. 
+## <a name="what-to-expect"></a>Amire számíthat
+Ahogy azt várnánk, SQL Data Warehouse a tranzakciókat az adatraktár számítási feladatának részeként támogatja. Annak érdekében azonban, hogy a SQL Data Warehouse teljesítményének fenntartása bizonyos szolgáltatások esetében korlátozott legyen, a SQL Server összehasonlítva. Ez a cikk kiemeli a különbségeket, és felsorolja a többiet. 
 
-## <a name="transaction-isolation-levels"></a>Tranzakció elkülönítési szinten
-Az SQL Data Warehouse valósítja meg az ACID-tranzakciókat. Azonban a tranzakciós támogatás elkülönítési szintjét korlátozódik a READ UNCOMMITTED; Ez a szint nem lehet módosítani. Ha a READ UNCOMMITTED nagyon fontos, a kódolási módszereket, hogy az adatok szabálytalan olvasások száma is alkalmazható. A legnépszerűbb módszerek megakadályozza, hogy a felhasználók továbbra is előkészítés alatt álló adatok lekérdezése a CTAS és a tábla partíciós váltás (gyakran más néven mozgó ablak szerkezet) használja. A népszerű megközelítés nézeteket, amelyek előre szűrje az adatokat is.  
+## <a name="transaction-isolation-levels"></a>Tranzakciók elkülönítési szintjei
+SQL Data Warehouse végrehajtja a savas tranzakciókat. A tranzakciós támogatás elkülönítési szintje azonban a nem véglegesített OLVASÁSI értékre korlátozódik. Ez a szint nem módosítható. Ha az olvasás VÉGLEGESÍTÉSe aggodalomra ad okot, számos kódolási módszert alkalmazhat, amelyekkel megelőzhető az adatvesztés. A legnépszerűbb módszerek a CTAS és a táblázatos partíciós váltást is használják (gyakran a csúszó ablak mintaként is ismert), hogy a felhasználók ne tudják lekérdezni a még előkészített adatok lekérdezését. Az adatszűrést előkészítő nézetek szintén népszerűek.  
 
-## <a name="transaction-size"></a>Tranzakciók mérete
-Egyetlen módosítását tranzakciók mérete korlátozott. A korlát / terjesztési alkalmazza. Ezért az összes felosztás is lehet szorzata korlátot terjesztési száma szerint. A hozzávetőleges a tranzakcióban szereplő sorok maximális száma nullával való osztás a terjesztési kap minden egyes sor teljes méretét. Változó hosszúságú oszloppal fontolja meg egy átlagos oszlop hossza véve a maximális méret használata helyett.
+## <a name="transaction-size"></a>Tranzakció mérete
+Egyetlen adatmódosítási tranzakció mérete korlátozott. A korlátot a rendszer eloszlás alapján alkalmazza. Ezért a teljes foglalás kiszámításához a korlátot a terjesztési szám alapján kell megszorozni. Annak érdekében, hogy a tranzakció sorainak maximális száma megközelítse a terjesztési korlátot az egyes sorok teljes méretével. A változó hosszúságú oszlopok esetében érdemes lehet átlagos oszlopszélességet használni a maximális méret helyett.
 
-A következő előfeltételek alatti táblázatban történtek:
+Az alábbi táblázatban a következő feltételezések történtek:
 
-* Az adatok egyenletes eloszlás történt 
-* Átlagos sor hossza 250 bájt
+* Az adatforgalom egyenletes eloszlása történt 
+* Az átlagos sor hossza 250 bájt.
 
 ## <a name="gen2"></a>Gen2
 
-| [DWU](sql-data-warehouse-overview-what-is.md) | Cap kiszolgálónként terjesztési (GB) | Disztribúciók száma | Max. tranzakció mérete (GB) | Száma terjesztési sorok | Tranzakciónként sorok maximális száma |
+| [DWU](sql-data-warehouse-overview-what-is.md) | Korlát/elosztás (GB) | Eloszlások száma | Tranzakciók maximális mérete (GB) | Sorok száma eloszlás szerint | Sorok másodpercenkénti maximális száma |
 | --- | --- | --- | --- | --- | --- |
 | DW100c |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200c |1.5 |60 |90 |6,000,000 |360,000,000 |
@@ -46,18 +46,18 @@ A következő előfeltételek alatti táblázatban történtek:
 | DW1000c |7.5 |60 |450 |30,000,000 |1,800,000,000 |
 | DW1500c |11.25 |60 |675 |45,000,000 |2,700,000,000 |
 | DW2000c |15 |60 |900 |60,000,000 |3,600,000,000 |
-| DW2500c |18.75 |60 |1125 |75,000,000 |4,500,000,000 |
+| DW2500c |18,75 |60 |1125 |75 000 000 |4 500 000 000 |
 | DW3000c |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
-| DW5000c |37.5 |60 |2,250 |150,000,000 |9,000,000,000 |
+| DW5000c |37,5 |60 |2 250 |150 000 000 |9 000 000 000 |
 | DW6000c |45 |60 |2,700 |180,000,000 |10,800,000,000 |
-| DW7500c |56.25 |60 |3,375 |225,000,000 |13,500,000,000 |
-| DW10000c |75 |60 |4,500 |300,000,000 |18,000,000,000 |
-| DW15000c |112.5 |60 |6,750 |450,000,000 |27,000,000,000 |
-| DW30000c |225 |60 |13,500 |900,000,000 |54,000,000,000 |
+| DW7500c |56,25 |60 |3 375 |225 000 000 |13 500 000 000 |
+| DW10000c |75 |60 |4 500 |300,000,000 |18 000 000 000 |
+| DW15000c |112,5 |60 |6 750 |450 000 000 |27 000 000 000 |
+| DW30000c |225 |60 |13 500 |900,000,000 |54 000 000 000 |
 
 ## <a name="gen1"></a>Gen1
 
-| [DWU](sql-data-warehouse-overview-what-is.md) | Cap kiszolgálónként terjesztési (GB) | Disztribúciók száma | Max. tranzakció mérete (GB) | Száma terjesztési sorok | Tranzakciónként sorok maximális száma |
+| [DWU](sql-data-warehouse-overview-what-is.md) | Korlát/elosztás (GB) | Eloszlások száma | Tranzakciók maximális mérete (GB) | Sorok száma eloszlás szerint | Sorok másodpercenkénti maximális száma |
 | --- | --- | --- | --- | --- | --- |
 | DW100 |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200 |1.5 |60 |90 |6,000,000 |360,000,000 |
@@ -72,25 +72,25 @@ A következő előfeltételek alatti táblázatban történtek:
 | DW3000 |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
 | DW6000 |45 |60 |2,700 |180,000,000 |10,800,000,000 |
 
-A tranzakció-méretkorlát óránkénti tranzakciós vagy műveletet alkalmazza. Összes párhuzamos tranzakció között nem érvényes. Ezért minden tranzakció mennyiségű adat írni a napló számára engedélyezett. 
+A tranzakció méretének korlátját tranzakció vagy művelet alapján kell alkalmazni. A rendszer nem alkalmazza az összes egyidejű tranzakcióra. Ezért minden tranzakció számára engedélyezett az adatmennyiség megírása a naplóba. 
 
-Optimalizálása, és minimalizálja a naplófájlba írt adatok mennyisége, tekintse meg a [tranzakciók ajánlott eljárások](sql-data-warehouse-develop-best-practices-transactions.md) cikk.
+A naplóba írt adatmennyiség optimalizálása és minimálisra csökkentése érdekében tekintse meg a [tranzakciók ajánlott eljárásait](sql-data-warehouse-develop-best-practices-transactions.md) ismertető cikket.
 
 > [!WARNING]
-> A tranzakció maximális méretét csak a rendszer ezen kivonat, vagy akkor is igaz, ahol az adatok terjedésének az elosztott ROUND_ROBIN táblákat. Ha a tranzakció írja az adatokat magokon feldolgozza a disztribúciók majd a korlát valószínű előtt a tranzakció maximális méret érhető el.
+> A tranzakciók maximális mérete csak olyan KIVONATOLÓ vagy ROUND_ROBIN elosztott táblák esetében érhető el, amelyekben az adateloszlás is látható. Ha a tranzakció elferdített módon ír a disztribúcióba, akkor a maximális tranzakció mérete előtt a korlát valószínűleg eléri a határértéket.
 > <!--REPLICATED_TABLE-->
 > 
 > 
 
 ## <a name="transaction-state"></a>Tranzakció állapota
-Az SQL Data Warehouse a XACT_STATE() függvényt használja, -2 értékének használatával sikertelen tranzakciók jelenti. Ez az érték azt jelenti, hogy a tranzakció sikertelen volt, és csak visszaállítás meg van jelölve.
+A SQL Data Warehouse a XACT_STATE () függvényt használja a sikertelen tranzakciók jelentésére a-2 érték használatával. Ez az érték azt jelenti, hogy a tranzakció meghiúsult, és csak visszaállításra van megjelölve.
 
 > [!NOTE]
-> -2, sikertelen tranzakciók jelölésére XACT_STATE függvény használatát az SQL Server eltérő viselkedéssel jelöli. Az SQL Server-véglegesíthető tranzakció képviselő -1 értéket használja. Az SQL Server tűri tranzakción belül hibák nélkül lesz megjelölve, véglegesíthető kellene. Például `SELECT 1/0` volna hibát okoz, de nem kényszeríti a tranzakció véglegesíthető állapotba kerülnek. Az SQL Server is lehetővé teszi az olvasások a véglegesíthető tranzakció. Azonban az SQL Data Warehouse nem teszi lehetővé az ehhez. Ha hiba történik az SQL Data Warehouse tranzakción belül a program automatikusan ad meg a-2 állapota, és nem lesz az összes ki utasításokat addig, amíg az utasítás vissza lett állítva. Ezért fontos ellenőrizni, hogy az alkalmazás kódjában XACT_STATE() használ, hogy kell elvégeznie kódjuk módosulna.
+> A-2 érték használata a XACT_STATE függvény által a sikertelen tranzakciók jelölésére a SQL Server eltérő viselkedését jelöli. A SQL Server a-1 érték használatával nem véglegesíthető tranzakciót jelöl. A SQL Server egy tranzakción belül bizonyos hibákat el lehet viselni anélkül, hogy nem véglegesíthető jelöléssel kellene megjelölni. Például `SELECT 1/0` hibát okozhat, de nem kényszerítheti a tranzakciót nem véglegesíthető állapotba. A SQL Server a nem véglegesíthető tranzakcióban is engedélyezi a beolvasást. SQL Data Warehouse azonban ezt nem teszi lehetővé. Ha hiba történik egy SQL Data Warehouse tranzakción belül, a rendszer automatikusan megadja a-2 állapotot, és nem fog tudni további kiválasztási utasításokat készíteni, amíg vissza nem állítja az utasítást. Ezért fontos, hogy az alkalmazás kódjában ellenőrizze, hogy használja-e a XACT_STATE (), mivel előfordulhat, hogy programkódot kell módosítania.
 > 
 > 
 
-Ha például az SQL Server jelenhetnek meg tranzakciót, amelynek a következőhöz hasonlóan néz ki:
+SQL Server például a következőhöz hasonló tranzakció jelenhet meg:
 
 ```sql
 SET NOCOUNT ON;
@@ -128,13 +128,13 @@ END
 SELECT @xact_state AS TransactionState;
 ```
 
-A fenti kód lehetővé teszi a következő hibaüzenetet kapja:
+Az előző kód a következő hibaüzenetet jeleníti meg:
 
-Msg 111233, szint 16, 1, 1 111233; sor állapota Az aktuális tranzakció meg lett szakítva, és a függőben lévő módosítások vissza kell lett állítva. OK: A csak visszaállítási állapotban lévő tranzakció explicit módon visszagörgetése nem egy DDL, DML vagy SELECT utasítás előtt.
+Msg 111233, 16. szint, állapot 1, sor 1 111233; Az aktuális tranzakció meg lett szakítva, és a függőben lévő módosítások vissza lettek állítva. Ok: Egy csak visszaállítási állapotban lévő tranzakciót nem lehetett explicit módon visszagörgetni a DDL, a DML vagy a SELECT utasítás előtt.
 
-A kimenet a következő funkciók ERROR_ * nem jelenik meg.
+A ERROR_ * függvények kimenete nem jelenik meg.
 
-Az SQL Data Warehouse a kód módosítani kell, kis mértékben:
+SQL Data Warehouse a kódnak kis mértékben módosítania kell:
 
 ```sql
 SET NOCOUNT ON;
@@ -171,32 +171,32 @@ END
 SELECT @xact_state AS TransactionState;
 ```
 
-Most meg az elvárt viselkedés. A hiba a tranzakció kezeli, és a functions ERROR_ * értékeket ad meg, a várt módon.
+A várt viselkedés már meg van figyelve. A tranzakció hibája felügyelt, és a ERROR_ * függvény a várt módon adja meg az értékeket.
 
-Módosított csak, hogy a VISSZAÁLLÍTÁS a tranzakció volt a hiba adatait a CATCH blokk, az olvasási előtt megtörténjen.
+Az összes módosult, hogy a tranzakció visszagörgetése még azelőtt történt, hogy megtörténjen a hiba információinak olvasása a CATCH blokkban.
 
 ## <a name="errorline-function"></a>Error_Line() function
-Emellett akkor is érdemes megjegyezni, hogy az SQL Data Warehouse nem megvalósításához, és nem támogatja a ERROR_LINE() függvény. Ha ez a kódban, távolítsa el, hogy meg kell felelnie az SQL Data Warehouse szeretne. A kódban szereplő lekérdezés címkék használata megfelelő funkciók megvalósításához. További részletekért tekintse meg a [címke](sql-data-warehouse-develop-label.md) cikk.
+Azt is érdemes megjegyezni, hogy SQL Data Warehouse nem valósítja meg vagy nem támogatja a ERROR_LINE () függvényt. Ha rendelkezik a kóddal, akkor azt el kell távolítania, hogy az megfeleljen a SQL Data Warehousenak. Az egyenértékű funkciók megvalósítása helyett használja a kódban a lekérdezési címkéket. További részletekért tekintse meg [](sql-data-warehouse-develop-label.md) a címkét ismertető cikket.
 
-## <a name="using-throw-and-raiserror"></a>THROW és RAISERROR használatával
-THROW a korszerűbb megvalósítása az SQL Data Warehouse láncolata, de a RAISERROR is támogatott. És fordítson különös figyelmet azonban érdemes néhány különbségek vannak.
+## <a name="using-throw-and-raiserror"></a>A THROW és a RAISERROR használata
+Ez a modern implementáció a kivételek növeléséhez SQL Data Warehouse de a RAISERROR is támogatott. Van néhány eltérés, amely azonban érdemes odafigyelni.
 
-* Felhasználó által definiált hiba üzenetek számok nem lehet a THROW 100 000 – 150 000 tartományban
-* RAISERROR hibaüzenetek 50 000 vannak rögzítve.
-* Ilyen hibaszámú használata nem támogatott.
+* A felhasználó által definiált hibaüzenetek száma nem lehet az 100 000-150 000 tartományban a THROW
+* A RAISERROR-hibaüzenetek a következő időpontban vannak kijavítva: 50 000
+* A sys. messages használata nem támogatott
 
 ## <a name="limitations"></a>Korlátozások
-Az SQL Data Warehouse rendelkezik néhány egyéb korlátozások vonatkoznak a tranzakciók.
+SQL Data Warehouse rendelkezik néhány más, a tranzakciókkal kapcsolatos korlátozással.
 
 Ezek a következők:
 
-* Elosztott tranzakciók
-* Nem engedélyezett beágyazott tranzakciók
-* A program nem menti a pontok engedélyezett
-* Elnevezett tranzakciók
-* Nem jelölt tranzakciók
-* Például a CREATE TABLE DDL felhasználói tranzakción belül nem támogatott
+* Nincsenek elosztott tranzakciók
+* Nincsenek engedélyezett beágyazott tranzakciók
+* Nincsenek engedélyezett mentési pontok
+* Nincsenek elnevezett tranzakciók
+* Nincsenek megjelölt tranzakciók
+* Nem támogatott a DDL, például a CREATE TABLE egy felhasználó által definiált tranzakción belül
 
 ## <a name="next-steps"></a>További lépések
-Tranzakciók optimalizálása kapcsolatos további információkért lásd: [tranzakciók ajánlott eljárások](sql-data-warehouse-develop-best-practices-transactions.md). Egyéb eljárások az SQL Data Warehouse kapcsolatos további információkért lásd: [SQL Data Warehouse – gyakorlati tanácsok](sql-data-warehouse-best-practices.md).
+A tranzakciók optimalizálásával kapcsolatos további tudnivalókért tekintse meg a [tranzakciók ajánlott eljárásai](sql-data-warehouse-develop-best-practices-transactions.md)című témakört. További SQL Data Warehouse ajánlott eljárásokért tekintse meg [SQL Data Warehouse ajánlott eljárásokat](sql-data-warehouse-best-practices.md).
 

@@ -1,7 +1,7 @@
 ---
-title: Az emberi ellenőrző - Content Moderator videomoderálás
-titlesuffix: Azure Cognitive Services
-description: Nem megfelelő tartalom mérsékelt videomoderálás gépi támogatású és emberi vizsgálóeszközöket használata
+title: Videó moderálása humán felülvizsgálattal – Content Moderator
+titleSuffix: Azure Cognitive Services
+description: A videó-moderálás és a humán felülvizsgálati eszközök használata mérsékelt, nem megfelelő tartalomra
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,30 +10,30 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: sajagtap
-ms.openlocfilehash: a6c467d3153400815e37a5d461766140abd1fa32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 69075f6b36a0be7cd4d0dd4453ea9cdfc08d77dc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65228127"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561163"
 ---
-# <a name="video-moderation-with-human-review"></a>Az emberi ellenőrző videomoderálás
+# <a name="video-moderation-with-human-review"></a>Videó moderálása humán felülvizsgálattal
 
-Használja a Content Moderator gépi támogatású [videomoderálás](video-moderation-api.md) és [emberi vizsgálóeszköz](Review-Tool-User-Guide/human-in-the-loop.md) és szövegekben vonatkozó (kifejezett) felnőtt tartalom mérsékelt videók, és a legjobb eredményt (kétértelmű) pikáns tartalom az üzleti.
+A legjobb eredmények elérése érdekében használja a Content Moderator gépi támogatású [videó](video-moderation-api.md) -moderálási és [emberi felülvizsgálati eszközt](Review-Tool-User-Guide/human-in-the-loop.md) a felnőtteknek (explicit) és a zamatos (szuggesztív) tartalomhoz.
 
-## <a name="video-trained-classifier-preview"></a>A videó betanított osztályozó (előzetes verzió)
+## <a name="video-trained-classifier-preview"></a>Videós képzésen alapuló osztályozó (előzetes verzió)
 
-Videó besorolási gépi támogatású vagy a kép betanított modellek vagy videó betanított modellek érhető el. Videó deklarációkkal kép betanított eltérően a Microsoft felnőtt és szexuális videó osztályozó be van tanítva videók segítségével. Ez a módszer jobban egyezés minőségi eredményez.
+A géppel támogatott videók besorolása vagy a képesített modellek vagy a videós képzésen alapuló modellek alapján érhető el. A képesített videó-besorolásokkal ellentétben a Microsoft felnőtt és zamatos videós besorolása videókkal van betanítva. Ez a módszer jobb egyezési minőséget eredményez.
 
-## <a name="shot-detection"></a>Jelenetfelismerés
+## <a name="shot-detection"></a>Felvételészlelés
 
-A besorolási részletek megjelenítése, nagyobb rugalmasság a videók elemzése segít a további videó intelligencia. Ahelyett, hogy csak a keretek ad ki, a Microsoft videomoderálás szolgáltatás biztosít célirányítópultot a kiszolgálószintű információkat túl. Most már lehetőség elemezheti videóit a képernyőkép szint és a keret szintjén.
+A besorolási adatok kihelyezése során a további videó-intelligenciával rugalmasabban elemezheti a videókat. A képkockák kihelyezése helyett a Microsoft videó-moderálási szolgáltatása is tartalmaz shot szintű információkat. Most lehetősége van arra, hogy a videókat a lövés szintjén és a keret szintjén elemezze.
 
-## <a name="key-frame-detection"></a>A kulcs keret felismerése
+## <a name="key-frame-detection"></a>Kulcstároló-észlelés
 
-Ahelyett, hogy rendszeres időközönként ad ki a keretek, a videomoderálás szolgáltatás azonosítja, és csak potenciálisan teljes (jó) keretek kimenete. A funkció lehetővé teszi a hatékony keret generációs keret szintű felnőtt és szexuális elemzés céljából.
+A keretek rendszeres időközönként történő kihelyezése helyett a video moderációs szolgáltatás csak a lehetséges teljes (jó) kereteket azonosítja és jeleníti meg. A funkció lehetővé teszi a hatékony keret létrehozását a frame-szintű felnőtt és a zamatos elemzésekhez.
 
-A következő lehetséges helyességének, a kulcs keretek és a felnőtt és szexuális pontszámok részleges válasz mutat:
+A következő kivonat részleges választ mutat a lehetséges felvételek, a kulcstárolók és a felnőtt és a zamatos pontszámok tekintetében:
 
 ```json
 "fragments":[  
@@ -76,33 +76,33 @@ A következő lehetséges helyességének, a kulcs keretek és a felnőtt és sz
     ]
 ```
 
-## <a name="visualization-for-human-reviews"></a>Emberi ellenőrző Vizualizáció
+## <a name="visualization-for-human-reviews"></a>Vizualizációk emberi felülvizsgálatokhoz
 
-További precízebb, vállalatok a videót, a keretek és a számítógéphez hozzárendelt címkék megjelenítése az emberi ellenőrző megoldásra van szükség. Az insights teljes körű képet kaphat, megváltoztathatja a címkéket, és küldje el a döntéshozatal az emberi moderátorok keretek és videók megtekintésével.
+Árnyaltabb esetekben a vállalatoknak egy emberi felülvizsgálati megoldásra van szükségük a videó, a keretei és a gép által hozzárendelt címkék megjelenítéséhez. A videók és keretek áttekintésére szolgáló emberi moderátorok teljes képet kapnak az elemzésekről, megváltoztathatják a címkéket, és elküldhetik döntéseiket.
 
-![videó felülvizsgálati eszköz alapértelmezett nézet](images/video-review-default-view.png)
+![videó-felülvizsgálati eszköz alapértelmezett nézete](images/video-review-default-view.png)
 
-## <a name="player-view-for-video-level-review"></a>Videó-szintű felülvizsgálatra Player megtekintése
+## <a name="player-view-for-video-level-review"></a>Videó szintű felülvizsgálatra szolgáló lejátszó nézet
 
-Videó-szintű bináris döntés, amely megjeleníti a potenciális felnőtt és szexuális keretek videólejátszó nézetben lehetséges. Az emberi felülvizsgálók keresse meg a videó megvizsgálhatja a színfalak különböző sebességű beállításokkal. Ezek a döntéshozatal a címkék átállításával erősítse meg.
+A videós szintű bináris döntéseket egy videolejátszó nézet teszi elérhetővé, amely megjeleníti a potenciális felnőtt és a zamatos kereteket. Az emberi felülvizsgálók különböző sebességi lehetőségekkel navigálnak a videóban a jelenetek vizsgálatához. A címkék megerősítik a döntéseiket.
 
-![videó felülvizsgálati eszköz player megtekintése](images/video-review-player-view.PNG)
+![videó-felülvizsgálati eszköz – lejátszó nézet](images/video-review-player-view.PNG)
 
-## <a name="frames-view-for-detailed-reviews"></a>A részletes ismertetők keretek megtekintése
+## <a name="frames-view-for-detailed-reviews"></a>Részletes felülvizsgálatok – keretek nézet
 
-A keret-keret elemzéshez részletes videó felülvizsgálata tette lehetővé, keret-alapú nézetben. Az emberi felülvizsgálók tekintse át, és jelöljön ki egy vagy több képkockát és váltsa át a címkéket, hogy erősítse meg a döntéseket hozhat. Egy nem kötelező következő lépése a sértő keretek vagy a tartalom kivonásra.
+A kereten belüli elemzés részletes videó-áttekintést nyújt a frame-alapú nézettel. Az emberi felülvizsgálók áttekintik, majd kijelölnek egy vagy több képkockát, és felváltják a címkéket a döntéseik megerősítéséhez. Egy választható következő lépés a sértő keretek vagy tartalmak kivonása.
 
-![videó felülvizsgálati eszköz keretek megjelenítése](images/video-review-frames-view-apply-tags.PNG)
+![videó-felülvizsgálati eszköz keretének nézete](images/video-review-frames-view-apply-tags.PNG)
 
 ## <a name="transcript-moderation"></a>Átiratmoderálás
 
-Videók általában rendelkeznek hangalapú keresztül, amely is szüksége van a moderálás sértő speech. Az Azure Media Indexer szolgáltatás segítségével alakíthatja az írott szöveget, és küldje el az átiratot tud szövegmoderálás belül a vizsgálóeszköz a Content Moderator felülvizsgálati API használatával.
+A videók jellemzően olyan hangvételt igényelnek, amelynek a moderálása a támadó beszédhez is szükséges. A Azure Media Indexer szolgáltatással szöveggé alakíthatja a beszédfelismerést, és a Content Moderator felülvizsgálati API használatával elküldheti a szöveges moderálás átiratát a felülvizsgálati eszközön belül.
 
-![videó felülvizsgálati eszköz szöveges nézet](images/video-review-transcript-view.png)
+![videó-felülvizsgálati eszköz átirat nézete](images/video-review-transcript-view.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerkedés a [videomoderálás rövid](video-moderation-api.md).
-- Ismerje meg, hogyan hozhat létre [videót felülvizsgálatok](video-reviews-quickstart-dotnet.md) az emberi véleményező a moderált kimenetből.
-- Adjon hozzá [videóátiratot felülvizsgálatok](video-transcript-reviews-quickstart-dotnet.md) a videót felülvizsgálatok.
-- Tekintse meg a részletes oktatóanyag, hogyan hozhat létre egy [videomoderálás megoldás befejezéséhez](video-transcript-moderation-review-tutorial-dotnet.md).
+- Ismerkedjen meg a [videó moderálási](video-moderation-api.md)útmutatójának használatába.
+- Ebből a témakörből [](video-reviews-quickstart-dotnet.md) megtudhatja, hogyan hozhatja ki az emberi felülvizsgálók videós felülvizsgálatait a moderált kimenetből.
+- [Videó](video-transcript-reviews-quickstart-dotnet.md) -visszajelzéseket adhat hozzá a videókhoz.
+- Tekintse meg a [teljes videó-moderálási megoldás](video-transcript-moderation-review-tutorial-dotnet.md)kidolgozásának részletes leírását.

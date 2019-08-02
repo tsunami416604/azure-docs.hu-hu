@@ -1,66 +1,66 @@
 ---
-title: Kapcsolat kiértékelése – Personalizer
+title: Offline értékelés – személyre szabás
 titleSuffix: Azure Cognitive Services
-description: Ezen visszajelzések létrehozása C# rövid útmutató a Personalizer szolgáltatással.
+description: Hozzon létre visszajelzési C# hurkot ebben a rövid útmutatóban a személyre szabott szolgáltatással.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: 3fdedd1af9b683b221dfa4aebad7a30559b7abff
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 5e9e745d73623e03e2530e1712a50e6670ee7ed3
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722489"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662855"
 ---
 # <a name="offline-evaluation"></a>Offline értékelés
 
-Kapcsolat nélküli értékelési olyan módszer, amely lehetővé teszi, hogy tesztelése, és felmérheti a Personalizer szolgáltatás hatékonyságát a kód módosítása vagy a felhasználói élményt érintő nélkül. Offline értékelési adatokat, hasonlítsa össze a különböző holtversenyben a rang API-hoz, az alkalmazás által küldött végrehajtása után történtek használ.
+Az offline kiértékelés egy olyan módszer, amely lehetővé teszi a személyre szabott szolgáltatás hatékonyságának tesztelését és értékelését a kód módosítása vagy a felhasználói élmény befolyásolása nélkül. Az offline kiértékelés az alkalmazásból a rangsor API-ba elküldett múltbeli adatokkal hasonlítja össze a különböző rangsorolt feladatok végrehajtását.
 
-Kapcsolat nélküli kiértékelése történik egy adott időtartományban. A tartomány az aktuális idő szerint késői befejezéséhez. A tartomány kezdete nem lehet több, mint a megadott napok száma [adatmegőrzés](how-to-settings.md).
+Az offline értékelés a Dátumtartomány alapján történik. A tartomány az aktuális időpontig véget ér. A tartomány kezdete nem lehet nagyobb, mint az adatmegőrzéshez megadott napok száma [](how-to-settings.md).
 
-A kapcsolat nélküli értékelési segítségére lehetnek a következő kérdések megválaszolásával:
+Az offline értékelés a következő kérdések megválaszolásához nyújt segítséget:
 
-* Mennyire hatékonyak Personalizer holtversenyben sikeres testre szabási célból?
-    * Mik azok az átlagos eszközökhöz érhető el, hogy a Personalizer online gépi tanulásra vonatkozó szabályzat?
-    * Hogyan Personalizer összehasonlítása hatékonyságát, amit az alkalmazás tenné még meg alapértelmezés szerint
-    * Mi lett volna a személyre szabás véletlenszerű választást összehasonlító hatékonyságát?
-    * Mi lett volna a különböző tanulási házirendek manuálisan a megadott összehasonlító hatékonyságát?
-* A környezet szolgáltatásokat több vagy kevesebb közre sikeres személyre szabása?
-* A műveletek mely funkciókat több vagy kevesebb közre sikeres személyre szabása?
+* Mennyire hatékony a személyre szabás a sikeres személyre szabáshoz?
+    * Milyen átlagos előnyökkel érhető el a személyre szabott online gépi tanulási szabályzat?
+    * Hogyan hasonlítható össze a személyre szabott funkció, hogy az alkalmazás milyen hatékonysággal legyen végrehajtva?
+    * Mi lett volna a személyre szabott véletlenszerű választás komparatív hatékonysága?
+    * Mi volt a manuálisan meghatározott különböző képzési szabályzatok komparatív hatékonysága?
+* A környezet mely funkciói járulnak hozzá a sikeres személyre szabáshoz?
+* A műveletek mely funkciói járulnak hozzá a sikeres személyre szabáshoz?
 
-Emellett Offline értékelési használható felderítése több optimalizált tanulási házirendeket, amelyek Personalizer segítségével jobb eredményeket elérni a jövőben.
+Emellett az offline értékelés használatával több optimalizált tanulási szabályzatot is felderítheti, amelyeket a személyre szabott a jövőben az eredmények javítására használhat.
 
-A kapcsolat nélküli értékelések tartalmaz útmutatást azon események feltárási használandó százalékának.
+Az offline értékelések nem biztosítanak útmutatást a feltáráshoz használandó események százalékos arányához.
 
-## <a name="prerequisites-for-offline-evaluation"></a>A kapcsolat nélküli értékelési előfeltételei
+## <a name="prerequisites-for-offline-evaluation"></a>Offline kiértékelés előfeltételei
 
-Az alábbiakban a reprezentatív offline kiértékelése fontos szempontjai:
+A következő fontos szempontokat kell figyelembe venni a reprezentatív kapcsolat nélküli kiértékeléshez:
 
-* Elég adatokkal rendelkeznek. Az ajánlott minimális érték legalább 50 000 eseményeket.
-* Időszakok reprezentatív alkalmazásfelhasználók viselkedése és a forgalom az adatgyűjtést.
+* Elegendő adattal rendelkezik. Az ajánlott minimum legalább 50 000 esemény.
+* Adatok gyűjtése a reprezentatív felhasználói viselkedéssel és adatforgalommal rendelkező időszakokból.
 
-## <a name="discovering-the-optimized-learning-policy"></a>Az optimalizált learning házirend felderítése
+## <a name="discovering-the-optimized-learning-policy"></a>Az optimalizált tanulási szabályzat felfedése
 
-Personalizer az offline értékelési folyamat használatával egy több optimális learning szabályzat automatikusan felderíteni.
+A személyre szabott kiértékelési folyamat használatával automatikusan felderíthető az optimális tanulási szabályzat.
 
-Után hajt végre a kapcsolat nélküli kiértékelése, láthatja, hogy a jelenlegi online-szabályzat képest az új házirenddel Personalizer összehasonlító hatékonyságát. Ezután a alkalmazni, hogy azonnal Personalizer hatékonyan learning házirendhez, vagy töltse le a jövőbeli elemzések vagy használatra.
+Az offline értékelés elvégzése után a személyre szabás az aktuális online házirenddel összehasonlítva az új szabályzattal megtekinthető. Ezt követően alkalmazhatja ezt a tanulási szabályzatot, hogy azonnal érvénybe vigye a személyre szabott, a letöltéssel és a modellek és a házirend paneljén való feltöltéssel. A későbbi elemzésekhez vagy használathoz is letöltheti.
 
-## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>Az offline kiértékelési eredmények ismertetése
+## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>Az offline kiértékelés eredményeinek ismertetése
 
-Ha offline próbaverzióját futtatja, nagyon fontos elemzéséhez _megbízhatósági rozsah_ az eredmények. Ha igen széles, az azt jelenti, az alkalmazás még nem kapott elég adat a pontos vagy jelentős ellenszolgáltatás becslések a. A rendszer több adatot gyűlnek, és hosszabb ideig offline értékelések futtatása, a konfidencia szűkebb válnak.
+Ha offline kiértékelést futtat, nagyon fontos, hogy elemezze az eredmények megbízhatósági határait. Ha széleskörűek, ez azt jelenti, hogy az alkalmazás nem kapott elegendő adatmennyiséget a jutalmak becsléséhez, hogy azok pontosak vagy jelentősek legyenek. Mivel a rendszer további adatmennyiséget gyűjt, és offline értékeléseket futtat hosszabb időszakokon keresztül, a megbízhatósági intervallumok keskenyebbek lesznek.
 
-## <a name="how-offline-evaluations-are-done"></a>Hogyan offline értékelések történik.
+## <a name="how-offline-evaluations-are-done"></a>Hogyan történik az offline értékelések
 
-Kapcsolat nélküli értékelések végzett nevezett módszerrel **Counterfactual értékelési**. 
+Az offline értékelések az **alternatív értékelés**nevű metódus használatával hajthatók végre. 
 
-Personalizer épül, feltételezve, hogy a felhasználói viselkedés (és így jutalmakat) nem lehetséges visszamenőleges előrejelzési (Personalizer nem tudja, mit kell történt a felhasználó korábban lett meg valami eltérő mi volt láthatják), és csak a további mért jutalmakat. 
+A személyre szabott szolgáltatás arra a feltételezésre épül, hogy a felhasználók viselkedése (és így a jutalmak) nem lehet visszamenőlegesen előre jelezni (a személyre szabás nem tudja, mi történt, ha a felhasználó a korábban megjelenő eltérőt mutatott), és csak tanulni mért jutalmak. 
 
-Ez az értékelések használt fogalmi folyamat:
+Ez az értékelésekhez használt fogalmi folyamat:
 
 ```
 [For a given _learning policy), such as the online learning policy, uploaded learning policies, or optimized candidate policies]:
@@ -81,21 +81,22 @@ Ez az értékelések használt fogalmi folyamat:
 }
 ```
 
-A kapcsolat nélküli kiértékelése csak az észlelt felhasználói viselkedés használja. Ez a folyamat elveti a nagy mennyiségű adatot, különösen akkor, ha az alkalmazás rangsor műveletek nagy számú-hívást.
+Az offline értékelés csak a megfigyelt felhasználói viselkedést használja. Ezzel a folyamattal nagy mennyiségű adattal kell eldobnia, különösen akkor, ha az alkalmazás nagy számú művelettel rendelkező rangsorolt hívásokat végez.
 
 
-## <a name="evaluation-of-features"></a>Szolgáltatások értékelése
+## <a name="evaluation-of-features"></a>A funkciók kiértékelése
 
-Offline értékelések is adja meg az a Funkciók, hogy mennyi információ műveletek vagy a helyi rendszer súlyú magasabb jutalmakat a. Az adatokat az adott időszakban és az adatok az értékelés kiszámítása, és idővel változhat.
+Az offline értékelések segítségével megadható, hogy a műveletek vagy a környezetek adott funkcióinak mekkora részét kell megszabni a magasabb szintű jutalmaknak. Az adatok kiszámítása a megadott időszakon és adatokon alapuló értékelés alapján történik, és az idő függvényében változhat.
 
-Javasoljuk, hogy funkció értékelések megnézzük, és kéri:
+Javasoljuk, hogy tekintse meg a funkciók értékeléseit, és kérje a következőket:
 
-* Milyen egyéb, további, a szolgáltatások az alkalmazás- vagy biztosíthatja a mentén is, amelyek hatékonyabb?
-* Milyen funkciókat eltávolítható alacsony hatékonysága miatt? Alacsony hatékonysága funkciók hozzáadása _zaj_ a machine Learning.
-* Vannak-e a véletlenül részét képező szolgáltatásokat? Erre példa: személyazonosításra alkalmas adatok (PII), ismétlődő azonosítók stb.
-* -E a nemkívánatos szolgáltatásokat, nem lehet jogszabályi vagy felelős miatt személyre szempontok használni? Vannak-e, hogy proxy funkciók (, szorosan tükrözéséhez vagy az összekapcsolását) nemkívánatos funkciók?
+* Az alkalmazás vagy a rendszer további funkciói lehetővé teszik, hogy az alkalmazások és a rendszerek milyen vonalakban legyenek hatékonyabbak?
+* Milyen funkciókat lehet eltávolítani az alacsony hatékonyság miatt? Az alacsony hatékonyságú funkciók a gépi tanulásban növelik a _zajt_ .
+* Vannak olyan funkciók, amelyek véletlenül beletartoznak a szolgáltatásba? Ilyenek például a személyes azonosításra alkalmas adatok, a duplikált azonosítók stb.
+* Vannak olyan nemkívánatos funkciók, amelyek nem használhatók a jogszabályi vagy a felelősségteljes használati megfontolások miatt? Vannak-e olyan szolgáltatások, amelyek proxyként (azaz szorosan tükrözve vagy korrelálva) nemkívánatos funkciókkal rendelkeznek?
 
 
 ## <a name="next-steps"></a>További lépések
 
-[Personalizer konfigurálása](how-to-settings.md)
+[](how-to-settings.md)
+A megszemélyesítő[Offline értékelések](how-to-offline-evaluation.md) konfigurálása a [személyre szabás működésének](how-personalizer-works.md) megismerése

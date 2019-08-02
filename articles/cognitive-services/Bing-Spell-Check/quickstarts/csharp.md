@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Ellenőrizze a helyesírást és a Bing Spell Check REST API és aC#'
-titlesuffix: Azure Cognitive Services
-description: Ismerkedés a Bing Spell Check REST API használatával a helyesírás-és nyelvtani.
+title: 'Gyors útmutató: Helyesírás ellenőrzése a Bing Spell Check REST API ésC#'
+titleSuffix: Azure Cognitive Services
+description: Az Bing Spell Check REST API használatának első lépései a helyesírás és a nyelvtan ellenőrzéséhez.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,31 +10,31 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: e7a1f2572296015aac2d05b36b9b659c85586ff9
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: a2c121ed58882427022b716081b096c913d447f8
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390244"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423627"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Gyors útmutató: Ellenőrizze a helyesírást és a Bing Spell Check REST API és aC#
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Gyors útmutató: Helyesírás ellenőrzése a Bing Spell Check REST API ésC#
 
-Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívását. Ez egyszerű C# alkalmazás egy kérést küld az API-t, és javasolt javítások listáját adja vissza. Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. Az alkalmazás forráskódja elérhető a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST API. Ez az C# egyszerű alkalmazás egy kérelmet küld az API-nak, és a javasolt javítások listáját adja vissza. Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. Az alkalmazás forráskódja elérhető a githubon. [](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Bármely kiadása [Visual Studio 2017-es vagy újabb](https://www.visualstudio.com/downloads/).
-* A telepítendő `Newtonsoft.Json` a Visual studióban NuGet csomag:
-    1. A **Megoldáskezelőben**, kattintson a jobb gombbal a megoldásfájlt.
-    1. Válassza ki **NuGet-csomagok kezelése megoldáshoz**.
+* A [Visual Studio 2017 vagy újabb](https://www.visualstudio.com/downloads/)verziójának bármely kiadása.
+* Telepítés `Newtonsoft.Json` NuGet-csomagként a Visual Studióban:
+    1. A **megoldáskezelő**kattintson a jobb gombbal a megoldás fájljára.
+    1. Válassza **a megoldás NuGet-csomagok kezelése**lehetőséget.
     1. Keresse meg `Newtonsoft.Json` és telepítse a csomagot.
-* Linux/MacOS rendszeren használja, ha az alkalmazás használatával futtatható [Mono](https://www.mono-project.com/).
+* Ha Linux/MacOS rendszert használ, akkor az alkalmazás a [mono](https://www.mono-project.com/)használatával futtatható.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új konzol megoldást nevű `SpellCheckSample` a Visual Studióban. Ezután adja hozzá a következő névtereket a fő kódfájlhoz.
+1. Hozzon létre egy új, `SpellCheckSample` a Visual Studióban megnevezett konzol-megoldást. Ezután adja hozzá a következő névtereket a fő kódfájlhoz.
     
     ```csharp
     using System;
@@ -46,7 +46,7 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
     using Newtonsoft.Json;
     ```
 
-2. Hozzon létre változókat az API-végpont, az előfizetési kulcs és a szöveg helyesírás be van jelölve.
+2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a helyesírási ellenőrzéshez használt szöveghez.
 
     ```csharp
     namespace SpellCheckSample
@@ -62,15 +62,15 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
     }
     ```
 
-3. Hozzon létre egy változót a keresési paraméterek. Fűzze hozzá a piaci kód után `mkt=`. A piaci kódja az ország, a kérést. Ezenkívül hozzáfűzéssel a helyesírás-ellenőrzése után `&mode=`. Módban, vagy `proof` (a legtöbb helyesírási vagy nyelvtani hibát kivételekkel) vagy `spell` (a legtöbb helyesírási, de nem annyi nyelvtani hibát kivételekkel).
+3. Hozzon létre egy változót a keresési paraméterekhez. Adja hozzá a piac kódját `mkt=`a következő után:. A piaci kód az az ország, ahonnan a kérést elvégzi. Továbbá a helyesírás-ellenőrzési mód hozzáfűzése a következő `&mode=`után:. A `proof` mód vagy (a legtöbb helyesírási/nyelvtani hibát kigyűjti) vagy `spell` (a legtöbb helyesírási hiba, de nem annyi nyelvtani hiba).
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
     ```
 
-## <a name="create-and-send-a-spell-check-request"></a>Hozzon létre, és helyesírás-ellenőrzés kérés küldése
+## <a name="create-and-send-a-spell-check-request"></a>Helyesírás-ellenőrzési kérelem létrehozása és elküldése
 
-1. Hozzon létre egy aszinkron a hívott függvény `SpellCheck()` egy kérést küldhet az API-t. Hozzon létre egy `HttpClient`, és adja hozzá az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc. Hajtsa végre az alábbi lépéseket a függvényen belül.
+1. Hozzon létre egy nevű `SpellCheck()` aszinkron függvényt, amely egy kérést küld az API-nak. Hozzon `HttpClient`létre egy, és adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez. Ezután hajtsa végre a következő lépéseket a függvényen belül.
 
     ```csharp
     async static void SpellCheck()
@@ -83,13 +83,13 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
     }
     ```
 
-2. A gazdagép elérési útja és paraméterek hozzáfűzésével hozzon létre a kérés URI Azonosítóját.
+2. Hozza létre a kérelem URI-JÁT a gazdagép, az elérési út és a paraméterek hozzáfűzésével.
     
     ```csharp
     string uri = host + path + params_;
     ```
 
-3. Hozzon létre egy listát egy `KeyValuePair` a szöveget tartalmazó objektumot, és ezzel hozzon létre egy `FormUrlEncodedContent` objektum. A fejléc-információkat, és használata `PostAsync()` a kérelem elküldéséhez.
+3. Hozzon létre egy listát `KeyValuePair` a szöveget tartalmazó objektummal, és hozzon létre egy `FormUrlEncodedContent` objektumot. Adja meg a fejléc adatait, és `PostAsync()` a paranccsal küldje el a kérelmet.
 
     ```csharp
     List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>();
@@ -102,11 +102,11 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
     }
     ```
 
-## <a name="get-and-print-the-api-response"></a>GET, és nyomtassa ki az API-válasz
+## <a name="get-and-print-the-api-response"></a>Az API-válasz beolvasása és nyomtatása
 
-### <a name="get-the-client-id-header"></a>Az ügyfél-Azonosítójának fejlécét beolvasása
+### <a name="get-the-client-id-header"></a>Az ügyfél-azonosító fejlécének beolvasása
 
-Ha a válasz tartalmaz egy `X-MSEdge-ClientID` fejléc, az értéket, és nyomtassa ki.
+Ha a válasz `X-MSEdge-ClientID` fejlécet tartalmaz, szerezze be az értéket, és nyomtassa ki.
 
 ``` csharp
 string client_id;
@@ -117,9 +117,9 @@ if (response.Headers.TryGetValues("X-MSEdge-ClientID", out IEnumerable<string> h
 }
 ```
 
-### <a name="get-the-response"></a>A válasz
+### <a name="get-the-response"></a>Válasz beolvasása
 
-A választ kaphat az API-ból. A JSON-objektum deszerializálása, és nyomtassa ki a konzolhoz.
+Az API válaszának beolvasása. Deszerializálja a JSON-objektumot, és kinyomtatja a konzolra.
 
 ```csharp
 string contentString = await response.Content.ReadAsStringAsync();
@@ -128,9 +128,9 @@ dynamic jsonObj = JsonConvert.DeserializeObject(contentString);
 Console.WriteLine(jsonObj);
 ```
 
-## <a name="call-the-spell-check-function"></a>A helyesírás-ellenőrzés függvény hívása
+## <a name="call-the-spell-check-function"></a>A helyesírás-ellenőrzési függvény meghívása
 
-A projekt fő függvényben hívja `SpellCheck()`.
+A projekt fő függvényében hívja `SpellCheck()`meg a t.
 
 ```csharp
 static void Main(string[] args)
@@ -140,7 +140,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="example-json-response"></a>Példa JSON-válasz
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -187,5 +187,5 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](../tutorials/spellcheck.md)
 
-- [Mi az a Bing Spell Check API?](../overview.md)
+- [Mi a Bing Spell Check API?](../overview.md)
 - [A Bing Spell Check API 7-es verzió referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

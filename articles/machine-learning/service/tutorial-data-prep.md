@@ -1,7 +1,7 @@
 ---
-title: 'Regressziós modell oktatóanyag: Adatok előkészítése'
+title: 'A regressziós modell oktatóanyaga: Adatok előkészítése'
 titleSuffix: Azure Machine Learning service
-description: Ez az oktatóanyag első részét elsajátíthatja a Pythonban adatok előkészítése az Azure Machine Learning SDK használatával a modellezési regressziós.
+description: Az oktatóanyag első részében megismerheti, hogyan készítheti elő az adatelemzést a Pythonban a regressziós modellezéshez a Azure Machine Learning SDK használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,55 +9,55 @@ ms.topic: tutorial
 author: MayMSFT
 ms.author: sihhu
 ms.reviewer: trbye
-ms.date: 07/12/2019
+ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 355927dd8c1bb81265dfa728561ad83a75b0d51d
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 6692f64dc7e7fa2799f9095af39171a2ddc0e76d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871713"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360920"
 ---
-# <a name="tutorial-prepare-data-for-regression-modeling"></a>Oktatóanyag: Adatok előkészítése az regressziós modellezéshez
+# <a name="tutorial-prepare-data-for-regression-modeling"></a>Oktatóanyag: Adatelőkészítés a regressziós modellezéshez
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan előkészíti az adatokat az regressziós modellezési használatával a [adat-előkészítési csomagot](https://aka.ms/data-prep-sdk) származó a [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Szűrését, és kombinálja a két különböző NYC taxi adatkészletek különféle átalakításokat futtat.
+Ebből az oktatóanyagból megtudhatja, hogyan készítheti elő a regressziós modellezés adatait a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)adatelőkészítési [csomagjának](https://aka.ms/data-prep-sdk) használatával. Különböző átalakításokat futtat két különböző New York-i taxi-adathalmaz szűrésére és egyesítésére.
 
-Ez az oktatóanyag **egy kétrészes sorozat első része**. Miután elvégezte az oktatóanyag-sorozat, akkor is alapján képes előre jelezni taxi belépőt költsége funkciókat az egy modell. Ezek a funkciók közé tartozik a felvételi nap és idő, számától és a felvétel helyére.
+Ez az oktatóanyag **egy kétrészes sorozat első része**. Az oktatóanyag-Sorozat elvégzése után előre megjósolhatja a taxik árát, ha betanít egy modellt az adatfunkciókra. A funkciók közé tartozik a felvételi nap és az idő, az utasok száma és a felvételi hely.
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
-> * Hozzon létre egy Python-környezetet, és csomagok importálásához.
-> * Töltse be a különböző mezőneveket két adatkészletet.
-> * Adatok eltávolítása a rendellenességek megtisztításához.
-> * Adatok átalakítása intelligens átalakítások használatával hozhat létre új funkciókat.
-> * Mentse az adatfolyamot objektumot a regressziós modellek használata.
+> * Python-környezet beállítása és csomagok importálása.
+> * Helyezzen be két különböző mezőneveket tartalmazó adatkészletet.
+> * Az adatsérülések eltávolítására szolgáló Adattisztítás.
+> * Az adatátalakítást intelligens átalakítások segítségével hozhatja létre új funkciók létrehozásához.
+> * Mentse a adatfolyam-objektumot egy regressziós modellben való használatra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ugrás a [a fejlesztési környezet beállítása](#start) olvassa végig a notebook lépéseket, vagy használja az alábbi utasításokat a notebook beszerzése és az Azure notebookok vagy a saját notebook server futtatásához. A jegyzetfüzet futtatásához szüksége lesz:
+Ugorjon a telepítési [környezet beállítása](#start) a jegyzetfüzet lépéseinek beolvasásához, vagy az alábbi utasításokat követve szerezze be a jegyzetfüzetet, és futtassa azt Azure Notebooks vagy a saját notebook-kiszolgálóján. A jegyzetfüzet futtatásához a következőkre lesz szüksége:
 
-* Egy Python 3.6-os notebook kiszolgálót a következőkkel:
-    * A `azureml-dataprep` az Azure Machine Learning-SDK-csomagot
-* Az oktatóanyag notebook
+* Python 3,6 notebook-kiszolgáló a következő telepítéssel:
+    * A `azureml-dataprep` csomag a Azure Machine learning SDK-ból
+* Az oktatóanyag notebookja
 
-* Használja a [felhőalapú notebook server a munkaterületen](#azure) 
-* Használat [saját notebook server](#server)
+* [Felhőalapú notebook-kiszolgáló használata a](#azure) munkaterületen 
+* [Saját notebook-kiszolgáló](#server) használata
 
-### <a name="azure"></a>A munkaterület egy felhőbeli notebook server használata
+### <a name="azure"></a>Felhőalapú notebook-kiszolgáló használata a munkaterületen
 
-Is könnyen a saját felhőalapú notebook server használatának első lépései. Az Azure Machine Learning SDK Pythonhoz készült már telepítve és konfigurálva van az Ön számára a felhőalapú erőforrás létrehozása után.
+Könnyedén megkezdheti saját felhőalapú notebook-kiszolgálójának megkezdését. A Pythonhoz készült Azure Machine Learning SDK már telepítve van és konfigurálva van a felhőalapú erőforrás létrehozása után.
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 
-* A notebook weblap indításához után futtassa a **oktatóanyagok/regressziós-1-adatok – prep.ipynb** notebook.
+* A jegyzetfüzet weboldalának elindítása után futtassa az **oktatóanyagok/Regression-part1-Data-PREP. ipynb** notebookot.
 
-### <a name="server"></a>A saját Jupyter notebook server használata
+### <a name="server"></a>Saját Jupyter notebook-kiszolgáló használata
 
-Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.  Miután végrehajtotta a lépéseket, futtassa a **oktatóanyagok/regressziós-1-adatok – prep.ipynb** notebookot.
+Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.  A lépések elvégzése után futtassa az **oktatóanyagok/Regression-part1-Data-PREP. ipynb** notebookot.
 
-1. Befejeződött a telepítés lépéseit [Azure Machine Learning Python rövid](setup-create-workspace.md#sdk) Miniconda környezetet, és telepítse az SDK-t.  Nyugodtan hagyja ki a **hozzon létre egy munkaterületet** szakaszt, ha kívánja, de szükség lesz rá a [2. rész](tutorial-auto-train-models.md) az oktatóanyag-sorozat.
-1. A `azureml-dataprep` csomag az SDK telepítésekor automatikusan települ.
+1. A Miniconda-környezet létrehozásához és az SDK telepítéséhez hajtsa végre a [Azure Machine learning Python](setup-create-workspace.md#sdk) rövid útmutatójának telepítési lépéseit.  Ha szeretné, kihagyhatja a **Munkaterület létrehozása** szakaszt, de erre az oktatóanyag-Sorozat 2. [részében](tutorial-auto-train-models.md) szüksége lesz rá.
+1. A `azureml-dataprep` csomag automatikusan települ az SDK telepítésekor.
 1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
 
     ```
@@ -72,31 +72,31 @@ Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszol
 
 ## <a name="start"></a>A fejlesztési környezet beállítása
 
-Egy Python-notebookban a fejlesztési munka összes beállítása megadható. A telepítő az alábbi műveleteket tartalmazza:
+Egy Python-notebookban a fejlesztési munka összes beállítása megadható. A telepítő a következő műveleteket tartalmazza:
 
 * Az SDK telepítése
 * Python-csomagok importálása
 
-### <a name="install-and-import-packages"></a>Telepítse és importálja a csomagok
+### <a name="install-and-import-packages"></a>Csomagok telepítése és importálása
 
-Használja a következő szükséges csomagok telepítéséhez, ha már nincs rájuk.
+Ha még nem rendelkezik velük, a következő paranccsal telepítheti a szükséges csomagokat.
 
 ```shell
 pip install "azureml-dataprep[pandas]>=1.1.0,<1.2.0"
 ```
 
-A csomag importálása.
+Importálja a csomagot.
 
 ```python
 import azureml.dataprep as dprep
 ```
 
 > [!IMPORTANT]
-> Győződjön meg arról, a azureml.dataprep csomag legújabb verziójának telepítését. Ebben az oktatóanyagban nem fog működni a verziószám kisebb, mint a 1.1.0-s
+> Győződjön meg arról, hogy a legújabb azureml. adatelőkészítés csomag verzióját telepíti. Ez az oktatóanyag nem fog működni a 1.1.0-nél alacsonyabb verziószámmal
 
 ## <a name="load-data"></a>Adatok betöltése
 
-Töltse le a két különböző NYC taxi adatkészletek adatfolyamot objektumokba. Az adatkészletek eltérő mezővel rendelkezik. A `auto_read_file()` metódus automatikusan felismeri a bemeneti fájl típusa.
+Töltsön le két különböző New York-i taxi-adatkészletet a adatfolyam Objects szolgáltatásba. Az adathalmazok kis mértékben különböző mezőkkel rendelkeznek. A `auto_read_file()` metódus automatikusan felismeri a bemeneti fájl típusát.
 
 ```python
 from IPython.display import display
@@ -105,7 +105,8 @@ dataset_root = "https://dprepdata.blob.core.windows.net/demo"
 green_path = "/".join([dataset_root, "green-small/*"])
 yellow_path = "/".join([dataset_root, "yellow-small/*"])
 
-green_df_raw = dprep.read_csv(path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
+green_df_raw = dprep.read_csv(
+    path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
 # auto_read_file automatically identifies and parses the file type, which is useful when you don't know the file type.
 yellow_df_raw = dprep.auto_read_file(path=yellow_path)
 
@@ -113,44 +114,48 @@ display(green_df_raw.head(5))
 display(yellow_df_raw.head(5))
 ```
 
-A `Dataflow` objektum dataframe hasonló, és ráérősen értékeli ki, nem módosítható elküldhessenek adatokon jelöli. Műveletek meghívása a különböző Adatátalakítási és szűrés által választható módszerek adhat hozzá. A művelet hozzáadásának eredményét egy `Dataflow` mindig van egy új `Dataflow` objektum.
+> [!Note]
+> Az ebben a példában szereplő URL-cím nem teljes URL-cím. Ehelyett a blobban található demó mappára hivatkozik. Néhány adat teljes URL-címe https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
+
+Egy `Dataflow` objektum hasonló egy dataframe, és az adatokra vonatkozó, lustán kiértékelt, nem módosítható műveletek sorozatát jelöli. A műveletek hozzáadhatók a különböző transzformációs és szűrési módszerek meghívásával. Egy művelet `Dataflow` hozzáadásának eredménye mindig egy új `Dataflow` objektum.
 
 ## <a name="cleanse-data"></a>Adatok megtisztítása
 
-Most töltse fel néhány változót a helyi átalakítások összes adatfolyamot a alkalmazni. A `drop_if_all_null` változójával rekordok törléséhez, az összes mező kitöltése null értékű. A `useful_columns` változó tárolja az oszlopok leírása való minden egyes adatfolyamot tömbjét.
+Most feltölt néhány változót a parancsikon-átalakításokkal, hogy az összes adatfolyamok vonatkozzon. A `drop_if_all_null` változó a rekordok törlésére szolgál, ha az összes mező null értékű. A `useful_columns` változó az egyes adatfolyam tárolt oszlopok leírásának tömbjét tartalmazza.
 
 ```python
 all_columns = dprep.ColumnSelector(term=".*", use_regex=True)
-drop_if_all_null = [all_columns, dprep.ColumnRelationship(dprep.ColumnRelationship.ALL)]
+drop_if_all_null = [all_columns, dprep.ColumnRelationship(
+    dprep.ColumnRelationship.ALL)]
 useful_columns = [
     "cost", "distance", "dropoff_datetime", "dropoff_latitude", "dropoff_longitude",
     "passengers", "pickup_datetime", "pickup_latitude", "pickup_longitude", "store_forward", "vendor"
 ]
 ```
 
-Először dolgozik, a zöld taxi adatokkal kombinálva, a sárga i taxik adatait érvényes alakzat alakítja. Hívja a `replace_na()`, `drop_nulls()`, és `keep_columns()` funkciók segítségével a helyi átalakítása létrehozott változókat. Ezenkívül nevezze át az adathalmaz megfelelően a nevek az összes oszlopot a `useful_columns` változó.
+Először a zöld taxival kell dolgoznia, hogy egy érvényes alakba kerüljön, amely kombinálható a sárga taxi-adattal. `replace_na()`A, `drop_nulls()`a és`keep_columns()` a függvények meghívása a létrehozott parancsikon-átalakítási változók használatával. Továbbá nevezze át a dataframe összes oszlopát, hogy egyezzen a `useful_columns` változóban található nevekkel.
 
 
 ```python
 green_df = (green_df_raw
-    .replace_na(columns=all_columns)
-    .drop_nulls(*drop_if_all_null)
-    .rename_columns(column_pairs={
-        "VendorID": "vendor",
-        "lpep_pickup_datetime": "pickup_datetime",
-        "Lpep_dropoff_datetime": "dropoff_datetime",
-        "lpep_dropoff_datetime": "dropoff_datetime",
-        "Store_and_fwd_flag": "store_forward",
-        "store_and_fwd_flag": "store_forward",
-        "Pickup_longitude": "pickup_longitude",
-        "Pickup_latitude": "pickup_latitude",
-        "Dropoff_longitude": "dropoff_longitude",
-        "Dropoff_latitude": "dropoff_latitude",
-        "Passenger_count": "passengers",
-        "Fare_amount": "cost",
-        "Trip_distance": "distance"
-     })
-    .keep_columns(columns=useful_columns))
+            .replace_na(columns=all_columns)
+            .drop_nulls(*drop_if_all_null)
+            .rename_columns(column_pairs={
+                "VendorID": "vendor",
+                "lpep_pickup_datetime": "pickup_datetime",
+                "Lpep_dropoff_datetime": "dropoff_datetime",
+                "lpep_dropoff_datetime": "dropoff_datetime",
+                "Store_and_fwd_flag": "store_forward",
+                "store_and_fwd_flag": "store_forward",
+                "Pickup_longitude": "pickup_longitude",
+                "Pickup_latitude": "pickup_latitude",
+                "Dropoff_longitude": "dropoff_longitude",
+                "Dropoff_latitude": "dropoff_latitude",
+                "Passenger_count": "passengers",
+                "Fare_amount": "cost",
+                "Trip_distance": "distance"
+            })
+            .keep_columns(columns=useful_columns))
 green_df.head(5)
 ```
 
@@ -257,38 +262,38 @@ green_df.head(5)
 </table>
 </div>
 
-Futtassa az Adatátalakítási lépéseket a sárga i taxik adatait. Ezek a függvények győződjön meg arról, hogy null adat törlődik az adatkészlet, amelyek segítségével növelheti a machine learning pontosság modellezésére.
+Futtassa ugyanazokat az átalakítási lépéseket a sárga taxi-adathalmazon. Ezek a függvények biztosítják, hogy a rendszer nullával távolítsa el az adatkészletből a nullát, ami segít a gépi tanulási modell pontosságának növelésében.
 
 ```python
 yellow_df = (yellow_df_raw
-    .replace_na(columns=all_columns)
-    .drop_nulls(*drop_if_all_null)
-    .rename_columns(column_pairs={
-        "vendor_name": "vendor",
-        "VendorID": "vendor",
-        "vendor_id": "vendor",
-        "Trip_Pickup_DateTime": "pickup_datetime",
-        "tpep_pickup_datetime": "pickup_datetime",
-        "Trip_Dropoff_DateTime": "dropoff_datetime",
-        "tpep_dropoff_datetime": "dropoff_datetime",
-        "store_and_forward": "store_forward",
-        "store_and_fwd_flag": "store_forward",
-        "Start_Lon": "pickup_longitude",
-        "Start_Lat": "pickup_latitude",
-        "End_Lon": "dropoff_longitude",
-        "End_Lat": "dropoff_latitude",
-        "Passenger_Count": "passengers",
-        "passenger_count": "passengers",
-        "Fare_Amt": "cost",
-        "fare_amount": "cost",
-        "Trip_Distance": "distance",
-        "trip_distance": "distance"
-    })
-    .keep_columns(columns=useful_columns))
+             .replace_na(columns=all_columns)
+             .drop_nulls(*drop_if_all_null)
+             .rename_columns(column_pairs={
+                 "vendor_name": "vendor",
+                 "VendorID": "vendor",
+                 "vendor_id": "vendor",
+                 "Trip_Pickup_DateTime": "pickup_datetime",
+                 "tpep_pickup_datetime": "pickup_datetime",
+                 "Trip_Dropoff_DateTime": "dropoff_datetime",
+                 "tpep_dropoff_datetime": "dropoff_datetime",
+                 "store_and_forward": "store_forward",
+                 "store_and_fwd_flag": "store_forward",
+                 "Start_Lon": "pickup_longitude",
+                 "Start_Lat": "pickup_latitude",
+                 "End_Lon": "dropoff_longitude",
+                 "End_Lat": "dropoff_latitude",
+                 "Passenger_Count": "passengers",
+                 "passenger_count": "passengers",
+                 "Fare_Amt": "cost",
+                 "fare_amount": "cost",
+                 "Trip_Distance": "distance",
+                 "trip_distance": "distance"
+             })
+             .keep_columns(columns=useful_columns))
 yellow_df.head(5)
 ```
 
-Hívja a `append_rows()` funkciót, a zöld taxi adatok hozzáfűzése a sárga i taxik adatait. Új kombinált dataframe jön létre.
+Hívja meg `append_rows()` a függvényt a zöld taxi-adaton a Yellow taxi-adat hozzáfűzéséhez. Létrejön egy új kombinált dataframe.
 
 ```python
 combined_df = green_df.append_rows([yellow_df])
@@ -296,7 +301,7 @@ combined_df = green_df.append_rows([yellow_df])
 
 ### <a name="convert-types-and-filter"></a>A konvertálás típusok és -szűrő
 
-Vizsgálja meg a begyűjtés és Gyűjtőtár koordinálja az összefoglaló statisztikák hogyan oszlik el az adatok megtekintéséhez. Először határozzon meg egy `TypeConverter` módosítani a szélesség és hosszúság mezők decimális típusú objektum. Ezután hívja a `keep_columns()` kimeneti korlátozhatja a csak a szélesség és hosszúság mezők függvényt, és ezután hívja meg a `get_profile()` függvény. Az ezen függvényhívásokat az adatfolyamot, hogy megmutassam a a szél/hosszú mezők, ami jó hír kiértékelheti, hogy hiányzó vagy Hatókörön kívüli koordinátákat sűrített nézetének létrehozása.
+Vizsgálja meg a begyűjtés és Gyűjtőtár koordinálja az összefoglaló statisztikák hogyan oszlik el az adatok megtekintéséhez. Először Definiáljon egy `TypeConverter` objektumot, amely a szélességi és a hosszúsági mezőket decimális típusra módosítja. Ezután hívja meg a `keep_columns()` függvényt, hogy a kimenetet csak a szélességi és hosszúsági mezőkre `get_profile()` korlátozza, majd hívja meg a függvényt. Ezek a függvények meghívja a adatfolyam tömör nézetét, hogy csak a Lat/Long mezőket jelenítsék meg, így könnyebben kiértékelheti a hiányzó vagy a hatókörön kívüli koordinátákat.
 
 
 ```python
@@ -440,25 +445,27 @@ combined_df.keep_columns(columns=[
 
 
 
-Az összefoglaló statisztikák kimenetében láthatja létezik koordináták és a nem található (Ez határozza meg a szubjektív analysis) New York City koordinátái hiányzik. Szűrje ki az városa szegély kívül eső helyeken koordinátáit. Lánc az Oszlopszűrő belüli parancsokat a `filter()` funkciót, és adja meg az egyes mezőkhöz tartozó minimális és maximális határán. Ezután hívja meg a `get_profile()` függvény az átalakítás megerősítése érdekében.
+Az összefoglaló statisztikák kimenetében láthatja, hogy hiányoznak a New York Cityben nem található koordináták és koordináták (ez a szubjektív elemzésből van meghatározva). Kiszűri a város szegélyén kívüli helyszínek koordinátáit. Az oszlop szűrő parancsainak láncolása `filter()` a függvényen belül, és az egyes mezők minimális és maximális határának megadása. Ezután hívja meg `get_profile()` újra a függvényt az átalakítás ellenőrzéséhez.
 
 
 ```python
 latlong_filtered_df = (combined_df
-    .drop_nulls(
-        columns=["pickup_longitude", "pickup_latitude", "dropoff_longitude", "dropoff_latitude"],
-        column_relationship=dprep.ColumnRelationship(dprep.ColumnRelationship.ANY)
-    )
-    .filter(dprep.f_and(
-        dprep.col("pickup_longitude") <= -73.72,
-        dprep.col("pickup_longitude") >= -74.09,
-        dprep.col("pickup_latitude") <= 40.88,
-        dprep.col("pickup_latitude") >= 40.53,
-        dprep.col("dropoff_longitude") <= -73.72,
-        dprep.col("dropoff_longitude") >= -74.09,
-        dprep.col("dropoff_latitude") <= 40.88,
-        dprep.col("dropoff_latitude") >= 40.53
-    )))
+                       .drop_nulls(
+                           columns=["pickup_longitude", "pickup_latitude",
+                                    "dropoff_longitude", "dropoff_latitude"],
+                           column_relationship=dprep.ColumnRelationship(
+                               dprep.ColumnRelationship.ANY)
+                       )
+                       .filter(dprep.f_and(
+                           dprep.col("pickup_longitude") <= -73.72,
+                           dprep.col("pickup_longitude") >= -74.09,
+                           dprep.col("pickup_latitude") <= 40.88,
+                           dprep.col("pickup_latitude") >= 40.53,
+                           dprep.col("dropoff_longitude") <= -73.72,
+                           dprep.col("dropoff_longitude") >= -74.09,
+                           dprep.col("dropoff_latitude") <= 40.88,
+                           dprep.col("dropoff_latitude") >= 40.53
+                       )))
 latlong_filtered_df.keep_columns(columns=[
     "pickup_longitude", "pickup_latitude",
     "dropoff_longitude", "dropoff_latitude"
@@ -592,7 +599,7 @@ latlong_filtered_df.keep_columns(columns=[
 
 ### <a name="split-and-rename-columns"></a>Felosztott és oszlopok átnevezése
 
-Tekintse meg a data-profilt a a `store_forward` oszlop. Ez a mező egy logikai jelzőt, amely akkor `Y` amikor a taxi nincs út után a kapcsolat a kiszolgálóval, és ezért kellett az útadatok tárolása a memóriában, és később továbbítja azt a kiszolgáló használatakor.
+Tekintse meg a data-profilt a a `store_forward` oszlop. Ez a mező egy logikai jelző, amely `Y` akkor van, ha a taxi nem kapcsolódott a kiszolgálóhoz az utazás után, és így a memóriában kellett tárolnia az utazási adatmennyiséget, majd később továbbítja azt a kiszolgálónak a csatlakozáskor.
 
 
 ```python
@@ -657,28 +664,30 @@ latlong_filtered_df.keep_columns(columns='store_forward').get_profile()
 
 
 
-Figyelje meg, hogy az adatprofil a kimenetet a `store_forward` az oszlopban látható, hogy az adatok inkonzisztens, és találkozhat hiányzó vagy a null értékeket. Használja a `replace()` és `fill_nulls()` ezeket az értékeket cserélje le a karakterlánc "N" függvények:
+Figyelje meg `store_forward` , hogy az oszlop adatprofil kimenete azt mutatja, hogy az adatok inkonzisztensek, és hiányoznak vagy Null értékek. A `replace()` és`fill_nulls()` a függvények használatával cserélje le ezeket az értékeket az "N" karakterláncra:
 
 
 ```python
-replaced_stfor_vals_df = latlong_filtered_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
+replaced_stfor_vals_df = latlong_filtered_df.replace(
+    columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
 ```
 
-Hajtsa végre a `replace` működnek a `distance` mező. A függvény újraformázza távolság értékek, amelyek nem megfelelően van-e jelölve, `.00`, és bármely nullák nullákkal tölti ki. Konvertálja a `distance` mező numerikus formátumban. Ezek helytelen adatok pontok valószínűleg rendellenességeket a taxi kabinetfájlok adatok gyűjtése rendszerben.
+Hajtsa `replace` végre a függvényt `distance` a mezőben. A függvény újraformázza a nem megfelelően címkézett `.00`távolsági értékeket, és nullával kitölti az összes null értéket. Konvertálja a `distance` mező numerikus formátumban. Ezek a helytelen adatpontok valószínűleg rendellenességek a taxik adatgyűjtési rendszerében.
 
 
 ```python
-replaced_distance_vals_df = replaced_stfor_vals_df.replace(columns="distance", find=".00", replace_with=0).fill_nulls("distance", 0)
+replaced_distance_vals_df = replaced_stfor_vals_df.replace(
+    columns="distance", find=".00", replace_with=0).fill_nulls("distance", 0)
 replaced_distance_vals_df = replaced_distance_vals_df.to_number(["distance"])
 ```
 
-A begyűjtés és dropoff dátum/idő értékek felosztása a megfelelő dátum és idő oszlopokra. Használja a `split_column_by_example()` , hogy a split függvény. Ebben az esetben, az opcionális `example` paraméterében a `split_column_by_example()` funkció ki van hagyva. Ezért a függvény automatikusan meghatározza, hogy hol található adatok alapján felosztani.
+Ossza szét a felvételi és lemorzsolódási datetime értékeket a megfelelő dátum és idő oszlopba. `split_column_by_example()` A függvény használatával végezze el a felosztást. Ebben az esetben a `example` `split_column_by_example()` függvény opcionális paramétere nincs megadva. Ezért a függvény automatikusan meghatározza a felosztás helyét az adat alapján.
 
 
 ```python
 time_split_df = (replaced_distance_vals_df
-    .split_column_by_example(source_column="pickup_datetime")
-    .split_column_by_example(source_column="dropoff_datetime"))
+                 .split_column_by_example(source_column="pickup_datetime")
+                 .split_column_by_example(source_column="dropoff_datetime"))
 time_split_df.head(5)
 ```
 
@@ -809,20 +818,20 @@ time_split_df.head(5)
 </table>
 </div>
 
-Nevezze át az oszlopokat által generált a `split_column_by_example()` adjon kifejező nevet használni kívánt függvény.
+Nevezze át a `split_column_by_example()` függvény által generált oszlopokat az értelmes nevek használatára.
 
 ```python
 renamed_col_df = (time_split_df
-    .rename_columns(column_pairs={
-        "pickup_datetime_1": "pickup_date",
-        "pickup_datetime_2": "pickup_time",
-        "dropoff_datetime_1": "dropoff_date",
-        "dropoff_datetime_2": "dropoff_time"
-    }))
+                  .rename_columns(column_pairs={
+                      "pickup_datetime_1": "pickup_date",
+                      "pickup_datetime_2": "pickup_time",
+                      "dropoff_datetime_1": "dropoff_date",
+                      "dropoff_datetime_2": "dropoff_time"
+                  }))
 renamed_col_df.head(5)
 ```
 
-Hívja a `get_profile()` függvényt, hogy a teljes összefoglaló statisztikáit, amikor az összes adattisztítási műveleteket.
+A `get_profile()` függvény meghívásával megtekintheti a teljes összesítő statisztikát az összes tisztítási lépés után.
 
 ```python
 renamed_col_df.get_profile()
@@ -830,48 +839,50 @@ renamed_col_df.get_profile()
 
 ## <a name="transform-data"></a>Adatok átalakítása
 
-Ossza fel a begyűjtés és dropoff dátum további, a nap, hét, nap, hónap és havi értékeket. A nap, hét értékének lekéréséhez használja a `derive_column_by_example()` függvény. A függvény példa objektumok, amelyek meghatározzák a bemeneti adatokat, és az elsődleges kimenet egy tömb paramétert vesz igénybe. A függvény automatikusan határozza meg a kívánt átalakítást. A begyűjtés és dropoff idő oszlopok felosztása az idő az óra, perc és másodperc használatával a `split_column_by_example()` függvény paraméterek nélkül példa.
+A felvétel és a lemorzsolódási dátumának felosztása a hét napjára, a hónap napjára, valamint a hónap értékére. A hét napja értékének lekéréséhez használja a `derive_column_by_example()` függvényt. A függvény a bemeneti adatokat definiáló objektumok, valamint az előnyben részesített kimenet tömb paraméterét veszi át. A függvény automatikusan meghatározza az előnyben részesített átalakítást. A felvételi és a lemorzsolódási időoszlopok esetében az időt az óra, perc és másodperc értékre kell bontani a `split_column_by_example()` példa nélküli függvény használatával.
 
-Miután az új funkciók generál, a `drop_columns()` függvény az eredeti mezők törölni, mivel az újonnan létrehozott szolgáltatások használata javasolt. Nevezze át a többi jelentéssel bíró leírások használandó mezőt.
+Az új funkciók `drop_columns()` létrehozása után a függvénnyel törölheti az eredeti mezőket, ahogy az újonnan létrehozott funkciók előnyben részesítettek. Nevezze át a többi mezőt az értelmes leírások használatára.
 
-Ezzel a módszerrel új időalapú funkciók létrehozása az adatok átalakítása javul a gépi tanulási modell pontosságát. Például egy új szolgáltatás létrehozása, a hét napja segítséget nyújt a hét napja és a taxi diszkont ár közötti kapcsolatot hozhat létre, amelyek gyakran több nagy kereslet miatt a hét bizonyos napjain drága.
+Az adatok ily módon történő átalakítása új, időalapú funkciók létrehozásával javíthatja a gépi tanulási modell pontosságát. Például a hétköznap új funkciójának létrehozása segít a hét napja és a taxi viteldíja közötti kapcsolat létrehozásában, ami gyakran drágább a hét bizonyos napjain a nagy kereslet miatt.
 
 
 ```python
 transformed_features_df = (renamed_col_df
-    .derive_column_by_example(
-        source_columns="pickup_date",
-        new_column_name="pickup_weekday",
-        example_data=[("2009-01-04", "Sunday"), ("2013-08-22", "Thursday")]
-    )
-    .derive_column_by_example(
-        source_columns="dropoff_date",
-        new_column_name="dropoff_weekday",
-        example_data=[("2013-08-22", "Thursday"), ("2013-11-03", "Sunday")]
-    )
+                           .derive_column_by_example(
+                               source_columns="pickup_date",
+                               new_column_name="pickup_weekday",
+                               example_data=[
+                                   ("2009-01-04", "Sunday"), ("2013-08-22", "Thursday")]
+                           )
+                           .derive_column_by_example(
+                               source_columns="dropoff_date",
+                               new_column_name="dropoff_weekday",
+                               example_data=[
+                                   ("2013-08-22", "Thursday"), ("2013-11-03", "Sunday")]
+                           )
 
-    .split_column_by_example(source_column="pickup_time")
-    .split_column_by_example(source_column="dropoff_time")
-    # The following two calls to split_column_by_example reference the column names generated from the previous two calls.
-    .split_column_by_example(source_column="pickup_time_1")
-    .split_column_by_example(source_column="dropoff_time_1")
-    .drop_columns(columns=[
-        "pickup_date", "pickup_time", "dropoff_date", "dropoff_time",
-        "pickup_date_1", "dropoff_date_1", "pickup_time_1", "dropoff_time_1"
-    ])
+                           .split_column_by_example(source_column="pickup_time")
+                           .split_column_by_example(source_column="dropoff_time")
+                           # The following two calls to split_column_by_example reference the column names generated from the previous two calls.
+                           .split_column_by_example(source_column="pickup_time_1")
+                           .split_column_by_example(source_column="dropoff_time_1")
+                           .drop_columns(columns=[
+                               "pickup_date", "pickup_time", "dropoff_date", "dropoff_time",
+                               "pickup_date_1", "dropoff_date_1", "pickup_time_1", "dropoff_time_1"
+                           ])
 
-    .rename_columns(column_pairs={
-        "pickup_date_2": "pickup_month",
-        "pickup_date_3": "pickup_monthday",
-        "pickup_time_1_1": "pickup_hour",
-        "pickup_time_1_2": "pickup_minute",
-        "pickup_time_2": "pickup_second",
-        "dropoff_date_2": "dropoff_month",
-        "dropoff_date_3": "dropoff_monthday",
-        "dropoff_time_1_1": "dropoff_hour",
-        "dropoff_time_1_2": "dropoff_minute",
-        "dropoff_time_2": "dropoff_second"
-    }))
+                           .rename_columns(column_pairs={
+                               "pickup_date_2": "pickup_month",
+                               "pickup_date_3": "pickup_monthday",
+                               "pickup_time_1_1": "pickup_hour",
+                               "pickup_time_1_2": "pickup_minute",
+                               "pickup_time_2": "pickup_second",
+                               "dropoff_date_2": "dropoff_month",
+                               "dropoff_date_3": "dropoff_monthday",
+                               "dropoff_time_1_1": "dropoff_hour",
+                               "dropoff_time_1_2": "dropoff_minute",
+                               "dropoff_time_2": "dropoff_second"
+                           }))
 
 transformed_features_df.head(5)
 ```
@@ -1027,11 +1038,12 @@ transformed_features_df.head(5)
 </table>
 </div>
 
-Figyelje meg, hogy helyesek-e az adatok azt mutatja, hogy a begyűjtés és dropoff dátum és időpont összetevőket előállított a származtatott átalakításokat. Dobja el a `pickup_datetime` és `dropoff_datetime` oszlopok, mert már nem szükséges (részletes időpontja szolgáltatásai, óra, perc és másodperc hasznosak több modell betanítása).
+Figyelje meg, hogy az adatok azt mutatják, hogy a származtatott átalakításokból előállított felvételi és lemorzsolódási dátum és idő összetevők helyesek. A és `pickup_datetime` az `dropoff_datetime` oszlopok eldobása, mert már nem szükségesek (a modell betanításához hasznosak lehetnek a részletes időpontok, például az óra, a perc és a második).
 
 
 ```python
-processed_df = transformed_features_df.drop_columns(columns=["pickup_datetime", "dropoff_datetime"])
+processed_df = transformed_features_df.drop_columns(
+    columns=["pickup_datetime", "dropoff_datetime"])
 ```
 
 A típus következtetésekhez funkciójának használata automatikusan megkeresi a minden mező adattípusát, és a következtetésekhez eredmények megjelenítéséhez.
@@ -1043,7 +1055,7 @@ type_infer.learn()
 type_infer
 ```
 
-Az eredményül kapott kimenetének `type_infer` következő.
+Az eredményül kapott `type_infer` kimenet a következő:.
 
     Column types conversion candidates:
     'pickup_weekday': [FieldType.STRING],
@@ -1064,7 +1076,7 @@ Az eredményül kapott kimenetének `type_infer` következő.
     'dropoff_latitude': [FieldType.DECIMAL],
     'cost': [FieldType.DECIMAL]
 
-Következtetésekhez eredmények meg helyes-e az adatok alapján. Most már a alkalmazni az adatfolyamot, a típusátalakítás.
+A következtetések eredményei az adatok alapján helyesek. Most alkalmazza a típus konverzióját a adatfolyam.
 
 
 ```python
@@ -1072,14 +1084,14 @@ type_converted_df = type_infer.to_dataflow()
 type_converted_df.get_profile()
 ```
 
-Mielőtt az adatfolyamot becsomagolását, hogy az adatkészlet futtassa két végső szűrők. Helytelenül rögzített adatpontok kiküszöböléséhez, szűrheti a rögzíti az adatfolyamot, mind a `cost` és `distance` változók értékei csak nullánál nagyobb. Ebben a lépésben jelentősen növelhető a gépi tanulási modell pontosságát, mivel adatpontok esetében költség vagy távolság jelölik fő kiugró értékek, amelyek a throw ki előrejelzés pontosságát.
+A adatfolyam csomagolása előtt futtasson két végső szűrőt az adatkészleten. A helytelenül rögzített adatpontok eltávolításához szűrje a adatfolyam olyan rekordokon `cost` , `distance` ahol a és a változó értéke nagyobb nullánál. Ez a lépés jelentősen javítja a gépi tanulási modell pontosságát, mivel a nulla értékű vagy távolságú adatpontok jelentős kiugró értékeket jelentenek, amelyek kiváltják az előrejelzési pontosságot.
 
 ```python
 final_df = type_converted_df.filter(dprep.col("distance") > 0)
 final_df = final_df.filter(dprep.col("cost") > 0)
 ```
 
-Most már rendelkezik egy teljes körűen átalakított és előkészített adatfolyam-objektumot a gépi tanulási modellek használata. Az SDK objektum szerializációs funkciót tartalmaz, amely használja az alábbi kódban látható módon.
+Most már rendelkezik egy teljes mértékben átalakított és előkészített adatfolyam-objektummal a Machine learning-modellben való használatra. Az SDK tartalmaz egy objektum-szerializálási funkciót, amely az alábbi kódban látható módon használható.
 
 ```python
 import os
@@ -1090,21 +1102,21 @@ final_df.save(file_path)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyag második részében folytatásához van szüksége a **dflows.dprep** fájlt az aktuális könyvtárban található.
+Az oktatóanyag második részének folytatásához a **dflows. dprep** fájlra van szükség az aktuális könyvtárban.
 
-Ha nem folytatja a második, törölje a **dflows.dprep** fájlt az aktuális könyvtárban található. Törli ezt a fájlt, hogy helyileg futtatja a végrehajtási, vagy a [Azure notebookok](https://notebooks.azure.com/).
+Ha nem tervezi a második rész folytatását, törölje a **dflows. dprep** fájlt az aktuális könyvtárában. Törölje ezt a fájlt, hogy helyileg vagy Azure Notebookson futtatja [](https://notebooks.azure.com/)-e a végrehajtást.
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egyik részben meg:
 
 > [!div class="checklist"]
-> * A fejlesztési környezet beállítása.
-> * A betöltött és tisztított adatkészletek.
-> * Az intelligens átalakítások segítségével előre jelezni a logika egy példa alapján.
-> * Machine learning betanítási egyesített és csomagolt adathalmaz.
+> * Állítsa be a fejlesztési környezetet.
+> * Betöltött és megtisztított adathalmazok.
+> * Az intelligens átalakítók használatával előre megjósolhatja a logikát egy példa alapján.
+> * Egyesített és csomagolt adatkészletek a gépi tanulási képzéshez.
 
-Készen áll a betanítási adatok használatára az oktatóanyag második részében:
+Készen áll az oktatóanyag második részében szereplő betanítási adatmennyiség használatára:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag (második): A regressziós modell betanítása](tutorial-auto-train-models.md)
+> [Oktatóanyag (második rész): A regressziós modell betanítása](tutorial-auto-train-models.md)

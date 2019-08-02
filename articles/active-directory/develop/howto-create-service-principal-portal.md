@@ -1,6 +1,6 @@
 ---
-title: Azure-alkalmazáshoz identitás létrehozása a portálon |} A Microsoft Docs
-description: Ismerteti, hogyan hozzon létre egy új Azure Active Directory-alkalmazás és egyszerű szolgáltatás, amely a szerepköralapú hozzáférés-vezérlés az Azure Resource Manager-erőforrásokhoz való hozzáférés kezelésére használható.
+title: Identitás létrehozása az Azure-alkalmazáshoz a portálon | Microsoft Docs
+description: Ismerteti, hogyan lehet létrehozni egy új Azure Active Directory alkalmazást és egyszerű szolgáltatásnevet, amely a Azure Resource Manager szerepköralapú hozzáférés-vezérlésével használható az erőforrásokhoz való hozzáférés kezeléséhez.
 services: active-directory
 documentationcenter: na
 author: rwike77
@@ -14,142 +14,142 @@ ms.workload: na
 ms.date: 05/17/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.custom: seoapril2019
+ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bd1534b3f966051104a3f3ee389fb047ab258fc
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 825966fbb0db537aad8de39e69e17418e6432b44
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482812"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324684"
 ---
-# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: Az Azure AD-alkalmazás és -erőforrások elérésére képes egyszerű szolgáltatás létrehozása a portál használatával
+# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: A portál használatával létrehozhat egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz
 
-Ez a cikk bemutatja, hogyan hozhat létre egy új Azure Active Directory (Azure AD-) alkalmazás és a szerepköralapú hozzáférés-vezérléssel használható egyszerű szolgáltatást. Ha rendelkezik, amelyet eléréséhez, vagy módosítsa erőforrások, az alkalmazáshoz tartozó identitást hozhat létre. Ezt az identitást szolgáltatásnévnek nevezzük. A szolgáltatásnévnek majd hozzárendelheti a szükséges engedélyekkel. Ez a cikk bemutatja, hogyan az egyszerű szolgáltatás létrehozása a portál használatával. Egy egybérlős alkalmazást, ahol az alkalmazás futtatásához csak egy szervezeten belül célja összpontosít. Általában használnak a egybérlős alkalmazások az üzleti alkalmazások futtatására a szervezeten belül.
+Ez a cikk bemutatja, hogyan hozhat létre egy új Azure Active Directory (Azure AD) alkalmazást és egyszerű szolgáltatást, amely a szerepköralapú hozzáférés-vezérléssel használható. Ha olyan kóddal rendelkezik, amelynek szüksége van az erőforrások eléréséhez vagy módosításához, létrehozhat egy identitást az alkalmazáshoz. Ezt az identitást szolgáltatásnévnek nevezzük. Ezután hozzárendelheti az egyszerű szolgáltatáshoz szükséges engedélyeket. Ez a cikk bemutatja, hogyan hozhatja létre az egyszerű szolgáltatásnevet a portál használatával. Egy egybérlős alkalmazásra koncentrál, amelyben az alkalmazás csak egy szervezeten belül fut. Általában egybérlős alkalmazásokat használ a szervezeten belül futó üzletági alkalmazásokhoz.
 
 > [!IMPORTANT]
-> Egyszerű szolgáltatás létrehozása helyett fontolja meg a felügyelt identitások használatával az Azure-erőforrások esetében az alkalmazás azonosítóját. A kód egy szolgáltatás, amely támogatja a felügyelt identitások és hozzáférések erőforrások, amelyek támogatják az Azure AD-hitelesítés fut, felügyelt identitások-e az Ön számára jobb megoldás. További információ az Azure-erőforrásokhoz, mely szolgáltatások jelenleg támogatja, beleértve a felügyelt identitásokból [Mi az Azure-erőforrások felügyelt identitások?](../managed-identities-azure-resources/overview.md).
+> Egyszerű szolgáltatásnév létrehozása helyett érdemes felügyelt identitásokat használni az Azure-erőforrásokhoz az alkalmazás identitásához. Ha a kód olyan szolgáltatáson fut, amely támogatja a felügyelt identitásokat, és hozzáfér az Azure AD-hitelesítést támogató erőforrásokhoz, a felügyelt identitások jobb megoldást biztosítanak Önnek. Ha többet szeretne megtudni az Azure-erőforrások felügyelt identitásáról, beleértve a jelenleg támogatott szolgáltatásokat, tekintse meg a [Mi az Azure-erőforrások felügyelt identitásai?](../managed-identities-azure-resources/overview.md)című témakört.
 
-## <a name="create-an-azure-active-directory-application"></a>Az Azure Active Directory-alkalmazás létrehozása
+## <a name="create-an-azure-active-directory-application"></a>Azure Active Directory-alkalmazás létrehozása
 
-Nyissa meg közvetlenül az identitás létrehozása. Ha problémát tapasztal, ellenőrizze a [szükséges engedélyek](#required-permissions) , hogy a fiók képes létrehozni az identitást.
+Ugorjon egyenesen az identitás létrehozásához. Ha probléma lép fel, ellenőrizze a [szükséges engedélyeket](#required-permissions) annak biztosításához, hogy a fiókja létre tudja hozni az identitást.
 
-1. Jelentkezzen be az Azure-fiók révén a [az Azure portal](https://portal.azure.com).
+1. Jelentkezzen be az Azure-fiókjába [](https://portal.azure.com)a Azure Portalon keresztül.
 1. Válassza az **Azure Active Directory** elemet.
 1. Válassza az **Alkalmazásregisztrációk** elemet.
-1. Válassza ki **új regisztrációs**.
-1. Nevezze el az alkalmazást. Válasszon ki egy támogatott fiókot írja be, amely meghatározza, hogy ki használhatja az alkalmazást. Alatt **átirányítási URI-t**válassza **webes** szeretne létrehozni az alkalmazás számára. Adja meg az URI-t, ha a hozzáférési jogkivonatot a érkezik. Hitelesítő adatok nem hozható létre egy [natív alkalmazás](../manage-apps/application-proxy-configure-native-client-application.md). Egy automatikus alkalmazásnak típus nem használható. Miután beállította az értékeket, válassza ki a **regisztrálása**.
+1. Válassza az **új regisztráció**lehetőséget.
+1. Adja meg az alkalmazás nevét. Válasszon egy támogatott számlatípust, amely meghatározza, hogy kik használhatják az alkalmazást. Az **átirányítási URI**területen válassza a **web** lehetőséget a létrehozni kívánt alkalmazás típusához. Adja meg azt az URI-t, ahová a hozzáférési tokent elküldi. [Natív alkalmazás](../manage-apps/application-proxy-configure-native-client-application.md)hitelesítő adatai nem hozhatók létre. Az adott típus nem használható automatikus alkalmazáshoz. Az értékek beállítása után válassza a **regisztráció**lehetőséget.
 
-   ![Adjon meg egy nevet az alkalmazáshoz](./media/howto-create-service-principal-portal/create-app.png)
+   ![Adja meg az alkalmazás nevét](./media/howto-create-service-principal-portal/create-app.png)
 
-Az Azure AD-alkalmazás és egyszerű szolgáltatás létrehozott.
+Létrehozott egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet.
 
-## <a name="assign-the-application-to-a-role"></a>Alkalmazások szerepkörhöz rendeléséhez
+## <a name="assign-the-application-to-a-role"></a>Az alkalmazás társítása szerepkörhöz
 
-Az előfizetésben lévő erőforrások eléréséhez, hozzá kell rendelnie az alkalmazás egy szerepkörhöz. Döntse el, milyen szerepkört kínál az alkalmazás a megfelelő engedélyekkel. Az elérhető szerepkörök kapcsolatos további információkért lásd: [RBAC: Beépített szerepkörök](../../role-based-access-control/built-in-roles.md).
+Az előfizetés erőforrásainak eléréséhez hozzá kell rendelnie az alkalmazást egy szerepkörhöz. Döntse el, melyik szerepkör kínálja a megfelelő engedélyeket az alkalmazáshoz. Az elérhető szerepkörökről további információt a következő [témakörben talál: RBAC: Beépített szerepkörök](../../role-based-access-control/built-in-roles.md).
 
-Beállíthatja a hatókör szintjén is az előfizetés, erőforráscsoport vagy erőforrás. Alacsonyabb szintű hatókör, az engedélyek öröklődnek. Például egy alkalmazás az Olvasó szerepkörhöz, egy erőforráscsoport hozzáadása azt jelenti, hogy azt az erőforráscsoportot és az összes benne található erőforrást olvashatja.
+Megadhatja a hatókört az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. Alacsonyabb szintű hatókör, az engedélyek öröklődnek. Ha például hozzáad egy alkalmazást az erőforráscsoport olvasó szerepköréhez, az azt jelenti, hogy elolvashatja az erőforráscsoportot és a benne található összes erőforrást.
 
-1. Keresse meg a hatókör az alkalmazást hozzárendelni kívánt szintjét. Válassza ki például az előfizetések szintjén szerepkör hozzárendelése **minden szolgáltatás** és **előfizetések**.
+1. Navigáljon ahhoz a hatókörhöz, amelyhez hozzá szeretné rendelni az alkalmazást. Ha például egy szerepkört szeretne hozzárendelni az előfizetés hatókörében, válassza a **minden szolgáltatás** és **előfizetés**lehetőséget.
 
-   ![Ha például a az előfizetések szintjén szerepkör hozzárendelése](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Például rendeljen hozzá egy szerepkört az előfizetés hatókörében](./media/howto-create-service-principal-portal/select-subscription.png)
 
-1. Válassza ki az adott előfizetés hozzárendelése az alkalmazást.
+1. Válassza ki azt az előfizetést, amelyhez hozzá kívánja rendelni az alkalmazást.
 
-   ![Válasszon hozzárendelés előfizetést](./media/howto-create-service-principal-portal/select-one-subscription.png)
+   ![Előfizetés kiválasztása hozzárendeléshez](./media/howto-create-service-principal-portal/select-one-subscription.png)
 
-   Ha nem látja a keresett előfizetéshez, válasszon **globális előfizetés-szűrő**. Ellenőrizze, hogy az előfizetés ki van jelölve a portálon.
+   Ha nem látja a keresett előfizetést, válassza a **globális előfizetések szűrőt**. Győződjön meg arról, hogy a portálon a kívánt előfizetés van kiválasztva.
 
 1. Válassza ki **hozzáférés-vezérlés (IAM)** .
 1. Válassza ki **szerepkör-hozzárendelés hozzáadása**.
-1. Válassza ki a az alkalmazáshoz hozzárendelni kívánt szerepkört. Hajtsa végre a műveleteket, például az alkalmazás számára **újraindítás**, **start** és **leállítása** példányok, válassza ki a **közreműködői** szerepkör. Alapértelmezés szerint az Azure AD-alkalmazások nem megjelenik az elérhető lehetőségek közül. Keresse meg az alkalmazás, keresse meg a nevét, és jelölje ki.
+1. Válassza ki az alkalmazáshoz hozzárendelni kívánt szerepkört. Ha engedélyezni szeretné, hogy az alkalmazás olyan műveleteket hajtson végre, mint például az **Újraindítás**, a példányok **elindítása** és **leállítása** , válassza ki a **közreműködő** szerepkört. Alapértelmezés szerint az Azure AD-alkalmazások nem jelennek meg az elérhető beállítások között. Az alkalmazás megkereséséhez keresse meg a nevet, és jelölje ki.
 
-   ![Válassza ki a szerepkört az alkalmazás hozzárendelése](./media/howto-create-service-principal-portal/select-role.png)
+   ![Válassza ki az alkalmazáshoz hozzárendelni kívánt szerepkört](./media/howto-create-service-principal-portal/select-role.png)
 
-1. Válassza ki **mentése** befejeződik, a szerepkör hozzárendelése. Láthatja, hogy az alkalmazás a felhasználók az adott hatókörnél szerepköre a listában.
+1. Válassza ki **mentése** befejeződik, a szerepkör hozzárendelése. Az alkalmazás az adott hatókörhöz tartozó szerepkörhöz rendelt felhasználók listájában jelenik meg.
 
-Az egyszerű szolgáltatás be van állítva. Akkor megkezdheti a parancsfájlok vagy alkalmazások futtatásához. Ez a szakasz bemutatja, hogyan használatával lekérjük az értékeket, amelyek szükségesek, amikor programozott módon jelentkezik be.
+Az egyszerű szolgáltatásnév be van állítva. Elkezdheti használni a parancsfájlok vagy alkalmazások futtatását. A következő szakasz bemutatja, hogyan kérheti le a programozott módon történő bejelentkezéshez szükséges értékeket.
 
-## <a name="get-values-for-signing-in"></a>Bejelentkezés értékek beolvasása
+## <a name="get-values-for-signing-in"></a>Bejelentkezések értékeinek beolvasása
 
-Ha programozott módon jelentkezik be, kell átadni a bérlő Azonosítóját, a hitelesítési kérelemmel együtt. Az alkalmazás és a hitelesítési kulcs Azonosítóját is szükséges. Az értékek beszerzéséhez kövesse az alábbi lépéseket:
+Ha programozott módon jelentkezik be, át kell adnia a bérlő AZONOSÍTÓját a hitelesítési kérelemmel. Az alkalmazáshoz és a hitelesítési kulcshoz is szüksége lesz az AZONOSÍTÓra. Az értékek beszerzéséhez kövesse az alábbi lépéseket:
 
 1. Válassza az **Azure Active Directory** elemet.
-1. A **alkalmazásregisztrációk** az Azure AD-ben válassza ki az alkalmazását.
-1. A könyvtár (bérlő) azonosítóját, és tárolja az alkalmazás kódjában.
+1. Az Azure AD-ban **Alkalmazásregisztrációk** válassza ki az alkalmazást.
+1. Másolja a címtár-(bérlői) azonosítót, és tárolja azt az alkalmazás kódjában.
 
-    ![Másolja a könyvtárat (bérlő azonosító), és tárolja a kód](./media/howto-create-service-principal-portal/copy-tenant-id.png)
+    ![Másolja a könyvtárat (bérlői azonosítót), és tárolja azt az alkalmazás kódjában.](./media/howto-create-service-principal-portal/copy-tenant-id.png)
 
 1. Másolja ki az **Alkalmazásazonosítót**, és tárolja az alkalmazás kódjában.
 
-   ![Másolja az Alkalmazásazonosítót (ügyfél)](./media/howto-create-service-principal-portal/copy-app-id.png)
+   ![Az alkalmazás (ügyfél) AZONOSÍTÓjának másolása](./media/howto-create-service-principal-portal/copy-app-id.png)
 
-## <a name="certificates-and-secrets"></a>Tanúsítványok és titkos kulcsok
-Démon alkalmazások használhatják a kétféle hitelesítő adatot az Azure AD-hitelesítést: tanúsítványok és titkos alkalmazáskulcsok.  Javasoljuk, hogy olyan tanúsítványt használ, de is létrehozhat egy új Alkalmazáskulcs.
+## <a name="certificates-and-secrets"></a>Tanúsítványok és titkos kódok
+A Daemon-alkalmazások kétféle hitelesítő adatot használhatnak az Azure AD-vel való hitelesítéshez: tanúsítványok és alkalmazás-titkos kódok.  Javasoljuk, hogy használjon egy tanúsítványt, de új alkalmazás-titkos kulcsot is létrehozhat.
 
 ### <a name="upload-a-certificate"></a>Tanúsítvány feltöltése
 
-Egy létező tanúsítványt is használhatja, ha rendelkezik ilyennel.  Igény szerint hozhat létre egy önaláírt tanúsítványt tesztelési célokra. Nyissa meg a Powershellt, és futtassa [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) önaláírt tanúsítvány létrehozása a felhasználó tanúsítványtárolójában a számítógépen a következő paraméterekkel: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`.  A tanúsítvány használatával történő exportálás a [felhasználói tanúsítvány kezelése](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) MMC beépülő modul a Windows Vezérlőpult érhető el.
+Ha van ilyen, használhat meglévő tanúsítványt is.  Létrehozhat egy önaláírt tanúsítványt is tesztelési célokra. Nyissa meg a PowerShellt, és futtassa a [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) parancsot a következő paraméterekkel egy önaláírt tanúsítvány létrehozásához a számítógép felhasználói `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`tanúsítványtárolójában:.  Exportálja a tanúsítványt a Windows Vezérlőpultján elérhető [felhasználói tanúsítvány kezelése](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) MMC beépülő modul használatával.
 
-A tanúsítvány feltöltéséhez:
+A tanúsítvány feltöltése:
 
-1. Válassza ki **tanúsítványok és titkos kulcsok**.
-1. Válassza ki **tanúsítvány feltöltése** , és válassza ki a tanúsítványt (meglévő tanúsítványt vagy önaláírt tanúsítványt, az exportált).
+1. Válassza ki a **tanúsítványok & Secrets**elemet.
+1. Válassza a **tanúsítvány feltöltése** lehetőséget, és válassza ki a tanúsítványt (egy meglévő tanúsítványt vagy az exportált önaláírt tanúsítványt).
 
-    ![Válassza ki a tanúsítvány feltöltése, és válassza ki a hozzáadni kívánt](./media/howto-create-service-principal-portal/upload-cert.png)
+    ![Válassza a tanúsítvány feltöltése lehetőséget, és válassza ki a hozzáadni kívánt elemet](./media/howto-create-service-principal-portal/upload-cert.png)
 
 1. Válassza a **Hozzáadás** lehetőséget.
 
-Miután felvette a tanúsítványt az alkalmazásregisztrációs portálon az alkalmazását, a tanúsítvány használatára az ügyfél alkalmazáskód engedélyeznie kell.
+Miután regisztrálta a tanúsítványt az alkalmazással az alkalmazás regisztrációs portálján, engedélyeznie kell az ügyfélalkalmazás kódját a tanúsítvány használatához.
 
-### <a name="create-a-new-application-secret"></a>Hozzon létre egy új Alkalmazáskulcs
+### <a name="create-a-new-application-secret"></a>Új alkalmazás-titok létrehozása
 
-Ha nem kíván használni egy tanúsítványt, létrehozhat egy új Alkalmazáskulcs.
+Ha úgy dönt, hogy nem használ tanúsítványt, létrehozhat egy új alkalmazás-titkot.
 
-1. Válassza ki **tanúsítványok és titkos kulcsok**.
-1. Válassza ki **ügyfél titkos kódok -> Új titkos ügyfélkulcsot**.
-1. Adjon meg egy leírást a titkos kulcsot és egy időtartamot. Ha elkészült, válassza **Hozzáadás**.
+1. Válassza ki a **tanúsítványok & Secrets**elemet.
+1. Válassza ki az **ügyfél titkai-> új ügyfél titkát**.
+1. Adja meg a titok leírását és időtartamát. Ha elkészült, válassza a **Hozzáadás**lehetőséget.
 
-   Az ügyfél titkos kulcsát a mentés után jelenik meg a titkos ügyfélkulcsot értékét. Másolja ezt az értéket, mert nem sikerült beolvasni a kulcsot később. A kulcs értékét az alkalmazás azonosítójával jelentkezzen be az alkalmazást, hogy adja meg. A kulcsértéket olyan helyen tárolja, ahonnan az alkalmazás le tudja kérni.
+   Az ügyfél titkos kulcsának mentése után megjelenik az ügyfél titkos kulcsának értéke. Másolja ezt az értéket, mert később nem tudja lekérni a kulcsot. Adja meg a kulcs értékét az alkalmazás-AZONOSÍTÓval, és jelentkezzen be alkalmazásként. A kulcsértéket olyan helyen tárolja, ahonnan az alkalmazás le tudja kérni.
 
-   ![Másolja a titkos értéket, mert nem lehet lekérdezni a ez később](./media/howto-create-service-principal-portal/copy-secret.png)
+   ![Másolja a titkos értéket, mert később nem lehet beolvasni](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
-Rendelkezik megfelelő engedélyekkel alkalmazások regisztrációjához az Azure AD-bérlőhöz, és alkalmazások szerepkörhöz rendeléséhez az Azure-előfizetésében.
+Az alkalmazás Azure AD-Bérlővel való regisztrálásához és az alkalmazás az Azure-előfizetésben lévő szerepkörhöz való hozzárendeléséhez megfelelő engedélyekkel kell rendelkeznie.
 
-### <a name="check-azure-ad-permissions"></a>Ellenőrizze az Azure AD-engedélyekről
+### <a name="check-azure-ad-permissions"></a>Azure AD-engedélyek keresése
 
 1. Válassza az **Azure Active Directory** elemet.
-1. Megjegyzés: a szerepkör. Ha rendelkezik a **felhasználói** szerepkör, győződjön meg arról, hogy a nem rendszergazda felhasználók regisztrálhatnak alkalmazásokat.
+1. Jegyezze fel a szerepkört. Ha rendelkezik a **felhasználói** szerepkörrel, meg kell győződnie arról, hogy a nem rendszergazdák regisztrálhatják az alkalmazásokat.
 
-   ![Keresse meg a szerepkört. Ha egy felhasználó, győződjön meg arról, nem rendszergazda jogosultságú alkalmazások akkor regisztrálhatnak.](./media/howto-create-service-principal-portal/view-user-info.png)
+   ![Keresse meg a szerepkört. Ha Ön felhasználó, győződjön meg arról, hogy a nem rendszergazdák regisztrálhatnak alkalmazásokat](./media/howto-create-service-principal-portal/view-user-info.png)
 
-1. Válassza ki **felhasználói beállítások**.
-1. Ellenőrizze a **alkalmazásregisztrációk** beállítás. Ez az érték csak egy rendszergazda állítható. Ha beállítása **Igen**, az Azure AD-bérlőben a felhasználói regisztrálhatnak egy alkalmazást.
+1. Válassza a **felhasználói beállítások**lehetőséget.
+1. Keresse meg a **Alkalmazásregisztrációk** beállítást. Ezt az értéket csak rendszergazda állíthatja be. Ha az **Igen**értékre van állítva, akkor az Azure ad-bérlő bármelyik felhasználója regisztrálhat egy alkalmazást.
 
-Ha az alkalmazásregisztrációk beállítás értéke **nem**, csak a rendszergazdai szerepkörrel rendelkező felhasználók regisztrálhatnak ilyen típusú alkalmazásokat. Lásd: [elérhető szerepkörök](../users-groups-roles/directory-assign-admin-roles.md#available-roles) és [szerepköri jogosultságok](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) elérhető rendszergazdai szerepköröket és engedélyeket az Azure ad-ben minden egyes szerepkörhöz megadott ismerteti. Ha a fiók hozzá van rendelve a felhasználói szerepkörhöz, de az alkalmazás regisztrációs beállítás korlátozott rendszergazdai jogosultságú felhasználókhoz, kérje meg a rendszergazdát, hogy akár hozzárendelése egy hozhat létre és kezelhet minden aspektusára alkalmazásregisztrációk vagy engedélyezése a felhasználók számára a rendszergazdai szerepköre alkalmazások regisztrálása.
+Ha az alkalmazás regisztrációja **nem**értékre van állítva, akkor csak a rendszergazdai szerepkörrel rendelkező felhasználók regisztrálhatják az ilyen típusú alkalmazásokat. A rendelkezésre álló rendszergazdai szerepkörökről és az egyes szerepkörökhöz megadott Azure AD-engedélyekről az [elérhető szerepkörök](../users-groups-roles/directory-assign-admin-roles.md#available-roles) és [szerepkör-engedélyek](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) című szakaszban talál további információt. Ha a fiókja hozzá van rendelve a felhasználói szerepkörhöz, de az alkalmazás regisztrációs beállítása a rendszergazda felhasználókra korlátozódik, kérje meg a rendszergazdát, hogy rendeljen hozzá egy olyan rendszergazdai szerepkört, amely az alkalmazások regisztrálásának minden aspektusát létrehozhatja és kezelheti, vagy engedélyezheti a felhasználók számára, hogy alkalmazások regisztrálása.
 
-### <a name="check-azure-subscription-permissions"></a>Azure-előfizetés engedélyek ellenőrzése
+### <a name="check-azure-subscription-permissions"></a>Azure-előfizetési engedélyek keresése
 
-Az Azure-előfizetésében, a fióknak rendelkeznie kell `Microsoft.Authorization/*/Write` AD-alkalmazás hozzárendelése szerepkörhöz való hozzáférést. Ezt a műveletet a [Tulajdonos](../../role-based-access-control/built-in-roles.md#owner) szerepkör vagy a [Felhasználói hozzáférés rendszergazdája](../../role-based-access-control/built-in-roles.md#user-access-administrator) szerepkör végezheti el. Ha a fiók hozzá van rendelve a **közreműködői** szerepkör nem rendelkezik megfelelő engedéllyel. Az egyszerű szolgáltatás hozzárendelése szerepkörhöz megkísérlésekor hibaüzenetet kap.
+Az Azure-előfizetésében a fióknak `Microsoft.Authorization/*/Write` hozzáféréssel kell rendelkeznie az ad-alkalmazás szerepkörhöz való hozzárendeléséhez. Ezt a műveletet a [Tulajdonos](../../role-based-access-control/built-in-roles.md#owner) szerepkör vagy a [Felhasználói hozzáférés rendszergazdája](../../role-based-access-control/built-in-roles.md#user-access-administrator) szerepkör végezheti el. Ha a fiókja hozzá van rendelve a **közreműködő** szerepkörhöz, Önnek nincs megfelelő engedélye. Hibaüzenet jelenik meg, amikor megkísérli hozzárendelni a szolgáltatásnevet egy szerepkörhöz.
 
-Ellenőrizze előfizetése engedélyei között:
+Az előfizetési engedélyek ellenőrzését:
 
-1. Válassza ki a fiók jobb felső sarokban, majd válassza ki **… -> saját engedélyek**.
+1. Válassza ki a fiókját a jobb felső sarokban, és válassza a **... – > saját engedélyek**lehetőséget.
 
-   ![Válassza ki a fiókot és a felhasználói engedélyek](./media/howto-create-service-principal-portal/select-my-permissions.png)
+   ![Válassza ki a fiókját és a felhasználói engedélyeit](./media/howto-create-service-principal-portal/select-my-permissions.png)
 
-1. A legördülő listából válassza ki a kívánt előfizetést, az egyszerű szolgáltatás létrehozásához. Ezután válassza ki **teljes hozzáférési megtekintéséhez kattintson ide az előfizetés részletei**.
+1. A legördülő listában válassza ki azt az előfizetést, amelyben létre szeretné hozni az egyszerű szolgáltatást. Ezután **kattintson ide az előfizetés teljes hozzáférés részleteinek megtekintéséhez**.
 
-   ![Az egyszerű szolgáltatásnév létrehozása a kívánt előfizetés kiválasztásához](./media/howto-create-service-principal-portal/view-details.png)
+   ![Válassza ki azt az előfizetést, amelyben létre kívánja hozni a szolgáltatásnevet a következőben:](./media/howto-create-service-principal-portal/view-details.png)
 
-1. Válassza ki **szerepkör-hozzárendelések** a hozzárendelt szerepkörök megtekintése, és határozza meg, hogy rendelkezik-e megfelelő engedélyekkel AD-alkalmazás hozzárendelése szerepkörhöz. Ha nem, kérje meg az előfizetés adminisztrátorát, hogy vegye fel Önt a felhasználói hozzáférés rendszergazdájának szerepköre. Az alábbi ábrán a felhasználó a tulajdonos szerepkör, ami azt jelenti, hogy a felhasználó rendelkezik megfelelő engedélyekkel van rendelve.
+1. Válassza ki a **szerepkör** -hozzárendeléseket a hozzárendelt szerepkörök megtekintéséhez, és állapítsa meg, hogy rendelkezik-e megfelelő engedélyekkel egy ad-alkalmazás szerepkörhöz való hozzárendeléséhez. Ha nem, kérje meg az előfizetés rendszergazdáját, hogy vegye fel Önt a felhasználói hozzáférés rendszergazdai szerepkörbe. A következő képen a felhasználó a tulajdonos szerepkörhöz lesz rendelve, ami azt jelenti, hogy a felhasználó rendelkezik a megfelelő engedélyekkel.
 
-   ![Ez a példa bemutatja, hogy a felhasználó a tulajdonosi szerepkör van rendelve.](./media/howto-create-service-principal-portal/view-user-role.png)
+   ![Ez a példa azt mutatja be, hogy a felhasználó hozzá van rendelve a tulajdonosi szerepkörhöz](./media/howto-create-service-principal-portal/view-user-role.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* Több-bérlős alkalmazás beállításával kapcsolatban lásd: [fejlesztői útmutatója az Azure Resource Manager API-val engedélyezési](../../azure-resource-manager/resource-manager-api-authentication.md).
-* Biztonsági szabályzatok megadásával kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/role-assignments-portal.md).  
-* Rendelkezésre álló műveletek kapnak, vagy nem jogosult felhasználók listáját lásd: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md).
+* Több-bérlős alkalmazás beállításához tekintse [meg a fejlesztői útmutató a Azure Resource Manager API-val](../../azure-resource-manager/resource-manager-api-authentication.md)való engedélyezéséhez című témakört.
+* A biztonsági szabályzatok megadásával kapcsolatos információkért lásd: [Azure szerepköralapú Access Control](../../role-based-access-control/role-assignments-portal.md).  
+* A felhasználók számára megadható vagy megtagadható elérhető műveletek listáját itt tekintheti meg: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md).

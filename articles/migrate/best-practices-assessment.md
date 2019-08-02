@@ -1,66 +1,62 @@
 ---
-title: Ajánlott eljárások az értékelés létrehozása az Azure Migrate Server Assessment |} A Microsoft Docs
-description: Tippek az Azure Migrate Server Assessment értékelés létrehozásához.
+title: Ajánlott eljárások az értékelés létrehozásához a Azure Migrate Server Assessment szolgáltatással | Microsoft Docs
+description: Tippek az értékelések létrehozásához Azure Migrate Server Assessment segítségével.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: d417efd4abf14247af171ea77b479f590e14fe76
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: 18b82b5553f7045c38c9de532199c2a0fd815ee1
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812961"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234301"
 ---
-# <a name="best-practices-for-creating-assessments"></a>Értékelések létrehozásának ajánlott eljárásai
+# <a name="best-practices-for-creating-assessments"></a>Ajánlott eljárások az értékelések létrehozásához
 
-[Az Azure Migrate](migrate-overview.md) hub eszközöket tartalmazza, amelyek segítséget nyújtanak a felderítése, értékelheti és migrálhatja az alkalmazásokat, az infrastruktúra és a számítási feladatok a Microsoft Azure biztosít. A hub tartalmaz, az Azure Migrate eszközökkel és külső független szoftverszállítók (ISV) szállító ajánlatok. 
+[Azure Migrate](migrate-overview.md) olyan eszközöket biztosít, amelyek segítségével az alkalmazások, az infrastruktúra és a munkaterhelések felderíthető, mérhetők és áttelepíthetők a Microsoft Azure. A hub Azure Migrate eszközöket és külső gyártótól származó független szoftvergyártó (ISV) ajánlatokat tartalmaz.
 
-Ez a cikk az Azure Migrate Server Assessment eszközzel értékelések létrehozásakor ajánlott eljárásokat foglalja össze. 
+Ez a cikk Az értékelések Azure Migrate Server Assessment eszközzel történő létrehozásával kapcsolatos ajánlott eljárásokat foglalja össze.
 
-## <a name="about-assessments"></a>Értékelések kapcsolatban
+## <a name="about-assessments"></a>Az értékelések ismertetése
 
-Létrehozott egy Azure Migrate Server Assessment értékelések olyan adatok időponthoz pillanatképet. Az Azure Migrate értékelések két típusa van.
+Az Azure Migrate Server Assessmenttel létrehozott értékelések az adatok időpontra vonatkozó pillanatképei. A Azure Migrateban kétféle értékelés van.
 
 **Értékelés típusa** | **Részletek** | **Adatok**
 --- | --- | ---
-**Teljesítményalapú** | Értékelések, amely ajánlásokat alapján összegyűjtött teljesítményadatok | Virtuális gép mérete javaslat Processzor és a memória kihasználtsági adatok alapján.<br/><br/> Lemez típusa javaslat (standard vagy prémium szintű felügyelt lemezek) az IOPS és átviteli sebessége, a helyi lemezek alapul.
-**T-a helyszínen** | Amelyek nem használják a teljesítmény adatait ajánlásokat értékelések. | Virtuális gép mérete javaslat a helyszíni virtuális gép mérete alapján<br/><br> A javasolt lemez típusa alapján az értékelés beállítása a tárolótípus kiválasztása.
+**Teljesítmény-alapú** | Az összegyűjtött teljesítményadatok alapján ajánlásokat tevő értékelések | A virtuálisgép-méretre vonatkozó javaslat a processzor-és memóriahasználat adatain alapul.<br/><br/> A lemez típusára vonatkozó javaslat (standard HDD/SSD vagy prémium szintű Managed Disks) a helyszíni lemezek IOPS és átviteli sebességén alapul.
+**Helyszíni** | Az olyan értékelések, amelyek nem használnak teljesítményadatokat, ajánlásokat tesznek. | A VM-méretre vonatkozó javaslat a helyszíni virtuális gép méretétől függ.<br/><br> Az ajánlott lemez típusa az értékeléshez megadott tárolási típus beállításán alapul.
 
 ### <a name="example"></a>Példa
-Például ha egy helyszíni virtuális gép 20 %-os kihasználtságot, és 8 GB memóriát, valamint 10 %-os kihasználtságot, négy maggal rendelkezik az értékelések a következők:
+Ha például egy helyszíni virtuális gép négy maggal rendelkezik 20%-os kihasználtsággal, és 8 GB memóriát használ 10%-os kihasználtsággal, az értékelések a következők lesznek:
 
-- **Értékelés teljesítményalapú**:
-    - Javasolja a magok és a memória-mag (0,8 mag), és a memóriahasználat (0,8 GB) alapján.
-    - Az értékelés egy alapértelmezett kompatibilitási faktor 30 %-os vonatkozik.
-    - Virtuális gépekre vonatkozó javaslatot: ~1.4 mag (0,8 x1.3) és a ~1.4 GB memória.
-- **T-a (helyszíni) értékelés**:
-    -  Javasolja, négy magot; virtuális gép 8 GB memóriát.
+- **Teljesítmény-alapú értékelés**:
+    - A hatékony magok és memória azonosítása a mag (4 x 0,20 = 0,8) és a memória (8 GB x 0,10 = 0,8) kihasználtsága alapján.
+    - Az értékelés tulajdonságainál megadott kényelmi tényezőt alkalmazza (le'ts mondjuk 1,3 x) a méretezéshez használandó értékek lekéréséhez. 
+    - Az Azure-ban a legközelebbi virtuálisgép-méretet javasolja, amely támogatja a ~ 1,4 mag (0,8 x 1,3) és a ~ 1,4 GB (0,8 x 1,3) memóriát.
 
-## <a name="best-practices-for-creating-assessments"></a>Értékelések létrehozásának ajánlott eljárásai
+- A **(helyszíni) felmérés**:
+    -  Négy maggal rendelkező virtuális gépet javasol; 8 GB memória.
 
-Az Azure Migrate készülék folyamatosan profilt a helyszíni környezetben, és metaadat-és teljesítményadatokat küld az Azure-bA. Kövesse az ajánlott eljárások az értékelés létrehozása:
+## <a name="best-practices-for-creating-assessments"></a>Ajánlott eljárások az értékelések létrehozásához
 
-- **Hozzon létre-értékelések van**: Létrehozhatja úgy is – az értékelések közvetlenül a felderítés után.
-- **Teljesítmény-alapú értékelés létrehozása**: Miután beállította a felderítés, azt javasoljuk, hogy legalább egy napot várni a teljesítményalapú értékelés futtatása előtt:
-    - Teljesítményadatok gyűjtése időt vesz igénybe. Legalább egy napot vár biztosíthatja, hogy elegendő teljesítményt adatpont az értékelés futtatása előtt.
-    - Teljesítményadatok a készülék valós idejű adatokat gyűjt minden teljesítménymetrikájának 20 másodpercenként, és legfeljebb egy öt perces adatpont összesíti azokat. A berendezés küld az öt perces adatpont az Azure-bA óránként értékelés kiszámítása.  
-- **A legújabb adatok**: Értékelések automatikusan nem frissül a legújabb adatokkal. Az értékelés frissítése a legújabb adatokkal, kell ismételt futtatásához. 
-- **Ellenőrizze, hogy a megfelelő időtartamok**: Amikor teljesítmény alapuló értékeléseket rendszert használ, ellenőrizze, hogy a profil a környezet értékelés idejére. Ha például hoz létre egy értékelést a teljesítmény időtartamát, egy hétre értékre, ha szeretne várjon legalább egy hétig felderítés az összes adatponttal gyűjtendő elindítása után. Ha nem, akkor az értékelés Ötcsillagos minősítést nem kaphat. 
-- **Kerülje a hiányzó adatpontokat**: A következő problémák hiányzik az adatpontok teljesítményalapú értékeléssel eredményezhet:
-    - Virtuális gépek is ki van kapcsolva az értékelés során, és a teljesítményadatok nem lesznek gyűjtve. 
-    - Ha a virtuális gépek korábbi teljesítménye alapján, amelyen a hónap során hoz létre. a virtuális gépeken az adatokat kevesebb mint egy hónapig lesz. 
-    - Az értékelés jön létre azonnal a felderítés után, vagy az értékelés időpontja nem felel meg a teljesítmény adatok gyűjtése idő.
+Az Azure Migrate készülék folyamatosan felméri a helyszíni környezetet, és metaadatokat és teljesítményadatokat küld az Azure-nak. Az értékelések létrehozásához kövesse az alábbi ajánlott eljárásokat:
 
-## <a name="best-practices-for-confidence-ratings"></a>Ajánlott eljárások a megbízhatósági minősítés
+- **Létrehozás mint-is értékelések**: A as-a-értékelések azonnal létrehozhatók, amint a gépek megjelennek a Azure Migrate portálon.
+- **Teljesítmény-alapú Értékelés létrehozása**: A felderítés beállítása után javasoljuk, hogy várjon legalább egy napot a teljesítmény-alapú értékelés futtatása előtt:
+    - A teljesítményadatok gyűjtése időt vesz igénybe. Legalább egy nap várakozásával gondoskodhat arról, hogy az értékelés futtatása előtt elegendő teljesítményadatok legyenek.
+    - Ha teljesítmény-alapú értékeléseket futtat, győződjön meg arról, hogy a környezete az értékelés időtartamára van feldolgozva. Ha például egy hétre állítja össze az értékelést, akkor a felderítés megkezdése után legalább egy hétig meg kell várnia az összes összegyűjtött adatpontot. Ha nem, az értékelés nem kap öt csillagos minősítést.
+- **Értékelések**újraszámítása: Mivel az értékelések időponthoz kötődő Pillanatképek, nem frissülnek automatikusan a legújabb adattal. Ha frissíteni szeretne egy értékelést a legújabb adattal, újra kell számítania.
 
-Teljesítmény alapuló értékeléseket futtatásakor értékelése beszállító a megbízhatósági minősítés az 1 csillag (legalacsonyabb), 5 csillagos (legmagasabb). Megbízhatósági minősítés használandó hatékonyan:
-- Az Azure Migrate Server Assessment VM CPU/memória és a lemez IOPS/átviteli sebességről kihasználtsági adataira van szüksége.
-- Az összes virtuális Géphez csatolt hálózati adapter az Azure Migrate kell a hálózati bejövő és kimenő adatokat.
-- Ha a kihasználtsági adatok nem érhető el a vCenter Serverben, Azure Migrate által adott méretjavaslat nem megbízható. 
+## <a name="best-practices-for-confidence-ratings"></a>Ajánlott eljárások a megbízhatósági minősítéshez
 
-Az elérhető adatpontok, függően meg az értékelés megbízhatósági minősítése az alábbi táblázat foglalja össze.
+A teljesítmény-alapú értékelések futtatásakor a rendszer az értékeléshez az 1 csillagos (legalacsonyabb) és az 5 csillag közötti megbízhatósági minősítést adja meg. Megbízhatósági minősítések hatékony használata:
+- Azure Migrate kiszolgáló értékeléséhez a virtuális gép PROCESSZORának/memóriájának kihasználtsági adatai szükségesek.
+- A helyszíni virtuális géphez csatlakoztatott minden lemezhez szükség van az írási/olvasási IOPS/adatátviteli adatokra.
+- A virtuális géphez csatlakoztatott minden hálózati adapter esetében a hálózat be-és kimenő adatelérésére van szükség.
+
+A kiválasztott időtartamhoz elérhető adatpontok százalékos arányának függvényében az értékelés megbízhatósági minősítése az alábbi táblázat szerint Összefoglalva lesz.
 
    **Adatpont rendelkezésre állása** | **Megbízhatósági minősítés**
    --- | ---
@@ -70,31 +66,31 @@ Az elérhető adatpontok, függően meg az értékelés megbízhatósági minős
    61%-80% | 4 csillag
    81%-100% | 5 csillag
 
-- A megbízhatósági minősítés, amely öt csillag alatt van egy értékelést kap, ha legalább egy napot várni, és ezután számíthatja újra az értékelést.
-- Alacsony értékelésnek azt jelenti, hogy a méretezési javaslatok előfordulhat, hogy nem megbízható. Ebben az esetben javasoljuk, hogy az értékelésben adatokként módosítása – helyszíni assessment van.
 
 ## <a name="common-assessment-issues"></a>Gyakori értékelési problémák
 
-Íme néhány gyakori hibákhoz környezetet érintő értékelések.
+Az értékeléseket érintő gyakori környezeti problémák megoldásához.
 
-###  <a name="out-of-sync-assessments"></a>Szinkronizálás out értékelések
+###  <a name="out-of-sync-assessments"></a>Nem szinkronizált értékelések
 
-Adja hozzá, vagy a gép eltávolítása egy csoportból, az értékelés létrehozása után, ha az értékelés létrehozott lesznek megjelölve **szinkronizálás out**. Futtassa újra az értékelést (**újraszámítása**) a csoport változásainak.
+Ha gépeket ad hozzá vagy távolít el egy csoportból egy Értékelés létrehozása után, a létrehozott értékelést a rendszer szinkronként jelöli **meg**. Futtassa újra az értékelést **** (újraszámítva), hogy tükrözze a csoport módosításait.
 
 ### <a name="outdated-assessments"></a>Elavult értékelések
 
-Ha a helyszíni virtuális gépek számára egy csoport lett adatokon, az értékelés van megjelölve **elavult**. Az elvégzett módosításoknak megfelelően, futtassa újra az értékelést.
+Ha olyan helyszíni módosításokat végeznek a virtuális gépeken, amelyek egy értékelt csoportban vannak, az értékelés **elavultként**van megjelölve. A módosítások tükrözéséhez futtassa újra az értékelést.
 
-### <a name="missing-data-points"></a>Hiányzó adatpontokat
+### <a name="low-confidence-rating"></a>Alacsony megbízhatósági minősítés
 
-Értékelés összes adatponttal a számos oka lehet, hogy nincs:
+Előfordulhat, hogy az értékelés számos okból nem rendelkezik az összes adatponttal:
 
-- Előfordulhat, hogy kikapcsolt virtuális gépek, az értékelés során, és a teljesítményadatok nem lesznek gyűjtve. 
-- Virtuális gépek előfordulhat, hogy hozható létre, amelyek előzményei alapján a hónap során, a ily módon a teljesítményadatok kevesebb mint egy hónapig. 
-- Az értékelés közvetlenül a felderítés után jött létre. Annak érdekében, hogy teljesítményadatokat gyűjtsön a megadott időn, meg kell várnia az értékelés futtatása előtt a megadott időn. Például ha szeretne egy hétig teljesítményadatok felmérése, meg kell felderítés után egy hét múlva. Ha nem, akkor az értékelés Ötcsillagos minősítést nem jelenik meg. 
+- Nem végzett profilkészítést a környezeten abban az időtartamban, amelyre az értékelést létrehozta. Ha például egy hétre beállított teljesítmény *-alapú értékelést* hoz létre, akkor legalább egy hétig várnia kell, miután elindította az összes adatpont felderítését. Az újraszámítások lehetőségre kattintva megtekintheti a legújabb alkalmazható megbízhatósági minősítést. **** A megbízhatósági minősítés csak akkor alkalmazható, ha *teljesítmény-alapú* értékelést hoz létre.
+
+- Néhány virtuális gép le lett állítva abban az időszakban, amelyhez az értékelést számította. Ha néhány virtuális gép ki van kapcsolva bizonyos időtartamra, a kiszolgáló értékelése nem fogja tudni gyűjteni az adott időszak teljesítményadatait.
+
+- A kiszolgáló értékelésének megkezdése után néhány virtuális gép lett létrehozva. Ha például az utolsó egy hónap teljesítményelőzményeinek értékelését hozza létre, de néhány virtuális gép csak egy hete jött létre a környezetben. Ebben az esetben az új virtuális gépek teljesítményadatait nem lehet a teljes időtartamra elérhetővé tennie, és a megbízhatósági minősítés alacsony lenne.
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Ismerje meg,](concepts-assessment-calculation.md) értékelések számításával.
-- [Ismerje meg,](how-to-modify-assessment.md) értékelés testreszabása.
+- [További információ](concepts-assessment-calculation.md) az értékelések kiszámításáról.
+- [](how-to-modify-assessment.md) Megtudhatja, hogyan szabhatja testre az értékeléseket.

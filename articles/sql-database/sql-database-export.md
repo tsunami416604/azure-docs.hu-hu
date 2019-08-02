@@ -1,6 +1,6 @@
 ---
-title: Exportálás egyetlen vagy készletezett Azure SQL-adatbázis BACPAC-fájlba |} A Microsoft Docs
-description: Azure SQL-adatbázis exportálása BACPAC-fájlba az Azure portal használatával
+title: Egyetlen vagy készletezett Azure SQL-adatbázis exportálása BACPAC-fájlba | Microsoft Docs
+description: Azure SQL Database-adatbázis exportálása BACPAC-fájlba a Azure Portal használatával
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -10,75 +10,76 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
-ms.date: 03/11/2019
-ms.openlocfilehash: c87979760730cbe8f57d8f65463c94d08888aa2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/16/2019
+ms.openlocfilehash: 9b4770f565f256d444ab6a6f06bb369b8417eb18
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762761"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568252"
 ---
-# <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL-adatbázis exportálása BACPAC-fájlba
+# <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL Database-adatbázis exportálása BACPAC-fájlba
 
-Archiválás vagy áthelyezése egy másik platformon-adatbázisok exportálását van szüksége, amikor az adatbázis-séma és adatok exportálhatja egy [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) fájlt. BACPAC-fájl egy ZIP-fájlt tartalmazó a metaadatokat és az adatokat az SQL Server-adatbázis BACPAC kiterjesztési. Az Azure Blob storage-ban vagy a helyi tárban a helyszíni helyen tárolhatók egy BACPAC-fájlba, és később importált vissza az Azure SQL Database vagy SQL-kiszolgáló helyi telepítése.
+Ha archiválni vagy egy másik platformra szeretne áthelyezni egy adatbázist, exportálhatja az adatbázis-sémát és az [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) -fájlba. A BACPAC-fájl egy ZIP-fájl, amely egy SQL Server-adatbázisból származó metaadatokat és adatokat tartalmazó BACPAC kiterjesztését tartalmazza. A BACPAC-fájlok az Azure Blob Storage-ban vagy helyi tárolóban tárolhatók, és később importálhatók Azure SQL Databaseba vagy egy SQL Server helyszíni telepítésbe.
 
-## <a name="considerations-when-exporting-an-azure-sql-database"></a>Azure SQL-adatbázis exportálása szempontjai
+## <a name="considerations-when-exporting-an-azure-sql-database"></a>Az Azure SQL Database-adatbázisok exportálásának szempontjai
 
-- Az exportálási tranzakciós szempontból konzisztens, gondoskodnia kell arról, hogy nincs írási tevékenység történik az exportálás során, vagy az exportálni kívánt egy [tranzakciós szempontból konzisztens másolatot](sql-database-copy.md) az Azure SQL-adatbázis.
-- Ha exportálja a blob storage, a BACPAC-fájl maximális mérete 200 GB-os. Archiválása BACPAC-fájl, exportálja a helyi tárterület.
-- Ebben a cikkben ismertetett módszerek használatával az Azure premium storage egy BACPAC-fájlba exportálása nem támogatott.
-- Tűzfal mögötti Storage jelenleg nem támogatott.
-- Ha az Azure SQL Database-ből az exportálási művelet meghaladja a 20 óra, előfordulhat, hogy lehet megszakítani. Az exportálás során a teljesítmény növelése érdekében a következőket teheti:
+- Ahhoz, hogy az Exportálás tranzakciós szempontból konzisztens legyen, meg kell győződnie arról, hogy az exportálás során nem történik írási tevékenység, vagy az Azure SQL Database [tranzakciós szempontból konzisztens másolatából](sql-database-copy.md) exportálja.
+- Ha blob Storage-ba exportál, a BACPAC-fájlok maximális mérete 200 GB. Egy nagyobb BACPAC-fájl archiválásához exportálja a helyi tárolóba.
+- BACPAC-fájlnak az Azure Premium Storage-ba való exportálása a cikkben ismertetett módszerek használatával nem támogatott.
+- A tűzfal mögötti tárterület jelenleg nem támogatott.
+- Ha az exportálási művelet Azure SQL Database meghaladja a 20 órát, előfordulhat, hogy a rendszer megszakítja a műveletet. Az exportálás során a teljesítmény növeléséhez a következőket teheti:
 
-  - Ideiglenesen növelheti a számítási méret.
-  - Cease összes olvasási és írási tevékenység, az exportálás során.
-  - Használja a [fürtözött index](https://msdn.microsoft.com/library/ms190457.aspx) az összes nagy táblák null értékű. Fürtözött indexek nélkül exportálása meghiúsulhat, ha a 6 és 12 óránál hosszabb ideig tart. Ennek az oka az exportálási szolgáltatás el kell végeznie egy tábla beolvasásával szeretné kipróbálni az egész tábla exportálása. Határozza meg, ha a táblák optimalizált Exportálás futtatása van egy jó módszer **DBCC SHOW_STATISTICS** , és ellenőrizze, hogy a *RANGE_HI_KEY* nem null, és annak értéke helyes terjesztési. További információkért lásd: [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx).
-
-> [!NOTE]
-> BACPACs használható biztonsági mentési és visszaállítási műveletek nem tartozhat. Az Azure SQL Database automatikusan létrehoz minden felhasználói adatbázis biztonsági mentését. További információkért lásd: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md) és [SQL Database biztonsági mentéseinek](sql-database-automated-backups.md).
-
-## <a name="export-to-a-bacpac-file-using-the-azure-portal"></a>Az Azure portal használatával egy BACPAC-fájlba exportálása
+  - Ideiglenesen növelje a számítási méretet.
+  - Az exportálás során minden olvasási és írási tevékenység megszűnik.
+  - Használjon nem null értékű [fürtözött indexet](https://msdn.microsoft.com/library/ms190457.aspx) az összes nagyméretű táblán. Fürtözött indexek nélkül az Exportálás sikertelen lehet, ha 6-12 óránál hosszabb időt vesz igénybe. Ennek az az oka, hogy az exportálási szolgáltatásnak egy táblázatos vizsgálatot kell végrehajtania a teljes tábla exportálásához. Egy jó módszer annak megállapítására, hogy a táblák exportálásra vannak-e optimalizálva, hogy **DBCC SHOW_STATISTICS** fusson, és győződjön meg arról, hogy a *RANGE_HI_KEY* nem null értékű, és az értéke jó eloszlású. Részletekért lásd: [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx).
 
 > [!NOTE]
-> [Felügyelt példány](sql-database-managed-instance.md) jelenleg nem támogatja az adatbázis exportálása BACPAC-fájlba az Azure portal használatával. A felügyelt példány egy BACPAC-fájlba exportálni, használja az SQL Server Management Studio vagy az SQLPackage.
+> A BACPACs nem használhatók biztonsági mentési és visszaállítási műveletekhez. Azure SQL Database automatikusan készít biztonsági másolatokat minden felhasználói adatbázishoz. Részletekért lásd: [Üzletmenet-folytonosság áttekintése](sql-database-business-continuity.md) és [SQL Database biztonsági mentések](sql-database-automated-backups.md).
 
-1. Egy adatbázis használatával történő exportálás, az [az Azure portal](https://portal.azure.com), nyissa meg az adatbázishoz tartozó lap, és kattintson a **exportálása** az eszköztáron.
+## <a name="export-to-a-bacpac-file-using-the-azure-portal"></a>Exportálás BACPAC-fájlba a Azure Portal használatával
 
-   ![adatbázis exportálása](./media/sql-database-export/database-export1.png)
+A felügyelt példányokból származó BACPAC exportálása [](sql-database-managed-instance.md) a Azure PowerShell használatával jelenleg nem támogatott. Ehelyett használjon SQL Server Management Studio vagy SQLPackage.
 
-2. Adja meg a BACPAC-fájl nevére, válassza ki egy meglévő Azure storage-fiókot és a tároló az exportáláshoz, és adja meg a megfelelő hitelesítő adatokat a forrás-adatbázishoz való hozzáférés.
+> [!NOTE]
+> A Azure Portalon vagy PowerShellen keresztül küldött importálási/exportálási kérelmeket feldolgozó gépeknek a BACPAC-fájlt, valamint az adatrétegbeli alkalmazás-keretrendszer (DacFX) által generált ideiglenes fájlokat kell tárolniuk. A szükséges lemezterület jelentősen eltér az azonos méretű adatbázisok között, és az adatbázis méretének háromszorosára lehet szükség. Az importálási/exportálási kérelmet futtató gépek csak 450GB helyi lemezterülettel rendelkeznek. Ennek eredményeképpen előfordulhat, hogy néhány kérelem meghiúsul a hibával `There is not enough space on the disk`. Ebben az esetben a megkerülő megoldás a sqlpackage. exe futtatása egy olyan gépen, amelyen elegendő helyi lemezterület található. A probléma elkerülése érdekében javasoljuk, hogy a 150GB-nál nagyobb adatbázisok importálására/exportálására [SqlPackage](#export-to-a-bacpac-file-using-the-sqlpackage-utility) használjon.
 
-    ![adatbázis exportálása](./media/sql-database-export/database-export2.png)
+1. Ha a [Azure Portal](https://portal.azure.com)segítségével szeretne exportálni egy adatbázist, nyissa meg az adatbázis lapját, és kattintson az **Exportálás** gombra az eszköztáron.
+
+   ![Adatbázis-exportálás](./media/sql-database-export/database-export1.png)
+
+2. Adja meg a BACPAC fájlnevét, válasszon ki egy meglévő Azure Storage-fiókot és-tárolót az exportáláshoz, majd adja meg a megfelelő hitelesítő adatokat a forrás-adatbázishoz való hozzáféréshez. Ha Ön az Azure-rendszergazda, az Azure-rendszergazda nem felel meg SQL Server rendszergazdai engedélyekkel, akkor is szükség van egy SQL **Server-rendszergazdai bejelentkezésre** .
+
+    ![Adatbázis-exportálás](./media/sql-database-export/database-export2.png)
 
 3. Kattintson az **OK** gombra.
 
-4. Az exportálási művelet állapotának figyelése, nyissa meg az exportált adatbázist tartalmazó SQL Database kiszolgálóhoz tartozó lapon. Alatt a **beállítások** majd **importálási/exportálási előzmények**.
+4. Az exportálási művelet előrehaladásának figyeléséhez nyissa meg az exportálni kívánt adatbázist tartalmazó SQL Database-kiszolgáló lapját. A **Beállítások** területen kattintson az **Importálás/exportálás előzmények**elemre.
 
-   ![Előzmények exportálása](./media/sql-database-export/export-history.png)
+   ![exportálási előzmények](./media/sql-database-export/export-history.png)
 
 ## <a name="export-to-a-bacpac-file-using-the-sqlpackage-utility"></a>Exportálás BACPAC-fájlba az SQLPackage segédprogram használatával
 
-Exportálhatja a egy SQL database-adatbázishoz a [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) parancssori segédprogram, lásd: [paramétereknek és tulajdonságoknak exportálása](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties). A legújabb tartalmaz az SQLPackage segédprogram [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) és [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx), vagy letöltheti a legújabb [SqlPackage ](https://www.microsoft.com/download/details.aspx?id=53876) közvetlenül a Microsoft letöltőközpontból.
+Ha az SQL Database-adatbázist a [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) parancssori segédprogrammal szeretné exportálni, tekintse meg a [paraméterek és tulajdonságok exportálása](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties)című témakört. A SQLPackage segédprogram a [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) és a SQL Server Data Tools legújabb verzióit tartalmazza a [Visual studióhoz](https://msdn.microsoft.com/library/mt204009.aspx), vagy letöltheti a [SQLPackage](https://www.microsoft.com/download/details.aspx?id=53876) legújabb verzióját közvetlenül a Microsoft letöltőközpontból.
 
-A méretezéshez és teljesítményhez a legtöbb éles környezetben az SQLPackage segédprogram használatát javasoljuk. További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+A legtöbb éles környezetben a SQLPackage segédprogram használatát javasoljuk a méretezéshez és a teljesítményhez. További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 
-Ebben a példában az Active Directory univerzális hitelesítéssel az SqlPackage.exe használatával-adatbázisok exportálását mutatja be:
+Ez a példa azt szemlélteti, hogyan lehet exportálni egy adatbázist az SqlPackage. exe használatával Active Directory univerzális hitelesítéssel:
 
 ```cmd
 SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=apptestserver.database.windows.net;Initial Catalog=MyDB;" /ua:True /tid:"apptest.onmicrosoft.com"
 ```
 
-## <a name="export-to-a-bacpac-file-using-sql-server-management-studio-ssms"></a>Exportálás BACPAC-fájlba az SQL Server Management Studio (SSMS) használatával
+## <a name="export-to-a-bacpac-file-using-sql-server-management-studio-ssms"></a>Exportálás BACPAC-fájlba SQL Server Management Studio (SSMS) használatával
 
-Az SQL Server Management Studio legújabb verzióiban elérhető egy varázslón Azure SQL-adatbázis exportálása BACPAC-fájlba. Tekintse meg a [egy adatrétegbeli alkalmazás exportálása](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application).
+SQL Server Management Studio legújabb verziói egy varázslót biztosítanak egy Azure SQL Database-adatbázis BACPAC-fájlba való exportálásához. Lásd: [adatrétegbeli alkalmazás exportálása](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application).
 
-## <a name="export-to-a-bacpac-file-using-powershell"></a>A PowerShell használatával BACPAC-fájlba exportálása
+## <a name="export-to-a-bacpac-file-using-powershell"></a>Exportálás BACPAC-fájlba a PowerShell használatával
 
 > [!NOTE]
-> [Felügyelt példány](sql-database-managed-instance.md) jelenleg nem támogatja az adatbázis exportálása BACPAC-fájlba az Azure PowerShell használatával. A felügyelt példány egy BACPAC-fájlba exportálni, használja az SQL Server Management Studio vagy az SQLPackage.
+> [A felügyelt példányok](sql-database-managed-instance.md) jelenleg nem támogatják az adatbázisok exportálását egy BACPAC-fájlba Azure PowerShell használatával. Felügyelt példány BACPAC-fájlba való exportálásához használja a SQL Server Management Studio vagy a SQLPackage.
 
-Használja a [New-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) parancsmagot, hogy küldje el az Azure SQL Database szolgáltatás egy adatbázis exportálási kérelmet. Az adatbázis méretétől függően az exportálási művelet eltarthat egy ideig.
+A [New-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) parancsmag használatával küldje el az exportálási adatbázisra vonatkozó kérelmet a Azure SQL Database szolgáltatásnak. Az adatbázis méretétől függően az exportálási művelet végrehajtása hosszabb időt is igénybe vehet.
 
 ```powershell
 $exportRequest = New-AzSqlDatabaseExport -ResourceGroupName $ResourceGroupName -ServerName $ServerName `
@@ -86,7 +87,7 @@ $exportRequest = New-AzSqlDatabaseExport -ResourceGroupName $ResourceGroupName -
   -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
 ```
 
-Az exportálási kérelem állapotának ellenőrzéséhez használja a [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) parancsmagot. Fut ez a kérelem után azonnal általában értéket ad vissza **állapota: InProgress**. Amikor látja **állapota: Sikeres** az exportálás befejeződött.
+Az exportálási kérelem állapotának megtekintéséhez használja a [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) parancsmagot. Ezt azonnal futtatva, miután a kérelem **általában visszaadja az állapotot: Folyamatban**van. Amikor megjelenik **az állapot:**  Az Exportálás sikeresen befejeződött.
 
 ```powershell
 $exportStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
@@ -103,10 +104,10 @@ $exportStatus
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az egyes hosszú távú adatmegőrzés és készletezett adatbázisok helyett exportálja egy adatbázis archiválási célú lásd [hosszú távú adatmegőrzés](sql-database-long-term-retention.md). Használhatja az SQL Agent-feladatok ütemezése [csak másolatot adatbázis biztonsági másolatait](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) hosszú távú adatmegőrzés alternatívájaként.
+- Ha szeretné megtudni, hogy egy adatbázis és a készletezett adatbázisok hosszú távú biztonsági mentése az adatbázisok archiválási célú exportálásának alternatívájaként történjen, tekintse meg a [biztonsági másolatok hosszú távú megőrzését](sql-database-long-term-retention.md)ismertető témakört. Az SQL-ügynök feladatainak használatával ütemezheti az [adatbázis-másolatok biztonsági mentését](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) a hosszú távú biztonsági mentés alternatívájaként.
 - További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
-- Az SQL Server-adatbázis egy BACPAC importálásával kapcsolatos további információkért lásd: [SQL Server-adatbázis BACPAC importálása](https://msdn.microsoft.com/library/hh710052.aspx).
-- SQL Server-adatbázis exportálása BACPAC kapcsolatos további információkért lásd: [egy adatrétegbeli alkalmazás exportálása](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
-- Adatbázis áttelepítése a Data Migration Service használatával kapcsolatos további információkért lásd: [SQL Server Migrálása az Azure SQL Database-kapcsolat nélküli módban a DMS használatával](../dms/tutorial-sql-server-to-azure-sql.md).
-- Ha exportálja az SQL Serverből, egy prelude áttelepítése az Azure SQL Database, [SQL Server-adatbázis áttelepítése az Azure SQL Database](sql-database-single-database-migrate.md).
+- A BACPAC SQL Server adatbázisba való importálásával kapcsolatos további tudnivalókért lásd: [BACPAC importálása SQL Server](https://msdn.microsoft.com/library/hh710052.aspx)-adatbázisba.
+- A BACPAC SQL Server adatbázisból való exportálásával kapcsolatos információkért lásd: [adatrétegbeli alkalmazás exportálása](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
+- Ha szeretné megtudni, hogyan lehet az adatáttelepítési szolgáltatást egy adatbázis áttelepítésére használni, olvassa el a [SQL Server migrálás Azure SQL Database offline állapotba a DMS használatával](../dms/tutorial-sql-server-to-azure-sql.md)című témakör
+- Ha az SQL Server-ból exportálja a Azure SQL Databaseba való áttelepítést, olvassa el [a SQL Server adatbázis áttelepítése Azure SQL Databasere](sql-database-single-database-migrate.md)című témakört.
 - Megtudhatja, hogyan kezelésére és megosztására tárkulcsok és közös hozzáférésű jogosultságkódok biztonságosan, lásd: [Azure Storage biztonsági útmutatóját](https://docs.microsoft.com/azure/storage/common/storage-security-guide).

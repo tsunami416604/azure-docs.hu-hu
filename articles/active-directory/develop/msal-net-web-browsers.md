@@ -1,6 +1,6 @@
 ---
-title: .NET-hez készült Microsoft-hitelesítési tár webböngészők |} Az Azure
-description: Figyelembe kell venni bizonyos ismerje meg a Xamarin Android használata a Microsoft-hitelesítési tár .NET (MSAL.NET) esetén.
+title: Böngészők a .NET-hez készült Microsoft Authentication Library-ben | Azure
+description: Ismerje meg a Xamarin Android és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokat.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -12,66 +12,158 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/06/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 061b8a9f16396841c3f0d650ccc2f2c4a907aab3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: abb04a30719f7603610b323a4bb271666371ba97
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111307"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276855"
 ---
-# <a name="using-web-browsers-in-msalnet"></a>Webböngészők MSAL.NET használatával
-Webböngészők az interaktív hitelesítéshez szükségesek. Alapértelmezés szerint az MSAL.NET támogatja a [rendszer webböngésző](#system-web-browser-on-xamarinios-and-xamarinandroid) a Xamarin.iOS és [Xamarin.Android](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/system-browser). De [is engedélyezheti a beágyazott webböngésző](#enable-embedded-webviews) a követelményektől (UX, egyszeri bejelentkezés (SSO), biztonsági szükségességét) függően [Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) és [Xamarin.Android](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid) az alkalmazások. És is [kiválasztása dinamikusan](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) melyik webböngésző használata Chrome-ban vagy a támogató Android egyéni lapok Chrome böngészőben jelenléte alapján.
+# <a name="using-web-browsers-in-msalnet"></a>Böngészők használata a MSAL.NET-ben
+Az interaktív hitelesítéshez böngészők szükségesek. Alapértelmezés szerint a MSAL.NET támogatja a rendszerböngészőt a Xamarin. iOS és a Xamarin. Android [rendszeren](#system-web-browser-on-xamarinios-xamarinandroid) . A [beágyazott](#enable-embedded-webviews-on-ios-and-android) webböngészőt azonban a követelményektől függően (UX, egyszeri bejelentkezésre (SSO), biztonságra) is engedélyezheti a [Xamarin. iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) és a [Xamarin. Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) alkalmazásokban. Emellett azt is megteheti, hogy [dinamikusan](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) használja azt a böngészőt, amelyet a Chrome vagy az Android rendszerű egyéni Chrome-lapokat támogató böngésző jelenléte alapján használ. A MSAL.NET csak a rendszerböngészőt támogatja a .NET Core Desktop-alkalmazásokban.
 
-## <a name="web-browsers-in-msalnet"></a>Az MSAL.NET webböngészők
+## <a name="web-browsers-in-msalnet"></a>Böngészők a MSAL.NET
 
-Fontos megérteni, hogy egy token beszerzése a interaktív módon, amikor a párbeszédpanel a tartalom nem áll rendelkezésre a könyvtárban, hanem az STS-re (biztonsági jogkivonatokkal kapcsolatos szolgáltatástól). A hitelesítési végpontot küld vissza néhány HTML és JavaScript, amely szabályozza a kölcsönhatások, amely webböngészőt vagy webalkalmazás vezérlőelemben jelenik meg. Lehetővé teszi az STS-re a HTML-interakció kezelésére számos előnnyel jár:
+### <a name="interaction-happens-in-a-web-browser"></a>Az interakció egy böngészőben történik
 
-- A jelszó (ha az egyik írta be), és az alkalmazás nem a hitelesítési tár a soha nem tárolja.
-- Lehetővé teszi az átirányítások az egyéb identitás-szolgáltatóktól (például bejelentkezési-be a munkahelyi vagy iskolai fiókhoz vagy egy személyes fiók MSAL, vagy az Azure AD B2C-közösségi fiókkal).
-- Lehetővé teszi, hogy az STS feltételes hozzáférésének szabályozása, például a felhasználó nincs több többtényezős hitelesítés (MFA) hitelesítési fázisában (a Windows Hello PIN-kód megadása vagy a telefon vagy a telefonjukra hitelesítési alkalmazás hívott) kellene. Azokban az esetekben, ahol a szükséges többtényezős hitelesítést nincs beállítva, még a felhasználó is állítsa be az azonos párbeszédpanelen szerinti.  A felhasználó beírja a mobiltelefon száma, és a egy hitelesítési alkalmazás telepítéséhez és a egy QR címke, a felhasználó fiókját hozzáadja a vizsgálat a rendszer végigvezeti. Ez a kiszolgáló kapcsolati driven nagyszerű felhasználói élményt!
-- Lehetővé teszi a felhasználónak módosítania kell a jelszavát, ezen a párbeszédpanelen, amikor a jelszó lejárt (kezeléséről további mezőket a régi jelszót és az új jelszót).
-- Lehetővé teszi, hogy az Azure AD-Bérlői rendszergazda által vezérelt védjegyezés a bérlő vagy az application (képek) / alkalmazás tulajdonosa.
-- Lehetővé teszi a felhasználóknak, hogy engedélyt adjanak az lehetővé teszi az alkalmazás-erőforrások eléréséhez, vagy csak a hitelesítést követően a neve hatóköröket.
+Fontos tisztában lenni azzal, hogy a jogkivonat interaktív beszerzése során a párbeszédpanel tartalmát nem a könyvtár, hanem az STS (biztonsági jogkivonat szolgáltatás) is megadja. A hitelesítési végpont olyan HTML-és JavaScript-kódot küld vissza, amely a webböngészőben vagy a webes vezérlőelemben megjelenített interakciót vezérli. A HTML-interakció kezelésének engedélyezése az STS számára számos előnnyel jár:
 
-## <a name="system-web-browser-on-xamarinios-and-xamarinandroid"></a>Rendszer webböngészőt Xamarin.iOS és Xamarin.Android
+- Az alkalmazás soha nem tárolja a jelszót (ha van ilyen), és nem a hitelesítési függvénytárat.
+- Lehetővé teszi az átirányítást más identitás-szolgáltatók számára (például munkahelyi iskolai fiókkal vagy személyes fiókkal, MSAL vagy közösségi fiókkal Azure AD B2C).
+- Lehetővé teszi az STS-vezérlés feltételes elérését, például azáltal, hogy a felhasználó több faktoros hitelesítést (MFA) végez a hitelesítési fázisban (a Windows Hello PIN-kód beírása, vagy a telefonra való hívás vagy a telefonos hitelesítés alkalmazásban). Azokban az esetekben, amikor a kötelező többtényezős hitelesítés még nincs beállítva, a felhasználó időben is beállíthatja ugyanabban a párbeszédablakban.  A felhasználó beírja a mobil telefonszámát, és a rendszer vezérli egy hitelesítési alkalmazás telepítésére és egy QR-címke bevizsgálatára a fiók hozzáadásához. Ez a kiszolgáló-vezérelt interakció nagyszerű élmény!
+- Lehetővé teszi, hogy a felhasználó ugyanezen a párbeszédpanelen változtassa meg a jelszavát, ha a jelszó lejárt (további mezőket biztosít a régi jelszóhoz és az új jelszóhoz).
+- Engedélyezi a bérlő vagy az Azure AD-bérlői rendszergazda/alkalmazás tulajdonosa által vezérelt alkalmazás (lemezképek) arculatát.
+- Lehetővé teszi a felhasználók számára, hogy az alkalmazáshoz való hozzáféréshez szükséges erőforrásokat vagy hatóköröket közvetlenül a hitelesítés után hagyják el.
 
-Alapértelmezés szerint MSAL.NET a rendszer webböngésző Xamarin.iOS és Xamarin.Android használatát támogatja. Az összes használt platformon, amely a felhasználói felület (azaz nem a .NET Core) adja meg egy párbeszédpanel a beágyazás egy webes böngésző vezérlő kódtár által biztosított. MSAL.NET is használ egy beágyazott webes nézet a .NET asztali és WAB az UWP-platform. A modul alapértelmezés szerint azonban a **rendszer webböngésző** Xamarin iOS-és Xamarin Android-alkalmazások. Az iOS-még akkor is választja, az operációs rendszer verziójától függően használja a webes nézet (iOS12, ios11-et, és korábban).
+### <a name="embedded-vs-system-web-ui"></a>Embedded és System webes felhasználói felület
 
-Állapotmegosztás az egyszeri bejelentkezés más alkalmazásokkal és webes alkalmazásokat anélkül, hogy egy közvetítő jelentős előnye a rendszer böngészővel rendelkezik (vállalati portál / Authenticator). A rendszer használt böngészőtől, a Xamarin iOS- és Xamarin Android-platformok esetében az MSAL.NET alapértelmezés szerint mivel ezek a rendszerek, a rendszer webböngésző a teljes képernyőt elfoglalja és jobb felhasználói élményt. A rendszer webes nézetét nem megkülönböztethető egy párbeszédpanel. Az iOS-, a felhasználónak kell beleegyezés a böngésző vissza az alkalmazást, amely zavaró lehet meghívni.
+A MSAL.NET egy multi-Framework könyvtár, amely keretrendszer-specifikus kóddal rendelkezik, amely egy felhasználói felületi vezérlőben futtatja a böngészőt (például a klasszikus .net-es verzióban a WinForms-t használja, a Xamarin pedig natív mobil vezérlőket használ, stb.). Ezt a vezérlőt `embedded` webes felhasználói felületnek nevezzük. Azt is megteheti, hogy a MSAL.NET képes a rendszerindító böngésző kiindítására is.
 
-### <a name="uwp-does-not-use-the-system-webview"></a>Az UWP nem használja a System WebView-t
+Általában azt javasoljuk, hogy használja a platform alapértelmezését, és ez általában a rendszerböngésző. A rendszerböngésző jobban megjegyezi a korábban bejelentkezett felhasználókat. Ha módosítania kell ezt a viselkedést, használja a következőt`WithUseEmbeddedWebView(bool)`
 
-Az asztali alkalmazások esetében azonban indítása System WebView-t vezet egy subpar felhasználói élmény, a felhasználó megkeresheti a böngészőben, előfordulhat, hogy már rendelkezik egyéb megnyitott lapokat. És hitelesítés történt, amikor a felhasználók egy oldal, zárja be ezt az ablakot abból. Ha a felhasználó nem odafigyelni, azok zárja be a teljes folyamat (beleértve a más lapokon, amelyek a hitelesítés nem kapcsolódnak). A rendszer böngésző asztali kihasználva is kellene helyi portok megnyitása és figyel, amely speciális engedélyeket lehet szükség az alkalmazás. Fejlesztőként, felhasználó vagy rendszergazda, akkor lehet védhetőek, ezzel a követelménnyel kapcsolatban.
+### <a name="at-a-glance"></a>Áttekintés
 
-## <a name="enable-embedded-webviews"></a>Beágyazott webnézeteket engedélyezése 
-Xamarin.iOS és Xamarin.Android-alkalmazások a beágyazott webnézeteket is engedélyezheti. MSAL.NET 2.0.0-preview kezdve MSAL.NET használatát is támogatja a **beágyazott** webview lehetőséget. ADAL.NET, a beágyazott WebView-t csak a lehetőség támogatott.
+| Keretében        | beágyazott | Rendszer | Alapértelmezett |
+| ------------- |-------------| -----| ----- |
+| Klasszikus .NET     | Igen | Igen ^ | beágyazott |
+| .NET Core     | Nem | Igen ^ | Rendszer |
+| .NET Standard | Nem | Igen ^ | Rendszer |
+| UWP | Igen | Nem | beágyazott |
+| Xamarin.Android | Igen | Igen  | Rendszer |
+| Xamarin.iOS | Igen | Igen  | Rendszer |
+| Xamarin. Mac| Igen | Nem | beágyazott |
 
-Xamarin célzó MSAL.NET használatával a fejlesztők a beágyazott webnézeteket vagy rendszer böngészők használatával választhatja. Ez az Ön által választott, a felhasználói élmény és a biztonsági szempontok cél függően.
+^ A következőt http://localhost igényli: "" átirányítási URI
 
-Jelenleg MSAL.NET még nem támogatja az Android és IOS rendszerű közvetítők. Ezért ha meg kell adnia az egyszeri bejelentkezés (SSO), a rendszer böngésző továbbra is lehet jobb megoldás. Az MSAL.NET várakozó fájlok számát a beágyazott böngészővel közvetítők támogató van.
+## <a name="system-web-browser-on-xamarinios-xamarinandroid"></a>Rendszerböngésző a Xamarin. iOS, Xamarin. Android rendszeren
 
-### <a name="differences-between-embedded-webview-and-system-browser"></a>Beágyazott WebView-t és a rendszer böngésző közötti különbségek 
-Nincsenek visual közötti különbségeket beágyazott WebView-t és a rendszer böngésző az MSAL.NET.
+Alapértelmezés szerint a MSAL.NET támogatja a rendszerböngészőt a Xamarin. iOS, a Xamarin. Android és a .NET Core rendszeren. Az összes olyan platform esetében, amely felhasználói felületet (azaz nem .NET Core-t) biztosít, a függvénytár egy webböngésző-vezérlő beágyazásával biztosít egy párbeszédpanelt. A MSAL.NET a UWP platformhoz a .NET Desktop és a WAB beágyazott webes nézetét is használja. Ez azonban alapértelmezés szerint a rendszerböngészőt **** használja az iOS-és Xamarin Android-alkalmazások Xamarin. IOS rendszeren az operációs rendszer verziójától (iOS12, iOS11 és korábbi verziók) függően a webes nézetet is választhatja.
 
-**Interaktív jelentkezzen be az MSAL.NET használatával, a beágyazott Webview:**
+A rendszerböngészővel jelentős előnye van annak, hogy az SSO-állapotot más alkalmazásokkal és webalkalmazásokkal közösen ossza meg anélkül, hogy közvetítőt (vállalati portált/hitelesítő) kellene használnia. A rendszerböngészőt alapértelmezetten a Xamarin iOS és a Xamarin Android platformhoz készült MSAL.NET használták, mert ezeken a platformokon a rendszer webböngészője a teljes képernyőt foglalja le, és a felhasználói élmény jobb. A rendszer webes nézete nem különbözteti meg a párbeszédpanelt. Az iOS-ben azonban előfordulhat, hogy a felhasználónak engedélyt kell adnia a böngészőnek az alkalmazás visszahívására, ami bosszantó lehet.
 
-![Beágyazott](media/msal-net-web-browsers/embedded-webview.png)
+## <a name="system-browser-experience-on-net-core"></a>A .NET Core rendszerböngészős felülete
 
-**Interaktív jelentkezzen be az MSAL.NET használatával a rendszer böngészőben:**
+A .NET Core-on a MSAL.NET külön folyamatként fogja elindítani a rendszerböngészőt. A MSAL.NET nem szabályozza ezt a böngészőt, de ha a felhasználó befejezte a hitelesítést, a weblap olyan módon lesz átirányítva, amelyet a MSAL.NET el tud metszeni az URI-val.
 
-![Rendszer-böngésző](media/msal-net-web-browsers/system-browser.png)
+A klasszikus .NET-hez írt alkalmazásokat is konfigurálhatja a böngésző használatára a következő megadásával:
+
+```csharp
+await pca.AcquireTokenInteractive(s_scopes)
+         .WithUseEmbeddedWebView(false)
+```
+
+A MSAL.NET nem tudja felderíteni, hogy a felhasználó navigál-e, vagy egyszerűen zárja be a böngészőt. Az ezt a technikát használó alkalmazásokat javasoljuk, hogy az időtúllépést `CancellationToken`(a-on keresztül) definiálja. Legalább néhány perc időtúllépését javasoljuk, hogy figyelembe vegye azokat az eseteket, amikor a felhasználó a jelszó módosítására vagy a többtényezős hitelesítés végrehajtására kéri.
+
+### <a name="how-to-use-the-default-os-browser"></a>Az alapértelmezett operációsrendszer-böngésző használata
+
+A MSAL.net meg `http://localhost:port` kell figyelnie és el kell fogadnia a HRE által a felhasználó hitelesítése során küldött kódot (lásd a részleteket az [engedélyezési kódban](v2-oauth2-auth-code-flow.md) ).
+
+A rendszerböngésző engedélyezése:
+
+1. Az alkalmazás regisztrálása során `http://localhost` a konfigurálás átirányítási URI-ként történik (a B2C jelenleg nem támogatja)
+2. A PublicClientApplication összeállításakor adja meg az átirányítási URI-t:
+
+```csharp
+IPublicClientApplication pca = PublicClientApplicationBuilder
+                            .Create("<CLIENT_ID>")
+                             // or use a known port if you wish "http://localhost:1234"
+                            .WithRedirectUri("http://localhost")  
+                            .Build();
+```
+
+> [!Note]
+> Ha konfigurálja `http://localhost`, a belső MSAL.net egy véletlenszerű nyitott portot talál, és azt használja.
+
+### <a name="linux-and-mac"></a>Linux és MAC
+
+Linux rendszeren a MSAL.NET a XDG-Open eszközzel nyitja meg az alapértelmezett operációsrendszer-böngészőt. A hibák megoldásához futtassa az eszközt egy terminálról, például:`xdg-open "https://www.bing.com"`  
+Mac gépen a böngészőt a következő meghívásával nyitja meg:`open <url>`
+
+### <a name="customizing-the-experience"></a>A felhasználói élmény testreszabása
+
+> [!NOTE]
+> A Testreszabás a MSAL.NET 4.1.0 vagy újabb verzióban érhető el.
+
+A MSAL.NET egy token fogadásakor vagy hiba esetén HTTP-üzenettel tud válaszolni. Megjeleníthet egy HTML-üzenetet, vagy átirányíthatja a kívánt URL-címet:
+
+```csharp
+var options = new SystemWebViewOptions() 
+{
+    HtmlMessageError = "<p> An error occured: {0}. Details {1}</p>",
+    BrowserRedirectSuccess = new Uri("https://www.microsoft.com");
+}
+
+await pca.AcquireTokenInteractive(s_scopes)
+         .WithUseEmbeddedWebView(false)
+         .WithSystemWebViewOptions(options)
+         .ExecuteAsync();
+```
+
+### <a name="opening-a-specific-browser-experimental"></a>Adott böngésző megnyitása (kísérleti)
+
+Testreszabhatja a MSAL.NET a böngésző megnyitásának módját. Például ahelyett, hogy az alapértelmezett böngészőt használja, egy adott böngésző megnyitására lehet kényszeríteni:
+
+```csharp
+var options = new SystemWebViewOptions() 
+{
+    OpenBrowserAsync = SystemWebViewOptions.OpenWithEdgeBrowserAsync
+}
+```
+
+### <a name="uwp-doesnt-use-the-system-webview"></a>A UWP nem használja a rendszerszintű webnézetet
+
+Asztali alkalmazások esetében azonban a rendszerszintű webnézet indítása subpar felhasználói élményhez vezet, mivel a felhasználó látja a böngészőt, és előfordulhat, hogy már más lapok is meg vannak nyitva. Ha a hitelesítés megtörtént, a felhasználók egy olyan lapot kap, amely az ablak bezárását kéri. Ha a felhasználó nem figyel, akkor a teljes folyamatot (beleértve a hitelesítéshez nem kapcsolódó lapokat is) lezárhatja. Ha a rendszerböngészőt az asztalon szeretné kihasználni, a helyi portok megnyitására és a figyelésre is szükség lehet, ami speciális engedélyeket igényelhet az alkalmazáshoz. Előfordulhat, hogy a fejlesztő, a felhasználó vagy a rendszergazda nem fogja tudni ezt a követelményt.
+
+## <a name="enable-embedded-webviews-on-ios-and-android"></a>Beágyazott webnézetek engedélyezése iOS és Android rendszereken
+
+A Xamarin. iOS és a Xamarin. Android alkalmazásokban is engedélyezheti a beágyazott webnézeteket. A MSAL.NET 2.0.0 – előzetes verziótól kezdődően a MSAL.NET a **beágyazott** webnézetet is támogatja. A ADAL.NET esetében az egyetlen támogatott lehetőség a beágyazott Webview.
+
+MSAL.NET-célzási Xamarin használó fejlesztőként dönthet úgy, hogy a beágyazott webnézeteket vagy a rendszerböngészőket is használja. Ez a felhasználói élménytől és a célként használni kívánt biztonsági szempontoktól függően választható.
+
+Jelenleg a MSAL.NET még nem támogatja az Android és az iOS rendszerű közvetítőket. Ezért ha egyszeri bejelentkezést (SSO) kell megadnia, a rendszerböngésző továbbra is jobb megoldás lehet. A beágyazott webböngészővel rendelkező közvetítők támogatják a MSAL.NET várakozó fájlok számát.
+
+### <a name="differences-between-embedded-webview-and-system-browser"></a>A beágyazott webnézet és a rendszerböngésző közötti különbségek
+A MSAL.NET beágyazott webnézete és rendszerböngészője között néhány vizualizációs különbség van.
+
+**Interaktív bejelentkezés a MSAL.NET a beágyazott webnézet használatával:**
+
+![beágyazott](media/msal-net-web-browsers/embedded-webview.png)
+
+**Interaktív bejelentkezés a MSAL.NET a rendszerböngésző használatával:**
+
+![Rendszerböngésző](media/msal-net-web-browsers/system-browser.png)
 
 ### <a name="developer-options"></a>Fejlesztői beállítások
 
-A fejlesztők MSAL.NET használatával az STS interaktív párbeszédpanel megjelenítése több lehetősége van:
+A MSAL.NET-t használó fejlesztőként több lehetőség közül választhat az STS interaktív párbeszédpanelének megjelenítéséhez:
 
-- **Rendszer böngészőben.** A rendszer böngésző az erőforrástárban alapértelmezés szerint van beállítva. Ha Android használja, olvassa el a [rendszer böngészők](msal-net-system-browser-android-considerations.md) konkrét információkat arról, hogy mely hitelesítési böngészők támogatottak. Amikor a rendszer böngészővel Android, javasoljuk, hogy az eszköz rendelkezik, amely támogatja az egyéni lapok Chrome böngészőben.  Ellenkező esetben hitelesítés sikertelen lehet.
-- **Beágyazott WebView-t.** Csak a beágyazott webview MSAL.NET, használandó a `AcquireTokenInteractively` paraméterek builder tartalmaz egy `WithUseEmbeddedWebView()` metódus.
+- **Rendszerböngésző.** A rendszerböngészőt a rendszer alapértelmezés szerint a könyvtárban állítja be. Android használata esetén olvassa el [](msal-net-system-browser-android-considerations.md) a rendszerböngészők című témakört, amely arról nyújt tájékoztatást, hogy mely böngészők támogatottak a hitelesítéshez. Ha Android rendszeren használja a rendszerböngészőt, javasoljuk, hogy az eszközön legyen egy böngésző, amely támogatja a Chrome egyéni lapjait.  Ellenkező esetben a hitelesítés sikertelen lehet.
+- **Beágyazott webnézet.** Ha csak a beágyazott webnézetet szeretné használni a `AcquireTokenInteractively` MSAL.net-ben, `WithUseEmbeddedWebView()` a Parameters Builder metódust tartalmaz.
 
     iOS
 
@@ -91,23 +183,23 @@ A fejlesztők MSAL.NET használatával az STS interaktív párbeszédpanel megje
                 .ExecuteAsync();
     ```
 
-#### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinios"></a>Beágyazott webböngészőt vagy Xamarin.iOS böngészővel rendszer közötti választáshoz
+#### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinios"></a>A Xamarin. iOS fájl beágyazott webböngészője vagy rendszerböngészője közötti választás
 
-Az iOS-alkalmazásban a `AppDelegate.cs` lehet inicializálni a `ParentWindow` való `null`. Az IOS-es nem használatos
+Az iOS-alkalmazásban a `AppDelegate.cs` alkalmazásban inicializálhatja `null`a `ParentWindow` alkalmazást. IOS-ben nem használatos
 
 ```csharp
 App.ParentWindow = null; // no UI parent on iOS
 ```
 
-#### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid"></a>Beágyazott webböngészőt vagy Xamarin.Android rendszer böngészővel közötti választáshoz
+#### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid"></a>Választás a beágyazott webböngésző vagy a Xamarin. Android rendszerbeli böngésző között
 
-Az Android-alkalmazásba a `MainActivity.cs` a fölérendelt tevékenység beállíthatja úgy, hogy a hitelesítési eredményeket visszakap hozzá:
+Az Android-alkalmazásban beállíthatja a szülő tevékenységet, így a hitelesítési eredmény visszakerül a következőre `MainActivity.cs` :
 
 ```csharp
  App.ParentWindow = this;
 ```
 
-Ezt a a `MainPage.xaml.cs`:
+Ezután a `MainPage.xaml.cs`:
 
 ```csharp
 authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
@@ -116,16 +208,16 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
                       .ExecuteAsync();
 ```
 
-#### <a name="detecting-the-presence-of-custom-tabs-on-xamarinandroid"></a>Egyéni lapok a Xamarin.Android jelenlétének
+#### <a name="detecting-the-presence-of-custom-tabs-on-xamarinandroid"></a>Egyéni lapok jelenlétének észlelése a Xamarin. Android rendszeren
 
-Ha meg szeretné használni a rendszer webböngészőben való egyszeri bejelentkezés engedélyezése a böngészőben futó alkalmazásokkal, de a felhasználói élmény az Android-eszközök nem rendelkeznek egy böngészőben az egyéni lap támogatásával kapcsolatos miatt aggódó, lehetősége van meghívásával dönthet arról, hogy a `IsSystemWebViewAvailable()` metódus az < c 2 > `IPublicClientApplication` . A metódus visszatérése `true` , ha a PackageManager egyéni lapok észleli és `false` ha azok nem észlelhető az eszközön.
+Ha azt szeretné, hogy a rendszer webböngészője engedélyezze az egyszeri bejelentkezést a böngészőben futó alkalmazásokkal, de az Android-eszközök felhasználói felülete nem rendelkezik egyéni Tab-támogatással, dönthet úgy, hogy meghívja a `IsSystemWebViewAvailable()` metódust a következővel: < c 2 > `IPublicClientApplication` . Ez a metódus `true` azt adja vissza, hogy a PackageManager `false` észleli-e az egyéni lapokat, és hogy nem észlelhetők-e az eszközön.
 
-Ezt a módszert, és a követelmények által visszaadott érték alapján, akkor is döntéseket:
+Az ezzel a módszerrel visszaadott érték és a követelmények alapján a következő döntéseket hozhatja:
 
-- Egyéni hibaüzenet a felhasználó számára adhat vissza. Példa: "Telepítse a Chrome-ban való hitelesítés folytatásához" – vagy –
-- Térhet vissza a beágyazott webview lehetőséget, és indítsa el a felhasználói felület, mint egy beágyazott WebView-t.
+- Egyéni hibaüzenetet adhat vissza a felhasználónak. Példa: "Telepítse a Chrome-t a hitelesítés folytatásához"-vagy-
+- A beágyazott webnézet lehetőségre visszatérhet, és beágyazott webnézetként indíthatja el a felhasználói felületet.
 
-Az alábbi kódot a beágyazott webview beállítás látható:
+Az alábbi kód a beágyazott webnézet lehetőséget mutatja be:
 
 ```csharp
 bool useSystemBrowser = app.IsSystemWebviewAvailable();
@@ -136,8 +228,7 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
                       .ExecuteAsync();
 ```
 
-## <a name="net-core-does-not-support-interactive-authentication-out-of-the-box"></a>.NET core nem támogatja a beépített interaktív hitelesítés
+#### <a name="net-core-doesnt-support-interactive-authentication-with-an-embedded-browser"></a>A .NET Core nem támogatja az interaktív hitelesítést egy beágyazott böngészővel
 
-A .NET Core tokenek megszerzésével interaktívan nem érhető el. Sőt a .NET Core nem biztosít felhasználói felület még. Adja meg interaktív bejelentkezési egy .NET Core-alkalmazást szeretne, ha, lehetővé teszi az alkalmazás jelenik meg a felhasználónak egy kódot, és jelentkezzen be interaktívan Ugrás URL-címe (lásd: [eszköz kód Flow](msal-authentication-flows.md#device-code)).
-
-Másik megoldásként Megvalósíthat a [IWithCustomUI](scenario-desktop-acquire-token.md#withcustomwebui) felületet, és adja meg a saját böngészőben
+A .NET Core esetében a tokenek interaktív beszerzése csak a rendszer webböngészőjén keresztül érhető el, nem pedig a beágyazott webes nézetekkel. Valójában a .NET Core még nem biztosít felhasználói felületet.
+Ha testre szeretné szabni a böngészési élményt a rendszerböngészővel, megvalósíthatja a [IWithCustomUI](scenario-desktop-acquire-token.md#withcustomwebui) felületet, és akár saját böngészőt is megadhat.

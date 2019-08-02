@@ -1,6 +1,6 @@
 ---
-title: Ajánlott eljárások az Azure Active Directory feltételes hozzáférés |} A Microsoft Docs
-description: Tudnivalók ismertetése, és mi kerülje ennek során a feltételes hozzáférési szabályzatok konfigurálásakor.
+title: Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directoryban | Microsoft Docs
+description: Megtudhatja, mit kell tudnia, és mit érdemes elkerülni a feltételes hozzáférési házirendek konfigurálásakor.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,137 +11,137 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79a27fb5e243d2590e3fae85c6c820c4a43af0d5
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 08be09f7bee3aa17ff9d1baae4271e994fa235cb
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509414"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248882"
 ---
-# <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Ajánlott eljárások az Azure Active Directory feltételes hozzáférés
+# <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory
 
-A [Azure Active Directory (Azure AD) feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md), szabályozhatja, hogy jogosult felhasználók hozzáférésének a felhőalapú alkalmazások. Ez a cikk azt ismerteti kapcsolatban:
+A [Azure Active Directory (Azure ad) feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md)segítségével szabályozhatja, hogy a jogosult felhasználók hogyan férhessenek hozzá a felhőalapú alkalmazásokhoz. Ez a cikk a következő információkat tartalmazza:
 
-- Tudnivalók 
-- Mi az kerülje ennek során a feltételes hozzáférési szabályzatok konfigurálásakor. 
+- Tudni kívánt dolgok 
+- Mit kell elkerülni a feltételes hozzáférési házirendek konfigurálásakor. 
 
-Ez a cikk feltételezi, hogy Ön ismeri a fogalmakat és a terminológia leírt [Mi az az Azure Active Directory feltételes hozzáférés?](../active-directory-conditional-access-azure-portal.md)
+Ez a cikk azt feltételezi, hogy már ismeri az alábbi fogalmakat és terminológiát: [Mi a feltételes hozzáférés a Azure Active Directoryban?](../active-directory-conditional-access-azure-portal.md)
 
-## <a name="whats-required-to-make-a-policy-work"></a>Mi szükséges munka házirendet egy?
+## <a name="whats-required-to-make-a-policy-work"></a>Mi szükséges a szabályzat működéséhez?
 
-Amikor létrehoz egy új szabályzatot, nincsenek nincsenek felhasználók, csoportok, alkalmazások vagy kiválasztott hozzáférés-vezérlést.
+Új szabályzat létrehozásakor nincsenek kiválasztva felhasználók, csoportok, alkalmazások vagy hozzáférés-vezérlések.
 
-![Felhőalkalmazások](./media/best-practices/02.png)
+![Felhőalapú alkalmazások](./media/best-practices/02.png)
 
-Ahhoz, hogy a szabályzat működik, konfigurálnia kell:
+A szabályzat működéséhez konfigurálnia kell a következőket:
 
 | Mi           | Hogyan                                  | miért |
 | :--            | :--                                  | :-- |
-| **Felhőalkalmazások** |Válassza ki egy vagy több alkalmazást.  | A feltételes hozzáférési szabályzat célja, hogy szabályozhatja, hogy jogosult felhasználók érhetik el az alkalmazásokat a felhőben.|
-| **Felhasználók és csoportok** | Válasszon legalább egy felhasználót vagy csoportot, amely a kiválasztott felhőalapú alkalmazások elérésére jogosult. | Feltételes hozzáférési szabályzatot, amely nem rendelkezik felhasználók és csoportok hozzárendelve, soha nem aktiválódott. |
-| **Hozzáférés-vezérlés** | Válasszon legalább egy hozzáférés-vezérlés. | Ha a feltételek teljesülnek, a házirend processzor tudnia kell, mi a teendő. |
+| **Felhőalapú alkalmazások** |Válasszon ki egy vagy több alkalmazást.  | A feltételes hozzáférési szabályzat célja, hogy lehetővé tegye annak szabályozását, hogy a jogosult felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz.|
+| **Felhasználók és csoportok** | Válasszon ki legalább egy olyan felhasználót vagy csoportot, amely jogosult a kiválasztott felhőalapú alkalmazások elérésére. | A rendszer soha nem indít olyan feltételes hozzáférési szabályzatot, amely nem rendelkezik hozzárendelt felhasználókkal és csoportokkal. |
+| **Hozzáférés-vezérlés** | Válasszon ki legalább egy hozzáférés-vezérlést. | Ha a feltételek teljesülnek, a házirend-feldolgozónak tudnia kell, hogy mi a teendő. |
 
 ## <a name="what-you-should-know"></a>Alapismeretek
 
 ### <a name="how-are-conditional-access-policies-applied"></a>Hogyan alkalmazza a feltételes hozzáférési szabályzatokat?
 
-Egynél több feltételes hozzáférési szabályzat akkor fordulhatnak elő, ha egy felhőalkalmazás fér hozzá. Ebben az esetben meg kell felelniük az összes házirend alkalmazása. Például ha egy házirend többtényezős Hitelesítést igényel, és a második igényel a megfelelő eszköz, kell áthaladnia az MFA, és használja a megfelelő eszköz. 
+Egy felhőalapú alkalmazáshoz való hozzáféréskor több feltételes hozzáférési házirend is alkalmazható. Ebben az esetben minden érvényes szabályzatnak teljesülnie kell. Ha például az egyik házirend az MFA-t igényli, és a másodikhoz megfelelő eszközre van szükség, akkor az MFA-t kell átadnia, és egy megfelelő eszközt kell használnia. 
 
-Az összes házirendek érvényben vannak, két fázisban történik:
+Az összes házirend kikényszerítve két fázisban:
 
-- Az a **első** fázisban összes házirendek kiértékelése és a gyűjtött összes hozzáférés-vezérlést, amely nem teljesül. 
-- Az a **második** fázis, kéri a még nem teljesített követelmények teljesítéséhez. A szabályzatok közül bármelyik letiltja a hozzáférést, ha, letiltott és nem kéri a más szabályzati vezérlőket kielégítéséhez. A szabályzatokkal letiltható akkor, ha más házirend szabályozza, a következő sorrendben kielégítéséhez kéri:
+- Az **első** fázisban az összes házirend ki lesz értékelve, és a rendszer minden olyan hozzáférés-vezérlőt begyűjt, amely nem teljesül. 
+- A **második** szakaszban a rendszer felszólítja a nem teljesített követelmények kielégítésére. Ha a házirendek bármelyike blokkolja a hozzáférést, a rendszer letiltja, és nem kéri más szabályzat-vezérlők kielégítésére. Ha a szabályzatok letiltják, a rendszer a következő sorrendben kéri az egyéb szabályzat-ellenőrzéseknek való megfelelést:
 
    ![Rendelés](./media/best-practices/06.png)
     
-   Külső MFA-szolgáltatók és a használati feltételeket tartalmazó fájl jár a Tovább gombra.
+   A külső MFA-szolgáltatók és használati feltételek továbbra is megtalálhatók.
 
-### <a name="how-are-assignments-evaluated"></a>Hogyan értékeli a hozzárendeléseket?
+### <a name="how-are-assignments-evaluated"></a>Hogyan történik a hozzárendelések kiértékelése?
 
-Az összes hozzárendelés vannak logikailag **műveletet**. Ha egynél több hozzárendelési konfigurálva van, az összes hozzárendelés aktiválhat egy házirendet kell teljesülnie.  
+Minden hozzárendelés logikailag **ANDed**. Ha egynél több hozzárendelés van konfigurálva, minden hozzárendelésnek meg kell felelnie a szabályzat elindításának.  
 
-Ha szeretne egy helyfeltétel, amelyekre vonatkozik a vállalati hálózaton kívül létesített összes kapcsolat konfigurálása:
+Ha olyan hely feltételt kell konfigurálnia, amely a szervezet hálózatán kívülről végzett összes kapcsolatra vonatkozik:
 
-- Például **az összes hely**
-- Kizárandó **minden megbízható IP-címek**
+- **Minden helyszín** belefoglalása
+- **Az összes megbízható IP** -cím kizárása
 
-### <a name="what-to-do-if-you-are-locked-out-of-the-azure-ad-admin-portal"></a>Mi a teendő, ha az Azure AD felügyeleti portálon kizárása?
+### <a name="what-to-do-if-you-are-locked-out-of-the-azure-ad-admin-portal"></a>Mi a teendő, ha ki van zárva az Azure AD felügyeleti portálon?
 
-Ha egy feltételes hozzáférési házirendben egy helytelen beállítás miatt az Azure AD portálon kizárása:
+Ha a feltételes hozzáférési szabályzat helytelen beállítása miatt kizárja az Azure AD-portált:
 
-- Ellenőrizze a nincsenek más rendszergazdák a szervezetben, amelyek még nincsenek letiltva. Az Azure portal-hozzáféréssel rendelkező rendszergazda letilthatja a szabályzatot, amely negatív hatással van a bejelentkezés. 
-- A rendszergazdák a szervezet egyik sem frissítheti a házirendet, ha támogatási kérelmet szeretne. A Microsoft támogatási ellenőrizheti és frissítheti a feltételes hozzáférési szabályzatokat, amely megakadályozza, hogy hozzáférést.
+- Győződjön meg arról, hogy a szervezet más rendszergazdái még nincsenek letiltva. A Azure Portalhoz hozzáféréssel rendelkező rendszergazda letilthatja a bejelentkezést befolyásoló házirendet. 
+- Ha a szervezet egyik rendszergazdája sem tudja frissíteni a szabályzatot, be kell küldenie egy támogatási kérést. A Microsoft támogatási szolgálata megtekintheti és frissítheti a hozzáférést megakadályozó feltételes hozzáférési szabályzatokat.
 
-### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>Mi történik, ha a klasszikus Azure portál és az Azure Portalon konfigurált szabályzatok?  
+### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>Mi történik, ha szabályzatok vannak a klasszikus Azure portálon, és Azure Portal konfigurálva?  
 
-Mindkét házirendeket tartat be az Azure Active Directory és a felhasználó hozzáférést kap, csak akkor, ha a szükséges összes követelmény teljesülését.
+A Azure Active Directory mindkét szabályzatot kényszeríti, és a felhasználó csak akkor kap hozzáférést, ha minden követelmény teljesül.
 
-### <a name="what-happens-if-you-have-policies-in-the-intune-silverlight-portal-and-the-azure-portal"></a>Mi történik, ha a szabályzat az Intune Silverlight portal és az Azure Portalon?
+### <a name="what-happens-if-you-have-policies-in-the-intune-silverlight-portal-and-the-azure-portal"></a>Mi történik, ha szabályzatok vannak az Intune Silverlight Portálon és a Azure Portal?
 
-Mindkét házirendeket tartat be az Azure Active Directory és a felhasználó hozzáférést kap, csak akkor, ha a szükséges összes követelmény teljesülését.
+A Azure Active Directory mindkét szabályzatot kényszeríti, és a felhasználó csak akkor kap hozzáférést, ha minden követelmény teljesül.
 
-### <a name="what-happens-if-i-have-multiple-policies-for-the-same-user-configured"></a>Mi történik, ha van konfigurálva ugyanaz a felhasználó számára több házirend?  
+### <a name="what-happens-if-i-have-multiple-policies-for-the-same-user-configured"></a>Mi történik, ha ugyanahhoz a felhasználóhoz több szabályzat is van konfigurálva?  
 
-Minden bejelentkezéshez az Azure Active Directory kiértékeli az összes szabályzat, és biztosítja, hogy a szükséges összes követelmény teljesül-e előtt a felhasználónak hozzáférése engedélyezett. Hozzáférés letiltása trumps minden egyéb olyan konfigurációs beállításoknak. 
+Minden bejelentkezéskor Azure Active Directory kiértékel minden házirendet, és biztosítja, hogy minden követelmény teljesül, mielőtt hozzáférést kap a felhasználóhoz. Letiltja a hozzáférést az összes többi konfigurációs beállításhoz. 
 
-### <a name="does-conditional-access-work-with-exchange-activesync"></a>Feltételes hozzáférés az Exchange ActiveSync szolgáltatással működik?
+### <a name="does-conditional-access-work-with-exchange-activesync"></a>Működik a feltételes hozzáférés az Exchange ActiveSync szolgáltatással?
 
-Igen, használhatja az Exchange ActiveSync feltételes hozzáférési szabályzat egyes [korlátozások](block-legacy-authentication.md). 
+Igen, bizonyos korlátozásokkal használhatja az Exchange ActiveSync-t egy feltételes hozzáférési [](block-legacy-authentication.md)szabályzatban. 
 
-### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Hogyan kell konfigurálnia a feltételes hozzáférés az Office 365-alkalmazások?
+### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Hogyan konfigurálhatja a feltételes hozzáférést az Office 365-alkalmazásokkal?
 
-Office 365-alkalmazások vannak összekapcsolva, mert azt javasoljuk hozzárendelése a gyakran használt alkalmazások együtt szabályzatok létrehozásakor.
+Mivel az Office 365-alkalmazások egymással kapcsolódnak egymáshoz, javasoljuk, hogy a leggyakrabban használt alkalmazásokat a szabályzatok létrehozásakor együtt adja hozzá.
 
-Közös összekapcsolt alkalmazások közé tartozik a Microsoft Flow, a Microsoft Planner, Microsoft Teams, Office 365 Exchange Online, az Office 365 SharePoint Online és az Office 365 Yammer.
+A gyakori összekapcsolt alkalmazások közé tartozik a Microsoft Flow, a Microsoft Planner, a Microsoft Teams, az Office 365 Exchange Online, az Office 365 SharePoint Online és az Office 365 Yammer.
 
-Fontos a felhasználói tevékenységeket, például a többtényezős hitelesítést, amikor egy munkamenet vagy a feladat kezdetétől érvényesül hozzáférésének igénylő szabályzatainak. Ha nem, akkor felhasználók nem fog tudni végezzünk el néhány feladatot az alkalmazáson belül. Például ha van szüksége a multi-factor authentication a nem felügyelt eszközök férhessenek hozzá a SharePoint, de nem e-mailt, az e-mail-címét a felhasználója nem lehet csatlakozni a SharePoint-fájlok, egy üzenet. További információ a cikkben található [Mik az Azure Active Directory feltételes hozzáférés függőségei?](service-dependencies.md).
+Fontos olyan házirendek esetében, amelyek felhasználói interakciókat igényelnek, például a többtényezős hitelesítést, amikor a hozzáférés egy munkamenet vagy feladat elején van szabályozva. Ha nem, a felhasználók bizonyos feladatokat nem tudnak végrehajtani egy alkalmazáson belül. Ha például többtényezős hitelesítést igényel a nem felügyelt eszközökön a SharePoint eléréséhez, de nem az e-mailekhez, az e-mailben dolgozó felhasználók nem tudnak SharePoint-fájlokat csatolni egy üzenethez. További információt a cikk a [feltételes hozzáférés Azure Active Directory szolgáltatás függőségei](service-dependencies.md)című cikkben talál.
 
-## <a name="what-you-should-avoid-doing"></a>Milyen kerülje ennek során
+## <a name="what-you-should-avoid-doing"></a>Mit érdemes elkerülni
 
-A feltételes hozzáférés keretrendszer egy nagyszerű konfigurációs rugalmasságot biztosít. Azonban rendkívül rugalmas, azt is jelenti, hogy alaposan tekintse át minden konfigurációs szabályzat nem kívánt eredmények elkerülése érdekében közzététele előtt. Ebben a környezetben, például érintő teljes hozzárendelések külön figyelmet kell fordítani **minden felhasználók / csoportok / felhőalkalmazások**.
+A feltételes hozzáférési keretrendszer nagyszerű konfigurációs rugalmasságot biztosít. A nagy rugalmasság azonban azt is jelenti, hogy az egyes konfigurációs házirendeket alaposan át kell tekintenie, mielőtt a nemkívánatos eredmények elkerülnek. Ebben a kontextusban különös figyelmet kell fordítani a teljes készleteket érintő hozzárendelésekre, például az **összes felhasználó/csoport/Felhőbeli alkalmazásra**.
 
-A környezetben kerülje a következő beállításokat:
+A környezetében el kell kerülnie a következő konfigurációkat:
 
-**Az összes felhasználó számára az összes felhőalapú alkalmazások:**
+**Minden felhasználó, minden felhőalapú alkalmazás:**
 
-- **Hozzáférés letiltása** – Ez a konfiguráció blokkolja a teljes szervezet, amely egyértelműen nem célszerű.
-- **Megfelelő eszköz megkövetelése** – a felhasználók számára, amely nem regisztrálták az eszközeiket, de ez a szabályzat letiltja a hozzáférést az Intune-portálon az összes hozzáférést. Ha Ön rendszergazda a regisztrált eszköz nélküli, akkor ez a szabályzat letiltja a ki újra az Azure Portalon módosíthatja a szabályzatot.
-- **A tartományhoz való csatlakozás megkövetelése** – Ez a házirend letiltása hozzáférés potenciálisan is letiltja a hozzáférést a szervezet összes felhasználója számára, ha még nem rendelkezik a tartományhoz csatlakoztatott eszköz.
-- **Alkalmazásvédelmi szabályzat szükséges** – Ez a házirend letiltása hozzáférés potenciálisan is letiltja a hozzáférést a szervezet összes felhasználója számára, ha nem rendelkezik Intune-szabályzattal. Ha a rendszergazda anélkül, hogy az Intune alkalmazásvédelmi szabályzattal ellátott ügyfélalkalmazás, akkor ez a szabályzat letiltja a ki vissza portálok, például az Intune és az Azure.
+- **Hozzáférés letiltása** – ez a konfiguráció blokkolja a teljes szervezetet, ami biztosan nem jó ötlet.
+- **Megfelelő eszköz** megkövetelése – azoknál a felhasználóknál, akik még nem regisztrálták az eszközeiket, ez a szabályzat blokkolja az összes hozzáférést, beleértve az Intune-portálhoz való hozzáférést is. Ha a rendszergazda regisztrált eszköz nélkül van, akkor ez a szabályzat megakadályozza, hogy visszalépjen a Azure Portal a szabályzat módosításához.
+- **Tartományhoz való csatlakozás** megkövetelése – ez a házirend-blokkolási hozzáférés a szervezet összes felhasználója számára is letilthatja a hozzáférést, ha még nem rendelkezik tartományhoz csatlakoztatott eszközzel.
+- **Alkalmazás-védelmi házirend** megkövetelése – ez a házirend-blokkolási hozzáférés a szervezet összes felhasználója számára is letilthatja a hozzáférést, ha nem rendelkezik Intune-házirenddel. Ha Ön az Intune app Protection-szabályzattal nem rendelkező ügyfélalkalmazás, akkor ez a szabályzat megakadályozza, hogy visszajusson a portálokra, például az Intune-ba és az Azure-ba.
 
-**Minden felhasználó, a minden felhőalapú alkalmazásra, az összes eszközplatformot:**
+**Minden felhasználó, minden felhőalapú alkalmazás, minden eszköz platform:**
 
-- **Hozzáférés letiltása** – Ez a konfiguráció blokkolja a teljes szervezet, amely egyértelműen nem célszerű.
+- **Hozzáférés letiltása** – ez a konfiguráció blokkolja a teljes szervezetet, ami biztosan nem jó ötlet.
 
-## <a name="how-should-you-deploy-a-new-policy"></a>Hogyan kell üzembe helyezni egy új szabályzatot?
+## <a name="how-should-you-deploy-a-new-policy"></a>Hogyan érdemes új szabályzatot telepíteni?
 
-Első lépésként ki kell értékelni a csoportházirend használatával a [mi történik, ha eszköze](what-if-tool.md).
+Első lépésként ki kell értékelnie a szabályzatot a [Mi az IF eszköz](what-if-tool.md)használatával.
 
-Amikor új házirendeket a környezet készen áll, telepíthet fázisban történik:
+Ha az új szabályzatok készen állnak a környezetre, a következő fázisokban telepítse őket:
 
-1. A házirend alkalmazása a felhasználók egy kis készletét, és ellenőrizze a várt módon. 
-1. Ha kibontja a házirend több felhasználónak bele. Továbbra is minden rendszergazda kizárása a házirendet, győződjön meg arról, hogy azok továbbra is rendelkezik hozzáféréssel, és frissítheti egy szabályzatot, ha szükség egy az megváltoztatására.
-1. A szabályzat minden felhasználóra vonatkozni csak szükség esetén. 
+1. Alkalmazzon egy házirendet a felhasználók egy kis készletére, és ellenőrizze, hogy az a várt módon működik-e. 
+1. Amikor kibővít egy házirendet, hogy több felhasználót is tartalmazzon. Továbbra is kizárhatja az összes rendszergazdát a szabályzatból, hogy azok továbbra is hozzáférhessenek, és ha módosításra van szükség, frissítse a szabályzatot.
+1. Ha szükséges, alkalmazza a házirendet az összes felhasználóra. 
 
-Ajánlott eljárásként hozzon létre egy felhasználói fiókkal, amely:
+Ajánlott eljárásként hozzon létre egy felhasználói fiókot:
 
-- Dedikált házirend felügyelet 
-- Minden szabályzat zárva
+- Házirend-felügyeletre dedikált 
+- Kizárva az összes házirendből
 
-## <a name="policy-migration"></a>Szabályzat áttelepítése
+## <a name="policy-migration"></a>Házirend áttelepítése
 
-Vegye figyelembe, hogy a házirendeket, nem hozott létre az Azure Portalon mert áttelepítése:
+Érdemes áttelepíteni azokat a házirendeket, amelyeket nem a Azure Portal hozott létre, mert:
 
-- Most meg lehet oldani a forgatókönyvek, mielőtt nem tudta kezelni.
-- A szabályzatok által összevonni őket felügyelni kell számát csökkentheti.   
-- Egyetlen központi helyen a feltételes hozzáférési szabályzatokat is kezelheti.
-- A klasszikus Azure portálon visszavontuk.   
+- Mostantól olyan forgatókönyveket is megadhat, amelyeket nem tudott kezelni.
+- Csökkentheti a felügyelni kívánt szabályzatok számát.   
+- A feltételes hozzáférési szabályzatokat egyetlen központi helyen kezelheti.
+- A klasszikus Azure portál ki lett vonva.   
 
-További információkért lásd: [az Azure Portalon klasszikus szabályzatok Migrálása](policy-migration.md).
+További információ: [klasszikus szabályzatok áttelepítése a Azure Portal](policy-migration.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Ha meg szeretné ismerni:
+Ha tudni szeretné:
 
-- Egy feltételes hozzáférési szabályzat konfigurálása, olvassa el [megkövetelése MFA konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés](app-based-mfa.md).
-- Hogyan tervezi a feltételes hozzáférési szabályzatokat, [a feltételes hozzáférés üzembe helyezés az Azure Active Directory tervezése](plan-conditional-access.md).
+- Feltételes hozzáférési szabályzat konfigurálása: a többtényezős hitelesítés megkövetelése [adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md).
+- A feltételes hozzáférési szabályzatok megtervezése: a [feltételes hozzáférési](plan-conditional-access.md)környezet megtervezése Azure Active Directoryban.

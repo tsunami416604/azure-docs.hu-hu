@@ -1,6 +1,6 @@
 ---
-title: Vész-helyreállítási Azure-beli virtuális gépek az Azure Site Recovery szolgáltatással az Azure ExpressRoute integrálása |} A Microsoft Docs
-description: Ismerteti, hogyan lehet Azure-beli virtuális gépek Azure Site Recovery és az Azure ExpressRoute használatával vészhelyreállítás beállítása
+title: Azure-ExpressRoute integrálása az Azure-beli virtuális gépek vész-helyreállításával az Azure Site Recovery Service használatával | Microsoft Docs
+description: Útmutatás az Azure-beli virtuális gépek vész-helyreállításának beállításához Azure Site Recovery és az Azure ExpressRoute használatával
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -8,213 +8,213 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 90388d570d027aea3c897f7306a1714fd7e847b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0974e2ed78e557168357c51b5c77a94de2f56dc5
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772382"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722106"
 ---
-# <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Vészhelyreállítás az Azure virtuális gépek Azure ExpressRoute integrálása
+# <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Azure-ExpressRoute integrálása a vész-helyreállítási Azure-beli virtuális gépekhez
 
 
-Ez a cikk azt ismerteti, hogyan integrálható az Azure ExpressRoute [Azure Site Recovery](site-recovery-overview.md), amikor Ön vészhelyreállítás beállítása az Azure virtuális gépek másodlagos Azure-régióba.
+Ez a cikk azt ismerteti, hogyan integrálható [](site-recovery-overview.md)az Azure-beli ExpressRoute az Azure-beli virtuális gépek másodlagos Azure-régióba való bevezetésének Azure site Recoveryával.
 
-A Site Recovery lehetővé teszi, hogy Azure virtuális gépek vészhelyreállítása az Azure virtuális gép adatait az Azure-ba való replikálásával.
+Site Recovery az Azure-beli virtuális gépek Azure-ba történő replikálásával lehetővé teszi az Azure-beli virtuális gépek vész-helyreállítását.
 
-- Ha az Azure-beli virtuális gépek használni [Azure managed disks](../virtual-machines/windows/managed-disks-overview.md), virtuális gép adatait a rendszer replikálja egy replikált felügyelt lemez a másodlagos régióban.
-- Azure virtuális gépek nem felügyelt lemezek használata, ha virtuális gép adatait a rendszer replikálja egy Azure storage-fiókot.
-- Replikációs végpontok nyilvános, de az Azure virtuális gépek replikációs forgalom nem adatbázisközi az interneten.
+- Ha az Azure-beli virtuális gépek az [Azure Managed](../virtual-machines/windows/managed-disks-overview.md)Disks-t használják, a rendszer a virtuális gép-és a másodlagos régió replikált felügyelt lemezére replikál
+- Ha az Azure-beli virtuális gépek nem felügyelt lemezeket használnak, a rendszer replikálja a virtuálisgép-fájlokat egy Azure Storage-fiókba.
+- A replikációs végpontok nyilvánosak, de az Azure-beli virtuális gépek replikációs forgalma nem az interneten keresztül történik.
 
-Az ExpressRoute segítségével kiterjesztheti helyszíni hálózatait a Microsoft Azure-felhőben, amelyet egy kapcsolatszolgáltató biztosít, egy privát kapcsolaton keresztül. Ha az ExpressRoute konfigurálva van, együttműködik a Site Recovery a következő:
+A ExpressRoute lehetővé teszi a helyszíni hálózatok kibővítését a Microsoft Azure felhőbe privát kapcsolaton keresztül, amelyet egy kapcsolati szolgáltató biztosít. Ha a ExpressRoute konfigurálva van, az a következőképpen integrálódik a Site Recovery:
 
-- **Az Azure-régiók közötti replikáció során**: Replikációs forgalom az Azure-beli virtuális gépek vészhelyreállításához csak az Azure-ban, és az ExpressRoute nem szükséges, vagy a replikációhoz használt. Azonban, amelyhez csatlakozik egy helyszíni helyről az Azure virtuális gépek az Azure elsődleges helyen, van-e olyan problémák érdemes figyelembe vennie, amikor beállítása vész-helyreállítási ezeket az Azure-beli virtuális gépek száma.
-- **Az Azure-régiók közötti feladatátvétel**: Ha valamilyen okból kimaradás lép fel, a rendszer átadja a feladatokat Azure virtuális gépek az elsődleges kiszolgálóról másodlagos Azure-régióba. Miután-ba irányuló feladatátvétel egy másodlagos régióba, a program több lépést ahhoz, hogy az ExpressRoute-tal tudjon másodlagos régióban az Azure virtuális gépek eléréséhez.
+- Az **Azure-régiók közötti replikáció során**: Az Azure-beli virtuális gép vész-helyreállítási replikációs forgalma csak az Azure-ban érhető el, és a ExpressRoute nincs szükség vagy replikációra használni. Ha azonban egy helyszíni helyről csatlakozik az Azure-beli virtuális gépekhez az elsődleges Azure-helyen, számos problémát figyelembe kell vennie az Azure-beli virtuális gépek vész-helyreállításának beállításakor.
+- **Feladatátvétel az Azure-régiók között**: Leállások esetén az Azure-beli virtuális gépeket az elsődlegesről a másodlagos Azure-régióra hajtja végre. A másodlagos régióba való feladatátvételt követően számos lépést kell elvégeznie ahhoz, hogy a másodlagos régióban lévő Azure-beli virtuális gépeket a ExpressRoute használatával lehessen elérni.
 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Mielőtt elkezdené, győződjön meg arról, hogy megértette a következő fogalmak:
+Mielőtt elkezdené, győződjön meg róla, hogy megértette a következő fogalmakat:
 
-- Az ExpressRoute [Kapcsolatcsoportok](../expressroute/expressroute-circuit-peerings.md)
-- Az ExpressRoute [útválasztási tartományok](../expressroute/expressroute-circuit-peerings.md#routingdomains)
-- Az ExpressRoute [helyek](../expressroute/expressroute-locations.md).
-- Az Azure virtuális gép [replikáció architektúrája](azure-to-azure-architecture.md)
-- Hogyan [-replikálás beállítása](azure-to-azure-tutorial-enable-replication.md) az Azure virtuális gépek.
-- Hogyan [átadja a feladatokat](azure-to-azure-tutorial-failover-failback.md) Azure virtuális gépeken.
+- ExpressRoute- [áramkörök](../expressroute/expressroute-circuit-peerings.md)
+- ExpressRoute- [útválasztási tartományok](../expressroute/expressroute-circuit-peerings.md#routingdomains)
+- ExpressRoute [helyei](../expressroute/expressroute-locations.md).
+- Azure-beli virtuális gép [replikációs architektúrája](azure-to-azure-architecture.md)
+- Az Azure-beli virtuális gépek [replikálásának beállítása](azure-to-azure-tutorial-enable-replication.md) .
+- Azure- [](azure-to-azure-tutorial-failover-failback.md) beli virtuális gépek feladatátvétele.
 
 
 ## <a name="general-recommendations"></a>Általános javaslatok
 
-Az ajánlott eljárás, és hatékony Helyreállításiidő-célkitűzések (RTO) vész-helyreállítási biztosítása érdekében javasoljuk, hogy beállításakor a Site Recovery integrálható az expressroute-tal tegye a következőket:
+Az ajánlott eljáráshoz és a hatékony helyreállítási idő célkitűzésének (RTOs) a vész-helyreállításhoz való biztosításához az alábbiakat javasoljuk, amikor beállítja Site Recoveryt a ExpressRoute-nal való integráláshoz:
 
-- A feladatátvétel egy másodlagos régióba előtt hálózati összetevők üzembe helyezése:
-    - Az Azure virtuális gépek a replikáció engedélyezése a Site Recovery is üzembe helyezhetők a hálózati erőforrások, például a hálózatok, alhálózatok és a forrás hálózati beállításai alapján a cél Azure-régióban, az átjárókat.
-    - A Site Recovery automatikusan hálózati erőforrások, például virtuális hálózati átjárók nem tudja beállítani.
-    - Azt javasoljuk, hogy ezek a feladatátvétel előtt további hálózati erőforrások kiépítése. Egy kis állásidő társítva ehhez a központi telepítéshez, és befolyásolhatja a teljes helyreállítási időt, ha az üzembe helyezés tervezése során ez a fiók nem.
-- Rendszeres vészhelyreállítási próbákat:
-    - A próba adatveszteség és állásidő nélkül ellenőrzi a replikációs stratégiáját, és nincs hatással az éles környezetre. Ez segít, hogy negatívan befolyásolhatja a RTO utolsó pillanatban konfigurációs problémák elkerülése érdekében.
-    - A részletezés a feladatátvételi teszt futtatásakor azt javasoljuk, hogy egy külön Azure-beli Virtuálisgép-hálózatot, a replikáció engedélyezésekor beállított alapértelmezett hálózat helyett használja.
-- Különböző IP-címterek akkor használhatja, ha egyetlen ExpressRoute-kapcsolatcsoportot.
-    - Azt javasoljuk, hogy a cél virtuális hálózat egy másik IP-címteret használja. Problémák Ezzel elkerülhető a regionális üzemkimaradások utáni helyreállításon során kapcsolatok létesítéséhez.
-    - Ha nem használhat egy külön címtér, mindenképp vész helyreállítási részletes feladatátvételi teszt futtatása a különböző IP-címek külön vizsgálat hálózat. Két virtuális hálózat nem átfedésben lévő IP-címtér ugyanahhoz az ExpressRoute-kapcsolatcsoporthoz való csatlakozni.
+- Hálózati összetevők kiépítése a feladatátvétel előtt egy másodlagos régióba:
+    - Ha engedélyezi az Azure-beli virtuális gépek replikálását, Site Recovery a forrás hálózati beállítások alapján automatikusan üzembe helyezhet hálózati erőforrásokat, például hálózatokat, alhálózatokat és átjárókat a cél Azure-régióban.
+    - Site Recovery nem tud automatikusan beállítani hálózati erőforrásokat, például VNet átjárókat.
+    - Javasoljuk, hogy a feladatátvétel előtt ezeket a további hálózati erőforrásokat is kiépítse. Kis állásidő van társítva ehhez a központi telepítéshez, és ez hatással lehet a teljes helyreállítási időre, ha az üzembe helyezés megtervezése során nem vette figyelembe.
+- A vész-helyreállítási gyakorlatok rendszeres futtatása:
+    - A próba adatveszteség és állásidő nélkül ellenőrzi a replikációs stratégiáját, és nincs hatással az éles környezetre. Segít elkerülni a RTO negatívan befolyásoló utolsó perces konfigurációs problémákat.
+    - Ha feladatátvételi tesztet futtat a részletezéshez, javasoljuk, hogy használjon külön Azure virtuálisgép-hálózatot a replikáció engedélyezésekor beállított alapértelmezett hálózat helyett.
+- Ha egyetlen ExpressRoute áramkörrel rendelkezik, használjon eltérő IP-címeket.
+    - Javasoljuk, hogy használjon másik IP-címtartományt a célként megadott virtuális hálózathoz. Ez elkerüli a problémákat a kapcsolatok létrehozásakor a regionális kimaradások során.
+    - Ha nem használhat külön címtartományt, ne felejtse el futtatni a vész-helyreállítási teszt feladatátvételét egy különálló, eltérő IP-címmel rendelkező tesztelési hálózaton. Egymást átfedő IP-címtartományt tartalmazó két virtuális hálózatok ugyanahhoz a ExpressRoute-áramkörhöz nem csatlakoztatható.
 
-## <a name="replicate-azure-vms-when-using-expressroute"></a>Azure virtuális gépek replikálása az ExpressRoute használata során
+## <a name="replicate-azure-vms-when-using-expressroute"></a>Azure-beli virtuális gépek replikálása a ExpressRoute használatakor
 
 
-Ha azt szeretné, az Azure virtuális gépek replikációjának beállításához egy elsődleges helyen, és csatlakozik a virtuális gépek a helyszíni helyről expressroute-on keresztül, a következő mit kell tennie:
+Ha egy elsődleges helyen szeretné beállítani az Azure-beli virtuális gépek replikálását, és a helyszíni helyről a ExpressRoute-en keresztül csatlakozik ezekhez a virtuális gépekhez, a következőkre lesz szüksége:
 
-1. [Engedélyezze a replikációt](azure-to-azure-tutorial-enable-replication.md) minden Azure virtuális géphez.
-2. Szükség esetén lehetővé teszik a Site Recovery hálózatának beállítása:
-    - Konfigurálásakor, és engedélyezze a replikációt, a Site Recovery állít be hálózatok, alhálózatok és átjáró-alhálózatokkal a cél Azure-régióban, hogy megegyezzenek a forrásrégióban. A Site Recovery is leképezi a forrás- és virtuális hálózatok között.
-    - Ha nem szeretné automatikusan ehhez a Site Recovery, a céloldali hálózati erőforrások létrehozása, a replikáció engedélyezése előtt.
-3. Hozzon létre más hálózati elemek:
-    - A Site Recovery nem hoz létre útválasztási táblázatokat, virtuális hálózati átjárók, VNet-gateway-kapcsolatok, virtuális hálózatok közötti társviszony-létesítéshez, vagy más hálózati erőforrások és kapcsolatok a másodlagos régióban.
-    - Ezek a kiegészítő hálózati elemek létrehozása a másodlagos régióban, az elsődleges régióból történő feladatátvétel futtatása előtt bármikor van szüksége.
-    - Használhat [helyreállítási tervek](site-recovery-create-recovery-plans.md) és automatizálási szkriptek ezek kapcsolatot a hálózati erőforrások.
-1. Ha egy hálózati virtuális készüléket (NVA) szabályozhatja a hálózati forgalom telepítve van, vegye figyelembe, hogy:
-    - Az Azure alapértelmezett rendszer Azure virtuális gépek replikációjához út 0.0.0.0/0.
-    - Jellemzően NVA központi telepítések is meghatározhat egy alapértelmezett útvonalat (0.0.0.0/0), amely kényszeríti a kimenő internetes forgalmat az nva-n keresztül. Az alapértelmezett útvonal szolgál, ha nincsenek más konkrét útválasztó-konfiguráció tekintheti meg.
-    - Ez a helyzet, ha az nva-n túlterheltek, ha az összes replikációs forgalmat az nva-n keresztül továbbítja.
-    - Az azonos korlátozás is vonatkozik, az alapértelmezett útvonalak használata esetén az összes Azure-beli Virtuálisgép-forgalmat a helyszíni üzemelő példányok az Útválasztás.
-    - Ebben a forgatókönyvben javasoljuk, [hozzon létre egy hálózati szolgáltatásvégpontot](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) Microsoft.Storage szolgáltatás esetén a virtuális hálózaton, hogy a replikálás forgalma nem hagyja meg az Azure határt.
+1. [Engedélyezze](azure-to-azure-tutorial-enable-replication.md) az egyes Azure-beli virtuális gépek replikációját.
+2. Ha szeretné, Site Recovery beállítani a hálózatkezelést:
+    - Amikor konfigurálja és engedélyezi a replikálást, Site Recovery beállítja a hálózatokat, alhálózatokat és átjáró-alhálózatokat a cél Azure-régióban, hogy azok megfeleljenek a forrás régiójában lévőknek. A Site Recovery a forrás és a cél virtuális hálózatok közötti leképezéseket is leképezi.
+    - Ha nem szeretné, hogy ezt a Site Recovery automatikusan elvégezze, a replikálás engedélyezése előtt hozza létre a cél oldali hálózati erőforrásokat.
+3. Egyéb hálózati elemek létrehozása:
+    - Site Recovery nem hoz létre útválasztási táblákat, VNet-átjárókat, VNet, VNet vagy más hálózati erőforrásokat és kapcsolatokat a másodlagos régióban.
+    - Ezeket a további hálózatkezelési elemeket a másodlagos régióban kell létrehoznia, mielőtt az elsődleges régióból feladatátvételt futtat.
+    - A [helyreállítási tervek](site-recovery-create-recovery-plans.md) és automatizálási parancsfájlok segítségével beállíthatja és összekapcsolhatók ezek a hálózati erőforrások.
+1. Ha egy hálózati virtuális berendezés (NVA) van üzembe helyezve a hálózati forgalom áramlásának szabályozására, vegye figyelembe a következőket:
+    - Az Azure-beli virtuális gép replikálásának alapértelmezett rendszerútvonala a 0.0.0.0/0.
+    - A NVA központi telepítései általában olyan alapértelmezett útvonalat (0.0.0.0/0) is meghatároznak, amely a NVA keresztül a kimenő internetes forgalmat kényszeríti. Az alapértelmezett útvonal akkor használatos, ha más útvonal-konfiguráció nem található.
+    - Ebben az esetben előfordulhat, hogy a NVA túlterhelt, ha az összes replikációs forgalom a NVA halad át.
+    - Ugyanez a korlátozás akkor is érvényes, ha az alapértelmezett útvonalakat használja az összes Azure VM-forgalom helyszíni környezetbe történő átirányításához.
+    - Ebben az esetben javasoljuk, hogy hozzon [létre egy hálózati szolgáltatási végpontot](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) a virtuális hálózaton a Microsoft. Storage szolgáltatás számára, hogy a replikálási forgalom ne maradjon az Azure határán.
 
 ## <a name="replication-example"></a>Replikációs példa
 
-Nagyvállalati környezetben általában a számítási feladatok elosztja a több Azure virtuális hálózat, a külső kapcsolatokat az interneten, és a helyszíni helyek központi kapcsolódási hubbal rendelkeznek. Egy küllős topológiában általában ExpressRoute együtt használatos.
+A vállalati telepítések jellemzően több Azure-virtuális hálózatok oszlanak meg, és központi csatlakozási központtal rendelkeznek az internettel és a helyszíni helyekkel való külső kapcsolatokhoz. A hub és a küllős topológia jellemzően a ExpressRoute együtt használható.
 
-![A-helyszíni – Azure ExpressRoute használatával a feladatátvétel előtt](./media/azure-vm-disaster-recovery-with-expressroute/site-recovery-with-expressroute-before-failover.png)
+![Helyszíni – Azure ExpressRoute feladatátvétel előtt](./media/azure-vm-disaster-recovery-with-expressroute/site-recovery-with-expressroute-before-failover.png)
 
-- **Régió**. Alkalmazások üzembe vannak helyezve a Kelet-Ázsia Azure-régióban.
-- **Küllő virtuális hálózatok**. Alkalmazások üzembe vannak helyezve két küllő virtuális hálózatok:
+- **Régió**. Az alkalmazások üzembe helyezése az Azure Kelet-Ázsia régióban történik.
+- **Küllős virtuális hálózatok**. Az alkalmazások két küllős virtuális hálózatok vannak telepítve:
     - **Forrás vNet1**: 10.1.0.0/24.
     - **Forrás vNet2**: 10.2.0.0/24.
-    - Minden küllő virtuális hálózat csatlakozik **agyi virtuális hálózat**.
-- **Agyi virtuális hálózat**. Van egy agyi virtuális hálózat **forrás agyi virtuális hálózat**: 10.10.10.0/24.
-  - Az agyi virtuális hálózat a forgalomirányító szerepét.
-  - Alhálózatok közötti minden kommunikáció próbálja ki a hub.
-    - **VNet-alhálózatok hub**. Az agyi virtuális hálózat két alhálózattal rendelkezik:
-    - **NVA-alhálózat**: 10.10.10.0/25. Ez az alhálózat egy nva-t (10.10.10.10) tartalmazza.
-    - **Átjáró-alhálózat**: 10.10.10.128/25. Ezt az alhálózatot tartalmaz, amely a helyszíni hely egy privát társviszony-létesítési útválasztási tartomány segítségével irányítja egy ExpressRoute-kapcsolattal csatlakozik egy ExpressRoute-átjárót.
-- A helyszíni adatközponthoz egy ExpressRoute-kapcsolatcsoport kapcsolaton keresztül egy partner edge Hongkong (KKT) rendelkezik.
-- Minden útválasztás (UDR) Azure útválasztási táblázatban szabályozza.
-- Virtuális hálózat között, vagy a helyszíni adatközpontba minden kimenő forgalom útválasztása az nva-n keresztül történik.
+    - Minden küllős virtuális hálózat a **hub vNet**csatlakozik.
+- **Hub-vNet**. Van egy hub vNet **forrás hub-vNet**: 10.10.10.0/24.
+  - Ez a hub-vNet Forgalomirányítóként működik.
+  - Az alhálózatok közötti összes kommunikáció ezen a központban halad át.
+    - **Hub vNet**alhálózatai. A hub vNet két alhálózattal rendelkezik:
+    - **NVA alhálózat**: 10.10.10.0/25. Ez az alhálózat tartalmaz egy NVA (10.10.10.10).
+    - **Átjáró-alhálózat**: 10.10.10.128/25. Ez az alhálózat egy olyan ExpressRoute-kapcsolathoz csatlakoztatott ExpressRoute-átjárót tartalmaz, amely a helyszíni helyre irányítja a privát társ-útválasztási tartományon keresztül.
+- A helyszíni adatközpont egy ExpressRoute áramköri kapcsolattal rendelkezik Hongkongban.
+- Az összes útválasztást az Azure Route Tables (UDR) vezérli.
+- A virtuális hálózatok és a helyszíni adatközpont közötti összes kimenő forgalom a NVA keresztül irányítható.
 
-### <a name="hub-and-spoke-peering-settings"></a>Küllős topológiájú társviszony beállításai
+### <a name="hub-and-spoke-peering-settings"></a>Központi és küllős peering-beállítások
 
 #### <a name="spoke-to-hub"></a>A küllőt a központtal
 
-**Direction (Irány)** | **Beállítás** | **állapot**
+**Direction (Irány)** | **Beállítás** | **Állapot**
 --- | --- | ---
-A küllőt a központtal | Lehetővé teszi a virtuális hálózati cím | Enabled
+A küllőt a központtal | Virtuális hálózati címek engedélyezése | Enabled
 A küllőt a központtal | Továbbított forgalom engedélyezése | Enabled
 A küllőt a központtal | Átjárótranzit engedélyezése | Letiltva
-A küllőt a központtal | Remove-átjárók használata | Enabled
+A küllőt a központtal | Átjárók eltávolítása | Enabled
 
- ![Hub társviszony-létesítési konfigurációjának küllő](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
+ ![Küllős a hub-társ konfiguráció](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
 
 #### <a name="hub-to-spoke"></a>A központot a küllővel
 
-**Direction (Irány)** | **Beállítás** | **állapot**
+**Direction (Irány)** | **Beállítás** | **Állapot**
 --- | --- | ---
-A központot a küllővel | Lehetővé teszi a virtuális hálózati cím | Enabled
+A központot a küllővel | Virtuális hálózati címek engedélyezése | Enabled
 A központot a küllővel | Továbbított forgalom engedélyezése | Enabled
 A központot a küllővel | Átjárótranzit engedélyezése | Enabled
-A központot a küllővel | Remove-átjárók használata | Letiltva
+A központot a küllővel | Átjárók eltávolítása | Letiltva
 
- ![A társviszony-létesítési konfigurációjának küllő hub](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)
-
-### <a name="example-steps"></a>Példa lépései
-
-Ebben a példában a következő történjen, amikor engedélyezi az Azure-beli virtuális gépek replikációja a forrás hálózati:
-
-1. Ön [engedélyezze a replikációt](azure-to-azure-tutorial-enable-replication.md) egy virtuális géphez.
-2. A Site Recovery replika virtuális hálózatok, alhálózatok és átjáró-alhálózatot hoz létre a célrégióban.
-3. Site Recovery létrehozza a forrás-hálózatok és a létrehozott replika célhálózatok közötti hozzárendelések.
-4. Manuálisan létrehozott virtuális hálózati átjárók, virtuális hálózati átjárókapcsolatok, virtuális hálózatok közötti társviszony, vagy bármely más hálózati erőforrások vagy kapcsolatokat.
-
-
-## <a name="fail-over-azure-vms-when-using-expressroute"></a>Azure virtuális gépek feladatainak átadása ExpressRoute használata során
-
-Miután a feladatátvételt az Azure virtuális gépek a cél a Site Recovery használatával az Azure-régióban, elérheti azokat ExpressRoute-tal [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#privatepeering).
-
-- A cél virtuális hálózat egy új kapcsolat ExpressRoute csatlakozni kell. A meglévő ExpressRoute-kapcsolat nem át automatikusan.
-- Amelyben állítsa be az ExpressRoute-kapcsolat a célként megadott virtuális hálózathoz módja attól függ, hogy az ExpressRoute-topológia.
-
-
-### <a name="access-with-two-circuits"></a>Hozzáférés a két Kapcsolatcsoportok
-
-#### <a name="two-circuits-with-two-peering-locations"></a>A két társviszony-létesítési helyszínek két Kapcsolatcsoportok
-
-Ez a konfiguráció segít az ExpressRoute-Kapcsolatcsoportok regionális katasztrófa elleni védelmet biztosít. Ha az elsődleges társviszony-létesítési helyszínen leáll, a kapcsolatok továbbra is a másik helyen.
-
-- A kapcsolatcsoport csatlakozik az éles környezetben általában a az elsődleges. A másodlagos kapcsolatcsoportot általában rendelkezik alacsonyabb sávszélesség, ami növelhető, ha katasztrófa történik.
-- A feladatátvételt követően a másodlagos ExpressRoute-kapcsolatcsoport a cél virtuális hálózatok közötti kapcsolatot is létrehozhat. Azt is megteheti hogy kapcsolatok beállítás és felkészülés vészhelyzet esetén a teljes helyreállítási idő csökkentése érdekében.
-- Az egyidejű kapcsolatok mind az elsődleges és a cél virtuális hálózatok győződjön meg arról, hogy a helyszíni útválasztási csak használja a másodlagos kapcsolatcsoportot és a feladatátvétel után a kapcsolat.
-- A forrás- és virtuális hálózatok kapni az új IP-címek, vagy tartsa ugyanazokat a portokat, a feladatátvételt követően. Mindkét esetben a másodlagos kapcsolatok hozhatók létre a feladatátvétel előtt.
-
-
-#### <a name="two-circuits-with-single-peering-location"></a>A társviszony-létesítési helyszínen egyetlen két Kapcsolatcsoportok
-
-Ez a konfiguráció segít az elsődleges ExpressRoute-kapcsolatcsoport meghibásodása elleni védelem, de nem az egyetlen ExpressRoute-társviszony-létesítési helyszínen leáll, ha a érintő mindkét Kapcsolatcsoportok.
-
-- A helyszíni adatközpont származó egyidejű kapcsolatokat forrás virtuális hálózat és az elsődleges kapcsolatcsoportot, és a cél virtuális hálózat és a másodlagos kapcsolatcsoportot is rendelkezhet.
-- Az egyidejű kapcsolatok az elsődleges és a cél győződjön meg arról, hogy a helyszíni útválasztási csak használja a másodlagos kapcsolatcsoportot és a feladatátvétel után a kapcsolat.
--   Kapcsolatcsoportok társviszony-létesítési ugyanarról a helyről létrehozásakor mindkét Kapcsolatcsoportok nem tud kapcsolódni az azonos virtuális hálózaton.
-
-### <a name="access-with-a-single-circuit"></a>Hozzáférés az egyetlen kapcsolatcsoport
-
-Ebben a konfigurációban nincs csak egy Expressroute-kapcsolatcsoportot. Bár a kapcsolatcsoport redundáns kapcsolattal rendelkezik, abban az esetben, ha egy leáll, egy egyetlen expressroute-kapcsolatcsoport nem nyújt rugalmasságot Ha leáll a társviszony-létesítési régióban. Vegye figyelembe:
-
-- Azure virtuális gépek Azure-régiókba replikálhatja a [azonos földrajzi helyen](azure-to-azure-support-matrix.md#region-support). Ha a cél Azure-régió nem ugyanazon a helyen, mint a forrás-, kívánja engedélyezni az ExpressRoute Premium egy ExpressRoute-kapcsolatcsoport használata. Ismerje meg [ExpressRoute-helyek](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) és [ExpressRoute – díjszabás](https://azure.microsoft.com/pricing/details/expressroute/).
-- Nem lehet csatlakoztatni forrás- és virtuális hálózatok egyszerre a kapcsolatcsoporthoz azonos IP-címterület használata a célként megadott régióban. Ebben a forgatókönyvben:    
-    -  Szakítsa meg a forrás oldalon kapcsolatot, és ezután a cél ügyféloldali kapcsolat létesítésére. A Site Recovery helyreállítási terv részeként a kapcsolatot change parancsfájlalapú lehet. Vegye figyelembe:
-        - A regionális meghibásodással Ha az elsődleges régióban nem érhető el, a leválasztás sikerült sikertelen. Ez hatással lehet a kapcsolat létrehozásakor, a célrégióban.
-        - Ha létrehozta a kapcsolatot a célrégióban, és később helyreállítja az elsődleges régióban, csomag csepp tapasztalhatja, ha két egyidejű kapcsolatok próbál kapcsolódni az azonos címtartomány.
-        - Ennek megelőzése érdekében azonnal leállítja az elsődleges kapcsolat.
-        - Virtuális gép feladat-visszavétel az elsődleges régióba után az elsődleges újra lehet kapcsolódni, a másodlagos kapcsolati leválasztása után.
--   Ha egy másik címteret használja a cél virtuális hálózaton, egyidejűleg csatlakozhat a forrás- és virtuális hálózatok ugyanabban az ExpressRoute-kapcsolatcsoportból.
-
-
-## <a name="failover-example"></a>Feladatátvételi példa
-
-Ebben a példában a következő topológiát használunk:
-
-- Két különböző ExpressRoute-kapcsolatcsoporttal a két különböző társviszony-létesítési helyszínek.
-- Az Azure virtuális gépek magánhálózati IP-címek megőrzése feladatátvétel után.
-- A helyreállítási Azure Délkelet-Ázsia.
-- Egy másodlagos ExpressRoute-kapcsolatcsoport kapcsolaton keresztül egy fiókpartner peremhálózati a szingapúri jön létre.
-
-Egy egyszerű topológiát használó egyetlen ExpressRoute-kapcsolatcsoport IP-címmel ugyanabban a feladatátvételt követően a [ebből a cikkből](site-recovery-retain-ip-azure-vm-failover.md#hybrid-resources-full-failover).
+ ![Sugaras konfiguráció](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)
 
 ### <a name="example-steps"></a>Példa lépései
-Ebben a példában Itt a helyreállítás automatizálása, mit kell tennie:
 
-1. Kövesse a lépéseket a replikáció beállítása.
-2. [Az Azure virtuális gépek feladatainak átadása](azure-to-azure-tutorial-failover-failback.md), további lépések során, és a feladatátvétel után.
+A példánkban a következőnek kell történnie, amikor engedélyezi az Azure-beli virtuális gépek replikálását a forrásoldali hálózaton:
 
-    a. A célként megadott régióban agyi virtuális hálózat létrehozása az Azure ExpressRoute-átjárót. Ez az csatlakoznia kell a cél agyi virtuális hálózat ExpressRoute-kapcsolatcsoporthoz.
-
-    b. Hozzon létre a kapcsolatot a cél agyi virtuális hálózat az ExpressRoute-kapcsolatcsoport cél.
-
-    c. Állítsa be a virtuális hálózatok közötti társviszony-létesítéseket a célrégióban hub és a küllő virtuális hálózatok között. A társviszony-létesítés tulajdonságait a célként megadott régióban lesznek ugyanazok, mint a forrásrégióban található.
-
-    d. Az udr-eket az agyi virtuális hálózat és a két küllő virtuális hálózatok beállítása.
-
-    - A tulajdonságok a céloldalon az udr-EK esetén ugyanazok, mint a forrás oldalon az azonos IP-címekkel.
-    - Másik céloldali IP-címmel az udr-EK megfelelően módosítani kell.
+1. [Engedélyezi](azure-to-azure-tutorial-enable-replication.md) a replikációt egy virtuális gépen.
+2. A Site Recovery replika-virtuális hálózatok, alhálózatokat és átjáró-alhálózatokat hoz létre a célként megadott régióban.
+3. A Site Recovery leképezéseket hoz létre a forrásoldali hálózatok és az általa létrehozott replika-hálózatok között.
+4. A virtuális hálózati átjárók, a virtuális hálózati átjárók és a virtuális hálózati társítások, illetve bármely más hálózati erőforrás vagy kapcsolat létrehozása manuálisan végezhető el.
 
 
-A fenti lépések részeként parancsfájlalapú lehet egy [helyreállítási terv](site-recovery-create-recovery-plans.md). Attól függően, az alkalmazás kapcsolat és a helyreállítási időre vonatkozó követelmények a fenti lépéseket is is elvégezhető a feladatátvétel indítása előtt.
+## <a name="fail-over-azure-vms-when-using-expressroute"></a>Azure-beli virtuális gépek feladatátvétele a ExpressRoute használatakor
 
-#### <a name="after-recovery"></a>A helyreállítás után
+Ha az Azure-beli virtuális gépeket a Site Recovery használatával nem a cél Azure-régióra irányítja át, akkor a ExpressRoute [privát](../expressroute/expressroute-circuit-peerings.md#privatepeering)társításával férhet hozzájuk.
 
-A virtuális gépek helyreállítása és a kapcsolat befejezése után a helyreállítási környezetet a következőképpen történik.
+- Csatlakoztatnia kell a ExpressRoute a cél vNet egy új kapcsolattal. A meglévő ExpressRoute-kapcsolatok nem kerülnek automatikusan átvitelre.
+- A ExpressRoute-kapcsolatok a célként megadott vNet való beállítása a ExpressRoute-topológiától függ.
 
-![A-helyszíni – Azure feladatátvétel után az ExpressRoute használatával](./media/azure-vm-disaster-recovery-with-expressroute/site-recovery-with-expressroute-after-failover.png)
+
+### <a name="access-with-two-circuits"></a>Hozzáférés két áramkörrel
+
+#### <a name="two-circuits-with-two-peering-locations"></a>Két áramkör két egymás közötti hellyel
+
+Ez a konfiguráció segít megvédeni a ExpressRoute-áramköröket a regionális katasztrófák ellen. Ha az elsődleges egyenrangú hely leáll, a kapcsolatok a másik helyről is folytatódnak.
+
+- Az éles környezethez kapcsolódó áramkör általában az elsődleges. A másodlagos áramkör általában alacsonyabb sávszélességgel rendelkezik, ami vészhelyzet esetén növelhető.
+- A feladatátvételt követően kapcsolat hozható létre a másodlagos ExpressRoute-áramkörből a célként megadott vNet. Azt is megteheti, hogy vészhelyzet esetén az általános helyreállítási idő csökkentése érdekében beállította a kapcsolatokat, és készen áll a használatra.
+- Az elsődleges és a cél virtuális hálózatok való egyidejű kapcsolatok esetén győződjön meg arról, hogy a helyszíni útválasztás csak a másodlagos áramkört és a kapcsolatot használja a feladatátvétel után.
+- A forrás-és a célként megadott virtuális hálózatok új IP-címeket fogadhatnak, vagy megtarthatják ugyanezeket a feladatátvételt követően is. A másodlagos kapcsolatok mindkét esetben a feladatátvétel előtt is létrehozhatók.
+
+
+#### <a name="two-circuits-with-single-peering-location"></a>Két áramkör egyetlen egyenrangú hellyel
+
+Ez a konfiguráció segít az elsődleges ExpressRoute áramkör meghibásodása elleni védelemben, de ha az egyetlen ExpressRoute-társítási hely leáll, az mindkét áramkörre hatással van.
+
+- A helyszíni adatközpontból a forrás-és a vNEt az elsődleges áramkörrel párhuzamosan kapcsolódhat, a cél vNet pedig a másodlagos áramkörrel.
+- Az elsődleges és a célként való egyidejű kapcsolatok esetén győződjön meg arról, hogy a helyszíni útválasztás csak a másodlagos áramkört és a kapcsolatot használja a feladatátvétel után.
+-   Nem lehet mindkét áramkört ugyanahhoz a vNet csatlakozni, ha az adatáramkörök ugyanazon a helyen jönnek létre.
+
+### <a name="access-with-a-single-circuit"></a>Hozzáférés egyetlen áramkörrel
+
+Ebben a konfigurációban csak egy Expressroute áramkör található. Bár az áramkör redundáns kapcsolattal rendelkezik, ha az egyik leáll, egyetlen útvonali áramkör nem biztosít rugalmasságot, ha a társítási régió leáll. Vegye figyelembe:
+
+- Az Azure-beli virtuális gépeket bármely Azure-régióba replikálhatja [ugyanazon a földrajzi helyen](azure-to-azure-support-matrix.md#region-support). Ha a cél Azure-régió nem ugyanazon a helyen található, mint a forrás, akkor engedélyeznie kell a ExpressRoute Premiumot, ha egyetlen ExpressRoute áramkört használ. Ismerje meg a [ExpressRoute helyét](../expressroute/expressroute-locations.md) és a [ExpressRoute díjszabását](https://azure.microsoft.com/pricing/details/expressroute/).
+- A forrás-és a célként megadott virtuális hálózatok nem csatlakoztatható egyszerre az áramkörhöz, ha ugyanazt az IP-címtartományt használja a célként megadott régióban. Ebben a forgatókönyvben:    
+    -  Válassza le a forrás oldali kapcsolatot, majd hozza létre a cél oldali kapcsolatot. Ez a kapcsolati változás a Site Recovery helyreállítási terv részeként is megadható. Vegye figyelembe:
+        - Regionális meghibásodás esetén, ha az elsődleges régió nem érhető el, a leválasztási művelet sikertelen lehet. Ez hatással lehet a megcélzott régióhoz való kapcsolódásra.
+        - Ha a kapcsolatot a célként megadott régióban hozta létre, és az elsődleges régió később helyreállítja a csomagokat, akkor előfordulhat, hogy a csomagok akkor is csökkennek, ha két egyidejű kapcsolat megpróbál csatlakozni ugyanahhoz a címtartomány-kapcsolathoz.
+        - Ennek megelőzése érdekében azonnal szakítsa meg az elsődleges kapcsolódást.
+        - Miután a virtuális gép feladat-visszavételét az elsődleges régióba helyezi, az elsődleges kapcsolat újból létrehozható a másodlagos kapcsolat bontása után.
+-   Ha a cél vNet eltérő címtartományt használ, egyszerre csatlakozhat a forrás-és a cél virtuális hálózatok ugyanabból a ExpressRoute-áramkörből.
+
+
+## <a name="failover-example"></a>Példa feladatátvételre
+
+A példánkban a következő topológiát használjuk:
+
+- Két különböző ExpressRoute-áramkör két különböző egymás melletti helyen.
+- A feladatátvételt követően megőrizheti az Azure-beli virtuális gépek magánhálózati IP-címeit.
+- A cél helyreállítási régió az Azure Délkelet-Ázsia.
+- A másodlagos ExpressRoute áramköri kapcsolat a Szingapúr egyik partneri peremén keresztül jön.
+
+[Tekintse át ezt a cikket](site-recovery-retain-ip-azure-vm-failover.md#hybrid-resources-full-failover)egy olyan egyszerű topológia esetében, amely egyetlen ExpressRoute áramkört használ a feladatátvételt követően ugyanazzal az IP-címmel.
+
+### <a name="example-steps"></a>Példa lépései
+Ebben a példában a helyreállítás automatizálásához a következőket kell tennie:
+
+1. A replikáció beállításához kövesse a lépéseket.
+2. Hajtsa végre [Az Azure-beli virtuális gépek](azure-to-azure-tutorial-failover-failback.md)feladatátvételét, és végezze el ezeket a további lépéseket.
+
+    a. Hozza létre az Azure ExpressRoute-átjárót a cél régió hub-VNet. Ehhez csatlakoztatnia kell a cél hub-vNet a ExpressRoute-áramkörhöz.
+
+    b. Hozza létre a kapcsolatot a cél hub vNet a cél ExpressRoute áramkörhöz.
+
+    c. Állítsa be a VNet-társításokat a megcélzott régió központja és a küllős virtuális hálózatok között. A célként megadott régió egyenrangú tulajdonságai ugyanazok, mint a forrásoldali régióban.
+
+    d. Állítsa be a UDR a hub VNet, és a két küllős virtuális hálózatok.
+
+    - A cél oldali UDR tulajdonságai ugyanazok, mint a forrásoldali oldalon, ha ugyanazokat az IP-címeket használják.
+    - Ha a cél IP-címei eltérőek, a UDR ennek megfelelően módosítania kell.
+
+
+A fenti lépésekkel egy [helyreállítási terv](site-recovery-create-recovery-plans.md)részeként lehet parancsfájlt készíteni. Az alkalmazás és a helyreállítási idő követelményeitől függően a fenti lépéseket a feladatátvétel elindítása előtt is el lehet végezni.
+
+#### <a name="after-recovery"></a>Helyreállítás után
+
+A virtuális gépek helyreállítását és a kapcsolatok befejezését követően a helyreállítási környezet a következő.
+
+![Helyszíni – Azure ExpressRoute feladatátvétel után](./media/azure-vm-disaster-recovery-with-expressroute/site-recovery-with-expressroute-after-failover.png)
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-További információ [helyreállítási tervek](site-recovery-create-recovery-plans.md) alkalmazás a feladatátvétel automatizálásához.
+További információ a [helyreállítási tervek](site-recovery-create-recovery-plans.md) használatáról az alkalmazások feladatátvételének automatizálásához.

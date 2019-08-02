@@ -1,109 +1,109 @@
 ---
-title: Alapelvei – alkalmazások skálázása az Azure Kubernetes-szolgáltatások (AKS)
-description: Ismerje meg az Azure Kubernetes Service (AKS), beleértve a podok horizontális méretező, fürt méretező és az Azure Container Instances-összekötő méretezést.
+title: Fogalmak – alkalmazások méretezése az Azure Kubernetes Servicesben (ak)
+description: Ismerje meg az Azure Kubernetes szolgáltatás (ak) méretezését, beleértve a horizontális Pod automatikus méretezést, a fürt automatikus méretezését és a Azure Container Instances összekötőt.
 services: container-service
 author: zr-msft
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 2070c79a6ce0627280b1793e412002783f385cc0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c25bc316a345404c759b346b4fb877de42ee4d13
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074037"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561551"
 ---
-# <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Méretezési lehetőségeket biztosít az alkalmazások az Azure Kubernetes Service (AKS)
+# <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Alkalmazások méretezési lehetőségei az Azure Kubernetes szolgáltatásban (ak)
 
-Alkalmazások futtatása az Azure Kubernetes Service (AKS), mert szükség lehet növelheti vagy csökkentheti a számítási erőforrások mennyiségét. Az alkalmazáspéldányok számának kell alapul szolgáló Kubernetes-csomópontok is szükség lehet módosítani a számának módosításához. Emellett szükség lehet gyorsan üzembe helyezhet további alkalmazáspéldány nagy számú.
+Az Azure Kubernetes szolgáltatásban (ak) futó alkalmazások futtatása során előfordulhat, hogy a számítási erőforrások mennyiségét meg kell emelnie vagy csökkentenie kell. Ahogy a szükséges alkalmazás-példányok száma, a mögöttes Kubernetes-csomópontok számának módosítására is szükség lehet. Emellett számos további alkalmazás-példány gyors kiépítésére is szükség lehet.
 
-Ez a cikk bemutatja az alapvető fogalmakat, amelyek segítségével méretezheti az alkalmazásait az aks-ben:
+Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek segítséget nyújtanak az AK-ban lévő alkalmazások méretezésében:
 
-- [Manuális méretezése](#manually-scale-pods-or-nodes)
-- [Podok horizontális méretező (HPA)](#horizontal-pod-autoscaler)
-- [Fürt méretező](#cluster-autoscaler)
-- [Azure Container Instance (ACI) integrációja az aks-sel](#burst-to-azure-container-instances)
+- [Manuális méretezés](#manually-scale-pods-or-nodes)
+- [Vízszintes Pod automéretező (HPA)](#horizontal-pod-autoscaler)
+- [Fürt autoskálázása](#cluster-autoscaler)
+- [Az Azure Container instance (ACI) integrációja az AK-val](#burst-to-azure-container-instances)
 
-## <a name="manually-scale-pods-or-nodes"></a>Podok vagy a csomópontok manuális méretezése
+## <a name="manually-scale-pods-or-nodes"></a>Hüvelyek vagy csomópontok manuális skálázása
 
-Replikák (podok) és a csomópont a rendelkezésre álló erőforrások és az állapot változik az alkalmazás reakciója teszteléséhez manuálisan méretezhetők. Erőforrások skálázása a manuálisan is meghatározhatja időkereten erőforrások használatával fenntartani egy állandó költség, például a csomópontok számát. Manuálisan méretezhető, a replika vagy a csomópontok száma és a Kubernetes API-t ütemezések létrehozása az újabb podok vagy a kiürítés csomópontok megadása.
+A replikák (hüvelyek) és a csomópontok manuális skálázásával tesztelheti, hogy az alkalmazás hogyan reagáljon a rendelkezésre álló erőforrások és állapot változására. Az erőforrások manuális skálázása azt is lehetővé teszi, hogy meghatározott mennyiségű erőforrást határozzon meg a rögzített költségeket, például a csomópontok számának fenntartásához. A manuális méretezéshez meg kell határoznia a replika vagy a csomópontok darabszámát, valamint a Kubernetes API-ütemterveket a további hüvelyek vagy kiürítési csomópontok létrehozásához.
 
-Használatába manuális méretezése látnak podok és a csomópontok [méretezheti az alkalmazásait az aks-ben][aks-scale].
+A hüvelyek és a csomópontok manuális méretezésének megkezdéséhez lásd: [alkalmazások méretezése az AK-ban][aks-scale].
 
-## <a name="horizontal-pod-autoscaler"></a>Podok horizontális méretező
+## <a name="horizontal-pod-autoscaler"></a>Vízszintes hüvely – autoskálázás
 
-Kubernetes figyelése az erőforrásigény, és automatikus méretezése a replikák száma a podok horizontális méretező (HPA) használja. Alapértelmezés szerint a podok horizontális méretező replikáinak száma a szükséges változtatásokat 30 másodpercenként ellenőrzi a metrikák API. Módosítások szükségesek, amikor a replikák száma nő vagy csökken ennek megfelelően. Podok horizontális méretező működik együtt a Kubernetes 1.8-as + a metrikák kiszolgálón telepített AKS-fürt.
+A Kubernetes a vízszintes Pod automéretezőt (HPA) használja az erőforrás-igény figyelésére és a replikák számának automatikus méretezésére. Alapértelmezés szerint a vízszintes hüvely autoskálázása 30 másodpercenként ellenőrzi a metrikák API-t a replikák számának szükséges változásaihoz. Ha módosításokra van szükség, a replikák száma ennek megfelelően növekszik vagy csökken. A horizontális Pod autoscaleer olyan AK-fürtökkel működik, amelyek a metrikák kiszolgálóját telepítették a Kubernetes 1.8 +-hoz.
 
-![Kubernetes-podok horizontális felskálázását](media/concepts-scale/horizontal-pod-autoscaling.png)
+![Kubernetes vízszintes hüvely automatikus skálázása](media/concepts-scale/horizontal-pod-autoscaling.png)
 
-Egy adott központi telepítés podok horizontális méretező konfigurálásakor futtatható replikák minimális és maximális száma határozza meg. A metrika figyelése és méretezési döntések alapjául, például a CPU-használat is definiál.
+Ha egy adott központi telepítéshez a vízszintes Pod automéretezőt konfigurálja, meghatározza a futtatható replikák minimális és maximális számát. Megadhatja a mérőszámot is, amely a skálázási döntések (például a CPU-használat) figyelésére és kiindulására szolgál.
 
-Első lépések a podok horizontális méretező az aks-ben, lásd: [az aks-ben podok automatikus méretezésének][aks-hpa].
+A horizontálisan az AK-ban lévő autoskálázással kapcsolatos első lépésekhez lásd: hüvelyek autoskálázása [AK-ban][aks-hpa].
 
-### <a name="cooldown-of-scaling-events"></a>A méretezés események utáni
+### <a name="cooldown-of-scaling-events"></a>Skálázási események cooldownja
 
-Podok horizontális méretező ellenőrzi a metrikák API 30 másodpercenként, mivel előző méretezési eseményeket nem sikeresen befejeződtek előtt egy másik ellenőrzésére kerül sor. Ezt a viselkedést okozhat a podok horizontális méretező a replikák számának módosítása előtt lett, hogy az előző skálázási esemény tudja fogadni az alkalmazás számítási feladatait és az erőforrás-igényű megfelelő beállításához.
+Mivel a horizontális Pod autoskálázás 30 másodpercenként ellenőrzi a metrikák API-t, előfordulhat, hogy a korábbi méretezési események nem fejeződött be sikeresen, mielőtt egy másik ellenőrzést végez. Ez a viselkedés azt eredményezheti, hogy a vízszintes hüvely automatikusan méretezhető, hogy megváltoztassa a replikák számát, mielőtt az előző méretezési esemény befogadta az alkalmazás munkaterhelését, és az erőforrásnak ennek megfelelően módosítania kell.
 
-Ezek az események versenyhelyzet minimalizálása érdekében utáni vagy késleltetési érték állítható be. Ezeket az értékeket határozza meg, mennyi ideig kell várnia az automatikus méretező podok horizontális skálázási esemény előtt egy másik skálázási esemény kiváltható után. Ez a viselkedés lehetővé teszi, hogy érvénybe léptetéséhez száma az új replikára, és a metrikák API tükrözik az elosztott terheléseknél engedélyezett. Alapértelmezés szerint a vertikális felskálázási események késleltetési idő legyen 3 percenként, és vertikális leskálázási események a késleltetési idő legyen 5 perc
+A verseny eseményeinek minimalizálásához állítsa be a cooldown vagy a késleltetés értékeket. Ezek az értékek határozzák meg, hogy a horizontális Pod automéretezőnek mennyi ideig kell várnia egy méretezési esemény után egy másik méretezési esemény elindítása előtt. Ez a viselkedés lehetővé teszi az új replika számának érvénybe léptetését, és a metrikák API az elosztott munkaterhelést tükrözi. Alapértelmezés szerint a Felskálázási események késése 3 perc, a leskálázási események késése pedig 5 perc
 
-Ezek az értékek utáni finomhangolása szükségessé. Az alapértelmezett utáni értékeket adhat a benyomást, hogy a podok horizontális méretező nem elég gyorsan méretezés a replika száma. Például a használt replikák száma gyorsabban növeléséhez csökkentse a `--horizontal-pod-autoscaler-upscale-delay` létrehozásakor a podok horizontális méretező definíciókat `kubectl`.
+Jelenleg nem állíthatók be ezek a hűtési értékek az alapértelmezett értékből.
 
-## <a name="cluster-autoscaler"></a>Fürt méretező
+## <a name="cluster-autoscaler"></a>Fürt autoskálázása
 
-Kubernetes pod változásaihoz válaszolni, van egy fürt méretező (jelenleg előzetes verzióban érhető el az aks-ben), amely beállítja a alapján a kért számítási erőforrásokat, a csomópont a készletben lévő csomópontok számát. Alapértelmezés szerint a fürt automatikus méretező a szükséges változtatásokat a csomópontok száma 10 másodpercenként ellenőrzi az API-kiszolgálóhoz. Ha a fürt automatikus skálázási határozza meg, hogy szükség-e egy az megváltoztatására, az AKS-fürtben található csomópontok számának növelése vagy csökkenése ennek megfelelően. Fürt automatikus méretező együttműködik az RBAC-kompatibilis az AKS-fürt futtatása a Kubernetes 1.10.x vagy újabb verziója.
+Ahhoz, hogy válaszoljon a pod-re vonatkozó igényekre, a Kubernetes rendelkezik egy fürt automéretezővel (jelenleg előzetes verzióban érhető el az AK-ban), amely a csomópontok által igényelt számítási erőforrások alapján módosítja a csomópontok számát. Alapértelmezés szerint a fürt autoskálázása 10 másodpercenként ellenőrzi az API-kiszolgálót a csomópontok számának szükséges változásaihoz. Ha a fürt autoskálázása meghatározza, hogy szükség van-e módosításra, az AK-fürt csomópontjainak száma ennek megfelelően növekszik vagy csökken. A fürt autoskálázása RBAC-kompatibilis AK-fürtökkel működik, amelyek Kubernetes 1,10. x vagy újabb verziójúak.
 
-![Kubernetes-fürt méretező](media/concepts-scale/cluster-autoscaler.png)
+![Kubernetes-fürt autoskálázása](media/concepts-scale/cluster-autoscaler.png)
 
-Fürt méretező általában a podok horizontális méretező együtt használatos. Együttesen a podok horizontális méretező növeli vagy csökkenti az alkalmazás igény szerinti podjainak számát, és a fürt méretező ezen újabb podok ennek megfelelően futtatása igény szerint állítja be a csomópontok számát.
+A fürt autoskálázása jellemzően a horizontális Pod autoskálázás mellett használatos. Ha a kombinált, a horizontális Pod autoskálázás növeli vagy csökkenti a hüvelyek számát az alkalmazás igénye alapján, és a fürt automatikusan méretezhető, hogy a további hüvelyek megfelelő futtatásához szükség van-e a csomópontok számának megadására.
 
-Fürt méretező csak egyetlen csomópontkészletek AKS-fürtöket az előzetes verzióban érhető el kell vizsgálni.
+A fürt automéretezőjét csak előzetes verzióban kell tesztelni az AK-fürtökön.
 
-Első lépések a fürt méretező az aks-ben, lásd: [fürt méretező az aks-en][aks-cluster-autoscaler].
+A fürt autoskálázási szolgáltatásának az AK-ban való megkezdéséhez lásd: fürt automéretezője az [AK][aks-cluster-autoscaler]-ban.
 
-### <a name="scale-up-events"></a>Vertikális felskálázás események
+### <a name="scale-up-events"></a>Események vertikális felskálázása
 
-Ha egy csomópont nem rendelkezik elegendő számítási erőforrás kért podot futtatni, a pod az ütemezési folyamat nem halad. A pod nem indítható el, kivéve, ha a csomópont a készletben lévő érhetők el további számítási erőforrásokat.
+Ha egy csomópont nem rendelkezik elegendő számítási erőforrással a kért Pod futtatásához, akkor a pod nem haladhat előre az ütemezési folyamaton. A pod nem indítható el, ha további számítási erőforrások állnak rendelkezésre a csomópont-készleten belül.
 
-Fürt automatikus méretező megjegyzések podok, hogy a csomópont készlethez korlátozott erőforrások miatt nem lehet ütemezni, amikor a csomópont a készletben lévő csomópontok számát adja meg a további számítási erőforrásokat ra emelkedett. Ha további csomópontjaira sikeresen rendszerbe állított és elérhető a csomópont készleten belüli használatra, a podok majd ütemezésére rajtuk.
+Ha a fürt automéretezője azt észleli, hogy a csomópont-készlet erőforrás-korlátozásai miatt nem lehet ütemezni, a csomópont-készletben lévő csomópontok száma megnő a további számítási erőforrások biztosításához. Ha a további csomópontok üzembe helyezése sikeres volt, és a csomópont-készleten belül elérhetővé válik, a hüvelyek ütemezve lesznek a rajtuk való futtatásra.
 
-Ha az alkalmazás számára, szüksége van, néhány podok ütemezve mindaddig, amíg a fürt automatikus méretező által telepített további csomópontokat is fogadja el az ütemezett podok várakozó állapotban maradhatnak. Megnövekvő a növekvő igények szerint rendelkező alkalmazások méretezheti a virtuális csomópontok és az Azure Container Instances szolgáltatásban.
+Ha az alkalmazásnak gyors skálázásra van szüksége, egyes hüvelyek úgy maradhatnak, hogy ütemezve maradnak, amíg a fürt automéretezője által üzembe helyezett további csomópontok el nem fogadják az ütemezett hüvelyeket. A nagy terhelést igénylő alkalmazások esetében a virtuális csomópontok és a Azure Container Instances is méretezhető.
 
-### <a name="scale-down-events"></a>Vertikális leskálázás események
+### <a name="scale-down-events"></a>Leskálázási események
 
-Fürt automatikus méretező is figyeli a pod ütemezés, amely mostanában nem érkezett meg új ütemezési kérések csomópont állapotát. Ebben a forgatókönyvben azt jelzi, hogy a csomópont készlethez rendelkezik-e szükség további számítási erőforrásokat, és, hogy a csomópontok száma csökkenthető.
+A fürt autoskálázása azt is figyeli, hogy az új ütemezési kérelmeket nem fogadó csomópontok Pod ütemezési állapota. Ez a forgatókönyv azt jelzi, hogy a csomópont-készlet több számítási erőforrással rendelkezik, mint amennyi szükséges, és hogy a csomópontok száma csökkenthető.
 
-Egy csomópont, amelyet átad egy küszöbértéket már folyamatban van szükség 10 percig alapértelmezés szerint a törlésre van ütemezve. Ez a helyzet akkor fordul elő, amikor podok ütemezett a csomópont készleten belüli más csomópontokon való futáshoz, és a fürt méretező csökkenti a csomópontok számát.
+Egy olyan csomópontot, amely egy küszöbértéket továbbít, és alapértelmezés szerint 10 percen át nem szükséges, a törlésre van ütemezve. Ha ez a helyzet történik, a hüvelyek úgy vannak ütemezve, hogy a csomóponton belüli többi csomóponton fussanak, és a fürt autoskálázása csökkenti a csomópontok számát.
 
-Az alkalmazások bizonyos megszakítás tapasztalhat, podok különböző csomópontokon van ütemezve, amikor a fürt méretező csökkenti a csomópontok száma szerint. Leskálázáskor, kerülje az alkalmazásokat, amelyek egyetlen pod-példányt használ.
+Az alkalmazások bizonyos megszakításokat tapasztalhatnak, mivel a hüvelyek különböző csomópontokon vannak ütemezve, amikor a fürt autoskálázása csökkenti a csomópontok számát. A fennakadások csökkentése érdekében ne használjon egyetlen Pod-példányt használó alkalmazásokat.
 
-## <a name="burst-to-azure-container-instances"></a>A csúcsterhelések átirányítása az Azure Container Instances szolgáltatásban
+## <a name="burst-to-azure-container-instances"></a>Kitört Azure Container Instances
 
-Az AKS-fürt gyors vertikális felskálázásához integrálható az Azure Container Instances (ACI). Kubernetes méretezése a replika és a csomópont száma beépített összetevőket tartalmazza. Az alkalmazásnak kell gyorsan méretezhető, ha azonban a podok horizontális méretező ütemezése előfordulhat, hogy további podok, mint a csomópont a készletben található meglévő számítási erőforrások adható meg. Ha konfigurálva, ebben a forgatókönyvben majd indít a fürt méretező üzembe helyezéséhez a csomópont a készletben lévő további csomópontokat, de eltarthat néhány percig, azokat a csomópontokat a sikeres üzembe helyezése, és lehetővé teszi a Kubernetes-ütemező podok futtathatók.
+Az AK-fürt gyors méretezéséhez integrálható a Azure Container Instances (ACI) használatával. A Kubernetes beépített összetevőket tartalmaz a replika és a csomópontok számának skálázásához. Ha azonban az alkalmazásnak gyors méretezésre van szüksége, a horizontális Pod automéretező több hüvelyt is ütemezhet, mint amennyit a csomópont-készlet meglévő számítási erőforrásai biztosíthatnak. Ha be van állítva, ez a forgatókönyv ezt követően aktiválja a fürt automéretezőjét további csomópontok üzembe helyezéséhez a csomópont-készletben, de eltarthat néhány percig, amíg ezek a csomópontok sikeresen kiépítik és lehetővé teszik a Kubernetes-ütemező számára a hüvelyek futtatását.
 
-![Kubernetes-kapacitásnövelés méretezés az aci Szolgáltatásban](media/concepts-scale/burst-scaling.png)
+![Kubernetes-méretezés az ACI-ig](media/concepts-scale/burst-scaling.png)
 
-Az ACI gyors üzembe helyezése a tárolópéldányok további infrastruktúra terhelését anélkül teszi lehetővé. A csatlakozáskor az aks-sel az ACI válik az AKS-fürt biztonságos, logikai kiterjesztését. A Virtual Kubelet telepítve van a az AKS-fürt, amely az ACI virtuális Kubernetes-csomópontként jeleníti meg. Kubernetes majd ütemezheti az AKS-fürt közvetlenül a Virtuálisgép-csomópontok ACI-példány virtuális csomópontok keresztül, nem pedig a podok futtató podok. Virtuális csomópontok jelenleg az aks-ben előzetes verzióban érhető el.
+Az ACI lehetővé teszi, hogy gyorsan üzembe helyezzen tároló-példányokat további infrastruktúra-terhelés nélkül. Ha AK-val kapcsolódik, az ACI biztonságos, logikai kiterjesztést biztosít az AK-fürt számára. A virtuális Kubelet összetevő az AK-fürtbe van telepítve, amely az ACI-t virtuális Kubernetes-csomópontként jeleníti meg. A Kubernetes ezután olyan hüvelyeket ütemezhetnek, amelyek a virtuális csomópontokon keresztül ACI-példányként futnak, nem pedig a virtuálisgép-csomópontokon közvetlenül az AK-fürtön lévő hüvelyek. A virtuális csomópontok jelenleg előzetes verzióban találhatók az AK-ban.
 
-Az alkalmazás használatához a virtuális csomópontok bármilyen módosítás nélkül igényel. Központi telepítések méretezheti az AKS és az ACI és a késleltetés nélkül fürtként méretező helyez üzembe az AKS-fürt az új csomópontok.
+Az alkalmazás nem igényel módosítást virtuális csomópontok használatához. Az üzembe helyezések az AK-ban és az ACI-ban is méretezhetők, és késedelem nélkül a fürt autoskálázása új csomópontokat helyez üzembe az AK-fürtben.
 
-Virtuális csomópontok üzembe helyezése az AKS-fürt ugyanazon a virtuális hálózaton található további alhálózathoz. Ez a virtuális hálózati konfiguráció lehetővé teszi, hogy a forgalom között az ACI és az AKS védeni kell. AKS-fürt, például egy ACI-példány, amely el van különítve a többi felhasználó biztonságos, logikai számítási erőforrás.
+A virtuális csomópontok egy további alhálózatra vannak telepítve, ugyanabban a virtuális hálózatban, mint az AK-fürt. Ez a virtuális hálózati konfiguráció lehetővé teszi az ACI és az AK közötti adatforgalom védelmét. Az AK-fürtökhöz hasonlóan az ACI-példányok egy biztonságos, logikai számítási erőforrás, amely más felhasználóktól el van különítve.
 
 ## <a name="next-steps"></a>További lépések
 
-Alkalmazások méretezése használatának megkezdéséhez először hajtsa végre a [rövid útmutatóban egy AKS-fürt létrehozása az Azure CLI-vel][aks-quickstart]. Ezután megkezdheti manuálisan vagy automatikusan skálázható alkalmazásokat az AKS-fürt:
+Az alkalmazások méretezésének megkezdéséhez először kövesse a gyors üzembe helyezési lehetőséget, és [hozzon létre egy AK-fürtöt az Azure CLI][aks-quickstart]használatával. Ezután megkezdheti az alkalmazások manuális vagy automatikus méretezését az AK-fürtben:
 
-- Manuális méretezése [podok] [ aks-manually-scale-pods] vagy [csomópontok][aks-manually-scale-nodes]
-- Használja a [podok horizontális méretező][aks-hpa]
-- Használja a [méretező fürt][aks-cluster-autoscaler]
+- Hüvelyek [][aks-manually-scale-pods] vagy [csomópontok][aks-manually-scale-nodes] manuális skálázása
+- A [vízszintes hüvely automéretező][aks-hpa] használata
+- A [fürt automéretező][aks-cluster-autoscaler] használata
 
-További információ az alapvető Kubernetes és a AKS fogalmakkal a következő cikkekben talál:
+Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Kubernetes AKS-fürtök / és a számítási feladatok][aks-concepts-clusters-workloads]
-- [Kubernetes / AKS hozzáférési és azonosító][aks-concepts-identity]
-- [Kubernetes / AKS biztonsági][aks-concepts-security]
-- [Kubernetes / AKS virtuális hálózatok][aks-concepts-network]
-- [Kubernetes és az AKS-tároló][aks-concepts-storage]
+- [Kubernetes/AK-fürtök és-munkaterhelések][aks-concepts-clusters-workloads]
+- [Kubernetes/AK-hozzáférés és-identitás][aks-concepts-identity]
+- [Kubernetes/AK biztonság][aks-concepts-security]
+- [Kubernetes/AK virtuális hálózatok][aks-concepts-network]
+- [Kubernetes/AK-tároló][aks-concepts-storage]
 
 <!-- LINKS - external -->
 

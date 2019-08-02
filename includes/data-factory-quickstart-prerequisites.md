@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 10/01/2018
+ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: c1ae8e1d06fca79b586208a3eaee0c5d26975ea1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: dc12d77e9a57938051300277940b6e5107e45496
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179590"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234550"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -21,15 +21,17 @@ ms.locfileid: "67179590"
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ### <a name="azure-roles"></a>Azure-szerepkörök
-Data Factory-példányok létrehozásához az Azure-ba történő bejelentkezéshez használt felhasználói fióknak a *közreműködő* vagy *tulajdonos* szerepkör tagjának, vagy az Azure-előfizetés *rendszergazdájának* kell lennie. Az előfizetésben található engedélyek megtekintéséhez a Microsoft Azure Portalon kattintson a felhasználónevére a jobb felső sarokban, majd válassza az **Engedélyek** elemet. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést. 
+Data Factory-példányok létrehozásához az Azure-ba történő bejelentkezéshez használt felhasználói fióknak a *közreműködő* vagy *tulajdonos* szerepkör tagjának, vagy az Azure-előfizetés *rendszergazdájának* kell lennie. Az előfizetésben található engedélyek megtekintéséhez lépjen a [Azure Portal](https://portal.azure.com), válassza ki a felhasználónevét a jobb felső sarokban, válassza a **további lehetőségek** (...) lehetőséget, majd válassza **a saját engedélyek**lehetőséget. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést.
 
 A Data Factory gyermekerőforrásai – beleértve az adatkészletek, társított szolgáltatások, folyamatok, eseményindítók és integrációs modulok – létrehozására és kezelésére az alábbi követelmények vonatkoznak:
+
 - A gyermekerőforrások Microsoft Azure Portalon való létrehozásához és kezeléséhez a **Data Factory közreműködője** szerepkörhöz kell tartoznia az erőforráscsoport szintjén vagy felette.
 - A gyermekerőforrások PowerShell-lel vagy az SDK-val való létrehozásához és kezeléséhez a **közreműködő** szerepkör is elegendő az erőforráscsoport szintjén vagy felette.
 
 Ha szeretne példautasításokat látni arra, hogyan kell egy felhasználót a szerepkörhöz adni, olvassa el a [Szerepkörök hozzáadása](../articles/billing/billing-add-change-azure-subscription-administrator.md) című cikket.
 
 További információkért tekintse meg a következő cikkeket:
+
 - [Data Factory közreműködője szerepkör](../articles/role-based-access-control/built-in-roles.md#data-factory-contributor)
 - [Szerepkörök és engedélyek az Azure Data Factoryhoz](../articles/data-factory/concepts-roles-permissions.md)
 
@@ -39,51 +41,41 @@ Ebben a rövid útmutatóban egy általános célú Azure Storage-fiókot (ebben
 #### <a name="get-the-storage-account-name-and-account-key"></a>Tárfióknév és fiókkulcs beszerzése
 Ebben a rövid útmutatóban az Azure Storage-fiók nevét és kulcsát használjuk. Az alábbi feladat bemutatja a tárfióknév és -kulcs beszerzéséhez szükséges lépéseket: 
 
-1. Nyissa meg böngészőjében az [Azure Portalt](https://portal.azure.com). Jelentkezzen be Azure-felhasználónevével és -jelszavával. 
-2. Kattintson **Az összes szolgáltatás** elemre a bal oldali menüben, állítson be egy szűrőt a **Tárfiók** kulcsszóval, majd válassza a **Tárfiókok** lehetőséget.
-
-   ![Tárfiók keresése](media/data-factory-quickstart-prerequisites/search-storage-account.png)
-3. A tárfiókok listájában állítson be szűrőt a tárfiók nevéhez (ha szükséges), majd válassza ki a tárfiókját. 
-4. A **Tárfiók** lapon a menüben válassza a **Hozzáférési kulcsok** elemet.
+1. A böngészőben nyissa meg a [Azure Portal](https://portal.azure.com) , és jelentkezzen be az Azure-beli felhasználónevével és jelszavával.
+2. Válassza **a minden szolgáltatás** > **tároló** > **Storage-fiókok**lehetőséget.
+3. A **Storage-fiókok** lapon szűrje a Storage-fiókot (ha szükséges), majd válassza ki a Storage-fiókját. 
+4. A  *\<fiók neve >*  - a**Storage-fiók** lapja oldalsávján lépjen a **Beállítások** címkére, és válassza a **hozzáférési kulcsok**elemet. Megjelenik a  *\<fiók neve >*  - **hozzáférési kulcsok** .
 
    ![Tárfióknév és -kulcs beszerzése](media/data-factory-quickstart-prerequisites/storage-account-name-key.png)
 5. Másolja a **Tárfiók neve** és az **1. kulcs** mező értékét a vágólapra. Illessze be őket a Jegyzettömbbe, vagy bármely más szerkesztőbe, majd mentse a fájlt. A rövid útmutató későbbi szakaszában fogja használni őket.   
 
-#### <a name="create-the-input-folder-and-files"></a>Bemeneti mappa és fájlok létrehozása
-Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre az Azure Blob Storage-ban. Létrehoz egy **input** nevű mappát a tárolóban, majd feltölt egy mintafájlt a bemeneti mappába. 
+#### <a name="create-a-blob-container"></a>Blobtároló létrehozása
+Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre az Azure Blob Storage-ban.
 
-1. A **Tárfiók** lapon váltson az **Áttekintés** ablaktáblára, majd kattintson a **Blobok** elemre. 
+1. A -  >  ****  *\<fiók neve >* **hozzáférési kulcsok** oldal oldalsávján válassza az Áttekintés**Blobok**lehetőséget.
+2. A  *\<fiók neve >*  - **Blobok** lap eszköztárán válassza a **tároló**elemet.
+3. Az **Új tároló** párbeszédablakban adja meg az **adftutorial** nevet, és kattintson az **OK** gombra.  -   *A\<fiók neve >* **Blobok** lap frissül, hogy tartalmazza a **adftutorial** a tárolók listájában.
 
-   ![A Blobok elem választása](media/data-factory-quickstart-prerequisites/select-blobs.png)
-2. A **Blob service** lapon kattintson az eszköztár **+ Tároló** elemére. 
+   ![Tárolók listája](media/data-factory-quickstart-prerequisites/list-of-containers.png)
 
-   ![Tároló hozzáadása gomb](media/data-factory-quickstart-prerequisites/add-container-button.png)    
-3. Az **Új tároló** párbeszédablakban adja meg az **adftutorial** nevet, és kattintson az **OK** gombra. 
+#### <a name="add-an-input-folder-and-file-for-the-blob-container"></a>Bemeneti mappa és fájl hozzáadása a blob-tárolóhoz
+Ebben a szakaszban létrehoz egy **input** nevű mappát az imént létrehozott tárolóban, majd feltölt egy mintát a bemeneti mappába. Mielőtt elkezdené, nyisson meg egy szövegszerkesztőt, **** például a jegyzettömböt, és hozzon létre egy **EMP. txt** nevű fájlt az alábbi tartalommal:
 
-   ![Tárolónév megadása](media/data-factory-quickstart-prerequisites/new-container-dialog.png)
-4. A tárolók listájában kattintson az **adftutorial**  elemre. 
+```emp.txt
+John, Doe
+Jane, Doe
+```
 
-   ![A tároló kiválasztása](media/data-factory-quickstart-prerequisites/select-adftutorial-container.png)
-5. A **Tároló** lapon kattintson az eszköztár **Feltöltés** elemére.  
+Mentse a fájlt a **C:\ADFv2QuickStartPSH** mappába. (Ha a mappa még nem létezik, hozza létre.) Ezután térjen vissza a Azure Portal, és kövesse az alábbi lépéseket:
 
-   ![Feltöltés gomb](media/data-factory-quickstart-prerequisites/upload-toolbar-button.png)
-6. A **Blob feltöltése** lapon kattintson a **Speciális** elemre.
+1.  -   *A\<fiók neve >* **Blobok** oldalon, ahol abbahagyta, válassza a **adftutorial** elemet a tárolók frissített listájából. (Ha bezárta az ablakot, vagy egy másik lapra lépett, jelentkezzen [](https://portal.azure.com) be újra a Azure Portalba, válassza a **minden szolgáltatás** > **Storage** > **Storage-fiókok**lehetőséget, válassza ki a Storage-fiókot, majd válassza a **Blobok** elemet. **adftutorial.** )  > 
+2. A **adftutorial** -tároló lapja eszköztárán válassza a **feltöltés**lehetőséget.
+3. A **blob feltöltése** lapon kattintson a **fájlok** mezőre, majd keresse meg és válassza ki az **EMP. txt** fájlt.
+4. Bontsa ki a **speciális** fejlécet. A lap ekkor megjelenik:
 
    ![Kattintás a Speciális hivatkozásra](media/data-factory-quickstart-prerequisites/upload-blob-advanced.png)
-7. Indítsa el a **Jegyzettömböt**, és hozzon létre egy **emp.txt** nevű fájlt az alábbi tartalommal. Mentse a fájlt a **c:\ADFv2QuickStartPSH** mappába. Ha még nem létezik, hozza létre az **ADFv2QuickStartPSH** mappát.
-    
-   ```
-   John, Doe
-   Jane, Doe
-   ```    
-8. Az Azure Portal **Blob feltöltése** lapján keresse meg és válassza ki az **emp.txt** fájlt a **Fájlok** mezőben. 
-9. Adja meg az **input** értéket a **Feltöltés mappába** mezőben. 
+5. A **feltöltés mappába** mezőbe írja be a **bemenet**értéket.
+6. Kattintson a **Feltöltés** gombra. A listában meg kell jelennie az **emp.txt** fájlnak és a feltöltés állapotának.
+7. Válassza a **Bezárás** ikont ( **X**) a **blob feltöltése** oldal bezárásához.
 
-    ![Blobbeállítások feltöltése](media/data-factory-quickstart-prerequisites/upload-blob-settings.png)    
-10. Győződjön meg arról, hogy a mappa az **input** mappa, a fájl pedig az **emp.txt** fájl, majd kattintson a **Feltöltés** elemre.
-    
-    A listában meg kell jelennie az **emp.txt** fájlnak és a feltöltés állapotának. 
-12. A sarokban található **X** gombra kattintva zárja be a **Blob feltöltése** lapot. 
-
-    ![A Blob feltöltése lap bezárása](media/data-factory-quickstart-prerequisites/close-upload-blob.png)
-1. Ne zárja be a **Tároló** lapot. A segítségével ellenőrizheti ennek a rövid útmutatónak az eredményét.
+Tartsa megnyitva a **adftutorial** -tároló lapot. A segítségével ellenőrizheti ennek a rövid útmutatónak az eredményét.

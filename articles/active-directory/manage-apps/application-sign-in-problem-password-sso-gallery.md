@@ -1,6 +1,6 @@
 ---
-title: Nem lehet bejelentkezni a jelszavas egyszeri Bejelentkezést konfigurált Azure AD katalógusban alkalmazás |} A Microsoft Docs
-description: Hogyan lehet egy Azure AD katalógusából származó alkalmazás, amely konfigurálva van a jelszavas egyszeri bejelentkezés problémáinak hibaelhárítása.
+title: Hiba történt az egyszeri bejelentkezésre konfigurált Azure AD Gallery-alkalmazásba való bejelentkezéskor | Microsoft Docs
+description: A jelszó egyszeri bejelentkezéshez konfigurált Azure AD Gallery-alkalmazással kapcsolatos problémák elhárítása.
 documentationcenter: ''
 author: msmimart
 manager: CelesteDG
@@ -15,183 +15,183 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 742df882fb64e09ff63ef2eceb5514ca070dc227
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: e9fd17d9e066be6a1abff5165436a09b8921184e
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190324"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381307"
 ---
-# <a name="sign-in-problems-with-an-azure-ad-gallery-app-configured-for-sso"></a>Jelentkezzen be az Azure AD-katalógus alkalmazás egyszeri Bejelentkezésre konfigurálta problémák
+# <a name="sign-in-problems-with-an-azure-ad-gallery-app-configured-for-sso"></a>Bejelentkezési problémák az egyszeri bejelentkezéshez konfigurált Azure AD Gallery-alkalmazással
 
-Hozzáférési Panel egy olyan webes portál. Lehetővé teszi a felhasználók, akik rendelkeznek az Azure Active Directory (Azure AD) munkahelyi vagy iskolai fiókok felhőalapú alkalmazásokat, amelyek rendelkeznek az engedélyeket az eléréséhez. Az Azure AD-verziók rendelkező felhasználók önkiszolgáló csoportkezelési és alkalmazás-kezelési lehetőségei a hozzáférési panelen is használhatja.
+A hozzáférési panel egy webalapú portál. Lehetővé teszi, hogy a Azure Active Directory (Azure AD) munkahelyi vagy iskolai fiókkal rendelkező felhasználók hozzáférhessenek a felhőalapú alkalmazásokhoz, amelyekhez engedélyük van. Az Azure AD-kiadásokkal rendelkező felhasználók az önkiszolgáló csoportokat és az alkalmazás-felügyeleti funkciókat is használhatják a hozzáférési panelen.
 
-Hozzáférési Panel elkülönül az Azure Portalon. Felhasználóknak nem kell Azure-előfizetés használatára a hozzáférési panelen.
+A hozzáférési panel elkülönül a Azure Portaltól. A felhasználók nem igényelnek Azure-előfizetést a hozzáférési panel használatához.
 
-Jelszavas egyszeri bejelentkezés (SSO) használata a hozzáférési panelen, telepíteni kell a hozzáférési Panel kiterjesztése a böngészőben. Amikor kiválaszt egy alkalmazást, amely konfigurálva van a jelszóalapú egyszeri bejelentkezés automatikusan letölti a bővítményt.
+Ha jelszó-alapú egyszeri bejelentkezést (SSO) szeretne használni a hozzáférési panelen, a hozzáférési panel bővítményét telepíteni kell a böngészőjébe. A bővítmény automatikusan töltődik le, ha olyan alkalmazást választ, amely jelszó alapú egyszeri bejelentkezéshez van konfigurálva.
 
-## <a name="browser-requirements-for-access-panel"></a>Hozzáférési Panel böngészőkövetelményei
+## <a name="browser-requirements-for-access-panel"></a>A hozzáférési panel böngészőre vonatkozó követelményei
 
-Hozzáférési Panel a böngészőben, amely támogatja a JavaScript szükséges, és CSS engedélyezve van.
+A hozzáférési panel egy olyan böngészőt igényel, amely támogatja a JavaScript használatát, és lehetővé teszi a CSS használatát.
 
-Az alábbi böngészők támogatják a jelszóalapú egyszeri bejelentkezés:
+A következő böngészők támogatják a jelszó-alapú egyszeri bejelentkezést:
 
-- Az Internet Explorer 8, 9, 10-es és 11 Windows 7-es vagy újabb
+- Internet Explorer 8, 9, 10 és 11 Windows 7 vagy újabb rendszeren
 
-- Chrome, a Windows 7 vagy újabb, vagy MacOS X rendszeren vagy újabb
+- Chrome Windows 7 vagy újabb, vagy MacOS X vagy újabb rendszeren
 
-- Firefox 26.0 vagy újabb, Windows XP SP2 vagy újabb, vagy a Mac OS X 10.6 vagy újabb
+- Firefox 26,0 vagy újabb verziójú Windows XP SP2 vagy újabb, vagy Mac OS X 10,6 vagy újabb verzióban
 
 >[!NOTE]
->A jelszóalapú egyszeri bejelentkezés bővítmény válnak elérhetővé a Microsoft Edge a Windows 10-ben Ha támogatása, a Microsoft Edge böngésző bővítmények hozzá lett adva.
+>A jelszó-alapú SSO-bővítmény elérhetővé válik a Microsoft Edge számára a Windows 10 rendszerben, ha a böngésző bővítményeinek támogatását hozzáadták a Microsoft Edge-hez.
 
-## <a name="install-the-access-panel-browser-extension"></a>A hozzáférési Panel webböngésző-bővítmény telepítése
+## <a name="install-the-access-panel-browser-extension"></a>A hozzáférési panel böngésző bővítményének telepítése
 
 Kövesse az alábbi lépéseket:
 
-1. Nyissa meg [hozzáférési Panel](https://myapps.microsoft.com) egy támogatott böngésző, és jelentkezzen be az Azure AD-felhasználóként.
+1. Nyissa meg a [hozzáférési panelt](https://myapps.microsoft.com) egy támogatott böngészőben, és jelentkezzen be felhasználóként az Azure ad-ben.
 
-2. Válassza ki a jelszó-SSO-kompatibilis alkalmazások a hozzáférési panelen.
+2. Válassza ki a jelszó-SSO-kompatibilis alkalmazást a hozzáférési panelen.
 
-3. Amikor a rendszer kéri, válassza ki a **telepítés most**.
+3. Ha a rendszer kéri, válassza a **Telepítés most**lehetőséget.
 
-4. Akkor jelenik meg a letöltési hivatkozást a böngészőtől függően. Válassza ki **Hozzáadás** a webböngésző-bővítmény telepítése.
+4. A böngészőn alapuló letöltési hivatkozásra kell átirányítani. A böngésző bővítmény telepítéséhez válassza a **Hozzáadás** lehetőséget.
 
-5. Ha az kéri, válassza ki a **engedélyezése** vagy **engedélyezése**.
+5. Ha a rendszer kéri, válassza az **Engedélyezés** vagy az **Engedélyezés**lehetőséget.
 
 6. A telepítés után indítsa újra a böngészőt.
 
-7.  Jelentkezzen be a hozzáférési panelen, és tekintse meg, ha elindíthatja a jelszó-SSO-kompatibilis alkalmazások.
+7.  Jelentkezzen be a hozzáférési panelre, és ellenőrizze, hogy el tudja-e indítani a jelszó-SSO-kompatibilis alkalmazásokat.
 
-Emellett közvetlenül is letöltheti a bővítmények a Chrome és a Firefox keresztül ezeket a hivatkozásokat:
+A következő hivatkozásokon keresztül közvetlenül is letöltheti a Chrome és a Firefox bővítményeit:
 
--   [Chrome-hozzáférési Panel kiterjesztése](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
+-   [Chrome hozzáférési panel bővítmény](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
--   [A Firefox hozzáférési Panel kiterjesztése](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
+-   [Firefox hozzáférési panel bővítmény](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="set-up-a-group-policy-for-internet-explorer"></a>A csoportházirend beállítása az Internet Explorer
+## <a name="set-up-a-group-policy-for-internet-explorer"></a>Csoportházirend beállítása az Internet Explorerhez
 
-Beállíthat olyan csoportházirenddel, amely lehetővé teszi, hogy távolról telepíteni a hozzáférési Panel bővítményt az Internet Explorerben a felhasználók gépein is.
+Beállíthat egy csoportházirendet, amely lehetővé teszi, hogy távolról telepítse a hozzáférési panel bővítményt az Internet Explorer számára a felhasználói gépeken.
 
-Az Előfeltételek a következők:
+Ezek az előfeltételek:
 
--   [Az Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx) kell beállítani, és a felhasználók gépek a tartományhoz kell csatlakoznia.
+-   [](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx) A Active Directory tartományi szolgáltatásokt be kell állítani, és a felhasználók számítógépeit csatlakoztatni kell a tartományhoz.
 
--   "Beállítások szerkesztése" jogosultsággal a csoportházirend-objektumot (GPO) rendelkezik. Alapértelmezés szerint a következő biztonsági csoportok tagjai rendelkeznek a ezt az engedélyt: A tartományi rendszergazdák, a vállalati rendszergazdák és a Csoportházirend-létrehozó tulajdonosok. [További információk](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
+-   "Beállítások szerkesztése" engedéllyel rendelkezik a Csoportházirend objektum (GPO) szerkesztéséhez. Alapértelmezés szerint a következő biztonsági csoportok tagjai rendelkeznek ezzel az engedéllyel: A tartományi rendszergazdák, a vállalati rendszergazdák és a Csoportházirend létrehozói tulajdonosai. [További információk](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
 
-A csoportházirend konfigurálásához és üzembe helyezni a felhasználók számára: [a hozzáférési Panel bővítmény telepítése csoportházirend használatával az Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy).
+A csoportházirend konfigurálásához és a felhasználók számára történő központi telepítéséhez lásd: [a hozzáférési panel kiterjesztésének telepítése az Internet Explorerhez csoportházirend használatával](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy).
 
-## <a name="troubleshoot-access-panel-in-internet-explorer"></a>Az Internet Explorerben a hozzáférési Panel – hibaelhárítás
+## <a name="troubleshoot-access-panel-in-internet-explorer"></a>Az Internet Explorer hozzáférési paneljének hibakeresése
 
-Egy diagnosztikai eszköz és a bővítmény konfigurálása utasítások eléréséről, lásd a [a hozzáférési Panel bővítmény hibaelhárítása az Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting).
+A diagnosztika eszközhöz és a bővítmény konfigurálásához szükséges utasításokért tekintse meg [az Internet Explorer hozzáférési panel bővítményének hibáit](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting)ismertető témakört.
 
-## <a name="configure-password-sso-for-an-azure-ad-gallery-app"></a>Jelszavas egyszeri Bejelentkezést az Azure AD-katalógusban alkalmazás konfigurálása
+## <a name="configure-password-sso-for-an-azure-ad-gallery-app"></a>Jelszó egyszeri bejelentkezésének konfigurálása Azure AD Gallery-alkalmazáshoz
 
-Adja meg az Azure AD katalógusából származó alkalmazás, mindezt a kell:
+Az alkalmazások Azure AD-katalógusból való konfigurálásához ezeket a dolgokat kell tennie:
 
--   Az alkalmazás hozzáadása az Azure AD katalógusából
--   [Az alkalmazás a jelszavas egyszeri bejelentkezés konfigurálása](#configure-the-app-for-password-sso)
--   [Felhasználók hozzárendelése az alkalmazáshoz](#assign-users-to-the-app)
+-   Az alkalmazás hozzáadása az Azure AD-katalógusból
+-   [Az alkalmazás konfigurálása a jelszó egyszeri bejelentkezéséhez](#configure-the-app-for-password-sso)
+-   [Felhasználók társítása az alkalmazáshoz](#assign-users-to-the-app)
 
-### <a name="add-the-app-from-the-azure-ad-gallery"></a>Az alkalmazás hozzáadása az Azure AD katalógusából
-
-Kövesse az alábbi lépéseket:
-
-1. Nyissa meg a [az Azure portal](https://portal.azure.com) , és jelentkezzen be egy globális rendszergazdai vagy társadminisztrátorként.
-
-2. Válassza ki **minden szolgáltatás** az Azure AD-bővítmény megnyitásához a bal oldali navigációs ablak tetején.
-
-3. Típus **Azure Active Directory** a szűrőt a keresési mezőbe, és válassza ki a **Azure Active Directory**.
-
-4. Válassza ki **vállalati alkalmazások** az Azure ad-ben navigációs ablaktáblán.
-
-5. Válassza ki **Hozzáadás** jobb felső sarkában a **vállalati alkalmazások** ablaktáblán.
-
-6. Az a **Hozzáadás a katalógusból** területén adja meg az alkalmazás nevét a **adjon meg egy nevet** mezőbe.
-
-7. Válassza ki az alkalmazást, amely az egyszeri bejelentkezéshez konfigurálandó.
-
-8. *Nem kötelező:* Mielőtt hozzáadja az alkalmazást, módosíthatja annak a **neve** mezőbe.
-
-9. Kattintson a **Hozzáadás** az alkalmazás hozzáadásához.
-
-   Rövid késleltetés után lesz az alkalmazás konfigurációs panelen láthatók.
-
-### <a name="configure-the-app-for-password-sso"></a>Jelszavas egyszeri Bejelentkezést az alkalmazás konfigurálása
+### <a name="add-the-app-from-the-azure-ad-gallery"></a>Az alkalmazás hozzáadása az Azure AD-katalógusból
 
 Kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [az Azure portal](https://portal.azure.com/) , és jelentkezzen be egy globális rendszergazdai vagy társadminisztrátorként.
+1. Nyissa meg a [Azure Portal](https://portal.azure.com) , és jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
 
-2. Válassza ki **minden szolgáltatás** az Azure AD-bővítmény megnyitásához a bal oldali navigációs ablak tetején.
+2. Az Azure AD-bővítmény megnyitásához kattintson a bal oldalon található navigációs ablaktábla tetején található **összes szolgáltatás** elemre.
 
-3. Típus **Azure Active Directory** a szűrőt a keresési mezőbe, és válassza ki a **Azure Active Directory**.
+3. Írja be a **Azure Active Directory** kifejezést a szűrő keresőmezőbe, majd válassza a **Azure Active Directory**lehetőséget.
 
-4. Válassza ki **vállalati alkalmazások** az Azure ad-ben navigációs ablaktáblán.
+4. Válassza a **vállalati alkalmazások** lehetőséget az Azure ad navigációs paneljén.
 
-5. Válassza ki **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. A **vállalati alkalmazások** ablaktábla jobb felső sarkában válassza a **Hozzáadás** lehetőséget.
+
+6. A **Hozzáadás a** katalógusból szakaszban írja be az alkalmazás nevét a **név megadása** mezőbe.
+
+7. Válassza ki az egyszeri bejelentkezéshez konfigurálni kívánt alkalmazást.
+
+8. *Választható* Az alkalmazás hozzáadása előtt módosíthatja a nevét a **név** mezőben.
+
+9. Az alkalmazás hozzáadásához kattintson a **Hozzáadás** gombra.
+
+   Rövid késleltetés után megtekintheti az alkalmazás konfigurációs paneljét.
+
+### <a name="configure-the-app-for-password-sso"></a>Az alkalmazás konfigurálása jelszó-egyszeri bejelentkezéshez
+
+Kövesse az alábbi lépéseket:
+
+1. Nyissa meg a [Azure Portal](https://portal.azure.com/) , és jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
+
+2. Az Azure AD-bővítmény megnyitásához kattintson a bal oldalon található navigációs ablaktábla tetején található **összes szolgáltatás** elemre.
+
+3. Írja be a **Azure Active Directory** kifejezést a szűrő keresőmezőbe, majd válassza a **Azure Active Directory**lehetőséget.
+
+4. Válassza a **vállalati alkalmazások** lehetőséget az Azure ad navigációs ablaktábláján.
+
+5. Az alkalmazások listájának megtekintéséhez kattintson a **minden alkalmazás** elemre.
 
    > [!NOTE]
-   > Ha nem látja a kívánt alkalmazást, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista**. Állítsa be a **megjelenítése** beállítást az "Összes alkalmazás."
+   > Ha nem látja a kívánt alkalmazást, használja a **minden alkalmazás lista**tetején található **szűrő** vezérlőelemet. Állítsa a **show (megjelenítés** ) lehetőséget a "minden alkalmazás" értékre.
 
-6. Válassza ki az alkalmazást, amely az egyszeri bejelentkezéshez konfigurálandó.
+6. Válassza ki az egyszeri bejelentkezéshez konfigurálni kívánt alkalmazást.
 
-7. Miután betölti az alkalmazást, válassza ki **egyszeri bejelentkezési** a az alkalmazás a bal oldali ablaktáblán.
+7. Az alkalmazás betöltése után válassza az **egyszeri bejelentkezés** lehetőséget az alkalmazás bal oldalán található ablaktáblán.
 
-8. Válassza ki **jelszóalapú bejelentkezés** mód.
+8. Válassza a **jelszó alapú bejelentkezési** mód lehetőséget.
 
-9. Felhasználók hozzárendelése az alkalmazáshoz.
+9. Felhasználók társítása az alkalmazáshoz.
 
-10. Hitelesítő adatok is megadhatja a felhasználók számára. (Ellenkező esetben kéri a felhasználótól megadnia alkalmazás indításakor.) Ehhez válassza ki a felhasználók a sorokat. Válassza ki **a hitelesítő adatok frissítése** , és adja meg a felhasználóneveket és jelszavakat.
+10. A felhasználók hitelesítő adatait is megadhatja. (Máskülönben a felhasználókat a rendszer a hitelesítő adatok megadására kéri az alkalmazás indításakor.) Ehhez válassza ki a felhasználók sorait. Ezután válassza a **hitelesítő adatok frissítése** lehetőséget, és adja meg a felhasználónevét és a jelszavát.
 
 ### <a name="assign-users-to-the-app"></a>Felhasználók hozzárendelése az alkalmazáshoz
 
-Felhasználók hozzárendelése egy alkalmazáshoz közvetlenül, kövesse az alábbi lépéseket:
+A felhasználók közvetlenül az alkalmazásokhoz való hozzárendeléséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [az Azure portal](https://portal.azure.com/) , és jelentkezzen be globális rendszergazdaként
+1. Nyissa [](https://portal.azure.com/) meg a Azure Portalt, és jelentkezzen be globális rendszergazdaként.
 
-2. Válassza ki **minden szolgáltatás** a az Azure AD-bővítmény megnyitásához a bal oldali navigációs problémás.
+2. Az Azure AD bővítmény megnyitásához válassza a bal oldalon található navigációs fájdalom **összes szolgáltatás** elemét.
 
-3. Típus **Azure Active Directory** a szűrőt a keresési mezőbe, és válassza ki a **Azure Active Directory**.
+3. Írja be a **Azure Active Directory** kifejezést a szűrő keresőmezőbe, majd válassza a **Azure Active Directory**lehetőséget.
 
-4. Válassza ki **vállalati alkalmazások** az Azure ad-ben navigációs ablaktáblán.
+4. Válassza a **vállalati alkalmazások** lehetőséget az Azure ad navigációs ablaktábláján.
 
-5. Válassza ki **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. Az alkalmazások listájának megtekintéséhez kattintson a **minden alkalmazás** elemre.
 
    > [!NOTE]
-   > Ha nem látja a kívánt alkalmazást, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista**. Állítsa be a **megjelenítése** beállítást az "Összes alkalmazás."
+   > Ha nem látja a kívánt alkalmazást, használja a **minden alkalmazás lista**tetején található **szűrő** vezérlőelemet. Állítsa a **show (megjelenítés** ) lehetőséget a "minden alkalmazás" értékre.
 
-6. A listában jelölje ki az alkalmazást, amelyet szeretne rendelje hozzá egy felhasználót.
+6. A listából válassza ki azt az alkalmazást, amelyhez felhasználót szeretne hozzárendelni.
 
-7. Miután betölti az alkalmazást, válassza ki **felhasználók és csoportok** az alkalmazás navigációs ablak bal oldalán.
+7. Az alkalmazás betöltése után válassza a **felhasználók és csoportok** lehetőséget az alkalmazás navigációs paneljén a bal oldalon.
 
-8. Válassza ki **Hozzáadás** felső részén a **felhasználók és csoportok** listán, megnyílik a **hozzárendelés hozzáadása** ablaktáblán.
+8. A **felhasználók és csoportok** lista tetején a **Hozzáadás** gombra kattintva nyissa meg a **hozzárendelés hozzáadása** ablaktáblát.
 
-9. Válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** ablaktáblán.
+9. A **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok** lehetőséget.
 
-10. Az a **Keresés név vagy e-mail cím alapján** mezőbe írja be a teljes nevet vagy e-mail-cím, amelyet szeretne hozzárendelni.
+10. A **Keresés név vagy e-mail-cím** mezőbe írja be a hozzárendelni kívánt felhasználó teljes nevét vagy e-mail-címét.
 
-11. A kurzort a felhasználónévre a listában. Jelölje be a jelölőnégyzetet, a felhasználó profilfényképének vagy, hogy a felhasználó hozzáadása embléma mellett a **kijelölt** listája.
+11. Vigye a kurzort a listában szereplő felhasználó fölé. Jelölje be a felhasználó profiljának fényképe vagy emblémája melletti jelölőnégyzetet, hogy hozzáadja a felhasználót a **kiválasztott** listához.
 
-12. *Nem kötelező:* Egy másik felhasználó hozzáadásához írja be egy másik nevet vagy e-mail-cím a **Keresés név vagy e-mail cím alapján** mezőbe, majd válassza ki a jelölőnégyzetet, hogy a felhasználó hozzáadása a **kijelölt** listája.
+12. *Választható* Egy másik felhasználó hozzáadásához írjon be egy másik nevet vagy e-mail-címet a **Keresés név vagy e-mail-cím** mezőbe, majd jelölje be a jelölőnégyzetet, ha hozzá szeretné adni a felhasználót a **kiválasztott** listához.
 
-13. Ha elkészült, válassza a felhasználók, kattintson a **kiválasztása** , vegye fel a listára a felhasználók és az alkalmazáshoz hozzárendelt csoportok.
+13. Ha végzett a felhasználók kiválasztásával, kattintson a **kiválasztás** gombra az alkalmazáshoz hozzárendelt felhasználók és csoportok listájához való hozzáadásához.
 
-14. *Nem kötelező:* Kattintson a **Szerepkörválasztás** a a **hozzárendelés hozzáadása** ablaktáblán válassza ki a szerepkör hozzárendelése a kiválasztott felhasználókhoz.
+14. *Választható* Kattintson a **szerepkör kiválasztása** elemre a **hozzárendelés hozzáadása** panelen, és válassza ki a kiválasztott felhasználókhoz hozzárendelni kívánt szerepkört.
 
-15. Válassza ki **hozzárendelése** az alkalmazás hozzárendelése a kiválasztott felhasználók számára.
+15. Válassza a **hozzárendelés** lehetőséget az alkalmazás a kiválasztott felhasználókhoz való hozzárendeléséhez.
 
-    Rövid késleltetés után a felhasználók fognak tudni elérni ezeket az alkalmazásokat a hozzáférési Panel.
+    Rövid késleltetés után a felhasználók hozzáférhetnek az alkalmazásokhoz a hozzáférési panelen.
 
 ## <a name="request-support"></a>Támogatás kérése 
-Ha hibaüzenet jelenik meg az egyszeri bejelentkezés beállítása és hozzárendelése a felhasználók, nyisson egy támogatási jegyet. A lehető a következő információkat tartalmazza:
+Ha az egyszeri bejelentkezés beállítása és a felhasználók kiosztása során hibaüzenet jelenik meg, nyisson meg egy támogatási jegyet. A lehető legtöbbet a következő információkból állhat:
 
--   Megfelelési hiba azonosítója
--   Egyszerű felhasználónév (felhasználó e-mail-címe)
+-   Korrelációs hiba azonosítója
+-   UPN (felhasználói e-mail-cím)
 -   TenantID
 -   Böngésző típusa
--   Időzóna és ideje és időtartama a hiba előfordulásakor
--   Fiddler-nyomkövetés
+-   Az időzóna és az idő/idő keret a hiba bekövetkezésekor
+-   Hegedűs nyomkövetései
 
 ## <a name="next-steps"></a>További lépések
 [Az alkalmazásproxy egyszeri bejelentkezést az alkalmazásokba biztosít](application-proxy-configure-single-sign-on-with-kcd.md)

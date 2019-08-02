@@ -1,6 +1,6 @@
 ---
-title: Hatékonyan az Azure Maps Search szolgáltatással keresésének módjai |} A Microsoft Docs
-description: Ajánlott eljárások használata az Azure Maps Search szolgáltatással keresés
+title: Hatékony keresés a Azure Maps Search szolgáltatás használatával | Microsoft Docs
+description: Ismerje meg, hogyan használhatók az ajánlott eljárások a Azure Maps keresési szolgáltatással való kereséshez
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/08/2019
@@ -8,86 +8,86 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8c4347eb0f89c17a285aaa4b51760300b9c89aa7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 996a084fd653b2100d94313e8801d915b4bf2cf3
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617865"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348180"
 ---
-# <a name="best-practices-to-use-azure-maps-search-service"></a>Ajánlott eljárások az Azure Maps a Search Service használata
+# <a name="best-practices-to-use-azure-maps-search-service"></a>Ajánlott eljárások Azure Maps Search Service használatához
 
-Az Azure Maps [keresőszolgáltatás](https://docs.microsoft.com/rest/api/maps/search) szolgáltatás API-k és különböző funkciókat, például adatainak érdeklődés pont (KOORDINÁTÁIIG) adatokat tartalmaznak egy adott hely keresése Keresés cím. Ebben a cikkben nyújtunk az ajánlott eljárások Azure Maps keresési szolgáltatások keresztüli meghívására. Az alábbiakat fogja elsajátítani:
+A Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) különböző képességekkel rendelkező API-kat tartalmaz, például a címek keresésével, hogy egy adott helyen lévő érdeklődési pont (POI) adatait keressék. Ebben a cikkben az ajánlott eljárásokat fogjuk megosztani Azure Maps keresési szolgáltatásokon keresztül. Az alábbiakat fogja elsajátítani:
 
-* Vissza a megfelelő egyezések lekérdezések összeállítása
-* Korlát keresési eredmények
-* Ismerje meg a különféle eredmények közötti különbség
-* Olvassa el a cím keresési válasz struktúra
+* Lekérdezések készítése a megfelelő egyezések visszaküldéséhez
+* Keresési eredmények korlátozása
+* Különböző típusú eredmények közötti különbség
+* A keresési válasz struktúrájának beolvasása
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Bármely hívásokat a Maps szolgáltatás API-k, szüksége van egy Maps-fiók és a kulcsot. Hozzon létre egy fiókot, és a egy kulcs lekérése kapcsolatos tudnivalókat lásd: [az Azure Maps-fiók és kulcsok kezelése](how-to-manage-account-keys.md).
+Ahhoz, hogy a Maps Service API-kon bármilyen hívást lehessen kezdeményezni, szüksége van egy Maps-fiókra és egy kulcsra. A fiókok létrehozásával és a kulcsok beolvasásával kapcsolatos információkért lásd: [a Azure Maps-fiók és-kulcsok kezelése](how-to-manage-account-keys.md).
 
 > [!Tip]
-> A keresési szolgáltatás lekérdezés, használja a [Postman alkalmazás](https://www.getpostman.com/apps) hozhat létre REST hívásokkal bármely API fejlesztési környezetet, amely igény szerint használható.
+> A Search szolgáltatás lekérdezéséhez használhatja a [Poster alkalmazást](https://www.getpostman.com/apps) a REST-hívások létrehozásához, vagy bármilyen, Ön által előnyben részesített API-fejlesztési környezetet használhat.
 
 
-## <a name="best-practices-for-geocoding"></a>Ajánlott eljárások a Geokódolás
+## <a name="best-practices-for-geocoding"></a>Ajánlott eljárások a helymeghatározáshoz
 
-Azure Maps Search Service használatával teljes vagy részleges cím keresésekor vesz igénybe a keresési kifejezést, és a cím szélességi és hosszúsági koordinátáit adja vissza. Ez a folyamat a geokódolás nevezzük. A geocode országban el közúti adatok lefedettsége és a geokódolás pontosságát a geokódolási szolgáltatás függ.
+Ha Azure Maps Search Service használatával keres teljes vagy részleges címeket, a keresési kifejezést veszi át, és visszaadja a címe hosszúsági és szélességi koordinátáit. Ezt a folyamatot helymeghatározáshoz nevezzük. Egy adott országban való geocode a közúti adatlefedettségtől és a helymeghatározáshoz szolgáltatás helymeghatározáshoz pontosságtól függ.
 
-Lásd: [geokódolás lefedettsége](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage) tudni, miért az Azure Maps geokódolás képességek ország/régió szerint.
+Tekintse meg a [helymeghatározáshoz lefedettségét](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage) , hogy az ország/régió Azure Maps helymeghatározáshoz képességeiről tudjon többet megtudni.
 
-### <a name="limit-search-results"></a>Korlát keresési eredmények
+### <a name="limit-search-results"></a>Keresési eredmények korlátozása
 
-   Ebben a szakaszban megtudhatja, hogyan korlátozza a keresési eredmények az Azure Maps keresési API-k használatával. 
+   Ebből a szakaszból megtudhatja, hogyan használhatja Azure Maps keresési API-kat a keresési eredmények korlátozására. 
 
    > [!Note]
-   > Nem minden search API-k teljes mértékben támogatja alábbi paraméterek
+   > Nem minden keresési API teljes mértékben támogatja az alább felsorolt paramétereket
 
-   **GEO-eltérés a keresési eredmények**
+   **Geo-Bias keresési eredmények**
 
-   Geo-eltérés sorrendben az eredményeket a felhasználó a megfelelő területre mindig adja hozzá a részletes maximális lehetséges hely bemeneti. Korlátozza a keresési eredmények között, fontolja meg a következő bemeneti típusok hozzáadása:
+   Annak érdekében, hogy az eredményeket az adott felhasználóhoz tartozó megfelelő helyre szűkítse, mindig adja hozzá a lehető legrészletesebb hely bemenetet. A keresési eredmények korlátozásához vegye fontolóra a következő bemeneti típusok hozzáadását:
 
-   1. Állítsa be a `countrySet` paramétert, például "US, FR". Az alapértelmezett keresés viselkedését, hogy keressen az egész világ, potenciálisan a szükségtelen eredményt adnak vissza. Ha a lekérdezés nem tartalmazza a `countrySet` paramétert, a keresés pontos eredményeket adhatnak vissza. Például keresse meg a Város nevű **Bellevue** fog eredményeinek visszaadása az USA és Franciaország, mivel nevű Város **Bellevue** Franciaországban, és az USA-ban.
+   1. Adja meg `countrySet` a paramétert, például: "US, fr". Az alapértelmezett keresési viselkedés a teljes világra irányuló keresés, ami felesleges eredményeket ad vissza. Ha a lekérdezés nem tartalmaz `countrySet` paramétert, előfordulhat, hogy a keresés pontatlan eredményeket ad vissza. Például a **Bellevue** nevű város keresése az USA és Franciaország eredményeit jeleníti meg, mivel vannak a franciaországi és az Egyesült Államokban található **Bellevue** nevű városok.
 
-   2. Használhatja a `btmRight` és `topleft` paraméterek beállítása a határoló mezőbe a Keresés korlátozása egy adott területre a térképen.
+   2. A (z) `btmRight` és `topleft` paraméterek használatával beállíthatja, hogy a határolókeret egy adott területre korlátozza a keresést a térképen.
 
-   3. Befolyásolhatják a terület az eredmények relevancia, meghatározhatja a `lat`és `lon` koordinálja a paramétereket, és állítsa be a radius használatával keresési terület a `radius` paraméter.
+   3. Az eredmények fontossági területének befolyásolásához megadhatja a `lat`és `lon` a koordináta paramétert, és beállíthatja a keresési terület sugarát a `radius` paraméter használatával.
 
 
-   **Az intelligens keresési paraméterek**
+   **Fuzzy keresési paraméterek**
 
-   1. A `minFuzzyLevel` és `maxFuzzyLevel`, segít a megfelelő egyezések adja vissza, akkor is, ha a lekérdezési paraméterek nem teljesen felel meg a kívánt adatokat. Alapértelmezés szerint a legtöbb keresési lekérdezések `minFuzzyLevel=1` és `maxFuzzyLevel=2` teljesítményt és csökkentheti a szokatlan eredményeket. Igénybe vehet egy keresési kifejezést például "restrant", akkor megfeleltetett "éttermi" Ha a `maxFuzzyLevel` 2 értékre van állítva. Az alapértelmezett intelligens szintek felülbírálható kérelem igényeinek megfelelően. 
+   1. A `minFuzzyLevel` és`maxFuzzyLevel`a segítségével akkor is ad vissza releváns egyezéseket, ha a lekérdezési paraméterek nem egyeznek meg pontosan a kívánt információkkal. A legtöbb keresési lekérdezés alapértelmezett `minFuzzyLevel=1` értéke `maxFuzzyLevel=2` a és a teljesítmény, valamint a szokatlan eredmények csökkentése. A "restrant" keresési kifejezésre példaként tekintse meg az "étterem" kifejezést, ha a `maxFuzzyLevel` értéke 2. Az alapértelmezett homályos szintek felülbírálják a kérelmekre vonatkozó igényeket. 
 
-   2. A visszaadandó eredmény típusok pontos készletét is megadhat a `idxSet` paraméter. Erre a célra nyújthatja be vesszővel elválasztott listája indexek, az elemek sorrendje nem számít. A támogatott indexeket a következők:
+   2. Azt is megadhatja, hogy a `idxSet` paraméter használatával pontosan milyen típusú eredményt adjon vissza. Erre a célra elküldheti az indexek vesszővel tagolt listáját, az elemek sorrendje nem számít. A támogatott indexek a következők:
 
-       * `Addr` - **Címtartomány**: Az egyes utcák cím elején és végén az utca; a rendszer interpolált pontok vannak azokat a pontokat címtartományok helyettesítik.
-       * `Geo` - **Földrajzi területeken**: Egy térkép, vagyis a föld közigazgatási képviselő, ország, állam, város területeket.
-       * `PAD` - **Pont címe**:  Egy térképen, ahol az utca nevét és számát adott cím található egy index, például Soquel Dr 2501 pontok. A legmagasabb szintű rendelkezésre álló címek pontossága.  
-       * `POI` - **Hasznos helyek**: Pontok egy térképen érdemes figyelmet és érdekes lehet.  [Keresés cím](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) POIs nem ad vissza.  
-       * `Str` - **Utcák**: A térképen utcák ábrázolása.
-       * `XStr` - **Adatbázisközi utcák/metszéspontjait**:  Csomópontokban; ábrázolása a helyek, az intersect két utcák.
+       * `Addr` - **Címtartományok**: Egyes utcákon olyan címek találhatók, amelyek az utca elejéről és végéről vannak interpolált. Ezek a pontok címtartományokként jelennek meg.
+       * `Geo` - **Földrajzi**területek: A térképen egy olyan terület, amely a föld felügyeleti részlegét jelöli, vagyis ország, állam, város.
+       * `PAD` - **Pont címe**:  Olyan térképekre mutat, amelyekben az utca nevét és számát tartalmazó adott címek megtalálhatók egy indexben, például Soquel Dr 2501. Ez a legmagasabb szintű pontosság a címek számára.  
+       * `POI` - **Érdekes pontok**: Olyan térképen mutat, amely érdemes figyelmet érdemel, és érdekes lehet.  A [keresési címek](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) beolvasása nem ad vissza POI-ket.  
+       * `Str` - **Utcák**: Utcák ábrázolása a térképen.
+       * `XStr` - **Cross Streets/** kereszteződések:  A csomópontok képviselete; helyek, ahol két utca metszi egymást.
 
 
        **Használati példák**:
 
-       * idxSet KOORDINÁTÁIIG (csak a fontos pontok. keresése) = 
+       * idxSet = POI (csak keresési pontok) 
 
-       * idxSet KITÖLTŐ, cím = (keresési megoldást csak KITÖLTŐ pont cím, cím = = címtartomány)
+       * idxSet = PAD, addr (csak keresési címek, PAD = pont címe, addr = címtartomány)
 
-### <a name="reverse-geocode-and-geography-entity-type-filter"></a>Fordított geocode és földrajzi entitás-szűrő
+### <a name="reverse-geocode-and-geography-entity-type-filter"></a>Fordított geocode és földrajzi egység típusú szűrő
 
-A fordított geocode keresés végrehajtása során [keresés cím fordított API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse), a szolgáltatás a felügyeleti területek poligonok vissza lehetőséggel rendelkezik. A paraméter megadásával `entityType` a kérésben megadott földrajzi entitástípusok keresése szűkíthető. Az eredményül kapott válasz tartalmazni fogja a földrajzi azonosítója, valamint a megfelelő entitástípus. Ha több entitást ad meg, végpont adja vissza a **elérhető legkisebb entitás**. Geometriai azonosító használható az adott földrajzi helyen keresztül geometriája beolvasásához visszaadott [sokszög első szolgáltatás](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon).
+Ha fordított geocode keresést folytat a [keresési fordított API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)-val, a szolgáltatás képes visszaadni a sokszögeket a felügyeleti területekhez. Ha megadja a paramétert `entityType` a kérelemben, szűkítheti a megadott földrajzi entitások típusának keresését. Az eredményül kapott válasz tartalmazni fogja a földrajzi azonosítót, valamint az entitás típusát. Ha egynél több entitást ad meg, a végpont az **elérhető legkisebb entitást**adja vissza. A visszaadott geometriai azonosító használatával lekérheti a földrajz geometriáját a [Get sokszög szolgáltatás](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)használatával.
 
-**Minta-kérelem:**
+**Példa a kérelemre:**
 
 ```HTTP
 https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={subscription-key}&query=47.6394532,-122.1304551&language=en-US&entityType=Municipality
 ```
 
-**Válasz:**
+**Válasz**
 
 ```JSON
 {
@@ -126,16 +126,16 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
 }
 ```
 
-### <a name="search-results-language"></a>Keresési eredmények nyelv
+### <a name="search-results-language"></a>Keresési eredmények nyelve
 
-A `language` paraméter lehetővé teszi, hogy állítsa be a keresési nyelv eredményeket adja vissza. Ha a kérésben nincs beállítva nyelv, keresési szolgáltatás automatikusan alapértelmezett ebben az országban vagy régióban a leggyakrabban használt nyelv. Ezenkívül adatokat a megadott nyelv nem érhető el, ha használatos az alapértelmezett nyelv. Lásd: [támogatott nyelvek](https://docs.microsoft.com/azure/azure-maps/supported-languages) megállapodást ország/régió szerint az Azure Maps szolgáltatás támogatott nyelvek listáját.
+A `language` paraméterrel beállíthatja, hogy mely nyelvi keresési eredményeket adja vissza. Ha a kérelemben nincs beállítva a nyelv, a Search szolgáltatás automatikusan az ország/régió leggyakrabban használt nyelvét adja meg. Továbbá, ha a megadott nyelven nem érhető el az adathalmaz, az alapértelmezett nyelvet használja a rendszer. A támogatott nyelvek listáját a támogatott nyelvek listájában [tekintheti](https://docs.microsoft.com/azure/azure-maps/supported-languages) meg az ország/régió Azure Maps szolgáltatások tekintetében.
 
 
-### <a name="predictive-mode-auto-suggest"></a>Prediktív mód (automatikus kiegészítési)
+### <a name="predictive-mode-auto-suggest"></a>Prediktív mód (automatikus javaslat)
 
-Részleges lekérdezések több találat található `typeahead` lehet "true" paramétert kell beállítani. A lekérdezés értelmezi a részleges bemenetként, és a keresés prediktív üzemmódba lép. Ellenkező esetben a szolgáltatás feltételezi az összes kapcsolódó információt lett átadva.
+Ha további egyezéseket szeretne találni a részleges `typeahead` lekérdezésekhez, a paramétert "true" értékre kell beállítani. A lekérdezés részleges bemenetként lesz értelmezve, és a keresés a prediktív módot fogja beírni. Ellenkező esetben a szolgáltatás azt feltételezi, hogy az összes vonatkozó adat át lett adva.
 
-A minta az alábbi lekérdezés látható, hogy a keresési szolgáltatás lekérik a "Microsoft" és a `typeahead` paraméter beállítása **igaz**. A válasz megfigyelte, láthatja, hogy a keresési szolgáltatás értelmezi a lekérdezés as részleges lekérdezés és válasz automatikus által javasolt lekérdezés eredményeit tartalmazza.
+Az alábbi minta lekérdezésben láthatja, hogy a keresési címtartomány lekérdezése "m", a `typeahead` paraméter értéke TRUE ( **igaz**). Ha betartja a választ, láthatja, hogy a keresési szolgáltatás részleges lekérdezésként értelmezte a lekérdezést, és az automatikusan javasolt lekérdezés eredményét tartalmazza.
 
 **Mintalekérdezés:**
 
@@ -143,7 +143,7 @@ A minta az alábbi lekérdezés látható, hogy a keresési szolgáltatás leké
 https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1.0&typeahead=true&countrySet=US&lat=47.6370891183&lon=-122.123736172&query=Microsoft
 ```
 
-**Válasz:**
+**Válasz**
 
 ```JSON
 {
@@ -239,34 +239,34 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 ```
 
 
-### <a name="uri-encoding-to-handle-special-characters"></a>Kezeli a különleges karakterek kódolása URI 
+### <a name="uri-encoding-to-handle-special-characters"></a>URI-kódolás speciális karakterek kezeléséhez 
 
-Speciális karakter közötti címek,: "1. sérülésre & Union utca, Seattle", keresse meg a 'és' igényeinek megfelelően kódolni a kérelem elküldése előtt. Javasoljuk, hogy karakteres adatot egy URI-t, kódolás, ha az összes karaktert kódolt (%) karaktereket használ, és az UTF-8 karakter megfelelő két karakterből álló hexadecimális értékként.
+A Cross Street-címek megkereséséhez, azaz a "1st Avenue & Union Street, Seattle" speciális "&" karaktert a kérés elküldése előtt kódolni kell. Azt javasoljuk, hogy kódolja a karakterkódolási karaktereket egy URI-ban, ahol az összes karakter kódolása "%" karakterrel, az UTF-8 karakternek megfelelő kétkarakteres hexadecimális értékkel.
 
 **Használati példák**:
 
-Keresés-címének lekéréséhez:
+Keresési címek beolvasása:
 
 ```
 query=1st Avenue & E 111th St, New York
 ```
 
- kell kódolni, mint:
+ a következőképpen kódolja:
 
 ```
 query"=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York
 ```
 
 
-Az alábbiakban a különböző nyelvekhez használható különböző módszereket: 
+A különböző nyelveken a különböző módszereket használhatja: 
 
-JavaScript/TypeScript:
+JavaScript/írógéppel:
 ```Javascript
 encodeURIComponent(query)
 ```
 
 C#/VB:
-```C#
+```csharp
 Uri.EscapeDataString(query)
 ```
 
@@ -292,32 +292,32 @@ PHP:
 urlencode(query)
 ```
 
-Ruby:
+Ruby
 ```Ruby
 CGI::escape(query) 
 ```
 
-Swift:
+Swift
 ```Swift
 query.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()) 
 ```
 
-Ugrás:
+Lépjen
 ```Go
 import ("net/url") 
 url.QueryEscape(query)
 ```
 
 
-## <a name="best-practices-for-poi-search"></a>Ajánlott eljárások a KOORDINÁTÁIIG keresése
+## <a name="best-practices-for-poi-search"></a>Ajánlott eljárások a POI-kereséshez
 
-Pontok érdeklődés (KOORDINÁTÁIIG) keresés KOORDINÁTÁIIG eredmények kérelem neve, például keresési üzleti név szerint teszi lehetővé. Határozottan javasoljuk, hogy használja a `countrySet` paraméterrel adja meg a országban, ahol az alkalmazásigények lefedettség, mint az alapértelmezett működés lesz keressen az egész világ, potenciálisan a szükségtelen eredményt adnak vissza, és/vagy a keresési hosszabb időt eredményez.
+A POI-keresések lehetővé teszik a POI-találatok név szerinti kérését, például a keresés üzleti név alapján. Nyomatékosan javasoljuk, hogy a `countrySet` paraméterrel adja meg azokat az országokat, amelyeken az alkalmazásnak lefedettségre van szüksége, mivel az alapértelmezett viselkedés a teljes világon való keresés, a szükségtelen eredmények visszaadása és/vagy a hosszú keresési idő elérése.
 
 ### <a name="brand-search"></a>Márka keresése
 
-Javíthatja hatékonyságát az eredményeket, és a válaszban szereplő információkat, az érdeklődés pont (KOORDINÁTÁIIG) keresési válasz tartalmazza a márka információkat, amelyek segítségével tovább a válasz elemzéséhez.
+Az eredmények relevanciájának és a válaszban szereplő információk (POI) keresési válaszának tökéletesítése érdekében a válaszok elemzéséhez továbbra is használhatók a részletes információk.
 
-Ellenőrizze, egy [KOORDINÁTÁIIG kategória keresési](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) benzinkútjainkkal közel Microsoft-Kampusz (Redmond, WA) vonatkozó kérés. Megfigyelte a választ, ha minden visszaadott KOORDINÁTÁIIG márka információkat láthatja.
+Tegyük fel, hogy a Microsoft Campus (Redmond, WA) közelében megjelenő [POI-kategóriák keresési](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) kérelme a benzinkutak. Ha betartja a választ, megtekintheti a visszaadott POI-ra vonatkozó összes információt.
 
 **Mintalekérdezés:**
 
@@ -325,7 +325,7 @@ Ellenőrizze, egy [KOORDINÁTÁIIG kategória keresési](https://docs.microsoft.
 https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=gas%20station&limit=3&lat=47.6413362&lon=-122.1327968
 ```
 
-**Válasz:**
+**Válasz**
 
 ```JSON
 {
@@ -484,19 +484,19 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
 
 ### <a name="airport-search"></a>Repülőtér keresése
 
-KOORDINÁTÁIIG keresési támogatja a repülőterek keresése a hivatalos repülőtér kódok segítségével. Ha például **tenger** (Seattle-Tata nemzetközi repülőtér). 
+A POI Search a hivatalos repülőtéri kódok használatával támogatja a keresést a repülőtereken. Például: **Sea** (Seattle-Tacoma International Airport). 
 
 ```HTTP
 https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=SEA 
 ```
 
-### <a name="nearby-search"></a>Közeli keresése
+### <a name="nearby-search"></a>Közeli keresés
 
-Egy adott helyen, csak KOORDINÁTÁIIG adatokat beolvasni a [közeli search API](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby) lehet, hogy a megfelelő választás. Ez a végpont csak KOORDINÁTÁIIG eredményeket ad vissza, és nem veszi a keresési lekérdezés paraméterben. Az eredmények korlátozására, ajánlott a radius beállítása.
+Ha csak a POI-eredményeket szeretné lekérni egy adott hely körül, a [közeli keresési API](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby) lehet a megfelelő választás. Ez a végpont csak a POI eredményeit fogja visszaadni, és nem a keresési lekérdezési paramétert használja. Az eredmények korlátozásához ajánlott beállítani a sugarat.
 
 ## <a name="understanding-the-responses"></a>A válaszok ismertetése
 
-Ellenőrizze, hogy az Azure Maps egy cím-keresési kérelem [keresési szolgáltatás](https://docs.microsoft.com/rest/api/maps/search) budapesti cím. Gondosan tekintse az alábbi kérelem URL-címet, ha rendelkezik beállított a `countrySet` paramétert **USA** , keresse meg a címet az Egyesült Államok jogszabályaival.
+Tegyünk egy címen belüli keresési kérelmet a Azure Maps [Search szolgáltatáshoz](https://docs.microsoft.com/rest/api/maps/search) egy Seattle-beli címen. Ha alaposan megtekinti az alábbi kérelem URL-címét, akkor a `countrySet` paramétert úgy állította be, hogy megkeresse a címet az amerikai **Egyesült** Egyesült Államokban.
 
 **Mintalekérdezés:**
 
@@ -504,23 +504,23 @@ Ellenőrizze, hogy az Azure Maps egy cím-keresési kérelem [keresési szolgál
 https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1&query=400%20Broad%20Street%2C%20Seattle%2C%20WA&countrySet=US
 ```
 
-További nézzük meg, a válasz az alábbi struktúrát. A válaszban az eredményobjektumok eredmény típusú eltérőek. Ha megfigyelte gondosan megjelenik az eredményül kapott objektumokat három különböző típusú rendelkezünk, amelyek a "Pont címe", "Street" és "Közötti Street". Figyelje meg, hogy cím a keresés nem ad vissza POIs. A `Score` minden válasz objektum paraméter azt jelzi, a relatív egyező pontszám pontszámok más objektumok ugyanazt a választ. Lásd: [keresés cím első](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) többet megtudni a válasz objektum paramétereket.
+További tekintsük át az alábbi válasz-struktúrát. A válaszban található eredmény típusú objektumok eredményei eltérőek. Ha alaposan bemutatjuk, láthatjuk, hogy három különböző típusú eredmény-objektumunk van, amelyek "pont címe", "utca" és "Cross Street". Figyelje meg, hogy a címek keresése nem ad vissza POI-ket. Az egyes Response objektumokhoz tartozó paraméterarelatívegyezésipontszámotjelzi,hogyazazonosválaszbanlévőmásobjektumokpontszámaismegtörténjen.`Score` A válasz objektum paramétereinek megismeréséhez tekintse meg a [keresési címek](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) beolvasása című témakört.
 
-**Az eredmény a támogatott típusok:**
+**Támogatott típusú eredmények:**
 
-* **Pont címe:** Az utca nevét és számát az adott cím a térképen pontok. A legmagasabb szintű rendelkezésre álló címek pontossága. 
+* **Pont címe:** A térképen az utca nevét és számát tartalmazó adott címen található pontok szerepelnek. A címekhez elérhető legmagasabb pontossági szint. 
 
-* **Címtartomány:**  Az egyes utcák cím elején és végén az utca; a rendszer interpolált pontok vannak azokat a pontokat címtartományok helyettesítik. 
+* **Címtartomány:**  Egyes utcákon olyan címek találhatók, amelyek az utca elejéről és végéről vannak interpolált. Ezek a pontok címtartományokként jelennek meg. 
 
-* **Földrajzi hely:** Egy térkép, vagyis a föld közigazgatási képviselő, ország, állam, város területeket. 
+* **Földrajz** A térképen egy olyan terület, amely a föld felügyeleti részlegét jelöli, vagyis ország, állam, város. 
 
-* **KOORDINÁTÁIIG - (a lényeges pont):** Pontok egy térképen érdemes figyelmet és érdekes lehet.
+* **POI – (érdekes pontok):** Olyan térképen mutat, amely érdemes figyelmet érdemel, és érdekes lehet.
 
-* **Utca:** A térképen utcák ábrázolása. Címek hozzárendelve az utca, amely tartalmazza a címet a szélességi és hosszúsági koordinátákkal koordinátáját. A házszámát nem dolgozható fel. 
+* **Utca házszám** Utcák ábrázolása a térképen. A címek a címet tartalmazó utca szélességi/hosszúsági koordinátáihoz vannak feloldva. Lehetséges, hogy a házszám nem dolgozható fel. 
 
-* **Utca eltérő:** Metszéspontjait. Csomópontokban; ábrázolása a helyek, az intersect két utcák.
+* **Cross Street:** Metszéspontjait. A csomópontok képviseletei; helyek, ahol két utca metszi egymást.
 
-**Válasz:**
+**Válasz**
 
 ```JSON
 {
@@ -684,12 +684,12 @@ További nézzük meg, a válasz az alábbi struktúrát. A válaszban az eredm�
 }
 ```
 
-### <a name="geometry"></a>geometriai
+### <a name="geometry"></a>Geometria
 
-Válasz típusa esetén **geometriai**, azt is tartalmazza a geometriai Azonosítót, a visszaadott a **adatforrások** objektum "geometry" és "id" alatt. Ha például [sokszög első szolgáltatás](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) lehetővé teszi a geometriai adatokat egy GeoJSON formátumú, például a város vagy repülőtér körvonalának entitásokban. A határ adatait használhatja [Geokerítések](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence) vagy [keresési POIs belül a geometriai](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry).
+Ha a válasz típusa **geometria**, belefoglalhatja az adatforrások objektumban a "geometria  " és az "id" alatt visszaadott geometriá-azonosítót. A [poligon szolgáltatás](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) beolvasása például lehetővé teszi a geometriai adatok GeoJSON formátumban való megadását, például a város vagy a repülőtér körvonalát az entitások egy halmaza számára. Ezt a határt a [geokerítések](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence) , vagy [a geometrián belüli kereséshez](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)használhatja.
 
 
-[Keresés cím](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) vagy [intelligens keresési](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) API-válaszok tartalmazhatnak a **geometriai azonosítója** által visszaadott az adatforrások objektum "geometry" és "id" alatt.
+[](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) A kereséshez vagy a homályos API-válaszok kereséséhez az adatforrások objektumban a "geometria" és az "id" alatt visszaadott **geometriai azonosító** is szerepelhet. [](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
 
 
 ```JSON 
@@ -702,5 +702,5 @@ Válasz típusa esetén **geometriai**, azt is tartalmazza a geometriai Azonosí
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, [hogyan hozhat létre az Azure Maps keresési kérelmeket](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address).
-* Ismerkedés az Azure Maps [keresési szolgáltatás API-dokumentáció](https://docs.microsoft.com/rest/api/maps/search). 
+* Megtudhatja [, hogyan hozhat létre Azure Maps keresési szolgáltatási kérelmeket](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address).
+* Fedezze fel a Azure Maps [Search szolgáltatás API dokumentációját](https://docs.microsoft.com/rest/api/maps/search). 

@@ -1,6 +1,6 @@
 ---
-title: Hogyan beolvasni a Tudásbázis adatbányászati (előzetes verzió) – az Azure Search használatába
-description: Ismerje meg a lépéseket, képi elemekben gazdag dokumentumok indexelése az Azure storage-fiókban Tudásbázis-áruházban az Azure Search folyamatok AI által létrehozott küldéséhez. Itt megtekintheti, formálja át, és felhasználását, képi elemekben gazdag dokumentumokat az Azure Search és az egyéb alkalmazásokban.
+title: Ismerkedés a Knowledge Store szolgáltatással (előzetes verzió) – Azure Search
+description: Megtudhatja, hogyan küldhet a Azure Search AI-indexelési folyamatok által létrehozott bővített dokumentumokat az Azure Storage-fiókban található tudásbázisba. Itt megtekintheti, átalakíthatja és felhasználhatja a dúsított dokumentumokat Azure Search és más alkalmazásokban.
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,116 +8,116 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 06/29/2019
 ms.author: heidist
-ms.openlocfilehash: e50dfcdc5ac2fbe2435066546a340874e1b8f682
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 5794a24931b613bf1bdddd983799367bb02cf44d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551058"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68641014"
 ---
-# <a name="how-to-get-started-with-knowledge-mining-in-azure-search"></a>Tudásbázis adatbányászati az Azure Search az első lépések
+# <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Ismerkedés a Knowledge Store szolgáltatással a Azure Search
 
 > [!Note]
-> Tudásbázis store előzetes állapotban van, nem éles használatra szánt. A [REST API verzióját 2019-05-06-Preview](search-api-preview.md) ezt a szolgáltatást biztosít. Rendszer jelenleg nem .NET SDK-t támogatja.
+> A Knowledge áruház előzetes verzióban érhető el, és nem éles használatra készült. A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
 >
-[Tudásbázis store](knowledge-store-concept-intro.md) alsóbb rétegbeli Tudásbázis adatbányászati más alkalmazásokban az Azure storage-fiók az indexelés során létrehozott AI bővített dokumentumok menti. Mentett végrehajtott információbeolvasás segítségével megismerheti és finomítsa az Azure Search indexelési folyamat. 
+A [Knowledge Store](knowledge-store-concept-intro.md) a más alkalmazásokban az Azure Storage-fiókba való adatbányászat során létrehozott AI-gazdagított dokumentumokat menti az indexelés során. A mentett bővítéseket is használhatja a Azure Search indexelési folyamat megértéséhez és pontosításához. 
 
-Határozza meg a Tudásbázis-tároló egy *indexmezők* hozta létre, és egy *indexelő*. A fizikai kifejezés a Tudásbázis-tárolók megadva a *leképezések* amelyek meghatározzák, hogy az adattárakon storage-ban. Ez a forgatókönyv befejezése időpontig létrejönnek az összes ilyen objektum, és tudni fogja, hogyan mindannyian működnek együtt. 
+A tudásbázist egy *készségkészlet* határozza meg, és egy indexelőhozza létre. A rendszer a tárolóban lévő adatstruktúrákat meghatározó kivetítéseken keresztül adja meg a Tudásbázis fizikai kifejezését. A bemutató befejezése után létrehozta az összes objektumot, és tudni fogja, hogyan illeszkednek egymáshoz. 
 
-Ebben a gyakorlatban a mintaadatokat, szolgáltatások és az alapvető munkafolyamat létrehozásáról és használatáról az első Tudásbázis store hangsúlyt fektetve indexmezők definíció további eszközök elindítása.
+Ebben a gyakorlatban a mintaadatok, szolgáltatások és eszközök használatával megismerheti az első készségkészlet-definíciók létrehozásához és használatához szükséges alapvető munkafolyamatot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Tudásbázis tároló több szolgáltatást, az Azure Blob storage és Azure Table storage fizikai tároló és az Azure Search és objektumok létrehozása és a Cognitive Services középpontjában van. Való ismerkedés során bizonyulhat a [alapszintű architektúra](knowledge-store-concept-intro.md) Ez a forgatókönyv előfeltétele.
+A Knowledge Store több szolgáltatás központjában található, az Azure Blob Storage és az Azure Table Storage fizikai tárolást biztosít, valamint Azure Search és Cognitive Services az objektumok létrehozásához és frissítéséhez. Az alapszintű [architektúra](knowledge-store-concept-intro.md) ismerete az útmutató előfeltétele.
 
-Ez a rövid útmutató a következő szolgáltatásokat és eszközöket használatosak. 
+Ebben a rövid útmutatóban a következő szolgáltatásokat és eszközöket használjuk. 
 
-+ [Postman asztali alkalmazás](https://www.getpostman.com/), az Azure Search HTTP-kérelmek küldéséhez használt.
++ [Tegye közzé a Poster Desktop alkalmazást](https://www.getpostman.com/), amely a HTTP-kérelmek Azure Search való küldésére szolgál.
 
-+ [Az Azure storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) mintaadatokat és az ismeretek tárolására tárolja. A Tudásbázis-tárolót az Azure storage fogja szerepel.
++ [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a mintaadatok és a Knowledge Store tárolásához. A Tudásbázis az Azure Storage-ban fog létezni.
 
-+ [Cognitive Services-erőforrás létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rétegben az S0 használatalapú AI végrehajtott információbeolvasás használt képességek széles broad-spectrum eléréséhez. Cognitive Services és az Azure Search szolgáltatás ugyanabban a régióban kell szükségesek.
++ [Hozzon létre egy Cognitive Services erőforrást](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a S0 utólagos elszámolású szinten, hogy széles spektrumú hozzáférést biztosítson az AI-bővítésekben használt szaktudások teljes skálája számára. Cognitive Services és az Azure Search szolgáltatásnak ugyanabban a régióban kell lennie.
 
-+ [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben az oktatóanyagban egy ingyenes szolgáltatás használhatja. 
++ [Hozzon létre egy Azure Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást. 
 
-Példa JSON-dokumentumokat és a egy Postman collection-fájl is szükségesek. Utasítások megkeresése és kiegészítő fájlok betöltése megtalálható a [mintaadatok létrehozása](#prepare-sample-data) szakaszban.
+A JSON-dokumentumok és a Poster-gyűjtemények is szükségesek. A kiegészítő fájlok keresésének és betöltésének utasításait a [Mintaadatok előkészítése](#prepare-sample-data) szakaszban találja.
 
-## <a name="get-a-key-and-url"></a>Egy kulcsot és egy URL-cím beszerzése
+## <a name="get-a-key-and-url"></a>Kulcs és URL-cím lekérése
 
 A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
-1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com/), és a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
+1. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-    ![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-get-started-postman/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
+    ![Http-végpont és elérési kulcs] beszerzése (media/search-get-started-postman/get-url-key.png "Http-végpont és elérési kulcs") beszerzése
 
-Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásnak küldött api-kulcsát. A szolgáltatásnév és API-kulcs az egyes HTTP-kérés a következő szakaszokban képzésben.
+Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. A szolgáltatás nevét és API-kulcsát minden HTTP-kérelemben meg kell adnia a következő szakaszokban.
 
 <a name="prepare-sample-data"></a>
 
-## <a name="prepare-sample-data"></a>Mintaadatok létrehozása
+## <a name="prepare-sample-data"></a>Mintaadatok előkészítése
 
-A Tudásbázis-felderítési bővítést folyamat a kimeneti tárolóban. Bemenetek "használhatatlan" adatokat, amely végső soron válik "használható" ahogy előrehaladunk az a folyamat állnak. Használhatatlan adatokat lehet például szöveg vagy kép jellemzők elemezni kell képfájlokat, vagy sűrű szöveges fájlok, amelyeket elemezhetők az entitásokat, kulcskifejezéseket és vélemények. 
+Egy Tudásbázis tartalmazza a dúsítási folyamat kimenetét. A bemenetek "használhatatlan" adatokat tartalmaznak, amelyek végső soron "felhasználható" állapotba kerülnek, ahogy az a folyamaton halad át. A használhatatlan adatok például tartalmazhatnak olyan képfájlokat, amelyeket elemezni kell szöveg-vagy képtulajdonságok esetén, vagy az entitások, a kulcsfontosságú kifejezések vagy a hangulat alapján elemezhető sűrű szöveges fájlok. 
 
-Ebben a gyakorlatban sűrű szöveges fájlok (eseti információk) származik a [Caselaw hozzáférés projekt](https://case.law/bulk/download/) nyilvános adatok kötegelt letöltési oldalát. 10-dokumentum minta azt feltölteni a Githubra, ehhez a gyakorlathoz. 
+Ez a gyakorlat a [Caselaw Access Project](https://case.law/bulk/download/) nyilvános tömeges adatletöltési lapjáról származó, sűrű szövegfájlokat (esetjog-információkat) használ. Feltöltöttünk egy 10 dokumentumból álló mintát a GitHubba ehhez a gyakorlathoz. 
 
-Ebben a feladatban egy Azure Blob-tárolóba, az ezeket a dokumentumokat, a folyamat bemeneti adatokként fogja létrehozni. 
+Ebben a feladatban létrehoz egy Azure BLOB-tárolót, amellyel a dokumentumok bemenetként használhatók a folyamathoz. 
 
-1. Töltse le és csomagolja ki a [Azure Search-mintaadatok](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw) get-adattár a [Caselaw adatkészlet](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw). 
+1. Töltse le és csomagolja ki a [Azure Search minta](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw) adattárházat a [Caselaw](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw)-adatkészlet beszerzéséhez. 
 
-1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com)lépjen az Azure storage-fiókot, kattintson a **Blobok**, és kattintson a **+ tároló**.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com), navigáljon az Azure Storage-fiókjához, kattintson a **Blobok**elemre, majd a **+ tároló**elemre.
 
-1. [Hozzon létre egy blobtárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) a mintaadatokat tartalmazzák: 
+1. [Hozzon létre egy blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) -tárolót a mintaadatok tárolására: 
 
-   1. A tároló neve `caselaw-test`. 
+   1. Nevezze el a `caselaw-test`tárolót. 
    
-   1. Nyilvános hozzáférési szint beállítása az érvényes értékeket.
+   1. Állítsa a nyilvános hozzáférési szintet bármelyik érvényes értékére.
 
-1. A tároló létrehozása után nyissa meg és jelölje ki **feltöltése** a parancssávon.
+1. A tároló létrehozása után nyissa meg, majd válassza a parancssáv **feltöltés** elemét.
 
-   ![Töltse fel a parancssávon](media/search-semi-structured-data/upload-command-bar.png "parancssávon feltöltése")
+   ![Feltöltés a parancssáv](media/search-semi-structured-data/upload-command-bar.png "Feltöltés a parancssáv")
 
-1. Keresse meg a mappát tartalmazó a **caselaw-sample.json** mintafájlt. Válassza ki a fájlt, és kattintson a **feltöltése**.
+1. Navigáljon a **caselaw-sample. JSON** fájlt tartalmazó mappához. Válassza ki a fájlt, majd kattintson a **feltöltés**elemre.
 
-1. Amíg az Azure storage-ban, lekérése a kapcsolati karakterlánc és a tároló nevét.  Ezek a karakterláncok mindkét kell [adatforrás létrehozása](#create-data-source):
+1. Az Azure Storage-ban a kapcsolódási karakterlánc és a tároló neve olvasható.  Mindkét sztringre szüksége lesz az [adatforrás létrehozásakor](#create-data-source):
 
-   1. Az Áttekintés lapon kattintson a **Tárelérési kulcsok** , és másolja a *kapcsolati karakterlánc*. Először `DefaultEndpointsProtocol=https;` és a folyamat végén `EndpointSuffix=core.windows.net`. A fiók nevét és kulcsát vannak a kettő között. 
+   1. Az Áttekintés lapon kattintson a **hozzáférési kulcsok** elemre, és másolja a *kapcsolati karakterláncot*. Ezzel elindul `DefaultEndpointsProtocol=https;` , és a- `EndpointSuffix=core.windows.net`vel zárul. A fiók neve és kulcsa a (z) között van. 
 
-   1. A tároló nevének kell lennie `caselaw-test` vagy tetszőleges rendelve.
+   1. A tároló nevének vagy bármely `caselaw-test` hozzárendelt névnek kell lennie.
 
 
 
 ## <a name="set-up-postman"></a>A Postman beállítása
 
-Postman a kérelmek és a JSON-dokumentumokat az Azure Search küldéséhez használni kívánt ügyfélalkalmazás. A kérések számos szintaxisok segítségével állíthatja csak a szükséges információkat ebben a cikkben. Azonban két, a legnagyobb kérelmek (az index létrehozása egy képességcsoport létrehozása) tartalmazza a részletes JSON-t ágyazhat be egy cikkben túl nagy. 
+A Poster az ügyfélalkalmazás, amelyet a kérések és a JSON-dokumentumok küldéséhez fog használni a Azure Search. A kérések közül több is megfogalmazható a cikkben található információk használatával. Azonban a legnagyobb kérések közül kettő (index létrehozása, készségkészlet létrehozása) olyan részletes JSON-t tartalmaz, amely túl nagy ahhoz, hogy beágyazni lehessen egy cikkben. 
 
-Ahhoz, hogy minden JSON-dokumentumok és kérelmek teljes mértékben rendelkezésre állnak, létrehozott egy Postman collection-fájl. Töltsön le, és ezt a fájlt, majd importálásával az első lépése a az ügyfél beállítása.
+Az összes JSON-dokumentum és-kérelem teljes körű elérhetővé tételéhez létrehozunk egy Poster-gyűjteményt tartalmazó fájlt. A fájl letöltése és importálása az első feladat az ügyfél beállításakor.
 
-1. Töltse le és csomagolja ki a [minták az Azure Search Postman](https://github.com/Azure-Samples/azure-search-postman-samples) tárház.
+1. Töltse le és csomagolja ki a [Azure Search Poster Samples](https://github.com/Azure-Samples/azure-search-postman-samples) repositoryt.
 
-1. Indítsa el a Postmant, és a Caselaw Postman-gyűjtemény importálása:
+1. Indítsa el a Poster-t, és importálja a Caselaw Poster-gyűjteményt:
 
-   1. Kattintson a **importálás** > **fájlok importálása a** > **fájlok kiválasztása**. 
+   1. **Kattintson az** **** importfájlimportálása > fájlok elemre. ****  >  
 
-   1. Keresse meg a \azure-search-postman-samples-master\azure-search-postman-samples-master\Caselaw mappát.
+   1. Navigáljon a \azure-search-postman-samples-master\azure-search-postman-samples-master\Caselaw mappára.
 
-   1. Válassza ki **Caselaw.postman_collection_v2.json**. Négy kell megjelennie **POST** kéréseket a gyűjteményben.
+   1. Válassza ki a **Caselaw. postman_collection_v2. JSON**fájlt. A gyűjteményben négy **post** kérelemnek kell megjelennie.
 
-   ![Postman-gyűjtemény Caselaw bemutató](media/knowledge-store-howto/postman-collection.png "Caselaw bemutató Postman-gyűjtemény")
+   ![Poster-gyűjtemény a Caselaw] -bemutatóhoz (media/knowledge-store-howto/postman-collection.png "Poster-gyűjtemény a Caselaw") -bemutatóhoz
    
 
 ## <a name="create-an-index"></a>Index létrehozása
     
-Az első kérelem használja a [Index API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-data-source), az Azure Search-index létrehozása, amely tárolja az összes kereshető adatot. Az index határozza meg, az összes mező, paraméterek és attribútumok.
+Az első kérelem a [create index API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)-t használja, és létrehoz egy Azure Search indexet, amely az összes kereshető adatértéket tárolja. Az index határozza meg az összes mezőt, paramétert és attribútumot.
 
-Nem feltétlenül kell a Tudásbázis adatbányászati index, de az indexelő nem fut, kivéve, ha az index biztosítja. 
+Nem feltétlenül szükséges az adatbányászati index, de az indexelő nem fog futni, hacsak nincs megadva index. 
 
-1. Az URL-címben `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/indexes?api-version=2019-05-06-Preview`, cserélje le `YOUR-AZURE-SEARCH-SERVICE-NAME` a keresési szolgáltatás nevére. 
+1. Az URL- `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/indexes?api-version=2019-05-06-Preview`címben cserélje `YOUR-AZURE-SEARCH-SERVICE-NAME` le a kifejezést a keresési szolgáltatás nevére. 
 
-1. Cserélje le a fejléc részen `<YOUR AZURE SEARCH ADMIN API-KEY>` az Azure Search API rendszergazdai kulcsot.
+1. A fejléc szakaszban cserélje le `<YOUR AZURE SEARCH ADMIN API-KEY>` a (Azure Search) felügyeleti API-kulcsát.
 
-1. A szervezet a szakaszban a JSON-dokumentum az indexsémát. A külső felület az index áll kibontva látható-e a, a következő elemeket. A mezők gyűjteménye a caselaw adatkészlet mezőinek felel meg.
+1. A Body (törzs) szakaszban a JSON-dokumentum egy index séma. A láthatóságra összecsukva az index külső rendszerhéja a következő elemekből áll. A mezők gyűjteménye megfelel a caselaw adatkészlet mezőinek.
 
    ```json
    {
@@ -135,9 +135,9 @@ Nem feltétlenül kell a Tudásbázis adatbányászati index, de az indexelő ne
    }
    ```
 
-1. Bontsa ki a `fields` gyűjtemény. Tartalmazza az indexdefiníciót mikroszolgáltatásokból álló, egyszerű mezők tömeges [összetett mezők](search-howto-complex-data-types.md) beágyazott alépítményeit és gyűjteményeket.
+1. Bontsa `fields` ki a gyűjteményt. Tartalmazza az index definíciójának nagy részét, amely egyszerű mezőket, beágyazott alstruktúrákat és gyűjteményeket tartalmazó [összetett mezőket](search-howto-complex-data-types.md) tartalmaz.
 
-   Szánjon egy kis időt a mező definíciója tekintse át a `casebody` sorok 302-384-et összetett mezőjében. Figyelje meg, hogy egy összetett mezőt tartalmazhat más összetett mezők, ha a hierarchikus reprezentációinak van szükség. Hierarchikus struktúra modellezhető index, a képességek alkalmazási lehetőségét, így létrehozását egy beágyazott adatszerkezetből a Tudásbázis tárolójában ide, és emellett egy leképezési látható módon.
+   Szánjon egy kis időt a `casebody` komplex mezőhöz tartozó mező definíciójának áttekintésére a 302-384-es sorokban. Figyelje meg, hogy egy összetett mező más összetett mezőket is tartalmazhat, amikor szükség van a hierarchikus ábrázolásokra. A hierarchikus struktúrák modellezése egy indexben, az itt látható módon, valamint egy készségkészlet kivetítése is lehet, így a rendszer létrehoz egy beágyazott adatstruktúrát a Tudásbázisban.
 
    ```json
    {
@@ -227,19 +227,19 @@ Nem feltétlenül kell a Tudásbázis adatbányászati index, de az indexelő ne
     . . .
    ```
 
-1. Kattintson a **küldése** a kérés végrehajtásához.  Meg kell kapnia egy **állapota: 201 Created** üzenet adott válaszként.
+1. A kérelem végrehajtásához kattintson a **Küldés** gombra.  Meg kell kapnia **az állapotot: 201 az** üzenet válaszként lett létrehozva.
 
 <a name="create-data-source"></a>
 
 ## <a name="create-a-data-source"></a>Adatforrás létrehozása
 
-A második kérés használja a [Data Source API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-data-source) szeretne csatlakozni az Azure Blob storage. 
+A második kérelem az [adatforrás létrehozása API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) -t használja az Azure Blob Storage-hoz való kapcsolódáshoz. 
 
-1. Az URL-címben `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/datasources?api-version=2019-05-06-Preview`, cserélje le `YOUR-AZURE-SEARCH-SERVICE-NAME` a keresési szolgáltatás nevére. 
+1. Az URL- `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/datasources?api-version=2019-05-06-Preview`címben cserélje `YOUR-AZURE-SEARCH-SERVICE-NAME` le a kifejezést a keresési szolgáltatás nevére. 
 
-1. Cserélje le a fejléc részen `<YOUR AZURE SEARCH ADMIN API-KEY>` az Azure Search API rendszergazdai kulcsot.
+1. A fejléc szakaszban cserélje le `<YOUR AZURE SEARCH ADMIN API-KEY>` a (Azure Search) felügyeleti API-kulcsát.
 
-1. A szervezet a szakaszban a JSON-dokumentum tartalmazza a tárfiók kapcsolati karakterláncot, és a blob tároló nevét. A kapcsolati karakterlánc található a tárfiók található az Azure Portalon **Tárelérési kulcsok**. 
+1. A szövegtörzs szakaszban a JSON-dokumentum tartalmazza a Storage-fiók és a blob-tároló nevét. A kapcsolati karakterlánc a Storage-fiók **hozzáférési kulcsainak**Azure Portal található. 
 
     ```json
     {
@@ -259,21 +259,21 @@ A második kérés használja a [Data Source API létrehozása](https://docs.mic
     }
     ```
 
-1. Kattintson a **küldése** a kérés végrehajtásához.  Meg kell kapnia egy **állapota: 201 Created** üzenet adott válaszként.
+1. A kérelem végrehajtásához kattintson a **Küldés** gombra.  Meg kell kapnia **az állapotot: 201 az** üzenet válaszként lett létrehozva.
 
 
 
 <a name="create-skillset"></a>
 
-## <a name="create-a-skillset-and-knowledge-store"></a>Képességek készlete és indexmezők Tudásbázis tároló létrehozása
+## <a name="create-a-skillset-and-knowledge-store"></a>Készségkészlet és a Knowledge Store létrehozása
 
-A harmadik kérelem a [indexmezők API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-skillset), milyen kognitív képességeket szeretne hívásokat indítani, hogyan összekapcsolja a forgatókönyv - képességek együtt, és a legfontosabb létrehozása az Azure Search-objektum, amely meghatározza egy Tudásbázis tár megadása.
+A harmadik kérelem a [create KÉSZSÉGKÉSZLET API](https://docs.microsoft.com/rest/api/searchservice/create-skillset)-t használja, és létrehoz egy Azure Search objektumot, amely meghatározza, hogy milyen kognitív ismereteket kell hívni, hogyan lehet a tudást egyesíteni, és ami a legfontosabb ebben a bemutatóban – a Tudásbázis megadása.
 
-1. Az URL-címben `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/skillsets?api-version=2019-05-06-Preview`, cserélje le `YOUR-AZURE-SEARCH-SERVICE-NAME` a keresési szolgáltatás nevére. 
+1. Az URL- `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/skillsets?api-version=2019-05-06-Preview`címben cserélje `YOUR-AZURE-SEARCH-SERVICE-NAME` le a kifejezést a keresési szolgáltatás nevére. 
 
-1. Cserélje le a fejléc részen `<YOUR AZURE SEARCH ADMIN API-KEY>` az Azure Search API rendszergazdai kulcsot.
+1. A fejléc szakaszban cserélje le `<YOUR AZURE SEARCH ADMIN API-KEY>` a (Azure Search) felügyeleti API-kulcsát.
 
-1. A szervezet a szakaszban a JSON-dokumentumok esetében indexmezők definícióját. Összecsukott számára látható-e, a külső rendszerhéj, a képességek alkalmazási lehetőségét az alábbi elemekből áll. A `skills` gyűjteménye határozza meg a memórián belüli végrehajtott információbeolvasás, de a `knowledgeStore` definíció meghatározza a kimeneti módjára. A `cognitiveServices` definíciója a mesterséges Intelligencia Adatbővítés motorok létesített kapcsolat.
+1. A Body (törzs) szakaszban a JSON-dokumentum egy készségkészlet-definíció. A láthatóságra összecsukva a készségkészlet külső rendszerhéja a következő elemekből áll. A `skills` gyűjtemény meghatározza a memóriában lévő bővítéseket, de a `knowledgeStore` definíció meghatározza a kimenet tárolási módját. A `cognitiveServices` definíció a mesterséges intelligencia-gazdagító motorokkal létesített kapcsolat.
 
    ```json
    {
@@ -285,11 +285,11 @@ A harmadik kérelem a [indexmezők API létrehozása](https://docs.microsoft.com
    }
    ```
 
-1. Bontsa ki a `cognitiveServices` és `knowledgeStore` , hogy a kapcsolatadatok is. A példában ezek a karakterláncok találhatók a képességek alkalmazási lehetőségét definíciója után, a kérelem törzsében vége felé. 
+1. `cognitiveServices` Bontsa `knowledgeStore` ki a elemet, és adja meg a kapcsolatok adatait. A példában ezek a karakterláncok a készségkészlet-definíció után találhatók a kérelem törzsének vége felé. 
 
-   A `cognitiveServices`, üzembe helyezése egy erőforráshoz, az S0 csomag, az Azure Search megegyező régióban található. A cognitive Services nevével és kulcsával érheti el ugyanazon az oldalon az Azure Portalon. 
+   A `cognitiveServices`esetében hozzon létre egy erőforrást a S0 szinten, amely ugyanabban a régióban található, mint Azure Search. A cognitiveServices nevét és kulcsát a Azure Portal azonos oldaláról kérheti le. 
    
-   A `knowledgeStore`, használhatja ugyanazt a caselaw Blob tároló használt kapcsolati karakterlánc.
+   A `knowledgeStore`esetében ugyanazt a caselaw használja, mint a blob-tárolóhoz.
 
     ```json
     "cognitiveServices": {
@@ -301,9 +301,9 @@ A harmadik kérelem a [indexmezők API létrehozása](https://docs.microsoft.com
         "storageConnectionString": "YOUR-STORAGE-ACCOUNT-CONNECTION-STRING",
     ```
 
-1. Bontsa ki a képességek gyűjteményt, különösen a 85-ös és 179, sorok Shaper ismeretek jelölik. A Shaper szakértelem fontos, mert azt a Tudásbázis adatbányászati használni kívánt adatstruktúrák tartalomkiszolgálójáról. Képességcsoport a futtatás során ezen szerkezetek memórián belüli csak, de helyezi át a következő lépés, mivel láthatja, hogyan menthetők Ez a kimenet további feltárási Tudásbázis áruházbeli.
+1. Bontsa ki a szaktudás gyűjteményt, különösen az 85-es és a 179-es vonalakon található formáló képességeket. A formáló szakértelme azért fontos, mert összeállítja azokat az adatstruktúrákat, amelyeket a tudás kitermeléséhez szeretne használni. A készségkészlet végrehajtása során ezek a struktúrák csak memóriában vannak, de a következő lépésre való áttérés során látni fogja, hogyan menthető a kimenet egy tudásbázisba a további feltáráshoz.
 
-   Az alábbi kódrészlet 217 sor van. 
+   Az alábbi kódrészlet a 217-es sorból származik. 
 
     ```json
     "name": "Opinions",
@@ -337,11 +337,11 @@ A harmadik kérelem a [indexmezők API létrehozása](https://docs.microsoft.com
    . . .
    ```
 
-1. Bontsa ki a `projections` elemében `knowledgeStore`, már akár havi 262 sorban. Leképezések adja meg a Tudásbázis store összeállításban. Leképezések táblák-objektumok párok, de jelenleg csak egy időben vannak megadva. Amint láthatja, hogy az első leképezése a `tables` van megadva, de `objects` nem. A második ennek az ellenkezője.
+1. Bontsa `projections` ki `knowledgeStore`az elemet a alkalmazásban, az 262-es vonaltól kezdve. A kivetítések határozzák meg a Knowledge Store összeállítását. A vetítések a Tables-Objects párokban vannak megadva, de jelenleg csak egy időpontban. Ahogy az első kivetítésben látható, az `tables` meg van adva `objects` , de nem. A másodikban ez az ellenkezője.
 
-   Az Azure storage-ban táblákat hoz létre minden egyes létrehozott tábla a Table storage-ban, és az egyes objektumok egy tároló beolvasása a Blob storage-ban.
+   Az Azure Storage-ban a létrehozott táblák táblázatos tárolásban lesznek létrehozva, és minden objektum egy tárolót kap a blob Storage-ban.
 
-   BLOB-objektumok általában a teljes kifejezés-felderítési bővítést tartalmaz. Táblák általában részleges végrehajtott információbeolvasás kombinációit, amelyek az adott célra rendezze el úgy a tartalmaznak. Ez a példa bemutatja egy esetekben és a vélemények tábla, de nem jelennek meg entitások, ügyvédi, bírák és fél hasonlóan más táblák.
+   A blob-objektumok jellemzően egy alkoholtartalom teljes kifejezését tartalmazzák. A táblázatok jellemzően részleges dúsításokat tartalmaznak, amelyek az adott célra rendezett kombinációkban szerepelnek. Ez a példa egy Cases táblát és egy véleményeket tartalmazó táblázatot mutat be, de nem látható más táblák, például entitások, ügyvédek, bírák és felek.
 
     ```json
     "projections": [
@@ -373,7 +373,7 @@ A harmadik kérelem a [indexmezők API létrehozása](https://docs.microsoft.com
     ]
     ```
 
-1. Kattintson a **küldése** a kérés végrehajtásához. A következő választ kell kapnia **201-es** és megjelenítése a válasz első része, a következő példához hasonlóan néz ki.
+1. A kérelem végrehajtásához kattintson a **Küldés** gombra. A válasznak **201** -nek kell lennie, és az alábbi példához hasonlóan kell kinéznie, amely a válasz első részét mutatja.
 
     ```json
     {
@@ -404,15 +404,15 @@ A harmadik kérelem a [indexmezők API létrehozása](https://docs.microsoft.com
         . . .
     ```
 
-## <a name="create-and-run-an-indexer"></a>Hozzon létre, és a egy indexelő futtatása
+## <a name="create-and-run-an-indexer"></a>Indexelő létrehozása és futtatása
 
-A negyedik kérelem a [indexelő API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer), az Azure Search indexelők létrehozása. Az indexelő a végrehajtó motor az indexelési folyamat. Az ebben a lépésben a mozgásban lévő adatoknak egyaránt mindössze eddig létrehozott definíciókat.
+A negyedik kérelem a [create Indexer API](https://docs.microsoft.com/rest/api/searchservice/create-indexer)-t használja, és létrehoz egy Azure Search indexelő. Az indexelő az indexelési folyamat végrehajtó motorja. Az eddig létrehozott összes definíció a következő lépéssel kerül mozgásba.
 
-1. Az URL-címben `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/indexers?api-version=2019-05-06-Preview`, cserélje le `YOUR-AZURE-SEARCH-SERVICE-NAME` a keresési szolgáltatás nevére. 
+1. Az URL- `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/indexers?api-version=2019-05-06-Preview`címben cserélje `YOUR-AZURE-SEARCH-SERVICE-NAME` le a kifejezést a keresési szolgáltatás nevére. 
 
-1. Cserélje le a fejléc részen `<YOUR AZURE SEARCH ADMIN API-KEY>` az Azure Search API rendszergazdai kulcsot.
+1. A fejléc szakaszban cserélje le `<YOUR AZURE SEARCH ADMIN API-KEY>` a (Azure Search) felügyeleti API-kulcsát.
 
-1. A szervezet a szakaszban a JSON-dokumentum megadja az indexelő nevét. Egy adatforrás és az index az indexelő van szükség. A képességek alkalmazási lehetőségét az indexelők nem kötelező, de AI Adatbővítés szükséges.
+1. A törzs szakaszban a JSON-dokumentum az indexelő nevét adja meg. Az indexelő megköveteli az adatforrás és az index megírását. Egy készségkészlet nem kötelező az indexelő számára, de a mesterséges intelligenciához szükséges.
 
     ```json
     {
@@ -428,7 +428,7 @@ A negyedik kérelem a [indexelő API létrehozása](https://docs.microsoft.com/r
         "outputFieldMappings": [ ]
     ```
 
-1. Bontsa ki a outputFieldMappings. FieldMappings, egyéni leképezés egy adatforrásban lévő mező és a egy index mezői között használt, ellentétben a outputFieldMappings képi elemekben gazdag mezők leképezése használt, létrehozni és kitölti a rendszer a folyamat a kimeneti mezőkre index vagy leképezése.
+1. Bontsa ki a outputFieldMappings. A fieldMappings ellentétben, amelyek az adatforrásban lévő mezők és egy index mezőinek egyéni leképezésére szolgálnak, a outputFieldMappings a folyamat által létrehozott és kitöltött mezők leképezésére szolgálnak az index vagy a vetítés során.
 
     ```json
     "outputFieldMappings": [
@@ -460,7 +460,7 @@ A negyedik kérelem a [indexelő API létrehozása](https://docs.microsoft.com/r
     ]
     ```
 
-1. Kattintson a **küldése** a kérés végrehajtásához. A következő választ kell kapnia **201-es** és a válasz törzsében (az áttekinthetőség vágott) a megadott kérelem tartalma majdnem azonos kell kinéznie.
+1. A kérelem végrehajtásához kattintson a **Küldés** gombra. A válasznak **201** -nek kell lennie, és a válasz törzsének majdnem azonosnak kell lennie a megadott adattartalommal (rövidítve).
 
     ```json
     {
@@ -477,22 +477,22 @@ A negyedik kérelem a [indexelő API létrehozása](https://docs.microsoft.com/r
     }
     ```
 
-## <a name="explore-knowledge-store"></a>Tudásbázis store megismerése
+## <a name="explore-knowledge-store"></a>Ismerkedés a Knowledge Store szolgáltatással
 
-Megkezdheti, amint az első dokumentum importálása. Ez a feladat [ **Tártallózó** ](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer) a portálon.
+Az első dokumentum importálása után megkezdheti a felfedezést. Ehhez a feladathoz használja a [**Storage Explorer**](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer) a portálon.
 
-Fontos vegye figyelembe, hogy egy Tudásbázis store egy teljes körűen le lett választva, az Azure Search. Az Azure Search-index és a Tudásbázis store mindkét adatreprezentációt és tartalmát, de itt rész módon tartalmaznak. Az index használja a teljes szöveges keresés, a szűrt keresés és az összes, az az Azure Search támogatott forgatókönyveket. Másik lehetőségként folytatná csak a Tudásbázis store, elemezheti a tartalmak más eszközök csatlakoztatása a.
+Fontos tisztában lenni azzal, hogy a Knowledge Store teljesen le van választva Azure Searchról. A Azure Search index és a Knowledge Store egyaránt tartalmaz adatábrázolást és-tartalmakat, de részben a különböző módokat. Használja az indexet a teljes szöveges kereséshez, a szűrt kereséshez és a Azure Search által támogatott összes forgatókönyvhöz. Vagy lépjen tovább a saját tudásbázisához, és csatolja más eszközöket a tartalmak elemzéséhez.
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 
-Most már létrehozta az első Tudásbázis store az Azure storage- és Storage Explorer segítségével megtekintheti a végrehajtott információbeolvasás. Ez a alapvető tárolt végrehajtott információbeolvasás használatának élményét. 
+Ezzel létrehozta az első Azure Storage-beli áruházát, és Storage Explorer használta a dúsítások megtekintéséhez. Ez a tárolt alkoholtartalom-növeléssel kapcsolatos alapvető tapasztalat. 
 
 ## <a name="next-steps"></a>További lépések
 
-A Shaper szakértelem hajtja végre a feladatát, új alakzatok egyesíthetők részletes adatot űrlapok létrehozásával. A következő lépésben tekintse át a felhasználásukról részleteiért szakértelem referencia lapját.
+A formáló képesség az új alakzatokhoz egyesíthető, részletes adatűrlapok létrehozásának nagy mennyiségű emelése. A következő lépésként tekintse át ennek a képességnek a hivatkozási oldalát, amely részletesen ismerteti a használati módját.
 
 > [!div class="nextstepaction"]
-> [Shaper szakértelem referencia](cognitive-search-skill-shaper.md)
+> [A formálói szakértelem referenciája](cognitive-search-skill-shaper.md)
 
 
 <!---

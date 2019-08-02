@@ -1,6 +1,6 @@
 ---
-title: Együttműködés másokkal a
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Együttműködés másokkal – LUIS
+titleSuffix: Azure Cognitive Services
 description: Az alkalmazások tulajdonosai közreműködők adhat hozzá az alkalmazást. A közreműködők módosíthatja a modell betanítását és tegye közzé az alkalmazást.
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: f23212a854fb37dda89fd2bf6b223cf0dc69526b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dbc27176e7a300c0799e326acb10b99ac663fa89
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60198725"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638117"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>Szerzők és a közreműködők kezelése 
 
@@ -44,12 +44,12 @@ Közben a LUIS jelenleg nem támogatja a tulajdonjog átruházása, exportálhat
 
 ## <a name="azure-active-directory-resources"></a>Az Azure Active Directory-erőforrások
 
-Ha [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) a szervezetben, Language Understanding (LUIS) engedélyre van szüksége a felhasználói hozzáférés információt szeretne LUIS használatát. A LUIS igénylő erőforrások minimálisak. 
+Ha Azure Active Directoryt [](https://docs.microsoft.com/azure/active-directory/) (Azure ad) használ a szervezetben, Language UNDERSTANDING (Luis) engedélyre van szüksége a felhasználók hozzáférésére vonatkozó információkhoz, amikor a Luis-t szeretnék használni. A LUIS igénylő erőforrások minimálisak. 
 
 Amikor egy olyan fiókkal, amely rendelkezik rendszergazdai jóváhagyás, vagy nincs szükség rendszergazdai jóváhagyás, például a rendszergazdai jóváhagyást bejelentkezés jelenik meg a részletes leírása:
 
-* Lehetővé teszi, hogy jelentkezzen be az alkalmazásba a szervezeti fiókjával, és hogy az alkalmazás olvassa a profilját. Azt is lehetővé teszi, hogy az alkalmazásnak a főbb munkahelyi adatai olvasását. Ez a alapvető profiladatok, például a felhasználói azonosító, az e-mailt, a név olvasni a LUIS engedélyt ad
-* Itt engedélyezheti az alkalmazásnak, és frissítheti az adatokat, akkor is, ha jelenleg nem használja az alkalmazást. Az engedély szükséges a felhasználó a hozzáférési jogkivonat frissítéséhez.
+* Lehetővé teszi, hogy jelentkezzen be az alkalmazásba a szervezeti fiókjával, és hogy az alkalmazás olvassa a profilját. Azt is lehetővé teszi, hogy az alkalmazásnak a főbb munkahelyi adatai olvasását. Ez LUIS engedélyt ad az alapszintű profilokra vonatkozó adatok olvasására, például felhasználói azonosító, e-mail, név
+* Itt engedélyezheti az alkalmazásnak, és frissítheti az adatokat, akkor is, ha jelenleg nem használja az alkalmazást. A felhasználó hozzáférési jogkivonatának frissítéséhez engedély szükséges.
 
 
 ## <a name="azure-active-directory-tenant-user"></a>Az Azure Active Directory-bérlői felhasználó
@@ -59,16 +59,16 @@ A LUIS a standard szintű Azure Active Directory (Azure AD) jóváhagyási folya
 A bérlői rendszergazda közvetlenül a felhasználó, aki a LUIS használatát az Azure AD-ben biztosított hozzáférést kell működnie. 
 
 * A felhasználó először jelentkezik be a LUIS, és megtekinti a rendszergazdai jóváhagyást igénylő felugró párbeszédpanel. A felhasználó felveszi a kapcsolatot a bérlői rendszergazda a folytatás előtt. 
-* A bérlői rendszergazda második, LUIS bejelentkezik, és egy hozzájárulási folyamat felugró párbeszédpanel látja. Ez az a párbeszédpanelen, a rendszergazda engedélyt kell adnia a felhasználó számára. A rendszergazda fogad az engedélyt, ha a felhasználó nem tudja folytatni az intelligens hangfelismerési szolgáltatással. Ha a bérlői rendszergazda nem fog bejelentkezni a LUIS, a rendszergazda hozzáférhet [hozzájárulás](https://account.activedirectory.windowsazure.com/r#/applications) a LUIS, az alábbi képernyőképen látható. Figyelje meg, hogy a lista nevét tartalmazó cikkek szűrt `LUIS`.
+* A bérlői rendszergazda második, LUIS bejelentkezik, és egy hozzájárulási folyamat felugró párbeszédpanel látja. Ez az a párbeszédpanelen, a rendszergazda engedélyt kell adnia a felhasználó számára. A rendszergazda fogad az engedélyt, ha a felhasználó nem tudja folytatni az intelligens hangfelismerési szolgáltatással. Ha a bérlői rendszergazda nem tud bejelentkezni a LUIS-be, a [rendszergazda hozzáférhet a](https://account.activedirectory.windowsazure.com/r#/applications) luishoz, amely az alábbi képernyőfelvételen látható. Figyelje meg, hogy a lista a nevet `LUIS`tartalmazó elemekre van szűrve.
 
 ![Alkalmazás webhelye által az Azure active directory-engedély](./media/luis-how-to-collaborate/tenant-permissions.png)
 
-Ha a bérlői rendszergazda csak meghatározott felhasználóknak, hogy a LUIS használatát fájlvédelemre, van néhány lehetséges megoldások:
-* Engedélyezi az "admin" (beleegyezik abba, hogy minden felhasználó, az Azure AD), azonban az "Igen" a "felhasználó-hozzárendelés szükséges" Vállalati alkalmazás Tulajdonságok területen, majd állítsa be, és végül hozzárendelése/csak a kívánt felhasználók hozzáadása az alkalmazáshoz. Ezzel a módszerrel a rendszergazda "rendszergazdai jóváhagyás" továbbra is biztosít az alkalmazásnak, azonban lehetséges szabályozhatja a felhasználókat, hogy hozzá tud férni.
-* A második megoldás használatával van [Azure AD Graph API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) történő minden egyes adott felhasználónak. 
+Ha a bérlői rendszergazda csak bizonyos felhasználók számára szeretne LUIS-t használni, néhány lehetséges megoldás létezik:
+* Adja meg a "rendszergazdai beleegyezett" (beleegyezett az Azure AD összes felhasználójára), de az "igen" értékre állítsa a "felhasználói hozzárendelés szükséges" értéket a vállalati alkalmazás tulajdonságai területen, végül pedig csak a kívánt felhasználókat rendeli hozzá az alkalmazáshoz. Ezzel a módszerrel a rendszergazda továbbra is "rendszergazdai beleegyezett" az alkalmazáshoz, de megadhatja azokat a felhasználókat, akik hozzáférhetnek hozzá.
+* Egy második megoldás az [Azure AD Graph API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) használatával biztosítja az egyes felhasználók beleegyezett. 
 
-További információ az Azure active directory – felhasználók és engedélyt: 
-* [Az alkalmazás korlátozása](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) , a felhasználók egy csoportja
+További információ az Azure Active Directory-felhasználókról és-engedélyekről: 
+* [Alkalmazás korlátozása](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) felhasználói csoportra
 
 ### <a name="user-accounts-with-multiple-emails-for-collaborators"></a>A közreműködők több e-mailt a felhasználói fiókok
 

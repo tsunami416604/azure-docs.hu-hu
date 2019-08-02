@@ -1,9 +1,9 @@
 ---
-title: Hálózatkezelés minták az Azure Service Fabrichez |} A Microsoft Docs
-description: A Service Fabric és a egy fürt létrehozása az Azure hálózati szolgáltatásaival közös hálózati minta ismerteti.
+title: Az Azure Service Fabric hálózatkezelési mintái | Microsoft Docs
+description: Ismerteti a Service Fabric általános hálózati mintáit, valamint azt, hogyan lehet fürtöt létrehozni az Azure hálózatkezelési funkciói segítségével.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,45 +13,45 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
-ms.author: aljo
-ms.openlocfilehash: 456eac4a8d3a6cb8cbaca13ad4e4f3b2ae0309bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 0a411e0fe3b89eaaa19f4e18f5e614b03dd1d682
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67125592"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599429"
 ---
-# <a name="service-fabric-networking-patterns"></a>Hálózati Service Fabric-minták
-Más Azure hálózati szolgáltatásokkal integrálható az Azure Service Fabric-fürt. Ebben a cikkben bemutatjuk, hogyan hozhat létre a következő szolgáltatásokat használó fürtök:
+# <a name="service-fabric-networking-patterns"></a>Service Fabric hálózati minták
+Az Azure Service Fabric-fürtöt más Azure hálózati szolgáltatásokkal is integrálhatja. Ebben a cikkben bemutatjuk, hogyan hozhat létre olyan fürtöket, amelyek a következő szolgáltatásokat használják:
 
 - [Meglévő virtuális hálózat vagy alhálózat](#existingvnet)
 - [Statikus nyilvános IP-cím](#staticpublicip)
 - [Csak belső terheléselosztó](#internallb)
 - [Belső és külső terheléselosztó](#internalexternallb)
 
-A Service Fabric fut egy standard szintű virtuálisgép-méretezési csoportot. Olyan funkciót, amely egy virtuálisgép-méretezési csoportot is használhat, használhatja a Service Fabric-fürtön. A virtuálisgép-méretezési csoportok és a Service Fabric Azure Resource Manager sablonjainak hálózati szakaszok megegyeznek. Miután telepít egy meglévő virtuális hálózatot, könnyebbé vált a más hálózati funkciókat, mint például az Azure ExpressRoute, az Azure VPN Gateway, egy hálózati biztonsági csoporthoz és virtuális hálózatok közötti társviszony révén.
+Service Fabric a standard virtuálisgép-méretezési csoportokban fut. A virtuálisgép-méretezési csoportokban használható bármely funkció Service Fabric-fürttel is használható. A virtuálisgép-méretezési csoportokhoz és a Service Fabric Azure Resource Manager sablonjainak hálózati fejezetei azonosak. Egy meglévő virtuális hálózatra való üzembe helyezés után egyszerűen beépíthet más hálózati szolgáltatásokat, például az Azure ExpressRoute, az Azure VPN Gateway, a hálózati biztonsági csoportot és a virtuális hálózati társítást.
 
-A Service Fabric egy egyedülálló megoldás, a más hálózati funkciókat a egy aspektust. A [az Azure portal](https://portal.azure.com) belsőleg az a Service Fabric erőforrás-szolgáltató használatával meghívja a csomópontok és alkalmazásokkal kapcsolatos információkat lekérni egy fürtön. A Service Fabric erőforrás-szolgáltató a HTTP átjáró portjára (19080-as, alapértelmezés szerint port) a felügyeleti végponthoz nyilvánosan elérhető-e bejövő hozzáférésre van szüksége. [A Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) használ a felügyeleti végpont a fürt kezeléséhez. A Service Fabric erőforrás-szolgáltató is ezt a portot, a fürttel kapcsolatos adatlekérdezés használ az Azure Portalon jelennek meg. 
+A Service Fabric az egyik aspektusban található egyéb hálózatkezelési funkcióktól egyedi. A [Azure Portal](https://portal.azure.com) belsőleg a Service Fabric erőforrás-szolgáltató használatával hívja meg a fürtöt, hogy információkat kapjon a csomópontokról és az alkalmazásokról. A Service Fabric erőforrás-szolgáltatóhoz nyilvánosan elérhető bejövő hozzáférésre van szükség a HTTP-átjáró portján (alapértelmezés szerint a 19080-es port) a felügyeleti végponton. [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) a felügyeleti végpont használatával kezeli a fürtöt. A Service Fabric erőforrás-szolgáltató ezt a portot használja a fürt adatainak lekérdezéséhez, hogy megjelenjen a Azure Portal. 
 
-Ha 19080-as port nem érhető el a Service Fabric erőforrás-szolgáltatótól származó, egy üzenet, például *csomópont nem található* megjelenik a portálon, és a csomópont és az alkalmazások listája üres jelenik meg. Ha meg szeretné tekinteni a a fürt az Azure Portalon, a terheléselosztó nyilvános IP-címet kell közzétennie, és a hálózati biztonsági csoportot engedélyeznie kell a 19080-as porton bejövő forgalmat. A telepítő nem felel meg a követelménynek, ha az Azure Portalon nem jelennek meg a fürt állapotát.
+Ha a 19080-es port nem érhető el a Service Fabric erőforrás-szolgáltatótól, akkor a portálon *nem található* üzenet, például a csomópontok és az alkalmazások listája üresen jelenik meg. Ha szeretné megtekinteni a fürtöt a Azure Portalban, a terheléselosztó számára közzé kell tenni egy nyilvános IP-címet, és a hálózati biztonsági csoportnak engedélyeznie kell a bejövő port 19080-as forgalmát. Ha a telepítés nem felel meg a követelményeknek, a Azure Portal nem jeleníti meg a fürt állapotát.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="templates"></a>Sablonok
 
-A rendszer az összes Service Fabric-sablonok [GitHub](https://github.com/Azure/service-fabric-scripts-and-templates/tree/master/templates/networking). Meg kell tudnia, a sablonok üzembe helyezése – a következő PowerShell-parancsok használatával. A meglévő Azure Virtual Network-sablon vagy a statikus nyilvános IP-sablon üzembe, először olvassa el a [a kezdeti telepítés](#initialsetup) című szakaszát.
+Az összes Service Fabric-sablon [](https://github.com/Azure/service-fabric-scripts-and-templates/tree/master/templates/networking)a githubon található. A sablonokat a következő PowerShell-parancsokkal telepítheti. Ha a meglévő Azure Virtual Network-sablont vagy a statikus nyilvános IP-sablont telepíti, először olvassa el a jelen cikk [kezdeti beállítás](#initialsetup) szakaszát.
 
 <a id="initialsetup"></a>
 ## <a name="initial-setup"></a>Kezdeti beállítás
 
 ### <a name="existing-virtual-network"></a>Meglévő virtuális hálózat
 
-A következő példában kezdődik meg a nevű ExistingRG virtuális hálózatok közötti, egy meglévő virtuális hálózattal a **ExistingRG** erőforráscsoportot. Az alhálózat neve alapértelmezett. Ezek alapértelmezett erőforrások jönnek létre, ha az Azure portal használatával hozzon létre egy standard virtuális gép (VM). Anélkül, hogy a virtuális gép létrehozása sikerült létrehozni a virtuális hálózatot és alhálózatot, de célja, a fürt hozzáadása egy meglévő virtuális hálózatot a hálózati kapcsolat biztosítható a más virtuális gépeket. A virtuális gép létrehozása meglévő virtuális hálózat általában használatáról jó példa lehetővé teszi. Ha a Service Fabric-fürtöt használ, csak egy belső terheléselosztót, egy nyilvános IP-cím nélkül is használhatja a virtuális gép és a nyilvános IP-cím egy biztonságos *jump-box*.
+Az alábbi példában egy ExistingRG-vnet nevű meglévő virtuális hálózattal kezdjük a **ExistingRG** erőforráscsoporthoz. Az alhálózat neve alapértelmezett. Ezek az alapértelmezett erőforrások akkor jönnek létre, amikor a Azure Portal használatával hozza létre a szabványos virtuális gépet (VM). A virtuális hálózatot és az alhálózatot a virtuális gép létrehozása nélkül is létrehozhatja, de a fürt meglévő virtuális hálózathoz való hozzáadásának fő célja, hogy hálózati kapcsolatot biztosítson más virtuális gépekhez. A virtuális gép létrehozása jó példa arra, hogy egy meglévő virtuális hálózatot általában hogyan használják. Ha a Service Fabric-fürt csak belső terheléselosztó használata nyilvános IP-cím nélkül, akkor a virtuális gépet és annak nyilvános IP-címét biztonságos *Jump Box*-ként használhatja.
 
 ### <a name="static-public-ip-address"></a>Statikus nyilvános IP-cím
 
-Statikus nyilvános IP-cím általában egy dedikált erőforrás a virtuális Gépet vagy virtuális gépek hozzá van rendelve a külön-külön kezelt. Annak kiépítése egy dedikált hálózati erőforráscsoportban (azaz a Service Fabric-fürt erőforrás csoportosítás maga nem). Hozzon létre egy statikus nyilvános IP-címet staticIP1 ugyanazon ExistingRG erőforráscsoportban, az Azure Portalon vagy a PowerShell használatával:
+A statikus nyilvános IP-címek általában egy dedikált erőforrás, amelyet a rendszer külön felügyel a virtuális gépről vagy a hozzájuk rendelt virtuális gépektől. Dedikált hálózati erőforráscsoporthoz van kiépítve (a Service Fabric fürterőforrás-csoporton belül). Hozzon létre egy staticIP1 nevű statikus nyilvános IP-címet ugyanabban a ExistingRG-erőforráscsoporthoz, vagy a Azure Portal vagy a PowerShell használatával:
 
 ```powershell
 PS C:\Users\user> New-AzPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG -Location westus -AllocationMethod Static -DomainNameLabel sfnetworking
@@ -75,14 +75,14 @@ DnsSettings              : {
                            }
 ```
 
-### <a name="service-fabric-template"></a>A Service Fabric-sablon
+### <a name="service-fabric-template"></a>Service Fabric sablon
 
-A cikkben szereplő példák a Service Fabric template.json használjuk. A standard szintű portál varázsló segítségével letöltheti a sablont a portálról, a fürt létrehozása előtt. Is használhatja, a [mintasablon](https://github.com/Azure-Samples/service-fabric-cluster-templates), például a [biztonságos öt csomópontos Service Fabric-fürt](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure).
+A cikkben szereplő példákban a Service Fabric template. JSON fájlt használjuk. A sablon létrehozása előtt a szokásos portál varázsló segítségével töltheti le a sablont a portálról. Használhatja az egyik [minta sablont](https://github.com/Azure-Samples/service-fabric-cluster-templates)is, például a [biztonságos, öt csomópontos Service Fabric fürtöt](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure).
 
 <a id="existingvnet"></a>
 ## <a name="existing-virtual-network-or-subnet"></a>Meglévő virtuális hálózat vagy alhálózat
 
-1. Módosítsa a alhálózati paramétert a meglévő alhálózat neve, és adja hozzá a két új paramétert a meglévő virtuális hálózat hivatkozni:
+1. Módosítsa az alhálózati paramétert a meglévő alhálózat nevére, majd vegyen fel két új paramétert a meglévő virtuális hálózatra való hivatkozáshoz:
 
     ```json
         "subnet0Name": {
@@ -109,20 +109,20 @@ A cikkben szereplő példák a Service Fabric template.json használjuk. A stand
             },*/
     ```
 
-2. Tegye megjegyzésbe `nicPrefixOverride` attribútuma `Microsoft.Compute/virtualMachineScaleSets`, mert a meglévő alhálózatot használja, és le van tiltva ez a változó az 1. lépésben.
+2. `nicPrefixOverride` A`Microsoft.Compute/virtualMachineScaleSets`Megjegyzés ki attribútuma, mivel meglévő alhálózatot használ, és ezt a változót az 1. lépésben letiltotta.
 
     ```json
             /*"nicPrefixOverride": "[parameters('subnet0Prefix')]",*/
     ```
 
-3. Módosítsa a `vnetID` változót a meglévő virtuális hálózathoz pont:
+3. Módosítsa a `vnetID` változót úgy, hogy az a meglévő virtuális hálózatra mutasson:
 
     ```json
             /*old "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",*/
             "vnetID": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingVNetRGName'), '/providers/Microsoft.Network/virtualNetworks/', parameters('existingVNetName'))]",
     ```
 
-4. Távolítsa el `Microsoft.Network/virtualNetworks` az erőforrások közül tehát az Azure nem hoz létre egy új virtuális hálózatot:
+4. Távolítsa el `Microsoft.Network/virtualNetworks` az erőforrásait, hogy az Azure ne hozzon létre új virtuális hálózatot:
 
     ```json
     /*{
@@ -152,7 +152,7 @@ A cikkben szereplő példák a Service Fabric template.json használjuk. A stand
     },*/
     ```
 
-5. Tegye megjegyzésbe a virtuális hálózattal a `dependsOn` attribútuma `Microsoft.Compute/virtualMachineScaleSets`, ezért nem függnek egy új virtuális hálózatot hoz létre:
+5. Jegyezze fel `dependsOn` `Microsoft.Compute/virtualMachineScaleSets`a virtuális hálózatot a (z) attribútumával, így nem függ új virtuális hálózat létrehozásával:
 
     ```json
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -166,27 +166,27 @@ A cikkben szereplő példák a Service Fabric template.json használjuk. A stand
 
     ```
 
-6. A sablon üzembe helyezéséhez:
+6. A sablon üzembe helyezése:
 
     ```powershell
     New-AzResourceGroup -Name sfnetworkingexistingvnet -Location westus
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingexistingvnet -TemplateFile C:\SFSamples\Final\template\_existingvnet.json
     ```
 
-    Az üzembe helyezést követően a virtuális hálózat tartalmaznia kell az új méretezési csoport virtuális gépeinek. A virtuális gép méretezési készlet csomóponttípus meg kell jelennie a meglévő virtuális hálózatot és alhálózatot. Is használhatja Remote Desktop Protocol (RDP) eléri a virtuális Gépet, amely már volt a virtuális hálózatban, és az új méretezési pingelni állítsa be a virtuális gépek:
+    Az üzembe helyezés után a virtuális hálózatnak tartalmaznia kell az új méretezési csoport virtuális gépeket. A virtuálisgép-méretezési csoport csomópontjának a meglévő virtuális hálózatot és alhálózatot kell megjelenítenie. RDP protokoll (RDP) használatával is elérheti a virtuális hálózatban már meglévő virtuális GÉPET, és pingelheti az új méretezési csoportbeli virtuális gépeket:
 
     ```
     C:>\Users\users>ping 10.0.0.5 -n 1
     C:>\Users\users>ping NOde1000000 -n 1
     ```
 
-Egy másik példa: [, amely nem adott meg a Service Fabric](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet).
+Egy másik példaként tekintse meg az egyiket, [amely nem jellemző a Service Fabricra](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet).
 
 
 <a id="staticpublicip"></a>
 ## <a name="static-public-ip-address"></a>Statikus nyilvános IP-cím
 
-1. Adja hozzá a statikus IP létező erőforráscsoport neve, nevét és teljesen minősített tartománynevét (FQDN):
+1. Paraméterek hozzáadása a meglévő statikus IP-erőforráscsoport, a név és a teljes tartománynév (FQDN) nevéhez:
 
     ```json
     "existingStaticIPResourceGroup": {
@@ -200,7 +200,7 @@ Egy másik példa: [, amely nem adott meg a Service Fabric](https://github.com/g
     }
     ```
 
-2. Távolítsa el a `dnsName` paraméter. (A statikus IP-cím már szerepel egy ilyen.)
+2. Távolítsa `dnsName` el a paramétert. (A statikus IP-címnek már van egy.)
 
     ```json
     /*
@@ -210,13 +210,13 @@ Egy másik példa: [, amely nem adott meg a Service Fabric](https://github.com/g
     */
     ```
 
-3. Egy változó való hivatkozáshoz a meglévő statikus IP-cím hozzáadása:
+3. Adjon hozzá egy változót a meglévő statikus IP-címhez való hivatkozáshoz:
 
     ```json
     "existingStaticIP": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingStaticIPResourceGroup'), '/providers/Microsoft.Network/publicIPAddresses/', parameters('existingStaticIPName'))]",
     ```
 
-4. Távolítsa el `Microsoft.Network/publicIPAddresses` az erőforrásokat, így az Azure nem hozzon létre új IP-cím:
+4. Távolítsa el `Microsoft.Network/publicIPAddresses` az erőforrásait, hogy az Azure ne hozzon létre új IP-címet:
 
     ```json
     /*
@@ -238,7 +238,7 @@ Egy másik példa: [, amely nem adott meg a Service Fabric](https://github.com/g
     }, */
     ```
 
-5. Tegye megjegyzésbe az IP-címét a `dependsOn` attribútuma `Microsoft.Network/loadBalancers`, ezért nem függnek egy új IP-cím létrehozása:
+5. Jegyezze fel `dependsOn` `Microsoft.Network/loadBalancers`az IP-címet a (z) attribútumból, így nem függ új IP-cím létrehozásával:
 
     ```json
     "apiVersion": "[variables('lbIPApiVersion')]",
@@ -252,7 +252,7 @@ Egy másik példa: [, amely nem adott meg a Service Fabric](https://github.com/g
     "properties": {
     ```
 
-6. Az a `Microsoft.Network/loadBalancers` erőforrás, módosítsa a `publicIPAddress` eleme `frontendIPConfigurations` való hivatkozáshoz helyett egy újonnan létrehozott egy meglévő statikus IP-címe:
+6. Az erőforrásban módosítsa a `publicIPAddress` elemét `frontendIPConfigurations` , hogy az újonnan létrehozott helyett a meglévő statikus IP-címet hivatkozzon: `Microsoft.Network/loadBalancers`
 
     ```json
                 "frontendIPConfigurations": [
@@ -268,7 +268,7 @@ Egy másik példa: [, amely nem adott meg a Service Fabric](https://github.com/g
                     ],
     ```
 
-7. Az a `Microsoft.ServiceFabric/clusters` erőforrás, a módosítás `managementEndpoint` a statikus IP-cím DNS teljes Tartománynevét. Ha egy biztonságos fürtöt használ, ellenőrizze, hogy módosítja *http://* való *https://* . (Vegye figyelembe, hogy érvényes-e ez a lépés csak a Service Fabric-fürtöket. Ha egy virtuálisgép-méretezési csoportot használja, kihagyhatja ezt a lépést.)
+7. Az `Microsoft.ServiceFabric/clusters` erőforrásban váltson `managementEndpoint` a statikus IP-cím DNS teljes tartománynevére. Ha biztonságos fürtöt használ, győződjön meg róla, hogy a *http://* a *https://* értékre módosítja. (Vegye figyelembe, hogy ez a lépés csak Service Fabric fürtökre vonatkozik. Ha virtuálisgép-méretezési készletet használ, ugorja át ezt a lépést.)
 
     ```json
                     "fabricSettings": [],
@@ -276,7 +276,7 @@ Egy másik példa: [, amely nem adott meg a Service Fabric](https://github.com/g
                     "managementEndpoint": "[concat('http://',parameters('existingStaticIPDnsFQDN'),':',parameters('nt0fabricHttpGatewayPort'))]",
     ```
 
-8. A sablon üzembe helyezéséhez:
+8. A sablon üzembe helyezése:
 
     ```powershell
     New-AzResourceGroup -Name sfnetworkingstaticip -Location westus
@@ -288,14 +288,14 @@ Egy másik példa: [, amely nem adott meg a Service Fabric](https://github.com/g
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingstaticip -TemplateFile C:\SFSamples\Final\template\_staticip.json -existingStaticIPResourceGroup $staticip.ResourceGroupName -existingStaticIPName $staticip.Name -existingStaticIPDnsFQDN $staticip.DnsSettings.Fqdn
     ```
 
-Az üzembe helyezést követően láthatja, hogy a terheléselosztó van kötve a statikus nyilvános IP-címet a többi erőforráscsoportból. A Service Fabric ügyfélkapcsolati végpont és [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) végpont pontot a DNS-FQDN statikus IP-cím.
+Az üzembe helyezést követően láthatja, hogy a terheléselosztó a másik erőforráscsoport nyilvános statikus IP-címéhez van kötve. A Service Fabric ügyfél-kapcsolódási végpont és [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) végpont a statikus IP-cím DNS teljes tartománynevére mutat.
 
 <a id="internallb"></a>
 ## <a name="internal-only-load-balancer"></a>Csak belső terheléselosztó
 
-Ebben a forgatókönyvben egy belső terheléselosztót az alapértelmezett a Service Fabric-sablont a külső terheléselosztó lecseréli. Az Azure portal és a Service Fabric erőforrás-szolgáltató a következmények lásd: az előző szakaszban.
+Ez a forgatókönyv a külső Load balancert az alapértelmezett Service Fabric sablonban cseréli le egy csak belső terheléselosztó esetén. A Azure Portal és az Service Fabric erőforrás-szolgáltató vonatkozásában tekintse meg az előző szakaszt.
 
-1. Távolítsa el a `dnsName` paraméter. (Nincs rá szükség.)
+1. Távolítsa `dnsName` el a paramétert. (Nincs szükség.)
 
     ```json
     /*
@@ -305,7 +305,7 @@ Ebben a forgatókönyvben egy belső terheléselosztót az alapértelmezett a Se
     */
     ```
 
-2. Igény szerint ha a statikus foglalási módszert használja, hozzáadhat egy statikus IP-cím paraméter. Ha a dinamikus kiosztási módszer használható, nem kell erre a lépésre szükség.
+2. Ha statikus kiosztási módszert használ, statikus IP-cím paramétert is hozzáadhat. Ha dinamikus kiosztási módszert használ, ezt a lépést nem kell végrehajtania.
 
     ```json
             "internalLBAddress": {
@@ -314,7 +314,7 @@ Ebben a forgatókönyvben egy belső terheléselosztót az alapértelmezett a Se
             }
     ```
 
-3. Távolítsa el `Microsoft.Network/publicIPAddresses` az erőforrásokat, így az Azure nem hozzon létre új IP-cím:
+3. Távolítsa el `Microsoft.Network/publicIPAddresses` az erőforrásait, hogy az Azure ne hozzon létre új IP-címet:
 
     ```json
     /*
@@ -336,7 +336,7 @@ Ebben a forgatókönyvben egy belső terheléselosztót az alapértelmezett a Se
     }, */
     ```
 
-4. Távolítsa el az IP-cím `dependsOn` attribútuma `Microsoft.Network/loadBalancers`, ezért nem függnek egy új IP-cím létrehozása. A virtuális hálózat hozzáadása `dependsOn` attribútumon, mert a terheléselosztó már a virtuális hálózati alhálózat függ:
+4. Távolítsa el a `dependsOn` (z `Microsoft.Network/loadBalancers`) IP-cím attribútumát, így az új IP-cím létrehozása nem függ. Adja hozzá a virtuális `dependsOn` hálózat attribútumot, mert a terheléselosztó mostantól a virtuális hálózat alhálózatán múlik:
 
     ```json
                 "apiVersion": "[variables('lbApiVersion')]",
@@ -349,7 +349,7 @@ Ebben a forgatókönyvben egy belső terheléselosztót az alapértelmezett a Se
                 ],
     ```
 
-5. Módosítsa a terheléselosztó `frontendIPConfigurations` beállítást használják egy `publicIPAddress`, egy alhálózatot az és `privateIPAddress`. `privateIPAddress` előre meghatározott statikus belső IP-címet használ. Dinamikus IP-címet használjon, távolítsa el a `privateIPAddress` elemet, és módosítsa `privateIPAllocationMethod` való **dinamikus**.
+5. Módosítsa a `frontendIPConfigurations` terheléselosztó beállítását a `publicIPAddress`használatával, egy alhálózat és `privateIPAddress`a használatával. `privateIPAddress`egy előre definiált statikus belső IP-címet használ. Ha dinamikus IP-címet szeretne használni, távolítsa el az `privateIPAddress` elemet, majd váltson `privateIPAllocationMethod` dinamikusra.
 
     ```json
                 "frontendIPConfigurations": [
@@ -370,7 +370,7 @@ Ebben a forgatókönyvben egy belső terheléselosztót az alapértelmezett a Se
                     ],
     ```
 
-6. Az a `Microsoft.ServiceFabric/clusters` erőforrás, a módosítás `managementEndpoint` átirányítása a belső terheléselosztó címmel. Ha egy biztonságos fürtöt használ, ellenőrizze, hogy módosítja *http://* való *https://* . (Vegye figyelembe, hogy érvényes-e ez a lépés csak a Service Fabric-fürtöket. Ha egy virtuálisgép-méretezési csoportot használja, kihagyhatja ezt a lépést.)
+6. Az `Microsoft.ServiceFabric/clusters` erőforrásban váltson `managementEndpoint` úgy, hogy a belső terheléselosztó-címnek mutasson. Ha biztonságos fürtöt használ, győződjön meg róla, hogy a *http://* a *https://* értékre módosítja. (Vegye figyelembe, hogy ez a lépés csak Service Fabric fürtökre vonatkozik. Ha virtuálisgép-méretezési készletet használ, ugorja át ezt a lépést.)
 
     ```json
                     "fabricSettings": [],
@@ -378,7 +378,7 @@ Ebben a forgatókönyvben egy belső terheléselosztót az alapértelmezett a Se
                     "managementEndpoint": "[concat('http://',reference(variables('lbID0')).frontEndIPConfigurations[0].properties.privateIPAddress,':',parameters('nt0fabricHttpGatewayPort'))]",
     ```
 
-7. A sablon üzembe helyezéséhez:
+7. A sablon üzembe helyezése:
 
     ```powershell
     New-AzResourceGroup -Name sfnetworkinginternallb -Location westus
@@ -386,16 +386,16 @@ Ebben a forgatókönyvben egy belső terheléselosztót az alapértelmezett a Se
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
     ```
 
-Az üzembe helyezést követően a terheléselosztó 10.0.0.250 statikus magánhálózati IP-címet használja. Ha egy másik gép ugyanazon a virtuális hálózaton található, megnyithatja a belső [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) végpont. Vegye figyelembe, hogy csatlakozik az egyik csomópontot a terheléselosztó mögött.
+Az üzembe helyezés után a terheléselosztó a magánhálózati statikus 10.0.0.250 IP-címét használja. Ha ugyanazon a virtuális hálózaton van egy másik gép, a belső [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) -végpontra léphet. Vegye figyelembe, hogy a terheléselosztó mögött található egyik csomóponthoz csatlakozik.
 
 <a id="internalexternallb"></a>
 ## <a name="internal-and-external-load-balancer"></a>Belső és külső terheléselosztó
 
-Ebben a forgatókönyvben a meglévő egycsomópontos típus külső terheléselosztó kezdődnie, és adja hozzá a belső terheléselosztó az azonos csomóponttípus. Egy háttér-porton csatlakozik a háttér címkészletet csak egyetlen terheléselosztó rendelhetők. Válassza ki, melyik load balancert fog rendelkezni az alkalmazás portok, és mely terheléselosztót fog rendelkezni a felügyeleti végpontok (19000 és a 19080-as portot). Ha a belső terheléselosztón helyezi a felügyeleti végpontok, tartsa szem előtt a Service Fabric resource provider korlátozásokat a cikk korábbi részében ismertetett. A példában használjuk, a felügyeleti végpontok továbbra is a külső terheléselosztó. Emellett adjon hozzá egy port 80 alkalmazásport, és helyezze el a belső terheléselosztó.
+Ebben az esetben a meglévő egycsomópontos külső terheléselosztó típust kell kezdenie, és hozzá kell adnia egy belső terheléselosztó-t ugyanahhoz a csomópont-típushoz. A háttér-címkészlet csatolt háttér-portot csak egyetlen terheléselosztó számára lehet hozzárendelni. Válassza ki, hogy melyik terheléselosztó fogja tartalmazni az alkalmazás portjait, és hogy melyik terheléselosztó fogja a felügyeleti végpontokat (19000-es és 19080-as portok). Ha a felügyeleti végpontokat a belső terheléselosztó fölé helyezi, vegye figyelembe a cikkben korábban tárgyalt Service Fabric erőforrás-szolgáltatói korlátozásokat. Az általunk használt példában a felügyeleti végpontok a külső terheléselosztó alatt maradnak. Hozzáadhat egy 80-es porthoz tartozó portot is, és elhelyezheti a belső terheléselosztó számára.
 
-Egy két csomóponttípus fürtben egy csomópont típusa van a külső terheléselosztó. A második csomópont típus esetén a belső terheléselosztón. Két csomóponttípus-fürtöt, a portál létrehozott két csomóponttípus sablonban (amely tartalmaz két terheléselosztók) használ, a második terheléselosztó váltson egy belső terheléselosztót. További információkért lásd: a [csak belső terheléselosztó](#internallb) szakaszban.
+Egy két csomópontot tartalmazó fürtben az egyik csomópont típusa a külső terheléselosztó. A másik csomópont típusa a belső terheléselosztó. Ha két csomópontos típusú fürtöt szeretne használni, a portálon létrehozott kétcsomópontos sablon (amely két terheléselosztó esetén is elérhető), a második terheléselosztó belső terheléselosztó értékre vált. További információ: [csak belső](#internallb) terheléselosztó szakasz.
 
-1. Adja hozzá a statikus belső load balancer IP-cím paraméter. (A dinamikus IP-címet használó kapcsolódó megjegyzések, lásd a cikk korábbi szakaszaiban.)
+1. Adja hozzá a statikus belső terheléselosztó IP-címének paraméterét. (Dinamikus IP-cím használatával kapcsolatos megjegyzésekért lásd a cikk korábbi szakaszait.)
 
     ```json
             "internalLBAddress": {
@@ -404,9 +404,9 @@ Egy két csomóponttípus fürtben egy csomópont típusa van a külső terhelé
             }
     ```
 
-2. Adja hozzá az alkalmazás 80-as porton paramétert.
+2. Adjon hozzá egy Application port 80 paramétert.
 
-3. Adja hozzá a meglévő belső verziói hálózatkezelés változók, másolja és illessze be őket, és adja hozzá a "– Int" nevet:
+3. Ha a meglévő hálózati változók belső verzióit szeretné hozzáadni, másolja és illessze be őket, és adja hozzá a "-int" nevet a következőhöz:
 
     ```json
     /* Add internal load balancer networking variables */
@@ -419,7 +419,7 @@ Egy két csomóponttípus fürtben egy csomópont típusa van a külső terhelé
             /* Internal load balancer networking variables end */
     ```
 
-4. Ha először a portál által létrehozott sablont, amely az alkalmazás 80-as portot használja, a portál alapértelmezett sablon hozzáadása AppPort1 (80-as port) a külső terheléselosztó. Ebben az esetben távolítsa el a külső terheléselosztó AppPort1 `loadBalancingRules` és mintavételek menüpontban, így adhat hozzá a belső terheléselosztó:
+4. Ha az 80-es Application porton alapuló, portál által generált sablonnal kezdődik, az alapértelmezett portál sablon hozzáadja a AppPort1 (80-es port) a külső terheléselosztó számára. Ebben az esetben távolítsa el a AppPort1 a külső terheléselosztó `loadBalancingRules` és a mintavételek közül, így hozzáadhatja azt a belső terheléselosztó számára:
 
     ```json
     "loadBalancingRules": [
@@ -496,7 +496,7 @@ Egy két csomóponttípus fürtben egy csomópont típusa van a külső terhelé
     "inboundNatPools": [
     ```
 
-5. Vegyen fel egy második `Microsoft.Network/loadBalancers` erőforrás. A belső terheléselosztó létrehozása a hasonlóan néz ki a [csak belső terheléselosztó](#internallb) szakaszt, de használja a "– Int" load balancer változók, és csak az alkalmazás 80-as porton implementálja. Ez eltávolítja `inboundNatPools`, hogy megtartsa az RDP-végpontokra nyilvános terheléselosztón. Ha azt szeretné, az RDP a belső terheléselosztón, helyezze át `inboundNatPools` a külső terheléselosztó a belső terheléselosztóhoz:
+5. Adjon hozzá egy `Microsoft.Network/loadBalancers` második erőforrást. A belső terheléselosztási [szakaszban létrehozott](#internallb) belső terheléselosztó hasonlónak tűnik, de az "-int" terheléselosztó változókat használja, és csak az 80-es alkalmazás-portot implementálja. Ez a művelet `inboundNatPools`eltávolítja az RDP-végpontokat a nyilvános terheléselosztó esetében is. Ha az RDP-t a belső terheléselosztó esetében szeretné használni `inboundNatPools` , váltson át a külső terheléselosztó erre a belső Load balancerre:
 
     ```json
             /* Add a second load balancer, configured with a static privateIPAddress and the "-Int" load balancer variables. */
@@ -581,7 +581,7 @@ Egy két csomóponttípus fürtben egy csomópont típusa van a külső terhelé
             },
     ```
 
-6. A `networkProfile` számára a `Microsoft.Compute/virtualMachineScaleSets` erőforrás, a belső háttér-címkészlet hozzáadása:
+6. Az `networkProfile` erőforrás`Microsoft.Compute/virtualMachineScaleSets` esetében adja hozzá a belső háttér-címkészletet:
 
     ```json
     "loadBalancerBackendAddressPools": [
@@ -595,7 +595,7 @@ Egy két csomóponttípus fürtben egy csomópont típusa van a külső terhelé
     ],
     ```
 
-7. A sablon üzembe helyezéséhez:
+7. A sablon üzembe helyezése:
 
     ```powershell
     New-AzResourceGroup -Name sfnetworkinginternalexternallb -Location westus
@@ -603,10 +603,10 @@ Egy két csomóponttípus fürtben egy csomópont típusa van a külső terhelé
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternalexternallb -TemplateFile C:\SFSamples\Final\template\_internalexternalLB.json
     ```
 
-Üzembe helyezés után megjelenik az erőforráscsoportban lévő két terheléselosztók. Miután felkereste a terheléselosztók, láthatja a nyilvános IP cím és felügyeleti végpont (19000 és a 19080-as portot) rendelt nyilvános IP-cím. A statikus belső IP cím és az alkalmazások végpont (80-as port) a belső terheléselosztó rendelt is láthatja. Mindkét terheléselosztók az azonos virtuális gép méretezési készlet háttérkészlet-használja.
+Az üzembe helyezést követően két terheléselosztó látható az erőforráscsoporthoz. Ha megkeresi a terheléselosztó szolgáltatásait, megtekintheti a nyilvános IP-címhez hozzárendelt nyilvános IP-címet és felügyeleti végpontokat (19000-es és 19080-as portok). A belső terheléselosztó számára hozzárendelt statikus belső IP-címet és alkalmazás-végpontot (80-as portot) is láthatja. Mindkét terheléselosztó ugyanazt a virtuálisgép-méretezési készletet használja.
 
 ## <a name="next-steps"></a>További lépések
 [Fürt létrehozása](service-fabric-cluster-creation-via-arm.md)
 
-Üzembe helyezés után megjelenik az erőforráscsoportban lévő két terheléselosztók. Miután felkereste a terheléselosztók, láthatja a nyilvános IP cím és felügyeleti végpont (19000 és a 19080-as portot) rendelt nyilvános IP-cím. A statikus belső IP cím és az alkalmazások végpont (80-as port) a belső terheléselosztó rendelt is láthatja. Mindkét terheléselosztók az azonos virtuális gép méretezési készlet háttérkészlet-használja.
+Az üzembe helyezést követően két terheléselosztó látható az erőforráscsoporthoz. Ha megkeresi a terheléselosztó szolgáltatásait, megtekintheti a nyilvános IP-címhez hozzárendelt nyilvános IP-címet és felügyeleti végpontokat (19000-es és 19080-as portok). A belső terheléselosztó számára hozzárendelt statikus belső IP-címet és alkalmazás-végpontot (80-as portot) is láthatja. Mindkét terheléselosztó ugyanazt a virtuálisgép-méretezési készletet használja.
 

@@ -1,6 +1,6 @@
 ---
 title: Ajánlott eljárások – QnA Maker
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Ajánlott eljárások használatával növelheti a Tudásbázis, és jobb eredményeket nyújt az application/csevegőrobot a végfelhasználók számára.
 services: cognitive-services
 author: diberry
@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: dd4f85822a5e6615e7ea6e31b4231c04c9d4e88c
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: bbd6c55337eb30c883ecbd542abbdfc0f842e3f9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542855"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563128"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Ajánlott eljárások a QnA Maker Tudásbázis
 
-A [Tudásbázis fejlesztési életciklus](../Concepts/development-lifecycle-knowledge-base.md) végigvezeti Önt a a KB-os kezelése az elejétől a végéig. Ajánlott eljárások használatával javíthatja a tudásbázist és biztosít az ügyfélalkalmazásnak jobb eredmények vagy csevegés robot a végfelhasználók számára.
+A [Tudásbázis fejlesztési életciklus](../Concepts/development-lifecycle-knowledge-base.md) végigvezeti Önt a a KB-os kezelése az elejétől a végéig. Az ajánlott eljárások segítségével javíthatja a tudásbázist, és jobb eredményeket biztosíthat az ügyfélalkalmazás vagy a csevegő robot végfelhasználói számára.
 
 ## <a name="extraction"></a>Kinyerés
 
@@ -28,44 +28,44 @@ A QnA Maker szolgáltatást folyamatosan javul a algoritmusokat használnak a Qn
 
 Gyakori kérdéseket tartalmazó oldalak általában az önálló és egyéb információkat a nem összevont kell lennie. Kézikönyvek egyértelmű címsorok és lehetőleg index lapot kell rendelkeznie. 
 
-### <a name="configuring-multi-turn"></a>Több kapcsolja konfigurálása
+### <a name="configuring-multi-turn"></a>Többszörös kapcsolás konfigurálása
 
-Hozzon létre a Tudásbázis több kapcsolja kinyerési engedélyezve van. A Tudásbázis nem és támogatnia kell a kérdés hierarchia, ha ezt a hierarchiát a dokumentum kinyert vagy létrehozása után ki kell olvasni a dokumentumot. 
+Hozzon létre egy tudásbázist, és engedélyezze a többszörös kibontást. Ha a Tudásbázis nem rendelkezik vagy támogatnia kell a kérdés-hierarchiát, ez a hierarchia kinyerhető a dokumentumból, vagy a dokumentum kinyerése után hozható létre. 
 
 <!--is this a global setting that can only be configured at kb creation time? -->
 
-## <a name="creating-good-questions-and-answers"></a>Jó kérdések és válaszok létrehozásával
+## <a name="creating-good-questions-and-answers"></a>Jó kérdések és válaszok létrehozása
 
-### <a name="good-questions"></a>Jó kérdések
+### <a name="good-questions"></a>Jó kérdés
 
-A legjobb kérdések egyszerűek. Fontolja meg a kulcs szót vagy kifejezést az összes kérdést, majd hozza létre az adott kulcsszót vagy kifejezést a kérdés. 
+A legjobb kérdések egyszerűek. Vegye figyelembe az egyes kérdésekhez tartozó kulcsszót vagy kifejezést, majd hozzon létre egy egyszerű kérdést az adott kulcsszóhoz vagy kifejezéshez. 
 
-Adjon hozzá annyi másodlagos kérdések van szükség, de egyszerű megtartani a módosításokat. További szavakat vagy szinonimákkal, amelyek nem szerepelnek a fő cél a kérdés hozzáadása nem működik a QnA Maker egyezést talál. 
+Vegyen fel annyi alternatív kérdést, amennyire szüksége van, de a változtatások egyszerűek maradnak. Ha további szavakat vagy szövegezéseket ad hozzá, amelyek nem részei a kérdés fő célnak, nem segít QnA Maker találatok megtalálásában. 
 
 
-### <a name="add-relevant-alternative-questions"></a>Alternatív kérdéseket hozzáadása
+### <a name="add-relevant-alternative-questions"></a>Adjon hozzá kapcsolódó alternatív kérdéseket
 
-A felhasználó lehet, hogy adja meg a kérdéseket természetes nyelvi stílus, szöveg `How do I add a toner cartridge to my printer?` vagy egy kulcsszavas keresést például `toner cartridge`. A Tudásbázis kell rendelkeznie mindkét stílusok kérdések biztosítása érdekében megfelelően a legjobb választ. Ha nem tudja, milyen ügyfél lépjen be kulcsszavakat, az Application Insights-adatok segítségével elemezheti a lekérdezések.
+A felhasználó kérdéseket is megadhat egy szöveges szöveggel vagy egy kulcsszavas `How do I add a toner cartridge to my printer?` kereséssel, `toner cartridge`például:. A Tudásbázisnak mindkét típusú kérdéssel kell rendelkeznie ahhoz, hogy helyesen visszaállítsa a legjobb választ. Ha nem tudja biztosan, hogy az ügyfél mely kulcsszavakat írja be, használja a Application Insights adatokat a lekérdezések elemzéséhez.
 
-### <a name="good-answers"></a>Helyes válasz
+### <a name="good-answers"></a>Helyes válaszok
 
-A legjobb válaszokat már az egyszerű, de nem túl egyszerű. Például ne használjon válaszokat `yes` és `no`. Ha a válasz kell hivatkozni a más forrásokból, vagy egy gazdag felhasználói élményt biztosítson adathordozó és a hivatkozások, [címkézési metaadatokat](./knowledge-base.md#key-knowledge-base-concepts) megkülönböztetni a válaszokat, majd [elküldheti a lekérdezést a](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) a metaadat-címkéket a a`strictFilters` tulajdonság a helyes válasz verzió beszerzéséhez.
+A legjobb válaszok az egyszerű válaszok, de nem túl egyszerűek. Ne használjon olyan válaszokat, mint `yes` a `no`és a. Ha a válasznak más forrásokhoz kell kapcsolódnia, vagy az adathordozóval és a hivatkozásokkal gazdag élményt szeretne biztosítani, használja a [metaadatok címkézését](./knowledge-base.md#key-knowledge-base-concepts) a válaszok megkülönböztetéséhez, majd `strictFilters` [küldje el a lekérdezést](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) a tulajdonságban található metaadat-címkékkel a megfelelő válasz beszerzéséhez. verziója.
 
 ## <a name="chit-chat"></a>Csevegési Chit
-A robot, hogy a robot természetes nyelvi, és vonzó, chit csevegési hozzá-kis munkamennyiség. Egyszerűen adja hozzá a csevegési chit adatkészletek az előre definiált személyiséghez a KB-os létrehozásakor, és bármikor módosíthatja őket. Ismerje meg, hogyan [chit csevegési ad hozzá a KB-os](../How-To/chit-chat-knowledge-base.md). 
+A robot, hogy a robot természetes nyelvi, és vonzó, chit csevegési hozzá-kis munkamennyiség. A KB létrehozásakor könnyedén hozzáadhat a Chit-Chat-adatkészleteket az előre definiált személyes adatokból, és bármikor módosíthatja azokat. Ismerje meg, hogyan [chit csevegési ad hozzá a KB-os](../How-To/chit-chat-knowledge-base.md). 
 
 ### <a name="choosing-a-personality"></a>Egy személy kiválasztása
-Számos előre definiált személyiséghez Chit csevegési támogatott: 
+A Chit-Chat több előre definiált személy számára is támogatott: 
 
-|Személy |A QnA Maker adatkészlet fájl |
+|Személyiség |Adatkészlet-fájl QnA Maker |
 |---------|-----|
 |Professional |[qna_chitchat_professional.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
 |Rövid |[qna_chitchat_friendly.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
-|Okos |[qna_chitchat_witty.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
-|Ápolásáért |[qna_chitchat_caring.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
+|Szellemes |[qna_chitchat_witty.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
+|Gondoskodó |[qna_chitchat_caring.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
 |Lelkes |[qna_chitchat_enthusiastic.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
 
-A válaszok köre a formális informális és irreverent. Akkor válassza a személy, amely legközelebb eső igazodik a képviselő hangvételét robotjait használni szeretne. Megtekintheti a [adatkészletek](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets), és válasszon, amely a robot alapként szolgál, és azután testre szabhatják a válaszokat. 
+A válaszok köre a formális informális és irreverent. Akkor válassza a személy, amely legközelebb eső igazodik a képviselő hangvételét robotjait használni szeretne. Megtekintheti az [](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)adatkészleteket, és kiválaszthatja az egyiket, amely a robot alapjául szolgál, majd testreszabhatja a válaszokat. 
 
 ### <a name="edit-bot-specific-questions"></a>A robot-specifikus kérdések szerkesztése
 Nincsenek robot-specifikus kérdésekre kaphat választ a csevegési chit adatkészlet részét képezik, és általános válaszokat kitöltötte. Ezek a válaszok robot adatait legjobban megfelelően módosítsa. 
@@ -78,29 +78,29 @@ Ennek végrehajtása a következő chit csevegési QnA-tudásbázisok pontosabb 
 * Ki hozta létre?
 * Üdvözöljük!
    
-### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>A metaadat-kódcímke a egyéni chit Csevegés hozzáadása
+### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>Egyéni Chit-Chat hozzáadása metaadat-címkével
 
-Ha a saját chit csevegési QnA párok ad hozzá, ügyeljen arra, hogy adja hozzá a metaadatokat, hogy ezek a válaszok adja vissza. A metaadat-név-érték pár `editorial:chitchat`.
+Ha saját Chit-csevegési QnA-párokat ad hozzá, ügyeljen arra, hogy metaadatokat adjon hozzá, így ezek a válaszok visszakerülnek. A metaadatok neve/értéke pár `editorial:chitchat`.
 
 ## <a name="searching-for-answers"></a>Válaszok keresése
 
-GenerateAnswer API kérdéseket és a válasz is használja a felhasználó lekérdezése a legjobb válaszokat kereshet.
+A GenerateAnswer API mindkét kérdést és a választ használja a felhasználó lekérdezésére való legjobb válaszok keresésére.
 
-### <a name="searching-questions-only-when-answer-is-not-relevant"></a>Keresés a kérdések, csak akkor, ha a válasz nem megfelelő
+### <a name="searching-questions-only-when-answer-is-not-relevant"></a>Kérdések keresése csak akkor, ha a válasz nem releváns
 
-Használja a [ `RankerType=QuestionOnly` ](#choosing-ranker-type) Ha nem szeretné, keressen válaszokat. 
+Ha nem [`RankerType=QuestionOnly`](#choosing-ranker-type) szeretne válaszokat keresni, használja a következőt:. 
 
-Példa erre a Tudásbázis esetén egy katalógus, betűszavakat kérdéseket, válaszként a teljes forma van. A válasz értékét nem segít, keresse meg a megfelelő választ.
+Ilyen például, ha a Tudásbázis a betűszók katalógusa, amely a válaszként megjelenő teljes űrlappal kapcsolatos kérdés. A válasz értéke nem fog segíteni a megfelelő válasz megkeresésében.
 
 ## <a name="rankingscoring"></a>Ennek a területnek/pontozási
 Győződjön meg arról, amelyek a lehető legjobban kihasználják támogatja a QnA Maker rangsorolási szolgáltatásokat. Ezzel javul a valószínűsége, hogy egy adott felhasználó lekérdezési válasz érkezik a megfelelő választ.
 
 ### <a name="choosing-a-threshold"></a>Egy küszöbértéket kiválasztása
 
-Az alapértelmezett [megbízhatósági pontszám](confidence-score.md) használt, egy küszöbértéket 50, azonban az is [küszöbértékének módosítása](confidence-score.md#set-threshold) a KB igényei alapján. Mivel minden KB különböző, teszteléséhez, és válassza ki a küszöbérték, amely a legjobb megoldás az olyan adatbázisoknál a KB. 
+A küszöbértékként használt alapértelmezett [megbízhatósági pontszám](confidence-score.md) 50, azonban az igényeinek megfelelően [módosíthatja a](confidence-score.md#set-threshold) KB-os küszöbértéket. Mivel minden KB különböző, teszteléséhez, és válassza ki a küszöbérték, amely a legjobb megoldás az olyan adatbázisoknál a KB. 
 
-### <a name="choosing-ranker-type"></a>Rangsorolás típusának kiválasztása
-Alapértelmezés szerint a QnA Maker – kérdések és válaszok keres. Ha azt szeretné, csak a kérdések keresgélnie, készítése a választ valamely kérdésre, használja a `RankerType=QuestionOnly` a GenerateAnswer kérelem bejegyzés törzse.
+### <a name="choosing-ranker-type"></a>A ranker típusának kiválasztása
+Alapértelmezés szerint a QnA Maker kérdésekkel és válaszokkal keres. Ha csak kérdésekkel szeretne keresni, válasz létrehozásához használja a `RankerType=QuestionOnly` GenerateAnswer kérelem post törzsében.
 
 ### <a name="add-alternate-questions"></a>Alternatív kérdések hozzáadása
 [Kérdések az eredetitől eltérő](../How-To/edit-knowledge-base.md) felhasználói lekérdezés egyezést valószínűségének növelése. Alternatív kérdések akkor hasznos, ha több módon is ugyanezt a kérdést kérni. Ezek lehetnek a módosítások a mondatok és a word-stílusú.
@@ -112,28 +112,28 @@ Alapértelmezés szerint a QnA Maker – kérdések és válaszok keres. Ha azt 
 
 <a name="use-metadata-filters"></a>
 
-### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>Használja a metaadat-címkéket a szűrő kérdések és válaszok
+### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>A kérdések és válaszok szűrése metaadat-címkék használatával
 
-[Metaadatok](../How-To/edit-knowledge-base.md) ad arra, hogy az ügyfélalkalmazás ismeri, nem hajtson végre minden válaszokat hanem egy metaadat-címkéket alapján felhasználói lekérdezési eredmények szűkítéséhez. A Tudásbázis választ a metaadat-kódcímke alapján is eltérnek, akkor is, ha a lekérdezés nem ugyanaz. Például *"hol is található ideiglenes"* egy másik választ is rendelkezhet, ha az éttermi ág helye eltérő –, hogy a metaadatok van *helye: Seattle* és *helye: Redmond*.
+A [metaadatok](../How-To/edit-knowledge-base.md) lehetővé teszik, hogy az ügyfélalkalmazás tudja, hogy nem fogadja el az összes választ, hanem a metaadat-címkék alapján leszűkíti a felhasználói lekérdezés eredményét. A Tudásbázis választ a metaadat-kódcímke alapján is eltérnek, akkor is, ha a lekérdezés nem ugyanaz. Ha például a *"hol van a parkolóban található"* , akkor lehet, hogy más válasz van, ha az éttermi ág helye eltérő – vagyis a *metaadatok helye: Seattle*ésLocation:  *Redmond*.
 
 ### <a name="use-synonyms"></a>A szinonimák használata
-Míg néhány támogatás angol nyelven szinonimák, használja a kis-és word változásokból keresztül a [változásokból API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) szinonimák hozzáadása, amelyek különböző kulcsszavakat. Szinonimák szintjén a QnA Maker szolgáltatás hozzáadva, és a szolgáltatás által az összes tudásbázisok megosztott.
+Míg az angol nyelv szinonimái is vannak, a kis-és nagybetűk megkülönböztetése az [Alters API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) -n keresztül a különböző űrlapokat használó kulcsszavak szinonimáinak hozzáadását is lehetővé teheti. A szinonimákat a szolgáltatás szintjén adja hozzá a rendszer, és a szolgáltatás minden tudásbázisa megosztja a QnA Maker.
 
 |Eredeti word|Szinonimák|
 |--|--|
-|Vásárlás|vásároljon<br>NET-banki<br>nettó banki|
+|Vásárlás|vásároljon<br>NET – banki szolgáltatások<br>nettó banki|
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>Önálló szavak használatával tesz különbséget a kérdések
-A QnA Maker rangsorolási algoritmust, egy felhasználói lekérdezés egy kérdést a Tudásbázis megfelelő akkor működik a legjobban, ha minden kérdés-címek egy másik szükséges. Ismétlődő kérdések között ugyanazon szó csökkenti annak valószínűsége, hogy a helyes válasz egy adott felhasználó lekérdezés azokat a szavakat az van kiválasztva. 
+A QnA Maker rangsorolási algoritmusa, amely egy, a Tudásbázisban kérdéssel rendelkező felhasználói lekérdezésnek felel meg, akkor a legjobban működik, ha az egyes kérdések eltérő igényt mutatnak. Ismétlődő kérdések között ugyanazon szó csökkenti annak valószínűsége, hogy a helyes válasz egy adott felhasználó lekérdezés azokat a szavakat az van kiválasztva. 
 
 Előfordulhat például, hogy két külön QnA-tudásbázisok az az alábbi kérdésekre:
 
 |QnA-tudásbázisok|
 |--|
 |hol található az ideiglenes *helye*|
-|hol található a ATM *helye*|
+|Hol található az ATM *helye*|
 
-E két QnA-tudásbázisok vannak phrased nagyon hasonló szavakat tartalmaznak, mivel a hasonlóság okozhat számos felhasználói lekérdezések, amelyek például a rendszer phrased nagyon hasonló pontszámok *"hol van a `<x>` helye"* . Ehelyett a lekérdezésekkel például jól megkülönböztethető próbál *"hol található az ideiglenes sok"* és *"hol található a ATM"* , lehetőleg ne szavakat, például a "hely", amely csak a sok kérdések a KB-ban. 
+E két QnA-tudásbázisok vannak phrased nagyon hasonló szavakat tartalmaznak, mivel a hasonlóság okozhat számos felhasználói lekérdezések, amelyek például a rendszer phrased nagyon hasonló pontszámok *"hol van a `<x>` helye"* . Ehelyett próbálja meg egyértelműen megkülönböztetni a lekérdezéseket, például *a "hol van a parkolóban"* és *"hol van az ATM"* , a "location" kifejezéssel, amely a KB-ban sok kérdésben lehet. 
 
 ## <a name="collaborate"></a>Együttműködés
 A QnA Maker lehetővé teszi a felhasználóknak [együttműködés](../How-to/collaborate-knowledge-base.md) a Tudásbázis. Felhasználók az Azure QnA Maker erőforráscsoport hozzá kell férniük ahhoz, hogy hozzáférhessen a tudásbázisok. Egyes szervezetek érdemes kiszervezik a Tudásbázis szerkesztéséhez és a karbantartás, és továbbra is felhasználhatják az Azure-erőforrásokhoz való hozzáférés védelme. Ez a szerkesztő, jóváhagyó modell végzi el beállítása két azonos [QnA Maker szolgáltatás](../How-to/set-up-qnamaker-service-azure.md) különböző előfizetésekben találhatóak, és ha kiválaszt egy, a Szerkesztés tesztelés ciklusig az újbóli. Tesztelés befejezése után a Tudásbázis-tartalmat a átkerülnek egy [az import-export](../Tutorials/migrate-knowledge-base.md) feldolgozása a QnA Maker szolgáltatás a jóváhagyó, végül pedig a Tudásbázis közzététele, és a végpont frissítéséhez.
@@ -142,7 +142,7 @@ A QnA Maker lehetővé teszi a felhasználóknak [együttműködés](../How-to/c
 
 ## <a name="active-learning"></a>Aktív tanulás
 
-[Aktív tanulás](../How-to/improve-knowledge-base.md) does alternatív kérdések javasolása széles minőségét és a felhasználó-alapú lekérdezések mennyisége, ha a legjobb feladat. Fontos, hogy az ügyfél-alkalmazások felhasználói lekérdezések részt az aktív tanulás visszajelzési ciklus ellenőrzéstől nélkül. Kérdések a QnA Maker Portal használata javasolt, ha is **[javaslatok szűrés](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** , majd tekintse át és fogadja el vagy elutasíthatja a szólhatnak. 
+Az [aktív tanulás](../How-to/improve-knowledge-base.md) a legjobb megoldás arra, hogy alternatív kérdéseket tegyen fel, ha számos minőségi és mennyiségű felhasználó-alapú lekérdezést tartalmaz. Fontos, hogy az ügyfélalkalmazások felhasználói lekérdezései részt vegyenek az aktív tanulási visszajelzési hurokban a cenzúra nélkül. Ha kérdése van a QnA Maker-portálon, akkor a **[javaslatok alapján szűrheti a javaslatokat](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** , majd áttekintheti, elfogadhatja vagy elutasíthatja ezeket a javaslatokat. 
 
 ## <a name="next-steps"></a>További lépések
 

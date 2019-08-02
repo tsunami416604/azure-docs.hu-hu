@@ -1,7 +1,7 @@
 ---
-title: Adatok kinyerése
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Adatok kinyerése az utterance (kifejezés) SMS-t szándékokat és entitásokat. Ismerje meg, milyen típusú adatok kinyerhetők a Language Understanding (LUIS).
+title: Adatbányászat – LUIS
+titleSuffix: Azure Cognitive Services
+description: Adatok kinyerése a teljes szövegből szándékok és entitások alapján. Ismerje meg, hogy milyen típusú adatok nyerhetők ki Language Understandingból (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 15d6b0d28f926bdb39b35b763b89422cddcccc84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 055cd25f534de5d3cc3ccbe44df88e7111e101a3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65150684"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560751"
 ---
-# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Adatok kinyerése az utterance (kifejezés) SMS-t a szándékok és entitások felismerésére
+# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Adatok kinyerése a teljes szövegből szándékok és entitások alapján
 A LUIS teszi lehetővé a felhasználó a természetes nyelvű utterances lekérni adatait. Az adatokat oly módon, hogy használat szerint a program, alkalmazás vagy csevegőrobot műveletet ki kell olvasni. A következő szakaszban megtudhatja, milyen adatokat küld vissza, a szándékok és entitások példákkal a JSON.
 
-Kinyerni kívánt nagyon nehéz adatok a gép megtanult adatok, mert ez nem egy pontos egyezés egyeztetése. Adatok kinyerése, a gép megtanult [entitások](luis-concept-entity-types.md) részét kell a [ciklus szerzői](luis-concept-app-iteration.md) amíg nem biztos benne, hogy a várt adatokat kap.
+A kinyerni kívánt legnehezebb adatok a géppel megtanult adatok, mert nem pontos szöveges egyezés. A gépi megtanult entitások kinyerésének a [létrehozási ciklus](luis-concept-app-iteration.md) részét kell képeznie, amíg biztos abban, hogy megkapja a várt adatmennyiséget. [](luis-concept-entity-types.md)
 
 ## <a name="data-location-and-key-usage"></a>Adatok helye és a kulcsot használat
 A LUIS biztosít a közzétett adatait [végpont](luis-glossary.md#endpoint). A **HTTPS-kérést** (POST vagy GET) tartalmazza az utterance (kifejezés), valamint az egyes választható konfigurációk, például átmeneti és éles környezetekben.
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-A `appID` érhető el a **beállítások** lapján a LUIS-alkalmazásokon, valamint az URL-cím (után `/apps/`) Ha szerkeszti a LUIS-alkalmazás. A `subscription-key` a végpont kulcs az alkalmazás lekérdezésekhez használja fel. Bár használhatja az ingyenes szerzői/alapszintű kulcs közben, hogy tanulási LUIS, fontos, hogy módosítsa a végpont kulcs, amely támogatja a kulcs a [várható LUIS használati](luis-boundaries.md#key-limits). A `timezoneOffset` egység érték perc.
+A `appID` a Luis-alkalmazás **Beállítások** lapján, valamint `/apps/`a Luis-alkalmazás szerkesztésekor az URL-cím részeként is elérhető. A `subscription-key` a végpont kulcs az alkalmazás lekérdezésekhez használja fel. Habár a LUIS megismerése közben ingyenes authoring/Starter-kulcsot is használhat, fontos, hogy módosítsa a végpont kulcsát egy olyan kulcsra, amely támogatja a [várt Luis](luis-boundaries.md#key-limits)-használatot. A `timezoneOffset` egység érték perc.
 
 A **HTTPS válaszokat** tartalmazza az összes, vagy az aktuális közzétett modell alapján a leképezés és entitás adatait, LUIS megadhatja, hogy az átmeneti és éles végpontot. A végpont URL-cím található a [LUIS](luis-reference-regions.md) webhelyén, a a **kezelés** részben, a a **kulcsokat és a végpontok** lap.
 
@@ -148,141 +148,15 @@ Ha például a német, a word `das Bauernbrot` be van tokenekre `das bauern brot
 
 ## <a name="simple-entity-data"></a>Egyszerű Entitásadatok
 
-A [egyszerű entitás](luis-concept-entity-types.md) egy gép megtanult érték. Lehet, hogy egy szót vagy kifejezést.
-
-`Bob Jones wants 3 meatball pho`
-
-Az előző utterance (kifejezés), a `Bob Jones` van jelölve egy egyszerű `Customer` entitás.
-
-A végpont által visszaadott szerepel az entitás nevét, a felderített szöveget az utterance (kifejezés), a helyét a felderített szöveg és a pontszám:
-
-```JSON
-"entities": [
-  {
-  "entity": "bob jones",
-  "type": "Customer",
-  "startIndex": 0,
-  "endIndex": 8,
-  "score": 0.473899543
-  }
-]
-```
-
-|Objektum|Entitás neve|Érték|
-|--|--|--|
-|Egyszerű entitás|`Customer`|`bob jones`|
+A [egyszerű entitás](reference-entity-simple.md) egy gép megtanult érték. Lehet, hogy egy szót vagy kifejezést.
 
 ## <a name="composite-entity-data"></a>Összetett Entitásadatok
-[Összetett](luis-concept-entity-types.md) entitások gép megtudhatta, és tartalmazhat egy szót vagy kifejezést. Vegyük példaként egy összetett entitást, előre elkészített `number` és `Location::ToLocation` az a következő utterance (kifejezés):
 
-`book 2 tickets to paris`
-
-Figyelje meg, hogy `2`, száma, és `paris`, a ToLocation van közöttük, amelyek nem részei a bármelyikével szavakat. A zöld, szerepel a címkézett utterance (kifejezés) az aláhúzás a [LUIS](luis-reference-regions.md) -webhely azt jelzi, hogy egy összetett entitást.
-
-![Összetett entitást](./media/luis-concept-data-extraction/composite-entity.png)
-
-A visszaadott összetett entitások egy `compositeEntities` is ad a tömb és az összetett lévő entitások a `entities` tömb:
-
-```JSON
-
-"entities": [
-    {
-    "entity": "2 tickets to cairo",
-    "type": "ticketInfo",
-    "startIndex": 0,
-    "endIndex": 17,
-    "score": 0.67200166
-    },
-    {
-    "entity": "2",
-    "type": "builtin.number",
-    "startIndex": 0,
-    "endIndex": 0,
-    "resolution": {
-        "subtype": "integer",
-        "value": "2"
-    }
-    },
-    {
-    "entity": "cairo",
-    "type": "builtin.geographyV2",
-    "startIndex": 13,
-    "endIndex": 17
-    }
-],
-"compositeEntities": [
-    {
-    "parentType": "ticketInfo",
-    "value": "2 tickets to cairo",
-    "children": [
-        {
-        "type": "builtin.geographyV2",
-        "value": "cairo"
-        },
-        {
-        "type": "builtin.number",
-        "value": "2"
-        }
-    ]
-    }
-]
-```    
-
-|Objektum|Entitás neve|Érték|
-|--|--|--|
-|Előre összeállított entitások - szám|"builtin.number"|"2"|
-|Előre összeállított entitások - GeographyV2|"Location::ToLocation"|"Párizs"|
+Az [összetett entitások](reference-entity-composite.md) más entitásokból állnak, mint például az előre összeépített entitások, az egyszerű, a reguláris kifejezések és a listázási entitások. A különálló entitások teljes entitás űrlap. 
 
 ## <a name="list-entity-data"></a>Entitások adatainak listája
 
-A [lista](luis-concept-entity-types.md) entitás nem gép megtanult. Egy pontos egyezés egyeztetése. Egy listát a listában, és ezekhez az elemekhez tartozó szinonimák jelöli. A LUIS bármely lista egy elemének való egyezés a válasz egy egységként jelöli meg. A szinonimát egynél több lista is lehet.
-
-Tegyük fel, hogy az alkalmazás rendelkezik egy nevű lista `Cities`, ami lehetővé teszi a városok nevei, beleértve a város, repülőtér (Sea-tac), a repülőtér kódja (SEA), a postai irányítószám (98101) és a telefonszám körzetszámát (206) változata.
-
-|Listaelem|Elemet a szinonimák|
-|---|---|
-|`Seattle`|`sea-tac`, `sea`, `98101`, `206`, `+1` |
-|`Paris`|`cdg`, `roissy`, `ory`, `75001`, `1`, `+33`|
-
-`book 2 tickets to paris`
-
-Az az előző utterance (kifejezés), a word `paris` Párizs elem részeként van leképezve a `Cities` entitás listája. A lista entitás illeszkedik mind a cikk normalizált nevét, valamint az elemet a szinonimák.
-
-```JSON
-"entities": [
-  {
-    "entity": "paris",
-    "type": "Cities",
-    "startIndex": 18,
-    "endIndex": 22,
-    "resolution": {
-      "values": [
-        "Paris"
-      ]
-    }
-  }
-]
-```
-
-Egy másik példa utterance (kifejezés), Párizs szinonima használatával:
-
-`book 2 tickets to roissy`
-
-```JSON
-"entities": [
-  {
-    "entity": "roissy",
-    "type": "Cities",
-    "startIndex": 18,
-    "endIndex": 23,
-    "resolution": {
-      "values": [
-        "Paris"
-      ]
-    }
-  }
-]
-```
+Az [entitások listája](reference-entity-list.md) a kapcsolódó szavak rögzített, lezárt készletét jelöli a szinonimákkal együtt. A LUIS nem deríti fel a további értékek a lista entitásokat. Használja a **javasoljuk** funkció, amellyel új szavak javaslatokat tekintse meg az aktuális lista alapján. Ha egynél több lista entitás ugyanazzal az értékkel, a végpont lekérdezés minden entitás adja vissza. 
 
 ## <a name="prebuilt-entity-data"></a>Előre összeállított entitások adatainak
 [Előre összeállított](luis-concept-entity-types.md) entitások egy reguláris kifejezés egyeztetése a nyílt forráskódú használatával alapján felderített [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text) projekt. Előre összeállított entitások entitások tömbben visszaküldi, és használja a típusnév előtaggal `builtin::`. A következő szöveg egy példa utterance (kifejezés) a visszaadott előre összeállított entitások a következő:
@@ -369,56 +243,29 @@ Egy másik példa utterance (kifejezés), Párizs szinonima használatával:
 ```
 
 ## <a name="regular-expression-entity-data"></a>Entitásadatok reguláris kifejezés
-[Reguláris kifejezés](luis-concept-entity-types.md) entitások felderített alapján egy reguláris kifejezés egyeztetése adnia az entitás létrehozásakor kifejezés használatával. Használata esetén `kb[0-9]{6}` reguláris kifejezés definícióját, a következő JSON-választ az egy példa utterance (kifejezés) a lekérdezés a visszaadott reguláris kifejezés entitásokkal `When was kb123456 published?`:
 
-```JSON
-{
-  "query": "when was kb123456 published?",
-  "topScoringIntent": {
-    "intent": "FindKBArticle",
-    "score": 0.933641255
-  },
-  "intents": [
-    {
-      "intent": "FindKBArticle",
-      "score": 0.933641255
-    },
-    {
-      "intent": "None",
-      "score": 0.04397359
-    }
-  ],
-  "entities": [
-    {
-      "entity": "kb123456",
-      "type": "KB number",
-      "startIndex": 9,
-      "endIndex": 16
-    }
-  ]
-}
-```
+A [reguláris kifejezés entitás](reference-entity-regular-expression.md) kinyeri az entitást az Ön által megadott reguláris kifejezési minta alapján.
 
 ## <a name="extracting-names"></a>Nevek kibontása
-Nevének lekérése az utterance (kifejezés) azért nehéz, mert a neve betűket és szavakat szinte bármilyen kombinációja lehet. Milyen típusú neve meg van kinyeréséhez, függően több lehetőség közül választhat. Az alábbi javaslatokat nem tartoznak szabályok, de további útmutatást.
+Nevének lekérése az utterance (kifejezés) azért nehéz, mert a neve betűket és szavakat szinte bármilyen kombinációja lehet. Attól függően, hogy milyen típusú nevet szeretne kinyerni, több lehetőség közül választhat. A következő javaslatok nem szabályok, hanem további irányelvek.
 
-### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>Előre összeállított PersonName és GeographyV2 entitások hozzáadása
+### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>Előre elkészített PersonName-és GeographyV2-entitások hozzáadása
 
-[PersonName](luis-reference-prebuilt-person.md) és [GeographyV2](luis-reference-prebuilt-geographyV2.md) entitások érhetők el az egyes [nyelvi kulturális környezetek](luis-reference-prebuilt-entities.md). 
+A [PersonName](luis-reference-prebuilt-person.md) és a [GeographyV2](luis-reference-prebuilt-geographyV2.md) entitások bizonyos [nyelvi kultúrákban](luis-reference-prebuilt-entities.md)is elérhetők. 
 
 ### <a name="names-of-people"></a>Személyek nevét
 
-Emberek neve nem lehet néhány kisebb formátum nyelvi és kulturális környezet függően. Használata vagy egy előre elkészített **[personName](luis-reference-prebuilt-person.md)** entitáshoz vagy egy **[egyszerű entitás](luis-concept-entity-types.md#simple-entity)** a [szerepkörök](luis-concept-roles.md) : az első és utolsó neve. 
+Emberek neve nem lehet néhány kisebb formátum nyelvi és kulturális környezet függően. Használjon egy előre elkészített **[personName](luis-reference-prebuilt-person.md)** -entitást vagy egy olyan [](luis-concept-roles.md) **[egyszerű entitást](luis-concept-entity-types.md#simple-entity)** , amely a vezetéknév és az utónév szerepkörrel rendelkezik. 
 
-Ha az egyszerű entitás használja, ügyeljen arra, hogy példákkal szemlélteti, hogy az első és utolsó az utterance (kifejezés), a különböző hosszúságú kimondott szöveg és a kimondott szöveg különböző részein nevét használja az összes szándék fog vonatkozni, akár a egy sem szándék. [Felülvizsgálat](luis-how-to-review-endoint-utt.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően.
+Ha az egyszerű entitást használja, ügyeljen arra, hogy olyan példákat adjon meg, amelyek az utónév és a vezetéknév különböző részeiben használják a hosszúságú kimondott szöveg, és hosszúságú kimondott szöveg az összes szándékot, beleértve a none szándékot is. [Felülvizsgálat](luis-how-to-review-endoint-utt.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően.
 
 ### <a name="names-of-places"></a>Helyek nevei
 
-Hely neve beállítása és ismert, például a város, megyék, államok, megyék és országok/régiók. Az előre összeállított entitások használata **[geographyV2](luis-reference-prebuilt-geographyv2.md)** kibontani a helyre vonatkozó adatokat.
+A helyek nevei be vannak állítva és ismertek, például városok, megyék, Államok, tartományok és országok/régiók. Az előre elkészített entitások **[geographyV2](luis-reference-prebuilt-geographyv2.md)** kinyerheti a hely adatait.
 
 ### <a name="new-and-emerging-names"></a>Új és újonnan megjelenő neve
 
-Bizonyos alkalmazásokhoz kell tudni új és újonnan felbukkanó nevek, például a termékek vagy cégek keresése. Az ilyen típusú nevek adatok kinyerése a legbonyolultabb típusát. Kezdődik a **[egyszerű entitás](luis-concept-entity-types.md#simple-entity)** , és adja hozzá a [kifejezéslista](luis-concept-feature.md). [Felülvizsgálat](luis-how-to-review-endoint-utt.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően.
+Bizonyos alkalmazásokhoz kell tudni új és újonnan felbukkanó nevek, például a termékek vagy cégek keresése. Az ilyen típusú nevek a legnehezebb kinyerési típus. Kezdje egy **[egyszerű entitással](luis-concept-entity-types.md#simple-entity)** , és adjon hozzá egy [kifejezést tartalmazó listát](luis-concept-feature.md). [Felülvizsgálat](luis-how-to-review-endoint-utt.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően.
 
 ## <a name="pattern-roles-data"></a>A minta szerepkörök adatok
 Szerepkörök az entitások környezetfüggő különbségek.
@@ -482,49 +329,8 @@ Szerepkörök az entitások környezetfüggő különbségek.
 ```
 
 ## <a name="patternany-entity-data"></a>Entitásadatok pattern.any
-Pattern.any entitásokat is használt sablon utterances, a változó hosszúságú entitások egy [minta](luis-concept-patterns.md).
 
-```JSON
-{
-  "query": "where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?",
-  "topScoringIntent": {
-    "intent": "FindForm",
-    "score": 0.999999464
-  },
-  "intents": [
-    {
-      "intent": "FindForm",
-      "score": 0.999999464
-    },
-    {
-      "intent": "GetEmployeeBenefits",
-      "score": 4.883697E-06
-    },
-    {
-      "intent": "None",
-      "score": 1.02040713E-06
-    },
-    {
-      "intent": "GetEmployeeOrgChart",
-      "score": 9.278342E-07
-    },
-    {
-      "intent": "MoveAssetsOrPeople",
-      "score": 9.278342E-07
-    }
-  ],
-  "entities": [
-    {
-      "entity": "understand your responsibilities as a member of the community",
-      "type": "FormName",
-      "startIndex": 18,
-      "endIndex": 78,
-      "role": ""
-    }
-  ]
-}
-```
-
+[Minta.](reference-entity-pattern-any.md) a változó hosszúságú helyőrző csak a minta sablonjának megjelölésére szolgál, amely jelzi, hogy az entitás hol kezdődik és végződik.  
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 Ha hangulatelemzés van konfigurálva, a LUIS json-válasz tartalmazza a hangulatelemzés. További információ a hangulatelemzés az [Szövegelemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) dokumentációját.
@@ -718,7 +524,7 @@ A LUIS-végpont felderítése is ugyanazokat az adatokat különböző entitáso
 }
 ```
 
-## <a name="data-matching-multiple-list-entities"></a>Több lista entitás megfelelő adatok
+## <a name="data-matching-multiple-list-entities"></a>Több lista entitások megfeleltetése
 
 Ha egy szót vagy kifejezést megegyezik a listában több entitást, a végpont lekérdezés minden egyes lista entitás adja vissza.
 

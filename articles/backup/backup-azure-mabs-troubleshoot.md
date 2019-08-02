@@ -1,121 +1,151 @@
 ---
 title: Az Azure Backup Server hibaelhárítása
-description: Végezzen hibaelhárítást a regisztráció az Azure Backup Server és a biztonsági mentés és visszaállítás az alkalmazások és szolgáltatások telepítése.
-services: backup
-author: srinathvasireddy
-manager: sivan
+description: Hibaelhárítás, Azure Backup Server regisztrációja, valamint az alkalmazások számítási feladatainak biztonsági mentése és helyreállítása.
+ms.reviewer: srinathv
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: srinathv
-ms.openlocfilehash: ee24fe4c1792f1934fcfb87a2481133631de4263
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.author: dacurwin
+ms.openlocfilehash: c08acaf65cd42abd9db97fab1267ce5628595b78
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705070"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689270"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Az Azure Backup Server hibaelhárítása
 
-Az alábbi táblázatokban szereplő információk segítségével, amely az Azure Backup Server használata során előforduló hibák elhárítása.
+A következő táblázatokban található információk segítségével elháríthatja a Azure Backup Server használata során felmerülő hibákat.
 
 ## <a name="basic-troubleshooting"></a>Alapszintű hibaelhárítás
 
-Azt javasoljuk, hogy hajtsa végre az alábbi érvényesítési, mielőtt használatba hibáinak elhárítása a Microsoft Azure Backup Server (MABS):
+Javasoljuk, hogy a Microsoft Azure Backup Server (MABS) hibaelhárítása előtt végezze el az alábbi érvényesítést:
 
-- [Győződjön meg arról a Microsoft Azure Recovery Services (MARS) ügynöke naprakész](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
+- [Győződjön meg arról, Microsoft Azure Recovery Services (MARS) ügynök naprakész](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Győződjön meg arról, hogy a MARS-ügynök és az Azure között van hálózati kapcsolat](https://aka.ms/AB-A4dp50)
-- Győződjön meg arról, hogy a Microsoft Azure Recovery Services fut (a Szolgáltatás konzolon). Ha szükséges indítsa újra, és próbálja megismételni a műveletet
+- Győződjön meg arról, hogy a Microsoft Azure Recovery Services fut (a Szolgáltatás konzolon). Szükség esetén indítsa újra, és ismételje meg a műveletet.
 - [Győződjön meg arról, hogy 5-10% szabad hellyel rendelkezik az ideiglenes mappa helyén](https://aka.ms/AB-AA4dwtt)
-- Ha a regisztráció sikertelen, győződjön meg, hogy a kiszolgáló, amelyen az Azure Backup Server telepítése kívánt nem már regisztrálva van egy másik tárolóval
+- Ha a regisztráció sikertelen, akkor győződjön meg arról, hogy a kiszolgáló, amelyre telepíteni kívánja, Azure Backup Server még nincs regisztrálva egy másik tárolóban.
 - Ha a leküldéses telepítés sikertelen, ellenőrizze, hogy a DPM-ügynök már jelen van-e a rendszeren. Ha igen, távolítsa el az ügynököt, és próbálkozzon újra a telepítéssel
 - [Győződjön meg arról, hogy nem zavarja másik folyamat vagy víruskereső szoftver az Azure Backup működését](https://aka.ms/AA4nyr4)<br>
 - Győződjön meg róla, hogy fut-e az SQL Agent szolgáltatás, és az MAB-kiszolgálón a beállítása „automatikus”<br>
 
 
-## <a name="invalid-vault-credentials-provided"></a>Megadott tárhitelesítő adatok érvénytelenek
+## <a name="invalid-vault-credentials-provided"></a>A tár megadott hitelesítő adatai érvénytelenek
 
-| Művelet | A hiba részletei | Áthidaló megoldás |
+| Művelet | Hibaüzenet részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Tárolóra regisztrálása | A tároló megadott hitelesítő adatai érvénytelenek. A fájl sérült, vagy nem nem rendelkezik a hozzárendelt legfrissebb hitelesítő adatokkal a szolgáltatásban. | Javasolt művelet: <br> <ul><li> Töltse le a legújabb hitelesítő adatok fájlt a tárolóból, és próbálkozzon újra. <br>(OR)</li> <li> Ha az előző művelet nem működik, próbálja meg letölteni a hitelesítő adatokat egy másik helyi könyvtárba, vagy hozzon létre egy új tárolót. <br>(OR)</li> <li> Próbálja meg frissíteni a dátum- és időbeállítások, leírtak szerint [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/troubleshooting-common-configuration-issues-with-azure-backup/). <br>(OR)</li> <li> Ellenőrizze, hogy rendelkezik-e c:\windows\temp több mint 65000 fájlok. Elavult fájlok áthelyezése egy másik helyre, vagy törli a elemeket a Temp mappában. <br>(OR)</li> <li> A tanúsítvány állapotának ellenőrzéséhez. <br> a. Nyissa meg **számítógép-tanúsítványok kezelése** (a Vezérlőpulton). <br> b. Bontsa ki a **személyes** csomópontot és annak gyermek csomópont **tanúsítványok**.<br> c.  Távolítsa el a tanúsítványt **Windows Azure-eszközökkel**. <br> d. Ismételje meg a regisztráció az Azure Backup-ügyfél. <br> (OR) </li> <li> Ellenőrizze, hogy ha a csoportházirend van beállítva. </li></ul> |
+| Regisztráció egy tárba | A tároló megadott hitelesítő adatai érvénytelenek. A fájl sérült, vagy nem rendelkezik a helyreállítási szolgáltatáshoz társított legújabb hitelesítő adatokkal. | Javasolt művelet: <br> <ul><li> Töltse le a legújabb hitelesítő adatokat tartalmazó fájlt a tárból, és próbálkozzon újra. <br>VAGY</li> <li> Ha az előző művelet nem működött, próbálja meg letölteni a hitelesítő adatokat egy másik helyi könyvtárba, vagy hozzon létre egy új tárolót. <br>VAGY</li> <li> Próbálja meg frissíteni a dátum-és időbeállításokat [](https://azure.microsoft.com/blog/troubleshooting-common-configuration-issues-with-azure-backup/)a blogbejegyzésben leírtak szerint. <br>VAGY</li> <li> Ellenőrizze, hogy a c:\Windows\Temp több mint 65000 fájllal rendelkezik-e. Helyezze át az elavult fájlokat egy másik helyre, vagy törölje a temp mappában lévő elemeket. <br>VAGY</li> <li> A tanúsítványok állapotának ellenőrzését. <br> a. Nyissa meg a **számítógép-tanúsítványok kezelése** (a Vezérlőpulton). <br> b. Bontsa ki a **személyes** csomópontot és annak alárendelt csomópontjának **tanúsítványait**.<br> c.  Távolítsa el a **Windows Azure-eszközök**tanúsítványát. <br> d. Próbálja megismételni a regisztrációt az Azure Backup-ügyfélen. <br> VAGY </li> <li> Ellenőrizze, hogy van-e érvényben a csoportházirend. </li></ul> |
 
-## <a name="replica-is-inconsistent"></a>A replika inkonzisztens
+## <a name="replica-is-inconsistent"></a>Inkonzisztens replika
 
-| Művelet | A hiba részletei | Áthidaló megoldás |
+| Művelet | Hibaüzenet részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Backup | A replika inkonzisztens | Győződjön meg arról, hogy be van kapcsolva az automatikus konzisztencia ellenőrzése a beállítás a védelmi csoport varázslóban. A replika inkonzisztenciája és a kapcsolódó javaslatokat az okok kapcsolatos további információkért tekintse meg a cikket [inkonzisztens replika esetén](https://technet.microsoft.com/library/cc161593.aspx).<br> <ol><li> Esetén a rendszerállapot vagy BMR biztonsági mentéssel győződjön meg arról, hogy a Windows Server biztonsági másolat telepítve van a védett kiszolgálón.</li><li> Keresse meg a DPM vagy a Microsoft Azure Backup Server a DPM-tárolókészletben helyet szolgáltatással kapcsolatos problémák, és szükség szerint tárterület foglalása.</li><li> Ellenőrizze a kötet árnyékmásolata szolgáltatás a védett kiszolgáló állapotát. Ha egy letiltott állapotban van, állítsa be, hogy indítsa el manuálisan. Indítsa el a szolgáltatást a kiszolgálón. Ezután lépjen vissza a DPM vagy a Microsoft Azure Backup Server konzolt, és indítsa el a szinkronizálás és a konzisztencia-ellenőrzést.</li></ol>|
+| Tartalék | Inkonzisztens replika | Ellenőrizze, hogy a védelmi csoport varázslóban be van-e kapcsolva az automatikus konzisztencia-ellenőrzés lehetőség. A replika inkonzisztencia és a kapcsolódó javaslatok okaival kapcsolatos további információkért tekintse meg a következő cikket: a [replika inkonzisztens](https://technet.microsoft.com/library/cc161593.aspx).<br> <ol><li> Rendszerállapot/BMR biztonsági mentés esetén ellenőrizze, hogy a Windows Server biztonsági másolat telepítve van-e a védett kiszolgálón.</li><li> Győződjön meg arról, hogy a DPM/Microsoft Azure Backup-kiszolgálón a DPM-tárolóban a tárterülettel kapcsolatos problémák vannak, és szükség szerint foglalja le a tárolót.</li><li> A védett kiszolgálón lévő Kötet árnyékmásolata szolgáltatás állapotának megtekintése. Ha letiltott állapotban van, állítsa be manuálisan a kezdéshez. Indítsa el a szolgáltatást a kiszolgálón. Ezután térjen vissza a DPM/Microsoft Azure Backup Server-konzolra, és indítsa el a szinkronizálást a konzisztencia-ellenőrzési feladatokkal.</li></ol>|
 
-## <a name="online-recovery-point-creation-failed"></a>Online helyreállítási pont létrehozása nem sikerült
+## <a name="online-recovery-point-creation-failed"></a>Az online helyreállítási pont létrehozása sikertelen volt.
 
-| Művelet | A hiba részletei | Áthidaló megoldás |
+| Művelet | Hibaüzenet részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Backup | Online helyreállítási pont létrehozása nem sikerült | **Chybová Zpráva**: Windows Azure Backup szolgáltatás ügynökének nem sikerült pillanatfelvételt készíteni a kijelölt kötetről. <br> **Megkerülő megoldás**: Próbálja növelni a területet az replikát és helyreállításipont-kötetre.<br> <br> **Chybová Zpráva**: A Windows Azure Backup szolgáltatás ügynöke nem tud kapcsolódni az OBEngine szolgáltatáshoz <br> **Megkerülő megoldás**: Győződjön meg arról, hogy létezik-e az OBEngine a számítógépen futó szolgáltatások listájában. Az OBEngine szolgáltatás nem fut, ha a "net start OBEngine" parancs segítségével indítsa el az OBEngine szolgáltatáshoz. <br> <br> **Chybová Zpráva**: Nincs beállítva ez a kiszolgáló titkosítási jelszava. Állítsa be a szükséges jelszót. <br> **Megkerülő megoldás**: Próbálja ki egy titkosítási jelszó konfigurálása. Ha nem sikerül, a következő lépéseket: <br> <ol><li>Győződjön meg arról, hogy létezik-e az ideiglenes hely. Ez az a hely, amely szerepel a beállításjegyzék **HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config**, nevű **ScratchLocation** léteznie kell.</li><li> Ha az ideiglenes hely már létezik, próbálja meg újra regisztrálja a régi jelszó használatával. *Minden alkalommal, amikor egy titkosítási jelszót konfigurál, mentse azt egy biztonságos helyre.*</li><ol>|
+| Tartalék | Az online helyreállítási pont létrehozása sikertelen volt. | **Hibaüzenet**: A Windows Azure Backup ügynök nem tudott pillanatképet készíteni a kijelölt kötetről. <br> **Áthidaló megoldás**: Próbálja meg növelni a helyet a replika és a helyreállítási pont kötetén.<br> <br> **Hibaüzenet**: A Windows Azure Backup ügynök nem tud csatlakozni a OBEngine szolgáltatáshoz <br> **Áthidaló megoldás**: Ellenőrizze, hogy a OBEngine létezik-e a számítógépen futó szolgáltatások listájában. Ha a OBEngine szolgáltatás nem fut, használja a "net start OBEngine" parancsot a OBEngine szolgáltatás elindításához. <br> <br> **Hibaüzenet**: Nincs beállítva a kiszolgáló titkosítási jelszava. Konfigurálja a titkosítási jelszót. <br> **Áthidaló megoldás**: Próbáljon meg titkosítási hozzáférési kódot beállítani. Ha nem sikerül, hajtsa végre a következő lépéseket: <br> <ol><li>Ellenőrizze, hogy létezik-e a megkarcolt hely. Ez az a hely, amely szerepel a beállításjegyzékben a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config**, és léteznie kell a **ScratchLocation** névvel.</li><li> Ha a megjelenő hely létezik, próbálja meg újból regisztrálni a régi jelszó használatával. *Ha titkosítási jelszót állít be, mentse biztonságos helyre.*</li><ol>|
 
-## <a name="the-vault-credentials-provided-are-different-from-the-vault-the-server-is-registered"></a>A megadott tárhitelesítő adatok nem azonosak a tárolóban, a kiszolgáló regisztrálva van
+## <a name="the-vault-credentials-provided-are-different-from-the-vault-the-server-is-registered"></a>A tár megadott hitelesítő adatai eltérnek a kiszolgáló által regisztrált tárolótól
 
-| Művelet | A hiba részletei | Áthidaló megoldás |
+| Művelet | Hibaüzenet részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Visszaállítás | **Hibakód:** : CBPServerRegisteredVaultDontMatchWithCurrent/Vault Credentials Error: 100110 <br/> <br/>**Chybová zpráva**: A megadott tárhitelesítő adatok nem azonosak a tárolóban, a kiszolgáló regisztrálva van | **Ok**: Ez a probléma akkor fordul elő, ha visszaállítja a fájlokat a másodlagos kiszolgálóra az eredeti kiszolgáló külső DPM-helyreállítási lehetőséget a kívánt, és ha a kiszolgáló, amely a helyreállítás alatt áll, és az eredeti kiszolgálón, ahol az adatok-e készíteni a rendszer nem társítja azonos Recovery Services-tároló.<br/> <br/>**Megkerülő megoldás** egyaránt biztosítsák a probléma megoldásához az eredeti és a másodlagos kiszolgáló regisztrálva van ugyanahhoz a tárolóhoz.|
+| Visszaállítás | **Hibakód**: CBPServerRegisteredVaultDontMatchWithCurrent/Vault Credentials Error: 100110 <br/> <br/>**Hibaüzenet**: A tár megadott hitelesítő adatai eltérnek a kiszolgáló által regisztrált tárolótól | **Ok**: Ez a probléma akkor fordul elő, ha az eredeti kiszolgálóról a külső DPM-helyreállítási lehetőség használatával kívánja visszaállítani a fájlokat a másodlagos kiszolgálóra, és ha a helyreállított kiszolgáló, illetve az az eredeti kiszolgáló, ahonnan az adatok biztonsági mentése történik, nincs társítva Recovery Service-tároló.<br/> <br/>**Áthidaló megoldás** A probléma megoldásához ellenőrizze, hogy az eredeti és az alternatív kiszolgáló is regisztrálva van-e ugyanahhoz a tárolóhoz.|
 
-## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>VMware virtuális gép online helyreállításipont-létrehozási feladatok sikertelen
+## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>A VMware virtuális gép online helyreállítási pontjának létrehozási feladatai sikertelenek
 
-| Művelet | A hiba részletei | Áthidaló megoldás |
+| Művelet | Hibaüzenet részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Backup | VMware virtuális gép online helyreállításipont-létrehozási feladatok sikertelenek. A DPM a VMware-ből hibát észlelt a változáskövetési információk beolvasása közben. ErrorCode - FileFaultFault (ID 33621 ) |  <ol><li> A VMware-en CTK alaphelyzetbe az érintett virtuális gépek számára.</li> <li>Ellenőrizze, hogy a független lemez nem VMware-en vannak érvényben.</li> <li>Állítsa le az érintett virtuális gépek védelmét, és az ismételt védelem a **frissítése** gombra. </li><li>Az érintett virtuális gépek futtatása egy másolatot kap.</li></ol>|
+| Tartalék | A VMware virtuális gép online helyreállítási pontjának létrehozási feladatai sikertelenek. A DPM a VMware hibába ütközött, miközben megpróbálta beolvasni a változáskövetési-információkat. ErrorCode - FileFaultFault (ID 33621 ) |  <ol><li> Állítsa alaphelyzetbe a VMware-CTK az érintett virtuális gépeken.</li> <li>Győződjön meg arról, hogy a független lemez nem áll helyre a VMware-en.</li> <li>Állítsa le az érintett virtuális gépek védelmét, majd a **frissítés** gomb megnyomásával óvja újra a védelmet. </li><li>Egy CC futtatása az érintett virtuális gépekhez.</li></ol>|
 
 
-## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Az ügynök művelete sikertelen volt a DPM az ügynök koordinátor szolgáltatást a kiszolgálón kommunikációs hiba miatt
+## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Az ügynök művelete sikertelen volt, mert kommunikációs hiba történt a DPM-ügynök koordinátori szolgáltatásával a kiszolgálón
 
-| Művelet | A hiba részletei | Áthidaló megoldás |
+| Művelet | Hibaüzenet részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Ügynök leküldése a védett kiszolgálók | Az ügynök művelete sikertelen volt a DPM-Ügynökkoordinátor szolgáltatással kommunikációs hiba miatt a \<kiszolgáló_neve >. | **Ha a javasolt művelet látható a termék nem működik, hajtsa végre az alábbi lépéseket**: <ul><li> Ha egy számítógép nem megbízható tartományból való csatlakoztatás, hajtsa végre a [ezeket a lépéseket](https://technet.microsoft.com/library/hh757801(v=sc.12).aspx). <br> (OR) </li><li> Ha egy számítógép megbízható tartományban való csatlakoztatás, hibáinak elhárítása az ismertetett lépéseket követve [ebben a blogbejegyzésben](https://blogs.technet.microsoft.com/dpm/2012/02/06/data-protection-manager-agent-network-troubleshooting/). <br>(OR)</li><li> Próbálja ki a letiltás víruskereső hibaelhárítás céljából. Ha feloldja a problémát, javasolt a víruskereső beállításainak módosításához [Ez a cikk](https://technet.microsoft.com/library/hh757911.aspx).</li></ul> |
+| Ügynök (ek) leküldése a védett kiszolgálókra | Az ügynök művelete sikertelen volt, mert kommunikációs hiba történt a \<servername > DPM-ügynökkoordinátor szolgáltatásával. | **Ha a termékben bemutatott javasolt művelet nem működik, hajtsa végre a következő lépéseket**: <ul><li> Ha nem megbízható tartományból csatlakoztat egy számítógépet, kövesse [az alábbi lépéseket](https://technet.microsoft.com/library/hh757801(v=sc.12).aspx). <br> VAGY </li><li> Ha megbízható tartományból csatlakoztat egy számítógépet, a [jelen blogban](https://blogs.technet.microsoft.com/dpm/2012/02/06/data-protection-manager-agent-network-troubleshooting/)ismertetett lépések végrehajtásával hibaelhárítást végezhet. <br>VAGY</li><li> Próbálja meg letiltani a víruskeresőt hibaelhárítási lépésként. Ha feloldja a problémát, módosítsa a vírusvédelmi beállításokat a [jelen cikkben](https://technet.microsoft.com/library/hh757911.aspx)javasolt módon.</li></ul> |
 
-## <a name="setup-could-not-update-registry-metadata"></a>A telepítő nem tudta frissíteni a beállításjegyzékbeli metaadatokat
+## <a name="setup-could-not-update-registry-metadata"></a>A telepítő nem tudja frissíteni a beállításjegyzék metaadatait
 
-| Művelet | A hiba részletei | Áthidaló megoldás |
+| Művelet | Hibaüzenet részletei | Áthidaló megoldás |
 |-----------|---------------|------------|
-|Telepítés | A telepítő nem tudta frissíteni a beállításjegyzékbeli metaadatokat. A frissítési hiba a tárhelyhasználat overusage vezethet. Elkerülése érdekében frissítse az ReFS-csonkolás beállításjegyzék-bejegyzést. | A beállításkulcs beállítása **SYSTEM\CurrentControlSet\Control\FileSystem\RefsEnableInlineTrim**. Állítsa a Dword értékét 1-re. |
-|Telepítés | A telepítő nem tudta frissíteni a beállításjegyzékbeli metaadatokat. A frissítési hiba a tárhelyhasználat overusage vezethet. Ennek elkerülése érdekében frissítse a kötet SnapOptimization beállításjegyzék-bejegyzést. | A beállításkulcs létrehozása **SOFTWARE\Microsoft Data Protection Manager\Configuration\VolSnapOptimization\WriteIds** egy üres karakterláncot tartalmazó. |
+|Telepítés | A telepítő nem tudja frissíteni a beállításjegyzék metaadatait. Ez a frissítési hiba a tárterület-használat túlterheléséhez vezethet. Ennek elkerüléséhez frissítse a ReFS-vágási beállításjegyzékbeli bejegyzést. | Módosítsa a **SYSTEM\CurrentControlSet\Control\FileSystem\RefsEnableInlineTrim**beállításkulcsot. Állítsa a DWORD értéket 1-re. |
+|Telepítés | A telepítő nem tudja frissíteni a beállításjegyzék metaadatait. Ez a frissítési hiba a tárterület-használat túlterheléséhez vezethet. Ennek elkerüléséhez frissítse a kötet SnapOptimization beállításjegyzékbeli bejegyzését. | Hozza létre a SOFTWARE\Microsoft-adatvédelmi **Manager\Configuration\VolSnapOptimization\WriteIds** beállításkulcsot egy üres karakterlánc-értékkel. |
 
-## <a name="registration-and-agent-related-issues"></a>Regisztráció és az ügynökkel kapcsolatos problémák
+## <a name="registration-and-agent-related-issues"></a>Regisztráció és ügynökkel kapcsolatos problémák
 
-| Művelet | A hiba részletei | Áthidaló megoldás |
+| Művelet | Hibaüzenet részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Ügynök leküldése a védett kiszolgálók | A kiszolgáló megadott hitelesítő adatok érvénytelenek. | **Ha a javasolt művelet található a termék nem működik, a következő lépésekkel**: <br> Próbálja ki a védelmi ügynök manuális telepítése az üzemi kiszolgálón megadott [Ez a cikk](https://technet.microsoft.com/library/hh758186(v=sc.12).aspx#BKMK_Manual).|
-| Az Azure Backup szolgáltatás ügynökének nem sikerült kapcsolódni az Azure Backup szolgáltatás (azonosító: 100050) | Az Azure Backup szolgáltatás ügynökének nem sikerült kapcsolódni az Azure Backup szolgáltatással. | **Ha a javasolt művelet található a termék nem működik, a következő lépésekkel**: <br>1. Futtassa a következő parancsot egy rendszergazda jogú parancssorból: **psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe**. Ekkor megnyílik az Internet Explorer-ablakban. <br/> 2. Lépjen a **eszközök** > **Internetbeállítások** > **kapcsolatok** > **LAN-beállítások**. <br/> 3. Módosítsa a beállításokat, egy proxykiszolgáló használatára. Adja meg a proxy adatait.<br/> 4. Ha a gép korlátozott internet-hozzáféréssel, győződjön meg arról, hogy a gépen, vagy a proxy tűzfal beállításai engedélyezik-e [URL-címek](backup-configure-vault.md#verify-internet-access) és [IP-cím](backup-configure-vault.md#verify-internet-access).|
-| Az Azure Backup szolgáltatás ügynökének telepítése nem sikerült | Nem sikerült telepíteni a Microsoft Azure Recovery Services. A rendszer a Microsoft Azure Recovery Services-berendezés által végrehajtott összes módosítás vissza lett állítva. (Azonosító: 4024) | Az Azure-ügynök manuális telepítése.
+| Ügynök (ek) leküldése a védett kiszolgálókra | A kiszolgálóhoz megadott hitelesítő adatok érvénytelenek. | **Ha a termékben bemutatott javasolt művelet nem működik, hajtsa végre a következő lépéseket**: <br> Próbálja meg manuálisan telepíteni a védelmi ügynököt az üzemi kiszolgálón az ebben a [cikkben](https://technet.microsoft.com/library/hh758186(v=sc.12).aspx#BKMK_Manual)megadott módon.|
+| Azure Backup ügynök nem tudott csatlakozni a Azure Backup szolgáltatáshoz (azonosító: 100050) | A Azure Backup ügynök nem tudott kapcsolódni a Azure Backup szolgáltatáshoz. | **Ha a termékben bemutatott javasolt művelet nem működik, hajtsa végre a következő lépéseket**: <br>1. Futtassa a következő parancsot egy emelt szintű parancssorból: **PsExec-i-s "C:\Program Files\Internet Explorer\iexplore.exe**. Ekkor megnyílik az Internet Explorer ablaka. <br/> 2. Lépjen az **eszközök** > **internetes beállítások** > kapcsolatokLAN > -**Beállítások menüpontra**. <br/> 3. Módosítsa a beállításokat proxykiszolgáló használatára. Ezután adja meg a proxykiszolgáló részleteit.<br/> 4. Ha a számítógépén korlátozott az Internet-hozzáférés, győződjön meg arról, hogy a számítógépen vagy a proxyn a tűzfalbeállítások engedélyezik ezeket az [URL-címeket](backup-configure-vault.md#verify-internet-access) és [IP-címeket](backup-configure-vault.md#verify-internet-access).|
+| Azure Backup ügynök telepítése nem sikerült | A Microsoft Azure Recovery Services telepítése sikertelen volt. A rendszer által a Microsoft Azure Recovery Services telepítés során végrehajtott összes módosítás vissza lett állítva. (Azonosító: 4024) | Manuálisan telepítse az Azure-ügynököt.
 
 
 ## <a name="configuring-protection-group"></a>Védelmi csoport konfigurálása
 
-| Művelet | A hiba részletei | Áthidaló megoldás |
+| Művelet | Hibaüzenet részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Védelmi csoportok konfigurálása | A DPM nem tudta felsorolni az alkalmazás-összetevő, az a védett számítógép (védett számítógép neve). | Válassza ki **frissítése** a konfigurálás védelmi csoport felhasználói felület képernyőn a megfelelő adatforrás/összetevő szintjén. |
-| Védelmi csoportok konfigurálása | Nem sikerült beállítani a védelmet | Ha egy SQL-kiszolgáló a védett kiszolgálón, győződjön meg arról, hogy a sysadmin (rendszergazda) szerepkör engedélyeket adtak meg a védett számítógépen a system fióknak (NTAuthority\System) leírtak szerint [Ez a cikk](https://technet.microsoft.com/library/hh757977(v=sc.12).aspx).
-| Védelmi csoportok konfigurálása | Nincs elegendő szabad terület a védelmi csoport számára a tárolókészletben. | A lemezeket a tárolókészlethez hozzáadott [nem tartalmazhat egy partíció](https://technet.microsoft.com/library/hh758075(v=sc.12).aspx). Törölje a meglévő köteteket a lemezeken. Adja hozzá a tárolókészlethez.|
-| Szabályzat módosítása |Nem sikerült módosítani a biztonsági mentési szabályzat. Hiba: Az aktuális művelet belső szolgáltatáshiba [0x29834] miatt nem sikerült. Némi várakozás után próbálkozzon újra a művelettel. Ha a probléma tartósan fennáll, forduljon a Microsoft ügyfélszolgálatához. | **OK:**<br/>Ez a hiba akkor fordul elő, a három feltétel: amikor biztonsági beállításai engedélyezve vannak, csökkenteni a megőrzési időtartam alatt a korábban megadott minimális értékek meg, és amikor a rendszer nem támogatott verzióját. (Nem támogatott verziók által alábbi 2.0.9052-es verzióját a Microsoft Azure Backup Server és az Azure Backup Server frissítése 1.) <br/>**Javasolt művelet:**<br/> -Házirendekkel kapcsolatos frissítések folytatásához, fent a minimális megőrzési időszak a megadott megőrzési idejének beállítása. (A minimális megőrzési időszak a hét nap a napi, heti, három hét szükséges 4 hetes havonta vagy egy év az éves.) <br><br>Ha szükséges, egy másik az előnyben részesített módszer az, hogy frissítse a backup-ügynök és az Azure Backup Server kihasználhatja a biztonsági frissítéseket. |
+| Védelmi csoportok konfigurálása | A DPM nem tudja felsorolni az alkalmazás összetevőjét a védett számítógépen (a védett számítógép neve). | Válassza a **frissítés** lehetőséget a védelmi csoport felhasználói felületének konfigurálása képernyőn a megfelelő DataSource/Component szinten. |
+| Védelmi csoportok konfigurálása | Nem sikerült beállítani a védelmet. | Ha a védett kiszolgáló egy SQL-kiszolgáló, ellenőrizze, hogy az [ebben a cikkben](https://technet.microsoft.com/library/hh757977(v=sc.12).aspx)leírtak szerint meg lett-e biztosítva a rendszerfiók (NTAuthority\System) rendszergazdai szerepkör engedélyei a védett számítógépen.
+| Védelmi csoportok konfigurálása | Nincs elegendő szabad terület a tárolóban ehhez a védelmi csoporthoz. | A tárolóhelyhez hozzáadott lemezek [nem tartalmazhatnak partíciót](https://technet.microsoft.com/library/hh758075(v=sc.12).aspx). Törölje a lemezeken lévő összes meglévő kötetet. Ezután adja hozzá őket a Storage-készlethez.|
+| Szabályzat módosítása |Nem lehet módosítani a biztonsági mentési szabályzatot. Hiba: Az aktuális művelet végrehajtása egy belső szolgáltatási hiba miatt meghiúsult [0x29834]. Némi idő elteltével próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. | **Okozhat**<br/>Ez a hiba három feltétel teljesülése esetén fordul elő: Ha a biztonsági beállítások engedélyezve vannak, akkor a rendszer a korábban megadott minimális értékek alatti megőrzési időtartamot próbálja csökkenteni, és ha nem támogatott verziót szeretne használni. (A nem támogatott verziók a Microsoft Azure Backup Server 2.0.9052 és a Azure Backup Server Update 1 verziónál régebbiek.) <br/>**Javasolt művelet:**<br/> A házirendekkel kapcsolatos frissítések folytatásához állítsa a megadott megőrzési időszakot a minimális megőrzési időtartam fölé. (A minimális megőrzési idő napi hét nap, heti három hét, havi vagy egy év éves időszakra szól.) <br><br>Egy másik előnyben részesített módszer a biztonsági mentési ügynök és a Azure Backup Server frissítése az összes biztonsági frissítés kihasználása érdekében. |
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tartalék
 
-| Művelet | A hiba részletei | Áthidaló megoldás |
+| Művelet | Hibaüzenet részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Backup | Váratlan hiba történt a feladat futása közben. Az eszköz nem áll készen. | **Ha a javasolt művelet található a termék nem működik, tegye a következőket:** <br> <ul><li>Állítsa be az árnyékmásolat-tároló terület a védelmi csoport elemeken korlátlanra, és futtassa a konzisztencia-ellenőrzést.<br></li> (OR) <li>Próbálja meg törölni a meglévő védelmi csoportot, és több új csoport létrehozása. Minden egyes új védelmi csoport egyetlen elemet kell benne.</li></ul> |
-| Backup | Ha csak a rendszerállapotot biztonsági, győződjön meg arról, hogy van-e elég szabad hely a védett számítógépen a rendszerállapot biztonsági másolatának tárolásához. | <ol><li>Győződjön meg arról, hogy a Windows Server biztonsági másolat a védett gépen telepítve van.</li><li>Győződjön meg arról, hogy van-e elég hely a védett számítógépen a rendszerállapot. A legegyszerűbben úgy, hogy e, nyissa meg a védett számítógépen nyissa meg a Windows Server biztonsági másolat, a kijelölések kattintással, és kattintson az operációs rendszer nélküli Helyreállítás. A felhasználói felület majd kiderül, hogy mekkora terület megadása kötelező. Nyissa meg **WSB** > **helyi biztonsági másolat** > **biztonsági mentés ütemezése** > **válassza ki a biztonsági mentés konfigurációja**  >  **Teljes kiszolgáló** (méret jelenik meg). Ez a méret használni az ellenőrzéshez.</li></ol>
-| Backup | A BMR biztonsági mentése sikertelen | Ha az operációs rendszer nélküli Helyreállítás mérete nagy, át néhány alkalmazás az operációs rendszer meghajtójának, és próbálkozzon újra. |
-| Backup | Egy új Microsoft Azure Backup Server a VMware virtuális gép védelmének újbóli beállításához a beállítás nem jelenik meg szerint adhatók hozzá. | VMware-tulajdonságok hivatkozott vannak a Microsoft Azure Backup Server régi, elavult példányát. A probléma megoldása:<br><ol><li>A VCenter (SC-VMM egyenértékű), nyissa meg a **összefoglalás** fülre, majd a **Vlastní Atributy**.</li>  <li>Törölje a régi, a Microsoft Azure Backup Server nevét a **DPMServer** értéket.</li>  <li>Lépjen vissza az új Microsoft Azure Backup Server, és módosítsa a old.  Miután kiválasztotta a **frissítése** gombra, a virtuális gép megjelenik egy jelölőnégyzet bejelölésével elérhető telepítésként, hozzáadja a védelemhez.</li></ol> |
-| Backup | Hiba történt a megosztott fájlok/mappák elérése | Próbálja meg módosítani a víruskereső beállításainak a TechNet-cikkben leírtak [víruskereső szoftver futtatása a DPM-kiszolgálón](https://technet.microsoft.com/library/hh757911.aspx).|
+| Tartalék | Váratlan hiba történt a feladat futása közben. Az eszköz nem áll készen. | **Ha a termékben bemutatott javasolt művelet nem működik, hajtsa végre a következő lépéseket:** <br> <ul><li>Állítsa az árnyékmásolat tárolóhelyét korlátlanra a védelmi csoport elemeinél, majd futtassa a konzisztencia-ellenőrzés parancsot.<br></li> VAGY <li>Próbálja meg törölni a meglévő védelmi csoportot, és hozzon létre több új csoportot. Minden új védelmi csoportnak külön elemmel kell rendelkeznie.</li></ul> |
+| Tartalék | Ha csak a rendszerállapotról készít biztonsági másolatot, ellenőrizze, hogy van-e elegendő szabad hely a védett számítógépen a rendszerállapot biztonsági másolatának tárolásához. | <ol><li>Ellenőrizze, hogy a Windows Server biztonsági másolat telepítve van-e a védett gépen.</li><li>Ellenőrizze, hogy van-e elegendő hely a védett számítógépen a rendszerállapothoz. Ennek a legegyszerűbb módja a védett számítógép megnyitása, a Windows Server biztonsági másolat megnyitása, a kijelölések átadása, majd a BMR kiválasztása. A felhasználói felület ekkor megadja, hogy mekkora lemezterületre van szükség. Nyissa meg a **WSB** > **helyi biztonsági mentési** > **ütemtervét** > ,**válassza a biztonsági mentési konfiguráció** > **teljes kiszolgáló** elemet (a méret megjelenik). Az ellenőrzéshez használja ezt a méretet.</li></ol>
+| Tartalék | A BMR biztonsági mentése sikertelen | Ha a BMR mérete nagyméretű, helyezzen át néhány alkalmazást az operációsrendszer-meghajtóra, és próbálkozzon újra. |
+| Tartalék | A VMware virtuális gépek új Microsoft Azure Backup-kiszolgálón történő ismételt védelemmel való ellátásának lehetősége nem jelenik meg a hozzáadáshoz elérhetőként. | A VMware-tulajdonságokat a Microsoft Azure Backup kiszolgáló egy régi, kivont példánya irányítja. A probléma megoldása:<br><ol><li>A VCenter (SC-VMM egyenértékű) lapon lépjen az **Összefoglalás** lapra, majd az **Egyéni attribútumok**elemre.</li>  <li>Törölje a régi Microsoft Azure Backup-kiszolgáló nevét a **DPMServer** értékből.</li>  <li>Térjen vissza az új Microsoft Azure Backup-kiszolgálóra, és módosítsa a PG-t.  A **frissítés** gomb kiválasztását követően a virtuális gép a védelemhez való hozzáadáshoz elérhető jelölőnégyzettel jelenik meg.</li></ol> |
+| Tartalék | Hiba történt a fájlok/megosztott mappák elérésekor | Próbálja meg módosítani a vírusvédelmi beállításokat a TechNet-cikkben javasolt módon a [DPM-kiszolgálón futó víruskereső szoftver futtatásával](https://technet.microsoft.com/library/hh757911.aspx).|
 
 
-## <a name="change-passphrase"></a>Jelszó módosítása
+## <a name="change-passphrase"></a>Hozzáférési kód módosítása
 
-| Művelet | A hiba részletei | Áthidaló megoldás |
+| Művelet | Hibaüzenet részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Jelszó módosítása |A biztonsági megadott PIN-kód helytelen. Adja meg a helyes biztonsági PIN-kód, a művelet végrehajtásához. |**OK:**<br/> Ez a hiba akkor fordul elő, ha beír egy érvénytelen, vagy a biztonsági PIN-kód lejárt, egy kritikus fontosságú művelet (például a jelszó módosítása) hajt végre. <br/>**Javasolt művelet:**<br/> A művelet végrehajtásához meg kell adnia egy érvényes biztonsági PIN-kód. A PIN-kód jelentkezzen be az Azure Portalon, és nyissa meg a Recovery Services-tároló. Ezután lépjen a **beállítások** > **tulajdonságok** > **biztonsági PIN-kód készítése**. A jelszó módosításához használja a PIN-kódot. |
-| Jelszó módosítása |Nem sikerült. AZONOSÍTÓ: 120002 |**OK:**<br/>Ez a hiba akkor fordul elő, amikor biztonsági beállításai engedélyezve vannak, vagy amikor megpróbálja módosítani a jelszót, ha egy nem támogatott verzióját használja.<br/>**Javasolt művelet:**<br/> A jelszó módosításához először frissítenie kell a backup-ügynök a minimális verzióra, amely 2.0.9052. Ön emellett minimális értéke 1. frissítés az Azure Backup Server frissítése, és adja meg egy érvényes biztonsági PIN-kód. A PIN-kód lekéréséhez jelentkezzen be az Azure Portalra, és lépjen a Recovery Services-tároló. Ezután lépjen a **beállítások** > **tulajdonságok** > **biztonsági PIN-kód készítése**. A jelszó módosításához használja a PIN-kódot. |
+| Hozzáférési kód módosítása |A megadott biztonsági PIN-kód helytelen. A művelet végrehajtásához adja meg a helyes biztonsági PIN-kódot. |**Okozhat**<br/> Ez a hiba akkor fordul elő, ha érvénytelen vagy lejárt biztonsági PIN-kódot ad meg a kritikus művelet végrehajtása közben (például a jelszó módosítása). <br/>**Javasolt művelet:**<br/> A művelet végrehajtásához érvényes biztonsági PIN-kódot kell megadnia. A PIN-kód beszerzéséhez jelentkezzen be a Azure Portalba, és nyissa meg a Recovery Services-tárolót. Ezután lépjen a **Beállítások** > **Tulajdonságok** > **biztonsági PIN-kód létrehozásához**. Ezt a PIN-kódot használhatja a jelszó megváltoztatásához. |
+| Hozzáférési kód módosítása |Sikertelen volt a művelet. Azonosító: 120002 |**Okozhat**<br/>Ez a hiba akkor fordul elő, ha a biztonsági beállítások engedélyezve vannak, vagy ha nem támogatott verziót használ, amikor megpróbál módosítani egy jelszót.<br/>**Javasolt művelet:**<br/> A jelszó módosításához először frissítenie kell a Backup ügynököt a 2.0.9052 minimális verziójára. Emellett frissítenie kell Azure Backup Server az 1. frissítés minimumára, majd érvényes biztonsági PIN-kódot kell megadnia. A PIN-kód beszerzéséhez jelentkezzen be a Azure Portalba, és nyissa meg a Recovery Services-tárolót. Ezután lépjen a **Beállítások** > **Tulajdonságok** > **biztonsági PIN-kód létrehozásához**. Ezt a PIN-kódot használhatja a jelszó megváltoztatásához. |
 
 
-## <a name="configure-email-notifications"></a>E-mail értesítések konfigurálása
+## <a name="configure-email-notifications"></a>E-mail-értesítések konfigurálása
 
-| Művelet | A hiba részletei | Áthidaló megoldás |
+| Művelet | Hibaüzenet részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Használja az Office 365-fiókja e-mail-értesítések beállítása |Hiba azonosítója: 2013| **OK:**<br> Próbálja meg használni az Office 365-fiókkal <br>**Javasolt művelet:**<ol><li> A rendszer az első lépésben, győződjön meg arról, hogy a "Engedélyezése névtelen Relay a egy fogadási összekötőn" a DPM-kiszolgáló az Exchange van beállítva. Konfigurálásával kapcsolatos további információkért lásd: [található egy fogadási összekötőn névtelen továbbító engedélyezése](https://technet.microsoft.com/library/bb232021.aspx) a TechNet webhelyén.</li> <li> Ha nem használja a belső SMTP-továbbítás és be kell állítania az Office 365-kiszolgáló használatával, akkor állíthat be az IIS lennie a továbbító. A DPM-kiszolgáló konfigurálása [továbbítja az IIS-sel az O365 az SMTP](https://technet.microsoft.com/library/aa995718(v=exchg.65).aspx).<br><br> **FONTOS:** Ügyeljen arra, hogy a felhasználó\@tartomány.com formátum és *nem* tartomány\felhasználó.<br><br><li>Használja a helyi kiszolgáló nevét, SMTP-kiszolgáló pont a DPM az 587-es port. Ezután mutasson, a felhasználó e-mail-címe, amely az e-maileket kell származnia.<li> A felhasználónevet és jelszót a DPM SMTP telepítés oldalon egy olyan tartományi fiók, amely a DPM a tartományban kell lennie. </li><br> **MEGJEGYZÉS**: Ha módosítja a SMTP-kiszolgáló címét, végezze el a módosítást az új beállítások, a beállítások panel bezárásához, és majd újból megnyitja, és ellenőrizze, hogy tükrözze az új értéket.  Egyszerűen módosítása és tesztelése előfordulhat, hogy nem mindig okozhat az új beállítások érvényesítéséhez, így a legjobb tesztelésére is így.<br><br>Ez a folyamat során bármikor törölheti ezeket a beállításokat a DPM-konzol bezárása, és a következő beállításkulcsok szerkesztésével: **HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> SMTPPassword törlése és SMTPUserName kulcsok**. Felveheti őket vissza a felhasználói felület, amikor újra elindítani.
+| E-mail-értesítések beállítása Office 365-fiók használatával |Hiba azonosítója: 2013| **Okozhat**<br> Office 365-fiók használatának megkísérlése <br>**Javasolt művelet:**<ol><li> Az első dolog, hogy a "névtelen továbbító engedélyezése egy fogadási összekötőn" a DPM-kiszolgálóhoz az Exchange-kiszolgálón legyen beállítva. További információ a konfigurálásáról: [Névtelen továbbító engedélyezése fogadási összekötőn](https://technet.microsoft.com/library/bb232021.aspx) a TechNeten.</li> <li> Ha nem használ belső SMTP-továbbítót, és az Office 365-kiszolgáló használatával kell beállítania, beállíthatja, hogy az IIS továbbító legyen. Konfigurálja úgy a DPM-kiszolgálót, hogy [az IIS használatával továbbítsa az SMTP-t a O365](https://technet.microsoft.com/library/aa995718(v=exchg.65).aspx).<br><br> **FONTOS** Ügyeljen arra, hogy a felhasználói\@domain.com formátumot használja, és *ne* megadásakor<br><br><li>A DPM pont a helyi kiszolgáló nevét használja SMTP-kiszolgálóként, 587-as porton. Ezután mutasson arra a felhasználói e-mailre, amelyről az e-mailek származnak.<li> A DPM SMTP-beállítás lapjának felhasználónevének és jelszavának a DPM tartományában lévő tartományi fiókhoz kell tartoznia. </li><br> **MEGJEGYZÉS**: Ha megváltoztatja az SMTP-kiszolgáló címe beállítást, végezze el a módosítást az új beállításokra, majd kattintson a beállítások mezőre, majd nyissa meg újra, hogy az tükrözze az új értéket.  Előfordulhat, hogy a módosítás és a tesztelés nem mindig okozza az új beállítások érvénybe léptetését, így a tesztelés így a legjobb megoldás.<br><br>A folyamat során bármikor törölheti ezeket a beállításokat a DPM-konzol bezárásával és a következő beállításkulcsok szerkesztésével: **A HKLM\SOFTWARE\Microsoft\Microsoft adatvédelem Manager\Notification\ <br/> törli a SMTPPassword és a SMTPUserName kulcsokat**. Ha újra elindítják, a felhasználói felülethez is hozzáadhatók.
+
+
+## <a name="common-issues"></a>Gyakori problémák
+
+Ez a szakasz a Azure Backup Server használata során előforduló gyakori hibákat ismerteti.
+
+
+### <a name="cbpsourcesnapshotfailedreplicamissingorinvalid"></a>CBPSourceSnapshotFailedReplicaMissingOrInvalid
+
+Hibaüzenet | Javasolt művelet |
+-- | --
+A biztonsági mentés sikertelen, mert a lemez biztonsági másolati replikája érvénytelen vagy hiányzik. | A probléma megoldásához ellenőrizze az alábbi lépéseket, majd próbálja megismételni a műveletet: <br/> 1. Lemezes helyreállítási pont létrehozása<br/> 2. Konzisztencia-ellenőrzés futtatása az adatforráson <br/> 3. Állítsa le az adatforrás védelmét, majd konfigurálja újra az adatforrás védelmét.
+
+### <a name="cbpsourcesnapshotfailedreplicametadatainvalid"></a>CBPSourceSnapshotFailedReplicaMetadataInvalid
+
+Hibaüzenet | Javasolt művelet |
+-- | --
+A forrás kötetének pillanatképe sikertelen volt, mert a replikán található metaadatok érvénytelenek. | Hozzon létre egy lemez-helyreállítási pontot az adatforrásból, és próbálkozzon újra az online biztonsági mentéssel
+
+### <a name="cbpsourcesnapshotfailedreplicainconsistent"></a>CBPSourceSnapshotFailedReplicaInconsistent
+
+Hibaüzenet | Javasolt művelet |
+-- | --
+A forrásoldali kötet pillanatképe nem sikerült, mert inkonzisztens adatforrás-replika. | Konzisztencia-ellenőrzés futtatása az adatforráson, majd próbálkozzon újra
+
+### <a name="cbpsourcesnapshotfailedreplicacloningissue"></a>CBPSourceSnapshotFailedReplicaCloningIssue
+
+Hibaüzenet | Javasolt művelet |
+-- | --
+A biztonsági mentés nem sikerült, mert a lemezes biztonsági másolat replikájának klónozása sikertelen volt.| Győződjön meg arról, hogy az összes korábbi lemezes biztonsági másolat másodpéldány-fájlja (. vhdx) le van választva, és nincs folyamatban lemezről lemezre történő biztonsági mentés az online biztonsági mentések során.

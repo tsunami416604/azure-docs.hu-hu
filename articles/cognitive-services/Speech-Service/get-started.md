@@ -1,7 +1,7 @@
 ---
-title: Beszédszolgáltatások ingyenes kipróbálása
+title: A Speech Service ingyenes kipróbálása
 titleSuffix: Azure Cognitive Services
-description: A Speech Services használatának első lépései egyszerűen és megfizethető. Egy 30 napos ingyenes próbaverzió lehetővé teszi, hogy Ön mit a szolgáltatás tegye és eldönteni, hogy ez az alkalmazás igényeinek megfelelő felderítése.
+description: A beszédfelismerési szolgáltatás első lépései egyszerűek és megfizethetők. Egy 30 napos ingyenes próbaverzió lehetővé teszi, hogy Ön mit a szolgáltatás tegye és eldönteni, hogy ez az alkalmazás igényeinek megfelelő felderítése.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 203526b23a9571f0cccf3ebed432978772282418
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a8797afdfacfcfc75445c7f35083aeb9bb847ac1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226421"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562927"
 ---
 # <a name="try-speech-services-for-free"></a>Beszédszolgáltatások ingyenes kipróbálása
 
-A Speech Services használatának első lépései egyszerűen és megfizethető. Egy 30 napos ingyenes próbaverzió lehetővé teszi, hogy Ön mit a szolgáltatás tegye és eldönteni, hogy ez az alkalmazás igényeinek megfelelő felderítése.
+A Speech Services első lépései egyszerűek és megfizethetők. Egy 30 napos ingyenes próbaverzió lehetővé teszi, hogy Ön mit a szolgáltatás tegye és eldönteni, hogy ez az alkalmazás igényeinek megfelelő felderítése.
 
-Ha több időre van szüksége, iratkozzon fel a Microsoft Azure-fiók – együttműködik a 200 USD szolgáltatási kredit legfeljebb 30 napig beszédszolgáltatások fizetős felé alkalmazható.
+Ha több időre van szüksége, regisztráljon egy Microsoft Azure-fiókra, amely az $200-as szolgáltatási Kredittel rendelkezik, amelyet akár 30 napig is alkalmazhat a fizetős szolgáltatások előfizetése felé.
 
-Végül a beszédszolgáltatások kínál egy ingyenes, az alacsony terheltségű szint, amely lehetővé teszi az alkalmazások fejlesztéséhez. Ez az ingyenes előfizetés még a szolgáltatási jóváírás lejárta után is megtarthatja.
+Végül a Speech Services egy ingyenes, kis mennyiségű, az alkalmazások fejlesztéséhez megfelelő szintet kínál. Ez az ingyenes előfizetés még a szolgáltatási jóváírás lejárta után is megtarthatja.
 
 ## <a name="free-trial"></a>Ingyenes próbaidőszak
 
@@ -38,7 +38,7 @@ Regisztráció a 30 napos ingyenes próbaverziójára:
 
    ![Beszéd szolgáltatások lap](media/index/try-speech-api-free-trial1.png)
 
-1. A **beszédszolgáltatások**, jelölje be a **API-kulcs lekérése** gombra.
+1. A **Speech Services**területen válassza az **API-kulcs** beolvasása gombot.
 
    ![API-kulcs](media/index/try-speech-api-free-trial2.png)
 
@@ -50,24 +50,24 @@ Regisztráció a 30 napos ingyenes próbaverziójára:
 
     Regisztrálhat egy ingyenes Microsoft-fiókot a [Microsoft fiókportál](https://account.microsoft.com/account). Első lépésként kattintson **Bejelentkezés Microsoft-fiókkal** és, ha a rendszer kéri, hogy jelentkezzen be, kattintson a **hozzon létre egyet.** A lépésekkel hozhat létre, és ellenőrizze az új Microsoft-fiókjával.
 
-Miután bejelentkezett, próbálja meg a Cognitive Services, az ingyenes próbaverzió kezdődik. A megjelenő képernyőn látható weblapon, amelyhez jelenleg rendelkezik próba-előfizetések az Azure Cognitive Services szolgáltatásokat sorolja fel. Két előfizetési kulcs van listázva, mellett **beszédszolgáltatások**. Használhatja az egyiket sem az alkalmazásokban.
+Miután bejelentkezett, próbálja meg a Cognitive Services, az ingyenes próbaverzió kezdődik. A megjelenő képernyőn látható weblapon, amelyhez jelenleg rendelkezik próba-előfizetések az Azure Cognitive Services szolgáltatásokat sorolja fel. Két előfizetési kulcs szerepel a **Speech Services**mellett. Használhatja az egyiket sem az alkalmazásokban.
 
 > [!NOTE]
 > Ingyenes próba-előfizetések szerepelnek, az USA nyugati régiója. Amikor a kéréseket, ügyeljen arra, hogy a `westus` végpont.
 
 ## <a name="new-azure-account"></a>Új Azure-fiók
 
-Új Azure-fiókok jóváírás 200 USD értékű szolgáltatás, amely legfeljebb 30 napig érhető el. Ez a jóváírás is használhat, részletesebb megismerése a beszédfelismerési szolgáltatás vagy alkalmazás fejlesztésének megkezdése.
+Új Azure-fiókok jóváírás 200 USD értékű szolgáltatás, amely legfeljebb 30 napig érhető el. Ezt a kreditet a Speech Services további megismeréséhez vagy az alkalmazásfejlesztés megkezdéséhez használhatja.
 
 Regisztráljon egy új Azure-fiókkal, keresse fel a [oldala az Azure-előfizetési](https://azure.microsoft.com/free/ai/), kattintson a **ingyenes próba megkezdése,** és az új Azure-fiók létrehozása a Microsoft-fiókjával.
 
 Regisztrálhat egy ingyenes Microsoft-fiókot a [Microsoft fiókportál](https://account.microsoft.com/account). Első lépésként kattintson **Bejelentkezés Microsoft-fiókkal** és, ha a rendszer kéri, hogy jelentkezzen be, kattintson a **hozzon létre egyet.** A lépésekkel hozhat létre, és ellenőrizze az új Microsoft-fiókjával.
 
-Miután létrehozta az Azure-fiókjával, kövesse a következő szakaszban a beszédszolgáltatások előfizetés indítása.
+Az Azure-fiók létrehozása után kövesse a következő szakaszban ismertetett lépéseket a Speech Services-előfizetés elindításához.
 
 ## <a name="create-a-speech-resource-in-azure"></a>Beszéd erőforrás létrehozása az Azure-ban
 
-Az Azure-fiókjával (ingyenes vagy fizetős szint) beszédszolgáltatások erőforrás hozzáadása:
+A Speech Services-erőforrások (ingyenes vagy fizetős szintek) hozzáadása az Azure-fiókhoz:
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) Microsoft-fiókjával.
 
@@ -89,7 +89,7 @@ Az Azure-fiókjával (ingyenes vagy fizetős szint) beszédszolgáltatások erő
 
    * Az új erőforrás neve. A név segítségével megkülönböztetésére, amelyek ugyanazt a szolgáltatást több előfizetést.
    * Válassza ki az Azure-előfizetést, amelyhez az új erőforrás a határozza meg, hogy a díjak számlázása van társítva.
-   * Válassza ki a [régió](regions.md) az erőforrás helyének.
+   * Válassza ki [](regions.md) azt a régiót, ahol az erőforrást használni szeretné.
    * Válassza ki, vagy egy ingyenes vagy fizetős tarifacsomagra. Kattintson a **díjszabási részletek megtekintése** kapcsolatban az egyes szintek díjszabását és a használati kvótákat.
    * Hozzon létre egy új erőforráscsoportot, beszéd ehhez az előfizetéshez, vagy az előfizetés hozzárendelése egy meglévő erőforráscsoportot. Erőforráscsoportokat tarthatja rendezve különböző Azure-előfizetéseit.
    * A jövőben az előfizetés hozzáférés kényelmes, válassza ki a **rögzítés az irányítópulton** jelölőnégyzetet.
@@ -114,7 +114,7 @@ Váltson egy előfizetésből egy másikba, például amikor az ingyenes próbav
 > Ingyenes próbaverziós kulcsok jönnek létre az USA nyugati RÉGIÓJA (`westus`) régióban. Az Azure-irányítópulton keresztül létrehozott előfizetés lehet néhány más régióban található, amennyiben így dönt.
 
 * Ha az alkalmazás egy [beszéd SDK](speech-sdk.md), például adja meg a régiókód `westus`, a beszéd-konfiguráció létrehozása során.
-* Ha az alkalmazás használja a beszédszolgáltatások egyik [REST API-k](rest-apis.md), a régiót a végpont URI-kérelem indítására használ részét képezi.
+* Ha az alkalmazás a Speech Services [REST API](rest-apis.md)-jait használja, a régió a kérelmek elkészítésekor használt végpont URI része.
 
 Régió létrehozott kulcsok csak az adott régióban érvényesek. Próbál használni őket a más régiókban hitelesítési hibákat eredményez.
 
@@ -123,5 +123,5 @@ Régió létrehozott kulcsok csak az adott régióban érvényesek. Próbál has
 Hajtsa végre a 10 perces gyors útmutatók, vagy tekintse meg az SDK-minták:
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: A beszédfelismerést C# ](quickstart-csharp-dotnet-windows.md) 
->  [beszéd SDK-minták](speech-sdk.md#get-the-samples)
+> [Rövid útmutató: Beszédfelismerés felismerése C# ](quickstart-csharp-dotnet-windows.md)a 
+>  [Speech SDK](speech-sdk.md#get-the-samples) -mintákban

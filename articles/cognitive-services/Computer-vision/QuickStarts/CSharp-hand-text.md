@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Bontsa ki a kézzel írt szöveg – RESTC#'
+title: 'Gyors útmutató: Nyomtatott és kézzel írt szöveg kinyerése – REST,C#'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban kézzel írt szöveget fog kinyerni egy képből a Computer Vision C#-pal történő használatával.
+description: Ebben a rövid útmutatóban Kinyeri a nyomtatott és a kézírásos szöveget egy képből C#a Computer Vision API használatával.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 04c3c255e4218ef2fcd0bbd1d33da1abe3fc0c7f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 7646a079d9cbc2f6362a38c5ac12371d3f32d4e5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604474"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312019"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-c"></a>Gyors útmutató: A Computer Vision REST API használatával kézzel írt szöveg kinyerése ésC#
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-c"></a>Gyors útmutató: Nyomtatott és kézírásos szöveg kinyerése a Computer Vision REST API ésC#
 
-Ebben a rövid útmutatóban a Computer Vision REST API-val kiveszi írt szöveg felismerése képekből egy rendszerképből. Az a [kötegelt olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API és a [olvasási művelet eredményének](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API-t írt szöveg felismerése képekből észleli a képet, és bontsa ki a felismert karaktereket karaktersorozattá be.
+Ebben a rövid útmutatóban Kinyeri a nyomtatott és/vagy kézírásos szövegeket a rendszerképekből Computer Vision REST API használatával. A [Batch olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) és [olvasási műveletének eredményének](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) módszereivel a képeken lévő szövegeket azonosíthatja, és kinyerheti a felismert karaktereket egy géppel olvasható karakteres adatfolyamba. Az API meghatározza, hogy melyik felismerési modellt kell használni az egyes szövegekhez, így a nyomtatott és a kézírásos szöveggel is támogatja a lemezképeket.
 
 > [!IMPORTANT]
-> Ellentétben a [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metódus, a [kötegelt olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett az olvasási metódus adja vissza egy URI-t a `Operation-Location` válasz fejléce mező. Ezt követően meghívhatja az URI, amely a [olvasási művelet eredményének](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) módszer annak érdekében, hogy ellenőrizze az állapotát, és a kötegelt olvasási metódus meghívása eredményét adja vissza.
+> A [Batch olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metódusa aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett az olvasási metódus egy URI-t ad vissza `Operation-Location` a válasz fejléc mezőjében. Ezután használhatja ezt az URI-t, amely az [olvasási művelet eredménye](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) metódust jelöli az állapot ellenőrzéséhez és a Batch olvasási metódus hívásának eredményeinek visszaadásához.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Rendelkeznie kell [Visual Studio 2015 vagy újabb](https://visualstudio.microsoft.com/downloads/).
-- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Megjelenik a származó ingyenes próbaverziós kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) előfizetni a Computer Vision, és a kulcs beszerzése.
+- A [Visual Studio 2015-es vagy újabb verziójával](https://visualstudio.microsoft.com/downloads/)kell rendelkeznie.
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait.
 
 ## <a name="create-and-run-the-sample-application"></a>A mintaalkalmazás létrehozása és futtatása
 
@@ -43,7 +43,7 @@ A minta a Visual Studióban való létrehozásához végezze el az alábbi lép�
     1. Válassza a megjelenő **Newtonsoft.Json** lehetőséget, majd jelölje be a projektnév melletti jelölőnégyzetet, és kattintson az **Install** (Telepítés) gombra.
 1. Cserélje le a `Program.cs` kódját az alábbi kódra, majd hajtsa végre a következő változtatásokat, ahol szükséges:
     1. Cserélje le a `subscriptionKey` értéket az előfizetői azonosítóra.
-    1. Értékét cserélje `uriBase` a végpont URL-CÍMÉT a [kötegelt olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metódus, ahol szerezte be az előfizetési kulcsok szükség esetén az Azure-régiókba.
+    1. Ha szükséges, cserélje le a Batch-olvasási metódus végponti URL-címét az Azure-régióból, ahol az előfizetési kulcsokat beszerezte. [](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) `uriBase`
 1. Futtassa a programot.
 1. Írja be parancssorba egy helyi kép elérési útját.
 
@@ -77,16 +77,16 @@ namespace CSHttpClientSample
         static void Main()
         {
             // Get the path and filename to process from the user.
-            Console.WriteLine("Handwriting Recognition:");
+            Console.WriteLine("Text Recognition:");
             Console.Write(
-                "Enter the path to an image with handwritten text you wish to read: ");
+                "Enter the path to an image with text you wish to read: ");
             string imageFilePath = Console.ReadLine();
 
             if (File.Exists(imageFilePath))
             {
                 // Call the REST API method.
                 Console.WriteLine("\nWait a moment for the results to appear.\n");
-                ReadHandwrittenText(imageFilePath).Wait();
+                ReadText(imageFilePath).Wait();
             }
             else
             {
@@ -97,11 +97,11 @@ namespace CSHttpClientSample
         }
 
         /// <summary>
-        /// Gets the handwritten text from the specified image file by using
+        /// Gets the text from the specified image file by using
         /// the Computer Vision REST API.
         /// </summary>
-        /// <param name="imageFilePath">The image file with handwritten text.</param>
-        static async Task ReadHandwrittenText(string imageFilePath)
+        /// <param name="imageFilePath">The image file with text.</param>
+        static async Task ReadText(string imageFilePath)
         {
             try
             {
@@ -116,7 +116,7 @@ namespace CSHttpClientSample
 
                 HttpResponseMessage response;
 
-                // Two REST API methods are required to extract handwritten text.
+                // Two REST API methods are required to extract text.
                 // One method to submit the image for processing, the other method
                 // to retrieve the text found in the image.
 
@@ -161,9 +161,9 @@ namespace CSHttpClientSample
                 // If the first REST API method completes successfully, the second 
                 // REST API method retrieves the text written in the image.
                 //
-                // Note: The response may not be immediately available. Handwriting
+                // Note: The response may not be immediately available. Text
                 // recognition is an asynchronous operation that can take a variable
-                // amount of time depending on the length of the handwritten text.
+                // amount of time depending on the length of the text.
                 // You may need to wait or retry this operation.
                 //
                 // This example checks once per second for ten seconds.
@@ -324,7 +324,7 @@ Ha már nincs rá szükség, törölje a Visual Studio-megoldást. Ehhez nyissa 
 
 ## <a name="next-steps"></a>További lépések
 
-Fedezze fel egy egyszerű Windows-alkalmazás által használt számítógépes Látástechnológiai optikai karakterfelismerés (OCR) végrehajtásához. Hozzon létre intelligens csonkolva miniatűrök; plusz észlelése, kategorizálását, címkét, és vizuális szolgáltatások, többek között az arcok, a kép ismertetik.
+Fedezzen fel egy alapszintű Windows-alkalmazást, amely Computer Visiont használ az optikai karakterfelismerés (OCR) végrehajtásához. Intelligens vágású miniatűrök létrehozása; Emellett vizuális funkciók (például arcok) észlelése, kategorizálása, címkézése és leírása a képen.
 
 > [!div class="nextstepaction"]
 > [Computer Vision API C# oktatóanyag](../Tutorials/CSharpTutorial.md)

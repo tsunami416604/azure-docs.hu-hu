@@ -1,5 +1,5 @@
 ---
-title: Adatok gyűjtése a az üzemi modellekben
+title: Adatok gyűjtése az üzemi modelleken
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan gyűjtheti az Azure Machine Learning bemeneti modell adatokat egy Azure Blob Storage.
 services: machine-learning
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 12/03/2018
+ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: f596fb3a066017f0236de5b79586891dd21efb11
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 81ffe8618e07f2e49e4439ea57e254e5d37974f9
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443982"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227951"
 ---
 # <a name="collect-data-for-models-in-production"></a>A modellek éles adatok gyűjtése
 
 Ebből a cikkből megismerheti a bemeneti modell adatok gyűjtésére az Azure Machine Learning-szolgáltatások üzembe helyezte az Azure Kubernetes-fürt (AKS) egy Azure Blob storage-bA. 
 
 Ha engedélyezve van, az összegyűjtött adatok segítségével:
-* [Adatok drifts figyelése](how-to-monitor-data-drift.md) , termelési adatok kerül, a modell
+* [](how-to-monitor-data-drift.md) Az adateltolódások monitorozása, mivel a termelési adatként a modellbe kerül
 
 * Jobb döntéseket hozhat a mikor újratanítása vagy a modell optimalizálása
 
@@ -50,7 +50,7 @@ A kimeneti adatokat a BLOB elérési útja ezt a szintaxist követi:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+- Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 - Egy Azure Machine Learning szolgáltatás munkaterületén, a parancsprogramok, és az Azure Machine Learning SDK-t tartalmazó Python telepítve van egy helyi könyvtárba. Ezekről az előfeltételekről használatával beszerzéséről a [a fejlesztési környezet konfigurálása](how-to-configure-environment.md) dokumentumot.
 
@@ -81,7 +81,7 @@ Az engedélyezéshez kell tennie:
     prediction_dc = ModelDataCollector("best_model", identifier="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
-    *Korrelációs azonosító* egy nem kötelező paraméter, nem kell állítsa be, ha a modell nem van szükség. A correlationId kellene helyen könnyíti meg az egyéb adatokkal, a könnyebb leképezés. (Példák: LoanNumber CustomerId, stb.)
+    *Korrelációs azonosító* egy nem kötelező paraméter, nem kell állítsa be, ha a modell nem van szükség. A correlationId kellene helyen könnyíti meg az egyéb adatokkal, a könnyebb leképezés. (Példák a következőkre: LoanNumber, Vevőkód stb.)
     
     *Azonosító* későbbi a mappastruktúra a BLOB létrehozására használt, használat "feldolgozott" vagy "raw" adatok felosztásához.
 

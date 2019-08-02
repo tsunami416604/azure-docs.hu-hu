@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
 ms.openlocfilehash: 957fff73f2406e0e057a7c978dd76a6bd9c156b7
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67876208"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple biztonsági mentési célként a NetBackup
@@ -277,7 +277,7 @@ Az előző feltételezések alapján hozzon létre egy 26 TiB-es StorSimple-rét
 
     ![NetBackup felügyeleti konzol, válassza ki a StorSimple kötet lemezét](./media/storsimple-configure-backup-target-using-netbackup/nbimage3.png)
 
-4.  Adja meg a biztonsági mentési cél nevét, majd a varázsló befejezéséhez kattintson a **tovább** > gombra.
+4.  Adja meg a biztonsági mentési cél nevét, majd a varázsló befejezéséhez kattintson a **tovább** > gombra. ****
 
 5.  Tekintse át a beállításokat, majd kattintson a **Befejezés gombra**.
 
@@ -300,11 +300,11 @@ Az alábbi ábra egy tipikus kötet hozzárendelését mutatja be egy biztonság
 
 Íme egy példa egy GFS-rotációs ütemezésre négy hétig, havonta és évente:
 
-| Gyakoriság/biztonsági mentés típusa | Korlátlan | Növekményes (nap 1-5)  |   
+| Gyakoriság/biztonsági mentés típusa | Teljes | Növekményes (nap 1-5)  |   
 |---|---|---|
 | Hetente (1-4 hét) | Szombat | Hétfő – péntek |
 | Havi  | Szombat  |   |
-| Éves | Szombat  |   |
+| Évente | Szombat  |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>StorSimple-kötetek kiosztása egy NetBackup biztonsági mentési feladatokhoz
 
@@ -340,9 +340,9 @@ A következő folyamat azt feltételezi, hogy a NetBackup és a célként megado
 
    ![NetBackup felügyeleti konzol, biztonsági mentés gyakorisága és elforgatása új szabályzathoz](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8. Válassza **a következő** > Befejezéslehetőséget. >   A szabályzat létrehozása után módosíthatja az ütemtervet.
+8. Válassza **a következő** >  **** **** Befejezéslehetőséget. >   A szabályzat létrehozása után módosíthatja az ütemtervet.
 
-9. Válassza ki az imént létrehozott házirend kibontását, majd válassza az ütemtervek lehetőséget.
+9. Válassza ki az imént létrehozott házirend kibontását, majd válasszaaz ütemtervek lehetőséget.
 
    ![NetBackup felügyeleti konzol, új szabályzatok ütemezett listája](./media/storsimple-configure-backup-target-using-netbackup/nbimage13.png)
 
@@ -408,14 +408,14 @@ A következő táblázat bemutatja, hogyan állíthatja be a biztonsági mentés
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS-példa: GFS rotációs hetente, havonta és évenkénti ütemezés szerint
 
-| Hét | Korlátlan | 1\. növekményes nap | 2\. növekményes nap | 3\. növekményes nap | 4\. növekményes nap | 5\. növekményes nap |
+| Hét | Teljes | 1\. növekményes nap | 2\. növekményes nap | 3\. növekményes nap | 4\. növekményes nap | 5\. növekményes nap |
 |---|---|---|---|---|---|---|
 | 1\. hét | Helyi RAID-kötet  | Helyi RAID-kötet | Helyi RAID-kötet | Helyi RAID-kötet | Helyi RAID-kötet | Helyi RAID-kötet |
 | 2\. hét | StorSimple hét 2-4 |   |   |   |   |   |
 | 3\. hét | StorSimple hét 2-4 |   |   |   |   |   |
 | 4\. hét | StorSimple hét 2-4 |   |   |   |   |   |
 | Havi | StorSimple havonta |   |   |   |   |   |
-| Éves | StorSimple évente  |   |   |   |   |   |
+| Évente | StorSimple évente  |   |   |   |   |   |
 
 
 ## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>StorSimple-kötetek kiosztása NetBackup archiválási és ismétlődési feladatokhoz
@@ -436,13 +436,13 @@ A kezdeti lemez-készletek meghatározása után három további tárolási éle
 
 2. Adja meg a pillanatkép nevét, majd kattintson a **Hozzáadás**gombra.
 
-3. Az **új művelet** párbeszédpanel **Tulajdonságok** lapjának **művelet**területén válassza a **biztonsági mentés**lehetőséget. Válassza ki a célhelyhez, a megőrzési **típushoz**és a **megőrzési időszakhoz**használni kívánt értékeket. Kattintson az **OK** gombra.
+3. Az **új művelet** párbeszédpanel **Tulajdonságok** lapjának **művelet**területén válassza a **biztonsági mentés**lehetőséget. Válassza ki a célhelyhez,a megőrzési **típushoz**és a **megőrzési időszakhoz**használni kívánt értékeket. Kattintson az **OK** gombra.
 
    ![NetBackup felügyeleti konzol, új művelet párbeszédpanel](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
 
    Ez határozza meg az első biztonsági mentési műveletet és tárat.
 
-4. Válassza ki az előző műveletet, majd válassza a **Hozzáadás**lehetőséget. A **tárolási művelet módosítása** párbeszédpanelen válassza ki a célhelyhez, a megőrzési típushoz és a **megőrzési időszakhoz**használni kívánt értékeket.
+4. Válassza ki az előző műveletet, majd válassza a **Hozzáadás**lehetőséget. A **tárolási művelet módosítása** párbeszédpanelen válassza ki a célhelyhez, a megőrzésitípushoz ésa **megőrzési időszakhoz**használni kívánt értékeket.
 
    ![NetBackup felügyeleti konzol, tárolási művelet módosítása párbeszédpanel](./media/storsimple-configure-backup-target-using-netbackup/nbimage23.png)
 

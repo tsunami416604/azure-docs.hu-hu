@@ -1,61 +1,61 @@
 ---
-title: Az Azure Dev tárolóhelyek beépülő modul használatával a Jenkins Azure Kubenetes szolgáltatással
-description: Ismerje meg, hogyan használható az Azure fejlesztési tárolóhelyek beépülő modul egy folyamatos integrációs folyamat.
+title: A Jenkins Azure dev Spaces beépülő moduljának használata az Azure Kubenetes Service-szel
+description: Ismerje meg, hogyan használható az Azure dev Spaces beépülő modul a folyamatos integrációs folyamatokban.
 author: tomarchermsft
 ms.author: tarcher
 ms.service: jenkins
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/18/2019
-ms.openlocfilehash: f5f74ebeb803a5c493f1dbedb6501adf3a88c215
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.date: 07/31/2019
+ms.openlocfilehash: 10ff8f4645ee1e7023c96174236243a3b85de938
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785675"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679126"
 ---
 <!-- GMinchAQ, 06/18/19 -->
 
-# <a name="tutorial-using-the-azure-dev-spaces-plugin-for-jenkins-with-azure-kubenetes-service"></a>Oktatóanyag: Az Azure Dev tárolóhelyek beépülő modul használatával a Jenkins Azure Kubenetes szolgáltatással 
+# <a name="tutorial-using-the-azure-dev-spaces-plugin-for-jenkins-with-azure-kubenetes-service"></a>Oktatóanyag: A Jenkins Azure dev Spaces beépülő moduljának használata az Azure Kubenetes Service-szel 
 
-Az Azure fejlesztési tárolóhelyek tesztelése és iteratív fejlesztés az Azure Kubernetes Service (AKS) futtató replikálása vagy a függőségek utánzása nélkül mikroszolgáltatás alkalmazás lehetővé teszi. Az Azure fejlesztési tárolóhelyek beépülő modul a Jenkins segít a folyamatos integráció és teljesítés (CI/CD) a fejlesztési szóköz használatára.
+Az Azure dev Spaces lehetővé teszi, hogy tesztelje és iteratív az Azure Kubernetes szolgáltatásban (ak) futó Service-alkalmazást, anélkül, hogy replikálni vagy kigúnyolni kellene a függőségeket. A Jenkins-hez készült Azure dev Spaces beépülő modul segítséget nyújt a folyamatos integráció és a továbbítás (CI/CD) folyamatában a fejlesztői terek használatához.
 
-Ez az oktatóanyag az Azure Container Registry (ACR) is használja. ACR tárolja a lemezképeket, és a egy ACR-tevékenység létrehozza a Docker és a Helm-összetevők. ACR-REL és az ACR-tevékenység használatával az összetevő létrehozásához nincs szükség további szoftverek, például a Dockert, a Jenkins-kiszolgáló telepítését. 
+Ez az oktatóanyag a Azure Container Registry (ACR) használatát is használja. Az ACR rendszerképeket tárol, és az ACR-feladatok Docker-és Helm-összetevőket építenek. Az ACR és az ACR feladatának az összetevő-generációhoz való használata esetén nincs szükség további szoftverek, például a Docker telepítésére a Jenkins-kiszolgálón. 
 
-Ez az oktatóanyag ezen feladatok fogja végrehajtani:
+Ebben az oktatóanyagban a következő feladatokat hajtja végre:
 
 > [!div class="checklist"]
-> * Azure fejlesztői szóközt engedélyezni AKS-fürt létrehozása
-> * Több szolgáltatást az AKS-alkalmazás üzembe helyezése
+> * Azure dev Spaces-kompatibilis AK-fürt létrehozása
+> * Többszolgáltatásos alkalmazás üzembe helyezése az AK-ban
 > * A Jenkins-kiszolgáló előkészítése
-> * Az Azure fejlesztési tárolóhelyek beépülő moduljának használata a Jenkins-folyamatokban őket a projektbe egyesítés előtt kód módosítások előnézetének megtekintése
+> * Az Azure dev Spaces beépülő modul használata a Jenkins-folyamatokban a kód módosításainak előnézetéhez, mielőtt összevonja őket a projektbe
 
-Ez az oktatóanyag feltételezi, hogy mag köztes ismerete Azure-szolgáltatások, az AKS, ACR, az Azure fejlesztési tárolóhelyek, a Jenkins [folyamatok](https://jenkins.io/doc/book/pipeline/) és beépülő modulok és a GitHub. Hasznos eszközök, például a kubectl és a Helm támogató alapszintű ismeretét.
+Ez az oktatóanyag az alapvető Azure-szolgáltatások, az AK, az ACR, az Azure dev Spaces, a Jenkins- [folyamatok](https://jenkins.io/doc/book/pipeline/) és a githubok közti ismeretét feltételezi. A kubectl és a Helm támogató eszközeinek alapszintű ismerete hasznos.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-* Egy GitHub-fiók. Ha nem rendelkezik GitHub-fiókkal, hozzon létre egy [ingyenes fiókot](https://github.com/) megkezdése előtt.
+* Egy GitHub-fiók. Ha nem rendelkezik GitHub-fiókkal, hozzon létre egy [ingyenes fiókot](https://github.com/) a Kezdés előtt.
 
-* [A Visual Studio Code](https://code.visualstudio.com/download) együtt a [Azure fejlesztési tárolóhelyek](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) kiterjesztés telepítése.
+* A [Visual Studio Code](https://code.visualstudio.com/download) és az [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) bővítmény telepítve van.
 
-* [Az Azure CLI telepítve](/cli/azure/install-azure-cli?view=azure-cli-latest), 2.0.43 verzió vagy újabb verziója.
+* [Azure CLI telepítve](/cli/azure/install-azure-cli?view=azure-cli-latest), 2.0.43 vagy újabb verzió.
 
-* Egy Jenkins-főkiszolgáló. Ha még nem rendelkezik Jenkins-főkiszolgáló, üzembe helyezése [Jenkins](https://aka.ms/jenkins-on-azure) az Azure-ban, a jelen szakasz lépéseit követve [rövid](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). 
+* Egy Jenkins-főkiszolgáló. Ha még nem rendelkezik Jenkins-főkiszolgálóval, [](https://aka.ms/jenkins-on-azure) az ebben a rövid útmutatóban ismertetett lépéseket követve telepítse a Jenkinst az Azure- [ban.](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template) 
 
-* A Jenkins-kiszolgáló kell rendelkeznie a Helm és a telepített és elérhető a Jenkins-fiókjába, a kubectl, ebben az oktatóanyagban leírtak szerint.
+* A Jenkins-kiszolgálónak mind a Helm, mind a kubectl telepítve kell lennie, és elérhetőnek kell lennie a Jenkins-fiók számára az oktatóanyag későbbi részében ismertetett módon.
 
-* A VS Code, VS Code Terminálszolgáltatások vagy a WSL és a Bash. 
+* VS Code, a VS Code terminál vagy a WSL és a bash. 
 
 
 ## <a name="create-azure-resources"></a>Azure-erőforrások létrehozása
 
-Ebben a szakaszban az Azure-erőforrásokat hoz létre:
+Ebben a szakaszban az Azure-erőforrásokat hozza létre:
 
-* Egy erőforráscsoport tartalmazó összes bevezetésének erőforrást ehhez az oktatóanyaghoz.
-* Egy [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) (AKS-) fürt.
-* Egy [az Azure container registry](https://docs.microsoft.com/azure/container-registry/) (ACR) (ACR-feladatok használatával), és a Docker-rendszerképek tárolásához.
+* Az oktatóanyaghoz tartozó összes Azure-erőforrást tartalmazó erőforráscsoport.
+* Egy [Azure Kubernetes-szolgáltatás](https://docs.microsoft.com/azure/aks/) (ak) fürtje.
+* Egy [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) (ACR), amely felépíti (ACR-feladatokat használ) és Docker-rendszerképeket tárol.
 
 1. Hozzon létre egy erőforráscsoportot.
 
@@ -63,36 +63,36 @@ Ebben a szakaszban az Azure-erőforrásokat hoz létre:
     az group create --name MyResourceGroup --location westus2
     ```
 
-2. AKS-fürt létrehozása. Az AKS-fürt létrehozása egy [régióban, amely támogatja a fejlesztői, szóközök](../dev-spaces/about.md#supported-regions-and-configurations).
+2. Hozzon létre egy AK-fürtöt. Hozza létre az AK-fürtöt egy olyan [régióban, amely támogatja a fejlesztői helyeket](../dev-spaces/about.md#supported-regions-and-configurations).
 
     ```bash
     az aks create --resource-group MyResourceGroup --name MyAKS --location westus2 --kubernetes-version 1.11.9 --enable-addons http_application_routing --generate-ssh-keys --node-count 1 --node-vm-size Standard_D1_v2
     ```
 
-3. Aks-ben: fejlesztési szóköz használatára konfigurálja.
+3. Állítsa be az AK-t a fejlesztői szóközök használatára.
 
     ```bash
     az aks use-dev-spaces --resource-group MyResourceGroup --name MyAKS
     ```
-    Ez a lépés telepíti a `azds` CLI-bővítményt.
+    Ez a lépés telepíti `azds` a CLI-bővítményt.
 
-4. Tárolóregisztrációs adatbázis létrehozása.
+4. Hozzon létre egy tároló-beállításjegyzéket.
 
     ```bash
     az acr create -n MyACR -g MyResourceGroup --sku Basic --admin-enabled true
     ```
 
-## <a name="deploy-sample-apps-to-the-aks-cluster"></a>Mintaalkalmazások az AKS-fürt üzembe helyezése
+## <a name="deploy-sample-apps-to-the-aks-cluster"></a>Minta alkalmazások üzembe helyezése az AK-fürtön
 
-Ebben a szakaszban állítsa be a fejlesztési szóközzel, és üzembe helyezünk egy mintaalkalmazást, hogy az AKS-fürtöt az előző szakaszban létrehozott. Az alkalmazás két részből áll *webfrontend* és *mywebapi*. Mindkét összetevő fejlesztési szóközzel vannak üzembe helyezve. Az oktatóanyag későbbi részében meg fogjuk beküldhető egy tartalomjavítási kérelem mywebapi ellen a Jenkins CI folyamat indításához.
+Ebben a szakaszban egy fejlesztői területet állít be, és üzembe helyez egy minta alkalmazást az utolsó szakaszban létrehozott AK-fürtön. Az alkalmazás két részből áll: a webfrontendből és a *mywebapi*. Mindkét összetevő egy fejlesztői térben van üzembe helyezve. Az oktatóanyag későbbi részében egy lekéréses kérelmet küld a mywebapi-től a CI-folyamat elindításához a Jenkins-ben.
 
-Azure fejlesztői szóközöket és több szolgáltatást fejlesztési használatáról az Azure fejlesztési tárolóhelyek további információkért lásd: [használatának első lépései a Java Azure fejlesztési tárolóhelyek](https://docs.microsoft.com/azure/dev-spaces/get-started-java), és [az Azure fejlesztési tárolóhelyek több szolgáltatásos fejlesztői](https://docs.microsoft.com/azure/dev-spaces/multi-service-java). Ezek az oktatóanyagok itt nem szereplő további háttér-információkat biztosít.
+Az Azure dev Spaces és a többszolgáltatásos fejlesztés Azure dev Spaces használatával történő használatáról további információért lásd: az [Azure dev Spaces használatának első lépései](https://docs.microsoft.com/azure/dev-spaces/get-started-java)a Javával és [Az Azure dev Spaces szolgáltatással](https://docs.microsoft.com/azure/dev-spaces/multi-service-java)történő többfunkciós fejlesztés. Ezek az oktatóanyagok további háttér-információkat is biztosítanak itt.
 
-1. Töltse le a https://github.com/Azure/dev-spaces GitHub-tárházban.
+1. Töltse le https://github.com/Azure/dev-spaces a tárházat a githubról.
 
-2. Nyissa meg a `samples/java/getting-started/webfrontend` mappát a VS Code-ban. (Figyelmen kívül hagyhat minden olyan alapértelmezett kérést, amely az objektumok hibakeresésére vagy a projekt visszaállítására vonatkozik.)
+2. Nyissa `samples/java/getting-started/webfrontend` meg a mappát a vs Code-ban. (Figyelmen kívül hagyhat minden olyan alapértelmezett kérést, amely az objektumok hibakeresésére vagy a projekt visszaállítására vonatkozik.)
 
-3. Frissítés `/src/main/java/com/ms/sample/webfrontend/Application.java` a következő a következő módon:
+3. A `/src/main/java/com/ms/sample/webfrontend/Application.java` frissítés a következőhöz hasonlóan néz ki:
 
     ```java
     package com.ms.sample.webfrontend;
@@ -122,38 +122,38 @@ Azure fejlesztői szóközöket és több szolgáltatást fejlesztési használa
     }
     ```
 
-4. Kattintson a **nézet** majd **terminálon** az integrált terminálon megnyitásához a VS Code-ban.
+4. Kattintson a **nézet** , majd a **terminál** lehetőségre az integrált terminálnak a vs Code-ban való megnyitásához.
 
-5. Futtassa a `azds prep` paranccsal készítse elő az alkalmazás futtatásához fejlesztési szóközzel. Ezt a parancsot kell futtatni a `dev-spaces/samples/java/getting-started/webfrontend` készíti elő az alkalmazás megfelelően:
+5. Futtassa a `azds prep` parancsot, hogy előkészítse az alkalmazást egy fejlesztői térben való futtatásra. Az alkalmazás megfelelő előkészítéséhez futtatnia `dev-spaces/samples/java/getting-started/webfrontend` kell a parancsot:
 
     ```bash
     azds prep --public
     ```
 
-    A fejlesztési tárolóhelyek CLI `azds prep` parancs létrehozza a Docker és a Kubernetes eszközök alapértelmezett beállításokkal. Ezek a fájlok megőrzéséhez a projekt teljes élettartama, és testre szabható:
+    A dev Spaces CLI `azds prep` parancsa az alapértelmezett beállításokkal létrehoz Docker-és Kubernetes-eszközöket. Ezek a fájlok továbbra is a projekt élettartama alatt maradnak, és testre szabhatók:
 
-    * `./Dockerfile` és `./Dockerfile.develop` leírják, az alkalmazás tárolórendszerképet, és hogyan forráskódját épül, és a tárolón belül futtatja.
+    * `./Dockerfile`és `./Dockerfile.develop` írja le az alkalmazás tárolójának képét, valamint azt, hogy a forráskód hogyan épül fel és fut a tárolón belül.
     * A `./charts/webfrontend` alatt található [Helm-diagram](https://helm.sh/docs/developing_charts/) ismerteti a konténer Kubernetesben történő üzembe helyezését.
-    * `./azds.yaml` az Azure fejlesztési tárolóhelyek konfigurációs fájl van.
+    * `./azds.yaml`Az Azure dev Spaces konfigurációs fájlja.
 
-    További információkért lásd: [hogyan Azure fejlesztési tárolóhelyek működik, és konfigurált](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works).
+    További információ: [Az Azure dev Spaces működése és konfigurálása](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works).
 
-6. Alkalmazás összeállítása és futtatása az AKS használatával a `azds up` parancsot:
+6. Hozza létre és futtassa az alkalmazást az AK- `azds up` ban a paranccsal:
 
     ```bash
     azds up
     ```
-    <a name="test_endpoint"></a>A konzol kimenete az URL-cím által létrehozott kapcsolatos információk beolvasása a `up` parancsot. Ez az alábbi formátumban lesz:
+    <a name="test_endpoint"></a>Ellenőrizze a konzol kimenetét a `up` parancs által létrehozott URL-címmel kapcsolatos információkért. Ez az alábbi formátumban lesz:
 
     ```bash
     (pending registration) Service 'webfrontend' port 'http' will be available at '<url>'
     Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
     ```
-    Nyissa meg az URL-cím egy böngészőablakban, és a web app kell megjelennie. Ahogy a tároló futni kezd, a rendszer `stdout` és `stderr` kimenetet streamel a terminálablakba.
+    Nyissa meg az URL-címet egy böngészőablakban, és tekintse meg a webalkalmazást. Ahogy a tároló futni kezd, a rendszer `stdout` és `stderr` kimenetet streamel a terminálablakba.
 
-8. Következő lépésként állítsa be, és üzembe helyezése *mywebapi*:
+8. Következő lépésként állítsa be és telepítse a *mywebapi*:
 
-    1. Módosítsa a könyvtárat `dev-spaces/samples/java/getting-started/mywebapi`
+    1. Könyvtár módosítása a következőre`dev-spaces/samples/java/getting-started/mywebapi`
 
     2. Futtassa a következőt:
 
@@ -169,45 +169,45 @@ Azure fejlesztői szóközöket és több szolgáltatást fejlesztési használa
 
 ## <a name="prepare-jenkins-server"></a>Jenkins-kiszolgáló előkészítése
 
-Ebben a szakaszban készítse elő a Jenkins-kiszolgáló a minta a CI folyamat futtatása.
+Ebben a szakaszban a Jenkins-kiszolgáló előkészíti a minta CI-folyamat futtatását.
 
 * Beépülő modulok telepítése
-* Helm és a Kubernetes parancssori felület telepítése
+* A Helm és a Kubernetes parancssori felületének telepítése
 * Hitelesítő adatok hozzáadása
 
-### <a name="install-plugins"></a>Beépülő modulok telepítése
+### <a name="install-plug-ins"></a>Beépülő modulok telepítése
 
-1. Jelentkezzen be a Jenkins-kiszolgáló. Válasszon **Jenkins kezelése > beépülő modulok kezelése**.
-2. Az a **elérhető** lapra, válassza ki a következő beépülő modulok:
-    * [Az Azure fejlesztői, szóközök](https://plugins.jenkins.io/azure-dev-spaces)
-    * [Az Azure Container Registry-feladatok](https://plugins.jenkins.io/azure-container-registry-tasks)
-    * [Környezet Injector](https://plugins.jenkins.io/envinject)
+1. Jelentkezzen be a Jenkins-kiszolgálóra. Válassza a **Jenkins kezelése > a beépülő modulok kezelése**lehetőséget.
+2. A **rendelkezésre álló** lapon válassza ki a következő beépülő modulokat:
+    * [Azure dev-helyek](https://plugins.jenkins.io/azure-dev-spaces)
+    * [Azure Container Registry feladatok](https://plugins.jenkins.io/azure-container-registry-tasks)
+    * [Környezeti injektor](https://plugins.jenkins.io/envinject)
     * [GitHub-integráció](https://plugins.jenkins.io/github-pullrequest)
 
-    Ha a beépülő modulok nem jelennek meg a listában, ellenőrizze a **telepített** lapján megtekintheti, ha azok már telepítésekor.
+    Ha ezek a beépülő modulok nem jelennek meg a listában, tekintse meg a **telepített** lapot, és ellenőrizze, hogy telepítve vannak-e már.
 
-3. A beépülő modulok telepítéséhez válassza **letöltése és telepítése az újraindítást követően**.
+3. A beépülő modulok telepítéséhez válassza a **Letöltés most lehetőséget, majd az újraindítás után telepítse a telepítést**.
 
-4. A Jenkins-kiszolgáló, a telepítés befejezéséhez indítsa újra.
+4. A telepítés befejezéséhez indítsa újra a Jenkins-kiszolgálót.
 
-### <a name="install-helm-and-kubectl"></a>Helm és a kubectl telepítése
+### <a name="install-helm-and-kubectl"></a>A Helm és a kubectl telepítése
 
-A mintául szolgáló folyamat Helm és a kubectl használatával helyezze üzembe a fejlesztési területet. Jenkins telepítésekor létrehoz egy rendszergazdai fiók nevű *jenkins*. Helm és a kubectl kell lennie a jenkins-felhasználó számára elérhető.
+A minta folyamat Helm és kubectl használatával helyezi üzembe a fejlesztői területet. A Jenkins telepítésekor létrejön egy *Jenkins*nevű rendszergazdai fiók. A Helm és a kubectl is elérhetőnek kell lennie a Jenkins-felhasználó számára.
 
-1. Létesítsen SSH-kapcsolatot, a Jenkins-főkiszolgáló. 
+1. Létesítsen SSH-kapcsolatokat a Jenkins-főkiszolgálóval. 
 
-2. Váltson a `jenkins` felhasználói:
+2. Váltson a `jenkins` felhasználóra:
     ```bash
     sudo su jenkins
     ```
 
-3. A Helm CLI telepítéséhez. További információkért lásd: [telepítése Helm](https://helm.sh/docs/using_helm/#installing-helm).
+3. Telepítse a Helm CLI-t. További információ: a [Helm telepítése](https://helm.sh/docs/using_helm/#installing-helm).
 
-4. A kubectl telepítése. További információkért lásd: [ **az acs kubernetes install-cli**](https://helm.sh/docs/using_helm/#installing-helm).
+4. Telepítse a kubectl. További információ: [**az ACS kubernetes install-CLI**](https://helm.sh/docs/using_helm/#installing-helm).
 
-### <a name="add-credentials-to-jenkins"></a>Hitelesítő adatok hozzáadása a Jenkinsben
+### <a name="add-credentials-to-jenkins"></a>Hitelesítő adatok hozzáadása a Jenkins-hez
 
-1. A Jenkins Azure-beli szolgáltatásnév hitelesítése és Azure-erőforrások eléréséhez szükség van. A szolgáltatásnév létrehozásához, tekintse meg a [egyszerű szolgáltatás létrehozása](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal) üzembe helyezés az Azure App Service-oktatóanyag szakaszát. Ne felejtse el menteni a kimenet egy másolatát `create-for-rbac` , mivel ezt az információt a következő lépés elvégzéséhez szüksége. A kimenet következőhöz hasonlóan fog kinézni:
+1. A Jenkins-nek szüksége van egy Azure-szolgáltatásra az Azure-erőforrások hitelesítéséhez és eléréséhez. Az egyszerű szolgáltatásnév létrehozásához tekintse meg az üzembe helyezés Azure app Service oktatóanyagban található  [egyszerű szolgáltatásnév létrehozása](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal)című szakaszt. Ügyeljen arra, hogy mentse a kimenet `create-for-rbac` másolatát, mert erre az információra szüksége van a következő lépés végrehajtásához. A kimenet a következőhöz hasonlóan fog kinézni:
 
     ```json
     {
@@ -219,23 +219,23 @@ A mintául szolgáló folyamat Helm és a kubectl használatával helyezze üzem
     }
     ```
 
-2. Adjon hozzá egy *a Microsoft Azure egyszerű szolgáltatás* hitelesítőadat-típus a jenkins kifejezést, használja a szolgáltatásnév adatait az előző lépésben. A neve, az alábbi képernyőképen kimenete megfelel `create-for-rbac`.
+2. Adjon hozzá egy *Microsoft Azure egyszerű szolgáltatásnév* -típust a Jenkins-ben az előző lépés egyszerű szolgáltatásnév információinak használatával. Az alábbi képernyőképen szereplő nevek megfelelnek a kimenetének `create-for-rbac`.
 
-    A **azonosító** a Jenkins-hitelesítő adat neve, a szolgáltatásnévhez tartozó. A példában értékét használja `displayName` (ebben a példányban `xxxxxxxjenkinssp`), de használhat bármilyen szöveget. A hitelesítő adat neve a következő szakaszban AZURE_CRED_ID környezeti változó értéke.
+    Az **azonosító** mező az egyszerű szolgáltatáshoz tartozó Jenkins-beli hitelesítő adat neve. A példa a `displayName` (ebben a `xxxxxxxjenkinssp`példányban) értéket használja, de bármilyen szöveget használhat. A hitelesítő adat neve a AZURE_CRED_ID környezeti változó értéke a következő szakaszban.
 
-    ![Add service principal credentials to Jenkins](media/tutorial-jenkins-dev-spaces/add-service-principal-credentials.png)
+    ![Egyszerű szolgáltatásnév hitelesítő adatainak hozzáadása a Jenkins szolgáltatáshoz](media/tutorial-jenkins-dev-spaces/add-service-principal-credentials.png)
 
-    A **leírás** nem kötelező. További részletes utasítások: [szolgáltatásnév hozzáadása Jenkins](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#add-service-principal-to-jenkins) szakaszt az üzembe helyezés az Azure App Service-oktatóanyag. 
+    A **Leírás** megadása nem kötelező. További részletes útmutatásért lásd: [szolgáltatásnév hozzáadása a Jenkins](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#add-service-principal-to-jenkins) -hez szakasz, az üzembe helyezés Azure app Service oktatóanyagban. 
 
 
 
-3. Az ACR-hitelesítő adatok megjelenítéséhez a következő parancs futtatásával:
+3. Az ACR hitelesítő adatainak megjelenítéséhez futtassa a következő parancsot:
 
     ```bash
     az acr credential show -n <yourRegistryName>
     ```
 
-    Készítsen másolatot a JSON-kimenetet, amely kell kinéznie:
+    Készítsen másolatot a JSON-kimenetről, amelynek a következőhöz hasonlóan kell kinéznie:
 
     ```json
     {
@@ -253,35 +253,35 @@ A mintául szolgáló folyamat Helm és a kubectl használatával helyezze üzem
     }
     ```
 
-4. Adjon hozzá egy *felhasználónév, jelszó* hitelesítőadat-típus a Jenkinsben. A **felhasználónév** az utolsó lépésben, ebben a példában a felhasználónév `acr01`. A **jelszó** az érték az első jelszót, és ebben a példában `vGBP=zzzzzzzzzzzzzzzzzzzzzzzzzzz`. A **azonosító** ACR_CRED_ID értékét az ezeket a hitelesítő adatokat.
+4. Adjon hozzá egy jelszó típusú hitelesítő adatokkal *rendelkező felhasználónevet* a Jenkins-ben. A **Felhasználónév** az utolsó lépésből származó Felhasználónév, ebben a példában `acr01`. A **jelszó** az első jelszó értéke, ebben a példában `vGBP=zzzzzzzzzzzzzzzzzzzzzzzzzzz`. A hitelesítő adat **azonosítója** a ACR_CRED_ID értéke.
 
-5. Az AKS hitelesítő adatok beállítása. Adjon hozzá egy *Kubernetes konfigurációs (kubeconfig)* hitelesítőadat-típus a Jenkinsben (használja az "Enter közvetlenül" beállítást). Az AKS-fürt esetében a hozzáférési hitelesítő adatok lekéréséhez futtassa a következő parancsot:
+5. Hozzon létre egy AK-beli hitelesítő adatokat. Adjon hozzá egy *Kubernetes-konfigurációs (kubeconfig)* hitelesítőadat-típust a Jenkins-ben (használja a "közvetlen bevitel" lehetőséget). Az AK-fürthöz tartozó hozzáférési hitelesítő adatok lekéréséhez futtassa a következő parancsot:
 
     ```cmd
     az aks get-credentials -g MyResourceGroup -n <yourAKSName> -f -
     ```
 
-   A **azonosító** ezeket a hitelesítő adatokat a következő szakaszban KUBE_CONFIG_ID értéke.
+   A hitelesítő adat **azonosítója** a következő szakaszban szereplő KUBE_CONFIG_ID értéke.
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
-A forgatókönyv a példa folyamat kiválasztva egy való életből vett minta alapján: Eseményindítók CI folyamat, amely lekéréses kérelmek állít össze, és ezután telepíti a javasolt változtatások egy Azure dev terület tesztelése, és tekintse át. Attól függően, a felülvizsgálat eredményének a módosítások vannak egyesítve és az aks-ben üzembe helyezett vagy elvetett. Végül a fejlesztési szóközöket eltávolítja.
+A példában szereplő folyamathoz választott forgatókönyv egy valós mintázaton alapul: A lekéréses kérelem egy CI-folyamatot indít el, amely felépíti és üzembe helyezi a javasolt módosításokat egy Azure fejlesztői tárhelyen tesztelés és felülvizsgálat céljából. A felülvizsgálat eredményétől függően a módosítások egyesítve lettek, és a rendszer az AK-ban helyezi üzembe, vagy elveti őket. Végül eltávolítja a fejlesztői területet.
 
-A Jenkins folyamat konfigurálása és a Jenkinsfile határozza meg a szakasz a CI folyamat. Ez a folyamatábra szakaszain és határozzák meg a Jenkinsfile döntési pontokat mutatja:
+A Jenkins-folyamat konfigurációja és Jenkinsfile határozza meg a CI-folyamat szakaszait. Ez a folyamatábra a Jenkinsfile által definiált folyamat szakaszait és döntési pontjait jeleníti meg:
 
-![A Jenkins folyamat folyamat](media/tutorial-jenkins-dev-spaces/jenkins-pipeline-flow.png)
+![Jenkins-folyamat folyamatábrája](media/tutorial-jenkins-dev-spaces/jenkins-pipeline-flow.png)
 
-1. Töltse le a módosított változatát a *mywebapi* -projektet https://github.com/azure-devops/mywebapi. Ez a projekt számos fájlt létrehoz egy folyamatot, szükség tartalmazza többek között a *Jenkinsfile*, *docker-fájlok*, és a Helm-diagramot.
+1. Töltse le a *mywebapi* -projekt módosított verzióját a https://github.com/azure-devops/mywebapi alkalmazásból. Ez a projekt több, a folyamat létrehozásához szükséges fájlt tartalmaz, beleértve a *Jenkinsfile*, a *Dockerfiles*és a Helm diagramot is.
 
-2. Jelentkezzen be a Jenkins. A bal oldali menüben válassza ki a **elem hozzáadása**.
+2. Jelentkezzen be a Jenkinsbe. A bal oldali menüben válassza az **elem hozzáadása elemet**.
 
-3. Válassza ki **folyamat**, majd adja meg egy nevet a a **adjon nevet az elemnek** mezőbe. Válassza ki **OK**, és ezután automatikusan megnyílik a folyamat következő konfigurációs képernyőjén.
+3. Válassza a **folyamat**lehetőséget, majd adjon meg egy nevet az **adja meg az elem nevét** mezőben. Kattintson az **OK gombra**, majd a folyamat-konfiguráció képernyő automatikusan meg fog nyílni.
 
-4. Az a **általános** lapon jelölje **készítse elő a környezetet a Futtatás**. 
+4. Az **általános** lapon keresse meg **a környezet előkészítése a futtatáshoz lehetőséget**. 
 
-5. Ellenőrizze **tartsa a Jenkins környezeti változók** és **tartsa a Jenkins-Buildelés változók**.
+5. A **Jenkins környezeti változóinak megőrzése** és a **Jenkins-Build változók megőrzése**.
 
-6. Az a **tulajdonságok tartalom** mezőbe írja be az alábbi környezeti változókat:
+6. A **Tulajdonságok tartalma** mezőben adja meg a következő környezeti változókat:
 
     ```
     AZURE_CRED_ID=[your credential ID of service principal]
@@ -298,19 +298,19 @@ A Jenkins folyamat konfigurálása és a Jenkinsfile határozza meg a szakasz a 
     TEST_ENDPOINT=[your web frontend end point for testing. Should be webfrontend.XXXXXXXXXXXXXXXXXXX.xxxxxx.aksapp.io]
     ```
 
-    Az előző szakaszok megadott minta értéket használja, a környezeti változók listájának hasonlóan kell kinéznie ezt:
+    Az előző szakaszokban megadott mintaadatok használatával a környezeti változók listáját a következőhöz hasonló módon kell kinéznie:
 
-    ![A Jenkins folyamat környezeti változók](media/tutorial-jenkins-dev-spaces/jenkins-pipeline-environment.png)
+    ![Jenkins-folyamat környezeti változói](media/tutorial-jenkins-dev-spaces/jenkins-pipeline-environment.png)
 
-7. Válasszon **SCM parancsfájlt folyamat** a **folyamat > definíció**.
-8. A **SCM**, válassza a **Git** és írja be az adattár URL-CÍMÉT.
-9. A **ág specifikátor**, adja meg `refs/remotes/origin/${GITHUB_PR_SOURCE_BRANCH}`.
-10. Adja meg az SCM adattár URL-CÍMÉT és a parancsfájl elérési út "Jenkinsfile".
-11. **Egyszerűsített kivétele** ellenőrizni kell.
+7. Válassza ki **a folyamat parancsfájlját az SCM-ből** a **folyamat > definíciójában**.
+8. Az **SCM**-ben válassza a **git** lehetőséget, majd adja meg a tárház URL-címét.
+9. A **ág**megadása mezőben adja meg `refs/remotes/origin/${GITHUB_PR_SOURCE_BRANCH}`a értéket.
+10. Töltse ki az SCM-tárház URL-címét és a "Jenkinsfile" parancsfájl elérési útját.
+11. Az **egyszerűsített pénztárat** ellenőrizni kell.
 
-## <a name="create-a-pull-request-to-trigger-the-pipeline"></a>A folyamat aktiválása a lekéréses kérelem létrehozása
+## <a name="create-a-pull-request-to-trigger-the-pipeline"></a>Lekéréses kérelem létrehozása a folyamat indításához
 
-Ebben a szakaszban 3 befejezése lépésnél hozzá megjegyzéseket a Jenkinsfile része kell, ellenkező esetben a 404-es hiba jelenik meg a régi és új verziókat egymás mellett megtekintéséhez. Alapértelmezés szerint ha úgy dönt, hogy a lekéréses kérelem egyesítése mywebapi megosztott előző verziója lesznek távolítva, és váltotta fel az új verzióra. 1\. lépés elvégzése előtt hajtsa végre a Jenkinsfile a következő módosítást:
+A jelen szakasz 3. lépésének végrehajtásához meg kell adnia a Jenkinsfile egy részét, ellenkező esetben 404-as hibaüzenet jelenik meg, amikor megpróbálja megtekinteni az új és a régi verziókat egymás mellett. Alapértelmezés szerint, ha úgy dönt, hogy egyesíteni kívánja a PR-t, a mywebapi előző megosztott verziója el lesz távolítva, és az új verzió váltja fel. Az 1. lépés végrehajtása előtt végezze el a következő módosítást a Jenkinsfile:
 
 ```Groovy
     if (userInput == true) {
@@ -339,7 +339,7 @@ Ebben a szakaszban 3 befejezése lépésnél hozzá megjegyzéseket a Jenkinsfil
     }
 ```
 
-1. Győződjön meg arról, a módosítás `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`, majd hozza létre a lekéréses kérelmet. Példa:
+1. Végezze el a `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`módosítást, majd hozzon létre egy lekéréses kérelmet. Példa:
 
     ```java
     public String index() {
@@ -347,23 +347,23 @@ Ebben a szakaszban 3 befejezése lépésnél hozzá megjegyzéseket a Jenkinsfil
     }
     ```
 
-2. Jelentkezzen be a Jenkins, és válassza ki a folyamat nevét, és válassza **hozhat létre most**. 
+2. Jelentkezzen be a Jenkins-be, válassza ki a folyamat nevét, majd válassza a **Build most**lehetőséget. 
 
-    Emellett beállíthat egy *webhook* aktiválják automatikusan a Jenkins-folyamat. Amikor egy lekéréses kérelmet is meg kell adni, GitHub problémák az hozzászólás Jenkins, a folyamat elindítása. Webhook beállításával kapcsolatos további információkért lásd: [Jenkins csatlakozás a Githubhoz](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service.md#connect-jenkins-to-github).
+    Beállíthat egy webhookot is a Jenkins-folyamat automatikus elindításához. A lekéréses kérelem megadásakor a GitHub a Jenkins-be KÜLDi a folyamatot, és elindítja a folyamatot. A webhook beállításával kapcsolatos további információkért lásd: a [Jenkins és a GitHub](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service.md#connect-jenkins-to-github)összekapcsolása.
 
-3. Hasonlítsa össze az aktuális megosztott verzióra:
+3. A jelenlegi megosztott verzió változásainak összehasonlítása:
 
-    1. Nyissa meg a böngészőt, és keresse meg a megosztott változatot `https://webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`. TEST_ENDPOINT az URL-címet tartalmaz.
+    1. Nyissa meg a böngészőt, és navigáljon a megosztott verzióhoz `https://webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`. A TEST_ENDPOINT tartalmazza az URL-címet.
 
-    2. Nyisson meg egy másik lapra, és adja meg a lekéréses kérelem fejlesztési terület URL-CÍMÉT. Hasonló lesz `https://<yourdevspacename>.s.webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`. A hivatkozás találja **hozhat létre Előzmények >< build # >> konzolkimenet** a Jenkins-feladat. Az oldal a Keresés `aksapp`, vagy csak az előtagját, keressen `azdsprefix`.
+    2. Nyisson meg egy másik fület, majd adja meg a PR-fejlesztői terület URL-címét. A `https://<yourdevspacename>.s.webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`következőhöz hasonló lesz:. A > < Build History (létrehozási előzmények) elemre mutató hivatkozást a Jenkins-feladatokhoz tartozó **> > konzol kimenetében** találja. Keresse meg az oldalt `aksapp`, vagy csak az előtagot, és `azdsprefix`keresse meg a következőt:.
 
  
 
-### <a name="constructing-the-url-to-the-child-dev-space"></a>Hozhat létre, a gyermek fejlesztési terület URL-címe
+### <a name="constructing-the-url-to-the-child-dev-space"></a>Az URL-cím létrehozása a gyermek fejlesztői területhez
 
-Szövegfájl lekéréses kérelmek, a Jenkins létrehoz egy gyermek fejlesztési tárolóhelyet a csapat megosztott fejlesztési hely alapján, és futtatja a kódot a lekéréses kérelem a gyermek fejlesztési terület. A gyermek fejlesztési területre az URL-cím formájában adható `http://$env.azdsprefix.<test_endpoint>`. 
+Ha lekéréses kérelmet küld, a Jenkins létrehoz egy gyermek-fejlesztési helyet a csapat megosztott fejlesztői területe alapján, és futtatja a kódot a lekéréses kérelemből az adott gyermek-fejlesztési térben. A gyermek fejlesztői területének URL-címe az űrlapot `http://$env.azdsprefix.<test_endpoint>`veszi át. 
 
-**$env.azdsprefix** folyamat-végrehajtás során be az Azure fejlesztési tárolóhelyek beépülő modul által **devSpacesCreate**:
+**$env. azdsprefix** az Azure dev Spaces beépülő modullal **devSpacesCreate**:
 
 ```Groovy
 stage('create dev space') {
@@ -376,9 +376,9 @@ stage('create dev space') {
 }
 ```
 
-A `test_endpoint` a korábban telepített használatával webfrontend alkalmazás URL-cím `azds up`a [mintaalkalmazások üzembe az AKS-fürtöt, a 7. lépés](#test_endpoint). Az érték `$env.TEST_ENDPOINT` a folyamat konfigurációs van beállítva. 
+A `test_endpoint` a korábban üzembe `azds up`helyezett webfrontend-alkalmazás URL-címe a minta- [alkalmazások üzembe helyezése az AK-fürtön, 7. lépés](#test_endpoint). A értéke `$env.TEST_ENDPOINT` a folyamat konfigurációjában van beállítva. 
 
-A következő kódrészlet azt mutatja be, hogyan a gyermek fejlesztési terület URL-t a `smoketest` szakaszban. A kód ellenőrzi, hogy a gyermek fejlesztési terület TEST_ENDPOINT érhető el, és ha igen, letölti az üdvözlő szöveg stdout:
+A következő kódrészlet azt mutatja be, hogyan használják a gyermek dev Space URL- `smoketest` címét a fázisban. A kód ellenőrzi, hogy a gyermek fejlesztői terület TEST_ENDPOINT elérhető-e, és ha igen, letölti a megszólítás szövegét az stdout-ra:
 
 ```Groovy
 stage('smoketest') {
@@ -407,7 +407,7 @@ stage('smoketest') {
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha befejezte a mintaalkalmazás használja, az erőforráscsoport törlésével az Azure erőforrások eltávolítása:
+Ha elkészült a minta alkalmazás használatával, törölje az Azure-erőforrásokat az erőforráscsoport törlésével:
 
 ```bash
 az group delete -y --no-wait -n MyResourceGroup
@@ -415,16 +415,16 @@ az group delete -y --no-wait -n MyResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan használható az Azure fejlesztési tárolóhelyek beépülő modul a Jenkins és az Azure Container Registry beépülő modul kód buildelése és üzembe helyezése fejlesztési adhatja.
+Ebből a cikkből megtudhatta, hogyan használhatja a Jenkins-hez készült Azure dev Spaces beépülő modult és a Azure Container Registry beépülő modult a kód összeállításához és a fejlesztői területekre való üzembe helyezéshez.
 
-Az erőforrások az alábbi lista további információkat biztosít az Azure fejlesztési tárolóhelyek, ACR feladatok és a CI/CD a jenkins-szel.
+Az alábbi források további információkat nyújtanak az Azure fejlesztői tárhelyekről, az ACR-feladatokról és a CI/CD-ről a Jenkins segítségével.
 
-Az Azure fejlesztési tárolóhelyek:
+Azure dev-helyek:
 * [Az Azure Dev Spaces működése és konfigurálása](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works)
 
-ACR-tevékenységek:
+ACR-feladatok:
 * [Operációs rendszer és keretrendszer javításának automatizálása az ACR Tasksszal](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-* [A kód véglegesítésére automatikus build](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
+* [Automatikus Build kód véglegesítve](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
 
-CI/CD a Jenkins az Azure-ban:
-* [A Jenkins folyamatos üzembe helyezés](https://docs.microsoft.com/azure/aks/jenkins-continuous-deployment)
+CI/CD az Azure-beli Jenkins-szel:
+* [Jenkins folyamatos üzembe helyezése](https://docs.microsoft.com/azure/aks/jenkins-continuous-deployment)

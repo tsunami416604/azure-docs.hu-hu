@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: c528f37c8970380678a318ec2d63babd37f89501
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2cac2b350da5ca8738e40f9a288ecf4059e81060
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65228039"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673910"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával HDFS-ből
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -129,7 +129,7 @@ Adatok másolása a HDFS **Parquet vagy tagolt szövegformátum**, tekintse meg 
 > [!NOTE]
 > **Fájlmegosztás** továbbra is támogatja a Parquet vagy szöveges formátum a következő szakaszban említett adatkészlet típusa – a Másolás/keresési tevékenység az előző verziókkal való kompatibilitás érdekében. A jövőben az új modell használata javasolt, és ezek a típusok létrehozása a felhasználói felület szerzői ADF változott.
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -228,7 +228,7 @@ Adatok másolása a HDFS **Parquet vagy tagolt szövegformátum**, tekintse meg 
 > [!NOTE]
 > A Parquet vagy tagolt szövegformátum **FileSystemSource** továbbra is támogatott a következő szakaszban említett típusa másolási tevékenység forrása – az előző verziókkal való kompatibilitás. A jövőben az új modell használata javasolt, és ezek a típusok létrehozása a felhasználói felület szerzői ADF változott.
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -311,7 +311,7 @@ Ez a szakasz ismerteti a mappa elérési útját és nevét, az eredményül kap
 
 [A DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) Hadoop natív parancssori eszköz ehhez elosztott másolja be egy Hadoop-fürtöt. A Distcp parancs futtatása, azt először listázza másolni, hozzon létre több térkép feladatok, a Hadoop-fürt összes fájlt, és a térkép feladatonként bináris másolat fog tenni a fogadó-forrásból.
 
-Másolja a DistCp használata, a fájlok másolása tevékenység támogatási-van az Azure Blob (beleértve a [szakaszos Másolás](copy-activity-performance.md) vagy az Azure Data Lake Store ebben az esetben azt teljes körűen kihasználhatják a fürt power helyett a helyi Integration Runtime futó . Ez különösen akkor, ha a fürt nagyon hatékony biztosít jobb másolási teljesítmény. Az Azure Data Factoryban a konfiguráció alapján, a másolási tevékenység automatikusan hozza létre a distcp parancsot, az elküldés elemre kattintva a Hadoop-fürt és a másolat állapotának figyelése.
+Másolja a DistCp használata, a fájlok másolása tevékenység támogatási-van az Azure Blob (beleértve a [szakaszos Másolás](copy-activity-performance.md)) vagy az Azure Data Lake Store ebben az esetben azt teljes körűen kihasználhatják a fürt power helyett a helyi integrációs futó Modul. Ez különösen akkor, ha a fürt nagyon hatékony biztosít jobb másolási teljesítmény. Az Azure Data Factoryban a konfiguráció alapján, a másolási tevékenység automatikusan hozza létre a distcp parancsot, az elküldés elemre kattintva a Hadoop-fürt és a másolat állapotának figyelése.
 
 ### <a name="prerequisites"></a>Előfeltételek
 

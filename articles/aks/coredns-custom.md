@@ -1,6 +1,6 @@
 ---
-title: CoreDNS testreszabása az Azure Kubernetes Service (AKS)
-description: Ismerje meg, hogyan CoreDNS altartományok hozzáadásához, vagy kiterjesztheti az Azure Kubernetes Service (AKS) használatával egyéni DNS-végpontok testreszabása
+title: CoreDNS testreszabása az Azure Kubernetes szolgáltatáshoz (ak)
+description: Megtudhatja, hogyan szabhatja testre a CoreDNS az altartományok hozzáadásához vagy az egyéni DNS-végpontok kibővítéséhez az Azure Kubernetes Service (ak) használatával
 services: container-service
 author: jnoller
 ms.service: container-service
@@ -8,34 +8,34 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
 ms.openlocfilehash: 247665f58dd064565f0e9aebc9859e97ce0ab0c0
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67836975"
 ---
-# <a name="customize-coredns-with-azure-kubernetes-service"></a>Az Azure Kubernetes Service CoreDNS testreszabása
+# <a name="customize-coredns-with-azure-kubernetes-service"></a>A CoreDNS testreszabása az Azure Kubernetes szolgáltatással
 
-Az Azure Kubernetes Service (AKS) használ a [CoreDNS][coredns] fürt DNS-kezelés és a megoldás az összes projektet *1.12.x* és nagyobb fürtök. Korábban a kube-dns projekt lett megadva. Ez a kube-dns-projekt már elavult. CoreDNS testreszabási és a Kubernetes kapcsolatos további információkért lásd: a [felsőbb rétegbeli dokumentációs][corednsk8s].
+Az Azure Kubernetes Service (ak) a [CoreDNS][coredns] -projektet használja a fürt DNS-kezeléséhez és feloldásához az összes *1,12. x* és újabb fürtök esetében. Korábban a rendszer a Kube-DNS-projektet használta. Ez a Kube-DNS-projekt már elavult. A CoreDNS testreszabásával és Kubernetes kapcsolatos további információkért tekintse meg a [hivatalos upstream dokumentációját][corednsk8s].
 
-Mivel AKS egy felügyelt szolgáltatás, CoreDNS fő konfigurációja nem módosítható (egy *alapfájl*). Ehelyett használja a Kubernetes *ConfigMap* felülbírálhatja az alapértelmezett beállításokat. Az alapértelmezett AKS CoreDNS ConfigMaps megtekintéséhez használja a `kubectl get configmaps coredns -o yaml` parancsot.
+Mivel az AK felügyelt szolgáltatás, nem módosíthatja a CoreDNS (a *alapfájl*) fő konfigurációját. Ehelyett Kubernetes- *ConfigMap* használ az alapértelmezett beállítások felülbírálásához. Az alapértelmezett AK-CoreDNS ConfigMaps megtekintéséhez használja az `kubectl get configmaps coredns -o yaml` parancsot.
 
-Ez a cikk bemutatja, hogyan ConfigMaps használandó testreszabási lehetőségeket CoreDNS az aks-ben.
+Ebből a cikkből megtudhatja, hogyan használhatja a ConfigMaps-t az CoreDNS alapszintű, az AK-ban található testreszabási lehetőségei
 
 > [!NOTE]
-> `kube-dns` ajánlott különböző [testreszabási lehetőségek][kubednsblog] Kubernetes konfigurációs térkép-n keresztül. CoreDNS van **nem** visszamenőleg kompatibilis a kube-dns. Korábban már használt testreszabások CoreDNS való használatra kell frissíteni.
+> `kube-dns`a Kubernetes konfigurációs térképén keresztül különböző [testreszabási lehetőségek][kubednsblog] is elérhetők. A CoreDNS visszafelé **nem** kompatibilis a Kube-DNS szolgáltatással. A korábban használt testreszabásokat frissíteni kell a CoreDNS-mel való használatra.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-## <a name="what-is-supportedunsupported"></a>Mi az a támogatott/nem támogatott
+## <a name="what-is-supportedunsupported"></a>Támogatás/nem támogatott
 
-Az összes beépített CoreDNS beépülő modulok támogatottak. Nincs add-a vagy harmadik féltől származó beépülő modulok támogatottak. 
+A beépített CoreDNS beépülő modulok támogatottak. A bővítmények és a harmadik féltől származó beépülő modulok nem támogatottak. 
 
 ## <a name="rewrite-dns"></a>DNS újraírása
 
-Rendelkezik egy forgatókönyvet, hogy hajtsa végre a működés közbeni DNS neve újraírások. A következő példában cserélje le a `<domain to be written>` a saját teljesen minősített tartománynevét. Hozzon létre egy fájlt `corednsms.yaml` , és illessze be a következő példa konfiguráció:
+Az egyik forgatókönyv az, ha az on-the-fly DNS-név újraírását végzi. A következő példában cserélje le `<domain to be written>` a nevet a saját teljes tartománynevére. Hozzon létre egy `corednsms.yaml` nevű fájlt, és illessze be a következő példát:
 
 ```yaml
 apiVersion: v1
@@ -53,30 +53,30 @@ data:
     }
 ```
 
-Létrehozhatja a ConfigMap a [a kubectl a alkalmazni configmap][kubectl-apply] parancsot, majd adja meg a YAML-jegyzékfájl neve:
+Hozza létre a ConfigMap a [kubectl Apply ConfigMap][kubectl-apply] parancs használatával, és adja meg a YAML-jegyzékfájl nevét:
 
 ```console
 kubectl apply -f corednsms.yaml
 ```
 
-A testreszabások alkalmazása ellenőrzéséhez használja a [kubectl get configmaps][kubectl-get] , és adja meg a *coredns – egyéni* ConfigMap:
+A testreszabások alkalmazásának ellenőrzéséhez használja a [kubectl Get configmaps][kubectl-get] , és adja meg a *coredns-Custom* ConfigMap:
 
 ```
 kubectl get configmaps --namespace=kube-system coredns-custom -o yaml
 ```
 
-Most már kényszerített újbóli betöltéséhez a ConfigMap CoreDNS. A [kubectl törlése pod][kubectl delete] parancs nem romboló, és nem leállás következik. A `kube-dns` podok törlődnek, és a Kubernetes-ütemező azt majd újra létrehozza őket. Ezek új podok az élettartam értéke tartalmaz.
+Most kényszerítse a CoreDNS a ConfigMap újratöltését. A [kubectl delete Pod][kubectl delete] parancs nem ártalmas, és nem okoz leállási időt. A `kube-dns` hüvelyek törlődnek, a Kubernetes ütemező pedig újra létrehozza őket. Ezek az új hüvelyek a TTL-érték változását tartalmazzák.
 
 ```console
 kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 ```
 
 > [!Note]
-> A fenti parancs nem megfelelő. Bár azt épp módosított `coredns`, az üzembe helyezés alatt áll a **kube-dns** nevét.
+> A fenti parancs helyes. A váltás `coredns`közben a telepítés a **Kube-DNS-** név alatt található.
 
-## <a name="custom-proxy-server"></a>Egyéni proxy server
+## <a name="custom-proxy-server"></a>Egyéni proxykiszolgáló
 
-Adja meg a hálózati forgalmat egy proxykiszolgáló van szüksége, ha egy ConfigMap DNS testre is létrehozhat. Frissítse a következő példában a `proxy` nevét és címét azokra az értékekre a saját környezetének. Hozzon létre egy fájlt `corednsms.yaml` , és illessze be a következő példa konfiguráció:
+Ha proxykiszolgálót kell megadnia a hálózati forgalomhoz, létrehozhat egy ConfigMap a DNS testreszabásához. A következő példában frissítse a `proxy` nevet és a internetcímet a saját környezete értékeivel. Hozzon létre egy `corednsms.yaml` nevű fájlt, és illessze be a következő példát:
 
 ```yaml
 apiVersion: v1
@@ -91,7 +91,7 @@ data:
     }
 ```
 
-Az előző példához hasonlóan hozzon létre a ConfigMap a [a kubectl a alkalmazni configmap][kubectl-apply] command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete] a Kubernetes a Scheduler hoznia őket:
+Ahogy az előző példákban is, hozza létre a ConfigMap a [kubectl Apply ConfigMap][kubectl-apply] parancs használatával, és adja meg a YAML-jegyzékfájl nevét. Ezután kényszerítse a CoreDNS a ConfigMap újratöltésére a [kubectl delete Pod][kubectl delete] használatával a Kubernetes Scheduler létrehozásához:
 
 ```console
 kubectl apply -f corednsms.yaml
@@ -100,9 +100,9 @@ kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 
 ## <a name="use-custom-domains"></a>Egyéni tartományok használata
 
-Érdemes az egyéni tartományok megoldható csak belső használatra konfigurálásához. Például előfordulhat, hogy szeretné feloldani az egyéni tartomány *puglife.local*, de nem egy érvényes legfelső szintű tartományt. Egyéni tartomány ConfigMap nélkül az AKS-fürt nem oldható fel a címet.
+Előfordulhat, hogy olyan egyéni tartományokat szeretne konfigurálni, amelyek csak belsőleg oldhatók fel. Előfordulhat például, hogy fel szeretné oldani a *puglife. local*egyéni tartományt, amely nem érvényes legfelső szintű tartomány. Egyéni tartományi ConfigMap nélkül az AK-fürt nem tudja feloldani a címeket.
 
-A következő példában frissítse az egyéni tartomány és az IP-cím az értékeket a saját környezetben való közvetlen forgalom. Hozzon létre egy fájlt `corednsms.yaml` , és illessze be a következő példa konfiguráció:
+Az alábbi példában frissítse az egyéni tartományt és az IP-címet, hogy a forgalmat a saját környezetéhez tartozó értékekre irányítsa. Hozzon létre egy `corednsms.yaml` nevű fájlt, és illessze be a következő példát:
 
 ```yaml
 apiVersion: v1
@@ -119,16 +119,16 @@ data:
     }
 ```
 
-Az előző példához hasonlóan hozzon létre a ConfigMap a [a kubectl a alkalmazni configmap][kubectl-apply] command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete] a Kubernetes a Scheduler hoznia őket:
+Ahogy az előző példákban is, hozza létre a ConfigMap a [kubectl Apply ConfigMap][kubectl-apply] parancs használatával, és adja meg a YAML-jegyzékfájl nevét. Ezután kényszerítse a CoreDNS a ConfigMap újratöltésére a [kubectl delete Pod][kubectl delete] használatával a Kubernetes Scheduler létrehozásához:
 
 ```console
 kubectl apply -f corednsms.yaml
 kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 ```
 
-## <a name="stub-domains"></a>A helyettes tartományok
+## <a name="stub-domains"></a>Helyettes tartományok
 
-CoreDNS is használható a helyettes tartományok konfigurálása. A következő példában frissítse az egyéni tartományok és az IP-címek az értékeket a saját környezetének. Hozzon létre egy fájlt `corednsms.yaml` , és illessze be a következő példa konfiguráció:
+A CoreDNS a helyettes tartományok konfigurálására is használható. Az alábbi példában frissítse az egyéni tartományokat és IP-címeket a saját környezete értékeivel. Hozzon létre egy `corednsms.yaml` nevű fájlt, és illessze be a következő példát:
 
 ```yaml
 apiVersion: v1
@@ -151,7 +151,7 @@ data:
 
 ```
 
-Az előző példához hasonlóan hozzon létre a ConfigMap a [a kubectl a alkalmazni configmap][kubectl-apply] command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete] a Kubernetes a Scheduler hoznia őket:
+Ahogy az előző példákban is, hozza létre a ConfigMap a [kubectl Apply ConfigMap][kubectl-apply] parancs használatával, és adja meg a YAML-jegyzékfájl nevét. Ezután kényszerítse a CoreDNS a ConfigMap újratöltésére a [kubectl delete Pod][kubectl delete] használatával a Kubernetes Scheduler létrehozásához:
 
 ```console
 kubectl apply -f corednsms.yaml
@@ -160,7 +160,7 @@ kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 
 ## <a name="hosts-plugin"></a>Gazdagépek beépülő modul
 
-Az összes beépített beépülő modulok támogatottak, ez azt jelenti, hogy a CoreDNS [gazdagépek][coredns hosts] beépülő modul érhető el, valamint testre:
+Mivel az összes beépített beépülő modul támogatott, az azt jelenti, hogy [][coredns hosts] a CoreDNS-gazdagépek beépülő modul a testreszabáshoz is elérhető:
 
 ```yaml
 apiVersion: v1
@@ -178,9 +178,9 @@ data:
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk bemutatta, néhány példa forgatókönyvet CoreDNS testreszabása. Információk a CoreDNS projektre: [a felsőbb rétegbeli CoreDNS lapot][coredns].
+Ez a cikk néhány példát mutat be a CoreDNS testreszabásához. A CoreDNS projekttel kapcsolatos további információkért tekintse meg [a CoreDNS felső projektje lapot][coredns].
 
-Hálózati alapfogalmakat kapcsolatos további információkért lásd: [fogalmak az aks-ben az alkalmazások hálózati][concepts-network].
+Az alapvető hálózati fogalmakkal kapcsolatos további tudnivalókért tekintse meg a [hálózati fogalmak az AK-][concepts-network]beli alkalmazásokhoz című témakört.
 
 <!-- LINKS - external -->
 [kubednsblog]: https://www.danielstechblog.io/using-custom-dns-server-for-domain-specific-name-resolution-with-azure-kubernetes-service/

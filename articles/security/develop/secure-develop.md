@@ -1,156 +1,157 @@
 ---
-title: A Microsoft Azure a biztonságos alkalmazások fejlesztése
-description: Ez a cikk ismerteti az ajánlott eljárások az web projektet a megvalósítás és ellenőrzési fázisaiban.
+title: Biztonságos alkalmazások fejlesztése Microsoft Azure
+description: Ez a cikk a webalkalmazás-projekt megvalósítási és ellenőrzési fázisaiban megfontolandó ajánlott eljárásokat ismerteti.
 author: TerryLanfear
 manager: barbkess
 ms.author: terrylan
 ms.date: 06/12/2019
 ms.topic: article
 ms.service: security
+ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f4add4bf07178aa616e86f8a64b313630466824f
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: cc0540f74b755e083855721ad62754c70edb88b6
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653265"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728692"
 ---
-# <a name="develop-secure-applications-on-azure"></a>Az Azure-ban a biztonságos alkalmazások fejlesztése
-Ebben a cikkben azt jelenthet biztonsági tevékenységeket és a vezérlőket, fontolja meg a felhőalapú alkalmazások fejlesztése során. Biztonsági kérdések és megfontolandó ajánlásoktól végrehajtására és ellenőrzés fázisai a Microsoft a fogalmak [biztonságos fejlesztési Életciklussal (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) terjed ki. A célja, hogy a tevékenységek és az Azure-szolgáltatások, amelyek segítségével egy biztonságosabb alkalmazások fejlesztése a meghatározásához.
+# <a name="develop-secure-applications-on-azure"></a>Biztonságos alkalmazások fejlesztése az Azure-ban
+Ebben a cikkben a Felhőbeli alkalmazások fejlesztésekor megfontolandó biztonsági tevékenységeket és ellenőrzéseket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) megvalósítási és ellenőrzési szakaszaiban megfontolandó biztonsági kérdések és fogalmak. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások fejlesztéséhez használhat.
 
-Ebben a cikkben a következő SDL fázisok terjed ki:
+Ebben a cikkben a következő SDL-fázisokat tárgyaljuk:
 
 - Megvalósítás
 - Ellenőrzés
 
 ## <a name="implementation"></a>Megvalósítás
-A megvalósítási fázis célja gyakorlati tanácsok a korai megelőzési létrehozására és észlelése és eltávolítása a biztonsági problémák a kódból.
-Tegyük fel, hogy az alkalmazás fogja használni, hogy nem állt szándékában kell módon. Ez segít az alkalmazás véletlen vagy szándékos lekérésére való visszaélés elleni védelme.
+A megvalósítási fázis középpontjában a korai megelőzéssel kapcsolatos ajánlott eljárások, valamint a kód biztonsági problémáinak észlelése és eltávolítása szükséges.
+Tegyük fel, hogy az alkalmazás olyan módokon fog használatba venni, amelyeket nem kívánt használni. Ez segít megvédeni az alkalmazás véletlen vagy szándékos visszaélését.
 
-### <a name="perform-code-reviews"></a>Hajtsa végre a kódvizsgálat
+### <a name="perform-code-reviews"></a>Kód felülvizsgálatának elvégzése
 
-Ellenőrizheti a kódot, mielőtt magatartási [felülvizsgálatok code](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) növeli a kód általános minőségét és a hibák létrehozása kockázatának csökkentése érdekében. Használhat [Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) kódvizsgálati folyamattal kezeléséhez.
+A kód beadása előtt a [](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) kód felülvizsgálatával növelheti a kódok általános minőségét, és csökkentheti a hibák kockázatát. A [Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) segítségével kezelheti a kód-felülvizsgálati folyamatot.
 
-### <a name="perform-static-code-analysis"></a>Statikus kód elemzés végrehajtása
+### <a name="perform-static-code-analysis"></a>Statikus kód elemzésének végrehajtása
 
-[Statikus kód](https://www.owasp.org/index.php/Static_Code_Analysis) (más néven *kód forrás*) általában egy kódvizsgálat részeként történik. Statikus kód gyakran hivatkozik a potenciális biztonsági rések keresése nem futó kódot eljárások segítségével elemzési eszközökkel hajthat végre statikus kódot futtató [vágófelülettel ellenőrzése](https://en.wikipedia.org/wiki/Taint_checking) és [adatfolyam-elemző](https://en.wikipedia.org/wiki/Data-flow_analysis).
+[Statikus kód elemzése](https://www.owasp.org/index.php/Static_Code_Analysis) (más néven a *forráskód elemzése*) általában a kód felülvizsgálatának részeként történik. A statikus kód elemzése általában arra utal, hogy statikus kód-elemzési eszközöket futtasson, hogy a nem futó kódban lévő lehetséges biztonsági réseket olyan technikák használatával találja meg, mint a [szennyező ellenőrzés](https://en.wikipedia.org/wiki/Taint_checking) és [az adatfolyam-elemzés](https://en.wikipedia.org/wiki/Data-flow_analysis).
 
-Az Azure piactér ajánlatai [fejlesztői eszközök](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review) , amely statikus kód elemzéseket végezhet és kódvizsgálat segítségét.
+Az Azure Marketplace olyan [fejlesztői eszközöket](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review) kínál, amelyek statikus kódok elemzését végzik, és segítséget nyújtanak a kódok felülvizsgálatában.
 
-### <a name="validate-and-sanitize-every-input-for-your-application"></a>Ellenőrzése és vírusmentesítése az alkalmazás minden egyes bemenet
+### <a name="validate-and-sanitize-every-input-for-your-application"></a>Az alkalmazás minden bemenetének ellenőrzése és megtisztítása
 
-Kezelje az összes bemeneti nem megbízható, az alkalmazás elleni a leggyakrabban használt webes alkalmazások biztonsági réseinek. Nem megbízható adatok-injektálási támadások eszközzel helyezhető el. Az alkalmazás bemeneti paramétereket tartalmazza az URL-cím, a felhasználó, az adatokat az adatbázisból vagy API-k, a bemeneti adatok, és semmit, amely az átadott felhasználó potenciálisan módosítására. Egy alkalmazás kell [ellenőrzése](https://www.owasp.org/index.php/OWASP_Proactive_Controls_2016#4:_Validate_All_Inputs) , hogy adat szintaktikailag és szemantikailag érvényes-e előtt az alkalmazás használ az adatok semmilyen módon (beleértve a türközve legyen a felhasználó számára).
+Az összes bemenetet nem megbízhatóként kezelheti az alkalmazás a leggyakoribb webalkalmazás-biztonsági rések elleni védelem érdekében. A nem megbízható adathalmazok az injekciós támadásoknak megfelelő járművek. Az alkalmazás bemenete magában foglalja az URL-cím paramétereit, a felhasználótól származó adatokat, az adatbázisból vagy egy API-ból származó adatokat, valamint minden olyan adatot, amelyet a felhasználó potenciálisan kezelhet. Az alkalmazásnak [ellenőriznie kell,](https://www.owasp.org/index.php/OWASP_Proactive_Controls_2016#4:_Validate_All_Inputs) hogy az adatkezelési és szemantikai szempontból érvényesek-e, mielőtt az alkalmazás bármilyen módon használja az adatforrásokat (beleértve a felhasználó számára történő megjelenítést is).
 
-Győződjön meg arról, hogy csak a megfelelően formázott adatok kerül, a munkafolyamat az adatok folyamatban korai bemeneti ellenőrzése. Az adatbázis megőrzése és az alsóbb rétegbeli összetevők egy meghibásodás kiváltó helytelen formátumú adatokat nem szeretné.
+Az adatfolyam elején ellenőrizze, hogy csak a megfelelően formázott adatok jelennek-e meg a munkafolyamatban. Nem kívánja, hogy a helytelenül formázott adatmegőrzést végezze az adatbázisban, vagy hibásan aktiválja az alsóbb rétegbeli összetevőket.
 
-Blacklisting és az engedélyezés két általános megközelítése bemeneti szintaxis-ellenőrzés végrehajtása a következők:
+A beviteli szintaxis érvényesítésének két általános módja a feketelistára helyezés és az engedélyezési lista:
 
-  - Ellenőrizze, hogy a megadott felhasználói bevitel nem tartalmaz "ismert rosszindulatú is lehet a" tartalom áruházat megkísérli.
+  - Az adott felhasználói bevitelt nem "ismert, hogy rosszindulatú" tartalomnak kellene megadnia.
 
-  - Engedélyezési próbál ellenőrizze, hogy egy adott felhasználói bevitel megegyezik-e egy készletét "ismert jó" bemenetei között. Karakteres alapú engedélyezési egy engedélyezési formája, ahol egy alkalmazás ellenőrzi, hogy felhasználói bevitel tartalmazza-e egyetlen "ismert jó" karakter, vagy az, hogy a bemenet egy ismert formátuma megegyezik.
-    Például ez is járhat, ellenőrzi, hogy a felhasználónév csak alfanumerikus karaktereket tartalmaz, illetve, hogy pontosan két számot tartalmaz.
+  - Engedélyezési kísérletek annak ellenőrzését, hogy egy adott felhasználói bevitel megfelel-e a "ismert jó" bemeneteknek. A karakteres engedélyezési lista az engedélyezési lista olyan formája, amelyben egy alkalmazás ellenőrzi, hogy a felhasználói bevitel csak az "ismert jó" karaktereket tartalmazza-e, vagy hogy a bemenet megfelel-e az ismert formátumnak.
+    Előfordulhat például, hogy a Felhasználónév csak alfanumerikus karaktereket tartalmaz, vagy pontosan két számot tartalmaz.
 
-Engedélyezési biztonságos szoftverek készítése előnyben részesített módszere.
-Áruházat gyakran fordul elő hiba, mert nem lehet úgy gondolja, hogy az esetlegesen rossz bemeneti teljes listáját.
+Az engedélyezési módszer a biztonságos szoftverek létrehozásának előnyben részesített megközelítése.
+A feketelistás szolgáltatás a hiba miatt nem lehetséges, mert a potenciálisan rossz bevitel teljes listáját nem lehet meggondolni.
 
-Ezt a munkát, a kiszolgálón, nem az ügyfél oldalán (vagy a kiszolgálón és az ügyféloldalon).
+Ezt a kiszolgálót nem az ügyfél oldalán (vagy a kiszolgálón és az ügyfél oldalon) hajtsa végre.
 
-### <a name="verify-your-applications-outputs"></a>Ellenőrizze az alkalmazás kimenetek
+### <a name="verify-your-applications-outputs"></a>Az alkalmazás kimenetének ellenőrzése
 
-A kimenetet, amelyek meg vizuálisan vagy egy dokumentumon belül mindig kell kódolni és escape-karakterrel. [Escape-karaktersorozat](https://www.owasp.org/index.php/Injection_Theory#Escaping_.28aka_Output_Encoding.29), más néven *kimeneti kódolás*, használja, győződjön meg arról, hogy a nem megbízható adatok nem egy jármű-injektálásos támadásokkal szemben. Többrétegű védelem a teljes rendszer biztonság növelése escape-karaktersorozat adatérvényesítési kombinálva biztosít.
+Minden olyan kimenetet, amelyet vizuálisan vagy egy dokumentumon belül már tartalmaz, mindig kódolva kell lennie és el kell menekülnie. A [Escape](https://www.owasp.org/index.php/Injection_Theory#Escaping_.28aka_Output_Encoding.29)-, más néven a *kimeneti kódolás*a segítségével biztosítható, hogy a nem megbízható adatokat ne a jármű adja meg az injekciós támadásokhoz. Az adatellenőrzéssel együtt folytatott Escape-szolgáltatás többrétegű védelmet biztosít a rendszer egészének biztonságának növelésére.
 
-Escape-karaktersorozat teszi, hogy minden a megjelent *kimeneti.* Escape-karaktersorozat is lehetővé teszi, hogy a jelzi, hogy az adatok nem terjesztésre készült hajtható végre, és ez megakadályozza, hogy támadások működő értelmezője számára készült. Ez az egy másik gyakori támadási módszer nevű *többhelyes scripting* (XSS).
+A Escape-funkció biztosítja, hogy minden kimenetként jelenjen meg *.* A szökés azt is lehetővé teszi, hogy a tolmács tudja, hogy az adatok nem hajthatók végre, és ez megakadályozza a támadások működését. Ez egy, a többhelyes *parancsfájlok* (XSS) elnevezésű gyakori támadási módszer.
 
-Ha egy harmadik féltől származó egy webes keretrendszert használ, a beállítások használatával a webhelyeken kódolási kimeneti ellenőrizheti a [OWASP XSS megelőzési adatlap](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md).
+Ha egy harmadik féltől származó webes keretrendszert használ, ellenőrizheti, hogy a [OWASP XSS-megelőzési lapján](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md)a webhelyeken milyen kimeneti kódolásra van lehetősége.
 
-### <a name="use-parameterized-queries-when-you-contact-the-database"></a>Amikor kapcsolatba lép az adatbázis paraméteres lekérdezések használata
+### <a name="use-parameterized-queries-when-you-contact-the-database"></a>Paraméteres lekérdezések használata az adatbázishoz való kapcsolódáskor
 
-Soha ne hozzon létre egy beágyazott "menet közben" adatbázis-lekérdezés a kódban, és küldje el közvetlenül az adatbázist. Rosszindulatú kódot szúrt be az alkalmazás hibát okozhat ellopják, megtisztított és módosítani az adatbázist. Az alkalmazás is használható az operációs rendszeren, amelyen az adatbázis rosszindulatú operációsrendszer-parancsok futtatásához.
+Soha ne hozzon létre egy beágyazott adatbázis-lekérdezést "menet közben" a kódban, és küldje el közvetlenül az adatbázisnak. Az alkalmazásba beszúrt kártékony kódok okozhatják az adatbázis ellopását, törlését vagy módosítását. Az alkalmazás az adatbázist futtató operációs rendszeren rosszindulatú operációsrendszer-parancsok futtatására is használható.
 
-Ehelyett használja a paraméteres lekérdezések vagy tárolt eljárásokat. A paraméteres lekérdezések használata esetén az eljárás meghívása a kódból biztonságosan, és adja át azt egy karakterlánc nem kell, hogy ez lesz kezelve a lekérdezési utasítás részeként.
+Ehelyett használjon paraméteres lekérdezéseket vagy tárolt eljárásokat. Ha paraméteres lekérdezéseket használ, az eljárást biztonságosan hívhatja meg, és nem kell átadnia egy karakterláncot, és nem kell aggódnia, hogy a lekérdezési utasítás részeként lesz kezelve.
 
-### <a name="remove-standard-server-headers"></a>Standard szintű kiszolgáló fejlécek eltávolítása
+### <a name="remove-standard-server-headers"></a>Szabványos kiszolgáló fejlécének eltávolítása
 
-Fejlécek, mint X-alapú-szerint, a kiszolgáló, és X-AspNet-verzió a kiszolgáló és a mögöttes technológiákat kapcsolatos információk felfedése. Azt javasoljuk, hogy Ön ezen elkerülése érdekében az alkalmazás-ujjlenyomat-fejlécek elrejtése.
-Lásd: [eltávolítása az Azure websites standard szintű kiszolgáló fejlécek](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
+A kiszolgáló, az X-powered-by és az X-AspNet-Version fejlécek a kiszolgálók és a mögöttes technológiák információit mutatják be. Javasoljuk, hogy hagyja ki ezeket a fejléceket az alkalmazás ujjlenyomatának elkerülése érdekében.
+Lásd: [a szabványos kiszolgálók fejlécének eltávolítása az Azure websites](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)szolgáltatásban.
 
-### <a name="segregate-your-production-data"></a>Elkülönítheti a termelési adatok
+### <a name="segregate-your-production-data"></a>A termelési adatai elkülönítése
 
-A termelési adatok vagy a "valódi" adatokat, nem használható a fejlesztési, tesztelési vagy bármely más célra, mint az üzleti szolgál. Egy maszkolt ([anonimizált](https://en.wikipedia.org/wiki/Data_anonymization)) adatkészlet lehet használt valamennyi fejlesztési és tesztelési.
+A termelési adatait vagy a "valódi" adatait nem szabad olyan fejlesztési, tesztelési vagy egyéb célra használni, mint amit a vállalat szán. Az összes fejlesztéshez és teszteléshez maszkolt ([Névtelen](https://en.wikipedia.org/wiki/Data_anonymization)) adathalmazt kell használni.
 
-Ez azt jelenti, hogy kevesebb felhasználók is hozzáférhetnek a valós adatokat, ami csökkenti a támadási felületet. Azt is jelenti, kevesebb alkalmazottak tekintse meg a személyes adatokat, így a titkosítás nem a potenciális támadásokról.
+Ez azt jelenti, hogy kevesebb ember fér hozzá a valós adataihoz, ami csökkenti a támadási felületet. Ez azt is jelenti, hogy kevesebb alkalmazott látja el személyes adataikat, ami kiküszöböli a titkosság esetleges megsértését.
 
-### <a name="implement-a-strong-password-policy"></a>Egy erős jelszót a házirend megvalósítása
+### <a name="implement-a-strong-password-policy"></a>Erős jelszóházirend implementálása
 
-Találgatásos és a szótár-alapú találgatás elleni védelemre, meg kell valósítani annak érdekében, hogy a felhasználók (például 12 karakter minimális hosszát, és alfanumerikus karaktereket, illetve speciális karakterek megkövetelése) egy összetett jelszót hozzon létre egy erős jelszót szabályzatot.
+A találgatásos és a szótáron alapuló találgatások elleni védelemhez erős jelszóházirend szükséges annak biztosításához, hogy a felhasználók összetett jelszót hozzanak létre (például 12 karakter hosszúságú, alfanumerikus és speciális karaktereket igénylő).
 
-Identitás-keretrendszer használatával hozzon létre és érvényesítsen jelszóházirendeket. Az Azure AD B2C segítségével a jelszókezelés használatának azáltal, hogy [beépített szabályzatok](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows#create-a-password-reset-user-flow), [önkiszolgáló jelszó-visszaállítási](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr), stb.
+A jelszó-szabályzatok létrehozásához és érvényesítéséhez használhat identitás-keretrendszert. A Azure AD B2C a [beépített szabályzatok](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows#create-a-password-reset-user-flow), az [önkiszolgáló jelszó-visszaállítás](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr)és egyéb szolgáltatások biztosításával segít a jelszavak kezelésében.
 
-Az alapértelmezett fiókok ellen indított támadások elleni védelemre, ellenőrizze az összes kulcsot és a jelszavak cserélhető, hogy, hogy már létrehozott vagy helyett az erőforrások telepítése után.
+Az alapértelmezett fiókok elleni támadások elleni védelem érdekében ellenőrizze, hogy az összes kulcs és jelszó cserélhető-e, és hogy az erőforrások telepítése után létrejöttek vagy lecseréltek-e.
 
-Ha az alkalmazás kell előállítja a jelszavak, győződjön meg arról, hogy a létrehozott jelszavakat véletlenszerű, és arról, hogy rendelkezik-e magas vysokou.
+Ha az alkalmazásnak automatikusan kell létrehoznia a jelszavakat, ügyeljen arra, hogy a generált jelszavak véletlenszerűek legyenek, és magas entrópia legyenek.
 
-### <a name="validate-file-uploads"></a>Fájlok feltöltése ellenőrzése
+### <a name="validate-file-uploads"></a>Fájlfeltöltés ellenőrzése
 
-Ha az alkalmazás lehetővé teszi, hogy [fájlba feltöltésének](https://www.owasp.org/index.php/Unrestricted_File_Upload), fontolja meg a óvintézkedéseket, amelyeket a kockázatos tevékenység is igénybe vehet. Sok első lépése, hogy valamilyen kártevő kódja kaphat a rendszer támadás alatt áll. Ehhez a támadó egy fájlfeltöltési segítségével. OWASP ellenőrzése egy fájlt annak ellenőrzéséhez, hogy a feltöltendő fájl biztonságos megoldásokat kínál.
+Ha az [alkalmazás lehetővé teszi](https://www.owasp.org/index.php/Unrestricted_File_Upload)a fájlfeltöltés használatát, vegye figyelembe a kockázatos tevékenységhez szükséges óvintézkedéseket. A sok támadás első lépéseként egy rosszindulatú kód beszerzése egy támadás alatt álló rendszerbe. A fájlfeltöltés használatával a támadó elvégezheti ezt. A OWASP olyan megoldásokat kínál a fájlok érvényesítéséhez, amelyek biztosítják, hogy a feltöltött fájl biztonságos legyen.
 
-Kártevőkkel szembeni védelem vírusok, kémprogramok és más, kártevő szoftverek azonosításához és nyújt segítséget. Telepíthet [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) vagy egy Microsoft-partner végpontvédelmi megoldás ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [A Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10), és [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)).
+A kártevők elleni védelem segítségével azonosíthatja és eltávolíthatja a vírusokat, kémprogramokat és egyéb kártevő szoftvereket. Telepítheti a [Microsoft antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) -t vagy egy Microsoft-partner Endpoint Protection-megoldását ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)és [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)).
 
-[A Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) szolgáltatások, mint például a valós idejű védelem, ütemezett vizsgálatát, kártevő szoftverek eltávolítása, aláírás frissítések, kártevőfrissítések, reporting mintákat és kizárási eseménygyűjtés tartalmazza. Integrálható a Microsoft Antimalware-t és a partneri megoldások [az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) könnyű üzembe helyezés és a beépített észlelések (riasztások és incidensek).
+A [Microsoft antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) olyan funkciókat tartalmaz, mint a valós idejű védelem, az ütemezett vizsgálat, a kártevők szervizelése, az aláírások frissítése, a motor frissítései, a minták jelentéskészítés és a kizárási események gyűjteménye. Az üzembe helyezéshez és a beépített észlelésekhez (riasztások és incidensek) egyszerűen integrálható a Microsoft antimalware és a partneri megoldások [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) használatával.
 
-### <a name="dont-cache-sensitive-content"></a>Bizalmas tartalom gyorsítótárazása nem
+### <a name="dont-cache-sensitive-content"></a>Ne gyorsítótárazza a bizalmas tartalmat
 
-Nem gyorsítótárazzák a bizalmas tartalmat a böngészőben. Böngészők gyorsítótárazás és a korábbi adatok tárolhatók. A gyorsítótárazott fájlok például az ideiglenes internetfájlok mappa esetén az Internet Explorer egy mappában vannak tárolva. Ha ezeket az oldalakat hivatkozunk újra, a böngésző jeleníti meg az oldalakat a gyorsítótárból. Ha a felhasználó bizalmas adatokat (címe, hitelkártya adatait, társadalombiztosítási szám, username) jelenik meg, az adatokat előfordulhat, hogy a böngésző gyorsítótárát kell tárolni, és lekérhető vizsgálata folyamatban van a böngésző gyorsítótárát, vagy egyszerűen csak billentyű a böngészőben  **Vissza** gombra.
+Ne gyorsítótárazza a bizalmas tartalmat a böngészőben. A böngészők adatokat tárolhatnak a gyorsítótárazáshoz és az előzményekhez. Az Internet Explorer esetében a gyorsítótárazott fájlokat a rendszer egy olyan mappában tárolja, mint az ideiglenes Internet Files mappa. Ha ezek az oldalak ismét hivatkoznak rá, a böngésző megjeleníti a lapokat a gyorsítótárból. Ha a bizalmas adatok (a címe, a bankkártya adatai, a társadalombiztosítási szám, a Felhasználónév) megjelenik a felhasználó számára, előfordulhat, hogy az adatok a böngésző gyorsítótárában tárolódnak, és a böngésző gyorsítótárának vizsgálatával, vagy egyszerűen a böngésző  **Vissza** gomb.
 
 ## <a name="verification"></a>Ellenőrzés
-Az ellenőrzési fázisban egy átfogó annak érdekében, hogy győződjön meg arról, hogy a kód megfelel-e a biztonsági és adatvédelmi tenets az előző fázisok felvett foglalja magában.
+Az ellenőrzési fázis átfogó erőfeszítéseket tesz annak biztosítására, hogy a kód megfeleljen az előző fázisokban létrehozott biztonsági és adatvédelmi alapelveinek.
 
-### <a name="find-and-fix-vulnerabilities-in-your-application-dependencies"></a>Keresse meg és hárítsa el a biztonsági rések a az alkalmazásfüggőségek
+### <a name="find-and-fix-vulnerabilities-in-your-application-dependencies"></a>A biztonsági rések megkeresése és javítása az alkalmazás függőségeiben
 
-Olvassa be az alkalmazás és a függő kódtárak ismert sebezhető összetevők azonosításához. Ez a vizsgálat elérhető termékek tartalmaznak [OWASP függőségi ellenőrizze](https://www.owasp.org/index.php/OWASP_Dependency_Check),[Snyk](https://snyk.io/), és [fekete kacsa](https://www.blackducksoftware.com/).
+Az alkalmazás és a hozzá tartozó könyvtárak vizsgálatával azonosíthatja az összes ismert sebezhető összetevőt. A vizsgálat végrehajtásához rendelkezésre álló termékek közé tartozik a [OWASP függőségi ellenőrzés](https://www.owasp.org/index.php/OWASP_Dependency_Check), a[Snyk](https://snyk.io/)és a [fekete kacsa](https://www.blackducksoftware.com/).
 
-Biztonsági rések keresése működteti [teljesíteni a Tinfoil Security](https://www.tinfoilsecurity.com/) érhető el az Azure App Service Web Apps. [A tinfoil Security scanning App Service révén](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) lehetővé teszi a fejlesztők és rendszergazdák gyors, integrált és gazdaságos felderítéséhez és a biztonsági rések címzés előtt egy rosszindulatú aktor igénybe veheti őket.
+A [sztaniol Security](https://www.tinfoilsecurity.com/) által működtetett sebezhetőségi vizsgálat a Azure app Service Web Apps számára érhető el. A [sztaniol biztonsági vizsgálata app Service révén](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) a fejlesztők és a rendszergazdák gyorsan, integrált és gazdaságos módon tudják feltárni és kezelni a biztonsági réseket, mielőtt egy rosszindulatú színész kihasználja őket.
 
 > [!NOTE]
-> Emellett [teljesíteni a Tinfoil Security integrálása az Azure ad-vel](https://docs.microsoft.com/azure/active-directory/saas-apps/tinfoil-security-tutorial). Tinfoil Security integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
->  - Az Azure AD-ben szabályozhatja, ki férhet hozzá a Tinfoil Security.
->  - A felhasználók számára is automatikusan megtörténik a Tinfoil Security (egyszeri bejelentkezés), az Azure AD-fiókjaik használatával.
->  - A fiókok, egy egységes, központi helyen, az Azure Portalon kezelheti.
+> [A sztaniol biztonság az Azure ad-vel](https://docs.microsoft.com/azure/active-directory/saas-apps/tinfoil-security-tutorial)is integrálható. A sztaniol biztonság és az Azure AD integrálásával a következő előnyöket nyújtja:
+>  - Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a sztaniol biztonsághoz.
+>  - A felhasználók az Azure AD-fiókjaik használatával automatikusan bejelentkezhetnek a sztaniol biztonságba (egyszeri bejelentkezés).
+>  - A fiókokat egyetlen, központi helyen, a Azure Portal kezelheti.
 
-### <a name="test-your-application-in-an-operating-state"></a>Az alkalmazás tesztelése a egy működési állapotot
+### <a name="test-your-application-in-an-operating-state"></a>Az alkalmazás tesztelése operációs állapotban
 
-Dinamikus alkalmazás biztonsági tesztelés (DAST) az a folyamat egy alkalmazás tesztelése a egy működési állapotot biztonsági rések keresése. DAST eszközök elemezheti a programok, például a memóriasérülést, nem biztonságos kiszolgáló konfigurációját, webhelyek közötti scripting, felhasználói jogosultság problémák, SQL-injektálás és más kritikus fontosságú biztonsági aggályokat biztonsági rések keresése vannak végrehajtása közben.
+A dinamikus Application Security Testing (Zsuzsanna) egy olyan folyamat, amely az alkalmazások működési állapotában történő tesztelését végzi a biztonsági rések megkeresése érdekében. A Zsuzsanna eszközök elemzik a programokat a biztonsági rések, például a memória sérülése, a kiszolgáló konfigurációja, a helyek közötti parancsfájlok, a felhasználói jogosultságok és az SQL-injektálások, valamint az egyéb kritikus fontosságú biztonsági problémák megtalálásához.
 
-DAST statikus alkalmazásbiztonsági tesztelése (SAST) különbözik. SAST eszközök forráskódja elemzéséhez, és lefordított kód verzióit, amikor a kód nem fut, annak érdekében, hogy keresse meg a biztonsági hibái.
+A Zsuzsanna eltér a statikus alkalmazások biztonsági tesztelésének (17:00). A 17:00-eszközök elemzik a forráskódot vagy a kód lefordított verzióit, ha a kód nem fut a biztonsági hibák megállapítása érdekében.
 
-DAST, lehetőleg a szakemberek a rendszervédelemmel közreműködésével hajtsa végre (egy [behatolási tesztelő](https://docs.microsoft.com/azure/security/azure-security-pen-testing) vagy a biztonsági kockázatokat). A szakemberek a rendszervédelemmel nem érhető el, ha elvégezhet DAST saját magának egy webes proxy képolvasó és néhány képzési. Beépülő modul egy DAST szkenner már a legelején, győződjön meg arról, hogy nem indít-e nyilvánvaló biztonsági problémák elhelyezni a kódban. Tekintse meg a [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) webhelyet biztosít a webes alkalmazás biztonságirés-ellenőrző eszközök listáját.
+Zsuzsanna hajthat végre, lehetőleg egy biztonsági szakember (a penetrációs [teszter](https://docs.microsoft.com/azure/security/azure-security-pen-testing) vagy a sebezhetőségi felmérés) segítségével. Ha egy biztonsági szakember nem érhető el, a Zsuzsanna saját kezűleg is elvégezheti egy webproxy-olvasóval és néhány betanítással. A Zsuzsanna-szkennert korán csatlakoztatva biztosíthatja, hogy ne vezessen be nyilvánvaló biztonsági problémákat a kódban. A webalkalmazási sebezhetőségi képolvasók listáját a [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) webhelyén tekintheti meg.
 
-### <a name="perform-fuzz-testing"></a>Fuzz teszt végrehajtása
+### <a name="perform-fuzz-testing"></a>A fuzz-tesztelés végrehajtása
 
-A [tesztelés fuzz](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/), egy alkalmazás helytelenül formázott vagy véletlenszerű adatok szándékosan bevezetésével a program hiba idéz elő. Hogy a program hiba segítségével felfedése potenciális biztonsági problémákat, mielőtt az alkalmazás akkor szabadul fel.
+A [fuzz-tesztelés](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)során a program meghibásodását a helytelenül formázott vagy véletlenszerű adatmennyiség egy alkalmazásba való szándékos bevezetésével lehet kiváltani. Az előidéző program meghibásodása segít feltárni a potenciális biztonsági problémákat az alkalmazás felszabadítása előtt.
 
-[Biztonsági kockázat észlelési](https://docs.microsoft.com/security-risk-detection/) a Microsoft egyedi fuzz tesztelési szolgáltatás a szoftver biztonsági szempontból kritikus fontosságú hibák kereséséhez.
+A [biztonsági kockázatok észlelése](https://docs.microsoft.com/security-risk-detection/) a Microsoft egyedi fuzz Testing szolgáltatása, amely a szoftverek biztonság szempontjából kritikus fontosságú hibáinak megkeresésére szolgál.
 
-### <a name="conduct-attack-surface-review"></a>Támadási felület áttekintés
+### <a name="conduct-attack-surface-review"></a>Támadási felület felülvizsgálatának elvégzése
 
-Után kódkiegészítés biztosítja, hogy bármilyen tervezési vagy megvalósítási módosítja egy alkalmazás vagy a rendszer fontolóra vette, tekintse át a támadási felületet. Ez segít, győződjön meg arról, hogy minden olyan új támadási felületek kialakulását modelljei, beleértve a módosítások eredményeképpen létrehozott tekintse át és problémák elhárításáról.
+A támadási felületet a kód befejezése után felülvizsgálva segít meggyőződni arról, hogy az alkalmazás vagy a rendszer bármilyen tervezési vagy megvalósítási változását mérlegelték. Ezzel biztosítható, hogy a módosítások eredményeképpen létrehozott új támadási vektorok, beleértve a veszélyforrásokat, felülvizsgálva és enyhítve legyenek.
 
-Az alkalmazás vizsgálatával hozhat létre egy képet a támadási felületet. A Microsoft kínál a támadási felület elemzése nevű eszközt [támadási Surface Analyzer](https://www.microsoft.com/download/details.aspx?id=24487). Számos kereskedelmi dinamikus tesztelés és-eszközök vagy a szolgáltatások, beleértve a biztonsági rés választja [OWASP ott a támadás Proxy projekt](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), [Arachni](http://arachni-scanner.com/), [Skipfish](https://code.google.com/p/skipfish/), és [w3af](http://w3af.sourceforge.net/). E beolvasó eszközök feltérképezi az alkalmazását, és képezze le az alkalmazás a részei, amely a weben keresztül érhető el. Az Azure Marketplace is kereshet hasonló [fejlesztői eszközök](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
+A támadási felületről az alkalmazás vizsgálatával készíthet képet. A Microsoft a támadási felület elemző eszközét is felhasználja [.](https://www.microsoft.com/download/details.aspx?id=24487) Számos kereskedelmi dinamikus tesztelési és sebezhetőségi vizsgálati eszköz vagy szolgáltatás közül választhat, például a [OWASP Zed Attack proxy Project](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), a [Arachni](http://arachni-scanner.com/), a [Skipfish](https://code.google.com/p/skipfish/)és a [w3af](http://w3af.sourceforge.net/). Ezek a vizsgálati eszközök bemutatják az alkalmazást, és leképezik az alkalmazás azon részeit, amelyek elérhetők a weben keresztül. Az Azure Marketplace-en is kereshet hasonló [fejlesztői eszközöket](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
 
-### <a name="perform-security-penetration-testing"></a>Hajtsa végre a biztonsági behatolásvizsgálat
+### <a name="perform-security-penetration-testing"></a>Biztonsági behatolási teszt végrehajtása
 
-Annak biztosítása, hogy az alkalmazás biztonságos olyan fontos, mint bármely más funkció tesztelése. Győződjön meg arról, [behatolásvizsgálat](https://docs.microsoft.com/azure/security/azure-security-pen-testing) a buildelési és üzembe helyezési folyamat alapvető része. Ütemezheti rendszeres biztonsági vizsgálatok és a biztonsági ellenőrzés a telepített alkalmazások használatát, és figyelje a megnyitott portok, végpontok és támadásokat.
+Győződjön meg arról, hogy az alkalmazás biztonságban van, mivel minden más funkciót tesztel. Az előkészítési és a üzembe helyezési folyamat standard részét a [behatolási teszt](https://docs.microsoft.com/azure/security/azure-security-pen-testing) végzi. Rendszeres biztonsági tesztek és sebezhetőségi vizsgálat ütemezett végrehajtása a telepített alkalmazásokon, valamint a nyitott portok, végpontok és támadások figyelése.
 
-### <a name="run-security-verification-tests"></a>Biztonsági ellenőrzések futtatása
+### <a name="run-security-verification-tests"></a>Biztonsági ellenőrzési tesztek futtatása
 
-[Secure DevOps Kitet az Azure](https://azsk.azurewebsites.net/index.html) (AzSK) SVTs tartalmazza az Azure platform több szolgáltatáshoz. Futtatja ezeket SVTs rendszeres időközönként, győződjön meg arról, hogy az Azure-előfizetés és a különböző erőforrások, amelyek tartalmazzák az alkalmazás egy biztonságos állapotban van. Ezek a tesztek a folyamatos integráció/folyamatos készregyártás (CI/CD) bővítmények szolgáltatását, AzSK, amely elérhetővé teszi SVTs, egy Visual Studio-bővítmény használatával is automatizálható.
+[Biztonságos DevOps-készlet az Azure](https://azsk.azurewebsites.net/index.html) -hoz A (AzSK) az Azure platform több szolgáltatásának SVTs tartalmazza. Ezeket a SVTs rendszeresen futtatva biztosíthatja, hogy az Azure-előfizetése és az alkalmazást alkotó különböző erőforrások biztonságos állapotúak legyenek. Ezeket a teszteket a AzSK folyamatos integráció/folyamatos üzembe helyezés (CI/CD) bővítmények szolgáltatásával is automatizálhatja, amely a Visual Studio-bővítményként elérhetővé teszi a SVTs.
 
 ## <a name="next-steps"></a>További lépések
-Az alábbi cikkeket azt javasoljuk, hogy a biztonsági vezérlők és tevékenységek, amelyek segítségével tervezését és helyezzen üzembe biztonságos alkalmazásokat.
+A következő cikkekben olyan biztonsági vezérlőket és tevékenységeket ajánlunk, amelyek segíthetnek a biztonságos alkalmazások tervezésében és üzembe helyezésében.
 
 - [Biztonságos alkalmazások tervezése](secure-design.md)
-- [Biztonságos alkalmazások üzembe helyezése](secure-deploy.md)
+- [Biztonságos alkalmazások telepítése](secure-deploy.md)

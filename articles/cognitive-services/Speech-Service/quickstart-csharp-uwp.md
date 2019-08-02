@@ -1,31 +1,31 @@
 ---
-title: 'Gyors útmutató: A beszédfelismerést, C# (UWP) – beszédszolgáltatások'
+title: 'Gyors útmutató: Beszédfelismerés felismerése C# , (UWP) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
 description: Ebben a cikkben létrehoz egy C# univerzális Windows Platform (UWP-) alkalmazások a Cognitive Services beszédfelismerő SDK használatával. Az eszköz mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a létrehozása a Speech SDK NuGet-csomagot és a Microsoft Visual Studio 2017-ben.
 services: cognitive-services
-author: wolfma61
+author: lisaweixu
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
-ms.author: wolfma
+ms.date: 07/23/2019
+ms.author: lisaweixu
 ms.custom: seodec18
-ms.openlocfilehash: 30a12c504071cd178ed3e7563f9d7d967d8ba36d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b4c3c0979f3fea491ad8b04285973517423eaeeb
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606393"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607809"
 ---
-# <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Gyors útmutató: A beszédfelismerés SDK-val beszédfelismerést egy UWP-alkalmazásban
+# <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerés felismerése UWP alkalmazásban a Speech SDK használatával
 
-Rövid útmutatók érhetők el is [szöveg-hang transzformációs](quickstart-text-to-speech-csharp-uwp.md), [tolmácsolás –](quickstart-translate-speech-uwp.md) és [hang-és felhőközpontú virtuális asszisztensek](quickstart-virtual-assistant-csharp-uwp.md).
+A gyors útmutatók [szöveg-beszéd](quickstart-text-to-speech-csharp-uwp.md), beszédfelismerési és hangvezérelt [](quickstart-translate-speech-uwp.md) [virtuális asszisztensek](quickstart-virtual-assistant-csharp-uwp.md)esetén is elérhetők.
 
-Szükség esetén válasszon egy másik programozási nyelvet és/vagy a környezetben:<br/>
+Ha szükséges, válasszon másik programozási nyelvet és/vagy környezetet:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ebben a cikkben fejleszt egy C# univerzális Windows Platform (UWP; 1709-es Windows később) alkalmazást a Cognitive Services használatával [beszéd SDK](speech-sdk.md). A program fog alapuló átírás beszéd szöveggé valós idejű, az eszköz mikrofonját. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
+Ebben a cikkben egy C# univerzális Windows-platform FEJLESZT (UWP; Windows Version 1709 újabb verzió) alkalmazás a Cognitive Services [SPEECH SDK](speech-sdk.md)használatával. A program valós időben átmásolja a beszédet az eszköz mikrofonjában lévő szövegbe. Az alkalmazás a [SPEECH SDK NuGet csomagjával](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-es vagy újabb verziójával (bármely kiadással) készült.
 
 > [!NOTE]
 > A Universal Windows Platformon olyan alkalmazásokat fejleszthet, amelyek a Windows 10-et támogató minden eszközön futtathatók: PC-n, Xboxon, Surface Hubon stb.
@@ -34,8 +34,8 @@ Ebben a cikkben fejleszt egy C# univerzális Windows Platform (UWP; 1709-es Wind
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) vagy újabb
+* Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
@@ -71,14 +71,14 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
     ![Az engedélykérés képernyőképe](media/sdk/qs-csharp-uwp-10-access-prompt.png "Hibakeresés indítása az alkalmazáson")
 
-1. Válassza a **Beszédfelismerés mikrofon bemenettel** lehetőséget, és mondjon egy angol kifejezést vagy mondatot a mikrofonba. A beszéd továbbítani a beszédszolgáltatások, és a megjelenített érzéseket szöveg, amely megjelenik az ablakban.
+1. Válassza a **Beszédfelismerés mikrofon bemenettel** lehetőséget, és mondjon egy angol kifejezést vagy mondatot a mikrofonba. A beszéd a beszédfelismerési szolgáltatásokhoz lett továbbítva, és szövegbe kerül, amely megjelenik az ablakban.
 
     ![A beszédfelismerés felhasználói felületének képernyőképe](media/sdk/qs-csharp-uwp-11-ui-result.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a C# példák a Githubon](https://aka.ms/csspeech/samples)
+> [Minták C# feltárása a githubon](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Lásd még
 

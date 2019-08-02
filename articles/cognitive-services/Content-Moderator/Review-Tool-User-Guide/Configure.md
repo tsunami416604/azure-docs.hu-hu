@@ -1,7 +1,7 @@
 ---
-title: Felülvizsgálati eszköz beállításainak - Content Moderator konfigurálása
-titlesuffix: Azure Cognitive Services
-description: A felülvizsgálati eszköz használatával állítsa be, vagy a csapat, címkék, összekötők, a munkafolyamatok és hitelesítő adatokat lekérni a Content Moderator.
+title: Felülvizsgálati eszköz beállításainak konfigurálása – Content Moderator
+titleSuffix: Azure Cognitive Services
+description: A felülvizsgálati eszköz használatával konfigurálhatja vagy lekérheti a csapatot, a címkéket, az összekötőket, a munkafolyamatokat és a hitelesítő adatokat a Content Moderatorhoz.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -10,134 +10,134 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: sajagtap
-ms.openlocfilehash: f88ccbabc925b651abbc06f571a9d4220ed8aeb2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 70bc2c9f457aba09f3d3220061b2fd31d0923906
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61285547"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565672"
 ---
 # <a name="configure-the-review-tool"></a>A felülvizsgálati eszköz konfigurálása
 
-A [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com) számos fontos funkcióval keresztül férnek hozzá a **beállítások** menü az irányítópulton.
+A [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) számos fontos funkciót tartalmaz, amelyek az irányítópult **Beállítások** menüjében érhetők el.
 
-![Túl Content Moderator felülvizsgálati beállítások menü](images/settings-1.png)
+![Content Moderator felülvizsgálati beállítások menü](images/settings-1.png)
 
-## <a name="manage-team-and-subteams"></a>Csoportok és alcsoportok kezelése
+## <a name="manage-team-and-subteams"></a>Csapat és alcsoportok kezelése
 
-A **csapat** lap lehetővé teszi a csoportok és alcsoportok kezelése&mdash;értesítést kaphat, amikor bizonyos felhasználói csoportok [emberi ellenőrző](../review-api.md#reviews) elindulnak. Csak egy team (amely hoz létre, amikor regisztrál a felülvizsgálati eszköz) is rendelkezik, de létrehozhat több alcsoportok. A csapat rendszergazdája tagok meghívása, állítsa be az engedélyeiket, és hozzárendelheti azokat különböző alcsoportok.
+A **Team (csapat** ) lapon kezelheti azon felhasználók csoportjait&mdash;és alcsoportjait, akik értesítést kaphatnak bizonyos [emberi értékelések](../review-api.md#reviews) elindításáról. Csak egy csapattal rendelkezhet (amelyet a felülvizsgálati eszköz regisztrálásakor hoz létre), de több alcsapatot is létrehozhat. A csoport rendszergazdája meghívhatja a tagokat, megadhatja az engedélyeiket, és hozzárendelheti őket különböző alcsoportokhoz.
 
-![Tekintse át az eszköz team-beállítások](images/settings-2-team.png)
+![Az eszköz-csoport beállításainak áttekintése](images/settings-2-team.png)
 
-Alcsoportok hasznosak eszkalációs csapatok vagy a megjelölt kategóriákat a tartalom megtekintésével számára kijelölt csoportok létrehozása. Például felnőtt tartalom előfordulhat, hogy küldeni egy külön csapat további ellenőrzésre.
+Az alcsoportok olyan eszkalációs csapatok vagy csapatok létrehozására használhatók, amelyek a tartalom adott kategóriáinak áttekintéséhez vannak hozzárendelve. Előfordulhat például, hogy a felnőtt tartalmat egy különálló csapatnak küldi el további áttekintés céljából.
 
-Ez a szakasz ismerteti, hogyan alcsoportok létrehozása és gyorsan hozzárendelése az értékelések menet közben. Használhatja azonban [munkafolyamatok](workflows.md) hozzárendelni a megadott feltételek alapján felülvizsgálatok.
+Ez a szakasz azt ismerteti, hogyan hozhatók létre alcsoportok, és hogyan lehet gyorsan kiosztani az értékeléseket menet közben. A munkafolyamatok segítségével [](workflows.md) azonban meghatározott feltételek alapján rendelhet hozzá értékeléseket.
 
-### <a name="create-a-subteam"></a>Hozzon létre egy alcsoportok
+### <a name="create-a-subteam"></a>Alcsapat létrehozása
 
-Nyissa meg a **alcsoportok** szakaszt, és kattintson a **alcsoportok hozzáadása**. A párbeszédpanelen adja meg a csapaton nevét, és kattintson a **mentése**.
+Nyissa meg  az alcsoportok szakaszt, és kattintson az **alcsapat hozzáadása**lehetőségre. Adja meg az alcsoport nevét a párbeszédpanelen, majd kattintson a **Mentés**gombra.
 
-![Alcsoportok neve](images/1-Teams-2.PNG)
+![Alcsapat neve](images/1-Teams-2.PNG)
 
-#### <a name="invite-teammates"></a>Csapattársai meghívása
+#### <a name="invite-teammates"></a>Csapattársak meghívása
 
-Nem rendelhet valaki a csapaton, ha azok még nem az alapértelmezett csapat tagja így felülvizsgálók az alapértelmezett csapatának először hozzá kell. Kattintson a **meghívása** a a **csapat** fülre.
+Nem rendelhet hozzá valakit egy alcsapathoz, ha még nem tagjai az alapértelmezett csapatnak, ezért először hozzá kell adnia a véleményezőket az alapértelmezett csapathoz. Kattintson a **meghívás** elemre a **csapat** lapon.
 
-![Felhasználó meghívása](images/invite-users.png)
+![Felhasználók meghívása](images/invite-users.png)
 
-#### <a name="assign-teammates-to-subteam"></a>Rendelje hozzá a subteam csapattársai
+#### <a name="assign-teammates-to-subteam"></a>Csapattársak társítása az alcsapathoz
 
-Kattintson a **tag hozzáadása** alapértelmezett csapata tagok hozzárendelése egy vagy több alcsoportok gombra. A meglévő felhasználók csak a csapaton adhat hozzá. Új felhasználók, akik nem tagjai a felülvizsgálati eszköz hozzáadásához, felkínáljuk számukra a Team-beállítások lapon a "Meghívás" gomb használatával.
+Kattintson a **tag hozzáadása** gombra az alapértelmezett csapat tagjainak egy vagy több alcsapathoz való hozzárendeléséhez. Csak meglévő felhasználókat adhat hozzá egy alcsapathoz. A felülvizsgálati eszközben nem szereplő új felhasználók hozzáadásához hívja meg őket a csapat beállításai lap "meghívás" gombjára kattintva.
 
-![Alcsoportok tagok hozzárendelése](images/1-Teams-3.PNG)
+![Alcsoport tagjainak kiosztása](images/1-Teams-3.PNG)
 
-### <a name="assign-reviews-to-subteams"></a>Alcsoportok felülvizsgálatok hozzárendelése
+### <a name="assign-reviews-to-subteams"></a>Értékelések társítása alcsoportokhoz
 
-Létrehozta az alcsoportok, és a hozzárendelt tagok, elkezdheti tartalom hozzárendelése [felülvizsgálatok](../review-api.md#reviews) , ezek alcsoportok. Az ebben az esetben a **felülvizsgálati** lapot a hely.
-Tartalom hozzárendelése a csapaton, kattintson a jobb felső sarokban, válassza a három pontot **áthelyezése**, és válassza ki a csapaton.
+Miután létrehozta az alcsapatokat és a hozzárendelt tagokat, megkezdheti a [](../review-api.md#reviews) tartalmi felülvizsgálatok hozzárendelését az alcsoportokhoz. Ezt a webhely **Áttekintés** lapján végezheti el.
+Ha tartalmat szeretne hozzárendelni egy alcsapathoz, kattintson a jobb felső sarokban található három pontra, válassza a **Áthelyezés**lehetőséget, majd válasszon egy alcsapatot.
 
-![Kép felülvizsgálat subteam hozzárendelése](images/3-review-image-subteam-1.png)
+![Rendszerkép-áttekintés társítása alcsoporthoz](images/3-review-image-subteam-1.png)
 
-### <a name="switch-between-subteams"></a>Alcsoportok közötti váltás
+### <a name="switch-between-subteams"></a>Váltás az alcsoportok között
 
-Ha egynél több csapaton tagja, mely tartalom felülvizsgálatok jelennek meg módosítani ezeket alcsoportok között válthat. Az a **felülvizsgálati** lapra, válassza ki a legördülő menü feliratú **alapértelmezett** , és válassza ki **alcsoportok kiválasztása**. Megtekintheti, hogy a tartalom felülvizsgálatának különböző alcsoportok, de csak azok, amelyeknek a tagja.
+Ha egynél több alcsapat tagja, válthat az alcsoportok között, hogy megváltoztassa az Ön számára megjelenített tartalmi értékeléseket. A **felülvizsgálat** lapon válassza az **alapértelmezett** legördülő menüt, és válassza az alcsapat kiválasztása lehetőséget. Megtekintheti a különböző alcsoportok tartalmi felülvizsgálatait, de csak azokat, amelyeknek Ön a tagja.
 
-![Alcsoportok közötti váltás](images/3-review-image-subteam-2.png)
+![Váltás az alcsoportok között](images/3-review-image-subteam-2.png)
 
 ## <a name="tags"></a>Tags
 
-A **címkék** lapon meghatározhatja a két alapértelmezett moderálás címkék mellett egyéni moderálás címkék&mdash;**isadult** (**egy**) és **isracy**  (**r**). Amikor létrehoz egy egyéni címkével, elérhetővé válik az értékelések mellett az alapértelmezett címkéket. Melyik címkék jelennek meg az értékelések azok oszlopláthatósági beállítások között módosíthatja.
+A **címkék** lapon egyéni moderálási címkéket határozhat meg&mdash;a két alapértelmezett moderálási címke**isadult** (**a**) és a **isracy** (**r**) mellett. Ha egyéni címkét hoz létre, az az alapértelmezett címkékkel együtt elérhetővé válik az értékelésekben. A láthatósági beállítások átváltásával megváltoztathatja, hogy mely címkék jelenjenek meg az értékelésekben.
 
-![A címkék megtekintéséhez, többek között a "Látható-e" jelölőnégyzet](images/tags-4-disable.png)
+![Címkék nézet, beleértve a "látható" jelölőnégyzeteket](images/tags-4-disable.png)
 
 ### <a name="create-custom-tags"></a>Egyéni címkék létrehozása
 
-Új címke létrehozásához kell megadnia egy kódot rövid, nevet és leírást a megfelelő mezőben.
+Új címke létrehozásához meg kell adnia egy rövid kódot, egy nevet és egy leírást a megfelelő mezőkben.
 
-- **Rövid kód**: Adja meg a címke kétbetűs kódját. Példa: **cb**
-- **Név**: Adjon meg egy rövid és informatív címkenév kisbetűs szóközök nélkül. Példa: **isbullying**.
-- **Leírás**: (nem kötelező) adjon meg egy leírást, hogy milyen típusú tartalmat, amely a címke célokat. Példa: **Ábrázolása vagy a kibertámadások bullying példányai**.
+- **Rövid kód**: Írjon be egy kétbetűs kódot a címkéhez. Példa: **CB**
+- **Név**: Szóközök nélkül adjon meg rövid és leíró címkét a kisbetűs mezőben. Példa: **isbullying**.
+- **Leírás**: (nem kötelező) adja meg annak a tartalomnak a leírását, amelyet a címkét céloz meg. Példa: **A számítógépes zaklatás ábrázolásai vagy példányai**.
 
-Kattintson a **Hozzáadás** adjon hozzá egy címkét, és kattintson a **mentése** Amikor végzett, a címkék létrehozása.
+Kattintson a **Hozzáadás** elemre egy címke hozzáadásához, majd kattintson a **Mentés** gombra, amikor elkészült a címkék létrehozásával.
 
-![Felülvizsgálati eszköz hozzon létre új címke párbeszédpanel](images/settings-3-tags.png)
+![Az eszköz új címke létrehozása párbeszédpanelének áttekintése](images/settings-3-tags.png)
 
 ### <a name="delete-tags"></a>Címkék törlése
 
-Egyéni címkék mellett azok a címkék listája a bejegyzések a Kuka ikonra kattintva törölheti, de nem lehet törölni az alapértelmezett címkéket.
+Az egyéni címkéket úgy törölheti, ha kiválasztja a Kuka ikont a címkék listán szereplő bejegyzések mellett, de az alapértelmezett címkéket nem törölheti.
 
 ## <a name="connectors"></a>Összekötők
 
-A **összekötők** lap lehetővé teszi az összekötők, amelyek szolgáltatásspecifikus beépülő modulok, amelyekkel képes feldolgozni különböző módon tartalom tartalom részeként kezelése [munkafolyamatok](../review-api.md#workflows).
+Az **Összekötők** lapon kezelheti az összekötőket, amelyek olyan szolgáltatás-specifikus beépülő modulok, amelyek különböző módon dolgozzák fel a tartalmakat a tartalom-munkafolyamatok részeként. [](../review-api.md#workflows)
 
-Az alapértelmezett összekötő munkafolyamat létrehozásakor a Content Moderator összekötőt, amely a tartalmat, megjelölheti **felnőtt** vagy **pikáns**, keresse meg a vulgáris, és így tovább. Azonban használhat más összekötők, itt felsorolt, amennyiben rendelkezik a megfelelő szolgáltatások hitelesítő adatait (a Face API-összekötők használatához például kell lekérni egy [Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview) előfizetési kulcs).
+A munkafolyamat létrehozásakor az alapértelmezett összekötő az Content Moderator-összekötő, amely a tartalmat felnőttként vagy  zamatként megjelölheti, megkeresheti a káromkodást és így tovább. Használhat azonban más összekötőket is, amelyeket itt láthat, ha rendelkezik a megfelelő szolgáltatásaihoz tartozó hitelesítő adatokkal (az Face API-összekötő használatához például egy [Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview) előfizetési kulcsot kell beszereznie).
 
-A [vizsgálóeszköz](./human-in-the-loop.md) magában foglalja az alábbi csatlakozók:
+A [felülvizsgálati eszköz](./human-in-the-loop.md) a következő összekötőket tartalmazza:
 
 - Emotion API
-- Face API
+- Arcfelismerési API
 - PhotoDNA Cloud Service
 - Szövegelemzések API
 
-### <a name="add-a-connector"></a>Adjon hozzá egy összekötőt
+### <a name="add-a-connector"></a>Összekötő hozzáadása
 
-Összekötő hozzáadása (és a tartalom elérhetővé teheti [munkafolyamatok](../review-api.md#workflows)), válassza ki a megfelelő **Connect** gombra. A következő párbeszédpanelen adja meg az előfizetési kulcs, hogy a szolgáltatás. Amikor elkészült, az új összekötő meg kell jelennie az oldal tetején.
+Ha hozzá szeretne adni egy összekötőt (és elérhetővé teszi a [](../review-api.md#workflows)tartalom-munkafolyamatokban való használatra), válassza a megfelelő **Csatlakozás** gombot. A következő párbeszédpanelen adja meg az előfizetési kulcsot a szolgáltatáshoz. Ha elkészült, az új összekötőnek az oldal tetején kell megjelennie.
 
 ![Content Moderator összekötők beállításai](images/settings-4-connectors.png)
 
-## <a name="workflows"></a>A munkafolyamatok
+## <a name="workflows"></a>Workflows
 
-A **munkafolyamatok** lapon kezelését teszi lehetővé a [munkafolyamatok](../review-api.md#workflows). Munkafolyamatok felhőalapú szűrők a tartalmat, és azok együttműködését összekötők különböző módon rendezheti a tartalom és a megfelelő műveleteket. Itt meghatározhatja, szerkesztheti, és tesztelje a munkafolyamatokat. Lásd: [definiálása és -felhasználási munkafolyamatok](Workflows.md) ehhez útmutatást.
+A  munkafolyamatok lapon kezelheti a [](../review-api.md#workflows)munkafolyamatokat. A munkafolyamatok felhőalapú szűrők a tartalomhoz, és összekötők segítségével rendezik a tartalmakat különböző módokon, és megtehetik a megfelelő műveleteket. Itt megadhatja, szerkesztheti és tesztelheti a munkafolyamatokat. További útmutatásért lásd: a munkafolyamatok [meghatározása és használata](Workflows.md) .
 
-![Content Moderator munkafolyamat-beállítások](images/settings-5-workflows.png)
+![Munkafolyamat-beállítások Content Moderator](images/settings-5-workflows.png)
 
 ## <a name="credentials"></a>Hitelesítő adatok
 
-A **hitelesítő adatok** fülre a Content Moderator előfizetési kulcsot, mert a moderálás szolgáltatások elérését egy REST-hívást vagy ügyféloldali SDK-val kell gyors hozzáférést biztosít.
+A **hitelesítő adatok** lap gyors hozzáférést biztosít a Content moderator-előfizetési kulcshoz, amelyhez a moderálási szolgáltatásokhoz való hozzáféréshez a REST-hívások vagy az ügyféloldali SDK-nak szüksége lesz.
 
-![A Content Moderator hitelesítő adatok](images/settings-6-credentials.png)
+![Hitelesítő adatok Content Moderator](images/settings-6-credentials.png)
 
-### <a name="use-external-credentials-for-workflows"></a>Külső hitelesítő adatok használata a munkafolyamatokhoz
+### <a name="use-external-credentials-for-workflows"></a>Külső hitelesítő adatok használata munkafolyamatokhoz
 
-A [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com) kulcsot generál egy ingyenes próbaverzió az Azure Content Moderator szolgáltatások, amikor regisztrál, de beállíthatja, hogy egy meglévő kulcs az Azure-fiókjával. Ez ingyenes próbaverziós kulcsok szigorú használati korlátokkal rendelkeznek, ajánlott nagyméretű forgatókönyvek esetén ([díjszabás és korlátok](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/)).
+A [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) létrehoz egy ingyenes próbaverziót az Azure Content moderator Services szolgáltatásban a regisztráció során, de azt is beállíthatja, hogy egy meglévő kulcsot használjon Azure-fiókjából. Ez nagy léptékű forgatókönyvek esetén ajánlott, mivel az ingyenes próbaverziós kulcsok szigorú használati korlátokkal rendelkeznek ([díjszabás és korlátok](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/)).
 
-Ha létrehozott egy [a Content Moderator erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) az Azure-ban keresse meg azt az Azure Portalon, és válassza a **kulcsok** panelen. Másolja a kulcsok egyikét.
+Ha létrehozott egy Content Moderator- [erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) az Azure-ban, navigáljon a Azure Portal, és válassza a **kulcsok** panelt. Másolja ki az egyik kulcsot.
 
-![Content Moderator kulcsok az Azure Portalon](images/credentials-azure-portal-keys.PNG)
+![Content Moderator kulcsok a Azure Portal](images/credentials-azure-portal-keys.PNG)
 
-Az a [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com)a **hitelesítő adatok** lépjen a **munkafolyamat-beállítások** ablaktáblán válassza **szerkesztése**, és illessze be a kulcsát a **Ocp-Apim-Subscription-Key** mező. Most munkafolyamatok, amelyek a moderálási API-k hívása az Azure hitelesítő adatokat fogja használni.
+A [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com)hitelesítő **adatai** lapon lépjen a **munkafolyamat beállításai** ablaktáblára, válassza a **Szerkesztés**lehetőséget, és illessze be a kulcsot a **OCP-APIM-Subscription-Key** mezőbe. A moderálási API-kat meghívó munkafolyamatok mostantól az Azure-beli hitelesítő adatait fogják használni.
 
 > [!NOTE]
-> A másik két mezőt a **munkafolyamat-beállítások** ablaktábla időszak és a lemezkép listák készítéséhez egyéni vannak. Tekintse meg a [egyéni használati](../try-terms-list-api.md) vagy [egyéni lemezképek](../try-image-list-api.md) útmutatók ezekről.
+> A **munkafolyamat-beállítások** ablaktáblán a másik két mező az egyéni és a Képlista. Ezek megismeréséhez tekintse meg az [Egyéni feltételek](../try-terms-list-api.md) vagy az [Egyéni lemezképek](../try-image-list-api.md) útmutatóit.
 
-### <a name="use-your-azure-account-with-the-review-apis"></a>Az Azure-fiók használata a felülvizsgálati API-k
+### <a name="use-your-azure-account-with-the-review-apis"></a>Azure-fiók használata a felülvizsgálati API-kkal
 
-A felülvizsgálati API-k az Azure-kulcs használata, kell beolvasni az erőforrás-azonosító. Nyissa meg az Azure Portalon, és válassza a Content Moderator erőforrás a **tulajdonságok** panelen. Másolja ki az erőforrás-azonosító értékét, és illessze be azt a **szerepel az engedélyezési listán erőforrás-azonosító(k)** mezőjét, a felülvizsgálati eszköz **hitelesítő adatok** fülre.
+Ahhoz, hogy az Azure-kulcsot a felülvizsgálati API-kkal használhassa, le kell kérnie az erőforrás-azonosítót. Nyissa meg a Content Moderator erőforrást a Azure Portal, és válassza a **Tulajdonságok panelt** . Másolja ki az erőforrás-azonosító értékét, és illessze be a felülvizsgálati eszköz **hitelesítő adatai** lap engedélyezett **erőforrás-azonosító (k)** mezőjébe.
 
-![Content Moderator erőforrás-azonosító az Azure Portalon](images/credentials-azure-portal-resourceid.PNG)
+![Content Moderator erőforrás-azonosító a Azure Portal](images/credentials-azure-portal-resourceid.PNG)
 
-Az előfizetési kulcs megadott mindkét helyen, ha a próbaverzió kulcs, amely a felülvizsgálati eszköz fiókjához nem fogja használni, de továbbra is elérhető marad.
+Ha mindkét helyen megadta az előfizetési kulcsot, a felülvizsgálati eszköz fiókjához tartozó próbaverzió nem lesz használatban, de továbbra is elérhető marad.
 
 ## <a name="next-steps"></a>További lépések
 
-Kövesse a [felülvizsgálati eszköz rövid](../quick-start.md) a vizsgálóeszköz használatához a tartalom-jóváhagyás forgatókönyvekben.
+Kövesse a [felülvizsgálati](../quick-start.md) eszköz rövid útmutatóját a felülvizsgálati eszköz a tartalom moderálási forgatókönyvekben való használatának megkezdéséhez.

@@ -1,6 +1,6 @@
 ---
-title: Docker-tároló beállításai
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Docker-tároló beállításai – LUIS
+titleSuffix: Azure Cognitive Services
 description: A LUIS tároló futtatási környezetet segítségével konfigurálható a `docker run` parancssori argumentumokat. A LUIS rendelkezik néhány választható beállítások mellett számos szükséges beállításokat.
 services: cognitive-services
 author: IEvangelist
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: dapine
-ms.openlocfilehash: 4a9f7762b7960c74acad8203f70bc1e7c7cbd90f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e6a13688bba1c3a0e62e427e078e78c8f8dd4e70
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063218"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560614"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding Docker-tárolók konfigurálása 
 
-A **Language Understanding** tároló-futtatókörnyezet (LUIS) szolgáltatással konfigurálható a `docker run` parancssori argumentumokat. A LUIS rendelkezik néhány választható beállítások mellett számos szükséges beállításokat. Több [példák](#example-docker-run-commands) a parancs érhetők el. A tároló-specifikus beállításokat is a bemeneti [csatlakoztatási beállítások](#mount-settings) és a számlázási beállításait. 
+A **Language Understanding** (Luis) tároló futásidejű környezete a `docker run` parancs argumentumai alapján van konfigurálva. A LUIS rendelkezik néhány választható beállítások mellett számos szükséges beállításokat. Több [példák](#example-docker-run-commands) a parancs érhetők el. A tároló-specifikus beállításokat is a bemeneti [csatlakoztatási beállítások](#mount-settings) és a számlázási beállításait. 
 
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 
@@ -33,7 +33,7 @@ Ez a tároló a következő konfigurációs beállításokkal rendelkezik:
 |Igen|[Billing](#billing-setting)|Az Azure-ban található szolgáltatás-erőforrás végponti URI-ját adja meg.|
 |Igen|[Eula](#eula-setting)| Azt jelzi, hogy Ön már elfogadta a tároló licencét.|
 |Nem|[Fluentd](#fluentd-settings)|Napló írási és opcionálisan metrikaadatok Fluentd kiszolgálóhoz.|
-|Nem|[Http Proxy](#http-proxy-credentials-settings)|Egy HTTP-proxy konfigurálása, hogy a kimenő kérelmek.|
+|Nem|[Http-proxy](#http-proxy-credentials-settings)|HTTP-proxy konfigurálása kimenő kérések készítéséhez.|
 |Nem|[Logging](#logging-settings)|Biztosítja a naplózás a tároló támogatása ASP.NET Core. |
 |Ige|[Fluentd](#mount-settings)|Napló- és opcionálisan metrikaadatok írása egy Fluentd-kiszolgálóra.|
 
@@ -42,12 +42,12 @@ Ez a tároló a következő konfigurációs beállításokkal rendelkezik:
 
 ## <a name="apikey-setting"></a>A beállítás apikey tulajdonsággal végzett tesztelése
 
-A `ApiKey` beállítás határozza meg a számlázási adatokat tároló nyomon követésére használt Azure-erőforrás kulcs. Meg kell adnia egy értéket a apikey tulajdonsággal végzett tesztelése és az értéknek kell lennie egy érvényes kulcsot a _Cognitive Services_ megadott erőforrás a [ `Billing` ](#billing-setting) konfigurációs beállítás.
+A `ApiKey` beállítás határozza meg a számlázási adatokat tároló nyomon követésére használt Azure-erőforrás kulcs. Meg kell adnia egy értéket a ApiKey, és az értéknek érvényes kulcsnak kell lennie  a [`Billing`](#billing-setting) konfigurációs beállításhoz megadott Cognitive Services erőforráshoz.
 
-Ez a beállítás a következő helyen található:
+Ez a beállítás a következő helyeken érhető el:
 
-* Az Azure Portalon: **A cognitive Services** erőforrás-kezelés alatt **kulcsok**
-* A LUIS-portálon: **Kulcsok és végpontbeállítások** lapot. 
+* Azure Portal: **Cognitive Services** Erőforrás-kezelés a **kulcsok** területen
+* LUIS-portál: **Kulcsok és végpont-beállítások** lap. 
 
 Ne használja az alapszintű vagy a szerzői műveletekhez részben billentyűt. 
 
@@ -57,14 +57,14 @@ Ne használja az alapszintű vagy a szerzői műveletekhez részben billentyűt.
 
 ## <a name="billing-setting"></a>Számlázás beállítása
 
-A `Billing` beállítás határozza meg a végpont URI-t, a _Cognitive Services_ erőforrást az Azure-ban használt mérni a tároló számlázási adatokat. Meg kell adnia egy értéket a konfigurációs beállítás, és az értéknek kell lennie egy érvényes végpont URI-t a egy _Cognitive Services_ erőforrást az Azure-ban. A tároló használati jelentések kapcsolatos 10 – 15 percenként.
+A `Billing` beállítás határozza meg az Azure-beli _Cognitive Services_ erőforrás végpontjának URI-ját, amely a tároló számlázási adatainak mérésére szolgál. Meg kell adnia egy értéket ehhez a konfigurációs beállításhoz, és az értéknek érvényes végponti URI-nek kell lennie az Azure-beli _Cognitive Services_ erőforráshoz. A tároló 10 – 15 percen belül jelentést készít a használatról.
 
-Ez a beállítás a következő helyen található:
+Ez a beállítás a következő helyeken érhető el:
 
-* Az Azure Portalon: **A cognitive Services** áttekintése, címkével `Endpoint`
-* A LUIS-portálon: **Kulcsok és végpontbeállítások** lap, a végpont URI részeként.
+* Azure Portal: **Cognitive Services** A címkével ellátott áttekintés`Endpoint`
+* LUIS-portál: A **kulcsok és végpontok beállításai** lap a végpont URI-ja részeként.
 
-Ne felejtse el bevenni a `luis/v2.0` útválasztási az URL-cím, az alábbi táblázatban látható módon:
+Az alábbi táblázatban látható `luis/v2.0` módon vegye fel az útválasztást az URL-címre:
 
 
 |Kötelező| Name (Név) | Adattípus | Leírás |
@@ -77,17 +77,15 @@ Ne felejtse el bevenni a `luis/v2.0` útválasztási az URL-cím, az alábbi tá
 
 ## <a name="fluentd-settings"></a>Fluentd beállításai
 
-
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>HTTP-proxybeállításai hitelesítő adatok
+## <a name="http-proxy-credentials-settings"></a>Http-proxy hitelesítő adatainak beállításai
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-settings"></a>Naplózási beállítások
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
-
 
 ## <a name="mount-settings"></a>Csatlakoztatási beállítások
 
@@ -108,22 +106,22 @@ A következő táblázat ismerteti a támogatott beállítások.
 
 Az alábbi példák bemutatják, hogyan írhat, és használja a konfigurációs beállítások segítségével `docker run` parancsokat.  Ha fut, a tároló továbbra is fut, amíg ki nem [leállítása](luis-container-howto.md#stop-the-container) azt.
 
-* Ezekben a példákban a könyvtárat használja ki a `c:` meghajtón a Windows-engedély ütközések elkerülése érdekében. Ha szeretné használni a bemeneti könyvtár egy adott címtárhoz, előfordulhat, hogy kell biztosítania a docker szolgáltatás engedéllyel. 
+* Ezek a példák a `c:` meghajtón lévő könyvtárat használják, hogy elkerüljék az engedélyek ütközését a Windowson. Ha szeretné használni a bemeneti könyvtár egy adott címtárhoz, előfordulhat, hogy kell biztosítania a docker szolgáltatás engedéllyel. 
 * Ne módosítsa az argumentumok sorrendje, kivéve, ha nagyon ismeri a docker-tárolókat.
-* Ha eltérő operációs rendszert használ, használja a megfelelő konzol/terminálon, a mappa szintaxis csatlakoztatása és a rendszer a folytatási jelző karakter. Ezek a példák feltételezik, egy Windows-konzol sor folytatási karakterrel `^`. A tároló egy olyan Linux operációs rendszer, mert a célként megadott csatlakoztatási szintaxissal egy Linux-stílusú mappát.
+* Ha más operációs rendszert használ, használja a megfelelő konzolt/terminált, a csatlakoztatások mappájának szintaxisát, valamint a rendszer vonal folytatási karakterét. Ezek a példák egy sor folytatási karakterrel `^`rendelkező Windows-konzolt feltételeznek. Mivel a tároló egy Linux operációs rendszer, a cél csatlakoztatása a Linux-stílusú mappa szintaxisát használja.
 
-Ne felejtse el bevenni a `luis/v2.0` útválasztási az URL-cím, az alábbi táblázatban látható módon.
+Ne feledje, hogy `luis/v2.0` a következő táblázatban látható módon belefoglalja az útválasztást az URL-címre.
 
 Cserélje le a(z)_argument_name_} a saját értékeire:
 
 | Helyőrző | Érték | Formátum vagy példa |
 |-------------|-------|---|
-|{ENDPOINT_KEY} | A végpont kulcs a betanított LUIS-alkalmazás. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT} | Az Azure-ban érhető el a számlázási végpontértéknek `Cognitive Services` – áttekintés oldalra. |https://westus.api.cognitive.microsoft.com/luis/v2.0|
+|{API_KEY} | A végpont kulcs a betanított LUIS-alkalmazás. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{ENDPOINT_URL} | A számlázási végpont értéke elérhető az Azure `Cognitive Services` Áttekintés oldalán. |https://westus.api.cognitive.microsoft.com/luis/v2.0|
 
 > [!IMPORTANT]
 > A `Eula`, `Billing`, és `ApiKey` beállítások meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információkért lásd: [számlázási](luis-container-howto.md#billing).
-> Apikey tulajdonsággal végzett tesztelése értéke a **kulcs** a kulcsok és a végpontok lapon a LUIS-portálon, és is elérhető az Azure a `Cognitive Services` erőforráslapján kulcsok. 
+> A ApiKey értéke a Luis portál kulcsok és végpontok lapjának **kulcsa** , és az Azure `Cognitive Services` Resource Keys oldalon is elérhető. 
 
 ### <a name="basic-example"></a>Alapszintű példa
 
@@ -135,8 +133,8 @@ docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 ^
 --mount type=bind,src=c:\output,target=/output ^
 mcr.microsoft.com/azure-cognitive-services/luis:latest ^
 Eula=accept ^
-Billing={BILLING_ENDPOINT} ^
-ApiKey={ENDPOINT_KEY}
+Billing={ENDPOINT_URL} ^
+ApiKey={API_KEY}
 ```
 
 ### <a name="applicationinsights-example"></a>Applicationinsights – példa
@@ -149,12 +147,12 @@ docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^
 --mount type=bind,src=c:\output,target=/output ^
 mcr.microsoft.com/azure-cognitive-services/luis:latest ^
 Eula=accept ^
-Billing={BILLING_ENDPOINT} ^
-ApiKey={ENDPOINT_KEY} ^
+Billing={ENDPOINT_URL} ^
+ApiKey={API_KEY} ^
 InstrumentationKey={INSTRUMENTATION_KEY}
 ```
 
-### <a name="logging-example"></a>Naplózás példa 
+### <a name="logging-example"></a>Példa naplózásra 
 
 A következő parancs beállítja a naplózási szint `Logging:Console:LogLevel`, konfigurálhatja a naplózási szint [ `Information` ](https://msdn.microsoft.com). 
 
@@ -164,13 +162,13 @@ docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^
 --mount type=bind,src=c:\output,target=/output ^
 mcr.microsoft.com/azure-cognitive-services/luis:latest ^
 Eula=accept ^
-Billing={BILLING_ENDPOINT} ^
-ApiKey={ENDPOINT_KEY} ^
+Billing={ENDPOINT_URL} ^
+ApiKey={API_KEY} ^
 Logging:Console:LogLevel:Default=Information
 ```
 
 ## <a name="next-steps"></a>További lépések
 
 * Felülvizsgálat [telepítéséről és a tárolókat futtatják](luis-container-howto.md)
-* Tekintse meg [hibaelhárítás](troubleshooting.md) LUIS funkció kapcsolatos problémák megoldásához.
-* Több [Cognitive Services-tárolók](../cognitive-services-container-support.md)
+* A LUIS [](troubleshooting.md) -funkciókkal kapcsolatos problémák megoldásához tekintse meg a hibaelhárítást ismertető témakört.
+* További [Cognitive Services tárolók](../cognitive-services-container-support.md) használata

@@ -1,9 +1,9 @@
 ---
-title: Egy Azure Service Fabric-fürt biztonságossá tétele |} A Microsoft Docs
-description: Ismerje meg a biztonsági forgatókönyvek az Azure Service Fabric-fürt és a különböző technológiák használatával végrehajtja azokat.
+title: Azure Service Fabric-fürt biztonságossá tétele | Microsoft Docs
+description: Ismerje meg az Azure Service Fabric-fürtök biztonsági forgatókönyveit, valamint a megvalósításához használható különböző technológiákat.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 26b58724-6a43-4f20-b965-2da3f086cf8a
@@ -13,129 +13,129 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
-ms.author: aljo
-ms.openlocfilehash: 6d67fa4af031480fda4a91f7356bff69830a654c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 6ee7c71a66488e9636752676d68a79fdfaf855cb
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711503"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599824"
 ---
-# <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric-fürtök biztonsági forgatókönyveit
-Azure Service Fabric-fürt saját erőforrás. A feladata biztonságossá tétele a-fürtök segítségével megakadályozhatja a jogosulatlan felhasználókat csatlakozik hozzájuk. Biztonságos fürt különösen fontos, ha a fürtön futtatnak éles számítási feladatokat. Bár lehetséges hozhat létre nem biztonságos fürtöt, ha a fürt elérhetővé teszi a nyilvános internetre felügyeleti végpontok, névtelen felhasználók csatlakozhatnak hozzá. Nem biztonságos fürtökhöz nem támogatottak a termelési számítási feladatokhoz. 
+# <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric fürt biztonsági forgatókönyvei
+Az Azure Service Fabric-fürt egy saját erőforrás. Az Ön feladata, hogy biztosítsa a fürtök védelmét, hogy megakadályozza a jogosulatlan felhasználók csatlakozását. A biztonságos fürt különösen fontos, ha éles számítási feladatokat futtat a fürtön. Bár lehetséges, hogy nem biztonságos fürtöt hoz létre, ha a fürt felügyeleti végpontokat tesz elérhetővé a nyilvános internethez, a névtelen felhasználók csatlakozhatnak hozzá. A nem biztonságos fürtök nem támogatottak az éles számítási feladatokhoz. 
 
-Ez a cikk a biztonsági forgatókönyvek az Azure-fürtök és önálló fürtök és a különböző technológiák használatával végrehajtja az áttekintést:
+Ez a cikk áttekintést nyújt az Azure-fürtök és önálló fürtök biztonsági forgatókönyvei, valamint a megvalósításához használható különféle technológiákról:
 
-* Csomópontok közötti biztonsági
-* Ügyfél-csomópont biztonsági
+* Csomópontok közötti biztonság
+* Az ügyfél és a csomópont közötti biztonság
 * Szerepköralapú hozzáférés-vezérlés (RBAC)
 
-## <a name="node-to-node-security"></a>Csomópontok közötti biztonsági
-Csomópontok közötti security segítséget nyújt a virtuális gépek és a egy fürtben számítógépek közötti biztonságos kommunikációhoz. A biztonsági forgatókönyv biztosítja, hogy csak a fürthöz való csatlakoztatáshoz jogosult számítógépek részt vehetnek-üzemeltető, alkalmazások és szolgáltatások a fürtben.
+## <a name="node-to-node-security"></a>Csomópontok közötti biztonság
+A csomópontok közötti biztonság a fürtben lévő virtuális gépek vagy számítógépek közötti kommunikáció biztonságossá tételéhez nyújt segítséget. Ez a biztonsági forgatókönyv biztosítja, hogy csak a fürthöz való csatlakozásra jogosult számítógépek vehessenek részt a fürtben lévő alkalmazások és szolgáltatások üzemeltetésében.
 
-![Csomópontok közötti kommunikáció ábrája][Node-to-Node]
+![Csomópontok közötti kommunikáció diagramja][Node-to-Node]
 
-Az Azure és az önálló fürtök futó mindkét Windows rendszert futtató fürtöket bármelyiket használhatja [biztonsági tanúsítvány](https://msdn.microsoft.com/library/ff649801.aspx) vagy [Windows biztonsági](https://msdn.microsoft.com/library/ff649396.aspx) Windows Server számítógépek.
+Az Azure-on és a Windows rendszeren futó önálló fürtökön futó fürtök egyaránt használhatják a Windows Server rendszerű számítógépek [tanúsítvány](https://msdn.microsoft.com/library/ff649801.aspx) -vagy [Windows-biztonságát](https://msdn.microsoft.com/library/ff649396.aspx) .
 
-### <a name="node-to-node-certificate-security"></a>Biztonsági csomópontok tanúsítvány
-A Service Fabric-fürt létrehozásakor az a csomóponttípus konfiguráció részeként megadott X.509 kiszolgálói tanúsítványok használ. Ez a cikk végén megjelenik röviden bemutatja ezeket a tanúsítványokat is, és hogyan beszerezni, vagy hozza létre őket.
+### <a name="node-to-node-certificate-security"></a>Csomópontok közötti tanúsítvány biztonsága
+A Service Fabric a fürt létrehozásakor a csomópont típusú konfiguráció részeként megadott X. 509 kiszolgálói tanúsítványokat használja. A cikk végén egy rövid áttekintést talál a tanúsítványok közül, valamint arról, hogyan lehet beszerezni vagy létrehozni őket.
 
-Tanúsítvány biztonsági beállítása egy Azure Resource Manager-sablon használatával, vagy egy különálló JSON-sablon használatával, vagy az Azure Portalon, a fürt létrehozásakor. Service Fabric SDK alapértelmezett viselkedését, hogy üzembe helyezése, és telepítse a tanúsítványt a legtávolabbi és a jövőbeli lejáró tanúsítványba; a klasszikus viselkedés az elsődleges és másodlagos tanúsítványát, hogy manuálisan kezdeményezett előgörgetések megadása megengedett, és a használata nem ajánlott keresztül az új funkciókat. Lesz, használja a jövőbeli lejáró dátumra legtávolabbi rendelkezik elsődleges tanúsítványokat nem egyezhet meg a rendszergazdai ügyfél és a beállított csak olvasható ügyfél-tanúsítványok az [ügyfél a csomópont közötti biztonsághoz](#client-to-node-security).
+A tanúsítvány biztonsági beállítása a fürt létrehozásakor Azure Resource Manager sablon vagy önálló JSON-sablon használatával, vagy a Azure Portal. Service Fabric SDK alapértelmezett viselkedése a legtávolabbi tanúsítvány üzembe helyezése és telepítése a jövőben lejáró tanúsítvánnyal együtt; a klasszikus viselkedés lehetővé tette az elsődleges és a másodlagos tanúsítványok definiálását, így lehetővé teszi a manuálisan kezdeményezett átváltást, és az új funkciók használata esetén nem ajánlott. A használni kívánt elsődleges tanúsítványok a legtávolabbi a jövőbeli lejárati dátummal, és nem lehetnek azonosak az ügyfél és a [csomópont](#client-to-node-security)közötti biztonsághoz beállított rendszergazdai ügyféltől és csak olvasható ügyféltanúsítványoktől.
 
-Fürt tanúsítvány biztonsági beállítása az Azure-ban kapcsolatban lásd: [fürt beállítása az Azure Resource Manager-sablon használatával](service-fabric-cluster-creation-via-arm.md).
+A következő témakörből megtudhatja, hogyan állíthatja be a tanúsítvány-biztonságot az Azure-fürtben: [fürt beállítása Azure Resource Manager sablon használatával](service-fabric-cluster-creation-via-arm.md).
 
-Hogyan állítható be egy különálló Windows Server-fürt a fürt tanúsítványalapú biztonsággal kapcsolatban lásd: [Windows különálló fürt védelme X.509-tanúsítványok használatával](service-fabric-windows-cluster-x509-security.md).
+Ha szeretné megtudni, hogyan állíthatja be a tanúsítványalapú biztonságot egy önálló Windows Server-fürthöz tartozó fürtben, tekintse meg a [különálló fürt biztonságossá tétele Windows rendszeren X. 509 tanúsítványok használatával](service-fabric-windows-cluster-x509-security.md)című témakört.
 
-### <a name="node-to-node-windows-security"></a>Csomópontok közötti Windows biztonsági
-Hogyan állítható be egy különálló Windows Server-fürt Windows biztonsági kapcsolatban lásd: [különálló fürt védelme a Windows a Windows rendszerbiztonság használatával](service-fabric-windows-cluster-windows-security.md).
+### <a name="node-to-node-windows-security"></a>Csomópontok közötti Windows-Biztonság
+Ha szeretné megtudni, hogyan állíthatja be a Windows-biztonságot egy önálló Windows Server-fürthöz, tekintse meg az [önálló fürt biztonságossá tétele](service-fabric-windows-cluster-windows-security.md)Windows rendszeren a Windows biztonsági szolgáltatással című témakört.
 
-## <a name="client-to-node-security"></a>Ügyfél-csomópont biztonsági
-Ügyfél-csomópont biztonsági hitelesíti az ügyfeleket, és segít az ügyfél és a fürt egyes csomópontjain közötti biztonságos kommunikációhoz. Az ilyen típusú biztonsági segítségével biztosíthatja, hogy csak a jogosult felhasználók hozzáférését a fürt és a fürtön üzembe helyezett alkalmazások. Az ügyfelek Windows biztonsági hitelesítő adataik vagy a tanúsítvány biztonsági hitelesítő adataik egyedileg azonosítja.
+## <a name="client-to-node-security"></a>Az ügyfél és a csomópont közötti biztonság
+Az ügyfél és a csomópont közötti biztonság hitelesíti az ügyfeleket, és segít a fürtben lévő ügyfelek és egyes csomópontok közötti kommunikáció biztonságossá tételében. Ez a típusú biztonság biztosítja, hogy csak a jogosult felhasználók férhessenek hozzá a fürthöz és a fürtön üzembe helyezett alkalmazásokhoz. Az ügyfelek egyedi módon azonosíthatók a Windows biztonsági hitelesítő adataik vagy a tanúsítvány-biztonsági hitelesítő adataik használatával.
 
-![Ügyfél és a csomópont közötti kommunikáció ábrája][Client-to-Node]
+![Az ügyfél és a csomópont közötti kommunikáció diagramja][Client-to-Node]
 
-Az Azure és az önálló fürtök futó mindkét Windows rendszert futtató fürtöket bármelyiket használhatja [biztonsági tanúsítvány](https://msdn.microsoft.com/library/ff649801.aspx) vagy [Windows biztonsági](https://msdn.microsoft.com/library/ff649396.aspx).
+Az Azure-on és a Windows rendszeren futó önálló fürtökön futó fürtök egyaránt használhatják a [tanúsítványok biztonsági](https://msdn.microsoft.com/library/ff649801.aspx) vagy a [Windows-biztonságot](https://msdn.microsoft.com/library/ff649396.aspx).
 
-### <a name="client-to-node-certificate-security"></a>Ügyfél-csomópont tanúsítványalapú biztonsággal
-Ügyfél-csomópont tanúsítvány biztonsági beállítása a Resource Manager-sablon használatával, vagy egy különálló JSON-sablon használatával, vagy az Azure Portalon, a fürt létrehozásakor. A tanúsítvány létrehozásához adjon meg egy rendszergazdai ügyfél tanúsítványa vagy felhasználói ügyféltanúsítványt. Ajánlott eljárásként a felügyeleti ügyfél és a felhasználói ügyféltanúsítványok, adja meg a megadott elsődleges és másodlagos tanúsítványát különböznie kell [csomópontok közötti biztonsági](#node-to-node-security). Alapértelmezés szerint a fürt csomópont és csomópont közötti biztonsághoz hozzáadja a tanúsítványokat az engedélyezett ügyfél felügyeleti tanúsítványok listájára.
+### <a name="client-to-node-certificate-security"></a>Az ügyfél és a csomópont közötti tanúsítvány biztonsága
+Az ügyfél és a csomópont közötti biztonság beállítása a fürt létrehozásakor, vagy a Azure Portal egy Resource Manager-sablon vagy egy önálló JSON-sablon használatával. A tanúsítvány létrehozásához meg kell adnia egy rendszergazdai ügyféltanúsítványt vagy egy felhasználói ügyféltanúsítványt. Az ajánlott eljárás az, hogy a rendszergazdai ügyfél és a felhasználói Ügyféltanúsítványok nem egyeznek meg a csomópontok közötti biztonsághoz megadott elsődleges és másodlagos [](#node-to-node-security)tanúsítványokkal. Alapértelmezés szerint a csomópontok közötti biztonsághoz tartozó fürtcsomópontok hozzáadódnak az engedélyezett ügyfél-rendszergazdai tanúsítványok listájához.
 
-A felügyeleti tanúsítvány használatával a fürthöz csatlakozó ügyfelek és a felügyeleti képességek teljes hozzáféréssel rendelkezik. Az írásvédett felhasználó ügyféltanúsítvány használatával a fürthöz csatlakozó ügyfelek csak olvasási hozzáférés-felügyeleti képességekkel rendelkezik. Ezek a tanúsítványok szolgálnak az RBAC a cikk későbbi részében leírt.
+A felügyeleti tanúsítvány használatával a fürthöz csatlakozó ügyfelek teljes hozzáféréssel rendelkeznek a felügyeleti képességekhez. A fürthöz a csak olvasási jogosultsággal rendelkező felhasználói ügyféltanúsítvány használatával csatlakozó ügyfelek csak olvasási hozzáféréssel rendelkeznek a felügyeleti képességekhez. Ezek a tanúsítványok a cikk későbbi részében ismertetett RBAC használatosak.
 
-Fürt tanúsítvány biztonsági beállítása az Azure-ban kapcsolatban lásd: [fürt beállítása az Azure Resource Manager-sablon használatával](service-fabric-cluster-creation-via-arm.md).
+A következő témakörből megtudhatja, hogyan állíthatja be a tanúsítvány-biztonságot az Azure-fürtben: [fürt beállítása Azure Resource Manager sablon használatával](service-fabric-cluster-creation-via-arm.md).
 
-Hogyan állítható be egy különálló Windows Server-fürt a fürt tanúsítványalapú biztonsággal kapcsolatban lásd: [Windows különálló fürt védelme X.509-tanúsítványok használatával](service-fabric-windows-cluster-x509-security.md).
+Ha szeretné megtudni, hogyan állíthatja be a tanúsítványalapú biztonságot egy önálló Windows Server-fürthöz tartozó fürtben, tekintse meg a [különálló fürt biztonságossá tétele Windows rendszeren X. 509 tanúsítványok használatával](service-fabric-windows-cluster-x509-security.md)című témakört.
 
-### <a name="client-to-node-azure-active-directory-security-on-azure"></a>Ügyfél-csomópont Azure Active Directory biztonsági az Azure-ban
-Azure ad-ben alkalmazásokhoz való felhasználói hozzáférés kezelése lehetővé teszi a szervezetek (más néven bérlők). Alkalmazások vannak osztva a webalapú bejelentkezési felhasználói felület és a egy natív ügyfél felhasználói élményét. Ha még nem hozott létre a bérlőt, először olvassa el [Azure Active Directory-bérlő beszerzése][active-directory-howto-tenant].
+### <a name="client-to-node-azure-active-directory-security-on-azure"></a>Az Azure-ban az ügyfél és a csomópont közötti Azure Active Directory biztonság
+Az Azure AD lehetővé teszi, hogy a szervezetek (más néven bérlők) az alkalmazásokhoz való felhasználói hozzáférést kezeljék. Az alkalmazások a webes bejelentkezési kezelőfelülettel és a natív ügyfél-felhasználói felülettel rendelkezők számára vannak osztva. Ha még nem hozott létre bérlőt, először olvassa el, [hogyan szerezhet be Azure Active Directory bérlőt][active-directory-howto-tenant].
 
-Service Fabric-fürt kínál a különböző belépési pontok annak felügyeleti funkciójához, beleértve a webalapú [Service Fabric Explorer] [ service-fabric-visualizing-your-cluster] és [Visual Studio] [ service-fabric-manage-application-in-visual-studio]. Ennek eredményeképpen hozzon létre két Azure AD-alkalmazások a fürthöz való hozzáférés szabályozásához, egy webalkalmazás és a egy natív alkalmazást.
+A Service Fabric-fürtök több belépési pontot biztosítanak a felügyeleti funkcióihoz, beleértve a webalapú [Service Fabric Explorer][service-fabric-visualizing-your-cluster] és a [Visual studiót][service-fabric-manage-application-in-visual-studio]is. Ennek eredményeképpen két Azure AD-alkalmazást hoz létre a fürthöz, egy webalkalmazáshoz és egy natív alkalmazáshoz való hozzáférés szabályozásához.
 
-Az Azure-ban futó fürtök esetén is biztosíthatók felügyeleti végpontok elérését az Azure Active Directory (Azure AD) használatával. Megtudhatja, hogyan hozhat létre a szükséges Azure AD-összetevőket és hogyan tölthetők fel a fürt létrehozásakor: [állítsa be az Azure AD-ügyfelek hitelesítésére](service-fabric-cluster-creation-setup-aad.md).
+Az Azure-on futó fürtök esetében Azure Active Directory (Azure AD) használatával is biztonságossá teheti a felügyeleti végpontokhoz való hozzáférést. A szükséges Azure AD-összetevők létrehozásával és a fürt létrehozásakor történő feltöltésével kapcsolatos további információkért lásd: az [Azure ad beállítása az ügyfelek hitelesítéséhez](service-fabric-cluster-creation-setup-aad.md).
 
 ## <a name="security-recommendations"></a>Biztonsági javaslatok
-Service Fabric-fürtök az Azure-ban üzemeltetett nyilvános hálózaton üzembe helyezett az ügyfél és a csomópont közötti kölcsönös hitelesítés ajánlás van:
-*   Az ügyfelek identitását az Azure Active Directory használata
-*   Egy tanúsítványt a kiszolgáló identitását és a http-kommunikációhoz SSL-titkosítás
+Az Azure-ban üzemeltetett nyilvános hálózatokban üzembe helyezett Service Fabric-fürtök esetén az ügyfél és a csomópont közötti kölcsönös hitelesítésre vonatkozó javaslat a következő:
+*   Azure Active Directory használata az ügyfél identitásához
+*   Tanúsítvány a http-kommunikáció kiszolgálói identitásához és SSL-titkosításához
 
-Service Fabric-fürtök üzembe helyezett Azure-ban üzemeltetett nyilvános hálózaton a csomópontok közötti biztonsági javaslatot, hogy egy fürt tanúsítványt használják a hitelesítéshez a csomópontok. 
+Az Azure-ban üzemeltetett nyilvános hálózatokban üzembe helyezett Service Fabric-fürtök esetén a csomópontok közötti biztonságra vonatkozó javaslat a csomópontok hitelesítésére szolgáló fürt tanúsítványának használata. 
 
 
-Önálló Windows Server-fürtök Ha rendelkezik Windows Server 2012 R2 és Windows Active Directory, javasoljuk, hogy a csoportosan felügyelt szolgáltatásfiókok használatához Windows biztonsági. Ellenkező esetben használja a Windows biztonsági Windows-fiókokkal.
+Önálló Windows Server-fürtök esetén a Windows Server 2012 R2 és a Windows Active Directory használata esetén javasoljuk, hogy a Windows-biztonságot csoportosan felügyelt szolgáltatásfiókok használatával használja. Ellenkező esetben használja a Windows-biztonságot Windows-fiókokkal.
 
 ## <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
-Hozzáférés-vezérlés használatával férjenek hozzá az egyes fürtműveletek a különböző felhasználói csoportokhoz. Ez segít a fürt biztonságát. Hozzáférés-vezérlési kétféle fürthöz csatlakozó ügyfelek támogatottak: Rendszergazdai szerepkör és a felhasználói szerepkör.
+A hozzáférés-vezérlés használatával korlátozhatja a hozzáférést bizonyos fürt műveleteihez a különböző felhasználói csoportok esetében. Ez segít a fürt biztonságosabbá tételében. A fürthöz csatlakozó ügyfelek esetében két hozzáférés-vezérlési típus támogatott: Rendszergazdai szerepkör és felhasználói szerepkör.
 
-A rendszergazda szerepkörrel felruházott felhasználók teljes hozzáférése kezelési funkciókat, például olvasási és írási képességeket. Alapértelmezés szerint a felhasználói szerepkörhöz hozzárendelt felhasználók felügyeleti képességeket (például a lekérdezési képességek) csak olvasási hozzáféréssel rendelkeznek. Akkor is fel tudja oldani alkalmazásokat és szolgáltatásokat.
+A rendszergazdai szerepkörrel rendelkező felhasználók teljes hozzáféréssel rendelkeznek a felügyeleti képességekhez, beleértve az olvasási és írási képességeket is. A felhasználói szerepkörhöz hozzárendelt felhasználók alapértelmezés szerint csak olvasási hozzáféréssel rendelkeznek a felügyeleti képességekhez (például a lekérdezési képességekhez). Emellett az alkalmazásokat és a szolgáltatásokat is feloldják.
 
-Klient rendszergazdai és felhasználói szerepkörök beállítása a fürt létrehozásakor. Szerepkörök hozzárendelése azáltal, hogy különálló (például úgy, hogy a tanúsítványok vagy Azure AD) minden egyes szerepkör-típushoz. Alapértelmezett hozzáférés-vezérlési beállításokkal és alapértelmezett beállítások módosításával kapcsolatos további információkért lásd: [szerepköralapú hozzáférés-vezérlés a Service Fabric-ügyfelek](service-fabric-cluster-security-roles.md).
+Állítsa be a rendszergazda és a felhasználói ügyfél szerepkört a fürt létrehozásakor. Rendeljen hozzá szerepköröket külön identitások (például tanúsítványok vagy az Azure AD használatával) megadásával az egyes szerepkörök típusaihoz. További információ az alapértelmezett hozzáférés-vezérlési beállításokról és az alapértelmezett beállítások módosításáról: [szerepköralapú Access Control Service Fabric-ügyfelek számára](service-fabric-cluster-security-roles.md).
 
-## <a name="x509-certificates-and-service-fabric"></a>X.509-tanúsítványokat és a Service Fabric
-X.509 digitális tanúsítványok gyakran használják az ügyfelek és kiszolgálók hitelesítéséhez. Is használhatók titkosítására és digitális aláírására. Service Fabric-fürt biztonságossá tétele és adja meg az alkalmazás biztonsági funkciók X.509-tanúsítványokat használ. X.509 digitális tanúsítványokkal kapcsolatos további információkért lásd: [-tanúsítványok használata](https://msdn.microsoft.com/library/ms731899.aspx). Használhat [Key Vault](../key-vault/key-vault-overview.md) kattintva kezelheti az Azure Service Fabric-fürtök tanúsítványait.
+## <a name="x509-certificates-and-service-fabric"></a>X. 509 tanúsítványok és Service Fabric
+Az X. 509 digitális tanúsítványok általában az ügyfelek és a kiszolgálók hitelesítésére szolgálnak. Emellett az üzenetek titkosítására és digitális aláírására is használhatók. A Service Fabric X. 509 tanúsítványokat használ a fürt biztonságossá tételéhez és az alkalmazás biztonsági funkcióinak biztosításához. További információ az X. 509 digitális tanúsítványokról: [a tanúsítványok használata](https://msdn.microsoft.com/library/ms731899.aspx). A [Key Vault](../key-vault/key-vault-overview.md) segítségével kezelheti az Azure-beli Service Fabric-fürtök tanúsítványait.
 
-Fontos szempontokat kell figyelembe venni:
+Néhány fontos szempont:
 
-* Éles számítási feladatokat futtató fürtök tanúsítványai létrehozásához használja egy megfelelően konfigurált Windows Server tanúsítvánnyal, illetve egy jóváhagyott közül [hitelesítésszolgáltatói (CA)](https://en.wikipedia.org/wiki/Certificate_authority).
-* Soha ne használja a bármely ideiglenes, vagy tesztelje éles környezetben a MakeCert.exe más eszközök használatával létrehozott tanúsítványokat.
-* Használhatja egy önaláírt tanúsítványt, de csak egy teszt fürtben. Éles környezetben ne használjon önaláírt tanúsítványt.
-* A tanúsítvány ujjlenyomatát létrehozásakor ügyeljen arra, hozzon létre egy SHA1-ujjlenyomatot. SHA1 a rendszer ezt használja az ügyfél és a fürt tanúsítvány-ujjlenyomatok konfigurálásakor.
+* Ha éles számítási feladatokat futtató fürtökhöz szeretne tanúsítványokat létrehozni, használjon megfelelően konfigurált Windows Server Certificate Service-t, vagy egyet egy jóváhagyott hitelesítésszolgáltatótól [(CA)](https://en.wikipedia.org/wiki/Certificate_authority).
+* Soha ne használjon olyan ideiglenes vagy tesztelési tanúsítványt, amelyet a MakeCert. exe eszközzel, például éles környezetben hozott létre.
+* Önaláírt tanúsítványt is használhat, de csak tesztelési fürtben. Ne használjon önaláírt tanúsítványt az éles környezetben.
+* A tanúsítvány ujjlenyomatának létrehozásakor győződjön meg róla, hogy létrehoz egy SHA1 ujjlenyomatot. A rendszer az ügyfél és a fürt tanúsítvány-ujjlenyomatai megfelelnek konfigurálásakor az SHA1-t használja.
 
-### <a name="cluster-and-server-certificate-required"></a>Fürt és a kiszolgálói tanúsítványt (kötelező)
-Fürt biztonságossá tétele és a jogosulatlan hozzáférés elkerülése érdekében, hogy ezeket a tanúsítványokat (egy elsődleges és opcionálisan egy másodlagos) szükségesek. Ezek a tanúsítványok fürt- és hitelesítést biztosítanak.
+### <a name="cluster-and-server-certificate-required"></a>Fürt és kiszolgáló tanúsítványa (kötelező)
+Ezek a tanúsítványok (egy elsődleges és opcionálisan másodlagos) szükségesek a fürt biztonságossá tételéhez és a jogosulatlan hozzáférés megakadályozásához. Ezek a tanúsítványok biztosítják a fürt és a kiszolgáló hitelesítését.
 
-Fürt hitelesítési hitelesíti a fürt összevonási csomópontok közötti kommunikációt. Csak a is igazolnia az identitását, ezt a tanúsítványt a csomópontok csatlakozhassanak a fürthöz. Így az ügyfél felismeri, hogy a valódi fürtön, és nem a "közbeékelődéses" beszél, Server-hitelesítést végzi a hitelesítést a fürtkezelési végpontoknak egy kezelési ügyfél. Ezt a tanúsítványt is biztosít az SSL protokoll a HTTPS-felügyeleti API-hoz és a Service Fabric Explorert a HTTPS-kapcsolaton keresztül. Amikor egy ügyfél vagy a csomópont végzi a hitelesítést egy csomópontot, a kezdeti ellenőrzések egyik köznapi nevet értékét a **tulajdonos** mező. A köznapi név vagy a tanúsítványok tulajdonosának alternatív Tulajdonosneveket (SAN) egyik engedélyezett köznapi nevek listája a jelen kell lennie.
+A fürt hitelesítése a fürt-összevonás csomópont-csomópont típusú kommunikációját hitelesíti. Csak azok a csomópontok csatlakozhatnak a fürthöz, amelyek bizonyítani tudják, hogy az identitásuk ezzel a tanúsítvánnyal is rendelkezhet. A kiszolgáló-hitelesítés hitelesíti a fürtszolgáltatási végpontokat egy felügyeleti ügyfélen, hogy a felügyeleti ügyfél tudja, hogy a valódi fürthöz beszél, nem pedig a középső ember. Ez a tanúsítvány egy SSL-t is biztosít a HTTPS-kezelési API-hoz és a HTTPS-en keresztüli Service Fabric Explorerhoz. Amikor egy ügyfél vagy csomópont hitelesít egy csomópontot, az egyik kezdeti ellenőrzés a **tulajdonos** mezőben lévő köznapi név értéke. A köznapi névnek vagy a tanúsítvány tulajdonosának alternatív neveinek (SANs) szerepelnie kell az engedélyezett köznapi nevek listáján.
 
-A tanúsítvány a következő követelményeknek kell megfelelnie:
+A tanúsítványnak meg kell felelnie a következő követelményeknek:
 
-* A tanúsítványnak tartalmaznia kell egy titkos kulcsot. Ezek a tanúsítványok általában rendelkeznek bővítmények .pfx vagy .pem  
-* A tanúsítvány a kulcscsere, amely egy személyes információcsere (.pfx) fájl exportálható kell létrehozni.
-* A **tanúsítvány tulajdonosnevének egyeznie kell a tartományhoz, amelyben a Service Fabric-fürt eléréséhez használt**. Erre a megfeleltetésre azért szükség az SSL protokoll biztosítja a fürt HTTPS-felügyeleti végpont és a Service Fabric Explorer. Az SSL-tanúsítványt egy hitelesítésszolgáltatótól (CA) nem szerezheti be a *. cloudapp.Azure.com formát követi tartományhoz. Egyéni tartománynevet kell beszereznie a fürt számára. Amikor tanúsítványt igényel egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell felelnie a fürthöz használt egyéni tartománynévnek.
+* A tanúsítványnak tartalmaznia kell egy titkos kulcsot. Ezeknek a tanúsítványoknak jellemzően kiterjesztése. pfx vagy. PEM  
+* A tanúsítványt létre kell hozni a Key Exchange számára, amely exportálható egy személyes információcsere (. pfx) fájlba.
+* A **tanúsítvány tulajdonosának nevének egyeznie kell azzal a tartománnyal, amelyet a Service Fabric-fürt eléréséhez használ**. Ez a megfeleltetés szükséges ahhoz, hogy SSL-t biztosítson a fürt HTTPS-felügyeleti végpontjának és Service Fabric Explorernak. A *. cloudapp.azure.com tartományhoz nem lehet SSL-tanúsítványt beszerezni a hitelesítésszolgáltatótól (CA). Egyéni tartománynevet kell beszereznie a fürt számára. Amikor tanúsítványt igényel egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell felelnie a fürthöz használt egyéni tartománynévnek.
 
-Más szempontokat kell figyelembe venni:
+Néhány további megfontolandó szempont:
 
-* A **tulajdonos** mezőben több érték is rendelkezhet. Az egyes értékek előtaggal van egy inicializálási jelzi az érték típusa. Általában a inicializálásának **CN** (a *köznapi név*); például **CN = www\.contoso.com**. 
-* A **tulajdonos** mező üres is lehet. 
-* Ha az opcionális **tulajdonos alternatív neve** mező fel van töltve, mind a köznapi név a tanúsítvány és a egy tételt SAN kell rendelkeznie. Ezek vannak megadva: **DNS-név** értékeket. Megtudhatja, hogyan hozhat létre tanúsítványokat, amelyek San-okkal, lásd: [hozzáadása a secure LDAP-tanúsítványt a tulajdonos alternatív neve](https://support.microsoft.com/kb/931351).
-* Értékét a **kívánt célok** mezőé tartalmaznia kell egy megfelelő értéket, például **kiszolgálóhitelesítés** vagy **ügyfél-hitelesítés**.
+* A **tulajdonos** mező több értékkel is rendelkezhet. Minden érték előtaggal van ellátva, hogy jelezze az érték típusát. Az inicializálás általában **CN** ( *köznapi név*); például: **cn = www\.contoso.com**. 
+* A **Tárgy** mező üres is lehet. 
+* Ha az opcionális **tulajdonos alternatív neve** mező fel van töltve, a tanúsítvány köznapi nevével és egy, San-ra vonatkozó bejegyzéssel kell rendelkeznie. Ezek a **DNS-név** értékeiként vannak megadva. Ha meg szeretné tudni, hogyan hozhatók létre a (z) SANs tanúsítvánnyal rendelkező tanúsítványok, tekintse meg [a tulajdonos alternatív nevének hozzáadása biztonságos LDAP-tanúsítványhoz](https://support.microsoft.com/kb/931351)című témakört.
+* A tanúsítvány **rendeltetésszerű felhasználási** célja mezőjének tartalmaznia kell egy megfelelő értéket, például a **kiszolgáló-hitelesítés** vagy az **ügyfél-hitelesítés**értékét.
 
-### <a name="application-certificates-optional"></a>Tanúsítványok (nem kötelező)
-Tetszőleges számú további tanúsítványok telepíthető alkalmazás biztonsági okokból egy fürtön. Mielőtt létrehozná a fürtöt, vegye figyelembe a kell telepíteni a csomópontokon, például a tanúsítványt igénylő alkalmazásbiztonsági forgatókönyveket:
+### <a name="application-certificates-optional"></a>Alkalmazás-tanúsítványok (nem kötelező)
+A fürtön tetszőleges számú további tanúsítvány telepíthető alkalmazás biztonsági célokra. A fürt létrehozása előtt vegye figyelembe azokat az alkalmazás-biztonsági forgatókönyveket, amelyekhez tanúsítvány szükséges a csomópontokon való telepítéshez, például:
 
-* Titkosítás és visszafejtés alkalmazáskonfigurációs értékeket.
-* Az adatok titkosítása az csomópont közötti replikálás során.
+* Az alkalmazás konfigurációs értékeinek titkosítása és visszafejtése.
+* Adattitkosítás a csomópontok között a replikálás során.
 
-A fürtök biztonságos az elképzelés az, azonos, hogy azok Linux vagy Windows-fürtök.
+A biztonságos fürtök létrehozásának koncepciója ugyanaz, függetlenül attól, hogy Linux-vagy Windows-fürtök.
 
-### <a name="client-authentication-certificates-optional"></a>(Nem kötelező) az ügyfél-hitelesítési tanúsítványok
-Tetszőleges számú további tanúsítványok rendszergazdai vagy a felhasználói műveletek adható meg. Az ügyfél használhatja ezt a tanúsítványt, ha kölcsönös hitelesítésre szükség. Ügyféltanúsítványok általában nem állítják ki egy külső hitelesítésszolgáltató. Ehelyett a felhasználó aktuális tartózkodási személyes tanúsítványtárolóban általában az ügyféltanúsítványok, melyeket egy legfelső szintű hitelesítésszolgáltatóval tartalmazza. A tanúsítványnak rendelkeznie kell egy **kívánt célok** értékét **ügyfél-hitelesítés**.  
+### <a name="client-authentication-certificates-optional"></a>Ügyfél-hitelesítési tanúsítványok (nem kötelező)
+A rendszergazda vagy a felhasználói ügyfél műveleteihez tetszőleges számú további tanúsítvány is megadható. Az ügyfél akkor használhatja ezt a tanúsítványt, ha kölcsönös hitelesítésre van szükség. Az ügyféltanúsítványok általában nem harmadik féltől származó HITELESÍTÉSSZOLGÁLTATÓ által kiállított tanúsítványok. Ehelyett az aktuális felhasználói hely személyes tárolója általában tartalmaz egy legfelső szintű hitelesítésszolgáltató által elhelyezett ügyféltanúsítványt. A tanúsítványnak az **ügyfél-hitelesítés** **kívánt céljának** kell lennie.  
 
-Alapértelmezés szerint a fürt tanúsítványt a felügyeleti ügyfél jogosultságokkal rendelkezik. További ügyfél-tanúsítványok nem telepíthető a fürtbe, de a fürt konfigurációját a megengedett vannak megadva.  Azonban az ügyféltanúsítványokat az ügyfélgépek csatlakozhat a fürthöz, és műveleteket kell telepíteni kell.
+Alapértelmezés szerint a fürt tanúsítványa rendszergazdai jogosultságokkal rendelkezik. Ezek a további Ügyféltanúsítványok nem telepíthetők a fürtbe, de a fürt konfigurációjában engedélyezettként vannak megadva.  Az ügyféltanúsítványt azonban telepíteni kell az ügyfélszámítógépekre a fürthöz való kapcsolódáshoz és a műveletek elvégzéséhez.
 
 > [!NOTE]
-> A Service Fabric-fürtök összes felügyeleti művelet kiszolgálói tanúsítványokra van szükségük. Ügyféltanúsítványok Management nem használható.
+> Egy Service Fabric-fürtön lévő összes felügyeleti művelethez kiszolgálói tanúsítványok szükségesek. Az ügyféltanúsítványok nem használhatók felügyelethez.
 
 ## <a name="next-steps"></a>További lépések
-* [Fürt létrehozása az Azure Resource Manager-sablon használatával](service-fabric-cluster-creation-via-arm.md) 
-* [Fürt létrehozása az Azure portal használatával](service-fabric-cluster-creation-via-portal.md)
+* [Fürt létrehozása az Azure-ban Resource Manager-sablon használatával](service-fabric-cluster-creation-via-arm.md) 
+* [Fürt létrehozása a Azure Portal használatával](service-fabric-cluster-creation-via-portal.md)
 
 <!--Image references-->
 [Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png

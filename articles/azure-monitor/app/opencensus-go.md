@@ -1,6 +1,6 @@
 ---
-title: OpenCensus a nyissa meg az Azure Application Insights nyomkövetés |} A Microsoft Docs
-description: Utasítások OpenCensus integrálható a helyi továbbító és az Application Insights lépjen nyomkövetés biztosít
+title: OpenCensus go-nyomkövetés az Azure Application Insightskal | Microsoft Docs
+description: Útmutatást nyújt a OpenCensus go-nyomkövetés és a helyi továbbító integrálásához, Application Insights
 services: application-insights
 keywords: ''
 author: mrbullwinkle
@@ -9,22 +9,22 @@ ms.date: 09/15/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cdf01fbbcc8ef1f90b2e0f8973f59c46c5bf70f8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 56e66f17e9ce1d2482463f619e82dfd29d48f191
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60577859"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67990304"
 ---
-# <a name="collect-distributed-traces-from-go-preview"></a>Elosztott nyomkövetések gyűjtéséhez a Góról (előzetes verzió)
+# <a name="collect-distributed-traces-from-go-preview"></a>Elosztott Nyomkövetések gyűjtése a go-ból (előzetes verzió)
 
-Az Application Insights most már támogatja az elosztott nyomkövetést a Go-alkalmazásokba való integrációval [OpenCensus](https://opencensus.io) és az új [helyi továbbító](./opencensus-local-forwarder.md). Ez a cikk részletesen a folyamatot a Góhoz készült OpenCensus beállítását, és a nyomkövetési adatok az Application Insightsba.
+A Application Insights mostantól támogatja a go-alkalmazások elosztott nyomkövetését a [OpenCensus](https://opencensus.io) és az új [helyi továbbítóval](./opencensus-local-forwarder.md)való integráción keresztül. Ez a cikk lépésről lépésre bemutatja, hogyan állíthatja be a OpenCensus for Go-t, és hogyan Application Insights a nyomkövetési adatait.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Rendelkeznie kell Azure-előfizetéssel.
-- Go-nek telepítve kell lennie, ebben a cikkben 1.11-es verzió [Go letöltése](https://golang.org/dl/).
-- Kövesse az utasításokat követve telepítse a [helyi továbbító Windows szolgáltatásként](./opencensus-local-forwarder.md).
+- A Go-t telepíteni kell, ez a cikk a 1,11 [Go Download](https://golang.org/dl/)verziót használja.
+- Kövesse az utasításokat a [helyi továbbító Windows](./opencensus-local-forwarder.md)-szolgáltatásként való telepítéséhez.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -32,32 +32,34 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-## <a name="create-application-insights-resource"></a>Application Insights-erőforrás létrehozása
+## <a name="create-application-insights-resource"></a>Application Insights erőforrás létrehozása
 
-Először meg kell létrehoznia az Application Insights-erőforrást egy kialakítási kulcsot (rendszerállapotkulcsot) hoz létre, amely. A rendszerállapotkulcsot szolgál majd a helyi továbbító elosztott nyomkövetési elküldeni a kialakítva OpenCensus alkalmazását, az Application Insights konfigurálása.   
+Először létre kell hoznia egy Application Insights-erőforrást, amely a kialakítási kulcsot (rendszerállapotkulcsot) fogja létrehozni. A rendszerállapotkulcsot ezt követően úgy konfigurálja a helyi továbbítót, hogy elküldje az elosztott nyomkövetéseket a OpenCensus-eszközön lévő alkalmazásból Application Insights.   
 
-1. Válassza ki **erőforrás létrehozása** > **fejlesztői eszközök** > **Application Insights**.
+1. Válassza **az erőforrás** > létrehozása**fejlesztői eszközök** > **Application Insights**lehetőséget.
 
    ![Application Insights-erőforrások hozzáadása](./media/opencensus-Go/0001-create-resource.png)
 
+ > [!NOTE]
+   >Ha első alkalommal hoz létre Application Insights-erőforrást, további információt az [Application Insights-erőforrás létrehozása](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) című cikkben talál.
+
    Megjelenik egy konfigurációs mező. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblát.
 
-    | Beállítások        | Érték           | Leírás  |
+    | Beállítások        | Value           | Leírás  |
    | ------------- |:-------------|:-----|
-   | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
-   | **Alkalmazás típusa** | Általános kérdések | A figyelt alkalmazás típusa |
+   | **Name**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
    | **Erőforráscsoport**     | myResourceGroup      | Az App Insights-adatokat futtató új erőforráscsoport neve |
-   | **Hely** | USA keleti régiója | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
+   | **Location** | East US | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
 2. Kattintson a **Create** (Létrehozás) gombra.
 
-## <a name="configure-local-forwarder"></a>Helyi-továbbító konfigurálása
+## <a name="configure-local-forwarder"></a>Helyi továbbító konfigurálása
 
 1. Válassza az **Áttekintés** > **Alapvető erőforrások** elemet, és másolja ki az alkalmazás **Kialakítási kulcsát**.
 
-   ![Képernyőkép az eszközkulcs](./media/opencensus-Go/0003-instrumentation-key.png)
+   ![A kialakítási kulcs képernyőképe](./media/opencensus-Go/0003-instrumentation-key.png)
 
-2. Szerkessze a `LocalForwarder.config` fájlt, és adja hozzá a kialakítási kulcsot. Ha követte a lépéseket a következő témakör utasításait a [előfeltételeként](./opencensus-local-forwarder.md) a fájl `C:\LF-WindowsServiceHost`
+2. Szerkessze `LocalForwarder.config` a fájlt, és adja hozzá a kialakítási kulcsot. Ha követte az előfeltételként [](./opencensus-local-forwarder.md) szereplő utasításokat, a fájl a következő helyen található:`C:\LF-WindowsServiceHost`
 
     ```xml
       <OpenCensusToApplicationInsights>
@@ -74,18 +76,18 @@ Először meg kell létrehoznia az Application Insights-erőforrást egy kialak�
     </LocalForwarderConfiguration>
     ```
 
-3. Az alkalmazás újraindítása **helyi továbbító** szolgáltatás.
+3. Indítsa újra az alkalmazás **helyi továbbító** szolgáltatását.
 
-## <a name="opencensus-go-packages"></a>OpenCensus Go-csomagot
+## <a name="opencensus-go-packages"></a>OpenCensus go-csomagok
 
-1. A megnyitott népszámlálási csomagok telepítése a parancssorból a Góhoz készült:
+1. Telepítse a Go-hoz készült Open Census csomagokat a parancssorból:
 
     ```go
     go get -u go.opencensus.io
     go get -u contrib.go.opencensus.io/exporter/ocagent
     ```
 
-2. Adja hozzá a következő kódot egy .go fájlhoz, majd létrehozása, és futtassa. (Ebben a példában a hivatalos OpenCensus útmutató új kóddal, amely megkönnyíti az integrációt a helyi továbbító származik)
+2. Adja hozzá a következő kódot egy. go-fájlhoz, majd hozza létre és futtassa a parancsot. (Ez a példa a hivatalos OpenCensus útmutatóból származik, amely a helyi továbbítóval való integrációt megkönnyítő hozzáadott kóddal rendelkezik)
 
      ```go
         // Copyright 2018, OpenCensus Authors
@@ -184,45 +186,45 @@ Először meg kell létrehoznia az Application Insights-erőforrást egy kialak�
         }
      ```
 
-3. Miután az egyszerű alkalmazás fut-e lépjen `http://localhost:50030`. A szöveg "hello world" kifejezéssel span megfelelő adatok bejegyzéseit, amelyek a helyi továbbító átveszi a böngésző minden egyes frissítés hoz létre.
+3. Ha az egyszerű Go-alkalmazás fut, keresse `http://localhost:50030`meg a következőt:. A böngésző minden frissítése a "Hello World" szöveget hozza létre a helyi továbbító által kiválasztott megfelelő span-adataival együtt.
 
-4. Ellenőrizheti, hogy a **helyi továbbító** vesz fel a nyomkövetések ellenőrzés a `LocalForwarder.config` fájlt. Ha követte a lépéseket a [előfeltétel](https://docs.microsoft.com/azure/application-insights/local-forwarder), kell elhelyezni a `C:\LF-WindowsServiceHost`.
+4. Annak ellenőrzéséhez, hogy a **helyi továbbító** felvette-e a nyomkövetést `LocalForwarder.config` , ellenőrizze a fájlt. Ha követte az előfeltételekben [](https://docs.microsoft.com/azure/application-insights/local-forwarder)leírt lépéseket, akkor a következő helyen `C:\LF-WindowsServiceHost`található:.
 
-    Az alábbi ábrán a naplófájl, láthatja, hogy hol hozzáadtunk egy exportáló a második szkript futtatása előtt `OpenCensus input BatchesReceived` 0. Hogy megkezdése a frissített szkript futtatása után `BatchesReceived` azt a megadott értékek száma egyenlő a növekménye:
+    A naplófájl alábbi ábráján láthatja, hogy a második parancsfájl futtatása előtt, ahol az exportőrt `OpenCensus input BatchesReceived` hozzáadták, 0. A frissített szkript `BatchesReceived` futtatásának megkezdése után a megadott értékek számával megnövelve:
     
     ![Új App Insights-erőforrás űrlap](./media/opencensus-go/0004-batches-received.png)
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Monitorozás indítása az Azure Portalon
 
-1. Most megnyithatja ismét az Application Insights **áttekintése** a jelenleg futó alkalmazás részleteinek megtekintése az Azure Portalon lapot. Válassza ki **élő Metric Stream**.
+1. Most újra megnyithatja a Azure Portal Application Insights **Áttekintés** lapját, ahol megtekintheti az aktuálisan futó alkalmazás részleteit. Válassza az **élő metrika stream**lehetőséget.
 
-   ![Az élő metrikai streamet vörös téglalappal jelölve áttekintő panel képernyőképe](./media/opencensus-go/0005-overview-live-metrics-stream.png)
+   ![Képernyőkép az áttekintő panelről a Vörös mezőben kiválasztott élő metrikai streamtel](./media/opencensus-go/0005-overview-live-metrics-stream.png)
 
-2. Ha futtassa újra a második Go-alkalmazást, és indítsa el frissíteni a böngészőt a `http://localhost:50030`, látni fogja élő nyomkövetési adatok, a helyi továbbító szolgáltatásból beérkező az Application Insightsban.
+2. Ha újra futtatja a második go alkalmazást `http://localhost:50030`, és megkezdi a böngésző frissítését, akkor az élő nyomkövetési adatok megjelennek a helyi továbbító szolgáltatásban Application Insights.
 
-   ![Képernyőkép a teljesítményadatok jelenik meg az élő metrikai streamet](./media/opencensus-go/0006-stream.png)
+   ![Képernyőfelvétel az élő metrika streamről a megjelenített teljesítményadatokat tartalmazó adatokkal](./media/opencensus-go/0006-stream.png)
 
-3. Lépjen vissza a **áttekintése** lapon, és válassza **Alkalmazástérkép** mutató vizuális elrendezés az alkalmazás-összetevők közötti hívások időzítését és a függőségi viszonyok.
+3. Térjen vissza az **Áttekintés** lapra, és válassza ki az **alkalmazás** -hozzárendelést a függőségi kapcsolatok vizualizációs elrendezéséhez, és hívja meg az időzítést az alkalmazás-összetevők között.
 
-    ![Képernyőkép az alapvető alkalmazástérkép](./media/opencensus-go/0007-application-map.png)
+    ![Az alapszintű alkalmazás-hozzárendelés képernyőképe](./media/opencensus-go/0007-application-map.png)
 
-    Azt is csak nyomkövetés egy metódus hívása, mert az alkalmazás-hozzárendelés nem is érdekes. De alkalmazástérkép méretezhető sokkal könnyebben elosztott alkalmazás megjelenítése:
+    Mivel csak egyetlen metódust hívunk meg, az alkalmazásunk térképe nem annyira érdekes. Az alkalmazás-hozzárendelés azonban a sokkal több elosztott alkalmazás megjelenítésére is méretezhető:
 
    ![Alkalmazástérkép](media/opencensus-go/application-map.png)
 
-4. Válassza ki **teljesítményének vizsgálata** részletes teljesítményelemzését végez, és a lassú teljesítmény okának meghatározásához.
+4. A teljesítmény **vizsgálata** elemre kattintva részletes teljesítmény-elemzést végezhet, és meghatározhatja a lassú teljesítmény okát.
 
-    ![Teljesítmény panel képernyőképe](./media/opencensus-go/0008-performance.png)
+    ![A teljesítmény panel képernyőképe](./media/opencensus-go/0008-performance.png)
 
-5. Kiválasztásával **minták** és bármely, a minták jelennek meg a jobb oldali ablaktáblán, majd kattintson a végpontok közötti tranzakció részletei élmény elindul. Mintaalkalmazásunk ugyanúgy jelennek meg velünk a kapcsolatot egy adott eseményhez, miközben olyan összetettebb alkalmazást szeretne tárhatja fel az egyéni esemény hívási verem szintre a végpontok közötti tranzakció.
+5. A **minták** kiválasztásával, majd a jobb oldali panelen megjelenő minták bármelyikére kattintva elindíthatja a végpontok közötti tranzakció részleteinek élményét. Habár a minta alkalmazásunk egyetlen eseményt mutat be, egy összetettebb alkalmazás lehetővé teszi, hogy a végpontok közötti tranzakciót egy adott esemény hívási verem szintjére tárja fel.
 
-     ![Végpontok közötti tranzakció felület képernyőképe](./media/opencensus-go/0009-end-to-end-transaction.png)
+     ![Képernyőkép a végpontok közötti tranzakciós kezelőfelületről](./media/opencensus-go/0009-end-to-end-transaction.png)
 
-## <a name="opencensus-trace-for-go"></a>A Góhoz készült OpenCensus nyomkövetési
+## <a name="opencensus-trace-for-go"></a>Ugráshoz tartozó OpenCensus-nyomkövetés
 
-Csak megismerte a Góhoz készült OpenCensus integrálása a helyi továbbító és az Application Insights alapjait. A [hivatalos OpenCensus Go használati útmutatásért](https://godoc.org/go.opencensus.io) speciális témaköröket tartalmazza.
+Csak a helyi továbbító és a Application Insights OpenCensus integrálásának alapjait tárgyaljuk. A [hivatalos OpenCensus go használati útmutatója](https://godoc.org/go.opencensus.io) részletesebb témákat is magában foglalhat.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Alkalmazástérkép](./../../azure-monitor/app/app-map.md)
-* [Teljes körű alkalmazásteljesítmény-figyelés](./../../azure-monitor/learn/tutorial-performance.md)
+* [Alkalmazás-hozzárendelés](./../../azure-monitor/app/app-map.md)
+* [Végpontok közötti teljesítmény figyelése](./../../azure-monitor/learn/tutorial-performance.md)

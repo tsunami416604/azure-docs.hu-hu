@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Első válasz a Tudásbázis - REST, Javával – QnA Maker'
-titlesuffix: Azure Cognitive Services
-description: Java REST-alapú rövid útmutató végigvezeti egy válasz lekérése a Tudásbázis programozott módon.
+title: 'Gyors útmutató: Válasz az Tudásbázisból – REST, Java – QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: Ez a Java REST-alapú rövid útmutató végigvezeti egy adott Tudásbázisból származó válasz beszerzésének lépésein.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 6d49ce71959f80a96731046475c3de5737bf7d46
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2b888a275b08c7011c6e0b60ff1cd1d70b42f465
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796191"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559841"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Válaszok a kérdést a Tudásbázis javával
+# <a name="get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Válaszok a Tudásbázisban megjelenő kérdésekre a Javával
 
-Ez a rövid útmutató végigvezeti programozott módon első válasz a QnA Maker közzétett Tudásbázis. A Tudásbázis kérdéseket tartalmaz, valamint választ ad a [adatforrások](../Concepts/data-sources-supported.md) például – gyakori kérdések. A [kérdés](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) a QnA Maker szolgáltatásnak továbbítja. A [válasz](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) tartalmazza a top előre jelzett választ. 
+Ez a rövid útmutató végigvezeti a közzétett QnA Maker Tudásbázisból származó válasz programozott módon történő beszerzésének lépésein. A Tudásbázis az adatforrásokból, például [](../Concepts/data-sources-supported.md) a GYIK-ből származó kérdéseket és válaszokat tartalmaz. A rendszer elküldi a [kérdést](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) a QnA Maker szolgáltatásnak. A [Válasz](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) tartalmazza a legfontosabb előre jelzett választ. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,17 +30,17 @@ Ez a rövid útmutató végigvezeti programozott módon első válasz a QnA Make
     * Commons-naplózás – 1.2.jar
 * [Visual Studio Code](https://code.visualstudio.com/)
 * Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs lekéréséhez válassza ki **kulcsok** alatt **erőforrás-kezelés** az Azure irányítópultján a QnA Maker erőforrás. 
-* **Közzététel** beállítások lapon. Közzétett Tudásbázis nem rendelkezik, hozzon létre egy üres Tudásbázis, akkor a Tudásbázis importálja a **beállítások** lapon, majd közzéteheti. Letöltheti és használhatja [Ez a alapvető Tudásbázis](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv). 
+* **Közzétételi** oldal beállításai Ha nem rendelkezik közzétett tudásbázissal, hozzon létre egy üres tudásbázist, majd importáljon egy tudásbázist a **Beállítások** lapon, majd tegye közzé. [Ezt az](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)alapszintű tudásbázist töltheti le és használhatja. 
 
-    A közzétételi oldalon beállítások közé tartozik a POST útvonal, gazdagép értékét, és EndpointKey értékkel. 
+    A közzétételi oldal beállításai közé tartozik az útvonal értéke, a gazdagép értéke és a EndpointKey érték. 
 
     ![Közzétételi beállítások](../media/qnamaker-quickstart-get-answer/publish-settings.png)
 
-Ez a rövid útmutató kódja megtalálható a [ https://github.com/Azure-Samples/cognitive-services-qnamaker-java ](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/get-answer) tárház. 
+A rövid útmutató kódja [https://github.com/Azure-Samples/cognitive-services-qnamaker-java](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/get-answer) a tárházban található. 
 
-## <a name="create-a-java-file"></a>Hozzon létre egy java-fájlt
+## <a name="create-a-java-file"></a>Java-fájl létrehozása
 
-Nyissa meg a VSCode, és hozzon létre egy új fájlt `GetAnswer.java` , és adja hozzá a következő osztályok:
+Nyissa meg a VSCode, és hozzon létre egy nevű `GetAnswer.java` új fájlt, és adja hozzá a következő osztályt:
 
 ```Java
 public class GetAnswer {
@@ -54,25 +54,25 @@ public class GetAnswer {
 
 ## <a name="add-the-required-dependencies"></a>A szükséges függőségek hozzáadása
 
-Ez a rövid útmutató Apache-osztályokat használja a HTTP-kéréseket. Fent az GetAnswer osztály felső részén a `GetAnswer.java` fájlt, adja hozzá a projekthez szükséges függőséget:
+Ez a rövid útmutató a HTTP-kérelmek Apache-osztályait használja. A GetAnswer osztály felett a `GetAnswer.java` fájl tetején adja hozzá a szükséges függőségeket a projekthez:
 
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=5-13 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>A szükséges konstansok hozzáadása
 
-Felső részén a `GetAnswer.java` osztályhoz, adja hozzá a szükséges állandókat a QnA Maker eléréséhez. A rendszer ezeket az értékeket a **közzététel** lapon a Tudásbázis közzététele után.  
+Az `GetAnswer.java` osztály tetején adja hozzá a szükséges állandókat a QnA Maker eléréséhez. Ezek az értékek a **közzétételi** lapon jelennek meg, miután közzétette a tudásbázist.  
 
 [!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=26-42 "Add the required constants")]
 
-## <a name="add-a-post-request-to-send-question"></a>Egy POST kérést küldhet a kérdés hozzáadása
+## <a name="add-a-post-request-to-send-question"></a>Kérdés küldésére szolgáló POST-kérelem hozzáadása
 
-A következő kódot egy HTTPS-kérést küld a QnA Maker API, a kérdés küldeni a Tudásbázis és a választ kap:
+A következő kód egy HTTPS-kérést küld a QnA Maker APInak, hogy elküldje a kérdést a Tudásbázisnak, és fogadja a választ:
 
 [!code-java[Add a POST request to send question to knowledge base](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=44-72 "Add a POST request to send question to knowledge base")]
 
-A `Authorization` fejléc értékének tartalmazza a karakterláncot `EndpointKey`. 
+A `Authorization` fejléc értéke tartalmazza a karakterláncot `EndpointKey`. 
 
-Tudjon meg többet a [kérelem](../how-to/metadata-generateanswer-usage.md#generateanswer-request) és [válasz](../how-to/metadata-generateanswer-usage.md#generateanswer-response).
+További információ a [kérelemről](../how-to/metadata-generateanswer-usage.md#generateanswer-request) és a [válaszról](../how-to/metadata-generateanswer-usage.md#generateanswer-response).
 
 ## <a name="build-and-run-the-program"></a>A program létrehozása és futtatása
 

@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Egyéni hang-és felhőközpontú virtuális asszisztensek (előzetes verzió), a Java (Windows, Linux) – beszédszolgáltatások'
+title: 'Gyors útmutató: Egyéni hang – első virtuális asszisztens (előzetes verzió), Java (Windows, Linux) – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban fog megtudhatja, hogyan használható a Cognitive Services beszédfelismerő szoftver Development Kit (SDK) egy Java-konzolalkalmazást. Megtudhatja, hogyan csatlakoztathatja az ügyfélalkalmazás egy korábban létrehozott Bot Framework bot konfigurálva a közvetlen vonal beszédfelismerő csatornát használja, és a egy hang-és felhőközpontú virtuális asszisztensek felület engedélyezéséhez.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Cognitive Services Speech szoftverfejlesztői készletet (SDK) Java-konzolos alkalmazásokban. Megtudhatja, hogyan csatlakoztatható az ügyfélalkalmazás egy korábban létrehozott bot Framework-robothoz úgy, hogy a közvetlen vonalas beszédfelismerési csatornát használja, és lehetővé tegye a hang-első virtuális asszisztensi élményt.
 services: cognitive-services
 author: bidishac
 manager: nitinme
@@ -10,51 +10,51 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: bidishac
-ms.openlocfilehash: 78e80b276a13ee6e27fdf0515f2901fdeaa20c5d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b1be09a2af712277ccaad827b8e84e24ed9f5c5c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604929"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553252"
 ---
-# <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>Gyors útmutató: Hozzon létre egy hang-és felhőközpontú virtuális asszisztensek a Speech SDK-Java
+# <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>Gyors útmutató: Hozzon létre egy hang-első virtuális asszisztenst a Speech SDK, a Java használatával
 
-Rövid útmutatók érhetők el is [hang-szöveg transzformációs](quickstart-java-jre.md) és [tolmácsolás –](quickstart-translate-speech-java-jre.md).
+A gyors útmutatókat a [szöveg](quickstart-java-jre.md) és a [beszéd fordítása](quickstart-translate-speech-java-jre.md)is elérhetővé teszi.
 
-Ez a cikk segítségével létrehozhat egy Java-konzolalkalmazást a [Cognitive Services beszédfelismerő SDK](speech-sdk.md). Az alkalmazás egy korábban létrehozott bot konfigurálva a közvetlen vonal beszédfelismerő csatornát használja, a hangalapú kérés küldése és (Ha be van állítva), adja vissza a voice-tevékenységet fog csatlakozni. Az alkalmazást a létrehozása a Speech SDK Maven-csomag és az Eclipse a Java IDE Windows, Ubuntu Linux vagy macOS rendszeren. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
+Ebben a cikkben egy Java-konzol alkalmazást hoz létre a [Cognitive Services SPEECH SDK](speech-sdk.md)használatával. Az alkalmazás csatlakozni fog egy korábban létrehozott robothoz, amely a közvetlen vonal beszédfelismerési csatornájának használatára, hangkérés küldésére és hangválasztó tevékenység visszaküldésére van konfigurálva (ha be van állítva). Az alkalmazás a Speech SDK Maven-csomaggal és az Eclipse Java IDE Windows, Ubuntu Linux vagy macOS rendszeren készült. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-* Operációs rendszer: (64 bites) Windows, Ubuntu Linux 16.04/18.04 (64 bites) vagy a macOS 10.13 vagy újabb
+* Operációs rendszer: Windows (64 bites), Ubuntu Linux 16.04/18.04 (64 bites), vagy macOS 10,13 vagy újabb
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) vagy [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* Egy Azure-előfizetés beszédszolgáltatások kulcs. [Igényeljen ingyenesen egy](get-started.md) vagy hozza létre a [az Azure portal](https://portal.azure.com).
-* A Bot Framework 4.2-es verzió használatával létrehozott előre konfigurált robot vagy újabb. A robot hangalapú bemenetek fogadni az új "A közvetlen vonal Speech" csatorna feliratkozás kellene.
+* Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com).
+* A bot Framework 4,2-es vagy újabb verziójának használatával létrehozott, előre konfigurált robot. A robotnak a hangbemenetek fogadásához elő kell fizetnünk az új "Direct line Speech" csatornára.
 
     > [!NOTE]
-    > A közvetlen vonal Speech (előzetes verzió) egy részhalmazát beszédszolgáltatások régiók jelenleg érhető el. Tekintse meg [hang-és felhőközpontú virtuális asszisztensek támogatott régiók listáját](regions.md#Voice-first virtual assistants) és ellenőrizze, hogy az erőforrások üzembe ezen régiók egyikében.
+    > A közvetlen vonalas beszéd (előzetes verzió) jelenleg a Speech Services-régiók egy részhalmazában érhető el. Tekintse meg [a támogatott régiók listáját a hangvezérelt virtuális asszisztensekhez](regions.md#Voice-first virtual assistants) , és gondoskodjon arról, hogy az erőforrások az egyik régióban legyenek telepítve.
 
-Ha Ubuntu 16.04/18.04 rendszert használ, győződjön meg arról, ezek a függősége telepítve van az Eclipse indítása előtt:
+Ha Ubuntu 16.04/18.04-t futtat, győződjön meg róla, hogy ezek a függőségek telepítve vannak az Eclipse elindítása előtt:
 
 ```console
 sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
 
-Ha Windows (64 bites) futtat, győződjön meg arról, telepítette a Microsoft Visual C++ terjeszthető változatát a platformhoz:
-* [A Microsoft Visual C++ terjeszthető csomag Visual Studio 2017 letöltése](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+Ha Windows rendszert futtat (64 bites), győződjön meg arról, hogy telepítette a platformhoz készült Microsoft vizualizációs C++ terjeszthető csomagját:
+* [A Visual Studio C++ 2017-hoz készült Microsoft vizualizációs terjeszthető csomag letöltése](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
-## <a name="optional-get-started-fast"></a>Nem kötelező: A gyors kezdéshez
+## <a name="optional-get-started-fast"></a>Nem kötelező: Gyors első lépések
 
-Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy egyszerű ügyfélalkalmazás beszédfeldolgozó robotjait csatlakozni. Ha inkább megvásárolná, a rövid útmutatóban használt teljes körű, készen áll-fordítási forráskód érhető el a [beszéd SDK-minták](https://aka.ms/csspeech/samples) alatt a `quickstart` mappát.
+Ez a rövid útmutató részletesen leírja, hogyan lehet egy egyszerű ügyfélalkalmazás számára csatlakozni a beszédfelismerést támogató robothoz. Ha inkább a betöltést választja, az ebben a rövid útmutatóban használt teljes, a fordításra kész forráskód a `quickstart` mappában található [Speech SDK-mintákban](https://aka.ms/csspeech/samples) érhető el.
 
 ## <a name="create-and-configure-project"></a>Projekt létrehozása és konfigurálása
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-Emellett a naplózás engedélyezéséhez frissítse a **pom.xml** -fájl a következő függőséget.
+Emellett a naplózás engedélyezéséhez frissítse a **Pom. XML** fájlt, hogy az tartalmazza a következő függőséget.
 
    ```xml
     <dependency>
@@ -72,7 +72,7 @@ Emellett a naplózás engedélyezéséhez frissítse a **pom.xml** -fájl a köv
 
    ![A New Java Class varázsló képernyőképe](media/sdk/qs-java-jre-06-create-main-java.png)
 
-1. Nyissa meg az újonnan létrehozott **fő** osztályt, és cserélje le a tartalmát a `Main.java` kiindulási kódot a következő fájl.
+1. Nyissa meg az újonnan létrehozott **fő** osztályt, és cserélje `Main.java` le a fájl tartalmát a következő kiindulási kódra.
 
     ```java
     package speechsdk.quickstart;
@@ -139,14 +139,14 @@ Emellett a naplózás engedélyezéséhez frissítse a **pom.xml** -fájl a köv
     }
     ```
 
-1. Az a **fő** metódus, akkor először konfigurálja a `DialogServiceConfig` , és ezzel hozzon létre egy `DialogServiceConnector` példány. Ez a közvetlen vonal beszédfelismerő csatornát a robottal lépnek kapcsolatba fog csatlakozni. Egy `AudioConfig` példány is használható a hangbemeneti forrást adja meg. Ebben a példában az alapértelmezett mikrofon együttes `AudioConfig.fromDefaultMicrophoneInput()`.
+1. A **Main** metódusban először konfigurálja a `DialogServiceConfig` -t, és használja egy `DialogServiceConnector` példány létrehozásához. Ezzel csatlakozni fog a közvetlen vonalas beszéd csatornához a robottal való interakcióhoz. A `AudioConfig` rendszer egy példányt is használ a hangbemenet forrásának megadására. Ebben a példában az alapértelmezett mikrofon van használatban `AudioConfig.fromDefaultMicrophoneInput()`.
 
-    * Cserélje le a karakterláncot `YourSubscriptionKey` az előfizetési kulcs, amely kérhet le a [Itt](get-started.md).
-    * Cserélje le a karakterláncot `YourServiceRegion` együtt a [régió](regions.md) az Ön előfizetéséhez rendelve.
-    * Cserélje le a karakterláncot `YourChannelSecret` a közvetlen vonal beszédfelismerő csatornát titokkal.
+    * Cserélje le a `YourSubscriptionKey` karakterláncot az előfizetési kulcsra, amelyet [itt](get-started.md)érhet el.
+    * Cserélje le a `YourServiceRegion` karakterláncot [](regions.md) az előfizetéséhez társított régióra.
+    * Cserélje le a `YourChannelSecret` karakterláncot a Direct line Speech Channel Secret kifejezésre.
 
     > [!NOTE]
-    > A közvetlen vonal Speech (előzetes verzió) egy részhalmazát beszédszolgáltatások régiók jelenleg érhető el. Tekintse meg [hang-és felhőközpontú virtuális asszisztensek támogatott régiók listáját](regions.md#voice-first-virtual-assistants) és ellenőrizze, hogy az erőforrások üzembe ezen régiók egyikében.
+    > A közvetlen vonalas beszéd (előzetes verzió) jelenleg a Speech Services-régiók egy részhalmazában érhető el. Tekintse meg [a támogatott régiók listáját a hangvezérelt virtuális asszisztensekhez](regions.md#voice-first-virtual-assistants) , és gondoskodjon arról, hogy az erőforrások az egyik régióban legyenek telepítve.
 
     ```java
     final String channelSecret = "YourChannelSecret"; // Your channel secret
@@ -161,7 +161,7 @@ Emellett a naplózás engedélyezéséhez frissítse a **pom.xml** -fájl a köv
     final DialogServiceConnector connector = new DialogServiceConnector(botConfig, audioConfig);
     ```
 
-1. `DialogServiceConnector` a robot tevékenységei, speech recognition eredmények és más információkat több eseményt támaszkodik. Ezután adjon hozzá ezen esemény figyelők.
+1. `DialogServiceConnector`számos eseményre támaszkodik, hogy a robot tevékenységeit, beszédfelismerési eredményeit és egyéb információit tájékoztassa. Adja hozzá ezeket az esemény-figyelőket a következőhöz.
 
     ```java
     // Recognizing will provide the intermediate recognized text while an audio stream is being processed
@@ -200,7 +200,7 @@ Emellett a naplózás engedélyezéséhez frissítse a **pom.xml** -fájl a köv
         });
     ```
 
-1. Csatlakozás a `DialogServiceConnector` meghívásával át a közvetlen vonal a `connectAsync()` metódust. A robot teszteléséhez hívhat a `listenOnceAsync` hangbemenet elküldeni a mikrofon metódust. Ezenkívül használhatja a `sendActivityAsync` metódus küldése egyéni tevékenységek szerializált karakterláncként. Ezek egyéni tevékenységek biztosíthat további adatokat, amelyek a robot a beszélgetésben fogja használni.
+1. A `connectAsync()` metódus `DialogServiceConnector` meghívásával kapcsolja össze az-t a közvetlen vonallal. A robot teszteléséhez meghívja a `listenOnceAsync` metódust, hogy hangbemenetet küldjön a mikrofonból. Emellett az metódus használatával is elküldheti az `sendActivityAsync` egyéni tevékenységeket szerializált karakterláncként. Ezek az egyéni tevékenységek további, a robot által a beszélgetés során használt adatait is megadhatják.
 
     ```java
     connector.connectAsync();
@@ -211,13 +211,13 @@ Emellett a naplózás engedélyezéséhez frissítse a **pom.xml** -fájl a köv
     // connector.sendActivityAsync(...)
     ```
 
-1. Menti a változásokat a `Main` fájlt.
+1. Mentse a `Main` fájl módosításait.
 
-1. A támogatási válasz lejátszás, egy további osztály, amely átalakítja a getAudio() API a javával InputStream megkönnyítése érdekében kezelési visszaadott PullAudioOutputStream objektum fogja hozzáadni. Ez ActivityAudioStream egy specializált osztály, amely a "közvetlen vonal beszédfelismerő csatornát" hang válasza fogja kezelni. Leíró lejátszási kezeléséhez szükséges hangformátum adatokat beolvasni biztosítja: Válassza ki, amely a **fájl** > **új** > **osztály**.
+1. A válaszok lejátszásának támogatásához hozzá kell adnia egy további osztályt, amely átalakítja a getAudio () API által visszaadott PullAudioOutputStream objektumot egy Java-InputStream a könnyű kezelhetőség érdekében. Ez a ActivityAudioStream egy speciális osztály, amely a "Direct line Speech Channel" hang-válaszait fogja kezelni. Biztosítja a hozzáférést a lejátszáshoz szükséges hangformátum-információk lekéréséhez: Ehhez válassza a **fájl** > **új** > **osztály**elemet.
 
-1. Az a **új Java-osztály** ablakban adja meg **speechsdk.quickstart** be a **csomag** mező, és **ActivityAudioStream** a be **Név** mező.
+1. Az **új Java-osztály** ablakban írja be a **speechsdk.** rövid útmutatót a **csomag** mezőbe, és **ActivityAudioStream** a **név** mezőbe.
 
-1. Nyissa meg az újonnan létrehozott **ActivityAudioStream** osztályt, és cserélje le az alábbi kódot.
+1. Nyissa meg az újonnan létrehozott **ActivityAudioStream** osztályt, és cserélje le az alább megadott kóddal.
 
     ```java
     package com.speechsdk.quickstart;
@@ -459,26 +459,26 @@ Emellett a naplózás engedélyezéséhez frissítse a **pom.xml** -fájl a köv
 
     ```
 
-1. Menti a változásokat a `ActivityAudioStream` fájlt.
+1. Mentse a `ActivityAudioStream` fájl módosításait.
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
 Nyomja le az F11 billentyűt, vagy válassza a **Run** > **Debug** (Futtatás, Hibakeresés) lehetőséget.
-A konzolban megjelenik egy üzenet "Például: valami" ezen a ponton, előfordulhat, hogy egy angol nyelvű kifejezést vagy mondat, amely a robot megértse beszél. A beszéd továbbítja a rendszer a robot, ahol felismerhető lesz, a közvetlen vonal Speech-csatornán keresztül a robot által feldolgozott, és a választ küldi vissza a rendszer egy tevékenységet. A robot speech, választ ad vissza, ha a hanganyag játssza vissza használatával a `AudioPlayer` osztály.
+Ezen a ponton megjelenik egy üzenet, amely szerint a "mondja el valami" üzenetet, egy angol nyelvű kifejezéssel vagy mondattal fog megjelenni. A beszédfelismerés a közvetlen vonalas beszéd csatornán keresztül lesz továbbítva a robotba, ahol a rendszer felismeri, feldolgozza a robotot, és a válasz tevékenységként lesz visszaadva. Ha a robot válaszként adja vissza a beszédet, a hang a `AudioPlayer` osztály használatával lesz visszajátszva.
 
 ![Képernyőkép a konzolról a sikeres felismerést követően](media/sdk/qs-java-jre-08-console-output.png)
 
 ## <a name="next-steps"></a>További lépések
 
-További példákat, például a beszéd beolvasása egy hangfájlt a Githubon érhetők el.
+A GitHubon további minták is elérhetők, például a hangfájlok beszédének olvasása.
 
 > [!div class="nextstepaction"]
-> [Létrehozni és üzembe helyezni egy alapszintű robot](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+> [Alapszintű robot létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
 ## <a name="see-also"></a>Lásd még
 
-- [Hang-és felhőközpontú virtuális asszisztensek kapcsolatban](voice-first-virtual-assistants.md)
-- [Ingyenes beszédszolgáltatások előfizetési kulcs lekérése](get-started.md)
-- [Egyéni ébresztési szavakat](speech-devices-sdk-create-kws.md)
-- [A közvetlen vonal Speech csatlakozni a robot](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-- [Ismerkedés a Java-példák a Githubon](https://aka.ms/csspeech/samples)
+- [A Voice – First virtuális asszisztensek ismertetése](voice-first-virtual-assistants.md)
+- [Ingyenes Speech Services-előfizetési kulcs beszerzése](get-started.md)
+- [Egyéni ébresztési szavak](speech-devices-sdk-create-kws.md)
+- [Közvetlen vonalas beszéd összekötése a robottal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [A Java-minták megismerése a GitHubon](https://aka.ms/csspeech/samples)

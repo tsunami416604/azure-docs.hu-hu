@@ -1,6 +1,6 @@
 ---
-title: Többlépéses webes teszt a webalkalmazás és az Azure Application Insights figyelése |} A Microsoft Docs
-description: Az Azure Application Insights webes alkalmazások monitorozására való telepítési többlépéses webes tesztek
+title: Webalkalmazás monitorozása többlépéses webes tesztekkel és Azure-Application Insightsokkal | Microsoft Docs
+description: Többlépéses webes tesztek beállítása a webalkalmazások Azure-beli figyeléséhez Application Insights
 services: application-insights
 author: mrbullwinkle
 manager: carmonm
@@ -9,35 +9,38 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 07/25/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: d8bfe92af4e8afc4edae76efb2e1cb7b287c7aa9
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 150c41dce06c81f2e9e07605ab6d5afa9e424453
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67305051"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494487"
 ---
-# <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
+# <a name="multi-step-web-tests"></a>Többlépéses webtesztek
 
-Figyelheti az URL egy rögzített feladatütemezési és a egy webhelyet a többlépéses webes tesztek keresztül folytatott interakciót. Ez a cikk részletesen ismerteti a folyamatot, amely egy többlépéses webes teszt létrehozása a Visual Studio Enterprise segítségével.
+A webhelyeken a többlépéses webes tesztek segítségével figyelheti az URL-címek és interakciók rögzített sorozatát. Ebből a cikkből megtudhatja, hogyan hozhat létre többlépéses webes tesztet a Visual Studio Enterprise használatával.
 
 > [!NOTE]
-> Többlépéses webes tesztek rendelkezik hozzájuk társított további költség. További információt a további részletekért a [hivatalos díjszabási útmutató](https://azure.microsoft.com/pricing/details/application-insights/).
+> A többlépéses webes tesztek a Visual Studio webtest-fájloktól függenek. A rendszer [bejelentette](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) , hogy a Visual Studio 2019 a webteszt funkciójának utolsó verziója. Fontos tisztában lenni azzal, hogy a Visual Studio 2019-es webteszt funkciója továbbra is támogatott, és a termék támogatási életciklusa során továbbra is támogatott lesz. A Azure Monitor termék csapata a több lépésből álló rendelkezésre állási tesztek jövőjével kapcsolatos [](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)kérdéseket tárgyal.  
 
 ## <a name="pre-requisites"></a>Előfeltételek
 
-* A Visual Studio 2017 Enterprise vagy nagyobb.
-* A Visual Studio webes teljesítmény- és terheléses tesztelési eszközök.
+* Visual Studio 2017 Enterprise vagy újabb.
+* A Visual Studio webes teljesítmény-és terhelés-tesztelési eszközei.
 
-Keresse meg a tesztelési eszközök előfeltételt. Indítsa el a **Visual Studio telepítőjének** > **az egyes összetevők** > **Hibakeresés és tesztelés**  >   **Webes teljesítmény és a tesztelési eszközök betöltése**.
+Az előfeltételként szolgáló tesztelési eszközök megkeresése. Indítsa el **a Visual Studio telepítő** > **egyes összetevőit** >  **, és tesztelje** > a**webes teljesítményt és a terheléses tesztelési eszközöket**.
 
-![Az egyes összetevők a cikk a webes teljesítmény és a terheléses tesztelési eszközök mellett egy jelölőnégyzet kijelölve a Visual Studio telepítőjének felhasználói felület képernyőképe](./media/availability-multistep/web-performance-load-testing.png)
+![Képernyőfelvétel a Visual Studio telepítő felhasználói felületéről a webes teljesítmény és a terhelés-tesztelési eszközök elem melletti jelölőnégyzettel jelölt egyedi összetevőkkel](./media/availability-multistep/web-performance-load-testing.png)
 
-## <a name="record-a-multi-step-web-test"></a>Jegyezze fel a többlépéses webes teszt
+> [!NOTE]
+> A több lépésből álló webes tesztek további költségekkel is rendelkeznek. További információkért tekintse meg a [hivatalos díjszabási útmutatót](https://azure.microsoft.com/pricing/details/application-insights/).
 
-Többlépéses teszt létrehozásához rögzíteni kell a forgatókönyvet a Visual Studio Enterprise segítségével, majd fel kell tölteni a felvételt az Application Insights-ba. Az Application Insights visszajátssza a forgatókönyvet a megadott időközönként, és ellenőrzi a választ.
+## <a name="record-a-multi-step-web-test"></a>Többlépéses webes teszt rögzítése
+
+Többlépéses teszt létrehozásához rögzíteni kell a forgatókönyvet a Visual Studio Enterprise segítségével, majd fel kell tölteni a felvételt az Application Insights-ba. Application Insights visszajátssza a forgatókönyvet a beállított időközönként, és ellenőrzi a választ.
 
 > [!IMPORTANT]
 > * A tesztekben nem használhat kódolt függvényeket vagy hurkokat. A .webtest szkriptnek teljes egészében tartalmaznia kell a tesztet. Ehelyett azonban standard beépülő modulok is használhatók.
@@ -45,69 +48,69 @@ Többlépéses teszt létrehozásához rögzíteni kell a forgatókönyvet a Vis
 
 A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
 
-1. Hozzon létre egy webes teljesítmény- és terheléses tesztelési projekteket. **Fájl** > **új** > **projekt** > **Visual C#**   >  **teszt**
+1. Hozzon létre egy webes teljesítmény-és terhelési teszt projektet. **Fájl** > **új**  **projekt** **vizualizációs C#** tesztelése >  >   > 
 
-    ![A Visual Studio új projekt felhasználói felület](./media/availability-multistep/vs-web-performance-and-load-test.png)
+    ![Visual Studio – új projekt felhasználói felülete](./media/availability-multistep/vs-web-performance-and-load-test.png)
 
-2. Nyissa meg a `.webtest` fájlt, és a felvétel indításához.
+2. Nyissa `.webtest` meg a fájlt, és kezdje meg a rögzítést.
 
-    ![Felvétel a felhasználói felület a Visual Studio test](./media/availability-multistep/open-web-test.png)
+    ![A Visual Studio test Recording felhasználói felülete](./media/availability-multistep/open-web-test.png)
 
-3. Kattintson végig a lépéseken, azt szeretné, hogy a teszt részeként a felvétel szimulálásához.
+3. Kattintson arra a lépésre, amelyet a teszt által szimulálni szeretne a rögzítés részeként.
 
-    ![Böngészőrögzítés felhasználói felület](./media/availability-multistep/record.png)
+    ![Böngésző rögzítésének felhasználói felülete](./media/availability-multistep/record.png)
 
 4. Szerkessze a tesztet:
 
     * Adjon hozzá ellenőrzéseket a kapott szöveg- és válaszkódok ellenőrzéséhez.
-    * Távolítsa el a uneccesary kölcsönhatások. Sikerült függő kérelmek képek eltávolítása, vagy adja hozzá a nyomon követési helyeket, amelyek nem releváns, figyelembe véve a teszt sikeres.
+    * Távolítsa el a uneccesary interakciókat. Eltávolíthat olyan függő kérelmeket is, amelyek nem relevánsak a sikeres teszteléshez, és olyan nyomkövetési helyeket is hozzáadhatnak, amelyek nem relevánsak.
     
-    Ne feledje, hogy csak a teszt szkriptjét szerkesztheti – egyéni kód hozzáadása, vagy más webes tesztekre hívja. Ne szúrjon be hurkokat a tesztbe. Használhatja a normál webes teszt beépülő modulokat.
+    Ne feledje, hogy csak a tesztelési parancsfájlt lehet szerkeszteni – egyéni kódot adhat hozzá, vagy meghívhat más webes teszteket. Ne szúrjon be hurkokat a tesztbe. Használhatja a normál webes teszt beépülő modulokat.
 
-5. Futtassa a tesztet a Visual Studióban ellenőrizze, és ellenőrizze, hogy működik-e.
+5. Az ellenőrzéshez futtassa a tesztet a Visual Studióban, és ellenőrizze, hogy működik-e.
 
-    A webes teszt futtatója megnyit egy webböngészőt, és megismétli a rögzített műveleteket. Győződjön meg arról, hogy minden a várt módon viselkedik.
+    A webes teszt futtatója megnyit egy webböngészőt, és megismétli a rögzített műveleteket. Győződjön meg arról, hogy minden a vártnak megfelelően viselkedik.
 
 ## <a name="upload-the-web-test"></a>A webes teszt feltöltése
 
-1. Az Application Insights portálon, a rendelkezésre állási panelen válassza ki a **teszteléséhez hozzon létre** > **teszt típusa** > **többlépéses webes teszt**.
+1. A rendelkezésre állás ablaktáblán a Application Insights portálon  > válassza a tesztelési**teszt típusa** > többlépéses**webes teszt**lehetőséget.
 
-2. Állítsa be a teszt, gyakoriságát és riasztási paramétereit.
+2. A tesztelési helyszínek, a gyakoriság és a riasztás paramétereinek megadása.
 
-### <a name="frequency--location"></a>Gyakoriság & hely
+### <a name="frequency--location"></a>Gyakoriság & helye
 
 |Beállítás| Magyarázat
 |----|----|----|
-|**Teszt gyakorisága**| Megadja, hogy milyen gyakran fut a teszt mindegyik teszthelyen. Öt perces alapértelmezett gyakorisággal és öt teszthellyel a helyén átlagosan percenként egy teszt történik.|
-|**Teszthelyek**| Azok a területek, ahol kiszolgálóink webes kéréseket küldjön az URL-cím a. **Az ajánlott teszthelyszín minimális száma az öt** biztosítására, hogy megkülönböztethesse problémák webhelye a hálózati hibáktól. Legfeljebb 16 hely választható ki.
+|**Tesztelési gyakoriság**| Beállítja, hogy a teszt milyen gyakran fusson az egyes tesztelési helyekről. Öt perces alapértelmezett gyakorisággal és öt teszthellyel a helyén átlagosan percenként egy teszt történik.|
+|**Tesztelési helyszínek**| Azok a helyek, ahonnan a kiszolgálók webes kéréseket küldenek az URL-címre. Az **ajánlott tesztelési helyszínek minimális száma öt** annak biztosítására, hogy a hálózati problémák alapján megkülönböztetni tudja a webhelyén felmerülő problémákat. Legfeljebb 16 hely választható ki.
 
 ### <a name="success-criteria"></a>Sikeresség feltétele
 
 |Beállítás| Magyarázat
 |----|----|----|
-| **Teszt időkorlátja** |Csökkenti az értéket, riasztást kap a lassú válaszokról. A teszt akkor sikertelen, ha nem érkeznek meg a webhely válaszai ezen az időtartamon belül. Ha bejelölte a **Függő kérelmek elemzése** lehetőséget, akkor az összes képnek, stílusfájlnak, szkriptnek és más függő erőforrásnak meg kell érkeznie ezen az időn belül.|
-| **HTTP-válasz** | Akkor számít sikeres, a visszaadott állapotkód. A 200-as kód jelzi, hogy normál weblap lett visszaküldve.|
-| **Tartalmi egyezés** | Egy karakterlánc, például "Üdvözöljük!" Teszteljük, hogy minden válaszban előfordul-e a kis- és nagybetűket figyelembe véve is pontos egyezés. Egyszerű sztringnek kell lennie helyettesítő karakterek nélkül. Ne feledje, hogy ha a laptartalom megváltozik, lehet, hogy ezt is frissíteni kell. **Tartalmi egyezés kizárólag angol karakterek támogatottak** |
+| **Teszt időtúllépése** |Csökkentse ezt az értéket, hogy figyelmeztessen a lassú válaszokra. A teszt akkor sikertelen, ha nem érkeznek meg a webhely válaszai ezen az időtartamon belül. Ha bejelölte a **Függő kérelmek elemzése** lehetőséget, akkor az összes képnek, stílusfájlnak, szkriptnek és más függő erőforrásnak meg kell érkeznie ezen az időn belül.|
+| **HTTP-válasz** | A visszaadott állapotkód, amely sikeresnek számít. A 200-as kód jelzi, hogy normál weblap lett visszaküldve.|
+| **Tartalom egyezése** | Egy karakterlánc, például "Welcome!" Teszteljük, hogy minden válaszban előfordul-e a kis- és nagybetűket figyelembe véve is pontos egyezés. Egyszerű sztringnek kell lennie helyettesítő karakterek nélkül. Ne feledje, hogy ha a laptartalom megváltozik, lehet, hogy ezt is frissíteni kell. **A tartalmi egyezés csak az angol karaktereket támogatja** |
 
 ### <a name="alerts"></a>Riasztások
 
 |Beállítás| Magyarázat
 |----|----|----|
-|**Közel valós idejű (előzetes verzió)** | Közel valós idejű riasztások használatát javasoljuk. Ilyen típusú riasztás konfigurálása történik, a rendelkezésre állási teszt létrehozása után.  |
-|**Klasszikus** | Már nem javasolt az új rendelkezésre állási teszt klasszikus riasztások használatával.|
-|**Riasztási hely küszöbértéke**|Ajánlott legalább 3 vagy 5 helyeket. Az optimális riasztási hely küszöbértéke és tesztelési helyek közötti kapcsolat **riasztási hely küszöbértéke** = **legalább öt teszthelyszín teszthelyszín - 2, száma.**|
+|**Közel valós idejű (előzetes verzió)** | Javasoljuk, hogy a közel valós idejű riasztásokat használja. Az ilyen típusú riasztások konfigurálása a rendelkezésre állási teszt létrehozása után történik.  |
+|**Klasszikus** | Már nem ajánlott klasszikus riasztásokat használni az új rendelkezésre állási tesztekhez.|
+|**Riasztási hely küszöbértéke**|Legalább 3/5 helyet ajánlunk. A riasztási hely küszöbértéke és a tesztelési helyek száma közötti optimális kapcsolat a **riasztási hely küszöbértéke** =  **– 2, legalább öt tesztelési hely.**|
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
 
-### <a name="plugging-time-and-random-numbers-into-your-test"></a>Idő és véletlenszerű számok csatlakoztatja azokat a tesztet
+### <a name="plugging-time-and-random-numbers-into-your-test"></a>Idő és véletlenszerű számok csatlakoztatása a teszthez
 
 Tegyük fel, hogy egy olyan eszközt tesztel, amely időfüggő adatokat fogad, például részvényeket egy külső adatcsatornától. A webes teszt rögzítésekor meghatározott időpontokat kell használni, de ezeket a teszt StartTime és EndTime paramétereiként kell beállítani.
 
-![Saját Soft tőzsdei alkalmazás képernyőképe](./media/availability-multistep/app-insights-72webtest-parameters.png)
+![A félelmetes Stock alkalmazás képernyőképe](./media/availability-multistep/app-insights-72webtest-parameters.png)
 
 A teszt futtatásakor az EndTime paraméternek mindig az aktuális időnek kell lennie, a StartTime paraméternek pedig a 15 perccel korábbi időnek.
 
-A webes teszt dátum idő beépülő modul kezelni a megoldást kínál alkalommal paraméterezni.
+A webes tesztelési idő beépülő modulja lehetővé teszi az parametrizálja-időpontok kezelését.
 
 1. Adjon hozzá egy webes teszt beépülő modult minden kívánt változóparaméter-értékhez. A webes teszt eszköztárában válassza ki a **Webes teszt beépülő modul hozzáadása** elemet.
     
@@ -117,7 +120,7 @@ A webes teszt dátum idő beépülő modul kezelni a megoldást kínál alkalomm
 
 2. Nyissa meg a beépülő modulok tulajdonságait. Adjon meg egy nevet, és állítsa be úgy, hogy az aktuális időt használja. Az egyiknél állítsa be a következőt: Add Minutes = -15.
 
-    ![Környezet paraméterek](./media/availability-multistep/app-insights-72webtest-plugin-parameters.png)
+    ![Környezeti paraméterek](./media/availability-multistep/app-insights-72webtest-plugin-parameters.png)
 
 3. A webes teszt paramétereiben a beépülő modulok nevére a {{plug-in name}} segítségével hivatkozzon.
 
@@ -131,20 +134,20 @@ Ha a felhasználók bejelentkeznek az alkalmazásába, számos lehetősége van 
 
 Minden esetben ajánlott létrehozni egy fiókot az alkalmazásában tesztelési célra. Ha lehetséges, korlátozza az engedélyt ezen a tesztfiókon, így elkerülheti, hogy a webes tesztek hatással legyenek a tényleges felhasználókra.
 
-**Egyszerű felhasználónév és jelszó** rögzítsen egy webes tesztet a szokásos módon. Először törölje a cookie-kat.
+**Egyszerű felhasználónév és jelszó** A szokásos módon rögzíthet egy webes tesztet. Először törölje a cookie-kat.
 
-**SAML-hitelesítés** a webes tesztek számára elérhető SAML beépített modult használja. A beépülő modul által eléréséhez...
+**SAML-hitelesítés** Használja a webes tesztek számára elérhető SAML beépülő modult. A beépülő modul elérése...
 
-**Titkos Ügyfélkód** Ha az alkalmazás egy bejelentkezési módja titkos ügyfélkódot, használja azt a módot. Az Azure Active Directory (AAD) mint egy példa olyan szolgáltatásra, amely titkos ügyfélkulccsal történő bejelentkezést biztosít. Az AAD-ben a titkos ügyfélkulcs az alkalmazáskulcs.
+**Ügyfél titka** Ha az alkalmazás olyan bejelentkezési útvonallal rendelkezik, amely egy ügyfél titkos kulcsát is magában foglalja, használja ezt az útvonalat. Az Azure Active Directory (AAD) mint egy példa olyan szolgáltatásra, amely titkos ügyfélkulccsal történő bejelentkezést biztosít. Az AAD-ben a titkos ügyfélkulcs az alkalmazáskulcs.
 
 Itt egy alkalmazáskulcsot használó Azure-webalkalmazás webes tesztelésre találhat példát:
 
-![Minta képernyőképe](./media/availability-multistep/client-secret.png)
+![Mintaképernyőkép](./media/availability-multistep/client-secret.png)
 
 Szerezze be a tokent az AAD-ből a titkos ügyfélkulcs használatával (AppKey).
 Nyerje ki a tulajdonosi jogkivonatot a válaszból.
 Az engedélyezési fejléc tulajdonosi jogkivonatával hívja meg az API-t.
-Győződjön meg arról, hogy a webes teszt egy tényleges ügyfél –, hogy van saját alkalmazással az aad-ben –, és használja a clientId + -alkalmazás kulcsa. A teszt alatt álló szolgáltatása is rendelkezik saját alkalmazással az aad-ben: az alkalmazásazonosító URI-ját az alkalmazás megjelenik a webes teszt, az erőforráscsoport mezőjében.
+Győződjön meg arról, hogy a webes teszt tényleges ügyfél, azaz saját alkalmazással rendelkezik a HRE-ben, és használja a clientId + alkalmazás kulcsát. A tesztelés alatt álló szolgáltatás saját alkalmazással is rendelkezik a HRE-ben: az alkalmazás appID URI-ja a webes tesztben jelenik meg az erőforrás mezőben.
 
 ### <a name="open-authentication"></a>Nyílt hitelesítés
 Nyílt hitelesítés például a Microsoft- vagy Google-fiókkal történő bejelentkezés. Számos OAuth protokollt használó alkalmazás biztosítja a titkos ügyfélkódos alternatívát, így az első feladat ennek a lehetőségnek a megvizsgálása.
@@ -159,9 +162,9 @@ Paraméterezze a tokeneket. Ehhez állítsa be a paramétereket, amikor a hitele
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Dedikált [hibaelhárításról szóló cikk](troubleshoot-availability.md).
+Dedikált [hibaelhárítási cikk](troubleshoot-availability.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Rendelkezésre állási riasztás](availability-alerts.md)
-* [URL-ping webes tesztek](monitor-web-app-availability.md)
+* [Rendelkezésre állási riasztások](availability-alerts.md)
+* [URL pingelése webes tesztek](monitor-web-app-availability.md)

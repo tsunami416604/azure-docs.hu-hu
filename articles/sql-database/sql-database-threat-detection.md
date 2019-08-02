@@ -1,6 +1,6 @@
 ---
-title: Fenyegetések észlelése – Azure SQL Database |} A Microsoft Docs
-description: Fenyegetésészlelés észleli a rendellenes adatbázis-tevékenységek jelzi az adatbázis egy önálló adatbázis vagy a rugalmas készletet az esetleges biztonsági fenyegetéseket.
+title: Fenyegetések észlelése – Azure SQL Database | Microsoft Docs
+description: A veszélyforrások észlelése rendellenes adatbázis-tevékenységeket észlel, amely az adatbázisra vonatkozó lehetséges biztonsági fenyegetéseket mutatja egyetlen adatbázisban vagy rugalmas készletben.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,43 +10,42 @@ ms.topic: conceptual
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 60839fa06d8436d3d2202d1d97735c42c5768e9e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5549d016978e8bf9491c3745e335e3c4c793212c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331476"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566330"
 ---
-# <a name="azure-sql-database-threat-detection-for-single-or-pooled-databases"></a>Az Azure SQL Database fenyegetésészlelési önálló vagy készletezett adatbázisok
+# <a name="azure-sql-database-threat-detection-for-single-or-pooled-databases"></a>Azure SQL Database veszélyforrások észlelése egyetlen vagy készletezett adatbázis esetén
 
-[Veszélyforrások detektálása](sql-database-threat-detection-overview.md) egyetlen vagy készletezett adatbázisok észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek. A fenyegetésészlelés azonosíthatja **lehetséges SQL-injektálás**, **hozzáférés szokatlan helyről vagy a data Center**, **ismeretlen egyszerű vagy potenciálisan káros alkalmazástvalóhozzáférés**, és **találgatásos SQL hitelesítő adatok** – további részletek az [fenyegetés-észlelési riasztás](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
+[](sql-database-threat-detection-overview.md) Az Egypéldányos és a készletezett adatbázisok fenyegetésének észlelése rendellenes tevékenységeket észlel, amelyekben szokatlan és potenciálisan ártalmas próbálkozások érhetők el az adatbázisok eléréséhez vagy kiaknázásához A fenyegetések észlelése képes azonosítani a **lehetséges SQL**-injektálásokat, **a szokatlan helyekről vagy adatközpontokból való hozzáférést**, **az ismeretlen rendszerbiztonsági tag vagy potenciálisan ártalmas alkalmazások elérését**, valamint a **találgatásos SQL-hitelesítő adatokat** – további részletek a [veszélyforrások észlelésével](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts)kapcsolatos riasztások.
 
-Is fogadhatja az értesítéseket keresztül észlelt fenyegetésről [e-mail-értesítések](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) vagy [Azure Portalon](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal)
+Értesítéseket kaphat az észlelt fenyegetésekről az [e-mail-értesítések](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) vagy a [Azure Portal](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal) használatával
 
-[Veszélyforrások detektálása](sql-database-threat-detection-overview.md) része a [adatbiztonság speciális](sql-database-advanced-data-security.md) (ADS) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. A fenyegetésészlelés érheti el és a központi SQL ADS portálon keresztül kezelhetők. A speciális biztonsági csomag díjának 15 USD/hó / logikai kiszolgáló, az első 30 napban az ingyenesen elérhető.
+[](sql-database-threat-detection-overview.md) A veszélyforrások észlelése a [speciális adatbiztonsági](sql-database-advanced-data-security.md) (ADS) ajánlat része, amely a speciális SQL-alapú biztonsági funkciók egységes csomagja. A fenyegetések észlelése a központi SQL ADS portálon keresztül érhető el és kezelhető. A speciális adatbiztonsági csomagot a rendszer minden logikai kiszolgálón 15 $/hó terheli, az első 30 nap díjmentesen.
 
-## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Állítsa be az Azure Portalon az adatbázishoz tartozó fenyegetések észlelése
+## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>A veszélyforrások észlelésének beállítása az adatbázishoz a Azure Portal
 
-1. Indítsa el az Azure Portalra a [ https://portal.azure.com ](https://portal.azure.com).
-2. Keresse meg a konfigurációs lapon, a védeni kívánt Azure SQL Database-kiszolgáló. Válassza ki a biztonsági beállítások **adatok biztonságú**.
-3. Az a **adatok biztonságú** konfigurációs lapon:
+1. Indítsa el a Azure Portal [https://portal.azure.com](https://portal.azure.com)a következő helyen:.
+2. Navigáljon a védelemmel ellátni kívánt Azure SQL Database-kiszolgáló konfigurációs lapjára. A biztonsági beállítások területen válassza a **speciális adatbiztonság**lehetőséget.
+3. A **speciális adatbiztonság** beállítása lapon:
 
-   - Lehetővé teszi a speciális biztonsági a kiszolgálón.
-   - A **Fenyegetésészlelési beállításokat**, a a **küldje a riasztásokat** szöveget adja meg a rendellenes adatbázis-tevékenységek észlelésekor biztonsági riasztást küld e-mailek listáját.
+   - Engedélyezze a speciális adatbiztonságot a kiszolgálón.
+   - A **veszélyforrások észlelése beállításban**a **riasztások küldése** szövegmezőbe mezőben adja meg azoknak az e-maileknek a listáját, amelyek biztonsági riasztásokat kapnak a rendellenes adatbázis-tevékenységek észlelése után.
   
-   ![Állítsa be a fenyegetések észlelése](./media/sql-database-threat-detection/set_up_threat_detection.png)
+   ![Fenyegetés észlelésének beállítása](./media/sql-database-threat-detection/set_up_threat_detection.png)
 
-## <a name="set-up-threat-detection-using-powershell"></a>Állítsa be a PowerShell-lel fenyegetésészlelés
+## <a name="set-up-threat-detection-using-powershell"></a>Fenyegetések észlelésének beállítása a PowerShell használatával
 
-A parancsfájl példa: [PowerShell-lel, naplózás és fenyegetésészlelés konfigurálása](scripts/sql-database-auditing-and-threat-detection-powershell.md).
+A parancsfájlokra példa: a [naplózás és a veszélyforrások észlelésének konfigurálása a PowerShell használatával](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [fenyegetésészlelés](sql-database-threat-detection-overview.md).
-- Tudjon meg többet [fenyegetések észlelése a felügyelt példány](sql-database-managed-instance-threat-detection.md).  
-- Tudjon meg többet [adatbiztonság speciális](sql-database-advanced-data-security.md).
-- Tudjon meg többet [naplózása](sql-database-auditing.md)
-- Tudjon meg többet [az Azure security Centerben](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- Díjszabási információkért tekintse meg a [SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/)  
+- További információ a [fenyegetések észleléséről](sql-database-threat-detection-overview.md).
+- További információ a [fenyegetések észleléséről a felügyelt példányon](sql-database-managed-instance-threat-detection.md).  
+- További információ a [speciális](sql-database-advanced-data-security.md)adatbiztonságról.
+- További információ a [naplózásról](sql-database-auditing.md)
+- További információ az [Azure Security Centerről](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- A díjszabással kapcsolatos további információkért tekintse meg a [SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/) .  

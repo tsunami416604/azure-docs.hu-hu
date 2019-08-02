@@ -1,10 +1,10 @@
 ---
-title: Az Azure Standard Load Balancer és rendelkezésre állási zónák
+title: Azure standard Load Balancer és Availability Zones
 titlesuffix: Azure Load Balancer
 description: A Standard Load Balancer és a rendelkezésre állási zónák
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -12,55 +12,55 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
-ms.author: kumud
-ms.openlocfilehash: 0820285555110e8e85bff814f4774d6da6443f69
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.author: allensu
+ms.openlocfilehash: 5ef7de148d5ef4727602b8287164f2aff9ccf822
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491985"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274517"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>A Standard Load Balancer és a rendelkezésre állási zónák
 
-Az Azure Load Balancer Standard Termékváltozat támogatja [rendelkezésre állási zónák](../availability-zones/az-overview.md) forgatókönyveket. Számos új fogalmakat érhetők el a Standard Load Balancer, ez lehetővé teszi annak optimalizálhatja a végpontok közötti forgatókönyv a rendelkezésre állási zónák erőforrások igazítás és elosztás őket zónák között.  Felülvizsgálat [rendelkezésre állási zónák](../availability-zones/az-overview.md) Mik azok a rendelkezésre állási zónák útmutatást, mely régiók jelenleg támogatja a rendelkezésre állási zónák és más kapcsolódó fogalmak és termékek. Rendelkezésre állási zónában a Standard Load Balancer együtt egy időtakarékos és rugalmas funkciókészletet, amely számos különböző helyzetekben hozhat létre.  Tekintse át ezt a dokumentumot, ezek megértése [fogalmak](#concepts) és alapvető forgatókönyv [tervezési útmutató](#design).
+A Azure Load Balancer standard SKU támogatja [Availability Zones](../availability-zones/az-overview.md) forgatókönyveket. A standard Load Balancer számos új koncepciót is elérhetővé tesznek, amelyek lehetővé teszik, hogy az erőforrások zónákhoz igazításával és a zónák közötti elosztásával optimalizálja a rendelkezésre állást a végpontok közötti forgatókönyvben.  Tekintse át [Availability Zones](../availability-zones/az-overview.md) útmutatást arról, hogy milyen Availability Zones, mely régiók támogatják a Availability Zones, valamint az egyéb kapcsolódó fogalmakat és termékeket. A Availability Zones standard Load Balancer egy átfogó és rugalmas szolgáltatáskészlet, amely számos különböző forgatókönyvet képes létrehozni.  Tekintse át ezt a dokumentumot [](#concepts) , hogy megértse ezeket a fogalmakat és az alapvető forgatókönyv kialakítására vonatkozó [útmutatót](#design).
 
 >[!IMPORTANT]
->Felülvizsgálat [rendelkezésre állási zónák](../availability-zones/az-overview.md) vonatkozó témaköreit, beleértve a régió konkrét információkkal.
+>Tekintse át [Availability Zones](../availability-zones/az-overview.md) kapcsolódó témaköröket, beleértve a régióra vonatkozó információkat is.
 
-## <a name="concepts"></a> Load Balancer a alkalmazni a rendelkezésre állási zónák fogalmak
+## <a name="concepts"></a>A Load Balancerra alkalmazott fogalmak Availability Zones
 
-Nincs terheléselosztó-erőforrások és a tényleges infrastruktúra közötti közvetlen kapcsolat egy terheléselosztó-példány nem hoz létre. Load Balancer-erőforrások olyan objektumok, amelyen belül fejezhető ki hogyan Azure kell program, az előre összeállított több-bérlős-infrastruktúrát a létrehozni kívánt forgatókönyvhöz a.  Ez a rendelkezésre állási zónák kontextusában jelentős, mert egy terheléselosztó-erőforrást szabályozhatja a programozási több rendelkezésre állási zónában az infrastruktúra, amíg egy ügyfél szempontjából egy erőforrás egy zónaredundáns szolgáltatás jelenik meg.
+Nincs közvetlen kapcsolat a Load Balancer erőforrások és a tényleges infrastruktúra között; Load Balancer létrehozása nem hoz létre példányt. Load Balancer az erőforrások olyan objektumok, amelyeken belül kipróbálhatja, hogy az Azure hogyan állíthatja be az előre elkészített több-bérlős infrastruktúrát a létrehozni kívánt forgatókönyv eléréséhez.  Ez a Availability Zones kontextusában jelentős jelentőséggel bír, mivel egy Load Balancer erőforrás több Availability Zonesn is vezérelheti az infrastruktúra programozását, miközben egy zóna redundáns szolgáltatása egyetlen erőforrásként jelenik meg az ügyfél szemszögéből.
 
-A Load Balancer erőforrásfüggvények időtúllépést, egy szabályt, az állapotfigyelő mintavételező és a háttérkiszolgáló-készlet definíciója fejezik ki.
+A Load Balancer erőforrás funkciói a következők: frontend, szabály, állapot-mintavétel és háttér-készlet definíciója.
 
-A rendelkezésre állási zónák kontextusában a viselkedését, és a egy terheléselosztó erőforrás tulajdonságainak zónaredundáns vagy zónaszintű ismerteti.  Zónaredundáns és zónaszintű ismertetik a zonality tulajdonság.  A Load Balancer kontextusában a zónaredundáns mindig azt jelenti, hogy *több zónában* és zónaszintű azt jelenti, hogy a szolgáltatás elkülönítése a *zónában*.
+A Availability Zones kontextusában egy Load Balancer erőforrás viselkedését és tulajdonságait a zóna redundáns vagy többzónás jellege határozza meg.  A zóna-redundáns és a zonay leírja egy tulajdonság zonality.  A Load Balancer kontextusában a zóna-redundáns mindig azt jelenti, hogy *több* zóna és a zóna is a szolgáltatás elkülönítését jelenti *egyetlen zónában*.
 
-Nyilvános és a belső Load Balancer támogatja a zónaredundáns és zónaszintű forgatókönyvek és a is közvetlen forgalom zónákban igény szerint (*zónaközi terheléselosztás*).
+Mind a nyilvános, mind a belső Load Balancer támogatja a zóna-redundáns és a zónákra kiterjedő forgatókönyveket, és mindkettő képes a zónák közötti közvetlen forgalmat igény szerint (*több zóna terheléselosztása*).
 
-A Load Balancer erőforrásán regionális és soha nem zónaszintű.  És egy virtuális hálózatot és alhálózatot mindig regionális és soha nem zónaszintű.
+Egy Load Balancer erőforrás maga a régió, és nem a zóna.  A VNet és az alhálózatok mindig regionális és soha nem zónák.
 
-### <a name="frontend"></a>Előtér
+### <a name="frontend"></a>Frontend
 
-A terheléselosztó előtérbeli egy előtérbeli IP-konfiguráció hivatkozik egy nyilvános IP-cím erőforrás vagy a virtuális hálózati erőforrás az alhálózaton belüli magánhálózati IP-cím.  Ha a szolgáltatás ki van téve az elosztott terhelésű végpontot, képezi.
+A Load Balancer előtér olyan előtéri IP-konfiguráció, amely egy nyilvános IP-cím erőforrásra vagy egy virtuális hálózati erőforrás alhálózatán belüli magánhálózati IP-címére hivatkozik.  Ez az elosztott terhelésű végpontot képezi, ahol a szolgáltatás elérhető.
 
-A terheléselosztó erőforrás zónaszintű és zónaredundáns is előtérrendszer egyszerre is tartalmazhat. 
+Egy Load Balancer erőforrás egyszerre többek között a zónák és a zónák redundáns felületeit is tartalmazhatja. 
 
-Zóna garantálta lett nyilvános IP-erőforrást, amikor zonality (vagy annak hiánya) nem módosítható.  Ha szeretné módosítani, vagy hagyja ki a zonality, egy nyilvános előtérbeli IP-Címmel, hozza létre újra a megfelelő zónához lévő nyilvános IP-címet szeretne.  
+Ha egy nyilvános IP-erőforrás garantált egy zónához, a zonality (vagy annak hiánya) nem változtatható.  Ha módosítani szeretné vagy kihagyja a nyilvános IP-zonality, a megfelelő zónában újra létre kell hoznia a nyilvános IP-címet.  
 
-Módosíthatja a zonality, egy belső terheléselosztó időtúllépést eltávolításával és újbóli létrehozása az előtérbeli, módosítása vagy a zonality kihagyása.
+A belső Load Balancer zonality megváltoztathatja a felület eltávolításával és újbóli létrehozásával, a zonality módosításával vagy kihagyásával.
 
-Több előtérrendszer használata esetén tekintse át a [Load Balancer több előtérrendszer](load-balancer-multivip-overview.md) fontos szempontjait.
+Több előtérbeli felület használata esetén tekintse át a fontos szempontokat [Load Balancer több](load-balancer-multivip-overview.md) előtérbeli felületet.
 
-#### <a name="zone-redundant-by-default"></a>Alapértelmezés szerint zónaredundánsak
+#### <a name="zone-redundant-by-default"></a>A zóna alapértelmezés szerint redundáns
 
 >[!IMPORTANT]
->Felülvizsgálat [rendelkezésre állási zónák](../availability-zones/az-overview.md) vonatkozó témaköreit, beleértve a régió konkrét információkkal.
+>Tekintse át [Availability Zones](../availability-zones/az-overview.md) kapcsolódó témaköröket, beleértve a régióra vonatkozó információkat is.
 
-A rendelkezésre állási zónák egy régióban egy Standard Load Balancer előtérbeli zónaredundáns alapértelmezés szerint.  Egy egyetlen előtérbeli IP-cím hibatűrését zóna hiba, és minden háttérkészlet-tagokra attól függetlenül, a zóna eléréséhez használható. Ez nem jelenti azt, hitless adatok elérési útja, de bármilyen újrapróbálkozások vagy reestablishment sikeres lesz. DNS-redundancia rendszerek nem szükséges. Egyetlen IP-címet az előtérbeli egyszerre több független infrastruktúra üzembe helyezés több rendelkezésre állási zónában által kiszolgált.  Zónaredundáns azt jelenti, hogy az összes bejövő vagy kimenő forgalom több rendelkezésre állási zónában egy régióban egyszerre az egyetlen IP-címet használó szolgálja.
+Egy Availability Zones nevű régióban a standard Load Balancer előtér alapértelmezés szerint zónában van.  Egyetlen előtéri IP-cím képes túlélni a zóna meghibásodását, és felhasználható a háttérbeli készlet összes tagjának elérésére a zónától függetlenül. Ez nem jelenti azt, hogy a hitless adatelérési útja, de az újrapróbálkozások és az áttelepítés sikeres lesz. A DNS-redundancia-sémák nem szükségesek. A frontend egyetlen IP-címét egyszerre több független infrastruktúra üzemelő példánya szolgálja ki több Availability Zonesban.  A felesleges zóna azt jelenti, hogy az összes bejövő vagy kimenő folyamatot egy adott régióban egyszerre több Availability Zones szolgálja ki egy adott IP-cím használatával.
 
-Egy vagy több rendelkezésre állási zónák sikertelen lehet, és az adatok elérési útja egy zónát a régióban marad, amíg survives kifogástalan állapotú. Zónaredundáns konfigurációt az alapértelmezett, és nem kell további műveleteket kell.  
+Egy vagy több Availability Zones meghiúsulhat, és az adatelérési út addig marad, amíg a régió egy zónája Kifogástalan állapotba kerül. A zóna – redundáns konfiguráció az alapértelmezett, és nincs szükség további műveletekre.  
 
-A következő szkript használatával a belső Standard Load Balancer létrehozása a zónaredundáns nyilvános IP-cím. Ha meglévő Resource Manager-sablonok a konfigurációban használja, vegye fel a **termékváltozat** szakasz ezeket a sablonokat.
+A következő szkripttel hozzon létre egy zóna-redundáns nyilvános IP-címet a belső standard Load Balancer számára. Ha a konfigurációban meglévő Resource Manager-sablonokat használ, adja hozzá az **SKU** szakaszt ezekhez a sablonokhoz.
 
 ```json
             "apiVersion": "2017-08-01",
@@ -73,7 +73,7 @@ A következő szkript használatával a belső Standard Load Balancer létrehoz�
             },
 ```
 
-A következő szkript használatával a belső Standard Load Balancer létrehozása a zónaredundáns előtérbeli IP-cím. Ha meglévő Resource Manager-sablonok a konfigurációban használja, vegye fel a **termékváltozat** szakasz ezeket a sablonokat.
+A következő szkripttel hozzon létre egy zóna – redundáns előtéri IP-címet a belső standard Load Balancer számára. Ha a konfigurációban meglévő Resource Manager-sablonokat használ, adja hozzá az **SKU** szakaszt ezekhez a sablonokhoz.
 
 ```json
             "apiVersion": "2017-08-01",
@@ -99,15 +99,15 @@ A következő szkript használatával a belső Standard Load Balancer létrehoz�
                 ],
 ```
 
-#### <a name="optional-zone-isolation"></a>Nem kötelező zóna elkülönítés
+#### <a name="optional-zone-isolation"></a>Választható zónák elkülönítése
 
-Rendelkezik egy előtérbeli garantáltan zónában, más néven választhatja egy *zónaszintű előtérbeli*.  Ez azt jelenti, hogy az egy régióban egy zóna által kiszolgált bármelyik kimenő vagy bejövő folyamathoz.  Az előtérbeli sorsát osztanak meg a zóna állapotát.  Az adatok elérési útja nem zónákban, ahol garantálta eltérő hibák. Használhatja a zónaszintű előtérrendszer IP-cím, egy rendelkezésre állási zónában elérhetővé.  Emellett közvetlenül a zónaszintű előtérrendszer használata, de ha nyilvános IP-címeket tartalmaz. az előtérbeli integrálja ezeket a DNS terheléselosztási termék például [Traffic Manager](../traffic-manager/traffic-manager-overview.md) és a egy egyetlen DNS-név, amely feloldani egy ügyfél használja több zónaszintű IP-címet.  Emellett ezzel elérhetővé egy zóna terheléselosztásos végpontjait minden zóna külön-külön figyeléséhez.  Ha ezek a fogalmak (zónaredundáns és ugyanarra a háttérrendszerre vonatkozó zónaszintű) kombinálhatja, tekintse át a [az Azure Load Balancer több előtérrendszer](load-balancer-multivip-overview.md).
+Dönthet úgy is, hogy egy olyan előtérben van, amely egyetlen zónában van, amely ** egy zónákhoz tartozik.  Ez azt jelenti, hogy bármely bejövő vagy kimenő folyamat egy adott régióban egyetlen zónában szolgál.  A frontend a zóna állapotával osztja meg a sorsot.  Az adatelérési útvonalat a rendszer nem érinti a nem az adott zónán kívüli zónák meghibásodása esetén. Az IP-cím rendelkezésre állási zónákban való megjelenítéséhez használhatja a zónákhoz tartozó előtérbeli felületet.  Azt is megteheti, hogy közvetlenül vagy, ha a frontend nyilvános IP-címekből áll, integrálja azokat egy DNS terheléselosztási termékkel, például a [Traffic Manager](../traffic-manager/traffic-manager-overview.md) , és egyetlen DNS-nevet használ, amelyet az ügyfél több, a Zona IP-címekhez .  Ezt a zónát is használhatja a zónák elosztott terhelésű végpontok számára, hogy külön figyelje az egyes zónákat.  Ha szeretné összekeverni ezeket a fogalmakat (a zóna redundáns és az azonos háttérbeli névteret), tekintse át [Azure Load Balancer több](load-balancer-multivip-overview.md)előtérben is.
 
-Nyilvános Load Balancer előtér, adjon hozzá egy *zónák* paraméter az előtérbeli IP-konfigurációja által hivatkozott nyilvános IP-címhez.  
+Nyilvános Load Balancer előtér esetén a rendszer egy *zóna* paramétert ad hozzá a ELŐTÉRI IP-konfiguráció által hivatkozott nyilvános IP-címhez.  
 
-Belső Load Balancer előtér, adjon hozzá egy *zónák* paramétert a belső terheléselosztó előtérbeli IP-konfigurációt. A zónaszintű előtérbeli IP-cím az alhálózat egy adott zóna garantálja, hogy a terheléselosztó okoz.
+Belső Load Balancer frontend esetén adjon hozzá egy *Zones* paramétert a belső Load Balancer előtér-IP-konfigurációhoz. A zóna-előtérbeli felület hatására a Load Balancer egy adott zónához tartozó IP-címet garantál.
 
-A következő parancsfájl használatával zónaszintű Standard nyilvános IP-cím létrehozása rendelkezésre állási 1. zónában. Ha meglévő Resource Manager-sablonok a konfigurációban használja, vegye fel a **termékváltozat** szakasz ezeket a sablonokat.
+A következő szkripttel hozzon létre egy Zona standard nyilvános IP-címet a rendelkezésre állási 1. zónaban. Ha a konfigurációban meglévő Resource Manager-sablonokat használ, adja hozzá az **SKU** szakaszt ezekhez a sablonokhoz.
 
 ```json
             "apiVersion": "2017-08-01",
@@ -121,9 +121,9 @@ A következő parancsfájl használatával zónaszintű Standard nyilvános IP-c
             },
 ```
 
-A következő parancsfájl használatával hozzon létre egy belső, a Standard Load Balancer előtér rendelkezésre állási 1. zónában.
+A következő parancsfájl használatával hozzon létre belső standard Load Balancer előtéri 1. zóna.
 
-Ha meglévő Resource Manager-sablonok a konfigurációban használja, vegye fel a **termékváltozat** szakasz ezeket a sablonokat. Emellett határozza meg a **zónák** tulajdonság frissítése az előtérbeli IP-konfigurációt a gyermek-erőforrás.
+Ha a konfigurációban meglévő Resource Manager-sablonokat használ, adja hozzá az **SKU** szakaszt ezekhez a sablonokhoz. Továbbá adja meg a **zónák** tulajdonságot a alárendelt erőforrás ELŐTÉRBELI IP-konfigurációjában.
 
 ```json
             "apiVersion": "2017-08-01",
@@ -150,80 +150,80 @@ Ha meglévő Resource Manager-sablonok a konfigurációban használja, vegye fel
                 ],
 ```
 
-### <a name="cross-zone-load-balancing"></a>Cross-zone Load-Balancing
+### <a name="cross-zone-load-balancing"></a>Zónák közötti terheléselosztás
 
-Zónaközi terheléselosztás rendszer azon képessége, Load Balancer egy háttérbeli végpont, minden zónában eléréséhez, és független az előtér- és a zonality.
+A zónák közötti terheléselosztás az Load Balancer képessége, hogy bármely zónában elérje a háttérbeli végpontot, és független a frontendtől és a zonality.
 
-Ha szeretné igazítani, és garantálja a az üzembe helyezés egyetlen zónán belül, igazítása a zónaszintű előtér- és zónaszintű háttérerőforrásokhoz való ugyanabban a zónában. Nincs szükség további műveletekre.
+Ha egyetlen zónán belül szeretné összehangolni és garantálni az üzembe helyezést, akkor az azonos zónához igazíthatja a zóna-és a zónákhoz tartozó háttérbeli erőforrásokat. Nincs szükség további műveletekre.
 
-### <a name="backend"></a>Háttér
+### <a name="backend"></a>Backend
 
-Terheléselosztó működik a virtuális gépekkel.  Egyetlen virtuális hálózaton lévő összes virtuális gép a háttérkészlet, attól függetlenül, e garantálta a zónához vagy melyik zónába garantáltan része lehet.
+A Load Balancer Virtual Machinesval működik.  Egyetlen VNet lévő virtuális gép a háttér-készlet része lehet, függetlenül attól, hogy az adott zóna számára garantált-e vagy sem, vagy hogy melyik zónában volt garantált.
 
-Ha szeretné igazítani, és garantálja a és a egy zóna a háttérbeli, csak helyezzen virtuális gépeket ugyanabban a zónában lévő megfelelő háttérkészlet.
+Ha egyetlen zónával szeretné összehangolni és garantálni a felületet és a hátteret, akkor csak az azonos zónába tartozó virtuális gépeket helyezheti át a megfelelő háttér-készletbe.
 
-Cím virtuális gépek több zónában szeretne, ha egyszerűen virtuális gépeket helyezni a több zónában egy háttérkiszolgáló-készlethez.  Ha a virtuális gép méretezési csoportokat használ, elhelyezhet egy vagy több virtuálisgép-méretezési csoportok egy háttérkiszolgáló-készlethez.  És ezeket a virtuálisgép-méretezési csoportok mindegyike egy vagy több zónában is lehetnek.
+Ha több zónában lévő virtuális gépeket szeretne kezelni, egyszerűen helyezzen több zónába tartozó virtuális gépeket ugyanabba a háttérbeli készletbe.  A virtuálisgép-méretezési csoportok használatakor egy vagy több virtuálisgép-méretezési csoport is elhelyezhető ugyanabba a háttérbeli készletbe.  A virtuálisgép-méretezési csoportok mindegyike egyetlen vagy több zónában is lehet.
 
 ### <a name="outbound-connections"></a>Kimenő kapcsolatok
 
-[Kimenő kapcsolatok](load-balancer-outbound-connections.md) minden zóna szolgáltatja, és automatikusan zónaredundáns a rendelkezésre állási zónákkal az egy régióban társított nyilvános Load Balancer és a egy zónaredundáns előtérbeli virtuális gép esetén.  Kimenő kapcsolat SNAT port hozzárendelések stabilitást biztosít az zóna meghibásodások.  
+A [kimenő kapcsolatokat](load-balancer-outbound-connections.md) az összes zóna kiszolgálja, és a rendszer automatikusan redundáns zónába kerül egy olyan régióban, ahol a Availability Zones, ha egy virtuális gép egy nyilvános Load Balancerhoz és egy zóna redundáns előtérbeli felülethez van társítva.  A kimenő kapcsolatok SNAT-portjának lefoglalásai megmaradnak a zónák meghibásodásakor.  
 
-Viszont ha a virtuális gép rendelve egy nyilvános Load Balancer és a egy zónaszintű előtérbeli, kimenő kapcsolatok garantáltan kiszolgálása az internetszolgáltatójuk által zónában.  Kimenő kapcsolatok megoszthatja a megfelelő zónaállapot sorsáról.
+Ha pedig a virtuális gép egy nyilvános Load Balancerhoz és egy zóna-előtérben van társítva, a kimenő kapcsolatokat egyetlen zónában kell kiszolgálni.  A kimenő kapcsolatok megosztják a sorsot a megfelelő zóna állapotával.
 
-Az SNAT port előzetes lefoglalás és algoritmus megegyezik vagy zónák nélkül.
+A SNAT port előfoglalása és algoritmusa azonos a zónákkal vagy anélkül.
 
 ### <a name="health-probes"></a>Állapotminták
 
-A meglévő állapot-mintavételi definíciók marad, mivel ezek a rendelkezésre állási zónák nélkül.  De kiterjesztettük a állapotmodell-infrastruktúra szintjén. 
+A meglévő állapot-mintavételi definíciók a Availability Zones nélkül maradnak.  Az egészségügyi modellt azonban infrastrukturális szinten bővítettük. 
 
-Zónaredundáns használatakor az előtérrendszer, Load Balancer egymástól függetlenül a lemezekről a virtuális gépek minden rendelkezésre állási zónában a mintavételi és elérési utak leállítja a zónában, amely felhasználói beavatkozás nélkül nem sikerült a belső állapotmodell bontja ki.  Ha egy adott elérési út nem érhető el a Load Balancer infrastruktúráról egy zónában egy másik zónában lévő virtuális géphez, a Load Balancer észlelése és a hiba. Más zónákban, akik elérheti a virtuális gép továbbra is a virtuális Gépet a megfelelő előtérrendszer kiszolgálása érdekében.  Ennek eredményeképpen is lehet, hogy során hibaesemények, minden zónában lehetnek némileg eltérő folyamat disztribúciók a teljes körű szolgáltatás általános állapotának védelme során.
+Ha a zóna redundáns felületeit használja, a Load Balancer kibővíti a belső állapot modelljét, hogy egymástól függetlenül megállapítsa a virtuális gép elérhetőségét az egyes rendelkezésre állási zónáktól, és leállítja az útvonalakat az ügyfelek beavatkozása nélkül esetlegesen meghiúsult zónák között.  Ha egy adott elérési út nem érhető el az egyik zóna Load Balancer infrastruktúrájában egy másik zónában lévő virtuális géphez, Load Balancer képes érzékelni és elkerülni ezt a hibát. A virtuális gépet elérő más zónák továbbra is kiszolgálják a virtuális gépet a saját előtéri felületéről.  Ennek eredményeképpen előfordulhat, hogy a meghibásodási események során az egyes zónák némileg eltérő flow-eloszlással rendelkezhetnek, miközben a végpontok közötti szolgáltatás teljes állapotát védi.
 
-## <a name="design"></a> Kialakítási szempontok
+## <a name="design"></a>Tervezési szempontok
 
-Load Balancer szolgáltatás szándékosan rugalmasan rendelkezésre állási zónák kontextusában. Választhat, igazodva a zónák, vagy dönthet úgy, hogy a zónaredundáns lehet.  Megnövelt rendelkezésre állást bármikor visszatérhet az árat nagyobb összetettséget, és meg kell kialakítása a rendelkezésre állás érdekében az optimális teljesítmény érdekében.  Vessünk egy pillantást a fontos tervezési szempontokat.
+A Load Balancer a Availability Zones kontextusában is szándékosan rugalmas. Dönthet úgy is, hogy a zónákhoz való igazítást választja, vagy megadhatja, hogy a zóna redundáns legyen.  A nagyobb rendelkezésre állás a megnövekedett összetettség árán érhető el, és az optimális teljesítmény érdekében meg kell terveznie a rendelkezésre állást.  Vessünk egy pillantást a fontos tervezési szempontokra.
 
-### <a name="automatic-zone-redundancy"></a>Automatikus zóna redundancia
+### <a name="automatic-zone-redundancy"></a>Automatikus zóna – redundancia
 
-Load Balancer egyszerűen rendelkezik, a zónaredundáns előtérbeli egyetlen IP-cím lehet. Egy zónaredundáns IP-cím biztonságosan tudjon kiszolgálni, minden zónában zónaszintű erőforrás és mindaddig, amíg egy zóna kifogástalan állapotú a régión belül egy vagy több zóna hibák hibatűrését. Ellentétben a zónaszintű előtérbeli a szolgáltatást, hogy a megfelelő zónát egy egyetlen zóna és -megosztások sorsát csökkentését.
+A Load Balancer egyszerűvé teszi, hogy egyetlen IP-cím legyen a zóna redundáns felülete. A Zone-redundáns IP-címek bármely zónában biztonságosan képesek kiszolgálni a zónabeli erőforrásokat, és egy vagy több zóna meghibásodása esetén is megmaradhatnak, amíg az egyik zóna állapota Kifogástalan marad a régión belül. Ezzel szemben a zóna-előtérbeli felület a szolgáltatás egyetlen zónába való csökkentése, és a sors megosztva a megfelelő zónával.
 
-Zóna redundancia nem jelenti azt, hitless datapath vagy vezérlősík;  fontos kifejezetten az adatsík. Zónaredundáns folyamat használhatja a zónák, és egy ügyfél folyamatok fogja használni a kifogástalan állapotú zónakészleten egy régióban. Kifogástalan állapotú zónák használata ezen a ponton az idő a forgalom adatfolyamait zóna meghibásodása esetén nem változik.  Egy zónát használó zóna sikertelen időpontjában adatforgalmakat érintheti, de alkalmazások állíthatja helyre. Ezek a folyamatok továbbra is a fennmaradó kifogástalan zónák az újraküldési vagy reestablishment, régión belüli Azure egy konvergált körül a zóna hiba után.
+A zóna – a redundancia nem jelenti a hitless DataPath vagy vezérlési síkot.  kifejezetten adatsík. Zóna – a redundáns folyamatok bármilyen zónát használhatnak, és az ügyfél folyamatai az adott régióban található összes kifogástalan zónát fogják használni. A zóna meghibásodása esetén az adott időponthoz tartozó, egészséges zónákat használó forgalom nem lesz hatással.  A zóna meghibásodásakor egy zónát használó adatforgalom hatással lehet, de az alkalmazások helyreállíthatók. Ezek a folyamatok a régión belüli fennmaradó kifogástalan zónákban folytatódnak az Újraküldés vagy az újralétesítés után, ha az Azure a zóna meghibásodása körül konvergált.
 
-### <a name="xzonedesign"></a> Adatbázisközi zóna határok
+### <a name="xzonedesign"></a>Zónák közötti határok
 
-Fontos tudni, hogy bármikor egy teljes körű szolgáltatás átlép zónák, sorsát megoszt egy zóna nem, de potenciálisan több zónában.  Ennek eredményeképpen a teljes körű szolgáltatás előfordulhat, hogy nem révén egy rendelkezésre állási nem zónaszintű központi telepítések során.
+Fontos megérteni, hogy minden alkalommal, amikor egy végpontok közötti szolgáltatás keresztezi a zónákat, a sorsot nem egy zónával, hanem akár több zónával is megoszthatja.  Ennek eredményeképpen előfordulhat, hogy a végpontok közötti szolgáltatás nem biztosít semmilyen rendelkezésre állást a nem zónákra kiterjedő üzembe helyezések során.
 
-Kerülje a rendszer érvényteleníti javul a rendelkezésre állási, rendelkezésre állási zónák használata esetén, amelyek nem kívánt zónák közötti függőségek bevezetését.  Amikor az alkalmazás több összetevőből áll, és szeretné is ellenáll zóna hiba, a rendszer egy zóna meghibásodása esetén elegendő kritikus fontosságú összetevők maradását kell átadniuk.  Például az alkalmazás egy egyetlen kritikus fontosságú összetevőnek befolyásolhatja a teljes alkalmazás csak a fennmaradó van(nak) eltérő zónában létezik.  Emellett is érdemes lehet a zóna visszaállítását, és hogyan fog át is szervezheti alkalmazását. Nézzük tekintse át a néhány alapvető szempontokat, és eszközként használni őket készítéséhez a kérdésekhez, ahogyan Ön gondol, az adott forgatókönyv keresztül.
+Kerülje a nem kívánt, több zónába tartozó függőségek bevezetését, ami érvényteleníti a rendelkezésre állási nyereséget Availability Zones használatakor.  Ha az alkalmazás több összetevőből áll, és nem kívánja rugalmasan megtartani a zónaadatokat, ügyelnie kell arra, hogy a zónák meghibásodása esetén a megfelelő kritikus összetevők túlélése ne legyen sikeres.  Például az alkalmazás egy kritikus összetevője hatással lehet a teljes alkalmazásra, ha az csak a túlélő zóná (k) tól eltérő zónában van.  Emellett vegye figyelembe a zónák visszaállítását, valamint azt is, hogy az alkalmazás hogyan konvergál. Tekintse át az egyes kulcsfontosságú pontokat, és használja őket inspirációként a konkrét forgatókönyvek szerint.
 
-- Ha az alkalmazás két részből például IP-cím és a felügyelt lemezes virtuális gépek és azok az 1. zóna biztosak lehetünk és, ha az 1. zóna nem sikerül a teljes körű szolgáltatás 2. zóna nem fogja túlélni Ha 1. zóna sikertelen lesz.  Zónák nem adatbázisközi, ha nincs teljesen tisztában, hogy egy potenciálisan veszélyes hibaállapot hoz létre.
+- Ha az alkalmazásnak két összetevője van, például egy IP-cím és egy felügyelt lemezzel rendelkező virtuális gép, és az 1. és 2. zónában is garantáltak, akkor az 1. zóna meghibásodása esetén a végpontok közötti szolgáltatás nem fog fennmaradni, ha az 1. zóna meghibásodik.  Ne hozzon létre több zónát, kivéve, ha teljesen tisztában van azzal, hogy potenciálisan veszélyes meghibásodási módot hoz létre.
 
-- Ha az alkalmazás két összetevőből áll, például IP-cím és a egy virtuális Gépet a felügyelt lemez, és garantáltan állnak zónaredundáns és 1. zóna jelölik, a teljes körű szolgáltatás ki fogja túlélni 2. zóna zóna meghibásodása, zónáját 3 vagy mindkettőt, ha 1. zóna nem sikerült.  Azonban elvesznek néhány lehetőség a szolgáltatás állapotának vonatkozó döntések meghozatalát Ha minden észlelt problémát az előtér-lemezekről.  Érdemes lehet egy szélesebb körű állapotát és a kapacitás modellt.  Segítségével lehet zónaszintű és zónaredundáns az fogalmak együtt bontsa ki a insight és kezelhetősége.
+- Ha az alkalmazásnak két összetevője van, például egy IP-cím és egy felügyelt lemezzel rendelkező virtuális gép, és a zóna redundáns és 1. zónába tartozik, a végpontok közötti szolgáltatás a 2., 3. zóna vagy az 1. zóna meghibásodása esetén is fennmarad.  A szolgáltatás állapotával kapcsolatban azonban elvész némi lehetőség, ha az összes megfigyelő funkció elérhetővé teszi a felületet.  Érdemes lehet átfogóbb állapot-és kapacitási modellt kifejleszteni.  Az elemzések és a kezelhetőség kibővítéséhez használhatja a zóna-redundáns és a zónákhoz kapcsolódó fogalmakat is.
 
-- Ha az alkalmazás két összetevőből, például egy zónaredundáns terheléselosztó előtérbeli és a egy zónák közötti virtuálisgép-méretezési csoportot a három zónát, az erőforrások nem befolyásolják a hiba zónában lesz elérhető, de a teljes körű szolgáltatáskapacitás teljesítménye csökkenhet során hiba történt a zónát. Az infrastruktúra szempontjából a központi telepítés egy vagy több zóna hibák hibatűrését, és Ez kiváltja az alábbi kérdésekre:
-  - Ehhez ismernie az alkalmazás hogyan okok miatt az ilyen hibák és a csökkentett teljesítményű kapacitás?
-  - Szükség van biztosítékok feladatátvételt kényszerít ki egy olyan régiópárra szükség esetén a szolgáltatás?
-  - Hogyan fogja, figyelése, észlelése és ilyen esetben csökkentése? Előfordulhat, hogy a Standard Load Balancer diagnosztika használata, mivel megvédi a teljes körű szolgáltatás teljesítményének figyelését. Fontolja meg, mi érhető el, és mi lehet szükségük teljes képet kiegészítését.
+- Ha az alkalmazásnak két összetevője van, például egy redundáns Load Balancer előtér, valamint egy több zónába tartozó virtuálisgép-méretezési csoport három zónában, akkor a meghibásodás által nem érintett zónák erőforrásai lesznek elérhetők, de a végpontok közötti szolgáltatási kapacitás csökkenhet. a zóna meghibásodása során. Infrastruktúra szempontjából az üzemelő példány képes túlélni egy vagy több zóna meghibásodását, és ez a következő kérdéseket veti fel:
+  - Tisztában van azzal, hogy az alkalmazás miért nem az ilyen hibákkal és a csökkentett kapacitással kapcsolatos?
+  - Szükség van-e arra, hogy a szolgáltatáson belül a feladatátvételt kényszerítse a régiós párokra, ha szükséges?
+  - Hogyan fogja figyelni, felderíteni és elhárítani ezt a forgatókönyvet? Lehetséges, hogy standard Load Balancer diagnosztikát használ a végpontok közötti szolgáltatási teljesítmény figyelésének bővítéséhez. Gondolja át, hogy mi érhető el, és mire lehet szükség a teljes kép kiegészítéséhez.
 
-- Zónák teheti, hogy könnyebben értelmezhető és tartalmazott hibák.  Azonban zóna hibája esetén, a fő fogalmaira, például időtúllépések, az újrapróbálkozások és leállítási algoritmusok nem más hibák nem egyezik. Annak ellenére, hogy az Azure Load Balancer zóna redundáns útvonalakat biztosít, és megpróbálja helyreállítani, valós idejű, a csomag szintjén újraküldése vagy reestablishments jelezze a hibát során esetlegesen jelentkező és fontos tudni, hogy az alkalmazás hogyan copes az hibák. A terheléselosztási rendszer ki fogja túlélni, de meg kell terveznie a következőket:
-  - A zóna nem sikerül, ha nem a teljes körű szolgáltatás megértéséhez, és ha az állapot elveszett, hogyan fog Ön helyre?
-  - A zóna adja vissza, ha nem az alkalmazás megtudhatja, hogyan biztonságosan átvételre?
+- A zónák könnyebben érthetővé és tárolják a hibákat.  Azonban a zóna meghibásodása nem különbözik más hibáktól, amikor olyan fogalmakat tartalmaz, mint az időtúllépések, az újrapróbálkozások és a leállítási algoritmusok. Annak ellenére, hogy Azure Load Balancer a zóna-redundáns elérési utakat biztosít, és gyors helyreállítást tesz lehetővé a csomagok szintjén, a hiba bekövetkezésekor újraküldést vagy újraépítést eredményezhet, és fontos megérteni, hogy az alkalmazás hogyan alakul hibák. A terheléselosztási séma megmarad, de a következőket kell megterveznie:
+  - Ha egy zóna meghibásodik, a végpontok közötti szolgáltatás megérti ezt, és ha az állapot elveszett, hogyan történik a helyreállítás?
+  - Egy zóna visszaadásakor az alkalmazás megérti, hogyan konvergál biztonságos módon?
 
-### <a name="zonalityguidance"></a> Zónaredundáns zónaszintű és
+### <a name="zonalityguidance"></a>Zóna – redundáns és zónák közötti
 
 >[!IMPORTANT]
->Felülvizsgálat [rendelkezésre állási zónák](../availability-zones/az-overview.md) vonatkozó témaköreit, beleértve a régió konkrét információkkal.
+>Tekintse át [Availability Zones](../availability-zones/az-overview.md) kapcsolódó témaköröket, beleértve a régióra vonatkozó információkat is.
 
-Zónaredundáns nyújthat egy zóna-független, és egyetlen IP-Címmel rendelkező megadott idő rugalmas beállítást, oldja meg a szolgáltatáshoz.  Ez csökkentheti az összetettséget viszont.  Zónaredundáns is rendelkezik a mobilitási zónák között, és minden zónában erőforrások biztonságosan használható.  Azt is jövőbeli koncepció rendelkezésre állási zónák, ami korlátozhatja a módosítások szükséges, ha egy régió kapjanak a rendelkezésre állási zónák nélküli régiókban.  Egy zónaredundáns IP-cím vagy frontend konfigurációs szintaxisának sikeres bármelyik régióban, beleértve a rendelkezésre állási zónák nélkül.
+A felesleges zóna a szolgáltatáshoz egyetlen IP-címmel rendelkező zónát biztosíthat, és ezzel egyidejűleg rugalmasan használhatja a megoldást.  Ezzel csökkentheti az összetettséget.  A felesleges zóna a zónák közötti mobilitást is magában foglalhatja, és biztonságosan használható bármely zónában lévő erőforrásokhoz.  Azt is megteheti, hogy a régiók Availability Zones nélküli régiókban is megtalálhatók, ami korlátozhatja a szükséges változtatásokat, ha egy adott régió Availability Zones.  Egy zóna – redundáns IP-cím vagy előtér – konfigurációs szintaxisa minden régióban sikeres, beleértve a Availability Zones nélkül.
 
-A zónaszintű is biztosítanak egy explicit a zónához sorsát osztanak meg a zóna állapota. Társítása a zónaszintű IP-cím vagy a zónaszintű terheléselosztó előtérbeli is lehet kívánatos vagy ésszerű attribútum különösen, ha a csatolt erőforrás zónaszintű virtuális gép ugyanabban a zónában.  Vagy esetleg az alkalmazás mely zónára egy erőforráscsoportban található explicit ismeretek szükségesek, és explicit módon okból különálló zónákra lévő rendelkezésre állásról szeretné.  Dönthet úgy, hogy egy teljes körű szolgáltatás zónák között elosztott több zónaszintű előtérrendszer elérhetővé (azt jelenti, egy zóna több zónaszintű virtuálisgép-méretezési csoport és a zónaszintű előtérrendszerek állítja).  És ha a zónaszintű és előtérrendszerek nyilvános IP-címek, ezek több zónaszintű előtérrendszer használható a szolgáltatás által a [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Vagy használhatja a zónaszintű több előtérrendszer zóna állapotának és teljesítményének juthat információkhoz harmadik féltől származó figyelési megoldások száma és az általános zónaredundáns előtér-szolgáltatás elérhetővé. Érdemes csak zónaszintű előtérrendszer ugyanabban a zónában igazodik a zónaszintű erőforrások kiszolgálása és elkerülése érdekében a potenciálisan káros zónák közötti forgatókönyvek zónaszintű erőforrások számára.  A zónaszintű erőforrások csak a régiók, ahol a rendelkezésre állási zónák létezik szerepel.
+A zónák explicit garanciát biztosítanak egy zónához, és megosztják a sorsot a zóna állapotával. A zónákhoz tartozó IP-címek és a zóna-Load Balanceri frontendek társítása kívánatos vagy ésszerű attribútum lehet, különösen akkor, ha a csatlakoztatott erőforrás egy azonos zónában található, többhelyes virtuális gép.  Vagy lehet, hogy az alkalmazásnak explicit módon kell megismernie, hogy az erőforrás melyik zónában található, és hogy kifejezetten külön zónákban szeretné megadni a rendelkezésre állást.  Dönthet úgy, hogy több, zónákra osztott, végpontok közötti szolgáltatás számára elérhetővé teheti a többzónás felületet (ez a zóna zónákhoz tartozó, több Zona virtuálisgép-méretezési csoportokra vonatkozóan).  Ha pedig a zóna-előtérben nyilvános IP-címek vannak, akkor használhatja ezeket a több zóna-előtérbeli felületet a szolgáltatás [Traffic Manager](../traffic-manager/traffic-manager-overview.md)való kimutatása érdekében.  Vagy több, a zóna számára elérhetővé tett felületi felületet is használhat, amelyek külső figyelési megoldásokon keresztül érhetik el a zónák állapotát A zónákhoz csak az ugyanahhoz a zónához igazított, zónákra kiterjedő előtér-erőforrásokat kell kiszolgálni, és el kell kerülnie a zónákon belüli erőforrások potenciálisan káros, több zóna közötti forgatókönyveit.  A zóna-erőforrások csak olyan régiókban léteznek, ahol Availability Zones léteznek.
 
-Nincs sem, hogy egy jobb megoldás, mint a többi anélkül, hogy a service-architektúra általános útmutatást.
+Nincs általános útmutatás arra, hogy az egyik a szolgáltatás architektúrájának ismerete nélkül jobb választás.
 
 ## <a name="limitations"></a>Korlátozások
 
-- Miközben az adatok adatsík teljes zónaredundáns (kivéve, ha a zónaszintű garancia lett megadva), a vezérlési síkjával végzett műveletek nem teljes mértékben zónaredundáns.
+- Míg az adatsík teljesen redundáns zónában van (kivéve, ha meg van adva a zónákhoz való hozzáférés), a vezérlési sík műveletei nem teljesen redundáns zónában vannak.
 
 ## <a name="next-steps"></a>További lépések
-- Tudjon meg többet [rendelkezésre állási zónák](../availability-zones/az-overview.md)
+- További információ a [Availability Zones](../availability-zones/az-overview.md)
 - További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md)
-- Ismerje meg, hogyan [terheléselosztása virtuális gépek használata a Standard Load Balancer zónaszintű előtérbeli zónán belül](load-balancer-standard-public-zonal-cli.md)
-- Ismerje meg, hogyan [terheléselosztása virtuális gépek zónákban a zónaredundáns előtérbeli Standard Load Balancer használatával](load-balancer-standard-public-zone-redundant-cli.md)
+- Ismerje meg, hogyan oszthatja meg a virtuális gépeket egy zónán belül egy olyan [standard Load Balancer használatával,](load-balancer-standard-public-zonal-cli.md) amely egy zóna-előtérben található.
+- Megtudhatja, hogyan oszthatja meg a [virtuális gépeket zónák között egy olyan standard Load Balancer használatával, amely zóna nélküli előtérbeli felületet használ](load-balancer-standard-public-zone-redundant-cli.md)

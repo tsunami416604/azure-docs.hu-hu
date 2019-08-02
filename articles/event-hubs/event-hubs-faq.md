@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/15/2019
 ms.author: shvija
-ms.openlocfilehash: e1ec6987f1a142e9bf9cd4413cfb4444bde1b7dd
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 66b11ef8e746222074eadab2348f8a2cf9dab39f
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797000"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479153"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Az Event Hubs – gyakori kérdések
 
@@ -24,14 +24,14 @@ ms.locfileid: "67797000"
 ### <a name="what-is-an-event-hubs-namespace"></a>Mi az Event Hubs-névtér?
 A névtér egy hatókörkezelési tároló az Event Hub és Kafka-témakörökhöz a. Biztosít egy egyedi [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Egy névtér szolgál egy alkalmazástárolót, amelynek több Event Hub és Kafka-témaköröket is tartalmazhat. 
 
-### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>Amikor hozható létre egy új névteret, és használja egy meglévő névtér?
-A kapacitás kiosztásokat ([átviteli egységek (átviteli egységek)](#throughput-units)) számlázása a névterek szintjén. Névtér nem is egy régió tartozik.
+### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>Mikor hozzon létre egy új névteret, vagy használjon egy meglévő névteret?
+A kapacitás kiosztása ([átviteli egység (TUs)](#throughput-units)) a névtér szintjén kerül kiszámlázásra. A névtér egy régióhoz is társítva van.
 
-Előfordulhat, hogy szeretne létrehozni egy már meglévő egy az az alábbi esetekben használata helyett egy új névteret: 
+A következő esetekben érdemes lehet új névteret létrehozni a meglévő használata helyett: 
 
-- Szüksége lesz egy Eseményközpont új régióban társított.
-- Szüksége lesz egy egy másik előfizetéshez tartozó Eseményközpontot.
-- A különböző kapacitás lefoglalása az Eseményközpontok felé kell (azt jelenti, a kapacitás szükséges a az új event hubs-névtér túllépné a 40 átviteli egység küszöbértéket, és nem kívánja nyissa meg a dedikált fürt)  
+- Szüksége lesz egy új régióhoz társított Event hub-ra.
+- Egy másik előfizetéshez társított Event hub szükséges.
+- Az Event hub-nak külön kapacitás-kiosztással kell rendelkeznie (azaz a hozzáadott Event hub-hoz tartozó névtér kapacitásának nagyobbnak kell lennie a 40-as számú TU-küszöbértéknél, és nem kívánja a dedikált fürthöz jutni)  
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Mi a különbség az alapszintű Event Hubs és a Standard szint között?
 
@@ -60,46 +60,46 @@ Event Hubs Standard csomag jelenleg támogatja a maximális adatmegőrzési idő
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Hogyan követhetem figyelemmel az Event Hubs?
 Az Event Hubs bocsát ki, amelyek az erőforrásokat az állapotát az alábbi mérőszámok [Azure Monitor](../azure-monitor/overview.md). Emellett segítségével felmérheti az általános állapotát, az Event Hubs szolgáltatás nem csak a névterek szintjén, hanem az entitások szintjén. Ismerje meg, milyen figyelésével kapcsolatos kínáljuk [Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Milyen portokat tegye kell megnyitni a tűzfalon? 
-Segítségével az alábbi protokollok Azure Service Bus-üzenetek küldése és fogadása:
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Milyen portokat kell megnyitni a tűzfalon? 
+Az üzenetek küldéséhez és fogadásához a következő protokollokat használhatja Azure Service Bus:
 
 - Advanced Message Queueing Protocol (AMQP)
 - HTTP
 - Apache Kafka
 
-Tekintse meg a következő táblázat tartalmazza a kimenő portokat, meg kell nyitnia ezeket a protokollokat használata az Azure Event Hubs való kommunikációhoz. 
+Az alábbi táblázat tartalmazza azokat a kimenő portokat, amelyeket meg kell nyitni a protokollok Azure Event Hubs-vel való kommunikációhoz való használatához. 
 
 | Protocol | Portok | Részletek | 
 | -------- | ----- | ------- | 
-| AMQP | 5671, 5672 és | Lásd: [AMQP protokoll-útmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
+| AMQP | 5671 és 5672 | Lásd: [AMQP protokoll – útmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
 | HTTP, HTTPS | 80, 443 |  |
-| Kafka | 9093 | Lásd: [használata az Event Hubs, Kafka-alkalmazásokból](event-hubs-for-kafka-ecosystem-overview.md)
+| Kafka | 9093 | Lásd: [Event Hubs használata a Kafka-alkalmazásokból](event-hubs-for-kafka-ecosystem-overview.md)
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Milyen IP-címeket engedélyezési lista kell?
-A kapcsolat a megfelelő IP-címek engedélyezési lista megkereséséhez kövesse az alábbi lépéseket:
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Milyen IP-címekre van szükségem az engedélyezési listához?
+Az alábbi lépéseket követve megkeresheti a megfelelő IP-címeket a kapcsolatokhoz tartozó fehér listához:
 
-1. Futtassa a következő parancsot a parancssorba: 
+1. Futtassa a következő parancsot egy parancssorból: 
 
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Jegyezze fel a visszaadott IP-címet `Non-authoritative answer`. A csak időben megváltozna azt, hogy ha egy másik fürtön be a névtér visszaállítását.
+2. Jegyezze fel `Non-authoritative answer`a visszaadott IP-címet. Ha a névteret egy másik fürtre állítja vissza, az egyetlen olyan időpontot kell megváltoztatnia, amelyik megváltozhat.
 
-A zone redudancy a névteret használja, ha néhány további lépések végrehajtásához szüksége: 
+Ha a zóna redundanciát használja a névtérhez, néhány további lépést is végre kell hajtania: 
 
-1. Először futtassa a nslookup a névtérhez.
+1. Először futtassa az nslookupt a névtéren.
 
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. Jegyezze fel a neve a **nem mérvadó válasz** szakaszt, amely a következő formátumok egyikében: 
+2. Jegyezze fel a nevet a **nem mérvadó válasz** szakaszban, amely az alábbi formátumok egyike: 
 
     ```
     <name>-s1.servicebus.windows.net
     <name>-s2.servicebus.windows.net
     <name>-s3.servicebus.windows.net
     ```
-3. Az nslookup futtassa egyesével az utótagok s1, s2 és s3 három rendelkezésre állási zónában futó összes három példány IP-címeket 
+3. Futtassa az nslookupt mindegyikhez az S1, az S2 és az S3 utótaggal a három rendelkezésre állási zónában futó mindhárom példány IP-címeinek lekéréséhez. 
 
 ## <a name="apache-kafka-integration"></a>Az Apache Kafka-integráció
 
@@ -115,7 +115,7 @@ Példa:
 
 bootstrap.Servers=dummynamespace.servicebus.Windows.NET:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule szükséges felhasználónév = "$ ConnectionString"password="Endpoint=sb://dummynamespace.servicebus.windows.net/; SharedAccessKeyName DummyAccessKeyName; = SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
 
-Megjegyzés: Ha sasl.jaas.config nem támogatott konfiguráció a keretrendszer, keresse meg a konfigurációk, amely segítségével a SASL-felhasználónevet és jelszót, és azokat használja helyette. Állítsa be a username $ConnectionString és a jelszót az Event Hubs kapcsolati karakterlánc.
+Megjegyzés: Ha a SASL. jaas. config nem támogatott konfiguráció a keretrendszerben, keresse meg azokat a konfigurációkat, amelyek segítségével beállítja a SASL felhasználónevét és jelszavát, és használja ezeket. Állítsa be a username $ConnectionString és a jelszót az Event Hubs kapcsolati karakterlánc.
 
 ### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>Mi az Event hubs Kafka-kompatibilis üzenet/esemény méretét?
 A Kafka-kompatibilis az Event Hubs számára engedélyezett maximális mérete 1MB.
@@ -185,8 +185,9 @@ Elküldésével egy dedikált Event Hubs-fürt létrehozása egy [kvótájának 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
 ### <a name="how-many-partitions-do-i-need"></a>Hogyan sok partíció van szükségem?
+A partíciók száma az eseményközpont létrehozásakor határozható meg, és 2 és 32 közé eshet. A partíciószám nem módosítható, a megadásakor tehát hosszú távú szempontokat érdemes mérlegelni. A partíció egy adatrendezési mechanizmus, és a felhasználó alkalmazásokban szükséges alárendeltségi párhuzamossághoz köthető. Az egyes eseményközpontokban található partíciók számának kiválasztása közvetlenül kapcsolódik az egyidejű olvasók várt számához. További információ a partíciókon: partíciók [](event-hubs-features.md#partitions).
 
-A partíciók száma az eseményközpont beállítása után nem módosítható. Az adott szem előtt fontos úgy gondolja, hogy hány partíciók kapcsolatos első lépések előtt szüksége. 
+A létrehozás időpontjában érdemes lehet beállítani a lehető legmagasabb értéket, amely a 32. Ne feledje, hogy több partíció használata esetén a rendszer több partícióba küldi az eseményeket anélkül, hogy megtartja a sorrendet, kivéve, ha a küldőket úgy konfigurálja, hogy csak egyetlen, a 32-es partíción kívülről küldje el a fennmaradó 31 partíciót. Az előző esetben az összes 32-partíción el kell olvasnia az eseményeket. Az utóbbi esetben az Event Processor Host-on kívüli további konfigurációtól eltekintve nincs nyilvánvaló további díj.
 
 Az Event Hubs egy fogyasztói csoportot egy egyetlen partícióolvasónak nyilván lehetővé teszi. A legtöbb használati esetek négy partíciót, az alapértelmezett beállítás is elegendő. Ha az eseményfeldolgozás horizontális, érdemes érdemes lehet hozzáadni a két további partíció. Nincs konkrét átviteli korlátozva a partíción, azonban az átviteli egységek száma korlátozza az összesített átviteli sebességre, a névtérben. Növeli az átviteli egységek száma a névtérben, előfordulhat, hogy szeretne további partíciókat, hogy az egyidejű olvasók saját maximális átviteli sebesség eléréséhez.
 
@@ -232,8 +233,8 @@ Minden Event Hubs-kvótákról listáját lásd: [kvóták](event-hubs-quotas.md
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Miért nem tudok-névtér létrehozása egy másik előfizetésből törlését követően? 
-Ha egy névtér töröl egy előfizetést, várjon, amíg 4 óra, mielőtt újra egy másik előfizetésben található ugyanazzal a névvel. Ellenkező esetben a következő hibaüzenet jelenhet: `Namespace already exists`. 
+### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Miért nem lehet névteret létrehozni egy másik előfizetésből való törlés után? 
+Ha töröl egy névteret egy előfizetésből, várjon 4 órát, mielőtt újra létrehozza azt ugyanazzal a névvel egy másik előfizetésben. Ellenkező esetben a következő hibaüzenet jelenhet meg: `Namespace already exists`. 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Mik az Event Hubs és a javasolt lépések által előállított kivételeket?
 

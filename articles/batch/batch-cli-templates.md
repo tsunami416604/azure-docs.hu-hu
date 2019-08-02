@@ -1,9 +1,9 @@
 ---
-title: Feladatok futtatása – teljes körű sablonok – Azure Batch használatával |} A Microsoft Docs
-description: Sablon fájlok és az Azure CLI Batch-készletek, feladatok és tevékenységek létrehozása
+title: Feladatok végpontok közötti futtatása a sablonok használatával – Azure Batch | Microsoft Docs
+description: Hozzon létre batch-készleteket,-feladatokat és-feladatokat a sablonfájlok és az Azure CLI használatával.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: na
@@ -12,86 +12,86 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 80d2e995a18a2d6dafbb8d92fdd5996b10eab17c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5e5ed8a69d5140814899c24e96eded6dc61e5908
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60783738"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323680"
 ---
-# <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch parancssori felületi sablonjainak és fájlátviteli
+# <a name="use-azure-batch-cli-templates-and-file-transfer"></a>A CLI-sablonok és a fájlátvitel Azure Batch használata
 
-Egy Azure Batch-bővítmény, az Azure CLI használatával, lehetőség a Batch-feladatok futtatása kód írása nélkül.
+Ha Azure Batch-bővítményt használ az Azure CLI-hez, a Batch-feladatokat kód írása nélkül is futtathatja.
 
-Létrehozhat és használhat a sablon JSON-fájlok az Azure CLI-vel Batch-készletek, feladatok és tevékenységek létrehozása. Használja a CLI-bővítmény parancsok könnyedén tölthet fel a feladatok bemeneti fájljait a storage-fiókhoz társított a Batch-fiókot, és a letöltéshez feladat kimeneti fájlokat.
+Hozzon létre és használjon JSON-sablonfájlokat az Azure CLI-vel batch-készletek,-feladatok és-feladatok létrehozásához. A CLI bővítmény parancsaival egyszerűen töltheti fel a feladatok bemeneti fájljait a Batch-fiókhoz társított Storage-fiókba, és letöltheti a feladatok kimeneti fájljait.
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure CLI-bővítmény lehetővé teszi, hogy a Batch szolgáltatást kell használt – teljes körű felhasználók, akik nem a fejlesztők által. Csak CLI-parancsokkal létrehoz egy készletet, bemeneti adatok feltöltése, feladatok és a kapcsolódó feladatok létrehozása és az eredményül kapott kimeneti adatok letöltéséhez. Nincsenek további kódra szükség. A CLI-parancsok futtatása közvetlenül, vagy parancsfájlok integrálhatja őket.
+Az Azure CLI-bővítmény lehetővé teszi, hogy a Batch a nem fejlesztő felhasználók számára teljes körűen használható legyen. Csak a CLI-parancsokkal hozhat létre készleteket, tölthet fel bemeneti adatokat, feladatokat és kapcsolódó tevékenységeket hozhat létre, és letöltheti az eredményül kapott kimeneti adatokat. Nincs szükség további kódokra. Futtassa közvetlenül a CLI-parancsokat, vagy integrálja őket parancsfájlokba.
 
-Batch-sablonok létrehozása a kiszolgálón a [meglévő Batch támogatás az Azure CLI-ben](batch-cli-get-started.md#json-files-for-resource-creation) JSON-fájlok létrehozásakor, készletek, feladatok, tevékenységek és egyéb elemek tulajdonság értéket is. Batch-sablonok hozzáadása a következő képességekkel:
+A Batch-sablonok a [meglévő batch-támogatásra](batch-cli-get-started.md#json-files-for-resource-creation) épülnek az Azure CLI-ben a JSON-fájlokhoz a készletek, feladatok, feladatok és egyéb elemek létrehozásakor. A Batch-sablonok a következő képességeket vehetik fel:
 
--   Paraméterek lehet definiálni. A sablon használata esetén csak a paraméterek értékeit az elem létrehozása és a többi elem tulajdonságértékek sablon törzsében megadott vannak megadva. A felhasználó, aki ismeri a Batch és a Batch által futtatandó alkalmazásokat hozhat létre sablonokat, adja meg a készletet, a feladat és a tevékenység tulajdonságértékeket. A felhasználó kevesebb ismerős a Batch-és/vagy az alkalmazásokat csak nem adja meg a definiált paraméterek értékeit.
+-   A paraméterek meghatározhatók. A sablon használatakor a rendszer csak a paraméter értékeit adja meg az elem létrehozásához, és a sablon törzsében a többi elem tulajdonság értékét is megadja. A Batch és a Batch által futtatandó alkalmazások létrehozhatnak sablonokat, megadhatják a készlet, a feladat és a feladat tulajdonság értékeit. A Batch és/vagy az alkalmazások csak a definiált paraméterek értékeit kell megadniuk.
 
--   Feladat feladat előállítók hozzon létre egy feladatot, nem kell létrehozni számos feladat definíciók és jelentősen leegyszerűsíti a feladatküldéshez társított egy vagy több feladat.
+-   A feladat-előállítók létrehoznak egy vagy több feladatot egy adott feladathoz, elkerülve a feladatok elküldésének számos feltételének szükségességét, és jelentősen leegyszerűsíti a feladat beadását.
 
 
-Feladatok általában használni a bemeneti adatfájlt és a kimeneti adatok fájlokat. Storage-fiók van társítva, alapértelmezésben minden Batch-fiókkal. A fájlátvitel és onnan ezt a tárfiókot, a parancssori felületről, a nem kódolási és nem a tároló hitelesítő adatait.
+A feladatok jellemzően bemeneti adatfájlokat használnak, és kimeneti adatfájlokat hoznak létre. Alapértelmezés szerint a Storage-fiók minden batch-fiókkal társítva van. Fájlok átvitele ebbe a Storage-fiókba és onnan a parancssori felület használatával, kódolás nélkül és tárolási hitelesítő adatok nélkül.
 
-Ha például [ffmpeg](https://ffmpeg.org/) népszerű alkalmazás, amely feldolgozza a hang- és videofájlok. Az alábbiakban a lépéseket az Azure Batch parancssori ffmpeg átkódolása videó forrásfájljainak, a különböző meghívásához.
+Az [FFmpeg](https://ffmpeg.org/) például egy népszerű alkalmazás, amely a hang-és videofájlokat dolgozza fel. Az alábbi lépéseket követve a Azure Batch CLI-vel meghívhatja az FFmpeg-t, hogy átkódolja a forrásfájlokat a különböző felbontásokra.
 
--   Hozzon létre egy készlet sablont. A sablont létrehozó felhasználónak tudja, hogyan hívhat meg az ffmpeg alkalmazás és a rájuk vonatkozó követelményekről; akkor adja meg a megfelelő operációs rendszer, a virtuális gép mérete, hogyan ffmpeg segítségével telepítve (az alkalmazáscsomag vagy egy Csomagkezelő, például használatával), és más tulajdonság értékek alkalmazáskészletet. Paraméterek jönnek létre, így a sablon használata esetén csak a készlet azonosítója és a virtuális gépek számának meg kell adni.
+-   Hozzon létre egy készlet sablont. A sablont létrehozó felhasználó tudja, hogyan hívhatja meg az FFmpeg-alkalmazást és annak követelményeit; megadják a megfelelő operációs rendszert, a virtuálisgép-méretet, az FFmpeg telepítését (egy alkalmazáscsomag vagy egy csomagkezelő használatával, például) és más Pool-tulajdonságértékek értékét. A rendszer létrehozza a paramétereket, így a sablon használatakor csak a készlet AZONOSÍTÓját és a virtuális gépek számát kell megadnia.
 
--   Hozzon létre egy feladatot sablont. A sablont létrehozó felhasználónak tudja, hogyan kell ffmpeg átkódolása forrásához videó különböző felbontású hívható, és adja meg a tevékenység parancssora; akkor is, hogy, hogy nincs-e egy tevékenységhez, a bemeneti fájl szükséges a videó forrásfájlokat tartalmazó mappa.
+-   Hozzon létre egy sablont. A sablont létrehozó felhasználó tudja, hogyan kell meghívni az FFmpeg-t a forrás videó átkódolására egy másik felbontásra, és megadja a feladat parancssorát; azt is tudják, hogy van egy mappa, amely a forrásként szolgáló videofájlokat tartalmazza, és egy bemeneti fájlhoz szükséges feladatot kell megadnia.
 
--   Videofájlok azért vannak beállítva a felhasználó először egy készletet hoz létre a készletet sablonnal, csak a készlet azonosítója és a szükséges virtuális gépek számának megadása. Ezután feltöltik a forrásfájlok nem alakítható át. Ezután beküldhető egy feladat csak a készlet azonosítója és a feltöltött forrásfájljainak helyét megadó feladat-sablon használatával. A Batch-feladat jön létre, a létrehozott bemeneti fájlonként egy feladat. Végül a átkódolt kimeneti fájlok lehet letölteni.
+-   Az átkódolni kívánt videofájlokat tartalmazó végfelhasználó először a készlet sablonnal hoz létre egy készletet, amely csak a készlet AZONOSÍTÓját és a szükséges virtuális gépek számát adja meg. Ezután fel tudják tölteni a forrásfájlokat a transcode-be. Ezután egy feladatot a feladatütemezés használatával lehet elküldeni, csak a készlet AZONOSÍTÓját és a feltöltött forrásfájlok helyét adja meg. A Batch-feladat létrehozása folyamatban van, és a rendszer egy bemeneti fájlon keresztül létrehoz egy feladatot. Végül a konvertált kimeneti fájlok tölthetők le.
 
 ## <a name="installation"></a>Telepítés
 
-Az Azure Batch CLI-bővítmény telepítéséhez először [az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli), vagy futtassa az Azure CLI [Azure Cloud Shell](../cloud-shell/overview.md).
+A Azure Batch CLI-bővítmény telepítéséhez először [telepítse az Azure cli 2,0](/cli/azure/install-azure-cli)-es verzióját, vagy futtassa az [](../cloud-shell/overview.md)azure CLI-t Azure Cloud Shellban.
 
-Telepítse a legújabb verziót a Batch-bővítmény a következő Azure CLI-paranccsal:
+Telepítse a Batch bővítmény legújabb verzióját az alábbi Azure CLI-parancs használatával:
 
 ```azurecli
 az extension add --name azure-batch-cli-extensions
 ```
 
-A Batch CLI-bővítmény és a további telepítési beállítások kapcsolatos további információkért lásd: a [GitHub-adattárat](https://github.com/Azure/azure-batch-cli-extensions).
+A Batch CLI bővítménnyel és további telepítési lehetőségekkel kapcsolatos további információkért lásd a [GitHub](https://github.com/Azure/azure-batch-cli-extensions)-tárházat.
 
 
-Azure Batch-fiókot kell használni a CLI bővítmény szolgáltatásai, és a parancsok, amelyek a fájlátvitel és a storage, a társított storage-fiók.
+A CLI-bővítmény funkcióinak használatához szüksége van egy Azure Batch fiókra, valamint a fájlokat a Storage-ba és a tárolóba átmásoló parancsokhoz egy társított Storage-fiók.
 
-Jelentkezzen be az Azure CLI-vel Batch-fiók, lásd: [Batch-erőforrások kezelése az Azure CLI-vel](batch-cli-get-started.md).
+Az Azure CLI-vel való bejelentkezéshez lásd: batch- [erőforrások kezelése az Azure CLI-vel](batch-cli-get-started.md).
 
 ## <a name="templates"></a>Sablonok
 
-Az Azure Batch-sablonok hasonlóak az Azure Resource Manager-sablonok, a funkciók és szintaxist. Azok, amelyek tartalmazzák a konfigurációelem nevét és értékeit, de adja hozzá a következő főbb fogalmak JSON-fájlokat:
+Azure Batch sablonok hasonlók a Azure Resource Manager-sablonokhoz, a funkcionalitásban és a szintaxisban. Ezek az elemek tulajdonságainak nevét és értékeit tartalmazó JSON-fájlok, de a következő fő fogalmakat is felveszik:
 
 -   **Paraméterek**
 
-    -   Lehetővé teszik egy szervezet szakaszban adható meg kellene adni a sablon használatakor csak paraméter értékekkel tulajdonságértékeket. Például a teljes készlet definíciója sikerült kell elhelyezni a szervezet, és csak az egyik paraméter meghatározott készlet azonosítója; csak egy készlet azonosító karakterláncot ezért kell adni egy készlet létrehozásához.
+    -   Tulajdonságok értékének engedélyezése a törzs szakaszban, csak a sablon használatakor szükséges paraméterek értékeit kell megadni. Egy készlet teljes definíciója például elhelyezhető a törzsben, és csak egy paraméter van definiálva a készlet-azonosítóhoz; a készlet létrehozásához csak a készlet azonosító sztringjét kell megadni.
         
-    -   A sablon törzsét hozhatóak létre, amelyet a Batch és a Batch; által futtatandó alkalmazások csak a szerző által megadott paraméterek értékeit kell megadni, ha a sablont használ. A felhasználó a részletesebb kötegelt és/vagy az alkalmazás ismeretek nélkül ezért sablonjai segítségével.
+    -   A sablon törzsét valaki a Batch ismeretével és a Batch által futtatandó alkalmazások létrehozásával tudja megtervezni. a sablon használatakor csak a szerző által definiált paraméterek értékeit kell megadni. A nem részletes batch és/vagy Application Knowledge nélküli felhasználók ezért használhatják a sablonokat.
 
 -   **Változók**
 
-    -   Lehetővé teszi egyszerű vagy összetett paraméterértékek egy helyen megadott és a egy vagy több helyen, a sablon törzsében használja. Változók is egyszerűsítése és csökkentheti a sablon méretét, valamint, hogy ez több fenntartható tulajdonságainak módosításához egyetlen helyen kellene.
+    -   Egyszerű vagy összetett paraméterérték megadásának engedélyezése egy helyen és a sablon törzsének egy vagy több helyén való használata. A változók leegyszerűsítik és csökkenthetik a sablon méretét, és azt is megtarthatják, hogy az egyik hely a tulajdonságok módosítására szolgál.
 
--   **A magasabb szintű szerkezeteket.**
+-   **Magasabb szintű szerkezetek**
 
-    -   A sablon, amely még nem állnak rendelkezésre az a Batch API-k néhány magasabb szintű szerkezeteket érhetők el. Például egy feladat gyári lehet definiálni egy feladat sablont, amely több tevékenységet a feladathoz, közös feladatdefiníció használatával hoz létre. A fentiek elkerülése érdekében dinamikusan hozhat létre több JSON-fájlok, például egy fájl egy feladat, valamint parancsfájl-fájlok létrehozása kód alkalmazásokat Csomagkezelő használatával telepíteni kell.
+    -   A sablonban olyan magasabb szintű szerkezetek érhetők el, amelyek még nem érhetők el a Batch API-kon. Például egy feladat-előállító olyan Feladatsorban definiálható, amely több feladatot hoz létre a feladathoz, egy gyakori feladatdefiníció használatával. Ezek a szerkezetek nem igényelnek kódot a több JSON-fájl, például egy fájl/feladat dinamikus létrehozásához, valamint parancsfájlok létrehozásához az alkalmazások csomagkezelő használatával történő telepítéséhez.
 
-    -   Később a fentiek lehet hozzáadva a Batch szolgáltatásnak, és elérhető a Batch API-k, előkészíthetik, stb.
+    -   Ezek a szerkezetek felvehetők a Batch szolgáltatásba, és elérhetők a Batch API-k, a UI stb. esetében.
 
-### <a name="pool-templates"></a>Készlet Sablonok
+### <a name="pool-templates"></a>Készlet-sablonok
 
-Készlet Sablonok támogatja a paraméterek és változók standard sablon képességeit. A következő magasabb szintű szerkezet is támogatja:
+A készlet sablonjai a paraméterek és változók szabványos sablonra vonatkozó képességeit támogatják. A következő magasabb szintű konstrukciókat is támogatják:
 
--   **Alkalmazáscsomag-hivatkozások**
+-   **Csomagok hivatkozásai**
 
-    -   Igény szerint lehetővé teszi a szoftverfrissítési csomag-kezelők használatával készletcsomópontokért kell másolni. A Csomagkezelő és a csomag azonosítója meg van adva. Egy vagy több csomagot deklarálásával kerülje a létrehozása egy parancsfájlt, amely lekérdezi a szükséges csomagokat, a parancsfájl telepítése és a szkript futtatása a készlet csomópontokon.
+    -   Opcionálisan lehetővé teszi a szoftverek másolását a készlet csomópontjaira a csomagkezelő használatával. A csomagkezelő és a csomag azonosítója meg van adva. Egy vagy több csomag bejelentésével elkerülhető egy olyan parancsfájl létrehozása, amely beolvassa a szükséges csomagokat, telepíti a parancsfájlt, és futtatja a szkriptet minden egyes készlet-csomóponton.
 
-Az alábbiakban látható egy példa egy sablont, amely létrehozza a Linux rendszerű virtuális gépek készletét ffmpeg segítségével telepítve. A használatához adja meg a készlet azonosító karakterláncot, és a készletben található virtuális gépek számát:
+A következő példa egy olyan sablont mutat be, amely létrehozza a Linux rendszerű virtuális gépek készletét, amelyeken az FFmpeg telepítve van. A használatához csak a készlet azonosító sztringjét és a készletben lévő virtuális gépek számát adja meg:
 
 ```json
 {
@@ -138,13 +138,13 @@ Az alábbiakban látható egy példa egy sablont, amely létrehozza a Linux rend
 }
 ```
 
-Ha a neve a sablonfájlt _készlet-ffmpeg.json_, ezután meghívja az a sablon a következő:
+Ha a sablonfájl neve _Pool-ffmpeg. JSON_, akkor a következő módon hívja meg a sablont:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json
 ```
 
-A parancssori felület felszólítja, hogy adja meg az értékeket a `poolId` és `nodeCount` paramétereket. Megadhat egy JSON-fájlt a paramétereket is. Példa:
+A CLI megkéri, hogy adjon meg értékeket a `poolId` és `nodeCount` paraméterek számára. A paramétereket egy JSON-fájlban is megadhatja. Példa:
 
 ```json
 {
@@ -157,21 +157,21 @@ A parancssori felület felszólítja, hogy adja meg az értékeket a `poolId` é
 }
 ```
 
-Ha a paramétereket JSON-fájl neve lett *készlet-parameters.json*, ezután meghívja az a sablon a következő:
+Ha a paramétereket tartalmazó JSON-fájl neve *Pool-Parameters. JSON*, majd a következő módon hívja meg a sablont:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json --parameters pool-parameters.json
 ```
 
-### <a name="job-templates"></a>Feladat-sablonok
+### <a name="job-templates"></a>Feladatok sablonjai
 
-Feladat sablonok támogatja a paraméterek és változók standard sablon képességeit. A következő magasabb szintű szerkezet is támogatja:
+A feladatütemezés támogatja a paraméterek és változók szabványos sablonra vonatkozó képességeit. A következő magasabb szintű konstrukciókat is támogatják:
 
--   **A feladat gyári**
+-   **Feladat-előállító**
 
-    -   Egy feladat definíciója egy feladat több feladatot hoz létre. A feladat factory három típusú támogatottak – paraméteres Szögtartomány, feladathoz egy fájlt, és tevékenység-gyűjtemény.
+    -   Több feladatot hoz létre egy feladathoz egy adott feladatdefiníció alapján. A Task Factory háromféle típusa támogatott – a parametrikus sweep, a Task per file és a Task Collection.
 
-Az alábbiakban látható egy példa egy sablont, amely létrehoz egy feladatot, MP4 videó fájlok átkódolása ffmpeg segítségével az egyik két kisebb felbontások esetén. Létrehoz egy feladathoz egy videó forrásfájl. Lásd: [csoportok fájlt, és fájlátvitel](#file-groups-and-file-transfer) további információt a feladat bemeneti és kimeneti fájlcsoportok.
+Az alábbi példa egy olyan sablont mutat be, amely létrehoz egy feladatot, amely az 1. szervizcsomaggal ellátott videofájlok átkódolására szolgál az FFmpeg használatával a két alacsonyabb felbontás egyikével. Egy feladatot hoz létre egy forrásoldali videofájl alapján. A feladatok beviteléhez és a kimenethez kapcsolódó fájlcsoportok részletes ismertetését lásd: fájlcsoportok [és](#file-groups-and-file-transfer) fájlátvitel.
 
 ```json
 {
@@ -247,33 +247,33 @@ Az alábbiakban látható egy példa egy sablont, amely létrehoz egy feladatot,
 }
 ```
 
-Ha a neve a sablonfájlt _feladat-ffmpeg.json_, ezután meghívja az a sablon a következő:
+Ha a sablonfájl neve _Job-ffmpeg. JSON_, akkor a következő módon hívja meg a sablont:
 
 ```azurecli
 az batch job create --template job-ffmpeg.json
 ```
 
-Mint előtt, a parancssori felület felszólítja, hogy adja meg a paraméterek értékeit. Megadhat egy JSON-fájlt a paramétereket is.
+Ahogy korábban is, a CLI megkéri, hogy adjon meg értékeket a paraméterek számára. A paramétereket egy JSON-fájlban is megadhatja.
 
-### <a name="use-templates-in-batch-explorer"></a>Sablonok használata a Batch Explorer
+### <a name="use-templates-in-batch-explorer"></a>Sablonok használata Batch Explorer
 
-A Batch CLI sablon feltöltheti a [Batch Explorer](https://github.com/Azure/BatchExplorer) asztali alkalmazást (korábbi nevükön BatchLabs) Batch-készlet vagy feladat létrehozása. A Batch Explorer katalógusban készlet és -feladat előre definiált sablonok közül is választhat.
+Batch-készlet vagy-feladatok létrehozásához feltölthet egy batch CLI-sablont a [Batch Explorer](https://github.com/Azure/BatchExplorer) asztali alkalmazásba (korábbi nevén BatchLabs). Az előre definiált készletből és a feladatokból is választhat a Batch Explorer gyűjteményben.
 
-A sablon feltöltése:
+Sablon feltöltése:
 
-1. Válassza ki a Batch Explorer **katalógus** > **helyi sablonok**.
+1. A Batch Explorer **területen válassza a** > katalógus**helyi sablonok**lehetőséget.
 
-2. Válassza ki, vagy húzza, egy helyi készlet vagy a feladat-sablont.
+2. Válasszon ki vagy húzzon át egy helyi készletet vagy sablont.
 
-3. Válassza ki **ezzel a sablonnal**, és kövesse a képernyőn megjelenő utasításokat.
+3. Válassza a **sablon használata**lehetőséget, és kövesse a képernyőn megjelenő utasításokat.
 
 ## <a name="file-groups-and-file-transfer"></a>Fájlcsoportok és fájlátvitel
 
-A legtöbb feladatok és tevékenységek esetében a bemeneti fájlokat és a kimeneti fájlokat. Általában a bemeneti fájlok és a kimeneti fájlok kerülnek, vagy az ügyfél és a csomópont, vagy az ügyfél a csomópontról. Az Azure Batch CLI-bővítmény távolléti fájlátvitel kivonatolja, és használja a tárfiókot, amely minden egyes Batch-fiókhoz is társíthat.
+A legtöbb feladat és feladat bemeneti fájlokat igényel, és kimeneti fájlokat hoz létre. A bemeneti fájlok és a kimeneti fájlok általában a-ügyfélről a csomópontra vagy a csomópontról az ügyfélre kerülnek át. A Azure Batch CLI-bővítmény elvonta a fájlátvitelt, és az egyes batch-fiókokhoz hozzárendelhető Storage-fiókot használja.
 
-Egy adatbázisnak felel meg az Azure storage-fiókban létrehozott tárolóba. A fájlcsoport almappák rendelkezhet.
+Egy fájl egy, az Azure Storage-fiókban létrehozott tárolónak felel meg. Előfordulhat, hogy a fájl almappákkal rendelkezik.
 
-A Batch CLI-bővítmény nyújt egy megadott fájl csoporthoz ügyfélről fájlok feltöltése és a fájlok letöltése a megadott fájl csoportból egy ügyfél a parancsok.
+A Batch CLI bővítmény olyan parancsokat biztosít, amelyekkel fájlokat tölthet fel az ügyfélről egy adott csoportba, és letöltheti a fájlokat a megadott fájlkiszolgálón egy ügyfélre.
 
 ```azurecli
 az batch file upload --local-path c:\source_videos\*.mp4 
@@ -283,16 +283,16 @@ az batch file download --file-group ffmpeg-output --local-path
     c:\output_lowres_videos
 ```
 
-Készlet és -feladat sablonok lehetővé teszik a fájlcsoportok másolási alakzatot a készlet csomópontjain, és térjen vissza egy készlet csomópontjainak ki kell adni a tárolt fájljaihoz. Ha például a feladat sablon korábban megadott, a fájlcsoport *ffmpeg-bemenet* másolja le a csomópontot átkódolása videó forrásfájljainak helyét, a feladat Factory van megadva. A fájlcsoport *ffmpeg-kimenet* az a hely, ahol a átkódolt kimeneti fájlok másolását a csomópont minden egyes feladat futtatása.
+A készlet-és a feladatütemezés lehetővé teszi a Fájlcsoportok számára tárolt fájlok megadását a Pool-csomópontokra való másoláshoz, illetve a készlet csomópontjain lévő fájlokhoz való visszatéréshez. A korábban megadott feladat sablonjában például a rendszer az *FFmpeg-input* fájlrendszert adja meg a feladat-előállító számára, mivel a forrásként átmásolt fájlok helye az átkódoláshoz a csomópontra. A file Group *FFmpeg-output* az a hely, ahol a rendszer átmásolt kimeneti fájlokat másol az egyes feladatokat futtató csomópontról.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
-Sablon és a fájl átvitele támogatási jelenleg csak az Azure CLI-vel való lettek hozzáadva. A cél, hogy a felhasználók számára, akiknek nincs szükségük a Batch API-k, például kutatói és informatikai felhasználók kód fejlesztéséhez használhatja a kötegelt célközönség bontsa ki. Nélkül kódolási, az Azure Batch és a Batch által futtatandó alkalmazások felhasználók hozhatnak létre a készlet és -feladat létrehozásához. A sablon paramétereit a felhasználók kötegelt és a részletes ismerete nélkül használhatják a sablonok.
+A sablon-és fájlátviteli támogatás jelenleg csak az Azure CLI-hez lett hozzáadva. A cél a Batch olyan felhasználók számára való kibontása, akik a Batch API-k, például a kutatók és az informatikai felhasználók használatával nem szükséges programkódot fejleszteni. A kódolás nélkül az Azure-t, batch-t és a Batch által futtatandó alkalmazásokat használó felhasználók sablonokat hozhatnak létre a készlethez és a feladatok létrehozásához. A sablon paraméterei segítségével a felhasználók a Batch részletes ismerete nélkül, az alkalmazások pedig használhatják a sablonokat.
 
-Próbálja ki a Batch-bővítmény az Azure CLI-hez, és biztosítja a számunkra visszajelzés vagy javaslatok, vagy a megjegyzések, ez a cikk vagy keresztül a [Batch közösségi tárház](https://github.com/Azure/Batch).
+Próbálja ki az Azure CLI batch-bővítményét, és küldjön visszajelzést vagy javaslatokat a jelen cikkhez vagy a [Batch közösségi](https://github.com/Azure/Batch)tárházhoz tartozó megjegyzésekben.
 
 ## <a name="next-steps"></a>További lépések
 
-- Részletes telepítési és használati dokumentáció, minták és forráskód érhetők el a [Azure GitHub-adattárat](https://github.com/Azure/azure-batch-cli-extensions).
+- A részletes telepítési és használati dokumentáció, példák és forráskódok az [Azure GitHub](https://github.com/Azure/azure-batch-cli-extensions)-tárházban érhetők el.
 
-- További információ [Batch Explorer](https://github.com/Azure/BatchExplorer) létrehozása és kezelése a Batch-erőforrásokat.
+- További információ a Batch-erőforrások létrehozásához és kezeléséhez [Batch Explorer](https://github.com/Azure/BatchExplorer) használatáról.

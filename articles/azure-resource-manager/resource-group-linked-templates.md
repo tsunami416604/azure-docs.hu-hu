@@ -4,14 +4,14 @@ description: Ismerteti, hogyan lehet kapcsolt sablonok használata az Azure Reso
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4a5fe1bd2bf57fbec240ab242dd889014dde9578
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c79429d1a39e975c6bcc7fce191846a6205f9a86
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206428"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311706"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Kapcsolt és beágyazott sablonok, az Azure-erőforrások üzembe helyezésekor
 
@@ -24,7 +24,7 @@ Kapcsolt sablonok használata esetén hozzon létre egy fő sablont, amely megka
 Foglalkozó oktatóanyagért lásd: [oktatóanyag: a csatolt Azure Resource Manager-sablonok létrehozása](./resource-manager-tutorial-create-linked-templates.md).
 
 > [!NOTE]
-> Kapcsolt és beágyazott sablonok csak használhat [növekményes](deployment-modes.md) üzembe helyezési mód.
+> Csatolt vagy beágyazott sablonok esetében csak növekményes telepítési módot [](deployment-modes.md) használhat.
 >
 
 ## <a name="link-or-nest-a-template"></a>Hivatkozás, vagy egy sablon beágyazása
@@ -83,14 +83,14 @@ A sablon ugyanazon a fő sablont beágyazása, használja a **sablon** tulajdons
 > [!NOTE]
 > Beágyazott sablonok, a paraméterek vagy a beágyazott sablonon belül definiált változókat nem használható. Paraméterek és változók a fő sablonból is használhatja. Az előző példában `[variables('storageName')]` beolvas egy értéket a fő sablonból, nem a beágyazott sablont. Ez a korlátozás nem vonatkozik a külső sablonokat.
 >
-> A két erőforrás definiált egy beágyazott sablont és a egy erőforrás függ a másik, a függőség értéke csak a függő erőforrás neve:
+> A beágyazott sablonban definiált két erőforrás és az egyik erőforrás a másiktól függ, a függőség értéke egyszerűen a függő erőforrás neve:
 > ```json
 > "dependsOn": [
 >   "[variables('storageAccountName')]"
 > ],
 > ```
 >
-> Nem használhatja a `reference` függvény egy beágyazott sablont kimenetek szakaszában. Az értékeket egy üzembe helyezett erőforrás visszaadása egy beágyazott sablont, váltson egy hivatkozott sablonnak a beágyazott sablont.
+> Egy beágyazott sablon kimenetek szakaszában nem használható `reference` a függvény a beágyazott sablonban üzembe helyezett erőforráshoz. Az értékeket egy üzembe helyezett erőforrás visszaadása egy beágyazott sablont, váltson egy hivatkozott sablonnak a beágyazott sablont.
 
 A beágyazott sablonhoz szükséges a [azonos tulajdonságokkal](resource-group-authoring-templates.md) standard sablonként.
 
@@ -147,11 +147,11 @@ A fő sablonból értéket adnak át a hivatkozott sablonnak, használja a **par
 ]
 ```
 
-## <a name="using-copy"></a>Másolás használatával
+## <a name="using-copy"></a>Másolás használata
 
-Egy erőforrás több példánya beágyazott sablonnal történő létrehozásához adja hozzá a másolási eleme szintjén a **Microsoft.Resources/deployments** erőforrás.
+Ha egy erőforrás több példányát szeretné létrehozni beágyazott sablonnal, adja hozzá a másolás elemet a **Microsoft. Resources/Deployments** erőforrás szintjén.
 
-A következő példa sablon másolása használata beágyazott sablont mutatja.
+Az alábbi példa bemutatja, hogyan használható a másolás beágyazott sablonnal.
 
 ```json
 "resources": [
@@ -508,7 +508,7 @@ Az alábbi példa bemutatja, hogyan adhatók át a SAS-token való egy sablont:
 }
 ```
 
-A PowerShell a tároló egy token beszerzéséhez, és az alábbi parancsokkal a sablonok üzembe helyezése. Figyelje meg, hogy a **containerSasToken** paraméter van definiálva a sablonban. A paraméter nem fut a **New-AzResourceGroupDeployment** parancsot.
+A PowerShell a tároló egy token beszerzéséhez, és az alábbi parancsokkal a sablonok üzembe helyezése. Figyelje meg, hogy a **containerSasToken** paraméter van definiálva a sablonban. Nem paraméter a **New-AzResourceGroupDeployment** parancsban.
 
 ```azurepowershell-interactive
 Set-AzCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates

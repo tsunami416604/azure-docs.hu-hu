@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Beszéd átalakítás, szintetizálásához C# (UWP) – beszédszolgáltatások'
+title: 'Gyors útmutató: Beszédszintetizátor-beszéd, C# (UWP) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebben a cikkben létrehoz egy C# univerzális Windows Platform (UWP-) alkalmazások a Cognitive Services beszédfelismerő SDK használatával. Az eszköz speaker szöveg valós idejű hang, szintetizálásához. Az alkalmazást a létrehozása a Speech SDK NuGet-csomagot és a Microsoft Visual Studio 2017-ben.
+description: Ebben a cikkben létrehoz egy C# univerzális Windows Platform (UWP-) alkalmazások a Cognitive Services beszédfelismerő SDK használatával. A beszédet valós időben szintetizálhatja a szövegből az eszköz hangszóróján. Az alkalmazást a létrehozása a Speech SDK NuGet-csomagot és a Microsoft Visual Studio 2017-ben.
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 6/24/2019
 ms.author: yinhew
-ms.openlocfilehash: c11fbff883d2699bdd0a107fc462524d92ee410d
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 5e1f8aea1b00cbba7fec6c7ca416a965458ab526
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467445"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607755"
 ---
-# <a name="quickstart-synthesize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Gyors útmutató: A beszédfelismerés SDK-val egy UWP-alkalmazásban speech szintetizálásához
+# <a name="quickstart-synthesize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Gyors útmutató: Beszéd készítése UWP alkalmazásban a Speech SDK használatával
 
-Rövid útmutatók érhetők el is [beszédfelismerés](quickstart-csharp-uwp.md), [tolmácsolás –](quickstart-translate-speech-uwp.md) és [hang-és felhőközpontú virtuális asszisztensek](quickstart-virtual-assistant-csharp-uwp.md).
+A gyors útmutatókat beszédfelismerési [](quickstart-csharp-uwp.md), beszédfelismerési és [](quickstart-translate-speech-uwp.md) [hang-első virtuális asszisztensként](quickstart-virtual-assistant-csharp-uwp.md)is elérhetővé teheti.
 
-Ebben a cikkben fejleszt egy C# univerzális Windows Platform (UWP; 1709-es Windows később) alkalmazást a Cognitive Services használatával [beszéd SDK](speech-sdk.md). A program az eszköz speaker szöveg valós idejű hang fog szintetizálásához. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
+Ebben a cikkben egy C# univerzális Windows-platform FEJLESZT (UWP; Windows Version 1709 újabb verzió) alkalmazás a Cognitive Services [SPEECH SDK](speech-sdk.md)használatával. A program valós időben készít beszédet a szövegből az eszköz hangszóróján. Az alkalmazás a [SPEECH SDK NuGet csomagjával](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-es vagy újabb verziójával (bármely kiadással) készült.
 
 > [!NOTE]
 > A Universal Windows Platformon olyan alkalmazásokat fejleszthet, amelyek a Windows 10-et támogató minden eszközön futtathatók: PC-n, Xboxon, Surface Hubon stb.
@@ -30,8 +30,8 @@ Ebben a cikkben fejleszt egy C# univerzális Windows Platform (UWP; 1709-es Wind
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) vagy újabb
+* Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
@@ -63,16 +63,16 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
     ![A Visual Studio képernyőképe, amelyen ki van emelve a Hibakeresés indítása lehetőség](media/sdk/qs-csharp-uwp-09-start-debugging.png "Hibakeresés indítása az alkalmazáson")
 
-1. Adjon meg szöveget a szövegmezőbe, majd kattintson **Speak**. A szöveg a beszédszolgáltatások továbbítani, és a Speech, amely a a hangfelismerő játszik synthesized.
+1. Írjon be egy szöveget a szövegmezőbe, majd kattintson a **Speak (beszéd**) gombra. A rendszer továbbítja a szöveget a Speech Servicesnek, és szintetizálta a beszédet, amely a beszélőn játszik.
 
-    ![Beszéd összefoglaló felhasználói felület képernyőképe](media/sdk/qs-tts-csharp-uwp-ui-result.png)
+    ![A Speech szintézis felhasználói felületének képernyőképe](media/sdk/qs-tts-csharp-uwp-ui-result.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a C# példák a Githubon](https://aka.ms/csspeech/samples)
+> [Minták C# feltárása a githubon](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Lásd még
 
-- [Hangtípust testreszabása](how-to-customize-voice-font.md)
-- [Rekord voice-minták](record-custom-voice-samples.md)
+- [Hangbetűkészletek testreszabása](how-to-customize-voice-font.md)
+- [Hangminták rögzítése](record-custom-voice-samples.md)

@@ -1,18 +1,19 @@
 ---
 title: 'Azure Backup: Rendszerállapot visszaállítása Windows Serverre'
 description: Részletes útmutató a Windows Server rendszerállapotának az Azure-beli biztonsági másolatból történő visszaállításához.
-author: saurabhsensharma
-manager: shivamg
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
-ms.author: saurse
-ms.openlocfilehash: 48eb9fce7b9863c84518546270a6566bb0cec711
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 6dc478f569b94450921e56c05b148bae357fef8e
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465655"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689127"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Rendszerállapot visszaállítása a Windows Server rendszerre
 
@@ -40,7 +41,7 @@ A következő lépések bemutatják, hogyan állíthatja vissza a Windows Server
 
     ![Válassza ezt a lehetőséget, ha az adott gépre szeretné visszaállítani az adatvisszaállítást](./media/backup-azure-restore-system-state/samemachine.png)
 
-4. A **helyreállítási mód kiválasztása** panelen válassza a rendszerállapot lehetőséget, majd kattintson a  **tovább**gombra.
+4. A **helyreállítási mód kiválasztása** panelen válassza a rendszerállapot lehetőséget, majd kattintson a **tovább**gombra.
 
     ![Fájlok tallózása](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
@@ -146,7 +147,7 @@ Ha az Azure Recovery Services Agent használatával helyreállítja a rendszerá
 
     ![Válassza ki, hogy a helyreállítás a helyi kiszolgálóról vagy más](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
 
-7. Adja meg a *WindowsImageBackup* könyvtár elérési útját, vagy válassza ki a könyvtárat tartalmazó helyi meghajtót (például D:\WindowsImageBackup), amely a rendszerállapot-fájlok helyreállításának részeként lett helyreállítva az Azure Recovery Services Agent használatával, és kattintson a Tovább gombra. .
+7. Adja meg a *WindowsImageBackup* könyvtár elérési útját, vagy válassza ki a könyvtárat tartalmazó helyi meghajtót (például D:\WindowsImageBackup), amely a rendszerállapot-fájlok helyreállításának részeként lett helyreállítva az Azure Recovery Services Agent használatával, és kattintson a Tovább gombra..
 
     ![a megosztott fájl elérési útja](./media/backup-azure-restore-system-state/ss-recovery-remote-folder.png)
 

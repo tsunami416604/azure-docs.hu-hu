@@ -9,37 +9,37 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4ed66e3a0237eced852c806e78a8af6bdf8d8579
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: b8c8d1a867f6872c5e3ec9e1b48dac8f80c84950
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417823"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602135"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Vészhelyreállítási próba végrehajtása az Azure-ba
 
-Ez a cikk bemutatja, hogyan futtathat egy vészhelyreállítási próbát egy a helyszíni gépek Azure-bA a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás. A próba adatveszteség nélkül ellenőrzi a replikációs stratégiát.
+Ez a cikk bemutatja, hogyan futtathat vész-helyreállítási gyakorlatot egy helyszíni gépen az Azure-ba a [Azure site Recovery](site-recovery-overview.md) szolgáltatás használatával. A próba adatveszteség nélkül ellenőrzi a replikációs stratégiát.
 
 
-Ez az a negyedik oktatóanyag egy sorozat, amely bemutatja, hogyan állíthat be vészhelyreállítást az Azure-bA a helyszíni gépek.
+Ez egy sorozat negyedik oktatóanyaga, amely bemutatja, hogyan állíthatja be a vész-helyreállítást az Azure-ba a helyszíni gépekhez.
 
 Az oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Elkülönített hálózat beállítása a feladatátvételi teszthez
 > * Felkészülés az Azure-beli virtuális géphez való kapcsolódásra a feladatátvételt követően
-> * Egyetlen gép feladatátvételi teszt futtatása.
+> * Futtasson feladatátvételi tesztet egyetlen gépen.
 
 > [!NOTE]
-> Az oktatóanyagok bemutatják a legegyszerűbb telepítési út esetén. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Ha szeretne további információ a vész-helyreállítási részletes lépései részletesen, [ebből a cikkből](site-recovery-test-failover-to-azure.md).
+> Az oktatóanyagok a forgatókönyvek legegyszerűbb telepítési útvonalát mutatják be. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Ha többet szeretne megtudni a vész-helyreállítási részletezés részletes lépéseiről, tekintse [át ezt a cikket](site-recovery-test-failover-to-azure.md).
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Végezze el az előző oktatóanyagok:
+Fejezze be az előző oktatóanyagokat:
 
-1. Győződjön meg arról, hogy [beállítása az Azure](tutorial-prepare-azure.md) vészhelyreállításhoz helyszíni VMware virtuális gépek, Hyper-V virtuális gépek és fizikai gépek az Azure-bA.
-2. Készítse elő a helyi [VMware](vmware-azure-tutorial-prepare-on-premises.md) vagy [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) vész-helyreállítási környezetet. Ha a fizikai kiszolgálók vészhelyreállítása beállítása, tekintse át a [támogatási mátrix](vmware-physical-secondary-support-matrix.md).
-3. Vészhelyreállítás beállítása [VMware virtuális gépek](vmware-azure-tutorial.md), [Hyper-V virtuális gépek](hyper-v-azure-tutorial.md), vagy [fizikai gépek](physical-azure-disaster-recovery.md).
+1. Győződjön meg arról, hogy beállította az [Azure](tutorial-prepare-azure.md) -t a VMWare virtuális gépek, a Hyper-V virtuális gépek és a fizikai gépek helyszíni vész-helyreállításához az Azure-ban.
+2. Készítse elő a helyszíni [VMware](vmware-azure-tutorial-prepare-on-premises.md) vagy [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) környezetet a vész-helyreállításhoz. Ha fizikai kiszolgálók vész-helyreállítását állítja be, tekintse át a [támogatási mátrixot](vmware-physical-secondary-support-matrix.md).
+3. Állítsa be a vész-helyreállítást [VMWare virtuális](vmware-azure-tutorial.md)gépek, [Hyper-V virtuális](hyper-v-azure-tutorial.md) [gépek vagy fizikai gépek](physical-azure-disaster-recovery.md)számára.
  
 
 ## <a name="verify-vm-properties"></a>A virtuális gép tulajdonságainak ellenőrzése
@@ -83,11 +83,11 @@ Egyes forgatókönyvekben a feladatátvételhez további feldolgozás szüksége
 
 ## <a name="connect-after-failover"></a>Csatlakozás a feladatátvétel után
 
-Ha az Azure virtuális gépek a feladatátvételt követően RDP/SSH segítségével kapcsolódni szeretne [Felkészülés való kapcsolódásra](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover). Ha a feladatátvételt követően a csatlakozási problémát tapasztal, kövesse a [hibaelhárítási](site-recovery-failover-to-azure-troubleshoot.md) útmutató.
+Ha az Azure-beli virtuális gépeket a feladatátvételt követően RDP/SSH használatával szeretné összekapcsolni, [készüljön fel a csatlakozásra](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover). Ha a feladatátvételt követően bármilyen csatlakozási probléma merül fel, [](site-recovery-failover-to-azure-troubleshoot.md) kövesse a hibaelhárítási útmutatót.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Feladatátvétel és feladat-visszavétel VMware virtuális gépek futtatása](vmware-azure-tutorial-failover-failback.md).
-> [Feladatátvétel és feladat-visszavétel futtatása Hyper-V virtuális gépekhez](hyper-v-azure-failover-failback-tutorial.md).
-> [Feladatátvétel és fizikai gépek feladat-visszavétel futtatása](physical-to-azure-failover-failback.md)
+> [Feladatátvétel és feladat-visszavétel futtatása VMWare virtuális](vmware-azure-tutorial-failover-failback.md)
+> gépeken feladatátvétel és feladat-visszavétel futtatása a[Hyper-V virtuális](hyper-v-azure-failover-failback-tutorial.md)
+> gépek számára feladatátvétel és feladat-visszavétel futtatása[fizikai gépek](physical-to-azure-failover-failback.md) esetén

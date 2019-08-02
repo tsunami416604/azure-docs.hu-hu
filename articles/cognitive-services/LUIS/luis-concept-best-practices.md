@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 5cbdf94ef1899c4963f6ebe0149024baed4916a7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7a2802bd4daa1a009c610688120c9a56583b054f
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564042"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639274"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Ajánlott eljárások a Cognitive Services language understanding alkalmazás létrehozásához
-Az alkalmazások használatával hozhat létre a LUIS-alkalmazás. 
+A LUIS-alkalmazás létrehozásához használja az alkalmazás-létrehozási folyamatot: 
 
 * Nyelvi modell létrehozása
 * Néhány képzési példa (10 – 15 / leképezés) beszédmódok hozzáadása
@@ -27,7 +27,7 @@ Az alkalmazások használatával hozhat létre a LUIS-alkalmazás.
 * A végpont tesztelése 
 * Funkciók hozzáadása
 
-Miután az alkalmazás [közzétett](luis-how-to-publish-app.md), használja az Authoring Tool ciklust, a szolgáltatás hozzáadása, közzététel és végpontról teszteléséhez. Ne kezdje el a következő szerzői ciklus további példa utterances hozzáadásával. Amely nem teszi lehetővé a LUIS ismerje meg, a modell a való életből vett felhasználói kimondott szöveg. 
+Miután közzétette az [](luis-how-to-publish-app.md)alkalmazást, használja a szerzői ciklust a szolgáltatások hozzáadásához, közzétételéhez és teszteléséhez a végpontról. Ne kezdje el a következő szerzői ciklus további példa utterances hozzáadásával. Amely nem teszi lehetővé a LUIS ismerje meg, a modell a való életből vett felhasználói kimondott szöveg. 
 
 Ahhoz, hogy a feladat a tanulás, hatékony, LUIS nem bontsa ki a kimondott szöveg mindaddig, amíg az aktuális készletét példa és a végpont utterances vannak visszaadó biztosabb, magas előrejelzési pontszámokat. A pontszámok fejlesztése az [aktív tanulás](luis-concept-review-endpoint-utterances.md), a [minták](luis-concept-patterns.md)és a [kifejezések listáját](luis-concept-feature.md)használva. 
 
@@ -78,7 +78,7 @@ További információk:
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>Újabb iterációban kifejezés listák és a minták hozzáadása
 
-Az ajánlott eljárás az, hogy az alkalmazás tesztelése előtt ne alkalmazza ezeket a gyakorlatot. Meg kell értenie, hogy az alkalmazás hogyan viselkedik a kifejezések listáját és mintázatait felhasználva, mivel ezek a funkciók sokkal nagyobb mértékben vannak kiértékelve, mint például a hosszúságú kimondott szöveg, és a megbízhatóságot. 
+Az ajánlott eljárás az, hogy az alkalmazás tesztelése előtt ne alkalmazza ezeket a gyakorlatot. Meg kell értenie, hogy az alkalmazás hogyan viselkedik a [kifejezések listáját](luis-concept-feature.md) és [mintázatait](luis-concept-patterns.md) felhasználva, mivel ezek a funkciók sokkal nagyobb mértékben vannak kiértékelve, mint például a hosszúságú kimondott szöveg, és a megbízhatóságot. 
 
 Ha megértette, hogy az alkalmazás ezek nélkül viselkedik, adja hozzá ezeket a funkciókat az alkalmazásához. Ezeket a funkciókat nem kell hozzáadnia minden egyes [iterációhoz](luis-concept-app-iteration.md) , vagy módosítania kell a szolgáltatásokat az egyes verziókkal. 
 

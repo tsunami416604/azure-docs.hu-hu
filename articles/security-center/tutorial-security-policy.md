@@ -1,6 +1,6 @@
 ---
-title: Biztonsági szabályzatok használata |} A Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan működik az Azure Security Centerben a biztonsági házirendeknek.
+title: A biztonsági szabályzatok használata | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan használhatók a biztonsági házirendek a Azure Security Centerban.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,41 +13,41 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/05/2019
+ms.date: 7/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 7ff05421222ff0f4312d703366cfd443eee06450
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 4550532d36753d9b8ed472193bc833855ddd34c9
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551729"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314921"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
 
-Ez a cikk bemutatja, miként vannak konfigurálva a biztonsági szabályzatok és a Security Center ezeket is megtekintheti. Az Azure Security Center automatikusan hozzárendeli a [beépített biztonsági házirendek](security-center-policy-definitions.md) minden egyes előfizetés, amely regisztrálva van. Konfigurálhatja azokat a [Azure Policy](../governance/policy/overview.md), amely lehetővé teszi szabályzatok beállítását a felügyeleti csoportokhoz, és több előfizetéshez.
+Ez a cikk ismerteti a biztonsági házirendek konfigurálásának módját, valamint azt, hogy miként lehet megtekinteni őket a Security Centerban. A Azure Security Center automatikusan hozzárendeli a [beépített biztonsági szabályzatokat](security-center-policy-definitions.md) az egyes előfizetésekhez. Azure Policyban is konfigurálhatja [](../governance/policy/overview.md)őket, ami lehetővé teszi a házirendek felügyeleti csoportokon és több előfizetésen keresztüli beállítását is.
 
-PowerShell-lel házirendek beállításával kapcsolatos utasításokért lásd: [a rövid útmutató: Az Azure PowerShell modullal a nem megfelelő erőforrások azonosítására a szabályzat-hozzárendelés létrehozása](../governance/policy/assign-policy-powershell.md).
+A szabályzatok PowerShell használatával történő beállításával kapcsolatos útmutatásért [lásd: gyors útmutató: Hozzon létre egy szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához](../governance/policy/assign-policy-powershell.md)a Azure PowerShell modul használatával.
 
 >[!NOTE]
-> A Security Center az Azure Policy segítségével az integráció elindult. Meglévő ügyfelek automatikusan átkerülnek az új beépített kezdeményezésére az Azure Policy, a Security Center az előző biztonsági házirendek helyett. Ez a változás nem érinti az erőforrások vagy az új kezdeményezés az Azure Policy-jelenléte kivételével környezettel.
+> Security Center megkezdte az integrációt a Azure Policyával. A meglévő ügyfeleket a rendszer automatikusan áttelepíti a Azure Policy új beépített kezdeményezésére a Security Center korábbi biztonsági házirendjei helyett. Ez a változás nem befolyásolja az erőforrásokat vagy a környezetet, kivéve az új kezdeményezés Azure Policyban való jelenlétét.
 
 ## <a name="what-are-security-policies"></a>Mik azok a biztonsági szabályzatok?
-A biztonsági szabályzat határozza meg a számítási feladatokhoz tartozó kívánt konfigurációkat, és segít biztosítani a vállalati vagy hatósági követelményeknek való megfelelést. Az Azure Policy az Azure-előfizetésekre vonatkozó szabályzatokat határozhat meg, és testre szabni azokat a számítási feladatok típusának vagy az adatok érzékenységéhez. Alkalmazásokat, amelyek használják a szabályozott adatokat, például a személyes adatok vagy az ügyféladatok, például szükség lehet egy magasabb biztonsági szintet, mint a többi munkaterhelését. Házirend beállítása a felügyeleti csoportok vagy előfizetések között, állítsa őket a [Azure Policy](../governance/policy/overview.md).
+A biztonsági szabályzat határozza meg a számítási feladatokhoz tartozó kívánt konfigurációkat, és segít biztosítani a vállalati vagy hatósági követelményeknek való megfelelést. Azure Policy az Azure-előfizetésekre vonatkozó szabályzatokat határozhat meg, és testre szabhatja azokat a számítási feladatok vagy az adatok érzékenysége alapján. Például a szabályozott adatokkal, például a személyes adatokkal vagy az ügyféladatokat használó alkalmazások magasabb szintű biztonságot igényelhetnek, mint más számítási feladatok. Ha a szabályzatot előfizetések vagy felügyeleti csoportok között szeretné beállítani, állítsa be őket [Azure Policy](../governance/policy/overview.md).
 
-A biztonsági szabályzatokat a biztonsági javaslatokkal kap az Azure Security Centerben. Segít azonosítani a potenciális biztonsági réseket és elhárítani a fenyegetéseket az azoknak való megfelelés figyelése Juthat az Önnek legmegfelelőbb lehetőség meghatározásával kapcsolatos további információkért lásd a [beépített biztonsági házirendek](security-center-policy-definitions.md).
+A biztonsági szabályzatok a Azure Security Center beérkező biztonsági javaslatokat hajtják majd meg. A megfelelőséget figyelheti velük, hogy könnyebben azonosítsa a lehetséges sebezhetőségeket, és enyhítse a fenyegetéseket. Az Ön számára legmegfelelőbb lehetőség meghatározásával kapcsolatos további információkért tekintse meg a [beépített biztonsági szabályzatok](security-center-policy-definitions.md)listáját.
 
-Ha engedélyezi a Security Center, a Security Center beépített biztonsági házirend, egy beépített kezdeményezés a kategóriában a Security Center Azure Policy is megjelenik. A beépített kezdeményezés automatikusan regisztrálva a Security Center előfizetéseken (ingyenes vagy Standard szinten). A beépített kezdeményezésére csak naplózási házirendeket tartalmaz.
+A Security Center engedélyezésekor a Security Center beépített biztonsági házirend Azure Policy a Security Center kategóriába tartozó beépített kezdeményezésként jelenik meg. A beépített kezdeményezés automatikusan hozzá van rendelve az összes Security Center regisztrált előfizetéshez (ingyenes vagy standard szintű csomag). A beépített kezdeményezés csak naplózási házirendeket tartalmaz.
 
 
 ### <a name="management-groups"></a>Felügyeleti csoportok
-Ha a vállalatnak sok előfizetése van, jól jöhet egy módszer, hogy hatékonyan kezelje az előfizetésekhez való hozzáférést, a szabályzatokat és a megfelelőséget. Az Azure Management Groups előfizetések fölötti hatókörszintet biztosít. Az előfizetéseket „felügyeleti csoportok” nevű tárolókba rendezheti, és az irányítási szabályzatokat alkalmazhatja a felügyeleti csoportokra. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott szabályzatokat. Minden címtárhoz tartozik egy legfelső szintű, „gyökér” felügyeleti csoportnak nevezett felügyeleti csoport. Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. Ez a gyökérszintű felügyeleti csoport lehetővé teszi globális szabályzatok és RBAC-hozzárendelések címtárszintű alkalmazását. Felügyeleti csoportok használata az Azure Security Center beállításához, kövesse a [összes bérlőre vonatkozó információk megjelenítése az Azure Security Center](security-center-management-groups.md).
+Ha a vállalatnak sok előfizetése van, jól jöhet egy módszer, hogy hatékonyan kezelje az előfizetésekhez való hozzáférést, a szabályzatokat és a megfelelőséget. Az Azure Management Groups előfizetések fölötti hatókörszintet biztosít. Az előfizetéseket „felügyeleti csoportok” nevű tárolókba rendezheti, és az irányítási szabályzatokat alkalmazhatja a felügyeleti csoportokra. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott szabályzatokat. Minden címtárhoz tartozik egy legfelső szintű, „gyökér” felügyeleti csoportnak nevezett felügyeleti csoport. Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. Ez a gyökérszintű felügyeleti csoport lehetővé teszi globális szabályzatok és RBAC-hozzárendelések címtárszintű alkalmazását. A felügyeleti csoportok Azure Security Centerhoz való használatának beállításához kövesse a teljes bérlőre [kiterjedő láthatóság a Azure Security Center számára](security-center-management-groups.md)című témakör utasításait.
 
 > [!NOTE]
 > Fontos, hogy átlássa a felügyeleti csoportok és előfizetések hierarchiáját. További információt a felügyeleti csoportokról, a gyökérszintű felügyeletről és a felügyeleti csoportok hozzáféréséről [az erőforrások az Azure Felügyeleti csoportok segítségével való rendszerezését](../governance/management-groups/index.md#root-management-group-for-each-directory) ismertető részben talál.
 >
 
 ## <a name="how-security-policies-work"></a>A biztonsági szabályzatok működése
-A Security Center automatikusan létrehoz egy alapértelmezett biztonsági szabályzatot minden egyes Azure-előfizetéséhez. Szerkesztheti a szabályzatokat az Azure Policy, tegye a következőket:
+A Security Center automatikusan létrehoz egy alapértelmezett biztonsági szabályzatot minden egyes Azure-előfizetéséhez. A Azure Policy szabályzatait a következő műveletek elvégzéséhez módosíthatja:
 - Új szabályzatdefiníciók létrehozása.
 - Szabályzatok hozzárendelése felügyeleti csoportokhoz és előfizetésekhez, amelyek jelölhetnek egy teljes vállalatot, vagy egy adott üzleti egységet a vállalaton belül.
 - Szabályzatoknak való megfelelés figyelése.
@@ -56,95 +56,96 @@ Az Azure Policyvel kapcsolatos további információkért olvassa el [a megfelel
 
 Egy Azure-szabályzat az alábbi összetevőkből áll:
 
-- A **házirend** szabály.
-- Egy **kezdeményezés** házirendek gyűjteménye.
-- Egy **hozzárendelés** az alkalmazás egy szabályzatot vagy kezdeményezést, amelyek egy adott hatókörhöz (felügyeleti csoport, előfizetéshez vagy erőforráscsoportot).
+- A **szabályzat** egy szabály.
+- A **kezdeményezés** szabályzatok gyűjteménye.
+- A **hozzárendelés** egy adott hatókörre irányuló kezdeményezés vagy házirend alkalmazása (felügyeleti csoport, előfizetés vagy erőforráscsoport).
 
 ## <a name="view-security-policies"></a>Biztonsági szabályzatok megtekintése
 
 Biztonsági szabályzatok megtekintése a Security Centerben:
 
-1. Az a **a Security Center** irányítópulton válassza **biztonsági házirend**.
+1. A **Security Center** irányítópulton válassza a **biztonsági házirend**elemet.
 
     ![A Szabályzatkezelés panel](./media/security-center-policies/security-center-policy-mgt.png)
 
-   Az a **házirendkezelés** képernyőn láthatja, hogy a felügyeleti csoportokhoz, előfizetések és munkaterületek, valamint a felügyeleticsoport-struktúrát kialakítani számát.
+   A **házirend kezelése** képernyőn láthatja a felügyeleti csoportok, előfizetések és munkaterületek számát, valamint a felügyeleti csoport struktúráját.
 
    > [!NOTE]
-   > - A Security Center irányítópultján valószínűleg-előfizetések nagyobb számú **előfizetési lefedettség** , mint az előfizetések alatt látható **házirendkezelés**. Az Előfizetési lefedettség alatt a Standard, Ingyenes és „nem lefedett” előfizetések is megjelennek. A "nem kezelt" előfizetések nincs engedélyezve a Security Center, és nem jelennek meg a **házirendkezelés**.
+   > Az Security Center irányítópulton nagyobb számú előfizetés jelenhet meg az **** előfizetések lefedettsége alatt, mint a **házirendek**felügyelete alatt megjelenő előfizetések száma. Az Előfizetési lefedettség alatt a Standard, Ingyenes és „nem lefedett” előfizetések is megjelennek. A "not defedett" előfizetések nem rendelkeznek Security Center engedélyezve, és nem jelennek meg a **házirendek**felügyelete alatt.
    >
 
-2. Válassza ki az előfizetést vagy felügyeleti csoportot, amelynek meg szeretné tekinteni házirendeket.
+2. Válassza ki azt az előfizetést vagy felügyeleti csoportot, amelynek a szabályzatait meg szeretné tekinteni.
 
-   - A **biztonsági házirend** képernyőn megjelenik a szabályzatok kap. a kiválasztott előfizetés vagy a felügyeleti csoport által végrehajtott műveletet.
-   - A képernyő felső részén használatához nyissa meg az egyes házirendek megadott hivatkozások **hozzárendelés** , amely alkalmazza az előfizetést vagy felügyeleti csoportot. Használhatja a hivatkozások a hozzárendelés eléréséhez és szerkesztéséhez, vagy tiltsa le a szabályzatot. Például ha egy adott házirend-hozzárendelést hatékonyan tagadja meg a az endpoint protection című segítségével a hivatkozás a szabályzat eléréséhez és szerkesztéséhez vagy letiltásához.
-   - A házirendek listájában láthatja a szabályzat hatékony alkalmazása az előfizetés vagy a felügyeleti csoport. Ez azt jelenti, hogy a beállítások az egyes házirendek vonatoznak a hatókörre kell figyelembe venni, és biztosítunk, milyen műveletet a szabályzat által összesített eredményét. Például ha egy hozzárendelési a szabályzat le van tiltva, de egy másik, AuditIfNotExist van beállítva, majd a halmozott hatása érvényes AuditIfNotExist. A több aktív hatás mindig elsőbbséget élvez.
-   - A szabályzatok pontban hatással lehetnek: Hozzáfűzés, naplózás, AuditIfNotExists, nem engedélyezi, DeployIfNotExists, le van tiltva. Milyen hatások érvényesek. További információkért lásd: [ismertetése házirend hatások](../governance/policy/concepts/effects.md).
+   - A **biztonsági házirend** képernyő a kiválasztott előfizetéshez vagy felügyeleti csoporthoz hozzárendelt szabályzatok által végrehajtott műveletet tükrözi.
+   - A felső részen használja a megadott hivatkozásokat az előfizetésre vagy a felügyeleti csoportra vonatkozó szabályzat- **hozzárendelések** megnyitásához. A hivatkozásokkal elérheti a hozzárendelést, és szerkesztheti vagy letilthatja a szabályzatot. Ha például úgy látja, hogy egy adott házirend-hozzárendelés ténylegesen megtagadja az Endpoint Protectiont, akkor a hivatkozásra kattintva elérheti a házirendet, és szerkesztheti vagy letilthatja azt.
+   - A szabályzatok listájában megtekintheti az előfizetéséhez vagy a felügyeleti csoportjához tartozó házirend hatályos alkalmazását. Ez azt jelenti, hogy a hatókörre vonatkozó egyes szabályzatok beállításait figyelembe vesszük, és a szabályzat által végrehajtott művelet összesített eredményét kell megadnia. Ha például az egyik hozzárendelésben a házirend le van tiltva, de egy másikban a AuditIfNotExist értékre van állítva, akkor a kumulatív hatás a AuditIfNotExist alkalmazza. Az aktívabb hatás mindig elsőbbséget élvez.
+   - A szabályzatok hatása a következő lehet: Hozzáfűzés, naplózás, AuditIfNotExists, megtagadás, DeployIfNotExists, letiltva. További információ a hatások alkalmazásáról: a szabályzatok [hatásainak megismerése](../governance/policy/concepts/effects.md).
 
-   ![a házirend képernyő](./media/security-center-policies/policy-screen.png)
+   ![házirend képernyő](./media/security-center-policies/policy-screen.png)
 
 > [!NOTE]
-> - Házirendek hozzárendelésekor a megtekintése, láthatja, hogy több hozzárendeléseket, és láthatja, hogyan minden hozzárendelés önállóan van konfigurálva.
+> A hozzárendelt házirendek megtekintésekor több hozzárendelést láthat, és megtekintheti, hogy az egyes hozzárendelések hogyan legyenek konfigurálva.
 
 ## <a name="edit-security-policies"></a>Biztonsági szabályzatok szerkesztése
-Az egyes Azure-előfizetések és felügyeleti csoportok alapértelmezett biztonsági szabályzatait az [Azure Policyban](../governance/policy/tutorials/create-and-manage.md) szerkesztheti. Biztonsági szabályzat módosításához az előfizetésben vagy az azt tartalmazó felügyeleti csoportban tulajdonos, közreműködő vagy biztonsági rendszergazda szerepkörrel kell rendelkeznie.
+Az egyes Azure-előfizetések és felügyeleti csoportok alapértelmezett biztonsági szabályzatait az [Azure Policyban](../governance/policy/tutorials/create-and-manage.md) szerkesztheti. Biztonsági szabályzat módosításához az előfizetés vagy az azt tartalmazó felügyeleti csoport tulajdonosának vagy biztonsági rendszergazdájának kell lennie.
 
-Egy biztonsági szabályzatot az Azure Policy szerkesztésére vonatkozó utasításokért lásd: és [létrehozása és a megfelelőség kikényszerítése céljából házirendek kezelése](../governance/policy/tutorials/create-and-manage.md).
+A biztonsági szabályzatok Azure Policyban való szerkesztésével kapcsolatos utasításokért tekintse meg és [hozza létre és kezelje a szabályzatokat a megfelelőség érvényesítéséhez](../governance/policy/tutorials/create-and-manage.md).
 
-Biztonsági szabályzatok az Azure Policy portálján keresztül REST API vagy a Windows PowerShell használatával szerkesztheti. Az alábbi példa a REST API-val szerkesztésére vonatkozó utasításokat tartalmaz.
+A biztonsági szabályzatokat a Azure Policy-portálon, REST API vagy a Windows PowerShell használatával szerkesztheti. Az alábbi példa a REST API használatával történő szerkesztésre vonatkozó utasításokat tartalmazza.
 
 
-## <a name="disable-security-policies"></a>Biztonsági szabályzatok letiltása
-Ha az alapértelmezett biztonsági szabályzatban egy javaslat, amely nem kapcsolódik az adott környezetben hoz létre, állíthatja le, tiltsa le a szabályzatdefiníció, amely elküldi az ajánlást.
-Javaslatok kapcsolatos további információkért lásd: [biztonsági javaslatok kezelése](security-center-recommendations.md).
+## <a name="disable-security-policies"></a>Biztonsági házirendek letiltása
+Ha az alapértelmezett biztonsági házirend olyan javaslatot hoz létre, amely nem releváns a környezetében, leállíthatja a javaslatot küldő szabályzat-definíció letiltásával.
+A javaslatokkal kapcsolatos további információkért lásd: [biztonsági javaslatok kezelése](security-center-recommendations.md).
 
-1. A Security Centerben a a **szabályzat és megfelelőség** területén kattintson **biztonsági házirend**.
+1. A Security Center a **házirend & megfelelősége** szakaszban kattintson a **biztonsági szabályzat**elemre.
 
-   ![Csoportházirend kezelése](./media/tutorial-security-policy/policy-management.png)
+   ![házirendek kezelése](./media/tutorial-security-policy/policy-management.png)
 
-2. Kattintson az előfizetést vagy felügyeleti csoportot, amelyhez le kívánja tiltani a javaslatot.
+2. Kattintson arra az előfizetésre vagy felügyeleti csoportra, amelyhez le szeretné tiltani a javaslatot.
 
    > [!Note]
-   > Ne feledje, hogy a felügyeleti csoport az előfizetések vonatkozik rájuk vonatkozó szabályzatoknak. Ezért ha letiltja az előfizetéshez tartozó házirendet, és az előfizetés tartozik egy felügyeleti csoportot, amely továbbra is ugyanaz a szabályzat, majd továbbra is a szabályzat javaslatokat kapni. A rendszer továbbra is alkalmazza a szabályzatot a felügyeleti szinttől és a javaslatok továbbra is létrejön.
+   > Ne feledje, hogy egy felügyeleti csoport alkalmazza a szabályzatokat az előfizetésekre. Ezért ha letilt egy előfizetési szabályzatot, és az előfizetés egy olyan felügyeleti csoporthoz tartozik, amely továbbra is ugyanazt a házirendet használja, akkor továbbra is megkapja a házirendre vonatkozó javaslatokat. A szabályzat továbbra is a felügyeleti szintjéről lesz alkalmazva, és a javaslatok továbbra is létrejönnek.
 
-1. Kattintson a hozzárendelt szabályzat.
+1. Kattintson a hozzárendelt házirendre.
 
-   ![Szabályzat letiltása](./media/tutorial-security-policy/security-policy.png)
+   ![házirend letiltása](./media/tutorial-security-policy/security-policy.png)
 
-1. Az a **paraméterek** szakaszban, keresési, amely meghívja a javaslatot, hogy le kívánja tiltani a szabályzatot, és a legördülő listából válassza ki **letiltva**
+1. A **Parameters (paraméterek** ) szakaszban keresse meg a letiltani kívánt javaslatot meghívó házirendet, és a legördülő listából válassza a **** Letiltva lehetőséget.
 
-   ![Szabályzat letiltása](./media/tutorial-security-policy/disable-policy.png)
+   ![házirend letiltása](./media/tutorial-security-policy/disable-policy.png)
 1. Kattintson a **Save** (Mentés) gombra.
    > [!Note]
-   > A disable-az irányelvek változásai érvénybe lépéséhez akár 12 órát is igénybe vehet.
+   > A házirend-letiltási módosítások érvénybe léptetéséhez akár 12 órát is igénybe vehet.
 
 
-### <a name="configure-a-security-policy-using-the-rest-api"></a>A REST API-val biztonsági szabályzat konfigurálása
+### <a name="configure-a-security-policy-using-the-rest-api"></a>Biztonsági házirend konfigurálása a REST API használatával
 
-A natív integrációt olyan Azure-szabályzat részeként az Azure Security Center lehetővé teszi, hogy használja ki az Azure Policy REST API-t hozhat létre szabályzat-hozzárendelések. Az alábbi utasításokat követve lépésről lépésre szabályzat-hozzárendelések létrehozását, valamint a meglévő hozzárendelések testre szabhatja. 
+A Azure Policyrel való natív integráció részeként Azure Security Center lehetővé teszi, hogy kihasználhassa a szabályzat-hozzárendelések létrehozásához szükséges Azure Policy REST API előnyeit. A következő utasítások végigvezetik a szabályzat-hozzárendelések létrehozásán, valamint a meglévő hozzárendelések testreszabásán. 
 
-Az Azure Policy alapfogalmaival: 
+Fontos fogalmak a Azure Policyban: 
 
-- A **szabályzatdefiníció** szabály 
+- A **házirend-definíció** egy szabály 
 
-- Egy **kezdeményezés** szabályzatdefiníciók (szabályok) gyűjteménye 
+- A **kezdeményezés** szabályzat-definíciók (szabályok) gyűjteménye. 
 
-- Egy **hozzárendelés** egy alkalmazás egy szabályzatot vagy kezdeményezést, amelyek egy adott hatókörhöz (felügyeleti csoport, előfizetési, stb.) 
+- A **hozzárendelés** egy adott hatókörre irányuló kezdeményezés vagy házirend alkalmazása (felügyeleti csoport, előfizetés stb.) 
 
-A Security Center rendelkezik egy beépített kezdeményezés, amely tartalmazza az összes annak biztonsági házirendjei. Annak érdekében, hogy a Security Center-szabályzatok az Azure-erőforrások felmérése, a hozzárendelés a felügyeleti csoport, vagy az értékelni kívánt előfizetést kell létrehoznia.  
+Security Center rendelkezik egy beépített kezdeményezéssel, amely tartalmazza az összes biztonsági házirendjét. Az Azure-erőforrásokra vonatkozó Security Center szabályzatának értékeléséhez létre kell hoznia egy hozzárendelést a felügyeleti csoporton vagy előfizetésben, amelyet fel szeretne mérni.  
 
-A beépített kezdeményezés rendelkezik minden alapértelmezés szerint engedélyezve van a Security Center-szabályzat. Dönthet úgy, hogy letiltja a beépített kezdeményezés az egyes szabályzatok, például alkalmazhatja minden kivételével a Security Center-szabályzat **webalkalmazási tűzfal**, a házirend érvénybe paraméter értékének módosításával , **Letiltott**. 
+A beépített kezdeményezés alapértelmezés szerint a Security Center összes házirendjét engedélyezte. Dönthet úgy, hogy letilt bizonyos házirendeket a beépített kezdeményezésből, például a webalkalmazási **tűzfal**kivételével az összes Security Center házirendjét, ha a házirend Effect paraméterének értékét letiltva értékre módosítja **** . 
 
 ### <a name="api-examples"></a>API-példák
 
-A következő példákban cserélje le ezeket a változókat:
+Az alábbi példákban cserélje le ezeket a változókat:
 
-- **{hatókör}**  adja meg a felügyeleti csoport nevét, vagy az előfizetés lépnek életbe a szabályzatot.
-- **{policyAssignmentName}**  adja meg a [a megfelelő szabályzat-hozzárendelés neve](#policy-names).
-- **a(z) {name}**  adja meg a nevét, vagy a rendszergazda a házirend-módosítások jóváhagyó neve.
+- **{scope}** adja meg annak a felügyeleti csoportnak vagy előfizetésnek a nevét, amelyre a szabályzatot alkalmazza.
+- **{policyAssignmentName}** adja meg a [megfelelő szabályzat-hozzárendelés nevét](#policy-names).
+- **{Name}** adja meg a nevét, vagy annak a rendszergazdának a nevét, aki jóváhagyta a szabályzatot.
 
-Ez a példa bemutatja, hogyan rendelje hozzá a beépített a Security Center-kezdeményezéshez egy előfizetést vagy a felügyeleti csoport
+Ebből a példából megtudhatja, hogyan rendelheti hozzá a beépített Security Center kezdeményezést egy előfizetéshez vagy egy felügyeleti csoporthoz.
  
+ ```
     PUT  
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
 
@@ -169,35 +170,36 @@ Ez a példa bemutatja, hogyan rendelje hozzá a beépített a Security Center-ke
     } 
 
     } 
+ ```
 
-Ez a példa bemutatja, hogyan rendelje hozzá a beépített a Security Center-kezdeményezéshez egy adott előfizetés le van tiltva a következő szabályzatokkal: 
+Ebből a példából megtudhatja, hogyan rendelheti hozzá a beépített Security Center kezdeményezést egy előfizetéshez, a következő szabályzatok letiltásával: 
 
 - Rendszerfrissítések ("systemUpdatesMonitoringEffect") 
 
 - Biztonsági konfigurációk ("systemConfigurationsMonitoringEffect") 
 
-- Az Endpoint protection ("endpointProtectionMonitoringEffect") 
+- Endpoint Protection ("endpointProtectionMonitoringEffect") 
 
-
+ ```
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
     
-    Kérelem törzse (JSON) 
+    Request Body (JSON) 
     
     { 
     
       "properties":{ 
     
-    "displayName": "Monitorozás engedélyezése az Azure Security Center", 
+    "displayName":"Enable Monitoring in Azure Security Center", 
     
-    "metaadatok": {} 
+    "metadata":{ 
     
-    "assignedBy": "{Name}" 
+    "assignedBy":"{Name}" 
     
     }, 
     
     "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
     
-    "paramétereket": {} 
+    "parameters":{ 
     
     "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
     
@@ -210,49 +212,49 @@ Ez a példa bemutatja, hogyan rendelje hozzá a beépített a Security Center-ke
      } 
     
     } 
-
-Ez a példa bemutatja, hogyan-hozzárendelés eltávolítása:
-
+ ```
+Ebből a példából megtudhatja, hogyan távolíthat el egy hozzárendelést:
+ ```
     DELETE   
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+ ```
 
+### Házirend-nevek leírása<a name="policy-names"></a>
 
-### Nevek házirend-referencia <a name="policy-names"></a>
-
-|Házirend neve a Security Centerben|Házirend neve jelenik meg az Azure Policy |A házirend érvénybe paraméter neve|
+|Házirend neve Security Center|A szabályzat neve Azure Policyban jelenik meg |Házirend-effektus paraméterének neve|
 |----|----|----|
-|SQL-titkosítás |Az Azure Security Centerben a titkosítatlan SQL database monitorozása |sqlEncryptionMonitoringEffect| 
-|SQL Auditing (SQL-naplózás) |Az Azure Security Center nem naplózott SQL database monitorozása |sqlAuditingMonitoringEffect|
-|System updates (Rendszerfrissítések) |Az Azure Security Centerben a hiányzó rendszerfrissítések figyelése |systemUpdatesMonitoringEffect|
-|Storage-titkosítás |Tárfiókok hiányzó blobtitkosításának naplózása |storageEncryptionMonitoringEffect|
-|JIT hálózati hozzáférés |Az Azure Security Centerben a lehetséges hálózati csak az idő szerinti (JIT) hozzáférés figyelése |jitNetworkAccessMonitoringEffect |
-|Adaptív alkalmazásvezérlők |Alkalmazások az Azure Security Center engedélyezésének figyelése |adaptiveApplicationControlsMonitoringEffect|
-|Network security groups (Hálózati biztonsági csoportok) |Az Azure Security Center megengedő hálózati hozzáférés figyelése |networkSecurityGroupsMonitoringEffect| 
-|Biztonsági konfigurációk |Az Azure Security Center az operációs rendszer biztonsági réseinek figyelése |systemConfigurationsMonitoringEffect| 
-|Endpoint protection (Végpontok védelme) |Az Azure Security Centerben a végpontok hiányzó védelmének monitorozása |endpointProtectionMonitoringEffect |
-|Disk encryption (Lemeztitkosítás) |Az Azure Security Center titkosítatlan Virtuálisgép-lemezek monitorozása |diskEncryptionMonitoringEffect|
-|Sebezhetőségi felmérés |A figyelő virtuális gépek biztonsági réseinek az Azure Security Centerben |vulnerabilityAssessmentMonitoringEffect|
-|Web application firewall (Webalkalmazási tűzfal) |Az Azure Security Center nem védett webalkalmazás figyelése |webApplicationFirewallMonitoringEffect |
-|Next generation firewall (Új generációs tűzfal) |Az Azure Security Center nem védett hálózati végpontok figyelése| |
+|SQL-titkosítás |Titkosítatlan SQL-adatbázis figyelése Azure Security Center |sqlEncryptionMonitoringEffect| 
+|SQL Auditing (SQL-naplózás) |Nem naplózott SQL-adatbázis figyelése Azure Security Center |sqlAuditingMonitoringEffect|
+|System updates (Rendszerfrissítések) |Hiányzó rendszerfrissítések figyelése Azure Security Center |systemUpdatesMonitoringEffect|
+|Storage-titkosítás |Hiányzó blob-titkosítás naplózása a Storage-fiókoknál |storageEncryptionMonitoringEffect|
+|JIT hálózati hozzáférés |A lehetséges hálózati hozzáférés (JIT) figyelése Azure Security Center |jitNetworkAccessMonitoringEffect |
+|Adaptív alkalmazásvezérlők |A lehetséges alkalmazások engedélyezési listájának figyelése Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
+|Network security groups (Hálózati biztonsági csoportok) |A megengedhető hálózati hozzáférés figyelése Azure Security Center |networkSecurityGroupsMonitoringEffect| 
+|Biztonsági konfigurációk |Operációs rendszer biztonsági réseinak figyelése Azure Security Center |systemConfigurationsMonitoringEffect| 
+|Endpoint protection (Végpontok védelme) |Hiányzó Endpoint Protection figyelése Azure Security Center |endpointProtectionMonitoringEffect |
+|Disk encryption (Lemeztitkosítás) |Titkosítatlan virtuálisgép-lemezek figyelése Azure Security Center |diskEncryptionMonitoringEffect|
+|Sebezhetőségi felmérés |VIRTUÁLIS gépek biztonsági Réseinak figyelése Azure Security Center |vulnerabilityAssessmentMonitoringEffect|
+|Web application firewall (Webalkalmazási tűzfal) |Nem védett webalkalmazás figyelése Azure Security Center |webApplicationFirewallMonitoringEffect |
+|Next generation firewall (Új generációs tűzfal) |Nem védett hálózati végpontok figyelése Azure Security Center| |
 
 
-### <a name="who-can-edit-security-policies"></a>Ki szerkeszthet biztonsági szabályzatok?
-A Security Center szerepköralapú hozzáférés-vezérlés (RBAC), amely biztosít beépített szerepkörök, felhasználók, csoportok és Azure-szolgáltatások rendelhető használ. A Security Center megnyitásakor látnak csak ők is hozzáférhetnek az erőforrásokhoz kapcsolódó információkat. Ami azt jelenti, hogy felhasználók tulajdonosi, közreműködői vagy olvasói szerepköre sincs hozzárendelve a erőforrás tartozik előfizetés vagy az erőforrás-csoport. Ezen szerepkörök mellett két speciális Security Center-szerepkör van:
+### <a name="who-can-edit-security-policies"></a>Kik módosíthatják a biztonsági házirendeket?
+A Security Center szerepköralapú Access Control (RBAC) használ, amely beépített szerepköröket biztosít a felhasználókhoz, csoportokhoz és szolgáltatásokhoz az Azure-ban. Security Center megnyitásakor a felhasználók csak azokat az adatokat látják, amelyekhez hozzáféréssel rendelkeznek. Ez azt jelenti, hogy a felhasználók a tulajdonos, közreműködő vagy olvasó szerepkörhöz vannak rendelve ahhoz az előfizetéshez vagy erőforráscsoporthoz, amelyhez az erőforrás tartozik. Ezen szerepkörök mellett két speciális Security Center-szerepkör van:
 
-- Biztonsági olvasó: Jogosultságok megtekintése a Security Centernek, amely tartalmazza a javaslatok, riasztások, a házirend és egészségügyi, rendelkezik, de azok nem végezhet módosításokat.
-- Biztonsági rendszergazda: Biztonsági olvasó nézetben megegyező jogokkal rendelkezik, és azok is a biztonsági házirend módosítása és javaslatok és riasztások bezárása.
+- Biztonsági olvasó: Megtekintheti a Security Centerra vonatkozó jogosultságokat, amelyekben javaslatok, riasztások, szabályzatok és állapotok szerepelnek, de nem módosíthatók.
+- Biztonsági rendszergazda: Ugyanazok a megtekintési jogosultságok, mint a biztonsági olvasó, továbbá frissíthetik a biztonsági házirendet, és eltekinthetik az ajánlásokat és a riasztásokat.
 
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megismerkedhetett az Azure Policy biztonsági szabályzatok szerkesztése. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
+Ebben a cikkben megtanulta, hogyan szerkesztheti a biztonsági szabályzatokat a Azure Policyban. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
 
-* [Az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md): Ismerje meg, hogyan tervezhet és az Azure Security Centerrel kapcsolatos tervezési szempontokat.
-* [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md): Az Azure-erőforrások állapotának figyelését ismertető útmutató.
-* [Kezelése és válaszadás a biztonsági riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md): A biztonsági riasztások kezelésének és a riasztásokra való válaszadás módját ismertető útmutató.
-* [Partneri megoldások monitorozása az Azure Security Center](security-center-partner-solutions.md): A partnermegoldások állapotának figyelését ismertető útmutató.
-* [Összes bérlőre vonatkozó információk megjelenítése az Azure Security Center](security-center-management-groups.md): Ismerje meg, hogyan állítható be a felügyeleti csoportok az Azure Security Center.
-* [Az Azure Security Center – gyakori kérdések](security-center-faq.md): Választ találhat a szolgáltatás használatával kapcsolatos gyakori kérdésekre.
-* [Az Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [Azure Security Center tervezési és üzemeltetési útmutató](security-center-planning-and-operations-guide.md): Megtudhatja, hogyan tervezheti meg és értelmezheti a Azure Security Centerával kapcsolatos tervezési szempontokat.
+* [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md): Az Azure-erőforrások állapotának figyelését ismertető útmutató.
+* [Biztonsági riasztások kezelése és válaszadás a Azure Security Centerban](security-center-managing-and-responding-alerts.md): A biztonsági riasztások kezelésének és a riasztásokra való válaszadás módját ismertető útmutató.
+* [Partneri megoldások monitorozása Azure Security Centerekkel](security-center-partner-solutions.md): A partnermegoldások állapotának figyelését ismertető útmutató.
+* [A Azure Security Center a bérlők számára széles körű láthatóságot nyerhet](security-center-management-groups.md): Megtudhatja, hogyan állíthat be Azure Security Center felügyeleti csoportokat.
+* [Azure Security Center gyakori kérdések](security-center-faq.md): Választ találhat a szolgáltatás használatával kapcsolatos gyakori kérdésekre.
+* [Azure biztonsági blog](https://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
 További információk az Azure Policyról: [Mi az az Azure Policy?](../governance/policy/overview.md)

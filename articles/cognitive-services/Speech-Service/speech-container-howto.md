@@ -1,7 +1,7 @@
 ---
-title: Telepítse a beszédfelismerési tárolókhoz
+title: Speech containers – beszédfelismerési szolgáltatás telepítése
 titleSuffix: Azure Cognitive Services
-description: Telepítheti és futtathatja a beszédfelismerési tárolókhoz. Hang-szöveg transzformációs transcribes audio-adatfolyamokat valós idejű, amelyek az alkalmazások, eszközök és eszközök használata vagy megjelenítendő szöveg. Szöveg-hang transzformációs emberszerű szintetizált alakítja át a bemeneti szöveg.
+description: Beszédfelismerési tárolók telepítése és futtatása. A beszéd-szöveg szöveggé átmásolja a hangadatfolyamokat valós időben a szöveggé, hogy alkalmazásai, eszközei vagy eszközei képesek legyenek a felhasználásra vagy a megjelenítésre. A szöveg és a beszéd szöveggé alakítja át a bemeneti szöveget az emberi, például a szintetizált beszédbe.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,51 +10,51 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 8f395788d4dd3c845155a52bd6b4666998838fcd
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 0778814d4a228afe3a986426684c7d1f2080b517
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490233"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553234"
 ---
-# <a name="install-and-run-speech-service-containers"></a>Telepítse és futtassa a Speech Service-tárolók
+# <a name="install-and-run-speech-service-containers"></a>Beszédfelismerő szolgáltatás tárolóinak telepítése és futtatása
 
-Beszédfelismerési tárolókhoz ügyfeleink hozhat létre egy beszéd architektúra, amely hatékony felhő képességeit és a peremhálózati helye előnyeinek kihasználása érdekében optimalizáltuk. 
+A beszédfelismerési tárolók lehetővé teszik, hogy az ügyfelek egy olyan beszédfelismerési alkalmazás-architektúrát építsenek ki, amely a robusztus Felhőbeli képességek és a peremhálózat környékének kihasználására optimalizált. 
 
-A két speech tárolók **hang-szöveg transzformációs** és **szöveg-hang transzformációs**. 
+A két beszédfelismerési tároló **beszéd – szöveg** és szöveg – **beszéd**. 
 
-|Függvény|Szolgáltatások|legfrissebb|
+|Függvény|Szolgáltatások|Legutóbbi|
 |-|-|--|
-|Speech-to-text| <li>Transcribes folyamatos valós idejű beszéd vagy kötegelt hangfelvételeket szöveggé a köztes eredményeket.|1.1.3|
-|Szövegfelolvasás| <li>Az írott szöveget természetesnek hangzó beszéddé alakítja. az egyszerű szöveges beviteli vagy beszéd összefoglaló Markup Language (SSML). |1.1.0|
+|Speech-to-text| <li>Folyamatos valós idejű beszédet vagy kötegelt hangfelvételeket vált ki közbenső eredményekkel rendelkező szövegbe.|1.1.3|
+|Szövegfelolvasás| <li>Az írott szöveget természetesnek hangzó beszéddé alakítja. egyszerű szövegbevitel vagy beszéd szintézis Markup Language (SSML) nyelven. |1.1.0|
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Beszédfelismerési tárolókhoz használata előtt a következő előfeltételeknek kell megfelelnie:
+A Speech containers használata előtt meg kell felelnie a következő előfeltételeknek:
 
 |Kötelező|Cél|
 |--|--|
-|Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
-|Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 
-|Beszéd erőforrás |Ezek a tárolók használatához rendelkeznie kell:<br><br>A _Speech_ Azure-erőforráshoz tartozó számlázási kulcs és számlázási végpont URI azonosítója. Mindkét értéket érhetők el az Azure Portalon **Speech** áttekintése és a kulcsok lapok és a szükséges a tárolót.<br><br>**{BILLING_KEY}** : erőforrás-kulcs<br><br>**{BILLING_ENDPOINT_URI}** : végpont URI-példa: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+|Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)és [Linux](https://docs.docker.com/engine/installation/#supported-platforms)rendszereken. A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
+|A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a `docker` tárolók lemezképéről, valamint az alapszintű parancsokról.| 
+|Beszédfelismerési erőforrás |A tárolók használatához a következőket kell tennie:<br><br>Egy Azure _Speech_ -erőforrás a társított API-kulcs és végpont URI-azonosító lekéréséhez. Mindkét érték elérhető a Azure Portal beszédének áttekintése  és a kulcsok oldalain. Mindkettő szükséges a tároló elindításához.<br><br>**{API_KEY}** : A **kulcsok** oldalon található két elérhető erőforrás-kulcs egyike<br><br>**{ENDPOINT_URI}** : Az **Áttekintés** oldalon megadott végpont|
 
-## <a name="request-access-to-the-container-registry"></a>A tároló-beállításjegyzék hozzáférés kérése
+## <a name="request-access-to-the-container-registry"></a>Hozzáférés kérése a tároló beállításjegyzékéhez
 
-Először végezze el, és küldje el a [Cognitive Services beszéd tárolók űrlapot](https://aka.ms/speechcontainerspreview/) hozzáférés kéréséhez a tárolóhoz. 
+Először be kell fejeznie és el kell küldenie a [Cognitive Services Speech containers kérelem űrlapját](https://aka.ms/speechcontainerspreview/) , hogy hozzáférést Kérjen a tárolóhoz. 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
 [!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
 
-## <a name="the-host-computer"></a>A számítógép
+## <a name="the-host-computer"></a>A gazdaszámítógép
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="advanced-vector-extension-support"></a>Speciális vektor bővítmények támogatása
+### <a name="advanced-vector-extension-support"></a>Speciális vektoros bővítmény támogatása
 
-A **gazdagép** van a számítógépen, amelyen a docker-tárolót. A gazdagépnek támogatnia kell [speciális vektor bővítmények](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2). Ez a támogatás a Linux rendszerű gazdagépeken a következő paranccsal ellenőrizheti: 
+A **gazdagép** a Docker-tárolót futtató számítógép. A gazdagépnek támogatnia kell a [speciális vektoros bővítményeket](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2). Ezt a támogatást Linux-gazdagépeken a következő paranccsal tekintheti meg: 
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
@@ -62,51 +62,51 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 ### <a name="container-requirements-and-recommendations"></a>Tároló-követelményeket és javaslatokat
 
-A következő táblázat ismerteti a minimális és ajánlott processzormagot és memóriát lefoglalni a beszédfelismerési tárolókhoz.
+Az alábbi táblázat az egyes beszédfelismerési tárolók számára lefoglalható minimális és ajánlott CPU-magokat és memóriát ismerteti.
 
 | Tároló | Minimális | Ajánlott |
 |-----------|---------|-------------|
 |cognitive-services-speech-to-text | 2 mag<br>2 GB memória  | 4 mag<br>4 GB memória  |
-|cognitive-services-text-to-speech | 1 mag, 0,5 GB memória| 2 mag, 1 GB memória |
+|kognitív szolgáltatások – szöveg – beszéd | 1 mag, 0,5 – GB memória| 2 mag, 1 GB memória |
 
-* Egyes maghoz kell lennie legalább 2.6-os gigahertz (GHz) vagy gyorsabb.
+* Minden mag legalább 2,6 gigahertz (GHz) vagy gyorsabb lehet.
 
-Core és a memória felel meg a `--cpus` és `--memory` beállítások, amelyek részeként használhatók a `docker run` parancsot.
+Az alap és a memória a `--cpus` `docker run` parancs `--memory` részeként használt és beállításoknak felel meg.
 
-**Megjegyzés:** ; A minimális és ajánlott alapulnak, Docker-korlátok, minden *nem* a fogadó számítógép-erőforrásokat. Például a hang-szöveg transzformációs tárolók memória térkép részeit nagy nyelvi modell, és van _ajánlott_ , amely a teljes fájlt a memóriába, ami egy további 4 – 6 GB megfelel-e. Ezenkívül az első futtatásakor vagy a tároló hosszabb időt vehet igénybe, mivel vannak – lapozható modellek a memóriába.
+**Megjegyzés**; A minimális és ajánlott a Docker korlátain kívüli, *nem* pedig a gazdagép erőforrásai. Például a beszéd-szöveg típusú tárolók a nagyméretű nyelvi modell részei, és azt _javasoljuk_ , hogy a teljes fájl elfér a memóriában, ami egy további 4-6 GB. A tárolók első futtatása hosszabb időt is igénybe vehet, mivel a modellek a memóriába kerülnek.
 
-## <a name="get-the-container-image-with-docker-pull"></a>A tárolórendszerkép beolvasása `docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>A tároló rendszerképének beolvasása a`docker pull`
 
-A beszédfelismerés tárolórendszerképek érhetők el.
+A beszédfelismerési lemezképek elérhetők.
 
 | Tároló | Tárház |
 |-----------|------------|
 | cognitive-services-speech-to-text | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
-| cognitive-services-text-to-speech | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
+| kognitív szolgáltatások – szöveg – beszéd | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="language-locale-is-in-container-tag"></a>Nyelvi kódot tároló címke szerepel.
+### <a name="language-locale-is-in-container-tag"></a>A nyelvi területi beállítás a Container címkében van
 
-A `latest` címkézése lekéri a `en-us` területi beállítás és `jessarus` hangalapú.
+A `latest` címke lekéri a `en-us` területi beállításokat és `jessarus` a hangot.
 
-#### <a name="speech-to-text-locales"></a>Beszéd szöveges területi beállításokhoz
+#### <a name="speech-to-text-locales"></a>Szövegbeli területi beállítások
 
-Az összes címke kivételével `latest` a következő formátumban, ahol a `<culture>` azt jelzi, hogy a területibeállítás-tároló:
+A (z) `latest` kivételével az összes címke a következő formátumban van, ahol az a `<culture>` területi beállítású tárolót jelzi:
 
 ```
 <major>.<minor>.<patch>-<platform>-<culture>-<prerelease>
 ```
 
-A következő kód a következő példa a formátumra:
+A következő címke egy példa a formátumra:
 
 ```
 1.1.3-amd64-en-us-preview
 ```
 
-A következő táblázat sorolja fel az támogatott nyelveit **hang-szöveg transzformációs** a 1.1.3 a verziót a tároló:
+A következő táblázat felsorolja a **beszéd és a szöveg** támogatott területi beállítását a tároló 1.1.3-es verziójában:
 
-|Nyelvi kódot|Tags|
+|Nyelvi területi beállítás|Tags|
 |--|--|
 |kínai|`zh-cn`|
 |Angol |`en-us`<br>`en-gb`<br>`en-au`<br>`en-in`|
@@ -118,40 +118,40 @@ A következő táblázat sorolja fel az támogatott nyelveit **hang-szöveg tran
 |portugál|`pt-br`|
 |spanyol|`es-es`<br>`es-mx`|
 
-#### <a name="text-to-speech-locales"></a>Szöveg-beszéd átalakítás területi beállítások
+#### <a name="text-to-speech-locales"></a>Szöveg-beszéd területi beállítások
 
-Az összes címke kivételével `latest` a következő formátumban, ahol a `<culture>` azt jelzi, hogy a területi beállítás és a `<voice>` azt jelzi, hogy a tároló a hang:
+A (z) `latest` kivételével az összes címke a következő formátumban van, ahol a `<culture>` területi beállítás és `<voice>` a tároló hangja látható:
 
 ```
 <major>.<minor>.<patch>-<platform>-<culture>-<voice>-<prerelease>
 ```
 
-A következő kód a következő példa a formátumra:
+A következő címke egy példa a formátumra:
 
 ```
 1.1.0-amd64-en-us-jessarus-preview
 ```
 
-A következő táblázat sorolja fel az támogatott nyelveit **szöveg-hang transzformációs** a az 1.1.0-s verzióját a tároló:
+A következő táblázat a tároló 1.1.0-verziójában lévő **szöveg-beszéd** támogatott területi beállításokat sorolja fel:
 
-|Nyelvi kódot|Tags|Támogatott beszédhangot|
+|Nyelvi területi beállítás|Tags|Támogatott hangok|
 |--|--|--|
 |kínai|`zh-cn`|huihuirus<br>kangkang-apollo<br>yaoyao-apollo|
-|Angol |`en-au`|catherine<br>hayleyrus|
-|Angol |`en-gb`|george-apollo<br>hazelrus<br>susan-apollo|
-|Angol |`en-in`|heera-apollo<br>priyarus<br>ravi-apollo<br>|
+|Angol |`en-au`|Catherine<br>hayleyrus|
+|Angol |`en-gb`|george-apollo<br>hazelrus<br>Susan – Apollo|
+|Angol |`en-in`|heera – Apollo<br>priyarus<br>fosztogatás – Apollo<br>|
 |Angol |`en-us`|jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus|
 |francia|`fr-ca`|Caroline<br>harmonierus|
-|francia|`fr-fr`|hortenserus<br>Ágnes-apollo<br>paul-apollo|
-|német|`de-de`|hedda<br>heddarus<br>stefan-apollo|
+|francia|`fr-fr`|hortenserus<br>Julie – Apollo<br>paul-apollo|
+|német|`de-de`|hedda<br>heddarus<br>Stefan – Apollo|
 |olasz|`it-it`|cosimo-apollo<br>luciarus|
-|japán|`ja-jp`|ayumi-apollo<br>harukarus<br>ichiro-apollo|
+|japán|`ja-jp`|Ayumi – Apollo<br>harukarus<br>Ichiro – Apollo|
 |koreai|`ko-kr`|heamirus|
 |portugál|`pt-br`|daniel-apollo<br>heloisarus|
-|spanyol|`es-es`|elenarus<br>laura-apollo<br>pablo-apollo<br>|
+|spanyol|`es-es`|elenarus<br>Laura – Apollo<br>pablo-apollo<br>|
 |spanyol|`es-mx`|hildarus<br>raul-apollo|
 
-### <a name="docker-pull-for-the-speech-containers"></a>A beszédfelismerési tárolókhoz docker pull
+### <a name="docker-pull-for-the-speech-containers"></a>Docker-lekérés a beszédfelismerési tárolók számára
 
 #### <a name="speech-to-text"></a>Speech-to-text
 
@@ -167,23 +167,23 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 ## <a name="how-to-use-the-container"></a>A tároló használata
 
-Ha a tároló a [gazdaszámítógép](#the-host-computer), a következő eljárás használható a tárolóval.
+Miután a tároló a gazdagépen [](#the-host-computer)található, a következő eljárással dolgozhat a tárolóval.
 
-1. [A tároló futtatásához](#run-the-container-with-docker-run), a szükséges, de nem használt számlázási beállításokkal. További [példák](speech-container-configuration.md#example-docker-run-commands) , a `docker run` parancs érhetők el.
-1. [A tároló előrejelzési végpontja lekérdezése](#query-the-containers-prediction-endpoint).
+1. [Futtassa a tárolót](#run-the-container-with-docker-run)a kötelező, de nem használt számlázási beállításokkal. További [példák](speech-container-configuration.md#example-docker-run-commands) a `docker run` parancsra.
+1. [A tároló előrejelzési végpontjának lekérdezése](#query-the-containers-prediction-endpoint).
 
-## <a name="run-the-container-with-docker-run"></a>A tároló futtatásához `docker run`
+## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a`docker run`
 
-Használja a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancs futtatása bármely három tárolóra. A parancs paraméterei a következők:
+A három tároló bármelyikének futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A parancs a következő paramétereket használja:
 
-**Az előzetes verzióban**, a számlázási beállítások a tároló elindításához érvényesnek kell lennie, de Ön nem számlázzuk a használatra.
+Az **előzetes verzió ideje alatt**a számlázási beállításoknak érvényesnek kell lenniük a tároló elindításához, de a használatért nem kell fizetnie.
 
-| Helyőrző | Érték |
+| Helyőrző | Value |
 |-------------|-------|
-|{BILLING_KEY} | Ezt a kulcsot a tároló elindításához szolgál, és az Azure portal kulcsok Speech oldalon érhető el.  |
-|{BILLING_ENDPOINT_URI} | A számlázási végpont URI azonosítóját az Azure Portalon beszédfelismerés – Áttekintés lapon érhető el.|
+|{API_KEY} | Ez a kulcs a tároló elindítására szolgál, és a Azure Portal beszédfelismerési kulcsok lapján érhető el.  |
+|{ENDPOINT_URI} | A számlázási végpont URI-ja a Azure Portal beszédének áttekintése oldalon érhető el.|
 
-Cserélje le ezeket a paramétereket a következő példában a saját értékeire `docker run` parancsot.
+Cserélje le ezeket a paramétereket a saját értékeire a következő `docker run` példában szereplő parancsban.
 
 ### <a name="text-to-speech"></a>Szövegfelolvasás
 
@@ -191,8 +191,8 @@ Cserélje le ezeket a paramétereket a következő példában a saját értékei
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 ### <a name="speech-to-text"></a>Speech-to-text
@@ -201,21 +201,21 @@ ApiKey={BILLING_KEY}
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
-Ezzel a paranccsal:
+Ez a parancs:
 
-* A tároló rendszerképét Speech tárolóban fut
-* Foglalja le a 2 processzormagot és memóriát 2 gigabájt (GB)
+* Beszédfelismerési tároló futtatása a tároló képéből
+* 2 CPU-mag és 2 gigabájt (GB) memória kiosztása
 * Elérhetővé teszi az 5000-es TCP-porton és a egy pszeudo-TTY lefoglalja a tároló
-* Után kilép, automatikusan eltávolítja a tárolót. A tároló rendszerképét az továbbra is elérhető az állomáson.
+* A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen.
 
 > [!IMPORTANT]
 > A `Eula`, `Billing`, és `ApiKey` beállítások meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információkért lásd: [számlázási](#billing).
 
-## <a name="query-the-containers-prediction-endpoint"></a>A tároló előrejelzési végpontja lekérdezése
+## <a name="query-the-containers-prediction-endpoint"></a>A tároló előrejelzési végpontjának lekérdezése
 
 |Tároló|Végpont|
 |--|--|
@@ -224,36 +224,36 @@ Ezzel a paranccsal:
 
 ### <a name="speech-to-text"></a>Speech-to-text
 
-A tároló websocket-alapú lekérdezési végpontot API-k, keresztül elért biztosít a [beszéd SDK](index.yml).
+A tároló olyan WebSocket-alapú lekérdezési végpont API-kat biztosít, amelyek a [SPEECH SDK](index.yml)-n keresztül érhetők el.
 
-Alapértelmezés szerint a Speech SDK-t használja az online beszédszolgáltatások. A tároló használatához módosítania az inicializálási metódust. Az alábbi példák.
+Alapértelmezés szerint a Speech SDK az online Speech Services szolgáltatást használja. A tároló használatához módosítania kell az inicializálási módszert. Tekintse meg az alábbi példákat.
 
 #### <a name="for-c"></a>AC#
 
-Az Azure-felhő inicializálási hívás használatával módosítani:
+Váltás az Azure-felhő inicializálási hívásának használatával:
 
-```C#
+```csharp
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-a tároló végpontja használatával metódust:
+Ehhez a híváshoz a tároló végpontja használatával:
 
-```C#
+```csharp
 var config = SpeechConfig.FromEndpoint(
     new Uri("ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1"),
     "YourSubscriptionKey");
 ```
 
-#### <a name="for-python"></a>A Pythonhoz
+#### <a name="for-python"></a>Python esetén
 
-Az Azure-felhő inicializálási hívás használatáról
+Váltás az Azure-felhő inicializálási hívásának használatával
 
 ```python
 speech_config = speechsdk.SpeechConfig(
     subscription=speech_key, region=service_region)
 ```
 
-a tároló végpontja használatával metódust:
+Ehhez a híváshoz a tároló végpontja használatával:
 
 ```python
 speech_config = speechsdk.SpeechConfig(
@@ -262,21 +262,21 @@ speech_config = speechsdk.SpeechConfig(
 
 ### <a name="text-to-speech"></a>Szövegfelolvasás
 
-A tároló található API-k REST-végpontot biztosít [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech) és -példákat [Itt](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/).
+A tároló olyan REST-végponti API-kat biztosít, amelyek [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech) találhatók, és mintákat [itt](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/)találhat.
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="stop-the-container"></a>Állítsa le a tároló
+## <a name="stop-the-container"></a>A tároló leállítása
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-A tároló futtatásakor használ-e a tároló **stdout** és **stderr** a kimeneti információt, amely segítségére lehet a hibaelhárítás indítása, vagy a tároló futtatása közben történik.
+Amikor futtatja a tárolót, a tároló az **StdOut** és a **stderr** használatával adja meg azokat a hibákat, amelyek a tároló indításakor vagy futtatásakor felmerülő hibák elhárításában nyújtanak segítséget.
 
 ## <a name="billing"></a>Számlázás
 
-Beszéd tárolók Küldés a számlázási adatokat az Azure-ba, a használatával egy _Speech_ erőforrást az Azure-fiókjával.
+A beszédfelismerési tárolók számlázási adatokat küldenek az Azure  -nak az Azure-fiókjában lévő beszédfelismerési erőforrás használatával.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -286,15 +286,15 @@ Ezek a beállítások kapcsolatos további információkért lásd: [tárolók k
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
-Ebben a cikkben megtanulta, fogalmak és letöltése, telepítése és futtatása a beszédfelismerési tárolókhoz munkafolyamatokat. Összegezve:
+Ebben a cikkben megtanulta a beszédfelismerési tárolók letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 
-* Beszéd biztosít két Linux-tárolók Docker, szöveg és a szöveg-beszéd átalakítás, beszéd fejlécbe foglalja.
-* Tárolórendszerképek letöltődnek az Azure-ban a privát tárolóregisztrációs adatbázisból.
+* A Speech két Linux-tárolót biztosít a Docker számára, szövegbe és szövegbe ágyazva beszédet.
+* A tároló lemezképeit a rendszer az Azure-beli privát tároló-beállításjegyzékből tölti le.
 * Tárolórendszerképek futtatása a Docker.
-* A beszédfelismerési tárolókhoz műveletek hívására adja meg a gazdagép a tároló URI-t használhatja a REST API vagy SDK-val.
-* Számlázási adatokat adjon meg egy tároló hárítható el.
+* Használhatja a REST API vagy az SDK-t a műveleteknek a beszédfelismerési tárolókban való meghívásához a tároló gazdagép URI azonosítójának megadásával.
+* A tárolók példányának létrehozásakor számlázási adatokat kell megadnia.
 
 > [!IMPORTANT]
 >  Cognitive Services-tárolók nem teszi lehetővé az Azure-méréshez való csatlakozás nélkül. Az ügyfeleknek kell ahhoz, hogy a tárolókkal való kommunikációhoz mindig a mérési szolgáltatással számlázási adatokat. Cognitive Services-tárolók nem (például a lemezkép vagy az elemezni kívánt szöveget) a vásárlói adatokat küldeni a Microsoftnak.
@@ -302,4 +302,4 @@ Ebben a cikkben megtanulta, fogalmak és letöltése, telepítése és futtatás
 ## <a name="next-steps"></a>További lépések
 
 * Felülvizsgálat [tárolók konfigurálása](speech-container-configuration.md) a konfigurációs beállítások
-* Több [Cognitive Services-tárolók](../cognitive-services-container-support.md)
+* További [Cognitive Services tárolók](../cognitive-services-container-support.md) használata

@@ -1,7 +1,7 @@
 ---
-title: Leképezések
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Egyetlen megjelölésű jelöli egy feladatot vagy műveletet a felhasználó szeretné végrehajtani. Egy célra vagy a cél-ben a felhasználó utterance (kifejezés) fejezzük ki. Meghatározhatja egy adott szándékot megfelelő műveleteket hajthat végre felhasználókat szeretné állítani az alkalmazásban.
+title: Szándékok – LUIS
+titleSuffix: Azure Cognitive Services
+description: Egyetlen szándék a felhasználó által végrehajtani kívánt feladatot vagy műveletet jelöli. Egy célra vagy a cél-ben a felhasználó utterance (kifejezés) fejezzük ki. Meghatározhatja egy adott szándékot megfelelő műveleteket hajthat végre felhasználókat szeretné állítani az alkalmazásban.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: e635a11cb99d11befc40703d9f5d2abec8559632
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb7fa9d930f4c1ab3c241048804060e17fe5a8e4
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813460"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619921"
 ---
-# <a name="concepts-about-intents-in-your-luis-app"></a>A LUIS-alkalmazás a leképezések kapcsolatos fogalmak
+# <a name="concepts-about-intents-in-your-luis-app"></a>A LUIS-alkalmazásban található szándékokkal kapcsolatos fogalmak
 
 Megjelölésű jelöli egy feladatot vagy műveletet a felhasználó szeretné végrehajtani. Egy célra vagy a felhasználó kifejezett célja [utterance (kifejezés)](luis-concept-utterance.md).
 
@@ -31,7 +31,7 @@ Utazás alkalmazásszándékkal   |   Példák kimondott szövegekre   |
  CheckWeather | "Mi az az időjárás, például Bostonban?" <br/> "Show me a hétvégi vonatkozó előrejelzést" |
  None         | "Get me egy cookie-k recept"<br>"Volt a Lakers win?" |
 
-Minden alkalmazást az előre meghatározott leképezés kapható "[nincs](#none-intent-is-fallback-for-app)", azaz a tartalék célt. 
+Minden alkalmazás a "[nincs](#none-intent-is-fallback-for-app)" előre definiált szándékkal, azaz a tartalék szándékkal van ellátva. 
 
 ## <a name="prebuilt-domains-provide-intents"></a>Előre összeállított tartományok leképezések használata
 Mellett szándék fog vonatkozni, Ön által meghatározott előre összeállított leképezések is használhatja az előre összeállított tartományok egyikéből. További információkért lásd: [a LUIS-alkalmazások előre összeállított tartományok használata](luis-how-to-use-prebuilt-domains.md) további információt az alkalmazásban az előre összeállított tartományok leképezések testreszabása.
@@ -42,12 +42,15 @@ Egyetlen célja az utterance (kifejezés) rendelheti hozzá. A LUIS megkapja az 
 ## <a name="intent-compared-to-entity"></a>A szándék entitás képest
 A leképezés művelet a csevegőrobot kell vennie a felhasználó számára, és a teljes utterance (kifejezés) alapján jelöli. Az entitás szavakat vagy kifejezéseket az utterance (kifejezés) részletsorában jelöli. Az utterance (kifejezés) pontozási szándéka csak egy top rendelkezhet, de számos entitás veheti fel. 
 
-<a name="how-do-intents-relate-to-entities"></a> Egy leképezésének létrehozása során a felhasználó _blokkolni_ az ügyfélalkalmazásban, például a checkweather() függvény hívása művelet lép működésbe. Ezután hozzon létre egy entitást képviselő a művelet végrehajtásához szükséges paramétereket. 
+<a name="how-do-intents-relate-to-entities"></a>
+
+Hozzon létre egy szándékot, ha  a felhasználó szándéka egy műveletet indít el az ügyfélalkalmazás, például a checkweather () függvény hívása. Ezután hozzon létre egy entitást képviselő a művelet végrehajtásához szükséges paramétereket. 
 
 |A példában szándéka   | Entitás | Entitás az a példában kimondott szöveg   | 
 |------------------|------------------------------|------------------------------|
 | CheckWeather | {"type": "hely", "entitás": "seattle"}<br>{"type": "builtin.datetimeV2.date","entity": "holnap", "feloldás": "2018-05-23"} | Mi az az időjárás, például a `Seattle` `tomorrow`? |
 | CheckWeather | {"type": "date_range", "entitás": "a hétvégi"} | Az előrejelzés megjelenítése `this weekend` | 
+||||
 
 ## <a name="custom-intents"></a>Egyéni leképezések
 
@@ -59,10 +62,10 @@ Hasonlóképpen intentioned [beszédmódok](luis-concept-utterance.md) felel meg
 
 ## <a name="none-intent"></a>A None szándék
 
-A **nincs** szándékot fontos, hogy minden alkalmazás, és nem tartalmazhat nulla kimondott szöveg.
+A **none** szándék minden alkalmazás esetében fontos, és nem lehet nulla hosszúságú kimondott szöveg.
 
 ### <a name="none-intent-is-fallback-for-app"></a>Nincs leképezés nem tartalék alkalmazás
-A **nincs** célja egy kevésbé vagy tartalék szándékot. A LUIS utterances, amelyek nem fontos alkalmazástartomány (tárgy területen), akik szolgál. A **nincs** szándékot 10 és 20 százalékát, az alkalmazás teljes megcímkézzen között kell rendelkeznie. Ne hagyja a nincs üres. 
+A **nincs** célja egy kevésbé vagy tartalék szándékot. A LUIS utterances, amelyek nem fontos alkalmazástartomány (tárgy területen), akik szolgál. A **nincs** szándékot 10 és 20 százalékát, az alkalmazás teljes megcímkézzen között kell rendelkeznie. Ne hagyja üresen a none értéket. 
 
 ### <a name="none-intent-helps-conversation-direction"></a>Nincs leképezés segít a beszélgetés iránya
 Amikor az utterance (kifejezés), a nincs összegyűjtése várható szándék és vissza a csevegőrobot, az adott előrejelzési a robot további kérdéseket tehet fel vagy adja meg a menüben a felhasználó számára érvényes választás a csevegőrobot a közvetlen. 
@@ -81,11 +84,11 @@ A **nincs** célja a kötelező szándékot, és nem lehet törölték vagy átn
 ## <a name="negative-intentions"></a>Negatív céljaira 
 Negatív és pozitív céljaira, például a meghatározni kívánt "szeretnék **szeretné** egy autó" és "szeretnék **nem** szeretné egy autó", hozhat létre a két szándék (egy pozitív és a egy negatív) és a megfelelő beszédmódok hozzáadása minden egyes. Vagy hozzon létre egy egyetlen célja, és jelölje meg a két különböző pozitív és negatív kifejezés egy egységként.  
 
-## <a name="intents-and-patterns"></a>Leképezések és minták
+## <a name="intents-and-patterns"></a>Szándékok és minták
 
-Ha például kimondott szöveg, amely részben vagy egészben reguláris kifejezésként definiálható, fontolja meg a [reguláris kifejezésnek entitás](luis-concept-entity-types.md#regular-expression-entity) társalkalmazás is egy [minta](luis-concept-patterns.md). 
+Ha van példa hosszúságú kimondott szöveg, amely a részben vagy egészben is meghatározható reguláris kifejezésként, érdemes lehet a [reguláris kifejezéssel](luis-concept-entity-types.md#regular-expression-entity) párosítani egy mintázattal [](luis-concept-patterns.md). 
 
-Egy reguláris kifejezés entitást használó garantálja az adatok kinyerése, így a minta egyezik. A minták egyeztetése garantálja, hogy pontos megjelölésű adja vissza. 
+A reguláris kifejezéssel rendelkező entitások garantálják az kivonást, így a minta egyeztetése megtörténik. A minta egyeztetése garantálja a pontos szándékot. 
 
 ## <a name="intent-balance"></a>Leképezési terheléselosztása
 Az alkalmazás tartományban szándékok utterances egyensúly kell minden egyes szándékot között. Nem rendelkezik egy leképezést és 10 kimondott szöveg és a egy másik leképezést és 500 kimondott szöveg. Ez nem elosztott terhelésű. Ha ez a helyzet, tekintse át az 500 utterances célja, hogy tekintse meg, ha a leképezések számos is rendezhető újra be egy [minta](luis-concept-patterns.md). 

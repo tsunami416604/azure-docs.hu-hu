@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 19ced9767d77b0d7bfcec6f01425ab1089a55d54
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dad99a7e3d0463263e912aa05b5312edbcb89c0b
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069228"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597667"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>CI-/CD-folyamat beállítása az Azure Cosmos DB Emulator buildelési feladatával az Azure DevOpsban
 
@@ -20,7 +20,7 @@ Az Azure Cosmos DB Emulator helyi környezetet biztosít, amely az Azure Cosmos 
 
 Az Azure Cosmos DB Emulator Azure DevOpshoz készült buildelési feladata lehetővé teszi ugyanezt CI-környezetben. A buildelési feladat segítségével összeállítási és kiadási munkafolyamatai részeként futtathat teszteket az emulátorban. A feladat elindít egy Docker-tárolót, amelyben már fut az emulátor, és végpontot biztosít a builddefiníció további része számára. Tetszőleges számú emulátorpéldányt hozhat létre és indíthat el, amelyek mind külön tárolóban futnak. 
 
-Ez a cikk bemutatja, hogyan állíthat be CI-folyamatot az Azure DevOpsban egy ASP.NET-alkalmazás számára, amely a Cosmos DB Emulator buildelési feladatával futtat teszteket. Hasonló megközelítést segítségével a CI-folyamat beállítása egy Node.js vagy Python-alkalmazás. 
+Ez a cikk bemutatja, hogyan állíthat be CI-folyamatot az Azure DevOpsban egy ASP.NET-alkalmazás számára, amely a Cosmos DB Emulator buildelési feladatával futtat teszteket. A CI-folyamatokat a Node. js-hez vagy egy Python-alkalmazáshoz hasonló módon állíthatja be. 
 
 ## <a name="install-the-emulator-build-task"></a>Az emulátor buildelési feladatának telepítése
 
@@ -31,15 +31,15 @@ A buildelési feladatot használat előtt telepítenie kell az Azure DevOps-szer
 Ezután válassza ki a szervezetet, amelyben telepíteni kívánja a bővítményt. 
 
 > [!NOTE]
-> Az Azure DevOps-szervezet egy bővítmény telepítéséhez egy fiók tulajdonosa vagy a projekt helygyűjtemény rendszergazdája kell lennie. Ha nem rendelkezik engedélyekkel, de a fiók tagja, ehelyett kérheti a bővítményt. [Részletek](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions)
+> Egy bővítmény Azure DevOps-szervezetbe való telepítéséhez a fiók tulajdonosának vagy a projekt-gyűjtemény rendszergazdájának kell lennie. Ha nem rendelkezik engedélyekkel, de a fiók tagja, ehelyett kérheti a bővítményt. [Részletek](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts)
 
-![Válassza ki az Azure DevOps szervezet-bővítmény telepítése](./media/tutorial-setup-ci-cd/addExtension_2.png)
+![Válassza ki azt az Azure DevOps-szervezetet, amelyben telepíteni kívánja a bővítményt](./media/tutorial-setup-ci-cd/addExtension_2.png)
 
 ## <a name="create-a-build-definition"></a>Builddefiníció létrehozása
 
 Most, hogy a bővítmény települt, jelentkezzen be az Azure DevOps-fiókjába, és keresse meg a projektet a projektek irányítópultján. Hozzáadhat egy új [buildfolyamatot](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) a projekthez, vagy módosíthat egy meglévőt is. Ha már rendelkezik buildfolyamattal, továbbléphet [az Emulator buildelési feladatának hozzáadása egy builddefinícióhoz](#addEmulatorBuildTaskToBuildDefinition) részre.
 
-1. Új builddefiníció létrehozásához lépjen az Azure DevOps **Builds** (Buildek) lapjára. Válassza a **+New** (+Új) lehetőséget. \> **Új folyamat létrehozása**
+1. Új builddefiníció létrehozásához lépjen az Azure DevOps **Builds** (Buildek) lapjára. Válassza a **+New** (+Új) lehetőséget. \>**Új build-folyamat**
 
    ![Új buildfolyamat létrehozása](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
 
@@ -50,7 +50,7 @@ Most, hogy a bővítmény települt, jelentkezzen be az Azure DevOps-fiókjába,
 3. Végül válassza ki a buildfolyamathoz használni kívánt sablont. Ebben az oktatóanyagban az **ASP.NET** sablont választjuk. 
 
 > [!NOTE]
-> Az ügynökkészlet ki kell választania a CI a Docker a Windows telepítve van, kivéve, ha a telepítés történik, manuálisan egy korábbi feladatban a CI részeként kell rendelkeznie. Lásd: [a Microsoft saját ügynökei](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) ügynökként kijelölt cikke; javasoljuk, hogy a kezdéshez `Hosted VS2017` vagy `Hosted VS2019`. 
+> A CI számára kijelölni kívánt ügynök-készletnek a Windows rendszerhez készült Docker-nek kell lennie, kivéve, ha a telepítést manuálisan végzik el egy korábbi feladatban a CI részeként. Tekintse meg a [Microsoft](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) által üzemeltetett ügynökökkel foglalkozó cikket az ügynök-készletek kiválasztásához. Javasoljuk, hogy kezdje a `Hosted VS2017` következővel: vagy `Hosted VS2019`. 
 
 Most már van buildfolyamatunk, amelyet beállíthatunk az Azure Cosmos DB emulátor buildelési feladatának használatára. 
 
@@ -68,7 +68,7 @@ Ebben az oktatóanyagban a feladatot a legelején adjuk hozzá, hogy biztosítsu
 
 Most konfigurálni fogjuk a tesztjeinket az emulátor használatához. Az emulátor buildelési feladata exportál egy környezeti változót (CosmosDbEmulator.Endpoint), amelyre a buildfolyamat összes további feladata küldhet kéréseket. 
 
-Ebben az oktatóanyagban a [Visual Studio tesztelési feladatával](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) futtatunk olyan egységteszteket, amelyek **.runsettings** fájllal lettek konfigurálva. Az egységtesztek beállításáról a [dokumentációban](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017) talál további információt. A teljes Teendőkezelő alkalmazás kódminta ebben a dokumentumban használt érhető el az [Github](https://github.com/Azure-Samples/documentdb-dotnet-todo-app)
+Ebben az oktatóanyagban a [Visual Studio tesztelési feladatával](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) futtatunk olyan egységteszteket, amelyek **.runsettings** fájllal lettek konfigurálva. Az egységtesztek beállításáról a [dokumentációban](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017) talál további információt. A dokumentumban használt teljes Todo-alkalmazás kódjának mintája elérhető a githubon [](https://github.com/Azure-Samples/documentdb-dotnet-todo-app)
 
 Az alábbiakban mutatunk egy példát a **.runsettings** fájlra, amely definiálja egy alkalmazás egységtesztjeibe továbbítandó paramétereket. Figyelje meg, hogy a használt `authKey` változó az emulátor [jól ismert kulcsa](https://docs.microsoft.com/azure/cosmos-db/local-emulator#authenticating-requests). Az `authKey` az emulátor buildelési feladatának várt kulcsa, és definiálva kell lennie a **.runsettings** fájlban.
 
@@ -83,7 +83,7 @@ Az alábbiakban mutatunk egy példát a **.runsettings** fájlra, amely definiá
 </RunSettings>
 ```
 
-Ha azt állítja be a mongodb-hez az Azure Cosmos DB API-t használó alkalmazások CI/CD-folyamat, alapértelmezés szerint kapcsolati karakterlánca tartalmazza a portszám 10255. Ez a port viszont nem megnyitott, alternatív megoldásként használjon port 10250 a kapcsolat létrehozásához. Az Azure Cosmos DB API a MongoDB kapcsolati sztring változatlan marad, azzal a különbséggel a támogatott portszám helyett 10255 10250 is.
+Ha olyan alkalmazáshoz állít be CI/CD-folyamatot, amely a MongoDB Azure Cosmos DB API-ját használja, a csatlakozási karakterlánc alapértelmezés szerint a 10255 portszámot tartalmazza. Ez a port azonban jelenleg nincs megnyitva, Alternatív megoldásként az 10250-es portot kell használnia a kapcsolat létrehozásához. A MongoDB-kapcsolatok karakterláncának Azure Cosmos DB API-je változatlan marad, kivéve a támogatott portszámot 10250 10255 helyett.
 
 Ezekre a paraméterekre (`TestRunParameters`) az alkalmazás tesztelési projektjei egy `TestContext` tulajdonsággal hivatkoznak. Íme egy példa a Cosmos DB-ben futó tesztre.
 

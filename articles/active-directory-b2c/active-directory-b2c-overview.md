@@ -1,6 +1,6 @@
 ---
 title: Mi az az Azure Active Directory B2C? | Microsoft Docs
-description: Ismerje meg, hozzon létre és kezelhet identitással kapcsolatos műveletet, például a regisztrációs bejelentkezési és profilok kezelése az alkalmazás Azure Active Directory B2C használatával.
+description: Ismerje meg, hogyan hozhat létre és kezelhet személyazonossági tapasztalatokat, például a bejelentkezést és a profilok kezelését az alkalmazásban Azure Active Directory B2C használatával.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,126 +10,126 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5cceac260979b4322d41843038eab0998c8e8ba4
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: ca9d8a8373bd73d527862864d436319eb45b5f48
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66509748"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227170"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Mi az az Azure Active Directory B2C?
 
-Az Azure Active Directory (Azure AD) B2C egy olyan üzleti, a felhasználói identitások felügyeleti szolgáltatás. Ez a szolgáltatás lehetővé teszi testre szabhatja és irányíthatja a felhasználók hogyan biztonságosan használják a webes, asztali, mobil, vagy egyoldalas alkalmazások. Azure AD B2C használatával felhasználók is regisztráció, jelentkezzen be, új jelszót, és profilok szerkesztése. Az Azure AD B2C az OpenID Connect és az OAuth 2.0 protokoll egy formája implementál. Ezeket a protokollokat végrehajtása során a fontos kulcs a biztonsági jogkivonatokat, és azok erőforrásokhoz való biztonságos hozzáférést nyújtanak, amelyekkel jogcímeket.
+A Azure Active Directory (Azure AD) B2C egy vállalat és egy ügyfél közötti Identitáskezelés-kezelő szolgáltatás. Ezzel a szolgáltatással testreszabhatja és szabályozhatja, hogy a felhasználók hogyan kezelhetik biztonságosan a web-, asztali, mobil-vagy egyoldalas alkalmazásokkal. A Azure AD B2C használatával a felhasználók regisztrálhatnak, bejelentkezhetnek, visszaállíthatják a jelszavakat és szerkeszthetik a profilokat. Azure AD B2C az OpenID Connect és a OAuth 2,0 protokollok formáját valósítja meg. A protokollok megvalósításának fontos kulcsa a biztonsági jogkivonatok és jogcímek, amelyek lehetővé teszik biztonságos hozzáférés biztosítását az erőforrásokhoz.
 
-A *felhasználói interakciósorozat* egy kérelmet, amely meghatározza egy szabályzatot, amely az Azure AD B2C-vel a felhasználó és az alkalmazás együttműködését viselkedését vezérlő van. Két útvonalon lesznek elérhetők az Azure AD B2C felhasználói utak meghatározása. 
+A *felhasználói út* egy olyan házirendet meghatározó kérelem, amely a felhasználó és az alkalmazás működésének működését szabályozza Azure ad B2C. Két elérési út áll rendelkezésre a felhasználói útvonalak definiálásához Azure AD B2Cban.
 
-Ha Ön egy alkalmazásfejlesztő vagy identitás szakértelem nélkül, választhatja az Azure portal használatával közös identitás felhasználói folyamatok meghatározása. Ha Ön egy identitás professional, rendszerintegrátor, tanácsadóként, vagy egy belső fejlesztésű identitás csapata nem okoz gondot az OpenID Connect folyamatokat, és identitás-szolgáltatóktól és jogcímalapú hitelesítést, választhatja az egyéni házirendek XML-alapú.
+Ha Ön az alkalmazás fejlesztője az identitással kapcsolatos szakértelemmel vagy anélkül, akkor a Azure Portal használatával meghatározhatja a közös identitású felhasználói folyamatokat. Ha Ön a személyazonossági szakember, a rendszerintegrátor, a tanácsadó vagy a házon belüli identitás csapata, az OpenID Connect-folyamatok kényelmesek, az identitás-szolgáltatók és a jogcímek hitelesítésének megismerése pedig XML-alapú egyéni házirendeket is választhat.
 
-Felhasználói út meghatározása előtt kell egy Azure AD B2C bérlő létrehozása és regisztrálása az alkalmazás- és API-t a bérlőben. Miután végrehajtotta ezeket a feladatokat, megkezdheti a felhasználói folyamatok vagy egyéni szabályzatok felhasználói út meghatározása. Emellett, ha szükséges, adja hozzá vagy Identitásszolgáltatók módosítása és testreszabása a felhasználói élmény az utazás módját.
+A felhasználói utazás definiálásának megkezdése előtt létre kell hoznia egy Azure AD B2C bérlőt, és regisztrálnia kell az alkalmazást és az API-t a bérlőben. A feladatok elvégzése után megkezdheti a felhasználói folyamatok vagy egyéni szabályzatok megadását. Lehetősége van továbbá identitás-szolgáltatók hozzáadására vagy módosítására, vagy testre szabhatja azt, ahogyan a felhasználó megtapasztalja az utazást.
 
-## <a name="protocols-and-tokens"></a>Protokollok és a jogkivonatok
+## <a name="protocols-and-tokens"></a>Protokollok és tokenek
 
-Az Azure AD B2C támogatja a [OpenID Connect és az OAuth 2.0 protokoll](active-directory-b2c-reference-protocols.md) felhasználói utak esetében. Az OpenID Connect Azure AD B2C-implementációjában az alkalmazás az Azure AD B2C felé irányuló hitelesítési kérések küldésével indítja el a felhasználói utat. 
+Azure AD B2C támogatja az [OpenID Connect és a OAuth 2,0 protokollt](active-directory-b2c-reference-protocols.md) a felhasználói útvonalakhoz. Az OpenID Connect Azure AD B2C-implementációjában az alkalmazás az Azure AD B2C felé irányuló hitelesítési kérések küldésével indítja el a felhasználói utat.
 
-Az Azure AD B2C-vel való irányuló kérelem eredménye egy biztonsági jogkivonatot, például egy [azonosító jogkivonat vagy a hozzáférési jogkivonat](active-directory-b2c-reference-tokens.md). Ez a biztonsági jogkivonat a felhasználói azonosító definiálása. Jogkivonatok érkezett az Azure AD B2C-végpontok, például egy `/token` vagy `/authorize` végpont. Ezek a jogkivonatok használhatók az identitás ellenőrzése és biztonságos erőforrásokhoz való hozzáférés engedélyezése jogcímeket érheti el.
+Az Azure AD B2Cre irányuló kérelem eredménye biztonsági jogkivonat, például [azonosító jogkivonat vagy hozzáférési jogkivonat](active-directory-b2c-reference-tokens.md). Ez a biztonsági jogkivonat határozza meg a felhasználó identitását. A tokenek Azure ad B2C végpontokból érkeznek, például egy `/token` vagy `/authorize` végpontból. Ezekből a jogkivonatokból olyan jogcímeket érhet el, amelyek segítségével érvényesítheti az identitást, és engedélyezheti a hozzáférést a biztonságos erőforrásokhoz.
 
-## <a name="tenants-and-applications"></a>Bérlőt és alkalmazást
+## <a name="tenants-and-applications"></a>Bérlők és alkalmazások
 
-Az Azure AD B2C egy *bérlői* a munkahelye és a egy könyvtár a felhasználók. Mindegyik Azure AD B2C-bérlő önálló, és elkülönül a többi Azure AD B2C-bérlőtől. Előfordulhat, hogy már rendelkezik Azure Active Directory-bérlővel, az Azure AD B2C-bérlő egy másik bérlőben. Egy bérlő a regisztrált felhasználóktól rendelkezik az alkalmazás használatával kapcsolatos információt tartalmazza. Ilyen adatok a jelszavaik, a profiljuk adatai és az engedélyeik. További információkért lásd: [oktatóanyag: Az Azure Active Directory B2C-bérlő létrehozása](tutorial-create-tenant.md).
+Azure AD B2C a *bérlő* képviseli a szervezetét, és a felhasználók címtára. Mindegyik Azure AD B2C-bérlő önálló, és elkülönül a többi Azure AD B2C-bérlőtől. Lehet, hogy már rendelkezik Azure Active Directory Bérlővel, a Azure AD B2C bérlő egy másik bérlő. A bérlő az alkalmazás használatára regisztrált felhasználókkal kapcsolatos információkat tartalmaz. Ilyen adatok a jelszavaik, a profiljuk adatai és az engedélyeik. További információ [: oktatóanyag: Hozzon létre egy](tutorial-create-tenant.md)Azure Active Directory B2C bérlőt.
 
-Előtt konfigurálja alkalmazását az Azure AD B2C segítségével, akkor először a bérlő az Azure portal használatával regisztrálhatja. Az alkalmazásregisztrációs művelet során a rendszer összegyűjt bizonyos adatokat, majd értékeket rendel az alkalmazáshoz. Ezek az értékek közé tartozik egy Alkalmazásazonosítót, amely egyedileg azonosítja az alkalmazást és a egy átirányítási URI-JÁNAK küldött közvetlen válaszokhoz az alkalmazáshoz használt.
+Mielőtt az alkalmazást a Azure AD B2C használatára konfigurálja, először regisztrálnia kell a bérlőben a Azure Portal használatával. Az alkalmazásregisztrációs művelet során a rendszer összegyűjt bizonyos adatokat, majd értékeket rendel az alkalmazáshoz. Ezek az értékek egy olyan alkalmazás-azonosítót tartalmaznak, amely egyedileg azonosítja az alkalmazást, valamint egy átirányítási URI-t, amely az alkalmazásra való közvetlen válaszadásra szolgál.
 
 Az alkalmazások közötti interakció minden esetben hasonló felső szintű mintát követ:
 
-1. Az alkalmazás futtatásához egy szabályzatot a felhasználó irányítja.
+1. Az alkalmazás arra utasítja a felhasználót, hogy futtasson egy házirendet.
 2. A felhasználó a szabályzat definíciója szerint teljesíti a szabályzat feltételeit.
-3. Az alkalmazás fogad a jogkivonatot.
-4. Az alkalmazás a jogkivonat használatával megpróbál hozzáférni egy erőforrást.
-5. Az erőforrás-kiszolgáló érvényesíti a jogkivonatot, győződjön meg arról, hogy a hozzáférés adható.
-6. Az alkalmazás rendszeres időközönként frissíti a tokent.
+3. Az alkalmazás jogkivonatot kap.
+4. Az alkalmazás a token használatával próbál hozzáférni egy erőforráshoz.
+5. Az erőforrás-kiszolgáló ellenőrzi a jogkivonatot annak ellenőrzéséhez, hogy a hozzáférés megadható-e.
+6. Az alkalmazás rendszeresen frissíti a jogkivonatot.
 
-Webalkalmazás regisztrációja, hajtsa végre a lépéseket a [oktatóanyag: Regisztráció és bejelentkezés az Azure AD B2C használatával engedélyezése egy alkalmazás regisztrálása](tutorial-register-applications.md). Emellett [adjon hozzá egy webes API-alkalmazás az Azure Active Directory B2C-bérlő](add-web-application.md) vagy [hozzáadása az Azure Active Directory B2C-bérlő natív ügyfélalkalmazás](add-native-application.md).
+Webalkalmazás regisztrálásához hajtsa végre az oktatóanyagban [szereplő lépéseket: Regisztráljon egy alkalmazást, hogy engedélyezze a regisztrációt és a bejelentkezést Azure AD B2C](tutorial-register-applications.md)használatával. [Hozzáadhat egy webes API-alkalmazást is a Azure Active Directory B2C bérlőhöz](add-web-application.md) , vagy [hozzáadhat egy natív ügyfélalkalmazás a Azure Active Directory B2C bérlőhöz](add-native-application.md).
 
-## <a name="user-journeys"></a>Felhasználói utak
+## <a name="user-journeys"></a>Felhasználói utazások
 
-A házirendet a felhasználói út adható meg egy [felhasználói folyamat](active-directory-b2c-reference-policies.md) vagy egy [egyéni házirendet](active-directory-b2c-overview-custom.md). Előre definiált felhasználókövetési adatai a leggyakrabban használt identitás feladatok, például a regisztrációs, bejelentkezési és profilszerkesztést, érhető el az Azure Portalon.
+A felhasználói úton lévő szabályzat [felhasználói folyamatként](active-directory-b2c-reference-policies.md) vagy [Egyéni szabályzatként](active-directory-b2c-overview-custom.md)definiálható. A leggyakoribb identitási feladatokhoz, például a regisztráláshoz, a bejelentkezéshez és a profil szerkesztéséhez előre definiált felhasználói folyamatok érhetők el a Azure Portal.
 
-Felhasználói utak lehetővé teszi, hogy viselkedés úgy konfigurálja a következő beállításokat:
+A felhasználói útvonalak lehetővé teszik a viselkedés vezérlését a következő beállítások konfigurálásával:
 
-- A felhasználó regisztrálhat az alkalmazást használó közösségi fiókok
-- Adatokat kér a felhasználótól például a Keresztnév vagy irányítószámot
+- A felhasználó által az alkalmazásra való regisztrációhoz használt közösségi fiókok
+- A felhasználótól gyűjtött adatok, például utónév vagy postai irányítószámok
 - Multi-Factor Authentication
-- Oldalak megjelenését és működését
+- Oldalak megjelenésének és működésének megtekintése
 - Az alkalmazásnak visszaadott adatok
 
-Egyéni szabályzatok olyan konfigurációs fájlok, amelyek viselkedésének megadása a [identitás-kezelőfelületi keretrendszer](trustframeworkpolicy.md) az Azure AD B2C-bérlőben. Az identitás-kezelőfelületi keretrendszer az alapul szolgáló platform, amely több résztvevős megbízhatósági kapcsolatot hoz létre, és a egy felhasználói interakciósorozatban szereplő lépéseket kell megtennie. 
+Az egyéni házirendek olyan konfigurációs fájlok, amelyek meghatározzák az [identitási élmény keretrendszerének](trustframeworkpolicy.md) viselkedését az Azure ad B2C-bérlőben. Az identitás-kezelési keretrendszer az alapul szolgáló platform, amely több résztvevős megbízhatóságot hoz létre, és elvégzi a felhasználói utazás lépéseit.
 
-Az egyéni szabályzatok némi módosítással számos feladatot végrehajthatnak. Az egyéni szabályzatot egy vagy több XML formátumú fájl alkotja, amelyek hierarchikus sorrendben hivatkoznak egymásra. A [alapszintű csomagja](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) érhető el a egyéni szabályzatait általános identitás-feladatokat. 
+Az egyéni szabályzatok némi módosítással számos feladatot végrehajthatnak. Az egyéni szabályzatot egy vagy több XML formátumú fájl alkotja, amelyek hierarchikus sorrendben hivatkoznak egymásra. A közös identitású feladatok lehetővé tételéhez az egyéni házirendek számára elérhetővé válik egy alapszintű [csomag](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) .
 
-Egyéni házirendek vagy a különböző típusú felhasználói folyamatok igény szerint az Azure AD B2C-bérlő használja, és alkalmazások felhasználhatók. Ezt a rugalmasságot és módosíthatja a felhasználói identitások jellemzőit, minimális konfigurációval vagy a programkód módosítása nélkül teszi lehetővé. A szabályzatok használata egy speciális lekérdezési paraméternek a HTTP-hitelesítési kérésekhez való hozzáadásával történik. A saját egyéni házirend létrehozása: [az Azure Active Directory B2C-vel egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md).
+A Azure AD B2C bérlőn szükség szerint egyéni házirendeket vagy különböző típusú felhasználói folyamatokat használ a rendszer, és az alkalmazások között újra felhasználható. Ez a rugalmasság lehetővé teszi a felhasználói identitások megadását és módosítását a kód minimális vagy semmilyen módosításával. A szabályzatok használata egy speciális lekérdezési paraméternek a HTTP-hitelesítési kérésekhez való hozzáadásával történik. Saját egyéni házirend létrehozásához tekintse meg az [Egyéni szabályzatok](active-directory-b2c-get-started-custom.md)beszerzése Azure Active Directory B2Cban című témakört.
 
-## <a name="identity-providers"></a>Identitásszolgáltatók 
+## <a name="identity-providers"></a>Identitásszolgáltatók
 
-Az Ön alkalmazásai érdemes engedélyezése a felhasználók számára, hogy jelentkezzen be a különböző identitásszolgáltatókkal. Egy *identitásszolgáltató* hoz létre, tárolja és kezeli a azonosító adatok, miközben alkalmazások hitelesítési szolgáltatásokat biztosít. Azure AD B2C által támogatott Identitásszolgáltatók is hozzáadhat az Azure portal használatával. 
+Az alkalmazásaiban engedélyezheti, hogy a felhasználók különböző identitás-szolgáltatókkal jelentkezzenek be. Az *identitás-szolgáltató* identitási adatokat hoz létre, tart karban és felügyel, miközben hitelesítési szolgáltatásokat biztosít az alkalmazásoknak. A Azure Portal használatával Azure AD B2C által támogatott identitás-szolgáltatókat adhat hozzá.
 
-Csak egy identitásszolgáltató az alkalmazás általában használ, de lehetősége van Továbbiak hozzáadásához. Az identitásszolgáltató konfigurálása az Azure AD B2C-bérlőben, először hozzon létre egy alkalmazást az identity provider fejlesztői helyen, és ezután rögzítheti az alkalmazásazonosító vagy ügyfél-azonosítója és a jelszó vagy titkos az identitásszolgáltatótól az ügyfél a létrehozott alkalmazás. Az alkalmazás konfigurálásához ezt az azonosítót és jelszót használja. 
+Általában csak egy identitás-szolgáltatót használ az alkalmazásban, de lehetősége van további hozzáadására. Ha a Azure AD B2C-bérlőben szeretné konfigurálni az identitás-szolgáltatót, először hozzon létre egy alkalmazást az Identity Provider fejlesztői webhelyén, majd jegyezze fel az alkalmazás azonosítóját vagy ügyfél-azonosítóját, valamint a jelszót vagy az ügyfél titkos kulcsát az identitás-szolgáltatótól. a létrehozott alkalmazás. Az alkalmazás konfigurálásához ezt az azonosítót és jelszót használja.
 
-Az alábbi cikkek ismertetik a lépések hozzáadása a közös identitás-szolgáltatóktól némelyike felhasználókövetési adatai:
+A következő cikkek ismertetik, hogy miként adhat hozzá néhány Common Identity providert a felhasználói folyamatokhoz:
 
 - [Amazon](active-directory-b2c-setup-amzn-app.md)
 - [Facebook](active-directory-b2c-setup-fb-app.md)
 - [Microsoft-fiók](active-directory-b2c-setup-msa-app.md)
 
-Az alábbi cikkek ismertetik a lépések hozzáadása a közös identitás-szolgáltatóktól néhány egyéni szabályzatok:
+A következő cikkek a Common Identity Providerek egyéni házirendekhez való hozzáadásának lépéseit ismertetik:
 - [Amazon](setup-amazon-custom.md)
 - [Google](active-directory-b2c-custom-setup-goog-idp.md)
 - [Microsoft-fiók](active-directory-b2c-custom-setup-msa-idp.md)
 
-További információkért lásd: [oktatóanyag: Identitásszolgáltató hozzáadása az alkalmazásait az Azure Active Directory B2C](tutorial-add-identity-providers.md).
+További információ [: oktatóanyag: Identitás-szolgáltatók hozzáadása az alkalmazásokhoz Azure Active Directory B2Cban](tutorial-add-identity-providers.md).
 
 
-## <a name="page-customization"></a>Oldalának testreszabása
+## <a name="page-customization"></a>Oldal testreszabása
 
-Az ügyfelek számára a felhasználói út megjelenő HTML és CSS tartalmának nagy része vezérelhető. Oldalának testreszabása használatával testre szabhatja a megjelenését és működését egyéni szabályzat vagy felhasználói folyamatot. Ezzel a testreszabási funkcióval lehet fenntartani az alkalmazás és az Azure AD B2C közötti márkabeli és vizuális egységességet. 
+A felhasználói úton lévő ügyfeleknek bemutatott HTML-és CSS-tartalmak többsége ellenőrizhető. A lap testreszabása segítségével testre szabhatja az egyéni szabályzatok vagy felhasználói folyamatok megjelenését és működését. Ezzel a testreszabási funkcióval lehet fenntartani az alkalmazás és az Azure AD B2C közötti márkabeli és vizuális egységességet.
 
-Az Azure AD B2C kód fut, a felhasználó böngészőjében, és eltérő eredetű erőforrások megosztása (CORS) nevű modern megközelítését használja. Először adjon meg egy URL-t egy testreszabott HTML-tartalommal bíró szabályzatban. Az Azure AD B2C felhasználói felületi elemekre, amely be töltve az URL-címről, és ezután megjeleníti a felhasználónak az oldal HTML-tartalmakat a egyesíti.
+Azure AD B2C futtatja a kódot a felhasználó böngészőjében, és egy modern megközelítést használ az eltérő eredetű erőforrás-megosztás (CORS) néven. Először adjon meg egy URL-t egy testreszabott HTML-tartalommal bíró szabályzatban. Azure AD B2C egyesíti a felhasználói felület elemeit az URL-címről betöltött HTML-tartalommal, majd megjeleníti a lapot a felhasználónak.
 
-Paramétereket lekérdezési sztringben küldhet az Azure AD B2C-nek. Ha átadja a paramétereket a HTML-végpontnak, az oldal tartalma dinamikusan változik. Például a háttérkép, a regisztrálási vagy bejelentkezési oldalon, amely adja át a webes vagy mobilalkalmazás paraméterérték alapján módosítja.
+Paramétereket lekérdezési sztringben küldhet az Azure AD B2C-nek. Ha átadja a paramétereket a HTML-végpontnak, az oldal tartalma dinamikusan változik. Megváltoztathatja például a regisztrációs vagy bejelentkezési oldalon lévő háttérképet a webes vagy mobil alkalmazásából származó paraméter alapján.
 
-Felhasználói folyamat oldalainak testreszabása, lásd: [oktatóanyag: Testre szabhatja a felület az Azure Active Directory B2C felhasználói élmények](tutorial-customize-ui.md). Egyéni szabályzat oldalainak testreszabása, lásd: [egyéni szabályzat használata az Azure Active Directory B2C az alkalmazás a felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom.md) vagy [konfigurálása a felhasználói felület dinamikus tartalom az Azure-beli egyéni szabályzatok használatával Az Active Directory B2C](active-directory-b2c-ui-customization-custom-dynamic.md).
+A felhasználói folyamatok lapjainak testreszabásáról lásd [: oktatóanyag: Testreszabhatja a felhasználói élmények felületét](tutorial-customize-ui.md)Azure Active Directory B2Cban. Egyéni szabályzat lapjainak testreszabásához tekintse meg az [alkalmazás felhasználói felületének testreszabása Egyéni házirenddel Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md) vagy [a dinamikus tartalommal rendelkező felhasználói felületet a Azure Active Directory B2C egyéni házirendek használatával](active-directory-b2c-ui-customization-custom-dynamic.md)című témakörben.
 
 ## <a name="developer-resources"></a>Fejlesztői erőforrások
 
 ### <a name="client-applications"></a>Ügyfélalkalmazások
 
-Választhat, hogy az alkalmazások [iOS](active-directory-b2c-devquickstarts-ios.md), [Android](active-directory-b2c-devquickstarts-android.md), és a .NET, többek között. Az Azure AD B2C lehetővé teszi, hogy ezek a műveletek során a felhasználói identitások védelme egyszerre.
+Többek között az [iOS](active-directory-b2c-devquickstarts-ios.md), az [Android](active-directory-b2c-devquickstarts-android.md)és a .net alkalmazásai közül választhat. A Azure AD B2C engedélyezi ezeket a műveleteket, miközben a felhasználói identitásokat egyszerre védi.
 
-Ha Ön egy ASP.NET webes alkalmazás fejlesztője, az alkalmazás hitelesítéséhez a lépésekkel, a fiókok beállítása [oktatóanyag: A webalkalmazás az Azure AD B2C használatával fiókokkal történő hitelesítésének engedélyezése](active-directory-b2c-tutorials-web-app.md).
+Ha Ön egy ASP.net webalkalmazás-fejlesztő, állítsa be az alkalmazást, hogy hitelesítse a fiókokat az [oktatóanyag lépéseinek használatával: Webalkalmazások engedélyezése a fiókok hitelesítéséhez Azure AD B2C](active-directory-b2c-tutorials-web-app.md)használatával.
 
-Ha Ön egy asztali alkalmazás fejlesztője, az alkalmazás hitelesítéséhez a lépésekkel, a fiókok beállítása [oktatóanyag: Egy asztali alkalmazás az Azure AD B2C használatával fiókokkal történő hitelesítésének engedélyezése](active-directory-b2c-tutorials-desktop-app.md).
+Ha Ön asztali alkalmazás fejlesztője, állítsa be az alkalmazást a fiókok hitelesítéséhez az [oktatóanyag lépéseinek használatával: Az asztali alkalmazások Azure AD B2C](active-directory-b2c-tutorials-desktop-app.md)használatával történő hitelesítésének engedélyezése a fiókokkal.
 
-Ha Ön egy egyoldalas alkalmazás fejlesztője Node.js használatával, az alkalmazás hitelesítéséhez a lépésekkel, a fiókok beállítása [oktatóanyag: Egy egyoldalas alkalmazás az Azure AD B2C használatával fiókokkal történő hitelesítésének engedélyezése](active-directory-b2c-tutorials-spa.md).
+Ha a Node. js-t használó egyoldalas alkalmazás-fejlesztő, állítsa be az alkalmazást, hogy hitelesítse a fiókokat [az oktatóanyag lépéseinek használatával: Egy egyoldalas alkalmazás engedélyezése a fiókok hitelesítéséhez Azure AD B2C](active-directory-b2c-tutorials-spa.md)használatával.
 
 ### <a name="apis"></a>API-k
-Ha az ügyfél vagy a webes alkalmazások API-k meghívásához szükséges, beállíthat is ezeket az erőforrásokat az Azure AD B2C-vel való biztonságos hozzáférést.
+Ha az ügyfélnek vagy a webalkalmazásoknak API-kat kell meghívniuk, a Azure AD B2C biztonságos hozzáférést is beállíthat ezekhez az erőforrásokhoz.
 
-Ha Ön egy ASP.NET webes alkalmazás fejlesztője, az alkalmazás használata a lépések a védett API hívása beállítása [oktatóanyag: Hozzáférést biztosít az ASP.NET webes API-hoz az Azure Active Directory B2C](active-directory-b2c-tutorials-web-api.md).
+Ha Ön egy ASP.net webalkalmazás-fejlesztő, állítsa be az alkalmazást egy védett API meghívásához az [oktatóanyag lépéseinek használatával: Hozzáférés biztosítása egy ASP.NET webes API-hoz a](active-directory-b2c-tutorials-web-api.md)Azure Active Directory B2C használatával.
 
-Ha Ön egy asztali alkalmazás fejlesztője, az alkalmazás használata a lépések a védett API hívása beállítása [oktatóanyag: Egy Node.js webes API-t egy asztali alkalmazásból az Azure Active Directory B2C hozzáférési jogot](active-directory-b2c-tutorials-desktop-app-webapi.md).
+Ha Ön asztali alkalmazás fejlesztője, állítsa be az alkalmazást egy védett API meghívásához az [oktatóanyag lépéseinek használatával: Hozzáférést biztosíthat egy Node. js webes API-hoz egy asztali alkalmazásból Azure Active Directory B2C](active-directory-b2c-tutorials-desktop-app-webapi.md)használatával.
 
-Ha Ön egy egyoldalas alkalmazás fejlesztője Node.js használatával, az alkalmazás hitelesítéséhez a lépésekkel, a fiókok beállítása [oktatóanyag: Az ASP.NET Core webes API-t egy egyoldalas alkalmazásból az Azure Active Directory B2C hozzáférési jogot](active-directory-b2c-tutorials-spa-webapi.md).
+Ha a Node. js-t használó egyoldalas alkalmazás-fejlesztő, állítsa be az alkalmazást, hogy hitelesítse a fiókokat [az oktatóanyag lépéseinek használatával: Hozzáférést biztosíthat egy ASP.NET Core webes API-hoz egy egyoldalas alkalmazásból Azure Active Directory B2C](active-directory-b2c-tutorials-spa-webapi.md)használatával.
 
 ### <a name="javascript"></a>JavaScript
 
-A saját ügyféloldali JavaScript-kódot adhat hozzá az alkalmazások Azure AD B2C-ben. Az alkalmazás beállítása a JavaScript, megadhat egy [lap szerződés](page-contract.md) , és engedélyezze [JavaScript](javascript-samples.md) a felhasználói folyamatok vagy egyéni szabályzatok.
+Hozzáadhat saját JavaScript-ügyféloldali kódot az alkalmazásaihoz Azure AD B2Cban. Az alkalmazásban a JavaScript beállításához megadhat egy [lapelrendezést](page-layout.md) , és engedélyezheti [](javascript-samples.md) a JavaScriptet a felhasználói folyamatokban vagy az egyéni házirendekben.
 
 ### <a name="user-accounts"></a>Felhasználói fiókok
 
-Számos gyakori bérlő felügyeleti feladatokat kell végrehajtani ahhoz, programozott módon. Egy elsődleges például, felhasználók kezelése. Szüksége lehet egy meglévő felhasználó-tároló áttelepítése az Azure AD B2C-bérlő. Érdemes a saját oldalon a felhasználói regisztráció üzemeltethet, és a háttérben az Azure AD B2C-címtárban lévő felhasználói fiókokat hozhat létre. Ilyen típusú feladatok van szükség, hogy a létrehozás, Olvasás, frissítés, és törölje a felhasználói fiókokat. Az alábbi feladatokat is végezhet a [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md).
+Számos gyakori bérlői felügyeleti feladatot programozott módon kell végrehajtani. Elsődleges példa a felhasználók kezelése. Előfordulhat, hogy egy meglévő felhasználói tárolót kell áttelepítenie egy Azure AD B2C-bérlőre. Előfordulhat, hogy a felhasználói regisztrációt a saját oldalán szeretné tárolni, és felhasználói fiókokat szeretne létrehozni a Azure AD B2C könyvtárban a jelenetek mögött. Az ilyen típusú feladatok lehetővé teszik felhasználói fiókok létrehozását, olvasását, frissítését és törlését. Ezeket a feladatokat az [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md)használatával végezheti el.
 
 ## <a name="next-steps"></a>További lépések
 
 Lépjen tovább az oktatóanyagra alkalmazása regisztrációs és bejelentkezési folyamata konfigurálásának megkezdéséhez.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Az Azure Active Directory B2C-bérlő létrehozása](tutorial-create-tenant.md)
+> [Oktatóanyag: Azure Active Directory B2C bérlő létrehozása](tutorial-create-tenant.md)

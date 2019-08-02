@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI-vel és az Azure Storage |} A Microsoft Docs
-description: Ismerje meg, hogyan használható az Azure parancssori felület (Azure CLI) az Azure Storage létrehozása és a storage-fiókok kezelése és használata Azure-blobok és fájlok.
+title: Az Azure CLI használata az Azure Storage szolgáltatással | Microsoft Docs
+description: Megtudhatja, hogyan használhatja az Azure parancssori felületet (Azure CLI) az Azure Storage-ban a Storage-fiókok létrehozásához és kezeléséhez, valamint az Azure-blobok és-fájlok használatához.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,41 +10,43 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: ea7e4757aac0fccf60a44c70e9de6a63c1ec9498
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3338bed8cd8067d58eb2600854de6c0d8e34d1a3
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147008"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668465"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Using the Azure CLI with Azure Storage (Az Azure CLI és az Azure Storage együttes használata)
 
-A nyílt forráskódú, platformfüggetlen Azure parancssori felület parancsokat biztosít az Azure platform használatához. Nagy része megtalálható ugyanazokat a funkciókat biztosít a [az Azure portal](https://portal.azure.com), beleértve a részletes adatok elérésére.
+A nyílt forráskódú, platformfüggetlen Azure CLI számos parancsot biztosít az Azure platformmal való használathoz. Ez a funkció számos, a Azure Portalban található funkciót [](https://portal.azure.com)biztosít, beleértve a gazdag adatelérést is.
 
-Ez az útmutató bemutatjuk, hogyan használható a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) több feladatait az Azure Storage-fiókjában található erőforrásokkal dolgozik. Azt javasoljuk, hogy letöltése és telepítése vagy frissítése a legújabb verzióra a parancssori felület az útmutató használata előtt.
+Ebben az útmutatóban bemutatjuk, hogyan használhatja az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) -t az Azure Storage-fiók erőforrásaival kapcsolatos feladatok elvégzéséhez. Javasoljuk, hogy az útmutató használata előtt töltse le és telepítse vagy frissítse a CLI legújabb verzióját.
 
-Az útmutatóban szereplő példák feltételezik a bash on Ubuntu használatát, de más platformokon hasonló módon kell végrehajtania. 
+Az útmutatóban szereplő példák feltételezik a bash-rendszerhéj Ubuntu-on való használatát, de a többi platformnak hasonlóképpen kell működnie. 
 
 [!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató feltételezi, hogy ismeri az Azure Storage az alapvető fogalmait. Azt is feltételezi, hogy az képes az Azure és a Storage szolgáltatás az alább megadott fióklétrehozási követelmények teljesülnek.
+Ez az útmutató feltételezi, hogy ismeri az Azure Storage alapfogalmait. Azt is feltételezi, hogy képes megfelelni az Azure-hoz és a Storage szolgáltatáshoz alább megadott fiók-létrehozási követelményeknek.
 
 ### <a name="accounts"></a>Fiókok
-* **Azure-fiók**: Ha még nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free/).
-* **Storage-fiók**: Lásd: [hozzon létre egy tárfiókot](storage-quickstart-create-account.md) a [tudnivalók az Azure storage-fiókok](storage-create-storage-account.md).
+* **Azure-fiók**: Ha még nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes Azure-fiókot](https://azure.microsoft.com/free/).
+* **Storage-fiók**: Lásd: [Storage-fiók létrehozása](storage-quickstart-create-account.md) az [Azure Storage](storage-create-storage-account.md)-fiókokról.
 
 ### <a name="install-the-azure-cli"></a>Telepítse az Azure CLI-t
 
-Töltse le és telepítse az Azure CLI leírt utasítások alapján [az Azure CLI telepítése](/cli/azure/install-az-cli2).
+Töltse le és telepítse az Azure CLI-t az [Azure CLI telepítése](/cli/azure/install-az-cli2)című témakörben ismertetett utasítások szerint.
 
 > [!TIP]
-> Ha problémája akad a telepítés, tekintse meg a [telepítési hibák elhárítása](/cli/azure/install-az-cli2) cikkének, és a [telepítése hibaelhárítási](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md) útmutatóban a Githubon.
+> Ha problémája van a telepítéssel, tekintse meg [](/cli/azure/install-az-cli2) a cikk telepítésének hibaelhárítási szakaszát, valamint a githubon a [hibaelhárítási](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md) útmutatót.
 >
 
 ## <a name="working-with-the-cli"></a>A parancssori felület használata
 
-Miután telepítette a parancssori felület, a `az` parancsot a parancssori felületről (Bash, terminál, parancssor) eléréséhez az Azure CLI-parancsokat. Írja be a `az` parancsot (az alábbi példa kimenetében csonkolta) alapparancsok teljes listáját lásd:
+Miután telepítette a CLI-t, használhatja az `az` parancsot a parancssori felületen (bash, Terminal, parancssor) az Azure CLI-parancsok eléréséhez. Írja be `az` a parancsot az alapparancsok teljes listájának megjelenítéséhez (a következő példában a kimenet csonkítva lett):
 
 ```
      /\
@@ -66,7 +68,7 @@ Here are the base commands:
     ...
 ```
 
-Hajtsa végre a parancsot a parancssori felület `az storage --help` listához a `storage` alcsoportok parancsot. Az alcsoportok leírásait nyújt áttekintést a funkció az Azure CLI használata a storage-erőforrásokkal tartalmaz.
+A parancssori felületen futtassa a `az storage --help` parancsot a `storage` parancs alcsoportok listázásához. Az alcsoportok leírása áttekintést nyújt arról, hogy az Azure CLI milyen funkciókat biztosít a tárolási erőforrások kezeléséhez.
 
 ```
 Group
@@ -88,18 +90,18 @@ Subgroups:
     table    : NoSQL key-value storage using semi-structured datasets.
 ```
 
-## <a name="connect-the-cli-to-your-azure-subscription"></a>Csatlakoztassa a CLI-t az Azure-előfizetés
+## <a name="connect-the-cli-to-your-azure-subscription"></a>A CLI összekötése az Azure-előfizetéssel
 
-Működik az Azure-előfizetésében lévő erőforrásokat, meg kell először jelentkezzen be az Azure-fiókjába `az login`. Számos módon jelentkezhet be:
+Az Azure-előfizetéséhez tartozó erőforrásokkal való együttműködéshez először be kell jelentkeznie az Azure- `az login`fiókjába. Többféleképpen is bejelentkezhet:
 
-* **Interaktív bejelentkezés**: `az login`
-* **Jelentkezzen be a felhasználónevet és jelszót**: `az login -u johndoe@contoso.com -p VerySecret`
-  * Ez a Microsoft-fiókok vagy a multi-factor Authentication hitelesítést használó fiókokhoz nem működik.
-* **Jelentkezzen be egy egyszerű szolgáltatást**: `az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
+* **Interaktív bejelentkezés**:`az login`
+* **Bejelentkezés felhasználónévvel és jelszóval**:`az login -u johndoe@contoso.com -p VerySecret`
+  * Ez a funkció nem működik a többtényezős hitelesítést használó Microsoft-fiókokkal vagy fiókokkal.
+* **Jelentkezzen be egy egyszerű szolgáltatással**:`az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
 
-## <a name="azure-cli-sample-script"></a>Az Azure CLI-példaszkript
+## <a name="azure-cli-sample-script"></a>Azure CLI-minta parancsfájl
 
-Ezután fogja együttműködünk egy kis héjparancsfájlt, amely néhány alapvető Azure CLI-parancsokat használhatja az Azure Storage-erőforrások. A szkript először létrehoz egy új tárolót a storage-fiókban, majd feltölti a már meglévő fájl (blob) az adott tárolóhoz. Ezután kilistázza a tárolóban lévő összes BLOB, és végül letölti a fájlt a helyi számítógépen, amely megad egy célhelyre.
+Ezután egy kis rendszerhéj-szkripttel fogunk dolgozni, amely néhány alapszintű Azure CLI-parancsot ad ki az Azure Storage-erőforrásokkal való kommunikációhoz. A szkript először létrehoz egy új tárolót a Storage-fiókban, majd feltölt egy meglévő fájlt (blobként) a tárolóba. Ezután felsorolja a tárolóban lévő összes blobot, és végül letölti a fájlt a megadott helyi számítógépen található célhelyre.
 
 ```bash
 #!/bin/bash
@@ -128,26 +130,26 @@ az storage blob download --container-name $container_name --name $blob_name --fi
 echo "Done"
 ```
 
-**Konfigurálja és futtassa a parancsfájlt**
+**A parancsfájl konfigurálása és futtatása**
 
-1. Nyissa meg a kedvenc szövegszerkesztőjével, majd másolja és illessze be az előző parancsfájlt a szerkesztőbe.
+1. Nyissa meg a kedvenc szövegszerkesztőjét, majd másolja és illessze be az előző szkriptet a szerkesztőbe.
 
-2. Ezután frissítse a parancsfájl-változókat, hogy a konfigurációs beállítások. Cserélje le a következő értékeket a megadott módon:
+2. Ezután frissítse a szkript változóit a konfigurációs beállításoknak megfelelően. Cserélje le a következő értékeket a megadott értékekre:
 
-   * **\<tárfiók_neve\>**  a tárfiók nevére.
-   * **\<storage_account_key\>**  a tárfiók elsődleges vagy másodlagos hozzáférési kulcsára.
-   * **\<container_name\>**  egy nevet az új tárolót szeretne létrehozni, például az "azure-cli-példa-container".
-   * **\<blob_name\>**  a cél blob tároló nevét.
-   * **\<file_to_upload\>**  elérési útját a kis fájlt a helyi számítógépen, például a "~ / images/HelloWorld.png".
-   * **\<destination_file\>**  a cél elérési út, például a "~ / downloadedImage.png".
+   * storage_account_name a Storage-fiók nevét. **\<\>**
+   * a storage_account_key elsődleges vagy másodlagos elérési kulcsának megadása. **\<\>**
+   * container_name a létrehozandó új tároló nevét, például: "Azure-CLI-Sample-Container". **\<\>**
+   * a blob_name a tárolóban található cél blob nevét adja meg. **\<\>**
+   * file_to_upload a helyi számítógépen lévő kis fájl elérési útját, például "~/images/HelloWorld.png". **\<\>**
+   * destination_file a célfájl elérési útját (például "~/downloadedImage.png"). **\<\>**
 
-3. A szükséges változók frissítése után mentse a parancsfájlt, és lépjen ki a saját szerkesztőben. A következő lépések azt feltételezik, hogy a parancsfájl nevű **my_storage_sample.sh**.
+3. A szükséges változók frissítése után mentse a parancsfájlt, és zárja be a szerkesztőt. A következő lépések feltételezik, hogy elnevezte a **my_storage_sample. sh**parancsfájlt.
 
-4. Megjelölés végrehajtható, mint a szkriptet, szükség esetén: `chmod +x my_storage_sample.sh`
+4. A parancsfájlt végrehajthatóként kell megjelölnie, ha szükséges:`chmod +x my_storage_sample.sh`
 
-5. A szkript végrehajtása. Ha például a Bash: `./my_storage_sample.sh`
+5. Futtassa a szkriptet. Például a Bashben:`./my_storage_sample.sh`
 
-A következőhöz hasonló kimenetnek kell megjelennie, és a **\<destination_file\>** az a parancsfájl meg kell jelennie a helyi számítógépen.
+Ekkor az alábbihoz hasonló kimenetnek kell megjelennie **\<,\>** és a parancsfájlban megadott destination_file meg kell jelennie a helyi számítógépen.
 
 ```
 Creating the container...
@@ -168,13 +170,13 @@ Done
 ```
 
 > [!TIP]
-> A fenti kimeneti van **tábla** formátumban. Megadhatja, amely a kimeneti formátum használatára megadásával a `--output` argumentum a CLI-parancsok a, vagy állítsa be globálisan `az configure`.
+> Az előző kimenet táblázatos formátumú. Megadhatja, hogy melyik kimeneti formátumot szeretné használni a CLI `--output` -parancsok argumentumának megadásával, vagy globálisan `az configure`a használatával.
 >
 
 ## <a name="manage-storage-accounts"></a>Tárfiókok kezelése
 
 ### <a name="create-a-new-storage-account"></a>Új tárfiók létrehozása
-Az Azure Storage használatához tárfiókra van szüksége. Új Azure Storage-fiókot hozhat létre, a számítógép csatlakozni az előfizetés konfigurálása után.
+Az Azure Storage használatához tárfiókra van szüksége. Létrehozhat egy új Azure Storage-fiókot, miután konfigurálta a számítógépet az előfizetéshez való kapcsolódáshoz.
 
 ```azurecli
 az storage account create \
@@ -184,19 +186,19 @@ az storage account create \
     --sku <account_sku>
 ```
 
-* `--location` [Kötelező]: A hely. Például "West US".
-* `--name` [Kötelező]: A tárfiók neve. A neve 3 – 24 karakter hosszúságú lehet, és csak kisbetűs alfanumerikus karaktereket használjon.
-* `--resource-group` [Kötelező]: Erőforráscsoport neve.
-* `--sku` [Kötelező]: A tárfiók SKU-JÁNAK. Megengedett értékek:
+* `--location`[Kötelező]: Helyen. Például: "West US".
+* `--name`[Kötelező]: A tárfiók neve. A névnek 3 – 24 karakter hosszúnak kell lennie, és csak kisbetűs alfanumerikus karaktereket használjon.
+* `--resource-group`[Kötelező]: Erőforráscsoport neve.
+* `--sku`[Kötelező]: A Storage-fiók SKU-jának. Megengedett értékek:
   * `Premium_LRS`
   * `Standard_GRS`
   * `Standard_LRS`
   * `Standard_RAGRS`
   * `Standard_ZRS`
 
-### <a name="set-default-azure-storage-account-environment-variables"></a>Az Azure storage-fiók alapértelmezett környezeti változók beállítása
+### <a name="set-default-azure-storage-account-environment-variables"></a>Alapértelmezett Azure Storage-fiók környezeti változóinak beállítása
 
-Több tárfiók rendelkezhet az Azure-előfizetésében. Azokat az összes későbbi tárolási parancsra vonatkozó egyikét választhatja ki, ezeket a környezeti változókat állíthatja be:
+Az Azure-előfizetése több Storage-fiókkal is rendelkezhet. Az alábbi környezeti változók megadásával választhatja ki, hogy az összes további tárolási parancshoz használni tudja az egyiket:
 
 Elsőként jelenítse meg a tárfiókkulcsokat az [az storage account keys list](/cli/azure/storage/account/keys) parancs segítségével:
 
@@ -207,14 +209,14 @@ az storage account keys list \
     --output table
 ```
 
-Most, hogy a kulcs, környezeti változókként, és a fiók nevét adhatja meg:
+Most, hogy már rendelkezik a kulccsal, megadhatja a nevet és a fióknevet környezeti változókként:
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
 export AZURE_STORAGE_KEY=<key>
 ```
 
-Egy alapértelmezett tárfiókot be egy másik úgy, hogy a kapcsolati karakterlánc használatával. Először kérje le a kapcsolati karakterláncot a `show-connection-string` parancsot:
+Egy másik módszer az alapértelmezett Storage-fiók beállítása egy kapcsolódási karakterlánc használatával. Először szerezze be a (z) `show-connection-string` paranccsal a kapcsolatok karakterláncát:
 
 ```azurecli
 az storage account show-connection-string \
@@ -222,35 +224,35 @@ az storage account show-connection-string \
     --resource-group <resource_group>
 ```
 
-Ezután másolja ki a kimeneti kapcsolati karakterláncot, és állítsa be a `AZURE_STORAGE_CONNECTION_STRING` (szüksége lehet a kapcsolati karakterlánc tegye idézőjelek között) környezeti változó:
+Ezután másolja ki a kimeneti kapcsolódási karakterláncot `AZURE_STORAGE_CONNECTION_STRING` , és állítsa be a környezeti változót (Előfordulhat, hogy a kapcsolódási karakterláncot idézőjelek közé kell foglalni):
 
 ```azurecli
 export AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
 ```
 
 > [!NOTE]
-> Ez a cikk a következő szakaszokban az összes példák azt feltételezik, hogy beállított a `AZURE_STORAGE_ACCOUNT` és `AZURE_STORAGE_KEY` környezeti változókat.
+> A cikk alábbi fejezeteiben szereplő példák azt feltételezik, hogy beállította a `AZURE_STORAGE_ACCOUNT` és `AZURE_STORAGE_KEY` a környezeti változókat.
 
-## <a name="create-and-manage-blobs"></a>Hozzon létre és kezelheti a blobokat
-Az Azure Blob storage szolgáltatás nagy mennyiségű strukturálatlan adat, például szöveg vagy bináris adatot, amely segítségével bárhonnan elérhetők HTTP- vagy HTTPS keresztül a világon tárolásához. Ez a szakasz azt feltételezi, hogy már ismeri az Azure Blob-tárolóval kapcsolatos fogalmak. Részletes információkért lásd: [.NET használatával az Azure Blob storage használatának első lépései](../blobs/storage-dotnet-how-to-use-blobs.md) és [Blob szolgáltatással kapcsolatos fogalmak](/rest/api/storageservices/blob-service-concepts).
+## <a name="create-and-manage-blobs"></a>Blobok létrehozása és kezelése
+Az Azure Blob Storage egy olyan szolgáltatás, amely nagy mennyiségű strukturálatlan adat, például szöveges vagy bináris adatok tárolására szolgál, amelyek HTTP-vagy HTTPS-kapcsolaton keresztül bárhonnan elérhetők a világ bármely pontján. Ez a szakasz azt feltételezi, hogy már ismeri az Azure Blob Storage-fogalmakat. Részletes információkért lásd: [Az Azure Blob Storage használatának első lépései a .net](../blobs/storage-dotnet-how-to-use-blobs.md) -és blob-szolgáltatásokkal kapcsolatos [fogalmakkal](/rest/api/storageservices/blob-service-concepts).
 
 ### <a name="create-a-container"></a>Tároló létrehozása
-Az Azure BLOB storage összes blobjának egy tárolóban kell lennie. Használatával is létrehozhat egy tárolót a `az storage container create` parancsot:
+Az Azure Storage-ban minden blobnak tárolóban kell lennie. A tárolót a `az storage container create` parancs használatával hozhatja létre:
 
 ```azurecli
 az storage container create --name <container_name>
 ```
 
-Beállíthat egy három szintje olvasási hozzáférés egy új tárolót megadásával a választható `--public-access` argumentum:
+Az új tárolók esetében a választható `--public-access` argumentum megadásával beállíthatja az olvasási hozzáférés három szintje egyikét:
 
-* `off` (alapértelmezett): Tároló adatok csak a fiók tulajdonosától.
-* `blob`: Nyilvános olvasási hozzáférés blobok számára.
-* `container`: A teljes tárolót nyilvános olvasási és a lista hozzáférést.
+* `off`(alapértelmezett): A tárolók személyesek a fiók tulajdonosa számára.
+* `blob`: Nyilvános olvasási hozzáférés a blobokhoz.
+* `container`: Nyilvános olvasási és listázási hozzáférés a teljes tárolóhoz.
 
 További információkért lás a [tárolók és blobok névtelen olvasási hozzáférésének kezelésével](../blobs/storage-manage-access-to-resources.md) foglalkozó témakört.
 
 ### <a name="upload-a-blob-to-a-container"></a>Blob feltöltése tárolóba
-Az Azure Blob storage támogatja a blokk, hozzáfűzése, és a lapblobokat. Blobok feltöltése a tárolóba a `blob upload` parancsot:
+Az Azure Blob Storage támogatja a blokk, a Hozzáfűzés és az oldal blobokat. Blobok feltöltése egy tárolóba a `blob upload` paranccsal:
 
 ```azurecli
 az storage blob upload \
@@ -259,15 +261,15 @@ az storage blob upload \
     --name <blob_name>
 ```
 
-Ha közvetlenül feltöltése egy mappát a tárolóban, a storage-fiókban, szeretné, cserélje le a `--name <blob_name>` a `--name <folder/blob_name>`.
+Ha közvetlenül a Storage-fiókban lévő tárolóban lévő mappába szeretne feltölteni, cserélje le `--name <blob_name>` a `--name <folder/blob_name>`következőt:.
 
- Alapértelmezés szerint a `blob upload` parancs feltölti *.vhd fájlok lapblobok, illetve egyéb a blokkblobok használatát támogatják. Adjon meg egy másik típusú, ha feltölt egy blobot, használhatja a `--type` argumentum – engedélyezett értékek `append`, `block`, és `page`.
+ Alapértelmezés szerint a parancs `blob upload` feltölti a *. vhd fájlokat az oldal blobokra, vagy más módon blokkolja a blobokat. Ha másik típust szeretne megadni egy blob feltöltésekor, használhatja `--type` az argumentumot – az engedélyezett `append`értékek `block`:, és `page`.
 
- A különböző blobtípusok további információkért lásd: [Understanding Block Blobs, hozzáfűző blobokat és Lapblobokat](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
+ A különböző blob-típusokkal kapcsolatos további információkért lásd: a Blobok [, a Blobok hozzáfűzése és az oldal Blobok ismertetése](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
 
 
 ### <a name="download-a-blob-from-a-container"></a>Blob letöltése tárolóból
-Ebben a példában a blob letöltése tárolóból mutatja be:
+Ez a példa azt szemlélteti, hogyan tölthető le egy blob egy tárolóból:
 
 ```azurecli
 az storage blob download \
@@ -278,7 +280,7 @@ az storage blob download \
 
 ### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-A tárolóban lévő blobok listázása a [az storage blob list](/cli/azure/storage/blob) parancsot.
+A tárolóban lévő Blobok listázása az az [Storage blob List](/cli/azure/storage/blob) paranccsal.
 
 ```azurecli
 az storage blob list \
@@ -316,51 +318,62 @@ az storage blob copy start \
     --source-uri https://sourceaccountname.blob.core.windows.net/sourcecontainer/sourcefile.png
 ```
 
-A fenti példában a céltároló már léteznie kell a cél tárfiók sikeres másolási művelet. Ezenkívül a `--source-uri` argumentumban megadott forrásblobnak tartalmaznia kell egy közös hozzáférésű jogosultságkód (SAS-) tokent, vagy nyilvánosnak kell lennie, ahogy ebben a példában is szerepel.
+A fenti példában a cél tárolónak már léteznie kell a cél Storage-fiókban ahhoz, hogy a másolási művelet sikeres legyen. Ezenkívül a `--source-uri` argumentumban megadott forrásblobnak tartalmaznia kell egy közös hozzáférésű jogosultságkód (SAS-) tokent, vagy nyilvánosnak kell lennie, ahogy ebben a példában is szerepel.
 
 ### <a name="delete-a-blob"></a>Blob törlése
-A blob törléséhez használja a `blob delete` parancsot:
+BLOB törléséhez használja a `blob delete` következő parancsot:
 
 ```azurecli
 az storage blob delete --container-name <container_name> --name <blob_name>
 ```
 
-## <a name="create-and-manage-file-shares"></a>Hozzon létre, és a fájlmegosztások felügyelete
-Az Azure Files a Server Message Block (SMB) protokollt használó alkalmazások számára közös tárhelyet kínál. A Microsoft Azure virtuális gépek és felhőszolgáltatások, valamint a helyszíni alkalmazásokat, oszthatnak meg keresztül csatlakoztatott megosztások. Fájlmegosztások és a fájladatok az Azure CLI-n keresztül is kezelheti. További információ az Azure Files: [Bevezetés az Azure Files használatába](../files/storage-files-introduction.md).
+### <a name="set-the-content-type"></a>A tartalomtípus beállítása
+
+A tartalomtípus (más néven MIME-típus) a blobban lévő adatok formátumát azonosítja. A böngészők és egyéb szoftverek a tartalomtípus segítségével állapítják meg az adatok feldolgozásának a módját. Például a PNG-lemezképek `image/png`tartalomtípusa a következő:. A tartalom típusának beállításához használja a `blob update` következő parancsot:
+
+```azurecli
+az storage blob update
+    --container-name <container_name> 
+    --name <blob_name>
+    --content-type <content_type>
+```
+
+## <a name="create-and-manage-file-shares"></a>Fájlmegosztás létrehozása és kezelése
+Azure Files a Server Message Block (SMB) protokollt használó alkalmazások számára biztosít megosztott tárterületet. Microsoft Azure a virtuális gépek és a Cloud Services, valamint a helyszíni alkalmazások is megoszthatják a fájlokat a csatlakoztatott megosztásokon keresztül. Az Azure CLI-n keresztül kezelheti a fájlmegosztást és a fájlokat. További információ a Azure Filesről: a [Azure Files bemutatása](../files/storage-files-introduction.md).
 
 ### <a name="create-a-file-share"></a>Fájlmegosztás létrehozása
-Azure-fájlmegosztások az SMB-fájlmegosztás az Azure-ban. Minden könyvtárnak és fájlnak léteznie kell egy fájlmegosztásban. Egy fiók korlátlan számú megosztást tartalmazhat, és a egy megosztás korlátlan számú fájl, egészen a tárfiók kapacitásának korlátjáig tárolhatja. A következő példában létrehozunk egy nevű fájlmegosztást **myshare**.
+Az Azure-fájlmegosztás egy SMB-fájlmegosztás az Azure-ban. Az összes könyvtárat és fájlt egy fájlmegosztási fájlban kell létrehozni. Egy fiók korlátlan számú megosztást tartalmazhat, és egy megosztás korlátlan számú fájlt tárolhat, a Storage-fiók kapacitásának korlátaival együtt. A következő példa egy **MyShare**nevű fájlmegosztást hoz létre.
 
 ```azurecli
 az storage share create --name myshare
 ```
 
 ### <a name="create-a-directory"></a>Könyvtár létrehozása
-Egy címtárat az Azure-fájlmegosztások hierarchikus struktúrát biztosít. A következő példában létrehozunk egy nevű könyvtárat **könyvtárnév** a fájlmegosztásban.
+A címtár hierarchikus struktúrát biztosít egy Azure-fájlmegosztás számára. A következő példában létrehozunk egy **könyvtárnév** nevű könyvtárat a fájlmegosztás számára.
 
 ```azurecli
 az storage directory create --name myDir --share-name myshare
 ```
 
-Az elérési út például több szinten is tartalmazhat **dir1/dir2**. Azonban biztosítania kell, hogy az összes szülőkönyvtár létezik alkönyvtárak létrehozása előtt. Elérési út esetében például **dir1/dir2**, először létre kell hoznia directory **dir1**, majd hozza létre a könyvtár **dir2**.
+A könyvtár elérési útja több szintet is tartalmazhat, például **dir1/dir2**. Az alkönyvtárak létrehozása előtt azonban győződjön meg arról, hogy az összes szülő-könyvtár létezik. Például a Path **dir1/dir2**esetében először létre kell hoznia a címtár- **dir1**, majd létre kell hoznia a címtár- **dir2**.
 
-### <a name="upload-a-local-file-to-a-share"></a>Helyi fájl feltöltése a megosztásba
-A következő példa feltölti a fájlt **~/temp/samplefile.txt** gyökérmappája a **myshare** fájlmegosztást. A `--source` argumentum, adja meg a meglévő helyi fájl feltöltése.
+### <a name="upload-a-local-file-to-a-share"></a>Helyi fájl feltöltése egy megosztásba
+A következő példa egy fájlt tölt fel a **~/temp/samplefile.txt** -ből a **MyShare** -fájlmegosztás gyökerébe. Az `--source` argumentum a meglévő helyi fájlt adja meg a feltöltéshez.
 
 ```azurecli
 az storage file upload --share-name myshare --source ~/temp/samplefile.txt
 ```
 
-Igény szerint a címtár létrehozása, megadhat a megosztás feltölteni a fájlt a meglévő címtárhoz a megosztáson belüli belül az elérési út:
+A címtár létrehozásához hasonlóan a megosztáson belül is megadhatja a könyvtár elérési útját, hogy feltöltse a fájlt egy meglévő könyvtárba a megosztáson belül:
 
 ```azurecli
 az storage file upload --share-name myshare/myDir --source ~/temp/samplefile.txt
 ```
 
-A megosztásban található fájl akár 1 TB méretű is lehet.
+A megosztásban található fájlok mérete akár 1 TB is lehet.
 
-### <a name="list-the-files-in-a-share"></a>Az olyan megosztáson található fájlok listázása
-Listázhatja fájlok és könyvtárak egy megosztás használatával a `az storage file list` parancsot:
+### <a name="list-the-files-in-a-share"></a>Megosztásban található fájlok listázása
+A megosztásban található fájlokat és címtárakat a `az storage file list` parancs használatával listázhatja:
 
 ```azurecli
 # List the files in the root of a share
@@ -374,7 +387,7 @@ az storage file list --share-name myshare --path myDir/mySubDir/MySubDir2 --outp
 ```
 
 ### <a name="copy-files"></a>Fájlok másolása      
-Fájl másolása másik fájlba, egy fájlt egy blobba vagy egy blobot egy fájlba. Például egy fájl másolása egy másik megosztást a könyvtárba:        
+Fájlokat másolhat egy másik fájlba, egy fájlt egy blobba vagy egy blobot egy fájlba. Ha például egy fájlt egy másik megosztásban lévő könyvtárba szeretne másolni:        
         
 ```azurecli
 az storage file copy start \
@@ -383,13 +396,13 @@ az storage file copy start \
 ```
 
 ## <a name="create-share-snapshot"></a>Megosztási pillanatkép létrehozása
-Megosztási pillanatképek használatával is létrehozhat a `az storage share snapshot` parancsot:
+A megosztási pillanatképet a `az storage share snapshot` parancs használatával hozhatja létre:
 
 ```cli
 az storage share snapshot -n <share name>
 ```
 
-Kimeneti példa
+Minta kimenete
 ```json
 {
   "metadata": {},
@@ -405,13 +418,13 @@ Kimeneti példa
 
 ### <a name="list-share-snapshots"></a>Megosztási pillanatképek felsorolása
 
-Megosztási pillanatképek egy adott megosztás használatával listázhatja `az storage share list --include-snapshots`
+Az egyes megosztások megosztási pillanatképeit a használatával listázhatja`az storage share list --include-snapshots`
 
 ```cli
 az storage share list --include-snapshots
 ```
 
-**Kimeneti példa**
+**Minta kimenete**
 ```json
 [
   {
@@ -448,13 +461,13 @@ az storage share list --include-snapshots
 ```
 
 ### <a name="browse-share-snapshots"></a>Böngészés a megosztási pillanatképekben
-Egy bizonyos megosztási pillanatkép-tartalom használatával megtekintéséhez be is böngészhet `az storage file list`. Egy megosztás nevének megadására van `--share-name <snare name>` és az időbélyegző `--snapshot '2017-10-04T19:45:18.0000000Z'`
+Egy adott megosztási pillanatképen is megtekintheti a tartalmát a használatával `az storage file list`. Az egyiknek meg kell adnia a `--share-name <snare name>` megosztás nevét és az időbélyeget.`--snapshot '2017-10-04T19:45:18.0000000Z'`
 
 ```azurecli-interactive
 az storage file list --share-name sharesnapshotdefs --snapshot '2017-10-04T19:45:18.0000000Z' -otable
 ```
 
-**Kimeneti példa**
+**Minta kimenete**
 ```
 Name            Content Length    Type    Last Modified
 --------------  ----------------  ------  ---------------
@@ -468,14 +481,14 @@ IMG_1634.JPG    1495999           file
 IMG_1635.JPG    974058            file
 
 ```
-### <a name="restore-from-share-snapshots"></a>Visszaállítása megosztási pillanatképekből
+### <a name="restore-from-share-snapshots"></a>Visszaállítás a megosztási pillanatképekről
 
-Visszaállíthatja a fájl másolásával, vagy egy pillanatkép segítségével megosztásban található fájl letöltése `az storage file download` parancs
+A fájlokat visszaállíthatja egy megosztási pillanatképből származó fájl másolásával vagy letöltésével a parancs használatával `az storage file download`
 
 ```azurecli-interactive
 az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --snapshot '2017-10-04T19:45:18.0000000Z'
 ```
-**Kimeneti példa**
+**Minta kimenete**
 ```
 {
   "content": null,
@@ -506,13 +519,13 @@ az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --sn
 }
 ```
 ## <a name="delete-share-snapshot"></a>Megosztási pillanatkép törlése
-Megosztási pillanatképek használatával törölheti az `az storage share delete` parancs megadásával `--snapshot` paraméterrel rendelkező megosztási pillanatkép időbélyeg:
+A megosztási pillanatképet a parancs `az storage share delete` `--snapshot` használatával törölheti, ha a megosztás pillanatképének időbélyegét megadó paraméterrel rendelkezik:
 
 ```cli
 az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z' 
 ```
 
-Kimeneti példa
+Minta kimenete
 ```json
 {
   "deleted": true
@@ -520,8 +533,8 @@ Kimeneti példa
 ```
 
 ## <a name="next-steps"></a>További lépések
-Az alábbiakban néhány további források további információra van szüksége az Azure CLI-vel kapcsolatban. 
+Íme néhány további erőforrás az Azure CLI használatáról. 
 
-* [Azure CLI használatának első lépései](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
-* [Az Azure CLI parancsdokumentációja](/cli/azure)
-* [Az Azure CLI a Githubon](https://github.com/Azure/azure-cli)
+* [Ismerkedés az Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
+* [Azure CLI-parancsok – dokumentáció](/cli/azure)
+* [Azure CLI a GitHubon](https://github.com/Azure/azure-cli)

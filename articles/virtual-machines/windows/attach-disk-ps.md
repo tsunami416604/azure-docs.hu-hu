@@ -1,36 +1,27 @@
 ---
-title: Adatlemez csatolása az Azure-beli Windows virtuális gépekhez a PowerShell-lel |} A Microsoft Docs
-description: Új vagy meglévő lemez csatolása Windows virtuális gép PowerShell használatával a Resource Manager üzemi modellel hogyan.
-services: virtual-machines-windows
-documentationcenter: ''
+title: Adatlemez csatlakoztatása egy Windows rendszerű virtuális géphez az Azure-ban a PowerShell használatával | Microsoft Docs
+description: Új vagy meglévő adatlemez csatolása Windows rendszerű virtuális géphez a PowerShell és a Resource Manager-alapú üzemi modell használatával.
 author: roygara
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6a20dac0f89390f1229c7a71793814dc9f9397c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 615eedc66d1c4ac931067ffccdace5d161b18384
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66727854"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699886"
 ---
-# <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Adatlemez csatolása egy Windows virtuális géphez a PowerShell-lel
+# <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Adatlemez csatolása Windows rendszerű virtuális géphez a PowerShell-lel
 
-Ez a cikk bemutatja, hogyan új és meglévő lemez csatolása Windows virtuális gép PowerShell-lel. 
+Ez a cikk bemutatja, hogyan csatlakoztathatja az új és a meglévő lemezeket egy Windows rendszerű virtuális géphez a PowerShell használatával. 
 
 Először tekintse át a következő tippeket:
 
-* A virtuális gép méretét szabályozza, hány adatlemez csatolható. További információkért lásd: [virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Prémium szintű SSD-k használatához szüksége lesz egy [prémium szintű storage-kompatibilis virtuális gép típusa](sizes-memory.md), például a DS vagy GS sorozatú virtuális gépet.
+* A virtuális gép mérete határozza meg, hogy hány adatlemezt tud csatlakoztatni. További információkért lásd: [virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* A prémium SSD-k használatához [prémium szintű Storage-kompatibilis](sizes-memory.md)virtuálisgép-típusra van szükség, például a DS-sorozat vagy a GS sorozatú virtuális gép számára.
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
@@ -38,7 +29,7 @@ Először tekintse át a következő tippeket:
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>Üres adatlemez hozzáadása egy virtuális géphez
 
-Ez a példa bemutatja, hogyan üres adatlemez hozzáadása egy meglévő virtuális gépet.
+Ebből a példából megtudhatja, hogyan adhat hozzá üres adatlemezt egy meglévő virtuális géphez.
 
 ### <a name="using-managed-disks"></a>Felügyelt lemezek használata
 
@@ -60,7 +51,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="using-managed-disks-in-an-availability-zone"></a>Felügyelt lemezek használata rendelkezésre állási zónában
 
-Lemez létrehozása egy rendelkezésre állási zónában, használja a [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) együtt a `-Zone` paraméter. Az alábbi példa létrehoz egy lemezt a zóna *1*.
+Ha lemezt szeretne létrehozni egy rendelkezésre állási zónában, használja a `-Zone` [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) paramétert. Az alábbi példa egy lemezt hoz létre az *1*. zónában.
 
 ```powershell
 $rgName = 'myResourceGroup'
@@ -78,9 +69,9 @@ $vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -Managed
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
-### <a name="initialize-the-disk"></a>Inicializálja a lemezt
+### <a name="initialize-the-disk"></a>A lemez inicializálása
 
-Miután hozzáadott egy üres lemez, kell inicializálnia. A lemez inicializálása, jelentkezzen be a virtuális gép, és a Lemezkezelés eszközzel. Ha engedélyezte a [WinRM](https://docs.microsoft.com/windows/desktop/WinRM/portal) és a egy tanúsítványt a virtuális gép létrehozásakor adott meg, távoli PowerShell használatával inicializálja a lemezt. Egy egyéni szkriptbővítmény is használhatja:
+Ha üres lemezt ad hozzá, inicializálnia kell azt. A lemez inicializálásához bejelentkezhet egy virtuális gépre, és a Lemezkezelés szolgáltatással is használható. Ha a [rendszerfelügyeleti](https://docs.microsoft.com/windows/desktop/WinRM/portal) webszolgáltatások és a virtuális gép tanúsítványát engedélyezte a létrehozásakor, a távoli PowerShell használatával inicializálhatja a lemezt. Egyéni parancsfájl-bővítményt is használhat:
 
 ```azurepowershell-interactive
     $location = "location-name"
@@ -89,7 +80,7 @@ Miután hozzáadott egy üres lemez, kell inicializálnia. A lemez inicializál�
     Set-AzVMCustomScriptExtension -ResourceGroupName $rgName -Location $locName -VMName $vmName -Name $scriptName -TypeHandlerVersion "1.4" -StorageAccountName "mystore1" -StorageAccountKey "primary-key" -FileName $fileName -ContainerName "scripts"
 ```
 
-A parancsfájl például inicializálja a lemezeket kódot tartalmazza:
+A parancsfájl tartalmazhat kódot a lemezek inicializálásához, például:
 
 ```azurepowershell-interactive
     $disks = Get-Disk | Where partitionstyle -eq 'raw' | sort number
@@ -108,9 +99,9 @@ A parancsfájl például inicializálja a lemezeket kódot tartalmazza:
     }
 ```
 
-## <a name="attach-an-existing-data-disk-to-a-vm"></a>Egy már meglévő adatlemez csatolása a virtuális géphez
+## <a name="attach-an-existing-data-disk-to-a-vm"></a>Meglévő adatlemez csatolása egy virtuális géphez
 
-Meglévő felügyelt lemez is csatlakoztatható egy virtuális géphez adatlemezként.
+Egy meglévő felügyelt lemezt adatlemezként is csatolhat egy virtuális géphez.
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
@@ -128,4 +119,4 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ## <a name="next-steps"></a>További lépések
 
-Hozzon létre egy [pillanatkép](snapshot-copy-managed-disk.md).
+Hozzon [](snapshot-copy-managed-disk.md)létre egy pillanatképet.

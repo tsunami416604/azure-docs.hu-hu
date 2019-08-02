@@ -1,6 +1,6 @@
 ---
-title: Hogyan hozhat létre, és keresse meg a C + Azure térbeli horgonyok használatával horgonyok +/ Szünettel |} A Microsoft Docs
-description: Bemutatja, hogyan hozhat létre, és keresse meg a C + Azure térbeli horgonyok használatával horgonyok magyarázatra vágyik +/ Szünettel.
+title: Horgonyok létrehozása és megkeresése az Azure térbeli horgonyok használatával C++a/NDK-ben | Microsoft Docs
+description: Részletes magyarázat arról, hogyan hozhatók létre és találhatók a horgonyok az Azure térbeli horgonyok C++használatával a/NDK.-ben
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -8,14 +8,14 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3d0295512452367cb0f70f1d9ca6e950d6649353
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 2578202c2464248c1c765368d308ca669d918057
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67669326"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562543"
 ---
-# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>Hogyan hozhat létre, és keresse meg a C + Azure térbeli horgonyok használatával horgonyok +/ Szünettel
+# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>Horgonyok létrehozása és megkeresése az Azure térbeli horgonyok használatával C++a/NDK-ben
 
 > [!div  class="op_single_selector"]
 > * [Unity](create-locate-anchors-unity.md)
@@ -25,25 +25,25 @@ ms.locfileid: "67669326"
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti megosztását teszi lehetővé. Támogatja a több különböző fejlesztési környezet. Ebben a cikkben azt részletesen ismerteti, hogyan használható az Azure térbeli horgonyok SDK, az C++/NDK, cél:
+Az Azure térbeli horgonyok lehetővé teszik, hogy a különböző eszközök között ossza meg a világbeli horgonyokat. Számos különböző fejlesztési környezetet támogat. Ebben a cikkben bemutatjuk, hogyan használható az Azure térbeli horgonyok SDK a/NDK-ben C++:
 
-- Helyes beállítása és kezelése az Azure térbeli horgonyok munkamenet.
-- Hozzon létre, és állítsa be a helyi kapcsolatok alapjainak tulajdonságait.
-- Töltse fel a felhőbe azokat.
-- Keresse meg, és törölje a térbeli felhőbeli horgonyok.
+- Az Azure térbeli horgonyok munkamenetének megfelelő beállítása és kezelése.
+- Hozzon létre és állítson be tulajdonságokat a helyi horgonyokon.
+- Töltse fel őket a felhőbe.
+- Felhőbeli térbeli horgonyok megkeresése és törlése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az útmutató végrehajtásához győződjön meg arról, hogy rendelkezik:
+Az útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik a következővel:
 
-- Olvassa el a [Azure térbeli kapcsolatok alapjainak áttekintése](../overview.md).
-- Befejeződött az egyik a [5 perces gyors útmutatók](../index.yml).
-- Alapvető ismeretek a C++ és a <a href="https://developer.android.com/ndk/" target="_blank">Androidos natív Development Kit</a>.
-- Alapvető ismeretek <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> 1.7-es.
+- Olvassa el az [Azure térbeli horgonyok áttekintése című témakört](../overview.md).
+- Az [5 perces rövid](../index.yml)útmutatók egyikét fejezte be.
+- Alapszintű C++ ismeretek és az <a href="https://developer.android.com/ndk/" target="_blank">Android natív fejlesztői csomag</a>.
+- A <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a>alapszintű ismerete.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-Tudjon meg többet a [CloudSpatialAnchorSession](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession) struct.
+További információ a [CloudSpatialAnchorSession](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession) struct-ról.
 
 ```cpp
     std::shared_ptr<CloudSpatialAnchorSession> cloudSession_;
@@ -53,7 +53,7 @@ Tudjon meg többet a [CloudSpatialAnchorSession](https://docs.microsoft.com/cpp/
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-Tudjon meg többet a [SessionConfiguration](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/sessionconfiguration) struct.
+További információ a [SessionConfiguration](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/sessionconfiguration) struct-ról.
 
 ```cpp
     auto configuration = cloudSession_->Configuration();
@@ -69,7 +69,7 @@ Tudjon meg többet a [SessionConfiguration](https://docs.microsoft.com/cpp/api/s
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-Tudjon meg többet a [TokenRequiredDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/tokenrequireddelegate) delegálására.
+További információ a [TokenRequiredDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/tokenrequireddelegate) delegált szolgáltatásról.
 
 ```cpp
     auto accessTokenRequiredToken = cloudSession_->TokenRequired([](auto&&, auto&& args) {
@@ -118,7 +118,7 @@ Tudjon meg többet a [TokenRequiredDelegate](https://docs.microsoft.com/cpp/api/
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
-Tudjon meg többet a [Start](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#start) metódust.
+További információ az [indítási](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#start) módszerről.
 
 ```cpp
     cloudSession_->Session(ar_session_);
@@ -127,7 +127,7 @@ Tudjon meg többet a [Start](https://docs.microsoft.com/cpp/api/spatial-anchors/
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-Tudjon meg többet a [ProcessFrame](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#processframe) metódust.
+További információ a [ProcessFrame](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#processframe) metódusról.
 
 ```cpp
     cloudSession_->ProcessFrame(ar_frame_);
@@ -135,7 +135,7 @@ Tudjon meg többet a [ProcessFrame](https://docs.microsoft.com/cpp/api/spatial-a
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-Tudjon meg többet a [SessionUpdatedDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/sessionupdateddelegate) delegálására.
+További információ a [SessionUpdatedDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/sessionupdateddelegate) delegált szolgáltatásról.
 
 ```cpp
     auto sessionUpdatedToken = cloudSession_->SessionUpdated([this](auto&&, auto&& args) {
@@ -151,7 +151,7 @@ Tudjon meg többet a [SessionUpdatedDelegate](https://docs.microsoft.com/cpp/api
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-Tudjon meg többet a [CloudSpatialAnchor](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor) struct.
+További információ a [CloudSpatialAnchor](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor) struct-ról.
 
 ```cpp
     // Create a local anchor, perhaps by hit-testing and creating an ARAnchor
@@ -203,7 +203,7 @@ Tudjon meg többet a [CloudSpatialAnchor](https://docs.microsoft.com/cpp/api/spa
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
-Tudjon meg többet a [GetSessionStatusAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#getsessionstatusasync) metódust.
+További információ a [GetSessionStatusAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#getsessionstatusasync) metódusról.
 
 ```cpp
     cloudSession_->GetSessionStatusAsync([this](Status status, const std::shared_ptr<SessionStatus>& value) {
@@ -220,7 +220,7 @@ Tudjon meg többet a [GetSessionStatusAsync](https://docs.microsoft.com/cpp/api/
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-Tudjon meg többet a [AppProperties](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor#appproperties) metódust.
+További információ a [AppProperties](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor#appproperties) metódusról.
 
 ```cpp
     std::shared_ptr<CloudSpatialAnchor> cloudAnchor = std::make_shared<CloudSpatialAnchor>();
@@ -235,7 +235,7 @@ Tudjon meg többet a [AppProperties](https://docs.microsoft.com/cpp/api/spatial-
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-Tudjon meg többet a [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#updateanchorpropertiesasync) metódust.
+További információ a [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#updateanchorpropertiesasync) metódusról.
 
 ```cpp
     std::shared_ptr<CloudSpatialAnchor> anchor = /* locate your anchor */;
@@ -252,7 +252,7 @@ Tudjon meg többet a [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/cp
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
-Tudjon meg többet a [GetAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#getanchorpropertiesasync) metódust.
+További információ a [GetAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#getanchorpropertiesasync) metódusról.
 
 ```cpp
     cloudSession_->GetAnchorPropertiesAsync(R"(anchorId)", [this](Status status, const std::shared_ptr<CloudSpatialAnchor>& anchor) {
@@ -274,7 +274,7 @@ Tudjon meg többet a [GetAnchorPropertiesAsync](https://docs.microsoft.com/cpp/a
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-Tudjon meg többet a [lejárati](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor#expiration) metódust.
+További információ a lejárati módszerről. [](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor#expiration)
 
 ```cpp
     std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
@@ -285,7 +285,7 @@ Tudjon meg többet a [lejárati](https://docs.microsoft.com/cpp/api/spatial-anch
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-Tudjon meg többet a [CreateWatcher](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#createwatcher) metódust.
+További információ a [CreateWatcher](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#createwatcher) metódusról.
 
 ```cpp
     auto criteria = std::make_shared<AnchorLocateCriteria>();
@@ -295,7 +295,7 @@ Tudjon meg többet a [CreateWatcher](https://docs.microsoft.com/cpp/api/spatial-
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-Tudjon meg többet a [AnchorLocated](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/anchorlocateddelegate) delegálására.
+További információ a [AnchorLocated](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/anchorlocateddelegate) delegált szolgáltatásról.
 
 ```cpp
     auto anchorLocatedToken = cloudSession_->AnchorLocated([this](auto&&, auto&& args) {
@@ -323,7 +323,7 @@ Tudjon meg többet a [AnchorLocated](https://docs.microsoft.com/cpp/api/spatial-
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-Tudjon meg többet a [DeleteAnchorAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#deleteanchorasync) metódust.
+További információ a [DeleteAnchorAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#deleteanchorasync) metódusról.
 
 ```cpp
     cloudSession_->DeleteAnchorAsync(cloudAnchor, [this](Status status) {
@@ -333,7 +333,7 @@ Tudjon meg többet a [DeleteAnchorAsync](https://docs.microsoft.com/cpp/api/spat
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-Tudjon meg többet a [leállítása](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#stop) metódust.
+További információ a leállítási módszerről. [](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#stop)
 
 ```cpp
     cloudSession_->Stop();
@@ -341,7 +341,7 @@ Tudjon meg többet a [leállítása](https://docs.microsoft.com/cpp/api/spatial-
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-Tudjon meg többet a [alaphelyzetbe](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#reset) metódust.
+További információ az alaphelyzetbe [állítási](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#reset) módszerről.
 
 ```cpp
     cloudSession_->Reset();

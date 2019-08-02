@@ -1,6 +1,6 @@
 ---
-title: Egy hozzáférési jogkivonatot a felhasználó a folyamatokon keresztül adják át az alkalmazás – az Azure Active Directory B2C |} A Microsoft Docs
-description: Ismerje meg, hogyan adhat át egy hozzáférési jogkivonatot keresztül OAuth2.0 identitásszolgáltatókhoz való jogcímként az Azure Active Directory B2C felhasználói folyamatokban.
+title: Hozzáférési token továbbítása felhasználói folyamaton keresztül az alkalmazáshoz – Azure Active Directory B2C | Microsoft Docs
+description: Megtudhatja, hogyan továbbíthat egy hozzáférési jogkivonatot a OAuth 2.0-s identitás-szolgáltatók számára a Azure Active Directory B2C felhasználói folyamatának jogcímeként.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,56 +10,52 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: db4b799aa31a4132609b0dd158b65070fb2474b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e9019699d8a81d31d2b20f674fd76fcb70021d6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510951"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846826"
 ---
-# <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Felhasználói folyamat segítségével egy hozzáférési jogkivonatot át alkalmazását az Azure Active Directory B2C-vel
+# <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Hozzáférési token átadása egy felhasználói folyamaton keresztül az alkalmazáshoz Azure Active Directory B2C
 
 > [!NOTE]
-> Ez a funkció jelenleg nyilvános előzetes verzióban érhető el.
+> Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 
-A [felhasználói folyamat](active-directory-b2c-reference-policies.md) az Azure Active Directory (Azure AD) B2C lehetőséget kínál a felhasználók az alkalmazás regisztráljon vagy jelentkezzen be egy identitásszolgáltatóval. Amikor elindul az utazás, az Azure AD B2C-t kap egy [hozzáférési jogkivonat](active-directory-b2c-reference-tokens.md) az identitásszolgáltatótól. Az Azure AD B2C használja ezt a jogkivonatot a felhasználóval kapcsolatos információk lekéréséhez. A jogkivonat segítségével átadása az alkalmazásokat, amelyek az Azure AD B2C-ben regisztrálja a felhasználói folyamat engedélyezi egy jogcímet.
+Azure Active Directory (Azure AD) B2C [felhasználói folyamata](active-directory-b2c-reference-policies.md) lehetővé teszi az alkalmazás felhasználói számára, hogy regisztráljon vagy jelentkezzen be egy identitás-szolgáltatóval. Az utazás megkezdésekor a Azure AD B2C [hozzáférési](active-directory-b2c-reference-tokens.md) jogkivonatot kap az identitás-szolgáltatótól. Azure AD B2C a token használatával kéri le a felhasználó adatait. A felhasználói folyamat egy jogcímet engedélyez, hogy átadja a jogkivonatot a Azure AD B2Cban regisztrált alkalmazásoknak.
 
-Az Azure AD B2C jelenleg csak az támogatja a hozzáférési jogkivonatot az átadott [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) identitás-szolgáltatóktól, többek között [Facebook](active-directory-b2c-setup-fb-app.md) és [Google](active-directory-b2c-setup-goog-app.md). Minden egyéb identitás-szolgáltatóktól a jogcím vissza üres.
+Azure AD B2C jelenleg csak az [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) Identity Providers hozzáférési jogkivonatának továbbítását támogatja [](active-directory-b2c-setup-fb-app.md) , beleértve a Facebookot és a [Google](active-directory-b2c-setup-goog-app.md)-t is. Az összes többi Identity Provider esetében a rendszer üresen adja vissza a jogcímet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az alkalmazás kell használnia egy [v2 felhasználói folyamat](user-flow-versions.md).
-- A felhasználói folyamat az OAuth 2.0 identitásszolgáltató van konfigurálva.
+- Az alkalmazásnak [v2 felhasználói folyamatot](user-flow-versions.md)kell használnia.
+- A felhasználói folyamat OAuth 2,0-es identitás-szolgáltatóval van konfigurálva.
 
-## <a name="enable-the-claim"></a>Az igényt engedélyezése
+## <a name="enable-the-claim"></a>Jogcím engedélyezése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
-2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő tartalmazó könyvtárba. Válassza ki a **címtár és előfizetés-szűrő** a felső menüben, és válassza ki a bérlő tartalmazó könyvtárra.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár és előfizetés szűrőt** a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
-4. Válassza ki **felhasználókövetési adatai (szabályzatok)** , majd jelölje ki a felhasználói folyamatot. Ha például **B2C_1_signupsignin1**.
+4. Válassza a **felhasználói folyamatok (szabályzatok)** lehetőséget, majd válassza ki a felhasználói folyamatot. Például: **B2C_1_signupsignin1**.
 5. Válassza az **Alkalmazásjogcímek** lehetőséget.
-6. Engedélyezze a **Identity Provider Access Token** jogcím.
+6. Engedélyezze az **identitás-szolgáltató hozzáférési jogkivonat** jogcímet.
 
-    ![Az Identity Provider Access Token jogcím engedélyezése](./media/idp-pass-through-user-flow/idp-pass-through-user-flow-app-claim.png)
+    ![Az identitás-szolgáltató hozzáférési jogkivonat jogcímének engedélyezése](./media/idp-pass-through-user-flow/idp-pass-through-user-flow-app-claim.png)
 
-7. Kattintson a **mentése** menteni a felhasználói folyamatot.
+7. A felhasználói folyamat mentéséhez kattintson a **Save (Mentés** ) gombra.
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
-Ha teszteli az alkalmazások Azure AD B2C-ben, hasznos lehet az Azure AD B2C jogkivonat vissza lehet `https://jwt.ms` , tekintse át a jogcímek, az azt.
+Az alkalmazások Azure ad B2C-ben történő tesztelésekor hasznos lehet, hogy a Azure ad B2C token visszaadja `https://jwt.ms` a jogcímeket a jogcímek áttekintéséhez.
 
-1. A felhasználói folyamat áttekintése lapon válassza az **felhasználói folyamat futtatása**.
-2. A **alkalmazás**, válassza ki az alkalmazását, amely korábban regisztrálva. Megtekintheti a tokent az alábbi példában a **válasz URL-cím** megjelennie `https://jwt.ms`.
-3. Kattintson a **felhasználói folyamat futtatása**, majd jelentkezzen be a fiók hitelesítő adatait. Az identitásszolgáltató a hozzáférési jogkivonatot kell megjelennie a **idp_access_token** jogcím.
+1. A felhasználói folyamat áttekintés lapján válassza a **felhasználói folyamat futtatása**lehetőséget.
+2. **Alkalmazás**esetén válassza ki a korábban regisztrált alkalmazást. Az alábbi példában szereplő token megjelenítéséhez a **Válasz URL-címének** meg `https://jwt.ms`kell jelennie.
+3. Kattintson a **felhasználói folyamat futtatása**elemre, majd jelentkezzen be a fiókja hitelesítő adataival. Az **idp_access_token** jogcímben meg kell jelennie az Identity Provider hozzáférési jogkivonatának.
 
-    Az alábbi példához hasonló kell megjelennie:
+    Az alábbi példához hasonlónak kell megjelennie:
 
-    ![A dekódolt jogkivonat](./media/idp-pass-through-user-flow/idp-pass-through-user-flow-token.png)
+    ![Dekódolású token a jwt.ms-ben a idp_access_token Block kiemelve](./media/idp-pass-through-user-flow/idp-pass-through-user-flow-token.PNG)
 
 ## <a name="next-steps"></a>További lépések
 
-További információ: a [áttekintése az Azure AD B2C-jogkivonatok](active-directory-b2c-reference-tokens.md).
-
-
-
-
+További információ: [Azure ad B2C tokenek áttekintése](active-directory-b2c-reference-tokens.md).

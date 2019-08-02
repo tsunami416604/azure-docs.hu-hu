@@ -10,10 +10,10 @@ ms.date: 07/08/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 25cac6a66baeb1587e4b5ba3f0923ca9c4394706
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325490"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure-fájlmegosztás csatlakoztatása Azure Container Instances
@@ -83,13 +83,13 @@ Az `--dns-name-label` értéknek egyedinek kell lennie azon az Azure-régión be
 
 ## <a name="manage-files-in-mounted-volume"></a>Fájlok kezelése a csatlakoztatott köteten
 
-A tároló elindítása után használhatja a Microsoft [ACI-hellofiles][aci-hellofiles] image to create small text files in the Azure file share at the mount path you specified. Obtain the web app's fully qualified domain name (FQDN) with the [az container show][az-container-show] paranccsal üzembe helyezett egyszerű webalkalmazást:
+A tároló elindítása után a Microsoft [ACI-hellofiles][aci-hellofiles] rendszerkép használatával üzembe helyezett egyszerű webalkalmazással hozhat létre kisméretű szövegfájlokat az Azure-fájlmegosztás számára a megadott csatlakoztatási útvonalon. Szerezze be a webalkalmazás teljes tartománynevét (FQDN) az az [Container show][az-container-show] paranccsal:
 
 ```azurecli-interactive
 az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn --output tsv
 ```
 
-Miután az alkalmazás használatával mentette a szöveget, a [Azure Portal][portal] or a tool like the [Microsoft Azure Storage Explorer][storage-explorer] segítségével lekérheti és ellenőrizheti a fájlmegosztást.
+Miután az alkalmazással mentette a szöveget, használhatja a [Azure Portal][portal] vagy egy eszközt, például [][storage-explorer] a Microsoft Azure Storage Explorert a fájlmegosztás számára írt fájl beolvasásához és vizsgálatához.
 
 ## <a name="deploy-container-and-mount-volume---yaml"></a>Tároló üzembe helyezése és kötet csatlakoztatása – YAML
 

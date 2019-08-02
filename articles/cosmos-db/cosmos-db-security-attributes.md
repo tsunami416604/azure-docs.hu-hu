@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cosmos DB biztonsági attribútumok
-description: Azure Cosmos DB értékelésére biztonsági attribútumok ellenőrzőlista
+title: Azure Cosmos DB biztonsági attribútumai
+description: A Azure Cosmos DB értékelésére szolgáló biztonsági attribútumok ellenőrzőlistája
 services: cosmos-db
 documentationcenter: ''
 author: msmbaldwin
@@ -9,16 +9,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ffeb60f5476a540e3da46a82c240b0dda9aa6be2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50711f8675e1b8aca6b9f90925ea921d22020ddd
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480463"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442557"
 ---
-# <a name="security-attributes-for-azure-cosmos-db"></a>Az Azure Cosmos DB biztonsági attribútumok
+# <a name="security-attributes-for-azure-cosmos-db"></a>Azure Cosmos DB biztonsági attribútumai
 
-Ez a cikk a gyakori biztonsági attribútumok az Azure Cosmos DB-be épített dokumentumok.
+Ez a cikk a Azure Cosmos DB beépített biztonsági attribútumokat dokumentálja.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -26,50 +26,50 @@ Ez a cikk a gyakori biztonsági attribútumok az Azure Cosmos DB-be épített do
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Titkosítás inaktív állapotban (például a kiszolgálóoldali titkosítás, a kiszolgálóoldali titkosítást az ügyfél által felügyelt kulcsokat és más titkosítási szolgáltatások) | Igen | Cosmos DB-adatbázisok és a biztonsági mentések titkosítottak alapértelmezett; Lásd: [adatok titkosítását az Azure Cosmos DB](database-encryption-at-rest.md). Ügyfél által felügyelt kulcsokkal kiszolgálóoldali titkosítás nem támogatott. |
-| Titkosítás az átvitel során (például az ExpressRoute-titkosítás, a virtuális hálózatok közötti titkosítás és a VNet – VNet titkosítási)| Igen | Átvitel titkosítása az összes Azure Cosmos DB-adatai. |
-| Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Nem |  |
-| Oszlop a blokkszintű titkosítás (az Azure Data Services)| Igen | Csak az a tábla API Premium. Nem minden API támogatja ezt a szolgáltatást. Lásd: [az Azure Cosmos DB bemutatása: TABLE API](table-introduction.md). |
-| Titkosított API-hívások| Igen | Minden kapcsolat az Azure Cosmos DB támogatja a HTTPS. Az Azure Cosmos DB támogatja a TLS 1.2 kapcsolatokat is, de ez még nem lép életbe. Ügyfelek alacsonyabb szintre TLS azok End kikapcsolása, ha azok gondoskodhat a csatlakozás a Cosmos DB-hez.  |
+| Titkosítás inaktív állapotban (például kiszolgálóoldali titkosítás, ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás és egyéb titkosítási funkciók) | Igen | Alapértelmezés szerint az összes Cosmos DB adatbázis és biztonsági másolat titkosítva van; lásd [](database-encryption-at-rest.md): adattitkosítás Azure Cosmos DBban. Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás nem támogatott. |
+| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | Az összes Azure Cosmos DB-adatforgalom titkosítva van az átvitel során. |
+| Titkosítási kulcsok kezelését (CMK, BYOK stb.)| Nem |  |
+| Oszlop szintű titkosítás (Azure Data Services)| Igen | Csak a Tables API Premiumban. Nem minden API támogatja ezt a funkciót. Lásd [: a Azure Cosmos db bemutatása: Table API](table-introduction.md). |
+| Titkosított API-hívások| Igen | A Azure Cosmos DB összes kapcsolata támogatja a HTTPS protokollt. A Azure Cosmos DB a TLS 1,2-kapcsolatokat is támogatja, de ez még nincs érvényesítve. Ha az ügyfelek kikapcsolják az alacsonyabb szintű TLS-t a végére, akkor a Cosmos DBhoz csatlakozhatnak.  |
 
-## <a name="network-segmentation"></a>Hálózati szegmentálást
+## <a name="network-segmentation"></a>Hálózati szegmentálás
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatásvégpont-támogatás| Igen |  |
-| vNET-injektálási támogatás| Igen | Szolgáltatásvégpont, az Azure Cosmos DB-fiókot, engedélyezze a hozzáférést csak a megadott alhálózat virtuális hálózat (VNet) konfigurálható. Virtuális hálózatok közötti hozzáférés tűzfalszabályokkal is kombinálhatók.  Lásd: [hozzáférés az Azure Cosmos DB a virtuális hálózatok](vnet-service-endpoint.md). |
-| Hálózatelkülönítés és Firewalling támogatása| Igen | A tűzfaltámogatás engedélyezi a hozzáférést csak a jóváhagyott IP-címeket, IP-címek egy tartománya és/vagy felhőszolgáltatásokra történő fiókját az Azure Cosmos konfigurálhatja. Lásd: [konfigurálása IP-tűzfal az Azure Cosmos DB](how-to-configure-firewall.md).|
-| Kényszerített bújtatás támogatása | Igen | A virtuális hálózathoz, ahol a virtuális gépek találhatók meg az ügyfél oldalán konfigurálhatók.   |
+| Szolgáltatás végpontjának támogatása| Igen |  |
+| VNet-befecskendezés támogatása| Igen | A VNet szolgáltatás végpontja lehetővé teszi egy Azure Cosmos DB-fiók konfigurálását, hogy csak a virtuális hálózat (VNet) egy adott alhálózatáról engedélyezze a hozzáférést. A VNet-hozzáférés is kombinálható a tűzfalszabályok használatával.  Lásd: [hozzáférés Azure Cosmos db virtuális hálózatokból](VNet-service-endpoint.md). |
+| Hálózati elkülönítés és tűzfalak támogatása| Igen | A tűzfal támogatásával beállíthatja az Azure Cosmos-fiókot úgy, hogy csak az IP-címek jóváhagyott készletéről, az IP-címek tartományáról és/vagy a felhőalapú szolgáltatásokból engedélyezze a hozzáférést. Lásd: [az IP-tűzfal konfigurálása Azure Cosmos DBban](how-to-configure-firewall.md).|
+| Kényszerített bújtatás támogatása| Igen | Konfigurálható az ügyféloldali oldalon azon a VNet, ahol a virtuális gépek találhatók.   |
 
 ## <a name="detection"></a>Észlelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Azure monitorozási támogatása (a Log analytics, az App insights, stb.)| Igen | Az Azure Cosmos DB küldött összes kérelem a rendszer naplózza. [Az Azure figyelési](../azure-monitor/overview.md), az Azure-mérőszámok, naplózás az Azure használata támogatott.  Kérelmek bejelentkezhet adatsík kérelmek, a lekérdezések futásidejének statisztikai adatait, a lekérdezés szövegének megfelelő információkat, a mongodb-hez. Riasztásokat is beállíthat. |
+| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | A rendszer a Azure Cosmos DB küldött összes kérelmet naplózza. Az Azure [monitoring](../azure-monitor/overview.md), az Azure-metrikák, az Azure audit naplózása támogatott.  Az adatsík-kérelmeknek, a lekérdezési futtatókörnyezet statisztikáinak, a lekérdezési szövegeknek és a MongoDB kérelmeknek megfelelő adatokat naplózhatja. Emellett riasztásokat is beállíthat. |
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hitelesítés| Igen | Igen, az adatbázis fiók szintjén; az adatok adatsík szinten a Cosmos DB erőforrás-jogkivonatokról és hozzáférés a kulcshoz használ. |
-| Engedélyezés| Igen | A főkulcsok (elsődleges és másodlagos) az Azure Cosmos-fiók és az erőforrás-jogkivonatokat támogatja. Olvasási/írási beolvasása, vagy csak olvasásra jogosító hozzáférés főkulcsok az adatokhoz. Erőforrás-jogkivonatokat erőforrások, például dokumentumok és a tárolók korlátozott ideig elérését teszi lehetővé. |
+| Authentication| Igen | Igen, az adatbázis-fiók szintjén; az adatsík szintjén Cosmos DB erőforrás-tokeneket és kulcs-hozzáférést használ. |
+| Authorization| Igen | Támogatott az Azure Cosmos-fiókban főkulcsokkal (elsődleges és másodlagos) és erőforrás-tokenekkel. Olvasási/írási vagy olvasási hozzáférés csak a főkulcsokkal rendelkező adatokhoz. Az erőforrás-tokenek korlátozott ideig férnek hozzá az erőforrásokhoz, például a dokumentumokhoz és a tárolóhoz. |
 
 
-## <a name="audit-trail"></a>Auditnapló
+## <a name="audit-trail"></a>Naplózási nyomvonal
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Vezérlő/felügyeleti naplózás és a naplózási tervezése| Igen | Azure-tevékenységnapló fiók szintű műveletek, például a tűzfalak, virtuális hálózatok, a hozzáférési kulcsokat és IAM. |
-| Adatok naplózása és naplózási adatsík | Igen | Diagnosztika figyelése, például a naplózás a szolgáltatói tárolóművelet hozza létre a tárolót, üzembe helyezése átviteli sebesség, szabályzatok és a CRUD-műveletek dokumentumok indexelése. |
+| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | Azure-Tevékenységnaplók a fiók szintű műveletekhez, például tűzfalakhoz, virtuális hálózatok, kulcsok eléréséhez és IAM-hoz. |
+| Adatsíkok naplózása és naplózása | Igen | Diagnosztika-figyelési naplózás a tárolók szintjén végrehajtott műveletekhez, például tároló létrehozása, átviteli sebesség, indexelési házirendek és szifilisz-műveletek a dokumentumokon. |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Konfiguráció kezelésével kapcsolatos támogatás (versioning konfiguráció stb.)| Nem  | | 
+| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Nem  | | 
 
-## <a name="additional-security-attributes-for-cosmos-db"></a>A Cosmos DB további biztonsági attribútumok
+## <a name="additional-security-attributes-for-cosmos-db"></a>A Cosmos DB további biztonsági attribútumai
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Eltérő eredetű erőforrások megosztása (CORS) közötti | Igen | Lásd: [eltérő eredetű erőforrások megosztása (CORS) konfigurálása](how-to-configure-cross-origin-resource-sharing.md). |
+| Több eredetű erőforrás-megosztás (CORS) | Igen | Lásd: a [több eredetű erőforrás-megosztás konfigurálása (CORS)](how-to-configure-cross-origin-resource-sharing.md). |

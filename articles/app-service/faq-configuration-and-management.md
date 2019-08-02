@@ -1,6 +1,6 @@
 ---
-title: Konfiguráció – gyakori kérdések – az Azure App Service |} A Microsoft Docs
-description: Konfigurálással és felügyelettel kapcsolatos gyakori kérdésekre adott válaszokat lekérése az Azure App Service Web Apps funkcióját.
+title: Konfigurációval kapcsolatos gyakori kérdések – Azure App Service | Microsoft Docs
+description: Választ kaphat a Azure App Service Web Apps funkciójának konfigurálásával és kezelésével kapcsolatos gyakori kérdésekre.
 services: app-service\web
 documentationcenter: ''
 author: genlin
@@ -15,134 +15,134 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: ec2580f0c71c98c7a03f3326cb1b8ff539109ee0
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 6f86a8465bcbd3d88ffb7909cac53c3fd38c3af6
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720028"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489439"
 ---
-# <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurálás és felügyelet – gyakori kérdések az Azure Web Apps
+# <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurációs és felügyeleti GYIK az Azure-beli Web Apps
 
-Ez a cikk rendelkezik (GYIK) kapcsolatos gyakori kérdésekre adott válaszok a konfigurálással és felügyelettel kapcsolatos a [Azure App Service Web Apps funkciójával](https://azure.microsoft.com/services/app-service/web/).
+Ez a cikk válaszokat tartalmaz a [Azure App Service Web Apps funkciójának](https://azure.microsoft.com/services/app-service/web/)konfigurálásával és felügyeletével kapcsolatos gyakori kérdésekre (GYIK).
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>Milyen korlátozások I kell ügyelnie, ha el szeretne áthelyezni az App Service-erőforrások?
+## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>Van-e korlátozás arra vonatkozóan, ha App Service erőforrásokat szeretnék áthelyezni?
 
-Ha azt tervezi, az App Service-erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe, néhány korlátozás érdemes figyelembe vennie. További információkért lásd: [App Service korlátai](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
+Ha App Service erőforrásait új erőforráscsoporthoz vagy előfizetésbe szeretné helyezni, néhány korlátozást érdemes figyelembe vennie. További információ: [app Service korlátozások](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
 
-## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>Hogyan használhatom a saját webes alkalmazás egy egyéni tartománynevet?
+## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>Hogyan használhat egyéni tartománynevet a webalkalmazáshoz?
 
-Egyéni tartománynév az Azure web app alkalmazásban való használatával kapcsolatos gyakori kérdéseket talál a 7 perces videó [egyéni tartománynév hozzáadása](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name). A videó kínál egy egyéni tartománynév hozzáadása bemutatóját. Bemutatja, hogyan lehet a saját URL-cím helyett használja a *. azurewebsites.net az App Service web app URL-CÍMÉT. Azt is láthatja részletes [hogyan képezhet le egyéni tartománynevet](app-service-web-tutorial-custom-domain.md).
-
-
-## <a name="how-do-i-purchase-a-new-custom-domain-for-my-web-app"></a>Hogyan vásárolhatok új egyéni tartományt a webalkalmazás?
-
-Ismerje meg, hogyan vásárolhat és az App Service webalkalmazás egy egyéni tartomány beállítása, lásd: [vásárlása és a egy egyéni tartománynév konfigurálása az App Service](manage-custom-dns-buy-domain.md).
+Az egyéni tartománynevek Azure-webalkalmazással való használatával kapcsolatos gyakori kérdésekre adott válaszokért tekintse meg a hét perces videó [Egyéni tartománynév hozzáadását](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)ismertető témakört. A videó bemutatja, hogyan adhat hozzá egyéni tartománynevet. Ez a cikk azt ismerteti, hogyan használható a saját URL-cím a *. azurewebsites.net URL-cím helyett a App Service webalkalmazással. Az [Egyéni tartománynevek leképezésének](app-service-web-tutorial-custom-domain.md)részletes ismertetését is láthatja.
 
 
-## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Hogyan töltse fel és a webalkalmazás konfigurálása meglévő SSL-tanúsítvány?
+## <a name="how-do-i-purchase-a-new-custom-domain-for-my-web-app"></a>Hogyan új egyéni tartományt vásárolni a webalkalmazáshoz?
 
-Ismerje meg, hogyan töltse fel, és állítsa be a meglévő egyéni SSL-tanúsítvány, lásd: [meglévő egyéni SSL-tanúsítvány kötése az Azure-webalkalmazás](app-service-web-tutorial-custom-ssl.md#upload).
-
-
-## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>Hogyan vásárolhat és a webalkalmazás konfigurálása új SSL-tanúsítványt az Azure-ban?
-
-Ismerje meg, hogyan vásárolhat, és állítsa be az App Service webalkalmazás SSL-tanúsítvány, lásd: [SSL-tanúsítvány hozzáadása az App Service-alkalmazást](web-sites-purchase-ssl-web-site.md).
+A App Service webalkalmazás egyéni tartományának megvásárlásáról és beállításáról további információt az [Egyéni tartománynév megvásárlása és konfigurálása a app Service-ben](manage-custom-dns-buy-domain.md)című témakörben talál.
 
 
-## <a name="how-do-i-move-application-insights-resources"></a>Hogyan helyezhetek át Application Insights-erőforrások?
+## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Hogyan a webalkalmazáshoz meglévő SSL-tanúsítvány feltöltése és konfigurálása?
 
-Az Azure Application Insights jelenleg nem támogatja az áthelyezési művelet. Ha az eredeti erőforráscsoportot egy Application Insights-erőforrást tartalmaz, nem helyezhetők át ennek az erőforrásnak. Ha az Application Insights-erőforrást is áthelyezése egy App Service-alkalmazást észlel, a teljes áthelyezése művelet sikertelen lesz. Azonban az Application Insights és App Service-csomag nem kell lenniük az ugyanabban az erőforráscsoportban, az alkalmazás az alkalmazás megfelelő működéséhez.
+Ha meg szeretné tudni, hogyan tölthet fel és állíthat be egy meglévő egyéni SSL-tanúsítványt, tekintse meg a [meglévő egyéni SSL-tanúsítvány kötése egy Azure](app-service-web-tutorial-custom-ssl.md#upload)-webalkalmazáshoz című témakört.
 
-További információkért lásd: [App Service korlátai](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
 
-## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>Hol helyezhetem található útmutatást ellenőrzőlista és ismerje meg, több erőforrással kapcsolatos műveleteket helyez át?
+## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>Hogyan új SSL-tanúsítvány vásárlása és konfigurálása az Azure-ban a webalkalmazáshoz?
 
-[Az App Service korlátai](../azure-resource-manager/move-limitations/app-service-move-limitations.md) bemutatja, hogyan kell helyeznie az erőforrásokat, vagy egy új előfizetést vagy egy új erőforráscsoport ugyanabban az előfizetésben. Az erőforrás-áthelyezési ellenőrzőlista adatainak beolvasása, megtudhatja, mely szolgáltatások támogatják az áthelyezési művelet, és további információk az App Service korlátai és egyéb témakörök.
+Az App Service webalkalmazás SSL-tanúsítványának megvásárlásáról és beállításáról további információt az [SSL-tanúsítvány hozzáadása a app Service alkalmazáshoz](web-sites-purchase-ssl-web-site.md)című témakörben talál.
 
-## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>Hogyan állítsa be a kiszolgáló időzónája a webalkalmazás?
 
-A kiszolgáló időzónája a webalkalmazás beállítása:
+## <a name="how-do-i-move-application-insights-resources"></a>Hogyan Application Insights erőforrások áthelyezése?
 
-1. Az Azure Portalon, az App Service-előfizetésében, nyissa meg a **Alkalmazásbeállítások** menü.
-2. A **Alkalmazásbeállítások**, adja hozzá ezt a beállítást:
+Az Azure Application Insights jelenleg nem támogatja az áthelyezési műveletet. Ha az eredeti erőforráscsoport Application Insights erőforrást tartalmaz, nem helyezheti át az adott erőforrást. Ha a Application Insights erőforrást egy App Service alkalmazás áthelyezésére való kísérlet során is felveszi, a teljes áthelyezési művelet meghiúsul. Azonban Application Insights és a App Service tervnek nem kell ugyanabban az erőforráscsoporthoz lennie, mint az alkalmazás megfelelő működéséhez.
+
+További információ: [app Service korlátozások](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
+
+## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>Hol találhatok útmutatási ellenőrzőlistát, és többet tudhat meg az erőforrás-áthelyezési műveletekről?
+
+A [app Service korlátozások](../azure-resource-manager/move-limitations/app-service-move-limitations.md) azt mutatják be, hogy miként helyezhetők át erőforrások egy új előfizetésbe vagy egy új erőforráscsoporthoz ugyanabba az előfizetésbe. Az erőforrás-áthelyezési ellenőrzőlistával kapcsolatos információkat megtudhatja, hogy mely szolgáltatások támogatják az áthelyezési műveletet, valamint további tudnivalókat App Service korlátozásokról és egyéb témakörökről.
+
+## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>Hogyan beállítani a webalkalmazás kiszolgálói időzónáját?
+
+A webalkalmazás kiszolgálói időzónájának beállítása:
+
+1. Az Azure Portal App Service előfizetésében lépjen az **Alkalmazásbeállítások** menüre.
+2. Az **Alkalmazásbeállítások**területen adja hozzá a következő beállítást:
     * Kulcs = WEBSITE_TIME_ZONE
-    * Érték = *kívánt időzóna*
+    * Value = *a kívánt időzóna*
 3. Kattintson a **Mentés** gombra.
 
-Tekintse meg a **időzóna** oszlopa a [alapértelmezett időzóna](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) az elfogadott értékek a cikk.
+Az elfogadott értékekhez tekintse meg az [alapértelmezett](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) időzónák című cikk időzóna **oszlopát** .
 
-## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Miért hajtsa végre a folyamatos webjobs-feladatok néha nem?
+## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Miért nem sikerül a folyamatos webjobs-feladatok néha?
 
-Alapértelmezés szerint a webalkalmazások távolítva a memóriából ha azok egy megadott ideig inaktív. Ez lehetővé teszi, hogy a rendszer erőforrások megőrzése. Az alapszintű és standard szintű csomagokban, bekapcsolhatja a **Always On** folyamatosan beállítása, hogy a webalkalmazás betöltése. A webalkalmazás folyamatos webjobs-feladatok fut, be kell kapcsolnia **Always On**, vagy a webjobs-feladatok nem lehet megbízhatóan fusson. További információkért lásd: [hozzon létre egy folyamatosan futó webjobs-feladat](webjobs-create.md#CreateContinuous).
+Alapértelmezés szerint a webalkalmazások el lesznek távolítva, ha egy meghatározott időtartam alatt tétlenek. Ez lehetővé teszi, hogy a rendszerek megőrizze erőforrásaikat. Az alapszintű és a standard csomagokban az **Always On** beállítás bekapcsolásával megtarthatja a webalkalmazás betöltésének időpontját. Ha a webalkalmazás folyamatos webjobs-feladatokat futtat, akkor a **mindig**be kell kapcsolnia, vagy előfordulhat, hogy a webjobs nem megbízhatóan fut. További információt a [folyamatosan futó Webjobs létrehozása](webjobs-create.md#CreateContinuous)című témakörben talál.
 
-## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Hogyan szerezhetem be a kimenő IP-címet a webalkalmazás?
+## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Hogyan lekérni a webes alkalmazás kimenő IP-címét?
 
-A webalkalmazás a kimenő IP-címek listájának lekéréséhez:
+A webalkalmazáshoz tartozó kimenő IP-címek listájának lekérése:
 
-1. A webalkalmazás panelére, az az Azure Portalon nyissa meg a **tulajdonságok** menü.
-2. Keresse meg **kimenő ip-címek**.
+1. A Azure Portal a webalkalmazás paneljén lépjen a **Tulajdonságok** menüre.
+2. Keresse meg a **kimenő IP-címeket**.
 
-A kimenő IP-címek listája jelenik meg.
+Megjelenik a kimenő IP-címek listája.
 
-Kimenő IP-címének lekéréséhez, ha a webhely App Service Environment-környezetben üzemeltetett kezelésével kapcsolatos információkért lásd: [kimenő hálózati címek](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses).
+Ha szeretné megtudni, hogyan kérheti le a kimenő IP-címet, ha webhelye egy App Service Environmentban található, tekintse meg a [kimenő hálózati címeket](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses).
 
-## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Hogyan szerezhetem be egy fenntartott vagy dedikált bejövő IP-címet a webalkalmazás?
+## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Hogyan lekérni a webalkalmazáshoz fenntartott vagy dedikált bejövő IP-címet?
 
-Állítsa be egy dedikált és fenntartott IP-címet az Azure-alkalmazás webhelyére beérkező hívások számára, telepítse és konfigurálja az IP-alapú SSL-tanúsítvány.
+Ha dedikált vagy fenntartott IP-címet szeretne beállítani az Azure-alkalmazás webhelyére érkező bejövő hívásokhoz, telepítsen és konfiguráljon egy IP-alapú SSL-tanúsítványt.
 
-Vegye figyelembe, hogy egy dedikált és fenntartott IP-címet használja a bejövő hívások, az App Service-csomagban kell lennie legalább alapszintű szolgáltatáscsomag.
+Vegye figyelembe, hogy ha dedikált vagy fenntartott IP-címet szeretne használni a bejövő hívások számára, a App Service tervnek alapszintű vagy magasabb szolgáltatási csomagban kell lennie.
 
-## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>Exportálhatja a saját használandó kívül az Azure-ban, mint például máshol üzemeltetett webhely App Service-tanúsítvány? 
+## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>Exportálhatók az App Service-tanúsítvány az Azure-on kívüli használatra, például egy máshol üzemeltetett webhelyre? 
 
-App Service-tanúsítványok minősülnek az Azure-erőforrások. Nem feltétlenül le kívül az Azure-szolgáltatások használatára. Használhatják az Azure-on kívülről nem exportálható. További információkért lásd: [– gyakori kérdések az App Service-tanúsítványokról és az egyéni tartományokról](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
+App Service tanúsítványok Azure-erőforrásoknak számítanak. Nem az Azure-szolgáltatásokon kívüli használatra készültek. Nem exportálhatja őket az Azure-on kívüli használatra. További információ: App Service- [tanúsítványok és egyéni tartományok – gyakori kérdések](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
 
-## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>Exportálhatja a saját használata más Azure-felhőszolgáltatásokat App Service-tanúsítvány?
+## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>Exportálhatók a App Service-tanúsítványom más Azure Cloud Services-szolgáltatásokkal való használatra?
 
-A portál az App Service-alkalmazások üzembe helyezése az App Service-tanúsítvány Azure Key vault fürtkezelési élményt biztosít. Azonban hogy rendelkezik lett fogadása kérelmek ügyfelek ezeket a tanúsítványokat, például egy App Service platformon kívül az Azure Virtual Machines. Ismerje meg, hogyan hozhat létre az App Service-tanúsítvány PFX helyi másolatát, így használhatja a tanúsítványt az egyéb Azure-erőforrások, lásd: [hozzon létre egy App Service-tanúsítvány PFX helyi példányának](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
+A portál egy első osztályú élményt nyújt az App Service-tanúsítványok Azure Key Vault használatával történő üzembe helyezéséhez App Service alkalmazásokhoz. Az ügyfelektől érkező kéréseket azonban a App Service platformon kívül is használni fogjuk, például az Azure Virtual Machines. Ha meg szeretné tudni, hogyan hozhat létre helyi PFX-példányt a App Service-tanúsítványból, hogy a tanúsítványt más Azure-erőforrásokkal is használhassa, tekintse meg a [app Service tanúsítvány helyi pfx-példányának létrehozása](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/)című témakört.
 
-További információkért lásd: [– gyakori kérdések az App Service-tanúsítványokról és az egyéni tartományokról](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
+További információ: App Service- [tanúsítványok és egyéni tartományok – gyakori kérdések](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
 
 
-## <a name="why-do-i-see-the-message-partially-succeeded-when-i-try-to-back-up-my-web-app"></a>Miért látok a "Részben sikeres" üzenet jelenik meg a webes alkalmazás biztonsági mentése?
+## <a name="why-do-i-see-the-message-partially-succeeded-when-i-try-to-back-up-my-web-app"></a>Miért jelenik meg a "részlegesen sikeres" üzenet, amikor megpróbálok biztonsági másolatot készíteni a webalkalmazásról?
 
-Egy közös biztonsági mentési hiba oka, hogy némi fájlok használatban vannak, az alkalmazás által. Használatban lévő fájlok zárolva vannak, a biztonsági mentés végrehajtása során. Ez megakadályozza, hogy ezek a fájlok biztonsági mentés alatt álló, és előfordulhat, hogy egy "Részben sikeres" állapotot eredményez. Potenciálisan megakadályozhatja a fájlok kizárása a biztonsági mentési folyamat által lépett fel. Ha szeretné, biztonsági mentése csak van szükség. További információkért lásd: [biztonsági mentése csak a hely és az Azure web Apps alkalmazások fontos részei](https://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/).
+A biztonsági mentési hiba gyakori oka az, hogy egyes fájlokat az alkalmazás használ. A használatban lévő fájlok zárolva vannak a biztonsági mentés végrehajtása közben. Ez megakadályozza, hogy ezek a fájlok biztonsági mentést lehessen készíteni, és a "részlegesen sikeres" állapotot eredményeznek. Lehetséges, hogy a biztonsági mentési folyamatból kizárják a fájlokat. Dönthet úgy is, hogy csak a szükséges biztonsági mentést készíti el. További információ: [biztonsági másolat készítése a webhely fontos részeiről az Azure Web Apps](https://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/)szolgáltatással.
 
-## <a name="how-do-i-remove-a-header-from-the-http-response"></a>Hogyan fejléc eltávolítása a HTTP-válasz?
+## <a name="how-do-i-remove-a-header-from-the-http-response"></a>Hogyan eltávolítani a HTTP-válasz fejlécét?
 
-A fejlécek eltávolítása a HTTP-válasz, frissítse a webhely web.config fájljában. További információkért lásd: [távolítsa el az Azure-webhelyeken szabványos server fejlécei](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
+Ha el szeretné távolítani a fejléceket a HTTP-válaszból, frissítse a webhely web. config fájlját. További információ: a [szabványos kiszolgálók fejlécének eltávolítása az Azure](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)-webhelyeken.
 
-## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>Az App Service-ben PCI szabvány 3.0 és a 3.1 megfelelő?
+## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>App Service megfelel a PCI standard 3,0-es és 3,1-es verziójának?
 
-Az Azure App Service Web Apps funkcióját jelenleg megfelel a PCI Data Security Standard (DSS) verzió 3.0-s Level 1. PCI DSS 3.1-es verzióját, tervbe. Tervezési már folyamatban van a legújabb standard bevezetése folytatódik hogyan.
+Jelenleg a Azure App Service Web Apps funkciója megfelel az 1. szintű PCI adatbiztonsági szabványnak (DSS) 3,0-es verziójának. A PCI DSS 3,1-es verziója az ütemterven található. A tervezés már folyamatban van a legújabb szabvány bevezetésének módjával kapcsolatban.
 
-PCI DSS 3.1-es verzióját tanúsítási kell Transport Layer Security (TLS) 1.0 letiltása. Jelenleg a TLS 1.0 letiltása lehetőség nem a legtöbb App Service-csomagok. Ha App Service-környezetben használja, vagy arra, hogy a számítási feladatok migrálása az App Service Environment-környezet, kaphat jobb vezérlését a környezetében. Ebbe beletartozik a TLS 1.0 letiltása az Azure támogatási szolgálatával. A közeljövőben tervezzük, hogy a felhasználók ezeket a beállításokat.
+PCI DSS 3,1-es verziójának minősítéséhez le kell tiltania a Transport Layer Security (TLS) 1,0. Jelenleg a TLS 1,0 letiltása nem lehetséges a legtöbb App Service csomag esetében. Ha azonban App Service Environmentt használ, vagy ha a számítási feladatot App Service Environmentre kívánja áttelepíteni, akkor nagyobb mértékben vezérelheti a környezetét. Ez magában foglalja a TLS 1,0 letiltását az Azure-támogatással való kapcsolatfelvételsel. A közeljövőben azt tervezzük, hogy ezek a beállítások elérhetők legyenek a felhasználók számára.
 
-További információkért lásd: [Microsoft Azure App Service web app és való megfelelés PCI szabvány 3.0 3.1](https://support.microsoft.com/help/3124528).
+További információ: [Microsoft Azure app Service web app Compliance a PCI Standard 3,0 és 3,1](https://support.microsoft.com/help/3124528).
 
-## <a name="how-do-i-use-the-staging-environment-and-deployment-slots"></a>Hogyan használhatom a tesztelési környezet és üzembe helyezési pontok?
+## <a name="how-do-i-use-the-staging-environment-and-deployment-slots"></a>Hogyan az átmeneti környezet és az üzembe helyezési pontok használatát?
 
-A Standard és prémium szintű App Service-csomagok a webalkalmazás az App Service-ben való telepítésekor, telepíthet egy külön üzembe helyezési pont helyett az alapértelmezett éles webalkalmazásra. Üzembe helyezési pontok, amelyek a saját állomásnevek élő webalkalmazások. Webes alkalmazás tartalmának és konfigurációs elemei felcserélhetők két üzembe helyezési tárhely, többek között az üzemelési között.
+A standard és a prémium szintű App Service csomagok esetében a webalkalmazásnak a App Service üzembe helyezése során az alapértelmezett üzemi tárolóhely helyett egy különálló üzembe helyezési pontra is telepíthető. Az üzembe helyezési pontok olyan élő webalkalmazások, amelyek saját állomásnévvel rendelkeznek. A webalkalmazás tartalmait és konfigurációs elemeit két üzembe helyezési pont között lehet felcserélni, beleértve az üzemi tárolóhelyet is.
 
-Üzembe helyezési pontok használatával kapcsolatos további információkért lásd: [App Service-ben egy átmeneti környezet beállítása](deploy-staging-slots.md).
+További információ az üzembe helyezési pontok használatáról: [átmeneti környezet beállítása app Serviceban](deploy-staging-slots.md).
 
-## <a name="how-do-i-access-and-review-webjob-logs"></a>Hogyan lehet hozzáférni és tekintse át a WebJob-naplókat?
+## <a name="how-do-i-access-and-review-webjob-logs"></a>Hogyan a hozzáférés és a Webjobs-naplók áttekintése?
 
-A WebJob-naplókat, tekintse át:
+Webjobs-naplók áttekintése:
 
-1. Jelentkezzen be a [Kudu-webhely](https://*yourwebsitename*.scm.azurewebsites.net).
-2. Válassza ki a webjobs-feladatot.
-3. Válassza ki a **váltógomb kimeneti** gombra.
-4. A kimeneti fájl letöltéséhez jelölje be a **letöltése** hivatkozásra.
-5. Válassza ki az egyes futtatások **egyes meghívása**.
-6. Válassza ki a **váltógomb kimeneti** gombra.
-7. Válassza ki a letöltési hivatkozás.
+1. Jelentkezzen be a [kudu](https://*yourwebsitename*.scm.azurewebsites.net)webhelyére.
+2. Válassza ki a Webjobs.
+3. Válassza a **kimenet váltása** gombot.
+4. A kimeneti fájl letöltéséhez válassza a **letöltési** hivatkozást.
+5. Az egyes futtatások esetében válassza az **Egyéni meghívás**lehetőséget.
+6. Válassza a **kimenet váltása** gombot.
+7. Válassza ki a letöltési hivatkozást.
 
-## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>Hibrid kapcsolatok használata az SQL Server próbálok. Miért jelenik meg az üzenet "System.OverflowException: A művelet aritmetikai túlcsordulást okozott"?
+## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>A SQL Server használatával Próbálom használni a Hibrid kapcsolatok. Miért jelenik meg a "System. OverflowException: Az aritmetikai művelet túlcsordulást eredményezett?
 
-Hibrid kapcsolatok használatával az SQL Server elérését, ha a Microsoft .NET frissítés 2016. május 10-én a kapcsolódás meghiúsulását okozhatja. Ez az üzenet jelenhetnek meg:
+Ha Hibrid kapcsolatokt használ a SQL Server eléréséhez, Microsoft .NET a 2016-as számú frissítés sikertelen lehet, mert a kapcsolat meghiúsul. A következő üzenet jelenhet meg:
 
 ```
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
@@ -150,127 +150,124 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ### <a name="resolution"></a>Megoldás:
 
-A kivétel okozta a problémát az a Hibridkapcsolat-kezelő, mivel megoldották a problémát. Ügyeljen arra, hogy [frissítése a Hibridkapcsolat-kezelő](https://go.microsoft.com/fwlink/?LinkID=841308) a probléma megoldásához.
+A kivételt az a hibridkapcsolat-kezelő, amely azóta megoldódott. Ügyeljen rá, hogy a probléma megoldásához [frissítse a hibridkapcsolat-kezelő](https://go.microsoft.com/fwlink/?LinkID=841308) .
 
-## <a name="how-do-i-add-or-edit-a-url-rewrite-rule"></a>Hogyan hozzáadása vagy módosítása egy URL-újraírási szabályt?
+## <a name="how-do-i-add-a-url-rewrite-rule"></a>Hogyan adjon hozzá egy URL-átírási szabályt?
 
-Adja hozzá, vagy egy URL-átírási szabály szerkesztése:
+URL-re vonatkozó Újraírási szabály hozzáadásához hozzon létre egy web. config fájlt a megfelelő konfigurációs bejegyzésekkel a **wwwroot** mappában. További információkért lásd [: Azure app Services: Az URL-cím](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)újraírásának ismertetése.
 
-1. Az Internet Information Services (IIS) kezelője beállítása úgy, hogy az App Service webalkalmazás csatlakozik. App Service-ben az IIS-kezelő csatlakoztatása kapcsolatban lásd: [távoli felügyelete az Azure-webhelyek IIS-kezelőben](https://azure.microsoft.com/blog/remote-administration-of-windows-azure-websites-using-iis-manager/).
-2. Az IIS-kezelőben vagy szerkesztheti egy URL-újraírási szabályt. Ismerje meg, hogyan hozzáadása vagy módosítása egy URL-újraírási szabályt, lásd: [létrehozás újraírási szabályok az URL-újraíró modul](https://www.iis.net/learn/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module).
+## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Hogyan a bejövő forgalom vezérlését App Servicere?
 
-## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Hogyan szabályozza a bejövő forgalmat az App Service-ben?
+A hely szintjén két lehetőség közül választhat a App Service bejövő forgalmának szabályozására:
 
-A hely szintjén az App Service-ben a bejövő forgalom szabályozása két lehetősége van:
+* Kapcsolja be a dinamikus IP-korlátozásokat. A dinamikus IP-korlátozások bekapcsolásának megismeréséhez tekintse meg [Az Azure websites IP-és tartományi korlátozásait](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/)ismertető témakört.
+* A modul biztonságának bekapcsolása. A modul biztonságának bekapcsolásával kapcsolatos további információkért lásd: [ModSecurity webalkalmazási tűzfal az Azure websites szolgáltatásban](https://azure.microsoft.com/blog/modsecurity-for-azure-websites/).
 
-* Kapcsolja be a dinamikus IP-korlátozások. Dinamikus IP-korlátozások bekapcsolása kapcsolatban lásd: [IP- és tartománykorlátozások Azure websiteshoz](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/).
-* Kapcsolja be a modul biztonsági. A modul biztonsági bekapcsolása kapcsolatban lásd: [modsecurity-hez a webalkalmazási tűzfal az Azure webhelyek](https://azure.microsoft.com/blog/modsecurity-for-azure-websites/).
+Ha App Service Environment használ, a [Barracuda](https://azure.microsoft.com/blog/configuring-barracuda-web-application-firewall-for-azure-app-service-environment/)-tűzfalat használhatja.
 
-Ha az App Service Environment-környezet használatához [Barracuda tűzfal](https://azure.microsoft.com/blog/configuring-barracuda-web-application-firewall-for-azure-app-service-environment/).
+## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>Hogyan letiltani a portokat egy App Service webalkalmazásban?
 
-## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>Hogyan tiltsa le a portokat az App Service-webalkalmazásban?
+A App Service megosztott bérlői környezetben az infrastruktúra jellegéből adódóan nem lehet blokkolni bizonyos portokat. A 4016, 4018 és 4020 TCP-portok is megnyithatók a Visual Studio távoli hibakereséshez.
 
-App Service-ben a bérlő megosztott környezetben nincs lehetőség az infrastruktúra jellege miatt adott portok blokkolására. 4016 4018 és 4020 TCP-portok is nyitva a Visual Studio távoli hibakeresési lehet.
+App Service Environment a bejövő és a kimenő forgalmat teljes mértékben szabályozhatja. A hálózati biztonsági csoportokkal korlátozhatja vagy letilthatja az adott portok használatát. További információ a App Service Environmentről: [app Service Environment bemutatása](https://azure.microsoft.com/blog/introducing-app-service-environment/).
 
-Az App Service-környezet bejövő és kimenő forgalom teljes hozzáféréssel rendelkezik. Hálózati biztonsági csoportok segítségével korlátozhatja, vagy adott portok blokkolása. App Service Environment-környezet kapcsolatos további információkért lásd: [App Service Environment bemutatása](https://azure.microsoft.com/blog/introducing-app-service-environment/).
+## <a name="how-do-i-capture-an-f12-trace"></a>Hogyan egy F12-nyomkövetés rögzítését?
 
-## <a name="how-do-i-capture-an-f12-trace"></a>Hogyan rögzítése a az F12 nyomkövetési?
+Az F12-nyomkövetés rögzítésére két lehetőség áll rendelkezésre:
 
-Az F12 nyomkövetés rögzítése a két lehetősége van:
+* F12 HTTP-nyomkövetés
+* F12-konzol kimenete
 
-* F12 billentyű HTTP nyomkövetési
-* F12 billentyű konzolkimenet
+### <a name="f12-http-trace"></a>F12 HTTP-nyomkövetés
 
-### <a name="f12-http-trace"></a>F12 billentyű HTTP nyomkövetési
+1. Az Internet Explorerben lépjen a webhelyre. A következő lépések elvégzése előtt fontos bejelentkezni. Ellenkező esetben az F12 nyomkövetés a bizalmas bejelentkezési adatokat rögzíti.
+2. Nyomja meg az F12 billentyűt.
+3. Ellenőrizze, hogy a **hálózat** lap ki van-e választva, majd kattintson a zöld **Lejátszás** gombra.
+4. Végezze el a probléma ismételt előállításához szükséges lépéseket.
+5. Kattintson a vörös **Leállítás** gombra.
+6. Válassza a **Mentés** gombot (lemez ikon), és mentse a har-fájlt (az Internet Explorerben és a Microsoft Edge-ben), *vagy* kattintson a jobb gombbal a har-fájlra, majd válassza a **Mentés másként har a tartalommal** (a Chrome-ban) lehetőséget.
 
-1. Az Internet Explorerben nyissa meg a webhelyet. Fontos, hogy jelentkezzen be a következő lépések előtt. Ellenkező esetben az F12 nyomkövetési rögzíti a bizalmas bejelentkezési adatok.
-2. Nyomja le az F12 billentyűt.
-3. Ellenőrizze, hogy a **hálózati** lap van kijelölve, és válassza a zöld **lejátszása** gombra.
-4. Hajtsa végre a lépéseket, hogy reprodukálnia a hibát.
-5. Válassza ki a piros **leállítása** gombra.
-6. Válassza ki a **mentése** (lemez ikon) gombra, és mentse a HAR-fájlt (az Internet Explorer és Microsoft Edge) *vagy* kattintson a jobb gombbal a HAR-fájlt, és válassza **Mentés másként HARtartalommal**(a Chrome-ban).
+### <a name="f12-console-output"></a>F12-konzol kimenete
 
-### <a name="f12-console-output"></a>F12 billentyű konzolkimenet
+1. Válassza a **konzol** fület.
+2. Minden olyan lap esetében, amely nullánál több elemet tartalmaz, válassza ki a fület (**hiba**, **Figyelmeztetés**vagy **információ**). Ha a lap nincs bejelölve, a TAB ikon szürke vagy fekete, ha a kurzort onnan helyezi át.
+3. Kattintson a jobb gombbal a panel üzenet területére, majd válassza az **összes másolása**lehetőséget.
+4. Illessze be a másolt szöveget egy fájlba, majd mentse a fájlt.
 
-1. Válassza ki a **konzol** fülre.
-2. Minden egyes nullánál nagyobb elemeket tartalmazó lapon válassza a lap (**hiba**, **figyelmeztetés**, vagy **információk**). Ha a lapon nincs bejelölve, a tab ikon, a szürke vagy fekete a kurzor dobozból áthelyezésekor.
-3. A panel üzenet területén kattintson a jobb gombbal, és válassza **másolhatja az összes**.
-4. Illessze be a másolt szöveget a fájlba, és mentse a fájlt.
+Egy HAR-fájl megtekintéséhez használhatja a [har Viewert](https://www.softwareishard.com/har/viewer/).
 
-A HAR-fájl megtekintéséhez használja a [HAR megjelenítő](https://www.softwareishard.com/har/viewer/).
+## <a name="why-do-i-get-an-error-when-i-try-to-connect-an-app-service-web-app-to-a-virtual-network-that-is-connected-to-expressroute"></a>Miért kapok hibaüzenetet, amikor megpróbálok csatlakoztatni egy App Service webalkalmazást egy ExpressRoute-hez csatlakozó virtuális hálózathoz?
 
-## <a name="why-do-i-get-an-error-when-i-try-to-connect-an-app-service-web-app-to-a-virtual-network-that-is-connected-to-expressroute"></a>Miért kapok hiba jelenik meg csatlakozni egy App Service-webalkalmazás az expressroute-hoz csatlakoztatott virtuális hálózat?
+Ha Azure-webalkalmazást próbál csatlakoztatni egy Azure-ExpressRoute csatlakoztatott virtuális hálózathoz, az sikertelen lesz. A következő üzenet jelenik meg: "Az átjáró nem VPN-átjáró."
 
-Az Azure-webalkalmazás csatlakoztatása egy virtuális hálózathoz, amely az Azure ExpressRoute csatlakozik-e meg, ha sikertelen. A következő üzenet jelenik meg: "Átjáró nem VPN-átjáró."
+Jelenleg nem rendelkezhet pont – hely típusú VPN-kapcsolattal olyan virtuális hálózattal, amely a ExpressRoute-hez csatlakozik. Egy pont – hely típusú VPN-és ExpressRoute nem létezhet egyszerre ugyanahhoz a virtuális hálózathoz. További információ: a [ExpressRoute és a helyek közötti VPN-kapcsolatok korlátai és korlátozásai](../expressroute/expressroute-howto-coexist-classic.md#limits-and-limitations).
 
-Jelenleg nem lehet az expressroute-hoz csatlakoztatott virtuális hálózat pont – hely VPN-kapcsolatok. A pont – hely VPN és ExpressRoute nem létezhet ugyanazon a virtuális hálózaton. További információkért lásd: [ExpressRoute és site-to-site VPN-kapcsolatok korlátok és korlátozások](../expressroute/expressroute-howto-coexist-classic.md#limits-and-limitations).
+## <a name="how-do-i-connect-an-app-service-web-app-to-a-virtual-network-that-has-a-static-routing-policy-based-gateway"></a>Hogyan egy App Service webalkalmazást egy statikus útválasztási (házirend-alapú) átjáróval rendelkező virtuális hálózathoz?
 
-## <a name="how-do-i-connect-an-app-service-web-app-to-a-virtual-network-that-has-a-static-routing-policy-based-gateway"></a>Hogyan kapcsolódhatok egy App Service-webalkalmazást egy virtuális hálózathoz statikus útválasztási (házirendalapú) átjáró rendelkező?
+Jelenleg nem támogatott egy App Service webalkalmazás csatlakoztatása egy statikus útválasztási (házirend-alapú) átjáróval rendelkező virtuális hálózathoz. Ha a célként megadott virtuális hálózat már létezik, akkor az alkalmazáshoz való csatlakozás előtt a pont – hely típusú VPN-nek engedélyezve kell lennie, és dinamikus útválasztási átjárót kell használnia. Ha az átjáró statikus útválasztásra van beállítva, akkor nem engedélyezheti pont – hely típusú VPN-t. 
 
-Egy App Service webalkalmazás csatlakoztatása egy virtuális hálózatot, amely rendelkezik statikus útválasztás (házirendalapú) átjáró jelenleg nem támogatott. Ha a cél virtuális hálózat már létezik, hogy pont – hely VPN engedélyezve van, a dinamikus útválasztású átjáró, mielőtt csatlakozhat egy alkalmazáshoz kell rendelkeznie. Ha az átjáró beállítása a statikus útválasztás, a pont – hely VPN nem engedélyezhető. 
+További információ: [alkalmazás integrálása Azure](web-sites-integrate-with-vnet.md#getting-started)-beli virtuális hálózattal.
 
-További információkért lásd: [alkalmazás integrálása az Azure-beli virtuális hálózathoz](web-sites-integrate-with-vnet.md#getting-started).
+## <a name="in-my-app-service-environment-why-can-i-create-only-one-app-service-plan-even-though-i-have-two-workers-available"></a>A saját App Service Environmenton miért hozhatok létre csak egy App Service csomagot, még ha van két feldolgozóm?
 
-## <a name="in-my-app-service-environment-why-can-i-create-only-one-app-service-plan-even-though-i-have-two-workers-available"></a>Az App Service Environment környezetben miért is létrehozható csak egy App Service-csomag ellenére, hogy két feldolgozó is rendelkezésre áll?
+A hibatűrés biztosításához App Service Environment megköveteli, hogy mindegyik feldolgozó készletnek legalább egy további számítási erőforrásra van szüksége. A további számítási erőforrás nem rendelhető hozzá munkaterheléshez.
 
-Hibatűrő képességének biztosítása érdekében App Service Environment-környezet megköveteli, hogy minden feldolgozói készlethez kell legalább egy további számítási erőforrás. A további számítási erőforrás egy számítási feladatot nem lehet hozzárendelni.
+További információ: [app Service Environment létrehozása](environment/app-service-web-how-to-create-an-app-service-environment.md).
 
-További információkért lásd: [App Service-környezet létrehozása](environment/app-service-web-how-to-create-an-app-service-environment.md).
+## <a name="why-do-i-see-timeouts-when-i-try-to-create-an-app-service-environment"></a>Miért látok időtúllépéseket, amikor megpróbálok létrehozni egy App Service Environment?
 
-## <a name="why-do-i-see-timeouts-when-i-try-to-create-an-app-service-environment"></a>Miért látok időtúllépések, amikor megpróbálom hozzon létre egy App Service Environment-környezet?
-
-Egyes esetekben egy App Service Environment-környezet létrehozása sikertelen. Ebben az esetben a Tevékenységnaplókban a következő hiba jelenik meg:
+Előfordulhat, hogy egy App Service Environment létrehozása sikertelen. Ebben az esetben a következő hibaüzenet jelenik meg a tevékenység naplófájljaiban:
 ```
 ResourceID: /subscriptions/{SubscriptionID}/resourceGroups/Default-Networking/providers/Microsoft.Web/hostingEnvironments/{ASEname}
 Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period.”}}
 ```
 
-A probléma megoldásához győződjön meg arról, hogy a következő feltételek egyike sem igaz:
-* Az alhálózat mérete túl kicsi.
+A probléma megoldásához győződjön meg arról, hogy a következő feltételek egyike sem teljesül:
+* Az alhálózat túl kicsi.
 * Az alhálózat nem üres.
-* Az ExpressRoute megakadályozza, hogy az App Service Environment hálózati kapcsolati követelményeinek.
-* Hibás hálózati biztonsági csoport megakadályozza, hogy az App Service Environment hálózati kapcsolati követelményeinek.
-* Kényszerített bújtatás engedélyezve van.
+* A ExpressRoute meggátolja egy App Service Environment hálózati kapcsolati követelményeit.
+* A hibás hálózati biztonsági csoport megakadályozza a App Service Environment hálózati kapcsolati követelményeit.
+* A kényszerített bújtatás be van kapcsolva.
 
-További információkért lásd: [gyakori problémákat, üzembe helyezésekor (létrehozásakor) egy új Azure App Service-környezet](https://blogs.msdn.microsoft.com/waws/2016/05/13/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase/).
+További információkért lásd: [új Azure app Service Environment telepítésekor (létrehozásakor) gyakori problémák](https://blogs.msdn.microsoft.com/waws/2016/05/13/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase/).
 
-## <a name="why-cant-i-delete-my-app-service-plan"></a>Miért nem lehet törölni az App Service-csomag?
+## <a name="why-cant-i-delete-my-app-service-plan"></a>Miért nem tudom törölni a App Service csomagot?
 
-App Service-csomag nem törölhető, ha bármely App Service-alkalmazások társítva az App Service-csomag. Mielőtt törli az App Service-csomagot, távolítsa el az összes társított App Service-alkalmazások App Service-csomag.
+App Service-csomag nem törölhető, ha bármely App Service alkalmazás társítva van az App Service-csomaggal. App Service csomag törlése előtt távolítsa el az összes társított App Service-alkalmazást az App Service-csomagból.
 
-## <a name="how-do-i-schedule-a-webjob"></a>Hogyan ütemezhetek webjobs-feladat?
+## <a name="how-do-i-schedule-a-webjob"></a>Hogyan ütemezhet egy Webjobs?
 
-Az ütemezett webjobs-feladat Cron-kifejezések használatával hozhat létre:
+A cron-kifejezések használatával ütemezett Webjobs is létrehozhat:
 
-1. Hozzon létre egy settings.job fájlt.
-2. A JSON-fájlban a következők a schedule tulajdonság egy Cron-kifejezés használatával: 
+1. Hozzon létre egy Settings. job fájlt.
+2. A JSON-fájlban adjon meg egy Schedule tulajdonságot a cron kifejezés használatával: 
     ```json
     { "schedule": "{second}
     {minute} {hour} {day}
     {month} {day of the week}" }
     ```
 
-Az ütemezett webjobs-feladatok kapcsolatos további információkért lásd: [ütemezett webjobs-feladat létrehozása egy Cron-kifejezés használatával](webjobs-create.md#CreateScheduledCRON).
+Az ütemezett webjobs-feladatokkal kapcsolatos további információkért tekintse meg az [ütemezett Webjobs cron-kifejezés használatával történő létrehozását](webjobs-create.md#CreateScheduledCRON)ismertető témakört.
 
-## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Hogyan hajthatom végre behatolástesztelést végezhetnek az App Service-ben alkalmazásomhoz?
+## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Hogyan a App Service alkalmazáshoz való behatolás-tesztelést?
 
-Behatolásvizsgálat, végrehajtásához [igényelnie](https://portal.msrc.microsoft.com/en-us/engage/pentest).
+A behatolási teszt elvégzéséhez [küldje el a kérelmet](https://portal.msrc.microsoft.com/en-us/engage/pentest).
 
-## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Hogyan konfigurálhatom egy App Service-webalkalmazást, amely a Traffic Manager az egyéni tartománynevet?
+## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Hogyan a Traffic Managert használó App Service webalkalmazáshoz egyéni tartománynevet konfigurálhat?
 
-Egyéni tartománynév használata App Service-alkalmazások által használt Azure Traffic Manager terheléselosztásra kapcsolatban lásd: [konfigurálása egy egyéni tartománynevet az Azure-webalkalmazás létrehozása a Traffic Managerrel](web-sites-traffic-manager-custom-domain-name.md).
+Ha szeretné megismerni, hogyan használhat egyéni tartománynevet egy olyan App Service alkalmazással, amely az Azure Traffic Managert használja a terheléselosztáshoz, tekintse meg az [Egyéni tartománynév konfigurálása az Azure](web-sites-traffic-manager-custom-domain-name.md)-webalkalmazásokhoz Traffic Manager használatával című témakört.
 
-## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>Az App Service-tanúsítvány meg van jelölve, a csalások. Hogyan oldhatom fel ez?
+## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>Az App Service-tanúsítvány csalásra van megjelölve. Hogyan megoldja ezt?
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Egy App Service-tanúsítvány vásárolt előfizetést, a tartomány ellenőrzése közben a következő üzenetet láthatja:
+Az App Service-tanúsítvány megvásárlásának tartományi ellenőrzése során a következő üzenet jelenhet meg:
 
-"A tanúsítvány meg lett jelölve lehetséges csalás. A kérelem jelenleg felülvizsgálat alatt áll. Ha a tanúsítvány nem válik használhatóvá 24 órán belül, forduljon az Azure ügyfélszolgálatához."
+"A tanúsítvány a lehetséges csalások miatt lett megjelölve. A kérelem jelenleg felülvizsgálat alatt áll. Ha a tanúsítvány 24 órán belül nem lesz használható, forduljon az Azure ügyfélszolgálatához. "
 
-Az üzenet azt jelzi, az csalás ellenőrzési folyamat akár 24 óráig is eltarthat. Ebben az időszakban, továbbra is az üzenet jelenik meg.
+Az üzenet azt jelzi, hogy a csalás ellenőrzési folyamata akár 24 órát is igénybe vehet. Ebben az időszakban továbbra is megjelenik az üzenet.
 
-Ha az App Service-tanúsítvány továbbra is jelenjen meg ez az üzenet 24 óra múlva, futtassa a következő PowerShell-parancsfájlt. A parancsfájl kapcsolatba lép a [tanúsítványszolgáltató](https://www.godaddy.com/) közvetlenül a probléma megoldása érdekében.
+Ha a App Service-tanúsítvány 24 óra elteltével továbbra is megjeleníti ezt az üzenetet, futtassa a következő PowerShell-szkriptet. A parancsfájl közvetlenül kapcsolatba [](https://www.godaddy.com/) lép a hitelesítésszolgáltatóval a probléma megoldásához.
 
 ```powershell
 Connect-AzAccount
@@ -281,38 +278,38 @@ $actionProperties = @{
 Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Group Name>" -ResourceType Microsoft.CertificateRegistration/certificateOrders -ResourceName "<App Service Certificate Resource Name>" -Action resendRequestEmails -Parameters $actionProperties -ApiVersion 2015-08-01 -Force   
 ```
 
-## <a name="how-do-authentication-and-authorization-work-in-app-service"></a>Hogyan hitelesítési és engedélyezési működik az App Service szolgáltatásban?
+## <a name="how-do-authentication-and-authorization-work-in-app-service"></a>Hogyan működik a hitelesítés és az engedélyezés App Service?
 
-Hitelesítés és engedélyezés az App Service részletes dokumentációjáért lásd: azonosítsa a szolgáltató bejelentkezések különböző docs:
+A App Service hitelesítésével és engedélyezésével kapcsolatos részletes dokumentációért lásd: a különböző azonosítási szolgáltatói bejelentkezésekhez szükséges dokumentumok.
 * [Azure Active Directory](configure-authentication-provider-aad.md)
 * [Facebook](configure-authentication-provider-facebook.md)
 * [Google](configure-authentication-provider-google.md)
 * [Microsoft-fiók](configure-authentication-provider-microsoft.md)
 * [Twitter](configure-authentication-provider-twitter.md)
 
-## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Hogyan átirányítja az alapértelmezett *. azurewebsites.net tartományban, a saját Azure-alapú webes alkalmazás egyéni tartomány?
+## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Hogyan átirányítja az alapértelmezett *. azurewebsites.net tartományt az Azure-webalkalmazás egyéni tartományára?
 
-Amikor új webhely létrehozása az Azure-ban, egy alapértelmezett Web Apps használatával *sitename*. azurewebsites.net tartomány a helyhez van rendelve. Ha egy egyéni nevet hozzá a helyhez, és nem szeretné a felhasználók érhetik el az alapértelmezett *. azurewebsites.net tartományban, irányíthatja át az alapértelmezett URL-címe. Az egyéni tartományban a webhely alapértelmezett tartományból származó összes forgalom átirányítása kezelésével kapcsolatos információkért lásd: [az alapértelmezett tartomány átirányítása az Azure web apps szolgáltatásban az egyéni tartomány](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
+Új webhely Azure-beli Web Apps használatával történő létrehozásakor a rendszer egy alapértelmezett *sitename*. azurewebsites.net tartományt rendel hozzá a webhelyhez. Ha egyéni állomásnevet ad hozzá a webhelyhez, és nem szeretné, hogy a felhasználók hozzáférhessenek az alapértelmezett *. azurewebsites.net tartományhoz, akkor átirányíthatja az alapértelmezett URL-címet. Ha meg szeretné tudni, hogyan irányíthatja át a webhely alapértelmezett tartományában lévő összes forgalmat az egyéni tartományba, tekintse meg [az alapértelmezett tartomány átirányítása az egyéni tartományba az Azure Web Apps szolgáltatásban](https://zainrizvi.io/blog/block-default-azure-websites-domain/)című témakört.
 
-## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Hogyan állapíthatom meg, melyik verzió a .NET a verziója telepítve van az App Service szolgáltatásban?
+## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Hogyan határozza meg, hogy a .NET-verzió melyik verziója van telepítve a App Service-ben?
 
-A leggyorsabb mód a Microsoft .NET App Service-ben telepített verzió azonosításához van, a Kudu konzol használatával. Elérheti a Kudu konzol a portálon vagy az App Service-alkalmazás URL-Címének használatával. Részletes útmutatásért lásd: [App Service-ben a telepített .NET-verzió](https://blogs.msdn.microsoft.com/waws/2016/11/02/how-to-determine-the-installed-net-version-in-azure-app-services/).
+A App Serviceban telepített Microsoft .NET verziószámának leggyorsabb módja a kudu-konzol használata. A kudu-konzolt a portálról vagy a App Service alkalmazás URL-címének használatával érheti el. Részletes útmutatás: [a telepített .NET-verzió meghatározása app Service](https://blogs.msdn.microsoft.com/waws/2016/11/02/how-to-determine-the-installed-net-version-in-azure-app-services/).
 
-## <a name="why-isnt-autoscale-working-as-expected"></a>Automatikus skálázási miért nem működik, a várható?
+## <a name="why-isnt-autoscale-working-as-expected"></a>Miért nem a várt módon működik az autoskálázás?
 
-Ha Azure automatikus méretezési funkciójával még nem számát vagy a web app-példány horizontálisan skálázott megfelelő-e, akkor előfordulhat, hogy fut-e be egy olyan forgatókönyvet, amelyben szándékosan lehetőséget választjuk, nem méretezhető miatt "állapota váltakozik." végtelen ciklust elkerülése érdekében Ez általában akkor fordul elő, amikor a horizontális felskálázást és a horizontális leskálázási küszöbértékek között nem megfelelő. Megtudhatja, hogyan "váltakozó" elkerülése érdekében, valamint hogy olvassa a többi az automatikus méretezés ajánlott eljárásairól, olvassa [automatikus méretezés ajánlott eljárásairól](../azure-monitor/platform/autoscale-best-practices.md#autoscale-best-practices).
+Ha az Azure-beli autoskálázás a várt módon nem méretezi át vagy bővíti a webalkalmazási példányt, előfordulhat, hogy olyan forgatókönyvben fut, amelyben szándékosan nem méretezhető, hogy elkerülje a végtelen hurkot a "csapkodás" miatt. Ez általában akkor fordul elő, ha nincs megfelelő árrés a kibővített és a skálázási küszöbértékek között. Ha szeretné megtudni, hogyan kerülheti el a "csapkodás" és az egyéb, az autoscale ajánlott eljárásaival kapcsolatos információkat, tekintse meg az [ajánlott eljárásokat](../azure-monitor/platform/autoscale-best-practices.md#autoscale-best-practices).
 
-## <a name="why-does-autoscale-sometimes-scale-only-partially"></a>Miért nem automatikus skálázási néha méretezése csak részben?
+## <a name="why-does-autoscale-sometimes-scale-only-partially"></a>Miért érdemes a méretezést időnként csak részben méretezni?
 
-Automatikus skálázási akkor aktiválódik, ha a metrikák túllépnek előre konfigurált határok. Egyes esetekben előfordulhat, hogy láthatja, hogy, hogy a kapacitás csak részben kitölti képest, amire számít. Ez akkor fordulhat elő, ha nem érhetők el a kívánt példányok számát. Ebben az esetben az automatikus méretezés részlegesen tölti be a rendelkezésre álló példányok számát. Automatikus skálázási majd futtatja az újraegyensúlyozási logika további kapacitásának lekérése. A fennmaradó példányok oszt ki. Vegye figyelembe, hogy ez eltarthat néhány percig.
+Az autoskálázás akkor aktiválódik, ha a metrikák túllépik az előre konfigurált határokat. Időnként észreveheti, hogy a kapacitás csak részben lett kitöltve, mint a várt módon. Ez akkor fordulhat elő, ha a kívánt példányok száma nem érhető el. Ebben a forgatókönyvben a részlegesen kitölti az automatikusan a rendelkezésre álló példányszámot. Az autoscale ezt követően az egyensúly logikáját futtatja, hogy nagyobb kapacitást kapjon. A fennmaradó példányokat foglalja le. Vegye figyelembe, hogy ez eltarthat néhány percig.
 
-Ha nem látja a várt számú példányok néhány perc múlva, mert a részleges Újratöltés nem volt elegendő ahhoz, hogy a metrikák határain belül lehet. Vagy az automatikus méretezés előfordulhat, hogy méretezte, mert elérte a metrikák alsó határt.
+Ha nem látja a várt számú példányt néhány perc múlva, annak oka az lehet, hogy a részleges Újratöltés elég volt ahhoz, hogy a metrikák a határokon belül legyenek. Vagy az autoscale méretezése megnövelhető, mert elérte az alsó metrikák határát.
 
-Ha ezek a feltételek egyike a alkalmazni, és a probléma tartósan fennáll, küldjön egy támogatási kérést.
+Ha a feltételek egyike sem teljesül, és a probléma továbbra is fennáll, küldjön be egy támogatási kérést.
 
-## <a name="how-do-i-turn-on-http-compression-for-my-content"></a>Hogyan kapcsolhatom a HTTP-tömörítésének saját tartalom?
+## <a name="how-do-i-turn-on-http-compression-for-my-content"></a>Hogyan bekapcsolja a saját tartalom HTTP-tömörítését?
 
-Tömörítés mindkét a statikus és dinamikus tartalomtípusok bekapcsolásához adja hozzá a következő kódot az alkalmazásszintű web.config fájlba:
+A statikus és a dinamikus tartalomtípusok tömörítésének bekapcsolásához adja hozzá a következő kódot az Application-Level web. config fájlhoz:
 
 ```xml
 <system.webServer>
@@ -320,8 +317,8 @@ Tömörítés mindkét a statikus és dinamikus tartalomtípusok bekapcsolásáh
 </system.webServer>
 ```
 
-A megadott dinamikus és statikus MIME-típusok tömöríteni kívánt is megadhatja. További információkért lásd: a fórum kérdés válasz [httpCompression beállítások egy egyszerű Azure-webhelyen](https://social.msdn.microsoft.com/Forums/azure/890b6d25-f7dd-4272-8970-da7798bcf25d/httpcompression-settings-on-a-simple-azure-website?forum=windowsazurewebsitespreview).
+Megadhatja a tömöríteni kívánt dinamikus és statikus MIME-típusokat is. További információkért tekintse [meg a httpCompression-beállítások egy egyszerű Azure-webhelyen](https://social.msdn.microsoft.com/Forums/azure/890b6d25-f7dd-4272-8970-da7798bcf25d/httpcompression-settings-on-a-simple-azure-website?forum=windowsazurewebsitespreview)történő megválaszolása című témakörre adott választ.
 
-## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Hogyan migrálhatok egy a helyszíni környezetből az App Service?
+## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Hogyan Migrálás egy helyszíni környezetből a App Serviceba?
 
-App Service-ben migrálni a helyeket a Windows és Linux webkiszolgálók, használhatja az Azure App Service Migration Assistant. Az áttelepítési eszköz hoz létre webalkalmazásokat és adatbázisokat az Azure-ban igény szerint, és ezután közzéteszi a tartalmat. További információkért lásd: [Azure App Service Migration Assistant](https://www.migratetoazure.net/).
+Ha Windows és Linux rendszerű webkiszolgálókról kíván áttelepíteni helyeket App Serviceba, használhatja a Azure App Service Migration Assistant. Az áttelepítési eszköz szükség szerint hozza létre a webalkalmazásokat és-adatbázisokat az Azure-ban, majd közzéteszi a tartalmat. További információ: [Azure App Service Migration Assistant](https://www.migratetoazure.net/).

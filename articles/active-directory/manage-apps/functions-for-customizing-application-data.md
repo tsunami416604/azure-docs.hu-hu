@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2019
+ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12b75c2df7d11b0e90c5dccc3bc2aae4e0fb0c1e
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: e741e8d4d68c9862aaabffaccb86740a3e1e9b8a
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204483"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694179"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Az Azure Active Directoryban attribútumleképezések kifejezések írása
 Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön által megadott attribútum-leképezéshez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi, hogy a felhasználók adatokat alakíthatja, amelyek esetében a SaaS-alkalmazás több elfogadható formátumok kell írnia.
@@ -35,10 +35,10 @@ Attribútum-leképezéshez kifejezések szintaxisa reminiscent a Visual Basic f�
   1. Attribútumok, amelyek szögletes zárójelek közé kell tenni. Például: [attributeName]
   2. A karakterlánc-állandókat, amelyek dupla idézőjelek közé kell tenni. Példa: "Egyesült Államok"
   3. Más funkciók. Példa: FunctionOne (`<<argument1>>`, FunctionTwo (`<<argument2>>`))
-* A karakterlánc-állandókat Ha egy fordított perjel (\) vagy az idézőjel (") a karakterláncban van szüksége, kell megjelölni a fordított perjel (\) szimbólum. Példa: "Cég neve: \\"Contoso\\""
+* A karakterlánc-állandókat Ha egy fordított perjel (\) vagy az idézőjel (") a karakterláncban van szüksége, kell megjelölni a fordított perjel (\) szimbólum. Példa: "Cég neve: \\"Contoso\\" "
 
 ## <a name="list-of-functions"></a>Függvények listája.
-[Hozzáfűzés](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [csatlakozzon](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [nem](#not) &nbsp; &nbsp; &nbsp; &nbsp; [cseréje](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [ StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [kapcsoló](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
+[Hozzáfűzés](#append) &nbsp; [](#formatdatetime) FormatDateTime csatlakoztatása&nbsp; [](#join) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [A Mid](#mid) &nbsp; [](#normalizediacritics) [](#not) NormalizeDiacritics nem &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [](#selectuniquevalue) [](#replace) SelectUniqueValue cseréje &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ SingleAppRoleAssignment](#singleapproleassignment) &nbsp; [felosztott](#split)[](#stripspaces) StripSpaces&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; [](#tolower) [](#switch) ToLowerváltása&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
 
 ---
 ### <a name="append"></a>Hozzáfűzés
@@ -73,7 +73,7 @@ Attribútum-leképezéshez kifejezések szintaxisa reminiscent a Visual Basic f�
 
 **Leírás:**<br> JOIN() hasonlít Append(), azzal a különbséggel, hogy több képes kombinálni **forrás** karakterláncot egyetlen karakterlánccá értéket, majd az egyes értékek fogja elválasztani a **elválasztó** karakterlánc.
 
-Ha a forrás-értékeket egy többértékű attribútumot, majd minden egyes értékhez ezt az attribútumot a tartományhoz fog csatlakozni együttesen elválasztó értéke elválasztva.
+Ha a forrásadatok egyike egy többértékű attribútum, akkor az adott attribútum minden értéke együtt lesz egyesítve, az elválasztó értékkel elválasztva.
 
 **Paraméterek:**<br> 
 
@@ -106,7 +106,7 @@ Ha a forrás-értékeket egy többértékű attribútumot, majd minden egyes ér
 
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |String | Általában egy Utónév vagy utolsó név attribútum. |
+| **source** |Szükséges |Sztring | Általában utónév vagy vezetéknév attribútum. |
 
 ---
 ### <a name="not"></a>nem
@@ -118,7 +118,7 @@ Ha a forrás-értékeket egy többértékű attribútumot, majd minden egyes ér
 
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |Logikai típusú karakterlánc |A várt **forrás** értékek: "True" vagy "False". |
+| **source** |Szükséges |Logikai típusú karakterlánc |A várt **források** értéke "true" vagy "false". |
 
 ---
 ### <a name="replace"></a>Csere
@@ -129,29 +129,32 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 
 * Amikor **oldValue** és **helyettesítő értéke** biztosított:
   
-  * Lecseréli az összes előfordulását a forrás oldValue helyettesítő értéke
+  * Lecseréli a **forrásban** lévő **OldValue** összes előfordulását a **replacementValue**
 * Amikor **oldValue** és **sablon** biztosított:
   
   * Összes előfordulását lecseréli a **oldValue** a a **sablon** együtt a **forrás** érték
+* A **regexPattern** és a **replacementValue** megadása esetén:
+
+  * A függvény a **regexPattern** alkalmazza a **forrás** sztringre, és a regex-csoportok nevét használhatja a **replacementValue** karakterlánc létrehozásához.
 * Amikor **regexPattern**, **regexGroupName**, **helyettesítő értéke** biztosított:
   
-  * Lecseréli az összes értékeket oldValueRegexPattern helyettesítő értéke a forrás karakterláncot az egyező
-* Amikor **regexPattern**, **regexGroupName**, **replacementPropertyName** biztosított:
+  * A függvény a **regexPattern** alkalmazza a **forrás** sztringre, és lecseréli az összes olyan értéket, amely megfelel a **regexGroupName** a **replacementValue**
+* A **regexPattern**, a **regexGroupName**és a **replacementAttributeName** megadásakor:
   
   * Ha **forrás** nem rendelkezik értékkel, **forrás** adja vissza
-  * Ha **forrás** értékkel rendelkezik, használja a **regexPattern** és **regexGroupName** érték kinyerésére rendelkező tulajdonság **replacementPropertyName** . Helyettesítő értéket adja vissza eredményként
+  * Ha a **forrás** értékkel rendelkezik, a függvény a **regexPattern** alkalmazza a **forrás** sztringre, és lecseréli az összes olyan értéket, amely megfelel a **regexGroupName** a **replacementAttributeName** társított értéknek.
 
 **Paraméterek:**<br> 
 
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |Karakterlánc |Általában az attribútum neve, az adatforrás-objektum. |
+| **source** |Szükséges |Sztring |Az attribútum neve általában a **forrásoldali** objektumban. |
 | **oldValue** |Optional |Karakterlánc |Értéket kell cserélni a **forrás** vagy **sablon**. |
-| **regexPattern** |Optional |Karakterlánc |Az érték cseréli a Regex minta **forrás**. Vagy, ha replacementPropertyName használják, csere tulajdonság értékének kinyerése mintát. |
-| **regexGroupName** |Optional |Karakterlánc |A csoport a nevét **regexPattern**. Csak akkor, ha replacementPropertyName használják, ez a csoport értékét azt fogja bontsa ki, helyettesítő helyettesítő tulajdonság értéke. |
+| **regexPattern** |Optional |Karakterlánc |Az érték cseréli a Regex minta **forrás**. Vagy ha **replacementPropertyName** használ, a **replacementPropertyName**származó érték kinyerésére szolgáló minta. |
+| **regexGroupName** |Optional |Karakterlánc |A csoport a nevét **regexPattern**. Csak **replacementPropertyName** használata esetén a csoport értékének kinyerése a **replacementPropertyName** **replacementValue** történik. |
 | **replacementValue** |Optional |Karakterlánc |Új értéket cserélje le a régit. |
-| **replacementAttributeName** |Optional |Karakterlánc |Használandó érték, ha a forrás nem rendelkezik értékkel az attribútum neve. |
-| **sablon** |Optional |Karakterlánc |Amikor **sablon** érték van megadva, alábbiakban tájékozódhat **oldValue** belül a sablont, és cserélje le az adatforrás-értéke. |
+| **replacementAttributeName** |Optional |Sztring |A helyettesítő értékhez használandó attribútum neve |
+| **sablon** |Optional |Karakterlánc |Ha meg van adni a **sablon** értéke, megkeresjük a **OldValue** a sablonon belül, és lecseréljük a **forrás** értékre. |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -168,14 +171,14 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **uniqueValueRule1... uniqueValueRuleN** |Legalább a 2 szükséges, nem felső határérték |String | Egyedi érték létrehozási szabályok kiértékelése listája. |
+| **uniqueValueRule1... uniqueValueRuleN** |Legalább a 2 szükséges, nem felső határérték |Sztring | A kiértékelni kívánt egyedi érték-létrehozási szabályok listája. |
 
 
 ---
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **Függvény:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
-**Leírás:**<br> Egyetlen appRoleAssignment rendelve egy felhasználó egy adott alkalmazás összes hozzárendeléseinek listáját adja vissza. Ez a függvény van szükség az alkalmazások szerepkör-hozzárendelései objektum átalakítása egy egységes szerepkör karakterláncát. Vegye figyelembe, hogy a legjobb módszer annak biztosítására, csak egy appRoleAssignment egyszerre egy felhasználóhoz rendelt, és ha több szerepkör hozzá van rendelve a visszaadott szerepkör karakterlánc nem lehet előre jelezhető. 
+**Leírás:**<br> Egyetlen appRoleAssignment ad vissza egy adott alkalmazás felhasználóhoz rendelt összes appRoleAssignments listájáról. Ez a függvény szükséges ahhoz, hogy a appRoleAssignments objektumot egyetlen szerepkör-nevet megadó karakterláncba alakítsa át. Vegye figyelembe, hogy az ajánlott eljárás annak biztosítása, hogy egyszerre csak egy appRoleAssignment legyen hozzárendelve egy felhasználóhoz, és ha több szerepkör van hozzárendelve, a visszaadott szerepkör-karakterlánc nem lehet előre jelezhető. 
 
 **Paraméterek:**<br> 
 
@@ -184,17 +187,17 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | **[hozzárendeléseinek]** |Szükséges |Karakterlánc |**[hozzárendeléseinek]**  objektum. |
 
 ---
-### <a name="split"></a>Felosztás
-**Függvény:**<br> Split (forrás, elválasztó karakter)
+### <a name="split"></a>Megosztott
+**Függvény:**<br> Felosztás (forrás, elválasztó karakter)
 
-**Leírás:**<br> Egy karakterlánc felosztja a mulit értékű tömb a megadott elválasztó karakter használatával.
+**Leírás:**<br> A karakterláncot egy Mulit értékű tömbre osztja fel a megadott elválasztó karakter használatával.
 
 **Paraméterek:**<br> 
 
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **source** |Szükséges |Karakterlánc |**forrás** érték frissítéséhez. |
-| **delimiter** |Kötelező |String |Adja meg a karakter, amely a sztring felosztásához használandó (Példa: ",") |
+| **delimiter** |Kötelező |Sztring |Meghatározza a karakterlánc felosztására szolgáló karaktert (példa: ",") |
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -224,30 +227,30 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | **value** |Szükséges |Karakterlánc |Az érték a **forrás** összekapcsolja a kulcsot. |
 
 ---
-### <a name="tolower"></a>toLower
+### <a name="tolower"></a>ToLower
 **Függvény:**<br> ToLower (forrás, kulturális környezet)
 
-**Leírás:**<br> Vesz igénybe egy *forrás* értékből, és konvertálja azt a kulturális környezet használatával kisbetűsre szabályok, amelyek a megadott karakterlánc. Ha nincs *kulturális környezet* adatai megadva, Invariáns kulturális környezetet fogja használni.
+**Leírás:**<br> Egy *forrás* sztring értéket vesz igénybe, és a megadott kulturális szabályok alapján átalakítja a kisbetűsre. Ha nincs megadva *kulturális* információ, akkor a rendszer a semleges kultúrát fogja használni.
 
 **Paraméterek:**<br> 
 
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **source** |Szükséges |Karakterlánc |Általában az attribútum az az adatforrás-objektum neve |
-| **culture** |Optional |String |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
+| **kulturális környezet** |Választható |Sztring |Az RFC 4646 alapján a kulturális név formátuma *languagecode2-ország/regioncode2*, ahol a *languagecode2* a kétbetűs nyelvi kód, az *ország/regioncode2* pedig a kétbetűs alkulturális kód. Ilyenek például a japán (Japán) és az en-US angol (Egyesült Államok). Azokban az esetekben, amikor a kétbetűs nyelvi kód nem érhető el, az ISO 639-2-ből származtatott hárombetűs kód van használatban.|
 
 ---
 ### <a name="toupper"></a>ToUpper
 **Függvény:**<br> ToUpper (forrás, kulturális környezet)
 
-**Leírás:**<br> Vesz igénybe egy *forrás* értékből, és konvertálja azt a kulturális környezet használatával nagybetűs szabályok, amelyek a megadott karakterlánc. Ha nincs *kulturális környezet* adatai megadva, Invariáns kulturális környezetet fogja használni.
+**Leírás:**<br> Egy *forrás* sztring értékét veszi át, és a megadott kulturális szabályok alapján átalakítja a nagybetűre. Ha nincs megadva *kulturális* információ, akkor a rendszer a semleges kultúrát fogja használni.
 
 **Paraméterek:**<br> 
 
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **source** |Szükséges |Karakterlánc |Általában az attribútum neve, az adatforrás-objektum. |
-| **culture** |Optional |String |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
+| **kulturális környezet** |Választható |Karakterlánc |Az RFC 4646 alapján a kulturális név formátuma *languagecode2-ország/regioncode2*, ahol a *languagecode2* a kétbetűs nyelvi kód, az *ország/regioncode2* pedig a kétbetűs alkulturális kód. Ilyenek például a japán (Japán) és az en-US angol (Egyesült Államok). Azokban az esetekben, amikor a kétbetűs nyelvi kód nem érhető el, az ISO 639-2-ből származtatott hárombetűs kód van használatban.|
 
 ## <a name="examples"></a>Példák
 ### <a name="strip-known-domain-name"></a>Sáv ismert tartománynév
@@ -281,9 +284,9 @@ Létre kell hoznia egy felhasználói alias, a felhasználó utónevét első 3 
 
 **Bemeneti/kimeneti. példa:** <br>
 
-* **BEMENETI** (givenName): "János"
-* **BEMENETI** (Vezetéknév): "Jakab"
-* **KIMENETI**:  "JohDoe"
+* **Bemenet** (givenName): John
+* **Bemenet** (vezetéknév): DOE
+* **KIMENET**:  "JohDoe"
 
 ### <a name="remove-diacritics-from-a-string"></a>Távolítsa el az e mellékjeleket egy karakterláncból.
 Cserélje le a megfelelő karakterek, ékezetes nem tartalmazó ékezetes karakter hosszúságúnak kell.
@@ -293,19 +296,19 @@ NormalizeDiacritics([givenName])
 
 **Bemeneti/kimeneti. példa:** <br>
 
-* **BEMENETI** (givenName): "Zoë"
-* **KIMENETI**:  "Zoe"
+* **Bemenet** (givenName): Zoë
+* **KIMENET**:  Zoe
 
-### <a name="split-a-string-into-a-multi-valued-array"></a>Egy sztring felosztása többértékű tömb
-Karakterláncok vesszővel tagolt listáját, illetve ossza fel őket egy tömb, amely egy többértékű attribútum, például a Salesforce PermissionSets attribútumot lehet csatlakoztatni kell. Ebben a példában egy engedélycsoportok listájában feltöltődtek az extensionAttribute5 az Azure ad-ben.
+### <a name="split-a-string-into-a-multi-valued-array"></a>Sztring felosztása többértékű tömbbe
+A karakterláncok vesszővel tagolt listáját kell megadnia, és azokat egy olyan tömbbe kell bontani, amely egy többértékű attribútumhoz, például a Salesforce PermissionSets attribútumához csatlakoztatható. Ebben a példában az extensionAttribute5 az Azure AD-ben az engedélyezési készletek listája lett feltöltve.
 
 **Kifejezés:** <br>
 Split ([extensionAttribute5], ",")
 
 **Bemeneti/kimeneti. példa:** <br>
 
-* **BEMENETI** (extensionAttribute5): "PermissionSetOne, PermisionSetTwo"
-* **KIMENETI**: ["PermissionSetOne", "PermissionSetTwo"]
+* **Bemenet** (extensionAttribute5): "PermissionSetOne, PermisionSetTwo"
+* **Kimenet**: ["PermissionSetOne", "PermissionSetTwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Egy bizonyos formátumú karakterlánc formájában kimeneti dátum
 Egy SaaS-alkalmazás egy bizonyos formátumú dátumok küldeni szeretné. <br>
@@ -317,8 +320,8 @@ Ha például szeretné formátumához servicenow-hoz készült.
 
 **Bemeneti/kimeneti. példa:**
 
-* **BEMENETI** (extensionAttribute1): "20150123105347.1Z"
-* **KIMENETI**:  "2015-01-23"
+* **Bemenet** (extensionAttribute1): "20150123105347.1Z"
+* **KIMENET**:  "2015-01-23"
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Cserélje le az előre megadott beállítások alapján értéket
 
@@ -330,31 +333,31 @@ Ha az állapot-kód nem egyezik az előre definiált beállításokat, használj
 
 **Bemeneti/kimeneti. példa:**
 
-* **BEMENETI** (állapot): "QLD"
-* **KIMENETI**: "Ausztrália/Brisbane"
+* **Bemenet** (állapot): QLD
+* **KIMENET**: "Ausztrália/Brisbane"
 
-### <a name="replace-characters-using-a-regular-expression"></a>Cserélje le a karaktereket a reguláris kifejezés használata
-Meg kell keresnie a karakter, amely egy reguláris kifejezés érték egyezik, és távolítsa el őket.
+### <a name="replace-characters-using-a-regular-expression"></a>Karakterek cseréje reguláris kifejezés használatával
+Meg kell keresnie a reguláris kifejezés értékének megfelelő karaktereket, és el kell távolítani őket.
 
 **Kifejezés:** <br>
 
-Cserélje le ([mailNickname,], "[a-zA-Z_] *", "",)
+Replace ([mailNickname],, "[a-zA-Z_] *",, "",,)
 
 **Bemeneti/kimeneti. példa:**
 
-* **BEMENETI** (mailNickname: "john_doe72"
-* **KIMENETI**: "72"
+* **Bemenet** (mailNickname: "john_doe72"
+* **KIMENET**: "72"
 
-### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Generált userPrincipalName (UPN) érték átalakítása kisbetű
-Az alábbi példában az egyszerű felhasználónevet a PreferredFirstName és PreferredLastName forrás mezők összefűzésével jön létre, és a ToLower függvény a létrehozott karakterlánc összes karakter átalakítása kisbetű működik. 
+### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Generált userPrincipalName (UPN) értékének kisbetűvé alakítása
+Az alábbi példában az UPN-érték a PreferredFirstName és a PreferredLastName forrás mezőinek összefűzésével jön létre, és a ToLower függvény a generált karakterláncon működik, hogy az összes karaktert kisbetűvé alakítsa. 
 
 `ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
 
 **Bemeneti/kimeneti. példa:**
 
-* **BEMENETI** (PreferredFirstName): "János"
-* **BEMENETI** (PreferredLastName): "Smith"
-* **KIMENETI**: "john.smith@contoso.com"
+* **Bemenet** (PreferredFirstName): John
+* **Bemenet** (PreferredLastName): Smith
+* **KIMENET**: "john.smith@contoso.com"
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Egyedi érték a userPrincipalName (UPN) attribútum létrehozása
 Alapján a felhasználó utónevét, a középső név és vezetéknevét, létre kell hoznia az UPN attribútum értékét, és ellenőrizze az egyedi-e a cél az AD címtárban az UPN attribútum értéke hozzárendelése előtt.
@@ -369,8 +372,8 @@ Alapján a felhasználó utónevét, a középső név és vezetéknevét, létr
 
 **Bemeneti/kimeneti. példa:**
 
-* **BEMENETI** (PreferredFirstName): "János"
-* **BEMENETI** (PreferredLastName): "Smith"
+* **Bemenet** (PreferredFirstName): John
+* **Bemenet** (PreferredLastName): Smith
 * **KIMENETI**: "John.Smith@contoso.com" Ha UPN értékét John.Smith@contoso.com még nem létezik a címtárban
 * **KIMENETI**: "J.Smith@contoso.com" Ha UPN értékét John.Smith@contoso.com a könyvtár már létezik
 * **KIMENETI**: "Jo.Smith@contoso.com" Ha a fenti két UPN-érték már létezik a címtárban

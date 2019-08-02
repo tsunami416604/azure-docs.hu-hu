@@ -1,24 +1,23 @@
 ---
-title: Oktatóanyag – az Azure storage üzenetsorok Work – Azure Storage
-description: Ismertető az Azure Queue szolgáltatás használatával hozzon létre a várólisták és a Beszúrás, beolvasása, és törli az üzenetet.
-services: storage
+title: Oktatóanyag – Azure Storage-várólisták használata – Azure Storage
+description: Útmutató az Azure Queue szolgáltatás a várólisták létrehozásához, valamint üzenetek beszúrásához, lekéréséhez és törléséhez való használatáról.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 04/24/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
-ms.date: 04/24/2019
-ms.openlocfilehash: 08ef140eb860637cc0c09619abe7051cc007e99f
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.reviewer: cbrooks
+ms.openlocfilehash: c8e1d5c1c11c4fdf902c7be7bc03be298e93a8b9
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540295"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721145"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>Oktatóanyag: Azure Storage-üzenetsorok használata
 
-Az Azure Queue storage valósítja meg a felhőalapú üzenetsorok elosztott alkalmazások összetevői közötti kommunikáció engedélyezése. Minden egyes üzenetsorhoz tart fenn a küldő összetevője által hozzáadott, és egy fogadó összetevő által feldolgozott üzenetek listája. Az üzenetsor, az alkalmazás képes azonnal igény szerint méretezhető. Ez a cikk bemutatja az Azure storage üzenetsorába használatának alapvető lépéseit.
+Az Azure Queue Storage olyan felhőalapú várólistákat valósít meg, amelyek lehetővé teszik az elosztott alkalmazások összetevői közötti kommunikációt. Minden üzenetsor fenntart egy listát azokról az üzenetekről, amelyeket a küldő összetevő hozzáadhat, és amelyet egy fogadó összetevő dolgoz fel. A várólista használatával az alkalmazás azonnal méretezhető az igények kielégítése érdekében. Ez a cikk az Azure Storage-üzenetsor használatának alapvető lépéseit mutatja be.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -26,35 +25,35 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 >
 > - Azure-tárfiók létrehozása
 > - Az alkalmazás létrehozása
-> - A kód aszinkron támogatásának hozzáadása
+> - Aszinkron kód támogatásának hozzáadása
 > - Üzenetsor létrehozása
-> - Üzenet beszúrása egy üzenetsorba
-> - Üzenet eltávolítása a sorból
-> - Üres várólistában törlése
+> - Üzenetek beszúrása egy várólistába
+> - Üzenetek várólistára helyezése
+> - Üres üzenetsor törlése
 > - Parancssori argumentumok keresése
 > - Az alkalmazás létrehozása és futtatása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az ingyenes példánya a többplatformos [Visual Studio Code](https://code.visualstudio.com/download) szerkesztő.
-- Töltse le és telepítse a [.NET Core SDK](https://dotnet.microsoft.com/download).
-- Ha nem rendelkezik egy jelenlegi Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
+- Szerezze be a platformfüggetlen [Visual Studio Code](https://code.visualstudio.com/download) Editor ingyenes példányát.
+- Töltse le és telepítse a [.net Core SDK](https://dotnet.microsoft.com/download).
+- Ha még nincs Azure-előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) a Kezdés előtt.
 
 ## <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 
-Először hozzon létre egy Azure storage-fiókot. Egy lépésenkénti útmutató, amellyel egy storage-fiók létrehozásához, lásd: a [hozzon létre egy tárfiókot](../common/storage-quickstart-create-account.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json) rövid.
+Először hozzon létre egy Azure Storage-fiókot. A Storage-fiók létrehozásával kapcsolatos részletes útmutatóért lásd: [Storage-fiók létrehozása](../common/storage-quickstart-create-account.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json) .
 
 ## <a name="create-the-app"></a>Az alkalmazás létrehozása
 
-Hozzon létre egy .NET Core-alkalmazást nevű **QueueApp**. Az egyszerűség kedvéért ez az alkalmazás fogja mind üzenetek küldése és fogadása végig az üzenetsoron.
+Hozzon létre egy **QueueApp**nevű .net Core-alkalmazást. Az egyszerűség kedvéért ez az alkalmazás az üzenetsor használatával küldi el és fogadja az üzeneteket.
 
-1. A konzolablakban (például a cmd Parancsot, a PowerShell vagy az Azure parancssori felület) használata a `dotnet new` paranccsal hozzon létre egy új konzolalkalmazást nevű **QueueApp**. Ez a parancs létrehoz egy egyszerű "Hello World" C# a projekt egy forrásfájl: **Program.cs**.
+1. A konzol ablakban (például a cmd, a PowerShell vagy az Azure CLI) `dotnet new` a paranccsal hozzon létre egy új, **QueueApp**nevű Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C# projektet hoz létre egyetlen forrásfájlban: **Program.cs**.
 
    ```console
    dotnet new console -n QueueApp
    ```
 
-2. Váltson át az újonnan létrehozott **QueueApp** mappát és annak ellenőrzéséhez, hogy minden jól az alkalmazást a build.
+2. Váltson az újonnan létrehozott **QueueApp** mappára, és hozza létre az alkalmazást, és ellenőrizze, hogy minden rendben van-e.
 
    ```console
    cd QueueApp
@@ -64,7 +63,7 @@ Hozzon létre egy .NET Core-alkalmazást nevű **QueueApp**. Az egyszerűség ke
    dotnet build
    ```
 
-   A következőhöz hasonló eredményt kell megjelennie:
+   A következőhöz hasonló eredményeknek kell megjelennie:
 
    ```output
    C:\Tutorials>dotnet new console -n QueueApp
@@ -94,15 +93,15 @@ Hozzon létre egy .NET Core-alkalmazást nevű **QueueApp**. Az egyszerűség ke
    C:\Tutorials\QueueApp>_
    ```
 
-## <a name="add-support-for-asynchronous-code"></a>A kód aszinkron támogatásának hozzáadása
+## <a name="add-support-for-asynchronous-code"></a>Aszinkron kód támogatásának hozzáadása
 
-Mivel az alkalmazás által használt felhőbeli erőforrásokat, a kód aszinkron módon fut. Azonban C#a **aszinkron** és **await** nem érvényes kulcsszavak **fő** amíg módszerek C# 7.1-es. A fordító a azt a jelzőt keresztül egyszerűen lehet váltani a **csproj** fájlt.
+Mivel az alkalmazás Felhőbeli erőforrásokat használ, a kód aszinkron módon fut. C#Az **aszinkron** és a **vár** nem érvényes kulcsszavak a **Main** metódusokban a C# 7,1-ig. Egyszerűen átválthat erre a fordítóra a **csproj** -fájlban lévő jelzővel.
 
-1. A parancssorban a projekt könyvtárában írja be a `code .` megnyitásához a Visual Studio Code az aktuális könyvtárban található. Ne zárja be a parancssori ablakot. További parancsok végrehajtása később lesz. Ha az kéri, hogy adjon hozzá C# eszközök szükséges fejlesztése és hibakeresése, kattintson a **Igen** gombra.
+1. A projekt könyvtárának parancssorában írja be `code .` a Visual Studio Code megnyitása az aktuális könyvtárban. Tartsa megnyitva a parancssori ablakot. Később további parancsokat is végrehajthat. Ha a rendszer felszólítja a C# létrehozáshoz és a hibakereséshez szükséges eszközök hozzáadására, kattintson az **Igen** gombra.
 
-2. Nyissa meg a **QueueApp.csproj** fájlt a szerkesztőben.
+2. Nyissa meg a **QueueApp. csproj** fájlt a szerkesztőben.
 
-3. Adjon hozzá `<LangVersion>7.1</LangVersion>` do prvního **PropertyGroup** a build-fájlban. Győződjön meg arról, hogy csak akkor adjon a **LangVersion** megjelölheti a **TargetFramework** .NET melyik verziója van telepítve függően eltérő lehet.
+3. Adja `<LangVersion>7.1</LangVersion>` hozzá a Build fájl első **PropertyGroup** . Győződjön meg arról, hogy csak a **LangVersion** címkét adja hozzá, mert a **TargetFramework** attól függően eltérő lehet, hogy melyik .NET-verziót telepítette.
 
    ```xml
    <Project Sdk="Microsoft.NET.Sdk">
@@ -117,26 +116,26 @@ Mivel az alkalmazás által használt felhőbeli erőforrásokat, a kód aszinkr
 
    ```
 
-4. Mentse a **QueueApp.csproj** fájlt.
+4. Mentse a **QueueApp. csproj** fájlt.
 
-5. Nyissa meg a **Program.cs** forrás-fájlt, és frissítse a **fő** metódus aszinkron módon futnak. Cserélje le **void** együtt egy **aszinkron feladat** vrácená hodnota.
+5. Nyissa meg a **program.cs** forrásfájlt, és frissítse a **Main** metódust aszinkron módon történő futtatásra. Cserélje le az **Void** értéket egy **aszinkron feladat** visszatérési értékére.
 
    ```csharp
    static async Task Main(string[] args)
    ```
 
-6. Mentse a **Program.cs** fájlt.
+6. Mentse a **program.cs** fájlt.
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
 
-1. Telepítse a **Microsoft.Azure.Storage.Common** és **Microsoft.Azure.Storage.Queue** csomagokat a projekthez a `dotnet add package` parancsot. A projektmappa fájllistájának a konzolablakban hajtsa végre a következő dotnet-parancsokat.
+1. Telepítse a **Microsoft. Azure. Storage. Common** és a **Microsoft. Azure. Storage. Queuing** csomagokat a projektbe `dotnet add package` a paranccsal. Hajtsa végre a következő DotNet-parancsokat a Project mappából a konzol ablakában.
 
    ```console
    dotnet add package Microsoft.Azure.Storage.Common
    dotnet add package Microsoft.Azure.Storage.Queue
    ```
 
-2. Felső részén a **Program.cs** fájlt, adja hozzá a következő névterek közvetlenül a `using System;` utasítást. Ez az alkalmazás használ ezekre a névterekre való kapcsolódás az Azure Storage és az üzenetsorok használatához.
+2. A **program.cs** fájl elején adja hozzá a következő névtereket közvetlenül az `using System;` utasítás után. Az alkalmazás ezekből a névterekről származó típusokat használ az Azure Storage-hoz való kapcsolódáshoz és a várólistákkal való munkavégzéshez.
 
    ```csharp
    using System.Threading.Tasks;
@@ -144,19 +143,19 @@ Mivel az alkalmazás által használt felhőbeli erőforrásokat, a kód aszinkr
    using Microsoft.Azure.Storage.Queue;
    ```
 
-3. Mentse a **Program.cs** fájlt.
+3. Mentse a **program.cs** fájlt.
 
 ### <a name="get-your-connection-string"></a>A kapcsolati sztring beszerzése
 
-Az ügyféloldali kódtár egy kapcsolati karakterláncot használ a kapcsolat létrehozásához. A kapcsolati karakterlánc megtalálható a **beállítások** szakasz a storage-fiók az Azure Portalon.
+Az ügyféloldali kódtár kapcsolati sztringet használ a kapcsolat létrehozásához. A kapcsolatok karakterlánca a Azure Portal Storage-fiókjának **Beállítások** szakaszában érhető el.
 
-1. A böngészőben jelentkezzen be a [az Azure portal](https://portal.azure.com/).
+1. A böngészőben jelentkezzen be a Azure Portalba. [](https://portal.azure.com/)
 
 2. Az Azure Portalon nyissa meg a tárfiókot.
 
-3. Válassza ki **hozzáférési kulcsok**.
+3. Válassza a **hozzáférési kulcsok**elemet.
 
-4. Kattintson a **másolási** jobbra található gombra a **kapcsolati karakterlánc** mező.
+4. A **kapcsolódási karakterlánc** mező jobb oldalán kattintson a **Másolás** gombra.
 
 ![Kapcsolati sztring](media/storage-tutorial-queues/get-connection-string.png)
 
@@ -166,17 +165,17 @@ A kapcsolati sztring formátuma a következő:
    "DefaultEndpointsProtocol=https;AccountName=<your storage account name>;AccountKey=<your key>;EndpointSuffix=core.windows.net"
    ```
 
-### <a name="add-the-connection-string-to-the-app"></a>A kapcsolati karakterlánc hozzáadása az alkalmazáshoz
+### <a name="add-the-connection-string-to-the-app"></a>Adja hozzá a kapcsolódási karakterláncot az alkalmazáshoz
 
-Adja hozzá a kapcsolati karakterláncot az alkalmazásba, hogy hozzá tudjon férni a storage-fiókot.
+Adja hozzá a kapcsolati karakterláncot az alkalmazáshoz, hogy hozzáférhessen a Storage-fiókhoz.
 
-1. Váltson vissza a Visual Studio Code-ot.
+1. Váltson vissza a Visual Studio Code-ra.
 
-2. Az a **Program** osztály, adjon hozzá egy `private const string connectionString =` tag, amely tárolja a kapcsolati karakterláncot.
+2. A **program** osztályban adjon hozzá egy `private const string connectionString =` tagot a kapcsolódási karakterlánc tárolásához.
 
-3. Az egyenlőségjel után illessze be a karakterlánc, amelyet korábban az Azure Portalon vágólapra másolt. A **connectionString** értéke egyedi a fiók lesz.
+3. Az egyenlőségjel után illessze be a Azure Portal korábban másolt karakterlánc-értéket. A **ConnectionString** érték egyedi lesz a fiókjában.
 
-4. Távolítsa el a "Hello World" kódot az **fő**. A kód ehhez hasonlóan kell kinéznie a következő, de a egyedi kapcsolati karakterlánc értékét.
+4. Távolítsa el a ""Helló világ!"alkalmazás" kódot a **Main**-ból. A kódnak a következőhöz hasonlóan kell kinéznie, de az egyedi kapcsolódási sztring értékével.
 
    ```csharp
    namespace QueueApp
@@ -192,7 +191,7 @@ Adja hozzá a kapcsolati karakterláncot az alkalmazásba, hogy hozzá tudjon f�
    }
    ```
 
-5. Frissítés **fő** hozhat létre egy **CloudQueue** objektum, amely később átad a küldése és fogadása módszerek.
+5. A **Main** frissítésével hozzon létre egy **CloudQueue** objektumot, amelyet később a küldési és fogadási metódusok továbbítanak.
 
    ```csharp
         static async Task Main(string[] args)
@@ -205,11 +204,11 @@ Adja hozzá a kapcsolati karakterláncot az alkalmazásba, hogy hozzá tudjon f�
 
 6. Mentse a fájlt.
 
-## <a name="insert-messages-into-the-queue"></a>A várólista üzenetek beszúrása
+## <a name="insert-messages-into-the-queue"></a>Üzenetek beszúrása a várólistába
 
-Hozzon létre egy új módszer üzenet küldése az üzenetsorba. Adja hozzá a következő metódust a **Program** osztály. Ez a metódus lekér egy várólista hivatkozást, majd létrehoz egy új üzenetsort, ha még nem létezik meghívásával [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync). Ezután hozzáadja az üzenetet az üzenetsorba meghívásával [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync).
+Hozzon létre egy új metódust, amely üzenetet küld a várólistába. Adja hozzá a következő metódust a **program** osztályhoz. Ez a metódus egy üzenetsor-hivatkozást kap, majd egy új várólistát hoz létre, ha az [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync)meghívásával még nem létezik. Ezután hozzáadja az üzenetet a várólistához a [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync)meghívásával.
 
-1. Adja hozzá a következő **SendMessageAsync** metódust a **Program** osztály.
+1. Adja hozzá a következő **SendMessageAsync** metódust a **program** osztályhoz.
 
    ```csharp
    static async Task SendMessageAsync(CloudQueue theQueue, string newMessage)
@@ -228,19 +227,19 @@ Hozzon létre egy új módszer üzenet küldése az üzenetsorba. Adja hozzá a 
 
 2. Mentse a fájlt.
 
-Egy üzenet, amely tartalmazhat egy XML-kérelem, az UTF-8 kódolást, és lehet, hogy legfeljebb 64 KB méretű formátumban kell lennie. Ha egy üzenet bináris adatokat tartalmaz, azt javasoljuk, hogy Ön a Base64 kódolás az üzenetet.
+Az üzenetnek olyan formátumúnak kell lennie, amely UTF-8 kódolású XML-kérelemben is szerepelhet, és akár 64 KB méretű is lehet. Ha egy üzenet bináris adatfájlt tartalmaz, azt javasoljuk, hogy Base64 kódolással kódolja az üzenetet.
 
-Alapértelmezés szerint a time-to-live üzenet maximális értéke 7 nap. Megadhatja, hogy az üzenet time-to-live bármilyen pozitív szám. Segítségével adhat hozzá egy üzenet, amely nem jár le, `Timespan.FromSeconds(-1)` a hívásában **AddMessageAsync**.
+Alapértelmezés szerint az üzenetekhez tartozó maximális élettartam 7 nap. Megadhatja az üzenet élettartamának pozitív számát. Ha nem lejáró üzenetet szeretne felvenni, használja `Timespan.FromSeconds(-1)` a **AddMessageAsync**-hívását.
 
 ```csharp
 await theQueue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
 ```
 
-## <a name="dequeue-messages"></a>Üzenet eltávolítása a sorból
+## <a name="dequeue-messages"></a>Üzenetek várólistára helyezése
 
-Hozzon létre egy új módszer nevű **ReceiveMessageAsync**. Ez a módszer egy üzenetet kap a várólista meghívásával [GetMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync). Az üzenet jelenik meg sikeresen, ha fontos törlése az üzenetsorból, így azt nem egynél többször. Az üzenet fogadását követően törölje azt az üzenetsorból meghívásával [DeleteMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync).
+Hozzon létre egy új, **ReceiveMessageAsync**nevű metódust. Ez a metódus a [GetMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync)meghívásával kap üzenetet a várólistáról. Az üzenet sikeres fogadása után fontos, hogy törölje azt a sorból, hogy ne dolgozza fel egynél többször. Az üzenet fogadása után törölje azt a sorból a [DeleteMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync)meghívásával.
 
-1. Adja hozzá a következő **ReceiveMessageAsync** metódust a **Program** osztály.
+1. Adja hozzá a következő **ReceiveMessageAsync** metódust a **program** osztályhoz.
 
    ```csharp
    static async Task<string> ReceiveMessageAsync(CloudQueue theQueue)
@@ -263,11 +262,11 @@ Hozzon létre egy új módszer nevű **ReceiveMessageAsync**. Ez a módszer egy 
 
 2. Mentse a fájlt.
 
-## <a name="delete-an-empty-queue"></a>Üres várólistában törlése
+## <a name="delete-an-empty-queue"></a>Üres üzenetsor törlése
 
-Az ajánlott eljárás végén található egy projekt annak megállapítására, hogy a létrehozott erőforrások továbbra is szüksége. Erőforrások bal oldali futó is költséget takaríthat meg költséget. Ha a várólista létezik, de üres, kérje meg a felhasználót, hogy szeretné-e törölni.
+Az ajánlott eljárás a projekt végén annak azonosítása, hogy továbbra is szüksége van-e a létrehozott erőforrásokra. A már futó erőforrások pénzbe kerülnek. Ha a várólista létezik, de üres, kérje meg a felhasználót, ha törölni szeretné.
 
-1. Bontsa ki a **ReceiveMessageAsync** metódus az üres várólista törlése felszólítást tartalmazza.
+1. Bontsa ki a **ReceiveMessageAsync** metódust, hogy az üres várólista törlésére vonatkozó kérést tartalmazzon.
 
    ```csharp
    static async Task<string> ReceiveMessageAsync(CloudQueue theQueue)
@@ -311,13 +310,13 @@ Az ajánlott eljárás végén található egy projekt annak megállapítására
 
 ## <a name="check-for-command-line-arguments"></a>Parancssori argumentumok keresése
 
-Ha az alkalmazás átad a parancssori argumentumokat, azt feltételezik, egy üzenetet az üzenetsorba hozzáadandó zajlik. Csatlakozzon az argumentumok együtt egy karakterlánccá. Ez a karakterlánc hozzáadása az üzenetsorhoz meghívásával a **SendMessageAsync** korábban hozzáadott metódus.
+Ha vannak olyan parancssori argumentumok, amelyek bekerültek az alkalmazásba, tegyük fel, hogy a várólistába kerülő üzenet jelenik meg. Összekapcsolja az argumentumokat egy karakterlánc létrehozásához. Adja hozzá ezt a karakterláncot az üzenetsor-sorhoz a korábban hozzáadott **SendMessageAsync** metódus meghívásával.
 
-Ha parancssori kapcsolók, hajtsa végre egy lekérési művelet. Hívja a **ReceiveMessageAsync** metódusának segítéségével lekérheti a várólista első üzenetébe.
+Ha nincsenek parancssori argumentumok, hajtson végre egy lekérési műveletet. Hívja meg a **ReceiveMessageAsync** metódust az üzenetsor első üzenetének lekéréséhez.
 
-Végül, Várakozás felhasználói adatbevitelre való kilépés meghívása előtt **Console.ReadLine**.
+Végül várjon a felhasználói bevitelre, mielőtt kilép a **Console. readline**hívásával.
 
-1. Bontsa ki a **fő** metódus parancssori argumentumok és várnak felhasználói bevitelre.
+1. Bontsa ki a **Main** metódust a parancssori argumentumok kereséséhez, és várjon a felhasználói adatbevitelre.
 
    ```csharp
         static async Task Main(string[] args)
@@ -347,7 +346,7 @@ Végül, Várakozás felhasználói adatbevitelre való kilépés meghívása el
 
 ## <a name="complete-code"></a>Teljes kód
 
-Itt látható a teljes kód a projekt listázása.
+Itt látható a projekt teljes kódjának listája.
 
    ```csharp
    using System;
@@ -441,19 +440,19 @@ Itt látható a teljes kód a projekt listázása.
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
-1. A parancssorból a projekt könyvtárában a következő paranccsal dotnet a projekt buildjének elkészítéséhez.
+1. A projekt könyvtárának parancssorában futtassa a következő DotNet-parancsot a projekt felépítéséhez.
 
    ```console
    dotnet build
    ```
 
-2. Miután a projekt sikeresen létrejött, a következő parancsot az első üzenet hozzáadása az üzenetsorhoz.
+2. Miután a projekt sikeresen létrejött, a következő parancs futtatásával adja hozzá az első üzenetet a várólistához.
 
    ```console
    dotnet run First queue message
    ```
 
-A kimenetnek kell megjelennie:
+A következő kimenetnek kell megjelennie:
 
    ```output
    C:\Tutorials\QueueApp>dotnet run First queue message
@@ -462,13 +461,13 @@ A kimenetnek kell megjelennie:
    Press Enter..._
    ```
 
-3. Futtassa az alkalmazást parancssori argumentumok nélkül kapnak, és távolítsa el az első üzenet a várólistában.
+3. Futtassa az alkalmazást parancssori argumentum nélkül, hogy fogadja és eltávolítsa az első üzenetet a várólistában.
 
    ```console
    dotnet run
    ```
 
-4. Továbbra is futtathatják az alkalmazást, amíg az összes az üzenetek el lesznek távolítva. Ha még egyszer futtatja azt, kap egy üzenet, hogy az üzenetsor üres, és a egy parancssort a várólista törlése.
+4. Folytassa az alkalmazás futtatását, amíg az összes üzenetet el nem távolítja. Ha még egyszer futtatja, egy üzenet jelenik meg arról, hogy a várólista üres, és a várólista törlésére vonatkozó kérés.
 
    ```output
    C:\Tutorials\QueueApp>dotnet run First queue message
@@ -509,10 +508,10 @@ A kimenetnek kell megjelennie:
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 1. Üzenetsor létrehozása
-2. Hozzáadhat és eltávolíthat az üzeneteket az üzenetsorból
-3. Egy Azure storage-üzenetsor törlése
+2. Üzenetek hozzáadása és eltávolítása egy várólistából
+3. Azure Storage-üzenetsor törlése
 
-Tekintse meg az Azure-üzenetsorok a rövid útmutató további információt.
+További információkért tekintse meg az Azure Queues rövid útmutatóját.
 
 > [!div class="nextstepaction"]
-> [Üzenetsorok a rövid útmutató](storage-quickstart-queues-portal.md)
+> [Üzenetsor-kezdés](storage-quickstart-queues-portal.md)

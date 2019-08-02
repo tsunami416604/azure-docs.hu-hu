@@ -1,7 +1,7 @@
 ---
-title: Projekt Akusztika Unity Bake oktatóanyag
+title: Projekt akusztikai egység sütni oktatóanyag
 titlesuffix: Azure Cognitive Services
-description: Ez az oktatóanyag azt ismerteti, és a Unity Project Akusztika sütés Akusztika.
+description: Ez az oktatóanyag leírja az akusztikai és a projekt akusztikai funkcióit az Unity-ben.
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,223 +10,224 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 2f0fcdcdf781c86179b67eeef0223d46da0fc65b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2362b3916d1b1f430350d975dc0b61914a777be2
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917001"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706688"
 ---
-# <a name="project-acoustics-unity-bake-tutorial"></a>Projekt Akusztika Unity Bake oktatóanyag
-Ez az oktatóanyag azt ismerteti, és a Unity Project Akusztika sütés Akusztika.
+# <a name="project-acoustics-unity-bake-tutorial"></a>Projekt akusztikai egység sütni oktatóanyag
+Ez az oktatóanyag leírja az akusztikai és a projekt akusztikai funkcióit az Unity-ben.
 
-Szoftverkövetelmények:
-* [Unity 2018.2 +](https://unity3d.com) Windows esetében
-* [Unity-projektjét a projekt Akusztika beépülő modul integrált](unity-integration.md) vagy a [Akusztika Unity Project minta tartalom](unity-quickstart.md)
-* Nem kötelező: Egy [Azure Batch-fiók](create-azure-account.md) felgyorsítása a kódfejlesztést használatával a felhő-számítástechnika
+A szoftverre vonatkozó követelmények:
+* [Unity 2018.2 +](https://unity3d.com) Windowshoz
+* [Projekt akusztikai beépülő modul integrálva a Unity-projektbe](unity-integration.md) vagy a [projekt akusztikai egysége minta tartalma](unity-quickstart.md)
+* Nem kötelező: Egy [Azure batch-fiók](create-azure-account.md) , amellyel felgyorsíthatja a sütni a felhő-számítástechnika használatával
 
-## <a name="open-the-project-acoustics-bake-window"></a>Nyissa meg a projekt Akusztika os ablak
-Válasszon **ablak > Akusztika** a Unity menüből:
+## <a name="open-the-project-acoustics-bake-window"></a>A Project akusztikai sütni ablak megnyitása
+Válassza az **ablak > akusztika** elemet az egység menüben:
 
-![Képernyőkép a Unity-szerkesztő Akusztika ablak menüpont kiemelésével](media/window-acoustics.png)
+![Képernyőfelvétel az Unity Editor és a akusztikai ablak menüpont kiválasztásával](media/window-acoustics.png)
 
-## <a name="create-a-navigation-mesh"></a>A navigációs háló létrehozása
-Projekt Akusztika figyelő mintavételi pontok szimuláció elhelyezése egy navigációs háló használja. Használhatja a Unity [navigációs háló munkafolyamat](https://docs.unity3d.com/Manual/nav-BuildingNavMesh.html), vagy használjon egy másik 3D modellezési csomag a saját háló megtervezéséhez. 
+## <a name="create-a-navigation-mesh"></a>Navigációs háló létrehozása
+A Project Acoustics egy navigációs hálót használ a figyelő mintavételi pontjainak szimulációhoz való elhelyezéséhez. Használhatja az egység [navigációs rácsvonal](https://docs.unity3d.com/Manual/nav-BuildingNavMesh.html)munkafolyamatát, vagy használhat egy másik 3D modellező csomagot a saját rácsvonalának megtervezéséhez. 
 
-## <a name="mark-acoustic-scene-objects"></a>Akusztikai jelenet objektumokat megjelölhesse
-Projekt Akusztika szimuláció jelenet objektumok két típusú támaszkodik: az objektumok tükrözik, és hangfájlokat, a szimuláció, és korlátozza a szimuláció figyelő mintavételi pontjainak player navigációs háló occlude. Mindkét típusú objektumokat használatával vannak megjelölve az **objektumok** fülre. 
+## <a name="mark-acoustic-scene-objects"></a>Akusztikai jelenet objektumainak megjelölése
+A Project Acoustics a szimulációk két különböző típusú objektumára támaszkodik: azok az objektumok, amelyek tükrözik és occlude a hangerőt a szimulációban, valamint a lejátszó navigációs rácsvonalát, amely korlátozza a figyelő mintavételi pontjait a szimulációban. Mindkét objektumtípus a Objects ( **objektumok** ) lapon van megjelölve. 
 
-Mivel objektumok megjelölése egyszerűen ad a **AcousticsGeometry** vagy **AcousticsNavigation** összetevőket az objektum is használhatja a [standard Unity összetevő munkafolyamat](https://docs.unity3d.com/Manual/UsingComponents.html)való üresként való megjelölése objektumokat. Csak a háló Leképezőkhöz és Terrains jelölhető ki. Minden egyéb típusú objektumokat figyelmen kívül lesz hagyva. A jelölőnégyzetek fog üresként való megjelölése az összes érintett objektum.
+Mivel a jelölési objektumok egyszerűen hozzáadja a **AcousticsGeometry** vagy a **AcousticsNavigation** összetevőt az objektumhoz, a [standard Unity összetevő](https://docs.unity3d.com/Manual/UsingComponents.html) -munkafolyamattal megadhatja vagy megjelölheti az objektumokat. Csak rácsvonal-leképező és terep lehet megjelölve. Az összes többi objektumtípus figyelmen kívül lesz hagyva. A jelölőnégyzetek az összes érintett objektumot megjelölik vagy törlik.
 
-### <a name="mark-acoustic-occlusion-and-reflection-geometry"></a>Akusztikai hangelnyelés és tükröződés geometriai megjelölése
-Nyissa meg a **objektumok** lapján a **Akusztika** ablak. Mint bármely objektumokat megjelölhesse **Akusztika geometriai** azok kell occlude, tükrözik, vagy számára a hangot. Akusztika geometriai többek között az alapoktól, falak, tető, a windows & ablak üvegből, takaró és nagy bútordarab tartalmazhatnak. Ezek az objektumok bármilyen tetszőleges az összetettségi szintet is használhat. Mivel a jelenet voxelized előtt szimuláció, nagyon részletes rácsvonalak, például a sok kis leveleket, olyan fák, amelyeknél nem költségesebb, mint egyszerűsített objektumok os.
+### <a name="mark-acoustic-occlusion-and-reflection-geometry"></a>Az akusztikai elzáródás és a reflexiós geometria megjelölése
+Nyissa meg az **akusztika** ablak **objektumok** lapját. Az objektumok megjelölése **akusztikai geometriaként** , ha occlude, tükrözni vagy elnyelni kívánja a hangot. Az akusztikai geometria olyan dolgokat tartalmazhat, mint például a felszín, a fal, a tetők, a Windows & ablakok üvege, a szőnyegek és a nagyméretű bútorok. Ezekhez az objektumokhoz tetszőleges bonyolultsági szintű komplexitást használhat. Mivel a jelenet a szimuláció előtt voxelized, a nagyon részletes rácsvonalak, például a sok kis mennyiségű fát tartalmazó fák nem drágábbak, mint az egyszerűsített objektumok.
 
-Nem lehet hatással a Akusztika, például láthatatlan ütközési rácsvonalak, amit nem tartalmaznak.
+Ne tartalmazzon olyan dolgokat, amelyek nem érintik az akusztikai tényezőket, például a láthatatlan ütközési hálókat.
 
-A mintavétel számítás időben egy objektum átalakító (keresztül a **mintavételek** lapon, az alábbiakban) a bake eredmények rögzített. Áthelyezi a kijelölt objektumok valamelyikének a jelenetben megismétlése a mintavétel számítási és a jelenet rebaking lesz szükség.
+Egy objektumnak a mintavételi számítás időpontjában történő átalakítása (az alábbi mintavételek **lapon)** a sütni eredményekben van rögzítve. A jelenetben megjelölt objektumok bármelyikének áthelyezéséhez újra kell végezni a mintavétel számítását és a jelenet kisütését.
 
 ### <a name="mark-the-navigation-mesh"></a>A navigációs háló megjelölése
-Unity-a munkafolyamatot a létrehozott navigációs rácsvonalak fog észlelnie kell a Akusztika rendszer. Szeretné használni a saját rácsvonalak, jelölje meg azokat a **objektumok** fülre.
+Az egység munkafolyamatával létrehozott navigációs rácsvonalak az akusztikai rendszer által lesznek kiválasztva. Ha saját rácsvonalat szeretne használni, az **objektumok** lapról jelölheti meg őket.
 
-### <a name="for-reference-the-objects-tab-parts"></a>A dokumentáció: Az objektumok lapon részei
-A lap részei a következők:
+### <a name="for-reference-the-objects-tab-parts"></a>Hivatkozás: Az objektumok lap részei
+A lap oldalának részei:
 
-1. A lap kiválasztása gombok (**objektumok** lapja van kiválasztva). A gombok használatával különféle lépéseiről állapotát egy Akusztika bake balról jobbra.
-2. Mit kell tennie, használatával ezen a lapon rövid leírása.
-3. Rendelkezésre álló szűrők a hierarchia időszak. Ezzel a hierarchia ablakban, a megadott típusú objektumok szűrésére, így egyszerűbben jelölheti meg őket. Ha nem rendelkezik a még be van jelölve, a Akusztika semmit, az utolsó két lehetőség kiválasztásával megtudhatja, semmi nem. Lehetnek azonban hasznos megjelölt objektumok megkeresése, ha ezzel végzett.
-4. Amikor egyetlen objektum van kijelölve, ez a szakasz bemutatja az összes objektum állapotát a jelenetben:
+1. A lap kiválasztása gombok (**objektumok** lap kiválasztva). Ezekkel a gombokkal megtudhatja, hogyan végezheti el az akusztikai sütjük különböző lépéseit balról jobbra.
+2. A lap használatának rövid leírása.
+3. A hierarchia ablakához elérhető szűrők. Ezzel a beállítással szűrheti a hierarchia ablakát a megadott típusú objektumokra, így könnyebben megjelölheti őket. Ha még nem jelölte meg az akusztikus elemek egyikét sem, az utolsó két lehetőség kiválasztásával semmi sem jelenik meg. Azonban hasznosak lehetnek a megjelölt objektumok megtalálásához, miután ezt megtette.
+4. Ha nincs kiválasztva objektum, ez a szakasz a jelenet összes objektumának állapotát mutatja:
     * Összesen – a jelenetben aktív, nem rejtett objektumok teljes száma.
-    * Figyelmen kívül hagyja - objektumok, amelyek nem a háló Leképezőkhöz vagy Terrains számát.
-    * Háló - jelenet objektumokat megjelenítő háló száma
-    * Terep – a jelenetben objektumok a terep száma
-    * Geometriai - a "Akusztika geometriai" jelölésű jelenet objektumok a háló vagy terep száma
-    * Navigáció – a "Akusztika navigációs" jelölésű jelenet objektumok háló vagy terep száma. Ez a szám nem tartalmazza a Unity NavMesh.
-5. A helyszín, amely csak a háló Leképezőkhöz és Terrains "be van jelölve-képes" objektumok teljes száma látható. Látható jelölőnégyzetek használhatja megjelölni (adja hozzá a megfelelő való) azokat az objektumokat geometriai vagy Akusztika belüli navigációt
-6. Ha semmi sincs kijelölve, ez a Megjegyzés emlékezteti a jelölésre objektumok kijelölése, ha szükséges. Jelölje meg a jelenetben összes objektum anélkül, hogy bármit egyik vagy mindkét jelölőnégyzetet is ellenőrizheti.
-7. Amikor az objektum van kijelölve, ez a szakasz csak a kijelölt objektumok állapotát jeleníti meg.
-8. "Be van jelölve-képes" kijelölt objektumok teljes számát jeleníti meg. Az ellenőrzés vagy a jelölőnégyzetek eszközhitelesítést fog üresként való megjelölése csak a kijelölt objektumok.
+    * Figyelmen kívül hagyva – az objektumok száma, amelyek nem hálók vagy terepek.
+    * Mesh (háló) – a színben megjelenített objektumok száma a jelenetben
+    * Terep – a jelenetben lévő terepi objektumok száma
+    * Geometria – a rácsvonalak vagy a terepi objektumok száma a jelenetben "akusztikai geometria" jelöléssel
+    * Navigálás – a rácsvonalak vagy a terepi objektumok száma a jelenetben "akusztikai navigáció" jelöléssel. Ez a szám nem tartalmazza az egység NavMesh.
+5. A jelenetben lévő "Mark-able" objektumok teljes számát jeleníti meg, amely csak a rácsvonalak és a terepek esetében használható. Megjeleníti azokat a jelölőnégyzeteket, amelyek segítségével megjelölheti (hozzáadhatja a megfelelő összetevőt) az objektumok geometriáként való megjelenítéséhez vagy az akusztikai navigációhoz.
+6. Ha semmi sincs kiválasztva, ez a megjegyzés arra emlékeztet, hogy kijelöli az objektumokat, ha szükséges. Az egyik vagy mindkét jelölőnégyzet bejelölésével megadhatja a jelenet összes objektumát anélkül, hogy bármit kellene kijelölnie.
+7. Az objektumok kijelölésekor ez a szakasz csak a kiválasztott objektumok állapotát jeleníti meg.
+8. A "Mark-able" kijelölt objektumok teljes számát jeleníti meg. A jelölőnégyzetek ellenőrzésével vagy törlésével a rendszer csak a kijelölt objektumokat jelöli vagy törli.
 
-Ha a jelenethez semmit, az objektumok lapon néznek a következő képen látható:
+Ha a jelenetben semmi sincs kiválasztva, az objektumok lap a következő képhez hasonlóan fog kinézni:
 
-![Nincs kijelölés lap Akusztika objektumok képernyőképe](media/objects-tab-no-selection-detail.png)
+![Képernyőkép az akusztikai objektumok lapról kijelölés nélkül](media/objects-tab-no-selection-detail.png)
 
-Ha valami a jelenet vagy -hierarchiáját ablakban a kijelölt, akkor ehhez hasonló lesz a következő képen látható:
+Ha a jelenet vagy a hierarchia ablakban van kiválasztva, a következő képhez hasonlóan fog kinézni:
 
-![Képernyőkép a Akusztika objektumokat tartalmazó lapra kijelölést](media/objects-tab-selection-detail.png)
+![Képernyőfelvétel az akusztikai objektumok lapról a kijelölés látható](media/objects-tab-selection-detail.png)
 
-Ha vannak megjelölve az egyes objektumok, és nem bizonyos, a megfelelő jelölőnégyzetet az "vegyes" értéket jeleníti meg:
+Ha egyes objektumok meg vannak jelölve, és néhány nem, akkor a megfelelő jelölőnégyzet a "vegyes" értéket jeleníti meg:
 
-![Vegyes kijelölés ikonja kiemelve lap Akusztika objektumok képernyőképe](media/mixed-object-selection-detail.png)
+![Képernyőkép az akusztikai objektumok lapról, vegyes kijelölési ikonnal kiemelve](media/mixed-object-selection-detail.png)
 
-A jelölőnégyzetére kattintva kényszeríti az összes objektum lesz megjelölve, és kattintson újra megszünteti az összes objektum.
+A jelölőnégyzetre kattintva minden objektum meg lesz jelölve, és az újra gombra kattintva törli az összes objektumot.
 
-Objektumok geometry és a navigációs jelölhető ki.
+Az objektumok a geometriához és a navigáláshoz egyaránt megadhatók.
 
-## <a name="select-acoustic-materials"></a>Válassza ki a akusztikai anyagok
-Ha az objektumok lesznek megjelölve, kattintson a **anyagok** gombra, és rendelje hozzá a akusztikai anyagok. A projekt Akusztika anyagok rendszer vannak kötve, a Unity vizuális anyagok rendszer: két objektumok szeretné, hogy külön akusztikai anyagok, rendelkeznie kell külön vizuális anyagok.
+## <a name="select-acoustic-materials"></a>Akusztikai anyagok kiválasztása
+Ha az objektumok meg vannak jelölve, kattintson az **anyagok** gombra, és rendelje hozzá az akusztikai anyagokat. A Project akusztikai anyagok rendszere a Unity vizualizációs rendszerhez van kötve: két objektumhoz külön akusztikai anyagok szükségesek, külön vizualizációs anyagokkal kell rendelkezniük.
 
-Az akusztikai anyagok ellenőrzés kerülnek vissza minden egyes felületből eredményes energia mennyiségét. Az alapértelmezett akusztikai anyag tényleges hasonló elnyelő rendelkezik. Projekt Akusztika anyagok a vizuális anyagi neve alapján javasol. Az akusztikai anyag "Custom" rendelhet egy anyag-elnyelő együttható csúszka engedélyezéséhez.
+Az akusztikai anyagok határozzák meg, hogy az egyes felületek milyen mennyiségű hangerőt tükröznek. Az alapértelmezett akusztikai anyag a betonhoz hasonló abszorpciós. A Project akusztika a vizuális anyag neve alapján mutatja be az anyagokat. Az "egyéni" akusztikai anyagot hozzárendelheti egy anyaghoz az abszorpciós együttható csúszkájának lehetővé tételéhez.
 
-Egy adott anyag szoba reverberation idején intenzitásfokozatok kapcsolódik, a elnyelő együttható a legtöbb anyagok elnyelő értékeket kellene 0,01 való 0,20 tartományban. Az ezen a tartományon kívül elnyelő együttható anyagok olyan nagyon elnyelő.
+A helyiségben lévő adott anyag visszaverődési ideje fordítottan kapcsolódik a hozzá tartozó abszorpciós együtthatóhoz, és a legtöbb anyagnál az 0,01 – 0,20 tartományba tartozó abszorpciós értékek szerepelnek. Az ezen a tartományon kívüli abszorpciós együtthatóval rendelkező anyagok nagyon nedvszívóak.
 
-![Elnyelő együttható reverberation időben negatív összekapcsolását ábrázoló grafikon](media/reverb-time-graph.png)
+![A Zengő idő negatív korrelációját ábrázoló gráf abszorpciós együtthatóval](media/reverb-time-graph.png)
 
-### <a name="for-reference-parts-of-the-materials-tab"></a>A dokumentáció: Az anyagok lapon részei
-![Unity lapján Akusztika anyagok képernyőképe](media/materials-tab-detail.png)
+### <a name="for-reference-parts-of-the-materials-tab"></a>Hivatkozás: Az anyagok lap részei
+![Az egység akusztikai anyagok lapjának képernyőképe](media/materials-tab-detail.png)
 
-1. A **anyagok** lap gomb segítségével ezt a lapot.
-2. Mit kell tennie, használatával ezen a lapon rövid leírása.
-3. Ha be van jelölve, csak az objektum által felhasznált anyagokat megjelölve **Akusztika geometriai** fog szerepelni. Ellenkező esetben a jelenetben használt összes anyag jelennek meg.
-4. Ezek a beállítások segítségével módosíthatja a legördülő menüből, kattintson a legördülő lista alatt (6) a Akusztika oszlopban látható sorrendjét. **Név** akusztikai anyagok név szerint rendezi. "Absorptivity" absorptivity alacsony, magas, sorrendben rendezi őket.
-5. A jelenetben betűrendben felhasznált anyagokat listája. Ha a **megjelenítése csak a megjelölt** jelölőnégyzet ellenőrzött (3), csak az objektum által felhasznált anyagokat megjelölve **Akusztika geometriai** jelennek meg. Olyan anyagot találhat az Ide kattintva lesz, válassza a minden objektumot használó anyagot találhat az, hogy a jelenet.
-6. Az akusztikai anyag jeleníti meg, hogy a jelenet anyag van rendelve. Kattintson a legördülő lista egy másik akusztikai anyagok jelenet anyag szeretné hozzárendelni. A rendezési sorrend, a menü jelenik meg, amikor rákattint egy elem itt használatával módosíthatja a **Akusztika Rendezés:** fenti (4).
-7. A kiválasztott az előző oszlop anyag akusztikai elnyelő együttható mutatja. Egy érték nulla azt jelenti tökéletesen reflektív (nincs elnyelő) során egy érték 1, tökéletesen nedvszívó (nincs tükröződés). Nem lehet módosítani a elnyelő együttható, kivéve, ha a kijelölt anyag "Egyéni".
-8. Egy "Egyéni", a csúszka rendelt anyag már le van tiltva, és kiválaszthatja a csúszkával elnyelő együttható, vagy beír egy értéket.
+1. A lap megjelenítéséhez használt **anyagok** lap gomb.
+2. A lap használatának rövid leírása.
+3. Ha be van jelölve, csak a hangjelzéssel ellátott objektumok által használt anyagok lesznek felsorolva. Ellenkező esetben a jelenetben használt összes anyag fel lesz sorolva.
+4. Ezekkel a beállításokkal módosíthatja a legördülő menü azon sorrendjét, amely akkor jelenik meg, ha az alábbi akusztikai oszlopban a legördülő listából kattint (#6). A **név** alapján rendezi az akusztikai anyagokat. A "Absorptivity" a Absorptivity sorrendje szerint rendezi őket alacsonyról magasra.
+5. A jelenetben használt anyagok listája, betűrendbe rendezve. Ha a **csak a megjelölés csak** a megjelenített jelölőnégyzet be van jelölve (#3), akkor a rendszer csak az **akusztikai geometriának** jelölt objektumok által használt anyagokat jeleníti meg. Ha ide kattint, az itt látható minden olyan objektum, amely az adott anyagot használja.
+6. Megjeleníti azt az akusztikai anyagot, amelyhez a jelenet anyaga hozzá lett rendelve. Kattintson egy legördülő listára egy jelenet anyagának egy másik akusztikai anyaghoz való hozzárendeléséhez. Megváltoztathatja a menü rendezési sorrendjét, ha egy elemre kattint a rendezési **akusztika:** fenti beállítások (#4) alapján.
+7. Az előző oszlopban kiválasztott anyag akusztikus abszorpciós együtthatóját mutatja. A nulla érték azt jelenti, hogy tökéletesen tükröző (nincs abszorpció), míg az 1 érték tökéletesen nedvszívó (nincs reflexió). Az abszorpciós együttható nem módosítható, ha a kiválasztott anyag "Custom".
+8. Az "egyéni" elemhez rendelt anyagok esetében a csúszka már nem lesz letiltva, és a csúszka használatával vagy egy érték beírásával kiválaszthatja az abszorpciós együtthatót.
 
-## <a name="calculate-and-review-listener-probe-locations"></a>Kiszámíthatja, és tekintse át a figyelő mintavételek helyeit
-Miután hozzárendelte a anyagok, váltson át a **mintavételek** fülre, és **Calculate** figyelő mintavételi pontok szimuláció helyezi el.
+## <a name="calculate-and-review-listener-probe-locations"></a>Figyelő mintavételi helyeinek kiszámítása és áttekintése
+Az anyagok kiosztása után váltson a mintavételek **lapra,** és kattintson a **számítás** gombra a figyelő mintavételi pontjainak szimulációhoz való elhelyezéséhez.
 
-### <a name="what-the-calculate-button-calculates"></a>A "Kiszámítása..." gomb kiszámítja
-A **kiszámítása...**  gomb a kiválasztott akusztikai jelenet geometriai használja fel a jelenethez a szimuláció:
+### <a name="what-the-calculate-button-calculates"></a>Mi a "számítás..." gomb kiszámításakor
+A **számítás...** gomb a kiválasztott akusztikus jelenet geometriáját használja a jelenet szimulációhoz való előkészítéséhez:
 
-1. A geometriai telik el a jelenet rácsvonalak és a egy voxel kötet számítja ki. A voxel kötet olyan 3 dimenziós kötet, amely a teljes jelenet helyezi, és kis m3 "voxels" áll. A szimuláció gyakorisága, amely úgy van beállítva a voxels mérete határozza meg a **szimuláció feloldási** beállítás. Minden egyes voxel meg van jelölve, vagy hogy "nyissa meg a vezeték nélkül", vagy jelenet geometriai tartalmazó. Ha egy voxel tartalmazza a geometriai a voxel címkéjű van az adott geometriai rendelt anyag elnyelő együtthatója.
-2. A navigációs mesh(es) helyezze figyelő mintavételi pontokat használ. Az algoritmus elosztja a térbeli lefedettség és szimuláció időt és a fájl mérete, közben biztosítva a konkurens megfontolások, amelyek a folyosókon szűkítheti és kis méretű tárolóhelyek mindig lefedettség bizonyos mennyiségű. Tipikus mintavételi pont tartomány kisebb jeleneteket a 100-ról való néhány ezer a nagy jelenetek számít.
+1. A geometria a jelenet rácsvonalait veszi át, és kiszámítja a Voxel kötetet. A Voxel kötet egy 3 dimenziós kötet, amely a teljes jelenetet magában foglalja, és a kis köbös "voxels". A voxels méretét a szimuláció gyakorisága határozza meg, amelyet a **szimulációs megoldás** beállítása határoz meg. Minden Voxel a "nyitott levegő" vagy a jelenet geometriáját tartalmazó jelöléssel van megjelölve. Ha egy Voxel geometriát tartalmaz, akkor a Voxel címkéje az adott geometriához rendelt anyag abszorpciós együtthatóját jelöli.
+2. A navigációs háló (ka) t használja a figyelő mintavételi pontjainak elhelyezésére. Az algoritmus kiegyenlíti a térbeli lefedettséggel kapcsolatos versengő problémákat, a szimulációs időt és a fájlméretet, ugyanakkor gondoskodik arról, hogy a szűk folyosók és a kis terek mindig bizonyos mennyiségű lefedettséggel rendelkezzenek. A tipikus mintavételi pontok a kis méretű jeleneteknél több ezer 100-es tartományba esnek.
 
-Ezeket a számításokat a jelenethez méretétől és sebességétől, a gép, függően több percig is eltarthat.
+A jelenet méretétől és a gép sebességétől függően ezek a számítások több percet is igénybe vehetnek.
 
-### <a name="review-voxel-and-probe-placement"></a>Mintavétel, valamint voxel elhelyezési áttekintése
-Előzetes verzió is voxel adatokat, és győződjön meg arról, készen áll a jelenethez os mintavételi pont helyét. Egy hiányos navigációs háló vagy hiányzó vagy nagyon akusztikai geometriai általában gyorsan látható lesz az előzetes verzióban érhető el. Mintavétel, valamint Voxel elhelyezése is engedélyezhető, vagy le van tiltva, a Gizmos menü segítségével:
+### <a name="review-voxel-and-probe-placement"></a>Voxel és mintavételi elhelyezés áttekintése
+Tekintse meg mind a Voxel, mind a mintavételi pontok helyét, és győződjön meg arról, hogy készen áll a jelenet kisütni. A nem teljes navigációs rácsvonalak vagy a hiányzó vagy a felesleges akusztikai geometria általában gyorsan látható lesz az előzetes verzióban. A Voxel és a mintavételi elhelyezés engedélyezhető vagy letiltható a minialkalmazások menü használatával:
 
-![Képernyőkép a Gizmos menü a Unity-nél](media/gizmos-menu.png)
+![Képernyőfelvétel a gadgetek menüjéről az egységben](media/gizmos-menu.png)
 
-Akusztikai geometriai tartalmazó Voxels zöld kockák jelennek meg. Fedezze fel a jelenethez, és ellenőrizze, hogy mindent, ami lehet geometry rendelkezik voxels. A helyszín kamera nem lehet a voxels megjelenítéséhez az objektumának körülbelül 5 mérőszámok belül.
+Az akusztikus geometriát tartalmazó Voxels zöld kockákként jelennek meg. Ismerkedjen meg a jelenettel, és ellenőrizze, hogy minden geometriának van-e voxels. A jelenet kamerájának kb. 5 méteren belül kell lennie a voxels megjelenítendő objektumnak.
 
-Ha összehasonlítja a voxels durva feloldási vs finom megoldás használatával létrehozott, látni fogja, hogy az a durva voxels kétszer akkora.
+Ha összehasonlítja a durva felbontással és a megoldással létrehozott voxels, látni fogja, hogy a durva voxels kétszer is nagy.
 
-![Képernyőkép a Unity-szerkesztőben durva voxels előzetes](media/voxel-cubes-preview.png)
+![Képernyőfelvétel a durva voxels előzetes verziójáról az Unity Editorban](media/voxel-cubes-preview.png)
 
-Szimuláció eredményeit a rendszer interpolált figyelő mintavételi pontok helykérelmei futásidőben között. Ellenőrizze a mintavétel pont bármely helyre, a Windows Media player várható utazási a jelenetben.
+A Szimulációs eredmények a figyelő mintavételi pontjának helyei között, futásidőben vannak interpolált. Győződjön meg arról, hogy a játékosnak a helyszín közelében kell lennie a mintavételi pontoknak.
 
-![Képernyőkép a mintavételek a Unity-szerkesztőben előzetes verzió](media/probes-preview.png)
+![A mintavételek előzetes verziójának képernyőképe az Unity Editorban](media/probes-preview.png)
 
-### <a name="take-care-with-scene-renames"></a>Kezelje a jelenet átnevezése
-A helyszín neve a jelenet csatlakozhat fájlokhoz a mintavétel pont elhelyezési és voxelization tárolására szolgál. A jelenet át lett nevezve, mintavételi pontok kiszámítása után, ha az anyagi-hozzárendelés és elhelyezési adatok elvesztését, és újra kell futtatnia.
+### <a name="take-care-with-scene-renames"></a>Ügyeljen a jelenet-Átnevezés lehetőségre
+A jelenet neve a jelenet a mintavételi pont elhelyezését és a voxelization tároló fájlokhoz való összekapcsolására szolgál. Ha a jelenet a mintavételi pontok kiszámítása után átnevezve lett, az anyag-hozzárendelés és az elhelyezési adatok elvesznek, és újra kell futtatni.
 
-### <a name="for-reference-parts-of-the-probes-tab"></a>A dokumentáció: A mintavételek lapon részei
-![Képernyőkép a Akusztika mintavételek fülre a Unity-nél](media/probes-tab-detail.png)
+### <a name="for-reference-parts-of-the-probes-tab"></a>Hivatkozás: A mintavételek lap részei
+![A Unity akusztikus mintavételek lapjának képernyőképe](media/probes-tab-detail.png)
 
-1. A **mintavételek** ezt oldal megjelenítéséhez használt lap gomb
-2. Mit kell tennie, használatával ezen a lapon rövid leírása
-3. Válasszon egy durva vagy finom szimuláció feloldási ezeket használni. Elnagyolt gyorsabb, de bizonyos kompromisszumot kínál a rendelkezik. Lásd: [os feloldási](bake-resolution.md) alábbi részleteket.
-4. Válassza ki a helyet, ahol a Akusztika adatfájlok kell elhelyezni, hogy ez a mező használatával. A gombra kattintva a "...", a Mappalista használatára. Az alapértelmezett érték **eszközök/AcousticsData**. Egy **szerkesztő** almappa is alatt ezen a helyen jön létre. Adatfájlok kapcsolatos további információkért lásd: [adatfájlok](#Data-Files) alatt.
-5. Az adatfájlokat a helyszín neve lesz a megadott előtag ide használatával. Az alapértelmezett érték "Acoustics_ [helyszín neve]".
-6. A mintavételezők kiszámított, miután a fenti vezérlők letiltásra kerül. Kattintson a **egyértelmű** a számítások törléséhez, és a vezérlők engedélyezése, hogy az új beállításokkal újraszámítása gombra.
-7. Kattintson a **kiszámítása...**  gombra kattintva voxelize a helyszín és a mintavételi pontok helykérelmei kiszámításához. Ez a gépén helyileg történik, és a egy bake végrehajtása előtt kell elvégezni.
+1. Az oldal felépítéséhez használt **mintavétel lap gomb**
+2. A lap használatának rövid leírása
+3. Ezek használatával durva vagy részletes szimulációs megoldást választhat. A durva gyorsabb, de bizonyos kompromisszumokkal rendelkezik. A részletekért lásd az alábbi [sütni](bake-resolution.md) -feloldást.
+4. Válassza ki azt a helyet, ahol az akusztikai adatfájlokat a mező használatával kell elhelyezni. Kattintson a "..." gombra. mappa-választó használata. Az alapértelmezett érték az **eszközök/AcousticsData**. Ezen a helyen a **szerkesztő** almappája is létrejön. További információ az adatfájlokról: az [](#Data-Files) alábbi adatfájlok.
+5. Az ehhez a jelenethez tartozó adatfájlok az itt megadott előtag használatával lesznek elnevezve. Az alapértelmezett érték a "Acoustics_ [jelenet neve]".
+6. A mintavételek kiszámítása után a fenti vezérlőelemek le lesznek tiltva. Kattintson a **Törlés** gombra a számítások törléséhez és a vezérlők engedélyezéséhez, hogy az új beállítások használatával újraszámítsa a beállításokat.
+7. Kattintson a **számítás...** gombra a jelenet voxelize és a mintavételi pont helyeinek kiszámításához. Ez helyileg történik a gépen, és a sütni művelet előtt kell elvégezni.
 
-Ebben a verzióban a projekt Akusztika mintavételek nem helyezhető el manuálisan, és az automatizált folyamat a megadott keresztül kell helyezni a **mintavételek** fülre.
+A Project akusztika ezen verziójában a mintavételek nem helyezhetők manuálisan, és a mintavételek **lapon megadott** automatikus folyamaton keresztül kell elhelyezni.
 
-Lásd: [os feloldási](bake-resolution.md) durva vs további részleteiért finom megoldás.
+A durva és a részletes megoldással kapcsolatos további részletekért lásd a [sütni](bake-resolution.md) -feloldást ismertető témakört.
 
-## <a name="bake-your-scene-using-azure-batch"></a>Az Azure Batch használatával jelenet os
-A számítási fürt a felhőben az Azure Batch szolgáltatás használatával jelenetet is os. A projekt Akusztika Unity beépülő modul közvetlenül csatlakozik az Azure Batch számára hozza létre, kezelhet és egy Azure Batch-fürtöt, az egyes bake üzemen. Az a **os** lapra, adja meg Azure hitelesítő adatait, válassza ki a fürt gép típusát és méretét, és kattintson **os**.
+## <a name="bake-your-scene-using-azure-batch"></a>A jelenet Azure Batch használatával
+Az Azure Batch szolgáltatással a felhőben lévő számítási fürttel is sütni a jelenet. A Project akusztikai Unity beépülő modul közvetlenül csatlakozik Azure Batchhoz, amely minden egyes sütni egy Azure Batch-fürtöt hoz létre, kezel és lebont. A **sütni** lapon adja meg az Azure-beli hitelesítő adatait, válassza ki a fürt típusát és méretét, majd kattintson a **sütni**gombra.
 
-### <a name="for-reference-parts-of-the-bake-tab"></a>A dokumentáció: A Bake lapon részei
-![Képernyőkép a Akusztika os fülre a Unity-nél](media/bake-tab-details.png)
+### <a name="for-reference-parts-of-the-bake-tab"></a>Hivatkozás: A sütni lap részei
+![A Unity akusztikai sütni lapjának képernyőképe](media/bake-tab-details.png)
 
-1. Ezt a lapot szolgáló lap os gomb.
-2. Mi a teendő ezen az oldalon rövid leírása.
-3. Adja meg Azure hitelesítő adatait, ha az Azure-fiókja létrejött mezőket. További információkért lásd: [Azure Batch-fiók létrehozása](create-azure-account.md).
-4. Docker a Akusztika eszközkészlet képcímke.
-5. Indítsa el az Azure Portalon kezelheti az előfizetéseit, figyelheti és tekinteni a számlázási adatokat stb. 
-6. Az Azure batch számítási csomópont típusa kiszámításához használandó. A csomóponttípus támogatnia kell az Azure az Adatközpont-helyen. Ha nem biztos maradjon a **Standard_F8s_v2**.
-7. Ehhez a számításhoz használt csomópontok száma. Az itt hatással van a bake elvégzéséhez szükséges idő, és az Azure Batch alapvető foglalási korlátozza. Az alapértelmezett lefoglalási csak lehetővé teszi, hogy két 8 mag csomópontok vagy egy 16 mag csomópont, de bővíthetők. A core foglalási megkötések további információkért lásd: [Azure Batch-fiók létrehozása](create-azure-account.md).
-8. A jelölőnégyzet bejelölésével konfigurálhatja a számítási készletet használandó [alacsony prioritású csomópontok](https://docs.microsoft.com/azure/batch/batch-low-pri-vms). Alacsony prioritású számítási csomópontok kell sokkal alacsonyabb költségek, de előfordulhat, hogy nem érhető el, vagy a tetszőleges időpontban háttérbe szorulhatnak.
-9. A helyszín, a kiszámított mintavételi számát a **mintavételek** fülre. A mintavételek számának meghatározásához szimulációk esetében, amelyeket a felhőben futtatni kell a száma határozza meg. Mintavételezők számánál több csomópont nem adható meg.
-10. Eltelt idő, vár a feladatnak a felhőben való futtatásra tennie. Ez nem vonatkozik a csomópont indítási idejének. Miután a feladat futni kezd, ez a arról, hogy mennyi ideig előtt kapja vissza az eredményeket kell lennie. Vegye figyelembe, hogy ez csak egy becsült.
-11. A teljes, a szimulációk futtatásához szükséges számítási idő mennyisége. Ez a csomópont számítási idő, az Azure-ban használt teljes mennyisége. Lásd: [Estimating bake költség](#Estimating-bake-cost) alatt további információt az ezzel az értékkel.
-12. Ez az üzenet arra kéri, ahol a bake eredményeit menti a rendszer a feladat befejezése után.
-13. (Csak a speciális használata) Ha valamilyen okból nincs szüksége egy bake kapcsolatos megfeledkezni Unity kényszerítése küldte el (pl. letöltötte az eredményeket egy másik gépen), kattintson a **állapot törlése** elfelejtette a feladatról küldött gombra. Vegye figyelembe, hogy ez azt jelenti, hogy az eredményfájlt, ha készen áll, a rendszer **nem** tölthető le, és **ez nem ugyanaz, mint a feladat megszakítása**. A feladatot, ha fut, továbbra is a felhőben való futtatásra.
-14. Kattintson a **os** gombra kattintva küldje el a bake a felhőbe. A feladat futása közben látható **feladat megszakítása** helyette.
-15. Előkészíti a feldolgozási [Akusztika szimulálása a számítógépen](#Local-bake).
-16. Ez a terület a bake állapotát jeleníti meg. Amikor elkészült, ennek meg kell jelennie **letöltött**.
+1. Az oldal felépítéséhez használt sütni lap gomb.
+2. Egy rövid leírás arról, hogy mi a teendő ezen a lapon.
+3. Az Azure-fiók létrehozása után az Azure-beli hitelesítő adatok megadására szolgáló mezők. További információ: [create a Azure batch Account](create-azure-account.md).
+4. Docker-rendszerkép címkéje az akusztikai eszközkészlethez.
+5. Az előfizetések kezeléséhez Azure Portal elindítása, a használat figyelése és a számlázási információk megtekintése stb. 
+6. Az Azure batch számítási csomópontjának típusa, amelyet a számításhoz kíván használni. Az Azure-adatközpont helyének támogatnia kell a csomópont típusát. Ha nem biztos benne, hagyja a következőt: **Standard_F8s_v2**.
+7. A számításhoz használni kívánt csomópontok száma. Az itt megadott szám befolyásolja a sütni elvégzéséhez szükséges időt, és a Azure Batch fő foglalása korlátozza. Az alapértelmezett foglalás csak két 8 fő csomópontot vagy a 1 16 Core csomópontot teszi lehetővé, de bővíthető. Az alapvető foglalási korlátozásokkal kapcsolatos további információkért lásd: [Azure batch fiók létrehozása](create-azure-account.md).
+8. Jelölje be ezt a jelölőnégyzetet, ha a számítási készletet [alacsony prioritású csomópontok](https://docs.microsoft.com/azure/batch/batch-low-pri-vms)használatára szeretné konfigurálni. Az alacsony prioritású számítási csomópontok jóval alacsonyabb költségeket jelentenek, de előfordulhat, hogy nem mindig lesznek elérhetők, vagy bármikor előzik.
+9. A jelenet mintavételi száma a mintavételek **lapon számítva** . A mintavételek száma határozza meg, hogy hány szimulációt kell futtatni a felhőben. A mintavételnél több csomópontot nem adhat meg.
+10. Az eltelt idő, ameddig a feladatainak a felhőben való futtatása várható. Ez nem tartalmazza a csomópont indítási idejét. Ha a feladatot elindítják, akkor ez azt mutatja, hogy mennyi ideig kell lennie ahhoz, hogy vissza lehessen állítani az eredményeket. Vegye figyelembe, hogy ez csak becslés.
+11. A szimulációk futtatásához szükséges számítási idő teljes mennyisége. Ez az Azure-ban használni kívánt csomópont-számítási idő teljes mennyisége. Ennek az értéknek a használatáról további információt az alábbi, a [sütni-költségeket](#Estimating-bake-cost) ismertető cikkben talál.
+12. Az üzenetből megtudhatja, hogy a rendszer hová menti a sütni eredményeit a feladatok befejeződése után.
+13. (Csak speciális használatra) Ha valamilyen okból meg kell kényszeríteni az egységet, hogy felejtsen el egy beküldött sütni (például letöltötte az eredményeket egy másik géppel), kattintson az **állapot törlése** gombra az elküldött feladatokkal kapcsolatos felejtsd. Vegye figyelembe, hogy ez azt jelenti, hogy az eredményül kapott fájl **nem** lesz letöltve, és **Ez nem ugyanaz, mint a feladat megszakítása**. Ha a fut, a továbbra is fut a felhőben.
+14. Kattintson a **sütni** gombra a sütni a felhőbe való beküldéséhez. A feladat futása közben ez a feladat **megszakítását** mutatja.
+15. Előkészíti az [akusztikai szimulációk](#Local-bake)feldolgozását a számítógépen.
+16. Ez a terület a sütni állapotát mutatja. Ha elkészült, a letöltéstkell megjelenítenie.
 
-Teljes körű információt arról, hogy aktív feladatok, a számítási készletek és a tárolás mindig megtekintheti a [az Azure portal](https://portal.azure.com).
+Az aktív feladatokról, a számítási készletekről és a [Azure Portal](https://portal.azure.com)a tárterületről mindig teljes körű információkhoz juthat.
 
-A feladat futása közben a **os** gomb felirata **feladat megszakítása**. Ez a gomb használatával szakítsa meg a folyamatban lévő feladatot. Meg kell adnia annak megerősítéséhez, mielőtt a feladat meg lett szakítva. A feladat megszakítása nem lehet visszavonni, eredménytelen lesz elérhető, és továbbra is kell díjat fizetnie használt Azure-beli számítási bármikor.
+Amíg egy feladat futtatja a **sütni** gomb módosításaita megszakítási feladatokra. Ezzel a gombbal megszakíthatja a feladat végrehajtását. A rendszer kérni fogja, hogy erősítse meg a feladat megszakítása előtt. Egy feladat megszakítása nem vonható vissza, így nem lesz elérhető eredmény, és a rendszer továbbra is felszámítja az összes felhasznált Azure számítási időt.
 
-Egy bake megkezdése után bezárhatja a Unity. Attól függően a projektet, a csomópont típusa és a csomópontok számát a felhő bake több óráig is tarthat. Töltse be újra a projektet, és nyissa meg a Akusztika ablakot a bake feladat állapota frissülni fog. Ha a feladat befejeződött, a rendszer letölti a kimeneti fájlt.
+Miután elindította a sütni, lezárhatja az egységet. A Felhőbeli sütni a projekttől, a csomópont típusától és a csomópontok számától függően több órát is igénybe vehet. A sütni-feladatok állapota a projekt újratöltése és a akusztikai ablak megnyitása után frissül. Ha a feladatot befejezte, a rendszer letölti a kimeneti fájlt.
 
-Az Azure-beli hitelesítő rendszer biztonságosan tárolja a helyi gépen, és a Unity-szerkesztő társított. Ezek szolgálnak, kizárólag az Azure-bA biztonságos kapcsolatot létesíteni.
+Az Azure-beli hitelesítő adatokat a rendszer biztonságosan tárolja a helyi gépen, és társítja az egység-szerkesztőhöz. Kizárólag az Azure-hoz való biztonságos kapcsolat létesítésére szolgálnak.
 
-### <a name="Estimating-bake-cost"></a> Az Azure bake költségek becslése
+### <a name="Estimating-bake-cost"></a>Az Azure Bake Cost becslése
 
-Megbecsülheti egy adott bake díjait, hajtsa végre a megjelenített érték **becsült költség számítási**, ez az időtartam és a kettő többszörösének, amely szerint az óránkénti költség, a helyi pénznemben számított a **VM csomóponttípus** választotta. Az eredmény nem tartalmazza a csomópont idő szükséges a csomópontok szolgáltatásszintje és futtatásához. Például, ha kiválasztja **Standard_F8s_v2** az adott csomóponttípus költsége pedig $ 0,40/óra, amely rendelkezik, és a számítási becsült költség 3 óra és 57 perc, a feladat futtatásához a becsült költség lesz $0,40 * ~ 4 óra = ~ $1.60. A tényleges költségek valószínűleg egy kicsit nagyobb miatt az első lépések a csomópontok hosszabb időt. Az óránkénti csomópont költsége annak a [Azure Batch szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/linux) (válassza "számításra optimalizált" vagy "nagy teljesítményű számítás" kategória) lap.
+Ha szeretné megbecsülni, hogy egy adott sütni Milyen költségekkel jár, a **becsült számítási költségek**, azaz az időtartam, és az óradíjat a kiválasztott virtuálisgép- **csomópont** helyi pénznemében adja meg. Az eredmény nem fogja tartalmazni a csomópontok üzembe helyezéséhez szükséges csomóponti időt. Ha például a **Standard_F8s_v2** lehetőséget választja, amelynek díja $0.40/HR, a becsült számítási költségek pedig 3 óra és 57 perc, a feladathoz tartozó becsült költségek $0,40 * ~ 4 óra = ~ $1,60. A tényleges költségeket valószínűleg egy kicsit magasabbra vált, mivel a csomópontok megkezdése hosszabb időt vesz igénybe. Az óránkénti csomópont költségét a [Azure batch díjszabási](https://azure.microsoft.com/pricing/details/virtual-machines/linux) oldalán találja (válassza a "számítás optimalizált" vagy a "nagy teljesítményű számítás" lehetőséget a kategória esetében).
 
-## <a name="Local-bake"></a> A számítógépen a jelenethez os
-A saját számítógépen a jelenethez is os. Ez lehet hasznos, ha kísérleteztek Akusztika kisebb jeleneteket és az Azure Batch-fiók létrehozása előtt. Megjegyzés: a Akusztika szimuláció jelenet méretétől függően hosszabb időt is igénybe vehet.
+## <a name="Local-bake"></a>A jelenet kisütni a számítógépen
+Saját SZÁMÍTÓGÉPén is megadhatja saját jelenetét. Ez akkor lehet hasznos, ha egy Azure Batch fiók létrehozása előtt kis színfalakkal rendelkező akusztikai lehetőségekkel kísérletezik. Vegye figyelembe, hogy az akusztikai szimuláció a jelenet méretétől függően hosszú időt is igénybe vehet.
 
 ### <a name="minimum-hardware-requirements"></a>Minimális hardverkövetelmények
-* Legalább 8 maggal és 32 GB RAM-x86-64 processzor
+* X86-64 processzor legalább 8 maggal és 32 GB RAM-mal
 
-Tegyük fel, a tesztelés egy 8 mag gép a Intel Xeon E5-1660 @ 3 GHz-es és 32 GB RAM-
-* 100 mintákkal kisebb jeleneteket egy durva bake vagy 32 óráig finom bake nagyjából 2 órát is igénybe vehet.
-* Egy közepes méretű jelenet 1000 mintákkal egy durva bake vagy vonatkozó finom bake 21 napos körülbelül 20 órát is igénybe vehet.
+Például egy 8 magos, Intel Xeon E5-1660 @ 3 GHz-es és 32 GB RAM-mal rendelkező gépen
+* Az 100-es mintavételi teszttel ellátott kis jelenet körülbelül 2 órát vehet igénybe a durva sütni vagy a 32 órán át.
+* Az 1000-es mintavételt tartalmazó közepes méretű jelenet körülbelül 20 órát vehet igénybe egy durva sütjük vagy 21 nap után.
 
-### <a name="setup-docker"></a>A telepítő Docker
-Telepítse és konfigurálja a Docker a számítógépen, amely feldolgozza a szimuláció-
-1. Telepítse a [Docker eszközkészlet](https://www.docker.com/products/docker-desktop).
-2. Indítsa el a Docker-beállításait, keresse meg a "Speciális" lehetőség, és legalább 8GB RAM-MAL rendelkezik az erőforrások. A több processzort foglalhat le a Docker, annál gyorsabban bake fog befejeződni. ![Képernyőkép a Docker-példabeállítások](media/docker-settings.png)
-3. Keresse meg "Megosztott meghajtók", és kapcsolja be a feldolgozáshoz használt meghajtó megosztása.![Képernyőfelvétel: a Docker megosztott meghajtót beállításai](media/docker-shared-drives.png)
+### <a name="setup-docker"></a>A Docker telepítése
+A Docker telepítése és konfigurálása azon a számítógépen, amely a szimulációt fogja feldolgozni:
+1. Telepítse a [Docker](https://www.docker.com/products/docker-desktop)-eszközkészletet.
+2. Indítsa el a Docker-beállításokat, navigáljon a "speciális" beállításokhoz, és konfigurálja az erőforrásokat legalább 8 GB RAM-mal. Minél több CPU-t tud lefoglalni a Docker számára, annál gyorsabban fejeződik be a sütni. ![Képernyőfelvétel a Docker-beállításokról](media/docker-settings.png)
+3. Navigáljon a "megosztott meghajtók" elemre, és kapcsolja be a megosztást a feldolgozáshoz használt meghajtón.![Képernyőfelvétel a Docker Shared Drive lehetőségeiről](media/docker-shared-drives.png)
 
-### <a name="run-local-bake"></a>Helyi bake futtatása
-1. Kattintson a "Előkészítése helyi os" gombra a a **os** lapra, és válasszon ki egy mappát, ahol a bemeneti fájlok és parancsfájlok végrehajtása menti a rendszer. Ezután futtathatja a bake bármely gépen mindaddig, amíg megfelel-e a minimális hardverkövetelményeknek, és a Docker telepítve van a mappa, hogy a gép másolásával.
-2. Indítsa el a szimulációt, a "runlocalbake.bat" parancsfájl használatával. Ez a szkript beolvassa a szimuláció feldolgozáshoz szükséges eszközkészlet a projekt Akusztika Docker-rendszerképet, és a a szimuláció elindításához. 
-3. A szimuláció befejeztével másolja az eredményül kapott .ace fájl vissza a Unity-projektjét. Ahhoz, hogy a Unity felismeri a bináris fájlként, ".bytes" hozzáfűzése a fájlkiterjesztés (például "Scene1.ace.bytes"). A részletes naplókat a szimuláció vannak tárolva "AcousticsLog.txt." Ha problémákat tapasztal, ossza meg ezt a diagnosztikát segítő fájlt.
+### <a name="run-local-bake"></a>Helyi sütni futtatása
+1. Kattintson a "helyi sütni előkészítése" gombra a **sütni** lapon, és válassza ki azt a mappát, ahol a bemeneti fájlok és a végrehajtási parancsfájlok el lesznek mentve. Ezután bármilyen gépen futtathatja a sütni-t, ha megfelel a minimális hardverkövetelmények követelményeinek, és a Docker telepítve van, ha a mappát átmásolja a gépre.
+2. Indítsa el a szimulációt a "runlocalbake. bat" parancsfájl használatával. Ez a szkript beolvassa a projekt akusztikai Docker-rendszerképét a szimulációs feldolgozáshoz szükséges eszközkészlettel, és elindítja a szimulációt. 
+3. A szimuláció befejezését követően másolja vissza az eredményül kapott. ACE fájlt az Unity-projektbe. Annak biztosítása érdekében, hogy az egység felismeri bináris fájlként, fűzze hozzá a ". Bytes" fájlt a fájlkiterjesztés (például "Scene1. ACE. Bytes"). A szimuláció részletes naplóit a "AcousticsLog. txt" fájl tárolja. Ha bármilyen problémába ütközik, ossza meg ezt a fájlt a diagnosztika támogatásához.
 
-## <a name="Data-Files"></a> A bake folyamat által hozzáadott adatfájlok
+## <a name="Data-Files"></a>A sütni folyamat által hozzáadott adatfájlok
 
-Nincsenek a bake során létrehozott négy adatfájlokat. Az egyik a szimuláció eredményeit tartalmazza, és a címet tartalmaz. A többi tárolja a Unity-szerkesztő kapcsolatos adatokat.
+A sütni folyamat során négy adatfájl jön létre. Az egyik tartalmazza a szimuláció eredményeit, és a címmel ellátott hajókat. A többiek az Unity Editor kapcsolódó adatait tárolják.
 
-Szimuláció eredménye:
-* **Eszközök/AcousticsData/Akusztika\_[SceneName].ace.bytes**: Ez a futásidejű keresési táblából, és a szimuláció eredményeit és a voxelized akusztikai jelenet elemeket tartalmaz. A helyét, és ez a fájl nevét is módosítható a mezői a **mintavételek** fülre.
+Szimulációs eredmény:
+* **Eszközök\_/AcousticsData/akusztika [SceneName]. ACE. Bytes**: Ez a futásidejű keresési táblázat, amely a szimuláció eredményeit és a voxelized akusztikai jelenet elemeit tartalmazza. A fájl helye és neve módosítható a mintavételek **lapon lévő** mezők használatával.
 
-Ügyeljen, nem arra, hogy a szimuláció eredmény fájl törlése. Nem állítható helyre, kivéve a jelenet rebaking szerint.
+Ügyeljen arra, hogy ne törölje a szimulációs eredményhalmaz fájlját. Nem lehet helyreállítani, kivéve a jelenet kisütését.
 
-Editor adatfájlok:
-* **Assets/Editor/[SceneName]\_AcousticsParameters.asset**: A fájl tárolja az adatokat a mezőkben a Akusztika felhasználói felületén. A hely és a fájl neve nem lehet módosítani.
-* **Assets/AcousticsData/Editor/Acoustics_[SceneName].vox**: Ez a fájl tartalmazza a voxelized Akusztika geometry és anyagi tulajdonságok használatával számítja a **Calculate...**  gombra a mintavételek lapon. A helyét, és ez a fájl nevét is módosítható a mezői a **mintavételek** fülre.
-* **Assets/AcousticsData/Editor/Acoustics\_[SceneName]\_config.xml**: Ez a fájl tartalmazza a szimuláció paraméterei kiszámítása a **Calculate...**  gombot a **mintavételek** fülre. A helyét, és ez a fájl nevét is módosítható a mezői a **mintavételek** fülre.
+Szerkesztői adatfájlok:
+* **Assets/Editor/[SceneName]\_AcousticsParameters.asset**: Ez a fájl az akusztikai felhasználói felület mezőiben megadott adat tárolására szolgáló mezőket tárolja. A fájl helye és neve nem módosítható.
+* **Assets/AcousticsData/Editor/Acoustics_ [SceneName]. Vox**: Ez a fájl tárolja a voxelized akusztikai geometriáját, valamint a mintavétel **...** gomb használatával kiszámított anyag-tulajdonságokat a mintavételek lapon. A fájl helye és neve módosítható a mintavételek **lapon lévő** mezők használatával.
+* **Eszközök\_/AcousticsData/szerkesztő/akusztika [SceneName]\_config. XML**: Ez a fájl a mintavétel **..** . gomb használatával a mintavételek **lapon lévő** szimulációs paramétereket tárolja. A fájl helye és neve módosítható a mintavételek **lapon lévő** mezők használatával.
 
-## <a name="set-up-the-acoustics-lookup-table"></a>Állítsa be a Akusztika keresési tábla
-Húzza át a **projekt Akusztika** prefab a projekt panelről a jelenethez be:
+## <a name="set-up-the-acoustics-lookup-table"></a>Az akusztikai keresési táblázat beállítása
+Húzza át a **projekt akusztikai** paneljét a projekt panelről a jelenetbe:
 
-![Képernyőkép a Akusztika prefab a Unity-nél](media/acoustics-prefab.png)
+![Képernyőfelvétel az akusztikai panelről az Unity-ben](media/acoustics-prefab.png)
 
-Kattintson a **ProjectAcoustics** játék objektum, és ugorjon a Megtekintő panelen. Adja meg a helyet a bake eredmény (a. A fájl, ACE **eszközök/AcousticsData**) által húzza és törlése a Akusztika Manager parancsfájlba, illetve a szövegbeviteli mező mellett a kör gombra kattintva.
+Kattintson a **ProjectAcoustics** játék objektumra, és nyissa meg az ellenőr panelt. Adja meg a sütni eredmény helyét (a. ACE-fájl, **eszköz/AcousticsData**) – húzza át az akusztikus kezelő parancsfájlba, vagy kattintson a szövegmező melletti kör gombra.
 
-![Képernyőkép a Akusztika Manager prefab a Unity-nél](media/acoustics-manager.png)  
+![Képernyőfelvétel a Acoustics Manager panelről az Unity-ben](media/acoustics-manager.png)  
 
 ## <a name="next-steps"></a>További lépések
-* Fedezze fel a [for Unity vezérlők tervezése](unity-workflow.md)
-* Fedezze fel a [projekt Akusztika tervezési alapelvek](design-process.md)
+* Az [Unity tervezési vezérlőinek](unity-workflow.md) megismerése
+* A [Project akusztikai tervezési fogalmak](design-process.md) megismerése
 

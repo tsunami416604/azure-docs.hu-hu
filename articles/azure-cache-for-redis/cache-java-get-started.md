@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Azure Cache használata javával redis |} A Microsoft Docs'
-description: Ez a rövid útmutatóban létrehozhat egy új Java-alkalmazás által használt Azure Cache redis
+title: Rövid útmutató, amelyből megtudhatja, hogyan használható az Azure cache a Redis Javával | Microsoft Docs
+description: Ebben a rövid útmutatóban egy új Java-alkalmazást fog létrehozni, amely az Azure cache-t használja a Redis
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -15,32 +15,21 @@ ms.workload: tbd
 ms.date: 05/23/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 047350fa957d9ca1fdec50f97a590ba90a42e1b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01fb6f66ce71599a70a127a2b73eba6f848bf365
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60830568"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324138"
 ---
-# <a name="quickstart-how-to-use-azure-cache-for-redis-with-java"></a>Gyors útmutató: Az Azure Cache használata javával redis
+# <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Gyors útmutató: Az Azure cache használata a Redis Javával
 
-
-Az Azure Cache redis hozzáférést biztosít egy dedikált Azure Cache redis, a Microsoft felügyeli. A gyorsítótár a Microsoft Azure összes alkalmazásából elérhető.
-
-Ez a cikk bemutatja, hogyan kezdheti el az Azure Cache a Redis használata a [Jedis](https://github.com/xetorthio/jedis) Java Redis-ügyfél.
-
-![Kész gyorsítótár-alkalmazás](./media/cache-java-get-started/cache-app-complete.png)
-
-A rövid útmutató lépései bármilyen szövegszerkesztővel elvégezhetők. A [Visual Studio Code](https://code.visualstudio.com/) például jó választás lehet, és Windows, macOS és Linux platformokon is használható.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
+Ebben a rövid útmutatóban beépíti az Azure cache-t a Redis egy [](https://github.com/xetorthio/jedis) Java-alkalmazásba a jedis Redis-ügyféllel, hogy hozzáférjen egy olyan biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Apache Maven](https://maven.apache.org/)
-
-
+- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+- [Apache Maven](https://maven.apache.org/download.cgi)
 
 ## <a name="create-an-azure-cache-for-redis"></a>A Redis Azure Cache létrehozása
 
@@ -50,7 +39,7 @@ A rövid útmutató lépései bármilyen szövegszerkesztővel elvégezhetők. A
 
 Adjon hozzá környezeti változókat a **GAZDAGÉP NEVE** és **Elsődleges** hozzáférési kulcs megadásához. A kód ezen változóit fogja használni ahelyett, hogy közvetlenül a kódban tárolná a bizalmas információkat.
 
-```
+```CMD 
 set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
 set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
@@ -59,7 +48,7 @@ set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 A Maven használatával hozzon létre egy új gyorsindító alkalmazást:
 
-```
+```CMD
 mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.3 -DgroupId=example.demo -DartifactId=redistest -Dversion=1.0
 ```
 
@@ -131,7 +120,7 @@ public class App
 }
 ```
 
-Ez a kód bemutatja, hogyan csatlakozhat egy Azure Cache a Redis-példányt a gyorsítótár-állomás nevének és a kulcs környezeti változók használatával. A kód emellett tárolja és lekéri gyorsítótár egyik sztringértékét. A rendszer a `PING` és a `CLIENT LIST` parancsot is végrehajtja. 
+Ez a kód azt mutatja be, hogyan csatlakozhat egy Azure cache-hez a Redis-példányhoz a gyorsítótár állomásneve és a legfontosabb környezeti változók használatával. A kód emellett tárolja és lekéri gyorsítótár egyik sztringértékét. A rendszer a `PING` és a `CLIENT LIST` parancsot is végrehajtja. 
 
 Mentse az *App.java* fájlt.
 
@@ -139,7 +128,7 @@ Mentse az *App.java* fájlt.
 
 Hajtsa végre a következő Maven-parancsot az alkalmazás buildeléséhez és elindításához:
 
-```
+```CMD
 mvn compile
 mvn exec:java -D exec.mainClass=example.demo.App
 ```
@@ -147,7 +136,6 @@ mvn exec:java -D exec.mainClass=example.demo.App
 Az alábbi példában a `Message` kulcsot láthatja. A kulcsnak korábban gyorsítótárazott értéke volt, amely az Azure Portalon, a Redis Console használatával lett beállítva. Az alkalmazás frissítette ezt a gyorsítótárazott értéket. Az alkalmazás továbbá végrehajtotta a `PING` és a `CLIENT LIST` parancsot.
 
 ![Kész gyorsítótár-alkalmazás](./media/cache-java-get-started/cache-app-complete.png)
-
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -169,14 +157,9 @@ A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-
-
 ## <a name="next-steps"></a>További lépések
 
-Ebből a gyors útmutatóból megtudhatta, hogyan Azure Cache a Redis használata Java-alkalmazás. Folytassa a következő Azure Cache a Redis használata ASP.NET-webalkalmazás.
+Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure cache-t egy Java-alkalmazásból származó Redis. Folytassa a következő rövid útmutatóval, hogy az Azure cache-t használja a Redis egy ASP.NET-webalkalmazással.
 
 > [!div class="nextstepaction"]
-> [Hozzon létre egy ASP.NET-webalkalmazás, amely egy Azure Cache Redis használ.](./cache-web-app-howto.md)
-
-
-
+> [Hozzon létre egy ASP.NET-webalkalmazást, amely egy Azure cache-t használ a Redis.](./cache-web-app-howto.md)

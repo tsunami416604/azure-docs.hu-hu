@@ -1,5 +1,5 @@
 ---
-title: 'Transforms: data prep Python SDK'
+title: 'Átalakítások: adat-előkészítési Python SDK'
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg a átalakítása és az Azure Machine Learning Data Prep SDK adattisztítást. Átalakítás módszerekkel oszlopok hozzáadása, szűrje ki a nem kívánt sorokra vagy oszlopokra és imputálására a hiányzó értékeket.
 services: machine-learning
@@ -10,23 +10,23 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 05/02/2019
+ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: db23c8af7eaa4a86691ccb0bb831ce2cc28d635c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: add5584ccf3d9d6837e328bbf70d71598e5c0839
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65471835"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694310"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Adatok átalakítása a az Azure Machine Learning Data Prep SDK segítségével
 
-Ebből a cikkből megtudhatja, átalakítja az adatokat a különböző módszereket a `azureml-dataprep` csomagot. A csomag kínál, amelyek megkönnyítik az egyszerű oszlopok hozzáadása, szűrje ki a nem kívánt sorokra vagy oszlopokra és imputálására hiányzó funkciók. Tekintse meg a teljes dokumentációja a [azureml-adatelőkészítés csomag](https://aka.ms/data-prep-sdk).
+Ebből a cikkből megismerheti az adatátalakítás különböző módszereit a `azureml-dataprep` csomag használatával. A csomag olyan függvényeket kínál, amelyek egyszerűvé teszik az oszlopok hozzáadását, a nem kívánt sorok vagy oszlopok kiszűrését, valamint a hiányzó értékek bevezetését. Tekintse meg a [azureml-adatelőkészítés csomag](https://aka.ms/data-prep-sdk)teljes dokumentációját.
 
 > [!Important]
-> Ha egy új megoldást épít, próbálja meg a [Azure Machine Learning adatkészletek](how-to-explore-prepare-data.md) (előzetes verzió) az adatok, a pillanatkép adatainak átalakításához, és tárolja a rendszerverzióval ellátott adatkészlet-definíciókban. Az adatkészletek az adatelőkészítés adatkészleteket az AI-megoldások kezelésével kapcsolatos bővített funkciókat kínáló, SDK következő verziójában. Ha használja a `azureml-dataprep` az átalakítások használata helyett hozzon létre egy adatfolyam-csomagot a `azureml-datasets` csomagot hozhat létre adatkészletet, nem tud majd pillanatképekkel vagy a verzióval ellátott adatkészletek későbbi használat céljából.
+> Ha új megoldást hoz létre, próbálja meg a [Azure Machine learning](how-to-explore-prepare-data.md) adatkészleteket (előzetes verzió) az adatok, a pillanatkép-adatok átalakításához és a verziószámmal ellátott adatkészlet-definíciók tárolásához. Az adatkészletek az adat-előkészítő SDK következő verziója, amely kibővített funkciókat kínál az adatkészletek AI-megoldásokban való kezeléséhez. Ha a `azureml-dataprep` csomag használatával hoz létre adatfolyam az átalakításokkal, ahelyett, hogy a csomagot egy `azureml-datasets` adatkészlet létrehozásához használja, nem fogja tudni használni a pillanatképeket vagy a verziószámú adatkészleteket később.
 
-Ebben az útmutatóban példát a következő feladatokhoz:
+Ez az útmutató példákat mutat be a következő feladatokhoz:
 
 - Az autorefresh tulajdonság oszlop hozzáadása
 - [Hiányzó imputálására](#impute-missing-values)
@@ -100,15 +100,15 @@ dflow.head(3)
 |1|10139776|false|42.008124|-87.659550|
 |2|10140270|false|NaN|NaN|
 
-A harmadik rekord hiányzik a szélességi és hosszúsági értékeket. Ezeket a hiányzó értékeket imputálására, használhatja [ `ImputeMissingValuesBuilder` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders.imputemissingvaluesbuilder?view=azure-dataprep-py) további rögzített kifejezés. Azt is imputálására az vagy egy számított oszlopokat `MIN`, `MAX`, `MEAN` érték, vagy egy `CUSTOM` értéket. Amikor `group_by_columns` van megadva, hiányzó imputálni csoport szerint kell `MIN`, `MAX`, és `MEAN` csoportonként számítja ki.
+A harmadik rekord hiányzik a szélességi és hosszúsági értékeket. A hiányzó értékek [`ImputeMissingValuesBuilder`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders.imputemissingvaluesbuilder?view=azure-dataprep-py) összevetéséhez egy rögzített kifejezést kell megtanulnia. Azt is imputálására az vagy egy számított oszlopokat `MIN`, `MAX`, `MEAN` érték, vagy egy `CUSTOM` értéket. Amikor `group_by_columns` van megadva, hiányzó imputálni csoport szerint kell `MIN`, `MAX`, és `MEAN` csoportonként számítja ki.
 
-Ellenőrizze a `MEAN` használatával szélességi oszlop értékét a [ `summarize()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) függvény. Ez a függvény elfogad egy tömb, az oszlopok a `group_by_columns` paraméterrel adja meg az összesítési szinten. A `summary_columns` paramétert fogad el egy `SummaryColumnsValue` hívja. A függvény hívásához szükséges, adja meg az aktuális oszlop nevét, az új számított mező neve és a `SummaryFunction` végrehajtásához.
+A függvény használatával vizsgálja meg a szélesség oszlop értékét.`MEAN` [`summarize()`](/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-ml-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow--summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) Ez a függvény elfogad egy tömb, az oszlopok a `group_by_columns` paraméterrel adja meg az összesítési szinten. A `summary_columns` paramétert fogad el egy `SummaryColumnsValue` hívja. A függvény hívásához szükséges, adja meg az aktuális oszlop nevét, az új számított mező neve és a `SummaryFunction` végrehajtásához.
 
 ```python
 dflow_mean = dflow.summarize(group_by_columns=['Arrest'],
-                       summary_columns=[dprep.SummaryColumnsValue(column_id='Latitude',
-                                                                 summary_column_name='Latitude_MEAN',
-                                                                 summary_function=dprep.SummaryFunction.MEAN)])
+                             summary_columns=[dprep.SummaryColumnsValue(column_id='Latitude',
+                                                                        summary_column_name='Latitude_MEAN',
+                                                                        summary_function=dprep.SummaryFunction.MEAN)])
 dflow_mean = dflow_mean.filter(dprep.col('Arrest') == 'false')
 dflow_mean.head(1)
 ```
@@ -130,7 +130,7 @@ impute_custom = dprep.ImputeColumnArguments(column_id='Longitude',
                                             custom_impute_value=42)
 # get instance of ImputeMissingValuesBuilder
 impute_builder = dflow.builders.impute_missing_values(impute_columns=[impute_mean, impute_custom],
-                                                   group_by_columns=['Arrest'])
+                                                      group_by_columns=['Arrest'])
 
 impute_builder.learn()
 dflow_imputed = impute_builder.to_dataflow()
@@ -156,7 +156,8 @@ A speciális eszközök az Azure Machine Learning Data Prep SDK az egyik oszlopa
 
 ```python
 import azureml.dataprep as dprep
-dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/BostonWeather.csv')
+dflow = dprep.read_csv(
+    path='https://dpreptestfiles.blob.core.windows.net/testfiles/BostonWeather.csv')
 dflow.head(4)
 ```
 
@@ -170,9 +171,11 @@ dflow.head(4)
 Tegyük fel, hogy szeretne-e a fájl egy adatkészlet formátumú dátumot és időt amelyeknél csatlakozzon "2018. március 10. |} 2 AM - 4 AM ".
 
 ```python
-builder = dflow.builders.derive_column_by_example(source_columns=['DATE'], new_column_name='date_timerange')
-builder.add_example(source_data=dflow.iloc[1], example_value='Jan 1, 2015 12AM-2AM')
-builder.preview(count=5) 
+builder = dflow.builders.derive_column_by_example(
+    source_columns=['DATE'], new_column_name='date_timerange')
+builder.add_example(
+    source_data=dflow.iloc[1], example_value='Jan 1, 2015 12AM-2AM')
+builder.preview(count=5)
 ```
 
 ||DATE|date_timerange|
@@ -190,7 +193,7 @@ Végezetül hívja `builder.preview(skip=30, count=5)` és a származtatott oszl
 Most adja át a kívánt sorok számát `skip` a felső sort megtekintéséhez kicsit lentebb.
 
 > [!NOTE]
-> A preview() függvény kihagyja a sorokat, de nem szám újra a kimeneti index. Az alábbi példában az a tábla indexének 0 30 index az adatfolyamban felel meg.
+> Az előnézet () függvény kihagyja a sorokat, de nem számozza újra a kimeneti indexet. Az alábbi példában a tábla 0 indexe megfelel a adatfolyam található 30. indexnek.
 
 ```python
 builder.preview(skip=30, count=5)
@@ -198,28 +201,29 @@ builder.preview(skip=30, count=5)
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|0|1/1/2015 22:54|2015\. január 1-én ESTE 10 – 12 óra|
-|1|1/1/2015 23:54|2015\. január 1-én ESTE 10 – 12 óra|
-|2|1/1/2015 23:59|2015\. január 1-én ESTE 10 – 12 óra|
-|3|1/2/2015 0:54|2015\. február 1-én 12 AM - 2 AM|
-|4|1/2/2015 1:00|2015\. február 1-én 12 AM - 2 AM|
+|0|1/1/2015 22:54|2015. január 1-én ESTE 10 – 12 óra|
+|1|1/1/2015 23:54|2015. január 1-én ESTE 10 – 12 óra|
+|2|1/1/2015 23:59|2015. január 1-én ESTE 10 – 12 óra|
+|3|1/2/2015 0:54|2015. február 1-én 12 AM - 2 AM|
+|4|1/2/2015 1:00|2015. február 1-én 12 AM - 2 AM|
 
-Itt láthatja a létrehozott program problémáját. A származtatása program elemezni a dátum szerint "Nap/hó/év", azaz nem választható ebben az esetben kizárólag a fent megadott egy példa alapján, választotta. A probléma megoldásához, egy adott rekord index célként, és adjon meg egy másik példa használatával a `add_example()` működnek a `builder` változó.
+Itt láthatja a létrehozott program problémáját. A származtatása program elemezni a dátum szerint "Nap/hó/év", azaz nem választható ebben az esetben kizárólag a fent megadott egy példa alapján, választotta. A probléma megoldásához célozjon `add_example()` `builder` meg egy adott rekord-indexet, és adjon meg egy másik példát a változóban található függvény használatával.
 
 ```python
-builder.add_example(source_data=dflow.iloc[3], example_value='Jan 2, 2015 12AM-2AM')
+builder.add_example(
+    source_data=dflow.iloc[3], example_value='Jan 2, 2015 12AM-2AM')
 builder.preview(skip=30, count=5)
 ```
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|0|1/1/2015 22:54|2015\. január 1-én ESTE 10 – 12 óra|
-|1|1/1/2015 23:54|2015\. január 1-én ESTE 10 – 12 óra|
-|2|1/1/2015 23:59|2015\. január 1-én ESTE 10 – 12 óra|
+|0|1/1/2015 22:54|2015. január 1-én ESTE 10 – 12 óra|
+|1|1/1/2015 23:54|2015. január 1-én ESTE 10 – 12 óra|
+|2|1/1/2015 23:59|2015. január 1-én ESTE 10 – 12 óra|
 |3|1/2/2015 0:54|Jan 2, 2015 12 AM - 2 AM|
 |4|1/2/2015 1:00|Jan 2, 2015 12 AM - 2 AM|
 
-Sorok megfelelően kezeli a most "1/2/2015',"2015 január 2"de ha túl indexazonosító származtatott oszlop 76, azt látja, hogy értékeket a végén semmit nem származtatott oszlop.
+A sorok mostantól megfelelően kezelik a "1/2/2015"-et a következőként: "Jan 2, 2015", de ha a származtatott oszlopon túlmutatnak az index 76-nál, akkor a végén látható értékek nem szerepelnek a származtatott oszlopban.
 
 ```python
 builder.preview(skip=75, count=5)
@@ -228,26 +232,27 @@ builder.preview(skip=75, count=5)
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|0|1/3/2015 7:00|2015 január 3-6: 00 - 8 -kor|
-|1|1/3/2015 7:54|2015 január 3-6: 00 - 8 -kor|
-|2|1/29/2015 6:54|None|
+|0|1/3/2015 7:00|Jan. január 3., 2015 6 – 08:00|
+|1|1/3/2015 7:54|Jan. január 3., 2015 6 – 08:00|
+|2|1/29/2015 6:54|Nincsenek|
 |3|1/29/2015 7:00|None|
-|4|1/29/2015 7:54|None|
+|4|1/29/2015 7:54|Nincsenek|
 
 ```python
-builder.add_example(source_data=dflow.iloc[77], example_value='Jan 29, 2015 6AM-8AM')
+builder.add_example(
+    source_data=dflow.iloc[77], example_value='Jan 29, 2015 6AM-8AM')
 builder.preview(skip=75, count=5)
 ```
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|0|1/3/2015 7:00|2015 január 3-6: 00 - 8 -kor|
-|1|1/3/2015 7:54|2015 január 3-6: 00 - 8 -kor|
-|2|1/29/2015 6:54|2015\. január 29-én 6: 00 - 8 -kor|
-|3|1/29/2015 7:00|2015\. január 29-én 6: 00 - 8 -kor|
-|4|1/29/2015 7:54|2015\. január 29-én 6: 00 - 8 -kor|
+|0|1/3/2015 7:00|Jan. január 3., 2015 6 – 08:00|
+|1|1/3/2015 7:54|Jan. január 3., 2015 6 – 08:00|
+|2|1/29/2015 6:54|Január 29., 2015 6 – 08:00|
+|3|1/29/2015 7:00|Január 29., 2015 6 – 08:00|
+|4|1/29/2015 7:54|Január 29., 2015 6 – 08:00|
 
- A hívás aktuális példa származtatási listájának megtekintéséhez `list_examples()` builder objektumon.
+ Az aktuális példa származtatott példányok listájának megjelenítéséhez hívja `list_examples()` meg a Build objektumot.
 
 ```python
 examples = builder.list_examples()
@@ -257,29 +262,35 @@ examples = builder.list_examples()
 | -------- | -------- | -------- | -------- |
 |0|1/1/2015 1:00|2015 január 1-12 AM - 2 AM|-1|
 |1|1/2/2015 0:54|Jan 2, 2015 12 AM - 2 AM|-2|
-|2|1/29/2015 20:54|2015\. január 29-én du. 8 – 22: 00|-3|
+|2|1/29/2015 20:54|2015. január 29-én du. 8 – 22: 00|-3|
 
 
-Bizonyos esetekben ha törli a hibás, példák formájában adható át vagy `example_row` származó a pandas DataFrame, vagy `example_id` értéket. Például, ha futtatja `builder.delete_example(example_id=-1)`, az első átalakítási példa törli.
+Bizonyos esetekben, ha olyan példákat szeretne törölni, amelyek helytelenek, a pandák DataFrame vagy `example_row` `example_id` értékből is átadható. A futtatásakor `builder.delete_example(example_id=-1)`például törli az első átalakítási példát.
 
 
-Hívás `to_dataflow()` a szerkesztő a ad vissza egy adatfolyamot hozzáadni kívánt származtatott oszlopokat.
+Hívja `to_dataflow()` meg a szerkesztőt, amely visszaadja a kívánt származtatott oszlopokkal rendelkező adatfolyamot.
 
 ```python
 dflow = builder.to_dataflow()
 df = dflow.to_pandas_dataframe()
 ```
 
-## <a name="filtering"></a>Filtering
+## <a name="filtering"></a>Szűrés
 
-Az SDK-csomagja tartalmazza a módszerek [ `drop_columns()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#drop-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow) és [ `filter()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py) lehetővé teszi, hogy szűrje ki a sorok vagy oszlopok.
+Az SDK tartalmazza a [`drop_columns()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#drop-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow) metódusokat [`filter()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py) , és lehetővé teszi az oszlopok vagy sorok kiszűrését.
 
 ### <a name="initial-setup"></a>Kezdeti beállítás
+
+> [!Note]
+> Az ebben a példában szereplő URL-cím nem teljes URL-cím. Ehelyett a blobban található demó mappára hivatkozik. Az adat teljes URL-címe https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
+
+Az oktatóanyag lényege, hogy az összes fájlt betöltjük a mappában, és összesítjük az eredményt a green_df_raw és a yellow_df_raw.
 
 ```python
 import azureml.dataprep as dprep
 from datetime import datetime
-dflow = dprep.read_csv(path='https://dprepdata.blob.core.windows.net/demo/green-small/*')
+dflow = dprep.read_csv(
+    path='https://dprepdata.blob.core.windows.net/demo/green-small/*')
 dflow.head(5)
 ```
 
@@ -293,7 +304,7 @@ dflow.head(5)
 
 ### <a name="filtering-columns"></a>Oszlopok szűrése
 
-Az oszlopok szűréséhez használja a `drop_columns()`. Ez a módszer felvesz egy oszlop eldobása, vagy egy összetettebb argumentum nevű [ `ColumnSelector` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.columnselector?view=azure-dataprep-py).
+Az oszlopok szűréséhez használja a `drop_columns()`. Ez a metódus az eldobni kívánt oszlopok listáját vagy egy összetettebb argumentumot [`ColumnSelector`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.columnselector?view=azure-dataprep-py)vesz fel.
 
 #### <a name="filtering-columns-with-list-of-strings"></a>Oszlopok a karakterláncok listájának szűrése
 
@@ -314,7 +325,8 @@ dflow.head(2)
 Másik megoldásként használhatja a `ColumnSelector` kifejezés oszlopokat, amelyek megfelelnek egy regex kifejezés. Ebben a példában az oszlopok, amelyek megfelelnek a kifejezésnek drop `Column*|.*longitude|.*latitude`.
 
 ```python
-dflow = dflow.drop_columns(dprep.ColumnSelector('Column*|.*longitud|.*latitude', True, True))
+dflow = dflow.drop_columns(dprep.ColumnSelector(
+    'Column*|.*longitud|.*latitude', True, True))
 dflow.head(2)
 ```
 
@@ -355,7 +367,8 @@ Ebben a példában `dflow.filter()` egy új adatfolyamot a sorokat adja vissza, 
 
 ```python
 dflow = dflow.to_number(['Passenger_count', 'Tolls_amount'])
-dflow = dflow.filter(dprep.f_and(dprep.col('Passenger_count') < 5, dprep.col('Tolls_amount') > 0))
+dflow = dflow.filter(dprep.f_and(
+    dprep.col('Passenger_count') < 5, dprep.col('Tolls_amount') > 0))
 dflow.head(2)
 ```
 
@@ -370,9 +383,10 @@ Akkor is egynél több Kifejezésszerkesztő hozhat létre egy beágyazott kifej
 > `lpep_pickup_datetime` és `Lpep_dropoff_datetime` dátum és idő, amely lehetővé teszi számunkra, hogy a többi datetime értéket összehasonlítja egy kifejezés összeállítása először konvertálja.
 
 ```python
-dflow = dflow.to_datetime(['lpep_pickup_datetime', 'Lpep_dropoff_datetime'], ['%Y-%m-%d %H:%M:%S'])
+dflow = dflow.to_datetime(
+    ['lpep_pickup_datetime', 'Lpep_dropoff_datetime'], ['%Y-%m-%d %H:%M:%S'])
 dflow = dflow.to_number(['Total_amount', 'Trip_distance'])
-mid_2013 = datetime(2013,7,1)
+mid_2013 = datetime(2013, 7, 1)
 dflow = dflow.filter(
     dprep.f_and(
         dprep.f_or(
@@ -407,7 +421,8 @@ Első lépésként bizonyos adatok betöltése az Azure-Blobból.
 import azureml.dataprep as dprep
 col = dprep.col
 
-dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv', skip_rows=1)
+dflow = dprep.read_csv(
+    path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv', skip_rows=1)
 dflow.head(2)
 ```
 
@@ -416,11 +431,13 @@ dflow.head(2)
 |0|ALABAMA|1|101710|Hale megye|10171002158| |
 |1|ALABAMA|1|101710|Hale megye|10171002162| |
 
-Trim le az adatkészlet, és végezze el néhány alapszintű átalakítások, például oszlopok eltávolítása, értékeket cserélje le, és típusok alakítása.
+Vágja le az adatkészletet, és hajtson végre néhány alapvető átalakítást, beleértve az oszlopok eltávolítását, az értékek cseréjét és a típusok átalakítását.
 
 ```python
-dflow = dflow.keep_columns(['stnam', 'leanm10', 'ncessch', 'MAM_MTH00numvalid_1011'])
-dflow = dflow.replace_na(columns=['leanm10', 'MAM_MTH00numvalid_1011'], custom_na_list='.')
+dflow = dflow.keep_columns(
+    ['stnam', 'leanm10', 'ncessch', 'MAM_MTH00numvalid_1011'])
+dflow = dflow.replace_na(
+    columns=['leanm10', 'MAM_MTH00numvalid_1011'], custom_na_list='.')
 dflow = dflow.to_number(['ncessch', 'MAM_MTH00numvalid_1011'])
 dflow.head(2)
 ```
@@ -443,7 +460,7 @@ dflow.filter(col('MAM_MTH00numvalid_1011').is_null()).head(2)
 
 ### <a name="transform-partition"></a>Partíció átalakítása
 
-Használat [ `transform_partition()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#transform-partition-script--str-----azureml-dataprep-api-dataflow-dataflow) cserélje le az összes null értéket 0-val. Ez a kód partíciónként, nem pedig a teljes adatkészlet egyszerre futni fog. Ez azt jelenti, hogy egy nagyméretű adathalmazon, ez a kód párhuzamosan is futtathatók, a modul feldolgozza az adatokat, a partíció szerint partíció.
+A [`transform_partition()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#transform-partition-script--str-----azureml-dataprep-api-dataflow-dataflow) paranccsal az összes null értéket lecserélheti a 0 értékre. Ez a kód partíciónként, nem pedig a teljes adatkészlet egyszerre futni fog. Ez azt jelenti, hogy egy nagyméretű adathalmazon, ez a kód párhuzamosan is futtathatók, a modul feldolgozza az adatokat, a partíció szerint partíció.
 
 A Python-szkriptet meg kell határoznia a hívott függvény `transform()` , amely két argumentumot, `df` és `index`. A `df` argumentum lesz, amely tartalmazza az adatokat a partíció pandas dataframe és a `index` argumentum értéke egy egyedi azonosítót a partíció. Az átalakító függvény a teljes körűen szerkeszthetik az átadott adathalmaz, de dataframe kell visszaadnia. Importálja a Python-szkriptet könyvtárra sem a környezetben, ahol az adatfolyamot fut léteznie kell.
 
@@ -463,7 +480,7 @@ df.head(2)
 
 ### <a name="new-script-column"></a>Új parancsfájl oszlop
 
-Egy Python-szkriptet is használhatja, a megyét, és az állapot nevét tartalmazó új oszlop létrehozása, és így kihasználhatja az állapot nevét. Ehhez használja a [ `new_script_column()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-column-new-column-name--str--insert-after--str--script--str-----azureml-dataprep-api-dataflow-dataflow) az adatfolyam metódust.
+Egy Python-szkripttel létrehozhat egy új oszlopot, amely a megye neve és az állapot neve, valamint az állapot nevének kihasználása is lehet. Ehhez használja a [`new_script_column()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-column-new-column-name--str--insert-after--str--script--str-----azureml-dataprep-api-dataflow-dataflow) metódust az adatfolyamon.
 
 A Python-szkriptet meg kell határoznia a hívott függvény `newvalue()` , amely egy egyetlen argumentumot `row`. A `row` argumentum értéke egy dict (`key`: oszlopnév, `val`: jelenlegi érték) és a rendszer átad a függvény az adatkészlet minden egyes sorára. Ez a funkció az új oszlopban használandó értéket kell visszaadnia. Importálja a Python-szkriptet könyvtárra sem a környezetben, ahol az adatfolyamot fut léteznie kell.
 
@@ -482,7 +499,7 @@ dflow.head(2)
 
 ### <a name="new-script-filter"></a>Új parancsfájl-szűrő
 
-Egy Python kifejezés használatával [ `new_script_filter()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-filter-script--str-----azureml-dataprep-api-dataflow-dataflow) az adatkészlet csak ahol "Hale" nem szerepel az új sorok szűrése `county_state` oszlop. A kifejezés eredménye `True` szeretnénk a sort, ha és `False` eldobni a sor.
+Hozzon létre egy Python [`new_script_filter()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-filter-script--str-----azureml-dataprep-api-dataflow-dataflow) -kifejezést a használatával úgy, hogy az adatkészletet csak olyan sorokra szűrje, `county_state` amelyekben a "Hale" nem szerepel az új oszlopban. A kifejezés eredménye `True` szeretnénk a sort, ha és `False` eldobni a sor.
 
 ```python
 dflow = dflow.new_script_filter("""
@@ -500,4 +517,4 @@ dflow.head(2)
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse meg az Azure Machine Learning Data Prep SDK [oktatóanyag](tutorial-data-prep.md) példa egy adott forgatókönyv megoldása
+* Tekintse meg a Azure Machine Learning adat [](tutorial-data-prep.md) -ELŐKÉSZÍTÉSi SDK-oktatóanyagot, amely egy adott forgatókönyv megoldására mutat példát.

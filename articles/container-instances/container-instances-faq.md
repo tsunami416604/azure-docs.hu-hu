@@ -1,105 +1,105 @@
 ---
-title: Az Azure Container Instances – gyakori kérdések
-description: Az Azure Container Instances szolgáltatással kapcsolatos gyakori kérdésekre vonatkozó válaszokat
+title: Azure Container Instances – gyakran ismételt kérdések
+description: A Azure Container Instances szolgáltatással kapcsolatos gyakori kérdésekre adott válaszok
 services: container-instances
 author: dkkapur
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: dekapur
-ms.openlocfilehash: 99882bd23d7b94afc550247172e5b70deb23bec9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29d31e2076e0ff5ddf4f84df13ac2eede482c052
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65791401"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325999"
 ---
-# <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances kapcsolatos gyakori kérdések
+# <a name="frequently-asked-questions-about-azure-container-instances"></a>Gyakori kérdések a Azure Container Instances
 
-Ez a cikk foglalkozik az Azure Container Instances szolgáltatásban – gyakori kérdések.
+Ez a cikk a Azure Container Instancesával kapcsolatos gyakori kérdéseket tárgyalja.
 
 ## <a name="deployment"></a>Környezet
 
-### <a name="how-large-can-my-container-image-be"></a>Milyen méretű saját tárolórendszerkép lehet?
+### <a name="how-large-can-my-container-image-be"></a>Mekkora méretű lehet a tároló képe?
 
-Az Azure Container Instancesben üzembe helyezhető tárolórendszerképet maximális mérete 15 GB alá. Fogja tudni telepíteni a nagyobb lemezképek függően pontos jelenleg telepít, de ez nem garantált.
+Azure Container Instances a telepíthető tároló lemezképének maximális mérete 15 GB. Előfordulhat, hogy a telepítés pillanatában a pontos rendelkezésre állástól függően nagyobb rendszerképeket telepíthet, de ez nem garantált.
 
-A tároló rendszerképének mérete befolyásolja, mennyi ideig tart telepítéséhez, ezért általában meg szeretné tartani a tárolólemezképek legyen a lehető legkisebb.
+A tároló lemezképének mérete befolyásolja, hogy mennyi ideig tart a üzembe helyezése, ezért a tárolók lemezképeit a lehető legkisebbre szeretné megőrizni.
 
-### <a name="how-can-i-speed-up-the-deployment-of-my-container"></a>Hogyan gyorsíthatom fel saját tároló telepítését?
+### <a name="how-can-i-speed-up-the-deployment-of-my-container"></a>Hogyan lehet felgyorsítani a tároló üzembe helyezését?
 
-Mivel az üzembe helyezéshez szükséges idő a fő tényezők közül a rendszerkép méretétől, keresse meg a méretének csökkentésére. Távolítsa el a rétegek nem kell, vagy csökkentse a méretét, a kép rétegek (kiválasztásával a feladatorientált felhasználók által használt alap operációsrendszer-lemezkép). Például ha Linux-tárolók rendszert használ, érdemes Alpine egy teljes körű Ubuntu Server, hanem az alaplemezkép. Hasonlóképpen Windows-tárolókhoz, használatával alapszintű Nano Server-rendszerképet, ha lehetséges. 
+Mivel az üzembe helyezési idők egyik fő tényezője a képméret, a méret csökkentésének módját kell keresni. Távolítsa el a nem szükséges rétegeket, vagy csökkentse a képen látható rétegek méretét (egy világosabb alap operációsrendszer-rendszerkép kiválasztásával). Ha például Linux-tárolókat futtat, érdemes lehet a teljes Ubuntu-kiszolgáló helyett az Alpine-t használni alaprendszerképként. Hasonlóképpen, a Windows-tárolók esetén használjon Nano Server Base-rendszerképet, ha lehetséges. 
 
-Azt is ellenőrizze a lista előre összeállított rendszerképeit Azure Tárolórendszerképek keresztül elérhető a [gyorsítótárazott rendszerképek felsorolása](/rest/api/container-instances/listcachedimages) API-t. Előfordulhat, hogy ki az egyik előre összeállított képet egy kép réteg váltani. 
+Azt is ellenőriznie kell, hogy az Azure Container images szolgáltatásban milyen előre gyorsítótárazott lemezképek [](/rest/api/container-instances/listcachedimages) vannak felsorolva a gyorsítótárazott lemezképek API-n keresztül. Előfordulhat, hogy ki lehet kapcsolni egy képréteget az egyik előre gyorsítótárazott rendszerképhez. 
 
-Még több [részletes útmutatót](container-instances-troubleshooting.md#container-takes-a-long-time-to-start) a tároló indítási idejének csökkentését.
+A tároló [](container-instances-troubleshooting.md#container-takes-a-long-time-to-start) indítási idejének csökkentésével kapcsolatos részletesebb útmutatásért lásd:.
 
-### <a name="what-windows-base-os-images-are-supported"></a>Milyen Windows alap operációsrendszer-lemezképek támogatottak?
+### <a name="what-windows-base-os-images-are-supported"></a>Milyen Windows-alapú operációsrendszer-lemezképek támogatottak?
 
-#### <a name="windows-server-2016-base-images"></a>A Windows Server 2016 alaplemezképek
+#### <a name="windows-server-2016-base-images"></a>Windows Server 2016 alaplemezképek
 
-* [A nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `10.0.14393.x`, `sac2016`
-* [A Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`,  `10.0.14393.x`
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `10.0.14393.x`,`sac2016`
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`,`10.0.14393.x`
 
 > [!NOTE]
-> Féléves csatorna kiadási 1709-es vagy 1803-alapú Windows-rendszerképeket nem támogatottak.
+> A 1709-es vagy a 1803-es féléves csatornán alapuló Windows-lemezképek nem támogatottak.
 
-#### <a name="windows-server-2019-and-client-base-images-preview"></a>A Windows Server 2019 és az ügyfél alaplemezképek (előzetes verzió)
+#### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 és ügyféloldali lemezképek (előzetes verzió)
 
-* [A nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809`, `10.0.17763.x`
-* [A Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`, `1809`, `10.0.17763.x`
-* [Windows](https://hub.docker.com/_/microsoft-windows): `1809`, `10.0.17763.x` 
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809`,`10.0.17763.x`
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`, `1809`,`10.0.17763.x`
+* [Windows](https://hub.docker.com/_/microsoft-windows): `1809`,`10.0.17763.x` 
 
-### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Milyen .NET vagy a .NET Core kép réteget kell használni a saját tároló? 
+### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Milyen .NET-vagy .NET Core-lemezképfájlt használok a tárolóban? 
 
-Használja a legkisebb lemezképet, amely megfelel a követelményeknek. Linux esetén használhat egy *futásidejű alpine* .NET Core-rendszerképhez, amelyet a .NET Core 2.1-es kiadás óta támogatott. A Windows, ha a teljes .NET-keretrendszert használ majd kell a Windows Server Core-rendszerkép használata (csak futásidejű kép, mint például *4.7.2-windowsservercore-ltsc2016*). Csak futásidejű rendszerképek mérete kisebb, de nem támogatja a .NET SDK-t megkövetelő számítási feladatokhoz.
+Használja a legkisebb rendszerképet, amely megfelel a követelményeinek. A Linux esetében használhat egy *Runtime-Alpine* .net Core-rendszerképet, amelyet a .net Core 2,1 kiadása óta támogattak. Windows esetén, ha a teljes .NET-keretrendszert használja, akkor Windows Server Core rendszerképet kell használnia (csak futásidejű rendszerkép, például *4.7.2-windowsservercore-ltsc2016*). A csak futásidejű lemezképek kisebbek, de nem támogatják a .NET SDK-t igénylő munkaterheléseket.
 
-## <a name="availability-and-quotas"></a>Rendelkezésre állási és kvóták
+## <a name="availability-and-quotas"></a>Rendelkezésre állás és kvóták
 
-### <a name="how-many-cores-and-memory-should-i-allocate-for-my-containers-or-the-container-group"></a>Hány magok és a memória kell I lefoglalni a tárolók vagy a tárolócsoport?
+### <a name="how-many-cores-and-memory-should-i-allocate-for-my-containers-or-the-container-group"></a>Hány magot és memóriát kell lefoglalni a saját tárolók vagy a tároló csoport számára?
 
-Ez valójában a munkaterheléstől függ. Kezdhetik, és tesztelje a teljesítményt, tekintse meg, hogyan hajtsa végre a tárolókat. [Processzor- és erőforrás-használat figyelése](container-instances-monitor.md), majd adja hozzá a magok vagy a memória, a folyamatokat, amelyek végzi az üzembe helyezést a tároló típusa alapján. 
+Ez valójában a számítási feladattól függ. Indítsa el a kis-és tesztelési teljesítményt a tárolók működésének megtekintéséhez. [Figyelje a CPU-és memória-erőforrások használatát](container-instances-monitor.md), majd vegyen fel magokat vagy memóriát a tárolóban üzembe helyezett folyamatok típusa alapján. 
 
-Győződjön meg arról is, hogy ellenőrizze a [erőforrás rendelkezésre állási](container-instances-region-availability.md#availability---general) a régió, a CPU-magok és a egy tárolócsoport rendelkezésre álló memória felső korlátja a telepít. 
+Győződjön meg arról, hogy az [Erőforrás rendelkezésre állását](container-instances-region-availability.md#availability---general) is ellenőrizni kívánja-e azon régió esetében, amelynek a felső határait a CPU-magok és a rendelkezésre álló memória elérhetővé teszi. 
 
-### <a name="what-underlying-infrastructure-does-aci-run-on"></a>Milyen alapul szolgáló infrastruktúra fut az ACI?
+### <a name="what-underlying-infrastructure-does-aci-run-on"></a>Milyen mögöttes infrastruktúrát futtat az ACI?
 
-Az Azure Container Instances az a célja, hogy egy kiszolgáló nélküli tárolók igény szerinti szolgáltatás lehet, hogy azt szeretné, hogy, amely kell a tárolókat, és nem kell foglalkoznia infrastruktúra! Azok számára, amely kíváncsi rá, vagy wanting összehasonlításokhoz a teljesítményét, ACI futtatja meg az Azure-beli virtuális gépek különböző SKU-k, az elsősorban az F és a D sorozat. Ezt később módosíthatja, mivel folyamatosan fejlesztik, és optimalizálhatja a szolgáltatás várhatóan. 
+Azure Container Instances célja, hogy kiszolgáló nélküli tárolók legyenek igény szerinti szolgáltatásként, ezért azt szeretnénk, ha a tárolók fejlesztésére kellene összpontosítania, és nem kell aggódnia az infrastruktúrával kapcsolatban! Azok számára, akik kíváncsiak vagy a teljesítmény összehasonlítását szeretnék végezni, az ACI különböző SKU-k készletén fut, elsősorban az F és a D sorozatból. Várjuk, hogy a jövőben is megváltozzon a szolgáltatás fejlesztése és optimalizálása. 
 
-### <a name="i-want-to-deploy-thousand-of-cores-on-aci---can-i-get-my-quota-increased"></a>Ezer mag az aci-ban telepíteni kívánt - szerezhető be saját kvótájának növeléséért?
+### <a name="i-want-to-deploy-thousand-of-cores-on-aci---can-i-get-my-quota-increased"></a>Több ezer magot szeretnék üzembe helyezni az ACI-ban – megnövelhető a kvóta?
  
-Igen (néha). Tekintse meg a [kvótái és korlátai](container-instances-quotas.md) cikk aktuális kvótái és a kérés mely korlátot lehet növelni.
+Igen (néha). Tekintse meg a [kvótákat és](container-instances-quotas.md) a korlátozásokat tartalmazó cikket a jelenlegi kvóták esetében, és hogy mely korlátokat lehet megnövelni a kérelem alapján
 
-### <a name="can-i-deploy-with-more-than-4-cores-and-16-gb-of-ram"></a>Telepíthetek több mint 4 magos, 16 GB RAM rendelkező?
+### <a name="can-i-deploy-with-more-than-4-cores-and-16-gb-of-ram"></a>Telepíthetek több mint 4 maggal és 16 GB RAM-mal?
 
-még nem. Jelenleg ezek a egy tárolócsoport megtervezésekor. Különleges követelmények vagy kérelmek forduljon az Azure ügyfélszolgálatához. 
+még nem. Jelenleg ezek a tároló csoportok maximális száma. Konkrét követelményekkel vagy kérésekkel forduljon az Azure ügyfélszolgálatához. 
 
-### <a name="when-will-aci-be-in-a-specific-region"></a>Mikor lesz ACI egy adott régióban?
+### <a name="when-will-aci-be-in-a-specific-region"></a>Mikor lesz az ACI egy adott régióban?
 
-Aktuális régiók rendelkezésre állása közzé van téve [Itt](container-instances-region-availability.md#availability---general). Ha egy adott régióhoz követelmény, forduljon az Azure ügyfélszolgálatához.
+Az aktuális régió elérhetőségét [itt](container-instances-region-availability.md#availability---general)tesszük közzé. Ha egy adott régióra vonatkozó követelményt tartalmaz, forduljon az Azure ügyfélszolgálatához.
 
-## <a name="features-and-scenarios"></a>Funkciók és alkalmazási helyzetek
+## <a name="features-and-scenarios"></a>Funkciók és forgatókönyvek
 
-### <a name="how-do-i-scale-a-container-group"></a>Hogyan méretezhetek egy tárolócsoportot?
+### <a name="how-do-i-scale-a-container-group"></a>Hogyan méretezheti a tárolók csoportját?
 
-Skálázás jelenleg nem érhető el a tárolók vagy tárolócsoportok. További példányok futtatásához szükséges, ha az API segítségével automatizálhatja és a tároló csoport létrehozásakor a szolgáltatás további kérések. 
+Jelenleg a méretezés nem érhető el a tárolók és a tárolók csoportjai számára. Ha több példányt kell futtatnia, használja az API-t az automatizáláshoz, és hozzon létre több kérést a tároló csoport létrehozásához a szolgáltatáshoz. 
 
-### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>Milyen funkciók érhetők el, egy egyéni virtuális hálózaton futó példányok?
+### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>Milyen funkciók érhetők el az egyéni VNet futó példányok számára?
 
-Tárolócsoportok az Azure-beli virtuális hálózathoz a választott központi telepítése, és delegálja a tárolócsoportok irányíthatja a forgalmat a Vneten belül az Azure-erőforrások közötti privát IP-címek. Egy virtuális hálózatban egy tárolócsoport üzembe helyezési szolgáltatás jelenleg előzetes verzióban, és ez a szolgáltatás néhány szempontja változhat általánosan (elérhetővé tétel GA) előtt. Lásd: [előzetes verzió korlátozásai](container-instances-vnet.md#preview-limitations) a frissített adatokat.
+A tároló csoportokat üzembe helyezheti egy tetszőleges Azure-beli virtuális hálózatban, és delegálhatja a privát IP-címeket a VNet az Azure-erőforrások közötti forgalom irányításához. A tárolók csoportjának virtuális hálózatra történő telepítése jelenleg előzetes verzióban érhető el, és a szolgáltatás néhány aspektusa az általános elérhetőség előtt változhat. Tekintse meg a frissített információk [előzetes](container-instances-vnet.md#preview-limitations) verziójának korlátozásait.
 
 ## <a name="pricing"></a>Díjszabás
 
-### <a name="when-does-the-meter-start-running"></a>Ha nem az fogyasztásmérő kezdjen programokat futtatni?
+### <a name="when-does-the-meter-start-running"></a>Mikor kezdődik a fogyasztásmérő futtatása?
 
-Tárolócsoportok működési időtartama kezdődik meg, kérje le az első tároló rendszerképét (az új üzembe helyezési modell) vagy a tárolócsoport újraindítása (Ha már telepítve vannak), a tárolócsoport leállításáig idő kiszámítása. Részletek: [Container Instances díjszabását](https://azure.microsoft.com/pricing/details/container-instances/).
+A tároló csoport időtartamát a rendszer az első tároló rendszerképének (új központi telepítés esetén) vagy a tároló csoport újraindítása (ha már üzembe helyezett) újraindításának időpontja alapján számítja ki, amíg a tároló csoport le nem áll. A részletekért tekintse meg [Container instances díjszabását](https://azure.microsoft.com/pricing/details/container-instances/).
 
-### <a name="do-i-stop-being-charged-when-my-containers-are-stopped"></a>Állítsam le a díját számítjuk fel, ha a tárolók le vannak állítva?
+### <a name="do-i-stop-being-charged-when-my-containers-are-stopped"></a>A tárolók leállítása után nem kell fizetnem?
 
-Az érték a teljes tárolócsoport leállítását követően állni. Mindaddig, amíg egy szereplő a tároló fut-e, hogy tartsa az erőforrásokat szeretne újból elindítani a tárolók. 
+A mérőműszer leállítása a teljes tároló csoport leállítása után leáll. Ha a tároló csoport egyik tárolója fut, akkor az erőforrásokat abban az esetben tartjuk, ha újra el szeretné indítani a tárolókat. 
 
 ## <a name="next-steps"></a>További lépések
 
-* [További](container-instances-overview.md) Azure Container Instances.
-* [Gyakori problémák megoldása](container-instances-troubleshooting.md) az Azure Container Instances szolgáltatásban.
+* [További](container-instances-overview.md) információ a Azure Container Instancesról.
+* Azure Container Instances [gyakori problémáinak elhárítása](container-instances-troubleshooting.md) .

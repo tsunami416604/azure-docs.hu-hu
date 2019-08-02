@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
 ms.openlocfilehash: 4eef31a050072c0413421a5490b35b765cb9557d
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68381834"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>A GPU használata nagy számítási igényű munkaterhelésekhez az Azure Kubernetes szolgáltatásban (ak)
@@ -20,7 +20,7 @@ ms.locfileid: "68381834"
 A grafikus feldolgozási egységek (GPU-k) gyakran nagy számítási igényű munkaterhelésekhez, például grafikus és vizualizációs munkaterhelésekhez használatosak. Az AK támogatja a GPU-kompatibilis csomópont-készletek létrehozását a nagy számítási igényű munkaterhelések Kubernetes való futtatásához. További információ a GPU-t használó elérhető virtuális gépekről: GPU-ra optimalizált virtuálisgép- [méretek az Azure-ban][gpu-skus]. AK-csomópontok esetén a minimális *standard nc6*-méretet ajánljuk.
 
 > [!NOTE]
-> A GPU-kompatibilis virtuális gépek olyan speciális hardvert tartalmaznak, amely magasabb díjszabási és régióbeli rendelkezésre állást biztosít. További információkért tekintse meg a [díjszabást][azure-pricing] tool and [region availability][azure-availability].
+> A GPU-kompatibilis virtuális gépek olyan speciális hardvert tartalmaznak, amely magasabb díjszabási és régióbeli rendelkezésre állást biztosít. További információt a díjszabási eszköz [][azure-pricing] és a [régió rendelkezésre állása][azure-availability]című témakörben talál.
 
 Jelenleg a GPU-t használó csomópont-készletek használata csak Linux-csomópontos készletek esetén érhető el.
 

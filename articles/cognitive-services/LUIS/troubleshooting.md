@@ -1,5 +1,5 @@
 ---
-title: Gyakori kérdések (GYIK)
+title: Gyakori kérdések (GYIK) – LUIS
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk a Language Understanding (LUIS) kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
 author: diberry
@@ -9,22 +9,22 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 7e1e61d96b066c395668ce1dd9cdba4cb4ecb2be
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 5122a5a88f5a0d67799930999236f2993bc43f8f
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204106"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609759"
 ---
-# <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – gyakori kérdések (GYIK)
+# <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding gyakori kérdések (GYIK)
 
 Ez a cikk a Language Understanding (LUIS) kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
 
 ## <a name="whats-new"></a>Újdonságok
 
-[További](whats-new.md) kapcsolatos újdonságok a Language Understanding.
+[További](whats-new.md) információ a Language Understanding újdonságait ismertető témakörben.
 
 <a name="luis-authoring"></a>
 
@@ -68,21 +68,21 @@ A Cortana előre elkészített alkalmazásokat is elavult 2017-ben. Már nem tá
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Hogyan ruházhatom át tulajdonjogát a LUIS-alkalmazások?
 LUIS-alkalmazásokon át egy másik Azure-előfizetést, a LUIS alkalmazás exportálása, és importálja egy új fiók használatával. Frissítse a LUIS alkalmazás azonosítója, amely meghívja ezt az ügyfélalkalmazásban. Az új alkalmazás adhat vissza eltérő LUIS pontszámokat az eredeti alkalmazásból.
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Egy példa utterance (kifejezés) saját egyéni entitás helyett az előre összeállított entitások van megjelölve. Hogyan javíthatom ezt ki? 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Egy előre összeépített entitás egy példaként való kiírással van megjelölve az egyéni entitás helyett. Hogyan javíthatom ki? 
 
-Lásd: [előre összeállított entitások hibaelhárítási](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
+Lásd: [előre](luis-concept-entity-types.md#troubleshooting-prebuilt-entities)összeépített entitások hibaelhárítása.
 
-### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Megpróbáltam alkalmazás vagy a verzió fájl, de mi történt a hibaüzenetet kapok? 
+### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Megpróbáltam importálni egy alkalmazást vagy verziót, de hiba történt? 
 
-Tudjon meg többet [verzió importálási hibák](luis-how-to-manage-versions.md#import-errors) és [app importálási hibák](luis-how-to-start-new-app.md#import-errors).
+További információ a [verzió importálásával](luis-how-to-manage-versions.md#import-errors) kapcsolatos hibákról és az [alkalmazások importálási hibáiról](luis-how-to-start-new-app.md#import-errors).
 
 <a name="luis-collaborating"></a>
 
 ## <a name="collaborating"></a>Együttműködés
 
-### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Hogyan közreműködők kapnak hozzáférést adhat a LUIS az Azure Active Directory (Azure AD) vagy a szerepköralapú hozzáférés-vezérlés (RBAC)?
+### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Hogyan az Azure Active Directory (Azure AD) vagy a szerepköralapú hozzáférés-vezérlés (RBAC) használatával biztosítson közreműködőket a LUIS számára?
 
-Lásd: [Azure Active Directory-erőforrások](luis-how-to-collaborate.md#azure-active-directory-resources) és [Azure Active Directory-bérlő felhasználói](luis-how-to-collaborate.md#azure-active-directory-tenant-user) megtudhatja, hogyan közreműködők kapnak hozzáférést. 
+A közreműködők hozzáférésének megismeréséhez tekintse meg [Azure Active Directory erőforrásokat](luis-how-to-collaborate.md#azure-active-directory-resources) és [Azure Active Directory bérlői felhasználót](luis-how-to-collaborate.md#azure-active-directory-tenant-user) . 
 
 <a name="luis-endpoint"></a>
 
@@ -90,7 +90,7 @@ Lásd: [Azure Active Directory-erőforrások](luis-how-to-collaborate.md#azure-a
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Végpont a lekérdezés váratlan eredményt adott vissza. Mit tegyek?
 
-Váratlan lekérdezési előrejelzési eredményeket a közzétett modell állapotának alapulnak. Javítsa ki a modell, előfordulhat, hogy módosítása a modell betanítását, és tegye közzé újra. 
+Váratlan lekérdezési előrejelzési eredményeket a közzétett modell állapotának alapulnak. A modell kijavítani lehet, hogy módosítania kell a modellt, a betanítást és a közzétételt. 
 
 A modell javításának kezdődik [aktív tanulás](luis-how-to-review-endpoint-utterances.md).
 
@@ -110,20 +110,20 @@ A rendszer függetlenül annak értéke a legmagasabb pontozási leképezést ke
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Miért nem látom, hogy a végpont a találatok saját alkalmazás-irányítópult?
 Az alkalmazás-irányítópult a teljes végpont a találatok rendszeres időközönként frissülnek, de a metrikák az Azure Portalon, a LUIS végponti kulcs társított gyakran frissülnek.
 
-Ha nem látja az irányítópult a frissített végpont találatok, jelentkezzen be az Azure Portalon, és keresse meg az erőforrást, a LUIS végpontkulcsának társított, és nyissa meg a **metrikák** válassza ki a **összes hívás** metrikát. A végpont kulcs egynél több LUIS alkalmazás használata esetén az Azure Portalon a metrika azt használó összes LUIS-alkalmazások hívásait összesített számát jeleníti meg.
+Ha nem látja a végpontok frissített találatait az irányítópulton, jelentkezzen be a Azure Portalba, és keresse meg a LUIS Endpoint kulcshoz társított erőforrást, és nyissa meg a **metrikákat** a **hívások teljes** metrikájának kiválasztásához. A végpont kulcs egynél több LUIS alkalmazás használata esetén az Azure Portalon a metrika azt használó összes LUIS-alkalmazások hívásait összesített számát jeleníti meg.
 
-### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>Van egy PowerShell-parancsot a végpont kvóta elérése?
+### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>Van egy PowerShell-parancs a végponti kvóta eléréséhez?
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Egy PowerShell-parancs segítségével tekintse meg a végpont kvóta:
+A végponti kvóta megtekintéséhez használhatja a PowerShell-parancsot:
 
 ```powershell
 Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
 ``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>A LUIS-alkalmazásokon tegnap dolgozott, de még ma érkeznek meg hozzám a 403-as hibák. Az alkalmazás nem módosítható. Hogyan javíthatom?
-A következő a [utasításokat](#how-do-i-create-and-assign-a-luis-endpoint-key) a következő gyakori kérdések a LUIS végponti kulcs létrehozásához, és rendelje hozzá az alkalmazást. Ezután a végpontot kell módosítania a HTTP-kérelem [használja az új végpont kulcs](luis-concept-keys.md#use-endpoint-key-in-query).
+Az alábbi [útmutatást](#how-do-i-create-and-assign-a-luis-endpoint-key) követve hozzon létre egy Luis-végponti kulcsot, és rendelje hozzá az alkalmazáshoz. Ezután az [új Endpoint kulcs használatához](luis-concept-keys.md#use-endpoint-key-in-query)módosítania kell az ügyfélalkalmazás http-kérelmét a végpontra. Ha egy másik régióban hozott létre egy új erőforrást, módosítsa a HTTP-ügyfél kérelmének régióját is.
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>Hogyan védhetem meg a LUIS végpontomhoz?
 Lásd: [biztonságossá tétele az endpoint](luis-concept-security.md#securing-the-endpoint).
@@ -183,17 +183,17 @@ Ha az alkalmazás korábban létezett, előtt a LUIS általánosan elérhető (G
 
 ## <a name="key-management"></a>Kulcskezelés
 
-### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Honnan tudhatom, hogy melyik kulcsot kell, ahol kapok, és mi elvégezni a segítségével? 
+### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Hogyan tudja, milyen kulcsra van szükségem, hol kapok, és mit csinálok? 
 
-Lásd: [szerzői műveletek és a lekérdezés előrejelzési végpont kulcsok a LUIS](luis-concept-keys.md) közötti különbségekről további információt a [kulcs létrehozási](luis-how-to-account-settings.md) és a [előrejelzési végpontkulcsának](luis-how-to-azure-subscription.md). 
+További információ a szerzői műveletek és a [végpontok előrejelzési kulcsa](luis-how-to-azure-subscription.md)közötti különbségekről [](luis-how-to-account-settings.md) : az [Authoring and Query ELŐREJELZÉSi végpont kulcsai a Luis-ben](luis-concept-keys.md) . 
 
-### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Arról, hogy kvótájából hibaüzenetet kapok. Hogyan javíthatom? 
+### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Hiba történt a kvóta lejártakor. Hogyan javíthatom? 
 
-Látható, [hárítsa el a HTTP-állapotkód: 403-as és 429-es](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) további.
+További információért lásd: a [403-es és a 429-es http-állapotkód javítása](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) .
 
-### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Több végpont lekérdezés kezelni kell. Hogyan hajthatok végre, amely? 
+### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>További végponti lekérdezéseket kell kezelnie. Hogyan csinálni? 
 
-Látható, [hárítsa el a HTTP-állapotkód: 403-as és 429-es](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) további.
+További információért lásd: a [403-es és a 429-es http-állapotkód javítása](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) .
 
 
 
@@ -237,32 +237,32 @@ A szerzői műveletek/alapszintű kulcs csak akkor engedélyezett, 1000 végpont
 
 ## <a name="bots"></a>Robotok
 
-### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>A LUIS-robot nem működik. Mit tegyek?
+### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>A LUIS-bot nem működik. Mit tegyek?
 
-Az első hiba csak el, ha a probléma kapcsolódik, LUIS, vagy a LUIS közbenső kívül történik. 
+Az első probléma az, hogy elkülöníti a problémát, ha a probléma LUIS-hez kapcsolódik, vagy a LUIS middleware-n kívül történik. 
 
-#### <a name="resolve-issue-in-luis"></a>A LUIS a probléma megoldásához
-Az azonos utterance (kifejezés) átadása a LUIS a [LUIS végpont](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance). Ha hibaüzenetet kap, a LUIS a probléma megoldásához, mindaddig, amíg a rendszer már nem hibát jelez. Gyakori hibák a következők:
+#### <a name="resolve-issue-in-luis"></a>Probléma megoldása a LUIS-ben
+A Luis-végponttal azonos Kimondás [](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)a Luis-nek. Ha hibaüzenetet kap, oldja meg a problémát a LUIS-ben, amíg a hibát már nem adja vissza. Gyakori hibák a következők:
 
-* `Out of call volume quota. Quota will be replenished in <time>.` – Ez a hiba azt jelzi, hogy, vagy módosítania kell az Authoring Tool kulcsból egy [végponti kulcs](luis-how-to-azure-subscription.md) vagy módosítani kell [szolgáltatásszintek](luis-how-to-azure-subscription.md#change-pricing-tier). 
+* `Out of call volume quota. Quota will be replenished in <time>.`– Ez a probléma azt jelzi, hogy egy szerzői kulcsból egy [végponti kulcsra](luis-how-to-azure-subscription.md) kell váltania, vagy módosítania kell a [szolgáltatási szinteket](luis-how-to-azure-subscription.md#change-pricing-tier). 
 
-#### <a name="resolve-issue-in-azure-bot-service"></a>Az Azure Bot Service-ben a probléma megoldásához
+#### <a name="resolve-issue-in-azure-bot-service"></a>Probléma megoldása Azure Bot Service
 
-Ha használja az Azure Bot Service és a probléma, hogy a **vizsgálat a webes csevegési** adja vissza `Sorry, my bot code is having an issue`, ellenőrizze a naplókat:
+Ha a Azure bot Service használja, és a probléma az, hogy a **webes csevegésben** a teszt `Sorry, my bot code is having an issue`visszaadja, ellenőrizze a naplókat:
 
-1. A robot esetén az Azure Portalon, a **Bot felügyeleti** szakaszban jelölje be **hozhat létre**.
-1. Nyissa meg az online Kódszerkesztő. 
-1. A felső, kék navigációs sávban válassza ki a robot neve (a második elem jobb).
-1. Az eredményül kapott legördülő listában válassza ki **Kudu konzol megnyitása**.
-1. Válassza ki **LogFiles**, majd **alkalmazás**. Tekintse át az összes naplófájl. Ha nem látja a hiba az alkalmazás mappájában található, tekintse át az összes naplófájl alatt **LogFiles**. 
-1. Ne felejtse el a projekt újraépítéséhez, ha például egy lefordított nyelvet használja C#.
+1. A robot Azure Portal a robot **kezelése** szakaszban válassza a **Létrehozás**lehetőséget.
+1. Nyissa meg az online Kódszerkesztő alkalmazást. 
+1. A felső, kék navigációs sávban válassza ki a robot nevét (a második elem jobbra).
+1. Az eredményül kapott legördülő listában válassza a **kudu-konzol megnyitása**lehetőséget.
+1. Válassza ki a LogFiles elemet, majd válassza az **alkalmazás**lehetőséget. Tekintse át az összes naplófájlt. Ha nem látja a hibát az alkalmazás mappájában, tekintse át az összes naplófájlt a LogFiles ( **naplófájlok**) területen. 
+1. Ne felejtse el újraépíteni a projektet, ha lefordított nyelvet használ C#, például:.
 
 > [!Tip] 
-> A konzol is telepíthető csomagokat. 
+> A konzol emellett csomagokat is telepíthet. 
 
-#### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Probléma megoldása érdekében a helyi gépen a Bot Framework hibakeresése során. 
+#### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Probléma megoldása a helyi gépen a bot Framework-mel való hibakeresés során. 
 
-Helyi hibakeresés robotprogramok kapcsolatos további információkért lásd: [robotprogramok Debug](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0).
+Ha többet szeretne megtudni a robot helyi hibakereséséről, olvassa el [a robot hibakeresése](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0)című témakört.
 
 ## <a name="integrating-luis"></a>A LUIS integrálása
 
@@ -274,11 +274,11 @@ Ha, válasszon ki egy LUIS-sablont, és válassza a **kiválasztása** gombra a 
 ### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>Milyen a LUIS-régiók támogatják a Bot Framework speech betanítási művelet?
 [Beszéd betanítási művelet](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) csak a központi (amerikai) példány LUIS-alkalmazások esetén támogatott.
 
-## <a name="api-programming-strategies"></a>API programozás stratégiák
+## <a name="api-programming-strategies"></a>API programozási stratégiák
 
-### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Hogyan szerezhetem programozott módon be egy erőforrást a LUIS régióban? 
+### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Hogyan programozott módon beszerezhet egy erőforrás LUIS régióját? 
 
-A LUIS minta [régióban található](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) programozott módon a C# vagy node.js nyelven. 
+A LUIS-minta használatával programozott módon [keresheti meg](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) a régiót C# vagy a Node. js-t. 
 
 ## <a name="luis-service"></a>Intelligens HANGFELISMERÉSI szolgáltatás
 
@@ -286,25 +286,25 @@ A LUIS minta [régióban található](https://github.com/Azure-Samples/cognitive
 
 Igen, használhatja a LUIS [tároló](luis-container-howto.md) ebben az esetben, ha rendelkezik a szükséges kapcsolatokat használatának mérését. 
 
-## <a name="migrating-to-the-next-version"></a>A következő verzió-ba való migrálás
+## <a name="migrating-to-the-next-version"></a>Migrálás a következő verzióra
 
-### <a name="how-do-i-migrate-to-preview-v3-api"></a>Hogyan migrálhatom az előzetes API v3-as verzióra? 
+### <a name="how-do-i-migrate-to-preview-v3-api"></a>Hogyan Migrálás az előnézet V3 API-ra? 
 
-Lásd: [API v2 v3 áttelepítési útmutató a LUIS-alkalmazások](luis-migration-api-v3.md)
+Lásd: [API v2 – v3 áttelepítési útmutató Luis](luis-migration-api-v3.md) -alkalmazásokhoz
 
-## <a name="build-2019-conference-announcements"></a>Build 2019 konferencián közlemények
+## <a name="build-2019-conference-announcements"></a>Build 2019 konferencia hirdetményei
 
-A következő funkciók jelentek meg a Build 2019 konferencián:
+A Build 2019 konferencián a következő funkciók jelentek meg:
 
-* [V3 API áttelepítési útmutató az előzetes verzió](luis-migration-api-v3.md)
-* [Továbbfejlesztett analytics-irányítópult](luis-how-to-use-dashboard.md)
-* [Továbbfejlesztett előre összeállított tartományok](luis-reference-prebuilt-domains.md) 
-* [Dinamikus entitások](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
+* [A V3 API áttelepítési útmutatójának előzetes verziója](luis-migration-api-v3.md)
+* [Továbbfejlesztett elemzési irányítópult](luis-how-to-use-dashboard.md)
+* [Továbbfejlesztett előre összeépített tartományok](luis-reference-prebuilt-domains.md) 
+* [Dinamikus lista entitásai](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [Külső entitások](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
 Videók:
 
-* [A következő generációs az üzleti folyamatok skálázásával Azure természetes nyelvi mesterséges Intelligencia használatával](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
+* [Az Azure társalgási AI használata az üzlet méretezésére a következő generáció számára](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
 ## <a name="next-steps"></a>További lépések
 

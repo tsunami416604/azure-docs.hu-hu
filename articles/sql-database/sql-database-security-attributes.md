@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Database biztonsági attribútumok
-description: Attribútumainak kiértékelése az Azure SQL Database biztonsági ellenőrzőlista
+title: Azure SQL Database biztonsági attribútumai
+description: A Azure SQL Database értékelésére szolgáló biztonsági attribútumok ellenőrzőlistája
 services: sql-database
 author: msmbaldwin
 manager: barbkess
@@ -8,45 +8,45 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 71e87a3295a9cd73dca2f97b3fa04a5d5ff76f84
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 1318b3e433224b009b76458b12e82c9bcf94bb7a
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798688"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444392"
 ---
-# <a name="security-attributes-for-azure-sql-database"></a>Az Azure SQL Database biztonsági attribútumok
+# <a name="security-attributes-for-azure-sql-database"></a>Azure SQL Database biztonsági attribútumai
 
-Ez a cikk a gyakori biztonsági attribútumok az Azure SQL Database-be épített dokumentumok.
+Ez a cikk a Azure SQL Database beépített biztonsági attribútumokat dokumentálja.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
-Az SQL Database szolgáltatás egyaránt [önálló adatbázis](sql-database-single-index.yml) és [felügyelt példány](sql-database-managed-instance.md). A következő bejegyzések mindkét ajánlatok, kivéve, ha másként vonatkoznak.
+SQL Database magában foglalja az [önálló adatbázist](sql-database-single-index.yml) és a [felügyelt példányt](sql-database-managed-instance.md)is. A következő bejegyzések mindkét ajánlatra érvényesek, kivéve ha ez másként nincs jelezve.
 
 ## <a name="preventative"></a>Megelőző
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók, például az ügyfél oldalán vagy az Always Encrypted</ul>| Igen | "Titkosítási-használatban lévő," nevű, a cikkben leírtak szerint [Always Encrypted](sql-database-always-encrypted.md). Kiszolgálóoldali titkosítás [transzparens adattitkosítás](transparent-data-encryption-azure-sql.md).|
-| Titkosítás az átvitel során:<ul><li>Azure ExpressRoute encryption</li><li>Titkosítás a virtuális hálózaton</li><li>Virtuális hálózatok közötti titkosítás</ul>| Igen | HTTPS-en keresztül. |
-| Titkosítási kulcs, például a CMK vagy BYOK kezelése| Igen | Szolgáltatás által kezelt, mind az ügyfél által felügyelt kulcs kezelése érhető el. Keresztül felajánlott [Azure Key Vault](../key-vault/index.yml). |
-| Az Azure data services által kínált oszlopszintű titkosítást| Igen | Keresztül [Always Encrypted](sql-database-always-encrypted.md). |
-| Titkosított API-hívások| Igen | HTTPS-/ SSL segítségével. |
+| Titkosítás nyugalmi állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás az ügyfél által felügyelt kulcsokkal</li><li>Egyéb titkosítási funkciók, például ügyféloldali vagy Always Encrypted</ul>| Igen | A "titkosítás használaton kívül" kifejezést a [Always encrypted](sql-database-always-encrypted.md)című cikkben leírtak szerint kell elnevezni. A kiszolgálóoldali titkosítás [transzparens](transparent-data-encryption-azure-sql.md)adattitkosítást használ.|
+| Titkosítás az átvitel során:<ul><li>Azure ExpressRoute-titkosítás</li><li>Titkosítás egy virtuális hálózaton</li><li>Titkosítás a virtuális hálózatok között</ul>| Igen | HTTPS használatával. |
+| Titkosítás – kulcsok kezelését, például CMK vagy BYOK| Igen | A szolgáltatással felügyelt és az ügyfél által felügyelt kulcsok kezelése egyaránt elérhető. Az utóbbit Azure Key Vaulton [](../key-vault/index.yml)keresztül kínáljuk. |
+| Az Azure-adatszolgáltatások által biztosított oszlop szintű titkosítás| Igen | [Always Encryptedon](sql-database-always-encrypted.md)keresztül. |
+| Titkosított API-hívások| Igen | HTTPS/SSL használatával. |
 
-## <a name="network-segmentation"></a>Hálózati szegmentálást
+## <a name="network-segmentation"></a>Hálózati szegmentálás
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatási végpont támogatás| Igen | Érvényes [önálló adatbázis](sql-database-single-index.yml) csak. |
-| Az Azure Virtual Network-injektálási támogatás| Igen | Érvényes [felügyelt példány](sql-database-managed-instance.md) csak. |
-| Hálózatelkülönítés és tűzfaltámogatás| Igen | Adatbázisszintű és kiszolgálószintű tűzfal. Hálózatelkülönítés szól [felügyelt példány](sql-database-managed-instance.md) csak. |
-| Kényszerített bújtatás támogatása| Igen | [Felügyelt példány](sql-database-managed-instance.md) keresztül egy [ExpressRoute](../expressroute/index.yml) VPN. |
+| Szolgáltatás végpontjának támogatása| Igen | Csak az [önálló adatbázisra](sql-database-single-index.yml) vonatkozik. |
+| Azure Virtual Network injekciós támogatás| Igen | Csak a [felügyelt példányra](sql-database-managed-instance.md) vonatkozik. |
+| Hálózati elkülönítés és tűzfal-támogatás| Igen | Tűzfal az adatbázis szintjén és a kiszolgáló szintjén is. A hálózati elkülönítés csak [felügyelt példány](sql-database-managed-instance.md) esetén használható. |
+| Kényszerített bújtatás támogatása| Igen | [Felügyelt példány](sql-database-managed-instance.md) egy [ExpressRoute](../expressroute/index.yml) VPN-en keresztül. |
 
 ## <a name="detection"></a>Észlelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Azure monitorozási támogatása, például a Log Analytics vagy az Application Insights| Igen | Keresztül is támogatja a SecureSphere, a SIEM-megoldások az Impervától, [Azure Event Hubs](../event-hubs/index.yml) integration via [SQL-naplózás](sql-database-auditing.md). |
+| Azure monitoring-támogatás, például Log Analytics vagy Application Insights| Igen | A SecureSphere, a inperverztől származó SIEM-megoldás az [Azure Event Hubs](../event-hubs/index.yml) -integráción keresztül is támogatott az [SQL](sql-database-auditing.md)-naplózással. |
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
@@ -55,23 +55,23 @@ Az SQL Database szolgáltatás egyaránt [önálló adatbázis](sql-database-sin
 | Authentication| Igen | Azure Active Directory (Azure AD) |
 | Authorization| Igen | Nincsenek |
 
-## <a name="audit-trail"></a>Auditnapló
+## <a name="audit-trail"></a>Naplózási nyomvonal
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Vezérlősík és a felügyeleti sík naplózása és naplózása| Igen | Igen, csak bizonyos események |
-| Adatsík naplózás és naplózása | Igen | Keresztül [SQL-naplózás](sql-database-auditing.md) |
+| Vezérlés – sík és felügyelet – a sík naplózása és naplózása| Igen | Igen, csak néhány eseménynél |
+| Adatsíkok naplózása és naplózása | Igen | [SQL auditon](sql-database-auditing.md) keresztül |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Kezelési támogatás, például a konfigurációs verziókezelését| Nem  | None |
+| Konfiguráció-felügyeleti támogatás, például a konfiguráció verziószámozása| Nem  | None |
 
-## <a name="additional-security-attributes-for-sql-database"></a>További biztonsági attribútumok SQL Database-hez
+## <a name="additional-security-attributes-for-sql-database"></a>A SQL Database további biztonsági attribútumai
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Megelőző: a biztonságirés-értékelési | Igen | Lásd: [SQL-sebezhetőségi felmérés szolgáltatás segít azonosítani az adatbázis biztonsági rések](sql-vulnerability-assessment.md). |
-| Megelőző: az adatfelderítés és besorolás  | Igen | Lásd: [Azure SQL Database és az SQL Data Warehouse adatfelderítés és besorolás](sql-database-data-discovery-and-classification.md). |
-| Észlelés: fenyegetések észlelése | Igen | Lásd: [komplex veszélyforrások elleni védelem az Azure SQL Database](sql-database-threat-detection-overview.md). |
+| Megelőző: sebezhetőségi felmérés | Igen | Lásd az [SQL sebezhetőség-felmérési szolgáltatás segítséget nyújt az adatbázis-biztonsági rések azonosításához](sql-vulnerability-assessment.md). |
+| Megelőző: adatfelderítés és besorolás  | Igen | Lásd: [Azure SQL Database és SQL Data Warehouse az adatfelderítés & besorolása](sql-database-data-discovery-and-classification.md). |
+| Észlelés: fenyegetések észlelése | Igen | Lásd: [a Azure SQL Database összetett veszélyforrások elleni védelme](sql-database-threat-detection-overview.md). |

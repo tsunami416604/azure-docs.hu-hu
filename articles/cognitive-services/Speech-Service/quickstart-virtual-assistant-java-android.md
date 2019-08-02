@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Egyéni hang-és felhőközpontú virtuális asszisztensek (előzetes verzió), a Java (Android) – beszédszolgáltatások'
+title: 'Gyors útmutató: Egyéni hang – első virtuális asszisztens (előzetes verzió), Java (Android) – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan hozhat létre egy hang-és felhőközpontú virtuális asszisztensek alkalmazást az Android, a beszéd SDK-val Java nyelven
+description: Megtudhatja, hogyan hozhat létre egy hang-első virtuális asszisztensi alkalmazást Java-ban Androidon a Speech SDK használatával
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,32 +10,32 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: c62402faa1995e1e992c8251ed87160a8f33d3a7
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1c203bb39a90fdb1c77c3a2c844318a748df7c63
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602751"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559210"
 ---
-# <a name="quickstart-create-a-voice-first-virtual-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Gyors útmutató: Hozzon létre egy hang-és felhőközpontú virtuális asszisztensek a Java Android rendszeren a Speech SDK-val
+# <a name="quickstart-create-a-voice-first-virtual-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Gyors útmutató: A Speech SDK használatával hozzon létre egy hang-első virtuális asszisztenst Java-on Android rendszeren
 
-Gyors üzembe helyezés érhető el is [hang-szöveg transzformációs](quickstart-java-android.md).
+Egy rövid útmutató is elérhető a [beszéd és a szöveg](quickstart-java-android.md)között.
 
-Ebben a cikkben az Android használatával fog létrehozni egy hang-és felhőközpontú virtuális asszisztensek és a Java együttes a [beszéd SDK](speech-sdk.md). Ez az alkalmazás, amely korábban már létrehozott és konfigurált egy robot fog csatlakozni a [közvetlen vonal beszédfelismerő csatornát](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech). Ezután a robot hangalapú kérést küldhet és jelenleg a voice-kompatibilis tevékenységet.
+Ebben a cikkben a [SPEECH SDK](speech-sdk.md)használatával létrehoz egy, a Java for androidt használó hang-első virtuális asszisztenst. Ez az alkalmazás egy már létrehozott és a [közvetlen vonalas beszédfelismerési csatornával](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)konfigurált robothoz fog csatlakozni. Ezután elküld egy hangkérést a robotnak, és egy hangvezérelt reagálási tevékenységet fog bemutatni.
 
-Ez az alkalmazás a Speech SDK Maven-csomag és az Android Studio 3.3 épül. A Speech SDK jelenleg a 32/64 bites ARM, vagy Intel x86/x64 processzorokat használó Android-eszközökkel kompatibilis.
+Ez az alkalmazás a Speech SDK Maven-csomaggal és Android Studio 3,3-mel készült. A Speech SDK jelenleg a 32/64 bites ARM, vagy Intel x86/x64 processzorokat használó Android-eszközökkel kompatibilis.
 
 > [!NOTE]
 > A Speech Devices SDK-ról és a Roobo eszközről lásd: [Speech Devices SDK](speech-devices-sdk.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure-előfizetés beszédszolgáltatások kulcs. [Igényeljen ingyenesen egy](get-started.md) vagy hozza létre a [az Azure portal](https://portal.azure.com).
-* Egy korábban létrehozott bot konfigurálva a [közvetlen vonal beszédfelismerő csatornát](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-* [Az Android Studio](https://developer.android.com/studio/) v3.3 vagy újabb
+* Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com).
+* Korábban létrehozott, a [közvetlen vonalas beszéd csatornával](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) konfigurált robot
+* [Android Studio](https://developer.android.com/studio/) v 3.3-as vagy újabb verzió
 
     > [!NOTE]
-    > A közvetlen vonal Speech (előzetes verzió) egy részhalmazát beszédszolgáltatások régiók jelenleg érhető el. Tekintse meg [hang-és felhőközpontú virtuális asszisztensek támogatott régiók listáját](regions.md#Voice-first virtual assistants) és ellenőrizze, hogy az erőforrások üzembe ezen régiók egyikében.
+    > A közvetlen vonalas beszéd (előzetes verzió) jelenleg a Speech Services-régiók egy részhalmazában érhető el. Tekintse meg [a támogatott régiók listáját a hangvezérelt virtuális asszisztensekhez](regions.md#Voice-first virtual assistants) , és gondoskodjon arról, hogy az erőforrások az egyik régióban legyenek telepítve.
 
 ## <a name="create-and-configure-a-project"></a>Projekt létrehozása és konfigurálása
 
@@ -43,9 +43,9 @@ Ez az alkalmazás a Speech SDK Maven-csomag és az Android Studio 3.3 épül. A 
 
 ## <a name="create-user-interface"></a>A felhasználói felület létrehozása
 
-Ebben a szakaszban létrehozunk egy alapszintű felhasználói felület (UI) az alkalmazáshoz. Kezdjük a fő tevékenység megnyitásával: `activity_main.xml`. Az alapszintű sablon tartalmazza az alkalmazás nevét, a címsor és a egy `TextView` a következő üzenettel: "Hello world!".
+Ebben a szakaszban egy alapszintű felhasználói felületet (UI) hozunk létre az alkalmazáshoz. Kezdjük a fő tevékenység megnyitásával: `activity_main.xml`. Az alapszintű sablon tartalmaz egy címsort az alkalmazás nevével, és `TextView` a "Hello World!" üzenettel.
 
-Ezután cserélje le a tartalmát a `activity_main.xml` a következő kóddal:
+Ezután cserélje le a tartalmát `activity_main.xml` a következő kódra:
 
    ```xml
    <?xml version="1.0" encoding="utf-8"?>
@@ -94,19 +94,19 @@ Ezután cserélje le a tartalmát a `activity_main.xml` a következő kóddal:
    </LinearLayout>
    ```
 
-Az XML-kód egy egyszerű felhasználói Felületét, hogy a robottal lépnek kapcsolatba határozza meg.
+Ez az XML egy egyszerű felhasználói felületet határoz meg a robottal való interakcióhoz.
 
-* A `button` elem közben kezdeményezi, és meghívja az `onBotButtonClicked` metódus kattintáskor.
-* A `recoText` elem fog megjelenni a hang-szöveg transzformációs eredményeket, ahogy a robot a beszélgetés.
-* A `activityText` elem jelenik meg a robot a legújabb Bot Framework tevékenység a JSON-adattartalmat.
+* Az `button` elem interakciót kezdeményez, és rákattintáskor meghívja a `onBotButtonClicked` metódust.
+* Az `recoText` elem megjeleníti a beszéd – szöveg eredményeket a robottal való kommunikáció során.
+* Az `activityText` elem megjeleníti a robothoz tartozó legújabb bot Framework-tevékenység JSON-adattartalmát.
 
-A szöveg és a felhasználói felületének grafikus ábrázolása kell kinéznie:
+A felhasználói felület szöveg-és grafikus ábrázolásának ekkor a következőképpen kell kinéznie:
 
 ![](media/sdk/qs-java-android-assistant-designer-ui.png)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Nyissa meg `MainActivity.java`, és cserélje ki annak tartalmát az alábbira:
+1. Nyissa meg `MainActivity.java`a (z) programot, és cserélje le a tartalmát a következő kódra:
 
    ```java
     package samples.speech.cognitiveservices.microsoft.com;
@@ -250,19 +250,19 @@ A szöveg és a felhasználói felületének grafikus ábrázolása kell kinézn
     }
    ```
 
-   * A `onCreate` metódus tartalmazza a kódot, amely a mikrofon és internetes engedélyt kér.
+   * A `onCreate` metódus olyan kódot tartalmaz, amely mikrofon-és Internet-engedélyeket kér.
 
-   * Ahogy korábban már említettük, az `onBotButtonClicked` metódus kezeli azt, ha a gombra kattintanak. Egy gomb megnyomása elindítja a robot való egyetlen interakció ("be").
+   * Ahogy korábban már említettük, az `onBotButtonClicked` metódus kezeli azt, ha a gombra kattintanak. Egy gomb megnyomásával egyetlen interakciót ("turn") indít a robottal.
 
-   * A `registerEventListeners` módszer bemutatja az események által használt a `DialogServiceConnector` és bejövő tevékenységek egyszerű kezelését.
+   * A `registerEventListeners` metódus a bejövő tevékenységek és az `DialogServiceConnector` alapszintű kezelési műveletek által használt eseményeket mutatja be.
 
-1. Ugyanebben a fájlban cserélje le a konfigurációs karakterláncokat az erőforrások megfelelően:
+1. Ugyanebben a fájlban cserélje le a konfigurációs karakterláncokat a megfelelő erőforrásokra:
 
-    * Cserélje le `YourChannelSecret` robotja közvetlen vonal beszédfelismerő csatornát titokkal.
+    * Cserélje `YourChannelSecret` le a szöveget a robot Direct line Speech Channel-titkára.
 
     * A `YourSpeechSubscriptionKey` helyére írja be az előfizetési kulcsot.
 
-    * Cserélje le `YourServiceRegion` együtt a [régió](regions.md) beszédszolgáltatások régiók csak egy részhalmazát jelenleg támogatott a közvetlen vonal beszédszolgáltatásokkal az előfizetéshez társított. További információkért lásd: [régiók](regions.md#voice-first-virtual-assistants).
+    * Cserélje `YourServiceRegion` le az [](regions.md) előfizetéshez tartozó régiót, és csak a Speech Services-régiók egy részhalmazát támogatja a közvetlen vonalas beszéd. További információ: [régiók](regions.md#voice-first-virtual-assistants).
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
@@ -276,18 +276,18 @@ A szöveg és a felhasználói felületének grafikus ábrázolása kell kinézn
 
    ![A Select Deployment Target (Üzembehelyezési cél kiválasztása) ablak képernyőképe](media/sdk/qs-java-android-12-deploy.png)
 
-Után az alkalmazás és a hozzá tartozó tevékenység üzemeltet, kattintson a gombra kattintva megkezdheti a robot folytatott kommunikációra. Átírt szöveg megjelenik, illetve kimondható és a legújabb tevékenység van, a bot fog kapott jelennek meg, amikor a. Ha használja a beszélt válaszokat nyújt a robot van konfigurálva, a hang-szöveg transzformációs automatikusan lejátszása.
+Az alkalmazás és a tevékenység elindítása után a gombra kattintva megkezdheti a beszélgetést a robottal. Az átmásolt szöveg az Ön által beszélt módon jelenik meg, és a robottól kapott legújabb tevékenységek a fogadáskor megjelennek. Ha a robot úgy van konfigurálva, hogy a kimondott válaszokat adja meg, a beszédfelismerési szöveg automatikusan le lesz játszva.
 
 ![Az Android-alkalmazás képernyőképe](media/sdk/qs-java-android-assistant-completed-turn.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Létrehozni és üzembe helyezni egy alapszintű robot](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+> [Alapszintű robot létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
 ## <a name="see-also"></a>Lásd még
-- [Hang-és felhőközpontú virtuális asszisztensek kapcsolatban](voice-first-virtual-assistants.md)
-- [Ingyenes beszédszolgáltatások előfizetési kulcs lekérése](get-started.md)
-- [Egyéni ébresztési szavakat](speech-devices-sdk-create-kws.md)
-- [A közvetlen vonal Speech csatlakozni a robot](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-- [Ismerkedés a Java-példák a Githubon](https://aka.ms/csspeech/samples)
+- [A Voice – First virtuális asszisztensek ismertetése](voice-first-virtual-assistants.md)
+- [Ingyenes Speech Services-előfizetési kulcs beszerzése](get-started.md)
+- [Egyéni ébresztési szavak](speech-devices-sdk-create-kws.md)
+- [Közvetlen vonalas beszéd összekötése a robottal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [A Java-minták megismerése a GitHubon](https://aka.ms/csspeech/samples)

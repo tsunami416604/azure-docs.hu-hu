@@ -13,22 +13,22 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/01/2019
+ms.date: 08/01/2019
 ms.author: jowargo
-ms.openlocfilehash: 09e5f5526c2d6953c574a7d7dd2425159ad88307
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d1aac5bb399fc113b57ad7e59f17d19f8bb1c97f
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240728"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728835"
 ---
-# <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldésére Xamarin.Android-alkalmazásokkal az Azure Notification Hubs használatával
+# <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések Xamarin. Android-alkalmazásokhoz az Azure Notification Hubs használatával
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az oktatóanyag azt mutatja be, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére Xamarin.Android-alkalmazásokba. Létre fog hozni egy üres Xamarin.Android-alkalmazást, amely leküldéses értesítéseket fogad a Firebase Cloud Messaging (FCM) használatával. Az értesítési központ használatával fog leküldéses értesítéseket küldeni az alkalmazást futtató összes eszközre. A befejezett kód a érhető el a [NotificationHubs-alkalmazásban](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/Xamarin/GetStartedXamarinAndroid) minta.
+Ez az oktatóanyag azt mutatja be, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére Xamarin.Android-alkalmazásokba. Létre fog hozni egy üres Xamarin.Android-alkalmazást, amely leküldéses értesítéseket fogad a Firebase Cloud Messaging (FCM) használatával. Az értesítési központ használatával fog leküldéses értesítéseket küldeni az alkalmazást futtató összes eszközre. A kész kód a [NotificationHubs alkalmazás](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/Xamarin/GetStartedXamarinAndroid) mintájában érhető el.
 
 Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
@@ -40,7 +40,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) megkezdése előtt.
+* **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes Azure-fiókot a](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) Kezdés előtt.
 * Windows rendszeren [Visual Studio és Xamarin], vagy OS X rendszeren [Visual Studio for Mac].
 * Aktív Google-fiók
 
@@ -52,29 +52,29 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-### <a name="configure-gcm-settings-for-the-notification-hub"></a>Az értesítési központ GCM-beállításainak konfigurálása
+### <a name="configure-gcmfcm-settings-for-the-notification-hub"></a>Az értesítési központ GCM/FCM beállításainak konfigurálása
 
-1. Válassza a **Google (GCM)** lehetőséget a **NOTIFICATION SETTINGS** (Értesítési beállítások) részen.
-2. Adja meg a korábban a Google Firebase konzoljáról feljegyezett **Legacy server key** (Régi kiszolgálókulcs) értékét.
+1. Válassza a **Google (GCM/FCM)/** lehetőséget a bal oldali menüben a **Beállítások** szakaszban.
+2. Adja meg a Google Firebase-konzolon megjegyzett **kiszolgáló kulcsát** .
 3. Válassza az eszköztár **Save** (Mentés) elemét.
 
     ![](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
 Az értesítési központ konfigurálva van az FCM-mel való együttműködésre, és rendelkezik a kapcsolati sztringekkel az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
 
-## <a name="create-a-xamarinandroid-app-and-connect-it-to-notification-hub"></a>Xamarin.Android-alkalmazás létrehozása, és csatlakoztassa értesítési központ
+## <a name="create-a-xamarinandroid-app-and-connect-it-to-notification-hub"></a>Xamarin. Android-alkalmazás létrehozása és az értesítési központhoz való kapcsolódása
 
 ### <a name="create-visual-studio-project-and-add-nuget-packages"></a>Egy Visual Studio-projekt létrehozása és NuGet-csomagok hozzáadása
 
-1. A Visual Studióban nyissa meg a **fájl** menüjében válassza **új**, majd válassza ki **projekt**. Az a **új projekt** ablakban hajtsa végre az alábbi lépéseket:
-    1. Bontsa ki a **telepített**, **Visual C#** , és kattintson a **Android**.
-    2. Válassza ki **Android-alkalmazás (Xamarin)** a listából.
+1. A Visual Studióban nyissa meg a **fájl** menüt, válassza az **új**, majd a **projekt**elemet. Az **új projekt** ablakban végezze el a következő lépéseket:
+    1. Bontsa ki a **telepített**, a **vizualizáció C#** elemet, majd kattintson az **Android**elemre.
+    2. Válassza az **Android-alkalmazás (Xamarin)** elemet a listából.
     3. Adjon meg a projekt **nevét**.
-    4. Válassza ki a **hely** a projekthez.
+    4. Válassza ki a projekt **helyét** .
     5. Kattintson az **OK** gombra.
 
         ![New Project (Új projekt) párbeszédpanel](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog-new.png)
-2. Az a **új Android-alkalmazás** párbeszédpanelen jelölje ki **üres alkalmazás**, és válassza ki **OK**.
+2. Az **új Android-alkalmazás** párbeszédpanelen válassza az **üres alkalmazás**lehetőséget, majd kattintson **az OK gombra**.
 
     ![New Project (Új projekt) párbeszédpanel](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
 3. A **Solution Explorer** (Megoldáskezelő) ablakában bontsa ki a **Properties** (Tulajdonságok) elemet, majd kattintson az **AndroidManifest.xml** fájlra. Frissítse a csomag nevét arra a csomagnévre, amelyet akkor adott meg, amikor hozzáadta a Firebase Cloud Messaginget a projekthez a Google Firebase konzolján.
@@ -89,9 +89,9 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
 
 ### <a name="add-the-google-services-json-file"></a>A Google-szolgáltatás JSON-fájljának hozzáadása
 
-1. Másolás a `google-services.json` fájlt a projektmappa fájllistájának a Google Firebase-konzolról letöltött.
-2. Adjon hozzá `google-services.json` a projekthez.
-3. Válassza ki `google-services.json` a a **Megoldáskezelőben** ablak.
+1. Másolja a `google-services.json` letöltött fájlt a Google Firebase-konzolról a projekt mappájába.
+2. Hozzáadás `google-services.json` a projekthez.
+3. Válassza `google-services.json` a **megoldáskezelő** ablakot.
 4. A **Properties** (Tulajdonságok) panelen a Build Action (Felépítési művelet) számára állítsa be a **GoogleServicesJson** értéket. Ha nem látja a **GoogleServicesJson** műveletet, zárja be a Visual Studiót, indítsa el újra, nyissa meg újra a projektet, és próbálkozzon újból.
 
     ![GoogleServicesJson felépítési művelet](./media/partner-xamarin-notification-hubs-android-get-started/google-services-json-build-action.png)
@@ -100,7 +100,7 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
 
 #### <a name="registering-with-firebase-cloud-messaging"></a>Regisztráció a Firebase Cloud Messagingben
 
-1. Nyissa meg a `AndroidManifest.xml` fájlt, és illessze be a következő `<receiver>` elemeket a `<application>` elem:
+1. Nyissa `AndroidManifest.xml` meg a fájlt, és `<receiver>` szúrja be `<application>` a következő elemeket a elembe:
 
     ```xml
     <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
@@ -113,7 +113,7 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     </receiver>
     ```
 
-2. Adja hozzá a következő utasításokat **előtt az alkalmazás** elemet.
+2. Adja hozzá a következő utasításokat **az alkalmazás elem előtt** .
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET" />
@@ -124,10 +124,10 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
 
 3. Gyűjtse össze az alábbi információikat az Android-alkalmazásra és az értesítési központra vonatkozóan:
 
-   * **Figyelési kapcsolati karakterlánc**: Irányítópultján a [Azure Portal], válassza a **kapcsolati karakterláncok megtekintése**. Másolás a `DefaultListenSharedAccessSignature` kapcsolati karakterláncot ezen értékhez.
-   * **Eseményközpont neve**: A központ neve a [Azure Portal]. Például: *mynotificationhub2*.
-4. Az a **Megoldáskezelőben** ablakban kattintson a jobb gombbal a **projekt**, jelölje be **hozzáadása**, majd válassza ki **osztály**.
-5. Hozzon létre egy `Constants.cs` osztályt a Xamarin-projektben, és adja meg a következő konstans értékeket az osztályban. A helyőrzőket cserélje le az értékekkel.
+   * **Figyelési kapcsolatok karakterlánca**: A [Azure Portal]irányítópultján válassza a **kapcsolatok karakterláncok megtekintése**lehetőséget. Másolja ki `DefaultListenSharedAccessSignature` az értékhez tartozó kapcsolatok karakterláncát.
+   * **Hub neve**: A központ neve a Azure Portalból []. Például: *mynotificationhub2*.
+4. A **megoldáskezelő** ablakban kattintson a jobb gombbal a **projektre**, válassza a **Hozzáadás**, majd a **Class (osztály**) lehetőséget.
+5. Hozzon `Constants.cs` létre egy osztályt a Xamarin projekt számára, és adja meg a következő állandó értékeket a osztályban. A helyőrzőket cserélje le az értékekkel.
 
     ```csharp
     public static class Constants
@@ -137,21 +137,21 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     }
     ```
 
-6. Adja hozzá a következő using utasításokat a `MainActivity.cs`:
+6. Adja hozzá a következő using utasításokat `MainActivity.cs`a következőkhöz:
 
     ```csharp
     using Android.Util;
     using Android.Gms.Common;
     ```
 
-7. Adja hozzá a következő tulajdonságokat a MainActivity osztályhoz. A címke változó egy figyelmeztető párbeszédpanel megjelenítésére, az alkalmazás futása során fogja használni:
+7. Adja hozzá a következő tulajdonságokat a MainActivity osztályhoz. Az alkalmazás futtatásakor a rendszer a címke változót fogja használni a riasztási párbeszédpanel megjelenítéséhez:
 
     ```csharp
     public const string TAG = "MainActivity";
     internal static readonly string CHANNEL_ID = "my_notification_channel";
     ```
 
-8. Adja hozzá a következő metódust a MainActivity osztály. Azt ellenőrzi, hogy **Google Play-szolgáltatások** érhetők el az eszközön.
+8. Adja hozzá a következő metódust a MainActivity osztályhoz. Ellenőrzi, hogy a **Google Play-szolgáltatások** elérhetők-e az eszközön.
 
     ```csharp
     public bool IsPlayServicesAvailable()
@@ -174,7 +174,7 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     }
     ```
 
-9. Adja hozzá a következő metódust az MainActivity osztály, amely egy értesítési csatornát hoz létre.
+9. Adja hozzá a következő metódust a MainActivity osztályhoz, amely létrehoz egy értesítési csatornát.
 
     ```csharp
     private void CreateNotificationChannel()
@@ -199,7 +199,7 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     }
     ```
 
-10. A `MainActivity.cs`, adja hozzá a következő kódot a `OnCreate` után `base.OnCreate(savedInstanceState)`:
+10. A `MainActivity.cs`alkalmazásban adja hozzá az alábbi `OnCreate` kódot `base.OnCreate(savedInstanceState)`a következőhöz:
 
     ```csharp
     if (Intent.Extras != null)
@@ -218,115 +218,92 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     CreateNotificationChannel();
     ```
 
-11. Hozzon létre egy új osztályt `MyFirebaseIIDService` például a létrehozott a `Constants` osztály.
-12. Adja hozzá a következő using utasításokat a `MyFirebaseIIDService.cs`:
-
-    ```csharp
-    using Android.Util;
-    using WindowsAzure.Messaging;
-    using Firebase.Iid;
-    ```
-
-13. A `MyFirebaseIIDService.cs`, adja hozzá a következő `class` nyilatkozat, és örököltesse az osztállyal `FirebaseInstanceIdService`:
-
-    ```csharp
-    [Service]
-    [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
-    public class MyFirebaseIIDService : FirebaseInstanceIdService
-    ```
-
-14. A `MyFirebaseIIDService.cs`, adja hozzá a következő kódot:
-
-    ```csharp
-    const string TAG = "MyFirebaseIIDService";
-    NotificationHub hub;
-
-    public override void OnTokenRefresh()
-    {
-        var refreshedToken = FirebaseInstanceId.Instance.Token;
-        Log.Debug(TAG, "FCM token: " + refreshedToken);
-        SendRegistrationToServer(refreshedToken);
-    }
-
-    void SendRegistrationToServer(string token)
-    {
-        // Register with Notification Hubs
-        hub = new NotificationHub(Constants.NotificationHubName,
-                                    Constants.ListenConnectionString, this);
-
-        var tags = new List<string>() { };
-        var regID = hub.Register(token, tags.ToArray()).RegistrationId;
-
-        Log.Debug(TAG, $"Successful registration of ID {regID}");
-    }
-    ```
-
-15. Hozzon létre egy másik új osztályt a projekthez, nevezze el `MyFirebaseMessagingService`.
-16. Adja hozzá a következő using utasításokat a `MyFirebaseMessagingService.cs`.
+15. Adjon hozzá egy nevű `MyFirebaseMessagingService` osztályt a projekthez. 
+16. Adja hozzá az alábbi using utasításokat `MyFirebaseMessagingService.cs`a következőhöz:.
 
     ```csharp
     using Android.Util;
     using Firebase.Messaging;
-    using Android.Support.V4.App;
-    using Build = Android.OS.Build;
+    using Android.Support.V4.App;    
+    using WindowsAzure.Messaging;
     ```
 
-17. Adja hozzá a következő, az osztálydeklaráció feletti, és örököltesse az osztállyal `FirebaseMessagingService`:
+17. Adja hozzá a következőt a Class deklarációhoz, és az osztályának `FirebaseMessagingService`öröklése:
 
     ```csharp
     [Service]
     [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
+    [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
     public class MyFirebaseMessagingService : FirebaseMessagingService
     ```
 
-18. Adja hozzá a következő kódot a `MyFirebaseMessagingService.cs`:
+18. Adja hozzá a következő kódot `MyFirebaseMessagingService.cs` a fogadott üzenetek feldolgozásához. 
 
     ```csharp
-    const string TAG = "MyFirebaseMsgService";
-    public override void OnMessageReceived(RemoteMessage message)
-    {
-        Log.Debug(TAG, "From: " + message.From);
-        if(message.GetNotification()!= null)
+        const string TAG = "MyFirebaseMsgService";
+        NotificationHub hub;
+    
+        public override void OnMessageReceived(RemoteMessage message)
         {
-            //These is how most messages will be received
-            Log.Debug(TAG, "Notification Message Body: " + message.GetNotification().Body);
-            SendNotification(message.GetNotification().Body);
+            Log.Debug(TAG, "From: " + message.From);
+            if (message.GetNotification() != null)
+            {
+                //These is how most messages will be received
+                Log.Debug(TAG, "Notification Message Body: " + message.GetNotification().Body);
+                SendNotification(message.GetNotification().Body);
+            }
+            else
+            {
+                //Only used for debugging payloads sent from the Azure portal
+                SendNotification(message.Data.Values.First());
+    
+            }
         }
-        else
+    
+        void SendNotification(string messageBody)
         {
-            //Only used for debugging payloads sent from the Azure portal
-            SendNotification(message.Data.Values.First());
-
+            var intent = new Intent(this, typeof(MainActivity));
+            intent.AddFlags(ActivityFlags.ClearTop);
+            var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
+    
+            var notificationBuilder = new NotificationCompat.Builder(this, MainActivity.CHANNEL_ID);
+    
+            notificationBuilder.SetContentTitle("FCM Message")
+                        .SetSmallIcon(Resource.Drawable.ic_launcher)
+                        .SetContentText(messageBody)
+                        .SetAutoCancel(true)
+                        .SetShowWhen(false)
+                        .SetContentIntent(pendingIntent);
+    
+            var notificationManager = NotificationManager.FromContext(this);
+    
+            notificationManager.Notify(0, notificationBuilder.Build());
         }
-    }
-
-    void SendNotification(string messageBody)
-    {
-        var intent = new Intent(this, typeof(MainActivity));
-        intent.AddFlags(ActivityFlags.ClearTop);
-        var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
-
-        var notificationBuilder = new NotificationCompat.Builder(this)
-                    .SetContentTitle("FCM Message")
-                    .SetSmallIcon(Resource.Drawable.ic_launcher)
-                    .SetContentText(messageBody)
-                    .SetAutoCancel(true)
-                    .SetShowWhen(false)
-                    .SetContentIntent(pendingIntent);
-
-        if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
-        {
-            notificationBuilder.SetChannelId(MainActivity.CHANNEL_ID);
-        }
-
-        var notificationManager = NotificationManager.FromContext(this);
-
-        notificationManager.Notify(0, notificationBuilder.Build());
-    }
     ```
 
-19. **Hozza létre** a projektet.
-20. **Futtassa** az alkalmazást az eszközén vagy a betöltött emulátoron.
+19. Adja hozzá a következő metódusokat a MyFirebaseMessagingService osztályhoz, hogy megkaphassa az FCM regisztrációs jogkivonatot, és küldje el a Notification Hubs-példánynak (hub). 
+
+    ```csharp
+        public override void OnNewToken(string token)
+        {
+            Log.Debug(TAG, "FCM token: " + token);
+            SendRegistrationToServer(token);
+        }
+
+        void SendRegistrationToServer(string token)
+        {
+            // Register with Notification Hubs
+            hub = new NotificationHub(Constants.NotificationHubName,
+                                        Constants.ListenConnectionString, this);
+
+            var tags = new List<string>() { };
+            var regID = hub.Register(token, tags.ToArray()).RegistrationId;
+
+            Log.Debug(TAG, $"Successful registration of ID {regID}");
+        }
+    ```
+1. **Hozza létre** a projektet.
+1. **Futtassa** az alkalmazást az eszközén vagy a betöltött emulátoron.
 
 ## <a name="send-test-notification-from-the-azure-portal"></a>Tesztértesítés küldése az Azure Portalról
 
@@ -334,7 +311,7 @@ Az [Azure Portal] **Tesztküldés** lehetőségével tesztelheti az alkalmazásb
 
 ![Azure Portal – Küldés tesztelése](media/partner-xamarin-notification-hubs-android-get-started/send-test-notification.png)
 
-A leküldéses értesítések küldése általában olyan háttérszolgáltatásokon keresztül történik egy kompatibilis kódtár használatával, mint a Mobile Services vagy az ASP.NET. Ha a háttérszolgáltatáshoz nem érhető el kódtár, az értesítések küldéséhez használhatja közvetlenül a REST API-t is.
+A leküldéses értesítések küldése általában olyan háttérszolgáltatásokon keresztül történik egy kompatibilis kódtár használatával, mint a Mobile Services vagy az ASP.NET. Ha egy könyvtár nem érhető el a háttérhez, a REST API közvetlenül is használhatja az értesítési üzenetek küldéséhez.
 
 ## <a name="next-steps"></a>További lépések
 

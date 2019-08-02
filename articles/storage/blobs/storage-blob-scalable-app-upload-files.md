@@ -1,21 +1,18 @@
 ---
 title: Nagy mennyiségű véletlenszerű adat párhuzamos feltöltése az Azure Storage-ba | Microsoft Docs
 description: Ebből a cikkből megtudhatja, hogy az Azure SDK hogyan használható nagy mennyiségű véletlenszerű adat párhuzamos feltöltésére egy Azure Storage-fiókba
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 83a888a28c1d1e51a1fe59649dfb956cd0f72203
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e5c1a78bf2f482e99d8ff13590a8bb81f9601991
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071426"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698973"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Nagy mennyiségű véletlenszerű adat párhuzamos feltöltése az Azure Storage-ba
 
@@ -31,11 +28,11 @@ A sorozat második részében az alábbiakkal fog megismerkedni:
 
 Az Azure Blob Storage skálázható szolgáltatást biztosít adatainak tárolásához. Ahhoz, hogy az alkalmazás a lehető legjobb teljesítménnyel működhessen, ajánlatos megismerkedni a Blob Storage működésével. Fontos ismerni az Azure blobok korlátait, amelyekről további információt a [Blob Storage skálázhatósági céljait](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets) ismertető részben találhat.
 
-[Partíció elnevezése](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47) van egy potenciálisan fontos szempont a nagy teljesítményű, blobokat használó alkalmazások tervezésekor. A nagyobb vagy egyenlő négy MiB velikostí bloku [nagy átviteli sebességű blokkblobok](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) használatban vannak, és a partíció elnevezési rendszer nincs hatással a teljesítményre. Blokk mérete kisebb, mint négy MiB, az Azure storage egy tartományalapú particionálási sémát, és méretezési csoport és a terheléselosztáshoz használt. Ez a konfiguráció azt jelenti, hogy a hasonló elnevezési konvenciókkal vagy előtagokkal rendelkező fájlok ugyanarra a partícióra kerülnek. Ez a logika magában foglalja a tároló nevét, amelybe a fájlokat feltöltik. Ebben az oktatóanyagban olyan fájlokat használ, amelyek nevek helyett GUID-azonosítókkal, valamint véletlenszerűen létrehozott tartalmakkal rendelkeznek. Ezeket azután öt különböző, véletlenszerű nevű tárolóba töltjük fel.
+[](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47) A partíciók elnevezése egy másik, potenciálisan fontos tényező, ha a Blobok használatával egy nagy teljesítményt nyújtó alkalmazást terveznek. A négy MiB-nél nagyobb vagy azzal egyenlő blokkos méretek esetén a [nagy átviteli sebességű blokk blobokat](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) használja a rendszer, és a partíciók elnevezése nem befolyásolja a teljesítményt. A négy MiB-nél kevesebb blokk méretnél az Azure Storage egy tartományon alapuló particionálási sémát használ a méretezéshez és a terheléselosztáshoz. Ez a konfiguráció azt jelenti, hogy a hasonló elnevezési konvenciókkal vagy előtagokkal rendelkező fájlok ugyanarra a partícióra kerülnek. Ez a logika magában foglalja a tároló nevét, amelybe a fájlokat feltöltik. Ebben az oktatóanyagban olyan fájlokat használ, amelyek nevek helyett GUID-azonosítókkal, valamint véletlenszerűen létrehozott tartalmakkal rendelkeznek. Ezeket azután öt különböző, véletlenszerű nevű tárolóba töltjük fel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez el kell végeznie az előző tárolási oktatóanyagot: [Hozzon létre egy virtuális gép és a egy méretezhető alkalmazás számára a tárfiók][previous-tutorial].
+Az oktatóanyag elvégzéséhez el kell végeznie az előző tárolási oktatóanyagot: [Hozzon létre egy méretezhető alkalmazáshoz egy virtuális gépet és egy Storage-fiókot][previous-tutorial].
 
 ## <a name="remote-into-your-virtual-machine"></a>A virtuális gép távoli vezérlése
 
@@ -71,7 +68,7 @@ A szálkezelési és a kapcsolati korlátozások beállításán felül az [Uplo
 
 |Tulajdonság|Érték|Leírás|
 |---|---|---|
-|[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| A beállítás feltöltéskor blokkokra töri a blobot. A legjobb teljesítmény érdekében ezt az értéket a magok számának 8 alkalommal kell lennie. |
+|[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| A beállítás feltöltéskor blokkokra töri a blobot. A legnagyobb teljesítmény érdekében ennek az értéknek a magok számának nyolcszor kell lennie. |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Ez a tulajdonság letiltja a feltöltött tartalom MD5-kivonat ellenőrzését. A gyorsabb átvitel érdekében tiltsa le az MD5-ellenőrzést. Így azonban nem biztosított a folyamatban lévő átvitelben érintett fájlok érvényessége vagy integritása.   |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Ez a tulajdonság határozza meg, hogy az MD5 kivonatoló kiszámítása és fájlban való tárolása megtörtént-e.   |
 | [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| 2-second backoff with 10 max retry |A kérések újrapróbálkozási szabályzatát határozza meg. Kapcsolódási hiba esetén a rendszer újra próbálkozik, ebben a példában az [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry) szabályzat 2 másodperces leállításra és legfeljebb 10 újrapróbálkozásra van konfigurálva. Ez a beállítás akkor fontos, ha az alkalmazás lassan eléri a [blob storage skálázhatósági célértékét](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).  |

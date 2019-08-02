@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Helyesírás-ellenőrzés a Bing Spell Check REST API és a Java'
-titlesuffix: Azure Cognitive Services
-description: Ismerkedés a Bing Spell Check REST API használatával a helyesírás-és nyelvtani.
+title: 'Gyors útmutató: Helyesírás ellenőrzése a Bing Spell Check REST API és a Javával'
+titleSuffix: Azure Cognitive Services
+description: Az Bing Spell Check REST API használatának első lépései a helyesírás és a nyelvtan ellenőrzéséhez.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,28 +10,28 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: eeec278a1c9e4888aa4a63af3d9c86e7a8c1615c
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 6680ddd65ce43a71873acb823f8ae57b449a56be
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502922"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423520"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Gyors útmutató: Helyesírás-ellenőrzés a Bing Spell Check REST API és a Java
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Gyors útmutató: Helyesírás ellenőrzése a Bing Spell Check REST API és a Javával
 
-Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívását. Ez egyszerű Java-alkalmazás egy kérést küld az API-t, és javasolt javítások listáját adja vissza. Ezt az alkalmazást a Java nyelven van megírva, míg a API-ját egy REST-alapú webszolgáltatás szinte bármelyik programozási nyelvével kompatibilis. Az alkalmazás forráskódja elérhető a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheckv7.java).
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST API. Ez az egyszerű Java-alkalmazás egy kérelmet küld az API-nak, és a javasolt javítások listáját adja vissza. Habár ez az alkalmazás Java nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. Az alkalmazás forráskódja elérhető a githubon. [](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheckv7.java)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Java fejlesztési Kit(JDK), 7 vagy újabb.
+* A Java Development Kit (JDK) 7-es vagy újabb verziója.
 
-* Importálás a [gson-2.8.5.jar](https://libraries.io/maven/com.google.code.gson%3Agson) vagy legfrissebb [Gson](https://github.com/google/gson) verzió. Parancssori végrehajtási, vegye fel a `.jar` a Java-mappába, a fő osztállyal.
+* Importálja a [gson-2.8.5. jar](https://libraries.io/maven/com.google.code.gson%3Agson) vagy a legújabb [gson](https://github.com/google/gson) -verziót. A parancssori végrehajtáshoz adja hozzá a `.jar` parancsot a Java-mappához a fő osztállyal.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-## <a name="create-and-initialize-an-application"></a>Hozzon létre, és a egy alkalmazás inicializálása
+## <a name="create-and-initialize-an-application"></a>Alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE- vagy egy osztálynév tetszőleges szerkesztőben, és importálja a következő csomagok.
+1. Hozzon létre egy új Java-projektet a kedvenc IDE-vagy szerkesztőjében a választott osztálynév használatával, majd importálja a következő csomagokat.
 
     ```java
     import java.io.*;
@@ -40,7 +40,7 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
     import javax.net.ssl.HttpsURLConnection;
     ```
 
-2. Változók létrehozása az API-végpont állomás, elérési út és az előfizetési kulcs. Ezután hozzon létre változókat a piacra, helyesírás-ellenőrzés kívánt szöveg, és a karakterlánc a helyesírás-ellenőrzési mód.
+2. Hozzon létre változókat az API-végpont gazdagépéhez, elérési útjához és előfizetési kulcsához. Ezután hozzon létre változókat a piacra, a helyesírás-ellenőrzéshez használni kívánt szövegre, valamint egy karakterláncot a helyesírás-ellenőrzési módhoz.
 
     ```java
     static String host = "https://api.cognitive.microsoft.com";
@@ -53,9 +53,9 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
     static String text = "Hollo, wrld!";
     ```
 
-## <a name="create-and-send-an-api-request"></a>Hozzon létre, és a egy API-kérelem küldése
+## <a name="create-and-send-an-api-request"></a>API-kérelem létrehozása és elküldése
 
-1. Hozzon létre egy függvényt, nevű `check()` hozhat létre, és az API-kérelem küldése. Benne kövesse az alábbi lépéseket. Hozzon létre egy karakterláncot a kérelem paramétereit. fűzze hozzá a `?mkt=` paramétert a piaci karakterláncot, és a `&mode=` paraméter a helyesírás-ellenőrzés módra.  
+1. Hozzon létre egy `check()` nevű függvényt az API-kérelem létrehozásához és elküldéséhez. Ebben az esetben kövesse az alábbi lépéseket. Hozzon létre egy karakterláncot a kérés paramétereinek. fűzze hozzá `?mkt=` a paramétert a piaci karakterlánchoz, `&mode=` és a paramétert a helyesírás-ellenőrzési módba.  
 
    ```java
    public static void check () throws Exception {
@@ -64,14 +64,14 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
    }
    ```
 
-2. Hozzon létre egy URL-címet a végponti gazdagép elérési útvonalát, és a paraméterek karakterlánc kombinálásával. Hozzon létre egy új `HttpsURLConnection` objektum.
+2. Hozzon létre egy URL-címet a végpont-gazdagép, az elérési út és a paraméterek karakterláncának kombinálásával. Hozzon létre `HttpsURLConnection` egy új objektumot.
 
     ```java
     URL url = new URL(host + path + params);
     HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
     ```
 
-3. Nyissa meg az URL-kapcsolatot. A kérelem módszert állítja be `POST`. Adja hozzá a kérelem paramétereit. Ne felejtse el hozzáadni az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc.
+3. Nyisson meg egy kapcsolódást az URL-címhez. A kérelem metódusának `POST`beállítása a következőre:. Adja meg a kérés paramétereit. Ügyeljen arra, hogy hozzáadja az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez.
 
     ```java
     connection.setRequestMethod("POST");
@@ -80,7 +80,7 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
     connection.setDoOutput(true);
     ```
 
-4. Hozzon létre egy új `DataOutputStream` objektumra, és az API-hoz való elküldéséhez.
+4. Hozzon létre `DataOutputStream` egy új objektumot, és küldje el a kérést az API-nak.
 
     ```java
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -89,9 +89,9 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
         wr.close();
     ```
 
-## <a name="format-and-read-the-api-response"></a>Formázhatja és az API-válasz olvasása
+## <a name="format-and-read-the-api-response"></a>Az API-válasz formázása és olvasása
 
-1. Adja hozzá ezt a módszert az osztályhoz. A JSON-t egy olvashatóbb kimeneti formázza azt.
+1. Adja hozzá ezt a metódust a osztályhoz. A JSON-t egy olvashatóbb kimenetre formázza.
 
     ``` java
     // This function prettifies the json response.
@@ -103,7 +103,7 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
     }
     ```
 
-1. Hozzon létre egy `BufferedReader` és olvassa el a választ az API-ból. Nyomtassa ki a konzolhoz.
+1. Hozzon `BufferedReader` létre egy elemet, és olvassa el a választ az API-ból. Nyomtassa ki a-konzolra.
     
     ```java
     BufferedReader in = new BufferedReader(
@@ -117,7 +117,7 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
 
 ## <a name="call-the-api"></a>Az API meghívása
 
-Az alkalmazás fő függvényét a fent létrehozott check() metódust hívja.
+Az alkalmazás fő függvényében hívja meg a fent létrehozott ellenőrzési () metódust.
 
     ```java
     public static void main(String[] args) {
@@ -132,21 +132,21 @@ Az alkalmazás fő függvényét a fent létrehozott check() metódust hívja.
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Hozhat létre, és futtassa a projektet.
+Hozza létre és futtassa a projektet.
 
-Ha a parancssor használata esetén használatával a következő parancsokat az alkalmazás fordításához és futtatásához.
+Ha a parancssort használja, az alábbi parancsokkal hozhatja létre és futtathatja az alkalmazást.
 
-**Hozhat létre:**
+**Építeni**
 ```bash
 javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
 ```
 
-**Futtassa:**
+**Futtassa**
 ```bash
 java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
 ```
 
-## <a name="example-json-response"></a>Példa JSON-válasz
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
@@ -193,5 +193,5 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](../tutorials/spellcheck.md)
 
-- [Mi az a Bing Spell Check API?](../overview.md)
+- [Mi a Bing Spell Check API?](../overview.md)
 - [A Bing Spell Check API 7-es verzió referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

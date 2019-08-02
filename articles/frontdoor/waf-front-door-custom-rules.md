@@ -1,6 +1,6 @@
 ---
-title: Webes alkalmazás egyéni tűzfalszabály Azure bejárati ajtó
-description: Ismerje meg, hogyan használhatja a webes alkalmazás tűzfal (WAF) egyéni szabályok a webes alkalmazások védelme a rosszindulatú támadások ellen.
+title: Webalkalmazási tűzfal egyéni Azure-szabálya
+description: Ismerje meg, hogy a webalkalmazási tűzfal (WAF) egyéni szabályai hogyan védik a webalkalmazásokat rosszindulatú támadásokkal szemben.
 author: KumudD
 ms.service: frontdoor
 ms.devlang: na
@@ -8,75 +8,76 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/07/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: 744c6fb9235c9daa2d5239ef9fd13679db943650
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 02b335de7f105d768168d5f798ec9109136d7430
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459708"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846266"
 ---
-#  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Webalkalmazási tűzfal az Azure bejárati ajtajának egyéni szabályok
-Azure webalkalmazási tűzfal (WAF) bejárati ajtajának szolgáltatással lehetővé teszi, hogy ki férhet hozzá a webes alkalmazások határoz meg a feltételek alapján. Egyéni WAF szabály áll egy prioritást, szabálytípus, egyezési feltételei és a egy műveletet. Egyéni szabályok két típusa van: szabályok és az utolsó korlát szabályok értékelése. Egy match szabály irányítja a hozzáférést alapján a megfelelő feltételek, amíg az arány korlát szabály irányítja a hozzáférést a megfelelő feltételek és a bejövő kérelmek díjszabás alapján. Előfordulhat, hogy a kiértékelt megakadályozása érdekében egy egyéni szabály letiltása, de a konfiguráció továbbra is folyamatosan. Ez a cikk ismerteti a http-paraméterek alapuló egyezés szabályok.
+#  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Egyéni szabályok webalkalmazási tűzfalhoz az Azure bejárati ajtaján
+Az Azure webalkalmazási tűzfal (WAF) és a bejárati ajtó szolgáltatás lehetővé teszi a webalkalmazásokhoz való hozzáférés szabályozását az Ön által meghatározott feltételek alapján. Az egyéni WAF-szabályok prioritási számból, szabály típusból, egyeztetési feltételekből és műveletből állnak. Az egyéni szabályoknak két típusa van: a szabályok és a díjszabási szabályok egyeztetése. Az egyeztetési szabály a megfelelő feltételek alapján szabályozza a hozzáférést, míg a díjszabási szabály a megfelelő feltételek és a beérkező kérések díjszabása alapján szabályozza a hozzáférést. Előfordulhat, hogy letilt egy egyéni szabályt, hogy megakadályozza annak kiértékelését, de továbbra is megtartja a konfigurációt. Ez a cikk a http-paramétereken alapuló egyezési szabályokat tárgyalja.
 
-## <a name="priority-match-conditions-and-action-types"></a>Művelettípusok, prioritás és egyezési feltételei
-Szabályozhatja a hozzáférést egy egyéni WAf-szabályt, amely meghatározza egy prioritást, szabálytípus, egyezési feltételei és a egy műveletet. 
+## <a name="priority-match-conditions-and-action-types"></a>Prioritás, egyeztetési feltételek és műveleti típusok
+A hozzáférést egy olyan egyéni WAf-szabállyal szabályozhatja, amely meghatározza a prioritási számot, a szabályt, az egyeztetési feltételeket és a műveletet. 
 
-- **Prioritás:** egyedi egész szám, amely leírja a WAF-szabálykészlet kiértékelés sorrendjét. Az alacsonyabb szabályok értékeli ki a magasabb értékkel szabályok előtt
+- **Prioritás:** egy egyedi egész szám, amely LEÍRJA a WAF-szabályok kiértékelésének sorrendjét. Az alacsonyabb értékkel rendelkező szabályok kiértékelése a magasabb értékekkel rendelkező szabályok előtt történik
 
-- **Művelet:** határozza meg, hogyan irányítsa a kérést, ha egyezik a WAF-szabály. Közül választhat az alábbi műveletek a alkalmazni egy kérelem megegyezik egy egyéni szabályt.
+- **Művelet:** azt határozza meg, hogyan történjen a kérések továbbítása egy WAF-szabály egyeztetése esetén. Az alábbi műveletek egyikét választhatja, ha egy kérelem megfelel egy egyéni szabálynak.
 
-    - *Lehetővé teszi* -WAF továbbítja a quest a háttérkiszolgálóhoz, WAF-naplók és kilépés bejelentkezik egy bejegyzés.
-    - *Blokk* -kérelem le van tiltva, a WAF ügyfél választ küld a kérést a háttéralkalmazás nélkül. WAF egy bejegyzést a WAF-naplókban naplózza.
-    - *Napló* -WAF-naplókban a WAF-bejegyzés naplózza, és továbbra is a következő szabály kiértékelése.
-    - *Átirányítási* -WAF átirányítja a kérést a megadott URI-ra, naplózza a bejegyzés a WAF-naplókban és kilép.
+    - Az *Allow* -WAF továbbítja a küldetést a háttérbe, naplóz egy BEJEGYZÉST a WAF-naplókban, és kilép.
+    - ** A letiltási kérelem le van tiltva, a WAF a kérésnek a háttér felé való továbbítása nélkül küld választ az ügyfélnek. A WAF naplóz egy bejegyzést a WAF-naplókban.
+    - A *log* -WAF naplózza a WAF-naplókban lévő bejegyzést, és folytatja a következő szabály kiértékelését.
+    - *Átirányítás* – a WAF átirányítja a kérést egy megadott URI-ra, naplóz egy BEJEGYZÉST a WAF-naplókban, és kilép.
 
-- **Az állapotot meg:** egyezés változó, egy operátorból határozza meg, majd az értékét. Minden szabály több egyezési feltételei is tartalmazhat. Egyeztetési feltételt alapján előfordulhat, hogy az alábbi *felel meg a változók*:
-    - RemoteAddr (client IP)
-    - requestMethod
+- **Egyeztetési feltétel:** meghatározza a Match változót, az operátort és a megfeleltetési értéket. Az egyes szabályok több egyezési feltételt is tartalmazhatnak. Az egyeztetési feltételt az alábbi *egyezési változók*alapján lehet megadni:
+    - RemoteAddr (ügyfél IP-címe)
+    - RequestMethod
     - A lekérdezési karakterlánc
     - PostArgs
-    - requestUri
+    - RequestUri
     - RequestHeader
     - RequestBody
 
-- **Üzemeltető:** lista a következőket tartalmazza:
-    - Bármely: alapértelmezett műveletet határozza meg, ha nincs szabály sem felel meg vannak gyakran használják. Bármilyen egyezés van all operátort.
-    - IPMatch: IP-korlátozást RemoteAddr változó definiálása
-    - GeoMatch: földrajzi szűrés RemoteAddr változó definiálása
+- **Operátor:** a lista a következőket tartalmazza:
+    - Bármelyik: általában az alapértelmezett művelet definiálására használatos, ha nem egyeznek a szabályok. Minden az összes operátornak felel meg.
+    - IPMatch: IP-korlátozás definiálása a RemoteAddr változóhoz
+    - GeoMatch: a RemoteAddr változó földrajzi szűrésének meghatározása
     - Egyenlő
     - tartalmaz
-    - LessThan: méret megkötés
-    - GreaterThan: méret megkötés
-    - LessThanOrEqual: méret megkötés
-    - GreaterThanOrEqual: méret megkötés
+    - LessThan: méret korlátozás
+    - GreaterThan: méret korlátozás
+    - LessThanOrEqual: méret korlátozás
+    - GreaterThanOrEqual: méret korlátozás
     - BeginsWith
      - endsWith
 
-Beállíthat *negálandó* feltétel igaz, ha a feltétel eredménye negated kell lennie.
+Megadhatja, hogy a *tagadás* feltétel igaz legyen, ha egy feltétel eredményét meg kell tagadni.
 
-*Érték egyezik* legpontosabban egyező értékek listáját határozza meg.
-A támogatott értékek például HTTP-kérési metódust:
+Az *egyeztetési érték* határozza meg a lehetséges egyezési értékek listáját.
+A HTTP-kérések támogatott metódusának értékei a következők:
 - GET
 - POST
 - PUT
 - HEAD
 - DELETE
-- ZÁROLÁS
-- ZÁROLÁS FELOLDÁSA
+- LOCK
+- ZÁROLÁSÁNAK FELOLDÁSÁHOZ
 - PROFIL
 - BEÁLLÍTÁSOK
 - PROPFIND
 - PROPPATCH
 - MKCOL
-- MÁSOLÁS
-- ÁTHELYEZÉS
+- MÁSOLJA
+- ÁTHELYEZÉSE
 
 ## <a name="examples"></a>Példák
 
-### <a name="waf-custom-rules-example-based-on-http-parameters"></a>WAF egyéni szabályok példa http-paraméterek alapján
+### <a name="waf-custom-rules-example-based-on-http-parameters"></a>WAF – példa http-paraméterek alapján
 
-Íme egy példa, amely két egyezési feltételei az egyéni szabály konfigurációját jeleníti meg. Kérelmek adott helyről történő hivatkozó által meghatározott, és lekérdezési karakterlánc nem tartalmaz "password".
+Az alábbi példa egy olyan egyéni szabály konfigurációját mutatja be, amely két egyeztetési feltétellel rendelkezik. A kérések egy adott helyről érkeznek, a referrer által meghatározott módon, és a lekérdezési karakterlánc nem tartalmazza a "password" karaktert.
 
 ```
 # http rules example
@@ -108,7 +109,7 @@ A támogatott értékek például HTTP-kérési metódust:
 }
 
 ```
-Látható egy példa konfiguráció látható "PUT" metódust blokkolásához látható:
+A "PUT" metódust blokkoló konfiguráció például az alábbi módon jelenik meg:
 
 ``` 
 # http Request Method custom rules
@@ -132,9 +133,9 @@ Látható egy példa konfiguráció látható "PUT" metódust blokkolásához l�
 }
 ```
 
-### <a name="size-constraint"></a>Méret-megkötés
+### <a name="size-constraint"></a>Méret korlátozás
 
-Előfordulhat, hogy létrehozhat egy egyéni szabályt, amely meghatározza egy bejövő kérelem részeként méretének korlátja. Például alábbi szabály blokkolja egy URL-címet, amely 100 karakternél hosszabb.
+Létrehozhat egy egyéni szabályt, amely a beérkező kérések egy részében meghatározza a méret megkötését. Az alábbi szabály például egy 100 karakternél hosszabb URL-címet blokkol.
 
 ```
 # http parameters size constraint
@@ -159,6 +160,6 @@ Előfordulhat, hogy létrehozhat egy egyéni szabályt, amely meghatározza egy 
 ```
 
 ## <a name="next-steps"></a>További lépések
-- Ismerje meg [webalkalmazási tűzfal](waf-overview.md)
+- Tudnivalók a [](waf-overview.md) webalkalmazási tűzfalról
 - [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.
 

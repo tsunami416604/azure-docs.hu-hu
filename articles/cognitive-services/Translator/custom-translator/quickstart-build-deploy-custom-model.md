@@ -1,76 +1,76 @@
 ---
-title: 'Gyors útmutató: Elkészítheti, telepítheti és használhatja egy egyéni modell - egyéni a fordítót'
+title: 'Gyors útmutató: Egyéni modell létrehozása, üzembe helyezése és használata – egyéni fordító'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban végigvesszük egy az egyéni translatorral fordítási rendszerek kiépítésének részletes folyamatán.
+description: Ebben a rövid útmutatóban részletesen áttekintheti a fordítási rendszerek létrehozását az egyéni fordító használatával.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: 8f39abd41534ec470b5b4b6f232a556a8c8de5b9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a450a91f29a9118c9e4c83f6bb964bac2d6ffb3c
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449473"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595556"
 ---
-# <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Gyors útmutató: Elkészítheti, telepítheti és használhatja egy egyéni modell a fordítás
+# <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Gyors útmutató: Egyéni modell létrehozása, üzembe helyezése és használata fordításhoz
 
-Ebben a cikkben részletes útmutatást nyújt az egyéni a fordítót a fordítási rendszert hozhat létre.
+Ez a cikk részletes útmutatást nyújt a fordítási rendszer egyéni fordítóval való létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Használatához a [egyéni a fordítót](https://portal.customtranslator.azure.ai) portál, szüksége lesz egy [Microsoft-fiók](https://signup.live.com) vagy [Azure AD-fiók](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (az Azure-ban üzemeltetett szervezeti fiók) való bejelentkezéshez.
+1. Az [Egyéni Translator](https://portal.customtranslator.azure.ai) portál használatához szüksége lesz egy [Microsoft-fiók](https://signup.live.com) vagy [Azure ad](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) -fiókra (az Azure-ban üzemeltetett szervezeti fiókra) a bejelentkezéshez.
 
-2. Az Azure Portalon a Translator Text API-előfizetés. A Translator Text API előfizetési kulcs egyéni a fordítót a munkaterületek társítani kell. Lásd: [hogyan regisztrálhat a Translator Text API](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
+2. Előfizetés a Translator Text API a Azure Portal keresztül. Az egyéni fordítóban a munkaterülethez társítandó Translator Text API előfizetési kulcsra lesz szüksége. Tekintse [meg, hogyan regisztrálhat a Translator Text APIra](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
-3. Ha a fentiek mindegyikét, jelentkezzen be a [egyéni a fordítót](https://portal.customtranslator.azure.ai) portálon. Egyszer az egyéni a fordítót portálon lépjen a beállítások lapot, ahol hozzárendelheti a munkaterület az a Microsoft Translator Text API-előfizetési kulcs.
+3. Ha mindkét fentivel rendelkezik, jelentkezzen be az [Egyéni Translator](https://portal.customtranslator.azure.ai) portálra. Az egyéni Translator Portalon navigáljon a beállítások oldalra, ahol társíthatja a Microsoft Translator Text API előfizetési kulcsát a munkaterületéhez.
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 
-Az egyéni a fordítót portál kezdőlapjáról kattintson új projekt. A párbeszédpanelen adhatja meg a kívánt projekt neve, a nyelvi pár, és a kategória, valamint egyéb megfelelő mezőket. Mentse a projekthez. További részletekért látogasson el [projekt létrehozása](how-to-create-project.md).
+Az egyéni Translator portál kezdőlapján kattintson az új projekt elemre. A párbeszédpanelen megadhatja a kívánt projekt nevét, a nyelvi párokat és a kategóriát, valamint az egyéb releváns mezőket. Ezután mentse a projektet. További részletekért látogasson el a [projekt létrehozása](how-to-create-project.md)lehetőségre.
 
 ![Projekt létrehozása](media/quickstart/ct-how-to-create-project.png)
 
 
 ## <a name="upload-documents"></a>Dokumentumok feltöltése
 
-Ezután töltse fel [képzési](training-and-model.md#training-dataset-for-custom-translator), [hangolása](training-and-model.md#tuning-dataset-for-custom-translator) és [tesztelés](training-and-model.md#testing-dataset-for-custom-translator) dokumentumkészletek. Mindkét feltöltheti [párhuzamos](what-are-parallel-documents.md) és kombinált dokumentumokat. Emellett feltölthet [szótár](what-is-dictionary.md).
+Ezután töltse fel [](training-and-model.md#training-dataset-for-custom-translator)a betanítást, a [hangolást](training-and-model.md#tuning-dataset-for-custom-translator) és a [tesztelési](training-and-model.md#testing-dataset-for-custom-translator) dokumentum-készleteket. Egyszerre több [párhuzamos](what-are-parallel-documents.md) és kombinált dokumentumot is feltölthet. A szótárat is [](what-is-dictionary.md)feltöltheti.
 
-Dokumentumok, a dokumentumok lapról, vagy egy meghatározott projektben lapon tölthet fel.
+A dokumentumokat a dokumentumok lapról vagy egy adott projekt oldaláról töltheti fel.
 
 ![Dokumentumok feltöltése](media/quickstart/ct-how-to-upload.png)
 
-Dokumentumok feltöltésekor válassza ki a dokumentum típusa (képzés, hangolása vagy tesztelés), és a nyelvi pár. Párhuzamos dokumentumok feltöltésekor kell emellett adja meg a dokumentum nevét. További részletekért látogasson el [feltöltési dokumentum](how-to-upload-document.md).
+Dokumentumok feltöltésekor válassza ki a dokumentum típusát (képzés, hangolás vagy tesztelés) és a nyelvi párokat. Párhuzamos dokumentumok feltöltésekor Emellett meg kell adnia egy dokumentum nevét. További részletekért látogasson el a [dokumentum feltöltése](how-to-upload-document.md)elemre.
 
 ## <a name="create-a-model"></a>Modell létrehozása
 
-A szükséges dokumentumok feltöltésekor a rendszer a következő lépés esetén a modell létrehozásához.
+Ha az összes szükséges dokumentumot feltöltötte, a következő lépés a modell felépítése.
 
-Válassza ki a létrehozott projekt. Látni fogja a dokumentumokat Ön által feltöltött, amely egy nyelvi pár megoszthatja a projekthez. Válassza ki a dokumentumok, amelyeket szeretne a modell tartalmazza. Választhat [képzési](training-and-model.md#training-dataset-for-custom-translator), [hangolása](training-and-model.md#tuning-dataset-for-custom-translator), és [tesztelés](training-and-model.md#testing-dataset-for-custom-translator) adatokat, vagy válassza ki, csak a betanítási adatok, és lehetővé teszik egyéni a fordítót automatikusan finomhangolási és teszteli a modell csoportjainak.
+Válassza ki a létrehozott projektet. Ekkor megjelenik az összes feltöltött dokumentum, amely a jelen projekttel közös nyelvi párral rendelkezik. Válassza ki a modellbe felvenni kívánt dokumentumokat. Kiválaszthatja [](training-and-model.md#training-dataset-for-custom-translator)az adatképzést, a [hangolást](training-and-model.md#tuning-dataset-for-custom-translator)és a [tesztelést](training-and-model.md#testing-dataset-for-custom-translator) , vagy kiválaszthatja a csak betanítási adatait, és lehetővé teheti, hogy a Custom Translator automatikusan kiépítse a modell
 
 ![Modell létrehozása](media/quickstart/ct-how-to-train.png)
 
-Amikor elkészült, válassza a kívánt dokumentumokat, kattintson a modell létrehozásához, és indítsa el a tanítási modell létrehozása gombra. Láthatja, hogy a képzés és részleteit, hogy betanított, a modellek lapon minden modell állapotát.
+Ha befejezte a kívánt dokumentumok kiválasztását, kattintson a modell létrehozása gombra a modell létrehozásához és a képzés megkezdéséhez. Megtekintheti a képzés állapotát, valamint az összes betanított modell részleteit a modellek lapon.
 
-További részletekért látogasson el [létrehoz egy modellt](how-to-train-model.md).
+További részletekért látogasson el [a modell létrehozása](how-to-train-model.md)lehetőségre.
 
 ## <a name="analyze-your-model"></a>A modell elemzése
 
-Miután a tanítási sikeresen befejeződött, vizsgálja meg az eredményeket. A BLEU pontszám, amely azt jelzi, hogy a fordítás minősége egy metrika. Manuálisan is összehasonlíthatja a fordítások végzett az egyéni modell a fordítások található a tesztet, állítsa be a "Test" lapot, és kattintson a "Rendszer eredményeket." Manuális ellenőrzést végző fordítások néhány felkínálja a rendszer által előállított fordítási minőség célszerű. További részletekért látogasson el [rendszer teszteredmények](how-to-view-system-test-results.md).
+A képzés sikeres befejezését követően vizsgálja meg az eredményeket. A BLEU pontszám egy mérőszám, amely a fordítás minőségét jelzi. Az egyéni modellel készített fordításokat manuálisan is összehasonlíthatja a tesztek által megadott fordításokkal, ha megnyitja a "teszt" lapot, és a "System Results" (rendszereredmények) gombra kattint. Ezeknek a fordításoknak a manuális megvizsgálása jó képet nyújt a rendszer által létrehozott fordítás minőségéről. További részletekért látogasson el a [System A teszt eredményeira](how-to-view-system-test-results.md).
 
-## <a name="deploy-a-trained-model"></a>A betanított modell üzembe helyezése
+## <a name="deploy-a-trained-model"></a>Betanított modell üzembe helyezése
 
-Ha készen áll a betanított modell üzembe helyezése, kattintson a "Üzembe helyezés" gomb. Használhat egy üzembe helyezett modell projektenként, és megtekintheti a központi telepítés állapotát az Állapot oszlopban. További részletekért látogasson el [modell-üzembehelyezés](how-to-view-system-test-results.md#deploy-a-model)
+Ha készen áll a betanított modell üzembe helyezésére, kattintson az "üzembe helyezés" gombra. Projektenként egy üzembe helyezett modellt is használhat, és az Állapot oszlopban megtekintheti az üzemelő példány állapotát. További részletekért látogasson el a [modell üzembe helyezése](how-to-view-system-test-results.md#deploy-a-model)
 
-![A betanított modell üzembe helyezése](media/quickstart/ct-how-to-deploy.png)
+![Betanított modell üzembe helyezése](media/quickstart/ct-how-to-deploy.png)
 
-## <a name="use-a-deployed-model"></a>Üzembe helyezett modellt
+## <a name="use-a-deployed-model"></a>Üzembe helyezett modell használata
 
-A Microsoft Translator-n keresztül elérhető üzembe helyezett modellnél [Text API v3-as a CategoryID megadásával](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl). A Translator Text API-val kapcsolatos további információk találhatók a [API-referencia](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) weblapon.
+Az üzembe helyezett modellek a Microsoft Translator Text API v3-as verzióján keresztül érhetők [el a Kategóriakód](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)megadásával. A Translator Text APIról további információt az [API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) -referenciát ismertető weblapon találhat.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan navigálhat a [egyéni a fordítót munkaterületen kezelheti a projektjeit és](workspace-and-project.md).
+- Ismerje meg, hogyan navigálhat a [Custom Translator munkaterületen, és hogyan kezelheti a projektjeit](workspace-and-project.md).

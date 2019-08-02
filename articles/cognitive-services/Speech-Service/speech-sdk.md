@@ -1,7 +1,7 @@
 ---
-title: SDK - Speech Services beszédszolgáltatások
+title: A Speech SDK – beszédfelismerés szolgáltatás ismertetése
 titleSuffix: Azure Cognitive Services
-description: A beszédfelismerő szoftver Development Kit (SDK) hozzáférést biztosít az alkalmazások natív a funkciók a beszédfelismerési szolgáltatás így könnyebben fejleszthet szoftvereket. Ez a cikk ismerteti az SDK-t a Windows, Linux- és Android további részleteit.
+description: A Speech szoftverfejlesztői készlet (SDK) natív hozzáférést biztosít az alkalmazásai számára a beszédfelismerési szolgáltatás funkcióihoz, így egyszerűbbé válik a szoftverek fejlesztése. Ez a cikk ismerteti az SDK-t a Windows, Linux- és Android további részleteit.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 120dd4a6a342732f3e07d87786009779d23be829
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c5e12812a4305493be2cdc234946796b21dd26d8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606419"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558936"
 ---
-# <a name="about-the-speech-sdk"></a>Tudnivalók a Speech SDK
+# <a name="about-the-speech-sdk"></a>Tudnivalók a Speech SDK-ról
 
-A beszédfelismerő szoftver Development Kit (SDK) hozzáférést biztosít az alkalmazások a funkciók a beszédszolgáltatások így könnyebben fejleszthet beszédfelismerő szoftver. Jelenleg az SDK-k hozzáférést biztosítanak **hang-szöveg transzformációs**, **szöveg-hang transzformációs**, **beszédalapú fordítási**, **szándékának felismerése**, és **Bot Framework közvetlen vonal beszédfelismerő csatornát**. A funkciók és a támogatott platformok általános áttekintését a dokumentációban található [bejegyzés lap](https://aka.ms/csspeech).
+A Speech szoftverfejlesztői készlet (SDK) lehetővé teszi az alkalmazások számára a beszédfelismerési szolgáltatások funkcióinak elérését, így megkönnyítve a beszédfelismerésre képes szoftverek fejlesztését. Az SDK-k jelenleg hozzáférést biztosítanak a **beszéd-szöveg**, a **szöveg-beszéd**, a **beszédfelismerés**, a **szándék-felismerés**és a **bot-keretrendszer közvetlen vonalas beszéd csatornája**számára. A képességek és a támogatott platformok általános áttekintése a dokumentációs [bejegyzés oldalon](https://aka.ms/csspeech)található.
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
@@ -31,16 +31,16 @@ A beszédfelismerő szoftver Development Kit (SDK) hozzáférést biztosít az a
 
 Az Windows a következő nyelveket támogatja:
 
-* C#(UWP- és .NET), a C++: Hivatkoznak, és a legújabb verzióját használja, a beszéd SDK NuGet-csomagot. A csomag az 32 bites és 64 bites klienskódtárak és felügyelt (.NET) kódtárak tartalmazza. Az SDK-t a Visual Studio NuGet használatával telepíthető. Keresse meg **Microsoft.CognitiveServices.Speech**.
+* C#(UWP és .NET), C++: A Speech SDK NuGet-csomag legfrissebb verzióját is használhatja. A csomag az 32 bites és 64 bites klienskódtárak és felügyelt (.NET) kódtárak tartalmazza. Az SDK-t a Visual Studio NuGet használatával telepíthető. Keresse meg **Microsoft.CognitiveServices.Speech**.
 
-* Java: Hivatkozhat, és a Speech SDK Maven-csomag, amely támogatja a csak a Windows x64 legújabb verzióját használja. A Maven-projektben vegye fel `https://csspeechstorage.blob.core.windows.net/maven/` referencia és további tárház `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0` függőségként.
+* Java: Megtekintheti és használhatja a Speech SDK Maven-csomag legújabb verzióját, amely csak a Windows x64-et támogatja. A Maven-projektben vegye fel `https://csspeechstorage.blob.core.windows.net/maven/` referencia és további tárház `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0` függőségként.
 
 ### <a name="linux"></a>Linux
 
 > [!NOTE]
-> Jelenleg csak az Ubuntu 16.04, Ubuntu 18.04 és a Debian 9 PC (x86 vagy a x64 C++ fejlesztési és a .NET Core, Java és Python x64).
+> Jelenleg csak az Ubuntu 16,04, az C++ Ubuntu 18,04 és a Debian 9 támogatott a számítógépen (x86 vagy x64 fejlesztéshez és x64 for .net Core, Java és Python).
 
-Győződjön meg arról, hogy rendelkezik a szükséges kódtárak telepítése a következő rendszerhéj-parancsok futtatásával:
+A következő rendszerhéj-parancsok futtatásával győződjön meg arról, hogy a szükséges kódtárak telepítve vannak:
 
 On Ubuntu:
 
@@ -49,22 +49,22 @@ sudo apt-get update
 sudo apt-get install libssl1.0.0 libasound2
 ```
 
-A Debian 9-on:
+Debian 9 rendszeren:
 
 ```sh
 sudo apt-get update
 sudo apt-get install libssl1.0.2 libasound2
 ```
 
-* C#: Hivatkoznak, és a legújabb verzióját használja, a beszéd SDK NuGet-csomagot. Az SDK-ra hivatkozik, adja hozzá a következő csomag hivatkozását a projekthez:
+* C#: A Speech SDK NuGet-csomag legfrissebb verzióját is használhatja. Az SDK-ra hivatkozik, adja hozzá a következő csomag hivatkozását a projekthez:
 
   ```xml
   <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.6.0" />
   ```
 
-* Java: Hivatkozhat, és a Speech SDK Maven csomag legújabb verzióját használja. A Maven-projektben vegye fel `https://csspeechstorage.blob.core.windows.net/maven/` referencia és további tárház `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0` függőségként.
+* Java: A Speech SDK Maven-csomag legújabb verziójának hivatkozását és használatát is használhatja. A Maven-projektben vegye fel `https://csspeechstorage.blob.core.windows.net/maven/` referencia és további tárház `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0` függőségként.
 
-* C++: Töltse le az SDK-t, mint egy [.tar-csomag](https://aka.ms/csspeech/linuxbinary) és csomagolja ki a fájlt egy tetszőleges könyvtárban. Az alábbi táblázat az SDK mappastruktúra:
+* C++: Töltse le az SDK-t [. tar](https://aka.ms/csspeech/linuxbinary) -csomagként, és csomagolja ki a fájlokat egy tetszőleges könyvtárba. Az alábbi táblázat az SDK mappastruktúra:
 
   |Útvonal|Leírás|
   |-|-|
@@ -78,7 +78,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
 ### <a name="android"></a>Android
 
-Az Androidhoz készült Java SDK van csomagolva, mint egy [AAR (Androidos függvénytár)](https://developer.android.com/studio/projects/android-library), amely tartalmazza a szükséges kódtárak és Android-engedélyek megadása kötelező. A Maven adattárban található `https://csspeechstorage.blob.core.windows.net/maven/` csomagként `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0`.
+Az Androidhoz készült Java SDK a szükséges kódtárakat és a szükséges Android-engedélyeket tartalmazza. [](https://developer.android.com/studio/projects/android-library) A Maven adattárban található `https://csspeechstorage.blob.core.windows.net/maven/` csomagként `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0`.
 
 Az Android Studio-projektek-csomagot használhat, a következő módosításokat:
 

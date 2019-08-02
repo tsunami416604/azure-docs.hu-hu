@@ -1,6 +1,6 @@
 ---
-title: Figyelés és az Azure Security Centerben a biztonsági események feldolgozása |} A Microsoft Docs
-description: Ismerje meg, hogyan használhatja a Security Center események irányítópultja az Azure virtuális gépek és a nem Azure-beli számítógépekről a biztonsági események megtekintéséhez.
+title: Biztonsági események figyelése és feldolgozása a Azure Security Centerban | Microsoft Docs
+description: Ismerje meg, hogyan használhatja a Security Center Events irányítópultját az Azure-beli virtuális gépekről és a nem Azure-beli számítógépekről származó biztonsági események megtekintéséhez.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,121 +14,119 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: rkarlin
-ms.openlocfilehash: bc0fd83bd45e7c5c671b387d124cdddc75244ade
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 389aaee621251890cd3f75744a94b9c9b29c5695
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64573522"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662401"
 ---
-# <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Figyelés és az Azure Security Centerben a biztonsági események feldolgozása
-Az események irányítópultja egy áttekintést nyújt az idő függvényében, és a figyelmet igénylő jelentős események listája összegyűjtött biztonsági események száma.  
+# <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Biztonsági események figyelése és feldolgozása Azure Security Center
+Az események irányítópult áttekintést nyújt az idő múlásával összegyűjtött biztonsági események számáról, valamint a jelentős események listájáról, amelyekhez szükség lehet a beavatkozásra.  
 
 > [!NOTE]
-> Biztonsági események irányítópultja a 2019. július 31-én megszűnik. További információkat és más szolgáltatások: [a Security Center nyugdíjazási szolgáltatásokat (július 2019)](security-center-features-retirement-july2019.md#menu_events).
+> A biztonsági események irányítópultja a 2019. július 31-én megszűnt. További információ és alternatív szolgáltatások: [Security Center szolgáltatások kivonása (július 2019)](security-center-features-retirement-july2019.md#menu_events).
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
-## <a name="what-is-a-security-event"></a>Mit jelent a biztonsági eseményt?
-A Security Center használja a Microsoft Monitoring Agent a gyűjtése a különböző biztonsági konfigurációkat, és eseményként kapcsolódó gépekről származó, és ezeket az eseményeket az Ön munkaterületeire tárolja. Az ilyen adatok többek között: operációs rendszer naplói (Windows-eseménynaplók), futó folyamatok, és a Security Center integrált biztonsági megoldások eseményeit. A Microsoft Monitoring Agent az összeomlási memóriaképeket is átmásolja a munkaterületeire.
+## <a name="what-is-a-security-event"></a>Mi az a biztonsági esemény?
+A Security Center a Microsoft monitoring Agent használatával gyűjti össze a különböző biztonsági jellegű konfigurációkat és eseményeket a gépekről, és ezeket az eseményeket a munkaterülete (ke) ben tárolja. Ilyen adatok például a következők: az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok és a Security Center integrált biztonsági megoldások eseményei. A Microsoft Monitoring Agent az összeomlási memóriaképeket is átmásolja a munkaterületeire.
 
 ## <a name="requirements"></a>Követelmények
-Ez a funkció használatához a munkaterület legyen a Log Analytics 2-es verzió fut, és a Security Center Standard szintű. Tekintse meg a Security Center [díjszabását ismertető lapon](security-center-pricing.md) további információ a Standard szintre.
+A szolgáltatás használatához a munkaterületnek Log Analytics 2-es verziójúnak kell lennie, és a Security Center Standard szintűnek kell lennie. A standard szintű [](security-center-pricing.md) csomaggal kapcsolatos további információkért tekintse meg a Security Center díjszabási oldalát.
 
-## <a name="events-processed-dashboard"></a>A feldolgozott események irányítópult
-Fér hozzá a **események** a Security Center főmenüjébe, vagy a Security Center irányítópultján **áttekintése** panelen.  
+## <a name="events-processed-dashboard"></a>Feldolgozott események irányítópultja
+Az **események** irányítópultot a Security Center főmenüjéből vagy Security Center **Áttekintés** paneljéről érheti el.  
 
-![A feldolgozott események irányítópult][1]
+![Feldolgozott események irányítópultja][1]
 
-A **események** alatt csempe **a Security Center** események tárfiókba kerülnek a Security Center az Azure virtuális gépek és a nem Azure-beli számítógépek számát jeleníti meg.
+A **Security Center** alatti **események** csempén az Azure-beli virtuális gépekről és a nem Azure-beli számítógépekről Security Center áramló események száma látható.
 
-A **események irányítópultja** az események listája és a feldolgozott események időtúllépések száma nyújt áttekintést.
+Az **események irányítópult** áttekintést nyújt a túlóra feldolgozott eseményeinek számáról és az események listájáról.
 
  ![Irányítópult][2]
 
- Az irányítópult felső részén a trendek a múlt héten feldolgozott összes eseményt. Az alsó felére, az irányítópult jelentős események és az összes esemény típus szerint sorolja fel:
+ Az irányítópult felső fele az összes feldolgozott eseményt feldolgozza az elmúlt héten. Az irányítópult alsó fele a jelentős eseményeket és az összes eseményt listázza a következő típus szerint:
 
- - **Jelentős események** például a Security Center által nyújtott esemény lekérdezések és esemény lekérdezések létrehozása, és adja hozzá. Az irányítópulton is száma, az egyes jelentős események gyors betekintést biztosít.
- - **Összes esemény típus szerint** az eseménytípusok, amely fogadja és az egyes számát jeleníti meg. Esemény típusa példák SecurityEvent, CommonSecurityLog, WindowsFirewall és W3CIISLog.
+ - **Jelentős események** közé tartoznak az Security Center által biztosított és a létrehozott és a hozzájuk kapcsolódó lekérdezések. Az irányítópult gyors áttekintést nyújt az egyes jelentős események számáról.
+ - Az **összes esemény típus szerint** a fogadott eseménytípus, valamint az egyes típusok darabszáma látható. Ilyen típusú események: SecurityEvent, CommonSecurityLog, WindowsFirewall és W3CIISLog.
 
 > [!NOTE]
-> Jelentős események tartalmazzák [webes alapkonfiguráció-értékelés](https://docs.microsoft.com/azure/operations-management-suite/oms-security-web-baseline-assessment). A webes alapkonfiguráció-értékelés célja a potenciálisan sebezhető webkiszolgáló-beállítások megkeresése.
+> Jelentős események közé tartozik a webes alapkonfiguráció- [értékelés](https://docs.microsoft.com/azure/operations-management-suite/oms-security-web-baseline-assessment). A webes alapkonfiguráció-értékelés célja a potenciálisan sebezhető webkiszolgáló-beállítások megkeresése.
 
 ## <a name="view-processed-event-details"></a>Feldolgozott esemény részleteinek megtekintése
-1. Alatt a **a Security Center** fő menüjéből válassza **események**.
-2. A **események irányítópultja** munkaterület-választójában jelenítse meg. Ha csak egy munkaterületet, a munkaterület-választó nem jelenik meg. Ha egynél több munkaterületet, akkor kell válasszon ki egy munkaterületet a feldolgozott esemény részleteinek megtekintése. Válasszon egy munkaterületet a listából, ha egynél több munkaterületet.
+1. A **Security Center** Főmenüben válassza az **események**lehetőséget.
+2. Előfordulhat, hogy az **események irányítópult** -munkaterület-választója meg van nyitva. Ha csak egy munkaterülettel rendelkezik, ez a munkaterület-választó nem jelenik meg. Ha több munkaterülettel rendelkezik, ki kell választania egy munkaterületet a feldolgozott esemény részleteinek megtekintéséhez. Ha több munkaterülettel rendelkezik, válasszon ki egy munkaterületet a listából.
 
-   ![Munkaterület][3]
+   ![Munkaterület-lista][3]
 
-3. A **események irányítópultja** megnyitása, amelyen látható a kijelölt munkaterületre vonatkozó esemény részleteit. A jelentős események és az összes esemény típus szerint tekintheti meg.  Ebben a példában a kiválasztott **jelentős események**.
+3. Megnyílik az **események irányítópult** , amely a kiválasztott munkaterülethez tartozó esemény részleteit jeleníti meg. A jelentős eseményeket és az összes eseményt típus szerint tekintheti meg.  Ebben a példában a **jelentős eseményeket**jelöltük ki.
 
    ![Jelentős esemény][4]
 
-4. A munkaterület az adatok további esemény típusának kiválasztásával lekérdezhető. Ebben a példában a kiválasztott **SecurityEvent**.
+4. Az esemény típusának kiválasztásával a munkaterület alatt több adat is lekérdezhető. Ebben a példában a **SecurityEvent**-t választottuk.
 
    ![Esemény típusának kiválasztása][5]
 
-5. **Naplóbeli keresés** megnyílik a további részleteket az esemény típusa.
+5. Megnyílik a **naplóbeli keresés** , amely további részleteket mutat be az esemény típusától függően.
 
    ![Naplókeresés][6]
 
 ## <a name="add-a-notable-event"></a>Jelentős esemény hozzáadása
-A Security Center-a-beépített jelentős események biztosít. Jelentős események alapján saját lekérdezés használatával adhat hozzá a [Kusto-lekérdezés nyelvi](../log-analytics/log-analytics-search-reference.md). Még visszatérünk a **események irányítópultja** jelentős esemény hozzáadása.
+A Security Center beépített jelentős eseményeket biztosít. A [Kusto lekérdezési nyelv](../log-analytics/log-analytics-search-reference.md)használatával jelentős eseményeket adhat hozzá a saját lekérdezése alapján. Egy jelentős esemény felvételéhez visszatérünk az **események irányítópultra** .
 
-1. Válassza ki **jelentős esemény hozzáadása**.
+1. Válassza a **jelentős esemény hozzáadása**elemet.
 
    ![Jelentős esemény hozzáadása][7]
 
-2. **Egyéni jelentős esemény hozzáadása** nyílik meg.  A **megjelenítendő név**, adjon meg egy nevet a jelentős eseményt. A **keresési lekérdezés**, írja be a lekérdezést az esemény.
+2. **Adja hozzá az egyéni jelentős esemény** megnyitását.  A **megjelenítendő név**mezőben adja meg a jelentős esemény nevét. A **keresési lekérdezés**területen adja meg az esemény lekérdezését.
 
-   ![Írja be a lekérdezést][8]
+   ![Adja meg a lekérdezést][8]
 
 4. Kattintson az **OK** gombra.
 
-## <a name="update-your-workspace-for-events-processing"></a>Események feldolgozása a munkaterület frissítése
-A munkaterület legyen a Log Analytics 2-es verzió fut, és a Security Center Standard szintű, az események feldolgozása a Security Center használatával lehet. A **események irányítópultja** munkaterület-választójában jelenítse azonosítja a munkaterületek, amelyek nem felelnek meg a követelménynek.
+## <a name="update-your-workspace-for-events-processing"></a>Munkaterületek frissítése az események feldolgozásához
+A munkaterületnek Log Analytics 2-es verziójúnak kell lennie, és a Security Center Standard csomagjában kell lennie, hogy az események feldolgozását a Security Centerban használja. Az **események irányítópult** -munkaterület választó azonosítja azokat a munkaterületeket, amelyek nem felelnek meg a követelményeknek.
 
-![Munkaterület nem felel meg a követelményeknek][9]
+![A munkaterület nem felel meg a követelményeknek][9]
 
-Ha a munkaterület sor:
+Ha a munkaterület sora:
 
-- Tartalmaz **frissítés szükséges** -frissítenie kell a munkaterületet a Log Analytics 2-es verzió
-- Tartalmaz **csomag frissítése** – munkaterület frissítése a Security Center Standard szintre kell
-- Üres – a munkaterület megfelel a követelményeknek, és a egy munkaterület kiválasztásával megnyílik az irányítópulton
+- A tartalmaz **frissítést igényel** – frissítenie kell a munkaterületet log Analytics 2-es verzióra
+- **Frissítési tervet** tartalmaz – frissítenie kell a munkaterületet Security Center Standard szintjére.
+- Üres – a munkaterület megfelel a követelményeknek, és kiválasztja a munkaterületet az irányítópulton
 
 > [!NOTE]
-> A **események irányítópultja**, a **események** oszlop azt jelzi, hogy az egyes munkaterületeken események.  Ez az oszlop a Security Center ingyenes érvényes az adott munkaterület azért egyes munkaterületek esetén üres. Az ingyenes szint alatt a Security Center összegyűjti az eseményeket, de az események mentése nem történik meg az Azure Monitor naplóira, és nem érhetők el az irányítópulton.
+> Az események **irányítópult**alatt az **események** oszlop az egyes munkaterületeken lévő események mennyiségét jelzi.  Ez az oszlop egyes munkaterületek esetében üres, mert az adott munkaterületre Security Center ingyenes szintet alkalmaz. Az ingyenes szinten Security Center az eseményeket gyűjti, de az eseményeket nem Azure Monitor naplókba menti, és nem érhetők el az irányítópulton.
 >
 >
 
-## <a name="update-workspace-to-log-analytics-version-2"></a>Munkaterület frissítése a Log Analytics 2-es verzió
-1. Válasszon ki egy munkaterületet, amely **FRISSÍTÉST IGÉNYEL**.
-2. **Keresés a frissítés** nyílik meg. Válassza ki **Frissítsen most**.
+## <a name="update-workspace-to-log-analytics-version-2"></a>Munkaterület frissítése Log Analytics 2. verzióra
+1. Válasszon ki egy **frissítést igénylő**munkaterületet.
+2. Megnyílik a **Keresés frissítése** . Válassza a **Frissítés most**lehetőséget.
 
    ![Frissítsen most][10]
 
-## <a name="upgrade-to-security-centers-standard-tier"></a>A Security Center Standard csomagra
-1. Válasszon ki egy munkaterületet a **csomag frissítése**.
-2. **Események irányítópultja** nyílik meg. Válassza ki **próbálja események irányítópultja**.
+## <a name="upgrade-to-security-centers-standard-tier"></a>Frissítés Security Center Standard szintre
+1. Válasszon ki egy **frissítési tervtel**rendelkező munkaterületet.
+2. Megnyílik az **események irányítópult** . Válassza az **események kipróbálása irányítópult**lehetőséget.
 
-   ![Irányítópult kipróbálása][11]
+   ![Az irányítópult kipróbálása][11]
 
-3. A **speciális biztonsági megoldás előkészítése**, válassza ki a frissíteni kívánt munkaterületet.
-4. A **díjszabási**válassza **Standard**.
+3. A **speciális biztonság**bevezetése területen válassza ki a frissíteni kívánt munkaterületet.
+4. A **díjszabás**területen válassza a **standard**lehetőséget.
 5. Kattintson a **Mentés** gombra.
 
-   ![Standard csomagra][12]
+   ![Frissítés a standard szintre][12]
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, hogyan használhatja a Security Center esemény irányítópultján. Az irányítópult működésével kapcsolatos további, és a saját esemény lekérdezéseket írni, lásd:
+Ebben a cikkben megtanulta, hogyan használhatja a Security Center esemény-irányítópultját. Ha többet szeretne megtudni arról, hogyan működik az irányítópult, és hogyan írhat saját események lekérdezéseit, tekintse meg a következőt:
 
-- [Mi az Azure Monitor naplóira?](../log-analytics/log-analytics-overview.md) – Áttekintés az Azure Monitor naplóira
-- [Naplókereséseit ismertető Kusto](../log-analytics/log-analytics-log-search-new.md) – ismerteti a naplókeresések használata az Azure Monitor naplóira, és megadja a fogalmakat, amelyek előtt létrehozni egy naplókeresést értendő
-- [Kusto keresési referencia](../log-analytics/log-analytics-search-reference.md) – ismerje meg, hogyan írhat saját esemény-lekérdezéseket a lekérdezési nyelv segítségével napló
+- [Mi az Azure Monitor naplók?](../log-analytics/log-analytics-overview.md) – Áttekintés Azure Monitor naplókról
+- A naplóbeli keresések [ismertetése a Kusto-ben](../log-analytics/log-analytics-log-search-new.md) – leírja, hogyan használja a rendszer a naplóbeli kereséseket Azure monitor naplókon, és olyan fogalmakat biztosít, amelyeket érdemes értelmezni a napló keresése
+- [Kusto keresési referenciája](../log-analytics/log-analytics-search-reference.md) – megtudhatja, hogyan írhat saját eseményeket a lekérdezési nyelv használatával a naplóban
 
-A Security Centerrel kapcsolatos további tudnivalókért lásd:
+A Security Centerról további információt a következő témakörben talál:
 
-- [A Security Center – áttekintés](security-center-intro.md) – elküldéséhez a Security Center legfontosabb képességei
+- [Security Center áttekintése](security-center-intro.md) – a Security Center főbb képességeinek ismertetése
 
 <!--Image references-->
 [1]: ./media/security-center-events-dashboard/events-processed.png

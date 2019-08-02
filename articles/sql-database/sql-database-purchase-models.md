@@ -1,6 +1,6 @@
 ---
-title: Vásárlási modellek az Azure SQL Database |} A Microsoft Docs
-description: Ismerje meg, amely elérhető az Azure SQL Database-beszerzési modell.
+title: Azure SQL Database beszerzési modellek | Microsoft Docs
+description: Ismerje meg a Azure SQL Database számára elérhető vásárlási modelleket.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,139 +10,138 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 04/26/2019
-ms.openlocfilehash: 98c19732c372fbcda3ca8e746d002f94c2687b22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 98d257c28ab5ff2cf902c0b8205ac8918ccf4d45
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431370"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567005"
 ---
-# <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>A vcore magok és a dtu-k vásárlási modellek közül választhat
+# <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>A virtuális mag és a DTU beszerzési modelljei közül választhat
 
-Az Azure SQL Database egy teljes körűen felügyelt platformmal könnyedén beszerzés a platformszolgáltatás (PaaS) adatbázis-kezelő a teljesítménnyel és költségekkel igényeinek leginkább teszi lehetővé. Úgy döntött, az Azure SQL Database üzemi modelljétől függően válassza ki az Ön számára legmegfelelőbb beszerzési modell:
+Azure SQL Database segítségével egyszerűen vásárolhat egy teljes körűen felügyelt, szolgáltatásként nyújtott platformot, amely megfelel a teljesítményének és a költséghatékonyságnak. A Azure SQL Database kiválasztott üzemi modelltől függően kiválaszthatja az Önnek megfelelő vásárlási modellt:
 
-- [Virtuális mag (más néven vCore)-alapú vásárlási modell](sql-database-service-tiers-vcore.md) (ajánlott). A vásárlási modell lehetővé teszi a választást a kiépített számítási kapacitás és a egy kiszolgáló nélküli (előzetes verzió) számítási szint között. És a kiépített számítási réteg ki az alkalmazások és szolgáltatások mindig felhasznált számítási erőforrások pontos mennyisége. A kiszolgáló nélküli számítási kapacitás, határozhat meg a számítási erőforrások automatikus méretezése egy konfigurálható compute-tartományban. Ez a számítási teljesítményszint, az automatikusan is is szüneteltetése és folytatása az adatbázis-munkaterhelés tevékenységek alapján. A virtuális mag egységár egységenként idő a kiépített számítási rétegben alacsonyabb, mint a kiszolgáló nélküli számítási szinten van.
-- [Adatbázis-tranzakciós egységek (DTU)-alapú vásárlási modell](sql-database-service-tiers-dtu.md). A vásárlási modell a leggyakoribb munkaterhelésekhez elosztott terhelésű csomagolt számítási és tárolási csomagokat biztosít.
+- [Virtual Core (virtuális mag)-alapú beszerzési modell](sql-database-service-tiers-vcore.md) (ajánlott). Ez a vásárlási modell a kiépített számítási szintek és a kiszolgáló nélküli (előzetes verzió) számítási szintek közötti választást biztosítja. A kiépített számítási szinten kiválaszthatja a számítási erőforrások pontos mennyiségét, amelyek mindig kiépítve vannak a munkaterheléshez. A kiszolgáló nélküli számítási szinten megadhatja a számítási erőforrások automatikus skálázását egy konfigurálható számítási tartományon. Ezzel a számítási szinten automatikusan szüneteltetheti és folytathatja az adatbázist a munkaterhelés-tevékenység alapján. A virtuális mag egység ára (egységenként) alacsonyabb a kiépített számítási szinten, mint a kiszolgáló nélküli számítási szinten.
+- [Adatbázis-tranzakciós egység (DTU) alapú beszerzési modell](sql-database-service-tiers-dtu.md). Ez a beszerzési modell a közös számítási feladatokhoz kiegyensúlyozott, kötegelt számítási és tárolási csomagokat biztosít.
 
-Különböző vásárlási modell a különböző Azure SQL Database üzembe helyezési modellek számára érhetők el:
+Különböző beszerzési modellek érhetők el különböző Azure SQL Database üzembe helyezési modellekhez:
 
-- A [önálló adatbázis](sql-database-single-databases-manage.md) és [rugalmas készlet](sql-database-elastic-pool.md) üzembe helyezési lehetőségei a [Azure SQL Database](sql-database-technical-overview.md) egyaránt kínál a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
-- A [felügyelt példány](sql-database-managed-instance.md) csak kínál az Azure SQL Database üzembe helyezési lehetősége a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
-- A [nagy kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md) érhető el, amelyek az önálló adatbázisok számára a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
+- [Azure SQL Database](sql-database-technical-overview.md) az [önálló adatbázis](sql-database-single-databases-manage.md) és a [rugalmas készlet](sql-database-elastic-pool.md) üzembe helyezési lehetőségei a [DTU-alapú vásárlási modellt](sql-database-service-tiers-dtu.md) és a [virtuális mag-alapú vásárlási modellt](sql-database-service-tiers-vcore.md)is biztosítanak.
+- Azure SQL Database a [felügyelt példány](sql-database-managed-instance.md) központi telepítési lehetősége csak a [virtuális mag-alapú vásárlási modellt](sql-database-service-tiers-vcore.md)kínálja.
+- A [nagy kapacitású szolgáltatási réteg](sql-database-service-tier-hyperscale.md) a [virtuális mag-alapú vásárlási modellt](sql-database-service-tiers-vcore.md)használó önálló adatbázisokhoz érhető el.
 
-Az alábbi táblázatos és hasonlítsa össze a Virtuálismag-alapú és a DTU-alapú beszerzési modell:
+A következő táblázat és diagram hasonlítja össze a virtuális mag-alapú és a DTU-alapú vásárlási modelleket:
 
-|**Beszerzési modell**|**Leírás**|**A legjobb**|
+|**Vásárlási modell**|**Leírás**|**Legjobb a következőhöz:**|
 |---|---|---|
-|DTU-alapú modell|Ez a modell csomagolt méri, számítási, tárolási és i/o-erőforrások alapján. A Dtu az önálló adatbázisok és a rugalmas database transaction unitok (Edtu) rugalmas készletek számítási méretek ki. További információ a dtu-król és edtu-k: [Mik a dtu-król és edtu-k?](sql-database-purchase-models.md#dtu-based-purchasing-model).|A legjobb erőforrás egyszerű, előre konfigurált beállítások használni.|
-|vCore-alapú modell|Ez a modell lehetővé teszi a számítási és tárolási erőforrások egymástól függetlenül kiválasztását. A Virtuálismag-alapú vásárlási modell azt is lehetővé teszi, hogy [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) költségmegtakarítást biztosítanak.|Legjobb ügyfelek esetében, akik a rugalmasságot, a szabályozhatóság, és értékét.|
+|DTU-alapú modell|Ez a modell a számítási, tárolási és I/O-erőforrások kötegelt mérőszámán alapul. A számítási méretek az önálló adatbázisok és a rugalmas készletekhez tartozó rugalmas adatbázis-tranzakciós egységek (Edtu) DTU vannak kifejezve. További információ a DTU és a Edtu: [Mi a DTU és a edtu?](sql-database-purchase-models.md#dtu-based-purchasing-model).|A legjobb az egyszerű, előre konfigurált erőforrás-beállításokkal rendelkező ügyfelek számára.|
+|vCore-alapú modell|Ez a modell lehetővé teszi a számítási és tárolási erőforrások egymástól független kiválasztását. A virtuális mag-alapú vásárlási modell azt is lehetővé teszi, hogy a megtakarítások megszerzéséhez a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) is használja.|A legjobb megoldás a rugalmasságot, a vezérlést és az átláthatóságot biztosító ügyfelek számára.|
 ||||  
 
-![díjszabási modellek összehasonlítása](./media/sql-database-service-tiers/pricing-model.png)
+![díjszabási modell összehasonlítása](./media/sql-database-service-tiers/pricing-model.png)
 
-## <a name="compute-costs"></a>Számítási költségeit
+## <a name="compute-costs"></a>Számítási költségek
 
-### <a name="provisioned-compute-costs"></a>Kiépített számítási költségei
+### <a name="provisioned-compute-costs"></a>Kiépített számítási költségek
 
-A kiépített számítási kapacitás a számítási költségeket az összes számítási kapacitás, amely ki van építve az alkalmazás jeleníti meg.
+A kiépített számítási szinten a számítási díj az alkalmazás számára kiépített teljes számítási kapacitást tükrözi.
 
-Az üzleti kritikus szolgáltatási rétegben hogy automatikusan lefoglalni a legalább 3 replika. A számítási erőforrások a további lefoglalási megfelelően, a körülbelül 2.7 x kritikus fontosságú üzleti szolgáltatásszinten magasabb, mint az általános célú szolgáltatásszinten lévő szolgáltatás díja az a Virtuálismag-alapú vásárlási modell. Hasonlóképpen a magasabb tárolási GB-onként kritikus fontosságú üzleti szolgáltatásszinten díjak a nagy i/o és alacsony késést az SSD-tárhelyet.
+Az üzleti szempontból kritikus szolgáltatási szinten a rendszer automatikusan legalább 3 replikát foglal le. A számítási erőforrások további kiosztásának megjelenítéséhez a virtuális mag-alapú vásárlási modell ára körülbelül 2,7 x, ami az üzleti szempontból kritikus szolgáltatási szinten meghaladja az általános célú szolgáltatási szintet. Hasonlóképpen, az üzleti szempontból kritikus szolgáltatási szinten az egyes GB-nál nagyobb tárolási díj az SSD-tároló magas I/O-és kis késését tükrözi.
 
-A költség, a biztonsági mentési tár megegyezik az üzleti kritikus fontosságú szolgáltatási szint és az általános célú szolgáltatási rétegben, mert mindkét csomag a standard szintű tárolást használnak.
+A biztonsági mentési tár díja ugyanaz, mint az üzleti szempontból kritikus szolgáltatási szint és az általános célú szolgáltatási szint esetében, mivel mindkét szint szabványos tárterületet használ.
 
-### <a name="serverless-compute-costs"></a>Kiszolgáló nélküli számítási költségei
+### <a name="serverless-compute-costs"></a>Kiszolgáló nélküli számítási költségek
 
-A kiszolgáló nélküli számítási kapacitás hogyan van definiálva a számítási kapacitást leírását és a költségek kiszámítása, lásd: [SQL Database kiszolgáló nélküli (előzetes verzió)](sql-database-serverless.md).
+A számítási kapacitás meghatározása és a költségek kiszámításának leírása a kiszolgáló nélküli számítási szinten: [SQL Database kiszolgáló nélküli (előzetes verzió)](sql-database-serverless.md).
 
 ## <a name="storage-costs"></a>Tárolási költségek
 
-Különböző típusú tárolóhelyek eltérően számítjuk fel. Az adattárolás függetlenül díjkötelesek a felhasznált tárterület alapján választja maximális adatbázis vagy készlet méretét. Díja nem változik, kivéve, ha csökkentse vagy növelje a legnagyobb. Biztonsági mentési tár a példány automatizált biztonsági mentések társított, és dinamikusan le van foglalva. A biztonsági mentési tár a példány által felhasznált biztonsági mentési-megőrzési időszakának kiterjesztésével nő.
+A különböző típusú tárolók számlázása másképp történik. Az adattárolás esetében a kiosztott tárterületért kell fizetnie, amely a kiválasztott adatbázis vagy készlet maximális mérete alapján történik. A díj nem változik, hacsak nem csökkenti vagy nem emeli a maximális értéket. A biztonsági mentési tár a példányának automatizált biztonsági másolatához van társítva, és dinamikusan van lefoglalva. A biztonsági mentés megőrzési időtartamának növelése növeli a példány által felhasznált biztonsági mentési tárterületet.
 
-Alapértelmezés szerint 7 napi automatikus biztonsági másolatokat az adatbázisok írásvédett georedundáns tárolás (RA-GRS) standard szintű Blob storage-fiók lesz másolva. Ezt a tárolót a heti teljes biztonsági mentésekhez, a napi differenciális biztonsági mentésekhez és a tranzakciós naplók biztonsági mentését, amelyeket a rendszer másol át 5 percenként használják. A tranzakciónapló mérete attól függ, hogy az adatbázis a változási gyakoriság. Egy az adatbázis méretének 100 %-os egyenlő minimális tárterület keletkezett külön díjfizetés nélkül van megadva. További használati a biztonsági mentési tár díjszabásának GB / hó.
+Alapértelmezés szerint az adatbázisok 7 napos automatikus biztonsági mentését egy olvasási hozzáférésű geo-redundáns tárolási (RA-GRS) standard blob Storage-fiókba másolja a rendszer. Ezt a tárolót a heti teljes biztonsági mentések, a napi különbözeti biztonsági másolatok, valamint a tranzakciós naplók biztonsági másolatai használják, amelyek 5 percenként másolódnak át. A tranzakciós naplók mérete az adatbázis változásának mennyiségétől függ. Az adatbázis méretének 100%-ának megfelelő minimális tárterület külön díj nélkül elérhető. A biztonsági mentési tár további felhasználásának díja GB/hó.
 
-Tárolási díjszabás kapcsolatos további információkért lásd: a [díjszabás](https://azure.microsoft.com/pricing/details/sql-database/single/) lapot.
+A tárolási díjszabással kapcsolatos további információkért tekintse [](https://azure.microsoft.com/pricing/details/sql-database/single/) meg az árképzést ismertető oldalt.
 
 ## <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell
 
-Virtuális mag (más néven vCore) egy logikai CPU, és felajánlja, hogy hardver generációja és fizikai jellemzők a hardvert (például a magok, memória és a tárméret száma) közül választhat. A Virtuálismag-alapú vásárlási modell lehetővé teszi, rugalmasság, a vezérlő, egyéni erőforrás-használat átláthatósága, és a közvetlen módon lefordítani a helyszíni tevékenységprofil követelményeinek a felhőben. Ez a modell lehetővé teszi, hogy válassza ki a munkaterhelés igényei alapján számítási, memória és tárolási erőforrásokat.
+A virtuális mag (virtuális mag) a logikai CPU-t jelöli, és lehetőséget nyújt a hardver és a hardver fizikai jellemzőinek (például a magok, a memória és a tárterület méretének) a kiválasztására. A virtuális mag-alapú vásárlási modell rugalmasságot, irányítást, átláthatóságot biztosít az egyes erőforrások fogyasztása terén, és egy egyszerű módszert kínál a helyszíni munkaterhelés-követelmények felhőbe való lefordítására. Ez a modell lehetővé teszi a számítási, a memória-és a tárolási erőforrások kiválasztását a munkaterhelés igényei alapján.
 
-A Virtuálismag-alapú vásárlási modell, választhat a [általános célú](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) és [üzletileg kritikus](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) a szolgáltatásszintek [önálló adatbázisok](sql-database-single-database-scale.md), [ rugalmas készletek](sql-database-elastic-pool.md), és [felügyelt példányai](sql-database-managed-instance.md). Az önálló adatbázisokhoz is választhat a [nagy kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md).
+A virtuális mag-alapú vásárlási modellben választhat az [általános célú](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) és az [üzleti szempontból kritikus](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) szolgáltatási szintek közül az [önálló adatbázisok](sql-database-single-database-scale.md), a [rugalmas készletek](sql-database-elastic-pool.md)és a [felügyelt példányok](sql-database-managed-instance.md)között. Önálló adatbázisok esetén a [nagy kapacitású szolgáltatási szintet](sql-database-service-tier-hyperscale.md)is kiválaszthatja.
 
-A Virtuálismag-alapú vásárlási modell lehetővé teszi, hogy egymástól függetlenül válassza ki a számítási és tárolási erőforrások, a helyszíni teljesítmény és ár optimalizálása. A Virtuálismag-alapú vásárlási modell fizet:
+A virtuális mag-alapú vásárlási modell lehetővé teszi a számítási és tárolási erőforrások egymástól független kiválasztását, a helyszíni teljesítmény egyeztetését és az árak optimalizálását. A virtuális mag-alapú vásárlási modellben a következőket kell fizetnie:
 
-- Számítási erőforrások (a szolgáltatási rétegben + virtuális magok száma és a memória és a hardver generációja mennyisége).
-- A típus és adat- és naplófájlok tárterület mérete.
-- Biztonsági mentési tárolás (RA-GRS).
+- Számítási erőforrások (a szolgáltatási szintek és a virtuális mag száma, valamint a memória mennyisége és a hardverek generálása).
+- Az adatmennyiség és a naplózási tároló típusa és mennyisége.
+- Biztonsági mentési tár (RA-GRS).
 
 > [!IMPORTANT]
-> A számítási erőforrások, i/o és adat- és naplófájlok tárolási adatbázisához vagy rugalmas készletéhez díját tartalmazza. Biztonsági másolati tárhely számlázása az egyes adatbázisok. Felügyelt példány díjak kapcsolatos további információkért lásd: [felügyelt példányai](sql-database-managed-instance.md).
-> **Régió korlátozások:** A támogatott régiók aktuális listájáért lásd: [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Felügyelt példány létrehozása, amely jelenleg nem támogatott régióban [küldjön egy támogatási kérést az Azure Portalon keresztül](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
+> A számítási erőforrások, az I/O-műveletek, valamint az adatok és a naplók tárolása adatbázis vagy rugalmas készlet alapján történik. A biztonsági mentési tárterületet minden adatbázis alapján számítjuk fel. A felügyelt példányok díjaival kapcsolatos további [](sql-database-managed-instance.md)információkért lásd: felügyelt példányok.
+> **Régióra vonatkozó korlátozások:** A támogatott régiók aktuális listájáért lásd: [régiók által elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Ha felügyelt példányt szeretne létrehozni olyan régióban, amely jelenleg nem támogatott, [küldjön egy támogatási kérést a Azure Portalon keresztül](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
 
-Ha az önálló adatbázis vagy a rugalmas készletet használ fel, több mint 300 dtu-k, a Virtuálismag-alapú vásárlási modell konvertálása előfordulhat, hogy csökkentse a költségeket. A választott API-val vagy az Azure Portallal, leállás nélkül konvertálhatja. Átalakítás azonban nincs szükség, és nem történik meg automatikusan. Ha a DTU-alapú vásárlási modell felel meg a teljesítmény- és üzleti követelményeinek, akkor továbbra is használja azt.
+Ha az önálló adatbázis vagy a rugalmas készlet több mint 300 DTU használ, akkor a virtuális mag-alapú vásárlási modellre való áttérés csökkentheti a költségeket. A konverziót a választható API-k használatával vagy a Azure Portal használatával végezheti el állásidő nélkül. Azonban a konverzió nem szükséges, és nem történik meg automatikusan. Ha a DTU-alapú vásárlási modell megfelel a teljesítményre és az üzleti követelményekre, akkor továbbra is használja.
 
-A DTU-alapú vásárlási modell konvertálható a Virtuálismag-alapú vásárlási modell, válasszon a következő szabályok költségcsökkenést eredményezzen az a számítási méret:
+A DTU-alapú vásárlási modellről a virtuális mag-alapú vásárlási modellre való áttéréshez válassza ki a számítási méretet a következő hüvelykujj-szabályok használatával:
 
-- A standard szintű minden 100 dtu-k az általános célú szolgáltatási rétegben legalább 1 virtuális mag szükséges.
-- A prémium szintű minden 125 dtu-k az üzleti kritikus szolgáltatási rétegben legalább 1 virtuális mag szükséges.
+- A standard szint 100 DTU legalább 1 virtuális mag kell rendelkeznie az általános célú szolgáltatási szinten.
+- A prémium szintű csomag 125 DTU legalább 1 virtuális mag kell lennie az üzleti szempontból kritikus szolgáltatási szinten.
 
 ## <a name="dtu-based-purchasing-model"></a>DTU-alapú vásárlási modell
 
-Egy adatbázis-tranzakciós egységek (DTU) a CPU, memória, olvasási és írási műveletek összesített mérésén jelöli. A DTU-alapú vásárlási modell előre konfigurált kötegek számítási erőforrások olyan készletét kínálja, és belefoglalt tárterület teljesítményszintek különböző alkalmazásteljesítmény. Igény szerint az egyszerűség, rögzített nagyságú befizetések és a egy előre konfigurált csomaggal minden hónapban a DTU-alapú modell bizonyára jobban megfelel az igényeinek lehet.
+Az adatbázis-tranzakciós egység (DTU) a processzor, a memória, az olvasás és az írás kevert mértékét jelöli. A DTU-alapú vásárlási modell a számítási erőforrások előre konfigurált kötegeit és az alkalmazások különböző szintjeinek megadását is biztosítja. Ha az előre konfigurált kötegek és a havonta rögzített kifizetések egyszerűségét részesíti előnyben, a DTU-alapú modell megfelelőbb lehet az Ön igényeinek megfelelően.
 
-A DTU-alapú vásárlási modell, választhat a basic, standard és prémium szintű szolgáltatási csomagok esetében is [önálló adatbázisok](sql-database-single-database-scale.md) és [rugalmas készletek](sql-database-elastic-pool.md). A DTU-alapú vásárlási modell nem érhető el a [felügyelt példányai](sql-database-managed-instance.md).
+A DTU-alapú vásárlási modellben választhat az alapszintű, a standard és a prémium szolgáltatási szint közül mind az [önálló adatbázisok](sql-database-single-database-scale.md) , mind a [rugalmas készletek](sql-database-elastic-pool.md)esetében. A DTU-alapú beszerzési modell nem érhető el [](sql-database-managed-instance.md)a felügyelt példányok számára.
 
-### <a name="database-transaction-units-dtus"></a>Adatbázis-tranzakciós egységek (Dtu)
+### <a name="database-transaction-units-dtus"></a>Adatbázis-tranzakciós egységek (DTU)
 
-Egy önálló adatbázis egy adott számítási méret belül egy [szolgáltatásszint](sql-database-single-database-scale.md), a Microsoft garantálja, hogy az adatbázis-erőforrások bizonyos szintű (függetlenül a minden más adatbázis az Azure-felhőben). Ez garantálja a kiszámítható szintű teljesítményt biztosít. Az adatbázishoz lefoglalt erőforrások mennyisége számítjuk ki a dtu-k számát, hogy, és a egy csomagolt számítási, tárolási és i/o-erőforrások mértékegysége.
+A Microsoft a [szolgáltatási](sql-database-single-database-scale.md)szinten meghatározott számítási méretekben egyetlen adatbázis esetében garantálja az adott adatbázishoz tartozó erőforrások bizonyos szintjét (amely független az Azure-felhőben található többi adatbázistól). Ez a garancia kiszámítható szintű teljesítményt nyújt. Az adatbázishoz lefoglalt erőforrások mennyisége DTU számú, és a számítási, tárolási és I/O-erőforrások kötegelt mérőszáma.
 
-Ezek a források között aránya eredetileg határozza- [online tranzakciófeldolgozás (OLTP) számítási](sql-database-benchmark-overview.md) tipikus valós OLTP-munkaterhelések. Ha a számítási feladat a következő erőforrások mennyisége meghaladja, az átviteli sebességet szabályozva, és eredményez a lassabb teljesítménnyel és időtúllépésekkel kapcsolatban.
+Az ilyen erőforrások arányát eredetileg egy [online tranzakció-feldolgozási (OLTP) teljesítményteszt-számítási](sql-database-benchmark-overview.md) feladat határozza meg, amely a valós OLTP munkaterhelésekre jellemző. Ha a munkaterhelés meghaladja az ilyen erőforrások mennyiségét, az átviteli sebesség szabályozása megtörténik, ami lassabb teljesítményt és időtúllépést eredményez.
 
-A számítási feladatok által használt erőforrások nem érinti az Azure-felhőben más SQL-adatbázisok számára elérhető erőforrások. Hasonlóképpen a más számítási feladatok által használt erőforrások ne befolyásolják az SQL-adatbázis számára elérhető erőforrások.
+A munkaterhelés által használt erőforrások nem érintik az Azure-felhőben más SQL-adatbázisok számára elérhető erőforrásokat. Hasonlóképpen, a más munkaterhelések által használt erőforrások nem érintik az SQL-adatbázis számára elérhető erőforrásokat.
 
 ![határolókeret](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-Dtu-k leghasznosabbak a relatív különböző számítási méretekre és szolgáltatási szintet, az Azure SQL Database-adatbázisok számára lefoglalt erőforrások megértésében. Példa:
+A DTU leghasznosabb az Azure SQL Database-adatbázisok számára a különböző számítási méreteken és szolgáltatási szinteknél lefoglalt relatív erőforrások megismerése. Példa:
 
-- A Dtu megduplázása egy adatbázis számítási méretének növelését-adatbázisnak felel meg az adatbázis számára elérhető erőforrások készletét kétszeresére.
-- Prémium szintű szolgáltatási szint P11 adatbázis 1750 Dtu-val biztosít 350 x több DTU számítási teljesítményt, mint egy alapszintű szolgáltatási szintű adatbázis 5 Dtu-val.  
+- A DTU megkettőzése az adatbázis számítási méretének növelésével egyenlő az adatbázis számára elérhető erőforrások készletének megkettőzésével.
+- A prémium szintű szolgáltatási szint P11-adatbázisa és a 1750 DTU 350x több DTU számítási teljesítményt nyújt, mint az alapszintű szolgáltatási szint adatbázisa 5 DTU.  
 
-Mélyebb betekintést nyerhet a (DTU) erőforrás-használat, a számítási feladat, használja a [lekérdezés Teljesítményelemzés](sql-database-query-performance.md) való:
+A számítási feladatok erőforrás-(DTU-) felhasználásának mélyebb megismeréséhez használja a [lekérdezési teljesítmény](sql-database-query-performance.md) elemzését a következőre:
 
-- A leggyakoribb lekérdezések azonosíthatja a CPU/időtartama/végrehajtások száma, amely potenciálisan hangolásával a jobb teljesítmény érdekében. Ha például az I/O-igényes lekérdezések előnyös lehet [memórián belüli optimalizálási technikákat](sql-database-in-memory.md) , hogy jobban kihasználja a rendelkezésre álló memória, egy adott szolgáltatásszintet, a számítási méret.
-- Megtekintheti az szöveg- és az erőforrások használati előzményeit, a lekérdezés a részletek feltárásához.
-- Teljesítmény-finomhangolási ajánlásait által végzett műveleteket megjelenítő eléréséhez [az SQL Database Advisor](sql-database-advisor.md).
+- A processzor/időtartam/végrehajtás száma alapján azonosíthatja a leggyakoribb lekérdezéseket, amelyek a jobb teljesítmény érdekében megadhatók. Az I/O-igényes lekérdezések például hasznosak lehetnek a memórián belüli [optimalizálási technikákban](sql-database-in-memory.md) , hogy a rendelkezésre álló memória jobban használható legyen bizonyos szolgáltatási szinten és számítási méretekben.
+- A lekérdezés részleteinek részletezése a szöveg és az erőforrás-használat előzményeinek megtekintéséhez.
+- A [SQL Database Advisor](sql-database-advisor.md)által végrehajtott műveleteket bemutató teljesítmény-hangolási javaslatok elérése.
 
-### <a name="elastic-database-transaction-units-edtus"></a>A rugalmas database transaction unitok (edtu-k)
+### <a name="elastic-database-transaction-units-edtus"></a>Rugalmas adatbázis-tranzakciós egységek (Edtu)
 
-SQL-adatbázisok, amelyek mindig elérhető, hanem dedikált erőforráskészletek (dtu-k), előfordulhat, hogy nem mindig lehet szükséges, adja meg, mint elhelyezhet ezeknek az adatbázisoknak az egy [rugalmas készlet](sql-database-elastic-pool.md). A rugalmas készletben található adatbázisok egy Azure SQL Database-kiszolgálón, és megoszthatja az erőforrásokat.
+Olyan SQL-adatbázisok esetén, amelyek mindig elérhetők, és nem kell olyan dedikált erőforrásokat (DTU) biztosítani, amelyek esetleg nem mindig szükségesek, az adatbázisok [rugalmas készletbe](sql-database-elastic-pool.md)helyezhetők. A rugalmas készletben lévő adatbázisok egyetlen Azure SQL Database-kiszolgálón találhatók, és megoszthatják az erőforrások készletét.
 
-A rugalmas készletek megosztott erőforrásainak rugalmas database transaction unitok (edtu-k) vannak megadva. Rugalmas készletek egyszerű és költséghatékony megoldást, amelyek felhasználási módja nagy mértékben és kiszámíthatatlanul változik a használati minták több adatbázisok teljesítménybeli céljainak kezelésére nyújtanak. Rugalmas készlet garantálja, hogy minden erőforrás nem tudják használni a készletben egy adatbázis biztosítva, hogy a készletben lévő minden egyes adatbázishoz mindig rendelkezik egy minimálisan szükséges erőforrások rendelkezésre.
+A rugalmas készletben lévő megosztott erőforrásokat rugalmas adatbázis-tranzakciós egységekkel (Edtu) mérjük. A rugalmas készletek egyszerű, költséghatékony megoldást biztosítanak a teljesítménybeli célok kezelésére több, széles körben változó és kiszámíthatatlan használati mintázattal rendelkező adatbázis esetében. A rugalmas készlet garantálja, hogy az összes erőforrást nem lehet felhasználni a készlet egyik adatbázisa, miközben gondoskodik arról, hogy a készletben lévő összes adatbázishoz mindig rendelkezésre álljon legalább egy szükséges erőforrás.
 
-A készlethez adott számú edtu-k rögzített áron. A rugalmas készlet különálló adatbázisok az automatikus méretezés a konfigurált határok is. Egy adatbázis egy nagyobb terhelés alatt további edtu-t, igény szerint fog felhasználni. Világosabb terhelések adatbázisoknak kevesebb edtu-k. Semmilyen terhelést az adatbázisok edtu-k nem használnak fel. Erőforrások kiépítése a teljes készlet számára, nem pedig adatbázisonként, mert a rugalmas készletek a kezelési feladatok egyszerűsítéséhez, és adja meg a készlet kiszámítható költségekkel.
+Egy készlethez megadott számú Edtu van megadva. A rugalmas készletben az egyes adatbázisok a beállított határokon belül is méretezhetők. A nehezebb terhelésű adatbázisok több Edtu használnak az igények kielégítése érdekében. Az öngyújtós terhelés alatt álló adatbázisok kevesebb Edtu fognak használni. A terhelés nélküli adatbázisok nem fognak Edtu használni. Mivel az erőforrások a teljes készlethez vannak kiépítve, nem pedig adatbázis helyett, a rugalmas készletek egyszerűbbé teszik a felügyeleti feladatokat, és kiszámítható költségvetést biztosítanak a készlet számára.
 
-Leállnának, és nincs hatással a készletben található adatbázisok a létező készletekhez további edtu-k is hozzáadhat. Hasonlóképpen ha már nincs szüksége Edtu, távolítsa el őket a meglévő készletekből bármikor. Akkor is is adatbázisok adatbázisok hozzáadhatók vagy kivonhatók készletből bármikor. Edtu-kat más adatbázisok számára lefoglalni egy adatbázist egy nagy terhelés alatt használható edtu-k számának korlátozásához. Ha az adatbázis konzisztens módon underuses erőforrásokat, kiveheti a készlet, és azt konfigurálja egy önálló adatbázist egy előre meghatározott szükséges erőforrásokat.
+Hozzáadhat további Edtu az adatbázis-leállás nélküli meglévő készletekhez, és nem befolyásolhatja a készletben lévő adatbázisokat. Hasonlóképpen, ha már nincs szüksége további Edtu, távolítsa el őket egy meglévő készletből. Az adatbázisokat a készletből bármikor hozzáadhatók vagy kivonhatók. A Edtu más adatbázisokhoz való lefoglalásához korlátozza az adatbázisok nagy terhelés alatt használható Edtu számát. Ha egy adatbázis következetesen erőforrásokat használ, helyezze át a készletből, és konfigurálja egyetlen adatbázisként a szükséges erőforrások kiszámítható mennyiségével.
 
-### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>A munkaterhelés szerint szükséges dtu-k számának meghatározása
+### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>A munkaterhelés által igényelt DTU számának meghatározása
 
-Ha szeretne áttelepíteni egy meglévő helyszíni vagy SQL Server virtuális gépeken futó számítási feladatokat az Azure SQL Database használata a [DTU-kalkulátor](https://dtucalculator.azurewebsites.net/) segítségével megbecsülheti a szükséges dtu-k számát. Egy meglévő Azure SQL Database-munkaterhelések esetében használjon [lekérdezés Teljesítményelemzés](sql-database-query-performance.md) az adatbázis-erőforrás-használat (dtu-k) és mélyebb betekintést a számítási feladatok optimalizálásához. A [sys.dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) dinamikus felügyeleti nézet (DMV) megtekintheti az erőforrás-használat az elmúlt egy óra. A [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) katalógusnézet erőforrás-használat az elmúlt 14 napra vonatkozó, de átlagosan öt perces átlagolással jeleníti meg.
+Ha meglévő helyszíni vagy SQL Server virtuális gépek munkaterhelését szeretné áttelepíteni Azure SQL Databasere, a [DTU-kalkulátor](https://dtucalculator.azurewebsites.net/) használatával közelítse meg a szükséges DTU számát. Meglévő Azure SQL Database számítási feladatokhoz használja a [lekérdezési teljesítménnyel](sql-database-query-performance.md) kapcsolatos elemzéseket az adatbázis-erőforrás-felhasználás (DTU) megismeréséhez, és mélyebb elemzéseket kaphat a számítási feladatok optimalizálásához. A [sys. DM _db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) dinamikus felügyeleti nézet (DMV) lehetővé teszi az elmúlt órában az erőforrás-felhasználás megtekintését. A [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) Catalog nézet az elmúlt 14 napban az erőforrás-felhasználást jeleníti meg, de az átlagosan öt percenkénti átlagban jelenik meg.
 
-### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Számítási feladatok, amelyek rugalmas készletek az erőforrások
+### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Rugalmas készletből kihasználható munkaterhelések
 
-Készletek olyan olyan adatbázisok esetén egy alacsony erőforrás-használat átlagos és viszonylag rendszertelen kiugró kihasználtság jellemzi. SQL Database automatikusan kiértékeli az erőforrások használati előzményeit, egy meglévő SQL Database-kiszolgálón lévő adatbázisokhoz, és javasolja a megfelelő készletkonfigurációt az Azure Portalon. További információkért lásd: [során kell végiggondolni egy SQL Database rugalmas készlet?](sql-database-elastic-pool.md).
+A készletek kiválóan alkalmasak az alacsony erőforrás-kihasználtságú és viszonylag ritka kihasználtsági tüskéket tartalmazó adatbázisok számára. SQL Database automatikusan kiértékeli az adatbázisok korábbi erőforrás-használatát egy meglévő SQL Database-kiszolgálón, és a Azure Portal a megfelelő készlet konfigurációját javasolja. További információ: Mikor érdemes [SQL Database rugalmas készletet figyelembe venni?](sql-database-elastic-pool.md)
 
 ## <a name="frequently-asked-questions-faqs"></a>Gyakori kérdések (GYIK)
 
-### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>Kell az alkalmazásom átalakítása Virtuálismag-alapú szolgáltatásréteg DTU-alapú szolgáltatásréteg?
+### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>Szükség van-e az alkalmazás offline állapotba való átalakítására egy DTU-alapú szolgáltatási rétegről egy virtuális mag-alapú szolgáltatási rétegre?
 
-Nem. Az alkalmazás kapcsolat nélküli üzemmódra nincs szükségünk. Az új szolgáltatási szintekről kínálnak a szabványostól, a prémium szintű szolgáltatási rétegben, és fordítva frissítésének adatbázisok meglévő folyamata hasonló egyszerű online konverziós módját. Ez a konverzió elkezdheti az Azure portal, PowerShell, az Azure CLI, T-SQL vagy a REST API használatával. Lásd: [önálló adatbázisok kezelése](sql-database-single-database-scale.md) és [rugalmas készletek kezelése](sql-database-elastic-pool.md).
+Nem. Nem kell offline állapotba hoznia az alkalmazást. Az új szolgáltatási rétegek egy egyszerű online átalakítási módszert kínálnak, amely hasonló a standard és a prémium szolgáltatási szint adatbázisainak frissítéséhez, és fordítva. A konverziót a Azure Portal, a PowerShell, az Azure CLI, a T-SQL vagy a REST API használatával indíthatja el. Lásd: [önálló adatbázisok kezelése](sql-database-single-database-scale.md) és [rugalmas készletek kezelése](sql-database-elastic-pool.md).
 
-### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>Átválthatók egy adatbázist a Virtuálismag-alapú vásárlási modell a szolgáltatásszint, a szolgáltatási szinten a DTU-alapú vásárlási modell?
+### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>Átválthatok egy adatbázist a virtuális mag-alapú vásárlási modellben egy szolgáltatási rétegre a DTU-alapú vásárlási modellben?
 
-Igen, egyszerűen átválthat az adatbázis bármely támogatott teljesítmény célja az Azure portal, PowerShell, az Azure CLI, T-SQL vagy a REST API használatával. Lásd: [önálló adatbázisok kezelése](sql-database-single-database-scale.md) és [rugalmas készletek kezelése](sql-database-elastic-pool.md).
+Igen, a Azure Portal, a PowerShell, az Azure CLI, a T-SQL vagy a REST API használatával könnyedén átalakíthatja az adatbázist bármely támogatott teljesítménybeli célkitűzésre. Lásd: [önálló adatbázisok kezelése](sql-database-single-database-scale.md) és [rugalmas készletek kezelése](sql-database-elastic-pool.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- A Virtuálismag-alapú vásárlási modell kapcsolatos további információkért lásd: [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
-- A DTU-alapú vásárlási modell kapcsolatos további információkért lásd: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md).
+- A virtuális mag-alapú vásárlási modellel kapcsolatos további információkért lásd: [virtuális mag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
+- A DTU-alapú vásárlási modellel kapcsolatos további információkért lásd: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md).

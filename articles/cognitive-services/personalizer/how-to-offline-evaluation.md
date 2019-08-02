@@ -1,65 +1,65 @@
 ---
-title: Kapcsolat kiértékelése – Personalizer
+title: Offline értékelés – személyre szabás
 titleSuffix: Azure Cognitive Services
-description: A learning ciklus egy offline próbaverziójának elemzése
+description: Ismerje meg, hogyan elemezheti tanulási ciklusát offline kiértékeléssel
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: b719e6e693471415350007a4f4fabed917b8e12d
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: f14403422e2c783d75634bb929d8c2130bd505b6
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722315"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663879"
 ---
-# <a name="how-to-analyze-your-learning-loop-with-an-offline-evaluation"></a>A learning ciklus egy offline próbaverziójának elemzése
+# <a name="how-to-analyze-your-learning-loop-with-an-offline-evaluation"></a>Tanulási hurok elemzése offline kiértékeléssel
 
 
-Ismerje meg, hogyan hajtsa végre a kapcsolat nélküli próbaverzióját, és az eredmények értelmezésében.
+Ismerje meg, hogyan végezheti el az offline kiértékelést, és megismerheti az eredményeket.
 
-Kapcsolat nélküli értékelések engedélyezése mérhető hatékony Personalizer a rendszer összehasonlítja az alkalmazás alapértelmezett viselkedését, ismerje meg, milyen szolgáltatások legtöbb személyre szabás működik közre, és Fedezze fel az új machine learning beállítások automatikusan.
+Az offline értékelések segítségével mérhetővé válik, hogy az alkalmazás alapértelmezett viselkedéséhez képest mennyire hatékony a személyre szabott funkció, hogy milyen funkciók járulnak hozzá leginkább a személyre szabáshoz, és automatikusan Fedezze fel az új gépi tanulási beállításokat.
 
-További információ [Offline értékelések](concepts-offline-evaluation.md) további.
+További információért olvassa el a [kapcsolat nélküli értékeléseket](concepts-offline-evaluation.md) ismertető témakört.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Rendelkeznie kell konfigurált Personalizer hurok
-1. A Personalizer hurok kell rendelkeznie legalább 50 000 események jelentéssel bíró kiértékelésének eredménye a naplókat.
+1. Meg kell adni egy személyre szabott hurok konfigurálását
+1. A személyre szabott huroknak legalább 50 000 eseménynek kell lennie a naplókban az értelmes kiértékelési eredmények érdekében.
 
-Szükség esetén előfordulhat, hogy is korábban exportált _házirend tanulási_ fájlok ugyanazon kiértékelésekor tesztelése és összehasonlítása.
+Előfordulhat, hogy korábban már exportálta a _tanulási szabályzatok_ fájljait, amelyeket összevetheti és tesztelheti ugyanabban az értékelésben.
 
-## <a name="steps-to-start-a-new-offline-evaluation"></a>A lépéseket egy új kapcsolat nélküli értékelés indítása
+## <a name="steps-to-start-a-new-offline-evaluation"></a>Új offline értékelés indításához szükséges lépések
 
-1. Az Azure Portalon keresse meg a személyre szabás hurok erőforrás.
-1. Keresse meg az "Értékelés" szakaszban.
-1. Kattintson az új értékelés
-1. Válassza ki az offline értékelés egy kezdő és záró dátumát. Ezek a múltbeli időpont, adja meg az adatokat, a tartományát kiértékelésekor dátumokat. Ezeket az adatokat a naplókban, a jelen kell lennie a [adatmegőrzés](how-to-settings.md) beállítás.
-1. Igény szerint tölthet fel a saját learning házirend. 
-1. Adja meg e Personalizer a megfigyelt ebben az időszakban a felhasználói viselkedés alapján optimalizált Learning szabályzatot kell létrehozni.
-1. Az értékelés indítása
+1. Keresse meg a személyre szabási hurok erőforrását a Azure Portal.
+1. Navigáljon a "kiértékelés" szakaszhoz.
+1. Kattintson az új próbaverzióra
+1. Válassza ki az offline értékelés kezdési és befejezési dátumát. Ezek a múltbeli dátumok, amelyek meghatározzák a kiértékelésben használandó adatok tartományát. Ezeknek az adatoknak szerepelniük kell a naplókban az adatmegőrzési beállításban megadott módon. [](how-to-settings.md)
+1. Igény szerint feltöltheti saját képzési szabályzatát. 
+1. Itt adhatja meg, hogy a testre szabott tanulási szabályzatot az adott időszakban megfigyelt felhasználói viselkedés alapján kell-e létrehozni.
+1. A kiértékelés elindítása
 
 ## <a name="results"></a>Results (Eredmények)
 
-Értékelések szeretne futtatni, az adatok feldolgozásához, tanulási összehasonlítására, a szabályzatok száma az igényelt kreditmennyiség függvényében hosszú időt vehet igénybe, és a egy optimalizálási kért e.
+Az értékelések hosszú időt vehetnek igénybe a feldolgozandó adatmennyiségtől, az összehasonlítani kívánt tanulási szabályzatok számától és a kért optimalizálástól függően.
 
-Ha befejeződött, a következő eredményeket tekintheti meg:
+Ha elkészült, a következő eredményeket láthatja:
 
-1. Összehasonlítások Learning házirendek, többek között:
-    * **Online-szabályzat**: Az aktuális Personalizer használt Learning házirend
-    * **Alapkonfiguráció**: Az alkalmazás alapértelmezett (határoz meg az első művelet rangsorolják hívásokat küld),
-    * **Véletlenszerű házirend**: Egy képzeletbeli rangsorolják viselkedés, amely mindig visszaadja véletlenszerű művelet közül választhat a megadott állók közül.
-    * **Egyéni szabályzatok**: További tanulási házirendek töltött fel, az értékelés indítása során.
-    * **Optimalizált házirend**: Ha az értékelés felderíteni egy optimalizált házirend kapcsolóval lett elindítva, azt is lesz összehasonlítva, és lesz letöltheti, vagy adja meg az online tanulási szabályzatot, és cserélje le a jelenlegivel.
+1. A tanulási szabályzatok összehasonlítása, beleértve a következőket:
+    * **Online házirend**: A személyre szabott alkalmazásban használt aktuális tanulási szabályzat
+    * **Alapterv**: Az alkalmazás alapértelmezett értéke (amelyet a Rank-hívásokban elindított első művelet határoz meg),
+    * **Véletlenszerű házirend**: Egy képzeletbeli rangsorolási viselkedés, amely mindig véletlenszerű választ ad vissza a megadott műveletek közül.
+    * **Egyéni szabályzatok**: A próbaverzió indításakor feltöltött további képzési szabályzatok.
+    * **Optimalizált szabályzat**: Ha a kiértékelést az optimalizált szabályzat felderítésére szolgáló lehetőséggel indította el, azt a rendszer összehasonlítja, és letöltheti, vagy elvégezheti az online tanulási szabályzatot, amely az aktuálisat váltja fel.
 
-1. Hatékonyságát [funkciók](concepts-features.md) műveletek és a környezet számára.
+1. A műveletek [](concepts-features.md) és a környezet funkcióinak hatékonysága.
 
 
 ## <a name="more-information"></a>További információ
 
-* Ismerje meg, [offline hogyan működnek a értékelések](concepts-offline-evaluation.md).
+* Ismerje meg, [hogyan működnek az offline értékelések](concepts-offline-evaluation.md).

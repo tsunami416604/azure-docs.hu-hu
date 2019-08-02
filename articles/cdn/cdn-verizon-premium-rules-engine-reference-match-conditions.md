@@ -1,6 +1,6 @@
 ---
-title: A Verizon prémium szintű Azure CDN-szabályok szabálymotor egyezési feltételei |} A Microsoft Docs
-description: Az Azure Content Delivery Network – Verizon prémium szintű dokumentációja szabályok szabálymotor egyezési feltételei.
+title: Azure CDN a Verizon Premium Rules motor Match feltételekkel | Microsoft Docs
+description: Az Azure Content Delivery Network a Verizon Premium Rules motor egyeztetési feltételeit ismertető dokumentációja.
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
@@ -8,99 +8,99 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: 1660dca34b2f128ef5889145fcdeed0d2523b9bb
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67593204"
 ---
-# <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Szabálymotor Verizon prémium szintű Azure CDN a feltételeknek megfelelő
+# <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Azure CDN a Verizon Premium szabályainak motorjának egyeztetési feltételeiről
 
-Ez a cikk felsorolja az elérhető egyezési feltételei a az Azure Content Delivery Network (CDN) a Verizon prémium szintű részletes leírását [szabálymotorral](cdn-verizon-premium-rules-engine.md).
+Ez a cikk részletes leírást nyújt az Azure Content Delivery Network (CDN) a Verizon Premium [Rules Engine](cdn-verizon-premium-rules-engine.md)-ről elérhető egyezési feltételeiről.
 
-A szabály második része az egyezési feltétellel. Egyeztetési feltételt azonosítja az adott típusú kérelmet szolgáltatások történik.
+A szabály második része az egyeztetési feltétel. Az egyeztetési feltétel azokat a kérelmeket azonosítja, amelyekhez a rendszer a különböző funkciókat fogja végrehajtani.
 
-Ha például az egyeztetési feltételt is használhatja:
+Az egyeztetési feltételt például a következőre használhatja:
 
-- Kérelmek szűrése a tartalom egy adott helyen.
-- Kérelmek szűrése egy adott IP-cím vagy ország/régió alapján generált.
-- Kérelmek szűrése a fejléc-információkat.
+- A tartalomra vonatkozó kérelmek szűrése egy adott helyen.
+- Egy adott IP-címről vagy országból/régióból generált kérelmek szűrése.
+- Kérelmek szűrése fejléc-információk alapján.
 
-## <a name="always-match-condition"></a>Mindig a feltételnek megfelelő
+## <a name="always-match-condition"></a>Mindig egyező feltétel
 
-A mindig az egyezési feltétellel alapértelmezés szerinti szolgáltatások összes kérelemre érvényes legyen.
-
-Name (Név) | Cél
------|--------
-[Mindig](#always) | Alapértelmezett számos funkciót összes kérelemre érvényes legyen.
-
-## <a name="device-match-condition"></a>Eszköz egyezési feltételei
-
-Az eszköz az egyezési feltétellel kérelmek egy mobileszközzel a tulajdonságok alapján azonosítja.  
+Az Always Match feltétel a szolgáltatások alapértelmezett készletét alkalmazza az összes kérelemre.
 
 Name (Név) | Cél
 -----|--------
-[Device](#device) | A kérelmek egy mobileszközzel a tulajdonságok alapján azonosítja.
+[Mindig](#always) | A szolgáltatások alapértelmezett készletét alkalmazza az összes kérelemre.
 
-## <a name="location-match-conditions"></a>Hely egyezési feltételei
+## <a name="device-match-condition"></a>Eszköz egyeztetési feltétele
 
-A hely egyezési feltételei kéréseket a kérelmező helye alapján azonosíthatja.
-
-Name (Név) | Cél
------|--------
-[AS-szám](#as-number) | Egy adott hálózat kérelmekkel azonosítja.
-[Ország](#country) | A megadott országokból/régiókból származó kérelmekkel azonosítja.
-
-## <a name="origin-match-conditions"></a>Forrás egyezési feltételei
-
-A forrás egyezési feltételei azonosítsa a kéréseket, amelyek a Content Delivery Network-tároló vagy egy ügyfél eredeti kiszolgálóra mutasson.
+Az eszköz egyeztetése feltétel azonosítja a mobileszköz által a tulajdonságok alapján küldött kérelmeket.  
 
 Name (Név) | Cél
 -----|--------
-[CDN-forrás](#cdn-origin) | Azonosítja a Content Delivery Network-storage-ban tárolt tartalomhoz.
-[Ügyfél kezdőpontja](#customer-origin) | Egy adott ügyfél forrás kiszolgálón tárolt tartalomhoz azonosítja.
+[Device](#device) | Azonosítja a mobileszköz által a tulajdonságok alapján küldött kérelmeket.
 
-## <a name="request-match-conditions"></a>Kérelem egyezési feltételei
+## <a name="location-match-conditions"></a>A hely egyeztetési feltételei
 
-A kérelem egyezési feltételei kérelmet tulajdonságaik alapján azonosíthatja.
-
-Name (Név) | Cél
------|--------
-[Ügyfél IP-címe](#client-ip-address) | Egy adott IP-címről kérelmekkel azonosítja.
-[Cookie-k paraméter](#cookie-parameter) | Ellenőrzi a megadott értéket minden kéréshez társított cookie-kat.
-[Cookie-k paramétert reguláris kifejezés](#cookie-parameter-regex) | A cookie-kat, az a megadott reguláris kifejezést az egyes kérelmekkel társított ellenőrzi.
-[Edge Cname](#edge-cname) | Kérelmek, amelyek egy adott edge CNAME azonosítja.
-[Hivatkozó tartomány](#referring-domain) | A megadott állomásnevekről említett kérelmek azonosítja.
-[Kérelem fejléce szövegkonstans](#request-header-literal) | A megadott fejléc megadott értéke tartalmazó kérelmek azonosítja.
-[Kérelem fejléce reguláris kifejezés](#request-header-regex) | A megadott fejléc értéke, amely megfelel a megadott reguláris kifejezést tartalmazó kérelmek azonosítja.
-[Kérelem fejléce helyettesítő karakter](#request-header-wildcard) | A megadott fejléc értéke, amely megfelel a megadott minta tartalmazó kérelmek azonosítja.
-[Kérelmi metódus](#request-method) | A HTTP-metódus azonosítja a kérelmeket.
-[Kérelem séma](#request-scheme) | A HTTP protokoll alapján azonosítja a kérelmek.
-
-## <a name="url-match-conditions"></a>URL-cím egyezési feltételei
-
-Az URL-cím egyezési feltételei azonosítsa az URL-címeken alapuló kérelmeket.
+A hely egyeztetési feltételei a kérelmező helye alapján azonosítják a kérelmeket.
 
 Name (Név) | Cél
 -----|--------
-[URL-cím elérési út könyvtár](#url-path-directory) | Azonosítja a kérelmeket azok relatív elérési út.
-[URL-cím elérési út bővítmény](#url-path-extension) | A fájlnév-kiterjesztésük alapján azonosítja a kérelmeket.
-[URL-cím elérési_út fájlnév](#url-path-filename) | A fájl neve azonosítja a kérelmeket.
-[URL-cím elérési út szövegkonstans](#url-path-literal) | A kérelem relatív elérési út és a megadott érték hasonlítja össze.
-[URL Path Regex](#url-path-regex) | A kérelem relatív elérési útja a megadott reguláris kifejezés hasonlítja össze.
-[URL-cím elérési út helyettesítő karakter](#url-path-wildcard) | A kérelem relatív elérési útja a megadott minta hasonlítja össze.
-[URL-cím lekérdezési szövegkonstans](#url-query-literal) | A kérelem lekérdezési karakterláncát a megadott érték hasonlítja össze.
-[URL-cím lekérdezési paraméter](#url-query-parameter) | A megadott lekérdezési karakterlánc-paraméter értéke, amely egy megadott mintának megfelelő tartalmazó kérelmek azonosítja.
-[URL-cím lekérdezési reguláris kifejezés](#url-query-regex) | A megadott lekérdezési karakterlánc-paraméter értéke, amely megfelel a megadott reguláris kifejezést tartalmazó kérelmek azonosítja.
-[URL-cím lekérdezési helyettesítő karakter](#url-query-wildcard) | A megadott értéket a kérelem lekérdezési karakterláncában elleni hasonlítja össze.
+[AS szám](#as-number) | Az adott hálózatból származó kérelmeket azonosítja.
+[Ország](#country) | A megadott országokból/régiókból származó kérelmeket azonosítja.
 
-## <a name="reference-for-rules-engine-match-conditions"></a>Szabálymotor egyezési feltételei referenciája
+## <a name="origin-match-conditions"></a>A forrás egyeztetési feltételei
+
+A forrás egyeztetési feltételek azokat a kérelmeket azonosítják, amelyek Content Delivery Network tárolóra vagy ügyfél-forrásra mutatnak.
+
+Name (Név) | Cél
+-----|--------
+[CDN-forrás](#cdn-origin) | A Content Delivery Network tárolóban tárolt tartalomra vonatkozó kérelmeket azonosítja.
+[Ügyfél forrása](#customer-origin) | Az adott ügyfél-kiszolgálón tárolt tartalomra vonatkozó kérelmeket azonosítja.
+
+## <a name="request-match-conditions"></a>Kérelem egyeztetési feltételei
+
+A kérés egyeztetési feltételek alapján azonosítja a kérelmeket a tulajdonságaik alapján.
+
+Name (Név) | Cél
+-----|--------
+[Ügyfél IP-címe](#client-ip-address) | Az adott IP-címről származó kérelmeket azonosítja.
+[Cookie paraméter](#cookie-parameter) | A megadott értékre vonatkozó kérelmekhez társított cookie-k ellenőrzése.
+[Cookie-paraméterek Regexje](#cookie-parameter-regex) | Ellenőrzi az egyes kérelmekhez társított cookie-kat a megadott reguláris kifejezéshez.
+[Edge CNAME](#edge-cname) | A megadott peremhálózati CNAME-re mutató kérelmeket azonosítja.
+[Hivatkozó tartomány](#referring-domain) | A megadott állomásnevek által hivatkozott kérelmeket azonosítja.
+[Kérelem fejléce – literál](#request-header-literal) | Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott fejlécet egy megadott értékre.
+[Kérelem fejlécének Regexje](#request-header-regex) | A megadott fejlécet tartalmazó kérelmeket azonosítja olyan értékre, amely megfelel a megadott reguláris kifejezésnek.
+[Kérelem fejlécének helyettesítő karaktere](#request-header-wildcard) | A megadott fejlécet tartalmazó kérelmeket azonosítja olyan értékre, amely megfelel a megadott mintának.
+[Kérelem metódusa](#request-method) | A HTTP-metódussal azonosítja a kérelmeket.
+[Kérési séma](#request-scheme) | A HTTP protokollal azonosítja a kérelmeket.
+
+## <a name="url-match-conditions"></a>URL-egyeztetési feltételek
+
+Az URL-cím egyezési feltételei a kérelmeket az URL-címek alapján azonosítják.
+
+Name (Név) | Cél
+-----|--------
+[URL elérési útja könyvtár](#url-path-directory) | A kéréseket a relatív elérési úttal azonosítja.
+[URL-elérési út kiterjesztése](#url-path-extension) | A kérelmeket a fájlnévkiterjesztés alapján azonosítja.
+[URL elérési útja fájlnév](#url-path-filename) | A kérelmeket a fájlnév szerint azonosítja.
+[URL elérési útja literál](#url-path-literal) | Összehasonlítja a kérelem relatív elérési útját a megadott értékkel.
+[URL-cím elérési útja – regex](#url-path-regex) | Összehasonlítja a kérelem relatív elérési útját a megadott reguláris kifejezéssel.
+[URL elérési útja helyettesítő karakter](#url-path-wildcard) | Összehasonlítja a kérelem relatív elérési útját a megadott mintával.
+[URL-lekérdezési literál](#url-query-literal) | Összehasonlítja a kérelem lekérdezési karakterláncát a megadott értékkel.
+[URL-lekérdezési paraméter](#url-query-parameter) | A megadott lekérdezési karakterlánc paramétert tartalmazó kérelmeket azonosítja olyan értékre, amely megfelel egy megadott mintának.
+[URL-lekérdezés regex](#url-query-regex) | A megadott lekérdezési karakterlánc paramétert tartalmazó kérelmeket azonosítja olyan értékre, amely megfelel egy adott reguláris kifejezésnek.
+[URL-lekérdezés helyettesítő karaktere](#url-query-wildcard) | A megadott értéket hasonlítja össze a kérelem lekérdezési karakterláncával.
+
+## <a name="reference-for-rules-engine-match-conditions"></a>A szabályok motorjának egyeztetési feltételei
 
 ---
 
 ### <a name="always"></a>Mindig
 
-A mindig az egyezési feltétellel alapértelmezés szerinti szolgáltatások összes kérelemre érvényes legyen.
+Az Always Match feltétel a szolgáltatások alapértelmezett készletét alkalmazza az összes kérelemre.
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
 
@@ -108,25 +108,25 @@ A mindig az egyezési feltétellel alapértelmezés szerinti szolgáltatások ö
 
 ---
 
-### <a name="as-number"></a>AS-szám
+### <a name="as-number"></a>AS szám
 
-Az AS-számok hálózati határozza meg az autonóm rendszer száma (ASN). 
+A AS Number hálózatot az autonóm rendszer száma (ASN) határozza meg. 
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amelyben az AS-számot a feltételnek megfelelő feltételek teljesülése:
+A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy teljesülnek-e az as-szám egyeztetési feltételének feltételei:
 
-- **Egyezések**: Megköveteli, hogy az ASN-t, az ügyfél hálózati megegyezik a megadott ASN-ek valamelyikét. 
-- **Nem felel meg**: Szükséges, hogy az ASN-t, az ügyfél hálózati nem egyezik a megadott ASN-ek valamelyikét.
+- **Egyezések**: Ehhez az szükséges, hogy az ügyfél-hálózat ASN-je megfeleljen a megadott ASN egyikének. 
+- **Nem egyezik**: Ehhez az szükséges, hogy az ügyfél-hálózat ASN-je ne egyezzen meg a megadott ASN.
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Adja meg az egy szóköz pedig külön határoló több ASN-eket. Például 64514 64515 megfelel a kérelmek, amelyek 64514 vagy 64515 érkezik.
-- Előfordulhat, hogy bizonyos kérelmek nem ad vissza egy érvényes ASN. A kérdőjel (?) egyezni fog a kérelmeket, amelyhez érvényes ASN nem sikerült meghatározni.
-- Adja meg a teljes ASN-t a kívánt hálózathoz. Hiányos értékek nem található, karakterként lesz.
-- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
-  - Complete Cache Fill
-  - Alapértelmezett belső Max-Age
-  - Belső Max-Age kényszerítése
-  - Ignore Origin No-Cache
+- Több ASN is megadhat, ha mindegyiket egyetlen szóközzel kell korlátozni. Például az 64514 64515 megfelel a 64514 vagy 64515 rendszertől érkező kéréseknek.
+- Előfordulhat, hogy bizonyos kérelmek nem adnak vissza érvényes ASN-t. A kérdőjel (?) egyezteti azokat a kérelmeket, amelyekhez nem lehet érvényes ASN-t meghatározni.
+- A kívánt hálózat teljes ASN-jét határozza meg. A részleges értékeket nem fogja egyeztetni.
+- A gyorsítótár-beállítások nyomon követésének módja miatt ez a megfeleltetési feltétel nem kompatibilis a következő funkciókkal:
+  - Gyorsítótár kitöltésének befejezése
+  - Alapértelmezett belső max. Age
+  - A belső Max-Age kényszerítése
+  - Kihagyott forrás – gyorsítótár
   - Belső maximális – elavult
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
@@ -137,17 +137,17 @@ Legfontosabb tudnivalókat:
 
 ### <a name="cdn-origin"></a>CDN-forrás
 
-A CDN-forrás egyezés feltétel teljesül mindkét következő feltétel teljesülése esetén:
+A CDN-forrás egyeztetési feltétele akkor teljesül, ha a következő feltételek mindegyike teljesül:
 
-- A kért tartalom CDN storage-ból.
-- A kérelem URI-t a tartalom-hozzáférési pont (például /000001), ez az egyezési feltétellel meghatározott típusú használja:
-  - A CDN URL-CÍME: A kérés URI azonosítója a kiválasztott tartalom-hozzáférési pontot kell tartalmaznia.
-  - Edge CNAME URL: A kiválasztott tartalom-hozzáférési pont a megfelelő edge CNAME konfigurációt kell mutatnia.
+- A CDN-tárolóból származó tartalmat kérték.
+- A kérelem URI-ja a jelen egyeztetési feltételben definiált tartalom-hozzáférési pont (például/000001) típusát használja:
+  - CDN URL-CÍME: A kérés URI azonosítójának tartalmaznia kell a kiválasztott tartalom-hozzáférési pontot.
+  - Peremhálózati CNAME URL-cím: A megfelelő peremhálózati CNAME-konfigurációnak a kiválasztott tartalom-hozzáférési pontra kell mutatnia.
   
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- A tartalom-hozzáférési pont azonosítja a szolgáltatás, amely szolgálhat a kért tartalmat.
-- Ne használja az és a egy IF utasítást úgy, hogy bizonyos egyezési feltételei. Például az ügyfél kezdőpontja egyeztetési feltételt CDN Origin egyeztetési feltételt kombinálásával hozna létre-egyeztetési minta, amely sikerült nikdy existovat shoda. Ezért két CDN Origin egyezési feltételei keresztül egy és IF utasítás nelze kombinovat.
+- A tartalom-hozzáférési pont azonosítja azt a szolgáltatást, amely a kért tartalmat szolgálja ki.
+- Bizonyos egyezési feltételek összevonásához ne használjon és IF utasítást. Például egy CDN-beli forrás egyeztetési feltételének összevonása egy ügyfél-forrás egyeztetési feltétellel olyan egyezési mintát hoz létre, amely soha nem egyeztethető össze. Ebből kifolyólag két CDN-forrás egyeztetési feltétele nem kombinálható egy és IF utasítással.
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
 
@@ -157,25 +157,25 @@ Legfontosabb tudnivalókat:
 
 ### <a name="client-ip-address"></a>Ügyfél IP-címe
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amelyek alapján az ügyfél IP-cím a feltételnek megfelelő feltételek teljesülése:
+A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy az ügyfél IP-címének egyeztetési feltétele teljesült-e:
 
-- **Egyezések**: Megköveteli, hogy az ügyfél IP-cím megegyezik a megadott IP-címek valamelyikét. 
-- **Nem felel meg**: Megköveteli, hogy az ügyfél IP-cím nem egyezik a megadott IP-címek valamelyikét. 
+- **Egyezések**: Ehhez az szükséges, hogy az ügyfél IP-címe egyezzen a megadott IP-címek egyikével. 
+- **Nem egyezik**: Ehhez az szükséges, hogy az ügyfél IP-címe ne egyezzen meg a megadott IP-címek egyikével sem. 
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Használjon CIDR-jelölésrendszerben.
-- Adjon meg több IP-címek és/vagy IP-címblokkok határoló egyenként a szóköz. Példa:
-  - **IPv4-példa**: 1.2.3.4 10.20.30.40 megegyezik bármilyen címről vagy 1.2.3.4 vagy 10.20.30.40 érkező kérelmeket.
-  - **IPv6-alapú példa**: 1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80 megegyezik bármilyen cím 1:2:3:4:5:6:7:8 vagy 10:20:30:40:50:60:70:80 érkező kérelmeket.
-- IP-Címblokk szintaxisa a kiindulási IP-cím perjellel és az előtag méretét. Példa:
-  - **IPv4-példa**: 5.5.5.64/26 megegyezik bármilyen keresztül 5.5.5.127 5.5.5.64-címekről érkező kérelmeket.
-  - **IPv6-alapú példa**: 1:2:3: / 48 megegyezik bármilyen származó címeket 1:2:3:0:0:0:0:0 1:2:3:ffff:ffff:ffff:ffff:ffff keresztül érkező kérelmeket.
-- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
-  - Complete Cache Fill
-  - Alapértelmezett belső Max-Age
-  - Belső Max-Age kényszerítése
-  - Ignore Origin No-Cache
+- CIDR-jelölés használata.
+- Több IP-címet és/vagy IP-címtartományt is megadhat, ha mindegyiket egyetlen szóközzel kell korlátozni. Példa:
+  - **IPv4-példa**: a 1.2.3.4 10.20.30.40 a 1.2.3.4 vagy a 10.20.30.40 címről érkező összes kérésnek megfelel.
+  - **IPv6-példa**: 1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80 a 1:2:3:4:5:6:7:8 vagy 10:20:30:40:50:60:70:80 címről érkező összes kérésnek megfelel.
+- Az IP-címterület szintaxisa az alapszintű IP-cím, amelyet egy perjel és az előtag mérete követ. Példa:
+  - **IPv4-példa**: a 5.5.5.64/26 minden olyan kérést egyeztet, amely a 5.5.5.64 címről érkezik a 5.5.5.127-on keresztül.
+  - **IPv6-példa**: a 1:2:3:/48 a 1:2:3:0:0:0:0:0 – 1:2: 3: FFFF: FFFF: FFFF: FFFF: FFFF címen megjelenő összes kérésnek megfelel.
+- A gyorsítótár-beállítások nyomon követésének módja miatt ez a megfeleltetési feltétel nem kompatibilis a következő funkciókkal:
+  - Gyorsítótár kitöltésének befejezése
+  - Alapértelmezett belső max. Age
+  - A belső Max-Age kényszerítése
+  - Kihagyott forrás – gyorsítótár
   - Belső maximális – elavult
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
@@ -184,31 +184,31 @@ Legfontosabb tudnivalókat:
 
 ---
 
-### <a name="cookie-parameter"></a>Cookie-k paraméter
+### <a name="cookie-parameter"></a>Cookie paraméter
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt a cookie-k paraméter feltételnek megfelelő feltételek teljesülése.
+A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a cookie-paraméter megfelel-e a feltételnek.
 
-- **Egyezések**: Kell tartalmaznia a megadott cookie-t, amely megfelel az ezen az egyezési feltétellel meghatározott értékek közül legalább egy értéket a kérést.
-- **Nem felel meg**: Megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
-  - A megadott cookie nem tartalmaz.
-  - A megadott cookie-t tartalmaz, de az érték nem egyezik meg az értékeket, hogy ez az egyezési feltétellel vannak meghatározva.
+- **Egyezések**: A megadott cookie-nak egy olyan értékkel kell rendelkeznie, amely megfelel a jelen egyeztetési feltételben definiált értékek legalább egyikének.
+- **Nem egyezik**: Megköveteli, hogy a kérelem megfeleljen a következő feltételek egyikének:
+  - Nem tartalmazza a megadott cookie-t.
+  - Tartalmazza a megadott cookie-t, de az értéke nem felel meg a jelen egyeztetési feltételben definiált értékek egyikének sem.
   
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
 - Cookie neve:
-  - Helyettesítő karakteres értékek, többek között a csillag (*), nem támogatottak, ha egy cookie-nevet ad meg, mert csak pontos cookie neve egyezik jogosultak az összehasonlítást.
-  - Ez az egyezési feltétellel-példányonként csak egy egyetlen cookie-nevet adható meg.
-  - Cookie neve összehasonlítások megkülönböztetik a kis-és nagybetűket.
-- Cookie-értéket:
-  - Adja meg a cookie-k több érték határoló egyenként a szóköz.
-  - A cookie-értéket kihasználhatják a [helyettesítő karakteres értékek](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
-  - Ha egy helyettesítő karakteres érték nem lett megadva, csak pontos egyezés kielégíteni ezt az egyezési feltétellel. Például adja meg a "Value" egyezni fog "Value", de nem "Érték1" vagy "Value2."
-  - Használja a **esetben figyelmen kívül hagyása** -e a kis-és nagybetűket összehasonlítás a kérelem cookie-k értékkel ellenőrzési lehetőséget.
-- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
-  - Complete Cache Fill
-  - Alapértelmezett belső Max-Age
-  - Belső Max-Age kényszerítése
-  - Ignore Origin No-Cache
+  - Mivel a helyettesítő karakterek, beleértve a csillagokat (*), nem támogatottak a cookie-nevek megadásakor, csak a pontos cookie-nevek jogosultak az összehasonlításra.
+  - Ennek a megfeleltetési feltételnek a példányain csak egyetlen cookie-nevet lehet megadni.
+  - A cookie-nevek összehasonlítása a kis-és nagybetűk megkülönböztetése nélkül történik.
+- Cookie értéke:
+  - Több cookie-értéket is megadhat, ha mindegyiket egyetlen szóközzel kell korlátozni.
+  - A cookie-értékek kihasználhatják a [helyettesítő karaktereket](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
+  - Ha a helyettesítő karakter értéke nincs megadva, akkor csak a pontos egyezés felel meg ennek a megfelelési feltételnek. Például az "érték" megadásakor a "value" értéknek kell megegyeznie, de nem "érték1" vagy "érték2".
+  - A kis-és nagybetűk **figyelmen kívül hagyása** beállítással szabályozhatja, hogy a rendszer a kérelem cookie-értékének kis-és nagybetűs összehasonlítását alkalmazza
+- A gyorsítótár-beállítások nyomon követésének módja miatt ez a megfeleltetési feltétel nem kompatibilis a következő funkciókkal:
+  - Gyorsítótár kitöltésének befejezése
+  - Alapértelmezett belső max. Age
+  - A belső Max-Age kényszerítése
+  - Kihagyott forrás – gyorsítótár
   - Belső maximális – elavult
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
@@ -216,31 +216,31 @@ Legfontosabb tudnivalókat:
 
 ---
 
-### <a name="cookie-parameter-regex"></a>Cookie-k paramétert reguláris kifejezés
+### <a name="cookie-parameter-regex"></a>Cookie-paraméterek Regexje
 
-A cookie-k paramétert reguláris kifejezést az egyezési feltétellel határozza meg, a cookie nevét és értékét. Használhat [reguláris kifejezések](cdn-verizon-premium-rules-engine-reference.md#regular-expressions) meghatározásához kívánt cookie-értéket.
+A cookie-paraméter regex-egyeztetési feltétel határozza meg a cookie nevét és értékét. A kívánt cookie-érték megadásához [reguláris kifejezéseket](cdn-verizon-premium-rules-engine-reference.md#regular-expressions) használhat.
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt a cookie-k paraméter Regex feltételnek megfelelő feltételek teljesülése.
+A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén tartalmazza a cookie-paramétert a regexnek.
 
-- **Egyezések**: Egy kérelem tartalmazza a megadott reguláris kifejezésnek megfelelő értéket a megadott cookie-t igényel.
-- **Nem felel meg**: Megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
-  - A megadott cookie nem tartalmaz.
-  - A megadott cookie-t tartalmaz, de az érték nem egyezik meg a meghatározott reguláris kifejezéssel.
+- **Egyezések**: A megadott cookie-t tartalmazó kérést igényel, amely megfelel a megadott reguláris kifejezésnek.
+- **Nem egyezik**: Megköveteli, hogy a kérelem megfeleljen a következő feltételek egyikének:
+  - Nem tartalmazza a megadott cookie-t.
+  - Tartalmazza a megadott cookie-t, de az értéke nem felel meg a megadott reguláris kifejezésnek.
   
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
 - Cookie neve:
-  - Reguláris kifejezések és a helyettesítő karakteres értékek, többek között a csillag (*), nem támogatottak, ha egy cookie-nevet ad meg, mert csak a pontos cookie neve egyezik jogosultak az összehasonlítást.
-  - Ez az egyezési feltétellel-példányonként csak egy egyetlen cookie-nevet adható meg.
-  - Cookie neve összehasonlítások megkülönböztetik a kis-és nagybetűket.
-- Cookie-értéket:
-  - A cookie-értéket reguláris kifejezéseket is előnyeit.
-  - Használja a **esetben figyelmen kívül hagyása** -e a kis-és nagybetűket összehasonlítás a kérelem cookie-k értékkel ellenőrzési lehetőséget.
-- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
-  - Complete Cache Fill
-  - Alapértelmezett belső Max-Age
-  - Belső Max-Age kényszerítése
-  - Ignore Origin No-Cache
+  - Mivel a reguláris kifejezések és a helyettesítő karakterek, beleértve a csillagokat (*), nem támogatottak a cookie-nevek megadásakor, csak a pontos cookie-nevek felelnek meg az összehasonlításhoz.
+  - Ennek a megfeleltetési feltételnek a példányain csak egyetlen cookie-nevet lehet megadni.
+  - A cookie-nevek összehasonlítása a kis-és nagybetűk megkülönböztetése nélkül történik.
+- Cookie értéke:
+  - A cookie-értékek a reguláris kifejezések előnyeit vehetik igénybe.
+  - A kis-és nagybetűk **figyelmen kívül hagyása** beállítással szabályozhatja, hogy a rendszer a kérelem cookie-értékének kis-és nagybetűs összehasonlítását alkalmazza
+- A gyorsítótár-beállítások nyomon követésének módja miatt ez a megfeleltetési feltétel nem kompatibilis a következő funkciókkal:
+  - Gyorsítótár kitöltésének befejezése
+  - Alapértelmezett belső max. Age
+  - A belső Max-Age kényszerítése
+  - Kihagyott forrás – gyorsítótár
   - Belső maximális – elavult
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
@@ -251,39 +251,39 @@ Legfontosabb tudnivalókat:
 
 ### <a name="country"></a>Country
 
-Megadhatja, hogy egy ország keresztül az országkódot. 
+Országot az országkód alapján is megadhat. 
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az ország feltételnek megfelelő feltételek teljesülése:
+A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az ország egyeztetési feltételét:
 
-- **Egyezések**: A kérelem tartalmazza a megadott ország kódértékek igényel. 
-- **Nem felel meg**: Megköveteli, hogy a kérelem nem tartalmazza a megadott ország kódértékek.
+- **Egyezések**: A kérelemben szerepelnie kell a megadott országkód-értékeknek. 
+- **Nem egyezik**: Megköveteli, hogy a kérelem ne tartalmazza a megadott országkód-értékeket.
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Adja meg az országkódok több határoló egyenként a szóköz.
-- Helyettesítő karakterek nem használhatók, amikor az országkódot ad meg.
-- Az "EU" és "AP" országkódok nem tartoznak bele az összes IP-címek ezekben a régiókban.
-- Bizonyos kérelmek nem lehet, hogy egy érvényes országot kóddal tér vissza. A kérdőjel (?) egyezni fog a kérelmeket, amelyhez érvényes országkód nem sikerült meghatározni.
-- Országhívó számokat a rendszer kis-és nagybetűket.
-- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
-  - Complete Cache Fill
-  - Alapértelmezett belső Max-Age
-  - Belső Max-Age kényszerítése
-  - Ignore Origin No-Cache
+- Több országkódot is megadhat, ha mindegyiket egyetlen szóközzel kell elválasztani.
+- Az országkód megadásakor a helyettesítő karakterek használata nem támogatott.
+- Az "EU" és az "AP" országkódok nem foglalják magukban az összes IP-címet ezekben a régiókban.
+- Előfordulhat, hogy bizonyos kérések nem adnak vissza érvényes országkódot. A kérdőjel (?) egyezteti azokat a kérelmeket, amelyekhez nem határozható meg érvényes országkód.
+- Az országkódok megkülönböztetik a kis-és nagybetűket.
+- A gyorsítótár-beállítások nyomon követésének módja miatt ez a megfeleltetési feltétel nem kompatibilis a következő funkciókkal:
+  - Gyorsítótár kitöltésének befejezése
+  - Alapértelmezett belső max. Age
+  - A belső Max-Age kényszerítése
+  - Kihagyott forrás – gyorsítótár
   - Belső maximális – elavult
 
-#### <a name="implementing-country-filtering-by-using-the-rules-engine"></a>Ország szerinti szűrés megvalósítása a rules engine használatával
+#### <a name="implementing-country-filtering-by-using-the-rules-engine"></a>Az országok szűrésének megvalósítása a szabályok motor használatával
 
-Ez az egyezési feltétellel lehetővé teszi számos testreszabásokat kérést származik, amelyről helye alapján. Például az ország szerinti szűrés funkció működését replikálható keresztül a következő konfigurációt:
+Ez az egyeztetési feltétel lehetővé teszi számos testreszabási művelet végrehajtását azon hely alapján, amelyről a kérés származik. Az ország-szűrési funkció viselkedését például a következő konfigurációval lehet replikálni:
 
-- URL-cím elérési út helyettesítő egyezés: Állítsa be a [URL-cím elérési út helyettesítő feltételnek megfelelő](#url-path-wildcard) azt a könyvtárat, biztonságát. 
-    Fűzze hozzá a csillag, győződjön meg arról, hogy az összes gyermekre a hozzáférést a szabály által korlátozva lesznek relatív elérési út végén.
+- URL-cím helyettesítő karakterének egyezése: Állítsa be az [URL-cím helyettesítő karakterének egyezési](#url-path-wildcard) feltételt a biztonságos könyvtárba. 
+    Illesszen be egy csillagot a relatív elérési út végére, hogy a szabály korlátozza az összes gyermek hozzáférését.
 
 - Ország/régió egyezés Állítsa be az ország egyeztetési feltételt a kívánt készlethez országok/régiók.
-  - Engedélyezése: Az ország az egyezési feltétellel beállítása **Neodpovídá** határozzák meg az URL-cím elérési út helyettesítő egyeztetési feltételt a helyen tárolt tartalmat csak a megadott országok/régiók hozzáférésének engedélyezéséhez.
-  - Blokkolás: Az ország az egyezési feltétellel beállítása **egyezések** nem férhet hozzá az URL-cím elérési út helyettesítő egyezési feltételei által meghatározott helyen tárolt tartalmat a megadott országok/régiók blokkolására.
+  - Lehetővé Az ország az egyezési feltétellel beállítása **Neodpovídá** határozzák meg az URL-cím elérési út helyettesítő egyeztetési feltételt a helyen tárolt tartalmat csak a megadott országok/régiók hozzáférésének engedélyezéséhez.
+  - Blokk Az ország az egyezési feltétellel beállítása **egyezések** nem férhet hozzá az URL-cím elérési út helyettesítő egyezési feltételei által meghatározott helyen tárolt tartalmat a megadott országok/régiók blokkolására.
 
-- Hozzáférés (403) szolgáltatás megtagadása: Engedélyezze a [hozzáférés megtagadása (403) funkció](cdn-verizon-premium-rules-engine-reference-features.md#deny-access-403) az ország szerinti szűrés funkció engedélyezése vagy letiltása részének replikálni.
+- Hozzáférés megtagadása (403) szolgáltatás: Engedélyezze a [megtagadási hozzáférés (403) szolgáltatást](cdn-verizon-premium-rules-engine-reference-features.md#deny-access-403) az ország-szűrési szolgáltatás engedélyezés vagy Letiltás részének replikálásához.
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
 
@@ -291,15 +291,15 @@ Ez az egyezési feltétellel lehetővé teszi számos testreszabásokat kérést
 
 ---
 
-### <a name="customer-origin"></a>Ügyfél kezdőpontja
+### <a name="customer-origin"></a>Ügyfél forrása
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Az ügyfél kezdőpontja egyezés feltétel teljesül, függetlenül attól, hogy kért CDN URL-címet vagy egy edge CNAME mutató URL-cím a kijelölt ügyfél kezdőpontja.
-- A szabály által hivatkozott felhasználói forrás konfigurálása nem lehet törölni az ügyfél kezdőpontja oldalról. Mielőtt megkísérli törölni egy ügyfél forrás-konfigurációt, győződjön meg arról, hogy a következő konfigurációk nem hivatkoznak azt:
-  - Egy ügyfél kezdőpontja egyezési feltételei
-  - An edge CNAME configuration
-- Ne használja az és a egy IF utasítást úgy, hogy bizonyos egyezési feltételei. Például kombinálása egy CDN-forrás az egyezési feltétellel rendelkező ügyfél kezdőpontja egyeztetési feltételt hozna létre, amely soha nem egyeztethető-egyeztetési minta. Ezért két ügyfél kezdőpontja egyezési feltételei keresztül egy és IF utasítás nelze kombinovat.
+- A vásárlói forrás egyeztetési feltétele teljesül, függetlenül attól, hogy a tartalmat egy CDN URL-címen vagy egy, a kiválasztott ügyfél-forrásra mutató peremhálózati CNAME URL-címen keresztül kéri-e a rendszer.
+- Egy szabály által hivatkozott ügyfél-forrás konfiguráció nem törölhető az ügyfél forrásának oldaláról. Az ügyfél-eredetű konfiguráció törlésének megkísérlése előtt győződjön meg arról, hogy a következő konfigurációk nem hivatkoznak rá:
+  - Az ügyfél-forrás egyeztetési feltétele
+  - Peremhálózati CNAME konfiguráció
+- Bizonyos egyezési feltételek összevonásához ne használjon és IF utasítást. Ha például egy ügyfél-forrás egyeztetési feltételt egy CDN-beli kiindulási feltétellel kombinálja, egy olyan egyezési mintát hoz létre, amely soha nem egyeztethető össze. Ezért két ügyfél-forrás egyeztetési feltétel nem kombinálható egy és IF utasítással.
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
 
@@ -309,64 +309,64 @@ Legfontosabb tudnivalókat:
 
 ### <a name="device"></a>Eszköz
 
-Az eszköz az egyezési feltétellel kérelmek egy mobileszközzel a tulajdonságok alapján azonosítja. Mobileszköz-felismerés a gazdafájlon keresztül [WURFL](http://wurfl.sourceforge.net/). 
+Az eszköz egyeztetése feltétel azonosítja a mobileszköz által a tulajdonságok alapján küldött kérelmeket. A mobileszköz-észlelés a [WURFLon](http://wurfl.sourceforge.net/)keresztül érhető el. 
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az eszköz a feltételnek megfelelő feltételek teljesülése:
+A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az eszköz egyeztetési feltételét:
 
-- **Egyezések**: A kérelmező eszközök a megadott értéknek egyeznie kell. 
-- **Nem felel meg**: Megköveteli, hogy a kérelmező eszközök a megadott érték nem egyezik.
+- **Egyezések**: A kérelmező eszközének meg kell egyeznie a megadott értékkel. 
+- **Nem egyezik**: Ehhez a kérelmező eszközének nem kell megegyeznie a megadott értékkel.
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Használja a **esetben figyelmen kívül hagyása** lehetőséget adja meg, hogy a megadott érték kis-és nagybetűket.
-- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
-  - Complete Cache Fill
-  - Alapértelmezett belső Max-Age
-  - Belső Max-Age kényszerítése
-  - Ignore Origin No-Cache
+- Az **eset mellőzése** beállítás megadásával adhatja meg, hogy a megadott érték megkülönbözteti-e a kis-és nagybetűket
+- A gyorsítótár-beállítások nyomon követésének módja miatt ez a megfeleltetési feltétel nem kompatibilis a következő funkciókkal:
+  - Gyorsítótár kitöltésének befejezése
+  - Alapértelmezett belső max. Age
+  - A belső Max-Age kényszerítése
+  - Kihagyott forrás – gyorsítótár
   - Belső maximális – elavult
 
-#### <a name="string-type"></a>Karakterlánc típus
+#### <a name="string-type"></a>Karakterlánc típusa
 
-Egy WURFL képesség általában tetszőleges számok, betűk és szimbólumok kombinációját fogad el. Ez a funkció rugalmas jellege miatt ki kell választania ezt az egyezési feltétellel társított értéket értelmezését. A következő táblázat ismerteti az elérhető beállítások készletét:
+A WURFL-képességek általában számok, betűk és szimbólumok tetszőleges kombinációját fogadják el. Ennek a képességnek a rugalmas jellege miatt ki kell választania, hogy a rendszer hogyan értelmezze az ehhez a megfeleltetési feltételhez társított értéket. A következő táblázat a rendelkezésre álló lehetőségeket tartalmazza:
 
 Type     | Leírás
 ---------|------------
-Szövegkonstans  | Ezt a beállítást, hogy a legtöbb karakterek használatával kulcsszó különleges jelentéssel a felvételt a [Szövegkonstansérték](cdn-verizon-premium-rules-engine-reference.md#literal-values).
-Helyettesítő karakter | Ezzel a lehetőséggel előnyeit minden [helyettesítő karakterek] ([helyettesítő karakteres értékek](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
-Regex    | Válassza ezt a lehetőséget a használandó [reguláris kifejezések](cdn-verizon-premium-rules-engine-reference.md#regular-expressions). Reguláris kifejezések hasznosak karaktereket a mintázat létrehozása.
+Szó  | Ezzel a beállítással megakadályozhatja, hogy a legtöbb karakter speciális jelentést adjon a [literális értékük](cdn-verizon-premium-rules-engine-reference.md#literal-values)használatával.
+Helyettesítő | Ezzel a beállítással kihasználhatja az összes [helyettesítő karaktert] ([helyettesítő](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)karakter).
+Regex    | Válassza ezt a lehetőséget a [reguláris kifejezések](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)használatához. A reguláris kifejezések hasznosak a karakterek mintázatának definiálásához.
 
-#### <a name="wurfl-capabilities"></a>WURFL képességek
+#### <a name="wurfl-capabilities"></a>WURFL-képességek
 
-Egy WURFL képesség, amely ismerteti a mobil eszközök kategória hivatkozik. A kiválasztott funkció határozza meg a mobil eszköz leírása, amely a kérések azonosítására szolgál.
+A WURFL-képesség olyan kategóriára hivatkozik, amely leírja a mobileszközök listáját. A kiválasztott képesség meghatározza a mobileszköz-Leírás típusát, amely a kérelmek azonosítására szolgál.
 
-Az alábbi táblázat felsorolja a WURFL képességek és a rules engine azok változókat.
+A következő táblázat felsorolja a WURFL-képességeket és azok változóit a szabályok motorja számára.
 
 > [!NOTE]
-> A következő változók használhatók a **ügyfél kérelem fejléce módosítsa** és **ügyfél válasz fejléce módosítsa** funkciókat.
+> A következő változók támogatottak az **ügyfél-kérelem módosítása fejlécben** , és módosíthatják az **ügyfél válaszának fejlécének** funkcióit.
 
-Képesség | Változó | Leírás | Mintaértékek
+Képesség | Változó | Leírás | Mintavételezési értékek
 -----------|----------|-------------|----------------
-Márkanév | %{wurfl_cap_brand_name} | Egy karakterlánc, amely azt jelzi, hogy az eszköz márkanevét. | Samsung
-Eszköz operációs rendszere | %{wurfl_cap_device_os} | Egy karakterlánc, amely azt jelzi, hogy az eszközön telepített operációs rendszer. | IOS
-Eszköz operációs rendszerének verziója | %{wurfl_cap_device_os_version} | Egy karakterlánc, amely azt jelzi, hogy az eszközön telepített operációs rendszer verziószáma. | 1.0.1
-Kettős tájolása | %{wurfl_cap_dual_orientation} | Egy logikai érték, amely jelzi, hogy az eszköz támogatja-e kettős tájolását. | true
-HTML Preferred DTD | %{wurfl_cap_html_preferred_dtd} | Egy karakterlánc, amely azt jelzi, hogy a mobil eszköz előnyben részesített dokumentum típus definíciója (DTD) HTML-tartalmakat. | Egyik sem<br/>xhtml_basic<br/>html5
-Kép Inlining | %{wurfl_cap_image_inlining} | Logikai érték beolvasása, amely azt jelzi, hogy az eszköz támogatja-e a Base64 kódolású lemezképek. | false
-Is Android | %{wurfl_vcap_is_android} | Egy logikai érték, amely azt jelzi, hogy az eszközt az Android operációs rendszer használja-e. | true
-IOS | %{wurfl_vcap_is_ios} | Egy logikai érték, amely azt jelzi, hogy az eszköz iOS használja-e. | false
-Smart TV van | %{wurfl_cap_is_smarttv} | Egy logikai érték, amely azt jelzi, hogy az eszköz egy Okostelevízió. | false
-Smartphone van | %{wurfl_vcap_is_smartphone} | Egy logikai érték, amely azt jelzi, hogy az eszköz okostelefont. | true
-Táblagépes van | %{wurfl_cap_is_tablet} | Egy logikai érték, amely azt jelzi, hogy az eszköz táblagépen. A leírás megadása nem operációs rendszer független. | true
-Vezeték nélküli eszköz | %{wurfl_cap_is_wireless_device} | Egy logikai érték, amely azt jelzi, hogy az eszköz számít-e a vezeték nélküli eszköz. | true
-Marketing neve | %{wurfl_cap_marketing_name} | Egy karakterlánc, amely azt jelzi, hogy az eszköz marketing nevét. | BlackBerry 8100-as Pearl
-Mobileszköz böngészőjében | %{wurfl_cap_mobile_browser} | Egy karakterlánc, amely azt jelzi, hogy a böngésző, amellyel tartalomkérelem az eszközről. | Chrome
-Mobil böngésző verziója | %{wurfl_cap_mobile_browser_version} | Egy karakterlánc, amely azt jelzi, hogy a használt böngészőtől függjön tartalom kérhet az eszköz verzióját. | 31
-Modell neve | %{wurfl_cap_model_name} | Egy karakterlánc, amely azt jelzi, hogy az eszköz modellneve. | s3
-Progresszív letöltés | %{wurfl_cap_progressive_download} | Egy logikai érték, amely jelzi, hogy az eszköz támogatja-e a hang és videó lejátszása, miközben továbbra is letöltése folyamatban. | true
-Kiadás dátuma | %{wurfl_cap_release_date} | Egy karakterlánc, amely azt jelzi, hogy az év és hónap, amelyen az eszköz hozzáadva a WURFL adatbázishoz.<br/><br/>Formátum: `yyyy_mm` | 2013_december
-Feloldási magassága | %{wurfl_cap_resolution_height} | Egész szám, amely azt jelzi, hogy az eszköz magasságát (képpontban). | 768
-Feloldási szélessége | %{wurfl_cap_resolution_width} | Egész szám, amely azt jelzi, hogy az eszköz szélességét (képpontban). | 1024
+Márkanév | %{wurfl_cap_brand_name} | Egy karakterlánc, amely az eszköz márkáját jelzi. | Samsung
+Eszköz operációs rendszere | %{wurfl_cap_device_os} | Egy karakterlánc, amely az eszközre telepített operációs rendszert jelzi. | IOS
+Eszköz operációs rendszerének verziója | %{wurfl_cap_device_os_version} | Egy karakterlánc, amely az eszközön telepített operációs rendszer verziószámát jelzi. | 1.0.1
+Kettős tájolás | %{wurfl_cap_dual_orientation} | Logikai érték, amely azt jelzi, hogy az eszköz támogatja-e a kettős tájolást. | true
+HTML elsődleges DTD | %{wurfl_cap_html_preferred_dtd} | Egy karakterlánc, amely megadja a mobileszköz előnyben részesített dokumentumtípus-definícióját (DTD) a HTML-tartalomhoz. | nincs<br/>xhtml_basic<br/>HTML5
+Rendszerkép inbélése | %{wurfl_cap_image_inlining} | Logikai érték, amely azt jelzi, hogy az eszköz támogatja-e a Base64 kódolású lemezképeket. | false
+Is Android | %{wurfl_vcap_is_android} | Logikai érték, amely azt jelzi, hogy az eszköz használja-e az Android operációs rendszert. | true
+IOS | %{wurfl_vcap_is_ios} | Egy logikai érték, amely azt jelzi, hogy az eszköz használ-e iOS-t. | false
+Intelligens TV | %{wurfl_cap_is_smarttv} | Logikai érték, amely azt jelzi, hogy az eszköz intelligens TV-e. | false
+Okostelefon | %{wurfl_vcap_is_smartphone} | Logikai érték, amely azt jelzi, hogy az eszköz okostelefon-e. | true
+Tabletta | %{wurfl_cap_is_tablet} | Logikai érték, amely azt jelzi, hogy az eszköz táblaszámítógép-e. Ez a leírás az operációs rendszertől független. | true
+Vezeték nélküli eszköz | %{wurfl_cap_is_wireless_device} | Egy logikai érték, amely jelzi, hogy az eszköz vezeték nélküli eszköznek minősül-e. | true
+Marketing neve | %{wurfl_cap_marketing_name} | Egy karakterlánc, amely az eszköz marketing-nevét jelzi. | BlackBerry 8100 Pearl
+Mobil böngésző | %{wurfl_cap_mobile_browser} | Egy karakterlánc, amely az eszköz tartalmának kéréséhez használt böngészőt jelzi. | Chrome
+Mobil böngésző verziója | %{wurfl_cap_mobile_browser_version} | Egy karakterlánc, amely az eszköz tartalmának kéréséhez használt böngésző verzióját jelzi. | 31
+Modell neve | %{wurfl_cap_model_name} | Egy karakterlánc, amely az eszköz modellje nevét jelzi. | s3
+Progresszív letöltés | %{wurfl_cap_progressive_download} | Logikai érték, amely azt jelzi, hogy az eszköz támogatja-e a hang-és videó lejátszását, miközben továbbra is le van töltve. | true
+Kiadás dátuma | %{wurfl_cap_release_date} | Egy karakterlánc, amely azt az évet és hónapot jelzi, amikor az eszköz hozzá lett adva a WURFL-adatbázishoz.<br/><br/>Formátum: `yyyy_mm` | 2013_december
+Felbontás magassága | %{wurfl_cap_resolution_height} | Egy egész szám, amely jelzi az eszköz magasságát képpontban megadva. | 768
+Felbontás szélessége | %{wurfl_cap_resolution_width} | Egész szám, amely megadja az eszköz szélességét képpontban megadva. | 1024
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
 
@@ -374,18 +374,18 @@ Feloldási szélessége | %{wurfl_cap_resolution_width} | Egész szám, amely az
 
 ---
 
-### <a name="edge-cname"></a>Edge Cname
+### <a name="edge-cname"></a>Edge CNAME
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Elérhető edge CNAME rekordok listájának e edge CNAME-rekordokat a platform, amelyen a rules engine konfigurálva van a peremhálózati CNAME rekordok lapon konfigurált korlátozódik.
-- Mielőtt megkísérli törölni egy edge CNAME-konfigurációt, győződjön meg arról, hogy az Edge Cname egyeztetési feltételt nem hivatkozik. A szabályban definiált Edge CNAME-konfigurációk nem lehet törölni az Edge CNAME-rekordokat oldalról.
-- Ne használja az és a egy IF utasítást úgy, hogy bizonyos egyezési feltételei. Például kombinálása egy Edge Cname az egyezési feltétellel rendelkező ügyfél kezdőpontja egyeztetési feltételt hozna létre, amely soha nem egyeztethető-egyeztetési minta. Ezért két Edge Cname egyezési feltételei keresztül egy és IF utasítás nelze kombinovat.
-- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
-  - Complete Cache Fill
-  - Alapértelmezett belső Max-Age
-  - Belső Max-Age kényszerítése
-  - Ignore Origin No-Cache
+- Az elérhető Edge-CNAME rekordok listája azokra a peremhálózati CNAME-re korlátozódik, amelyek a szabályok motorjának konfigurálására szolgáló platform peremhálózati CNAME-lapján vannak konfigurálva.
+- A peremhálózati CNAME konfiguráció törlésének megkísérlése előtt győződjön meg arról, hogy a peremhálózati CNAME-egyeztetési feltétel nem hivatkozik rá. A szabályban definiált Edge CNAME konfigurációk nem törölhetők a peremhálózati CNAME-lapok lapról.
+- Bizonyos egyezési feltételek összevonásához ne használjon és IF utasítást. Ha például egy Edge CNAME egyeztetési feltételt társít egy ügyfél-Origó egyeztetési feltétellel, akkor egy olyan egyezési mintát hoz létre, amely soha nem egyeztethető össze. Emiatt a két peremhálózati CNAME egyeztetési feltétel nem kombinálható az AND IF utasítással.
+- A gyorsítótár-beállítások nyomon követésének módja miatt ez a megfeleltetési feltétel nem kompatibilis a következő funkciókkal:
+  - Gyorsítótár kitöltésének befejezése
+  - Alapértelmezett belső max. Age
+  - A belső Max-Age kényszerítése
+  - Kihagyott forrás – gyorsítótár
   - Belső maximális – elavult
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
@@ -396,24 +396,24 @@ Legfontosabb tudnivalókat:
 
 ### <a name="referring-domain"></a>Hivatkozó tartomány
 
-A gazdagép nevét a hivatkozó, amelyen keresztül tartalmat kért meghatározza, hogy a tartomány hivatkozó feltétel teljesül-e társítva.
+Annak a hivatkozó állomásnévnek a neve, amelyen keresztül a kért tartalom szerepel, meghatározza, hogy teljesül-e a hivatkozó tartomány feltétele.
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt a hivatkozó tartomány feltételnek megfelelő feltételek teljesülése:
+A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy teljesülnek-e a hivatkozó tartomány egyeztetési feltétele:
 
-- **Egyezések**: A megadott értékekre hivatkozó állomásnév szükséges. 
-- **Nem felel meg**: Megköveteli, hogy a hivatkozó gazdagép neve nem egyezik a megadott érték.
+- **Egyezések**: A hivatkozó állomásnév megadását igényli a megadott értékeknek megfelelően. 
+- **Nem egyezik**: Megköveteli, hogy a hivatkozó állomásnév ne egyezzen meg a megadott értékkel.
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Adja meg az egy szóköz pedig külön határoló több állomásnevet.
-- Támogatja-e az egyezési feltétellel [helyettesítő karakteres értékek](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
-- A megadott érték nem tartalmaz egy csillag, ha a hivatkozó névhez pontos egyezésűnek kell lennie. Például adja meg a "tartomany.com" nem felel meg a "www.mydomain.com."
-- Használja a **esetben figyelmen kívül hagyása** -e a kis-és nagybetűket összehasonlítás ellenőrzési lehetőséget.
-- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
-  - Complete Cache Fill
-  - Alapértelmezett belső Max-Age
-  - Belső Max-Age kényszerítése
-  - Ignore Origin No-Cache
+- Több állomásnevet is megadhat, ha mindegyiket egyetlen szóközzel kell elválasztani.
+- Ez a megfeleltetési feltétel támogatja a [helyettesítő karaktereket](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
+- Ha a megadott érték nem tartalmaz csillagot, akkor pontosan egyeznie kell a hivatkozó gazdagép nevével. Például a "mydomain.com" megadása nem egyezik meg a "www.mydomain.com" értékkel.
+- A kis-és nagybetűk **figyelmen kívül hagyása** beállítással szabályozhatja, hogy a rendszer a kis-és nagybetűk megkülönböztetését
+- A gyorsítótár-beállítások nyomon követésének módja miatt ez a megfeleltetési feltétel nem kompatibilis a következő funkciókkal:
+  - Gyorsítótár kitöltésének befejezése
+  - Alapértelmezett belső max. Age
+  - A belső Max-Age kényszerítése
+  - Kihagyott forrás – gyorsítótár
   - Belső maximális – elavult
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
@@ -422,23 +422,23 @@ Legfontosabb tudnivalókat:
 
 ---  
 
-### <a name="request-header-literal"></a>Kérelem fejléce szövegkonstans
+### <a name="request-header-literal"></a>Kérelem fejléce – literál
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt a kérelem fejlécében szövegkonstans feltételnek megfelelő feltételek teljesülése.
+A **egyezések**/**nem egyeznek** beállítás határozza meg azokat a feltételeket, amelyekben a kérelem fejlécének konstans egyeztetési feltétele teljesül.
 
-- **Egyezések**: A kérelem tartalmazza a megadott fejléc igényel. Az értékét meg kell egyeznie a az egyezési feltétellel megadott.
-- **Nem felel meg**: Megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
-  - A megadott fejléc nem tartalmaz.
-  - A megadott fejléc tartalmaz, de az érték nem felel meg, amely ezt az egyezési feltétellel van definiálva.
+- **Egyezések**: A kérelemnek a megadott fejlécet kell tartalmaznia. Az értéknek meg kell egyeznie az ebben az egyeztetési feltételben definiált értékkel.
+- **Nem egyezik**: Megköveteli, hogy a kérelem megfeleljen a következő feltételek egyikének:
+  - Nem tartalmazza a megadott fejlécet.
+  - Tartalmazza a megadott fejlécet, de az értéke nem egyezik az ebben az egyeztetési feltételben definiált értékkel.
   
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Fejléc neve összehasonlítások mindig nagybetűk nincsenek megkülönböztetve. Használja a **esetben figyelmen kívül hagyása** szabályozhatja a fejléc értéke összehasonlítások Kisbetű/nagybetű megkülönböztetése lehetőséget.
-- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
-  - Complete Cache Fill
-  - Alapértelmezett belső Max-Age
-  - Belső Max-Age kényszerítése
-  - Ignore Origin No-Cache
+- A fejléc neve összehasonlítások mindig kis-és nagybetűket érintenek. Az **eset mellőzése** beállítással szabályozhatja a fejléc értékének összehasonlítását.
+- A gyorsítótár-beállítások nyomon követésének módja miatt ez a megfeleltetési feltétel nem kompatibilis a következő funkciókkal:
+  - Gyorsítótár kitöltésének befejezése
+  - Alapértelmezett belső max. Age
+  - A belső Max-Age kényszerítése
+  - Kihagyott forrás – gyorsítótár
   - Belső maximális – elavult
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
@@ -447,29 +447,29 @@ Legfontosabb tudnivalókat:
 
 ---  
 
-### <a name="request-header-regex"></a>Kérelem fejléce reguláris kifejezés
+### <a name="request-header-regex"></a>Kérelem fejlécének Regexje
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt a kérelem fejlécében Regex feltételnek megfelelő feltételek teljesülése.
+A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti a kérelem fejlécének regex-egyeztetési feltételét.
 
-- **Egyezések**: A kérelem tartalmazza a megadott fejléc igényel. Az értékét meg kell egyeznie a megadott minta a megadott [reguláris kifejezés](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
-- **Nem felel meg**: Megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
-  - A megadott fejléc nem tartalmaz.
-  - A megadott fejléc tartalmaz, de az érték nem egyezik meg a megadott reguláris kifejezés.
+- **Egyezések**: A kérelemnek a megadott fejlécet kell tartalmaznia. Az értéknek meg kell egyeznie a megadott [reguláris kifejezésben](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)definiált mintával.
+- **Nem egyezik**: Megköveteli, hogy a kérelem megfeleljen a következő feltételek egyikének:
+  - Nem tartalmazza a megadott fejlécet.
+  - Tartalmazza a megadott fejlécet, de az értéke nem felel meg a megadott reguláris kifejezésnek.
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
 - Fejléc neve:
-  - Fejléc neve összehasonlítások megkülönböztetik a kis-és nagybetűket.
-  - Cserélje le a fejléc neve szóközöket "% 20."
+  - A fejléc nevének összehasonlítása a kis-és nagybetűk megkülönböztetése nélkül történik.
+  - A fejlécben lévő szóközöket cserélje le a következőre: "% 20".
 - Fejléc értéke:
-  - A fejléc értéke kihasználhatják a reguláris kifejezéseket.
-  - Használja a **esetben figyelmen kívül hagyása** szabályozhatja a fejléc értéke összehasonlítások Kisbetű/nagybetű megkülönböztetése lehetőséget.
-  - A match feltétel nem teljesül, csak akkor, ha egy fejléc értéke pontosan egyezik a megadott minták egyikét.
-- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
-  - Complete Cache Fill
-  - Alapértelmezett belső Max-Age
-  - Belső Max-Age kényszerítése
-  - Ignore Origin No-Cache
+  - A fejléc értéke kihasználhatja a reguláris kifejezések előnyeit.
+  - Az **eset mellőzése** beállítással szabályozhatja a fejléc értékének összehasonlítását.
+  - Az egyeztetési feltétel csak akkor teljesül, ha egy fejléc értéke pontosan megegyezik a megadott minták legalább egyikével.
+- A gyorsítótár-beállítások nyomon követésének módja miatt ez a megfeleltetési feltétel nem kompatibilis a következő funkciókkal:
+  - Gyorsítótár kitöltésének befejezése
+  - Alapértelmezett belső max. Age
+  - A belső Max-Age kényszerítése
+  - Kihagyott forrás – gyorsítótár
   - Belső maximális – elavult
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
@@ -478,30 +478,30 @@ Legfontosabb tudnivalókat:
 
 ---
 
-### <a name="request-header-wildcard"></a>Kérelem fejléce helyettesítő karakter
+### <a name="request-header-wildcard"></a>Kérelem fejlécének helyettesítő karaktere
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt a kérelem fejlécében helyettesítő feltételnek megfelelő feltételek teljesülése.
+A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a kérelem fejléce milyen feltételek teljesülése esetén teljesül.
 
-- **Egyezések**: A kérelem tartalmazza a megadott fejléc igényel. Az értékét meg kell egyeznie az értékeket, amelyeket ez az egyezési feltétellel vannak definiálva legalább egyike.
-- **Nem felel meg**: Megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
-  - A megadott fejléc nem tartalmaz.
-  - A megadott fejléc tartalmaz, de az érték nem egyezik a megadott értékeket.
+- **Egyezések**: A kérelemnek a megadott fejlécet kell tartalmaznia. Az értéknek meg kell egyeznie a jelen egyeztetési feltételben definiált értékek közül legalább az egyikkel.
+- **Nem egyezik**: Megköveteli, hogy a kérelem megfeleljen a következő feltételek egyikének:
+  - Nem tartalmazza a megadott fejlécet.
+  - Tartalmazza a megadott fejlécet, de az értéke nem felel meg a megadott értékek egyikének sem.
   
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
 - Fejléc neve:
-  - Fejléc neve összehasonlítások megkülönböztetik a kis-és nagybetűket.
-  - A fejléc neve szóközöket le kell cserélni "% 20." Ez az érték használatával adja meg a tárolóhelyek fejléc értékét.
+  - A fejléc nevének összehasonlítása a kis-és nagybetűk megkülönböztetése nélkül történik.
+  - A fejlécben lévő szóközöket a (z) "% 20" kifejezéssel kell helyettesíteni. Ennek az értéknek a használatával is megadhat szóközt a fejléc értékében.
 - Fejléc értéke:
-  - A fejléc értéke kihasználhatják a [helyettesítő karakteres értékek](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
-  - Használja a **esetben figyelmen kívül hagyása** szabályozhatja a fejléc értéke összehasonlítások Kisbetű/nagybetű megkülönböztetése lehetőséget.
-  - A fejléc értéke pontosan egyezik a megadott minták egyikét, ha a egyezés feltétel teljesül.
-  - Adja meg az egy szóköz pedig külön határoló több érték.
-- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
-  - Complete Cache Fill
-  - Alapértelmezett belső Max-Age
-  - Belső Max-Age kényszerítése
-  - Ignore Origin No-Cache
+  - A fejléc értéke kihasználhatja a [helyettesítő karakteres értékeket](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
+  - Az **eset mellőzése** beállítással szabályozhatja a fejléc értékének összehasonlítását.
+  - Ez a megfeleltetési feltétel akkor teljesül, ha egy fejléc értéke pontosan megegyezik a megadott minták legalább egyikével.
+  - Több értéket is megadhat, ha mindegyiket egyetlen szóközzel kell korlátozni.
+- A gyorsítótár-beállítások nyomon követésének módja miatt ez a megfeleltetési feltétel nem kompatibilis a következő funkciókkal:
+  - Gyorsítótár kitöltésének befejezése
+  - Alapértelmezett belső max. Age
+  - A belső Max-Age kényszerítése
+  - Kihagyott forrás – gyorsítótár
   - Belső maximális – elavult
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
@@ -510,9 +510,9 @@ Legfontosabb tudnivalókat:
 
 ---
 
-### <a name="request-method"></a>Kérelmi metódus
+### <a name="request-method"></a>Kérelem metódusa
 
-A kérelem metódusa egyezés feltétel nem teljesül, csak akkor, ha a eszközök kérik a kijelölt kérelem metódus segítségével. A kérelem elérhető módszerek a következők:
+A kérelem metódusának egyeztetési feltétele csak akkor teljesül, ha az eszközöket a kiválasztott kérési módszer alapján kérik. Az elérhető kérelmek módszerei a következők:
 
 - GET
 - HEAD
@@ -521,16 +521,16 @@ A kérelem metódusa egyezés feltétel nem teljesül, csak akkor, ha a eszköz�
 - PUT
 - DELETE
 - NYOMKÖVETÉSI
-- CSATLAKOZÁS
+- CSATLAKOZNI
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Alapértelmezés szerint csak a GET metódust kérelem hozhat létre gyorsítótárazott tartalom a hálózaton. Minden más kérelem módszereket használ proxyt a hálózaton keresztül.
-- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
-  - Complete Cache Fill
-  - Alapértelmezett belső Max-Age
-  - Belső Max-Age kényszerítése
-  - Ignore Origin No-Cache
+- Alapértelmezés szerint csak a GET Request metódus tud gyorsítótárazott tartalmat készíteni a hálózaton. Minden más kérelmezési módszer a hálózaton keresztül történik.
+- A gyorsítótár-beállítások nyomon követésének módja miatt ez a megfeleltetési feltétel nem kompatibilis a következő funkciókkal:
+  - Gyorsítótár kitöltésének befejezése
+  - Alapértelmezett belső max. Age
+  - A belső Max-Age kényszerítése
+  - Kihagyott forrás – gyorsítótár
   - Belső maximális – elavult
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
@@ -539,20 +539,20 @@ Legfontosabb tudnivalókat:
 
 ---
 
-### <a name="request-scheme"></a>Kérelem séma
+### <a name="request-scheme"></a>Kérési séma
 
-A kérelem séma egyezik feltétel nem teljesül, csak akkor, ha a eszközök kérik a kiválasztott protokollon keresztül. Az elérhető protokollok a következők:
+A kérési séma egyeztetési feltétele csak akkor teljesül, ha az eszközöket a kiválasztott protokollon keresztül kérik. A rendelkezésre álló protokollok a következők:
 
 - HTTP
 - HTTPS
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
-  - Complete Cache Fill
-  - Alapértelmezett belső Max-Age
-  - Belső Max-Age kényszerítése
-  - Ignore Origin No-Cache
+- A gyorsítótár-beállítások nyomon követésének módja miatt ez a megfeleltetési feltétel nem kompatibilis a következő funkciókkal:
+  - Gyorsítótár kitöltésének befejezése
+  - Alapértelmezett belső max. Age
+  - A belső Max-Age kényszerítése
+  - Kihagyott forrás – gyorsítótár
   - Belső maximális – elavult
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
@@ -561,57 +561,57 @@ Legfontosabb tudnivalókat:
 
 ---
 
-### <a name="url-path-directory"></a>URL-cím elérési út könyvtár
+### <a name="url-path-directory"></a>URL elérési útja könyvtár
 
-Azonosítja a kérelem relatív elérési úttal, amely nem tartalmazza a kért objektum a fájl nevét.
+A kérést a relatív elérési úttal azonosítja, amely kizárja a kért eszköz fájlnevét.
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím elérési út könyvtár feltételnek megfelelő feltételek teljesülése.
+A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL-cím elérési útját.
 
-- **Egyezések**: A kérés tartalmaz egy relatív URL-cím, kivéve a a fájlnevet, amely megfelel a megadott URL-minta igényel.
-- **Nem felel meg**: A kérés tartalmaz egy relatív URL-cím, kivéve a fájl neve, amely nem egyezik a megadott URL-minta igényel.
+- **Egyezések**: A kérésnek tartalmaznia kell egy relatív URL elérési utat, kivéve a fájlnevet, amely megfelel a megadott URL-mintának.
+- **Nem egyezik**: A kérésnek tartalmaznia kell egy relatív URL elérési utat, kivéve a fájlnevet, amely nem felel meg a megadott URL-mintának.
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Használja a **a skálához képest** beállítással azt adhatja meg, hogy az URL-cím összehasonlítás kezdődik-e előtt vagy után a tartalom-hozzáférési pont. A tartalom-hozzáférési pont az elérési út és a Verizon CDN gazdagépnév, illetve relatív elérési útját a kért objektumhoz (például /800001/CustomerOrigin) között megjelenő része. Kiszolgáló típusa (például a CDN-t vagy az ügyfél forrás) egy hely és az ügyfél fiók száma azonosítja.
+- A **relatív** beállítás megadásával adhatja meg, hogy az URL-cím összehasonlítása a tartalom-hozzáférési pont előtt vagy után kezdődik-e. A tartalom-hozzáférési pont az elérési út azon része, amely megjelenik a Verizon CDN-állomásnév és a kért eszköz relatív elérési útja között (például/800001/CustomerOrigin). Meghatározza a helyet a kiszolgáló típusa szerint (például CDN vagy Customer Origin) és az ügyfél fiókjának számát.
 
-   A következő értékek érhetők el a **a skálához képest** lehetőséget:
-  - **Legfelső szintű**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi közvetlenül a CDN-gazdaneve után. 
+   A következő értékek érhetők el a **relatív** beállításhoz:
+  - **Gyökér**: Azt jelzi, hogy az URL-összehasonlító pont közvetlenül a CDN-állomásnév után kezdődik. 
 
-  Például: http:\//wpc.0001.&lt; tartomány&gt;/**800001/myorigin/SajátMappa**/index.htm
+  Például: http:\//WPC.0001.&lt; tartomány&gt;800001/ **/myorigin/MyFolder**/index.htm
 
-  - **Forrás**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi a tartalom-hozzáférési pont (például /000001 vagy/800001/myorigin) után. Mivel a \*. azureedge.net CNAME képest a forrás könyvtárát, a Verizon CDN gazdagépnevét alapértelmezés szerint létrejön, a felhasználók az Azure CDN-t kell használnia a **forrás** értéket. 
+  - **Forrás**: Azt jelzi, hogy az URL-összehasonlító pont a tartalom-hozzáférési pont után kezdődik (például/000001 vagy/800001/myorigin). Mivel a \*. azureedge.net CNAME azonosító alapértelmezés szerint a Verizon CDN-gazdagépen lévő forrás könyvtárhoz képest jön létre, Azure CDN felhasználóknak a **forrás** értéket kell használniuk. 
 
-  Például: https:\//&lt;végpont&gt;.azureedge.net/**SajátMappa**/index.htm 
+  Például\/: https:/&lt;Endpoint&gt;. azureedge.net/**MyFolder**/index.htm 
 
-  Az URL-cím mutat a következő Verizon CDN gazdaneve: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/**SajátMappa**/index.htm
+  Ez az URL-cím a következő Verizon CDN állomásnévre mutat\/:&lt; http:/WPC.0001. tartomány&gt;/800001/myorigin/**MyFolder**/index.htm
 
-- Az edge CNAME URL-cím újraírja van a CDN URL-CÍMÉT az URL-cím összehasonlítás előtt.
+- A peremhálózati CNAME URL-címet az URL-cím összehasonlítását megelőzően a CDN URL-re írja a rendszer.
 
-    Például a következő két URL egyaránt az adott objektum mutasson, és ezért tudja az ugyanazon URL-címet.
-  - A CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
+    Például a következő URL-címek mindegyike ugyanarra az objektumra mutat, ezért ugyanaz az URL-cím elérési útja.
+  - CDN URL-cím:\/http&lt; :/WPC.0001. tartomány&gt;/800001/CustomerOrigin/Path/Asset.htm
     
   - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
     
     További információ:
-  - Egyéni tartomány: https:\//my.domain.com/path/asset.htm
+  - Egyéni tartomány: https:\//My.domain.com/Path/Asset.htm
     
-    - (Root) képest relatív URL-cím: / 800001/CustomerOrigin/path /
+    - URL elérési útja (a gyökérhez képest):/800001/CustomerOrigin/path/
     
-    - (Forrás) képest relatív URL-cím: /path/
+    - URL-cím elérési útja (a forráshoz viszonyítva):/Path/
 
-- Az URL-cím összehasonlító vége előtt a fájlnév a kért objektum használt URL-cím része. Záró perjellel az ilyen típusú elérési út az utolsó karakter.
+- Az URL-cím összehasonlításához használt URL-cím a kért eszköz fájlneve előtt ér véget. A záró perjel az utolsó karakter az ilyen típusú elérési úton.
 
-- Cserélje le az URL-cím elérési út mintája a szóközt "% 20."
+- A (z) "% 20" értékkel helyettesítse az URL-cím elérési útjában lévő szóközöket.
 
-- Minden egyes URL-cím elérési út mintája egy vagy több csillagot (*), ahol minden egyes csillag olyan sorozataira illeszkedik, egy vagy több karaktert tartalmazhat.
+- Minden URL-cím elérési útja tartalmazhat egy vagy több csillagot (*), ahol minden csillag egy vagy több karakterből áll.
 
-- Adja meg a több URL-cím elérési út a minta szerint határoló egyenként a szóköz.
+- Több URL-útvonalat is megadhat a mintában úgy, hogy mindegyiket egyetlen szóközzel korlátozza.
 
-    Például: * /sales/ * /marketing/
+    Például: */Sales/*/marketing/
 
-- URL-cím elérési utat kihasználhatják a [helyettesítő karakteres értékek](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
+- Egy URL-elérésiút-specifikáció kihasználhatja a [helyettesítő karakteres értékeket](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
 
-- Használja a **esetben figyelmen kívül hagyása** ellenőrzési lehetőséget egy kis-és nagybetűket összehasonlítás történik-e.
+- A **kis** -és nagybetűk megkülönböztetése beállítás használatával szabályozhatja, hogy a rendszer a kis-és nagybetűket megkülönböztető összehasonlítást
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
 
@@ -619,42 +619,42 @@ Legfontosabb tudnivalókat:
 
 ---
 
-### <a name="url-path-extension"></a>URL-cím elérési út bővítmény
+### <a name="url-path-extension"></a>URL-elérési út kiterjesztése
 
-A fájl kiterjesztése a kért objektum azonosítja a kérelmeket.
+A kért eszköz fájlkiterjesztés alapján azonosítja a kérelmeket.
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím elérési út bővítmény feltételnek megfelelő feltételek teljesülése.
+A **egyezések**/**nem egyeznek** beállítás határozza meg azokat a feltételeket, amelyekben az URL-cím elérési útjának egyeztetési állapota teljesül.
 
-- **Egyezések**: A kérelem tartalmazza, amely pontosan megegyezik a megadott minta fájlkiterjesztést az URL-cím szükséges.
+- **Egyezések**: A kérelem URL-címének megadásához olyan fájlkiterjesztés szükséges, amely pontosan megfelel a megadott mintának.
 
-   Például ha megadja a "htm", "htm" eszközök megfeleltetődnek, azonban nem "html" eszközök.  
+   Ha például megadja a "htm", a "htm" objektumokat, de nem a "HTML" típusú eszközöket.  
 
-- **Nem felel meg**: Az URL kérelmet tartalmaz, amely nem egyezik a megadott minta kiterjesztése igényel.
+- **Nem egyezik**: Az URL-címre vonatkozó kérelem olyan fájlkiterjesztés használatát igényli, amely nem felel meg a megadott mintának.
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Adja meg a kiterjesztések, a megfelelő a **érték** mezőbe. Nem tartalmaznak kezdődhetnek ponttal; Ha például használja htm .htm helyett.
+- A **Value (érték** ) mezőben válassza ki, hogy mely fájlkiterjesztések egyeznek meg. Ne tartalmazzon bevezető időszakot; a. htm helyett például a htm-t használja.
 
-- Használja a **esetben figyelmen kívül hagyása** ellenőrzési lehetőséget egy kis-és nagybetűket összehasonlítás történik-e.
+- A **kis** -és nagybetűk megkülönböztetése beállítás használatával szabályozhatja, hogy a rendszer a kis-és nagybetűket megkülönböztető összehasonlítást
 
-- Adjon meg több fájlkiterjesztések határoló összes-bővítményt egy szóközzel. 
+- Több fájlkiterjesztést is megadhat az egyes bővítmények egyetlen szóközzel való korlátozásával. 
 
     Például: htm html
 
-- Például adja meg a "htm" egyezik "htm" eszközök, de nem "html" eszközök.
+- Például a "htm" kifejezés megadásával egyezik a "htm" objektumokkal, de a "HTML" nem.
 
-#### <a name="sample-scenario"></a>Mintaforgatókönyv
+#### <a name="sample-scenario"></a>Példa a forgatókönyvre
 
-A következő példa konfigurációja azt feltételezi, hogy a match feltétel teljesül-e, amikor egy kérelem megfelel a megadott bővítmények egyikének.
+A következő minta-konfiguráció feltételezi, hogy ez a megfeleltetési feltétel teljesül, ha egy kérelem megfelel a megadott kiterjesztések valamelyikének.
 
-Specifikáció érték: az asp aspx php html
+Érték meghatározása: ASP aspx php HTML
 
-Ha úgy találja, a következő kiterjesztésű befejező URL-címek a match feltétel teljesül:
+Ez a megfelelési feltétel akkor teljesül, ha a következő kiterjesztésű URL-címeket keresi:
 
-- .asp
+- . asp
 - .aspx
 - .php
-- .html
+- . html
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
 
@@ -662,30 +662,30 @@ Ha úgy találja, a következő kiterjesztésű befejező URL-címek a match fel
 
 ---
 
-### <a name="url-path-filename"></a>URL-cím elérési_út fájlnév
+### <a name="url-path-filename"></a>URL elérési útja fájlnév
 
-Azonosítja a kérelmeket a kért objektum a fájl nevét. Ezt az egyezési feltétellel céljából a fájl nevét a kért objektumhoz, időszak és a fájlkiterjesztés (például index.html) nevéből áll.
+A kért objektum fájlneve alapján azonosítja a kérelmeket. Ennek a megfelelési feltételnek az alkalmazásában a fájl neve a kért objektum neve, egy pont és a fájlkiterjesztés (például index. html).
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím elérési út fájlnév feltételnek megfelelő feltételek teljesülése.
+A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL-cím elérési útjának megfeleltetési állapotát.
 
-- **Egyezések**: A kérelem a fájl nevét a hozzá tartozó URL-cím, amely megfelel a megadott minta tartalmaznia kell.
-- **Nem felel meg**: A kérelem a fájl nevét a hozzá tartozó URL-cím, amely nem egyezik a megadott minta tartalmaznia kell.
+- **Egyezések**: A kérésnek tartalmaznia kell egy fájlnevet az URL-címében, amely megfelel a megadott mintának.
+- **Nem egyezik**: A kérésnek tartalmaznia kell egy fájlnevet az URL-címében, amely nem felel meg a megadott mintának.
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Használja a **esetben figyelmen kívül hagyása** ellenőrzési lehetőséget egy kis-és nagybetűket összehasonlítás történik-e.
+- A **kis** -és nagybetűk megkülönböztetése beállítás használatával szabályozhatja, hogy a rendszer a kis-és nagybetűket megkülönböztető összehasonlítást
 
-- Több fájlkiterjesztések megadásához külön mindegyik bővítmény egyetlen szóközzel.
+- Több fájlkiterjesztés megadásához az egyes bővítményeket egyetlen szóközzel válassza el.
 
-    Például: index.htm index.html
+    Például: index. htm index. html
 
-- Tárolóhelyek fájl nevének értékét cserélje le a(z) "% 20."
+- A fájlnév értékében lévő szóközöket cserélje le a következőre: "% 20".
 
-- Egy fájl név-érték kihasználhatják a [helyettesítő karakteres értékek](cdn-verizon-premium-rules-engine-reference.md#wildcard-values). Például egyes Fájlnévminta tartalmazhat egy vagy több csillagot (*), ahol minden egyes csillag olyan sorozataira illeszkedik, egy vagy több karakter.
+- A fájlnév érték kihasználhatja a [helyettesítő karakteres értékeket](cdn-verizon-premium-rules-engine-reference.md#wildcard-values). Például az egyes fájlnevek mintázata egy vagy több csillagból (*) állhat, ahol minden csillag egy vagy több karakterből áll.
 
-- Ha helyettesítő karaktereket nem meg van adva, csak pontos egyezés kielégíteni ezt az egyezési feltétellel.
+- Ha a helyettesítő karakterek nincsenek megadva, akkor csak a pontos egyezés fogja kielégíteni ezt a megfelelési feltételt.
 
-    Például adja meg a "bemutató.ppt" megfelel egy "bemutató.ppt", de nem egy elnevezett "presentation.pptx." nevű objektum
+    Például a "Presentation. ppt" megadásával egyezik egy "Presentation. ppt" nevű objektummal, de nem egy "Presentation. pptx" névvel.
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
 
@@ -693,48 +693,48 @@ Legfontosabb tudnivalókat:
 
 ---
 
-### <a name="url-path-literal"></a>URL-cím elérési út szövegkonstans
+### <a name="url-path-literal"></a>URL elérési útja literál
 
-A kérelem URL-cím, beleértve a fájlnevet, és a megadott érték hasonlítja össze.
+Összehasonlítja a kérelem URL-címét, beleértve a fájlnevet a megadott értékre.
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím elérési út szövegkonstans feltételnek megfelelő feltételek teljesülése.
+A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL elérési útjának konstans egyezési feltételét.
 
-- **Egyezések**: A kérés tartalmaz, amely megfelel a megadott minta egy URL-cím szükséges.
-- **Nem felel meg**: A kérés tartalmaz, amely nem egyezik a megadott minta egy URL-cím szükséges.
+- **Egyezések**: A kérésnek tartalmaznia kell egy URL-útvonalat, amely megfelel a megadott mintának.
+- **Nem egyezik**: A kérelemnek olyan URL-útvonalat kell tartalmaznia, amely nem felel meg a megadott mintának.
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Használja a **a skálához képest** beállítással azt adhatja meg, hogy az URL-cím összehasonlító elkezdi előtt vagy után a tartalom-hozzáférési pont. 
+- A **relatív érték** beállítás megadásával adhatja meg, hogy az URL-cím összehasonlító pontja a tartalom-hozzáférési pont előtt vagy után kezdődik-e. 
 
-    A következő értékek érhetők el a **a skálához képest** lehetőséget:
-  - **Legfelső szintű**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi közvetlenül a CDN-gazdaneve után.
+    A következő értékek érhetők el a **relatív** beállításhoz:
+  - **Gyökér**: Azt jelzi, hogy az URL-összehasonlító pont közvetlenül a CDN-állomásnév után kezdődik.
 
-    Például: http:\//wpc.0001.&lt; tartomány&gt;/**800001/myorigin/myfolder/index.htm**
+    Például: http:\//WPC.0001.&lt; tartományi&gt; **** 800001/myorigin/MyFolder/index.htm/
 
-  - **Forrás**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi a tartalom-hozzáférési pont (például /000001 vagy/800001/myorigin) után. Mivel a \*. azureedge.net CNAME képest a forrás könyvtárát, a Verizon CDN gazdagépnevét alapértelmezés szerint létrejön, a felhasználók az Azure CDN-t kell használnia a **forrás** értéket. 
+  - **Forrás**: Azt jelzi, hogy az URL-összehasonlító pont a tartalom-hozzáférési pont után kezdődik (például/000001 vagy/800001/myorigin). Mivel a \*. azureedge.net CNAME azonosító alapértelmezés szerint a Verizon CDN-gazdagépen lévő forrás könyvtárhoz képest jön létre, Azure CDN felhasználóknak a **forrás** értéket kell használniuk. 
 
-    Például: https:\//&lt;végpont&gt;.azureedge.net/**myfolder/index.htm**
+    Például\/: https:/&lt;Endpoint&gt;. azureedge.net/**MyFolder/index.htm**
 
-  Az URL-cím mutat a következő Verizon CDN gazdaneve: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/**myfolder/index.htm**
+  Ez az URL-cím a következő Verizon CDN állomásnévre mutat\/:&lt; http:/WPC.0001. tartomány&gt;/800001/myorigin/**MyFolder/index.htm**
 
-- Az edge CNAME URL-cím URL-cím összehasonlítása előtt a CDN URL-címre van átírása.
+- A peremhálózati CNAME URL-cím egy URL-cím összehasonlítását megelőzően a CDN URL-re íródik.
 
-Például a következő két URL egyaránt mutasson az adott objektum, és ezért tudja az ugyanazon URL-címet:
+Például a következő URL-címek mindegyike ugyanarra az objektumra mutat, ezért ugyanaz az URL-cím elérési útja:
 
-- A CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
+- CDN URL-cím:\/http&lt; :/WPC.0001. tartomány&gt;/800001/CustomerOrigin/Path/Asset.htm
 - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
 
     További információ:
     
-    - (Root) képest relatív URL-cím: /800001/CustomerOrigin/path/asset.htm
+    - URL elérési útja (a gyökérhez képest):/800001/CustomerOrigin/path/asset.htm
    
-    - (Forrás) képest relatív URL-cím: /path/asset.htm
+    - URL-cím elérési útja (a forráshoz képest):/path/asset.htm
 
-- Az URL-cím lekérdezési karakterláncok figyelmen kívül hagyja.
-- Használja a **esetben figyelmen kívül hagyása** ellenőrzési lehetőséget egy kis-és nagybetűket összehasonlítás történik-e.
-- Ez az egyezési feltétellel a rendszer összehasonlítja a relatív elérési útját a pontos, az ügyfél által kezdeményezett kérelem számára megadott érték.
+- Az URL-címben szereplő lekérdezési karakterláncok figyelmen kívül lesznek hagyva.
+- A **kis** -és nagybetűk megkülönböztetése beállítás használatával szabályozhatja, hogy a rendszer a kis-és nagybetűket megkülönböztető összehasonlítást
+- Az ehhez a megfeleltetési feltételhez megadott értéket a rendszer összehasonlítja az ügyfél által végzett pontos kérelem relatív elérési útjával.
 
-- Egy adott címtárhoz intézett összes kérelem megfelelően, használja a [URL-cím elérési út Directory](#url-path-directory) vagy a [URL-cím elérési út helyettesítő](#url-path-wildcard) feltételnek megfelelő.
+- Egy adott címtárra irányuló összes kérelem megfeleltetéséhez használja az [URL-cím elérési útja](#url-path-directory) vagy az [URL-cím elérési útja helyettesítő](#url-path-wildcard) feltételt.
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
 
@@ -742,34 +742,34 @@ Például a következő két URL egyaránt mutasson az adott objektum, és ezér
 
 ---
 
-### <a name="url-path-regex"></a>URL-cím elérési út reguláris kifejezés
+### <a name="url-path-regex"></a>URL-cím elérési útja – regex
 
-A kérelem URL-cím a megadott összehasonlítja [reguláris kifejezés](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
+Összehasonlítja a kérelem URL-elérési útját a megadott [reguláris kifejezéssel](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím elérési út Regex feltételnek megfelelő feltételek teljesülése.
+A **egyezések**/**nem egyeznek** beállítás határozza meg azokat a feltételeket, amelyekben az URL-cím elérési útja megfelel a feltételnek.
 
-- **Egyezések**: A kérés tartalmaz egy URL-cím, amely megfelel a megadott reguláris kifejezést igényel.
-- **Nem felel meg**: A kérés tartalmaz egy URL-cím, amely nem egyezik a megadott reguláris kifejezést igényel.
+- **Egyezések**: A kérésnek tartalmaznia kell egy URL-útvonalat, amely megfelel a megadott reguláris kifejezésnek.
+- **Nem egyezik**: A kérelemnek olyan URL-útvonalat kell tartalmaznia, amely nem felel meg a megadott reguláris kifejezésnek.
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Az edge CNAME URL-cím URL-cím összehasonlítása előtt a CDN URL-címre van átírása.
+- A peremhálózati CNAME URL-cím az URL-cím összehasonlítását megelőzően a CDN URL-re íródik.
 
-    Például mindkét URL-címeket az adott objektum mutasson, és így kell az azonos URL-címet.
+    Például mindkét URL-cím ugyanarra az objektumra mutat, ezért azonos az URL-cím elérési útja.
 
-     - A CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
+     - CDN URL-cím:\/http&lt; :/WPC.0001. tartomány&gt;/800001/CustomerOrigin/Path/Asset.htm
 
      - Edge CNAME URL: http:\//my.domain.com/path/asset.htm
 
     További információ:
     
-     - URL-cím: /800001/CustomerOrigin/path/asset.htm
+     - URL-cím elérési útja:/800001/CustomerOrigin/path/asset.htm
 
-- Az URL-cím lekérdezési karakterláncok figyelmen kívül hagyja.
+- Az URL-címben szereplő lekérdezési karakterláncok figyelmen kívül lesznek hagyva.
     
-- Használja a **esetben figyelmen kívül hagyása** ellenőrzési lehetőséget egy kis-és nagybetűket összehasonlítás történik-e.
+- A **kis** -és nagybetűk megkülönböztetése beállítás használatával szabályozhatja, hogy a rendszer a kis-és nagybetűket megkülönböztető összehasonlítást
     
-- Az URL-címet a tárolóhelyek le kell cserélni "% 20."
+- Az URL-cím elérési útján lévő szóközöket a következőre kell cserélni: "% 20".
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
 
@@ -777,65 +777,65 @@ Legfontosabb tudnivalókat:
 
 ---
 
-### <a name="url-path-wildcard"></a>URL-cím elérési út helyettesítő karakter
+### <a name="url-path-wildcard"></a>URL elérési útja helyettesítő karakter
 
-A kérelem relatív URL-cím elérési útját a megadott helyettesítő karakterrel hasonlítja össze.
+Összehasonlítja a kérelem relatív URL-elérési útját a megadott helyettesítő típussal.
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím elérési út helyettesítő feltételnek megfelelő feltételek teljesülése.
+A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL-cím elérési útjának egyezését.
 
-- **Egyezések**: A kérés tartalmaz egy URL-cím, amely megfelel a megadott helyettesítő karakterrel kell.
-- **Nem felel meg**: A kérés tartalmaz egy URL-cím, amely nem egyezik a megadott helyettesítő karakterrel kell.
+- **Egyezések**: A kérésnek tartalmaznia kell egy URL-útvonalat, amely megfelel a megadott helyettesítő mintának.
+- **Nem egyezik**: A kérelem olyan URL-útvonalat tartalmaz, amely nem felel meg a megadott helyettesítő mintának.
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- **A skálához képest** lehetőséget: Ez a beállítás határozza meg, hogy az URL-cím összehasonlító elkezdi előtt vagy után a tartalom-hozzáférési pont.
+- **A** következőhöz képest: Ez a beállítás határozza meg, hogy az URL-cím összehasonlító pontja a tartalom-hozzáférési pont előtt vagy után kezdődik-e.
 
    Ez a beállítás a következő értékeket veheti fel:
-     - **Legfelső szintű**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi közvetlenül a CDN-gazdaneve után.
+     - **Gyökér**: Azt jelzi, hogy az URL-összehasonlító pont közvetlenül a CDN-állomásnév után kezdődik.
 
-       Például: http:\//wpc.0001.&lt; tartomány&gt;/**800001/myorigin/myfolder/index.htm**
+       Például: http:\//WPC.0001.&lt; tartományi&gt; **** 800001/myorigin/MyFolder/index.htm/
 
-     - **Forrás**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi a tartalom-hozzáférési pont (például /000001 vagy/800001/myorigin) után. Mivel a \*. azureedge.net CNAME képest a forrás könyvtárát, a Verizon CDN gazdagépnevét alapértelmezés szerint létrejön, a felhasználók az Azure CDN-t kell használnia a **forrás** értéket. 
+     - **Forrás**: Azt jelzi, hogy az URL-összehasonlító pont a tartalom-hozzáférési pont után kezdődik (például/000001 vagy/800001/myorigin). Mivel a \*. azureedge.net CNAME azonosító alapértelmezés szerint a Verizon CDN-gazdagépen lévő forrás könyvtárhoz képest jön létre, Azure CDN felhasználóknak a **forrás** értéket kell használniuk. 
 
-       Például: https:\//&lt;végpont&gt;.azureedge.net/**myfolder/index.htm**
+       Például\/: https:/&lt;Endpoint&gt;. azureedge.net/**MyFolder/index.htm**
 
-     Az URL-cím mutat a következő Verizon CDN gazdaneve: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/**myfolder/index.htm**
+     Ez az URL-cím a következő Verizon CDN állomásnévre mutat\/:&lt; http:/WPC.0001. tartomány&gt;/800001/myorigin/**MyFolder/index.htm**
 
-- Az edge CNAME URL-cím URL-cím összehasonlítása előtt a CDN URL-címre van átírása.
+- A peremhálózati CNAME URL-cím az URL-cím összehasonlítását megelőzően a CDN URL-re íródik.
 
-    Például a következő két URL egyaránt mutasson az adott objektum, és ezért tudja az ugyanazon URL-címet:
-     - A CDN URL-címe: http://wpc.0001.&lt ; tartomány&gt; /800001/CustomerOrigin/path/asset.htm
+    Például a következő URL-címek mindegyike ugyanarra az objektumra mutat, ezért ugyanaz az URL-cím elérési útja:
+     - CDN URL- http://wpc.0001.&lt címe:&gt;;d omain/800001/CustomerOrigin/Path/Asset.htm
      - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
     
     További információ:
     
-     - (Root) képest relatív URL-cím: /800001/CustomerOrigin/path/asset.htm
+     - URL elérési útja (a gyökérhez képest):/800001/CustomerOrigin/path/asset.htm
     
-     - (Forrás) képest relatív URL-cím: /path/asset.htm
+     - URL-cím elérési útja (a forráshoz képest):/path/asset.htm
     
-- Adja meg az egy szóköz pedig külön határoló több URL-cím elérési út.
+- Több URL-útvonalat is megadhat, ha mindegyiket egyetlen szóközzel kell elválasztani.
 
-   Például: /marketing/asset.* /sales/*.htm
+   Például:/marketing/Asset. */sales/*. htm
 
-- Az URL-cím lekérdezési karakterláncok figyelmen kívül hagyja.
+- Az URL-címben szereplő lekérdezési karakterláncok figyelmen kívül lesznek hagyva.
     
-- Használja a **esetben figyelmen kívül hagyása** ellenőrzési lehetőséget egy kis-és nagybetűket összehasonlítás történik-e.
+- A **kis** -és nagybetűk megkülönböztetése beállítás használatával szabályozhatja, hogy a rendszer a kis-és nagybetűket megkülönböztető összehasonlítást
     
-- Cserélje le az URL-címet a tárolóhelyek "% 20."
+- Az URL-címben lévő szóközöket cserélje le a következőre: "% 20".
     
-- Egy URL-cím kihasználhatják a megadott érték [helyettesítő karakteres értékek](cdn-verizon-premium-rules-engine-reference.md#wildcard-values). Minden egyes URL-cím elérési út mintája tartalmazhat egy vagy több csillagot (*), ahol minden egyes csillag meg tudja egy vagy több karakter sorozata.
+- Az URL-cím elérési útjának megadott értéke kihasználhatja a [helyettesítő karakteres értékeket](cdn-verizon-premium-rules-engine-reference.md#wildcard-values). Minden URL-cím elérési útja tartalmazhat egy vagy több csillagot (*), ahol minden csillag egy vagy több karakterből állhat.
 
-#### <a name="sample-scenarios"></a>Mintaforgatókönyvek
+#### <a name="sample-scenarios"></a>Példák a forgatókönyvekre
 
-A minta konfigurációkat az alábbi táblázat azt feltételezik, hogy a match feltétel teljesül-e, amikor egy kérelem megfelel a megadott URL-minta:
+A következő táblázatban szereplő példák azt feltételezik, hogy ez a megfeleltetési feltétel teljesül, ha egy kérelem megfelel a megadott URL-mintának:
 
-Value                   | A viszonyítva    | Eredmény 
+Value                   | A következőhöz képest    | Eredmény 
 ------------------------|----------------|-------
-*/test.html */test.php  | Legfelső szintű vagy a forrás | Ez a minta egyezik "test.html" vagy "test.php" bármelyik mappájában nevű eszközök kérelmek szerint.
-/80ABCD/origin/text/*   | legfelső szintű           | Ez a minta egyezik, ha a kért objektum megfelel a következő feltételeknek: <br />-Kell lennie, egy ügyfél forrás neve "origin". <br />– A relatív elérési út "szöveg." nevű mappát kell kezdődnie. A kért objektumhoz, vagy lehetnek a "text" mappában vagy egy rekurzív almappája.
-*/CSS/* */js/*          | Legfelső szintű vagy a forrás | Ez a minta egyezik az összes CDN vagy edge egy css vagy js mappát tartalmazó CNAME URL-címeket.
-*.jpg *.gif *.png       | Legfelső szintű vagy a forrás | Ez a minta egyezik a CDN- vagy peremtábla CNAME URL-címekhez .jpg, .gif, vagy .png végződésű. Adja meg ezt a mintát egy másik módja a [URL-cím elérési út bővítmény feltételnek megfelelő](#url-path-extension).
-/ képek / * / media / *      | Forrás         | Ez a minta egyezik a CDN- vagy peremtábla CNAME URL-címek, amelyek relatív elérési út egy "rendszerképek" vagy "média" mappa kezdődik. <br />– A CDN URL-cím: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/images/sales/event1.png<br />- Sample edge CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
+*/test.html */test.php  | Gyökér vagy forrás | Ezt a mintát egy "test. html" vagy "test. php" nevű eszközre vonatkozó kérések egyeznek meg bármely mappában.
+/80ABCD/origin/text/*   | Gyökér           | Ez a minta akkor egyezik, ha a kért eszköz megfelel a következő feltételeknek: <br />– A "forrás" nevű ügyfél-forrásnak kell lennie. <br />– A relatív elérési útnak a "text" nevű mappával kell kezdődnie. Ez azt eredményezi, hogy a kért eszköz a "text" mappában vagy egy rekurzív almappájában található.
+*/CSS/* */js/*          | Gyökér vagy forrás | Ezt a mintát minden olyan CDN vagy Edge CNAME URL-cím megegyeznek, amely egy CSS vagy js mappát tartalmaz.
+*.jpg *.gif *.png       | Gyökér vagy forrás | Ezt a mintát a. jpg,. gif vagy. png végződésű összes CDN vagy Edge CNAME URL-cím egyezteti. A minta megadásának másik módja az [URL-cím elérési útjának egyeztetési](#url-path-extension)feltétele.
+/images/* /media/*      | Forrás         | Ezt a mintát a CDN vagy az Edge CNAME URL-címei egyeznek meg, amelyek relatív elérési útja "images" vagy "Media" (lemezképek) vagy "média" mappa. <br />– CDN URL-cím:\/http&lt; :/WPC.0001. tartományi&gt;/800001/myorigin/images/Sales/event1.png<br />– Minta Edge CNAME URL-cím:\/http:/CDN.mydomain.com/images/Sales/event1.png
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
 
@@ -843,35 +843,35 @@ Value                   | A viszonyítva    | Eredmény
 
 ---
 
-### <a name="url-query-literal"></a>URL-cím lekérdezési szövegkonstans
+### <a name="url-query-literal"></a>URL-lekérdezési literál
 
-A kérelem lekérdezési karakterláncát a megadott érték hasonlítja össze.
+Összehasonlítja a kérelem lekérdezési karakterláncát a megadott értékkel.
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím lekérdezési szövegkonstans feltételnek megfelelő feltételek teljesülése.
+A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL-lekérdezési konstans egyeztetési feltételt.
 
-- **Egyezések**: A kérés tartalmaz egy URL-cím lekérdezési karakterláncot, amely megfelel a megadott lekérdezési karakterlánc szükséges.
-- **Nem felel meg**: A kérés tartalmaz egy URL-cím lekérdezési karakterláncot, amely nem egyezik a megadott lekérdezési karakterlánc szükséges.
+- **Egyezések**: A kérésnek tartalmaznia kell egy URL-lekérdezési karakterláncot, amely megfelel a megadott lekérdezési karakterláncnak.
+- **Nem egyezik**: A kérésnek tartalmaznia kell egy URL-lekérdezési karakterláncot, amely nem felel meg a megadott lekérdezési karakterláncnak.
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Csak a pontos lekérdezés karakterlánc megfelel megfelelnek-e az egyezési feltétellel.
+- Csak a pontos lekérdezési karakterlánc felel meg a megfelelési feltételnek.
     
-- Használja a **esetben figyelmen kívül hagyása** szabályozhatja a lekérdezési karakterlánc-összehasonlítások Kisbetű/nagybetű megkülönböztetése lehetőséget.
+- A kis-és **nagybetűk figyelmen kívül hagyása** lehetőséggel szabályozhatja a lekérdezési karakterláncok összehasonlítását.
     
-- Ne vegyen fel egy vezető kérdőjelet (?) a lekérdezési karakterlánc értéke szöveget.
+- Ne tartalmazzon kezdő kérdőjelet (?) a lekérdezési karakterlánc értéke szövegben.
     
-- Bizonyos karakterek megkövetelése URL-Címének kódolása. A százalékos szimbólum URL-címét használja a következő karakterek kódolása:
+- Bizonyos karakterek URL-kódolást igényelnek. A százalékos szimbólum használata a következő karakterek URL-kódolásához:
 
-   Karakter | URL-Címének kódolása
+   Karakter | URL-kódolás
    ----------|---------
-   Űr     | %20
+   Szóköz     | %20
    &         | %25
 
-- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
-   - Complete Cache Fill
-   - Alapértelmezett belső Max-Age
-   - Belső Max-Age kényszerítése
-   - Ignore Origin No-Cache
+- A gyorsítótár-beállítások nyomon követésének módja miatt ez a megfeleltetési feltétel nem kompatibilis a következő funkciókkal:
+   - Gyorsítótár kitöltésének befejezése
+   - Alapértelmezett belső max. Age
+   - A belső Max-Age kényszerítése
+   - Kihagyott forrás – gyorsítótár
    - Belső maximális – elavult
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
@@ -880,84 +880,84 @@ Legfontosabb tudnivalókat:
 
 ---
 
-### <a name="url-query-parameter"></a>URL-cím lekérdezési paraméter
+### <a name="url-query-parameter"></a>URL-lekérdezési paraméter
 
-A megadott lekérdezési karakterláncot tartalmazó kérelmek azonosítja. Ez a paraméter, amely egy megadott mintának megfelelő értékre van állítva. Lekérdezési karakterlánc paramétert (például paraméter = érték) a kérés URL-címe határozza meg, hogy ez a feltétel teljesül. Ez az egyezési feltétellel annak neve azonosítja a lekérdezési karakterlánc paramétereként, és a paraméter értékeként egy vagy több értéket fogad el. 
+Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott lekérdezési karakterlánc paramétert. Ez a paraméter olyan értékre van beállítva, amely megfelel egy megadott mintának. A kérelem URL-címében szereplő lekérdezési karakterlánc paraméterei (például paraméter = érték) határozzák meg, hogy ez a feltétel teljesül-e. Ez a megfeleltetési feltétel a lekérdezési karakterlánc paraméterét azonosítja a nevével, és egy vagy több értéket fogad el a paraméter értékeként. 
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím lekérdezési paramétert a feltételnek megfelelő feltételek teljesülése.
+A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy az URL-lekérdezési paraméter megfelel-e a feltételnek.
 
-- **Egyezések**: Kell tartalmaznia a megadott paraméter értéke megegyezik az ezen az egyezési feltétellel meghatározott értékek közül legalább egy kérelmet.
-- **Nem felel meg**: Megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
-  - A megadott paraméter nem tartalmaz.
-  - A megadott paraméter tartalmazza, de az érték nem egyezik meg az értékeket, hogy ez az egyezési feltétellel vannak meghatározva.
+- **Egyezések**: A megadott paramétert olyan értékkel kell tartalmaznia, amely megfelel a jelen egyeztetési feltételben definiált értékek közül legalább az egyiknek.
+- **Nem egyezik**: Megköveteli, hogy a kérelem megfeleljen a következő feltételek egyikének:
+  - Nem tartalmazza a megadott paramétert.
+  - Tartalmazza a megadott paramétert, de az értéke nem felel meg a jelen egyeztetési feltételben definiált értékeknek.
 
-Ez az egyezési feltétellel nyújt egy egyszerű módja annak, hogy adja meg a név-érték párok paraméterkombinációk. A nagyobb rugalmasság biztosítására, ha a lekérdezési sztring paramétereként vannak egyeztetéséhez, fontolja meg a [URL-cím lekérdezési helyettesítő](#url-query-wildcard) feltételnek megfelelő.
+Ez a megfeleltetési feltétel egyszerű módszert kínál a paraméterek nevének és értékének kombinációinak megadására. Ha a lekérdezési karakterlánc paraméterének megfeleltetése nagyobb rugalmasságot biztosít, érdemes lehet használni az [URL-lekérdezés helyettesítő karakteres](#url-query-wildcard) egyeztetési feltételét.
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Ez az egyezési feltétellel-példányonként csak egy egyetlen URL-cím lekérdezési paraméter neve adható meg.
+- Ennek a egyeztetési feltételnek a példányain csak egyetlen URL-lekérdezési paraméter neve adható meg.
     
-- Helyettesítő karakteres értékek használata nem támogatott, ha a paraméter neve meg van adva, mert csak a pontos paraméter neve egyezik jogosultak az összehasonlítást.
-- Paraméter érték(ek) tartalmazhatnak [helyettesítő karakteres értékek](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
-   - Minden paraméter értéke minta tartalmazhat egy vagy több csillagot (*), ahol minden egyes csillag meg tudja egy vagy több karakter sorozata.
-   - Bizonyos karakterek megkövetelése URL-Címének kódolása. A százalékos szimbólum URL-címét használja a következő karakterek kódolása:
+- Mivel a helyettesítő karakterek használata nem támogatott, ha a paraméter neve meg van adva, csak a pontos paraméter neve egyezik az összehasonlításhoz.
+- A paraméter értéke (i) [helyettesítő karakteres értékeket](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)tartalmazhat.
+   - Minden paraméter értékének mintája egy vagy több csillag (*) lehet, ahol minden csillag egy vagy több karakterből állhat.
+   - Bizonyos karakterek URL-kódolást igényelnek. A százalékos szimbólum használata a következő karakterek URL-kódolásához:
 
-       Karakter | URL-Címének kódolása
+       Karakter | URL-kódolás
        ----------|---------
-       Űr     | %20
+       Szóköz     | %20
        &         | %25
 
-- Adja meg a lekérdezési karakterlánc paraméter több értéket határoló egyenként a szóköz. Amikor egy kérés a megadott név-érték párok kombinációk egyikét tartalmazza a match feltétel teljesül.
+- Több lekérdezési karakterlánc paraméter értékének megadásával mindegyiket egyetlen szóközzel kell megadnia. Ez a megfeleltetési feltétel akkor teljesül, ha egy kérelem a megadott név/érték kombinációk egyikét tartalmazza.
 
    - 1\. példa:
 
      - Konfigurálás:
 
-       Érték1, érték2
+       Valuea ValueB
 
-     - Ez a konfiguráció megfelel a következő lekérdezési karakterlánc paraméterei:
+     - Ez a konfiguráció a következő lekérdezési karakterlánc-paraméterekkel egyezik:
 
        Parameter1=ValueA
     
-       Parameter1=ValueB
+       Parameter1 = ValueB
 
    - 2\. példa
 
      - Konfigurálás: 
 
-        Value%20A Value%20B
+        % 20A érték% 20B
 
-     - Ez a konfiguráció megfelel a következő lekérdezési karakterlánc paraméterei:
+     - Ez a konfiguráció a következő lekérdezési karakterlánc-paraméterekkel egyezik:
 
        Parameter1=Value%20A
 
-       Parameter1=Value%20B
+       Parameter1 = érték% 20B
 
-- Csak akkor, ha van legalább egy név-érték párok kombinációja megadott lekérdezési karakterlánc pontos egyezést e egyezés feltétel teljesül.
+- Ez a megfeleltetési feltétel csak akkor teljesül, ha a lekérdezési karakterlánc megadott neve/értéke legalább egyike pontosan egyezik.
 
-   Például, ha az előző példában a konfigurációt használ, a paraméter név-érték párok kombináció "Parameter1 = ValueAdd" nem tekintik egyezést. Azonban a következő értékek egyikét adja meg, ha azt, hogy a név-érték párok kombináció egyezni fog:
+   Ha például az előző példában szereplő konfigurációt használja, a "Parameter1 = ValueAdd" paraméter neve/értéke kombináció nem tekintendő egyezésnek. Ha azonban a következő értékek egyikét adja meg, akkor az megfelel a név/érték kombinációnak:
 
-   - Érték1, érték2 ValueAdd
-   - ValueA* ValueB
+   - Valuea ValueB ValueAdd
+   - Valuea * ValueB
 
-- Használja a **esetben figyelmen kívül hagyása** szabályozhatja a lekérdezési karakterlánc-összehasonlítások Kisbetű/nagybetű megkülönböztetése lehetőséget.
+- A kis-és **nagybetűk figyelmen kívül hagyása** lehetőséggel szabályozhatja a lekérdezési karakterláncok összehasonlítását.
     
-- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
-   - Complete Cache Fill
-   - Alapértelmezett belső Max-Age
-   - Belső Max-Age kényszerítése
-   - Ignore Origin No-Cache
+- A gyorsítótár-beállítások nyomon követésének módja miatt ez a megfeleltetési feltétel nem kompatibilis a következő funkciókkal:
+   - Gyorsítótár kitöltésének befejezése
+   - Alapértelmezett belső max. Age
+   - A belső Max-Age kényszerítése
+   - Kihagyott forrás – gyorsítótár
    - Belső maximális – elavult
 
 #### <a name="sample-scenarios"></a>Használati példák
 
-A következő példa bemutatja, hogy ez a beállítás működéséről adott helyzetekben:
+Az alábbi példa bemutatja, hogyan működik ez a beállítás bizonyos helyzetekben:
 
-Name (Név)  | Érték |  Eredmény
+Name (Név)  | Value |  Eredmény
 ------|-------|--------
-Felhasználó  | János   | Ez a minta egyezik a kért URL-cím lekérdezési karakterlánc esetén "? felhasználói János =."
-Felhasználó  | *     | Ez a minta egyezik, ha a kért URL-cím lekérdezési karakterláncot tartalmaz egy felhasználó paramétert.
-Email | János\* | Ez a minta egyezik, ha a kért URL-cím lekérdezési karakterláncot tartalmaz egy e-mailek paraméter, amely elindítja a "János".
+Felhasználó  | Joe   | Ez a minta akkor egyezik, ha a kért URL-cím lekérdezési karakterlánca "? user = Joe".
+Felhasználó  | *     | Ez a minta akkor egyezik, ha a kért URL-cím lekérdezési karakterlánca felhasználói paramétert tartalmaz.
+Email | Joe\* | Ez a minta akkor egyezik, ha a kért URL-cím lekérdezési karakterlánca egy olyan e-mail-paramétert tartalmaz, amely "Joe" karakterlánccal kezdődik.
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
 
@@ -965,2180 +965,46 @@ Email | János\* | Ez a minta egyezik, ha a kért URL-cím lekérdezési karakte
 
 ---
 
-### <a name="url-query-regex"></a>URL-cím lekérdezési reguláris kifejezés
+### <a name="url-query-regex"></a>URL-lekérdezés regex
 
-A megadott lekérdezési karakterláncot tartalmazó kérelmek azonosítja. Ez a paraméter értéke, amely megfelel a megadott érték [reguláris kifejezés](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
+Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott lekérdezési karakterlánc paramétert. Ez a paraméter olyan értékre van beállítva, amely megfelel egy megadott [reguláris kifejezésnek](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím lekérdezési Regex feltételnek megfelelő feltételek teljesülése.
+A **egyezések**/**nem egyeznek** beállítás határozza meg azokat a feltételeket, amelyekben az URL-lekérdezés regex-egyeztetési feltétele teljesül.
 
-- **Egyezések**: Szükséges a kérelem URL-cím lekérdezési karakterláncot, amely megfelel a megadott reguláris kifejezést tartalmaz.
-- **Nem felel meg**: Szükséges a kérelem URL-cím lekérdezési karakterláncot, amely nem egyezik a megadott reguláris kifejezést tartalmaz.
+- **Egyezések**: A kérésnek tartalmaznia kell egy URL-lekérdezési karakterláncot, amely megfelel a megadott reguláris kifejezésnek.
+- **Nem egyezik**: A kérésnek tartalmaznia kell egy URL-lekérdezési karakterláncot, amely nem felel meg a megadott reguláris kifejezésnek.
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Csak pontos egyezések a megadott reguláris kifejezést megfelelnek-e az egyezési feltétellel.
+- Csak a megadott reguláris kifejezés pontos egyezése megfelel ennek a megfelelési feltételnek.
     
-- Használja a **esetben figyelmen kívül hagyása** szabályozhatja a lekérdezési karakterlánc-összehasonlítások Kisbetű/nagybetű megkülönböztetése lehetőséget.
+- A kis-és **nagybetűk figyelmen kívül hagyása** lehetőséggel szabályozhatja a lekérdezési karakterláncok összehasonlítását.
     
-- Ez a beállítás az alkalmazásában egy lekérdezési karakterlánc kezdődik az első karakter után a kérdőjel (?) elválasztó, a lekérdezési karakterlánc.
+- Ebben a beállításban egy lekérdezési sztring az első karakterrel kezdődik a lekérdezési karakterlánchoz tartozó kérdőjel (?) határolójel után.
     
-- Bizonyos karakterek megkövetelése URL-Címének kódolása. A százalékos szimbólum URL-címét használja a következő karakterek kódolása:
+- Bizonyos karakterek URL-kódolást igényelnek. A százalékos szimbólum használata a következő karakterek URL-kódolásához:
 
-   Karakter | URL-Címének kódolása | Value
+   Karakter | URL-kódolás | Value
    ----------|--------------|------
-   Űr     | %20          | \%20
+   Szóköz     | %20          | \%20
    &         | %25          | \%25
 
-   Note that percentage symbols must be escaped.
+   Vegye figyelembe, hogy a százalékos szimbólumokat el kell menekülni.
 
-- Double-escape special regular expression characters (for example, \^$.+) to include a backslash in the regular expression.
-
-   For example:
-
-   Value | Interpreted As 
-   ------|---------------
-   \\+    | +
-   \\\\+   | \\+
-
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-   - Complete Cache Fill
-   - Default Internal Max-Age
-   - Force Internal Max-Age
-   - Ignore Origin No-Cache
-   - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Query Wildcard
-
-Compares the specified value(s) against the request's query string.
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Query Wildcard match condition is met.
-
-- **Matches**: Requires the request to contain a URL query string that matches the specified wildcard value.
-- **Does Not Match**: Requires the request to contain a URL query string that does not match the specified wildcard value.
-
-Key information:
-
-- For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string.
-- Parameter values can include [wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values):
-   - Each parameter value pattern can consist of one or more asterisks (*), where each asterisk can match a sequence of one or more characters.
-   - Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
-
-     Character | URL Encoding
-     ----------|---------
-     Space     | %20
-     &         | %25
-
-- Specify multiple values by delimiting each one with a single space.
-
-   For example: *Parameter1=ValueA* *ValueB* *Parameter1=ValueC&Parameter2=ValueD*
-
-- Only exact matches to at least one of the specified query string patterns satisfy this match condition.
-    
-- Use the **Ignore Case** option to control the case-sensitivity of query string comparisons.
-    
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-   - Complete Cache Fill
-   - Default Internal Max-Age
-   - Force Internal Max-Age
-   - Ignore Origin No-Cache
-   - Internal Max-Stale
-
-#### Sample scenarios
-
-The following example demonstrates how this option works in specific situations:
-
- Name                 | Description
- ---------------------|------------
-user=joe              | This pattern is matched when the query string for a requested URL is "?user=joe."
-\*user=\* \*optout=\* | This pattern is matched when the CDN URL query contains either the user or optout parameter.
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
-## Next steps
-
-- [Azure Content Delivery Network overview](cdn-overview.md)
-- [Rules engine reference](cdn-verizon-premium-rules-engine-reference.md)
-- [Rules engine conditional expressions](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
-- [Rules engine features](cdn-verizon-premium-rules-engine-reference-features.md)
-- [Overriding default HTTP behavior using the rules engine](cdn-verizon-premium-rules-engine.md)\`20
-title: Azure CDN from Verizon Premium rules engine match conditions | Microsoft Docs
-description: Reference documentation for Azure Content Delivery Network from Verizon Premium rules engine match conditions.
-services: cdn
-author: mdgattuso
-
-ms.service: azure-cdn
-ms.topic: article
-ms.date: 05/31/2019
-ms.author: magattus
-
----
-
-# Azure CDN from Verizon Premium rules engine match conditions
-
-This article lists detailed descriptions of the available match conditions for the Azure Content Delivery Network (CDN) from Verizon Premium [rules engine](cdn-verizon-premium-rules-engine.md).
-
-The second part of a rule is the match condition. A match condition identifies specific types of requests for which a set of features will be performed.
-
-For example, you can use a match condition to:
-
-- Filter requests for content at a particular location.
-- Filter requests generated from a particular IP address or country/region.
-- Filter requests by header information.
-
-## Always match condition
-
-The Always match condition applies a default set of features to all requests.
-
-Name | Purpose
------|--------
-[Always](#always) | Applies a default set of features to all requests.
-
-## Device match condition
-
-The Device match condition identifies requests made from a mobile device based on its properties.  
-
-Name | Purpose
------|--------
-[Device](#device) | Identifies requests made from a mobile device based on its properties.
-
-## Location match conditions
-
-The Location match conditions identify requests based on the requester's location.
-
-Name | Purpose
------|--------
-[AS Number](#as-number) | Identifies requests that originate from a particular network.
-[Country](#country) | Identifies requests that originate from the specified countries/regions.
-
-## Origin match conditions
-
-The Origin match conditions identify requests that point to Content Delivery Network storage or a customer origin server.
-
-Name | Purpose
------|--------
-[CDN Origin](#cdn-origin) | Identifies requests for content stored in Content Delivery Network storage.
-[Customer Origin](#customer-origin) | Identifies requests for content stored on a specific customer origin server.
-
-## Request match conditions
-
-The Request match conditions identify requests based on their properties.
-
-Name | Purpose
------|--------
-[Client IP Address](#client-ip-address) | Identifies requests that originate from a particular IP address.
-[Cookie Parameter](#cookie-parameter) | Checks the cookies associated with each request for the specified value.
-[Cookie Parameter Regex](#cookie-parameter-regex) | Checks the cookies associated with each request for the specified regular expression.
-[Edge Cname](#edge-cname) | Identifies requests that point to a specific edge CNAME.
-[Referring Domain](#referring-domain) | Identifies requests that were referred from the specified host names.
-[Request Header Literal](#request-header-literal) | Identifies requests that contain the specified header set to a specified value.
-[Request Header Regex](#request-header-regex) | Identifies requests that contain the specified header set to a value that matches the specified regular expression.
-[Request Header Wildcard](#request-header-wildcard) | Identifies requests that contain the specified header set to a value that matches the specified pattern.
-[Request Method](#request-method) | Identifies requests by their HTTP method.
-[Request Scheme](#request-scheme) | Identifies requests by their HTTP protocol.
-
-## URL match conditions
-
-The URL match conditions identify requests based on their URLs.
-
-Name | Purpose
------|--------
-[URL Path Directory](#url-path-directory) | Identifies requests by their relative path.
-[URL Path Extension](#url-path-extension) | Identifies requests by their file name extension.
-[URL Path Filename](#url-path-filename) | Identifies requests by their file name.
-[URL Path Literal](#url-path-literal) | Compares a request's relative path to the specified value.
-[URL Path Regex](#url-path-regex) | Compares a request's relative path to the specified regular expression.
-[URL Path Wildcard](#url-path-wildcard) | Compares a request's relative path to the specified pattern.
-[URL Query Literal](#url-query-literal) | Compares a request's query string to the specified value.
-[URL Query Parameter](#url-query-parameter) | Identifies requests that contain the specified query string parameter set to a value that matches a specified pattern.
-[URL Query Regex](#url-query-regex) | Identifies requests that contain the specified query string parameter set to a value that matches a specified regular expression.
-[URL Query Wildcard](#url-query-wildcard) | Compares the specified value against the request's query string.
-
-## Reference for rules engine match conditions
-
----
-
-### Always
-
-The Always match condition applies a default set of features to all requests.
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### AS Number
-
-The AS Number network is defined by its autonomous system number (ASN). 
-
-The **Matches**/**Does Not Match** option determines the conditions under which the AS Number match condition is met:
-
-- **Matches**: Requires that the ASN of the client network matches one of the specified ASNs. 
-- **Does Not Match**: Requires that the ASN of the client network does not match any of the specified ASNs.
-
-Key information:
-
-- Specify multiple ASNs by delimiting each one with a single space. For example, 64514 64515 matches requests that arrive from either 64514 or 64515.
-- Certain requests might not return a valid ASN. A question mark (?) will match requests for which a valid ASN could not be determined.
-- Specify the entire ASN for the desired network. Partial values will not be matched.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### CDN Origin
-
-The CDN Origin match condition is met when both of the following conditions are met:
-
-- Content from CDN storage was requested.
-- The request URI uses the type of content access point (for example, /000001) that's defined in this match condition:
-  - CDN URL: The request URI must contain the selected content access point.
-  - Edge CNAME URL: The corresponding edge CNAME configuration must point to the selected content access point.
-  
-Key information:
-
-- The content access point identifies the service that should serve the requested content.
-- Don't use an AND IF statement to combine certain match conditions. For example, combining a CDN Origin match condition with a Customer Origin match condition would create a match pattern that could never be matched. For this reason, two CDN Origin match conditions cannot be combined through an AND IF statement.
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Client IP Address
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Client IP Address match condition is met:
-
-- **Matches**: Requires that the client's IP address matches one of the specified IP addresses. 
-- **Does Not Match**: Requires that the client's IP address does not match any of the specified IP addresses. 
-
-Key information:
-
-- Use CIDR notation.
-- Specify multiple IP addresses and/or IP address blocks by delimiting each one with a single space. For example:
-  - **IPv4 example**: 1.2.3.4 10.20.30.40 matches any requests that arrive from either address 1.2.3.4 or 10.20.30.40.
-  - **IPv6 example**: 1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80 matches any requests that arrive from either address 1:2:3:4:5:6:7:8 or 10:20:30:40:50:60:70:80.
-- The syntax for an IP address block is the base IP address followed by a forward slash and the prefix size. For example:
-  - **IPv4 example**: 5.5.5.64/26 matches any requests that arrive from addresses 5.5.5.64 through 5.5.5.127.
-  - **IPv6 example**: 1:2:3:/48 matches any requests that arrive from addresses 1:2:3:0:0:0:0:0 through 1:2:3:ffff:ffff:ffff:ffff:ffff.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Cookie Parameter
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Cookie Parameter match condition is met.
-
-- **Matches**: Requires a request to contain the specified cookie with a value that matches at least one of the values that are defined in this match condition.
-- **Does Not Match**: Requires that the request meets either of the following criteria:
-  - It does not contain the specified cookie.
-  - It contains the specified cookie, but its value does not match any of the values that are defined in this match condition.
-  
-Key information:
-
-- Cookie name:
-  - Because wildcard values, including asterisks (*), are not supported when you're specifying a cookie name, only exact cookie name matches are eligible for comparison.
-  - Only a single cookie name can be specified per instance of this match condition.
-  - Cookie name comparisons are case-insensitive.
-- Cookie value:
-  - Specify multiple cookie values by delimiting each one with a single space.
-  - A cookie value can take advantage of [wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
-  - If a wildcard value has not been specified, then only an exact match will satisfy this match condition. For example, specifying "Value" will match "Value," but not "Value1" or "Value2."
-  - Use the **Ignore Case** option to control whether a case-sensitive comparison is made against the request's cookie value.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-</br>
-
----
-
-### Cookie Parameter Regex
-
-The Cookie Parameter Regex match condition defines a cookie name and value. You can use [regular expressions](cdn-verizon-premium-rules-engine-reference.md#regular-expressions) to define the desired cookie value.
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Cookie Parameter Regex match condition is met.
-
-- **Matches**: Requires a request to contain the specified cookie with a value that matches the specified regular expression.
-- **Does Not Match**: Requires that the request meets either of the following criteria:
-  - It does not contain the specified cookie.
-  - It contains the specified cookie, but its value does not match the specified regular expression.
-  
-Key information:
-
-- Cookie name:
-  - Because regular expressions and wildcard values, including asterisks (*), are not supported when you're specifying a cookie name, only exact cookie name matches are eligible for comparison.
-  - Only a single cookie name can be specified per instance of this match condition.
-  - Cookie name comparisons are case-insensitive.
-- Cookie value:
-  - A cookie value can take advantage of regular expressions.
-  - Use the **Ignore Case** option to control whether a case-sensitive comparison is made against the request's cookie value.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Country
-
-You can specify a country through its country code. 
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Country match condition is met:
-
-- **Matches**: Requires the request to contain the specified country code values. 
-- **Does Not Match**: Requires that the request does not contain the specified country code values.
-
-Key information:
-
-- Specify multiple country codes by delimiting each one with a single space.
-- Wildcards are not supported when you're specifying a country code.
-- The "EU" and "AP" country codes do not encompass all IP addresses in those regions.
-- Certain requests might not return a valid country code. A question mark (?) will match requests for which a valid country code could not be determined.
-- Country codes are case-sensitive.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-#### Implementing Country Filtering by using the rules engine
-
-This match condition allows you to perform a multitude of customizations based on the location from which a request originated. For example, the behavior of the Country Filtering feature can be replicated through the following configuration:
-
-- URL Path Wildcard match: Set the [URL Path Wildcard match condition](#url-path-wildcard) to the directory that will be secured. 
-    Append an asterisk to the end of the relative path to ensure that access to all of its children will be restricted by this rule.
-
-- Country match: Set the Country match condition to the desired set of countries.
-  - Allow: Set the Country match condition to **Does Not Match** to allow only the specified countries access to content stored in the location defined by the URL Path Wildcard match condition.
-  - Block: Set the Country match condition to **Matches** to block the specified countries from accessing content stored in the location defined by the URL Path Wildcard match condition.
-
-- Deny Access (403) Feature: Enable the [Deny Access (403) feature](cdn-verizon-premium-rules-engine-reference-features.md#deny-access-403) to replicate the allow or block portion of the Country Filtering feature.
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Customer Origin
-
-Key information:
-
-- The Customer Origin match condition is met regardless of whether content is requested through a CDN URL or an edge CNAME URL that points to the selected customer origin.
-- A customer origin configuration that's referenced by a rule cannot be deleted from the Customer Origin page. Before you attempt to delete a customer origin configuration, make sure that the following configurations do not reference it:
-  - A Customer Origin match condition
-  - An edge CNAME configuration
-- Don't use an AND IF statement to combine certain match conditions. For example, combining a Customer Origin match condition with a CDN Origin match condition would create a match pattern that could never be matched. For this reason, two Customer Origin match conditions cannot be combined through an AND IF statement.
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Device
-
-The Device match condition identifies requests made from a mobile device based on its properties. Mobile device detection is achieved through [WURFL](http://wurfl.sourceforge.net/). 
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Device match condition is met:
-
-- **Matches**: Requires the requester's device to match the specified value. 
-- **Does Not Match**: Requires that the requester's device does not match the specified value.
-
-Key information:
-
-- Use the **Ignore Case** option to specify whether the specified value is case-sensitive.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-#### String Type
-
-A WURFL capability typically accepts any combination of numbers, letters, and symbols. Due to the flexible nature of this capability, you must choose how the value associated with this match condition is interpreted. The following table describes the available set of options:
-
-Type     | Description
----------|------------
-Literal  | Select this option to prevent most characters from taking on special meaning by using their [literal value](cdn-verizon-premium-rules-engine-reference.md#literal-values).
-Wildcard | Select this option to take advantage of all [wildcard characters]([wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
-Regex    | Select this option to use [regular expressions](cdn-verizon-premium-rules-engine-reference.md#regular-expressions). Regular expressions are useful for defining a pattern of characters.
-
-#### WURFL capabilities
-
-A WURFL capability refers to a category that describes mobile devices. The selected capability determines the type of mobile device description that is used to identify requests.
-
-The following table lists WURFL capabilities and their variables for the rules engine.
-
-> [!NOTE]
-> The following variables are supported in the **Modify Client Request Header** and **Modify Client Response Header** features.
-
-Capability | Variable | Description | Sample values
------------|----------|-------------|----------------
-Brand Name | %{wurfl_cap_brand_name} | A string that indicates the brand name of the device. | Samsung
-Device OS | %{wurfl_cap_device_os} | A string that indicates the operating system installed on the device. | IOS
-Device OS Version | %{wurfl_cap_device_os_version} | A string that indicates the version number of the operating system installed on the device. | 1.0.1
-Dual Orientation | %{wurfl_cap_dual_orientation} | A Boolean that indicates whether the device supports dual orientation. | true
-HTML Preferred DTD | %{wurfl_cap_html_preferred_dtd} | A string that indicates the mobile device's preferred document type definition (DTD) for HTML content. | none<br/>xhtml_basic<br/>html5
-Image Inlining | %{wurfl_cap_image_inlining} | A Boolean that indicates whether the device supports Base64 encoded images. | false
-Is Android | %{wurfl_vcap_is_android} | A Boolean that indicates whether the device uses the Android OS. | true
-Is IOS | %{wurfl_vcap_is_ios} | A Boolean that indicates whether the device uses iOS. | false
-Is Smart TV | %{wurfl_cap_is_smarttv} | A Boolean that indicates whether the device is a smart TV. | false
-Is Smartphone | %{wurfl_vcap_is_smartphone} | A Boolean that indicates whether the device is a smartphone. | true
-Is Tablet | %{wurfl_cap_is_tablet} | A Boolean that indicates whether the device is a tablet. This description is  OS-independent. | true
-Is Wireless Device | %{wurfl_cap_is_wireless_device} | A Boolean that indicates whether the device is considered a wireless device. | true
-Marketing Name | %{wurfl_cap_marketing_name} | A string that indicates the device's marketing name. | BlackBerry 8100 Pearl
-Mobile Browser | %{wurfl_cap_mobile_browser} | A string that indicates the browser that's used to request content from the device. | Chrome
-Mobile Browser Version | %{wurfl_cap_mobile_browser_version} | A string that indicates the version of the browser that's used to request content from the device. | 31
-Model Name | %{wurfl_cap_model_name} | A string that indicates the device's model name. | s3
-Progressive Download | %{wurfl_cap_progressive_download} | A Boolean that indicates whether the device supports the playback of audio and video while it is still being downloaded. | true
-Release Date | %{wurfl_cap_release_date} | A string that indicates the year and month on which the device was added to the WURFL database.<br/><br/>Format: `yyyy_mm` | 2013_december
-Resolution Height | %{wurfl_cap_resolution_height} | An integer that indicates the device's height in pixels. | 768
-Resolution Width | %{wurfl_cap_resolution_width} | An integer that indicates the device's width in pixels. | 1024
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Edge Cname
-
-Key information:
-
-- The list of available edge CNAMEs is limited to those edge CNAMEs that have been configured on the Edge CNAMEs page for the platform on which the rules engine is being configured.
-- Before you attempt to delete an edge CNAME configuration, make sure that an Edge Cname match condition does not reference it. Edge CNAME configurations that have been defined in a rule cannot be deleted from the Edge CNAMEs page.
-- Don't use an AND IF statement to combine certain match conditions. For example, combining an Edge Cname match condition with a Customer Origin match condition would create a match pattern that could never be matched. For this reason, two Edge Cname match conditions cannot be combined through an AND IF statement.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Referring Domain
-
-The host name associated with the referrer through which content was requested determines whether the Referring Domain condition is met.
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Referring Domain match condition is met:
-
-- **Matches**: Requires the referring host name to match the specified values. 
-- **Does Not Match**: Requires that the referring host name does not match the specified value.
-
-Key information:
-
-- Specify multiple host names by delimiting each one with a single space.
-- This match condition supports [wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
-- If the specified value does not contain an asterisk, it must be an exact match for the referrer's host name. For example, specifying "mydomain.com" would not match "www.mydomain.com."
-- Use the **Ignore Case** option to control whether a case-sensitive comparison is made.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----  
-
-### Request Header Literal
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Request Header Literal match condition is met.
-
-- **Matches**: Requires the request to contain the specified header. Its value must match the one that's defined in this match condition.
-- **Does Not Match**: Requires that the request meets either of the following criteria:
-  - It does not contain the specified header.
-  - It contains the specified header, but its value does not match the one that's defined in this match condition.
-  
-Key information:
-
-- Header name comparisons are always case-insensitive. Use the **Ignore Case** option to control the case-sensitivity of header value comparisons.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----  
-
-### Request Header Regex
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Request Header Regex match condition is met.
-
-- **Matches**: Requires the request to contain the specified header. Its value must match the pattern that's defined in the specified [regular expression](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
-- **Does Not Match**: Requires that the request meets either of the following criteria:
-  - It does not contain the specified header.
-  - It contains the specified header, but its value does not match the specified regular expression.
-
-Key information:
-
-- Header name:
-  - Header name comparisons are case-insensitive.
-  - Replace spaces in the header name with "%20."
-- Header value:
-  - A header value can take advantage of regular expressions.
-  - Use the **Ignore Case** option to control the case-sensitivity of header value comparisons.
-  - The match condition is met only when a header value exactly matches at least one of the specified patterns.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Request Header Wildcard
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Request Header Wildcard match condition is met.
-
-- **Matches**: Requires the request to contain the specified header. Its value must match at least one of the values that are defined in this match condition.
-- **Does Not Match**: Requires that the request meets either of the following criteria:
-  - It does not contain the specified header.
-  - It contains the specified header, but its value does not match any of the specified values.
-  
-Key information:
-
-- Header name:
-  - Header name comparisons are case-insensitive.
-  - Spaces in the header name should be replaced with "%20." You can also use this value to specify spaces in a header value.
-- Header value:
-  - A header value can take advantage of [wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
-  - Use the **Ignore Case** option to control the case-sensitivity of header value comparisons.
-  - This match condition is met when a header value exactly matches to at least one of the specified patterns.
-  - Specify multiple values by delimiting each one with a single space.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Request Method
-
-The Request Method match condition is met only when assets are requested through the selected request method. The available request methods are:
-
-- GET
-- HEAD
-- POST
-- OPTIONS
-- PUT
-- DELETE
-- TRACE
-- CONNECT
-
-Key information:
-
-- By default, only the GET request method can generate cached content on the network. All other request methods are proxied through the network.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Request Scheme
-
-The Request Scheme match condition is met only when assets are requested through the selected protocol. The available protocols are:
-
-- HTTP
-- HTTPS
-
-Key information:
-
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Path Directory
-
-Identifies a request by its relative path, which excludes the file name of the requested asset.
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Path Directory match condition is met.
-
-- **Matches**: Requires the request to contain a relative URL path, excluding the file name, that matches the specified URL pattern.
-- **Does Not Match**: Requires the request to contain a relative URL path, excluding file name, that does not match the specified URL pattern.
-
-Key information:
-
-- Use the **Relative to** option to specify whether the URL comparison starts before or after the content access point. The content access point is the portion of the path that appears between the Verizon CDN hostname and the relative path to the requested asset (for example, /800001/CustomerOrigin). It identifies a location by server type (for example, CDN or customer origin) and your customer account number.
-
-   The following values are available for the **Relative to** option:
-  - **Root**: Indicates that the URL comparison point begins directly after the CDN hostname. 
-
-  For example: http:\//wpc.0001.&lt;domain&gt;/**800001/myorigin/myfolder**/index.htm
-
-  - **Origin**: Indicates that the URL comparison point begins after the content access point (for example, /000001 or /800001/myorigin). Because the \*.azureedge.net CNAME is created relative to the origin directory on the Verizon CDN hostname by default, Azure CDN users should use the **Origin** value. 
-
-  For example: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder**/index.htm 
-
-  This URL points to the following Verizon CDN hostname: http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/**myfolder**/index.htm
-
-- An edge CNAME URL is rewritten to a CDN URL prior to the URL comparison.
-
-    For example, both of the following URLs point to the same asset and therefore have the same URL path.
-  - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
-    
-  - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-    
-    Additional information:
-  - Custom domain: https:\//my.domain.com/path/asset.htm
-    
-    - URL path (relative to root): /800001/CustomerOrigin/path/
-    
-    - URL path (relative to origin): /path/
-
-- The portion of the URL that is used for the URL comparison ends just before the file name of the requested asset. A trailing forward slash is the last character in this type of path.
-
-- Replace any spaces in the URL path pattern with "%20."
-
-- Each URL path pattern can contain one or more asterisks (*), where each asterisk matches a sequence of one or more characters.
-
-- Specify multiple URL paths in the pattern by delimiting each one with a single space.
-
-    For example: */sales/ */marketing/
-
-- A URL path specification can take advantage of [wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
-
-- Use the **Ignore Case** option to control whether a case-sensitive comparison is performed.
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Path Extension
-
-Identifies requests by the file extension of the requested asset.
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Path Extension match condition is met.
-
-- **Matches**: Requires the URL of the request to contain a file extension that exactly matches the specified pattern.
-
-   For example, if you specify "htm", "htm" assets are matched, but not "html" assets.  
-
-- **Does Not Match**: Requires the URL request to contain a file extension that does not match the specified pattern.
-
-Key information:
-
-- Specify the file extensions to match in the **Value** box. Do not include a leading period; for example, use htm instead of .htm.
-
-- Use the **Ignore Case** option to control whether a case-sensitive comparison is performed.
-
-- Specify multiple file extensions by delimiting each extension with a single space. 
-
-    For example: htm html
-
-- For example, specifying "htm" matches "htm" assets, but not "html" assets.
-
-#### Sample Scenario
-
-The following sample configuration assumes that this match condition is met when a request matches one of the specified extensions.
-
-Value specification: asp aspx php html
-
-This match condition is met when it finds URLs that end with the following extensions:
-
-- .asp
-- .aspx
-- .php
-- .html
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Path Filename
-
-Identifies requests by the file name of the requested asset. For the purposes of this match condition, a file name consists of the name of the requested asset, a period, and the file extension (for example, index.html).
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Path Filename match condition is met.
-
-- **Matches**: Requires the request to contain a file name in its URL path that matches the specified pattern.
-- **Does Not Match**: Requires the request to contain a file name in its URL path that does not match the specified pattern.
-
-Key information:
-
-- Use the **Ignore Case** option to control whether a case-sensitive comparison is performed.
-
-- To specify multiple file extensions, separate each extension with a single space.
-
-    For example: index.htm index.html
-
-- Replace spaces in a file name value with "%20."
-
-- A file name value can take advantage of [wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values). For example, each file name pattern can consist of one or more asterisks (*), where each asterisk matches a sequence of one or more characters.
-
-- If wildcard characters are not specified, then only an exact match will satisfy this match condition.
-
-    For example, specifying "presentation.ppt" matches an asset named "presentation.ppt," but not one named "presentation.pptx."
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Path Literal
-
-Compares a request's URL path, including file name, to the specified value.
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Path Literal match condition is met.
-
-- **Matches**: Requires the request to contain a URL path that matches the specified pattern.
-- **Does Not Match**: Requires the request to contain a URL path that does not match the specified pattern.
-
-Key information:
-
-- Use the **Relative to** option to specify whether the URL comparison point begins before or after the content access point. 
-
-    The following values are available for the **Relative to** option:
-  - **Root**: Indicates that the URL comparison point begins directly after the CDN hostname.
-
-    For example: http:\//wpc.0001.&lt;domain&gt;/**800001/myorigin/myfolder/index.htm**
-
-  - **Origin**: Indicates that the URL comparison point begins after the content access point (for example, /000001 or /800001/myorigin). Because the \*.azureedge.net CNAME is created relative to the origin directory on the Verizon CDN hostname by default, Azure CDN users should use the **Origin** value. 
-
-    For example: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
-
-  This URL points to the following Verizon CDN hostname: http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/**myfolder/index.htm**
-
-- An edge CNAME URL is rewritten to a CDN URL prior to a URL comparison.
-
-For example, both of the following URLs point to the same asset and therefore have the same URL path:
-
-- CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
-- Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-
-    Additional information:
-    
-    - URL path (relative to root): /800001/CustomerOrigin/path/asset.htm
-   
-    - URL path (relative to origin): /path/asset.htm
-
-- Query strings in the URL are ignored.
-- Use the **Ignore Case** option to control whether a case-sensitive comparison is performed.
-- The value specified for this match condition is compared against the relative path of the exact request made by the client.
-
-- To match all requests made to a particular directory, use the [URL Path Directory](#url-path-directory) or the [URL Path Wildcard](#url-path-wildcard) match condition.
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Path Regex
-
-Compares a request's URL path to the specified [regular expression](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Path Regex match condition is met.
-
-- **Matches**: Requires the request to contain a URL path that matches the specified regular expression.
-- **Does Not Match**: Requires the request to contain a URL path that does not match the specified regular expression.
-
-Key information:
-
-- An edge CNAME URL is rewritten to a CDN URL prior to URL comparison.
-
-    For example, both URLs point to the same asset and therefore have the same URL path.
-
-     - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
-
-     - Edge CNAME URL: http:\//my.domain.com/path/asset.htm
-
-    Additional information:
-    
-     - URL path: /800001/CustomerOrigin/path/asset.htm
-
-- Query strings in the URL are ignored.
-    
-- Use the **Ignore Case** option to control whether a case-sensitive comparison is performed.
-    
-- Spaces in the URL path should be replaced with "%20."
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Path Wildcard
-
-Compares a request's relative URL path to the specified wildcard pattern.
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Path Wildcard match condition is met.
-
-- **Matches**: Requires the request to contain a URL path that matches the specified wildcard pattern.
-- **Does Not Match**: Requires the request to contain a URL path that does not match the specified wildcard pattern.
-
-Key information:
-
-- **Relative to** option: This option determines whether the URL comparison point begins before or after the content access point.
-
-   This option can have the following values:
-     - **Root**: Indicates that the URL comparison point begins directly after the CDN hostname.
-
-       For example: http:\//wpc.0001.&lt;domain&gt;/**800001/myorigin/myfolder/index.htm**
-
-     - **Origin**: Indicates that the URL comparison point begins after the content access point (for example, /000001 or /800001/myorigin). Because the \*.azureedge.net CNAME is created relative to the origin directory on the Verizon CDN hostname by default, Azure CDN users should use the **Origin** value. 
-
-       For example: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
-
-     This URL points to the following Verizon CDN hostname: http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/**myfolder/index.htm**
-
-- An edge CNAME URL is rewritten to a CDN URL prior to URL comparison.
-
-    For example, both of the following URLs point to the same asset and therefore have the same URL path:
-     - CDN URL: http://wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
-     - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-    
-    Additional information:
-    
-     - URL path (relative to root): /800001/CustomerOrigin/path/asset.htm
-    
-     - URL path (relative to origin): /path/asset.htm
-    
-- Specify multiple URL paths by delimiting each one with a single space.
-
-   For example: /marketing/asset.* /sales/*.htm
-
-- Query strings in the URL are ignored.
-    
-- Use the **Ignore Case** option to control whether a case-sensitive comparison is performed.
-    
-- Replace spaces in the URL path with "%20."
-    
-- The value specified for a URL path can take advantage of [wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values). Each URL path pattern can contain one or more asterisks (*), where each asterisk can match a sequence of one or more characters.
-
-#### Sample Scenarios
-
-The sample configurations in the following table assume that this match condition is met when a request matches the specified URL pattern:
-
-Value                   | Relative to    | Result 
-------------------------|----------------|-------
-*/test.html */test.php  | Root or Origin | This pattern is matched by requests for assets named "test.html" or "test.php" in any folder.
-/80ABCD/origin/text/*   | Root           | This pattern is matched when the requested asset meets the following criteria: <br />- It must reside on a customer origin called "origin." <br />- The relative path must start with a folder called "text." That is, the requested asset can either reside in the "text" folder or one of its recursive subfolders.
-*/css/* */js/*          | Root or Origin | This pattern is matched by all CDN or edge CNAME URLs that contain a css or js folder.
-*.jpg *.gif *.png       | Root or Origin | This pattern is matched by all CDN or edge CNAME URLs ending with .jpg, .gif, or .png. An alternative way to specify this pattern is with the [URL Path Extension match condition](#url-path-extension).
-/images/* /media/*      | Origin         | This pattern is matched by CDN or edge CNAME URLs whose relative path starts with an "images" or "media" folder. <br />- CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/images/sales/event1.png<br />- Sample edge CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Query Literal
-
-Compares a request's query string to the specified value.
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Query Literal match condition is met.
-
-- **Matches**: Requires the request to contain a URL query string that matches the specified query string.
-- **Does Not Match**: Requires the request to contain a URL query string that does not match the specified query string.
-
-Key information:
-
-- Only exact query string matches satisfy this match condition.
-    
-- Use the **Ignore Case** option to control the case-sensitivity of query string comparisons.
-    
-- Do not include a leading question mark (?) in the query string value text.
-    
-- Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
-
-   Character | URL Encoding
-   ----------|---------
-   Space     | %20
-   &         | %25
-
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-   - Complete Cache Fill
-   - Default Internal Max-Age
-   - Force Internal Max-Age
-   - Ignore Origin No-Cache
-   - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Query Parameter
-
-Identifies requests that contain the specified query string parameter. This parameter is set to a value that matches a specified pattern. Query string parameters (for example, parameter=value) in the request URL determine whether this condition is met. This match condition identifies a query string parameter by its name and accepts one or more values for the parameter value. 
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Query Parameter match condition is met.
-
-- **Matches**: Requires a request to contain the specified parameter with a value that matches at least one of the values that are defined in this match condition.
-- **Does Not Match**: Requires that the request meets either of the following criteria:
-  - It does not contain the specified parameter.
-  - It contains the specified parameter, but its value does not match any of the values that are defined in this match condition.
-
-This match condition provides an easy way to specify parameter name/value combinations. For more flexibility if you are matching a query string parameter, consider using the [URL Query Wildcard](#url-query-wildcard) match condition.
-
-Key information:
-
-- Only a single URL query parameter name can be specified per instance of this match condition.
-    
-- Because wildcard values are not supported when a parameter name is specified, only exact parameter name matches are eligible for comparison.
-- Parameter value(s) can include [wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
-   - Each parameter value pattern can consist of one or more asterisks (*), where each asterisk can match a sequence of one or more characters.
-   - Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
-
-       Character | URL Encoding
-       ----------|---------
-       Space     | %20
-       &         | %25
-
-- Specify multiple query string parameter values by delimiting each one with a single space. This match condition is met when a request contains one of the specified name/value combinations.
-
-   - Example 1:
-
-     - Configuration:
-
-       ValueA ValueB
-
-     - This configuration matches the following query string parameters:
-
-       Parameter1=ValueA
-    
-       Parameter1=ValueB
-
-   - Example 2:
-
-     - Configuration: 
-
-        Value%20A Value%20B
-
-     - This configuration matches the following query string parameters:
-
-       Parameter1=Value%20A
-
-       Parameter1=Value%20B
-
-- This match condition is met only when there is an exact match to at least one of the specified query string name/value combinations.
-
-   For example, if you use the configuration in the previous example, the parameter name/value combination "Parameter1=ValueAdd" would not be considered a match. However, if you specify either of the following values, it will match that name/value combination:
-
-   - ValueA ValueB ValueAdd
-   - ValueA* ValueB
-
-- Use the **Ignore Case** option to control the case-sensitivity of query string comparisons.
-    
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-   - Complete Cache Fill
-   - Default Internal Max-Age
-   - Force Internal Max-Age
-   - Ignore Origin No-Cache
-   - Internal Max-Stale
-
-#### Sample scenarios
-
-The following example demonstrates how this option works in specific situations:
-
-Name  | Value |  Result
-------|-------|--------
-User  | Joe   | This pattern is matched when the query string for a requested URL is "?user=joe."
-User  | *     | This pattern is matched when the query string for a requested URL contains a User parameter.
-Email | Joe\* | This pattern is matched when the query string for a requested URL contains an Email parameter that starts with "Joe."
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Query Regex
-
-Identifies requests that contain the specified query string parameter. This parameter is set to a value that matches a specified [regular expression](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Query Regex match condition is met.
-
-- **Matches**: Requires the request to contain a URL query string that matches the specified regular expression.
-- **Does Not Match**: Requires the request to contain a URL query string that does not match the specified regular expression.
-
-Key information:
-
-- Only exact matches to the specified regular expression satisfy this match condition.
-    
-- Use the **Ignore Case** option to control the case-sensitivity of query string comparisons.
-    
-- For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string.
-    
-- Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
-
-   Character | URL Encoding | Value
-   ----------|--------------|------
-   Space     | %20          | \%20
-   &         | %25          | \%25
-
-   Note that percentage symbols must be escaped.
-
-- Double-escape special regular expression characters (for example, \^$.+) to include a backslash in the regular expression.
-
-   For example:
-
-   Value | Interpreted As 
-   ------|---------------
-   \\+    | +
-   \\\\+   | \\+
-
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-   - Complete Cache Fill
-   - Default Internal Max-Age
-   - Force Internal Max-Age
-   - Ignore Origin No-Cache
-   - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Query Wildcard
-
-Compares the specified value(s) against the request's query string.
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Query Wildcard match condition is met.
-
-- **Matches**: Requires the request to contain a URL query string that matches the specified wildcard value.
-- **Does Not Match**: Requires the request to contain a URL query string that does not match the specified wildcard value.
-
-Key information:
-
-- For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string.
-- Parameter values can include [wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values):
-   - Each parameter value pattern can consist of one or more asterisks (*), where each asterisk can match a sequence of one or more characters.
-   - Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
-
-     Character | URL Encoding
-     ----------|---------
-     Space     | %20
-     &         | %25
-
-- Specify multiple values by delimiting each one with a single space.
-
-   For example: *Parameter1=ValueA* *ValueB* *Parameter1=ValueC&Parameter2=ValueD*
-
-- Only exact matches to at least one of the specified query string patterns satisfy this match condition.
-    
-- Use the **Ignore Case** option to control the case-sensitivity of query string comparisons.
-    
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-   - Complete Cache Fill
-   - Default Internal Max-Age
-   - Force Internal Max-Age
-   - Ignore Origin No-Cache
-   - Internal Max-Stale
-
-#### Sample scenarios
-
-The following example demonstrates how this option works in specific situations:
-
- Name                 | Description
- ---------------------|------------
-user=joe              | This pattern is matched when the query string for a requested URL is "?user=joe."
-\*user=\* \*optout=\* | This pattern is matched when the CDN URL query contains either the user or optout parameter.
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
-## Next steps
-
-- [Azure Content Delivery Network overview](cdn-overview.md)
-- [Rules engine reference](cdn-verizon-premium-rules-engine-reference.md)
-- [Rules engine conditional expressions](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
-- [Rules engine features](cdn-verizon-premium-rules-engine-reference-features.md)
-- [Overriding default HTTP behavior using the rules engine](cdn-verizon-premium-rules-engine.md)\`25
-title: Azure CDN from Verizon Premium rules engine match conditions | Microsoft Docs
-description: Reference documentation for Azure Content Delivery Network from Verizon Premium rules engine match conditions.
-services: cdn
-author: mdgattuso
-
-ms.service: azure-cdn
-ms.topic: article
-ms.date: 05/31/2019
-ms.author: magattus
-
----
-
-# Azure CDN from Verizon Premium rules engine match conditions
-
-This article lists detailed descriptions of the available match conditions for the Azure Content Delivery Network (CDN) from Verizon Premium [rules engine](cdn-verizon-premium-rules-engine.md).
-
-The second part of a rule is the match condition. A match condition identifies specific types of requests for which a set of features will be performed.
-
-For example, you can use a match condition to:
-
-- Filter requests for content at a particular location.
-- Filter requests generated from a particular IP address or country/region.
-- Filter requests by header information.
-
-## Always match condition
-
-The Always match condition applies a default set of features to all requests.
-
-Name | Purpose
------|--------
-[Always](#always) | Applies a default set of features to all requests.
-
-## Device match condition
-
-The Device match condition identifies requests made from a mobile device based on its properties.  
-
-Name | Purpose
------|--------
-[Device](#device) | Identifies requests made from a mobile device based on its properties.
-
-## Location match conditions
-
-The Location match conditions identify requests based on the requester's location.
-
-Name | Purpose
------|--------
-[AS Number](#as-number) | Identifies requests that originate from a particular network.
-[Country](#country) | Identifies requests that originate from the specified countries/regions.
-
-## Origin match conditions
-
-The Origin match conditions identify requests that point to Content Delivery Network storage or a customer origin server.
-
-Name | Purpose
------|--------
-[CDN Origin](#cdn-origin) | Identifies requests for content stored in Content Delivery Network storage.
-[Customer Origin](#customer-origin) | Identifies requests for content stored on a specific customer origin server.
-
-## Request match conditions
-
-The Request match conditions identify requests based on their properties.
-
-Name | Purpose
------|--------
-[Client IP Address](#client-ip-address) | Identifies requests that originate from a particular IP address.
-[Cookie Parameter](#cookie-parameter) | Checks the cookies associated with each request for the specified value.
-[Cookie Parameter Regex](#cookie-parameter-regex) | Checks the cookies associated with each request for the specified regular expression.
-[Edge Cname](#edge-cname) | Identifies requests that point to a specific edge CNAME.
-[Referring Domain](#referring-domain) | Identifies requests that were referred from the specified host names.
-[Request Header Literal](#request-header-literal) | Identifies requests that contain the specified header set to a specified value.
-[Request Header Regex](#request-header-regex) | Identifies requests that contain the specified header set to a value that matches the specified regular expression.
-[Request Header Wildcard](#request-header-wildcard) | Identifies requests that contain the specified header set to a value that matches the specified pattern.
-[Request Method](#request-method) | Identifies requests by their HTTP method.
-[Request Scheme](#request-scheme) | Identifies requests by their HTTP protocol.
-
-## URL match conditions
-
-The URL match conditions identify requests based on their URLs.
-
-Name | Purpose
------|--------
-[URL Path Directory](#url-path-directory) | Identifies requests by their relative path.
-[URL Path Extension](#url-path-extension) | Identifies requests by their file name extension.
-[URL Path Filename](#url-path-filename) | Identifies requests by their file name.
-[URL Path Literal](#url-path-literal) | Compares a request's relative path to the specified value.
-[URL Path Regex](#url-path-regex) | Compares a request's relative path to the specified regular expression.
-[URL Path Wildcard](#url-path-wildcard) | Compares a request's relative path to the specified pattern.
-[URL Query Literal](#url-query-literal) | Compares a request's query string to the specified value.
-[URL Query Parameter](#url-query-parameter) | Identifies requests that contain the specified query string parameter set to a value that matches a specified pattern.
-[URL Query Regex](#url-query-regex) | Identifies requests that contain the specified query string parameter set to a value that matches a specified regular expression.
-[URL Query Wildcard](#url-query-wildcard) | Compares the specified value against the request's query string.
-
-## Reference for rules engine match conditions
-
----
-
-### Always
-
-The Always match condition applies a default set of features to all requests.
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### AS Number
-
-The AS Number network is defined by its autonomous system number (ASN). 
-
-The **Matches**/**Does Not Match** option determines the conditions under which the AS Number match condition is met:
-
-- **Matches**: Requires that the ASN of the client network matches one of the specified ASNs. 
-- **Does Not Match**: Requires that the ASN of the client network does not match any of the specified ASNs.
-
-Key information:
-
-- Specify multiple ASNs by delimiting each one with a single space. For example, 64514 64515 matches requests that arrive from either 64514 or 64515.
-- Certain requests might not return a valid ASN. A question mark (?) will match requests for which a valid ASN could not be determined.
-- Specify the entire ASN for the desired network. Partial values will not be matched.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### CDN Origin
-
-The CDN Origin match condition is met when both of the following conditions are met:
-
-- Content from CDN storage was requested.
-- The request URI uses the type of content access point (for example, /000001) that's defined in this match condition:
-  - CDN URL: The request URI must contain the selected content access point.
-  - Edge CNAME URL: The corresponding edge CNAME configuration must point to the selected content access point.
-  
-Key information:
-
-- The content access point identifies the service that should serve the requested content.
-- Don't use an AND IF statement to combine certain match conditions. For example, combining a CDN Origin match condition with a Customer Origin match condition would create a match pattern that could never be matched. For this reason, two CDN Origin match conditions cannot be combined through an AND IF statement.
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Client IP Address
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Client IP Address match condition is met:
-
-- **Matches**: Requires that the client's IP address matches one of the specified IP addresses. 
-- **Does Not Match**: Requires that the client's IP address does not match any of the specified IP addresses. 
-
-Key information:
-
-- Use CIDR notation.
-- Specify multiple IP addresses and/or IP address blocks by delimiting each one with a single space. For example:
-  - **IPv4 example**: 1.2.3.4 10.20.30.40 matches any requests that arrive from either address 1.2.3.4 or 10.20.30.40.
-  - **IPv6 example**: 1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80 matches any requests that arrive from either address 1:2:3:4:5:6:7:8 or 10:20:30:40:50:60:70:80.
-- The syntax for an IP address block is the base IP address followed by a forward slash and the prefix size. For example:
-  - **IPv4 example**: 5.5.5.64/26 matches any requests that arrive from addresses 5.5.5.64 through 5.5.5.127.
-  - **IPv6 example**: 1:2:3:/48 matches any requests that arrive from addresses 1:2:3:0:0:0:0:0 through 1:2:3:ffff:ffff:ffff:ffff:ffff.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Cookie Parameter
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Cookie Parameter match condition is met.
-
-- **Matches**: Requires a request to contain the specified cookie with a value that matches at least one of the values that are defined in this match condition.
-- **Does Not Match**: Requires that the request meets either of the following criteria:
-  - It does not contain the specified cookie.
-  - It contains the specified cookie, but its value does not match any of the values that are defined in this match condition.
-  
-Key information:
-
-- Cookie name:
-  - Because wildcard values, including asterisks (*), are not supported when you're specifying a cookie name, only exact cookie name matches are eligible for comparison.
-  - Only a single cookie name can be specified per instance of this match condition.
-  - Cookie name comparisons are case-insensitive.
-- Cookie value:
-  - Specify multiple cookie values by delimiting each one with a single space.
-  - A cookie value can take advantage of [wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
-  - If a wildcard value has not been specified, then only an exact match will satisfy this match condition. For example, specifying "Value" will match "Value," but not "Value1" or "Value2."
-  - Use the **Ignore Case** option to control whether a case-sensitive comparison is made against the request's cookie value.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-</br>
-
----
-
-### Cookie Parameter Regex
-
-The Cookie Parameter Regex match condition defines a cookie name and value. You can use [regular expressions](cdn-verizon-premium-rules-engine-reference.md#regular-expressions) to define the desired cookie value.
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Cookie Parameter Regex match condition is met.
-
-- **Matches**: Requires a request to contain the specified cookie with a value that matches the specified regular expression.
-- **Does Not Match**: Requires that the request meets either of the following criteria:
-  - It does not contain the specified cookie.
-  - It contains the specified cookie, but its value does not match the specified regular expression.
-  
-Key information:
-
-- Cookie name:
-  - Because regular expressions and wildcard values, including asterisks (*), are not supported when you're specifying a cookie name, only exact cookie name matches are eligible for comparison.
-  - Only a single cookie name can be specified per instance of this match condition.
-  - Cookie name comparisons are case-insensitive.
-- Cookie value:
-  - A cookie value can take advantage of regular expressions.
-  - Use the **Ignore Case** option to control whether a case-sensitive comparison is made against the request's cookie value.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Country
-
-You can specify a country through its country code. 
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Country match condition is met:
-
-- **Matches**: Requires the request to contain the specified country code values. 
-- **Does Not Match**: Requires that the request does not contain the specified country code values.
-
-Key information:
-
-- Specify multiple country codes by delimiting each one with a single space.
-- Wildcards are not supported when you're specifying a country code.
-- The "EU" and "AP" country codes do not encompass all IP addresses in those regions.
-- Certain requests might not return a valid country code. A question mark (?) will match requests for which a valid country code could not be determined.
-- Country codes are case-sensitive.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-#### Implementing Country Filtering by using the rules engine
-
-This match condition allows you to perform a multitude of customizations based on the location from which a request originated. For example, the behavior of the Country Filtering feature can be replicated through the following configuration:
-
-- URL Path Wildcard match: Set the [URL Path Wildcard match condition](#url-path-wildcard) to the directory that will be secured. 
-    Append an asterisk to the end of the relative path to ensure that access to all of its children will be restricted by this rule.
-
-- Country match: Set the Country match condition to the desired set of countries.
-  - Allow: Set the Country match condition to **Does Not Match** to allow only the specified countries access to content stored in the location defined by the URL Path Wildcard match condition.
-  - Block: Set the Country match condition to **Matches** to block the specified countries from accessing content stored in the location defined by the URL Path Wildcard match condition.
-
-- Deny Access (403) Feature: Enable the [Deny Access (403) feature](cdn-verizon-premium-rules-engine-reference-features.md#deny-access-403) to replicate the allow or block portion of the Country Filtering feature.
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Customer Origin
-
-Key information:
-
-- The Customer Origin match condition is met regardless of whether content is requested through a CDN URL or an edge CNAME URL that points to the selected customer origin.
-- A customer origin configuration that's referenced by a rule cannot be deleted from the Customer Origin page. Before you attempt to delete a customer origin configuration, make sure that the following configurations do not reference it:
-  - A Customer Origin match condition
-  - An edge CNAME configuration
-- Don't use an AND IF statement to combine certain match conditions. For example, combining a Customer Origin match condition with a CDN Origin match condition would create a match pattern that could never be matched. For this reason, two Customer Origin match conditions cannot be combined through an AND IF statement.
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Device
-
-The Device match condition identifies requests made from a mobile device based on its properties. Mobile device detection is achieved through [WURFL](http://wurfl.sourceforge.net/). 
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Device match condition is met:
-
-- **Matches**: Requires the requester's device to match the specified value. 
-- **Does Not Match**: Requires that the requester's device does not match the specified value.
-
-Key information:
-
-- Use the **Ignore Case** option to specify whether the specified value is case-sensitive.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-#### String Type
-
-A WURFL capability typically accepts any combination of numbers, letters, and symbols. Due to the flexible nature of this capability, you must choose how the value associated with this match condition is interpreted. The following table describes the available set of options:
-
-Type     | Description
----------|------------
-Literal  | Select this option to prevent most characters from taking on special meaning by using their [literal value](cdn-verizon-premium-rules-engine-reference.md#literal-values).
-Wildcard | Select this option to take advantage of all [wildcard characters]([wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
-Regex    | Select this option to use [regular expressions](cdn-verizon-premium-rules-engine-reference.md#regular-expressions). Regular expressions are useful for defining a pattern of characters.
-
-#### WURFL capabilities
-
-A WURFL capability refers to a category that describes mobile devices. The selected capability determines the type of mobile device description that is used to identify requests.
-
-The following table lists WURFL capabilities and their variables for the rules engine.
-
-> [!NOTE]
-> The following variables are supported in the **Modify Client Request Header** and **Modify Client Response Header** features.
-
-Capability | Variable | Description | Sample values
------------|----------|-------------|----------------
-Brand Name | %{wurfl_cap_brand_name} | A string that indicates the brand name of the device. | Samsung
-Device OS | %{wurfl_cap_device_os} | A string that indicates the operating system installed on the device. | IOS
-Device OS Version | %{wurfl_cap_device_os_version} | A string that indicates the version number of the operating system installed on the device. | 1.0.1
-Dual Orientation | %{wurfl_cap_dual_orientation} | A Boolean that indicates whether the device supports dual orientation. | true
-HTML Preferred DTD | %{wurfl_cap_html_preferred_dtd} | A string that indicates the mobile device's preferred document type definition (DTD) for HTML content. | none<br/>xhtml_basic<br/>html5
-Image Inlining | %{wurfl_cap_image_inlining} | A Boolean that indicates whether the device supports Base64 encoded images. | false
-Is Android | %{wurfl_vcap_is_android} | A Boolean that indicates whether the device uses the Android OS. | true
-Is IOS | %{wurfl_vcap_is_ios} | A Boolean that indicates whether the device uses iOS. | false
-Is Smart TV | %{wurfl_cap_is_smarttv} | A Boolean that indicates whether the device is a smart TV. | false
-Is Smartphone | %{wurfl_vcap_is_smartphone} | A Boolean that indicates whether the device is a smartphone. | true
-Is Tablet | %{wurfl_cap_is_tablet} | A Boolean that indicates whether the device is a tablet. This description is  OS-independent. | true
-Is Wireless Device | %{wurfl_cap_is_wireless_device} | A Boolean that indicates whether the device is considered a wireless device. | true
-Marketing Name | %{wurfl_cap_marketing_name} | A string that indicates the device's marketing name. | BlackBerry 8100 Pearl
-Mobile Browser | %{wurfl_cap_mobile_browser} | A string that indicates the browser that's used to request content from the device. | Chrome
-Mobile Browser Version | %{wurfl_cap_mobile_browser_version} | A string that indicates the version of the browser that's used to request content from the device. | 31
-Model Name | %{wurfl_cap_model_name} | A string that indicates the device's model name. | s3
-Progressive Download | %{wurfl_cap_progressive_download} | A Boolean that indicates whether the device supports the playback of audio and video while it is still being downloaded. | true
-Release Date | %{wurfl_cap_release_date} | A string that indicates the year and month on which the device was added to the WURFL database.<br/><br/>Format: `yyyy_mm` | 2013_december
-Resolution Height | %{wurfl_cap_resolution_height} | An integer that indicates the device's height in pixels. | 768
-Resolution Width | %{wurfl_cap_resolution_width} | An integer that indicates the device's width in pixels. | 1024
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Edge Cname
-
-Key information:
-
-- The list of available edge CNAMEs is limited to those edge CNAMEs that have been configured on the Edge CNAMEs page for the platform on which the rules engine is being configured.
-- Before you attempt to delete an edge CNAME configuration, make sure that an Edge Cname match condition does not reference it. Edge CNAME configurations that have been defined in a rule cannot be deleted from the Edge CNAMEs page.
-- Don't use an AND IF statement to combine certain match conditions. For example, combining an Edge Cname match condition with a Customer Origin match condition would create a match pattern that could never be matched. For this reason, two Edge Cname match conditions cannot be combined through an AND IF statement.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Referring Domain
-
-The host name associated with the referrer through which content was requested determines whether the Referring Domain condition is met.
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Referring Domain match condition is met:
-
-- **Matches**: Requires the referring host name to match the specified values. 
-- **Does Not Match**: Requires that the referring host name does not match the specified value.
-
-Key information:
-
-- Specify multiple host names by delimiting each one with a single space.
-- This match condition supports [wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
-- If the specified value does not contain an asterisk, it must be an exact match for the referrer's host name. For example, specifying "mydomain.com" would not match "www.mydomain.com."
-- Use the **Ignore Case** option to control whether a case-sensitive comparison is made.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----  
-
-### Request Header Literal
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Request Header Literal match condition is met.
-
-- **Matches**: Requires the request to contain the specified header. Its value must match the one that's defined in this match condition.
-- **Does Not Match**: Requires that the request meets either of the following criteria:
-  - It does not contain the specified header.
-  - It contains the specified header, but its value does not match the one that's defined in this match condition.
-  
-Key information:
-
-- Header name comparisons are always case-insensitive. Use the **Ignore Case** option to control the case-sensitivity of header value comparisons.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----  
-
-### Request Header Regex
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Request Header Regex match condition is met.
-
-- **Matches**: Requires the request to contain the specified header. Its value must match the pattern that's defined in the specified [regular expression](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
-- **Does Not Match**: Requires that the request meets either of the following criteria:
-  - It does not contain the specified header.
-  - It contains the specified header, but its value does not match the specified regular expression.
-
-Key information:
-
-- Header name:
-  - Header name comparisons are case-insensitive.
-  - Replace spaces in the header name with "%20."
-- Header value:
-  - A header value can take advantage of regular expressions.
-  - Use the **Ignore Case** option to control the case-sensitivity of header value comparisons.
-  - The match condition is met only when a header value exactly matches at least one of the specified patterns.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Request Header Wildcard
-
-The **Matches**/**Does Not Match** option determines the conditions under which the Request Header Wildcard match condition is met.
-
-- **Matches**: Requires the request to contain the specified header. Its value must match at least one of the values that are defined in this match condition.
-- **Does Not Match**: Requires that the request meets either of the following criteria:
-  - It does not contain the specified header.
-  - It contains the specified header, but its value does not match any of the specified values.
-  
-Key information:
-
-- Header name:
-  - Header name comparisons are case-insensitive.
-  - Spaces in the header name should be replaced with "%20." You can also use this value to specify spaces in a header value.
-- Header value:
-  - A header value can take advantage of [wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
-  - Use the **Ignore Case** option to control the case-sensitivity of header value comparisons.
-  - This match condition is met when a header value exactly matches to at least one of the specified patterns.
-  - Specify multiple values by delimiting each one with a single space.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Request Method
-
-The Request Method match condition is met only when assets are requested through the selected request method. The available request methods are:
-
-- GET
-- HEAD
-- POST
-- OPTIONS
-- PUT
-- DELETE
-- TRACE
-- CONNECT
-
-Key information:
-
-- By default, only the GET request method can generate cached content on the network. All other request methods are proxied through the network.
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### Request Scheme
-
-The Request Scheme match condition is met only when assets are requested through the selected protocol. The available protocols are:
-
-- HTTP
-- HTTPS
-
-Key information:
-
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-  - Complete Cache Fill
-  - Default Internal Max-Age
-  - Force Internal Max-Age
-  - Ignore Origin No-Cache
-  - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Path Directory
-
-Identifies a request by its relative path, which excludes the file name of the requested asset.
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Path Directory match condition is met.
-
-- **Matches**: Requires the request to contain a relative URL path, excluding the file name, that matches the specified URL pattern.
-- **Does Not Match**: Requires the request to contain a relative URL path, excluding file name, that does not match the specified URL pattern.
-
-Key information:
-
-- Use the **Relative to** option to specify whether the URL comparison starts before or after the content access point. The content access point is the portion of the path that appears between the Verizon CDN hostname and the relative path to the requested asset (for example, /800001/CustomerOrigin). It identifies a location by server type (for example, CDN or customer origin) and your customer account number.
-
-   The following values are available for the **Relative to** option:
-  - **Root**: Indicates that the URL comparison point begins directly after the CDN hostname. 
-
-  For example: http:\//wpc.0001.&lt;domain&gt;/**800001/myorigin/myfolder**/index.htm
-
-  - **Origin**: Indicates that the URL comparison point begins after the content access point (for example, /000001 or /800001/myorigin). Because the \*.azureedge.net CNAME is created relative to the origin directory on the Verizon CDN hostname by default, Azure CDN users should use the **Origin** value. 
-
-  For example: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder**/index.htm 
-
-  This URL points to the following Verizon CDN hostname: http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/**myfolder**/index.htm
-
-- An edge CNAME URL is rewritten to a CDN URL prior to the URL comparison.
-
-    For example, both of the following URLs point to the same asset and therefore have the same URL path.
-  - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
-    
-  - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-    
-    Additional information:
-  - Custom domain: https:\//my.domain.com/path/asset.htm
-    
-    - URL path (relative to root): /800001/CustomerOrigin/path/
-    
-    - URL path (relative to origin): /path/
-
-- The portion of the URL that is used for the URL comparison ends just before the file name of the requested asset. A trailing forward slash is the last character in this type of path.
-
-- Replace any spaces in the URL path pattern with "%20."
-
-- Each URL path pattern can contain one or more asterisks (*), where each asterisk matches a sequence of one or more characters.
-
-- Specify multiple URL paths in the pattern by delimiting each one with a single space.
-
-    For example: */sales/ */marketing/
-
-- A URL path specification can take advantage of [wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
-
-- Use the **Ignore Case** option to control whether a case-sensitive comparison is performed.
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Path Extension
-
-Identifies requests by the file extension of the requested asset.
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Path Extension match condition is met.
-
-- **Matches**: Requires the URL of the request to contain a file extension that exactly matches the specified pattern.
-
-   For example, if you specify "htm", "htm" assets are matched, but not "html" assets.  
-
-- **Does Not Match**: Requires the URL request to contain a file extension that does not match the specified pattern.
-
-Key information:
-
-- Specify the file extensions to match in the **Value** box. Do not include a leading period; for example, use htm instead of .htm.
-
-- Use the **Ignore Case** option to control whether a case-sensitive comparison is performed.
-
-- Specify multiple file extensions by delimiting each extension with a single space. 
-
-    For example: htm html
-
-- For example, specifying "htm" matches "htm" assets, but not "html" assets.
-
-#### Sample Scenario
-
-The following sample configuration assumes that this match condition is met when a request matches one of the specified extensions.
-
-Value specification: asp aspx php html
-
-This match condition is met when it finds URLs that end with the following extensions:
-
-- .asp
-- .aspx
-- .php
-- .html
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Path Filename
-
-Identifies requests by the file name of the requested asset. For the purposes of this match condition, a file name consists of the name of the requested asset, a period, and the file extension (for example, index.html).
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Path Filename match condition is met.
-
-- **Matches**: Requires the request to contain a file name in its URL path that matches the specified pattern.
-- **Does Not Match**: Requires the request to contain a file name in its URL path that does not match the specified pattern.
-
-Key information:
-
-- Use the **Ignore Case** option to control whether a case-sensitive comparison is performed.
-
-- To specify multiple file extensions, separate each extension with a single space.
-
-    For example: index.htm index.html
-
-- Replace spaces in a file name value with "%20."
-
-- A file name value can take advantage of [wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values). For example, each file name pattern can consist of one or more asterisks (*), where each asterisk matches a sequence of one or more characters.
-
-- If wildcard characters are not specified, then only an exact match will satisfy this match condition.
-
-    For example, specifying "presentation.ppt" matches an asset named "presentation.ppt," but not one named "presentation.pptx."
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Path Literal
-
-Compares a request's URL path, including file name, to the specified value.
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Path Literal match condition is met.
-
-- **Matches**: Requires the request to contain a URL path that matches the specified pattern.
-- **Does Not Match**: Requires the request to contain a URL path that does not match the specified pattern.
-
-Key information:
-
-- Use the **Relative to** option to specify whether the URL comparison point begins before or after the content access point. 
-
-    The following values are available for the **Relative to** option:
-  - **Root**: Indicates that the URL comparison point begins directly after the CDN hostname.
-
-    For example: http:\//wpc.0001.&lt;domain&gt;/**800001/myorigin/myfolder/index.htm**
-
-  - **Origin**: Indicates that the URL comparison point begins after the content access point (for example, /000001 or /800001/myorigin). Because the \*.azureedge.net CNAME is created relative to the origin directory on the Verizon CDN hostname by default, Azure CDN users should use the **Origin** value. 
-
-    For example: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
-
-  This URL points to the following Verizon CDN hostname: http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/**myfolder/index.htm**
-
-- An edge CNAME URL is rewritten to a CDN URL prior to a URL comparison.
-
-For example, both of the following URLs point to the same asset and therefore have the same URL path:
-
-- CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
-- Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-
-    Additional information:
-    
-    - URL path (relative to root): /800001/CustomerOrigin/path/asset.htm
-   
-    - URL path (relative to origin): /path/asset.htm
-
-- Query strings in the URL are ignored.
-- Use the **Ignore Case** option to control whether a case-sensitive comparison is performed.
-- The value specified for this match condition is compared against the relative path of the exact request made by the client.
-
-- To match all requests made to a particular directory, use the [URL Path Directory](#url-path-directory) or the [URL Path Wildcard](#url-path-wildcard) match condition.
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Path Regex
-
-Compares a request's URL path to the specified [regular expression](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Path Regex match condition is met.
-
-- **Matches**: Requires the request to contain a URL path that matches the specified regular expression.
-- **Does Not Match**: Requires the request to contain a URL path that does not match the specified regular expression.
-
-Key information:
-
-- An edge CNAME URL is rewritten to a CDN URL prior to URL comparison.
-
-    For example, both URLs point to the same asset and therefore have the same URL path.
-
-     - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
-
-     - Edge CNAME URL: http:\//my.domain.com/path/asset.htm
-
-    Additional information:
-    
-     - URL path: /800001/CustomerOrigin/path/asset.htm
-
-- Query strings in the URL are ignored.
-    
-- Use the **Ignore Case** option to control whether a case-sensitive comparison is performed.
-    
-- Spaces in the URL path should be replaced with "%20."
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Path Wildcard
-
-Compares a request's relative URL path to the specified wildcard pattern.
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Path Wildcard match condition is met.
-
-- **Matches**: Requires the request to contain a URL path that matches the specified wildcard pattern.
-- **Does Not Match**: Requires the request to contain a URL path that does not match the specified wildcard pattern.
-
-Key information:
-
-- **Relative to** option: This option determines whether the URL comparison point begins before or after the content access point.
-
-   This option can have the following values:
-     - **Root**: Indicates that the URL comparison point begins directly after the CDN hostname.
-
-       For example: http:\//wpc.0001.&lt;domain&gt;/**800001/myorigin/myfolder/index.htm**
-
-     - **Origin**: Indicates that the URL comparison point begins after the content access point (for example, /000001 or /800001/myorigin). Because the \*.azureedge.net CNAME is created relative to the origin directory on the Verizon CDN hostname by default, Azure CDN users should use the **Origin** value. 
-
-       For example: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
-
-     This URL points to the following Verizon CDN hostname: http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/**myfolder/index.htm**
-
-- An edge CNAME URL is rewritten to a CDN URL prior to URL comparison.
-
-    For example, both of the following URLs point to the same asset and therefore have the same URL path:
-     - CDN URL: http://wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
-     - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-    
-    Additional information:
-    
-     - URL path (relative to root): /800001/CustomerOrigin/path/asset.htm
-    
-     - URL path (relative to origin): /path/asset.htm
-    
-- Specify multiple URL paths by delimiting each one with a single space.
-
-   For example: /marketing/asset.* /sales/*.htm
-
-- Query strings in the URL are ignored.
-    
-- Use the **Ignore Case** option to control whether a case-sensitive comparison is performed.
-    
-- Replace spaces in the URL path with "%20."
-    
-- The value specified for a URL path can take advantage of [wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values). Each URL path pattern can contain one or more asterisks (*), where each asterisk can match a sequence of one or more characters.
-
-#### Sample Scenarios
-
-The sample configurations in the following table assume that this match condition is met when a request matches the specified URL pattern:
-
-Value                   | Relative to    | Result 
-------------------------|----------------|-------
-*/test.html */test.php  | Root or Origin | This pattern is matched by requests for assets named "test.html" or "test.php" in any folder.
-/80ABCD/origin/text/*   | Root           | This pattern is matched when the requested asset meets the following criteria: <br />- It must reside on a customer origin called "origin." <br />- The relative path must start with a folder called "text." That is, the requested asset can either reside in the "text" folder or one of its recursive subfolders.
-*/css/* */js/*          | Root or Origin | This pattern is matched by all CDN or edge CNAME URLs that contain a css or js folder.
-*.jpg *.gif *.png       | Root or Origin | This pattern is matched by all CDN or edge CNAME URLs ending with .jpg, .gif, or .png. An alternative way to specify this pattern is with the [URL Path Extension match condition](#url-path-extension).
-/images/* /media/*      | Origin         | This pattern is matched by CDN or edge CNAME URLs whose relative path starts with an "images" or "media" folder. <br />- CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/images/sales/event1.png<br />- Sample edge CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Query Literal
-
-Compares a request's query string to the specified value.
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Query Literal match condition is met.
-
-- **Matches**: Requires the request to contain a URL query string that matches the specified query string.
-- **Does Not Match**: Requires the request to contain a URL query string that does not match the specified query string.
-
-Key information:
-
-- Only exact query string matches satisfy this match condition.
-    
-- Use the **Ignore Case** option to control the case-sensitivity of query string comparisons.
-    
-- Do not include a leading question mark (?) in the query string value text.
-    
-- Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
-
-   Character | URL Encoding
-   ----------|---------
-   Space     | %20
-   &         | %25
-
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-   - Complete Cache Fill
-   - Default Internal Max-Age
-   - Force Internal Max-Age
-   - Ignore Origin No-Cache
-   - Internal Max-Stale
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Query Parameter
-
-Identifies requests that contain the specified query string parameter. This parameter is set to a value that matches a specified pattern. Query string parameters (for example, parameter=value) in the request URL determine whether this condition is met. This match condition identifies a query string parameter by its name and accepts one or more values for the parameter value. 
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Query Parameter match condition is met.
-
-- **Matches**: Requires a request to contain the specified parameter with a value that matches at least one of the values that are defined in this match condition.
-- **Does Not Match**: Requires that the request meets either of the following criteria:
-  - It does not contain the specified parameter.
-  - It contains the specified parameter, but its value does not match any of the values that are defined in this match condition.
-
-This match condition provides an easy way to specify parameter name/value combinations. For more flexibility if you are matching a query string parameter, consider using the [URL Query Wildcard](#url-query-wildcard) match condition.
-
-Key information:
-
-- Only a single URL query parameter name can be specified per instance of this match condition.
-    
-- Because wildcard values are not supported when a parameter name is specified, only exact parameter name matches are eligible for comparison.
-- Parameter value(s) can include [wildcard values](cdn-verizon-premium-rules-engine-reference.md#wildcard-values).
-   - Each parameter value pattern can consist of one or more asterisks (*), where each asterisk can match a sequence of one or more characters.
-   - Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
-
-       Character | URL Encoding
-       ----------|---------
-       Space     | %20
-       &         | %25
-
-- Specify multiple query string parameter values by delimiting each one with a single space. This match condition is met when a request contains one of the specified name/value combinations.
-
-   - Example 1:
-
-     - Configuration:
-
-       ValueA ValueB
-
-     - This configuration matches the following query string parameters:
-
-       Parameter1=ValueA
-    
-       Parameter1=ValueB
-
-   - Example 2:
-
-     - Configuration: 
-
-        Value%20A Value%20B
-
-     - This configuration matches the following query string parameters:
-
-       Parameter1=Value%20A
-
-       Parameter1=Value%20B
-
-- This match condition is met only when there is an exact match to at least one of the specified query string name/value combinations.
-
-   For example, if you use the configuration in the previous example, the parameter name/value combination "Parameter1=ValueAdd" would not be considered a match. However, if you specify either of the following values, it will match that name/value combination:
-
-   - ValueA ValueB ValueAdd
-   - ValueA* ValueB
-
-- Use the **Ignore Case** option to control the case-sensitivity of query string comparisons.
-    
-- Due to the manner in which cache settings are tracked, this match condition is incompatible with the following features:
-   - Complete Cache Fill
-   - Default Internal Max-Age
-   - Force Internal Max-Age
-   - Ignore Origin No-Cache
-   - Internal Max-Stale
-
-#### Sample scenarios
-
-The following example demonstrates how this option works in specific situations:
-
-Name  | Value |  Result
-------|-------|--------
-User  | Joe   | This pattern is matched when the query string for a requested URL is "?user=joe."
-User  | *     | This pattern is matched when the query string for a requested URL contains a User parameter.
-Email | Joe\* | This pattern is matched when the query string for a requested URL contains an Email parameter that starts with "Joe."
-
-[Back to top](#reference-for-rules-engine-match-conditions)
-
-</br>
-
----
-
-### URL Query Regex
-
-Identifies requests that contain the specified query string parameter. This parameter is set to a value that matches a specified [regular expression](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
-
-The **Matches**/**Does Not Match** option determines the conditions under which the URL Query Regex match condition is met.
-
-- **Matches**: Requires the request to contain a URL query string that matches the specified regular expression.
-- **Does Not Match**: Requires the request to contain a URL query string that does not match the specified regular expression.
-
-Key information:
-
-- Only exact matches to the specified regular expression satisfy this match condition.
-    
-- Use the **Ignore Case** option to control the case-sensitivity of query string comparisons.
-    
-- For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string.
-    
-- Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
-
-   Character | URL Encoding | Value
-   ----------|--------------|------
-   Space     | %20          | \%20
-   &         | %25          | \%25
-
-   Vegye figyelembe, hogy százalékos szimbólumok escape-karakterrel.
-
-- Speciális reguláris kifejezést Double-escape-karakter (például \^$. +) egy fordított perjel szerepeljenek a reguláris kifejezés.
+- Dupla Escape speciális reguláris kifejezésű karakterek (például \^$. +), ha egy fordított perjelet szeretne felvenni a reguláris kifejezésbe.
 
    Példa:
 
-   Érték | -Ként 
+   Value | Értelmezés 
    ------|---------------
    \\+    | +
    \\\\+   | \\+
 
-- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
-   - Complete Cache Fill
-   - Alapértelmezett belső Max-Age
-   - Belső Max-Age kényszerítése
-   - Ignore Origin No-Cache
+- A gyorsítótár-beállítások nyomon követésének módja miatt ez a megfeleltetési feltétel nem kompatibilis a következő funkciókkal:
+   - Gyorsítótár kitöltésének befejezése
+   - Alapértelmezett belső max. Age
+   - A belső Max-Age kényszerítése
+   - Kihagyott forrás – gyorsítótár
    - Belső maximális – elavult
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
@@ -3147,50 +1013,50 @@ Key information:
 
 ---
 
-### <a name="url-query-wildcard"></a>URL-cím lekérdezési helyettesítő karakter
+### <a name="url-query-wildcard"></a>URL-lekérdezés helyettesítő karaktere
 
-A megadott értékeket, szemben a kérelem lekérdezési karakterláncában hasonlítja össze.
+A megadott érték (eke) t hasonlítja össze a kérelem lekérdezési karakterláncával.
 
-A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím lekérdezési helyettesítő feltételnek megfelelő feltételek teljesülése.
+A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL-lekérdezés helyettesítő karakterét.
 
-- **Egyezések**: A kérés tartalmaz egy URL-cím lekérdezési karakterláncot, amely megfelel a megadott helyettesítő karakteres érték szükséges.
-- **Nem felel meg**: A kérés tartalmaz egy URL-cím lekérdezési karakterláncot, amely nem egyezik a megadott helyettesítő karakteres érték szükséges.
+- **Egyezések**: A kérésnek tartalmaznia kell egy URL-lekérdezési karakterláncot, amely megfelel a megadott helyettesítő értéknek.
+- **Nem egyezik**: A kérésnek tartalmaznia kell egy URL-lekérdezési karakterláncot, amely nem felel meg a megadott helyettesítő értéknek.
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Ez a beállítás az alkalmazásában egy lekérdezési karakterlánc kezdődik az első karakter után a kérdőjel (?) elválasztó, a lekérdezési karakterlánc.
-- Paraméterértékek tartalmazhatnak [helyettesítő karakteres értékek](cdn-verizon-premium-rules-engine-reference.md#wildcard-values):
-   - Minden paraméter értéke minta tartalmazhat egy vagy több csillagot (*), ahol minden egyes csillag meg tudja egy vagy több karakter sorozata.
-   - Bizonyos karakterek megkövetelése URL-Címének kódolása. A százalékos szimbólum URL-címét használja a következő karakterek kódolása:
+- Ebben a beállításban egy lekérdezési sztring az első karakterrel kezdődik a lekérdezési karakterlánchoz tartozó kérdőjel (?) határolójel után.
+- A paraméterek értéke tartalmazhat [helyettesítő karaktereket](cdn-verizon-premium-rules-engine-reference.md#wildcard-values):
+   - Minden paraméter értékének mintája egy vagy több csillag (*) lehet, ahol minden csillag egy vagy több karakterből állhat.
+   - Bizonyos karakterek URL-kódolást igényelnek. A százalékos szimbólum használata a következő karakterek URL-kódolásához:
 
-     Karakter | URL-Címének kódolása
+     Karakter | URL-kódolás
      ----------|---------
-     Űr     | %20
+     Szóköz     | %20
      &         | %25
 
-- Adja meg az egy szóköz pedig külön határoló több érték.
+- Több értéket is megadhat, ha mindegyiket egyetlen szóközzel kell korlátozni.
 
    Példa: *Parameter1=ValueA* *ValueB* *Parameter1=ValueC&Parameter2=ValueD*
 
-- Csak pontos egyezések a megadott lekérdezési karakterlánc mintáit legalább egy megfelelnek-e az egyezési feltétellel.
+- Csak a megadott lekérdezési karakterláncok legalább egyikének pontos egyezése megfelel ennek a megfelelési feltételnek.
     
-- Használja a **esetben figyelmen kívül hagyása** szabályozhatja a lekérdezési karakterlánc-összehasonlítások Kisbetű/nagybetű megkülönböztetése lehetőséget.
+- A kis-és **nagybetűk figyelmen kívül hagyása** lehetőséggel szabályozhatja a lekérdezési karakterláncok összehasonlítását.
     
-- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
-   - Complete Cache Fill
-   - Alapértelmezett belső Max-Age
-   - Belső Max-Age kényszerítése
-   - Ignore Origin No-Cache
+- A gyorsítótár-beállítások nyomon követésének módja miatt ez a megfeleltetési feltétel nem kompatibilis a következő funkciókkal:
+   - Gyorsítótár kitöltésének befejezése
+   - Alapértelmezett belső max. Age
+   - A belső Max-Age kényszerítése
+   - Kihagyott forrás – gyorsítótár
    - Belső maximális – elavult
 
 #### <a name="sample-scenarios"></a>Használati példák
 
-A következő példa bemutatja, hogy ez a beállítás működéséről adott helyzetekben:
+Az alábbi példa bemutatja, hogyan működik ez a beállítás bizonyos helyzetekben:
 
  Name (Név)                 | Leírás
  ---------------------|------------
-user=joe              | Ez a minta egyezik a kért URL-cím lekérdezési karakterlánc esetén "? felhasználói János =."
-\*felhasználó =\* \*optout =\* | Ez a minta egyezik, amikor a CDN URL-lekérdezés tartalmazza a felhasználó vagy a optout paraméter.
+user=joe              | Ez a minta akkor egyezik, ha a kért URL-cím lekérdezési karakterlánca "? user = Joe".
+\*felhasználó =\* \*optout =\* | Ez a minta akkor egyezik, ha a CDN URL-lekérdezés vagy a felhasználó vagy a optout paramétert tartalmazza.
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
 
@@ -3202,4 +1068,4 @@ user=joe              | Ez a minta egyezik a kért URL-cím lekérdezési karakt
 - [Szabálymotor-referencia](cdn-verizon-premium-rules-engine-reference.md)
 - [Szabálymotor feltételes kifejezései](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
 - [Szabálymotor funkciói](cdn-verizon-premium-rules-engine-reference-features.md)
-- [A rules engine használatával a HTTP alapértelmezés felülbírálása](cdn-verizon-premium-rules-engine.md)
+- [Az alapértelmezett HTTP-viselkedés felülbírálása a szabályok motor használatával](cdn-verizon-premium-rules-engine.md)

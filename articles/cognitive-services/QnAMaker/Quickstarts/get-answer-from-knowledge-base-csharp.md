@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Első válasz a Tudásbázis - REST, C# – QnA Maker'
-titlesuffix: Azure Cognitive Services
-description: Ez C# REST-alapú a rövid útmutató végigvezeti a válasz lekérése a Tudásbázis programozott módon.
+title: 'Gyors útmutató: Válasz kérése a Tudásbázisból – REST C# , QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: Ez C# a REST-alapú rövid útmutató végigvezeti egy adott Tudásbázisból származó válasz beszerzésének lépésein.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,60 +10,60 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 020403268665633bf3d71cf43258ced87b4f837d
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: ba128f5ad87083f8d57c33011969756f3b3a8c93
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249713"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559820"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>A kérdésekre adott válaszok a a Tudásbázis beolvasásaC#
+# <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Választ kaphat a tudásbázisban található kérdésekreC#
 
-Ez a rövid útmutató végigvezeti programozott módon első válasz a QnA Maker közzétett Tudásbázis. A Tudásbázis kérdéseket tartalmaz, valamint választ ad a [adatforrások](../Concepts/data-sources-supported.md) például – gyakori kérdések. A [kérdés](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) a QnA Maker szolgáltatásnak továbbítja. A [válasz](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) tartalmazza a top előre jelzett választ. 
+Ez a rövid útmutató végigvezeti a közzétett QnA Maker Tudásbázisból származó válasz programozott módon történő beszerzésének lépésein. A Tudásbázis az adatforrásokból, például [](../Concepts/data-sources-supported.md) a GYIK-ből származó kérdéseket és válaszokat tartalmaz. A rendszer elküldi a [kérdést](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) a QnA Maker szolgáltatásnak. A [Válasz](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) tartalmazza a legfontosabb előre jelzett választ. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Legújabb [**Visual Studio Community kiadás**](https://www.visualstudio.com/downloads/).
 * Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs lekéréséhez válassza ki **kulcsok** alatt **erőforrás-kezelés** az Azure irányítópultján a QnA Maker erőforrás. 
-* **Közzététel** beállítások lapon. Közzétett Tudásbázis nem rendelkezik, hozzon létre egy üres Tudásbázis, akkor a Tudásbázis importálja a **beállítások** lapon, majd közzéteheti. Letöltheti és használhatja [Ez a alapvető Tudásbázis](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv). 
+* **Közzétételi** oldal beállításai Ha nem rendelkezik közzétett tudásbázissal, hozzon létre egy üres tudásbázist, majd importáljon egy tudásbázist a **Beállítások** lapon, majd tegye közzé. [Ezt az](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)alapszintű tudásbázist töltheti le és használhatja. 
 
-    A közzétételi oldalon beállítások közé tartozik a POST útvonal, gazdagép értékét, és EndpointKey értékkel. 
+    A közzétételi oldal beállításai közé tartozik az útvonal értéke, a gazdagép értéke és a EndpointKey érték. 
 
     ![Közzétételi beállítások](../media/qnamaker-quickstart-get-answer/publish-settings.png)
 
-Ez a rövid útmutató kódja megtalálható a [ https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/get-answer) tárház. 
+A rövid útmutató kódja [https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/get-answer) a tárházban található. 
 
 ## <a name="create-a-knowledge-base-project"></a>Tudásbázisprojekt létrehozása
 
-1. Nyissa meg a Visual Studio 2019 Community Edition kiadását.
-1. Hozzon létre egy új Konzolalkalmazás (.NET Core) projektet és neve a projekt QnaMakerQuickstart. Fogadja el az alapértelmezett értékeket a többi beállításnál.
+1. Nyissa meg a Visual Studio 2019 Community Edition verziót.
+1. Hozzon létre egy új Console app (.NET Core) projektet, és nevezze el a projekt QnaMakerQuickstart. Fogadja el az alapértelmezett értékeket a többi beállításnál.
 
 ## <a name="add-the-required-dependencies"></a>A szükséges függőségek hozzáadása
 
-A Program.cs fájl elején cserélje le az egyetlen utasítás használatával a következő sorokat a szükséges függőségek hozzáadása a projekthez:
+A Program.cs fájl elején cserélje le az egyetlen using utasítást a következő sorokra a szükséges függőségek a projekthez való hozzáadásához:
 
 [!code-csharp[Add the required dependencies](~/samples-qnamaker-csharp/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs?range=1-3 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>A szükséges konstansok hozzáadása
 
-Felső részén a `Program` osztályhoz, belül a `Main`, adja hozzá a szükséges állandókat a QnA Maker eléréséhez. A rendszer ezeket az értékeket a **közzététel** lapon a Tudásbázis közzététele után. 
+Az `Program` osztály tetején, a `Main`on belül adja hozzá a szükséges állandókat a QnA Maker eléréséhez. Ezek az értékek a **közzétételi** lapon jelennek meg, miután közzétette a tudásbázist. 
 
 [!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs?range=14-30 "Add the required constants")]
 
-## <a name="add-a-post-request-to-send-question-and-get-answer"></a>Adjon hozzá egy POST-kérés küldése a kérdés és válasz
+## <a name="add-a-post-request-to-send-question-and-get-answer"></a>POST-kérelem hozzáadása a kérdés elküldéséhez és a válasz beszerzéséhez
 
-A következő kódot egy HTTPS-kérést küld a QnA Maker API, a kérdés küldeni a Tudásbázis és a választ kap:
+A következő kód egy HTTPS-kérést küld a QnA Maker APInak, hogy elküldje a kérdést a Tudásbázisnak, és fogadja a választ:
 
 [!code-csharp[Add a POST request to send question to knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs?range=32-57 "Add a POST request to send question to knowledge base")]
 
-A `Authorization` fejléc értékének tartalmazza a karakterláncot `EndpointKey`. 
+A `Authorization` fejléc értéke tartalmazza a karakterláncot `EndpointKey`. 
 
-Tudjon meg többet a [kérelem](../how-to/metadata-generateanswer-usage.md#generateanswer-request) és [válasz](../how-to/metadata-generateanswer-usage.md#generateanswer-response). 
+További információ a [kérelemről](../how-to/metadata-generateanswer-usage.md#generateanswer-request) és a [válaszról](../how-to/metadata-generateanswer-usage.md#generateanswer-response). 
 
 ## <a name="build-and-run-the-program"></a>A program létrehozása és futtatása
 
-Hozhat létre, és futtassa a programot a Visual Studióból. A kérelem automatikusan elküldi a QnA Maker API, majd a konzolablakban nyomtatási.
+Hozza létre és futtassa a programot a Visual studióból. A kérelem automatikusan elküldi a QnA Maker API, majd a konzolablakban nyomtatási.
 
 [!INCLUDE [JSON request and response](../../../../includes/cognitive-services-qnamaker-quickstart-get-answer-json.md)] 
 

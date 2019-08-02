@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Egy keresési kérelmet küld a Bing Entity Search REST API használatávalC#'
-titlesuffix: Azure Cognitive Services
-description: Ez a rövid útmutató segítségével egy kérelmet küld a Bing Entity Search REST API használatával C#, és a egy JSON-választ kapnak.
+title: 'Gyors útmutató: Keresési kérelem küldése a Bing Entity Search REST API a következő használatávalC#'
+titleSuffix: Azure Cognitive Services
+description: Ezzel a rövid útmutatóval kérést küldhet a Bing Entity Search REST API a C#használatával, és JSON-választ kap.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,38 +10,38 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: e0e595f6bbc1ed241aefe48eb766c04a790a102e
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: e41d99b4ddee41778e97aac9b5b947c0aa0eac5a
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384592"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404957"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Gyors útmutató: Egy keresési kérelmet küld a Bing Entity Search REST API használatávalC#
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Gyors útmutató: Keresési kérelem küldése a Bing Entity Search REST API a következő használatávalC#
 
-Ez a rövid útmutató segítségével a Bing Entity Search API az első hívását, és tekintse meg a JSON-választ. Ez egyszerű C# alkalmazás news search lekérdezést küld az API-t, és megjeleníti a választ. Az alkalmazás forráskódja elérhető a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs).
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Entity Search API, és megtekintheti a JSON-választ. Ez az C# egyszerű alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a választ. Az alkalmazás forráskódja elérhető a githubon. [](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs)
 
 Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Bármely kiadása [Visual Studio 2017-es vagy újabb](https://www.visualstudio.com/downloads/).
+- A [Visual Studio 2017 vagy újabb](https://www.visualstudio.com/downloads/)verziójának bármely kiadása.
 
 - A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető. A NuGet-csomag telepítése a Visual Studióban:
 
-   1. Kattintson a jobb gombbal a projektjére a **Megoldáskezelőben**.
-   2. Válassza ki **NuGet-csomagok kezelése**.
-   3. Keresse meg *Newtonsoft.Json* és telepítse a csomagot.
+   1. Kattintson a jobb gombbal a projektre **megoldáskezelő**.
+   2. Válassza a **NuGet-csomagok kezelése**lehetőséget.
+   3. Keresse meg a *Newtonsoft. JSON* fájlt, és telepítse a csomagot.
 
-- Linux/MacOS rendszeren használja, ha az alkalmazás futtatható-e a [Mono](https://www.mono-project.com/).
+- Ha Linux/MacOS rendszert használ, akkor az alkalmazás a [mono](https://www.mono-project.com/)használatával futtatható.
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új C# konzol megoldást a Visual Studióban. Ezután adja hozzá a következő névtereket a fő kódfájlhoz.
+1. hozzon létre C# egy új konzolos megoldást a Visual Studióban. Ezután adja hozzá a következő névtereket a fő kódfájlhoz.
     
     ```csharp
     using Newtonsoft.Json;
@@ -50,7 +50,7 @@ Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgál
     using System.Text;
     ```
 
-2. Hozzon létre egy új osztályt, és adja hozzá az API-végpont, az előfizetési kulcs és a keresett lekérdezés változókat.
+2. Hozzon létre egy új osztályt, és adjon hozzá változókat az API-végponthoz, az előfizetési kulcshoz és a keresett lekérdezéshez.
 
     ```csharp
     namespace EntitySearchSample
@@ -71,13 +71,13 @@ Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgál
     }
     ```
 
-## <a name="send-a-request-and-get-the-api-response"></a>Egy kérelem küldése, és az API-válasz lekérése
+## <a name="send-a-request-and-get-the-api-response"></a>Kérelem küldése és az API-válasz beszerzése
 
-1. Az osztályon belül hozzon létre egy függvényt, nevű `Search()`. Hozzon létre egy új `HttpClient` objektumot, és adja hozzá az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc.
+1. Hozzon létre egy nevű `Search()`függvényt a osztályon belül. Hozzon létre `HttpClient` egy új objektumot, és adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
-   1. A gazdagép és az elérési út egyesítésével hozhatnak létre a kérés URI Azonosítóját. Majd adja hozzá a piaci, és URL-kódolása a lekérdezést.
-   2. Await `client.GetAsync()` és a egy HTTP-válaszának lekérdezése majd tárolni a json-választ vár `ReadAsStringAsync()`.
-   3. A JSON-karakterláncot formázni `JsonConvert.DeserializeObject()` és kinyomtathatja a konzolhoz.
+   1. Hozza létre a kérelem URI-JÁT a gazdagép és az elérési út kombinálásával. Ezután adja hozzá a piacot és URL-címet – kódolja a lekérdezést.
+   2. Várja `client.GetAsync()` meg a http-válasz beszerzését, majd a `ReadAsStringAsync()`várakozással tárolja a JSON-választ.
+   3. Formázza a JSON `JsonConvert.DeserializeObject()` -karakterláncot, és nyomtassa ki a konzolra.
 
       ```csharp
       async static void Search()
@@ -96,7 +96,7 @@ Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgál
       }
       ```
 
-2. Az alkalmazás fő metódust, hívja a `Search()` függvény.
+2. Az alkalmazás fő metódusában hívja meg a `Search()` függvényt.
     
     ```csharp
     static void Main(string[] args)
@@ -107,7 +107,7 @@ Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgál
     ```
 
 
-## <a name="example-json-response"></a>Példa JSON-válasz
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -175,7 +175,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas webes alkalmazás készítése](../tutorial-bing-entities-search-single-page-app.md)
+> [Egyoldalas Webalkalmazás létrehozása](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Mi az a Bing Entity Search API?](../overview.md )
-* [A Bing Entity Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Mi a Bing Entity Search API?](../overview.md )
+* [Bing Entity Search API referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

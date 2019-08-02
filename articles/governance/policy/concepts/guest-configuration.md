@@ -1,5 +1,5 @@
 ---
-title: Megismerheti a tartalmát, a virtuális gépek naplózása
+title: A virtuális gép tartalmának naplózása
 description: Ismerje meg, hogyan Azure Policy segítségével Vendég konfigurációs naplózási beállítások egy Azure virtuális gépen belül.
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: c79a4907e277c337509bd362653cfb100c4bd39c
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 74e36d944450e1ce2c61481b2cb7e345860212af
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137440"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326886"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy Vendég konfiguráció ismertetése
 
-Naplózás mellett és [szervizelés](../how-to/remediate-resources.md) is, a naplózási beállítások egy virtuális gépen az Azure-erőforrások, az Azure Policy. A Vendég Configuration bővítmény és az ügyfél az érvényesítést végzi. A bővítményt, az ügyfélen, érvényesíti a konfigurációt az operációs rendszer, alkalmazás-konfigurációs vagy jelenléte, környezeti beállítások és beállításait.
+Az Azure-erőforrások naplózása és [szervizelését](../how-to/remediate-resources.md) mellett Azure Policy a virtuális gépen belül is naplózhatja a beállításokat. A Vendég Configuration bővítmény és az ügyfél az érvényesítést végzi. A bővítményt, az ügyfélen, érvényesíti a konfigurációt az operációs rendszer, alkalmazás-konfigurációs vagy jelenléte, környezeti beállítások és beállításait.
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
@@ -27,7 +27,7 @@ A naplózási beállítások egy virtuális gépen egy [virtuálisgép-bővítm�
 
 ### <a name="register-guest-configuration-resource-provider"></a>Vendég-konfigurációs erőforrás-szolgáltató regisztrálása
 
-Vendég-konfiguráció használata előtt regisztrálnia kell az erőforrás-szolgáltató. A portálon keresztül vagy a Powershellen keresztül lehet regisztrálni. Az erőforrás-szolgáltató automatikusan regisztrálva van, ha a Vendég-konfigurációs szabályzat hozzárendelése a portálon keresztül történik.
+Vendég-konfiguráció használata előtt regisztrálnia kell az erőforrás-szolgáltató. A portálon keresztül vagy a Powershellen keresztül lehet regisztrálni. Az erőforrás-szolgáltató automatikusan regisztrálva van, ha a vendég konfigurációs szabályzatának hozzárendelése a portálon történik.
 
 #### <a name="registration---portal"></a>Regisztráció – portál
 
@@ -63,7 +63,7 @@ Az alábbi táblázat az egyes támogatott operációs rendszeren használja a h
 
 ### <a name="validation-frequency"></a>Ellenőrzés gyakorisága
 
-Új tartalom 5 percenként ellenőrzi a Vendég konfigurációs ügyfél. Miután egy Vendég-hozzárendelés érkezik, a beállításokat egy 15 perces időközönként ellenőrzi. Eredmények küldése a Vendég-konfigurációs erőforrás-szolgáltató, amint az ellenőrzés befejeződött. Ha egy szabályzat [értékelési eseményindító](../how-to/get-compliance-data.md#evaluation-triggers) történik, a számítógép állapotának írása a Vendég-konfigurációs erőforrás-szolgáltató. Ennek hatására az Azure Policy az Azure Resource Manager-tulajdonságok kiértékelése. Egy igény szerinti Azure szabályzat-kiértékelés átveszi a Vendég-konfigurációs erőforrás-szolgáltató a legújabb értékeket. Azonban ez nem következik be egy új naplózási a konfiguráció a virtuális gépen.
+A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-hozzárendelés fogadása után a rendszer 15 percenként ellenőrzi a beállításokat. A rendszer a naplózás befejeződése után azonnal elküldi az eredményeket a vendég konfiguráció erőforrás-szolgáltatójának. A szabályzatok [](../how-to/get-compliance-data.md#evaluation-triggers) kiértékelésének bekövetkeztekor a számítógép állapota a vendég konfiguráció erőforrás-szolgáltatóba íródik. Ennek hatására a Azure Policy kiértékeli a Azure Resource Manager tulajdonságait. Az igény szerinti Azure Policy kiértékelése a vendég konfiguráció erőforrás-szolgáltató legújabb értékét kérdezi le. Azonban nem indítja el a virtuális gépen belüli konfiguráció új naplózását.
 
 ### <a name="supported-client-types"></a>Támogatott ügyfél típusú
 
@@ -73,31 +73,31 @@ Az alábbi táblázat az Azure-rendszerképek támogatott operációs rendszerek
 |-|-|-|
 |Canonical|Ubuntu Server|14.04-es, 16.04, 18.04|
 |credativ|Debian|8, 9|
-|Microsoft|Windows Server|2012 Datacenterhez, a 2012 R2 Datacenter, a 2016 Datacenter, a 2019 adatközpont|
+|Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
 |Microsoft|Windows-ügyfél|Windows 10|
 |OpenLogic|CentOS|7.3, 7.4, 7.5|
 |Red Hat|Red Hat Enterprise Linux|7.4, 7.5|
 |SUSE|SLES|12 SP3|
 
 > [!IMPORTANT]
-> Vendég konfigurációs van egy támogatott operációs rendszert futtató csomópontok naplózására. Ha szeretné egy egyéni rendszerképet használó virtuális gépek naplózása, szeretné-e ismétlődő a **DeployIfNotExists** definíció és módosíthatja a **Ha** című szakaszt a lemezkép tulajdonságai.
+> A vendég konfigurációja képes a támogatott operációs rendszert futtató csomópontok naplózására. Ha egyéni rendszerképet használó virtuális gépeket szeretne naplózni, duplikálnia kell a **DeployIfNotExists** -definíciót, és módosítania kell az **IF** szakaszt a rendszerkép tulajdonságainak belefoglalásához.
 
 ### <a name="unsupported-client-types"></a>Nem támogatott ügyfélalkalmazás típusa
 
-A Windows Server Nano Server bármelyik verziója nem támogatott.
+A Windows Server Nano Server semmilyen verzióban nem támogatott.
 
-### <a name="guest-configuration-extension-network-requirements"></a>Vendég Configuration bővítmény hálózati követelmények
+### <a name="guest-configuration-extension-network-requirements"></a>A vendég konfigurációs bővítmény hálózati követelményei
 
-Az Azure-ban a Vendég-konfigurációs erőforrás-szolgáltató kommunikálni, virtuális gépeknél szükség van az Azure-adatközpontok porton a kimenő hozzáférést **443-as**. Ha egy privát virtuális hálózatot használ, az Azure-ban, és nem engedélyezi a kimenő forgalom, kivételeket kell konfigurálnia [hálózati biztonsági csoport](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) szabályokat. Jelenleg a szolgáltatás címke az Azure Vendég Szabályzatkonfiguráció nem létezik.
+Az Azure-beli vendég-konfigurációs erőforrás-szolgáltatóval való kommunikációhoz a virtuális gépeknek kimenő hozzáférésre van szükségük az Azure-adatközpontokhoz az **443**-as porton Ha az Azure-ban privát virtuális hálózatot használ, és nem engedélyezi a kimenő forgalmat, a kivételeket a [hálózati biztonsági csoport](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) szabályainak megfelelően kell konfigurálni. Jelenleg nem létezik szolgáltatási címke Azure Policy vendég konfigurációhoz.
 
-IP-cím listák, letöltheti [a Microsoft Azure adatközpont IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653). Ez a fájl hetente frissül, és a jelenleg üzembe helyezett tartományokat és minden jövőbeni változtatásokról, az IP tartományokat. Csak kell az IP-címek a régióban, a virtuális gépek telepítve vannak-e kimenő hozzáférésének engedélyezéséhez.
+Az IP-címlisták esetében letöltheti [Microsoft Azure adatközpont IP-tartományait](https://www.microsoft.com/download/details.aspx?id=41653). A fájl hetente frissül, és a jelenleg üzembe helyezett tartományokat és az IP-címtartományok közelgő változásait tartalmazza. Csak a virtuális gépeket üzembe helyező régiókban lévő IP-címekhez kell engedélyeznie a kimenő hozzáférést.
 
 > [!NOTE]
-> Az Azure Datacenter IP-cím XML-fájlt a Microsoft Azure-adatközpontok az által használt IP-címtartományok listája. A fájl a compute, SQL és storage tartományokat tartalmaz. A frissített hetente tesznek közzé. A fájl a jelenleg üzembe helyezett tartományokat és minden jövőbeni változtatásokról, az IP tartományokat tükrözi. A fájlban megjelenő új tartományokat legalább egy hétig nem használják az adatközpontokban. Célszerű letölteni az új XML-fájlt minden héten. Ezután frissítse a helyet, hogy helyesen azonosítsa az Azure-ban futó szolgáltatásokat. Az Azure ExpressRoute-felhasználók vegye figyelembe, hogy ez a fájl minden hónap első hetében Azure címterületek a Border Gateway Protocol (BGP) hirdetés frissítésére használatos.
+> Az Azure Datacenter IP-cím XML-fájlja felsorolja az Microsoft Azure adatközpontokban használt IP-címtartományt. A fájl a számítási, az SQL-és a tárolási tartományokat tartalmazza. A frissített fájlok hetente kerülnek közzétételre. A fájl a jelenleg telepített tartományokat és az IP-címtartományok közelgő változásait tükrözi. A fájlban megjelenő új tartományok legalább egy hétig nem használhatók az adatközpontokban. Érdemes minden héten letölteni az új XML-fájlt. Ezután frissítse a webhelyet az Azure-ban futó szolgáltatások megfelelő azonosításához. Az Azure ExpressRoute felhasználói számára fontos megjegyezni, hogy ez a fájl az Azure Space Border Gateway Protocol (BGP) hirdetményének frissítésére szolgál minden hónap első hetében.
 
 ## <a name="guest-configuration-definition-requirements"></a>Vendég konfigurációkra definíciója
 
-Minden egyes naplózási Vendég konfiguráció futtatása szükséges két szabályzatdefiníció egy **DeployIfNotExists** definíció és a egy **naplózási** definíciója. A **DeployIfNotExists** meghatározása a virtuális gép előkészítése a Vendég konfigurációs ügynök és a más összetevőkkel támogatására szolgál a [érvényesítési eszközök](#validation-tools).
+Minden vendég konfigurációhoz tartozó naplózási szolgáltatásnak két házirend-definícióra, egy **DeployIfNotExists** -definícióra és egy **naplózási** definícióra van szüksége. A **DeployIfNotExists** definíciója a virtuális gép és a vendég konfigurációs ügynök és más összetevők előkészítésére szolgál az [ellenőrzési eszközök](#validation-tools)támogatásához.
 
 A **DeployIfNotExists** szabályzatdefiníció ellenőrzi és javítja a következő elemek:
 
@@ -106,42 +106,46 @@ A **DeployIfNotExists** szabályzatdefiníció ellenőrzi és javítja a követk
   - A legújabb verziójának telepítése a **Microsoft.GuestConfiguration** bővítmény
   - Telepítés [érvényesítési eszközök](#validation-tools) és függőségei, szükség esetén
 
-Ha a **DeployIfNotExists** hozzárendelés egy nem megfelelő, egy [javítási feladat](../how-to/remediate-resources.md#create-a-remediation-task) is használható.
+Ha a **DeployIfNotExists** -hozzárendelés nem megfelelő, akkor a rendszer [szervizelési feladatot](../how-to/remediate-resources.md#create-a-remediation-task) is felhasználhat.
 
-Miután a **DeployIfNotExists** hozzárendelés egy megfelelő, a **naplózási** szabályzat-hozzárendelés a helyi érvényesítés eszközök segítségével határozza meg, ha a konfiguráció hozzárendelés-e a megfelelő vagy nem megfelelő.
+Ha a **DeployIfNotExists** -hozzárendelés megfelelő, a **naplózási** házirend-hozzárendelés a helyi ellenőrzési eszközök használatával határozza meg, hogy a konfigurációs hozzárendelés megfelelő vagy nem megfelelő-e.
 A fürtérvényesítési eszköz biztosít a Vendég konfigurációs ügyfél az eredményeket. Az ügyfél a Vendég a bővítmény elérhetővé teszi azokat a Vendég-konfigurációs erőforrás-szolgáltatón keresztül továbbítja az eredményeket.
 
 Az Azure Policy használja a Vendég-konfigurációs erőforrás-szolgáltatók **complianceStatus** való megfelelőség jelentéséhez a tulajdonság a **megfelelőségi** csomópont. További információkért lásd: [megfelelőségi adatok](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
-> A **DeployIfNotExists** házirend szükség a **naplózási** házirend eredményeinek visszaadása.
-> Nélkül a **DeployIfNotExists**, a **naplózási** házirend jeleníti meg a "0-0" erőforrásokhoz, mint az állapot.
+> A naplózási házirendnek az eredmények **** visszaküldéséhez a **DeployIfNotExists** szabályzat szükséges.
+> A **DeployIfNotExists**nélkül a **naplózási** házirend a "0/0" erőforrást jeleníti meg állapotként.
 
-Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A beépített kezdeményezés nevű *[előzetes verzió]: Naplózási jelszó biztonsági beállítások a Linux és Windows virtuális gépeken belül* 18 szabályzatokat tartalmaz. Hat **DeployIfNotExists** és **naplózási** Windows és Linux-három pár párokat. Minden esetben a logika belül a definíció érvényesíti csak a cél operációs rendszer alapján értékeli ki a [felügyeletiházirend-szabálya](definition-structure.md#policy-rule) definíciója.
+Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A [Preview] nevű *beépített kezdeményezés: A jelszó biztonsági beállításainak naplózása Linux és Windows rendszerű virtuális gépeken* 18 szabályzatot tartalmaz. Hat **DeployIfNotExists** és naplózási **** pár van a Windowshoz és három pár a Linux rendszerhez. Minden esetben a logika belül a definíció érvényesíti csak a cél operációs rendszer alapján értékeli ki a [felügyeletiházirend-szabálya](definition-structure.md#policy-rule) definíciója.
 
-## <a name="client-log-files"></a>Ügyfelek naplófájljai
+## <a name="multiple-assignments"></a>Több hozzárendelés
 
-A Vendég Configuration bővítmény írja a naplófájlokat a következő helyekre:
+A vendég-konfigurációs házirendek jelenleg csak egyszer támogatják ugyanazt a vendég-hozzárendelést virtuális gépenként, még akkor is, ha a házirend-hozzárendelés eltérő paramétereket használ.
+
+## <a name="client-log-files"></a>Ügyfél naplófájljai
+
+A vendég konfigurációs bővítmény naplófájlokat ír a következő helyszínekre:
 
 Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\<version>\dsc\logs\dsc.log`
 
 Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
-Ahol `<version>` a jelenlegi verziószám hivatkozik.
+Ahol `<version>` az aktuális verziószámra hivatkozik.
 
-## <a name="guest-configuration-samples"></a>Vendég-konfigurációs minták
+## <a name="guest-configuration-samples"></a>Vendég konfigurációs minták
 
-Vendég Szabályzatkonfiguráció-minták az alábbi helyeken érhetők el:
+A házirend vendég konfigurációjának mintái a következő helyszíneken érhetők el:
 
-- [A minták index - Vendég-konfiguráció](../samples/index.md#guest-configuration)
-- [Az Azure Policy-minták GitHub-adattárat](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration).
+- [Minták indexe – vendég konfigurációja](../samples/index.md#guest-configuration)
+- [Azure Policy minták GitHub](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)-tárháza.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át a következő példák [Azure Policy minták](../samples/index.md).
+- Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](effects.md).
-- Megismerheti, hogyan [szabályzatok létrehozása programozott módon](../how-to/programmatically-create.md).
-- Ismerje meg, hogyan [megfelelőségi adatok](../how-to/getting-compliance-data.md).
-- Ismerje meg, hogyan [javítani a nem megfelelő erőforrások](../how-to/remediate-resources.md).
-- Tekintse át a felügyeleti csoport van [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../../management-groups/index.md).
+- Megtudhatja, hogyan [hozhat létre programozott](../how-to/programmatically-create.md)módon házirendeket.
+- Ismerje meg, hogyan kérheti le a [megfelelőségi információkat](../how-to/getting-compliance-data.md).
+- Ismerje meg, hogyan javíthatja a [nem megfelelő erőforrásokat](../how-to/remediate-resources.md).
+- Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/index.md).

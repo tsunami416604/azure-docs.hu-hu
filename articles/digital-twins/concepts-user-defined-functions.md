@@ -1,52 +1,52 @@
 ---
-title: Adatfeldolgozás és a felhasználó által definiált függvények az Azure digitális Twins |} A Microsoft Docs
-description: Adatok feldolgozása matchers és felhasználó által definiált függvények az Azure digitális Twins áttekintése.
+title: Adatfeldolgozási és felhasználó által definiált függvények az Azure Digital Twins szolgáltatással | Microsoft Docs
+description: Az Azure Digital Twins adatfeldolgozási,-egyeztető és felhasználó által definiált függvények áttekintése.
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 07/29/2019
 ms.author: alinast
-ms.openlocfilehash: 4db515a931bc7f423eb11ae31b7304a602f0da46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4aa7e6660e3febdca6e0e5b1ad9f11bebaa48ea
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60925873"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638460"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Adatfeldolgozás és felhasználó által definiált függvények
 
-Az Azure digitális Twins fejlett számítási képességeket kínál. A fejlesztők definiálása és felhasználói függvények beérkező telemetriai üzeneteket küldhet eseményeket előre definiált végpontjainak futtatásához.
+Az Azure Digital Twins speciális számítási funkciókat kínál. A fejlesztők egyéni függvényeket adhatnak meg és futtathatnak a bejövő telemetria üzenetekben az események előre meghatározott végpontokra való küldéséhez.
 
 ## <a name="data-processing-flow"></a>Adatfeldolgozási folyamat
 
-Eszközök telemetriai adatokat küldeni az Azure digitális Twins, miután a fejlesztők hatékonyabbá tételéhez négy fázisban a adatokat tud feldolgozni: *ellenőrzése*, *megfelelő*, *számítási*, és *küldése* .
+Miután az eszközök telemetria-adatok küldését az Azure digitális Twinsba, a fejlesztők négy fázisban dolgozhatnak fel adatokkal: *Érvényesítés*, *egyezés*, *számítás*és *Küldés*.
 
-![Az Azure digitális Twins adatfeldolgozási folyamat][1]
+![Azure digitális ikrek adatfeldolgozási folyamata][1]
 
-1. Az érvényesítés fázis átalakítja a beérkező telemetriai üzenetet egy közérthető [adatátviteli objektumot](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) formátumban. Ebben a fázisban az eszközök és érzékelők érvényesítési is végez.
-1. A match fázis megkeresi a megfelelő felhasználó által definiált függvények futtatását. Előre definiált matchers keresse meg a felhasználó által definiált függvények, az eszköz-, érzékelő és a bejövő telemetriát üzenet terület adatai alapján.
-1. A számítási fázis fut, a felhasználó által definiált függvények egyezik az előző szakaszban. Ezek a függvények előfordulhat, hogy olvassa el, és a térbeli számított értékek frissítése graph-csomópontok és egyéni értesítések kibocsátható.
-1. A feladó fázis bármely egyéni értesítéseket állíthat be a számítási fázis, a gráf meghatározva a végpontjai irányítja.
+1. Az érvényesítési fázis átalakítja a bejövő telemetria üzenetet egy gyakran értelmezhető [adatátviteli objektum](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) formátumára. Ez a fázis az eszköz-és érzékelő érvényesítését is végrehajtja.
+1. Az egyeztetési fázis megkeresi a megfelelő, felhasználó által definiált függvényeket a futtatáshoz. Az előre definiált egyeztetések a felhasználó által definiált függvényeket a bejövő telemetria üzenetből származó eszköz, az érzékelő és a lemezterület adatai alapján megtalálják.
+1. A számítási fázis a felhasználó által definiált függvényeket futtatja az előző fázisban. Ezek a függvények elolvashatják és frissíthetik a kiszámított értékeket a térbeli gráf csomópontjain, és egyéni értesítéseket hozhatnak létre.
+1. A küldő fázis a számítási fázisból származó összes egyéni értesítést átirányítja a gráfban definiált végpontokra.
 
-## <a name="data-processing-objects"></a>Adatok feldolgozása objektumok
+## <a name="data-processing-objects"></a>Adatfeldolgozási objektumok
 
-Adatfeldolgozás az Azure digitális Twins áll három objektum meghatározása: *matchers*, *felhasználó által definiált függvények*, és *szerepkör-hozzárendelések*.
+Az Azure Digital Twins adatfeldolgozása három objektumot határoz meg:a megfeleltetéseket, a *felhasználó által definiált függvényeket*és a *szerepkör*-hozzárendeléseket.
 
-![Az Azure digitális Twins adatfeldolgozási objektumok][2]
+![Azure digitális Twins adatfeldolgozási objektumok][2]
 
 <div id="matcher"></div>
 
-### <a name="matchers"></a>Matchers
+### <a name="matchers"></a>Egyezők
 
-Matchers meghatároz egy olyan feltételek, amelyek kiértékelik a milyen műveletek végrehajtása a bejövő érzékelő telemetriai adatai alapján történik. Az egyezés meghatározásához feltételek az érzékelő, a érzékelő szülő eszköz és az érzékelő szülő hely tulajdonságai tartalmazhatnak. A feltételek fejezik összehasonlítások elleni egy [JSON-útvonal](https://jsonpath.com/) ebben a példában látható módon:
+Az egyeztetések olyan feltételeket határoznak meg, amelyek kiértékelik, hogy milyen műveleteket kell végrehajtani a bejövő érzékelők telemetria alapján. A egyezés meghatározására szolgáló feltételek tartalmazhatják az érzékelő, az érzékelő szülő eszköze és az érzékelő fölérendelt területének tulajdonságait is. A feltételek a [JSON-útvonal](https://jsonpath.com/) összehasonlításával vannak megadva, az alábbi példában látható módon:
 
-- Az adattípus az összes érzékelő **hőmérséklet** képviseli az escape-karakterrel megjelölt karakterlánc értéke `\"Temperature\"`
-- Kellene `01` azok port
-- A kiterjesztett tulajdonság kulccsal amely tartozó eszközök **gyártó** escape-karakterrel megjelölt karakterlánc értékre `\"GoodCorp\"`
-- Ami az escape-karakterrel megjelölt karakterlánc által meghatározott típusú tárolóhelyek tartozik `\"Venue\"`
-- Amely leszármazottai szülő **SpaceId** `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
+- Az összes olyan adattípusi **hőmérséklet** -érzékelő, amelyet az Escape-karakterlánc értéke képvisel`\"Temperature\"`
+- A `01` portján belül
+- A kibővített tulajdonságot **gyártó** eszközökhöz tartozó, az Escape-karakterlánc értékére beállított`\"GoodCorp\"`
+- Az Escape-karakterlánc által megadott típusú szóközökhöz tartozik`\"Venue\"`
+- A szülő **SpaceId** leszármazottai`DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
 
 ```JSON
 {
@@ -83,48 +83,48 @@ Matchers meghatároz egy olyan feltételek, amelyek kiértékelik a milyen műve
 ```
 
 > [!IMPORTANT]
-> - JSON-útvonalakat használ a kis-és nagybetűket.
-> - A JSON-adattartalom megegyezik a által visszaadott hasznos:
->   - `/sensors/{id}?includes=properties,types` az érzékelő.
->   - `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes` az érzékelő szülő eszközhöz.
->   - `/spaces/{id}?includes=properties,types,location,timezone` az érzékelő szülő terület.
-> - A-összehasonlítások megkülönböztetik a kis-és nagybetűket.
+> - A JSON-elérési utak kis-és nagybetűk.
+> - A JSON-adattartalom megegyezik a által visszaadott adattartalommal:
+>   - `/sensors/{id}?includes=properties,types`az érzékelőhöz.
+>   - `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes`az érzékelő fölérendelt eszköze számára.
+>   - `/spaces/{id}?includes=properties,types,location,timezone`az érzékelő fölérendelt területéhez.
+> - Az összehasonlítás a kis-és nagybetűk megkülönböztetése.
 
-### <a name="user-defined-functions"></a>Felhasználó által definiált függvények
+### <a name="user-defined-functions"></a>Felhasználó által meghatározott függvények
 
-Egy felhasználó által definiált függvény nem egy egyéni függvény végrehajtása egy elkülönített Azure digitális Twins környezeten belül. Felhasználó által definiált függvények lehet nyers érzékelő telemetriai üzenetet a hozzáférést kapott beolvasása. Felhasználó által definiált függvények a térbeli graph és az eseményelosztóra szolgáltatáshoz való hozzáférést is. Miután a felhasználó által definiált függvény regisztrálva van az a graph-megfeleltetőben megadott (részletes [fent](#matcher)) kell létrehozni, adja meg a függvény végrehajtása esetén. Például amikor az Azure digitális Twins új telemetriai kap egy adott érzékelő, a felhasználó által definiált fügvényimport kiszámíthatja az elmúlt néhány érzékelőinek mozgóátlagát.
+A felhasználó által definiált függvény egy elszigetelt Azure digitális Twins-környezetben végrehajtott egyéni függvény. A felhasználó által definiált függvények hozzáférhetnek a nyers érzékelő telemetria-üzeneteihez, amint az beérkezett. A felhasználó által definiált függvények hozzáférhetnek a térbeli gráfhoz és a diszpécser szolgáltatáshoz is. A felhasználó által definiált függvény egy gráfon belüli regisztrálása után létre kell hozni egy Matcher ( [fent](#matcher)részletezett), hogy meg lehessen adni a függvény végrehajtásának időpontját. Ha például az Azure Digital Twins új telemetria kap egy adott érzékelőből, az egyeztetett felhasználó által definiált függvény az utolsó néhány érzékelő beolvasásának mozgóátlagát is kiszámíthatja.
 
-Felhasználó által definiált függvények használata Javascriptben csak írható. Segédmetódusokat jelölőnégyzettel kapcsolható be a felhasználó által definiált végrehajtási környezetben dolgozhat. A fejlesztők hajthat végre egyéni kódrészleteket érzékelő telemetriai üzeneteket programozhat. Példák erre vonatkozóan:
+A felhasználó által definiált függvények a JavaScriptben is megírhatók. A segítő módszerek a felhasználó által definiált végrehajtási környezetben működnek a gráfmal. A fejlesztők egyéni kódrészleteket futtathatnak az érzékelő telemetria üzeneteiben. Példák erre vonatkozóan:
 
-- Állítsa be az érzékelő közvetlenül az alakzatot a diagramon belül az érzékelő objektum olvasása.
-- Egy műveletet a Graph-címtéren belüli különböző érzékelőinek alapján.
-- Hozzon létre egy értesítést, ha bizonyos feltételek teljesülnek, egy bejövő érzékelő olvasása.
-- Graph-metaadatok csatolása az érzékelő olvasása előtt értesítés küldésére.
+- Állítsa az érzékelőt közvetlenül az érzékelő objektumra a gráfon belül.
+- Hajtson végre egy műveletet a diagramon belül a különböző szenzorok beolvasása alapján.
+- Értesítés létrehozása, ha bizonyos feltételek teljesülnek egy bejövő érzékelő olvasásakor.
+- Csatolja a Graph-metaadatokat az érzékelő olvasásához, mielőtt elküld egy értesítést.
 
-További információkért lásd: [felhasználó által definiált függvények használata](./how-to-user-defined-functions.md).
+További információ: [a felhasználó által definiált függvények használata](./how-to-user-defined-functions.md).
 
 
 #### <a name="examples"></a>Példák
 
-A [GitHub-adattárat a digitális Twins a C# minta](https://github.com/Azure-Samples/digital-twins-samples-csharp/) tartalmaz néhány példát a felhasználó által definiált függvények:
-- [Ez a függvény](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) szén-dioxid-mozgásban lévő adatoknak egyaránt és hőmérsékleti értékek meghatározásához a szoba elérhető-e ezekkel az értékekkel tartományban keresi. A [digitális Twins számára oktatóanyagokkal](tutorial-facilities-udf.md) ismerje meg a függvény a további részleteket. 
-- [Ez a függvény](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) több mozgásban lévő adatoknak egyaránt érzékelőadatok keres adatokat, és megállapítja, hogy a hely érhető el, ha bármely mozgásfelismerés egyiket sem. A felhasználó által definiált függvény vagy a használt egyszerűen lecserélheti a [a rövid útmutató](quickstart-view-occupancy-dotnet.md), vagy a [oktatóanyagok](tutorial-facilities-setup.md), azáltal, hogy a módosítások a fájl a Megjegyzések szakaszban említett. 
+A [digitális Twins C# minta GitHub](https://github.com/Azure-Samples/digital-twins-samples-csharp/) -tárháza néhány példát tartalmaz a felhasználó által definiált függvényekre:
+- [Ez a függvény](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) a szén-dioxid, a mozgás és a hőmérséklet értékeit keresi annak megállapítására, hogy a helyiség elérhető-e a tartományon belül ezekkel az értékekkel. A [digitális ikrek számára készült oktatóanyagok](tutorial-facilities-udf.md) részletesebben ismertetik ezt a funkciót. 
+- [Ez a függvény](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) több mozgásérzékelőből származó adatra keres, és meghatározza, hogy a szabad terület elérhető-e, ha egyik sem észleli a mozgást. Egyszerűen lecserélheti a gyors útmutatóban vagy az [oktatóanyagokban](tutorial-facilities-setup.md)használt [](quickstart-view-occupancy-dotnet.md)felhasználó által definiált függvényt, ha a fájl megjegyzések szakaszában megemlített módosításokat végez. 
 
 
 
-### <a name="role-assignment"></a>Szerepkör-kijelölés
+### <a name="role-assignment"></a>Szerepkör-hozzárendelés
 
-Egy felhasználó által definiált függvény műveletek vonatkoznak rá az Azure digitális Twins [szerepköralapú hozzáférés-vezérlés](./security-role-based-access-control.md) a szolgáltatáson belül az adatok védelmét. Szerepkör-hozzárendelések határozza meg, mely felhasználó által definiált függvények rendelkezik megfelelő engedélyekkel a térbeli graph és entitásai kommunikál. Például előfordulhat, hogy rendelkezik egy felhasználó által definiált függvény képességét és engedélyt *létrehozás*, *OLVASÁSI*, *frissítés*, vagy *törlése* graph-adatok a megadott hely. Egy felhasználó által definiált függvény hozzáférési szintet be van jelölve, amikor az adatok a graph kéri a felhasználó által definiált függvény vagy a művelet megkísérli. További információkért lásd: [szerepköralapú hozzáférés-vezérlés](./security-create-manage-role-assignments.md).
+A felhasználó által definiált függvény műveletei az Azure Digital Twins [szerepköralapú hozzáférés-vezérlése](./security-role-based-access-control.md) alá esnek, hogy a szolgáltatáson belül is biztonságossá tegye az adataikat. A szerepkör-hozzárendelések meghatározzák, hogy mely felhasználó által definiált függvények rendelkeznek a megfelelő engedélyekkel a térbeli gráf és az entitások használatához. Előfordulhat például, hogy egy felhasználó által definiált függvénynek lehetősége van arra, hogy egy adott lemezterület alapján *hozzon létre*, *Olvasson*, *frissítsen*vagy *töröljön* egy gráf-adattípust. A felhasználó által definiált függvény hozzáférési szintje akkor van bejelölve, ha a felhasználó által definiált függvény megkéri a diagramot az adatra, vagy megkísérli a műveletet. További információ: [szerepköralapú hozzáférés-vezérlés](./security-create-manage-role-assignments.md).
 
-A felhasználó által definiált függvény, amely nem rendelkezik szerepkör hozzárendelésekkel aktiválhat egy megfeleltetőben megadott lehetőség. Ebben az esetben a felhasználó által definiált függvény nem tud beolvasni adatokat a diagramon.
+Lehetséges, hogy egy Matcher olyan felhasználó által definiált függvényt aktivál, amely nem rendelkezik szerepkör-hozzárendeléssel. Ebben az esetben a felhasználó által definiált függvény nem tudja beolvasni a gráfból származó összes adatát.
 
 ## <a name="next-steps"></a>További lépések
 
-- Események és a telemetriai üzeneteket átirányítása más Azure-szolgáltatásokkal kapcsolatos további tudnivalókért olvassa el [irányíthatja az események és az üzenetek](./concepts-events-routing.md).
+- Ha többet szeretne megtudni arról, hogyan irányíthatja az eseményeket és telemetria üzeneteket más Azure-szolgáltatásoknak, olvassa el az [útválasztási eseményeket és üzeneteket](./concepts-events-routing.md).
 
-- Matchers, a felhasználó által definiált függvények és a szerepkör-hozzárendelések létrehozásával kapcsolatos további tudnivalókért olvassa el a [útmutató a felhasználó által definiált függvények](./how-to-user-defined-functions.md).
+- Ha szeretne többet megtudni a megfeleltetések, a felhasználó által definiált függvények és a szerepkör-hozzárendelések létrehozásáról, olvassa el a következő témakört [: útmutató a felhasználó által definiált függvények használatához](./how-to-user-defined-functions.md).
 
-- Tekintse át a [felhasználó által definiált függvény ügyféloldali kódtár dokumentációja](./reference-user-defined-functions-client-library.md).
+- Tekintse át a [felhasználó által definiált ügyféloldali függvénytár](./reference-user-defined-functions-client-library.md)-referenciát ismertető dokumentációt.
 
 <!-- Images -->
 [1]: media/concepts/digital-twins-data-processing-flow.png

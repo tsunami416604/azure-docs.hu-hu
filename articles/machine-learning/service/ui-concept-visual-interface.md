@@ -1,7 +1,7 @@
 ---
 title: Vizuális felület
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg a feltételeket, fogalmak és a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás alkotó munkafolyamat.
+description: Ismerje meg a Azure Machine Learning szolgáltatás vizualizációs felületét (előnézet) alkotó feltételeket, fogalmakat és munkafolyamatokat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,72 +9,71 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: be07e0f3438ea93312d4eb440e7e63b8f98e11b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1cb56386f52d1c7b1ec357b912c648c1961b4c1d
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077381"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677992"
 ---
-# <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás a vizuális felhasználói felületet? 
+# <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Mi a Azure Machine Learning szolgáltatás vizuális felülete? 
 
-Az Azure Machine Learning szolgáltatás párbeszédhez (előzetes verzió) segítségével előkészítheti az adatokat, betanítását, teszteléséhez, üzembe helyezése, kezelése és nyomon követheti a machine learning-modellek kód írása nélkül is.
+A Azure Machine Learning szolgáltatás vizuális felülete (előzetes verzió) lehetővé teszi a gépi tanulási modellek előkészítését, használatát, tesztelését, üzembe helyezését, kezelését és nyomon követését programkód írása nélkül.
 
-Nincs szükség programozásra van, vizuálisan csatlakozás [adatkészletek](#dataset) és [modulok](#module) a modell létrehozásához.
+Nincs szükség programozásra, vizuálisan összekapcsolhatók az adatkészletek és [modulok](#module) a modell létrehozásához. [](#dataset)
 
-A vizuális felhasználói felületet használja az Azure Machine Learning szolgáltatás [munkaterület](concept-workspace.md) való:
+A vizuális felület a Azure Machine Learning szolgáltatás munkaterületét használja a következőhöz: [](concept-workspace.md)
 
-+ Az összetevők írási [kísérletezhet](#experiment) futtatja a munkaterületre.
-+ Hozzáférés [adatkészletek](#dataset).
-+ Használja a [számítási erőforrások](#compute) futtathatja a kísérletet a munkaterületen található. 
-+ Regisztráljon [modellek](concept-azure-machine-learning-architecture.md#models).
-+ [Üzembe helyezése](#deployment) modellek, a webszolgáltatások számítási erőforrásokat a munkaterületen.
++ Az írási összetevők a munkaterületen [futnak.](#experiment)
++ Hozzáférési [](#dataset)adatkészletek.
++ A kísérlet futtatásához használja a munkaterület [számítási erőforrásait](#compute) . 
++ [Modellek](concept-azure-machine-learning-architecture.md#models)regisztrálása.
++ A modelleket webszolgáltatásként [helyezheti üzembe](#deployment) a munkaterületen lévő számítási erőforrásokon.
 
-![A vizuális felhasználói felületet áttekintése](media/ui-concept-visual-interface/overview.png)
+![A vizuális felület áttekintése](media/ui-concept-visual-interface/overview.png)
 
 ## <a name="workflow"></a>Munkafolyamat
 
-A vizuális felhasználói felületet biztosít egy interaktív, vizuális vászonalapú gyorsan hozhatók létre, tesztelheti és ismételt futtatásával egy modellt. 
+A vizuális felület interaktív, vizualizációs vászon használatával gyorsan kiépítheti, tesztelheti és megismételheti a modelleket. 
 
-+ Fogd és vidd [modulok](#module) a vászonra.
-+ A modulok kapcsolhatja össze az űrlap egy [kísérletezhet](#experiment).
-+ Futtassa a kísérletet a Machine Learning szolgáltatás munkaterület a számítási erőforrás használatával.
-+ A modell felépítésének újrafuttathatja a kísérletet, és újra futtatni.
-+ Amikor készen áll, konvertálja a **betanítási kísérlet** , egy **prediktív kísérletté**.
-+ [Üzembe helyezése](#deployment) a prediktív kísérletté webes szolgáltatás, hogy a modell a mások által elérhető lesz.
++ A vászonra húz és húzhatja [](#module) a modulokat.
++ A modulok összekapcsolása [kísérlet](#experiment)létrehozásához.
++ Futtassa a kísérletet a Machine Learning szolgáltatás munkaterület számítási erőforrásának használatával.
++ A kísérlet szerkesztésével és újbóli futtatásával ismételje meg a modell kialakítását.
++ Ha elkészült, alakítsa át a betanítási **kísérletet** egy **prediktív kísérletbe**.
++ A prediktív kísérletet webszolgáltatásként [helyezheti üzembe](#deployment) , hogy a modell mások számára is elérhető legyen.
 
 ## <a name="experiment"></a>Kísérlet
 
-Egy kísérlet létrehozása az alapoktól, vagy egy meglévő mintakísérletet sablonként.  Kísérlet, minden egyes futtatásakor összetevők a munkaterületen tárolódnak.
+Hozzon létre egy kísérletet a semmiből, vagy használjon egy meglévő minta kísérletet sablonként.  Minden alkalommal, amikor kísérletet futtat, az összetevők a munkaterületen tárolódnak.
 
-Kísérlet az adatkészleteket és az elemzési modulok, a modell összeállításához kapcsolhatja össze áll. Az érvényes kísérletek a következő jellemzőkkel rendelkeznek:
+A kísérlet olyan adatkészleteket és analitikai modulokat tartalmaz, amelyek egy modell összeállításához kapcsolódnak. Az érvényes kísérletek a következő jellemzőkkel rendelkeznek:
 
-* Az adatkészletek csak a modulokhoz csatlakoztathatók.
-* Modulok csatlakoztathatók adathalmazokhoz és más modulok tesznek.
-* Modulok összes bemeneti portjának rendelkeznie kell valamilyen kapcsolattal az adatfolyamhoz.
-* Az összes szükséges paramétert, az egyes modulok kell beállítani.
+* Az adatkészletek csak modulokhoz csatlakoztathatók.
+* A modulok lehetnek adatkészletekhez vagy más modulokhoz csatlakoztathatók.
+* A modulok összes bemeneti portjának csatlakoznia kell az adatfolyamhoz.
+* Az egyes modulokhoz szükséges összes paramétert be kell állítani.
 
-Egyszerű kísérlet egy példa: [a rövid útmutató: Készítse elő és az adatok megjelenítése az Azure Machine Learning kódírás nélkül](ui-quickstart-run-experiment.md).
 
-Prediktív elemzési megoldások részletesebb leírását lásd: [oktatóanyag: Vizuális felhasználói felülettel autó árát előrejelzése](ui-tutorial-automobile-price-train-score.md).
+A vizuális felület megismeréséhez tekintse [meg az oktatóanyag: Az autó árának előrejelzése a vizualizációs](ui-tutorial-automobile-price-train-score.md)felületen.
 
 ## <a name="dataset"></a>Adathalmaz
 
-Az adathalmaz olyan adatok, amelyek a vizuális felhasználói felületet a modellezési folyamat során használandó lett feltöltve. Mintaadatkészletek számos megtalálhatók, kísérletezhet, és szükség esetén további adathalmazokat is feltölthet.
+Az adatkészlet olyan adatokat tartalmaz, amelyeket a rendszer feltöltött a vizualizációs felületen a modellezési folyamatban való használatra. Több minta adatkészletet is tartalmaz a kipróbáláshoz, és több adatkészletet is feltölthet, ahogy szüksége van rájuk.
 
 ## <a name="module"></a>Modul
 
-A modulok az adatokon végezhető algoritmusok. A vizuális felhasználói felületet és a bejövő forgalom adatfüggvény betanítási, pontozási és ellenőrzési folyamatokig modulok több rendelkezik.
+A modulok az adatokon végezhető algoritmusok. A vizualizációs felület számos modult tartalmaz, amelyek az adatok beáramlása függvénytől kezdve a képzésre, a pontozásra és az érvényesítési folyamatokra terjednek ki.
 
-A modul rendelkezhet a belső algoritmusok konfigurálásához használható paraméterek készletével. Amikor kiválaszt egy modult a vásznon, a modul paraméterei megjelennek a Tulajdonságok panelen a vászontól jobbra. A modell hangolásához módosíthatja a paramétereket a panelen.
+A modul rendelkezhet a belső algoritmusok konfigurálásához használható paraméterek készletével. Amikor kiválaszt egy modult a vásznon, a modul paramétereinek a vászontól jobbra látható Tulajdonságok ablaktáblán jelennek meg. A modell hangolásához módosíthatja a paramétereket a panelen.
 
-![A modul tulajdonságai](media/ui-concept-visual-interface/properties.png)
+![Modul tulajdonságai](media/ui-concept-visual-interface/properties.png)
 
-Való eligazodást segíti a rendelkezésre álló gépi tanulási algoritmusok könyvtára, lásd: [Algoritmusokra és modulokra hivatkozhat áttekintése](../algorithm-module-reference/module-reference.md)
+Ha segítségre van az elérhető gépi tanulási algoritmusok könyvtára között, tekintse meg a következő témakört: [algoritmus & modul ismertetése – áttekintés](../algorithm-module-reference/module-reference.md)
 
-## <a name="compute"></a> A számítási erőforrásokat
+## <a name="compute"></a>Számítási erőforrások
 
-A számítási erőforrásokat az munkaterületről, futtassa a kísérletet, vagy a gazdagép a telepített modellek webszolgáltatásként való használatát. A támogatott számítási célnak a következők:
+A munkaterületen lévő számítási erőforrások használatával futtathatja a kísérletet, vagy üzemeltetheti a telepített modelleket webszolgáltatásként. A támogatott számítási célnak a következők:
 
 
 | Számítási célt | Képzés | Környezet |
@@ -82,22 +81,22 @@ A számítási erőforrásokat az munkaterületről, futtassa a kísérletet, va
 | Az Azure Machine Learning compute | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-Tárolók is csatlakozik a Machine Learning COMPUTE [munkaterület](concept-workspace.md). A számítási célokhoz kezelheti a munkaterület a [az Azure portal](https://portal.azure.com).
+A számítási célok a Machine Learning munkaterülethez [](concept-workspace.md)vannak csatolva. A számítási célokat a [Azure Portal](https://portal.azure.com)munkaterületén kezelheti.
 
 ## <a name="deployment"></a>Környezet
 
-Ha készen áll a prediktív elemzési modell, akkor helyezze üzembe, közvetlenül a vizuális felhasználói felületet a webszolgáltatás.
+Miután a prediktív elemzési modell elkészült, üzembe helyezheti azt webszolgáltatásként közvetlenül a vizualizáció felületéről.
 
-A web services-alkalmazások és a pontozási modelljével közötti illesztőfelületet szolgáltasson. Egy külső alkalmazás kommunikálhat a valós idejű pontozási modelljével. Webszolgáltatás hívása visszaadják az előrejelzés eredményét a külső alkalmazásnak. A webszolgáltatások felé irányuló hívások indításához át kell adnia azt az API-kulcsot, amelyet a webszolgáltatás üzembe helyezésekor hozott létre. A webszolgáltatás a webprogramozási projektekben népszerű architektúra választott REST alapul.
+A webszolgáltatások felületet biztosítanak egy alkalmazás és a pontozási modell között. Egy külső alkalmazás valós időben tud kommunikálni a pontozási modellel. A webszolgáltatás felé irányuló hívások visszaküldik az előrejelzési eredményeket egy külső alkalmazásnak. A webszolgáltatások felé irányuló hívások indításához át kell adnia azt az API-kulcsot, amelyet a webszolgáltatás üzembe helyezésekor hozott létre. A webszolgáltatások a webes programozási projektek számára népszerű architektúrán alapulnak.
 
-Ismerje meg, hogyan helyezi üzembe a modellt, lásd: [oktatóanyag: Vizuális felhasználói felülettel, egy gépi tanulási modell üzembe helyezése](ui-tutorial-automobile-price-deploy.md).
+A modell üzembe helyezésének megismeréséhez tekintse [meg az oktatóanyag: Helyezzen üzembe egy gépi tanulási modellt a vizuális felületen](ui-tutorial-automobile-price-deploy.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* Alapismeretek a Mobilfunkciók prediktív elemzési és gépi tanulás a [a rövid útmutató: Készítse elő és az adatok megjelenítése az Azure Machine Learning kódírás nélkül](ui-quickstart-run-experiment.md).
-* Egy mintát használja, és a Suite módosítsa az igényeinek:
-    * [1 – regressziós. példa: Ár előrejelzése](ui-sample-regression-predict-automobile-price-basic.md)
-    * [2 – regressziós. példa: Ár előrejelzése és algoritmusok összehasonlítása](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-    * [Mintául szolgáló 3 - besorolás: Hitelkockázat előrejelzése](ui-sample-classification-predict-credit-risk-basic.md)
-    * [4 – besorolási. példa: Hitelkockázatot (költség-és nagybetűket)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-    * [5 – besorolási. példa: Előrejelezheti a forgalom szolgáltatóváltást és felfelé értékesítése](ui-sample-classification-predict-churn.md)
+* Ismerkedjen meg a prediktív elemzés és a gépi tanulás [alapjaival az Oktatóanyaggal: Az autó árának előrejelzése a vizuális felületen](ui-tutorial-automobile-price-train-score.md)
+* Használja az egyik mintát, és módosítsa az igényeinek megfelelően:
+    * [1. példa – regresszió: Előre jelzett ár](ui-sample-regression-predict-automobile-price-basic.md)
+    * [2. minta – regresszió: Előrejelzési ár és összehasonlítási algoritmusok](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+    * [3. példa – besorolás: Hitelkockázat előrejelzése](ui-sample-classification-predict-credit-risk-basic.md)
+    * [4. minta – besorolás: Hitelkockázat (Cost szenzitív)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+    * [5. példa – besorolás: A forgalom előrejelzése, a szolgáltatóváltást és az értékesítés](ui-sample-classification-predict-churn.md)

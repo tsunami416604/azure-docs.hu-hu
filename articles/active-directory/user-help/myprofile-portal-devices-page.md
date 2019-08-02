@@ -1,6 +1,6 @@
 ---
-title: A csatlakoztatott eszközök kezelése a saját profil (előzetes verzió) portálról – Azure Active Directory |} A Microsoft Docs
-description: Az eszközök oldal, a saját profil portál magas szintű áttekintését.
+title: A csatlakoztatott eszközök kezelése a saját profil (előzetes verzió) portálról – Azure Active Directory | Microsoft Docs
+description: Magas szintű áttekintés a saját profil portál eszközök lapján.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,41 +12,44 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b303a1cd3da7010573ce34dd4762616f4b6581d0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c9035d68e95798eb238c1836e617e485c39194c4
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60475859"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383037"
 ---
-# <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>A csatlakoztatott eszközök kezelése a saját profil (előzetes verzió) portálról
-Csatlakozott a munkahelyi vagy iskolai fiók használatával szükségesekre már nem saját, az eszközök kezeléséhez, a **eszközök** lapján a **profilom** portálon.
+# <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>A csatlakoztatott eszközök kezelése a saját profil (előzetes verzió) portálján
+
+Kezelheti a saját munkahelyi vagy iskolai fiókjával csatlakoztatott eszközöket, letilthatja a már nem használt eszközök listáját a **saját profil** portál **eszközök** lapján.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
-## <a name="view-your-connected-devices"></a>A csatlakoztatott eszközök megtekintése
-1. Jelentkezzen be munkahelyi vagy iskolai fiókjával, és keresse meg a https://myprofile.microsoft.com/ lapot.
+## <a name="view-your-connected-devices"></a>Csatlakoztatott eszközök megtekintése
 
-2. Válassza ki **eszközök** a bal oldali navigációs panelen, vagy válassza ki a **Eszközkezelés** hivatkozás a **eszközök** letiltása.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ lapra.
 
-    ![Saját profil lapot, amely a kijelölt eszközök hivatkozások](media/myprofile-portal/myprofile-portal-devices.png)
+2. Válassza az **eszközök** lehetőséget a bal oldali navigációs ablaktáblán, vagy válassza az eszközök **blokk eszközök** **kezelése** hivatkozását.
 
-3. Tekintse át a csatlakoztatott eszközökből, és gondoskodik róla, hogy azokat az összes ismeri fel az adatait. 
+    ![Saját profil lap, amely a Kiemelt eszközök hivatkozásait mutatja](media/myprofile-portal/myprofile-portal-devices.png)
 
-    ![Eszköz-oldalról, csatlakoztatott eszközök](media/myprofile-portal/myprofile-portal-devices-page.png)
+3. Tekintse át a csatlakoztatott eszközökre vonatkozó információkat, és ügyeljen rá, hogy mindegyiket felismerje. 
 
-## <a name="disable-a-device"></a>Az eszköz letiltása
-Bármikor letilthatja a csatlakoztatott eszközökhöz. Ez akkor kifejezetten fontos, ha egy eszköz nem ismerős, vagy ha az eszköz elveszett vagy ellopták. Letilt egy eszközt, miután a szervezet által már nem hitelesíthetők, és nem lehet hozzáférni a munkahelyi erőforrásokat.
+    ![Eszköz lap, csatlakoztatott eszközök megjelenítése](media/myprofile-portal/myprofile-portal-devices-page.png)
+
+## <a name="disable-a-device"></a>Eszköz letiltása
+
+Bármikor letilthatja a csatlakoztatott eszközök bármelyikét. Ez különösen akkor fontos, ha egy eszköz nem ismeri Önt, vagy ha az eszköz elveszett vagy ellopták. Az eszköz letiltását követően a szervezete már nem tudja hitelesíteni az eszközt, és nem fog tudni hozzáférni a szervezet erőforrásaihoz.
 
 >[!Important]
->Ha véletlenül letiltja az eszközt, nincs semmilyen módon nem lehet visszavonni. Lépjen kapcsolatba a szervezet egyik rendszergazda az eszköz újra hozzá kell.
+>Ha hiba esetén letiltja az eszközt, nem vonható vissza. Az eszköz újbóli hozzáadásához kapcsolatba kell lépnie a szervezet rendszergazdájával.
 
-1. Válassza ki **letiltása** eltávolítja az eszközről.
+1. Válassza a **Letiltás** lehetőséget az eltávolítani kívánt eszközről.
 
-    ![Kiemelt letiltása hivatkozás oldaláról](media/myprofile-portal/myprofile-portal-devices-disable.png)
+    ![Eszköz lap Kiemelt letiltás hivatkozással](media/myprofile-portal/myprofile-portal-devices-disable.png)
 
-2. Válassza ki **Igen** annak ellenőrzéséhez, hogy le kívánja tiltani az eszközön.
+2. Az **Igen** gombra kattintva erősítse meg, hogy le kívánja tiltani az eszközt.
 
 ## <a name="next-steps"></a>További lépések
 
-- A csatlakoztatott eszközök megtekintése, után kiválaszthatja megtekintéséhez és kezeléséhez a [biztonsági adatok](user-help-security-info-overview.md), a [szervezetek](myprofile-portal-organizations-page.md), vagy a nézet hogyan a szervezet [használ az adatok](myprofile-portal-privacy-page.md).
+- A csatlakoztatott eszközök megtekintése után megtekintheti vagy kezelheti a [biztonsági adatait](user-help-security-info-overview.md), a szervezeteit [](myprofile-portal-organizations-page.md), vagy megtekintheti, hogy a szervezet hogyan [használja az adatokat](myprofile-portal-privacy-page.md).

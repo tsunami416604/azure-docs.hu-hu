@@ -1,7 +1,7 @@
 ---
-title: Irányítópult – beszédfelismerés
+title: Irányítópult – Language Understanding – LUIS
 titleSuffix: Azure Cognitive Services
-description: Javítsa ki a leképezések az analytics irányítópultot, egy teszi jelentéskészítési eszköz.
+description: Javítsa ki a leképezéseket az elemzési irányítópulttal, amely egy vizualizációs jelentéskészítő eszköz.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,164 +11,164 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: 055d113a2bc77f8de1b4b881718007c869470532
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 42dfe4af56149e4305d076b0427f15038a01fadc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236941"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563634"
 ---
-# <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Az irányítópult használata az alkalmazás fejlesztéséhez
+# <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Az alkalmazás fejlesztése az irányítópult használatával
 
-Megkeresheti és elháríthatja a problémákat a betanított alkalmazásszándékkal rendelkező példa utterances használata esetén. Az irányítópult teljes alkalmazás adatai, a szándék fog vonatkozni, amely javítani kell a legfontosabb jeleníti meg. 
+Ha például hosszúságú kimondott szöveg használ, megkeresheti és kijavíthatja a betanított alkalmazások szándékait. Az irányítópult az alkalmazás általános információit jeleníti meg, és kiemeli azokat a leképezéseket, amelyeket rögzíteni kell. 
 
-Tekintse át az irányítópult elemzésre többször is módosíthatja, és javíthatja a modellt, iteratív folyamat.
+Az irányítópultok elemzésének áttekintése egy iterációs folyamat, amellyel megismételhető a modell módosítása és fejlesztése.
 
-Ezen a lapon nem lesz megfelelő elemző alkalmazások, amelyek nem rendelkeznek példa megszólalásokat a szándék fog vonatkozni, más néven a _csak minta_ alkalmazásokat. 
+Ezen a lapon nem lesznek releváns elemzések olyan alkalmazásokhoz, amelyek nem rendelkeznek példákkal hosszúságú kimondott szöveg, más néven _csak minta_ alkalmazások. 
 
-## <a name="what-issues-can-be-fixed-from-dashboard"></a>Milyen problémák is rögzíteni kell az irányítópultról?
+## <a name="what-issues-can-be-fixed-from-dashboard"></a>Milyen problémákat lehet kijavítani az irányítópultról?
 
-Az irányítópult a három problémák vannak:
+Az irányítópulton a három probléma a következőkkel foglalkozik:
 
 |Probléma|Diagram színe|Magyarázat|
 |--|--|--|
-|Adatok egyenetlenségének|-|Ez akkor fordul elő, ha a példa kimondott szöveg mennyiségét jelentősen eltér. Rendelkeznie kell az összes leképezések _nagyjából_ példa utterances – kivéve a nincs szándék azonos számú. 10 – 15 % utterances teljes mennyiségét, az alkalmazás csak azt kell rendelkeznie.<br><br> Ha az adatok imbalanced, de a szándék pontossága meghatározott küszöbérték fölött van, ez egyenetlenségének nem verziószámú problémát.<br><br>**Start - probléma az lehet a más problémák eredendő okát.**|
-|Nem egyértelmű előrejelzések|Narancssárga|Ez akkor fordul elő, amikor a felső célt és a következő leképezés pontszámok kellően közel, hogy azok előfordulhat, hogy tükrözés a következő képzési miatt [negatív mintavételi](luis-how-to-train.md#train-with-all-data) vagy beszédszándék hozzá további példa kimondott szöveg. |
-|Helytelen előrejelzések|Piros|Ez akkor fordul elő, amikor egy példa utterance (kifejezés) nem előre jelzett a címkézett célja (a leképezés van).|
+|Adategyensúlyhiány|-|Ez akkor fordul elő, ha a hosszúságú kimondott szöveg mennyisége jelentősen eltér. Az összes szándéknak _nagyjából_ azonos számú példát kell hosszúságú kimondott szöveg – kivéve a none szándékot. Az alkalmazásban a hosszúságú kimondott szöveg teljes mennyiségének 10%-15%-át kell tartalmaznia.<br><br> Ha az adatok kiegyensúlyozva vannak, de a cél pontossága bizonyos küszöbérték felett van, akkor ez az egyensúlyhiány nem jelent problémát.<br><br>**Kezdje ezzel a problémával – ez lehet a többi probléma kiváltó oka.**|
+|Nem egyértelmű előrejelzések|Narancssárga|Ez akkor fordulhat elő, ha a legfelső szintű szándék és a következő mutató pontszámai elég közel vannak ahhoz, hogy a következő képzésen is meghaladják őket, mert [negatív mintavételezés](luis-how-to-train.md#train-with-all-data) vagy több, a szándékhoz hozzáadott példa hosszúságú kimondott szöveg. |
+|Helytelen előrejelzések|Piros|Ez akkor fordul elő, ha a címkével ellátott szándék (a szándéka) esetében nem várható meg a Kimondás.|
 
-A szín kék megfelelő előrejelzéseket jelöli.
+A helyes előrejelzések a kék színnel jelennek meg.
 
-Az irányítópult bemutatja ezeket a problémákat, és jelzi, hogy melyik leképezések érintett, és javasolja, hogy mit kell tennie az alkalmazás javítására. 
+Az irányítópult ezeket a problémákat jeleníti meg, és jelzi, hogy mely szándékok érintettek, és azt javasolja, hogy mit kell tennie az alkalmazás fejlesztéséhez. 
 
-## <a name="before-app-is-trained"></a>Mielőtt az alkalmazás be van tanítva 
+## <a name="before-app-is-trained"></a>Az alkalmazás képzése előtt 
 
-Mielőtt az alkalmazás betanításához az irányítópult nem tartalmaz javaslatai vannak a javítások. Ezek a javaslatok megtekintéséhez az alkalmazás betanításához.  
+Az alkalmazás betanítása előtt az irányítópult nem tartalmaz javaslatokat a javításokhoz. Az alkalmazás betanításával tekintheti meg ezeket a javaslatokat.  
 
-## <a name="check-your-publishing-status"></a>A közzétételi állapotának ellenőrzése
+## <a name="check-your-publishing-status"></a>A közzétételi állapot keresése
 
-A **közzétételi állapota** kártya tudnivalókkal szolgál az aktív verziója a legutóbbi közzétenni. 
+A **közzétételi állapot** kártya az aktív verzió utolsó közzétételével kapcsolatos információkat tartalmaz. 
 
-Ellenőrizze, hogy az aktív verzió a rögzíteni kívánt verziót. 
+Győződjön meg arról, hogy az aktív verzió a javítani kívánt verzió. 
 
-![Irányítópult látható alkalmazások külső szolgáltatásokhoz, régiók és közzétett végpont találatok összesítve.](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
+![Az irányítópulton az alkalmazás külső szolgáltatásai, a közzétett régiók és az összesített végpontok találatai láthatók.](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
 
-Ez is bármilyen külső szolgáltatásokkal, a közzétett régiók jelennek meg, és összesítve végpont találatok. 
+Ez megjeleníti a külső szolgáltatásokat, a közzétett régiókat és az összesített végpontok találatait is. 
 
-## <a name="review-training-evaluation"></a>Tekintse át a betanítási kiértékelése
+## <a name="review-training-evaluation"></a>A betanítás értékelésének áttekintése
 
-A **képzési értékelési** kártya az alkalmazás általános pontossága terület szerint összesített összefoglalását tartalmazza. A pontszám szándék minőségi jelzi. 
+A  betanítási kiértékelési kártya az alkalmazás teljes pontossága terület összesített összegzését tartalmazza. A pontszám a szándék minőségét jelzi. 
 
-![A képzési értékelési kártya tartalmazza az alkalmazás általános pontossága információ első területét.](./media/luis-how-to-use-dashboard/analytics-card-2-shows-app-overall-accuracy.png)
+![A betanítási kiértékelési kártya az alkalmazás általános pontosságával kapcsolatos első adatterületet tartalmazza.](./media/luis-how-to-use-dashboard/analytics-card-2-shows-app-overall-accuracy.png)
 
-A diagram azt jelzi, a megfelelő előre jelzett leképezések és a problémás területek különböző színű. Mivel, javíthatja az alkalmazást, a javaslatokat, a pontszám növekszik. 
+A diagram a helyesen megjósolt szándékokat és a különböző színekkel rendelkező problémás területeket jelzi. Az alkalmazásnak a javaslatokkal való fejlesztése során ez a pontszám nő. 
 
-A javasolt javítások vannak elválasztva a probléma típusa és az alkalmazás számára a legfontosabb. Ha inkább tekintse át, és kijavíthatja a problémák / szándékkal, használja a **[hibákkal leképezések](#intents-with-errors)** kártya a lap alján. 
+A javasolt javítások a probléma típusa szerint vannak elválasztva, és az alkalmazás legjelentősebb része. Ha szeretné áttekinteni és elhárítani a hibákat, használja az oldal alján található **[hibákkal rendelkező leképezéseket](#intents-with-errors)** . 
 
-Minden egyes probléma terület rendelkezik szándék fog vonatkozni, amelyet javítani kell. A leképezés neve kiválasztásakor a **szándékot** lap, melyen az megcímkézzen alkalmazott szűrőkkel. Ez a szűrő lehetővé teszi, hogy a problémát okozó megcímkézzen összpontosíthat.
+Minden egyes problémás térségnek meg kell oldania a szándékait. Ha kiválasztja a leképezés nevét, a **szándék** lap megnyílik a hosszúságú kimondott szöveg alkalmazott szűrővel. Ez a szűrő lehetővé teszi, hogy a problémát okozó hosszúságú kimondott szöveg koncentráljon.
 
-### <a name="compare-changes-across-versions"></a>Hasonlítsa össze a különböző verziók
+### <a name="compare-changes-across-versions"></a>Változások összehasonlítása verziók között
 
-Mielőtt módosítaná az alkalmazás, hozzon létre egy új verziója. Az új verziót, a javasolt a módosításokat a leképezés példa utterances, majd újra be. Az irányítópult-oldalon **képzési értékelési** kártya, használja a **Show módosítás betanított verzióról** összehasonlítani a módosításokat. 
+Az alkalmazás módosítása előtt hozzon létre egy új verziót. Az új verzióban végezze el a javasolt módosításokat a cél példa hosszúságú kimondott szöveg, majd a tanítás újra. Az irányítópult lap betanítási kiértékelési kártyáján a változtatások összevetéséhez használja a Megjelenítés a betanított **verzióról** lehetőséget. 
 
-![Hasonlítsa össze a különböző verziók](./media/luis-how-to-use-dashboard/compare-improvement-across-versions.png)
+![Változások összehasonlítása verziók között](./media/luis-how-to-use-dashboard/compare-improvement-across-versions.png)
 
-### <a name="fix-version-by-adding-or-editing-example-utterances-and-retraining"></a>Javítsa ki a verzió hozzáadásával vagy példa kimondott szöveg szerkesztését és átképezési
+### <a name="fix-version-by-adding-or-editing-example-utterances-and-retraining"></a>A verzió javítása például hosszúságú kimondott szöveg és-átképzések hozzáadásával vagy szerkesztésével
 
-A módszer az alkalmazás kompatibilitását hozzáadása vagy szerkesztése példa kimondott szöveg és újratanítása lesz. Új vagy módosított megcímkézzen kell követniük irányelvek [utterances maximalizálásában](luis-concept-utterance.md).
+Az alkalmazás javításának elsődleges módszere a példa hosszúságú kimondott szöveg és-betanításának hozzáadása vagy szerkesztése. Az új vagy módosított hosszúságú kimondott szöveg követnie kell a [különböző hosszúságú kimondott szöveg](luis-concept-utterance.md)vonatkozó irányelveket.
 
-Példa beszédmódok hozzáadása kell elvégezni valaki ki:
+A példaként szolgáló hosszúságú kimondott szöveg olyan személynek kell elvégeznie, aki:
 
-* beszédmódok Mik a különböző leképezések a ismeretekkel magas fokú rendelkezik
-* tudni fogja, hogyan utterances egyik célja a lehetséges, hogy tévesztendő össze egy másik leképezés
-* Döntse el, ha a két szándék fog vonatkozni, amelyek gyakran egymással összetéveszteni kell összecsukva, az egyetlen célja az entitások kinyerési a különböző adatokat képes
+* nagy mértékben megértette, hogy milyen hosszúságú kimondott szöveg találhatók a különböző szándékok
+* tudja, hogyan tévesztendő össze a hosszúságú kimondott szöveg egy másik szándékkal
+* el tudja dönteni, hogy két szándékkal, amelyek gyakran zavarosak egymással, egyetlen szándékkal kell összecsukni, és a különböző adategységeket
 
 ### <a name="patterns-and-phrase-lists"></a>Minták és kifejezések listája
 
-Az elemzési lap nem jelezze, mikor érdemes használni [minták](luis-concept-patterns.md) vagy [listák kifejezés](luis-concept-feature.md). Ha hozzáadja őket, segítségére lehetnek a nem megfelelő vagy nem egyértelmű előrejelzéseket, de nem sokat segít az adatok egyensúlyhiány. 
+Az elemzési lap nem jelzi, hogy mikor [](luis-concept-patterns.md) használjon mintázatokat vagy [kifejezéseket tartalmazó listát](luis-concept-feature.md). Ha hozzáadja őket, akkor a helytelen vagy nem egyértelmű előrejelzésekkel segíthet, de nem segít az adategyensúlyhiányban. 
 
-### <a name="review-data-imbalance"></a>Tekintse át adatokat egyenetlenségének
+### <a name="review-data-imbalance"></a>Az adategyensúlyhiány áttekintése
 
-Start - probléma az lehet a más problémák eredendő okát.
+Kezdje ezzel a problémával – ez lehet a többi probléma kiváltó oka.
 
-A **adatok egyenetlenségének** szándék lista mutatja azokat, amelyek további utterances kell ahhoz, hogy javítsa ki az adatok egyenetlenségének leképezések. 
+Az **adategyensúlyhiány** -leképezési lista olyan leképezéseket mutat be, amelyeknek további hosszúságú kimondott szöveg van szükségük az adategyensúlyhiány kijavítani. 
 
 **A probléma megoldásához**:
 
-* További beszédmódok hozzáadása a célt, majd újra be. 
+* Vegyen fel további hosszúságú kimondott szöveg a szándékba, majd végezze el újból a betanítást. 
 
-Beszédmódok a nincs szándék csak hozzá az irányítópulton, amely ajánlott.
+Ne vegyen fel hosszúságú kimondott szöveg a none (nincs) szándékba, hacsak az az irányítópulton nem javasolt.
 
 > [!Tip]
-> A harmadik szakasz ezen a lapon **kimondott szöveg / szándékot** az a **beszédmódok (szám)** beállítás, gyors vizuális útmutatóként, amelyek leképezések kell további kimondott szöveg.  
-    ![Az adatok egyenetlenségének leképezések kereséséhez használja a "Utterances (szám)".](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
+> Használja az oldal harmadik szakaszát a **hosszúságú kimondott szöveg (Number)** beállítással, amely egy gyors vizuális útmutató, amelynek **hosszúságú kimondott szöveg** több hosszúságú kimondott szöveg van szükség.  
+    ![Használja az "hosszúságú kimondott szöveg (szám)" lehetőséget az adategyensúlyhiány megkereséséhez.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
 
-### <a name="review-incorrect-predictions"></a>Tekintse át a helytelen előrejelzések
+### <a name="review-incorrect-predictions"></a>Helytelen előrejelzések áttekintése
 
-A **helytelen előrejelzési** szándék lista mutatja azokat, amelyek rendelkeznek a kimondott szöveg, amely egy adott szándékot példaként szolgálnak, de különböző leképezések a rendszer előre meghatározott leképezések. 
+A **helytelen előrejelzési** leképezési lista azokat a leképezéseket jeleníti meg, amelyek hosszúságú kimondott szöveg rendelkeznek, amelyeket példaként használ egy adott szándékhoz, de a különböző szándékok alapján várható. 
 
 **A probléma megoldásához**:
 
-* A leképezés és train pontosabb lehet újra kimondott szöveg szerkesztése.
-* Kombinálhatja a szándék fog vonatkozni, ha utterances szorosan túl vannak elhelyezve, és újra be.
+* Szerkessze a hosszúságú kimondott szöveg, hogy pontosabb legyen a szándék és a képzés.
+* A leképezések összevonása, ha a hosszúságú kimondott szöveg túlságosan szorosan illeszkednek, és újra betanítják őket.
 
-### <a name="review-unclear-predictions"></a>Tekintse át a nem egyértelmű előrejelzések
+### <a name="review-unclear-predictions"></a>A nem egyértelmű előrejelzések áttekintése
 
-A **egyértelmű előrejelzési** szándék lista mutatja azokat az előrejelzési eredmények, amelyek nem sokkal elegendő módja az, hogy a felső leképezésének az utterance (kifejezés) módosítsa a következő képzési oka az, hogy a legközelebbi rivális utterances-leképezések [ negatív mintavételi](luis-how-to-train.md#train-with-all-data).
+A nem **egyértelmű előrejelzési** szándékok listája a hosszúságú kimondott szöveg olyan előrejelzési pontszámokat jelenít meg, amelyek nem eléggé megfelelőek a legközelebbi riválistól, hogy a Kimondás legfőbb célja a [negatív mintavételezés](luis-how-to-train.md#train-with-all-data)miatt megváltozhat a következő képzésen.
 
 **A probléma megoldásához**;
 
-* A leképezés és train pontosabb lehet újra kimondott szöveg szerkesztése.
-* Kombinálhatja a szándék fog vonatkozni, ha utterances szorosan túl vannak elhelyezve, és újra be.
+* Szerkessze a hosszúságú kimondott szöveg, hogy pontosabb legyen a szándék és a képzés.
+* A leképezések összevonása, ha a hosszúságú kimondott szöveg túlságosan szorosan illeszkednek, és újra betanítják őket.
 
-## <a name="utterances-per-intent"></a>Leképezés kiszolgálónként kimondott szöveg
+## <a name="utterances-per-intent"></a>Hosszúságú kimondott szöveg/szándék
 
-Ez a kártya a szándék között alkalmazás általános állapotát mutatja. Leképezések és teljesített kapcsolat-újraépítési javításához, továbbra is, ez a kártya problémák áttekintése.
+Ez a kártya az alkalmazás teljes állapotát mutatja a szándékok között. A leképezések és az újraképzések kijavítása után folytassa a kártyán a problémákkal kapcsolatos további áttekintést.
 
-A következő diagram mutatja egy jól kiegyensúlyozott alkalmazás, és majdnem nincsenek problémák megoldásához.
+A következő diagram egy jól kiegyensúlyozott alkalmazást mutat be, amely szinte nem oldja meg a problémát.
 
-![A következő diagram mutatja egy jól kiegyensúlyozott alkalmazás, és majdnem nincsenek problémák megoldásához.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-balance.png)
+![A következő diagram egy jól kiegyensúlyozott alkalmazást mutat be, amely szinte nem oldja meg a problémát.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-balance.png)
 
-A következő diagram mutatja egy rosszul elosztott terhelésű alkalmazás számos probléma megoldásához és.
+A következő diagram egy nem megfelelően kiegyensúlyozott alkalmazást mutat be, amely számos problémát orvosol.
 
-![A következő diagram mutatja egy jól kiegyensúlyozott alkalmazás, és majdnem nincsenek problémák megoldásához.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
+![A következő diagram egy jól kiegyensúlyozott alkalmazást mutat be, amely szinte nem oldja meg a problémát.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
 
-Minden egyes szándékot sáv a leképezés információt szeretne kapni a kurzort. 
+Vigye az egérmutatót az egyes leképezési sávok fölé a szándékkal kapcsolatos információk lekéréséhez. 
 
-![A következő diagram mutatja egy jól kiegyensúlyozott alkalmazás, és majdnem nincsenek problémák megoldásához.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
+![A következő diagram egy jól kiegyensúlyozott alkalmazást mutat be, amely szinte nem oldja meg a problémát.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
 
-Használja a **rendezés** szolgáltatást rendezze a szándék szerint probléma típusa, így Ön az, hogy a probléma a legtöbb problémát leképezések a. 
+A **Rendezés** szempontja funkció használatával rendezheti a leképezéseket a probléma típusa alapján, így a problémával kapcsolatos problémákra koncentrálhat. 
 
-## <a name="intents-with-errors"></a>Leképezések hibákkal
+## <a name="intents-with-errors"></a>Hibákkal kapcsolatos leképezések
 
-Ez a kártya lehetővé teszi, hogy olvassa el a problémákat az egy adott szándékot. Ez a kártya alapértelmezett nézete a legtöbb problémát leképezések, így megtudhatja, hol összpontosítsa figyelmét.
+Ez a kártya lehetővé teszi egy adott szándékkal kapcsolatos problémák áttekintését. Ennek a kártyának az alapértelmezett nézete a legtöbb problémás szándék, hogy tudja, hol kell összpontosítania az erőfeszítéseket.
 
-![A hibák kártyával leképezések lehetővé teszi, hogy egy adott szándékot problémái tekintse át. A kártya a szűrt a legtöbb problémát szándék fog vonatkozni, alapértelmezés szerint, hogy tudja, hol összpontosítsa figyelmét.](./media/luis-how-to-use-dashboard/most-problematic-intents-with-errors.png)
+![A hibák kártyával való leképezés lehetővé teszi egy adott szándékkal kapcsolatos problémák áttekintését. A kártyát alapértelmezés szerint a legtöbb problémás szándék alapján szűri a rendszer, így biztos lehet benne, hogy hol kívánja összpontosítani az erőfeszítéseit.](./media/luis-how-to-use-dashboard/most-problematic-intents-with-errors.png)
 
-Az első fánkdiagramot a problémákat azzal a szándékkal, a három a probléma típusában jeleníti meg. Ha problémák vannak a három a probléma típusok, minden típusban a saját diagram alá, és bármely versenytárs leképezések. 
+A felső fánk diagram a három problémás típussal kapcsolatos problémákat jeleníti meg. Ha problémák merülnek fel a három probléma típusában, mindegyik típushoz tartozik egy saját diagram, valamint minden rivális szándék. 
 
-### <a name="filter-intents-by-issue-and-percentage"></a>Probléma és százalékos leképezések szűrése
+### <a name="filter-intents-by-issue-and-percentage"></a>Leképezések szűrése a probléma és a százalék alapján
 
-Ez a szakasz a kártya lehetővé teszi, hogy a hiba küszöbértéken kívüli csökken példa megcímkézzen található. Ideális esetben érdemes jelentőségű tényező lehet, hogy megfelelő ismeretekkel. A százalékos értéke, üzleti és ügyfél-alapú. 
+A kártya ezen szakasza lehetővé teszi, hogy megkeresse a hosszúságú kimondott szöveg kívül eső példákat. Ideális esetben azt szeretné, hogy a megfelelő előrejelzések jelentősek legyenek. Ez a százalék az üzleti és az ügyfél-vezérelt. 
 
-Határozza meg a küszöbérték százalékos, amelynek Ön a magabiztosan a vállalkozása számára. 
+Határozza meg, hogy milyen százalékos arányt szeretne a vállalata számára. 
 
-A szűrő lehetővé teszi az adott probléma leképezések található:
+A szűrő segítségével megtalálhatja az adott problémával kapcsolatos leképezéseket:
 
-|Szűrés|Javasolt százalékos aránya|Cél|
+|Szűrés|Javasolt százalék|Cél|
 |--|--|--|
-|Legtöbb problémát leképezések|-|**Kezdje itt** -megcímkézzen értesítenünk a leképezés javítja az alkalmazás több, mint más javításokat.|
-|Az alábbi megfelelő előrejelzések|60%|Ez az, hogy helyes-e, de egy megbízhatósági pontszám a küszöbérték alatt van a kiválasztott SZÁNDÉKTÓL megcímkézzen aránya. |
-|A fenti egyértelmű előrejelzések|15%|Ez az, hogy a rendszer a legközelebbi versenytárs célt összetéveszteni megcímkézzen a kiválasztott SZÁNDÉKTÓL aránya.|
-|A fenti helytelen előrejelzések|15%|Ez az, hogy helytelenül vannak előre jelzett a kiválasztott SZÁNDÉKTÓL megcímkézzen aránya. |
+|A legtöbb problémás szándék|-|**Kezdjen el ide** – a hosszúságú kimondott szöveg kijavításával az alkalmazás a többi javításnál nagyobb javulást tesz elérhetővé.|
+|Az alábbi helyes előrejelzések|60%|Ez a hosszúságú kimondott szöveg százalékos aránya a kiválasztott szándékban, amelyek helyesek, de a küszöbérték alatti megbízhatósági pontszámok. |
+|Nem egyértelmű előrejelzések a fentiekben|15%|Ez a kijelölt szándékban lévő hosszúságú kimondott szöveg százaléka, amely zavaros a legközelebbi rivális szándékkal.|
+|Helytelen jóslatok|15%|Ez a kiválasztott szándékban helytelenül előre jelzett hosszúságú kimondott szöveg százalékos aránya. |
 
-### <a name="correct-prediction-threshold"></a>Megfelelő előrejelzési küszöbérték
+### <a name="correct-prediction-threshold"></a>Helyes előrejelzési küszöbérték
 
-Mi az a benne előrejelzési magabiztossági pontszámot is? Alkalmazások fejlesztése az elején, 60 %-os lehet, hogy a cél. Használja a **javítsa ki az alábbi előrejelzéseket** százalékkal 60 %-os megszólalásokat található a kiválasztott célt, amelyet javítani kell.
+Mi az a biztos, hogy előrejelzési megbízhatósági pontszám? Az alkalmazásfejlesztés kezdetekor a 60% lehet a cél. Használja az **alábbi helyes előrejelzéseket** a 60%-os százalékos értékkel, hogy megkeresse a kijelölt szándékban lévő összes hosszúságú kimondott szöveg, amelyet rögzíteni kell.
 
-### <a name="unclear-or-incorrect-prediction-threshold"></a>Nem egyértelmű vagy hibás előrejelzési küszöbérték
+### <a name="unclear-or-incorrect-prediction-threshold"></a>Nem egyértelmű vagy helytelen előrejelzési küszöbérték
 
-E két naplófájlbejegyzések kimondott szöveg található a kiválasztott leképezés meghaladja a küszöbértéket. E két százalékos hiba százalékként is felfoghatók. Ha Ön egy 10 – 15 %-os Hibaarány ismeretekkel ügyfélszolgáltatást, állítsa be a szűrő küszöbértéket 15 % található összes utterances meghaladja ezt az értéket. 
+Ez a két szűrő lehetővé teszi, hogy megkeresse a hosszúságú kimondott szöveg a küszöbértéken túli kiválasztott szándékban. Ezt a két százalékot a hiba százalékában tekintheti át. Ha a jóslatok 10-15%-os hibájának arányát szeretné megállapítani, állítsa a szűrési küszöbértéket 15%-ra az érték felett található összes hosszúságú kimondott szöveg megkereséséhez. 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure-erőforrások kezelése](luis-how-to-azure-subscription.md)
+* [Azure-erőforrások kezelése](luis-how-to-azure-subscription.md)

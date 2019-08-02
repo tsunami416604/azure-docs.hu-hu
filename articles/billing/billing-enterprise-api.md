@@ -1,6 +1,6 @@
 ---
-title: Az Azure Enterprise API-k számlázási |} A Microsoft Docs
-description: További információ a Reporting API-k, amelyek lehetővé teszik a nagyvállalati Azure-ügyfelek használati adatok programozott módon kérhetők.
+title: Azure számlázási nagyvállalati API-k | Microsoft Docs
+description: Ismerje meg azokat a jelentési API-kat, amelyek lehetővé teszik a vállalati Azure-ügyfelek számára a használati információk programozott módon történő lekérését.
 services: ''
 documentationcenter: ''
 author: mumami
@@ -14,53 +14,53 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
-ms.author: erikre
-ms.openlocfilehash: 5722e05e5a5e3a57b4d12b70b14f8674364f824b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: banders
+ms.openlocfilehash: f706ad86493981d5b38248ec209a7c8b936f6817
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244817"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443215"
 ---
-# <a name="overview-of-reporting-apis-for-enterprise-customers"></a>A vállalati ügyfelek a Reporting API-k áttekintése
-A Reporting API-k engedélyezése a nagyvállalati Azure-ügyfelek használati és számlázási adatok programozott módon lekérni az előnyben részesített adatok elemzésére szolgáló eszközöket. A vállalati felhasználók regisztráltak- [nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) az Azure-ral az egyeztetett pénzügyi kötelezettségvállalások és egyéni díjszabás az Azure-erőforrásokhoz való hozzáférést.
+# <a name="overview-of-reporting-apis-for-enterprise-customers"></a>A vállalati ügyfelek jelentéskészítési API-jai – áttekintés
+A jelentéskészítési API-k lehetővé teszik a nagyvállalati Azure-ügyfelek számára, hogy programozott módon lehívhatják a használati és számlázási adataikat az előnyben részesített A nagyvállalati ügyfelek aláírtak egy [nagyvállalati szerződést (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) az Azure-ban, hogy egyeztetett pénzügyi kötelezettségeket hozzanak, és hozzáférjenek az Azure-erőforrások egyéni díjszabásához.
 
-## <a name="enabling-data-access-to-the-api"></a>Adatelérési API engedélyezése
-* **Hozza létre, vagy kérje le az API-kulcsot** -jelentkezzen be a vállalati portált, és keresse meg a jelentéseket > használati adatok letöltése > API hozzáférési kulcsa létrehozni vagy beolvasni az API-kulcsot.
-* **Kulcsok átadása az API-ban** – az API-kulcsot kell átadni a hitelesítéshez és engedélyezéshez minden egyes híváshoz. A következő tulajdonságot kell lennie, a HTTP-fejlécek
+## <a name="enabling-data-access-to-the-api"></a>Az API elérésének engedélyezése
+* **Az** API-kulcs előállítása vagy beolvasása – jelentkezzen be az Enterprise Portalra, és navigáljon a jelentések > a használati > API-elérési kulcs letöltése az API-kulcs létrehozásához vagy lekéréséhez.
+* **Kulcsok átadása az API-ban** – az API-kulcsot át kell adni a hitelesítéshez és az engedélyezéshez szükséges minden egyes híváshoz. A következő tulajdonságnak a HTTP-fejléceknek kell lennie
 
-|Fejléc kulcs kérése | Érték|
+|Kérelem fejlécének kulcsa | Value|
 |-|-|
-|Engedélyezés| Adja meg az értéket a következő formátumban: **tulajdonosi {API_KEY}** <br/> Példa: tulajdonosi eyr... 09| 
+|Authorization| Az érték megadása a következő formátumban: **tulajdonos {API_KEY}** <br/> Példa: tulajdonosi eyr... 09| 
 
-## <a name="consumption-apis"></a>Szolgáltatáshasználati API-jai
-A Swagger-végpont érhető el [Itt](https://consumption.azure.com/swagger/ui/index) esetében az API-k leírt, amely alatt könnyen önelemzési API- és ügyféloldali SDK-k használatával képességét engedélyezze [AutoRest](https://github.com/Azure/AutoRest) vagy [Swagger CodeGen](https://swagger.io/swagger-codegen/). 2014\. május 1-én kezdődő adatokat az API-n keresztül érhető el. 
+## <a name="consumption-apis"></a>Felhasználási API-k
+Az alább ismertetett API-k [számára elérhető egy](https://consumption.azure.com/swagger/ui/index) hencegő végpont, amely lehetővé teszi az API egyszerű beadását és az ügyféloldali SDK-k létrehozását az autorest vagy a hencegő [](https://github.com/Azure/AutoRest) [CodeGen](https://swagger.io/swagger-codegen/)használatával. Az 2014-es év május 1-től az API-n keresztül érhető el. 
 
-* **Egyenleg és összegzése** – a [egyenlegét és az API összefoglaló](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) kínál a jóváírásokat összefoglaló balances, új vásárlások, Azure Marketplace szolgáltatási díjai, módosítását és kereten túli díjak havi összegzését.
+* **Egyenleg és összefoglalás** – az [egyenleg és az összefoglalás API](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) havi összefoglaló információkat nyújt az egyenlegekről, az új vásárlásokról, az Azure Marketplace szolgáltatási díjairól, a kiigazításokról és a túlterhelésről.
 
-* **Használat részletei** – a [használatának részletes API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) kínál a felhasznált mennyiségek és becsült költségek szerint regisztrációs napi bontásban. Az eredmény példányok, mérőszámok és szervezeti információkat is biztosít. Az API-t lekérdezhetők, számlázási időszak, vagy egy megadott kezdő és záró dátumát. 
+* **Használat részletei** – a [használati részletek API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) napi bontásban kínálja a felhasznált mennyiségeket és a becsült díjakat egy beléptetéssel. Az eredmény a példányok, a mérőórák és a részlegek információit is tartalmazza. Az API-t számlázási időszak vagy a megadott kezdési és befejezési dátum alapján kérdezheti le. 
 
-* **Marketplace-en Store díj** – a [Marketplace Store díj API](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) adja vissza a piactér használat alapú költségek bontás naponta az adott számlázási időszak vagy kezdő és záró dátuma (egyszeri díjak nem szerepelnek).
+* **Marketplace Store-díj** – a [Marketplace Store Charge API](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) a megadott számlázási időszakra, illetve a kezdési és befejezési dátumokra vonatkozóan napi bontásban adja vissza a használaton alapuló Marketplace-díjakat (az egyszeri díjat nem tartalmazza).
 
-* **Árlista** – a [ár lap API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) felbontáson a megadott regisztrációs és számlázási időszak a alkalmazni sebesség biztosít.
+* **Árlista** – a [árlista API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) a megadott regisztrációs és számlázási időszakra vonatkozóan az egyes fogyasztásmérők esetében érvényes díjszabást biztosít.
 
-* **Fenntartott példány részletei** – a [fenntartott példány használata API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) adja vissza, a fenntartott példányok használatának való vásárlásra. A [fenntartott példány díjak API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) jeleníti meg a létrehozott számlázási tranzakciókat. 
+* **Fenntartott példány részletei** – a fenntartott példányok [használati API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) a fenntartott példányok vásárlásának használatát adja vissza. A [fenntartott példány díja API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) a számlázási tranzakciókat jeleníti meg. 
 
 ## <a name="data-freshness"></a>Adatok frissessége
-A válasz a fenti API az ETag lesznek visszaadva. Etag módosítása azt jelzi, hogy az adatok frissítve lett.  Az ezt követő azonos paraméterekkel azonos API-hívás adja át a rögzített Etag a kulccsal "If-None-Match" http-kérés fejlécében. A válaszként kapott állapotkód "NotModified" lenne, ha az adatok további nem frissültek, és nem az adatok visszaadásához fog. API a teljes adatkészletet ad vissza, a szükséges időszak, amikor egy etag változik.
+A etagek az összes fenti API válaszában lesz visszaadva. A ETAG változása azt jelzi, hogy az Adatfrissítés megtörtént.  Ha ugyanezt a paramétereket ugyanazzal az API-val kéri, a HTTP-kérelem fejlécében adja át a rögzített ETAG a "If-None-Match" kulcs használatával. A válasz állapotkód "NotModified" lesz, ha az adott Adatfrissítés még nem történt meg, és a rendszer nem ad vissza semmilyen adatforrást. Az API a szükséges időszak teljes adatkészletét visszaküldi, valahányszor ETAG változik.
 
-## <a name="helper-apis"></a>Segédlet az API-k
- **Számlázási időszak listában** – a [elszámolási időszakok API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) elszámolási időszakok, hogy egy használati adatokat a megadott regisztrációs fordított időrendben listáját adja vissza. Minden időszakban mutat a négy adatkészletek - BalanceSummary, UsageDetails, piactér-díjak és árlista API útvonala tulajdonságot tartalmaz.
+## <a name="helper-apis"></a>Segítő API-k
+ **Számlázási időszakok listázása** – a [Számlázási időszakok API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) olyan számlázási időszakok listáját adja vissza, amelyekben a megadott regisztráció felhasználási adatokkal fordított időrendi sorrendben szerepel. Minden egyes időszak tartalmaz egy tulajdonságot, amely az API-útvonalra mutat a négy BalanceSummary, a UsageDetails, a Piactéri díjak és az árlista számára.
 
 
-## <a name="api-response-codes"></a>API-válaszkódok   
-|Válasz állapotkódja|Message|Leírás|
+## <a name="api-response-codes"></a>API-válaszok kódjai   
+|Válasz állapotkód|Message|Leírás|
 |-|-|-|
 |200| OK|Nincs hiba|
-|401| Nem engedélyezett| API-kulcs nem található, érvénytelen, lejárt stb.|
-|404| Nem elérhető| A jelentés a végpont nem található|
-|400| Hibás kérelem| Érvénytelen paraméterek – dátumtartományokat, nagyvállalati szerződéssel rendelkező számokat stb.|
-|500| Hiba történt az adatkiszolgálón| Váratlan hiba történt a kérelem feldolgozása| 
+|401| Nem engedélyezett| Az API-kulcs nem található, érvénytelen, lejárt stb.|
+|404| Nem elérhető| A jelentési végpont nem található|
+|400| Hibás kérelem| Érvénytelen paraméterek – dátumtartomány, EA-számok stb.|
+|500| Kiszolgálóhiba| Váratlan hiba-feldolgozási kérelem| 
 
 
 

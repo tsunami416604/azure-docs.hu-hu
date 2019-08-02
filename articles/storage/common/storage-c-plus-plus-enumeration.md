@@ -1,47 +1,46 @@
 ---
-title: A Storage ügyféloldali kódtár az Azure Storage-erőforrások listázása C++ |} A Microsoft Docs
-description: Ismerje meg, a listaelem API-k használata a Microsoft Azure Storage ügyféloldali kódtára a C++ tárolók, blobok, üzenetsorok, táblák és entitások számbavétele.
-services: storage
+title: Azure Storage-erőforrások listázása a Storage ügyféloldali függvénytárával C++ | Microsoft Docs
+description: Megtudhatja, hogyan használhatja a Microsoft Azure Storage ügyféloldali függvénytárában C++ lévő API-kat a tárolók, blobok, várólisták, táblák és entitások enumerálásához.
 author: mhopkins-msft
-ms.service: storage
-ms.topic: article
-ms.date: 01/23/2017
 ms.author: mhopkins
-ms.reviewer: dineshm
+ms.date: 01/23/2017
+ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: edf50b97ff25a67b41bad266df9236145f288409
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.reviewer: dineshm
+ms.openlocfilehash: 3a87e39c9435ba02357b4b655e95e96666242b71
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146876"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721920"
 ---
-# <a name="list-azure-storage-resources-in-c"></a>A C++ Azure Storage-erőforrások listázása
-Listaelem műveletekre az Azure Storage számos fejlesztési forgatókönyvek kulcs. Ez a cikk ismerteti a leghatékonyabban számbavétele az objektumok az Azure Storage-ban a listaelem API-k a Microsoft Azure Storage ügyféloldali kódtára a c++ programnyelvhez.
+# <a name="list-azure-storage-resources-in-c"></a>Azure Storage-erőforrások listázása itt:C++
+
+A listázási műveletek kulcsfontosságúak az Azure Storage-ban számos fejlesztési forgatókönyvhöz. Ez a cikk azt ismerteti, hogyan lehet a leghatékonyabban enumerálni az Azure Storage-objektumokat a Microsoft Azure Storage ügyféloldali függvénytárában C++található List API-k használatával.
 
 > [!NOTE]
-> Ez az útmutató célozza meg benne az Azure Storage ügyféloldali kódtára a C++-verzió keresztül érhető el 2.x [NuGet](https://www.nuget.org/packages/wastorage) vagy [GitHub](https://github.com/Azure/azure-storage-cpp).
-> 
-> 
+> Ez az útmutató az Azure Storage ügyféloldali kódtárat C++ célozza meg a 2. x verzióhoz, amely a [NuGet](https://www.nuget.org/packages/wastorage) vagy a [githubon](https://github.com/Azure/azure-storage-cpp)keresztül érhető el.
 
-A Storage ügyféloldali kódtára számos módszer az Azure Storage-lista vagy a lekérdezés objektumokhoz biztosít. Ez a cikk foglalkozik a következő esetekben:
+A Storage ügyféloldali kódtár számos módszert biztosít az objektumok listázásához és lekérdezéséhez az Azure Storage-ban. Ez a cikk a következő forgatókönyveket tárgyalja:
 
-* Egy fiók tárolóit listája
-* Egy tárolót vagy virtuális blob könyvtárban lévő blobok listázása
-* Egy fiók üzenetsorok listázása
-* Egy fiók tábláira listája
-* Egy tábla lekérdezési entitások
+* Egy fiókban található tárolók listázása
+* Blobok listázása egy tárolóban vagy egy virtuális blob könyvtárában
+* Fiókban lévő várólisták listázása
+* Fiókban lévő táblák listázása
+* Entitások lekérdezése egy táblában
 
-Mindkét módszerhez jelenik meg a különböző helyzetekhez különböző túlterheléssel használatával.
+Ezek a módszerek különböző túlterhelések használatával jelennek meg a különböző forgatókönyvek esetében.
 
-## <a name="asynchronous-versus-synchronous"></a>A szinkron és aszinkron
-Mivel a használatra készült a Storage ügyféloldali kódtára a C++ a [C++ REST könyvtár](https://github.com/Microsoft/cpprestsdk), természetüknél fogva támogatjuk az aszinkron műveletek használatával [pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). Példa:
+## <a name="asynchronous-versus-synchronous"></a>Aszinkron és szinkron
+
+Mivel a Storage ügyféloldali kódtára C++ a [ C++ Rest-könyvtárra](https://github.com/Microsoft/cpprestsdk)épül, a [pplx:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html)paranccsal az aszinkron műveleteket is támogatjuk. Példa:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
 ```
 
-A szinkron műveletek burkolhatja a megfelelő aszinkron műveletek:
+A szinkron műveletek a megfelelő aszinkron műveleteket takarják el:
 
 ```cpp
 list_blob_item_segment list_blobs_segmented(const continuation_token& token) const
@@ -50,19 +49,20 @@ list_blob_item_segment list_blobs_segmented(const continuation_token& token) con
 }
 ```
 
-Ha több szálkezelési alkalmazásokkal vagy szolgáltatásokkal dolgozik, azt javasoljuk, hogy, használja az async API-k közvetlenül a szál létrehozása helyett hívni az API-kat, amelynek jelentős hatással van a teljesítményre szinkronizálása.
+Ha több többszálú alkalmazást vagy szolgáltatást használ, javasoljuk, hogy az aszinkron API-kat közvetlenül a szinkronizálási API-k meghívásához használja ahelyett, hogy a teljesítményre jelentős hatással lenne.
 
-## <a name="segmented-listing"></a>Szegmentált listázása
-A méretezési csoport, felhőalapú tárolás szükséges szegmentált listázása. Például rendelkezhet egy millió blobokat egy Azure blob-tárolóba vagy keresztül egymilliárd entitások Azure-táblában. Ezek nem a elméleti számok, de a valós használati esetek.
+## <a name="segmented-listing"></a>Szegmentált lista
 
-Éppen ezért nem célszerű feltételezni, egy egyetlen válaszként összes objektumok listája. Ehelyett listázhatja az objektumok lapozást. Az eredményablakban API-k mindegyike rendelkezik egy *szegmentált* túlterhelni.
+A felhőalapú tárolás méretezéséhez szegmentált lista szükséges. Például több mint egy millió blob található egy Azure Blob-tárolóban vagy egy milliárd entitásban egy Azure-táblában. Ezek nem elméleti számok, hanem valódi ügyfél-használati esetek.
 
-A válasz egy szegmentált listázási művelet tartalmazza:
+Ezért nem célszerű egyetlen válaszban lévő összes objektumot listázni. Ehelyett a lapozást használó objektumokat is listázhat. A tőzsdei API-k mindegyike *szegmentált* túlterheléssel rendelkezik.
 
-* <i>_segment</i>, amely azokat a egyetlen a tőzsdei API-hívással adott vissza eredményt.
-* *continuation_token*, amelyet átad az a következő hívást a következő lapra az eredmények lekérése érdekében. Ha nincs visszaadandó több találat, a folytatási kód értéke null.
+A szegmentált listázási műveletre adott válasz az alábbiakat tartalmazza:
 
-Például egy tipikus hívás a tárolóban lévő összes BLOB listáját az alábbi kódrészlet nézhet. A kód megtalálható az [minták](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp):
+* a *_segment*, amely a tőzsdei API-nak egyetlen hívása által visszaadott eredmények készletét tartalmazza.
+* *continuation_token*, amelyet a rendszer a következő hívásnak továbbít a találatok következő oldalának beolvasása érdekében. Ha nincs több eredmény a visszaadáshoz, a folytatási jogkivonat null értékű.
+
+A tárolóban lévő összes blob listázása például a következő kódrészlethez hasonló lehet. A kód a mintákban érhető [](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)el:
 
 ```cpp
 // List blobs in the blob container
@@ -87,7 +87,7 @@ do
 while (!token.empty());
 ```
 
-Vegye figyelembe, hogy a lap visszaadott eredmények számának a paraméter által szabályozható *max_results* az egyes API-t, például az egyik túlterhelése:
+Vegye figyelembe, hogy a lapon visszaadott eredmények száma az egyes API-k túlterhelése *max_results* paraméterrel szabályozható, például:
 
 ```cpp
 list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing,
@@ -95,14 +95,15 @@ list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, boo
     const blob_request_options& options, operation_context context)
 ```
 
-Ha nem adja meg a *max_results* paramétert, az alapértelmezett legfeljebb 5000 eredmények maximális értékét adja vissza egy oldalon.
+Ha nem adja meg a *max_results* paramétert, a rendszer legfeljebb 5000 eredmény alapértelmezett maximális értékét adja vissza egyetlen lapon.
 
-Vegye figyelembe, hogy egy lekérdezést az Azure Table storage vissza egy rekord sem, vagy értékénél kevesebb bejegyzést a *max_results* paraméter, amely a megadott, még akkor is, ha a folytatási token nem üres. Egyik oka az lehet, hogy a lekérdezés nem hajtható végre, öt másodperc. Mindaddig, amíg a folytatási token nem üres, továbbra is a lekérdezést, és a kód nem kell feltételezi szegmens eredmények méretét.
+Azt is vegye figyelembe, hogy az Azure Table Storage-beli lekérdezés nem adhat vissza rekordokat, vagy kevesebb rekordot, mint a megadott *max_results* paraméter, még akkor is, ha a folytatási jogkivonat nem üres. Ennek egyik oka az lehet, hogy a lekérdezés öt másodpercen belül nem fejeződött be. Mindaddig, amíg a folytatási jogkivonat nem üres, a lekérdezésnek folytatódnia kell, és a kód nem feltételezheti a szegmens eredményeinek méretét.
 
-A legtöbb esetben ajánlott kódolási minta szegmentált van, listázása, amely biztosítja, hogy tőzsdei vagy lekérdezéséhez és a szolgáltatás összes kérelemhez reakciója explicit előrehaladását. Különösen a c++ nyelven írt alkalmazások vagy szolgáltatások a listaelem folyamatban alacsonyabb szintű irányítását segíthet vezérlő – memória és teljesítmény.
+A legtöbb forgatókönyv esetén ajánlott kódolási minta a szegmentált lista, amely explicit módon mutatja be a listázási és lekérdezési folyamatokat, valamint azt, hogy a szolgáltatás hogyan válaszol az egyes kérelmekre. Különösen C++ alkalmazások vagy szolgáltatások esetében a tőzsdei folyamat alacsonyabb szintű felügyelete segíthet a memória és a teljesítmény szabályozásában.
 
-## <a name="greedy-listing"></a>Mohó listázása
-Korábbi verzióiban a Storage ügyféloldali kódtára a C++ (előzetes verziók 0.5.0-s és korábbi) része nem szegmentált eredményablakban API-k táblák és üzenetsorok, a következő példához hasonlóan:
+## <a name="greedy-listing"></a>Kapzsi felsorolás
+
+A Storage ügyféloldali kódtár korábbi verziói C++ (0.5.0 előzetes verzió és korábbi verziók) a nem szegmentált listázási API-kat tartalmazzák a táblákhoz és várólistákhoz, ahogy az alábbi példában is látható:
 
 ```cpp
 std::vector<cloud_table> list_tables(const utility::string_t& prefix) const;
@@ -110,13 +111,13 @@ std::vector<table_entity> execute_query(const table_query& query) const;
 std::vector<cloud_queue> list_queues() const;
 ```
 
-Ezek a metódusok lettek megvalósítva burkolókat szegmentált API-k. Az összes szegmentált listaelem válaszról a kód hozzáfűzi az eredményeket egy vektoros, és minden találatot eredményezett, miután a teljes tárolók fájlcímkék.
+Ezek a metódusok a szegmentált API-k burkolói lettek implementálva. A szegmentált listaelemekre adott válaszok esetében a kód hozzáfűzte az eredményeket egy vektorhoz, és az összes eredményt a teljes tárolók vizsgálata után adta vissza.
 
-Ez a megközelítés előfordulhat, hogy működnek, ha a storage-fiók vagy a tábla tartalmaz egy kis számú objektumok. Azonban objektumok számának növekedése, a memóriára van szükség megnövelheti korlátozás nélkül, mert az összes eredmény maradt a memóriában. Egy listázási művelet során, amely a hívó nem rendelkezett információkkal kapcsolatban a folyamat előrehaladását nagyon hosszú időt is igénybe vehet.
+Ez a megközelítés akkor működhet, ha a Storage-fiók vagy-tábla kis számú objektumot tartalmaz. Az objektumok számának növekedésével azonban a szükséges memória korlát nélkül növekedhet, mert az összes eredmény a memóriában marad. Az egyik listázási művelet nagyon hosszú időt vehet igénybe, amelynek során a hívó nem kapott információt a folyamatáról.
 
-Ezek mohó listaelem az SDK API-k nem létezik a C#, Java vagy a JavaScript Node.js környezetben. Ezek mohó API-k használatával, a lehetséges problémák elkerülése érdekében eltávolítottuk őket verziójában 0.6.0 előzetes verzió.
+Az SDK-ban a kapzsi listázási API-k C#nem léteznek, a Java vagy a JavaScript Node. js környezetben. A kapzsi API-k használatával kapcsolatos lehetséges problémák elkerülése érdekében a 0.6.0 előzetes verziójában eltávolította őket.
 
-Ha a kód hívja ezek mohó API-kat:
+Ha a kód a következő kapzsi API-kat hívja meg:
 
 ```cpp
 std::vector<azure::storage::table_entity> entities = table.execute_query(query);
@@ -126,7 +127,7 @@ for (auto it = entities.cbegin(); it != entities.cend(); ++it)
 }
 ```
 
-Ezután a kód a szegmentált listaelem API-k használatával kell módosítania:
+Ezután módosítania kell a kódot a szegmentált listázási API-k használatára:
 
 ```cpp
 azure::storage::continuation_token token;
@@ -142,22 +143,23 @@ do
 } while (!token.empty());
 ```
 
-Adja meg a *max_results* paramétert a szegmens, meg tudja osztani a kérések számát és a memóriahasználat vizsgálatával felel meg az alkalmazás teljesítményével kapcsolatos megfontolások között.
+A szegmens *max_results* paraméterének megadásával összekapcsolhatja a kérelmek és a memóriahasználat közötti egyensúlyt az alkalmazás teljesítménybeli szempontjainak kielégítése érdekében.
 
-Ezenkívül ha szegmentált listaelem API-kat használ, de az adatok tárolása a helyi gyűjtemény egy "mohó" stílusban, is javasoljuk, hogy refaktorovat a kódját egy helyi gyűjtés gondosan ipari méretekben történő adattároláshoz kezelésére.
+Emellett, ha szegmentált listázási API-kat használ, de az adatokat egy "kapzsi" stílusban tárolja egy helyi gyűjteményben, erősen ajánlott a kód újrabontása, hogy az adatokat egy helyi gyűjteményben gondosan, nagy méretben kezeljék.
 
-## <a name="lazy-listing"></a>Lusta listázása
-Bár a mohó listaelem kiváltása a potenciális problémákat, célszerű a ha ott nem túl sok objektumot a tárolóban.
+## <a name="lazy-listing"></a>Lusta lista
 
-C#- vagy Oracle Java SDK-k is használja, ha ismeri a enumerálható programozási modellt, így az a Lusta stílusú listázása, ahol az adatokat egy bizonyos eltolástól csak olvas be szükség esetén kell lennie. A C++ a iterátor-alapú sablon is hasonló megközelítést biztosít.
+Bár a kapzsi felsorolás potenciális problémákat okoz, érdemes lehet, ha a tárolóban nincs túl sok objektum.
 
-Egy tipikus Lusta listaelem API-t, használatával **list_blobs** például kell kinéznie:
+Ha a vagy az Oracle C# Java SDK-kat is használja, ismerkedjen meg a enumerable programozási modellel, amely egy lusta stílusú listát biztosít, ahol az adatok bizonyos eltolás esetén csak akkor lesznek beolvasva, ha szükségesek. A C++-ben az iteráció-alapú sablon hasonló megközelítést is biztosít.
+
+Egy tipikus lusta tőzsdei API, a **list_blobs** használatával példaként a következőképpen néz ki:
 
 ```cpp
 list_blob_item_iterator list_blobs() const;
 ```
 
-Egy tipikus kódrészlettel, amely a Lusta listaelem mintát használ, előfordulhat, hogy néznek ki:
+A lusta listaelemet használó tipikus kódrészlet a következőhöz hasonló lehet:
 
 ```cpp
 // List blobs in the blob container
@@ -175,27 +177,28 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 }
 ```
 
-Vegye figyelembe, hogy Lusta lista csak a szinkron módban érhető el.
+Vegye figyelembe, hogy a lusta lista csak szinkron módban érhető el.
 
-Képest mohó listaelem a Lusta listaelem lekérdezi adatok csak szükség esetén. Valójában azt kéri le adatokat az Azure Storage csak akkor, ha a következő iterátor helyezi át a következő szegmens. Ezért egy korlátozott méretű memória használata vezérli, és a művelet gyors.
+A kapzsi felsorolással összehasonlítva a lusta lista csak szükség esetén kéri le az adatokat. A borítók alatt az Azure Storage-ból származó adatok csak akkor kerülnek beolvasásra, ha a következő iteráció a következő szegmensbe kerül. Ezért a memóriahasználat határos mérettel van vezérelve, és a művelet gyors.
 
-Lusta listaelem API-k megtalálhatók a Storage ügyféloldali kódtára a C++-2.2.0-ás verzió.
+A "Lazy List" API-kat a rendszer a C++ következő verzióban tartalmazza a Storage ügyféloldali kódtáraban:.
 
 ## <a name="conclusion"></a>Összegzés
-Ebben a cikkben már volt szó az API-k listázása a különféle objektumokat, a Storage ügyféloldali kódtára a C++-osztálypéldányt. Összefoglalásképpen:
 
-* Aszinkron API-k erősen ajánlott több szálkezelési forgatókönyv szerint.
-* A legtöbb forgatókönyvhöz ajánlott szegmentált listázása.
-* Lusta listázása egy kényelmes burkolót szinkron forgatókönyvekben verzióként az erőforrástárban.
-* Mohó listaelem nem ajánlott, és el lett távolítva a könyvtárból.
+Ebben a cikkben különböző túlterheléseket beszéltünk a Storage ügyféloldali kódtár különböző objektumaihoz tartozó API-k listázásához C++ . Összefoglalás:
+
+* Az aszinkron API-k használata kifejezetten ajánlott több szálon.
+* A szegmentált lista a legtöbb esetben ajánlott.
+* A lusta lista a könyvtárban kényelmes burkolóként van megadva a szinkron helyzetekben.
+* A kapzsi felsorolás nem ajánlott, és el lett távolítva a könyvtárból.
 
 ## <a name="next-steps"></a>További lépések
-További információ Azure Storage- és ügyféloldali kódtára a C++ a következő forrásanyagokban talál.
 
-* [A c++ segítségével Blob Storage használata](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
-* [Hogyan használható a Table Storage, a c++ segítségével](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [A c++ segítségével a Queue Storage használata](../storage-c-plus-plus-how-to-use-queues.md)
-* [Az Azure Storage ügyféloldali kódtára a C++ API-dokumentáció esetén.](https://azure.github.io/azure-storage-cpp/)
+További információ az Azure Storage-ról és az C++ügyféloldali kódtáraról: az alábbi források.
+
+* [A Blob Storage használataC++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
+* [A Table Storage használataC++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
+* [A Queue Storage használataC++](../storage-c-plus-plus-how-to-use-queues.md)
+* [Az Azure Storage ügyféloldali kódtára C++ az API dokumentációjában.](https://azure.github.io/azure-storage-cpp/)
 * [Az Azure Storage csapat blogja](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Az Azure Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/)
-

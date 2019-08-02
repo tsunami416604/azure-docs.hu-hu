@@ -1,46 +1,47 @@
 ---
-title: Az Azure Container Registry feladatok leírása – YAML
-description: Útmutató a tevékenységek meghatározása a YAML ACR feladatokhoz, beleértve a feladat tulajdonságai, a lépés típusok, a lépés tulajdonságai és a beépített változók.
+title: Azure Container Registry feladatok hivatkozása – YAML
+description: Az ACR-feladatok YAML kapcsolatos feladatok definiálásának referenciája, beleértve a feladatok tulajdonságait, a lépések típusát, a lépés tulajdonságait és a beépített változókat.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: bdf88657c11bdb5ab5bcde97c155780328065c7e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 27c38f51104dfb170c59860c96a8e3a86973bb1e
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954471"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638913"
 ---
-# <a name="acr-tasks-reference-yaml"></a>ACR-feladatok leírása: YAML
+# <a name="acr-tasks-reference-yaml"></a>ACR-feladatok hivatkozása: YAML
 
-Többlépéses feladat meghatározása az ACR-feladatokban biztosít egy tároló-központú számítási primitívet létrehozásához, teszteléséhez és a javítással tárolók összpontosítanak. Ez a cikk ismerteti a parancsok, paraméterek, tulajdonságok és szintaxisa a YAML-fájlokat, amelyek meghatározzák a több lépésből álló feladatokat.
+Az ACR-feladatok többlépéses feladatának definíciója egy tároló-központú számítási primitívet biztosít a tárolók létrehozásához, teszteléséhez és javításához. Ez a cikk a több lépésből álló feladatokat definiáló YAML-fájlok parancsait, paramétereit, tulajdonságait és szintaxisát ismerteti.
 
-Ez a cikk az ACR feladatok YAML-fájlok létrehozása a többlépéses feladat hivatkozást tartalmaz. Ha szeretné, egy ACR-feladatok bemutatása, tekintse meg a [ACR feladatok áttekintése](container-registry-tasks-overview.md).
+Ez a cikk a többlépéses tevékenységek YAML-fájljainak ACR-feladatokhoz való létrehozását ismerteti. Ha szeretné bevezetni az ACR-feladatokat, tekintse meg az [ACR-feladatok áttekintését](container-registry-tasks-overview.md).
 
-## <a name="acr-taskyaml-file-format"></a>ACR-task.yaml fájlformátum
+## <a name="acr-taskyaml-file-format"></a>ACR-Task. YAML fájlformátum
 
-ACR-feladatok többlépéses feladat deklarace támogatja a szabványos YAML-szintaxisban. A tevékenység lépéseket egy YAML-fájlt határozhatja meg. Ezután a feladat futtatható manuálisan adja át a fájlt a [futtatása az acr] [ az-acr-run] parancsot. Vagy hozzon létre egy feladatot a fájl segítségével [az acr-feladat létrehozása] [ az-acr-task-create] , amely a Git commit vagy alap rendszerképet update automatikusan aktiválódik. Bár ez a cikk a webalkalmazásokra `acr-task.yaml` lépéseket tartalmazó fájlként ACR feladatok bármilyen érvényes fájlnevet az támogatja a [bővítmény támogatott](#supported-task-filename-extensions).
+Az ACR-feladatok támogatják a többlépéses feladatokat a szabványos YAML szintaxisban. Egy YAML-fájlban definiálhatja a feladatok lépéseit. Ezután manuálisan futtathatja a feladatot a fájl az az [ACR Run][az-acr-run] paranccsal való átadásával. Vagy a fájl használatával hozzon létre egy feladatot az [az ACR Task Create][az-acr-task-create] paranccsal, amelyet a git-véglegesítő vagy az alaprendszerkép frissítése automatikusan indít el. Bár ez a cikk a `acr-task.yaml` lépéseket tartalmazó fájlra hivatkozik, az ACR-feladatok a [támogatott kiterjesztésű](#supported-task-filename-extensions)érvényes fájlneveket támogatják.
 
-A legfelső szintű `acr-task.yaml` primitívekhez van **feladatok Tulajdonságok párbeszédpanelén**, **típusok lépés**, és **. lépés: Tulajdonságok**:
+A legfelső szintű `acr-task.yaml` primitívek a **feladatok tulajdonságai**, a **Step types**és a **Step tulajdonságok**:
 
-* [Feladatok Tulajdonságok párbeszédpanelén](#task-properties) vonatkozik az összes feladat a végrehajtás lépéseit. Van néhány globális feladat tulajdonságai, például:
+* A [Feladat tulajdonságai](#task-properties) a feladat-végrehajtás során minden lépésre érvényesek. A globális feladatok számos tulajdonsága létezik, beleértve a következőket:
   * `version`
   * `stepTimeout`
   * `workingDirectory`
-* [Tevékenység-lépés típusok](#task-step-types) képviseli, amely egy feladat elvégezhető műveletek a típusú. Három lépés típusa van:
+* A [feladat lépésének típusai](#task-step-types) a feladatban végrehajtható műveletek típusait jelölik. Három lépésből álló típus létezik:
   * `build`
   * `push`
   * `cmd`
-* [Lépés tulajdonságai feladat](#task-step-properties) paraméterek, amelyek egy adott lépés vonatkoznak. Van néhány lépés tulajdonságokat, beleértve:
+* A [feladat lépésének tulajdonságai](#task-step-properties) olyan paraméterek, amelyek egy adott lépésre vonatkoznak. Több lépésből álló tulajdonság is létezik, beleértve a következőket:
   * `startDelay`
   * `timeout`
   * `when`
-  * .. és sok más.
+  * ... és még sok más.
 
-Alapszintű formátumát egy `acr-task.yaml` fájlt, beleértve néhány gyakori lépés tulajdonságai követi. Nem egy teljes körű ábrázolása az összes elérhető lépés tulajdonságai vagy lépés adaptertípusok használata terén, míg az alapszintű fájlformátum gyors áttekintést biztosít.
+A `acr-task.yaml` fájlok alapformátuma, beleértve néhány gyakori lépés tulajdonságait is, az alábbiak szerint történik. Noha az összes rendelkezésre álló lépés tulajdonságai vagy a lépés típusának használata nem teljes körű, az egyszerű fájlformátum gyors áttekintést nyújt.
 
 ```yml
 version: # acr-task.yaml format version.
@@ -53,23 +54,23 @@ steps: # A collection of image or container actions.
     startDelay: # Step property that specifies the number of seconds to wait before starting execution.
 ```
 
-### <a name="supported-task-filename-extensions"></a>Támogatott feladat fájlnév-kiterjesztések
+### <a name="supported-task-filename-extensions"></a>Támogatott feladatok fájlnév-bővítményei
 
-ACR feladat lefoglalta már néhány fájlnév-bővítményeket, beleértve `.yaml`, hogy feladat-fájlként fogja feldolgozni. Minden bővítmény *nem* a következő lista az ACR-tevékenységre kell tekinteni egy docker-fájlban: .yaml, yml, .toml, .json, .sh, .bash, .zsh, .ps1, .ps, .cmd, .bat, .ts, .js, .php, .py, .rb, .lua
+Az ACR-feladatok több fájlnevet foglalnak `.yaml`magukban, például azt, hogy a rendszer feldolgozza a fájlt. Az alábbi listán *nem* szereplő bővítmények az ACR-feladatok Docker:. YAML,. YML,. toml,. JSON,. sh,. bash,. zsh,. ps1,. ps,. cmd,. bat,. TS,. js,. php,. Másolás,. RB,. lua
 
-YAML az ACR-feladatok által jelenleg támogatott egyetlen fájlformátum. A fájlnév bővítmények lehetséges jövőbeli támogatási számára vannak fenntartva.
+A YAML az ACR-feladatok által jelenleg támogatott fájlformátum. A többi filename-bővítmény a lehetséges jövőbeli támogatáshoz van fenntartva.
 
-## <a name="run-the-sample-tasks"></a>A minta-feladatok futtatása
+## <a name="run-the-sample-tasks"></a>A minta feladatok futtatása
 
-Ez a cikk a következő szakaszban hivatkozott több minta feladat fájlok vannak. A minta feladatokat egy nyilvános GitHub-adattárában vannak [Azure-Samples/acr-feladatok][acr-tasks]. Az Azure CLI-paranccsal futtathatja őket [futtatása az acr][az-acr-run]. A minta parancsok hasonlók:
+A jelen cikk következő részeiben több minta feladatsor található. A minta feladatok nyilvános GitHub-tárházban, [Azure-Samples/ACR-][acr-tasks]feladatokban találhatók. Ezeket az Azure CLI parancs az [ACR Run][az-acr-run]paranccsal futtathatja. A minta parancsai a következőhöz hasonlóak:
 
 ```azurecli
 az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 ```
 
-A minta parancsok formázását feltételezi, hogy konfigurálta egy alapértelmezett beállításjegyzéket az Azure CLI-ben, akkor hagyja ki a `--registry` paraméter. A beállításjegyzék egy alapértelmezett konfigurálásához használja a [az konfigurálása] [ az-configure] parancsot a `--defaults` paramétert, amely elfogadja egy `acr=REGISTRY_NAME` érték.
+A minta parancsok formázása feltételezi, hogy konfigurálta az alapértelmezett beállításjegyzéket az Azure CLI-ben, így kihagyják a `--registry` paramétert. Az alapértelmezett beállításjegyzék konfigurálásához használja az az [configure][az-configure] parancsot `--defaults` az paraméterrel, amely egy `acr=REGISTRY_NAME` értéket fogad el.
 
-Például egy alapértelmezett beállításjegyzék konfigurálása az Azure CLI "myregistry" nevű:
+Ha például az Azure CLI-t egy "myregistry" nevű alapértelmezett beállításjegyzékgel szeretné konfigurálni:
 
 ```azurecli
 az configure --defaults acr=myregistry
@@ -77,54 +78,54 @@ az configure --defaults acr=myregistry
 
 ## <a name="task-properties"></a>Feladat tulajdonságai
 
-Feladat tulajdonságai általában tetején jelennek meg egy `acr-task.yaml` fájlt, és a lépések végrehajtásának teljes egészében vonatkozó globális tulajdonságok vannak. Ezek a globális tulajdonságok némelyike belül egy adott lépés felülbírálható.
+A feladat tulajdonságai általában egy `acr-task.yaml` fájl tetején jelennek meg, és globális tulajdonságok, amelyek a feladat lépéseinek teljes végrehajtása során érvényesek. A globális tulajdonságok némelyike felülbírálható egy adott lépésen belül.
 
-| Tulajdonság | Típus | Optional | Leírás | Támogatott felülbírálása | Alapértelmezett érték |
+| Tulajdonság | Type | Választható | Leírás | Felülbírálás támogatott | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | string | Igen | A következő verziója a `acr-task.yaml` az ACR-feladatok szolgáltatás által elemzett fájlok. ACR-feladatok nagy hangsúlyt fektet a előző verziókkal való kompatibilitás megőrzése érdekében, miközben ez az érték engedélyezi ACR feladatok fenntartja a kompatibilitást belül egy meghatározott verzióra. Ha nincs megadva, alapértelmezés szerint a legújabb verzióra. | Nem | None |
-| `stepTimeout` | Int (másodperc) | Igen | Egy lépés futtathatja másodperc maximális számát. Ha a tulajdonság egy tevékenység van megadva, alapértelmezett beállítása `timeout` minden lépést tulajdonságát. Ha a `timeout` tulajdonság meg van adva egy lépésben, ez a beállítás felülbírálja a tulajdonság a tevékenységhez. | Igen | 600 (10 perc) |
-| `workingDirectory` | string | Igen | A tároló futásidőben munkakönyvtár. Ha a tulajdonság egy tevékenység van megadva, alapértelmezett beállítása `workingDirectory` minden lépést tulajdonságát. Ha meg van adva egy lépésben, ez a beállítás felülbírálja a tulajdonság a tevékenységhez. | Igen | `$HOME` |
-| `env` | [string, string,...] | Igen |  A karakterláncok tömbje `key=value` formátuma, hogy a feladat a környezeti változókat határozhat meg. Ha a tulajdonság egy tevékenység van megadva, alapértelmezett beállítása `env` minden lépést tulajdonságát. Ha meg van adva egy lépésben, ez a beállítás felülbírálja a feladat örökli a környezeti változók. | None |
-| `secrets` | [titkos, titkos kulcsot,...] | Igen | A tömb [titkos](#secret) objektumokat. | None |
-| `networks` | [hálózati, hálózati,...] | Igen | A tömb [hálózati](#network) objektumokat. | None |
+| `version` | Karakterlánc | Igen | Az ACR Tasks `acr-task.yaml` szolgáltatás által elemzett fájl verziója. Míg az ACR-feladatok a visszamenőleges kompatibilitás fenntartására törekednek, ez az érték lehetővé teszi az ACR-feladatok számára a kompatibilitás fenntartását egy meghatározott verzión belül. Ha nincs megadva, az alapértelmezett érték a legújabb verzió. | Nem | Nincsenek |
+| `stepTimeout` | int (másodperc) | Igen | A lépés által futtatható másodpercek maximális száma. Ha a tulajdonság meg van adva egy feladathoz, az az `timeout` összes lépés alapértelmezett tulajdonságát állítja be. Ha a `timeout` tulajdonságot egy lépésben adja meg, a felülbírálja a feladat által megadott tulajdonságot. | Igen | 600 (10 perc) |
+| `workingDirectory` | Karakterlánc | Igen | A tároló munkakönyvtára a futtatókörnyezetben. Ha a tulajdonság meg van adva egy feladathoz, az az `workingDirectory` összes lépés alapértelmezett tulajdonságát állítja be. Ha egy lépésben meg van adva, a felülbírálja a feladat által megadott tulajdonságot. | Igen | `$HOME` |
+| `env` | [karakterlánc, karakterlánc,...] | Igen |  A feladathoz `key=value` tartozó környezeti változókat meghatározó karakterláncok tömbje. Ha a tulajdonság meg van adva egy feladathoz, az az `env` összes lépés alapértelmezett tulajdonságát állítja be. Ha egy lépésben meg van adva, akkor felülbírálja a feladatból örökölt környezeti változókat. | Nincsenek |
+| `secrets` | [titok, titkos kód,...] | Igen | [Titkos](#secret) objektumok tömbje. | Nincsenek |
+| `networks` | [hálózat, hálózat,...] | Igen | [Hálózati](#network) objektumok tömbje. | None |
 
 ### <a name="secret"></a>secret
 
-A titkos kód objektum a következő tulajdonságokkal rendelkezik.
+A titkos objektum a következő tulajdonságokkal rendelkezik.
 
-| Tulajdonság | Típus | Optional | Leírás | Alapértelmezett érték |
+| Tulajdonság | Type | Választható | Leírás | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------- |
-| `id` | string | Nem | A titkos kulcs azonosítóját. | None |
-| `keyvault` | string | Igen | Az Azure Key Vault titkos URL-címe. | None |
-| `clientID` | string | Igen | Az ügyfél-azonosítója a felhasználó által hozzárendelt felügyelt identitás az Azure-erőforrásokhoz. | None |
+| `id` | Karakterlánc | Nem | A titok azonosítója. | None |
+| `keyvault` | Karakterlánc | Igen | A Azure Key Vault titkos URL-cím. | Nincsenek |
+| `clientID` | Karakterlánc | Igen | Az Azure-erőforrások [felhasználó által hozzárendelt felügyelt identitásának ügyfél-](container-registry-tasks-authentication-managed-identity.md) azonosítója. | None |
 
 ### <a name="network"></a>network
 
 A hálózati objektum a következő tulajdonságokkal rendelkezik.
 
-| Tulajdonság | Típus | Optional | Leírás | Alapértelmezett érték |
+| Tulajdonság | Type | Választható | Leírás | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | string | Nem | A hálózat nevét. | None |
-| `driver` | string | Igen | Az illesztőprogram, a hálózat kezeléséhez. | None |
-| `ipv6` | bool | Igen | IPv6 hálózatra engedélyezve van-e. | `false` |
-| `skipCreation` | bool | Igen | Hálózati teszthálózatban kell-e. | `false` |
-| `isDefault` | bool | Igen | A hálózat-e egy alapértelmezett hálózati biztosított az Azure Container Registryvel | `false` |
+| `name` | Karakterlánc | Nem | A hálózat neve. | Nincsenek |
+| `driver` | Karakterlánc | Igen | A hálózat kezelésére szolgáló illesztőprogram. | Nincsenek |
+| `ipv6` | bool | Igen | Azt jelzi, hogy engedélyezve van-e az IPv6-hálózat. | `false` |
+| `skipCreation` | bool | Igen | Megadhatja, hogy kihagyja-e a hálózat létrehozását. | `false` |
+| `isDefault` | bool | Igen | Azt határozza meg, hogy a hálózat az Azure Container Registry által biztosított alapértelmezett hálózat-e | `false` |
 
-## <a name="task-step-types"></a>Lépés tevékenységtípust
+## <a name="task-step-types"></a>Feladat lépésének típusai
 
-ACR-feladatok három lépés típusát támogatja. Minden lépés számos tulajdonságát, az egyes lépés a szakaszban részletes támogatja.
+Az ACR-feladatok három lépésből álló típusokat támogatnak. Minden lépés típusa több tulajdonságot is támogat, részletesen az egyes lépésekhez tartozó szakaszban.
 
 | Lépés típusa | Leírás |
 | --------- | ----------- |
-| [`build`](#build) | Létrehozza egy tároló rendszerképet ismerős `docker build` szintaxist. |
-| [`push`](#push) | Végrehajt egy `docker push` újonnan létrehozott vagy retagged lemezképek továbbíthat egy tárolóregisztrációs adatbázisba. A nyilvános Docker Hub, az Azure Container Registry és az egyéb privát tárolójegyzékek támogatottak. |
-| [`cmd`](#cmd) | A tároló átadott tárolóban, a parancs paraméterekkel fut `[ENTRYPOINT]`. A `cmd` lépés típusát támogatja a paraméterek `env`, `detach`, és más ismerős `docker run` parancs kapcsolóival, egység és funkcionális tesztelés egyidejű tároló végrehajtási engedélyezése. |
+| [`build`](#build) | Egy jól ismert `docker build` szintaxissal hozza létre a tároló képét. |
+| [`push`](#push) | Végrehajtja `docker push` az újonnan létrehozott vagy újracímkézett rendszerképeket egy tároló-beállításjegyzékbe. A Azure Container Registry, a többi privát beállításjegyzék és a nyilvános Docker hub is támogatott. |
+| [`cmd`](#cmd) | Futtat egy tárolót parancsként, a tárolónak `[ENTRYPOINT]`átadott paraméterekkel. A `cmd` lépés típusa támogatja a `detach`( `env`z), és más `docker run` , ismerős parancssori kapcsolókat, amelyek lehetővé teszik az egység és a funkcionális tesztelést egyidejű tároló-végrehajtással. |
 
-## <a name="build"></a>Build
+## <a name="build"></a>építeni
 
-Állítson össze egy tárolórendszerképet. A `build` lépés típusát jelöli futó több-bérlős, biztonságos módszert `docker build` egy első osztályú primitívet, a felhőben.
+Hozzon létre egy tároló-rendszerképet. A `build` lépés típusa egy több-bérlős, biztonságos működést `docker build` jelent a felhőben, amely első osztályú primitív.
 
-### <a name="syntax-build"></a>Szintaxis: létrehozása
+### <a name="syntax-build"></a>Szintaxis: build
 
 ```yml
 version: v1.0.0
@@ -133,44 +134,44 @@ steps:
     [property]: [value]
 ```
 
-A `build` lépés típusát a következő táblázatban a következő paramétereket támogatja. A `build` lépés típusát is támogatja az összes build beállításának a [docker build](https://docs.docker.com/engine/reference/commandline/build/) parancsot, mint például `--build-arg` buildelés változók beállítása.
+A `build` lépés típusa a következő táblázatban szereplő paramétereket támogatja. A `build` lépés típusa a [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) `--build-arg` parancs összes felépítési lehetőségét is támogatja, például a létrehozási idő változóinak beállítására.
 
-| Paraméter | Leírás | Optional |
+| Paraméter | Leírás | Választható |
 | --------- | ----------- | :-------: |
-| `-t` &#124; `--image` | Meghatározza a teljesen minősített `image:tag` , az összeállított rendszerképet.<br /><br />A feladat belső ellenőrzések funkcióteszteket, például képek használhatók, nem az összes rendszerkép szükséges `push` egy regisztrációs adatbázisba. Azonban egy feladat a végrehajtás belüli lemezkép példányt, a lemezkép kell hivatkozni egy nevet.<br /><br />Ellentétben `az acr build`, ACR-feladatok futtatása nem biztosít alapértelmezett leküldéses működését. ACR-feladatokat, az alapértelmezett forgatókönyv feltételezi, hogy hozhat létre, ellenőrizze, majd a rendszerkép leküldése lehetővé teszi. Lásd: [leküldéses](#push) igény szerint létrehozott leküldéses lemezképek kapcsolatban. | Igen |
-| `-f` &#124; `--file` | Adja meg a docker-fájlban átadott `docker build`. Ha nincs megadva, az alapértelmezett a környezet gyökérkönyvtárában található docker-fájlban feltételezzük. Adjon meg egy docker-fájlban, át kell adnia a fájlnevet a környezet gyökeréhez viszonyítva. | Igen |
-| `context` | A gyökérkönyvtár átadott `docker build`. Minden tevékenység gyökérkönyvtárában van beállítva, a megosztott [workingDirectory](#task-step-properties), és a kapcsolódó klónozott Git-könyvtár gyökerében tartalmazza. | Nem |
+| `-t` &#124; `--image` | Meghatározza a beépített rendszerkép `image:tag` teljes körű minősítését.<br /><br />Mivel a lemezképek belső feladatokhoz használhatók, például a funkcionális tesztek, nem minden rendszerképhez `push` szükséges egy beállításjegyzék. Ahhoz azonban, hogy egy adott rendszerkép egy adott feladat végrehajtásán belül legyen, a képnek hivatkoznia kell erre a névre.<br /><br />Az `az acr build`ACR-feladatok futtatása ellentétben nem biztosítja az alapértelmezett leküldéses viselkedést. Az ACR-feladatok esetében az alapértelmezett forgatókönyv feltételezi, hogy képes felépíteni, érvényesíteni, majd leküldeni egy rendszerképet. Lásd [](#push) : leküldés, hogyan lehet leküldeni a létrehozott rendszerképeket. | Igen |
+| `-f` &#124; `--file` | Megadja az átadott `docker build`Docker. Ha nincs megadva, a rendszer a környezet gyökerében lévő alapértelmezett Docker feltételezi. Docker megadásához adja át a fájlnevet a környezet gyökeréhez képest. | Igen |
+| `context` | Az átadott `docker build`gyökérkönyvtár. Az egyes feladatok gyökérkönyvtára egy megosztott [workingDirectory](#task-step-properties)van beállítva, és tartalmazza a társított git klónozott könyvtár gyökerét. | Nem |
 
-### <a name="properties-build"></a>Tulajdonságok: létrehozása
+### <a name="properties-build"></a>Tulajdonságok: létrehozás
 
-A `build` lépés az alábbi tulajdonságokat támogatja. Ezeket a tulajdonságokat, a részletek a [feladat lépés tulajdonságai](#task-step-properties) című szakaszát.
+A `build` lépés típusa a következő tulajdonságokat támogatja. A tulajdonságok részleteit a cikk [feladat lépés tulajdonságai](#task-step-properties) szakaszában találja.
 
 | | | |
 | -------- | ---- | -------- |
-| `detach` | bool | Optional |
-| `disableWorkingDirectoryOverride` | bool | Optional |
-| `entryPoint` | string | Optional |
-| `env` | [string, string,...] | Optional |
-| `expose` | [string, string,...] | Optional |
-| `id` | string | Optional |
-| `ignoreErrors` | bool | Optional |
-| `isolation` | string | Optional |
-| `keep` | bool | Optional |
-| `network` | objektum | Optional |
-| `ports` | [string, string,...] | Optional |
-| `pull` | bool | Optional |
-| `repeat` | int | Optional |
-| `retries` | int | Optional |
-| `retryDelay` | Int (másodperc) | Optional |
-| `secret` | objektum | Optional |
-| `startDelay` | Int (másodperc) | Optional |
-| `timeout` | Int (másodperc) | Optional |
-| `when` | [string, string,...] | Optional |
-| `workingDirectory` | string | Optional |
+| `detach` | bool | Választható |
+| `disableWorkingDirectoryOverride` | bool | Választható |
+| `entryPoint` | Karakterlánc | Választható |
+| `env` | [karakterlánc, karakterlánc,...] | Választható |
+| `expose` | [karakterlánc, karakterlánc,...] | Választható |
+| `id` | Karakterlánc | Választható |
+| `ignoreErrors` | bool | Választható |
+| `isolation` | Karakterlánc | Választható |
+| `keep` | bool | Választható |
+| `network` | object | Választható |
+| `ports` | [karakterlánc, karakterlánc,...] | Választható |
+| `pull` | bool | Választható |
+| `repeat` | int | Választható |
+| `retries` | int | Választható |
+| `retryDelay` | int (másodperc) | Választható |
+| `secret` | object | Választható |
+| `startDelay` | int (másodperc) | Választható |
+| `timeout` | int (másodperc) | Választható |
+| `when` | [karakterlánc, karakterlánc,...] | Választható |
+| `workingDirectory` | Karakterlánc | Választható |
 
-### <a name="examples-build"></a>Példák: létrehozása
+### <a name="examples-build"></a>Példák: build
 
-#### <a name="build-image---context-in-root"></a>Lemezkép - környezet gyökérszintű létrehozása
+#### <a name="build-image---context-in-root"></a>Rendszerkép-környezet létrehozása a gyökérben
 
 ```azurecli
 az acr run -f build-hello-world.yaml https://github.com/AzureCR/acr-tasks-sample.git
@@ -179,7 +180,7 @@ az acr run -f build-hello-world.yaml https://github.com/AzureCR/acr-tasks-sample
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/build-hello-world.yaml -->
 [!code-yml[task](~/acr-tasks/build-hello-world.yaml)]
 
-#### <a name="build-image---context-in-subdirectory"></a>Lemezkép - alkönyvtárában található cikkre hivatkozik környezet létrehozása
+#### <a name="build-image---context-in-subdirectory"></a>Rendszerkép létrehozása – környezet az alkönyvtárban
 
 ```yml
 version: v1.0.0
@@ -187,13 +188,13 @@ steps:
   - build: -t {{.Run.Registry}}/hello-world -f hello-world.dockerfile ./subDirectory
 ```
 
-## <a name="push"></a>Leküldéses
+## <a name="push"></a>nyomja
 
-Leküldéses egyet, vagy több beépített vagy retagged lemezképek továbbíthat egy tárolóregisztrációs adatbázisba. Hogyan lehet továbbítani rá, például az Azure Container Registry privát beállításjegyzékek, vagy a nyilvános Docker Hub támogatja.
+Egy vagy több létrehozott vagy újracímkézett rendszerkép leküldése egy tároló-beállításjegyzékbe. Támogatja a privát beállításjegyzékek, például a Azure Container Registry vagy a nyilvános Docker hub továbbítását.
 
-### <a name="syntax-push"></a>Szintaxis: leküldéses
+### <a name="syntax-push"></a>Szintaxis: leküldés
 
-A `push` lépés típusát támogatja a képek gyűjteménye. YAML-gyűjtemény szintaxis soron belüli és a beágyazott formátumokat támogatja. Hogyan lehet továbbítani rá egy lemezkép általában jelölt belső szintaxis használatával:
+A `push` lépés típusa támogatja a képek gyűjteményét. A YAML-gyűjtemény szintaxisa beágyazott és beágyazott formátumokat is támogat. Egy adott rendszerkép kitolása jellemzően beágyazott szintaxis használatával történik:
 
 ```yml
 version: v1.0.0
@@ -202,7 +203,7 @@ steps:
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
 ```
 
-A jobb olvashatóság érdekében szintaxissal beágyazott több lemezképet ügyelni:
+A jobb olvashatóság érdekében beágyazott szintaxist használjon több rendszerkép leküldésekor:
 
 ```yml
 version: v1.0.0
@@ -213,22 +214,22 @@ steps:
     - {{.Run.Registry}}/hello-world:latest
 ```
 
-### <a name="properties-push"></a>Tulajdonságok: leküldéses
+### <a name="properties-push"></a>Tulajdonságok: leküldés
 
-A `push` lépés az alábbi tulajdonságokat támogatja. Ezeket a tulajdonságokat, a részletek a [feladat lépés tulajdonságai](#task-step-properties) című szakaszát.
+A `push` lépés típusa a következő tulajdonságokat támogatja. A tulajdonságok részleteit a cikk [feladat lépés tulajdonságai](#task-step-properties) szakaszában találja.
 
 | | | |
 | -------- | ---- | -------- |
-| `env` | [string, string,...] | Optional |
-| `id` | string | Optional |
-| `ignoreErrors` | bool | Optional |
-| `startDelay` | Int (másodperc) | Optional |
-| `timeout` | Int (másodperc) | Optional |
-| `when` | [string, string,...] | Optional |
+| `env` | [karakterlánc, karakterlánc,...] | Választható |
+| `id` | Karakterlánc | Választható |
+| `ignoreErrors` | bool | Választható |
+| `startDelay` | int (másodperc) | Választható |
+| `timeout` | int (másodperc) | Választható |
+| `when` | [karakterlánc, karakterlánc,...] | Választható |
 
-### <a name="examples-push"></a>Példák: leküldéses
+### <a name="examples-push"></a>Példák: leküldés
 
-#### <a name="push-multiple-images"></a>Több rendszerképeket
+#### <a name="push-multiple-images"></a>Több rendszerkép leküldése
 
 ```azurecli
 az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -237,7 +238,7 @@ az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-t
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world.yaml -->
 [!code-yml[task](~/acr-tasks/build-push-hello-world.yaml)]
 
-#### <a name="build-push-and-run"></a>Hozhat létre, push és futtatása
+#### <a name="build-push-and-run"></a>Létrehozás, leküldés és Futtatás
 
 ```azurecli
 az acr run -f build-run-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -248,7 +249,7 @@ az acr run -f build-run-hello-world.yaml https://github.com/Azure-Samples/acr-ta
 
 ## <a name="cmd"></a>cmd
 
-A `cmd` lépés típus fut egy tárolót.
+A `cmd` lépés típusa egy tárolót futtat.
 
 ### <a name="syntax-cmd"></a>Szintaxis: cmd
 
@@ -260,38 +261,38 @@ steps:
 
 ### <a name="properties-cmd"></a>Tulajdonságok: cmd
 
-A `cmd` lépés típusát támogatja a következő tulajdonságokkal:
+A `cmd` lépés típusa a következő tulajdonságokat támogatja:
 
 | | | |
 | -------- | ---- | -------- |
-| `detach` | bool | Optional |
-| `disableWorkingDirectoryOverride` | bool | Optional |
-| `entryPoint` | string | Optional |
-| `env` | [string, string,...] | Optional |
-| `expose` | [string, string,...] | Optional |
-| `id` | string | Optional |
-| `ignoreErrors` | bool | Optional |
-| `isolation` | string | Optional |
-| `keep` | bool | Optional |
-| `network` | objektum | Optional |
-| `ports` | [string, string,...] | Optional |
-| `pull` | bool | Optional |
-| `repeat` | int | Optional |
-| `retries` | int | Optional |
-| `retryDelay` | Int (másodperc) | Optional |
-| `secret` | objektum | Optional |
-| `startDelay` | Int (másodperc) | Optional |
-| `timeout` | Int (másodperc) | Optional |
-| `when` | [string, string,...] | Optional |
-| `workingDirectory` | string | Optional |
+| `detach` | bool | Választható |
+| `disableWorkingDirectoryOverride` | bool | Választható |
+| `entryPoint` | Karakterlánc | Választható |
+| `env` | [karakterlánc, karakterlánc,...] | Választható |
+| `expose` | [karakterlánc, karakterlánc,...] | Választható |
+| `id` | sztring | Választható |
+| `ignoreErrors` | bool | Választható |
+| `isolation` | Karakterlánc | Választható |
+| `keep` | bool | Választható |
+| `network` | object | Választható |
+| `ports` | [karakterlánc, karakterlánc,...] | Választható |
+| `pull` | bool | Választható |
+| `repeat` | int | Választható |
+| `retries` | int | Választható |
+| `retryDelay` | int (másodperc) | Választható |
+| `secret` | object | Választható |
+| `startDelay` | int (másodperc) | Választható |
+| `timeout` | int (másodperc) | Választható |
+| `when` | [karakterlánc, karakterlánc,...] | Választható |
+| `workingDirectory` | Karakterlánc | Választható |
 
-Ezeket a tulajdonságokat az információk a [feladat lépés tulajdonságai](#task-step-properties) című szakaszát.
+Ezekről a tulajdonságokról a jelen cikk [feladat lépés tulajdonságai](#task-step-properties) szakaszában olvashat bővebben.
 
 ### <a name="examples-cmd"></a>Példák: cmd
 
-#### <a name="run-hello-world-image"></a>Hello-world rendszerképet futtatása
+#### <a name="run-hello-world-image"></a>A Hello-World rendszerkép futtatása
 
-Ez a parancs végrehajtása a `hello-world.yaml` feladat fájlt, amely hivatkozik a [hello-world](https://hub.docker.com/_/hello-world/) rendszerképet a Docker hubon.
+Ez a parancs végrehajtja `hello-world.yaml` a válaszfájlt, amely a Docker hub-on lévő [Hello-World](https://hub.docker.com/_/hello-world/) rendszerképre hivatkozik.
 
 ```azurecli
 az acr run -f hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -300,9 +301,9 @@ az acr run -f hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.yaml -->
 [!code-yml[task](~/acr-tasks/hello-world.yaml)]
 
-#### <a name="run-bash-image-and-echo-hello-world"></a>Futtassa a bash kép- és echo "hello world"
+#### <a name="run-bash-image-and-echo-hello-world"></a>Bash-rendszerkép és echo "Helló világ" futtatása
 
-Ez a parancs végrehajtása a `bash-echo.yaml` feladat fájlt, amely hivatkozik a [bash](https://hub.docker.com/_/bash/) rendszerképet a Docker hubon.
+Ez a parancs végrehajtja `bash-echo.yaml` a fájlt, amely a Docker hub [bash](https://hub.docker.com/_/bash/) -képére hivatkozik.
 
 ```azurecli
 az acr run -f bash-echo.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -311,11 +312,11 @@ az acr run -f bash-echo.yaml https://github.com/Azure-Samples/acr-tasks.git
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/bash-echo.yaml -->
 [!code-yml[task](~/acr-tasks/bash-echo.yaml)]
 
-#### <a name="run-specific-bash-image-tag"></a>Adott bash képcímke futtatása
+#### <a name="run-specific-bash-image-tag"></a>Adott bash-Képcímke futtatása
 
-Egy adott rendszerkép verziója fut, adja meg a címke a `cmd`.
+Egy adott rendszerkép-verzió futtatásához adja meg a címkét `cmd`a következőben:.
 
-Ez a parancs végrehajtása a `bash-echo-3.yaml` feladat fájlt, amely hivatkozik a [bash: 3.0](https://hub.docker.com/_/bash/) rendszerképet a Docker hubon.
+Ez a parancs végrehajtja `bash-echo-3.yaml` a válaszfájlt, amely a Docker hub [bash: 3.0](https://hub.docker.com/_/bash/) képére hivatkozik.
 
 ```azurecli
 az acr run -f bash-echo-3.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -324,9 +325,9 @@ az acr run -f bash-echo-3.yaml https://github.com/Azure-Samples/acr-tasks.git
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/bash-echo-3.yaml -->
 [!code-yml[task](~/acr-tasks/bash-echo-3.yaml)]
 
-#### <a name="run-custom-images"></a>Egyéni rendszerképek futtatása
+#### <a name="run-custom-images"></a>Egyéni lemezképek futtatása
 
-A `cmd` lépés típusát hivatkozik a képek normál használatával `docker run` formátumban. Beállításjegyzék mintametódus nem használ rendszerképeket rendszer feltételezi, hogy docker.io származik. Az előző példában egyaránt jeleníthető meg:
+A `cmd` lépés típusa a szabványos `docker run` formátum használatával hivatkozik a képekre. A beállításjegyzékbe nem tartozó rendszerképeket a rendszer feltételezi, hogy a docker.io származik. Az előző példában a következőképpen lehet megjeleníteni:
 
 ```yml
 version: v1.0.0
@@ -334,11 +335,11 @@ steps:
   - cmd: docker.io/bash:3.0 echo hello world
 ```
 
-A standard használatával `docker run` lemezkép a referencia-egyezmény `cmd` bármelyik privát tárolójegyzék vagy a nyilvános Docker Hub lemezképeket futtathat. Ha az ACR-tevékenység végrehajtása, amelyben ugyanazon regisztrációs adatbázisban található rendszerképek már hivatkozik, nem kell semmilyen a tárolójegyzék hitelesítő adatainak megadása.
+A standard szintű `docker run` képhivatkozási `cmd` konvenció használatával bármilyen titkos beállításjegyzékből vagy a nyilvános Docker hub-ból futtathat képeket. Ha ugyanabban a beállításjegyzékben hivatkozik a lemezképekre, amelyben az ACR-feladat végrehajtása történik, nincs szükség beállításjegyzékbeli hitelesítő adatok megadására.
 
-* Egy rendszerkép, amely egy Azure container registryből
+* Azure Container registryből származó rendszerkép futtatása
 
-    Cserélje le `[myregistry]` a tárolójegyzék nevére:
+    Cserélje `[myregistry]` le a nevet a beállításjegyzék nevére:
 
     ```yml
     version: v1.0.0
@@ -346,11 +347,11 @@ A standard használatával `docker run` lemezkép a referencia-egyezmény `cmd` 
         - cmd: [myregistry].azurecr.io/bash:3.0 echo hello world
     ```
 
-* A beállításjegyzék-hivatkozás Futtatás változóhoz generalize
+* A beállításjegyzék-hivatkozás általánosítása futtatási változóval
 
-    Fix kódolása a beállításjegyzék neve a helyett egy `acr-task.yaml` fájlt, azt teheti, hogy könnyebben hordozható használatával egy [változó futtatása](#run-variables). A `Run.Registry` változó, amelyben a feladat végrehajtása a beállításjegyzék nevére futásidőben bővül.
+    Ahelyett, hogy a beállításjegyzékbeli nevet `acr-task.yaml` a fájlban rögzítette, a futtatási [változó](#run-variables)használatával még hatékonyabbá teheti. A `Run.Registry` változó futásidőben lesz kibontva annak a beállításjegyzéknek a nevére, amelyben a feladatot végrehajtja.
 
-    Az előző feladat általánosítani, így az összes Azure container registryben működik, hivatkozhat a [Run.Registry](#runregistry) változót a rendszerkép neve:
+    Az előző feladat általánosítása érdekében, hogy az bármilyen Azure Container registryben működjön, hivatkozzon a [Run. Registry](#runregistry) változóra a rendszerkép nevében:
 
     ```yml
     version: v1.0.0
@@ -358,40 +359,40 @@ A standard használatával `docker run` lemezkép a referencia-egyezmény `cmd` 
       - cmd: {{.Run.Registry}}/bash:3.0 echo hello world
     ```
 
-## <a name="task-step-properties"></a>A feladat lépés tulajdonságai
+## <a name="task-step-properties"></a>Feladat lépésének tulajdonságai
 
-Minden lépés típusát támogatja a megfelelő ehhez a típushoz több tulajdonságát. Az alábbi táblázat az összes rendelkezésre álló lépés tulajdonság határozza meg. Nem minden lépés esetében támogatja az összes tulajdonság. Ezek a tulajdonságok közül melyik érhetők el az egyes lépés, olvassa el a [cmd](#cmd), [hozhat létre](#build), és [leküldéses](#push) típus szakaszok lépést.
+Az egyes lépésekhez tartozó típusok több, a típusához megfelelő tulajdonságot is támogatnak. A következő táblázat az összes elérhető lépés tulajdonságait meghatározza. Nem minden lépés típus támogatja az összes tulajdonságot. Ha szeretné megtekinteni, hogy mely tulajdonságok érhetők el az egyes lépésekhez, tekintse meg a [cmd](#cmd), a [Build](#build)és a leküldéses lépés típusa hivatkozás szakaszokat. [](#push)
 
-| Tulajdonság | Típus | Optional | Leírás | Alapértelmezett érték |
+| Tulajdonság | Type | Választható | Leírás | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------- |
-| `detach` | bool | Igen | Hogy a tároló kell lehet leválasztani futtatásakor. | `false` |
-| `disableWorkingDirectoryOverride` | bool | Igen | Hogy letiltandó-e `workingDirectory` felülírása funkciót. Ezzel együtt `workingDirectory` a munkakönyvtárban a tároló teljes körű irányítása. | `false` |
-| `entryPoint` | string | Igen | Felülbírálja a `[ENTRYPOINT]` egy lépés tároló. | None |
-| `env` | [string, string,...] | Igen | A karakterláncok tömbje `key=value` formátuma, hogy a lépés a környezeti változókat határozhat meg. | None |
-| `expose` | [string, string,...] | Igen | A tárolóból érhetők el portok tömbje. |  None |
-| [`id`](#example-id) | string | Igen | A lépés a feladatütemezés belül egyedileg azonosítja. A feladatütemezés más lépései egy lépés hivatkozhat `id`, mint a függőség ellenőrzése az ilyen `when`.<br /><br />A `id` egyben a futó tároló nevét. A feladat egyéb tárolókban futó folyamatok olvassa el a `id` a DNS-állomás név, vagy például eléréséhez a docker-naplók [id],. | `acb_step_%d`, ahol `%d` a lépés fentről lefelé a YAML-fájl 0-alapú indexe |
-| `ignoreErrors` | bool | Igen | Jelölje meg a sikeres, függetlenül attól, hogy a tároló végrehajtása során egy hiba történt a lépést kell-e. | `false` |
-| `isolation` | string | Igen | A tároló elkülönítési szintjét. | `default` |
-| `keep` | bool | Igen | E tároló a lépés végrehajtása után meg kell őrizni. | `false` |
-| `network` | objektum | Igen | Egy hálózatot, amelyben a tároló fut azonosítja. | None |
-| `ports` | [string, string,...] | Igen | Portok, a tárolóból a gazdagépre közzétett tömbje. |  None |
-| `pull` | bool | Igen | -E a tároló egy lekéréses kényszerítése minden gyorsítótárazási viselkedés megakadályozása végrehajtása előtt. | `false` |
-| `privileged` | bool | Igen | Kell védett módban a tároló fut-e. | `false` |
-| `repeat` | int | Igen | Ismételje meg a tároló végrehajtásának való próbálkozások száma. | 0 |
-| `retries` | int | Igen | Ha egy tárolót a végrehajtása sikertelen bejelentkezési kísérletet az újrapróbálkozások száma. Egy újrapróbálkozási kísérlet csak történik, ha a tároló kilépési kódja nullától eltérő. | 0 |
-| `retryDelay` | Int (másodperc) | Igen | A késleltetés másodpercben. a tároló végrehajtásának újrapróbálkozások között. | 0 |
-| `secret` | objektum | Igen | Egy Azure Key Vault titkos kulcsából, vagy az Azure-erőforrások felügyelt identitás azonosítja. | None |
-| `startDelay` | Int (másodperc) | Igen | Egy tároló végrehajtási késleltető másodpercek száma. | 0 |
-| `timeout` | Int (másodperc) | Igen | Legfeljebb ennyi másodpercig lépés előtt leállt lehet végrehajtani. | 600 |
-| [`when`](#example-when) | [string, string,...] | Igen | Egy vagy több lépést jelentenek a tevékenység egy lépés függőségi konfigurálja. | None |
-| `user` | string | Igen | A felhasználónév vagy a tároló egyedi azonosítója | None |
-| `workingDirectory` | string | Igen | Beállítja a munkakönyvtárban történő egy lépésben. Alapértelmezés szerint ACR feladatok, a munkakönyvtárban gyökérkönyvtár hoz létre. Azonban ha a build számos lépést tartalmaz, korábbi lépések megoszthatja összetevők későbbi lépésekben munkakönyvtára megadásával. | `$HOME` |
+| `detach` | bool | Igen | Azt jelzi, hogy a tárolót le kell-e választani a futtatáskor. | `false` |
+| `disableWorkingDirectoryOverride` | bool | Igen | Meghatározza, hogy `workingDirectory` le kell-e tiltani a felülbírálási funkciót. Ezzel együtt `workingDirectory` a paranccsal teljes mértékben szabályozhatja a tároló munkakönyvtárát. | `false` |
+| `entryPoint` | Karakterlánc | Igen | Felülbírálja `[ENTRYPOINT]` egy lépés tárolóját. | Nincsenek |
+| `env` | [karakterlánc, karakterlánc,...] | Igen | A lépés környezeti változóit meghatározó karakterláncok `key=value` tömbje. | Nincsenek |
+| `expose` | [karakterlánc, karakterlánc,...] | Igen | A tárolóból kitett portok tömbje. |  None |
+| [`id`](#example-id) | Karakterlánc | Igen | Egyedi módon azonosítja a lépést a tevékenységen belül. A feladat egyéb lépései hivatkozhatnak egy adott lépésre `id`, például a függőségi `when`ellenőrzésre a használatával.<br /><br />A `id` a futó tároló neve is. A feladat más tárolókban futó folyamatai a DNS-állomásnévként `id` , illetve a Docker-naplók [id] használatával való elérésére is hivatkozhatnak, például:. | `acb_step_%d`, ahol `%d` a a YAML-fájlban legfelüli lépés 0 alapú indexe |
+| `ignoreErrors` | bool | Igen | Azt jelzi, hogy a lépés sikeres-e, függetlenül attól, hogy hiba történt-e a tároló végrehajtása során. | `false` |
+| `isolation` | Karakterlánc | Igen | A tároló elkülönítési szintje. | `default` |
+| `keep` | bool | Igen | Azt határozza meg, hogy a lépés tárolóját a végrehajtás után kell-e megőrizni. | `false` |
+| `network` | object | Igen | Azonosítja azt a hálózatot, amelyben a tároló fut. | Nincsenek |
+| `ports` | [karakterlánc, karakterlánc,...] | Igen | A tárolóból a gazdagépre közzétett portok tömbje. |  None |
+| `pull` | bool | Igen | Azt határozza meg, hogy a tároló lekérését kényszerítse-e a gyorsítótár működésének megakadályozása érdekében. | `false` |
+| `privileged` | bool | Igen | Azt határozza meg, hogy a tárolót emelt szintű módban kívánja-e futtatni. | `false` |
+| `repeat` | int | Igen | A tárolók végrehajtásának megismétléséhez szükséges újrapróbálkozások száma. | 0 |
+| `retries` | int | Igen | Az újrapróbálkozások száma, ha egy tároló nem tudja végrehajtani a végrehajtását. Egy újrapróbálkozás csak akkor próbálkozik, ha egy tároló kilépési kódja nem nulla. | 0 |
+| `retryDelay` | int (másodperc) | Igen | A tároló végrehajtásának újrapróbálkozásai közötti késleltetés másodpercben. | 0 |
+| `secret` | object | Igen | Azonosít egy Azure Key Vault titkos vagy [felügyelt identitást az Azure](container-registry-tasks-authentication-managed-identity.md)-erőforrásokhoz. | Nincsenek |
+| `startDelay` | int (másodperc) | Igen | A tároló végrehajtásának késleltetéséhez szükséges másodpercek száma. | 0 |
+| `timeout` | int (másodperc) | Igen | A lépés megszakítása előtt legfeljebb ennyi másodpercig futhat. | 600 |
+| [`when`](#example-when) | [karakterlánc, karakterlánc,...] | Igen | A feladat egy vagy több lépésének függőségét konfigurálja. | Nincsenek |
+| `user` | Karakterlánc | Igen | Egy tároló felhasználóneve vagy UID azonosítója | None |
+| `workingDirectory` | sztring | Igen | Egy lépés munkakönyvtárának beállítása. Alapértelmezés szerint az ACR-feladatok létrehoznak egy gyökérkönyvtárat munkakönyvtárként. Ha azonban a Build több lépésből áll, a korábbi lépések megoszthatják az összetevőket a későbbi lépésekkel, ha ugyanazt a munkakönyvtárat adja meg. | `$HOME` |
 
-### <a name="examples-task-step-properties"></a>Példák: A feladat lépés tulajdonságai
+### <a name="examples-task-step-properties"></a>Példák: Feladat lépésének tulajdonságai
 
-#### <a name="example-id"></a>Példa: azonosítója
+#### <a name="example-id"></a>Példa: azonosító
 
-Két lemezképet, a példány egy funkcionális tesztelés céljára szolgál rendszerképet hozhat létre. Az egyes lépések egy egyedi által azonosított `id` a feladatütemezés más lépései a hivatkozó azok `when` tulajdonság.
+Hozzon létre két rendszerképet, egypéldányos egy funkcionális tesztet. Minden egyes lépést egy egyedi `id` azonosító határoz meg, amely a tevékenység hivatkozásának `when` más lépéseit a tulajdonságában.
 
 ```azurecli
 az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -402,14 +403,14 @@ az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-
 
 #### <a name="example-when"></a>Példa: Ha
 
-A `when` tulajdonság a további lépések belül a tevékenység egy lépés függőségi határozza meg. A paraméter két értéket támogatja:
+A `when` tulajdonság határozza meg a lépés függőségét a feladat egyéb lépésein belül. A két paraméter értékét támogatja:
 
-* `when: ["-"]` – Nincs a többi függőségi jelzi. A lépés megadása `when: ["-"]` azonnal megkezdődik végrehajtási, és lehetővé teszi a párhuzamos lépés végrehajtása.
-* `when: ["id1", "id2"]` – Azt jelzi, a lépés lépést olyan függővé `id` "id1" és a `id` "id2". Ez a lépés nem hajtható végre, amíg "id1" és "id2" is lépéseinek végrehajtása.
+* `when: ["-"]`– Más lépésektől eltérő függőséget jelez. Egy lépés megadásával `when: ["-"]` azonnal megkezdődik a végrehajtás, és lehetővé teszi az egyidejű lépések végrehajtását.
+* `when: ["id1", "id2"]`-Azt jelzi, hogy a lépés a " `id` ID1" és `id` a "ID2" lépésektől függ. Ez a lépés nem hajtható végre, amíg a "ID1" és a "ID2" lépések nem állnak készen.
 
-Ha `when` nincs megadva egy lépésben ezt a lépést az adott nyelvtől függ az előző lépés befejezése után a `acr-task.yaml` fájlt.
+Ha `when` nincs megadva egy lépésben, ez a lépés a `acr-task.yaml` fájl előző lépésének befejeződésétől függ.
 
-Egymás utáni lépés végrehajtási nélkül `when`:
+Szekvenciális lépés végrehajtása a `when`következő nélkül:
 
 ```azurecli
 az acr run -f when-sequential-default.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -418,7 +419,7 @@ az acr run -f when-sequential-default.yaml https://github.com/Azure-Samples/acr-
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/when-sequential-default.yaml -->
 [!code-yml[task](~/acr-tasks/when-sequential-default.yaml)]
 
-Az egymás utáni lépés végrehajtási `when`:
+Szekvenciális lépés végrehajtása a `when`következővel:
 
 ```azurecli
 az acr run -f when-sequential-id.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -427,7 +428,7 @@ az acr run -f when-sequential-id.yaml https://github.com/Azure-Samples/acr-tasks
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/when-sequential-id.yaml -->
 [!code-yml[task](~/acr-tasks/when-sequential-id.yaml)]
 
-Párhuzamos képeket hozhat létre:
+A Parallel images Build:
 
 ```azurecli
 az acr run -f when-parallel.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -436,7 +437,7 @@ az acr run -f when-parallel.yaml https://github.com/Azure-Samples/acr-tasks.git
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/when-parallel.yaml -->
 [!code-yml[task](~/acr-tasks/when-parallel.yaml)]
 
-Párhuzamos rendszerkép összeállítását és a függő tesztelése:
+Párhuzamos rendszerképek létrehozása és függő tesztelés:
 
 ```azurecli
 az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -445,9 +446,9 @@ az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/when-parallel-dependent.yaml -->
 [!code-yml[task](~/acr-tasks/when-parallel-dependent.yaml)]
 
-## <a name="run-variables"></a>Futtatási változók
+## <a name="run-variables"></a>Változók futtatása
 
-ACR-feladatok által elérhető lépések, ha azok végrehajtása változók alapértelmezett készletét tartalmazza. Ezek a változók a következő formátumban elérhetők `{{.Run.VariableName}}`, ahol `VariableName` a következők valamelyike:
+Az ACR-feladatok olyan alapértelmezett változókat tartalmaznak, amelyek a végrehajtás során elvégzendő feladatok végrehajtásához használhatók. Ezek a változók a formátum `{{.Run.VariableName}}`használatával érhetők el, ahol `VariableName` az a következők egyike:
 
 * `Run.ID`
 * `Run.Registry`
@@ -457,9 +458,9 @@ ACR-feladatok által elérhető lépések, ha azok végrehajtása változók ala
 
 ### <a name="runid"></a>Run.ID
 
-Minden egyes Futtatás keresztül `az acr run`, vagy az alapján létrehozott feladatok aktiválásához `az acr task create` rendelkezik egy egyedi azonosítót. Az azonosító a jelenleg végrehajtás alatt Futtatás jelöli.
+Az egyedi azonosítóval `az acr run` `az acr task create` létrehozott feladatok minden futtatása, átkapcsolása vagy trigger-alapú végrehajtása. Az azonosító a jelenleg futtatott futtatást jelöli.
 
-Jellemzően a egyedileg címkézés képet:
+Általában egy rendszerkép egyedi címkézéséhez használatos:
 
 ```yml
 version: v1.0.0
@@ -469,7 +470,7 @@ steps:
 
 ### <a name="runregistry"></a>Run.Registry
 
-A beállításjegyzék kiszolgáló teljes neve. Általában általános hivatkozhat a beállításjegyzékben, ahol a feladat futtatásához használható.
+A beállításjegyzék teljesen minősített kiszolgálójának neve. Általában arra használják, hogy általános referenciául szolgáljon arra a beállításjegyzékre, amelyben a feladat fut.
 
 ```yml
 version: v1.0.0
@@ -479,21 +480,21 @@ steps:
 
 ### <a name="rundate"></a>Run.Date
 
-Az aktuális UTC időpontig a Futtatás kezdete.
+A Futtatás jelenlegi UTC-ideje.
 
 ### <a name="runcommit"></a>Run.Commit
 
-Egy véglegesítés egy GitHub-adattárhoz, a véglegesítési azonosító által aktivált feladat.
+Egy GitHub-adattárba való véglegesítés által aktivált feladat esetén a véglegesítő azonosító.
 
-### <a name="runbranch"></a>Run.Branch
+### <a name="runbranch"></a>Futtatás. ág
 
-Egy GitHub-tárházban, a kiadásiág-nevet egy véglegesítés által aktivált feladat.
+Egy GitHub-adattárba való véglegesítés által aktivált feladatok esetében az ág neve.
 
 ## <a name="next-steps"></a>További lépések
 
-Többlépéses feladatok áttekintéséhez tekintse meg a [többlépéses buildelési, tesztelési és patch feladatok futtatása az ACR-feladatokban](container-registry-tasks-multi-step.md).
+A többlépéses feladatok áttekintését a [több lépésből álló Build-, tesztelési és javítási feladatok futtatása az ACR-](container-registry-tasks-multi-step.md)feladatokban című témakörben tekintheti meg.
 
-Egylépéses épít, lásd: a [ACR feladatok áttekintése](container-registry-tasks-overview.md).
+Az egylépéses buildek esetében tekintse meg az [ACR-feladatok áttekintését](container-registry-tasks-overview.md).
 
 <!-- IMAGES -->
 

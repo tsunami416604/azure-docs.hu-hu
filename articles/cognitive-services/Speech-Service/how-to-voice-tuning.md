@@ -1,7 +1,7 @@
 ---
-title: Szöveg-hang transzformációs kimenet – beszédszolgáltatások finomhangolása
+title: Szöveg-beszéd kimeneti-beszédfelismerési szolgáltatás finomhangolása
 titleSuffix: Azure Cognitive Services
-description: A beszédfelismerés SDK naplózásának engedélyezése.
+description: Engedélyezze a naplózást a Speech SDK-ban.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,66 +10,66 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 94b58279b1a9fd4d9acdb4183f59b0a8579c17fd
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 4cf2338d76ce31f44eaf3fb235e5f8796602d819
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606446"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562739"
 ---
 # <a name="fine-tune-text-to-speech-output"></a>Szövegfelolvasási kimenet finomhangolása
 
-Az Azure Speech a szolgáltatások lehetővé teszik a sebesség, írásmódja, kötet, felébresztve és körvonalának használatával kimeneti szöveg-hang transzformációs [Speech összefoglaló Markup Language (SSML)](speech-synthesis-markup.md). SSML egy XML-alapú jelölőnyelv, amely tájékoztatja a szolgáltatást milyen funkcióhoz hangolása címkék segítségével. A SSML majd üzenettel a szöveg-hang transzformációs szolgáltatás minden kérés törzsében. A testreszabás egyszerűbbé a beszédfelismerési szolgáltatás most már olyan egy [hangalapú hangolása](https://aka.ms/voicetuning) eszköz, amellyel vizuálisan vizsgálatát és finomhangolása az szöveg-hang transzformációs kimenete valós időben.
+Az Azure Speech Services lehetővé teszi a szöveg-beszéd kimenet sebességének, kiejtésének, mennyiségének, dobásának és kontúrjának módosítását a [Speech szintézis Markup Language (SSML)](speech-synthesis-markup.md)használatával. A SSML egy XML-alapú Markup Language, amely címkék használatával tájékoztatja a szolgáltatást arról, hogy milyen szolgáltatásra van szükség a hangoláshoz. Ezután a SSML üzenetet küldi a rendszer az egyes kérések törzsében a szöveg-beszéd szolgáltatásnak. A testreszabási folyamat leegyszerűsítése érdekében a Speech Services most [](https://aka.ms/voicetuning) egy hanghangolási eszközt is kínál, amellyel valós időben vizsgálhatja és finomíthatja a szöveg-beszéd kimeneteket.
 
-A szóbeli hangolása eszköz támogatja a Microsoft [standard](language-support.md#standard-voices), [Neurális](language-support.md#text-to-speech), és [egyéni beszédhangot](how-to-customize-voice-font.md).
+A hanghangolási eszköz támogatja a Microsoft [szabványos](language-support.md#standard-voices), [neurális](language-support.md#text-to-speech)és [Egyéni hangját](how-to-customize-voice-font.md).
 
-## <a name="get-started-with-the-voice-tuning-tool"></a>A beszédfelismerési hangolása eszköz használatának első lépései
+## <a name="get-started-with-the-voice-tuning-tool"></a>Ismerkedés a hanghangolási eszközzel
 
-A szöveg-hang transzformációs kimenetet a hangalapú hangolása eszközzel való elősegítésével előtt el kell hajtsa végre az alábbi lépéseket:
+Mielőtt elkezdené a szöveg-beszéd kimenet finomhangolását a hanghangolás eszközzel, el kell végeznie az alábbi lépéseket:
 
-1. Hozzon létre egy [Microsoft-fiók ingyenes](https://account.microsoft.com/account) Ha még nem rendelkezik.
-2. Hozzon létre egy [ingyenes Azure-fiók](https://azure.microsoft.com/free/) Ha még nem rendelkezik. Kattintson a **ingyenes próba megkezdése**, és az új Azure-fiók létrehozása a Microsoft-fiókjával.
+1. Ha még nem rendelkezik ilyennel, hozzon létre egy [ingyenes Microsoft-fiók](https://account.microsoft.com/account) .
+2. Ha még nem rendelkezik ilyennel, hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) . Kattintson az **ingyenes indítás**lehetőségre, és hozzon létre egy új Azure-fiókot a Microsoft-fiók használatával.
 
-3. Beszédszolgáltatások előfizetés létrehozása az Azure Portalon. Részletes útmutató [speech erőforrás létrehozása](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) érhetők el.
+3. Hozzon létre egy Speech Services-előfizetést a Azure Portal. A [beszédfelismerési erőforrások létrehozásával](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) kapcsolatos részletes utasítások érhetők el.
    >[!NOTE]
-   >Beszéd erőforrás létrehozásakor az Azure Portalon az Azure-beli hely információkat kell felel meg a szöveg-beszéd átalakítás hangalapú régióban. Neurális beszédfelismerő támogat egy sub Azure-helyen. Támogatási teljes listáját lásd: [régiók](regions.md#text-to-speech).
+   >Amikor létrehoz egy beszédfelismerési erőforrást a Azure Portalban, az Azure-beli hely adatainak egyezniük kell a TTS hangterülettel. A neurális TTS hang támogatja az Azure-beli helyszínek egy alkészletét. A támogatás teljes listáját a [régiók](regions.md#text-to-speech)című részben tekintheti meg.
 
    >[!NOTE]
-   >Szüksége lesz egy F0 vagy az Azure Portalon hozza létre a szolgáltatás használata előtt S0 kulcsot. Hangolási hangtípus **nem** támogatja a [30 napos ingyenes próbaverzió kulcs](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started?branch=release-build-cogserv-speech-services#free-trial).
+   >A szolgáltatás használata előtt létre kell hoznia egy F0 vagy egy S0-kulcsot a Azure Portalban. A hanghangolás **nem** támogatja a [30 napos ingyenes próbaverziós kulcsot](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started?branch=release-build-cogserv-speech-services#free-trial).
 
-4. Jelentkezzen be a [hangalapú hangolása](https://aka.ms/voicetuning) -portálon, és csatlakozzon a Speech Services-előfizetés. Válasszon egy beszédszolgáltatások előfizetéssel, és ezután hozzon létre egy projektet.
-5. Válassza ki **új hangolása**. Ezután kövesse az alábbi lépéseket:
+4. Jelentkezzen be a [](https://aka.ms/voicetuning) hanghangolási portálra, és kapcsolódjon a Speech Services-előfizetéshez. Válasszon egyetlen Speech Services-előfizetést, majd hozzon létre egy projektet.
+5. Válassza az **új hangolás**lehetőséget. Ezután kövesse az alábbi lépéseket:
 
-   * Keresse meg és jelölje ki **minden előfizetés**.  
+   * Keresse meg és válassza ki **az összes**előfizetést.  
    * Válassza ki **csatlakozás meglévő előfizetés**.  
-     ![Csatlakozás a meglévő előfizetés](./media/custom-voice/custom-voice-connect-subscription.png).
-   * Adja meg az Azure Speech Services előfizetési kulcs, majd válassza ki **Hozzáadás**. Az előfizetési kulcsok a Speech testreszabási portálon érhetők el a [előfizetések lapján](https://go.microsoft.com/fwlink/?linkid=2090458). Az erőforrás-kezelés panelről is sikerült beolvasni a kulcsokat a [az Azure portal](https://portal.azure.com/).
-   * Ha több mint beszédszolgáltatások előfizetéssel rendelkezik, amelyet használni szeretne, ismételje meg ezeket a lépéseket minden egyes előfizetés esetén.
+     ![Meglévő előfizetés](./media/custom-voice/custom-voice-connect-subscription.png)összekötése.
+   * Adja meg az Azure Speech Services előfizetési kulcsát, majd kattintson a **Hozzáadás**gombra. Az előfizetési kulcsok az [előfizetés lapról](https://go.microsoft.com/fwlink/?linkid=2090458)elérhető Speech customization Portalon érhetők el. A kulcsok a [Azure Portal](https://portal.azure.com/)erőforrás-kezelés paneljén is beszerezhetők.
+   * Ha több, a használni kívánt Speech Services-előfizetéssel rendelkezik, ismételje meg ezeket a lépéseket minden előfizetéshez.
 
-## <a name="customize-the-text-to-speech-output"></a>A szöveg-hang transzformációs kimeneti testreszabása
+## <a name="customize-the-text-to-speech-output"></a>A szöveg és a beszéd közötti kimenet testreszabása
 
-Most, hogy létrehozta a fiókok és az előfizetés csatolva, elkezdheti a szöveg-hang transzformációs kimeneti hangolása.
+Most, hogy létrehozta a fiókokat, és összekapcsolta az előfizetését, megkezdheti a szöveg-beszéd kimenet finomhangolását.
 
-1. Válassza ki a hangot.
-2. Adjon meg a szerkeszteni kívánt szöveg.
-3. A kezdéshez szerkesztéseket hanglejátszás betekintést nyerhet a kimenethez.
-4. Válassza ki a word/mondat finomítani szeretné, és kísérletezzen a különböző SSML-alapú függvényekkel.
+1. Válasszon egy hangot.
+2. Adja meg a szerkeszteni kívánt szöveget.
+3. A szerkesztés megkezdése előtt játssza le a hanganyagot, hogy az a kimenetet is felhasználja.
+4. Válassza ki a módosítandó szót/mondatot, és kezdjen el kísérletezni különböző SSML-alapú függvényekkel.
 
 >[!TIP]
-> SSML módosításával és Finomhangolás a hangalapú kimeneti kapcsolatos részletes információkért lásd: [Speech összefoglaló Markup Language (SSML)](speech-synthesis-markup.md).
+> A SSML beállításával és a hangkimenet hangolásával kapcsolatos részletes információkért lásd: [Speech szintézis Markup Language (SSML)](speech-synthesis-markup.md).
 
 ## <a name="limitations"></a>Korlátozások
 
-Neurális hangalapú hangolásra kismértékben eltér a Standard és egyéni beszédhangot hangolása.
+A neurális hang finomhangolása némileg eltér a standard és az egyéni hangok finomhangolásával.
 
-* Intonation Neurális beszédhangot nem támogatott.
-* Lényegét és mennyiségi funkciók csak a teljes mondatokból dolgozhat. Ezek a funkciók nem érhetők el a word szintjén.
-* A sebesség néhány Neurális beszédhangot alapján szavak, míg mások igényelnek, hogy válassza ki a teljes mondatokból hangolásával.
+* A hanglejtés nem támogatott a neurális hangok esetében.
+* A szurok és a kötet funkciói csak teljes mondatokkal működnek. Ezek a funkciók a szó szintjén nem érhetők el.
+* A díjszabás miatt bizonyos neurális hangokat a szavak alapján lehet hangolni, míg mások a teljes mondatok kiválasztását igénylik.
 
 > [!TIP]
-> A beszédfelismerési hangolása eszköz környezetfüggő arról nyújt tájékoztatást funkciók és a finomhangolással kapcsolatban.
+> A hanghangolási eszköz környezetfüggő információkat biztosít a funkciókról és a hangolásról.
 
 ## <a name="next-steps"></a>További lépések
-* [Beszéd erőforrás létrehozása az Azure-ban](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)
-* [Hangalapú hangolás elkezdéséhez](https://speech.microsoft.com/app.html#/VoiceTuning)
-* [Beszéd összefoglaló Markup Language (SSML)](speech-synthesis-markup.md)
+* [Beszédfelismerési erőforrás létrehozása az Azure-ban](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)
+* [Hang hangolásának megkezdése](https://speech.microsoft.com/app.html#/VoiceTuning)
+* [Speech szintézis Markup Language (SSML)](speech-synthesis-markup.md)

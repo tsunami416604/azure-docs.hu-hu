@@ -1,93 +1,155 @@
 ---
-title: A beépített operational analytics az Azure Cosmos DB az Apache Spark bemutatása
-description: Ismerje meg, hogyan használhatja a beépített támogatással az Apache Spark az Azure Cosmos DB működési elemzések és a mesterséges Intelligencia futtatása
+title: A Azure Cosmos DB beépített operatív elemzésének bemutatása Apache Spark
+description: Megtudhatja, hogyan használhatja a Azure Cosmos DB Apache Spark beépített támogatását a működési elemzések és AI-k futtatásához
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 05/23/2019
+ms.date: 08/01/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: b392f7fd6438b25a741aecb86a72f142d785f0e3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 3fd7990043543b92eb3daf8ec699ec58db3387ec
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237903"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717567"
 ---
-# <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark-preview"></a>Beépített működési elemzések az Azure Cosmos DB az Apache Spark (előzetes verzió) 
+# <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark-preview"></a>Beépített operatív Analitika Azure Cosmos DBban Apache Spark (előzetes verzió) 
 
-A beépített támogatással az Azure Cosmos DB Apache Spark lehetővé teszi elemzések futtatására az Apache Spark az Azure Cosmos-fiókban tárolt adatok alapján. Az Apache Spark-feladatok végrehajtására közvetlenül a globálisan elosztott Cosmos-adatbázis a natív támogatást biztosít. Ezekkel a lehetőségekkel fejlesztők, az adatmérnökök és az adatelemzők használható Azure Cosmos DB, egy rugalmas, méretezhető, és nagy teljesítményű adatplatform is futtatnia **OLTP és OLAP/HTAP** számítási feladatokhoz. 
+A Azure Cosmos DB Apache Spark beépített támogatása lehetővé teszi az elemzések futtatását Apache Spark az Azure Cosmos-fiókban tárolt adatokkal. Natív támogatást nyújt Apache Spark feladatok végrehajtásához közvetlenül a globálisan elosztott Cosmos-adatbázisokon. Ezekkel a képességekkel a fejlesztők, adatmérnökök és adatszakértők a Azure Cosmos DB rugalmas, méretezhető és teljesítményű adatplatformként használhatják a **OLTP és az OLAP/HTAP** számítási feladatok futtatására is. 
 
-A Spark számítási automatikusan elérhető összes Azure-régióban társítva van az Azure Cosmos-fiók. Spark-feladatok használata az Azure Cosmos DB több főkiszolgálós képesség, és írás vagy a helyi replikák az egyes régiókban lekérdezésének. 
+A Spark-számítás automatikusan elérhető az Azure Cosmos-fiókhoz társított összes Azure-régióban. A Spark-feladatok az Azure Cosmos DB több főkiszolgálós képességeit használják, és az egyes régiókban a helyi replikák írására és lekérdezésére képesek. 
 
 > [!NOTE]
-> A beépített támogatással az Azure Cosmos DB Apache Spark jelenleg korlátozott előzetes verzióban érhető el. Regisztráljon az előzetes verzióra, navigáljon a [regisztráljon az előzetes verziójú szolgáltatásainak weblapján](https://portal.azure.com/?feature.customportal=false#create/Microsoft.DocumentDB). 
+> A Azure Cosmos DB Apache Spark beépített támogatása jelenleg korlátozott előzetes verzióban érhető el. Az előzetes verzióra való feliratkozáshoz navigáljon az [előnézet lapra](https://portal.azure.com/?feature.customportal=false#create/Microsoft.DocumentDB). 
 
-Az Apache Spark-támogatás az Azure Cosmos DB az alábbi előnyöket biztosítja:
+A Azure Cosmos DB Apache Spark támogatása a következő előnyöket kínálja:
 
-* A földrajzilag elosztott felhasználók és az adatok a leggyorsabb Insight kérheti le.
+* A leggyorsabban betekintést nyerhet a földrajzilag elosztott felhasználók és információk adataiba.
 
-* A megoldást és az alacsonyabb architektúrájának egyszerűsítheti a [teljes tulajdonosi költség](total-cost-ownership.md) (TCO). A rendszer a legkevésbé fog rendelkezni az adatfeldolgozás összetevők száma, és elkerülhetők a közöttük lévő bármely szükségtelen adatáthelyezés.
+* Egyszerűbbé teheti a megoldás architektúráját, és csökkentheti a [teljes tulajdonlási költséget](total-cost-ownership.md) (TCO). A rendszer a legkevesebb adatfeldolgozási összetevőt fogja tartalmazni, és elkerüli a szükségtelen adatáthelyezést.
 
-* Létrehoz egy [biztonsági](secure-access-to-data.md), [megfelelőségi](compliance.md), és a naplózási határ, amely felügyelet alá az összes adatot tartalmazza.
+* [Biztonsági](secure-access-to-data.md), megfelelőségi [](compliance.md)és naplózási határt hoz létre, amely magában foglalja a felügyelet alatt lévő összes adat körét.
 
-* "Az always on" biztosít vagy [magas rendelkezésre állású](high-availability.md) végfelhasználói analytics által szerint szigorúbb SLA-k.
+* A "always on" vagy a [magasan elérhető](high-availability.md) végfelhasználói elemzéseket biztosít, amelyeket a szigorú SLA-kat támogat.
 
-![Az Apache Spark támogatása az Azure Cosmos DB-Vizualizáció](./media/spark-api-introduction/spark-api-visualization.png)
+![Apache Spark támogatás Azure Cosmos DB vizualizációban](./media/spark-api-introduction/spark-api-visualization.png)
  
-Az Azure Cosmos DB az Apache Spark-támogatás révén létrehozása és üzembe helyezése a megoldásokra, például a mesterséges Intelligencia és a deep learning-modellek, a prediktív elemzés, a javaslatokat, IoT, a customer 360, a csalások észlelése, a szöveg véleményeket, a kattintássorozat-elemzés. Ezek a megoldások közvetlenül az Azure Cosmos DB adatokon működnek.
+A Azure Cosmos DB Apache Spark támogatásával olyan megoldásokat építhet ki és helyezhet üzembe, mint például az AI és a Deep learning-modellek, a prediktív elemzések, a javaslatok, a IoT, az ügyfél 360, a csalások észlelése, a szöveg hangulata, a kattintássorozat-elemzés. Ezek a megoldások közvetlenül a Azure Cosmos DB adatain működnek.
 
-Állítsa be a batch és ETL-feladat az Azure Cosmos DB, streaming, nyissa meg az adatbázis-szolgáltatás kívül, és adjon hozzá további nélkül számítási szolgáltatásokhoz is. Ha az ETL-feladat végrehajtása, és skálázza fel a feladat végrehajtása után le kell rugalmasan méretezheti a számítási környezetet.
+Megadhatja a Batch és az ETL Azure Cosmos DB-feladatot, anélkül, hogy az adatbázis-szolgáltatáson kívül kellene lépnie, vagy további számítási szolgáltatásokat kellene hozzáadnia. A számítási környezet rugalmasan méretezhető, ha ETL-feladatot kell végrehajtania, és a feladatot a feladatok elvégzése után vissza kell méreteznie.
 
-Az Apache Spark-támogatás az Azure Cosmos DB nyújt az Apache Spark-modulok beépített Machine Learning támogatást. A modulok közé tartozik a Spark MLLib, a Microsoft gépi tanulás a Spark, Azure Machine Learning és a Cognitive Services. Az alábbi funkciók tartoznak az adatszakértők, adatmérnökök és az adatelemzők létrehozhat és üzembe helyezése a machine learning-modellek közvetlenül az Azure Cosmos DB, az idő és az alacsony költségű tört belül.
+A Azure Cosmos DB Apache Spark támogatása beépített Machine Learning támogatást kínál a Apache Spark-futtatókörnyezetekben. A futtatókörnyezetek a Spark MLLib, a Microsoft Machine Learning a Spark, a Azure Machine Learning és a Cognitive Services esetében is használhatók. Ezekkel a funkciókkal az adatszakértők, adatmérnökök és adatelemzők közvetlenül a Azure Cosmos DB belül hozhatnak létre és működővé tenni gépi tanulási modelleket, az idő töredékében és alacsony költségek mellett.
 
 
 ## <a name="key-benefits"></a>Főbb előnyök
 
-### <a name="globally-distributed-low-latency-operational-analytics-and-ai"></a>Globálisan elosztott, alacsony késleltetésű működési elemzések és a mesterséges Intelligencia
+### <a name="globally-distributed-low-latency-operational-analytics-and-ai"></a>Globálisan elosztott, kis késleltetésű operatív elemzés és AI
 
-Az Apache Spark on a globálisan elosztott Azure Cosmos-adatbázis most már beszerezheti a gyors piacra insight-all a világ különböző pontjain. Az Azure Cosmos DB lehetővé teszi, hogy **globálisan elosztott, alacsony késleltetésű működési elemzések** rugalmas méretek mellett három fő módszerek:
+A globálisan elosztott Azure Cosmos-adatbázis Apache Sparkával mostantól gyorsan betekintést nyerhet a világ minden pontjára. A Azure Cosmos DB lehetővé teszi a **globálisan elosztott, kis késleltetésű operatív elemzést** rugalmas méretezéssel három kulcsfontosságú módszerrel:
 
-* Az Azure Cosmos database globálisan elosztott, mivel minden adat betöltött helyileg a gyártók (például users) adatok hol találhatók. A lekérdezések szolgálja ki, szemben a helyi replikák közelebb a gyártók és a felhasználói adatokat függetlenül attól, hol találhatók a világ számára. 
+* Mivel az Azure Cosmos-adatbázis globálisan elosztott, az összes adatot helyileg betölti a rendszer, ahol az adatelőállítók (például felhasználók) találhatók. A lekérdezéseket a rendszer a gyártók és az adatfogyasztók számára legközelebb eső helyi replikák alapján kézbesíti, függetlenül attól, hogy hol találhatók a világon. 
 
-* Az elemzési lekérdezések közvetlenül az indexelt adatokat tárolja az adatokat a partíciók bármely a szükségtelen adatok áthelyezése nélkül hajtja végre. 
+* Az összes analitikus lekérdezést közvetlenül az adatpartíción belül tárolt indexelt adatsorokon hajtja végre anélkül, hogy szükségtelen adatáthelyezésre lenne szükség. 
 
-* A Spark az Azure Cosmos DB-vel ugyanarra a szalagra, mert kevesebb köztes fordítások és adatmozgást kerül sor, a jobb teljesítmény és méretezhetőség eredményez.
+* Mivel a Spark a Azure Cosmos DB, kevesebb közbenső fordítást és adatmozgást helyez el, ami jobb teljesítményt és méretezhetőséget eredményez.
 
-### <a name="unified-serverless-experience-for-apache-spark"></a>Az Apache Spark egységes, kiszolgáló nélküli felhasználói élményt
+### <a name="unified-serverless-experience-for-apache-spark"></a>Egységesített kiszolgáló nélküli felhasználói élmény Apache Spark számára
 
-Egy többmodelles adatbázis, mint az Azure Cosmos DB mostantól kibővíti OSS API-k támogatása azáltal, hogy egy **egyesített kiszolgáló nélküli felhasználói élményt az Apache Spark** kulcs-érték, dokumentum, diagram, oszlop családi adatmodelleket. Különböző adatmodellek támogatottak, MongoDB, Cassandra, Gremlin, Etcd és az SQL API-k – ugyanazokat az alapul szolgáló adatokat minden működő használatával. 
+A többmodelles adatbázisok esetében a Azure Cosmos DB mostantól kiterjeszti az OSS API-k támogatását azáltal, hogy **egységes kiszolgáló nélküli felhasználói élményt biztosít az Apache Spark** számára a kulcs-érték, a dokumentum, a gráf és az oszlop család adatmodelljeivel. A MongoDB, Cassandra, Gremlin, Etcd és SQL API-k használatával különböző adatmodellek támogatottak – mindez ugyanazon alapul szolgáló adaton működik. 
 
-Az Apache Spark támogatása az Azure Cosmos DB is natív módon támogatja a Scala, Python, Java nyelven írt alkalmazások, és számos szorosan integrált kódtárak használata SQL. Ezek a könyvtárak tartalmazzák ([Spark SQL](https://spark.apache.org/sql/)), machine learning-(Spark [MLlib](https://spark.apache.org/mllib/)), adatfolyam-feldolgozás ([Spark strukturált Stream](https://spark.apache.org/streaming/)), és gráffeldolgozási (Spark [GraphFrames]( https://docs.databricks.com/spark/latest/graph-analysis/graphframes/user-guide-python.html)). Ezek az eszközök megkönnyítik a különböző használati esetek az Apache Sparkot használhatja. Nem kell foglalkozni a Spark kezelése, illetve Spark-fürtök. Használhatja a jól ismert Apache Spark API-k és **Jupyter notebookok** analytics és az SQL API-t vagy bármely a nyílt Forráskódú nosql-alapú API-k, például Cassandra, a tranzakciós feldolgozást ugyanazokat az alapul szolgáló adatokat egy időben.
+A Azure Cosmos DB Apache Spark támogatásával natív módon támogathatja a Scala, a Python, a Java, és számos szorosan integrált kódtárat használhat az SQL-hez. Ezek a kódtárak ([Spark SQL](https://spark.apache.org/sql/)), gépi tanulás (Spark [MLlib](https://spark.apache.org/mllib/)), Stream Processing ([Spark Structured streaming](https://spark.apache.org/streaming/)) és Graph Processing (Spark [GraphFrames]( https://docs.databricks.com/spark/latest/graph-analysis/graphframes/user-guide-python.html)). Ezek az eszközök megkönnyítik a Apache Spark használatát különféle használati esetekben. Nem kell foglalkoznia a Spark-vagy Spark-fürtök kezelésével. Használhatja az ismerős Apache Spark API-kat és a **Jupyter** -jegyzetfüzeteket az elemzéshez és az SQL API-hoz, vagy bármely olyan OSS NoSQL API-hoz, mint a Cassandra a tranzakciós feldolgozáshoz ugyanazon a mögöttes adaton.
 
-### <a name="no-schema-or-index-management"></a>Nincs séma vagy index kezelése
+### <a name="no-schema-or-index-management"></a>Nincs séma-vagy indexelési felügyelet
 
-Az Azure Cosmos DB a hagyományos analitikai adatbázisokkal ellentétben az adatmérnökök és az adatelemzők már nem kell foglalkozni nehézkes séma- és index kezelését. Az Azure Cosmos DB adatbázis-kezelő nem igényel explicit séma vagy index felügyeleti, és képes automatikusan indexeli az összes adatot, feltölti, gyorsan az Apache Spark-lekérdezések kiszolgálása érdekében. 
+A hagyományos analitikai adatbázisoktól eltérően a Azure Cosmos DB, az adatmérnököknek és az adatszakértőknek már nincs szükségük nehézkes séma-és indexelési felügyelet kezelésére. A Azure Cosmos DBban található adatbázismotor nem igényel explicit sémát vagy indexelést, és képes automatikusan indexelni az összes beolvasott adatot, hogy az Apache Spark lekérdezéseket gyorsan kiszolgálja. 
 
-### <a name="consistency-choices"></a>Konzisztenciaszint
+### <a name="consistency-choices"></a>Konzisztencia-beállítások
 
-Az Apache Spark-feladatok az adatok a partíciók az Azure Cosmos-adatbázis a rendszer végrehajtja, mivel a lekérdezések fog kapni a [öt jól definiált konzisztenciaszintet](consistency-levels.md). Ezek konzisztencia modellek révén rugalmasan választhatja ki a szigorú konzisztenciát a legpontosabb eredmények biztosít a machine learning-algoritmusok a késést és magas rendelkezésre állású veszélyeztetése nélkül. 
+Mivel a Apache Spark feladatok végrehajtása az Azure Cosmos-adatbázis adatpartíciójában történik, a lekérdezések [öt jól meghatározott konzisztencia-lehetőséget](consistency-levels.md)kapnak. Ezek a konzisztencia-modellek rugalmasságot biztosítanak a szigorú konzisztencia kiválasztásához, hogy a lehető legpontosabb eredményeket nyújtsanak a gépi tanulási algoritmusok számára a késés és a magas rendelkezésre állás veszélyeztetése nélkül. 
 
 ### <a name="comprehensive-slas"></a>Átfogó SLA-k
 
-Az Apache Spark-feladatok fog rendelkezni az Azure Cosmos DB előnyeit, például az iparágvezető átfogó [SLA-k](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/) (99,999) anélkül, hogy bármilyen terhelést külön Apache Spark-fürtök kezelése... Ezen SLA-k foglalnia az átviteli sebességet a késés a 99. percentilis, a konzisztencia és a magas rendelkezésre állás. 
+A Apache Spark feladatok Azure Cosmos DB előnyökkel járnak, mint például az iparág vezető átfogó [SLA](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/) -i (99,999), külön Apache Spark-fürtök kezelése nélkül. Ezek a SLA-kat az átviteli sebesség, a esetek 99% percentilis, a konzisztencia és a magas rendelkezésre állás miatti késés is magában foglalja. 
 
 ### <a name="mixed-workloads"></a>Vegyes számítási feladatok
 
-Az integráció az Apache Spark az Azure Cosmos DB hidak a tranzakciós és analitikai elkülönítése, amelyről a fő ügyfelei panaszait egyik globális szintű felhőbeli natív alkalmazások készítése során. 
+A Apache Spark integrációja Azure Cosmos DB hidak a tranzakciós és analitikus elkülönítést, amely az egyik fő vásárlói fájdalom, amely a Felhőbeli natív alkalmazások globális méretekben való létrehozásakor volt. 
 
-## <a name="built-in-jupyter-notebooks-support"></a>A Jupyter notebookok beépített támogatását
+## <a name="scenarios-for-azure-cosmos-db-spark-support"></a>Azure Cosmos DB Spark-támogatás forgatókönyvei
 
-Az Azure Cosmos DB beépített Jupyter notebookok például Cassandra, MongoDB, SQL, Gremlin és tábla minden API támogatja. A Jupyter notebookok futtathatók az Azure Cosmos-fiókok, és azokat a fejlesztői környezet minőségét. Az összes Azure Cosmos DB API-k és adatmodelleket beépített notebook támogatása lehetővé teszi interaktív lekérdezések futtatása. Hajtsa végre a machine learning-modellek, és elemezheti az Azure Cosmos-adatbázisokban tárolt adatok is. A Jupyter jegyzetfüzet-megoldást használ, a tárolt adatok elemzése, hozhat létre és gépi tanulási modellek betanítását és következtetési végezni az adatokon, az Azure Portalon a következő képen látható módon:
+### <a name="retail-and-consumer-goods"></a>Kiskereskedelmi és fogyasztói termékek
 
-![Az Azure Cosmos DB támogatja a Jupyter notebookok](./media/spark-api-introduction/jupyter-notebooks-portal.png)
+A Azure Cosmos DB Spark-támogatásával valós idejű ajánlásokat és ajánlatokat biztosíthat. Segítheti az ügyfeleket abban, hogy a valós idejű személyre szabással és a termékkel kapcsolatos javaslatok alapján felfedezzék a szükséges elemeket.
+
+* A Apache Spark Runtime beépített Machine Learning támogatásával valós idejű ajánlásokat készíthet a termékkatalógusokban.
+
+* A stream-adatforrások, az adatvásárlások és az ügyféladatok lehetőségre kattintva megadhatja az élettartamot megcélzó célként megadott javaslatokat.
+
+* A Azure Cosmos DB globális terjesztési funkciójának használatával a különböző régiókba tartozó termékek nagy mennyisége ezredmásodpercben elemezhető.
+
+* Gyorsan lekérheti a földrajzilag elosztott felhasználók és az adatelemzést. Az előléptetés átváltási arányának növeléséhez a megfelelő felhasználót a megfelelő időben kell kiszolgálni a megfelelő felhasználó számára.
+
+* Kihasználhatja a beépített Spark streaming-képességet az élő adattartalom dúsításához, ha a statikus ügyféladatok használatával egyesíti azt. Így valós időben és az ügyfelek által megvalósított kontextusban teheti elérhetővé a személyre szabott és a célcsoportot mutató hirdetéseket.
+
+Az alábbi képen látható, hogyan használhatók a Azure Cosmos DB Spark-támogatás a díjszabás és a promóciók optimalizálásához:
+
+![Azure Cosmos DB Spark-támogatás a díjszabás és a promóció optimalizálásához](./media/spark-api-introduction/optimize-pricing-and-promotions.png)
+
+
+Az alábbi képen látható, hogyan használhatók a Azure Cosmos DB Spark-támogatás a valós idejű javaslatok motorjában:
+
+![Azure Cosmos DB Spark-támogatás a valós idejű ajánlási motorban](./media/spark-api-introduction/real-time-recommendation-engine.png)
+
+### <a name="manufacturing-and-iot"></a>Gyártási és IoT
+
+Azure Cosmos DB beépített elemzési platformja lehetővé teszi, hogy a IoT-adatok valós idejű elemzését globális szinten több millió eszközről is engedélyezzék. Olyan modern innovációkat végezhet, mint például az időjárási minták, a prediktív elemzések és az energia-optimalizálások előrejelzése.
+
+* Azure Cosmos DB használatával olyan adatokat is megadhat, mint például a valós idejű eszközök mérőszámai és az időjárási tényezők, majd az intelligens Grid Analytics alkalmazásával optimalizálhatja a kapcsolódó eszközök teljesítményét a mezőben. Az intelligens Grid Analytics a működési költségek szabályozásának kulcsa, a rács megbízhatóságának javítása és személyre szabott energiaellátási szolgáltatások biztosítása a fogyasztóknak.
+
+Az alábbi képen látható, hogyan használhatók a Azure Cosmos DB Spark-támogatás a IoT-eszközök metrikáinak olvasásához és az intelligens Grid Analytics alkalmazásához:
+
+![Azure Cosmos DB Spark-támogatás a IoT-eszközök metrikáinak olvasásához](./media/spark-api-introduction/read-metrics-from-iot-devices.png)
+
+
+### <a name="predictive-maintenance"></a>Prediktív karbantartás
+
+* Az olyan adategységek, mint például a kis fúrási tornyokban használt kompresszorok és a mélytengeri platformok fenntartása összetett törekvés. Ezek az eszközök a világ különböző részein találhatók, és petabájt hoznak. A Azure Cosmos DB használatával olyan teljes körű prediktív adatfolyamatot építhet ki, amely a Spark streaming használatával nagy mennyiségű érzékelő telemetria, tároló-alkatrészt és érzékelő-hozzárendelési adatfeldolgozást végez.
+
+* Gépi tanulási modelleket hozhat létre és helyezhet üzembe, amelyekkel előre jelezheti az eszközök meghibásodását, és a hiba bekövetkezése előtt kiállíthatja a karbantartási munkavégzési rendeléseket.
+
+Az alábbi képen látható, hogyan használható a Azure Cosmos DB Spark-támogatás a prediktív karbantartási rendszer létrehozásához:
+
+![Azure Cosmos DB Spark-támogatás prediktív karbantartási rendszer létrehozásához](./media/spark-api-introduction/predictive-maintenance-system.png)
+
+Az alábbi képen látható, hogyan használható a Azure Cosmos DB Spark-támogatás a valós idejű járművek diagnosztikai rendszerének létrehozásához:
+
+![Azure Cosmos DB Spark-támogatás a valós idejű járművek diagnosztikai rendszerének létrehozásához](./media/spark-api-introduction/real-time-vehicle-diagnostic-system.png)
+
+### <a name="gaming"></a>Játékok
+
+* A beépített Spark-támogatással a Azure Cosmos DB percek alatt könnyedén hozhat létre, méretezheti és helyezhet üzembe fejlett elemzési és gépi tanulási modelleket, hogy a lehető legjobb játékélményt hozza létre.
+
+* A játékosok, a vásárlások és a viselkedési adatokat elemezheti a megfelelő személyre szabott ajánlatok létrehozásához, hogy magas konverziós arányt lehessen elérni.
+
+* A Spark Machine learning segítségével elemzéseket készíthet a játék telemetria adatairól, és betekintést nyerhet. A lassú betöltési idő és a játékon belüli problémák diagnosztizálására és megelőzésére is lehetőség van.
+
+Az alábbi képen látható, hogyan használják a Azure Cosmos DB Spark-támogatását a Gaming Analyticsben:
+
+![Azure Cosmos DB Spark-támogatás a Gaming Analyticsben](./media/spark-api-introduction/gaming-analytics.png)
+
+## <a name="built-in-jupyter-notebooks-support"></a>Beépített Jupyter notebookok támogatása
+
+Azure Cosmos DB támogatja a beépített Jupyter jegyzetfüzeteket minden olyan API-hoz, mint például a Cassandra, a MongoDB, az SQL, a Gremlin és a table. A Jupyter notebookok az Azure Cosmos-fiókokon belül futnak, és javítják a fejlesztői élményt. Az összes Azure Cosmos DB API-k és adatmodellek beépített notebook-támogatása lehetővé teszi a lekérdezések interaktív futtatását. Emellett gépi tanulási modelleket is végrehajthat, és elemezheti az Azure Cosmos-adatbázisokban tárolt adatait. A Jupyter notebook felületének használatával elemezheti a tárolt adatok elemzését, kiépítheti és betaníthatja a gépi tanulási modelleket, és elvégezheti a Azure Portal lévő adatokon való következtetést az alábbi képen látható módon:
+
+![A Jupyter notebookok támogatása Azure Cosmos DB](./media/spark-api-introduction/jupyter-notebooks-portal.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Azure Cosmos DB előnyeit kapcsolatos további információkért tekintse meg a [áttekintése](introduction.md) cikk.
-* [Ismerkedés az Azure Cosmos DB API a mongodb-hez](mongodb-introduction.md)
-* [Bevezetés az Azure Cosmos DB Cassandra API használatába](cassandra-introduction.md)
-* [Bevezetés az Azure Cosmos DB Gremlin API használatába](graph-introduction.md)
-* [Bevezetés az Azure Cosmos DB Table API használatába](table-introduction.md)
+* Az Azure Cosmos DB előnyeinek megismeréséhez tekintse meg az [áttekintést](introduction.md) ismertető cikket.
+* [Ismerkedés a MongoDB Azure Cosmos DB API-val](mongodb-introduction.md)
+* [Ismerkedjen meg a Azure Cosmos DB Cassandra API](cassandra-introduction.md)
+* [Ismerkedés a Azure Cosmos DB Gremlin API-val](graph-introduction.md)
+* [Ismerkedjen meg a Azure Cosmos DB Table API](table-introduction.md)
 
 
 

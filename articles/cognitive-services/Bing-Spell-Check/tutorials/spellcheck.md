@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A Bing Spell Check API használatával helyesírás ellenőrizze eredmények beolvasása'
-titlesuffix: Azure Cognitive Services
+title: 'Oktatóanyag: Spell Check eredmények beolvasása a Bing Spell Check API használatával'
+titleSuffix: Azure Cognitive Services
 description: Bemutatja a Bing Spell Check használatát.
 services: cognitive-services
 author: aahill
@@ -10,16 +10,16 @@ ms.subservice: bing-spell-check
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 0a7b8637ae3ca7342a04f6bf3f8a808539d980eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dc3a30418615d1c6b30ca4059292425076327f00
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60863410"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500804"
 ---
-# <a name="tutorial-build-a-web-page-spell-check-client"></a>Oktatóanyag: A weblap helyesírás-ellenőrzés ügyfél létrehozása
+# <a name="tutorial-build-a-web-page-spell-check-client"></a>Oktatóanyag: Weboldalt Spell Check-ügyfél létrehozása
 
-Ebben az oktatóanyagban létrehozunk egy weboldalt, amely lehetővé teszi a felhasználók számára a Bing Spell Check API lekérdezését. Az alkalmazás forráskódja elérhető a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html).
+Ebben az oktatóanyagban létrehozunk egy weboldalt, amely lehetővé teszi a felhasználók számára a Bing Spell Check API lekérdezését. Az alkalmazás forráskódja elérhető a githubon. [](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html)
 
 Ez az oktatóanyag a következőket mutatja be:
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure-ban a Microsoft Ügyfélszerződéséhez számla ismertetése
-description: Ismerje meg, hogyan olvassa el, és a számlázással kapcsolatos tudnivalók a Microsoft ügyfél-szerződés az Azure-ban
+title: Microsoft Customer Agreement-számla megismerése az Azure-ban
+description: Ismerje meg, hogyan olvashatja és értelmezheti az Azure-beli Microsoft Customer Agreement-számlát
 author: bandersmsft
 manager: jureid
 tags: billing
@@ -9,94 +9,94 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: fed658d3f672d6116d7c2b0f3e2e9ad989dd67c6
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: a5f77120c1d4e8a6721f3bc207132bee19a7772f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490639"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383540"
 ---
-# <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>A Microsoft vevői feltételeit számlázása
+# <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Feltételek a Microsoft Customer Agreement-számlán
 
-Ez a cikk a Microsoft vevői szerződés vonatkozik Azure-számlázási fiókba. [Ellenőrizze, hogy egy Microsoft Ügyfélszerződéséhez hozzáférést](#check-access-to-a-microsoft-customer-agreement).
+Ez a cikk egy Microsoft-ügyfél szerződéshez tartozó Azure számlázási fiókra vonatkozik. [Ellenőrizze, hogy van-e hozzáférése Microsoft-ügyfél szerződéshez](#check-access-to-a-microsoft-customer-agreement).
 
-A számla a költségeket és a fizetési utasításokat összegzését tartalmazza. Elérhető a Portable Document Format (.pdf) a letölthető a [az Azure portal](https://portal.azure.com/) vagy elküldhetők e-mailen keresztül. További információkért lásd: [megtekintése és letöltése a Microsoft Azure számlázása](billing-download-azure-invoice.md).
+A számla összefoglalást biztosít a díjakról és a fizetési utasításokról. Letölthető a hordozható dokumentum formátumában (. pdf) a [Azure Portal](https://portal.azure.com/) , vagy e-mailben is elküldhető. További információ: [Microsoft Azure számla megtekintése és letöltése](billing-download-azure-invoice.md).
 
-## <a name="billing-period"></a>Billing period (Számlázási időszak)
+## <a name="billing-period"></a>Elszámolási időszak
 
-A számlázása havi rendszerességgel történik. Megtudhatja, melyik nappal kap számlákat ellenőrzésével *számla dátuma* alatt a profiltulajdonságok számlázási a [az Azure portal](https://portal.azure.com/). A számlázási időszak végén, és a számla dátuma között felmerülő költségek megtalálhatók a következő havi számlán, mivel a következő elszámolási időszak vannak. A számlázási időszak kezdő és záró dátuma minden számlán a szerepel a számlán a fenti PDF **számlázási összefoglalás**.
+A számlázás havi rendszerességgel történik. Megtudhatja, hogy a hónap mely napján kapja meg a számlákat a számlázási profil *tulajdonságai területen a* Azure Portalban. [](https://portal.azure.com/) A számlázási időszak vége és a számla dátuma között felmerülő díjak a következő havi számlán szerepelnek, mivel azok a következő számlázási időszakban vannak. Az egyes számlák számlázási időszakának kezdési és befejezési dátumai a **Számlázási összefoglaló**számla PDF-fájlja lapon jelennek meg.
 
-## <a name="invoice-terms-and-descriptions"></a>Számla használati és -leírások
+## <a name="invoice-terms-and-descriptions"></a>Számlázási feltételek és leírások
 
-A következő szakaszok fontos kifejezések listája, tekintse meg a számlán, és minden kifejezéshez meg leírását tartalmazzák.
+A következő szakaszokban a számlán látható fontos kifejezések szerepelnek, és az egyes feltételek leírását is megadhatja.
 
 ### <a name="invoice-summary"></a>Számla összegzése
 
-A **számla Invoice Summary** az első lap tetején, és a számlázási profilja és a fizetés módjának vonatkozó információkat jeleníti meg.
+A **számla összegzése** az első oldal tetején található, és a számlázási profiljával és a fizetés módjával kapcsolatos információkat jeleníti meg.
 
-![Számla összefoglalás szakasza](./media/billing-understand-your-invoice-mca/invoicesummary.png)
-
-| Kifejezés | Leírás |
-| --- | --- |
-| Sold to (Vevő) |A jogi személy, található a fióktulajdonságok számlázási címe|
-| Bill to (Számlázási cím) |Számlázási cím a számlázási profil, a számla számlázási profiltulajdonságok található fogadása|
-| Számlázási profil |A számla fogadása a számlázási profil neve |
-| P.O. szám |Egy nem kötelező beszerzési rendelésszámukra, nyomon követése az Ön által hozzárendelt |
-| A számla száma |Követési célból használt egyedi, a Microsoft által létrehozott számla szám |
-| Invoice Date (Számla dátuma) |A dátum, a számla általában 5 – 12 nap vége a számlázási ciklus után jön létre. A számla dátuma a számlázási profiltulajdonságok ellenőrizheti.|
-| Fizetési feltételek |Fizetés módjának a Microsoft szolgáltatásaiért. *30 nap* azt jelenti, hogy a számla időpontjától számított 30 napon belül fizet. |
-
-### <a name="billing-summary"></a>A számlázás összegzése
-
-A **számlázási összefoglalás** bemutatja a számlázási profilja alapján kell fizetni az előző számlázási időszak, minden alkalmazott kreditek, adózási és a teljes összeg óta, esedékes.
-
-![A számlázás összefoglalás szakasza](./media/billing-understand-your-invoice-mca/billingsummary.png)
+![Számla összegzése szakasz](./media/billing-understand-your-invoice-mca/invoicesummary.png)
 
 | Kifejezés | Leírás |
 | --- | --- |
-| Díjak|A Microsoft a díjat a számlázási profil óta az utolsó számlázási időszakban száma összesen |
-| Stáblisták |Értéket ad eredményül kapott kreditek |
-| Alkalmazza az Azure-kreditek | Azure-kreditet, amely automatikusan érvénybe lépnek az Azure díjat minden elszámolási időszak |
-| Részösszeg |Az üzem előtti adó összege miatt |
-| Adózási |A típus és szoftverhasználatért, attól függően, az országban vagy régióban, a számlázási profilja adó összegét. Ha nem rendelkezik adót megfizetni, akkor a számla adója nem jelenik meg. |
-| Becsült teljes megtakarítás |A becsült teljes összeget, hatékony kedvezmény mentette. Ha van ilyen, hatékony kedvezményes díjszabás alapján vannak listázva alatt a vásárlás részletei elemek számla szakaszban. |
+| Sold to (Vevő) |A Számlázási fiók tulajdonságai között található jogi személy címe|
+| Bill to (Számlázási cím) |A számlát fogadó számlázási profil számlázási címe, amely a számlázási profil tulajdonságai között található.|
+| Számlázási profil |A számlát fogadó számlázási profil neve |
+| P.O. szám |A nyomon követéshez hozzárendelt, nem kötelező beszerzési rendelés száma |
+| Számla száma |Egy egyedi, a Microsoft által létrehozott, nyomon követési célokra használt számlaszám |
+| Invoice Date (Számla dátuma) |A számla előállításának dátuma, általában a számlázási ciklus végét követő öt – 12 nap. A számlázási profil tulajdonságainál megtekintheti a számla dátumát.|
+| Fizetési feltételek |Hogyan fizet a Microsoft-számlán. A *nettó 30 nap* azt jelenti, hogy a számla dátumától számított 30 napon belül fizetnie kell. |
 
-### <a name="invoice-sections"></a>Számla szakaszok
+### <a name="billing-summary"></a>Számlázási összefoglalás
 
-A számlázási profiljában minden számla területen láthatja a költségek, a alkalmazni az Azure-kreditek mennyiségét, adózási és fizetendő összeget.
+A **Számlázási összefoglalás** a számlázási profilra vonatkozó díjakat mutatja az előző számlázási időszak, az alkalmazott kreditek, az adó és az esedékes teljes összeg alapján.
+
+![Számlázási összefoglalás szakasz](./media/billing-understand-your-invoice-mca/billingsummary.png)
+
+| Kifejezés | Leírás |
+| --- | --- |
+| Díjak|A számlázási profilhoz tartozó Microsoft-díjak száma az utolsó számlázási időszak óta |
+| Stáblisták |A visszáruból kapott kreditek |
+| Alkalmazott Azure-kreditek | Azure-kreditek, amelyek automatikusan érvényesek az Azure-díjakra az egyes számlázási időszakokban |
+| Részösszeg |Az adó előtti összeg esedékes |
+| Adó |A számlázási profil országának/régiójától függően fizetendő adó típusa és mennyisége. Ha nem kell adót fizetnie, akkor nem jelenik meg a számlán szereplő adó. |
+| Becsült teljes megtakarítás |A tényleges kedvezményekből mentett becsült teljes összeg. Ha alkalmazható, a tényleges árengedmények listája a részletek számla alapján szakaszban található beszerzési sor elemek alatt szerepel. |
+
+### <a name="invoice-sections"></a>Számlaszakaszok
+
+A számlázási profilban szereplő minden egyes számla szakasznál láthatja a díjakat, az alkalmazott Azure-kreditek mennyiségét, az adót és a teljes összeget.
 
 `Total = Charges - Azure Credit + Tax`
 
-### <a name="details-by-invoice-section"></a>Számla szakasz részletei
+### <a name="details-by-invoice-section"></a>Részletek a számla alapján szakasz
 
-A részletek megjelenítése a minden termék sorrend szerinti bontásban számla szakasz költsége. Belül minden egyes termék sorrend költsége oszlanak meg szolgáltatás típusa. A termékek és szolgáltatások tartozó napi költségek a az Azure portal és az Azure-használat és költségek CSV találja meg. További tudnivalókért tekintse meg [a díjait a számlán megismerheti a Microsoft vevői szerződés](billing-mca-understand-your-bill.md).
+A részletek megmutatják az egyes számlák szakaszának költségeit a termék szerinti bontásban. Az egyes termékekhez tartozó rendeléseken belül a költségeket a szolgáltatás típusa szerinti bontásban kell megadni. A termékekkel és szolgáltatásokkal kapcsolatos napi díjakat a Azure Portal és az Azure-használat és a CSV-díjak között találja. További információ: a [Microsoft-ügyfél szerződése számláján](billing-mca-understand-your-bill.md)felszámított díjak megismerése.
 
-A fizetendő összeg esetében minden egyes szolgáltatás család különbsége *az Azure-kreditek* a *kreditek/díjak* , és vegye fel *adó*:
+Az egyes szolgáltatási családokhoz tartozó teljes összeg kiszámítása az *Azure* -kreditek *kreditek/díjakból* való kivonásával és az *adó*hozzáadásával történik:
 
 
-![Számla szakasz részletei](./media/billing-understand-your-invoice-mca/invoicesectiondetails.png)
+![Részletek a számla alapján szakasz](./media/billing-understand-your-invoice-mca/invoicesectiondetails.png)
 
 | Kifejezés |Leírás |
 | --- | --- |
-| Egységár | A szolgáltatás (a pénznem díjszabása), amely hatékony egység árát a használat gyakorisága használt. Ez egy termék, szolgáltatás család, mérőszámok és ajánlat esetében egyedi legyen. |
-| Mennyiség | Vásárolt, vagy az elszámolási időszakban felhasznált mennyiség |
-| Díjak/kreditek | Nettó összeg díjak kreditek/visszatérítések alkalmazása után |
-| Azure-Kredit | A díjak kreditek alkalmazza az Azure-kreditek mennyiségét|
-| Adó mértéke | Ország/régió függően OK |
-| Adó összege | Adó mértéke alapján meg kell vásárolnia a alkalmazni adó összege |
-| Összes | A fizetendő összeg vásárlására |
+| Egységár | A szolgáltatás (díjszabási pénznemben) érvényes egységára, amely a használat mértékére szolgál. Ez egyedi a termék, a szolgáltatás családja, a mérő és az ajánlat számára. |
+| Mennyiség | A számlázási időszak során megvásárolt vagy felhasznált mennyiség |
+| Díjak/kreditek | A kreditek/visszatérítések után felszámított díjak nettó összege |
+| Azure-kredit | A díjakra/jóváírásokra alkalmazott Azure-kreditek mennyisége|
+| Adókulcs | Az adókulcs (ok) az országtól/régiótól függően |
+| Adó összege | A vásárlásra alkalmazott adó mennyisége az adókulcs alapján |
+| Összes | A vásárlás miatti teljes összeg |
 
-### <a name="how-to-pay"></a>Fizetési
+### <a name="how-to-pay"></a>Fizetés
 
-A számla alján vannak a számla kifizetésére vonatkozó utasításokat. Fizethet a szolgáltatásért ellenőrzésével átviteli, vagy az interneten. Ha online fizetés esetén használhatja a kredit/bankkártyás fizetéssel vagy az Azure-kreditek, ha van ilyen.
+A számla alján találhatók utasítások a számla kifizetéséhez. Az ellenőrzés, a drót vagy a hálózat is megfizethető. Ha online fizet, hitelkártyát vagy Azure-kreditet is használhat, ha van ilyen.
 
-### <a name="publisher-information"></a>Közzétevői adatokkal
+### <a name="publisher-information"></a>Közzétevő adatai
 
-Ha külső szolgáltatások szerepel a számlán, nevét és címét, mindegyik közzétevő a számla alján megjelenik.
+Ha a számlán harmadik féltől származó szolgáltatásokkal rendelkezik, az egyes közzétevők neve és címe megjelenik a számla alján.
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>A Microsoft Ügyfélszerződéséhez való hozzáférés ellenőrzése
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft ügyfél-szerződéshez való hozzáférés engedélyezése
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
@@ -105,7 +105,7 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 ## <a name="next-steps"></a>További lépések
 
-- [A számlázási profilja számlán a költségek ismertetése](billing-mca-understand-your-bill.md)
+- [A számlázási profil számláján szereplő díjak megismerése](billing-mca-understand-your-bill.md)
 - [Az Azure számlázási és napi használati adatainak beszerzése](billing-download-azure-invoice-daily-usage-date.md)
-- [A szervezet az Azure díjszabásának megtekintése](billing-ea-pricing.md)
-- [A számlázási profiljához adó dokumentumok megtekintése](billing-mca-download-tax-document.md)
+- [A szervezet Azure-díjszabásának megtekintése](billing-ea-pricing.md)
+- [A számlázási profilhoz tartozó adózási dokumentumok megtekintése](billing-mca-download-tax-document.md)

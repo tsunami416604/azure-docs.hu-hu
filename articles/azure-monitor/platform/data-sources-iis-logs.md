@@ -1,6 +1,6 @@
 ---
-title: Az Azure monitorban naplózza az IIS |} A Microsoft Docs
-description: Az Internet Information Services (IIS) felhasználói tevékenység az Azure Monitor gyűjtött naplófájlokat tárolja.  Ez a cikk ismerteti az IIS-naplók gyűjtésének és hozhatnak létre az Azure monitorban a rekordok részleteit.
+title: IIS-naplók a Azure Monitorban | Microsoft Docs
+description: A Internet Information Services (IIS) a Azure Monitor által összegyűjthető naplófájlokban tárolja a felhasználói tevékenységeket.  Ez a cikk bemutatja, hogyan konfigurálhatja az IIS-naplók gyűjteményét és a Azure Monitorban létrehozott rekordok részleteit.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,68 +13,68 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 5843ee11a615a2780e9fea2d89f7b18fb45706d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05d9dc8f676589dcb301c19b0a2e80e9fd4c1fa0
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604354"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249738"
 ---
-# <a name="collect-iis-logs-in-azure-monitor"></a>Az Azure monitorban gyűjtése IIS-naplók
-Az Internet Information Services (IIS) felhasználói tevékenység tárolja az Azure Monitor által összegyűjtött és tárolt és naplófájlok [adatok](data-platform.md).
+# <a name="collect-iis-logs-in-azure-monitor"></a>IIS-naplók összegyűjtése Azure Monitor
+A Internet Information Services (IIS) olyan naplófájlokban tárolja a felhasználói tevékenységeket, amelyeket Azure Monitor tárolhat, és [naplózó adatként](data-platform.md)tárolhatja őket.
 
 ![IIS-naplók](media/data-sources-iis-logs/overview.png)
 
-## <a name="configuring-iis-logs"></a>Naplózza az IIS konfigurálása
-Az Azure Monitor bejegyzések gyűjti össze a naplófájlokat, az IIS által létrehozott, ezért meg kell [konfigurálni az IIS naplózásának](https://technet.microsoft.com/library/hh831775.aspx).
+## <a name="configuring-iis-logs"></a>IIS-naplók konfigurálása
+A Azure Monitor az IIS által létrehozott naplófájlokból gyűjt bejegyzéseket, ezért konfigurálnia kell az IIS-t [a naplózáshoz](https://technet.microsoft.com/library/hh831775.aspx).
 
-Az Azure Monitor csak tárolt W3C formátumú IIS-naplófájlok támogatja, és nem támogatja az egyéni mezők és az IIS naplózás speciális. NCSA vagy az IIS natív formátumú naplókat nem gyűjt.
+Azure Monitor csak a W3C formátumban tárolt IIS-naplófájlokat támogatja, és nem támogatja az egyéni mezőket vagy az IIS speciális naplózását. Az NCSA vagy az IIS natív formátumában nem gyűjt naplókat.
 
-Az Azure monitorban az IIS-naplók konfigurálása a [speciális beállítások menü](agent-data-sources.md#configuring-data-sources).  Nincs semmilyen beállítást nem szükséges kiválasztásával **gyűjtése W3C formátumú IIS-naplófájljai**.
+Konfigurálja az IIS-naplókat Azure Monitor a [Speciális beállítások menüből](agent-data-sources.md#configuring-data-sources).  A **W3C-formátumú IIS**-naplófájlok gyűjtésének kiválasztásához nincs szükség konfigurációra.
 
 
 ## <a name="data-collection"></a>Adatgyűjtés
-Az Azure Monitor gyűjti az IIS-naplóbejegyzések minden ügynök minden alkalommal, amikor a napló be van zárva, és a egy új jön létre. Ez a gyakoriság vezérli a **fájl váltása naplóütemezés** beállítása az IIS-webhely, amely alapértelmezés szerint naponta egyszer van. Például, ha a beállítások **óránkénti**, majd az Azure Monitor összegyűjti a napló óránként.  Ha a beállítás értéke **napi**, majd az Azure Monitor összegyűjti a napló 24 óránként.
+A Azure Monitor az egyes ügynököktől érkező IIS-naplókat gyűjti össze minden alkalommal, amikor a napló időbélyege megváltozik vagy egy új fájlt hoz létre. A napló 5 percenként olvasható. Az új fájl létrehozásának gyakoriságát az IIS-hely **naplófájl** -átváltási ütemezési beállítása szabályozza, amely alapértelmezés szerint naponta egyszer történik. Ha bármilyen okból kifolyólag az IIS nem frissíti az időbélyeget az átváltási idő előtt, ha a beállítás **óránként**történik, a Azure monitor óránként gyűjti a naplót. Ha a beállítás **naponta**történik, Azure monitor 24 óránként gyűjti a naplót.
 
 
-## <a name="iis-log-record-properties"></a>Az IIS-napló rekord tulajdonságai
-Az IIS-naplóbejegyzések rendelkezik olyan típusú **W3CIISLog** , és a tulajdonságok a következő táblázatban:
+## <a name="iis-log-record-properties"></a>IIS-napló rekordjának tulajdonságai
+Az IIS-naplóbejegyzések típusa **W3CIISLog** , és a következő táblázatban található tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Computer |Az esemény gyűjtötte a program a számítógép nevét. |
+| Számítógép |Annak a számítógépnek a neve, amelyre az eseményt gyűjtötték. |
 | cIP |Az ügyfél IP-címe. |
-| csMethod |A kérelem például GET vagy POST metódus. |
-| csReferer |A hely, hogy a felhasználó követi-e egy hivatkozást a az aktuális helyen. |
-| csUserAgent |Az ügyfél böngésző típusa. |
-| csUserName |A kiszolgáló elérhető a hitelesített felhasználó nevét. Névtelen felhasználókat kötőjel jelzik. |
-| csUriStem |Például egy weblap címe |
-| csUriQuery |Lekérdezés, ha vannak, hogy az ügyfél által megkísérelt művelet. |
-| ManagementGroupName |Az Operations Manager-ügynököket a felügyeleti csoport neve.  Más ügynökök esetén ez AOI -\<munkaterület azonosítója\> |
-| RemoteIPCountry |Ország vagy régió az ügyfél IP-cím. |
-| RemoteIPLatitude |Az ügyfél IP-cím szélességét. |
-| RemoteIPLongitude |Az ügyfél IP-cím hosszúságát. |
-| scStatus |HTTP-állapotkódot. |
-| scSubStatus |A részállapot hibakód. |
-| scWin32Status |Windows-állapotkódot. |
-| sIP- |A webalkalmazás-kiszolgáló IP-címe. |
+| csMethod |A kérelem metódusa, például GET vagy POST. |
+| csReferer |A hely, amelyet a felhasználó az aktuális helyre mutató hivatkozást követett. |
+| csUserAgent |Az ügyfél böngésző-típusa. |
+| csUserName |A kiszolgálót elérő hitelesített felhasználó neve. A névtelen felhasználókat kötőjel jelöli. |
+| csUriStem |A kérelem célja, például weblap. |
+| csUriQuery |Lekérdezés, ha van ilyen, amelyet az ügyfél megpróbált végrehajtani. |
+| ManagementGroupName |Operations Manager ügynökök felügyeleti csoportjának neve.  Más ügynökök esetén ez AOI -\<munkaterület azonosítója\> |
+| RemoteIPCountry |Az ügyfél IP-címének országa/régiója. |
+| RemoteIPLatitude |Az ügyfél IP-címének földrajzi szélességét. |
+| RemoteIPLongitude |Az ügyfél IP-címének hosszúsága. |
+| scStatus |HTTP-állapotkód. |
+| scSubStatus |Részállapot-hibakód. |
+| scWin32Status |Windows-állapotkód. |
+| sIP |A webkiszolgáló IP-címe. |
 | SourceSystem |OpsMgr |
-| sPort |Port a kiszolgálón az ügyfél csatlakozik. |
-| sSiteName |Az IIS-webhely neve. |
-| TimeGenerated |Dátum és idő, a bejegyzés a naplózott. |
-| TimeTaken |Eltelt idő (MS) a kérelem feldolgozását. |
+| sPort |Annak a kiszolgálónak a portja, amelyhez az ügyfél csatlakozik. |
+| sSiteName |Az IIS-hely neve. |
+| TimeGenerated |A bejegyzés naplózásának dátuma és időpontja. |
+| Eltelt idő |A kérelem feldolgozásának időtartama ezredmásodpercben. |
 
-## <a name="log-queries-with-iis-logs"></a>IIS-naplók log lekérdezéseket.
-Az alábbi táblázat az IIS-naplóbejegyzések lekérő lekérdezések log különböző példákat.
+## <a name="log-queries-with-iis-logs"></a>Lekérdezések naplózása IIS-naplókkal
+Az alábbi táblázat különböző példákat tartalmaz az IIS-naplóbejegyzések lekérésére szolgáló naplókra.
 
 | Lekérdezés | Leírás |
 |:--- |:--- |
-| W3CIISLog |Az összes IIS-napló rögzíti. |
-| W3CIISLog &#124; where scStatus==500 |Az összes IIS-napló rekordok 500 visszaadott állapottal. |
-| W3CIISLog &#124; summarize count() by cIP |Száma az IIS naplóbejegyzéseket, ügyfél IP-cím alapján. |
-| W3CIISLog &#124; where csHost=="www\.contoso.com" &#124; summarize count() by csUriStem |Száma az IIS-naplóbejegyzések URL-cím szerint esetében a gazdagép www\.contoso.com. |
-| W3CIISLog &#124; összegzése számítógép szerint sum(csBytes) &#124; 500 000 összeget igénybe |Egyes IIS-számítógépek által fogadott összes bájt. |
+| W3CIISLog |Az összes IIS-naplózási rekord. |
+| W3CIISLog &#124; , ahol scStatus = = 500 |Az összes IIS-naplózási rekord 500-as visszatérési állapottal. |
+| W3CIISLog &#124; összesített száma () a cIP szerint |IIS-naplóbejegyzések száma az ügyfél IP-címe alapján. |
+| W3CIISLog &#124; , ahol a csHost = =\."www &#124; contoso.com" összegzi a Count () függvényt csUriStem szerint |Az IIS-naplóbejegyzések száma a gazdagép www\.contoso.com URL-címe alapján. |
+| W3CIISLog &#124; összegzése (csBytes) a számítógép &#124; által 500000 |AZ egyes IIS-számítógépek által fogadott bájtok száma. |
 
 ## <a name="next-steps"></a>További lépések
-* Egyéb gyűjtésére az Azure Monitor konfigurálása [adatforrások](agent-data-sources.md) elemzés céljából.
+* A Azure Monitor konfigurálásával más [](agent-data-sources.md) adatforrásokat is gyűjthet az elemzéshez.
 * Ismerje meg [lekérdezések naplózását](../log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.

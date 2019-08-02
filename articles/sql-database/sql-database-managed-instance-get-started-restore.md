@@ -10,45 +10,44 @@ ms.topic: quickstart
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
-manager: craigg
 ms.date: 12/14/2018
-ms.openlocfilehash: 5cf9046a26edae3e6076ee1effe32930f15f4569
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8a3a325cbfced13b6e2ac4cb842b5d5f4f764750
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60700342"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567473"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Gyors útmutató: Adatbázis visszaállítása felügyelt példányra
 
-Ez a rövid útmutatóban fogja használni az SQL Server Management Studio (SSMS) (a Wide World Importers – Standard biztonságimásolat-fájl) adatbázis visszaállítása az Azure Blob storage-ból egy Azure SQL Database-be [felügyelt példány](sql-database-managed-instance.md).
+Ebben a rövid útmutatóban SQL Server Management Studio (SSMS) használatával állítja vissza az adatbázist (a Wide World Importers-standard Backup fájlt) az Azure Blob Storage-ból egy [](sql-database-managed-instance.md)Azure SQL Database felügyelt példányba.
 
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 > [!NOTE]
-> Az Azure Database Migration Service (DMS) végzett áttelepítésének további információkért lásd: [DMS használatával felügyelt példány migrálása](../dms/tutorial-sql-server-to-managed-instance.md).
-> Különféle migrálási módszerekről további információkért lásd: [SQL Server-példány migrálása az Azure SQL Database felügyelt példányába történő](sql-database-managed-instance-migrate.md).
+> A Azure Database Migration Service (DMS) használatával történő áttelepítéssel kapcsolatos további információkért lásd: a felügyelt példányok áttelepítése a [DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md).
+> A különböző áttelepítési módszerekkel kapcsolatos további információkért lásd: [SQL Server példány áttelepítése Azure SQL Database felügyelt példányra](sql-database-managed-instance-migrate.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a rövid útmutató:
 
-- Az erőforrást használ, a [létrehoz egy felügyelt példányt](sql-database-managed-instance-get-started.md) rövid.
-- Rendelkeznie kell a számítógép a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) telepítve.
-- SSMS használata a felügyelt példányhoz való kapcsolódáshoz szükséges. Tekintse meg az alábbi gyorsútmutatókkal való csatlakozásról:
+- Erőforrásokat használ a [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md) rövid útmutatóból.
+- A számítógépen telepítve kell lennie [](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) a legújabb SQL Server Management Studionak.
+- A SSMS használata szükséges a felügyelt példányhoz való kapcsolódáshoz. A kapcsolódás menetét a következő útmutatókban tekintheti meg:
   - [Csatlakozás Azure SQL Database felügyelt példányhoz egy Azure virtuális gépről](sql-database-managed-instance-configure-vm.md)
-  - [Pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányába való helyszíni](sql-database-managed-instance-configure-p2s.md).
+  - [Pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszínen](sql-database-managed-instance-configure-p2s.md).
 
 > [!NOTE]
-> További információ a biztonsági mentése és visszaállítása egy SQL Server-adatbázis az Azure Blob storage és a egy [közös hozzáférésű Jogosultságkód (SAS) kulcs](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), lásd: [URL-címét az SQL Server biztonsági másolat](sql-database-managed-instance-get-started-restore.md).
+> A SQL Server-adatbázisok Azure Blob Storage használatával történő biztonsági mentéséről és visszaállításáról további információt a [](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) [SQL Server biztonsági mentés az URL-címre](sql-database-managed-instance-get-started-restore.md)című témakörben talál.
 
-## <a name="restore-the-database-from-a-backup-file"></a>Állítsa vissza az adatbázist egy biztonsági mentési fájlból
+## <a name="restore-the-database-from-a-backup-file"></a>Adatbázis visszaállítása biztonságimásolat-fájlból
 
-Az ssms-ben kövesse az alábbi lépéseket a Wide World Importers-adatbázis visszaállítása a felügyelt példányhoz. Az adatbázis biztonsági másolatát egy előre konfigurált Azure Blob storage-fiók van tárolva.
+A SSMS-ben kövesse az alábbi lépéseket a Wide World importing-adatbázis a felügyelt példányra való visszaállításához. Az adatbázis biztonságimásolat-fájlját egy előre konfigurált Azure Blob Storage-fiók tárolja.
 
-1. Nyissa meg az SMSS, és csatlakozhat a felügyelt példányhoz.
-2. A bal oldali menüben kattintson a jobb gombbal a felügyelt példány, és válassza ki **új lekérdezés** egy új lekérdezési ablak megnyitásához.
-3. Futtassa a következő SQL-parancsfájlt, amely egy előre konfigurált tárfiókot és SAS-kulcsot használ [hitelesítő adatok létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql) a felügyelt példány található.
+1. Nyissa meg az SMS-ket, és kapcsolódjon a felügyelt példányhoz.
+2. A bal oldali menüben kattintson a jobb gombbal a felügyelt példányra, és válassza az **Új lekérdezés** lehetőséget egy új lekérdezési ablak megnyitásához.
+3. Futtassa a következő SQL-parancsfájlt, amely egy előre konfigurált Storage-fiókot és egy SAS-kulcsot használ [egy hitelesítő adat létrehozásához](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql) a felügyelt példányban.
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]
@@ -58,7 +57,7 @@ Az ssms-ben kövesse az alábbi lépéseket a Wide World Importers-adatbázis vi
 
     ![hitelesítő adat létrehozása](./media/sql-database-managed-instance-get-started-restore/credential.png)
 
-4. A hitelesítő adatok ellenőrzéséhez futtassa a következő parancsfájlt, amely használja egy [tároló](https://azure.microsoft.com/services/container-instances/) listáját a biztonságimásolat-fájl URL-CÍMÉT.
+4. A hitelesítő adatok ellenőrzéséhez futtassa a következő parancsfájlt, amely egy [tároló](https://azure.microsoft.com/services/container-instances/) URL-címet használ a biztonságimásolat-fájlok listájának lekéréséhez.
 
    ```sql
    RESTORE FILELISTONLY FROM URL =
@@ -67,7 +66,7 @@ Az ssms-ben kövesse az alábbi lépéseket a Wide World Importers-adatbázis vi
 
     ![fájlok listája](./media/sql-database-managed-instance-get-started-restore/file-list.png)
 
-5. Futtassa a következő szkriptet a Wide World Importers-adatbázis visszaállítása.
+5. Futtassa a következő szkriptet a Wide World importing-adatbázis visszaállításához.
 
    ```sql
    RESTORE DATABASE [Wide World Importers] FROM URL =
@@ -90,6 +89,6 @@ Az ssms-ben kövesse az alábbi lépéseket a Wide World Importers-adatbázis vi
 
 ## <a name="next-steps"></a>További lépések
 
-- Egy biztonsági mentést egy URL-címet a hibaelhárításhoz, tekintse meg a [SQL Server biztonsági másolat URL-cím ajánlott eljárások és hibaelhárítás](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting).
-- Az alkalmazás kapcsolati beállítások áttekintéséhez lásd: [összekötheti saját alkalmazásait a felügyelt példány](sql-database-managed-instance-connect-app.md).
-- Lekérdezés a kedvenc eszközeinek vagy nyelveinek használatával, lásd: [rövid útmutatók: Az Azure SQL Database csatlakozásról és lekérdezésről](sql-database-connect-query.md).
+- Az URL-címekre történő biztonsági mentés hibaelhárítását lásd: [SQL Server biztonsági mentés az URL-címekhez – ajánlott eljárások és hibaelhárítás](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting).
+- Az alkalmazás-csatlakozási lehetőségek áttekintését lásd: [alkalmazások csatlakoztatása felügyelt példányhoz](sql-database-managed-instance-connect-app.md).
+- Ha kedvenc eszközeit vagy nyelveit szeretné lekérdezni, tekintse meg a gyors útmutatókat [: Azure SQL Database a kapcsolatot és](sql-database-connect-query.md)a lekérdezést.

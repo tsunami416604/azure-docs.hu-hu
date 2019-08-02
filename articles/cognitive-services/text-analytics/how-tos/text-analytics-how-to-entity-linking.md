@@ -1,111 +1,115 @@
 ---
-title: Entitások felismerése használata a szövegelemzési API
+title: Az entitások felismerésének használata a Text Analytics API
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan ismerhetik fel a Text Analytics REST API használatával.
+description: Ismerje meg, hogyan ismerheti fel az entitásokat az Text Analytics REST API használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: ff4f9af82024e9d39ad89a39bcb2fe4130de9101
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: ea7d3f56aa512b8f5998d710451ff3b37659ca13
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304178"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697844"
 ---
-# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Megnevezett entitások felismerése Szövegelemzés használata
+# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
-A [nevű entitás Recognition API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) strukturálatlan szöveges vesz igénybe, és egyes JSON-dokumentumok listáját adja vissza használatát entitásokat is tartalmaz, hivatkozásokkal további információhoz a weben (Wikipédia és a Bing). 
+Az [elnevezett entitás-felismerési API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) strukturálatlan szöveget vesz igénybe, és minden JSON-dokumentumhoz a disambiguated entitások listáját adja vissza, amely a weben található további információkra mutató hivatkozásokat tartalmaz (wikipedia és Bing).
 
-## <a name="entity-linking-and-named-entity-recognition"></a>Entitáskapcsolás és nevesített entitások felismerése
+## <a name="entity-linking-and-named-entity-recognition"></a>Entitások összekapcsolása és elnevezett entitások felismerése
 
-A Text Analytics `entities` mindkettő (NER) entitásfelismeréssel és -entitáskapcsolás nevű végpont támogatja.
+Az Text Analytics `entities` végpont támogatja az elnevezett entitások felismerését és az entitások összekapcsolását.
 
 ### <a name="entity-linking"></a>Entitáskapcsolás
-Entitáskapcsolás rendszer azon képessége, azonosíthatja és a egy entitás (például meghatározása-e a "Mars" globális vagy a latin god háború használja) szöveg található az identitás megkülönböztetéséhez. Ez a folyamat, amely felismeri a kapcsolódó entitások – Wikipedia szolgál a Tudásbázisban alapszintű ismerete szükséges a `entities` végpontot Text Analytics.
+Az entitások összekapcsolása lehetővé teszi egy szövegben talált entitás identitásának azonosítását és egyértelműsítse (például azt, hogy a "Mars" a bolygó vagy a háború római isteneként van-e használatban). Ehhez a folyamathoz meg kell adni egy tudásbázist, amelyre az elismert entitások kapcsolódnak – a wikipedia a `entities` végpont Text Analytics tudásbázisa.
 
-### <a name="named-entity-recognition-ner"></a>Nevesített entitások felismerése (NER)
-Megnevezett entitások felismerése (NER) rendszer azon képessége, azonosíthatja a szöveg különböző entitásokat, és előre meghatározott osztályokba kategorizálja őket. Az entitások támogatott osztályokat alább láthatók.
+### <a name="named-entity-recognition-ner"></a>Elnevezett entitások felismerése
+Az elnevezett entitások felismerése lehetővé teszi a különböző entitások azonosítását a szövegben, és azokat előre definiált osztályokra kategorizálja. Az entitások támogatott osztályai alább láthatók.
 
-A Text Analytics [2.1-es verzió](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), entitáskapcsolás és nevesített entitások felismerése (NER) érhetők el számos nyelvet. Tekintse meg a [nyelvi támogatás](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) cikkben további információt. 
+A (z) Text Analytics [2,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)-es verziójában az entitások összekapcsolása és elnevezett entitás-felismerés is számos nyelven elérhető. További információért tekintse meg a [nyelvi támogatásról](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) szóló cikket.
 
 ### <a name="language-support"></a>Nyelvi támogatás
 
-Entitáskapcsolás különféle nyelveken használatához az egyes nyelvekhez tartozó Tudásbázis használatával. A Text Analytics entitáskapcsolás, ez azt jelenti, hogy minden nyelv által támogatott a `entities` végpont kapcsolja a megfelelő Wikipedia forrásgyűjteményébe az adott nyelveken. Korpuszok mérete nyelvek közé esik, mivel várható, hogy a funkció a visszaírási entitáskapcsolás is változnak.
+Az entitások különböző nyelveken való összekapcsolásához a megfelelő tudásbázist kell használnia minden nyelven. A Text Analyticsban található entitások esetén ez azt jelenti, hogy a `entities` végpont által támogatott összes nyelv a megfelelő wikipedia-corpushoz fog hivatkozni az adott nyelven. Mivel a Corpora mérete eltérő lehet a nyelvek között, a rendszer azt várta, hogy az entitás összekapcsolása funkció visszahívása is változhat.
 
-## <a name="supported-types-for-named-entity-recognition"></a>Nevesített entitások felismerése támogatott típusai
+## <a name="supported-types-for-named-entity-recognition"></a>Megnevezett entitások felismeréséhez támogatott típusok
 
-| Típus  | SubType | Példa |
+| Type  | Altípus | Példa |
 |:-----------   |:------------- |:---------|
 | Személy        | N/A\*         | "Jeff", "Bill Gates"     |
-| Location egység      | N/A\*         | „Redmond, Washington”, „Paris”  |
+| Location      | N/A\*         | „Redmond, Washington”, „Paris”  |
 | Szervezet  | N/A\*         | „Microsoft”   |
-| Mennyiség      | Szám        | „6”, „six”     | 
-| Mennyiség      | Százalék    | „50%”, „fifty percent”| 
-| Mennyiség      | Sorszám       | „2nd”, „second”     | 
-| Mennyiség      | Számtartomány   | „4 to 8”     | 
-| Mennyiség      | Kor           | "90 napnál nem régebbi", "30 évnél fiatalabb"    | 
-| Mennyiség      | Currency (Pénznem)      | „$10.99”     | 
-| Mennyiség      | Dimenzió     | „10 miles”, „40 cm”     | 
+| Mennyiség      | Szám        | „6”, „six”     |
+| Mennyiség      | Százalék    | „50%”, „fifty percent”|
+| Mennyiség      | Sorszám       | „2nd”, „second”     |
+| Mennyiség      | Számtartomány   | „4 to 8”     |
+| Mennyiség      | Kor           | "90 napos", "30 év régi"    |
+| Mennyiség      | Currency      | „$10.99”     |
+| Mennyiség      | Dimenzió     | „10 miles”, „40 cm”     |
 | Mennyiség      | Hőmérséklet   | „32 degrees”    |
-| DateTime      | N/A\*         | „6:30PM February 4, 2012”      | 
-| DateTime      | Dátum          | „May 2nd, 2017”, „05/02/2017”   | 
-| DateTime      | Time          | "8 am", "8:00"  | 
-| DateTime      | Dátumtartomány     | „May 2nd to May 5th”    | 
-| DateTime      | Időtartomány     | „6pm to 7pm”     | 
-| DateTime      | Időtartam      | „1 minute and 45 seconds”   | 
-| DateTime      | Beállítás           | „every Tuesday”     | 
-| DateTime      | Időzóna      |    | 
-| URL-cím           | N/A\*         | "https:\//www.bing.com"    |
-| E-mail         | N/A\*         | "support@contoso.com" |
+| Datetime      | N/A\*         | „6:30PM February 4, 2012”      |
+| Datetime      | Date          | „May 2nd, 2017”, „05/02/2017”   |
+| Datetime      | Time          | "08:00", "8:00"  |
+| Datetime      | Dátumtartomány     | „May 2nd to May 5th”    |
+| Datetime      | Időtartomány     | „6pm to 7pm”     |
+| Datetime      | Duration      | „1 minute and 45 seconds”   |
+| Datetime      | Beállítás           | „every Tuesday”     |
+| Datetime      | Időzóna      |    |
+| URL           | N/A\*         | "https:\//www.Bing.com"    |
+| Email         | N/A\*         | "support@contoso.com" |
 
-\* Attól függően, a bemeneti és a kinyert entitásokat, bizonyos entitások előfordulhat, hogy kihagyja a `SubType`.  Az összes, a felsorolt támogatott entitás típusok a következők csak az angol, egyszerűsített kínai, francia, német és spanyol nyelven érhető el.
+\*A bemeneti és a kinyert entitástól függően előfordulhat, hogy bizonyos `SubType`entitások kihagyhatják a következőt:.  A felsorolt összes támogatott entitás csak angol, Kínai – egyszerűsített, francia, német és spanyol nyelven érhető el.
 
 
 
 ## <a name="preparation"></a>Előkészítés
 
-JSON-dokumentumok kell rendelkeznie a következő formátumban: Szöveg, nyelvi azonosító
+A következő formátumú JSON-dokumentumok szükségesek: AZONOSÍTÓ, szöveg, nyelv
 
-Lásd: által jelenleg támogatott nyelvek [ebben a listában](../text-analytics-supported-languages.md).
+A jelenleg támogatott nyelvek esetében tekintse meg [ezt a listát](../text-analytics-supported-languages.md).
 
-Dokumentum mérete kell lennie a 5,120 karakter / dokumentum, és legfeljebb 1000 rendelkezhet gyűjteményenként (azonosítók) elemet. A kollekció elküldése a kérelem törzsében történik. A következő példa olyan bemutatásáért, előfordulhat, hogy küldje el az entitás hivatkozási célból tartalom.
+A dokumentum méretének 5 120 karakternél rövidebbnek kell lennie, és egy gyűjteményben legfeljebb 1 000 elem (azonosító) szerepelhet. A kollekció elküldése a kérelem törzsében történik. Az alábbi példa egy olyan tartalom szemléltetése, amelyet a rendszer az entitás csatolásának végére küld.
 
-```
-{"documents": [{"id": "1",
+```json
+    {
+        "documents": [
+            {
+                "id": "1",
                 "language": "en",
                 "text": "Jeff bought three dozen eggs because there was a 50% discount."
-                },
-               {"id": "2",
+            },
+            {
+                "id": "2",
                 "language": "en",
                 "text": "The Great Depression began in 1929. By 1933, the GDP in America fell by 25%."
-                }
-               ]
-}
-```    
-    
-## <a name="step-1-structure-the-request"></a>1\. lépés: A kérelem struktúra
+            }
+        ]
+    }
+```
+
+## <a name="step-1-structure-the-request"></a>1\. lépés: A kérelem szerkezete
 
 A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytics API hívásának módja](text-analytics-how-to-call-api.md) részben. A következő pontokat a kényelem kedvéért itt megismételjük:
 
-+ Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentáció: [Entitáskapcsolási API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
++ Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentációját: [Entitások API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Állítsa be a HTTP-végpontot entitások kinyeréséhez. Tartalmaznia kell a `/entities` erőforrást: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1/entities`
++ Állítsa be a HTTP-végpontot az entitások kinyeréséhez. Tartalmaznia kell a `/entities` erőforrást: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1/entities`
 
-+ A kérés fejlécet állítsa be úgy, hogy tartalmazza a Text Analytics műveletekhez a hozzáférési kulcsot. További információkért lásd: [Végpontok és hozzáférési kulcsok megkeresése](text-analytics-how-to-access-key.md).
++ Állítsa be a kérelem fejlécét, hogy tartalmazza a Text Analytics műveletekhez tartozó [hozzáférési kulcsot](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 
 + A kérelem törzsében adja meg az elemzéshez előkészített JSON-dokumentum kollekciót
 
 > [!Tip]
 > Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2\. lépés: A kérelem küldése
+## <a name="step-2-post-the-request"></a>2\. lépés: A kérelem közzététele
 
-Az elemzés a kérelem megkapásakor történik meg. Tekintse meg a [data korlátai](../overview.md#data-limits) szakasz az áttekintésben a méret és a kérelmek percenkénti küldhet és a második kapcsolatos információkat.
+Az elemzés a kérelem megkapásakor történik meg. Az áttekinthető kérelmek méretével és számával kapcsolatos információkat az Áttekintés lapon tekintheti meg a percenkénti küldéshez. [](../overview.md#data-limits)
 
 Ne felejtse, hogy a szolgáltatás állapot nélküli. A fiókban nem tárol semmilyen adatot. Az eredményeket azonnal visszaadja a válaszban.
 
@@ -115,179 +119,178 @@ Minden POST kérés egy JSON formátumú választ ad vissza az azonosítókkal �
 
 A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó alkalmazáshoz küldheti vagy a kimenetet elmentheti fájlba a helyi rendszeren, majd importálható az adatokat rendezni, keresni és kezelni képes alkalmazásba.
 
-Egy példa a kimenetre entitáskapcsolás a következő látható:
+Az entitások csatolásának kimenetét a következő példa szemlélteti:
 
 ```json
-{
-    "Documents": [
-        {
-            "Id": "1",
-            "Entities": [
-                {
-                    "Name": "Jeff",
-                    "Matches": [
-                        {
-                            "Text": "Jeff",
-                            "Offset": 0,
-                            "Length": 4
-                        }
-                    ],
-                    "Type": "Person"
-                },
-                {
-                    "Name": "three dozen",
-                    "Matches": [
-                        {
-                            "Text": "three dozen",
-                            "Offset": 12,
-                            "Length": 11
-                        }
-                    ],
-                    "Type": "Quantity",
-                    "SubType": "Number"
-                },
-                {
-                    "Name": "50",
-                    "Matches": [
-                        {
-                            "Text": "50",
-                            "Offset": 49,
-                            "Length": 2
-                        }
-                    ],
-                    "Type": "Quantity",
-                    "SubType": "Number"
-                },
-                {
-                    "Name": "50%",
-                    "Matches": [
-                        {
-                            "Text": "50%",
-                            "Offset": 49,
-                            "Length": 3
-                        }
-                    ],
-                    "Type": "Quantity",
-                    "SubType": "Percentage"
-                }
-            ]
-        },
-        {
-            "Id": "2",
-            "Entities": [
-                {
-                    "Name": "Great Depression",
-                    "Matches": [
-                        {
-                            "Text": "The Great Depression",
-                            "Offset": 0,
-                            "Length": 20
-                        }
-                    ],
-                    "WikipediaLanguage": "en",
-                    "WikipediaId": "Great Depression",
-                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
-                    "BingId": "d9364681-98ad-1a66-f869-a3f1c8ae8ef8"
-                },
-                {
-                    "Name": "1929",
-                    "Matches": [
-                        {
-                            "Text": "1929",
-                            "Offset": 30,
-                            "Length": 4
-                        }
-                    ],
-                    "Type": "DateTime",
-                    "SubType": "DateRange"
-                },
-                {
-                    "Name": "By 1933",
-                    "Matches": [
-                        {
-                            "Text": "By 1933",
-                            "Offset": 36,
-                            "Length": 7
-                        }
-                    ],
-                    "Type": "DateTime",
-                    "SubType": "DateRange"
-                },
-                {
-                    "Name": "Gross domestic product",
-                    "Matches": [
-                        {
-                            "Text": "GDP",
-                            "Offset": 49,
-                            "Length": 3
-                        }
-                    ],
-                    "WikipediaLanguage": "en",
-                    "WikipediaId": "Gross domestic product",
-                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Gross_domestic_product",
-                    "BingId": "c859ed84-c0dd-e18f-394a-530cae5468a2"
-                },
-                {
-                    "Name": "United States",
-                    "Matches": [
-                        {
-                            "Text": "America",
-                            "Offset": 56,
-                            "Length": 7
-                        }
-                    ],
-                    "WikipediaLanguage": "en",
-                    "WikipediaId": "United States",
-                    "WikipediaUrl": "https://en.wikipedia.org/wiki/United_States",
-                    "BingId": "5232ed96-85b1-2edb-12c6-63e6c597a1de",
-                    "Type": "Location"
-                },
-                {
-                    "Name": "25",
-                    "Matches": [
-                        {
-                            "Text": "25",
-                            "Offset": 72,
-                            "Length": 2
-                        }
-                    ],
-                    "Type": "Quantity",
-                    "SubType": "Number"
-                },
-                {
-                    "Name": "25%",
-                    "Matches": [
-                        {
-                            "Text": "25%",
-                            "Offset": 72,
-                            "Length": 3
-                        }
-                    ],
-                    "Type": "Quantity",
-                    "SubType": "Percentage"
-                }
-            ]
-        }
-    ],
-    "Errors": []
-}
+    {
+        "Documents": [
+            {
+                "Id": "1",
+                "Entities": [
+                    {
+                        "Name": "Jeff",
+                        "Matches": [
+                            {
+                                "Text": "Jeff",
+                                "Offset": 0,
+                                "Length": 4
+                            }
+                        ],
+                        "Type": "Person"
+                    },
+                    {
+                        "Name": "three dozen",
+                        "Matches": [
+                            {
+                                "Text": "three dozen",
+                                "Offset": 12,
+                                "Length": 11
+                            }
+                        ],
+                        "Type": "Quantity",
+                        "SubType": "Number"
+                    },
+                    {
+                        "Name": "50",
+                        "Matches": [
+                            {
+                                "Text": "50",
+                                "Offset": 49,
+                                "Length": 2
+                            }
+                        ],
+                        "Type": "Quantity",
+                        "SubType": "Number"
+                    },
+                    {
+                        "Name": "50%",
+                        "Matches": [
+                            {
+                                "Text": "50%",
+                                "Offset": 49,
+                                "Length": 3
+                            }
+                        ],
+                        "Type": "Quantity",
+                        "SubType": "Percentage"
+                    }
+                ]
+            },
+            {
+                "Id": "2",
+                "Entities": [
+                    {
+                        "Name": "Great Depression",
+                        "Matches": [
+                            {
+                                "Text": "The Great Depression",
+                                "Offset": 0,
+                                "Length": 20
+                            }
+                        ],
+                        "WikipediaLanguage": "en",
+                        "WikipediaId": "Great Depression",
+                        "WikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
+                        "BingId": "d9364681-98ad-1a66-f869-a3f1c8ae8ef8"
+                    },
+                    {
+                        "Name": "1929",
+                        "Matches": [
+                            {
+                                "Text": "1929",
+                                "Offset": 30,
+                                "Length": 4
+                            }
+                        ],
+                        "Type": "DateTime",
+                        "SubType": "DateRange"
+                    },
+                    {
+                        "Name": "By 1933",
+                        "Matches": [
+                            {
+                                "Text": "By 1933",
+                                "Offset": 36,
+                                "Length": 7
+                            }
+                        ],
+                        "Type": "DateTime",
+                        "SubType": "DateRange"
+                    },
+                    {
+                        "Name": "Gross domestic product",
+                        "Matches": [
+                            {
+                                "Text": "GDP",
+                                "Offset": 49,
+                                "Length": 3
+                            }
+                        ],
+                        "WikipediaLanguage": "en",
+                        "WikipediaId": "Gross domestic product",
+                        "WikipediaUrl": "https://en.wikipedia.org/wiki/Gross_domestic_product",
+                        "BingId": "c859ed84-c0dd-e18f-394a-530cae5468a2"
+                    },
+                    {
+                        "Name": "United States",
+                        "Matches": [
+                            {
+                                "Text": "America",
+                                "Offset": 56,
+                                "Length": 7
+                            }
+                        ],
+                        "WikipediaLanguage": "en",
+                        "WikipediaId": "United States",
+                        "WikipediaUrl": "https://en.wikipedia.org/wiki/United_States",
+                        "BingId": "5232ed96-85b1-2edb-12c6-63e6c597a1de",
+                        "Type": "Location"
+                    },
+                    {
+                        "Name": "25",
+                        "Matches": [
+                            {
+                                "Text": "25",
+                                "Offset": 72,
+                                "Length": 2
+                            }
+                        ],
+                        "Type": "Quantity",
+                        "SubType": "Number"
+                    },
+                    {
+                        "Name": "25%",
+                        "Matches": [
+                            {
+                                "Text": "25%",
+                                "Offset": 72,
+                                "Length": 3
+                            }
+                        ],
+                        "Type": "Quantity",
+                        "SubType": "Percentage"
+                    }
+                ]
+            }
+        ],
+        "Errors": []
+    }
 ```
 
+## <a name="summary"></a>Összegzés
 
-## <a name="summary"></a>Összefoglalás
+Ebben a cikkben megtanulta az entitások összekapcsolásával kapcsolatos fogalmakat és munkafolyamatokat a Cognitive Services Text Analytics használatával. Összegezve:
 
-Ebben a cikkben megtanulta, fogalmak és a Cognitive Services Text Analytics használatával entitáskapcsolás munkafolyamatokat. Összegezve:
-
-+ [Entitások API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) érhető el a kiválasztott nyelveken.
-+ A kérelem törzsében szereplő JSON-dokumentumok közé tartozik egy azonosító, a szöveg és a nyelvi kódot.
-+ POST-kérés a `/entities` végpontra, az előfizetésre érvényes személyre szabott [hozzáférési kulcs és végpont](text-analytics-how-to-access-key.md) használatával.
-+ Válasz kimenete, amely entitáskészlet (beleértve a megbízhatósági pontszámok eltolások és webes hivatkozások, minden egyes dokumentum-azonosító) áll használható bármely alkalmazásban
++ Az [entitások API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) a kiválasztott nyelvekhez érhető el.
++ A kérelem törzsében található JSON-dokumentumok közé tartozik az azonosító, a szöveg és a nyelvi kód.
++ POST-kérés a `/entities` végpontra, az előfizetésre érvényes személyre szabott [hozzáférési kulcs és végpont](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) használatával.
++ Bármely alkalmazásban használhatók olyan válaszok, amelyek összekapcsolt entitásokból (beleértve a megbízhatósági pontszámokat, az eltolásokat és a webes hivatkozásokat) tartalmazzák
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Text Analytics API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-* [A Text Analytics áttekintése](../overview.md)  
+* [A Text Analytics áttekintése](../overview.md)
 * [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
-* [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712) 
+* [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712)

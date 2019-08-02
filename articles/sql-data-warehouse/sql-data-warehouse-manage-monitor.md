@@ -1,49 +1,49 @@
 ---
-title: A számítási feladat monitorozása DMV |} A Microsoft Docs
-description: Ismerje meg, a számítási feladatok DMV-k figyelése.
+title: A számítási feladatok figyelése a DMV használatával | Microsoft Docs
+description: Megtudhatja, hogyan figyelheti a munkaterhelést a DMV használatával.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/12/2019
+ms.date: 07/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: ff1f613dfdfb5c43b727bcc9c7f7a1f0afca0975
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2dab34ea0ef64f4062819e9b2d475e6a226856b
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60748772"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405437"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
-Ez a cikk ismerteti, hogyan lehet a számítási feladat monitorozása dinamikus felügyeleti nézetekkel (DMV-kkel) segítségével. Ez magában foglalja, vizsgálja meg a lekérdezés végrehajtása az Azure SQL Data warehouse-bA.
+Ez a cikk azt ismerteti, hogyan használhatók a dinamikus felügyeleti nézetek (DMV) a számítási feladatok figyelésére. Ide tartozik a lekérdezés végrehajtásának vizsgálata Azure SQL Data Warehouseban.
 
 ## <a name="permissions"></a>Engedélyek
-Ebben a cikkben a dinamikus felügyeleti nézetek lekérdezéséhez, VIEW DATABASE STATE vagy a CONTROL engedély szükséges. Próbáltak VIEW DATABASE STATE általában az előnyben részesített engedély, mivel jóval szigorúbb.
+A cikkben szereplő DMV lekéréséhez meg kell TEKINTENIe az adatbázis ÁLLAPOTÁT vagy a VEZÉRLÉSi engedélyt. Általában a MEGTEKINTÉSi adatbázis ÁLLAPOTának megadása az előnyben részesített engedély, mert sokkal szigorúbb.
 
 ```sql
 GRANT VIEW DATABASE STATE TO myuser;
 ```
 
-## <a name="monitor-connections"></a>Kapcsolatok monitorozása
-Az SQL Data Warehouse összes bejelentkezés naplózása [sys.dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].  A DMV az utolsó 10 000 bejelentkezéseket tartalmazza.  A munkamenet-azonosítónak az elsődleges kulcs, és minden egyes új bejelentkezés egymás után van hozzárendelve.
+## <a name="monitor-connections"></a>Kapcsolatok figyelése
+Az SQL Data Warehouse összes bejelentkezését a rendszer naplózza a [sys. DM _pdw_exec_sessions][sys.dm_pdw_exec_sessions].  Ez a DMV tartalmazza az utolsó 10 000 bejelentkezést.  A session_id az elsődleges kulcs, amely minden új bejelentkezéshez egymás után van rendelve.
 
 ```sql
 -- Other Active Connections
 SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <> session_id();
 ```
 
-## <a name="monitor-query-execution"></a>A figyelő a lekérdezés végrehajtása
-Az SQL Data warehouse-bA végrehajtott összes lekérdezés a rendszer naplózza [sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests].  A DMV tartalmazza az utolsó 10 000 végrehajtott lekérdezések.  A request_id egyedi módon azonosítja az egyes lekérdezések és a DMV elsődleges kulcsát.  A request_id minden egyes új lekérdezés egymás után van hozzárendelve, és a következő előtaggal kezdődik QID jelző lekérdezés azonosítóját.  Az adott bejelentkezéshez az összes lekérdezés az egy adott munkamenet-azonosítónak a DMV lekérdezéséhez jeleníti meg.
+## <a name="monitor-query-execution"></a>Lekérdezés végrehajtásának figyelése
+Az SQL Data Warehouseon végrehajtott összes lekérdezést a [sys. DM _pdw_exec_requests][sys.dm_pdw_exec_requests]naplózza a rendszer.  Ez a DMV tartalmazza az utolsó 10 000-lekérdezést.  A request_id egyedileg azonosítja az egyes lekérdezéseket, és ez a DMV elsődleges kulcsa.  A request_id minden egyes új lekérdezéshez egymás után van rendelve, és a QID előtaggal van ellátva, amely a lekérdezés AZONOSÍTÓját jelöli.  A DMV egy adott session_id való lekérdezése az adott bejelentkezés összes lekérdezését megjeleníti.
 
 > [!NOTE]
-> Tárolt eljárások használata több kérelem azonosítók.  Kérelem azonosítók egymást követő sorrendben vannak hozzárendelve. 
+> A tárolt eljárások több kérelem azonosítóját használják.  A kérelmek azonosítói sorrendben vannak hozzárendelve. 
 > 
 > 
 
-Az alábbiakban a lekérdezések végrehajtási tervét, és többször egy adott lekérdezésre vonatkozó utasításokat.
+Az alábbi lépéseket követve vizsgálhatja meg a lekérdezés-végrehajtási terveket és időpontokat egy adott lekérdezés esetében.
 
 ### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>1\. LÉPÉS: A vizsgálni kívánt lekérdezés azonosítása
 ```sql
@@ -59,18 +59,13 @@ SELECT TOP 10 *
 FROM sys.dm_pdw_exec_requests 
 ORDER BY total_elapsed_time DESC;
 
--- Find a query with the Label 'My Query'
--- Use brackets when querying the label column, as it it a key word
-SELECT  *
-FROM    sys.dm_pdw_exec_requests
-WHERE   [label] = 'My Query';
 ```
 
-A fenti lekérdezés eredménye a **jegyezze fel a kérés Azonosítóját** a lekérdezés, amely, amelyet szeretne vizsgálni.
+A fenti lekérdezési eredményekből **jegyezze** fel a vizsgálni kívánt lekérdezés azonosítóját.
 
-A lekérdezések a **felfüggesztett** állapot várólistára tehető aktív futó lekérdezések nagy száma miatt. Ezeket a lekérdezéseket is megjelennek a [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) vár lekérdezés UserConcurrencyResourceType típusú. Egyidejűségi korlátját kapcsolatos tudnivalókat lásd: [teljesítményszintek](performance-tiers.md) vagy [erőforrásosztályok számítási feladatok kezeléséhez](resource-classes-for-workload-management.md). Lekérdezések is, amíg a többi okai például objektum zárolása.  Ha a lekérdezés egy erőforrást vár, tekintse meg [erőforrások váró lekérdezések kivizsgálása][Investigating queries waiting for resources] további ebben a cikkben.
+A felfüggesztett  állapotú lekérdezések a nagy számú aktív futó lekérdezés miatt várólistára helyezhetők. Ezek a lekérdezések a [sys. DM _pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) is megjelennek a lekérdezés UserConcurrencyResourceType. A párhuzamossági korlátokkal kapcsolatos információkért lásd: [teljesítmény](performance-tiers.md) -és [erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md). A lekérdezések más okokat is várhatnak, például az objektumok zárolását.  Ha a lekérdezés egy erőforrásra vár, tekintse meg a jelen cikk további [erőforrásaira váró lekérdezések kivizsgálását][Investigating queries waiting for resources] ismertető cikket.
 
-A keresést a lekérdezés egyszerűsítése érdekében a [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) táblában, használja [címke][LABEL] Megjegyzés rendelhet hozzá a lekérdezéshez, amely a sys.dm_pdw_exec_ kereshetők kérelmek megtekintése.
+A [sys. DM _pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) táblában lévő lekérdezések keresésének egyszerűbbé tételéhez a [label][LABEL] paranccsal rendeljen hozzá egy olyan megjegyzést a lekérdezéshez, amely a sys. DM _pdw_exec_requests nézetben kereshető.
 
 ```sql
 -- Query with Label
@@ -78,10 +73,16 @@ SELECT *
 FROM sys.tables
 OPTION (LABEL = 'My Query')
 ;
+
+-- Find a query with the Label 'My Query'
+-- Use brackets when querying the label column, as it it a key word
+SELECT  *
+FROM    sys.dm_pdw_exec_requests
+WHERE   [label] = 'My Query';
 ```
 
-### <a name="step-2-investigate-the-query-plan"></a>2\. LÉPÉS: A lekérdezésterv vizsgálata
-A kérés Azonosítóját használatával lekérheti az elosztott SQL (DSQL) csomagot a lekérdezés az [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].
+### <a name="step-2-investigate-the-query-plan"></a>2\. LÉPÉS: A lekérdezési terv vizsgálata
+A kérelem azonosítója segítségével kérje le a lekérdezés elosztott SQL-(DSQL-) tervét a [sys. DM _pdw_request_steps][sys.dm_pdw_request_steps].
 
 ```sql
 -- Find the distributed query plan steps for a specific query.
@@ -92,15 +93,15 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-DSQL csomagot a vártnál tovább tart, amikor az OK lehet egy összetett terv számos DSQL lépéseket vagy hosszú ideig tart egy lépés.  Ha a csomag több áthelyezési művelet számos lépést, érdemes csökkentése érdekében az adatok áthelyezése a táblázat disztribúciókat optimalizálása. A [Táblaelosztással][Table distribution] a cikk azt ismerteti, miért adatok oldja meg a lekérdezés át kell helyezni, és ismerteti az egyes terjesztési stratégia adatáthelyezés minimalizálása érdekében.
+Ha egy DSQL-csomag a vártnál hosszabb időt vesz igénybe, az ok lehet egy összetett csomag, amely sok DSQL lépést vagy csak egy lépést tart hosszú idő alatt.  Ha a csomag számos lépésből áll, több áthelyezési művelettel, érdemes lehet optimalizálni a táblázatok eloszlását az adatmozgatás csökkentése érdekében. A [táblázat terjesztési][Table distribution] cikke leírja, hogy miért kell áthelyezni az adatátvitelt a lekérdezés megoldásához, és elmagyarázza néhány terjesztési stratégiát az adatáthelyezés minimalizálásához.
 
-A további vizsgálat érdekében egy lépésben részleteit a *operation_type* oszlop a hosszan futó lekérdezést lépés és megjegyzés a **Lépésindex**:
+Egy adott lépés további részleteinek vizsgálatához a hosszan futó lekérdezési lépés *operation_type* oszlopát, és jegyezze fel a **lépés indexét**:
 
-* A lépés 3a folytatásához **SQL-műveletek**: OnOperation, RemoteOperation, ReturnOperation.
-* Folytassa a 3/b. lépés **adatáthelyezési műveletek**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
+* Folytassa az **SQL-műveletek**3a. lépésével: OnOperation, RemoteOperation, ReturnOperation.
+* Folytassa a 3b. lépéssel az adatáthelyezési **műveletekhez**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
-### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>3a. lépés: Az elosztott adatbázisok SQL vizsgálata
-A kérés Azonosítóját és a Lépésindex használatával lekérheti adatait [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], amelyek végrehajtási információkat tartalmaz a lekérdezési lépés az összes elosztott adatbázisok.
+### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>3a. lépés: Az SQL vizsgálata az elosztott adatbázisokon
+A Request ID és a Step index használatával kérhet le részleteket a [sys. DM _pdw_sql_requests][sys.dm_pdw_sql_requests], amely az összes elosztott adatbázis lekérdezési lépésének végrehajtási információit tartalmazza.
 
 ```sql
 -- Find the distribution run times for a SQL step.
@@ -110,7 +111,7 @@ SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-A lekérdezés lépés futtatásakor [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] lekérni az SQL Server becsült terv a lépés egy adott terjesztési fut az SQL Server tervgyorsítótárból származó is használható.
+Ha a lekérdezési lépés fut, a [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] segítségével lekérheti a SQL Server becsült tervét a SQL Server terv gyorsítótárból egy adott disztribúción futó lépéshez.
 
 ```sql
 -- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -119,8 +120,8 @@ A lekérdezés lépés futtatásakor [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWE
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>3/b. lépés: Adatok áthelyezése az elosztott adatbázisok vizsgálata
-A kérés Azonosítóját és a Lépésindex használatával lekérheti az adatok mozgását lépés fut az egyes terjesztési információ [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers].
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>3b. lépés: Az elosztott adatbázisok adatáthelyezésének vizsgálata
+A Request ID és a Step index használatával adatokat kérhet le egy, a [sys. DM _pdw_dms_workers][sys.dm_pdw_dms_workers]származó egyes eloszláson futó adatáthelyezési lépésről.
 
 ```sql
 -- Find the information about all the workers completing a Data Movement Step.
@@ -130,10 +131,10 @@ SELECT * FROM sys.dm_pdw_dms_workers
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-* Ellenőrizze a *total_elapsed_time* oszlopban tekintheti meg, ha egy adott terjesztési jelentősen a vártnál tovább tart, mint a többi az adatok áthelyezését.
-* A hosszú ideig futó terjesztési, ellenőrizze a *rows_processed* , ha jelentősen nagyobb, mint a többi-e, hogy a terjesztés az áthelyezni kívánt sorok számát oszlop. Ha igen, ez találja az alapul szolgáló adatok torzulása utalhat.
+* Tekintse meg a *total_elapsed_time* oszlopot, és ellenőrizze, hogy egy adott eloszlás jelentősen hosszabb időt vesz igénybe, mint a többi adatáthelyezés.
+* A hosszú ideig futó eloszlásnál tekintse meg a *rows_processed* oszlopot, és ellenőrizze, hogy az adott eloszlásból áthelyezett sorok száma lényegesen nagyobb-e, mint a többi. Ha igen, ez a megállapítás a mögöttes adatokat is jelezheti.
 
-Ha a lekérdezés fut, [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] is lehet lekérni az SQL Server becsült terv az SQL Server tervgyorsítótárból származó, az aktuálisan futó SQL lépés belül egy adott terjesztési.
+Ha a lekérdezés fut, a [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] segítségével lekérheti a SQL Server becsült tervét a SQL Server terv gyorsítótárból a jelenleg futó SQL-lépéshez egy adott eloszláson belül.
 
 ```sql
 -- Find the SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -144,8 +145,8 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 
 <a name="waiting"></a>
 
-## <a name="monitor-waiting-queries"></a>Várakozás lekérdezések figyelése
-Ha a tudomására jut, hogy a lekérdezés nem készít folyamatban van, mert egy erőforrást vár, Íme egy lekérdezést, amely bemutatja az összes erőforrást egy lekérdezést vár.
+## <a name="monitor-waiting-queries"></a>Várakozó lekérdezések figyelése
+Ha azt tapasztalja, hogy a lekérdezés nem halad előre, mert egy erőforrásra vár, itt látható egy lekérdezés, amely megjeleníti az összes olyan erőforrást, amely a lekérdezésre vár.
 
 ```sql
 -- Find queries 
@@ -167,13 +168,13 @@ WHERE waits.request_id = 'QID####'
 ORDER BY waits.object_name, waits.object_type, waits.state;
 ```
 
-Ha a lekérdezés aktívan vár az erőforrásokat, egy másik lekérdezést, majd állapota lesz **AcquireResources**.  Ha a lekérdezésben található az összes szükséges erőforrást, majd állapota lesz **engedélyezve**.
+Ha a lekérdezés aktívan várakozik egy másik lekérdezés erőforrásaira, akkor az állapot **AcquireResources**válik.  Ha a lekérdezés rendelkezik az összes szükséges erőforrással, akkor a rendszer megadja az állapotot.
 
-## <a name="monitor-tempdb"></a>A figyelő a tempdb
-A TempDB szolgál, amely tárolja a köztes eredményeket a lekérdezés végrehajtása során. A tempdb-adatbázis magas kihasználtság lekérdezési teljesítmény lassú vezethet. Az Azure SQL Data Warehouse minden fürtcsomópont körülbelül 1 TB nyers tempdb-terület. Az alábbiakban a tempdb-használat monitorozásával és a tempdb-használat, a lekérdezések a csökkenő tippeket. 
+## <a name="monitor-tempdb"></a>Tempdb figyelése
+A tempdb a közbenső eredmények tárolására szolgál a lekérdezés végrehajtása során. A tempdb-adatbázis magas kihasználtsága lassú lekérdezési teljesítményt eredményezhet. Azure SQL Data Warehouse minden csomópontja körülbelül 1 TB-nyi lemezterülettel rendelkezik a tempdb. Az alábbiakban a tempdb használatának figyelésére, valamint a lekérdezésekben a tempdb használatának csökkenésére vonatkozó tippek találhatók. 
 
-### <a name="monitoring-tempdb-with-views"></a>A nézetek a tempdb figyelése
-A tempdb-használat figyeléséhez, először telepítse a [microsoft.vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql) nézet első eleme a [az SQL Data Warehouse a Microsoft Toolkit](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring). A következő lekérdezést a tempdb használati minden végrehajtott lekérdezések csomópontonként, majd futtathatja:
+### <a name="monitoring-tempdb-with-views"></a>Tempdb figyelése nézetekkel
+A tempdb-használat figyeléséhez először telepítse a [Microsoft. vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql) nézetet a [Microsoft eszközkészletből a SQL Data Warehouse](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring). Ezután végrehajthatja a következő lekérdezést, hogy az összes végrehajtott lekérdezés esetében megjelenjen a tempdb használata.
 
 ```sql
 -- Monitor tempdb
@@ -205,15 +206,15 @@ WHERE DB_NAME(ssu.database_id) = 'tempdb'
 ORDER BY sr.request_id;
 ```
 
-Ha egy lekérdezést, amely jelentős mennyiségű memóriát is használja, vagy a TempDB adatbázis foglalási kapcsolatos hibaüzenetet kapott, ez a legtöbbször miatt egy nagyon nagy [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) vagy [INSERT SELECT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) az utasítás fut, amely végső soron az adatok mozgását művelet sikertelen. Ez általában ellenőrizhető, ShuffleMove műveletként az elosztott lekérdezési terv közvetlenül a végső INSERT SELECT előtt.
+Ha olyan lekérdezéssel rendelkezik, amely nagy mennyiségű memóriát használ, vagy a tempdb kiosztásával kapcsolatos hibaüzenetet kapott, gyakran egy nagyon nagy méretű [CREATE TABLE a Select (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) vagy a [Insert Select](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) utasítás futtatása, amely sikertelen a következőben: végső adatáthelyezési művelet. Ez általában ShuffleMove műveletként azonosítható az elosztott lekérdezési tervben közvetlenül a végső Beszúrás kiválasztása előtt.
 
-A leggyakoribb megoldás, hogy a CTAS vagy INSERT SELECT utasítás felosztása több betöltési utasításokat, így az adatmennyiség nem haladhatja meg az 1 TB-os csomópont tempdb-korlát. A fürt egy nagyobb méretű, ami lesz a TempDB adatbázis mérete elosztva csökkenti a tempdb minden egyes csomóponton több csomópont is méretezheti. 
+A leggyakoribb megoldás a CTAS vagy a SELECT utasítás beillesztése több betöltési utasításba, így az adatmennyiség nem haladja meg az 1 TB/csomópont tempdb korlátot. A fürtöt nagyobb méretre is méretezheti, amely a tempdb méretét több csomóponton is eloszthatja, ami csökkenti az egyes csomópontok tempdb. 
 
-## <a name="monitor-memory"></a>A figyelő memória
+## <a name="monitor-memory"></a>Memória figyelése
 
-Memória lehet a hiba okát a lassú teljesítmény és az memóriahiba-ból. Vegye figyelembe, hogy az adattárház méretezése, ha SQL Server memóriahasználatának kapacitásukkal elérése a lekérdezés végrehajtása során.
+A memória okozhatja a lassú teljesítményt és a memóriával kapcsolatos problémák okát. Ha úgy találja, hogy SQL Server memóriahasználat a lekérdezés végrehajtása során, érdemes megfontolnia az adattárház skálázását.
 
-A következő lekérdezés az SQL Server és memóriaterhelés csomópontonként adja vissza:   
+A következő lekérdezés visszaadja SQL Server memóriahasználat és a memória terhelését egy csomóponton:   
 ```sql
 -- Memory consumption
 SELECT
@@ -235,8 +236,8 @@ WHERE
 pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
-## <a name="monitor-transaction-log-size"></a>Tranzakciós napló méretétől figyelése
-A következő lekérdezést a tranzakciós napló mérete az egyes terjesztési adja vissza. Ha eléri a naplófájlok egyik 160 GB, érdemes a példány vertikális felskálázásával, vagy a tranzakciók mérete korlátozza. 
+## <a name="monitor-transaction-log-size"></a>Tranzakciós napló méretének figyelése
+A következő lekérdezés az egyes eloszlások tranzakciós naplójának méretét adja vissza. Ha az egyik naplófájl eléri a 160 GB-ot, érdemes megfontolnia a példány méretezését vagy a tranzakció méretének korlátozását. 
 ```sql
 -- Transaction log size
 SELECT
@@ -248,8 +249,8 @@ WHERE
 instance_name like 'Distribution_%' 
 AND counter_name = 'Log File(s) Used Size (KB)'
 ```
-## <a name="monitor-transaction-log-rollback"></a>A figyelő tranzakciós napló visszaállítása
-Ha a lekérdezések sikertelen, vagy folytatja hosszú ideig tart, ellenőrizheti és figyelése, ha bármely tranzakció visszagörgetése.
+## <a name="monitor-transaction-log-rollback"></a>Tranzakciós napló visszaállításának figyelése
+Ha a lekérdezések sikertelenek, vagy a folytatáshoz hosszú időt vesznek fel, ellenőrizheti és megfigyelheti, hogy vannak-e visszagörgethető tranzakciók.
 ```sql
 -- Monitor rollback
 SELECT 
@@ -262,7 +263,7 @@ GROUP BY t.pdw_node_id, nod.[type]
 ```
 
 ## <a name="next-steps"></a>További lépések
-DMV-vel kapcsolatos további információkért lásd: [rendszernézetek][System views].
+További információ a DMV: rendszernézetek. [][System views]
 
 
 <!--Image references-->

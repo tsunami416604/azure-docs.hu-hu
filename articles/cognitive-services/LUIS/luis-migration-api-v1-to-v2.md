@@ -1,7 +1,7 @@
 ---
 title: V1-v2 API-k áttelepítése
 titleSuffix: Azure Cognitive Services
-description: Az 1-es verziójú végpont és a Language Understanding API-k készítése elavulttá váltak. Ez az útmutató segítségével megtudhatja, hogyan át a 2. verziójú végpont és az API-k készítése.
+description: Az 1-es verziójú végpont és a szerzői Language Understanding API-k elavultak. Ebből az útmutatóból megtudhatja, hogyan telepítheti át a 2. verziójú végpontra és az API-k létrehozására.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: a4e176552fcbab9d54da696439c7e46750be3944
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab42ee29e508bfa62e2dba7a6e6a06baa0da2489
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522367"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560308"
 ---
-# <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>API v1-v2 áttelepítési útmutatója a LUIS-alkalmazások
-Az 1. verziójának [végpont](https://aka.ms/v1-endpoint-api-docs) és [szerzői](https://aka.ms/v1-authoring-api-docs) API-jai elavultak. Ez az útmutató segítségével megtudhatja, hogyan 2. verzióban át [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) és [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) API-k. 
+# <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>API v1 – v2 áttelepítési útmutató LUIS-alkalmazásokhoz
+Az 1-es verziójú [végpont](https://aka.ms/v1-endpoint-api-docs) és [](https://aka.ms/v1-authoring-api-docs) a szerzői API-k elavultak. Ez az útmutató segítségével megtudhatja, hogyan 2. verzióban át [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) és [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) API-k. 
 
 ## <a name="new-azure-regions"></a>Új Azure-régió
-A LUIS rendelkezik új [régiók](https://aka.ms/LUIS-regions) biztosított az intelligens HANGFELISMERÉSI API-t. A LUIS régiócsoportok egy másik portált biztosít. Az alkalmazás lekérdezése várhatóan ugyanabban a régióban kell hozhatóak létre. Alkalmazások nem telepíthetők át automatikusan régióban. Az alkalmazás exportálhat egy adott régióban, majd importálása másik ahhoz, hogy egy új régióban érhető el.
+A LUIS rendelkezik új [régiók](https://aka.ms/LUIS-regions) biztosított az intelligens HANGFELISMERÉSI API-t. A LUIS egy másik portált biztosít a régiók csoportjai számára. Az alkalmazás lekérdezése várhatóan ugyanabban a régióban kell hozhatóak létre. Alkalmazások nem telepíthetők át automatikusan régióban. Az alkalmazás exportálhat egy adott régióban, majd importálása másik ahhoz, hogy egy új régióban érhető el.
 
 ## <a name="authoring-route-changes"></a>Módosítások. útvonal szerzői műveletekhez részben.
 Az Authoring Tool API útvonal változása: használja a **programazonosítója** útvonal használatával az **api** útvonalat.
@@ -35,7 +35,7 @@ Az Authoring Tool API útvonal változása: használja a **programazonosítója*
 
 
 ## <a name="endpoint-route-changes"></a>Végpont útvonal módosítások
-A végpont API új lekérdezési karakterlánc paraméterei, valamint a különböző választ tartalmaz. A részletes jelző értéke igaz, ha minden leképezések, függetlenül a pontszám, feltételobjektumot leképezések mellett a topScoringIntent nevű tömbben.
+A Endpoint API új lekérdezési karakterlánc-paramétereket és egy másik választ is tartalmaz. A részletes jelző értéke igaz, ha minden leképezések, függetlenül a pontszám, feltételobjektumot leképezések mellett a topScoringIntent nevű tömbben.
 
 | version | Útvonal LEKÉRÉSE |
 |--|--|
@@ -153,7 +153,7 @@ A LUIS javasol utterances meglévő [végpont utterances](luis-how-to-review-end
 |/ luis/api/v2.0/apps/customprebuiltdomains/{culture}  |Get|
 
 ## <a name="importing-1x-app-into-2x"></a>2\.x 1.x alkalmazás importálása
-Az exportált 1.x alkalmazás JSON-FÁJLBAN szerepel, amely importálása előtt módosítani kell néhány területe [LUIS] [ LUIS] 2.0. 
+Az exportált 1. x alkalmazás JSON-je néhány olyan területtel rendelkezik, amelyet a [LUIS][LUIS] 2,0-ba való importálás előtt módosítania kell. 
 
 ### <a name="prebuilt-entities"></a>Előre összeállított entitások 
 A [előre összeállított entitások](luis-prebuilt-entities.md) megváltoztak. Ellenőrizze, hogy a V2 használata előre összeállított entitások. Ez magában foglalja a használatával [datetimeV2](luis-reference-prebuilt-datetimev2.md), dátum és idő helyett. 

@@ -1,6 +1,6 @@
 ---
-title: A hibrid környezetben az Azure Monitor (előzetes verzió) engedélyezése |} A Microsoft Docs
-description: Ez a cikk leírja, hogyan lehetővé az Azure Monitor-beli virtuális gépek a hibridfelhős környezet, amely egy vagy több virtuális gépet tartalmaz.
+title: Hibrid környezetek Azure Monitor (előzetes verzió) engedélyezése | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor for VMs egy vagy több virtuális gépet tartalmazó hibrid felhőalapú környezetben.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -11,31 +11,31 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/07/2019
+ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: bc26cc0654aac9416bf31ffccf426648e3a8b8d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8241069a8671919b70dfbe44fe28c99a05358c5
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122535"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489737"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>Az Azure Monitor-beli virtuális gépek (előzetes verzió) engedélyezése hibrid környezetben
+# <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>Azure Monitor for VMs (előzetes verzió) engedélyezése hibrid környezetekhez
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ez a cikk azt ismerteti, hogyan engedélyezése az Azure Monitor-beli virtuális gépek (előzetes verzió) a virtuális gépek vagy az adatközpontban vagy egyéb felhőalapú környezetben futó fizikai számítógépek. Ez a folyamat végén már fog sikeresen elkezdte a környezetében a virtuális gépek figyelése, és ismerje meg, ha a teljesítménybeli vagy rendelkezésre állási problémákat tapasztal. 
+Ez a cikk azt ismerteti, hogyan engedélyezhető Azure Monitor for VMs (előzetes verzió) az adatközpontban vagy más felhőalapú környezetben üzemeltetett virtuális gépekhez vagy fizikai számítógépekhez. A folyamat végén sikeresen megkezdte a virtuális gépek monitorozását a környezetben, és megtudhatja, hogy a teljesítmény-és rendelkezésre állási problémákba ütközik-e. 
 
-Mielőtt elkezdené, mindenképpen tekintse át a [Előfeltételek](vminsights-enable-overview.md) , és ellenőrizze, hogy az előfizetés és az erőforrások megfelelnek-e a követelményeknek. Tekintse át a követelményeket és a központi telepítési módszerek a [Log Analytics Linux és Windows-ügynök](../../log-analytics/log-analytics-agent-overview.md).
+Mielőtt elkezdené, tekintse át az előfeltételeket, és győződjön meg arról, hogy az előfizetés és az erőforrások megfelelnek a követelményeknek. [](vminsights-enable-overview.md) Tekintse át a követelményeket és a központi telepítési módszerek a [Log Analytics Linux és Windows-ügynök](../../log-analytics/log-analytics-agent-overview.md).
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 >[!NOTE]
->Az Azure Monitor, virtuális gépek térkép függőségi ügynök maga adatokat nem továbbít, és nincs szükség tűzfalak és a portok módosítása. A térképadatok mindig továbbítása a Log Analytics-ügynököket, az Azure Monitor szolgáltatásba, vagy közvetlenül vagy keresztül a [Operations Management Suite-átjárót](../../azure-monitor/platform/gateway.md) , ha az informatikai biztonsági szabályzatok a hálózaton lévő számítógépek tiltása Csatlakozzon az internethez.
+>Az Azure Monitor, virtuális gépek térkép függőségi ügynök maga adatokat nem továbbít, és nincs szükség tűzfalak és a portok módosítása. A leképezési adatokat mindig a Log Analytics ügynök továbbítja a Azure Monitor szolgáltatáshoz közvetlenül vagy az [Operations Management Suite](../../azure-monitor/platform/gateway.md) -átjárón keresztül, ha az informatikai biztonsági szabályzatok nem engedélyezik a hálózaton lévő számítógépek számára az internethez való kapcsolódást.
 
-A lépéseket a feladat végrehajtásához a következőképpen lehet összefoglalni:
+A feladat elvégzéséhez szükséges lépéseket a következőképpen összegzi:
 
-1. A Log Analytics-ügynök telepítése Windows vagy Linux. Az ügynök telepítése előtt tekintse át a [Log Analytics-ügynök – áttekintés](../platform/log-analytics-agent.md) a cikkből megismerheti a rendszerkövetelmények és telepítési módszerek.
+1. Telepítse a Windows vagy Linux rendszerhez készült Log Analytics-ügynököt. Az ügynök telepítése előtt tekintse át a [log Analytics ügynök áttekintését](../platform/log-analytics-agent.md) ismertető cikket a rendszerkövetelmények és a telepítési módszerek megismeréséhez.
 
 2. Töltse le és telepítse az Azure Monitor, a virtuális gépek térkép függőségi ügynök [Windows](https://aka.ms/dependencyagentwindows) vagy [Linux](https://aka.ms/dependencyagentlinux).
 
@@ -44,6 +44,7 @@ A lépéseket a feladat végrehajtásához a következőképpen lehet összefogl
 4. Az Azure Monitor-beli virtuális gépek üzembe helyezése.
 
 ## <a name="install-the-dependency-agent-on-windows"></a>Telepítse a függőségi ügynököt Windows
+
 Telepítheti a függőségi ügynök manuálisan a Windows-számítógépeken futó `InstallDependencyAgent-Windows.exe`. Ha a végrehajtható fájl kapcsolók nélkül futtatja, a telepítővarázsló, amelyekkel az ügynök telepítéséhez interaktív módon elindítja.
 
 >[!NOTE]
@@ -56,11 +57,12 @@ Az alábbi táblázat a paramétereket, az ügynök a parancssorból a telepít�
 | /? | A parancssori kapcsolók listáját adja vissza. |
 | /S | Felhasználói beavatkozás nélkül csendes telepítést hajt végre. |
 
-Ha például az a telepítőprogram futtatásához a `/?` paramétert, adja meg **InstallDependencyAgent-Windows.exe /?** .
+A telepítőprogramnak a `/?` paraméterrel való futtatásához például írja be a következőt: **InstallDependencyAgent-Windows. exe/?** .
 
-A Windows a függőségi ügynök fájlok vannak telepítve a *C:\Program Files\Microsoft függőségi ügynök* alapértelmezés szerint. Ha nem sikerül a telepítés befejezése után indítsa el a függőségi ügynök, tekintse meg a hibával kapcsolatos részletes információk a naplókat. A naplózási könyvtár *%Programfiles%\Microsoft függőségi Agent\logs*.
+A Windows a függőségi ügynök fájlok vannak telepítve a *C:\Program Files\Microsoft függőségi ügynök* alapértelmezés szerint. Ha a telepítés befejezése után a függőségi ügynök nem indul el, ellenőrizze a naplókat a részletes hibaüzenetek megtekintéséhez. A naplózási könyvtár *%Programfiles%\Microsoft függőségi Agent\logs*.
 
 ## <a name="install-the-dependency-agent-on-linux"></a>A függőségi ügynök telepítése Linux rendszeren
+
 A függőségi ügynök telepítve van a Linux-kiszolgálókon *InstallDependencyAgent-Linux64.bin*, azt a héjparancsfájlt, egy önkicsomagoló bináris. A fájl használatával futtathatja `sh` vagy adjon hozzá végrehajtási engedélyeket magát a fájlt.
 
 >[!NOTE]
@@ -73,9 +75,9 @@ A függőségi ügynök telepítve van a Linux-kiszolgálókon *InstallDependenc
 | -s | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
 | --ellenőrzése | Ellenőrizze a jogosultságokat és az operációs rendszer, de ne telepítse az ügynököt. |
 
-Ha például az a telepítőprogram futtatása a `-help` paramétert, adja meg **InstallDependencyAgent-Linux64.bin-súgó**.
+A telepítőprogramnak a `-help` paraméterrel való futtatásához például írja be a **InstallDependencyAgent-Linux64. bin-help**parancsot.
 
-A Linux függőségi ügynök telepítése a legfelső szintű parancs futtatásával `sh InstallDependencyAgent-Linux64.bin`.
+Telepítse a Linux függőségi ügynököt root-ként a parancs `sh InstallDependencyAgent-Linux64.bin`futtatásával.
 
 Ha a függőségi ügynök nem indul el, ellenőrizze a hibával kapcsolatos részletes információk a naplókat. A Linux-ügynökök, a naplózási könyvtár van */var/opt/microsoft/dependency-agent/log*.
 
@@ -89,19 +91,76 @@ A függőségi ügynök fájlok kerülnek a következő könyvtárak:
 | Szolgáltatás végrehajtható fájljai | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
 | Bináris tárolófájlok | /var/opt/microsoft/dependency-agent/storage |
 
+## <a name="installation-script-examples"></a>Telepítési példaszkriptek
+
+Könnyedén üzembe helyezéséhez egyszerre több kiszolgálón a függőségi ügynököt, a következő parancsfájl például töltse le és telepítse a függőségi ügynököt Windows vagy Linux rendszeren.
+
+### <a name="powershell-script-for-windows"></a>PowerShell-szkript Windowshoz
+
+```powershell
+Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDependencyAgent-Windows.exe
+
+.\InstallDependencyAgent-Windows.exe /S
+```
+
+### <a name="shell-script-for-linux"></a>Héjszkript Linuxhoz
+
+```
+wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDependencyAgent-Linux64.bin
+sudo sh InstallDependencyAgent-Linux64.bin -s
+```
+
+## <a name="desired-state-configuration"></a>Célállapot-konfiguráló
+
+A Desired State Configuration (DSC) használatával a függőségi ügynököt telepíti, a következő példakód a xPSDesiredStateConfiguration modul használhatja:
+
+```powershell
+configuration ServiceMap {
+
+    Import-DscResource -ModuleName xPSDesiredStateConfiguration
+
+    $DAPackageLocalPath = "C:\InstallDependencyAgent-Windows.exe"
+
+    Node localhost
+    {
+        # Download and install the Dependency agent
+        xRemoteFile DAPackage 
+        {
+            Uri = "https://aka.ms/dependencyagentwindows"
+            DestinationPath = $DAPackageLocalPath
+        }
+
+        xPackage DA
+        {
+            Ensure="Present"
+            Name = "Dependency Agent"
+            Path = $DAPackageLocalPath
+            Arguments = '/S'
+            ProductId = ""
+            InstalledCheckRegKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\DependencyAgent"
+            InstalledCheckRegValueName = "DisplayName"
+            InstalledCheckRegValueData = "Dependency Agent"
+            DependsOn = "[xRemoteFile]DAPackage"
+        }
+    }
+}
+```
+
 ## <a name="enable-performance-counters"></a>Teljesítményszámlálók engedélyezése
-Ha a Log Analytics-munkaterületet a megoldás által hivatkozott már nincs konfigurálva a megoldás által igényelt a teljesítményszámlálók adatainak összegyűjtése, meg kell engedélyezheti őket. Ezt a két módszer egyikével teheti meg:
+
+Ha a Log Analytics-munkaterületet a megoldás által hivatkozott már nincs konfigurálva a megoldás által igényelt a teljesítményszámlálók adatainak összegyűjtése, meg kell engedélyezheti őket. Ezt kétféleképpen teheti meg:
 * Leírtak szerint manuálisan [a Log Analytics Windows és Linux rendszerű teljesítmény adatforrások](../../azure-monitor/platform/data-sources-performance-counters.md)
-* Letöltésével és futtatásával egy PowerShell-parancsprogram, amely elérhető a [Azure PowerShell-galéria](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)
+* A [Azure PowerShell](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1) -katalógusból elérhető PowerShell-szkript letöltésével és futtatásával
 
 ## <a name="deploy-azure-monitor-for-vms"></a>Az Azure Monitor-beli virtuális gépek üzembe helyezése
+
 Ez a módszer egy JSON-sablon, amely a megoldás-összetevőket a Log Analytics-munkaterület engedélyezése konfigurációját tartalmazza.
 
-Ha nem tudja, hogyan az erőforrások üzembe helyezése sablon használatával, lásd:
+Ha nem tudja, hogyan helyezhet üzembe erőforrásokat sablon használatával, tekintse meg a következőt:
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Az Azure parancssori felület használatához először telepítése és a parancssori Felületet helyileg használja. Kell futnia az Azure CLI 2.0.27-es vagy újabb. A verzió azonosításához futtassa `az --version`. Telepítse vagy frissítse az Azure CLI, lásd: [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Az Azure CLI használatához először telepítenie és használnia kell a CLI-t helyileg. Kell futnia az Azure CLI 2.0.27-es vagy újabb. A verzió azonosításához futtassa `az --version`. Az Azure CLI telepítéséhez vagy frissítéséhez tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
 ### <a name="create-and-execute-a-template"></a>Hozzon létre, és hajtsa végre a sablon
 
@@ -171,7 +230,7 @@ Az Azure parancssori felület használatához először telepítése és a paran
 
 1. Mentse a fájlt *installsolutionsforvminsights.json* egy helyi mappába.
 
-1. Rögzítheti a tartozó értékeket *WorkspaceName*, *ResourceGroupName*, és *WorkspaceLocation*. Az érték *WorkspaceName* Log Analytics-munkaterület neve. Az érték *WorkspaceLocation* a régió, a munkaterület van definiálva.
+1. Rögzítse a *WorkspaceName*, a *ResourceGroupName*és a *WorkspaceLocation*értékeit. A *WorkspaceName* értéke a log Analytics munkaterület neve. Az érték *WorkspaceLocation* a régió, a munkaterület van definiálva.
 
 1. Készen áll a sablon üzembe helyezése a következő PowerShell-parancs használatával:
 
@@ -179,18 +238,47 @@ Az Azure parancssori felület használatához először telepítése és a paran
     New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
     ```
 
-    A konfiguráció módosításának befejezése néhány percet is igénybe vehet. Amikor elkészült, egy üzenet jelenik meg, amely a következő példához hasonló, és az eredmény tartalmazza:
+    A konfiguráció módosítása több percet is igénybe vehet. Ha elkészült, egy üzenet jelenik meg, amely a következőhöz hasonló, és az eredményt tartalmazza:
 
     ```powershell
     provisioningState       : Succeeded
     ```
    Miután engedélyezte a figyelés, az állapot és a hibrid számítógép metrikák megtekintéséhez nagyjából 10 percet vehet igénybe.
 
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+### <a name="vm-doesnt-appear-on-the-map"></a>A virtuális gép nem jelenik meg a térképen
+
+Ha a függőségi ügynök telepítése sikeres volt, de a számítógép nem jelenik meg a térképen, a következő lépésekkel diagnosztizálhatja a problémát.
+
+1. A függőségi ügynök sikeres telepítését? Ellenőrzi, hogy ha a szolgáltatás telepítve van és fut ellenőrizheti.
+
+    **Windows**: Keresse meg a "Microsoft függőségi ügynök" nevű szolgáltatást. 
+
+    **Linux**: Keresse meg a "Microsoft-függőség-ügynök" futó folyamatot.
+
+2. Ön a [log Analytics ingyenes díjszabási szintjére](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)vonatkozik? Az ingyenes csomag legfeljebb öt egyedi számítógépet tesz lehetővé. A további számítógépek nem jelennek meg a térképen, még akkor is, ha az előző öt már nem küld adatokat.
+
+3. A számítógép napló-és teljesítményszámláló-adatokat küld Azure Monitor naplókba? Hajtsa végre a következő lekérdezést a számítógépen: 
+
+    ```Kusto
+    Usage | where Computer == "computer-name" | summarize sum(Quantity), any(QuantityUnit) by DataType
+    ```
+
+    Egy vagy több eredményt adott vissza? Az adatok legutóbbi? Ha igen, a Log Analytics-ügynök megfelelően működik, és kommunikál a szolgáltatással. Ha nem, ellenőrizze az ügynököt a kiszolgálón: [Log Analytics ügynök a Windows hibaelhárításához](../platform/agent-windows-troubleshoot.md) vagy [log Analytics ügynök a Linux rendszerhez – hibaelhárítás](../platform/agent-linux-troubleshoot.md).
+
+#### <a name="computer-appears-on-the-map-but-has-no-processes"></a>A számítógép megjelenik a térképen, de nem rendelkezik folyamatokkal
+
+Ha látja a kiszolgálót a térképen, de nem rendelkezik folyamat-vagy adatszolgáltatással, akkor ez azt jelzi, hogy a függőségi ügynök telepítve van és fut, de a kernel-illesztőprogram nem töltődött be. 
+
+Ellenőrizze a C:\Program Files\Microsoft függőségi Agent\logs\wrapper.log fájlt (Windows) vagy /var/opt/microsoft/dependency-agent/log/service.log fájlt (Linux). Az utolsó sort jeleznie kell, miért nem töltődtek be a kernelbe. Például a kernel előfordulhat, hogy nem támogatja a linuxon futó Ha frissítette a kernel.
+
+
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy a virtuális gépek számára engedélyezve van a figyelés és az Azure Monitor-beli virtuális gépek elemzési érhető el ezt az információt.
+Most, hogy a figyelés engedélyezve van a virtuális gépek számára, ezek az információk a Azure Monitor for VMssal való elemzéshez érhetők el.
  
-- Az állapotfigyelő szolgáltatás használatával kapcsolatban lásd: [a virtuális gépek állapotának megtekintése az Azure Monitor](vminsights-health.md).
+- Az állapotfigyelő funkció használatának megismeréséhez tekintse meg a [Azure monitor for VMS állapotának megtekintése](vminsights-health.md)című témakört.
 - Felderített alkalmazások függőségeinek megtekintése: [megtekintése az Azure Monitor virtuális gépeket a térképen](vminsights-maps.md).
-- Azonosíthatja a szűk keresztmetszeteket és a virtuális gép teljesítményét teljes kihasználtság, lásd: [megtekintése az Azure virtuális gép teljesítménye](vminsights-performance.md).
+- Az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md)a szűk keresztmetszetek és a virtuális gépek teljesítményének teljes kihasználtsága alapján:.
 - Felderített alkalmazások függőségeinek megtekintése: [megtekintése az Azure Monitor virtuális gépeket a térképen](vminsights-maps.md).

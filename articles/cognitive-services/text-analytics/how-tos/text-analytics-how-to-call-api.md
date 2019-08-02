@@ -1,95 +1,95 @@
 ---
 title: Szövegelemzési API hívása
-titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan hívhat meg a Text Analytics REST API.
+titleSuffix: Azure Cognitive Services
+description: Megtudhatja, hogyan hívhatja meg a Text Analytics REST API.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: e98979ac43945ebc9af82d5f89db01855429ca70
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 14d3864f654dac42566441b3729de0cf88482295
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304206"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697867"
 ---
-# <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics REST API meghívása
+# <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics meghívása REST API
 
-Hívások a **Text Analytics API** HTTP POST vagy GET-hívás, amely bármilyen nyelven is állítson össze vannak. Ebben a cikkben használjuk a REST és [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) alapfogalmak bemutatásához.
+A **text Analytics API** hívások http post/Get hívásokat végeznek, amelyek bármilyen nyelven megadhatók. Ebben a cikkben a REST és a [Poster](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) használatával mutatjuk be a főbb fogalmakat.
 
-Minden kérelmet tartalmaznia kell a hozzáférési kulccsal és a egy HTTP-végpontot. A végpont meghatározza a bejelentkezés során fel választott régióban, a szolgáltatás URL-CÍMÉT és a kérésben használt erőforrás: `sentiment`, `keyphrases`, `languages`, és `entities`. 
+Minden kérelemnek tartalmaznia kell a hozzáférési kulcsot és egy HTTP-végpontot. A végpont meghatározza a regisztráció során kiválasztott régiót, a szolgáltatás URL-címét és a kérelemben használt erőforrást: `sentiment` `languages`, `keyphrases`,, és `entities`. 
 
-Ne felejtse el, hogy Szövegelemzés állapotmentes-e így nincsenek adategységek kezeléséhez. A szöveges feltöltése, beérkezésekor, elemzi és eredmények azonnal visszatér a hívó alkalmazás.
+Ne felejtse el, hogy Text Analytics állapot nélküli, ezért nincsenek felügyelhető adategységek. A rendszer feltölti és elemzi a szöveget, és azonnal visszaadja az eredményeket a hívó alkalmazásnak.
 
 > [!Tip]
-> Az egyszeri hívás, hogy az API működését, a beépített is küld POST kéréseket **API tesztelési konzollal**, bármely [API dokumentációs oldal](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Nincs beállítva, és mindössze egy hozzáférési kulcsot, és a JSON-dokumentumok illessze be a kérést. 
+> Ha szeretné megtekinteni, hogyan működik az API, POST kéréseket küldhet a beépített **API**-tesztelési konzolról, amely bármely [API-doc-lapon](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)elérhető. Nincs beállítva beállítás, és az egyetlen követelmény, hogy a kérelembe beillesszen egy hozzáférési kulcsot és a JSON-dokumentumokat. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Text Analytics API-val és a [végpontját és hozzáférési kulcsát](text-analytics-how-to-access-key.md) , amely jön létre, amikor regisztrál a Cognitive Services számára. 
+[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 <a name="json-schema"></a>
 
-## <a name="json-schema-definition"></a>JSON-séma definíció
+## <a name="json-schema-definition"></a>JSON-séma definíciója
 
-Bemeneti nyers, strukturálatlan szöveges JSON kell lennie. Nem támogatott XML. A séma az egyszerű, amely az alábbi listában szereplő elemeket. 
+A bemenetnek JSON-nek kell lennie nyers strukturálatlan szövegben. Az XML nem támogatott. A séma egyszerű, amely az alábbi listában leírt elemekből áll. 
 
-Ugyanazt a dokumentumokat, a Text Analytics művelet jelenleg nyújthatja: véleményeket, a kulcsfontosságú kifejezések, nyelv észlelése és entitás azonosítója. (A sémát a eltérhet a jövőben az egyes elemzés céljából.)
+Jelenleg minden Text Analytics művelethez ugyanazokat a dokumentumokat lehet elküldeni: a véleményeket, a kulcsfontosságú kifejezéseket, a nyelvi észlelést és az entitások azonosítását. (A séma várhatóan változó lesz az egyes elemzésekhez a jövőben.)
 
 | Elem | Érvényes értékek | Kötelező? | Használat |
 |---------|--------------|-----------|-------|
-|`id` |Az adattípus karakterlánc, de a gyakorlatban dokumentumazonosító általában a egész szám lehet. | Szükséges | A rendszer adja át a kimenetet struktúra azonosítóját használja. A kérelemben szereplő minden egyes azonosító nyelvkódokról, kulcskifejezéseket és véleménypontszámának jön létre.|
-|`text` | Strukturálatlan nyers szöveg, legfeljebb 5,120 karakter hosszú lehet. | Szükséges | Nyelv észlelése, a szöveg bármilyen nyelven lehet kifejezni. A hangulatelemzést, kulcsszókeresést és entitás azonosítása, a szöveget kell lennie egy [támogatott nyelven](../text-analytics-supported-languages.md). |
-|`language` | 2 karakterből álló [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) helykódja egy [támogatott nyelven](../text-analytics-supported-languages.md) | Változó | Szükséges a hangulatelemzést, kulcsszókeresést és entitáskapcsolás; nyelv észlelése esetén nem kötelező. Nincs hiba, ha lehetséges, azonban az elemzés, e nélkül integritása csökken. A nyelvi kód meg kell egyeznie a `text` adnia. |
+|`id` |Az adattípus karakterlánc, de a gyakorlatban a dokumentumok azonosítói általában egész számnak számítanak. | Kötelező | A rendszer az Ön által megadott azonosítókat használja a kimenet felépítéséhez. A kérelemben szereplő minden egyes AZONOSÍTÓhoz a nyelvi kódok, a legfontosabb kifejezések és a hangulati pontszámok jönnek létre.|
+|`text` | Strukturálatlan nyers szöveg, legfeljebb 5 120 karakter hosszú lehet. | Kötelező | A nyelvfelismerés a szöveg bármilyen nyelven kifejezhető. Az érzelmek elemzéséhez, a fő kifejezés kinyeréséhez és az entitás azonosításához a szövegnek [támogatott nyelven](../text-analytics-supported-languages.md)kell lennie. |
+|`language` | 2 karakteres [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) -kód [támogatott nyelvhez](../text-analytics-supported-languages.md) | Változó | Az érzelmek elemzéséhez, a kulcsfontosságú kifejezés kinyeréséhez és az entitások összekapcsolásához szükséges. a nyelvfelismerés nem kötelező. Nincs hiba, ha kizárják, de az elemzés a nélkül meggyengül. A nyelvi kódnak meg kell egyeznie `text` az Ön által megadott értékkel. |
 
-Korlátok kapcsolatos további információkért lásd: [Text Analytics áttekintés > Data korlátai](../overview.md#data-limits). 
+A korlátokkal kapcsolatos további információkért tekintse meg a [text Analytics áttekintés > az adatkorlátok](../overview.md#data-limits)című témakört. 
 
-## <a name="set-up-a-request-in-postman"></a>Állítsa be a Postman-kérelem
+## <a name="set-up-a-request-in-postman"></a>Kérelem beállítása a Poster-ban
 
-A szolgáltatás fogadja a kérelem legfeljebb 1 MB méretű. Postman (vagy egy másik webes API tesztelési eszköz) használ, ha az erőforrás létrehozásához használni szeretne felvenni a végpont beállításához, és adja meg a fejléc a hozzáférési kulcsát. Minden egyes-művelet megköveteli, hogy a végponthoz való fűzze hozzá a megfelelő erőforrás. 
+A szolgáltatás legfeljebb 1 MB méretű kérést fogad el. Ha a Poster-t (vagy egy másik webes API-teszt eszközt) használja, állítsa be a végpontot, hogy tartalmazza a használni kívánt erőforrást, és adja meg a hozzáférési kulcsot a kérelem fejlécében. Minden művelethez hozzá kell fűzni a megfelelő erőforrást a végponthoz. 
 
-1. A Postmanben:
+1. A Poster-ben:
 
-   + Válasszon **Post** a kérelem típusaként.
-   + Illessze be a végpont a portál oldala fájlból kimásolt.
-   + Hozzáfűzése erőforrás.
+   + A kérelem típusaként válassza a **post** lehetőséget.
+   + Illessze be a portál lapról másolt végpontot.
+   + Egy erőforrás hozzáfűzése.
 
-   Erőforrás-végpontok a következők az alábbiak szerint (a saját régiójában eltérhetnek):
+   Az erőforrás-végpontok a következők lehetnek (a régió változhat):
 
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
 
-2. Állítsa be a három kérelemfejlécek:
+2. A három kérelem fejlécének beállítása:
 
-   + `Ocp-Apim-Subscription-Key`: az Azure Portalról kapott a hozzáférési kulccsal.
-   + `Content-Type`: az application/json.
-   + `Accept`: az application/json.
+   + `Ocp-Apim-Subscription-Key`: az Azure Portaltól kapott hozzáférési kulcs.
+   + `Content-Type`: alkalmazás/JSON.
+   + `Accept`: alkalmazás/JSON.
 
-   A kérelem az alábbi képernyőfelvételhez hasonlóan kell kinéznie feltéve, hogy egy **/keyPhrases** erőforrás.
+   A kérelemnek a következő képernyőképhez hasonlóan kell kinéznie, feltéve, hogy **/keyPhrases** -erőforrást használ.
 
-   ![A végpont és a fejlécek kérelem képernyőképe](../media/postman-request-keyphrase-1.png)
+   ![Képernyőkép kérése a végpontról és a fejlécekről](../media/postman-request-keyphrase-1.png)
 
-4. Kattintson a **törzs** válassza **nyers** formátum.
+4. Kattintson a **törzs** elemre, és válassza a **RAW** formátumot a formátumhoz.
 
-   ![Képernyőkép kérelem törzse beállításokkal](../media/postman-request-body-raw.png)
+   ![Képernyőkép kérése a törzs beállításaival](../media/postman-request-body-raw.png)
 
-5. Illessze be néhány JSON-dokumentumot, amely az importálni kívánt elemzés érvényes formátumban. Egy adott elemzés kapcsolatos további információkért lásd az alábbi témakörök:
+5. Illesszen be néhány JSON-dokumentumot olyan formátumban, amely érvényes a kívánt elemzéshez. Egy adott elemzéssel kapcsolatos további információkért tekintse meg az alábbi témaköröket:
 
   + [Nyelvfelismerés](text-analytics-how-to-language-detection.md)  
-  + [Kulcskifejezések kinyerése](text-analytics-how-to-keyword-extraction.md)  
-  + [Hangulatelemzés](text-analytics-how-to-sentiment-analysis.md)  
+  + [Fő kifejezés kibontása](text-analytics-how-to-keyword-extraction.md)  
+  + [Hangulat elemzése](text-analytics-how-to-sentiment-analysis.md)  
   + [Entitások felismerése](text-analytics-how-to-entity-linking.md)  
 
 
-6. Kattintson a **küldése** a kérelmet küldeni. Tekintse meg a [data korlátai](../overview.md#data-limits) szakasz információkat küldhet / perc és másodperc kérések száma a áttekintésében.
+6. A kérelem elküldéséhez kattintson a **Küldés** gombra. Az áttekinthető kérelmek számával kapcsolatos információkért tekintse meg az adatkorlátozások szakaszt az Áttekintés lapon. [](../overview.md#data-limits)
 
-   A Postman a válasz megjelenik a következő időszakban, a JSON-dokumentumként egyetlen, az egyes dokumentumazonosító a kérésben megadott egy elemét.
+   A Poster esetében a válasz a következő ablakban, egyetlen JSON-dokumentumként jelenik meg, a kérelemben megadott összes dokumentum-AZONOSÍTÓhoz tartozó elemmel.
 
 ## <a name="see-also"></a>Lásd még 
 

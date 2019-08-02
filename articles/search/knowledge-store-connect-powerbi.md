@@ -8,12 +8,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: heidist
-ms.openlocfilehash: 04b04e8080590aa6e9fe1c17369e83fa5bb6b894
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 66a051c430be9f59569a5843c0138c7ddc15b87c
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668219"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707153"
 ---
 # <a name="create-an-azure-search-knowledge-store-and-connect-using-power-bi"></a>Hozzon létre egy Azure Search Knowledge Store-t, és kapcsolódjon a Power BI
 
@@ -156,7 +156,7 @@ Az adatimportálás varázsló segítségével hozza létre a tudásbázist. Imp
 
 1. Kattintson a **Bezárás gombra, és alkalmazza** a Power Query parancssáv bal oldalán.
 
-1. Ellenőrizze, hogy a Power BI felismeri-e a Knowledge Store által az adatain belül létrehozott kapcsolatokat. Kattintson a bal oldali navigációs ablaktábla kapcsolatok csempére. Mindhárom táblának kapcsolatban kell állnia.
+1. Ellenőrizze, hogy a Power BI felismeri-e a Knowledge Store által az adatain belül létrehozott kapcsolatokat. Kattintson a bal oldali navigációs ablaktábla kapcsolatok csempére. Mindhárom táblának kapcsolatban kell állnia. Szerkessze a kapcsolatokat, és győződjön meg arról, hogy a "kereszt-szűrés iránya" mindkét értékre van beállítva, ezzel biztosíthatja, hogy a rendszer minden vizualizációt frissítsen a szűrő alkalmazásakor.
 
    ![Kapcsolatok ellenőrzése](media/knowledge-store-howto-powerbi/powerbi-relationships.png "Kapcsolatok ellenőrzése")
 

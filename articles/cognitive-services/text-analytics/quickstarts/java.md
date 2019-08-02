@@ -1,26 +1,27 @@
 ---
-title: 'Gyors útmutató: A szövegelemzési API meghívására Java használatával'
+title: 'Gyors útmutató: A Java használata a Text Analytics meghívásához REST API'
 titleSuffix: Azure Cognitive Services
-description: Get information és kód minták segítségével gyorsan Ismerkedés a szövegelemzési API-val az Azure Cognitive Servicesben.
+description: Az Azure Cognitive Services Text Analytics API használatának gyors megkezdéséhez olvassa el az információk és a kódok mintáit.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 04/16/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: fc848feb3f9a0e1160a8e36014ca4a469f792c96
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: seo-java-july2019
+ms.openlocfilehash: 437456ecb700b2efb60f2f6269643ca39d8775e2
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829344"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697532"
 ---
-# <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Text Analytics kognitív szolgáltatás hívásához Java használatával
+# <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Java használata a Text Analytics kognitív szolgáltatás meghívásához
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan való [nyelvfelismerés](#Detect), [vélemények elemzése](#SentimentAnalysis), [kinyerheti a kulcskifejezéseket](#KeyPhraseExtraction), és [kapcsolt entitások azonosítása](#Entities) használatával a [Text Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) Java használatával.
+Ebből a cikkből megtudhatja, hogyan derítheti fel a [nyelvet](#Detect), elemezheti a [véleményét](#SentimentAnalysis), kinyerheti a [legfontosabb kifejezéseket](#KeyPhraseExtraction), és hogyan azonosíthatja a [társított entitásokat](#Entities) a [text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) 
 
 Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.microsoft.com/fwlink/?LinkID=759346).
 
@@ -28,20 +29,20 @@ Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.micro
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-A regisztráció során létrejött [végponttal és hozzáférési kulccsal](../How-tos/text-analytics-how-to-access-key.md) is rendelkeznie kell.
+A regisztráció során létrejött [végponttal és hozzáférési kulccsal](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) is rendelkeznie kell.
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Nyelv felismerése
+## <a name="detect-language"></a>Nyelvfelismerés
 
-A nyelvi API-t észleli a szöveg nyelvének dokumentálja, használja a [nyelv észlelése metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
+A Nyelvfelismerés API észleli a szöveges dokumentum nyelvét az [észlelési nyelv módszer](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)használatával.
 
-1. Hozzon létre egy új Java-projektet a kedvenc ide-je (vagy az asztal új mappa). Hozzon létre egy osztályt `DetectLanguage.java`.
-1. Adja hozzá a kódot lejjebb találja az osztályhoz.
-1. Cserélje le a `accessKey` értéket a kulcsát, a Szövegelemzés előfizetéshez [Azure](https://ms.portal.azure.com).
+1. Hozzon létre egy új Java-projektet a kedvenc IDE (vagy az asztalon lévő új mappában). Hozzon létre egy `DetectLanguage.java`nevű osztályt.
+1. Adja hozzá az alábbi kódot az osztályhoz.
+1. Cserélje le az [](https://ms.portal.azure.com) értéketaTextAnalyticsAzure-előfizetésénekkulcsára`accessKey` .
 1. Cserélje le a `host` helyét (jelenleg `westus`) a regisztrált régióra.
-1. Ellenőrizze, hogy a [Gson](https://github.com/google/gson) telepített könyvtár.
-1. Futtassa a programot az IDE-ben, vagy a parancssor használatával (a kód megjegyzéseket utasításait) futtatása.
+1. Győződjön meg arról, hogy telepítve van a [Gson](https://github.com/google/gson) -könyvtár.
+1. Futtassa a programot az IDE-ban, vagy használja a parancssort a futtatáshoz (utasítások a Code megjegyzésekben).
 
 ```java
 import java.io.*;
@@ -162,7 +163,7 @@ public class DetectLanguage {
 }
 ```
 
-### <a name="language-detection-response"></a>Nyelv észlelése válasz
+### <a name="language-detection-response"></a>Nyelvfelismerés válasza
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -212,12 +213,12 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 A Sentiment Analysis API a szöveges bejegyzések hangulatát érzékeli a [Sentiment metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) használatával. A következő példa két dokumentumhoz rendel pontszámot, az egyik angol, a másik spanyol nyelvű.
 
-1. Hozzon létre egy új Java-projektet a kedvenc ide-je (vagy az asztal új mappa). Hozzon létre egy osztályt, nevű `GetSentiment.java`.
-1. Adja hozzá a kódot lejjebb találja az osztályhoz.
-1. Cserélje le a `accessKey` értéket a kulcsát, a Szövegelemzés előfizetéshez [Azure](https://ms.portal.azure.com).
+1. Hozzon létre egy új Java-projektet a kedvenc IDE (vagy az asztalon lévő új mappában). Hozzon létre egy osztályt `GetSentiment.java`a neve alatt.
+1. Adja hozzá az alábbi kódot az osztályhoz.
+1. Cserélje le az [](https://ms.portal.azure.com) értéketaTextAnalyticsAzure-előfizetésénekkulcsára`accessKey` .
 1. Cserélje le a `host` helyét (jelenleg `westus`) a regisztrált régióra.
-1. Ellenőrizze, hogy a [Gson](https://github.com/google/gson) telepített könyvtár.
-1. Futtassa a programot az IDE-ben, vagy a parancssor használatával (a kód megjegyzéseket utasításait) futtatása.
+1. Győződjön meg arról, hogy telepítve van a [Gson](https://github.com/google/gson) -könyvtár.
+1. Futtassa a programot az IDE-ban, vagy használja a parancssort a futtatáshoz (utasítások a Code megjegyzésekben).
 
 ```java
 import java.io.*;
@@ -338,9 +339,9 @@ public class GetSentiment {
 }
 ```
 
-### <a name="sentiment-analysis-response"></a>Vélemények elemzése válasz
+### <a name="sentiment-analysis-response"></a>Hangulat-elemzési válasz
 
-Az eredmény, ha azt sorolódik közelebb 1.0-s és a negatív közelebb van pontozását 0.0, ha pozitív mérjük.
+Az eredmény pozitív értékre van számítva, ha az értéke 1,0 és negatív, ha az értéke a 0,0-hoz közeledik.
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
 ```json
@@ -361,16 +362,16 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Kulcsszavak kinyerése
+## <a name="extract-key-phrases"></a>Kulcsszavak keresése
 
 A Key Phrase Extraction API kulcskifejezéseket nyer ki a szöveges dokumentumokból a [Key Phrases metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) használatával. Az alábbi példa kulcskifejezéseket nyer ki angol és spanyol nyelvű dokumentumokhoz.
 
-1. Hozzon létre egy új Java-projektet a kedvenc ide-je (vagy az asztal új mappa). Hozzon létre egy osztályt, nevű `GetKeyPhrases.java`.
-1. Adja hozzá a kódot lejjebb találja az osztályhoz.
-1. Cserélje le a `accessKey` értéket a kulcsát, a Szövegelemzés előfizetéshez [Azure](https://ms.portal.azure.com).
+1. Hozzon létre egy új Java-projektet a kedvenc IDE (vagy az asztalon lévő új mappában). Hozzon létre egy nevű `GetKeyPhrases.java`osztályt.
+1. Adja hozzá az alábbi kódot az osztályhoz.
+1. Cserélje le az [](https://ms.portal.azure.com) értéketaTextAnalyticsAzure-előfizetésénekkulcsára`accessKey` .
 1. Cserélje le a `host` helyét (jelenleg `westus`) a regisztrált régióra.
-1. Ellenőrizze, hogy a [Gson](https://github.com/google/gson) telepített könyvtár.
-1. Futtassa a programot az IDE-ben, vagy a parancssor használatával (a kód megjegyzéseket utasításait) futtatása.
+1. Győződjön meg arról, hogy telepítve van a [Gson](https://github.com/google/gson) -könyvtár.
+1. Futtassa a programot az IDE-ban, vagy használja a parancssort a futtatáshoz (utasítások a Code megjegyzésekben).
 
 ```java
 import java.io.*;
@@ -492,7 +493,7 @@ public class GetKeyPhrases {
 }
 ```
 
-### <a name="key-phrase-extraction-response"></a>A kulcsfontosságú kifejezések kinyerése válasz
+### <a name="key-phrase-extraction-response"></a>Kulcs kifejezésének kibontási válasza
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
@@ -535,14 +536,14 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="identify-entities"></a>Entitások azonosítása
 
-Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) használatával. [Entitások](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) kinyerheti a szöveget, például a "Egyesült Államok", majd biztosítson a típusa és/vagy a Wikipédia-hivatkozás esetében a szavak. A típus az "Egyesült Államok" `location`, míg a Wikipedia hivatkozása `https://en.wikipedia.org/wiki/United_States`.  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
+Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) használatával. [](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) Az entitások szövegből kinyerik a szavakat, például a "Egyesült Államok" kifejezést, majd megadja a Word (ek) típus és/vagy wikipedia hivatkozását. A "Egyesült Államok" `location`típusa, míg a `https://en.wikipedia.org/wiki/United_States`wikipedia-ra mutató hivatkozás.  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
 
-1. Hozzon létre egy új Java-projektet a kedvenc ide-je (vagy az asztal új mappa). Hozzon létre egy osztályt, nevű `GetEntities.java`.
-1. Adja hozzá a kódot lejjebb találja az osztályhoz.
-1. Cserélje le a `accessKey` értéket a kulcsát, a Szövegelemzés előfizetéshez [Azure](https://ms.portal.azure.com).
+1. Hozzon létre egy új Java-projektet a kedvenc IDE (vagy az asztalon lévő új mappában). Hozzon létre egy osztályt `GetEntities.java`a neve alatt.
+1. Adja hozzá az alábbi kódot az osztályhoz.
+1. Cserélje le az [](https://ms.portal.azure.com) értéketaTextAnalyticsAzure-előfizetésénekkulcsára`accessKey` .
 1. Cserélje le a `host` helyét (jelenleg `westus`) a regisztrált régióra.
-1. Ellenőrizze, hogy a [Gson](https://github.com/google/gson) telepített könyvtár.
-1. Futtassa a programot az IDE-ben, vagy a parancssor használatával (a kód megjegyzéseket utasításait) futtatása.
+1. Győződjön meg arról, hogy telepítve van a [Gson](https://github.com/google/gson) -könyvtár.
+1. Futtassa a programot az IDE-ban, vagy használja a parancssort a futtatáshoz (utasítások a Code megjegyzésekben).
 
 ```java
 import java.io.*;

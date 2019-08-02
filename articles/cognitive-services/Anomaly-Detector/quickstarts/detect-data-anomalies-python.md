@@ -1,40 +1,40 @@
 ---
-title: 'Gyors útmutató: Rendellenességek észlelése, a batch az Anomáliadetektálási detector használatával REST API-t és a Python használatával'
+title: 'Gyors útmutató: Anomáliák észlelése kötegként az anomália-detektor REST API és a Python használatával'
 titleSuffix: Azure Cognitive Services
-description: Az Anomáliadetektálási detector használatával API segítségével észlelheti a rendellenességeket az adatsorozat egy kötegelt vagy a streamelt adatokon.
+description: A rendellenesség-Kiderítő API használatával az adatsorozatban lévő rendellenességeket kötegként vagy adatfolyamként lehet érzékelni.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 03/26/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: c69bc4db35a198d73f9b29ee3ed2fa6b6f71be49
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: f40f1b94b3e7c2732fd8bed0bc6e503277b533c3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721451"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565820"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Gyors útmutató: Rendellenességek észlelése az idősoros adatokat az Anomáliadetektálási detector használatával REST API-t és a Python használatával
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Gyors útmutató: Az idősoros adataiban észlelt rendellenességek észlelése az anomália REST API és a Python használatával
 
-Ez a rövid útmutató segítségével indítsa el a rendellenességek észlelése az idősoros adatokat az Anomáliadetektálási detector használatával API két észlelési mód használatával. A Python-alkalmazás két API-kérések tartalmazó JSON-formátumú idősoros adatokat küld, és lekérdezi a válaszokat.
+Ezzel a rövid útmutatóval megkezdheti a anomáliák-Kiderítő API két észlelési módjának használatát az idősorozat-adataiban észlelt rendellenességek észlelésére. Ez a Python-alkalmazás két, JSON-formátumú idősorozat-adatokat tartalmazó API-kérelmet küld, és lekéri a válaszokat.
 
 | API-kérelem                                        | Alkalmazás kimenete                                                                                                                         |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| Kötegelt feladatként rendellenességek észlelése                        | Az idősorozat-adatokat, és minden észlelt rendellenességek igazítja adatpontok anomáliadetektálási állapota (és más adatok) tartalmazó JSON-választ. |
-| A legújabb adatpont anomáliadetektálási állapotának észlelése | Az anomáliadetektálási állapota (és egyéb adatokat) az idősorozat-adatok a legutóbbi adatok pontját tartalmazó JSON-választ.                                                                                                                                         |
+| Rendellenességek észlelése kötegként                        | Az idősorozat-adatpontokhoz tartozó anomália-állapotot (és az egyéb adatmennyiségeket) tartalmazó JSON-válasz, valamint az észlelt rendellenességek helyei. |
+| A legutóbbi adatpont anomália állapotának észlelése | Az idősorozat-adatként a legutóbbi adatponthoz tartozó anomália-állapotot (és egyéb adatértékeket) tartalmazó JSON-válasz.                                                                                                                                         |
 
- Bár ez az alkalmazás pythonban írt, az API-t az szinte bármelyik programozási nyelvével kompatibilis webes RESTful szolgáltatás.
+ Habár ez az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Python 2.x vagy 3.x](https://www.python.org/downloads/)
+- [Python 2. x vagy 3. x](https://www.python.org/downloads/)
 
-- A [kérelmek könyvtár](http://docs.python-requests.org) Python
+- A Pythonhoz készült [kérelmek kódtára](http://docs.python-requests.org)
 
-- A JSON fájlt tartalmazó idősorozat-adatok mutat. A példaadatokat ebben a rövid útmutatóban található [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
+- Idősorozat-adatpontokat tartalmazó JSON-fájl. A rövid útmutatóhoz tartozó példa a githubon érhető [](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json)el.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
@@ -43,19 +43,19 @@ Ez a rövid útmutató segítségével indítsa el a rendellenességek észlelé
 
 ## <a name="create-a-new-application"></a>Új alkalmazás létrehozása
 
-1. A kedvenc szövegszerkesztőjével vagy az IDE hozzon létre egy új python-fájlt. Adja hozzá az alábbi importálásokat.
+1. Hozzon létre egy új Python-fájlt a kedvenc szövegszerkesztőben vagy az IDE-ben. Adja hozzá a következő importálásokat.
 
     ```python
     import requests
     import json
     ```
 
-2. Változók létrehozása az előfizetési kulcs és a végpontot. Az alábbiakban az URI-k rendellenességek észlelése is használhat. Ezek hozzá lesznek fűzve a később, hozhat létre az API-Szolgáltatásvégpont URL-címeket.
+2. Hozzon létre változókat az előfizetési kulcshoz és a végponthoz. Az alábbi URI-k használhatók a anomáliák észleléséhez. Az API-kérelmek URL-címeinek létrehozásához ezeket a rendszer később hozzáfűzi a szolgáltatási végponthoz.
 
-    |Észlelési módszer  |URI-T  |
+    |Észlelési módszer  |URI  |
     |---------|---------|
-    |Batch-észlelés    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
-    |A legújabb adatok ponton észlelése     | `/anomalydetector/v1.0/timeseries/last/detect`        |
+    |Kötegelt észlelés    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
+    |Észlelés a legújabb adatponton     | `/anomalydetector/v1.0/timeseries/last/detect`        |
 
     ```python
     batch_detection_url = "/anomalydetector/v1.0/timeseries/entire/detect"
@@ -66,20 +66,20 @@ Ez a rövid útmutató segítségével indítsa el a rendellenességek észlelé
     data_location = "[PATH_TO_TIME_SERIES_DATA]"
     ```
 
-3. Olvassa el a JSON-adatok fájlt megnyitni, és használatával `json.load()`.
+3. Olvassa el a JSON-adatfájlt a megnyitásával és `json.load()`a használatával.
 
     ```python
     file_handler = open(data_location)
     json_data = json.load(file_handler)
     ```
 
-## <a name="create-a-function-to-send-requests"></a>Kérelmek küldése függvény létrehozása
+## <a name="create-a-function-to-send-requests"></a>Függvény létrehozása a kérelmek küldéséhez
 
-1. Hozzon létre egy új függvényt nevű `send_request()` átkerül a fent létrehozott változókat. Hajtsa végre az alábbi lépéseket.
+1. Hozzon létre egy nevű `send_request()` új függvényt, amely a fent létrehozott változókat veszi igénybe. Ezután hajtsa végre a következő lépéseket.
 
-2. Hozzon létre egy szótár, a kérelem fejlécében. Állítsa be a `Content-Type` való `application/json`, és adja hozzá az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc.
+2. Hozzon létre egy szótárt a kérések fejlécéhez. Állítsa be `Content-Type` a `application/json`-t, és adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
-3. A kérelmet az küldése `requests.post()`. Kombinálhatja a végpont és a rendellenességek észlelése URL-CÍMÉT a kérelem teljes URL-címéhez, és közé tartoznak a fejlécek és json-kérelem adatai. És választ, majd adja meg.
+3. Küldje el a kérelmet `requests.post()`a paranccsal. Egyesítse a végpont és a anomália észlelési URL-címét a teljes kérelem URL-címéhez, és adja meg a fejléceket és a JSON-kérelmek adatait. Majd adja vissza a választ.
 
 ```python
 def send_request(endpoint, url, subscription_key, request_data):
@@ -90,15 +90,15 @@ def send_request(endpoint, url, subscription_key, request_data):
     return json.loads(response.content.decode("utf-8"))
 ```
 
-## <a name="detect-anomalies-as-a-batch"></a>Kötegelt feladatként rendellenességek észlelése
+## <a name="detect-anomalies-as-a-batch"></a>Rendellenességek észlelése kötegként
 
-1. Hozzon létre egy meghívott metódus `detect_batch()` során az adatokat egy kötegelt rendellenességek észlelése. Hívja a `send_request()` metódus a végpont URL-címe, előfizetési kulcs és json-adatok a fent létrehozott.
+1. Hozzon létre egy `detect_batch()` metódust, amely egy kötegként észleli a rendellenességeket az összes adategységben. Hívja meg `send_request()` a fent létrehozott metódust a végponttal, az URL-lel, az előfizetési kulccsal és a JSON-adataival.
 
-2. Hívás `json.dumps()` formázza azt, és nyomtassa ki a konzol eredményétől.
+2. A `json.dumps()` formázáshoz hívja meg az eredményt, és nyomtassa ki a konzolra.
 
-3. Ha a válasz tartalmaz `code` mezőben nyomtassa ki a hibakódot és a hibaüzenet jelenik meg.
+3. Ha a válasz tartalmaz `code` mezőt, nyomtassa ki a hibakódot és a hibaüzenetet.
 
-4. Ellenkező esetben találja az adatkészlet a pozíciók a rendellenességek észlelését. A válasz `isAnomaly` mező arra, hogy egy adott adatpontot anomáliát vonatkozó logikai értéket tartalmaz. Iterál végig a listát, és nyomtassa ki az index minden `True` értékeket. Ha találhatók esetleges rendellenes adatpontok index ezeket az értékeket felelnek meg.
+4. Ellenkező esetben keresse meg a rendellenességek pozícióit az adatkészletben. A válasz `isAnomaly` mezője egy logikai értéket tartalmaz, amely arra vonatkozik, hogy egy adott adatpont rendellenesség-e. Ismételje meg a listát, és nyomtassa ki bármelyik `True` érték indexét. Ezek az értékek a rendellenes adatpontok indexének felelnek meg, ha vannak ilyenek.
 
 ```python
 def detect_batch(request_data):
@@ -119,11 +119,11 @@ def detect_batch(request_data):
                 print(x)
 ```
 
-## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>A legújabb adatpont anomáliadetektálási állapotának észlelése
+## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>A legutóbbi adatpont anomália állapotának észlelése
 
-1. Hozzon létre egy meghívott metódus `detect_latest()` annak megállapításához, hogy a legújabb adatok pontot az idősorozat-anomáliadetektálási. Hívja a `send_request()` a végpont URL-címe, előfizetési kulcs és json-adatokat a fenti metódus. 
+1. Hozzon létre egy `detect_latest()` nevű metódust annak megállapításához, hogy az idősorozat legújabb adatpontja anomália-e. Hívja meg `send_request()` a fenti metódust a végpont, az URL-cím, az előfizetési kulcs és a JSON-adatai alapján. 
 
-2. Hívás `json.dumps()` formázza azt, és nyomtassa ki a konzol eredményétől.
+2. A `json.dumps()` formázáshoz hívja meg az eredményt, és nyomtassa ki a konzolra.
 
 ```python
 def detect_latest(request_data):
@@ -134,9 +134,9 @@ def detect_latest(request_data):
     print(json.dumps(result, indent=4))
 ```
 
-## <a name="load-your-time-series-data-and-send-the-request"></a>Az idősorozat-adatok betöltése, és a kérés küldése
+## <a name="load-your-time-series-data-and-send-the-request"></a>Töltse be az idősorozat adatait, és küldje el a kérést
 
-1. A JSON idősorozat-adatok a fájlleíró megnyitásával, és használatával betöltése `json.load()` rajta. Észlelési módszerek fent létrehozott majd hívja meg az anomáliadetektáló.
+1. Töltse be a JSON idősoros adatait egy fájlkezelő megnyitásával, és `json.load()` használja rajta. Ezután hívja meg a fent létrehozott anomáliák észlelési módszereit.
 
 ```python
 file_handler = open(data_location)
@@ -148,9 +148,9 @@ detect_latest(json_data)
 
 ### <a name="example-response"></a>Példaválasz
 
-A sikeres válasz JSON formátumban. A JSON-válasz megtekintése a Githubon, az alábbi hivatkozásokra kattintva:
-* [A batch észlelési példaválasz](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
-* [Legújabb pont észlelési példaválasz](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+A sikeres válaszokat JSON formátumban adja vissza a rendszer. Az alábbi hivatkozásokra kattintva megtekintheti a JSON-választ a GitHubon:
+* [Példa a Batch észlelési válaszára](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
+* [Példa a legutóbbi pont észlelési válaszára](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 
 ## <a name="next-steps"></a>További lépések
 

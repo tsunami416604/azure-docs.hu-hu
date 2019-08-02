@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric code csomag hibák diagnosztizálása |} A Microsoft Docs
-description: Ismerje meg, hogyan gyakran kód csomag előforduló hibák elhárítása az Azure Service Fabric
+title: A kódok gyakori hibáinak diagnosztizálása a Service Fabric használatával | Microsoft Docs
+description: Útmutató az Azure-Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: grzuber
@@ -14,56 +14,58 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/09/2019
 ms.author: grzuber
-ms.openlocfilehash: 235952388d2c044cc141b3020c67944c4250ea3d
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 320a55e8b14648b1d7e256855582ab31846a63cf
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276950"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249222"
 ---
-# <a name="diagnose-common-code-package-errors-with-service-fabric"></a>A Service Fabric közös kód csomag hibák diagnosztizálása
+# <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>A kódok gyakori hibáinak diagnosztizálása Service Fabric használatával
 
-Ez a cikk bemutatja, hogy mit jelent egy kódcsomaghoz váratlanul leáll, és lehetséges okait és a gyakori hibakódok, valamint a hibaelhárítási lépések, amelyek vélhetően lehet elhárítani a problémát betekintést nyújt.
+Ez a cikk azt mutatja be, hogy a kód-csomagok váratlanul leállnak. Betekintést nyújt a gyakori hibakódok lehetséges okaira, valamint a hibaelhárítási lépésekkel.
 
-## <a name="when-does-a-process-or-container-terminate-unexpectedly"></a>Ha nem a folyamat vagy a tároló váratlanul leáll?
+## <a name="when-does-a-process-or-container-terminate-unexpectedly"></a>Mikor szakad meg a folyamat vagy a tároló váratlanul?
 
-A helyi rendszer állítsa be az alkalmazás és szolgáltatás jegyzékfájljainak konfigurációs beállítások alapján a környezet előkészítése a Service Fabric egy kódcsomaghoz start kérést kap, kezdődik. Ezek az előkészített tartalmazhat hálózati végpont vagy az erőforrások lefoglalását, a tűzfalszabályok konfigurálása vagy cégirányítási korlátozott erőforrások beállítása. Ha a környezet megfelelően van konfigurálva, a Service Fabric próbál viszi, megjelenik a kódcsomag. Ebben a lépésben számít sikeres, ha az operációs rendszer vagy a tároló-futtatókörnyezettel jelent, hogy a folyamat vagy a tároló sikerült aktiválni. Ha az aktiválás sikertelen volt, üzenetnek kell megjelennie a health az SFX arról, hogy a
+Amikor az Azure Service Fabric a kód elindítására vonatkozó kérést kap, a környezet előkészítése a helyi rendszeren az alkalmazás és a szolgáltatás jegyzékfájljában megadott beállításoknak megfelelően kezdődik. Ezek a készítmények tartalmazhatják a hálózati végpontokat vagy erőforrásokat, a tűzfalszabályok konfigurálását vagy az erőforrás-irányítási kényszerek beállítását. 
+
+A környezet megfelelő konfigurálását követően a Service Fabric megkísérli a kód kiépítését. Ez a lépés akkor tekinthető sikeresnek, ha az operációs rendszer vagy a tároló futásidejű jelentése szerint a folyamat vagy a tároló sikeresen aktiválva lett. Ha az aktiválás sikertelen, a következőhöz hasonló állapotú üzenetnek kell megjelennie az SFX-ben:
 
 ```
 There was an error during CodePackage activation. Service host failed to activate. Error: 0xXXXXXXXX
 ```
 
-A kódcsomag sikeresen megtörtént a rendszer visszaállította, miután a Service Fabric élettartamuk figyelési kezdődik. Ezen a ponton egy folyamatban vagy tárolóban leállíthatja számos oka bármikor. Sikerült rendelkezik nem sikerült inicializálni a DLL-t, az operációs rendszer sikerült elfogyott asztali halommemória lemezterület stb. Ha a kódcsomag, üzenetnek kell megjelennie a health az SFX arról, hogy a
+A kód sikeres aktiválása után Service Fabric megkezdi az élettartamának figyelését. Ezen a ponton egy folyamat vagy tároló bármikor leállhat számos okból. Előfordulhat például, hogy nem tudta inicializálni a DLL-t, vagy az operációs rendszer elfogyott az asztali tárterületen. Ha a kód csomagja meg lett szakítva, a következő állapotadatok jelennek meg az SFX-ben:
 
 ```
 The process/container terminated with exit code: XXXXXXXX. Please look at your application logs/dump or debug your code package for more details. For information about common termination errors, please visit https://aka.ms/service-fabric-termination-errors
 ```
 
-A kilépési kód megadva ez az állapot üzenet a parancs számára, miért szüntetni folyamat/tároló által biztosított csak valami, és azt sikerült által létrehozott bármely a verem szintjét. Célszerű a nehezen érthető, ha a kilépési kód volt kapcsolatos, például az operációs rendszer hiba, a .NET, a probléma, vagy a kód okozta. Ennek eredményeképpen Ez a cikk kiindulási pontként használható diagnosztizálásához lezárást kilépési kódot forrását, és lehetséges megoldásokat, figyelembe véve, hogy ezek általános megoldások gyakori forgatókönyveket, és nem alkalmazható a hiba akkor jelent meg.
+Ebben az állapotfigyelő üzenetben a kilépési kód az egyetlen nyom, amelyet a folyamat vagy a tároló biztosít a leállításának okát illetően. A verem bármely szintjéből létrehozható. Előfordulhat például, hogy ez a kilépési kód egy operációsrendszer-hibához vagy egy .NET-problémához kapcsolódik, vagy a kód felváltotta azt. Ez a cikk kiindulási pontként használható a megszűnési kódok és a lehetséges megoldások forrásának diagnosztizálásához. Ne feledje azonban, hogy ezek általános megoldásokat jelentenek a gyakori forgatókönyvekhez, és előfordulhat, hogy nem vonatkoznak a megjelenő hibára.
 
-## <a name="how-can-i-tell-if-service-fabric-terminated-my-code-package"></a>Hogyan állapítható meg, ha a Service Fabric leállt a kódcsomag?
+## <a name="how-can-i-tell-if-service-fabric-terminated-my-code-package"></a>Honnan tudhatom meg, hogy Service Fabric megszakította-e a kód csomagot?
 
-Lehet, hogy a Service Fabric felelős a kódcsomag különböző okok miatt leáll. Például dönthet a kódcsomag elhelyezése egy másik csomópontra terheléselosztás céljából. Megadható, hogy ha a kódcsomag leállt a Service Fabric által, ha a kilépési kódot az alábbi táblázatban látható:
+Előfordulhat, hogy a Service Fabric a különböző okok miatt a kód leállításához felelős. Dönthet például úgy, hogy a csomagot egy másik csomóponton helyezi el terheléselosztási célokra. Ha a következő táblázatban látható kilépési kódokat látja, ellenőrizheti, hogy Service Fabric leállította-e a kódot.
 
 >[!NOTE]
-> Ha a folyamat/tároló leáll, megjelennek az alábbi táblázatban eltérő kilépési kóddal, a Service Fabric, nem felelős leállítja azt.
+> Ha a folyamat vagy a tároló a következő táblázatban szereplő kódoktól eltérő kilépési kóddal leáll, Service Fabric nem felelős a megszakításért.
 
 Kilépési kód | Leírás
 --------- | -----------
-7147 | Az ezen hibakódok azt jelzik, hogy a Service Fabric le szabályosan a folyamat/tároló Ctrl + C jel küldésével.
-7148 | Az ezen hibakódok azt jelzik, hogy a Service Fabric a folyamat/tároló megszakadt. Egyes esetekben erről a hibakódról azt jelzi, hogy a folyamat/tároló nem válaszolt időben küldése a Ctrl + C jelet, így le fognak állni kellett után.
+7147 | Azt jelzi, hogy Service Fabric szabályosan leállítja a folyamatot vagy a tárolót úgy, hogy a CTRL + C jelet küldi el.
+7148 | Azt jelzi, hogy Service Fabric megszakította a folyamatot vagy a tárolót. Előfordulhat, hogy ez a hibakód azt jelzi, hogy a folyamat vagy a tároló nem válaszolt kellő időben a CTRL + C jel elküldése után, és meg kellett szakítani.
 
 
-## <a name="other-common-error-codes-and-their-potential-fixes"></a>Egyéb gyakori hibakódok és azok lehetséges javításai
+## <a name="other-common-error-codes-and-their-potential-fixes"></a>Egyéb gyakori hibakódok és lehetséges javítások
 
-Kilépési kód | Hexadecimális értékként | Rövid leírás | Kiváltó ok | Lehetséges javítás
+Kilépési kód | Hexadecimális érték | Rövid leírás | Gyökérok | Lehetséges javítás
 --------- | --------- | ----------------- | ---------- | -------------
-3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | Ez a hiba esetleg jelenti, hogy a gép futott-e elegendő halommemória asztali áll. Ez különösen akkor valószínűséggel, ha az a csomóponton futó alkalmazáshoz tartozó folyamatokat nagy számú oka. | Ha a program nem lett építve válaszolni a Ctrl + C jelek, a fürt Manifest beállítás a "EnableActivateNoWindow" engedélyezheti. A beállítás engedélyezése azt a kódcsomag kellene futtatnia egy grafikus felhasználói felület ablak nélkül és nem jelenít meg Ctrl + C jelek, de csökkentené a használ az egyes folyamatok asztali halommemória terület mennyiségét. Ha a kódcsomag kell fogadni a Ctrl + C jelek, majd, növelheti a csomópont asztali halommemória mérete.
-3762504530 | 0xe0434352 | – | Ez az érték a felügyelt kódból (például .NET) nem kezelt kivétel hibakód. | A kilépési kód jelent meg, azt jelenti, hogy az alkalmazás kivételt, amely nem kezelt maradt, és a folyamat leállt. Az alkalmazás naplók és a memóriaképek hibakeresés kell lennie az első lépés, amely meghatározza, hogy mi okozta a hibát.
+3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | Ez a hiba esetenként azt jelenti, hogy a gép elfogyott az asztali tárolóhelyen. Ez különösen akkor valószínű, ha számos olyan folyamata van, amely a csomóponton futó alkalmazáshoz tartozik. | Ha a program nem úgy lett felépítve, hogy válaszoljon a CTRL + C jelekre, akkor engedélyezheti a **EnableActivateNoWindow** beállítást a fürt jegyzékfájljában. Ha engedélyezi ezt a beállítást, a kód csomagja nem grafikus felhasználói felülettel fog futni, és nem kap CTRL + C jeleket. Ez a művelet csökkenti az egyes folyamatok által felhasznált asztali tárolóhelyek mennyiségét is. Ha a kód csomagjának a CTRL + C jeleket kell kapnia, növelheti a csomópont asztali kupacjának méretét.
+3762504530 | 0xe0434352 | – | Ez az érték a felügyelt kódból (azaz .NET) származó kezeletlen kivétel hibakódját jelöli. | Ez a kilépési kód azt jelzi, hogy az alkalmazás olyan kivételt váltott ki, amely kezeletlen marad, és amely megszakította a folyamatot. A hiba kiváltásának első lépéseként hibakeresést végezhet az alkalmazás naplófájljaiban és a fájlok kiírásakor.
 
 ## <a name="next-steps"></a>További lépések
 
-* Tudjon meg többet [más gyakori feladatok diagnosztizálása](service-fabric-diagnostics-common-scenarios.md)
-* Az Azure Monitor naplóira, és mit kínál olvassa el részletes áttekintést [Mi az Azure Monitor naplóira?](../operations-management-suite/operations-management-suite-overview.md)
-* További információ az Azure Monitor naplóira [riasztási](../log-analytics/log-analytics-alerts.md) , ezzel elősegítve az észlelési és a diagnosztikát.
-* Ismerkedjen meg a [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) szolgáltatásai által kínált Azure Monitor naplóira
+* További információ a [gyakori forgatókönyvek diagnosztizálásáról](service-fabric-diagnostics-common-scenarios.md).
+* Tekintse át a Azure Monitor naplók részletes áttekintését és a [Azure monitor áttekintését ismertető témakört](../operations-management-suite/operations-management-suite-overview.md).
+* További információ az észlelési [](../log-analytics/log-analytics-alerts.md) és diagnosztikai támogatásokról Azure monitor naplók riasztásáról.
+* Ismerkedjen meg Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciókkal.

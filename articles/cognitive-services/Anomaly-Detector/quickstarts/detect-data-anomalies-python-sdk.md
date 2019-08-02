@@ -1,142 +1,133 @@
 ---
-title: 'Gyors útmutató: Az Anomáliadetektálási detector használatával erőforrástár és a Python használatával adatok rendellenességek észlelése'
+title: 'Gyors útmutató: Adatanomáliák észlelése a következőhöz: az anomália-detektor ügyféloldali kódtára a Pythonhoz'
 titleSuffix: Azure Cognitive Services
-description: Az Anomáliadetektálási detector használatával API segítségével észlelheti a rendellenességeket az adatsorozat egy kötegelt vagy a streamelt adatokon.
+description: A rendellenesség-Kiderítő API használatával az adatsorozatban lévő rendellenességeket kötegként vagy adatfolyamként lehet érzékelni.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 07/01/2019
+ms.date: 08/01/2019
 ms.author: aahi
-ms.openlocfilehash: 9176ab84dd3f493604bd655e0498f5ad476776d0
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 59a4d79cc68c57faf54bde3d42370fb17a317325
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721524"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725563"
 ---
-# <a name="quickstart-anomaly-detector-client-library-for-python"></a>Gyors útmutató: Anomáliadetektálási detector használatával ügyféloldali kódtára a Pythonhoz
+# <a name="quickstart-anomaly-detector-client-library-for-python"></a>Gyors útmutató: A Pythonhoz készült adatrendellenesség-detektor ügyféloldali kódtára
 
-Ismerkedés az Anomáliadetektálási detector használatával ügyféloldali kódtára a .NET-hez. Kövesse az alábbi lépéseket a csomag telepítéséhez, és próbálja ki az alapvető feladatok példakód. Az Anomáliadetektálási detector használatával szolgáltatás lehetővé teszi, hogy az idősorozat-adatok használatával automatikusan a legjobban záró modellek, iparági, a forgatókönyv és adatok mennyiségétől függetlenül rendellenességeket található.
+Ismerkedés az anomália-detektor .NET-hez készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. Az anomália-detektor szolgáltatás lehetővé teszi, hogy az idősoros adataiban az adatsorozatok adatait automatikusan a legjobb illeszkedő modellekkel találja, függetlenül az iparágtól, a forgatókönyvtől vagy az adatmennyiségtől.
 
-## <a name="key-concepts"></a>Fő fogalmak
+A következőhöz használhatja a a Pythonhoz készült rendellenesség-Kiderítő ügyféloldali kódtárat:
 
-Az Anomáliadetektálási detector használatával ügyféloldali kódtár használhatja a Python használatával:
+* Az idősorozat-adatkészlet összes rendellenességének észlelése batch-kérelemként
+* Az idősorozat legújabb adatpontjának anomália állapotának észlelése
 
-* A time series adatkészlet egész rendellenességek észlelése, a kötegelt kérelem
-* A legújabb adatpont anomáliadetektálási állapotának észleléséhez az idősor
-
-[Kódtár dokumentációja](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [kódtár forráskódját](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [csomag (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [minták](https://github.com/Azure-Samples/anomalydetector)
+[Könyvtár](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | -dokumentációs[függvénytár](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [-csomag (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [mintái](https://github.com/Azure-Samples/anomalydetector)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
-* A [Pandas adatok elemzőkönyvtár](https://pandas.pydata.org/)
+* A [Panda adatelemzési könyvtára](https://pandas.pydata.org/)
  
-## <a name="setting-up"></a>Beállítása
+## <a name="setting-up"></a>Beállítás
 
-### <a name="create-an-anomaly-detector-resource"></a>Hozzon létre egy Anomáliadetektálási detector használatával erőforrást
+### <a name="create-an-anomaly-detector-resource"></a>Anomália-detektor erőforrásának létrehozása
 
 [!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
+Miután beolvasott egy kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre egy környezeti változót](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) a (z) nevű `ANOMALY_DETECTOR_KEY`kulcshoz.
+
+### <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
+
+ Hozzon létre egy új Python-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben. Ezután importálja a következő kódtárakat.
+
+[!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
+
+Hozzon létre változókat a kulcshoz környezeti változóként, egy idősorozat-adatfájl elérési útját, valamint az előfizetés Azure-beli helyét. Például: `westus2`. 
+
+[!code-python[Vars for the key, path location and data path](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=initVars)]
+
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-Miután telepítette a Python, az ügyféloldali kódtár a telepíthető:
+A Python telepítése után az ügyféloldali kódtár a következővel telepíthető:
 
 ```console
 pip install --upgrade azure-cognitiveservices-anomalydetector
 ```
 
-## <a name="object-model"></a>Hálózatiobjektum-modellje
+## <a name="object-model"></a>Objektummodell
 
-Az Anomáliadetektálási detector használatával ügyfél egy [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python) objektum, amely az Azure-kulcs használatával hitelesít. Az ügyfél az anomáliadetektálás kétféle módszert biztosít: Egy teljes adatkészleten használatával [entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-), és a legfrissebb adatok használatával [Last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-). 
+A rendellenesség-Kiderítő ügyfél egy [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python) objektum, amely az Azure-ban hitelesíti magát a kulcs használatával. Az ügyfél két módszert biztosít a anomáliák észlelésére: Egy teljes adatkészlet [entire_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-)és a legújabb adatpontok használatával a [Last_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-)segítségével. 
 
-Idősorozat-adatok küldött sorozataként [pontok](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point(class)?view=azure-python) a egy [kérelem](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request(class)?view=azure-python) objektum. A `Request` objektum tulajdonságait írja le az adatokat tartalmazza ([Granularitási](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) például), és a rendellenességek észlelése paramétereit. 
+Az idősorozat-információk küldése egy [kérelem](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request(class)?view=azure-python) -objektumban lévő [pontok](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point(class)?view=azure-python) sorozata. Az `Request` objektum olyan tulajdonságokat tartalmaz, amelyek leírják az adatok (például a[részletesség](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) ) és az anomáliák észlelésének paramétereit. 
 
-Az Anomáliadetektálási detector használatával választ egy [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) vagy [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) objektumok a használt módszertől függően. 
+Az anomália-detektor válasza egy [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) vagy [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) objektum a használt módszertől függően. 
 
-## <a name="getting-started"></a>Első lépések
+## <a name="code-examples"></a>Példák a kódokra 
 
-Hozzon létre egy új Python-alkalmazás az előnyben részesített szerkesztővel, vagy IDE. Ezután adja hozzá a következő importálási nyilatkozatokat a fájlhoz. 
-
-[!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
-
-> [!NOTE]
-> Ez a rövid útmutató feltételezi, hogy [létrehozott egy környezeti változó](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) az Anomáliadetektálási detector használatával kulcs nevű `ANOMALY_DETECTOR_KEY`.
-
-Hozzon létre változókat a kulcsot egy környezeti változót, egy time series adatfájlt, és az azure-előfizetését, hely elérési útja. Például: `westus2`. 
-
-[!code-python[Vars for the key, path location and data path](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=initVars)]
-
-## <a name="code-examples"></a>Hitelesítésikód-példák 
-
-Ezek a kódrészletek bemutatják, hogyan tegye a következőket az Anomáliadetektálási detector használatával ügyféloldali kódtára a .NET-keretrendszerhez készült:
+Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a következőhöz: az anomália-detektor .NET-hez készült ügyféloldali kódtára:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
-* [Egy time series adatkészlet betöltése egy fájlból](#load-time-series-data-from-a-file)
-* [Észlelheti a rendellenességeket a teljes adatkészlet](#detect-anomalies-in-the-entire-data-set) 
-* [A legújabb adatpont anomáliadetektálási állapotának észlelése](#detect-the-anomaly-status-of-the-latest-data-point)
+* [Idősorozat-adatkészlet betöltése fájlból](#load-time-series-data-from-a-file)
+* [A teljes adathalmazban észlelt rendellenességek észlelése](#detect-anomalies-in-the-entire-data-set) 
+* [A legutóbbi adatpont anomália állapotának észlelése](#detect-the-anomaly-status-of-the-latest-data-point)
 
-### <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
+## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Az Azure-beli hely változó hozzáadása a végponthoz, és az ügyfél hitelesítésére a kulccsal.
+Adja hozzá az Azure Location változót a végponthoz, és hitelesítse az ügyfelet a kulccsal.
 
 [!code-python[Client authentication](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=client)]
 
-### <a name="load-time-series-data-from-a-file"></a>Idősorozat-adatok betöltése egy fájlból
+## <a name="load-time-series-data-from-a-file"></a>Adatsorozat-adatok betöltése fájlból
 
-Töltse le a példaadatokat az ebben a rövid [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv):
-1. A böngészőben, kattintson a jobb gombbal **Raw**
-2. Kattintson a **mentés hivatkozás**
-3. Mentse a fájlt az alkalmazás könyvtárába, egy .csv-fájlba.
+A rövid útmutatóhoz tartozó példa adatainak letöltése [](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv)a githubról:
+1. A böngészőben kattintson a jobb gombbal a **RAW**elemre.
+2. Kattintson **a hivatkozás mentése másként**elemre.
+3. Mentse a fájlt egy. csv-fájlként az alkalmazás könyvtárába.
 
-Az idősorozat-adatok egy .csv-fájlba van formázva, és az Anomáliadetektálási detector használatával API-t küld.
+Ez az idősoros adat. csv-fájlként van formázva, és a rendszer elküldi a rendellenesség-Kiderítő API-nak.
 
-Az adatfájlban a Pandas kódtár betöltése `read_csv()` metódust, és módosítsa az adatsorozat tárolásához egy üres lista változó. Iterálódnak a fájlt, és az adatok hozzáfűzése egy [pont](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point%28class%29?view=azure-python) objektum. Ez az objektum tartalmazza a timestamp és az adatok a .csv-fájl sorainak numerikus érték. 
+Töltse be az adatfájlt a Panda Library `read_csv()` metódusával, és készítsen egy üres lista változót az adatsorozatok tárolásához. Ismételje meg a fájlt, és az adatpont objektumként [](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point%28class%29?view=azure-python) fűzze hozzá az adatelemet. Ez az objektum a. csv-adatfájl soraiban található timestamp és numerikus értéket fogja tartalmazni. 
 
 [!code-python[Load the data file](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=loadDataFile)]
 
-Hozzon létre egy [kérelem](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request%28class%29?view=azure-python) az idősorozat-objektum és a [granularitási](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) (vagy a periodicitás) az adatpont. Például: `Granularity.daily`.
+Hozzon létre egy [kérés](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request%28class%29?view=azure-python) objektumot az idősorozattal, valamint az adatpontok [részletességét](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) (vagy gyakoriságát). Például: `Granularity.daily`.
 
 [!code-python[Create the request object](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=request)]
 
-### <a name="detect-anomalies-in-the-entire-data-set"></a>Észlelheti a rendellenességeket a teljes adatkészlet 
+## <a name="detect-anomalies-in-the-entire-data-set"></a>A teljes adathalmazban észlelt rendellenességek észlelése 
 
-Az API-t a teljes idősorozat-adatok használatával az ügyfél keresztül rendellenességek észlelése [entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-) metódust. A visszaadott Store [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) objektum. A válasz iterálódnak `is_anomaly` listában, és nyomtassa ki az index minden `true` értékeket. Ha találhatók esetleges rendellenes adatpontok index ezeket az értékeket felelnek meg.
+Hívja meg az API-t, hogy észlelje a rendellenességeket a teljes idősoros adatain keresztül az ügyfél [entire_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-) metódusának használatával. Tárolja a visszaadott [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) objektumot. Ismételje meg `is_anomaly` a válasz listáját, és nyomtassa ki bármelyik `true` érték indexét. Ezek az értékek a rendellenes adatpontok indexének felelnek meg, ha vannak ilyenek.
 
 [!code-python[Batch anomaly detection sample](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=detectAnomaliesBatch)]
 
-### <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>A legújabb adatpont anomáliadetektálási állapotának észlelése
+## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>A legutóbbi adatpont anomália állapotának észlelése
 
-Az Anomáliadetektálási detector használatával API-t, hogy a legújabb adatok pont az ügyfél anomáliát [last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-) módját, valamint a tároló által visszaadott [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) objektum. A válasz `is_anomaly` érték logikai érték beolvasása, amely meghatározza, hogy pont anomáliadetektálási állapotát.  
+A rendellenesség-Kiderítő API meghívásával megállapíthatja, hogy a legutóbbi adatpontja anomália-e az ügyfél [last_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-) metódusának használatával, és tárolja a visszaadott [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) objektumot. A válasz `is_anomaly` értéke egy olyan logikai érték, amely megadja az adott pont anomáliának állapotát.  
 
 [!code-python[Batch anomaly detection sample](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=latestPointDetection)]
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást az IDE-ben, vagy a parancssorban a `python` parancs, és a fájl nevét.
+Futtassa az alkalmazást az ide-ban, vagy a parancssorban `python` a paranccsal és a fájl nevével.
  
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha szeretné törölni, és távolítsa el a Cognitive Services-előfizetést, törölheti az erőforrást vagy erőforráscsoportot. Az erőforráscsoport törlésekor a az erőforráscsoporthoz társított erőforrásokat is törli.
+Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-A következő cloud shell parancs eltávolítható az erőforráscsoport és az összes kapcsolódó erőforrás is futtathatja. Ez eltarthat néhány percig. 
-
-```azurecli-interactive
-az group delete --name example-anomaly-detector-resource-group
-```
-
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
->[Az Azure Databricks streamelési anomáliadetektálás](../tutorials/anomaly-detection-streaming-databricks.md)
+>[Adatfolyam-rendellenességek észlelése Azure Databricks](../tutorials/anomaly-detection-streaming-databricks.md)
 
-* Mi az a [Anomáliadetektálási detector használatával API-t?](../overview.md)
-* [Ajánlott eljárások](../concepts/anomaly-detection-best-practices.md) az Anomáliadetektálási detector használatával API használatakor.
-* Ez a minta forráskódja találhatók [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs).
+* Mi a rendellenesség-Kiderítő [API?](../overview.md)
+* [Ajánlott eljárások](../concepts/anomaly-detection-best-practices.md) az anomália-detektor API használatakor.
+* A minta forráskódja a [githubon](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)található.

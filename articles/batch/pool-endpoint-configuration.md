@@ -1,39 +1,39 @@
 ---
-title: Csomópont-végpontok konfigurálása az Azure Batch-készletben |} A Microsoft Docs
-description: Hogyan konfigurálhatja vagy letilthatja a hozzáférést az SSH vagy RDP-portokhoz egy Azure Batch-készletben található számítási csomópontokon.
+title: Csomópont-végpontok konfigurálása Azure Batch-készletben | Microsoft Docs
+description: Az SSH-vagy RDP-portok elérésének konfigurálása vagy letiltása egy Azure Batch készlet számítási csomópontjain.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: lahugh
-ms.openlocfilehash: d788db9d554c6200316bb4e3f36640dac1925fc4
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: e6c7f2762a6742a1aff7a2c3aff977b5e3657349
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341555"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322474"
 ---
-# <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Konfigurálhatja vagy letilthatja a távoli hozzáférést az Azure Batch-készlet számítási csomópontjain
+# <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>A Azure Batch-készletben lévő számítási csomópontok távoli elérésének konfigurálása vagy letiltása
 
-Alapértelmezés szerint a Batch lehetővé teszi egy [csomópont felhasználói](/rest/api/batchservice/computenode/adduser) kívülről kapcsolódni egy számítási csomóponton a Batch-készlet hálózati kapcsolattal rendelkező. Például a felhasználók kapcsolódhatnak a távoli asztali (RDP) egy Windows-készletben lévő számítási csomópontok 3389-es porton. Alapértelmezés szerint ehhez hasonlóan a felhasználók kapcsolódhatnak a Secure Shell (SSH) 22-es port egy Linux-készlet számítási csomópontjaihoz. 
+Alapértelmezés szerint a Batch lehetővé teszi [](/rest/api/batchservice/computenode/adduser) , hogy a hálózati kapcsolattal rendelkező csomópontok a Batch-készletben lévő számítási csomóponthoz külsőleg csatlakozzanak. Egy felhasználó például a 3389-as porton Távoli asztal (RDP) használatával kapcsolódhat egy számítási csomóponthoz egy Windows-készletben. Hasonlóképpen, alapértelmezés szerint a felhasználók a biztonságos rendszerhéj (SSH) használatával kapcsolódhatnak a 22-es porton a Linux-készletben lévő számítási csomóponthoz. 
 
-A környezetben szüksége lehet korlátozni, vagy tiltsa le a külső hozzáférés alapértelmezett beállítások. Állítsa be a Batch API-k használatával módosíthatja ezeket a beállításokat a [PoolEndpointConfiguration](/rest/api/batchservice/pool/add#poolendpointconfiguration) tulajdonság. 
+A környezetében előfordulhat, hogy korlátozni vagy le kell tiltania ezeket az alapértelmezett külső hozzáférési beállításokat. Ezeket a beállításokat a Batch API-k használatával módosíthatja a [PoolEndpointConfiguration](/rest/api/batchservice/pool/add#poolendpointconfiguration) tulajdonság beállításához. 
 
-## <a name="about-the-pool-endpoint-configuration"></a>Tudnivalók a készletvégpont-konfiguráció
-A végpont-konfiguráció áll egy vagy több [hálózati címfordítás (NAT) címkészletek](/rest/api/batchservice/pool/add#inboundnatpool) előtérbeli portok. (Ne keverje össze a számítási csomópontok Batch-készlet egy NAT-készletet.) Felülírják az alapértelmezett kapcsolati beállításokat a készlet számítási csomópontokon való beállítása minden NAT-készletet. 
+## <a name="about-the-pool-endpoint-configuration"></a>A készlet végpont-konfigurációjának ismertetése
+A végpont-konfiguráció a előtér-portok egy vagy több hálózati címfordítási [(NAT) készletét](/rest/api/batchservice/pool/add#inboundnatpool) tartalmazza. (Ne keverje össze a NAT-készletet a számítási csomópontok batch-készletével.) Az egyes NAT-készleteket úgy állíthatja be, hogy felülbírálja a készlet számítási csomópontjain lévő alapértelmezett kapcsolódási beállításokat. 
 
-Minden egyes NAT a készletkonfiguráció tartalmaz egy vagy több [hálózati biztonsági csoport (NSG) szabályai](/rest/api/batchservice/pool/add#networksecuritygrouprule). Minden NSG-szabály engedélyezi, vagy megtagadja a bizonyos hálózati forgalmat a végponthoz. Dönthet úgy, hogy engedélyezi vagy megtagadja a minden forgalmat a forgalom által azonosított egy [szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) (például az "Internet"), vagy adott IP-címekről vagy alhálózatokról érkező forgalmat.
+Minden NAT-készlet konfigurációja tartalmaz egy vagy több [hálózati biztonsági csoport (NSG) szabályt](/rest/api/batchservice/pool/add#networksecuritygrouprule). Minden NSG-szabály engedélyezi vagy megtagadja a végpontra irányuló bizonyos hálózati forgalmat. Dönthet úgy, hogy engedélyezi vagy megtagadja az összes forgalmat, a [szolgáltatási címke](../virtual-network/security-overview.md#service-tags) által azonosított forgalmat (például az "internetet") vagy adott IP-címekről vagy alhálózatokról érkező forgalmat.
 
 ### <a name="considerations"></a>Megfontolandó szempontok
-* A készlet végpont-konfiguráció a készlet része [hálózati konfiguráció](/rest/api/batchservice/pool/add#networkconfiguration). A hálózati konfiguráció szükség esetén belefoglalhatja csatlakozni szeretne a készlet beállításait egy [az Azure virtual network](batch-virtual-network.md). Ha beállította a készlet az egy virtuális hálózatot, virtuális hálózatban lévő címekre vonatkozó beállításokat használó NSG-szabályok is létrehozhat.
-* Beállíthatja több NSG-szabályok, NAT-készletet konfigurálásakor. A szabályokat a rendszer prioritás szerinti sorrendben ellenőrzi. Amint talál egy érvényes szabályt, nem vizsgálja, hogy a többi szabálynak megfelel-e a forgalom.
+* A készlet végpontjának konfigurációja a készlet [hálózati konfigurációjának](/rest/api/batchservice/pool/add#networkconfiguration)részét képezi. A hálózati konfiguráció opcionálisan tartalmazhat olyan beállításokat, amelyekkel csatlakoztathatja a készletet egy Azure-beli [virtuális hálózathoz](batch-virtual-network.md). Ha a készletet egy virtuális hálózatban állítja be, létrehozhat olyan NSG-szabályokat, amelyek a virtuális hálózatban a címek beállításait használják.
+* NAT-készlet konfigurálásakor több NSG szabályt is beállíthat. A szabályok prioritási sorrendben vannak bejelölve. Amint talál egy érvényes szabályt, nem vizsgálja, hogy a többi szabálynak megfelel-e a forgalom.
 
 
-## <a name="example-deny-all-rdp-traffic"></a>Példa: RDP-forgalmat az összes elutasítása
+## <a name="example-deny-all-rdp-traffic"></a>Példa: Az összes RDP-forgalom tiltása
 
-A következő C# kódrészlet bemutatja, hogyan konfigurálhatja az RDP-végpontot összes hálózati forgalom megtagadásához Windows készlet számítási csomópontjain. A végpontot használja a tartomány portok előtérbeli címkészlet *60000-60099*. 
+A következő C# kódrészlet azt mutatja be, hogyan konfigurálható az RDP-végpont a Windows-készlet számítási csomópontjain az összes hálózati forgalom megtagadásához. A végpont a *60000-60099*tartományba tartozó portok egy frontend-készletét használja. 
 
 ```csharp
 pool.NetworkConfiguration = new NetworkConfiguration
@@ -48,9 +48,9 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>Példa: Megtagadja az összes SSH-forgalom az internetről
+## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>Példa: Az internetről érkező összes SSH-forgalom letiltása
 
-A következő Python-kódrészlet bemutatja, hogyan konfigurálja az SSH-végpont minden internetes forgalom megtagadásához szükséges Linux-készlet számítási csomópontjain. A végpontot használja a tartomány portok előtérbeli címkészlet *4000-4100*. 
+A következő Python-kódrészlet bemutatja, hogyan konfigurálhatja az SSH-végpontot a Linux-készletben lévő számítási csomópontokon az összes internetes forgalom megtagadásához. A végpont a *4000-4100*tartományba tartozó portok egy frontend-készletét használja. 
 
 ```python
 pool.network_configuration = batchmodels.NetworkConfiguration(
@@ -74,9 +74,9 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 )
 ```
 
-## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>Példa: Engedélyezze az RDP-forgalmat egy adott IP-címről
+## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>Példa: Az RDP-forgalom engedélyezése egy adott IP-címről
 
-A következő C# kódrészlet bemutatja, hogyan konfigurálhatja az RDP-végpontot csak az IP-címről érkező RDP-hozzáférést biztosít egy Windows-készlet számítási csomópontjain *198.51.100.7*. A második Hálózatibiztonságicsoport-szabály megtagadja a forgalmat, amely nem egyezik meg az IP-címet.
+A következő C# kódrészlet azt mutatja be, hogyan konfigurálható az RDP-végpont a Windows-készlet számítási csomópontjain úgy, hogy csak az IP- *198.51.100.7*engedélyezze az RDP-hozzáférést. A második NSG szabály megtagadja a forgalmat, amely nem felel meg az IP-címnek.
 
 ```csharp
 pool.NetworkConfiguration = new NetworkConfiguration
@@ -92,9 +92,9 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>Példa: Egy adott alhálózatról SSH-forgalom engedélyezése
+## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>Példa: SSH-forgalom engedélyezése egy adott alhálózatról
 
-A következő Python-kódrészlet bemutatja, hogyan konfigurálja az SSH-végpont engedélyezi a hozzáférést az alhálózatról csak a Linux-készlet számítási csomópontjain *192.168.1.0/24*. A második Hálózatibiztonságicsoport-szabály megtagadja a forgalmat, amely nem egyezik meg az alhálózatot.
+A következő Python-kódrészlet bemutatja, hogyan konfigurálhatja az SSH-végpontot a Linux-készletben lévő számítási csomópontokon, hogy csak a *192.168.1.0/24*alhálózatról engedélyezze a hozzáférést. A második NSG szabály megtagadja a forgalmat, amely nem felel meg az alhálózatnak.
 
 ```python
 pool.network_configuration = batchmodels.NetworkConfiguration(
@@ -125,7 +125,7 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure-ban az NSG-szabályok kapcsolatos további információkért lásd: [hálózati biztonsági csoportokkal a hálózati forgalom szűrése](../virtual-network/security-overview.md).
+- További információ az Azure-beli NSG-szabályokról: [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/security-overview.md).
 
-- A Batch részletesebb áttekintéséért lásd: [Develop nagy léptékű párhuzamos számítási megoldások Batch segítségével történő](batch-api-basics.md).
+- A Batch részletes áttekintése: [nagy léptékű párhuzamos számítási megoldások létrehozása a Batch szolgáltatással](batch-api-basics.md).
 

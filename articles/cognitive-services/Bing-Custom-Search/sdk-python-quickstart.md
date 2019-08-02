@@ -1,35 +1,35 @@
 ---
-title: 'Gyors útmutató: Hívja meg a Bing Custom Search-végpont a Python SDK-val |} A Microsoft Docs'
+title: 'Gyors útmutató: A Bing Custom Search végpont meghívása a Python SDK használatával | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: A Bing egyéni keresés Pythonhoz készült SDK segítségével egyéni keresési eredmények eléréséhez.
+description: Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresési eredményeinek kérését a Python SDK használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 03/05/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: c4c5059bc57ea33357145f6b119456dc6c5bdb7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7a9d0d6619878299768e1f17b4da3280ea1ec1fc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60946641"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564623"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>Gyors útmutató: A Python SDK-val Bing Custom Search-végpont meghívása 
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>Gyors útmutató: A Bing Custom Search végpont meghívása a Python SDK használatával 
 
-Ez a rövid útmutató segítségével megkezdheti a keresési eredmények kér a Bing Custom Search példány, a Python SDK használatával. Míg a Bing Custom Search REST API-val kompatibilis szinte bármelyik programozási nyelvével, a Bing Custom Search SDK biztosít egy egyszerű módja annak, hogy a szolgáltatás integrálása az alkalmazásokba. Ez a minta forráskódja találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py) további hibakezelést és jegyzetek.
+Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresési eredményeinek kérését a Python SDK használatával. Habár a Bing Custom Search REST API kompatibilis a legtöbb programozási nyelvvel, a Bing Custom Search SDK egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a githubon található további hibakezelés [](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py) és jegyzetek használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Bing Custom Search-példány. Lásd: [a rövid útmutató: Az első Bing Custom Search-példány létrehozása](quick-start.md) további információt.
-- Python [2.x vagy 3.x](https://www.python.org/) 
-- A [Bing Custom Search SDK a Pythonhoz](https://pypi.org/project/azure-cognitiveservices-search-customsearch/) 
+- Egy Bing Custom Search példány. Lásd [: gyors útmutató: További információért hozza létre az](quick-start.md) első Bing Custom Search-példányát.
+- Python [2. x vagy 3. x](https://www.python.org/) 
+- A [Pythonhoz készült BING Custom Search SDK](https://pypi.org/project/azure-cognitiveservices-search-customsearch/) 
 
 ## <a name="install-the-python-sdk"></a>A Python SDK telepítése
 
-A Bing Custom Search SDK telepítése az alábbi parancsot.
+Telepítse a Bing Custom Search SDK-t a következő paranccsal.
 
 ```Console
 python -m pip install azure-cognitiveservices-search-customsearch
@@ -38,28 +38,28 @@ python -m pip install azure-cognitiveservices-search-customsearch
 
 ## <a name="create-a-new-application"></a>Új alkalmazás létrehozása
 
-Hozzon létre egy új Python-fájlt a kedvenc szerkesztőjében, vagy IDE, és adja hozzá az alábbi importálásokat.
+Hozzon létre egy új Python-fájlt a kedvenc szerkesztőjében vagy az IDE-ben, és adja hozzá a következő importálásokat.
 
 ```python
 from azure.cognitiveservices.search.customsearch import CustomSearchClient
 from msrest.authentication import CognitiveServicesCredentials
 ```
 
-## <a name="create-a-search-client-and-send-a-request"></a>Hozzon létre egy keresési ügyfél és a egy kérelem küldése
+## <a name="create-a-search-client-and-send-a-request"></a>Keresési ügyfél létrehozása és kérelem küldése
 
-1. Hozzon létre egy változót az előfizetési kulcs.
+1. Hozzon létre egy változót az előfizetési kulcshoz.
 
     ```python
     subscription_key = 'your-subscription-key'
     ```
 
-2. Hozzon létre egy példányt `CustomSearchClient`révén egy `CognitiveServicesCredentials` objektum az előfizetési kulcsot. 
+2. Hozzon létre egy `CustomSearchClient`példányt az előfizetési kulccsal rendelkező `CognitiveServicesCredentials` objektum használatával. 
 
     ```python
     client = CustomSearchClient(CognitiveServicesCredentials(subscription_key))
     ```
 
-3. A keresési kérelem küldése `client.custom_instance.search()`. A keresett kifejezés hozzáfűzése a `query` paramétert, és állítsa be `custom_config` az egyéni konfigurációs azonosító a search-példányt kíván használni. Az a Azonosítójának lekéréséhez a [Bing Custom Search portál](https://www.customsearch.ai/), kattintva a **éles** fülre.
+3. Keresési kérelem küldése a szolgáltatással `client.custom_instance.search()`. Fűzze hozzá a keresési kifejezést a `query` paraméterhez, és `custom_config` állítsa az egyéni konfigurációs azonosítót a keresési példány használatára. Az azonosítót a [Bing Custom Search](https://www.customsearch.ai/)-portálon szerezheti be, az **éles** lapon kattintva.
 
     ```python
     web_data = client.custom_instance.search(query="xbox", custom_config="your-configuration-id")
@@ -67,7 +67,7 @@ from msrest.authentication import CognitiveServicesCredentials
 
 ## <a name="view-the-search-results"></a>A keresési eredmények megtekintése
 
-Minden olyan weblap keresési eredmény, ha lekérése az elsőt, és nyomtassa ki a nevét, URL-címet, és teljes weblapok található.
+Ha a rendszer bármelyik weblap keresési eredményét észlelte, töltse ki az elsőt, és nyomtassa ki a megtalált nevet, URL-címet és összes weblapot.
 
 ```python
 if web_data.web_pages.value:
@@ -82,4 +82,4 @@ else:
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyéni keresés webes alkalmazás készítése](./tutorials/custom-search-web-page.md)
+> [Egyéni keresési Webalkalmazás létrehozása](./tutorials/custom-search-web-page.md)

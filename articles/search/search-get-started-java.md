@@ -1,6 +1,6 @@
 ---
-title: 'Java rövid útmutató: Létrehozása, betöltése és lekérdezése az indexek az Azure Search REST API-k – Azure Search használatával'
-description: Azt ismerteti, hogyan-index létrehozása, adatok betöltése és lekérdezések futtatása a Java és az Azure Search REST API-k használatával.
+title: 'Gyors útmutató: Azure Search index létrehozása javában'
+description: Ismerteti, hogyan lehet indexet létrehozni, adatok betöltésére és lekérdezéseket futtatni a Java és a Azure Search REST API-k használatával.
 services: search
 author: jj09
 manager: jlembicz
@@ -8,15 +8,15 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
-ms.custom: seodec2018
-ms.openlocfilehash: 83f41f248d99ce55daef40e168e5f7b175e08107
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.custom: seodec2018, seo-java-july2019
+ms.openlocfilehash: 7172cd01ca881ec3027854444107b0744b65feb3
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450097"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489790"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-java"></a>Gyors útmutató: Azure Search-index létrehozása javában
+# <a name="quickstart-create-an-azure-search-index-in-java"></a>Gyors útmutató: Azure Search index létrehozása javában
 > [!div class="op_single_selector"]
 > * [Portál](search-get-started-portal.md)
 > * [.NET](search-howto-dotnet-sdk.md)
@@ -36,7 +36,7 @@ A minta összeállításához és teszteléséhez a következő szoftvereket has
 ## <a name="about-the-data"></a>Tudnivalók az adatokról
 A mintaalkalmazás az [Amerikai Egyesült Államok geológiai szolgáltatásainak (United States Geological Services, USGS)](https://geonames.usgs.gov/domestic/download_data.htm) adatait használja, az adatkészlet méretének csökkentése érdekében Rhode Island államra szűrve. Ezeket az adatokat fogjuk használni egy olyan keresőalkalmazás létrehozásához, amely jellegzetes épületeket, például kórházakat és iskolákat, valamint geológiai jellegzetességeket, például folyókat, tavakat és hegycsúcsokat ad vissza eredményül.
 
-Ebben az alkalmazásban a **SearchServlet.java** program segítségével létrehozza és betölti az indexet egy [indexelő](https://msdn.microsoft.com/library/azure/dn798918.aspx) szerkezet a szűrt USGS-adatkészletet egy Azure SQL Database-ből. Az előre meghatározott hitelesítő adatokat és az online adatforrás kapcsolódási adatait a programkód tartalmazza. Az adatelérés szempontjából nincs szükség további konfigurációra.
+Ebben az alkalmazásban a **SearchServlet. Java** program egy indexelő szerkezet használatával építi fel [](https://msdn.microsoft.com/library/azure/dn798918.aspx) és tölti be az indexet, és beolvassa a szűrt USGS-adatkészletet egy Azure SQL Database. Az előre meghatározott hitelesítő adatokat és az online adatforrás kapcsolódási adatait a programkód tartalmazza. Az adatelérés szempontjából nincs szükség további konfigurációra.
 
 > [!NOTE]
 > Az adatkészlethez olyan szűrőt alkalmaztunk, hogy az ingyenes tarifacsomag 10 000 dokumentumos korlátja alatt maradjunk. Ha a standard csomagot használja, arra nem vonatkozik ez a korlátozás, és módosíthatja úgy a kódot, hogy nagyobb adatkészletet használhasson. Az egyes tarifacsomagok kapacitásával kapcsolatos részletes információkat lásd: [Korlátozások és megkötések](search-limits-quotas-capacity.md).
@@ -46,25 +46,25 @@ Ebben az alkalmazásban a **SearchServlet.java** program segítségével létreh
 ## <a name="about-the-program-files"></a>Tudnivalók a programfájlokról
 Az alábbi lista a példához kapcsolódó fájlokat ismerteti.
 
-* Search.jsp: A felhasználói felületet biztosítja
-* SearchServlet.java: (Az MVC-vezérlőhöz hasonló) módszert is biztosít
-* SearchServiceClient.java: HTTP-kérelmeket kezeli
-* SearchServiceHelper.java: Egy statikus módszereket biztosító segítőosztály
-* Document.Java: Az adatmodellt biztosítja
-* a Config.Properties: Beállítja a Search szolgáltatás URL-címe és `api-key`
-* pom.xml: Maven-függőség
+* Search.jsp: Felhasználói felületet biztosít
+* SearchServlet.java: Metódusok (az MVC vezérlőhöz hasonlóan)
+* SearchServiceClient.java: HTTP-kérések kezelése
+* SearchServiceHelper.java: Egy segítő osztály, amely statikus metódusokat biztosít
+* Document. Java: Az adatmodellt biztosítja
+* config. properties: Beállítja a keresési szolgáltatás URL-címét és`api-key`
+* Pom. XML: Maven-függőség
 
 <a id="sub-2"></a>
 
-## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>A szolgáltatás nevét és `api-key` az Azure Search szolgáltatás
-Azure Search szolgáltatásba történő minden REST API-hívások megkövetelése, hogy megadta-e a szolgáltatás URL-CÍMÉT és a egy `api-key`. 
+## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>A szolgáltatás nevének és `api-key` a Azure Search szolgáltatásának megkeresése
+A Azure Search összes REST API hívásához meg kell adnia a szolgáltatás URL-címét `api-key`és a-t. 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Az ugrás sávon kattintson a **Keresési szolgáltatás** elemre, hogy megjelenjen az előfizetéséhez kapcsolódó összes Azure Search szolgáltatás.
 3. Válassza ki a használni kívánt szolgáltatást.
 4. A szolgáltatás irányítópultján megjelennek az alapvető információkat tartalmazó csempék, valamint az adminisztrációs kulcsok eléréséhez szükséges kulcs ikon.
    
-      ![][3]
+      ![A felügyeleti kulcsok a szolgáltatás irányítópultról való elérését bemutató képernyőkép][3]
 5. Másolja át a szolgáltatás URL-címét és egy adminisztrációs kulcsot. Később lesz rájuk szüksége, amikor hozzáadja őket a **config.properties** fájlhoz.
 
 ## <a name="download-the-sample-files"></a>A mintafájlok letöltése
@@ -77,50 +77,50 @@ Minden további fájlmódosítás és utasításfuttatás az ebben a mappában l
 ## <a name="import-project"></a>Projekt importálása
 1. Az Eclipse-ben válassza ki a **File** (Fájl)  > **Import** (Importálás)  > **General** (Általános)  > **Existing Projects into Workspace** (Meglévő projekteket a munkaterületre) lehetőséget.
    
-    ![][4]
+    ![Meglévő projekt importálását bemutató képernyőfelvétel][4]
 2. A **Select root directory** (Gyökérkönyvtár kiválasztása) ablakban keresse meg a mintafájlokat tartalmazó mappát. Válassza ki a .project mappát tartalmazó mappát. A projektnek kiválasztott elemként meg kell jelennie a **Projects** (Projektek) listán.
    
-    ![][12]
+    ![Képernyőfelvétel: a projektek listájának megjelenítése a projektek importálása ablakban][12]
 3. Kattintson a **Befejezés**gombra.
 4. A **Project Explorer** (Projektböngésző) segítségével megtekintheti és szerkesztheti a fájlokat. Ha az még nincs megnyitva, kattintson a **Window** (Ablak)  > **Show View** (Nézet megjelenítése)  > **Project Explorer** (Projektböngésző) lehetőségre, vagy nyissa meg a megfelelő parancsikonnal.
 
-## <a name="configure-the-service-url-and-api-key"></a>A szolgáltatás URL-cím konfigurálása és `api-key`
-1. A **Project Explorer**, kattintson duplán a **config.properties** szerkesztése a kiszolgálónevet tartalmazó konfigurációs beállításokat és `api-key`.
-2. Tekintse meg a lépéseket, a cikkben, amelyekben megtalálhatók-e a szolgáltatás URL-címe és `api-key` a a [az Azure portal](https://portal.azure.com), írja be értékének lekéréséhez **config.properties**.
-3. A **config.properties**, "API-kulcsot" cserélje le a `api-key` a szolgáltatáshoz. Következő, a szolgáltatás nevét (az URL-cím első összetevője https://servicename.search.windows.net) cserél "szolgáltatás neve" ugyanabban a fájlban.
+## <a name="configure-the-service-url-and-api-key"></a>Konfigurálja a szolgáltatás URL-címét és`api-key`
+1. A **Project Explorerben**kattintson duplán a **config. properties** elemre a kiszolgáló nevét és `api-key`a-t tartalmazó konfigurációs beállítások szerkesztéséhez.
+2. Tekintse át a jelen cikk korábbi részében ismertetett lépéseket, ahol megtalálta a szolgáltatás URL-címét és `api-key` a [Azure Portal](https://portal.azure.com), hogy beolvassa azokat az értékeket, amelyeket mostantól a **config. properties fájlban**fog megadni.
+3. A **config. properties fájlban**cserélje le az "API-kulcs `api-key` " kifejezést a szolgáltatásra. A következő szolgáltatás neve (az URL https://servicename.search.windows.net) első összetevője a "szolgáltatás neve" kifejezés helyébe lép ugyanabban a fájlban.
    
-    ![][5]
+    ![Az API-kulcs lecserélését bemutató képernyőkép][5]
 
 ## <a name="configure-the-project-build-and-runtime-environments"></a>A projekt, a build és a futtatókörnyezetek konfigurálása
 1. Az Eclipse Project Explorer (Projektböngésző) nézetében kattintson a jobb gombbal a Project (Projekt) > **Properties** (Tulajdonságok)  > **Project Facets** (A projekt aspektusai) elemre.
 2. Válassza ki a **Dynamic Web Module** (Dinamikus webmodul), a **Java** és a **JavaScript** elemet.
    
-    ![][6]
-3. Kattintson az **Apply** (Alkalmaz) gombra.
+    ![A projekt dimenzióinak kiválasztását bemutató képernyőfelvétel][6]
+3. Kattintson az **Alkalmaz** gombra.
 4. Válassza ki a **Window** (Ablak)  > **Preferences** (Beállítások)  > **Server** (Kiszolgáló)  > **Runtime Environments** (Futtatókörnyezetek)  > **Add..** (Hozzáadás) lehetőséget.
 5. Bontsa ki az Apache elemet, és válassza ki az Apache Tomcat-kiszolgáló korábban telepített verzióját. Mi a 8-as verziót telepítettük a rendszerünkre.
    
-    ![][7]
+    ![Képernyőfelvétel: a futásidejű környezet ablakának helye, ahol kiválaszthatja az Apache Tomcat verzióját][7]
 6. A következő oldalon adja meg a Tomcat telepítési könyvtárát. Windows rendszerű számítógépeken ez valószínűleg a következő lesz: C:\Program Files\Apache Software Foundation\Tomcat *verzió*.
 7. Kattintson a **Befejezés**gombra.
 8. Válassza ki a **Window** (Ablak)  > **Preferences** (Beállítások)  > **Java** > **Installed JREs** (Telepített JRE-k)  > **Add** (Hozzáadás) lehetőséget.
 9. Az **Add JRE** (JRE hozzáadása) panelen válassza ki a **Standard VM** elemet.
-10. Kattintson a **tovább**.
+10. Kattintson a **Tovább** gombra.
 11. A JRE Definition (JRE_definíció) ablakban, a JRE kezdőlapján kattintson a **Directory** (Könyvtár) elemre.
 12. Navigáljon a **Program Files** (Programfájlok)  > **Java** könyvtárra, és válassza ki a korábban telepített JDK-t. Fontos, hogy a JDK-t JRE-ként válassza ki.
 13. Az Installed JREs (Telepített JRE-k) panelen válassza ki a **JDK** elemet. A beállításainak az alábbi képernyőfelvételhez hasonlóan kell kinéznie.
     
-    ![][9]
+    ![Képernyőfelvétel a JDK kiválasztásáról a telepített JRE-ként][9]
 14. Ha az alkalmazást egy külső böngészőablakban szeretné megnyitni, válassza ki a **Window** (Ablak)  > **Web Browser** (Webböngésző)  > **Internet Explorer** lehetőséget. Külső böngészővel fokozhatja a webalkalmazás használatának élményét.
     
-    ![][8]
+    ![Az Internet Explorer külső böngészőablakként való kiválasztását bemutató képernyőkép][8]
 
 Ezzel befejezte a konfigurálási feladatokat. A következő lépésben felépíti és futtatja a projektet.
 
 ## <a name="build-the-project"></a>A projekt felépítése
 1. A projekt konfigurálásához a Project Explorer (Projektböngésző) nézetben kattintson a jobb gombbal a projekt nevére, és válassza ki a **Run As** (Futtatás másként)  > **Maven build...** elemet.
    
-    ![][10]
+    ![Képernyőfelvétel: a Maven-Build kiválasztása a Project Explorer ablakában][10]
 2. Az Edit Configuration (Konfiguráció szerkesztése) panelen a Goals (Célok) mezőbe írja be a „clean install” („tiszta telepítés”) kifejezést, majd kattintson a **Run** (Futtatás) gombra.
 
 Az állapotüzenetek kimenetként a konzolablakban jelennek meg. A BUILD SUCCESS (Sikeres felépítés) üzenetnek kell megjelennie, amely azt jelzi, hogy a projekt hibák nélkül felépült.
@@ -147,7 +147,7 @@ Az USGS-adatkészlet a Rhode Island államra vonatkozó rekordokat tartalmaz. Ha
 
 A keresett kifejezés beírása elindítja a keresőmotort. Próbáljon meg a helyhez kötődő nevet beírni. „Roger Williams” volt Rhode Island első kormányzója. Számos parkot, épületet és iskolát neveztek el róla.
 
-![][11]
+![Az USGS-adatkeresés módját bemutató képernyőfelvétel][11]
 
 Megpróbálhatja beírni az alábbi kifejezések bármelyikét is:
 

@@ -1,6 +1,6 @@
 ---
-title: Hibás rendszergazdai hitelesítő adatok mentése az Azure AD katalógusából származó alkalmazásba történő felhasználókiépítés konfigurálása során |} A Microsoft Docs
-description: Amikor konfigurálása felhasználókiépítés egy alkalmazás már szerepel az Azure AD Alkalmazáskatalógusában megmérkőzött gyakori hibáinak elhárítása
+title: Probléma az Azure AD Gallery-alkalmazás konfigurálásával kapcsolatos rendszergazdai hitelesítő adatok mentésekor | Microsoft Docs
+description: Az Azure AD-alkalmazás-katalógusban már felsorolt alkalmazások felhasználó általi üzembe helyezésének konfigurálásakor felmerülő gyakori problémák elhárítása
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,34 +16,34 @@ ms.date: 02/21/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e4af70ae8628f612b8858b99c0d5ae57e78ace4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 152b704ca597fb473a820124ee6147d6d9bc7845
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963603"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381480"
 ---
-# <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>A probléma az Azure Active Directory-gyűjtemény alkalmazáshoz történő felhasználókiépítés konfigurálása során a rendszergazdai hitelesítő adatok mentése 
+# <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>Probléma a rendszergazdai hitelesítő adatok mentésekor, miközben a felhasználók üzembe helyezését egy Azure Active Directory Gallery-alkalmazáshoz konfigurálja 
 
-Ha az Azure portal használatával konfigurálhatja [felhasználók automatikus átadása](user-provisioning.md) vállalati alkalmazás esetén előfordulhat, hogy olyan helyzet állhat elő ahol:
+Ha a Azure Portal használatával konfigurálja az [automatikus felhasználó-üzembe](user-provisioning.md) helyezést egy vállalati alkalmazáshoz, előfordulhat, hogy a következő helyzetekben találkozhat:
 
-* A **rendszergazdai hitelesítő adataival** megadott alkalmazására érvényesek, és a **kapcsolat tesztelése** works gombra. Azonban nem lehet menteni a hitelesítő adatokat, és az Azure Portalon egy általános hibaüzenetet adja vissza.
+* Az alkalmazáshoz megadott **rendszergazdai hitelesítő adatok** érvényesek, és a **tesztelési kapcsolatok** gomb is működik. A hitelesítő adatokat azonban nem lehet menteni, és a Azure Portal általános hibaüzenetet ad vissza.
 
-SAML-alapú egyszeri bejelentkezést is konfigurálva ugyanahhoz az alkalmazáshoz, ha a hiba legvalószínűbb oka az, hogy az Azure AD belső, alkalmazásonkénti tárolási kapacitása a tanúsítványok és a rendszer túllépte a hitelesítő adatokat.
+Ha az SAML-alapú egyszeri bejelentkezés ugyanahhoz az alkalmazáshoz is konfigurálva van, a hiba legvalószínűbb oka az, hogy az Azure AD belső, a tanúsítványokra és a hitelesítő adatokra vonatkozó tárolási korlátja túllépve.
 
-Jelenleg az Azure AD tárkapacitása legfeljebb 1024 bájt tanúsítványok, titkos jogkivonatok, hitelesítő adatok és kapcsolódó konfigurációs adatok társított egy alkalmazást (más néven a szolgáltatás egyszerű rekord az Azure AD) egy példánya.
+Az Azure AD jelenleg legfeljebb 1024 bájtos tárolókapacitást biztosít minden tanúsítványhoz, titkos jogkivonathoz, hitelesítő adathoz, valamint az alkalmazás egy példányához társított konfigurációs adatokhoz (más néven az Azure AD-beli egyszerű szolgáltatásnév).
 
-Ha SAML-alapú egyszeri bejelentkezés konfigurálva van, a SAML-jogkivonatok aláírásához használt tanúsítvány itt tárolja, és gyakran használ több mint 50 % százalékát.
+Ha az SAML-alapú egyszeri bejelentkezés konfigurálva van, az SAML-tokenek aláírásához használt tanúsítvány itt tárolódik, és gyakran a terület 50%-át használja fel.
 
-Bármely titkos jogkivonatok, URI-k, értesítési e-mail-címeket, felhasználói neveket és, hogy a felhasználók átadásának beállítása során megadott első okozhat a tárolási korlát túllépését.
+A felhasználók üzembe helyezésének beállítása során megadott titkos jogkivonatok, URI-k, értesítő e-mail-címek, felhasználónevek és jelszavak meghaladják a tárolási korlátot.
 
-## <a name="how-to-work-around-this-issue"></a>Útmutató a probléma megkerüléséhez 
+## <a name="how-to-work-around-this-issue"></a>A probléma megkerülése 
 
-A probléma megkerüléséhez ma két lehetséges módja van:
+Ezt a problémát kétféleképpen lehet megkerülni ma:
 
-1. **Két katalógus alkalmazáspéldányok, egy az egyszeri bejelentkezés és egy a felhasználók átadásának** -véve a katalógusból származó alkalmazásra [LinkedIn jogosultságszint-emelés](../saas-apps/linkedinelevate-tutorial.md) tegyük fel, a galériából a LinkedIn jogosultságszint-emelés hozzáadása és konfigurálása Ez az egyszeri bejelentkezés. Üzembe helyezés, LinkedIn jogosultságszint-emelés egy másik példánya hozzáadása az Azure AD-alkalmazásgyűjtemény, és nevezze el "LinkedIn jogosultságszint (kiépítés).-emelés" A második példány konfigurálása [kiépítés](../saas-apps/linkedinelevate-provisioning-tutorial.md), de nem egyszeri bejelentkezés. Ez a megoldás használata esetén az azonos felhasználók és csoportok kell lennie [hozzárendelt](assign-user-or-group-access-portal.md) mindkét alkalmazásokhoz. 
+1. **Használjon két katalógusbeli alkalmazás-példányt, egyet az egyszeri bejelentkezéshez és egyet a felhasználók üzembe** helyezéséhez – a Gallery Application [LinkedIn jogosultságszint](../saas-apps/linkedinelevate-tutorial.md) -emelési lehetőségének megadásával például megadhatja a LinkedIn-emelést a katalógusból, és konfigurálhatja az egyszeri bejelentkezéshez. A kiépítés érdekében vegye fel a LinkedIn újabb példányát az Azure AD-alkalmazás-katalógusból, és nevezze el "LinkedIn jogosultságszint (kiépítés)" értékre. Ennél a második példánynál konfigurálja [](../saas-apps/linkedinelevate-provisioning-tutorial.md)a kiépítés szolgáltatást, de ne egyszeri bejelentkezést. A megkerülő megoldás használatakor ugyanazokat a felhasználókat és csoportokat [](assign-user-or-group-access-portal.md) kell hozzárendelni mindkét alkalmazáshoz. 
 
-2. **Tárolt konfigurációs adatok mennyiségének csökkentésére** – az összes megadott adatokat, a [rendszergazdai hitelesítő adataival](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) szakaszban az üzembe helyezési lapon SAML-tanúsítványt az ugyanazon a helyen tárolja. Előfordulhat, hogy nem lehet rövidebb minden adatot, bár egyes választható konfiguráció mezők, például a **értesítő e-mailt** távolíthatja el.
+2. **Csökkentse a tárolt konfigurációs adatok mennyiségét** – a létesítés lap [rendszergazdai hitelesítő](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) adatok szakaszában megadott összes adat ugyanabban a helyen TÁROLÓDIK, mint az SAML-tanúsítvány. Habár előfordulhat, hogy az összes adat hosszának csökkentése nem lehetséges, néhány opcionális konfigurációs mező, például az értesítési **e-mail** is eltávolítható.
 
 ## <a name="next-steps"></a>További lépések
-[A felhasználó üzembe helyezést és megszüntetést SaaS-alkalmazások konfigurálása](user-provisioning.md)
+[A felhasználók üzembe helyezésének és megszüntetésének beállítása SaaS-alkalmazásokhoz](user-provisioning.md)

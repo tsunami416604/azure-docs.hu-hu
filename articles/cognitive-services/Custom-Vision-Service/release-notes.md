@@ -1,6 +1,6 @@
 ---
 title: Kibocsátási megjegyzések – Custom Vision Service
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -9,88 +9,88 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 4b4e449b9260debbe90523141cacc4ed76219490
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79f3f2a5545b8cdcee86e52f35bd22a31e93d387
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787957"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564095"
 ---
-# <a name="custom-vision-service-release-notes"></a>Custom Vision Service kibocsátási megjegyzései
+# <a name="custom-vision-service-release-notes"></a>Custom Vision Service kibocsátási megjegyzések
 
-## <a name="may-2-2019-and-may-10-2019"></a>2019\. május 2. és a 2019. május 10.
+## <a name="may-2-2019-and-may-10-2019"></a>Május 2., 2019 és május 10., 2019
 
-- Bugfixes és a háttérkiszolgáló fejlesztései
+- Hibajavítások és háttérbeli javítások
 
-## <a name="may-23-2019"></a>2019\. május 23.
+## <a name="may-23-2019"></a>2019. május 23.
 
-- Azure-előfizetések, így könnyebben válassza ki az Azure-címtárak kapcsolatos felhasználói élmény továbbfejlesztett portálon.
+- Továbbfejlesztett portál UX-élmény az Azure-előfizetésekkel kapcsolatban, így könnyebben kiválaszthatja az Azure-címtárakat.
 
-## <a name="april-18-2019"></a>2019\. április 18. 
+## <a name="april-18-2019"></a>Április 18., 2019 
 
-- A Vision AI Dev csomag hozzáadott Objektumfelismerés exportálását.
-- Honlap, beleértve a projekt keresése.
+- Objektum-észlelési exportálás hozzáadva a jövőkép AI fejlesztői csomaghoz.
+- Felhasználói felületi csípések, beleértve a projekt keresését.
 
-## <a name="april-3-2019"></a>2019\. április 3.
+## <a name="april-3-2019"></a>2019. április 3.
 
-- Növelni a rendszerkép 200 határoló dobozok számára vonatkozó határértéket. 
-- Bugfixes, beleértve a modellek teljesítményének jelentős frissítés exportált tensorflow-hoz. 
+- Megnövelt számú korlát a képkeretek száma alapján a 200-es méretre. 
+- Hibajavítások, beleértve a TensorFlow exportált modellek jelentős teljesítményének frissítését. 
 
-## <a name="march-26-2019"></a>2019\. március 26.
+## <a name="march-26-2019"></a>Március 26., 2019
 
-- A Custom Vision Service került általánosan elérhető az Azure-ban!
-- Új machine learning-háttéralkalmazásának javult a teljesítmény, különösen a nagy kihívást jelentő adatkészleteket és a minden részletre kiterjedő besorolási hozzáadott képzés speciális szolgáltatás. Speciális képzésekkel, megadhatja a képzés és a Custom Vision számítási idő költségvetési kísérlettel azonosítja azokat a beállításokat a legjobb képzési és kiegészítését. A gyors ismétlését továbbra is használhatja a meglévő gyors képzést.
-- 3\.0 bevezetett API-k. A 2019. október 1. előtti-3.0 API-k elkövetkező elavulása jelentettük be. Tekintse meg a dokumentációt rövid útmutató [.Net](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial), [Python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial), [csomópont](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial), [Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial), vagy [Go](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial) példák az első lépésekről.
-- Lecseréli az "Alapértelmezett ismétlések" a közzététel/közzétételének visszavonása a 3.0 API-k.
-- Új modell exportálási célok lettek hozzáadva. A docker-fájl exportálása frissítve lett a Raspberry Pi 3 ARM támogatása érdekében. Exportálás támogatási bővült a [Vision AI Dev csomag.](https://visionaidevkit.com/).
-- A címkék megnövekedett legfeljebb 500 S0 szint projektenként. Képek megnövekedett legfeljebb projektenként, 100 000 S0 szint.
-- Eltávolítja a felnőtt tartományhoz. Általános tartomány javasoljuk helyette.
-- Bejelentett [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) általános rendelkezésre állás érdekében.  
+- A Custom Vision Service általánosan elérhetővé tette az Azure-ban!
+- Fejlett betanítási funkció új gépi tanulási háttérrel a jobb teljesítmény érdekében, különösen a kihívást jelentő adatkészletek és a részletes besorolás tekintetében. A speciális betanítással megadhatja a betanítási és a Custom Vision számítási idő költségvetést, amely a legjobb képzési és bővítési beállítások kipróbálását is lehetővé teszi. A gyors iterációk esetében továbbra is használhatja a meglévő gyors képzést.
+- 3,0 API-k bevezetése. Az előzetes verziójú 3,0 API-k az 2019-es október 1-én elavultak. Az első lépésekhez a [.net](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial), a [Python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial), a [Node](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial), a [Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial)vagy a [Go](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial) dokumentációjában találhat példákat.
+- Az "alapértelmezett iterációk" helyébe a 3,0 API-k közzétételi/visszavonási lehetőségeit cserélték.
+- Új modell-exportálási célok lettek hozzáadva. A Docker export frissítve lett a következőhöz: málna PI 3. Az exportálási támogatás hozzá lett adva a [jövőkép AI fejlesztői csomaghoz.](https://visionaidevkit.com/)
+- Megnövelt számú címke/projekt – 500 a S0 szinten. Nagyobb számú lemezkép projektenként és 100 000 a S0 szinten.
+- A felnőtt tartomány eltávolítva. Ehelyett az általános tartomány ajánlott.
+- Az [](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) általános elérhetőség díjszabása bejelentve.  
 
-## <a name="february-25-2019"></a>2019\. február 25.
+## <a name="february-25-2019"></a>Február 25., 2019
 
-- Bejelentett korlátozott próbaverzió projects (projektek egy Azure-erőforrás nem társított), a végén Custom Vision megújítására az Azure nyilvános előzetes verziója az Áthelyezés befejezése után. 2019\. márciusi 25., kezdve a CustomVision.ai hely csak támogatni fogja egy Azure-erőforrás, például a Custom Vision ingyenes erőforrás megtekintését célprojektet. 2019\. október 1., keresztül továbbra is lesz érhetik el a meglévő korlátozott próbaverziós projektek a Custom Vision API-kon keresztül. Ez lehetőséget biztosít, ideje a Custom Vision korábban írt alkalmazások API-kulcsok frissítése. 2019\. október 1. után bármely korlátozott próbaverziós projektek az Azure-bA helyezte át még nem törlődnek.
+- Bejelentette a korlátozott próbaverziós projektek (az Azure-erőforrásokhoz nem társított projektek) végét, mivel Custom Vision az Azure nyilvános előzetes verziójára való áttérés befejezése mellett. 2019. március 25-én a CustomVision.ai-hely csak az Azure-erőforrásokhoz társított projektek megtekintését támogatja, például az ingyenes Custom Vision erőforrást. 2019. október 1-jén a meglévő korlátozott próbaverziós projekteket a Custom Vision API-kon keresztül érheti el. Ezzel időt biztosít a Custom Vision-ban megírt alkalmazások API-kulcsainak frissítésére. A 2019. október 1. után az Azure-ba nem áthelyezett korlátozott próbaidőszakú projekteket törli a rendszer.
 
-## <a name="january-22-2019"></a>2019\. január 22.
+## <a name="january-22-2019"></a>2019. január 22.
 
-- Támogatás hozzáadva az új Azure-régió: 2. nyugati RÉGIÓJA, USA keleti RÉGIÓJA, USA 2. keleti régiója, Nyugat-Európa, Észak-Európa, Délkelet-Ázsia, Kelet-Ausztrália, közép-India, Egyesült Királyság déli régiója, kelet-japán és USA északi középső RÉGIÓJA. Támogatási továbbra is fennáll, az USA déli középső Régiójában.
+- Új Azure-régiók támogatása: USA 2. nyugati régiója, USA 2. keleti régiója, Nyugat-Európa, Észak-Európa, Délkelet-Ázsia, Kelet-Ausztrália, Közép-India, Egyesült Királyság déli régiója, Kelet-japán és az USA északi középső régiója. A támogatás továbbra is az USA déli középső régiójában működik.
 
-## <a name="december-12-2018"></a>2018\. december 12.
+## <a name="december-12-2018"></a>2018. december 12.
 
-- Exportálás támogatása Objektumfelismerés modellek (bevezetett objektum észlelési kompakt tartomány).
-- Rögzített számos továbbfejlesztett képernyőolvasó és billentyűzet navigációs támogatási problémákat.
-- UX frissítéseket képmegtekintő és a továbbfejlesztett címkézés gyorsabb címkézésre élmény objektumfelismerés.  
-- Frissített alapszintű modell objektum észlelési tartomány jobb minőségű objektum észleléséhez.
-- Hibajavításokat tartalmaz.
+- Az objektum-észlelési modellek exportálásának támogatása (az objektum-észlelési kompakt tartomány bevezetve).
+- Javítva lett a kisegítő lehetőségek száma a jobb képernyőolvasó és a billentyűzet navigációs támogatása terén.
+- UX-frissítések a képnézegető és a továbbfejlesztett objektum-észlelés címkézési felületének gyorsabb címkézése érdekében.  
+- Frissített alapmodell az objektum-észlelési tartományhoz a jobb minőségű objektumok észlelése érdekében.
+- Hibajavítások.
 
-## <a name="november-6-2018"></a>2018\. november 6.
+## <a name="november-6-2018"></a>November 6., 2018
 
-- Támogatás hozzáadva a embléma tartományt az Objektumfelismerés.
+- A logo tartomány támogatása az objektum észlelésében.
 
-## <a name="october-9-2018"></a>2018\. október 9.
+## <a name="october-9-2018"></a>2018. október 9.
 
-- Objektum észlelési fizetett előzetes verzióként kerül. Mostantól létrehozhat Objektumfelismerés projektek és a egy Azure-erőforrás.
-- A hozzáadott "Áthelyezése az Azure-bA" funkció webhelyre, hogy egyszerűbb legyen a korlátozott próbaverzió projektek az Azure-frissítése. erőforrás társított project (F0 vagy S0.) Megtalálhatja a beállítások lapon a termékhez.  
-- ONNX 1.2 Windows 2018. október frissítés verzióját, a Windows ML hozzáadott exportálás.
-Hibajavításokat tartalmaz, beleértve az ONNX-exportálás a különleges karakterek.
+- Az objektum észlelése fizetős előzetes verzióba kerül. Mostantól létrehozhat egy Azure-erőforrással rendelkező objektum-észlelési projekteket is.
+- Az "áttérés az Azure-ba" funkció a webhelyre való hozzáadásával megkönnyíti a korlátozott próbaverziós projektek frissítését az Azure-ra való hivatkozáshoz. erőforráshoz csatolt projekt (F0 vagy S0) Ezt a termék beállítások oldalán találja.  
+- Exportálás a ONNX 1,2-be, hogy támogassa a 2018 Windows október, a Windows ML Update verzióját.
+Hibajavítások, beleértve a speciális karaktereket tartalmazó ONNX exportálását is.
 
-## <a name="august-14-2018"></a>2018\. augusztus 14.
+## <a name="august-14-2018"></a>Augusztus 14., 2018
 
-- A hozzáadott "Első lépések" widget végigvezetik a felhasználókat szóló customvision.ai helyet.
-- A machine learning-folyamat számára, hogy a multilabel projektek (új adatveszteség réteg) kapcsolatos további fejlesztések.
+- Az "első lépések" widget hozzáadva a customvision.ai a felhasználóknak a projekt betanításával.
+- A gépi tanulási folyamat további továbbfejlesztése a többcímkés projektek (új veszteségi réteg) kihasználása érdekében.
 
-## <a name="june-28-2018"></a>2018\. június 28.
+## <a name="june-28-2018"></a>2018. június 28.
 
-- Hibajavítások és a háttérrendszer fejlesztései.
-- Engedélyezett többosztályos osztályozási projektek, ahol a képek pontosan egy címkével rendelkezik. Az előrejelzések multiclass módhoz, valószínűségek fog összeg egy (az összes rendszerkép sorolják be a megadott címkék között).
+- Hibajavítások & háttérbeli javításokat.
+- Többosztályos besorolás engedélyezése olyan projektekhez, ahol a képek pontosan egy címkével rendelkeznek. A többosztályos mód előrejelzései esetén a valószínűségek összege eggyel (az összes rendszerkép a megadott címkék közé sorolható).
 
-## <a name="june-13-2018"></a>2018\. június 13.
+## <a name="june-13-2018"></a>2018. június 13.
 
-- UX frissítés, a könnyű használat és a kisegítő lehetőségek összpontosít.
-- A machine learning-folyamat számára, hogy a címkék nagy számú multilabel projektek fejlesztései.
-- Kijavítva a hiba, a TensorFlow-exportálás. Engedélyezve van a exportált modell verziószámozás, így az ismétlések egynél többször is exportálható.
+- UX-frissítés, a könnyű használat és a hozzáférhetőség szempontjából.
+- A Machine learning-folyamat fejlesztései nagy számú címkével rendelkező többcímkés projektek kihasználása érdekében.
+- Rögzített hiba a TensorFlow-exportálásban. Az exportált modell verziószámozásának engedélyezése lehetővé teszi, hogy az ismétlések többször is exportálhatók.
 
-## <a name="may-7-2018"></a>2018\. május 7.
+## <a name="may-7-2018"></a>2018. május 7.
 
 - Előzetes verziójú objektumészlelési szolgáltatás bevezetése korlátozott próbaverziójú projektekhez.
 - Frissítés 2.0 API-kra
@@ -98,14 +98,14 @@ Hibajavításokat tartalmaz, beleértve az ONNX-exportálás a különleges kara
 - Jelentős háttérbeli fejlesztések a képosztályozási projektek gépi tanulási folyamataiban. A 2018. április 27. után betanított projektek már kihasználják ezen frissítések előnyeit.
 - Hozzáadott modellexportálás az ONNX-hez, Windows ML-el való használathoz.
 - Hozzáadott modellexportálás a Dockerfile-hoz. Ez lehetővé teszi az összetevők, például a DockerFile, a TensorFlow-modell és a szolgáltatáskód letöltését saját Windows- vagy Linux-tárolók létrehozásához.
-- Az újonnan betanított modellek az általános (CD) és tereptárgyak (CD) tartományokban, TensorFlow exportált [értékek jelenti azt, hogy immár (0,0,0)](https://github.com/azure-samples/cognitive-services-android-customvision-sample), az összes projekt belüli konzisztencia biztosításához.
+- Az olyan újonnan betanított modellek esetében, amelyek az általános (Compact) és a Landmark (Compact) tartományok TensorFlow lettek exportálva, a [középértékek mostantól (0, 0, 0)](https://github.com/azure-samples/cognitive-services-android-customvision-sample), az összes projekt konzisztenciája érdekében.
 
-## <a name="march-1-2018"></a>2018\. március 1.
+## <a name="march-1-2018"></a>2018. március 1.
 
-- A megadott fizetett előzetes verzióként, és hozzáláthat az Azure portal-kiszolgálóra. Mostantól csatolhatók projektek az F0 (Ingyenes) vagy S0 (Standard) szintű Azure-erőforrásokhoz. S0 szintű projektek bevezetve, amelyek akár 100 címkét és 25 000 képet is engedélyeznek.
+- A fizetős előzetes verzió bekerült a Azure Portalba. Mostantól csatolhatók projektek az F0 (Ingyenes) vagy S0 (Standard) szintű Azure-erőforrásokhoz. S0 szintű projektek bevezetve, amelyek akár 100 címkét és 25 000 képet is engedélyeznek.
 - Háttérbeli módosítások a gép tanulási folyamatban/normalizálási paraméterben. Ezzel a felhasználók jobban kezelhetik a pontosság-visszahívási előnyöket és hátrányokat a valószínűségi küszöbérték beállításakor. A módosítások részeként az alapértelmezett valószínűségi küszöbérték a CustomVision.ai portálon 50%-ra lett állítva.
 
-## <a name="december-19-2017"></a>2017\. december 19.
+## <a name="december-19-2017"></a>2017. december 19.
 
 - Hozzáadott exportálás Androidba (TensorFlow), a korábban kiadott, iOS-be történő (CoreML) exportálási lehetőség mellett. Ez lehetővé teszi, hogy egy betanított kompakt modell exportálása offline fusson egy alkalmazásban.
 - Kiskereskedelem és Tereptárgy „kompakt” tartományok hozzáadva, így elérhetővé válik bennük a modellexportálás.

@@ -1,7 +1,7 @@
 ---
-title: Sorszámnál V2 előre összeállított entitások
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Ez a cikk tartalmazza a sorszám V2 előre összeállított entitások információ a Language Understanding (LUIS).
+title: Sorszám v2 előre elkészített entitás – LUIS
+titleSuffix: Azure Cognitive Services
+description: Ez a cikk a sorszámú, előre felépített entitások adatait tartalmazza Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,21 +11,21 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 862b962f5642e01d7ed8250f49d51a6132447083
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 972f75fd1c977e79a2fa70c44bb3069e2c69a2c5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67486139"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563402"
 ---
-# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>Sorszámnál V2 előre összeállított entitások a LUIS-alkalmazások
-Sorszámnál V2 szám kibővíti [sorszámát](luis-reference-prebuilt-ordinal.md) , adja meg például a relatív hivatkozásokat `next`, `last`, és `previous`. Ezek nem kicsomagolja a sorszámnál előre összeállított entitások használatával.
+# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>A 2. sorszámú, előre elkészített entitás a LUIS-alkalmazáshoz
+A sorszám v2 sorszáma [](luis-reference-prebuilt-ordinal.md) kibontja a sorszámot, `next`hogy `last`relatív hivatkozásokat (például,, és `previous`) adjon meg. Ezeket a rendszer nem a sorszámmal elkészített, előre összeépített entitás használatával bontja ki.
 
-## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Előre összeállított sorszámnál V2 entitás feloldása
+## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Az előre létrehozott sorszám v2 entitás feloldása
 
-### <a name="api-version-2x"></a>API-verzió 2.x
+### <a name="api-version-2x"></a>API 2. x verziója
 
-Az alábbi példa bemutatja a feloldása a **builtin.ordinalV2** entitás.
+Az alábbi példa a **beépített. ordinalV2** entitás feloldását mutatja be.
 
 ```json
 {
@@ -55,9 +55,9 @@ Az alábbi példa bemutatja a feloldása a **builtin.ordinalV2** entitás.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Az előzetes API verzió 3.x
+### <a name="preview-api-version-3x"></a>Előzetes verziójú API 3. x
 
-A következő JSON-ja az a `verbose` paraméter beállítása `false`:
+A következő JSON `verbose` a paraméter `false`értéke:
 
 ```json
 {
@@ -82,7 +82,7 @@ A következő JSON-ja az a `verbose` paraméter beállítása `false`:
 }
 ```
 
-A következő JSON-ja az a `verbose` paraméter beállítása `true`:
+A következő JSON `verbose` a paraméter `true`értéke:
 
 ```json
 {
@@ -124,4 +124,4 @@ A következő JSON-ja az a `verbose` paraméter beállítása `true`:
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [százalékos](luis-reference-prebuilt-percentage.md), [telefonszám](luis-reference-prebuilt-phonenumber.md), és [hőmérséklet](luis-reference-prebuilt-temperature.md) entitásokat. 
+A [százalék](luis-reference-prebuilt-percentage.md), a [telefonszám](luis-reference-prebuilt-phonenumber.md)és a [hőmérséklet](luis-reference-prebuilt-temperature.md) entitások ismertetése. 

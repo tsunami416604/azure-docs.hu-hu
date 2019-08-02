@@ -1,6 +1,6 @@
 ---
-title: Az Azure Security Center konfigurálása az IoT-ügynök előzetes verzió |} A Microsoft Docs
-description: Megtudhatja, hogyan használható az ügynökök konfigurálására az Azure Security Center az IoT.
+title: Azure Security Center konfigurálása a IoT-ügynökhöz | Microsoft Docs
+description: Ismerje meg, hogyan konfigurálhatja az ügynököket a IoT Azure Security Center való használatra.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,132 +13,145 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 39539bb14877208e5f6af957e735a136b077f16a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 8b4764d855663325b2445f7b588b795c15f4edde
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618276"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596333"
 ---
 # <a name="tutorial-configure-security-agents"></a>Oktatóanyag: Biztonsági ügynökök konfigurálása
 
-> [!IMPORTANT]
-> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
-> Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Ez a cikk ismerteti az Azure Security Center (ASC) IoT biztonsági ügynök, hogyan módosíthatja őket konfigurálása ASC IoT biztonsági ügynökök esetében.
+Ez a cikk ismerteti a IoT biztonsági ügynökök Azure Security Centerét, valamint az azok módosításának és konfigurálásának részleteit. 
 
 > [!div class="checklist"]
 > * Biztonsági ügynökök konfigurálása
-> * Ikereszköz tulajdonságainak szerkesztésével ügynök viselkedésének módosítása
-> * Fedezze fel az alapértelmezett konfiguráció
+> * Az ügynök viselkedésének módosítása a Twin tulajdonságok szerkesztésével
+> * Alapértelmezett konfiguráció felderítése
 
 ## <a name="agents"></a>Ügynökök
 
-ASC IoT biztonsági ügynökök esetében adatok gyűjtése IoT-eszközökről, és hajtsa végre az észlelt biztonsági rések elhárításához biztonsági műveleteket. Biztonsági ügynök konfigurációs testre szabhatja a modul ikertulajdonságok használatával vezérelhető. Általánosságban elmondható hogy ezek a Tulajdonságok másodlagos frissítések ritkák.  
+A IoT biztonsági ügynökök Azure Security Center adatokat gyűjtenek a IoT-eszközökről, és biztonsági műveleteket hajtanak végre az észlelt biztonsági rések enyhítése érdekében. A biztonsági ügynök konfigurációja a testre szabható modulok különálló tulajdonságainak együttes használatával vezérelhető. Általánosságban elmondható, hogy a tulajdonságok másodlagos frissítései nem ritkák.  
 
-ASC IoT a biztonsági ügynök ikereszköz konfigurációs objektum számára egy egy .json formátumú objektum. A konfigurációs objektum az ügynök viselkedését vezérlő meghatározó vezérelhető tulajdonságait. 
+Azure Security Center a IoT biztonsági ügynökének Twin konfigurációs objektuma egy JSON formátumú objektum. A konfigurációs objektum olyan ellenőrizhető tulajdonságok halmaza, amelyek segítségével szabályozhatja az ügynök viselkedését. 
 
-Ezek a beállítások segítségével testre szabhatja az ügynök az egyes helyzetekhez szükséges. Például automatikusan a kivételével az egyes események vagy energiafogyasztás minimális szinten tartása is ezek a tulajdonságok konfigurálásával.  
+Ezek a konfigurációk segítenek testreszabni az ügynököt minden szükséges forgatókönyvhöz. Például automatikusan kizárhat néhány eseményt, vagy megtarthatja az energiafogyasztást egy minimális szintre. Ehhez konfigurálja ezeket a tulajdonságokat.  
 
-Az ASC használja az IoT biztonsági ügynökkonfiguráció [séma](https://aka.ms/iot-security-github-module-schema) módosításokat.  
+A módosítások végrehajtásához használja a IoT biztonsági [](https://aka.ms/iot-security-github-module-schema) ügynök konfigurációs sémájának Azure Security Center.  
 
 ## <a name="configuration-objects"></a>Konfigurációs objektumok 
 
-Minden egyes IoT biztonsági ügynök ASC kapcsolódó tulajdonság az ügynök konfigurációs objektumot, a kívánt tulajdonságok területen belül található a **azureiotsecurity** modul. 
+A IoT biztonsági ügynök minden Azure Security Centeréhez kapcsolódó tulajdonságok az ügynök konfigurációs objektumában, a kívánt tulajdonságok szakaszban találhatók, az **azureiotsecurity** modulban. 
 
-Módosíthatja a konfigurációt, hozzon létre, és módosítsa az objektumon belüli a **azureiotsecurity** modul ikereszköz identitás. 
+A konfiguráció módosításához hozza létre és módosítsa ezt az objektumot a **azureiotsecurity** modul kettős identitásán belül. 
 
-Ha az ügynök konfigurációs objektum nem létezik az a **azureiotsecurity** ikermodul, az összes biztonsági ügynök tulajdonság értéke az alapértelmezett. 
+Ha az ügynök konfigurációs objektuma nem létezik a **azureiotsecurity** modulban, az összes biztonsági ügynök tulajdonság értéke alapértelmezett értékre van állítva. 
 
 ```json
 "desired": {
-  "azureiot*com^securityAgentConfiguration^1*0*0": {
+  "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
   } 
 }
 ```
 
-Ellenőrizze, hogy a az ügynök konfigurációs módosítások ellen [séma](https://aka.ms/iot-security-github-module-schema).
-Az ügynök nem indulnak el, ha a konfigurációs objektum nem egyezik meg a séma.
+## <a name="configuration-schema-and-validation"></a>Konfigurációs séma és érvényesítés 
 
-## <a name="configuration-schema-and-validation"></a>Konfigurációs séma- és érvényesítése 
-
-Ellenőrizze, hogy ezzel szemben az ügynök konfigurációs [séma](https://aka.ms/iot-security-github-module-schema). Az ügynök nem indulnak el, ha a konfigurációs objektum nem egyezik meg a séma.
+Győződjön meg arról, hogy a [séma](https://aka.ms/iot-security-github-module-schema)alapján érvényesíti az ügynök konfigurációját. Az ügynök nem indul el, ha a konfigurációs objektum nem felel meg a sémának.
 
  
-Ha az ügynök futása közben a konfigurációs objektum egy érvénytelen konfigurációt (a konfiguráció nem felel meg a sémának) változik, az ügynök figyelmen kívül hagyja az érvénytelen konfigurációt, és továbbra is a jelenlegi konfiguráció használatával. 
+Ha az ügynök futása közben a konfigurációs objektum nem érvényes konfigurációra változik (a konfiguráció nem felel meg a sémának), az ügynök figyelmen kívül hagyja az érvénytelen konfigurációt, és továbbra is az aktuális konfigurációt fogja használni. 
 
-## <a name="editing-a-property"></a>Egy tulajdonság szerkesztése 
+### <a name="configuration-validation"></a>Konfiguráció ellenőrzése
 
-Az ügynök konfigurációs objektumban belül minden egyéni tulajdonságokat kell beállítani a **azureiotsecurity** ikermodul.
-Tulajdonság alapértelmezett értéke használatához távolítsa el a konfigurációs objektumot a tulajdonságot.
+A IoT biztonsági ügynök Azure Security Center a **azureiotsecurity** modul kettős identitásának jelentett tulajdonságok szakaszának aktuális konfigurációját jelenti.
+Az ügynök jelentést készít az összes elérhető tulajdonságról, ha egy tulajdonságot nem a felhasználó állított be, az ügynök az alapértelmezett konfigurációt jelenti.
 
-### <a name="setting-a-property"></a>A következő tulajdonság beállítása
+A konfiguráció érvényesítéséhez hasonlítsa össze a kívánt szakaszban megadott értékeket a jelentett szakaszban bemutatott értékekkel.
 
-1. Az IoT hubhoz keresse meg és válassza ki a módosítani kívánt eszközt.
+Ha a kívánt és a jelentett tulajdonságok között eltérés van, akkor az ügynök nem tudta elemezni a konfigurációt.
 
-1. Kattintson az eszközén, majd a **azureiotsecurity** modul.
+Ellenőrizze a kívánt tulajdonságokat a [sémán](https://aka.ms/iot-security-github-module-schema), javítsa ki a hibákat, és állítsa be újra a kívánt tulajdonságokat.
 
-1. Kattintson a **identitás Ikermodul**.
+> [!NOTE]
+> Egy konfigurációs hiba riasztása az ügynöktől származik, ha az ügynök nem tudta elemezni a kívánt konfigurációt.
+> A jelentett és a kívánt szakasz összevetése annak megismeréséhez, hogy a riasztás továbbra is érvényes-e
 
-1. A biztonsági modulhoz kívánt tulajdonságainak szerkesztéséhez.
+## <a name="editing-a-property"></a>Tulajdonság szerkesztése 
+
+Az összes egyéni tulajdonságot be kell állítani az ügynök konfigurációs objektumán belül az **azureiotsecurity** modul Twin-ben.
+Az alapértelmezett tulajdonság értékének használatához távolítsa el a tulajdonságot a konfigurációs objektumból.
+
+### <a name="setting-a-property"></a>Tulajdonság beállítása
+
+1. A IoT Hub keresse meg és válassza ki a módosítani kívánt eszközt.
+
+2. Kattintson az eszközre, majd a **azureiotsecurity** modulban.
+
+3. Kattintson a **modul Identity Twin**elemre.
+
+4. Szerkessze a biztonsági modulban módosítani kívánt tulajdonságokat.
    
-   Ha például magas prioritásúként kapcsolateseményei konfigurálása, és magas prioritású eseményeinek gyűjtése 7 percenként, az alábbi konfigurációt használja.
+   Ha például a kapcsolódási eseményeket magas prioritással szeretné konfigurálni, és 7 percenként magas prioritású eseményeket szeretne gyűjteni, használja a következő konfigurációt.
    
    ```json
     "desired": {
-      "azureiot*com^securityAgentConfiguration^1*0*0": {
-        "highPriorityMessageFrequency": "PT7M",    
-        "eventPriorityConnectionCreate": "High" 
+      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
+        "highPriorityMessageFrequency": {
+          "value" : "PT7M"
+        },    
+        "eventPriorityConnectionCreate": {
+          "value" : "High" 
+        }
       } 
     }, 
     ```
 
-1. Kattintson a **Save** (Mentés) gombra.
+5. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="using-a-default-value"></a>Alapértelmezett érték használata
 
-Tulajdonság alapértelmezett értéke használatához távolítsa el a konfigurációs objektumot a tulajdonságot.
+Az alapértelmezett tulajdonság értékének használatához távolítsa el a tulajdonságot a konfigurációs objektumból.
 
-## <a name="default-properties"></a>Az alapértelmezett tulajdonságokat 
+## <a name="default-properties"></a>Alapértelmezett tulajdonságok 
 
-A következő táblázat tartalmazza az ASC vezérelhető tulajdonságainak IoT biztonsági ügynökök esetében.
+A következő táblázat a IoT biztonsági ügynökök Azure Security Centerének ellenőrizhető tulajdonságait tartalmazza.
 
-Alapértelmezett értékek érhetők el a megfelelő sémát [Github](https://aka.ms/iot-security-module-default).
+Az alapértelmezett értékek a [GitHub](https\://aka.ms/iot-security-module-default)megfelelő sémájában érhetők el.
 
 | Name (Név)| Állapot | Érvényes értékek| Alapértelmezett értékek| Leírás |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|highPriorityMessageFrequency|Kötelező: False (hamis) |Érvényes értékek: ISO 8601 formátumú időtartama |Alapértelmezett érték: PT7M |Maximális idő előtt magas prioritású üzeneteket küldi el.|
-|lowPriorityMessageFrequency |Kötelező: False (hamis)|Érvényes értékek: ISO 8601 formátumú időtartama |Alapértelmezett érték: PT5H |Maximális idő, alacsony prioritású üzenetek előtt küldi el.| 
-|snapshotFrequency |Szükséges: False (hamis)|Érvényes értékek: időtartam ISO 8601 formátumban |Alapértelmezett érték PT13H |Eszköz állapota pillanatképek létrehozásának időintervallum.| 
-|maxLocalCacheSizeInBytes |Kötelező: False (hamis) |Érvényes értékek: |Alapértelmezett érték: nagyobb, mint 8192 2560000 | Maximális tárterület (bájt) engedélyezett az ügynök üzeneteket tartalmazó gyorsítótárát. Terület üzenetek tárolásához az eszközön, mielőtt üzeneteket küld az engedélyezett maximális mérete.| 
-|maxMessageSizeInBytes |Kötelező: False (hamis) |Érvényes értékek: Egy pozitív szám, 8192, kevesebb mint 262144-nál nagyobb |Alapértelmezett érték: 204800 |Maximális engedélyezett felhőüzenet ügynökök méretét. Ez a beállítás szabályozza a legnagyobb, az egyes üzenetekben küldött adatok mennyisége. |
-|eventPriority$ {EventName} |Kötelező: False (hamis) |Érvényes értékek: Magas, alacsony kikapcsolva |Alapértelmezett értékeit: |Minden ügynök prioritását esemény jön létre. | 
+|highPriorityMessageFrequency|Kötelező: hamis |Érvényes értékek: Időtartam ISO 8601 formátumban |Alapértelmezett érték: PT7M |A magas prioritású üzenetek küldése előtti maximális időtartam.|
+|lowPriorityMessageFrequency |Kötelező: hamis|Érvényes értékek: Időtartam ISO 8601 formátumban |Alapértelmezett érték: PT5H |Az alacsony prioritású üzenetek küldésének maximális ideje.| 
+|snapshotFrequency |Kötelező: false|Érvényes értékek: Időtartam ISO 8601 formátumban |Alapértelmezett érték PT13H |Az Eszközállapot-Pillanatképek létrehozásának időintervalluma.| 
+|maxLocalCacheSizeInBytes |Kötelező: hamis |Érvényes értékek: |Alapértelmezett érték: 2560000, nagyobb, mint 8192 | Az ügynök üzenet-gyorsítótárához engedélyezett maximális tárterület (bájtban). Az üzenetek elküldése előtt az eszközön tárolt üzenetek maximális mérete engedélyezett.| 
+|maxMessageSizeInBytes |Kötelező: hamis |Érvényes értékek: 8192-nál nagyobb pozitív szám, amely kisebb, mint 262144 |Alapértelmezett érték: 204800 |Az ügynök maximálisan megengedett mérete a Felhőbeli üzenetben. Ezzel a beállítással szabályozható az egyes üzenetekben elküldött maximális adatmennyiség. |
+|eventPriority $ {EventName} |Kötelező: hamis |Érvényes értékek: Magas, alacsony, kikapcsolt |Alapértelmezett értékek: |Minden ügynök által generált esemény prioritása | 
 
 ### <a name="supported-security-events"></a>Támogatott biztonsági események
 
-|Esemény neve| a propertyName | Alapértelmezett érték| Snapshot Event| Részletes állapota  |
+|Esemény neve| a propertyName | Alapértelmezett érték| Pillanatkép-esemény| Részletek állapota  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|Diagnosztikai esemény|eventPriorityDiagnostic| Ki| False (Hamis)| Az ügynök kapcsolódó diagnosztikai események. Használja ezt az eseményt a részletes naplózás.| 
-|Konfigurációs hiba |eventPriorityConfigurationError |Alacsony |False (Hamis) |Az ügynök nem tudta elemezni a konfigurációt. Ellenőrizze a konfigurációt a sémának.| 
-|Az eldobott események statisztika |eventPriorityDroppedEventsStatistics |Alacsony |True|Az ügynök eseménystatisztika kapcsolatos. |
-|Üzenet statisztika|eventPriorityMessageStatistics |Alacsony |True |Az ügynök kapcsolatos üzenet statisztikákat. |
-|Csatlakoztatott hardver|eventPriorityConnectedHardware |Alacsony |True |Az eszközhöz csatlakoztatott minden hardveres pillanatképet.|
-|Figyelőportjait|eventPriorityListeningPorts |Magas |True |Az eszközön lévő összes nyitott figyelőportjait pillanatképét.|
-|Folyamat létrehozása |eventPriorityProcessCreate |Alacsony |False (Hamis) |Naplózás folyamat-létrehozás az eszközön.|
-|Folyamat leállítása|eventPriorityProcessTerminate |Alacsony |False (Hamis) |Naplózás megszüntetése az eszközön feldolgozni.| 
-|Rendszerinformáció |eventPrioritySystemInformation |Alacsony |True |Rendszer-információkat pillanatképet (például: Az operációs rendszer vagy a CPU).| 
-|A helyi felhasználók| eventPriorityLocalUsers |Magas |True|A regisztrált helyi felhasználók belül a rendszer pillanatképet. |
-|Bejelentkezés|  eventPriorityLogin |Magas|False (Hamis)|Az eszközön (helyi és távoli bejelentkezések) a bejelentkezési események naplózása.|
-|Kapcsolat létrehozása |eventPriorityConnectionCreate|Alacsony|False (Hamis)|Naplózza a TCP-kapcsolatok létrehozása, és az eszközről. |
-|Tűzfal-konfiguráció| eventPriorityFirewallConfiguration|Alacsony|True|Eszköz tűzfal-konfiguráció (tűzfalszabályok) pillanatképét. |
-|Operációs rendszer| eventPriorityOSBaseline| Alacsony|True|Ellenőrizze a rendelkezésre álló eszköz OS pillanatkép.|
+|Diagnosztikai esemény|eventPriorityDiagnostic| Ki| False (Hamis)| Ügynökkel kapcsolatos diagnosztikai események. Ezt az eseményt részletes naplózásra használhatja.| 
+|Konfigurációs hiba |eventPriorityConfigurationError |Alacsony |False (Hamis) |Az ügynök nem tudta elemezni a konfigurációt. Ellenőrizze a konfigurációt a sémán.| 
+|Eldobott események statisztikája |eventPriorityDroppedEventsStatistics |Alacsony |True|Ügynökkel kapcsolatos események statisztikája. |
+|Üzenet statisztikája|eventPriorityMessageStatistics |Alacsony |True |Ügynökkel kapcsolatos üzenet statisztikája. |
+|Csatlakoztatott hardver|eventPriorityConnectedHardware |Alacsony |True |Az eszközhöz csatlakoztatott összes hardver pillanatképe.|
+|Portok figyelése|eventPriorityListeningPorts |Magas |True |Az eszközön futó összes nyitott figyelő port pillanatképe.|
+|Folyamat létrehozása |eventPriorityProcessCreate |Alacsony |False (Hamis) |Naplózza a folyamat létrehozását az eszközön.|
+|Folyamat leállítása|eventPriorityProcessTerminate |Alacsony |False (Hamis) |Naplózza a folyamat befejezését az eszközön.| 
+|Rendszerinformáció |eventPrioritySystemInformation |Alacsony |True |A rendszerinformációk pillanatképe (például: Operációs rendszer vagy CPU).| 
+|Helyi felhasználók| eventPriorityLocalUsers |Magas |True|A rendszeren belüli regisztrált helyi felhasználók pillanatképe. |
+|Bejelentkezés|  eventPriorityLogin |Magas|False (Hamis)|Naplózza a bejelentkezési eseményeket az eszközre (helyi és távoli bejelentkezések).|
+|Kapcsolatok létrehozása |eventPriorityConnectionCreate|Alacsony|False (Hamis)|Az eszközre és az eszközről létrehozott TCP-kapcsolatok naplózása. |
+|Tűzfal konfigurációja| eventPriorityFirewallConfiguration|Alacsony|True|Az eszköz tűzfal-konfigurációjának pillanatképe (tűzfalszabályok). |
+|OPERÁCIÓSRENDSZER-alapterv| eventPriorityOSBaseline| Alacsony|True|Az eszköz operációs rendszer alapkonfigurációjának vizsgálatának pillanatképe.|
+|
  
 
 ## <a name="next-steps"></a>További lépések
 
-- [ASC megismerheti az IoT-javaslatok](concept-recommendations.md)
-- [Fedezze fel az ASC IoT-riasztások](concept-security-alerts.md)
-- [Hozzáférés nyers biztonsági adatok](how-to-security-data-access.md)
+- [A IoT-javaslatok Azure Security Center megismerése](concept-recommendations.md)
+- [A IoT-riasztások Azure Security Center megismerése](concept-security-alerts.md)
+- [A nyers biztonsági adatértékek elérése](how-to-security-data-access.md)

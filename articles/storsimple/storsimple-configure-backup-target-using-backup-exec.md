@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
 ms.openlocfilehash: 85c04b6ea3e40f1f1dcd12eb5d6f4a8f53836867
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67876789"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple biztonsági mentési célként a Backup Exec
@@ -233,7 +233,7 @@ Ebben a szakaszban néhány konfigurációs példát mutatunk be. Az alábbi pé
 -   A StorSimple támogatja a Backup Exec teljes és növekményes biztonsági mentését. Azt javasoljuk, hogy ne használjon szintetikus és különbözeti biztonsági mentést.
 -   A biztonsági mentési adatfájloknak csak egy adott feladatokhoz kell tartalmazniuk. Például a különböző feladatokhoz tartozó adathordozók nem adhatók hozzá.
 -   A feladatok ellenőrzésének letiltása. Ha szükséges, az ellenőrzést a legutóbbi biztonsági mentési feladatot követően kell ütemezni. Fontos tisztában lenni azzal, hogy ez a művelet hatással van a biztonsági mentés ablakára.
--   **Válassza a** **lemez** **adatai**tulajdonságok lehetőséget. >  >  >  Kikapcsolhatja a **lemezterület előzetes**lefoglalását.
+-   **Válassza a** **lemez** **** **adatai**tulajdonságok lehetőséget. >  >  >  Kikapcsolhatja a **lemezterület előzetes**lefoglalását.
 
 A legújabb Backup Exec-beállításokkal és a követelmények végrehajtásának ajánlott eljárásaival kapcsolatban tekintse meg [a Veritas](https://www.veritas.com)webhelyét.
 
@@ -310,11 +310,11 @@ Az alábbi ábra egy tipikus kötet hozzárendelését mutatja be egy biztonság
 
 Íme egy példa egy GFS-rotációs ütemezésre négy hétig, havonta és évente:
 
-| Gyakoriság/biztonsági mentés típusa | Korlátlan | Növekményes (nap 1-5)  |   
+| Gyakoriság/biztonsági mentés típusa | Teljes | Növekményes (nap 1-5)  |   
 |---|---|---|
 | Hetente (1-4 hét) | Szombat | Hétfő – péntek |
 | Havi  | Szombat  |   |
-| Éves | Szombat  |   |
+| Évente | Szombat  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>StorSimple-kötetek kiosztása Backup Exec biztonsági mentési feladatokhoz
@@ -381,14 +381,14 @@ A következő táblázat bemutatja, hogyan állíthatja be a biztonsági mentés
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS-példa: GFS rotációs hetente, havonta és évenkénti ütemezés szerint
 
-| Hét | Korlátlan | 1\. növekményes nap | 2\. növekményes nap | 3\. növekményes nap | 4\. növekményes nap | 5\. növekményes nap |
+| Hét | Teljes | 1\. növekményes nap | 2\. növekményes nap | 3\. növekményes nap | 4\. növekményes nap | 5\. növekményes nap |
 |---|---|---|---|---|---|---|
 | 1\. hét | Helyi RAID-kötet  | Helyi RAID-kötet | Helyi RAID-kötet | Helyi RAID-kötet | Helyi RAID-kötet | Helyi RAID-kötet |
 | 2\. hét | StorSimple hét 2-4 |   |   |   |   |   |
 | 3\. hét | StorSimple hét 2-4 |   |   |   |   |   |
 | 4\. hét | StorSimple hét 2-4 |   |   |   |   |   |
 | Havi | StorSimple havonta |   |   |   |   |   |
-| Éves | StorSimple évente  |   |   |   |   |   |
+| Évente | StorSimple évente  |   |   |   |   |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-archive-and-deduplication-job"></a>StorSimple-kötetek kiosztása a Backup Exec Archive és a deduplikáló feladatokhoz
