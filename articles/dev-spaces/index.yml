@@ -12,45 +12,46 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
 abstract:
-  description: 'Az Azure Dev Spaces lehetővé teszi, hogy anélkül végezze el az Azure Kubernetes Service (AKS) szolgáltatásban futó teljes mikroszolgáltatás-alkalmazás tesztelését és iteratív fejlesztését, hogy függőségeket kellene replikálnia vagy szimulálnia. Az Azure Dev Spaces egyszerűbbé teszi a csapattal való együttműködést a megosztott Azure Kubernetes Service- (AKS-) fürtökben, valamint csökkenti a tárolók közvetlenül az AKS-ben való futtatásával és hibakeresésével járó terheket is. Ismerje meg az Azure Dev Spaces használatának módját a rövid útmutatók segítségével.'
+  description: 'Az Azure Dev Spaces lehetővé teszi, hogy anélkül végezze el az Azure Kubernetes Service (AKS) szolgáltatásban futó teljes mikroszolgáltatás-alkalmazás tesztelését és iteratív fejlesztését, hogy függőségeket kellene replikálnia vagy szimulálnia. Az Azure Dev Spaces egyszerűbbé teszi a csapattal való együttműködést a megosztott Azure Kubernetes Service- (AKS-) fürtökben, valamint csökkenti a terheket azáltal, hogy a tárolók futtatását és hibakeresését közvetlenül az AKS-ben végzi el. A gyorsútmutatóból megtudhatja, hogyan használhatja az Azure Dev Spacest.'
 sections:
   - title: 5 perces gyors útmutatók
     items:
       - type: paragraph
-        text: 'Útmutató az Azure Dev Spaces használatához az AKS-ben:'
+        text: 'Megtudhatja, hogyan használhatja az Azure Dev Spacest a mikroszolgáltatásokon való együttműködéshez az AKS-ben:'
       - type: list
         style: icon48
         items:
           - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Fejlesztés csapatban
+              src: 'https://docs.microsoft.com/media/common/i_configure-teams.svg'
+            text: Mikroszolgáltatások fejlesztése egy csapat tagjaként
             href: quickstart-team-development.md
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Alkalmazás futtatása
-            href: quickstart-cli.md
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Alkalmazás futtatása Dockerfile használatával
-            href: quickstart-cli-dockerfile.md
       - type: paragraph
-        text: 'Ismerje meg, hogyan végezhet iteratív fejlesztést és hibakeresést az AKS-ben az Azure Dev Spaces segítségével:'
+        text: 'Megtudhatja, hogy végezhet gyors iterációt és hibakeresést belső fejlesztés során az Azure Dev Spaces használatával:'
       - type: list
         style: icon48
         items:
           - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_java.svg'
-            text: Fejlesztés Java használatával
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: A Visual Studio Code és a Java használata
             href: quickstart-java.md
           - image:
               src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: Fejlesztés a .NET és a VS Code használatával
+            text: A Visual Studio Code és a .NET Core használata
             href: quickstart-netcore.md
           - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: Fejlesztés a .NET és a Visual Studio használatával
-            href: quickstart-netcore-visualstudio.md
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_nodejs.svg'
-            text: Fejlesztés a Node.js használatával
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: A Visual Studio Code és a Node.js használata
             href: quickstart-nodejs.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
+            text: A Visual Studio és a .NET Core használata
+            href: quickstart-netcore-visualstudio.md
+      - type: paragraph
+        text: 'Megtudhatja, hogyan fejleszthet mikroszolgáltatásokat szinte bármilyen nyelven az Azure CLI és az Azure Dev Spaces használatával:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
+            text: Fejlesztés az Azure CLI használatával
+            href: quickstart-cli.md

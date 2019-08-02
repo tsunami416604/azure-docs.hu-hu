@@ -9,18 +9,18 @@
       items:
         - name: Csoportos fejlesztés
           href: quickstart-team-development.md
-        - name: Alkalmazás futtatása
+        - name: Hibakeresés és iterálás
+          items:
+            - name: A Visual Studio Code és a Java használata
+              href: quickstart-java.md
+            - name: A Visual Studio Code és a .NET Core használata
+              href: quickstart-netcore.md
+            - name: A Visual Studio Code és a Node.js használata
+              href: quickstart-nodejs.md
+            - name: A Visual Studio és a .NET Core használata
+              href: quickstart-netcore-visualstudio.md
+        - name: Fejlesztés CLI használatával
           href: quickstart-cli.md
-        - name: Alkalmazás futtatása Dockerfile használatával
-          href: quickstart-cli-dockerfile.md
-        - name: Java-alkalmazások futtatása és hibakeresése a VS Code használatával
-          href: quickstart-java.md
-        - name: .NET Core-alkalmazások futtatása és hibakeresése a VS Code használatával
-          href: quickstart-netcore.md
-        - name: Node.js-alkalmazások futtatása és hibakeresése a VS Code használatával
-          href: quickstart-nodejs.md
-        - name: .NET Core-alkalmazások futtatása és hibakeresése a Visual Studio használatával
-          href: quickstart-netcore-visualstudio.md
     - name: Oktatóanyagok
       items:
         - name: Java (VS Code és CLI)

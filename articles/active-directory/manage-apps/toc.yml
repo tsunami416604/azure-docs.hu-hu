@@ -221,6 +221,8 @@
           items:
             - name: Felhasználók átadása katalógusbeli alkalmazásokban
               href: application-provisioning-config-how-to.md
+            - name: Felhasználók automatikus átadásának engedélyezése több-bérlős alkalmazásokhoz
+              href: isv-automatic-provisioning-multi-tenant-apps.md
             - name: A felhasználók automatikus átadásának konfigurálása
               href: configure-automatic-user-provisioning-portal.md
             - name: Alkalmazásattribútumok testreszabása

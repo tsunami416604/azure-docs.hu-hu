@@ -99,16 +99,20 @@
           href: howto-build-iotc-device-bridge.md
     - name: Adminisztráció
       items:
-        - name: Alkalmazás felügyelése
+        - name: Az alkalmazás felügyelete
           href: howto-administer.md
+        - name: Felhasználók és szerepkörök kezelése
+          href: howto-manage-users-roles.md
+        - name: Számla megtekintése
+          href: howto-view-bill.md
+        - name: Az alkalmazás felhasználói felületének testreszabása
+          href: howto-customize-ui.md
         - name: Kép előkészítése és feltöltése
           href: howto-prepare-images.md
         - name: Az alkalmazás irányítópultjának konfigurálása
           href: howto-configure-homepage.md
         - name: Irányítópult-csempék használata
           href: howto-use-tiles.md
-        - name: Az alkalmazás felhasználói felületének testreszabása
-          href: howto-customize-ui.md
         - name: Alkalmazássablonok használata
           href: howto-use-app-templates.md
         - name: Kezelés az Azure Portalról

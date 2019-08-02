@@ -21,7 +21,7 @@
           href: connect-truffle.md
 - name: Oktatóanyagok
   items:
-    - name: Tranzakciók küldése
+    - name: Intelligens szerződések használata
       href: send-transaction.md
 - name: Alapelvek
   items:

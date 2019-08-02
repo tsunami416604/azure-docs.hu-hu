@@ -60,6 +60,12 @@
               href: ./apache-spark-troubleshoot-outofmemory-heap-space.md
             - name: A Livy-kiszolgáló nem indul el
               href: ./apache-spark-troubleshoot-outofmemory-native-thread.md
+        - name: Meghiúsult Apache Spark-feladat – NoClassDefFoundError
+          href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
+        - name: Meghiúsult Apache Spark-feladat – InvalidClassException
+          href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
+        - name: Lassú Apache Spark-feladatok – listStatus
+          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
         - name: Lassú Apache Spark-feladatok – tároló
           href: ./apache-spark-troubleshoot-job-slowness-container.md
         - name: IllegalArgumentException kivétel
@@ -72,6 +78,8 @@
           href: ./apache-spark-troubleshoot-blocking-cross-origin.md
         - name: A Kryo általi szerializálás sikertelen
           href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
+        - name: Apache Spark-eseménynapló – RequestBodyTooLarge
+          href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
 - name: Útmutató
   items:
     - name: Fürttároló használata

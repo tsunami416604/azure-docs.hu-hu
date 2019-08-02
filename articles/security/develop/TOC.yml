@@ -18,3 +18,17 @@
           href: secure-develop.md
         - name: Biztonságos alkalmazások üzembe helyezése
           href: secure-deploy.md
+- name: Megoldások
+  expanded: true
+  items:
+    - name: Microsoft Security Code Analysis
+      expanded: true
+      items:
+        - name: Áttekintés
+          href: security-code-analysis-overview.md
+        - name: Előkészítés és telepítés
+          href: security-code-analysis-onboard.md
+        - name: Konfiguráció
+          href: security-code-analysis-customize.md
+        - name: Gyakori kérdések
+          href: security-code-analysis-faq.md

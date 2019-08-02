@@ -48,4 +48,11 @@ sections:
         className: spaced noBullet
         items:
           - html: <a href="/azure/security/develop/secure-dev-overview">A biztonságos fejlesztés ajánlott eljárásai</a>
-          - html: <a href="/azure/security/azure-security-threat-modeling-tool">Fenyegetésmodellezés</a>
+  - title: További források
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/security/develop/security-code-analysis-overview">Microsoft Security Code Analysis</a>
+          - html: <a href="/azure/security/develop/threat-modeling-tool">Fenyegetésmodellezési eszköz</a>
