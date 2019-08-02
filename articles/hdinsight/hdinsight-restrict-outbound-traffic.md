@@ -1,6 +1,6 @@
 ---
-title: Kimenő hálózati forgalom korlátozása az Azure HDInsight-fürtök konfigurálása
-description: Ismerje meg, hogyan konfigurálhatja a kimenő hálózati forgalom korlátozása az Azure HDInsight-fürtök.
+title: A kimenő hálózati forgalom korlátozásának konfigurálása az Azure HDInsight-fürtökhöz
+description: Ismerje meg, hogyan konfigurálhatja az Azure HDInsight-fürtök kimenő hálózati forgalmának korlátozását.
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,111 +8,111 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 8bb077242c0a989e100c81d4dfefeb53f4bc90c4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 63e23275a68ddde9385bb252dcb872d02c5cea08
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620696"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405969"
 ---
-# <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Kimenő hálózati adatforgalmat tűzfal (előzetes verzió) használata Azure HDInsight-fürtök konfigurálása
+# <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Az Azure HDInsight-fürtök kimenő hálózati forgalmának konfigurálása tűzfallal (előzetes verzió)
 
-Ez a cikk ismerteti, hogy biztonságos Azure tűzfal használata a HDInsight-fürtből származó kimenő forgalom. A következő lépések feltételezik, hogy konfigurál egy Azure-tűzfal egy meglévő fürthöz. Egy új fürtöt helyez üzembe, és egy tűzfal mögött található, a HDInsight-fürt és az alhálózati először hozza létre, és kövesse a jelen útmutató lépéseit.
+Ez a cikk azokat a lépéseket ismerteti, amelyekkel biztonságossá teheti a HDInsight-fürt kimenő forgalmát Azure Firewall használatával. Az alábbi lépések feltételezik, hogy egy meglévő fürthöz Azure Firewall konfigurál. Ha új fürtöt helyez üzembe, és tűzfal mögött található, először hozza létre a HDInsight-fürtöt és az alhálózatot, majd kövesse az útmutató lépéseit.
 
 ## <a name="background"></a>Háttér
 
-Az Azure HDInsight-fürtök általában helyezik üzembe a saját virtuális hálózaton. A fürt rendelkezik a megfelelő működéséhez a hálózati hozzáférést igénylő szolgáltatások a virtuális hálózaton kívüli függőségeit.
+Az Azure HDInsight-fürtöket általában a saját virtuális hálózatában helyezik üzembe. A fürt a virtuális hálózatán kívüli szolgáltatásokkal kapcsolatos függőségekkel rendelkezik, amelyek hálózati hozzáférést igényelnek a megfelelő működéshez.
 
-Több függőségekkel szükséges bejövő forgalmat. A bejövő kezelési forgalom nem lehet elküldeni egy tűzfal eszközön keresztül. Ezt a forgalmat a forrás-címek ismertek és közzétett [Itt](hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip). Az ezt az információt a fürtök bejövő forgalmának biztonságossá tétele hálózati biztonsági csoport (NSG) szabályai is létrehozhat.
+Több függőség is van, amelyek bejövő forgalmat igényelnek. A bejövő felügyeleti forgalmat nem lehet tűzfal-eszközön keresztül elküldeni. A forgalomhoz tartozó forrásoldali címek ismertek, és [itt](hdinsight-management-ip-addresses.md)lesznek közzétéve. A hálózati biztonsági csoportokra (NSG) vonatkozó szabályokat ezen információk alapján is létrehozhatja a fürtre irányuló bejövő forgalom biztonságossá tételéhez.
 
-A HDInsight kimenő forgalom függőségek szinte teljesen teljes tartományneveket, amely nem rendelkezik statikus IP-címek mögöttük van definiálva. A statikus címek hiánya, az azt jelenti, hogy a hálózati biztonsági csoportok (NSG-kkel) való zárolását, így a fürthöz a kimenő forgalom nem használható. A címek elég gyakran, hogy az egyik nem szabályok alapján a jelenlegi névfeloldás beállítása és módosítása, amelyek segítségével az NSG-szabályok beállítása
+A HDInsight kimenő forgalmának függőségei szinte teljesen meg vannak határozva teljes TARTOMÁNYNEVEk használatával, amelyek nem rendelkeznek statikus IP-címekkel. A statikus címek hiánya azt jelenti, hogy a hálózati biztonsági csoportok (NSG-EK) nem használhatók a fürt kimenő forgalmának zárolására. A címek elég gyakran változnak, hogy az aktuális névfeloldáson alapuló szabályok nem állíthatók be, és ez a NSG-szabályok beállítására használható.
 
-A megoldás a kimenő címek védelme érdekében, hogy egy tűzfal eszköz, amely a kimenő forgalmat a tartománynevek alapján szabályozhatja. Azure-tűzfalon korlátozhatja a kimenő HTTP és HTTPS-forgalom alapján a teljes Tartománynevét a cél- vagy [FQDN címkék](https://docs.microsoft.com/azure/firewall/fqdn-tags).
+A kimenő címek biztonságossá tételére szolgáló megoldás egy olyan tűzfal-eszköz használata, amely a tartománynevek alapján képes szabályozni a kimenő forgalmat. A Azure Firewall a cél-vagy [FQDN-címkék](https://docs.microsoft.com/azure/firewall/fqdn-tags)teljes tartományneve alapján korlátozhatja a kimenő http-és HTTPS-forgalmat.
 
-## <a name="configuring-azure-firewall-with-hdinsight"></a>HDInsight Azure tűzfal konfigurálása
+## <a name="configuring-azure-firewall-with-hdinsight"></a>Azure Firewall konfigurálása a HDInsight
 
-A lépéseket annak zárolását, így a meglévő HDInsight az Azure-tűzfalon a kimenő forgalom összegzését a következők:
+A meglévő HDInsight a Azure Firewall-mel való kilépésének lezárásához szükséges lépések összefoglalása:
 1. Hozzon létre egy tűzfalat.
-1. Alkalmazás szabályokat a tűzfal hozzáadása
-1. Adja hozzá a hálózati szabályok a tűzfalon.
+1. Alkalmazási szabályok hozzáadása a tűzfalhoz
+1. Adja hozzá a hálózati szabályokat a tűzfalhoz.
 1. Útválasztási táblázat létrehozása.
 
-### <a name="create-a-new-firewall-for-your-cluster"></a>Hozzon létre egy új tűzfalszabályt a fürt
+### <a name="create-a-new-firewall-for-your-cluster"></a>Új tűzfal létrehozása a fürthöz
 
-1. Hozzon létre egy alhálózatot nevű **AzureFirewallSubnet** a virtuális hálózatban, ahol a fürt található. 
-1. Hozzon létre egy új tűzfal **Test-FW01** használata a lépések [oktatóanyag: Telepítse és konfigurálja az Azure portal segítségével Azure tűzfal](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall).
+1. Hozzon létre egy **AzureFirewallSubnet** nevű alhálózatot abban a virtuális hálózaton, amelyben a fürt létezik. 
+1. Hozzon létre egy új **FW01-tesztet** az [oktatóanyag lépéseinek használatával: Azure Firewall üzembe helyezése és konfigurálása a](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall)Azure Portal használatával.
 
-### <a name="configure-the-firewall-with-application-rules"></a>A tűzfal konfigurálása application szabályokkal
+### <a name="configure-the-firewall-with-application-rules"></a>A tűzfal konfigurálása alkalmazás-szabályokkal
 
-Az alkalmazás-szabálygyűjtemény, amely lehetővé teszi, hogy küldeni és fogadni a fontos kommunikáció a fürt létrehozásához.
+Hozzon létre egy alkalmazás-szabálygyűjtemény, amely lehetővé teszi a fürt számára a fontos kommunikáció küldését és fogadását.
 
-Válassza ki az új tűzfal **Test-FW01** az Azure Portalról. Kattintson a **szabályok** alatt **beállítások** > **alkalmazás szabálygyűjtemény** > **adja hozzá az alkalmazás szabálygyűjtemény**.
+Válassza ki az új **FW01** tűzfalat a Azure Portal. Kattintson a **szabályok** elemre, majd a **Beállítások** > **alkalmazás-szabály gyűjtemény** > alkalmazás-szabálygyűjtemény**hozzáadása**lehetőségre.
 
-![Cím: Alkalmazás szabály gyűjtemény hozzáadása](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
+![Cím: Alkalmazásszabály-gyűjtemény hozzáadása](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
-Az a **adja hozzá az alkalmazás szabálygyűjtemény** képernyőn, a következő lépéseket:
+Az **alkalmazás-szabály felvétele** képernyőn hajtsa végre a következő lépéseket:
 
-1. Adja meg egy **neve**, **prioritású**, és kattintson a **engedélyezése** a a **művelet** legördülő menüben, majd írja be a következő szabályokat a **FQDN címkék szakasz** :
+1. Adjon meg **egy nevet**, egy **prioritást**, majd kattintson az **Engedélyezés** elemre a **művelet** legördülő menüből, és írja be a következő szabályokat a **teljes tartománynév címkék szakaszba** :
 
-   | **Name** | **Forrás címe** | **Teljes tartománynév-címke** | **Megjegyzések** |
+   | **Name** | **Forrás címe** | **FQDN címke** | **Megjegyzések** |
    | --- | --- | --- | --- |
-   | Rule_1 | * | HDInsight és a Windows Update | HDI szolgáltatásokhoz szükséges |
+   | Rule_1 | * | HDInsight és WindowsUpdate | A HDI-szolgáltatásokhoz szükséges |
 
-1. A következő szabályok hozzáadása a **cél teljes tartománynevek szakasz** :
+1. Adja hozzá a következő szabályokat a **cél teljes tartománynevek szakaszhoz** :
 
-   | **Name** | **Forrás címe** | **Protokoll: Port** | **Cél teljes TARTOMÁNYNEVEK** | **Megjegyzések** |
+   | **Name** | **Forrás címe** | **Protokoll: Port** | **Cél teljes tartománynevek** | **Megjegyzések** |
    | --- | --- | --- | --- | --- |
-   | Rule_2 | * | https:443 | login.windows.net | Lehetővé teszi, hogy a Windows bejelentkezési tevékenység |
-   | Rule_3 | * | https:443,http:80 | <storage_account_name.blob.core.windows.net> | Ha a fürt WASB használatával, majd egy szabály hozzáadása a WASB. A csak HTTPS protokollt használó kapcsolatok ellenőrizze, hogy ["biztonságos átvitelre van szükség"](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) engedélyezve van a tárfiókon. |
+   | Rule_2 | * | https: 443 | login.windows.net | Engedélyezi a Windows-bejelentkezési tevékenységet |
+   | Rule_3 | * | https: 443, http: 80 | <storage_account_name.blob.core.windows.net> | Ha a fürtöt a WASB támogatja, vegyen fel egy szabályt a WASB. Ha csak HTTPS-kapcsolatot szeretne használni, győződjön meg arról, hogy a ["biztonságos átvitel szükséges"](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás engedélyezve van a Storage-fiókon. |
 
 1. Kattintson a **Hozzáadás**lehetőségre.
 
-   ![Cím: Adja meg az alkalmazás szabály gyűjtemény részletei](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
+   ![Cím: Adja meg az alkalmazási szabály gyűjtésének részleteit](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
-### <a name="configure-the-firewall-with-network-rules"></a>Konfigurálja a tűzfalat a hálózati szabályok
+### <a name="configure-the-firewall-with-network-rules"></a>A tűzfal konfigurálása hálózati szabályokkal
 
-A hálózati szabályok megfelelően konfigurálja a HDInsight-fürt létrehozásához.
+Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurálásához.
 
-1. Válassza ki az új tűzfal **Test-FW01** az Azure Portalról.
-1. Kattintson a **szabályok** alatt **beállítások** > **szabálygyűjtemény hálózati** > **adja hozzá a hálózati szabálygyűjtemény**.
-1. A a **adja hozzá a hálózati szabályok gyűjteményéhez** képernyőn írja be egy **neve**, **prioritású**, és kattintson a **engedélyezése** a a **művelet** legördülő menüben.
-1. Hozza létre a következő szabályokat a **IP-címek** szakaszban:
+1. Válassza ki az új **FW01** tűzfalat a Azure Portal.
+1. Kattintson **a** **Beállítások** > hálózatiszabálygyűjtemény > hálózati szabálygyűjtemény**hozzáadása**elemre.
+1. A **hálózati szabálygyűjtemény hozzáadása** képernyőn adja meg a **nevet**és a **prioritást**, majd kattintson az **Engedélyezés** elemre a **művelet** legördülő menüből.
+1. Hozza létre a következő szabályokat az **IP-címek** szakaszban:
 
-   | **Name** | **Protocol (Protokoll)** | **Forrás címe** | **Célcím** | **Célport** | **Megjegyzések** |
+   | **Name** | **Protocol (Protokoll)** | **Forrás címe** | **Cél címe** | **Célport** | **Megjegyzések** |
    | --- | --- | --- | --- | --- | --- |
    | Rule_1 | UDP | * | * | `123` | Időszolgáltatás |
-   | Rule_2 | Any | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | Vállalati biztonsági csomag (ESP) használ, majd vegyen fel egy hálózati IP-címek szakaszában, amely lehetővé teszi a kommunikációt az AAD-DS ESP fürtök esetén. Az IP-címeit az AAD-DS szakaszban lévő tartományvezérlőkre találhatja meg a portálon | 
-   | Rule_3 | TCP | * | A Data Lake Storage-fiók IP-cím | `*` | Ha az Azure Data Lake Storage használ, majd hozzá hálózati szabályt az IP-címek szakaszban ADLS Gen1 és Gen2 SNI probléma megoldása érdekében. Ez a beállítás irányítja a forgalmat tűzfal, amelyek nagy mennyiségű adat terhelés magasabb költségeket eredményezhet, de a forgalom naplózza, és a tűzfalnaplók naplózható. A Data Lake-tárfiókra IP-címét határozza meg. Egy powershell-parancsot használhatja például `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` feloldani az FQDN IP-címet.|
-   | Rule_4 | TCP | * | * | `12000` | (Nem kötelező) Ha a Log Analytics használ, hozzon létre hálózati szabályt az IP-cím szakasz a Log Analytics-munkaterülethez való kommunikáció engedélyezése. |
+   | Rule_2 | Any | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | Ha Enterprise Security Package (ESP) protokollt használ, adjon hozzá egy hálózati szabályt az IP-címek szakaszban, amely lehetővé teszi a HRE-DS-vel való kommunikációt az ESP-fürtök esetében. A tartományvezérlők IP-címeit a HRE-DS szakaszban találja a portálon. | 
+   | Rule_3 | TCP | * | A Data Lake Storage fiókjának IP-címe | `*` | Ha Azure Data Lake Storage használ, akkor az IP-címek szakaszban hozzáadhat egy hálózati szabályt a ADLS Gen1 és a Gen2 SNI kapcsolatos probléma megoldásához. Ezzel a beállítással a rendszer átirányítja a forgalmat a tűzfalra, ami magasabb költségekkel járhat a nagyméretű adatterhelések esetében, a forgalom pedig naplózható és naplózható a tűzfal naplófájljaiban. Határozza meg a Data Lake Storage fiókjának IP-címét. Használhat egy PowerShell-parancsot, például `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` a teljes tartománynevet az IP-címek feloldásához.|
+   | Rule_4 | TCP | * | * | `12000` | Választható Ha Log Analytics használ, hozzon létre egy hálózati szabályt az IP-címek szakaszban, hogy engedélyezze a kommunikációt a Log Analytics munkaterülettel. |
 
-1. Hozza létre a következő szabályokat a **Szolgáltatáscímkék** szakaszban:
+1. Hozza létre a következő szabályokat a **szolgáltatás címkék** szakaszában:
 
-   | **Name** | **Protocol (Protokoll)** | **Forrás címe** | **Szolgáltatáscímkék** | **Célport** | **Megjegyzések** |
+   | **Name** | **Protocol (Protokoll)** | **Forrás címe** | **Szolgáltatás címkéi** | **Célport** | **Megjegyzések** |
    | --- | --- | --- | --- | --- | --- |
-   | Rule_7 | TCP | * | SQL | `1433` | A Szolgáltatáscímkék szakaszban hálózati szabályt, amely lehetővé teszi, hogy jelentkezzen és naplózási SQL-forgalmat, kivéve, ha az SQL Server konfigurált Szolgáltatásvégpontok a HDInsight-alhálózatot, amely fog kerülni a tűzfalon az SQL konfigurálása. |
+   | Rule_7 | TCP | * | SQL | `1433` | Konfiguráljon egy hálózati szabályt az SQL-hez tartozó szolgáltatás-címkék szakaszban, amely lehetővé teszi az SQL-forgalom naplózását és naplózását, kivéve, ha a HDInsight alhálózaton olyan SQL Serverhoz konfigurálta a szolgáltatási végpontokat, amelyek megkerülik a tűzfalat. |
 
-1. Kattintson a **Hozzáadás** a hálózati szabálygyűjtemény létrehozásának befejezéséhez.
+1. A hálózati szabálygyűjtemény létrehozásának befejezéséhez kattintson a **Hozzáadás** gombra.
 
-   ![Cím: Adja meg az alkalmazás szabály gyűjtemény részletei](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+   ![Cím: Adja meg az alkalmazási szabály gyűjtésének részleteit](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
-### <a name="create-and-configure-a-route-table"></a>Létrehozhat és konfigurálhat egy útválasztási táblázatot
+### <a name="create-and-configure-a-route-table"></a>Útválasztási táblázat létrehozása és konfigurálása
 
-Hozzon létre egy útválasztási táblázatot az alábbi bejegyzéseket:
+Hozzon létre egy útválasztási táblázatot a következő bejegyzésekkel:
 
-1. A hat a címek [szükséges HDInsight felügyeleti IP-címek listája](../hdinsight/hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) a következő ugrási típusú **Internet**:
-    1. Az összes régióban összes fürt négy IP-címek
-    1. Két IP-címek, amelyek az a régió, ahol a fürt létrehozása
-1. Folyamatban van az Azure-tűzfal magánhálózati IP-cím a következő ugrás IP-cím 0.0.0.0/0 egy virtuális készülék útvonalat.
+1. Hat cím a [szükséges HDInsight-felügyeleti IP-címek listájáról](../hdinsight/hdinsight-management-ip-addresses.md) az **Internet**következő ugrásával:
+    1. Négy IP-cím minden fürthöz az összes régióban
+    1. Két IP-cím, amelyek a fürt létrehozási régiójára vonatkoznak
+1. A 0.0.0.0/0 IP-címhez tartozó egyik virtuális készülék útvonala a következő ugrás a Azure Firewall magánhálózati IP-címe.
 
-Például az útvonaltáblát az "USA középső Régiója", az Egyesült Államokbeli régióban létrehozott fürt konfigurálásához kövesse az alábbi lépéseket:
+Ha például az útválasztási táblázatot az USA középső régiójában létrehozott fürthöz szeretné konfigurálni, kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az Azure portálra.
-1. Válassza ki az Azure-tűzfalon **Test-FW01**. Másolás a **magánhálózati IP-cím** megjelenik a **áttekintése** lap. Ebben a példában használjuk egy **10.1.1.4 címét minta**
-1. Hozzon létre egy új útvonaltáblát.
-1. Kattintson a **útvonalak** alatt **beállítások**.
-1. Kattintson a **Hozzáadás** útvonalakat az IP-cím létrehozása az alábbi táblázat a.
+1. Válassza ki az Azure Firewall **test-FW01**. Másolja ki az **Áttekintés** lapon felsorolt **magánhálózati IP-címet** . Ebben a példában a **10.1.1.4** egy mintáját fogjuk használni
+1. Hozzon létre egy új útválasztási táblázatot.
+1. Kattintson a **Beállítások**alatt lévő **útvonalak** elemre.
+1. A **Hozzáadás** gombra kattintva hozzon létre útvonalakat az alábbi táblázatban szereplő IP-címekhez.
 
-| Útvonal neve | Címelőtag | A következő ugrás típusa | A következő ugrás címe |
+| Útvonalnév | Címelőtag | Következő ugrási típus | Következő ugrási cím |
 |---|---|---|---|
 | 168.61.49.99 | 168.61.49.99/32 | Internet | NA |
 | 23.99.5.239 | 23.99.5.239/32 | Internet | NA |
@@ -122,51 +122,51 @@ Például az útvonaltáblát az "USA középső Régiója", az Egyesült Állam
 | 40.86.83.253 | 40.86.83.253/32 | Internet | NA |
 | 0.0.0.0 | 0.0.0.0/0 | Virtuális berendezés | 10.1.1.4 |
 
-Az útválasztási táblázat konfigurálása:
+Fejezze be az útválasztási táblázat konfigurációját:
 
-1. Az útvonaltábla kattintva létrehozta a HDInsight-alhálózat hozzárendelése **alhálózatok** alatt **beállítások** , majd **társítása**.
-1. Az a **alhálózat társítása** képernyő, válassza ki a virtuális hálózatot, amely a fürt létrejött, és a **HDInsight-alhálózat** használja a HDInsight-fürthöz.
+1. Rendelje hozzá a HDInsight-alhálózathoz a létrehozott útválasztási  táblázatot úgy, hogy az alhálózatok elemre kattint, majd a **társítás** **lehetőséget** választja.
+1. Az **alhálózat hozzárendelése** képernyőn válassza ki azt a virtuális hálózatot, amelyben a fürt létrejött, valamint a HDInsight-fürthöz használt **HDInsight** -alhálózatot.
 1. Kattintson az **OK** gombra.
 
-## <a name="edge-node-or-custom-application-traffic"></a>Edge-node vagy egyéni alkalmazás felé irányuló forgalom
+## <a name="edge-node-or-custom-application-traffic"></a>Edge-Node vagy egyéni alkalmazás forgalma
 
-A fenti lépések lehetővé teszi a fürt problémamentesen működjön. Továbbra is szeretné konfigurálni, hogy megfeleljen a releváns csomópontjain futó egyéni alkalmazásaiban, ha van ilyen.
+A fenti lépések lehetővé teszik, hogy a fürt problémák nélkül működjön. Továbbra is konfigurálnia kell a függőségeket, hogy azok megfeleljenek az Edge-csomópontokon futó egyéni alkalmazásoknak, ha vannak ilyenek.
 
-Alkalmazásfüggőségek azonosítani lehet, és az Azure-tűzfal vagy az útvonaltáblát.
+Az alkalmazás függőségeit azonosítani kell, és hozzá kell adni a Azure Firewall vagy az útválasztási táblához.
 
-Útvonalak létre kell hozni az alkalmazás forgalmának aszimmetrikus útválasztási problémák elkerülése érdekében.
+A aszimmetrikus útválasztási problémák elkerülése érdekében létre kell hozni útvonalakat az alkalmazás forgalmához.
 
-Ha az alkalmazások más függőségekkel rendelkeznek, azokat hozzá kell adni az Azure-tűzfalhoz. Lehetővé teszi a HTTP/HTTPS-forgalmat, és a hálózati szabályok minden más alkalmazás szabályok létrehozásához.
+Ha alkalmazásai más függőségekkel rendelkeznek, azokat fel kell venni a Azure Firewallba. Alkalmazás-szabályok létrehozása a HTTP/HTTPS-forgalom és a hálózati szabályok minden más számára történő engedélyezéséhez.
 
 ## <a name="logging"></a>Naplózás
 
-Az Azure tűzfal a naplókat elküldheti néhány különböző tárolási rendszerek. Számára történő konfigurálásához kövesse a tűzfal, naplózás lépéseit [oktatóanyag: Azure tűzfal-naplók és metrikák figyelése](../firewall/tutorial-diagnostics.md).
+Azure Firewall küldhet naplókat néhány különböző tárolási rendszernek. A tűzfal naplózásának konfigurálásával kapcsolatos utasításokért kövesse az [oktatóanyag lépéseit: Azure Firewall naplók és metrikák](../firewall/tutorial-diagnostics.md)figyelése.
 
-Miután befejezte a a naplózás beállítása, ha a Log Analytics naplózási adatokat, például a következő lekérdezéssel letiltott forgalom tekintheti meg:
+Ha elvégezte a naplózást, ha Log Analytics adatokat naplóz, a letiltott forgalmat a következő lekérdezéssel tekintheti meg:
 
 ```
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
-Az Azure-tűzfal integrálása az Azure Monitor naplóira akkor hasznos, ha először első egy alkalmazás használata, ha Ön nem ismeri az összes alkalmazás függőségeit. További információ az Azure Monitor naplóinak [naplóadatok elemzése az Azure monitorban](../azure-monitor/log-query/log-query-overview.md)
+Ha nem ismeri az összes alkalmazás-függőséget, akkor hasznos, ha a Azure Firewall Azure Monitor naplókkal való integrációja során először működik. További tudnivalókat Azure Monitor naplók [elemzése a naplózási adatokról Azure monitor](../azure-monitor/log-query/log-query-overview.md)
 
 ## <a name="access-to-the-cluster"></a>Hozzáférés a fürthöz
-Után sikeresen fel a tűzfal beállításának, használhatja a belső végpont (`https://<clustername>-int.azurehdinsight.net`) eléréséhez az Ambari, a virtuális hálózaton belül. A nyilvános végpont használata (`https://<clustername>.azurehdinsight.net`) vagy ssh végpont (`<clustername>-ssh.azurehdinsight.net`), ellenőrizze, hogy rendelkezik a megfelelő útvonalak az útvonaltáblában lévő és NSG-szabályok beállítása a kifejtett assymetric útválasztási probléma elkerülése érdekében [Itt](https://docs.microsoft.com/azure/firewall/integrate-lb).
+A tűzfal sikeres telepítése után a belső végpont (`https://<clustername>-int.azurehdinsight.net`) használatával férhet hozzá a Ambari a VNET belülről. A nyilvános végpont (`https://<clustername>.azurehdinsight.net`) vagy SSH-végpont (`<clustername>-ssh.azurehdinsight.net`) használatához ellenőrizze, hogy rendelkezik-e a megfelelő útvonalakkal az útválasztási táblázatban és a NSG-szabályok beállításában, hogy elkerülje a assymetric-útválasztási probléma magyarázatát. [](https://docs.microsoft.com/azure/firewall/integrate-lb)
 
-## <a name="configure-another-network-virtual-appliance"></a>Egy másik virtuális hálózati berendezések konfigurálása
+## <a name="configure-another-network-virtual-appliance"></a>Másik hálózati virtuális berendezés konfigurálása
 
 >[!Important]
-> A következő információk **csak** szükséges, ha egy hálózati virtuális készüléket (NVA), nem Azure-tűzfalat konfigurálni szeretné.
+> A következő információkra **csak** akkor van szükség, ha nem Azure Firewall hálózati virtuális berendezést (NVA) szeretne konfigurálni.
 
-Az előző útmutatás segít az Azure-tűzfal konfigurálása a HDInsight-fürtből származó kimenő forgalom korlátozása az. Az Azure tűzfal adatforgalom engedélyezéséhez számos fontos gyakori helyzetek konfigurálása automatikusan történik. Ha szeretne egy másik hálózati virtuális készüléket használja, manuálisan konfigurálnia a további funkciók számos kell. Vegye figyelembe, a következőket a konfigurálása a hálózati virtuális berendezések:
+Az előző utasítások segítséget nyújtanak Azure Firewall konfigurálásához a HDInsight-fürt kimenő forgalmának korlátozásához. A Azure Firewall automatikusan úgy van konfigurálva, hogy a gyakori fontos forgatókönyvek esetében lehetővé tegye a forgalmat. Ha másik hálózati virtuális készüléket szeretne használni, manuálisan kell konfigurálnia néhány további funkciót. Tartsa szem előtt az alábbiakat a hálózati virtuális berendezés konfigurálásakor:
 
-* A Szolgáltatásvégpontok szolgáltatásvégpont kompatibilis szolgáltatások kell konfigurálni.
-* IP-cím függőségek olyan nem HTTP/Https-forgalom (TCP és UDP-forgalom).
-* Az nva-n eszközt FQDN HTTP/HTTPS-végpontokat is kell elhelyezni.
-* Helyettesítő karaktert tartalmazó HTTP/HTTPS-végpontok függőségekkel, eltérőek lehetnek egy minősítők száma alapján.
-* Rendelje hozzá az útvonaltábla, amely a HDInsight-alhálózat létrehozása.
+* A szolgáltatási végponttal kompatibilis szolgáltatásokat a szolgáltatási végpontokkal kell konfigurálni.
+* Az IP-címek függőségei nem HTTP/S forgalomra vonatkoznak (TCP-és UDP-forgalom).
+* Az FQDN HTTP/HTTPS-végpontok a NVA-eszközön helyezhetők el.
+* A helyettesítő HTTP/HTTPS-végpontok olyan függőségek, amelyek számos minősítőtől függően változhatnak.
+* Rendelje hozzá a HDInsight-alhálózathoz létrehozott útválasztási táblázatot.
 
-### <a name="service-endpoint-capable-dependencies"></a>Képes a szolgáltatásvégpont-függőségek
+### <a name="service-endpoint-capable-dependencies"></a>Szolgáltatási végpontok számára alkalmas függőségek
 
 | **Végpont** |
 |---|
@@ -174,20 +174,20 @@ Az előző útmutatás segít az Azure-tűzfal konfigurálása a HDInsight-fürt
 | Azure Storage |
 | Azure Active Directory |
 
-#### <a name="ip-address-dependencies"></a>IP-cím függőségek
+#### <a name="ip-address-dependencies"></a>IP-címek függőségei
 
 | **Végpont** | **Részletek** |
 |---|---|
-| \*:123 | NTP az óra ellenőrzése. Forgalom be van jelölve, a porton 123 több végpontot |
-| IP-címek közzétett [Itt](hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) | Ezek a HDInsight szolgáltatás |
-| AAD-Címtárszolgáltatás privát IP-címek ESP-fürtök |
-| \*: Windows-aktiválás KMS 16800 |
-| \*a Log Analytics 12000 |
+| \*:123 | NTP órajel-ellenőrzési. A forgalom a 123-es porton több végponton van bejelölve |
+| [Itt](hdinsight-management-ip-addresses.md) közzétett IP-címek | Ezek a HDInsight szolgáltatás |
+| HRE – DS magánhálózati IP-címek ESP-fürtökhöz |
+| \*: 16800 KMS Windows-aktiváláshoz |
+| \*12000 Log Analytics |
 
-#### <a name="fqdn-httphttps-dependencies"></a>Teljes tartománynév HTTP/HTTPS-függőségek
+#### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS-függőségek
 
 >[!Important]
-> Az alábbi lista csupán néhány közül a legfontosabb teljes tartományneveket biztosít. A teljes listát a teljes tartománynevek konfigurálása az nva-t is igénybe [ebben a fájlban](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json).
+> Az alábbi lista csak néhányat ad a legfontosabb FQDN-nek. A NVA [ezen a fájlban](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)való konfigurálásához a teljes tartománynevek teljes listáját is beolvashatja.
 
 | **Végpont**                                                          |
 |---|
@@ -196,8 +196,8 @@ Az előző útmutatás segít az Azure-tűzfal konfigurálása a HDInsight-fürt
 | ocsp.msocsp.com:80                                                    |
 | ocsp.digicert.com:80                                                  |
 | wawsinfraprodbay063.blob.core.windows.net:443                         |
-| beállításjegyzék-1.docker.io:443                                              |
-| auth.docker.IO:443                                                    |
+| registry-1.docker.io:443                                              |
+| auth.docker.io:443                                                    |
 | production.cloudflare.docker.com:443                                  |
 | download.docker.com:443                                               |
 | us.archive.ubuntu.com:80                                              |
@@ -210,4 +210,4 @@ Az előző útmutatás segít az Azure-tűzfal konfigurálása a HDInsight-fürt
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure HDInsight virtuális hálózat architektúrája](hdinsight-virtual-network-architecture.md)
+* [Azure HDInsight virtuális hálózati architektúra](hdinsight-virtual-network-architecture.md)

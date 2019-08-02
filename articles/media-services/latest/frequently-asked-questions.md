@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services v3 – gyakori kérdések |} A Microsoft Docs
-description: Ez a cikk – gyakori kérdések az Azure Media Services v3 választ ad.
+title: Azure Media Services v3 – gyakori kérdések | Microsoft Docs
+description: Ez a cikk a Azure Media Services v3 gyakori kérdéseire ad választ.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,58 +11,64 @@ ms.workload: ''
 ms.topic: article
 ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: b060e2c8a7353dd8145ced8c6e89d9b666a4212c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 28b9c8f343437c20e277d2f3ba53767afa45a5c2
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703899"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501260"
 ---
-# <a name="media-services-v3-frequently-asked-questions"></a>A Media Services v3 – gyakori kérdések
+# <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 – gyakori kérdések
 
-Ez a cikk – gyakori kérdések az Azure Media Services (AMS) v3-as választ ad.
+Ez a cikk választ ad a Azure Media Services (AMS) v3 gyakori kérdésekre.
 
 ## <a name="general"></a>Általános
 
-### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Milyen Azure-szerepkörök művelet elvégezhető az Azure Media Services-erőforrások? 
+### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Milyen Azure-szerepkörök végezhetnek műveleteket Azure Media Services erőforrásokon? 
 
-Lásd: [szerepköralapú hozzáférés-vezérlés (RBAC) a Media Services-fiókok](rbac-overview.md).
+Lásd: [szerepköralapú hozzáférés-vezérlés (RBAC) Media Services fiókokhoz](rbac-overview.md).
 
-### <a name="how-do-i-configure-media-reserved-units"></a>Hogyan konfigurálhatom a Media szolgáltatás számára fenntartott egységeket?
+### <a name="how-do-i-configure-media-reserved-units"></a>Hogyan a Media szolgáltatás számára fenntartott egységek konfigurálása?
 
 A hangelemzés és videó elemzési feladatokat a Media Services v3 által aktivált vagy a Video Indexer azt javasoljuk 10 S3 szintű helyet a fiók kiépítése. Ha több mint 10 S3-helyet, nyisson meg egy támogatási jegyet a a [az Azure portal](https://portal.azure.com/).
 
-További információkért lásd: [méretezhető médiafeldolgozás a parancssori felület segítségével](media-reserved-units-cli-how-to.md).
+Részletekért lásd: [a médiafájlok feldolgozásának skálázása a CLI-vel](media-reserved-units-cli-how-to.md).
 
-### <a name="what-is-the-recommended-method-to-process-videos"></a>Mi az az ajánlott módszer a folyamat videókhoz?
+### <a name="what-is-the-recommended-method-to-process-videos"></a>Mi az ajánlott módszer a videók feldolgozására?
 
-Használat [alakítja át](https://docs.microsoft.com/rest/api/media/transforms) és videók elemzése gyakori feladatok konfigurálása. Minden egyes **átalakítása** egy módszereivel, vagy egy munkafolyamatot a video- és audiotartalmak fájlok feldolgozása kapcsolatos feladatokat ismerteti. A [feladat](https://docs.microsoft.com/rest/api/media/jobs) Media Services-tényleges kérés a alkalmazni a **átalakítása** egy adott a bemeneti videó vagy hang tartalomhoz. Az átalakítás létrehozása után küldhet feladatokat a Media Services API-k és az egyéb közzétett SDK-k használatával. További információt az [átalakításokkal és feladatokkal](transforms-jobs-concept.md) kapcsolatos cikkben olvashat.
+Az [átalakítások](https://docs.microsoft.com/rest/api/media/transforms) használatával konfigurálhatja a videók kódolására vagy elemzésére szolgáló gyakori feladatokat. Mindegyik **transzformáció** egy receptet vagy egy munkafolyamatot ír le, amely a videó-vagy hangfájlok feldolgozására használható. A [](https://docs.microsoft.com/rest/api/media/jobs) feladatnak az a tényleges kérése, hogy Media Services az **átalakítást** egy adott bemeneti videóra vagy hangtartalomra alkalmazza. Az átalakítás létrehozása után Media Services API-kkal vagy a közzétett SDK-kkal is elküldheti a feladatokat. További információt az [átalakításokkal és feladatokkal](transforms-jobs-concept.md) kapcsolatos cikkben olvashat.
 
 ### <a name="how-does-pagination-work"></a>Hogyan működik a tördelés?
 
-Tördelés használatakor mindig használjon a következő hivatkozás enumerálása a gyűjteményt, és nem függ egy adott oldal méretét. Részletek és példák: [szűrése, rendezése, lapozás](entities-overview.md).
+A tördelés használatakor mindig a következő hivatkozásra kell használnia a gyűjtemény számbavételéhez, és nem függ egy adott oldalméret méretétől. A részleteket és példákat lásd: [szűrés, rendezés, lapozás](entities-overview.md).
 
-### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Milyen funkciók még nem érhető el az Azure Media Services v3?
+### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Milyen funkciók még nem érhetők el a Azure Media Services v3 verzióban?
 
-További információkért lásd: [megállapodást v2 API-k hézagok funkció](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis).
+Részletekért lásd: a [szolgáltatás hiányosságainak a v2 API-k tekintetében](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis).
 
-### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Mi az a folyamat a Media Services-fiók áthelyezése előfizetések között?  
+### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Milyen folyamattal kell áthelyezni Media Services fiókot az előfizetések között?  
 
-További információkért lásd: [Media Services-fiókba az előfizetések közötti áthelyezése](media-services-account-concept.md).
+Részletekért lásd: [Media Services fiók áthelyezése](media-services-account-concept.md)az előfizetések között.
 
-## <a name="live-streaming"></a>Live streaming (Élő adatfolyam) 
+## <a name="live-streaming"></a>Élő közvetítés 
 
-###  <a name="how-to-insert-breaksvideos-and-image-slates-during-live-stream"></a>Hogyan szúrhat be a sortöréseket és videók és lemezkép befutók során élő streamet?
+###  <a name="how-to-insert-breaksvideos-and-image-slates-during-live-stream"></a>Szünetek/videók és képbeszúrások beillesztése az élő streambe
 
-A Media Services v3 valós idejű kódolás még nem támogatja beszúrása video- vagy képfájl befutók során élő streamet. 
+Media Services v3 élő kódolás még nem támogatja a videó vagy a képek beszúrását az élő adatfolyamban. 
 
-Használhat egy [élő helyszíni kódolót](recommended-on-premises-live-encoders.md) váltani a forrásvideókat. Számos alkalmazás lehetővé teszi, hogy váltson a forrásból, például Telestream Wirecast, váltó Studio (az iOS esetében), OBS Studio (ingyenes app) és sok más.
+A forrás videó átváltásához használhat egy [élő helyszíni kódolót](recommended-on-premises-live-encoders.md) . Számos alkalmazás lehetővé teszi a források váltását, beleértve a Wirecast, a Switching Studio (iOS), a OBS Studio (ingyenes alkalmazás) és sok más szolgáltatást.
 
 ## <a name="content-protection"></a>Tartalomvédelem
 
+### <a name="should-i-use-an-aes-128-clear-key-encryption-or-a-drm-system"></a>Használjon AES-128 titkosítatlan titkosítási vagy DRM-rendszer használatát?
+
+Ügyfeleink gyakran wonder, hogy használják inkább a AES-titkosítás vagy a DRM-rendszer. A két rendszer közötti elsődleges különbség az, hogy az AES-titkosítás a tartalmi kulcsot TLS-kapcsolaton keresztül továbbítja az ügyfélnek, így a kulcs továbbítása átvitel alatt áll, de további titkosítás nélkül ("Clear"). Ennek eredményeképpen a tartalom visszafejtéséhez használt kulcs elérhető az ügyfél számára, és az ügyfélen lévő hálózati nyomkövetésben is megtekinthető egyszerű szövegként. Az AES-128 Clear Key encryption olyan használati esetekben alkalmas, ahol a megjelenítő megbízható fél (például a vállalaton belül elosztott vállalati videók titkosítása az alkalmazottak számára).
+
+A DRM-rendszerek (például a PlayReady, a Widevine és a FairPlay) minden további titkosítási szintet biztosítanak a tartalom visszafejtéséhez használt kulcshoz képest egy AES-128 tiszta kulccsal szemben. A tartalmi kulcs titkosítása a DRM-futtatókörnyezet által védett kulcshoz történik, a TLS által biztosított átviteli szintű titkosítás további részében. Ezenkívül a visszafejtési az operációs rendszer szintjén, ahol nehezebb a támadásokkal szemben egy rosszindulatú felhasználó biztonságos környezetben történik. DRM ajánlott használati esetek, ahol a megjelenítő lehetséges, hogy nem egy megbízható entitás, és Ön a legmagasabb szintű biztonságot követelhetnek meg.
+
 ### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>Hogyan és hol érdemes a JWT jogkivonat beszerzése és a kérés licenc- vagy kulcs?
 
-1. Éles környezetben szüksége lesz egy Secure Token szolgáltatások (STS) (webszolgáltatás) amely JWT jogkivonatot egy HTTPS-kérés esetén. Tesztelési, használhatja a kód látható **GetTokenAsync** meghatározott metódus [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
+1. Éles környezetben olyan biztonságos jogkivonat-szolgáltatásokkal (STS) kell rendelkeznie, amely JWT-tokent ad a HTTPS-kérések esetén. Tesztelési, használhatja a kód látható **GetTokenAsync** meghatározott metódus [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
 2. Indítson egy, az STS-re, például egy jogkivonatot a felhasználó hitelesítése után, és rendelje hozzá a token értékeként Player kell. Használhatja a [az Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/).
 
 * Példa STS, futtatása vagy szimmetrikus vagy aszimmetrikus kulccsal, tekintse meg [ https://aka.ms/jwt ](https://aka.ms/jwt). 
@@ -72,31 +78,55 @@ Használhat egy [élő helyszíni kódolót](recommended-on-premises-live-encode
 
 A megfelelő módszer, hogy kihasználja az STS (Secure Token Service):
 
-STS attól függően, felhasználói profil hozzá más jogcímeket (például a "Prémium szintű felhasználó", "Alapszintű felhasználó", "Ingyenes próbaverzió felhasználó"). A különböző jogcímek a jwt-t a felhasználó megtekintheti a különböző tartalmát. Természetesen különböző tartalom eszköz, a ContentKeyPolicyRestriction rendelkezik a megfelelő RequiredClaims.
+Az STS-ben a felhasználói profiltól függően adjon hozzá különböző jogcímeket (például a "prémium szintű felhasználó", az "alapszintű felhasználó", az "ingyenes próbaverzió felhasználója"). A különböző jogcímek a jwt-t a felhasználó megtekintheti a különböző tartalmát. Természetesen különböző tartalom eszköz, a ContentKeyPolicyRestriction rendelkezik a megfelelő RequiredClaims.
 
-Használja az Azure Media Services API-k konfigurálása/licenckulcs kézbesítési és az eszközök titkosítása (ahogyan az [ezt a mintát](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)).
+Azure Media Services API-k használatával konfigurálhatja a licencek/kulcsok küldését és titkosíthatja az adategységeket (ahogy az [ebben](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)a mintában is látható).
 
 További információkért lásd:
 
 - [A tartalomvédelem áttekintése](content-protection-overview.md)
 - [Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése](design-multi-drm-system-with-access-control.md)
 
-## <a name="media-services-v2-vs-v3"></a>A Media Services v2 és v3 
+### <a name="http-or-https"></a>A HTTP vagy HTTPS?
+Az ASP.NET MVC-lejátszóalkalmazás támogatnia kell a következőket:
 
-### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Az Azure portal használatával v3-erőforrások kezelése?
+* Felhasználó hitelesítése az Azure AD, amely HTTPS alatt található.
+* JWT exchange, az ügyfél és a HTTPS alatt álló Azure AD között.
+* DRM-licenc beszerzése az ügyfél, amely a HTTPS alá kell tartoznia, ha a Media Services által biztosított licencekkel történő kézbesítés. A PlayReady termékcsomag nem határozza meg, hogy HTTPS licencekkel történő kézbesítés számára. Ha a PlayReady-licenc kiszolgálón kívül a Media Services, HTTP vagy HTTPS is használhatja.
+
+Az ASP.NET-lejátszóalkalmazás a HTTPS, ajánlott eljárásként használja, így a Media Player alatt HTTPS oldalon szerepel. Azonban HTTP, figyelembe kell vennie a probléma a vegyes tartalom nem előnyben részesített streameléshez.
+
+* A böngésző nem engedélyezi a vegyes tartalom. De modulok, a Silverlight beépülő modul OSMF smooth és kötőjel engedélyezhető. A vegyes tartalom egyik biztonsági szempont, a rosszindulatú JavaScript, okozhat a vásárlói adatokat veszélyben új funkció lehetővé teszi a fenyegetés miatt. Böngészők alapértelmezés szerint ez a funkció letiltása. Az egyetlen megoldás módja a kiszolgáló (forrás) oldalán azáltal, hogy minden tartomány (függetlenül a HTTPS vagy HTTP). Ez a valószínűleg nem célszerű vagy.
+* A vegyes tartalom elkerülése érdekében. A lejátszóalkalmazás és a Media Player HTTP vagy HTTPS PROTOKOLLT kell használnia. A vegyes tartalom lejátszása, a silverlightSS tech kell rendelkeznie a vegyes tartalom figyelmeztetés törlése. A flashSS tech kezeli a vegyes tartalom vegyes tartalmú figyelmeztetés nélkül.
+* Ha a tartalomstreameléshez használt streamvégpont 2014. augusztus előtt jött létre, azt nem támogatja a HTTPS. Ebben az esetben létrehozhat, és egy új streamvégpont használhat HTTPS-hez.
+
+### <a name="what-about-live-streaming"></a>Mi a helyzet élő adások online közvetítése?
+
+Pontosan azonos megtervezését és megvalósítását segítségével megvédheti az élő streamelés a Media Services szolgáltatásban való kezelésével VOD eszközként program társított adategységet. Az élő tartalom több DRM elleni védelmének biztosításához alkalmazza ugyanazt a telepítést/feldolgozást az eszközre, mintha egy VOD-eszköz lenne, mielőtt az eszközt az élő kimenethez társítja.
+
+### <a name="what-about-license-servers-outside-media-services"></a>Mi a helyzet licenckiszolgálókat kívül a Media Services?
+
+Gyakran ügyfelek befektetni licenc kiszolgálófarm vagy a saját adatközpontban vagy egy DRM szolgáltató felhője. A Media Services content protection esetében működhet a hibrid üzemmódot. Tartalom is üzemeltetett és dinamikusan a Media Services szolgáltatásban védett, míg DRM-licencek kívül a Media Services-kiszolgálók által lépnek. Ebben az esetben fontolja meg a következő módosításokat:
+
+* STS kell elfogadható és a licenc kiszolgálófarm által ellenőrzött jogkivonatokat kibocsátani. A Widevine-licenc Axinom által biztosított kiszolgálók például egy adott JWT-jogosultság üzenetet tartalmazó igényelnek. Ezért szüksége lesz az STS szolgáltatással kiadására ilyen jwt-t. 
+* Már nincs szüksége a Media Services licenctovábbítási szolgáltatása konfigurálása. Meg kell adnia a licenc licenckérési URL-címek (a PlayReady, Widevine és FairPlay) ContentKeyPolicies konfigurálása során.
+
+## <a name="media-services-v2-vs-v3"></a>Media Services v2 vs v3 
+
+### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Használhatom a Azure Portal a v3-erőforrások kezeléséhez?
 
 Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](media-services-apis-overview.md#sdks).
 
-### <a name="is-there-an-assetfile-concept-in-v3"></a>Van egy AssetFile fogalma a v3-as?
+### <a name="is-there-an-assetfile-concept-in-v3"></a>Létezik AssetFile-koncepció a v3-as verzióban?
 
-A AssetFiles annak érdekében, hogy a Media Services elkülönítése Storage SDK-függőség eltávolítása az AMS API-ból. Most már tárolási, nem a Media Services, Storage-ban tartja az információ, amelyhez tartozik. 
+A AssetFiles el lettek távolítva az AMS API-ból, hogy el lehessen különíteni a Media Services a Storage SDK-függőségtől. Most a Storage, nem Media Services, megtartja a tárolóban található adatokat. 
 
-További információkért lásd: [áttelepítése a Media Services v3](migrate-from-v2-to-v3.md).
+További információ: Migrálás [Media Services v3](migrate-from-v2-to-v3.md)-ra.
 
-### <a name="where-did-client-side-storage-encryption-go"></a>Hová tűntek a storage ügyféloldali titkosítását?
+### <a name="where-did-client-side-storage-encryption-go"></a>Hol található az ügyféloldali tároló-titkosítás?
 
-Most már a kiszolgálóoldali tártitkosítás (amely alapértelmezés szerint be van kapcsolva) használata ajánlott. További információkért lásd: [Azure Storage Service Encryption az inaktív adatok](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+Javasoljuk, hogy használja a kiszolgálóoldali tároló-titkosítást (amely alapértelmezés szerint be van kapcsolva). További információ: [Azure Storage Service encryption for](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)inaktív adatok.
 
 ## <a name="next-steps"></a>További lépések
 
-[Media Services v3 áttekintése](media-services-overview.md)
+[Media Services v3 – áttekintés](media-services-overview.md)

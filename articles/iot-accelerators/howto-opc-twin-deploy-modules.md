@@ -1,6 +1,6 @@
 ---
-title: OPC Ikereszköz modul üzembe helyezése az Azure-ban teljesen új |} A Microsoft Docs
-description: Hogyan helyezheti üzembe az OPC-Twin sablon nélkül.
+title: Az OPC Twin modul üzembe helyezése az Azure-ban a semmiből | Microsoft Docs
+description: Az OPC-Twin üzembe helyezése az alapoktól.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 798f087c260b6b0a1efc366b864fe2bb7bce732e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: df1dd45d58baf82710b5e362afaf055aad140b98
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603702"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302644"
 ---
-# <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Ikereszköz modul és függőségei előzmények üzembe helyezése
+# <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Twin modul és függőségek üzembe helyezése a semmiből
 
-Az OPC-Twin-modul az IoT Edge-ben fut, és számos biztonsági szolgáltatások az OPC-ikereszközön és beállításjegyzék-szolgáltatásokhoz biztosít. 
+Az OPC Twin modul IoT Edge fut, és több peremhálózati szolgáltatást biztosít az OPC-eszközök Twin és a Registry Services számára. 
 
-Több lehetőség-modulok üzembe helyezéséhez a [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) átjárót, többek között
+Több lehetőség is van a modulok üzembe helyezésére a [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) -átjárón, köztük
 
-- [Az Azure Portalon az IoT Edge panelről üzembe helyezése](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal)
-- [AZ parancssori felület használata](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor-cli)
+- [Üzembe helyezés a Azure Portal IoT Edge paneljéről](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal)
+- [Üzembe helyezés AZ AZ CLI használatával](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor-cli)
 
 > [!NOTE]
-> Üzembe helyezés részleteit és az utasítások további információkért lásd: a GitHub [tárház](https://github.com/Azure/azure-iiot-components).
+> Az üzembe helyezés részleteiről és az utasításokról a GitHub- [tárházban](https://github.com/Azure/azure-iiot-components)talál további információt.
 
 ## <a name="deployment-manifest"></a>Üzembehelyezési jegyzék
 
-Minden modul egy manifest nasazení használatával helyezi üzembe.  Egy példa jegyzékének mindkettőt üzembe helyezheti [az OPC-közzétevő](https://github.com/Azure/iot-edge-opc-publisher) és [OPC Ikereszköz](https://github.com/Azure/azure-iiot-opc-twin-module) alább találja.
+Az összes modul központi telepítési jegyzékfájl használatával van telepítve.  Alább látható egy példa az [OPC-közzétevő](https://github.com/Azure/iot-edge-opc-publisher) és az [OPC Twin](https://github.com/Azure/azure-iiot-opc-twin-module) üzembe helyezésére.
 
 ```json
 {
@@ -105,35 +105,35 @@ Minden modul egy manifest nasazení használatával helyezi üzembe.  Egy példa
 }
 ```
 
-## <a name="deploying-from-azure-portal"></a>Az Azure Portalról üzembe helyezése
+## <a name="deploying-from-azure-portal"></a>Üzembe helyezés Azure Portal
 
-A modulok üzembe helyezése az Azure IoT Edge-átjáróeszköz legegyszerűbben az Azure Portalon keresztül.  
+A modulok Azure IoT Edge átjáró eszközre történő központi telepítésének legegyszerűbb módja a Azure Portal.  
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-1. Az OPC-Twin üzembe [függőségek](howto-opc-twin-deploy-dependencies.md) és az eredményül kapott `.env` fájlt. Vegye figyelembe az üzembe helyezett `hub name` , a `PCS_IOTHUBREACT_HUB_NAME` változót a létrejövő `.env` fájlt.
+1. Telepítse az OPC Twin [](howto-opc-twin-deploy-dependencies.md) -függőségeket, és `.env` szerezte be az eredményül kapott fájlt. Figyelje meg a `PCS_IOTHUBREACT_HUB_NAME` változó `hub name` üzembe helyezését az eredményül `.env` kapott fájlban.
 
-2. Regisztráljon, és indítsa el a [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) vagy [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge-átjáró, és jegyezze fel annak `device id`.
+2. Regisztráljon és indítson el egy [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) -vagy [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge `device id`-átjárót, és jegyezze fel.
 
-### <a name="deploy-to-an-edge-device"></a>Edge-eszköz üzembe helyezése
+### <a name="deploy-to-an-edge-device"></a>Üzembe helyezés peremhálózati eszközön
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) , és keresse meg az IoT hubot.
 
-2. Válassza ki **IoT Edge** elemet a bal oldali menüben.
+2. A bal oldali menüben válassza a **IoT Edge** lehetőséget.
 
 3. Kattintson az eszközök a listából a célként megadott eszköz Azonosítóját.
 
 4. Válassza a **Modulok beállítása** lehetőséget.
 
-5. Az a **üzembe helyezési modulok** című oldalon válassza **Hozzáadás** és **IoT Edge-modul.**
+5. A lap **központi telepítési modulok** szakaszában válassza a **Hozzáadás** és **IoT Edge modul elemet.**
 
-6. Az a **IoT Edge-modul egyéni** párbeszédpanel használata `opctwin` , a modul neve, majd adja meg a tároló *kép URI* ,
+6. A **IoT Edge egyéni modul** párbeszédpanelen használja `opctwin` a modul nevét, majd adja meg a tároló rendszerképének *URI-ját*
 
    ```bash
    mcr.microsoft.com/iotedge/opc-twin:latest
    ```
 
-   Mint *lehetőségei* használja a következő JSON-ra:
+   A *tároló létrehozása lehetőségnél*használja a következő JSON-t:
 
    ```json
    {"NetworkingConfig": {"EndpointsConfig": {"host": {}}}, "HostConfig": {"NetworkMode": "host" }}
@@ -141,48 +141,48 @@ A modulok üzembe helyezése az Azure IoT Edge-átjáróeszköz legegyszerűbben
 
    Töltse ki az opcionális mezőket, ha szükséges. További információ a tároló-létrehozási beállítások, újraindítási szabályzata, és tekintse meg a kívánt állapot [EdgeAgent kívánt tulajdonságok](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub#edgeagent-desired-properties). További információ az ikermodul: [meghatározása vagy a frissítés kívánt tulajdonságok](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties).
 
-7. Válassza ki **mentése** , és ismételje meg **5**.  
+7. Válassza a **Mentés** lehetőséget, és ismételje meg az **5**. lépést  
 
-8. Használja az IoT Edge-modul egyéni párbeszédpanelen `opcpublisher` a modul és a tároló számára *kép URI* , 
+8. A IoT Edge egyéni modul párbeszédpanelen használja `opcpublisher` a modul nevét és a tároló rendszerképének URI- *ját* 
 
    ```bash
    mcr.microsoft.com/iotedge/opc-publisher:latest
    ```
 
-   Mint *lehetőségei* használja a következő JSON-ra:
+   A *tároló létrehozása lehetőségnél*használja a következő JSON-t:
 
    ```json
    {"Hostname":"publisher","Cmd":["publisher","--pf=./pn.json","--di=60","--to","--aa","--si=0","--ms=0"],"ExposedPorts":{"62222/tcp":{}},"HostConfig":{"PortBindings":{"62222/tcp":[{"HostPort":"62222"}] }}}
    ```
 
-9. Válassza ki **mentése** , majd **tovább** továbbra is az útvonalak szakaszban.
+9. Válassza a **Mentés** lehetőséget **, majd kattintson** a Tovább gombra az útvonalak szakaszhoz.
 
-10. Az útvonalak lapon illessze be a következő 
+10. Az útvonalak lapon illessze be a következőt: 
 
     ```json
     {
       "routes": {
-        "opctwinToIoTHub": "FROM /messages/modules/opctwin/outputs/* INTO $upstream",
-        "opcpublisherToIoTHub": "FROM /messages/modules/opcpublisher/outputs/* INTO $upstream"
+        "opctwinToIoTHub": "FROM /messages/modules/opctwin/* INTO $upstream",
+        "opcpublisherToIoTHub": "FROM /messages/modules/opcpublisher/* INTO $upstream"
       }
     }
     ```
 
-    Válassza ki **tovább**
+    és válassza a **tovább** lehetőséget.
 
-11. Tekintse át a telepítési adatokat, és a jegyzékfájl.  A fenti manifest nasazení hasonlónak kell lennie.  Válassza ki **elküldése**.
+11. Tekintse át az üzembe helyezési adatokat és a jegyzékfájlt.  A fenti üzembe helyezési jegyzékhez hasonlóan kell kinéznie.  Válassza ki **elküldése**.
 
 12. Miután telepítette a modulokat az eszközön, megtekintheti azokat a **eszközadatok** a portál. Ezen a lapon minden egyes telepített modul, valamint a hasznos információk, például a központi telepítési állapot és a kilépési kód nevét jeleníti meg.
 
-## <a name="deploying-using-azure-cli"></a>Üzembe helyezése az Azure CLI használatával
+## <a name="deploying-using-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-1. Telepítse a legújabb verzióját a [Azure parancssori felület (AZ)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) a [Itt](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+1. Telepítse az [Azure Command Line Interface (az)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) legújabb verzióját [innen.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ### <a name="quickstart"></a>Első lépések
 
-1. Az a fenti telepítési a jegyzék mentése egy `deployment.json` fájlt.  
+1. Mentse a fenti telepítési jegyzéket egy `deployment.json` fájlba.  
 
 2. A következő parancsot használja a alkalmazni a konfigurációt egy IoT Edge-eszközön:
 
@@ -190,7 +190,7 @@ A modulok üzembe helyezése az Azure IoT Edge-átjáróeszköz legegyszerűbben
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content ./deployment.json
    ```
 
-   A `device id` paraméter a kis-és nagybetűket. A tartalom paraméter mutat az üzembe helyezés manifest mentett fájlt. 
+   A `device id` paraméter megkülönbözteti a kis-és nagybetűket. A tartalom paraméter mutat az üzembe helyezés manifest mentett fájlt. 
     ![az IoT Edge set-modules output](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
 
 3. Miután telepítette a modulokat az eszközön, megtekintheti azokat a következő paranccsal:
@@ -199,11 +199,11 @@ A modulok üzembe helyezése az Azure IoT Edge-átjáróeszköz legegyszerűbben
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-   Az eszköz azonosító paraméter értéke a kis-és nagybetűket. ![az iot hub modul-identity list kimeneti](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
+   A Device ID paraméter megkülönbözteti a kis-és nagybetűket. ![az iot hub modul-identity list kimeneti](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulhatta, hogyan helyezhet üzembe az OPC-Twin teljesen új, Íme a javasolt következő lépésre:
+Most, hogy megtanulta, hogyan helyezhet üzembe az OPC Twin-et, itt látható a következő lépés:
 
 > [!div class="nextstepaction"]
-> [Az OPC-Ikereszköz egy meglévő projekt üzembe helyezése](howto-opc-twin-deploy-existing.md)
+> [Az OPC Twin üzembe helyezése egy meglévő projektben](howto-opc-twin-deploy-existing.md)

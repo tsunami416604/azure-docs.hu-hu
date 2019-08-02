@@ -1,6 +1,6 @@
 ---
-title: Fejlesztés a v3 API-k – Azure |} A Microsoft Docs
-description: Ez a cikk ismerteti a szabályokat, amelyek a alkalmazni az entitások és API-k, a Media Services v3 fejlesztése során.
+title: Fejlesztés a V3 API-kkal – Azure | Microsoft Docs
+description: Ez a cikk azokat a szabályokat ismerteti, amelyek az entitásokra és API-kra vonatkoznak, amikor Media Services v3-val fejlesztenek.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,61 +9,61 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a8dac6f38052f176c7a3741a664e174d0a66cbc5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 26fea4322df625b2e38028a3b7121fb41f2acf81
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612699"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311860"
 ---
-# <a name="developing-with-media-services-v3-apis"></a>Fejlesztés a Media Services v3 API-k
+# <a name="developing-with-media-services-v3-apis"></a>Fejlesztés Media Services V3 API-kkal
 
-A fejlesztők is használhatja a Media Services [REST API-val](https://aka.ms/ams-v3-rest-ref) vagy klienskódtárak, amelyek lehetővé teszik a REST API használatával hozhat létre egyszerűen, kezelésére és karbantartására használható egyéni multimédiás munkafolyamatokat. A [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API az OpenAPI-specifikáció (korábbi nevén Swagger) alapul.
+Fejlesztőként Media Services [REST API](https://aka.ms/ams-v3-rest-ref) vagy ügyféloldali kódtárakat használhat, amelyek lehetővé teszik az REST API használatát az egyéni adathordozó-munkafolyamatok egyszerű létrehozásához, kezeléséhez és karbantartásához. Az [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API a OpenAPI-specifikáción alapul (korábbi nevén a hencegés).
 
-Ez a cikk ismerteti a szabályokat, amelyek a alkalmazni az entitások és API-k, a Media Services v3 fejlesztése során.
+Ez a cikk azokat a szabályokat ismerteti, amelyek az entitásokra és API-kra vonatkoznak, amikor Media Services v3-val fejlesztenek.
 
-## <a name="accessing-the-azure-media-services-api"></a>Az Azure Media Services API elérése
+## <a name="accessing-the-azure-media-services-api"></a>A Azure Media Services API elérése
 
-Azt, hogy a Media Services-erőforrások és a Media Services API eléréséhez, akkor először hitelesíteni kell. A Media Services támogatja a [Azure Active Directory (Azure AD)-alapú](../../active-directory/fundamentals/active-directory-whatis.md) hitelesítést. Két gyakori hitelesítési lehetőségek közül választhat:
+A Media Services erőforrások és a Media Services API elérésének engedélyezéséhez először hitelesítenie kell magát. Media Services támogatja a [Azure Active Directory (Azure ad)-alapú](../../active-directory/fundamentals/active-directory-whatis.md) hitelesítést. Két gyakori hitelesítési lehetőség a következők:
  
-* **Egyszerű szolgáltatásnév hitelesítése** – szolgáltatás hitelesítéséhez használatos (például: web apps, a függvényalkalmazások, a logic apps, API és mikroszolgáltatás-alapú). Ezt a hitelesítési módszert gyakran használó alkalmazások olyan alkalmazások, amelyeket démonszolgáltatásokat, a középső rétegű services vagy az ütemezett feladatok futtatásához. Például webes alkalmazások nem mindig kell egy középső rétegbeli, amely a Media Services az egyszerű szolgáltatás csatlakozik.
-* **Felhasználói hitelesítés** – az a személy, aki használja az alkalmazást az való kommunikációhoz a Media Services-erőforrások hitelesítéséhez. Az interaktív alkalmazást először kell kérni a felhasználót, a felhasználói hitelesítő adatokat. Ilyen például, a kódolási feladatok figyelésére, vagy az élő adások online közvetítése jogosult felhasználók által használt felügyeleti konzolalkalmazást.
+* **Egyszerű szolgáltatás hitelesítése** – szolgáltatás hitelesítéséhez (például Web Apps, Function apps, Logic apps, API és a Service). A hitelesítési módszert gyakran használó alkalmazások olyan alkalmazások, amelyek a Daemon Services, a közepes szintű szolgáltatások vagy az ütemezett feladatok futtatására szolgálnak. Webalkalmazások esetén például mindig olyan közepes rétegnek kell lennie, amely egy egyszerű szolgáltatással csatlakozik Media Serviceshoz.
+* **Felhasználói hitelesítés** – az alkalmazást használó személy hitelesítésére használható Media Services erőforrásokkal való kommunikációhoz. Az interaktív alkalmazásnak először meg kell kérnie a felhasználót a felhasználó hitelesítő adatainak megadására. Erre példa egy olyan felügyeleti konzol alkalmazás, amelyet a jogosultsággal rendelkező felhasználók a kódolási feladatok és az élő adatfolyamok figyelésére használnak.
 
-A Media Services API megköveteli, hogy a felhasználó vagy alkalmazás a REST API-t kér a Media Services-fiók erőforrás hozzáférése, és használja a **közreműködői** vagy **tulajdonosa** szerepkör. Az API az elérhető lesz a **olvasó** azonban csak a szerepkör **első** vagy **lista**   művelet elérhető lesz. További információkért lásd: [szerepköralapú hozzáférés-vezérlés a Media Services-fiókok](rbac-overview.md).
+A Media Services API megköveteli, hogy a REST API kérelmeket készítő felhasználó vagy alkalmazás hozzáférhessen a Media Services fiók erőforrásához, és használjon **közreműködői** vagy **tulajdonosi** szerepkört. Az API-t az **olvasó** szerepkörrel lehet elérni, de csak a **Get** vagy a **List**   művelet lesz elérhető. További információ: Media Services- [fiókok szerepköralapú hozzáférés-vezérlése](rbac-overview.md).
 
-Egyszerű szolgáltatás létrehozása helyett érdemes lehet felügyelt identitások az Azure-erőforrások eléréséhez a Media Services API Azure Resource Manageren keresztül. Az Azure-erőforrások felügyelt identitások kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md).
+Egyszerű szolgáltatásnév létrehozása helyett érdemes lehet felügyelt identitásokat használni az Azure-erőforrásokhoz az Media Services API Azure Resource Manager használatával való eléréséhez. Az Azure-erőforrások felügyelt identitásával kapcsolatos további tudnivalókért tekintse meg a [Mi az Azure-erőforrások felügyelt identitása](../../active-directory/managed-identities-azure-resources/overview.md)című témakört.
 
-### <a name="azure-ad-service-principal"></a>Az Azure AD-szolgáltatásnév 
+### <a name="azure-ad-service-principal"></a>Azure AD egyszerű szolgáltatás 
 
-Hoz létre egy Azure AD-alkalmazás és szolgáltatás egyszerű, ha az alkalmazásnak a saját bérlőben legyen. Miután létrehozta az alkalmazást, adjon az alkalmazásnak **közreműködői** vagy **tulajdonos** a Media Services-fiók eléréséhez. 
+Ha Azure AD-alkalmazást és egyszerű szolgáltatásnevet hoz létre, akkor az alkalmazásnak saját bérlőn kell lennie. Az alkalmazás létrehozása után adja meg az alkalmazás **közreműködői** vagy tulajdonosi **** szerepkörének hozzáférését az Media Services fiókhoz. 
 
-Ha nem biztos abban, hogy rendelkezik-e engedélyekkel hozzon létre egy Azure AD-alkalmazást, lásd: [szükséges engedélyek](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+Ha nem biztos abban, hogy rendelkezik-e engedéllyel Azure AD-alkalmazás létrehozásához, tekintse meg a [szükséges engedélyeket](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
-Az alábbi ábrán a számok jelölik a folyamatot a kérelmek időrendi sorrendben:
+A következő ábrán a számok kronológiai sorrendben jelenítik meg a kérelmek folyamatát:
 
-![Középső rétegbeli alkalmazásokhoz](./media/use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
+![Közepes szintű alkalmazások](./media/use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
 
-1. A középső rétegű alkalmazás, amely a következő paraméterekkel rendelkezik az Azure AD hozzáférési jogkivonatot kér:  
+1. A középső rétegbeli alkalmazás olyan Azure AD hozzáférési jogkivonatot kér, amely a következő paraméterekkel rendelkezik:  
 
-   * Az Azure AD-bérlő végpont.
-   * Media Services-erőforrás URI-t.
-   * Erőforrás-URI REST Media Services.
-   * Az Azure AD-alkalmazás értékeire: az ügyfél-Azonosítóját és ügyfélkulcsát.
+   * Azure AD-bérlői végpont.
+   * Media Services erőforrás URI-ja.
+   * A REST Media Services erőforrás-URI-ja.
+   * Azure AD-alkalmazás értékei: az ügyfél-azonosító és az ügyfél titka.
    
-   A szükséges értékek lekéréséhez lásd: [hozzáférés az Azure Media Services API az Azure CLI-vel](access-api-cli-how-to.md)
+   Az összes szükséges érték beszerzéséhez tekintse meg [Az Azure CLI-vel való hozzáférés Azure Media Services API-val](access-api-cli-how-to.md) című témakört.
 
-2. Az Azure AD hozzáférési jogkivonatot a középső réteg küld.
-4. A középső réteg kérést küld az Azure Media REST API az Azure AD-jogkivonattal.
-5. A középső réteg vissza az adatok lekérése a Media Services.
+2. Az Azure AD hozzáférési jogkivonatot a középső szinten küldik el.
+4. A középső szintű kérelem küldése az Azure Media REST API az Azure AD-jogkivonattal.
+5. A középső szinten a Media Services származó adatok kerülnek vissza.
 
 ### <a name="samples"></a>Példák
 
-Tekintse meg a következő példák azt mutatják be, hogyan csatlakozhat az Azure AD-szolgáltatásnév:
+Tekintse meg a következő mintákat, amelyek bemutatják, hogyan csatlakozhat az Azure AD egyszerű szolgáltatásához:
 
-* [Csatlakozás a REST segítségével](media-rest-apis-with-postman.md)  
+* [Kapcsolódás a REST-tel](media-rest-apis-with-postman.md)  
 * [Kapcsolódás Javával](configure-connect-java-howto.md)
 * [Kapcsolódás .NET-tel](configure-connect-dotnet-howto.md)
 * [Kapcsolódás Node.js-sel](configure-connect-nodejs-howto.md)
@@ -75,35 +75,41 @@ Az Azure Media Services v3 erőforrásneveire is (pl. Adategység, Feladatok, Á
 
 A Media Services-erőforrás neve nem tartalmazhatja a következőket: "<", ">", "%", "&", ': ','&#92;','?', '/', "*", "+",".", szimpla idézőjel vagy bármely egyéb vezérlőkarakter. Minden egyéb karakter engedélyezett. Az erőforrásnév maximális hossza 260 karakter. 
 
-Azure Resource Manager elnevezésével kapcsolatos további információkért lásd: [Elnevezési követelményeknek](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) és [elnevezési konvenciók](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
+A Azure Resource Manager elnevezéssel kapcsolatos további információkért lásd: [Elnevezési követelmények](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) és [elnevezési konvenciók](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
-## <a name="long-running-operations"></a>Hosszú ideig futó műveletek
+## <a name="long-running-operations"></a>Hosszan futó műveletek
 
-A műveletek jelölése `x-ms-long-running-operation` az Azure Media Services [swagger-fájlok](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) hosszú futó műveletek. 
+A Azure Media Services hencegő `x-ms-long-running-operation` fájlokban megjelölt [](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) műveletek hosszú ideig futó műveletek. 
 
-Az Azure aszinkron műveletek követése kapcsolatos részletekért lásd: [aszinkron műveletek](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
+Az aszinkron Azure-műveletek nyomon követésével kapcsolatos részletekért lásd: [aszinkron műveletek](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
 
-A Media Services a következő hosszú ideig futó műveleteket tartalmazza:
+Media Services a következő hosszan futó műveletekkel rendelkezik:
 
-* Létrehozása videókhoz
-* Frissítés videókhoz
-* Törölje a videókhoz
-* Indítsa el a videókhoz
-* Állítsa le a videókhoz
-* Visszaállítás videókhoz
-* LiveOutput létrehozása
-* Delete LiveOutput
-* Streamvégpontok létrehozása
-* Streamvégpontok frissítése
-* Streamvégpontok törlése
-* Start Streamvégpontok
-* Streamvégpontok leállítása
-* Méretezési csoport Streamvégpontok
+* [Élő események létrehozása](https://docs.microsoft.com/rest/api/media/liveevents/create)
+* [Élő események frissítése](https://docs.microsoft.com/rest/api/media/liveevents/update)
+* [Élő esemény törlése](https://docs.microsoft.com/rest/api/media/liveevents/delete)
+* [Élő esemény indítása](https://docs.microsoft.com/rest/api/media/liveevents/start)
+* [LiveEvent leállítása](https://docs.microsoft.com/rest/api/media/liveevents/stop)
+
+  `removeOutputsOnStop` A paraméter használatával törölje az összes társított élő kimenetet az esemény leállításakor.  
+* [LiveEvent alaphelyzetbe állítása](https://docs.microsoft.com/rest/api/media/liveevents/reset)
+* [LiveOutput létrehozása](https://docs.microsoft.com/rest/api/media/liveevents/create)
+* [LiveOutput törlése](https://docs.microsoft.com/rest/api/media/liveevents/delete)
+* [Streamvégpontok létrehozása](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)
+* [Streamvégpontok frissítése](https://docs.microsoft.com/rest/api/media/streamingendpoints/update)
+* [Streamvégpontok törlése](https://docs.microsoft.com/rest/api/media/streamingendpoints/delete)
+* [Streamvégpontok elindítása](https://docs.microsoft.com/rest/api/media/streamingendpoints/start)
+* [Streamvégpontok leállítása](https://docs.microsoft.com/rest/api/media/streamingendpoints/stop)
+* [Streamvégpontok skálázása](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
+
+A hosszú művelet sikeres beadásakor a rendszer "202 elfogadva" értéket kap, és a visszaadott művelet AZONOSÍTÓjának használatával kell lekérdezni a művelet befejezését.
+
+Egy adott élő esemény vagy bármely hozzá tartozó élő kimenet esetében csak egy hosszan futó művelet támogatott. Az indítás után a hosszú ideig futó műveletnek meg kell felelnie, mielőtt egy későbbi, hosszan futó műveletet elindítson ugyanazon a LiveEvent vagy a kapcsolódó élő kimeneteken. Több élő kimenettel rendelkező élő események esetén várnia kell egy hosszú ideig futó művelet befejezését egy élő kimeneten, mielőtt a hosszú ideig futó műveletet aktivál egy másik élő kimeneten. 
 
 ## <a name="sdks"></a>SDK-k
 
 > [!NOTE]
-> Az Azure Media Services v3 SDK-k nem szálbiztos garantáltan. Ha több szálon futó alkalmazás fejlesztése, hozzá kell adnia a saját szál szinkronizálási logika az ügyfél védelméről, vagy használjon egy új AzureMediaServicesClient objektum szálanként. Is kell óvatos, ha az ügyfél (például egy HttpClient-példányt .NET) kódját által biztosított választható objektumok által bevezetett többszálas problémákat.
+> A Azure Media Services v3 SDK-k nem garantáltak, hogy a szál biztonságos. Többszálas alkalmazások fejlesztésekor saját szál-szinkronizálási logikát kell hozzáadnia az ügyfél védeleméhez, vagy a szálon egy új AzureMediaServicesClient objektumot kell használnia. Ügyeljen arra, hogy a kód által az ügyfélnek (például egy .NET-HttpClient-példány) származó opcionális objektumok által bevezetett többszálas problémák is körültekintőek legyenek.
 
 |SDK|Hivatkozás|
 |---|---|
@@ -116,22 +122,22 @@ A Media Services a következő hosszú ideig futó műveleteket tartalmazza:
 
 ### <a name="see-also"></a>Lásd még
 
-- [EventGrid .NET SDK-t, amely tartalmazza a Media Services-események](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
-- [A Media Services-események definíciók](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
+- [A Media Service-eseményeket tartalmazó EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
+- [Media Services események definíciói](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
 
 ## <a name="azure-media-services-explorer"></a>Azure Media Services Explorer
 
-[Az Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) egy olyan eszköz, amely számára szeretne további tudnivalók a Media Services Windows-ügyfelek számára érhető el. AMSE egy Winforms /C# feltöltése, letöltése, kódolás, VOD-adatfolyam és tartalmat a Media Services élő alkalmazás. Az AMSE eszköz olyan ügyfelek, akik a Media Services teszteléséhez kód írása nélkül. Az AMSE kódot szeretne kifejleszteni a Media Services használatával ügyfeleink biztosítunk erőforrásként.
+[Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) A (AMSE) eszköz olyan Windows-ügyfelek számára érhető el, akik szeretnének többet megtudni a Media Servicesról. A AMSE egy WinForms/C# alkalmazás, amely feltölti, letölti, kódolja, TOVÁBBÍTJA a VOD-t és az élő tartalmakat Media Services. A AMSE eszköz olyan ügyfelek számára készült, akik kód írása nélkül szeretnék tesztelni Media Services. A AMSE-kód olyan ügyfelek számára biztosít erőforrásként, akik Media Serviceskal szeretnének fejleszteni.
 
-AMSE, egy nyílt forráskódú projektje, a Közösség által biztosított támogatás (problémák jelenteni lehet https://github.com/Azure/Azure-Media-Services-Explorer/issues). A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik. További információ: a [Gyakori](https://opensource.microsoft.com/codeofconduct/faq/) , vagy forduljon opencode@microsoft.com a további kérdéseit és észrevételeit.
+A AMSE egy nyílt forráskódú projekt, amely a Közösség által biztosított támogatással kapcsolatos https://github.com/Azure/Azure-Media-Services-Explorer/issues). A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik. További információkért tekintse meg [](https://opensource.microsoft.com/codeofconduct/faq/) a viselkedési szabályzatot, opencode@microsoft.com vagy forduljon a további kérdésekhez vagy megjegyzésekhez.
 
-## <a name="filtering-ordering-paging-of-media-services-entities"></a>A Media Services entitások szűrési, rendezési, stránkování
+## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services entitások szűrése, rendezése és lapozása
 
-Lásd: [szűrése, rendezése, az Azure Media Services entitások lapozás](entities-overview.md)
+Lásd: [Azure Media Services entitások szűrése, rendezése](entities-overview.md) és lapozása
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Tegyen fel kérdéseket, küldje el visszajelzését, frissítések beszerzése
+## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
 
-Tekintse meg a [Azure Media Services-Közösség](media-services-community.md) kérdések, küldje el visszajelzését, és tudnivalók a Media Services-frissítések különböző módon olvashatja.
+Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
 ## <a name="see-also"></a>Lásd még
 
@@ -139,7 +145,7 @@ Tekintse meg a [Azure Media Services-Közösség](media-services-community.md) k
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Java Media Services-csatlakozáshoz](configure-connect-java-howto.md)
-* [.NET-keretrendszerrel történő Media Services-csatlakozáshoz](configure-connect-dotnet-howto.md)
-* [Kapcsolódás a Media Services a node.js használatával](configure-connect-nodejs-howto.md)
-* [A Python a Media Services-csatlakozáshoz](configure-connect-python-howto.md)
+* [Kapcsolódás Media Services Javával](configure-connect-java-howto.md)
+* [Kapcsolódás Media Services a .NET-tel](configure-connect-dotnet-howto.md)
+* [Kapcsolódás Media Services a Node. js használatával](configure-connect-nodejs-howto.md)
+* [Kapcsolódás Media Services a Python használatával](configure-connect-python-howto.md)

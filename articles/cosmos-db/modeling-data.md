@@ -1,44 +1,44 @@
 ---
-title: Az Azure Cosmos DB adatok modellezése
+title: Az adatmodellezés Azure Cosmos DB
 titleSuffix: Azure Cosmos DB
 description: Ismerje meg a NoSQL-adatbázisok az adatmodellezés, modellezése a relációs adatbázis és a dokumentum-adatbázis adatait közötti különbségeket.
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.custom: rimman
-ms.openlocfilehash: 47d519523c7ffd1c0b6329d6b4eb12b052466b35
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: da119b2858c6b6c7bbc99b40d340f79964e0fae3
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657378"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467894"
 ---
-# <a name="data-modeling-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben adatmodellezés
+# <a name="data-modeling-in-azure-cosmos-db"></a>Adatmodellezés Azure Cosmos DB
 
-Bár a sémamentes adatbázisok, például az Azure Cosmos DB, hogy fantasztikusan egyszerű tárolására, és a strukturálatlan és részben strukturált adatok lekérdezése, az adatmodellben, hogy a legtöbbet a teljesítmény és méretezhetőség tekintetében a szolgáltatás és a legalacsonyabb kapcsolatos kell töltött némi idő terhelése költség.
+A séma nélküli adatbázisok (például a Azure Cosmos DB) rendkívül egyszerűvé teszik a strukturálatlan és részben strukturált adatmennyiségek tárolását és lekérdezését, némi időt kell fordítania az adatmodellre, hogy a lehető legtöbbet használja a szolgáltatás teljesítményének és méretezhetőségének, valamint a legalacsonyabb költség.
 
-Hogyan fogja tárolni az adatokat? Hogyan fogja lekérni, illetve adatokat kérdezhet le az alkalmazást? Az alkalmazását, olvassa el, vagy nagyrészt írási műveltekből?
+Hogyan fogja tárolni az adatokat? Hogyan fogja lekérni, illetve adatokat kérdezhet le az alkalmazást? Az alkalmazás olvasása nagy vagy írható-e?
 
 Ez a cikk elolvasása után fogja tudni a következő kérdések megválaszolásával:
 
 * Mi az adatmodellezés, és miért érdemes e fontos?
-* Miben különbözik az Azure Cosmos DB modellezési adatok egy relációs adatbázis?
+* Miben különböznek a modellezési adatAzure Cosmos DBek a kapcsolódó adatbázisokban?
 * Hogyan express a nem relációs adatbázisban adatkapcsolatok?
 * Amikor ágyazhat be adatokat, és ha hivatkozás adatokhoz?
 
 ## <a name="embedding-data"></a>Adatok beágyazása
 
-Az Azure Cosmos DB az adatok modellezését indításakor próbál az entitások gyökérkönyvtárral **önálló elemek** JSON-dokumentumok formájában jelöli.
+Amikor megkezdi az adatok modellezését Azure Cosmos DB próbálja meg kezelni az entitásokat JSON-dokumentumként ábrázolt **önálló elemekként** .
 
-Az összehasonlítást először lássuk, hogyan tudjuk előfordulhat, hogy modellezni az adatokat relációs adatbázis. Az alábbi példa bemutatja, hogyan személy előfordulhat, hogy tárolja a relációs adatbázis.
+Az összehasonlításhoz először lássuk, hogyan lehet egy relációs adatbázisban modellezni az adatmodellt. Az alábbi példa bemutatja, hogyan személy előfordulhat, hogy tárolja a relációs adatbázis.
 
 ![Relációs adatbázis-modell](./media/sql-api-modeling-data/relational-data-model.png)
 
-Relációs adatbázisok használata, ha a stratégia az, hogy normalizálása az összes adatot. Az adatok általában normalizálása egy entitás, például egy személy véve, és ossza fel diszkrét összetevőket foglalja magában. A fenti példában egy személy rendelkezhet több ügyfél részletes rekordok, valamint több cím rekord. Kapcsolattartási adatait is le kell bontani oly módon, további közös mezők, például egy típusa. Ugyanez vonatkozik a címet, minden egyes rekord típusúak lehetnek *kezdőlap* vagy *üzleti*.
+A kapcsolati adatbázisok használatakor a stratégia az összes adathalmaz normalizálása. Az adatnormalizálás általában magában foglalja egy entitás, például egy személy bevonását és a különálló összetevőkbe való lebontását. A fenti példában egy személy több kapcsolattartási adattal és több rekorddal is rendelkezhet. A kapcsolattartási adatok tovább bonthatók a gyakori mezők (például egy típus) további kibontásával. Ugyanez vonatkozik a címekre, az egyes rekordok lehetnek *otthoni* vagy *üzleti*típusúak.
 
-A megtett helyi, amikor a normalizálás **elkerülése érdekében a redundáns adattárolás** az egyes rögzíti, és inkább az adatokra hivatkoznak. Ebben a példában egy személyt, a kapcsolattartási adatait és a címek, olvassa el a joins ZÁRADÉKOT használják ténylegesen compose vissza (vagy denormalizálja) az adatok futásidőben kell.
+A megtett helyi, amikor a normalizálás **elkerülése érdekében a redundáns adattárolás** az egyes rögzíti, és inkább az adatokra hivatkoznak. Ebben a példában egy személy olvasásához, az összes kapcsolattartási adataival és címével együtt kell használnia az adatokat az adatoknak a futási időben való visszaírásához (vagy denormalizálása).
 
     SELECT p.FirstName, p.LastName, a.City, cd.Detail
     FROM Person p
@@ -48,7 +48,7 @@ A megtett helyi, amikor a normalizálás **elkerülése érdekében a redundáns
 
 Írási műveletek között számos egyedi táblák frissítése egyetlen személy kapcsolattartási adatait és címek van szükség.
 
-Most nézzük tekintse meg, hogyan tudjuk lenne modell ugyanazokat az adatokat az Azure Cosmos DB önálló entitásként.
+Most vessünk egy pillantást arra, hogyan modellezjük ugyanazokat az adategységeket Azure Cosmos DBban.
 
     {
         "id": "1",
@@ -69,10 +69,10 @@ Most nézzük tekintse meg, hogyan tudjuk lenne modell ugyanazokat az adatokat a
         ]
     }
 
-A megközelítéssel felett, hogy rendelkezik **denormalizált** a személy szerint rögzítése **beágyazás** be ezt a személyt, például a kapcsolattartási adatait és a címek, kapcsolatos összes információt egy *egyetlen JSON* dokumentumot.
+A fenti módszer használatával a személy  rekordját denormalizáljuk a személyhez kapcsolódó összes információ, például a kapcsolattartási adatok és a címek *egyetlen JSON* -dokumentumba való **beágyazásával** .
 Ezenkívül mivel azt már nem korlátozódik a rögzített sémát kell, hogy a rugalmasságot, például kapcsolattartási adatait a különböző alakzatokra teljes mértékben kellene.
 
-Egy teljes személy rekord lekérése az adatbázis már egy **egyetlen olvasási művelete** egyetlen tároló szemben, és egyetlen cikkre. Frissíti egy személy rekordot, a kapcsolattartási adatait és a címek, egyben egy **írási művelet egyetlen** egyetlen elem ellen.
+Egy teljes person rekordnak az adatbázisból való beolvasása már **egyetlen olvasási művelet** egyetlen tárolón és egyetlen elemnél. Egy személy rekordjának frissítése, a kapcsolattartási adatokkal és a címekkel együtt egyetlen, egyetlen elemre vonatkozó **írási művelet** is.
 
 Denormalizálni az adatokat, amelyet az alkalmazás szükségessé kevesebb lekérdezések és frissítések gyakori műveletek végrehajtásához.
 
@@ -80,18 +80,18 @@ Denormalizálni az adatokat, amelyet az alkalmazás szükségessé kevesebb lek�
 
 Általában beágyazott adatokat használhat a modellek mikor:
 
-* Nincsenek **tartalmazott** entitások közötti kapcsolatok.
+* **Az** entitások között találhatók kapcsolatok.
 * Nincsenek **egy néhány** entitások közötti kapcsolatok.
 * Beágyazott adatok, amelyek **csak ritkán változnak**.
-* Beágyazott adatok, amelyek nem fog **nélkül kötött**.
-* Nincs a beágyazott adatok **gyakran együtt lekérdezett**.
+* Olyan beágyazott adat is van, amely nem növekszik **kötés nélkül**.
+* Vannak olyan beágyazott adathalmazok, amelyek **gyakran**vannak lekérdezve.
 
 > [!NOTE]
 > Általában a konzisztenciamodellből jobban adatok denormalizált **olvasási** teljesítményét.
 
 ### <a name="when-not-to-embed"></a>Mikor nem beágyazása
 
-Bár az Azure Cosmos DB a tapasztalatok denormalizálja mindent, és minden adat beágyazása egy elem, ez bizonyos helyzetekben, el kell kerülni vezethet.
+Habár a Azure Cosmos DBi szabálya az, hogy denormalizálja a mindent, és egyetlen elembe ágyazza be az összes adathalmazt, ez bizonyos helyzetek elkerülését eredményezheti.
 
 A JSON-kódrészletben igénybe vehet.
 
@@ -111,11 +111,11 @@ A JSON-kódrészletben igénybe vehet.
         ]
     }
 
-Ez azért lehet, hogy mi a post entitás beágyazott megjegyzésekkel láthatóhoz hasonló azt modellezési lettek egy tipikus blog vagy tartalomkezelő rendszer, a rendszer. Ebben a példában a probléma merült fel, hogy a megjegyzések tömb **korlátlan streameken működő**, ami azt jelenti, hogy nincs-e bármilyen egyedi közzétételek rendelkezhet hozzászólások számát (gyakorlati) nincs korlátozva. Ez a növekedésével az elem méretének sikerült korlátlanul nagy probléma válhat.
+Ez azért lehet, hogy mi a post entitás beágyazott megjegyzésekkel láthatóhoz hasonló azt modellezési lettek egy tipikus blog vagy tartalomkezelő rendszer, a rendszer. Ebben a példában a probléma merült fel, hogy a megjegyzések tömb **korlátlan streameken működő**, ami azt jelenti, hogy nincs-e bármilyen egyedi közzétételek rendelkezhet hozzászólások számát (gyakorlati) nincs korlátozva. Ez problémát jelenthet, mivel az elemek mérete végtelenül nagy növekedést eredményezhet.
 
-Az elem méretének növekedésével képes továbbítani az adatokat a vezetékes, valamint olvasása és frissítése ipari méretekben, az elem felett érinti.
+Ahogy az elem mérete növekszik, az adatokat a vezetékes hálózaton keresztül továbbíthatja, valamint az elem olvasását és frissítését is befolyásolja.
 
-Lenne ebben az esetben jobb megoldás fontolja meg a következő data model.
+Ebben az esetben jobb lenne a következő adatmodellt figyelembe venni.
 
     Post item:
     {
@@ -148,9 +148,9 @@ Lenne ebben az esetben jobb megoldás fontolja meg a következő data model.
         ]
     }
 
-Ebben a modellben van ágyazva a post tároló, amely egy tömböt attribútumok készletét a három legutóbbi megjegyzéseket. A többi megjegyzések 100 megjegyzések váró szerint csoportosítva, és a tárolt és különálló elemek. A Köteg mérete lett kiválasztva a 100, mert a fiktív alkalmazás lehetővé teszi, hogy a felhasználó egyszerre 100 megjegyzések betöltése.  
+Ez a modell a post tárolóban beágyazott három legújabb megjegyzést tartalmaz, amely az attribútumok rögzített készletét tartalmazó tömb. A többi Megjegyzés a 100-es hozzászólások kötegei között van csoportosítva, és külön elemként van tárolva. A Köteg mérete lett kiválasztva a 100, mert a fiktív alkalmazás lehetővé teszi, hogy a felhasználó egyszerre 100 megjegyzések betöltése.  
 
-Egy másik esetben, amikor beágyazási adatok nem célszerű akkor, ha a beágyazott adatok elemek között gyakran használják, és gyakran változik.
+Egy másik eset, amikor az adatok beágyazása nem jó ötlet, ha a beágyazott adatokat gyakran használják az elemek között, és gyakran változnak.
 
 A JSON-kódrészletben igénybe vehet.
 
@@ -170,15 +170,15 @@ A JSON-kódrészletben igénybe vehet.
         ]
     }
 
-Ez egy személy tőzsdei portfólió utalhatnak. Azt választotta, a tőzsdei információkat egyes portfólióban dokumentu ágyazhat be. Olyan környezetben, ahol kapcsolódó adatok gyakran változnak például egy készletből, kereskedelmi alkalmazás, az adatok gyakran változnak beágyazás fogja azt jelenti, hogy folyamatosan frissítjük az egyes portfólió dokumentumok minden alkalommal, amikor egy készlet forog.
+Ez egy személy tőzsdei portfólió utalhatnak. Úgy döntöttünk, hogy az összes portfólió-dokumentumba ágyazza be a tőzsdei adatokat. Olyan környezetben, ahol kapcsolódó adatok gyakran változnak például egy készletből, kereskedelmi alkalmazás, az adatok gyakran változnak beágyazás fogja azt jelenti, hogy folyamatosan frissítjük az egyes portfólió dokumentumok minden alkalommal, amikor egy készlet forog.
 
 Készlet *zaza* egyetlen alkalommal több száz kerülhetnek nap és a felhasználók ezreit lehet *zaza* a saját portfólió. A fenti portfólió dokumentumok a sok ezer sokszor frissíteni szeretné van például egy adatmodellel minden nap, és a rendszer, amely nem jól méretezhető.
 
-## <a name="referencing-data"></a>Hivatkozó adatok
+## <a name="referencing-data"></a>Hivatkozó adatértékek
 
-Sok esetben szépen adatok beágyazása működik, de vannak helyzetek, amikor denormalizálni az adatokat, érdemes további problémákat okozhat. Tehát Mi a teendő most?
+Az adatok beágyazásával szépen működik sok esetben, de az adatok denormalizálása során több problémát is okozhat, mint amennyit érdemes. Tehát Mi a teendő most?
 
-A relációs adatbázisok nem állnak az egyetlen hely, ahol az entitások közötti kapcsolatokat hozhat létre. A dokumentum-adatbázis, az információt, amely kapcsolódik az adatok az egyéb dokumentumokat egy dokumentum rendelkezhet. Rendszereket, amelyek akkor lehet jobban megfelel az Azure Cosmos DB a relációs vagy egyéb dokumentum-adatbázist nem ajánlott, de egyszerű kapcsolatok rendben, és hasznos lehet.
+A relációs adatbázisok nem állnak az egyetlen hely, ahol az entitások közötti kapcsolatokat hozhat létre. A dokumentum-adatbázisokban egy olyan dokumentumban található információ, amely más dokumentumokban lévő adatokra vonatkozik. Nem javasoljuk olyan rendszerek kialakítását, amelyek jobban illeszkednek a Azure Cosmos DB vagy bármely más dokumentum-adatbázis relációs adatbázisához, de az egyszerű kapcsolatok is hasznosak lehetnek.
 
 A JSON az alábbi a példában a tőzsdei portfólió a korábban használandó választottuk, de ezúttal nevezzük a portfólió helyett beágyazza a tőzsdei elemet. Ez esetben, amikor a tőzsdei elem gyakran megváltoznak egy nap csak dokumentumot frissíteni kell a készlet egyetlen dokumentum.
 
@@ -319,7 +319,7 @@ Vegye figyelembe a következőket.
     {"id": "b3", "name": "Learn about Azure Cosmos DB", "authors": ["a1"]}
     {"id": "b4", "name": "Deep Dive into Azure Cosmos DB", "authors": ["a2"]}
 
-Most ha egy szerző voltam, azonnal tudom, melyik könyvek írásos engedélye szükséges, és ezzel szemben ha egy könyv betöltött dokumentum le kellett volna tudom azonosítóját a szerző(k) az. Ez menti a köztes-lekérdezést az illesztési tábla csökkenti az kiszolgálók száma kerekíteni lelassítja győződjön meg arról, hogy rendelkezik az alkalmazás.
+Ha már megismertem a szerzőt, azonnal tudni szeretném, hogy mely könyveket írtak, és fordítva, ha betöltöttem a könyv dokumentumát, a szerző (k) azonosítóit szeretném megismerni. Ez menti a köztes-lekérdezést az illesztési tábla csökkenti az kiszolgálók száma kerekíteni lelassítja győződjön meg arról, hogy rendelkezik az alkalmazás.
 
 ## <a name="hybrid-data-models"></a>Hibrid adatmodellek
 
@@ -374,17 +374,17 @@ Vegye figyelembe a következő JSON-fájllal.
 
 (Az alkalmazásaimat általában) Itt azt idáig követte a beágyazott modellben, ahol más entitások adatainak be van ágyazva a legfelső szintű dokumentumot, de egyéb adatok hivatkozik.
 
-Ha megtekinti a könyv dokumentumot, láthatjuk néhány érdekes mezők, ha megnézzük a szerzők a tömb. Van egy `id` mezőben, amely a mező használatával vissza tekintse át egy szerző, a szabványos eljárás normalizált modell, a dokumentumot, de majd van `name` és `thumbnailUrl`. Azt a sikerült elakadt `id` , és az alkalmazás számára szükséges további adatokat kérhet a megfelelő szerzői dokumentumot a "link", de mivel az alkalmazás megjeleníti a szerző nevét és minden könyv a miniatűr kép jelenleg is menteni körbeérnek a könyv-lista kiszolgálónként denormalizálni által megjelenített **néhány** a szerző adatait.
+Ha megtekinti a könyv dokumentumot, láthatjuk néhány érdekes mezők, ha megnézzük a szerzők a tömb. Létezik egy olyan `id` mező, amely az a mező, amellyel visszahivatkozhatunk egy szerzői dokumentumra, egy normalizált modell standard gyakorlatára, de a és `name` `thumbnailUrl`a is. Megakadt `id` az alkalmazásba, és otthagyta az alkalmazást, hogy a megfelelő szerzői dokumentumhoz szükséges további információkat kapjon a "link" használatával, de mivel az alkalmazás a szerző nevét és egy miniatűr képét jeleníti meg minden könyvvel megjelenítjük, hogy a szerzőtől **származó adatok** denormalizálása révén egy oda-vissza is menthetők a-kiszolgálóra.
 
-Arról Ha a szerző neve megváltozott, vagy frissíteni a fénykép szűrnek lenne van, és minden eddiginél közzé, de az alkalmazáshoz, feltételezve, hogy szerzők nem gyakran változnak nevük alapján minden könyv frissítése, ez egy elfogadható tervezési döntés.  
+Győződjön meg arról, hogy ha a szerző neve megváltozott, vagy frissíteni szeretné a fényképét, akkor azt a feltételezés alapján, hogy a szerzők gyakran nem változtatják meg a nevüket, ez egy elfogadható tervezési döntés.  
 
 A példában a **összesítések előre kiszámított** értékek feldolgozási költséges menteni a egy olvasási művelet. A példában a szerző dokumentum beágyazott adatok némelyike a futásidőben számított adatokat. Jön létre minden alkalommal, amikor egy új könyv közzé van téve, egy könyv dokumentum **és** countOfBooks mező egy könyv azt jelzi, hogy létezik egy adott szerző száma alapján számított értékre van állítva. Az optimalizálás jó lenne a olvasási (nagy erőforrásigényű) rendszerek, hogy megengedhet számítások végrehajtandó írások olvasási optimalizálása érdekében.
 
-Modell előre számított mezők vannak lehetséges legyen, mivel az Azure Cosmos DB támogatja **többdokumentumos tranzakciókat**. NoSQL-tárolókat nem tranzakciók tegye a dokumentumok között, és ezért tanácsadójának tervezési döntéseket, például a "mindig beágyazásához mindent" Ez a korlátozás miatt. Az Azure Cosmos DB használhatja a kiszolgálóoldali eseményindítók és tárolt eljárások, amelyek könyvek beszúrási és frissítési szerzők minden ACID tranzakción belül. Most nem **rendelkezik** ágyazhat be mindent az egy dokumentum csak arról, hogy az adatok konzisztensek maradnak.
+Modell előre számított mezők vannak lehetséges legyen, mivel az Azure Cosmos DB támogatja **többdokumentumos tranzakciókat**. NoSQL-tárolókat nem tranzakciók tegye a dokumentumok között, és ezért tanácsadójának tervezési döntéseket, például a "mindig beágyazásához mindent" Ez a korlátozás miatt. Az Azure Cosmos DB használhatja a kiszolgálóoldali eseményindítók és tárolt eljárások, amelyek könyvek beszúrási és frissítési szerzők minden ACID tranzakción belül. Most nem **kell** semmit beágyaznia egyetlen dokumentumba, hogy az adatai konzisztensek maradnak.
 
-## <a name="distinguishing-between-different-document-types"></a>Különböző típusok megkülönböztetése
+## <a name="distinguishing-between-different-document-types"></a>Különböző dokumentumtípusok megkülönböztetése
 
-Bizonyos esetekben érdemes lehet értékek nagyságrendjeit különböző dokumentumtípusokhoz ugyanabban a gyűjteményben; Ez általában akkor fordul, ha több, azonos szeretném dokumentumok kapcsolódó [partíció](partitioning-overview.md). Például, sikerült helyezze mindkét könyvek és repülőjáratra felülvizsgálatok ugyanabban a gyűjteményben, és ezt a particionálása `bookId`. Ilyen esetben általában érdemes egy mezővel, amely azonosítja a típusát annak érdekében, hogy megkülönböztessük őket a dokumentumokhoz való hozzáadásához.
+Bizonyos esetekben előfordulhat, hogy különböző dokumentumtípust szeretne összekeverni ugyanabban a gyűjteményben; Ez általában akkor történik, ha több, kapcsolódó dokumentumot is szeretne ugyanazon a partíción ülni [](partitioning-overview.md). Tegyük fel például, hogy a könyvek és a könyv-felülvizsgálatok ugyanabban a gyűjteményben vannak `bookId`, és particionálja a következővel:. Ilyen esetben általában fel kell vennie a dokumentumaiba egy olyan mezővel, amely azonosítja a típusát, hogy megkülönböztesse őket.
 
     Book documents:
     {
@@ -417,3 +417,5 @@ Nincs egyetlen lehetőség, amely jelöli az adatok képernyőn, ahogy nincs mod
 Azure Cosmos DB kapcsolatos további információkért tekintse meg a szolgáltatás [dokumentáció](https://azure.microsoft.com/documentation/services/cosmos-db/) lapot.
 
 Megismerheti, hogyan szegmensre az adatok több partíción, tekintse meg a [az Azure Cosmos DB particionálási adatok](sql-api-partition-data.md).
+
+Ha szeretné megtudni, hogyan modellezheti és particionálhatja Azure Cosmos DB a valós példa használatával, tekintse meg az adatmodellezést [és particionálást – egy valós példát](how-to-model-partition-example.md).
