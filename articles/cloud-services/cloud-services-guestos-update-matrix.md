@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/18/2019
+ms.date: 7/26/2019
 ms.author: raiye
-ms.openlocfilehash: 2dac76ef0d0d71c11291e63fdb3a7ce307638b50
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 9f796d4fe0edd1b6a944fc96e8045b1434d939f0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405553"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592414"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrix
 Naprakész információkat biztosít a Cloud Services legújabb Azure Guest OS-kiadásairól. Ez az információ segít megtervezni a frissítési útvonalat, mielőtt a vendég operációs rendszer le lenne tiltva. Ha úgy konfigurálja a szerepköröket, hogy az *automatikus* vendég operációs rendszer frissítéseit használják az [Azure vendég operációs rendszer frissítési beállításai][Azure Guest OS Update Settings]részében leírtak szerint, nem létfontosságú, hogy elolvassa ezt a lapot.
@@ -42,6 +42,9 @@ Naprakész információkat biztosít a Cloud Services legújabb Azure Guest OS-k
 Nem biztos benne, hogy miként lehet frissíteni a vendég operációs rendszert? Tekintse meg [ezt a][cloud updates] kivételt.
 
 ## <a name="news-updates"></a>Hírek frissítései
+
+###### <a name="july-26-2019"></a>**2019. július 26.**
+A júliusi vendég operációs rendszer megjelent.
 
 ###### <a name="july-8-2019"></a>**2019. július 8.**
 A júniusi vendég operációs rendszer megjelent.
@@ -98,8 +101,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadás dátuma | Dátum letiltása |
 | --- | --- | --- |
+| WA-GUEST-OS-6.9 _201907-01 |2019. július 26. |6,11 post |
 | WA-GUEST-OS-6.8_201906-01 |2019. július 8. |6,10 post |
-| WA-GUEST-OS-6.7_201905-01 |2019. június 6. |6,9 post |
+|~~WA-GUEST-OS-6,7 _201905-01~~ |2019. június 6. |2019. július 26. |
 |~~WA-GUEST-OS-6.6_201904-01~~ |2019. május 7. |2019. július 8. |
 |~~WA-GUEST-OS-6.5_201903-01~~ |Március 26., 2019 |2019. június 6. |
 |~~WA-GUEST-OS-6.4_201902-01~~ |2019. március 12. |2019. május 7. |
@@ -119,8 +123,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadás dátuma | Dátum letiltása |
 | --- | --- | --- |
+| WA-GUEST-OS-5.33 _201907-01 |2019. július 26. |5,35 post |  
 | WA-GUEST-OS-5.32_201906-01 |2019. július 8. |5,34 post |
-| WA-GUEST-OS-5.31_201905-01 |2019. június 6. |5,33 post |
+|~~WA-GUEST-OS-5.31 _201905-01~~ |2019. június 6. |2019. július 26. |
 |~~WA-GUEST-OS-5.30_201904-01~~ |2019. május 7. |2019. július 8. |
 |~~WA-GUEST-OS-5.29_201903-01~~ |Március 26., 2019 |2019. június 6. |
 |~~WA-GUEST-OS-5.28_201902-01~~ |2019. március 12. |2019. május 7. |
@@ -137,8 +142,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadás dátuma | Dátum letiltása |
 | --- | --- | --- |
+| WA-GUEST-OS-4.68 _201907-01 | 2019. július 26.  |4,70 post |
 | WA-GUEST-OS-4.67_201906-01 |2019. július 8. |4,69 post |
-| WA-GUEST-OS-4.66_201905-01 |2019. június 6. |4,68 post |
+|~~WA-GUEST-OS-4.66 _201905-01~~ |2019. június 6. |2019. július 26. |
 |~~WA-GUEST-OS-4.65_201904-01~~ |2019. május 7. |2019. július 8. |
 |~~WA-GUEST-OS-4.64_201903-01~~ |Március 26., 2019 |2019. június 6. |
 |~~WA-GUEST-OS-4.63_201902-01~~ |2019. március 12. |2019. május 7. |
@@ -155,8 +161,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadás dátuma | Dátum letiltása |
 | --- | --- | --- |
+| WA-GUEST-OS-3,75 _201907-01 | 2019. július 26. |3,77 post |
 | WA-GUEST-OS-3.74_201906-01 |2019. július 8. |3,76 post |
-| WA-GUEST-OS-3.73_201905-01 |2019. június 6. |3,75 post |
+|~~WA-GUEST-OS-3.73 _201905-01~~ |2019. június 6. |2019. július 26. |
 |~~WA-GUEST-OS-3.72_201904-01~~ |2019. május 7. |2019. július 8. |
 |~~WA-GUEST-OS-3.71_201903-01~~ |Március 26., 2019 |2019. június 6. |
 |~~WA-GUEST-OS-3.70_201902-01~~ |2019. március 12. |2019. május 7. |
@@ -173,8 +180,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadás dátuma | Dátum letiltása |
 | --- | --- | --- |
+| WA-GUEST-OS-2,88 _201907-01 | 2019. július 26. |2,90 post |
 | WA-GUEST-OS-2.87_201906-01 |2019. július 8. |2,89 post |
-| WA-GUEST-OS-2.86_201905-01 |2019. június 6. |2,88 post |
+|~~WA-GUEST-OS-2.86 _201905-01~~ |2019. június 6. |2019. július 26. |
 |~~WA-GUEST-OS-2.85_201904-01~~ |2019. május 7. |2019. július 8. |
 |~~WA-GUEST-OS-2.84_201903-01~~ |Március 26., 2019 |2019. június 6. |
 |~~WA-GUEST-OS-2.83_201902-01~~ |2019. március 12. |2019. május 7. |
@@ -200,9 +208,9 @@ Annak ellenére, hogy az [Azure SDK][retire policy sdk] -ra vonatkozó kivezeté
 | 1 |1\.0-s verzió + |
 
 ## <a name="guest-os-release-information"></a>Vendég operációs rendszer kiadásával kapcsolatos információk
-A vendég operációs rendszer kiadásai három fontos dátummal rendelkeznek: **kiadás** dátuma, letiltott dátum és lejárati dátum. A vendég operációs rendszer akkor tekinthető elérhetőnek, ha a portálon van, és a cél vendég operációs rendszerként is kiválasztható. Ha a vendég operációs rendszer eléri  a letiltott dátumot, az el lesz távolítva az Azure-ból. Azonban a vendég operációs rendszer által megcélzott felhőalapú szolgáltatások továbbra is a megszokott módon működnek.
+A vendég operációs rendszer kiadásai három fontos dátummal rendelkeznek: **kiadás** dátuma, letiltott dátum és lejárati dátum. A vendég operációs rendszer akkor tekinthető elérhetőnek, ha a portálon van, és a cél vendég operációs rendszerként is kiválasztható. Ha a vendég operációs rendszer eléri a letiltott dátumot, az el lesz távolítva az Azure-ból. Azonban a vendég operációs rendszer által megcélzott felhőalapú szolgáltatások továbbra is a megszokott módon működnek.
 
-A letiltott dátum  és a lejárati dátum közötti ablak egy puffert biztosít az egyik vendég operációs rendszerről egy újabbra való áttéréshez. Ha a vendég operációs rendszerként *automatikusan* használja a szolgáltatást, mindig a legújabb verziót fogja használni, és nem kell aggódnia.
+A letiltott dátum és a lejárati dátum közötti ablak egy puffert biztosít az egyik vendég operációs rendszerről egy újabbra való áttéréshez. Ha a vendég operációs rendszerként *automatikusan* használja a szolgáltatást, mindig a legújabb verziót fogja használni, és nem kell aggódnia.
 
 A lejárati dátum **lejárta** után minden olyan felhőalapú szolgáltatást, amely továbbra is a vendég operációs rendszert használja, a rendszer leállítja, törli vagy kikényszeríti a frissítést. További információkat a kivezetési szabályzatról [itt][retirepolicy]talál.
 

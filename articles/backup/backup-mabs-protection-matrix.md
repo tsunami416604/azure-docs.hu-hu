@@ -1,19 +1,19 @@
 ---
 title: Mi lehet Azure Backup Server biztonsági mentést?
 description: Ez a cikk egy támogatási mátrixot tartalmaz, amely felsorolja az összes olyan munkaterhelést, adattípust és telepítést, amelyet Azure Backup Server véd.
-author: rayne-wiselman
+author: dcurwin
 ms.service: backup
 keywords: ''
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.author: raynew
+ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 2e8004b07542efed3ddc2b5a390cfb12fd48cc1b
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: b601f37ad7e0f0071b38a97c84cf25d57ed11ee1
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465049"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639697"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Az Azure Backup Server védelmi mátrixa
 

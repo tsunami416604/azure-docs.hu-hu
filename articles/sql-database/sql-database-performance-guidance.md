@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL-adatbázis teljesítmény-finomhangolási útmutató |} A Microsoft Docs
-description: Ismerje meg manuálisan a az Azure SQL Database lekérdezési teljesítmény hangolásához ajánlásokat használva.
+title: Teljesítmény-finomhangolási útmutató Azure SQL Database | Microsoft Docs
+description: Útmutató a Azure SQL Database lekérdezési teljesítmény manuális finomhangolásához.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,57 +10,56 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: a49d30d3058a6cf3ce82d56076f348861ad631ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ea5d6c734659d36822f62237a42a8fbe332c996
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60585135"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567114"
 ---
-# <a name="manual-tune-query-performance-in-azure-sql-database"></a>Manuális hangolás az Azure SQL Database lekérdezési teljesítmény
+# <a name="manual-tune-query-performance-in-azure-sql-database"></a>A lekérdezés teljesítményének manuális finomhangolása Azure SQL Database
 
-Miután azonosította, hogy az SQL Database szolgáltatással fennálló egy teljesítményprobléma, ez a cikk célja segítséget:
+Ha olyan teljesítménnyel kapcsolatos problémát észlelt, amely SQL Database, akkor ez a cikk a következőkhöz nyújt segítséget:
 
-- Hallgassa meg az alkalmazást, és a alkalmazni néhány ajánlott eljárást, amely növelheti a teljesítményt.
-- Az adatbázis hangolása indexek és lekérdezések hatékonyabban dolgozhat az adatokkal való módosításával.
+- Hangolja be az alkalmazást, és alkalmazzon olyan ajánlott eljárásokat, amelyek javítják a teljesítményt.
+- Állítsa be az adatbázist úgy, hogy az indexek és a lekérdezések módosításával hatékonyabban működjön együtt az adatmennyiséggel.
 
-Ez a cikk feltételezi, hogy Ön már már használta az Azure SQL Database révén [advisor-javaslatok adatbázis](sql-database-advisor.md) és az Azure SQL Database [automatikus finomhangolási ajánlásait](sql-database-automatic-tuning.md). Azt is feltételezi, hogy áttekintette [megfigyelés és finomhangolás áttekintést](sql-database-monitor-tune-overview.md) és a kapcsolódó cikkekben kapcsolatos teljesítménnyel kapcsolatos problémák elhárítása. Emellett a jelen cikk feltételezi, hogy nem kell a Processzor-erőforrások, futó kapcsolatos teljesítménnyel kapcsolatos problémák, megoldhatók a számítási méret növelése, vagy az adatbázis további erőforrásokat a szolgáltatásszintet.
+Ez a cikk azt feltételezi, hogy már elvégezte a Azure SQL Database [Database Advisor javaslatainak](sql-database-advisor.md) és a Azure SQL Database [Automatikus hangolási](sql-database-automatic-tuning.md)javaslatainak a meglétét. Azt is feltételezi, hogy áttekintette a [figyelési és hangolási áttekintését](sql-database-monitor-tune-overview.md) , valamint a teljesítménnyel kapcsolatos problémák elhárításával kapcsolatos cikkeket. Emellett ez a cikk azt feltételezi, hogy nem rendelkezik processzor-erőforrásokkal, valamint a szolgáltatással kapcsolatos teljesítményproblémák, amelyek feloldhatók a számítási méret vagy a szolgáltatási réteg növelésével, hogy több erőforrást szolgáltassanak az adatbázishoz.
 
 ## <a name="tune-your-application"></a>Az alkalmazás hangolása
 
-A hagyományos helyszíni SQL Server a folyamat a kezdeti a kapacitástervezés során gyakran elkülönül egy alkalmazást az éles üzemben futó folyamat. Hardver- és licenceket vásárolt először, és ezt követően teljesítményhangolás történik. Azure SQL Database használata esetén célszerű interweave alkalmazások futtatásához és a finomhangolás azt a folyamatot. Az igény szerinti kapacitás és a modell hangolhassa az alkalmazás helyett a későbbi növekedési tervek egy alkalmazáshoz, amely gyakran helytelenek Találgatások alapján hardveren túlzott kiosztása most szükséges minimális erőforrásokat használhatja. Egyes ügyfeleink előfordulhat, hogy dönt, hogy nem egy alkalmazás hangolása, és inkább be túltervezés hardver-erőforrások. Ez a megközelítés lehet célszerű, ha nem szeretné módosítani egy fő alkalmazást egy foglalt időszakban. De, egy alkalmazás hangolása minimalizálhatja több erőforrást és alacsonyabb havi számlák a szolgáltatási szintek az Azure SQL Database használatakor.
+A hagyományos helyszíni SQL Serverban a kezdeti kapacitás tervezésének folyamata gyakran el van különítve az alkalmazások éles környezetben való futtatásának folyamatával. A hardveres és a termékspecifikus licenceket a rendszer először megvásárolja, a teljesítmény finomhangolását pedig utána végezheti el. Azure SQL Database használatakor érdemes összehangolni az alkalmazások futtatásának folyamatát, Az igény szerinti kapacitás kifizetésének modellje segítségével beállíthatja, hogy az alkalmazás a lehető legkevesebb erőforrást használja, ahelyett, hogy az alkalmazásra vonatkozó jövőbeli növekedési terveket kitalálja, ami gyakran helytelen. Egyes ügyfelek dönthetnek úgy, hogy nem hangolnak be egy alkalmazást, hanem több hardveres erőforrást is kiépítenek. Ez a megközelítés akkor lehet hasznos, ha egy kiemelt időszakban nem kívánja módosítani a kulcskezelő alkalmazást. Az alkalmazások finomhangolása azonban csökkentheti az erőforrás-követelményeket és az alacsonyabb havi számlákat, ha a Azure SQL Database szolgáltatási szintjeit használja.
 
-### <a name="application-characteristics"></a>Alkalmazástulajdonságok
+### <a name="application-characteristics"></a>Alkalmazás jellemzői
 
-Bár az Azure SQL Database szolgáltatási szinteken javíthatja a teljesítményt stabilitását és kiszámíthatóságot nyújtanak az alkalmazás készültek, néhány ajánlott eljárást segíthet az alkalmazás jobban kihasználhatja az erőforrásokat a számítási méret hangolása. Bár számos alkalmazás jelentős teljesítménynövekedést egyszerűen szerint átválthat egy nagyobb méretű számítási vagy szolgáltatásszintet, bizonyos alkalmazásokat kell, hogy további hangolásra számára, hogy egy magasabb szintű szolgáltatást. A nagyobb teljesítmény érdekében fontolja meg a további alkalmazás hangolása az alkalmazásokat, amelyek a következő jellemzőkkel rendelkezik:
+Bár Azure SQL Database szolgáltatási rétegek úgy lettek kialakítva, hogy javítják az alkalmazások teljesítményének stabilitását és kiszámíthatóságát, néhány ajánlott eljárás segítségével hangolhatja be az alkalmazást, hogy jobban kihasználhassa az erőforrásokat a számítási méretekben. Bár számos alkalmazásnak jelentős teljesítménye van a nagyobb számítási méretre vagy szolgáltatási szintre való áttéréssel, néhány alkalmazásnak további hangolásra van szüksége a magasabb színvonalú szolgáltatás igénybevételéhez. A teljesítmény növelése érdekében vegye fontolóra a további alkalmazások finomhangolását az alábbi tulajdonságokkal rendelkező alkalmazásokhoz:
 
-- **Az alkalmazásokat, "forgalmas" viselkedése miatt lassú**
+- **Lassú teljesítményű alkalmazások a "Csevegő" viselkedés miatt**
 
-  Forgalmas alkalmazások győződjön meg a túlzott adatelérési műveletek, amelyek a hálózati késés-és nagybetűket. Előfordulhat, hogy módosítania az ilyen típusú alkalmazásokat, az SQL Database adatelérési műveletek számának csökkentése érdekében. Alkalmazások teljesítményének javíthatja például ugyanazzal a módszerrel, például a kötegelés ad hoc lekérdezéseket, és a lekérdezések áthelyezése az tárolt eljárásokat. További információkért lásd: [lekérdezések Batch](#batch-queries).
+  A csevegő alkalmazások a hálózati késésre érzékeny, túlzott adatelérési műveleteket tesznek elérhetővé. Előfordulhat, hogy módosítania kell az ilyen típusú alkalmazásokat, hogy csökkentse az adatelérési műveletek számát az SQL Database-ben. Például javíthatja az alkalmazások teljesítményét olyan technikák használatával, mint az ad hoc lekérdezések kötegelt futtatása vagy a lekérdezések áthelyezése a tárolt eljárásokra. További információ: batch- [lekérdezések](#batch-queries).
 
-- **Egy nagy számításigényű számítási feladatot, amely egy teljes egyetlen gép által nem támogatott az adatbázisok**
+- **Nagy mennyiségű, egyetlen gép által nem támogatott intenzív számítási feladattal rendelkező adatbázisok**
 
-   Keretet túllépő része az erőforrásokat a legnagyobb prémium szintű adatbázisok számítási méret előnyös lehet a számítási feladatok skálázása. További információkért lásd: [adatbázisközi horizontális skálázási](#cross-database-sharding) és [funkcionális particionálást](#functional-partitioning).
+   Azok az adatbázisok, amelyek meghaladják a legmagasabb prémium szintű számítási méret erőforrásait, kihasználhatják a munkaterhelés horizontális felskálázását. További információ: [adatbázisok közti](#cross-database-sharding) [felosztás és funkcionális particionálás](#functional-partitioning).
 
-- **Az alkalmazásokat, az optimálisnál rosszabb lekérdezések**
+- **Az optimálisnál gyengébb lekérdezésekkel rendelkező alkalmazások**
 
-  Alkalmazások, különösen az adatelérési réteg, hogy a rosszul hangolt lekérdezések nem előnyös lehet a nagyobb számítási méretét. Ez magában foglalja a lekérdezéseket, amelyek nem tartozik a WHERE záradék, a hiányzó indexek vagy statisztika elavult. Ezek az alkalmazások kihasználhatják a standard szintű lekérdezési teljesítmény hangolása módszerek. További információkért lásd: [hiányzó index](#identifying-and-adding-missing-indexes) és [lekérdezések hangolása, és a felhasználóknak](#query-tuning-and-hinting).
+  A rosszul beállított lekérdezésekkel rendelkező alkalmazások, különösen az adatelérési rétegben lévő alkalmazások esetében nem előnyösek a nagyobb számítási méret. Ide tartoznak azok a lekérdezések, amelyek nem tartalmaznak WHERE záradékot, hiányoznak az indexek, vagy elavult statisztikákkal rendelkeznek. Ezek az alkalmazások a szabványos lekérdezési teljesítmény-hangolási technikák előnyeit élvezik. További információ: [hiányzó indexek](#identifying-and-adding-missing-indexes) és [lekérdezések finomhangolása és célzása](#query-tuning-and-hinting).
 
-- **Ez az optimálisnál rosszabb adatok hozzáférési tervezési rendelkező alkalmazások**
+- **Az optimálisnál gyengébb adatelérési kialakítással rendelkező alkalmazások**
 
-   Az alkalmazásokat, adatokat rejlő hozzáférés egyidejűségi problémák, például deadlocking, nem előnyös lehet a nagyobb számítási méretét. Vegye fontolóra az Azure Caching service és a egy másik gyorsítótárazási technológián ügyféloldali gyorsítótárazási adatok által adatváltások ellen az Azure SQL Database csökkentését. Lásd: [alkalmazás szinten gyorsítótárazás](#application-tier-caching).
+   Az adathozzáférési párhuzamosságtal kapcsolatos problémákat okozó alkalmazások, például a holtpont, nem részesülhetnek nagyobb számítási méretekben. Érdemes lehet a Azure SQL Database az Azure gyorsítótárazási szolgáltatással vagy más gyorsítótárazási technológiával az ügyfél oldalán tárolt adatgyorsítótárazással csökkenteni a. Lásd: az [alkalmazási rétegek gyorsítótárazása](#application-tier-caching).
 
 ## <a name="tune-your-database"></a>Az adatbázis hangolása
 
-Ebben a szakaszban áttekintjük egyes módszereket, amelyek segítségével az Azure SQL Database kapjanak az alkalmazáshoz a lehető legjobb teljesítményt, és futtassa azt a legkisebb lehetséges számítási méret hangolása. Néhány, az alábbi eljárások egyezik, hagyományos SQL Server ajánlott hangolási, de mások csak az adott Azure SQL Database. Néhány esetben vizsgálja meg a felhasznált erőforrások területek további finomhangolása és kiterjesztése a hagyományos SQL Server technikákkal működjön az Azure SQL Database-ben található adatbázishoz.
+Ebben a szakaszban megvizsgáljuk azokat a technikákat, amelyekkel Azure SQL Database hangolhatja az alkalmazás legjobb teljesítményét, és futtathatja a lehető legalacsonyabb számítási mérettel. Ezek a technikák a hagyományos SQL Server hangolják össze az ajánlott eljárásokat, de mások a Azure SQL Databasera vonatkoznak. Bizonyos esetekben megvizsgálhatja az adatbázisok felhasznált erőforrásait, hogy megkeresse a területeken a hagyományos SQL Server technikák további finomhangolását és kiterjesztését Azure SQL Databaseokban való működéshez.
 
-### <a name="identifying-and-adding-missing-indexes"></a>Azonosító és a hiányzó indexek hozzáadása
+### <a name="identifying-and-adding-missing-indexes"></a>Hiányzó indexek azonosítása és hozzáadása
 
-Az OLTP adatbázis-teljesítmény gyakran okoz problémát a fizikai adatbázis-tervezésben vonatkozik. Gyakran adatbázissémák tervezett, és nagy mennyiségű (akár a terhelés, akár az adatok mennyisége) tesztelési nélkül. Sajnos a lekérdezésterv teljesítményét előfordulhat, hogy kis léptékű elfogadható lehet, de jelentősen csökkentheti a termelési szintű adatmennyiség alapján. A leggyakoribb probléma forrása kielégíteni szűrők vagy egyéb korlátozások egy lekérdezést a megfelelő indexek hiánya. Hiányzó indexek jegyzékek táblázatként gyakran előfordul, ha egy index pozicionálási sikerült elegendő vizsgálata.
+A OLTP-adatbázis teljesítményével kapcsolatos gyakori probléma a fizikai adatbázis kialakítására vonatkozik. Az adatbázis-sémákat gyakran nagy léptékű tesztelés nélkül tervezték és szállították (a terhelésben vagy az adatmennyiségben). Sajnos előfordulhat, hogy egy lekérdezési terv teljesítménye kis méretben elfogadható, de jelentősen csökkent a termelési szintű adatmennyiségek esetében. Ennek a hibának a leggyakoribb forrása a megfelelő indexek hiánya, hogy a szűrők vagy más korlátozások megfeleljenek a lekérdezésekben. A hiányzó indexek általában táblázatos vizsgálatnak minősülnek, ha az indexek keresése elég.
 
-Ebben a példában a kiválasztott lekérdezésterv vizsgálat használja, amikor egy pozicionálási elegendő lenne:
+Ebben a példában a kiválasztott lekérdezési terv egy vizsgálatot használ, ha a keresés elegendő lenne:
 
 ```sql
 DROP TABLE dbo.missingindex;
@@ -80,11 +79,11 @@ SELECT m1.col1
     WHERE m1.col2 = 4;
 ```
 
-![Hiányzó indexekkel rendelkező lekérdezésterv](./media/sql-database-performance-guidance/query_plan_missing_indexes.png)
+![Hiányzó indexekkel rendelkező lekérdezési terv](./media/sql-database-performance-guidance/query_plan_missing_indexes.png)
 
-Az Azure SQL Database segítségével, keresés és a javítás közös hiányzó index feltételeket. DMV-vel az Azure SQL Database-be épített tekintse meg a lekérdezés fordítások, amelyben az index lenne jelentősen csökkentheti a becsült költség, a lekérdezés futtatásához. Lekérdezés-végrehajtás során az SQL Database nyomon követi, milyen gyakran az egyes lekérdezési terv végrehajtásakor, és a becsült gap követi a lekérdezést végrehajtó terv és az imagined között, ahol újjáépítésére létezett. Ezeket a dinamikus felügyeleti nézetek segítségével gyorsan kitalálni milyen módosításokat a fizikai adatbázis-tervezésben való javíthatja az adatbázis és a valós számítási feladat a számítási feladatok összköltség.
+Azure SQL Database segítségével megkeresheti és kijavíthatja a hiányzó indexek általános feltételeit. A Azure SQL Databasebe beépített DMV megtekintheti azokat a lekérdezési fordításokat, amelyekben az index jelentősen csökkentheti a lekérdezés futtatásának becsült költségeit. A lekérdezés végrehajtása során SQL Database nyomon követi, hogy milyen gyakran hajtja végre a rendszer az egyes lekérdezési terveket, és nyomon követi a végrehajtási lekérdezési terv közötti becsült különbséget, valamint azt, hogy az adott index hol található. Ezekkel a DMV gyorsan kitalálhatja, hogy a fizikai adatbázis kialakításának módosításai javíthatják-e az adatbázis általános számítási feladatait és a valós számítási feladatokat.
 
-Ez a lekérdezés segítségével lehetséges a hiányzó indexek kiértékelése:
+A lekérdezés segítségével kiértékelheti a lehetséges hiányzó indexeket:
 
 ```sql
 SELECT
@@ -111,25 +110,25 @@ FROM sys.dm_db_missing_index_groups AS mig
  ORDER BY migs.avg_total_user_cost * migs.avg_user_impact * (migs.user_seeks + migs.user_scans) DESC
 ```
 
-Ebben a példában a lekérdezés eredményezett, ez a javaslat:
+Ebben a példában a lekérdezés a következő javaslatot eredményezte:
 
 ```sql
 CREATE INDEX missing_index_5006_5005 ON [dbo].[missingindex] ([col2])  
 ```
 
-A létrehozást követően, hogy ugyanazon SELECT utasítás választja ki egy másik sémát használ, a keresés nem egy vizsgálatot, és hatékonyabban végrehajtja a terv:
+A létrehozást követően ugyanez a SELECT utasítás egy másik tervet is választ, amely egy keresést használ a vizsgálat helyett, majd a tervet hatékonyabban hajtja végre:
 
-![Javított indexekkel rendelkező lekérdezésterv](./media/sql-database-performance-guidance/query_plan_corrected_indexes.png)
+![A javított indexekkel rendelkező lekérdezési terv](./media/sql-database-performance-guidance/query_plan_corrected_indexes.png)
 
-A legfontosabb elemzéseket, hogy a megosztott, hagyományos rendszer IO-kapacitás korlátozottabb, mint a dedikált kiszolgáló gép. Nincs prémium minimalizálja a szükségtelen I/O igénybe maximális a rendszer az a dtu-k minden számítási méretű, az Azure SQL Database szolgáltatási csomagjai. Választási lehetőségek jelentősen növelheti a késést az egyes lekérdezések esetén megfelelő fizikai adatbázis-tervezésben javítani az egyidejű kérelmek skálázási egység kezeli, és minimalizálja a költségeket, a lekérdezés kielégítéséhez szükséges. A hiányzó index DMV-vel kapcsolatos további információkért lásd: [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
+A legfontosabb az, hogy a megosztott, a nyersanyag-rendszerek i/o-kapacitása korlátozottabb, mint egy dedikált kiszolgáló-gép esetén. A felesleges i/o-k minimálisra csökkentése a rendszer maximális kihasználása érdekében a Azure SQL Database szolgáltatási szintjeinek minden számítási méretének DTU. A megfelelő fizikai adatbázis-kialakítási lehetőségek jelentős mértékben javítják az egyes lekérdezések késését, javítják a méretezési egység által kezelt egyidejű kérelmek átviteli sebességét, és minimálisra csökkenthetik a lekérdezés teljesítéséhez szükséges költségeket. A hiányzó index DMV kapcsolatos további információkért lásd: [sys. DM _db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
 
-### <a name="query-tuning-and-hinting"></a>Lekérdezések hangolása, és a felhasználóknak
+### <a name="query-tuning-and-hinting"></a>Lekérdezések finomhangolása és célzása
 
-A lekérdezésoptimalizáló Azure SQL Database-ben a hagyományos SQL Server-lekérdezésoptimalizáló hasonlít. A legtöbb ajánlott eljárást a Lekérdezések finomhangolása és az indoklást ismertetése a lekérdezésoptimalizáló modell korlátozásai is vonatkoznak az Azure SQL Database. Ha az Azure SQL Database lekérdezések hangolás kaphat további előnye, hogy az összesített erőforrás-igényű csökkentését. Lehet, hogy az alkalmazás futtatható, mint a nem érdemes figyelemmel kísérnie egyenértékű alacsonyabb költségek, mert futtatható egy alacsonyabb számítási méret.
+Azure SQL Database a lekérdezés-optimalizáló a hagyományos SQL Server lekérdezés-optimalizáló szolgáltatáshoz hasonló. A lekérdezések finomhangolására vonatkozó ajánlott eljárások többsége az Azure SQL Databasere is vonatkozik. Ha a lekérdezéseket Azure SQL Databaseban hangolja össze, a további előnyökkel jár az összesített erőforrás-igények csökkentése. Előfordulhat, hogy az alkalmazás alacsonyabb áron fut, mint egy nem megfelelően beállított érték, mert alacsonyabb számítási méreten futhat.
 
-Ez gyakori az SQL Server, és amely akkor is érvényes az Azure SQL Database például hogyan a lekérdezésoptimalizáló "megszerzésén" paraméterek. A lekérdezésoptimalizáló fordításkor, kiértékeli a meghatározásához, hogy létrehozhat-e több optimális lekérdezésterv paraméter aktuális értékének. Bár ez a stratégia gyakran is vezet, amely jelentősen gyorsabb, mint egy csomag nélkül ismert paraméterértékeket összeállított lekérdezésterv, jelenleg működik imperfectly mind az SQL Server és az Azure SQL Database-ben. Néha az a paraméter nem felszippantásra, és néha a paraméter felszippantásra van, de a létrehozott terv az optimálisnál rosszabb a paraméterértékeket a számítási feladat teljes készletét. Microsoft lekérdezésmutatókat (irányelvek) tartalmaz, adja meg a leképezés több szándékosan, és felülírhatja az alapértelmezett viselkedést, a paraméter elemző. Gyakran mutatók használatakor orvosolásával eseteket, amelyben az alapértelmezett SQL Server vagy az Azure SQL Database viselkedés hiányos, az egy adott ügyfél számítási feladata.
+A SQL Server gyakori példája, amely a Azure SQL Databasera is vonatkozik, hogy a lekérdezés hogyan optimalizálja a "elemzések" paramétereit. A fordítás során a lekérdezés-optimalizáló kiértékeli egy paraméter aktuális értékét annak meghatározására, hogy az képes-e az optimális lekérdezési terv létrehozásához. Habár ez a stratégia gyakran egy olyan lekérdezési tervhez vezethet, amely jelentősen gyorsabb, mint az ismert paraméterérték nélküli csomag, amely jelenleg nem tökéletesen működik a SQL Server és a Azure SQL Database. Előfordulhat, hogy a paraméter nem kerül a szippantás állapotba, és néha a paraméter elemzése megtörténik, de a generált terv a számítási feladatokhoz tartozó paraméterek teljes készletének optimálisnál rosszabb. A Microsoft lekérdezési mutatókat (irányelveket) is tartalmaz, amelyekkel szándékosan megadhatja a leképezést, és felülbírálhatja a paraméterek elemzésének alapértelmezett viselkedését. Gyakran előfordul, hogy ha tippeket használ, megjavíthatja azokat az eseteket, amelyekben az alapértelmezett SQL Server vagy Azure SQL Database viselkedése nem tökéletes egy adott ügyfél-munkaterheléshez.
 
-A következő példa bemutatja, hogyan hozhat létre a lekérdezésfeldolgozó az optimálisnál rosszabb, mind a teljesítmény- és erőforrás-igényű csomagot. Ebben a példában is látható, hogy ha a lekérdezés-végrehajtási használja, csökkentheti a lekérdezés futtatása időre és erőforrás-követelmények az SQL Database:
+A következő példa azt mutatja be, hogyan hozhatja ki a lekérdezési processzor olyan tervet, amely optimálisan használható a teljesítményre és az erőforrásokra vonatkozó követelményekhez. Ez a példa azt is mutatja, hogy ha egy lekérdezési mutatót használ, csökkentheti a lekérdezés futási idejét és az SQL-adatbázishoz szükséges erőforrás-követelményeket:
 
 ```sql
 DROP TABLE psptest1;
@@ -169,7 +168,7 @@ CREATE TABLE t1 (col1 int primary key, col2 int, col3 binary(200));
 GO
 ```
 
-A telepítő kódot hoz létre egy táblát, amely rendelkezik torzítja az adatok terjesztési. Az optimális lekérdezési terv eltérő alapján mely paraméter van kiválasztva. Sajnos az gyorsítótárazási viselkedésének a csomag nem mindig újrafordítottuk a lekérdezés a leggyakrabban használt paraméter értéke alapján. Így lehetőség az optimálisnál rosszabb csomag gyorsítótárazott és sok érték, akkor is, ha egy másik csomagot lehet jobb választás terv átlagosan használt. Ezután a lekérdezésterv hoz létre két tárolt eljárások, amelyek azonos, azzal a különbséggel, hogy egy olyan speciális lekérdezés-végrehajtási rendelkezik.
+A telepítési kód olyan táblát hoz létre, amely elferdített adateloszlást tartalmaz. Az optimális lekérdezési terv attól függ, hogy melyik paraméter van kiválasztva. Sajnos a séma gyorsítótárazási viselkedése nem mindig újrafordítja a lekérdezést a leggyakoribb paraméter értéke alapján. Így előfordulhat, hogy az optimálisnál nagyobb méretet kell gyorsítótárazni, és sok értékhez használni, még akkor is, ha egy másik terv az átlagosnál jobb megoldás. Ezután a lekérdezési terv két, azonos módon létrehozott tárolt eljárást hoz létre, azzal a kivétellel, hogy egy speciális lekérdezési mutatóval rendelkezik.
 
 ```sql
 -- Prime Procedure Cache with scan plan
@@ -186,7 +185,7 @@ WHILE @i < 1000
     END
 ```
 
-Azt javasoljuk, hogy várjon legalább 10 percig, mielőtt megkezdené a példában a 2. rész, hogy az eredmények nem azonos az eredményül kapott telemetriai adatok.
+Javasoljuk, hogy várjon legalább 10 percet, mielőtt megkezdené a példa 2. részét, hogy az eredmények különbözőek legyenek az eredményül kapott telemetria-adatban.
 
 ```sql
 EXEC psp2 @param2=1;
@@ -201,21 +200,21 @@ DECLARE @i int = 0;
     END
 ```
 
-Ebben a példában az egyes részek megpróbál futtatni egy paraméteres insert utasítás 1000 alkalommal (az egy megfelelő terhelést generálhat, használja, mint egy tesztelési adatkészlet). Tárolt eljárások végrehajtása, ha a lekérdezésfeldolgozó megvizsgálja a paraméter értéket, amelyet az eljárás során az első fordítás (paraméter "elemzése"). A processzor gyorsítótárazza az eredményül kapott csomagot, és felhasználja újabb meghívásához, még akkor is, ha a paraméter értéke nem egyezik. Az optimális tervet előfordulhat, hogy nem minden esetben használható. Néha szüksége is az optimalizáló jobb, ha az adott esetben helyett az átlagos eset, amikor először a lekérdezés fordítása csomagot választja ki. Ebben a példában a kezdeti terv, amely beolvassa az összes sort található minden egyes érték, amely megegyezik a paraméter "vizsgálat" csomag hoz létre:
+A példa egyes részei a 1 000-as paraméteres INSERT utasítás futtatását kísérlik meg (egy megfelelő terhelés létrehozásához, amelyet tesztelési adatkészletként kell használni). Ha tárolt eljárásokat hajt végre, a lekérdezési processzor megvizsgálja az első fordítás során az eljárásnak átadott paraméterérték értékét (a "szippantás" paraméter). A processzor gyorsítótárazza az eredményül kapott tervet, és a későbbi meghívásokhoz használja, még akkor is, ha a paraméter értéke eltér. Lehetséges, hogy az optimális csomag nem használható minden esetben. Előfordulhat, hogy a-optimalizáló irányításával olyan tervet szeretne kiválasztani, amely a lekérdezés első lefordításakor nem a megadott esetnél jobb. Ebben a példában a kezdeti terv egy "vizsgálat" tervet hoz létre, amely az összes sort beolvassa az összes olyan érték megtalálásához, amely megfelel a paraméternek:
 
-![Lekérdezés hangolása a vizsgálati csomag használatával](./media/sql-database-performance-guidance/query_tuning_1.png)
+![Lekérdezés finomhangolása ellenőrzési terv használatával](./media/sql-database-performance-guidance/query_tuning_1.png)
 
-Hajtottunk végre az eljárást az 1 értéket, mert az eredményül kapott terv optimális 1 érték volt, de az optimálisnál rosszabb értéket a táblázatban minden más helyen lett. Az eredmény valószínűleg nem mit érdemes Ha véletlenszerűen kiválasztható minden egyes előfizetés, mert a csomag lassabban hajt végre, és több erőforrást használ.
+Mivel az eljárást az 1. érték használatával hajtottuk végre, az eredményül kapott terv az 1. értékhez optimális volt, de a tábla összes többi értékének is optimális volt. Az eredmény valószínűleg nem az, amit szeretne, ha minden csomagot véletlenszerűen választ ki, mert a terv lassabban működik, és több erőforrást használ.
 
-Ha a teszt- `SET STATISTICS IO` beállítása `ON`, a logikai vizsgálat ebben a példában a munkát a háttérben. Láthatja, hogy nincsenek-e a terv (ez nem elég hatékony, ha az átlagos eset, hogy csak egy sort adja vissza) által végzett 1,148 olvasások:
+Ha a tesztet `SET STATISTICS IO` a `ON`beállítással futtatja, a logikai vizsgálat ebben a példában a színfalak mögött történik. Láthatja, hogy a csomag 1 148 olvasást végez (ami nem hatékony, ha az átlagos esetben csak egy sort kell visszaadnia):
 
-![Lekérdezés hangolása egy logikai vizsgálat használatával](./media/sql-database-performance-guidance/query_tuning_2.png)
+![Lekérdezés finomhangolása logikai vizsgálat használatával](./media/sql-database-performance-guidance/query_tuning_2.png)
 
-Második része a példában a lekérdezés-végrehajtási állapítható meg, hogy egy adott érték használata a fordítás során az optimalizáló használ. Ebben az esetben arra kényszeríti a lekérdezésfeldolgozó figyelmen kívül hagyja az értéket, amelyet paraméterként, és ehelyett feltételezzük `UNKNOWN`. Ez az érték, amely az átlagos gyakoriság tartozik a táblában (a döntés figyelmen kívül hagyása) hivatkozik. Az eredményül kapott terv Ez gyorsabb és kevesebb erőforrást, átlagosan, mint a csomagot használ, az 1. rész ebben a példában a keresés-alapú csomag:
+A példa második része egy lekérdezési mutató használatával közli, hogy az optimalizáló egy adott értéket használjon a fordítási folyamat során. Ebben az esetben kényszeríti a lekérdezési processzort, hogy figyelmen kívül hagyja a paraméterként átadott értéket, és inkább `UNKNOWN`azt feltételezi. Ez olyan értékre hivatkozik, amely az átlagos gyakorisággal rendelkezik a táblában (a ferdeség figyelmen kívül hagyásával). Az eredményül kapott terv egy olyan Seek-alapú csomag, amely gyorsabban működik, és átlagosan kevesebb erőforrást használ, mint a terv 1. része:
 
-![A lekérdezés-végrehajtási lekérdezések hangolása](./media/sql-database-performance-guidance/query_tuning_3.png)
+![Lekérdezés finomhangolása lekérdezési javaslat használatával](./media/sql-database-performance-guidance/query_tuning_3.png)
 
-Láthatja, hogy a hatása a **sys.resource_stats** tábla (késik, hajtsa végre a vizsgálat, és ha az adatokat tölti fel a tábla kezdve). Ebben a példában, 1. rész a 22-es: 25-ös: 00 időszakban végrehajtott és 2. rész 22:35:00-kor végrehajtott. A korábbi időtartomány további erőforrások az adott időtartományban, mint az újabb már (miatt a terv hatékonysága fejlesztései) használja.
+Megtekintheti a **sys. resource_stats** tábla hatását (a teszt végrehajtásának idejétől, valamint az adatoknak a tábla kitöltésének időpontjától számítva). Ebben a példában az 1. rész a 22:25:00-es időintervallumban, a 2. rész pedig a 22:35:00-es időpontban fut. A korábbi időablak több erőforrást használt az adott időtartományban, mint a későbbi (a tervezés hatékonyságának javítása miatt).
 
 ```sql
 SELECT TOP 1000 *
@@ -224,45 +223,45 @@ WHERE database_name = 'resource1'
 ORDER BY start_time DESC
 ```
 
-![Lekérdezés hangolása példa eredmények](./media/sql-database-performance-guidance/query_tuning_4.png)
+![Lekérdezés-hangolási példa eredményei](./media/sql-database-performance-guidance/query_tuning_4.png)
 
 > [!NOTE]
-> Bár ebben a példában a kötet nem szándékosan kis méretű, ez az optimálisnál rosszabb paraméterek hatásának jelentős, különösen a nagyobb adatbázisok lehet. A különbség a szélsőséges esetben másodperc azokra az esetekre, gyors és lassú esetek óra közötti lehet.
+> Bár az ebben a példában szereplő kötet szándékosan kicsi, az optimálisnál kisebb paraméterek hatása jelentős lehet, különösen nagyobb adatbázisok esetén. A szélsőséges esetekben a gyors esetek és a lassú esetek esetében is másodpercek alatt lehet a különbség.
 
-Megvizsgálhatja **sys.resource_stats** -e az erőforrás, tesztelje erőforrást használ, több vagy kevesebb mint egy másik meghatározásához. Ha összehasonlítjuk az adatokat, külön tesztek ütemezése úgy, hogy azok nem azonos az 5 perces ablakban az a **sys.resource_stats** megtekintése. A gyakorlat célja használt erőforrások teljes mennyisége minimalizálása érdekében, illetve nem csökkentheti minimálisra csúcs erőforrásokat. Általában a optimalizálása késésének kódrészleteket is csökkenti erőforrás-használat. Győződjön meg arról, hogy szükség az alkalmazáshoz a módosításokat, és, hogy a módosítások nem negatívan befolyásolják a vásárlói élményt, a személy, aki lekérdezésmutatókat használhatja az alkalmazásban.
+A **sys. resource_stats** vizsgálatával megállapíthatja, hogy egy teszt erőforrása több vagy kevesebb erőforrást használ, mint egy másik teszt. Amikor összehasonlítja az adatmennyiséget, elkülöníti a tesztek időzítését, hogy ne legyenek ugyanabban az 5 perces ablakban a **sys. resource_stats** nézetben. A gyakorlat célja, hogy minimálisra csökkentse a felhasznált erőforrások teljes mennyiségét, és ne csökkentse a maximális erőforrásokat. Általában egy kódrészlet optimalizálása a késéshez is csökkenti az erőforrások felhasználását. Győződjön meg arról, hogy az alkalmazáson végzett módosítások szükségesek, és hogy a módosítások nem érintik negatívan az alkalmazásban a lekérdezési mutatókat használó személy felhasználói élményét.
 
-Ha egy számítási feladat ismétlődő lekérdezések készletével rendelkezik, gyakran logikus rögzítéséhez és érvényesíteni a terv lehetősége az optimalizálási, mert azt a minimális erőforrás mérete egység az adatbázis üzemeltetéséhez szükséges meghajtók. Azt ellenőrzése után időnként újra a segítségével győződjön meg arról, hogy azok rendelkeznek csökkent, a csomagok. További információ [mutatók (Transact-SQL) lekérdezés](https://msdn.microsoft.com/library/ms181714.aspx).
+Ha a munkaterhelés ismétlődő lekérdezéseket tartalmaz, gyakran érdemes rögzíteni és érvényesíteni a csomag választási lehetőségeit, mivel az az adatbázis üzemeltetéséhez szükséges minimális erőforrás-méretet vezérli. Az érvényesítése után időnként újra megvizsgálja a csomagokat, hogy azok ne legyenek lecsökkentve. További információ a lekérdezési mutatókkal [(Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx).
 
-### <a name="cross-database-sharding"></a>Adatbázisközi horizontális skálázás
+### <a name="cross-database-sharding"></a>Adatbázisok közti horizontális felskálázás
 
-Azure SQL Database a hagyományos hardvereken fut, mert az egyes adatbázisok kapacitáskorlátjai alacsonyabbak, mint a hagyományos helyszíni SQL Server telepítésekor. Egyes ügyfeleink a horizontális skálázás technikák használatával terjednek több adatbázis adatbázis-műveletek, a műveletek nem egyeznek meg az Azure SQL Database-ben az egyes adatbázisok keretein belül. A legtöbb ügyfeleink, akik a horizontális skálázás technikák az Azure SQL Database felosztása egy dimenziót az adataikat több adatbázis között. Az ezzel a módszerrel kell megérteni, hogy OLTP alkalmazások gyakran hajtják végre a tranzakciók, amelyek a alkalmazni egyetlen sort vagy sorokat a sémában egy kisebb csoportot.
+Mivel a Azure SQL Database a termék hardverén fut, az egyes adatbázisok kapacitásának korlátai alacsonyabbak, mint a hagyományos helyszíni SQL Server telepítésekor. Egyes ügyfelek horizontális Felskálázási technikák használatával terjesztik az adatbázis-műveleteket több adatbázisra, ha a műveletek nem illeszkednek a Azure SQL Database egyes adatbázisainak korlátaihoz. A legtöbb horizontális Felskálázási technikát használó ügyfelek több adatbázisra osztották fel az adatAzure SQL Databaset egyetlen dimenzióban. Ehhez a megközelítéshez meg kell ismernie, hogy a OLTP-alkalmazások gyakran olyan tranzakciókat hajtanak végre, amelyek csak egy sorra vagy a séma sorainak egy kis csoportjára vonatkoznak.
 
 > [!NOTE]
-> Az SQL Database mostantól lehetőséget nyújt, amelyek segítik a horizontális skálázás könyvtárba. További információkért lásd: [Elastic Database-ügyfélkódtár áttekintése](sql-database-elastic-database-client-library.md).
+> A SQL Database mostantól biztosít egy könyvtárat, amely segít a horizontális felskálázásban. További információ: [Elastic Database ügyféloldali kódtár – áttekintés](sql-database-elastic-database-client-library.md).
 
-Például ha egy adatbázis ügyfél neve, sorrend és rendelés részletei (például a hagyományos példa Northwind adatbázist részét képező SQL Server), akkor tehet fel ezeket az adatokat több adatbázis-okat a kapcsolódó rendelési és a rendelések részleteit ügyfél információk. Garantálhatja, hogy a vásárlói adatokat az egyes adatbázisok marad. Az alkalmazás különböző ügyfelektől lenne elosztja a adatbázisok gyakorlatilag a terhelés elosztható a több adatbázis között. Horizontális skálázási ügyfelek nem csupán elkerülheti a maximális méretkorlátot, de Azure SQL Database is képes feldolgozni, amelyek jelentősen nagyobb, mint a különböző számítási méretekre korlátozásait, mindaddig, amíg minden egyes adatbázis illik bele a dtu-k számítási feladatokhoz.
+Ha például egy adatbázis az ügyfél nevét, sorrendjét és a rendelés részleteit (például a SQL Servert tartalmazó hagyományos Northwind-adatbázist) használja, akkor az adatokat több adatbázisra is feloszthatja, ha csoportosítja az ügyfelet a kapcsolódó sorrendtel és a rendelés részleteivel. információk. Garantálhatja, hogy az ügyfél adatvédelme egy különálló adatbázisban maradjon. Az alkalmazás különböző ügyfeleket oszt szét az adatbázisok között, így hatékonyan terjeszti a terhelést több adatbázis között. A horizontális felskálázással az ügyfelek nem csak a maximális adatbázis-méretet tudják elkerülni, de Azure SQL Database a különböző számítási méretek korlátainál lényegesen nagyobb munkaterheléseket is feldolgozhatnak, feltéve, hogy minden egyes adatbázis illeszkedik a DTU.
 
-Bár az adatbázis horizontális skálázási megoldás összesített erőforrás-kapacitása nem csökkenthető, több adatbázis futó nagyon nagy méretű megoldások támogatása rendkívül hatékony. Minden adatbázis a különböző számítási méret támogatása nagyon nagy méretű, magas erőforrás-igényű adatbázisok "érvényes" futtathatja.
+Bár az adatbázisok horizontális felskálázása nem csökkenti a megoldás összesített erőforrás-kapacitását, rendkívül hatékony a több adatbázison keresztül elosztott, nagyon nagy megoldások támogatásához. Az egyes adatbázisok más számítási méretekben futhatnak, hogy a nagyon nagy, "hatékony" és magas erőforrás-igényű adatbázisokra is felhasználhatók legyenek.
 
 ### <a name="functional-partitioning"></a>Funkcionális particionálás
 
-SQL Server-felhasználók gyakran össze az egyes adatbázisok számos függvényei. Például ha egy alkalmazás logikai kezelheti a készletet egy tároló, a, hogy az adatbázis előfordulhat Készletkövetés vásárlási megrendelést, a tárolt eljárások és a hónap vége jelentéskészítés kezelése az indexelt vagy tényleges táblán alapuló nézetek társított logikát. Ez a technika megkönnyíti a különböző műveletek, mint például a biztonsági mentés felügyeletéhez, de azt is szükséges, hogy a hardvert, hogy a maximális terhelés kezeléséhez minden functions-alkalmazások közötti méretre.
+SQL Server a felhasználók gyakran egyesítenek számos függvényt egy adott adatbázisban. Ha például egy alkalmazás logikával kezeli az áruház leltárát, akkor az adatbázishoz a leltárhoz, a beszerzési rendelésekhez, a tárolt eljárásokhoz, valamint a hónap végét kezelő, indexelt vagy jelentős nézetekhez tartozó logika tartozhat. Ezzel a technikával könnyebben felügyelheti az adatbázist olyan műveletekhez, mint a biztonsági mentés, de a hardver méretét is megköveteli, hogy a maximális terhelést az alkalmazás összes funkcióján kezeljék.
 
-Ha egy Azure SQL Database-ben kibővített architektúrát használ, érdemes felosztani a különböző funkciók különböző adatbázisok egy alkalmazás Ez a módszer használata esetén mindegyik alkalmazás egymástól függetlenül méretezhető. Egy alkalmazás elfoglaltabb válik (és az adatbázison a terhelés növekszik), a rendszergazdák kiválaszthatják független számítási méretei minden függvény az alkalmazásban. Címen a határt, ebben az architektúrában az alkalmazás lehet nagyobb, mint egy hagyományos egyetlen gép képes kezelni, mert a terhelés több gép között megoszlik.
+Ha kibővíthető architektúrát használ a Azure SQL Databaseban, érdemes lehet egy alkalmazás különböző funkcióit különböző adatbázisokra bontani. Ezzel a technikával az egyes alkalmazások egymástól függetlenül méretezhetők. Mivel az alkalmazás válik elérhetővé (és az adatbázis terhelése növekszik), a rendszergazda az alkalmazás egyes funkcióinak független számítási méreteit is kiválaszthatja. Ebben az architektúrában a korlátnál egy alkalmazás nagyobb lehet, mint egy árucikk-gép, mert a terhelés több gépen is eloszlik.
 
-### <a name="batch-queries"></a>Kötegelt lekérdezések
+### <a name="batch-queries"></a>Batch-lekérdezések
 
-Alkalmazásokhoz, melyek segítségével a nagy mennyiségű adatok eléréséhez az ad hoc kérdez le, gyakori válaszidő jelentős mennyiségű van költött az alkalmazás és az Azure SQL Database réteget közötti hálózati kommunikáció. Akkor is, ha az alkalmazás és az Azure SQL Database találhatók ugyanabban az adatközpontban, a kettő közötti hálózati késés előfordulhat, hogy lehet rögzített adatok nagy számú adatelérési műveletek. A csökkentéséhez le ciklikus léptető az adatelérési műveletek esetében, érdemes lehet a beállítást vagy a az ad hoc lekérdezéseket kötegelt, illetve a tárolt eljárások fordítsa őket. Ha az ad hoc lekérdezéseket kötegelt, az Azure SQL Database több lekérdezés elküldheti az egyetlen adatváltási egy nagy méretű Batch. Összeállíthatja a tárolt ad hoc lekérdezéseket, mintha azokat, a batch érhet el tudta ugyanazt az eredményt. Tárolt eljárás használatával is biztosít az Azure SQL Database-ben a lekérdezésterveket gyorsítótárazási, így ismét használhatja a tárolt eljárás nagyobb eséllyel előnyeit.
+Az olyan alkalmazások esetében, amelyek nagy mennyiségű, gyakori, ad hoc lekérdezéssel érik el az adatelérést, jelentős mennyiségű válaszidő kerül elköltésre az alkalmazási réteg és a Azure SQL Databasei réteg közötti hálózati kommunikáció során. Még ha az alkalmazás és a Azure SQL Database is ugyanabban az adatközpontban található, akkor a kettő közötti hálózati késést nagy számú adatelérési művelettel lehet kinagyítani. Ha csökkenteni szeretné az adatelérési műveletek hálózati menetét, érdemes lehet az ad hoc lekérdezéseket batch használatával vagy tárolt eljárásként lefordítani. Ha az ad hoc lekérdezéseket kötegbe helyezi, több lekérdezés is elküldhető egyetlen útvonalon a Azure SQL Databaseba. Ha egy tárolt eljárásban ad hoc lekérdezéseket fordít, akkor ugyanazt az eredményt érheti el, mint ha batch-t használ. A tárolt eljárások használatával a Azure SQL Database a lekérdezési csomagok gyorsítótárazásának esélyét is, így újra használhatja a tárolt eljárást.
 
-Egyes alkalmazások célozzák. Néha csökkentheti egy adatbázis teljes i/o terhelését a mérlegeli írások kötegelendő hogyan. Ez gyakran előfordul, a bonyolultabb, mint az explicit tranzakciók a tárolt eljárások és ad-hoc kötegek automatikusan véglegesítési tranzakció helyett. Különböző módszereket használhat értékelése, lásd: [Azure SQL Database-alkalmazások technikák kötegelés](https://msdn.microsoft.com/library/windowsazure/dn132615.aspx). Kísérletezzen a saját számítási feladatok, a jobb oldali modell található a kötegelés. Győződjön meg arról, a modell előfordulhat, hogy kissé eltérő tranzakciós konzisztenciagaranciákat rendelkezni. Keresés, így segít csökkenti az erőforrás-használat megfelelő számítási feladatokra van szükség konzisztencia és a teljesítmény feláldozását kombinációjával keresése.
+Egyes alkalmazások írási Igényűek. Előfordulhat, hogy az adatbázis teljes i/o-terhelését úgy csökkenti, hogy a Batch-írásokat együtt szeretné megfontolni. Ez gyakran olyan egyszerű, mint a Explicit tranzakciók használata a tárolt eljárásokban és ad hoc kötegekben lévő tranzakciók automatikus véglegesítés helyett. A különböző használható technikák kiértékelését lásd: az [Azure-beli SQL Database alkalmazások kötegelt feldolgozásának módszerei](https://msdn.microsoft.com/library/windowsazure/dn132615.aspx). Kísérletezzen a saját számítási feladataival, és keresse meg a megfelelő modellt a kötegelt feldolgozáshoz. Ügyeljen arra, hogy a modell némileg eltérő tranzakciós konzisztencia-garanciával rendelkezzen. Az erőforrás-használatot lecsökkentő megfelelő számítási feladatok megtalálásához a konzisztencia és a teljesítmény-kompromisszum megfelelő kombinációját kell megkeresni.
 
-### <a name="application-tier-caching"></a>Alkalmazásrétegek gyorsítótárazás
+### <a name="application-tier-caching"></a>Alkalmazás-réteg gyorsítótárazása
 
-Egyes adatbázis-alkalmazások rendelkezik olvasási számítási feladatokhoz. Gyorsítótárazás rétegek előfordulhat, hogy csökkentse az adatbázis terhelését, és előfordulhat, hogy lehetséges csökkentése érdekében a számítási méret az Azure SQL Database-adatbázis támogatásához szükséges. A [Azure Cache redis](https://azure.microsoft.com/services/cache/), ha egy olvasási munkaterhelés, többször is beolvashatja az adatokat (vagy egyszer gépenként alkalmazásrétegek – konfigurációjától függően), és biztonságosan tárolja a kívül az SQL-adatbázis az adatokat. Ezzel a módszerrel (Processzor- és olvasási i/o-) adatbázisok terhelésének csökkentése érdekében, de nincs tranzakció-konzisztencia hatással lesz, mivel előfordulhat, hogy az adatok olvasása a gyorsítótárból nincs szinkronban az adatokat az adatbázisban. Számos alkalmazásban a bizonyos fokú inkonzisztenciát nem elfogadható, ez nem igaz, bármely számítási feladat számára. Egy alkalmazás szintű gyorsítótárazási stratégia megvalósítása előtt, teljes mértékben ismernie kell minden olyan alkalmazás követelményeinek.
+Egyes adatbázis-alkalmazások olvasási és nagy terheléssel rendelkeznek. A gyorsítótárazási rétegek csökkenthetik az adatbázis terhelését, és esetleg csökkenthetik az adatbázisok támogatásához szükséges számítási méretet Azure SQL Database használatával. Ha a [Redis-hez Azure cache](https://azure.microsoft.com/services/cache/)-t használ, akkor az adatok beolvasása nagy terheléssel elvégezhető egyszer (vagy akár egyszer az alkalmazási rétegbeli gépen, attól függően, hogy hogyan van konfigurálva), majd az SQL-adatbázison kívül tárolja azokat. Ez az adatbázis terhelésének (CPU és olvasási IO) csökkentése, de hatással van a tranzakciós konzisztenciare, mert előfordulhat, hogy a gyorsítótárból beolvasott adatok nem szinkronizálhatók az adatbázisban lévő adatokkal. Bár számos alkalmazásban elfogadható bizonyos fokú inkonzisztencia, ez nem igaz az összes számítási feladathoz. Az alkalmazásokra vonatkozó követelmények teljes mértékben tisztában kell lennie az alkalmazási szintű gyorsítótárazási stratégia megvalósítása előtt.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a DTU-alapú szolgáltatásszintek: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md).
-- További információ a Virtuálismag-alapú szolgáltatásszintek: [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
-- Rugalmas készletek kapcsolatos további információkért lásd: [Mi az az Azure rugalmas készlet?](sql-database-elastic-pool.md)
-- Teljesítmény és a rugalmas készletek kapcsolatos információkért lásd: [mikor érdemes rugalmas készlet](sql-database-elastic-pool-guidance.md)
+- A DTU-alapú szolgáltatási rétegekkel kapcsolatos további információkért lásd: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md).
+- A virtuális mag-alapú szolgáltatási rétegekkel kapcsolatos további információkért lásd: [virtuális mag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
+- További információ a rugalmas készletekről: [Mi az az Azure rugalmas készlet?](sql-database-elastic-pool.md)
+- További információ a teljesítményről és a rugalmas készletekről: [Mikor érdemes rugalmas készletet fontolóra venni](sql-database-elastic-pool-guidance.md)

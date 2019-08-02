@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896cc495d6f369c034171833a9b90aa53e6477b6
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 12452b4e9cc6caa64d4c81a310fbccb5d1717817
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234629"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678162"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Mi az Azure AD-jogosultságok kezelése? (Előzetes verzió)
 
@@ -80,7 +80,7 @@ Az Azure AD biztonsági csoportjaira vagy az Office 365-csoportokra támaszkodó
 
 ## <a name="what-are-access-packages-and-policies"></a>Mik azok a hozzáférési csomagok és szabályzatok?
 
-A jogosultságok kezelése bevezeti a *hozzáférési csomag*fogalmát. A hozzáférési csomag az összes olyan erőforrás kötegét képezi, amelyet a felhasználónak egy projekten kell dolgoznia, vagy feladatait kell végrehajtania. Az erőforrások közé tartoznak a csoportok, az alkalmazások és a webhelyek hozzáférése. A hozzáférési csomagok a belső alkalmazottak és a szervezeten kívüli felhasználók hozzáférésének szabályozására szolgálnak. A hozzáférési csomagok a katalógusok nevű tárolókban vannak meghatározva.
+A jogosultságok kezelése bevezeti a *hozzáférési csomag*fogalmát. A hozzáférési csomag az összes olyan erőforrás kötegét képezi, amelyet a felhasználónak egy projekten kell dolgoznia, vagy feladatait kell végrehajtania. Az erőforrások közé tartoznak a csoportok, az alkalmazások és a webhelyek hozzáférése. A hozzáférési csomagok a belső alkalmazottak és a szervezeten kívüli felhasználók hozzáférésének szabályozására szolgálnak. A hozzáférési csomagok a katalógusok nevűtárolókban vannak meghatározva.
 
 A hozzáférési csomagok egy vagy több *szabályzatot*is tartalmaznak. A szabályzatok határozzák meg a hozzáférési csomag elérésére vonatkozó szabályokat vagy guardrails. A szabályzat engedélyezése kényszeríti, hogy csak a megfelelő felhasználók férhessenek hozzá a megfelelő erőforrásokhoz, és a megfelelő időtartamra.
 
@@ -90,7 +90,7 @@ A hozzáférési csomag és a hozzá tartozó házirendek esetében a hozzáfér
 
 - További források
 - A felhasználók számára szükséges szerepkörök az erőforrásokhoz
-- Belső felhasználók és külső felhasználók, akik jogosultak a hozzáférés kérésére
+- A hozzáférést kérő külső felhasználók belső felhasználói és partnerszervezetek
 - Jóváhagyási folyamat és a hozzáférést engedélyező vagy megtagadó felhasználók
 - A felhasználó hozzáférésének időtartama
 
@@ -123,12 +123,12 @@ A jogosultságok kezelésének és dokumentációjának jobb megismeréséhez te
 | policy | Olyan szabályok összessége, amelyek meghatározzák a hozzáférési életciklust, például azt, hogy a felhasználók hogyan férhetnek hozzá, ki hagyhatják jóvá, és hogy mennyi ideig férhetnek hozzá a felhasználók. Például a szabályzatok az alkalmazottak hozzáférését és a külső hozzáférést is tartalmazzák. |
 | catalog | Kapcsolódó erőforrások és hozzáférési csomagok tárolója. |
 | Általános katalógus | Olyan beépített katalógus, amely mindig elérhető. Ahhoz, hogy erőforrásokat vegyen fel az általános katalógusba, bizonyos engedélyekre van szükség. |
-| resource | Olyan eszköz vagy szolgáltatás (például csoport, alkalmazás vagy hely), amelyhez a felhasználó engedélyt kaphat. |
-| Erőforrás típusa | Az erőforrás típusa, amely magában foglalja a csoportokat, az alkalmazásokat és a SharePoint Online-webhelyeket. |
+| resource | Egy eszköz vagy szolgáltatás (például egy Office-csoport, egy biztonsági csoport, egy alkalmazás vagy egy SharePoint Online-webhely) számára, amelyhez engedélyeket adhat a felhasználóknak. |
+| erőforrástípus | Az erőforrás típusa, amely magában foglalja a csoportokat, az alkalmazásokat és a SharePoint Online-webhelyeket. |
 | erőforrás-szerepkör | Egy erőforráshoz társított engedélyek gyűjteménye. |
 | erőforrás könyvtára | Egy vagy több megosztani kívánt erőforrással rendelkező könyvtár. |
-| hozzárendelt felhasználók | Hozzáférési csomag hozzárendelése egy felhasználóhoz vagy csoporthoz. |
-| Engedélyezése | Hozzáférési csomag elérhetővé tétele a felhasználók számára a kéréshez. |
+| hozzárendelt felhasználók | Hozzáférési csomag hozzárendelése egy felhasználóhoz, így a felhasználó rendelkezik az adott hozzáférési csomag összes erőforrás-szerepkörével. |
+| engedélyezése | Hozzáférési csomag elérhetővé tétele a felhasználók számára a kéréshez. |
 
 ## <a name="license-requirements"></a>Licenckövetelmények
 

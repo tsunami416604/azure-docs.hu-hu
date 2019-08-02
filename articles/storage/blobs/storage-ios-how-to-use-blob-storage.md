@@ -1,21 +1,18 @@
 ---
 title: Az Object (blob) tároló használata iOS-ről – Azure | Microsoft Docs
 description: Store unstructured data in the cloud with Azure Blob storage (object storage) (Strukturálatlan adatok tárolása a felhőben Azure Blob Storage-fiókkal (objektumtároló)).
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.devlang: objective-c
-ms.topic: article
-ms.date: 11/20/2018
 ms.author: mhopkins
-ms.reviewer: seguler
+ms.date: 11/20/2018
+ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: 2d44dabe68900aa45b076f44cc38ed85d6938afa
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.topic: conceptual
+ms.openlocfilehash: 54085d602246d38adb970ed02f451241ca7ba19d
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249951"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726399"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>BLOB Storage használata az iOS-ből
 
@@ -26,16 +23,19 @@ További információ a blob Storage-ról: [Az Azure Blob Storage bemutatása](s
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="import-the-azure-storage-ios-library-into-your-application"></a>Az Azure Storage iOS-függvénytár importálása az alkalmazásba
+
 Az Azure Storage iOS-függvénytárát az [Azure Storage CocoaPod](https://cocoapods.org/pods/AZSClient) vagy a **keretrendszer** fájljának importálásával importálhatja az alkalmazásba. A CocoaPod az ajánlott módszer, mivel megkönnyíti a könyvtár integrálását, azonban a keretrendszer fájlból való importálás kevésbé zavaró a meglévő projekthez.
 
 A könyvtár használatához a következőkre lesz szüksége:
+
 - iOS 8+
 - Xcode 7 +
 
 ## <a name="cocoapod"></a>CocoaPod
+
 1. Ha még nem tette meg, [telepítse a CocoaPods](https://guides.cocoapods.org/using/getting-started.html#toc_3) a számítógépre a terminálablak megnyitásával és a következő parancs futtatásával
-    
-    ```shell   
+
+    ```shell
     sudo gem install cocoapods
     ```
 
@@ -51,13 +51,14 @@ A könyvtár használatához a következőkre lesz szüksége:
 
 3. A terminál ablakban navigáljon a projekt könyvtárába, és futtassa a következő parancsot:
 
-    ```shell    
+    ```shell
     pod install
     ```
 
 4. Ha a. xcodeproj meg van nyitva a Xcode-ben, akkor zárjuk le. A projekt könyvtárában nyissa meg az újonnan létrehozott projektfájlt, amely a. xcworkspace kiterjesztéssel fog rendelkezni. Ez az a fájl, amelyről most fog dolgozni.
 
 ## <a name="framework"></a>Keretében
+
 A könyvtár használatának másik módja a keretrendszer manuális felépítése:
 
 1. Először töltse le vagy klónozott [Azure-Storage-iOS](https://github.com/azure/azure-storage-ios)-tárházat.
@@ -74,7 +75,8 @@ Ezután importálhatja a keretrendszer fájlját az alkalmazásba a következő 
 5. A *csatolt keretrendszerek és kódtárak* szakaszban kattintson a Hozzáadás gombra (+).
 6. A már megadott könyvtárak listájában keresse `libxml2.2.tbd` meg és adja hozzá a projekthez.
 
-## <a name="import-the-library"></a>A könyvtár importálása 
+## <a name="import-the-library"></a>A könyvtár importálása
+
 ```objc
 // Include the following import statement to use blob APIs.
 #import <AZSClient/AZSClient.h>
@@ -91,12 +93,12 @@ Ha Swift-t használ, létre kell hoznia egy áthidaló fejlécet, és importáln
 [!INCLUDE [storage-mobile-authentication-guidance](../../../includes/storage-mobile-authentication-guidance.md)]
 
 ## <a name="asynchronous-operations"></a>Aszinkron műveletek
+
 > [!NOTE]
 > A szolgáltatással kapcsolatos kérelmeket végrehajtó összes módszer aszinkron művelet. A kód példákban azt tapasztalhatja, hogy ezek a metódusok befejező kezelővel rendelkeznek. A befejezési kezelőn belüli kód a kérelem befejeződése **után** fog futni. A rendszer a befejezési **kezelő futtatása után** futtatja a kérést.
-> 
-> 
 
 ## <a name="create-a-container"></a>Tároló létrehozása
+
 Az Azure Storage-ban minden blobnak egy tárolóban kell lennie. Az alábbi példa bemutatja, hogyan hozhat létre egy *newcontainer*nevű tárolót a Storage-fiókban, ha még nem létezik. A tároló nevének kiválasztásakor szem előtt kell lennie a fent említett elnevezési szabályoknak.
 
 ```objc
@@ -128,11 +130,12 @@ Az Azure Storage-ban minden blobnak egy tárolóban kell lennie. Az alábbi pél
 Ennek ellenőrzéséhez tekintse meg a [Microsoft Azure Storage Explorer](https://storageexplorer.com) , és ellenőrizze, hogy a *newcontainer* szerepel-e a Storage-fiókhoz tartozó tárolók listáján.
 
 ## <a name="set-container-permissions"></a>Tároló engedélyeinek beállítása
+
 A tároló engedélyei alapértelmezés szerint a **magánhálózati** hozzáférésre vannak konfigurálva. A tárolók azonban néhány különböző lehetőséget biztosítanak a tárolók eléréséhez:
 
-* **Magánjellegű**: A tároló-és blob-adatkészleteket csak a fiók tulajdonosa tudja beolvasni.
-* **Blob**: A tárolóban található blob-információk névtelen kéréssel olvashatók, de a tárolók nem érhetők el. Az ügyfelek névtelen kéréssel nem tudják enumerálni a tárolóban lévő blobokat.
-* **Tároló**: A tárolók és a Blobok adatolvasása névtelen kéréssel végezhető el. Az ügyfelek névtelen kéréssel enumerálják a tárolóban lévő blobokat, de nem tudják enumerálni a tároló fiókjában lévő tárolókat.
+- **Magánjellegű**: A tároló-és blob-adatkészleteket csak a fiók tulajdonosa tudja beolvasni.
+- **Blob**: A tárolóban található blob-információk névtelen kéréssel olvashatók, de a tárolók nem érhetők el. Az ügyfelek névtelen kéréssel nem tudják enumerálni a tárolóban lévő blobokat.
+- **Tároló**: A tárolók és a Blobok adatolvasása névtelen kéréssel végezhető el. Az ügyfelek névtelen kéréssel enumerálják a tárolóban lévő blobokat, de nem tudják enumerálni a tároló fiókjában lévő tárolókat.
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy tároló- **hozzáférési** engedélyekkel rendelkező tárolót, amely lehetővé teszi a nyilvános, csak olvasási hozzáférést az interneten lévő összes felhasználó számára:
 
@@ -163,6 +166,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy tároló- **hozzáférési
 ```
 
 ## <a name="upload-a-blob-into-a-container"></a>Blobok feltöltése a tárolóba
+
 Ahogy azt a Blob service fogalmak szakaszban is említettük, Blob Storage három különböző típusú blobot kínál: Blobok, blobok hozzáfűzése és Blobok. Az Azure Storage iOS-függvénytár a Blobok mindhárom típusát támogatja. A legtöbb esetben a blokkblobok használata javasolt.
 
 Az alábbi példa bemutatja, hogyan tölthet fel egy blokk-blobot egy NSString. Ha a tárolóban már van ilyen nevű blob, a blob tartalma felül lesz írva.
@@ -206,25 +210,28 @@ Az alábbi példa bemutatja, hogyan tölthet fel egy blokk-blobot egy NSString. 
 
 Ennek ellenőrzéséhez tekintse meg a [Microsoft Azure Storage Explorer](https://storageexplorer.com) , és ellenőrizze, hogy a tároló ( *containerpublic*) tartalmazza-e a blobot ( *sampleblob*). Ebben a példában egy nyilvános tárolót használunk, így azt is ellenőrizheti, hogy az alkalmazás működik-e a Blobok URI-ja:
 
-    https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
+```http
+https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
+```
 
 A blokk Blobok NSString való feltöltése mellett a NSData, a NSInputStream vagy egy helyi fájlhoz hasonló metódusok is léteznek.
 
 ## <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
-Az alábbi példa bemutatja, hogyan listázhatja ki a tárolóban lévő összes blobot. A művelet végrehajtásakor a következő paramétereket kell szem előtt tartva:     
 
-* **continuationtoken argumentumot használja** – a folytatási token azt jelöli, hogy a listázási művelet mikor induljon el. Ha nem ad meg jogkivonatot, a rendszer az elejéről listázza a blobokat. Tetszőleges számú blobot lehet kilistázni, nullától akár legfeljebb egy készletig. Még akkor is, ha ez a metódus nulla `results.continuationToken` eredményt ad vissza, ha az nem üres, akkor a szolgáltatásban további Blobok jelenhetnek meg, amelyek nem szerepelnek a felsorolásban.
-* **előtag** – megadhatja a Blobok listázásához használandó előtagot. Csak a jelen előtaggal kezdődő Blobok jelennek meg.
-* **useflatbloblisting paraméterét** – ahogy azt a [tárolók elnevezése és a hivatkozó tárolók és Blobok](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) szakaszban is említettük, bár a blob Service egy egyszerű tárolási séma, a Blobok elérésiút-információkkal történő elnevezésével létrehozható egy virtuális hierarchia. A nem lapos felsorolás azonban jelenleg nem támogatott. Ez a funkció hamarosan elérhető lesz. Egyelőre ez az érték **Igen**.
-* **blobListingDetails** – megadhatja, hogy mely elemek szerepeljenek a Blobok listázásakor
-  * _AZSBlobListingDetailsNone_: Csak a véglegesített Blobok listázása, és a blob metaadatainak visszaküldése nem történik meg.
-  * _AZSBlobListingDetailsSnapshots_: Véglegesített blobok és blob-Pillanatképek listázása.
-  * _AZSBlobListingDetailsMetadata_: A listában visszaadott Blobok metaadatainak beolvasása.
-  * _AZSBlobListingDetailsUncommittedBlobs_: Véglegesített és nem véglegesített Blobok listázása.
-  * _AZSBlobListingDetailsCopy_: A lista másolási tulajdonságainak belefoglalása.
-  * _AZSBlobListingDetailsAll_: Felsorolja az összes elérhető véglegesített blobot, a nem véglegesített blobokat és a pillanatképeket, és visszaküldi a Blobok összes metaadatát és másolási állapotát.
-* **maxResults** – a művelethez visszaadni kívánt eredmények maximális száma. Ha nem állít be korlátot, használja az-1 értéket.
-* **completionHandler** – a listázási művelet eredményeivel végrehajtandó kód blokkja.
+Az alábbi példa bemutatja, hogyan listázhatja ki a tárolóban lévő összes blobot. A művelet végrehajtásakor a következő paramétereket kell szem előtt tartva:
+
+- **continuationtoken argumentumot használja** – a folytatási token azt jelöli, hogy a listázási művelet mikor induljon el. Ha nem ad meg jogkivonatot, a rendszer az elejéről listázza a blobokat. Tetszőleges számú blobot lehet kilistázni, nullától akár legfeljebb egy készletig. Még akkor is, ha ez a metódus nulla `results.continuationToken` eredményt ad vissza, ha az nem üres, akkor a szolgáltatásban további Blobok jelenhetnek meg, amelyek nem szerepelnek a felsorolásban.
+- **előtag** – megadhatja a Blobok listázásához használandó előtagot. Csak a jelen előtaggal kezdődő Blobok jelennek meg.
+- **useflatbloblisting paraméterét** – ahogy azt a [tárolók elnevezése és a hivatkozó tárolók és Blobok](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) szakaszban is említettük, bár a blob Service egy egyszerű tárolási séma, a Blobok elérésiút-információkkal történő elnevezésével létrehozható egy virtuális hierarchia. A nem lapos felsorolás azonban jelenleg nem támogatott. Ez a funkció hamarosan elérhető lesz. Egyelőre ez az érték **Igen**.
+- **blobListingDetails** – megadhatja, hogy mely elemek szerepeljenek a Blobok listázásakor
+  - _AZSBlobListingDetailsNone_: Csak a véglegesített Blobok listázása, és a blob metaadatainak visszaküldése nem történik meg.
+  - _AZSBlobListingDetailsSnapshots_: Véglegesített blobok és blob-Pillanatképek listázása.
+  - _AZSBlobListingDetailsMetadata_: A listában visszaadott Blobok metaadatainak beolvasása.
+  - _AZSBlobListingDetailsUncommittedBlobs_: Véglegesített és nem véglegesített Blobok listázása.
+  - _AZSBlobListingDetailsCopy_: A lista másolási tulajdonságainak belefoglalása.
+  - _AZSBlobListingDetailsAll_: Felsorolja az összes elérhető véglegesített blobot, a nem véglegesített blobokat és a pillanatképeket, és visszaküldi a Blobok összes metaadatát és másolási állapotát.
+- **maxResults** – a művelethez visszaadni kívánt eredmények maximális száma. Ha nem állít be korlátot, használja az-1 értéket.
+- **completionHandler** – a listázási művelet eredményeivel végrehajtandó kód blokkja.
 
 Ebben a példában egy segítő metódust használunk a lista Blobok metódusának rekurzív meghívására, amikor a rendszer minden alkalommal visszaadja a folytatási tokent.
 
@@ -280,6 +287,7 @@ Ebben a példában egy segítő metódust használunk a lista Blobok metódusán
 ```
 
 ## <a name="download-a-blob"></a>Blob letöltése
+
 Az alábbi példa bemutatja, hogyan tölthető le egy blob egy NSString objektumra.
 
 ```objc
@@ -315,6 +323,7 @@ Az alábbi példa bemutatja, hogyan tölthető le egy blob egy NSString objektum
 ```
 
 ## <a name="delete-a-blob"></a>Blob törlése
+
 Az alábbi példa bemutatja, hogyan törölhet egy blobot.
 
 ```objc
@@ -347,6 +356,7 @@ Az alábbi példa bemutatja, hogyan törölhet egy blobot.
 ```
 
 ## <a name="delete-a-blob-container"></a>BLOB-tároló törlése
+
 Az alábbi példa bemutatja, hogyan törölhet egy tárolót.
 
 ```objc
@@ -376,13 +386,13 @@ Az alábbi példa bemutatja, hogyan törölhet egy tárolót.
 ```
 
 ## <a name="next-steps"></a>További lépések
+
 Most, hogy megismerte, hogyan használhatja a Blob Storaget iOS-ről, az alábbi hivatkozásokra kattintva további információkat tudhat meg az iOS-könyvtárról és a Storage szolgáltatásról.
 
-* [Azure Storage ügyféloldali kódtár iOS rendszerhez](https://github.com/azure/azure-storage-ios)
-* [Az Azure Storage iOS dokumentációja](https://azure.github.io/azure-storage-ios/)
-* [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Az Azure Storage csapat blogja](https://blogs.msdn.com/b/windowsazurestorage)
+- [Azure Storage ügyféloldali kódtár iOS rendszerhez](https://github.com/azure/azure-storage-ios)
+- [Az Azure Storage iOS dokumentációja](https://azure.github.io/azure-storage-ios/)
+- [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+- [Az Azure Storage csapat blogja](https://blogs.msdn.com/b/windowsazurestorage)
 
 Ha kérdése van a könyvtárral kapcsolatban, küldje el az [MSDN Azure](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) -fórumát vagy [stack overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
 Ha az Azure Storage szolgáltatásra vonatkozó javaslatokkal rendelkezik, tegye közzé az [Azure Storage visszajelzéseit](https://feedback.azure.com/forums/217298-storage/).
-

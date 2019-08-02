@@ -8,14 +8,14 @@ ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 07/31/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4c60cb78c01d7e18801cbe43c8b767f622ef4b39
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 3a504fe4475cee8e2949ee121c632b792f349758
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68473097"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694288"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Térinformatikai és IP-címek kezelése
 
@@ -83,16 +83,16 @@ Ha csak egyetlen Application Insights erőforrás viselkedését kell módosíta
 
     ![A képernyőfelvétel egy vesszőt ad hozzá a "IbizaAIExtension" után, és új sort ad hozzá a "DisableIpMasking" kifejezéssel: true](media/ip-collection/save.png)
 
-    > [!NOTE]
-    > Ha olyan hibát tapasztal, amely az alábbiakat írja elő: _Az erőforráscsoport olyan helyen található, amelyet a sablon egy vagy több erőforrása nem támogat. Válasszon másik erőforráscsoportot._ Ideiglenesen válasszon egy másik erőforráscsoportot a legördülő listából, majd válassza ki újra az eredeti erőforráscsoportot a hiba elhárításához.
+    > [!WARNING]
+    > Ha olyan hibát tapasztal, amely az alábbiakat írja elő: **_Az erőforráscsoport olyan helyen található, amelyet a sablon egy vagy több erőforrása nem támogat. Válasszon másik erőforráscsoportot._** Ideiglenesen válasszon egy másik erőforráscsoportot a legördülő listából, majd válassza ki újra az eredeti erőforráscsoportot a hiba elhárításához.
 
-5. Válassza  > az Elfogadom a**vásárlás**lehetőséget. 
+5. Válassza > az Elfogadom a**vásárlás**lehetőséget. 
 
     ![Sablon szerkesztése](media/ip-collection/purchase.png)
 
     Ebben az esetben semmi újat nem vásárol, csak a meglévő Application Insights erőforrás konfigurációját frissíti.
 
-6. Miután az üzembe helyezés befejeződött, a rendszer az új telemetria-adatokat rögzíti az IP-címmel feltöltött első három oktetttel és az utolsó oktetttel.
+6. Miután az üzembe helyezés befejeződött, az új telemetria-adatokat a rendszer az IP-címmel feltöltött első három oktetttel rögzíti, az utolsó oktett pedig nulla.
 
     Ha még egyszer kijelöli és szerkeszti a sablont, akkor csak az alapértelmezett sablont fogja látni, és nem fogja látni az újonnan hozzáadott tulajdonságot és a hozzá tartozó értéket. Ha nem látja az IP-címekre vonatkozó adatcímeket `"DisableIpMasking": true` , és szeretné megerősíteni, hogy a be van állítva. Futtassa a következő PowerShell-t: (Cserélje `Fabrikam-dev` le a megfelelő erőforrás-és erőforráscsoport-nevet.)
     
@@ -130,10 +130,11 @@ Content-Length: 54
 
 Ha csak az első három oktett helyett a teljes IP-címet kell rögzítenie, akkor a [telemetria inicializáló](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) segítségével átmásolhatja az IP-címet egy olyan egyéni mezőre, amely nem lesz maszkban.
 
-### <a name="aspnetaspnet-core"></a>ASP.NET/ASP.NET mag
+### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 
 namespace MyWebApp
@@ -142,15 +143,20 @@ namespace MyWebApp
     {
         public void Initialize(ITelemetry telemetry)
         {
-            if(!string.IsNullOrEmpty(telemetry.Context.Location.Ip))
+            ISupportProperties propTelemetry = telemetry as ISupportProperties;
+
+            if (propTelemetry !=null && !propTelemetry.Properties.ContainsKey("client-ip"))
             {
-                telemetry.Context.Properties["client-ip"] = telemetry.Context.Location.Ip;
+                string clientIPValue = telemetry.Context.Location.Ip;
+                propTelemetry.Properties.Add("client-ip", clientIPValue);
             }
         }
-    }
-
+    } 
 }
 ```
+
+> [!NOTE]
+> Ha nem tud hozzáférni `ISupportProperties`, ellenőrizze, hogy a Application Insights SDK legújabb stabil kiadását futtatja-e. `ISupportProperties`a magas fokú kardinális értékekhez készültek, `GlobalProperties` míg a kis-és nagymértékű értékek, például a régió neve, a környezet neve stb. megfelelőbbek. 
 
 ### <a name="enable-telemetry-initializer-for-aspnet"></a>Engedélyezze a telemetria-inicializálást a következőhöz:. ASP.NET
 

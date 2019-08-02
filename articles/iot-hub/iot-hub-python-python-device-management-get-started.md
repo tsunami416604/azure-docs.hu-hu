@@ -1,20 +1,19 @@
 ---
 title: Ismerkedés az Azure IoT Hub-eszközkezelés (Python) szolgáltatással | Microsoft Docs
 description: Távoli eszköz újraindításának kezdeményezése IoT Hub-eszközkezelés használatával. A Pythonhoz készült Azure IoT SDK-val egy olyan szimulált eszköz alkalmazást hozhat létre, amely közvetlen metódust és egy közvetlen metódust meghívó szolgáltatási alkalmazást tartalmaz.
-author: kgremban
-manager: philmea
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 02/20/2019
-ms.author: kgremban
-ms.openlocfilehash: c4c8957e8d9b355216e10503d58915977c3b9b1a
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.date: 07/30/2019
+ms.author: robinsh
+ms.openlocfilehash: daba6601c0da2bd6d1b76897e7ce1ff75da67b5b
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68403408"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667979"
 ---
 # <a name="get-started-with-device-management-python"></a>Ismerkedés az Eszközkezelővel (Python)
 
@@ -34,17 +33,11 @@ Az oktatóanyag végén két Python-konzolos alkalmazás található:
 
 * a **dmpatterns_getstarted_service.** a szimulált eszköz alkalmazásban közvetlen metódust hív meg, a válasz pedig megjeleníti a frissített jelentett tulajdonságokat.
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-* [Python 2. x vagy 3. x](https://www.python.org/downloads/). Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változóhoz. Ha a Python 2.x verziót használja, előfordulhat, hogy [telepítenie vagy frissítenie kell a *pip*-et, a Python csomagkezelő rendszerét](https://pip.pypa.io/en/stable/installing/).
+Az előfeltételek a következő telepítési utasításokkal rendelkeznek.
 
-* Az [Azure-iothub-Device-Client](https://pypi.org/project/azure-iothub-device-client/) csomag telepítése a parancs használatával`pip install azure-iothub-device-client`
-
-* Az [Azure-iothub-Service-Client](https://pypi.org/project/azure-iothub-service-client/) csomag telepítése a parancs használatával`pip install azure-iothub-service-client`
-
-* Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagra](https://www.microsoft.com/download/confirmation.aspx?id=48145) van szükség a Python natív DLL-jei használatához.
-
-* Aktív Azure-fiók. (Ha nincs fiókja, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .)
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure-bA vész-helyreállítási a mobilitási szolgáltatás automatikus frissítése |} A Microsoft Docs
-description: Ha az Azure virtuális gépek replikálása az Azure Site Recovery mobilitási szolgáltatás automatikus frissítése áttekintése.
+title: A mobilitási szolgáltatás automatikus frissítése az Azure-ban az Azure vész-helyreállítással | Microsoft Docs
+description: A mobilitási szolgáltatás automatikus frissítésének áttekintése az Azure-beli virtuális gépek Azure Site Recovery használatával történő replikálása során.
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
@@ -8,65 +8,65 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: rajanaki
-ms.openlocfilehash: 1d36145b2a38c0f1106b4468eab226996e270ae1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 92a46f7be116d0664b438c9039e311f802c873e5
+ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65922177"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68708080"
 ---
-# <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Az Azure – Azure replikációs a mobilitási szolgáltatás automatikus frissítése
+# <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>A mobilitási szolgáltatás automatikus frissítése az Azure-ról az Azure-ba történő replikációra
 
-Az Azure Site Recovery egy havi tempót használatával javítsa ki a hibákat, és javíthatja a meglévő funkciók, vagy újakat vehet fel. Maradjon naprakész a szolgáltatás, meg kell terveznie javítás központi telepítés minden hónapban. Minden egyes frissítés kapcsolódó terhelés elkerülése érdekében a Site Recovery összetevőinek frissítései kezeléséhez inkább engedélyezheti.
+Azure Site Recovery a havi kiadási lépésszám segítségével elháríthatja a problémákat, és javíthatja a meglévő szolgáltatásokat, illetve újakat vehet fel. Ha továbbra is meg szeretné őrizni a szolgáltatást, minden hónapban meg kell terveznie a javítások telepítését. Az egyes frissítésekhez kapcsolódó terhelés elkerülése érdekében Ehelyett engedélyezheti Site Recovery számára az összetevők frissítését.
 
-Az említett [Azure – Azure vészhelyreállítási recovery architektúrájáról](azure-to-azure-architecture.md), a mobilitási szolgáltatás telepítve van az összes Azure virtuális gépeken (VM), amelynek replikálás engedélyezve van, miközben a virtuális gépek replikálása egyik Azure-régióból a másikba. Ha az automatikus frissítéseket használja, minden egyes új kiadással frissíti a mobilitási szolgáltatás bővítmény.
+Az [Azure – Azure vész-helyreállítási architektúrában](azure-to-azure-architecture.md)említettek szerint a mobilitási szolgáltatás minden olyan Azure-beli virtuális gépre (VM) telepítve van, amelyen engedélyezve van a replikáció, miközben a virtuális gépeket az egyik Azure-régióból a másikba replikálja. Ha automatikus frissítéseket használ, minden új kiadás frissíti a mobilitási szolgáltatás bővítményét.
  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="how-automatic-updates-work"></a>Automatikus frissítések munka
+## <a name="how-automatic-updates-work"></a>Az automatikus frissítések működése
 
-A Site Recovery segítségével kezelheti a frissítéseket, amikor automation-fiók, és a tárolónak ugyanabban az előfizetésben létrehozott keresztül globális (az Azure-szolgáltatások által használt) runbook helyez üzembe. Az egyes tárolókban egy automation-fiókot használ. A runbook egy tárolót az active automatikusan frissül az egyes virtuális gépekre keres, és frissíti a mobilitási szolgáltatás bővítmény, ha egy újabb verzió érhető el.
+Ha a Site Recovery használatával kezeli a frissítéseket, az az Azure-szolgáltatások által használt globális runbook helyez üzembe egy Automation-fiókon keresztül, amely ugyanabban az előfizetésben jön létre, mint a tároló. Mindegyik tároló egy Automation-fiókot használ. A runbook a tárolóban lévő összes virtuális gépet ellenőrzi az aktív automatikus frissítésekhez, és frissíti a mobilitási szolgáltatás bővítményét, ha újabb verzió érhető el.
 
-Az alapértelmezett runbook-ütemezés szerint naponta 12:00 órakor, a replikált virtuális gép földrajzi időzónájában továbbra is megjelenik. A runbook-ütemezés az automation-fiók használatával is módosíthatja.
+Az alapértelmezett runbook a replikált virtuális gép földrajzi helyének időzónájában naponta ismétlődik a 12:00-es időpontban. A runbook-ütemtervet az Automation-fiók használatával is módosíthatja.
 
 > [!NOTE]
-> Frissítés összegző 35 kezdve, kiválaszthatja a frissítések meglévő automation-fiókot. Ez a frissítés előtt a Site Recovery alapértelmezés szerint létrehozott ezt a fiókot. Ezzel a beállítással engedélyezheti a virtuális gép replikációját esetén érhető el. Ha módosítja a beállítást, minden Azure-beli virtuális gépek ugyanahhoz a tárolóhoz a védett érvényesek.
+> A 35-es kumulatív frissítéstől kezdve kiválaszthatja a frissítésekhez használandó meglévő Automation-fiókot. A frissítés előtt Site Recovery alapértelmezés szerint létrehozta ezt a fiókot. Ez a beállítás akkor érhető el, ha engedélyezi a virtuális gép replikálását. Ha módosítja a beállítást, a rendszer az azonos tárolóban lévő összes Azure-beli virtuális gép esetében alkalmazza.
  
-> Automatikus frissítés bekapcsolása nem kell indítani az Azure-beli virtuális gépek vagy hatással vannak a folyamatban lévő replikáció.
+> Az automatikus frissítések bekapcsolása nem igényli az Azure-beli virtuális gépek újraindítását, vagy a folyamatban lévő replikációt is befolyásolja.
 
-> Az automation-fiókban számlázási feladat az adott hónapban felhasznált feladat modul percben alapul. Alapértelmezés szerint 500 perc is tartozó automation-fiók ingyenes egységek. Feladat végrehajtása néhány másodperc alatt körülbelül egy percig minden nap, és az ingyenes egységek képezi.
+> Az Automation-fiókban a feladatok számlázása a hónap során felhasznált feladatok futtatókörnyezeti percének számától függ. Alapértelmezés szerint a 500 perc egy Automation-fiókhoz ingyenes egységként szerepel. A feladatok végrehajtása naponta körülbelül egy percet vesz igénybe, és ingyenes egységként van lefoglalva.
 
-| (Havonta) a szolgáltatásban foglalt ingyenes egységek | Ár |
+| A csomagban foglalt ingyenes egységek (havonta) | Ár |
 |---|---|
-| Feladat futási ideje 500 perc | ₹0.14 / perc
+| Feladatok futtatókörnyezete 500 perc | ₹ 0.14/perc
 
 ## <a name="enable-automatic-updates"></a>Automatikus frissítések engedélyezése
 
-Engedélyezheti, hogy a Site Recovery a következő módokon kezelheti a frissítéseket.
+A következő módokon engedélyezheti Site Recovery számára a frissítések kezelését.
 
-### <a name="manage-as-part-of-the-enable-replication-step"></a>A replikáció engedélyezése lépés részeként kezelése
+### <a name="manage-as-part-of-the-enable-replication-step"></a>Kezelés a replikálás engedélyezése lépés részeként
 
-Amikor engedélyezi egy virtuális gép replikációját vagy indítása [a Virtuálisgép-nézetből](azure-to-azure-quickstart.md) vagy [a recovery services-tárolót a](azure-to-azure-how-to-enable-replication.md), vagy engedélyezheti a Site Recovery-bővítmény frissítéseinek kezeléséhez, vagy kezelheti, a Site Recovery manuálisan.
+Ha engedélyezi egy virtuális gép replikálását [a](azure-to-azure-quickstart.md) virtuálisgép-nézetből vagy [a Recovery Services](azure-to-azure-how-to-enable-replication.md)-tárolóból, engedélyezheti site Recovery számára a site Recovery bővítmény frissítéseinek kezelését, vagy manuálisan is kezelheti azt.
 
-![Bővítmény-beállítások](./media/azure-to-azure-autoupdate/enable-rep.png)
+![Bővítmény beállításai](./media/azure-to-azure-autoupdate/enable-rep.png)
 
-### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>Váltás a bővítményt a táron belüli beállításainak frissítése
+### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>A bővítmény frissítési beállításainak váltása a tárolón belül
 
-1. Lépjen a táron belüli **kezelés** > **Site Recovery-infrastruktúra**.
-2. A **az Azure Virtual Machines** > **bővítmény frissítési beállítások**, kapcsolja be a **kezelése lehetővé teszi a Site Recovery** be-vagy kikapcsolása. Manuálisan kezeléséhez, kapcsolja ki. 
+1. A tárolóban lépjen a**site Recovery infrastruktúra** **kezelése** > elemre.
+2. Az **Azure Virtual Machines** > **bővítmény frissítési beállításai**területen kapcsolja be a **site Recovery engedélyezése a váltógomb kezelésére lehetőséget** . A manuális kezeléshez kapcsolja ki. 
 3. Kattintson a **Mentés** gombra.
 
-![Bővítmény frissítési beállítások](./media/azure-to-azure-autoupdate/vault-toggle.png)
+![Bővítmény frissítési beállításai](./media/azure-to-azure-autoupdate/vault-toggle.png)
 
 > [!Important]
-> Ha úgy dönt **kezelése lehetővé teszi a Site Recovery**, a beállítást alkalmazza a megfelelő tárolóban lévő összes virtuális gépet.
+> Ha a **kezelés engedélyezése site Recovery lehetőséget**választja, a rendszer a megfelelő tárolóban lévő összes virtuális gépre alkalmazza a beállítást.
 
 
 > [!Note]
-> Bármelyik beállítást is választja értesíti a frissítések felügyeletére szolgáló automation-fiók. Ha ez a funkció egy tárolót az első alkalommal használ, a szolgáltatás alapértelmezés szerint létrehoz egy új automation-fiókot. Azt is megteheti testre szabhatja a beállítást, és válasszon egy meglévő automation-fiókot. Minden ezt követő engedélyezése replikációk az ugyanahhoz a tárolóhoz használja a korábban létrehozott.
+> Bármelyik lehetőség értesíti a frissítések kezeléséhez használt Automation-fiókról. Ha első alkalommal használja ezt a szolgáltatást egy tárolóban, a rendszer alapértelmezés szerint új Automation-fiókot hoz létre. Másik lehetőségként testreszabhatja a beállítást, és kiválaszthat egy meglévő Automation-fiókot. Az egyazon tárban lévő összes további replikáció az előzőleg létrehozottt használja. Jelenleg a legördülő lista csak azokat az Automation-fiókokat sorolja fel, amelyek ugyanabban az erőforráscsoporthoz találhatók, mint a tároló.  
 
-Egy egyéni automation-fiókot használja a következő parancsfájlt:
+Egyéni Automation-fiók esetén használja a következő parancsfájlt:
 
 ```azurepowershell
 param(
@@ -505,44 +505,44 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 ### <a name="manage-updates-manually"></a>Frissítések manuális kezelése
 
-1. Ha a mobilitási szolgáltatás a virtuális gépeken telepített új frissítések érhetők el, akkor a következő értesítés jelenik meg: "Új Site recovery replikációs ügynökének frissítése érhető el. Történő telepítéséhez kattintson a"
+1. Ha a virtuális gépekre telepített mobilitási szolgáltatásnak új frissítései vannak, akkor a következő értesítés jelenik meg: "A site Recovery replikációs ügynök új frissítése elérhető. Kattintson ide a telepítéshez: "
 
      ![Replikált elemek ablak](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
-2. Válassza ki az értesítés a virtuális gép kiválasztására szolgáló lap megnyitásához.
-3. Válassza ki a virtuális gépeket szeretne frissíteni, és válassza ki **OK**. A frissítés a mobilitási szolgáltatás minden egyes kiválasztott virtuális gép elindul.
+2. Válassza ki az értesítést a virtuális gép kiválasztási oldalának megnyitásához.
+3. Válassza ki a frissíteni kívánt virtuális gépeket, majd kattintson **az OK gombra**. Minden kiválasztott virtuális gép esetében elindul a mobilitási szolgáltatás frissítése.
 
-     ![Replikált elemek Virtuálisgép-lista](./media/vmware-azure-install-mobility-service/update-okpng.png)
+     ![Replikált elemek virtuálisgép-listája](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
 
 ## <a name="common-issues-and-troubleshooting"></a>Gyakori problémák és hibaelhárítás
 
-Ha az automatikus frissítések problémáját, látni fogja a alatt egy Hibaértesítések **konfigurációs problémák** a tároló irányítópultján.
+Ha probléma merül fel az automatikus frissítésekkel kapcsolatban, hibaüzenet jelenik meg a **konfigurációs problémák** alatt a tároló irányítópultján.
 
-Ha nem engedélyezi az automatikus frissítések, tekintse meg a következő gyakori hibák és a javasolt művelet:
+Ha nem engedélyezte az automatikus frissítéseket, tekintse meg az alábbi gyakori hibákat és ajánlott műveleteket:
 
-- **Hiba**: Hozzon létre egy Azure-beli futtató fiók (szolgáltatásnév), és adja meg a közreműködő szerepkört az egyszerű szolgáltatás nem rendelkezik.
+- **Hiba**: Nem jogosult Azure-beli futtató fiók (szolgáltatásnév) létrhozására és a Közreműködő szerepkör szolgáltatásnévhez való hozzárendelésére.
 
-   **Javasolt művelet**: Győződjön meg arról, hogy a bejelentkezett fiók hozzá van rendelve közreműködő, és próbálkozzon újra. Tekintse meg a szükséges engedélyek szakaszában [a portál használatával hozzon létre egy Azure AD alkalmazás és -szolgáltatásnév erőforrások eléréséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) engedélyek hozzárendelése a további információt.
+   **Javasolt művelet**: Győződjön meg arról, hogy a bejelentkezett fiók Közreműködőiként van hozzárendelve, és próbálkozzon újra. Tekintse meg a szükséges engedélyek szakaszt a [portál használatával olyan Azure ad-alkalmazás és-szolgáltatásnév létrehozásához, amely hozzáférhet](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) az erőforrásokhoz az engedélyek kiosztásával kapcsolatos további információkért.
  
-   A legtöbb problémák megoldásához, miután engedélyezte az automatikus frissítések, válassza ki a **javítási**. A javítás gomb nem érhető el, ha a bővítmény frissítési beállítások ablaktáblában jelenik meg hibaüzenet jelenik meg.
+   Az automatikus frissítések engedélyezése után a legtöbb probléma kijavításához válassza a **javítás**lehetőséget. Ha a javítás gomb nem érhető el, tekintse meg a bővítmény frissítési beállításai ablaktáblájában megjelenő hibaüzenetet.
 
-   ![Site Recovery szolgáltatás javítása gomb a bővítmény frissítési beállítások](./media/azure-to-azure-autoupdate/repair.png)
+   ![Site Recovery szolgáltatás javítása gomb a bővítmény frissítési beállításainál](./media/azure-to-azure-autoupdate/repair.png)
 
-- **Hiba**: A futtató fióknak nincs engedélye a recovery services-erőforrás eléréséhez.
+- **Hiba**: A futtató fiók nem jogosult a Recovery Services-erőforrás elérésére.
 
-    **Javasolt művelet**: Törölje, majd [hozza létre újból a futtató fiók](https://docs.microsoft.com/azure/automation/automation-create-runas-account). Vagy, győződjön meg arról, hogy az Automation futtató fiókot az Azure Active Directory-alkalmazás hozzáfér a recovery services-erőforrás.
+    **Javasolt művelet**: Törölje, majd [hozza létre újra a futtató fiókot](https://docs.microsoft.com/azure/automation/automation-create-runas-account). Vagy győződjön meg arról, hogy az Automation futtató fiók Azure Active Directory alkalmazás rendelkezik hozzáféréssel a Recovery Services-erőforráshoz.
 
-- **Hiba**: Futtató fiók nem található. Vagy ezek egyikét törölték, vagy nem lett létrehozva: Azure Active Directory-alkalmazás, szolgáltatásnév, szerepkör, Automation-tanúsítvány, Automation-kapcsolatobjektum - vagy az ujjlenyomat nem azonos a tanúsítvány és a kapcsolat. 
+- **Hiba**: A futtató fiók nem található. Ezek egyike törölve lett vagy nem lett létrehozva – Azure Active Directory alkalmazás, szolgáltatásnév, szerepkör, Automation-tanúsítvány eszköze, Automation-kapcsolati eszköz –, vagy az ujjlenyomat nem azonos a tanúsítvány és a kapcsolat között. 
 
-    **Javasolt művelet**: Törölje, majd [hozza létre újból a futtató fiók](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
+    **Javasolt művelet**: Törölje, majd [hozza létre újra a futtató fiókot](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
 
--  **Hiba**: Az Azure Run as az automation-fiók által használt tanúsítvány érvényessége hamarosan lejár. 
+-  **Hiba**: Az Automation-fiók által használt Azure-beli futtató tanúsítvány hamarosan lejár. 
 
-    A futtató fiókhoz létrehozott önaláírt tanúsítvány lejár, a létrehozás dátumától számítva egy év. A tanúsítványt bármikor meg lehet újítani a lejárata előtt. Előfizetett e-mail értesítések, ha is kap e-maileket, ha intézkedésre szükség a oldaláról. Ez a hiba jelenik meg a lejárati dátum előtt 2 hónapra, és a kritikus hiba változik, ha a tanúsítvány lejárt. Miután a tanúsítvány lejárt, az automatikus frissítés nem fognak működni amíg megújítása azonos.
+    A futtató fiókhoz létrehozott önaláírt tanúsítvány a létrehozás dátumától számítva egy évig lejár. A tanúsítványt bármikor meg lehet újítani a lejárata előtt. Ha regisztrált az e-mailes értesítésekre, akkor is megkapja az e-maileket, amikor egy műveletre van szükség az Ön oldaláról. Ez a hiba a lejárati dátum előtt 2 hónappal jelenik meg, és kritikus hibára vált, ha a tanúsítvány lejárt. Ha a tanúsítvány lejárt, az automatikus frissítés nem lesz működőképes, amíg meg nem újítja a megújítását.
 
-   **Javasolt művelet**: Kattintson a "Javítás", majd tanúsítvány megújítása a probléma megoldásához.
+   **Javasolt művelet**: A probléma megoldásához kattintson a javítás gombra, majd a tanúsítvány megújítása elemre.
     
-   ![renew-cert](media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG)
+   ![tanúsítvány megújítása](media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG)
 
 > [!NOTE]
-> Miután a tanúsítvány megújításához frissítse a lapot, hogy a jelenlegi állapota frissül.
+> A tanúsítvány megújítása után frissítse a lapot, hogy az aktuális állapot frissítve legyen.

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: 45208b5c6538ea523a7b87d6dbdeb99e792783ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b4f1cfe4dbd15f25b4fab92a4bd3b7aee309cb2
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61262300"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720838"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Amazon Marketplace Web Service
 
@@ -44,7 +44,7 @@ Amazon Marketplace Web Service társított szolgáltatás a következő tulajdon
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **AmazonMWS** | Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **AmazonMWS** | Igen |
 | endpoint | A végpont (azaz mws.amazonservices.com) Amazon MWS-kiszolgáló  | Igen |
 | marketplaceID | Amazon Marketplace ID szeretné beolvasni az adatokat. Adatokat lekérni a Marketplace-en több ID, válassza el őket egy vesszőt (`,`). (azaz A2EUQ1WTGCTBG2)  | Igen |
 | sellerID | Az Amazon értékesítői azonosítója.  | Igen |
@@ -88,7 +88,7 @@ Adatok másolása az Amazon Marketplace Web Service, állítsa be a type tulajdo
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **AmazonMWSObject** | Igen |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AmazonMWSObject** | Igen |
 | tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
@@ -98,11 +98,12 @@ Adatok másolása az Amazon Marketplace Web Service, állítsa be a type tulajdo
     "name": "AmazonMWSDataset",
     "properties": {
         "type": "AmazonMWSObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<AmazonMWS linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 
@@ -118,7 +119,7 @@ Adatok másolása az Amazon Marketplace Web Service, állítsa be a forrás típ
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **AmazonMWSSource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AmazonMWSSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**

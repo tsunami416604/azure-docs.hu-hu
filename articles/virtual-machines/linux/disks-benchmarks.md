@@ -1,34 +1,32 @@
 ---
-title: A teljesítménytesztek az alkalmazás az Azure Disk Storage – felügyelt lemezek
-description: Ismerje meg az alkalmazás az Azure-ban a teljesítménytesztek folyamatán.
-services: virtual-machines-linux,storage
+title: Az alkalmazás teljesítményértékelése Azure Disk Storage által felügyelt lemezeken
+description: Ismerje meg az Azure-beli alkalmazás teljesítménytesztének folyamatát.
 author: roygara
 ms.author: rogarana
 ms.date: 01/11/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 21ed4e9a6b1da10d0ae4c276612459506e13d94f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5ac60811eb4fb7735feae6a62ee1b20c8983e0e
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61474368"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695856"
 ---
-# <a name="benchmarking-a-disk"></a>A teljesítménytesztek lemez
+# <a name="benchmarking-a-disk"></a>Lemez teljesítményértékelése
 
-A teljesítménytesztek az a folyamat számos különböző számítási feladatok az alkalmazás és az egyes munkaterhelésekhez tartozó az alkalmazás teljesítményének méréséhez. Az ismertetett lépéseket követve a [nagy teljesítményű cikk tervezése](premium-storage-performance.md). Teljesítménymérési eszközökről futtatja az alkalmazást futtató virtuális gépeken, megadhatja, hogy a teljesítményi szint, amely az alkalmazás a Premium Storage segítségével érheti el. Ebben a cikkben biztosítunk egy Standard DS14 virtuális gép kiépítése az Azure Premium Storage-lemez teljesítményértékelési példákat.
+A teljesítményértékelés a különböző számítási feladatok szimulálása az alkalmazáson, és az egyes számítási feladatok teljesítményének mérése. A [nagy teljesítményű cikk tervezése című cikkben](premium-storage-performance.md)ismertetett lépések segítségével. Ha az alkalmazást futtató virtuális gépeken teljesítményteszt-eszközöket futtat, megadhatja, hogy az alkalmazás milyen teljesítményszint mellett érhet el Premium Storage. Ebben a cikkben példát mutatunk az Azure Premium Storage-lemezekkel kiépített standard DS14 virtuális gépek összehasonlítására.
 
-A Microsoft rendelkezik használt közös teljesítménymérési eszközökről Iometer és FIO, Windows és Linux rendszereken. Ezek az eszközök elindítanak egy éles számítási feladat például szimuláló több szálon, és a rendszer teljesítményének mérésére. Az eszközök használatával is konfigurálhatja blokk mérete és a várólista mélysége, amelyek normál esetben nem módosítható az alkalmazás paraméterek. Ez nagyobb rugalmasságot biztosít, prémium szintű lemezek a különböző típusú alkalmazások számítási feladatai együtt üzembe helyezett virtuális gépek nagy léptékű a maximális teljesítmény érdekében. Minden egyes teljesítménymérési eszköz olvashat további [Iometer](http://www.iometer.org/) és [FIO](http://freecode.com/projects/fio).
+A Windows és a Linux rendszerhez készült közös teljesítményteszt-eszközöket Iometer és FIO használjuk. Ezek az eszközök több szálat szimulálnak, mint például a számítási feladatok, és mérik a rendszer teljesítményét. Az eszközök használatával olyan paramétereket is konfigurálhat, mint például a blokk mérete és a várólista mélysége, amelyet általában nem lehet módosítani egy alkalmazás esetében. Ez nagyobb rugalmasságot biztosít, hogy a maximális teljesítményt egy prémium szintű lemezekkel kiépített, nagy léptékű virtuális gépeken lehessen vezetni, különböző típusú alkalmazás-munkaterhelések esetén. Ha többet szeretne megtudni az egyes teljesítményértékelési eszközökről, látogasson el a [Iometer](http://www.iometer.org/) és a [Fio](http://freecode.com/projects/fio)webhelyre.
 
-Kövesse az alábbi példák, hozzon létre egy Standard DS14 virtuális Gépet, és 11 Premium Storage-lemez csatolása a virtuális gép. A 11 lemezek 10 lemez konfigurálása az állomás-gyorsítótárazás, "None", és stripe-NoCacheWrites nevű kötet be őket. Állomás-gyorsítótárazás "Csak olvasható", a fennmaradó lemez konfigurálása, és hozzon létre egy kötetet CacheReads nevű ezt a lemezt. Ezt a beállítást használja, Ön láthatja a maximális olvasási és írási teljesítményt, a Standard DS14 virtuális gépről. A prémium szintű lemezekkel rendelkező virtuális gép – DS14 létrehozásáról részletes lépéseket Ugrás [magas teljesítmény-központú tervezés](premium-storage-performance.md).
+Az alábbi példák követéséhez hozzon létre egy standard DS14 virtuális gépet, és csatoljon 11 Premium Storage lemezt a virtuális géphez. A 11 lemez esetében állítsa be a 10 lemezt a "None" értékkel rendelkező gazdagép-gyorsítótárazással, majd egy NoCacheWrites nevű kötetre. Konfigurálja a gazdagép gyorsítótárazását "ReadOnly" néven a fennmaradó lemezen, és hozzon létre egy CacheReads nevű kötetet a lemezzel. Ezzel a beállítással megtekintheti a standard DS14 virtuális gép maximális olvasási és írási teljesítményét. A prémium szintű lemezekkel rendelkező DS14-alapú virtuális gépek létrehozásával kapcsolatos részletes információkért tekintse meg a [tervezés a nagy teljesítmény](premium-storage-performance.md)érdekében című témakört.
 
 [!INCLUDE [virtual-machines-disks-benchmarking](../../../includes/virtual-machines-managed-disks-benchmarking.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Haladjon végig a tervezési, nagy teljesítményű cikkhez. Az, létrehoz egy feladatlista hasonlóak a meglévő alkalmazás a prototípus. Benchmarking eszközökkel a számítási feladatokat szimulálhat, és mérhetik a teljesítményt, a prototípus-alkalmazás. Ezzel a módszerrel megadhatja, hogy mely lemezek ajánlat megfelelő, vagy a előremutató alkalmazás kielégítéséhez. Ezután az alkalmazás éles üzemét ugyanez az útmutató is alkalmazható.
+Folytassa a tervezést a nagy teljesítményű cikkhez. Ebben az esetben a prototípushoz tartozó meglévő alkalmazáshoz hasonló ellenőrzőlista jön létre. A teljesítményértékelési eszközök használatával szimulálhatja a számítási feladatokat, és mérhetővé teheti a teljesítményt a prototípus alkalmazásban. Ezzel meghatározhatja, hogy melyik lemez-ajánlat megfelel vagy meghaladja az alkalmazás teljesítményére vonatkozó követelményeket. Ezután megadhatja az éles alkalmazásra vonatkozó irányelveket.
 
 > [!div class="nextstepaction"]
-> Tekintse meg a cikket a [magas teljesítmény-központú tervezés](premium-storage-performance.md) megkezdéséhez.
+> Tekintse meg a [nagy teljesítmény kialakításának](premium-storage-performance.md) megkezdéséről szóló cikket.

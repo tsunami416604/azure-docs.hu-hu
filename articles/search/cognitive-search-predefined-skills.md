@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 3d0c7c10b03169e5d78b833df5a26d83b04b9240
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 9623c4782dec6c3df5b226a3321d3750909e8369
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347844"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698917"
 ---
 # <a name="predefined-skills-for-content-enrichment-azure-search"></a>Tartalom-gazdagítás előre definiált képességei (Azure Search)
 
@@ -39,7 +39,7 @@ Az általuk felhasznált vagy előállított képességek számos képességgel 
 | [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) | Ez a képesség egy előre betanított modellt használ a rögzített kategóriákhoz tartozó entitások létrehozásához: személyek, hely, szervezet, e-mailek, URL-címek, datetime-mezők. |
 | [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)  | Ez a képesség egy előre betanított modellt használ a rekordok pozitív vagy negatív ismeretének megértékelésére a rekord alapján. A pontszám 0 és 1 között van. Semleges pontszámok fordulnak elő mind a null eset esetében, ha a rendszer nem észleli a véleményét, és a semlegesnek minősülő szöveg.  |
 | [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md) | Feldarabolja a szöveget a lapokra, így Növekményesen bővítheti vagy kibővítheti a tartalmat. |
-| [Microsoft. Skills. Text. TranslationSkill (előzetes verzió)](cognitive-search-skill-text-translation.md) | Ez a képesség egy előképzett modellt használ a bemeneti szöveg különböző nyelvekre való lefordításához a normalizálás vagy a honosítás használati eseteihez. |
+| [Microsoft. Skills. Text. TranslationSkill](cognitive-search-skill-text-translation.md) | Ez a képesség egy előképzett modellt használ a bemeneti szöveg különböző nyelvekre való lefordításához a normalizálás vagy a honosítás használati eseteihez. |
 | [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md) | Ez a képesség egy képészlelési algoritmust használ a rendszerkép tartalmának azonosításához és szöveges leírás létrehozásához. |
 | [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md) | Optikai karakterfelismerés. |
 | [Microsoft. Skills. util. ConditionalSkill](cognitive-search-skill-conditional.md) | Lehetővé teszi a szűrést, az alapértelmezett érték hozzárendelését és az adategyesítést egy feltétel alapján.|

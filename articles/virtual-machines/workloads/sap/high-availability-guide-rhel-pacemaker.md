@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: cd56df8e88a84f52933e5ee43fecd598252ba6c0
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: bffb92e37ccddd43c2a64466282084bb6226c338
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479759"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570568"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>A pacemaker beállítása Red Hat Enterprise Linux az Azure-ban
 
@@ -39,8 +39,6 @@ ms.locfileid: "68479759"
 
 [virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
 
-> [!TIP]
-> A pacemaker on Red Hat Enterprise Linux az Azure kerítés ügynökét használja, ha szükséges. Az Azure kerítés-ügynök új verziója érhető el, és a feladatátvétel többé nem hosszabb időt vesz igénybe, ha egy erőforrás leáll, vagy ha a fürtcsomópontok nem tudnak kommunikálni egymással. További információért olvassa el a [magas rendelkezésre állású RHEL futó Azure-beli virtuális gép bevezetését, vagy a virtuális gép leállása előtt a kerítés meghibásodása/](https://access.redhat.com/solutions/3408711) időpontját.
 
 Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
 

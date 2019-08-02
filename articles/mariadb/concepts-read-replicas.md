@@ -6,16 +6,16 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: e6bbe15727a6f989d8c16c67591d39d7870d5708
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 8d4a7a1b176a0c232c4461c7a8cfc2b1e3faddd6
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874896"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638372"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Replikák olvasása a Azure Database for MariaDBban
 
-Az olvasási replika funkció lehetővé teszi az adatok replikálását egy Azure Database for MariaDB-kiszolgálóról egy írásvédett kiszolgálóra. A fő kiszolgálóról legfeljebb öt replikára lehet replikálni. A replikákat a rendszer aszinkron módon frissíti a MariaDB motor bináris naplójának (BinLog) fájljának pozíció-alapú replikációs technológiájának használatával globális tranzakciós AZONOSÍTÓval (GTID). A BinLog replikálásával kapcsolatos további tudnivalókért tekintse meg a [BinLog-replikáció áttekintése](https://mariadb.com/kb/en/library/replication-overview/)című témakört.
+Az olvasási replika funkció lehetővé teszi az adatok replikálását egy Azure Database for MariaDB-kiszolgálóról egy írásvédett kiszolgálóra. A főkiszolgálóról legfeljebb öt replikára másolhatja az adatokat. A replikákat a rendszer aszinkron módon frissíti a MariaDB motor bináris naplójának (BinLog) fájljának pozíció-alapú replikációs technológiájának használatával globális tranzakciós AZONOSÍTÓval (GTID). A BinLog replikálásával kapcsolatos további tudnivalókért tekintse meg a [BinLog-replikáció áttekintése](https://mariadb.com/kb/en/library/replication-overview/)című témakört.
 
 > [!IMPORTANT]
 > Létrehozhat egy olvasási replikát a főkiszolgálóval megegyező régióban, vagy bármely más, az Ön által választott Azure-régióban is. Az olvasási replikák (azonos régió és régiók) jelenleg nyilvános előzetes verzióban érhetők el.
@@ -133,3 +133,4 @@ A [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/
 ## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](howto-read-replicas-portal.md)
+- Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI használatával](howto-read-replicas-cli.md)

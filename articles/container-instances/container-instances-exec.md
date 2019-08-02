@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: danlep
 ms.openlocfilehash: a8583cf605891631a2bce6914b24525aebd59ea0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325982"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>Parancs végrehajtása egy futó Azure Container-példányban
@@ -21,7 +21,7 @@ Azure Container Instances támogatja a parancs futtatását egy futó tárolóba
 
 ## <a name="run-a-command-with-azure-cli"></a>Parancs futtatása az Azure CLI-vel
 
-Parancs végrehajtása futó tárolóban az [az Container exec][az-container-exec] in the [Azure CLI][azure-cli]:
+Parancs végrehajtása egy futó tárolóban az az [Container exec][az-container-exec] használatával az [Azure CLI][azure-cli]-ben:
 
 ```azurecli
 az container exec --resource-group <group-name> --name <container-group-name> --exec-command "<command>"

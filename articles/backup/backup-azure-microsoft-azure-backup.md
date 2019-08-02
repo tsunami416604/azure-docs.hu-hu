@@ -1,18 +1,19 @@
 ---
 title: A számítási feladatok biztonsági mentésének Azure Backup Server használata az Azure-ba
 description: A munkaterhelések Azure Portal való ellátásához használja a Azure Backup Server.
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: kasinh
-ms.openlocfilehash: bf0e964c46088947fa50d1eadbcc12b78978251f
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: f5367e1ca3e950126766e788323cb1d4749e9b0c
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466380"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688405"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server telepítése és frissítése
 > [!div class="op_single_selector"]
@@ -294,10 +295,10 @@ Ha olyan tűzfallal vagy proxyval rendelkezik, amely megakadályozza az Azure-ho
 Ha az Azure-hoz való kapcsolódást visszaállították a Azure Backup Server gépre, az elvégezhető műveleteket az Azure-előfizetés állapota határozza meg. A fenti táblázat tartalmazza azokat a műveleteket, amelyeket a gép a csatlakozás után engedélyez.
 
 ### <a name="handling-subscription-states"></a>Előfizetési állapotok kezelésére
-Az Azure-előfizetés *lejárt* vagy kiépített állapotból is  *aktív* állapotba kerülhet. Ez azonban hatással van a termék viselkedésére, miközben az állapot nem *aktív*:
+Az Azure-előfizetés *lejárt* vagy kiépített állapotból is *aktív* állapotba kerülhet. Ez azonban hatással van a termék viselkedésére, miközben az állapot nem *aktív*:
 
-* A  felépített előfizetés elveszti a funkciót a kiépített időszakra vonatkozóan. Az *aktív*állapot bekapcsolásakor a Backup/Restore termék funkcióit újra kell indítani. A helyi lemezen lévő biztonsági másolati adatok is beolvashatók, ha egy megfelelően nagy megőrzési időtartammal lettek tárolva. Az Azure-ban tárolt biztonsági mentési adatszolgáltatások azonban visszavonhatatlanul elvesznek  , ha az előfizetés kiépített állapotba kerül.
-* A *lejárt* előfizetések csak akkor veszítik el a funkcionalitást, ha még nem történt meg az *aktív* működés. A rendszer nem futtatja az előfizetés lejártára ütemezett  biztonsági mentéseket.
+* A felépített előfizetés elveszti a funkciót a kiépített időszakra vonatkozóan. Az *aktív*állapot bekapcsolásakor a Backup/Restore termék funkcióit újra kell indítani. A helyi lemezen lévő biztonsági másolati adatok is beolvashatók, ha egy megfelelően nagy megőrzési időtartammal lettek tárolva. Az Azure-ban tárolt biztonsági mentési adatszolgáltatások azonban visszavonhatatlanul elvesznek , ha az előfizetés kiépített állapotba kerül.
+* A *lejárt* előfizetések csak akkor veszítik el a funkcionalitást, ha még nem történt meg az *aktív* működés. A rendszer nem futtatja az előfizetés lejártára ütemezett biztonsági mentéseket.
 
 ## <a name="upgrade-mabs"></a>MABS frissítése
 A MABS frissítéséhez kövesse az alábbi eljárásokat.

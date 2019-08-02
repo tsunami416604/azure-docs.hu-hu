@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2019
+ms.date: 07/31/2019
 ms.author: rkarlin
-ms.openlocfilehash: fef9fa128d2ebb84fb82579f254735fdb9aa7ee2
-ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
+ms.openlocfilehash: dad74410562aa54aeb61675e7dc1c0adccc44797
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67881065"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679211"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Külső megoldás összekötése a syslog használatával
 
@@ -44,9 +44,12 @@ További információ: [syslog-](../azure-monitor/platform/data-sources-syslog.m
 
 ## <a name="connect-your-syslog-appliance"></a>A syslog-berendezés összekötése
 
-1. Az Azure Sentinel-portálon válassza  az adatösszekötők lehetőséget, és válassza ki a **syslog** -sort a táblázatban, és a syslog ablaktáblán kattintson a jobb oldalon található **összekötő lap megnyitása**lehetőségre.
+1. Az Azure Sentinel-portálon válassza az adatösszekötők lehetőséget, és válassza ki a **syslog** -sort a táblázatban, és a syslog ablaktáblán kattintson a jobb oldalon található **összekötő lap megnyitása**lehetőségre.
 2. Ha a linuxos gépe az Azure-ban található, válassza az **ügynök letöltése és telepítése az Azure Linux rendszerű virtuális gépen**lehetőséget. A virtuális gépek ablakban válassza ki azokat a gépeket, amelyekre telepíteni kívánja az ügynököt, majd kattintson a felül található **Kapcsolódás** lehetőségre.
 1. Ha a Linux rendszerű gép nem az Azure-ban található, válassza az **ügynök letöltése és telepítése a Linuxon nem Azure-beli gépen**lehetőséget. A **közvetlen ügynök** ablakban másolja a parancsot az **ügynök letöltése és** előkészítése a Linux rendszerhez, és futtassa azt a gépen. 
+   > [!NOTE]
+   > Győződjön meg arról, hogy a cég biztonsági szabályzata szerint konfigurálja a gép biztonságát. Konfigurálhatja például a hálózatot úgy, hogy az megfeleljen a vállalati hálózati biztonsági házirendnek, és módosítsa a démon portjait és protokollait úgy, hogy azok megfeleljenek a követelményeinek. 
+
 1. A syslog-összekötő beállítása ablakban a **naplók konfigurálása** területen kövesse az alábbi utasításokat:
     1. Kattintson a hivatkozásra a **munkaterület speciális beállítások konfigurációjának megnyitásához**. 
     1. Válassza **az**adatelemet, majd a **syslog**elemet.
@@ -55,7 +58,7 @@ További információ: [syslog-](../azure-monitor/platform/data-sources-syslog.m
        > Ha bejelöli azt a jelölőnégyzetet, amely az **alábbi konfigurációt alkalmazza a saját gépekre**, akkor ez a konfiguráció a munkaterülethez csatlakozó összes linuxos gépen érvényes lesz. Ezt a konfigurációt a syslog-gépen a következő helyen tekintheti meg: 
 1. Kattintson **a megnyomva gombra a konfiguráció**panel megnyitásához.
 1. Válassza **az adatelem** , majd a **syslog**lehetőséget.
-   - Győződjön meg arról, hogy a syslog által küldött összes létesítmény szerepel a táblázatban. Állítsa be a súlyosságot minden olyan létesítmény esetében, amelyet figyelni fog. Kattintson az **Alkalmaz** gombra.
+   - Győződjön meg arról, hogy a syslog által küldött összes létesítmény szerepel a táblázatban. Az egyes létesítmények esetében figyelni kell a súlyosságot. Kattintson az **Alkalmaz** gombra.
 1. Győződjön meg arról, hogy a syslog-gépen a létesítményeket küldi el. 
 
 1. A syslog-naplók Log Analytics vonatkozó sémájának használatához keresse meg a **syslog**kifejezést.

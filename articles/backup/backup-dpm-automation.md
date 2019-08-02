@@ -1,18 +1,19 @@
 ---
 title: Azure Backup – a PowerShell használatával biztonsági mentést készíthet a DPM-munkaterhelésekről
 description: Megtudhatja, hogyan helyezheti üzembe és kezelheti Data Protection Manager (DPM) Azure Backup a PowerShell használatával
-author: kasinh
-manager: vvithal
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 1/23/2017
-ms.author: adigan
-ms.openlocfilehash: a269db3d97f23c16e848026ce78fc04c7a1182e8
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 8e17747e2f1f29243215eac85e4e5fa761e11692
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465137"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688937"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése DPM-kiszolgálókon a PowerShell-lel
 
@@ -239,7 +240,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 Ebben a szakaszban egy üzemi kiszolgálót fog hozzáadni a DPM, majd az adatvédelmet a helyi DPM-tárolóba, majd Azure Backup. A példákban bemutatjuk, hogyan lehet biztonsági másolatot készíteni a fájlokról és mappákról. A logika egyszerűen bővíthető a DPM által támogatott adatforrások biztonsági mentéséhez. Az összes DPM biztonsági mentést egy olyan védelmi csoport (PG) szabályozza, amely négy részből áll:
 
-1. A **csoporttagok** az összes olyan védhető objektum (más néven adatforrások a DPM  ) listája, amelyeket a védelemmel ellátott csoportban kíván védelemmel ellátni. Előfordulhat például, hogy egy védelmi csoportba tartozó üzemi virtuális gépeket szeretne védelemmel ellátni, és egy másik védelmi csoportban lévő adatbázisokat SQL Server, mivel azok eltérő biztonsági mentési követelményekkel rendelkezhetnek. Mielőtt biztonsági mentést szeretne készíteni egy üzemi kiszolgáló adatforrásáról, győződjön meg arról, hogy a DPM-ügynök telepítve van a kiszolgálón, és felügyeli a DPM. Kövesse a DPM- [ügynök telepítésének](https://technet.microsoft.com/library/bb870935.aspx) és a megfelelő DPM-kiszolgálóhoz való csatolásának lépéseit.
+1. A **csoporttagok** az összes olyan védhető objektum (más néven adatforrások a DPM ) listája, amelyeket a védelemmel ellátott csoportban kíván védelemmel ellátni. Előfordulhat például, hogy egy védelmi csoportba tartozó üzemi virtuális gépeket szeretne védelemmel ellátni, és egy másik védelmi csoportban lévő adatbázisokat SQL Server, mivel azok eltérő biztonsági mentési követelményekkel rendelkezhetnek. Mielőtt biztonsági mentést szeretne készíteni egy üzemi kiszolgáló adatforrásáról, győződjön meg arról, hogy a DPM-ügynök telepítve van a kiszolgálón, és felügyeli a DPM. Kövesse a DPM- [ügynök telepítésének](https://technet.microsoft.com/library/bb870935.aspx) és a megfelelő DPM-kiszolgálóhoz való csatolásának lépéseit.
 2. Az **adatvédelmi módszer** megadja a cél biztonsági mentési helyeit – szalag, lemez és felhő. A példánkban a helyi lemezre és a felhőbe is biztosítjuk az adatvédelmet.
 3. Egy **biztonsági mentési ütemezés** , amely meghatározza, hogy mikor kell a biztonsági mentést készíteni, és milyen gyakran kell szinkronizálni az adatokat a DPM-kiszolgáló és az üzemi kiszolgáló között.
 4. Egy **adatmegőrzési ütemterv** , amely meghatározza, hogy mennyi ideig kell megőrizni a helyreállítási pontokat az Azure-ban.
@@ -252,7 +253,7 @@ Először hozzon létre egy új védelmi csoportot a [New-DPMProtectionGroup](ht
 $PG = New-DPMProtectionGroup -DPMServerName " TestingServer " -Name "ProtectGroup01"
 ```
 
-A fenti parancsmag létrehoz egy *ProtectGroup01*nevű védelmi csoportot. Egy meglévő védelmi csoport később is módosítható a biztonsági mentés Azure-felhőbe való hozzáadásához. Ahhoz azonban, hogy a védelmi csoport módosításait – új vagy meglévő – a [Get-DPMModifiableProtectionGroup](https://technet.microsoft.com/library/hh881713) parancsmag használatával egy módosítható  objektumhoz kell beszereznie a leírót.
+A fenti parancsmag létrehoz egy *ProtectGroup01*nevű védelmi csoportot. Egy meglévő védelmi csoport később is módosítható a biztonsági mentés Azure-felhőbe való hozzáadásához. Ahhoz azonban, hogy a védelmi csoport módosításait – új vagy meglévő – a [Get-DPMModifiableProtectionGroup](https://technet.microsoft.com/library/hh881713) parancsmag használatával egy módosítható objektumhoz kell beszereznie a leírót.
 
 ```powershell
 $MPG = Get-ModifiableProtectionGroup $PG
@@ -273,7 +274,7 @@ Azon kiszolgálók listáját, amelyeken a DPM-ügynök telepítve van, és a DP
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains “productionserver01”}
 ```
 
-Most olvassa be ```$server``` az adatforrások listáját a [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) parancsmag használatával. Ebben a példában a *D\\*  kötet szűrését szeretnénk beállítani a biztonsági mentéshez. Ezt az adatforrást Ezután hozzáadja a védelmi csoporthoz az [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) parancsmag használatával. Ne felejtse el  használni a módosítható védelmi ```$MPG``` csoport objektumot a hozzáadások végrehajtásához.
+Most olvassa be ```$server``` az adatforrások listáját a [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) parancsmag használatával. Ebben a példában a *D\\*  kötet szűrését szeretnénk beállítani a biztonsági mentéshez. Ezt az adatforrást Ezután hozzáadja a védelmi csoporthoz az [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) parancsmag használatával. Ne felejtse el használni a módosítható védelmi ```$MPG``` csoport objektumot a hozzáadások végrehajtásához.
 
 ```powershell
 $DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name -contains “D:\” }

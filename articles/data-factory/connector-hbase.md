@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 3bc91b1c20bb4cf4ae755ca47c8d8e0581eb3a1f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bc13a1d0a7710a9f96110f1516fe2e48d538fe7e
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400711"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720768"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával HBase 
 
@@ -41,11 +41,11 @@ HBase-beli társított szolgáltatás a következő tulajdonságok támogatottak
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **HBase** | Igen |
-| host | Az IP-cím vagy a gazdagép a HBase kiszolgáló neve. (pl.)  `[clustername].azurehdinsight.net`, `192.168.222.160`)  | Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **HBase** | Igen |
+| host | Az IP-cím vagy a gazdagép a HBase kiszolgáló neve. azaz.  `[clustername].azurehdinsight.net`, )`192.168.222.160`  | Igen |
 | port | A HBase-példány az ügyfélkapcsolatok figyeléséhez használt TCP portra. Az alapértelmezett érték 9090. Ha csatlakozik az Azure Hdinsight, meg a 443-as portot. | Nem |
 | httpPath | Példa: a HBase-kiszolgáló megfelelő részleges URL-cím `/hbaserest0` Hdinsight-fürt használata esetén. | Nem |
-| authenticationType | A HBase-kiszolgálóhoz való csatlakozáshoz használandó hitelesítési mechanizmusa. <br/>Engedélyezett értékek a következők: **Névtelen**, **alapszintű** | Igen |
+| authenticationType | A HBase-kiszolgálóhoz való csatlakozáshoz használandó hitelesítési mechanizmusa. <br/>Engedélyezett értékek a következők: **Névtelen**, alapszintű | Igen |
 | username | A HBase-példányhoz való csatlakozáshoz használt felhasználónév.  | Nem |
 | password | A felhasználónévhez tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
 | enableSsl | Itt adhatja meg, e-kiszolgálóhoz a rendszer SSL használatával titkosítja. Az alapértelmezett értéke FALSE (hamis).  | Nem |
@@ -122,7 +122,7 @@ Adatok másolása az HBase, állítsa be a type tulajdonság, az adatkészlet **
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **HBaseObject** | Igen |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **HBaseObject** | Igen |
 | tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
@@ -132,11 +132,12 @@ Adatok másolása az HBase, állítsa be a type tulajdonság, az adatkészlet **
     "name": "HBaseDataset",
     "properties": {
         "type": "HBaseObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<HBase linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -151,7 +152,7 @@ Adatok másolása a HBase, állítsa be a forrás típusaként a másolási tev�
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **HBaseSource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **HBaseSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**

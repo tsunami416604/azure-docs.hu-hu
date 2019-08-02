@@ -1,6 +1,6 @@
 ---
-title: Ismerje meg, ha egy adott felhasználó fog tudni hozzáférni egy alkalmazáshoz |} A Microsoft Docs
-description: Hogyan tudhatja meg, ha egy kritikus fontosságú felhasználói férhetnek hozzá a felhasználókiépítés Azure AD-val konfigurált alkalmazás
+title: Annak megállapítása, hogy egy adott felhasználó tud-e hozzáférni egy alkalmazáshoz | Microsoft Docs
+description: Annak megállapítása, hogy egy kritikus fontosságú felhasználó hozzáférhet-e az Azure AD-vel való felhasználói üzembe helyezéshez konfigurált alkalmazáshoz
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,93 +16,93 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd6b70e7a4542a4cad2ee95fa280ddf8fbe6553
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: bf6190ae35a573ab4b9a37f5cd1f2bd75f06ca46
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310036"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667159"
 ---
-# <a name="check-the-status-of-user-provisioning"></a>A felhasználók átadásának állapotának ellenőrzése
+# <a name="check-the-status-of-user-provisioning"></a>A felhasználó kiépítési állapotának megtekintése
 
-Az Azure AD létesítési szolgáltatás fut a forrás és cél rendszer, rendszeres növekményes ciklusok követ egy kezdeti üzembe helyezési ciklust. Amikor konfigurál egy alkalmazáshoz tartozó kiépítés, ellenőrizze a kiépítési szolgáltatás aktuális állapotát, és tekintse meg, amikor egy felhasználó fog tudni hozzáférni egy alkalmazáshoz.
+Az Azure AD-kiépítési szolgáltatás kezdeti kiépítési ciklust futtat a forrásrendszer és a célként megadott rendszeren, majd az időszakos növekményes ciklusokat követve. Egy alkalmazás kiépítési beállításakor megtekintheti a kiépítési szolgáltatás aktuális állapotát, és megtekintheti, hogy mikor férhet hozzá egy adott alkalmazáshoz.
 
-## <a name="view-the-provisioning-progress-bar-preview"></a>A kiépítés megtekintése a folyamatjelző (előzetes verzió)
+## <a name="view-the-provisioning-progress-bar"></a>A kiépítési folyamatjelző sáv megtekintése
 
- Az a **kiépítési** oldalon az alkalmazás megtekintheti az Azure AD létesítési szolgáltatás állapotát. A **aktuális állapot** az oldal alján szakasz azt mutatja be, hogy egy üzembe helyezési ciklust a felhasználói fiókok kiépítése megkezdődött. Tekintse meg a ciklus előrehaladását, tekintse meg, hány felhasználók és csoportok lettek telepítve, és tekintse meg, hány szerepkör jön létre.
+ Az alkalmazások **kiépítési** lapján megtekintheti az Azure ad-kiépítési szolgáltatás állapotát. A lap alján található **aktuális állapot** szakasz azt mutatja, hogy a létesítési ciklus megkezdte-e a felhasználói fiókok üzembe helyezését. Megtekintheti a ciklus előrehaladását, és megtekintheti, hogy hány felhasználó és csoport lett kiépítve, és hogy hány szerepkört hozott létre.
 
-Amikor először konfigurálja az Automatikus kiépítés a **aktuális állapot** a lap alján található szakasz a kezdeti üzembe helyezési ciklust állapotát jeleníti meg. Ez a szakasz egy növekményes ciklus minden futtatásakor frissíti. Az alábbi részletek láthatók:
-- Az üzembe helyezési ciklust (kezdeti vagy növekményes), amely jelenleg fut, vagy utolsó befejeződött típusa.
-- A **folyamatjelző sáv** , hogy befejeződött az üzembe helyezési ciklust arányát mutatja. A százalékos kiosztott oldalak számát tükrözi. Vegye figyelembe, hogy mindegyik oldalon több felhasználók vagy csoportok, így a százalékos közvetlenül nem kapcsolható a felhasználók száma, csoportok vagy szerepkörök kiosztása tartalmazhatnak.
-- A **frissítése** használhatja, hogy a nézet frissítése gombra.
-- Hány **felhasználók** és **csoportok** kiépítve, és a létrehozott szerepkörök száma. A kezdeti ciklus során a **felhasználók** száma dátumonként 1 amikor egy felhasználó létrehozásakor vagy frissítésekor és számolja 1 felhasználó törlésekor. Egy növekményes ciklus során felhasználói frissítések nem befolyásolják a **felhasználók** száma; a megváltozása csak akkor, amikor a felhasználók számára létrehozott vagy törölt.
-- A **Audit naplók megtekintése** hivatkozásra, amely megnyitja az Azure AD naplózási naplók esetében a felhasználó a kiépítési szolgáltatást, ideértve a kiépítési állapota az egyes felhasználók által futtatott összes művelet részleteit (lásd a [használati naplók](#use-audit-logs-to-check-a-users-provisioning-status)szakaszt).
+Amikor először konfigurálja az automatikus kiosztást, az oldal alján található **aktuális állapot** szakasz a kezdeti kiépítési ciklus állapotát jeleníti meg. Ez a szakasz a növekményes ciklusok futtatásakor frissül. A következő részletek jelennek meg:
+- A jelenleg futó vagy utolsó befejezett kiépítési ciklus típusa (kezdeti vagy növekményes).
+- Egy **folyamatjelző sáv** , amely a befejezett kiépítési ciklus százalékos arányát mutatja. A százalékos arány a kiosztott lapok számát tükrözi. Vegye figyelembe, hogy az egyes lapok több felhasználót vagy csoportot is tartalmazhatnak, így a százalékos arány nem felel meg közvetlenül a felhasználók, csoportok vagy szerepkörök kiépített számával.
+- A **frissítés** gombra kattintva megtarthatja a nézet frissítését.
+- A kiépített **felhasználók** és **csoportok** száma, valamint a létrehozott szerepkörök száma. A kezdeti ciklusban a **felhasználók** száma 1, ha a felhasználó létrehozása vagy frissítése megtörtént, és 1 értéket számít fel a felhasználó törlésekor. Növekményes ciklusban a felhasználói frissítések nem érintik a **felhasználók** darabszámát; a szám csak a felhasználók létrehozásakor vagy törlésekor változik.
+- A **naplók megtekintése** hivatkozás, amely megnyitja az Azure ad-naplókat a felhasználói kiépítési szolgáltatás által futtatott összes művelet részleteiről, beleértve az egyes felhasználók kiépítési állapotát (lásd az alábbi [naplók használata](#use-audit-logs-to-check-a-users-provisioning-status) szakaszt).
 
-Üzembe helyezési ciklust befejezése után a **dátum statisztikák** szakasz felhasználókat és csoportokat, dátum, a befejezési dátumot és az utolsó ciklus időtartamát és a kiépített összesített számát mutatja. A **Tevékenységazonosító** egyedileg azonosítja a legutóbbi üzembe helyezési ciklust. A **Feladatazonosító** az üzembe helyezési feladat egyedi azonosítója, és a bérlőben található alkalmazás jellemző.
+A létesítési ciklus befejezése után a **statisztikák a mai napig** szakasz megjeleníti a dátummal kiépített felhasználók és csoportok összesített számát, valamint az utolsó ciklus befejezési dátumát és időtartamát. A **tevékenység azonosítója** egyedileg azonosítja a legutóbbi kiépítési ciklust. A feladathoz tartozó **azonosító** a kiépítési feladathoz tartozó egyedi azonosító, és a bérlőn lévő alkalmazásra vonatkozik.
 
-A kiépítési folyamat is megtekinteni az Azure Portalon a **Azure Active Directory &gt; vállalati alkalmazások &gt; \[alkalmazásnév\] &gt; kiépítési** fülre.
+A kiépítési folyamat megtekinthető a Azure Portal **Azure Active Directory &gt; vállalati alkalmazások\] &gt; \[ &gt; alkalmazás neve kiépítés** lapján.
 
-![Üzembe helyezési oldal folyamatjelző sáv](media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
+![Kiépítés oldal folyamatjelző sáv](media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
 
-## <a name="use-audit-logs-to-check-a-users-provisioning-status"></a>Auditnaplók használatát egy felhasználó kiépítési állapotának ellenőrzése
+## <a name="use-audit-logs-to-check-a-users-provisioning-status"></a>Naplók használata a felhasználó kiépítési állapotának ellenőrzéséhez
 
-Tekintse meg a kiválasztott felhasználóról a kiépítési állapotot, tekintse meg a naplók az Azure ad-ben. Az Azure AD-ben a kiépítési szolgáltatás felhasználó által futtatott összes művelet rögzíti a naplók. Ez tartalmazza az összes olvasási és írási műveleteken végrehajtott a forrás- és rendszerek és a felhasználói adatokat az egyes műveletek során írt adatok és olvasható.
+A kiválasztott felhasználó kiépítési állapotának megtekintéséhez tekintse meg az Azure AD eseménynaplóit. A felhasználói kiépítési szolgáltatás által futtatott összes műveletet az Azure AD-naplók rögzítik. Ebbe beletartozik a forrás-és a megcélzott rendszerek összes írási és olvasási művelete, valamint az egyes műveletek során olvasott vagy írt felhasználói adatok.
 
-Az üzembe helyezési naplók elérhetők az Azure Portalon a **Azure Active Directory &gt; vállalati alkalmazások &gt; \[alkalmazásnév\] &gt; Auditnaplók** fülre. A naplók szűrése a **fiók üzembe helyezésének** kategóriát csak az alkalmazás az üzembe helyezési események megtekintéséhez. A felhasználók számára a "egyező azonosító", amelyet a számukra az attribútumleképezések alapján kereshet. 
+A kiépítési naplók a Azure Portal  **&gt; Azure Active Directory Enterprise apps &gt; \[-alkalmazás neve\] &gt; naplózási naplók** lapon érhetők el. A **fiók kiépítési** kategóriájában lévő naplók szűrésével csak az adott alkalmazás kiépítési eseményei láthatók. A felhasználók a "megfelelő azonosító" alapján kereshetik meg azokat, amelyeket a rendszer az attribútum-hozzárendelésekben konfigurált. 
 
-Például, ha konfigurálta a "felhasználó egyszerű neve" vagy "e-mail-cím", a megfelelő attribútum az Azure ad-ben oldalán, és a felhasználó nem kiépítése, amelynek értéke "audrey@contoso.com", majd keresse meg a naplófájlok "audrey@contoso.com" majd tekintse át a bejegyzéseket, és adott vissza.
+Ha például az "egyszerű felhasználónév" vagy az "e-mail-cím" beállítást a megfelelő attribútumként konfigurálta az Azure ad-oldalon, és a felhasználó nem rendelkezik "audrey@contoso.com" értékkel, akkor keresseaudrey@contoso.commeg a "" naplókat, és tekintse át a bejegyzéseket visszatért.
 
-Az üzembe helyezési naplók jegyezze fel a kiépítési szolgáltatás által végrehajtott összes műveletet többek között:
+A kiépítési naplók rögzítik a kiépítési szolgáltatás által végrehajtott összes műveletet, beleértve a következőket:
 
-* Az Azure AD-hez hozzárendelt felhasználók a kiépítés hatókörébe lekérdezése
-* Ezek a felhasználók létezik-e a célalkalmazásnak lekérdezése
-* A felhasználói objektumok között a rendszer összehasonlítása
-* Hozzáadása, frissítése vagy a felhasználói fiók letiltása a célrendszeren, az összehasonlítás alapján
+* Az Azure AD lekérdezése a kiépítés hatókörében lévő hozzárendelt felhasználók számára
+* A cél alkalmazás lekérdezése a felhasználók létezéséhez
+* A rendszer közötti felhasználói objektumok összehasonlítása
+* A felhasználói fiók hozzáadása, frissítése vagy letiltása a megcélzott rendszeren az összehasonlítás alapján
 
-Olvassa el a naplókat az Azure Portalon való további információkért lásd: a [kiépítési jelentéskészítési útmutató](check-status-user-account-provisioning.md).
+További információ a Azure Portal naplóinak olvasásához: a [kiépítési jelentéskészítési útmutató](check-status-user-account-provisioning.md).
 
-## <a name="how-long-will-it-take-to-provision-users"></a>Mennyi ideig tart a felhasználók?
-Felhasználók automatikus átadása az alkalmazás használatakor az Azure AD automatikusan építi ki és frissíti a felhasználói fiókok alkalmazást többek között a [felhasználó és csoport-hozzárendelések](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) rendszeresen ütemezett időintervallum, általában 10 percenként.
+## <a name="how-long-will-it-take-to-provision-users"></a>Mennyi időt vesz igénybe a felhasználók kiépítése?
+Ha automatikus felhasználó-kiosztást használ egy alkalmazással, az Azure AD automatikusan kiépíti és frissíti a felhasználói fiókokat az alkalmazásokban olyan dolgok alapján, mint a [felhasználó-és csoport-hozzárendelés](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) egy rendszeres ütemezett időintervallumban, jellemzően 10 percenként.
 
-Ki kell építeni az adott felhasználó számára szükséges idő attól függ, főleg az üzembe helyezési feladat fut-e egy kezdeti szinkronizálást és a egy növekményes szinkronizálást.
+Az adott felhasználó üzembe helyezéséhez szükséges idő főleg attól függ, hogy a kiépítési feladatok kezdeti szinkronizálást vagy növekményes szinkronizálást futtatnak-e.
 
-- A **a kezdeti szinkronizálás**, a feladat ideje függ a sok tényező befolyásolja, többek között a felhasználókat és csoportokat, kiépítés hatókörébe, és a felhasználókat és csoportokat a forrásrendszerben teljes száma. Az első szinkronizálás az Azure AD között és a egy alkalmazást is igénybe vehet 20 perc alatt az Azure AD-címtár és a kiépítés hatókörébe felhasználók méretétől függően több órát. Kezdeti szinkronizálás teljesítményét befolyásoló tényezőket átfogó listája ebben a szakaszban később foglalja össze.
+- A **kezdeti szinkronizálások**esetében a feladat ideje számos tényezőtől függ, beleértve a kiépítés hatókörében lévő felhasználók és csoportok számát, valamint a felhasználók és a csoport teljes számát a forrásoldali rendszeren. Az Azure AD és az alkalmazások közötti első szinkronizálás akár 20 perctől akár több óráig is eltarthat, az Azure AD-címtár méretétől és a kiépítés hatókörében lévő felhasználók számától függően. A kezdeti szinkronizálási teljesítményt befolyásoló tényezők átfogó listáját a szakasz későbbi részében találja.
 
-- A **növekményes szinkronizálás** a kezdeti szinkronizálást követően feladat alkalommal általában gyorsabb (pl. 10 percen belül), ahogy a kiépítési szolgáltatás tárolja, amely mindkét rendszer állapotát képviselik a teljesítmény javítása a kezdeti szinkronizálást követően a vízjelek az ezt követő szinkronizálások. A feladat ideje függ, hogy üzembe helyezési ciklust észlelt módosítások számát. Ha 5000-nél több felhasználó vagy csoport tagsága módosul, a feladat be tudja belül egyetlen növekményes üzembe helyezési ciklust. 
+- Ha **növekményes szinkronizálást** végez a kezdeti szinkronizálás után, a feladatok időtartama általában gyorsabb (például 10 percen belül), mivel a kiépítési szolgáltatás a kezdeti szinkronizálás után mindkét rendszer állapotát jelképező vízjeleket tárolja, így javítja a későbbi szinkronizálások teljesítményét. A feladatok ideje a kiépítési ciklusban észlelt változások számától függ. Ha kevesebb mint 5 000 felhasználó vagy csoporttagság változik, a feladatok egyetlen növekményes kiépítési cikluson belül is befejeződik. 
 
-A következő táblázat összefoglalja a szinkronizálás időpontjait általános üzembe helyezési forgatókönyvhöz. Ezekben az esetekben a forrásrendszerben Azure ad-ben pedig a célrendszeren egy SaaS-alkalmazáshoz. A szinkronizálási idő származik, a ServiceNow, a munkahelyen, a Salesforce és a G Suite SaaS-alkalmazásokhoz tartozó szinkronizálási feladatokat statisztikai elemzése.
+Az alábbi táblázat összefoglalja a gyakori kiépítési forgatókönyvek szinkronizálási időpontját. Ezekben a forgatókönyvekben a forrásoldali rendszer az Azure AD, és a célként megadott rendszer egy SaaS-alkalmazás. A szinkronizálási idők az SaaS-alkalmazások ServiceNow, a munkahely, a Salesforce és a G Suite szinkronizálási feladatainak statisztikai elemzésével vannak származtatva.
 
 
-| Hatókör-konfiguráció | Felhasználók, csoportok és tagok hatókörében | Kezdeti szinkronizálás ideje | Növekményes szinkronizálás ideje |
+| Hatókör-konfiguráció | A hatókörben lévő felhasználók, csoportok és tagok | Kezdeti szinkronizálás ideje | Növekményes szinkronizálás ideje |
 | -------- | -------- | -------- | -------- |
-| Hozzárendelt felhasználók és csoportok csak szinkronizálás |  < 1,000 |  < 30 minutes | < 30 minutes |
-| Hozzárendelt felhasználók és csoportok csak szinkronizálás |  1000–10 000 | 142 - 708 perc | < 30 minutes |
-| Hozzárendelt felhasználók és csoportok csak szinkronizálás |   10,000 - 100,000 | 1,170 - 2,340 perc | < 30 minutes |
-| Minden felhasználó és csoport szinkronizálása az Azure ad-ben |  < 1,000 | < 30 minutes  | < 30 minutes |
-| Minden felhasználó és csoport szinkronizálása az Azure ad-ben |  1000–10 000 | < 30 – 120 perc | < 30 minutes |
-| Minden felhasználó és csoport szinkronizálása az Azure ad-ben |  10,000 - 100,000  | 713 - 1,425 perc | < 30 minutes |
-| Összes felhasználók szinkronizálása az Azure ad-ben|  < 1,000  | < 30 minutes | < 30 minutes |
-| Összes felhasználók szinkronizálása az Azure ad-ben | 1000–10 000  | 43 - 86 perc | < 30 minutes |
+| Csak a hozzárendelt felhasználók és csoportok szinkronizálása |  < 1 000 |  < 30 perc | < 30 perc |
+| Csak a hozzárendelt felhasználók és csoportok szinkronizálása |  1000–10 000 | 142 – 708 perc | < 30 perc |
+| Csak a hozzárendelt felhasználók és csoportok szinkronizálása |   10 000 – 100 000 | 1 170 – 2 340 perc | < 30 perc |
+| Az összes felhasználó és csoport szinkronizálása az Azure AD-ben |  < 1 000 | < 30 perc  | < 30 perc |
+| Az összes felhasználó és csoport szinkronizálása az Azure AD-ben |  1000–10 000 | < 30-120 perc | < 30 perc |
+| Az összes felhasználó és csoport szinkronizálása az Azure AD-ben |  10 000 – 100 000  | 713 – 1 425 perc | < 30 perc |
+| Az Azure AD összes felhasználójának szinkronizálása|  < 1 000  | < 30 perc | < 30 perc |
+| Az Azure AD összes felhasználójának szinkronizálása | 1000–10 000  | 43 – 86 perc | < 30 perc |
 
 
-A konfiguráció **szinkronizálási rendelt felhasználók és csoportok csak**, a következő képletek segítségével meghatározhatja a hozzávetőleges minimális és maximális várt **a kezdeti szinkronizálás** időpontok:
+Csak a konfigurációs **szinkronizáláshoz rendelt felhasználók és csoportok**esetében a következő képletek segítségével határozhatja meg a **kezdeti szinkronizálás** várt minimális és maximális időpontját:
 
     Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
     Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
     
-Összegzés befejezéséhez szükséges idő befolyásoló tényezők egy **a kezdeti szinkronizálás**:
+A **kezdeti szinkronizálás**befejezéséhez szükséges időt befolyásoló tényezők összefoglalása:
 
-- A felhasználók és csoportok a kiépítés hatókörébe teljes száma.
+- A kiépítés hatókörében lévő felhasználók és csoportok teljes száma.
 
-- A felhasználók, csoportok és a forrás rendszerben (Azure AD) csoport tagjai teljes száma.
+- A forrásoldali rendszeren (Azure AD) lévő felhasználók, csoportok és csoporttagok teljes száma.
 
-- E felhasználók kiépítés hatókörébe teljesül, a meglévő felhasználók számára a célalkalmazás vagy az első alkalommal kell létrehozni. Szinkronizálási feladat, amelynek minden felhasználó jönnek létre az első alkalommal körülbelül igénybe *kétszer mindaddig* , feladatok, amelynek minden felhasználó egyeztetését a meglévő felhasználók szinkronizálása.
+- Azt határozza meg, hogy a kiépítés hatókörében lévő felhasználók egyeznek-e a célalkalmazás meglévő felhasználóival, vagy az első alkalommal kell létrehozni. Azok a szinkronizálási feladatok, amelyekhez az összes felhasználó először jön létre, akár *kétszer is* eltarthat, amíg a szinkronizálási feladatok, amelyekhez az összes felhasználó hozzá van hasonlítva a meglévő felhasználókhoz.
 
-- Hibák száma a [auditnaplók](check-status-user-account-provisioning.md). Teljesítmény lassabb lesz, ha sok hiba, és az eszközkiépítési szolgáltatás karantén állapotba került.    
+- A naplókban előforduló hibák [száma.](check-status-user-account-provisioning.md) A teljesítmény lassabb, ha sok hiba van, és a kiépítési szolgáltatás karantén állapotba került.    
 
-- A sebességkorlátokat és a szabályozás, melyet a célrendszer megvalósított kérelmet. Néhány célrendszereket megvalósítása kérelem sebességkorlátok és a szabályozás, amely befolyásolhatja a teljesítményt nagy szinkronizálási műveletek során. Ezen feltételek mellett egy alkalmazást, amely megkapja a túl sok kérelem túl nagy lehet, hogy a válaszadási arányát lassú vagy bontja a kapcsolatot. A teljesítmény javítása érdekében az összekötőjét beállítása nem az alkalmazás kérések küldésével gyorsabb, mint az alkalmazás azokat fel tudná dolgozni. Üzembe helyezési összekötők a Microsoft által készített ellenőrizze ezt a módosítást. 
+- A rendszer által megvalósított kérelmek gyakoriságának korlátai és szabályozása. Egyes megcélzott rendszerek a kérelmek arányának korlátozásait és szabályozását implementálják, ami hatással lehet a teljesítményre a nagy szinkronizálási műveletek során. Ilyen körülmények között egy olyan alkalmazás, amely túl sok kérést kap, lassú lehet a válasz sebessége vagy a kapcsolat lezárása. A teljesítmény javítása érdekében az összekötőt úgy kell módosítani, hogy ne küldje el gyorsabban az alkalmazás kéréseit, mint amennyit az alkalmazás feldolgozhat. A Microsoft által létrehozott összekötők kiépítése ezt a beállítást teszi elérhetővé. 
 
-- A szám és hozzárendelt csoportok méretét. Hozzárendelt csoportok szinkronizálása, mint a felhasználók szinkronizálása hosszabb időt vesz igénybe. A szám és a méretét a hozzárendelt csoportok hatással lehet a teljesítményre. Ha egy alkalmazásnak [engedélyezve csoport objektum szinkronizálása a hozzárendelések](customize-application-attributes.md#editing-group-attribute-mappings), a csoport tulajdonságai, például a csoportneveket és csoporttagságok szinkronizált felhasználók mellett. Ezek további szinkronizálások csak a felhasználói objektumok szinkronizálása hosszabb vesz igénybe.
+- A hozzárendelt csoportok száma és mérete. A hozzárendelt csoportok szinkronizálása hosszabb időt vesz igénybe, mint a felhasználók szinkronizálása. A hozzárendelt csoportok száma és mérete is hatással van a teljesítményre. Ha egy alkalmazáshoz [engedélyezve vannak a csoportosítási objektumok szinkronizálása](customize-application-attributes.md#editing-group-attribute-mappings), a felhasználókon kívül a csoportok tulajdonságai, például a csoportok nevei és a tagságok szinkronizálása is megtörténik. Ezek a további szinkronizálások hosszabb időt vesznek igénybe, mint a felhasználói objektumok szinkronizálása.
 
 ## <a name="next-steps"></a>További lépések
 [Felhasználók átadásának és megszüntetésének automatizálása az SaaS-alkalmazásokban az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)

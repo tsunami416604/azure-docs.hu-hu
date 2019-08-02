@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: iainfou
 ms.openlocfilehash: 2135a3a5a8f14cf6c2e7fd2984d9b221e2445c1d
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68309512"
 ---
 # <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>Azure Container Registry használata az alkalmazás-diagramok Helm-tárháza
 
-A Kubernetes alkalmazások gyors kezeléséhez és üzembe helyezéséhez használhatja a [nyílt forráskódú Helm Package Managert][helm]. A Helm esetében az alkalmazások a Helm  chart adattárában tárolt diagramokként vannak meghatározva. Ezek a diagramok a konfigurációkat és a függőségeket határozzák meg, és az alkalmazás életciklusa során is telepíthetők. Azure Container Registry használható a Helm chart-Tárházak gazdagépként.
+A Kubernetes alkalmazások gyors kezeléséhez és üzembe helyezéséhez használhatja a [nyílt forráskódú Helm Package Managert][helm]. A Helm esetében az alkalmazások a Helm chart adattárában tárolt diagramokként vannak meghatározva. Ezek a diagramok a konfigurációkat és a függőségeket határozzák meg, és az alkalmazás életciklusa során is telepíthetők. Azure Container Registry használható a Helm chart-Tárházak gazdagépként.
 
 A Azure Container Registry rendelkezik egy privát, biztonságos Helm chart adattárral, amely integrálható a Build-folyamatokkal vagy más Azure-szolgáltatásokkal. A Helm diagram adattárainak Azure Container Registry tartalmaz geo-replikációs funkciókat, hogy a diagramok a központi telepítések és a redundancia érdekében is megmaradjanak. Csak a diagramok által használt tárterületért kell fizetnie, és az összes Azure Container Registry.
 
@@ -31,7 +31,7 @@ Ez a cikk bemutatja, hogyan használhatja a Azure Container Registryban tárolt 
 A cikkben szereplő lépések végrehajtásához a következő előfeltételek teljesülése szükséges:
 
 - **Azure Container Registry** – hozzon létre egy tároló-beállításjegyzéket az Azure-előfizetésében. Használja például a [Azure Portal](container-registry-get-started-portal.md) vagy az [Azure CLI](container-registry-get-started-azure-cli.md)-t.
-- A **Helm-ügyfél verziója 2.11.0 (nem RC verzió), vagy később** futtatva `helm version` megkeresi az aktuális verziót. Szükség van egy Kubernetes-fürtön belül inicializált Helm-kiszolgálóra is. Szükség esetén [létrehozhat egy Azure Kubernetes Service][aks-quickstart]. For more information on how to install and upgrade Helm, see [Installing Helm][helm-install]-fürtöt is.
+- A **Helm-ügyfél verziója 2.11.0 (nem RC verzió), vagy később** futtatva `helm version` megkeresi az aktuális verziót. Szükség van egy Kubernetes-fürtön belül inicializált Helm-kiszolgálóra is. Szükség esetén [létrehozhat egy Azure Kubernetes Service][aks-quickstart]-fürtöt is. A Helm telepítésével és frissítésével kapcsolatos további információkért lásd: a [Helm telepítése][helm-install].
 - A verzió megkereséséhez futtassa `az --version` az **Azure CLI 2.0.46 vagy újabb verzióját** . Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ## <a name="add-a-repository-to-helm-client"></a>Adattár hozzáadása Helm-ügyfélhez

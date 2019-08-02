@@ -4,7 +4,7 @@ description: Adatelemzési virtuális gépek, a csapat számára a megosztott er
 keywords: deep learning, AI, beépített adatelemzési eszközzel, az adatelemzési virtuális gépet, a térinformatikai elemzés, a csoportos adatelemzési folyamat
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2018
-ms.author: gokuma
-ms.openlocfilehash: 5cce7f691204a0fd116627fadde1076a4505fcb2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 44983de87ce2e774356bf506e3a868da922a3ba3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502278"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558056"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Az adatelemző virtuális gépek megosztott készlet létrehozása
 
 Ez a cikk ismerteti, hogyan hozhat létre egy megosztott készletet az adatelemző virtuális gépek (Dsvm) egy csapat használatára. Közös használatának előnyei jobb erőforrás-használatot, megosztása és együttműködés megkönnyítése és hatékonyabb DSVM-erőforrások kezelését. 
 
-Számos módszer és technológiák használatával Dsvm készletét hozza létre. Ez a cikk interaktív-beli virtuális gépek készletein foglalkozik. Egy alternatív felügyelt számítási infrastruktúra képes legyen az Azure Machine Learning Compute. Lásd: [állítsa be a számítási célokhoz](../service/how-to-set-up-training-targets.md#amlcompute) további információt.
+Számos módszer és technológiák használatával Dsvm készletét hozza létre. Ez a cikk az interaktív virtuális gépek készleteit tárgyalja. Egy alternatív felügyelt számítási infrastruktúra Azure Machine Learning számítás. További információt a [számítási célok beállítása](../service/how-to-set-up-training-targets.md#amlcompute) című témakörben talál.
 
 ## <a name="interactive-vm-pool"></a>Interaktív VM-készletet
 

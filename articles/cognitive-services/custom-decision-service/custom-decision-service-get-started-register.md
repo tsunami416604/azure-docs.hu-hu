@@ -1,7 +1,7 @@
 ---
-title: A Custom Decision Service - alkalmazás regisztrálása
+title: Az alkalmazás regisztrálása – Custom Decision Service
 titlesuffix: Azure Cognitive Services
-description: Egy lépésenkénti útmutató az új alkalmazás regisztrálása az Azure Custom Decision Service.
+description: Részletes útmutató az új alkalmazások Azure Custom Decision Service való regisztrálásához.
 services: cognitive-services
 author: slivkins
 manager: nitinme
@@ -11,33 +11,34 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: slivkins
 ms.reviewer: marcozo
-ms.openlocfilehash: c56aef180f5e16d2ec1931caabe04295ef288ca9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4a8e4e91e768e3ad28ea9ff88c18515db4a40323
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60509771"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704549"
 ---
 # <a name="register-your-application"></a>Alkalmazás regisztrálása
 
-A Custom Decision Service az alkalmazás használatához regisztrálni a portálon. Ez a cikk azt ismerteti, hogyan.
+Ha Custom Decision Servicet szeretne használni az alkalmazáshoz, regisztrálja azt a portálon. Ez a cikk azt ismerteti, hogyan.
 
-1. Nyissa meg a [első oldal](https://portal.ds.microsoft.com/) a Custom Decision Service. Kattintson a menüszalag **saját portál**, az ábrán a kiemelt:
+1. Ugrás a Custom Decision Service [elülső oldalára](https://portal.ds.microsoft.com/) . A menüszalagon kattintson a **saját portál**elemre a képen látható módon:
 
-    ![A portálon](./media/portal.png)
+    ![Saját portál](./media/portal.png)
 
-    Ha Ön nem már bejelentkezett, a a portál felszólítja, hogy jelentkezzen be a [Microsoft-fiók](https://account.microsoft.com/account). Miután bejelentkezett, a portál megjeleníti a Microsoft-fiók az oldal jobb felső sarkában.
+    Ha még nem jelentkezett be, a portál felszólítja, hogy jelentkezzen be a [Microsoft-fiók](https://account.microsoft.com/account). Miután bejelentkezett, a portál megjeleníti a Microsoft-fiók az oldal jobb felső sarkában.
 
-2. Az alkalmazás regisztrálásához kattintson a **új alkalmazás** gombra.
+2. Az alkalmazás regisztrálásához kattintson az **új alkalmazás** gombra.
 
-3. A párbeszédpanelen válassza ki az alkalmazás Alkalmazásazonosítója. A Custom Decision Service minden alkalmazáshoz egyedi azonosító szükséges. Ha valaki más már van foglalt ezt az Azonosítót, a rendszer megkérdezi, hogy válasszon egy másikat.
+3. A párbeszédpanelen válassza ki az alkalmazáshoz tartozó alkalmazás-azonosítót. Custom Decision Service minden alkalmazáshoz egyedi azonosítót kell megadni. Ha valaki más már elvégezte ezt az azonosítót, a rendszer megkéri, hogy válasszon egy másikat.
 
-4. Adjon meg egy művelet API-t. Ez a beállítás egy RSS vagy Atom-hírcsatorna, amely az elérhető tartalmak, hogy az alkalmazás a Custom Decision Service kommunikál. Adja meg a csatorna nevét, és adja meg az URL-címet, amelyről szolgálja. Ehhez később ezzel a lépéssel, kattintson a **hírcsatornák** gombra, majd a **új adatcsatorna** gombra. Egy példa, amely létrehoz egy RSS-hírcsatorna a későbbiekben olvashat.
+4. Adja meg a műveleti set API-t. Ez a beállítás egy RSS-vagy Atom-hírcsatorna, amely az alkalmazás számára elérhető tartalmakat Custom Decision Service. Adja meg a hírcsatorna nevét, és adja meg a kiszolgált URL-címet. Ha később szeretné elvégezni ezt a lépést, kattintson a hírcsatornák gombra, majd kattintson az **új hírcsatorna** gombra. Az RSS-hírcsatornát létrehozó példát később ismertetjük.
 
-5. Az alkalmazás regisztrálásához, válassza ki a **egyéni alkalmazás** jelölőnégyzetet a bal alsó sarokban. Adjon meg egy [kapcsolati karakterlánc](../../storage/common/storage-configure-connection-string.md) számára az Azure storage-fiókot, ahol a rendszer az alkalmazás adatokat naplózza. Tárfiók létrehozásával kapcsolatos további információkért lásd: [létrehozása, kezelése vagy törölheti a tárfiókokat](../../storage/common/storage-create-storage-account.md).
+5. Az alkalmazás regisztrálásához jelölje be az **egyéni alkalmazás** jelölőnégyzetet a bal alsó sarokban. Adja meg az Azure Storage-fiókhoz tartozó, az alkalmazásadatok naplózására szolgáló [kapcsolatok karakterláncát](../../storage/common/storage-configure-connection-string.md) . További információ a Storage-fiókok létrehozásáról: [Storage-fiók létrehozása, kezelése vagy törlése](../../storage/common/storage-create-storage-account.md).
 
 ### <a name="next-steps"></a>További lépések
 
 * Első lépések a [weblap](custom-decision-service-get-started-browser.md) vagy [okostelefon alkalmazás](custom-decision-service-get-started-app.md) optimalizálásához.
-* Haladjon végig a [oktatóanyag](custom-decision-service-tutorial-news.md) részletesebb példát.
+* Részletes példa az [oktatóanyagra](custom-decision-service-tutorial-news.md) .
 * Az [API-referencia](custom-decision-service-api-reference.md) még további információkat tartalmaz a nyújtott funkciókról.

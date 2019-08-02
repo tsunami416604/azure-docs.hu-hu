@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 070dd07aa6705e97a532bdc5f53a08a9abe0f83d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7799b62b2c330610663e361bbb3930340b1ebdaf
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361008"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726281"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Az Azure Machine Learning-modellek webszolgáltatásként üzembe helyezett felhasználása
 
@@ -37,8 +37,10 @@ A Machine learning-webszolgáltatást használó ügyfelek létrehozásának ál
 
 A [azureml. Core.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) webszolgáltatási osztály a-ügyfél létrehozásához szükséges információkat tartalmazza. Az ügyfélalkalmazások `Webservice` létrehozásához a következő tulajdonságok hasznosak:
 
-* `auth_enabled` – Ha engedélyezve van a hitelesítés, `True`; ellenkező esetben `False`.
+* `auth_enabled`– Ha a kulcsos hitelesítés engedélyezve `True`van, `False`egyéb esetben.
+* `token_auth_enabled`– Ha engedélyezve van a jogkivonat- `True`hitelesítés, `False`más esetben.
 * `scoring_uri` – A REST API-cím.
+
 
 Az üzembe helyezett webszolgáltatások ezen információk lekérése egy három módja van:
 
@@ -67,7 +69,15 @@ Az üzembe helyezett webszolgáltatások ezen információk lekérése egy háro
     print(service.scoring_uri)
     ```
 
-### <a name="authentication-key"></a>Hitelesítési kulcs
+### <a name="authentication-for-services"></a>Szolgáltatások hitelesítése
+
+A Azure Machine Learning két módszert biztosít a webszolgáltatásokhoz való hozzáférés vezérlésére. 
+
+|Hitelesítési módszer|ACI|AKS|
+|---|---|---|
+|Kulcs|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezve|
+|Jogkivonat| Nem érhető el| Alapértelmezés szerint letiltva |
+#### <a name="authentication-with-keys"></a>Hitelesítés kulcsokkal
 
 Ha engedélyezi a hitelesítést a központi telepítéshez, automatikusan létrehozza a hitelesítési kulcsokat.
 
@@ -85,6 +95,26 @@ print(primary)
 
 > [!IMPORTANT]
 > Ha a kulcs újragenerálása van szüksége, használja a [ `service.regen_key` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
+
+
+#### <a name="authentication-with-tokens"></a>Hitelesítés jogkivonatokkal
+
+Ha engedélyezi a jogkivonat-hitelesítést egy webszolgáltatáshoz, a felhasználónak meg kell adnia egy Azure Machine Learning JWT tokent a webszolgáltatásnak az eléréséhez. 
+
+* Alapértelmezés szerint a jogkivonat-hitelesítés le van tiltva az Azure Kubernetes Service-ben való üzembe helyezéskor.
+* A jogkivonat-hitelesítés nem támogatott a Azure Container Instances való telepítésekor.
+
+A jogkivonat-hitelesítés vezérléséhez használja `token_auth_enabled` a paramétert a központi telepítés létrehozásakor vagy frissítésekor.
+
+Ha engedélyezve van a jogkivonat-hitelesítés, a `get_token` metódussal kérheti le a tulajdonosi jogkivonatot és a jogkivonatok lejárati idejét:
+
+```python
+token, refresh_by = service.get_tokens()
+print(token)
+```
+
+> [!IMPORTANT]
+> A jogkivonat `refresh_by` időpontját követően új jogkivonatot kell kérnie. 
 
 ## <a name="request-data"></a>Kérelem adatai
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 86c38818ee1632bf2d2f3fb1e1240954f3267887
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce9a1d0fb9a5e8b242db26c433a08c2426df39d9
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123703"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720752"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával HubSpot
 
@@ -44,7 +44,7 @@ HubSpot társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **Hubspot** | Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **HubSpot** | Igen |
 | clientId | Hubspot az alkalmazáshoz tartozó ügyfél-azonosító.  | Igen |
 | clientSecret | A Hubspot az alkalmazáshoz tartozó titkos ügyfélkulcsot. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | accessToken | Az OAuth-integráció kezdeti hitelesítéskor kapott hozzáférési jogkivonat. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
@@ -87,7 +87,7 @@ Adatok másolása történő HubSpot, állítsa be a type tulajdonság, az adatk
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **HubspotObject** | Igen |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **HubspotObject** | Igen |
 | tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
@@ -97,11 +97,12 @@ Adatok másolása történő HubSpot, állítsa be a type tulajdonság, az adatk
     "name": "HubspotDataset",
     "properties": {
         "type": "HubspotObject",
+        "typeProperties": {},
+        "schema": [],        
         "linkedServiceName": {
             "referenceName": "<Hubspot linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -116,7 +117,7 @@ Adatok másolása HubSpot, állítsa be a forrás típusaként a másolási tev�
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **HubspotSource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **HubspotSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Companies where Company_Id = xxx"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**

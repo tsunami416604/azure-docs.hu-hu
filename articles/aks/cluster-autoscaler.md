@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
 ms.openlocfilehash: 09610782f211b4cfb80a1291b73ab543328376a3
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68424178"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Előzetes verzió – a fürt automatikus méretezése az alkalmazások igényeinek kielégítéséhez az Azure Kubernetes Service-ben (ak)
@@ -32,7 +32,7 @@ Ehhez a cikkhez az Azure CLI 2.0.65 vagy újabb verzióját kell futtatnia. A ve
 
 ### <a name="install-aks-preview-cli-extension"></a>Az Kabai szolgáltatás telepítése – előnézeti CLI-bővítmény
 
-A fürt automéretező használatához a CLI *-előnézet CLI-* bővítmény 0.4.4 vagy újabb verziójára van szükség. Telepítse a (z) Azure CLI *-* bővítményt az az [Extension Add][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] paranccsal:
+A fürt automéretező használatához a CLI *-előnézet CLI-* bővítmény 0.4.4 vagy újabb verziójára van szükség. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, majd az az [Extension Update][az-extension-update] paranccsal keresse meg a rendelkezésre álló frissítéseket:
 
 ```azurecli-interactive
 # Install the aks-preview extension

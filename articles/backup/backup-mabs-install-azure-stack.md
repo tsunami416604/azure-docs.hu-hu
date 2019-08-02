@@ -1,20 +1,20 @@
 ---
 title: A Azure Backup Server telepítése Azure Stackon | Microsoft Docs
 description: A munkaterhelések Azure Stack-ben való ellátásához Azure Backup Server használhat.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: raynew
-ms.openlocfilehash: 77f418a37c47850cf8a763dc399109d86925feff
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: da941d0234fe78791f9a1c2f2a7d01122247534c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465254"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639859"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server telepítése az Azure Stacken
 
@@ -155,7 +155,7 @@ Az Azure Backup Server telepítőt kétféleképpen töltheti le. A Azure Backup
 
     ![Megnyílik a letöltőközpontban](./media/backup-mabs-install-azure-stack/mabs-download-center-page.png)
 
-9. A Azure Backup Server-telepítő nyolc fájlból áll – egy telepítőből és hét. bin fájlból. Jelölje  ki a fájlnevet az összes szükséges fájl kiválasztásához, majd kattintson a **tovább**gombra. Töltse le az összes fájlt ugyanabba a mappába.
+9. A Azure Backup Server-telepítő nyolc fájlból áll – egy telepítőből és hét. bin fájlból. Jelölje ki a fájlnevet az összes szükséges fájl kiválasztásához, majd kattintson a **tovább**gombra. Töltse le az összes fájlt ugyanabba a mappába.
 
     ![1\. letöltőközpont](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
 
@@ -181,7 +181,7 @@ Miután letöltötte az összes fájlt a Azure Stack virtuális gépre, lépjen 
 
    ![Microsoft Azure Backup telepítővarázslója](./media/backup-mabs-install-azure-stack/mabs-install-wizard-select-destination-1.png)
 
-4. Ellenőrizze a kinyerési helyet, majd kattintson a Kibontás elemre.
+4. Ellenőrizze a kinyerési helyet,majd kattintson a Kibontás elemre.
 
    ![Microsoft Azure Backup telepítővarázslója](./media/backup-mabs-install-azure-stack/mabs-install-wizard-extract-2.png)
 
@@ -343,9 +343,9 @@ Ha az Azure-hoz való kapcsolódást visszaállítja a Azure Backup Server, az A
 
 ### <a name="handling-subscription-states"></a>Előfizetési állapotok kezelésére
 
-Lehetséges, hogy az Azure-előfizetést *lejárt* vagy  kiépített állapotról *aktív* állapotra szeretné módosítani. Az előfizetés állapota nem *aktív*:
+Lehetséges, hogy az Azure-előfizetést *lejárt* vagy kiépített állapotról *aktív* állapotra szeretné módosítani. Az előfizetés állapota nem *aktív*:
 
-- Az előfizetés megszüntetése közben elveszíti a funkciót. Az előfizetés aktívra való visszaállítása a biztonsági mentési/visszaállítási funkciót újítja meg. Ha a helyi lemezen lévő biztonsági mentési adatok tárolása elég nagy, a biztonsági mentési adatok lekérése megmaradt. Az Azure-beli biztonsági mentési adatgyűjtés azonban visszavonhatatlanul elvész, ha az  előfizetés a kiépített állapotba kerül.
+- Az előfizetés megszüntetése közbenelveszíti a funkciót. Az előfizetés aktívravaló visszaállítása a biztonsági mentési/visszaállítási funkciót újítja meg. Ha a helyi lemezen lévő biztonsági mentési adatok tárolása elég nagy, a biztonsági mentési adatok lekérése megmaradt. Az Azure-beli biztonsági mentési adatgyűjtés azonban visszavonhatatlanul elvész, ha az előfizetés a kiépített állapotba kerül.
 - Amíg egy előfizetés *lejárt*, elveszíti a funkciót. Az ütemezett biztonsági mentések nem futnak, amíg egy előfizetés *lejár*.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás

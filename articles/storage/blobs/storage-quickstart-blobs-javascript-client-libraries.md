@@ -1,26 +1,23 @@
 ---
 title: Azure rövid útmutató – Blob létrehozása objektumtárban JavaScript és HTML böngészőben való használatával
 description: Megtudhatja, hogyan tölthet fel, listázhat és törölhet blobokat egy BlobService-példánnyal és JavaScripttel egy HTML-oldalon.
-services: storage
 keywords: tároló, javascript, html
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
 ms.author: mhopkins
-ms.reviewer: seguler
 ms.date: 11/14/2018
-ms.topic: quickstart
+ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: df697ab31875c8f806456c1e60820e7e8d752539
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.topic: quickstart
+ms.openlocfilehash: c9951a5fcfb30ed229b2bc7286b6d274649e6136
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149581"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722075"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Gyors útmutató: Feltöltése, listázása és törlése a blobok a böngészőben JavaScript/HTML használatával
+# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Gyors útmutató: Blobok feltöltése, listázása és törlése a böngészőben JavaScript/HTML használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogy hogyan kezelheti a blobokat böngészőben futó kóddal. Az itt bemutatott megközelítés szemlélteti a megfelelő biztonsági eszközök használatát is a Blob Storage-fiók biztonságos elérése érdekében. A rövid útmutató elvégzéséhez szüksége lesz egy [Azure-előfizetésre](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -37,7 +34,7 @@ Lépjen vissza az Azure Portalra, és válassza ki a tárfiókot. Új CORS-szab�
 
 A következő tábla az egyes CORS-beállításokat írja le, és ismerteti a szabály meghatározásához használt értékeket.
 
-|Beállítás  |Value (Díj)  | Leírás |
+|Beállítás  |Érték  | Leírás |
 |---------|---------|---------|
 | Engedélyezett eredetek | * | Elfogadható eredetekként beállított tartományok vesszővel tagolt listáját fogadja el. A `*` érték beállításakor minden tartomány hozzáfér a tárfiókhoz. |
 | Engedélyezett műveletek     | törlés, lekérés, fej, egyesítés, közzététel, beállítások és áthelyezés | A tárfiókon futtatható HTTP-műveleteket listázza. Ebben a rövid útmutatóban válassza ki az összes elérhető beállítást. |
@@ -252,7 +249,7 @@ document.getElementById('delete-button').addEventListener('click', () => {
 > Ahhoz, hogy a kódminta működjön, meg kell adnia egy sztringértéket a *blobName* számára.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-A rövid útmutató során létrehozott erőforrások törléséhez térjen vissza az [Azure Portalra](https://portal.azure.com), és válassza ki a tárfiókját. A kijelölt a törölheti a tárfiókot: **Áttekintés > tárfiók törlése**.
+A rövid útmutató során létrehozott erőforrások törléséhez térjen vissza az [Azure Portalra](https://portal.azure.com), és válassza ki a tárfiókját. A kiválasztást követően a következő lépésekkel törölheti a Storage-fiókot: **Áttekintés > Storage-fiók törlése**.
 
 ## <a name="next-steps"></a>További lépések
 A példákból megtudhatja, hogyan tölthet le blobokat és jelentheti az állapotot a fájlfeltöltések során.

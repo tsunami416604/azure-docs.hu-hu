@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Database dinamikus adatmaszkolása |} A Microsoft docs
-description: Az SQL Database dinamikus adatmaszkolása korlátozza a bizalmas adatok adatmaszkolás segít Önnek nem kiemelt jogosultságú felhasználók által
+title: Dinamikus adatmaszkolás Azure SQL Database | Microsoft docs
+description: SQL Database a dinamikus adatmaszkolás korlátozza a bizalmas adatokkal való érintkezést azáltal, hogy maszkolást végez a nem Kiemelt felhasználók számára
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,55 +10,54 @@ ms.topic: conceptual
 author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
-manager: craigg
 ms.date: 03/04/2019
-ms.openlocfilehash: 1db1535779d180994c9ce4350d11f4c696da9e3e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 366b9437aab134985c73611fa8b46c6fbd3d309c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721562"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568762"
 ---
-# <a name="sql-database-dynamic-data-masking"></a>Az SQL Database dinamikus adatmaszkolás
+# <a name="sql-database-dynamic-data-masking"></a>Dinamikus adatmaszkolás SQL Database
 
-Az SQL Database dinamikus adatmaszkolása korlátozza a bizalmas adatok adatmaszkolás segít Önnek nem kiemelt jogosultságú felhasználók által. 
+SQL Database dinamikus adatmaszkolás korlátozza a bizalmas adatokkal való érintkezést azáltal, hogy a nem Kiemelt felhasználók számára maszkolást végez. 
 
 A dinamikus adatmaszkolás azzal segít megelőzni a bizalmas adatokhoz való jogosulatlan hozzáférést, hogy az ügyfél által meghatározhatóvá teszi az alkalmazásrétegre gyakorolt minimális következményekkel felfedhető bizalmas adatok menyiségét. Ez a szabályzatalapú biztonsági funkció elrejti a bizalmas adatokat egy kijelölt adatbázismezőkön végrehajtott lekérdezés eredményhalmazában, miközben az adatbázis adatait nem módosítja.
 
-Például egy telefonos szolgáltatás képviselővel előfordulhat, hogy azonosíthatja a hívók a hitelkártya száma több számjegy, de ezeket az elemeket nem teljes mértékben láthatók a munkatársának. Maszkolási szabály, hogy az összes maszkokkal, de az eredményben minden olyan hitelkártyaszám utolsó négy számjegye beállítása minden lekérdezés lehet definiálni. Másik példaként a megfelelő adatok maszk lehet definiálni személyes azonosításra alkalmas adatokat (PII) adatok védelme érdekében, hogy a fejlesztő lekérdezheti az éles környezetekre vonatkozó hibaelhárítási célból megfelelőségi szabályzat megsértése nélkül.
+Előfordulhat például, hogy a Call Center egyik szolgáltatása a hívókat a hitelkártyaszám több számjegye alapján azonosítja, de ezeket az adatelemeket nem szabad teljes mértékben kitenni a szolgáltatás képviselőjének. A maszkolási szabályok határozzák meg, hogy a rendszer az összes, de az utolsó négy számjegyet elrejti a bármely lekérdezés eredmény-készletében. Egy másik példaként egy megfelelő adatmaszkot is meghatározhat a személyazonosításra alkalmas adatok (személyes adatok) adatainak védelme érdekében, így a fejlesztők a megfelelőségi rendeletek megszegése nélkül is lekérhetik a termelési környezeteket a hibaelhárítási célból.
 
-## <a name="sql-database-dynamic-data-masking-basics"></a>Az SQL Database dinamikus adatmaszkolási alapjai
+## <a name="sql-database-dynamic-data-masking-basics"></a>A dinamikus adatmaszkolás alapjai SQL Database
 
-A dinamikus adatmaszkolás az Azure Portalon a házirend a dinamikus adatmaszkolás az SQL Database konfigurálása panel vagy a beállítások panelen művelet kiválasztásával állíthatja.
+A dinamikus adatmaszkolási szabályzatot a Azure Portal a dinamikus adatmaszkolási művelet kiválasztásával a SQL Database konfiguráció paneljén vagy a beállítások panelen.
 
-### <a name="dynamic-data-masking-permissions"></a>Dinamikus adatok maszkolási engedélyek
+### <a name="dynamic-data-masking-permissions"></a>Dinamikus adatmaszkolási engedélyek
 
-Dinamikus adatmaszkolás az Azure SQL Database-rendszergazda, a kiszolgálói rendszergazda, konfigurálható vagy [SQL biztonságkezelő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) szerepköröket.
+A dinamikus adatmaszkolás konfigurálható a Azure SQL Database-rendszergazda, a kiszolgálói rendszergazda vagy az [SQL Security Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) szerepköreivel.
 
-### <a name="dynamic-data-masking-policy"></a>Dinamikus adatok maszkolási házirend
+### <a name="dynamic-data-masking-policy"></a>Dinamikus adatmaszkolási szabályzat
 
-* **SQL-felhasználók ki vannak zárva a maszkolásból** – A készlet, SQL-felhasználók vagy az AAD-identitások, amelyek a maszkolásukat megszüntetni adatok beolvasása az SQL-lekérdezés eredményei. Rendszergazdai jogosultságokkal rendelkező felhasználók mindig ki vannak zárva a maszkolásból, és tekintse meg az eredeti adatok összes maszkja nélkül.
-* **Maszkolási szabályok** – a kijelölt mezőket maszkolva meghatározó szabályok és a használt maszkolási függvényt. A kijelölt mezőket egy adatbázis-séma neve, a tábla neve és az oszlop neve lehet definiálni.
-* **Maszkolási függvény** -adatokat a különböző helyzetekhez kitettségének szabályozó olyan készletéhez.
+* A **maszkolásból kizárt SQL-felhasználók** – olyan SQL-felhasználók vagy HRE-identitások összessége, amelyek az SQL-lekérdezés eredményeiben nem maszkolt adatokkal rendelkeznek. A rendszergazdai jogosultságokkal rendelkező felhasználók mindig ki vannak zárva a maszkolásból, és az eredeti adatok maszk nélkül jelennek meg.
+* **Maszkolási szabályok** – a kijelölt mezőket és a használni kívánt maszkolási függvényt meghatározó szabályok halmaza. A kijelölt mezők az adatbázis-séma neve, a tábla neve és az oszlop neve alapján definiálhatók.
+* **Maszkolási függvények** – olyan metódusok összessége, amelyek különböző forgatókönyvek esetében szabályozzák az adatok kitettségét.
 
-| Maszkolási függvényt | Masking Logic |
+| Maszkolási függvény | Maszkolási logika |
 | --- | --- |
-| **Alapértelmezett** |**Teljes maszkolási megfelelően a kijelölt mezők adattípusai**<br/><br/>• A XXXX vagy kevesebb Xs, ha a mező mérete 4-nél kevesebb karaktert adattípusokkal (nchar, ntext, nvarchar).<br/>• A numerikus adattípusokról (bigint, bit, decimal, int, pénzt, numerikus, smallint, pénz, tinyint, lebegőpontos, valós) nulla érték használata.<br/>• A 01-01-1900 dátum/idő adattípusok (dátum, datetime2, datetime, datetimeoffset, smalldatetime, ideje).<br/>• Az SQL-változatot, az alapértelmezett érték az aktuális típusú szolgál.<br/>• A dokumentum az XML \<maszkolva / > szolgál.<br/>• Az üres érték használata különleges adattípust (timestamp táblára, hierarchyid, GUID, bináris, kép, varbinary térbeli típusok). |
-| **Hitelkártya** |**Maszkolási módszer, amely a kijelölt mezők utolsó négy számjegye** , és hozzáadja egy konstans sztring formájában, hitelkártyával előtagjaként.<br/><br/>XXXX-XXXX-XXXX-1234 |
-| **E-mail** |**Maszkolási metódussal, amely elérhetővé teszi az első, és a tartomány helyére XXX.com** egy e-mail-cím formájában a konstans sztring előtag használatával.<br/><br/>aXX@XXXX.com |
-| **Véletlenszerű szám** |**Maszkolási metódussal, amely létrehoz egy véletlenszerű számot** a kiválasztott határokat és a tényleges adattípusok alapján. Ha a kijelölt határokon azonos, a maszkolási függvényt az a konstans szám.<br/><br/>![Navigációs ablak](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
-| **Egyéni szöveg** |**Maszkolási módszer, amely az első és utolsó karaktere** és a egy egyéni kitöltés karakterláncot hozzáadja a középső. Ha az eredeti karakterláncot rövidebb, mint a közzétett előtag és utótagot, csak a kitöltő karakterlánc szolgál. <br/>prefix[padding]suffix<br/><br/>![Navigációs ablak](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
+| **Alapértelmezett** |**Teljes maszkolás a kijelölt mezők adattípusainak megfelelően**<br/><br/>• Az XXXX vagy kevesebb XS használata, ha a mező mérete kisebb, mint 4 karakter a sztring adattípusok esetében (NCHAR, ntext, nvarchar).<br/>• Nulla értéket használhat a numerikus adattípusokhoz (bigint, bit, decimális, int, Money, numerikus, smallint, túlcsordulási, tinyint, float, Real).<br/>• Az 01-01-1900-as dátum/idő adattípusok (dátum, datetime2, datetime, DateTimeOffset, idő adattípusúra, Time) használata.<br/>• Az SQL Variant esetében az aktuális típus alapértelmezett értéke lesz használatban.<br/>• Az XML esetében a \<rendszer a dokumentum maszkolását/> használja.<br/>• Üres értéket használhat a speciális adattípusokhoz (timestamp-tábla, hierarchyid, GUID, Binary, képek, varbinary térbeli típusok). |
+| **Bankkártya** |**Maszkolási módszer, amely a kijelölt mezők utolsó négy számjegyét teszi elérhetővé** , és egy konstans karakterláncot hoz létre egy hitelkártya formájában.<br/><br/>XXXX-XXXX-XXXX-1234 |
+| **E-mail** |**Maszkolási módszer, amely az első betűt teszi elérhetővé, és lecseréli a tartományt a xxx.com** egy állandó karakterlánc-előtaggal e-mail-cím formájában.<br/><br/>aXX@XXXX.com |
+| **Véletlenszerű szám** |**Maszkolási módszer, amely** a kiválasztott határok és a tényleges adattípusok alapján véletlenszerűen generált számot hoz létre. Ha a kijelölt határok egyenlőek, akkor a maszkolási függvény állandó szám.<br/><br/>![Navigációs ablaktábla](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
+| **Egyéni szöveg** |**Maszkolási módszer, amely az első és az utolsó karaktert teszi elérhetővé** , és egy egyéni kitöltési karakterláncot helyez el a közepén. Ha az eredeti sztring rövidebb a megjelenő előtagnál és utótagnál, csak a kitöltés karakterláncot használja a rendszer. <br/>előtag [kitöltés] utótag<br/><br/>![Navigációs ablaktábla](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
 
 <a name="Anchor1"></a>
 
 ### <a name="recommended-fields-to-mask"></a>Ajánlott maszkolandó mezők
 
-A DDM ajánlatok motor megőrzendő tartalomként jelöli meg az adatbázis egyes mezőit potenciálisan bizalmas a mezők, amelyek lehetnek a deduplikációra maszkolási. A dinamikus Adatmaszkolás paneljét a portálon megtekintheti az adatbázis a javasolt oszlopok. Ehhez szüksége, kattintson a **maszk hozzáadása** egy vagy több oszlopnál, majd **mentése** maszk ezeket a mezőket a alkalmazni.
+A DDM-javaslatok motorja az adatbázis egyes mezőit potenciálisan bizalmas mezőként adja meg, ami valószínűleg a maszkoláshoz is jó választás lehet. A portál dinamikus adatmaszkolás paneljén látni fogja az adatbázis ajánlott oszlopait. Mindössze annyit kell tennie, hogy a **maszk hozzáadása** egy vagy több oszlophoz lehetőséget választja, majd a **Mentés** gombra kattint a mezőkhöz tartozó maszk alkalmazásához.
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Az adatbázis PowerShell-parancsmagok használatával dinamikus adatmaszkolás beállítása
+## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Dinamikus adatmaszkolás beállítása az adatbázishoz PowerShell-parancsmagok használatával
 
-Lásd: [az Azure SQL Database-parancsmagok](https://docs.microsoft.com/powershell/module/az.sql).
+Lásd: [Azure SQL Database parancsmagok](https://docs.microsoft.com/powershell/module/az.sql).
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>Állítsa be a dinamikus adatmaszkolás az adatbázis, a REST API használatával
+## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>Dinamikus adatmaszkolás beállítása az adatbázishoz REST API használatával
 
-Lásd: [műveleteket az Azure SQL Database](https://docs.microsoft.com/rest/api/sql/).
+Tekintse [meg Azure SQL Database műveleteit](https://docs.microsoft.com/rest/api/sql/).

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 8f5e3958588a597bde04ae1c8e4873006b281458
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2c490c9eb23ad62559a6246f1588f80080851014
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405817"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726049"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Adatok másolása a QuickBooks online-hoz az Azure Data Factory (előzetes verzió) használatával
 
@@ -46,7 +46,7 @@ QuickBooks társított szolgáltatás a következő tulajdonságok támogatottak
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **QuickBooks** | Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **QuickBooks** | Igen |
 | endpoint | A végpont a QuickBooks Online-kiszolgáló. (azaz quickbooks.api.intuit.com)  | Igen |
 | companyId | A QuickBooks vállalati engedélyezésére vállalat azonosítója. Keresse meg a vállalati azonosító kapcsolatos információk: [Hogyan találhatom meg a vállalati azonosító?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Igen |
 | consumerKey | Az OAuth 1.0-s hitelesítési fogyasztói kulcs. | Igen |
@@ -92,7 +92,7 @@ Adatok másolása a QuickBooks online-hoz, állítsa be a type tulajdonság, az 
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **QuickBooksObject** | Igen |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **QuickBooksObject** | Igen |
 | tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
@@ -102,11 +102,12 @@ Adatok másolása a QuickBooks online-hoz, állítsa be a type tulajdonság, az 
     "name": "QuickBooksDataset",
     "properties": {
         "type": "QuickBooksObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<QuickBooks linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -121,7 +122,7 @@ Adatok másolása a QuickBooks online-hoz, állítsa be a forrás típusaként a
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **QuickBooksSource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **QuickBooksSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**

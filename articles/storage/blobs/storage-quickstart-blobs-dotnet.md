@@ -1,20 +1,18 @@
 ---
 title: 'Gyors útmutató: Az Azure Blob Storage ügyféloldali kódtára a .NET-hez'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használható az Azure Blob Storage-ügyfél kódtára a .NET-hez tárolók és Blobok (Object) tárolók létrehozásához. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan listázhatja ki a tárolóban található összes blobot.
-services: storage
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: quickstart
-ms.date: 07/20/2019
 ms.author: mhopkins
+ms.date: 07/20/2019
+ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: a030aee18303d20ccf91c6939d349285c4a4bac4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.topic: quickstart
+ms.openlocfilehash: 40ee855aa01a9b24e35fb9863221e3607786d407
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565940"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722021"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-net"></a>Gyors útmutató: Az Azure Blob Storage ügyféloldali kódtára a .NET-hez
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 234b78a97c2663121d0d585154695887a58b9522
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c9ffd5a173bcfae41e08babbadae1e67047ed452
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60203414"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725988"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával ServiceNow
 
@@ -41,9 +41,9 @@ ServiceNow-beli társított szolgáltatás a következő tulajdonságok támogat
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **ServiceNow** | Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **ServiceNow** | Igen |
 | endpoint | A végpont a ServiceNow-kiszolgáló (`http://<instance>.service-now.com`).  | Igen |
-| authenticationType | A használandó hitelesítés típusa. <br/>Engedélyezett értékek a következők: **Alapszintű**, **OAuth2** | Igen |
+| authenticationType | A használandó hitelesítés típusa. <br/>Engedélyezett értékek a következők:Alapszintű, **OAuth2** | Igen |
 | username | Az alapszintű és az OAuth2-hitelesítéshez a ServiceNow-kiszolgálóhoz való csatlakozáshoz használt felhasználónév.  | Igen |
 | password | A jelszó, a felhasználónevet Basic és OAuth2-hitelesítéshez megfelelő. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | clientId | Az ügyfél-azonosító OAuth2-hitelesítéshez.  | Nem |
@@ -80,7 +80,7 @@ Adatmásolás ServiceNow, állítsa be a type tulajdonság, az adatkészlet **Se
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **ServiceNowObject** | Igen |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **ServiceNowObject** | Igen |
 | tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
@@ -90,11 +90,12 @@ Adatmásolás ServiceNow, állítsa be a type tulajdonság, az adatkészlet **Se
     "name": "ServiceNowDataset",
     "properties": {
         "type": "ServiceNowObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<ServiceNow linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -109,7 +110,7 @@ Adatok másolása a ServiceNow, állítsa be a forrás típusaként a másolási
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **ServiceNowSource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **ServiceNowSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Actual.alm_asset"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 Vegye figyelembe a következőket megadásakor a séma és az oszlopot a ServiceNow lekérdezést, és **tekintse meg [teljesítménnyel kapcsolatos tippek](#performance-tips) a másolási teljesítmény utalás**.
@@ -117,11 +118,11 @@ Vegye figyelembe a következőket megadásakor a séma és az oszlopot a Service
 - **Séma:** adja meg a séma szerint `Actual` vagy `Display` a ServiceNow-lekérdezés, tekintse meg, az paraméterként, amely `sysparm_display_value` , IGAZ vagy hamis értéket, ha a hívó [ServiceNow restful API-k](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
 - **Oszlop:** tényleges értéke alapján oszlopneve `Actual` sémája `[column name]_value`, a megjelenítési érték alatt `Display` sémája `[column name]_display_value`. Megjegyzés: az oszlop nevét kell a lekérdezésben használt séma térképet.
 
-**Mintalekérdezés:** 
-`SELECT col_value FROM Actual.alm_asset` OR 
+**Példa lekérdezésre:** 
+`SELECT col_value FROM Actual.alm_asset` VAGY 
 `SELECT col_display_value FROM Display.alm_asset`
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[

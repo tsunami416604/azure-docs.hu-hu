@@ -1,18 +1,19 @@
 ---
 title: SharePoint-farm biztonsági mentése az Azure-ba Azure Backup kiszolgáló használatával
 description: A SharePoint-adatai biztonsági mentését és visszaállítását Azure Backup Server használatával végezheti el. Ez a cikk ismerteti a SharePoint-farm konfigurálásához szükséges információkat, hogy a kívánt adatok az Azure-ban is tárolhatók legyenek. A védett SharePoint-adatok a lemezről vagy az Azure-ból is visszaállíthatók.
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
-ms.author: kasinh
-ms.openlocfilehash: cc7a5f6703d8d6fcec800071e75b7ca42c8f1cef
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 22f43bf1d3ac8282c4de3349656a21f51e788942
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466702"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689489"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>SharePoint-farm biztonsági mentése az Azure-ba
 A SharePoint-farmok biztonsági mentését úgy végezheti el, hogy a Microsoft Azure Backup Server (MABS) használatával ugyanúgy Microsoft Azure a biztonsági mentést, mint az egyéb adatforrások. Azure Backup rugalmasságot biztosít a biztonsági mentési ütemezésben napi, heti, havi vagy éves biztonsági mentési pontok létrehozásához, és adatmegőrzési házirend-beállításokat biztosít a különböző biztonsági mentési pontokhoz. Lehetővé teszi továbbá a helyi lemezek másolását a gyors helyreállítási idejű célkitűzések (RTO) számára, valamint a másolatok Azure-ba történő tárolását gazdaságos, hosszú távú adatmegőrzés céljából.
@@ -207,7 +208,7 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
    > Mivel a SharePoint-farm védelme hosszú távú adatmegőrzést biztosít az Azure-ban, a MABS nem érhető el katalógus-információ (metadata). Ennek eredményeképpen, amikor egy időponthoz tartozó SharePoint tartalmi adatbázist helyre kell állítani, újra kell katalogizálni a SharePoint-farmot.
    >
    >
-3. Kattintson az újrakatalogizálás elemre.
+3. Kattintsonaz újrakatalogizálás elemre.
 
     ![MABS SharePoint-Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
@@ -215,7 +216,7 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
 
     ![MABS SharePoint-Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    A katalogizálás befejezése után az állapot Sikeresre változik . Kattintson a **Bezárás** gombra.
+    A katalogizálás befejezése után az állapot Sikeresre változik. Kattintson a **Bezárás** gombra.
 
     ![MABS SharePoint-Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
 4. Kattintson a MABS- **helyreállítás** lapon látható SharePoint-objektumra a tartalom-adatbázis struktúrájának lekéréséhez. Kattintson a jobb gombbal az elemre, majd kattintson a **helyreállítás**elemre.

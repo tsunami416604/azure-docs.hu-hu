@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: f6aed5d2ac1c4672d8d8868fe127ead053512e42
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 974ece9cd035ae29ada38f34b7933d86f682194f
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314838"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696237"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Forrás-átalakítás a leképezési adatfolyamhoz 
 
@@ -28,8 +28,12 @@ Minden adatfolyamhoz legalább egy forrás-átalakítás szükséges. Az adatát
 
 Társítsa az adatfolyam forrás-átalakítását pontosan egy Data Factory adatkészlettel. Az adatkészlet határozza meg az adatokat, amelyeket írni vagy olvasni szeretne. A forrásban lévő helyettesítő karakterekkel és fájlokkal egyszerre több fájllal is dolgozhat.
 
-## <a name="data-flow-staging-areas"></a>Adatfolyam-előkészítési területek
+A **helyettesítő karakteres minta** beállítással a rendszer az ADF-et az egyes egyező mappák és fájlok egyetlen forrás-átalakításban való hurkora utasítja. Ez egy nagyon hatékony módszer több fájl feldolgozására egyetlen folyamaton belül. A jelenleg feldolgozott fájlnév nyomon követéséhez a forrás beállításai között állítsa be a "fájlnév tárolására szolgáló oszlop" mező nevét.
 
+> [!NOTE]
+> Több helyettesítő karaktert tartalmazó helyettesítő mintát is beállíthat a meglévő helyettesítő karakter melletti + jelre, hogy további helyettesítőkarakter-szabályokat adjon hozzá.
+
+## <a name="data-flow-staging-areas"></a>Adatfolyam-előkészítési területek
 Az adatfolyam olyan *előkészítési* adatkészletekkel működik, amelyek mind az Azure-ban találhatók. Ezeket az adatkészleteket használja az előkészítéshez az adatátalakításkor. 
 
 Data Factory közel 80 natív összekötőhöz férhet hozzá. Az adatfolyamatban lévő más forrásokból származó adatok belefoglalásához használja a másolási tevékenység eszközt, hogy az adatok az adatforgalom adatkészletének egyik átmeneti területén legyenek.
@@ -101,13 +105,23 @@ Helyettesítő karakteres példák:
 
 A tárolót meg kell adni az adatkészletben. A helyettesítő karakteres elérési útnak ezért a gyökérmappa elérési útját is tartalmaznia kell.
 
+* **Partíció gyökerének elérési útja**: Ha ```key=value``` formázott mappák vannak a fájlformátumban (azaz év = 2019), akkor a partíciós mappa fájának legfelső szintjének az adatáramlási adatfolyamban való hozzárendeléséhez megkérheti az ADF-t.
+
+Először állítson be egy helyettesítő karaktert, amely tartalmazza az összes olyan elérési utat, amely a particionált mappák és az elolvasni kívánt levél fájlok.
+
+![Partíciós forrásfájl beállításai](media/data-flow/partfile2.png "Partíciós fájl beállítása")
+
+A partíció gyökerének elérési útja beállítás használatával adja meg az ADF-nek, hogy mi a mappa struktúrájának legfelső szintje. Most, hogy megtekinti az adatai tartalmát, látni fogja, hogy az ADF hozzáadja az egyes mappák szintjein talált feloldott partíciókat.
+
+![Partíció gyökerének elérési útja](media/data-flow/partfile1.png "Partíciós gyökér elérési útjának") előnézete
+
 * **Fájlok listája**: Ez egy beállított fájl. Hozzon létre egy szövegfájlt, amely tartalmazza a feldolgozandó relatív elérési út fájljainak listáját. Mutasson erre a szövegfájlra.
 * **A fájl nevét tároló oszlop**: Tárolja a forrásfájl nevét az adataiban található oszlopban. Adja meg a fájlnév karakterláncának tárolására szolgáló új nevet.
 * **Befejezés után**: Ha az adatfolyam futtatása után semmit nem kíván végrehajtani a forrásfájlban, törölje a forrásfájlt, vagy helyezze át a forrásfájlt. Az áthelyezés elérési útjai relatívak.
 
 Ha a forrásfájlokat másik helyre szeretné áthelyezni a feldolgozás után, először válassza a "áthelyezés" lehetőséget a fájl művelethez. Ezután állítsa be a "from" könyvtárat. Ha nem használ helyettesítő karaktert az elérési úthoz, akkor a "from" beállítás lesz a forrás mappájával megegyező mappa.
 
-Ha van helyettesítő forrás elérési útja, például:
+Ha a forrás elérési útja helyettesítő karakterrel rendelkezik, a szintaxis az alábbihoz hasonlóan fog kinézni:
 
 ```/data/sales/20??/**/*.csv```
 
@@ -119,7 +133,7 @@ A "from" lehetőséget adhatja meg
 
 ```/backup/priorSales```
 
-Ebben az esetben a forrásként szolgáló/Data/Sales alatti összes alkönyvtárat a rendszer a/backup/priorSales.-hez viszonyítva helyezi át
+Ebben az esetben a rendszer a/Data/Sales alatt forrásként használt összes fájlt áthelyezi a/backup/priorSales.
 
 ### <a name="sql-datasets"></a>SQL-adatkészletek
 
@@ -145,15 +159,14 @@ Az adatkészletekben lévő sémák esetében a forrás vetülete határozza meg
 
 ![Beállítások a kivetítés lapon](media/data-flow/source3.png "Kivetítés")
 
-Ha a szövegfájl nem rendelkezik meghatározott sémával, válassza  az adattípusok észlelése lehetőséget, hogy Data Factory az adattípusok mintavételezését és következtetését. Válassza az **alapértelmezett formátum megadása** lehetőséget az alapértelmezett adatformátumok automatikus észleléséhez. 
+Ha a szövegfájl nem rendelkezik meghatározott sémával, válassza az adattípusok észlelése lehetőséget, hogy Data Factory az adattípusok mintavételezését és következtetését. Válassza az **alapértelmezett formátum megadása** lehetőséget az alapértelmezett adatformátumok automatikus észleléséhez. 
 
 Az oszlop adattípusait egy későbbi származtatott oszlop-átalakításban módosíthatja. Az oszlopnevek módosításához válasszon transzformációt.
 
 ![Alapértelmezett adatformátumok beállításai](media/data-flow/source2.png "Alapértelmezett formátumok")
 
 ### <a name="add-dynamic-content"></a>Dinamikus tartalom hozzáadása
-
-Ha a beállítások panelen a mezőkön belülre kattint, megjelenik a "dinamikus tartalom hozzáadása" hivatkozás. Ha ide kattint, elindul a Kifejezésszerkesztő. Itt állíthatja be dinamikusan a beállítások értékeit kifejezések, statikus literális értékek vagy paraméterek használatával.
+Ha a beállítások panelen a mezőkön belülre kattint, megjelenik a "dinamikus tartalom hozzáadása" hivatkozás. Ha a Kifejezésszerkesztő elindítását választja, a kifejezéseket, a statikus literál értékeket vagy a paramétereket dinamikusan kell beállítania.
 
 ![Paraméterek](media/data-flow/params6.png "Paraméterek")
 

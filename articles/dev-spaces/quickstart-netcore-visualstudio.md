@@ -1,5 +1,5 @@
 ---
-title: Fejlesztés a .NET Core, az aks-en az Azure fejlesztői, szóközök és a Visual Studio használatával
+title: Hibakeresés és iteráció a Visual Studióval és a .NET Core-val az AK-val az Azure dev Spaces használatával
 titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
@@ -8,74 +8,74 @@ ms.author: zarhoads
 ms.date: 03/22/2019
 ms.topic: quickstart
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
-keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
+keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: bb23de0dfe2d717ee2e41d69eec211f1fde26687
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ece47c86fba6bc975a4146f596fa001014352a4f
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707184"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725846"
 ---
-# <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio"></a>Gyors útmutató: Fejlesztés a .NET Core Kubernetes az Azure fejlesztési szóközöket (a Visual Studio)
+# <a name="quickstart-debug-and-iterate-with-visual-studio-and-net-core-on-kubernetes-with-azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Visual Studióval és a .NET Core-val a Kubernetes az Azure dev Spaces használatával
 
 Ebből az útmutatóból a következőket tudhatja meg:
 
 - Az Azure Dev Spaces beállítása Managed Kubernetes-fürttel az Azure-ban.
 - Iteratív kódfejlesztés tárolókban a Visual Studio használatával.
-- Hibakeresés a Visual Studiót használó fürtön futó kódot.
+- A fürtön futó hibakeresési kód a Visual Studio használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha még nincs fiókja, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
-- A Windows telepítve van, az Azure-fejlesztési számítási feladatot a Visual Studio 2019. Használhatja a Visual Studio 2017-et a Windows a webalkalmazás-fejlesztési számítási feladatok és [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) telepítve. Ha nincs telepítve a Visual Studio, töltse le [Itt](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Visual Studio 2019 Windows rendszeren, amelyen telepítve van az Azure fejlesztői munkaterhelése. A Windowshoz készült Visual Studio 2017 a webes fejlesztési munkaterhelés és a [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) telepítve is használható. Ha nincs telepítve a Visual Studio, töltse le [itt](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Az Azure Kubernetes Service-fürt létrehozása
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása
 
-Az AKS-fürt létre kell hoznia egy [támogatott régió][supported-regions]. Fürt létrehozása:
+A [támogatott régiókban][supported-regions]létre kell hoznia egy AK-fürtöt. Fürt létrehozása:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
-1. Válassza ki *+ erőforrás létrehozása > Kubernetes-szolgáltatást*. 
-1. Adja meg a _előfizetés_, _erőforráscsoport_, _Kubernetes-fürt neve_, _régió_, _Kubernetes-verzió_, és _DNS-név előtagja_.
+1. Válassza *az + erőforrás létrehozása > Kubernetes szolgáltatás*lehetőséget. 
+1. Adja megaz előfizetést, az _erőforráscsoportot_, a _Kubernetes-fürt nevét_, a régiót, a _Kubernetes-verziót_és a _DNS-név előtagját_.
 
-    ![Az AKS létrehozása az Azure Portalon](media/get-started-netcore-visualstudio/create-aks-portal.png)
+    ![AK létrehozása a Azure Portalban](media/get-started-netcore-visualstudio/create-aks-portal.png)
 
 1. Kattintson az *Áttekintés + létrehozás* elemre.
 1. Kattintson a *Create* (Létrehozás) gombra.
 
-## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Az AKS-fürt az Azure fejlesztési tárolóhelyek engedélyezése
+## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Az Azure dev-helyek engedélyezése az AK-fürtön
 
-Az AKS-fürt az Azure Portalon keresse meg és kattintson *fejlesztési tárolóhelyek*. Változás *fejlesztési szóközt engedélyezni* való *Igen* kattintson *mentése*.
+Navigáljon az AK-fürthöz a Azure Portalban, és kattintson a *dev Spaces*elemre. Módosítsa a *fejlesztői tárhelyek engedélyezése* *beállítást igen* értékre, és kattintson a *Mentés*gombra.
 
-![Fejlesztési szóközt engedélyezni az Azure Portalon](media/get-started-netcore-visualstudio/enable-dev-spaces-portal.png)
+![Fejlesztői szóközök engedélyezése a Azure Portalban](media/get-started-netcore-visualstudio/enable-dev-spaces-portal.png)
 
-## <a name="create-a-new-aspnet-web-app"></a>Egy új ASP.NET-webalkalmazás létrehozása
+## <a name="create-a-new-aspnet-web-app"></a>Új ASP.NET-Webalkalmazás létrehozása
 
 1. Nyissa meg a Visual Studiót.
 1. Új projekt létrehozása.
-1. Válasszon *ASP.NET Core-webalkalmazás* és nevezze el a projektet *webfrontend*.
+1. Válassza ki *ASP.net Core* webalkalmazást, és nevezze el a projekt webfelületét.
 1. Kattintson az *OK* gombra.
-1. Amikor a rendszer kéri, válassza ki a *webalkalmazás (Model-View-Controller)* a sablonhoz.
-1. Válassza ki *.NET Core* és *ASP.NET Core 2.0* tetején.
+1. Ha a rendszer kéri, válassza a *webalkalmazás (Model-View-Controller)* elemet a sablonhoz.
+1. Válassza a *.net Core* és a *ASP.net Core 2,0* elemet a felső részen.
 1. Kattintson az *OK* gombra.
 
-## <a name="connect-your-project-to-your-dev-space"></a>A fejlesztési tárhely-projekt csatlakoztatása
+## <a name="connect-your-project-to-your-dev-space"></a>A projekt összekötése a fejlesztői területtel
 
-Válassza ki a projekt **Azure fejlesztési tárolóhelyek** a lent látható módon indítási beállítások legördülő listából.
+A projektben válassza az **Azure dev Spaces** lehetőséget az indítási beállítások legördülő listából az alább látható módon.
 
 ![](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
-Az Azure fejlesztési tárolóhelyek párbeszédpanelen válassza ki a *előfizetés* és *Azure Kubernetes-fürt*. Hagyja *terület* beállítása *alapértelmezett* , és engedélyezze a *nyilvánosan hozzáférhető* jelölőnégyzetet. Kattintson az *OK* gombra.
+Az Azure dev Spaces párbeszédpanelen válassza ki az előfizetését és az *Azure Kubernetes*-fürtöt. Hagyja üresen a *helyet* az *alapértelmezett* értékre, és engedélyezze a *nyilvánosan elérhető* jelölőnégyzetet. Kattintson az *OK* gombra.
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
-Ez a folyamat üzembe helyezi a szolgáltatást a *alapértelmezett* fejlesztési terület nyilvánosan elérhető URL-címet. Ha egy olyan fürtöt választ, amely nincs az Azure Dev Spaceshez konfigurálva, a rendszer egy üzenetben rákérdez, hogy szeretné-e konfigurálni. Kattintson az *OK* gombra.
+Ez a folyamat egy nyilvánosan elérhető URL-címmel telepíti a szolgáltatást az *alapértelmezett* fejlesztői tárhelyre. Ha egy olyan fürtöt választ, amely nincs az Azure Dev Spaceshez konfigurálva, a rendszer egy üzenetben rákérdez, hogy szeretné-e konfigurálni. Kattintson az *OK* gombra.
 
 ![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
-A futó szolgáltatás nyilvános URL-CÍMÉT a *alapértelmezett* fejlesztési hely jelenik meg a *kimeneti* ablakban:
+Az *alapértelmezett* fejlesztői területen futó szolgáltatás nyilvános URL-címe a *kimeneti* ablakban jelenik meg:
 
 ```cmd
 Starting warmup for project 'webfrontend'.
@@ -93,35 +93,35 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-A fenti példában a nyilvános URL-je http://webfrontend.1234567890abcdef1234.eus.azds.io/. Keresse meg a szolgáltatás nyilvános URL-CÍMÉT, és a szolgáltatás fut a fejlesztési tárhely használata.
+A fenti példában a nyilvános URL-cím http://webfrontend.1234567890abcdef1234.eus.azds.io/:. Navigáljon a szolgáltatás nyilvános URL-címére, és lépjen kapcsolatba a fejlesztői térben futó szolgáltatással.
 
-Ez a folyamat a szolgáltatáshoz való nyilvános hozzáférés letiltotta. A nyilvános hozzáférés engedélyezésére, frissítheti a [bejövő értéket a *values.yaml*][ingress-update].
+Előfordulhat, hogy a folyamat letiltotta a szolgáltatáshoz való nyilvános hozzáférést. A nyilvános hozzáférés engedélyezéséhez frissítheti a [bejövő *értékeket a Values. YAML*][ingress-update].
 
 ## <a name="update-code"></a>Kód frissítése
 
-Ha a Visual Studio dev tárhely továbbra is össze van kapcsolva, kattintson a Leállítás gombra. Változtassa meg a 20 sort `Controllers/HomeController.cs` való:
+Ha a Visual Studio továbbra is csatlakozik a fejlesztői területhez, kattintson a Leállítás gombra. A 20. sor `Controllers/HomeController.cs` módosítása a következőre:
     
 ```csharp
 ViewData["Message"] = "Your application description page in Azure.";
 ```
 
-A módosítások mentéséhez és a szolgáltatás használatának megkezdéséhez **Azure fejlesztési tárolóhelyek** az indítási beállítások legördülő listából. Nyissa meg a nyilvános URL-címét a szolgáltatás egy böngészőt, és kattintson a *kapcsolatos*. Figyelje meg, hogy a frissített üzenet jelenik meg.
+Mentse a módosításokat, és indítsa el a szolgáltatást az **Azure dev Spaces** használatával az indítási beállítások legördülő menüből. Nyissa meg a szolgáltatás nyilvános URL-címét egy böngészőben, és kattintson *a névjegy*elemre. Figyelje meg, hogy a frissített üzenet jelenik meg.
 
-Újraépítése és a egy új tárolórendszerképet minden alkalommal, amikor a kód módosításokat végzett, az Azure fejlesztési tárolóhelyek növekményes újbóli üzembe helyezés helyett újrafordítja a kódot a Szerkesztés/debug gyorsabb hurkot biztosít a meglévő tárolón belül.
+Az új Container-lemezképek újraépítése és újratelepítése helyett az Azure dev Spaces fokozatosan újrafordítja a kódot a meglévő tárolóban, így gyorsabb szerkesztési/hibakeresési hurkot biztosít.
 
-## <a name="setting-and-using-breakpoints-for-debugging"></a>Beállítás és hibakeresési töréspontok használatával
+## <a name="setting-and-using-breakpoints-for-debugging"></a>Töréspontok beállítása és használata hibakereséshez
 
-Ha a Visual Studio dev tárhely továbbra is össze van kapcsolva, kattintson a Leállítás gombra. Nyissa meg `Controllers/HomeController.cs` valahol kattintson a sor létezik helyezze a kurzort a 20. Állítson be egy töréspontot, nyomja le az *F9* , vagy kattintson *Debug* majd *töréspont*. Indítsa el a szolgáltatást a fejlesztési tárhelyre hibakeresési módban, kattintson a *F5* , vagy kattintson *Debug* majd *Start Debugging*.
+Ha a Visual Studio továbbra is csatlakozik a fejlesztői területhez, kattintson a Leállítás gombra. Nyissa meg `Controllers/HomeController.cs` , majd kattintson a 20. sorban a kurzor mozgatásához. Ha a töréspontot az *F9 billentyűre* szeretné beállítani, vagy kattintson a *hibakeresés* lehetőségre, majd a *töréspontot*. Ha hibakeresési módban szeretné elindítani a szolgáltatást a fejlesztői térben, nyomja meg az *F5 billentyűt* , vagy kattintson a *hibakeresés elemre* , majd *indítsa el*a hibakeresést.
 
-Egy böngészőben nyissa meg a szolgáltatást, és figyelje meg, hogy nem jelenik meg. Térjen vissza a Visual Studio, és vizsgálja meg, 20 sor van kijelölve. A töréspont beállított sor 20 a szolgáltatás szünetel. A szolgáltatás folytatásához nyomja le az *F5* , vagy kattintson *Debug* majd *Folytatás*. Térjen vissza a böngészőben, és figyelje meg, hogy az üzenet jelenik meg.
+Nyissa meg a szolgáltatást egy böngészőben, és figyelje meg, hogy nem jelenik meg üzenet. Térjen vissza a Visual studióhoz, és figyelje meg, hogy a 20. sor ki van emelve. A beállított töréspont szüneteltette a szolgáltatást a 20. sorban. A szolgáltatás folytatásához nyomja meg az *F5 billentyűt* , vagy kattintson a *hibakeresés* gombra, és *folytassa*a művelettel. Térjen vissza a böngészőhöz, és figyelje meg, hogy az üzenet most megjelenik.
 
-Miközben fut a szolgáltatás a Kubernetes egy hibakeresővel, akkor a hibakeresési információkat, például a hívási verem, a helyi változókat és a kivétel adatai teljes hozzáféréssel rendelkezik.
+A szolgáltatás Kubernetes való futtatásakor a hibakeresőhöz csatolva teljes hozzáférése van a hibakeresési adatokhoz, például a hívási verem, a helyi változók és a kivételek adataihoz.
 
-A töréspont eltávolítása ehhez vigye a kurzort a 20 sor `Controllers/HomeController.cs` és lenyomásával *F9*.
+Távolítsa el a töréspontot úgy, hogy a kurzort a 20-as és az `Controllers/HomeController.cs` *F9 billentyű*megnyomásával helyezi el.
 
-## <a name="clean-up-your-azure-resources"></a>Az Azure-erőforrások törlése
+## <a name="clean-up-your-azure-resources"></a>Azure-erőforrások karbantartása
 
-Keresse meg az erőforráscsoportot az Azure Portalon, és kattintson a *erőforráscsoport törlése*. Másik lehetőségként használhatja a [az aks törlése](/cli/azure/aks#az-aks-delete) parancsot:
+Navigáljon az erőforráscsoporthoz a Azure Portalon, majd kattintson az *erőforráscsoport törlése*elemre. Azt is megteheti, hogy az az [AK delete](/cli/azure/aks#az-aks-delete) parancsot használja:
 
 ```cmd
 az group delete --name MyResourceGroup --yes --no-wait

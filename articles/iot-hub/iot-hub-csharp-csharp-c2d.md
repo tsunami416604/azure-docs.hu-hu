@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
-ms.openlocfilehash: 5a7cb4ecde599a76b2d42cf874420d9cbcfda3d5
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: f8ba9508bdbb7fd436d3b693e638f29bac5065bf
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68402647"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618654"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Üzenetek küldése a felhőből az eszközre IoT Hub (.NET) használatával
 
@@ -43,7 +43,7 @@ Az oktatóanyag végén két .NET-konzol alkalmazást futtat.
 * **SendCloudToDevice**, amely egy felhőből az eszközre irányuló üzenetet küld az eszköz alkalmazásnak IoT hubon keresztül, majd megkapja a kézbesítési visszaigazolást.
 
 > [!NOTE]
-> A IoT Hub számos eszköz-platform és nyelv (például C, Java és JavaScript) támogatásával rendelkezik az [Azure IoT Device SDK](iot-hub-devguide-sdks.md)-k használatával. Az eszköznek az oktatóanyag kódjához való csatlakoztatásának részletes ismertetését, és általában az Azure IoT Hubt a [IoT hub fejlesztői útmutatójában](iot-hub-devguide.md)találja.
+> A IoT Hub számos eszköz platformjának és nyelvének (például C, Java, Python és JavaScript) támogatásával rendelkezik az [Azure IoT Device SDK](iot-hub-devguide-sdks.md)-k használatával. Az eszköznek az oktatóanyag kódjához való csatlakoztatásának részletes ismertetését, és általában az Azure IoT Hubt a [IoT hub fejlesztői útmutatójában](iot-hub-devguide.md)találja.
 >
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:

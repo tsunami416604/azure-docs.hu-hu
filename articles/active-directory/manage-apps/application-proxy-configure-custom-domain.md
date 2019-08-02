@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bae13de156d502cdd731005d460641ca452448d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5d721e750ddb77ba293643ad978cecf4bd2dbac0
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108676"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618811"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Egyéni tartományok használata az Azure AD-alkalmazásproxy
 
@@ -61,7 +61,7 @@ Ha készen áll három követelményekről, kövesse az alábbi lépéseket az e
 6. A PFX-tanúsítvány feltöltése, és adja meg a jelszót a tanúsítványhoz. 
 7. Válassza ki **mentése** a módosítások mentéséhez. 
 8. Adjon hozzá egy [DNS-rekord](../../dns/dns-operations-recordsets-portal.md) az új külső URL-címet, amely átirányítja a msappproxy.net tartományt.
-9. Ellenőrizze, hogy a DNS-rekord helyesen van konfigurálva a [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) paranccsal érhető el a külső URL-CÍMÉT, és a egy alias a msapproxy.net tartomány megjelenik-e.
+9. Ellenőrizze, hogy a DNS-rekord megfelelően van-e konfigurálva az [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) paranccsal annak ellenőrzéséhez, hogy a külső URL-cím elérhető-e, és hogy a msapproxy.net tartomány aliasként jelenik-e meg.
 
 >[!TIP] 
 >Csak egy egyéni tartományt egy tanúsítvány feltöltéséhez kell. Miután a tanúsítvány feltöltése, kiválaszthatja az egyéni tartomány, amikor közzétesz egy új alkalmazást, és nem kell tennie, hogy a DNS-rekord kivételével további konfigurációs. 
@@ -73,7 +73,7 @@ A tanúsítvány-aláírás módszerek korlátozva van. Elliptikus görbéjű ti
 
 Helyettesítő tanúsítvány mindaddig, amíg a helyettesítő karakteres megegyezik a kívánt külső URL-cím használható.
 
-Nem használhat saját nyilvános kulcsokra épülő infrastruktúrájú (PKI) biztonsági szempontok miatt által kibocsátott tanúsítvánnyal.
+A saját nyilvános kulcsokra épülő infrastruktúrája (PKI) által kiadott tanúsítványok akkor használhatók, ha a tanúsítványlánc telepítve van az ügyféleszközök számára. Az Intune használatával ezeket a tanúsítványokat a felügyelt eszközökön is üzembe helyezheti. Nem felügyelt eszközök esetén ezeket a tanúsítványokat manuálisan kell telepíteni.
 
 ### <a name="changing-the-domain"></a>A tartomány módosítása
 Összes ellenőrzött tartományt az alkalmazás a külső URL-cím legördülő listában jelennek meg. Ha módosítani szeretné a tartományhoz, csak frissítse ezt a mezőt az alkalmazás. Ha azt szeretné, a tartomány nem szerepel a listán, [, egy ellenőrzött tartomány hozzáadása](../fundamentals/add-custom-domain.md). Ha olyan tartományhoz, amely rendelkezik egy társított tanúsítvány még nem, kövesse a lépéseket a tanúsítvány hozzáadása 5 – 7. Ezután ellenőrizze a DNS-rekord az új külső URL-átirányítás frissítenie. 
@@ -87,7 +87,7 @@ Minden tanúsítványkezelés jelenleg egyes webhelyei keresztül, a vonatkozó 
 
 ## <a name="next-steps"></a>További lépések
 * [Egyszeri bejelentkezés engedélyezése](application-proxy-configure-single-sign-on-with-kcd.md) a közzétett alkalmazásokba az Azure AD-hitelesítés.
-* [Feltételes hozzáférési házirend engedélyezése](application-proxy-integrate-with-sharepoint-server.md) a közzétett alkalmazásokhoz.
+* [Feltételes hozzáférés engedélyezése](application-proxy-integrate-with-sharepoint-server.md) a közzétett alkalmazásokhoz.
 * [Az egyéni tartománynév hozzáadása az Azure ad-ben](../fundamentals/add-custom-domain.md)
 
 

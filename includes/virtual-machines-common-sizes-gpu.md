@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 0325fc8cabc43988fb27a307921977b9b487c123
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 402379a99be467e9db7fb692d7d532e9d39a54a6
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68286155"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68700791"
 ---
 A GPU-ra optimalizált virtuálisgép-méretek olyan speciális virtuális gépek, amelyek egy vagy több NVIDIA GPU-val érhetők el. Ezek a méretek nagy számítási igényű, grafikus igényű és vizualizációs munkaterhelésekhez készültek. Ez a cikk a GPU-k, a vCPU, az adatlemezek és a hálózati adapterek számáról és típusáról nyújt információt. A rendszer a tároló átviteli sebességét és a hálózati sávszélességet is tartalmazza a csoportosítás minden egyes méretéhez.
 
@@ -56,7 +56,7 @@ A NC24rs v2-konfiguráció alacsony késleltetésű, nagy átviteli sebességű 
 > Ennél a méretnél az előfizetéshez tartozó vCPU (mag) kvóta kezdetben az egyes régiókban 0 értékre van állítva. [VCPU-kvóta növelésének kérése](../articles/azure-supportability/resource-manager-core-quotas-request.md) a család számára egy [elérhető régióban](https://azure.microsoft.com/regions/services/).
 >
 
-| Size | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek maximális száma |
+| Size | vCPU | Memória: GiB | Ideiglenes tároló (SSD): GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek maximális száma |
 | --- | --- | --- | --- | --- | --- | ---  | ---| --- |
 | Standard_NC6s_v2 | 6 |112 | 736 | 1 | 16 | 12 | 20000/ 200 | 4 |
 | Standard_NC12s_v2 | 12 |224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
@@ -79,7 +79,7 @@ Az NCv3 sorozatú virtuális gépeket [NVIDIA Tesla V100](https://www.nvidia.com
 > Ennél a méretnél az előfizetéshez tartozó vCPU (mag) kvóta kezdetben az egyes régiókban 0 értékre van állítva. [VCPU-kvóta növelésének kérése](../articles/azure-supportability/resource-manager-core-quotas-request.md) a család számára egy [elérhető régióban](https://azure.microsoft.com/regions/services/).
 >
 
-| Size | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek maximális száma |
+| Size | vCPU | Memória: GiB | Ideiglenes tároló (SSD): GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek maximális száma |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NC6s_v3 | 6 |112 | 736 | 1 | 16 | 12 | 20000 / 200 | 4 |
 | Standard_NC12s_v3 | 12 |224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
@@ -103,9 +103,9 @@ A NDv2 sorozatú virtuális gép a HPC-, AI-és gépi tanulási munkaterhelések
 Az előzetes verzió használatakor [regisztráljon, és máris hozzáférhet ezekhez a gépekhez](https://aka.ms/ndv2signup).
 <br>
 
-| Size | vCPU | GPU | Memory (Memória) | Hálózati adapterek (max) | Temp Storage (SSD) GiB | Legfeljebb adatlemezek | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Maximális hálózati sávszélesség | 
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_ND40s_v2 | 40 | 8 V100 (NVLink) | 672 GiB | 8 | 2948 | 32 | 80000/800 | 24000 Mbps |
+| Size | vCPU | Memória: GiB | Ideiglenes tároló (SSD): GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Maximális hálózati sávszélesség | Hálózati adapterek maximális száma |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_ND40s_v2 | 40 | 672 | 2948 | 8 V100 (NVLink) | 16 | 32 | 80000/800 | 24000 Mbps | 8 |
 
 ## <a name="nd-series"></a>ND sorozat
 

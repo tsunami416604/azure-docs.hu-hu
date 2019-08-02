@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: c25232abf20bbe3d01672b7620e5d2f5e31d5c8a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4bb56155e925f9e19570d89d091342afd594009
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343511"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725966"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Shopify
 
@@ -44,7 +44,7 @@ Shopify társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **Shopify** | Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **Shopify** | Igen |
 | host | A végpont a Shopify kiszolgáló. (azaz mystore.myshopify.com)  | Igen |
 | accessToken | Az API-jogkivonat, Shopify tartozó adatok eléréséhez használható. A jogkivonat nem jár le, ha a kapcsolat nélküli üzemmódban. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Megadja, hogy a data source végpontok HTTPS segítségével titkosítja. Az alapértelmezett érték: igaz.  | Nem |
@@ -77,7 +77,7 @@ Shopify adatmásolás, állítsa be a type tulajdonság, az adatkészlet **Shopi
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **ShopifyObject** | Igen |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **ShopifyObject** | Igen |
 | tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
@@ -87,11 +87,12 @@ Shopify adatmásolás, állítsa be a type tulajdonság, az adatkészlet **Shopi
     "name": "ShopifyDataset",
     "properties": {
         "type": "ShopifyObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Shopify linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -106,7 +107,7 @@ Adatok másolása Shopify, állítsa be a forrás típusaként a másolási tev�
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **ShopifySource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **ShopifySource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM "Products" WHERE Product_Id = '123'"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**

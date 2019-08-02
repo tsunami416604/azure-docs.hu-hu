@@ -16,17 +16,17 @@ ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 431212b2b0ac7bba209130e511e3510e3008a6c4
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68500037"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Automatikus méretezési képlet létrehozása a számítási csomópontok méretezéséhez egy batch-készletben
 
 A Azure Batch a definiált paraméterek alapján automatikusan méretezheti a készleteket. Az automatikus skálázással a Batch dinamikusan felveszi a csomópontokat egy készletbe, ahogy a feladat megköveteli a növekedést, és eltávolítja a számítási csomópontokat. A Batch-alkalmazás által használt számítási csomópontok számának automatikus módosításával időt és pénzt is megtakaríthat. 
 
-A számítási csomópontok készletén engedélyezheti az automatikus skálázást úgy, hogy társítja azt  az Ön által meghatározott automatikus méretezési képlettel. A Batch szolgáltatás az autoskálázási képlet használatával határozza meg, hogy hány számítási csomópontra van szükség a munkaterhelés végrehajtásához. A számítási csomópontok dedikált csomópontok vagy [alacsony prioritású csomópontok](batch-low-pri-vms.md)lehetnek. A Batch a rendszeres időközönként gyűjtött szolgáltatás-metrikák adatait válaszolja meg. A metrikák használatával a Batch a képlet és a konfigurálható intervallum alapján módosítja a készletben lévő számítási csomópontok számát.
+A számítási csomópontok készletén engedélyezheti az automatikus skálázást úgy, hogy társítja azt az Ön által meghatározott automatikus méretezési képlettel. A Batch szolgáltatás az autoskálázási képlet használatával határozza meg, hogy hány számítási csomópontra van szükség a munkaterhelés végrehajtásához. A számítási csomópontok dedikált csomópontok vagy [alacsony prioritású csomópontok](batch-low-pri-vms.md)lehetnek. A Batch a rendszeres időközönként gyűjtött szolgáltatás-metrikák adatait válaszolja meg. A metrikák használatával a Batch a képlet és a konfigurálható intervallum alapján módosítja a készletben lévő számítási csomópontok számát.
 
 A készlet létrehozásakor vagy egy meglévő készleten is engedélyezheti az automatikus skálázást. Az automatikus skálázáshoz konfigurált készlet meglévő képletét is módosíthatja. A Batch segítségével kiértékelheti a képleteket, mielőtt hozzárendeli őket a készletekhez, és figyelnie kell az automatikus skálázási futtatások állapotát.
 

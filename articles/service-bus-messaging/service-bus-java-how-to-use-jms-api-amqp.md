@@ -1,5 +1,5 @@
 ---
-title: A AMQP 1,0 használata a Java JMS Service Bus API-val | Microsoft Docs
+title: A AMQP 1,0 használata a Java Message Service API-val és Azure Service Bus
 description: A Java Message Service (JMS) használata a Azure Service Bus és a Advanced Message Queueing Protocol (AMQP) 1,0 használatával.
 services: service-bus-messaging
 documentationcenter: java
@@ -14,12 +14,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 47b077dbb62088093c60a588660045529678c58f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: seo-java-july2019
+ms.openlocfilehash: f816a5c84416b7f40e3062bf22dd70cbb356c6f1
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318457"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662888"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>A Java Message Service (JMS) API használata a Service Bus és a AMQP 1,0 használatával
 A Advanced Message Queueing Protocol (AMQP) 1,0 egy hatékony, megbízható, vezeték nélküli üzenetkezelési protokoll, amellyel robusztus, platformfüggetlen üzenetkezelési alkalmazások hozhatók létre.
@@ -298,7 +299,7 @@ public class JmsQueueQuickstart {
 ```
 
 ### <a name="run-the-application"></a>Az alkalmazás futtatása
-Adja át  a kapcsolati karakterláncot a megosztott hozzáférési szabályzatokból az alkalmazás futtatásához.
+Adja át a kapcsolati karakterláncot a megosztott hozzáférési szabályzatokból az alkalmazás futtatásához.
 Alább látható az űrlap kimenete az alkalmazás futtatásával:
 
 ```Output
@@ -374,6 +375,7 @@ Emellett a Azure Service Bus a vezérlő síkot az adatsíkon osztja fel, így n
 | createBrowser               | támogatott. A Service Bus API betekintés () funkciójának használata                         |
 | createQueue                 | üzenetsor létrehozása felügyeleti API/eszközök/portál használatával                                           | 
 | createTemporaryQueue        | üzenetsor létrehozása felügyeleti API/eszközök/portál használatával a *AutoDeleteOnIdle* lejárati időszakra állítva |
+| receiveNoWait               | használja a Service Bus SDK által biztosított Receive () metódust, és nagyon alacsony vagy nulla időtúllépést ad meg. |
 
 ## <a name="summary"></a>Összegzés
 Ez az útmutató bemutatja, hogyan használhatók Service Bus felügyelt üzenetküldési funkciók (Queues and publish/subscribe) Java-ból a népszerű JMS API és a AMQP 1,0 használatával.

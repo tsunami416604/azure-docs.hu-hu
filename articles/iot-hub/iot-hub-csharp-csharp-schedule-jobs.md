@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/06/2018
 ms.author: robinsh
-ms.openlocfilehash: aceb90dbaf87ba621837c047eb114bc9be4b822e
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: c4f2994413fca07f4a168cf12ba7967b00b6b0e2
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68402663"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668106"
 ---
-# <a name="schedule-and-broadcast-jobs-netnet"></a>Feladatok ütemezett és szórása (.NET/.NET)
+# <a name="schedule-and-broadcast-jobs-net"></a>Feladatok ütemezett és szórása (.NET)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
@@ -281,7 +281,7 @@ Ebben a szakaszban olyan .NET-konzol alkalmazást hoz létre (a C#használatáva
 
 Most már készen áll az alkalmazások futtatására.
 
-1. A Visual Studio Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd kattintson a **Létrehozás**parancsra. **Több indítási projekt**. Győződjön meg `SimulateDeviceMethods` arról, hogy a lista tetején található, `ScheduleJob`majd a. Állítsa be mindkét műveletét  a kezdéshez, majd kattintson **az OK**gombra.
+1. A Visual Studio Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd kattintson a **Létrehozás**parancsra. **Több indítási projekt**. Győződjön meg `SimulateDeviceMethods` arról, hogy a lista tetején található, `ScheduleJob`majd a. Állítsa be mindkét műveletét a kezdéshez, majd kattintson **az OK**gombra.
 
 2. A projektek futtatásához kattintson a **Start** gombra, vagy lépjen a **hibakeresés** menüre, és kattintson a **hibakeresés indítása**parancsra.
 

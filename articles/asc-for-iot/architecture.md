@@ -1,6 +1,6 @@
 ---
-title: Tudnivalók az Azure Security Center az IoT-megoldásarchitektúra előzetes verzió |} A Microsoft Docs
-description: Ismerje meg az Azure Security Center az IoT-szolgáltatás az adatok áramlása látható.
+title: A IoT-megoldás architektúrájának Azure Security Center ismertetése | Microsoft Docs
+description: Ismerje meg a IoT szolgáltatás Azure Security Centerban található információk áramlását.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,53 +13,56 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/24/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 5cab57343f9675df0702cf4281b3d74ca96d86ae
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a013d4cfcfddc709e60e91adf57bc27c98934a96
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618550"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596557"
 ---
-# <a name="azure-security-center-for-iot-architecture"></a>Azure Security Center az IoT-architektúra
+# <a name="azure-security-center-for-iot-architecture"></a>Azure Security Center a IoT architektúrához
 
-Ez a cikk ismerteti a működési rendszer-architektúra, az Azure Security Center (ASC) az IoT-megoldás. 
+Ez a cikk a IoT-megoldás Azure Security Centerának funkcionális rendszerarchitektúráját ismerteti. 
 
-> [!IMPORTANT]
-> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
-> Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+## <a name="azure-security-center-for-iot-components"></a>IoT-összetevők Azure Security Center
 
-## <a name="asc-for-iot-components"></a>ASC IoT-összetevők
-
-Az IoT ASC az alábbi összetevőkből áll:
-- Eszköz-ügynökök
-- SDK-t biztonsági üzenet küldése
-- IoT Hub-integrációval
-- Analytics-folyamat
+A IoT Azure Security Center a következő összetevőkből áll:
+- IoT Hub integráció
+- Eszközök ügynökei (nem kötelező)
+- Biztonsági üzenetsor-SDK küldése
+- Elemzési folyamat
  
-### <a name="asc-for-iot-workflow"></a>ASC IoT-munkafolyamat
+### <a name="azure-security-center-for-iot-workflows"></a>IoT-munkafolyamatok Azure Security Center
 
-IoT-eszköz ügynökök ASC lehetővé teszi, hogy egyszerűen az eszközök a nyers biztonsági események gyűjtését. Nyers biztonsági események IP kapcsolatok, folyamat-létrehozás, felhasználói bejelentkezések és egyéb biztonsági kapcsolódó információkat tartalmazhatnak. IoT-eszköz ügynökök ASC is kezelni, így elkerülhető a magas hálózati kapacitása esemény összesítést. Az ügynökök olyan nagymértékben testre szabható, így azok használatát, bizonyos feladatok, például a leggyorsabb SLA csak fontos információkat küldhet vagy nagyobb méretű részekre kiterjedt biztonságiadat- és környezeti összesítéséhez szükséges magasabb szolgáltatás költségek elkerülése.
- 
-Eszköz-ügynökök és más alkalmazások használatra a **Azure ASC küldése biztonsági SDK** Azure IoT Hub biztonsági adatok küldése. Az IoT Hub szerzi be ezt az információt, és továbbítja azokat az ASC IoT-szolgáltatás.
+A IoT Azure Security Center a két szolgáltatás munkafolyamatának egyikében működik: Beépített és továbbfejlesztett  
 
-A továbbított adatok mellett az ASC IoT szolgáltatás engedélyezése után az IoT Hub is elküldi a belső adatok elemzéséhez az ASC az IoT. Az adatok között szerepel a műveletnaplók eszközről a felhőbe, eszközidentitások és Hub konfigurációját. Összes Ez az információ segít az ASC IoT-elemzési folyamat létrehozása.
+### <a name="built-in"></a>Beépített
+A **beépített** módban a IoT Azure Security Center engedélyezve van, ha úgy dönt, hogy bekapcsolja a **biztonsági** beállítást a IoT hub. A beépített mód valós idejű monitorozást, ajánlásokat és riasztásokat kínál, valamint az eszközök és a páratlan biztonság biztosítását. A beépített módban nem szükséges az ügynök telepítése semmilyen eszközön, és a naplózott tevékenységeken a speciális elemzések segítségével elemezheti és védetté teheti a mező eszközét. 
+
+### <a name="enhanced"></a>Továbbfejlesztett 
+**Bővített** módban a IoT hub **biztonsági** beállításának bekapcsolása és az eszközökön lévő IoT telepítése után az ügynökök a nyers biztonsági események gyűjtését, összesítését és elemzését Azure Security Center végzik el az eszközökön. A nyers biztonsági események közé tartozhatnak az IP-kapcsolatok, a folyamatok létrehozása, a felhasználói bejelentkezések és egyéb fontos információk. A IoT-ügynökök Azure Security Center az események összesítését is kezelik a nagy hálózati átviteli sebesség elkerülése érdekében. Az ügynökök nagy mértékben testreszabhatók, így adott feladatokhoz is használhatók, például csak a leggyorsabb SLA-ban, vagy a kiterjedt biztonsági információk és környezetek nagyobb szegmensekre történő elküldésével, a magasabb szolgáltatási költségek elkerülésével.
+
+![Azure Security Center a IoT architektúrához](./media/architecture/azure-iot-security-architecture.png)
  
-IoT-elemzési folyamat ASC is fogad további threat intelligence Streamek különböző forrásokból belül a Microsoft és a Microsoft partnerei. Az ASC IoT teljes elemzési folyamat minden ügyfél-konfigurációval (például egyéni riasztások és a küldési biztonsági közlemény SDK használata) a szolgáltatásban végzett működik.
+Az eszközök ügynökei és más alkalmazásai az **Azure Security Message SDK** használatával biztonsági információkat küldhetnek az Azure IoT hubba. IoT Hub felveszi ezt az információt, és továbbítja azt a IoT szolgáltatás Azure Security Center.
+
+Ha a IoT szolgáltatáshoz tartozó Azure Security Center engedélyezve van, a továbbított adatokon kívül IoT Hub a belső adatokat is elküldheti elemzésre a IoT Azure Security Center. Ezek az adategységek a Felhőbeli műveleti naplókat, az eszköz identitásait és a hub konfigurációját tartalmazzák. Ezen információk mindegyike segíti a IoT Analytics-folyamat Azure Security Center létrehozását.
  
-Az elemzési folyamatok használata esetén ASC az IoT egyesíti az összes a Streamek információit gyakorlatban hasznosítható javaslatokat és riasztásokat hozhat létre. A folyamat hozta létre biztonsági kutatói és a szakértők, valamint a gépi tanulási modelleket standard-eszközök viselkedését és a kockázati elemzés eltérés keresése egyéni szabályokat is tartalmazza.
+A IoT Analytics-folyamat Azure Security Center a Microsofton és a Microsoft partnerein belüli különböző forrásokból származó további veszélyforrások elleni intelligenciát is megkapja. A teljes elemzési folyamat IoT Azure Security Center a szolgáltatásban végzett minden ügyfél-konfigurációval működik (például egyéni riasztások és a biztonsági üzenet küldése SDK használata).
  
-A Log Analytics-munkaterületet, az egyes ügyfelek írt ASC IoT javaslatokat és riasztásokat (elemzési folyamatok elvégzésére kimeneti). Beleértve a nyers események a munkaterülethez, valamint a riasztások és javaslatok lehetővé teszi a deep dive vizsgálatok és a lekérdezések a pontos az észlelt gyanús tevékenységek részleteit.  
+Az elemzési folyamat használatával a IoT Azure Security Center az összes adatfolyamot ötvözi a gyakorlatban alkalmazható ajánlások és riasztások létrehozásához. A folyamat a biztonsági kutatók és szakértők által létrehozott egyéni szabályokat, valamint a szabványos eszköz viselkedésével és a kockázatelemzéstől való eltérést kereső gépi tanulási modelleket is tartalmaz.
+ 
+A IoT ajánlásainak és értesítéseinek Azure Security Center (az elemzési folyamat kimenete) az egyes ügyfelek Log Analytics munkaterületére íródik. A munkaterületen található nyers események, valamint a riasztások és javaslatok segítségével a gyanús tevékenységek pontos részleteivel részletesen elmerülhetnek a felderítéssel kapcsolatos vizsgálatok és lekérdezések.  
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megismerkedett az alapvető architektúráját és IoT-megoldás az ASC-munkafolyamatot. További információ az Előfeltételek, hogyan lehet a kezdéshez, és engedélyezze az IoT Hub biztonsági megoldását, tekintse meg a következő cikkeket:
+Ebből a cikkből megismerheti a IoT-megoldás Azure Security Centerának alapszintű architektúráját és munkafolyamatát. Ha többet szeretne megtudni az előfeltételekről, az első lépésekről és a biztonsági megoldás engedélyezéséről IoT Hubban, tekintse meg a következő cikkeket:
 
-- [Szolgáltatás előfeltételei](service-prerequisites.md)
+- [A szolgáltatás előfeltételei](service-prerequisites.md)
 - [Bevezetés](getting-started.md)
 - [A megoldás konfigurálása](quickstart-configure-your-solution.md)
-- [Az IoT Hub-biztonság engedélyezése](quickstart-onboard-iot-hub.md)
-- [ASC IOT – gyakori kérdések](resources-frequently-asked-questions.md)
-- [Az IoT biztonsági riasztásokhoz ASC](concept-security-alerts.md)
-
+- [A IoT Hub biztonságának engedélyezése](quickstart-onboard-iot-hub.md)
+- [Azure Security Center IoT – gyakori kérdések](resources-frequently-asked-questions.md)
+- [IoT biztonsági riasztások Azure Security Center](concept-security-alerts.md)

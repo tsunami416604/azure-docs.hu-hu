@@ -9,12 +9,12 @@ ms.date: 07/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 921528c50bae03b67800bf3ccab8b5cd9bb704f6
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 4c81daa1f55167fa868c69f3bff388dbaa4887cd
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677754"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725740"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Oktatóanyag: Azure Time Series Insights-környezet létrehozása
 
@@ -34,7 +34,7 @@ Ez az oktatóanyag végigvezeti egy olyan Azure Time Series Insights-környezet 
 
 * Az Azure bejelentkezési fiókjának az előfizetés **tulajdonosi** szerepkörének is tagja kell lennie. További információ: [hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel és a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
 
-## <a name="video"></a>Videó
+## <a name="review-video"></a>Videó áttekintése
 
 ### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-time-series-insights-br"></a>Megtudhatja, hogyan hozhatja meg az Azure IoT-megoldási gyorssegédet az adatlétrehozáshoz és a Time Series Insights első lépéseihez. </br>
 
@@ -116,7 +116,7 @@ Másodszor hozzon létre egy Time Series Insights környezetet az Azure-előfize
 
    [![A Time Series Insights környezet telepítése sikerült](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
 
-## <a name="run-device-simulation-to-stream-data"></a>Az eszköz szimulációjának futtatása adatfolyamként
+## <a name="run-device-simulation"></a>Eszköz szimulációjának futtatása
 
 Most, hogy a központi telepítés és a kezdeti konfiguráció elkészült, töltse ki a Time Series Insights környezetet a [gyorssegéd által létrehozott szimulált eszközökből](#create-a-device-simulation)származó mintaadatok használatával.
 

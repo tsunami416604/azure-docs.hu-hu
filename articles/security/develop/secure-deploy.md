@@ -1,91 +1,92 @@
 ---
-title: Helyezzen üzembe biztonságos alkalmazásokat a Microsoft Azure
-description: Ez a cikk ismerteti az ajánlott eljárások az web projektet kiadás és válasz szakaszaiban.
+title: Biztonságos alkalmazások telepítése Microsoft Azure
+description: Ez a cikk a webalkalmazás-projekt kiadási és reagálási fázisaiban megfontolandó ajánlott eljárásokat ismerteti.
 author: TerryLanfear
 manager: barbkess
 ms.author: terrylan
 ms.date: 06/12/2019
 ms.topic: article
 ms.service: security
+ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e8249113ee65c28414c79f00c53d11596673434b
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: dd86e6bf571dd67da00aee63eadff031a1040ff7
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144450"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728742"
 ---
-# <a name="deploy-secure-applications-on-azure"></a>Helyezzen üzembe biztonságos alkalmazásokat az Azure-ban
-Ebben a cikkben azt jelenthet biztonsági tevékenységeket és a vezérlőket, fontolja meg a felhőalapú alkalmazások központi telepítésekor. Biztonsági kérdések és fogalmak kell figyelembe venni a Microsoft release-válasz szakaszaiban [biztonságos fejlesztési Életciklussal (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) terjed ki. A célja, hogy a segítségével meghatározhatja a tevékenységeket és az Azure-szolgáltatások, amellyel biztonságosabb üzembe helyezése.
+# <a name="deploy-secure-applications-on-azure"></a>Biztonságos alkalmazások üzembe helyezése az Azure-ban
+Ebben a cikkben bemutatjuk azokat a biztonsági tevékenységeket és ellenőrzéseket, amelyeket érdemes figyelembe venni a Felhőbeli alkalmazások telepítésekor. A biztonsági kérdéseket és fogalmakat a Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) kiadási és reagálási fázisaiban figyelembe kell venni. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások telepítéséhez használhat.
 
-Ebben a cikkben a következő SDL fázisok terjed ki:
+Ebben a cikkben a következő SDL-fázisokat tárgyaljuk:
 
 - Kiadás
 - Válasz
 
 ## <a name="release"></a>Kiadás
-A lépéseknek az ismertetése, a kiadási fázisban van readying nyilvános kiadása egy projektet.
-Ez gyakorlatilag kiadás utáni karbantartási feladatok végrehajtása, és később felmerülő biztonsági biztonsági rések megszüntetését elősegítő megtervezését foglalja magában.
+A kiadási fázis fókusza egy projekt nyilvános kiadásra való használatra kész.
+Ez magában foglalja a kiadás utáni karbantartási feladatok hatékony végrehajtásának és a később esetlegesen előforduló biztonsági rések megtervezésének módját.
 
-### <a name="check-your-applications-performance-before-you-launch"></a>Ellenőrizze, hogy az alkalmazás teljesítményében indítása előtt
+### <a name="check-your-applications-performance-before-you-launch"></a>A Kezdés előtt tekintse meg az alkalmazás teljesítményét
 
-Ellenőrizze, hogy az alkalmazás teljesítményében előtt indítsa el az eszközt, vagy az éles környezetben telepítheti a frissítéseket. Futtassa a felhő alapú [terheléses teszteket](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing) található teljesítményproblémákat okozhat az alkalmazásban a Visual Studio használatával üzembe helyezési minőségének javítására, győződjön meg arról, hogy az alkalmazás mindig felfelé vagy nem érhető el, és, hogy az alkalmazás kezelni tudja a forgalmat, a bevezetésre.
+Mielőtt elindítja vagy üzembe helyezi a frissítéseket az éles környezetben, tekintse meg az alkalmazás teljesítményét. Futtasson felhőalapú [terhelési teszteket](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing) a Visual Studióval az alkalmazásban felmerülő teljesítményproblémák kereséséhez, a központi telepítés minőségének javításához, győződjön meg arról, hogy az alkalmazás mindig fel van töltve vagy elérhető, és hogy az alkalmazás képes kezelni az indítási forgalmat.
 
 ### <a name="install-a-web-application-firewall"></a>Webalkalmazási tűzfal telepítése
 
-A webalkalmazások egyre inkább ki vannak téve rosszindulatú támadásoknak, amelyek az ismert biztonsági réseket használják ki. Közös ilyen jellegű támadások között a SQL-injektálási támadások és a többhelyes parancsfájlok futtatására. Ezek támadások, az alkalmazás kódjában kihívást jelenthet. Szigorúan betartandó, javítást, és az alkalmazás topológiájának több rétegeken megfigyelést igényelhet. Egy központi WAF segítségével egyszerűbbé teszik a biztonsági felügyelet. WAF-megoldás is reagálhat a biztonsági fenyegetéseket azáltal, hogy kijavítja az ismert biztonsági réseket egy központi helyen, és minden egyes webalkalmazás biztonságossá tételéhez.
+A webalkalmazások egyre inkább ki vannak téve rosszindulatú támadásoknak, amelyek az ismert biztonsági réseket használják ki. Az ilyen kihasználók között az SQL-injektálási támadások és a helyek közötti parancsfájlok elleni támadások is előfordulnak. A támadásoknak az alkalmazás kódjában való megelőzése kihívást jelenthet. Az alkalmazás topológiájának számos rétegében szigorú karbantartási, javítási és figyelési funkciókra lehet szükség. A központosított WAF megkönnyíti A biztonsági felügyeletet. A WAF-megoldás a biztonsági fenyegetésekre is reagálhat egy ismert biztonsági rés központi helyen történő javításával, illetve az egyes webalkalmazások biztonságossá tételével.
 
-A [Azure Application Gateway WAF](https://docs.microsoft.com/azure/application-gateway/waf-overview) a webalkalmazásoknak a gyakori támadások és biztonsági rések központi védelmet nyújt. A WAF-szabályai alapján a [alapvető OWASP-szabálykészletek](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0-s vagy 2.2.9-es verzióinak.
+Az [Azure Application Gateway WAF](https://docs.microsoft.com/azure/application-gateway/waf-overview) a webalkalmazások központosított védelmét nyújtja a gyakori támadások és biztonsági rések ellen. A WAF az 3,0-es és a 2.2.9-es [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) -alapszabállyal kapcsolatos szabályokon alapul.
 
-### <a name="create-an-incident-response-plan"></a>Incidensmegoldási terv létrehozása
+### <a name="create-an-incident-response-plan"></a>Incidens-válasz tervének létrehozása
 
-Az incidensmegoldási terv előkészítése elengedhetetlen segítséget cím idővel előfordulhat, hogy feloldja új fenyegetéseket. Az incidensmegoldási terv előkészítése magában foglalja a megfelelő biztonsági Rendkívüli kapcsolattartók azonosításával és karbantartási tervek kódot, amely örökli a szervezet többi csoport pedig licenccel rendelkező külső kód biztonsági létrehozó.
+Az incidensekre adott válasz tervének előkészítése elengedhetetlen az olyan új fenyegetések kezeléséhez, amelyek idővel felmerülhetnek. Az incidensekre vonatkozó válaszadási terv előkészítése magában foglalja a megfelelő biztonsági vészhelyzeti kapcsolatok azonosítását és a szervezet más csoportjaitól örökölt, illetve a licenccel rendelkező harmadik féltől származó kódokra vonatkozó biztonsági karbantartási tervek létrehozását.
 
-### <a name="conduct-a-final-security-review"></a>A végső biztonsági áttekintés
+### <a name="conduct-a-final-security-review"></a>Végső biztonsági felülvizsgálat végrehajtása
 
-Minden biztonsági tevékenység végrehajtott szándékosan megtekintésével biztosítja, hogy a készenléti a szoftver kiadás vagy-alkalmazásához. Az utolsó biztonsági felülvizsgálat (FSR Működésétől) általában magukban foglalnak modelljei eszközök kimenetek és a minőség kapuk és a követelmények szakaszban definiált hiba sávok teljesítményről vizsgálata folyamatban van.
+Az összes elvégzett biztonsági tevékenység szándékos áttekintése segíti a szoftveres kiadás vagy alkalmazás készültségének biztosítását. Az utolsó biztonsági felülvizsgálat (FSR) általában magában foglalja a veszélyforrások modelljeinek, eszközeinek kimenetének és teljesítményének vizsgálatát a követelmények szakaszban meghatározott minőségi kapuk és hibák terén.
 
-### <a name="certify-release-and-archive"></a>Kiadás és az archív tanúsítása
+### <a name="certify-release-and-archive"></a>Kiadás és archiválás tanúsítása
 
-Tanúsító szoftver, mielőtt kiadás biztosítja, hogy a biztonsági és adatvédelmi követelmények teljesülnek-e. Az összes kapcsolódó adatok archiválása elengedhetetlen kiadás utáni karbantartási feladatok végrehajtásához. Archiválás is segít csökkentheti a hosszú távú tartósan szoftverfőmérnöke költségeket.
+A szoftverek kiadása előtti minősítéssel biztosítható, hogy a biztonsági és adatvédelmi követelmények teljesüljenek. A kiadás utáni karbantartási feladatok elvégzéséhez elengedhetetlen az összes releváns adat archiválása. Az archiválás emellett segít csökkenteni a tartós szoftverfejlesztés kapcsán felmerülő hosszú távú költségeket.
 
 ## <a name="response"></a>Válasz
-A válasz kiadás utáni fázist helyezi a hangsúlyt a fejlesztői csapat tudja és nem érhető el a megfelelő választ az újonnan felbukkanó fenyegetések és biztonsági rések jelentéseket.
+A kiadás utáni fázis középpontja a fejlesztői csapat számára, amely képes és elérhető, hogy megfelelően reagáljon a feltörekvő szoftveres fenyegetések és biztonsági rések jelentéseire.
 
-### <a name="execute-the-incident-response-plan"></a>Hajtsa végre az incidensmegoldási terv
+### <a name="execute-the-incident-response-plan"></a>Az incidensre adott válasz tervének végrehajtása
 
-Képes arra, hogy a kiadási fázisában indított incidensmegoldási terv megvalósításához elengedhetetlen ügyfelek védelme a szoftver biztonsági vagy adatvédelmi biztonsági rések bontakozik ki.
+A kiadási fázisban megjelenő incidens-válaszintézkedések megvalósítása elengedhetetlen ahhoz, hogy segítse az ügyfeleket a szoftveres biztonság vagy az esetlegesen felmerülő adatvédelmi rések védelmében.
 
 ### <a name="monitor-application-performance"></a>Alkalmazások teljesítményének figyelése
 
-Folyamatos figyelés az alkalmazás, potenciálisan üzembe helyezését követően segít a teljesítménnyel kapcsolatos problémákat, valamint a biztonsági rések észlelését.
-Azure-szolgáltatások, amelyek a alkalmazásfigyeléssel segíti a következők:
+Az alkalmazás az üzembe helyezése után folyamatosan figyelemmel kísérheti a teljesítménnyel kapcsolatos problémák észlelését és a biztonsági réseket.
+Az alkalmazások figyelését támogató Azure-szolgáltatások a következők:
 
   - Azure Application Insights
   - Azure Security Center
 
 #### <a name="application-insights"></a>Application Insights
 
-[Az Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) egy bővíthető alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek, több platformon. Az élő webalkalmazásának figyelésére használhatja. Az Application Insights automatikusan felismeri a teljesítményanomáliákat. Ez magában foglalja a nagy teljesítményű analitikai eszközök segítségével diagnosztizálhatja a problémákat, és megismerheti, mit felhasználók valójában hogyan használják az alkalmazását. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot.
+A [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) egy bővíthető Application Performance Management-(APM-) szolgáltatás, amely több platformon is használható webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Application Insights automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket. Hatékony elemzési eszközöket tartalmaz, amelyekkel diagnosztizálhatja a problémákat, és megtudhatja, hogy a felhasználók mit tesznek ténylegesen az alkalmazással. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot.
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) megelőzése, észlelése, és háríthatja el a fenyegetéseket átláthatóbbá és (és szabályozhatóbbá) segít az Azure-erőforrások, például a webes alkalmazások biztonságát. Azure Security Center segítségével az egyébként észrevétlenül maradó fenyegetések észlelésére. Különféle biztonsági megoldások is működik.
+A [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) a fenyegetések megelőzését, észlelését és reagálását segíti az Azure-erőforrások, például a webalkalmazások biztonságának jobb láthatóságával (és szabályozásával). Azure Security Center segít felderíteni a fenyegetéseket, amelyek egyébként észrevétlenek lehetnek. Különböző biztonsági megoldásokkal működik.
 
-A Security Center ingyenes csomag az Azure-erőforrások csak korlátozott biztonságot nyújt. A [Security Center Standard csomagja](https://docs.microsoft.com/azure/security-center/security-center-onboarding) kiterjeszti ezeket a képességeket a helyszíni erőforrásokhoz és más felhőkben.
-A Security Center segítségével:
+A Security Center ingyenes szintje korlátozott biztonságot nyújt az Azure-erőforrások számára. A [standard szintű Security Center](https://docs.microsoft.com/azure/security-center/security-center-onboarding) kiterjeszti ezeket a képességeket a helyszíni erőforrásokra és más felhőkre.
+A Security Center Standard a következőket teszi lehetővé:
 
-  - Megkeresheti és elháríthatja a biztonsági rések.
-  - Rosszindulatú tevékenység blokkolása a hozzáférés- és alkalmazásvezérlőket vonatkoznak.
-  - Fenyegetések észlelése analytics és az intelligencia használatával.
-  - Támadás alatt gyorsan reagálhat.
+  - Megkeresheti és elháríthatja a biztonsági réseket.
+  - Hozzáférés-és alkalmazás-vezérlőelemek alkalmazása a kártékony tevékenységek blokkolására.
+  - Az elemzések és az intelligencia használatával észlelheti a fenyegetéseket.
+  - Gyors reagálás a támadás alatt.
 
 ## <a name="next-steps"></a>További lépések
-Az alábbi cikkeket azt javasoljuk, hogy a biztonsági vezérlők és tevékenységek, amelyek segítségével tervezése és biztonságos alkalmazások fejlesztéséhez.
+A következő cikkekben olyan biztonsági vezérlőket és tevékenységeket ajánlunk, amelyek segíthetnek a biztonságos alkalmazások tervezésében és fejlesztésében.
 
 - [Biztonságos alkalmazások tervezése](secure-design.md)
 - [Biztonságos alkalmazások fejlesztése](secure-develop.md)

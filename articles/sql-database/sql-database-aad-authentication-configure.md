@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: eb96b60593dc660682c6376c0e0133be8f371176
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: b6414ac41b1bb43e3fe1470a7ae2b1358126003a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348680"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569682"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Azure Active Directory hitelesítés konfigurálása és kezelése SQL-sel
 
@@ -168,7 +167,7 @@ Az alábbi két eljárás bemutatja, hogyan építhet ki Azure Active Directory 
     ![sqlservers.png](media/sql-database-aad-authentication/sqlservers.png)
 
     >[!NOTE]
-    > Ezen az oldalon az **SQL-kiszolgálók**kiválasztása előtt kiválaszthatja a név  melletti csillagot a kategória *kedvencéhez* , és hozzáadhat **SQL** -kiszolgálókat a bal oldali navigációs sávon.
+    > Ezen az oldalon az **SQL-kiszolgálók**kiválasztása előtt kiválaszthatja a név melletti csillagot a kategória *kedvencéhez* , és hozzáadhat **SQL** -kiszolgálókat a bal oldali navigációs sávon.
 
 3. **SQL Server** lapon válassza a **Active Directory rendszergazda**lehetőséget.
 4. A **Active Directory-rendszergazda** lapon válassza a **rendszergazda beállítása**lehetőséget.  ![válassza az Active Directory lehetőséget.](./media/sql-database-aad-authentication/select-active-directory.png)  

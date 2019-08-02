@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e563d86abe3817e4c77cc0d5c8df928e41563f8
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 1654e0a8cd11ac1c7a2f4ef0667d0e99187c2374
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489088"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618310"
 ---
 # <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>Katalógus létrehozása és kezelése az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -34,7 +34,7 @@ ms.locfileid: "68489088"
 
 A katalógus erőforrások és hozzáférési csomagok tárolója. Létre kell hoznia egy katalógust, ha a kapcsolódó erőforrásokat és a hozzáférési csomagokat szeretné csoportosítani. Aki létrehozza a katalógust, az első katalógus tulajdonosa lesz. A katalógus tulajdonosa további katalógus-tulajdonosokat adhat hozzá.
 
-**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda vagy katalógus létrehozója
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy katalógus létrehozója
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
@@ -102,7 +102,7 @@ A katalógusból eltávolíthatja az erőforrásokat. Egy erőforrás csak akkor
 
 Szerkesztheti a katalógus nevét és leírását. A felhasználók ezt az információt egy hozzáférési csomag részleteiben látják.
 
-**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda vagy katalógus tulajdonosa
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy katalógus tulajdonosa
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
@@ -118,13 +118,13 @@ Szerkesztheti a katalógus nevét és leírását. A felhasználók ezt az infor
 
 A katalógust törölheti, de csak akkor, ha nincs hozzáférési csomagja.
 
-**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda vagy katalógus tulajdonosa
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy katalógus tulajdonosa
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
 1. A bal oldali menüben kattintson a **katalógusok** lehetőségre, majd nyissa meg a törölni kívánt katalógust.
 
-1. A katalógus áttekintésében kattintson a **Törlés**elemre.
+1. A katalógus áttekintésébenkattintson a **Törlés**elemre.
 
 1. A megjelenő üzenetablakban kattintson az **Igen**gombra.
 

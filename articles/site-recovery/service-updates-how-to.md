@@ -1,152 +1,145 @@
 ---
-title: Az Azure Site Recovery-frissítések |} A Microsoft Docs
-description: Szolgáltatási hírek és frissítése az Azure Site Recoveryben használt összetevők áttekintést nyújt.
-services: site-recovery
+title: Frissítések és összetevők frissítése Azure Site Recovery
+description: Áttekintést nyújt Azure Site Recovery szolgáltatás frissítéseiről és az összetevők frissítéseiről.
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 04/25/2019
+ms.topic: conceptual
+ms.date: 07/31/2019
 ms.author: rajanaki
-ms.openlocfilehash: bde341063fb6742bbe2a92592981d4a2a437d214
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 305ff610c0f8962f2b50789d8af0a5f6e2fbf046
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203434"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717374"
 ---
-# <a name="service-updates-in-azure-site-recovery"></a>Az Azure Site Recovery szolgáltatási hírek
-Szervezetként kell döntse el, hogyan fog az adatok biztonságban és futására tervezett alkalmazások és számítási feladatok, és nem tervezett leállások esetén. Az Azure Site Recovery azzal segíti a BCDR-stratégia, hogy virtuális gépeken és fizikai kiszolgálókon érhető el, ha egy hely leállása futtatja az alkalmazásokat. A Site Recovery replikálja a virtuális gépeken és fizikai kiszolgálókon futó folyamatokat, hogy azok egy másodlagos helyen elérhetők maradjanak az elsődleges hely elérhetetlenné válása esetén. Amikor az elsődleges hely ismét üzembe áll, helyreállítja rajta a munkafolyamatokat.
+# <a name="service-updates-in-site-recovery"></a>Szolgáltatási frissítések a Site Recovery
 
-A Site Recovery a következők replikációját képes kezelni:
+Ez a cikk áttekintést nyújt a [Azure site Recovery](site-recovery-overview.md) frissítéseiről, és leírja, hogyan lehet frissíteni site Recovery összetevőket.
 
-- [Azure virtuális gépek replikációja Azure-régiók között](azure-to-azure-tutorial-dr-drill.md).
-- Helyszíni virtuális gépek és fizikai kiszolgálók replikációja az Azure-ba, vagy egy másodlagos helyre.
-Tudni, hogy több tekintse meg a dokumentációt [Itt](https://docs.microsoft.com/azure/site-recovery) .
-
-Az Azure Site Recovery rendszeres időközönként – beleértve a új funkciók, fejlesztések a támogatási mátrixa, hibajavításokat tartalmaz, ha van ilyen szolgáltatásfrissítések tesz közzé. Annak érdekében, hogy minden a legújabb funkciók & fejlesztéseket és hibajavítások, ha van ilyen aktuális előnyeit maradni, felhasználók javasolja, hogy mindig az Azure SIte Recovery-összetevőit a legújabb verzióra frissíteni. 
+Site Recovery rendszeresen közzéteszi a szolgáltatás frissítéseit. A frissítések közé tartoznak az új funkciók, a támogatás fejlesztése, az összetevők frissítései és a hibajavítások. A legújabb funkciók és javítások kihasználása érdekében javasoljuk, hogy a Site Recovery-összetevők legújabb verzióit futtassa. 
  
-## <a name="support-statement-for-azure-site-recovery"></a>Az Azure Site Recovery támogatási nyilatkozattal 
+ 
+## <a name="updates-support"></a>Frissítések támogatása
+
+### <a name="support-statement-for-azure-site-recovery"></a>A Azure Site Recovery támogatási nyilatkozata
+
+Javasoljuk, hogy mindig frissítsen a legújabb verziójú összetevőkre:
+
+Az **Azure site Recovery összes új, "n" verziójának kiadása után az "n-4" alatti összes verzió nem támogatott**. 
 
 > [!IMPORTANT]
-> **Minden új verzióval "n" egy az Azure Site Recovery-összetevő, amely akkor szabadul fel, ajánlatból 4 alatti összes verzió "nem támogatott számít**. Ezért célszerű mindig a legújabb elérhető verzióra való frissítéséhez.
+> A hivatalos támogatás az > N-4 verzióról N verzióra való frissítésre. Ha például N-6-t használ, először frissítsen az N-4-re, majd frissítsen N-re.
 
-> [!IMPORTANT]
-> A hivatalos támogatási frissítéseket az > N-4 N verzióra (N a legújabb verzió alatt). Ha olyan N-6, szeretné-e először frissítse a N-4, majd utána frissítse a n
 
-## <a name="expiry-of-components"></a>Összetevők lejárta
-A Site Recovery értesíti az ügyfelek összetevők lejárnak, vagy már lejárt, e-mail-értesítések útján (ha van, amelyre Ön feliratkozott őket), vagy a tároló irányítópultjának a portálon. A tároló irányítópultján értesítések nem érhetők el, ha jelen pillanatban hYpe-v virtuális gép védelmét. Is ha a kapcsolódó infrastruktúra nézetet válthat a forgatókönyvnek, lesz egy "frissítés érhető el" gomb mellett az összetevő, amely átirányítja Önt a hivatkozás a letöltésekhez a legújabb verzióra.
+### <a name="links-to-currently-supported-update-rollups"></a>A jelenleg támogatott kumulatív frissítésekre mutató hivatkozások
 
-Az alábbi, az e-mail-értesítések gyakoriságát, amikor egy összetevőinek érvényessége hamarosan lejár.
-- 60 nap elteltével az összetevő érvényessége hamarosan lejár: hetente egyszer
-- A következő 53 nap: hetente egyszer
-- Elmúlt 7 napban: Naponta egyszer
-- Miután a lejárt: hetente egyszer
+ Tekintse át a legújabb kumulatív frissítést (N verzió) [ebben a cikkben](site-recovery-whats-new.md). Ne feledje, hogy Site Recovery támogatást biztosít az N-4 verziókhoz.
 
 
 
-### <a name="upgrading-when-the-difference-between-current-version-and-latest-released-version-is-greater-than-4"></a>Ha jelenlegi verziója és a legújabb elérhető verzió közötti különbség nagyobb, mint 4 frissítése
+## <a name="component-expiry"></a>Összetevő lejárata
 
-1. Első lépésként frissítse a jelenleg telepített összetevő verzió say N N + 4, és folytassa a következő kompatibilis verzióját. Tegyük fel, és a jelenlegi verzió: 9,24, és a 9.16, először frissíteniük 9,24 9.20, majd.
-2. Hajtsa végre az eljárást a forgatókönyvtől függően valamennyi összetevője számára.
+Site Recovery értesíti Önt a lejárt összetevőkről (vagy hamarosan lejár) e-mailben (ha előfizetett e-mail-értesítésekre) vagy a portál irányítópultján.
 
-### <a name="support-for-latest-oskernel-versions"></a>Legújabb OS-vagy kernel-verziók támogatása
+- Továbbá, ha elérhetők a frissítések, a portálon a forgatókönyv infrastruktúra nézetében megjelenik egy **elérhető frissítés** gomb az összetevő mellett. A gomb átirányítja a legújabb összetevő-verzió letöltésére szolgáló hivatkozásra.
+-  A tárolók irányítópult-értesítései nem érhetők el, ha a Hyper-V virtuális gépeket replikálja. 
+
+Az e-mail-értesítések küldése a következőképpen történik.
+
+**Idő** | **Gyakoriság**
+--- | ---
+60 nappal az összetevő lejárata előtt | Hetente egyszer
+Következő 53 nap | Hetente egyszer
+Az elmúlt 7 nap | Naponta egyszer
+Lejárat után | Hetente egyszer
+
+
+### <a name="upgrading-outside-official-support"></a>A hivatalos támogatáson kívüli frissítés
+
+Ha az összetevő-verzió és a legújabb kiadási verzió közötti különbség meghaladja a négyet, akkor ez nem támogatott. Ebben az esetben a frissítés a következőképpen történik: 
+
+1. Frissítse a jelenleg telepített összetevőt a jelenlegi verzióra és négyre. Ha például az 9,16-es verziót, majd a 9,20-re frissíti.
+2. Ezután frissítsen a következő kompatibilis verzióra. Tehát a példánkban a 9,16-9,20 frissítése után frissítsen a 9,24-ra. 
+
+Kövesse ugyanezt a folyamatot az összes kapcsolódó összetevőnél.
+
+### <a name="support-for-latest-operating-systemskernels"></a>A legújabb operációs rendszerek/kernelek támogatása
 
 > [!NOTE]
-> Ha ütemezett karbantartási időszak van, és a egy újraindítás azonos részét képezi, az azt javasoljuk, először frissítse a Site Recovery-összetevők és a többi az ütemezett tevékenységek folytatásához.
+> Ha van ütemezett karbantartási időszak, és a rendszer újraindítást tartalmaz, javasoljuk, hogy először frissítse Site Recovery összetevőket, majd folytassa a karbantartási időszak további ütemezett tevékenységeivel.
 
-1. A Kernel/operációsrendszer-verziók a frissítés előtt először ellenőrizze, hogy a célverzió Azure Site Recovery által támogatott. Azure-beli virtuális gépek dokumentációban találhatja meg az információkat [VMware virtuális gépek](vmware-physical-azure-support-matrix.md) & Hyper-V virtuális gépek
-2. Tekintse meg a [szolgáltatásfrissítések](https://azure.microsoft.com/updates/?product=site-recovery) ismerje meg, melyik verzióját a Site Recovery összetevők támogatja az adott verziót, hogy frissíteni szeretné.
-3. Először frissítsen a legújabb hely helyreállítása verzióra.
-4. A kívánt verziók, frissítse az operációs rendszer kernelén.
-5. Végezze el az újraindítást.
-6. Ez biztosítja, hogy az operációs rendszer/Kernel verziója a gépeken vannak frissítve a legújabb verzióra, és hogy a forrásoldali virtuális gépen is betöltött a Site Recovery változásokat, melyek szükségesek az új verzióját.
+1. Az operációs rendszer/kernel verziók frissítése előtt ellenőrizze, hogy a cél verziója támogatott-e Site Recovery. 
+
+    - [Azure](/azure-to-azure-support-matrix.md#replicated-machine-operating-systems) -beli virtuális gépek támogatása.
+    - [VMware/fizikai kiszolgáló](vmware-physical-azure-support-matrix.md#replicated-machines) támogatása
+    - [Hyper-V-](hyper-v-azure-support-matrix.md#replicated-vms) támogatás.
+2. Tekintse át az [elérhető frissítéseket](site-recovery-whats-new.md) , hogy megtudja, mit szeretne frissíteni.
+3. Frissítsen a legújabb Site Recovery verzióra.
+4. Frissítse az operációs rendszert/kernelt a szükséges verzióra.
+5. Újraindítás.
 
 
+Ez a folyamat biztosítja, hogy a gép operációs rendszere/kernele frissítve legyen a legújabb verzióra, és hogy az új verzió támogatásához szükséges legújabb Site Recovery változások betöltődik a gépre.
 
 ## <a name="azure-vm-disaster-recovery-to-azure"></a>Azure-beli virtuális gépek vészhelyreállítása az Azure-ba
-Ebben a forgatókönyvben javasoljuk, hogy Ön [engedélyezése](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-autoupdate) automatikus frissítéseket. Választhat, hogy a Site Recovery a következő módokon kezelheti a frissítéseket:
 
-- A replikáció engedélyezése lépés részeként
-- Váltás a bővítményt a táron belüli beállításainak frissítése
+Ebben az esetben erősen ajánlott [engedélyezni az automatikus frissítéseket](azure-to-azure-autoupdate.md). A következőképpen engedélyezheti Site Recovery a frissítések kezelését:
 
-Abban az esetben manuálisan a frissítések kezelése választotta, kövesse az alábbi lépéseket:
+- A replikálás engedélyezése folyamatban van.
+- A bővítmény frissítési beállításainak a tárolón belüli beállításával.
 
-1. Nyissa meg az Azure Portalon, és keresse meg a "helyreállítási tárban."
-2. Nyissa meg a "Replikált elemek" panel az Azure Portalon a "helyreállítási tár."
-3. Kattintson a képernyő tetején a következő értesítés:
+Ha manuálisan szeretné kezelni a frissítéseket, tegye a következőket:
+
+1. A tárolóban > **replikált elemek**területen kattintson az értesítésre a képernyő tetején: 
     
-    *A Site Recovery replikációs ügynökének frissítése új érhető el*
-    
-    *Telepítéséhez kattintson ide ->*
+    **Az új Site Recovery replikációs ügynök frissítése elérhető. Kattintson ide a következő telepítéséhez: >**
 
-4. Válassza ki a alkalmazni a frissítést, és kattintson a kívánt virtuális gépek **OK**.
+4. Válassza ki azokat a virtuális gépeket, amelyekre alkalmazni kívánja a frissítést, majd kattintson **az OK**gombra.
 
-## <a name="between-two-on-premises-vmm-sites"></a>Két helyszíni VMM-helyek között
-1. A Microsoft Azure Site Recovery Provider legújabb kumulatív frissítés letöltése.
-2. A kumulatív frissítések először telepítse a helyszíni VMM-kiszolgáló, amely akkor kezeli a helyreállítási helyet.
-3. A helyreállítás után a hely frissült, a kumulatív frissítések telepítése a VMM-kiszolgálón, amely az elsődleges hely kezelését.
 
-> [!NOTE]
-> Ha a VMM egy magas rendelkezésre állású VMM rendszert (fürtözött VMM), győződjön meg arról, hogy a frissítés telepítését, amelyre a VMM szolgáltatás telepítve van a fürt összes csomópontjára.
+## <a name="vmware-vmphysical-server-disaster-recovery-to-azure"></a>VMware virtuális gép/fizikai kiszolgáló vész-helyreállítás az Azure-ba
+
+1. A jelenlegi verzió és a [támogatási nyilatkozat](#support-statement-for-azure-site-recovery)alapján telepítse az első frissítést a helyszíni konfigurációs kiszolgálón a [következő utasítások](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server)használatával. 
+2. Ha kibővített folyamat-kiszolgálókkal rendelkezik, [ezeket az utasításokat követve](vmware-azure-manage-process-server.md#upgrade-a-process-server)frissítse a következőt.
+3. Ha frissíteni szeretné a mobilitási ügynököt minden védett gépen, nyissa meg a **védett elemek** > **replikált elemek elemet**.
+4. Válassza ki a virtuális gépet, és kattintson az oldal alján megjelenő **frissítési ügynök** gombra az egyes virtuális gépekhez. Ezzel frissíti a mobilitási szolgáltatás ügynökét az összes védett virtuális gépen.
+
+### <a name="reboot-after-mobility-service-upgrade"></a>Újraindítás a mobilitási szolgáltatás frissítése után
+
+A mobilitási szolgáltatás minden frissítése után újraindítás szükséges, hogy a rendszer a legújabb módosításokat betöltse a forrásoldali gépen.
+
+Az újraindítás nem kötelező, kivéve, ha az ügynök verziószáma az utolsó újraindítás során, a jelenlegi verzió pedig nagyobb, mint négy.
+
+A táblázatban szereplő példa azt mutatja be, hogy ez hogyan működik.
+
+|**Ügynök verziója (utolsó újraindítás)** | **Frissítés erre** | **Kötelező újraindítás?**|
+|---------|---------|---------|
+|9,16 |  9,18 | Nem kötelező|
+|9,16 | 9,19 | Nem kötelező|
+| 9,16 | 9,20 | Nem kötelező
+ | 9,16 | 9,21 | Kötelező.<br/><br/> Frissítsen 9,20-re, majd indítsa újra a 9,21-es verzióra való frissítés előtt.
+
+## <a name="hyper-v-vm-disaster-recovery-to-azure"></a>Hyper-V rendszerű virtuális gépek vészhelyreállítása az Azure-ba
+
+### <a name="between-a-hyper-v-site-and-azure"></a>Hyper-V-hely és az Azure között
+
+1. Töltse le a Microsoft Azure Site Recovery-szolgáltató frissítését.
+2. Telepítse a szolgáltatót minden Site Recovery-ban regisztrált Hyper-V-kiszolgálón. Ha fürtöt futtat, frissítsen az összes fürtcsomóponton.
+
 
 ## <a name="between-an-on-premises-vmm-site-and-azure"></a>Egy helyszíni VMM-hely és az Azure között
-1. Töltse le a kumulatív frissítés a Microsoft Azure Site Recovery Provider.
-2. A kumulatív frissítések telepítése a helyszíni VMM-kiszolgálón.
-3. Telepítse a legújabb ügynök MARS-ügynök minden Hyper-V-gazdagépre.
+1. Töltse le a Microsoft Azure Site Recovery-szolgáltató frissítését.
+2. Telepítse a szolgáltatót a VMM-kiszolgálóra. Ha a VMM egy fürtben van telepítve, telepítse a szolgáltatót a fürt összes csomópontjára.
+3. Telepítse a legújabb Microsoft Azure Recovery Services-ügynököt minden Hyper-V-gazdagépre vagy fürtcsomópontokon.
 
-> [!NOTE]
-> Ha a VMM egy magas rendelkezésre állású VMM rendszert (fürtözött VMM), győződjön meg arról, hogy a frissítés telepítését, amelyre a VMM szolgáltatás telepítve van a fürt összes csomópontjára.
 
-## <a name="between-an-on-premises-hyper-v-site-and-azure"></a>Egy helyszíni Hyper-V hely és az Azure között
+## <a name="between-two-on-premises-vmm-sites"></a>Két helyszíni VMM-hely között
+1. Töltse le a Microsoft Azure Site Recovery Provider legújabb frissítését.
+2. Telepítse a legújabb szolgáltatót a másodlagos helyreállítási helyet kezelő VMM-kiszolgálóra. Ha a VMM egy fürtben van telepítve, telepítse a szolgáltatót a fürt összes csomópontjára.
+3. A helyreállítási hely frissítése után telepítse a szolgáltatót az elsődleges helyet kezelő VMM-kiszolgálóra.
 
-1. Töltse le a kumulatív frissítés a Microsoft Azure Site Recovery Provider.
-2. Telepítse a szolgáltatót a Hyper-V-kiszolgálók az Azure Site Recoveryben regisztrált minden egyes csomóponton.
+## <a name="next-steps"></a>További lépések
 
-> [!NOTE]
-> Ha a Hyper-V gazdagép fürtözött Hyper-V-kiszolgáló, győződjön meg arról, hogy telepítse a frissítést a fürt minden csomópontján
-
-## <a name="between-an-on-premises-vmware-or-physical-site-to-azure"></a>Egy helyszíni VMware vagy fizikai helyről az Azure között
-
-Frissítések folytatása előtt tekintse meg [Site Recovery támogatási nyilatkozattal](#support-statement-for-azure-site-recovery) tudni, hogy a frissítési útvonalat.
-
-1. A fenti aktuális verziója és a támogatási utasítás alapján, a frissítés telepítése először a helyi felügyeleti kiszolgálón az alábbi az irányelveket, adott [Itt](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server). Ez az a kiszolgálón, amelyen a konfigurációs kiszolgáló és a folyamat kiszolgálói szerepkörök.
-2. Ha kibővített kiszolgálók feldolgozni, frissítse azokat melletti megadva a következő irányelvek alapján [Itt](vmware-azure-manage-process-server.md#upgrade-a-process-server).
-3. Ezt követően szeretné frissíteni a mobilitási szolgáltatást a egyes védett elemek, nyissa meg az Azure Portalra, és folytassa a a **védett elemek** > **replikált elemek** lapot. Válassza ki a virtuális gép ezen az oldalon. Válassza ki a **Windows Update Agent** minden virtuális géphez az oldal alján megjelenő gombra. Ez frissíti a Mobilitásiszolgáltatás-ügynök minden védett virtuális gépen.
-
-### <a name="reboot-of-source-machine-after-mobility-agent-upgrade"></a>Indítsa újra a forrásgépen a mobilitási ügynök frissítése után
-
-Újraindítás ajánlott minden mobilitási ügynök frissítését követően győződjön meg arról, hogy az összes legutóbbi módosítások töltődnek be a forrásgépen. Azonban van **nem kötelező**. Ügynök utolsó újraindítás során és az aktuális verziója közötti különbség nagyobb, mint 4, ha újraindításra kötelező. Tekintse meg az alábbi táblázatban részletes ismertetése.
-
-|**Utolsó újraindítás során ügynök verziója** | **A frissítés** | **Az újraindítás kötelező?**|
-|---------|---------|---------|
-|9.16 |  9.18 | Nem kötelező|
-|9.16 | 9.19 | Nem kötelező|
-| 9.16 | 9.20 | Nem kötelező
- | 9.16 | 9.21 | Igen, először frissítse a 9.20, majd indítsa újra a verziók közötti különbség 9.21 való frissítés előtt (9.16 hol történt meg az utolsó újraindítás és a cél verziójának 9.21) van > 4,
-
-## <a name="links-to-currently-supported-update-rollups"></a>Jelenleg támogatott kumulatív mutató hivatkozások
-
-|Update Rollup  |Szolgáltató  |Egyesített telepítő| OVF  |MARS|
-|---------|---------|---------|---------|--------|
-|[37. kumulatív frissítés](https://support.microsoft.com/help/4508614/update-rollup-37-for-azure-site-recovery)     |   5.1.4300.0  |  9.25.5241.1   |  5.1.4300.0  | 2.0.9163.0
-|[36. kumulatív frissítés](https://support.microsoft.com/en-in/help/4503156)     |   5.1.4150.0  |  9.24.5211.1   |  5.1.4150.0  | 2.0.9160.0
-|[35. kumulatív frissítés](https://support.microsoft.com/en-us/help/4494485/update-rollup-35-for-azure-site-recovery)     |   5.1.4000.0  |  9.23.5163.1   |  5.1.4000.0  | 2.0.9156.0
-|[34. kumulatív frissítés](https://support.microsoft.com/en-us/help/4490016/update-rollup-34-for-azure-site-recovery) -gyorsjavítást     |   5.1.3950.0  |  9.22.5142.1   |  5.1.3950.0  | 2.0.9155.0
-|[33. kumulatív frissítés](https://support.microsoft.com/en-us/help/4489582/update-rollup-33-for-azure-site-recovery)     |   5.1.3900.0  |  9.22.5109.1   |  5.1.3900.0  | 2.0.9155.0
-|[32-es kumulatív frissítés](https://support.microsoft.com/en-us/help/4485985/update-rollup-32-for-azure-site-recovery)     |   5.1.3800.0  |  9.21.5091.1   |  5.1.3800.0  |2.0.9144.0
-
-## <a name="previous-update-rollups"></a>Korábbi kumulatív frissítések
-
-- [A kumulatív frissítések 31.](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)
-- [30. kumulatív frissítés](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30)
-- [29-es kumulatív frissítés](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery)
-- [28. kumulatív frissítés](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery)
-- [27. kumulatív frissítés](https://support.microsoft.com/help/4055712/update-rollup-27-for-azure-site-recovery)
-- [26. kumulatív frissítés](https://support.microsoft.com/help/4344054/update-rollup-26-for-azure-site-recovery)  
-- [25. kumulatív frissítés](https://support.microsoft.com/help/4278275/update-rollup-25-for-azure-site-recovery) 
-- [23. kumulatív frissítés](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) 
-- [22-es kumulatív frissítés](https://support.microsoft.com/help/4072852/update-rollup-22-for-azure-site-recovery) 
-- [21. kumulatív frissítés](https://support.microsoft.com/help/4051380/update-rollup-21-for-azure-site-recovery) 
-- [20. kumulatív frissítés](https://support.microsoft.com/help/4041105/update-rollup-20-for-azure-site-recovery) 
-- [19. kumulatív frissítés](https://support.microsoft.com/help/4034599/update-rollup-19-for-azure-site-recovery) 
+Kövesse az [Azure Updates](https://azure.microsoft.com/updates/?product=site-recovery) oldalt az új frissítések és kiadások nyomon követéséhez.

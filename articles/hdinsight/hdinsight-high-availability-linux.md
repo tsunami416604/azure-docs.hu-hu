@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: hrasheed
 ms.openlocfilehash: 1828efb410849677e859d341e4e16e4f5d4ca681
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68405993"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben
@@ -108,7 +108,7 @@ Amikor megérkezik a Ambari lapra, a telepített szolgáltatások megjelennek a 
 
 ![Telepített szolgáltatások](./media/hdinsight-high-availability-linux/services.png)
 
-Az állapot jelzéséhez számos ikon jelenhet meg a szolgáltatás mellett. A szolgáltatással kapcsolatos riasztások az oldal tetején található riasztások  hivatkozás használatával tekinthetők meg.  A Ambari számos előre meghatározott riasztást biztosít.
+Az állapot jelzéséhez számos ikon jelenhet meg a szolgáltatás mellett. A szolgáltatással kapcsolatos riasztások az oldal tetején található riasztások hivatkozás használatával tekinthetők meg.  A Ambari számos előre meghatározott riasztást biztosít.
 
 A következő riasztások segítik a fürt rendelkezésre állásának figyelését:
 
@@ -153,7 +153,7 @@ A következő riasztások segítik a fürt rendelkezésre állásának figyelés
 
 Az egyes szolgáltatások lehetőség kiválasztásával további információkat tekinthet meg.
 
-Míg a szolgáltatás oldala információt nyújt az egyes szolgáltatások állapotáról és konfigurációjáról, nem nyújt információt arról, hogy melyik fő csomóponton fut a szolgáltatás. Ezen információk megtekintéséhez használja a gazdagépek  hivatkozást az oldal tetején. Ezen a lapon láthatók a fürtön belüli gazdagépek, beleértve a fő csomópontokat is.
+Míg a szolgáltatás oldala információt nyújt az egyes szolgáltatások állapotáról és konfigurációjáról, nem nyújt információt arról, hogy melyik fő csomóponton fut a szolgáltatás. Ezen információk megtekintéséhez használja a gazdagépek hivatkozást az oldal tetején. Ezen a lapon láthatók a fürtön belüli gazdagépek, beleértve a fő csomópontokat is.
 
 ![gazdagépek listája](./media/hdinsight-high-availability-linux/hosts.png)
 
@@ -247,7 +247,7 @@ A Ambari webes felhasználói felületén válassza ki azt a szolgáltatást, am
 
 A csomópontok mérete csak a fürt létrehozásakor választható ki. A HDInsight elérhető különböző virtuálisgép-méretek listáját a [HDInsight díjszabása lapon](https://azure.microsoft.com/pricing/details/hdinsight/)találja.
 
-Fürt létrehozásakor megadhatja a csomópontok méretét. A következő információk útmutatást nyújtanak a méret megadásához a [Azure Portal][preview-portal], [Azure PowerShell module Az][azure-powershell]és az [Azure CLI][Azure-CLI]használatával:
+Fürt létrehozásakor megadhatja a csomópontok méretét. A következő információk útmutatást nyújtanak a méret megadásához az [Azure Portal][preview-portal], [Azure PowerShell modul][azure-powershell]az és az [Azure CLI][azure-cli]használatával:
 
 * **Azure Portal**: Fürt létrehozásakor beállíthatja a fürt által használt csomópontok méretét:
 

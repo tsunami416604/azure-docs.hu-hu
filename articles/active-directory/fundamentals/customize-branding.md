@@ -2,23 +2,23 @@
 title: A munkahelyi bejelentkezési lap – Azure Active Directory márkajelzés hozzáadása |} A Microsoft Docs
 description: A szervezet az Azure Active Directory bejelentkezési oldalára márkajelzési adásával kapcsolatos utasításokat.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bef3960e5c117a131b59a65196214c51e01bd3c8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 3ae329bd031a2a57ea4fc2eec9cde1e532439bb4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204580"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561713"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Adja hozzá a szervezet Azure Active Directory bejelentkezési oldal arculat megjelenítése
 A vállalat emblémája és egyéni színsémák használatával adjon meg egy egységes megjelenést és a hangulat használatát az Azure Active Directory (Azure AD) bejelentkezési oldalakon. A bejelentkezési oldal jelenik meg, ha a felhasználói bejelentkeznek a munkahelyi webes alkalmazásokhoz, például az Office 365, amely használja az Azure ad-ben az identitás-szolgáltatóként.
@@ -29,7 +29,7 @@ A vállalat emblémája és egyéni színsémák használatával adjon meg egy e
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Az Azure AD bejelentkezési oldal testreszabása
 Testre szabhatja az Azure AD bejelentkezési lapok, amelyek jelenik meg, amikor a felhasználók bejelentkeznek a szervezet bérlő-specifikus alkalmazások, mint például [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), vagy egy, a tartomány változót, például a átadásakor[ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com).
 
-Az egyéni márkajelzési nem jelenik meg azonnal, amikor a helyeket, például www nyissa meg a felhasználók\.office.com. Ehelyett a felhasználók számára való bejelentkezés előtt jelenik meg a testre szabott védjegyzést biztosít.
+Az egyéni arculat nem jelenik meg azonnal, amikor a felhasználók olyan webhelyekre látogatnak, mint a www\.-Office.com. Ehelyett a felhasználók számára való bejelentkezés előtt jelenik meg a testre szabott védjegyzést biztosít.
 
 > [!NOTE]
 > Az összes márkajelzési elemek egyike sem kötelező. Ha nincs háttérkép-megad szalagcímemblémát, például a bejelentkezési oldal jeleníti meg az embléma a célhelyről (például Office 365) alapértelmezett háttérben történő rendszerképpel.<br><br>Ezenkívül arculat megjelenítése a bejelentkezési oldal nem jelenik meg személyes Microsoft-fiókok. Ha a felhasználók vagy a vendégek személyes Microsoft-fiókkal, a bejelentkezési oldal nem jelenik meg a céges arculatot a szervezet.
@@ -58,7 +58,7 @@ Az egyéni márkajelzési nem jelenik meg azonnal, amikor a helyeket, például 
 
         - **Fejléc embléma.** Válassza ki az embléma jelenik meg a bejelentkezési oldalon, a felhasználó beírja a felhasználónevet és a egy .png vagy .jpg verzióját a **saját alkalmazások** portáloldalán.
             
-            A lemezkép nem lehet magasabb, mint 60 képpont vagy nagyobb, mint 280 képpont. Azt javasoljuk, hogy transzparens rendszerkép használatával, mivel a háttér nem egyeznek az embléma háttér. Emellett javasoljuk, hogy ne adja hozzá a kép körül kitöltési, vagy lehet létrehozni, akkor keresse meg a kis méretű embléma.
+            A rendszerkép nem lehet magasabb, mint 60 képpont, vagy nagyobb, mint 280 képpont. Azt javasoljuk, hogy transzparens rendszerkép használatával, mivel a háttér nem egyeznek az embléma háttér. Emellett javasoljuk, hogy ne adja hozzá a kép körül kitöltési, vagy lehet létrehozni, akkor keresse meg a kis méretű embléma.
 
         - **Felhasználónév-emlékeztető.** Írja be a segítő szöveg, amely a felhasználók számára akkor jelenik meg, ha elfelejtették a felhasználóneve. Ezt a szöveget kell lennie a Unicode használatát, hivatkozásokat vagy kód nélkül, és nem lehet hosszabb 64 karakternél. Ha vendégek jelentkezzen be az alkalmazásba, javasoljuk, hogy ne adja hozzá a mutatót.
 
@@ -70,7 +70,7 @@ Az egyéni márkajelzési nem jelenik meg azonnal, amikor a helyeket, például 
 
         - **Bejelentkezési oldal háttérszíne.** Adja meg hexadecimális szín (Ha például fehér a #FFFFFF), amely a háttérkép alacsony sávszélességű kapcsolat helyzetekben helyett megjelenítendő. A szalagcímembléma vagy a szervezet színes elsődleges színét használatát javasoljuk.
 
-        - **Négyzetes emblémakép.** Válassza ki a (javasolt) .png vagy .jpg képet a szervezet embléma új Windows 10 Enterprise-eszközök esetén a telepítés során a felhasználók számára megjelenik. Ez a rendszerkép rendszer csak a Windows-hitelesítést használ, és akkor jelenik meg, csak a bérlők által használt [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) telepítéshez vagy a jelszó megadásához egyéb Windows 10-es oldalainak észlel. Bizonyos esetekben ez is megjelenhetnek a beleegyezés párbeszédpanelen.
+        - **Négyzetes emblémakép.** Válassza ki a (javasolt) .png vagy .jpg képet a szervezet embléma új Windows 10 Enterprise-eszközök esetén a telepítés során a felhasználók számára megjelenik. Ez a rendszerkép rendszer csak a Windows-hitelesítést használ, és akkor jelenik meg, csak a bérlők által használt [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) telepítéshez vagy a jelszó megadásához egyéb Windows 10-es oldalainak észlel. Bizonyos esetekben előfordulhat, hogy a beleegyező párbeszédpanelen is megjelenik.
         
             A lemezkép nem lehet nagyobb, mint 240 x 240 képpont méretű, és rendelkeznie kell egy fájl mérete kisebb, mint 10 KB-os. Azt javasoljuk, hogy transzparens rendszerkép használatával, mivel a háttér nem egyeznek az embléma háttér. Emellett javasoljuk, hogy ne adja hozzá a kép körül kitöltési, vagy lehet létrehozni, akkor keresse meg a kis méretű embléma.
     

@@ -1,26 +1,24 @@
 ---
-title: 'Számítógép csatlakoztatása egy Azure virtuális hálózat pont – hely és az Azure natív tanúsítványalapú hitelesítésének használatával: Az Azure Portal |} A Microsoft Docs'
-description: Windows, Mac OS X és Linux rendszerű ügyfelek biztonságos csatlakoztatása egy Azure virtuális hálózat P2S használatával, és önaláírt vagy hitelesítésszolgáltató által kibocsátott tanúsítványok. Ebben a cikkben az Azure Portalon fogunk dolgozni.
+title: 'Számítógép összekapcsolása Azure-beli virtuális hálózattal pont – hely kapcsolat és natív Azure-tanúsítvány hitelesítése használatával: Azure Portal | Microsoft Docs'
+description: A Windows, Mac OS X és a Linux rendszerű ügyfelek biztonságos csatlakoztatása egy Azure-beli virtuális hálózathoz P2S és önaláírt vagy HITELESÍTÉSSZOLGÁLTATÓ által kibocsátott tanúsítványok használatával. Ebben a cikkben az Azure Portalon fogunk dolgozni.
 services: vpn-gateway
 author: cherylmc
-tags: azure-resource-manager
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 6/18/2019
+ms.date: 07/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: 07bcf50a816c090ccef846909dff671486e514c4
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: e603eed34aaff4ad7303819a730fea09a332b7a8
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203057"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706780"
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Azure natív tanúsítványalapú hitelesítésének használatával virtuális hálózathoz pont – hely kapcsolat konfigurálása: Azure Portal
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Pont – hely kapcsolat konfigurálása egy VNet natív Azure tanúsítványalapú hitelesítés használatával: Azure Portal
 
-Ez a cikk segítséget nyújt a Windows, Linux vagy Mac OS X rendszerű Azure virtuális hálózatba az egyes ügyfelek biztonságos csatlakoztatása. A pont–hely VPN-kapcsolat akkor hasznos, ha távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy egy konferenciáról. Pont–hely kapcsolatot is használhat helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy virtuális hálózathoz csatlakoztatni. A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet. Pont–hely kapcsolat esetén SSTP (Secure Socket Tunneling Protocol) vagy IKEv2-protokoll használatával jön létre a VPN-kapcsolat. További információkat a pont–hely VPN-ről a [pont–hely VPN-t ismertető](point-to-site-about.md) témakör tartalmaz.
+Ez a cikk segítséget nyújt a Windows, Linux vagy Mac OS X rendszerű ügyfelek biztonságos csatlakoztatásához egy Azure-VNet. A pont–hely VPN-kapcsolat akkor hasznos, ha távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy egy konferenciáról. Pont–hely kapcsolatot is használhat helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy virtuális hálózathoz csatlakoztatni. A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet. Pont–hely kapcsolat esetén SSTP (Secure Socket Tunneling Protocol) vagy IKEv2-protokoll használatával jön létre a VPN-kapcsolat. További információkat a pont–hely VPN-ről a [pont–hely VPN-t ismertető](point-to-site-about.md) témakör tartalmaz.
 
 ![Számítógép csatlakoztatása Azure-beli virtuális hálózathoz – pont-hely kapcsolati diagram](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/p2snativeportal.png)
-
 
 ## <a name="architecture"></a>Architektúra
 
@@ -35,21 +33,21 @@ A natív Azure-tanúsítvánnyal hitelesített pont–hely kapcsolatok a követk
 
 Az alábbi értékek használatával létrehozhat egy tesztkörnyezetet, vagy segítségükkel értelmezheti a cikkben szereplő példákat:
 
-* **Virtuális hálózat neve:** VNet1
-* **Címtér:** 192.168.0.0/16<br>Ebben a példában csak egy címteret használunk. Azonban a virtuális hálózatához több címteret is használhat.
+* **VNet neve:** VNet1
+* **Címterület:** 192.168.0.0/16<br>Ebben a példában csak egy címteret használunk. Azonban a virtuális hálózatához több címteret is használhat.
 * **Alhálózat neve:** Előtér
 * **Alhálózati címtartomány:** 192.168.1.0/24
-* **Előfizetés:** Ha több előfizetéssel rendelkezik, győződjön meg arról, hogy a megfelelőt használja-e.
+* **Előfizetés** Ha egynél több előfizetéssel rendelkezik, ellenőrizze, hogy a megfelelőt használja-e.
 * **Erőforráscsoport:** TestRG
-* **Hely:** USA keleti régiója
-* **GatewaySubnet:** 192.168.200.0/24<br>
+* **Helyen** East US
+* **GatewaySubnet** 192.168.200.0/24<br>
 * **DNS-kiszolgáló:** (nem kötelező) Annak a DNS-kiszolgálónak az IP-címe, amelyet névfeloldásra kíván használni.
 * **Virtuális hálózati átjáró neve:** VNet1GW
 * **Átjáró típusa:** VPN
 * **VPN típusa:** Útvonalalapú
 * **Nyilvános IP-cím neve:** VNet1GWpip
-* **Kapcsolat típusa:** Pont–hely kapcsolat
-* **Ügyfélcímkészlet:** 172.16.201.0/24<br>Azok a VPN-ügyfelek, amelyek ezzel a pont–hely kapcsolattal csatlakoznak a virtuális hálózathoz, az ügyfélcímkészletből kapnak IP-címet.
+* **Kapcsolattípus:** Pont–hely kapcsolat
+* **Ügyfél-címkészlet:** 172.16.201.0/24<br>Azok a VPN-ügyfelek, amelyek ezzel a pont–hely kapcsolattal csatlakoznak a virtuális hálózathoz, az ügyfélcímkészletből kapnak IP-címet.
 
 ## <a name="createvnet"></a>1. Virtuális hálózat létrehozása
 
@@ -73,7 +71,7 @@ Miután létrehozta a virtuális hálózatot, hozzáadhatja a DNS-kiszolgáló I
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
 
 >[!NOTE]
->Az alapszintű termékváltozat nem támogatja az IKEv2- vagy RADIUS-hitelesítést. Ha azt tervezi, hogy a Mac ügyfelek csatlakoznak a virtuális hálózat, ne használja az alapszintű Termékváltozat.
+>Az alapszintű átjáró SKU nem támogatja a IKEv2 vagy a RADIUS-hitelesítést. Ha azt tervezi, hogy a Mac-ügyfelek csatlakoznak a virtuális hálózathoz, ne használja az alapszintű SKU-t.
 >
 
 ## <a name="generatecert"></a>5. Tanúsítványok előállítása
@@ -98,7 +96,7 @@ Az ügyfélcímkészlet megadott magánhálózati IP-címek tartománya. A pont�
 2. Kattintson a **Konfigurálás most** elemre a konfigurációs lap megnyitásához.
 
    ![Konfigurálás most](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
-3. A **Pont–hely** konfigurációs lapján írja be a **Címkészlet** mezőbe a magánhálózati IP-címtartományt, amelyet használni szeretne. A VPN-ügyfelek dinamikusan kapnak egy IP-címet a megadott tartományból. A minimális alhálózati maszkkal aktív/passzív és aktív-aktív konfiguráció 28 bit 29 bit. Kattintson a **Mentés** gombra a beállítás érvényesítéséhez és mentéséhez.
+3. A **Pont–hely** konfigurációs lapján írja be a **Címkészlet** mezőbe a magánhálózati IP-címtartományt, amelyet használni szeretne. A VPN-ügyfelek dinamikusan kapnak egy IP-címet a megadott tartományból. A minimális alhálózati maszk 29 bites aktív/passzív és 28 bites az aktív/aktív konfigurációhoz. Kattintson a **Mentés** gombra a beállítás érvényesítéséhez és mentéséhez.
 
    ![Ügyfélcímkészlet](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
 
@@ -108,15 +106,15 @@ Az ügyfélcímkészlet megadott magánhálózati IP-címek tartománya. A pont�
 
 ## <a name="tunneltype"></a>7. Alagúttípus konfigurálása
 
-Kiválaszthatja az alagút típusát. A közül OpenVPN, SSTP és IKEv2. Az Android- és Linux-alapú strongSwan-ügyfél, valamint az iOS- és OS X-alapú natív IKEv2 VPN-ügyfél csak IKEv2-alagutat használ a kapcsolódáshoz. A Windows-ügyfél először az IKEv2-vel próbálkozik, majd ha azzal nem sikerült, visszavált SSTP-re. A OpenVPN ügyfele segítségével a OpenVPN alagúttípus csatlakozni.
+Kiválaszthatja az alagút típusát. Az alagút beállításai az OpenVPN, az SSTP és a IKEv2. Az Android- és Linux-alapú strongSwan-ügyfél, valamint az iOS- és OS X-alapú natív IKEv2 VPN-ügyfél csak IKEv2-alagutat használ a kapcsolódáshoz. A Windows-ügyfél először az IKEv2-vel próbálkozik, majd ha azzal nem sikerült, visszavált SSTP-re. Az OpenVPN-ügyfél használatával kapcsolódhat az OpenVPN-alagút típusához.
 
-![Alagúttípus](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
+![Alagút típusa](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
 
 ## <a name="authenticationtype"></a>8. Hitelesítés típusának konfigurálása
 
 Válassza ki az **Azure-tanúsítvány** lehetőséget.
 
-  ![Alagúttípus](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authenticationtype.png)
+  ![Alagút típusa](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authenticationtype.png)
 
 ## <a name="uploadfile"></a>9. A főtanúsítvány nyilvános tanúsítványadatainak feltöltése
 
@@ -172,7 +170,7 @@ A VPN-ügyfél konfigurációs fájljai tartalmazzák az eszközök azon beáll�
 
 A Hálózat párbeszédpanelen keresse meg a használni kívánt ügyfél profilját, adja meg a beállításokat a [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) fájlból, majd kattintson a **Csatlakozás** gombra.
 
-Ellenőrizze [telepítő - (OS X) Mac](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) részletes útmutatást. Ha problémába ütközik a csatlakozás, ellenőrizze, hogy a virtuális hálózati átjáró nem használ egy alapszintű Termékváltozat. Alapszintű Termékváltozat nem támogatott Mac számítógépekhez.
+Részletes utasításokért lásd: [install-Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) . Ha nem sikerül a csatlakozás, ellenőrizze, hogy a virtuális hálózati átjáró nem alapszintű SKU-t használ-e. A Mac-ügyfelek nem támogatják az alapszintű SKU-t.
 
   ![Mac-kapcsolat](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: ecb2059e529347b7eff72bf6af74b82558a4c251
-ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
+ms.openlocfilehash: 4688cf6fb82eb8f726205d54d0c852fd3daf8dfb
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371691"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564790"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Host. JSON-hivatkozás Azure Functions 2. x rendszerhez  
 
@@ -147,7 +147,10 @@ A gazdagép által futtatott függvények listája. Az üres tömb az összes f�
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Az összes függvény időtúllépési időtartamát jelzi. A kiszolgáló nélküli fogyasztási csomag esetében az érvényes tartomány 1 másodperc és 10 perc között van, az alapértelmezett érték pedig 5 perc. Egy App Service tervben nincs általános korlát, és az alapértelmezett érték a futásidejű verziótól függ. A 2. x verzióban egy App Service csomag alapértelmezett értéke 30 perc. Az 1. x verzióban az *értéke null*, amely nem jelez időtúllépést. Nem állítható be végtelenként. Ha nem kifejezetten ezt az értéket állítja be, akkor az alapértelmezett 30 perces értéket fogja megtenni.
+Az összes függvény időtúllépési időtartamát jelzi. A TimeSpan karakterlánc-formátumát követi. A kiszolgáló nélküli fogyasztási csomag esetében az érvényes tartomány 1 másodperc és 10 perc között van, az alapértelmezett érték pedig 5 perc.  
+A dedikált (App Service) csomagban nincs általános korlát, és az alapértelmezett érték a futásidejű verziótól függ: 
++ 1\. x verzió: az alapértelmezett érték *Null*, amely nem jelez időtúllépést.   
++ 2\. x verzió: az alapértelmezett érték 30 perc. A érték `-1` nem kötött végrehajtást jelez.
 
 ```json
 {

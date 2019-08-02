@@ -1,20 +1,20 @@
 ---
-title: Tudnivalók az Azure Site Recovery Deployment Planner a Hyper-V virtuális gépek vészhelyreállítása az Azure-bA |} A Microsoft Docs
-description: Ismerje meg az Azure Site Recovery üzembe helyezési Planner Hyper-V vészhelyreállítás az Azure-bA.
+title: Tudnivalók a Hyper-V virtuális gépek Azure-ba való vész-helyreállításának Azure Site Recovery Deployment Plannerról | Microsoft Docs
+description: Ismerje meg a Azure Site Recovery Deployment Planner Hyper-V vész-helyreállítást az Azure-ba.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/18/2019
+ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: a793de302eb0833c959f2486fc2cda1f2eec4674
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e7da548eb2cc6e314d446270cc04d1c57be7ae3
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65149111"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618830"
 ---
-# <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Tudnivalók az Azure Site Recovery Deployment Planner a Hyper-V vész-helyreállítási az Azure-bA
+# <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Az Azure-ba irányuló Hyper-V vész-helyreállítás Azure Site Recovery Deployment Planner
 
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a Hyper-V–Azure éles környezetben való üzembe helyezéséhez.
 
@@ -73,9 +73,9 @@ Az eszköz a következő részleteket biztosítja:
 | | **VMware – Azure** |**Hyper-V – Azure**|**Azure – Azure**|**Hyper-V – másodlagos hely**|**VMware – másodlagos hely**
 --|--|--|--|--|--
 Támogatott esetek |Igen|Igen|Nem|Igen*|Nem
-Támogatott verzió | vCenter 6.7, 6.5-ös, 6.0 vagy 5.5| Windows Server 2016, Windows Server 2012 R2 | n/a |Windows Server 2016, Windows Server 2012 R2|n/a
-Támogatott konfiguráció|vCenter, ESXi| Hyper-V fürt, Hyper-V gazdagép|n/a|Hyper-V fürt, Hyper-V gazdagép|n/a|
-Azon kiszolgálók száma, amelyek profilozhatók az Azure Site Recovery Deployment Planner futó példányaihoz |Egyszeres (az egy vCenter Serverhez vagy egy ESXi-kiszolgálóhoz tartozó virtuális gépek profilozhatók egyszerre)|Többszörös (több gazdagéphez vagy gazdagépfürthöz tartozó virtuális gépek profilozhatók egyszerre)| n/a |Többszörös (több gazdagéphez vagy gazdagépfürthöz tartozó virtuális gépek profilozhatók egyszerre)| n/a
+Támogatott verzió | vCenter 6,7, 6,5, 6,0 vagy 5,5| Windows Server 2016, Windows Server 2012 R2 | NA |Windows Server 2016, Windows Server 2012 R2|NA
+Támogatott konfiguráció|vCenter, ESXi| Hyper-V fürt, Hyper-V gazdagép|NA|Hyper-V fürt, Hyper-V gazdagép|NA|
+Azon kiszolgálók száma, amelyek profilozhatók az Azure Site Recovery Deployment Planner futó példányaihoz |Egyszeres (az egy vCenter Serverhez vagy egy ESXi-kiszolgálóhoz tartozó virtuális gépek profilozhatók egyszerre)|Többszörös (több gazdagéphez vagy gazdagépfürthöz tartozó virtuális gépek profilozhatók egyszerre)| NA |Többszörös (több gazdagéphez vagy gazdagépfürthöz tartozó virtuális gépek profilozhatók egyszerre)| NA
 
 *Az eszköz elsősorban a Hyper-V – Azure vészhelyreállítási forgatókönyvhöz való. Hyper-V – másodlagos hely vészhelyreállítás esetében csak a forrásoldali javaslatok (pl. szükséges hálózati sávszélesség, az egyes forrás Hyper-V-kiszolgálókhoz szükséges szabad tárterület és a kezdeti replikáláskötegelési számok és kötegelési definíciók) megismeréséhez használható.  A jelentésből származó Azure javaslatokat és költségeket hagyja figyelmen kívül. Emellett a Get Throughput művelet nem használható a Hyper-V – másodlagos hely vészhelyreállítási forgatókönyvben.
 
@@ -84,7 +84,7 @@ Az eszköz Hyper-V esetén három fő fázisból áll: virtuálisgép-lista lek�
 
 | Kiszolgálókövetelmények | Leírás |
 |---|---|
-|Virtuálisgép-lista lekérésre, profilkészítés és az átviteli sebesség mérése |<ul><li>Operációs rendszer: A Microsoft Windows Server 2016-ban vagy a Microsoft Windows Server 2012 R2 rendszerben </li><li>Gépkonfiguráció: 8 Vcpu, 16 GB RAM, 300 GB HDD</li><li>[Microsoft .NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[A Visual Studio 2012 szoftverhez készült Microsoft Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-szolgáltatáshoz erről a kiszolgálóról</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li><li>A virtuális gépet, ahol az Azure Site Recovery Deployment Planner fut, hozzá kell adni az összes Hyper-V-kiszolgáló TrustedHosts listájához.</li><li>Ellátni kívánt összes Hyper-V kiszolgálók kell adni az ügyfél virtuális gép TrustedHosts listájához, ahol az eszközt futtatja. [További információ kiszolgálók a TrustedHosts listához való hozzáadásáról](#steps-to-add-servers-into-trustedhosts-list). </li><li> Az eszközt rendszergazdai jogosultságokkal kell futtatni a PowerShellből vagy az ügyfél parancssori konzoljáról.</ul></ul>|
+|Virtuálisgép-lista lekérésre, profilkészítés és az átviteli sebesség mérése |<ul><li>Operációs rendszer: Microsoft Windows Server 2016 vagy Microsoft Windows Server 2012 R2 </li><li>Számítógép konfigurációja: 8 vCPU, 16 GB RAM, 300 GB HDD</li><li>[Microsoft .NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[A Visual Studio 2012 szoftverhez készült Microsoft Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-szolgáltatáshoz erről a kiszolgálóról</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li><li>A virtuális gépet, ahol az Azure Site Recovery Deployment Planner fut, hozzá kell adni az összes Hyper-V-kiszolgáló TrustedHosts listájához.</li><li>A felvenni kívánt Hyper-V-kiszolgálókat hozzá kell adni az ügyfél virtuális TrustedHosts listájához, amelyből az eszköz fut. [További információ kiszolgálók a TrustedHosts listához való hozzáadásáról](#steps-to-add-servers-into-trustedhosts-list). </li><li> Az eszközt rendszergazdai jogosultságokkal kell futtatni a PowerShellből vagy az ügyfél parancssori konzoljáról.</ul></ul>|
 | Jelentéskészítés | 2013-as vagy újabb Microsoft Excellel rendelkező Windows PC vagy Windows Server |
 | Felhasználói engedélyek | Rendszergazdai fiók, amely hozzáférhet a Hyper-V-fürthöz/Hyper-V-gazdagéphez a virtuálisgép-lista lekérése és a profilkészítési műveletek során.<br>Az összes profillal ellátni kívánt gazdagépnek rendelkeznie kell egy tartományi rendszergazdai fiókkal, amelynek hitelesítő adatai, vagyis felhasználóneve és jelszava megegyezik
  |
@@ -110,7 +110,7 @@ Az eszköz Hyper-V esetén három fő fázisból áll: virtuálisgép-lista lek�
 Az eszköz .zip-mappába van csomagolva. Ugyanaz az eszköz támogatja a VMware – Azure és a Hyper-V – Azure vészhelyreállítási forgatókönyveket. Az eszközt Hyper-V – másodlagos hely vészhelyreállítási forgatókönyvekhez is használhatja, de hagyja figyelmen kívül a jelentés Azure-infrastruktúrára vonatkozó javaslatait.
 
 1.  Másolja a zip-fájlt azon Windows Serverre, ahol futtatni kívánja az eszközt. Az eszközt Windows Server 2012 R2 vagy Windows Server 2016 rendszeren futtathatja. A kiszolgáló számára hálózati hozzáférés szükséges a profillal ellátni kívánt virtuális gépeket tároló Hyper-V-fürthöz vagy Hyper-V-gazdagéphez való csatlakozáshoz. Javasoljuk, hogy a virtuális gép, ahol az eszközt futtatni kívánja és a Hyper-V-kiszolgáló, amely számára védelmet kíván biztosítani azonos hardverkonfigurációval rendelkezzen. Ez biztosítja, hogy az eszköz által jelentett elért átviteli sebesség megegyezik az Azure Site Recovery által replikáció közben elért tényleges átviteli sebességgel. Az átviteli sebesség kiszámítása a kiszolgálón elérhető hálózati sávszélességtől és a kiszolgáló hardverkonfigurációjától (processzor, tárterület stb.) függ. Az átviteli sebesség arról a kiszolgálóról lesz kiszámítva, ahol az eszköz fut az Azure-ra. Ha a kiszolgáló és a Hyper-V-kiszolgáló hardverkonfigurációja nem egyezik, az eszköz által jelentett elért átviteli sebesség nem lesz pontos.
-A virtuális gép ajánlott konfigurációja: 8 Vcpu, 16 GB RAM, 300 GB HDD.
+A virtuális gép ajánlott konfigurációja: 8 vCPU, 16 GB RAM, 300 GB HDD.
 
 1.  Csomagolja ki a .zip mappát.
 A mappa több fájlt és almappát tartalmaz. Az ASRDeploymentPlanner.exe futtatható fájl a szülőmappában található.
@@ -121,7 +121,7 @@ E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>Frissítés az üzembehelyezés-tervező a legújabb verzióra
 
-A legújabb frissítéseket foglalja össze a Deployment Planner [korábbi verziók](site-recovery-deployment-planner-history.md).
+A legújabb frissítéseket a Deployment Planner [korábbi verzióiban](site-recovery-deployment-planner-history.md)tekintjük össze.
 
 Ha az üzembehelyezés-tervező korábbi verziójával rendelkezik, tegye az alábbiak egyikét:
  * Ha a legújabb verzió nem tartalmaz profilkészítést érintő javítást, és a profilkészítés már folyamatban van a Planner aktuális verzióján, folytassa a profilkészítést.
@@ -135,8 +135,8 @@ Ha az üzembehelyezés-tervező korábbi verziójával rendelkezik, tegye az al�
   >Minden új Deployment Planner a .zip fájl összegző frissítését jelenti. Ezért nem kell a legújabb fájlokat a korábbi mappába másolnia. Létrehozhat és használhat egy új mappát is.
 
 ## <a name="version-history"></a>Verzióelőzmények
-A legújabb Azure Site Recovery Deployment Planner eszköz verziószáma 2.4.
-Tekintse meg [Azure Site Recovery Deployment Planner verzióelőzményeinek](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) oldal az egyes frissítésekben hozzáadott javításokról.
+A legújabb Azure Site Recovery Deployment Planner eszköz verziója 2,5.
+Tekintse meg az egyes frissítésekben hozzáadott javítások [Azure site Recovery Deployment Planner korábbi verziók](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) lapját.
 
 
 ## <a name="next-steps"></a>További lépések

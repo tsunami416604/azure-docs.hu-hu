@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 07/17/2019
+ms.date: 07/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: cbf642b47e4233cec2e2d860288b3bb35b419cf2
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 7bb775184a0d567fedf9da07cee60e5ba5a2097f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304169"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562377"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Adatok betöltése a Azure Data Lake Storageból a SQL Data Warehouseba
 Az adatok Azure Data Lake Storageból a Azure SQL Data Warehouseba való betöltéséhez használjon albase külső táblákat. Bár a Data Lake Storage tárolt adatain is futtathatók az ad hoc lekérdezések, javasoljuk, hogy az adatSQL Data Warehouse a legjobb teljesítmény érdekében importálja az adatkészletbe.
@@ -32,20 +32,16 @@ Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Mana
 
 Az oktatóanyag futtatásához a következőkre lesz szüksége:
 
-* Azure Active Directory alkalmazást a szolgáltatások közötti hitelesítéshez a Gen1-ból való betöltéskor. A létrehozásához kövesse az [Active Directory-hitelesítést](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
-
->[!NOTE] 
-> Ha Azure Data Lakei Gen1 tölti be a betöltést, szüksége lesz a Active Directory alkalmazás ügyfél-azonosító, kulcs és OAuth 2.0 jogkivonat-végponti értékére, hogy a SQL Data Warehouse a Storage-fiókjához kapcsolódjon. Ezeknek az értékeknek a megszerzésével kapcsolatos részletek a fenti hivatkozáson olvashatók. Azure Active Directory alkalmazás regisztrálásához használja az alkalmazás AZONOSÍTÓját ügyfél-AZONOSÍTÓként.
-> 
+* Azure Active Directory alkalmazást a szolgáltatások közötti hitelesítéshez. A létrehozásához kövesse az [Active Directory-hitelesítést](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
 
 * Egy Azure SQL Data Warehouse. Lásd: [Létrehozás és lekérdezés és Azure SQL Data Warehouse](create-data-warehouse-portal.md).
 
 * Egy Data Lake Storage-fiók. Lásd: [Azure Data Lake Storage első lépései](../data-lake-store/data-lake-store-get-started-portal.md). 
 
 ##  <a name="create-a-credential"></a>Hitelesítő adat létrehozása
-A Data Lake Storage-fiók eléréséhez létre kell hoznia egy adatbázis-főkulcsot a következő lépésben használt hitelesítő adatok titkosításához. Ezután létrehoz egy adatbázis-hatókörű hitelesítő adatot. A Gen1 esetében az adatbázis-hatókörrel rendelkező hitelesítő adatok az HRE-ben beállított egyszerű szolgáltatás hitelesítő adatait tárolják. A Storage-fiók kulcsát a Gen2 adatbázis-hatókörű hitelesítő adataiban kell használni. 
+A Data Lake Storage-fiók eléréséhez létre kell hoznia egy adatbázis-főkulcsot a következő lépésben használt hitelesítő adatok titkosításához. Ezután létrehoz egy adatbázis-hatókörű hitelesítő adatot. Az egyszerű szolgáltatásokkal végzett hitelesítés során az adatbázis-hatókörrel rendelkező hitelesítő adatok a HRE-ben beállított egyszerű szolgáltatás hitelesítő adatait tárolják. A Storage-fiók kulcsát a Gen2 adatbázis-hatókörű hitelesítő adatainál is használhatja. 
 
-Data Lake Storage Gen1hoz való kapcsolódáshoz **először** létre kell hoznia egy Azure Active Directory alkalmazást, létre kell hoznia egy hozzáférési kulcsot, és biztosítania kell az alkalmazás számára a Data Lake Storage Gen1 erőforrás elérését. Útmutatásért lásd: [hitelesítés a Azure Data Lake Storage Gen1 Active Directory használatával](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+Ha az egyszerű szolgáltatásokkal szeretne csatlakozni Data Lake Storagehoz, **először** létre kell hoznia egy Azure Active Directory alkalmazást, létre kell hoznia egy hozzáférési kulcsot, és biztosítania kell az alkalmazás számára a Data Lake Storage-fiók elérését. Útmutatásért lásd: [hitelesítés a Azure Data Lake Storage Active Directory használatával](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
 ```sql
 -- A: Create a Database Master Key.
@@ -56,7 +52,7 @@ Data Lake Storage Gen1hoz való kapcsolódáshoz **először** létre kell hozni
 CREATE MASTER KEY;
 
 
--- B (for Gen1): Create a database scoped credential
+-- B (for service principal authentication): Create a database scoped credential
 -- IDENTITY: Pass the client id and OAuth 2.0 Token Endpoint taken from your Azure Active Directory Application
 -- SECRET: Provide your AAD Application Service Principal key.
 -- For more information on Create Database Scoped Credential: https://msdn.microsoft.com/library/mt270260.aspx
@@ -67,7 +63,7 @@ WITH
     SECRET = '<key>'
 ;
 
--- B (for Gen2): Create a database scoped credential
+-- B (for Gen2 storage key authentication): Create a database scoped credential
 -- IDENTITY: Provide any string, it is not used for authentication to Azure storage.
 -- SECRET: Provide your Azure storage account key.
 
@@ -77,7 +73,7 @@ WITH
     SECRET = '<azure_storage_account_key>'
 ;
 
--- It should look something like this for Gen1:
+-- It should look something like this when authenticating using service principals:
 CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
     IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
@@ -109,7 +105,7 @@ WITH (
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStorage
 WITH (
     TYPE = HADOOP,
-    LOCATION='abfss://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfs endpoint
+    LOCATION='abfs[s]://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfss endpoint for when your account has secure transfer enabled
     CREDENTIAL = ADLSCredential
 );
 ```
@@ -221,13 +217,9 @@ A következőket hajtotta végre:
 > * A Data Lake Storage Gen1ból való betöltéshez szükséges adatbázis-objektumok létrehozása.
 > * Egy Data Lake Storage Gen1 könyvtárhoz csatlakozik.
 > * A rendszer betöltötte az adatAzure SQL Data Warehouse.
-> 
+>
 
 Az adatraktár-megoldások betöltésének első lépése a SQL Data Warehouse használatával történő adattárház-megoldás fejlesztése. Tekintse meg fejlesztési erőforrásait.
 
 > [!div class="nextstepaction"]
->[Ismerje meg, hogyan fejleszthet táblázatok SQL Data Warehouse](sql-data-warehouse-tables-overview.md)
-
-
-
-
+> [Ismerje meg, hogyan fejleszthet táblázatok SQL Data Warehouse](sql-data-warehouse-tables-overview.md)

@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: afc8dbfa0bc1b1ad37e5f1a0f290c42998ed1e4b
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68479709"
 ---
 # <a name="connection-strings-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehousehoz tartozó kapcsolatok karakterláncai
-A SQL Data Warehousehoz több különböző alkalmazás-protokoll, például a, a [ADO.net][ADO.NET], [ODBC][ODBC], a [php][php] és a [JDBC][JDBC]is csatlakozhat. Az alábbiakban néhány példát láthat a kapcsolatok sztringre az egyes protokollokhoz.  A Azure Portal használatával is létrehozhatja a kapcsolódási karakterláncot.  Ha a kapcsolati karakterláncot a Azure Portal használatával szeretné felépíteni, navigáljon az adatbázis panelre az *alapvető* erőforrások területen kattintson az *adatbázis-kapcsolati karakterláncok megjelenítése*elemre.
+A SQL Data Warehousehoz több különböző alkalmazás-protokoll, például a, a [ADO.net][ADO.NET], az [ODBC][ODBC], a [php][PHP] és a [JDBC][JDBC]is csatlakozhat. Az alábbiakban néhány példát láthat a kapcsolatok sztringre az egyes protokollokhoz.  A Azure Portal használatával is létrehozhatja a kapcsolódási karakterláncot.  Ha a kapcsolati karakterláncot a Azure Portal használatával szeretné felépíteni, navigáljon az adatbázis panelre az *alapvető* erőforrások területen kattintson az *adatbázis-kapcsolati karakterláncok megjelenítése*elemre.
 
 ## <a name="sample-adonet-connection-string"></a>Minta ADO.NET-kapcsolatok karakterlánca
 ```csharp

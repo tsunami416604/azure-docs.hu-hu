@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa2254ff3223be4312f4e9b3db4d9d83da443c0
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 182b9da402e633033411f85eb59b31f76749f3cd
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311332"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666254"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Felhőalapú Azure multi-Factor Authentication üzembe helyezésének megtervezése
 
@@ -52,12 +52,12 @@ Az Azure multi-Factor Authentication üzembe helyezése a szabályzatok feltéte
 
 * Minden felhasználó, egy adott felhasználó, egy csoport tagja vagy hozzárendelt szerepkör
 * Az adott felhőalapú alkalmazás elérése folyamatban van
-* Eszköz platformja
+* Eszközplatform
 * Eszköz állapota
 * Hálózati hely vagy földrajzi elhelyezkedésű IP-cím
 * Ügyfélalkalmazások
 * Bejelentkezési kockázat (Identity Protection szükséges)
-* Megfelelő eszköz
+* Szabályzatnak megfelelő eszköz
 * Hibrid Azure AD-hez csatlakoztatott eszköz
 * Jóváhagyott ügyfélalkalmazás
 
@@ -70,9 +70,9 @@ A feltételes hozzáférési szabályzatok betartják a regisztrációt, így a 
 A [Azure ad Identity Protection](../identity-protection/howto-configure-risk-policies.md) a regisztrációs házirendet és az automatizált kockázatkezelési és szervizelési szabályzatokat is hozzájárul az Azure multi-Factor Authentication-történethez. A szabályzatok úgy hozhatók létre, hogy kényszerítsék a jelszó megváltoztatását, ha fennáll a veszélye a sérült identitásnak, vagy ha a bejelentkezés a következő [események](../reports-monitoring/concept-risk-events.md)kockázatának minősül:
 
 * Kiszivárgott hitelesítő adatok
-* Bejelentkezések névtelen IP-címről
+* Névtelen IP-címről történő bejelentkezések
 * Bejelentkezés szokatlan helyekről
-* Bejelentkezések ismeretlen helyekről
+* Ismeretlen helyekről történt bejelentkezések
 * Bejelentkezések fertőzött eszközökről
 * Gyanús tevékenységeket folytató IP-címekről érkező bejelentkezések
 
@@ -95,29 +95,29 @@ Azt javasoljuk, hogy a szervezetek a feltételes hozzáférés használatával d
       2. IP-címtartományok megadása
    2. Országok/régiók használata esetén
       1. Bontsa ki a legördülő menüt, és válassza ki azokat az országokat vagy régiókat, amelyeket meg szeretne határozni ehhez a megnevezett helyhez.
-      2. Döntse el, hogy az ismeretlen területeket is tartalmazza-e. Az ismeretlen területek olyan IP-címek, amelyek nem képezhetők le országra/régióra.
+      2. Döntse el, hogy az ismeretlen területeket is tartalmazza-e. Az ismeretlen területek olyan IP-címek, melyeket nem lehet országhoz/régióhoz hozzárendelni.
 7. Kattintson a **Létrehozás** gombra.
 
 ## <a name="plan-authentication-methods"></a>Hitelesítési módszerek megtervezése
 
 A rendszergazdák kiválaszthatják a felhasználók számára elérhetővé tenni kívánt [hitelesítési módszereket](../authentication/concept-authentication-methods.md) . Fontos, hogy egynél több hitelesítési módszert engedélyezzen, hogy a felhasználók számára elérhető legyen egy biztonsági mentési módszer, ha az elsődleges metódus nem érhető el. A rendszergazdák a következő módszerekkel engedélyezhetők:
 
-### <a name="notification-through-mobile-app"></a>Értesítés a Mobile App használatával
+### <a name="notification-through-mobile-app"></a>Értesítés mobilalkalmazáson keresztül
 
 A rendszer leküldéses értesítést küld a mobileszköz Microsoft Authenticator alkalmazásának. A felhasználó megtekinti az értesítést, és kiválasztja a **jóváhagyás** lehetőséget az ellenőrzés befejezéséhez. A mobil alkalmazások leküldéses értesítései biztosítják a legkevésbé zavaró lehetőséget a felhasználók számára. Emellett a legmegbízhatóbb és biztonságos megoldás is, mivel a telefonos szolgáltatás helyett adatkapcsolatokat használnak.
 
 > [!NOTE]
 > Ha a szervezete Kínában dolgozik vagy Kínába utazik, az **Android** -eszközökön a **Mobile App metóduson keresztül küldött értesítés** nem működik az adott országban. Ezeket a felhasználókat alternatív módszereket kell elérhetővé tenni.
 
-### <a name="verification-code-from-mobile-app"></a>Ellenőrző kód a Mobile appből
+### <a name="verification-code-from-mobile-app"></a>Mobilalkalmazás ellenőrzőkódja
 
 Egy mobil alkalmazás, például a Microsoft Authenticator alkalmazás, 30 másodpercenként létrehoz egy új eskü-ellenőrző kódot. A felhasználó beírja az ellenőrző kódot a bejelentkezési felületre. A Mobile App (mobil alkalmazás) beállítással megadható, hogy a telefon tartalmaz-e adattípust vagy mobil jelet.
 
-### <a name="call-to-phone"></a>Telefonos hívás
+### <a name="call-to-phone"></a>Megadott telefonszám hívása
 
 A rendszer automatikusan hanghívást helyez el a felhasználó felé. A felhasználó megválaszolja a hívást, **#** és megnyomja a telefon billentyűzetén a hitelesítés jóváhagyásához. A telefon hívása nagyszerű biztonsági mentési módszer a mobil alkalmazások értesítési vagy ellenőrzési kódjához.
 
-### <a name="text-message-to-phone"></a>SMS-üzenet a telefonra
+### <a name="text-message-to-phone"></a>SMS küldése megadott telefonszámra
 
 Egy ellenőrző kódot tartalmazó szöveges üzenetet küld a rendszer a felhasználónak, és megkéri a felhasználót, hogy adja meg az ellenőrző kódot a bejelentkezési felületen.
 
@@ -300,7 +300,7 @@ Ha van üzembe helyezett NPS-példány, és már használatban van, az [Azure mu
 
 Válassza ki, hogy mi történjen, ha az MFA-ban nem regisztrált felhasználók hitelesítése történik meg. A szolgáltatás működésének `REQUIRE_USER_MATCH` vezérléséhez használja a `HKLM\Software\Microsoft\AzureMFA` beállításjegyzékbeli elérési út beállításjegyzékbeli beállítását. Ez a beállítás egyetlen konfigurációs lehetőséggel rendelkezik.
 
-| Kulcs | Érték | Alapértelmezett |
+| Kulcs | Value | Alapértelmezett |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | IGAZ/HAMIS | Nincs beállítva (megegyezik az igaz értékkel) |
 
@@ -360,6 +360,9 @@ Most, hogy megtervezte a megoldást, az alábbi lépésekkel végezheti el a meg
    1. [Identitás-védelemmel](../identity-protection/howto-mfa-policy.md)
 1. Felhasználói kommunikáció küldése és a felhasználók beléptetése[https://aka.ms/mfasetup](https://aka.ms/mfasetup)
 1. [A regisztrált felhasználók nyomon követése](#identify-non-registered-users)
+
+> [!TIP]
+> A kormányzati felhő felhasználói regisztrálhatnak[https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
 
 ## <a name="manage-your-solution"></a>A megoldás kezelése
 

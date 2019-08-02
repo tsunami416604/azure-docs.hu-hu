@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ad17f4c4d338e1d0b8118c1a172e0aaad7118e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: eb5f322d8bc974274f7f2da7811b124499224635
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489105"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678133"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management-preview"></a>Kérelmek feldolgozása és e-mail-értesítések az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -47,7 +47,7 @@ Egy hozzáférési csomaghoz hozzáféréssel rendelkező felhasználónak hozz�
 | Elévült | Ha egyetlen jóváhagyó sem hagyja jóvá a kérést a jóváhagyási kérelem időkorlátján belül, a kérelem lejár. Ha újra próbálkozik, a felhasználónak újra el kell küldenie a kérést. |
 | Elutasítva | A jóváhagyó megtagadja a kérelmet. |
 | Jóváhagyva | A jóváhagyó jóváhagyja a kérelmet. |
-| Kézbesítés | A felhasználó **nem** rendelt hozzá hozzáférést a hozzáférési csomag összes erőforrásához. Ha ez egy külső felhasználó, a felhasználó még nem fér hozzá az erőforrás-címtárhoz, és elfogadta az engedélyek kérését. |
+| Kézbesítés | A felhasználó **nem** rendelt hozzá hozzáférést a hozzáférési csomag összes erőforrásához. Ha ez egy külső felhasználó, akkor előfordulhat, hogy a felhasználó még nem fér hozzá az erőforrás-címtárhoz, és elfogadta a hozzájárulási kérést. |
 | Kézbesítve | A felhasználó hozzá lett rendelve a hozzáférési csomag összes erőforrásához. |
 | Hozzáférés kiterjesztve | Ha a házirendben engedélyezve vannak a bővítmények, a felhasználó kibővítette a hozzárendelést. |
 | A hozzáférés lejárt | A felhasználó hozzáférési csomaghoz való hozzáférése lejárt. Ha újra szeretné elérni a hozzáférést, a felhasználónak el kell küldenie egy kérést. |

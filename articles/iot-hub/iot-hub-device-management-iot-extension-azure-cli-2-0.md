@@ -1,69 +1,72 @@
 ---
-title: Az Azure IoT-Eszközfelügyelet az IoT-bővítmény az Azure CLI-vel |} A Microsoft Docs
-description: Az IoT-bővítmény használata az Azure CLI-vel eszközök Azure IoT Hub eszközfelügyeleti közvetlen módszerek és lehetőségek az Ikereszköz kívánt tulajdonságait.
+title: Azure IoT-eszközkezelés az Azure CLI-hez készült IoT-bővítménnyel | Microsoft Docs
+description: Használja a IoT bővítményt az Azure CLI-eszközhöz az Azure IoT Hub-eszközök felügyeletéhez, amely a közvetlen metódusokat és a Twin kívánt tulajdonságok kezelési lehetőségeit is megadja.
 author: chrissie926
 manager: ''
-keywords: az Azure iot-Eszközfelügyelet, az azure iot hub-Eszközfelügyelet, eszközök kezelése iot, iot hub-Eszközfelügyelet
+keywords: Azure IOT-eszközkezelés, Azure IOT hub-eszközkezelés, eszközkezelés IOT, IOT hub-eszközkezelés
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 6b1029c5532e106c269b47e6e184b9c93faf8d09
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 93efd6e53470fb78bb6d823652437e7a37c33732
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399623"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640575"
 ---
-# <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Azure CLI az Azure IoT Hub-Eszközfelügyelet az IoT-bővítmény használata
+# <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Az Azure CLI-hez készült IoT-bővítmény használata az Azure IoT Hub-eszközök felügyeletéhez
 
 ![Végpontok közötti diagram](media/iot-hub-get-started-e2e-diagram/2.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Az Azure CLI-vel az IoT-bővítmény](https://github.com/Azure/azure-iot-cli-extension) egy új nyílt forráskódú IoT-bővítmény, amely hozzáadja a képességeit a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). Az Azure CLI Azure resource manager és a felügyeleti végpontok folytatott interakcióra szolgáló parancsokat is tartalmaz. Ha például az Azure CLI használatával hozzon létre egy Azure virtuális Gépen vagy egy IoT hubot. A CLI-bővítmény lehetővé teszi, hogy az Azure-szolgáltatások révén az Azure CLI-vel így további szolgáltatásspecifikus funkciókat elérhetővé. Az IoT-bővítmény hozzáférést IoT fejlesztői parancssor minden IoT Hub, IoT Edge és IoT Hub Device Provisioning Service-képességeket.
+[Az Azure CLI-hez készült IoT-bővítmény](https://github.com/Azure/azure-iot-cli-extension) egy új, nyílt forráskódú IoT-bővítmény, amely az [Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest)képességeihez járul hozzá. Az Azure CLI a Azure Resource Manager és a felügyeleti végpontokkal való interakcióra szolgáló parancsokat tartalmaz. Használhatja például az Azure CLI-t egy Azure-beli virtuális gép vagy egy IoT hub létrehozásához. A CLI-bővítmény lehetővé teszi, hogy egy Azure-szolgáltatás kibővítse az Azure CLI-t, így további szolgáltatás-specifikus funkciókhoz férhet hozzá. Az IoT bővítmény a IoT-fejlesztők számára biztosít parancssori hozzáférést az összes IoT Hub, IoT Edge és IoT Hub Device Provisioning Service képességhez.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Lehetőséget          | Tevékenység  |
+| Felügyeleti lehetőség          | Tevékenység  |
 |----------------------------|-----------|
-| Közvetlen metódusok             | Hogy egy eszköz, például indítása vagy leállítása üzeneteket küldjenek vagy az eszköz újraindítása jár el.                                        |
-| Ikereszköz kívánt tulajdonságait    | Egy eszköz egyes állapotok, például a LED zöld vagy a telemetriai adatok küldési időköz – 30 percet kell helyezni.         |
-| Ikereszköz jelentett tulajdonságait   | Az eszköz a jelentett állapot beolvasása. Például az eszköz jelenti a LED most villogó-e.                                    |
-| Ikereszköz – címkék                  | Store eszközspecifikus metaadatokat a felhőben. Például a központi telepítési helye a Eladóautomata.                         |
-| Ikereszköz-lekérdezések        | A lekérdezés összes ikereszközök beolvasni a tetszőleges feltételek, például a használható eszközök azonosítása. |
+| Közvetlen metódusok             | Hajtson végre olyan eszközt, amely elindítja vagy leállítja az üzenetek küldését vagy az eszköz újraindítását.                                        |
+| Twin kívánt tulajdonságok    | Helyezzen egy eszközt bizonyos állapotba, például állítsa be a LED-et zöldre, vagy állítsa a telemetria küldési intervallumát 30 percre.         |
+| Twin jelentett tulajdonságok   | Egy eszköz jelentett állapotának beolvasása. Az eszköz például azt jelenti, hogy a LED azonnal villog.                                    |
+| Dupla Címkék                  | Az eszközre jellemző metaadatok tárolása a felhőben. Például egy árusító gép üzembe helyezési helye.                         |
+| Eszközök kettős lekérdezései        | Az összes eszköz összes ikrek általi lekérdezése tetszőleges feltételekkel, például a rendelkezésre álló eszközök azonosításával. |
 
-A különbségek ismertetése és útmutató az ezek a beállítások használatával, lásd: [eszközről a felhőbe való kommunikáció útmutatást](iot-hub-devguide-d2c-guidance.md) és [felhőből az eszközre irányuló kommunikáció útmutatást](iot-hub-devguide-c2d-guidance.md).
+További információ az ilyen beállításokkal kapcsolatos különbségekről és útmutatásról: az eszközről a felhőbe irányuló [kommunikációs útmutató](iot-hub-devguide-d2c-guidance.md) és a [felhőből az eszközre irányuló kommunikációs útmutató](iot-hub-devguide-c2d-guidance.md).
 
-Az ikereszközök JSON-dokumentumok, amelyek az eszközök állapotinformációit (metaadatokat, konfigurációkat és állapotokat) tárolják. Az IoT Hub továbbra is fennáll, az eszközök ikereszköze a minden eszközön, amelyhez kapcsolódik hozzá. Ikereszközök kapcsolatos további információkért lásd: [ikereszközök – első lépések](iot-hub-node-node-twin-getstarted.md).
+Az ikereszközök JSON-dokumentumok, amelyek az eszközök állapotinformációit (metaadatokat, konfigurációkat és állapotokat) tárolják. A IoT Hub minden olyan eszközön megtartja a különálló eszközt, amely csatlakozik hozzá. További információ az eszközök Twins-ról: Ismerkedés [az eszközök ikrekkel](iot-hub-node-node-twin-getstarted.md).
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
-Megismerheti az Azure CLI használata az IoT-bővítmény különböző lehetőségek a fejlesztői gépen.
+Megtudhatja, hogyan használhatja az Azure CLI-hez készült IoT-bővítményt különböző felügyeleti lehetőségekkel a fejlesztői gépen.
 
-## <a name="what-you-do"></a>TEENDŐ
+## <a name="what-you-do"></a>Teendők
 
-Azure CLI és az IoT-bővítmény futtatása Azure CLI-hez a különböző felügyeleti lehetőségek.
+Futtassa az Azure CLI-t és a IoT-bővítményt az Azure CLI-hez különböző felügyeleti lehetőségekkel.
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-* Végezze el a [Raspberry Pi online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md) oktatóanyag vagy az eszköz oktatóanyagokban; például [Raspberry Pi és node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Ez érvényes a következő követelményeknek:
+* Fejezze be a [málna PI online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md) oktatóanyagát vagy az eszköz egyik oktatóanyagát; például: [málna PI és Node. js](iot-hub-raspberry-pi-kit-node-get-started.md). Ezek az elemek a következő követelményeket fedik le:
 
   - Aktív Azure-előfizetés.
-  - Az Azure IoT hub az előfizetéséhez.
-  - Egy ügyfélalkalmazás, amely üzeneteket küld az Azure IoT hub.
+  - Az előfizetéshez tartozó Azure IoT hub.
+  - Egy ügyfélalkalmazás, amely üzeneteket küld az Azure IoT hub-nak.
 
-* Győződjön meg arról, hogy az eszköz fut az ügyfélalkalmazásban, ez az oktatóanyag során.
+* Az oktatóanyag során győződjön meg arról, hogy az eszközön fut az ügyfélalkalmazás.
 
 * [Python 2.7x vagy Python 3.x](https://www.python.org/downloads/)
 
-* Az Azure parancssori felület. Ha szeretné telepíteni, tekintse meg [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Legalább az Azure CLI 2.0.24-es verzióját kell vagy újabb. A verziószámot az `az –version` paranccsal ellenőrizheti. 
+<!-- I'm not sure we need all this info, so comment out this include for now. Robin 7.26.2019
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)] -->
 
-* Az IoT-bővítmény telepítése. A legegyszerűbb módszer az `az extension add --name azure-cli-iot-ext` futtatása. [Az IoT-bővítmény fontos (readme) fájlja](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) több módszert is ismertet a bővítmény telepítésére.
+* Az Azure CLI-vel. Ha telepítenie kell, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)ismertető témakört. Legalább az Azure CLI 2.0.24-es verzióját kell vagy újabb. A verziószámot az `az –version` paranccsal ellenőrizheti.
 
-## <a name="log-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjába.
+* Telepítse a IoT bővítményt. A legegyszerűbb módszer az `az extension add --name azure-cli-iot-ext` futtatása. [Az IoT-bővítmény fontos (readme) fájlja](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) több módszert is ismertet a bővítmény telepítésére.
+
+## <a name="sign-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjába
 
 Jelentkezzen be az Azure-fiókjába a következő parancs futtatásával:
 
@@ -80,36 +83,36 @@ az iot hub invoke-device-method --device-id <your device id> \
   --method-payload <the method payload>
 ```
 
-## <a name="device-twin-desired-properties"></a>Ikereszköz kívánt tulajdonságait
+## <a name="device-twin-desired-properties"></a>Eszköz Twin kívánt tulajdonságai
 
-Állítsa be a kívánt tulajdonság időköz = 3000 a következő parancs futtatásával:
+A következő parancs futtatásával állítsa be a kívánt tulajdonság intervallumát = 3000:
 
 ```bash
 az iot hub device-twin update -n <your hub name> \
   -d <your device id> --set properties.desired.interval = 3000
 ```
 
-Ez a tulajdonság elolvashatja az eszközről.
+Ez a tulajdonság olvasható az eszközről.
 
-## <a name="device-twin-reported-properties"></a>Ikereszköz jelentett tulajdonságait
+## <a name="device-twin-reported-properties"></a>Eszköz kettős jelentett tulajdonságai
 
-Az eszköz a jelentett tulajdonságok beolvasása a következő parancs futtatásával:
+A következő parancs futtatásával szerezze be az eszköz jelentett tulajdonságait:
 
 ```bash
 az iot hub device-twin show -n <your hub name> -d <your device id>
 ```
 
-Az egyik az ikereszköz jelentett tulajdonságok $metadata. amely megjeleníti a legutóbbi alkalommal az eszközalkalmazás $lastUpdated frissítve a jelentett tulajdonságok beállítása.
+Az egyik két jelentett tulajdonság $metadata. $lastUpdated, amely azt mutatja, hogy az eszköz Mikor frissítette a jelentett tulajdonságot.
 
-## <a name="device-twin-tags"></a>Device twin címkék
+## <a name="device-twin-tags"></a>Eszköz – Twin Címkék
 
-Megjeleníti a címkék és tulajdonságok az eszköz a következő parancs futtatásával:
+Jelenítse meg az eszköz címkéit és tulajdonságait a következő parancs futtatásával:
 
 ```bash
 az iot hub device-twin show --hub-name <your hub name> --device-id <your device id>
 ```
 
-Adjon hozzá egy mezőt szerepkör = hőmérsékleti és páratartalom az eszközön a következő parancs futtatásával:
+A következő parancs futtatásával vegyen fel egy Field role = hőmérséklet & páratartalmat az eszközre:
 
 ```bash
 az iot hub device-twin update \
@@ -118,16 +121,16 @@ az iot hub device-twin update \
   --set tags = '{"role":"temperature&humidity"}}'
 ```
 
-## <a name="device-twin-queries"></a>Ikereszköz-lekérdezések
+## <a name="device-twin-queries"></a>Eszközök kettős lekérdezései
 
-Eszközök a szerepkör címkével ellátott lekérdezése = 'hőmérsékleti és páratartalom' a következő parancs futtatásával:
+A következő parancs futtatásával kérdezheti le az eszközöket a role = "hőmérséklet & nedvességtartalma" címkével:
 
 ```bash
 az iot hub query --hub-name <your hub name> \
   --query-command "SELECT * FROM devices WHERE tags.role = 'temperature&humidity'"
 ```
 
-Minden eszköz, kivéve azokat, egy szerepkör lekérdezése = 'hőmérsékleti és páratartalom' a következő parancs futtatásával:
+A következő parancs futtatásával lekérdezheti az összes eszközt, kivéve a role = "hőmérséklet & nedvességtartalma" címkével rendelkezőket:
 
 ```bash
 az iot hub query --hub-name <your hub name> \
@@ -136,6 +139,6 @@ az iot hub query --hub-name <your hub name> \
 
 ## <a name="next-steps"></a>További lépések
 
-Bemutattuk, hogyan lehet az eszköz a felhőbe irányuló üzenetek figyeléséhez és a felhőből az eszközre irányuló üzenetküldés az IoT-eszköz és az Azure IoT Hub között.
+Megtanulta, hogyan figyelheti az eszközről a felhőbe irányuló üzeneteket, és hogyan küldhet a felhőből az eszközre irányuló üzeneteket a IoT-eszköz és az Azure IoT Hub között.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

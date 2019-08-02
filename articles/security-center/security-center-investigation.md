@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 55def52d248babd439227cdcd4170c0a3ca91bb1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 476bdd50a56b953585a8a4e9cea05975c9922e0f
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64569824"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662956"
 ---
-# <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Incidensek és riasztások vizsgálata az Azure Security Centerben (előzetes verzió)
-Ez a dokumentum segítséget nyújt a biztonsági incidensek és riasztások vizsgálatához az Azure Security Center vizsgálati funkciójának használatával.
+# <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>Incidensek és riasztások vizsgálata Azure Security Center (kivont)
+Ez a dokumentum segítséget nyújt a Azure Security Center vizsgálati funkciójának (előzetes verzió) használatában a biztonsági incidensek és riasztások kivizsgálásához.
 
 > [!NOTE]
-> A riasztások és incidensek hibavizsgálati felület a 2019. július 31-én megszűnik. További információkat és más szolgáltatások: [a Security Center nyugdíjazási szolgáltatásokat (július 2019)](security-center-features-retirement-july2019.md#menu_investigate).
+> A riasztások és incidensek vizsgálatának (előzetes verzió) élményét a 2019. július 31-én kivonták. További információ és alternatív szolgáltatások: [Security Center szolgáltatások kivonása (július 2019)](security-center-features-retirement-july2019.md#menu_investigate).
 
 ## <a name="what-is-investigation-in-security-center"></a>Mit jelent a vizsgálat a Security Centerben?
 A Security Center Vizsgálat szolgáltatásával osztályozhatja a potenciális [biztonsági incidenseket](https://docs.microsoft.com/azure/security-center/security-center-incident), feltérképezheti a hatókörüket, és azonosíthatja a kiváltó okokat.
@@ -34,8 +34,8 @@ A szolgáltatás célja, hogy megkönnyítse a vizsgálati eljárást a vizsgál
 
 
 > [!NOTE]
-> * [Egyéni riasztások](security-center-custom-alert.md) a Security Center vizsgálati funkciójáról nem támogatottak.
-> * Vizsgálat csak a támogatott Windows kiszolgálókról összegyűjtött adatokon alapuló riasztások.
+> * Security Center vizsgálati funkciója nem támogatja az [Egyéni riasztásokat](security-center-custom-alert.md) .
+> * A vizsgálat csak a Windows-kiszolgálókról összegyűjtött adatokon alapuló riasztások esetén támogatott.
 
 
 ## <a name="how-investigation-works"></a>A vizsgálat működése
@@ -71,13 +71,13 @@ A **Keresés** lapon az entitáshoz elérhető naplótípusok jelennek meg. Mind
 
 ![Keresés](./media/security-center-investigation/security-center-investigation-fig5.png)
 
-### <a name="exploration"></a>Feltárás
+### <a name="exploration"></a>Áttekintés
 
 A **Feltárás** lapon a vizsgáló az entitáshoz kapcsolódó különféle hibákra vonatkozó adatokat vizsgálhatja meg. Például egy gép vizsgálatakor a rajta végrehajtott folyamatok listája jelenik meg a Feltárás lapon. Bizonyos esetekben a Feltárás lapon megjelenő adatok esetleg gyanús hibákat jelezhetnek. A vizsgáló megvizsgálhatja az adatokat a lapon, vagy megnyithatja őket a keresési képernyőn a nagyobb adatkészletek vizsgálatához, illetve a speciális keresési beállítások, például a szűrés és az Excelbe való exportálás használatához.
 
-![Feltárás](./media/security-center-investigation/security-center-investigation-fig6.png)
+![Áttekintés](./media/security-center-investigation/security-center-investigation-fig6.png)
 
-### <a name="timeline"></a>Idővonal
+### <a name="timeline"></a>Idősor
 
 A gráfon és a különféle füleken megjelenő adatok zöme egy adott időszakra vonatkozik. Az időszak az időszakválasztón állítható be a gráf bal oldalán. Különféle módszerek állnak a vizsgáló rendelkezésére az időszak kiválasztásához.
 
@@ -99,7 +99,7 @@ Az alábbi elemek megjelenítése a kiválasztott időszaktól független:
 
 ## <a name="how-to-perform-an-investigation"></a>Vizsgálat végrehajtása
 
-A vizsgálatok biztonsági incidensből vagy riasztásból indíthatók, attól függően, hogy mi felel meg jobban az igényeinek. A következő lépéseket egy vizsgálat indítása riasztásból használhatók:
+A vizsgálatok biztonsági incidensből vagy riasztásból indíthatók, attól függően, hogy mi felel meg jobban az igényeinek. Az alábbi lépések a riasztások vizsgálatának elindítására szolgálnak:
 
 1.  Nyissa meg a **Security Center** irányítópultját.
 2.  Kattintson a **Biztonsági riasztások** gombra, és válassza ki a kivizsgálni kívánt incidenst.

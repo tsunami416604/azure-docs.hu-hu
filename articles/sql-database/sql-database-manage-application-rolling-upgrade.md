@@ -1,6 +1,6 @@
 ---
-title: Működés közbeni alkalmazásfrissítések – Azure SQL Database |} A Microsoft Docs
-description: Ismerje meg, hogyan használhatja az Azure SQL Database georeplikációja támogatási online frissítéseket a felhőalapú alkalmazások.
+title: Alkalmazások működés közbeni frissítései – Azure SQL Database | Microsoft Docs
+description: Ismerje meg, hogyan használhatja a Azure SQL Database geo-replikációt a felhőalapú alkalmazás online frissítéseinek támogatásához.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,99 +10,98 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 47fd6c1e2bb342bc1a31fb16a45a5ebc749dca69
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55b23b8d8e03a79aa0806a68306017f89c747760
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60702616"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567781"
 ---
-# <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>SQL-adatbázis aktív georeplikáció használatával kezelheti a felhőalapú alkalmazások működés közbeni frissítése
+# <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Felhőalapú alkalmazások működés közbeni frissítésének kezelése SQL Database aktív földrajzi replikálás használatával
 
-Ismerje meg, hogyan használható [aktív georeplikáció](sql-database-auto-failover-group.md) ahhoz, hogy a felhőalapú alkalmazások működés közbeni frissítése az Azure SQL Database-ben. Mivel a frissítések zavart okozó operations, akkor a folyamatos üzletmenet – tervezési és kialakítási részének kell lennie. Ebben a cikkben azt tekintse meg a frissítési folyamat replikálásával segít a vállalatnak két eltérő módszert és beszélgetés előnyeiről és hátrányairól az egyes lehetőségek. Ez a cikk célja hogy tekintse meg egy alkalmazás, amely egy webhely, amely csatlakozik egy önálló adatbázis, mint az adatréteg áll. Az alkalmazás 2-es verziójú (V2) anélkül, hogy a felhasználói élmény jelentős hatással az célunk, hogy frissítése (V1) 1-es verzió.
+Ismerje meg, hogyan használhatja az [aktív földrajzi replikálást](sql-database-auto-failover-group.md) Azure SQL Database a felhőalapú alkalmazások működés közbeni frissítésének engedélyezéséhez. Mivel a frissítések zavaró műveletek, az üzleti folytonosság megtervezésének és kialakításának részét kell képezniük. Ebben a cikkben két különböző módszert vizsgálunk a frissítési folyamat előkészítéséhez és az egyes lehetőségek előnyeinek és kompromisszumának megvitatásához. Ebben a cikkben egy olyan alkalmazásra hivatkozunk, amely egy olyan webhelyből áll, amely egyetlen adatbázishoz van csatlakoztatva adatrétegként. Célunk, hogy a felhasználói élmény jelentős hatása nélkül frissítse az alkalmazás 1. verzióját (v1) a 2-es verzióra (v2).
 
-Ha kipróbálja a frissítési beállítások, vegye figyelembe a következőket:
+A frissítési lehetőségek kiértékelése során vegye figyelembe a következő tényezőket:
 
-* A művelet hatása rendszerre, például hogy mennyi ideig alkalmazás funkciók előfordulhat, hogy korlátozott vagy csökkentett teljesítményű rendelkezésre állását.
-* Lehetővé teszi állítja vissza, ha a frissítés sikertelen lesz.
-* Biztonsági rés az alkalmazás, hogy egy független, Katasztrofális hiba esetén a frissítés során.
-* Teljes dollár költsége. Ez magában foglalja a további adatbázis-redundancia és a frissítési folyamat által használt ideiglenes összetevőket a növekményes költségekkel.
+* Az alkalmazások rendelkezésre állásának befolyásolása a verziófrissítések során, például hogy az alkalmazás-függvények meddig korlátozhatók vagy csökkenhetnek.
+* Visszaállítási lehetőség, ha a frissítés sikertelen.
+* Az alkalmazás biztonsági rése, ha nem kapcsolódó, katasztrofális hiba történik a frissítés során.
+* Teljes dollár díj. Ez a tényező további adatbázis-redundanciát és a frissítési folyamat által használt ideiglenes összetevők növekményes költségeit tartalmazza.
 
-## <a name="upgrade-applications-that-rely-on-database-backups-for-disaster-recovery"></a>A vész-helyreállítási adatbázis biztonsági mentését használó alkalmazások frissítése
+## <a name="upgrade-applications-that-rely-on-database-backups-for-disaster-recovery"></a>A vész-helyreállítási adatbázis biztonsági mentésére támaszkodó alkalmazások frissítése
 
-Ha az alkalmazás az adatbázis automatikus biztonsági mentések támaszkodik, és a vész-helyreállítási geo-visszaállítás használ, egyetlen Azure-régióban üzemel. Felhasználói leskálázáskor, hozzon létre egy átmeneti környezetben az összes alkalmazás-összetevőket a frissítés részt az adott régióban. Az első ábra szemlélteti a működési környezetben a frissítés előtt. A végpont `contoso.azurewebsites.net` éles környezetben a webalkalmazás jelöli. Hogy a frissítés visszaállítása, létre kell hoznia egy átmeneti környezetben a teljesen szinkronizált másolatot készít az adatbázisról. Kövesse az alábbi lépéseket követve létrehozhat egy átmeneti környezetben a frissítés:
+Ha az alkalmazás az adatbázis automatikus biztonsági mentésére támaszkodik, és a Geo-visszaállítást használja a vész-helyreállításhoz, akkor egyetlen Azure-régióba kerül üzembe. A felhasználói fennakadás csökkentése érdekében hozzon létre egy átmeneti környezetet az adott régióban a frissítésben érintett összes alkalmazás-összetevővel. Az első diagram a frissítési folyamat előtt mutatja be az operatív környezetet. A végpont `contoso.azurewebsites.net` a webalkalmazás éles környezetét jelöli. Ahhoz, hogy vissza tudja állítani a frissítést, létre kell hoznia egy átmeneti környezetet az adatbázis teljesen szinkronizált példányával. Az alábbi lépéseket követve hozhat létre átmeneti környezetet a frissítéshez:
 
-1. Hozzon létre egy másodlagos adatbázis ugyanazon Azure-régióban. Figyelje meg, ha a kiindulási folyamat befejeződött (1)-e a másodlagos.
-2. Hozzon létre egy új környezetet a webalkalmazás, és nevezze el "Átmeneti". Az Azure DNS-ben az URL-címmel lesz regisztrálva `contoso-staging.azurewebsites.net` (2).
-
-> [!NOTE]
-> Előkészítő lépések nem érinti az éles környezetben, amely teljes hozzáférési módban működjön.
-
-![SQL-adatbázis georeplikációs konfiguráció felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/option1-1.png)
-
-Amikor az előkészítési végzett, a tényleges frissítés készen áll az alkalmazás. A következő diagram azt ábrázolja, hogy a frissítési folyamat lépéseit:
-
-1. Állítsa be az elsődleges adatbázis csak olvasható módra (3). Ebben a módban garantálja, hogy az éles környezetben, a web app (V1) csak olvasható marad a frissítés során, így megakadályozza a adateltérésekkel a V1 és v2-es adatbázis-példányok között.
-2. A másodlagos adatbázis leválasztása a tervezett lezárást mód (4) segítségével. Ez a művelet létrehoz egy teljesen szinkronizált, független az elsődleges adatbázis másolatát. Ez az adatbázis lesz frissítve.
-3. A másodlagos adatbázis írható-olvasható módba kapcsolni, és futtassa a frissítési parancsfájl (5).
-
-![SQL-adatbázis georeplikációs konfiguráció felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/option1-2.png)
-
-Ha a frissítés sikeres befejezését követően készen áll felhasználók váltson át a frissített másolatot az alkalmazásról, így az válik az éles környezetben. Néhány további lépést váltás áll, a következő ábrán szemléltetett módon:
-
-1. Aktiválja a csereművelet éles és átmeneti környezetek, a web app (6) között. Ez a művelet vált, amennyiben a két környezet URL-címei. Most már `contoso.azurewebsites.net` a V2 verzióját a webhely és az adatbázis (éles környezet) mutat. 
-2. Ha már nincs szüksége a V1 verziót, amely egy tesztelési másolatot vált a felcserélés után, leszerelheti az átmeneti környezetben (7).
-
-![SQL-adatbázis georeplikációs konfiguráció felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/option1-3.png)
-
-Ha a frissítési folyamat (például a frissítési parancsfájl hibája) miatt sikertelen, fontolja meg az átmeneti környezet sérülhet. Szeretné visszaállítani az alkalmazás a frissítés előtti állapotra, visszatérhet az alkalmazás az éles környezetben való teljes hozzáférés. A következő ábrán a reverziós lépéseket:
-
-1. Az adatbázis-másolat állítsa írható-olvasható módban (8). Ez a művelet visszaállítja az éles üzemi példány V1 funkcióját.
-2. Az alapvető okok elemzését, és az átmeneti környezetben (9) leszerelése.
-
-Ezen a ponton az alkalmazás teljesen működőképes, és a frissítési lépéseket megismételve.
+1. Hozzon létre egy másodlagos adatbázist ugyanabban az Azure-régióban. Figyelje meg a másodlagost, és ellenőrizze, hogy a kiindulási folyamat befejeződött-e (1).
+2. Hozzon létre egy új környezetet a webalkalmazáshoz, és hívja meg az "átmeneti" állapotot. Azure DNS az URL-címmel `contoso-staging.azurewebsites.net` (2) lesz regisztrálva.
 
 > [!NOTE]
-> A visszaállítás nem igényel a DNS-módosítások, mert nem végezte még el a felcserélési műveletet.
+> Ezek az előkészítési lépések nem érintik az éles környezetet, ami teljes hozzáférésű módban működhet.
 
-![SQL-adatbázis georeplikációs konfiguráció felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/option1-4.png)
+![SQL Database geo-replikációs konfiguráció a Felhőbeli vész-helyreállításhoz.](media/sql-database-manage-application-rolling-upgrade/option1-1.png)
 
-Ez a beállítás legfontosabb előnye, hogy egy alkalmazás egy adott régióban frissítheti az alábbi egyszerű lépéseket egy készletét. A frissítés dollár költségei viszonylag kis. 
+Az előkészítési lépések elvégzése után az alkalmazás készen áll a tényleges frissítésre. A következő diagram a frissítési folyamat lépéseit szemlélteti:
 
-A rendszer a fő kompromisszummal jár, hogy a frissítés során végzetes hiba akkor fordul elő, ha a helyreállítás a frissítés előtti állapotba magában foglalja a más régióban az alkalmazás újbóli telepítése és az adatbázis biztonsági másolatból történő visszaállítását a geo-visszaállítás használatával. Ez a folyamat jelentős állásidőt eredményez.
+1. Állítsa az elsődleges adatbázist írásvédett módra (3). Ez a mód garantálja, hogy a webalkalmazás (v1) éles környezete csak olvasható marad a frissítés során, így megelőzve az adateltérést a v1 és v2 verziójú adatbázis-példányok között.
+2. Válassza le a másodlagos adatbázist a tervezett megszakítási mód használatával (4). Ez a művelet az elsődleges adatbázis teljesen szinkronizált, független másolatát hozza létre. Ez az adatbázis frissülni fog.
+3. Állítsa a másodlagos adatbázist írási-olvasási módba, és futtassa a frissítési parancsfájlt (5).
 
-## <a name="upgrade-applications-that-rely-on-database-geo-replication-for-disaster-recovery"></a>Frissítse a database georeplikációja a vész-helyreállítási használó alkalmazások
+![SQL Database geo-replikációs konfiguráció a Felhőbeli vész-helyreállításhoz.](media/sql-database-manage-application-rolling-upgrade/option1-2.png)
 
-Ha az alkalmazás aktív georeplikáció által vagy automatikus feladatátvételi csoportok az üzletmenet folytonosságának, legalább két különböző régióban üzemel. Egy aktív, az elsődleges adatbázis egy elsődleges régióban, és a egy csak olvasható, másodlagos adatbázist egy biztonsági mentési régióban van. Ez a cikk elején említett tényezők, valamint a frissítési folyamat is garantálnia kell, hogy:
+Ha a frissítés sikeresen befejeződött, most már készen áll arra, hogy átváltsa a felhasználókat az alkalmazás frissített példányára, amely éles környezetvé válik. A váltás néhány további lépést is magában foglal, ahogy azt a következő ábra szemlélteti:
 
-* Az alkalmazás mindig a frissítési folyamat során a katasztrofális hibák védett marad.
-* A georedundáns összetevő az alkalmazás frissítésének párhuzamos az aktív összetevőkkel.
+1. Egy swap-művelet aktiválása a webalkalmazás üzemi és átmeneti környezetei között (6). A művelet bekapcsolja a két környezet URL-címeit. Most `contoso.azurewebsites.net` a webhely v2-verziójára és az adatbázisra (éles környezet) mutat. 
+2. Ha már nincs szüksége a v1-es verzióra, amely átmeneti másolatot vált a swap után, akkor leszerelheti az átmeneti környezetet (7).
 
-Az ezen célok eléréséhez, mellett a Web Apps-környezeteket használó feladatátvételi profilt használó egy aktív végpontot és a egy biztonsági mentési végpontot fog igénybe vehetik az Azure Traffic Manager. A következő ábra szemlélteti a működési környezetben a frissítés előtt. A webhelyek `contoso-1.azurewebsites.net` és `contoso-dr.azurewebsites.net` jelölik az alkalmazás éles környezetben a teljes földrajzi redundancia céljából. Az éles környezetben a következő összetevőket tartalmazza:
+![SQL Database geo-replikációs konfiguráció a Felhőbeli vész-helyreállításhoz.](media/sql-database-manage-application-rolling-upgrade/option1-3.png)
 
-* Az éles környezetben a webalkalmazás `contoso-1.azurewebsites.net` az elsődleges régióban (1)
-* Az elsődleges régióban (2) az elsődleges adatbázis
-* A web app (3) a biztonsági mentési régióban készenléti példánya
-* A georeplikált másodlagos adatbázis a biztonsági mentési régióban (4)
-* Online végpont a Traffic Manager teljesítményének profil nevű `contoso-1.azurewebsites.net` és a egy offline végpont neve `contoso-dr.azurewebsites.net`
+Ha a frissítési folyamat sikertelen (például a Frissítési parancsfájl hibája miatt), vegye figyelembe, hogy az átmeneti környezet sérül. Az alkalmazás frissítés előtti állapotba való visszaállításához állítsa vissza az alkalmazást az éles környezetben teljes hozzáférésre. A következő ábrán a visszaállítás lépései láthatók:
 
-Lehetővé teszik a frissítés visszaállítása, létre kell hoznia egy átmeneti környezetben az alkalmazás teljesen szinkronizált másolatával. Győződjön meg arról, hogy az alkalmazás képes gyorsan helyreállíthatja az adatokat a frissítési folyamat során végzetes hiba bekövetkezése van szüksége, mert az átmeneti környezetben kell georedundáns tárolást is. Hozzon létre egy átmeneti környezetben a frissítés a következő lépések szükségesek:
+1. Az adatbázis másolásának beállítása írható és olvasható módra (8). Ez a művelet visszaállítja az éles példány teljes v1 funkcióját.
+2. Hajtsa végre a kiváltó okok elemzését, és szerelje le az átmeneti környezetet (9).
 
-1. Helyezze üzembe helyezése átmeneti környezetben a webalkalmazás az elsődleges régióban (6).
-2. Hozzon létre egy másodlagos adatbázis elsődleges Azure-régióban (7). Az átmeneti környezetben szeretne csatlakozni, a webalkalmazás konfigurálásához. 
-3. Hozzon létre egy másik georedundáns tárolást, a másodlagos adatbázis a biztonsági mentési régióban az elsődleges régióban, a másodlagos adatbázis replikálásával. (Ezt a metódust meghívják *georeplikációs láncolt*.) (8).
-4. Üzembe helyezése átmeneti környezetben, a web app-példány a biztonsági mentési régióban (9), és konfigurálja úgy, hogy csatlakozzon a georedundáns másodlagos adatbázis (8).
+Ezen a ponton az alkalmazás teljesen működőképes, és megismételheti a frissítés lépéseit.
 
 > [!NOTE]
-> Előkészítő lépések nem érinti az éles környezetben az alkalmazást. Írható-olvasható módban teljesen működőképes marad.
+> A visszaállítás nem igényli a DNS-módosításokat, mert még nem hajtott végre swap-műveletet.
 
-![SQL-adatbázis georeplikációs konfiguráció felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/option2-1.png)
+![SQL Database geo-replikációs konfiguráció a Felhőbeli vész-helyreállításhoz.](media/sql-database-manage-application-rolling-upgrade/option1-4.png)
 
-Az előkészítési végzett, amikor a frissítés készen áll az átmeneti környezetben. A következő diagram azt ábrázolja, hogy ezeket a frissítési lépéseket:
+Ennek a lehetőségnek a legfőbb előnye, hogy egyetlen régióban frissítheti az alkalmazásokat, ha az egyszerű lépések egy halmazát követi. A frissítés dolláros díja viszonylag alacsony. 
 
-1. Állítsa be az elsődleges adatbázis csak olvasható módra (10) az éles környezetben. Ebben a módban garantálja, hogy az éles adatbázisban (V1) időközben nem változnak a frissítés, így megakadályozza a adateltérésekkel a V1 és v2-es adatbázis-példányok között.
+A fő kompromisszum az, hogy ha végzetes hiba történik a frissítés során, a frissítés előtti állapotba történő helyreállítás az alkalmazás egy másik régióban való újbóli üzembe helyezését, valamint az adatbázis biztonsági másolatból való visszaállítását jelenti a Geo-visszaállítás használatával. Ez a folyamat jelentős állásidőt eredményez.
+
+## <a name="upgrade-applications-that-rely-on-database-geo-replication-for-disaster-recovery"></a>Az adatbázis-geo-replikációra támaszkodó alkalmazások frissítése vész-helyreállításra
+
+Ha az alkalmazás aktív geo-replikálási vagy automatikus feladatátvételi csoportokat használ az üzletmenet folytonossága érdekében, az üzembe helyezése legalább két különböző régióban folyamatban van. Aktív, elsődleges adatbázis található egy elsődleges régióban és egy írásvédett, másodlagos adatbázis egy biztonsági mentési régióban. A cikk elején említett tényezőkkel együtt a frissítési folyamatnak a következőket is biztosítania kell:
+
+* Az alkalmazás a frissítési folyamat során mindig védelmet biztosít a katasztrofális hibáktól.
+* Az alkalmazás geo-redundáns összetevőit az aktív összetevőkkel párhuzamosan frissíti a rendszer.
+
+Ahhoz, hogy ezeket a célokat a Web Apps környezetek használata mellett is elérhetővé tegye, az Azure Traffic Manager előnyeit egy aktív végponttal és egy biztonsági mentési végponttal rendelkező feladatátvételi profillal használhatja. A következő diagram a frissítési folyamat előtt mutatja be az operatív környezetet. A webhelyek `contoso-dr.azurewebsites.net` és az alkalmazás éles környezetét képviselik teljes földrajzi redundanciával. `contoso-1.azurewebsites.net` Az éles környezet a következő összetevőket tartalmazza:
+
+* A webalkalmazás `contoso-1.azurewebsites.net` éles környezete az elsődleges régióban (1)
+* Az elsődleges régió elsődleges adatbázisa (2)
+* A webalkalmazás készenléti példánya a biztonsági mentési régióban (3)
+* A földrajzi replikált másodlagos adatbázis a biztonsági mentési régióban (4)
+* Egy Traffic Manager Performance profil egy nevű `contoso-1.azurewebsites.net` online végponttal és egy kapcsolat nélküli végpont`contoso-dr.azurewebsites.net`
+
+A frissítés visszavonásához létre kell hoznia egy átmeneti környezetet az alkalmazás teljesen szinkronizált példányával. Mivel meg kell győződnie arról, hogy az alkalmazás gyorsan helyreállítható, ha a frissítési folyamat során végzetes hiba történik, az átmeneti környezetnek is földrajzilag redundánsnak kell lennie. A következő lépések szükségesek egy átmeneti környezet létrehozásához a frissítéshez:
+
+1. Üzembe helyezheti a webalkalmazás átmeneti környezetét az elsődleges régióban (6).
+2. Hozzon létre egy másodlagos adatbázist az elsődleges Azure-régióban (7). Konfigurálja a webalkalmazás átmeneti környezetét a kapcsolódáshoz. 
+3. Hozzon létre egy másik geo-redundáns másodlagos adatbázist a biztonsági mentési régióban a másodlagos adatbázis elsődleges régióban való replikálásával. (Ezt a metódust *láncolt geo-replikációnak*nevezzük.) (8).
+4. Helyezzen üzembe a webalkalmazás-példány átmeneti környezetét a biztonsági mentési régióban (9), és konfigurálja úgy, hogy a (8) időpontban létrehozott geo-redundáns másodlagos adatbázishoz kapcsolódjon.
+
+> [!NOTE]
+> Ezek az előkészítési lépések nem érintik az alkalmazást az éles környezetben. Az alkalmazás teljes funkcionalitásban marad az írási és olvasási módban.
+
+![SQL Database geo-replikációs konfiguráció a Felhőbeli vész-helyreállításhoz.](media/sql-database-manage-application-rolling-upgrade/option2-1.png)
+
+Az előkészítési lépések elvégzése után az átmeneti környezet készen áll a frissítésre. A következő diagram ezeket a frissítési lépéseket szemlélteti:
+
+1. Állítsa az elsődleges adatbázist éles környezetben a csak olvasható módra (10). Ez a mód garantálja, hogy az éles adatbázis (v1) nem változik a frissítés során, így megakadályozza a v1 és v2 verziójú adatbázis-példányok közötti adateltérést.
 
 ```sql
 -- Set the production database to read-only mode
@@ -110,7 +109,7 @@ ALTER DATABASE <Prod_DB>
 SET (ALLOW_CONNECTIONS = NO)
 ```
 
-2. Állítsa le a georeplikáció leválasztásával a másodlagos (11). Ez a művelet létrehoz egy független, de teljes körűen szinkronizált másolatot az éles adatbázisban. Ez az adatbázis lesz frissítve. Az alábbi példában a Transact-SQL, de [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0) is rendelkezésre áll. 
+2. Zárja le a Geo-replikációt a másodlagos (11) kapcsolat leválasztásával. Ez a művelet létrehoz egy független, de teljesen szinkronizált példányt az éles adatbázisból. Ez az adatbázis frissülni fog. A következő példa Transact-SQL-t használ, de a [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0) is elérhető. 
 
 ```sql
 -- Disconnect the secondary, terminating geo-replication
@@ -118,41 +117,41 @@ ALTER DATABASE <Prod_DB>
 REMOVE SECONDARY ON SERVER <Partner-Server>
 ```
 
-3. Frissítési szkriptek futtatása `contoso-1-staging.azurewebsites.net`, `contoso-dr-staging.azurewebsites.net`, és az elsődleges adatbázis átmeneti (12). Az adatbázis-módosítások automatikusan replikálja az előkészítési másodlagos.
+3. Futtassa a frissítési parancsfájlt `contoso-1-staging.azurewebsites.net`a `contoso-dr-staging.azurewebsites.net`, a és az átmeneti elsődleges adatbázison (12). Az adatbázis módosításait a rendszer automatikusan replikálja a másodlagos átmeneti állapotba.
 
-![SQL-adatbázis georeplikációs konfiguráció felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/option2-2.png)
+![SQL Database geo-replikációs konfiguráció a Felhőbeli vész-helyreállításhoz.](media/sql-database-manage-application-rolling-upgrade/option2-2.png)
 
-Ha a frissítés sikeresen befejeződött, készen áll a felhasználók váltson az alkalmazás V2 verziója. A következő diagram azt ábrázolja, hogy a folyamat lépései:
+Ha a frissítés sikeresen befejeződött, most már készen áll arra, hogy a felhasználókat az alkalmazás v2 verziójára váltsa. A következő diagram az alábbi lépéseket szemlélteti:
 
-1. Aktiválja a csereművelet éles és átmeneti környezetek, a web app (13) az elsődleges régióban, és a biztonsági mentési régióban (14) között. V2 alkalmazás most már éles környezetben, a biztonsági mentési régióban található redundáns másolatát válik.
-2. Ha már nincs szüksége a V1-alkalmazás (15 és 16), leszerelheti az átmeneti környezetben.
+1. Aktiváljon egy swap-műveletet a webalkalmazás éles és átmeneti környezete között az elsődleges régióban (13) és a biztonsági mentési régióban (14). Az alkalmazás v2-je mostantól éles környezetbe kerül, és a biztonsági mentési régióban redundáns másolattal rendelkezik.
+2. Ha már nincs szüksége a v1 alkalmazásra (15 és 16), leszerelheti az átmeneti környezetet.
 
-![SQL-adatbázis georeplikációs konfiguráció felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/option2-3.png)
+![SQL Database geo-replikációs konfiguráció a Felhőbeli vész-helyreállításhoz.](media/sql-database-manage-application-rolling-upgrade/option2-3.png)
 
-Ha a frissítési folyamat (például a frissítési parancsfájl hibája) miatt sikertelen, fontolja meg az átmeneti környezetben egy inkonzisztens állapotban kell lennie. V1 alkalmazás használatával az üzemi környezetben szeretné visszaállítani az alkalmazás a frissítés előtti állapotba, vissza. A szükséges lépéseket a következő diagramon láthatók:
+Ha a frissítési folyamat sikertelen (például a Frissítési parancsfájl hibája miatt), vegye figyelembe, hogy az átmeneti környezet inkonzisztens állapotban van. Az alkalmazás frissítés előtti állapotba való visszaállításához térjen vissza az alkalmazás v1-es verziójára az éles környezetben. A szükséges lépések a következő diagramon láthatók:
 
-1. Állítsa be az elsődleges adatbázis-másolat (17) írható-olvasható módba az éles környezetben. Ez a művelet visszaállítja az összes V1 funkciójának az éles környezetben.
-2. Hajtsa végre az alapvető okok elemzése és a javítás, vagy távolítsa el az átmeneti környezetben (18 és 19).
+1. Állítsa az elsődleges adatbázis-másolatot az éles környezetben az írható-olvasható módba (17). Ez a művelet visszaállítja a teljes v1-es funkciót az éles környezetben.
+2. Hajtsa végre a kiváltó okok elemzését és javítását, vagy távolítsa el az átmeneti környezetet (18 és 19).
 
-Ezen a ponton az alkalmazás teljesen működőképes, és a frissítési lépéseket megismételve.
+Ezen a ponton az alkalmazás teljesen működőképes, és megismételheti a frissítés lépéseit.
 
 > [!NOTE]
-> A visszaállítás nincs szükség DNS változik, mert nem hajtja végre a csereművelet.
+> A visszaállítás nem igényli a DNS-módosításokat, mert nem hajtott végre swap-műveletet.
 
-![SQL-adatbázis georeplikációs konfiguráció felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/option2-4.png)
+![SQL Database geo-replikációs konfiguráció a Felhőbeli vész-helyreállításhoz.](media/sql-database-manage-application-rolling-upgrade/option2-4.png)
 
-Ez a beállítás legfontosabb előnye, hogy frissítheti az alkalmazás és a párhuzamos georedundáns példányát a frissítés során az üzletmenet-folytonossági veszélyeztetése nélkül.
+Ennek a lehetőségnek a legfőbb előnye, hogy az alkalmazást és annak geo-redundáns másolatát párhuzamosan is frissítheti anélkül, hogy az üzletmenet folytonosságát veszélyeztetné a frissítés során.
 
-A fő kompromisszummal jár, hogy minden egyes alkalmazás-összetevő kettős redundancia igényel, és ezért tekintetében költségesebb dollár. Egy összetettebb munkafolyamat is magában foglalja.
+A fő kompromisszum az, hogy minden alkalmazás-összetevőnél kettős redundancia szükséges, ezért magasabb dollár-költségekkel jár. Emellett bonyolultabb munkafolyamatot is magában foglal.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
-A két frissítési módszer a cikkben ismertetett, dollár költséghatékonyság különböznek, de mindkettő összpontosíthat minimalizálása, mennyi ideig a felhasználó korlátozódik, csak olvasható műveletekhez. A frissítési parancsfájl időtartama közvetlenül határozza meg, hogy időt. Nem függ az adatbázis mérete, a szolgáltatási rétegben választotta, a webhely-konfiguráció vagy egyéb tényezőkkel, amelyek nem könnyen szabályozhatja. Az összes előkészítési lépéseket vannak választva a frissítési lépéseket a, és nincs hatással az éles alkalmazások. A frissítési parancsfájl hatékonyságának egy kulcsfontosságú tényező, amely meghatározza, hogy a felhasználói élmény frissítések során. Így a legjobb módszer annak, hogy a gyakoriságukat a lehető leghatékonyabb tétele a frissítési parancsfájl.
+A cikkben leírt két frissítési módszer különbözik az összetettség és a dollár díja között, de mindkettőre összpontosít, hogy a felhasználó mennyi ideig korlátozódik a csak olvasási műveletekre. Ezt az időt közvetlenül a Frissítési parancsfájl időtartama határozza meg. Ez nem függ az adatbázis méretétől, a választott szolgáltatási szinttől, a webhely konfigurációjától vagy más olyan tényezőktől, amelyeket nem tud egyszerűen szabályozni. Az előkészítési lépések elvesznek a frissítés lépéseitől, és nem befolyásolják az éles alkalmazást. A Frissítési parancsfájl hatékonysága kulcsfontosságú tényező, amely meghatározza a felhasználói élményt a frissítések során. Így a legjobb megoldás az, hogy a lehető leghatékonyabban fejlessze a frissítési szkriptet.
 
 ## <a name="next-steps"></a>További lépések
 
-* Egy üzleti folytonosság – áttekintés és forgatókönyvek: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md).
-* Az Azure SQL-adatbázis aktív georeplikációt kapcsolatos további információkért lásd: [olvasható másodlagos adatbázis aktív georeplikációt használ létrehozása](sql-database-active-geo-replication.md).
-* Azure SQL Database automatikus feladatátvételi csoportok kapcsolatos további információkért lásd: [automatikus feladatátvételi csoportok használatával engedélyezhető az átlátható és koordinált több adatbázis feladatátvételét](sql-database-auto-failover-group.md).
-* Átmeneti környezetek, az Azure App Service kapcsolatos további információkért lásd: [állítsa be átmeneti környezeteket az Azure App Service](../app-service/deploy-staging-slots.md).
-* Az Azure Traffic Manager-profilok kapcsolatos további információkért lásd: [kezelése az Azure Traffic Manager-profilok](../traffic-manager/traffic-manager-manage-profiles.md).
+* Az üzletmenet folytonosságának áttekintése és forgatókönyvei: az [üzletmenet folytonosságának áttekintése](sql-database-business-continuity.md).
+* Az aktív geo-replikálás Azure SQL Databaseával kapcsolatos további információkért lásd: [olvasható másodlagos adatbázisok létrehozása aktív geo-replikáció használatával](sql-database-active-geo-replication.md).
+* Az automatikus feladatátvételi csoportok Azure SQL Databaseáról további információt az [automatikus feladatátvételi csoportok használata a több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez](sql-database-auto-failover-group.md)című témakörben talál.
+* A Azure App Service átmeneti környezetének megismeréséhez tekintse meg az [átmeneti környezetek beállítása a Azure app Service-ben](../app-service/deploy-staging-slots.md)című témakört.
+* Az Azure Traffic Manager profiljaival kapcsolatos további információkért lásd: [azure Traffic Manager-profil kezelése](../traffic-manager/traffic-manager-manage-profiles.md).

@@ -1,6 +1,6 @@
 ---
-title: A vészhelyreállítási megoldások – Azure SQL-adatbázis megtervezése |} A Microsoft Docs
-description: Ismerje meg, hogyan tervezhető a vész-helyreállítási felhőalapú megoldás a megfelelő feladatátvételi minta kiválasztásával.
+title: Vészhelyzeti helyreállítási megoldások tervezése – Azure SQL Database | Microsoft Docs
+description: Megtudhatja, hogyan tervezheti meg a felhőalapú megoldást a vész-helyreállításhoz a megfelelő feladatátvételi minta kiválasztásával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -10,167 +10,166 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 6a332ce265a4bb41a9ad3c0c3a29683187a0f0d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ccdd2443254da065a15911f567577672492ddb4f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62098405"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568885"
 ---
-# <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Vészhelyreállítási stratégiák SQL Database rugalmas készleteket használó alkalmazások
+# <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Vészhelyzeti helyreállítási stratégiák SQL Database rugalmas készleteket használó alkalmazásokhoz
 
-Az évek, hogy megismerte, a cloud services rendszer nem üzembiztos, és a katasztrofális események történik. Az SQL Database ezek az incidensek előfordulásakor az alkalmazás az üzletmenet folytonosságának biztosításához a különböző képességeket biztosít. [Rugalmas készletek](sql-database-elastic-pool.md) és önálló adatbázisokat támogatja a vész-helyreállítási lehetőségei a azonos típusú. Ez a cikk bemutatja több Vészhelyreállítási stratégiák rugalmas adatbáziskészletekhez, amelyek esetében használhatja ezeket az SQL Database üzletmenet-folytonossági funkciókat.
+Az évek során megtudtuk, hogy a felhőalapú szolgáltatások nem üzembiztosak és katasztrofális incidensek történnek. A SQL Database számos képességet biztosít az alkalmazás üzleti folytonosságának biztosításához az incidensek bekövetkezésekor. A [rugalmas készletek](sql-database-elastic-pool.md) és az önálló adatbázisok ugyanolyan típusú vész-helyreállítási (Dr) képességeket támogatnak. Ez a cikk több, a rugalmas készletekre vonatkozó DR-stratégiát ismertet, amelyek kihasználják ezeket a SQL Database üzletmenet-folytonossági funkciókat.
 
-Ez a cikk a következő kanonikus SaaS ISV alkalmazásmintát használ:
+Ez a cikk a következő Canonical SaaS ISV-alkalmazási mintát használja:
 
-A modern felhőalapú webalkalmazások egy SQL-adatbázis kiépítése a végfelhasználók számára. A független Szoftvergyártók számos ügyfél rendelkezik, és ezért a számos adatbázis, más néven bérlői adatbázisokat használ. A bérlői adatbázisok jellemzően kiszámíthatatlan tevékenység mintával rendelkeznek, mert a független Szoftvergyártók rugalmas készlet használ, hogy nagyon előre jelezhető költségek az adatbázis kiterjesztett időszakokra. A rugalmas készlet emellett leegyszerűsíti az alkalmazásteljesítmény-felügyelet, ha a felhasználói tevékenység hirtelen megugró kihasználtság. A bérlői adatbázisok mellett az alkalmazás is használ több adatbázist kezelheti a felhasználói profilok, biztonság, gyűjtése a használati minták stb. Az egyes bérlők rendelkezésre állását ne befolyásolja az alkalmazás rendelkezésre állásának teljes. Azonban a rendelkezésre állás és a felügyeleti adatbázisok teljesítményének fontos a függvény az alkalmazást, és offline állapotban van a felügyeleti adatbázisok esetén a teljes alkalmazás kapcsolat nélküli üzemmódban.
+A modern felhőalapú webalkalmazások egy SQL Database-t foglalnak magukban minden végfelhasználó számára. Az ISV számos ügyfelet tartalmaz, ezért számos adatbázist használ, más néven bérlői adatbázisokat. Mivel a bérlői adatbázisok jellemzően előre nem látható tevékenységi mintákkal rendelkeznek, az ISV rugalmas készletet használ, hogy az adatbázis a hosszabb időtartamon keresztül kiszámítható legyen. A rugalmas készlet leegyszerűsíti a teljesítmény-kezelést, amikor a felhasználói tevékenység tüskéket mutat. A bérlői adatbázisokon kívül az alkalmazás több adatbázist is használ a felhasználói profilok, a biztonság, a használati minták összegyűjtése stb. alapján. Az egyes bérlők rendelkezésre állása nem befolyásolja az alkalmazás teljes rendelkezésre állását. Azonban a felügyeleti adatbázisok rendelkezésre állása és teljesítménye kritikus fontosságú az alkalmazás függvényében, és ha a felügyeleti adatbázisok offline állapotban vannak, a teljes alkalmazás offline állapotban van.
 
-Ez a cikk ismerteti, a költség-és nagybetűket indítási alkalmazások kiépítettektől szigorú rendelkezésre állási követelmények vonatkoznak, a forgatókönyvek széles Vészhelyreállítási stratégiát.
+Ez a cikk ismerteti a DR-stratégiákat, amelyek számos különböző forgatókönyvet érintenek a költséges és a szigorú rendelkezésre állást igénylő indítási alkalmazások esetében.
 
 > [!NOTE]
-> Ha prémium szintű és az üzletileg kritikus adatbázisok és rugalmas készletek használ, akkor is használhatja őket rugalmas a regionális üzemkimaradások utáni helyreállításon zóna redundáns üzembe helyezési konfiguráció átalakításával. Lásd: [zónaredundáns adatbázisok](sql-database-high-availability.md).
+> Ha prémium szintű vagy üzletileg kritikus-adatbázisokat és rugalmas készleteket használ, rugalmasan végezheti el a regionális kimaradásokat a zónák redundáns üzembe helyezési konfigurációjához való átalakításával. Lásd: [zóna – redundáns adatbázisok](sql-database-high-availability.md).
 
-## <a name="scenario-1-cost-sensitive-startup"></a>1\. forgatókönyv. Költség-és nagybetűket indítása
+## <a name="scenario-1-cost-sensitive-startup"></a>forgatókönyv 1. Cost szenzitív indítás
 
-Startup-vállalkozással vagyok és vagyok rendkívül költség-és nagybetűket.  Egyszerűbb telepítés és az alkalmazás felügyelete szeretnék, és az egyes ügyfelek is van korlátozva szolgáltatói szerződés. De, egy egész soha nem kapcsolat nélküli üzemmódban, győződjön meg arról, hogy az alkalmazás szeretnék.
+Induló vállalkozás vagyok, és rendkívül költséges vagyok.  Szeretném leegyszerűsíteni az alkalmazás üzembe helyezését és felügyeletét, és korlátozott SLA-t biztosíthatok az egyes ügyfelek számára. De szeretném biztosítani, hogy az alkalmazás egésze soha ne legyen offline állapotban.
 
-Az egyszerűség kedvéért a követelmény teljesítéséhez egy rugalmas készlet tetszőleges Azure-régióban helyezze üzembe az összes bérlői adatbázison, és üzembe helyezése önálló adatbázisok georeplikált felügyeleti adatbázisra. A bérlők vész-helyreállítási használja a geo-visszaállítás, amelyben további költségek nélkül. Ahhoz, hogy a felügyeleti adatbázisok rendelkezésre állását, georeplikáció őket egy másik régióba egy automatikus feladatátvételi csoport (1. lépés). Ebben a forgatókönyvben a vész-helyreállítási konfiguráció folyamatos költsége megegyezik a másodlagos adatbázisok teljes költségét. Ez a konfiguráció a következő diagramon látható.
+Az egyszerűség követelmény kielégítése érdekében telepítse az összes bérlői adatbázist egy rugalmas készletbe az Ön által választott Azure-régióban, és telepítse a felügyeleti adatbázisokat földrajzilag replikált önálló adatbázisokként. A bérlők vész-helyreállításához használja a Geo-visszaállítást, amely további díjak nélkül elérhető. A felügyeleti adatbázisok rendelkezésre állásának biztosítása érdekében geo-replikálja őket egy másik régióba egy automatikus feladatátvételi csoport használatával (1. lépés). Ebben a forgatókönyvben a vész-helyreállítási konfiguráció folyamatos költsége megegyezik a másodlagos adatbázisok teljes összegével. Ez a konfiguráció a következő diagramon látható.
 
 ![1\. ábra](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-1.png)
 
-Egy kimaradás során az elsődleges régióban, a helyreállítási lépéseket ahhoz, hogy az alkalmazás online által a következő ábra mutatja be.
+Ha áramkimaradás fordul elő az elsődleges régióban, akkor az alkalmazás online állapotba állításához szükséges helyreállítási lépéseket a következő ábra szemlélteti.
 
-* A feladatátvételi csoport felügyeleti-adatbázisnak a Vészhelyreállítási régióban automatikus feladatátvételt kezdeményez. Az alkalmazás automatikusan újrakapcsolódik az új elsődleges és minden új fiókok számára, és a bérlői adatbázisok jönnek létre a Vészhelyreállítás régióban található. A meglévő ügyfelek tekintheti meg saját átmenetileg nem érhető el.
-* A rugalmas készlet létrehozása az eredeti készlet (2) azonos konfigurációjú.
-* A geo-visszaállítás használatával másolatokat készíteni a a bérlői adatbázisok (3). Fontolja meg az egyes visszaállítások elindítása a végfelhasználói kapcsolatok által, vagy néhány más alkalmazás-specifikus prioritású előtaggal.
+* A feladatátvételi csoport kezdeményezi a felügyeleti adatbázis automatikus feladatátvételét a DR régióba. Az alkalmazás automatikusan újracsatlakozik az új elsődleges szolgáltatáshoz, és az összes új fiókhoz és bérlői adatbázishoz létre lett hozva a DR régióban. A meglévő ügyfelek átmenetileg nem érhetők el.
+* Hozza létre a rugalmas készletet ugyanazzal a konfigurációval, mint az eredeti készlet (2).
+* A bérlői adatbázisok másolatainak létrehozásához használja a Geo-visszaállítást (3). Megtekintheti az egyes visszaállításokat a végfelhasználói kapcsolatok, vagy más, alkalmazásspecifikus prioritási sémákat is használhat.
 
-Ezen a ponton az alkalmazás újra online állapotba kerül a Vészhelyreállítás régióban található, de az egyes ügyfelek késleltetést tapasztal, az adatok elérése közben.
+Ezen a ponton az alkalmazás ismét online állapotba kerül a DR régióban, de egyes ügyfelek az adatokhoz való hozzáférés során késésben vannak.
 
 ![2\. ábra](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-2.png)
 
-Ha a szolgáltatáskimaradás elhárítása után ideiglenes volt, lehetséges, hogy az elsődleges régió helyreállítása az Azure-ban, előtt a Vészhelyreállítás régióban található összes adatbázis-visszaállítás befejeződött. Ebben az esetben koordinálása áthelyezése az alkalmazás az elsődleges régióba. A folyamat a következő diagramon bemutatott lépéseket vesz igénybe.
+Ha a leállás ideiglenes volt, lehetséges, hogy az elsődleges régiót az Azure állítja helyre, mielőtt az összes adatbázis-visszaállítás befejeződik a DR régióban. Ebben az esetben az alkalmazást az elsődleges régióba helyezi át. A folyamat a következő ábrán látható lépéseket mutatja be.
 
-* Összes függőben lévő geo-visszaállítás kérelem megszakítása
-* Az elsődleges régió (5) a felügyeleti adatbázisok feladatátvételét. A régió helyreállítása után a régi elsődleges automatikusan váltak másodlagos példány hozható létre. Most már térnek szerepkörök újra.
-* Módosítsa az alkalmazás kapcsolati karakterláncában, mutasson az elsődleges régióba. Most már minden új fiókokat és a bérlői adatbázisok jönnek létre az elsődleges régióba. Egyes meglévő ügyfelek tekintheti meg saját átmenetileg nem érhető el.
-* Minden adatbázis csak olvasható, győződjön meg arról, nem módosítható a DR régióban (6) a DR készletet állítja be.
-* Minden egyes adatbázishoz a DR-készlet, a helyreállítás óta megváltozott nevezze át vagy törölje a megfelelő készleten belül lévő adatbázisok az elsődleges (7).
-* Másolja a frissített adatbázisok a DR-készletből az elsődleges készlet (8).
-* Törölni a DR-készletet (9)
+* Az összes függőben lévő geo-visszaállítási kérelem megszakítása.
+* Hajtsa végre a felügyeleti adatbázisok feladatátvételét az elsődleges régióba (5). A régió helyreállítása után a régi primerek automatikusan formátumú másodlagos zónák válnak. Most újra átváltják a szerepköröket.
+* Módosítsa az alkalmazás kapcsolódási karakterláncát úgy, hogy az az elsődleges régióra mutasson vissza. Most minden új fiók és bérlői adatbázis létrejön az elsődleges régióban. Néhány meglévő ügyfél átmenetileg nem érhető el.
+* A DR-készletben lévő összes adatbázis írásvédett értékre állításával biztosíthatja, hogy nem módosíthatók a DR régióban (6).
+* A DR készlet minden olyan adatbázisa esetében, amely a helyreállítás óta megváltozott, nevezze át vagy törölje a megfelelő adatbázisokat az elsődleges készletben (7).
+* Másolja a frissített adatbázisokat a DR-készletből az elsődleges készletbe (8).
+* A DR-készlet törlése (9)
 
-Ezen a ponton az alkalmazás érhető el az összes bérlő érhető el a készletben található adatbázisok elsődleges az elsődleges régióban.
+Ezen a ponton az alkalmazás online állapotban van az elsődleges régióban az elsődleges készletben elérhető összes bérlői adatbázissal.
 
 ![3\. ábra](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-3.png)
 
-A kulcs **előnyeit** ebben a stratégiában az adatredundancia szint alacsony folyamatos költségeket. Biztonsági mentés automatikusan megnyílik az SQL Database szolgáltatás nincs alkalmazás átírás és további költségek nélkül.  A költsége akkor lesz felszámítva, csak akkor, ha a rugalmas adatbázisok visszaállítását végzi. A **kompromisszum** , hogy az összes bérlői adatbázis teljes helyreállítás jelentős ideig tart. Mennyi ideig attól függ, a teljes száma a visszaállítások kezdeményezheti a Vészhelyreállítás régióban található, és a bérlői adatbázisok teljes méretét. Akkor is, ha az egyes bérlők számára visszaállítások keresztül másoknak, rangsorolja, minden a többi visszaállítások ugyanabban a régióban, a szolgáltatás arbitrates, és a meglévő ügyfelek adatbázisok teljes gyakorolt hatás minimalizálása érdekében a szabályozza felé indított vannak versenyben. Emellett a bérlői adatbázisok helyreállítását nem lehet elindítani, mindaddig, amíg az új rugalmas készlet a DR régióban jön létre.
+Ennek a stratégiának a legfőbb **előnye** , hogy az adatcsomag-redundancia terén alacsony a folyamatos díj. A biztonsági mentéseket a SQL Database szolgáltatás automatikusan elvégzi az alkalmazások újraírása nélkül, és díjmentesen.  A költségek csak a rugalmas adatbázisok visszaállításakor merülnek fel. A **kompromisszum** az, hogy az összes bérlői adatbázis teljes helyreállítása jelentős időt vesz igénybe. Az idő hossza a DR régióban kezdeményezett visszaállítások számától és a bérlői adatbázisok teljes méretétől függ. A meglévő ügyfelek adatbázisaira gyakorolt általános hatás csökkentése érdekében még akkor is, ha a bérlők számára rangsorolja a többi bérlőt, Ön pedig az összes többi olyan visszaállítással verseng, amelyek ugyanabban a régióban lettek elindítva, mint a szolgáltatási egyeztetések és a szabályozások. Emellett a bérlői adatbázisok helyreállítása nem indítható el, amíg a DR régió új rugalmas készlete nem jön létre.
 
-## <a name="scenario-2-mature-application-with-tiered-service"></a>2\. forgatókönyv. Érett alkalmazás rétegzett szolgáltatással
+## <a name="scenario-2-mature-application-with-tiered-service"></a>forgatókönyv 2. Érett alkalmazás többplatformos szolgáltatással
 
-Én vagyok a rétegzett szolgáltatási ajánlatok és a különböző SLA-k próbaverziós ügyfelek és az ügyfelek és a egy érett SaaS-alkalmazáshoz. A próbaverziós felhasználók rendelkezem a lehető legnagyobb mértékben költségek csökkentése érdekében. Próbaverziós felhasználók is igénybe vehet az állásidő, de szeretnék csökkenteni annak a valószínűségét. A fizető ügyfelek a leállás annak a flight kockázata. Győződjön meg arról, hogy már fizetőssé szeretném ügyfelek képesek mindig hozzáférhetnek az adataikhoz.
+Egy kiforrott SaaS-alkalmazást használok, amely többplatformos szolgáltatást kínál, valamint különböző SLA-kat a próbaverziós ügyfelekhez és az ügyfelek fizetéséhez. A próbaverziós ügyfelek esetében a lehető legnagyobb mértékben csökkenteni kell a költségeket. A próbaverziós ügyfelek leállást vehetnek igénybe, de szeretnék csökkenteni a valószínűségét. A fizető ügyfelek esetében minden állásidő egy repülési kockázat. Ezért szeretném meggyőződni arról, hogy az ügyfelek mindig hozzáférhetnek az adatszolgáltatáshoz.
 
-Ez a forgatókönyv támogatása érdekében külön a próbabérlőket fizetős bérlőtől azáltal, külön rugalmas készletekbe. A próbaverzió ügyfélnél alacsonyabb edtu-k vagy virtuális magok / bérlő és a egy hosszabb helyreállítási idő az alacsonyabb SLA. A fizető ügyfeleket egy készletet a magasabb edtu-k vagy virtuális magok / bérlő és a egy magasabb SLA találhatók. A legalacsonyabb helyreállítási idő biztosításához a fizető ügyfeleket bérlői adatbázisok georeplikált. Ez a konfiguráció a következő diagramon látható.
+A forgatókönyv támogatásához válassza szét a próbaverziós bérlőket a fizetős bérlők számára, ha különálló rugalmas készletbe helyezi őket. A próbaverziós ügyfeleknél alacsonyabb eDTU vagy virtuális mag, illetve alacsonyabb SLA-ra van szükség. A fizetős ügyfelek egy-egy magasabb eDTU vagy virtuális mag rendelkező készletben vannak, és magasabb SLA-t biztosítanak. A legalacsonyabb helyreállítási idő biztosításához a fizetős ügyfelek bérlői adatbázisai földrajzilag replikálódnak. Ez a konfiguráció a következő diagramon látható.
 
 ![4\. ábra](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
 
-Az első forgatókönyv, mint a felügyeleti adatbázisok aktívak meglehetősen így egy georeplikált adatbázis használhatja, (1). Ez biztosítja, hogy a kiszámítható teljesítményt az új ügyfél-előfizetések, profil-frissítések és egyéb felügyeleti műveleteket. A régió, amelyben az elsődleges felügyeleti adatbázisok találhatók az elsődleges régióban, és a régiót, amelyben a másodlagos felügyeleti adatbázisok találhatók a Vészhelyreállítási régióban.
+Ahogy az első forgatókönyvben is, a felügyeleti adatbázisok meglehetősen aktívak, így egyetlen földrajzilag replikált adatbázist használ hozzá (1). Ez biztosítja az új ügyfél-előfizetések, a profilok frissítései és egyéb felügyeleti műveletek kiszámítható teljesítményét. Az a régió, amelyben a felügyeleti adatbázisok elsődlegesek, a DR régió, ahol a felügyeleti adatbázisok formátumú másodlagos zónák található, az elsődleges régió és a régió.
 
-A fizető ügyfeleket bérlői adatbázisok aktív adatbázisok rendelkezik az elsődleges régióban üzembe helyezett "fizetős" készletben. Egy másodlagos készletet a DR régióban ugyanazzal a névvel. Minden egyes bérlőhöz georeplikált másodlagos készletéhez (2). Ez lehetővé teszi az összes bérlői adatbázis feladatátvételi gyors helyreállítás.
+A fizetős ügyfelek bérlői adatbázisai aktív adatbázisokkal rendelkeznek az elsődleges régióban kiépített "fizetős" készletben. Hozzon létre egy másodlagos készletet ugyanazzal a névvel a DR régióban. Minden bérlő földrajzilag replikálódik a másodlagos készletre (2). Ez lehetővé teszi az összes bérlői adatbázis gyors helyreállítását a feladatátvételsel.
 
-Egy kimaradás során az elsődleges régióban, a helyreállítási lépéseket ahhoz, hogy az alkalmazás online kapcsolatait mutatja be a következő diagram:
+Ha az elsődleges régióban áramkimaradás történik, az alkalmazás online állapotba helyezésének helyreállítási lépései a következő ábrán láthatók:
 
 ![5\. ábra](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
 
-* A Vészhelyreállítási régióban (3) a felügyeleti adatbázisok azonnali feladatátvételt.
-* Módosítsa az alkalmazás kapcsolati karakterláncában, hogy a Vészhelyreállítási régióban mutasson. Most már minden új fiókokat és a bérlői adatbázisok jönnek létre a Vészhelyreállítás régióban található. A meglévő próbaverzió ügyfelek tekintheti meg saját átmenetileg nem érhető el.
-* A készlethez a DR régióban azonnal visszaállítani a rendelkezésre állásuk (4) a fizetős bérlői adatbázisok feladatátvételét. Mivel a feladatátvétel egy gyors metaadatok szint módosítása, fontolja meg az optimalizálás, ahol az egyes feladatátvételeket igény szerinti által aktivált a végfelhasználói kapcsolatokat.
-* Ha a másodlagos készlet edtu-k méretének vagy virtuális mag értéke alacsonyabb, mint az elsődleges volt, mert a másodlagos adatbázisok csak a módosítási naplója feldolgozása, miközben a másodlagos példány hozható létre voltak a kapacitás szükséges, azonnal készlet kapacitásának növelése most már a teljes terhelés befogadásához az összes bérlő (5).
-* Az új rugalmas készlet létrehozása ugyanazzal a névvel, és ugyanazt a konfigurációt a próbaverziós felhasználók adatbázisok (6) a Vészhelyreállítás régióban található.
-* A próbaverziós felhasználók készlet létrehozása után a geo-visszaállítás segítségével az egyes próbaverziós bérlői adatbázisok visszaállítása az új készletbe (7). Fontolja meg a végfelhasználói kapcsolatok által az egyes visszaállítások elindítása vagy néhány más alkalmazás-specifikus prioritású előtaggal.
+* A felügyeleti adatbázisok azonnali feladatátvétele a DR régióba (3).
+* Módosítsa az alkalmazás kapcsolódási karakterláncát úgy, hogy az a DR régióra mutasson. Most minden új fiók és bérlői adatbázis létre lett hozva a DR régióban. A meglévő próbaverziós ügyfelek átmenetileg nem érhetők el.
+* A fizetős bérlő adatbázisainak feladatátvétele a DR régióban lévő készletbe, hogy azonnal visszaállítsa a rendelkezésre állást (4). Mivel a feladatátvétel a metaadatok gyors megváltozása, érdemes lehet olyan optimalizációt is figyelembe venni, amelyben a végfelhasználói kapcsolatok igény szerint aktiválják az egyes feladatátvételeket.
+* Ha a másodlagos készlet eDTU mérete vagy virtuális mag értéke alacsonyabb volt az elsődlegesnél, mert a másodlagos adatbázisok csak azt a kapacitást igénylik, hogy a változási naplók feldolgozzák a formátumú másodlagos zónák, azonnal növelje a készlet kapacitását a teljes munkaterhelés befogadásához. az összes bérlő közül (5).
+* Hozza létre az új rugalmas készletet ugyanazzal a névvel és ugyanazzal a konfigurációval a DR régióban a próbaverziós ügyfelek adatbázisaiban (6).
+* A próbaverziós ügyfelek készletének létrehozása után a Geo-visszaállítás használatával állítsa vissza az egyes próbaverziós bérlői adatbázisokat az új készletbe (7). Gondolja át, hogy a végfelhasználói kapcsolatok elindítják-e az egyes visszaállításokat, vagy más alkalmazás-specifikus prioritási sémát használnak.
 
-Ezen a ponton az alkalmazás újra online állapotba kerül a Vészhelyreállítás régióban található. Az összes fizető ügyfeleket férhetnek hozzá az adataikhoz kell számolnia, amíg a próbaverziós felhasználók késleltetést tapasztal, az adatok elérése közben.
+Ezen a ponton az alkalmazás ismét online állapotba kerül a DR régióban. Az összes fizető ügyfél hozzáférhet az adatokhoz, miközben a próbaverziós ügyfelek az adatokhoz való hozzáféréskor késleltetik a késést.
 
-Amikor helyreállítja az elsődleges régió Azure *után* visszaállította a DR régióban, az alkalmazás futtatása az adott régióban továbbra is az alkalmazást, vagy beállíthatja úgy, hogy a feladat-visszavételhez az elsődleges régióba. Ha az elsődleges régió hasznosítják *előtt* a feladatátvétel befejeződött, azonnal érdemes lehet feladat-visszavétel. A feladat-visszavételi fogadja a következő ábra szemlélteti a lépéseket:
+Ha az Azure-t a DR régióban visszaállította az alkalmazás visszaállítása *után* , akkor folytathatja az alkalmazás futtatását az adott régióban, vagy dönthet úgy is, hogy visszaadja az elsődleges régiónak. Ha az elsődleges régiót a feladatátvételi folyamat befejezése *előtt* állítja helyre, érdemes lehet azonnal visszaadnia a hibát. A feladat-visszavétel a következő ábrán látható lépéseket mutatja be:
 
-![6\. ábra.](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
+![6\. ábra](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
 
-* Összes függőben lévő geo-visszaállítás kérelem megszakítása
-* Átadja a feladatokat a felügyeleti adatbázisok (8). A régió helyreállítása után a régi elsődleges automatikusan a másodlagos válnak. Most újra lesz az elsődleges.  
-* Átadja a feladatokat a fizetős bérlői adatbázisok (9). Hasonlóképpen a régió helyreállítása után a régi elsődleges automatikusan válnak a másodlagos példány hozható létre. Most ismét válnak eredményezi.
-* Állítsa be a visszaállított próbaverziós adatbázisok, amelyek megváltoztak a DR régióban csak olvasható (10).
-* Minden egyes adatbázishoz a próbaverziós felhasználók DR-készlet, amely a helyreállítás óta nevezze át vagy törölje a megfelelő adatbázist a próbaverziós felhasználók elsődleges készletben (11).
-* Másolja a frissített adatbázisok a DR-készletből az elsődleges készlet (12).
-* A DR-készlet (13) törlése.
+* Az összes függőben lévő geo-visszaállítási kérelem megszakítása.
+* A felügyeleti adatbázisok (8) feladatátvétele. A régió helyreállítása után a régi elsődleges automatikusan a másodlagos lesz. Most már az elsődleges lesz.  
+* A fizetős bérlői adatbázisok (9) feladatátvétele. Hasonlóképpen, a régió helyreállítása után a régi elsõdleges automatikusan a formátumú másodlagos zónák válik. Most már az elsõdlegesek lesznek.
+* Állítsa be a DR régióban megváltoztatott visszaállított próbaverziós adatbázisokat írásvédett értékre (10).
+* A próbaverziós ügyfelek DR készletének minden olyan adatbázisa esetében, amely a helyreállítás óta megváltozott, nevezze át vagy törölje a megfelelő adatbázist a próbaverziós ügyfelek elsődleges készletében (11).
+* Másolja a frissített adatbázisokat a DR-készletből az elsődleges készletbe (12).
+* Törölje a DR-készletet (13).
 
 > [!NOTE]
-> A feladatátvételi művelet aszinkron. A helyreállítási idő minimalizálása érdekében fontos, hogy legalább 20 adatbázis kötegekben hajtsa végre a bérlői adatbázisok feladatátvételi parancsot.
+> A feladatátvételi művelet aszinkron módon működik. A helyreállítási idő minimálisra csökkentése érdekében fontos, hogy a bérlői adatbázisok feladatátvételi parancsát legalább 20 adatbázist tartalmazó kötegekben hajtsa végre.
 
-A kulcs **előnyeit** Ez a stratégia az, hogy a fizető ügyfeleket biztosítja a legmagasabb szintű SLA-t. Emellett biztosítja azt, hogy az új kísérletek fel oldva, amint a próbaverziós DR-készlet jön létre. A **kompromisszum** fizetős ügyfeleknek, hogy a telepítő növeli a teljes költség a bérlői adatbázisok esetében a másodlagos Vészhelyreállítási készlet költségei. Emellett ha a másodlagos készlet egy másik méretet, a fizető ügyfeleket élmény kisebb teljesítményt a feladatátvételt követően a Vészhelyreállítás régióban található a készlet frissítés befejeződéséig.
+Ennek a stratégiának a legfőbb **előnye** , hogy a fizetős ügyfelek számára a legmagasabb SLA-t biztosítja. Emellett azt is garantálja, hogy az új próbaverziók feloldása azonnal megtörténjen, amint létrejön a próbaverzió DR-készlete. A kikapcsolás az, hogy ez a beállítás növeli a bérlői adatbázisok teljes díját a másodlagos Dr-készletnek a fizetős ügyfelek esetében felszámolt költsége alapján. Emellett, ha a másodlagos készlet mérete eltérő, a fizető ügyfelek a feladatátvételt követően alacsonyabb teljesítményt tapasztalhatnak, amíg a DR régióban a készlet frissítése be nem fejeződik.
 
-## <a name="scenario-3-geographically-distributed-application-with-tiered-service"></a>3\. forgatókönyv. Földrajzilag elosztott alkalmazás rétegzett szolgáltatással
+## <a name="scenario-3-geographically-distributed-application-with-tiered-service"></a>3\. forgatókönyv Földrajzilag elosztott alkalmazás többplatformos szolgáltatással
 
-Van egy rétegzett szolgáltatási ajánlatok az érett SaaS-alkalmazáshoz. Szeretnék saját fizetős ügyfeleknek kínált rendkívül agresszív szolgáltatásszint-szerződéssel és minimálisra gyakorolt hatás kockázatok, amikor a leállások esetén, mert még rövid megszakítás ügyfél elégedetlenségét okozhatnak. Rendkívül fontos, hogy a fizető ügyfeleket mindig elérheti az adatokat. Az ingyenes próbaverziók és SLA-t a próbaidőszak alatt nem érhető el.
+Van egy kiforrott SaaS-alkalmazásom, amely többplatformos szolgáltatást kínál. Nagyon agresszív SLA-t szeretnék nyújtani fizetős ügyfeleinknek, és csökkenthetik a kiesések kockázatát, mivel a leállások miatt még a rövid megszakítás is okozhat vásárlói elégedettséget. Fontos, hogy a fizető ügyfelek mindig hozzáférhessenek az adatkezeléshez. A próbaverziók ingyenesek, és a próbaidőszak alatt nem biztosítunk SLA-t.
 
-A forgatókönyv támogatása érdekében használja a három különálló rugalmas készleteket. Két azonos méretűek készletek nagy edtu-k vagy a virtuális magok adatbázisonkénti a fizetős ügyfelek bérlői adatbázisokat tartalmazó két különböző régióban üzembe helyezheti. A próbabérlőket tartalmazó harmadik készlet lehet alacsonyabb edtu-k vagy virtuális magok adatbázisonkénti és építhető ki egy két régiót.
+A forgatókönyv támogatásához használjon három különálló rugalmas készletet. Hozzon létre két egyenlő méretű készletet a magas Edtu vagy a virtuális mag adatbázissal két különböző régióban, hogy tartalmazza a fizetős ügyfelek bérlői adatbázisait. A próbaverziós bérlőket tartalmazó harmadik készlet adatbázisa alacsonyabb Edtu vagy virtuális mag, és a két régió egyikében kiépíthető.
 
-Garantálja a legalacsonyabb helyreállítási idő leállások során, a fizető ügyfeleket bérlői adatbázisok, georeplikált 50 %-a két régió az elsődleges adatbázisok. Ehhez hasonlóan az egyes régiókban 50 %-a másodlagos adatbázisok rendelkezik. Így ha egy régió offline állapotban van, csak 50 %-a fizetős ügyfelei adatbázisainak érintett és kell átadja a feladatokat. Az egyéb adatbázisok változatlanok maradnak. Ez a konfiguráció a következő ábra mutatja be:
+A leállások legalacsonyabb helyreállítási idejének garantálása érdekében a fizetős ügyfelek bérlői adatbázisai a két régió elsődleges adatbázisainak 50%-ában vannak replikálva. Hasonlóképpen, minden régió a másodlagos adatbázisok 50%-a. Így ha egy régió offline állapotban van, a fizetős ügyfelek adatbázisainak csak 50%-a érintett, és a feladatátvételre van hatással. A többi adatbázis érintetlen marad. Ezt a konfigurációt az alábbi ábra szemlélteti:
 
 ![4\. ábra](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
 
-Mivel az előző esetben a felügyeleti adatbázisok még aktív így őket, egyetlen georeplikált-adatbázisok konfigurálása (1). Ez biztosítja az új ügyfél kiszámítható teljesítményt, előfizetések, a profil frissítéseket és az egyéb felügyeleti műveleteket. Terület A az elsődleges régióban, a felügyeleti adatbázisok és a régiót a B felügyeleti adatbázisok helyreállítási szolgál.
+Ahogy az előző forgatókönyvek esetében is, a felügyeleti adatbázisok meglehetősen aktívak, ezért konfigurálja őket egyetlen földrajzilag replikált adatbázisként (1). Ez biztosítja az új ügyfél-előfizetések, a profilok frissítései és az egyéb felügyeleti műveletek kiszámítható teljesítményét. Az A régió a felügyeleti adatbázisok elsődleges régiója, a B régió pedig a felügyeleti adatbázisok helyreállításához használatos.
 
-A fizető ügyfeleket bérlői adatbázisok georeplikált is, de az elsődleges és másodlagos példány hozható létre felosztása terület A és B (2) régió között. Ezzel a módszerrel negatív hatással a szolgáltatáskiesés megszüntetése után a bérlői elsődleges adatbázisokat is átirányíthatja a más régióba, és elérhetővé válik. A másik fele a bérlői adatbázisokat nem lehet minden érintett.
+A fizetős ügyfelek bérlői adatbázisai is földrajzilag replikálódnak, de elsődleges és formátumú másodlagos zónák az A és B régió (2) régiója között oszlik meg. Ily módon a leállás által érintett elsődleges bérlői adatbázisok feladatátvételt végezhetnek a másik régióba, és elérhetővé válnak. A bérlői adatbázisok másik felét egyáltalán nem érinti.
 
-A következő ábra szemlélteti a régióban. a szolgáltatáskimaradás esetén elvégzendő lépések
+A következő diagram azt mutatja be, hogy milyen helyreállítási lépéseket kell végrehajtania, ha az A régióban áramkimaradás történik.
 
 ![5\. ábra](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
 
-* Azonnal átadja a feladatokat a felügyeleti adatbázisok régióba B (3).
-* Módosítsa az alkalmazás kapcsolati karakterláncában, ellenőrizze, hogy az új fiókokat és a bérlői adatbázisok jönnek létre a régióban B és a meglévő bérlői adatbázisok találhatók van, valamint a felügyeleti adatbázisok régió módosítása b felügyeleti adatbázishoz mutasson. A meglévő próbaverzió ügyfelek tekintheti meg saját átmenetileg nem érhető el.
-* Készlethez azonnal a rendelkezésre állásuk (4) visszaállítása a B régióban 2 a fizetős bérlői adatbázisok feladatátvételét. Mivel a feladatátvétel egy gyors metaadatok szint módosítása, akkor fontolja meg az optimalizálás, ahol az egyes feladatátvételeket igény szerinti által aktivált a végfelhasználói kapcsolatokat.
-* Most óta a készletben 2 csak az elsődleges adatbázisok, a készlet nő a teljes terhelés tartalmaz, és azonnal edtu-k méretének (5) vagy virtuális magok számának növeléséhez.
-* Az új rugalmas készlet létrehozása ugyanazzal a névvel, és ugyanazt a konfigurációt a próbaverziós felhasználók adatbázisok (6) a B a régióban.
-* A készlet létrehozása után a geo-visszaállítás segítségével állíthatja vissza az egyes próbaverziós bérlői adatbázis (7) a készletbe. Fontolja meg az egyes visszaállítások elindítása a végfelhasználói kapcsolatok által, vagy néhány más alkalmazás-specifikus prioritású előtaggal.
+* A felügyeleti adatbázisok azonnali feladatátvétele a B régióra (3).
+* Módosítsa az alkalmazás kapcsolódási karakterláncát úgy, hogy az a B régió felügyeleti adatbázisaira mutasson. módosítsa a felügyeleti adatbázisokat, hogy az új fiókok és bérlői adatbázisok a B régióban jöjjenek létre, és a meglévő bérlői adatbázisok is megtalálhatók. A meglévő próbaverziós ügyfelek átmenetileg nem érhetők el.
+* A fizetős bérlő adatbázisainak átadása a B régióban lévő 2. készletre, hogy azonnal visszaállítsa a rendelkezésre állást (4). Mivel a feladatátvétel a metaadatok gyors megváltozása, érdemes lehet olyan optimalizálást figyelembe venni, amelyben a végfelhasználói kapcsolatok igény szerint aktiválják az egyes feladatátvételeket.
+* Mivel a jelenleg a 2. készlet csak elsődleges adatbázisokat tartalmaz, a készlet teljes terhelése növekszik, és azonnal növelheti a eDTU méretét (5) vagy a virtuális mag számát.
+* Hozza létre az új rugalmas készletet ugyanazzal a névvel és ugyanazzal a konfigurációval a B régióban a próbaverziós ügyfelek adatbázisaihoz (6).
+* A készlet létrehozása után a Geo-visszaállítás használatával állítsa vissza az egyes próbaverziós bérlői adatbázist a készletbe (7). Megtekintheti az egyes visszaállításokat a végfelhasználói kapcsolatok, vagy más, alkalmazásspecifikus prioritási sémákat is használhat.
 
 > [!NOTE]
-> A feladatátvételi művelet aszinkron. A helyreállítási idő minimalizálása érdekében fontos, hogy legalább 20 adatbázis kötegekben hajtsa végre a bérlői adatbázisok feladatátvételi parancsot.
+> A feladatátvételi művelet aszinkron módon működik. A helyreállítási idő minimálisra csökkentése érdekében fontos, hogy a bérlői adatbázisok feladatátvételi parancsát legalább 20 adatbázist tartalmazó kötegekben hajtsa végre.
 
-Ezen a ponton az alkalmazás újra online állapotba kerül régióban B. Az összes fizető ügyfeleket férhetnek hozzá az adataikhoz kell számolnia, amíg a próbaverziós felhasználók késleltetést tapasztal, az adatok elérése közben.
+Ezen a ponton az alkalmazás ismét online állapotba kerül a B régióban. Az összes fizető ügyfél hozzáférhet az adatokhoz, miközben a próbaverziós ügyfelek az adatokhoz való hozzáféréskor késleltetik a késést.
 
-Terület A állítható helyre, ha el kell döntenie, hogy szeretné-e régió B használandó próbaverziós ügyfelek vagy próbaverziós ügyfelek tárolókészletet használja. a régióban történő feladat-visszavétel Egy adott feltétel lehet a % próbaverziós bérlői adatbázisok a helyreállítás óta módosítva. Függetlenül attól, hogy döntést kell újra egyensúlyba a fizetős bérlők két készletek között. a következő ábra a folyamatát mutatja be, amikor a próbaverziós bérlői adatbázisok a feladat-visszavételhez régió A.  
+Az A régió helyreállítása esetén el kell döntenie, hogy a B régiót szeretné-e használni a próbaverziós ügyfelek vagy a feladat-visszavétel számára az A régióban lévő próbaverziós ügyfelek készletének használatával. Az egyik feltétel lehet a helyreállítás óta módosított próbaverziós bérlői adatbázisok%-a. A döntéstől függetlenül át kell osztania a fizetős bérlőket két készlet között. a következő diagram azt mutatja be, hogy a próbaverziós bérlő adatbázisai hogyan működnek az A régióba.  
 
-![6\. ábra.](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
+![6\. ábra](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
 
-* Minden nyitott geo-visszaállítás kérelemhez próbakészletben DR megszakítása
-* Átadja a feladatokat a felügyeleti adatbázisban (8). A régió helyreállítása után a régi elsődleges automatikusan a másodlagos vált. Most újra lesz az elsődleges.  
-* Válassza ki, melyik fizetős bérlői adatbázisok a feladat-visszavételhez készlet 1 – kezdeményezési feladatátvételt a másodlagos példány hozható létre (9). A régió helyreállítása után 1 készletben található összes adatbázis automatikusan lett másodlagos példány hozható létre. Most már 50 %-át őket elsődleges ismét válik.
-* Az eredeti eDTU (10) vagy a virtuális magok száma 2 készlet méretének csökkentésére.
-* A készlet összes csak olvasható (11) B régióban próbaverziós adatbázisok visszaállítva.
-* A helyreállítás óta megváltozott DR próbakészletben lévő egyes adatbázisokhoz nevezze át vagy törölje a megfelelő adatbázist az elsődleges próbakészletben (12).
-* Másolja a frissített adatbázisok a DR-készletből az elsődleges készlet (13).
-* A DR-készlet (14) törlése.
+* Törölje az összes kihelyezett geo-visszaállítási kérést a DR-készlet próbaverziója számára.
+* A felügyeleti adatbázis feladatátvétele (8). A régió helyreállítása után a régi elsődleges automatikusan a másodlagos lett. Most már az elsődleges lesz.  
+* Válassza ki, hogy mely fizetős bérlői adatbázisok teljesítik az 1. készletet, és kezdeményezzen feladatátvételt a formátumú másodlagos zónák (9). A régió helyreállítása után az 1. készletben lévő összes adatbázis automatikusan formátumú másodlagos zónák vált. Mostantól 50%-kal újra elérhetővé válik.
+* Csökkentse a 2. készlet méretét az eredeti eDTU (10) vagy a virtuális mag számával.
+* Állítsa be az összes visszaállított próbaverziós adatbázist a B régióban a csak olvasható (11) értékre.
+* A próbaverziós DR készlet minden olyan adatbázisa esetében, amely megváltozott a helyreállítás óta, nevezze át vagy törölje a megfelelő adatbázist a próbaverzió elsődleges készletében (12).
+* Másolja a frissített adatbázisokat a DR-készletből az elsődleges készletbe (13).
+* Törölje a DR-készletet (14).
 
-A kulcs **előnyöket** ezen stratégia vannak:
+A stratégia főbb **előnyei** a következők:
 
-* A legtöbb agresszív SLA támogatja a fizető ügyfelek számára, biztos lehet benne, hogy nem egy szolgáltatáskimaradás hatással az több mint 50 %-a bérlői adatbázisok.
-* Ez garantálja, hogy az új kísérletek fel oldva, amint az eljáráshoz DR-készlet jön létre a helyreállítás során.
-* Lehetővé teszi a hatékonyabb használat 50 %-a másodlagos adatbázisok készletben 1 tárolókészlet-kapacitást, és a készlet 2 garantáltan kevésbé aktív, mint az elsődleges adatbázisok.
+* Támogatja a fizetős ügyfelek számára legagresszívebb SLA-t, mivel biztosítja, hogy a leállás a bérlői adatbázisok több mint 50%-át nem befolyásolhatja.
+* Garantálja, hogy az új próbaverziók feloldják a zárolást, amint a rendszer a nyomvonal DR-készletet a helyreállítás során hozza létre.
+* Lehetővé teszi, hogy a készlet kapacitása hatékonyabban használhassa a másodlagos adatbázisok 50%-át az 1. készletben, a 2. készlet pedig garantáltan kevésbé legyen aktív, mint az elsődleges adatbázisok.
 
-A fő **kompromisszummal** vannak:
+A fő **kompromisszumok** a következők:
 
-* Szemben a management adatbázisok CRUD-műveletek alacsonyabb késéssel rendelkeznek, a B régió csatlakozik, azok végrehajtásakor az elsődleges felügyeleti adatbázisok ellen a végfelhasználók szolgáltatáshoz kapcsolódnak a régióban, mint A végfelhasználók számára.
-* A felügyeleti adatbázisban összetettebb kialakításától van szükség. Például minden bérlői rekord, egy helyen címke, amely a feladatátvétel és feladat-visszavétel során módosítani kell.  
-* A fizető ügyfeleket a szokásosnál alacsonyabb teljesítményt tapasztalhat, mindaddig, amíg a régió B készlet frissítése befejeződött.
+* A kezelési adatbázisokkal szembeni szifilisz-műveletek alacsonyabb késéssel rendelkeznek az A régióhoz csatlakozó végfelhasználók számára, mint a B régióhoz csatlakoztatott végfelhasználók számára, mivel azok a felügyeleti adatbázisok elsődleges részén futnak.
+* A felügyeleti adatbázis összetettebb kialakítását igényli. Az egyes bérlői rekordok például egy olyan hely címkével rendelkeznek, amelyet a feladatátvétel és a feladat-visszavétel során módosítani kell.  
+* A fizető ügyfelek a szokásosnál alacsonyabb teljesítményt tapasztalhatnak, amíg a B régióban a készlet frissítése be nem fejeződik.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
-Ez a cikk az adatbázisszint SaaS ISV több-bérlős alkalmazás által használt vész-helyreállítási stratégiákról összpontosít. A választott stratégia az alkalmazások, például az üzleti modellben, az SLA-t szeretné az ügyfelek számára kínálnak, költségvetés-megkötés stb igényeit alapul. Egyes ismertetett stratégiák előnyeit és kompromisszum ismerteti, így sikerült tájékozott döntést. Az adott alkalmazás valószínűleg is más Azure-összetevőket. Ezért tekintse át az üzleti folytonossági útmutatást és előkészíthető a velük az adatbázisszint helyreállítása. Helyreállítás az adatbázis-alkalmazások az Azure-beli kezelésével kapcsolatos további tudnivalókért tekintse meg [tervezése felhőalapú megoldások vész-helyreállítási](sql-database-designing-cloud-solutions-for-disaster-recovery.md).  
+Ez a cikk a SaaS ISV több-bérlős alkalmazás által használt adatbázis-rétegre vonatkozó vész-helyreállítási stratégiákra összpontosít. Az Ön által választott stratégia az alkalmazás igényeinek, például az üzleti modellnek, az ügyfeleknek felkínált SLA-nak, a költségvetési korlátozásnak stb. Mindegyik ismertetett stratégia ismerteti az előnyöket és a kompromisszumot, így tájékozott döntést hozhat. Emellett az adott alkalmazás valószínűleg más Azure-összetevőket is tartalmaz. Ezért tekintse át az üzletmenet-folytonossági útmutatót, és hangolja össze az adatbázis-rétegek helyreállítását. Az adatbázis-alkalmazások Azure-ban történő helyreállításával kapcsolatos további tudnivalókért tekintse meg a [felhőalapú megoldások tervezése a](sql-database-designing-cloud-solutions-for-disaster-recovery.md)vész-helyreállításhoz című témakört.  
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ az Azure SQL Database automatikus biztonsági mentések, lásd: [SQL-adatbázis automatikus biztonsági mentések](sql-database-automated-backups.md).
-* Egy üzleti folytonosság – áttekintés és forgatókönyvek: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md).
-* Az automatikus biztonsági másolatokból helyreállítási kapcsolatos további információkért lásd: [adatbázis visszaállítása a szolgáltatás által létrehozott biztonsági másolatokból](sql-database-recovery-using-backups.md).
-* Gyorsabb helyreállítási beállítások kapcsolatos további információkért lásd: [aktív georeplikáció](sql-database-active-geo-replication.md) és [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md).
-* Az automatikus biztonsági másolatokból archiválásra kapcsolatos további információkért lásd: [adatbázis másolása](sql-database-copy.md).
+* Az automatikus biztonsági mentések Azure SQL Databaseáról a [SQL Database automatizált biztonsági mentések](sql-database-automated-backups.md)című témakörben olvashat bővebben.
+* Az üzletmenet folytonosságának áttekintése és forgatókönyvei: az [üzletmenet folytonosságának áttekintése](sql-database-business-continuity.md).
+* Ha többet szeretne megtudni a helyreállítás automatizált biztonsági mentéséről, olvassa el [az adatbázis visszaállítása a szolgáltatás által kezdeményezett biztonsági másolatokból](sql-database-recovery-using-backups.md)című témakört.
+* A gyorsabb helyreállítási lehetőségek megismeréséhez lásd: [aktív földrajzi replikálás](sql-database-active-geo-replication.md) és [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md).
+* Az automatikus biztonsági mentések archiválásra történő használatáról az [adatbázis másolása](sql-database-copy.md)című témakörben olvashat bővebben.

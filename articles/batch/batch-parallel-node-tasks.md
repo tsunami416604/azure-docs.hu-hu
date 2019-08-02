@@ -16,10 +16,10 @@ ms.date: 04/17/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cc6a607da2227ecf9acd6209e31b7aa0ef1c62d8
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68323361"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Feladatok futtatása párhuzamosan a Batch számítási csomópontok használatának maximalizálása érdekében 
@@ -39,7 +39,7 @@ Példa a párhuzamos feladatok végrehajtásának előnyeinek szemléltetésére
 A standard\_D1-es és 1 CPU-csomópontok használata helyett olyan [szabványos\_D14](../cloud-services/cloud-services-sizes-specs.md) -csomópontokat használhat, amelyekben 16 mag van, és lehetővé teszi a párhuzamos feladatok végrehajtását. Ezért *16 alkalommal kevesebb csomópontot* lehet használni – a 1 000 csomópontok helyett csak 63 szükséges. Emellett, ha nagyméretű alkalmazásfájlok vagy hivatkozási adatok szükségesek az egyes csomópontokhoz, a feladatok időtartama és a hatékonyság ismét javul, mivel az adatok csak 63 csomópontokra másolódnak.
 
 ## <a name="enable-parallel-task-execution"></a>Párhuzamos feladatok végrehajtásának engedélyezése
-A számítási csomópontokat a készlet szintjén konfigurálhatja párhuzamos feladatok végrehajtásához. A Batch .net-kódtár használatával állítsa be a [CloudPool. MaxTasksPerComputeNode][maxtasks_net] property when you create a pool. If you are using the Batch REST API, set the [maxTasksPerNode][rest_addpool] elemet a kérelem törzsében a készlet létrehozása során.
+A számítási csomópontokat a készlet szintjén konfigurálhatja párhuzamos feladatok végrehajtásához. A Batch .NET-kódtár használatával készlet létrehozásakor állítsa be a [CloudPool. MaxTasksPerComputeNode][maxtasks_net] tulajdonságot. Ha a Batch-REST API használja, állítsa a [maxTasksPerNode][rest_addpool] elemet a kérelem törzsében a készlet létrehozása során.
 
 Azure Batch lehetővé teszi, hogy a csomópontok száma legfeljebb (4x) legyen a fő csomópontok számánál. Ha például a készlet a "Large" (négy mag) méretű csomópontokkal van konfigurálva, akkor `maxTasksPerNode` előfordulhat, hogy 16 értékre van állítva. Függetlenül attól, hogy a csomópont hány magot tartalmaz, a csomópontok száma legfeljebb 256 feladat lehet. A csomópontok méretével kapcsolatos további részletekért lásd: [Cloud Services méretei](../cloud-services/cloud-services-sizes-specs.md). A szolgáltatási korlátokkal kapcsolatos további információkért lásd: [kvóták és korlátozások a Azure batch szolgáltatáshoz](batch-quota-limit.md).
 
@@ -53,10 +53,10 @@ Ha a készletben lévő számítási csomópontok egyszerre hajtják végre a fe
 
 A [CloudPool. TaskSchedulingPolicy][task_schedule] tulajdonság használatával megadhatja, hogy a tevékenységek egyenletesen legyenek hozzárendelve a készlet összes csomópontján ("terjesztés"). Azt is megadhatja, hogy a lehető legtöbb feladat legyen hozzárendelve az egyes csomópontokhoz, mielőtt a feladatok hozzá vannak rendelve a készlet egy másik csomópontjára ("csomagolás").
 
-Példa erre a funkcióra, vegye figyelembe a [CloudPool. MaxTasksPerComputeNode][maxtasks_net] value of 16. If the [CloudPool.TaskSchedulingPolicy][task_schedule] [\_](../cloud-services/cloud-services-sizes-specs.md) [konfigurált standard D14-csomópontok készletét (a fenti példában). A ComputeNodeFillType][fill_type] maximalizálja az egyes csomópontok 16 maggal való használatát, és lehetővé teszi egy automatikus [skálázási készlet](batch-automatic-scaling.md) számára a nem használt csomópontok kivágását a készletből (a csomópontok nélkül hozzárendelt feladatokat). Ez csökkenti az erőforrás-használatot, és pénzt takarít meg.
+Példa erre a funkcióra, vegye figyelembe a [standard\_D14](../cloud-services/cloud-services-sizes-specs.md) -csomópontok készletét (a fenti példában), amely [CloudPool. MaxTasksPerComputeNode][maxtasks_net] értékkel van konfigurálva. 16. Ha a [CloudPool. TaskSchedulingPolicy][task_schedule] konfigurálva van egy [ComputeNodeFillType][fill_type] *, az*maximalizálja az egyes csomópontok 16 maggal való használatát, és lehetővé teszi az automatikus [skálázási készlet](batch-automatic-scaling.md) számára a nem használt csomópontok kivágását a készletből (a csomópontok nélkül minden hozzárendelt feladat). Ez csökkenti az erőforrás-használatot, és pénzt takarít meg.
 
 ## <a name="batch-net-example"></a>Batch .NET-példa
-Ez a [Batch .net][api_net] API code snippet shows a request to create a pool that contains four nodes with a maximum of four tasks per node. It specifies a task scheduling policy that will fill each node with tasks prior to assigning tasks to another node in the pool. For more information on adding pools by using the Batch .NET API, see [BatchClient.PoolOperations.CreatePool][poolcreate_net].
+Ez a [Batch .net][api_net] API-kódrészlet egy olyan készlet létrehozására vonatkozó kérést mutat be, amely egy csomóponton legfeljebb négy feladattal rendelkező négy csomópontot tartalmaz. Meghatározza azt a feladatütemezés-házirendet, amely minden egyes csomópontot kitölti a feladatok a készlet egy másik csomópontjára való hozzárendelését megelőzően. A készleteknek a Batch .NET API használatával történő hozzáadásával kapcsolatos további információkért lásd: [BatchClient. PoolOperations. CreatePool][poolcreate_net].
 
 ```csharp
 CloudPool pool =
@@ -72,7 +72,7 @@ pool.Commit();
 ```
 
 ## <a name="batch-rest-example"></a>Batch – REST-példa
-Ez a [köteg Rest][api_rest] API snippet shows a request to create a pool that contains two large nodes with a maximum of four tasks per node. For more information on adding pools by using the REST API, see [Add a pool to an account][rest_addpool].
+Ez a [Batch Rest][api_rest] API-kódrészlet egy olyan készlet létrehozására vonatkozó kérést mutat be, amely két nagy csomópontot tartalmaz, és legfeljebb négy feladattal rendelkezik. A készletek a REST API használatával történő hozzáadásával kapcsolatos további információkért lásd [a készlet hozzáadása egy fiókhoz][rest_addpool]című témakört.
 
 ```json
 {
@@ -95,7 +95,7 @@ Ez a [köteg Rest][api_rest] API snippet shows a request to create a pool that c
 >
 
 ## <a name="code-sample"></a>Kódminta
-A [ParallelNodeTasks][parallel_tasks_sample] project on GitHub illustrates the use of the [CloudPool.MaxTasksPerComputeNode][maxtasks_net] tulajdonság.
+A GitHubon a [ParallelNodeTasks][parallel_tasks_sample] -projekt az [CloudPool. MaxTasksPerComputeNode][maxtasks_net] tulajdonság használatát mutatja be.
 
 Ez C# a konzolszoftver a [Batch .net][api_net] -kódtár használatával hoz létre egy vagy több számítási csomóponttal rendelkező készletet. Konfigurálható számú feladatot hajt végre ezeken a csomópontokon a változó terhelésének szimulálása érdekében. Az alkalmazás kimenete határozza meg, hogy mely csomópontok hajtják végre az egyes feladatokat. Az alkalmazás a feladatok paramétereinek és időtartamának összegzését is tartalmazza. A minta alkalmazás két különböző futtatásának kimenetének összefoglaló része alább látható.
 

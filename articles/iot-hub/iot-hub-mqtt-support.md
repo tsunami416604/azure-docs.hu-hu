@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 0fc641431f97a12797d675a42a1a1b8b2355fcf0
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 9b1f0042f501cefc99343d53bbf2ad39f0ae1f4c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68440962"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640469"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hub használatával a MQTT protokollal
 
@@ -58,7 +58,7 @@ Ha ezt teszi, ellenőrizze a következő elemeket:
 
 * A AMQP számos feltételnél hibákat ad vissza, míg a MQTT megszakítja a kapcsolódást. Ennek eredményeképpen előfordulhat, hogy a kivételek kezelésére szolgáló logikának valamilyen módosításra van szüksége.
 
-* A MQTT nem támogatja az  elutasítási műveleteket a [felhőből az eszközre irányuló üzenetek](iot-hub-devguide-messaging.md)fogadásakor. Ha a háttér-alkalmazásnak választ kell kapnia az eszköz alkalmazástól, érdemes lehet [közvetlen módszereket](iot-hub-devguide-direct-methods.md)használni.
+* A MQTT nem támogatja az elutasítási műveleteket a [felhőből az eszközre irányuló üzenetek](iot-hub-devguide-messaging.md)fogadásakor. Ha a háttér-alkalmazásnak választ kell kapnia az eszköz alkalmazástól, érdemes lehet [közvetlen módszereket](iot-hub-devguide-direct-methods.md)használni.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>A MQTT protokoll használata közvetlenül (eszközként)
 
@@ -95,11 +95,11 @@ Ha egy eszköz nem tudja használni az eszköz SDK-kat, akkor továbbra is csatl
 
 ### <a name="for-device-explorer"></a>Device Explorer
 
-1. Lépjen a Device Explorer **felügyelet** lapjára .
+1. Lépjen a Device Explorer **felügyelet** lapjára.
 
 2. Kattintson a **sas-jogkivonat** (jobb felső) elemre.
 
-3. A **SASTokenForm**lapon válassza ki az eszközt a **DeviceID** legördülő menüből. Állítsa be az élettartamot.
+3. A **SASTokenForm**lapon válassza ki az eszközt a **DeviceID** legördülő menüből. Állítsa beaz élettartamot.
 
 4. A jogkivonat létrehozásához kattintson a **Létrehozás** gombra.
 
@@ -113,7 +113,7 @@ Ha egy eszköz nem tudja használni az eszköz SDK-kat, akkor továbbra is csatl
 
 A MQTT csatlakoztatásához és a csomagok leválasztásához IoT Hub a **műveletek figyelése** csatornán eseményt ad ki. Ez az esemény további információkat tartalmaz, amelyek segíthetnek a kapcsolódási problémák elhárításában.
 
-Az alkalmazás megadhat **egy üzenetet** a csatlakoztatási csomagban  . Az alkalmazásnak `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` a téma nevének meg kell egyeznie, hogy a **rendszer** telemetria üzenetként továbbítsa az üzeneteket. Ebben az esetben, ha a hálózati kapcsolat be van zárva, de  a leválasztási csomag korábban nem érkezett meg az eszközről, a IoT hub elküldi a telemetria csatornához a kapcsolódási csomagban **megadott üzenetet.** Az telemetria csatorna az alapértelmezett **események** végpontja vagy IoT hub útválasztás által definiált egyéni végpont lehet. Az üzenet a **iothub-MessageType** tulajdonsággal rendelkezik, amelynek a értéke hozzá **lesz** rendelve.
+Az alkalmazás megadhat **egy üzenetet** a csatlakoztatási csomagban . Az alkalmazásnak `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` a téma nevének meg kell egyeznie, hogy a **rendszer** telemetria üzenetként továbbítsa az üzeneteket. Ebben az esetben, ha a hálózati kapcsolat be van zárva, de a leválasztási csomag korábban nem érkezett meg az eszközről, a IoT hub elküldi a telemetria csatornához a kapcsolódási csomagban **megadott üzenetet.** Az telemetria csatorna az alapértelmezett **események** végpontja vagy IoT hub útválasztás által definiált egyéni végpont lehet. Az üzenet a **iothub-MessageType** tulajdonsággal rendelkezik, amelynek a értéke hozzá **lesz** rendelve.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>A MQTT protokoll használata közvetlenül (modulként)
 
@@ -196,6 +196,10 @@ client.publish("devices/" + device_id + "/messages/events/", "{id=123}", qos=1)
 client.loop_forever()
 ```
 
+Az előfeltételek a következő telepítési utasításokkal rendelkeznek.
+
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+
 ## <a name="sending-device-to-cloud-messages"></a>Eszközről a felhőbe irányuló üzenetek küldése
 
 A sikeres kapcsolódást követően az eszközök üzeneteket küldhetnek IoT hub `devices/{device_id}/messages/events/` a vagy `devices/{device_id}/messages/events/{property_bag}` a **témakör neveként**. Az `{property_bag}` elem lehetővé teszi, hogy az eszköz további tulajdonságokkal rendelkező üzeneteket küldjön URL-kódolású formátumban. Példa:
@@ -211,7 +215,7 @@ Az alábbi lista a IoT Hub implementáció-specifikus viselkedéseit sorolja fel
 
 * A IoT Hub nem támogatja a QoS 2 üzeneteit. Ha egy eszköz egy, a **QoS 2**eszközzel közzétett üzenetet tesz közzé, IoT hub zárja be a hálózati kapcsolatokat.
 
-* A IoT Hub nem tartja fenn az üzenetek megőrzését. Ha egy eszköz a megőrzési jelzővel  ellátott üzenetet küld az 1 értékre, IoT hub hozzáadja az alkalmazáshoz az **x-opt-retain** Application tulajdonságot az üzenethez. Ebben az esetben a megőrzött üzenet megőrzése helyett a IoT Hub átadja a háttérbeli alkalmazásnak.
+* A IoT Hub nem tartja fenn az üzenetek megőrzését. Ha egy eszköz a megőrzési jelzővel ellátott üzenetet küld az 1 értékre, IoT hub hozzáadja az alkalmazáshoz az **x-opt-retain** Application tulajdonságot az üzenethez. Ebben az esetben a megőrzött üzenet megőrzése helyett a IoT Hub átadja a háttérbeli alkalmazásnak.
 
 * A IoT Hub eszközön csak egy aktív MQTT-kapcsolatok támogatottak. Az azonos eszköz AZONOSÍTÓjának nevében az új MQTT-kapcsolatok IoT Hub a meglévő kapcsolatok eldobásához.
 
@@ -330,7 +334,7 @@ További információ: [Device ikrek fejlesztői útmutatója](iot-hub-devguide-
 
 Először is elő kell fizetnünk `$iothub/methods/POST/#`az eszközre. IoT hub metódus-kérelmeket küld a `$iothub/methods/POST/{method name}/?$rid={request id}`témakörnek, érvényes JSON-val vagy üres törzstel.
 
-A válaszadáshoz az eszköz egy érvényes JSON-vagy üres törzsű üzenetet küld a témakörnek `$iothub/methods/res/{status}/?$rid={request id}`. Ebben az üzenetben a **kérelem azonosítójának** egyeznie kell a kérelem üzenetében szereplővel  , és az állapotnak egész számnak kell lennie.
+A válaszadáshoz az eszköz egy érvényes JSON-vagy üres törzsű üzenetet küld a témakörnek `$iothub/methods/res/{status}/?$rid={request id}`. Ebben az üzenetben a **kérelem azonosítójának** egyeznie kell a kérelem üzenetében szereplővel , és az állapotnak egész számnak kell lennie.
 
 További információ: a [közvetlen módszer fejlesztői útmutatója](iot-hub-devguide-direct-methods.md).
 

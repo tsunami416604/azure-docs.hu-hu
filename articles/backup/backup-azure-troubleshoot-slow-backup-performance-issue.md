@@ -1,18 +1,19 @@
 ---
 title: Az Azure Backup-fájlok és -mappák lassú biztonsági mentésének hibaelhárítása
 description: Hibaelhárítási útmutatót biztosít a Azure Backup teljesítményproblémák okának diagnosztizálásához
-author: saurabhsensharma
-manager: saurabhsensharma
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.author: saurse
-ms.openlocfilehash: 3a39d39412c8b64d1851ea0fc9511d116f3b232a
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: dacurwin
+ms.openlocfilehash: 16a8eb4eea4e5e1e3bb49049c49d73adb99eef55
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/31/2019
-ms.locfileid: "68465341"
+ms.locfileid: "68688616"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Az Azure Backup-fájlok és -mappák lassú biztonsági mentésének hibaelhárítása
 Ez a cikk hibaelhárítási útmutatást nyújt a fájlok és mappák lassú biztonsági mentési teljesítményének okának diagnosztizálásához Azure Backup használatakor. Ha a Azure Backup ügynök használatával készít biztonsági másolatot a fájlokról, a biztonsági mentési folyamat a vártnál több időt vehet igénybe. Ezt a késleltetést a következők egyike okozhatja:

@@ -1,18 +1,19 @@
 ---
 title: SQL Server munkaterhelések biztonsági mentése Azure Stack
 description: A Azure Backup Server használatával biztosíthatja SQL Server számítási feladatait Azure Stack.
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
-ms.author: adigan
-ms.openlocfilehash: 11d03a9c5cc81b915f48bc66f5a0e5ab034662ed
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 3b116e25635873429dd164288c2764fd76c8f7a7
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465162"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689000"
 ---
 # <a name="back-up-sql-server-on-stack"></a>SQL Server biztonsági mentése a veremben
 Ebből a cikkből megtudhatja, Microsoft Azure Backup-kiszolgáló (MABS) SQL Server-adatbázisok védelméhez Azure Stack.

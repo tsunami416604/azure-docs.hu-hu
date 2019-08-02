@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Data Warehouse kibocsátási megjegyzések a 2018 június |} A Microsoft Docs
-description: Kibocsátási megjegyzések az Azure SQL Data warehouse-hoz.
+title: Azure SQL Data Warehouse kibocsátási megjegyzések 2018. június | Microsoft Docs
+description: A Azure SQL Data Warehouse kibocsátási megjegyzései.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,21 +11,21 @@ ms.date: 07/23/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4348a634fd5b2b33f36d8e79f28caf659b82ccf4
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67626152"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Mi az új Azure SQL Data warehouse? 2018. június
-Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 június. 
+# <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>A Azure SQL Data Warehouse újdonságai 2018. június
+Azure SQL Data Warehouse folyamatosan fejleszti a fejlesztési funkciókat. Ez a cikk a 2018-es júniusban bevezetett új szolgáltatásokat és módosításokat ismerteti. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="user-defined-restore-points"></a>Felhasználó által definiált visszaállítási pontok
-Az SQL Data Warehouse szolgáltatás automatikusan pillanatképeket készít az adatraktárról garantáló egy 8 órás helyreállításipont-célkitűzés (RPO) 8 óránként. Amíg ez a felügyeleti terheket, az adattárház futó automatikus pillanatfelvételek egyszerű, szükség van a pillanatfelvételt a üzleti igények alapján kritikus időpontokban. Ha például pillanatképének elkészítése közvetlenül egy jelentős az adatok betöltése vagy új parancsfájl központi telepítése előtt, közvetlenül a művelet előtt visszaállítási pont engedélyezése a data warehouse-bA. 
+A SQL Data Warehouse 8 óránként automatikusan pillanatképeket küld az adattárházról, amely garantálja a nyolc órás helyreállítási időcélkitűzést (RPO). Habár az automatizált Pillanatképek megkönnyítik az adatraktár futtatásának kezelési terheit, az üzleti igényeknek megfelelően a kritikus időpontokban pillanatképeket kell készítenie. Például egy pillanatképet közvetlenül a jelentős adatterhelés előtt, vagy az új parancsfájlok az adatraktárba történő üzembe helyezése előtt, hogy egy visszaállítási pont közvetlenül a művelet előtt legyen engedélyezve. 
 
-Az SQL Data Warehouse mostantól támogatja [felhasználói visszaállítási pontok](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) keresztül a [New-AzSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint) parancsmagot.
+A SQL Data Warehouse mostantól támogatja a [felhasználó által definiált visszaállítási pontokat](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) a [New-AzSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint) parancsmagon keresztül.
 
 ```powershell
 New-AzSqlDatabaseRestorePoint
@@ -35,10 +35,10 @@ New-AzSqlDatabaseRestorePoint
     -RestorePointLabel $RestorePointName
 ```
 
-## <a name="column-level-security"></a>Oszlop biztonság
-Adathozzáférés és az adattárház biztonsági kezelése fontos az ügyfelek és partnerek számára a bizalmi kapcsolat létrehozásához. Az SQL Data Warehouse [mostantól támogatja az oszlopszintű biztonsági (CLS)](https://azure.microsoft.com/blog/column-level-security-is-now-supported-in-azure-sql-data-warehouse/) , amely lehetővé teszi, ha az adattárház újratervezés nélkül korlátozza a felhasználói hozzáférést az adott oszlopok a táblázatokban lévő bizalmas adatok megtekintéséhez szükséges engedélyekkel.
+## <a name="column-level-security"></a>Oszlop szintű biztonság
+Az adattárházban az adathozzáférés és a biztonság kezelése kritikus fontosságú az ügyfelekkel és partnerekkel való bizalom kiépítésekor. SQL Data Warehouse [mostantól támogatja az oszlop szintű biztonságot (CLS)](https://azure.microsoft.com/blog/column-level-security-is-now-supported-in-azure-sql-data-warehouse/) , amely lehetővé teszi a bizalmas adatok megtekintésére vonatkozó engedélyek módosítását azáltal, hogy az adattárház újratervezése nélkül korlátozza a felhasználók hozzáférését a táblák adott oszlopaihoz.
 
-CLS lehetővé teszi, hogy ki férhet hozzá a táblázat oszlopaihoz szabvány használatával a felhasználó a végrehajtási környezet vagy a csoporttagság alapján [GRANT](https://docs.microsoft.com/azure/sql-data-warehouse/column-level-security) T-SQL-utasítással. A hozzáférés korlátozási logika megtalálható az adatbázisszinten, saját maga helyett egy másik alkalmazás adatait a forrásadatok leegyszerűsíti a teljes biztonsági végrehajtására.
+A CLS lehetővé teszi a táblázat oszlopaihoz való hozzáférés szabályozását a felhasználó végrehajtási környezete vagy a csoporttagság alapján [a standard szintű](https://docs.microsoft.com/azure/sql-data-warehouse/column-level-security) T-SQL-utasítás használatával. A hozzáférés-korlátozási logika maga az adatbázis rétegében található, nem pedig a más alkalmazásokban lévő adatoktól, így egyszerűbbé válik a teljes biztonsági implementáció.
 
 
 ```sql
@@ -52,7 +52,7 @@ The SELECT permission was denied on the column 'SSN' of the object 'Membership',
 ```
 
 ## <a name="objectschemaname"></a>OBJECT_SCHEMA_NAME
-A [OBJECT_SCHEMA_NAME()](https://docs.microsoft.com/sql/t-sql/functions/object-schema-name-transact-sql) függvény séma hatókörébe tartozó objektumok sémájának nevét adja vissza. Ez a függvény vált az ETL-eszközök gyakori objektum séma érvényesítése. 
+A [OBJECT_SCHEMA_NAME ()](https://docs.microsoft.com/sql/t-sql/functions/object-schema-name-transact-sql) függvény a séma hatókörű objektumaihoz tartozó adatbázis-séma nevét adja vissza. Ez a függvény az ETL-eszközökben az objektum sémájának érvényesítése során lett meghatározva. 
 
 ```sql
 SELECT
@@ -62,7 +62,7 @@ FROM
     [sys].[tables];
 ```
 
-**Példa eredmények**
+**Minták eredményei**
 ```
 table_schema    | table_name
 -----------------------------
@@ -72,14 +72,14 @@ dbo               nation
 dbo               orders
 ```
 
-## <a name="support-for-the-systimezoneinfo-view"></a>A sys.time_zone_info nézet támogatása
-A [sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) megtekintése az Azure SQL Data Warehouse belül támogatott időzónák kapcsolatos információkat ad vissza.
+## <a name="support-for-the-systimezoneinfo-view"></a>A sys. time_zone_info nézet támogatása
+A [sys. time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) nézet a Azure SQL Data Warehouseon belüli támogatott időzónákra vonatkozó adatokat adja vissza.
 
 ```sql
 SELECT * FROM [sys].[time_zone_info];
 ```
 
-**Példa eredmények**
+**Minták eredményei**
 ```
 name                            | current_utc_offset | is_currently_dst
 -------------------------------------------------------------------------
@@ -89,9 +89,9 @@ Mountain Standard Time (Mexico)   -06:00               1
 Central Standard Time             -05:00               1
 ```
 
-## <a name="auto-stats-operations-appear-in-sysdmpdwexecrequests-behavior-change"></a>Az automatikus statisztikák műveletek jelennek meg sys.dm_pdw_exec_requests (viselkedésének módosítása)
+## <a name="auto-stats-operations-appear-in-sysdmpdwexecrequests-behavior-change"></a>Az automatikus stats műveletek megjelennek a sys. DM _pdw_exec_requests (viselkedés változása)
 
-Bevezetésével [automatikus Create Statistics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic), Azure SQL Data Warehouse optimalizálhatja a lekérdezés-végrehajtás statisztikai hoz létre. A 2018 június kiadás fájltulajdonságainak figyelheti, hogy mikor statisztikái is automatikusan létrehozott, egy rekord hozzáadásával a [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) megtekintése, amikor bármelyik [CREATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql) művelet végrehajtása.
+Az [automatikus létrehozási statisztikák](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)bevezetésével a Azure SQL Data Warehouse statisztikát készít a lekérdezés-végrehajtás optimalizálásához. A június 2018-os kiadással megfigyelhető, hogy mikor történik a statisztikák automatikus létrehozása azáltal, hogy hozzáad egy rekordot a [sys. DM _pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) -nézethez, amikor a [create Statistics](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql) művelet végrehajtása folyamatban van.
 
 ```sql
 SELECT
@@ -103,7 +103,7 @@ FROM
 WHERE
     [command] LIKE 'CREATE STATISTICS _WA_Sys%';
 ```
-**Példa eredmények**
+**Minták eredményei**
 ```
 start_time                | end_time                | command
 ------------------------------------------------------------------------------------------------------------------------------
@@ -111,7 +111,7 @@ start_time                | end_time                | command
 ```
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy jobban megismerte az SQL Data warehouse, ismerje meg, hogyan lehet gyorsan [hozzon létre egy SQL Data Warehouse][create a SQL Data Warehouse] . If you are new to Azure, you may find the [Azure glossary][Azure glossary] , amikor új fogalmakkal ismerkedik. Vagy tekintsen meg néhányat a többi SQL Data Warehouse-erőforrás közül.  
+Most, hogy már ismeri a SQL Data Warehouset, megtudhatja, hogyan [hozhat létre gyorsan egy SQL Data Warehouse][create a SQL Data Warehouse]. Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét][Azure glossary], amikor az új fogalmakkal ismerkedik. Vagy tekintsen meg néhányat a többi SQL Data Warehouse-erőforrás közül.  
 
 * [Ügyfelek sikertörténetei]
 * [Blogok]

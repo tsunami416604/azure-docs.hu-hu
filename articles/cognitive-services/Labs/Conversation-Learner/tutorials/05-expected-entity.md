@@ -1,7 +1,7 @@
 ---
-title: A "Várt entitás" tulajdonság a beszélgetés Learner műveletek – a Microsoft Cognitive Services használatával |} A Microsoft Docs
+title: Conversation Learner műveletek "várt entitás" tulajdonságának használata – Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg, hogyan használja a "Várt entitás" tulajdonságot a beszélgetés Learner modell.
+description: Megtudhatja, hogyan használhatja egy Conversation Learner modell "várt entitás" tulajdonságát.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,106 +10,107 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 48a8abd401ff7191da4709c726042b566d140b78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5fbe4f09d377b9f157368184ab26341782e9aed1
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387821"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707318"
 ---
-# <a name="how-to-use-the-expected-entity-property-of-actions"></a>A "Várt entitás" tulajdonság a műveletek használata
+# <a name="how-to-use-the-expected-entity-property-of-actions"></a>A műveletek "várt entitás" tulajdonságának használata
 
-Ez az oktatóanyag bemutatja a "Várt entitás" tulajdonság a műveletek.
+Ez az oktatóanyag a műveletek "várt entitás" tulajdonságát mutatja be.
 
 ## <a name="video"></a>Videó
 
-[![Várt entitás oktatóanyag előzetes verzió](https://aka.ms/cl_Tutorial_v3_ExpectedEntity_Preview)](https://aka.ms/cl_Tutorial_v3_ExpectedEntity)
+[![A várt entitás-oktatóanyag előzetes verziója](https://aka.ms/cl_Tutorial_v3_ExpectedEntity_Preview)](https://aka.ms/cl_Tutorial_v3_ExpectedEntity)
 
 ## <a name="requirements"></a>Követelmények
-Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
+Ehhez az oktatóanyaghoz az általános oktatóanyag robotjának futtatására van szükség
 
     npm run tutorial-general
 
 ## <a name="details"></a>Részletek
-Egy művelet a "Várt entitás" tulajdonság használatával a felhasználó válaszát, ez a művelet az entitás mentéséhez.
+Egy művelet "várt entitás" tulajdonságával mentse a felhasználó válaszát erre a műveletre egy entitásba.
 
-Entitások hozzáadása egy művelet a "Várt entitás" tulajdonság, a rendszer fogja végrehajtani:
+Ha entitásokat ad hozzá egy művelet "várt entitás" tulajdonságához, a rendszer a következőt fogja:
 
-1. Első lépésként felel meg a machine learning segítségével entitásokat próbál alapú entitás kinyerési modell
-2. A teljes felhasználói utterance (kifejezés) hozzárendelése $entity heurisztika alapján, ha nincsenek entitások találhatók
-3. Hívás `EntityDetectionCallback`, és folytathatja a művelet kiválasztása.
+1. Első lépésként próbálja meg egyeztetni az entitásokat a gépi tanuláson alapuló entitás-kinyerési modell használatával
+2. A teljes felhasználói Kimondás kiosztása $entity a heurisztikus elemek alapján, ha nem találhatók entitások
+3. Hívást `EntityDetectionCallback`, és folytassa a művelet kiválasztásával.
 
 ## <a name="steps"></a>Lépések
 
 ### <a name="create-the-model"></a>A modell létrehozása
 
-1. A webes felhasználói felületén kattintson az "új Model" kifejezésekre.
-2. A "Name" mezőben írja be a "ExpectedEntities" és az enter.
-3. A "Létrehozás" gombra.
+1. A webes felhasználói felületen kattintson az "új modell" elemre.
+2. A "név" mezőbe írja be a "ExpectedEntities" kifejezést, és nyomja le az ENTER billentyűt.
+3. Kattintson a "létrehozás" gombra.
 
 ### <a name="entity-creation"></a>Entitás létrehozása
 
-1. A bal oldali panelen kattintson a "Entitás", majd az "Új entitás" gombra.
-2. Válassza ki a "Custom betanított" a "entitástípus."
-3. Írja be a "name" a "entitás neve."
-4. A "Létrehozás" gombra.
+1. A bal oldali panelen kattintson az "entitások", majd az "új entitás" gombra.
+2. Válassza a "Custom betanítva" lehetőséget az "entitás típusa" elemnél.
+3. Írja be a "Name" kifejezést az "entitás neve" értékre.
+4. Kattintson a "létrehozás" gombra.
 
 > [!NOTE]
-> A "Custom betanított" entitástípus azt jelenti, hogy az entitás is vélik, ellentétben más típusú entitásokat.
+> A "Custom betanított" entitás típusa azt jelenti, hogy ez az entitás kitanítható, más típusú entitásokkal ellentétben.
 
 ![](../media/tutorial4_entities.PNG)
 
 ### <a name="create-the-first-action"></a>Az első művelet létrehozása
 
-1. A bal oldali panelen kattintson a "Műveletek", majd az "Új Action" gombra.
-2. A "Bot a válaszban..." mezőbe írja be a "Mi a neve?"
-3. A "Várt entitások" mezőbe írja be a "name".
-4. A "Létrehozás" gombra.
+1. A bal oldali panelen kattintson a "műveletek", majd az "új művelet" gombra.
+2. A "bot válaszában..." mezőjébe írja be a "mi a neve?" kifejezést.
+3. A "várt entitások" mezőben írja be a "név" kifejezést.
+4. Kattintson a "létrehozás" gombra.
 
 > [!NOTE]
-> Entitások észlelt, és a felhasználói válaszra kinyert menti a rendszer a "name" entitást, ha ez a művelet akkor kell kiválasztani. Nincsenek entitások észlelése esetén a teljes választ menti az entitás.
+> A felhasználó válaszában észlelt és kinyert entitásokat a rendszer a "név" entitásba menti, ha ezt a műveletet választja. Ha egyetlen entitás sincs észlelve, a rendszer a teljes választ menti az entitásba.
 
 ### <a name="create-the-second-action"></a>A második művelet létrehozása
 
-1. A bal oldali panelen kattintson a "Műveletek", majd az "Új Action" gombra.
-2. A "Bot a válaszban..." mezőbe írja be a "Hi $name!"
-3. A "Létrehozás" gombra.
+1. A bal oldali panelen kattintson a "műveletek", majd az "új művelet" gombra.
+2. A "bot válaszában..." mezőjébe írja be a "Hi $name!" kifejezést.
+3. Kattintson a "létrehozás" gombra.
 
 > [!NOTE]
-> A "name" entitás a rendszer automatikusan felvette entitásokként egy"szükséges" hivatkozással a válaszban.
+> A válaszban a "Name" entitást a rendszer automatikusan hozzáadta "kötelező entitásként".
 
-Most már két műveletet.
+Most már két művelettel rendelkezik.
 
 ![](../media/tutorial4_actions.PNG)
 
-### <a name="train-the-model"></a>A modell betanítását
+### <a name="train-the-model"></a>A modell betanítása
 
-1. A bal oldali panelen kattintson a "Train-párbeszédpanelekhez", majd az "új Train" gomb.
-2. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", típus a "hi."
-    - Ez szimulálja a beszélgetést a felhasználó oldalán.
-3. A "Score műveletek" gombra.
-4. Válassza ki a választ, "Mi a neve?"
-    - A "Hi $name!" válasz nem lehet kiválasztani, mivel ez a válasz a "name" entitás kell definiálni a modell memória most van szükség.
-5. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", "Frank". a típus
-    - Egy entitás alapján a heurisztika beállítottuk a válasz mentse őket az entitás korábbi, "Frank" kiemelve.
-6. A "Score műveletek" gombra.
-    - A "name" entitás most típusúként van definiálva "Frank" memória a modell, tehát a "Hello $name" művelet választható műveletet.
-7. Válassza ki a választ, a "Hi $name!"
-8. A "Mentés" gombra.
+1. A bal oldali panelen kattintson a "betanítási párbeszédablakok", majd az "új vonat párbeszédpanel" gombra.
+2. Írja be a "Hi" kifejezést a csevegés panelen, ahol a "begépelheti az üzenetet..." kifejezést.
+    - Ez szimulálja a beszélgetés felhasználójának oldalát.
+3. Kattintson a "pontszám műveletek" gombra.
+4. Válassza ki a választ: "mi a neve?"
+    - A "Hi $name!" a válasz nem jelölhető ki, mert ehhez a válaszhoz a modell memóriájában definiálni kell a "Name" entitást.
+5. A csevegés panelen írja be az "üzenet beírása..." kifejezést, írja be a következőt: "Frank".
+    - A "Frank" ki van emelve egy entitásként a korábban beállított heurisztikus alapján, hogy mentse a választ entitásként.
+6. Kattintson a "pontszám műveletek" gombra.
+    - A "név" entitás most "Frank"-ként van definiálva a modell memóriájában, így a "Hello $name" művelet műveletként választható ki.
+7. Válassza ki a választ, "Szia $name!"
+8. Kattintson a Save (Mentés) gombra.
 
-A modell hozzáadása a további vonatok alternatív bemenetei között.
+Alternatív bemenetek hozzáadása további vonatok a modellt.
 
-1. Az "Add alternatív beviteli..." mezőben írja be a "Vagyok Jose."
-    - A modell nem ismeri fel a nevet egy egységként így kijelöli a teljes szöveges letiltása az entitás értékként
-2. Kattintson a "Vagyok Jose" kifejezést, majd kattintson a Kuka ikonra.
-3. Kattintson a "Jose", majd kattintson a "name" entitás listájából.
-4. Kattintson a pontszám műveletek.
-5. Válassza ki a választ, "Frank Üdvözöljük!"
-6. A "Mentés" gombra.
+1. Az "alternatív bemenet hozzáadása..." mezőjébe írja be az "I 'm Jose" kifejezést.
+    - A modell nem ismeri fel a nevet entitásként, így a teljes szöveges blokkot kiválasztja az entitás értékeként.
+2. Kattintson a "I 'm Jose" kifejezésre, majd kattintson a Kuka ikonra.
+3. Kattintson a "Jose", majd a "név" elemre az entitások listájáról.
+4. Kattintson a pontszám műveletek elemre.
+5. Válassza ki a választ, "Szia Frank!"
+6. Kattintson a Save (Mentés) gombra.
 
 ![](../media/tutorial4_dialogs.PNG)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Negálható entitások](./06-negatable-entities.md)
+> [Megtagadható entitások](./06-negatable-entities.md)

@@ -10,10 +10,10 @@ ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 502f178b66e7ba233552d7db4e095363c8bb8628
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325564"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Üzembe helyezés a Azure Container Instances Azure Container Registry
@@ -32,7 +32,7 @@ Bármilyen éles környezetben az Azure Container Registry elérését [egyszer�
 
 A következő szakaszban létrehoz egy Azure Key vaultot és egy szolgáltatásnevet, és tárolja az egyszerű szolgáltatásnév hitelesítő adatait a tárolóban. 
 
-### <a name="create-key-vault"></a>Kulcstároló létrehozása
+### <a name="create-key-vault"></a>Kulcstartó létrehozása
 
 Ha még nem rendelkezik tárolóval az [Azure Key Vaultban](../key-vault/key-vault-overview.md), hozzon létre egyet az Azure CLI alábbi parancsaival.
 
@@ -50,7 +50,7 @@ az keyvault create -g $RES_GROUP -n $AKV_NAME
 
 Létre kell hoznia egy szolgáltatásnevet, és el kell tárolnia annak hitelesítő adatait a kulcstárolóban.
 
-A következő parancs az [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] to create the service principal, and [az keyvault secret set][az-keyvault-secret-set] parancsot használja az egyszerű szolgáltatásnév **jelszavának** tárolására a tárolóban.
+A következő parancs az [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] használatával hozza létre az egyszerű szolgáltatásnevet, és az az Key [Vault Secret set][az-keyvault-secret-set] paranccsal tárolja a szolgáltatásnév **jelszavát** a tárolóban.
 
 ```azurecli
 # Create service principal, store its password in AKV (the registry *password*)
@@ -80,7 +80,7 @@ az keyvault secret set \
 Létrehozott egy Azure Key Vault-tárolót, és eltárolt benne két titkos kulcsot:
 
 * `$ACR_NAME-pull-usr`: Az egyszerű szolgáltatásnév azonosítója, amelyet tároló-beállításjegyzékbeli **felhasználónévként**kell használni.
-* `$ACR_NAME-pull-pwd`: A szolgáltatás egyszerű jelszava, a tároló-beállításjegyzék jelszavaként való használathoz.
+* `$ACR_NAME-pull-pwd`: A szolgáltatás egyszerű jelszava, a tároló-beállításjegyzék jelszavakéntvaló használathoz.
 
 Innentől ezekre a titkos kulcsokra név alapján hivatkozhat, amikor Ön vagy az alkalmazások és szolgáltatások rendszerképeket kérnek le a regisztrációs adatbázisból.
 

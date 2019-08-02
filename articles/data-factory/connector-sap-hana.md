@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az SAP HANA az Azure Data Factory használatával |} A Microsoft Docs
-description: Megtudhatja, hogyan másolhat adatokat a SAP HANA támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
+title: Adatok másolása SAP HANAból Azure Data Factory használatával | Microsoft Docs
+description: Megtudhatja, hogyan másolhat adatok SAP HANAból a támogatott fogadó adattárakba egy Azure Data Factory-folyamat másolási tevékenységének használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,62 +10,104 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: cdd83c3ff9d34a5e8b7f2c164136ab82f498ffb5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e9b024fc3c07670201cf72cf80c0b69bf68f1cc8
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343766"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726002"
 ---
-# <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával az SAP HANA
-> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
+# <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Adatok másolása SAP HANA használatával Azure Data Factory
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-sap-hana-connector.md)
 > * [Aktuális verzió](connector-sap-hana.md)
 
-Ez a cikk ismerteti az Azure Data Factory a másolási tevékenység adatokat másol egy SAP HANA-adatbázis használata. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok SAP HANA-adatbázisból történő másolásához. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-Az SAP HANA-adatbázis adatok másolhatja bármely támogatott fogadó adattárba. A másolási tevékenység által források/fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Az adatok másolása SAP HANA adatbázisból bármely támogatott fogadó adattárba. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
-Pontosabban az SAP HANA összekötő támogatja:
+Pontosabban, ez az SAP HANA-összekötő a következőket támogatja:
 
-- Az adatok másolása az SAP HANA-adatbázis bármely verzióját.
-- Másolhat adatokat **HANA információk modellek** (például az elemzési és számítási nézeteket), és **sorhoz/oszlophoz táblák** SQL-lekérdezések használatával.
-- Másolja az adatokat az **alapszintű** vagy **Windows** hitelesítést.
+- Adatok másolása SAP HANA adatbázis bármely verziójáról.
+- Adatok másolása a **HANA-információs modellből** (például analitikai és számítási nézetből) és **sor/oszlop táblákból**.
+- Adatok másolása az alapszintű vagy a **Windows** -hitelesítéssel.
 
-> [!NOTE]
-> Adatok másolása **be** SAP HANA-adatok tárolására, általános ODBC-összekötő használatára. Lásd: [SAP HANA fogadó](connector-odbc.md#sap-hana-sink) adatokkal. Megjegyzés: a társított szolgáltatások, a SAP HANA-összekötő és az ODBC-összekötő rendelkező más típusú, ezért nem használható fel újra.
+> [!TIP]
+> Az Adatmásolás **SAP HANA** adattárba való másolásához használja az általános ODBC-összekötőt. További részletek: [SAP HANA](connector-odbc.md#sap-hana-sink) fogadó. Figyelje meg, hogy SAP HANA összekötőhöz társított szolgáltatások és az ODBC-összekötő eltérő típusú, ezért nem használható fel újra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az SAP HANA-összekötő használatához meg kell:
+A SAP HANA-összekötő használatához a következőket kell tennie:
 
-- Egy helyi Integration Runtime beállítása. Lásd: [helyi Integration Runtime](create-self-hosted-integration-runtime.md) részleteivel.
-- Telepítse az SAP HANA ODBC-illesztőt a saját üzemeltetésű integrációs gépen. Az SAP HANA ODBC-illesztőprogramot az letöltheti a [SAP Software Download Center](https://support.sap.com/swdc). A keresést a kulcsszóval **SAP HANA CLIENT for Windows**.
+- Saját üzemeltetésű Integration Runtime beállítása. Lásd: [helyi Integration Runtime](create-self-hosted-integration-runtime.md) részleteivel.
+- Telepítse a SAP HANA ODBC-illesztőt a Integration Runtime gépen. Az SAP HANA ODBC-illesztőprogramot az [SAP Software Download Center](https://support.sap.com/swdc)webhelyről töltheti le. Keressen rá a **Windows-ügyfél kulcsszava SAP HANA**.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Az alábbi szakaszok nyújtanak, amelyek meghatározzák az adott Data Factory-entitások SAP HANA-összekötő-tulajdonságokkal kapcsolatos részletekért.
+A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, amelyek Data Factory SAP HANA-összekötőhöz tartozó entitások definiálásához használatosak.
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-SAP HANA-beli társított szolgáltatás a következő tulajdonságok támogatottak:
+SAP HANA társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **SapHana** | Igen |
-| server | A kiszolgálóra, amelyen az SAP HANA-példány neve. Ha a kiszolgáló egy egyéni portot használ, adja meg a `server:port`. | Igen |
-| authenticationType | Az SAP HANA-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű**, és **Windows** | Igen |
-| userName | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó nevét. | Igen |
-| password | A felhasználó jelszava. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
-| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Egy helyi Integration Runtime szükség, az említett [Előfeltételek](#prerequisites). |Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **SapHana** | Igen |
+| connectionString | Adjon meg olyan információt, amely az alapszintű **hitelesítés** vagy a **Windows-hitelesítés**használatával a SAP HANAhoz való kapcsolódáshoz szükséges. Tekintse át a következő mintákat.<br>A kapcsolódási karakterláncban a kiszolgáló/port kötelező (az alapértelmezett port 30015), és a Felhasználónév és a jelszó megadása kötelező, ha alapszintű hitelesítést használ. További speciális beállításokért lásd: [SAP HANA ODBC-kapcsolatok tulajdonságai](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)<br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a jelszó konfigurációját a kapcsolatok karakterláncán kívül. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
+| userName | Windows-hitelesítés használata esetén adja meg a felhasználónevet. Például: `user@domain.com` | Nem |
+| password | A felhasználói fiók jelszavának megadása. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
 
-**Példa**
+**Példa: egyszerű hitelesítés használata**
+
+```json
+{
+    "name": "SapHanaLinkedService",
+    "properties": {
+        "type": "SapHana",
+        "typeProperties": {
+            "connectionString": "SERVERNODE=<server>:<port (optional)>;UID=<userName>;PWD=<Password>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Példa: Windows-hitelesítés használata**
+
+```json
+{
+    "name": "SapHanaLinkedService",
+    "properties": {
+        "type": "SapHana",
+        "typeProperties": {
+            "connectionString": "SERVERNODE=<server>:<port (optional)>;",
+            "userName": "<username>", 
+            "password": { 
+                "type": "SecureString", 
+                "value": "<password>" 
+            } 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+Ha SAP HANA társított szolgáltatást használta a következő hasznos adattartalommal, akkor továbbra is támogatott, miközben a rendszer azt javasolja, hogy az új továbbítást használja.
+
+**Példa:**
 
 ```json
 {
@@ -91,40 +133,53 @@ SAP HANA-beli társított szolgáltatás a következő tulajdonságok támogatot
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságainak teljes listájáért tekintse meg az adatkészletek a cikk. Ez a szakasz az SAP HANA-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listájáért tekintse meg az adatkészletek a cikk. Ez a szakasz a SAP HANA adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása az SAP HANA, állítsa be a type tulajdonság, az adatkészlet **RelationalTable**. Noha nem támogatott, az SAP HANA-adatkészlet típusa jellemző tulajdonságok írja be a RelationalTable.
+Az adatok SAP HANAból történő másolásához a következő tulajdonságok támogatottak:
 
-**Példa**
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SapHanaTable** | Igen |
+| schema | A séma neve a SAP HANA adatbázisban. | Nem (Ha a tevékenység forrása az "query" van megadva) |
+| table | A SAP HANA adatbázisban található tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
+
+**Példa:**
 
 ```json
 {
     "name": "SAPHANADataset",
     "properties": {
-        "type": "RelationalTable",
+        "type": "SapHanaTable",
+        "typeProperties": {
+            "schema": "<schema name>",
+            "table": "<table name>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP HANA linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
 
+Ha a beírt adatkészletet használta `RelationalTable` , a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
+
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz az SAP HANA-adatforrás által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a SAP HANA forrás által támogatott tulajdonságok listáját tartalmazza.
 
 ### <a name="sap-hana-as-source"></a>SAP HANA forrásként
 
-Adatok másolása az SAP HANA, állítsa be a forrás típusaként a másolási tevékenység **RelationalSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
+Az adatok SAP HANAból történő másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **RelationalSource** | Igen |
-| query | Adja meg az SQL-lekérdezést az SAP HANA-példány adatokat olvasni. | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SapHanaSource** | Igen |
+| query | Azt az SQL-lekérdezést adja meg, amely az SAP HANA-példányból olvassa be az adatok beolvasását. | Igen |
+| packetSize | Meghatározza a hálózati csomagok méretét (kilobájtban), hogy több blokkra ossza fel az adatmennyiséget. Ha nagy mennyiségű adattal rendelkezik a másoláshoz, a csomagok méretének növelése a legtöbb esetben növelheti SAP HANA olvasási sebességét. A csomagok méretének beállításakor a teljesítmény tesztelése javasolt. | Nem.<br>Az alapértelmezett érték 2048 (2MB). |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -145,7 +200,7 @@ Adatok másolása az SAP HANA, állítsa be a forrás típusaként a másolási 
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "SapHanaSource",
                 "query": "<SQL query for SAP HANA>"
             },
             "sink": {
@@ -156,39 +211,41 @@ Adatok másolása az SAP HANA, állítsa be a forrás típusaként a másolási 
 ]
 ```
 
-## <a name="data-type-mapping-for-sap-hana"></a>Adattípus-leképezés az SAP Hana-hoz
+Ha a beírt másolási forrást használta `RelationalSource` , a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
 
-Példatípust az adatok SAP HANA-ból, a következő hozzárendeléseket használják az SAP HANA-adattípusok Azure Data Factory-közbenső adattípusok. Lásd: [séma és adatok írja be a hozzárendelések](copy-activity-schema-and-type-mapping.md) megismerheti, hogyan másolási tevékenység leképezi a forrás séma és adatok típusa a fogadó.
+## <a name="data-type-mapping-for-sap-hana"></a>SAP HANA adattípusának leképezése
 
-| SAP HANA-adattípus | Data factory közbenső adattípus |
-|:--- |:--- |
-| ALPHANUM | String |
-| BIGINT | Int64 |
-| BLOB | Byte[] |
-| BOOLEAN | Byte |
-| CLOB | Byte[] |
-| DATE | DateTime |
-| DECIMAL | Decimal |
-| DOUBLE | Single |
-| INT | Int32 |
-| NVARCHAR | String |
-| REAL | Single |
-| SECONDDATE | DateTime |
-| SMALLINT | Int16 |
-| TIME | TimeSpan |
-| TIMESTAMP | DateTime |
-| TINYINT | Byte |
-| VARCHAR | String |
+Az adatok SAP HANAból való másolása során a rendszer a következő leképezéseket használja SAP HANA adattípusokból Azure Data Factory köztes adattípusokra. Lásd: [séma és adatok írja be a hozzárendelések](copy-activity-schema-and-type-mapping.md) megismerheti, hogyan másolási tevékenység leképezi a forrás séma és adatok típusa a fogadó.
 
-## <a name="known-limitations"></a>Ismert korlátozások
-
-Ha az adatok másolása az SAP HANA, van néhány ismert korlátozásai:
-
-- Az NVARCHAR karakterláncokat csonkolja hosszabb 4000 Unicode karakter
-- A SMALLDECIMAL nem támogatott.
-- A VARBINARY nem támogatott
-- Érvényes dátumok 1899/12/30 közötti és 9999/12/31 közöttiek
-
+| SAP HANA adattípus | Data factory közbenső adattípus |
+| ------------------ | ------------------------------ |
+| ALPHANUM           | Karakterlánc                         |
+| BIGINT             | Int64                          |
+| BINÁRIS             | Byte[]                         |
+| BINTEXT            | Sztring                         |
+| BLOB               | Byte[]                         |
+| BOOL               | Byte                           |
+| CLOB               | Sztring                         |
+| DATE               | Datetime                       |
+| DECIMAL            | Decimal                        |
+| DOUBLE             | Double                         |
+| FLOAT              | Double                         |
+| EGÉSZ            | Int32                          |
+| NCLOB              | Sztring                         |
+| NVARCHAR           | Karakterlánc                         |
+| REAL               | Single                         |
+| SECONDDATE         | Datetime                       |
+| SHORTTEXT          | Sztring                         |
+| SMALLDECIMAL       | Decimal                        |
+| SMALLINT           | Int16                          |
+| STGEOMETRYTYPE     | Byte[]                         |
+| STPOINTTYPE        | Byte[]                         |
+| TEXT               | Karakterlánc                         |
+| IDŐ               | TimeSpan                       |
+| TINYINT            | Byte                           |
+| VARCHAR            | Sztring                         |
+| TIMESTAMP          | Datetime                       |
+| VARBINARY          | Byte[]                         |
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

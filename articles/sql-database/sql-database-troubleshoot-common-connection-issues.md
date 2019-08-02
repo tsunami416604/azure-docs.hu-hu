@@ -1,6 +1,6 @@
 ---
 title: Az Azure SQL Database gyakori csatlakozási problémáinak hibaelhárítása
-description: Azonosíthatja és az Azure SQL Database gyakori csatlakozási hibák megoldásához lépéseket.
+description: A Azure SQL Database gyakori kapcsolódási hibáinak azonosítására és elhárítására szolgáló lépések.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -10,83 +10,82 @@ ms.topic: conceptual
 author: dalechen
 ms.author: daleche
 ms.reviewer: jrasnik
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d278fd6ed06b58db052154e632e565de36853e77
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6dccfca256239f922c2243e2ebfab5c26835ee98
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331434"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566313"
 ---
-# <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Az Azure SQL Database-kapcsolatok problémáinak hibaelhárítása
+# <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>A Azure SQL Database kapcsolódási problémáinak elhárítása
 
-Az Azure SQL Database-adatbázishoz létesített kapcsolat megszakad, amikor [hibaüzenetek](sql-database-develop-error-messages.md). Ez a cikk a program központi, amely segítséget nyújt az Azure SQL Database kapcsolati problémák elhárításához. Azt mutatja be [gyakori okok](#cause) kapcsolódási problémák, akkor javasolja [hibaelhárítási eszköz](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) , amely segít identitás a problémát, és megoldásuk megoldásához [átmeneti hibák](#troubleshoot-transient-errors) és [állandó és nem átmeneti hibák](#troubleshoot-persistent-errors). 
+Ha a Azure SQL Databasehoz való csatlakozás meghiúsul, [hibaüzeneteket](sql-database-develop-error-messages.md)kap. Ez a cikk egy központi témakör, amely segít a Azure SQL Database kapcsolódási problémák elhárításában. Bemutatja a kapcsolódási problémák [gyakori okait](#cause) , és a [hibaelhárítási eszközt](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) javasolja a probléma azonosításához, valamint hibaelhárítási lépéseket tesz lehetővé az [átmeneti hibák](#troubleshoot-transient-errors) és az [állandó vagy nem átmeneti hibák megoldásához. ](#troubleshoot-persistent-errors). 
 
-Ha csatlakozási hibákat tapasztal, próbálja meg a hibaelhárítás ebben a cikkben leírt lépéseket.
+Ha megtapasztalja a kapcsolatok problémáit, próbálkozzon a cikkben ismertetett hibaelhárítási lépésekkel.
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="cause"></a>Ok
 
-Csatlakozási problémák oka lehet az alábbiak szerint:
+A kapcsolódási problémákat a következők bármelyike okozhatta:
 
-* Hiba a alkalmazni az ajánlott eljárások és tervezési útmutató az alkalmazás tervezési folyamat során.  Lásd: [SQL Database fejlesztési áttekintése](sql-database-develop-overview.md) a kezdéshez.
-* Az Azure SQL-adatbázis újrakonfigurálása
+* Nem sikerült alkalmazni az ajánlott eljárásokat és tervezési irányelveket az alkalmazás tervezési folyamata során.  Az első lépésekhez tekintse meg [SQL Database fejlesztés áttekintését](sql-database-develop-overview.md) .
+* Újrakonfigurálás Azure SQL Database
 * Tűzfalbeállítások
-* A kapcsolat időkorlátja
-* Helytelen bejelentkezési információk
-* Az egyes Azure SQL Database-erőforrásokat elérte a maximális korlátját
+* A kapcsolatok időtúllépése
+* Helytelen bejelentkezési adatok
+* Néhány Azure SQL Database erőforráshoz elérte a maximális korlátot
 
-Általában a kapcsolódási problémák az Azure SQL Database segítségével osztályozzák:
+A Azure SQL Databasehoz való kapcsolódási problémák általában a következőképpen sorolhatók be:
 
-* [Átmeneti hibák (rövid ideig tartó vagy időszakos)](#troubleshoot-transient-errors)
-* [Állandó és nem átmeneti hibák (, rendszeresen ismétlődő hibák)](#troubleshoot-persistent-errors)
+* [Átmeneti hibák (rövid életű vagy időszakos)](#troubleshoot-transient-errors)
+* [Állandó vagy nem átmeneti hibák (a rendszeresen ismétlődő hibák)](#troubleshoot-persistent-errors)
 
-## <a name="try-the-troubleshooter-for-azure-sql-database-connectivity-issues"></a>Próbálja ki az Azure SQL Database kapcsolati hibák elhárítója
+## <a name="try-the-troubleshooter-for-azure-sql-database-connectivity-issues"></a>Próbálja ki a hibaelhárítási Azure SQL Database kapcsolódási problémákat
 
-Ha egy adott kapcsolat hibát tapasztal, próbálja meg [ezzel az eszközzel](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database), amely segítségével gyorsan identitás és a probléma megoldása érdekében.
+Ha egy adott csatlakoztatási hibába ütközik, próbálja meg [ezt az eszközt](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database), amellyel gyorsan azonosíthatja és megoldhatja a problémát.
 
 ## <a name="troubleshoot-transient-errors"></a>Átmeneti hibák elhárítása
 
-Amikor egy alkalmazás egy Azure SQL Database-adatbázishoz csatlakozik, a következő hibaüzenet jelenhet meg:
+Amikor egy alkalmazás egy Azure SQL Database-adatbázishoz csatlakozik, a következő hibaüzenet jelenik meg:
 
 ```
 Error code 40613: "Database <x> on server <y> is not currently available. Please retry the connection later. If the problem persists, contact customer support, and provide them the session tracing ID of <z>"
 ```
 
 > [!NOTE]
-> Ez a hibaüzenet akkor általában átmeneti jellegű (ideiglenes).
+> Ez a hibaüzenet általában átmeneti (rövid életű).
 > 
 > 
 
-Ez a hiba akkor fordul elő, ha folyamatban van, az adatbázis áthelyezése (vagy konfigurálja újra) és az alkalmazás megszakad a kapcsolat, az adatbázishoz. Adatbázis újrakonfigurálása események történnek egy esemény (például szoftverfrissítésre) vagy nem tervezett esemény (például egy folyamat összeomlása vagy terheléselosztás) miatt. A legtöbb újrakonfigurálás események általában rövid ideig tartó, és legfeljebb 60 másodpercnél rövidebb a elvégzésének. Azonban ezek az események időnként több időt vesz igénybe fejeződik be, például ha a olyan nagy tranzakciót egy hosszú ideig futó helyreállítás miatt.
+Ez a hiba akkor fordul elő, amikor az adatbázist áthelyezi (vagy újrakonfigurálták), és az alkalmazás elveszíti a kapcsolatát az adatbázissal. Az adatbázis-újrakonfigurálási események egy tervezett esemény (például egy szoftverfrissítés) vagy egy nem tervezett esemény (például egy folyamat összeomlása vagy terheléselosztás) miatt történnek. A legtöbb újrakonfigurálási esemény általában rövid életű, és legfeljebb 60 másodpercnél rövidebb idő alatt elvégezhető. Ezek az események azonban esetenként hosszabb időt vehetnek igénybe, például ha egy nagy tranzakció hosszan futó helyreállítást okoz.
 
-### <a name="steps-to-resolve-transient-connectivity-issues"></a>Átmeneti kapcsolódási problémák megoldásának lépései
+### <a name="steps-to-resolve-transient-connectivity-issues"></a>Az átmeneti kapcsolódási problémák megoldásának lépései
 
-1. Ellenőrizze a [a Microsoft Azure-szolgáltatások irányítópultját](https://azure.microsoft.com/status) ismert szolgáltatáskimaradások, mely során a jelenített meg az alkalmazás az idő alatt bekövetkezett.
-2. Az alkalmazásokat, amelyek csatlakozni egy felhőalapú szolgáltatás, például Azure SQL Database rendszeres újrakonfigurálás események várható kell, és megvalósítása újrapróbálkozási logika kezelje ezeket a hibákat, felszínre hozza a ezeket az adatokat az alkalmazáshibák felhasználók helyett. Tekintse át a [átmeneti hibák](sql-database-connectivity-issues.md) szakasz és az ajánlott eljárások és tervezési útmutató a [SQL Database fejlesztési áttekintése](sql-database-develop-overview.md) kapcsolatos további információkért és általános újrapróbálkozási stratégiák. Tekintse meg a Kódminták [adatkapcsolattárak az SQL Database és SQL Server](sql-database-libraries.md) bírálattal.
-3. Egy adatbázis megközelíti az erőforrás-korlátozások, ahogy azt a is úgy tűnik, hogy egy átmeneti kapcsolati probléma. Lásd: [erőforráskorlátok](sql-database-resource-limits-database-server.md#what-happens-when-database-resource-limits-are-reached).
-4. Ha csatlakozási problémák továbbra is, vagy ha, amelynek az alkalmazás a hiba lép fel, mint 60 másodperc, vagy ha a hiba több példányban jelenik meg egy adott napon egy Azure-támogatáskérést fájl kiválasztásával **első támogatja**a a [Azure-támogatási](https://azure.microsoft.com/support/options) hely.
+1. Győződjön meg arról, hogy a [Microsoft Azure szolgáltatás irányítópultján](https://azure.microsoft.com/status) az alkalmazás által jelentett hibák ideje alatt bekövetkezett összes ismert leállás látható.
+2. A felhőalapú szolgáltatásokhoz, például a Azure SQL Databasehoz csatlakozó alkalmazásoknak rendszeres újrakonfigurálási eseményeket kell elvárniuk, és az újrapróbálkozási logikát kell végrehajtaniuk a hibák kezeléséhez, ahelyett, hogy ezeket a hibákat felhasználja a felhasználóknak További információért és általános újrapróbálkozási stratégiákért tekintse át az [átmeneti hibák](sql-database-connectivity-issues.md) szakaszt, valamint az ajánlott eljárásokat és tervezési irányelveket [SQL Database fejlesztés áttekintésében](sql-database-develop-overview.md) . Ezt követően tekintse meg a [SQL Database és SQL Server](sql-database-libraries.md) a következő témakörben talál példákat:
+3. Mivel az adatbázis megközelíti az erőforrás-korlátozásokat, úgy tűnhet, hogy átmeneti kapcsolódási probléma. Lásd: [erőforrás-korlátok](sql-database-resource-limits-database-server.md#what-happens-when-database-resource-limits-are-reached).
+4. Ha a kapcsolódási problémák továbbra is fennállnak, vagy ha az alkalmazás az időtartamot meghaladja a 60 másodpercnél, vagy ha egy adott nap több előfordulását látja a hibával, az Azure-támogatási kérést az Azure- **támogatás** beszerzése lehetőség választásával kérheti le. [ Támogatási](https://azure.microsoft.com/support/options) webhely.
 
-## <a name="troubleshoot-persistent-errors"></a>Az állandó hibák elhárítása
-Ha az alkalmazás nem állandó csatlakozás az Azure SQL Database, azt általában azt jelzi, hogy probléma az alábbi lehetőségek közül:
+## <a name="troubleshoot-persistent-errors"></a>Állandó hibák elhárítása
+Ha az alkalmazás tartósan nem tud csatlakozni a Azure SQL Databasehoz, általában a következők egyikével kapcsolatos problémát jelez:
 
-* Tűzfal-konfiguráció. Az Azure SQL database vagy az ügyféloldali tűzfal nem blokkolja az Azure SQL Database-kapcsolatokat.
-* Az ügyféloldalon újrakonfigurálás hálózati: például az új IP-cím vagy a proxykiszolgálót.
-* Felhasználói hiba: például elírt kapcsolati paramétereket, például a kiszolgáló nevét a kapcsolati karakterláncban.
+* Tűzfal-konfiguráció. Az Azure SQL Database vagy az ügyféloldali tűzfal blokkolja a Azure SQL Database kapcsolatait.
+* Hálózati újrakonfigurálás az ügyféloldali oldalon: például egy új IP-cím vagy egy proxykiszolgáló.
+* Felhasználói hiba: például a hibás típusú kapcsolatok paraméterei, például a kiszolgáló neve a kapcsolatok karakterláncában.
 
-### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Állandó kapcsolattal összefüggő problémák megoldásának lépései
-1. Állítsa be a [tűzfalszabályok](sql-database-configure-firewall-settings.md) lehetővé teszi az ügyfél IP-címet. Ideiglenes tesztelési célból beállítása egy tűzfalszabályt 0.0.0.0 használja, mint a kezdő IP-címtartományt, és a 255.255.255.255 használja, mint a záró IP-címtartományt. Ekkor megnyílik a kiszolgáló összes IP-címet. A kapcsolódási probléma így megoldódik, amennyiben ez a szabály eltávolításához, és hozzon létre egy tűzfalszabályt megfelelően korlátozott IP-címet vagy címtartományt. 
-2. Az ügyfél és az Internet közötti összes tűzfalnak győződjön meg arról, hogy 1433-as port meg nyitva a kimenő kapcsolatok számára. Felülvizsgálat [SQL Server-hozzáféréshez a Windows tűzfal beállításainak](https://msdn.microsoft.com/library/cc646023.aspx) és [hibrid identitáshoz szükséges portok és protokollok](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports) a további portokat, meg kell nyitnia az Azure-hoz kapcsolódó további mutatók Active Directory-hitelesítéssel.
-3. Ellenőrizze a kapcsolati karakterláncot, és egyéb kapcsolati beállításokat. A kapcsolati karakterlánc című a [csatlakozási problémák témakör](sql-database-connectivity-issues.md#connections-to-sql-database).
-4. Ellenőrizze a szolgáltatás állapotát az irányítópulton. Ha úgy gondolja, hogy van egy regionális kimaradás, [helyreállítás szolgáltatáskimaradás](sql-database-disaster-recovery.md) a lépéseket egy új régióban helyreállításához.
+### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó csatlakozási problémák megoldásának lépései
+1. [Tűzfalszabályok](sql-database-configure-firewall-settings.md) beállítása az ügyfél IP-címének engedélyezéséhez. Ideiglenes tesztelési célból állítson be egy tűzfalszabály használatát a 0.0.0.0 értékkel a kezdő IP-címtartományként, és használja a 255.255.255.255-t a záró IP-címtartományként. Ekkor megnyílik a kiszolgáló minden IP-címre. Ha ezzel feloldja a kapcsolódási problémát, távolítsa el ezt a szabályt, és hozzon létre egy tűzfalszabályot a megfelelő korlátozott IP-címhez vagy címtartomány létrehozásához. 
+2. Az ügyfél és az Internet közötti összes tűzfalon ellenőrizze, hogy a 1433-es port nyitva van-e a kimenő kapcsolatok számára. Tekintse át [a Windows tűzfal konfigurálását, hogy engedélyezze SQL Server hozzáférését](https://msdn.microsoft.com/library/cc646023.aspx) és a [hibrid identitás szükséges portokat és protokollokat](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports) a Azure Active Directory hitelesítéshez szükséges további portokhoz kapcsolódó további mutatókhoz.
+3. Ellenőrizze a kapcsolatok karakterláncát és az egyéb kapcsolatbeállításokat. Tekintse meg a kapcsolódási karakterlánc szakaszt a [kapcsolódási problémák témakörben](sql-database-connectivity-issues.md#connections-to-sql-database).
+4. A szolgáltatás állapotának keresése az irányítópulton. Ha úgy gondolja, hogy van egy regionális leállás, a [helyreállítás](sql-database-disaster-recovery.md) egy új régióba való helyreállítás lépéseiből című témakörben talál további információt.
 
 ## <a name="next-steps"></a>További lépések
-* [Keresés a dokumentációban a Microsoft Azure](https://azure.microsoft.com/search/documentation/)
-* [Az Azure SQL Database szolgáltatás legújabb frissítéseinek megtekintése](https://azure.microsoft.com/updates/?service=sql-database)
+* [Keresés a dokumentációban Microsoft Azure](https://azure.microsoft.com/search/documentation/)
+* [A Azure SQL Database szolgáltatás legújabb frissítéseinek megtekintése](https://azure.microsoft.com/updates/?service=sql-database)
 
 ## <a name="additional-resources"></a>További források
-* [Az SQL Database fejlesztési áttekintése](sql-database-develop-overview.md)
-* [Átmeneti hibakezelési vonatkozó általános útmutató](../best-practices-retry-general.md)
-* [Adatkapcsolattárak az SQL Database és SQL Server](sql-database-libraries.md)
+* [SQL Database fejlesztés áttekintése](sql-database-develop-overview.md)
+* [Általános átmeneti hibák kezelésére vonatkozó útmutató](../best-practices-retry-general.md)
+* [SQL Database és SQL Serverhoz tartozó kapcsolatok kódtárai](sql-database-libraries.md)
 

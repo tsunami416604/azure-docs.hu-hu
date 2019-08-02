@@ -1,39 +1,39 @@
 ---
-title: Lekérdezések futtatása az Azure Cosmos DB kérelemegység és költségek optimalizálása
-description: Megtudhatja, hogyan kérelem egységekre vonatkozó díjakon egy lekérdezés kiértékeléséhez és optimalizálásához a lekérdezési teljesítmény és költség tekintetében.
+title: A kérelmek egységének optimalizálása és a Azure Cosmos DB-lekérdezések futtatásának díja
+description: Megtudhatja, hogyan értékelheti ki a lekérdezésekre vonatkozó kérések egységeit, és hogyan optimalizálhatja a lekérdezést a teljesítmény és a költség tekintetében.
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 08/01/2019
 ms.author: rimman
-ms.openlocfilehash: 2d1ac054abf4bb8228bdb5cc20d79cb751af7a33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bdf223e60015c4e5d96416f95c410854a057c02c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967440"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717018"
 ---
-# <a name="optimize-query-cost-in-azure-cosmos-db"></a>Az Azure Cosmos DB lekérdezési költségek optimalizálása
+# <a name="optimize-query-cost-in-azure-cosmos-db"></a>A lekérdezési díjak optimalizálása Azure Cosmos DB
 
-Az Azure Cosmos DB az adatbázis-műveletek, beleértve a relációs és hierarchikus lekérdezéseket, amely egy tárolóban található elem a gazdag tárházát kínálja. A műveletekhez kapcsolódó költségek a CPU, IO és a művelet végrehajtásához szükséges alapján változik. Szem előtt tartva és hardver-erőforrások kezelése, helyett felfogható kérelemegység (RU) egyetlen mérték a kérés kiszolgálása különböző adatbázis-műveletek végrehajtásához szükséges erőforrásokhoz. Ez a cikk bemutatja, hogyan kérelem egységekre vonatkozó díjakon egy lekérdezés kiértékeléséhez és optimalizálásához a lekérdezési teljesítmény és költség tekintetében. 
+A Azure Cosmos DB az adatbázis-műveletek gazdag készletét kínálja, beleértve a tárolóban lévő elemeken működő viszonyítási és hierarchikus lekérdezéseket. Az egyes műveletekhez kapcsolódó díjak a művelet végrehajtásához szükséges CPU, IO és memória alapján változnak. A hardveres erőforrások gondolkodása és kezelése helyett a kérések egysége (RU) egyetlen mértékként használható a különböző adatbázis-műveletek végrehajtásához szükséges erőforrások esetében. Ez a cikk azt ismerteti, hogyan értékelhető ki a lekérdezésre vonatkozó kérési egység, és hogyan optimalizálható a lekérdezés a teljesítmény és a költség tekintetében. 
 
-Az Azure Cosmos DB lekérdezések általában rendezése a leggyorsabb és a legtöbb hatékony lassabb/kevésbé hatékony, átviteli sebesség szempontjából, a következőképpen történik:  
+A Azure Cosmos DB lekérdezéseit általában a leggyorsabb/leghatékonyabb értékről lassabb/kevésbé hatékonyra, a következőképpen kell megrendelni az átviteli sebesség tekintetében:  
 
-* A GET műveletet egy önálló partíciókulcsokon és elemkulcs.
+* Művelet beolvasása egyetlen partíciós kulcs és egy elem kulcsa alapján.
 
-* Lekérdezés egy szűrési záradékot, amelyik egyetlen partíciókulcsot belül.
+* Lekérdezés szűrő záradékkal egyetlen partíciós kulcson belül.
 
-* A lekérdezés egy egyenlőség vagy tartomány szűrőfeltételt bármely vlastnost nélkül.
+* Lekérdezés egyenlőség vagy Range Filter záradék nélkül bármely tulajdonság esetében.
 
-* A lekérdezés szűrők nélkül.
+* Lekérdezés szűrő nélkül.
 
-Lekérdezések, amelyek adatokat olvasni az egy vagy több partíció nagyobb késést merülnek fel, és megnövelt számú kérelemegység felhasználását. Mivel mindegyik partíció rendelkezik az összes tulajdonság automatikus indexelést, a lekérdezés az indexből hatékonyan is kiszolgálható. Lekérdezések, amelyek több partíciót gyorsabban a párhuzamossági beállítások használatával teheti meg. Particionálás és a partíciókulcsok kapcsolatos további információkért lásd: [az Azure Cosmos DB particionálási](partitioning-overview.md).
+Az egy vagy több partícióból beolvasott lekérdezések nagyobb késéssel járnak, és nagyobb számú kérést használnak fel. Mivel minden partíció automatikus indexelést tartalmaz az összes tulajdonsághoz, a lekérdezés hatékonyan kiszolgálható az indexből. A párhuzamossági beállítások használatával több partíciót használó lekérdezéseket is készíthet. Particionálás és a partíciókulcsok kapcsolatos további információkért lásd: [az Azure Cosmos DB particionálási](partitioning-overview.md).
 
-## <a name="evaluate-request-unit-charge-for-a-query"></a>Kérelem egységek használata után a lekérdezés kiértékelése
+## <a name="evaluate-request-unit-charge-for-a-query"></a>Lekérdezési egységre vonatkozó kérések kiértékelése
 
-Miután az Azure Cosmos-tárolókban tárolt adatokat, használhatja az adatkezelő az Azure Portalon hozhatnak létre, és a lekérdezések futtatásához. A lekérdezések költsége az adatkezelő segítségével is beszerezheti. Ez a metódus kap megismerje a tipikus lekérdezések és műveletek, amely támogatja a rendszer a tényleges költségek.
+Ha az Azure Cosmos-tárolókban tárolt néhány adattal, a lekérdezések létrehozásához és futtatásához a Azure Portal Adatkezelő is használhatja. A lekérdezések költségeit az adatkezelővel is lekérheti. Ezzel a módszerrel a rendszer által támogatott tipikus lekérdezésekkel és műveletekkel kapcsolatos tényleges költségek is megadhatók.
 
-A lekérdezések költségét programozott módon is lekérése az SDK-k használatával. Mérhető bármilyen műveletet járó többletterhelést például létrehozása, frissítése vagy törlése vizsgálja meg a `x-ms-request-charge` fejléc REST API használata esetén. Ha a .NET vagy a Java SDK-t használ a `RequestCharge` tulajdonsága a egyenértékű tulajdonságot a kérelem díja lekérése, és ez a tulajdonság nem található a ResourceResponse vagy FeedResponse.
+Az SDK-k segítségével programozott módon is lekérheti a lekérdezések költségeit. Az olyan műveletek terhelésének méréséhez, mint például a létrehozás, az Update vagy a `x-ms-request-charge` DELETE, a REST API használatakor vizsgálja meg a fejlécet. Ha a .NET-et vagy a Java SDK-t használja `RequestCharge` , a tulajdonság az egyenértékű tulajdonság a kérési díj beszerzéséhez, és ez a tulajdonság a ResourceResponse vagy a FeedResponse belül szerepel.
 
 ```csharp
 // Measure the performance (request units) of writes 
@@ -51,15 +51,15 @@ while (queryable.HasMoreResults)
      }
 ```
 
-## <a name="factors-influencing-request-unit-charge-for-a-query"></a>A lekérdezés díja kérelemegység befolyásoló tényezők
+## <a name="factors-influencing-request-unit-charge-for-a-query"></a>Egy lekérdezésre vonatkozó kérési egység díját befolyásoló tényezők
 
-Lekérdezések kérelemegységekről is számos tényezőtől függ. Például az Azure Cosmos-elemek száma betöltött/ad vissza, időt szemben az indexet, a lekérdezés fordítása keresések száma stb. részleteket. Az Azure Cosmos DB garantálja, hogy ugyanabból a lekérdezés végrehajtásakor ugyanazokat az adatokat bármikor felhasználhatja a azonos számú kérelemegység ismétlési végrehajtások mellett is. A lekérdezés-végrehajtási mérőszámokkal lekérdezés profilt biztosít, a kérelemegységek fordított hogyan érdemes.  
+A lekérdezések kérelmi egységei számos tényezőtől függenek. Például a betöltött/visszaadott Azure Cosmos-elemek száma, az indexen végzett keresések száma, a lekérdezés fordítási ideje stb. részleteit. Azure Cosmos DB garantálja, hogy ugyanaz a lekérdezés, amikor ugyanazon az adattárban hajtja végre ugyanazt a kérést, még ismétlődő végrehajtás esetén is ugyanazokat a kérelmeket fogja használni. A lekérdezés-végrehajtási mérőszámokat használó lekérdezési profil jó ötlet a kérési egységek elköltésének módjára.  
 
-Bizonyos esetekben 200 429 válaszokat, és a lekérdezések, lapozható végrehajtása, mert a lekérdezéseket a lehető legnagyobb a rendelkezésre álló kérelemegység alapján fog futni a változó kérelemegység sorozatát jelenhet meg. A lekérdezés végrehajtása több oldal felosztása/kiszolgáló és ügyfél közötti lelassítja kerekíteni jelenhet meg. Például 10 000 elemek visszaadott több oldalon, egyes díját a számítás, az oldal hajtott végre. Ezek az oldalak közötti, sum, kell kap RUs azonos számú, a teljes lekérdezés számíthat.  
+Bizonyos esetekben előfordulhat, hogy egy 200-es és 429-as számú választ, valamint változó kérési egységeket fog látni a lekérdezések lapozható végrehajtása során, mert a lekérdezések az elérhető RUs alapján a lehető leggyorsabban futnak. Előfordulhat, hogy a lekérdezés végrehajtásának megszakítása több oldalra vagy oda, a kiszolgáló és az ügyfél között. Például az 10 000-es elemek több oldalként is visszaadhatók, az egyes díjak az adott laphoz végrehajtott számítás alapján. Ezen lapok összegzése esetén ugyanannyi RUst kell lekérnie, mint a teljes lekérdezéshez.  
 
-## <a name="metrics-for-troubleshooting"></a>Hibaelhárítás mérőszámok
+## <a name="metrics-for-troubleshooting"></a>A hibaelhárítás metrikái
 
-A teljesítmény és a leginkább lekérdezések, felhasználó által definiált függvények (UDF-EK) által felhasznált átviteli sebesség attól függ, a függvény törzsében. Ismerje meg, mennyi idő a lekérdezés végrehajtása van a az UDF-ben és a fogyasztott, számát, a legegyszerűbb módja, a lekérdezés mérőszámainak engedélyezésével. Ha a .NET SDK-t használ, az alábbiakban az SDK által visszaadott lekérdezés mintametrikák:
+A lekérdezések által felhasznált teljesítmény és átviteli sebesség, valamint a felhasználó által definiált függvények (UDF-EK) többnyire a Function törzstől függenek. A legkönnyebben megtudhatja, hogy mennyi idő telik el a lekérdezés végrehajtásának az UDF-ben való elköltése és a felhasznált RUs száma. ehhez engedélyezze a lekérdezési metrikákat. Ha a .NET SDK-t használja, az SDK a következő lekérdezési mérőszámokat adja vissza:
 
 ```bash
 Retrieved Document Count                 :               1              
@@ -85,30 +85,30 @@ Total Query Execution Time               :   �
     Request Charge                       :            3.19 RUs  
 ```
 
-## <a name="best-practices-to-cost-optimize-queries"></a>Ajánlott eljárások a Cost-lekérdezések optimalizálása 
+## <a name="best-practices-to-cost-optimize-queries"></a>Ajánlott eljárások a lekérdezések optimalizálásához 
 
-Ha költség a lekérdezések optimalizálását, vegye figyelembe az alábbi ajánlott eljárásokat:
+Vegye figyelembe a következő ajánlott eljárásokat a lekérdezések a Cost szolgáltatáshoz való optimalizálásakor:
 
-* **Több entitástípusok elhelyezése**
+* **Több entitás típusának elhelyezése**
 
-   Próbálja meg tárolók egyetlen vagy kisebb számú belül több entitástípusok elhelyezése. Ez a módszer alapján előnyeit, nem csak a díjszabás szempontjából, hanem a lekérdezés végrehajtása és a tranzakciókért. Lekérdezések hatóköre egyetlen tároló; és tárolt eljárások és eseményindítók használatával több rekord keresztül elemi tranzakciókat is meghatározhat egy partíciókulcsot, egy egyetlen tárolóból. Közös elhelyezése az entitások ugyanabban a tárolóban is kevesebb hálózati kapcsolatok feloldásához a rekordok közötti adatváltások. Ezért azt növeli a végpontok közötti teljesítmény, nagyobb adatkészletek több rekord keresztül lehetővé teszi, hogy elemi tranzakciókat és eredményeképpen kínál a költségek csökkentésére. Ha a közös elhelyezése a tárolók egyetlen vagy kisebb számú belül több entitástípusok számára nehézséget jelent a forgatókönyv általában, mert egy meglévő alkalmazást telepít át, és nem szeretné, hogy a kódváltozások - majd érdemes, kiépítés átviteli sebesség az adatbázis szintjén.  
+   Próbáljon meg több entitást is elhelyezni egyetlen vagy kevesebb tárolón belül. Ez a módszer nem csupán árképzési szempontból, hanem lekérdezés-végrehajtáshoz és tranzakcióhoz is biztosít előnyöket. A lekérdezések hatóköre egyetlen tárolóra terjed ki. a tárolt eljárások/eseményindítók használatával több rekordon keresztüli atomi tranzakciók hatóköre egyetlen tárolón belüli partíciós kulcsra terjed ki. Az azonos tárolóban lévő entitások közös elhelyezésével csökkentheti a hálózati kerek utak számát a rekordok közötti kapcsolatok feloldásához. Így növeli a végpontok közötti teljesítményt, lehetővé teszi, hogy az atomi tranzakciók több rekordon is elérhetők legyenek egy nagyobb adatkészletnél, és ennek eredményeképpen csökkennek a költségek. Ha egy vagy több típusú tárolóban több entitást is megnehezítik a forgatókönyv esetén, általában azért, mert egy meglévő alkalmazást telepít át, és nem kívánja végrehajtani a kód módosítását, érdemes megfontolnia a kiépítés elvégzését. átviteli sebesség az adatbázis szintjén.  
 
-* **Mérheti és finomhangolási feladat alacsonyabb kérelem kérelemegység/s használat**
+* **Az alacsonyabb kérelmek egységének mérése és finomhangolása/második használat**
 
-   A lekérdezés összetettségétől hatással van egy művelet felhasznált kérelemegység (RU) számát. A predikátum UDF-EK számát és méretét a forrás adatkészlet jellegét, predikátumok számát. Ezek a tényezők befolyásolhatják a lekérdezési műveletek költségét. 
+   A lekérdezés bonyolultsága befolyásolja, hogy hány kérési egység (RUs) van használatban egy művelethez. A predikátumok száma, a predikátumok természete, a UDF száma és a forrásadatok mérete. Az összes tényező befolyásolja a lekérdezési műveletek költségeit. 
 
-   Kérelem díja a kérelem fejlécében visszaadott azt jelzi, hogy egy adott lekérdezésre költségét. Például ha egy lekérdezést 1000 1 KB-os elemeket adja vissza, a költség, a művelet: 1000. Emiatt a belül egy második, a kiszolgáló figyelembe veszi előtt sebességével későbbi kérelmeket csak két ilyen kérelmeket. További információkért lásd: [kérelemegységek](request-units.md) cikk és a kérés egység számológépet. 
+   A kérelem fejlécében visszaadott kérelem díja jelzi az adott lekérdezés költségeit. Ha például egy lekérdezés 1000 1 – KB elemet ad vissza, a művelet díja 1000. Mint ilyen, egy másodpercen belül a kiszolgáló csak két ilyen kérést értékel ki a későbbi kérelmek korlátozása előtt. További információ: a [kérelmek egységei](request-units.md) cikk és a kérési egység kalkulátora. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ezután folytassa további tudnivalók a költségek optimalizálása az Azure Cosmos DB az alábbi cikkeket:
+A következő cikkekben további tudnivalókat talál a Azure Cosmos DB a Cost optimizationról:
 
-* Tudjon meg többet [Azure Cosmos-hogyan díjszabásának főbb jellemzői](how-pricing-works.md)
-* Tudjon meg többet [optimalizálása fejlesztéshez és teszteléshez](optimize-dev-test.md)
-* Tudjon meg többet [az Azure Cosmos DB-elszámolások ismertetése](understand-your-bill.md)
-* Tudjon meg többet [átviteli költségek optimalizálása](optimize-cost-throughput.md)
-* Tudjon meg többet [tárolási költségek optimalizálása](optimize-cost-storage.md)
-* Tudjon meg többet [olvasási és írási a költségek optimalizálása](optimize-cost-reads-writes.md)
-* Tudjon meg többet [többrégiós Azure Cosmos-fiókok költségeinek optimalizálása](optimize-cost-regions.md)
-* Tudjon meg többet [Azure Cosmos DB lefoglalt kapacitás](cosmos-db-reserved-capacity.md)
+* További információ az [Azure Cosmos díjszabásának működéséről](how-pricing-works.md)
+* További információ a [fejlesztés és a tesztelés optimalizálásáról](optimize-dev-test.md)
+* További információ [a Azure Cosmos db-számla megismeréséről](understand-your-bill.md)
+* További információ az [átviteli sebesség optimalizálásáról](optimize-cost-throughput.md)
+* További információ a [tárolási díjak optimalizálásáról](optimize-cost-storage.md)
+* További információ [az olvasási és írási díjak optimalizálásáról](optimize-cost-reads-writes.md)
+* További információ [a több régióból álló Azure Cosmos-fiókok díjainak optimalizálásáról](optimize-cost-regions.md)
+* További információ a [Azure Cosmos db fenntartott kapacitásról](cosmos-db-reserved-capacity.md)
 

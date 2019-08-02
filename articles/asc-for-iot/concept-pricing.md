@@ -1,6 +1,6 @@
 ---
-title: Megismerheti az Azure Security Center az IoT előzetes költségek |} A Microsoft Docs
-description: További információ az Azure Security Center IoT, és hogyan szabályozhatja a költségeket.
+title: A IoT költségeinek Azure Security Center ismertetése | Microsoft Docs
+description: További információ a IoT Azure Security Center kapcsolatos költségekről és azok szabályozásáról.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,79 +13,76 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2019
+ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: dd041cdb1608eab60fa2a5fa756f381656a13a46
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 603df1def011232ad2120c37ad1ba256f2a30526
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618438"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596522"
 ---
 # <a name="pricing-and-associated-costs"></a>Díjszabás és kapcsolódó költségek
 
-> [!IMPORTANT]
-> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Ez a cikk ismerteti az Azure Security Center (ASC) IoT díjszabási modell, foglalja össze az összes kapcsolódó költségek, és azt ismerteti, hogyan kezelheti azokat.
+Ez a cikk ismerteti Azure Security Center IoT díjszabási modelljét, összegzi az összes kapcsolódó költséget, és ismerteti, hogyan kezelheti őket.
 
 ## <a name="pricing"></a>Díjszabás
 
-Az ASC IOT díjszabási modell áll két részből és történik, ha az IoT hub [engedélyezve](quickstart-onboard-iot-hub.md) az ASC IOT:
+A IoT díjszabási modell Azure Security Center két részből áll, és akkor számítunk fel díjat, ha IoT Hub [engedélyezve](quickstart-onboard-iot-hub.md) van a IoT-ben Azure Security Centerban:
 
-- Költség eszköz – beépített biztonsági funkciókat az IoT Hub-naplók elemzése alapján.
+- A IoT Hub naplók elemzése alapján az eszközök által beépített biztonsági funkciók költséghatékonyak.
 
-- Költség-ben – fokozott biztonsági képességeket biztonsági üzeneteket az IoT Edge vagy a levél eszközök alapján.
+- A IoT Edge-vagy Leaf-eszközökről származó biztonsági üzeneteken alapuló, üzenetekkel bővített biztonsági képességek díja.
 
   >[!Note]
-  > Biztonsági üzeneteket az IoT hub kvóta fogyasztás is számítunk fel.
+  > A biztonsági üzenetekben a IoT Hub kvóta-felhasználás is felmerül.
 
-További információkért lásd: [a Security Center díjszabási](https://azure.microsoft.com/pricing/details/security-center/).
+További információ: [Security Center díjszabása](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="associated-costs"></a>Kapcsolódó költségek
 
-Az IoT ASC kapcsolódó költségek, amelyek nem részei a közvetlen díjszabás két típusa van:
+A IoT Azure Security Center két típusú társított költséggel rendelkezik, amelyek nem részei a közvetlen díjszabásnak:
 
-- Az IoT Hub kvóta fogyasztás
+- IoT Hub kvóta-felhasználás
 
-- Log Analytics tárolási költségek
+- Tárolási költségek Log Analytics
 
-Bizonyos szolgáltatások megtagadja a beállítások módosításával csökkentheti kapcsolódó költségek.
+A kapcsolódó költségeket a beállítások módosításával csökkentheti bizonyos szolgáltatások leválasztásával.
 
-A beállítások módosításához:
+Beállítások módosítása:
 
-1. Open IoT Hub.
+1. Nyissa meg IoT Hub.
 
-2. A **biztonsági**, kattintson a **áttekintése**.
+2. A **Biztonság**területen kattintson az **Áttekintés**elemre.
 
-3. Kattintson a **beállítások**.
+3. Kattintson a **Beállítások**elemre.
 
-A következő táblázat összegzését a kapcsolódó költségek és az egyes lehetőségek következményeit.
+Az alábbi táblázat az egyes lehetőségek kapcsolódó költségeinek és következményeinek összegzését tartalmazza.
 
 |     | Használat | Megjegyzés |
 | --- | --- | --- |
-| **Az IoT Hub kvóta fogyasztás** |  |
-| [Eszköz exportálása](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) feladat (ikereszköz exportálás) | Naponta egyszer | Tiltsa le _ikereszköz metaadat-gyűjtemény_ |
-| **Log Analytics-tároló** |  |
-| Eszköz javaslatok és riasztások| Biztonsági javaslatok és a szolgáltatás által létrehozott riasztások | Nem kötelező |
-| Nyers biztonsági adatok| IoT-eszközökről, amelyek biztonsági ügynök által gyűjtött biztonsági nyers adatok | Tiltsa le _nyers eszköz biztonsági eseményeket_ |
+| **IoT Hub kvóta-felhasználás** |  |
+| [Eszköz exportálási](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) feladata (Twin export) | Naponta egyszer | _Twin metadata-gyűjtemény_ letiltása |
+| **Log Analytics Storage** |  |
+| Eszközökre vonatkozó javaslatok és riasztások| A szolgáltatás által létrehozott biztonsági javaslatok és riasztások | Nem kötelező |
+| Nyers biztonsági adatértékek| A biztonsági ügynökök által gyűjtött IoT-eszközökből származó nyers biztonsági adatok | A _nyers eszközök biztonsági eseményeinek tárolása_ letiltva |
 
 >[!Important]
-> Az elérhető biztonsági funkciók súlyos következmények engedélyezés rendelkezik.
+> A kivonás jelentős hatással van az elérhető biztonsági funkciókra.
   
-| Kikapcsolás | Következmények |
+| Elutasítás | Következmények |
 | --- | --- |
-| _Ikereszköz metaadat-gyűjtemény_ | Tiltsa le [egyéni riasztások](quickstart-create-custom-alerts.md) |
-| | IoT Edge-jegyzékfájl javaslatok letiltása |
-| | Tiltsa le az eszköz azonosító-alapú javaslatok és riasztások |
-| _Store nyers eszköz biztonsági események_ | Az eszköz operációs rendszer általános javaslatok részletei nem érhetők el. |
-| | A részletek [riasztás](concept-security-alerts.md) és [javaslat](concept-recommendations.md) vizsgálatok során nem érhetők el. |
+| _Twin metadata-gyűjtemény_ | [Egyéni riasztások](quickstart-create-custom-alerts.md) letiltása |
+| | IoT Edge manifest-javaslatok letiltása |
+| | Eszköz-identitás-alapú javaslatok és riasztások letiltása |
+| _Nyers eszközök biztonsági eseményeinek tárolása_ | Az eszköz operációsrendszer-alapkonfigurációjának javaslatairól nem érhetők el adatok |
+| | A [riasztások](concept-security-alerts.md) és [javaslatok](concept-recommendations.md) vizsgálatának részletei nem érhetők el |
+|
 
 
 ## <a name="see-also"></a>Lásd még
 
-- Hozzáférés a [nyers biztonsági adatok](how-to-security-data-access.md)
-- [Vizsgálja meg az eszköz](how-to-investigate-device.md)
-- Ismertetés és felfedezés [biztonsági javaslatok](concept-recommendations.md)
-- Ismertetés és felfedezés [biztonsági riasztások](concept-security-alerts.md)
+- A [nyers biztonsági adataihoz](how-to-security-data-access.md) való hozzáférés
+- [Eszköz vizsgálata](how-to-investigate-device.md)
+- A [biztonsági javaslatok](concept-recommendations.md) megismerése és megismerése
+- A [biztonsági riasztások](concept-security-alerts.md) megismerése és megismerése

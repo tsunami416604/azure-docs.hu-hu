@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: f57a83fb83152055692e6f614b7958d099b6c70d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48ebdca1b6abf57a84927e25bca1f85b023fa208
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808921"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726174"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával beleértve
 
@@ -47,7 +47,7 @@ A következő tulajdonságok támogatottak, beleértve a társított szolgáltat
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **Concur** | Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **Concur** | Igen |
 | clientId | Alkalmazás client_id Concur felügyeleti által biztosított.  | Igen |
 | username | A Concur szolgáltatás eléréséhez használt felhasználónév.  | Igen |
 | password | A felhasználónév mezőben megadott felhasználónév megfelelő jelszava. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
@@ -82,7 +82,7 @@ Adatok másolása beleértve, állítsa be a type tulajdonság, az adatkészlet 
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **ConcurObject** | Igen |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **ConcurObject** | Igen |
 | tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 
@@ -93,11 +93,12 @@ Adatok másolása beleértve, állítsa be a type tulajdonság, az adatkészlet 
     "name": "ConcurDataset",
     "properties": {
         "type": "ConcurObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Concur linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -112,7 +113,7 @@ Adatok másolása beleértve, állítsa be a forrás típusaként a másolási t
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **ConcurSource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **ConcurSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Opportunities where Id = xxx "`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**

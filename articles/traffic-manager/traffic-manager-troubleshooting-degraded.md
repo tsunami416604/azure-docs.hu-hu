@@ -3,20 +3,20 @@ title: Az Azure Traffic Manager csökkentett teljesítményű állapotának elh�
 description: A Traffic Manager-profilok hibakeresése, ha csökkentett teljesítményű állapotot mutat.
 services: traffic-manager
 documentationcenter: ''
-author: chadmath
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: genli
-ms.openlocfilehash: 19a654215377ba0fac7dacf800bf87a3481679c0
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: rohink
+ms.openlocfilehash: f8f457623dff7840ca839ef57580b744a4d916c7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357221"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565871"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Az Azure Traffic Manager csökkentett teljesítményű állapotának elhárítása
 
@@ -24,14 +24,14 @@ Ez a cikk a csökkentett teljesítményű állapotot mutató Azure Traffic Manag
 
 ![csökkentett teljesítményű végpont állapota](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
-Ha a Traffic Manager állapota inaktív állapotot  jelez, akkor előfordulhat, hogy mindkét végpont **le lesz tiltva**:
+Ha a Traffic Manager állapota inaktív állapotot jelez, akkor előfordulhat, hogy mindkét végpont **le lesz tiltva**:
 
 ![Inaktív Traffic Manager állapota](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
 
 ## <a name="understanding-traffic-manager-probes"></a>Traffic Manager mintavételek ismertetése
 
-* Traffic Manager úgy véli, hogy egy végpont csak ONLINE állapotba kerül, ha a mintavétel HTTP 200-választ kap vissza a mintavételi útvonalról. Bármely más, nem 200-as válasz hiba.
-* A 30x átirányítása meghiúsul, még akkor is, ha az átirányított URL-cím 200 értéket ad vissza.
+* Traffic Manager úgy véli, hogy egy végpont csak ONLINE állapotba kerül, ha a mintavétel HTTP 200-választ kap vissza a mintavételi útvonalról. Ha az alkalmazás bármely más HTTP-hibakódot ad vissza, akkor az adott hibakódot a Traffic Manager profiljának [várt állapotkód](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) -tartományához kell hozzáadnia.
+* A 30x átirányítási válasza meghiúsul, hacsak nem adta meg ezt érvényes válaszként a Traffic Manager profiljának [várt állapotkód](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) -tartományában. Traffic Manager nem ellenőrzi az átirányítás célját.
 * HTTPs-próbák esetén a rendszer figyelmen kívül hagyja a tanúsítvány hibáit.
 * A mintavételi útvonal tényleges tartalma nem számít, feltéve, hogy a 200-as értéket adja vissza. Egy olyan statikus tartalom URL-címe, mint például a "/favicon.ico", egy gyakori módszer. Előfordulhat, hogy a dinamikus tartalom, például az ASP-lapok nem mindig adnak vissza 200-et, még akkor is, ha az alkalmazás kifogástalan állapotban van.
 * Ajánlott eljárás a mintavételi útvonal beállítása olyan értékre, amely elegendő logikával rendelkezik annak megállapításához, hogy a hely fel vagy le van-e állítva. Az előző példában a "/favicon.ico" elérési út beállításával csak azt teszteli, hogy a W3wp. exe válaszol-e. Ez a mintavétel nem utalhat arra, hogy a webalkalmazás kifogástalan állapotú. A jobb lehetőség egy olyan elérési út beállítása, mint például a "/Probe.aspx", amely a hely állapotának meghatározására szolgáló logikát tartalmaz. Használhat például teljesítményszámlálók használatával a CPU-kihasználtságot, vagy mérhetővé teheti a sikertelen kérések számát. Vagy megkísérelheti elérni az adatbázis-erőforrásokat vagy a munkamenet-állapotot, hogy meggyőződjön arról, hogy a webalkalmazás működik.

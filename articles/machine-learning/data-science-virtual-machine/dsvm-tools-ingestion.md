@@ -4,7 +4,7 @@ description: További tudnivalók az adatfeldolgozási eszközök és segédprog
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: gokuma
-ms.openlocfilehash: 92ff5d21fc30d8fcafe97a2b452ff157a2cd5f86
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: ffc6071206236bc25d3c02576225c1de935f722a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502220"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68557712"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Data Science virtuális gép adatfeldolgozási eszközök
 
-Az adatelemzés vagy AI-projektben műszaki első lépéseként egyik azonosításához használható, és az elemzési környezet alá az adatkészletek. Az adatelemzési virtuális gép (DSVM) biztosít az eszközök és kódtárak ahhoz, hogy az adatokat egy analitikus adatok tárba helyileg, a dsvm-hez vagy a data platform különböző forrásokból származó a felhőben vagy helyszíni. 
+Az adatelemzés vagy AI-projektben műszaki első lépéseként egyik azonosításához használható, és az elemzési környezet alá az adatkészletek. A Data Science Virtual Machine (DSVM) eszközöket és könyvtárakat biztosít a különböző forrásokból származó adatoknak az analitikus adattárolóba való bevonásához a DSVM, illetve a felhőben vagy a helyszínen található adatplatformon. 
 
 Az alábbiakban néhány adat adatátviteli eszközök adtunk meg a dsvm-hez a. 
 

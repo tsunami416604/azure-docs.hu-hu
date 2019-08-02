@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: a833c255e7a4e83c003fbef72367c5e271f380c5
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 924ec20b9922d12da7291dc4f44b7413c68728c6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347213"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569583"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: A bizalmas adatok védelme és a titkosítási kulcsok tárolása Azure Key Vault
 
@@ -100,7 +99,7 @@ Az oktatóanyag későbbi részében szüksége lesz a kapcsolódási karakterl�
 ## <a name="connect-to-the-database-with-ssms"></a>Kapcsolódás az adatbázishoz SSMS segítségével
 Nyissa meg a SSMS, és kapcsolódjon a kiszolgálóhoz a klinika adatbázisával.
 
-1. Nyissa meg az SSMS-t. (Nyissa meg a Kapcsolódás a kiszolgálóhoz ablakot a **Kapcsolódás a kiszolgálóhoz** ablak megnyitásához.  > 
+1. Nyissa meg az SSMS-t. (Nyissameg a Kapcsolódás a kiszolgálóhoz ablakot a **Kapcsolódás a kiszolgálóhoz** ablak megnyitásához.  > 
 2. Adja meg a kiszolgáló nevét és a hitelesítő adatait. A kiszolgáló neve megtalálható az SQL Database panelen és a korábban átmásolt kapcsolatok karakterláncban. Írja be a kiszolgáló teljes nevét, beleértve a *Database.Windows.net*is.
    
     ![A kapcsolati sztring másolása](./media/sql-database-always-encrypted-azure-key-vault/ssms-connect.png)
@@ -134,7 +133,7 @@ Ebben a szakaszban létre fog hozni egy táblázatot a páciensek számára. Ere
 A SSMS olyan varázslót biztosít, amely megkönnyíti a Always Encrypted konfigurálását az oszlop főkulcsának, az oszlop titkosítási kulcsának és a titkosított oszlopok beállításával.
 
 1. Bontsa ki az **adatbázisok** > **Klinika** > **táblái**elemet.
-2. Kattintson a jobb gombbal  a páciensek táblára, és válassza az **oszlopok titkosítása** lehetőséget a Always encrypted varázsló megnyitásához:
+2. Kattintson a jobb gombbal a páciensek táblára, és válassza az **oszlopok titkosítása** lehetőséget a Always encrypted varázsló megnyitásához:
    
     ![Oszlopok titkosítása](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
 
@@ -178,7 +177,7 @@ A varázsló befejezése után az adatbázis Always Encrypted lesz beállítva. 
 A SSMS kulcsok létrehozását a **Klinika** > **biztonsági** > **Always encrypted kulcsainak**kibővítésével ellenőrizheti.
 
 ## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>A titkosított adattal használható ügyfélalkalmazás létrehozása
-Most, hogy a Always Encrypted be van állítva, létrehozhat egy olyan alkalmazást,  amely végrehajtja a beszúrásokat, és *kiválasztja* a titkosított oszlopokat.  
+Most, hogy a Always Encrypted be van állítva, létrehozhat egy olyan alkalmazást, amely végrehajtja a beszúrásokat, és *kiválasztja* a titkosított oszlopokat.  
 
 > [!IMPORTANT]
 > Az alkalmazásnak [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) -objektumokat kell használnia, amikor Always encrypted oszlopokkal továbbítja a szöveges adatait a kiszolgálónak. A literális értékek SqlParameter objektumok használata nélkül való átadása kivételt eredményez.
@@ -616,7 +615,7 @@ Ahhoz, hogy a SSMS használatával hozzáférhessen az egyszerű szöveges infor
 Ezután adja hozzá az *oszlop titkosítási beállítás = engedélyezve* paramétert a csatlakozáskor.
 
 1. A SSMS kattintson a jobb gombbal a kiszolgálóra **Object Explorer** és válassza a **Leválasztás**lehetőséget.
-2. Kattintson  > az**adatbázismotor** kapcsolódása elemre a **Kapcsolódás a kiszolgálóhoz** ablak megnyitásához, majd kattintson a **Beállítások**elemre.
+2. Kattintson > az**adatbázismotor** kapcsolódása elemre a **Kapcsolódás a kiszolgálóhoz** ablak megnyitásához, majd kattintson a **Beállítások**elemre.
 3. Kattintson a **további kapcsolatok paramétereinek** és típus **oszlop titkosítási beállítás = engedélyezve**elemre.
    
     ![Új konzolos alkalmazás](./media/sql-database-always-encrypted-azure-key-vault/ssms-connection-parameter.png)

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/17/2019
 ms.author: mlearned
 ms.openlocfilehash: 72f34d9711e1ba4658288bfdeb847632d32d0fcf
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68478329"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Előzetes verzió – több Node-készlet létrehozása és kezelése az Azure Kubernetes Service-ben (ak)
@@ -32,7 +32,7 @@ Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfig
 
 ### <a name="install-aks-preview-cli-extension"></a>Az Kabai szolgáltatás telepítése – előnézeti CLI-bővítmény
 
-Ha több nodepools szeretne használni, szüksége lesz az *AK-* előnézeti CLI-bővítmény 0.4.1 vagy újabb verziójára. Telepítse a (z) Azure CLI *-* bővítményt az az [Extension Add][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] paranccsal:
+Ha több nodepools szeretne használni, szüksége lesz az *AK-* előnézeti CLI-bővítmény 0.4.1 vagy újabb verziójára. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, majd az az [Extension Update][az-extension-update] paranccsal keresse meg az elérhető frissítéseket:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -226,7 +226,7 @@ Ha már nincs szüksége a készletre, törölheti, és eltávolíthatja a mög�
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name mynodepool --no-wait
 ```
 
-Az az [AK Node Pool List][az-aks-nodepool-list] parancs kimenete az alábbi példa alapján mutatja  , hogy a mynodepool *törlési* állapotban van:
+Az az [AK Node Pool List][az-aks-nodepool-list] parancs kimenete az alábbi példa alapján mutatja , hogy a mynodepool *törlési* állapotban van:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster -o table
@@ -284,8 +284,8 @@ aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.13.5
 
 A Kubernetes-ütemező használatával megtilthatja, hogy milyen számítási feladatok futhatnak a csomópontokon.
 
-* A  rendszer egy olyan csomópontra alkalmazza a megromlást, amely azt jelzi, hogy csak bizonyos hüvelyek ütemezhetők.
-* A **rendszer egy olyan** Pod-ra alkalmazza a betartást,  amely lehetővé teszi a csomópontok megromlását.
+* A rendszer egy olyan csomópontra alkalmazza a megromlást, amely azt jelzi, hogy csak bizonyos hüvelyek ütemezhetők.
+* A **rendszer egy olyan** Pod-ra alkalmazza a betartást, amely lehetővé teszi a csomópontok megromlását.
 
 További információ a speciális Kubernetes ütemezett funkcióinak használatáról: [ajánlott eljárások a speciális Scheduler-funkciókhoz az AK-ban][taints-tolerations]
 

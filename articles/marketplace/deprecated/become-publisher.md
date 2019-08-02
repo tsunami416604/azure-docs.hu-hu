@@ -1,6 +1,6 @@
 ---
-title: Válhat Kiadóvá a piactéren az kirakattípus |} Az Azure Marketplace-en
-description: Ez a cikk azt ismerteti, hogyan válhat a közzétevő a marketplace-en.
+title: Legyen kiadó a piactéren a kirakatokban | Azure piactér
+description: Ez a cikk azt ismerteti, hogyan lehet közzétevővé válni a piactéren.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 manager: nunoc
@@ -8,61 +8,61 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: dd9aa28703003d2e286197d57e9f00361e2b460d
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 11ab9f6bb4ab61a669c9c898ee9f5668b7cd568f
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654000"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598660"
 ---
-# <a name="become-a-cloud-marketplace-publisher"></a>Felhőbeli piactér kiadói válik
+# <a name="become-a-cloud-marketplace-publisher"></a>Legyen a Felhőbeli piactér közzétevője
 
-Ez a cikk ismerteti a felhőbeli piactér kiadói regisztrálása. A kiválasztott közzétételi lehetőség, és az aktuális tagság a Microsoft Partner Network függően a következő lépések nem lehet szükség. Miután regisztrált is elérheti a marketplace-ajánlat létrehozása az Azure Marketplace piactéren vagy az appsource-ban.
+Ez a cikk a felhőalapú piactér-közzétevőként való regisztrálást ismerteti. A kiválasztott közzétételi lehetőségtől függően a jelenlegi tagsága Microsoft Partner Network az alábbi lépések némelyike nem feltétlenül szükséges. A regisztráció után létrehozhat Piactéri ajánlatokat az Azure Marketplace-hez vagy a AppSource-hoz.
 
 
 |  | Regisztrációs lépés | Duration | Részletek |  
 |:--- |:--- |:--- |:--- |  
-| 1 | A Microsoft Partner Network regisztrálása | 15 perc | [A Microsoft Partner Network regisztrálása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account#register-for-an-account-using-the-enrollment-page) |  
-| 2 | Microsoft-fiók létrehozása <ul>(az Azure Marketplace-en transact ajánlatok szükséges; mások számára ajánlott)</ul> | 15 perc | [A Microsoft azonosító létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) |  
-| 3 | Hozzon létre a Partnerközpont-fiókkal | 15 perc | [Partnerközpontfiók létrehozása](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) |  
-| 4 |  Jelentkezzen be a Cloud Partner portálra | 1 – 3 nap | [Jelentkezzen be a Cloud Partner portálra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account#sign-in-with-a-work-account) |  
-| 5 | Regisztráljon a Microsoft Developer Centerben (Dev Center) (az Azure Marketplace-en ajánlatok transact) | 5 – 10 nap | [Regisztrálás a fejlesztői központban](/azure/marketplace/deprecated/register-dev-center) |  
+| 1 | Regisztráció Microsoft Partner Network | 15 perc | [Regisztráció Microsoft Partner Network](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) |  
+| 2 | Microsoft-fiók létrehozása <ul>(az Azure Marketplace Transact-ajánlatokhoz szükséges, mások számára ajánlott)</ul> | 15 perc | [Microsoft-azonosító létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) |  
+| 3 | Partner Center-fiók létrehozása | 15 perc | [Partnerközpontfiók létrehozása](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) |  
+| 4 |  Bejelentkezés Cloud Partner Portal | 1-3 nap | [Bejelentkezés Cloud Partner Portal](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account#sign-in-with-a-work-account) |  
+| 5 | Regisztráció a Microsoft fejlesztői központban (fejlesztői központ) (Azure Marketplace Transact-ajánlatok) | 5-10 nap | [Regisztrálás a fejlesztői központban](/azure/marketplace/deprecated/register-dev-center) |  
 
 
-## <a name="1-register-in-microsoft-partner-network"></a>1. A Microsoft Partner Network regisztrálása  
-| 15 perc |}  
-A Microsoft felhőbeli piactér való részvétel az a Microsoft Partner Network (MPN), amely is biztosít a legfontosabb előnyökkel, programok és partneri követés tagjának kell lennie. Ha a szervezete még nem tagja, csatlakozzon a Microsoft Partner Network (MPN) egy hivatalos Microsoft-partner lenni, és további előnyöket kap, és támogatja a közzététel a piactéren. 
+## <a name="1-register-in-microsoft-partner-network"></a>1. Regisztráció Microsoft Partner Network  
+| 15 perc |  
+A Microsoft felhőalapú piactéren való részvételhez a Microsoft Partner Network (MPN) tagságra van szükség, amely kulcsfontosságú előnyöket, programokat és partneri teljesítmény-követést is biztosít. Ha a szervezet még nem tagja, csatlakozzon a Microsoft Partner Networkhoz (MPN), hogy a Microsoft hivatalos partnere legyen, és további előnyöket és támogatást kapjon a piactéren való közzétételhez. 
 
-*   Regisztrálja a Microsoft Partner Network, látogasson el a [tagság lap](https://partner.microsoft.com/membership) kövesse a lépéseket, a beléptetés elindításához.  
+*   Microsoft Partner Network regisztrálásához látogasson el a [tagság lapra](https://partner.microsoft.com/membership) , és kövesse a lépéseket a regisztráció megkezdéséhez.  
 
-A regisztrálás után jegyezze fel a Microsoft Partner Network-Azonosítóját a szervezet számára. Szüksége lesz 3. lépés során a Marketplace-en regisztrációs űrlap elküldésekor.
-*   További információ a előnyeit a [Microsoft Partner Network](https://partner.microsoft.com/commercial)
-*   Ha a szervezet rendelkezik egy meglévő tagság, akkor a szervezet a regisztráció során akkor csatlakozik. Ha [Partnerközpont](https://partnercenter.microsoft.com/partner/home), fogja látni az azonosító a Partnerközpont-fiókkal. Ha [Partner tagsági Center (PMC)](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx), fogja látni, a tagsági Partnerközpont-fiókkal. 
+A regisztráció után jegyezze fel a szervezet Microsoft Partner Network-AZONOSÍTÓját. Erre szüksége lesz a 3. lépésben a Marketplace regisztrációs űrlap elküldésekor.
+*   A [Microsoft Partner Network](https://partner.microsoft.com/commercial) előnyeinek megismerése
+*   Ha a szervezete rendelkezik meglévő tagsággal, akkor a regisztráció során csatlakozni fog a szervezethez. Ha a [partner centert](https://partnercenter.microsoft.com/partner/home)használja, látni fogja az azonosítót a partner Center-fiókjában. Ha a [Partner tagsági központot (PMC)](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx)használja, akkor a Partner tagsági központ fiókjában láthatja. 
 
-Nyisson meg egy a jegy Microsoft [támogatási partnerkapcsolat](https://partner.microsoft.com/support) az MPN-regisztrációs problémáival kapcsolatban.
+Nyisson meg egy jegyet a Microsoft [partner támogatásával](https://partner.microsoft.com/support) az MPN-regisztrációval kapcsolatos problémák megoldásához.
 
 ---
 
 ## <a name="2-create-a-microsoft-account"></a>2. Microsoft-fiók létrehozása  
-| 15 perc |}  
-A Microsoft-fiók, pl.  *\@Outlook.com-os vagy \@live.com*, használható számos Microsoft-eszközök és szolgáltatások eléréséhez. Kötelező megadni, Azure Marketplace-en transact ajánlatok, és annak használatára azt javasoljuk, hogy minden felhő gyártó. További információ az előnyei és felhasználási területei egy Microsoft-fiók [megnyitják az oldalt](https://account.microsoft.com/account/). A Cloud Partner portálra eléréséhez használandó személyes Microsoft-fiókkal, a közzétételi platform létrehozásához és a piactér-beli kezeléséhez használt kínál. 
+| 15 perc |  
+Egy Microsoft-fiók, például  *\@a Outlook.com vagy \@a Live.com*, számos Microsoft-eszköz és-szolgáltatás elérésére szolgál. Az Azure Marketplace Transact-ajánlatokhoz szükséges, és azt javasoljuk, hogy használja az összes felhőalapú közzétevőt. Ha további információt szeretne a Microsoft-fiók előnyeiről és használatáról, [látogasson el erre a lapra](https://account.microsoft.com/account/). Személyes Microsoft-fiókt fog használni a Piactéri ajánlatok létrehozásához és kezeléséhez használni kívánt közzétételi platform Cloud Partner Portalához. 
 
-[! [Fontos a] megjegyezni, hogy a munkahelyi e-mail-címmel társított Microsoft-fiók nem teszi lehetővé, hogy a portál eléréséhez.
+[! FONTOS] vegye figyelembe, hogy a munkahelyi e-mail-címéhez társított Microsoft-fiók nem teszi lehetővé a portál elérését.
 
 > [!Note]
-> Ha már rendelkezik Microsoft-fiókkal, tekintse át a [irányelvek létrehozásához a marketplace-fiók kezelése a Microsoft ID](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#manage-tenants) meghatározni, ha akkor is használható a piactér közzétételre. 
+> Ha már rendelkezik Microsoft-fiókval, tekintse át a Microsoft-azonosító létrehozásával kapcsolatos irányelveket a [piactér-fiókok kezeléséhez](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#manage-tenants) , és állapítsa meg, hogy használható-e a Marketplace Publishing szolgáltatáshoz. 
 > 
-> Olvassa el az Azure Active Directory összevont céges fiókkal rendelkező felhasználók [Ez a cikk](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#manage-users) létrehozása vagy meglévő Microsoft-Account megkísérlése előtt.
+> A Azure Active Directory összevont vállalati fiókkal rendelkező felhasználóknak el kell olvasniuk [ezt a cikket](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#manage-users) , mielőtt megpróbálják létrehozni vagy használni a meglévő Microsoft-fiókját.
 
-*   Segítségre van szüksége vagy kezeléséről a Microsoft-fiókját, látogasson el a [Microsoft fiók támogatási súgóoldalak](https://support.microsoft.com/products/microsoft-account?category=manage-account).
+*   A Microsoft-fiók létrehozásával és kezelésével kapcsolatos segítségért látogasson el a [Microsoft-Fiók Súgó támogatási oldalaira](https://support.microsoft.com/products/microsoft-account?category=manage-account).
 
 
 ---
 
-## <a name="3-create-a-partner-center-account"></a>3. Hozzon létre a Partnerközpont-fiókkal  
-| 15 perc |}  
+## <a name="3-create-a-partner-center-account"></a>3. Partner Center-fiók létrehozása  
+| 15 perc |  
 
-Miután [küldje el a megoldás](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) a piactéren, az előkészítő csapatunk kapcsolatba lép a közzétételi felhasználói élmény támogatását. Lásd: hogyan [Partnerközpont-fiókkal létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) további információt.
+Miután elküldte [megoldását](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) a piactéren, a bevezetési csapat felveszi Önnel a kapcsolatot a közzétételi élmény támogatásához. További információt a [partner Center-fiók létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) című témakörben talál.
 
 <!---
 Complete this brief [registration form](https://azuremarketplace.microsoft.com/sell/signup) to become a marketplace publisher. The information submitted on this form will be used to create a publisher account in the Cloud Partner Portal which will allow you to create, publish, and manage marketplace offers.
@@ -74,39 +74,39 @@ You will be asked to include the following information:
 -->
 
 ---
-## <a name="4-sign-into-cloud-partner-portal"></a>4. Jelentkezzen be a Cloud Partner portálra
-| 1-3 napig |} <br>
-Marketplace-en csapat fogja ellenőrizni a piactér-beli regisztrációs részleteit a 3. lépésben megadott. Amint jóváhagyják, a fiók hitelesítő adatait és útmutatás a bejelentkezés üdvözlő e-mailt fog kapni a [Cloud Partner Portalon](https://cloudpartner.azure.com).
+## <a name="4-sign-into-cloud-partner-portal"></a>4. Bejelentkezés Cloud Partner Portal
+| 1-3 nap | <br>
+A piactér bevezetési csapata a 3. lépésben megadott piactér-regisztrációs adatokat fogja érvényesíteni. A jóváhagyást követően egy üdvözlő e-mailt fog kapni a fiók hitelesítő adataival és a [Cloud Partner Portal](https://cloudpartner.azure.com)való bejelentkezéssel kapcsolatos útmutatással.
 
-Használhatja a [Cloud Partner Portalon](https://cloudpartner.azure.com) szeretne létrehozni, közzététele és kezelése a marketplace-ajánlat. Miután a jóváhagyó üdvözlő e-mailt kap, akkor azonnal be tud jelentkezni a [Cloud Partner Portalon](https://cloudpartner.azure.com) eléréséhez további műszaki információt Marketplace-en való közzététel és az ajánlat létrehozása Microsoft-fiókkal. 
-*   További információ a Cloud Partner portálra, használatával [látogasson el az első lépések a cikk további részében](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal). A Cloud Partner portálra el az alábbi adatokat kell bejelentkeznie.
-*   Ha kérdése van vagy lenne például ütemezzen egy előkészítési áttekintése hívás, tekintse át más kiadó útmutató cikkek, vagy hozzon létre egy támogatási kérést probléma típusa alatt > belül a Cloud Partner portálra a Marketplace-en bevezetése.
-*   Ha nem kapta meg az üdvözlő e-mailt, ellenőrizze a Levélszemét mappát egy e-mailek, a tárgysorban a "Üdvözli a Microsoft Marketplace!." Nincs e-mail nem található a Levélszemét mappát, ha [forduljon a Microsoft ügyfélszolgálatához](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820). A támogatási oldalon válasszon ki: Probléma típusa > piactér bevezetése.  Csapat Marketplace Publisher forduljon hozzánk, és a lekérdezések elvégzésében segítségére lesz. 
+A Piactéri ajánlatok létrehozásához, közzétételéhez és kezeléséhez a [Cloud Partner Portal](https://cloudpartner.azure.com) fogja használni. Miután megkapta a jóváhagyást üdvözlő e-mailt, azonnal bejelentkezhet a [Cloud Partner Portalba](https://cloudpartner.azure.com) a Microsoft-fiók a piactéren való közzétételsel és az ajánlat létrehozásával kapcsolatos további technikai információk eléréséhez. 
+*   A Cloud Partner Portal használatával kapcsolatos további információkért [tekintse meg a első lépések cikket a következő](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal)témakörben:. A részletek eléréséhez be kell jelentkeznie a Cloud Partner Portalba.
+*   Ha kérdése van, vagy bevezetési áttekintési hívást szeretne ütemezni, tekintse át a jelen közzétevői útmutató egyéb cikkeit, vagy nyisson meg egy támogatási kérést a probléma típusa > a piactéren a Cloud Partner Portal belül.
+*   Ha nem kapta meg az üdvözlő e-mailt, tekintse meg a Levélszemét mappát egy e-mailhez, amelynek tárgya "Welcome to Microsoft Marketplace!". Ha nincs e-mail a Levélszemét mappában, [forduljon a Microsoft ügyfélszolgálatához](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820). A támogatás lapon válassza a következőket: Probléma típusa > Marketplace bevezetése.  A Marketplace kiadó bevezetési csapata örömmel segít a kérdéseiben. 
 
 
-## <a name="5-register-in-dev-center-for-transact-publishing-option-only"></a>5. Regisztráljon a fejlesztői központban (közzétételi lehetőség csak Transact) 
-| 5 – 10 nap |}  
-A [Dev Center](https://developer.microsoft.com/store/register) fiókra akkor szükség a transact-közzétételi lehetőség használata esetén: tartalmazza a virtuális gépek, Azure-alkalmazások és SaaS-alkalmazások Azure-on keresztül, hogy konfigurálva. A [Dev Center](https://developer.microsoft.com/store/register) fiók adatait a Microsoft által használt ellenőrzése a jogi, adózási és banki adatok a szervezetben, amikor értékesít, és a Díjszámítás a szoftverlicencelés küldenie jóváhagyásra cége kifizetési célokra használt Azure-on keresztül díjak Marketplace-en. 
+## <a name="5-register-in-dev-center-for-transact-publishing-option-only"></a>5. Regisztrálás a fejlesztői központban (csak Transact Publishing lehetőség esetén) 
+| 5-10 nap |  
+A Transact Publishing kapcsolót használó ajánlatokhoz szükség van egy [fejlesztői központ](https://developer.microsoft.com/store/register) fiókra: olyan virtuális gépeket, Azure-alkalmazásokat és SaaS-alkalmazásokat tartalmaz, amelyek az Azure-on keresztül történő értékesítésre vannak konfigurálva. A Microsoft a [fejlesztői központ](https://developer.microsoft.com/store/register) fiókjának adatait arra használja, hogy ellenőrizze a szervezete jogi, adózási és banki információit, amelyeket a rendszer a kifizetési célokra használ, amikor az Azure Marketplace-en eladja és számlázza a szoftveres licencelési díjakat. 
 
-A [Dev Center](https://developer.microsoft.com/store/register) regisztrációs folyamat elkezdése előtt az ajánlat létrehozása a Cloud Partner portálra, de a marketplace-ajánlat közzététele előtt kell elvégezni. Adja meg ezt a lépést tipikus időtartama 5 – 10 nap, javasoljuk, hogy minél hamarabb kezdődően ez a folyamat, ha szeretne használni a transact-közzétételi lehetőség. 
+A [fejlesztői központ](https://developer.microsoft.com/store/register) regisztrációs folyamata elindítható az ajánlat Cloud Partner Portalban való létrehozása előtt, de a Piactéri ajánlat közzététele előtt végre kell hajtani. A lépés 5 – 10 napos időtartama miatt a lehető leghamarabb érdemes elindítani ezt a folyamatot, ha a Transact Publishing kapcsolót kívánja használni. 
 
-Az egyes regisztrálása [Dev Center](https://developer.microsoft.com/store/register) a szervezet érvényes képviselőjének kell lennie, és adjon meg személyes adatokat az identitás ellenőrzése. A Microsoft-fiókjához, 2. lépésben létrehozott regisztrálása, és a Cloud Partner portálra elérésére használt Microsoft-fiók használata.
+A [fejlesztői központban](https://developer.microsoft.com/store/register) lévő egyedi regisztrációnak a szervezet érvényes képviselőjének kell lennie, és személyes adatokat kell megadnia a személyazonosságának ellenőrzéséhez. Regisztrálja a Microsoft-fiók, amelyet a 2. lépésben hozott létre, és használja ugyanazt a Microsoft-fiók, amelyet a Cloud Partner Portal eléréséhez használt.
 
-*   Regisztrálhat egy [Dev Center](https://developer.microsoft.com/store/register) fiók [indítsa el a regisztrációs folyamat itt](https://developer.microsoft.com/store/register).
-*   Microsoft-fiók létrehozásával kapcsolatos további információkért látogasson el a *Microsoft-fiók létrehozásához* szakaszban.
+*   A [fejlesztői központ](https://developer.microsoft.com/store/register) fiókjához való regisztráláshoz [itt kell elindítania a regisztrációs folyamatot](https://developer.microsoft.com/store/register).
+*   Microsoft-fiók létrehozásával kapcsolatos további információkért látogasson el a *Microsoft-fiók létrehozása* szakaszra.
  
-Befejezése után a [Dev Center](https://developer.microsoft.com/store/register) regisztrációs, összekapcsolása a Cloud Partner profilt a [Dev Center](https://developer.microsoft.com/store/register) fiók ([tekintse meg a részletes lépések Itt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile)). Ebben a lépésben a transact-ajánlat közzététele előtt kell elvégezni. 
+Miután elvégezte a [fejlesztői központ](https://developer.microsoft.com/store/register) regisztrációját, kapcsolja össze a felhőalapú partneri profilt a [fejlesztői központ](https://developer.microsoft.com/store/register) fiókjával ([lásd a részletes lépéseket itt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile)). Ezt a lépést a Transact-ajánlat közzététele előtt kell végrehajtani. 
 
 >[!Note]
->A $99 fejlesztői központ-regisztráció díj elengedni, végezze el a [marketplace regisztrációs űrlap](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) és a egy a promóciós kódot tartalmazó e-mailt fog kapni. Lásd: hogyan [Partnerközpont-fiókkal létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) további információt.
+>A $99 fejlesztői központ regisztrációs díjának lemondásához fejezze be a [piactér regisztrációs űrlapját](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) , és kapni fog egy e-mailt, amely tartalmazza a promóciós kódot. További információt a [partner Center-fiók létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) című témakörben talál.
 
 >[!Important]
->Mielőtt létrehozna egy Dev Center a Microsoft-fiókot, győződjön meg arról, hogy a szervezete még nem rendelkezik a fejlesztői központban lévő fiókjához ismétlődő fiókok elkerülése érdekében. További információért látogasson el a [a fejlesztői központban regisztrálása](https://docs.microsoft.com/azure/marketplace/register-dev-center) szakaszban.
+>A Microsoft fejlesztői központ fiók létrehozása előtt győződjön meg arról, hogy a szervezet még nem rendelkezik fejlesztői központ-fiókkal a duplikált fiókok elkerülése érdekében. További információért látogasson el a [regisztráció a fejlesztői](https://docs.microsoft.com/azure/marketplace/register-dev-center) központba szakaszban.
 
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg a Marketplace-en kirakattípus: [Appsource-ban és az Azure Marketplace-en](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
-*   [A megoldás lista típusának meghatározása](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).
+* Ismerje meg a piactér kirakatait: [A AppSource és az Azure Marketplace](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)összevetése.
+*   [Határozza meg a megoldáshoz tartozó listaelem típusát](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).
 
  
 ---

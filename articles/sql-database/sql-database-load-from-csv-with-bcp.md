@@ -1,5 +1,5 @@
 ---
-title: Adatok betöltése CSV-fájlból az Azure SQL Database (bcp) |} A Microsoft Docs
+title: Adatok betöltése CSV-fájlból Azure SQL Databaseba (BCP) | Microsoft Docs
 description: Kisebb adatméret esetén a bcp segítségével importálhatja az adatokat az Azure SQL Database-be.
 services: sql-database
 ms.service: sql-database
@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 6c35d51c1029c0305c86cefd786e60b6547e0dee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b3dff4e100d3859978667ad0df7d895a24ca8a8d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799881"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567834"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>Adatok betöltése CSV-fájlból az Azure SQL Database-be (egybesimított fájlok)
 
@@ -27,13 +26,13 @@ A bcp parancssori segédprogram használatával adatokat importálhat egy CSV-f�
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-A jelen cikkben ismertetett lépések végrehajtásához szüksége:
+A cikkben szereplő lépések végrehajtásához a következőkre lesz szüksége:
 
-* Egy Azure SQL Database-kiszolgáló és adatbázis
+* Egy Azure SQL Database-kiszolgáló és-adatbázis
 * Telepített bcp parancssori segédprogram
 * Telepített sqlcmd parancssori segédprogram
 
-A bcp és az sqlcmd parancssori segédprogramot a [Microsoft letöltőközpontból][Microsoft Download Center] töltheti le.
+A bcp és sqlcmd parancssori segédeszközöket letöltheti a [Microsoft letöltőközpontból][Microsoft Download Center].
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>Adatok ASCII vagy UTF-16 formátumban
 

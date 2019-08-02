@@ -4,12 +4,12 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 07/26/2019
 ms.author: larryfr
-ms.openlocfilehash: d59482c04c4875cb6b17ceb405e9d3ab97a741d6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: b8913836baffdad200c198afa11475d617fe5d50
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565140"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68729342"
 ---
 A `deploymentconfig.json` dokumentumban szereplő bejegyzések a [AksWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)paramétereit képezik. A következő táblázat ismerteti a JSON-dokumentum entitásai és a metódus paramétereinek megfeleltetését:
 
@@ -24,7 +24,8 @@ A `deploymentconfig.json` dokumentumban szereplő bejegyzések a [AksWebservice.
 | &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | A cél kihasználtsága (az 100-as százalékban kifejezve), amelyet az autoskálázásnak meg kell próbálnia fenntartani a webszolgáltatás számára. Alapértelmezett érték:. `70` |
 | `dataCollection` | NA | Az adatgyűjtés konfigurációs elemeit tartalmazza. |
 | &emsp;&emsp;`storageEnabled` | `collect_model_data` | Azt határozza meg, hogy engedélyezi-e a modell adatgyűjtését a webszolgáltatáshoz. Alapértelmezett érték:. `False` |
-| `authEnabled` | `auth_enabled` | Azt határozza meg, hogy engedélyezi-e a hitelesítést a webszolgáltatáshoz. Alapértelmezett érték:. `True` |
+| `authEnabled` | `auth_enabled` | Azt határozza meg, hogy engedélyezi-e a kulcsos hitelesítést a webszolgáltatáshoz. Mindkettő `tokenAuthEnabled` és `authEnabled` nem lehet `True`. Alapértelmezett érték:. `True` |
+| `tokenAuthEnabled` | `token_auth_enabled` | Azt határozza meg, hogy engedélyezve van-e a jogkivonat-hitelesítés a webszolgáltatáshoz. Mindkettő `tokenAuthEnabled` és `authEnabled` nem lehet `True`. Alapértelmezett érték:. `False` |
 | `containerResourceRequirements` | NA | A processzor-és memória-entitások tárolója. |
 | &emsp;&emsp;`cpu` | `cpu_cores` | A webszolgáltatás számára lefoglalható CPU-magok száma. Alapértelmezett`0.1` |
 | &emsp;&emsp;`memoryInGB` | `memory_gb` | A webszolgáltatás számára lefoglalható memória mennyisége (GB-ban). Alapértelmezett`0.5` |

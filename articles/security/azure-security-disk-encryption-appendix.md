@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2872d106eea56a37c362195e7a3250058336768b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 7cbddc4b7af546396a1a5a4c86d349a96054a6f3
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295058"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726279"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Az Azure Disk Encryption for függelék 
 
@@ -104,7 +104,7 @@ A Kezdés előtt tekintse át a [Előfeltételek](azure-security-disk-encryption
      ```
 
 ### <a name="bkmk_prereq-script"></a> Az Azure Disk Encryption előfeltétel PowerShell-parancsfájl használatával
-Ha már ismeri az Azure Disk Encryption előfeltételeinek, használhatja a [az Azure Disk Encryption előfeltétel PowerShell-parancsprogram](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). A PowerShell-parancsfájl egy példát, tekintse meg a [titkosítani a virtuális gépek gyors üzembe helyezés](quick-encrypt-vm-powershell.md). Eltávolíthatja a megjegyzéseket a parancsfájl egy szakaszában sor 211, az összes lemez titkosítása egy meglévő erőforráscsoportot a meglévő virtuális gépek indítása. 
+Ha már ismeri az Azure Disk Encryption előfeltételeinek, használhatja a [az Azure Disk Encryption előfeltétel PowerShell-parancsprogram](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). A PowerShell-parancsfájl egy példát, tekintse meg a [titkosítani a virtuális gépek gyors üzembe helyezés](azure-disk-encryption-linux-powershell-quickstart.md). Eltávolíthatja a megjegyzéseket a parancsfájl egy szakaszában sor 211, az összes lemez titkosítása egy meglévő erőforráscsoportot a meglévő virtuális gépek indítása. 
 
 Az alábbi táblázat mutatja, hogy mely paraméterek is használható a PowerShell-parancsfájlt: 
 
@@ -133,15 +133,15 @@ Az alábbi táblázat mutatja, hogy mely paraméterek is használható a PowerSh
   - [Egy futó Linux rendszerű virtuális gép titkosításának letiltása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - Letiltja a titkosítást csak engedélyezett megváltoztatását az adatköteteken Linux rendszerű virtuális gépekhez.  
 
-### <a name="encrypt-or-decrypt-virtual-machine-scale-sets"></a>Titkosítása és visszafejtése a virtual machine scale sets
+### <a name="encrypt-or-decrypt-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok titkosítása vagy visszafejtése
 
 - [A futó Linux rendszerű virtuális gép méretezési lemeztitkosítás engedélyezve](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
 
 - [Egy futó Windows virtuális gép méretezési csoporthoz lemeztitkosítással engedélyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
 
-  - [Méretezési csoport üzembe egy virtuális gép Linux rendszerű virtuális gépek Linux VMSS a jumpbox, és lehetővé teszi, hogy titkosítással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+  - [Linux rendszerű virtuális gépek virtuálisgép-méretezési csoportjának üzembe helyezése Jumpbox, és a titkosítás engedélyezése Linux-VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
 
-  - [A virtuális gép méretezési csoportjának Windows virtuális gépek Windows VMSS jumpbox, és lehetővé teszi, hogy titkosításának központi telepítése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+  - [Windows rendszerű virtuális gépek virtuálisgép-méretezési csoportjának üzembe helyezése Jumpbox és titkosítás engedélyezése a Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
 
 - [Tiltsa le a futó Linux rendszerű virtuális gép méretezési lemeztitkosítás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
@@ -206,7 +206,7 @@ Használja a [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.asp
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>Az operációs rendszer lemeztitkosítás előfeltételei
 
-* A virtuális Gépet kell használnia egy kompatibilis az operációs rendszer lemeztitkosítás terjesztési felsorolt a [az Azure Disk Encryption támogatott operációs rendszerek: Linux](azure-security-disk-encryption-prerequisites.md#linux) 
+* A virtuális gépnek az operációsrendszer-lemez titkosításával kompatibilis disztribúciót kell használnia a [Azure Disk Encryption támogatott operációs rendszerekben felsoroltak szerint: Linux](azure-security-disk-encryption-prerequisites.md#linux) 
 * A virtuális Gépen a Marketplace-lemezképből az Azure Resource Manager kell létrehozni.
 * Az Azure virtuális gép legalább 4 GB RAM (javasolt a mérete, 7 GB).
 * (Az RHEL és CentOS) Tiltsa le a SELinux. Tiltsa le a SELinux, lásd: "4.4.2. Letiltás SELinux"az a [SELinux felhasználói és rendszergazdai útmutató](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) a virtuális gépen.
@@ -234,7 +234,7 @@ Használja a [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.asp
 
 5. Rendszeres időközönként szakaszban foglaltak szerint a titkosítás állapotának figyelése a [következő szakasz](#monitoring-os-encryption-progress).
 
-6. Miután a Get-AzVmDiskEncryptionStatus "VMRestartPending" jeleníti meg, indítsa újra a virtuális gép jelentkezik be, vagy a portal, PowerShell vagy parancssori felület használatával.
+6. Miután a Get-AzVmDiskEncryptionStatus megjeleníti a "VMRestartPending" kifejezést, indítsa újra a virtuális gépet a bejelentkezéshez vagy a portál, a PowerShell vagy a CLI használatával.
     ```powershell
     C:\> Get-AzVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
     -ExtensionName $ExtensionName
@@ -546,7 +546,7 @@ Titkosításához az Azure AD-alkalmazás (előző kiadás) használatával, a a
 ``` 
 
 ### <a name="bkmk_SecretnoKEK"></a> Lemeztitkosítás titkos kódja egy KEK nem titkosított
-Állítsa be a titkos kulcsot tárol a kulcstárolóban, használja a [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret). Ha egy Windows virtuális gépet, a blokktitkosítási kulcsot fájl Base64 kódolású karakterláncként kódolt és majd a key vaulttal történő feltöltésekor a `Set-AzKeyVaultSecret` parancsmagot. Linux esetén a hozzáférési kódot Base64 kódolású karakterláncként kódolt és feltölthetők a key vaulthoz. Emellett ellenőrizze, hogy a titkos kulcsot a key vaultban történő létrehozásakor a következő címkék vannak-e beállítva.
+A titkos kulcs a Key vaultban történő beállításához használja a [set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret). Ha egy Windows virtuális gépet, a blokktitkosítási kulcsot fájl Base64 kódolású karakterláncként kódolt és majd a key vaulttal történő feltöltésekor a `Set-AzKeyVaultSecret` parancsmagot. Linux esetén a hozzáférési kódot Base64 kódolású karakterláncként kódolt és feltölthetők a key vaulthoz. Emellett ellenőrizze, hogy a titkos kulcsot a key vaultban történő létrehozásakor a következő címkék vannak-e beállítva.
 
 #### <a name="windows-bek-file"></a>Windows rendelkeznek BEk-KEL fájl
 ```powershell

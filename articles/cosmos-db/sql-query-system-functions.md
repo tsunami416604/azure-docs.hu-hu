@@ -1,19 +1,19 @@
 ---
-title: Rendszer-funkciók
-description: Ismerje meg az Azure Cosmos DB SQL rendszerfunkciók.
+title: Rendszerfüggvények
+description: A Azure Cosmos DB SQL-rendszerfunkcióinak megismerése.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 11a6fdad187670bcb5af4c56198fd7343680690d
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: b0e9c751d46f805af75196da464a39783c95ae6a
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342836"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619993"
 ---
-# <a name="system-functions"></a>Rendszer-funkciók
+# <a name="system-functions"></a>Rendszerfüggvények
 
  A cosmos DB számos beépített SQL-funkciókat biztosít. A beépített függvénykategóriákat alább láthatók.  
   
@@ -23,35 +23,35 @@ ms.locfileid: "67342836"
 |[Funkciók ellenőrzése típusa](#type-checking-functions)|A típus ellenőrzése funkciók lehetővé teszik az SQL-lekérdezések belül egy kifejezés típusának ellenőrzése.|  
 |[Sztringfüggvények](#string-functions)|A karakterlánc-függvények végrehajtania egy műveletet a bemeneti karakterlánc-érték, és a egy karakterlánc, numerikus vagy logikai értéket adja vissza.|  
 |[Tömb funkciók](#array-functions)|A tömb függvények végrehajtania egy műveletet a egy tömb bemeneti érték és a visszaadott numerikus, a logikai vagy a tömb értéket.|
-|[Date és Time függvények](#date-time-functions)|A date és time függvények lehetővé teszik az aktuális UTC-dátum és idő lekérése két formában; egy numerikus időbélyeget, amelynek értéke a Unix alapidőpont ezredmásodpercben vagy egy karakterlánc, amely megfelel az ISO 8601 formátumot.|
+|[Dátum és idő függvények](#date-time-functions)|A dátum-és időfüggvények lehetővé teszik az aktuális UTC dátum és idő megszerzését két formában; egy numerikus időbélyeg, amelynek értéke a UNIX-kor ezredmásodpercben, vagy egy olyan karakterlánc, amely megfelel az ISO 8601 formátumnak.|
 |[Térbeli funkciók](#spatial-functions)|A térbeli függvények végrehajtania egy műveletet a térbeli objektum bemeneti érték a, és a egy numerikus vagy logikai értéket adja vissza.|  
 
-Az alábbiakban az egyes kategóriákon belül függvények listáját:
+Az alábbiakban az egyes kategóriákon belüli függvények listája látható:
 
 | Csoport | Műveletek |
 |---------|----------|
-| Matematikai függvények | ABS, FELSŐ HATÁR, EXP, EMELET, LOG, LOG10, POWER, CIKLIKUS, BEJELENTKEZÉSI, SQRT, SZÖGLETES, CSONK, ACOS, ASIN, ATAN, ATN2, COS, COT, DEGREES, PI, RADIANS, SIN, TAN |
-| A functions típus ellenőrzése | IS_ARRAY, IS_BOOL, IS_NULL, IS_NUMBER, IS_OBJECT, IS_STRING, IS_DEFINED, IS_PRIMITIVE |
+| Matematikai függvények | ABS, MENNYEZET, EXP, PADLÓ, NAPLÓ, LOG10, POWER, ROUND, SIGN, SQRT, SQUARE, TRUNC, ACO, ASIN, ATAN, ATN2, COS, GYERMEKÁGY, FOK, PI, RADIÁN, RAND, SIN, TAN |
+| Típus-ellenőrzési függvények | IS_ARRAY, IS_BOOL, IS_NULL, IS_NUMBER, IS_OBJECT, IS_STRING, IS_DEFINED, IS_PRIMITIVE |
 | Sztringfüggvények | CONCAT, TARTALMAZ, ENDSWITH, A INDEX_OF, A BAL OLDALON, A HOSSZA, A LOWER, LTRIM, CSERÉLJE LE, REPLIKÁLÁSA, FORDÍTOTT JOBB OLDALI RTRIM, STARTSWITH, FELSŐ KARAKTERLÁNCRÉSZLETET |
 | Tömb funkciók | ARRAY_CONCAT, ARRAY_CONTAINS, ARRAY_LENGTH és ARRAY_SLICE |
-| Date és Time függvények | GETCURRENTDATETIME, GETCURRENTTIMESTAMP,  |
+| Dátum és idő függvények | GETCURRENTDATETIME, GETCURRENTTIMESTAMP,  |
 | Térbeli funkciók | ST_DISTANCE, ST_WITHIN, ST_INTERSECTS, ST_ISVALID, ST_ISVALIDDETAILED |
 
-Ha jelenleg használja a felhasználói függvény (UDF), amelynek beépített függvény már elérhető, a megfelelő beépített függvény nem futtatásához gyorsabb és hatékonyabb.
+Ha jelenleg olyan felhasználó által definiált függvényt (UDF) használ, amelyhez már elérhető egy beépített függvény, a megfelelő beépített függvény gyorsabban fog futni és hatékonyabbá válik.
 
-ANSI SQL és Cosmos DB-függvények közötti fő különbség az, Cosmos DB-függvények tervezték, hogy jól működnek a séma- és vegyes séma adatok. Például ha egy tulajdonság hiányzik, vagy egy nem numerikus értéket, például `unknown`, a rendszer kihagyta az elem helyett hibát adnak vissza.
+Cosmos DB függvények és az ANSI SQL functions közötti fő különbség az, hogy a Cosmos DB Functions úgy lett kialakítva, hogy megfelelően működjön a séma nélküli és a vegyes séma adataival. Ha például egy tulajdonság hiányzik vagy nem numerikus értékkel rendelkezik ( `unknown`például:), az elem kimarad a hiba helyett.
 
 ##  <a name="mathematical-functions"></a> Matematikai függvények  
 
 A matematika függvényekkel hajtsa végre a számítási, amelyek argumentumként szolgálnak, és a egy numerikus értéket adja vissza a bemeneti értékek alapján.
 
-Az alábbi példához hasonlóan lekérdezéseket is futtathat:
+A következő példához hasonló lekérdezéseket futtathat:
 
 ```sql
     SELECT VALUE ABS(-4)
 ```
 
-Az eredmény a következő:
+Az eredmény a következőket eredményezi:
 
 ```json
     [4]
@@ -66,9 +66,9 @@ A következő támogatott beépített matematikai függvények tábláját.
 |[COS](#bk_cos)|[COT](#bk_cot)|[DEGREES](#bk_degrees)|  
 |[EXP](#bk_exp)|[EMELET](#bk_floor)|[LOG](#bk_log)|  
 |[LOG10](#bk_log10)|[PI](#bk_pi)|[POWER](#bk_power)|  
-|[RADIANS](#bk_radians)|[KEREKÍTÉS](#bk_round)|[SIN](#bk_sin)|  
-|[SQRT](#bk_sqrt)|[NÉGYSZÖG](#bk_square)|[SIGN](#bk_sign)|  
-|[BARACKSZÍNŰ](#bk_tan)|[TRUNC](#bk_trunc)||  
+|[RADIANS](#bk_radians)|[KEREKÍTÉS](#bk_round)|[RAND](#bk_rand)|
+|[SIN](#bk_sin)|[SQRT](#bk_sqrt)|[NÉGYSZÖG](#bk_square)|
+|[SIGN](#bk_sign)|[BARACKSZÍNŰ](#bk_tan)|[TRUNC](#bk_trunc)||  
   
 ####  <a name="bk_abs"></a> ABS  
  A megadott numerikus kifejezés (pozitív) abszolút értékét adja vissza.  
@@ -425,7 +425,7 @@ EXP (<numeric_expression>)
   
   A kitevő, egy szám az állandó **e** hatványára szám. Ha például EXP(1.0) = e ^ 1.0-s = 2.71828182845905 és EXP(10) = e ^ 10 = 22026.4657948067.  
   
-  Az exponenciális egy szám természetes alapú logaritmus alapja az a szám maga: EXP (LOG (n)) = n. Az exponenciális egy szám természetes algoritmusát az a szám, és maga: LOG (EXP (n)) = n.  
+  Egy szám természetes alapú logaritmusának exponenciális értéke maga a szám: EXP (napló (n)) = n. Egy szám exponenciális értékének természetes logaritmusa maga a szám: NAPLÓ (EXP (n)) = n.  
   
   **Példák**  
   
@@ -482,7 +482,7 @@ LOG (<numeric_expression> [, <base>])
   
   A természetes alapú logaritmus alapja az alap-es alapú logaritmusa **e**, ahol **e** megegyezik egy irrational állandó körülbelül 2.718281828.  
   
-  Az exponenciális egy szám természetes algoritmusát az a szám maga: LOG( EXP( n ) ) = n. Az exponenciális egy szám természetes alapú logaritmus alapja az a szám, és maga: EXP( LOG( n ) ) = n.  
+  A szám exponenciális értékének természetes logaritmusa maga a szám: LOG( EXP( n ) ) = n. Egy szám természetes alapú logaritmusának exponenciális értéke maga a szám: EXP( LOG( n ) ) = n.  
   
   **Példák**  
   
@@ -555,13 +555,7 @@ SELECT LOG10(100) AS log10
 ```  
 PI ()  
 ```  
-  
- **Argumentumok**  
-  
-- `numeric_expression`  
-  
-   A numerikus kifejezés.  
-  
+   
   **Návratové Typy**  
   
   A numerikus kifejezést ad vissza.  
@@ -677,14 +671,14 @@ ROUND(<numeric_expression>)
   
   **Megjegyzések**
   
-  A kerekítés végrehajtott művelet távolodó kerekítési középpont követi. Ha a bemenet egy numerikus kifejezés, amely pontosan két egész szám közé esik az eredmény a legközelebbi egész szám nullától távolabbi lesz.  
+  Az elvégezhető kerekítési művelet az a középpontba kerül, amely nulláról van lekerekítve. Ha a bemenet egy numerikus kifejezés, amely pontosan két egész szám közé esik, akkor az eredmény a legközelebb eső egész érték lesz a nulláról.  
   
-  |<numeric_expression>|Kerekített|
+  |< numeric_expression >|Lekerekített|
   |-|-|
-  |-6.5000|-7|
-  |-0.5|-1|
+  |– 6,5000|-7|
+  |– 0,5|-1|
   |0,5|1|
-  |6.5000|7||
+  |6,5000|7||
   
   **Példák**  
   
@@ -699,7 +693,34 @@ SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, 
 ```  
 [{r1: 2, r2: 3, r3: 3, r4: -2, r5: -3}]  
 ```  
+
+#### <a name="bk_rand"></a>RAND
+ Egy véletlenszerűen generált numerikus értéket ad vissza [0, 1).
+ 
+ **Syntax**  
   
+```  
+RAND ()  
+```  
+
+  **Návratové Typy**  
+  
+  A numerikus kifejezést ad vissza.  
+  
+  **Példák**  
+  
+  A következő példa egy véletlenszerűen generált numerikus értéket ad vissza.  
+  
+```  
+SELECT RAND() AS rand 
+```  
+  
+ Íme az eredményhalmaz.  
+  
+```  
+[{"rand": 0.87860053195618093}]  
+``` 
+
 ####  <a name="bk_sign"></a> BEJELENTKEZÉS  
  A pozitív (+ 1), a nulla (0) vagy a megadott numerikus kifejezés mínuszjel (-1) adja vissza.  
   
@@ -898,9 +919,9 @@ SELECT TRUNC(2.4) AS t1, TRUNC(2.6) AS t2, TRUNC(2.5) AS t3, TRUNC(-2.4) AS t4, 
 [{t1: 2, t2: 2, t3: 2, t4: -2, t5: -2}]  
 ```
 
-## <a id="type-checking-functions"></a>Funkciók ellenőrzése típusa
+## <a id="type-checking-functions"></a>Type Check functions
 
-A típus ellenőrzése függvények ellenőrizheti egy SQL-lekérdezésben lévő kifejezés típusa. Típus ellenőrzése funkciók segítségével határozhatja meg a tulajdonságokat elemek menet közben, ha változó vagy ismeretlen. A következő típus ellenőrzése támogatott beépített függvények táblázatát:
+A típus-ellenőrzési függvények lehetővé teszik egy kifejezés típusának ellenőrzését egy SQL-lekérdezésen belül. A Type-Check függvények segítségével meghatározhatja, hogy milyen típusú tulajdonságok vannak a menet közben, ha változó vagy ismeretlen. Az alábbi táblázat a támogatott beépített típus-ellenőrzési funkciókat tartalmazza:
 
 Az alábbi funkciókat támogatja a típus ellenőrzése a bemeneti értékek szemben, és minden egyes logikai értéket eredményül.  
   
@@ -1225,7 +1246,7 @@ SELECT
 
 ## <a id="string-functions"></a>Karakterlánc-függvények
 
-A következő skaláris függvények végrehajtania egy műveletet a bemeneti karakterlánc-érték, és a egy karakterlánc, numerikus vagy logikai értéket adja vissza:
+A következő skaláris függvények egy sztring típusú bemeneti értéken hajtanak végre műveletet, és karakterláncot, numerikus vagy logikai értéket adnak vissza:
   
 ||||  
 |-|-|-|  
@@ -1557,10 +1578,10 @@ REPLICATE(<str_expr>, <num_expr>)
   
 - `num_expr`  
   
-   Ez bármilyen érvényes numerikus kifejezés. Ha num_expr negatív, vagy nem véges, az eredmény nincs meghatározva.
+   Ez bármilyen érvényes numerikus kifejezés. Ha a num_expr negatív vagy nem véges, az eredmény nincs meghatározva.
 
   > [!NOTE]
-  > Az eredmény hossza legfeljebb 10 000 karakternél azaz (length(str_expr) * num_expr) < 10 000.
+  > Az eredmény maximális hossza 10 000 karakter, azaz (hossz (str_expr) * num_expr) < = 10 000.
   
   **Návratové Typy**  
   
@@ -1716,8 +1737,8 @@ SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2
 [{"s1": false, "s2": true}]  
 ```  
 
-  ####  <a name="bk_stringtoarray"></a> StringToArray  
- Egy tömb lefordítani kifejezést ad vissza. Ha a kifejezés nem fordítható le, nem definiált adja vissza.  
+  ####  <a name="bk_stringtoarray"></a>StringToArray  
+ Egy tömbre fordított kifejezést ad vissza. Ha a kifejezés nem fordítható le, a nem definiált értéket adja vissza.  
   
  **Syntax**  
   
@@ -1729,17 +1750,17 @@ StringToArray(<expr>)
   
 - `expr`  
   
-   Van bármilyen érvényes, a egy JSON-tömböt kifejezéssel kiértékelendő skaláris kifejezés. Vegye figyelembe, hogy beágyazott karakterlánc-értékeket kell megírni, az idézőjelekkel együtt, hogy érvényesek legyenek. A JSON-formátumban a részletekért lásd: [json.org](https://json.org/)
+   Bármely érvényes skaláris kifejezés, amely JSON-tömb kifejezésként lesz kiértékelve. Vegye figyelembe, hogy a beágyazott karakterlánc-értékeket idézőjelek közé kell írni, hogy érvényesek legyenek. A JSON formátumával kapcsolatos részletekért lásd: [JSON.org](https://json.org/)
   
   **Návratové Typy**  
   
-  Egy tömböt megadó kifejezést ad vissza, vagy nincs definiálva.  
+  Egy tömböt megadó kifejezést vagy nem definiált értéket ad vissza.  
   
   **Példák**  
   
-  Az alábbi példa bemutatja, hogy több különböző típusú StringToArray működését. 
+  Az alábbi példa bemutatja, hogyan viselkedik a StringToArray különböző típusokban. 
   
- Az alábbi parancsok példák érvényes adatokkal.
+ Az alábbi példák érvényes bemenettel rendelkeznek.
 
 ```
 SELECT 
@@ -1756,10 +1777,10 @@ SELECT
 [{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
 ```
 
-Érvénytelen bemenet egy példát a következő: 
+Az alábbi példa érvénytelen bemenetet mutat be. 
    
- A tömbön belüli szimpla idézőjelek között nem érvényes JSON.
-Akkor is, ha a lekérdezés érvényes, azok fog nem elemezhető érvényes tömbökhöz. A tömb karakterláncon belüli karakterláncokat vagy escape-karakterrel "[\\"\\"]" vagy a környező ajánlatot egyetlen kell lennie. a(z) [""] ".
+ A tömbben lévő szimpla idézőjelek nem érvényesek a JSON-ban.
+Annak ellenére, hogy egy lekérdezésen belül érvényesek, nem fogják értelmezni az érvényes tömböket. A tömb sztringjét tartalmazó karakterláncoknak Escape-"[\\"\\"]" karakternek kell lenniük, vagy a környező idézőjelnek egyetlen "[" "]" értékűnek kell lennie.
 
 ```
 SELECT
@@ -1772,9 +1793,9 @@ SELECT
 [{}]
 ```
 
-A következő példák érvénytelen bemenet.
+A következő példák érvényes bemenetre mutatnak.
    
- Az átadott kifejezés fog elemezhető, egy JSON-tömböt; a következő nem értékelik ki, írja be a tömb, és így a nem definiált visszaadása.
+ Az átadott kifejezés JSON-tömbként lesz értelmezve; a következő nem értékeli ki a tömböt, ezért a nem definiált értéket adja vissza.
    
 ```
 SELECT
@@ -1791,8 +1812,8 @@ SELECT
 [{}]
 ```
 
-####  <a name="bk_stringtoboolean"></a> StringToBoolean  
- Egy logikai lefordítani kifejezést ad vissza. Ha a kifejezés nem fordítható le, nem definiált adja vissza.  
+####  <a name="bk_stringtoboolean"></a>StringToBoolean  
+ Egy logikai értékre fordított kifejezést ad vissza. Ha a kifejezés nem fordítható le, a nem definiált értéket adja vissza.  
   
  **Syntax**  
   
@@ -1804,19 +1825,19 @@ StringToBoolean(<expr>)
   
 - `expr`  
   
-   Bármely érvényes skaláris kifejezés, egy logikai kifejezés értékelése van.  
+   Bármely érvényes skaláris kifejezés logikai kifejezésként lesz kiértékelve.  
   
   **Návratové Typy**  
   
-  Visszaad egy logikai kifejezés, vagy nincs definiálva.  
+  Egy logikai kifejezést ad vissza, vagy nincs meghatározva.  
   
   **Példák**  
   
-  Az alábbi példa bemutatja, hogy több különböző típusú StringToBoolean működését. 
+  Az alábbi példa bemutatja, hogyan viselkedik a StringToBoolean különböző típusokban. 
  
- Az alábbi parancsok példák érvényes adatokkal.
+ Az alábbi példák érvényes bemenettel rendelkeznek.
 
-Elválasztó karakterek használata engedélyezett, csak előtt vagy után a "true"/ "false".
+A szóköz csak az "igaz"/"false" előtt vagy után engedélyezett.
 
 ```  
 SELECT 
@@ -1831,9 +1852,9 @@ SELECT
 [{"b1": true, "b2": false, "b3": false}]
 ```  
 
-Az alábbi példák a bemenet érvénytelen.
+A következő példák érvénytelen bemenettel rendelkeznek.
 
- Logikai kis-és nagybetűket, és az összes kisbetűs karaktereket, azaz "true" és "false" kellett készülnie.
+ A logikai értékek megkülönböztetik a kis-és nagybetűket, és az összes kisbetűs karaktert, azaz "true" és "false" karaktereket kell írni.
 
 ```  
 SELECT 
@@ -1847,7 +1868,7 @@ SELECT
 [{}]
 ``` 
 
-Az átadott kifejezés fog elemezhető, egy logikai kifejezés; Írja be a logikai érték, és így a nem definiált vissza nem értékelik ki ezeket a bemeneteket.
+Az átadott kifejezés logikai kifejezésként lesz értelmezve; Ezek a bemenetek nem értékelik a logikai típust, így a nem definiált értéket adja vissza.
 
 ```  
 SELECT 
@@ -1864,8 +1885,8 @@ SELECT
 [{}]
 ```  
 
-####  <a name="bk_stringtonull"></a> StringToNull  
- Null értékekké kifejezést ad vissza. Ha a kifejezés nem fordítható le, nem definiált adja vissza.  
+####  <a name="bk_stringtonull"></a>StringToNull  
+ NULL értékre fordított kifejezést ad vissza. Ha a kifejezés nem fordítható le, a nem definiált értéket adja vissza.  
   
  **Syntax**  
   
@@ -1877,19 +1898,19 @@ StringToNull(<expr>)
   
 - `expr`  
   
-   Bármely érvényes, null kifejezésként kiértékelendő skaláris kifejezés van.
+   Bármely érvényes skaláris kifejezés kiértékelése null kifejezésként történik.
   
   **Návratové Typy**  
   
-  Egy NULL értékű kifejezést ad vissza, vagy nincs definiálva.  
+  NULL kifejezést vagy nem definiált értéket ad vissza.  
   
   **Példák**  
   
-  Az alábbi példa bemutatja, hogy több különböző típusú StringToNull működését. 
+  Az alábbi példa bemutatja, hogyan viselkedik a StringToNull különböző típusokban. 
 
-Az alábbi parancsok példák érvényes adatokkal.
+Az alábbi példák érvényes bemenettel rendelkeznek.
 
- Szóköz kizárólag előtt vagy után "null" használata engedélyezett.
+ A szóköz csak a "NULL" előtt vagy után engedélyezett.
 
 ```  
 SELECT 
@@ -1904,9 +1925,9 @@ SELECT
 [{"n1": null, "n2": null, "n3": true}]
 ```  
 
-Az alábbi példák a bemenet érvénytelen.
+A következő példák érvénytelen bemenettel rendelkeznek.
 
-NULL megkülönbözteti a kis-és nagybetűket, és kell megírni, azaz "null" kisbetűs karakterek.
+A null a kis-és nagybetűk megkülönböztetése, és minden kisbetűvel, azaz "NULL" karakterrel kell írni.
 
 ```  
 SELECT    
@@ -1920,7 +1941,7 @@ SELECT
 [{}]
 ```  
 
-Az átadott kifejezés fog elemezhető; null kifejezésként Írja be a NULL értékű, és így a nem definiált vissza nem értékelik ki ezeket a bemeneteket.
+Az átadott kifejezést a rendszer null kifejezésként értelmezi. Ezek a bemenetek nem értékelik a null értéket, így a nem definiált értéket adja vissza.
 
 ```  
 SELECT    
@@ -1936,8 +1957,8 @@ SELECT
 [{}]
 ```  
 
-####  <a name="bk_stringtonumber"></a> StringToNumber  
- Egy szám fordítja le kifejezést ad vissza. Ha a kifejezés nem fordítható le, nem definiált adja vissza.  
+####  <a name="bk_stringtonumber"></a>StringToNumber  
+ Egy számra fordított kifejezést ad vissza. Ha a kifejezés nem fordítható le, a nem definiált értéket adja vissza.  
   
  **Syntax**  
   
@@ -1949,17 +1970,17 @@ StringToNumber(<expr>)
   
 - `expr`  
   
-   Van bármilyen érvényes skaláris kifejezés JSON-szám kifejezésként ki kell értékelni. A JSON-ban számok egész vagy lebegőpontos kell lennie. A JSON-formátumban a részletekért lásd: [json.org](https://json.org/)  
+   Bármely érvényes skaláris kifejezés, amely JSON-szám kifejezésként lesz kiértékelve. A JSON-számnak egész számnak vagy lebegőpontos pontnak kell lennie. A JSON formátumával kapcsolatos részletekért lásd: [JSON.org](https://json.org/)  
   
   **Návratové Typy**  
   
-  Egy szám kifejezést ad vissza, vagy nincs definiálva.  
+  Egy szám kifejezést vagy nem definiált értéket ad vissza.  
   
   **Példák**  
   
-  Az alábbi példa bemutatja, hogy több különböző típusú StringToNumber működését. 
+  Az alábbi példa bemutatja, hogyan viselkedik a StringToNumber különböző típusokban. 
 
-Elválasztó karakterek használata engedélyezett, a szám csak előtt vagy után.
+A szóköz csak a szám előtt vagy után engedélyezett.
 
 ```  
 SELECT 
@@ -1975,7 +1996,7 @@ SELECT
 {{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
 ```  
 
-A JSON érvényes számnak kell lennie vagy kell egész vagy lebegőpontos szám.
+A JSON-ban érvényes számnak kell lennie vagy egész számnak vagy lebegőpontos számnak kell lennie.
 
 ```  
 SELECT   
@@ -1988,7 +2009,7 @@ SELECT
 {{}}
 ```  
 
-Az átadott kifejezés fog elemezhető szám kifejezésként; Írja be a szám és így nem definiált nem értékelik ki ezeket a bemeneteket. 
+Az átadott kifejezést szám típusú kifejezésként értelmezi a rendszer. Ezek a bemenetek nem értékelik ki a számot, és így nem definiált értéket adnak vissza. 
 
 ```  
 SELECT 
@@ -2006,8 +2027,8 @@ SELECT
 {{}}
 ```  
 
-####  <a name="bk_stringtoobject"></a> StringToObject  
- Az objektum-jogkivonattá alakítja kifejezést ad vissza. Ha a kifejezés nem fordítható le, nem definiált adja vissza.  
+####  <a name="bk_stringtoobject"></a>StringToObject  
+ Egy objektumra fordított kifejezést ad vissza. Ha a kifejezés nem fordítható le, a nem definiált értéket adja vissza.  
   
  **Syntax**  
   
@@ -2019,17 +2040,17 @@ StringToObject(<expr>)
   
 - `expr`  
   
-   Van bármilyen érvényes, a egy JSON-objektum kifejezéssel kiértékelendő skaláris kifejezés. Vegye figyelembe, hogy beágyazott karakterlánc-értékeket kell megírni, az idézőjelekkel együtt, hogy érvényesek legyenek. A JSON-formátumban a részletekért lásd: [json.org](https://json.org/)  
+   Bármely érvényes skaláris kifejezés, amely JSON-objektum kifejezésként lesz kiértékelve. Vegye figyelembe, hogy a beágyazott karakterlánc-értékeket idézőjelek közé kell írni, hogy érvényesek legyenek. A JSON formátumával kapcsolatos részletekért lásd: [JSON.org](https://json.org/)  
   
   **Návratové Typy**  
   
-  Objektum kifejezést ad vissza, vagy nincs definiálva.  
+  Egy objektum kifejezését adja vissza, vagy nincs meghatározva.  
   
   **Példák**  
   
-  Az alábbi példa bemutatja, hogy több különböző típusú StringToObject működését. 
+  Az alábbi példa bemutatja, hogyan viselkedik a StringToObject különböző típusokban. 
   
- Az alábbi parancsok példák érvényes adatokkal.
+ Az alábbi példák érvényes bemenettel rendelkeznek.
 
 ``` 
 SELECT 
@@ -2048,10 +2069,10 @@ SELECT
   "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
 ```
 
- Az alábbi példák a bemenet érvénytelen.
-Akkor is, ha a lekérdezés érvényes, azok fog nem elemezhető érvényes objektumra. Karakterláncok a karakterláncot, objektumot vagy escape-karakterrel "{\\" egy\\":\\" str\\"}", vagy a környező ajánlatot egyetlen kell lennie. a(z) "{"a":"str"}".
+ A következő példák érvénytelen bemenettel rendelkeznek.
+Annak ellenére, hogy egy lekérdezésen belül érvényesek, nem lesznek értelmezve érvényes objektumokra. Az objektumon belüli karakterláncokat\\"{" a\\":\\" Str\\"}" karakterrel kell megszökni, vagy a környező idézőjelnek egyetlen "{" a ":" Str "}" értékűnek kell lennie.
 
-A tulajdonságnevek körülvevő szimpla idézőjelek között nem érvényes JSON.
+A környező tulajdonságok neveinek egyetlen idézőjele nem érvényes JSON.
 
 ``` 
 SELECT 
@@ -2064,7 +2085,7 @@ SELECT
 [{}]
 ```  
 
-Körülvevő idézőjeleket tulajdonság nevében a rendszer nem érvényes JSON.
+A környező idézőjelek nélküli tulajdonságnév nem érvényes JSON.
 
 ``` 
 SELECT 
@@ -2077,9 +2098,9 @@ SELECT
 [{}]
 ``` 
 
-Az alábbi példák a bemenet érvénytelen.
+A következő példák érvénytelen bemenettel rendelkeznek.
 
- Az átadott kifejezés fog elemezhető JSON-objektumként; Írja be az objektum, és így a nem definiált vissza nem értékelik ki ezeket a bemeneteket.
+ Az átadott kifejezés JSON-objektumként lesz értelmezve; Ezek a bemenetek nem értékelik ki az objektum típusát, így a nem definiált értéket adja vissza.
 
 ``` 
 SELECT 
@@ -2114,7 +2135,7 @@ SUBSTRING(<str_expr>, <num_expr>, <num_expr>)
   
 - `num_expr`  
   
-   Van bármilyen érvényes numerikus kifejezés jelölésére, a kezdő és záró karakter.    
+   Bármely érvényes numerikus kifejezés, amely a kezdő és a záró karaktert jelöli.    
   
   **Návratové Typy**  
   
@@ -2280,9 +2301,9 @@ SELECT UPPER("Abc") AS upper
 [{"upper": "ABC"}]  
 ```
 
-## <a id="array-functions"></a>Tömb funkciók
+## <a id="array-functions"></a>Array függvények
 
-A következő skaláris függvények végrehajtania egy műveletet a egy tömb bemeneti érték és a visszaadandó numerikus, logikai és a tömb értéket:
+A következő skaláris függvények a tömb bemeneti értékén hajtanak végre műveletet, és numerikus, logikai vagy Array értéket adnak vissza:
   
 ||||  
 |-|-|-|  
@@ -2323,7 +2344,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"]) AS arrayConcat
 ```  
   
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
-Jelzi, hogy a tömb tartalmazza-e a megadott érték logikai érték beolvasása. Egy logikai kifejezés belül a parancs használatával ellenőrizheti az objektum teljes vagy részleges egyezést. 
+Jelzi, hogy a tömb tartalmazza-e a megadott érték logikai érték beolvasása. Egy objektum részleges vagy teljes egyezését a parancsban található logikai kifejezés használatával tekintheti meg. 
 
 **Syntax**  
   
@@ -2343,7 +2364,7 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
 
 - `bool_expr`  
   
-   Van a logikai kifejezés. Ha a változó értéke "true'and, ha a megadott keresési érték egy olyan objektum, a parancs ellenőrzi egy részleges egyezéssel (Keresés Objekt egy objektum egy részét). Ha, "false" értékre van állítva, a parancs ellenőrzi a tömbön belüli összes objektum teljes megfelel. Ha nincs megadva az alapértelmezett érték a False (hamis). 
+   Van a logikai kifejezés. Ha az értéke "true'and", ha a megadott keresési érték egy objektum, a parancs részleges egyezést keres (a keresési objektum az egyik objektum részhalmaza). Ha "false" (hamis) értékre van állítva, a parancs a tömbben lévő összes objektum teljes egyezését ellenőrzi. Ha nincs megadva, az alapértelmezett érték false (hamis). 
   
   **Návratové Typy**  
   
@@ -2475,14 +2496,14 @@ SELECT
 ```  
 ## <a id="date-time-functions"></a>Dátum és idő függvény
 
-A következő skaláris függvények lehetővé teszik az aktuális UTC-dátum és idő lekérése két formában; egy numerikus időbélyeget, amelynek értéke a Unix alapidőpont ezredmásodpercben vagy egy karakterlánc, amely megfelel az ISO 8601 formátumot. 
+A következő skaláris függvények lehetővé teszik az aktuális UTC dátum és idő lekérését két formában; egy numerikus időbélyeg, amelynek értéke a UNIX-kor ezredmásodpercben, vagy egy olyan karakterlánc, amely megfelel az ISO 8601 formátumnak. 
 
 |||
 |-|-|
 |[GETCURRENTDATETIME](#bk_get_current_date_time)|[GETCURRENTTIMESTAMP](#bk_get_current_timestamp)||
 
-####  <a name="bk_get_current_date_time"></a> GETCURRENTDATETIME
- A jelenlegi UTC szerinti dátuma és ideje ISO 8601 karakterláncként adja vissza.
+####  <a name="bk_get_current_date_time"></a>GETCURRENTDATETIME
+ Az aktuális UTC dátumát és időpontját adja vissza ISO 8601-karakterláncként.
   
  **Syntax**
   
@@ -2492,39 +2513,39 @@ GETCURRENTDATETIME ()
   
   **Návratové Typy**
   
-  Az aktuális UTC dátum és idő ISO 8601 karakterlánc értékét adja vissza. 
+  Az aktuális UTC dátum és idő ISO 8601 sztring értékét adja vissza. 
 
-  Ez a következő formátumban: éééé-hh-DDThh:mm:ss.sssZ fejezzük ahol:
+  Ez az ÉÉÉÉ-HH-NNTóó: PP: mm. sssZ formátumban van megadva, ahol:
   
   |||
   |-|-|
   |ÉÉÉÉ|négyjegyű év|
-  |MM|kétjegyű hónappal (01 = January, stb.)|
-  |DD|hónap (01. és 31) kétjegyű napja|
-  |T|kezdő idő elemek signifier|
-  |hh|két számjegyű óra (00 és 23 közötti)|
-  |mm|két számjegyet perc (00 és 59 közötti)|
-  |ss|két számjegyet másodperc (00 és 59 közötti)|
-  |.sss|tizedes törtek másodperc három számjegye|
-  |Z|UTC (egyezményes világidő) várt||
+  |MM|kétjegyű hónap (01 = Január stb.)|
+  |DD|hónap kétjegyű napja (01 – 31)|
+  |T?|az időelemek kezdetének jelölője|
+  |óó|két számjegyű óra (00 – 23)|
+  |mm|két számjegyből álló perc (00 – 59)|
+  |SS|két számjegyű másodperc (00 – 59)|
+  |. ÉER|egy másodperces tizedes törtek három számjegye|
+  |Z|UTC (egyezményes világidő) jelölő||
   
-  Az ISO 8601 formátumú további részletekért lásd: [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
+  Az ISO 8601 formátumával kapcsolatos további részletekért lásd: [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 
   **Megjegyzések**
 
-  GETCURRENTDATETIME determinált függvény. 
+  A GETCURRENTDATETIME egy determinált-függvény. 
   
-  A visszaadott eredmény az UTC (egyezményes világidő).
+  A visszaadott eredmény UTC (egyezményes világidő).
 
   **Példák**  
   
-  Az alábbi példa bemutatja, hogyan beolvasni a jelenlegi UTC szerinti dátuma ideje a GetCurrentDateTime beépített függvény használatával.
+  Az alábbi példa azt mutatja be, hogyan kérhető le az aktuális UTC dátum idő a GetCurrentDateTime beépített függvény használatával.
   
 ```  
 SELECT GETCURRENTDATETIME() AS currentUtcDateTime
 ```  
   
- Íme egy példa eredményhalmaz.
+ Íme egy példa az eredményhalmaz értékére.
   
 ```  
 [{
@@ -2532,8 +2553,8 @@ SELECT GETCURRENTDATETIME() AS currentUtcDateTime
 }]  
 ```  
 
-####  <a name="bk_get_current_timestamp"></a> GETCURRENTTIMESTAMP
- 00:00:00 csütörtök, 1. január 1970 óta eltelt idő (MS) számát adja vissza. 
+####  <a name="bk_get_current_timestamp"></a>GETCURRENTTIMESTAMP
+ Azon ezredmásodpercek számát adja vissza, amelyek elteltek 00:00:00 csütörtök, 1970. január 1. között. 
   
  **Syntax**  
   
@@ -2543,23 +2564,23 @@ GETCURRENTTIMESTAMP ()
   
   **Návratové Typy**  
   
-  Indítás óta eltelt idő óta az Unix alapidőpont pl. 00:00:00 csütörtök, 1. január 1970 óta eltelt idő milliszekundumban megadva aktuális száma számértéket ad vissza.
+  Egy numerikus értéket ad vissza, amely a UNIX-kor óta eltelt ezredmásodpercek számát jelenti, azaz a 00:00:00 csütörtökön, a 1970. január 1. között eltelt ezredmásodpercek számát.
 
   **Megjegyzések**
 
-  GETCURRENTTIMESTAMP determinált függvény.
+  A GETCURRENTTIMESTAMP egy determinált-függvény.
   
-  A visszaadott eredmény az UTC (egyezményes világidő).
+  A visszaadott eredmény UTC (egyezményes világidő).
 
   **Példák**  
   
-  Az alábbi példa bemutatja, hogyan lekérni az aktuális timestamp a GetCurrentTimestamp beépített függvény használatával.
+  Az alábbi példa bemutatja, hogyan kérheti le az aktuális időbélyeget a GetCurrentTimestamp beépített függvény használatával.
   
 ```  
 SELECT GETCURRENTTIMESTAMP() AS currentUtcTimestamp
 ```  
   
- Íme egy példa eredményhalmaz.
+ Íme egy példa az eredményhalmaz értékére.
   
 ```  
 [{
@@ -2567,7 +2588,7 @@ SELECT GETCURRENTTIMESTAMP() AS currentUtcTimestamp
 }]  
 ```
 
-## <a id="spatial-functions"></a>Térbeli funkciók
+## <a id="spatial-functions"></a>Térbeli függvények
 
 A cosmos DB a következő nyissa meg a földrajzi Consortium (OGC) beépített függvények támogatja a térinformatikai lekérdezéséhez. A következő skaláris függvények végrehajtania egy műveletet a térbeli objektum bemeneti érték a, és a egy numerikus vagy logikai értéket adja vissza.  
   
@@ -2777,6 +2798,6 @@ SELECT ST_ISVALIDDETAILED({
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Cosmos DB bemutatása](introduction.md)
-- [UDFs](sql-query-udfs.md)
-- [Összesítések](sql-query-aggregates.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [UDF](sql-query-udfs.md)
+- [Aggregátumok](sql-query-aggregates.md)

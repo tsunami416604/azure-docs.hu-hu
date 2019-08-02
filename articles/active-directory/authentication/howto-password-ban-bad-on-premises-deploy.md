@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01a9cc4ec4788422337b77b285ed8ee440f6acd4
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 3ebeed3636ea6da77e05a9a790e51c7771ebe685
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68346902"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666284"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD jelszóvédelem üzembe helyezése
 
@@ -31,6 +31,12 @@ A naplózási szakaszban számos szervezet találja a következőket:
 * A biztonságosabb jelszavak használatához javítaniuk kell a meglévő működési folyamatokat.
 * A felhasználók gyakran nem biztonságos jelszavakat használnak.
 * Tájékoztatniuk kell a felhasználókat a biztonsági kényszerítés közelgő változásáról, a lehetséges hatásokról, valamint a biztonságosabb jelszavak kiválasztásáról.
+
+Az is lehetséges, hogy az erősebb jelszó-érvényesítés hatással van a meglévő Active Directory tartományvezérlő üzembe helyezési automatizálására. Javasoljuk, hogy a naplózási időszak kiértékelése során legalább egy DC-előléptetést és egy tartományvezérlő-lefokozást hajtson végre, hogy segítse az ilyen problémák előzetes felfedését.  További információkért lásd:
+
+* [Az Ntdsutil. exe nem tud beállítani egy gyenge címtárszolgáltatás-javító mód jelszavát](howto-password-ban-bad-on-premises-troubleshoot.md##ntdsutilexe-fails-to-set-a-weak-dsrm-password)
+* [A tartományvezérlő replikájának előléptetése sikertelen a Címtárszolgáltatások helyreállító módjának jelszava miatt](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
+* [A tartományvezérlő lefokozása nem sikerült, mert gyenge a helyi rendszergazda jelszava](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
 Ha a szolgáltatás egy ésszerű időszakra vonatkozóan a vizsgálati módban fut, a konfigurációt átválthatja a *naplózásból* , hogy a *kényszerítse* a biztonságosabb jelszavak megkövetelését. A célzott monitorozás ebben az időszakban jó ötlet.
 
@@ -98,7 +104,7 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
 
       `Get-Service AzureADPasswordProtectionProxy | fl`.
 
-     Az eredménynek a "  Running" állapotot kell mutatnia.
+     Az eredménynek a " Running" állapotot kell mutatnia.
 
 1. Regisztrálja a proxyt.
    * A 3. lépés befejezése után a proxy szolgáltatás fut a gépen. A szolgáltatás azonban még nem rendelkezik az Azure AD-vel való kommunikációhoz szükséges hitelesítő adatokkal. Az Azure AD-vel való regisztráció szükséges:

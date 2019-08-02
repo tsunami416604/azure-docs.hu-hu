@@ -1,6 +1,6 @@
 ---
-title: Az Azure-fiók a Partnerazonosítóra mutató hivatkozás |} A Microsoft Docs
-description: Nyomon követheti az Azure-ügyfelekkel marketingmódszerek Partnerazonosító társít ahhoz a felhasználói fiókhoz, amellyel az ügyfél-erőforrások kezelése.
+title: Azure-fiók összekapcsolása partner-AZONOSÍTÓval | Microsoft Docs
+description: Az Azure-ügyfelekkel folytatott kapcsolatok nyomon követése a partner AZONOSÍTÓjának a felhasználói fiókhoz való összekapcsolásával, amelyet az ügyfél erőforrásainak kezeléséhez használ.
 services: billing
 author: dhirajgandhi
 manager: dhgandhi
@@ -11,150 +11,150 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 97866a1f1299c028cdc8f86245308ae4a8b5db88
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 0448ffbccddc913bd6359f5f6bbf42988239afb4
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502682"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706408"
 ---
-# <a name="link-a-partner-id-to-your-azure-accounts"></a>Partnerazonosító csatolása az Azure-fiókok
+# <a name="link-a-partner-id-to-your-azure-accounts"></a>Partner-azonosító csatolása az Azure-fiókokhoz
 
-Microsoft-partnerek biztosítanak a szolgáltatások, amelyek segítségével az ügyfelek üzleti és a Microsoft-termékeket használó üzleti célok elérése. Kezelése a vásárló nevében eljáró, konfigurálását és támogató Azure-szolgáltatások, a partner felhasználókat kell az ügyfél-környezethez. Partner rendszergazdai hivatkozással partnerek társíthat a partner network-azonosító szolgáltatásnyújtásra használt hitelesítő adatok.
+A Microsoft-partnerek olyan szolgáltatásokat biztosítanak, amelyek segítségével az ügyfelek a Microsoft termékeivel üzleti és küldetési célokat érhetnek el. Ha az ügyfél nevében az Azure-szolgáltatásokat kezeli, konfigurálja és támogatja, akkor a partnereknek hozzá kell férniük az ügyfél környezetéhez. A partneri rendszergazdai hivatkozás használatával a partnerek a szolgáltatás kézbesítéséhez használt hitelesítő adatokkal társítják a partner hálózati AZONOSÍTÓját.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="get-access-from-your-customer"></a>Az ügyfél hozzáférhet
+## <a name="get-access-from-your-customer"></a>Hozzáférés kérése az ügyféltől
 
-A Partnerazonosítóra kapcsol, mielőtt az ügyfél kell hozzáférést biztosít az Azure-erőforrások az alábbi lehetőségek egyikének használatával:
+A partner-azonosító csatolása előtt az ügyfélnek az alábbi lehetőségek egyikével kell hozzáférést biztosítania az Azure-erőforrásokhoz:
 
-- **A vendégfelhasználók**: Az ügyfél egy hozzáadhat, és bármely szerepköralapú hozzáférés-vezérlés (RBAC) szerepkörök hozzárendelése. További információkért lásd: [vendég felhasználók hozzáadása másik címtárból](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- **Vendég felhasználó**: Az ügyfél felveheti Önt vendég felhasználóként, és hozzárendelhet bármilyen szerepköralapú hozzáférés-vezérlési (RBAC) szerepkört. További információ: [vendég felhasználók hozzáadása egy másik címtárból](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 
-- **Directory-fiók**: Az ügyfél is egy felhasználói fiók létrehozása az Ön számára a saját címtárban, és bármely RBAC szerepkör hozzárendelése.
+- **Directory-fiók**: Az ügyfél létrehozhat egy felhasználói fiókot saját címtárában, és hozzárendelhet bármely RBAC-szerepkört.
 
-- **Egyszerű szolgáltatás**: Az ügyfél hozzáadhat egy alkalmazást vagy szkriptet a szervezet a címtárban, és bármely RBAC szerepkör hozzárendelése. Az alkalmazást vagy szkriptet identitását egy egyszerű szolgáltatást is nevezik.
+- **Egyszerű szolgáltatásnév**: Az ügyfél hozzáadhat egy alkalmazást vagy parancsfájlt a szervezetében a címtárában, és hozzárendelhet bármilyen RBAC-szerepkört. Az alkalmazás vagy a szkript identitása az egyszerű szolgáltatásnév.
 
-## <a name="link-to-a-partner-id"></a>A Partnerazonosítóra mutató hivatkozás
+## <a name="link-to-a-partner-id"></a>Csatolás partnerazonosítóhoz
 
-Az ügyfél-erőforrásokhoz való hozzáférést, ha használja az Azure portal, PowerShell vagy az Azure CLI a felhasználói azonosító vagy az egyszerű szolgáltatás a Microsoft Partner Network-azonosító (MPN-azonosító) mutat. Hivatkozás a Partnerazonosítót. minden egyes ügyfél-bérlőben.
+Ha hozzáfér az ügyfél erőforrásaihoz, használja a Azure Portal, a PowerShell vagy az Azure CLI-t az Microsoft Partner Network-azonosító (MPN-azonosító) a felhasználói AZONOSÍTÓhoz vagy az egyszerű szolgáltatáshoz való csatolásához. A partner AZONOSÍTÓjának összekapcsolása minden ügyfél-bérlőben.
 
-### <a name="use-the-azure-portal-to-link-to-a-new-partner-id"></a>Egy új Partnerazonosító csatolása az Azure portal használatával
+### <a name="use-the-azure-portal-to-link-to-a-new-partner-id"></a>A Azure Portal használata új partner-AZONOSÍTÓra való hivatkozáshoz
 
-1. Lépjen a [a Partnerazonosítóra mutató hivatkozás](https://portal.azure.com/#blade/Microsoft_Azure_Billing/managementpartnerblade) az Azure Portalon.
+1. Válassza a Azure Portal [partner-azonosítóra mutató hivatkozást](https://portal.azure.com/#blade/Microsoft_Azure_Billing/managementpartnerblade) .
 
 2. Jelentkezzen be az Azure portálra.
 
-3. Adja meg a Microsoft-partnerazonosítóját. A partner-azonosító a [Microsoft Partner Network](https://partner.microsoft.com/) Azonosítót a szervezet számára.
+3. Adja meg a Microsoft partner AZONOSÍTÓját. A partner azonosítója a szervezet [Microsoft Partner Network](https://partner.microsoft.com/) azonosítója.
 
-   ![A Partnerazonosítóra mutató hivatkozás megjelenítő képernyőkép](./media/billing-link-partner-id/link-partner-ID.PNG)
+   ![A partner-AZONOSÍTÓra mutató hivatkozást megjelenítő képernyőkép](./media/billing-link-partner-id/link-partner-ID.PNG)
 
-4. Partnerazonosító csatolása egy másik ügyfél, váltson a címtárban. A **címtár váltása**, válassza ki a címtárat.
+4. Ha egy másik ügyfélhez szeretne partner-azonosítót kapcsolni, váltson át a címtárra. A **váltás könyvtár**alatt válassza ki a címtárat.
 
-   ![Képernyőkép címtár váltása](./media/billing-link-partner-id/directory-switcher.png)
+   ![A Switch könyvtárat bemutató képernyőkép](./media/billing-link-partner-id/directory-switcher.png)
 
-### <a name="use-powershell-to-link-to-a-new-partner-id"></a>A PowerShell használata egy új Partnerazonosító csatolása
+### <a name="use-powershell-to-link-to-a-new-partner-id"></a>Új partner-AZONOSÍTÓra mutató hivatkozás használata a PowerShell használatával
 
-1. Telepítse a [AzureRM.ManagementPartner](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner) PowerShell-modult.
+1. Telepítse az az [. ManagementPartner](https://www.powershellgallery.com/packages/Az.ManagementPartner/) PowerShell-modult.
 
-2. Jelentkezzen be az ügyfélbérlőn a felhasználói fiók vagy az egyszerű szolgáltatás. További információkért lásd: [jelentkezzen be a PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+2. Jelentkezzen be az ügyfél bérlője számára a felhasználói fiókkal vagy az egyszerű szolgáltatással. További információ: [Bejelentkezés a PowerShell-](https://docs.microsoft.com/powershell/azure/authenticate-azureps)lel.
 
    ```azurepowershell-interactive
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
-3. Hivatkozás az új partner. A partner-azonosító a [Microsoft Partner Network](https://partner.microsoft.com/) Azonosítót a szervezet számára.
+3. Az új partner-AZONOSÍTÓra mutató hivatkozás. A partner azonosítója a szervezet [Microsoft Partner Network](https://partner.microsoft.com/) azonosítója.
 
     ```azurepowershell-interactive
     C:\> new-AzManagementPartner -PartnerId 12345
     ```
 
-#### <a name="get-the-linked-partner-id"></a>A csatolt partner azonosító beszerzése
+#### <a name="get-the-linked-partner-id"></a>A csatolt partner AZONOSÍTÓjának beolvasása
 ```azurepowershell-interactive
 C:\> get-AzManagementPartner
 ```
 
-#### <a name="update-the-linked-partner-id"></a>A csatolt Partnerazonosító frissítése
+#### <a name="update-the-linked-partner-id"></a>A csatolt partner AZONOSÍTÓjának frissítése
 ```azurepowershell-interactive
 C:\> Update-AzManagementPartner -PartnerId 12345
 ```
-#### <a name="delete-the-linked-partner-id"></a>Törölje a társított partnerazonosító Társítását
+#### <a name="delete-the-linked-partner-id"></a>A csatolt partner AZONOSÍTÓjának törlése
 ```azurepowershell-interactive
 C:\> remove-AzManagementPartner -PartnerId 12345
 ```
 
-### <a name="use-the-azure-cli-to-link-to-a-new-partner-id"></a>Egy új Partnerazonosító csatolása az Azure CLI használatával
-1. Az Azure CLI-bővítmény telepítése.
+### <a name="use-the-azure-cli-to-link-to-a-new-partner-id"></a>Új partner-AZONOSÍTÓra mutató hivatkozás használata az Azure CLI-vel
+1. Telepítse az Azure CLI-bővítményt.
 
     ```azurecli-interactive
     C:\ az extension add --name managementpartner
     ```
 
-2. Jelentkezzen be az ügyfélbérlőn a felhasználói fiók vagy az egyszerű szolgáltatás. További információkért lásd: [jelentkezzen be az Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+2. Jelentkezzen be az ügyfél bérlője számára a felhasználói fiókkal vagy az egyszerű szolgáltatással. További információ: [Bejelentkezés az Azure CLI-vel](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>
     ```
 
-3. Hivatkozás az új partner. A partner-azonosító a [Microsoft Partner Network](https://partner.microsoft.com/) Azonosítót a szervezet számára.
+3. Az új partner-AZONOSÍTÓra mutató hivatkozás. A partner azonosítója a szervezet [Microsoft Partner Network](https://partner.microsoft.com/) azonosítója.
 
      ```azurecli-interactive
      C:\ az managementpartner create --partner-id 12345
       ```  
 
-#### <a name="get-the-linked-partner-id"></a>A csatolt partner azonosító beszerzése
+#### <a name="get-the-linked-partner-id"></a>A csatolt partner AZONOSÍTÓjának beolvasása
 ```azurecli-interactive
 C:\ az managementpartner show
 ```
 
-#### <a name="update-the-linked-partner-id"></a>A csatolt Partnerazonosító frissítése
+#### <a name="update-the-linked-partner-id"></a>A csatolt partner AZONOSÍTÓjának frissítése
 ```azurecli-interactive
 C:\ az managementpartner update --partner-id 12345
 ```
 
-#### <a name="delete-the-linked-partner-id"></a>Törölje a társított partnerazonosító Társítását
+#### <a name="delete-the-linked-partner-id"></a>A csatolt partner AZONOSÍTÓjának törlése
 ```azurecli-interactive
 C:\ az managementpartner delete --partner-id 12345
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-Csatlakozzon a beszélgetéshez a [Microsoft Partnerközösségéhez](https://aka.ms/PALdiscussion) kapják a frissítéseket, vagy küldjön visszajelzést.
+Csatlakozzon a [Microsoft partner Közösség](https://aka.ms/PALdiscussion) vitafórumához a frissítések fogadásához és a visszajelzések elküldéséhez.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**A partner Partnerazonosítóját kapcsolhatja ki?**
+**Kik kapcsolhatják össze a partner AZONOSÍTÓját?**
 
-A fiók minden felhasználónak az ügyfél Azure-erőforrások felügyelő a fiókpartner-szervezet kapcsolat a partnerazonosító Társítását.
+Az ügyfél Azure-erőforrásait kezelő partnervállalat bármely felhasználója összekapcsolhatja a partner AZONOSÍTÓját a fiókkal.
 
-**Partnerazonosító után módosítható kapcsolt?**
+**Módosulhat a partner azonosítója a csatolása után?**
 
-Igen. Társított Partnerazonosító megváltozott, hozzáadni vagy eltávolítani.
+Igen. A csatolt partner AZONOSÍTÓját megváltoztathatja, hozzáadhatja vagy eltávolíthatja.
 
-**Mi történik, ha egy felhasználónak egynél több ügyfél-bérlőben van fiókja?**
+**Mi a teendő, ha egy felhasználó több ügyfél-bérlőn is rendelkezik fiókkal?**
 
-A partner Partnerazonosítóját és a fiók közötti kapcsolat történik, az egyes vevő bérlők számára. Hivatkozás a Partnerazonosítót. minden egyes ügyfél-bérlőben.
+A partner-azonosító és a fiók közötti kapcsolat minden ügyfél bérlője számára elkészült. A partner AZONOSÍTÓjának összekapcsolása minden ügyfél-bérlőben.
 
-**Más partnerekkel vagy az ügyfelek számára szerkesztheti vagy a Partnerazonosítóra mutató hivatkozás eltávolítása?**
+**Más partnerek vagy ügyfelek szerkeszthetik vagy törölhetik a partner-AZONOSÍTÓra mutató hivatkozást?**
 
-A hivatkozás a felhasználói fiók szintjén társítva. Csak szerkesztheti, vagy távolítsa el a hivatkozásra kattintva a partnerazonosítóját. Az ügyfél és más partnerek nem lehet módosítani a hivatkozást a partnerazonosítóját.
+A hivatkozás a felhasználói fiók szintjén van társítva. Csak a partner-AZONOSÍTÓra mutató hivatkozást szerkesztheti vagy távolíthatja el. Az ügyfél és más partnerek nem változtathatják meg a partner-AZONOSÍTÓra mutató hivatkozást.
 
 
-**Melyik MPN-azonosító kell használni, ha a vállalata rendelkezik több?**
+**Melyik MPN-azonosítót kell használni, ha a vállalatom több?**
 
-Helyet Partnerfiókokhoz és a kapcsolódó MPN-azonosítók használt kapcsolásának partnerazonosítóját.  Tudjon meg többet [Partnerfiókokhoz](https://docs.microsoft.com/partner-center/account-structure)
+A partneri hely fiókjait és a hozzájuk tartozó MPN-azonosítókat kell használni a partner-azonosító összekapcsolásához.  További információ a [partneri fiókokról](https://docs.microsoft.com/partner-center/account-structure)
 
-**Hol található a Partnerazonosítójával társított reporting befolyásolt bevétel?**
+**Hol találhatok befolyásolt bevételi jelentést a csatolt partner AZONOSÍTÓhoz?**
 
-Felhőalapú termék Teljesítményjelentések készítése érhető el partnereink a Partnerközpont [saját irányítópult](https://partner.microsoft.com/membership/reports/myinsights). Válassza ki a Partner felügyeleti hivatkozás partner társítási típust kell.
+A Cloud Product Performance Reporting szolgáltatás a partner Centerben lévő partnerek számára érhető el a [saját](https://partner.microsoft.com/membership/reports/myinsights)bepillantások irányítópultján. Partneri társítási típusként ki kell választania a partneri rendszergazda hivatkozást.
 
-**Miért nem látom a saját felhasználói a jelentések?**
+**Miért nem látom az ügyfelem a jelentésekben?**
 
-Az ügyfél a következő okok miatt a jelentések nem láthatók
+A következő okok miatt nem látja az ügyfelet a jelentésekben
 
-1. A társított felhasználói fiók nem rendelkezik [szerepkör alapú hozzáférés](https://docs.microsoft.com/azure/role-based-access-control/overview) bármely ügyfél Azure-előfizetés vagy az erőforrás.
+1. A csatolt felhasználói fiók nem rendelkezik [szerepköralapú hozzáféréssel](https://docs.microsoft.com/azure/role-based-access-control/overview) az Azure-előfizetésekhez vagy-erőforrásokhoz.
 
-2. Ha a felhasználó nem rendelkezik Azure-előfizetés [szerepkör alapú hozzáférés](https://docs.microsoft.com/azure/role-based-access-control/overview) hozzáférés nem rendelkezik a használatot.
+2. Az Azure-előfizetés, amelyben a felhasználó [szerepkör-alapú hozzáférési](https://docs.microsoft.com/azure/role-based-access-control/overview) hozzáférése nincs használatban.
 
-**Nem hivatkozni azonosító használható az Azure Stack partner?**
+**Működik a link partner azonosítója a Azure Stack?**
 
-Igen, a Partnerazonosítóra csatolhatja az Azure Stackhez.
+Igen, összekapcsolhatja a partner AZONOSÍTÓját Azure Stackhoz.

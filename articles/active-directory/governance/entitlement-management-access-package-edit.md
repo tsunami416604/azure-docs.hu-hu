@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c07f9dbcc21840bec4b4487225dfb8108586865e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 17c85d53d05193313f9e166b88beb2a0f82eb197
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489202"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618376"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Meglévő hozzáférési csomag szerkesztése és kezelése az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -38,7 +38,7 @@ Ez a cikk a meglévő hozzáférési csomagok szerkesztését és kezelését is
 
 Az erőforrás-szerepkörök az erőforrásokhoz társított engedélyek gyűjteményei. Ahhoz, hogy a felhasználók számára elérhetővé tegye az erőforrásokat, erőforrás-szerepköröket adhat hozzá a hozzáférési csomaghoz. Hozzáadhat erőforrás-szerepköröket a csoportokhoz, az alkalmazásokhoz és a SharePoint-webhelyekhez.
 
-**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
@@ -62,7 +62,7 @@ A jogosultságok kezelése lehetőséggel automatikusan hozzáadhat felhasznál�
 Bármelyik Office 365-csoport vagy Azure AD-biztonsági csoport közül választhat.  A rendszergazdák hozzáadhatnak bármely csoportot egy katalógushoz; a katalógus tulajdonosai bármelyik csoportot hozzáadhatják a katalógushoz, ha a csoport tulajdonosai. A csoportok kiválasztásakor tartsa szem előtt az alábbi Azure AD-korlátozásokat:
 
 - Ha egy felhasználó, a vendéget is beleértve, a csoport tagjaként van hozzáadva, akkor a csoport többi tagja is megjelenik.
-- Az Azure AD nem tudja módosítani a Windows Server Active Directoryról szinkronizált csoport tagságát Azure AD Connect használatával.  
+- Az Azure AD nem tudja módosítani a Windows Server Active Directoryról szinkronizált csoport tagságát Azure AD Connect használatával, vagy az Exchange Online-ban, terjesztési csoportban létrehozottként.  
 - A dinamikus csoportok tagsága nem frissíthető egy tag hozzáadásával vagy eltávolításával, így a dinamikus csoporttagságok nem alkalmasak a jogosultsági felügyelettel való használatra.
 
 1. Az **erőforrás-szerepkörök felvétele** a csomagba lapon kattintson a **csoportok** elemre a csoportok kiválasztása panel megnyitásához.
@@ -136,7 +136,7 @@ Az Azure AD automatikusan hozzá tud rendelni felhasználókat a SharePoint Onli
 
 ## <a name="remove-resource-roles"></a>Erőforrás-szerepkörök eltávolítása
 
-**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
@@ -158,7 +158,7 @@ Az alábbi ábrán egy meglévő hozzáférési csomagra vonatkozó házirend l�
 
 ![Házirend-folyamat létrehozása](./media/entitlement-management-access-package-edit/policy-process.png)
 
-**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
@@ -178,7 +178,7 @@ Az alábbi ábrán egy meglévő hozzáférési csomagra vonatkozó házirend l�
 
 Bármikor szerkesztheti a szabályzatokat. Ha módosítja egy házirend lejárati dátumát, a függőben lévő jóváhagyás vagy jóváhagyott állapotú kérelmek lejárati dátuma nem változik.
 
-**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
@@ -200,7 +200,7 @@ Bármikor szerkesztheti a szabályzatokat. Ha módosítja egy házirend lejárat
 
 Bizonyos esetekben előfordulhat, hogy közvetlenül egy adott felhasználót szeretne hozzárendelni egy hozzáférési csomaghoz, hogy a felhasználóknak ne kelljen átesniük a hozzáférési csomag igénylésének folyamatán. A felhasználók közvetlen hozzárendeléséhez a hozzáférési csomagnak rendelkeznie kell egy olyan házirenddel, amely lehetővé teszi a közvetlen rendszergazdai hozzárendeléseket.
 
-**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
@@ -228,13 +228,13 @@ Bizonyos esetekben előfordulhat, hogy közvetlenül egy adott felhasználót sz
 
 ## <a name="view-who-has-an-assignment"></a>Hozzárendelést használó nézet megtekintése
 
-**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
 1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. Kattintson  a hozzárendelések elemre az aktív hozzárendelések listájának megtekintéséhez.
+1. Kattintson a hozzárendelések elemre az aktív hozzárendelések listájának megtekintéséhez.
 
 1. A további részletek megtekintéséhez kattintson egy konkrét hozzárendelésre.
 
@@ -248,7 +248,7 @@ Bizonyos esetekben előfordulhat, hogy közvetlenül egy adott felhasználót sz
 
 ## <a name="view-requests"></a>Kérelmek megtekintése
 
-**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
@@ -260,7 +260,7 @@ Bizonyos esetekben előfordulhat, hogy közvetlenül egy adott felhasználót sz
 
 ## <a name="view-a-requests-delivery-errors"></a>Kérelem kézbesítési hibáinak megtekintése
 
-**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
@@ -280,7 +280,7 @@ Bizonyos esetekben előfordulhat, hogy közvetlenül egy adott felhasználót sz
 
 Csak olyan függőben lévő kérést lehet megszakítani, amely még nem lett leküldve.
 
-**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
@@ -296,7 +296,7 @@ Csak olyan függőben lévő kérést lehet megszakítani, amely még nem lett l
 
 A címtár legtöbb felhasználója bejelentkezhet a saját hozzáférési portálra, és automatikusan megtekintheti az általa kérhető hozzáférési csomagok listáját. Ha azonban a külső üzleti partnerek olyan felhasználói, akik még nem szerepelnek a címtárban, el kell küldeni nekik egy hivatkozást, amely a hozzáférési csomag igénylésére használható. Ha a hozzáférési csomag engedélyezve van a külső felhasználók számára, és a külső felhasználó címtárának van szabályzata, a külső felhasználó a saját hozzáférési portál hivatkozásra kattintva kérheti le a hozzáférési csomagot.
 
-**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
@@ -312,7 +312,7 @@ A címtár legtöbb felhasználója bejelentkezhet a saját hozzáférési port�
 
 A hozzáférési csomagok alapértelmezés szerint felderíthetők. Ez azt jelenti, hogy ha egy házirend lehetővé teszi a felhasználó számára a hozzáférési csomag kérését, automatikusan a saját hozzáférési portálon megjelenő hozzáférési csomagot fogják látni.
 
-**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
@@ -330,7 +330,7 @@ A hozzáférési csomagok alapértelmezés szerint felderíthetők. Ez azt jelen
 
 Hozzáférési csomag csak akkor törölhető, ha nem rendelkezik aktív felhasználói hozzárendelésekkel.
 
-**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 

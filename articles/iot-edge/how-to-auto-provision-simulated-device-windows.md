@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 01247dfc0046ef722d70fe48f7ab8ee63f685962
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0236491f9ebc8e3ecf7df8b74db4fd5ff441c7f8
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153560"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677440"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>A Windows egy szimulált TPM Edge-eszköz létrehozása és kiépítése
 
@@ -46,7 +46,7 @@ Amikor létrehoz egy regisztrációs a DPS Szolgáltatásban, lehetősége van d
 
 Válassza ki az SDK nyelvet, amelyet a szimulált eszköz létrehozásához használni szeretne, és kövesse a lépéseket, amíg nem hoz létre az egyéni regisztráció.
 
-Az egyéni regisztráció létrehozásakor válassza **engedélyezése** deklarálja, hogy van-e a szimulált TPM-eszköz a Windows fejlesztői gépen való egy **IoT Edge-eszköz**.
+Az egyéni regisztráció létrehozásakor a True ( **igaz** ) érték kiválasztásával deklarálhatja, hogy a SZIMULÁLt TPM-eszköz a Windows fejlesztői gépen **IoT Edge eszköz**.
 
 Szimulált eszköz és egyéni regisztrációs útmutatók:
 
@@ -66,9 +66,9 @@ Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. 
 
 Kövesse az utasításokat követve telepítse az IoT Edge-futtatókörnyezet, amely az előző szakaszban a szimulált TPM-eszköz fut az eszközön. Ellenőrizze, hogy az IoT Edge-futtatókörnyezet, az automatikus, nem manuális üzembe helyezést.
 
-A DPS tudja **azonosító hatóköre** és az eszköz **regisztrációs azonosító** az eszköz IoT Edge telepítése előtt.
+Az eszközön a IoT Edge telepítése előtt Ismerje meg a DPS- **azonosító hatókörét** és az eszköz **regisztrációs azonosítóját** .
 
-[Telepítse, és automatikusan kiépítése az IoT Edge](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+[IoT Edge telepítése és automatikus kiépítése](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
 
 ## <a name="verify-successful-installation"></a>A sikeres telepítésének ellenőrzése
 

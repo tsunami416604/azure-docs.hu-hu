@@ -1,18 +1,19 @@
 ---
 title: A DPM-kiszolgáló előkészítése a számítási feladatok biztonsági mentésére az Azure-ba
 description: Bevezetés a DPM-beli Azure Recovery Services-tárolóba való biztonsági mentéséhez.
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: kasinh
-ms.openlocfilehash: 09c324fa1c24c56ede431fab8e175b166a52b438
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 0c762054ed0df3a3781dda7057ff8793dbf82565
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466563"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689304"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>A számítási feladatok biztonsági mentésének előkészítése az Azure-ba a System Center DPM
 

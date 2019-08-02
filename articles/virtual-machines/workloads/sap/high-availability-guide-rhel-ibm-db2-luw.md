@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 07/10/2019
 ms.author: juergent
 ms.openlocfilehash: 232468d9b3466759d7af2b7be68a1f553ced6e6d
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68348639"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
@@ -125,7 +125,7 @@ Az IBM DB2-konfiguráció üzembe helyezéséhez kövesse az alábbi lépéseket
   + Telepítse a virtuális gépeket.
   + Frissítse a RHEL Linux rendszerre, és konfigurálja a fájlrendszereket.
   + A pacemaker telepítése és konfigurálása.
-  + [Glusterfs-fürt][glusterfs] beállítása or [Azure NetApp Files][anf-rhel]
+  + [Glusterfs-fürt][glusterfs] vagy- [Azure NetApp Files][anf-rhel] beállítása
   + Telepítse a [ASCS/ERS-t egy különálló fürtre][ascs-ha-rhel].
   + Telepítse az IBM DB2-adatbázist elosztott/magas rendelkezésre állási lehetőséggel (SWPM).
   + Telepítsen és hozzon létre egy másodlagos adatbázis-csomópontot és-példányt, és konfigurálja a HADR.
@@ -241,7 +241,7 @@ Az előző paramétereket a kezdeti feladatátvételi/átvételi tesztelés alap
 
 Ha a készenléti adatbázis-kiszolgálót az SAP homogén rendszermásolási eljárással szeretné beállítani, hajtsa végre a következő lépéseket:
 
-1. Válassza a  rendszermásolási lehetőség > a **célként kijelölt rendszerek** > **elosztott** > **adatbázis**-példányát.
+1. Válassza a rendszermásolási lehetőség > a **célként kijelölt rendszerek** > **elosztott** > **adatbázis**-példányát.
 1. Másolási módszerként válassza a **homogén rendszer** lehetőséget, hogy a biztonsági mentés használatával visszaállítsa a biztonsági mentést a készenléti kiszolgáló példányán.
 1. Amikor eléri a kilépési lépést az adatbázis homogén rendszermásolásra való visszaállításához, lépjen ki a telepítőből. Állítsa vissza az adatbázist az elsődleges gazdagép biztonsági másolatából. Az összes további telepítési fázis már végre lett hajtva az elsődleges adatbázis-kiszolgálón.
 
@@ -442,7 +442,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    b. Adja meg az új előtér-IP-készlet nevét (például **DB2-kapcsolatok**).
 
-   c. Állítsa a  hozzárendelést **statikus**értékre, és adja meg az elején megadott IP **-cím virtuális IP-** címét.
+   c. Állítsa a hozzárendelést **statikus**értékre, és adja meg az elején megadott IP **-cím virtuális IP-** címét.
 
    d. Kattintson az **OK** gombra.
 

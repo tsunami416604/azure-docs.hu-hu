@@ -1,21 +1,21 @@
 ---
-title: Az Azure Resource Manager-sablonfüggvények - karakterlánc |} A Microsoft Docs
-description: A functions az Azure Resource Manager-sablon használatával munka karakterláncokkal ismerteti.
+title: Azure Resource Manager template functions-string | Microsoft Docs
+description: A Azure Resource Manager-sablonban a sztringekkel való együttműködéshez használt függvényeket ismerteti.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 04/08/2019
+ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: 979474ea6b5b61935742591f8fba87d200d618e4
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 1db1eb9be3586f76a8d3abc48a78a1e691da9924
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206341"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698174"
 ---
-# <a name="string-functions-for-azure-resource-manager-templates"></a>Karakterlánc-függvények az Azure Resource Manager-sablonok
+# <a name="string-functions-for-azure-resource-manager-templates"></a>Karakterlánc-függvények Azure Resource Manager-sablonokhoz
 
-A Resource Manager az alábbi funkciókat biztosít a karakterláncokkal való munka:
+A Resource Manager a következő függvényeket biztosítja a karakterláncok használatához:
 
 * [base64](#base64)
 * [base64ToJson](#base64tojson)
@@ -55,21 +55,21 @@ A Resource Manager az alábbi funkciókat biztosít a karakterláncokkal való m
 
 `base64(inputString)`
 
-A bemeneti karakterláncot a base64 kódolású karakterláncként adja vissza.
+A bemeneti karakterlánc Base64-ábrázolását adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| inputString |Igen |string |A visszaadandó értéket, mint a base64-ábrázolásból. |
+| inputString |Igen |sztring |Az az érték, amelyet Base64-ábrázolásként kell visszaadni. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-A base64-ábrázolásból tartalmazó karakterlánc.
+A Base64-ábrázolást tartalmazó karakterlánc.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) a Base64 kódolású függvény használatát ismerteti.
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) a Base64 függvény használatát mutatja be.
 
 ```json
 {
@@ -110,31 +110,31 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | egy két há' |
-| toJsonOutput | Object | {"egy": "a", "2": "b"} |
+| base64Output | Sztring | b25lLCB0d28sIHRocmVl |
+| toStringOutput | Sztring | egy két há' |
+| toJsonOutput | Object | {"One": "a", "kettő": "b"} |
 
 ## <a name="base64tojson"></a>base64ToJson
 
 `base64tojson`
 
-A base64-ábrázolásból konvertálja JSON-objektum.
+Base64-leképezést alakít át egy JSON-objektumra.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| base64Value |Igen |string |A base64-ábrázolásból átalakítása JSON-objektum. |
+| Base64value tulajdonsága |Igen |Karakterlánc |A JSON-objektumra konvertálandó Base64-ábrázolás. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-JSON-objektum.
+Egy JSON-objektum.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) base64 érték konvertálása a base64ToJson függvényt használja:
+A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) a base64ToJson függvényt használja egy Base64 érték átalakítására:
 
 ```json
 {
@@ -177,29 +177,29 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | egy két há' |
-| toJsonOutput | Object | {"egy": "a", "2": "b"} |
+| base64Output | Karakterlánc | b25lLCB0d28sIHRocmVl |
+| toStringOutput | Karakterlánc | egy két há' |
+| toJsonOutput | Object | {"One": "a", "kettő": "b"} |
 
 ## <a name="base64tostring"></a>base64ToString
 
 `base64ToString(base64Value)`
 
-Egy karakterláncot egy base64-ábrázolásból alakítja át.
+Base64-ábrázolást konvertál karakterlánccá.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| base64Value |Igen |string |A base64-ábrázolásból alakítandó karakterlánc. |
+| Base64value tulajdonsága |Igen |Karakterlánc |A Base64-ábrázolás, amelyet karakterlánccá kell alakítani. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Az átalakított base64 érték karakterlánc.
+Az átalakított Base64-érték karakterlánca.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) base64 érték konvertálása a base64ToString függvényt használja:
+A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) a base64ToString függvényt használja egy Base64 érték átalakítására:
 
 ```json
 {
@@ -240,31 +240,31 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | egy két há' |
-| toJsonOutput | Object | {"egy": "a", "2": "b"} |
+| base64Output | Karakterlánc | b25lLCB0d28sIHRocmVl |
+| toStringOutput | Sztring | egy két há' |
+| toJsonOutput | Object | {"One": "a", "kettő": "b"} |
 
-## <a name="concat"></a>Concat
+## <a name="concat"></a>concat
 
 `concat (arg1, arg2, arg3, ...)`
 
-Több karakterlánc-értékek egyesíti, és a összefűzött karakterláncot ad vissza, vagy több tömbök egyesíti, és a összefűzött tömböt ad vissza.
+Több karakterlánc-értéket egyesít, és visszaadja az összefűzött karakterláncot, vagy kombinálja a több tömböt, és visszaadja az összefűzött tömböt.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |karakterlánc- vagy tömb |Összefűzés első értéke. |
-| További argumentumok |Nem |string |További értékek összefűzésével sorrendben. |
+| arg1 |Igen |karakterlánc vagy tömb |Az Összefűzés első értéke. |
+| További argumentumok |Nem |sztring |További értékek szekvenciális sorrendben az összefűzéshez. |
 
 ### <a name="return-value"></a>Vrácená hodnota
-Egy karakterlánc- vagy összefűzött értékek tömbje.
+Az összefűzött értékek karakterlánca vagy tömbje.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json) bemutatja, hogyan kombinálja két karakterlánc-értékeket és a egy összefűzött karakterláncot ad vissza.
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json) bemutatja, hogyan egyesítheti a két karakterláncot, és hogyan adhat vissza összefűzött karakterláncot.
 
 ```json
 {
@@ -288,11 +288,11 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| concatOutput | String | prefix-5yj4yjf5mbg72 |
+| concatOutput | Karakterlánc | prefix-5yj4yjf5mbg72 |
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json) bemutatja, hogyan kombinálja két tömb.
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json) bemutatja, hogyan egyesítheti két tömböt.
 
 ```json
 {
@@ -329,30 +329,30 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| a visszaadandó | Tömb | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| visszatérési | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-## <a name="contains"></a>tartalmaz
+## <a name="contains"></a>contains
 
 `contains (container, itemToFind)`
 
-Ellenőrzi, hogy egy tömb értéket tartalmaz, objektum kulcsot tartalmaz, vagy egy karakterlánc részkarakterláncot tartalmaz. Az adatkarakterlánc-összehasonlítás a kis-és nagybetűket. Azonban történő tesztelésekor, ha az objektum tartalmaz egy kulcsot, az összehasonlítást, kis-és nagybetűket.
+Ellenőrzi, hogy egy tömb tartalmaz-e értéket, egy objektum tartalmaz-e kulcsot, vagy egy karakterlánc tartalmaz-e alkarakterláncot. A karakterlánc-összehasonlítás megkülönbözteti a kis-és nagybetűket. Ha azonban egy objektum kulcsot tartalmaz, az összehasonlítás a kis-és nagybetűk megkülönböztetése nélkül történik.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| container |Igen |tömb, objektumot vagy karakterlánc |Az érték, amely tartalmazza a keresendő érték. |
-| itemToFind |Igen |karakterlánc- vagy int |Keresendő érték. |
+| container |Igen |tömb, objektum vagy karakterlánc |A keresendő értéket tartalmazó érték. |
+| itemToFind |Igen |karakterlánc vagy int |A keresendő érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-**Igaz** , ha az elem nem található; ellenkező esetben **hamis**.
+**Igaz** , ha az adott tétel megtalálható; Ellenkező esetben **hamis**.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json) használata tartalmazza a különböző típusú mutat be:
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json) azt mutatja be, hogyan használható a különböző típusú tartalmaz:
 
 ```json
 {
@@ -405,34 +405,34 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| stringTrue | Bool | True (Igaz) |
+| stringTrue | Bool | True |
 | stringFalse | Bool | False (Hamis) |
-| objectTrue | Bool | True (Igaz) |
+| objectTrue | Bool | True |
 | objectFalse | Bool | False (Hamis) |
-| arrayTrue | Bool | True (Igaz) |
+| arrayTrue | Bool | True |
 | arrayFalse | Bool | False (Hamis) |
 
 ## <a name="datauri"></a>dataUri
 
 `dataUri(stringToConvert)`
 
-Adat-URI alakít egy értéket.
+Egy értéket konvertál egy adaturi-ra.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Igen |string |Az adat-URI átalakítandó érték. |
+| stringToConvert |Igen |sztring |Az adaturi-ra konvertálandó érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Egy karakterláncot egy adat-URI-ként formázott.
+Az adaturi-ként formázott karakterlánc.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json) alakít egy értéket egy adat-URI, és a egy adat-URI alakítja át egy karakterlánc:
+A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json) egy értéket konvertál egy adaturi-ra, és átalakítja az adaturi-t egy karakterlánccá:
 
 ```json
 {
@@ -464,30 +464,30 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | String | helló világ! |
+| dataUriOutput | Sztring | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | Karakterlánc | helló világ! |
 
 ## <a name="datauritostring"></a>dataUriToString
 
 `dataUriToString(dataUriToConvert)`
 
-Egy adat-URI érték karakterlánc formátumú.
+Az adaturi-formázott értéket karakterlánccá alakítja át.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Igen |string |Az adatok átalakítása URI értéket. |
+| dataUriToConvert |Igen |sztring |Az átalakítandó adaturi-érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Az átalakított érték tartalmazó karakterlánc.
+Az átalakított értéket tartalmazó sztring.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json) alakít egy értéket egy adat-URI, és a egy adat-URI alakítja át egy karakterlánc:
+A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json) egy értéket konvertál egy adaturi-ra, és átalakítja az adaturi-t egy karakterlánccá:
 
 ```json
 {
@@ -519,30 +519,30 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | String | helló világ! |
+| dataUriOutput | Sztring | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | Karakterlánc | helló világ! |
 
-## <a name="empty"></a>üres
+## <a name="empty"></a>empty
 
 `empty(itemToTest)`
 
-Meghatározza, hogy egy tömb, objektumot vagy karakterlánc üres.
+Meghatározza, hogy egy tömb, objektum vagy karakterlánc üres-e.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Igen |tömb, objektumot vagy karakterlánc |Ellenőrizze, hogy üres érték. |
+| itemToTest |Igen |tömb, objektum vagy karakterlánc |Az érték, amely alapján ellenőrizhető, hogy üres-e. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Értéket ad vissza **igaz** Ha az érték üres; ellenkező esetben **hamis**.
+**Igaz** értéket ad vissza, ha az érték üres. Ellenkező esetben **hamis**.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json) ellenőrzi, hogy egy tömb, az objektum és a karakterlánc üres.
+A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json) ellenőrzi, hogy egy tömb, objektum és karakterlánc üres-e.
 
 ```json
 {
@@ -583,32 +583,32 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| arrayEmpty | Bool | True (Igaz) |
-| objectEmpty | Bool | True (Igaz) |
-| stringEmpty | Bool | True (Igaz) |
+| arrayEmpty | Bool | True |
+| objectEmpty | Bool | True |
+| stringEmpty | Bool | True |
 
 ## <a name="endswith"></a>endsWith
 
 `endsWith(stringToSearch, stringToFind)`
 
-Azt határozza meg, hogy egy karakterláncot egy adott értékre végződik-e. Az összehasonlítás eredménye kis-és nagybetűket.
+Meghatározza, hogy egy karakterlánc egy értékkel végződik-e. Az összehasonlítás megkülönbözteti a kis-és nagybetűket.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Igen |string |Az érték, amely tartalmazza az elem található. |
-| stringToFind |Igen |string |Keresendő érték. |
+| stringToSearch |Igen |Karakterlánc |A keresendő elemeket tartalmazó érték. |
+| stringToFind |Igen |sztring |A keresendő érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-**Igaz** Ha az utolsó karakter vagy karaktert a karakterlánc megfelel a értéket; ellenkező esetben **hamis**.
+**Igaz** , ha a sztring utolsó karaktere vagy karaktere megegyezik az értékkel; Ellenkező esetben **hamis**.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json) bemutatja, hogyan használja a startsWith és endsWith függvényt:
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json) a startsWith és a endsWith függvények használatát mutatja be:
 
 ```json
 {
@@ -648,32 +648,32 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| startsTrue | Bool | True (Igaz) |
-| startsCapTrue | Bool | True (Igaz) |
+| startsTrue | Bool | True |
+| startsCapTrue | Bool | True |
 | startsFalse | Bool | False (Hamis) |
-| endsTrue | Bool | True (Igaz) |
-| endsCapTrue | Bool | True (Igaz) |
+| endsTrue | Bool | True |
+| endsCapTrue | Bool | True |
 | endsFalse | Bool | False (Hamis) |
 
 ## <a name="first"></a>első
 
 `first(arg1)`
 
-A karakterlánc, vagy a tömb első eleme első karaktert adja vissza.
+A karakterlánc első karakterét vagy a tömb első elemét adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy karakterlánc |Az érték első karakter vagy elem lekéréséhez. |
+| arg1 |Igen |tömb vagy karakterlánc |Az első elem vagy karakter beolvasására szolgáló érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Egy karakterlánc első karaktere, vagy a típusa (karakterlánc, int, tömb vagy objektum) az első elem a tömbben.
+Egy tömb első elemének első karakterének vagy típusának (karakterlánc, int, Array vagy Object) a karakterlánca.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/first.json) bemutatja, hogyan használható az első függvény egy tömböt és egy karakterlánc.
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/first.json) azt szemlélteti, hogyan használható az első függvény egy tömb és egy karakterlánc használatával.
 
 ```json
 {
@@ -702,32 +702,32 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| arrayOutput | String | egy |
-| stringOutput | String | O |
+| arrayOutput | Sztring | egy |
+| stringOutput | Sztring | O |
 
 ## <a name="format"></a>format
 
 `format(formatString, arg1, arg2, ...)`
 
-Bemeneti értékek-formátumú karakterláncot hoz létre.
+Létrehoz egy formázott karakterláncot a bemeneti értékek közül.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| formatString | Igen | string | Összetett formázó karakterlánc. |
-| arg1 | Igen | karakterlánc, egész szám vagy logikai érték | A formázott karakterláncot foglalandó értéke. |
-| További argumentumok | Nem | karakterlánc, egész szám vagy logikai érték | További értékek a formázott karakterláncot. |
+| formatString | Igen | Karakterlánc | Az összetett formátum karakterlánca |
+| arg1 | Igen | string, integer vagy boolean | A formázott sztringbe felvenni kívánt érték. |
+| További argumentumok | Nem | string, integer vagy boolean | A formázott sztringbe foglalandó további értékek. |
 
 ### <a name="remarks"></a>Megjegyzések
 
-Ez a függvény egy karakterláncot a sablonban használja. Formázási beállítások szerint használja a [System.String.Format](/dotnet/api/system.string.format) metódus a .NET-ben.
+Ezzel a függvénnyel formázhatja a sablonban található karakterláncot. Ugyanazokat a formázási beállításokat használja, mint a [System. string. Format](/dotnet/api/system.string.format) metódus a .net-ben.
 
 ### <a name="examples"></a>Példák
 
-A következő példa sablon a format függvény használatát szemlélteti.
+A következő példa a Format függvény használatát mutatja be.
 
 ```json
 {
@@ -760,44 +760,44 @@ A következő példa sablon a format függvény használatát szemlélteti.
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| formatTest | String | Hello, a felhasználó. Formázott száma: 8,175,133 |
+| formatTest | Sztring | Hello, felhasználó. Formázott szám: 8 175 133 |
 
-## <a name="guid"></a>GUID azonosítója
+## <a name="guid"></a>GUID
 
 `guid(baseString, ...)`
 
-Létrehoz egy értéket a paraméterként megadott értékek alapján globálisan egyedi azonosító formátuma.
+Egy globálisan egyedi azonosító formájában létrehoz egy értéket a paraméterként megadott értékek alapján.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| baseString |Igen |string |A GUID létrehozásához a kivonatolási függvény a használt érték. |
-| További paraméterek szükséges |Nem |string |Tetszőleges számú karakterláncok létrehozása, amely az egyediség szintjét határozza meg az érték szükség szerint adhat hozzá. |
+| baseString |Igen |sztring |A kivonatoló függvényben a GUID létrehozásához használt érték. |
+| további paraméterek igény szerint |Nem |sztring |Az egyediség szintjét meghatározó érték létrehozásához tetszőleges számú karakterláncot adhat hozzá. |
 
 ### <a name="remarks"></a>Megjegyzések
 
-Ez a funkció akkor hasznos, ha szeretne létrehozni egy értéket a globálisan egyedi azonosító formátuma. Azt adja meg a paraméterértékeket, hogy az eredmény az egyediség hatókörének korlátozása. Megadhatja, hogy a név egyediségét lefelé az előfizetés, erőforráscsoport vagy üzembe helyezés.
+Ez a függvény akkor hasznos, ha globálisan egyedi azonosító formátumban kell létrehoznia egy értéket. Olyan paramétereket adhat meg, amelyek korlátozzák az eredmény egyediségi hatókörét. Megadhatja, hogy a név egyedi-e az előfizetés, az erőforráscsoport vagy a központi telepítés számára.
 
-A visszaadott érték nem egy véletlenszerű karakterlánc, de a paramétereket a kivonatoló függvényt inkább az eredménye. A visszaadott érték a 36 karakterből áll. Globálisan egyedi nem. Hozzon létre egy új GUID Azonosítót, amely a paramétereket a kivonat értékével, használja a [newGuid](#newguid) függvény.
+A visszaadott érték nem véletlenszerű karakterlánc, hanem egy kivonatoló függvény eredménye a paramétereknél. A visszaadott érték 36 karakter hosszú. Globálisan nem egyedi. Ha olyan új GUID azonosítót szeretne létrehozni, amely nem a paraméterek kivonatán alapul, használja a [newGuid](#newguid) függvényt.
 
-Az alábbi példák bemutatják, hogyan hozzon létre egy egyedi értéket a gyakran használt szintek guid használatával.
+Az alábbi példák azt mutatják be, hogyan használható a GUID a gyakran használt szintek egyedi értékének létrehozásához.
 
-Egyedi előfizetés hatóköre
+Az előfizetéshez tartozó egyedi hatókör
 
 ```json
 "[guid(subscription().subscriptionId)]"
 ```
 
-Egyedi erőforráscsoport hatóköre
+Az erőforráscsoport egyedi hatóköre
 
 ```json
 "[guid(resourceGroup().id)]"
 ```
 
-Egyedi erőforráscsoport üzembe helyezési hatóköre
+Egy erőforráscsoport üzembe helyezésének egyedi hatóköre
 
 ```json
 "[guid(resourceGroup().id, deployment().name)]"
@@ -805,11 +805,11 @@ Egyedi erőforráscsoport üzembe helyezési hatóköre
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-A globálisan egyedi azonosító formátuma 36 karaktert tartalmazó karakterlánc.
+Egy 36 karaktert tartalmazó karakterlánc, amely globálisan egyedi azonosító formátumban van.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/guid.json) eredményeket ad vissza a GUID azonosítót:
+A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/guid.json) az eredményeket adja vissza a GUID azonosítóból:
 
 ```json
 {
@@ -839,22 +839,22 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 `indexOf(stringToSearch, stringToFind)`
 
-Egy sztringbeli érték első pozícióját adja vissza. Az összehasonlítás eredménye kis-és nagybetűket.
+Egy érték első pozícióját adja vissza egy karakterláncon belül. Az összehasonlítás megkülönbözteti a kis-és nagybetűket.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Igen |string |Az érték, amely tartalmazza az elem található. |
-| stringToFind |Igen |string |Keresendő érték. |
+| stringToSearch |Igen |Karakterlánc |A keresendő elemeket tartalmazó érték. |
+| stringToFind |Igen |Karakterlánc |A keresendő érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Az elem található a pozíció jelölő egész szám. Az érték nulla alapú. Ha az elem nem található,-1 értéket ad vissza.
+Egy egész szám, amely a keresett tétel pozícióját jelöli. Az érték nulla-alapú. Ha az elem nem található, a-1 értéket adja vissza.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json) bemutatja, hogyan használja a indexOf és lastIndexOf függvényt:
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json) a indexOf és a lastIndexOf függvények használatát mutatja be:
 
 ```json
 {
@@ -888,33 +888,33 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
 | firstT | Int | 0 |
 | lastT | Int | 3 |
 | firstString | Int | 2 |
 | lastString | Int | 0 |
-| NotFound | Int | -1 |
+| notFound | Int | -1 |
 
 ## <a name="last"></a>utolsó
 
 `last (arg1)`
 
-Az utolsó karaktert a karakterlánc, vagy az utolsó elem a tömb értéket ad vissza.
+A sztring utolsó karakterét vagy a tömb utolsó elemét adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy karakterlánc |Az érték utolsó karakter vagy elem lekéréséhez. |
+| arg1 |Igen |tömb vagy karakterlánc |Az utolsó elem vagy karakter beolvasására szolgáló érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Az utolsó karakter, vagy a típusát (karakterlánc, int, tömb vagy objektum) az utolsó elem a tömbben, karakterlánc.
+Egy tömb utolsó elemének utolsó karakterének vagy típusának (karakterlánc, int, Array vagy Object) a karakterlánca.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/last.json) bemutatja, hogyan használható az utolsó függvény egy tömböt és egy karakterlánc.
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/last.json) azt szemlélteti, hogyan használható az utolsó függvény egy tömb és egy karakterlánc használatával.
 
 ```json
 {
@@ -943,31 +943,31 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| arrayOutput | String | három |
-| stringOutput | String | e |
+| arrayOutput | Karakterlánc | három |
+| stringOutput | Karakterlánc | e |
 
 ## <a name="lastindexof"></a>lastIndexOf
 
 `lastIndexOf(stringToSearch, stringToFind)`
 
-Egy sztringbeli érték utolsó pozícióját adja vissza. Az összehasonlítás eredménye kis-és nagybetűket.
+Egy érték utolsó pozícióját adja vissza egy karakterláncon belül. Az összehasonlítás megkülönbözteti a kis-és nagybetűket.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Igen |string |Az érték, amely tartalmazza az elem található. |
-| stringToFind |Igen |string |Keresendő érték. |
+| stringToSearch |Igen |Karakterlánc |A keresendő elemeket tartalmazó érték. |
+| stringToFind |Igen |Karakterlánc |A keresendő érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Egész szám, amely az utolsó pozíciója az elem található jelöli. Az érték nulla alapú. Ha az elem nem található,-1 értéket ad vissza.
+Egy egész szám, amely a keresendő tétel utolsó pozícióját jelöli. Az érték nulla-alapú. Ha az elem nem található, a-1 értéket adja vissza.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json) bemutatja, hogyan használja a indexOf és lastIndexOf függvényt:
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json) a indexOf és a lastIndexOf függvények használatát mutatja be:
 
 ```json
 {
@@ -1001,33 +1001,33 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
 | firstT | Int | 0 |
 | lastT | Int | 3 |
 | firstString | Int | 2 |
 | lastString | Int | 0 |
-| NotFound | Int | -1 |
+| notFound | Int | -1 |
 
 ## <a name="length"></a>length
 
 `length(string)`
 
-Egy karakterlánc vagy egy tömb elemei a karakterek számát adja vissza.
+Egy sztringben szereplő karakterek számát, egy tömb elemeinek vagy egy objektum gyökérszintű tulajdonságait adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy karakterlánc |A tömb első karakterek használata az elemeket, vagy a karakterlánc első használatával. |
+| arg1 |Igen |tömb, karakterlánc vagy objektum |Az elemek számának beolvasásához használandó tömb, a karakterek számának beolvasásához használandó karakterlánc, vagy a gyökérszintű tulajdonságok számának beolvasásához használandó objektum. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Egy: egész szám. 
+Egy int. 
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json) bemutatja, hogyan használható egy tömböt és egy karakterlánc hossza:
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json) azt szemlélteti, hogyan használható a hossz egy tömb és egy karakterlánc használatával:
 
 ```json
 {
@@ -1045,6 +1045,18 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
         "stringToTest": {
             "type": "string",
             "defaultValue": "One Two Three"
+        },
+        "objectToTest": {
+            "type": "object",
+            "defaultValue": {
+                "propA": "one",
+                "propB": "two",
+                "propC": "three",
+                "propD": {
+                    "propD-1": "sub",
+                    "propD-2": "sub"
+                }
+            }
         }
     },
     "resources": [],
@@ -1056,6 +1068,10 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
         "stringLength": {
             "type": "int",
             "value": "[length(parameters('stringToTest'))]"
+        },
+        "objectLength": {
+            "type": "int",
+            "value": "[length(parameters('objectToTest'))]"
         }
     }
 }
@@ -1063,36 +1079,37 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
 | arrayLength | Int | 3 |
 | stringLength | Int | 13 |
+| objectLength | Int | 4 |
 
 ## <a name="newguid"></a>newGuid
 
 `newGuid()`
 
-A globálisan egyedi azonosító formátuma értéket ad vissza. **Ez a függvény csak használható az alapértelmezett érték az adott paraméter.**
+Egy globálisan egyedi azonosító formájában megadott értéket ad vissza. **Ez a függvény csak a paraméter alapértelmezett értékében használható.**
 
 ### <a name="remarks"></a>Megjegyzések
 
-Ez a függvény kifejezésben csak használható egy paraméter alapértelmezett értéke. Hiba történt a sablonban máshol funkció használatával adja vissza. A függvény nem engedélyezett a sablont más részein, mert értéket ad vissza egy másik minden alkalommal, amikor azt nevezzük. Ugyanazt a sablont, ugyanazokkal a paraméterekkel telepítése nem megbízható ugyanazt az eredményt.
+Ezt a függvényt csak egy paraméter alapértelmezett értékére használhatja egy kifejezésen belül. Ha ezt a funkciót a sablonban bárhol máshol használja, hibaüzenetet ad vissza. A függvény nem engedélyezett a sablon más részeiben, mert minden egyes híváskor más értéket ad vissza. Ugyanazon sablon ugyanazon paraméterekkel való üzembe helyezése nem eredményezi megbízhatóan ugyanazt az eredményt.
 
-A newGuid függvény eltér a [guid](#guid) működik, mert ez nem használ paramétereket. Ugyanezt a paramétert a guid hívásakor adja vissza, ugyanazzal az azonosítóval minden alkalommal, amikor. Guid használja, amikor szüksége van egy adott környezetben ugyanaz a GUID megbízhatóan létrehozásához. NewGuid használja, ha minden alkalommal, amikor, például egy tesztkörnyezetben üzembe helyezni erőforrásokat kell egy másik azonosítót.
+A newGuid függvény eltér a [GUID](#guid) függvénytől, mert nem végez paramétereket. Ha ugyanazzal a paraméterrel hívja meg a GUID azonosítót, minden alkalommal ugyanazt az azonosítót adja vissza. Használja a GUID azonosítót, ha megbízhatóan kell létrehoznia egy adott környezethez tartozó GUID azonosítót. Akkor használja a newGuid, ha minden alkalommal eltérő azonosítóra van szükség, például erőforrások üzembe helyezése tesztkörnyezetben.
 
-Ha használja a [lehetőséget egy korábban sikeres üzembe helyezés újratelepíteni](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails), és a korábbi központi telepítés magában foglalja egy paraméter, amely newGuid használja, a paraméter nem újraértékeli. A paraméter értékét a korábbi telepítésből ehelyett automatikusan újra a visszaállítás telepítésben.
+Ha a [korábbi sikeres központi telepítés](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails)újbóli üzembe helyezését használja, és a korábbi telepítés newGuid-t használó paramétert tartalmaz, a paraméter nem lett újraértékelve. Ehelyett a korábbi központi telepítés paraméterének értékét a rendszer automatikusan újra felhasználja a visszaállítási telepítésben.
 
-Egy tesztkörnyezetben szükség lehet ismételten üzembe helyezése csak rövid ideig élő erőforrások. Ahelyett, hogy egyedi nevük hozhat létre, használhatja a newGuid [uniqueString](#uniquestring) hozhat létre egyedi névvel.
+Tesztelési környezetben szükség lehet az olyan erőforrások ismételt üzembe helyezésére, amelyek csak rövid ideig élnek. Az egyedi nevek létrehozása helyett a newGuid és a [uniqueString](#uniquestring) segítségével egyedi neveket hozhat létre.
 
-Ügyeljen arra, hogy újbóli üzembe helyezés egy sablont, amely az alapértelmezett érték newGuid függvény támaszkodik. Ismételt üzembe helyezése, és ne adjon meg egy értéket a paraméterhez, amikor a rendszer újraértékeli a függvény. Ha azt szeretné, hozzon létre egy új helyett egy meglévő erőforrás frissítése, adja át a paraméter értékét a korábbi telepítésből.
+Ügyeljen arra, hogy egy alapértelmezett érték esetén a newGuid függvényre támaszkodó sablont telepítse újra. Ha újratelepíti, és nem ad meg értéket a paraméterhez, a függvény újraértékelése megtörténik. Ha egy meglévő erőforrást nem új létrehozása helyett szeretne frissíteni, adja át a paraméter értékét a korábbi telepítésből.
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-A globálisan egyedi azonosító formátuma 36 karaktert tartalmazó karakterlánc.
+Egy 36 karaktert tartalmazó karakterlánc, amely globálisan egyedi azonosító formátumban van.
 
 ### <a name="examples"></a>Példák
 
-Az alábbi példa sablont egy új azonosító paraméter jeleníti meg.
+Az alábbi példában szereplő sablon egy új azonosítójú paramétert mutat be.
 
 ```json
 {
@@ -1115,13 +1132,13 @@ Az alábbi példa sablont egy új azonosító paraméter jeleníti meg.
 }
 ```
 
-Az előző példa kimenetében az egyes központi telepítések az érték, de hasonló lesz:
+Az előző példa kimenete az egyes központi telepítések esetében változik, de a következőhöz hasonló lesz:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| guidOutput | string | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
+| guidOutput | Karakterlánc | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
-Az alábbi példa a newGuid függvény segítségével hozzon létre egy storage-fiók egy egyedi nevet. Ez a sablon előfordulhat, hogy működik a tesztkörnyezetben, ahol a tárfiók egy rövid ideig létezik, és nem újratelepítése.
+A következő példa a newGuid függvényt használja a Storage-fiók egyedi nevének létrehozásához. Ez a sablon olyan tesztkörnyezetben is működhet, ahol a Storage-fiók egy rövid ideig létezik, és nem települ újra.
 
 ```json
 {
@@ -1158,36 +1175,36 @@ Az alábbi példa a newGuid függvény segítségével hozzon létre egy storage
 }
 ```
 
-Az előző példa kimenetében az egyes központi telepítések az érték, de hasonló lesz:
+Az előző példa kimenete az egyes központi telepítések esetében változik, de a következőhöz hasonló lesz:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| nameOutput | string | storagenziwvyru7uxie |
+| nameOutput | Karakterlánc | storagenziwvyru7uxie |
 
 
 ## <a name="padleft"></a>padLeft
 
 `padLeft(valueToPad, totalLength, paddingCharacter)`
 
-Karakterek hozzáadásával a bal oldali amíg végállapotba megadott teljes hossza nem egy jobbra igazított karakterláncot ad vissza.
+Egy jobbra igazított karakterláncot ad vissza, amely a megadott teljes hossz eléréséig a bal oldali karaktereket adja hozzá.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| valueToPad |Igen |karakterlánc- vagy int |A jobbra igazított érték. |
-| totalLength |Igen |int |A visszaadott karakterláncban szereplő karakterek száma. |
-| paddingCharacter |Nem |egyetlen karakter |Bal-kitöltés, amíg a teljes hossza nem csökken használandó elválasztó karakter. Az alapértelmezett értéke egy szóközt. |
+| valueToPad |Igen |karakterlánc vagy int |Az érték jobbra igazítása. |
+| totalLength |Igen |int |A visszaadott karakterláncban szereplő karakterek teljes száma. |
+| paddingCharacter |Nem |egyetlen karakter |A bal oldali margóhoz használandó karakter, amíg el nem éri a teljes hosszt. Az alapértelmezett érték egy szóköz. |
 
-Ha az eredeti karakterláncot szegélynél karakterből áll, akkor egyetlen karakter kerülnek.
+Ha az eredeti sztring hosszabb, mint a pad karaktereinek száma, a rendszer nem adja hozzá a karaktereket.
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-A karakterlánc a legalább a megadott karakterek száma.
+Egy sztring, amely legalább a megadott karakterek számát adja meg.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/padleft.json) bemutatja, hogyan kitölti a felhasználó által megadott paraméter értéke nulla karakter hozzáadásával, addig a teljes karakterszámot. 
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/padleft.json) azt mutatja be, hogyan lehet a felhasználó által megadott paraméter értékét felvenni a nulla karakter hozzáadásával, amíg el nem éri a karakterek teljes számát. 
 
 ```json
 {
@@ -1213,29 +1230,29 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| stringOutput | String | 0000000123 |
+| stringOutput | Sztring | 0000000123 |
 
-## <a name="replace"></a>cserélje le
+## <a name="replace"></a>csere
 
 `replace(originalString, oldString, newString)`
 
-Egy karakterlánc egy másik karakterláncot lecserélve az összes példányát új karakterláncot ad vissza.
+Egy új karakterláncot ad vissza, amely egy sztring összes példányát egy másik sztring váltja fel.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| originalString |Igen |string |Az érték, amelynek egy karakterlánc egy másik karakterláncot lecserélve az összes példányát. |
-| oldString |Igen |string |A karakterlánc távolítható el az eredeti karakterláncot. |
-| Újkarakterlánc |Igen |string |A karakterlánc hozzáadása az eltávolított karakterlánc helyett. |
+| originalString |Igen |Karakterlánc |Egy sztring összes példányát egy másik sztring váltja fel. |
+| Régikarakterlánc |Igen |Karakterlánc |Az eredeti sztringből eltávolítandó karakterlánc. |
+| Újkarakterlánc |Igen |Karakterlánc |Az eltávolított karakterlánc helyére felvenni kívánt karakterlánc. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Lecserélt karaktert tartalmazó karakterlánc.
+A lecserélt karaktereket tartalmazó karakterlánc.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/replace.json) jeleníti meg az összes kötőjeleket eltávolítása a felhasználó által megadott karakterláncot, és hogyan a karakterlánc egy részét lecseréli egy másik karakterláncot.
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/replace.json) azt mutatja be, Hogyan távolítható el az összes kötőjel a felhasználó által megadott karakterláncból, és hogyan cserélhető le a karakterlánc egy része egy másik karakterláncra.
 
 ```json
 {
@@ -1263,31 +1280,31 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| firstOutput | String | 1231231234 |
-| secondOutput | String | 123-123-xxxx |
+| firstOutput | Sztring | 1231231234 |
+| secondOutput | Karakterlánc | 123-123-xxxx |
 
-## <a name="skip"></a>Kihagyás
+## <a name="skip"></a>kihagyás
 
 `skip(originalValue, numberToSkip)`
 
-Egy karakterláncot ad vissza az összes karakter után a megadott számú karakter vagy elemeket egy tömb a megadott számú elem után.
+Egy olyan sztringet ad vissza, amely a megadott számú karakter után az összes karaktert tartalmazza, vagy egy tömböt a megadott számú elem után.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| originalValue |Igen |tömb vagy karakterlánc |A tömböt vagy karakterláncot, használja a rendszer kihagyja. |
-| numberToSkip |Igen |int |Elemek vagy hagyja ki a karakterek száma. Ha ez az érték 0 vagy kisebb, a elemek vagy az érték karaktereinek adott vissza. Ha a tömb vagy karakterlánc hossza nagyobb, egy üres tömb vagy karakterlánc adja vissza. |
+| originalValue |Igen |tömb vagy karakterlánc |A kihagyáshoz használandó tömb vagy karakterlánc. |
+| numberToSkip |Igen |int |A kihagyni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, az értékben szereplő összes elemet vagy karaktert adja vissza a rendszer. Ha a tömb vagy a karakterlánc hossza nagyobb, akkor a rendszer üres tömböt vagy karakterláncot ad vissza. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Egy tömb vagy karakterlánc.
+Tömb vagy karakterlánc.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/skip.json) kihagyja a megadott számú elem a tömbben, és a megadott számú karakter a karakterláncban.
+A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/skip.json) kihagyja a tömbben megadott számú elemet és a megadott számú karaktert egy karakterláncban.
 
 ```json
 {
@@ -1331,23 +1348,23 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| arrayOutput | Tömb | ["három"] |
-| stringOutput | String | két három |
+| arrayOutput | Array | ["három"] |
+| stringOutput | Sztring | 2 3 |
 
-## <a name="split"></a>felosztás
+## <a name="split"></a>split
 
 `split(inputString, delimiter)`
 
-Karakterláncok tömbje, amely tartalmazza a oszt fel a bemeneti karakterláncot, amely a megadott elválasztók vannak elválasztva adja vissza.
+Karakterláncok tömbjét adja vissza, amely a megadott elválasztó karakterrel tagolt bemeneti sztring alsztringjét tartalmazza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| inputString |Igen |string |A felosztandó karakterlánc. |
-| elválasztó karakter |Igen |karakterláncot vagy karakterláncok tömbje |A sztring felosztásához használt elválasztó karaktert. |
+| inputString |Igen |Karakterlánc |A felosztani kívánt karakterlánc. |
+| elválasztó |Igen |karakterlánc vagy karakterláncok tömbje |A karakterlánc felosztásához használandó elválasztó karakter. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1355,7 +1372,7 @@ Karakterláncok tömbje.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/split.json) bontja a bemeneti karakterláncot vesszővel válasszon el, és a egy vesszővel vagy pontosvesszővel.
+A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/split.json) a bemeneti karakterláncot vesszővel, vesszővel vagy pontosvesszővel osztja szét.
 
 ```json
 {
@@ -1392,29 +1409,29 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| firstOutput | Tömb | ["egy", "két", "három"] |
-| secondOutput | Tömb | ["egy", "két", "három"] |
+| firstOutput | Array | ["egy", "kettő", "három"] |
+| secondOutput | Array | ["egy", "kettő", "három"] |
 
 ## <a name="startswith"></a>startsWith
 
 `startsWith(stringToSearch, stringToFind)`
 
-Azt határozza meg, hogy egy karakterláncot egy adott értékkel kezdődik-e. Az összehasonlítás eredménye kis-és nagybetűket.
+Meghatározza, hogy egy karakterlánc egy értékkel kezdődik-e. Az összehasonlítás megkülönbözteti a kis-és nagybetűket.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Igen |string |Az érték, amely tartalmazza az elem található. |
-| stringToFind |Igen |string |Keresendő érték. |
+| stringToSearch |Igen |sztring |A keresendő elemeket tartalmazó érték. |
+| stringToFind |Igen |Karakterlánc |A keresendő érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-**Igaz** Ha az első karaktert vagy karaktereket a karakterlánc megfelel a értéket; ellenkező esetben **hamis**.
+**Igaz** , ha a karakterlánc első karaktere vagy karaktere megegyezik az értékkel; Ellenkező esetben **hamis**.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json) bemutatja, hogyan használja a startsWith és endsWith függvényt:
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json) a startsWith és a endsWith függvények használatát mutatja be:
 
 ```json
 {
@@ -1454,32 +1471,32 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| startsTrue | Bool | True (Igaz) |
-| startsCapTrue | Bool | True (Igaz) |
+| startsTrue | Bool | True |
+| startsCapTrue | Bool | True |
 | startsFalse | Bool | False (Hamis) |
-| endsTrue | Bool | True (Igaz) |
-| endsCapTrue | Bool | True (Igaz) |
+| endsTrue | Bool | True |
+| endsCapTrue | Bool | True |
 | endsFalse | Bool | False (Hamis) |
 
-## <a name="string"></a>string
+## <a name="string"></a>Karakterlánc
 
 `string(valueToConvert)`
 
-A megadott érték konvertálása egy karakterláncot.
+A megadott értéket karakterlánccá alakítja.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Igen | Bármely |Karakterlánc alakítandó érték. Bármilyen típusú érték lehet konvertálni, többek között az objektumok és tömböket. |
+| valueToConvert |Igen | Any |A sztringre konvertálandó érték. Bármilyen típusú érték konvertálható, beleértve az objektumokat és a tömböket is. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Az átalakított érték karakterlánc.
+Az átalakított érték karakterlánca.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/string.json) különböző típusú értékek konvertálása karakterláncokat jeleníti meg:
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/string.json) bemutatja, hogyan alakíthat át különböző típusú értékeket karakterláncokra:
 
 ```json
 {
@@ -1528,31 +1545,31 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
-| arrayOutput | String | ["a", "b", "c"] |
-| intOutput | String | 5 |
+| objectOutput | Karakterlánc | {"valuea": 10, "valueB": "példa szövege"} |
+| arrayOutput | Karakterlánc | ["a", "b", "c"] |
+| intOutput | Karakterlánc | 5 |
 
-## <a name="substring"></a>karakterláncrészlet
+## <a name="substring"></a>substring
 
 `substring(stringToParse, startIndex, length)`
 
-Egy részét, amely a megadott Karakterpozíció kezdődik, és tartalmazza a megadott számú karaktert adja vissza.
+Egy olyan alsztringet ad vissza, amely a megadott karakteres pozíciónál kezdődik, és a megadott számú karaktert tartalmazza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Igen |string |Az eredeti karakterláncot, amely az a karakterláncrészletet ki kell olvasni. |
-| startIndex |Nem |int |A nulla alapú kezdő karakter pozíciójának a karakterláncrészletet. |
-| length |Nem |int |A substring karakterek száma. A karakterláncon belüli helyre kell hivatkoznia. Lehet nulla vagy nagyobb. |
+| stringToParse |Igen |Karakterlánc |Az az eredeti karakterlánc, amelyből a rendszer kinyeri az alkarakterláncot. |
+| startIndex |Nem |int |Az alsztring nulla alapú kiindulási karakterének pozíciója. |
+| length |Nem |int |Az alkarakterlánc karaktereinek száma. A karakterláncon belüli helyre kell hivatkoznia. Nulla vagy nagyobb értéknek kell lennie. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-A karakterláncrészletet. Vagy ha az érték nulla üres karakterlánc.
+Az alkarakterlánc. Vagy ha a hossz nulla, akkor üres karakterláncot kell megadni.
 
 ### <a name="remarks"></a>Megjegyzések
 
-A függvény sikertelen lesz, ha a substring túlnyúlik a sztring végén, vagy ha hossza kisebb nullánál. A következő hibával meghiúsul a következő példa "az index és a hossz paraméternek a karakterláncon belüli helyre kell hivatkoznia. Az index paraméter: "0", a length paraméter: "11", a karakterlánc-paraméter hossza: '10'.".
+A függvény meghiúsul, ha az alkarakterlánc a karakterlánc végénél hosszabb ideig is kinyúlik, vagy ha a hossz nullánál kisebb. Az alábbi példa a következő hibával meghiúsul: "az index és a Length paraméternek a karakterláncon belüli helyre kell vonatkoznia. Az index paraméter: "0", a Length paraméter: "11", a sztring paraméter hossza: "10". "
 
 ```json
 "parameters": {
@@ -1565,7 +1582,7 @@ A függvény sikertelen lesz, ha a substring túlnyúlik a sztring végén, vagy
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/substring.json) részkarakterláncot kigyűjti a paramétert.
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/substring.json) egy alsztringet kibont egy paraméterből.
 
 ```json
 {
@@ -1591,28 +1608,28 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| substringOutput | String | kettő |
+| substringOutput | Sztring | kettő |
 
-## <a name="take"></a>hajtsa végre a megfelelő
+## <a name="take"></a>take
 
 `take(originalValue, numberToTake)`
 
-A megadott számú karaktert karakterláncot ad vissza. a karakterlánc vagy egy tömb a megadott számú elem a tömb a kezdetektől az elejéről.
+Egy olyan karakterláncot ad vissza, amely a megadott számú karaktert tartalmazza a karakterlánc elejétől, vagy egy tömböt a tömb elejétől megadott számú elemmel.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| originalValue |Igen |tömb vagy karakterlánc |A tömböt vagy karakterláncot, hogy az elemek. |
-| numberToTake |Igen |int |Elemek vagy elvégzendő karakterek száma. Ha ez az érték 0 vagy kisebb, egy üres tömb vagy karakterlánc adja vissza. Ha nagyobb, mint a megadott tömb vagy karakterlánc hossza, a rendszer tömb vagy karakterlánc összes elemét adja vissza. |
+| originalValue |Igen |tömb vagy karakterlánc |Az elemeket tartalmazó tömb vagy karakterlánc. |
+| numberToTake |Igen |int |A felvenni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, üres tömböt vagy karakterláncot ad vissza. Ha az érték nagyobb, mint a megadott tömb vagy karakterlánc hossza, a rendszer a tömb vagy karakterlánc összes elemét visszaadja. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Egy tömb vagy karakterlánc.
+Tömb vagy karakterlánc.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/take.json) vesz igénybe a megadott számú elem a tömbből, és a egy karakterláncból karakterből.
+A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/take.json) a tömbben szereplő elemek számát és a karakterláncok karaktereit veszi figyelembe.
 
 ```json
 {
@@ -1658,28 +1675,28 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| arrayOutput | Tömb | ["egy", "két"] |
-| stringOutput | String | be |
+| arrayOutput | Array | ["egy", "Two"] |
+| stringOutput | Karakterlánc | be |
 
 ## <a name="tolower"></a>toLower
 
 `toLower(stringToChange)`
 
-Kisbetűsre alakítja át a megadott karakterlánc.
+A megadott sztringet kisbetűvé alakítja.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Igen |string |Kisbetű alakítandó érték. |
+| stringToChange |Igen |Karakterlánc |Az kisbetűsre konvertálandó érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-A karakterlánc kisbetűsre konvertálja.
+A karakterláncot kisbetűvé alakítja.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json) kisbetű, nagybetű és a egy paraméter értéke alakítja át.
+A következő [példában a sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json) egy paraméter értékét kisbetűvé és nagybetűvé alakítja.
 
 ```json
 {
@@ -1707,30 +1724,30 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| toLowerOutput | String | egy két há' |
-| toUpperOutput | String | EGY KÉT HÁ' |
+| toLowerOutput | Karakterlánc | egy két há' |
+| toUpperOutput | Karakterlánc | EGY KÉT HÁ' |
 
 ## <a name="toupper"></a>toUpper
 
 `toUpper(stringToChange)`
 
-A megadott karakterlánc nagybetűs konvertálja.
+A megadott sztringet nagybetűvé alakítja.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Igen |string |A nagybetűs alakítandó érték. |
+| stringToChange |Igen |Karakterlánc |A nagybetűre konvertálandó érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-A karakterlánc nagybetűs dátumformátumra alakítja át.
+A karakterlánc a nagybetűre lett konvertálva.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json) kisbetű, nagybetű és a egy paraméter értéke alakítja át.
+A következő [példában a sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json) egy paraméter értékét kisbetűvé és nagybetűvé alakítja.
 
 ```json
 {
@@ -1758,30 +1775,30 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| toLowerOutput | String | egy két há' |
-| toUpperOutput | String | EGY KÉT HÁ' |
+| toLowerOutput | Sztring | egy két há' |
+| toUpperOutput | Sztring | EGY KÉT HÁ' |
 
 ## <a name="trim"></a>Trim
 
 `trim (stringToTrim)`
 
-A megadott karakterlánc eltávolítja az összes kezdő és záró elválasztó karaktert.
+Eltávolítja az összes kezdő és záró szóközöket a megadott karakterláncból.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Igen |string |Az érték, amelyből törölni kell. |
+| stringToTrim |Igen |sztring |A vágási érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-A karakterlánc nélkül kezdő és záró elválasztó karaktert.
+A karakterlánc kezdő és záró szóközök nélkül.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/trim.json) az üres karaktereket a paraméterből származó levágja.
+Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/trim.json) a fehér szóközöket vágja le a paraméterből.
 
 ```json
 {
@@ -1807,50 +1824,50 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| a visszaadandó | String | egy két há' |
+| visszatérési | Sztring | egy két há' |
 
 ## <a name="uniquestring"></a>uniqueString
 
 `uniqueString (baseString, ...)`
 
-A paraméterként megadott értékek alapján determinisztikus kivonat karakterláncot hoz létre. 
+Létrehoz egy determinisztikus-kivonat karakterláncot a paraméterként megadott értékek alapján. 
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| baseString |Igen |string |Hozzon létre egy egyedi karakterlánccá, a kivonatoló függvényt a használt érték. |
-| További paraméterek szükséges |Nem |string |Tetszőleges számú karakterláncok létrehozása, amely az egyediség szintjét határozza meg az érték szükség szerint adhat hozzá. |
+| baseString |Igen |Karakterlánc |Egy egyedi karakterlánc létrehozásához a kivonatoló függvényben használt érték. |
+| további paraméterek igény szerint |Nem |sztring |Az egyediség szintjét meghatározó érték létrehozásához tetszőleges számú karakterláncot adhat hozzá. |
 
 ### <a name="remarks"></a>Megjegyzések
 
-Ez a funkció akkor hasznos, ha szeretne létrehozni egy egyedi nevet. Azt adja meg a paraméterértékeket, hogy az eredmény az egyediség hatókörének korlátozása. Megadhatja, hogy a név egyediségét lefelé az előfizetés, erőforráscsoport vagy üzembe helyezés. 
+Ez a függvény akkor hasznos, ha egyedi nevet kell létrehoznia egy erőforráshoz. Olyan paramétereket adhat meg, amelyek korlátozzák az eredmény egyediségi hatókörét. Megadhatja, hogy a név egyedi-e az előfizetés, az erőforráscsoport vagy a központi telepítés számára. 
 
-A visszaadott érték nem egy véletlenszerű karakterlánc, de inkább a kivonatolási függvény eredménye. A visszaadott érték 13 karakterig terjedhet. Globálisan egyedi nem. Érdemes úgy, hogy az érték az elnevezési konvenciókhoz, és hozzon létre egy beszédes nevet a előtaggal. Az alábbi példa bemutatja a visszaadott érték formátuma. A tényleges érték a megadott paraméter alapján változik.
+A visszaadott érték nem egy véletlenszerű karakterlánc, hanem egy kivonatoló függvény eredménye. A visszaadott érték 13 karakter hosszúságú. Globálisan nem egyedi. Érdemes lehet az értéket az elnevezési konvenció egy előtaggal egyesíteni, hogy olyan nevet hozzon létre, amely értelmes. Az alábbi példában a visszaadott érték formátuma látható. A tényleges érték a megadott paraméterektől függ.
 
     tcvhiyu5h2o5o
 
-Az alábbi példák bemutatják, hogyan hozzon létre egy egyedi értéket a gyakran használt szintek uniqueString használatával.
+Az alábbi példák bemutatják, hogyan használhatja a uniqueString-t egyedi érték létrehozására a gyakran használt szintekhez.
 
-Egyedi előfizetés hatóköre
+Az előfizetéshez tartozó egyedi hatókör
 
 ```json
 "[uniqueString(subscription().subscriptionId)]"
 ```
 
-Egyedi erőforráscsoport hatóköre
+Az erőforráscsoport egyedi hatóköre
 
 ```json
 "[uniqueString(resourceGroup().id)]"
 ```
 
-Egyedi erőforráscsoport üzembe helyezési hatóköre
+Egy erőforráscsoport üzembe helyezésének egyedi hatóköre
 
 ```json
 "[uniqueString(resourceGroup().id, deployment().name)]"
 ```
 
-Az alábbi példa bemutatja, hogyan hozhat létre egy storage-fiókot az erőforráscsoportban alapján egyedi nevét. Az erőforráscsoportban a név nem egyedi, ugyanúgy, mint ha.
+Az alábbi példa bemutatja, hogyan hozhat létre egyedi nevet egy Storage-fiókhoz az erőforráscsoport alapján. Az erőforráscsoport belsejében a név nem egyedi, ha a kiépítés ugyanúgy történik.
 
 ```json
 "resources": [{ 
@@ -1859,15 +1876,15 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy storage-fiókot az erőfor
     ...
 ```
 
-Ha szeretne létrehozni egy új egyedi nevet minden alkalommal, amikor a sablon üzembe helyezése, és nem kívánja frissíteni az erőforrás, akkor használhatja a [utcNow](#utcnow) uniqueString függvényt. Ez a megközelítés egy tesztkörnyezetben használhatja. Egy vonatkozó példáért lásd: [utcNow](#utcnow).
+Ha minden alkalommal új egyedi nevet kell létrehoznia, amikor sablont telepít, és nem kívánja frissíteni az erőforrást, használhatja a [utcNow](#utcnow) függvényt a uniqueString. Ezt a megközelítést tesztkörnyezetben is használhatja. Példaként tekintse meg a következőt: [utcNow](#utcnow).
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-13 karaktert tartalmazó karakterlánc.
+13 karaktert tartalmazó sztring.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uniquestring.json) uniquestring eredményeket adja vissza:
+A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uniquestring.json) a uniquestring eredményeit adja vissza:
 
 ```json
 {
@@ -1887,34 +1904,34 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-## <a name="uri"></a>URI-t
+## <a name="uri"></a>uri azonosító
 
 `uri (baseUri, relativeUri)`
 
-Egyesíti a baseUri és a relativeUri karakterláncot hoz létre absolutní identifikátor URI.
+Abszolút URI-t hoz létre a baseUri és a relativeUri karakterlánc kombinálásával.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| baseUri |Igen |string |Az alap uri karakterlánc. |
-| relativeUri |Igen |string |A relatív uri karakterlánc hozzáadása az alap uri-karakterláncot. |
+| baseUri |Igen |Karakterlánc |Az alap URI-karakterlánc. |
+| relativeUri |Igen |Karakterlánc |Az alap URI-karakterlánchoz hozzáadandó relatív URI-karakterlánc. |
 
-Az érték a **baseUri** paraméter egy adott fájlt is tartalmazhat, de csak az alapútvonal létrehozásakor az URI-t használja. Például passing `http://contoso.com/resources/azuredeploy.json` egy alap URI-ját baseUri paraméter eredményként `http://contoso.com/resources/`.
+A **baseUri** paraméter értéke tartalmazhat egy adott fájlt, de a rendszer csak az alap elérési utat használja az URI összeállításakor. Például a baseUri paraméternek való átadás `http://contoso.com/resources/azuredeploy.json` a (z `http://contoso.com/resources/`) alap URI-ját eredményezi.
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Az abszolút URI Azonosítónak a kiinduló és relatív értékeket képviselő karakterláncot.
+Az alap és a relatív értékek abszolút URI azonosítóját jelölő sztring.
 
 ### <a name="examples"></a>Példák
 
-Az alábbi példa bemutatja, hogyan hozhat létre az érték a fölérendelt sablon alapján egy beágyazott sablont mutató hivatkozást.
+Az alábbi példa bemutatja, hogyan hozhat létre egy beágyazott sablonra mutató hivatkozást a fölérendelt sablon értéke alapján.
 
 ```json
 "templateLink": "[uri(deployment().properties.templateLink.uri, 'nested/azuredeploy.json')]"
 ```
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) uri uriComponent és uriComponentToString használatát ismerteti:
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) azt szemlélteti, hogyan használható az URI, a uriComponent és a uriComponentToString:
 
 ```json
 {
@@ -1945,31 +1962,31 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | Sztring | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | Karakterlánc | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | Karakterlánc | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="uricomponent"></a>uriComponent
 
 `uricomponent(stringToEncode)`
 
-Kódol egy URI-t.
+URI kódolása.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Igen |string |A kódolni kívánt érték. |
+| stringToEncode |Igen |Karakterlánc |A kódolni kívánt érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Az URI karakterláncként kódolt érték.
+Az URI-kódolású érték karakterlánca.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) uri uriComponent és uriComponentToString használatát ismerteti:
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) azt szemlélteti, hogyan használható az URI, a uriComponent és a uriComponentToString:
 
 ```json
 {
@@ -2000,31 +2017,31 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | Karakterlánc | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | Sztring | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | Karakterlánc | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="uricomponenttostring"></a>uriComponentToString
 
 `uriComponentToString(uriEncodedString)`
 
-Visszaadása egy URI karakterláncként kódolt érték.
+Egy URI-kódolású érték sztringjét adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Igen |string |Az URI-ként kódolt karakterlánc alakítandó érték. |
+| uriEncodedString |Igen |Karakterlánc |A karakterláncra konvertálandó URI-kódolású érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-A dekódolt karakterlánc URI érték kódolva.
+URI-kódolt érték dekódolt karakterlánca.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) uri uriComponent és uriComponentToString használatát ismerteti:
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) azt szemlélteti, hogyan használható az URI, a uriComponent és a uriComponentToString:
 
 ```json
 {
@@ -2055,39 +2072,39 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | Sztring | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | Sztring | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | Sztring | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="utcnow"></a>utcNow
 
 `utcNow(format)`
 
-A megadott formátumban az aktuális (UTC) dátum/idő értéket ad vissza. Ha nincs formátum van megadva, az ISO 8601 (ÉÉÉÉHHNNIóóppmmZ) formátumot használja. **Ez a függvény csak használható az alapértelmezett érték az adott paraméter.**
+Az aktuális (UTC) dátum és idő értéket adja vissza a megadott formátumban. Ha nincs megadva formátum, a rendszer az ISO 8601 (yyyyMMddTHHmmssZ) formátumot használja. **Ez a függvény csak a paraméter alapértelmezett értékében használható.**
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| format |Nem |string |Az URI-ként kódolt karakterlánc alakítandó érték. Mindkét [standard formázási karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [egyéni formázási karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| format |Nem |Karakterlánc |A karakterláncra konvertálandó URI-kódolású érték. Használjon [szabványos formázó karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [Egyéni formázó karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Megjegyzések
 
-Ez a függvény kifejezésben csak használható egy paraméter alapértelmezett értéke. Hiba történt a sablonban máshol funkció használatával adja vissza. A függvény nem engedélyezett a sablont más részein, mert értéket ad vissza egy másik minden alkalommal, amikor azt nevezzük. Ugyanazt a sablont, ugyanazokkal a paraméterekkel telepítése nem megbízható ugyanazt az eredményt.
+Ezt a függvényt csak egy paraméter alapértelmezett értékére használhatja egy kifejezésen belül. Ha ezt a funkciót a sablonban bárhol máshol használja, hibaüzenetet ad vissza. A függvény nem engedélyezett a sablon más részeiben, mert minden egyes híváskor más értéket ad vissza. Ugyanazon sablon ugyanazon paraméterekkel való üzembe helyezése nem eredményezi megbízhatóan ugyanazt az eredményt.
 
-Ha használja a [lehetőséget egy korábban sikeres üzembe helyezés újratelepíteni](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails), és a korábbi központi telepítés magában foglalja egy paraméter, amely utcNow használja, a paraméter nem újraértékeli. A paraméter értékét a korábbi telepítésből ehelyett automatikusan újra a visszaállítás telepítésben.
+Ha a [korábbi sikeres központi telepítés](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails)újbóli üzembe helyezését használja, és a korábbi telepítés utcNow-t használó paramétert tartalmaz, a paraméter nem lett újraértékelve. Ehelyett a korábbi központi telepítés paraméterének értékét a rendszer automatikusan újra felhasználja a visszaállítási telepítésben.
 
-Ügyeljen arra, hogy újbóli üzembe helyezés egy sablont, amely az alapértelmezett érték utcNow függvény támaszkodik. Ismételt üzembe helyezése, és ne adjon meg egy értéket a paraméterhez, amikor a rendszer újraértékeli a függvény. Ha azt szeretné, hozzon létre egy új helyett egy meglévő erőforrás frissítése, adja át a paraméter értékét a korábbi telepítésből.
+Ügyeljen arra, hogy egy alapértelmezett érték esetén a utcNow függvényre támaszkodó sablont telepítse újra. Ha újratelepíti, és nem ad meg értéket a paraméterhez, a függvény újraértékelése megtörténik. Ha egy meglévő erőforrást nem új létrehozása helyett szeretne frissíteni, adja át a paraméter értékét a korábbi telepítésből.
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-A jelenlegi UTC-dátum/idő érték.
+Az aktuális UTC datetime érték.
 
 ### <a name="examples"></a>Példák
 
-A következő példa sablon különböző formátumokban datetime értéket jeleníti meg.
+A következő példa sablon a DateTime érték különböző formátumait jeleníti meg.
 
 ```json
 {
@@ -2126,15 +2143,15 @@ A következő példa sablon különböző formátumokban datetime értéket jele
 }
 ```
 
-Az előző példa kimenetében az egyes központi telepítések az érték, de hasonló lesz:
+Az előző példa kimenete az egyes központi telepítések esetében változik, de a következőhöz hasonló lesz:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| utcOutput | string | 20190305T175318Z |
-| utcShortOutput | string | 03/05/2019 |
-| utcCustomOutput | string | 3 5 |
+| utcOutput | Karakterlánc | 20190305T175318Z |
+| utcShortOutput | Karakterlánc | 03/05/2019 |
+| utcCustomOutput | Karakterlánc | 3 5 |
 
-A következő példa bemutatja, hogyan használható olyan érték, a függvény, amely címkeértékkel beállításakor.
+A következő példa azt szemlélteti, hogyan használható a függvény értéke a címke értékének beállításakor.
 
 ```json
 {

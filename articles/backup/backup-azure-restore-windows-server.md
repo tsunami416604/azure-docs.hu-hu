@@ -1,18 +1,19 @@
 ---
 title: Az Azure-ban tárolt adatvisszaállítás Windows Server vagy Windows rendszerű számítógépre
 description: Megtudhatja, hogyan állíthatja vissza az Azure-ban tárolt információkat Windows Server vagy Windows rendszerű számítógépre.
-author: saurabhsensharma
-manager: shivamg
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 9/7/2018
-ms.author: saurse
-ms.openlocfilehash: e22db587c698594170c3b08ea04ff6699b6a61c8
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: c8e0ddb788d5e155bfaa511b1012cc8d8e62aab5
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465679"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689096"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Fájlok visszaállítása a Windowsba az Azure Resource Manager üzemi modell használatával
 
@@ -76,7 +77,7 @@ Ha véletlenül törölt egy fájlt, és vissza szeretné állítani ugyanarra a
     ![Képernyőkép a Windows Intézőben, a másolás kiemelve](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 
 
-9. Ha elkészült, a **Fájlok tallózása és helyreállítása** lapon válassza a leválasztás lehetőséget . Ezután az **Igen** gombra kattintva erősítse meg, hogy le kívánja választani a kötetet.
+9. Ha elkészült, a **Fájlok tallózása és helyreállítása** lapon válassza a leválasztás lehetőséget. Ezután az **Igen** gombra kattintva erősítse meg, hogy le kívánja választani a kötetet.
 
     ![Az adatok helyreállítása varázsló képernyőképe – fájlok tallózása és helyreállítása lap](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
@@ -141,7 +142,7 @@ Ezek a lépések a következő terminológiát tartalmazzák:
 
     ![Képernyőkép a Windows Intézőben, a másolás kiemelve](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
 
-12. Ha elkészült, a **Fájlok tallózása és helyreállítása** lapon válassza a leválasztás lehetőséget . Ezután az **Igen** gombra kattintva erősítse meg, hogy le kívánja választani a kötetet.
+12. Ha elkészült, a **Fájlok tallózása és helyreállítása** lapon válassza a leválasztás lehetőséget. Ezután az **Igen** gombra kattintva erősítse meg, hogy le kívánja választani a kötetet.
 
     ![Az adatok helyreállítása varázsló képernyőképe – fájlok tallózása és helyreállítása lap](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 

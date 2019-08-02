@@ -9,14 +9,14 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
-ms.openlocfilehash: f1001df52b3bbb54f3b872f23276957fa01a7da5
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 6e41b1999033c00b277cd35173b3247a727e9a8a
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68403199"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668138"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Fájlok feltöltése az eszközről a felhőbe IoT Hub .NET használatával
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Fájlok feltöltése az eszközről a felhőbe IoT Hub (.NET)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
@@ -42,7 +42,7 @@ Az oktatóanyag végén két .NET konzolos alkalmazást futtat:
 * **ReadFileUploadNotification**, amely befogadja a fájlfeltöltés-értesítéseket az IoT hub-ból.
 
 > [!NOTE]
-> IoT Hub számos eszköz platformját és nyelvét támogatja (beleértve a C, Java és JavaScript rendszereket) az Azure IoT Device SDK-k használatával. Az eszköz Azure IoT Hubhoz való csatlakoztatásának részletes ismertetését az [Azure IoT fejlesztői központban](https://azure.microsoft.com/develop/iot) találja.
+> IoT Hub számos eszköz platformját és nyelvét támogatja (beleértve a C, Java, Python és JavaScript rendszereket) az Azure IoT Device SDK-k segítségével. Az eszköz Azure IoT Hubhoz való csatlakoztatásának részletes ismertetését az [Azure IoT fejlesztői központban](https://azure.microsoft.com/develop/iot) találja.
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
