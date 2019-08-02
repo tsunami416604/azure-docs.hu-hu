@@ -80,6 +80,8 @@
   items:
     - name: PowerShell
       href: /powershell/windows-virtual-desktop/overview
+    - name: REST API
+      href: /rest/api/virtual-desktop/
 - name: További források
   items:
     - name: Tech Community támogatási csoportja

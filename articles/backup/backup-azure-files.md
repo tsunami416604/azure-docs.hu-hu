@@ -1,5 +1,5 @@
 ---
-title: Azure-fájlmegosztások biztonsági mentése
+title: Azure-fájlmegosztás biztonsági mentése és visszaállítása
 description: Ez a cikk ismerteti az Azure-fájlmegosztások biztonsági mentésének és visszaállításának módját, valamint a felügyeleti feladatokat.
 author: dcurwin
 ms.author: dacurwin
@@ -7,14 +7,14 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 9cb0150efcb4860af98b47aa5da4cfd24d2e9de9
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: c2e78f6925ae8ff72e7f603c886376b32e40cd94
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602016"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737262"
 ---
-# <a name="back-up-azure-file-shares"></a>Azure-fájlmegosztások biztonsági mentése
+# <a name="back-up-and-restore-azure-file-shares"></a>Azure-fájlmegosztások biztonsági mentése és visszaállítása
 Ez a cikk azt ismerteti, hogyan használhatja az Azure Portalt az [Azure-fájlmegosztások](../storage/files/storage-files-introduction.md) biztonsági mentésére és visszaállítására.
 
 Ebből az útmutatóból a következőket tanulhatja meg:

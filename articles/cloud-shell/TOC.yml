@@ -7,9 +7,7 @@
     - name: PowerShell – Rövid útmutató
       href: quickstart-powershell.md
 - name: Funkciók és eszközök
-  items:
-    - name: Funkciók és eszközök
-      href: features.md
+  href: features.md
 - name: Oktatóanyagok
   items:
     - name: Ansible

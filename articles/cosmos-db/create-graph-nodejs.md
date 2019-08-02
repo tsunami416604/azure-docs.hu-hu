@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
 ms.author: lbosq
-ms.openlocfilehash: 31c2846c628553e74eff5ea9a9627c871f4f810c
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 966dfbf0280351c605e6dc20fc65178aee83d099
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734546"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735251"
 ---
-# <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Gyors útmutató: Node.js-alkalmazás létrehozása az Azure Cosmos DB Gremlin API-fiók használatával
+# <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Gyors útmutató: Node. js-alkalmazás létrehozása Azure Cosmos DB Gremlin API-fiók használatával
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)
@@ -28,7 +28,7 @@ ms.locfileid: "66734546"
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB [Gremlin API](graph-introduction.md)-fiókot, adatbázist és gráfot. Ezután a nyílt forráskódú [Gremlin Node.js](https://www.npmjs.com/package/gremlin)-illesztőprogram segítségével létrehozhat és futtathat egy konzolalkalmazást.
+Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Cosmos DB [GREMLIN API](graph-introduction.md) -fiókot, adatbázist és gráfot a Azure Portal használatával. Ezután a nyílt forráskódú [Gremlin Node.js](https://www.npmjs.com/package/gremlin)-illesztőprogram segítségével létrehozhat és futtathat egy konzolalkalmazást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -79,15 +79,22 @@ Az alábbi kódrészletek mind az app.js fájlból származnak.
 * Létrejön a Gremlin-ügyfél.
 
     ```javascript
-    const client = Gremlin.createClient(
-        443, 
+    const authenticator = new Gremlin.driver.auth.PlainTextSaslAuthenticator(
+        `/dbs/${config.database}/colls/${config.collection}`, 
+        config.primaryKey
+    )
+
+
+    const client = new Gremlin.driver.Client(
         config.endpoint, 
         { 
-            "session": false, 
-            "ssl": true, 
-            "user": `/dbs/${config.database}/colls/${config.collection}`,
-            "password": config.primaryKey
-        });
+            authenticator,
+            traversalsource : "g",
+            rejectUnauthorized : true,
+            mimeType : "application/vnd.gremlin-v2.0+json"
+        }
+    );
+
     ```
 
   Minden konfiguráció a `config.js` fájlban van, amelynek a szerkesztését a [következő rész](#update-your-connection-string) írja le.
@@ -95,42 +102,50 @@ Az alábbi kódrészletek mind az app.js fájlból származnak.
 * A rendszer függvények sorozatát definiálja a különböző Gremlin-műveletek végrehajtásához. Ez az egyik közülük:
 
     ```javascript
-    function addVertex1(callback)
+    function addVertex1()
     {
         console.log('Running Add Vertex1'); 
-        client.execute("g.addV('person').property('id', 'thomas').property('firstName', 'Thomas').property('age', 44).property('userid', 1)", { }, (err, results) => {
-          if (err) callback(console.error(err));
-          console.log("Result: %s\n", JSON.stringify(results));
-          callback(null)
-        });
+        return client.submit("g.addV(label).property('id', id).property('firstName', firstName).property('age', age).property('userid', userid).property('pk', 'pk')", {
+                label:"person",
+                id:"thomas",
+                firstName:"Thomas",
+                age:44, userid: 1
+            }).then(function (result) {
+                    console.log("Result: %s\n", JSON.stringify(result));
+            });
     }
     ```
 
 * Mindegyik függvény végrehajt egy `client.execute` metódust egy Gremlin lekérdezési sztring paraméterrel. Itt egy példa a `g.V().count()` végrehajtására:
 
     ```javascript
-    console.log('Running Count'); 
-    client.execute("g.V().count()", { }, (err, results) => {
-        if (err) return console.error(err);
-        console.log(JSON.stringify(results));
-        console.log();
-    });
+    function countVertices()
+    {
+        console.log('Running Count');
+        return client.submit("g.V().count()", { }).then(function (result) {
+            console.log("Result: %s\n", JSON.stringify(result));
+        });
+    }
     ```
 
-* A fájl végén a rendszer minden metódust meghív az `async.waterfall()` metódus használatával. Így egymás után lesznek végrehajtva:
+* A fájl végén minden metódust meghívja a rendszer. Így egymás után lesznek végrehajtva:
 
     ```javascript
-    try{
-        async.waterfall([
-            dropGraph,
-            addVertex1,
-            addVertex2,
-            addEdge,
-            countVertices
-            ], finish);
-    } catch(err) {
-        console.log(err)
-    }
+    client.open()
+    .then(dropGraph)
+    .then(addVertex1)
+    .then(addVertex2)
+    .then(addEdge)
+    .then(countVertices)
+    .catch((err) => {
+        console.error("Error running query...");
+        console.error(err)
+    }).then((res) => {
+        client.close();
+        finish();
+    }).catch((err) => 
+        console.error("Fatal error:", err)
+    );
     ```
 
 

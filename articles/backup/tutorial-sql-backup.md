@@ -1,5 +1,5 @@
 ---
-title: SQL Server adatbázisok biztonsági mentése az Azure-ba | Microsoft Docs
+title: Oktatóanyag – SQL Server adatbázisok biztonsági mentése az Azure-ba
 description: Ez az oktatóanyag a SQL Server Azure-ba történő biztonsági mentését ismerteti.
 author: dcurwin
 manager: carmonm
@@ -7,18 +7,18 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 99e1e8194594d204a5080287794362dbe028a1f5
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 729eb0d77cee85356e359dc475f4e439b8236ebb
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688422"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736554"
 ---
-# <a name="back-up-sql-server-databases-in-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
+# <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>SQL Server-adatbázis biztonsági mentése Azure-beli virtuális gépen
 
 
 
-Ez a cikk bemutatja, hogyan készíthet biztonsági mentést egy Azure-beli virtuális gépen futó SQL Server-adatbázisról egy Azure Backup Recovery Services-tárolóra. Ebben a cikkben az alábbiakkal ismerkedhet meg:
+Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztonsági mentést egy Azure-beli virtuális gépen futó SQL Server-adatbázisról egy Azure Backup Recovery Services-tárolóra. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Tároló létrehozása és konfigurálása.
