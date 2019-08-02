@@ -1,26 +1,26 @@
 ---
-title: Csatlakozás az Azure Analysis Services a Power BI |} A Microsoft Docs
-description: Ismerje meg, hogyan csatlakozhat az Azure Analysis Services-kiszolgáló a Power BI használatával.
+title: Kapcsolódás a Azure Analysis Serviceshoz Power BI használatával | Microsoft Docs
+description: Megtudhatja, hogyan csatlakozhat egy Azure Analysis Services-kiszolgálóhoz Power BI használatával.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cb93c29ae4cb8d365cd128c52ee726c10c94bc19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eadba5397655809dc4f3e6d5f9d6c79addde68a6
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61023574"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619298"
 ---
 # <a name="connect-with-power-bi"></a>Kapcsolódás Power BI-jal
 
-Miután létrehozott egy kiszolgálót az Azure-ban, és üzembe helyezett egy táblázatos modellhez, a szervezet felhasználói csatlakozhat, és megkezdje az adatok készen állnak. 
+Miután létrehozott egy kiszolgálót az Azure-ban, és egy táblázatos modellt helyezett üzembe, a szervezet felhasználói készen állnak a kapcsolódásra, és megkezdik az adatgyűjtés megkezdését. 
 
 > [!TIP]
-> Ügyeljen arra, hogy a legújabb verzióját használja, [Power BI Desktop](https://powerbi.microsoft.com/desktop/).
+> Ügyeljen arra, hogy a [Power bi Desktop](https://powerbi.microsoft.com/desktop/)legújabb verzióját használja.
 > 
 > 
   
@@ -28,26 +28,26 @@ Miután létrehozott egy kiszolgálót az Azure-ban, és üzembe helyezett egy t
 
 1. A Power BI Desktopban kattintson az **Adatok lekérése** > **Azure** > **Azure Analysis Services-adatbázis** elemre.
 
-2. A **kiszolgáló**, adja meg a kiszolgáló nevét. Ügyeljen arra, hogy a teljes URL-címét; Ha például asazure://westcentralus.asazure.windows.net/advworks.
+2. A **kiszolgáló**mezőben adja meg a kiszolgáló nevét. Ügyeljen arra, hogy a teljes URL-címet tartalmazza; például: asazure://westcentralus.asazure.windows.net/advworks.
 
-3. A **adatbázis**, ha ismeri a nevét, a táblázatos modellű adatbázisához vagy perspektíva, amelyhez csatlakozni kíván, illessze be ide. Ellenkező esetben hagyja üresen a mezőt, és válasszon ki egy adatbázist vagy perspektíva később.
+3. Haismeri annak a táblázatos modellnek az adatbázisának vagy perspektívájának a nevét, amelyhez csatlakozni szeretne, illessze be ide. Ellenkező esetben hagyja üresen ezt a mezőt, és válasszon ki egy adatbázist vagy perspektívát később.
 
-4. Válassza ki a kapcsolat lehetőséget, és nyomja le az **Connect**. 
+4. Válassza ki a kapcsolat lehetőséget, majd kattintson a **Csatlakoztatás**gombra. 
 
-    Mindkét **élő csatlakozás** és **importálás** beállítások támogatottak. Azonban ajánlott, az élő kapcsolatok használja, mivel az importálási mód van bizonyos korlátozások; incidensről a kiszolgáló teljesítményét megváltozhatnak az importálás során. Emellett, ha a modell frissíteni a Power BI szolgáltatásban a **engedélyezi a hozzáférést a Power bi-BÓL** beállítás kiválasztásakor csak érvényes **élő csatlakozás**.
+    Az **élő** és az **importálási** beállítások egyaránt támogatottak. Javasoljuk azonban, hogy élő kapcsolatokat használjon, mivel az importálási mód bizonyos korlátozásokkal rendelkezik; a legtöbb esetben az importálás során hatással lehet a kiszolgáló teljesítményére. Továbbá, ha a modellt frissíteni kell a Power BI szolgáltatásban, a **hozzáférés engedélyezése Power bi** beállítás csak akkor érvényes, ha az **élő kapcsolat**lehetőséget választja.
 
-5. Ha a rendszer kéri, adja meg a bejelentkezési hitelesítő adatait. 
+5. Ha a rendszer kéri, adja meg a bejelentkezési adatait. 
 
-6. A **kezelő**, bontsa ki a kiszolgálót, majd válassza ki a modell vagy perspektíva csatlakozhat, és kattintson a kívánt **Connect**. Kattintson egy modellt vagy perspektívát minden objektumot a nézet megjelenítéséhez.
+6. A **Navigátorban**bontsa ki a kiszolgálót, majd válassza ki azt a modellt vagy perspektívát, amelyhez csatlakozni szeretne, majd kattintson a **Kapcsolódás**elemre. Kattintson egy modellre vagy perspektívára az adott nézet összes objektumának megjelenítéséhez.
 
-    A modell megnyitása a Power BI Desktopban jelentés nézetben üres jelentéssel. A mezők listában az összes nem rejtett adatmodell-objektumokat jeleníti meg. A csatlakozás állapota a jobb alsó sarokban látható.
+    A modell a jelentés nézetben egy üres jelentéssel nyílik meg Power BI Desktop. A mezők lista megjeleníti az összes nem rejtett modell objektumot. A csatlakozás állapota a jobb alsó sarokban látható.
 
-## <a name="connect-in-power-bi-service"></a>Csatlakozás a Power bi-ban (szolgáltatás)
+## <a name="connect-in-power-bi-service"></a>Kapcsolódjon Power BI (szolgáltatás)
 
-1. Hozzon létre egy Power BI Desktop-fájlt, amely a modell élő kapcsolattal rendelkezik a kiszolgálón.
-2. A [Power BI](https://powerbi.microsoft.com), kattintson a **adatok lekérése** > **fájlok**, majd keresse meg és válassza ki a .pbix-fájlt.
+1. Hozzon létre egy Power BI Desktop fájlt, amely élő kapcsolatban áll a modellel a-kiszolgálón.
+2. [Power bi](https://powerbi.microsoft.com)kattintson az > adatfájlok lekérése elemre, majd keresse meg és válassza ki a. pbix fájlt.
 
 ## <a name="see-also"></a>Lásd még
-[Csatlakozás az Azure Analysis Services](analysis-services-connect.md)   
+[Kapcsolódás Azure Analysis Serviceshoz](analysis-services-connect.md)   
 [Ügyfélkódtárak](analysis-services-data-providers.md)
 

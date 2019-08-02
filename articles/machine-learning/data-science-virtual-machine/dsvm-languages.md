@@ -5,7 +5,7 @@ description: Ismerje meg a program nyelveket és a kapcsolódó eszközök, elő
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -16,13 +16,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: gokuma
-ms.openlocfilehash: 586f37ff972a6102da351794365f719a185857fc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 1df3c986132de2a3e7ec9547a996abef60ea04ac
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502242"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558117"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>A Data Science virtuális gépen támogatott nyelvek 
 
@@ -39,7 +39,7 @@ Az adatelemzési virtuális gép (DSVM) tartalmaz számos előre elkészített n
 | A dsvm-hez kapcsolódó eszközök      | PySpark, R, Julia      |
 
 > [!NOTE]
-> 2018\. március előtt létrehozott Windows Server 2016 tartalmazza a Python 3.5-ös és a Python 2.7-t. Python 2.7-t is a conda **legfelső szintű** környezet és **py35** a Python 3.5-ös környezetben van. 
+> 2018. március előtt létrehozott Windows Server 2016 tartalmazza a Python 3.5-ös és a Python 2.7-t. Python 2.7-t is a conda **legfelső szintű** környezet és **py35** a Python 3.5-ös környezetben van. 
 
 ### <a name="how-to-use--run-it"></a>Hogyan futtathatja / használata?    
 
@@ -193,7 +193,7 @@ Az R telepítve van a dsvm-hez egy globális környezetben olvasható összes fe
 | ------------- | ------------- |
 | Támogatott nyelvi verziók | a 0.6-os |
 | Támogatott DSVM-kiadások      | Linux, Windows     |
-| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Windows: Telepített `C:\JuliaPro-VERSION`<br /> Linux: Telepített `/opt/JuliaPro-VERSION`    |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Windows: Telepítve:`C:\JuliaPro-VERSION`<br /> Linux: Telepítve:`/opt/JuliaPro-VERSION`    |
 | A minták mutató hivatkozások      | Mintául szolgáló Jupyter-notebookok Julia szerepelnek.     |
 | A dsvm-hez kapcsolódó eszközök      | Python, R      |
 ### <a name="how-to-use--run-it"></a>Hogyan futtathatja / használata?    
@@ -222,7 +222,7 @@ Julia hely alapértelmezés szerint egy globális környezetben olvasható össz
 Nyissa meg a Terminálszolgáltatások és a csak futtatási `julia`. 
 * Egy IDE használatával
 
-Használat `Juno` telepíthető a dsvm-hez és a egy alkalmazás menü parancsikonja elérhető az Julia IDE.
+Használja `Juno` a DSVM található Julia ide-t, és az alkalmazás menü parancsikonként elérhető.
 
 * A Jupyter használatával
 
@@ -234,12 +234,12 @@ Julia hely alapértelmezés szerint egy globális környezetben olvasható össz
 
 ## <a name="other-languages"></a>Más nyelveken
 
-**C#** : Elérhető a Windows és a Visual Studio Community edition keresztül vagy a elérhető egy `Developer Command Prompt for Visual Studio` ahol ugyanúgy futtathatja `csc` parancsot. 
+**C#** : Elérhető a Windowsban, és elérhető a Visual Studio Community Edition vagy egy `Developer Command Prompt for Visual Studio` olyan helyen, ahol csak `csc` futtathatja a parancsot. 
 
-**Java**: A dsvm-hez és a készlet az elérési utat a Linux és a Windows kiadását openjdk csomagját érhető el. Beírhatja `javac` vagy `java` parancsot a Windows parancssorból vagy a Java használata Linux bash felületet. 
+**Java**: A OpenJDK a DSVM Linux és Windows kiadásán is elérhető, és az elérési úton állítható be. Beírhatja `javac` vagy `java` parancsot a Windows parancssorból vagy a Java használata Linux bash felületet. 
 
 **NODE.js**: node.js érhető el a dsvm-hez és a készlet az elérési utat a Linux és a Windows kiadását. Beírhatja `node` vagy `npm` parancsot a parancssorban a Windows vagy Linux node.js eléréséhez a bash felületet. Windows a Node.js-eszközök Visual Studio-bővítmény biztosít egy grafikus IDE való fejlesztés a node.js-alkalmazás telepítve van. 
 
-**F#** : Elérhető a Windows és a Visual Studio Community edition keresztül vagy a elérhető egy `Developer Command Prompt for Visual Studio` ahol ugyanúgy futtathatja `fsc` parancsot. 
+**F#** : Elérhető a Windowsban, és elérhető a Visual Studio Community Edition vagy egy `Developer Command Prompt for Visual Studio` olyan helyen, ahol csak `fsc` futtathatja a parancsot. 
 
 

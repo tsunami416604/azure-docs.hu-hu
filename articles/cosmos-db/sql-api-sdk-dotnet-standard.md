@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 07/12/2019
 ms.author: dech
-ms.openlocfilehash: 01645e66907e01b2e8fcb771976b50e5bbc8abf4
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 0368e99135dd6e377dd2820b3e673c55182319b9
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68229023"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663811"
 ---
 # <a name="azure-cosmos-db-net-standard-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET Standard SDK az SQL API-hoz: Megjegyzések letöltése és kibocsátási megjegyzései
 > [!div class="op_single_selector"]
@@ -28,8 +28,8 @@ ms.locfileid: "68229023"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
+> * [Tömeges végrehajtó – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
@@ -41,6 +41,25 @@ ms.locfileid: "68229023"
 |**Aktuális támogatott keretrendszer**|[Microsoft .NET Standard 2,0](/dotnet/standard/net-standard)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+### <a name="a-name310310"></a><a name="3.1.0"/>3.1.0
+#### <a name="added"></a>Hozzáadva
+- [#541](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/541) Konzisztencia-szint hozzáadva az ügyfélhez és a lekérdezési beállításokhoz
+- [#544](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/544) A további jogkivonat-támogatás hozzáadva a LINQ-hez
+- [#557](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/557) Trigger-beállítások hozzáadása az elemek kérésének beállításaihoz
+- [#571](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/571) Alapértelmezett JSON.net-szerializáló hozzáadása opcionális beállításokkal
+- [#572](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/572) Partíciós kulcs ellenőrzése hozzáadva a CreateContainerIfNotExistsAsync-on
+- [#581](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/581) LINQ hozzáadása a QueryDefinition API-hoz
+- [#592](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/592) CreateIfNotExistsAsync hozzáadva a Container Builder-hez
+- [#597](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/597) A folytatási token tulajdonság hozzáadva a ResponseMessage
+- [#604](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/604) A LINQ ToStreamIterator Extension metódus hozzáadva
+
+#### <a name="fixed"></a>Rögzített
+- [#548](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/548) Rögzített helytelenül beírt üzenet a CosmosException. ToString ();
+- [#558](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/558) LocationCache ConcurrentDict zárolásának javítása
+- [#561](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/561) A GetItemLinqQueryable mostantól null lekérdezéssel működik
+- [#567](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/567) A lekérdezés megfelelően kezeli a különböző nyelvi kultúrákat
+- [#574](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/574) Rögzített üres hibaüzenet, ha a lekérdezés elemzése nem várt kivétel miatt meghiúsult
+- [#576](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/576) A lekérdezés helyesen szerializálja a bemenetet egy adatfolyamba.
 
 ### <a name="a-name300300"></a><a name="3.0.0"/>3.0.0 
 * A .NET SDK-hoz készült [3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) általánosan elérhető változata
@@ -67,7 +86,9 @@ A szolgáltatás elutasítja a kivont SDK használatával Azure Cosmos DB kérel
 
 | Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [3.1.0](#3.1.0) |Július 29., 2019 |--- |
 | [3.0.0](#3.0.0) |Július 15., 2019 |--- |
+
 
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

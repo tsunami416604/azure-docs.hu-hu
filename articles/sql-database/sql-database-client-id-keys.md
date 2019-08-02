@@ -1,6 +1,6 @@
 ---
-title: Alkalmazás-hitelesítés – Azure SQL Database értékek beolvasása |} A Microsoft Docs
-description: Egyszerű szolgáltatás létrehozása a code-ból SQL-adatbázis eléréséhez.
+title: Az alkalmazás-hitelesítés értékének beolvasása – Azure SQL Database | Microsoft Docs
+description: Hozzon létre egy egyszerű szolgáltatást, amely a kóddal való SQL Database elérésére szolgál.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,24 +10,23 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 1d60e875b12f02c957ebd6259eb0e7267f23ee51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d7c8c6788a8699c5b57c39731c148454ad8dcfcf
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150197"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569323"
 ---
-# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Code-ból SQL-adatbázis eléréséhez alkalmazás hitelesítéséhez szükséges értékek beolvasása
+# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Az alkalmazások kód SQL Database való eléréséhez szükséges értékek beolvasása
 
-Létrehozásához és kezeléséhez az SQL Database-kódból regisztrálnia kell az alkalmazását az Azure Active Directory (AAD) tartományban az előfizetésben, az Azure-erőforrások létrejöttek.
+SQL Database kódból való létrehozásához és kezeléséhez regisztrálnia kell az alkalmazást a Azure Active Directory (HRE) tartományba az előfizetésben, ahol az Azure-erőforrásokat létrehozták.
 
-## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Egyszerű szolgáltatás létrehozása erőforrások eléréséhez az alkalmazásból
+## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Egyszerű szolgáltatásnév létrehozása egy alkalmazás erőforrásainak eléréséhez
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
 A következő PowerShell-parancsprogram létrehozza az Active Directory (AD)-alkalmazást, és a C#-alkalmazás hitelesítéséhez szükséges egyszerű szolgáltatást. A parancsfájl kimenetének értékeire szükség lesz az előbb említett C#-mintához. Részletes információk: [Egyszerű szolgáltatás létrehozása erőforrások eléréséhez az Azure PowerShell használatával](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
@@ -73,6 +72,6 @@ A következő PowerShell-parancsprogram létrehozza az Active Directory (AD)-alk
 
 
 ## <a name="see-also"></a>Lásd még
-* [SQL-adatbázis létrehozása a C# használatával](sql-database-get-started-csharp.md)
-* [Csatlakozás az SQL Database az Azure Active Directory-hitelesítés használatával](sql-database-aad-authentication.md)
+* [SQL-adatbázis létrehozása aC#](sql-database-get-started-csharp.md)
+* [Csatlakozás SQL Databasehoz Azure Active Directory hitelesítés használatával](sql-database-aad-authentication.md)
 

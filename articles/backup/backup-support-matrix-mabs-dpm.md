@@ -1,18 +1,18 @@
 ---
 title: A Microsoft Azure Backup-kiszolgáló és a System Center DPM támogatási mátrixa
 description: Ez a cikk Azure Backup támogatást összegzi, ha Microsoft Azure Backup-kiszolgálót vagy System Center-DPM használ a helyszíni és az Azure-beli virtuális gépek erőforrásainak biztonsági mentésére.
-author: rayne-wiselman
+author: dcurwin
 ms.service: backup
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.author: raynew
+ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 777d2286ed24123011e06edfb468d0f2db61715f
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: c4d01c3c72669f7fbfd5b2d8df0678cc0675ccde
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464878"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639560"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Támogatási mátrix a Microsoft Azure Backup Server vagy System Center DPM való biztonsági mentéshez
 

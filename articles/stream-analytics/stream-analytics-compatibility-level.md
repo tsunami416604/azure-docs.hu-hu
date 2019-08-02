@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/2/2019
-ms.openlocfilehash: 8e3ae84242a1a9b76fbb18a8d8164c97a62a97d9
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: a6e5cd69a0655bf8235bf5755ab596ca2bde0387
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68003914"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716162"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Az Azure Stream Analytics-feladatok kompatibilitási szintje
 
@@ -90,6 +90,12 @@ A upsert viselkedése *INSERT vagy replace*.
 **Előző szintek:** A cél típusa alapján a rendszer csonkolt értékeket adott meg.
 
 **1,2 szint:** A célként megadott típushoz nem illeszkedő értékeket a kimeneti hiba házirendjének megfelelően kezeli a rendszer.
+
+### <a name="record-and-array-serialization-when-writing-to-sql-output"></a>Rekord és tömb szerializálása SQL-kimenet írásakor
+
+**Előző szintek:** A rekordokat "Record"-ként írták, a tömbök pedig "Array"-ként lettek írva.
+
+**1,2 szint:** A rekordok és tömbök JSON formátumban vannak szerializálva.
 
 ### <a name="strict-validation-of-prefix-of-functions"></a>A függvények előtagja szigorú ellenőrzése
 

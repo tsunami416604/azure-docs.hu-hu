@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Data Sync beállítása |} A Microsoft Docs
-description: Az oktatóanyag bemutatja, hogyan lehet az Azure SQL Data Sync beállítása
+title: Az Azure SQL-adatszinkronizálás beállítása | Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan állíthatja be az Azure SQL-adatszinkronizálás
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -10,230 +10,229 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 01/14/2019
-ms.openlocfilehash: 82b85ffd685df52e702db15e5a5b57a53a3b4f64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 37b8f64360e871236be7a8623460bbe75bd1d8b5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60342175"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568171"
 ---
-# <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Oktatóanyag: A helyszíni Azure SQL Database és SQL Server között az SQL Data Sync beállítása
+# <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Oktatóanyag: SQL-adatszinkronizálás beállítása a helyszíni Azure SQL Database és a SQL Server között
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan hoz létre a szinkronizálási csoport, amely tartalmazza az Azure SQL Database és az SQL Server-példányok Azure SQL Data Sync beállítása. A szinkronizálási csoport egyéni konfigurálva, és a beállított ütemezés szerint szinkronizálja.
+Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure SQL-adatszinkronizálás egy olyan szinkronizálási csoport létrehozásával, amely Azure SQL Database és SQL Server példányokat is tartalmaz. A szinkronizálási csoport egyéni konfigurálva van, és szinkronizálja a beállított ütemtervet.
 
-Az oktatóanyag feltételezi, hogy az SQL Database és SQL Server legalább némi tapasztalattal rendelkezik.
+Az oktatóanyag feltételezi, hogy van legalább néhány korábbi tapasztalata SQL Database és SQL Server.
 
-Az SQL Data Sync áttekintéséhez lásd: [adatok szinkronizálásának felhőbeli és helyszíni adatbázisok az Azure SQL Data Sync szolgáltatással](sql-database-sync-data.md).
+A SQL-adatszinkronizálás áttekintését lásd: az [adatszinkronizálás a Felhőbeli és a helyszíni adatbázisok között az Azure SQL-adatszinkronizálás](sql-database-sync-data.md).
 
-A PowerShell-példák az SQL Data Sync konfigurálásáról, tekintse meg a [szinkronizálása az Azure SQL Database-adatbázis közötti](scripts/sql-database-sync-data-between-sql-databases.md) vagy [az Azure SQL Database és a helyszíni SQL Server-adatbázis](scripts/sql-database-sync-data-between-azure-onprem.md)
+PowerShell-példák a SQL-adatszinkronizálás konfigurálásához: Hogyan lehet [szinkronizálni az Azure SQL Database-adatbázisok](scripts/sql-database-sync-data-between-sql-databases.md) vagy [egy Azure SQL Database és egy SQL Server helyszíni adatbázis](scripts/sql-database-sync-data-between-azure-onprem.md) között.
 
 > [!IMPORTANT]
-> Az Azure SQL Data Sync does **nem** támogatja az Azure SQL Database felügyelt példánya jelenleg.
+> Az Azure SQL-adatszinkronizálás jelenleg **nem** támogatja Azure SQL Database felügyelt példányok használatát.
 
 ## <a name="create-sync-group"></a>Szinkronizálási csoport létrehozása
 
-1. A böngészőben navigáljon az Azure Portalon. Keresse meg az SQL database, az irányítópultról vagy, válassza ki a **SQL-adatbázisok** ikonra az eszköztáron, majd a a **SQL-adatbázisok** lapra, jelölje be az adatok szinkronizálása az eseményközpont-adatbázisként használni kívánt adatbázist.
+1. A böngészőben navigáljon a Azure Portal. Keresse meg az SQL-adatbázist az irányítópulton, vagy válassza ki az **SQL-adatbázisok** ikont az eszköztáron, és az **SQL-adatbázisok** lapon válassza ki azt az adatbázist, amelyet az adatszinkronizálási központ-adatbázisként kíván használni.
 
     > [!NOTE]
-    > A hub adatbázis egy szinkronizálási-topológia központi végpont, amelyben a szinkronizálási csoport több adatbázis-végponttal rendelkezik. A központi adatbázis összes többi tag adatbázis a szinkronizálási csoport végpontokkal rendelkező szinkronizálni.
+    > A hub-adatbázis szinkronizálási topológiájának központi végpontja, amelyben a szinkronizálási csoport több adatbázis-végponttal rendelkezik. A szinkronizálási csoportban található végpontokkal rendelkező összes többi tag-adatbázis szinkronizálva van a központi adatbázissal.
 
-1. Az a **SQL-adatbázis** a kiválasztott adatbázishoz, válassza a lap **szinkronizálás más adatbázisokkal**.
+1. A kiválasztott adatbázishoz tartozó **SQL-adatbázis** lapon válassza a **szinkronizálás más adatbázisokkal**lehetőséget.
 
-    ![Szinkronizálás más adatbázisok lehetőség](media/sql-database-get-started-sql-data-sync/datasync-overview.png)
+    ![Szinkronizálás más adatbázisokkal lehetőséggel](media/sql-database-get-started-sql-data-sync/datasync-overview.png)
 
-1. Az a **szinkronizálás más adatbázisokkal** lapon jelölje be **új szinkronizálási csoport**. A **új szinkronizálási csoport** lap, melyen a **szinkronizálási csoport létrehozása (1. lépés)** kiemelt.
+1. A **más adatbázisok szinkronizálása** lapon válassza az **új szinkronizálási csoport**elemet. Megnyílik az **új szinkronizálási csoport** lap, amely kiemelt **szinkronizálási csoportot hoz létre (1. lépés)** .
 
-   ![1\. lépés-beállítások](media/sql-database-get-started-sql-data-sync/stepone.png)
+   ![1\. lépés beállításai](media/sql-database-get-started-sql-data-sync/stepone.png)
 
-   Az a **adatok szinkronizálási csoport létrehozása** lapon, a következő beállításokat módosíthatja:
+   Az adatszinkronizálási **csoport létrehozása** lapon módosítsa a következő beállításokat:
 
    | Beállítás                        | Leírás |
    | ------------------------------ | ------------------------------------------------- |
-   | **Szinkronizálási csoport neve** | Adjon meg egy nevet az új szinkronizálási csoport. Ez a név nem azonos azzal a maga az adatbázis nevét. |
-   | **Metaadat-adatbázis szinkronizálása** | Válassza ki a (javasolt) adatbázis létrehozása vagy egy meglévő adatbázis használatát.<br/><br/>Ha úgy dönt, **új adatbázis**válassza **új adatbázis létrehozása.** Ezután a a **SQL Database** lapon nevezze el és konfigurálja az új adatbázist, és válassza **OK**.<br/><br/>Ha úgy dönt, **létező adatbázis használata**, válassza ki az adatbázist a listából. |
-   | **Automatická Synchronizace** | Válassza ki **a** vagy **ki**.<br/><br/>Ha úgy dönt, **a**, adjon meg egy számot, és válassza ki **másodperc**, **perc**, **óra**, vagy **nap** a a **Szinkronizálási gyakoriság** szakaszban. |
-   | **Ütközések feloldása** | Válassza ki **a központ nyert** vagy **a tag nyert**.<br/><br/>**A központ nyert** azt jelenti, ha ütközés lép fel, adatokat a központi adatbázis felülírja a tag adatbázis adatai.<br/><br/>**A tag nyert** azt jelenti, ha ütközés lép fel, a tag adatbázis adatainak felülírja a központi adatbázis adatai. |
+   | **Szinkronizálási csoport neve** | Adja meg az új szinkronizálási csoport nevét. Ez a név nem azonos az adatbázis nevével. |
+   | **Metaadat-adatbázis szinkronizálása** | Válassza az adatbázis létrehozása (javasolt) lehetőséget, vagy egy meglévő adatbázis használatát.<br/><br/>Ha az **új adatbázis**lehetőséget választja, válassza az **új adatbázis létrehozása lehetőséget.** Ezután a **SQL Database** lapon nevezze el és konfigurálja az új adatbázist, és kattintson **az OK gombra**.<br/><br/>Ha a **meglévő adatbázis használata**lehetőséget választja, válassza ki az adatbázist a listából. |
+   | **Automatikus szinkronizálás** | Válassza **a** be vagy **ki**lehetőséget.<br/><br/>Ha **a be**lehetőséget választja, adjon meg egy számot, és válassza a **másodperc**, **perc**, **óra**vagy **nap** lehetőséget a **szinkronizálás gyakorisága** szakaszban. |
+   | **Ütközés feloldása** | Válassza a **hub Win** vagy a **tag Win**lehetőséget.<br/><br/>A **hub-Win** azt jelenti, hogy ütközések esetén a központi adatbázisban lévő adatai felülírják a tag adatbázisában található ütköző adatforrásokat.<br/><br/>A **tag Win** azt jelenti, hogy ütközések esetén a tag adatbázisában lévő adatai felülírják az ütköző adatforrásokat a központi adatbázisban. |
 
    > [!NOTE]
-   > Hozzon létre egy új, üres adatbázis használata a Microsoft javasolja a **szinkronizálási metaadat-adatbázis**. Adatszinkronizálás hoz létre a táblák az adatbázisban, és a gyakori számítási feladat. Az adatbázis megosztása a **szinkronizálási metaadat-adatbázis** az összes szinkronizálási csoportok egy kiválasztott régióban, és nem módosítható az adatbázis vagy a neve szinkronizálási csoportok és a szinkronizációs ügynökök eltávolítása a régióban nélkül.
+   > A Microsoft azt javasolja, hogy hozzon létre egy új, üres adatbázist a **szinkronizálási metaadat**-adatbázisként való használatra. Az adatok szinkronizálása táblákat hoz létre ebben az adatbázisban, és gyakori számítási feladatokat futtat. Ez az adatbázis a kiválasztott régió összes szinkronizálási csoportjának **szinkronizálási metaadat** -adatbázisa, és nem módosítható az adatbázis vagy a neve anélkül, hogy az összes szinkronizálási csoportot és szinkronizálási ügynököt el kellene távolítani a régióból.
 
-   Válassza ki **OK** és várjon, amíg a szinkronizálási csoport létrehozása és üzembe helyezve.
+   Kattintson az **OK gombra** , és várja meg a szinkronizálási csoport létrehozását és üzembe helyezését.
 
 ## <a name="add-sync-members"></a>Szinkronizálási tagok hozzáadása
 
-Az új szinkronizálási csoport létrehozása és üzembe helyezését követően **(2. lépés) szinkronizálási tagok hozzáadása** kiemelve a **új szinkronizálási csoport** lapot.
+Az új szinkronizálási csoport létrehozása és telepítése után a **szinkronizálási Tagok hozzáadása (2. lépés)** kiemelve jelenik meg az **új szinkronizálási csoport** lapon.
 
-Az a **központi adatbázis** területén adja meg a meglévő hitelesítő adatokat az SQL Database-kiszolgáló, amelyen a központi adatbázis is található. Ne adjon meg *új* ebben a szakaszban a hitelesítő adatokat.
+A **hub-adatbázis** szakaszban adja meg azon SQL Database-kiszolgáló meglévő hitelesítő adatait, amelyen a központi adatbázis található. Ebben a szakaszban ne adjon meg *új* hitelesítő adatokat.
 
-![2\. lépés-beállítások](media/sql-database-get-started-sql-data-sync/steptwo.png)
+![2\. lépés – beállítások](media/sql-database-get-started-sql-data-sync/steptwo.png)
 
-### <a name="to-add-an-azure-sql-database"></a>Az Azure SQL Database hozzáadása
+### <a name="to-add-an-azure-sql-database"></a>Azure SQL Database hozzáadása
 
-Az a **Tagadatbázis** című igény szerint adja hozzá az Azure SQL Database a szinkronizálási csoport kiválasztásával **hozzáadása az Azure SQL Database**. A **konfigurálása az Azure SQL Database** lap megnyitásakor.
+A **tag adatbázisa** szakaszban opcionálisan hozzáadhat egy Azure SQL Database a szinkronizálási csoporthoz a **Azure SQL Database hozzáadása**lehetőség kiválasztásával. Megnyílik a **Azure SQL Database konfigurálása** lap.
 
-  ![2\. lépés: az adatbázis konfigurálása](media/sql-database-get-started-sql-data-sync/steptwo-configure.png)
+  ![2\. lépés – adatbázis konfigurálása](media/sql-database-get-started-sql-data-sync/steptwo-configure.png)
 
-  Az a **konfigurálása az Azure SQL Database** lapon, a következő beállításokat módosíthatja:
+  A **Azure SQL Database konfigurálása** lapon módosítsa a következő beállításokat:
 
   | Beállítás                       | Leírás |
   | ----------------------------- | ------------------------------------------------- |
-  | **Szinkronizálási tag neve** | Adjon meg egy nevet az új szinkronizálási tag. Ez a név nem azonos azzal a az adatbázis nevét, magát. |
-  | **Előfizetés** | Válassza ki a társított Azure-előfizetés számlázási célból. |
-  | **Azure SQL Server** | Válassza ki a meglévő SQL Database-kiszolgálóhoz. |
-  | **Azure SQL Database** | Válassza ki a meglévő SQL-adatbázis. |
-  | **Szinkronizálási irányok** | Válassza ki **kétirányú szinkronizálás**, **a hub**, vagy **a hubról**. |
-  | **Felhasználónév** és **jelszó** | Adja meg a meglévő hitelesítő adatokat az SQL Database-kiszolgálóhoz, amelyen a tag adatbázis is található. Ne adjon meg *új* ebben a szakaszban a hitelesítő adatokat. |
+  | **Szinkronizálási tag neve** | Adja meg az új szinkronizálási tag nevét. Ez a név nem azonos az adatbázis nevével. |
+  | **Előfizetés** | Válassza ki a társított Azure-előfizetést számlázási célokra. |
+  | **Azure SQL Server** | Válassza ki a meglévő SQL Database-kiszolgálót. |
+  | **Azure SQL Database** | Válassza ki a meglévő SQL-adatbázist. |
+  | **Szinkronizálási irányok** | Válassza a **kétirányú szinkronizálás**, **a hub**vagy **a hub**lehetőséget. |
+  | **Felhasználónév** és **jelszó** | Adja meg azon SQL Database-kiszolgáló meglévő hitelesítő adatait, amelyen a tag adatbázisa található. Ebben a szakaszban ne adjon meg *új* hitelesítő adatokat. |
 
-  Válassza ki **OK** és várja meg a létrehozott és telepített új szinkronizálási tag.
+  Kattintson az **OK gombra** , és várjon, amíg a rendszer létrehozza és telepíti az új szinkronizálási tagot.
 
 <a name="add-on-prem"></a>
-### <a name="to-add-an-on-premises-sql-server-database"></a>Egy helyszíni SQL Server-adatbázis hozzáadása
+### <a name="to-add-an-on-premises-sql-server-database"></a>Helyszíni SQL Server-adatbázis hozzáadása
 
-Az a **Tagadatbázis** szakaszt, ha szükséges, hozzáadhat egy helyszíni SQL Server, a szinkronizálási csoport kiválasztásával **egy helyszíni adatbázis hozzáadása**. A **konfigurálása a helyszíni** lap megnyitásakor, ahol a következő műveleteket végezheti el:
+A **tag adatbázisa** szakaszban opcionálisan hozzáadhat egy helyszíni SQL Server a szinkronizálási csoporthoz a helyszíni **adatbázis hozzáadása**lehetőség kiválasztásával. Megnyílik a helyszíni **Konfigurálás** lap, ahol a következő műveleteket végezheti el:
 
-1. Válassza ki **szinkronizációs ügynök átjárójának kiválasztása**. A **szinkronizációs ügynök kiválasztása** lap megnyitásakor.
+1. Válassza **a szinkronizálási ügynök átjárójának kiválasztása**lehetőséget. Megnyílik a **szinkronizálási ügynök kiválasztása** lap.
 
-   ![A szinkronizációs ügynök létrehozása](media/sql-database-get-started-sql-data-sync/steptwo-agent.png)
+   ![Szinkronizáló ügynök létrehozása](media/sql-database-get-started-sql-data-sync/steptwo-agent.png)
 
-1. Az a **válassza ki a szinkronizálási ügynök** lapon, döntse el, hogy használjon egy meglévő ügynököt, vagy hozzon létre egy ügynök.
+1. A **szinkronizálási ügynök kiválasztása** lapon válassza ki, hogy meglévő ügynököt kíván-e használni, vagy ügynököt szeretne létrehozni.
 
-   Ha úgy dönt, **meglévő ügynökök**, válassza ki a meglévő ügynököt a listából.
+   Ha a **meglévő ügynökök**lehetőséget választja, válassza ki a listából a meglévő ügynököt.
 
-   Ha úgy dönt, **hozzon létre egy új ügynök**, tegye a következőket:
+   Ha az **új ügynök létrehozása**lehetőséget választja, tegye a következőket:
 
-   1. A megadott hivatkozás adatok szinkronizálási ügynök letöltése, és telepítse a számítógépen, ahol az SQL Server is található. Az ügynök közvetlenül is letöltheti [SQL Azure Data Sync-ügynök](https://www.microsoft.com/download/details.aspx?id=27693).
+   1. Töltse le az adatszinkronizálási ügynököt a megadott hivatkozásról, és telepítse azt azon a számítógépen, ahol a SQL Server található. Az ügynököt közvetlenül a [SQL Azure](https://www.microsoft.com/download/details.aspx?id=27693)adatszinkronizálási ügynökről is letöltheti.
 
       > [!IMPORTANT]
-      > Nyissa meg a kimenő 1433-as TCP-port a tűzfalon, hogy az ügyfél-ügynök kommunikálni a kiszolgálóval rendelkezik.
+      > Meg kell nyitnia a 1433-as kimenő TCP-portot a tűzfalon, hogy az ügyfél kommunikáljon a kiszolgálóval.
 
-   1. Adjon meg egy nevet az ügynököt.
+   1. Adja meg az ügynök nevét.
 
-   1. Válassza ki **létrehozása és a kulcs létrehozása** és az ügynök kulcs másolása a vágólapra.
+   1. Válassza a **Létrehozás és létrehozás kulcs** elemet, és másolja az ügynök kulcsát a vágólapra.
 
-   1. Válassza ki **OK** gombra kattintva zárja be a **szinkronizációs ügynök kiválasztása** lapot.
+   1. A **szinkronizálási ügynök kiválasztása** lap bezárásához kattintson **az OK gombra** .
 
-1. Az SQL Server-számítógépen keresse meg és futtassa az ügyfél-szinkronizálási ügynök alkalmazást.
+1. A SQL Server számítógépen keresse meg és futtassa a Ügyfél-szinkronizációs ügynök alkalmazást.
 
-   ![Az adatok szinkronizálása az ügyfélalkalmazás-ügynök](media/sql-database-get-started-sql-data-sync/datasync-preview-clientagent.png)
+   ![Az adatszinkronizálási ügyfél ügynökének alkalmazás](media/sql-database-get-started-sql-data-sync/datasync-preview-clientagent.png)
 
-    1. Válassza ki a szinkronizálási ügynök alkalmazásban **Ügynökkulcs elküldése**. A **szinkronizálási metaadat-adatbázis konfigurációja** párbeszédpanel nyílik meg.
+    1. A Szinkronizáló ügynök alkalmazásban válassza a **küldési ügynök kulcsa**lehetőséget. Megnyílik a **szinkronizálási metaadatok adatbázis-konfigurációja** párbeszédpanel.
 
-    1. Az a **szinkronizálási metaadat-adatbázis konfigurációja** párbeszédablakban illessze be az Azure Portalról másolt ügynök kulcs. A meglévő hitelesítő adatokat is biztosít az Azure SQL Database-kiszolgáló, amelyen a metaadatokat tároló adatbázis is található. (A metaadatokat tároló adatbázis hozta létre, ez az adatbázis-e a központi adatbázis ugyanazon a kiszolgálón.) Válassza ki **OK** és várjon, amíg a konfiguráció befejezéséhez.
+    1. A **metaadatok szinkronizálása adatbázis konfigurációja** párbeszédpanelen illessze be a Azure Portalból másolt ügynök kulcsát. Adja meg a Azure SQL Database-kiszolgáló meglévő hitelesítő adatait is, amelyeken a metaadat-adatbázis található. (Ha létrehozott egy metaadat-adatbázist, akkor ez az adatbázis a hub-adatbázissal megegyező kiszolgálón található.) Kattintson az **OK gombra** , és várjon, amíg a konfiguráció be nem fejeződik.
 
-        ![Adja meg az ügynök kulcs és a kiszolgáló hitelesítő adatai](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-enterkey.png)
+        ![Adja meg az ügynök kulcsát és a kiszolgáló hitelesítő adatait](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-enterkey.png)
 
         > [!NOTE]
-        > Ha a tűzfal hibaüzenet jelenik meg, hozzon létre egy tűzfalszabályt az Azure-ban, hogy az SQL Server számítógép érkező bejövő forgalmat. A portálon vagy az SQL Server Management Studio (SSMS) manuálisan is létrehozhatja a a szabályt. Az ssms-ben, kapcsolódni a központi adatbázis az Azure-ban, < hub_database_name > név beírásával. database.windows.net.
+        > Ha tűzfal-hibaüzenetet kap, hozzon létre egy tűzfalszabály az Azure-ban, hogy engedélyezze a SQL Server számítógépről érkező forgalmat. A szabályt manuálisan is létrehozhatja a portálon vagy SQL Server Management Studioban (SSMS). A SSMS-ben kapcsolódjon az Azure-beli hub-adatbázishoz, és írja be a nevét < hub_database_name >. database. Windows. net néven.
 
-    1. Válassza ki **regisztrálása** -ügynökkel rendelkező SQL Server-adatbázis regisztrálásához. A **SQL Server-konfigurációs** párbeszédpanel nyílik meg.
+    1. A **regisztráció** gombra kattintva regisztrálhat egy SQL Server adatbázist az ügynökkel. Megnyílik a **SQL Server konfigurálása** párbeszédpanel.
 
-        ![Adja hozzá, és a egy SQL Server-adatbázis konfigurálása](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-adddb.png)
+        ![SQL Server-adatbázis hozzáadása és konfigurálása](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-adddb.png)
 
-    1. Az a **SQL Server-konfigurációs** párbeszédpanelen válassza a csatlakozás az SQL Server-hitelesítés vagy a Windows-hitelesítés használatával. Ha az SQL Server-hitelesítést választja, adja meg a meglévő hitelesítő adatokat. Adja meg az SQL Server nevét és az adatbázis, amelyet szeretne szinkronizálni, és válassza ki a nevét **kapcsolat tesztelése** a beállítások teszteléséhez. Válassza ki **mentése** és a regisztrált adatbázis megjelenik a listában.
+    1. A **SQL Server konfiguráció** párbeszédpanelen válassza a kapcsolódás SQL Server hitelesítéssel vagy a Windows-hitelesítéssel lehetőséget. Ha SQL Server hitelesítést választja, adja meg a meglévő hitelesítő adatokat. Adja meg a szinkronizálni kívánt adatbázis SQL Server nevét és nevét, majd válassza a **Kapcsolódás tesztelése** lehetőséget a beállítások teszteléséhez. Ezután kattintson a **Save (Mentés** ) gombra, és a regisztrált adatbázis megjelenik a listában.
 
-        ![SQL Server-adatbázis most már regisztrálva van](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-dbadded.png)
+        ![A SQL Server adatbázis regisztrálva van](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-dbadded.png)
 
-    1. Zárja be az ügyfél szinkronizálása a Agent alkalmazás.
+    1. A Ügyfél-szinkronizációs ügynök alkalmazás bezárásához.
 
-1. A portálon a a **konfigurálása a helyszíni** lapon jelölje be **válassza ki az adatbázist**.
+1. A portálon a helyszíni **Konfigurálás** lapon válassza **az adatbázis kiválasztása**lehetőséget.
 
-1. Az a **adatbázis választása** lap a **szinkronizálási tag neve** mezőben adjon meg egy nevet az új szinkronizálási tag. Ez a név nem azonos azzal a maga az adatbázis nevét. Válassza ki az adatbázist a listából. Az a **szinkronizálási irányok** mezőben válassza **kétirányú szinkronizálás**, **a Hub**, vagy **a Hub**.
+1. Az **adatbázis kiválasztása** lap **szinkronizálási tag neve** mezőjében adja meg az új szinkronizálási tag nevét. Ez a név nem azonos az adatbázis nevével. Válassza ki az adatbázist a listából. A **szinkronizálási irányok** mezőben válassza a **kétirányú szinkronizálás**, **a hub**vagy **a hub**elemet.
 
-    ![Jelölje ki a helyi adatbázist](media/sql-database-get-started-sql-data-sync/datasync-preview-selectdb.png)
+    ![A helyszíni adatbázis kiválasztása](media/sql-database-get-started-sql-data-sync/datasync-preview-selectdb.png)
 
-1. Válassza ki **OK** gombra kattintva zárja be a **adatbázis választása** lapot. Válassza ki **OK** gombra kattintva zárja be a **konfigurálása a helyszíni** lapon, és várja meg a létrehozott és telepített új szinkronizálási tag. Végül válassza **OK** gombra kattintva zárja be a **szinkronizálási tagok kiválasztása** lapot.
+1. Az **adatbázis kiválasztása** lap bezárásához kattintson **az OK gombra** . Ezután kattintson az **OK** gombra a helyszíni **Konfigurálás** lap bezárásához és az új szinkronizálási tag létrehozásához és üzembe helyezéséhez. Végül kattintson az **OK** gombra a **szinkronizálási tagok kiválasztása** oldal bezárásához.
 
 > [!NOTE]
-> Szeretne csatlakozni az SQL Data Sync és a helyi ügynök, vegye fel a felhasználó nevét a szerepkör *DataSync_Executor*. Adatok szinkronizálása a szerepkör az SQL Server-példányt hoz létre.
+> A SQL-adatszinkronizálás és a helyi ügynökhöz való kapcsolódáshoz adja hozzá a felhasználónevét a szerepkör *DataSync_Executor*. Az adatszinkronizálás létrehozza ezt a szerepkört a SQL Server példányon.
 
 ## <a name="configure-sync-group"></a>Szinkronizálási csoport konfigurálása
 
-Miután létrehozott és telepített, az új szinkronizálási csoport tagjait **konfigurálása szinkronizálási csoport (3. lépés)** kiemelten jelenik meg a **új szinkronizálási csoport** lapot.
+Az új szinkronizálási csoport tagjainak létrehozása és telepítése után a **szinkronizálási csoport konfigurálása (3. lépés)** az **új szinkronizálási csoport** lapon van kiemelve.
 
-![3\. lépés-beállítások](media/sql-database-get-started-sql-data-sync/stepthree.png)
+![3\. lépés – beállítások](media/sql-database-get-started-sql-data-sync/stepthree.png)
 
-1. Az a **táblák** lapon válasszon ki egy adatbázist a szinkronizálási csoport tagjainak listájáról, és válassza **frissítési séma**.
+1. A **táblák** lapon válasszon ki egy adatbázist a szinkronizálási csoport tagjainak listájáról, és válassza a **séma frissítése**lehetőséget.
 
-1. A listában jelölje ki a szinkronizálni kívánt táblák. Alapértelmezés szerint az összes oszlop ki van jelölve, így tiltsa le az oszlopok nem szeretné szinkronizálni a jelölőnégyzetet. Mindenképpen hagyja kiválasztva elsődleges kulcsának oszlopa.
+1. A listából válassza ki a szinkronizálni kívánt táblákat. Alapértelmezés szerint minden oszlop ki van választva, ezért tiltsa le az olyan oszlopok jelölőnégyzetét, amelyeket nem szeretne szinkronizálni. Ügyeljen arra, hogy a kijelölt elsődleges kulcs oszlopot hagyja kiválasztva.
 
 1. Kattintson a **Mentés** gombra.
 
-1. Alapértelmezés szerint adatbázisok nem szinkronizált mindaddig, amíg az ütemezett vagy kézi futtatása. Futtasson manuális szinkronizálást, lépjen az Azure Portalon, válassza az SQL Database **szinkronizálás más adatbázisokkal**, és válassza ki a szinkronizálási csoportot. A **Data Sync** lap megnyitásakor. Válassza a **Szinkronizálás** elemet.
+1. Alapértelmezés szerint az adatbázisok nincsenek szinkronizálva az ütemezett vagy a manuális futtatásig. Manuális szinkronizálás futtatásához navigáljon az SQL-adatbázishoz a Azure Portalban, válassza a **szinkronizálás más adatbázisokhoz**lehetőséget, majd válassza ki a szinkronizálási csoportot. Megnyílik az adatszinkronizálás lap. Válassza a **Szinkronizálás** elemet.
 
     ![Manuális szinkronizálás](media/sql-database-get-started-sql-data-sync/datasync-sync.png)
 
 ## <a name="faq"></a>GYIK
 
-**Milyen gyakran is Data Sync szinkronizálni az adatokat?**
+**Milyen gyakran tud szinkronizálni az adatszinkronizálási adatokat?**
 
-A szinkronizálások között minimális időtartama öt perc alatt.
+A szinkronizálások közötti minimális időtartam öt perc.
 
-**Nem az SQL Data Sync teljes táblák létrehozása?**
+**SQL-adatszinkronizálás teljes táblákat létrehozni?**
 
-Ha a szinkronizálási sématáblák hiányoznak a céladatbázisból, az SQL-adatszinkronizálás létrehozza azokat a kiválasztott oszlopokkal. Azonban ez nem eredményezi a teljes hűségű séma a következő okok miatt:
+Ha a szinkronizálási sématáblák hiányoznak a céladatbázisból, az SQL-adatszinkronizálás létrehozza azokat a kiválasztott oszlopokkal. Ez azonban nem eredményez teljes körű megbízhatósági sémát a következő okok miatt:
 
 - Csak az Ön által kiválasztott oszlopok jönnek létre a céltáblában. A nem kiválasztott oszlopokat a program figyelmen kívül hagyja.
 - Csak a kiválasztott oszlopindexek jönnek létre a céltáblában. A nem kiválasztott oszlopok indexeit a program figyelmen kívül hagyja.
-- XML-típusú oszlopok indexei hozhatók létre.
-- ELLENŐRZŐ korlátozások hozhatók létre.
-- A forrás táblák indítóinak hozhatók létre.
-- Nézetek és tárolt eljárások hozhatók létre.
+- Az XML-típusú oszlopok indexei nem jönnek létre.
+- Az ellenőrzési megkötések nem jönnek létre.
+- A forrástábla eseményindítói nem jönnek létre.
+- A nézetek és a tárolt eljárások nem jönnek létre.
 
 E korlátozások miatt javasoljuk a következőket:
 
-- Az éles környezetekhez hozzon létre a teljes hűségű sémát saját magának.
-- Kísérletezés a szolgáltatással, ha az Automatikus kiépítés funkció használatához.
+- Éles környezetekben saját maga hozza létre a teljes hűségű sémát.
+- A szolgáltatással való kísérletezéskor használja az automatikus kiépítési funkciót.
 
-**Miért látok I nem hozott létre táblák?**
+**Miért látom a nem létrehozott táblákat?**
 
-Adatszinkronizálás további táblákat hoz létre az adatbázisban a change Tracking szolgáltatáshoz. Ne törölje ezeket, vagy Data Sync szolgáltatással nem működik.
+Az adatszinkronizálás további táblákat hoz létre az adatbázisban a változások nyomon követéséhez. Ne törölje ezeket, vagy az adatszinkronizálás leáll.
 
-**Az adatok egy irányba a szinkronizálás után?**
+**Az adataim konvergens szinkronizálás után?**
 
-Nem feltétlenül. A szinkronizálások amelyeknél hubot, hogy A Hub b és c Hub egy küllős topológia három (A, B és C) a szinkronizálási csoport igénybe Ha egy adatbázishoz módosításakor *után* a hubhoz való szinkronizálást, módosítsa a következő szinkronizálási feladat B vagy C adatbázisba nem írt.
+Nem feltétlenül. A szinkronizálási csoportot egy központtal és három küllővel (A, B és C) szinkronizálja, ahol a szinkronizációk az A, A hub és a C közötti csomópont. Ha az "A" adatbázis módosítást végez a központ szinkronizálása *után* , a változás nem íródik a B vagy a C adatbázisba a következő szinkronizálási feladat előtt.
 
-**Hogyan szerezhetem be a sémamódosítások egy szinkronizálási csoporthoz?**
+**Hogyan beolvasni a séma módosításait egy szinkronizálási csoportba?**
 
-Győződjön meg arról, és minden sémaváltozások manuálisan propagálása.
+Végezze el és propagálja a séma összes módosítását manuálisan.
 
-1. A sémaváltozások manuálisan replikálja a hub és az összes szinkronizálási tagok.
-1. Szinkronizálási sémájának frissítéséhez.
+1. A séma módosításait a hub és az összes szinkronizálási tag között manuálisan replikálja.
+1. Frissítse a szinkronizálási sémát.
 
 Új táblák és oszlopok hozzáadásához:
 
-Új táblák és oszlopok ne befolyásolják a jelenlegi szinkronizálási és Data Sync figyelmen kívül hagyja őket mindaddig, amíg a rendszer hozzáadja a szinkronizálási sémához. Új adatbázis-objektumok való hozzáadásakor, hajtsa végre a feladatütemezés:
+Az új táblák és oszlopok nem érintik az aktuális szinkronizálást, és az adatszinkronizálás figyelmen kívül hagyja őket, amíg hozzá nem adja őket a szinkronizálási sémához. Új adatbázis-objektumok hozzáadásakor kövesse a következő sorozatot:
 
-1. A hub és az összes szinkronizálási tagok adjon hozzá új táblákat vagy oszlopokat.
+1. Vegyen fel új táblákat vagy oszlopokat a hubhoz és az összes szinkronizálási taghoz.
 1. Új táblák vagy oszlopok hozzáadása a szinkronizálási sémához.
-1. Kezdje el az új táblák és oszlopok értékek beszúrása.
+1. Megkezdheti az értékek beszúrását az új táblákba és oszlopokba.
 
-Az oszlop adattípusának módosítása:
+Oszlop adattípusának módosítása:
 
-Amikor módosítja egy létező oszlop adattípusát, a Data Sync továbbra is működik, mindaddig, amíg az új értékeket az eredeti adattípus a szinkronizálási sémában meghatározott elemnévvel illeszkednek. Például, ha a forrás-adatbázisban a típusának módosítása **int** való **bigint**, Data Sync továbbra is működni, amíg nem túl nagy értéket szúr be a **int** adattípus. Hajtsa végre a módosítást, manuálisan replikálja a sémaváltozás, a hub és az összes szinkronizálási tagok, majd a szinkronizálási sémájának frissítéséhez.
+Egy meglévő oszlop adattípusának módosításakor az adatok szinkronizálása továbbra is működik, amíg az új értékek illeszkednek a szinkronizálási sémában meghatározott eredeti adattípushoz. Ha például a forrás adatbázisban az **int** értékről a **bigint**értékre módosítja a típust, akkor az adatok szinkronizálása továbbra is működni fog, amíg nem szúr be túl nagy értéket az **int** adattípushoz. A módosítás befejezéséhez replikálja a séma módosításait a központba és az összes szinkronizálási tagra, majd frissítse a szinkronizálási sémát.
 
-**Hogyan tudok exportálhat és importálhat egy adatbázist a Data Sync szolgáltatással?**
+**Hogyan lehet exportálni és importálni egy adatbázist az adatszinkronizálással?**
 
-Egy adatbázis-exportálását követően egy *.bacpac* fájlt, és importálja a fájlt, hozzon létre egy adatbázist, tegye a következőket az új adatbázisban található Data Sync használata:
+Miután *. bacpac* fájlként exportált egy adatbázist, és importálja a fájlt egy adatbázis létrehozásához, a következő módon használhatja az adatszinkronizálást az új adatbázisban:
 
-1. Távolítsa el a Data Sync objektumok és az új adatbázis használatával további táblákon [Ez a szkript](https://github.com/vitomaz-msft/DataSyncMetadataCleanup/blob/master/Data%20Sync%20complete%20cleanup.sql). A parancsfájl az összes szükséges Data Sync objektumot törli az adatbázisból.
-1. Hozza létre újra a szinkronizálási csoport az új adatbázissal. Ha már nincs szüksége a régi szinkronizálási csoport, törölje azt.
+1. A [parancsfájl](https://github.com/vitomaz-msft/DataSyncMetadataCleanup/blob/master/Data%20Sync%20complete%20cleanup.sql)használatával törölje az adatszinkronizálási objektumokat és a további táblákat az új adatbázison. A szkript törli az összes szükséges adatszinkronizálási objektumot az adatbázisból.
+1. Hozza létre újra a szinkronizálási csoportot az új adatbázissal. Ha már nincs szüksége a régi szinkronizálási csoportra, törölje azt.
 
-**Hol található az ügyfélügynök információkat?**
+**Hol találhatok információt az ügyfél-ügynökről?**
 
-Az ügyfélügynök – gyakori kérdések, lásd: [ügynök – gyakori kérdések](sql-database-data-sync-agent.md#agent-faq).
+Az ügyfél-ügynökkel kapcsolatos gyakori kérdésekért lásd: [ügynök – gyakori](sql-database-data-sync-agent.md#agent-faq)kérdések.
 
 ## <a name="next-steps"></a>További lépések
 
-Gratulálunk! Ezzel létrehozott egy szinkronizálási csoport, amely tartalmazza az SQL Database-példány és a egy SQL Server-adatbázist.
+Gratulálunk! Olyan szinkronizálási csoportot hozott létre, amely SQL Database példányt és egy SQL Server adatbázist is tartalmaz.
 
 További információ az SQL Data Syncről:
 
-- [Az Azure SQL Data Sync adatok szinkronizációs ügynök](sql-database-data-sync-agent.md)
-- [Ajánlott eljárások](sql-database-best-practices-data-sync.md) és [az Azure SQL Data Sync szolgáltatással kapcsolatos problémák elhárítása](sql-database-troubleshoot-data-sync.md)
-- [Az SQL Data Sync monitorozása az Azure Monitor naplóira](sql-database-sync-monitor-oms.md)
-- [Szinkronizálási sémájának frissítéséhez a Transact-SQL](sql-database-update-sync-schema.md) vagy [PowerShell](scripts/sql-database-sync-update-schema.md)
+- [Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynöke](sql-database-data-sync-agent.md)
+- [Ajánlott eljárások](sql-database-best-practices-data-sync.md) és [az Azure-SQL-adatszinkronizálás kapcsolatos problémák elhárítása](sql-database-troubleshoot-data-sync.md)
+- [SQL-adatszinkronizálás figyelése Azure Monitor naplókkal](sql-database-sync-monitor-oms.md)
+- [A szinkronizálási séma frissítése a Transact-SQL vagy a](sql-database-update-sync-schema.md) [PowerShell használatával](scripts/sql-database-sync-update-schema.md)
 
 További információ az SQL Database-ről:
 

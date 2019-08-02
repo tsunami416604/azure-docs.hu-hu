@@ -1,6 +1,6 @@
 ---
 title: Elosztott tranzakciók több felhőalapú adatbázisban
-description: Az Azure SQL Database rugalmas adatbázis-tranzakciók áttekintése
+description: Elastic Database tranzakciók áttekintése Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,45 +10,44 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 7fc945a00360e4eea4a5cf1e3962da2390d3bfeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3ca3e9074f28d66068d49b80915e98600759d9be
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65506855"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568286"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Elosztott tranzakciók több felhőalapú adatbázisban
 
-Rugalmas adatbázis-tranzakciók az Azure SQL Database (SQL-adatbázis) teszik lehetővé, amelyek több adatbázist az SQL DB tranzakciókat futtatni. Az SQL Database rugalmas adatbázis-tranzakciók forrásoszlopokat használó .NET-alkalmazások érhetők el, valamint integrálhatja a szolgáltatást a megszokott programozási felület használatával a [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) osztályokat. A szalagtár lekéréséhez lásd: [.NET-keretrendszer 4.6.1-es verziója (webes telepítő)](https://www.microsoft.com/download/details.aspx?id=49981).
+Azure SQL Database (SQL DB) rugalmas adatbázis-tranzakciói lehetővé teszik, hogy olyan tranzakciókat futtasson, amelyek az SQL DB-ben több adatbázisra is kiterjednek. Az SQL DB rugalmas adatbázis-tranzakciói elérhetők az ADO .NET-et használó .NET-alkalmazások számára, és az ismerős programozási felülettel integrálhatók a [System. Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) osztályok használatával. A könyvtár beszerzéséhez tekintse meg a [.NET-keretrendszer 4.6.1 (web Installer)](https://www.microsoft.com/download/details.aspx?id=49981)című témakört.
 
-A helyszínen ilyen esetben általában szükséges a Microsoft elosztott tranzakciók koordinátora (MSDTC) futtatása. Azure Platform –-szolgáltatásként alkalmazásokhoz MSDTC nem érhető el, mivel lehetővé teszi az elosztott tranzakciók koordinálja most közvetlenül integrálva van az SQL DB-be. Alkalmazások bármely SQL Database-indítsa el az elosztott tranzakciók csatlakozhat, és a egy adatbázis transzparens módon összehangolják elosztott tranzakció, az alábbi ábrán látható módon. 
+A helyszínen egy ilyen forgatókönyv általában a Microsoft Elosztott tranzakciók koordinátora (MSDTC) futtatásához szükséges. Mivel az MSDTC nem érhető el az Azure-beli platform-szolgáltatás alkalmazáshoz, az elosztott tranzakciók koordinálásának lehetősége mostantól közvetlenül az SQL-ADATBÁZISba lett integrálva. Az alkalmazások bármely SQL Database csatlakozhatnak az elosztott tranzakciók elindításához, és az egyik adatbázis transzparens módon koordinálja az elosztott tranzakciót, ahogy az a következő ábrán látható. 
 
-  ![Az Azure SQL Database rugalmas adatbázis-tranzakciók használatával az elosztott tranzakciók ][1]
+  ![Elosztott tranzakciók Azure SQL Database rugalmas adatbázis-tranzakciók használatával ][1]
 
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 
-Az SQL Database rugalmas adatbázis-tranzakciók lehetővé teszik az alkalmazások számos különböző SQL-adatbázisokban tárolt adatok atomi módosítja. Az előzetes verzió a C# és a .NET ügyféloldali fejlesztési környezeteket összpontosít. A T-SQL használatával kiszolgálóoldali élmény tervezett későbbi időpontra.  
-Rugalmas adatbázis-tranzakciók célozza meg benne a következő esetekben:
+Az SQL DB-hez készült rugalmas adatbázis-tranzakciók lehetővé teszik az alkalmazások számára, hogy a különböző SQL-adatbázisokban tárolt adatvédelemre is módosíthassa a módosításokat. Az előzetes verzió az ügyféloldali fejlesztési élményekre és a .NET C# -re összpontosít. A T-SQL-T használó kiszolgálóoldali élmény egy későbbi időpontra van tervezve.  
+A rugalmas adatbázis-tranzakciók a következő forgatókönyveket célozzák meg:
 
-* Több adatbázis-alkalmazások az Azure-ban: Ebben az esetben az adatok vertikális particionálása az SQL dB-ben több adatbázis közötti úgy, hogy a különböző típusú adatok különböző adatbázist tartalmazó. Egyes műveletekhez szükséges adatokat, amelyet a két vagy több adatbázis módosításait. Az alkalmazás használ a rugalmas adatbázis-tranzakciók koordinálja a módosításokat adatbázis között, és biztosítja az atomitást.
-* Szilánkokra osztott adatbázis-alkalmazások az Azure-ban: Ebben a forgatókönyvben az adatréteg használja a [Elastic Database-ügyfélkódtár](sql-database-elastic-database-client-library.md) és önkiszolgáló-horizontális particionálás az adatok horizontális particionálásához az SQL dB-ben több adatbázis közötti. Egy neves használati eset szükség, ha módosításokat span bérlők atomi módosításokat végrehajtani a horizontálisan skálázott több-bérlős alkalmazás. Úgy gondolja, hogy például a másikra, két különböző adatbázisok elhelyezkedhet egyetlen bérlő át. Egy másik eset, minden részletre kiterjedő horizontális skálázási egy nagy-bérlőjéhez, amely viszont általában azt jelenti, hogy néhány atomi művelet kell használni a ugyanazt bérlőhöz tartozó több adatbázis között a Stretch kapacitásszükségletének befogadásához. Egy harmadik funkcióban atomi frissítései adatbázisok közötti replikált adatokra hivatkoznak. Ezek a sorok mentén atomi, tranzakciós, művelet most is koordinált az előzetes verziójának több adatbázis között.
-  Rugalmas adatbázis-tranzakciók használja kétfázisú végrehajtási tranzakció atomitást adatbázis között. Egy jó megoldás lehet kisebb, mint 100 adatbázisnak egyszerre egy tranzakción belül érintő tranzakciók. Ezek a korlátok nem kényszerítettek, de az egyik teljesítmény- és a sikerességi arányokat, ha ezek a korlátok túllépése esetén csökkenhet a rugalmas tranzakciók számíthat.
+* Több adatbázisból álló alkalmazások az Azure-ban: Ebben a forgatókönyvben az adat függőlegesen particionálva van az SQL-adatbázisban található több adatbázis között, így a különböző típusú adattípusok különböző adatbázisokban találhatók. Egyes műveletekhez olyan adatokra van szükség, amelyek két vagy több adatbázisban vannak tárolva. Az alkalmazás rugalmas adatbázis-tranzakciókat használ az adatbázisok változásainak koordinálására és az atomenergia biztosítására.
+* Többplatformos adatbázis-alkalmazások az Azure-ban: Ebben a forgatókönyvben az adatréteg az [Elastic Database ügyféloldali kódtárat](sql-database-elastic-database-client-library.md) használja, vagy ha az SQL dB-ben számos adatbázison keresztül horizontálisan particionálja az adatmennyiséget, az adatrétegben. Az egyik kiemelt használati eset az, hogy szükség van egy több-bérlős, több-bérlős alkalmazásra vonatkozó atomi módosítások végrehajtására, ha a változások a bérlőket használják. Gondolja át, hogy az egyik bérlőről a másikra, a különböző adatbázisokban lévő példányokra is vonatkozik. Egy második eset a nagy bérlők kapacitási igényeinek kielégítésére szolgáló részletes horizontális felskálázás, amely általában azt jelenti, hogy egyes atomi műveleteknek több, ugyanahhoz a bérlőhöz használt adatbázishoz kell nyúlni. A harmadik esetben az olyan atomi frissítések, amelyek az adatbázisok között replikált információkra vonatkoznak. Az Atomic, a transacted, a következő vonalak mentén végzett műveletek mostantól több adatbázison is összehangolható az előzetes verzió használatával.
+  A rugalmas adatbázis-tranzakciók kétfázisú végrehajtással biztosítják a tranzakciók atomi használatát az adatbázisok között. Ez jól illeszkedik azon tranzakciók esetében, amelyek egyetlen tranzakción belül egyszerre kevesebb mint 100 adatbázist tartalmaznak. Ezeket a korlátokat nem kényszeríti ki a rendszer, de a rugalmas adatbázis-tranzakciók teljesítményének és sikerességi arányának várhatónak kell lennie, ha túllépi ezeket a korlátokat.
 
 ## <a name="installation-and-migration"></a>Telepítés és áttelepítés
 
-SQL DB rugalmas adatbázis-tranzakciók képességeit, a .NET-kódtárakra System.Data.dll és System.Transactions.dll frissítések állnak rendelkezésre. A DLL-ek győződjön meg arról, hogy kétfázisú végrehajtási atomitást ellenőrizze, hogy szükség esetén használja. Indítsa el a rugalmas adatbázis-tranzakciók használata alkalmazások fejlesztéséhez, telepítse a [.NET-keretrendszer 4.6.1-es](https://www.microsoft.com/download/details.aspx?id=49981) vagy újabb verziója. Ha a .NET-keretrendszer korábbi verzióját futtatja, tranzakciók előléptetni egy elosztott tranzakció sikertelen lesz, és kivételt a rendszer generál.
+Az SQL DB-ben a rugalmas adatbázis-tranzakciók képességeit a .NET-kódtárak rendszer. adat. dll és System. Transactions. dll frissítésein keresztül biztosítjuk. A DLL-ek biztosítják, hogy a kétfázisú véglegesítés szükség esetén legyen használatban az atomenergia biztosításához. A rugalmas adatbázis-tranzakciókat használó alkalmazások fejlesztésének megkezdéséhez telepítse a [.NET-keretrendszer 4.6.1](https://www.microsoft.com/download/details.aspx?id=49981) -es vagy újabb verzióját. Ha a .NET-keretrendszer egy korábbi verzióját futtatja, a tranzakciókat nem lehet előléptetni egy elosztott tranzakcióra, és a rendszer kivételt eredményez.
 
-A telepítés után is használhatja az elosztott tranzakció API-k System.Transactions a kapcsolatokkal az SQL DB-hez. Ha rendelkezik meglévő API-k használatával MSDTC-alkalmazások, egyszerűen építse újra a meglévő .NET 4.6-alkalmazások a 4.6.1 telepítése után keretrendszer. Ha a projektek .NET 4.6, automatikusan fogja használni a frissített DLL-eket az új keretrendszer verziója, és API-hívások és az SQL DB kapcsolatok együttes alkalmazásával elosztott tranzakció már sikeres lesz.
+A telepítés után használhatja az elosztott tranzakciós API-kat a System. Transactions szolgáltatásban az SQL-ADATBÁZISsal létesített kapcsolatokkal. Ha ezen API-kat használó meglévő MSDTC-alkalmazásokkal rendelkezik, egyszerűen építse újra a meglévő alkalmazásokat a .NET 4,6-es verzióra a 4.6.1-keretrendszer telepítése után. Ha a projektek a .NET 4,6-es verzióját célozzák meg, a rendszer automatikusan a frissített DLL-eket fogja használni az új keretrendszer-verzió és az elosztott tranzakciók API-hívásai között, amelyek az SQL DB-kapcsolatokkal együtt működnek.
 
-Ne feledje, hogy a rugalmas adatbázis-tranzakciók nem igényelnek MSDTC telepítése. Rugalmas adatbázis-tranzakciók ehelyett közvetlenül kezelt által és az SQL DB belül. Ez jelentősen leegyszerűsíti a felhőbeli forgatókönyvek mivel MSDTC üzembe helyezése nem szükséges, az elosztott tranzakciók és az SQL Database. 4\. szakasz részletesen ismerteti a rugalmas adatbázis-tranzakciók és a szükséges .NET-keretrendszer és a felhőalapú alkalmazások Azure-ban üzembe helyezése.
+Ne feledje, hogy a rugalmas adatbázis-tranzakciók nem igénylik az MSDTC telepítését. Ehelyett a rugalmas adatbázis-tranzakciókat közvetlenül a és az SQL DB-n keresztül kezelik. Ez jelentősen leegyszerűsíti a Felhőbeli forgatókönyveket, mivel az MSDTC telepítése nem szükséges az SQL DB-vel elosztott tranzakciók használatához. A 4. szakasz részletesen ismerteti, hogyan helyezhetők üzembe rugalmas adatbázis-tranzakciók és a szükséges .NET-keretrendszer a felhőalapú alkalmazásokkal együtt az Azure-ban.
 
 ## <a name="development-experience"></a>Fejlesztői élmény
 
-### <a name="multi-database-applications"></a>Több adatbázis-alkalmazások
+### <a name="multi-database-applications"></a>Több adatbázisból álló alkalmazások
 
-Az alábbi mintakód .NET System.Transactions a megszokott programozási környezetet használ. Objekt TransactionScope není osztály hozza létre a .NET-ben egy környezeti tranzakció. ("Környezeti tranzakció" egyike az aktuális szál.) Összes belül a TransactionScope megnyitott kapcsolatainak száma a tranzakcióban részt. Ha a különböző adatbázisok részt venni, a tranzakció automatikusan át elosztott tranzakcióra emelt szintű. A tranzakció eredményét jelzi a véglegesítés befejeződik a hatókör beállításáról vezérli.
+A következő mintakód a megszokott programozási felületet használja a .NET System. Transactions használatával. A TransactionScope osztály egy környezeti tranzakciót hoz létre a .NET-ben. (A "környezeti tranzakció" olyan, amely az aktuális szálban él.) A TransactionScope belül megnyitott összes kapcsolat részt vesz a tranzakcióban. Ha a különböző adatbázisok részt vesznek, a tranzakció automatikusan egy elosztott tranzakcióhoz lesz felemelve. A tranzakció eredményét úgy szabályozza, hogy a hatókört a Befejezés értékre állítja, hogy véglegesítse a műveletet.
 
     using (var scope = new TransactionScope())
     {
@@ -73,7 +72,7 @@ Az alábbi mintakód .NET System.Transactions a megszokott programozási környe
 
 ### <a name="sharded-database-applications"></a>Szilánkokra osztott adatbázis-alkalmazások
 
-Az SQL Database rugalmas adatbázis-tranzakciók is támogatja az elosztott tranzakciók, ahol a OpenConnectionForKey módszert használja, az elastic database-ügyfélkódtár nyissa meg a kapcsolatok egy bővítő adatok koordinációt szint. Fontolja meg az esetekben, ahol módosításokat tranzakció-konzisztencia biztosításához között számos különböző horizontális skálázási kulcs értékét. A szegmensek a különböző horizontális skálázási kulcs értékeit üzemeltetési kapcsolat van közvetítőalapú OpenConnectionForKey használatával. A kapcsolatok az általános esetben lehet a különböző szegmensekhez úgy, hogy a tranzakciós garanciát biztosító elosztott tranzakciót igényel. Az alábbi kódmintában ezt a megközelítést mutatja be. Feltételezi, hogy shardmap nevű változóra, amely képviseli horizontálispartíció-térkép a rugalmas adatbázis ügyfélkönyvtárának szolgál:
+Az SQL DB-hez készült rugalmas adatbázis-tranzakciók olyan elosztott tranzakciók koordinálását is támogatják, amelyekben a rugalmas adatbázis-ügyféloldali kódtár OpenConnectionForKey metódusát használja a kibővíthető adatrétegek kapcsolatainak megnyitására. Tekintse át azokat az eseteket, ahol a több különböző horizontális Felskálázási kulcsban végrehajtott változások tranzakciós konzisztenciájának garantálása szükséges. A különböző horizontális Felskálázási kulcsokat üzemeltető szegmensekkel létesített kapcsolatok a OpenConnectionForKey használatával vannak közvetítve. Az általános esetben a kapcsolatok különböző szegmensekben lehetnek, így a tranzakciós garanciák biztosításához elosztott tranzakció szükséges. A következő mintakód ezt a megközelítést mutatja be. Azt feltételezi, hogy egy shardmap nevű változót használ a rugalmas adatbázis ügyféloldali könyvtárának egy szegmenses térképének ábrázolására:
 
     using (var scope = new TransactionScope())
     {
@@ -97,13 +96,13 @@ Az SQL Database rugalmas adatbázis-tranzakciók is támogatja az elosztott tran
     }
 
 
-## <a name="net-installation-for-azure-cloud-services"></a>A .NET telepítése az Azure Cloud Services
+## <a name="net-installation-for-azure-cloud-services"></a>.NET-telepítés az Azure Cloud Services
 
-Az Azure .NET-alkalmazások üzemeltetése több ajánlatok biztosít. A különböző ajánlatok összehasonlítása megtalálható [Azure App Service-ben, Cloud Services és Virtual Machines összevetése](/azure/architecture/guide/technology-choices/compute-decision-tree). Ha a vendég operációs rendszer az ajánlat kisebb, mint a .NET 4.6.1 rugalmas tranzakciók szükséges, a vendég operációs rendszer frissítése a 4.6.1 szüksége. 
+Az Azure számos ajánlatot biztosít a .NET-alkalmazások üzemeltetéséhez. A különböző ajánlatok összehasonlítása [Azure app Service, Cloud Services és Virtual Machines összehasonlításban](/azure/architecture/guide/technology-choices/compute-decision-tree)érhető el. Ha az ajánlat vendég operációs rendszere kisebb, mint a rugalmas tranzakciók esetében szükséges .NET 4.6.1, a vendég operációs rendszert a 4.6.1-es verzióra kell frissíteni. 
 
-Az Azure App Services a vendég operációs rendszer frissítése jelenleg nem támogatottak. Az Azure Virtual Machines, egyszerűen csak jelentkezzen be a virtuális Gépre, és futtassa a telepítőt a legújabb .NET-keretrendszer. Az Azure Cloud Services az üzembe helyezés az indítási feladatok, például újabb verzióját kell. A fogalmakat és lépéseket vannak dokumentálva [.NET telepítése egy Cloud Service szerepkör](../cloud-services/cloud-services-dotnet-install-dotnet.md).  
+Az Azure App Services a vendég operációs rendszerre való frissítés jelenleg nem támogatott. Az Azure Virtual Machines esetében egyszerűen jelentkezzen be a virtuális gépre, és futtassa a telepítőt a legújabb .NET-keretrendszerhez. Az Azure Cloud Services esetében telepítenie kell egy újabb .NET-verziót az üzemelő példány indítási feladataiba. A fogalmakat és a lépéseket a [.NET telepítése Cloud Service](../cloud-services/cloud-services-dotnet-install-dotnet.md)-szerepkörre című témakör ismerteti.  
 
-Vegye figyelembe, hogy a .NET 4.6.1 a telepítő az Azure cloud services, mint a telepítő .NET 4.6 a bootstrapping során előfordulhat, hogy szüksége további ideiglenes tárhely. A sikeres telepítés érdekében szüksége az Azure-felhőszolgáltatásban a LocalResources szakaszban és az indítási feladat a környezeti beállítások a ServiceDefinition.csdef fájlban az ideiglenes tárhely bővítése érdekében az alábbi mintában látható módon:
+Vegye figyelembe, hogy a .NET 4.6.1-es verziójának az Azure Cloud Services rendszerindítási folyamata során több átmeneti tárterületre lehet szüksége, mint a .NET 4,6-es telepítő. A sikeres telepítés érdekében növelje az Azure Cloud Service ideiglenes tárhelyét a ServiceDefinition. csdef fájlban a LocalResources szakaszban, valamint az indítási feladat környezeti beállításait, ahogy az az alábbi példában is látható:
 
     <LocalResources>
     ...
@@ -128,37 +127,37 @@ Vegye figyelembe, hogy a .NET 4.6.1 a telepítő az Azure cloud services, mint a
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
-Rugalmas adatbázis-tranzakciók több különböző SQL Database-kiszolgálók az Azure SQL Database-ben is támogatott. Tranzakciók adatbázisközi SQL Database server határokat, amikor a programban részt vevő kiszolgálók először kölcsönös kommunikációs kapcsolat adható meg. A kommunikációs kapcsolat létrejöttét követően a két kiszolgáló bármelyik adatbázisához rugalmas tranzakciók az adatbázis a kiszolgálótól vehet részt. Tranzakciók több mint két SQL Database-kiszolgálók átfedés, az kommunikációs kapcsolat kell lennie a helyen az SQL Database-kiszolgálók bármely virtuálisgép-pár.
+A rugalmas adatbázis-tranzakciók a Azure SQL Database különböző SQL Database-kiszolgálóin is támogatottak. Ha a tranzakciók átlépik SQL Database a kiszolgáló határait, a résztvevő kiszolgálókat először kölcsönös kommunikációs kapcsolatba kell beírni. A kommunikációs kapcsolat létrejötte után a két kiszolgáló bármelyik adatbázisa részt vehet a másik kiszolgáló adatbázisaival rendelkező rugalmas tranzakciókban. A kettőnél több SQL Database-kiszolgálót átfedő tranzakciók esetében a SQL Database-kiszolgálók bármely pár esetén kommunikációs kapcsolatra van szükség.
 
-A következő PowerShell-parancsmagok segítségével kezelheti a kiszolgálók közötti kommunikáció kapcsolatokat az a rugalmas adatbázis-tranzakciók:
+Az alábbi PowerShell-parancsmagok segítségével kezelheti a többkiszolgálós kommunikációs kapcsolatokat a rugalmas adatbázis-tranzakciók esetében:
 
-* **New-AzSqlServerCommunicationLink**: Ez a parancsmag segítségével hozzon létre egy új kommunikációs kapcsolat az Azure SQL Database két SQL Database-kiszolgálók között. A kapcsolat a szimmetrikus ami azt jelenti, hogy mindkét kiszolgálón is kezdeményezhető a tranzakciók a kiszolgálóval.
-* **Get-AzSqlServerCommunicationLink**: Ez a parancsmag használatával lekérheti a meglévő kommunikációs kapcsolatok és azok tulajdonságait.
-* **Remove-AzSqlServerCommunicationLink**: Ez a parancsmag segítségével távolítsa el a meglévő kommunikációs kapcsolat. 
+* **New-AzSqlServerCommunicationLink**: Ezzel a parancsmaggal új kommunikációs kapcsolatot hozhat létre a Azure SQL Database két SQL Database kiszolgálója között. A kapcsolat szimmetrikus, ami azt jelenti, hogy mindkét kiszolgáló kezdeményezheti a tranzakciókat a másik kiszolgálóval.
+* **Get-AzSqlServerCommunicationLink**: Ezzel a parancsmaggal kérheti le a meglévő kommunikációs kapcsolatokat és azok tulajdonságait.
+* **Remove-AzSqlServerCommunicationLink**: Ezzel a parancsmaggal eltávolíthat egy meglévő kommunikációs kapcsolatot. 
 
 ## <a name="monitoring-transaction-status"></a>Tranzakció állapotának figyelése
 
-Az SQL DB dinamikus felügyeleti nézetekkel (DMV-kkel) használatával a figyelő és a rugalmas adatbázisban folyamatban lévő tranzakciók állapotáról. Az SQL dB-ben az elosztott tranzakciók összes DMV-vel kapcsolatos tranzakciók szükségesek. Dinamikus felügyeleti nézetek megfelelő listáját itt találja: [Dinamikus felügyeleti nézetek és függvények (Transact-SQL) a tranzakció kapcsolatos](https://msdn.microsoft.com/library/ms178621.aspx).
+A dinamikus felügyeleti nézetek (DMV) használata az SQL DB-ben a folyamatos rugalmas adatbázis-tranzakciók állapotának és előrehaladásának figyeléséhez. A tranzakciókkal kapcsolatos összes DMV az SQL DB-ben elosztott tranzakciók esetében fontos. Itt megtalálja a DMV megfelelő listáját: [Tranzakcióval kapcsolatos dinamikus felügyeleti nézetek és függvények (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx).
 
-A dinamikus felügyeleti nézetek különösen hasznosak:
+Ezek a DMV különösen hasznosak:
 
-* **sys.dm\_tran\_active\_transactions**: A jelenleg aktív tranzakciók és állapotukat sorolja fel. A UOW-Értékkel (munkaegység) oszlop azonosíthatja a különböző alárendelt tranzakciók, amely ugyanazon az elosztott tranzakció tartozik. Az azonos, elosztott tranzakción belül minden tranzakció végrehajtása UOW-Értékkel azonos értéket. Tekintse meg a [DMV-dokumentáció](https://msdn.microsoft.com/library/ms174302.aspx) további információt.
-* **sys.dm\_tran\_database\_transactions**: Tranzakció, például a naplóban lévő tranzakció elhelyezését további információkat tartalmaz. Tekintse meg a [DMV-dokumentáció](https://msdn.microsoft.com/library/ms186957.aspx) további információt.
-* **sys.DM\_tran\_zárolások**: Az aktuálisan folyamatban lévő tranzakciók által tartott zárolások arról nyújt tájékoztatást. Tekintse meg a [DMV-dokumentáció](https://msdn.microsoft.com/library/ms190345.aspx) további információt.
+* **sys.dm\_tran\_active\_transactions**: Felsorolja a jelenleg aktív tranzakciókat és azok állapotát. A UOW (munkaegység) oszlopban azonosíthatók azok a különböző alárendelt tranzakciók, amelyek ugyanahhoz az elosztott tranzakcióhoz tartoznak. Az azonos elosztott tranzakción belüli összes tranzakció ugyanazt a UOW-értéket hajtja végre. További információt a [DMV dokumentációjában](https://msdn.microsoft.com/library/ms174302.aspx) talál.
+* **sys.dm\_tran\_database\_transactions**: További információkat tartalmaz a tranzakciókkal kapcsolatban, például a tranzakció elhelyezéséről a naplóban. További információt a [DMV dokumentációjában](https://msdn.microsoft.com/library/ms186957.aspx) talál.
+* **sys.DM\_Tran\_zárolásai**: A folyamatban lévő tranzakciók által jelenleg tárolt zárolásokról nyújt információkat. További információt a [DMV dokumentációjában](https://msdn.microsoft.com/library/ms190345.aspx) talál.
 
 ## <a name="limitations"></a>Korlátozások
 
-Jelenleg a következő korlátozások vonatkoznak az SQL DB rugalmas adatbázis-tranzakciók:
+Az SQL DB-ben jelenleg az alábbi korlátozások vonatkoznak a rugalmas adatbázis-tranzakciókra:
 
-* Csak a tranzakciók több adatbázisban az SQL dB-ben támogatottak. Más [X / nyílt XA](https://en.wikipedia.org/wiki/X/Open_XA) erőforrás-szolgáltatókat és adatbázisok kívül az SQL DB rugalmas adatbázis-tranzakciók nem szerepelhet. Ez azt jelenti, hogy a rugalmas adatbázis-tranzakciók nem terjeszthet ki keresztül a helyszíni SQL Server és az Azure SQL Database. Az elosztott tranzakciók a helyszínen továbbra is használhatja az MSDTC. 
-* Csak ügyfél koordinált .NET-alkalmazásból tranzakciók használata támogatott. T-SQL, például az ELOSZTOTT TRANZAKCIÓ megkezdése kiszolgálóoldali támogatása érhető el a tervezett, de még nem érhető el. 
-* WCF-szolgáltatások közötti tranzakciók nem támogatottak. Például hogy egy WCF-szolgáltatás metódus, amely végrehajtja a tranzakciót. A hívás a tranzakció hatókörén belül befoglaló sikertelen lesz egy [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception).
+* Csak az SQL-adatbázisokban található adatbázisok közötti tranzakciók támogatottak. Az SQL DB-n kívüli egyéb [X/Open XA](https://en.wikipedia.org/wiki/X/Open_XA) erőforrás-szolgáltatók és adatbázisok nem vehetnek részt rugalmas adatbázis-tranzakciókban. Ez azt jelenti, hogy a rugalmas adatbázis-tranzakciók nem terjedhetnek ki a helyszíni SQL Server és Azure SQL Databasere. A helyszíni elosztott tranzakciók esetében folytassa az MSDTC használatát. 
+* Csak az ügyfél által koordinált tranzakciók támogatottak a .NET-alkalmazásokból. A T-SQL kiszolgálóoldali támogatása, például a BEGIN DISTRIBUTed TRANSACTION terv, de még nem érhető el. 
+* A WCF-szolgáltatások közötti tranzakciók nem támogatottak. Tegyük fel, hogy van egy WCF szolgáltatási metódusa, amely tranzakciót hajt végre. A hívás tranzakciós hatókörön belüli befoglalása sikertelen lesz, mint a [System. ServiceModel. ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception).
 
 ## <a name="next-steps"></a>További lépések
 
-Ha kérdése van, vegye fel velünk a kapcsolatot a a [SQL Database fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) és a funkciókérések, adja hozzá őket a [SQL Database-visszajelzési fórumon](https://feedback.azure.com/forums/217321-sql-database/).
+Ha kérdése van, kérjük, lépjen kapcsolatba velünk a [SQL Database fórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) és a szolgáltatásokra vonatkozó kérésekhez, és vegye fel őket a [SQL Database visszajelzési fórumba](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png

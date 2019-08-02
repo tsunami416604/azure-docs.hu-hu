@@ -1,43 +1,43 @@
 ---
-title: Az Azure webalkalmazási tűzfal (WAF) v2 egyéni szabályok
-description: Ez a cikk a webalkalmazási tűzfal (WAF) v2 egyéni szabályok az Azure Application Gateway áttekintése.
+title: Azure webalkalmazási tűzfal (WAF) v2 egyéni szabályok
+description: Ez a cikk áttekintést nyújt a Web Application Firewall (WAF) v2 egyéni szabályairól az Azure Application Gatewayban.
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: f6ea831771a8ffecfdd4c7c0d6374c16894e25ed
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9c04f805cf410d2306eda76c84a201a67b022b84
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164663"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716626"
 ---
-# <a name="custom-rules-for-web-application-firewall-v2"></a>Egyéni szabályok a webalkalmazási tűzfal v2-ben
+# <a name="custom-rules-for-web-application-firewall-v2"></a>A webalkalmazási tűzfal v2-hez tartozó egyéni szabályok
 
-Az Azure Application Gateway webes alkalmazás tűzfal (WAF) v2 tartalmaz egy előre konfigurált, a platform által kezelt szabálykészletben által kínált számos különböző típusú támadások elleni védelem. Ezeket a támadásokat hely scripting, SQL-injektálás és mások közötti közé tartozik. Ha Ön a WAF-rendszergazda, érdemes lehet írni, mivel megvédi a alapvető szabálykészlet saját szabályok (CRS) szabályokat állíthat be. A szabályok vagy blokkolhatják vagy engedélyezhetik a kért forgalmat, a megadott feltételeknek megfelelő alapján.
+Az Azure Application Gateway webalkalmazási tűzfal (WAF) v2 olyan előre konfigurált, platform által felügyelt szabályokat tartalmaz, amelyek számos különböző típusú támadás elleni védelmet biztosítanak. Ezek a támadások többek között a site Scripting, az SQL-injektálás és egyebek. Ha Ön WAF-rendszergazda, érdemes lehet saját szabályokat írnia az alapszintű szabálykészlet (CRS) szabályainak kibővítéséhez. A szabályok a megfelelő feltételek alapján letilthatják vagy engedélyezhetik a kért forgalmat.
 
-Egyéni szabályok lehetővé teszik a saját, amely értékeli az egyes kérések, amely áthalad a WAF-szabályok létrehozása. Ezek a szabályok egy magasabb prioritású, mint a szabályokat a többi felügyelt szabálykészletek tart. Az egyéni szabályok tartalmaznak, a szabály nevét, a szabály prioritása és a feltételeknek megfelelő tömbjét. Ha ezek a feltételek teljesülnek, egy műveletet (az engedélyezés vagy letiltás).
+Az egyéni szabályok segítségével saját szabályokat hozhat létre, amelyeket a rendszer a WAF áthaladó kérelmek esetében kiértékel. Ezek a szabályok magasabb prioritással rendelkeznek, mint a felügyelt szabálykészlet többi szabálya. Az egyéni szabályok tartalmazzák a szabály nevét, a szabály prioritását és a megfelelő feltételek tömbjét. Ha ezek a feltételek teljesülnek, a rendszer egy műveletet végez (Engedélyezés vagy Letiltás).
 
-Letilthatja például IP-címet a tartomány 192.168.5.4/24 érkező kérelmek. Ez a szabály az operátor nem *IPMatch*, a matchValues az IP-címtartomány (192.168.5.4/24), és a művelet letiltja a forgalmat. Is be a szabály nevét és prioritását.
+Például letilthatja az összes kérést egy IP-címről a 192.168.5.4/24 tartományba. Ebben a szabályban az operátor *IPMatch*, a matchValues az IP-címtartomány (192.168.5.4/24), a művelet pedig blokkolja a forgalmat. A szabály nevét és prioritását is megadhatja.
 
-Egyéni szabályok támogatja, hogy speciális szabályokkal, cím, a biztonság kell tőkésítési logikai kapcsolattal. For example (1. feltétel **és** feltétel 2) **vagy** feltétel 3).  Ebben a példában azt jelenti, hogy ha a feltétel 1 **és** 2 feltétel teljesül, **vagy** 3 feltétel teljesülése esetén, a WAF kell azokat a műveleteket az egyéni szabály.
+Az egyéni szabályok az összetett logika használatát teszik lehetővé a biztonsági igényeket kielégítő speciális szabályok megadásához. Például: (1. feltétel **és** 2. feltétel) **vagy** feltétel 3).  Ez a példa azt jelenti, hogy ha az 1. **és** a 2. feltétel teljesül, **vagy** ha a 3. feltétel teljesül, a WAF el kell végeznie az egyéni szabályban megadott műveletet.
 
-Különböző folyamatmegfeleltetési feltételek belül ugyanaz a szabály minden esetben vannak bonyolítja használatával **és**. Ha például blokkolja a forgalmat egy adott IP-címről, és csak akkor, ha azok bizonyos böngészőt használ.
+Ugyanazon szabályon belül a különböző egyeztetési feltételek mindig a **és**a használatával vannak összekapcsolva. Például letilthatja a forgalmat egy adott IP-címről, és csak akkor, ha egy adott böngészőt használnak.
 
-Ha azt szeretné, hogy **vagy** két különböző feltételeket, a két feltételt kell lennie különböző szabályokat. Például blokkolja a forgalmat egy adott IP-cím vagy blokk forgalmat, ha azokat a konkrét böngészőt használ.
+Ha **vagy** két különböző feltételt szeretne használni, a két feltételnek különböző szabályokban kell lennie. Például letilthatja a forgalmat egy adott IP-címről, vagy letilthatja a forgalmat, ha egy adott böngészőt használnak.
 
 > [!NOTE]
-> A WAF egyéni szabályok maximális száma pedig a 100. Application Gateway korlátainak kapcsolatos további információkért lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md#application-gateway-limits).
+> Az egyéni WAF-szabályok maximális száma 100. A Application Gateway korlátozásokkal kapcsolatos további információkért tekintse meg az [Azure-előfizetés és a szolgáltatás korlátai, kvótái és](../azure-subscription-service-limits.md#application-gateway-limits)megkötései című témakört.
 
-Reguláris kifejezésekkel is támogatottak az egyéni szabályok, csakúgy, mint a CRS szabálykészletek. Ezek a példák: példák 3. és 5 [létrehozása és használata egyéni webalkalmazási tűzfalszabályok](create-custom-waf-rules.md).
+A reguláris kifejezések az egyéni szabályokban is támogatottak, ugyanúgy, mint a CRS-szabályrendszerek. Ezekről a példákat lásd: 3. és 5. példa az [Egyéni webalkalmazási tűzfalszabályok létrehozása és használata](create-custom-waf-rules.md)című témakörben.
 
-## <a name="allowing-vs-blocking"></a>Engedélyezése és letiltása
+## <a name="allowing-vs-blocking"></a>Tiltás és blokkolás engedélyezése
 
-Engedélyezéséről és tiltásáról forgalmat az egyéni szabályok egyszerű. Letilthatja például az IP-címek egy származó minden forgalmat. Egy másik szabállyal a forgalom engedélyezéséhez, ha a kérelem érkezik egy meghatározott böngészőből is felvehető.
+A forgalom engedélyezése és blokkolása egyszerű az egyéni szabályokkal. Letilthatja például az IP-címtartományból érkező összes forgalmat. Ha a kérelem egy adott böngészőből származik, egy másik szabályt is beállíthat, amely engedélyezi a forgalmat.
 
-Ahhoz, hogy valami, ellenőrizze, hogy a `-Action` paraméter értéke **engedélyezése**. Letiltja a hiba, ellenőrizze, hogy a `-Action` paraméter értéke **blokk**.
+Ha valamit szeretne engedélyezni, győződjön meg `-Action` arról, hogy a paraméter értéke **Engedélyezés**. Ha blokkolni szeretne valamit, győződjön `-Action` meg arról, hogy a paraméter **blokkolás**értékre van beállítva.
 
 ```azurepowershell
 $AllowRule = New-AzApplicationGatewayFirewallCustomRule `
@@ -55,7 +55,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Az előző `$BlockRule` képez le az Azure Resource Manager az alábbi egyéni szabály:
+Az előző `$BlockRule` leképezések a Azure Resource Manager következő egyéni szabályához:
 
 ```json
 "customRules": [
@@ -86,80 +86,80 @@ Az előző `$BlockRule` képez le az Azure Resource Manager az alábbi egyéni s
     ], 
 ```
 
-Az egyéni szabály nevét, prioritás, műveletet és a megfelelő feltételek, amelyeknek teljesülniük kell a művelet, hogy végre lehessen hajtani a tömb tartalmazza. További mezők ismertetését a következő mezők leírása. Például az egyéni szabályok, lásd: [létrehozása és használata egyéni webalkalmazási tűzfalszabályok](create-custom-waf-rules.md).
+Ez az egyéni szabály tartalmaz egy nevet, egy prioritást, egy műveletet, valamint az egyeztetési feltételek azon tömbjét, amelynek teljesülnie kell a művelet elvégzéséhez. A mezők további ismertetését lásd a következő mezők leírásában. Például egyéni szabályok: [Egyéni webalkalmazási tűzfalszabályok létrehozása és használata](create-custom-waf-rules.md).
 
-## <a name="fields-for-custom-rules"></a>Egyéni szabályok mezők
+## <a name="fields-for-custom-rules"></a>Egyéni szabályok mezői
 
-### <a name="name-optional"></a>[Opcionális] neve
+### <a name="name-optional"></a>Név [nem kötelező]
 
-Ez a szabály nevét. Ez a név jelenik meg a naplókat.
+Ez a szabály neve. Ez a név jelenik meg a naplókban.
 
-### <a name="priority-required"></a>[Kötelező] prioritás
+### <a name="priority-required"></a>Prioritás [kötelező]
 
-- Határozza meg a kiértékelt szabályok. A kisebb az érték, a szabály a korábbi értékelését.
--Minden egyéni szabályok között egyedinek kell lennie. 100 prioritású szabály 200-as prioritású szabály előtt értékelik.
+- Meghatározza azt a sorrendet, amelyben a szabályok ki vannak értékelve. Minél kisebb a érték, annál korábbi a szabály kiértékelése.
+– Az egyéni szabályok között egyedinek kell lennie. A 100 prioritású szabályt a rendszer a 200 prioritású szabály előtt értékeli ki.
 
-### <a name="rule-type-required"></a>[Kötelező] szabálytípus
+### <a name="rule-type-required"></a>Szabály típusa [kötelező]
 
-Jelenleg kell **MatchRule**.
+Jelenleg **MatchRule**kell lennie.
 
-### <a name="match-variable-required"></a>[Kötelező] egyezés változó
+### <a name="match-variable-required"></a>Egyezés változó [kötelező]
 
-A változók egyikének kell lennie:
+Az egyik változónak kell lennie:
 
-- RemoteAddr – IP cím vagy állomásnév a távoli számítógép-kapcsolat
-- RequestMethod – HTTP-kérési metódus (GET, POST, PUT, DELETE stb.)
-- Lekérdezési karakterlánc – az URI azonosító változó
-- PostArgs – argumentumok küldött POST törzsében.
-- RequestUri – a kérelem URI azonosítója
+- RemoteAddr – a távoli számítógép-kapcsolatok IP-címe/állomásneve
+- RequestMethod – HTTP-kérelem módszere (GET, POST, PUT, DELETE stb.)
+- QueryString – változó az URI-ban
+- PostArgs – a POST törzsében elküldett argumentumok. Az ezt a megfeleltetési változót használó egyéni szabályok csak akkor lesznek alkalmazva, ha a "Content-Type" fejléc az "application/x-www-Form-urlencoded" és a "multipart/form-adatai" értékre van beállítva.
+- RequestUri – a kérelem URI-ja
 - RequestHeaders – a kérelem fejlécei
-- RequestBody – a kérelem törzse
-- RequestCookies – a kérelem cookie-k
+- RequestBody – a teljes kérelem törzsét tartalmazza egészként. Az ezt a megfeleltetési változót használó egyéni szabályok csak akkor lesznek alkalmazva, ha a "Content-Type" fejléc az "application/x-www-Form-urlencoded" értékre van beállítva. 
+- RequestCookies – a kérelem cookie-jai
 
-### <a name="selector-optional"></a>[Opcionális] a választó
+### <a name="selector-optional"></a>Választó [nem kötelező]
 
-A mező matchVariable gyűjtemény ismerteti. Például, ha a matchVariable RequestHeaders, a választó oka az lehet az a *felhasználói ügynök* fejléc.
+A matchVariable-gyűjtemény mezőjét ismerteti. Ha például a matchVariable RequestHeaders, a választó lehet a *User-Agent* fejlécben.
 
-### <a name="operator-required"></a>[Kötelező] operátor
+### <a name="operator-required"></a>Operátor [kötelező]
 
-Az alábbi operátorok egyikének kell lennie:
+A következő operátorok egyikének kell lennie:
 
-- IPMatch – csak használja, ha egyezés változó *RemoteAddr*
-- Egyenlő – bemeneti megegyezik a MatchValue
+- IPMatch – csak akkor használható, ha a Match változó értéke *RemoteAddr*
+- Equals – a bemeneti érték megegyezik a MatchValue
 - tartalmaz
 - LessThan
 - GreaterThan
 - LessThanOrEqual
 - GreaterThanOrEqual
 - BeginsWith
-- endsWith
+- EndsWith
 - Regex
 
-### <a name="negate-condition-optional"></a>[Opcionális] a feltétel negálandó
+### <a name="negate-condition-optional"></a>Tagadási feltétel [opcionális]
 
-Az aktuális időjárási helyzetet ellentettjét adja.
+Megtagadja az aktuális feltételt.
 
-### <a name="transform-optional"></a>[Opcionális]. átalakító
+### <a name="transform-optional"></a>Átalakítás [nem kötelező]
 
-Kísérlet történik a átalakításokat is az egyezés előtt nevére karakterláncok listáját. Ezek lehetnek a következő átalakítások:
+Azoknak a karakterláncoknak a listája, amelyeket a rendszer a egyezés megkísérlése előtt elvégez. Ezek a következő átalakítások lehetnek:
 
 - Kisbetűs
-- Trim
+- Levágás
 - UrlDecode
 - UrlEncode 
 - RemoveNulls
 - HtmlEntityDecode
 
-### <a name="match-values-required"></a>[Kötelező] értékekre
+### <a name="match-values-required"></a>Értékek egyeztetése [kötelező]
 
-Az egyeztetéshez, értékek listája, amelyből is értelmezhetők, hogy *vagy*"ed. Például annak oka az lehet IP-címeket vagy más karakterláncban. Az érték formátuma az előző operátor függ.
+Azoknak az értékeknek a listája, amelyek megfelelnek a következőnek *: "ED*". Lehetnek például IP-címek vagy más karakterláncok. Az érték formátuma az előző operátortól függ.
 
-### <a name="action-required"></a>[Kötelező] művelet
+### <a name="action-required"></a>Művelet [kötelező]
 
-- Engedélyezése – engedélyezi a tranzakciót, a rendszer kihagyja az összes további szabályra. Ez azt jelenti, hogy a megadott kérelem az engedélyezési listához, és megfelel a feltételeknek a kérelem leáll további értékelés, és a háttérkészlet küldendő kerül-e. Az engedélyezési listán lévő szabályok nem kerülnek kiértékelésre bármilyen további egyéni szabályok és a felügyelt szabályokat.
-- Blokk – letiltja a tranzakció alapján *SecDefaultAction* (észlelési és megelőzés üzemmód). Az engedélyezési művelet, mint a kérelem értékeli ki, és a tiltólistához hozzáadva, értékelési leáll, és a kérelem le van tiltva. Minden kérelmet, amely megfelel-e az azonos után nem lesz kiértékelve, és csak le lesz tiltva. 
-- Naplófájl – lehetővé teszi, hogy a szabály a naplóba, de lehetővé teszi, hogy a többi szabály értékelés futtatása. További egyéni szabályok a felügyelt szabályokat követ, fontossági sorrendben értékeli ki.
+- Engedélyezés – engedélyezi a tranzakciót, kihagyva az összes további szabályt. Ez azt jelenti, hogy a megadott kérés hozzá lesz adva az engedélyezési listához, és az egyeztetés után a kérés leáll, és a rendszer elküldi a háttér-készletnek. Az engedélyezési listán szereplő szabályok nincsenek kiértékelve a további egyéni szabályok vagy felügyelt szabályok esetében.
+- Letiltás – blokkolja a tranzakciót a *SecDefaultAction* (észlelési/megelőzési mód) alapján. Az engedélyezés művelethez hasonlóan, ha a rendszer kiértékeli a kérést, és hozzáadja a blokkolási listához, a rendszer leállítja az értékelést, és letiltja a kérést. A rendszer nem értékeli ki azokat a kéréseket, amelyek után az azonos feltételek teljesülnek, és csak le lesz tiltva. 
+- Log – lehetővé teszi a szabály írását a naplóba, de a többi szabály futtatását is lehetővé teszi a kiértékeléshez. A következő egyéni szabályok prioritási sorrendben, majd a felügyelt szabályok alapján lesznek kiértékelve.
 
 ## <a name="next-steps"></a>További lépések
 
-Egyéni szabályok megismerkedhet után [hozzon létre saját egyéni szabályok](create-custom-waf-rules.md).
+Az egyéni szabályok megismerése után [hozza létre saját egyéni szabályait](create-custom-waf-rules.md).

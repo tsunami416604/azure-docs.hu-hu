@@ -1,6 +1,6 @@
 ---
-title: Replikálás konfigurálása a egy Azure SQL Database felügyelt példány adatbázisa |} A Microsoft Docs
-description: Egy Azure SQL Database felügyelt példány adatbázisa a tranzakciós replikáció konfigurálásával kapcsolatos tudnivalók
+title: Replikáció konfigurálása Azure SQL Database felügyelt példány-adatbázisban | Microsoft Docs
+description: Tudnivalók a tranzakciós replikáció konfigurálásáról egy Azure SQL Database felügyelt példány adatbázisában
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -10,84 +10,83 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
-manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: e4d056aacf8f3969b645747e2303574f3fea3bda
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 96571b55158733f8189ddf87402fb634330ca80d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357125"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570454"
 ---
-# <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Replikálás konfigurálása a egy Azure SQL Database felügyelt példány adatbázisa
+# <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Replikáció konfigurálása Azure SQL Database felügyelt példány-adatbázisban
 
-Tranzakciós replikáció lehetővé teszi adatok replikálása egy Azure SQL Database felügyelt példány adatbázisa SQL Server-adatbázis vagy egy másik példány adatbázisa be. 
+A tranzakciós replikáció lehetővé teszi az adatok replikálását egy Azure SQL Database felügyelt példány-adatbázisba egy SQL Server-adatbázisból vagy egy másik példány-adatbázisból. 
 
-Tranzakciós replikáció használatával az Azure SQL Database felügyelt példány az egy példány adatbázison végzett módosításokat:
+A tranzakciós replikálás használatával leküldheti a Azure SQL Database felügyelt példányban lévő példány-adatbázisban végrehajtott módosításokat a következőre:
 
-- SQL Server-adatbázis.
-- Önálló adatbázis az Azure SQL Database-ben.
-- Az Azure SQL Database rugalmas készlet készletezett adatbázis.
+- Egy SQL Server-adatbázis.
+- Egyetlen adatbázis a Azure SQL Databaseban.
+- Készletezett adatbázis egy Azure SQL Database rugalmas készletben.
  
-Tranzakciós replikáció jelenleg nyilvános előzetes verzióban a [Azure SQL Database felügyelt példány](sql-database-managed-instance.md). Felügyelt példány közzétevő terjesztője és előfizető adatbázisok is üzemeltethet. Lásd: [tranzakciós replikáció konfigurációk](sql-database-managed-instance-transactional-replication.md#common-configurations) elérhető konfigurációk esetén.
+A tranzakciós replikáció nyilvános előzetes verzióban érhető el [Azure SQL Database felügyelt példányon](sql-database-managed-instance.md). A felügyelt példányok közzétevői, terjesztői és előfizetői adatbázisokat is futtathatnak. Lásd: [tranzakciós replikációs konfigurációk](sql-database-managed-instance-transactional-replication.md#common-configurations) az elérhető konfigurációkhoz.
 
   > [!NOTE]
-  > A cikk célja, hogy egy felhasználó a replikáció konfigurálása az Azure Database felügyelt példánya a teljes körű, kezdve az erőforráscsoport létrehozásakor. Ha már rendelkezik felügyelt példányok üzembe helyezett, folytassa a [4. lépés](#4---create-a-publisher-database) a közzétevői adatbázis létrehozásához vagy [6. lépés](#6---configure-distribution) Ha már rendelkezik közzétevő és előfizető-adatbázissal, és készen áll replikáció konfigurálása.  
+  > Ebből a cikkből megtudhatja, hogyan konfigurálhat egy felhasználót a replikáció egy Azure Database felügyelt példányra való konfigurálásához a végponttól a végéig, kezdve az erőforráscsoport létrehozásával. Ha már telepítette a felügyelt példányokat, ugorjon a [4](#4---create-a-publisher-database) . lépésre a közzétevői adatbázis létrehozásához, vagy a [6. lépést](#6---configure-distribution) , ha már rendelkezik közzétevői és előfizetői adatbázissal, és készen áll a replikáció konfigurálására.  
 
 ## <a name="requirements"></a>Követelmények
 
-A közzétevő és/vagy a forgalmazó adatbázisként működik, a felügyelt példány konfigurálása szükséges:
+A felügyelt példányok közzétevőként és/vagy terjesztőként való konfigurálásához a következők szükségesek:
 
-- Hogy a felügyelt példány nem jelenleg vesz részt a georeplikációs kapcsolatban.
-- A terjesztő és az előfizető azonos virtuális hálózaton van, hogy a közzétevő felügyelt példány vagy [virtuális hálózatok közötti társviszony](../virtual-network/tutorial-connect-virtual-networks-powershell.md) létrejött a virtuális hálózat összes három entitások között. 
+- A felügyelt példány jelenleg nem vesz részt földrajzi replikálási kapcsolatban.
+- A közzétevő felügyelt példánya ugyanazon a virtuális hálózaton van, mint a terjesztő és az előfizető, vagy a [vNet](../virtual-network/tutorial-connect-virtual-networks-powershell.md) -társítás a mindhárom entitás virtuális hálózatai között létrejött. 
 - A kapcsolat SQL-hitelesítést használ a replikációs résztvevők között.
-- Az Azure Storage-fiók megosztások a replikációs munkakönyvtárhoz.
-- 445-ös (TCP, kimenő) meg nyitva, a biztonsági szabályok az NSG-t a felügyelt példányok az Azure-fájlmegosztás eléréséhez. 
+- Egy Azure Storage-fiók megosztása a replikációs munkakönyvtárhoz.
+- Az 445-as (TCP kimenő) port a felügyelt példányok NSG biztonsági szabályaiban van megnyitva az Azure-fájlmegosztás eléréséhez. 
 
 
  > [!NOTE]
- > Önálló adatbázisok és a készletezett adatbázisok Azure SQL Database-ben csak előfizetők lehetnek. 
+ > A Azure SQL Databaseban az önálló adatbázisok és a készletezett adatbázisok csak előfizetők lehetnek. 
 
 
 ## <a name="features"></a>Szolgáltatások
 
-Támogatott rendszerek:
+A következőket támogatja:
 
-- A helyszíni SQL Server és az Azure SQL Database felügyelt példány tranzakciós és pillanatkép-replikációs arányát.
-- A helyszíni SQL Server-adatbázisok, önálló adatbázisok és felügyelt példányok az Azure SQL Database vagy Azure SQL Database rugalmas készletei a készletezett adatbázisok előfizetőket is lehet.
-- Egyirányú és kétirányú replikációt.
+- SQL Server helyszíni és felügyelt példányainak tranzakciós és pillanatkép-replikációs kombinációja Azure SQL Databaseban.
+- Az előfizetők a helyszíni SQL Server adatbázisaiban, az önálló adatbázisokban/felügyelt példányokban Azure SQL Database vagy a készletezett adatbázisok Azure SQL Database rugalmas készletekben.
+- Egyirányú vagy kétirányú replikálás.
 
-A következő funkciók nem támogatottak az Azure SQL Database felügyelt példány:
+A következő szolgáltatások nem támogatottak a felügyelt példányokban Azure SQL Databaseban:
 
-- [Frissíthető előfizetések](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication).
-- [Aktív georeplikáció](sql-database-active-geo-replication.md) és [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md) nem lehet, ha a tranzakciós replikáció van konfigurálva.
+- [Frissíthető](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication)előfizetések.
+- Ha a tranzakciós replikáció konfigurálva van, az [aktív földrajzi replikálási](sql-database-active-geo-replication.md) és [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md) használata nem ajánlott.
  
-## <a name="1---create-a-resource-group"></a>1 – hozzon létre egy erőforráscsoportot
+## <a name="1---create-a-resource-group"></a>1 – erőforráscsoport létrehozása
 
-Használja a [az Azure portal](https://portal.azure.com) hozzon létre egy erőforráscsoportot nevű `SQLMI-Repl`.  
+A [Azure Portal](https://portal.azure.com) használatával hozzon létre egy erőforráscsoportot a névvel `SQLMI-Repl`.  
 
-## <a name="2---create-managed-instances"></a>2 – felügyelt példány létrehozása
+## <a name="2---create-managed-instances"></a>2 – felügyelt példányok létrehozása
 
-Használja a [az Azure portal](https://portal.azure.com) létrehozása két [felügyelt példányai](sql-database-managed-instance-create-tutorial-portal.md) az azonos virtuális hálózatot és alhálózatot az. A két felügyelt példány neve:
+A [Azure Portal](https://portal.azure.com) használatával hozzon létre két [felügyelt példányt](sql-database-managed-instance-create-tutorial-portal.md) ugyanazon a virtuális hálózaton és alhálózaton. A két felügyelt példány neve:
 
 - `sql-mi-pub`
 - `sql-mi-sub`
 
-Is kell [csatlakozni egy Azure virtuális gép konfigurálása](sql-database-managed-instance-configure-vm.md) az Azure SQL Database felügyelt példányai. 
+Az Azure SQL Database felügyelt példányaihoz való kapcsolódáshoz konfigurálnia kell [egy Azure-beli virtuális gépet](sql-database-managed-instance-configure-vm.md) is. 
 
-## <a name="3---create-azure-storage-account"></a>3 – az Azure Storage-fiók létrehozása
+## <a name="3---create-azure-storage-account"></a>3 – Azure Storage-fiók létrehozása
 
-[Hozzon létre egy Azure Storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) a munkakönyvtárhoz, majd hozzon létre egy [fájlmegosztás](../storage/files/storage-how-to-create-file-share.md) a tárfiókon belül. 
+[Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) a munkakönyvtár számára, majd hozzon létre egy [fájlmegosztást](../storage/files/storage-how-to-create-file-share.md) a Storage-fiókon belül. 
 
-Másolja a fájlmegosztás útvonalának formátumban: `\\storage-account-name.file.core.windows.net\file-share-name`
+Másolja a fájlmegosztás elérési útját a (z) formátumban:`\\storage-account-name.file.core.windows.net\file-share-name`
 
-Másolja a tárelérési kulcsok formátuma: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
+Másolja a Storage-hozzáférési kulcsokat a formátumba:`DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
  További információért lásd: [View and copy storage access keys](../storage/common/storage-account-manage.md#access-keys) (A tárelérési kulcsok megtekintése és másolása). 
 
-## <a name="4---create-a-publisher-database"></a>4 – közzétevő-adatbázis létrehozása
+## <a name="4---create-a-publisher-database"></a>4 – közzétevő adatbázis létrehozása
 
-Csatlakozás a `sql-mi-pub` felügyelt példány az SQL Server Management Studio használatával, és futtassa a következő Transact-SQL (T-SQL) kódot a közzétevői adatbázis létrehozásához:
+Kapcsolódjon a `sql-mi-pub` felügyelt példányhoz SQL Server Management Studio használatával, és futtassa a következő Transact-SQL (T-SQL) kódot a közzétevő adatbázis létrehozásához:
 
 ```sql
 USE [master]
@@ -119,9 +118,9 @@ SELECT * FROM ReplTest
 GO
 ```
 
-## <a name="5---create-a-subscriber-database"></a>5 – előfizető-adatbázis létrehozása
+## <a name="5---create-a-subscriber-database"></a>5 – előfizetői adatbázis létrehozása
 
-Csatlakozás a `sql-mi-sub` felügyelt példány az SQL Server Management Studio használatával, és futtassa a következő T-SQL-kódot az előfizető üres adatbázis létrehozásához:
+Kapcsolódjon a `sql-mi-sub` felügyelt példányhoz SQL Server Management Studio használatával, és futtassa az alábbi T-SQL-kódot az üres előfizetői adatbázis létrehozásához:
 
 ```sql
 USE [master]
@@ -140,9 +139,9 @@ CREATE TABLE ReplTest (
 GO
 ```
 
-## <a name="6---configure-distribution"></a>6 – a terjesztés konfigurálása
+## <a name="6---configure-distribution"></a>6 – eloszlás konfigurálása
 
-Csatlakozás a `sql-mi-pub` felügyelt példány az SQL Server Management Studio használatával, és futtassa a következő T-SQL-kódot a terjesztési adatbázis konfigurálása. 
+Kapcsolódjon a `sql-mi-pub` felügyelt példányhoz SQL Server Management Studio segítségével, és futtassa az alábbi T-SQL-kódot a terjesztési adatbázis konfigurálásához. 
 
 ```sql
 USE [master]
@@ -153,9 +152,9 @@ EXEC sp_adddistributiondb @database = N'distribution';
 GO
 ```
 
-## <a name="7---configure-publisher-to-use-distributor"></a>7 – közzétevő terjesztője konfigurálása 
+## <a name="7---configure-publisher-to-use-distributor"></a>7 – a közzétevő konfigurálása a terjesztő használatára 
 
-A kiadói fiókjában a felügyelt példány `sql-mi-pub`, módosítsa a lekérdezés végrehajtása a [SQLCMD](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) módban, és futtassa a következő kódot az új terjesztőhöz Regisztrálás a kiadói fiókjában. 
+A közzétevő felügyelt példányán `sql-mi-pub`módosítsa a lekérdezés végrehajtását [Sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) módra, és futtassa a következő kódot az új terjesztő a közzétevővel való regisztrálásához. 
 
 ```sql
 :setvar username loginUsedToAccessSourceManagedInstance
@@ -175,11 +174,11 @@ EXEC sp_adddistpublisher
   @storage_connection_string = N'$(file_storage_key)'; -- Remove this parameter for on-premises publishers
 ```
 
-Ez a szkript egy helyi közzétevő konfigurálja a következő felügyelt példányt, hozzáadja a csatolt kiszolgáló, és a feladatok sorozatát hoz létre az SQL Server Agent. 
+Ez a parancsfájl egy helyi közzétevőt konfigurál a felügyelt példányon, hozzáadja a csatolt kiszolgálót, és létrehoz egy feladatot a SQL Server Agent számára. 
 
-## <a name="8---create-publication-and-subscriber"></a>8 – közzététel és az előfizető létrehozása
+## <a name="8---create-publication-and-subscriber"></a>8 – kiadvány és előfizető létrehozása
 
-Használatával [SQLCMD](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) mód, futtassa a következő T-SQL parancsfájlt engedélyezze a replikációt az adatbázis és a replikálást a közzétevő, forgalmazó és előfizető között. 
+A [Sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) mód használatával futtassa az alábbi T-SQL-szkriptet az adatbázis replikációjának engedélyezéséhez, és konfigurálja a közzétevő, a terjesztő és az előfizető közötti replikálást. 
 
 ```sql
 -- Set variables
@@ -256,11 +255,11 @@ EXEC sp_startpublication_snapshot
   @publication = N'$(publication_name)';
 ```
 
-## <a name="9---modify-agent-parameters"></a>9 – ügynök paraméterek módosítása
+## <a name="9---modify-agent-parameters"></a>9 – ügynök paramétereinek módosítása
 
-Az Azure SQL Database felügyelt példány jelenleg a replikációs ügynökök kapcsolattal rendelkező háttérrendszer problémák tapasztalhatók. Amíg ez a probléma javítása folyamatban foglalkozik, növelje a bejelentkezési időkorlát értékét a replikációs ügynökök megkerülő megoldással. 
+Azure SQL Database felügyelt példány jelenleg néhány háttérbeli problémát tapasztal a replikációs ügynökökkel való kapcsolattal. A probléma megoldása közben a megkerülő megoldással növelheti a replikációs ügynökök bejelentkezési időtúllépési értékét. 
 
-A következő T-SQL parancsot a közzétevőn az bejelentkezési időtúllépési: 
+A bejelentkezés időtúllépésének növeléséhez futtassa a következő T-SQL-parancsot a közzétevőn: 
 
 ```sql
 -- Increase login timeout to 150s
@@ -268,7 +267,7 @@ update msdb..sysjobsteps set command = command + N' -LoginTimeout 150'
 where subsystem in ('Distribution','LogReader','Snapshot') and command not like '%-LoginTimeout %'
 ```
 
-Futtassa a következő T-SQL parancsot újra a bejelentkezési időkorlát állítsa vissza az alapértelmezett érték a, kell meg kell tennie:
+Futtassa újra az alábbi T-SQL-parancsot a bejelentkezési időkorlát alapértelmezett értékre való visszaállításához:
 
 ```sql
 -- Increase login timeout to 30
@@ -276,19 +275,19 @@ update msdb..sysjobsteps set command = command + N' -LoginTimeout 30'
 where subsystem in ('Distribution','LogReader','Snapshot') and command not like '%-LoginTimeout %'
 ```
 
-Indítsa újra a alkalmazni ezeket a módosításokat az összes három ügynök. 
+A módosítások érvénybe léptetéséhez indítsa újra mindhárom ügynököt. 
 
-## <a name="10---test-replication"></a>10 - replikáció tesztelése
+## <a name="10---test-replication"></a>10 – a replikáció tesztelése
 
-Replikáció konfigurálása után tesztelheti a közzétevőn új elemek beszúrása és figyelése a módosítások propagálása az előfizető által. 
+Miután konfigurálta a replikálást, tesztelheti úgy, hogy új elemeket szúr be a közzétevőbe, és figyeli a módosításokat az előfizetőnek. 
 
-Futtassa a következő T-SQL-kódrészlet megtekintéséhez a sorokat az előfizetőn:
+A következő T-SQL-kódrészlet futtatásával tekintheti meg az előfizető sorait:
 
 ```sql
 select * from dbo.ReplTest
 ```
 
-Futtassa a következő T-SQL-kódrészlet beszúrása a közzétevőn további sorokat, és ezután ellenőrizze a sorokat az előfizetőn újra. 
+Futtassa az alábbi T-SQL-kódrészletet további sorok beszúrásához a közzétevőn, majd jelölje be újra a sorokat az előfizetőn. 
 
 ```sql
 INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
@@ -296,7 +295,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Dobni a kiadványt, futtassa a következő T-SQL-parancsot:
+A kiadvány eldobásához futtassa az alábbi T-SQL-parancsot:
 
 ```sql
 -- Drops the publication
@@ -305,7 +304,7 @@ EXEC sp_droppublication @publication = N'PublishData'
 GO
 ```
 
-Az adatbázisból a következő replikálási beállítás eltávolításához futtassa a következő T-SQL-parancsot:
+A replikálási lehetőség az adatbázisból való eltávolításához futtassa a következő T-SQL-parancsot:
 
 ```sql
 -- Disables publishing of the database
@@ -314,7 +313,7 @@ EXEC sp_removedbreplication
 GO
 ```
 
-Közzététel és terjesztés letiltása, futtassa a következő T-SQL-parancsot:
+A közzététel és a terjesztés letiltásához futtassa az alábbi T-SQL-parancsot:
 
 ```sql
 -- Drops the distributor
@@ -323,10 +322,10 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-Törölheti is az Azure-erőforrások által [a felügyelt példány erőforrások törlését az erőforráscsoport](../azure-resource-manager/manage-resources-portal.md#delete-resources) majd törölje az erőforráscsoportot `SQLMI-Repl`. 
+Az Azure-erőforrások tisztításához [törölje a felügyelt példányok erőforrásait az erőforráscsoporthoz](../azure-resource-manager/manage-resources-portal.md#delete-resources) , majd törölje az erőforráscsoportot `SQLMI-Repl`. 
 
    
 ## <a name="see-also"></a>Lásd még:
 
 - [Tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md)
-- [Mi a felügyelt példány?](sql-database-managed-instance.md)
+- [Mi az a felügyelt példány?](sql-database-managed-instance.md)
