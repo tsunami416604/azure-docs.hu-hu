@@ -2,23 +2,23 @@
 title: Szerkessze a csoport adatait – Azure Active Directory |} A Microsoft Docs
 description: Szerkessze a csoport adatait az Azure Active Directoryval kapcsolatos utasításokat.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 691f705574050b15869a0ac8b7d128507e5aae10
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dc06abca08b2522ac57552e85f7c1bac3ef854af
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60248832"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561884"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>A csoport adatait az Azure Active Directoryval
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) használatával, módosíthatja egy csoport be
 
 4. Válassza ki azt a csoportot **mobileszköz-kezelési szabályzat – Nyugat-India**, majd válassza ki **tulajdonságok** a a **kezelés** területen.
 
-    ![Csoport áttekintése lapon, a kiemelt tag lehetőség és](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
+    ![Csoport áttekintése lap, a tag lehetőséggel és a Kiemelt információkkal](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
 
 5. Frissítés a **általános beállítások** információkat, ha szükséges, beleértve:
 
@@ -51,7 +51,7 @@ Azure Active Directory (Azure AD) használatával, módosíthatja egy csoport be
 
     - **Csoport típusa.** Miután létrejött a csoport típusa nem módosítható. Módosíthatja a **csoporttípust**, akkor törölje a csoportot, majd hozzon létre egy új.
     
-    - **Tagság típusa.** A tagsági típus módosítása A rendelkezésre álló tagságát különféle típusaival kapcsolatos további információkért lásd: [hogyan: Hozzon létre egy alapszintű csoportot és felhasználókat adhatnának használata az Azure Active Directory portálon](active-directory-groups-create-azure-portal.md).
+    - **Tagság típusa.** A tagsági típus módosítása További információ a különböző elérhető tagsági típusokról [: How to: Hozzon létre egy alapszintű csoportot, és vegyen fel tagokat a Azure Active Directory portál](active-directory-groups-create-azure-portal.md)használatával.
     
     - **Objektum azonosítója.** Az Objektumazonosító nem módosítható, de az, hogy a PowerShell-parancsokban a csoport számára is másolhatja. PowerShell-parancsmagok használatával kapcsolatos további információkért lásd: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-v2-cmdlets.md).
 

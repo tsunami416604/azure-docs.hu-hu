@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4bd0b6f0652f49c16bd67bbca5a89d19e17a8b2c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 150d30085976c89e9053d4715da98e487684e45c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498420"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717254"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management megoldás az Azure-ban
 
@@ -23,7 +23,7 @@ A Azure Automation Update Management megoldásával kezelheti az operációs ren
 A virtuális gépeket közvetlenül a Azure Automation-fiókjából engedélyezheti Update Management. Ha szeretné megtudni, hogyan engedélyezheti a virtuális gépek Update Managementét az Automation-fiókjából, tekintse meg a [több virtuális gép frissítéseinek kezelése](manage-update-multi.md)című témakört. A virtuális gép Update Management is engedélyezheti a Azure Portal virtuális gép lapján. Ez a forgatókönyv [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) és [Windows rendszerű](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) virtuális gépek esetén érhető el.
 
 > [!NOTE]
-> A Update Management megoldáshoz egy Log Analytics-munkaterületet kell összekapcsolnia az Automation-fiókkal. A támogatott régiók végleges listáját lásd: [./How-to/region-mappings.MD]. A régió-hozzárendelések nem befolyásolják a virtuális gépek az Automation-fióktól eltérő régióban való felügyeletének képességét.
+> A Update Management megoldáshoz egy Log Analytics-munkaterületet kell összekapcsolnia az Automation-fiókkal. A támogatott régiók végleges listáját lásd: [https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings ]. A régió-hozzárendelések nem befolyásolják a virtuális gépek az Automation-fióktól eltérő régióban való felügyeletének képességét.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -55,7 +55,7 @@ A megoldás azt mutatja be, hogy a számítógép naprakészen van-e attól füg
 > [!NOTE]
 > Ahhoz, hogy a szolgáltatás megfelelően jelentsen, Update Management szükség van bizonyos URL-címekre és portokra. Ha többet szeretne megtudni ezekről a követelményekről, tekintse meg [a hibrid feldolgozók hálózati tervezése](automation-hybrid-runbook-worker.md#network-planning)című témakört.
 
-A szoftverfrissítések központi telepítéséhez vagy telepítéséhez létrehozhat egy ütemezett üzembe helyezést a frissítést igénylő számítógépeken. A választhatóként  besorolt frissítések nem szerepelnek a Windows rendszerű számítógépek központi telepítési hatókörében. A központi telepítési hatókörben csak a szükséges frissítések szerepelnek.
+A szoftverfrissítések központi telepítéséhez vagy telepítéséhez létrehozhat egy ütemezett üzembe helyezést a frissítést igénylő számítógépeken. A választhatóként besorolt frissítések nem szerepelnek a Windows rendszerű számítógépek központi telepítési hatókörében. A központi telepítési hatókörben csak a szükséges frissítések szerepelnek.
 
 Az ütemezett telepítés meghatározza, hogy mely célszámítógépek kapják meg a megfelelő frissítéseket, vagy a számítógépek explicit módon történő megadásával, vagy egy adott számítógép, illetve egy [Azure-lekérdezés](#azure-machines) naplójának keresésén alapuló [számítógépcsoport](../azure-monitor/platform/computer-groups.md) kiválasztásával. Ez dinamikusan kiválasztja az Azure-beli virtuális gépeket a megadott feltételek alapján. Ezek a csoportok eltérnek a [hatókör](../azure-monitor/insights/solution-targeting.md)-konfigurációtól, amely csak annak meghatározására szolgál, hogy mely gépek kapják meg a megoldást használó felügyeleti csomagokat.
 
@@ -100,6 +100,11 @@ Az alábbi táblázat a nem támogatott operációs rendszerek:
 
 A Windows-ügynököket úgy kell konfigurálni, hogy a WSUS-kiszolgálóval kommunikáljanak, vagy hozzá kell férniük Microsoft Updatehoz. A Update Management a System Center Configuration Manager használatával végezheti el. Az integrációs forgatókönyvekkel kapcsolatos további tudnivalókért lásd: [a System Center Configuration Manager integrálása Update Management](oms-solution-updatemgmt-sccmintegration.md#configuration)használatával. A [Windows](../azure-monitor/platform/agent-windows.md) -ügynököt kötelező megadni. Az ügynök automatikusan települ, ha Azure-beli virtuális gépet helyez üzembe.
 
+> [!NOTE]
+> Lehetséges, hogy a felhasználó módosíthatja Csoportházirend, hogy a számítógép újraindítása csak a felhasználó által, nem pedig a rendszer által végezhető el. A felügyelt gépek elakadnak, ha Update Management nem rendelkezik jogosultsággal a gép újraindításához a felhasználó manuális beavatkozása nélkül.
+>
+> További információ: [csoportházirend beállítások konfigurálása az automatikus frissítésekhez](https://docs.microsoft.com/en-us/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates).
+
 #### <a name="linux"></a>Linux
 
 Linux esetén a gépnek hozzá kell férnie egy frissítési tárházhoz. A frissítési tárház lehet magán vagy nyilvános. A Update Managementhoz való interakcióhoz TLS 1,1 vagy TLS 1,2 szükséges. Ez a megoldás nem támogatja az olyan Log Analytics Linux-ügynököt, amely több Log Analytics munkaterületnek való jelentésre van konfigurálva.
@@ -131,7 +136,7 @@ Ha a System Center Operations Manager felügyeleti csoport egy Log Analytics mun
 * Frissítéstelepítő felügyeleti csomag
 
 > [!NOTE]
-> Ha olyan Operations Manager 1807 felügyeleti csoporttal rendelkezik, amelyben a felügyeleti csoport szintjén konfigurált ügynökök vannak társítva egy munkaterülethez, az aktuális megkerülő Áthidaló megoldás az, hogy megjelenjen  a IsAutoRegistrationEnabled **igaz** értékre állítása a következőben: **Microsoft. IntelligencePacks. AzureAutomation. HybridAgent. init** szabály.
+> Ha olyan Operations Manager 1807 felügyeleti csoporttal rendelkezik, amelyben a felügyeleti csoport szintjén konfigurált ügynökök vannak társítva egy munkaterülethez, az aktuális megkerülő Áthidaló megoldás az, hogy megjelenjen a IsAutoRegistrationEnabled **igaz** értékre állítása a következőben: **Microsoft. IntelligencePacks. AzureAutomation. HybridAgent. init** szabály.
 
 A megoldás-felügyeleti csomagok frissítésével kapcsolatos további információkért lásd: [Operations Manager Összekötése Azure monitor naplókhoz](../azure-monitor/platform/om-agents.md).
 
@@ -178,7 +183,7 @@ Ha az ügynök nem tud kommunikálni Azure Monitor naplókkal, és az ügynök �
 > `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
 
-Az újonnan hozzáadott Linux-ügynökök a felmérés  végrehajtása után frissülő állapotot mutatnak. A folyamat akár hat órát is igénybe vehet.
+Az újonnan hozzáadott Linux-ügynökök a felmérés végrehajtása után frissülő állapotot mutatnak. A folyamat akár hat órát is igénybe vehet.
 
 Annak ellenőrzéséhez, hogy egy Operations Manager felügyeleti csoport kommunikál-e Azure Monitor naplókkal, tekintse meg az [Operations Manager integráció ellenőrzése Azure monitor naplókkal](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor)című témakört.
 

@@ -1,145 +1,79 @@
 ---
-title: SSH-t az Azure Kubernetes Service (AKS)-fürt csomópontjai
-description: Ismerje meg, hogyan hozhat létre az SSH-kapcsolatot az Azure Kubernetes Service (AKS)-fürt csomópontjainak hibaelhárítási és karbantartási feladatokhoz.
+title: SSH az Azure Kubernetes Service (ak) fürtcsomópontok számára
+description: Ismerje meg, hogyan hozhat létre SSH-kapcsolatokat az Azure Kubernetes Service (ak) fürtcsomópontok használatával a hibaelhárítási és karbantartási feladatok elvégzéséhez.
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 05/24/2019
+ms.date: 07/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 6ddd1b160110e7a751f54f89b387a62d94e9308e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 748abc08c432518be4ce8698713b1df95077c3c1
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614484"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722461"
 ---
-# <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Csatlakozzon SSH-n keresztül az Azure Kubernetes Service (AKS) karbantartási és hibaelhárítási fürtcsomópontok
+# <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Kapcsolódás az SSH-val az Azure Kubernetes Service (ak) csomópontjaihoz karbantartáshoz vagy hibaelhárításhoz
 
-Az Azure Kubernetes Service (AKS)-fürt életciklusa során szükség lehet egy AKS-csomópont eléréséhez. Ez a hozzáférés karbantartási, a naplógyűjtés vagy egyéb hibaelhárítási művelet lehet. AKS-csomópontok ssh-t, beleértve a Windows Server-csomópontok (jelenleg előzetes verzióban érhető el az aks-ben) használatával is elérheti. Emellett [kapcsolódni a távoli asztali protokoll (RDP) kapcsolatokat használt Windows Server-csomópontok][aks-windows-rdp]. Biztonsági okokból az AKS-csomópontok nem jelennek meg a az interneten.
+Az Azure Kubernetes-szolgáltatás (ak) fürtjének életciklusa során előfordulhat, hogy hozzá kell férnie egy AK-csomóponthoz. Ez a hozzáférés lehet karbantartási, naplózási vagy egyéb hibaelhárítási művelet. Az AK-csomópontok SSH-val, többek között a Windows Server-csomópontokkal (jelenleg előzetes verzióban) érhetők el. [Távoli asztali protokoll (RDP) kapcsolatok használatával is csatlakozhat a Windows Server-csomópontokhoz][aks-windows-rdp]. Biztonsági okokból az AK-csomópontok nem jelennek meg az interneten. Ha SSH-t használ az AK-csomópontokhoz, használja a magánhálózati IP-címet.
 
-Ez a cikk bemutatja, hogyan hozhat létre az SSH-kapcsolatot egy AKS-csomópont privát IP-címeik használatával.
+Ez a cikk bemutatja, hogyan hozhat létre SSH-kapcsolatokat egy AK-csomóponttal magánhálózati IP-címeik használatával.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Emellett az Azure CLI 2.0.64 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
+Alapértelmezés szerint az SSH-kulcsok beszerzése vagy létrehozása, majd hozzáadása a csomópontokhoz, amikor egy AK-fürtöt hoz létre. Ez a cikk bemutatja, hogyan adhat meg különböző SSH-kulcsokat, mint az AK-fürt létrehozásakor használt SSH-kulcsokat. A cikk azt is bemutatja, hogyan határozhatja meg a csomópont magánhálózati IP-címét, és hogyan kapcsolódhat hozzá az SSH használatával. Ha nem kell másik SSH-kulcsot megadnia, akkor kihagyhatja a lépést az SSH nyilvános kulcsnak a csomóponthoz való hozzáadásához.
 
-## <a name="add-your-public-ssh-key"></a>A nyilvános SSH-kulcs hozzáadása
+A cikk azt is feltételezi, hogy van egy SSH-kulcsa. Az SSH [-kulcs MacOS vagy Linux][ssh-nix] vagy [Windows rendszerű][ssh-windows]használatával is létrehozható. Ha a kulcspár létrehozásához a PuTTY Gen-t használja, mentse a kulcspárt egy OpenSSH formátumban az alapértelmezett Putty titkos kulcs formátuma (. PPK fájl) helyett.
 
-Alapértelmezés szerint az SSH-kulcsok kapott, vagy a generált, akkor hozzá csomópontokra, amikor az AKS-fürt létrehozása. Adja meg a különböző, mint az AKS-fürt létrehozásakor használt SSH-kulcsokat kell, ha a nyilvános SSH-kulcsot a Linux-AKS-csomópontok hozzáadása. Szükség esetén is létrehozhat egy SSH kulcs [macOS vagy Linux-alapú][ssh-nix] or [Windows][ssh-windows]. A PuTTY általános használatakor a kulcspár létrehozása, mentse a kulcspár egy OpenSSH formátumban ahelyett, hogy az alapértelmezett PuTTy titkos kulcs formátuma (.ppk fájlt).
+Szüksége lesz az Azure CLI 2.0.64 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
-> [!NOTE]
-> SSH-kulcsokat is jelenleg csak lehet hozzáadni az Azure parancssori felületével Linux-csomópontokat. Ha a Windows Server-csomópontok használata esetén az AKS-fürt létrehozásakor megadott SSH-kulcsok használata, és ugorjon a [beszerzése az AKS címe](#get-the-aks-node-address). Másik lehetőségként [kapcsolódni a távoli asztali protokoll (RDP) kapcsolatokat használt Windows Server-csomópontok][aks-windows-rdp].
+## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>Virtuálisgép-méretezési csoport-alapú AK-fürtök konfigurálása SSH-hozzáféréshez
 
-A lépéseket a az AKS-csomópontok a magánhálózati IP-címe eltér futtatása AKS-fürt típusa alapján:
+A virtuálisgép-méretezési csoport SSH-hozzáféréshez való konfigurálásához keresse meg a fürt virtuálisgép-méretezési csoportjának nevét, és adja hozzá az SSH nyilvános kulcsát a méretezési csoporthoz.
 
-* A legtöbb AKS-fürtök esetén kövesse a lépéseket a [IP-címének lekéréséhez rendszeres AKS-fürtök](#add-ssh-keys-to-regular-aks-clusters).
-* Az aks-ben, amely használhatja a virtuális gép méretezési csoportokat, például több csomópontkészletek vagy Windows Server-tároló támogatása, minden előzetes verziójú funkciók használatakor [kövesse a lépéseket, a virtuális gép scale set-alapú AKS fürtök](#add-ssh-keys-to-virtual-machine-scale-set-based-aks-clusters).
-
-### <a name="add-ssh-keys-to-regular-aks-clusters"></a>Adja hozzá az SSH-kulcsok rendszeres AKS-fürtök
-
-Adjon hozzá az SSH-kulcsot a Linux AKS csomóponthoz, hajtsa végre az alábbi lépéseket:
-
-1. Az erőforráscsoport nevét az AKS-fürt használatával erőforrások beolvasása [az aks show][az-aks-show]. A következő változót hozzá van rendelve a fürt neve *CLUSTER_RESOURCE_GROUP*. Cserélje le *myResourceGroup* ahol Ön AKS-fürt is található az erőforráscsoport nevét:
-
-    ```azurecli-interactive
-    CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
-    ```
-
-1. Az AKS fürt erőforrás csoport használatával listázni a [az virtuálisgép-lista][az-vm-list] parancsot. Ezek a virtuális gépek az AKS-csomópontok:
-
-    ```azurecli-interactive
-    az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
-    ```
-
-    Az alábbi példa kimenetében látható, az AKS-csomópontok:
-
-    ```
-    Name                      ResourceGroup                                  Location
-    ------------------------  ---------------------------------------------  ----------
-    aks-nodepool1-79590246-0  MC_myResourceGroupAKS_myAKSClusterRBAC_eastus  eastus
-    ```
-
-1. Az SSH-kulcsokat a csomópont hozzáadásához használja a [az vm user frissítése][az-vm-user-update] parancsot. Adja meg az erőforráscsoport nevét, majd az előző lépésben lekért az AKS-csomópontok egyikét. Alapértelmezés szerint az AKS-csomópontok tartozó felhasználónév a *azureuser*. Adja meg a helyét, a saját SSH nyilvános kulcs helyét, például *~/.ssh/id_rsa.pub*, vagy illessze be az SSH nyilvános kulcs tartalmát:
-
-    ```azurecli-interactive
-    az vm user update \
-      --resource-group $CLUSTER_RESOURCE_GROUP \
-      --name aks-nodepool1-79590246-0 \
-      --username azureuser \
-      --ssh-key-value ~/.ssh/id_rsa.pub
-    ```
-
-### <a name="add-ssh-keys-to-virtual-machine-scale-set-based-aks-clusters"></a>Adja hozzá az SSH-kulcsok a virtual machine scale set-alapú AKS fürtök
-
-Az SSH-kulcs ad hozzá egy Linux-AKS csomópont, amely része egy virtuálisgép-méretezési csoportot, hajtsa végre az alábbi lépéseket:
-
-1. Az erőforráscsoport nevét az AKS-fürt használatával erőforrások beolvasása [az aks show][az-aks-show]. A következő változót hozzá van rendelve a fürt neve *CLUSTER_RESOURCE_GROUP*. Cserélje le *myResourceGroup* ahol Ön AKS-fürt is található az erőforráscsoport nevét:
-
-    ```azurecli-interactive
-    CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
-    ```
-
-1. Ezután kérdezze le az AKS fürt a virtuális gép méretezési a [az vmss list][az-vmss-list] parancsot. A következő változót hozzá van rendelve a virtuális gép méretezési csoport neve *SCALE_SET_NAME*:
-
-    ```azurecli-interactive
-    SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
-    ```
-
-1. Az SSH-kulcsokat a virtuálisgép-méretezési csoportban lévő csomópontok hozzáadásához használja a [az vmss-bővítmény beállítása][az-vmss-extension-set] parancsot. Az az előző parancsokban elérhető az erőforráscsoportot és a virtuálisgép-méretezési csoport nevének beállítása. Alapértelmezés szerint az AKS-csomópontok tartozó felhasználónév a *azureuser*. Ha szükséges, frissítse a saját SSH nyilvános kulcs helyét, helyét például *~/.ssh/id_rsa.pub*:
-
-    ```azurecli-interactive
-    az vmss extension set  \
-        --resource-group $CLUSTER_RESOURCE_GROUP \
-        --vmss-name $SCALE_SET_NAME \
-        --name VMAccessForLinux \
-        --publisher Microsoft.OSTCExtensions \
-        --version 1.4 \
-        --protected-settings "{\"username\":\"azureuser\", \"ssh_key\":\"$(cat ~/.ssh/id_rsa.pub)\"}"
-    ```
-
-1. Az SSH-kulcsot használ a csomópontok alkalmazni a [az vmss update-instances][az-vmss-update-instances] parancsot:
-
-    ```azurecli-interactive
-    az vmss update-instances --instance-ids '*' \
-        --resource-group $CLUSTER_RESOURCE_GROUP \
-        --name $SCALE_SET_NAME
-    ```
-
-## <a name="get-the-aks-node-address"></a>Az AKS címe beolvasása
-
-Az AKS-csomópontok nyilvánosan nem jelennek meg a az interneten. Az AKS-csomópontok ssh-n használhatja a magánhálózati IP-címet. A következő lépésben létrehozott segítő podot az AKS-fürt, amely lehetővé teszi az SSH a csomópont a magánhálózati IP-címe. A lépéseket a az AKS-csomópontok a magánhálózati IP-címe eltér futtatása AKS-fürt típusa alapján:
-
-* A legtöbb AKS-fürtök esetén kövesse a lépéseket a [IP-címének lekéréséhez rendszeres AKS-fürtök](#ssh-to-regular-aks-clusters).
-* Az aks-ben, amely használhatja a virtuális gép méretezési csoportokat, például több csomópontkészletek vagy Windows Server-tároló támogatása, minden előzetes verziójú funkciók használatakor [kövesse a lépéseket, a virtuális gép scale set-alapú AKS fürtök](#ssh-to-virtual-machine-scale-set-based-aks-clusters).
-
-### <a name="ssh-to-regular-aks-clusters"></a>Ssh-n rendszeres AKS-fürtök
-
-A magánhálózati IP-címe egy AKS fürt csomópont használatával megtekintheti a [az vm list-ip-addresses][az-vm-list-ip-addresses] command. Provide your own AKS cluster resource group name obtained in a previous [az-aks-show][az-aks-show] . lépés:
+A méretezési csoport nevének lekéréséhez [használja az az][az-aks-show] [vmss List][az-vmss-list] parancsot az AK-fürt erőforráscsoport-nevének lekéréséhez.
 
 ```azurecli-interactive
-az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
+CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
-Az alábbi példa kimenetében látható, az AKS-csomópontok magánhálózati IP-címei:
+A fenti példa a *myResourceGroup* nevű *myAKSCluster* tartozó fürterőforrás-csoport nevét rendeli hozzá a *CLUSTER_RESOURCE_GROUP*-hoz. A példa ezután a *CLUSTER_RESOURCE_GROUP* használatával listázza a méretezési csoport nevét, és hozzárendeli a *SCALE_SET_NAME*.  
 
+> [!NOTE]
+> Az SSH-kulcsok jelenleg csak az Azure CLI használatával adhatók hozzá a Linux-csomópontokhoz. Ha SSH használatával szeretne csatlakozni egy Windows Server-csomóponthoz, használja az AK-fürt létrehozásakor megadott SSH-kulcsokat, és hagyja ki a következő parancsokat az SSH nyilvános kulcs hozzáadásához. Továbbra is szüksége lesz a hibakereséshez használni kívánt csomópont IP-címére, amely a szakasz utolsó parancsában látható. Azt is megteheti, hogy az SSH használata helyett a [Távoli asztal protokoll (RDP) kapcsolatain keresztül tud csatlakozni a Windows Server-csomópontokhoz][aks-windows-rdp] .
+
+Az SSH-kulcsok virtuálisgép-méretezési csoport csomópontjaihoz való hozzáadásához használja az az [vmss Extension set][az-vmss-extension-set] és [az az vmss Update-instances][az-vmss-update-instances] parancsot.
+
+```azurecli-interactive
+az vmss extension set  \
+    --resource-group $CLUSTER_RESOURCE_GROUP \
+    --vmss-name $SCALE_SET_NAME \
+    --name VMAccessForLinux \
+    --publisher Microsoft.OSTCExtensions \
+    --version 1.4 \
+    --protected-settings "{\"username\":\"azureuser\", \"ssh_key\":\"$(cat ~/.ssh/id_rsa.pub)\"}"
+
+az vmss update-instances --instance-ids '*' \
+    --resource-group $CLUSTER_RESOURCE_GROUP \
+    --name $SCALE_SET_NAME
 ```
-VirtualMachine            PrivateIPAddresses
-------------------------  --------------------
-aks-nodepool1-79590246-0  10.240.0.4
-```
 
-### <a name="ssh-to-virtual-machine-scale-set-based-aks-clusters"></a>Ssh-KAPCSOLATOT a virtuális gép set-alapú AKS fürtök méretezése
+A fenti példa a *CLUSTER_RESOURCE_GROUP* és a *SCALE_SET_NAME* változót használja az előző parancsokból. A fenti példa a *~/.ssh/id_rsa.pub* -t használja az SSH nyilvános kulcsának helyeként.
 
-A belső IP-cím használatával csomópont listában a [kubectl get parancs][kubectl-get]:
+> [!NOTE]
+> Alapértelmezés szerint az AK-csomópontok felhasználóneve a következő: azureuser.
+
+Miután hozzáadta az SSH nyilvános kulcsát a méretezési csoporthoz, az SSH-t a méretezési csoport egy csomópontos virtuális gépén az IP-címével is megadhatja. Tekintse meg az AK-fürtcsomópontok magánhálózati IP-címeit a [kubectl Get paranccsal][kubectl-get].
 
 ```console
 kubectl get nodes -o wide
 ```
 
-Az alábbi példa kimenetében látható a fürtöt, a Windows Server-csomópont a belső IP-címek az összes csomópont.
+A következő példa kimenet a fürt összes csomópontjának belső IP-címét jeleníti meg, beleértve a Windows Server-csomópontot is.
 
 ```console
 $ kubectl get nodes -o wide
@@ -149,30 +83,80 @@ aks-nodepool1-42485177-vmss000000   Ready    agent   18h   v1.12.7   10.240.0.4 
 aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67   <none>        Windows Server Datacenter   10.0.17763.437
 ```
 
-Jegyezze fel a csomópont hibaelhárítása kívánt belső IP-címe. Ez a cím egy későbbi lépésben fogja használni.
+Jegyezze fel a hibához használni kívánt csomópont belső IP-címét.
 
-## <a name="create-the-ssh-connection"></a>Az SSH-kapcsolat létrehozása
+Ha a csomópontot SSH használatával szeretné elérni, kövesse az [SSH-kapcsolat létrehozása](#create-the-ssh-connection)című témakör lépéseit.
 
-Hozzon létre egy SSH-kapcsolatot egy AKS-csomópontra, a futtatásához az AKS-fürt segítő podot. A segítő pod biztosít SSH-hozzáférés a fürthöz, és ezután további SSH-csomópont elérése. Hozzon létre, és ez segítő pod használja, hajtsa végre az alábbi lépéseket:
+## <a name="configure-virtual-machine-availability-set-based-aks-clusters-for-ssh-access"></a>Virtuális gépek rendelkezésre állási csoport-alapú AK-fürtök konfigurálása SSH-hozzáféréshez
 
-1. Futtassa a `debian` tároló kép és a egy terminál-munkamenetben csatlakoztatni. Ez a tároló az AKS-fürt bármely csomópontjának egy SSH-munkamenet létrehozásához használható:
+A virtuális gépek rendelkezésre állási csoportjának SSH-hozzáféréshez való konfigurálásához keresse meg a fürt Linux-csomópontjának nevét, és adja hozzá az SSH nyilvános kulcsát az adott csomóponthoz.
+
+Az az [AK show][az-aks-show] paranccsal lekérheti az AK-fürt erőforráscsoport-nevét, majd az az [VM List][az-vm-list] paranccsal megtekintheti a fürt Linux-csomópontjának virtuális gép nevét.
+
+```azurecli-interactive
+CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
+```
+
+A fenti példa a *myResourceGroup* nevű *myAKSCluster* tartozó fürterőforrás-csoport nevét rendeli hozzá a *CLUSTER_RESOURCE_GROUP*-hoz. A példa ezután a *CLUSTER_RESOURCE_GROUP* használatával listázza a virtuális gép nevét. A példa kimenete a virtuális gép nevét mutatja: 
+
+```
+Name                      ResourceGroup                                  Location
+------------------------  ---------------------------------------------  ----------
+aks-nodepool1-79590246-0  MC_myResourceGroupAKS_myAKSClusterRBAC_eastus  eastus
+```
+
+Az SSH-kulcsok csomóponthoz való hozzáadásához használja az az [VM User Update][az-vm-user-update] parancsot.
+
+```azurecli-interactive
+az vm user update \
+    --resource-group $CLUSTER_RESOURCE_GROUP \
+    --name aks-nodepool1-79590246-0 \
+    --username azureuser \
+    --ssh-key-value ~/.ssh/id_rsa.pub
+```
+
+A fenti példa a *CLUSTER_RESOURCE_GROUP* változót és a csomópont virtuális gép nevét használja az előző parancsokból. A fenti példa a *~/.ssh/id_rsa.pub* -t használja az SSH nyilvános kulcsának helyeként. Az elérési út megadása helyett a nyilvános SSH-kulcs tartalmát is használhatja.
+
+> [!NOTE]
+> Alapértelmezés szerint az AK-csomópontok felhasználóneve a következő: azureuser.
+
+Miután hozzáadta az SSH nyilvános kulcsát a csomópont virtuális géphez, a saját IP-címével SSH-t telepíthet az adott virtuális gépre. Az az [VM List-IP-Addresss][az-vm-list-ip-addresses] paranccsal tekintheti meg egy AK-fürt csomópontjának magánhálózati IP-címét.
+
+```azurecli-interactive
+az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
+```
+
+A fenti példa az előző parancsokban beállított *CLUSTER_RESOURCE_GROUP* változót használja. A következő példa kimenete az AK-csomópontok magánhálózati IP-címeit mutatja be:
+
+```
+VirtualMachine            PrivateIPAddresses
+------------------------  --------------------
+aks-nodepool1-79590246-0  10.240.0.4
+```
+
+## <a name="create-the-ssh-connection"></a>Az SSH-kapcsolatok létrehozása
+
+Egy AK-csomóponthoz való SSH-kapcsolatok létrehozásához egy segítő Pod-t kell futtatnia az AK-fürtben. Ez a segítő Pod SSH-hozzáférést biztosít a fürthöz, majd az SSH-csomópont további elérését. A segítő Pod létrehozásához és használatához hajtsa végre a következő lépéseket:
+
+1. Futtasson `debian` egy tároló-rendszerképet, és csatolja hozzá a terminál-munkamenetet. Ezzel a tárolóval létrehozhat egy SSH-munkamenetet az AK-fürt bármely csomópontjának használatával:
 
     ```console
     kubectl run -it --rm aks-ssh --image=debian
     ```
 
     > [!TIP]
-    > Használatakor a Windows Server-csomópontok (jelenleg előzetes verzióban érhető el az aks-ben), egy csomópont-választó hozzáadása a egy Linux-csomóponton a Debian tároló ütemezni a következő parancsot:
+    > Ha Windows Server-csomópontokat használ (jelenleg előzetes verzióban érhető el), adjon hozzá egy csomópont-választót a parancshoz, és ütemezze a Debian-tárolót egy Linux-csomóponton:
     >
     > `kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"apps/v1","spec":{"template":{"spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}}}'`
 
-1. Az alap Debian rendszerképet az SSH-összetevők nem tartalmazza. Után a terminál-munkamenetet a tárolóhoz van csatlakoztatva, egy SSH-ügyfél használatával telepítse `apt-get` módon:
+1. Ha a terminál-munkamenet csatlakozik a tárolóhoz, telepítsen egy SSH- `apt-get`ügyfelet a következő használatával:
 
     ```console
     apt-get update && apt-get install openssh-client -y
     ```
 
-1. Egy új terminálablakban a listában a podok az AKS fürt használatával nem csatlakozik a tárolóhoz, a [kubectl get pods][kubectl-get] parancsot. A pod az előző lépésben létrehozott kezdődik a neve *aks-ssh*, az alábbi példában látható módon:
+1. Nyisson meg egy új terminált, amely nem csatlakozik a tárolóhoz, sorolja fel az AK-fürtön lévő hüvelyeket a [kubectl Get hüvely][kubectl-get] parancs használatával. Az előző lépésben létrehozott Pod az *AK-SSH*névvel kezdődik, ahogy az alábbi példában is látható:
 
     ```
     $ kubectl get pods
@@ -181,21 +165,21 @@ Hozzon létre egy SSH-kapcsolatot egy AKS-csomópontra, a futtatásához az AKS-
     aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
     ```
 
-1. Ez a cikk első lépésben hozzáadott a nyilvános SSH-kulcsot az AKS-csomópont. Ezután másolja a titkos SSH-kulcs a pod. A titkos kulcsot hozzon létre SSH be az AKS-csomópontok szolgál.
+1. Egy korábbi lépésben hozzáadta a nyilvános SSH-kulcsot a hibakereséshez kívánt AK-csomóponthoz. Most másolja a privát SSH-kulcsot a Helper Pod-ba. Ez a titkos kulcs az SSH-nak az AK-csomópontba való létrehozásához használatos.
 
-    Adja meg a saját *aks-ssh* podnév az előző lépésben beszerzett. Ha szükséges, módosítsa *~/.ssh/id_rsa* a titkos SSH-kulcs helyét:
+    Adja meg az előző lépésben beszerzett saját *AK-SSH-Pod-* nevet. Ha szükséges, módosítsa a *~/.ssh/id_rsa* a saját SSH-kulcsának helyére:
 
     ```console
     kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
     ```
 
-1. Vissza a terminál-munkamenetet a tárolóhoz, frissítse a másolt engedélyeit `id_rsa` titkos SSH-kulcsának úgy, hogy az írásvédett felhasználó:
+1. Térjen vissza a terminál-munkamenetbe a tárolóba, frissítse a másolt `id_rsa` titkos SSH-kulcs engedélyeit, hogy az csak a felhasználó számára írásvédett legyen:
 
     ```console
     chmod 0600 id_rsa
     ```
 
-1. Most hozzon létre egy SSH-kapcsolatot az AKS csomópontját. Újra, az alapértelmezett felhasználónév az AKS-csomópontok van *azureuser*. Fogadja el a rendszer kéri, a kapcsolat folytatásához, mivel az SSH-kulcsot az első megbízható. A bash parancssorban az AKS-csomópontját, majd megadva:
+1. Hozzon létre egy SSH-kapcsolatokat az AK-csomóponthoz. Az AK-csomópontok alapértelmezett felhasználóneve a következő: azureuser. Fogadja el a kérést a kapcsolódás folytatásához, mivel az SSH-kulcs először megbízható. Ekkor megjelenik az AK-csomópont bash-üzenete:
 
     ```console
     $ ssh -i id_rsa azureuser@10.240.0.4
@@ -220,11 +204,11 @@ Hozzon létre egy SSH-kapcsolatot egy AKS-csomópontra, a futtatásához az AKS-
 
 ## <a name="remove-ssh-access"></a>SSH-hozzáférés eltávolítása
 
-Ha elkészült, `exit` az SSH-munkamenetet, majd `exit` a tároló interaktív munkamenet. A tároló munkamenet bezárása után, a rendszer törli a pod az AKS-fürtöt az SSH-hozzáféréshez.
+Ha elkészült, `exit` az SSH-munkamenetet `exit` , majd az interaktív tároló munkamenetét. A tároló-munkamenet bezárásakor a rendszer törli az AK-fürtről az SSH-hozzáféréshez használt Pod-hozzáférést.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha további hibaelhárítási adatokat van szüksége, akkor az [kubelet-naplók megtekintése][view-kubelet-logs] or [view the Kubernetes master node logs][view-master-logs].
+Ha további hibaelhárítási adatokra van szüksége, megtekintheti [a kubelet][view-kubelet-logs] -naplókat, vagy megtekintheti [a Kubernetes fő csomópontjának naplóit][view-master-logs].
 
 <!-- EXTERNAL LINKS -->
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

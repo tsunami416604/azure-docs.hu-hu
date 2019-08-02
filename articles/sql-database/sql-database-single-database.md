@@ -1,6 +1,6 @@
 ---
-title: Mi az, hogy egy Azure SQL Database önálló adatbázisok |} A Microsoft Docs
-description: További tudnivalók az Azure SQL Database önálló adatbázis
+title: Mi az a Azure SQL Database önálló adatbázis | Microsoft Docs
+description: További tudnivalók a Azure SQL Database önálló adatbázisairól
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -10,56 +10,55 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: 36b1fb96ac1dd89375588a65063ce729f6ac825d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1dc1d2780dcaf27e0c60cfffe84581c0278491dd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65794389"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566529"
 ---
-# <a name="what-is-a-single-database-in-azure-sql-database"></a>Mi az az Azure SQL Database egy adatbázis
+# <a name="what-is-a-single-database-in-azure-sql-database"></a>Mi az a Azure SQL Database önálló adatbázisa?
 
-Egyetlen adatbázis-telepítési beállítás saját erőforráskészlettel az Azure SQL Database adatbázist hoz létre, és a egy SQL Database-kiszolgálón keresztül felügyelt. Önálló adatbázis, az egyes adatbázisok el különítve a önálló, hordozható, és a saját szolgáltatási szinten belül a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) vagy [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) és a egy garantált a számítási méret.
+Az önálló adatbázis-telepítési lehetőség létrehoz egy adatbázist a Azure SQL Database saját erőforrásaival, és egy SQL Database-kiszolgálón keresztül felügyeli. Egyetlen adatbázis esetében minden adatbázis el van különítve egymástól és hordozható számítógépektől, amelyek mindegyike saját szolgáltatási réteggel rendelkezik a [DTU-alapú vásárlási modellben](sql-database-service-tiers-dtu.md) vagy a [virtuális mag-alapú vásárlási modellben](sql-database-service-tiers-vcore.md) , valamint egy garantált számítási méretet.
 
 > [!IMPORTANT]
-> Önálló adatbázis az egyik Azure SQL Database három üzembe helyezési lehetőségeit. A másik kettőt vannak [rugalmas készletek](sql-database-elastic-pool.md) és [felügyelt példány](sql-database-managed-instance.md).
+> Az önálló adatbázisok a Azure SQL Database három központi telepítési lehetőségének egyike. A másik kettő a [rugalmas készletek](sql-database-elastic-pool.md) és a [felügyelt példány](sql-database-managed-instance.md).
 > [!NOTE]
-> Egy Azure SQL Database-ben szószedet, lásd: [SQL-adatbázis használati szószedet](sql-database-glossary-terms.md)
+> A Azure SQL Database használati feltételeinek szószedetét lásd: [SQL Database kifejezések szószedete](sql-database-glossary-terms.md)
 
-## <a name="dynamic-scalability"></a>A dinamikus méretezhetőség
+## <a name="dynamic-scalability"></a>Dinamikus skálázhatóság
 
-A kiépített számítási rétegben kisméretű számítási mérete vagy a kiszolgáló nélküli (előzetes verzió) számítási kapacitás az alacsony költségű, egyedülálló, kisméretű adatbázison is hozza létre első alkalmazását. Módosítja a [számítási és a szolgáltatási szint](sql-database-single-database-scale.md) manuálisan vagy programon keresztül bármikor, ha a megoldás. Úgy módosíthatja a teljesítményt, hogy az nem jár leállással az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre, és lehetővé teszi, hogy csak azokért az erőforrásokért fizessen, amelyekre és amikor szüksége van.
+Az első alkalmazást egy kis méretű, különálló adatbázison is létrehozhatja, alacsony áron, a kiszolgáló nélküli (előzetes) számítási rétegben vagy a kiépített számítási szinten kis számítási méretekben. A [számítási vagy szolgáltatási szintet](sql-database-single-database-scale.md) manuálisan vagy programozottan változtathatja meg a megoldás igényeinek megfelelően. Úgy módosíthatja a teljesítményt, hogy az nem jár leállással az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre, és lehetővé teszi, hogy csak azokért az erőforrásokért fizessen, amelyekre és amikor szüksége van.
 
 ## <a name="single-databases-and-elastic-pools"></a>Önálló adatbázisok és rugalmas készletek
 
-Önálló adatbázis is áthelyezhetők, be- vagy kívüli egy [rugalmas készlet](sql-database-elastic-pool.md) az erőforrás-megosztás. Számos vállalkozás és alkalmazás számára elegendő az, ha önálló adatbázisokat tudnak létrehozni, majd azok teljesítményét szükség szerint felfelé és lefelé tudják skálázni – különösen akkor, ha a használati minták viszonylag jól jelezhetők előre. Azonban előre nem látható használati minták esetén nehézségekbe ütközhet a költségek és az üzleti modell kezelése. Rugalmas készletek úgy tervezték, hogy a probléma megoldásához. A koncepció egyszerű. Az egyes adatbázisok helyett a készlet teljesítmény-erőforrásokat, és a készlet közös teljesítményéért erőforrások helyett egy önálló adatbázis teljesítményéért fizet.
+Az erőforrás-megosztáshoz egyetlen adatbázis helyezhető be vagy ki egy [rugalmas készletbe](sql-database-elastic-pool.md) . Számos vállalkozás és alkalmazás számára elegendő az, ha önálló adatbázisokat tudnak létrehozni, majd azok teljesítményét szükség szerint felfelé és lefelé tudják skálázni – különösen akkor, ha a használati minták viszonylag jól jelezhetők előre. Azonban előre nem látható használati minták esetén nehézségekbe ütközhet a költségek és az üzleti modell kezelése. A rugalmas készletek a probléma megoldásához lettek kialakítva. A koncepció egyszerű. A teljesítményadatokat egy készlethez kell hozzárendelni, és nem egy önálló adatbázishoz, hanem a készlet kollektív teljesítmény-erőforrásaiért kell fizetnie, nem pedig egyetlen adatbázis teljesítményére.
 
 ## <a name="monitoring-and-alerting"></a>Figyelés és riasztás
 
-Használja a beépített [alkalmazásteljesítmény-figyelési](sql-database-performance.md) és [riasztási eszközökben](sql-database-insights-alerts-portal.md), teljesítmény-értékeléssel kombinált. Ezek lehetővé teszik az aktuális vagy a projekthez kapcsolódó teljesítményigényeken alapuló fel- vagy leskálázás hatásainak gyors kiértékelését. Az SQL Database emellett [metrikák és diagnosztikai naplók kibocsátásával](sql-database-metrics-diag-logging.md) is képes megkönnyíteni a felügyeletet.
+A beépített [Teljesítményfigyelő](sql-database-performance.md) és [riasztási eszközöket](sql-database-insights-alerts-portal.md)a teljesítmény-minősítésekkel együtt használva használhatja. Ezek lehetővé teszik az aktuális vagy a projekthez kapcsolódó teljesítményigényeken alapuló fel- vagy leskálázás hatásainak gyors kiértékelését. Az SQL Database emellett [metrikák és diagnosztikai naplók kibocsátásával](sql-database-metrics-diag-logging.md) is képes megkönnyíteni a felügyeletet.
 
 ## <a name="availability-capabilities"></a>Rendelkezésre állás
 
-Önálló adatbázisok, rugalmas készletek és a felügyelt példányok összes adja meg a rendelkezésre állási jellemzői. További információ: [rendelkezésre állási jellemzőinek](sql-database-technical-overview.md#availability-capabilities).
+Az önálló adatbázisok, a rugalmas készletek és a felügyelt példányok számos rendelkezésre állási jellemzőt biztosítanak. További információ: [rendelkezésre állási jellemzők](sql-database-technical-overview.md#availability-capabilities).
 
 ## <a name="transact-sql-differences"></a>A Transact-SQL eltérései
 
-A legtöbb Transact-SQL funkcióival, mellyel az alkalmazások teljes mértékben támogatja a Microsoft SQL Server és az Azure SQL Database. Például az SQL-alapösszetevők például adattípusok, a operátorok, a karakterlánc, a aritmetikai, logikai, és a kurzor funkciók, munka azonos SQL Server és SQL Database. Azonban néhány T-SQL különbségek vannak a DDL (data-definíciós nyelv) és a T-SQL-utasításokkal, és csak részlegesen támogatott lekérdezések DML (adatok adatkezelési language) elemek (Ez a cikk későbbi részében bemutatjuk).
-Emellett vannak bizonyos funkciók és a szintaxis, amely nem támogatott egyáltalán, mivel a Azure SQL Database az elkülöníteni a funkciókat a főadatbázis és az operációs rendszer. Emiatt a legtöbb kiszolgálói szintű tevékenység nem illik az SQL Database. T-SQL-utasítások és beállítások nem érhető el, ha kiszolgálói szintű beállításokat vagy operációsrendszer-összetevők, konfigurálása, vagy adja meg a fájlrendszer-konfigurációt. Ilyen képességek szükségesek, ha megfelelő alternatív gyakran érhető el bármilyen egyéb módon az SQL Database-ből vagy más Azure funkciót vagy szolgáltatást.
+Az alkalmazások által használt legtöbb Transact-SQL-szolgáltatás teljes mértékben támogatott Microsoft SQL Server és Azure SQL Database egyaránt. Például az alapvető SQL-összetevők, például az adattípusok, a operátorok, a karakterláncok, a aritmetikai, a logikai és a kurzor függvények azonos módon működnek SQL Server és SQL Database. Van azonban néhány, a DDL (adatdefiníciós nyelv) és a DML (adatmanipulációs nyelv) elemeinek néhány T-SQL-eltérése, ami csak részben támogatott T-SQL-utasításokat és-lekérdezéseket eredményez (amit a cikk későbbi részében tárgyalunk).
+Emellett vannak olyan szolgáltatások és szintaxisok is, amelyek egyáltalán nem támogatottak, mert Azure SQL Database úgy lett kialakítva, hogy elkülönítse a szolgáltatásokat a főadatbázis és az operációs rendszer függőségeitől. Ennek megfelelően a legtöbb kiszolgálói szintű tevékenység nem megfelelő a SQL Database számára. A T-SQL-utasítások és-beállítások nem érhetők el, ha a kiszolgálói szintű beállításokat, az operációs rendszer összetevőit vagy a fájlrendszer konfigurációját konfigurálja. Ha ilyen képességekre van szükség, a megfelelő alternatíva gyakran elérhető más módon, SQL Database vagy egy másik Azure-szolgáltatásból vagy-szolgáltatásból.
 
-További információkért lásd: [feloldása Transact-SQL különbségek az SQL Database áttelepítése során](sql-database-transact-sql-information.md).
+További információ: [Transact-SQL különbségek feloldása az áttelepítés során SQL Databasera](sql-database-transact-sql-information.md).
 
 ## <a name="security"></a>Biztonság
 
-Az SQL Database biztosít széles körű [beépített biztonsági és megfelelőségi](sql-database-security-overview.md) szolgáltatásokat, amelyek segítik a különféle biztonsági és megfelelőségi követelmények alkalmazását.
+SQL Database számos [beépített biztonsági és megfelelőségi](sql-database-security-overview.md) funkciót kínál, amelyek segítségével az alkalmazás megfelel a különböző biztonsági és megfelelőségi követelményeknek.
 
 > [!IMPORTANT]
-> Az Azure SQL Database (az összes központi telepítési beállítások), egy több megfelelőségi szabvány tanúsított módon. További információkért lásd: a [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) ahol megtalálhatja a legfrissebb listáját az SQL Database megfelelőségi minősítései közül is bemutat.
+> Azure SQL Database (az összes központi telepítési lehetőség), számos megfelelőségi szabványnak megfelelő minősítéssel rendelkezik. További információkért tekintse meg a [Microsoft Azure adatvédelmi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) központot, ahol megtalálhatja a SQL Database megfelelőségi minősítések legfrissebb listáját.
 
 ## <a name="next-steps"></a>További lépések
 
-- Való használatának gyors megkezdése egy önálló adatbázis, a [egyetlen adatbázis rövid guide.md](sql-database-single-database-quickstart-guide.md).
-- Az SQL Server-adatbázis áttelepítése az Azure-bA kapcsolatos további információkért lásd: [áttelepítése az Azure SQL Database](sql-database-single-database-migrate.md).
+- Egyetlen adatbázis gyors megkezdéséhez kezdje az [egyetlen adatbázis](sql-database-single-database-quickstart-guide.md)rövid útmutató Guide.MD.
+- A SQL Server-adatbázisok Azure-ba történő áttelepítésével kapcsolatos információkért lásd: [áttelepítés Azure SQL Databasere](sql-database-single-database-migrate.md).
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](sql-database-features.md).

@@ -4,7 +4,7 @@ description: Ismerje meg az eszközök és az integrált fejlesztői környezete
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: gokuma
-ms.openlocfilehash: c4e101e45dc1641c5731e246f7fdeeb37ebc0823
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vijetaj
+ms.openlocfilehash: 3b8eaae63f0e316d82dd5a1238a802eefd756d9e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65864420"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68557795"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Fejlesztőeszközök a Data Science virtuális gépen
 
@@ -65,7 +65,7 @@ Az adatelemzési virtuális gép (DSVM) biztosítja, hogy a fejlesztési környe
 | Mi ez?   | Webes IDE az r nyelvhez    |
 | A DSVM támogatott verziói      | Linux      |
 | Gyakori használati      |  R-fejlesztés     |
-| Hogyan futtathatja / használata?      | Engedélyezze a szolgáltatást a _systemctl engedélyezése az rstudio-kiszolgáló_, majd indítsa el a szolgáltatást a _systemctl indítsa el az rstudio-kiszolgálót_. Ezután bejelentkezhet az RStudio Serverhez: http:\// a-vm-ip:8787.       |
+| Hogyan futtathatja / használata?      | Engedélyezze a szolgáltatást a _systemctl engedélyezése az rstudio-kiszolgáló_, majd indítsa el a szolgáltatást a _systemctl indítsa el az rstudio-kiszolgálót_. Ezután bejelentkezhet a RStudio-kiszolgálóra a http:\//Your-VM-IP: 8787 címen.       |
 | A dsvm-hez kapcsolódó eszközök      |   Visual Studio 2019, Visual Studio Code, RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 

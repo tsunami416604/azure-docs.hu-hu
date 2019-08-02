@@ -1,7 +1,7 @@
 ---
-title: Beszélgetés Learner alapértelmezett konfiguráció – a Microsoft Cognitive Services |} A Microsoft Docs
+title: Conversation Learner alapértelmezett konfiguráció – Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg az alapértelmezett Beszélgetéstanuló konfigurációt.
+description: Az alapértelmezett Conversation Learner konfiguráció ismertetése.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,16 +10,17 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: ebdc1e1c100329e95bd19359408cb138d233b1c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: aaef6f5498e5a8da65d1c829feae8b3e85dba0fd
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66385445"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705294"
 ---
 # <a name="default-values-and-boundaries"></a>Alapértelmezett értékek és határok
 
-Ez a dokumentum ismerteti az alapértelmezett konfiguráció Beszélgetéstanuló és a kulcs a szolgáltatás határain.
+Ez a dokumentum a Conversation Learner és a legfontosabb szolgáltatási határok alapértelmezett konfigurációját ismerteti.
 
 ## <a name="default-configuration"></a>Alapértelmezett konfiguráció
 
@@ -31,23 +32,23 @@ Alapértelmezett munkamenet időkorlátja | 30 perc
 
 Paraméter | Korlát
 --- | --- 
-Szerzői API, maximális HTTP hívások / hó | 5M
-Szerzői API, maximális HTTP-hívások | 25
-Munkamenet API-t, a maximális HTTP-hívások / hó | 500 000
-Munkamenet API-t, a maximális HTTP-hívások / másodperc | 10
-Egyéni (nem programozott) entitás modell / maximális száma | Lásd: [LUIS határok doc](https://docs.microsoft.com/azure/cognitive-services/luis/luis-boundaries); a gyakorlatban, tényleges szám valamivel kisebb is lehet.
-Egyes modellek előre összeállított entitások maximális száma | Lásd: [LUIS határok doc](https://docs.microsoft.com/azure/cognitive-services/luis/luis-boundaries)
-Entitások (összesen) egyes modellek maximális száma | 100
-Egyes modellek műveletek maximális száma | 32
-Egyes modellek train párbeszédpanelek maximális száma | 1000
-Felhasználók maximális száma fordulat / train párbeszédpanel | 100
-Egyes modellek log párbeszédpanelek maximális száma | Nincs előre beállított korlát, de a napló párbeszédpanelek csak megmaradnak megsemmisülne fix időszakra.  A beszélgetés Learner felhasználói felület ezenkívül megjelenítése a 100 log párbeszédpanelek egyszerre. 
-Modellek felhasználónkénti maximális száma | Nincs előre beállított korlát
-Nem várakozási soros műveletek maximális száma | 5 (*)
+API-k készítése, maximális HTTP-hívások havonta | 5P
+API-k készítése, max. HTTP-hívások másodpercenként | 25
+Munkamenet-API, maximális HTTP-hívások havonta | 500 000
+Munkamenet-API, HTTP-hívások maximális száma másodpercenként | 10
+Egyéni (nem programozott) entitások maximális száma modell szerint | Lásd: [Luis határok doc](https://docs.microsoft.com/azure/cognitive-services/luis/luis-boundaries); a gyakorlatban a tényleges szám lehet valamivel kisebb
+Előre elkészített entitások maximális száma modell szerint | Lásd: [Luis határok doc](https://docs.microsoft.com/azure/cognitive-services/luis/luis-boundaries)
+Entitások maximális száma (összesen)/modell | 100
+Műveletek maximális száma modell szerint | 32
+A betanítási párbeszédpanelek maximális száma modell szerint | 1000
+A felhasználó által kiváltott felhasználók maximális száma | 100
+Naplózási párbeszédpanelek maximális száma egy modellben | Nincs előre beállított korlát, de a naplózási párbeszédpanelek csak rögzített ideig maradnak, mielőtt elveti őket.  Emellett a Conversation Learner felhasználói felületén egyszerre az 100-es naplózási párbeszédpanel jelenik meg. 
+Modellek maximális száma felhasználónként | Nincs előre beállított korlát
+Szekvenciális nem várakozási műveletek maximális száma | 5 (*)
 
-(*) 5 egymást követő nem várakozási művelet után minden nem várakozási művelet maszkolva, és Beszélgetéstanuló elérhető várakozási műveletek közül fog választani.
+(*) 5 szekvenciális nem várakozási művelet után a rendszer az összes nem várt műveletet eltakarja, és Conversation Learner az elérhető várakozási műveletek közül választhat.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Beszélgetéstanuló használatának első lépései](./quickstart.md)
+> [Ismerkedés a Conversation Learner](./quickstart.md)

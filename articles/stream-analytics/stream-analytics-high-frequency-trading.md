@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 33a7b27d065fc0383e4693053f7bfb6d56e2d33b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae82c0e72287ee4c89cb3fb2294bf4bd79aec8c3
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61480068"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598639"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Nagy gyakoriságú kereskedelmi szimuláció a Stream Analyticsszel
 Az Azure Stream Analyticsben az SQL-nyelv, illetve a felhasználó által definiált JavaScript-függvények (UDF-ek) és felhasználó által definiált összesítések (UDA-k) kombinációja lehetővé teszi, hogy a felhasználók fejlett elemzéseket végezzenek. A fejlett elemzések magukban foglalhatnak például online gépi tanulásra vonatkozó tanítási és pontozási, valamint állapotalapú folyamat-szimulációkat. Ez a cikk bemutatja, hogyan történik egy nagy gyakoriságú kereskedelmi forgatókönyvben a folyamatos tanítási és pontozási folyamatokat végrehajtó lineáris regressziós modell futtatása egy Azure Stream Analytics-feladatban.
@@ -65,7 +65,7 @@ socket.On(Socket.EVENT_CONNECT, () =>
 >Az esemény időbélyegzője **lastUpdated**, alapidőpont szerint.
 
 ### <a name="predictive-model-for-high-frequency-trading"></a>A nagy gyakoriságú kereskedelem prediktív modellje
-Bemutató céljából a jelen anyagban a Darryl Shen [tanulmányában ismertetett](http://eprints.maths.ox.ac.uk/1895/1/Darryl%20Shen%20%28for%20archive%29.pdf) lineáris modellt használjuk.
+Bemutató céljából a jelen anyagban a Darryl Shen [tanulmányában ismertetett](https://docplayer.net/23038840-Order-imbalance-based-strategy-in-high-frequency-trading.html) lineáris modellt használjuk.
 
 A kötetsorrend-egyenetlenség (VOI) az aktuális ajánlattételi/lekérdezési ár és kötet, valamint a legutóbbi órajelhez tartozó ajánlattételi/lekérdezési ár és kötet egyik funkciója. Ez a tanulmány meghatározza az összefüggést a VOI és a jövőbeli ármozgás között. Lineáris modellt hoz létre a legutóbbi 5 VOI-érték és a következő 10 órajel során végbemenő árváltozás között. A modell tanítása az előző nap adatainak lineáris regressziós módszerrel történő feldolgozásával történik. 
 

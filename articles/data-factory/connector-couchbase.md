@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 27f327493fbf3d7856b9488ecd0dd2509976ccfc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c3cd734380e2a3e3fbf35439ff807738c549a086
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60533973"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726148"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Couchbase
 
@@ -44,11 +44,11 @@ A Couchbase társított szolgáltatás a következő tulajdonságok támogatotta
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **A Couchbase** | Igen |
-| connectionString | Az ODBC kapcsolati karakterlánc Couchbase csatlakozni. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Hitelesítő adatok karakterlánca is helyezheti az Azure Key Vaultban, és lehúzhassa a `credString` konfigurációs ki a kapcsolati karakterláncot. Tekintse meg a következő minták és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. | Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **Couchbase** | Igen |
+| connectionString | Az ODBC kapcsolati karakterlánc Couchbase csatlakozni. <br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A hitelesítő adatokat karakterláncot is elhelyezheti Azure Key Vaultban `credString` , és lekérheti a konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -69,7 +69,7 @@ A Couchbase társított szolgáltatás a következő tulajdonságok támogatotta
 }
 ```
 
-**Példa: az Azure Key Vaultban tárolja a hitelesítő adatok karakterlánca**
+**Példa: tárolja a hitelesítő adatok karakterláncát Azure Key Vault**
 
 ```json
 {
@@ -106,7 +106,7 @@ Couchbase adatmásolás, állítsa be a type tulajdonság, az adatkészlet **Cou
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **CouchbaseTable** | Igen |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **CouchbaseTable** | Igen |
 | tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 
@@ -117,11 +117,12 @@ Couchbase adatmásolás, állítsa be a type tulajdonság, az adatkészlet **Cou
     "name": "CouchbaseDataset",
     "properties": {
         "type": "CouchbaseTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Couchbase linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -136,7 +137,7 @@ Adatok másolása a Couchbase, állítsa be a forrás típusaként a másolási 
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **CouchbaseSource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **CouchbaseSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**

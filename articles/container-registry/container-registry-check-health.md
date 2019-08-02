@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 07/02/2019
 ms.author: danlep
 ms.openlocfilehash: 3511655d220ee85ce6b5744612e5d6fddafbe877
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68309736"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Azure Container Registry állapotának megtekintése
 
 Az Azure Container Registry használatakor időnként problémák merülhetnek fel. Előfordulhat például, hogy nem tudja lekérni a tároló rendszerképét, mert a helyi környezetben Docker-probléma van. Vagy a hálózati hiba miatt nem lehet csatlakozni a beállításjegyzékhez. 
 
-Az első diagnosztikai lépésként futtassa az az [ACR-ellenőrzési állapotot][az-acr-check-health] command to get information about the health of the environment and optionally access to a target registry. This command is available in Azure CLI version 2.0.67 or later. If you need to install or upgrade, see [Install Azure CLI][azure-cli].
+Első diagnosztikai lépésként futtassa az az [ACR renézz-Health][az-acr-check-health] parancsot a környezet állapotával kapcsolatos információk lekéréséhez és a megcélzott beállításjegyzékhez való igény szerinti hozzáféréshez. Ez a parancs az Azure CLI 2.0.67 vagy újabb verziójában érhető el. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
 ## <a name="run-az-acr-check-health"></a>Futtatás az ACR ellenõrzés-Health
 

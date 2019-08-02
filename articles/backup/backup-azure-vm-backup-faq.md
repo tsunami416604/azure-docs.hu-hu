@@ -1,18 +1,19 @@
 ---
 title: Gyakori kérdések az Azure-beli virtuális gépek biztonsági mentéséről Azure Backup
 description: Válaszok az Azure-beli virtuális gépek Azure Backup használatával történő biztonsági mentésével kapcsolatos gyakori kérdésekre.
-author: sogup
-manager: vijayts
+ms.reviewer: sogup
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/28/2019
-ms.author: sogup
-ms.openlocfilehash: a26cc2fcdc381361912085b0980a736f040c5b0a
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 8948a620c27311f0371a557c91a971da37111cb9
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465292"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688591"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
@@ -61,7 +62,7 @@ A varázsló csak azokat a virtuális gépeket sorolja fel, amelyek ugyanabban a
 Igen. A biztonsági mentések a gép leállításakor futnak. A helyreállítási pont az összeomlás-konzisztensként van megjelölve.
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Törölhetek egy folyamatban lévő biztonsági mentési feladatot?
-Igen. A biztonsági mentési feladatot megszakíthatja  a pillanatképek állapotának megkezdéséhez. Nem lehet megszakítani egy feladatot, ha a pillanatképből való adatátvitel folyamatban van.
+Igen. A biztonsági mentési feladatot megszakíthatja a pillanatképek állapotának megkezdéséhez. Nem lehet megszakítani egy feladatot, ha a pillanatképből való adatátvitel folyamatban van.
 
 ### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprggeonumber-will-my-backups-continue-to-work"></a>Engedélyezve van a Azure Backup szolgáltatás által létrehozott erőforráscsoport zárolása (azaz `AzureBackupRG_<geo>_<number>`a biztonsági mentések továbbra is működni fognak?
 Ha zárolja Azure Backup szolgáltatás által létrehozott erőforráscsoportot, a biztonsági mentések sikertelenek lesznek, mivel legfeljebb 18 visszaállítási pont lehet.

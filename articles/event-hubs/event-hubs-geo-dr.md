@@ -14,18 +14,18 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a1dafb8e4c16a59bfed51016ce9ccb0ec3eb7d6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 460ea15b0827ea307d64d1bd92d9bd14d5919d73
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754766"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704377"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Az Azure Event Hubs - Geo-vészhelyreállítás 
 
 Ha a teljes Azure-régióban, vagy az adatközpontok (Ha nincs [rendelkezésre állási zónák](../availability-zones/az-overview.md) használt) leállás következik be, kritikus fontosságú adatok feldolgozásához, eltérő régióban vagy datacenter továbbra is. Emiatt a *Geo-disaster recovery* és *georeplikációs* bármely vállalat számára fontos funkciók. Az Azure Event Hubs geo-vészhelyreállítás és georeplikáció útján, a névterek szintjén is támogatja. 
 
-A Geo-disaster recovery funkció érhető el globálisan az Event Hubs Standard és a dedikált Termékváltozat. Vegye figyelembe, hogy a geo-pár névterek csak az azonos szintű Termékváltozat között is. Például ha egy névtér egy fürtben, amely csak a saját dedikált Termékváltozatban érhető el, hogy azt csak párosítani lehessen egy másik fürtben névtér. 
+A Geo-vész-helyreállítási funkció globálisan elérhető a Event Hubs standard és a dedikált SKU számára egyaránt. Vegye figyelembe, hogy csak az SKU azonos szintjein lévő névtereket lehet megfeleltetni. Ha például olyan névteret használ egy fürtben, amely csak a dedikált SKU-ban érhető el, akkor csak egy másik fürt névterével párosítható. 
 
 ## <a name="outages-and-disasters"></a>Leállások és katasztrófák kezelése
 
@@ -41,13 +41,13 @@ A vész-helyreállítási szolgáltatás metaadatainak vész-helyreállítási v
 
 Ez a cikk a következő kifejezéseket használjuk:
 
--  *Alias*: Az Ön által beállított vészhelyreállítási konfiguráció neve. Az alias egyetlen stabil teljes tartománynévként (FQDN) kapcsolati karakterláncban biztosít. Alkalmazások ez alias a kapcsolati karakterlánc használatával csatlakozni a névtérhez. 
+-  *Alias*: Az Ön által beállított vész-helyreállítási konfiguráció neve. Az alias egyetlen stabil teljes tartománynévként (FQDN) kapcsolati karakterláncban biztosít. Alkalmazások ez alias a kapcsolati karakterlánc használatával csatlakozni a névtérhez. 
 
--  *Elsődleges és másodlagos névtér*: A névterek, amelyek megfelelnek a címre. Az elsődleges névtér "aktív", és fogadja az üzeneteket (Ez lehet egy meglévő vagy új névtér). A másodlagos névtérre "passzív", és nem fogadhat üzeneteket. A metaadatok között is szinkronizálva, így mindkettő is zökkenőmentesen fogadja az üzeneteket alkalmazás kódja vagy kapcsolati karakterlánc módosítása nélkül. Győződjön meg arról, hogy csak az aktív névteret fogadja az üzeneteket, az aliast kell használnia. 
+-  *Elsődleges/másodlagos névtér*: Az aliasnak megfelelő névterek. Az elsődleges névtér "aktív", és fogadja az üzeneteket (Ez lehet egy meglévő vagy új névtér). A másodlagos névtérre "passzív", és nem fogadhat üzeneteket. A metaadatok között is szinkronizálva, így mindkettő is zökkenőmentesen fogadja az üzeneteket alkalmazás kódja vagy kapcsolati karakterlánc módosítása nélkül. Győződjön meg arról, hogy csak az aktív névteret fogadja az üzeneteket, az aliast kell használnia. 
 
--  *metaadatok*: Entitások, például az event hubs és a fogyasztói csoportok; és azok tulajdonságait a névtérhez társított szolgáltatás. Vegye figyelembe, hogy csak az entitások és a beállításaik automatikusan replikálja. Üzenetek és események nem lesznek replikálva. 
+-  *Metaadatok*: Entitások, például az Event hubok és a fogyasztói csoportok; a névtérhez társított szolgáltatás tulajdonságai. Vegye figyelembe, hogy csak az entitások és a beállításaik automatikusan replikálja. Üzenetek és események nem lesznek replikálva. 
 
--  *Feladatátvétel*: Folyamat aktiválása a másodlagos névtér.
+-  *Feladatátvétel*: A másodlagos névtér aktiválásának folyamata.
 
 ## <a name="setup-and-failover-flow"></a>A telepítő és a feladatátvételi folyamat
 
@@ -84,7 +84,7 @@ Ha állított be; például, a nem megfelelő régiók párosítva a kezdeti be�
 
 ## <a name="samples"></a>Példák
 
-A [mintát a Githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient) bemutatja, hogyan állíthatja be, és a feladatátvétel. Ez a minta azt mutatja be, a következő fogalmak:
+A [mintát a Githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) bemutatja, hogyan állíthatja be, és a feladatátvétel. Ez a minta azt mutatja be, a következő fogalmak:
 
 - Az Event Hubs Azure Resource Manager használata az Azure Active Directory szükséges beállításokat. 
 - A mintakód végrehajtásához szükséges lépéseket. 
@@ -104,10 +104,10 @@ Vegye figyelembe az alábbi szempontokat figyelembe kell venni ebben a kiadásba
 
 ## <a name="availability-zones"></a>Rendelkezésre állási zónák 
 
-Az Event Hubs Standard Termékváltozat támogatja [rendelkezésre állási zónák](../availability-zones/az-overview.md), így az Azure-régión belüli, meghibásodásoktól elszigetelt helyek. 
+A Event Hubs standard SKU támogatja a [Availability Zones](../availability-zones/az-overview.md), amely az Azure-régiókban a hibáktól elkülönített helyet biztosít. 
 
 > [!NOTE]
-> Az Azure Event Hubs Standard rendelkezésre állási zónák támogatása csak akkor érhető el a [Azure-régiók](../availability-zones/az-overview.md#services-support-by-region) ahol jelen-e rendelkezésre állási zónák.
+> Az Azure Event Hubs standard Availability Zones támogatása csak olyan [Azure](../availability-zones/az-overview.md#services-support-by-region) -régiókban érhető el, ahol elérhetők a rendelkezésre állási zónák.
 
 Engedélyezheti a rendelkezésre állási zónák a csak az új névterek az Azure portal használatával. Az Event Hubs nem támogatja a meglévő névterek áttelepítésének. Miután engedélyezte a a névtérben nem tiltható le a zone redudancy.
 
@@ -115,7 +115,7 @@ Engedélyezheti a rendelkezésre állási zónák a csak az új névterek az Azu
 
 ## <a name="next-steps"></a>További lépések
 
-* A [mintát a Githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient) bemutatja egy egyszerű munkafolyamatot, amely létrehoz egy geo-párosítás és vész-helyreállítási helyzetekre feladatátvételét kezdeményezi.
+* A [mintát a Githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) bemutatja egy egyszerű munkafolyamatot, amely létrehoz egy geo-párosítás és vész-helyreállítási helyzetekre feladatátvételét kezdeményezi.
 * A [REST API-referencia](/rest/api/eventhub/disasterrecoveryconfigs) API-k a Geo-disaster recovery konfigurálást ismerteti.
 
 Ha további információkat szeretne az Event Hubsról, tekintse meg az alábbi hivatkozásokat:

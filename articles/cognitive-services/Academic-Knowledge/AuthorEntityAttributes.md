@@ -1,7 +1,7 @@
 ---
-title: Szerző tevékenységentitás-attribútumok – Academic Knowledge API
+title: Szerzői entitás attribútumai – Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogy az attribútumok a szerző entitás az Academic Knowledge API használható.
+description: A Academic Knowledge API szerző entitásával használható attribútumok megismerése.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,29 +10,30 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: d4b33c06ab023023aadf403cf0ef0b08c2bafc5f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: e63e9d3f8f17a2473caf3d31b83e318ddb132b43
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60609756"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705093"
 ---
-# <a name="author-entity"></a>Szerző entitás
-<sub> * A következő attribútumok Szerző entitás jellemzőek. (Folyó évi = "1") </sub>
+# <a name="author-entity"></a>Szerzői entitás
+<sub>* A következő attribútumok a szerző entitásra jellemzőek. (Ty = "1")</sub>
 
-Name (Név)    |Leírás                            |Típus       | Műveletek
+Name (Név)    |Leírás                            |Type       | Műveletek
 ------- | ------------------------------------- | --------- | ----------------------------
-Azonosító      |Entitásazonosító                              |Int64      |Egyenlő
-AuN     |Szerző normalizált neve                 |String     |Egyenlő
-DAuN    |Szerző megjelenített neve                    |String     |Egyik sem
-CC      |Szerző idézetet teljes száma            |Int32      |Egyik sem  
-ECC     |Szerző becsült idézetet teljes száma  |Int32      |Egyik sem
-E       |Kiterjesztett metaadatok (lásd a "Bővített Meta attribútumok" tábla)  |String     |Egyik sem  
+Id      |Entitásazonosító                              |Int64      |Egyenlő
+AuN     |Normalizált név szerzője                 |Sztring     |Egyenlő
+DAuN    |Szerző megjelenítendő neve                    |Sztring     |nincs
+Másolat      |Szerzői teljes idézetek száma            |Int32      |nincs  
+ECC     |Szerzői teljes becsült idézetek száma  |Int32      |nincs
+E       |Kiterjesztett metaadatok (lásd a "bővített meta attribútumok" táblázatot)  |Karakterlánc     |nincs  
 
 
-## <a name="extended-metadata-attributes"></a>Kiterjesztett attribútumok metaadatok ##
+## <a name="extended-metadata-attributes"></a>Bővített metaadatok attribútumai ##
 
 Name (Név)    | Leírás               
 --------|---------------------------    
-LKA.Afn     | a szerző társított viszony megjelenített neve  
-LKA.AfId        | a szerző társított viszony Entitásazonosító
+LKA.Afn     | a szerzőhöz társított kapcsolat megjelenítendő neve  
+LKA.AfId        | a szerzőhöz társított tulajdonosi entitás azonosítója

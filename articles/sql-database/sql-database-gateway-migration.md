@@ -1,6 +1,6 @@
 ---
-title: Átjáró áttelepítési értesítés az Azure SQL Database adatbázist a Gen2 Gen3 |} A Microsoft Docs
-description: A cikk figyelje meg a felhasználók számára az Azure SQL Database átjárók IP-címek az áttelepítéssel kapcsolatban
+title: Átjáró áttelepítésére vonatkozó értesítés a Gen2 és Gen3 közötti Azure SQL Database | Microsoft Docs
+description: A cikk a Azure SQL Database átjárók IP-címeinek áttelepítésére vonatkozó értesítéseket nyújt a felhasználóknak
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -9,24 +9,23 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
-manager: craigg
 ms.date: 07/01/2019
-ms.openlocfilehash: 5894579c62c524394c7fea044b96885f7c8e8204
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 85691464684ff327c01a85bf357514f447564dd7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538379"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568119"
 ---
-# <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Az Azure SQL Database forgalom áttelepítési újabb átjárók
+# <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database forgalom áttelepítése újabb átjáróra
 
-Javítja az Azure-infrastruktúra, a Microsoft rendszeres időközönként frissíti azt adja meg a lehetséges legjobb felhasználói élmény biztosítása érdekében hardveres. Az elkövetkező hónapokban hogy újabb hardvergenerációk épülő átjárók hozzáadásának tervezése, és egyes régiókban régebbi hardver épülő átjárók leszerelése.  
+Az Azure-infrastruktúra fejlesztésekor a Microsoft rendszeresen frissíti a hardvert, hogy biztosítsa a lehető legjobb felhasználói élményt. Az elkövetkező hónapokban olyan átjárókat fogunk hozzáadni, amelyek újabb hardveres generációra épülnek, és egyes régiókban a régebbi hardverekre épülő leszerelési átjárók.  
 
-Ügyfél értesítést kap e-mailen keresztül, és jóval bármilyen módosítása az egyes régiókban elérhető átjárók az Azure Portalon. A legfrissebb információk lesznek kezelhetők a [Azure SQL Database-átjáró IP-címek](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) tábla.
+Az ügyfelek értesítést kapnak e-mailben, valamint a Azure Portal az egyes régiókban elérhető átjárók változásairól. A legfrissebb információk a [Azure SQL Database átjáró IP-címei](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) táblában lesznek karbantartva.
 
-## <a name="impact-of-this-change"></a>E módosítás hatásának
+## <a name="impact-of-this-change"></a>A változás hatása
 
-Az átjárókiszolgáló leszerelésének első körben az alábbi régiókban 2019. szeptember 1. van ütemezve:
+Az átjárók leszerelésének első fordulója a következő régiókban 2019 szeptember 1-jén van ütemezve:
 
 - USA nyugati régiója
 - Nyugat-Európa
@@ -41,22 +40,22 @@ Az átjárókiszolgáló leszerelésének első körben az alábbi régiókban 2
 - USA 2. keleti régiója
 - Kelet-Ázsia
 
-A leszerelt IP-cím le fog állni, forgalmat fogad, és minden új kapcsolódási kísérletek a rendszer átirányítja az egyik az átjárók a régióban.
+A leszerelt IP-cím leállítja a forgalom fogadását, és minden új kapcsolódási kísérletet a régió egyik átjárója felé irányítja a rendszer.
 
-Ha e módosítás hatásának nem jelenik meg:
+Itt nem jelenik meg a változás hatása:
 
-- Az ügyfelek átirányítás használata, mivel a kapcsolódási szabályzat nem jelenik meg semmilyen hatással.
-- SQL Database-kapcsolatokat a belül az Azure és a szolgáltatás címkék használatával nem lesz hatással.
-- Nincs hatással az SQL Server JDBC-illesztőprogram támogatott verzióinak használatával létrehozott kapcsolatok jelenik meg. Tekintse meg a támogatott JDBC-verziók [töltse le a Microsoft JDBC-illesztőprogram SQL Serverhez](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server).
+- Azok az ügyfelek, akik az átirányítást használják a kapcsolataik házirendjében, semmilyen hatással nem lesznek.
+- Az Azure-on belüli és a szolgáltatási címkék használatával SQL Database kapcsolatok nem lesznek hatással.
+- A SQL Server JDBC illesztőprogram támogatott verzióival létesített kapcsolatok nem lesznek hatással. A támogatott JDBC-verziókért lásd: [a Microsoft JDBC-illesztőprogram letöltése SQL Serverhoz](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server).
 
-## <a name="what-to-do-you-do-if-youre-affected"></a>Mi a teendő, ha Ön érintett tegye
+## <a name="what-to-do-you-do-if-youre-affected"></a>Mi a teendő, ha érintett
 
-Azt javasoljuk, hogy a kimenő forgalom IP-címek az összes ahhoz, hogy a [Azure SQL Database-átjáró IP-címek](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) a régióban, a TCP 1433-as porton, és tartomány 11000-11999 tűzfal eszközét a port. Porttartományok további információkért lásd: [kapcsolódási szabályzat](sql-database-connectivity-architecture.md#connection-policy).
+Azt javasoljuk, hogy engedélyezze a kimenő forgalmat az IP-címekre a 1433-es TCP-porton lévő összes [Azure SQL Database ÁTJÁRÓ IP](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) -címének, valamint a tűzfal eszközén a 11000-11999-es porttartomány. A porttartomány-tartományokkal kapcsolatos további információkért lásd: a [kapcsolatkérelem-házirend](sql-database-connectivity-architecture.md#connection-policy).
 
-Az alkalmazások a Microsoft JDBC-illesztőprogram használatával 4.0-s verziója alatt létrehozott kapcsolatok tanúsítvány érvényesítése sikertelen lehet. Microsoft JDBC alacsonyabb verzióját használja az egyszerű név (CN) a tanúsítvány Tárgy mezőjében. A megoldás az, hogy győződjön meg arról, hogy a hostNameInCertificate tulajdonság értéke *. database.windows.net. A hostNameInCertificate tulajdonság beállításával kapcsolatos további információkért lásd: [csatlakoztatása SSL-titkosítást](/sql/connect/jdbc/connecting-with-ssl-encryption).
+Az alkalmazásból a 4,0-es verziónál régebbi Microsoft JDBC illesztőprogramot használó alkalmazások kapcsolatainak érvényesítése sikertelen lehet. A Microsoft JDBC korábbi verziói a tanúsítvány Tárgy mezőjében a köznapi név (CN) függvényt használják. A megoldás célja, hogy a hostNameInCertificate tulajdonság értéke *. database.windows.net legyen. A hostNameInCertificate tulajdonság beállításával kapcsolatos további információkért lásd az SSL- [titkosítással való csatlakozást](/sql/connect/jdbc/connecting-with-ssl-encryption)ismertető témakört.
 
-Ha a fenti megoldás sem működik, fájl egy támogatási kérést az SQL Database, a következő URL-cím használatával: https://aka.ms/getazuresupport
+Ha a fenti megoldás nem működik, a következő URL-cím használatával SQL Database támogatási kérelmet nyújt a hoz: https://aka.ms/getazuresupport
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [Azure SQL-kapcsolati architektúra](sql-database-connectivity-architecture.md)
+- További információ az [Azure SQL kapcsolati architektúráról](sql-database-connectivity-architecture.md)

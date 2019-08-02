@@ -1,6 +1,6 @@
 ---
-title: API-kiszolgálóhoz engedélyezett IP-tartományokat az Azure Kubernetes Service (AKS)
-description: A fürt IP-címtartomány használatával az Azure Kubernetes Service (AKS) API-kiszolgálóhoz való hozzáférés biztonságossá tételének ismertetése
+title: Az API-kiszolgáló által jóváhagyott IP-címtartományok az Azure Kubernetes szolgáltatásban (ak)
+description: Ismerje meg, hogyan biztonságossá teheti a fürtöt IP-címtartomány használatával az Azure Kubernetes szolgáltatásban (ak) lévő API-kiszolgálóhoz való hozzáféréshez
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -8,33 +8,33 @@ ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
 ms.openlocfilehash: 6516bbcb4ea879279812d61d9fe31f1ea4268280
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67616259"
 ---
-# <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Előzetes verzió – az API kiszolgálóra történő biztonságos hozzáférés engedélyezett IP-címtartományok Azure Kubernetes Service (AKS)
+# <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Előzetes verzió – biztonságos hozzáférés az API-kiszolgálóhoz az Azure Kubernetes szolgáltatásban (ak) lévő, jogosult IP-címtartományok használatával
 
-A Kubernetes az API-kiszolgáló fogadja a műveleteket, mint például a fürt létre erőforrásokat, vagy méretezheti a csomópontok számát a kérések. Az API-kiszolgáló központi módja a kezelhetik és-fürtök kezeléséhez. Fürt biztonság növelése és minimalizálja a támadások, az API-kiszolgáló csak elérhetőnek kell lenniük az IP-címtartományok korlátozott számú.
+A Kubernetes-ben az API-kiszolgáló kérelmeket fogad a fürt műveleteinek végrehajtásához, például erőforrások létrehozásához vagy a csomópontok számának skálázásához. Az API-kiszolgáló a fürttel való kommunikáció és felügyelet központi módja. A fürt biztonságának növelése és a támadások csökkentése érdekében az API-kiszolgálónak csak korlátozott IP-címtartományok közül kell elérhetőnek lennie.
 
-Ez a cikk bemutatja, hogyan API jogosult kiszolgáló IP-címtartományok használatával korlátozza a vezérlősík kérelmeket. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
+Ez a cikk bemutatja, hogyan használható az API-kiszolgáló által engedélyezett IP-címtartományok a sík vezérlésére irányuló kérések korlátozására. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
 > [!IMPORTANT]
-> Az AKS előzetes verziójú funkciók önkiszolgáló, a rendszer. A biztosított gyűjthet visszajelzéseket és a hibák kapcsolódóan a Közösség részéről. Előzetes verzióban elérhető ezeket a funkciókat nem üzemi használat céljára. Nyilvános előzetes verzióban érhető el "ajánlott beavatkozást" támogatás keretében tartoznak. Az AKS technikai támogatási csapat segítségét munkaidőben csendes-óceáni időzóna (PST) csak alatt érhető el. További információkért tekintse meg a következő cikkek támogatja:
+> Az AK előzetes verziójának funkciói önkiszolgáló, választhatók. A felhasználók visszajelzéseket és hibákat biztosítanak a Közösségtől. Az előzetes verzióban ezek a szolgáltatások éles használatra nem használhatók. A nyilvános előzetes verzió funkciói a "legjobb erőfeszítés" támogatás alatt állnak. Az AK technikai támogatási csapatának segítsége csak a munkaidőn kívüli időzóna (PST) időpontjában érhető el. További információkért tekintse meg a következő támogatási cikkeket:
 >
-> * [Az AKS támogatási házirendek][aks-support-policies]
-> * [Az Azure-támogatás – gyakori kérdések][aks-faq]
+> * [AK-támogatási szabályzatok][aks-support-policies]
+> * [Azure-támogatás – gyakori kérdések][aks-faq]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-API-kiszolgálóhoz engedélyezett IP-címtartományok csak az Ön által létrehozott új AKS-fürtök esetén működik. Ez a cikk bemutatja, hogyan hozhat létre egy AKS-fürtöt az Azure CLI használatával.
+Az API-kiszolgáló által jóváhagyott IP-címtartományok csak a létrehozott új AK-fürtök esetében működnek. Ez a cikk bemutatja, hogyan hozhat létre egy AK-fürtöt az Azure CLI használatával.
 
-Az Azure CLI 2.0.61 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
+Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfigurálva van. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
-### <a name="install-aks-preview-cli-extension"></a>Az aks előzetes CLI-bővítmény telepítése
+### <a name="install-aks-preview-cli-extension"></a>Az Kabai szolgáltatás telepítése – előnézeti CLI-bővítmény
 
-API jogosult kiszolgáló IP-címtartományok konfigurálásához lesz szüksége a *aks előzetes* CLI bővítmény verziója 0.4.1 vagy újabb verziója. Telepítse a *aks előzetes* Azure CLI-bővítmény használata a [az bővítmény hozzáadása][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] parancsot:
+Az API-kiszolgáló által jóváhagyott IP-címtartományok konfigurálásához a CLI *-előnézet CLI-* bővítményének 0.4.1 vagy újabb verziójára van szükség. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, majd az az [Extension Update][az-extension-update] paranccsal keresse meg a rendelkezésre álló frissítéseket:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -44,24 +44,24 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="register-feature-flag-for-your-subscription"></a>Funkció jelölője az előfizetés regisztrálása
+### <a name="register-feature-flag-for-your-subscription"></a>Az előfizetéshez tartozó szolgáltatás-jelölő regisztrálása
 
-API-t kiszolgáló engedélyezett IP-címtartományok használja, először engedélyeznie kell az előfizetés szolgáltatásjelzőre. Regisztrálja a *APIServerSecurityPreview* jelző funkciót, használja a [az a funkció regisztrálása][az-feature-register] parancsot az alábbi példában látható módon:
+Az API-kiszolgáló által engedélyezett IP-címtartományok használatához először engedélyezze a szolgáltatás jelölőjét az előfizetésében. A *APIServerSecurityPreview* szolgáltatás jelzőjét a következő példában látható módon regisztrálja az az [Feature Register][az-feature-register] parancs használatával:
 
 > [!CAUTION]
-> A funkció egy adott előfizetés regisztrálásakor nem jelenleg regisztrációjának ezt a funkciót. Miután engedélyezte az egyes előzetes verziójú funkciók, alapértelmezett érték az összes AKS-fürt, majd az előfizetésben létrehozott használható. Nem engedélyezi az előzetes verziójú funkciók az éles üzemű előfizetéseket. Használjon különálló előfizetést előzetes verziójú funkciók teszteléséhez, és visszajelzést.
+> Ha regisztrál egy szolgáltatást egy előfizetéshez, jelenleg nem tudja regisztrálni a szolgáltatást. Az előzetes verziójú funkciók engedélyezése után az alapértelmezett beállítások az előfizetésben létrehozott összes AK-fürthöz használhatók. Ne engedélyezze az előzetes verziójú funkciókat az éles előfizetésekben. Használjon külön előfizetést az előzetes verziójú funkciók tesztelésére és visszajelzések gyűjtésére.
 
 ```azurecli-interactive
 az feature register --name APIServerSecurityPreview --namespace Microsoft.ContainerService
 ```
 
-Az állapot megjelenítése néhány percet vesz igénybe *regisztrált*. A regisztrációs állapot használatával ellenőrizheti a [az szolgáltatáslistát][az-feature-list] parancsot:
+Néhány percet vesz igénybe, amíg az állapot *regisztrálva*jelenik meg. A regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával tekintheti meg:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/APIServerSecurityPreview')].{Name:name,State:properties.state}"
 ```
 
-Ha elkészült, frissítse a regisztrációját a *Microsoft.ContainerService* erőforrás-szolgáltató használatával a [az provider register][az-provider-register] parancsot:
+Ha elkészült, frissítse a *Microsoft. tárolószolgáltatás* erőforrás-szolgáltató regisztrációját az az [Provider Register][az-provider-register] paranccsal:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -69,23 +69,23 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="limitations"></a>Korlátozások
 
-A következő korlátozások vonatkoznak az API-t kiszolgáló engedélyezett IP-címtartományok konfigurálásakor:
+Az API-kiszolgáló által jóváhagyott IP-címtartományok konfigurálásakor a következő korlátozások érvényesek:
 
-* Az API-kiszolgálóhoz való kommunikáció is le van tiltva, az Azure fejlesztési tárolóhelyek jelenleg nem használható.
+* Jelenleg nem használható az Azure dev Spaces, mert az API-kiszolgálóval folytatott kommunikáció is le van tiltva.
 
-## <a name="overview-of-api-server-authorized-ip-ranges"></a>API-kiszolgáló áttekintése engedélyezett IP-címtartományok
+## <a name="overview-of-api-server-authorized-ip-ranges"></a>Az API-kiszolgáló által jóváhagyott IP-címtartományok áttekintése
 
-A Kubernetes API-t kiszolgáló, hogyan érhetők el az alapul szolgáló Kubernetes API-kat. Ez az összetevő kommunikációt tesz lehetővé a felügyeleti eszközök, például `kubectl` vagy a Kubernetes irányítópultot. Az AKS egy egybérlős fürt főkiszolgáló, egy dedikált kiszolgálóval API-t biztosít. Alapértelmezés szerint az API-kiszolgáló nyilvános IP-cím van hozzárendelve, és a szerepköralapú hozzáférés-vezérlést (RBAC) hozzáférés felett Önnek kell rendelkeznie.
+A Kubernetes API-kiszolgáló az alapul szolgáló Kubernetes API-k számára elérhető. Ez az összetevő a felügyeleti eszközök, például `kubectl` a vagy a Kubernetes irányítópultjának interakcióját biztosítja. Az AK egybérlős fürtös főkiszolgálót biztosít dedikált API-kiszolgálóval. Alapértelmezés szerint az API-kiszolgáló nyilvános IP-címet kap, és a hozzáférés vezérlése szerepköralapú hozzáférés-vezérléssel (RBAC) történik.
 
-Az AKS ellenkező esetben a nyilvánosan elérhető vezérlősík való biztonságos hozzáférés / API-kiszolgálóhoz, engedélyezése és használata engedélyezett IP-címtartományok. Ezek engedélyezett IP-címtartományok engedélyezése csak az API-kiszolgálóval való kommunikációhoz megadott IP-címtartományok. Az API-kiszolgálóhoz nem tartozik ezek engedélyezett IP-címtartományok IP-címről érkező kérelem le van tiltva. Ön továbbra is az RBAC használatával, majd engedélyezze a felhasználók és az általuk kért műveleteket.
+Az egyébként nyilvánosan elérhető AK-vezérlési sík/API-kiszolgáló hozzáférésének biztonságossá tételéhez engedélyezheti és használhatja az engedélyezett IP-tartományokat. Ezek a megengedett IP-címtartományok csak a meghatározott IP-címtartományok használatát teszik lehetővé az API-kiszolgálóval való kommunikációhoz. Az API-kiszolgálónak egy olyan IP-címről érkező kérés le van tiltva, amely nem része ezeknek az engedélyezett IP-tartományoknak. Továbbra is a RBAC használatával engedélyezze a felhasználókat és az általuk kért műveleteket.
 
-Az API-kiszolgáló és a fürt más összetevői kapcsolatos további információkért lásd: [Kubernetes alapvető fogalmait az aks-ben][concepts-clusters-workloads].
+További információ az API-kiszolgálóról és az egyéb fürt-összetevőkről: [Kubernetes Core Concepts for AK][concepts-clusters-workloads].
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-API-t kiszolgáló engedélyezett IP-címtartományok csak munkahelyi új AKS-fürtök esetén. Engedélyezett IP-címtartományok nem engedélyezhető, mint a fürt létrehozásának műveletét. Ha megpróbálja engedélyezni a fürt részeként engedélyezett IP-címtartományok létrehozni a folyamatot, a fürtcsomópontok nem fér hozzá az API-kiszolgáló üzembe helyezése során a kimenő IP-cím ezen a ponton nem meghatározott csatlakoznak.
+Az API-kiszolgáló által jóváhagyott IP-címtartományok csak az új AK-fürtök esetében működnek. A fürt létrehozási műveletének részeként nem engedélyezheti az engedélyezett IP-tartományokat. Ha a fürt létrehozási folyamatának részeként megpróbálja engedélyezni az engedélyezett IP-tartományokat, a fürtcsomópontok nem tudnak hozzáférni az API-kiszolgálóhoz az üzembe helyezés során, mert a kimenő IP-cím nincs definiálva ezen a ponton.
 
-Először is hozzon létre egy fürtöt a [az aks létrehozása][az-aks-create] parancsot. A következő példában létrehozunk egy egy csomópontos fürtre nevű *myAKSCluster* az erőforráscsoport neve *myResourceGroup*.
+Először hozzon létre egy fürtöt az az [AK Create][az-aks-create] paranccsal. A következő példa egy *myAKSCluster* nevű egycsomópontos fürtöt hoz létre az *myResourceGroup*nevű erőforráscsoport-csoportban.
 
 ```azurecli-interactive
 # Create an Azure resource group
@@ -102,14 +102,14 @@ az aks create \
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="create-outbound-gateway-for-firewall-rules"></a>Átjáró kimenő tűzfalszabályok létrehozása
+## <a name="create-outbound-gateway-for-firewall-rules"></a>Kimenő átjáró létrehozása a tűzfalszabályok számára
 
-Győződjön meg arról, hogy a fürt csomópontjai megbízhatóan kommunikál az API-kiszolgáló a következő szakaszban engedélyezett IP-címtartományok engedélyezésekor, hozzon létre egy Azure tűzfal a kimenő átjáró használható. Az Azure-tűzfalon IP-címét a következő szakaszban a jogosult API-t kiszolgáló IP-címek listájára kerül.
+Annak biztosítása érdekében, hogy a fürt csomópontjai megbízhatóan kommunikáljanak az API-kiszolgálóval, amikor engedélyezte az engedélyezett IP-tartományokat a következő szakaszban, hozzon létre egy Azure-tűzfalat a kimenő átjáróként való használatra. Az Azure tűzfal IP-címét a rendszer Ezután hozzáadja a hitelesítő API-kiszolgálók IP-címeinek listájához a következő szakaszban.
 
 > [!WARNING]
-> Azure-tűzfal használatát is költségekkel jelentős feletti havi elszámolási időszakra. Azure tűzfalat használ, hogy csak erre szükség van az kezdeti előzetes verzió időszaka kell lennie. További információ és költség tervezési, [Azure tűzfal díjszabás][azure-firewall-costs].
+> A Azure Firewall használata jelentős költségeket eredményezhet a havi elszámolási időszakra vonatkozóan. A Azure Firewall használatára vonatkozó követelmény csak ebben a kezdeti előnézeti időszakban szükséges. További információ és Cost-tervezés: [Azure Firewall díjszabása][azure-firewall-costs].
 
-Először kérje le a *MC_* az AKS-fürtöt, és a virtuális hálózatot az erőforráscsoport neve. Ezután hozzon létre egy alhálózatot a [az alhálózaton virtuális hálózat létrehozása][az-network-vnet-subnet-create] parancsot. A következő példában létrehozunk egy nevű alhálózatot *AzureFirewallSubnet* a CIDR-tartományt, a *10.200.0.0/16*:
+Először kérje le a *MC_* erőforráscsoport nevét az AK-fürthöz és a virtuális hálózathoz. Ezután hozzon létre egy alhálózatot az az [Network vnet subnet Create][az-network-vnet-subnet-create] paranccsal. A következő példában létrehozunk egy *AzureFirewallSubnet* nevű alhálózatot a *10.200.0.0/16*CIDR tartományba:
 
 ```azurecli-interactive
 # Get the name of the MC_ cluster resource group
@@ -131,7 +131,7 @@ az network vnet subnet create \
     --address-prefixes 10.200.0.0/16
 ```
 
-Hozzon létre egy Azure-tűzfal, telepítse a *azure-tűzfal* CLI-bővítmény használata a [az bővítmény hozzáadása][az-extension-add] command. Then, create a firewall using the [az network firewall create][az-network-firewall-create] parancsot. Az alábbi példa létrehoz egy Azure-tűzfalon nevű *myAzureFirewall*:
+Azure Firewall létrehozásához telepítse az *Azure-Firewall* CLI bővítményt az az [Extension Add][az-extension-add] paranccsal. Ezután hozzon létre egy tűzfalat az az [Network Firewall Create][az-network-firewall-create] paranccsal. A következő példa egy *myAzureFirewall*nevű Azure-tűzfalat hoz létre:
 
 ```azurecli-interactive
 # Install the CLI extension for Azure Firewall
@@ -143,7 +143,7 @@ az network firewall create \
     --name myAzureFirewall
 ```
 
-Egy Azure-tűzfalon áthaladó adatátvitelen kimenő forgalomért nyilvános IP-cím van hozzárendelve. Hozzon létre egy nyilvános cím a [az network public-ip létrehozása][az-network-public-ip-create] command, then create an IP configuration on the firewall using the [az network firewall ip-config create][az-network-firewall-ip-config-create] , amely a nyilvános IP-cím vonatkozik:
+Az Azure-beli tűzfal olyan nyilvános IP-címet kap, amely a forgalom felé áramlik. Hozzon létre egy nyilvános címet az az [Network Public-IP Create][az-network-public-ip-create] paranccsal, majd hozzon létre egy IP-konfigurációt a tűzfalon az az [Network Firewall IP-config Create][az-network-firewall-ip-config-create] parancs használatával, amely a nyilvános IP-címet alkalmazza:
 
 ```azurecli-interactive
 # Create a public IP address for the firewall
@@ -162,7 +162,7 @@ az network firewall ip-config create \
     --public-ip-address myAzureFirewallPublicIP
 ```
 
-Most már az Azure hálózati tűzfalszabály létrehozása az *engedélyezése* összes *TCP* használatával forgalmat a [az hálózati hálózati-tűzfalszabály létrehozása][az-network-firewall-network-rule-create] parancsot. A következő példában létrehozunk egy hálózati nevű szabályt *AllowTCPOutbound* a forgalmat bármilyen forrás vagy cél-címmel:
+Most hozza létre az Azure tűzfal hálózati szabályát az összes *TCP* -forgalom *engedélyezéséhez* az az [Network Firewall Network-Rule Create][az-network-firewall-network-rule-create] paranccsal. A következő példa egy *AllowTCPOutbound* nevű hálózati szabályt hoz létre bármilyen forrás-vagy célcím esetén:
 
 ```azurecli-interactive
 az network firewall network-rule create \
@@ -178,7 +178,7 @@ az network firewall network-rule create \
     --destination-ports '*'
 ```
 
-Az Azure-tűzfalon társítani a hálózati útvonal, szerezze be a meglévő útválasztási tábla adatai, az Azure-tűzfalon belső IP-címét, majd az API-kiszolgáló IP-címét. Ezen IP-címek vannak megadva a következő szakaszban szabályozhatja, hogyan kell-e a forgalom átirányítani a fürtkommunikációhoz.
+Az Azure tűzfal hálózati útvonallal való hozzárendeléséhez szerezze be a meglévő útválasztási táblázat adatait, az Azure tűzfal belső IP-címét, majd az API-kiszolgáló IP-címét. Ezek az IP-címek a következő szakaszban vannak megadva annak szabályozásához, hogy a rendszer hogyan irányítsa át a forgalmat a fürt kommunikációjához.
 
 ```azurecli-interactive
 # Get the AKS cluster route table
@@ -196,7 +196,7 @@ FIREWALL_INTERNAL_IP=$(az network firewall show \
 K8S_ENDPOINT_IP=$(kubectl get endpoints -o=jsonpath='{.items[?(@.metadata.name == "kubernetes")].subsets[].addresses[].ip}')
 ```
 
-Végül hozzon létre egy útvonalat a meglévő AKS hálózati útvonal tábla használatával a [az network route-table route létrehozása][az-network-route-table-route-create] parancsot, amely engedélyezi a forgalmat az Azure tűzfalkészülék használata az API-kiszolgáló kommunikációhoz.
+Végül hozzon létre egy útvonalat a meglévő AK hálózati útválasztási táblában az az [Network Route-Table Route Create][az-network-route-table-route-create] paranccsal, amely lehetővé teszi, hogy a forgalom az Azure tűzfal berendezését használja az API Server-kommunikációhoz.
 
 ```azurecli-interactive
 az network route-table route create \
@@ -210,15 +210,15 @@ az network route-table route create \
 echo "Public IP address for the Azure Firewall instance that should be added to the list of API server authorized addresses is:" $FIREWALL_PUBLIC_IP
 ```
 
-Jegyezze fel az Azure-tűzfal berendezés nyilvános IP-címét. Ez a cím hozzáadódik API jogosult kiszolgáló IP-címtartományok a következő szakaszban a listában.
+Jegyezze fel a Azure Firewall készülék nyilvános IP-címét. Ezt a címet a következő szakaszban található API-kiszolgáló által jóváhagyott IP-címtartományok listájához adja hozzá a rendszer.
 
 ## <a name="enable-authorized-ip-ranges"></a>Engedélyezett IP-címtartományok engedélyezése
 
-Ahhoz, hogy az API-t kiszolgáló engedélyezett IP-címtartományok, adja meg az engedélyezett IP-címtartományok listáját. Ha megad egy CIDR-tartományt, indítsa el a tartomány első IP-címét. Ha például *137.117.106.90/29* érvényes tartomány, de győződjön meg arról, hogy meg a tartomány első IP-címe például *137.117.106.88/29*.
+Az API-kiszolgáló által engedélyezett IP-címtartományok engedélyezéséhez meg kell adnia az engedélyezett IP-címtartományok listáját. CIDR-tartomány megadásakor a tartomány első IP-címével kezdjen el. Például a *137.117.106.90/29* egy érvényes tartomány, de győződjön meg arról, hogy az első IP-címet adta meg a tartományban, például *137.117.106.88/29*.
 
-Használat [az aks update][az-aks-update] parancsot, majd adja meg a *– api-server-engedélyezett – ip-címtartományok* engedélyezéséhez. Ezek az IP-címtartományok általában olyan címtartományt a helyszíni hálózat által használt. Adja hozzá a nyilvános IP-címét a saját Azure tűzfal, mint például az előző lépésben beszerzett *20.42.25.196/32*.
+Használja az [az AK Update][az-aks-update] parancsot, és határozza meg a *--API-Server-engedélyezett-IP-tartományokat* az engedélyezéshez. Ezek az IP-címtartományok általában a helyszíni hálózatok által használt címtartományok. Adja hozzá az előző lépésben beszerzett saját Azure-tűzfal nyilvános IP-címét, például *20.42.25.196/32*.
 
-Az alábbi példa lehetővé teszi, hogy az API-t kiszolgáló engedélyezett IP-címtartományok nevű fürtöt *myAKSCluster* az erőforráscsoport neve *myResourceGroup*. Az IP-címtartományok engedélyezésére vannak *20.42.25.196/32* (az Azure-tűzfalon nyilvános IP-cím), majd *172.0.0.10/16* és *168.10.0.10/18*:
+Az alábbi példa lehetővé teszi az API-kiszolgáló által a *myResourceGroup*nevű erőforráscsoport *myAKSCluster* nevű fürtön lévő, IP-címének engedélyezését. Az engedélyezett IP-címtartományok az *20.42.25.196/32* (az Azure tűzfal nyilvános IP-címe), majd a *172.0.0.10/16* és a *168.10.0.10/18*:
 
 ```azurecli-interactive
 az aks update \
@@ -227,9 +227,9 @@ az aks update \
     --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.10/16,168.10.0.10/18
 ```
 
-## <a name="update-or-disable-authorized-ip-ranges"></a>Frissítse, vagy tiltsa le az engedélyezett IP-címtartományok
+## <a name="update-or-disable-authorized-ip-ranges"></a>A hitelesítő IP-címtartományok frissítése vagy letiltása
 
-Frissítés, vagy tiltsa le az engedélyezett IP-címtartományok, újra használhatja [az aks update][az-aks-update] parancsot. Adja meg a frissített CIDR-tartományt szeretné engedélyezi, vagy adjon meg egy üres tartomány letiltásához API-kiszolgáló IP-címtartományok, jogosult, az alábbi példában látható módon:
+A jóváhagyott IP-címtartományok frissítéséhez vagy letiltásához használja újra [az az AK Update][az-aks-update] parancsot. Válassza ki az engedélyezni kívánt frissített CIDR, vagy egy üres tartományt, amely letiltja az API-kiszolgáló által engedélyezett IP-tartományokat, az alábbi példában látható módon:
 
 ```azurecli-interactive
 az aks update \
@@ -240,9 +240,9 @@ az aks update \
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben engedélyezte az API-t kiszolgáló engedélyezett IP-címtartományok. Ez a módszer hogyan futtathat egy biztonságos AKS-fürtöt egy részét képezi.
+Ebben a cikkben engedélyezte az API-kiszolgáló engedélyezett IP-tartományait. Ez a megközelítés a biztonságos AK-fürtök futtatásának egyik része.
 
-További információkért lásd: [biztonsággal kapcsolatos fogalmait, alkalmazások és-fürtök az aks-ben][concepts-security] and [Best practices for cluster security and upgrades in AKS][operator-best-practices-cluster-security].
+További információ: az [AK-ban található alkalmazásokhoz és fürtökhöz tartozó biztonsági fogalmak][concepts-security] , valamint a [fürt biztonságára és az AK-ban való frissítésére vonatkozó ajánlott eljárások][operator-best-practices-cluster-security].
 
 <!-- LINKS - external -->
 [azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/

@@ -1,21 +1,19 @@
 ---
 title: A üzenetsor-tároló használata a Pythonból – Azure Storage
 description: Megtudhatja, hogyan hozhat létre és törölhet várólistákat az Azure Queue szolgáltatás Python használatával, valamint hogyan szúrhat be, kérhet le és törölhet üzeneteket.
-services: storage
 author: mhopkins-msft
 ms.service: storage
-ms.devlang: python
-ms.topic: article
-ms.date: 12/14/2018
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 12/14/2018
 ms.subservice: queues
-ms.openlocfilehash: 141999f4119ac92e2b8846477c50edf8fba027d0
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: 1ed084bfa0cf6879983e38ac6a8c5ab57e8948a8
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360022"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721358"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>How to use Queue storage from Python (A Queue Storage használata Pythonnal)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -23,7 +21,7 @@ ms.locfileid: "68360022"
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure üzenetsor-tárolási szolgáltatás használatával. A minták Pythonban íródnak, és a Pythonhoz készült [A Pythonhoz készült Microsoft Azure Storage SDK]-t használják. A tárgyalt forgatókönyvek közé tartozik például a várólista-üzenetek **beszúrása**, bepillantása, beolvasása és **törlése** , valamint a  **várólisták létrehozása és törlése**. A várólistákkal kapcsolatos további információkért tekintse meg a [következő lépések] szakaszt.
+Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure üzenetsor-tárolási szolgáltatás használatával. A minták Pythonban íródnak, és a Pythonhoz készült [A Pythonhoz készült Microsoft Azure Storage SDK]-t használják. A tárgyalt forgatókönyvek közétartozik például a várólista-üzenetek **beszúrása**, bepillantása, beolvasása és **törlése** , valamint a **várólisták létrehozása és törlése**. A várólistákkal kapcsolatos további információkért tekintse meg a [következő lépések] szakaszt.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 

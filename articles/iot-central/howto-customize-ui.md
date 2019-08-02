@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT-központ felhasználói felület testreszabása |} A Microsoft Docs
-description: A téma- és Súgó hivatkozásokat az Azure IoT központi alkalmazás testreszabása
+title: Az Azure IoT Central felhasználói felületének testreszabása | Microsoft Docs
+description: Az Azure IoT Central-alkalmazás témájának és súgójának testreszabása
 author: dominicbetts
 ms.author: dobett
 ms.date: 04/25/2019
@@ -8,72 +8,72 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4d385f1e8c883453b4153ca4c9119d3be0a608bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cef0014fb47aeddcad785fb3f938ab928964a942
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66495561"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725696"
 ---
-# <a name="customize-the-azure-iot-central-ui"></a>Az Azure IoT-központ felhasználói felület testreszabása 
+# <a name="customize-the-azure-iot-central-ui"></a>Az Azure IoT Central felhasználói felületének testreszabása 
 
-*Ez a cikk rendszergazdák vonatkozik.*
+Ez a cikk leírja, hogyan szabhatja testre az alkalmazás felhasználói felületét egyéni témák alkalmazásával, és módosíthatja a Súgó hivatkozásait úgy, hogy az egyéni súgó erőforrásaira mutasson. 
 
-IoT Central lehetővé teszi az alkalmazás a felhasználói felület testreszabásával alkalmazása egyéni témákat, és a saját egyéni erőforrások átirányítása súgóhivatkozások módosítása. Az alábbi képernyőfelvételen egy oldal, a standard szintű téma használatával:
+Az alábbi képernyőképen egy oldal látható a standard téma használatával:
 
-![Standard szintű IoT-központ téma](./media/howto-customize-ui/standard-ui.png)
+![Standard IoT Central téma](./media/howto-customize-ui/standard-ui.png)
 
-Az alábbi képernyőképen egy lapot egy egyéni képernyőképe a kiemelt testre szabott felhasználói felületi elemeket jelenít meg:
+Az alábbi képernyőképen egy olyan oldal látható, amely egy egyéni képernyőképet használ a Kiemelt FELHASZNÁLÓIFELÜLET-elemek kiemelésével:
 
 ![Egyéni IoT Central téma](./media/howto-customize-ui/themed-ui.png)
 
 ## <a name="create-theme"></a>Téma létrehozása
 
-Egyéni téma létrehozásához keresse meg a **testre szabhatja az alkalmazás** lapját a **felügyeleti** szakaszban:
+Egyéni téma létrehozásához navigáljon az **alkalmazás testreszabása** lapra az **Adminisztráció** szakaszban:
 
-![IoT-központ témák](./media/howto-customize-ui/themes.png)
+![IoT Central témák](./media/howto-customize-ui/themes.png)
 
-Ezen az oldalon testre szabhatja az alkalmazás a következő szempontokat:
+Ezen az oldalon testreszabhatja az alkalmazás következő aspektusait:
 
 ### <a name="application-logo"></a>Alkalmazás emblémája
 
-PNG-kép, áttetsző háttérrel, 1 MB-nál nagyobb. Az embléma IoT központi alkalmazás címsorában balra jeleníti meg.
+Egy 1 MB-nál nem nagyobb PNG-rendszerkép átlátszó háttérrel. Ez az embléma a IoT Central alkalmazás címsorának bal oldalán jelenik meg.
 
-Ha a emblémakép tartalmazza az alkalmazás nevét, az alkalmazás neve szöveg elrejtheti. További információkért lásd: [Spravovat nastavení aplikace](./howto-administer.md#manage-application-settings).
+Ha az embléma képe tartalmazza az alkalmazás nevét, akkor elrejtheti az alkalmazásnév szövegét. További információ: [az alkalmazás kezelése](./howto-administer.md#change-application-name-and-url).
 
-### <a name="browser-icon-favicon"></a>Böngésző ikonra (favicon)
+### <a name="browser-icon-favicon"></a>Böngésző ikonja (favicon)
 
-PNG-kép, nagyobb, mint 32 x 32 képpont áttetsző háttérrel. Egy webböngészőben a képet a címet a böngésző címsorába, az előzmények, a könyvjelzők és a böngészőlapon használhatja.
+Egy PNG-rendszerkép, amely nem nagyobb, mint 32 x 32 képpont, átlátszó háttérrel. A webböngésző használhatja ezt a rendszerképet a címsor, előzmények, könyvjelzők és böngésző lapokon.
 
-### <a name="browser-colors"></a>Böngésző színek
+### <a name="browser-colors"></a>Böngésző színei
 
-Az oldal fejlécében színét és gombok és további kiemelt accenting használt szín módosítása Hat karakter hexadecimális szín értéket használja a következő formátumban `##ff6347`. További információ **HEXADECIMÁLIS érték** jelöléssel szín, lásd: [HTML színek](https://www.w3schools.com/html/html_colors.asp).
-
-> [!NOTE]
-> Akkor is mindig visszatérhet az alapértelmezett beállításokat a a **testre szabhatja az alkalmazás** lapot.
-
-### <a name="changes-for-operators"></a>A kezelők módosítása
-
-A rendszergazda létrehoz egy egyéni téma, akkor a kezelők vagy más felhasználók az alkalmazás már nem választhat a témát a **beállítások**.
-
-## <a name="replace-help-links"></a>Cserélje le a súgó hivatkozásai
-
-Egyéni információt nyújt a a kezelők vagy más felhasználók számára, módosíthatja a kapcsolatokat az alkalmazás **súgó** menü.
-
-A súgó hivatkozásai módosításához lépjen a **testre szabhatja a Súgó** lap a **felügyeleti** szakaszban:
-
-![IoT-központ súgóhivatkozások testreszabása](./media/howto-customize-ui/help-links.png)
-
-Adjon hozzá új bejegyzéseket a Súgó menü is, és távolítsa el az alapértelmezett bejegyzéseket:
-
-![Testreszabott IoT-központ Súgó](./media/howto-customize-ui/custom-help.png)
+Megváltoztathatja az oldal fejlécének színét, valamint az ékezetes gombokhoz és egyéb csúcsfényekhez használt színeket. Használjon egy hat karakteres hexadecimális színértéket a `##ff6347`formátumban. További információ a **hexadecimális érték** színének jelöléséről: [HTML-színek](https://www.w3schools.com/html/html_colors.asp).
 
 > [!NOTE]
-> Akkor is mindig visszatérhet az alapértelmezett súgóhivatkozások az a **testre szabhatja a Súgó** lapot.
+> Az **alkalmazás testreszabása** oldalon bármikor visszatérhet az alapértelmezett beállításokra.
+
+### <a name="changes-for-operators"></a>Operátorok módosításai
+
+Ha egy rendszergazda egyéni témát hoz létre, akkor a kezelők és az alkalmazás más felhasználói már nem választhatnak témát a **beállításokban**.
+
+## <a name="replace-help-links"></a>A Súgó hivatkozásainak cseréje
+
+Ha egyéni súgót szeretne megadni a kezelők és más felhasználók számára, módosíthatja az alkalmazás **Súgó** menüjében található hivatkozásokat.
+
+A Súgó hivatkozásainak módosításához navigáljon a **Súgó testreszabása** lapra az **Adminisztráció** szakaszban:
+
+![IoT Central Súgó hivatkozásainak testreszabása](./media/howto-customize-ui/help-links.png)
+
+Új bejegyzéseket is hozzáadhat a Súgó menühöz, és eltávolíthatja az alapértelmezett bejegyzéseket:
+
+![Testreszabott IoT Central Súgó](./media/howto-customize-ui/custom-help.png)
+
+> [!NOTE]
+> A **Súgó testreszabása** lapon bármikor visszatérhet az alapértelmezett Súgó hivatkozásokra.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte, hogyan szabhatja testre a felhasználói felület az IoT-központ alkalmazásban, az alábbiakban néhány javasolt következő lépések:
+Most, hogy megismerte, hogyan szabhatja testre a felhasználói felületet a IoT Central alkalmazásban, néhány javasolt lépés:
 
 - [Az alkalmazás felügyelete](./howto-administer.md)
-- [Az irányítópult konfigurálása](./howto-configure-homepage.md)
+- [Az alkalmazás irányítópultjának konfigurálása](./howto-configure-homepage.md)

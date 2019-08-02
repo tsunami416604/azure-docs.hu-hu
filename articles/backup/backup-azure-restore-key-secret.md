@@ -1,18 +1,19 @@
 ---
 title: Key Vault kulcs és titok visszaállítása a titkosított virtuális gépekhez Azure Backup használatával
 description: Megtudhatja, hogyan állíthatja vissza Azure Backup Key Vault kulcsát és titkos kódját a PowerShell használatával
-author: geetha
-manager: vijayts
+ms.reviewer: geg
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/28/2017
-ms.author: geg
-ms.openlocfilehash: bdc732ef02e9995e3d6dc17aa1f79eb97d895a73
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 379dd87edbbfa878a034cd61854ee15f215b0228
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465581"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689116"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Key Vault kulcs és titok visszaállítása a titkosított virtuális gépekhez Azure Backup használatával
 

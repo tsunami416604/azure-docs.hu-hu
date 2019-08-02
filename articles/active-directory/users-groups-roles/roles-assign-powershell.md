@@ -1,6 +1,6 @@
 ---
-title: Rendelje hozzá, és távolítsa el a rendszergazdai szerepkörök hozzárendelése az Azure PowerShell használatával – az Azure Active Directory |} A Microsoft Docs
-description: Azok számára, akik gyakran a szerepkör-hozzárendelések kezeléséhez kezelheti az Azure PowerShell-lel az Azure AD rendszergazdai szerepkör tagjai.
+title: Rendszergazdai szerepkörök hozzárendelésének hozzárendelése és eltávolítása Azure PowerShell-Azure Active Directorytal | Microsoft Docs
+description: A szerepkör-hozzárendeléseket gyakran kezelő felhasználók mostantól a Azure PowerShell használatával felügyelhetik az Azure AD-rendszergazdai szerepkör tagjait.
 services: active-directory
 author: curtand
 manager: mtillman
@@ -8,36 +8,36 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 07/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6877c3e547d625cf58129a546dae798b37a24ae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aa4bddf84720265afe361dff665f10ff8184f6f6
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60469094"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706479"
 ---
-# <a name="assign-azure-active-directory-admin-roles-using-powershell"></a>PowerShell-lel az Azure Active Directory-rendszergazdai szerepkörök hozzárendelése
+# <a name="assign-azure-active-directory-admin-roles-using-powershell"></a>Azure Active Directory rendszergazdai szerepkörök kiosztása a PowerShell használatával
 
-Szerepkörök hozzárendelése felhasználói fiókokhoz az Azure PowerShell használatával automatizálható. Ez a cikk a [Azure Active Directory PowerShell 2-es verzió](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) modul.
+Automatizálhatja, hogyan rendeljen hozzá szerepköröket a felhasználói fiókokhoz Azure PowerShell használatával. Ez a cikk a [Azure Active Directory PowerShell 2-es verziójának](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) modulját használja.
 
-## <a name="prepare-powershell"></a>PowerShell előkészítése
+## <a name="prepare-powershell"></a>A PowerShell előkészítése
 
-Először be kell [töltse le az Azure AD PowerShell modul](https://www.powershellgallery.com/packages/AzureAD/).
+Először [le kell töltenie az Azure ad PowerShell](https://www.powershellgallery.com/packages/AzureAD/)-modult.
 
 ## <a name="install-the-azure-ad-powershell-module"></a>Az Azure AD PowerShell modul telepítése
 
-Az Azure AD PowerShell-modul telepítéséhez használja a következő parancsokat:
+Az Azure AD PowerShell-modul telepítéséhez használja az alábbi parancsokat:
 
 ```powershell
 install-module azuread
 import-module azuread
 ```
 
-Győződjön meg arról, hogy a modul készen áll a használatra, használja a következő parancsot:
+A következő parancs használatával ellenőrizheti, hogy a modul használatra kész-e:
 
 ```powershell
 get-module azuread
@@ -46,15 +46,15 @@ get-module azuread
   Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 ```
 
-Most már megkezdheti a parancsmagokat a modulban. A parancsmagok az Azure AD-modul a teljes leírást, tekintse meg az online dokumentáció a [Azure Active Directory PowerShell 2-es verzió](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles).
+Most már elkezdheti használni a parancsmagokat a modulban. Az Azure AD-modulban található parancsmagok teljes leírását a [Azure Active Directory PowerShell 2-es verziójának](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles)online dokumentációjában találja.
 
 ## <a name="permissions-required"></a>Szükséges engedélyek
 
-Csatlakozás az Azure AD-bérlőhöz való hozzárendelése és eltávolítása a szerepkörök egy globális rendszergazdai fiók használatával.
+A szerepkörök hozzárendeléséhez vagy eltávolításához globális rendszergazdai fiókkal csatlakozhat az Azure AD-bérlőhöz.
 
-## <a name="assign-a-single-role"></a>Egyetlen szerepkör hozzárendelése
+## <a name="assign-a-single-role"></a>Egyetlen szerepkör kiosztása
 
-Szerepkör hozzárendelése, először szerezze be a megjelenítendő neve és a hozzárendelés, hogy a szerepkör nevét. Ha a fiók megjelenített neve és a szerepkör nevét, a szerepkör hozzárendeléséhez a felhasználóhoz a következő parancsmag használatával.
+Szerepkör hozzárendeléséhez először be kell szereznie a megjelenítendő nevét és a hozzárendelni kívánt szerepkör nevét. Ha a fiók megjelenített neve és a szerepkör neve, a következő parancsmagok használatával rendelje hozzá a szerepkört a felhasználóhoz.
 
 ``` PowerShell
 # Fetch user to assign to role
@@ -80,9 +80,9 @@ Add-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -RefObjectId $roleMember
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
 ```
 
-## <a name="assign-a-role-to-a-service-principal"></a>Szerepkör hozzárendelése a szolgáltatásnév
+## <a name="assign-a-role-to-a-service-principal"></a>Szerepkör kiosztása egy egyszerű szolgáltatáshoz
 
-Példa egy egyszerű szolgáltatás hozzárendelése egy szerepkört.
+Példa egyszerű szolgáltatásnév hozzárendelésére egy szerepkörhöz.
 
 ```powershell
 # Fetch a service principal to assign to role
@@ -101,9 +101,9 @@ Add-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -RefObjectId $roleMember
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADServicePrincipal
 ```
 
-## <a name="multiple-role-assignments"></a>Több szerepkör-hozzárendelések
+## <a name="multiple-role-assignments"></a>Több szerepkör-hozzárendelés
 
-Példák hozzárendelése és eltávolítása a több szerepkört egyszerre.
+Példák több szerepkör hozzárendelésére és eltávolítására egyszerre.
 
 ```powershell
 #File name
@@ -141,7 +141,7 @@ for ($i=2; $i -le $count; $i++)
 
 ## <a name="remove-a-role-assignment"></a>Szerepkör-hozzárendelés eltávolítása
 
-Ebben a példában az adott felhasználó szerepkör-hozzárendelés eltávolítása.
+Ez a példa egy szerepkör-hozzárendelést távolít el a megadott felhasználóhoz.
 
 ```powershell
 # Fetch user to assign to role
@@ -149,20 +149,20 @@ $roleMember = Get-AzureADUser -ObjectId "username@contoso.com"
 
 #Fetch list of all directory roles with object id
 Get-AzureADDirectoryRole
- 
+
 # Fetch a directory role by id
 $role = Get-AzureADDirectoryRole -ObjectId "5b3fe201-fa8b-4144-b6f1-875829ff7543"
- 
+
 # Remove user from role
 Remove-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -MemberId $roleMember.ObjectId 
 
 # Fetch role membership for role to confirm
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
- 
+
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-* Nyugodtan megoszthatja velünk a [az Azure AD felügyeleti szerepkörök fórum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
-* Szerepkörök és a rendszergazda szerepkör-hozzárendelés kapcsolatos további információkért lásd: [rendelhet hozzá rendszergazdai szerepköröket](directory-assign-admin-roles.md).
-* Az alapértelmezett felhasználói engedélyek, tekintse meg a [Vendég és tag alapértelmezett felhasználói engedélyek összehasonlítása](../fundamentals/users-default-permissions.md).
+* Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)foglalkozó fórumát.
+* A szerepkörökkel és a rendszergazdai szerepkör-hozzárendeléssel kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése](directory-assign-admin-roles.md).
+* Az alapértelmezett felhasználói engedélyek összehasonlítását lásd: a [vendég és a tag alapértelmezett felhasználói engedélyeinek összehasonlítása](../fundamentals/users-default-permissions.md).

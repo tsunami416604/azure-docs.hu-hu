@@ -1,9 +1,9 @@
 ---
-title: Biztonságos kapcsolódás az Azure Service Fabric-fürt |} A Microsoft Docs
-description: Az ügyfél hozzáférjen a Service Fabric-fürt és az ügyfelek és a egy fürt közötti kommunikáció biztonságossá tételére módját ismerteti.
+title: Biztonságos kapcsolódás Azure Service Fabric-fürthöz | Microsoft Docs
+description: Útmutatás a Service Fabric-fürthöz való ügyfél-hozzáférés hitelesítéséhez, valamint az ügyfelek és a fürt közötti kommunikáció biztonságossá tételéhez.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
@@ -13,81 +13,81 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2019
-ms.author: aljo
-ms.openlocfilehash: 703830778edb73781a263ae4d92529f7f79a0eb2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: c350b53b2d0b235c5e34431386205f090f37b482
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306838"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599716"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
 
-Amikor egy ügyfél csatlakozik egy Service Fabric-fürt csomópontja, az ügyfél tanúsítvány security vagy Azure Active Directory (AAD) használatával létrehozott hitelesített és biztonságos kommunikációt is lehet. A hitelesítés biztosítja, hogy csak a jogosult felhasználók hozzáférhetnek a fürt és üzembe helyezett alkalmazások, és felügyeleti feladatokat hajthat végre.  Tanúsítvány vagy AAD biztonsági kell korábban engedélyezve van a fürt a fürt létrehozásakor.  A fürtök biztonsági forgatókönyveit további információkért lásd: [biztonsági fürt](service-fabric-cluster-security.md). Ha a tanúsítványok biztonságos fürthöz csatlakozik [állítsa be az ügyféltanúsítványt](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert) a számítógépen, amely kapcsolódik a fürthöz. 
+Amikor az ügyfél egy Service Fabric fürthöz csatlakozik, az ügyfél hitelesíthető és biztonságossá tehető a tanúsítványalapú biztonság vagy a Azure Active Directory (HRE) használatával létesített kommunikációban. Ez a hitelesítés biztosítja, hogy csak a jogosult felhasználók férhessenek hozzá a fürthöz és a központilag telepített alkalmazásokhoz, valamint felügyeleti feladatokat hajtsanak végre.  A fürt létrehozásakor a tanúsítvány-vagy HRE biztonsági szolgáltatást előzőleg engedélyezni kell a fürtön.  A fürtök biztonsági forgatókönyvekkel kapcsolatos további információkért lásd: a [fürt biztonsága](service-fabric-cluster-security.md). Ha tanúsítványokkal védett fürthöz csatlakozik, [állítsa be az ügyféltanúsítványt](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert) azon a számítógépen, amely a fürthöz csatlakozik. 
 
 <a id="connectsecureclustercli"></a> 
 
-## <a name="connect-to-a-secure-cluster-using-azure-service-fabric-cli-sfctl"></a>Az Azure Service Fabric parancssori felület (sfctl) használatával egy biztonságos fürthöz való kapcsolódáshoz
+## <a name="connect-to-a-secure-cluster-using-azure-service-fabric-cli-sfctl"></a>Kapcsolódás biztonságos fürthöz az Azure Service Fabric parancssori felület (sfctl) használatával
 
-Nincsenek különböző módokon használatával a Service Fabric parancssori felület (sfctl) egy biztonságos fürthöz való csatlakozáshoz. Ha a hitelesítés ügyféltanúsítvány használatával történik, a tanúsítvány adatainak meg kell egyeznie egy, a fürtcsomópontokon telepített tanúsítvány adataival. Ha a tanúsítvány rendelkezik tanúsítványszolgáltatók (CA), továbbá adja meg a megbízható hitelesítésszolgáltatók szeretné.
+A Service Fabric CLI (sfctl) használatával többféleképpen csatlakozhat egy biztonságos fürthöz. Ha a hitelesítés ügyféltanúsítvány használatával történik, a tanúsítvány adatainak meg kell egyeznie egy, a fürtcsomópontokon telepített tanúsítvány adataival. Ha a tanúsítvány rendelkezik hitelesítésszolgáltatók (CAs) használatával, adja meg a megbízható hitelesítésszolgáltatókat is.
 
-A fürt használatával csatlakozhat a `sfctl cluster select` parancsot.
+A `sfctl cluster select` parancs használatával kapcsolódhat egy fürthöz.
 
-Ügyféltanúsítványok két különböző fashions, vagy egy tanúsítványból és a kulcs pár, egyetlen PFX-fájlban adható meg. Jelszóval védett PEM-fájlok, automatikusan kéri a jelszót. Az ügyfél-tanúsítványt egy PFX-fájlba szerezte be, ha először konvertálja a PFX-fájlt egy PEM-fájlt a következő paranccsal. 
+Az ügyféltanúsítványok két különböző módon adhatók meg tanúsítványként és kulcspárként, vagy egyetlen PFX-fájlként. A jelszóval védett PEM-fájlok esetében a rendszer automatikusan kéri a jelszó megadását. Ha az ügyféltanúsítványt PFX-fájlként szerezte be, először alakítsa át a PFX-fájlt egy PEM-fájlba a következő parancs használatával. 
 
 ```bash
 openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
 ```
 
-Ha a .pfx-fájl nem jelszóval védett, használja a pass - passin: a legutóbbi paraméterhez.
+Ha a. pfx fájl jelszava nem védett, használja a-passin pass: (utolsó paraméter) értékét.
 
-Adja meg az ügyféltanúsítványt egy pem-fájlt, adja meg a fájl elérési útját a `--pem` argumentum. Példa:
+Az ügyféltanúsítvány PEM- `--pem` fájlként való megadásához az argumentumban meg kell adni a fájl elérési útját. Példa:
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
-Jelszóval védett pem-fájlok felszólítja jelszó bármely parancs futtatása előtt.
+A jelszóval védett PEM-fájlok a parancsok futtatása előtt kérik a jelszót.
 
-Adjon meg egy tanúsítványt, a kulcs pár használata a `--cert` és `--key` adja meg a megfelelő fájlkiszolgálókon fájlelérési út argumentumokat.
+A tanúsítvány megadásához a kulcspár a és `--cert` `--key` az argumentumokat használja az egyes fájlok elérési útjának megadásához.
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Néha a tanúsítványok, tesztelési vagy fejlesztési fürtök védelmére szolgáló tanúsítvány érvényesítése sikertelen. Tanúsítvány-ellenőrzés megkerülését, adja meg a `--no-verify` lehetőséget. Példa:
+Esetenként a teszt-vagy fejlesztői fürtök biztonságos tanúsítvány-ellenőrzése nem sikerült. A tanúsítvány ellenőrzésének megkerüléséhez válassza `--no-verify` a lehetőséget. Példa:
 
 > [!WARNING]
-> Ne használja a `no-verify` lehetőséget a Service Fabric-fürtök éles környezetben való csatlakozáskor.
+> Ne használja a `no-verify` kapcsolót éles Service Fabric fürtökhöz való csatlakozáskor.
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-Emellett megbízható CA-tanúsítványok, illetve az egyes tanúsítványok könyvtárak elérési útjait is megadhat. Az elérési utak megadásához használja a `--ca` argumentum. Példa:
+Emellett megadhatja a megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok vagy az egyes tanúsítványok könyvtárainak elérési útját is. Az elérési utak megadásához `--ca` használja az argumentumot. Példa:
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
 ```
 
-A csatlakozás után meg kell tudni [más sfctl-parancsok futtatásához](service-fabric-cli.md) való kommunikáljanak a fürttel.
+A kapcsolódás után [más sfctl-parancsokat is futtathat](service-fabric-cli.md) a fürttel való kommunikációhoz.
 
 <a id="connectsecurecluster"></a>
 
-## <a name="connect-to-a-cluster-using-powershell"></a>Csatlakozás a fürthöz PowerShell használatával
-Mielőtt egy fürtön a Powershellen keresztül műveleteket végez, először a fürt kapcsolatot létesíteni. A megadott PowerShell-munkamenetben a fürt kapcsolati minden ezt követő parancsok szolgál.
+## <a name="connect-to-a-cluster-using-powershell"></a>Kapcsolódás fürthöz a PowerShell használatával
+Mielőtt műveleteket hajt végre a fürtön a PowerShell használatával, először létesítsen kapcsolatot a fürttel. A fürt kapcsolata az adott PowerShell-munkamenetben lévő összes további parancshoz használatos.
 
-### <a name="connect-to-an-unsecure-cluster"></a>Csatlakozás biztonságos fürthöz
+### <a name="connect-to-an-unsecure-cluster"></a>Kapcsolódás nem biztonságos fürthöz
 
-A nem biztonságos fürtökhöz csatlakozhat, adja meg a fürt végpont címe, a **Connect-ServiceFabricCluster** parancsot:
+A nem biztonságos fürthöz való kapcsolódáshoz adja meg a fürt végpontjának címe beállítást a **ServiceFabricCluster** parancshoz:
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 
 ```
 
-### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>Azure Active Directory használatával egy biztonságos fürthöz való kapcsolódáshoz
+### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>Kapcsolódás biztonságos fürthöz Azure Active Directory használatával
 
-Szeretne csatlakozni egy biztonságos fürt, amely az Azure Active Directoryt használja a fürt rendszergazdai hozzáférés engedélyezésére, adja meg a fürt tanúsítvány ujjlenyomatát, és használja a *AzureActiveDirectory* jelzőt.  
+Ha Azure Active Directoryt használó biztonságos fürthöz szeretne csatlakozni a fürt rendszergazdai hozzáférésének engedélyezéséhez, adja meg a fürt tanúsítványának ujjlenyomatát, és használja a *AzureActiveDirectory* jelzőt.  
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
@@ -95,11 +95,11 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 -AzureActiveDirectory
 ```
 
-### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Egy olyan ügyféltanúsítvány használatával egy biztonságos fürthöz való kapcsolódáshoz
-Futtassa a következő PowerShell-parancsot egy rendszergazdai hozzáférés engedélyezésére az ügyféltanúsítványok használó biztonságos fürthöz való csatlakozáshoz. 
+### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Kapcsolódás biztonságos fürthöz ügyféltanúsítvány használatával
+Futtassa a következő PowerShell-parancsot egy olyan biztonságos fürthöz való kapcsolódáshoz, amely ügyféltanúsítványt használ a rendszergazdai hozzáférés engedélyezéséhez. 
 
-#### <a name="connect-using-certificate-common-name"></a>Csatlakozás a tanúsítvány köznapi nevét használó
-Adja meg a fürt tanúsítvány köznapi nevét és az ügyféltanúsítványt, amely rendelkezik engedéllyel a fürtkezeléshez köznapi nevével. A tanúsítvány adatainak meg kell egyeznie a fürtcsomópontokon egy tanúsítványt.
+#### <a name="connect-using-certificate-common-name"></a>Összekapcsolás a tanúsítvány köznapi nevével
+Adja meg a fürt tanúsítványának köznapi nevét és a fürt felügyeletére vonatkozó engedélyeket kapott ügyféltanúsítvány köznapi nevét. A tanúsítvány részleteinek meg kell egyezniük a fürtcsomópontok tanúsítványával.
 
 ```powershell
 Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
@@ -110,7 +110,7 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
     -StoreLocation CurrentUser `
     -StoreName My 
 ```
-*ServerCommonName* a fürtcsomópontokon telepített tanúsítvány köznapi neve. *FindValue* a rendszergazdai ügyfél tanúsítványa köznapi neve. A paraméterek ki vannak töltve, ha a parancs az alábbi példához hasonlóan néz ki:
+A *ServerCommonName* a fürtcsomópontokon telepített kiszolgálótanúsítvány köznapi neve. A *FindValue* a felügyeleti ügyféltanúsítvány köznapi neve. A paraméterek kitöltése után a parancs a következő példához hasonlóan néz ki:
 ```powershell
 $ClusterName= "sf-commonnametest-scus.southcentralus.cloudapp.azure.com:19000"
 $certCN = "sfrpe2eetest.southcentralus.cloudapp.azure.com"
@@ -124,8 +124,8 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
     -StoreName My 
 ```
 
-#### <a name="connect-using-certificate-thumbprint"></a>Csatlakozás a tanúsítvány-ujjlenyomat használatával
-Adja meg a fürt tanúsítvány-ujjlenyomat és, hogy rendelkezik engedéllyel a kiszolgálófürt-felügyelet az ügyféltanúsítvány ujjlenyomatát. A tanúsítvány adatainak meg kell egyeznie a fürtcsomópontokon egy tanúsítványt.
+#### <a name="connect-using-certificate-thumbprint"></a>Kapcsolat a tanúsítvány ujjlenyomatával
+Adja meg a fürt tanúsítványának ujjlenyomatát és az ügyféltanúsítvány ujjlenyomatát, amely engedélyt kapott a fürtözési felügyeletre. A tanúsítvány részleteinek meg kell egyezniük a fürtcsomópontok tanúsítványával.
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `  
@@ -135,7 +135,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
           -StoreLocation CurrentUser -StoreName My
 ```
 
-*ServerCertThumbprint* van a fürtcsomópontokon telepített tanúsítvány ujjlenyomatával. *FindValue* van, a rendszergazda-ügyfél tanúsítványának ujjlenyomata.  A paraméterek ki vannak töltve, ha a parancs az alábbi példához hasonlóan néz ki:
+A *servercertthumbprint értékeknek egyezniük* a fürtcsomópontokon telepített kiszolgálótanúsítvány ujjlenyomata. A *FindValue* a felügyeleti ügyféltanúsítvány ujjlenyomata.  A paraméterek kitöltése után a parancs a következő példához hasonlóan néz ki:
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azure.com:19000 `  
@@ -145,8 +145,8 @@ Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azu
           -StoreLocation CurrentUser -StoreName My 
 ```
 
-### <a name="connect-to-a-secure-cluster-using-windows-active-directory"></a>Windows Active Directory használatával egy biztonságos fürthöz való kapcsolódáshoz
-Ha az önálló fürtöt helyezünk üzembe AD biztonsági, csatlakozhat a fürthöz a kapcsoló "WindowsCredential" hozzáfűzésével.
+### <a name="connect-to-a-secure-cluster-using-windows-active-directory"></a>Kapcsolódás biztonságos fürthöz Windows Active Directory használatával
+Ha az önálló fürt üzembe helyezése az AD Security használatával történik, kapcsolódjon a fürthöz a "WindowsCredential" kapcsoló hozzáfűzésével.
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
@@ -155,26 +155,26 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 
 <a id="connectsecureclusterfabricclient"></a>
 
-## <a name="connect-to-a-cluster-using-the-fabricclient-apis"></a>Csatlakozhat a fürthöz a FabricClient API-k használatával
-A Service Fabric SDK biztosítja a [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) osztály a fürt felügyeletéhez. A FabricClient API-kat használ, kérje le a Microsoft.ServiceFabric NuGet-csomagot.
+## <a name="connect-to-a-cluster-using-the-fabricclient-apis"></a>Kapcsolódás fürthöz a FabricClient API-k használatával
+A Service Fabric SDK biztosítja a [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) osztályt a fürt felügyeletéhez. A FabricClient API-k használatához szerezze be a Microsoft. ServiceFabric NuGet-csomagot.
 
-### <a name="connect-to-an-unsecure-cluster"></a>Csatlakozás biztonságos fürthöz
+### <a name="connect-to-an-unsecure-cluster"></a>Kapcsolódás nem biztonságos fürthöz
 
-Egy távoli nem biztonságos fürthöz való kapcsolódáshoz, FabricClient példányt hoz létre, és adja meg a fürt címét:
+Távoli nem biztonságos fürthöz való kapcsolódáshoz hozzon létre egy FabricClient-példányt, és adja meg a fürt címe:
 
 ```csharp
 FabricClient fabricClient = new FabricClient("clustername.westus.cloudapp.azure.com:19000");
 ```
 
-A fürtön belül futó kód, például egy Reliable Service-ben hozzon létre egy FabricClient *nélkül* adja meg a fürt címét. FabricClient csatlakozik a csomóponton a kódot, jelenleg fut a helyi felügyeleti átjáró egy több hálózati Ugrás elkerülésére.
+A fürtön belül futó kód esetében például egy megbízható szolgáltatásban hozzon létre egy FabricClient a fürt címe megadása *nélkül* . A FabricClient csatlakozik a helyi felügyeleti átjáróhoz azon a csomóponton, amelyen a kód jelenleg fut, elkerülve a további hálózati ugrásokat.
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
 ```
 
-### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Egy olyan ügyféltanúsítvány használatával egy biztonságos fürthöz való kapcsolódáshoz
+### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Kapcsolódás biztonságos fürthöz ügyféltanúsítvány használatával
 
-A fürt csomópontjainak rendelkeznie kell érvényes tanúsítványok amelynek köznapi név vagy az SAN DNS-név megjelenik a [RemoteCommonNames tulajdonság](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials) beállított [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient). Ez a folyamat a következő lehetővé teszi, hogy az ügyfél és a fürt csomópontjai közötti kölcsönös hitelesítés.
+A fürt csomópontjainak érvényes tanúsítványokkal kell rendelkezniük, amelyek köznapi neve vagy DNS-neve a SAN-ban jelenik meg a [RemoteCommonNames tulajdonságban](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials) a [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient). Ennek a folyamatnak a követése lehetővé teszi a kölcsönös hitelesítést az ügyfél és a fürtcsomópontok között.
 
 ```csharp
 using System.Fabric;
@@ -212,11 +212,11 @@ static X509Credentials GetCredentials(string clientCertThumb, string serverCertT
 }
 ```
 
-### <a name="connect-to-a-secure-cluster-interactively-using-azure-active-directory"></a>Interaktív módon az Azure Active Directory használatával egy biztonságos fürthöz való kapcsolódáshoz
+### <a name="connect-to-a-secure-cluster-interactively-using-azure-active-directory"></a>Kapcsolódás biztonságos fürthöz interaktív módon a Azure Active Directory használatával
 
-Az alábbi példa az ügyfél identitás- és kiszolgálói tanúsítvány a kiszolgáló identitását az Azure Active Directory.
+Az alábbi példa a kiszolgáló identitásához Azure Active Directory használ az ügyfél-identitáshoz és a kiszolgálói tanúsítványhoz.
 
-Egy párbeszédablak automatikusan kap, miszerint az interaktív bejelentkezéshez a fürthöz való csatlakozáskor.
+A fürthöz való csatlakozáskor a párbeszédpanel automatikusan megjelenik az interaktív bejelentkezéshez.
 
 ```csharp
 string serverCertThumb = "A8136758F4AB8962AF2BF3F27921BE1DF67F4326";
@@ -238,11 +238,11 @@ catch (Exception e)
 }
 ```
 
-### <a name="connect-to-a-secure-cluster-non-interactively-using-azure-active-directory"></a>Nem interaktív módon az Azure Active Directory használatával egy biztonságos fürthöz való kapcsolódáshoz
+### <a name="connect-to-a-secure-cluster-non-interactively-using-azure-active-directory"></a>Kapcsolódás biztonságos fürthöz nem interaktív módon a Azure Active Directory használatával
 
-Az alábbi példa támaszkodik a Microsoft.IdentityModel.Clients.ActiveDirectory, verzió: 2.19.208020213.
+A következő példa a Microsoft. IdentityModel. clients. ActiveDirectory, Version: 2.19.208020213.
 
-További információ az AAD token beszerzéséhez: [Microsoft.IdentityModel.Clients.ActiveDirectory](https://msdn.microsoft.com/library/microsoft.identitymodel.clients.activedirectory.aspx).
+További információ a HRE-jogkivonat beszerzéséről: [Microsoft. IdentityModel. clients. ActiveDirectory](https://msdn.microsoft.com/library/microsoft.identitymodel.clients.activedirectory.aspx).
 
 ```csharp
 string tenantId = "C15CFCEA-02C1-40DC-8466-FBD0EE0B05D2";
@@ -295,9 +295,9 @@ static string GetAccessToken(
 
 ```
 
-### <a name="connect-to-a-secure-cluster-without-prior-metadata-knowledge-using-azure-active-directory"></a>Az Azure Active Directory előzetes metaadatok tudomása nélkül egy biztonságos fürthöz való kapcsolódáshoz
+### <a name="connect-to-a-secure-cluster-without-prior-metadata-knowledge-using-azure-active-directory"></a>Kapcsolódás biztonságos fürthöz a korábbi metaadatok ismerete nélkül a Azure Active Directory használatával
 
-Az alábbi példa a nem interaktív token beszerzéséhez használja, de ugyanezzel a módszerrel hozhat létre egy egyéni interaktív token beszerzéséhez élmény használható. A token beszerzéséhez szükséges az Azure Active Directory-metaadatok olvasása az fürtkonfiguráció.
+Az alábbi példa a nem interaktív jogkivonat-beszerzést használja, de ugyanezt a megközelítést használhatja egy egyéni interaktív jogkivonat-beszerzési élmény létrehozásához. A jogkivonat-beszerzéshez szükséges Azure Active Directory metaadatok beolvasása a fürt konfigurációjától történik.
 
 ```csharp
 string serverCertThumb = "A8136758F4AB8962AF2BF3F27921BE1DF67F4326";
@@ -340,38 +340,38 @@ static string GetAccessToken(AzureActiveDirectoryMetadata aad)
 
 <a id="connectsecureclustersfx"></a>
 
-## <a name="connect-to-a-secure-cluster-using-service-fabric-explorer"></a>Service Fabric Explorer használatával egy biztonságos fürthöz való kapcsolódáshoz
-Elérni [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) egy adott fürtben, a pont a böngészőben:
+## <a name="connect-to-a-secure-cluster-using-service-fabric-explorer"></a>Kapcsolódás biztonságos fürthöz Service Fabric Explorer használatával
+Ha [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) szeretne elérni egy adott fürthöz, a böngészőt a következőre irányíthatja:
 
 `http://<your-cluster-endpoint>:19080/Explorer`
 
-A teljes URL-címet is a fürt alapvető erőforrások panelje az Azure Portalon érhető el.
+A teljes URL-cím a Azure Portal fürt Essentials paneljén is elérhető.
 
-Windows- vagy OS X rendszeren egy böngészővel a biztonságos fürthöz való csatlakozáshoz, az ügyfél-tanúsítványt importálhatja, és a böngésző megkéri, a tanúsítvány a fürthöz való kapcsolódáshoz használandó.  Linuxos gépeken a tanúsítványt kell importálni használatával (minden böngésző rendelkezik használható különböző mechanizmusokat) speciális böngésző beállításait, majd mutasson a tanúsítvány helye a lemezen. Olvasási [ügyféltanúsítvány beállítása](#connectsecureclustersetupclientcert) további információt.
+Ha Windows vagy OS X rendszerű biztonságos fürthöz szeretne csatlakozni böngésző használatával, importálhatja az ügyféltanúsítványt, és a böngésző kérni fogja a fürthöz való csatlakozáshoz használandó tanúsítvány megadását.  A Linux rendszerű gépeken a tanúsítványt speciális böngésző-beállításokkal kell importálni (minden böngésző különböző mechanizmusokkal rendelkezik), és a tanúsítvány helyére irányítja a lemezt. További információért olvassa el az [ügyféltanúsítvány beállítása](#connectsecureclustersetupclientcert) című témakört.
 
-### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>Azure Active Directory használatával egy biztonságos fürthöz való kapcsolódáshoz
+### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>Kapcsolódás biztonságos fürthöz Azure Active Directory használatával
 
-Az aad-vel védett fürthöz csatlakozhat a böngészőben a pont:
-
-`https://<your-cluster-endpoint>:19080/Explorer`
-
-Automatikusan kell kéri, jelentkezzen be aad-ben.
-
-### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Egy olyan ügyféltanúsítvány használatával egy biztonságos fürthöz való kapcsolódáshoz
-
-Szeretne csatlakozni egy fürtöt, amely a tanúsítványok védi, mutasson a böngészőben:
+Ha a HRE védett fürthöz szeretne csatlakozni, mutasson a böngészőre a következőre:
 
 `https://<your-cluster-endpoint>:19080/Explorer`
 
-Automatikusan kell kéri válasszon ügyféltanúsítványt.
+A rendszer automatikusan kéri a HRE való bejelentkezést.
+
+### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Kapcsolódás biztonságos fürthöz ügyféltanúsítvány használatával
+
+Ha tanúsítványokkal védett fürthöz szeretne csatlakozni, mutasson a böngészőre a következőre:
+
+`https://<your-cluster-endpoint>:19080/Explorer`
+
+A rendszer automatikusan felszólítja az ügyféltanúsítvány kiválasztására.
 
 <a id="connectsecureclustersetupclientcert"></a>
 
-## <a name="set-up-a-client-certificate-on-the-remote-computer"></a>A távoli számítógépen ügyfél tanúsítvány beállítása
+## <a name="set-up-a-client-certificate-on-the-remote-computer"></a>Ügyféltanúsítvány beállítása a távoli számítógépen
 
-A fürt egy, a fürt és a kiszolgáló tanúsítványának és egy másik, az ügyfél hozzáférésének biztonságossá tételéhez legalább két tanúsítványokat kell használni.  Azt javasoljuk, hogy is használja további másodlagos tanúsítványokat és hozzáférési ügyféltanúsítványok.  Ügyfél és a egy fürt csomópontja, tanúsítvány-rendszerbiztonság használatával közötti kommunikáció védelméhez, először szerezze be és telepítheti az ügyféltanúsítványt. A tanúsítványt a személyes (saját) tárolóba a helyi számítógépen vagy a jelenlegi felhasználó is telepíthető.  A tanúsítvány ujjlenyomatát is, hogy az ügyfél hitelesíthető a fürt szükséges.
+Legalább két tanúsítványt kell használni a fürt biztonságossá tételéhez, egyet a fürthöz és a kiszolgálói tanúsítványhoz, és egy másikat az ügyfél-hozzáféréshez.  Javasoljuk, hogy használjon további másodlagos tanúsítványokat és ügyfél-hozzáférési tanúsítványokat is.  Az ügyfél és a fürtcsomópont közötti kommunikáció biztonságossá tételéhez először be kell szereznie és telepítenie kell az ügyféltanúsítványt. A tanúsítvány telepíthető a helyi számítógép vagy az aktuális felhasználó személyes (saját) tárolójába.  Szükség van a kiszolgálói tanúsítvány ujjlenyomatára is, hogy az ügyfél hitelesíteni tudja a fürtöt.
 
-* Windows rendszeren: Kattintson duplán a PFX-fájlt, és kövesse az utasításokat követve telepítse a tanúsítványt a személyes tárban `Certificates - Current User\Personal\Certificates`. A PowerShell-parancsot is használhatja:
+* Windows rendszeren: Kattintson duplán a PFX-fájlra, `Certificates - Current User\Personal\Certificates`és kövesse az utasításokat a tanúsítvány személyes tárolóban történő telepítéséhez. Másik lehetőségként használhatja a PowerShell-parancsot is:
 
     ```powershell
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
@@ -379,7 +379,7 @@ A fürt egy, a fürt és a kiszolgáló tanúsítványának és egy másik, az �
             -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
     ```
 
-    Ha önaláírt tanúsítványt, meg kell importálni kell a számítógép "megbízható személyek" tárolóban, mielőtt használhatná ezt a tanúsítványt egy biztonságos fürthöz való csatlakozáshoz.
+    Ha az önaláírt tanúsítvány, akkor a tanúsítvány használatával a biztonságos fürthöz való kapcsolódáshoz importálnia kell a számítógép "megbízható személyek" tárolójába.
 
     ```powershell
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPeople `
@@ -387,12 +387,12 @@ A fürt egy, a fürt és a kiszolgáló tanúsítványának és egy másik, az �
     -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
     ```
 
-* Mac gépen: Kattintson duplán a PFX-fájlt, és kövesse az utasításokat a tanúsítvány a kulcskarikában telepítéséhez.
+* Mac gépen: Kattintson duplán a PFX-fájlra, és az utasításokat követve telepítse a tanúsítványt a kulcstartóba.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Service Fabric-fürt frissítési folyamat és az Ön elvárásainak](service-fabric-cluster-upgrade.md)
-* [A Visual Studióban a Service Fabric-alkalmazások kezelése](service-fabric-manage-application-in-visual-studio.md)
-* [A Service Fabric Health-modell bemutatása](service-fabric-health-introduction.md)
-* [Alkalmazás biztonságának és futtató](service-fabric-application-runas-security.md)
+* [Service Fabric fürt frissítési folyamata és elvárásai](service-fabric-cluster-upgrade.md)
+* [A Service Fabric-alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md)
+* [Service Fabric Health Model bemutatása](service-fabric-health-introduction.md)
+* [Alkalmazás biztonsága és a RunAs](service-fabric-application-runas-security.md)
 * [A Service Fabric parancssori felület használatának első lépései](service-fabric-cli.md)

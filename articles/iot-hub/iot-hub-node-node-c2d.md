@@ -9,14 +9,14 @@ services: iot-hub
 ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
-ms.openlocfilehash: b1aa8f2ce7d271187657d57993032069639ca9c7
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: d3e4e0f4e7b1f8d3e100b3f1b3446907cfd587c5
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404100"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716942"
 ---
-# <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>Felhőből az eszközre irányuló üzenetek küldése IoT Hub (node)
+# <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>Üzenetküldés a felhőből az eszközre IoT Hub (node. js)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
@@ -41,7 +41,7 @@ Az oktatóanyag végén két Node. js-konzol alkalmazást futtat:
 * A **SendCloudToDeviceMessage**, amely egy felhőből az eszközre irányuló üzenetet küld a szimulált eszköz alkalmazásnak IoT hubon keresztül, majd megkapja a kézbesítési visszaigazolást.
 
 > [!NOTE]
-> A IoT Hub számos eszköz-platform és nyelv (például C, Java és JavaScript) támogatásával rendelkezik az Azure IoT Device SDK-k használatával. Az eszköznek az oktatóanyag kódjához való csatlakoztatásának részletes ismertetését, és általában az Azure IoT Hub az Azure [IoT fejlesztői](https://azure.microsoft.com/develop/iot)központját tekintheti meg.
+> A IoT Hub számos eszköz platformjának és nyelvének (például C, Java, Python és JavaScript) támogatásával rendelkezik az Azure IoT Device SDK-k használatával. Az eszköznek az oktatóanyag kódjához való csatlakoztatásának részletes ismertetését, és általában az Azure IoT Hub az Azure [IoT fejlesztői](https://azure.microsoft.com/develop/iot)központját tekintheti meg.
 >
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
@@ -53,33 +53,26 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 Ebben a szakaszban módosítania kell a szimulált eszközt, amelyet a [telemetria küldése eszközről egy IoT-hubhoz](quickstart-send-telemetry-node.md) hozott létre, hogy fogadja a felhőből az eszközre irányuló üzeneteket az IoT hub-ból.
 
-1. Egy szövegszerkesztővel nyissa meg a SimulatedDevice. js fájlt.
+1. Egy szövegszerkesztővel nyissa meg a **SimulatedDevice. js** fájlt. Ez a fájl a **IOT-hub\Quickstarts\simulated-Device** mappában található, a Node. js-mintakód legfelső mappájából, amelyet a [telemetria küldése az eszközről egy IOT hub](quickstart-send-telemetry-node.md) rövid útmutatóba.
 
-2. Módosítsa a **connectCallback** függvényt a IoT hub küldött üzenetek kezelésére. Ebben a példában az eszköz mindig a Complete  függvényt hívja meg, hogy értesítse IoT hub arról, hogy feldolgozta az üzenetet. A **connectCallback** függvény új verziója a következő kódrészlethez hasonlít:
+2. Regisztrálja a kezelőt az eszköz ügyfelével a IoT Hub küldött üzenetek fogadásához. Adja hozzá a hívást `client.on` úgy, hogy az az eszköz ügyfelét létrehozó sort az alábbi kódrészlettel hozza létre:
 
     ```javascript
-    var connectCallback = function (err) {
-      if (err) {
-        console.log('Could not connect: ' + err);
-      } else {
-        console.log('Client connected');
-        client.on('message', function (msg) {
-          console.log('Id: ' + msg.messageId + ' Body: ' + msg.data);
-          client.complete(msg, printResultFor('completed'));
-        });
-        // Create a message and send it to the IoT Hub every second
-        setInterval(function(){
-            var temperature = 20 + (Math.random() * 15);
-            var humidity = 60 + (Math.random() * 20);
-            var data = JSON.stringify({ deviceId: 'myFirstNodeDevice', temperature: temperature, humidity: humidity });
-            var message = new Message(data);
-            message.properties.add('temperatureAlert', (temperature > 30) ? 'true' : 'false');
-            console.log("Sending message: " + message.getData());
-            client.sendEvent(message, printResultFor('send'));
-        }, 1000);
-      }
-    };
+    var client = DeviceClient.fromConnectionString(connectionString, Mqtt);
+
+    client.on('message', function (msg) {
+      console.log('Id: ' + msg.messageId + ' Body: ' + msg.data);
+      client.complete(msg, function (err) {
+        if (err) {
+          console.error('complete error: ' + err.toString());
+        } else {
+          console.log('complete sent');
+        }
+      });
+    });
     ```
+
+    Ebben a példában az eszköz meghívja a **Complete** függvényt, hogy értesítse IoT hub arról, hogy feldolgozta az üzenetet. A befejezési hívás nem szükséges, ha MQTT-átvitelt használ, és nem lehet kihagyni. HTTPS-és AMQP esetén szükséges.
   
    > [!NOTE]
    > Ha MQTT vagy AMQP helyett HTTPS-t használ, akkor a **DeviceClient** -példányok ritkán keresnek IoT hub üzeneteket (kevesebb, mint 25 percenként). A MQTT, a AMQP és a HTTPS támogatásával, valamint a szabályozás IoT Hubával kapcsolatos további információkért tekintse meg a [IoT hub fejlesztői útmutató](iot-hub-devguide-messaging.md)című témakört.
@@ -87,7 +80,7 @@ Ebben a szakaszban módosítania kell a szimulált eszközt, amelyet a [telemetr
 
 ## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 
-Ebből a cikkből megtudhatja, hogyan küldhet el egy háttér-szolgáltatást a felhőből az eszközre irányuló üzenetek küldéséhez a IoT hub használatával, amelyet a [telemetria küldése az eszközről az IoT hubhoz](quickstart-send-telemetry-node.md)hozott létre. A felhőből az eszközre irányuló üzenetek küldéséhez a szolgáltatásnak szüksége van a **szolgáltatás kapcsolódási** engedélyére. Alapértelmezés szerint minden IoT Hub a **szolgáltatás** nevű közös hozzáférési házirenddel jön létre, amely megadja ezt az engedélyt.
+Ebben a cikkben egy háttér-szolgáltatást hoz létre a felhőből az eszközre irányuló üzenetek küldéséhez a IoT hub használatával, amelyet a [telemetria küldése eszközről egy IoT hubhoz](quickstart-send-telemetry-node.md)hozott létre. A felhőből az eszközre irányuló üzenetek küldéséhez a szolgáltatásnak szüksége van a **szolgáltatás kapcsolódási** engedélyére. Alapértelmezés szerint minden IoT Hub a **szolgáltatás** nevű közös hozzáférési házirenddel jön létre, amely megadja ezt az engedélyt.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -173,7 +166,7 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a felhőb�
 
 Most már készen áll az alkalmazások futtatására.
 
-1. A **simulateddevice** mappában található parancssorban futtassa a következő parancsot, hogy telemetria küldjön a IoT Hubnek, és figyelje a felhőből az eszközre irányuló üzeneteket:
+1. A **szimulált eszköz** mappában a parancssorban futtassa a következő parancsot, hogy telemetria küldjön a IoT Hubnek, és figyelje a felhőből az eszközre irányuló üzeneteket:
 
     ```shell
     node SimulatedDevice.js

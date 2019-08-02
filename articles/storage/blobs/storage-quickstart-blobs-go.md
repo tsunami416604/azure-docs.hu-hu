@@ -1,22 +1,20 @@
 ---
 title: Azure rövid útmutató – Blob létrehozása objektumtárban Go használatával | Microsoft Docs
 description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre egy objektumtárban (Blob Storage-fiókban). Majd a Storage Góhoz készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
-services: storage
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: quickstart
-ms.date: 11/14/2018
 ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: 5b5d0663166c6889d25c0fdd578aadbac3436931
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 11/14/2018
+ms.service: storage
+ms.subservice: blobs
+ms.topic: quickstart
+ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152783"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726459"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Gyors útmutató: Blobok feltöltése, letöltése, és lista Go használatával
+# <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Gyors útmutató: Blobok feltöltése, letöltése és listázása a go használatával
 
 A rövid útmutató azt ismerteti, hogyan használható a Go programnyelv blokkblobok feltöltésére, letöltésére és listázására az Azure Blob Storage-ban található tárolókban. 
 
@@ -24,17 +22,17 @@ A rövid útmutató azt ismerteti, hogyan használható a Go programnyelv blokkb
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-Győződjön meg arról, hogy telepítve van a következő további Előfeltételek:
+Győződjön meg arról, hogy a következő további előfeltételek vannak telepítve:
  
-* [Go 1.8-as vagy újabb](https://golang.org/dl/)
-* [A Góhoz készült Azure Storage Blob SDK](https://github.com/azure/azure-storage-blob-go/), a következő paranccsal:
+* [Ugrás 1,8 vagy újabb verzióra](https://golang.org/dl/)
+* [Azure Storage blob SDK for go](https://github.com/azure/azure-storage-blob-go/), a következő parancs használatával:
 
     ```
     go get -u github.com/Azure/azure-storage-blob-go/azblob
     ``` 
 
     > [!NOTE]
-    > Győződjön meg arról, hogy nagybetűvel `Azure` elkerülése érdekében esetben az írásmóddal kapcsolatos importálási hibák fordulhatnak elő, az SDK-val való használatakor az URL-címben. Is nagybetűvel `Azure` szót az importálási utasításokban.
+    > Az SDK használatakor ügyeljen arra `Azure` , hogy az URL-cím alapján kihasználja az esetekkel kapcsolatos importálási problémákat. Az importálási `Azure` utasításokban is kihasználható.
     
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 A rövid útmutatóban használt [mintaalkalmazás](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git) egy egyszerű Go-alkalmazás.  
@@ -112,7 +110,7 @@ A ContainerURL létrehozása után létrehozhatja a **BlobURL** objektum egy blo
 > [!IMPORTANT]
 > A tárolók nevei csak kisbetűket tartalmazhatnak. A tárolók és blobok elnevezésével kapcsolatos részletekért lásd a [tárolók, blobok és metaadatok elnevezésével és hivatkozásával](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) foglalkozó cikket.
 
-Ebben a szakaszban egy új tárolót hoz létre. A tároló neve **quickstartblobs-[véletlen sztring]**. 
+Ebben a szakaszban egy új tárolót hoz létre. A tároló neve **quickstartblobs-[véletlen sztring]** . 
 
 ```go 
 // From the Azure portal, get your storage account name and key and set environment variables.
@@ -149,7 +147,7 @@ handleErrors(err)
 
 A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. A leggyakrabban használt elemek a blokkblobok, és ez a rövid útmutató is ezeket használja.  
 
-Ha fel szeretne tölteni egy fájlt egy blobba, nyissa meg a fájlt az **os.Open** használatával. Ezt követően feltöltheti a fájlt a megadott elérési úthoz, a REST API-k egyikével: Feltöltés (PutBlob), StageBlock/CommitBlockList (PutBlock/PutBlockList). 
+Ha fel szeretne tölteni egy fájlt egy blobba, nyissa meg a fájlt az **os.Open** használatával. Ezután feltöltheti a fájlt a megadott elérési útra a REST API-k egyikével: Upload (PutBlob), StageBlock/CommitBlockList (PutBlock/PutBlockList). 
 
 Másik lehetőségként az SDK az alacsony szintű REST API-kra épülő [magas szintű API-kat](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) is kínál. Az ***UploadFileToBlockBlob*** függvény például StageBlock (PutBlock) műveletekkel több darabban, egyszerre tölt fel egy fájlt az adatátvitel optimalizálása érdekében. Ha a fájl 256 MB-nál kisebb, a StageBlock (PutBlock) műveletek helyett az Upload (PutBlob) műveletet használja, és egy tranzakcióban hajtja végre az átvitelt.
 
@@ -209,7 +207,7 @@ for marker := (azblob.Marker{}); marker.NotDone(); {
 
 ### <a name="download-the-blob"></a>A blob letöltése
 
-A blobok letöltéséhez használja a **Download** alacsony szintű függvényt a BlobURL-eken. A függvény egy **DownloadResponse** struktúrát ad vissza. A **Body** függvény a struktúrán való futtatásával egy **RetryReader** streamet kap az adatok olvasásához. Kapcsolat beolvasás során nem sikerül, ha fog létrehozni, akkor további kérések a kapcsolatot, és olvassa tovább. Ha a RetryReaderOption MaxRetryRequests értékét 0-ra állítja (ez az alapértelmezett érték), a rendszer az eredeti kéréstörzset adja vissza, és nem próbálkozik újra. Másik megoldásként használhatja a magas szintű **DownloadBlobToBuffer** vagy **DownloadBlobToFile** API-t is a kód egyszerűsítése érdekében.
+A blobok letöltéséhez használja a **Download** alacsony szintű függvényt a BlobURL-eken. A függvény egy **DownloadResponse** struktúrát ad vissza. A **Body** függvény a struktúrán való futtatásával egy **RetryReader** streamet kap az adatok olvasásához. Ha egy kapcsolat nem sikerül az olvasás során, további kérelmeket küld a kapcsolat újbóli létrehozásához és az olvasás folytatásához. Ha a RetryReaderOption MaxRetryRequests értékét 0-ra állítja (ez az alapértelmezett érték), a rendszer az eredeti kéréstörzset adja vissza, és nem próbálkozik újra. Másik megoldásként használhatja a magas szintű **DownloadBlobToBuffer** vagy **DownloadBlobToFile** API-t is a kód egyszerűsítése érdekében.
 
 Az alábbi kód a **Download** függvény használatával tölti le a blobot. A blob tartalmát a rendszer egy pufferbe írja, és megjeleníti a konzolon.
 

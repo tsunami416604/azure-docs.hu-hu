@@ -1,6 +1,6 @@
 ---
-title: Adatainak elérése az Azure Security Center segítségével az IoT-előzetes verzió |} A Microsoft Docs
-description: További tudnivalók az Azure Security Center használata az IoT biztonsági riasztás és a javaslattételt adatok eléréséhez.
+title: Adatok elérése a IoT Azure Security Center használatával | Microsoft Docs
+description: Ismerje meg, hogyan férhet hozzá a biztonsági riasztásokhoz és a javaslati információkhoz, amikor Azure Security Centert használ a IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,47 +13,43 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 2d3f3c6ad194ff8c9582f0c9e71a29b37ba5d967
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3ddd9b2c8373746a65cd78f0a81b60d097cd9f38
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616739"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597175"
 ---
-# <a name="access-your-security-data"></a>Biztonsági adatok elérése 
+# <a name="access-your-security-data"></a>Hozzáférés a biztonsági adataihoz 
 
-> [!IMPORTANT]
-> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
-> Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Az Azure Security Center (ASC) az IoT tárolja a biztonsági riasztások, javaslatok és biztonsági nyers adatokat (Ha meg szeretné tartani őket) Log Analytics-munkaterület.
+A IoT Azure Security Center a biztonsági riasztásokat, a javaslatokat és a nyers biztonsági adatait (ha úgy dönt, hogy menti) a Log Analytics munkaterületen.
 
 ## <a name="log-analytics"></a>Log Analytics
 
-Annak konfigurálása, mely Log Analytics-munkaterületet használja:
+Annak konfigurálása, hogy mely Log Analytics munkaterület legyen használatban:
 
-1. Nyissa meg az IoT hubnak.
-1. Kattintson a **biztonsági**
-2. Kattintson a **beállítások**, és módosítsa a Log Analytics-munkaterület konfigurálása.
+1. Nyissa meg az IoT hubot.
+1. Kattintson a **Biztonság** szakasz **Áttekintés** paneljére.
+2. Kattintson a **Beállítások**elemre, és módosítsa a log Analytics munkaterület konfigurációját.
 
-A Log Analytics-munkaterület elérése a konfigurálás után:
+A riasztások és javaslatok elérése a Log Analytics munkaterületen a konfiguráció után:
 
-1. Válasszon ki egy riasztás vagy javaslat az ASC az IoT. 
-2. Kattintson a **további vizsgálatra**, majd kattintson a **ezt a riasztást, kattintson ide, és tekintse meg a DeviceId oszlopot, mely eszközök vannak**.
+1. Válasszon ki egy riasztást vagy javaslatot a IoT Azure Security Center. 
+2. Kattintson a **további vizsgálat**elemre, majd kattintson **ide a riasztást tartalmazó eszközök megtekintéséhez kattintson ide, és tekintse meg a DeviceID oszlopot**.
 
-További információ a Log Analyticsből származó adatok lekérdezése: [Ismerkedés a Log Analytics lekérdezéseinek](https://docs.microsoft.com//azure/log-analytics/query-language/get-started-queries).
+A Log Analytics adatainak lekérdezésével kapcsolatos részletekért lásd: Ismerkedés [a lekérdezésekkel a log Analyticsban](https://docs.microsoft.com//azure/log-analytics/query-language/get-started-queries).
 
 ## <a name="security-alerts"></a>Biztonsági riasztások
 
-Biztonsági riasztások tárolt _AzureSecurityOfThings.SecurityAlert_ a Log Analytics-munkaterületen konfigurált IoT-megoldás az ASC táblájában.
+A biztonsági riasztásokat a IoT-megoldás Azure Security Center konfigurált Log Analytics munkaterület _AzureSecurityOfThings. SecurityAlert_ táblájában tárolja a rendszer.
 
-Úgy döntöttünk, hogy a megadott hasznos lekérdezések segítségével számos első lépések a biztonsági riasztások feltárása.
+Számos hasznos lekérdezést adtunk meg a biztonsági riasztások felfedezésének megkezdéséhez.
 
-### <a name="sample-records"></a>Minta rekordok
+### <a name="sample-records"></a>Példák a rekordokra
 
-Válassza pár véletlenszerű rekord
+Néhány véletlenszerű rekord kiválasztása
 
 ```
 // Select a few random records
@@ -72,16 +68,16 @@ SecurityAlert
 
 | TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Leírás                                             | ExtendedProperties                                                                                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018-11-18T18:10:29.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magas          | Találgatásos támadás sikeres volt           | Az eszközön egy találgatásos kényszerítése a támadás sikeres volt        |    {"Forrás teljes cím": "[\"10.165.12.18:\"]", "Felhasználónév": "[\"\"]", "DeviceId": "IoT-Device-Linux" }                                                                       |
-| 2018-11-19T12:40:31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magas          | Az eszköz sikeres helyi bejelentkezés      | Egy sikeres helyi bejelentkezés az eszközön észlelt     | { "Remote Address": "?", "Remote Port": "", "Local Port": "", "Login Shell": "/bin/su", "Login Process Id": "28207", "User Name": "attacker", "DeviceId": "IoT-Device-Linux" } |
-| 2018-11-19T12:40:31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magas          | Az eszközön a helyi bejelentkezési próbálkozás sikertelen volt  | Egy helyi sikertelen bejelentkezési kísérlet után az eszközön észlelt |  { "Remote Address": "?", "Remote Port": "", "Local Port": "", "Login Shell": "/bin/su", "Login Process Id": "22644", "User Name": "attacker", "DeviceId": "IoT-Device-Linux" } |
+| 2018-11-18T18:10:29.000 | /Subscriptions/< subscription_id >/resourceGroups/< resource_group >/providers/Microsoft.Devices/IotHubs/< iot_hub > | <device_name> | Magas          | A találgatásos támadás sikeres volt           | A találgatásos támadás az eszközön sikeres volt.        |    {"Teljes forrás címe": "[\"10.165.12.18:\"]", "user Names": "\"[\"]", "DeviceID": "IoT-Device-Linux" }                                                                       |
+| 2018-11-19T12:40:31.000 | /Subscriptions/< subscription_id >/resourceGroups/< resource_group >/providers/Microsoft.Devices/IotHubs/< iot_hub > | <device_name> | Magas          | Sikeres helyi bejelentkezés az eszközön      | Az eszköz sikeres helyi bejelentkezést észlelt     | {"Távoli címe": "?", "távoli port": "", "helyi port": "", "login shell": "/bin/Su", "bejelentkezési folyamat azonosítója": "28207", "felhasználó neve": "támadó", "DeviceId": "IoT-Device-Linux" } |
+| 2018-11-19T12:40:31.000 | /Subscriptions/< subscription_id >/resourceGroups/< resource_group >/providers/Microsoft.Devices/IotHubs/< iot_hub > | <device_name> | Magas          | Sikertelen helyi bejelentkezési kísérlet az eszközön  | A rendszer sikertelen helyi bejelentkezési kísérletet észlelt az eszközön. |  {"Távoli címe": "?", "távoli port": "", "helyi port": "", "login shell": "/bin/Su", "bejelentkezési folyamat azonosítója": "22644", "felhasználó neve": "támadó", "DeviceId": "IoT-Device-Linux" } |
 
-### <a name="device-summary"></a>Eszköz összegzésének
+### <a name="device-summary"></a>Eszköz összefoglalása
 
-Válassza ki az IoT Hub, az eszköz, a riasztás súlyossága, a riasztási típus által az elmúlt hét észlelt olyan biztonsági riasztások számát.
+Az elmúlt héten észlelt különböző biztonsági riasztások számának lekérése IoT Hub, eszköz, riasztás súlyossága, riasztás típusa szerint csoportosítva.
 
 ```
-// Select number of distinct security alerts detected last week by 
+// Get the number of distinct security alerts detected in the last week, grouped by 
 //   IoT hub, device, alert severity, alert type
 //
 SecurityAlert
@@ -95,14 +91,14 @@ SecurityAlert
 
 | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Count |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|-----|
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magas          | Találgatásos támadás sikeres volt           | 9   |   
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Közepes        | Az eszközön a helyi bejelentkezési próbálkozás sikertelen volt  | 242 |    
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magas          | Az eszköz sikeres helyi bejelentkezés      | 31  |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Közepes        | Titkosítási érme Miner                     | 4   |
+| /Subscriptions/< subscription_id >/resourceGroups/< resource_group >/providers/Microsoft.Devices/IotHubs/< iot_hub > | <device_name> | Magas          | A találgatásos támadás sikeres volt           | 9   |   
+| /Subscriptions/< subscription_id >/resourceGroups/< resource_group >/providers/Microsoft.Devices/IotHubs/< iot_hub > | <device_name> | Közepes        | Sikertelen helyi bejelentkezési kísérlet az eszközön  | 242 |    
+| /Subscriptions/< subscription_id >/resourceGroups/< resource_group >/providers/Microsoft.Devices/IotHubs/< iot_hub > | <device_name> | Magas          | Sikeres helyi bejelentkezés az eszközön      | 31  |
+| /Subscriptions/< subscription_id >/resourceGroups/< resource_group >/providers/Microsoft.Devices/IotHubs/< iot_hub > | <device_name> | Közepes        | Kriptográfiai érme bányász                     | 4   |
 
-### <a name="iot-hub-summary"></a>Az IoT hub összefoglalás
+### <a name="iot-hub-summary"></a>IoT hub – összefoglalás
 
-Válassza ki a különböző eszközök, amelyek korábban riasztások az elmúlt héten, az IoT Hub, a riasztás súlyosságát, a riasztástípus számát
+Válassza ki az elmúlt héten riasztásokkal rendelkező különböző eszközök számát, IoT Hub, riasztás súlyossága, riasztás típusa
 
 ```
 // Select number of distinct devices which had alerts in the last week, by 
@@ -119,20 +115,20 @@ SecurityAlert
 
 | IoTHubId                                                                                                       | AlertSeverity | DisplayName                           | CntDevices |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------------------------------|------------|
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Magas          | Találgatásos támadás sikeres volt           | 1          |    
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Közepes        | Az eszközön a helyi bejelentkezési próbálkozás sikertelen volt  | 1          | 
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Magas          | Az eszköz sikeres helyi bejelentkezés      | 1          |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Közepes        | Titkosítási érme Miner                     | 1          |
+| /Subscriptions/< subscription_id >/resourceGroups/< resource_group >/providers/Microsoft.Devices/IotHubs/< iot_hub > | Magas          | A találgatásos támadás sikeres volt           | 1          |    
+| /Subscriptions/< subscription_id >/resourceGroups/< resource_group >/providers/Microsoft.Devices/IotHubs/< iot_hub > | Közepes        | Sikertelen helyi bejelentkezési kísérlet az eszközön  | 1          | 
+| /Subscriptions/< subscription_id >/resourceGroups/< resource_group >/providers/Microsoft.Devices/IotHubs/< iot_hub > | Magas          | Sikeres helyi bejelentkezés az eszközön      | 1          |
+| /Subscriptions/< subscription_id >/resourceGroups/< resource_group >/providers/Microsoft.Devices/IotHubs/< iot_hub > | Közepes        | Kriptográfiai érme bányász                     | 1          |
 
 ## <a name="security-recommendations"></a>Biztonsági javaslatok
 
-Biztonsági javaslatok tárolt _AzureSecurityOfThings.SecurityRecommendation_ a Log Analytics-munkaterületen konfigurált IoT-megoldás az ASC táblájában.
+A biztonsági javaslatokat a rendszer a IoT-megoldáshoz Azure Security Center konfigurált Log Analytics munkaterület _AzureSecurityOfThings. SecurityRecommendation_ táblájában tárolja.
 
-Biztosítottunk egy hasznos lekérdezések, amelyek felfedezése a biztonsági javaslatok kezdő száma.
+Számos hasznos lekérdezést kaptunk a biztonsági javaslatok megkezdésének megkönnyítéséhez.
 
-### <a name="sample-records"></a>Minta rekordok
+### <a name="sample-records"></a>Példák a rekordokra
 
-Válassza pár véletlenszerű rekord
+Néhány véletlenszerű rekord kiválasztása
 
 ```
 // Select a few random records
@@ -152,15 +148,15 @@ SecurityRecommendation
     
 | TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | Leírás | RecommendationAdditionalData |
 |---------------|----------|----------|------------------------|---------------------|---------------------------|-------------|------------------------------|
-| 2019-03-22T10:21:06.060 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Közepes | Aktív | A bemeneti lánc megengedő tűzfalszabály található. | Egy szabály, a tűzfal található a következő IP-címek és portok számos különböző megengedő mintát tartalmaz, amelyek | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
-| 2019-03-22T10:50:27.237 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Közepes | Aktív | A bemeneti lánc megengedő tűzfalszabály található. | Egy szabály, a tűzfal található a következő IP-címek és portok számos különböző megengedő mintát tartalmaz, amelyek | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
+| 2019-03-22T10:21:06.060 | /Subscriptions/< subscription_id >/resourceGroups/< resource_group >/providers/Microsoft.Devices/IotHubs/< iot_hub > | <device_name> | Közepes | Aktív | A bemeneti láncban található engedékeny tűzfalszabályok találhatók | A rendszer olyan szabályt talált a tűzfalon, amely IP-címek vagy portok széles tartományára vonatkozó megengedő mintát tartalmaz | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
+| 2019-03-22T10:50:27.237 | /Subscriptions/< subscription_id >/resourceGroups/< resource_group >/providers/Microsoft.Devices/IotHubs/< iot_hub > | <device_name> | Közepes | Aktív | A bemeneti láncban található engedékeny tűzfalszabályok találhatók | A rendszer olyan szabályt talált a tűzfalon, amely IP-címek vagy portok széles tartományára vonatkozó megengedő mintát tartalmaz | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
 
-### <a name="device-summary"></a>Eszköz összegzésének
+### <a name="device-summary"></a>Eszköz összefoglalása
 
-Válassza ki a különböző aktív biztonsági javaslatok számát az IoT Hub, eszköz, ajánlás súlyosság és típus szerint.
+Szerezze be a különböző aktív biztonsági javaslatok számát IoT Hub, az eszköz, az ajánlás súlyossága és a típus szerint csoportosítva.
 
 ```
-// Select number of distinct active security recommendations by 
+// Get the number of distinct active security recommendations, grouped by by 
 //   IoT hub, device, recommendation severity and type
 //
 SecurityRecommendation
@@ -172,15 +168,15 @@ SecurityRecommendation
 
 | IoTHubId                                                                                                       | DeviceId      | RecommendationSeverity | Count |
 |----------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----|
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magas          | 2   |    
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Közepes        | 1 |  
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magas          | 1  |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Közepes        | 4   |
+| /Subscriptions/< subscription_id >/resourceGroups/< resource_group >/providers/Microsoft.Devices/IotHubs/< iot_hub > | <device_name> | Magas          | 2   |    
+| /Subscriptions/< subscription_id >/resourceGroups/< resource_group >/providers/Microsoft.Devices/IotHubs/< iot_hub > | <device_name> | Közepes        | 1 |  
+| /Subscriptions/< subscription_id >/resourceGroups/< resource_group >/providers/Microsoft.Devices/IotHubs/< iot_hub > | <device_name> | Magas          | 1  |
+| /Subscriptions/< subscription_id >/resourceGroups/< resource_group >/providers/Microsoft.Devices/IotHubs/< iot_hub > | <device_name> | Közepes        | 4   |
 
 
 ## <a name="next-steps"></a>További lépések
 
-- Olvassa el az ASC IOT [áttekintése](overview.md)
-- További információk az ASC az IoT [architektúra](architecture.md)
-- Ismertetés és felfedezés [ASC IoT-riasztások](concept-security-alerts.md)
-- Ismertetés és felfedezés [ASC IoT-javaslat](concept-recommendations.md)
+- Olvassa el a IoT Azure Security Centerét [– Áttekintés](overview.md)
+- Tudnivalók a IoT- [architektúra](architecture.md) Azure Security Centeráról
+- [A IoT-riasztások Azure Security Center](concept-security-alerts.md) megismerése és megismerése
+- [A IoT-javaslat Azure Security Center](concept-recommendations.md) megismerése és megismerése

@@ -9,20 +9,31 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 07/22/2019
 ms.author: diberry
-ms.openlocfilehash: 63a898bd807b168ae17ec90e442c6ee6c001c715
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ab30e201dc5e4e9a226e23a37e8dbd63f17dd742
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559889"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717439"
 ---
 # <a name="whats-new-in-language-understanding"></a>A Language Understanding újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Ezek az elemek megjegyzések, videók, blogbejegyzések és más típusú információk kiadását is tartalmazhatják. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.  
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések 
+
+### <a name="july-23-2019"></a>2019. július 23.
+
+* A felismerők frissítése [– szöveg](https://github.com/microsoft/Recognizers-Text/releases/tag/dotnet-v1.2.3) – 1.2.3
+    * Kor, hőmérséklet, dimenzió és pénznem-felismerők olasz nyelven.
+    * A Hálaadás-alapú dátumok helyes kiszámításához az angol nyelvű nyaralás-felismerés javítása.
+    * A nem naprakész és a nem időpontú entitások téves pozitív értékének csökkentése érdekében a francia DateTime fejlesztése.
+    * A Calendar/School/pénzügyi év és a betűszók támogatása az angol nyelvű DateRange.
+    * Továbbfejlesztett telefonszám-felismerés kínai és japán nyelven.
+    * Továbbfejlesztett NumberRange-támogatás az angol nyelven.
+    * Teljesítménybeli változások.
 
 ### <a name="june-24-2019"></a>Június 24., 2019
 

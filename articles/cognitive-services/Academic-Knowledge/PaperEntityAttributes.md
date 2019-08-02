@@ -1,7 +1,7 @@
 ---
-title: A tanulmány tevékenységentitás-attribútumok – Academic Knowledge API
+title: Papír entitás attribútumai – Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogy az attribútumok a papír entitás az Academic Knowledge API használható.
+description: Megtudhatja, hogy mely attribútumok használhatók a Academic Knowledge API papír entitásával.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,63 +10,64 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: 92844b5faf691b67617c9f3424a1322aa05429bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4b9431469a7925d26003ad9c34f6b401e5767f6d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64875735"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704938"
 ---
-# <a name="paper-entity"></a>A tanulmány entitás
+# <a name="paper-entity"></a>Papír entitás
 
-<sub> * Attribútumok az alábbiakban meghatározott tanulmány entitáshoz. (Folyó évi = "0") </sub>
+<sub>* Az alábbi attribútumok a papír entitásra jellemzőek. (Ty = "0")</sub>
 
 
-Name (Név)    |Leírás                                        |Típus       | Műveletek
+Name (Név)    |Leírás                                        |Type       | Műveletek
 ------- | ------------------------------------------------- | --------- | ----------------------------
-Azonosító      |Entitásazonosító                                          |Int64      |Egyenlő
-Ti      |A tanulmány címe                                        |String     |Egyenlő,<br/>StartsWith
-L       |Tanulmány nyelvkód elválasztva "\@\@\@"          |String     |Egyenlő
-I       |A tanulmány év                                         |Int32      |Egyenlő,<br/>IsBetween
-D       |A tanulmány dátuma                                         |Dátum       |Egyenlő,<br/>IsBetween
-CC      |Idézetet száma                                     |Int32      |Egyik sem  
-ECC     |Becsült idézetet száma                           |Int32      |Egyik sem
-AA.AuN  |Szerző neve                                        |String     |Egyenlő,<br/>StartsWith
+Id      |Entitásazonosító                                          |Int64      |Egyenlő
+Ti      |Papír címe                                        |Karakterlánc     |Egyenlő<br/>StartsWith
+K       |Papír nyelvi kódja a következővel\@elválasztva: "\@\@"          |Karakterlánc     |Egyenlő
+I       |Papír éve                                         |Int32      |Egyenlő<br/>IsBetween
+D       |Könyv dátuma                                         |Date       |Egyenlő<br/>IsBetween
+Másolat      |Idézetek száma                                     |Int32      |nincs  
+ECC     |Becsült idézetek száma                           |Int32      |nincs
+AA. AuN  |Szerző neve                                        |Karakterlánc     |Egyenlő<br/>StartsWith
 AA.AuId |Szerző azonosítója                                          |Int64      |Egyenlő
-AA.AfN  |Szerző kapcsolat neve                            |String     |Egyenlő,<br/>StartsWith
-AA.AfId |Szerző kapcsolatot azonosítója                              |Int64      |Egyenlő
-AA.S    |Szerző ahhoz, hogy a tanulmány                         |Int32      |Egyenlő
-F.FN    |Tanulmány név mező                                |String     |Egyenlő,<br/>StartsWith
-F.FId   |Tanulmány azonosító mezője                                  |Int64      |Egyenlő
-J.JN    |Napló neve                                       |String     |Egyenlő,<br/>StartsWith
-J.JId   |Napló azonosítója                                         |Int64      |Egyenlő
-C.CN    |Konferencia az adatsorozat neve                             |String     |Egyenlő,<br/>StartsWith
-C.CId   |Konferencia sorozat azonosítója                               |Int64      |Egyenlő
-RId     |Hivatkozott tanulmányok azonosítója                              |Int64]    |Egyenlő
-W       |A tanulmány címe és absztrakt szavakat                |String]   |Egyenlő
-E       |Kiterjesztett metaadatok (lásd az alábbi táblázatot)                |String     |Egyik sem  
+AA.AfN  |Szerzői kapcsolat neve                            |Sztring     |Egyenlő<br/>StartsWith
+AA.AfId |Szerzői kapcsolat azonosítója                              |Int64      |Egyenlő
+AA.S    |Szerzői sorrend a papírhoz                         |Int32      |Egyenlő
+F. FN    |Tanulmány neve                                |Sztring     |Egyenlő<br/>StartsWith
+F.FId   |Tanulmányi azonosító mező                                  |Int64      |Egyenlő
+J. JN    |Napló neve                                       |Sztring     |Egyenlő<br/>StartsWith
+J. JId   |Napló azonosítója                                         |Int64      |Egyenlő
+C.CN    |Konferencia adatsorozatának neve                             |Sztring     |Egyenlő<br/>StartsWith
+C.CId   |Konferencia-sorozat azonosítója                               |Int64      |Egyenlő
+RId     |Hivatkozott dokumentumok azonosítója                              |Int64 []    |Egyenlő
+W       |Szavak a papír címéről és absztrakt                |Karakterlánc []   |Egyenlő
+E       |Kiterjesztett metaadatok (lásd az alábbi táblázatot)                |Sztring     |nincs  
         
 
 
-## <a name="extended-metadata-attributes"></a>Kiterjesztett attribútumok metaadatok ##
+## <a name="extended-metadata-attributes"></a>Bővített metaadatok attribútumai ##
 
 Name (Név)    | Leírás               
 --------|---------------------------    
-DN      | A tanulmány megjelenített neve 
-S       | Források – webes források a papír statikus rang szerint rendezett listája
-S.Ty    | Source Type (1:HTML, 2:Text, 3:PDF, 4:DOC, 5:PPT, 6:XLS, 7:PS)
-S.U     | Forrás URL-címe
-VFN     | Helyszín teljes neve – teljes név, a napló vagy konferencián
-VSN     | Helyszín rövid neve – a napló vagy konferencián rövid neve
-V       | Kötet - napló kötet
+DN      | A dokumentum megjelenítendő neve 
+S       | Források – a papír webes forrásainak listája, a statikus rangsor szerint rendezve
+S. Ty    | Source Type (1:HTML, 2:Text, 3:PDF, 4:DOC, 5:PPT, 6:XLS, 7:PS)
+S. U     | Forrás URL-címe
+VFN     | Helyszín teljes neve – a napló vagy a konferencia teljes neve
+VSN     | Helyszín rövid neve – a napló vagy a konferencia rövid neve
+V       | Kötet – napló kötete
 BV      | Napló neve
 BT      | 
-PB      | Napló rövidítések
-I       | Probléma - napló probléma
-FP      | FirstPage - tanulmány első oldalán
-LP      | LastPage - tanulmány utolsó oldalán
-DOI     | Digital Object Identifier
-CC      | Idézetet környezetek – hivatkozott tanulmány listája azonosítóhoz tartozó és a megfelelő környezettel a tanulmány (például: [{123: ["a hivatkozott tanulmány 123 lépésközt barna foxes ismert", "a Lusta kutyák egy korábbi misnomer, ahogyan a papír 123"]})
+PB      | Naplók rövidítései
+I       | Probléma – a naplóval kapcsolatos probléma
+FP      | FirstPage – a papír első lapja
+. LP      | LastPage – a papír utolsó lapja
+DOI     | Digitális objektum azonosítója
+Másolat      | Idézetek kontextusai – a hivatkozott papír AZONOSÍTÓjának és a dokumentum megfelelő környezetének listája (például [{123: ["Brown rókák ismertek a 123-es papíron hivatkozott jumping-szövegekben", "a lusta kutyák a korábbi, a 123-es papíron látható"]})
 IA      | Fordított absztrakt
-IA.IndexLength| Az index (absztrakt a word száma) lévő elemek száma
-IA.InvertedIndex| Absztrakt szavak és az eredeti absztrakt megfelelő pozícióját (például: [{"a": [0, 15, 30]}, {"barna": [1]}, {"fox":[2]}])
+IA. IndexLength| Az indexben lévő elemek száma (absztrakt szavak száma)
+IA.InvertedIndex| Az absztrakt szavak és a hozzájuk tartozó pozíciók listája az eredeti absztraktban (például [{"": [0, 15, 30]}, {"Brown": [1]}, {"Fox": [2]}])

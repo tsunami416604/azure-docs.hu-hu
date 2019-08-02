@@ -1,19 +1,18 @@
 ---
 title: A Azurite nyílt forráskódú emulátor használata a blob Storage fejlesztéséhez és teszteléséhez (előzetes verzió)
 description: A Azurite nyílt forráskódú emulátor (előzetes verzió) ingyenes helyi környezetet biztosít az Azure Blob Storage-alkalmazások teszteléséhez.
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.topic: article
-ms.date: 06/12/2019
 ms.author: mhopkins
+ms.date: 06/12/2019
+ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 2ccb19253c762bad69875a7b7bba7cd11d46e132
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.topic: conceptual
+ms.openlocfilehash: ebecd6cf9af5395e4da2b395ca9b2ff974a75409
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869793"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721696"
 ---
 # <a name="use-the-azurite-open-source-emulator-for-blob-storage-development-and-testing-preview"></a>A Azurite nyílt forráskódú emulátor használata a blob Storage fejlesztéséhez és teszteléséhez (előzetes verzió)
 
@@ -30,7 +29,7 @@ A Azurite számos különböző módon telepíthetők és futtathatók a helyi r
 
 ## <a name="install-and-run-the-azurite-visual-studio-code-extension"></a>A Azurite Visual Studio Code bővítmény telepítése és futtatása
 
-A Visual Studio Code-ban válassza  a bővítmények ablaktáblát, és keressen rá a *Azurite* kifejezésre a következő **bővítményekben: piactér**.
+A Visual Studio Code-ban válassza a bővítmények ablaktáblát, és keressen rá a *Azurite* kifejezésre a következő **bővítményekben: piactér**.
 
 ![Visual Studio Code Extensions piactér](media/storage-use-azurite/azurite-vs-code-extension.png)
 
@@ -290,7 +289,7 @@ A Azurite az Azure Storage-hibák kezelésére szolgáló logikával van összha
 
 ### <a name="ra-grs"></a>RA-GRS
 
-A Azurite támogatja az olvasási hozzáférésű geo-redundáns replikálást (RA-GRS). A tárolási erőforrások esetében a másodlagos helyet a fióknév hozzáfűzésével  érheti el. Például a következő címnek lehet a blobokhoz való hozzáférése a Azurite írásvédett másodlagos használatával:
+A Azurite támogatja az olvasási hozzáférésű geo-redundáns replikálást (RA-GRS). A tárolási erőforrások esetében a másodlagos helyet a fióknév hozzáfűzésével érheti el. Például a következő címnek lehet a blobokhoz való hozzáférése a Azurite írásvédett másodlagos használatával:
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
 

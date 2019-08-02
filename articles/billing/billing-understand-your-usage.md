@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 66b54c027cde6341b23aef2c10b43fa21bf357da
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 1afd78a0525be523f677cf0146c8a120155130ea
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383465"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554691"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Ismerje meg az Azure-használat és a díjak fájljának feltételeit
 
@@ -28,7 +28,7 @@ Fióktípus | Azure-használat | Marketplace-használat | Vásárlások | Befize
 --- | --- | --- | --- | ---
 Nagyvállalati Szerződés (EA) | Igen | Igen | Igen | Nem
 Microsoft Ügyfélszerződés (Microsoft Customer Agreement, MCA) | Igen | Igen | Igen | Igen
-Utólagos elszámolású (TB) | Igen | Nem | Nem | Nem
+Utólagos elszámolású (TB) | Igen | Igen | Nem | Nem
 
 Ha többet szeretne megtudni a Piactéri rendelésekről (más néven külső szolgáltatásokról), tekintse meg [Az Azure-beli külső szolgáltatási díjak megismerése](billing-understand-your-azure-marketplace-charges.md)című témakört.
 
@@ -65,8 +65,6 @@ EffectivePrice | Összes | Az időszakhoz tartozó kevert egység ára. A kevert
 ExchangeRateDate | MCA | Az Exchange-arány létrejöttének dátuma.
 ExchangeRatePricingToBilling | MCA | Az árképzési pénznemben a számlázási pénznemre való áttéréshez használt árfolyam.
 Gyakoriság | Összes | Azt jelzi, hogy a díjat várhatóan meg kell-e ismételni. A díjak akár egyszer is megtörténnek, vagy megismétlődnek havonta vagy évenként (**ismétlődő**), vagy a használaton (**UsageBased**) alapulnak.
-IncludedQuantity | TB | Az aktuális számlázási időszakban díjmentesen felszámított fogyasztásmérő mennyisége.
-InstanceId | PAGY | Lásd: ResourceId.
 InvoiceId | TB, MCA | A számla PDF-fájljában felsorolt egyedi dokumentum-azonosító.
 InvoiceSection | MCA | Lásd: InvoiceSectionName.
 InvoiceSectionId | EA, MCA | A nagyvállalati szerződés vagy az MCA-számla szakasz egyedi azonosítója.
@@ -105,6 +103,7 @@ ServicePeriodStartDate | MCA | A felhasznált vagy megvásárolt szolgáltatás 
 SubscriptionId | Összes | Az Azure-előfizetés egyedi azonosítója.
 Előfizetés neve | Összes | Az Azure-előfizetés neve.
 Tags | Összes | Az erőforráshoz rendelt címkék. Nem tartalmazza az erőforráscsoportok címkéit. A belső jóváírások költségeinek csoportosítására és terjesztésére használható. További információ: Azure- [erőforrások rendszerezése címkékkel](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
+Kifejezés | Összes | Az ajánlat érvényességi idejét jeleníti meg. Példa: Fenntartott példányok esetén 12 hónapig jelenik meg a kifejezés. Egyszeri vásárlás vagy ismétlődő vásárlás esetén a kifejezés 1 hónap (SaaS, Piactéri támogatás). Ez az Azure-felhasználás esetében nem alkalmazható.
 Mértékegység | Összes | A szolgáltatás számlázási mértékegysége. Például a számítási szolgáltatások számlázása óránként történik.
 Egységár | EA, TB | A díj egységenkénti díja.
 

@@ -1,5 +1,5 @@
 ---
-title: Hibrid Azure Active Directory join megvalósítása az Azure Active Directoryban (Azure AD) tervezése |} A Microsoft Docs
+title: Hibrid Azure Active Directory csatlakoztatásának tervezése Azure Active Directory (Azure AD) alkalmazásban | Microsoft Docs
 description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a hibrid Azure Active Directory-csatlakoztatott eszközöket.
 services: active-directory
 ms.service: active-directory
@@ -11,144 +11,144 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb050eb527e65b4fd31f3251d37fef7d51e867e
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: ee3309bdd3629057d174866dde58ffd95e9e5ca8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655975"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562136"
 ---
-# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>kézikönyv: A hibrid Azure Active Directory join megvalósítás megtervezése
+# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>kézikönyv: A hibrid Azure Active Directory-csatlakozás megvalósításának megtervezése
 
-Hasonló módon a felhasználó számára egy eszköz egy másik core identitás szeretné védeni, és az erőforrások védelmét, bármikor és bárhonnan. A cél oszloptárat és eszközidentitások kezelése az Azure ad-ben a következő módszerek egyikének használatával végezheti el:
+A felhasználóhoz hasonló módon az eszköz egy másik alapvető identitás, amelyet védetté szeretne tenni, és így bármikor és bárhonnan védetté teheti az erőforrásokat. Ezt a célt az eszközök identitásának az Azure AD-ben való üzembe helyezésével és kezelésével végezheti el az alábbi módszerek egyikével:
 
 - Azure AD-csatlakozás
 - Hibrid Azure AD-csatlakozás
 - Azure AD-regisztráció
 
-Az Azure AD-be való bevonással maximalizálható a felhasználók munkahatékonysága, köszönhetően az egyszeri bejelentkezésnek (SSO), amely a felhőbeli és a helyszíni erőforrásokhoz is hozzáférést nyújt. Egy időben, hozzáférés gondoskodhat a felhőbeli és helyszíni erőforrások [feltételes hozzáférési](../active-directory-conditional-access-azure-portal.md).
+Az Azure AD-be való bevonással maximalizálható a felhasználók munkahatékonysága, köszönhetően az egyszeri bejelentkezésnek (SSO), amely a felhőbeli és a helyszíni erőforrásokhoz is hozzáférést nyújt. Ugyanakkor a felhőben és a helyszíni erőforrásokhoz is biztonságossá teheti a hozzáférést a [feltételes hozzáféréssel](../active-directory-conditional-access-azure-portal.md).
 
-Ha a helyszíni Active Directory (AD) környezet és az AD-tartományhoz csatlakoztatott számítógépeket az Azure ad-hez csatlakozni szeretne, ez elvégezhető a hibrid Azure AD-csatlakozás végrehajtásával. Ez a cikk ismerteti, és a kapcsolódó lépéseket kell végrehajtani egy hibrid Azure AD join a környezetben. 
+Ha helyszíni Active Directory (AD) környezettel rendelkezik, és az AD-tartományhoz csatlakoztatott számítógépeket az Azure AD-hez szeretné csatlakoztatni, ezt a hibrid Azure AD JOIN használatával végezheti el. Ez a cikk a hibrid Azure AD-csatlakozás környezetbe való bevezetéséhez kapcsolódó lépéseket ismerteti. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy ismeri a [eszköz Identitáskezelés az Azure Active Directoryban bemutatása](../device-management-introduction.md).
+Ez a cikk azt feltételezi, hogy ismeri a [Azure Active Directory eszköz-identitások kezelésének](../device-management-introduction.md)bevezetését.
 
 > [!NOTE]
-> A szükséges minimális működési tartomány és erdő működési szintjét a Windows 10-es hibrid Azure AD-csatlakozás Windows Server 2008 R2.
+> A Windows 10 hibrid Azure AD JOIN minimálisan szükséges tartományi működési és erdő működési szintjei a Windows Server 2008 R2.
 
 ## <a name="plan-your-implementation"></a>A megvalósítás tervezése
 
-A hibrid Azure AD-megvalósítás megtervezése, meg kell ismerkednie az:
+A hibrid Azure AD-megvalósítás megtervezéséhez Ismerkedjen meg a következővel:
 
 |   |   |
 | --- | --- |
-| ![Jelölőnégyzet][1] | Tekintse át a támogatott eszközök |
-| ![Jelölőnégyzet][1] | Felülvizsgálat tudnivalók |
-| ![Jelölőnégyzet][1] | Tekintse át a hibrid Azure AD-csatlakozás vezérelt érvényesítése |
-| ![Jelölőnégyzet][1] | Az Ön identitáskezelési infrastruktúráját alapuló forgatókönyv kiválasztása |
-| ![Jelölőnégyzet][1] | Tekintse át a helyszíni AD UPN támogatják a hibrid Azure AD-csatlakozás |
+| ![Ellenőrzés][1] | Támogatott eszközök áttekintése |
+| ![Ellenőrzés][1] | Tekintse át a tudni kívánt dolgokat |
+| ![Ellenőrzés][1] | Hibrid Azure AD-csatlakozás ellenőrzött ellenőrzésének áttekintése |
+| ![Ellenőrzés][1] | Válassza ki a forgatókönyvet az identitás-infrastruktúra alapján |
+| ![Ellenőrzés][1] | A hibrid Azure AD-csatlakozás helyszíni AD UPN-támogatásának áttekintése |
 
-## <a name="review-supported-devices"></a>Tekintse át a támogatott eszközök
+## <a name="review-supported-devices"></a>Támogatott eszközök áttekintése
 
-Hibrid Azure AD-csatlakozás egy széles körű tartomány a Windows-eszközöket támogatja. A konfiguráció a Windows korábbi verzióit futtató eszközök esetében további vagy különböző lépéseket igényel, mert a támogatott eszközök két kategóriákba vannak csoportosítva:
+A hibrid Azure AD JOIN a Windows-eszközök széles körét támogatja. Mivel a Windows régebbi verzióit futtató eszközök konfigurációja további vagy eltérő lépéseket igényel, a támogatott eszközök két kategóriába vannak csoportosítva:
 
-### <a name="windows-current-devices"></a>Aktuális Windows-eszközök
+### <a name="windows-current-devices"></a>Windows aktuális eszközök
 
 - Windows 10
 - Windows Server 2016
 - A Windows Server 2019
 
-Ebben a cikkben felsorolt támogatott verziója a Windows asztali operációs rendszert futtató eszközök esetében [Windows 10 kibocsátási információi](https://docs.microsoft.com/windows/release-information/). Ajánlott eljárásként a Microsoft azt javasolja, a Windows 10 legújabb verziójára frissít.
+A Windows asztali operációs rendszert futtató eszközök esetében a támogatott verzió a [Windows 10 kiadási információi](https://docs.microsoft.com/windows/release-information/)című cikkben szerepel. Ajánlott eljárásként a Microsoft azt javasolja, hogy frissítsen a Windows 10-es legújabb verziójára.
 
-### <a name="windows-down-level-devices"></a>Windows régebbi verziójú eszközök
+### <a name="windows-down-level-devices"></a>Windows Down szintű eszközök
 
 - Windows 8.1
-- Windows 7. Támogatási információkat a Windows 7, olvassa el az ebben a cikkben [támogatja a Windows 7 lezárta](https://www.microsoft.com/en-us/windowsforbusiness/end-of-windows-7-support)
+- Windows 7. A Windows 7 rendszerrel kapcsolatos támogatási információkért tekintse át ezt a cikket a [Windows 7 támogatásának vége](https://www.microsoft.com/windowsforbusiness/end-of-windows-7-support)
 - Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2
 
-Az első tervezési lépés tekintse át a környezet és alapján eldöntheti, hogy kell-e Windows régebbi verziójú eszközök támogatásához.
+Első tervezési lépésként tekintse át a környezetet, és állapítsa meg, hogy szükséges-e a Windows Down-szintű eszközeinek támogatása.
 
-## <a name="review-things-you-should-know"></a>Felülvizsgálat tudnivalók
+## <a name="review-things-you-should-know"></a>Tekintse át a tudni kívánt dolgokat
 
-Hibrid Azure AD-csatlakozás jelenleg nem támogatott, ha a környezet áll-e egynél több Azure AD-bérlő azonosító adatok szinkronizálása a egyetlen AD-erdőben.
+A hibrid Azure AD-csatlakozás jelenleg nem támogatott, ha a környezet egyetlen AD-erdőből áll, és több Azure AD-bérlőhöz szinkronizálja az azonosító adatait.
 
-Hibrid Azure AD-csatlakozás jelenleg nem támogatott virtuális asztali infrastruktúra (VDI) használata esetén.
+A hibrid Azure AD-csatlakozás jelenleg nem támogatott a virtuális asztali infrastruktúra (VDI) használata esetén.
 
-Hibrid Azure AD join nem támogatott a FIPS előírásainak megfelelő TPM. Ha az eszközök rendelkezik a FIPS-kompatibilis TPM-mel, akkor le kell tiltania őket a hibrid Azure AD-csatlakozás folytatása előtt. A Microsoft nem biztosít minden olyan eszközt, a TPM letiltása FIPS-módban, a TPM gyártója függ. Lépjen kapcsolatba a hardver OEM támogatása.
+A hibrid Azure AD JOIN nem támogatott az FIPS-kompatibilis TPM. Ha az eszközök FIPS-kompatibilis TPM rendelkeznek, le kell tiltania azokat, mielőtt folytatná a hibrid Azure AD Joint. A Microsoft nem biztosít olyan eszközöket, amelyekkel letiltható a TPM FIPS üzemmódja, mert a TPM-gyártótól függ. Támogatásért forduljon a hardver OEM-hez.
 
-Hibrid Azure AD-csatlakozás a tartományvezérlőn (DC) szerepkört futtató Windows Server nem támogatott.
+A hibrid Azure AD JOIN nem támogatott a tartományvezérlő (DC) szerepkört futtató Windows Serveren.
 
-Hibrid Azure AD join nem támogatott Windows régebbi verziójú eszközök, hitelesítő adatok a központi vagy a felhasználói profil központi használatakor.
+A hibrid Azure AD JOIN nem támogatott a Windows rendszerű, a hitelesítő adatok központi vagy felhasználói profiljának barangolásakor.
 
-Ha a rendszer-előkészítő eszköz (Sysprep) hagyatkoznia, és használja a **Windows 10-es 1809** lemezkép telepítésének, győződjön meg arról, hogy a rendszerkép nem egy eszközről, amely már regisztrálva van az Azure AD-t hibrid Azure AD-csatlakozás.
+Ha a rendszer-előkészítő eszköz (Sysprep) szolgáltatásra támaszkodik, és ha a telepítés **előtt Windows 10 1809** rendszerképet használ, győződjön meg arról, hogy a rendszerkép nem olyan eszközről származik, amely már regisztrálva van az Azure ad-ben hibrid Azure ad-csatlakozásként.
 
-Ha további virtuális gépek létrehozása egy virtuális gép (VM) pillanatképre, ellenőrizze, a pillanatkép nem, amely már regisztrálva van az Azure ad-hez mint hibrid Azure AD-csatlakozás a virtuális gép.
+Ha virtuális gép (VM) pillanatképét szeretné létrehozni további virtuális gépek létrehozásához, győződjön meg arról, hogy a pillanatkép nem olyan virtuális gépről származik, amely már regisztrálva van az Azure AD-ben hibrid Azure AD-csatlakozásként.
 
-Ha a Windows 10-tartományhoz csatlakozó eszközök még [Azure ad-ben regisztrált](https://docs.microsoft.com/azure/active-directory/devices/overview#getting-devices-in-azure-ad) a bérlőjéhez, erősen ajánlott, hogy az állapot eltávolítása a hibrid Azure AD-csatlakozás engedélyezése előtt. A Windows 10-es 1809 a kiadásban a következő módosításokat végzett változtatások elkerülése érdekében ebben a kettős állapota:
+Ha a Windows 10 tartományhoz csatlakozó eszközök már [regisztrálva](overview.md#getting-devices-in-azure-ad) vannak a bérlőben, a hibrid Azure ad-csatlakozás engedélyezése előtt kifejezetten ajánlott eltávolítani az adott állapotot. A Windows 10 1809 kiadásban a következő módosítások történtek a kettős állapot elkerüléséhez:
 
-- Minden meglévő Azure ad-ben regisztrált állapot automatikusan megszűnik, miután az eszköz a hibrid Azure AD-hez.
-- Folyamatban van az Azure AD-ban regisztrálva a beállításkulcs - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" hozzáadásával megakadályozhatja a tartományba léptetett eszköz = dword: 00000001.
-- Ez a változás már elérhető a Windows 10 1803 kiadásban a alkalmazni KB4489894. Azonban ha Windows Hello for Business konfigurálva, a felhasználóra szükség, re-telepítő Windows Hello for Business kettős állapota után távolítsa el.
+- A meglévő Azure AD-beli regisztrált állapotok automatikusan el lesznek távolítva az eszköz hibrid Azure AD-hez való csatlakoztatása után.
+- Megakadályozhatja, hogy a tartományhoz csatlakoztatott eszköz regisztrálva legyen az Azure AD-ben a következő beállításkulcs hozzáadásával: HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" = DWORD: 00000001.
+- Ez a változás mostantól elérhető a Windows 10 1803 kiadásban a KB4489894 alkalmazással. Ha azonban a vállalati Windows Hello konfigurálva van, a felhasználónak újra kell telepítenie a Windows Hello for businesst a kettős állapot tisztítása után.
 
-## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Tekintse át a hibrid Azure AD-csatlakozás vezérelt érvényesítése
+## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás ellenőrzött ellenőrzésének áttekintése
 
-Előfeltételek az összes érvényesítve van, amikor Windows-eszközök automatikusan regisztrálnak az Azure AD-bérlő eszközökként. Az Azure ad-ben ezek eszközidentitások állapotát a hibrid Azure AD-csatlakozás nevezik. Ebben a cikkben ismertetett fogalmakat további információt a cikkekben található [eszköz Identitáskezelés az Azure Active Directoryban bemutatása](overview.md) és [a hibrid Azure Active Directory join megtervezése megvalósítás](hybrid-azuread-join-plan.md).
+Ha az összes előfeltétel teljesül, a Windows rendszerű eszközök automatikusan regisztrálják az eszközöket az Azure AD-bérlőben. Az Azure AD-beli eszköz-identitások állapotát hibrid Azure AD-csatlakozásnak nevezzük. Az ebben a cikkben ismertetett fogalmakkal kapcsolatos további információkért tekintse meg az [eszközök Identitáskezelés](overview.md) a Azure Active Directoryban című cikket, és [tervezze meg a hibrid Azure Active Directory illesztés megvalósítását](hybrid-azuread-join-plan.md).
 
-Szervezetek előfordulhat, hogy szeretné a hibrid Azure AD-csatlakozás szabályozott ellenőrzés előtt teszi lehetővé, és egyszerre a teljes szervezet. Tekintse át a [vezérelt érvényesítése hibrid Azure AD-csatlakozás](hybrid-azuread-join-control.md) tudni, hogyan végezheti el azt.
+Előfordulhat, hogy a szervezetek a hibrid Azure AD-csatlakozás ellenőrzött érvényesítését szeretnék elvégezni, mielőtt a teljes szervezetben egyszerre engedélyezzék az egész szervezetet. Tekintse át a [hibrid Azure ad](hybrid-azuread-join-control.md) -hez való csatlakozás ellenőrzött ellenőrzésének lépéseit, és Ismerje meg, hogyan valósítható meg.
 
-## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>Az Ön identitáskezelési infrastruktúráját alapuló forgatókönyv kiválasztása
+## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>Válassza ki a forgatókönyvet az identitás-infrastruktúra alapján
 
-Hibrid Azure AD-csatlakozás, felügyelt és összevont környezetben is működik.  
+A hibrid Azure AD JOIN mindkét, felügyelt és összevont környezettel működik.  
 
-### <a name="managed-environment"></a>Felügyelt környezetben
+### <a name="managed-environment"></a>Felügyelt környezet
 
-Lehet felügyelt környezetben keresztül telepített [jelszó Jelszókivonat szinkronizálása (nál)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) vagy [haladnak keresztül hitelesítést (ESP)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) a [zökkenőmentes egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso).
+A felügyelt környezetek a [jelszó kivonatos szinkronizálásával (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) vagy a [hitelesítés (PTA ESP)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) használatával is üzembe helyezhetők, [zökkenőmentes egyszeri bejelentkezéssel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso).
 
-Ezekben az esetekben nincs szükség, hogy konfiguráljon egy összevonási kiszolgálót a hitelesítéshez.
+Ezekhez a forgatókönyvekhez nem szükséges összevonási kiszolgálót konfigurálni a hitelesítéshez.
 
-### <a name="federated-environment"></a>Összevont környezetben
+### <a name="federated-environment"></a>Összevont környezet
 
-Egy összevont környezetben rendelkeznie kell egy identitásszolgáltatóval, amely támogatja a következő követelményeknek:
+Az összevont környezetnek rendelkeznie kell egy olyan identitás-szolgáltatóval, amely a következő követelményeket támogatja:
 
-- **WS-Trust protokollal:** Ez a protokoll megadása kötelező hitelesítéséhez a Windows jelenlegi hibrid Azure AD-hez csatlakoztatott eszközök Azure AD-val.
-- **WIAORMULTIAUTHN jogcím:** Ez a jogcím szükség, ehhez a hibrid Azure AD-csatlakozás régebbi verziójú Windows-eszközökhöz.
+- **WS-Trust protokoll:** Ez a protokoll szükséges a Windows jelenlegi hibrid Azure AD-hez csatlakoztatott eszközök Azure AD-vel való hitelesítéséhez.
+- **WIAORMULTIAUTHN jogcím:** Ez a jogcím szükséges a hibrid Azure AD-csatlakozáshoz a Windows rendszerű eszközökön.
 
-Ha az Active Directory összevonási szolgáltatásokat (AD FS) összevont környezettel rendelkezik, majd a fenti követelmények már támogatottak.
+Ha Active Directory összevonási szolgáltatások (AD FS) (AD FS) használatával összevont környezettel rendelkezik, a fenti követelmények már támogatottak.
 
 > [!NOTE]
-> Az Azure AD nem támogatja intelligens kártyákkal vagy tanúsítványokkal felügyelt tartományokban.
+> Az Azure AD nem támogatja a felügyelt tartományokban található intelligens kártyákat vagy tanúsítványokat.
 
-Az 1.1.819.0-s verziótól kezdve az Azure AD Connectben egy varázsló segíti a hibrid Azure AD-csatlakozások konfigurálását. Ez a varázsló jelentősen leegyszerűsíti a konfigurálási folyamatot. Ha a szükséges verzió az Azure AD Connect telepítésével lehetőség nem az Ön számára, lásd: [manuális konfigurálása az eszközregisztrációs](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual). 
+Az 1.1.819.0-s verziótól kezdve az Azure AD Connectben egy varázsló segíti a hibrid Azure AD-csatlakozások konfigurálását. Ez a varázsló jelentősen leegyszerűsíti a konfigurálási folyamatot. Ha a Azure AD Connect szükséges verziójának telepítése nem lehetséges, tekintse meg az [eszközök regisztrációjának manuális konfigurálását](hybrid-azuread-join-manual.md)ismertető témakört. 
 
-A forgatókönyv, amely megfelel az Ön identitáskezelési infrastruktúráját alapján, lásd:
+Az identitás-infrastruktúrának megfelelő forgatókönyv alapján lásd:
 
-- [Összevont környezetben hibrid Azure Active Directory-csatlakozás konfigurálása](hybrid-azuread-join-federated-domains.md)
-- [Hibrid Azure Active Directory-csatlakozás felügyelt környezet konfigurálása](hybrid-azuread-join-managed-domains.md)
+- [Hibrid Azure Active Directory csatlakozás konfigurálása összevont környezethez](hybrid-azuread-join-federated-domains.md)
+- [Hibrid Azure Active Directory csatlakozás konfigurálása felügyelt környezethez](hybrid-azuread-join-managed-domains.md)
 
-## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>Tekintse át a helyszíni hibrid Azure AD-csatlakozás AD UPN támogatása
+## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>A hibrid Azure AD-csatlakozás helyszíni AD UPN-támogatásának áttekintése
 
-Előfordulhat, hogy a helyszíni AD UPN-EK az Azure AD UPN-EK eltérő lehet. Ezekben az esetekben a Windows 10-es hibrid Azure AD-csatlakozás korlátozott támogatást biztosít a helyszíni AD UPN-EK alapján a [hitelesítési módszer](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), típusa és a Windows 10-es verzió. Két típusa van a helyszíni AD UPN-EK, amely a környezetében is létezik:
+Időnként előfordulhat, hogy a helyszíni AD UPN-felhasználónevek nem azonosak az Azure AD UPN-vel. Ilyen esetekben a Windows 10 Hybrid Azure AD JOIN korlátozott támogatást biztosít a helyszíni AD UPN-hez a [hitelesítési módszer](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), a tartomány típusa és a Windows 10 verziója alapján. A környezetben két típusú helyszíni AD UPN létezik:
 
-- Irányítható egyszerű felhasználónév: Egy útválasztós UPN rendelkezik egy érvényes ellenőrzött tartományt, a tartományregisztráló regisztrált. Például akkor, ha a contoso.com az elsődleges tartomány Azure AD-ben, contoso.org lesz az elsődleges tartomány a helyszíni AD Contoso tulajdonában és [ellenőrzése az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)
-- Nem átirányítható egyszerű felhasználónév: Olyan nem átirányítható egyszerű felhasználónév nem rendelkezik egy ellenőrzött tartomány. Akkor csak a szervezet magánhálózaton belül. Például akkor, ha a contoso.com az elsődleges tartomány Azure AD-ben, contoso.local lesz az elsődleges tartomány a helyszíni AD, de nem egy ellenőrizhető az internetes tartományához, és csak a Contoso belül a hálózati.
+- Irányítható UPN: Az átirányítható UPN-nek van egy érvényes ellenőrzött tartománya, amely regisztrálva van egy tartományregisztrálónál. Ha például az contoso.com az elsődleges tartomány az Azure AD-ben, a contoso.org az elsődleges tartomány a contoso által birtokolt és az [Azure ad-ben ellenőrzött](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain) helyszíni ad-ben.
+- Nem irányítható UPN: Egy nem irányítható UPN-nek nincs ellenőrzött tartománya. Csak a szervezet magánhálózaton belül alkalmazható. Ha például az contoso.com az elsődleges tartomány az Azure AD-ben, a contoso. local az elsődleges tartomány a helyszíni AD-ben, de nem ellenőrizhető tartomány az interneten, és csak a contoso hálózatán belül használatos.
 
-Az alábbi táblázat részletesen támogatja ezeket a helyszíni AD UPN-EK a Windows 10-es hibrid Azure AD-csatlakozás
+Az alábbi táblázat részletesen ismerteti ezen helyszíni AD UPN-ket a Windows 10 hibrid Azure AD JOIN szolgáltatásban
 
-| Írja be a helyszíni AD UPN-jét | Alkalmazási tartomány típusa | Windows 10-es verzió | Leírás |
+| A helyszíni AD UPN típusa | Alkalmazási tartomány típusa | Windows 10 verzió | Leírás |
 | ----- | ----- | ----- | ----- |
-| Irányítható | Összevont | A 1703-as kiadás | Általánosan elérhető |
-| A nem irányítható | Összevont | 1803 kiadásáról | Általánosan elérhető |
+| Irányítható | Összevont | 1703-es kiadásból | Általánosan elérhető |
+| Nem irányítható | Összevont | 1803-es kiadásból | Általánosan elérhető |
 | Irányítható | Kezelt | Nem támogatott | |
-| A nem irányítható | Kezelt | Nem támogatott | |
+| Nem irányítható | Kezelt | Nem támogatott | |
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Konfigurálás hibrid Azure Active Directory-csatlakozás összevont környezeti](hybrid-azuread-join-federated-domains.md)
-> [konfigurálása hibrid Azure Active Directory-csatlakozás felügyelt környezetben](hybrid-azuread-join-managed-domains.md)
+> [Hibrid Azure Active Directory illesztés konfigurálása összevont környezetet](hybrid-azuread-join-federated-domains.md)
+> –[hibrid Azure Active Directory csatlakozás konfigurálása felügyelt környezethez](hybrid-azuread-join-managed-domains.md)
 
 <!--Image references-->
 [1]: ./media/hybrid-azuread-join-plan/12.png

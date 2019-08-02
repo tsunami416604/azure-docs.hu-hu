@@ -18,10 +18,10 @@ ms.date: 07/24/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70f9264357ca1a0c1a612481f4254e86f05e41d8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68479179"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -312,11 +312,11 @@ A kibővített fájlmegosztás használatához a rendszernek meg kell felelnie a
 * Az Azure Premium-lemezeket kell használnia.
 * Javasoljuk, hogy használja az Azure Managed Disks-t.
 * Javasoljuk, hogy a köteteket rugalmas fájlrendszer (ReFS) használatával formázza.
-    * További információ: [SAP-Megjegyzés 1869038 – SAP-támogatás a][1869038] and the [Choosing the file system][planning-volumes-s2d-choosing-filesystem] kötetek megtervezése a közvetlen tárolóhelyek-ban című cikk ReFs.
+    * További információ: [SAP-megjegyzés 1869038 – SAP-támogatás a ReFs fájlrendszerhez][1869038] , valamint a kötetek megtervezése című cikk [fájlrendszerének kiválasztása][planning-volumes-s2d-choosing-filesystem] közvetlen tárolóhelyek.
     * Ügyeljen arra, hogy a [Microsoft KB4025334 összegző frissítését][kb4025334]telepítse.
 * A DS-vagy DSv2-sorozatú Azure-beli virtuálisgép-méreteket is használhatja.
 * A virtuális gépek közötti megfelelő hálózati teljesítmény érdekében, amely Közvetlen tárolóhelyek lemezes szinkronizáláshoz szükséges, használjon olyan virtuálisgép-típust, amely legalább egy "magas" hálózati sávszélességgel rendelkezik.
-    További információkért lásd a [DSv2-sorozat][dv2-series] and [DS-Series][ds-series] specifikációit.
+    További információ: a [DSv2 sorozat][dv2-series] és a [DS-sorozat][ds-series] specifikációja.
 * Javasoljuk, hogy foglaljon le néhány le nem foglalt kapacitást a tárolóban. Ha a tárolóhelyen nem foglalt kapacitást ad meg, a kötetek lemezterületet biztosítanak a "helyben" javításhoz, ha a meghajtó meghibásodik. Ez javítja az adatbiztonságot és a teljesítményt.  További információ: a [kötet méretének kiválasztása][choosing-the-size-of-volumes-s2d].
 * Nem kell konfigurálnia az Azure belső Load balancert a kibővített fájlmegosztás hálózati neveként, például az \<SAP globális gazdagéphez.\> Ez az SAP ASCS/ \<SCS-példány vagy az adatbázis\> -kezelő rendszerhez készült ASCS/SCS virtuális gazdagép neveként történik. A kibővített fájlmegosztás az összes fürtcsomóponton kibővíti a terhelést. \<Az SAP Global\> Host az összes fürtcsomópont helyi IP-címét használja.
 

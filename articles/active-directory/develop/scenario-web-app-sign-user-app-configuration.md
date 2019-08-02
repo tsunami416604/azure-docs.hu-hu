@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c962e95b3d213c4089b51f58139cab17a3332cbd
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: a96d17ae7fbe94877032e7b4b2aacb63f6e070ca
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853070"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562245"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>Felhasználói bejelentkezést használó webalkalmazás – kód konfigurálása
 
@@ -110,7 +110,7 @@ Ugyanígy a kijelentkezési URI is a következőre lesz beállítva `https://loc
 
 ### <a name="initialization-code"></a>Inicializálási kód
 
-ASP.net Core Web Apps (és webes API-k) esetében az alkalmazás inicializálását végző kód a `Startup.cs` fájlban található, és a Microsoft Identity platform (korábban Azure ad) 2.0-s verziójának használatával történő hitelesítéshez hozzá kell adnia a következő kódot. A kódban szereplő megjegyzéseknek magától értetődőnek kell lenniük.
+ASP.net Core Web Apps (és webes API-k) esetében az alkalmazás inicializálását végző kód a `Startup.cs` fájlban található, és a Microsoft Identity platformmal (korábban az Azure ad v 2.0-val) való hitelesítéshez hozzá kell adnia a következő kódot. A kódban szereplő megjegyzéseknek magától értetődőnek kell lenniük.
 
   > [!NOTE]
   > Ha a projektet a Visual Studióban lévő alapértelmezett ASP.net Core webes projekttel indítja el `dotnet new mvc` , vagy `AddAzureAD` a metódust használja, alapértelmezés szerint elérhető, mert a kapcsolódó csomagok automatikusan betöltődik. Ha azonban teljesen új projektet hoz létre, és az alábbi kódot próbálja használni, javasoljuk, hogy a `AddAzureAD` metódus elérhetővé tételéhez adja hozzá a **"Microsoft. AspNetCore. Authentication. AzureAD. UI"** NuGet-csomagot a projekthez.
@@ -122,7 +122,7 @@ ASP.net Core Web Apps (és webes API-k) esetében az alkalmazás inicializálás
  services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
  {
   // The ASP.NET core templates are currently using Azure AD v1.0, and compute
-  // the authority (as {Instance}/{TenantID}). We want to use the Microsoft Identity Platform v2.0 endpoint
+  // the authority (as {Instance}/{TenantID}). We want to use the Microsoft identity platform endpoint
   options.Authority = options.Authority + "/v2.0/";
 
   // If you want to restrict the users that can sign-in to specific organizations
@@ -133,7 +133,7 @@ ASP.net Core Web Apps (és webes API-k) esetében az alkalmazás inicializálás
 
   // Set the nameClaimType to be preferred_username.
   // This change is needed because certain token claims from Azure AD v1.0 endpoint
-  // (on which the original .NET core template is based) are different in Azure AD v2.0 endpoint.
+  // (on which the original .NET core template is based) are different in Microsoft identity platform endpoint.
   // For more details see [ID Tokens](https://docs.microsoft.com/azure/active-directory/develop/id-tokens)
   // and [Access Tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)
   options.TokenValidationParameters.NameClaimType = "preferred_username";
@@ -176,7 +176,7 @@ A ASP.net Web App/web API-k hitelesítéséhez kapcsolódó kód a `App_Start/St
   app.UseOpenIdConnectAuthentication(
     new OpenIdConnectAuthenticationOptions
     {
-     // The `Authority` represents the v2.0 endpoint - https://login.microsoftonline.com/common/v2.0
+     // The `Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0
      // The `Scope` describes the initial permissions that your app will need.
      //  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/
      ClientId = clientId,

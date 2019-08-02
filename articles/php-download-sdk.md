@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/01/2016
 ms.author: yaya
 ms.openlocfilehash: 9dd336ef973b603108aad62c90e4dab385d20317
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67873898"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>A PHP-hoz készült Azure SDK letöltése
@@ -45,7 +45,7 @@ A jelen témakörben szereplő utasítások feltételezik, hogy telepítve van a
 
 Az Azure-hoz készült PHP-ügyféloldali kódtárak olyan felületet biztosítanak az Azure-szolgáltatások, mint például az adatkezelési szolgáltatások és a felhőalapú szolgáltatások eléréséhez bármely operációs rendszerről. Ezek a kódtárak a zeneszerző használatával telepíthetők.
 
-További információ az Azure-hoz készült php-ügyféloldali kódtárak használatáról: [a blob szolgáltatás][blob-service] , [How to Use the Table Service][table-service] használata és [a várólista-szolgáltatás][üzenetsor-szolgáltatásának]használata.
+További információ az Azure-hoz készült PHP ügyféloldali kódtárak használatáról: [a blob szolgáltatás használata][blob-service], [a Table Service][table-service] használata és [a üzenetsor-szolgáltatás][queue-service]használata.
 
 ### <a name="install-via-composer"></a>Telepítés a Zeneszerzőn keresztül
 

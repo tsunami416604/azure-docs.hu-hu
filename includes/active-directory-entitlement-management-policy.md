@@ -8,119 +8,119 @@ ms.topic: include
 ms.date: 05/16/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: 6711506c1e489dcbd50aedd36241affc3bbed80b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: da4bc51cdd8cdfad8212ee5a288f03874f673c2c
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179290"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678184"
 ---
-### <a name="policy-for-users-in-your-directory"></a>Házirend: A címtárban lévő felhasználók számára
+### <a name="policy-for-users-in-your-directory"></a>Szabályzat: A címtárban lévő felhasználók számára
 
-Kövesse az alábbi lépéseket, ha azt szeretné, hogy a felhasználók és csoportok a címtárban kérhetnek hozzáférést csomag házirend.
+Kövesse az alábbi lépéseket, ha azt szeretné, hogy a házirend a címtár azon felhasználói számára legyen, akik igényelhetik ezt a hozzáférési csomagot.  A **címtárban lévő felhasználók** a belső felhasználókra, valamint a korábban meghívott külső felhasználókra is utalnak, amelyek a jogosultságok felügyeletének megkövetelését kérik egy másik hozzáférési csomaggal, vagy az Azure ad B2B-vel meghívást kapnak. A szabályzat meghatározásakor megadhat egyéni felhasználókat vagy gyakrabban felhasználói csoportokat. Előfordulhat például, hogy a szervezet már rendelkezik egy csoporttal, például az **összes alkalmazottal**.  Ha ez a csoport hozzá van adva a szabályzatban azon felhasználók számára, akik hozzáférést igényelhetnek, akkor a csoport bármelyik tagja hozzáférhet a hozzáféréshez.
 
-1. Az a **felhasználók, akik hozzáférést** szakaszban jelölje be **a felhasználók számára a címtár**.
+1. A **hozzáférést kérő felhasználók** területen válassza a **címtárban lévő felhasználók**lehetőséget.
 
-1. Az a **válassza ki a felhasználók és csoportok** területén kattintson **felhasználók és csoportok hozzáadása**.
+1. A **felhasználók és csoportok kiválasztása** szakaszban kattintson a **felhasználók és csoportok hozzáadása**lehetőségre.
 
-1. A kiválasztott felhasználók és csoportok panelen válassza ki a felhasználókat és csoportokat szeretne hozzáadni.
+1. A felhasználók és csoportok kiválasztása panelen válassza ki a hozzáadni kívánt felhasználókat és csoportokat.
 
-    ![Access-package - válassza ki a házirend - felhasználók és csoportok](./media/active-directory-entitlement-management-policy/policy-select-users-groups.png)
+    ![Hozzáférési csomag – házirend – felhasználók és csoportok kiválasztása](./media/active-directory-entitlement-management-policy/policy-select-users-groups.png)
 
-1. Kattintson a **kiválasztása** a felhasználók és csoportok hozzáadása.
+1. A felhasználók és csoportok hozzáadásához kattintson a **kiválasztás** gombra.
 
-1. Ugorjon le a [házirend: Kérelem](#policy-request) szakaszban.
+1. Ugorjon le a [szabályzatra: Kérelem](#policy-request) szakasz.
 
-### <a name="policy-for-users-not-in-your-directory"></a>Házirend: Nem a címtárban található felhasználók számára
+### <a name="policy-for-users-not-in-your-directory"></a>Szabályzat: A címtárban nem szereplő felhasználók számára
 
-Ha azt szeretné, hogy a házirend nem található a könyvtár kérhet hozzáférést csomag felhasználók számára, kövesse az alábbi lépéseket. Könyvtárak engedélyezettek kell állítani a **szervezeti kapcsolatok együttműködési korlátozások** beállításait.
+Kövesse az alábbi lépéseket, ha azt szeretné, hogy a házirend olyan felhasználók számára legyen, akik nem a címtárban vannak, és amelyekre ezt a hozzáférési csomagot kérhetik. A **címtárban lévő felhasználók** egy másik Azure ad-címtárban lévő felhasználókra hivatkoznak, és előfordulhat, hogy még nem kérték a címtárba.  A címtárakat úgy kell konfigurálni, hogy engedélyezve legyenek a **szervezeti kapcsolatok együttműködési korlátozásai** beállításokban.
 
 > [!NOTE]
-> A Vendég felhasználói fiókhoz létrejön egy felhasználó még nem található a címtárban, amelynek a kérés jóváhagyása vagy automatikusan elfogadja. A Vendég meghívjuk, de nem a meghívó e-mailt fog kapni. Ehelyett azokat a rendszer küld egy e-mailt a hozzáférési csomagok hozzárendelésével kézbesíti a rendszer. Alapértelmezés szerint újabb, ha a Vendég felhasználó nem rendelkezik minden olyan hozzáférési csomag hozzárendelések azok utolsó hozzárendelés lejárt, vagy meg lett szakítva, mert, hogy Vendég felhasználói fiókhoz bejelentkezés blokkolva lesznek, és törölni. Ha szeretné a könyvtárban határozatlan ideig maradnak vendég felhasználók rendelkeznek, még akkor is, ha nincsenek hozzáférési csomag hozzárendelések rendelkeznek, módosíthatja a beállításokat a jogosultság felügyeleti konfiguráció.
+> Egy vendég külső felhasználói fiók jön létre egy olyan felhasználó számára, aki még nem szerepel a címtárban, amelynek a kérelmét jóváhagyták vagy automatikusan jóváhagyták. A vendég meghívásra kerül, de nem kap meghívót e-mailben. Ehelyett e-mailt kapnak a hozzáférési csomag hozzárendelésének megérkezése után. Alapértelmezés szerint később, amikor a vendég felhasználó már nem rendelkezik hozzáférési csomagbeli hozzárendelésekkel, mert az utolsó hozzárendelésük lejárt vagy meg lett szakítva, a vendég felhasználói fiók le lesz tiltva a bejelentkezésből, és azt követően törlődik. Ha azt szeretné, hogy a vendég felhasználók határozatlan ideig maradjanak a címtárban, akkor is, ha nem rendelkeznek hozzáférési csomag hozzárendeléseivel, módosíthatja a jogosultsági felügyeleti konfiguráció beállításait.
 
-1. Az a **felhasználók, akik hozzáférést** szakaszban jelölje be **nem a címtárban található felhasználók**.
+1. A **hozzáférést kérő felhasználók** területen válassza a **címtárban nem szereplő felhasználók**lehetőséget.
 
-1. Az a **válassza ki azt az Azure AD külső könyvtár** területén kattintson **könyvtárak hozzáadása**.
+1. A **külső Azure ad-címtár kiválasztása** szakaszban kattintson a **címtárak hozzáadása**lehetőségre.
 
-1. Adjon meg egy tartománynevet és a egy külső keresése az Azure AD-címtárban.
+1. Adja meg a tartománynevet, és keressen rá az adott tartománynévvel rendelkező Azure AD-címtárra.
 
-1. Ellenőrizze, hogy a helyes-e a megadott könyvtár neve és a kezdeti tartomány könyvtár.
+1. Ellenőrizze, hogy a könyvtár neve és a kezdeti tartomány megfelelő-e.
 
     > [!NOTE]
-    > Minden felhasználó a könyvtárból a hozzáférés csomag igénylést lesz. Ez magában foglalja a felhasználók a címtárban, nem csak a használt keresési tartomány társított valamennyi altartományt.
+    > A címtár összes felhasználója ezt a hozzáférési csomagot fogja kérni. Ide tartoznak a címtárhoz társított összes altartományból származó felhasználók, nem csak a keresésben használt tartomány.
 
-    ![Access-package - válassza ki a házirend - könyvtárak](./media/active-directory-entitlement-management-policy/policy-select-directories.png)
+    ![Hozzáférési csomag – házirend – könyvtárak kijelölése](./media/active-directory-entitlement-management-policy/policy-select-directories.png)
 
-1. Kattintson a **Hozzáadás** hozzáadása a címtárban.
+1. A címtár hozzáadásához kattintson a **Hozzáadás** gombra.
 
-1. Ismételje meg ezt a lépést minden további könyvtárak hozzáadása.
+1. További könyvtárak hozzáadásához ismételje meg ezt a lépést.
 
-1. Minden címtár hozzáadását követően szeretné bele a szabályzatba, kattintson a **kiválasztása**.
+1. Miután hozzáadta az összes olyan könyvtárat, amelyet fel szeretne venni a szabályzatba, kattintson a **kiválasztás**elemre.
 
-1. Ugorjon le a [házirend: Kérelem](#policy-request) szakaszban.
+1. Ugorjon le a [szabályzatra: Kérelem](#policy-request) szakasz.
 
-### <a name="policy-none-administrator-direct-assignments-only"></a>Házirend: Egyik sem (rendszergazdai közvetlen hozzárendelések csak)
+### <a name="policy-none-administrator-direct-assignments-only"></a>Szabályzat: Nincs (csak a rendszergazdai közvetlen hozzárendelések)
 
-Kövesse az alábbi lépéseket, ha azt szeretné, hogy a szabályzat megkerüljék a hozzáférést, és lehetővé teszi a rendszergazdák számára, hogy közvetlenül az adott felhasználók hozzárendelése a hozzáférés-csomag. Felhasználók sem kell kérni a hozzáférés-csomag. Lejárati beállítások továbbra is beállíthatja, de nem kérelem beállításokat.
+Kövesse az alábbi lépéseket, ha azt szeretné, hogy a szabályzat megkerüljék a hozzáférési kérelmeket, és lehetővé tegye, hogy a rendszergazdák közvetlenül rendeljenek hozzá konkrét felhasználókat a hozzáférési csomaghoz. A felhasználóknak nem kell a hozzáférési csomagot igényelnie. Továbbra is beállíthatja a lejárati beállításokat, de nincsenek megadva a kérelmek beállításai.
 
-1. Az a **felhasználók, akik hozzáférést** szakaszban jelölje be **None (rendszergazda csak a közvetlen hozzárendelések**.
+1. Azokon a felhasználóknál, **akik hozzáférhetnek** a hozzáféréshez szakaszban válassza a **nincs (csak rendszergazdai közvetlen hozzárendelések**lehetőséget.
 
-    Követően a hozzáférés csomagot hoz létre, hozzáférési csomag közvetlenül hozzárendelhet adott belső és külső felhasználókhoz. Ha egy külső felhasználót ad meg, a Vendég felhasználói fiókhoz a címtár létrejön.
+    A hozzáférési csomag létrehozása után közvetlenül rendelhet hozzá konkrét belső és külső felhasználókat a hozzáférési csomaghoz. Ha külső felhasználót ad meg, a rendszer létrehoz egy vendég felhasználói fiókot a címtárban.
 
-1. Ugorjon le a [házirend: Lejárati](#policy-expiration) szakaszban.
+1. Ugorjon le a [szabályzatra: Lejárat](#policy-expiration) szakasz.
 
-### <a name="policy-request"></a>Házirend: Kérés
+### <a name="policy-request"></a>Szabályzat: Kérés
 
-A kérelem a szakaszban megadhatja jóváhagyási beállítások, amikor a felhasználók a hozzáférés csomagban kérik.
+A kérelem szakaszban megadhatja a jóváhagyási beállításokat, amikor a felhasználók a hozzáférési csomagot kérik.
 
-1. A kijelölt felhasználók kéréseit jóváhagyás szükséges, állítsa be a **jóváhagyás megkövetelése,** kapcsolót **Igen**. Kérelmek jóváhagyása automatikus rendelkezik, állítsa be a váltógomb **nem**.
+1. A kiválasztott felhasználóktól érkező kérések jóváhagyásának megköveteléséhez állítsa az **Igen**értékre a **jóváhagyás** megkövetelése kapcsolót. Ha szeretné, hogy a rendszer automatikusan jóváhagyja a kéréseket, állítsa a kapcsolót a **nem**értékre.
 
-1. Ha szüksége van a jóváhagyást a **jóváhagyók kiválasztása** területén kattintson **jóváhagyók hozzáadása**.
+1. Ha jóváhagyásra van szüksége, a **jóváhagyók kiválasztása** szakaszban kattintson a **Jóváhagyók hozzáadása**elemre.
 
-1. Válassza ki a jóváhagyók ablaktábláján egy vagy több felhasználók és csoportok kiválasztása a jóváhagyók lennie.
+1. A jóváhagyók kiválasztása panelen jelöljön ki egy vagy több felhasználót és/vagy csoportot a jóváhagyóknak.
 
-    Csak az egyik a kijelölt jóváhagyók jóvá kell hagynia a kérelmet. Az összes a jóváhagyók a jóváhagyási, nem szükséges. A jóváhagyó döntésével bármelyik jóváhagyó felülvizsgálja a kérést először alapul.
+    Csak az egyik kiválasztott jóváhagyónak kell jóváhagynia egy kérést. Az összes jóváhagyó jóváhagyása nem szükséges. A jóváhagyási döntés azon alapul, hogy bármelyik jóváhagyó megtekinti-e először a kérést.
 
-    ![Access-package - szabályzat – válassza ki a jóváhagyók](./media/active-directory-entitlement-management-policy/policy-select-approvers.png)
+    ![Hozzáférési csomag – házirend – jóváhagyók kiválasztása](./media/active-directory-entitlement-management-policy/policy-select-approvers.png)
 
-1. Kattintson a **kiválasztása** a jóváhagyók hozzáadása.
+1. A jóváhagyók hozzáadásához kattintson a **kiválasztás** gombra.
 
-1. Kattintson a **Speciális kérelem** további beállítások megjelenítéséhez.
+1. További beállítások megjelenítéséhez kattintson a **speciális kérési beállítások megjelenítése** lehetőségre.
 
-    ![Access-package - válassza ki a házirend - könyvtárak](./media/active-directory-entitlement-management-policy/policy-advanced-request.png)
+    ![Hozzáférési csomag – házirend – könyvtárak kijelölése](./media/active-directory-entitlement-management-policy/policy-advanced-request.png)
 
-1. Állítsa be a felhasználóknak indokolniuk kérése a hozzáférés csomag kötelező, **indoklás megkövetelése** való **Igen**.
+1. Ahhoz, hogy a felhasználók indoklást szolgáltassanak a hozzáférési csomag igényléséhez, az **Igen**értékre kell állítani az **indoklást** .
 
-1. A jóváhagyó jóváhagyja a kérést a hozzáférés-csomag indokolniuk van szükség, állítsa **jóváhagyó indoklás megkövetelése** való **Igen**.
+1. Ha meg szeretné követelni, hogy a jóváhagyó indoklást nyújtson a hozzáférési csomagra vonatkozó kérelem jóváhagyásához, állítsa az **Igen**értékre a **jóváhagyó indoklásának** megkövetelése beállítást.
 
-1. Az a **jóváhagyási kérés időtúllépése (nap)** adja meg, mennyi ideig kell a jóváhagyók tekintse át a kérést. Ha nincsenek jóváhagyók az ez idő alatt tekintse át, a kérelem lejár, és a hozzáférés-csomag egy másik kérelmet küldeni a felhasználónak kell.
+1. A **jóváhagyási kérelem időkorlátja (nap)** mezőben határozza meg, hogy a jóváhagyóknak mennyi ideig kell áttekinteniük a kérést. Ha egyetlen jóváhagyó sem tekinti át az adott számú napon, a kérelem lejár, és a felhasználónak egy másik kérelmet kell benyújtania a hozzáférési csomaghoz.
 
-### <a name="policy-expiration"></a>Házirend: lejárati
+### <a name="policy-expiration"></a>Szabályzat: Lejárat
 
-A lejárati szakaszban megadhatja, amikor a felhasználó-hozzárendelés a hozzáférés csomag érvényessége lejár.
+A lejárat szakaszban megadhatja, hogy mikor járjon le egy felhasználó a hozzáférési csomaghoz.
 
-1. Az a **lejárati** szakaszában **hozzáférés csomag lejár** való **dátumon**, **napok száma**, vagy **soha**.
+1. A **lejárat** szakaszban állítsa be a **hozzáférési csomag érvényességét** **dátum**, **napok száma**vagy **soha nem**értékre.
 
-    A **dátumon**, válassza ki a lejárati dátumot a jövőben.
+    A **on Date (dátum**) beállításnál válassza ki a lejárati dátumot a jövőben.
 
-    A **napok száma**, 0 és 3660 nap közötti számot adjon meg.
+    A **napok számának**megadásához 0 és 3660 nap közötti számot kell megadni.
 
-    A választott beállítás alapján a felhasználó-hozzárendelés a hozzáférés csomag lejár egy adott dátumon egy bizonyos számú nap, miután jóváhagyták őket, vagy soha nem.
+    A kiválasztás alapján a felhasználó a hozzáférési csomaghoz való hozzárendelése egy adott napon lejár, bizonyos számú nappal a jóváhagyás után, vagy soha nem.
 
-1. Kattintson a **speciális lejárati beállítások megjelenítése** további beállítások megjelenítéséhez.
+1. További beállítások megjelenítéséhez kattintson a **speciális lejárati beállítások megjelenítése** lehetőségre.
 
-1. Állítsa be úgy, hogy a felhasználó a hozzárendeléseket kiterjeszteni, **engedélyezése a felhasználók számára a hozzáférés kiterjesztése** való **Igen**.
+1. Annak engedélyezéséhez, hogy a felhasználó kiterjessze a hozzárendeléseket, állítsa a **felhasználók számára az** **Igen**értékre való kiterjesztést.
 
-    Bővítmények a szabályzat engedélyezett, ha a felhasználó kap egy e-mailt 14 napos és szintén 1 nap, a hozzáférési csomagok hozzárendelésével lejár beállítása előtt kérő üzenet őket a hozzárendelés kiterjesztésére.
+    Ha a kiterjesztések engedélyezve vannak a szabályzatban, a felhasználó 14 napig, a hozzáférési csomag hozzárendelésének megkezdése előtt pedig 1 nappal e-mailt kap, hogy lejárja a hozzárendelés kiterjesztését.
 
-    ![Access-package - házirend - lejárati beállítások](./media/active-directory-entitlement-management-policy/policy-expiration.png)
+    ![Hozzáférési csomag – házirend-lejárati beállítások](./media/active-directory-entitlement-management-policy/policy-expiration.png)
 
-### <a name="policy-enable-policy"></a>Házirend: Szabályzat engedélyezése
+### <a name="policy-enable-policy"></a>Szabályzat: Szabályzat engedélyezése
 
-1. Ha azt szeretné, hogy a hozzáférés-csomag a házirendben a felhasználókat azonnal rendelkezésére bocsátani, kattintson a **Igen** szabályzatának engedélyezéséhez.
+1. Ha azt szeretné, hogy a hozzáférési csomag azonnal elérhető legyen a szabályzatban szereplő felhasználók számára, kattintson az **Igen** gombra a szabályzat engedélyezéséhez.
 
-    Mindig engedélyezheti azt a jövőben a hozzáférés-csomag létrehozásának befejezése után.
+    A jövőben bármikor engedélyezheti azt a hozzáférési csomag létrehozása után.
 
-    ![Access-package - házirend engedélyezése a házirend-beállítással](./media/active-directory-entitlement-management-policy/policy-enable.png)
+    ![Hozzáférési csomag – házirend – házirend-beállítás engedélyezése](./media/active-directory-entitlement-management-policy/policy-enable.png)
 
-1. Kattintson a **tovább** vagy **létrehozása**.
+1. Kattintson a **tovább** vagy a **Létrehozás**gombra.

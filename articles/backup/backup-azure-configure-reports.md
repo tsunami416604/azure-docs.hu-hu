@@ -1,18 +1,19 @@
 ---
 title: Azure Backup-jelentések konfigurálása
 description: Recovery Services-tároló használatával konfigurálhatja Azure Backup Power BI jelentéseit.
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: adigan
-ms.openlocfilehash: ae772446a4955f9f9def830d5c770f7d826b7e48
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 169ce73ead52d6a275f13f084c681e14c89ab606
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466616"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689358"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 Ez a cikk azokat a lépéseket ismerteti, amelyekkel Recovery Services-tároló használatával konfigurálhatja a Azure Backup jelentéseit. Azt is bemutatja, hogyan férhet hozzá a jelentésekhez Power BI használatával. A lépések elvégzése után közvetlenül a Power BI megtekintheti, testreszabhatja és létrehozhatja a jelentéseket.
@@ -99,7 +100,7 @@ Ha testre szeretné szabni és megosztani a jelentést, hozzon létre egy munkat
 
     ![Sikeres importálási csomag](./media/backup-azure-configure-reports/content-pack-import-success.png) <br/>
 
-7. Az adatimportálás sikeres elvégzése után a **Azure Backup** Content Pack  látható az alkalmazásokban a navigációs ablaktáblán. Az **irányítópultok**, **jelentések**és adatkészletek területen a lista most megjeleníti a Azure Backup.
+7. Az adatimportálás sikeres elvégzése után a **Azure Backup** Content Pack látható az alkalmazásokban a navigációs ablaktáblán. Az **irányítópultok**, **jelentések**és adatkészletek területen a lista most megjeleníti a Azure Backup.
 
 8. Az **irányítópultok**területen válassza a **Azure Backup**lehetőséget, amely rögzített kulcsú jelentések készletét jeleníti meg.
 

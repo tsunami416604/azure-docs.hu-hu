@@ -1,71 +1,71 @@
 ---
-title: Egy rendszerkép réteg hozzáadása az Azure Maps |} A Microsoft Docs
-description: A Javascript-leképezés egy kép réteg hozzáadása
+title: Rendszerkép-réteg hozzáadása a Azure Mapshoz | Microsoft Docs
+description: Képréteg hozzáadása a JavaScript-térképhez
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/3/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5396fefca3a60dea7a503f8b4e84cc575753ea30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ea0f37e307196af4b27fd3f8fb1aa0d42443dfa
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769566"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638735"
 ---
-# <a name="add-an-image-layer-to-a-map"></a>A térkép kép réteg hozzáadása
+# <a name="add-an-image-layer-to-a-map"></a>Képréteg hozzáadása térképhez
 
-Ez a cikk bemutatja, hogyan lehet keverni a koordináták a térképen rögzített számú kép. Nincsenek számos forgatókönyv, amelyben rajzolhat, amelyek a képet a térképen történik. Íme néhány példa a lemezképek térképeken; gyakran átfedésben típusú
+Ebből a cikkből megtudhatja, hogyan helyezhet át egy képet a Térkép rögzített koordinátáiba. Számos olyan forgatókönyv létezik, amelyben a képek átfedésben vannak a térképen. Íme néhány példa arra, hogy milyen típusú képeket gyakran helyeznek el a térképeken;
 
-* Rögzített drónok képeket.
-* Épület alaprajzokat.
-* Előzmények vagy más specializált térképi képeit.
-* Tervezetek feladat helyek.
-* Időjárási a mérlegeli képek.
+* A herékből rögzített rendszerképek.
+* Alaprajzok kialakítása.
+* Korábbi vagy egyéb speciális térképi képek.
+* A feladatok helyeinek tervrajzai.
+* Időjárási radar-rendszerképek.
 
 > [!TIP]
-> Egy [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) gyors van egy egyszerű módja annak átfedi a képet a térképen. Azonban ha a kép túl nagy, a böngészőben is kihívást jelent a betölti azt. Ebben az esetben érdemes lehet ossza a rendszerképet csempék és betöltenie őket a térképen, mint egy [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest).
+> A [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) egy egyszerű módja a képek térképre való átfedésének. Ha azonban a rendszerkép nagy méretű, a böngésző megküzdheti a betöltését. Ebben az esetben érdemes a képet csempévé feltörni, és a térképre betölteni a [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest).
 
 ## <a name="add-an-image-layer"></a>Rendszerképréteg hozzáadása
 
-Ez a példa bemutatja, hogyan átfedő képe egy [1922 zártuk New Jersey leképezésből](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) a térképen.
+Ez a minta azt mutatja be, hogyan lehet átfedő képet létrehozni [Newark New Jersey-ról](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) a térképen a 1922-es térképről.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Az egyszerű réteg' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/eQodRo/'>az egyszerű réteg</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Egyszerű képréteg' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/eQodRo/'>egyszerű</a> képrétegét<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-A fenti kód az első kódblokkot egy térkép-objektumot hoz létre. Látható [térkép létrehozásához](./map-create.md) útmutatást.
+A fenti kódban a kód első blokkja egy Térkép objektumot hoz létre. Ehhez útmutatást a [Térkép létrehozása](./map-create.md) című témakörben találhat.
 
-A második kódblokkot, az egy [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) jön létre egy URL-címet egy kép és a következő formátumban négy sarkánál koordináták átadásával `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`.
+A kód második blokkjában létrejön egy [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) , amely egy URL-címet továbbít egy képhez, és koordinálja a négy sarkot a formátumban `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`.
 
-## <a name="import-a-kml-ground-overlay"></a>Egy KML földön területre importálása
+## <a name="import-a-kml-ground-overlay"></a>KML-fedési átfedés importálása
 
-Ez a példa bemutatja, hogyan átfedi egy kép rétegként KML földön területre információkat a térképen. Keleti régiójában, és a Nyugat-India koordináták és a egy óramutató járásával ellentétes irányban forgatását, ahol kiindulási lemezképeként réteg azt várja a kép minden egyes sarok koordináták KML földön átfedések Észak, déli régiója, biztosítanak. Ebben a példában a KML földön területre van, a Chartres cathedral és forráskóddal a [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
+Ez a minta bemutatja, hogyan fedi le a KML-alapú átfedési adatokat képrétegként a térképen. A KML-alapú átfedések Észak-, Dél-, Kelet-és Nyugat-koordinátákat biztosítanak, és az óramutató járásával megegyező irányú rotációs, ahol a képréteg a rendszerkép minden sarkánál koordinátákat vár. A példában szereplő KML-borító a Chartres-székesegyházból származik, és a [wikimediaből](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)származik.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Kép rétegként KML földön területre' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>KML szabad területre kép rétegként</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='KML-terep átfedése képrétegként' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Az <a href='https://codepen.io'>CodePen</a>- <a href='https://codepen.io/azuremaps/pen/EOJgpj/'></a> on Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) képrétegként tekintse meg a KML-terepen látható tollat.
 </iframe>
 
-A fenti kód használ a static `getCoordinatesFromEdges` funkcióját a [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) osztály alapján számítja ki a négy biztos lehet benne, északi a lemezképet, India, kelet Nyugat-India és váltogatásának adatait a KML szabad területre.
+A fenti kód a [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) osztály `getCoordinatesFromEdges` statikus funkciójával kiszámítja a rendszerkép négy sarkát az Észak-, Dél-, Kelet-, nyugati és rotációs adatokból a KML-terület átfedése alapján.
 
 
-## <a name="customize-an-image-layer"></a>Egy rendszerkép réteg testreszabása
+## <a name="customize-an-image-layer"></a>Képréteg testreszabása
 
-A kép réteg stílusának számos lehetőség van. Itt egy olyan eszköz, próbálja ki őket.
+A képréteg számos stílust tartalmaz. Itt látható egy eszköz, amellyel kipróbálhatja őket.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Kép réteg beállításai' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>rendszerkép-réteg lehetőségek</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Képréteg beállításai' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg <a href='https://codepen.io/azuremaps/pen/RqOGzx/'></a> a toll képrétegének beállításait<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az osztályok és módszerek a cikk ezt használja:
+További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
 > [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)
@@ -73,7 +73,7 @@ További információ az osztályok és módszerek a cikk ezt használja:
 > [!div class="nextstepaction"]
 > [ImageLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagelayeroptions?view=azure-iot-typescript-latest)
 
-Tekintse meg a további Kódminták a maps hozzá az alábbi cikkeket:
+Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
 
 > [!div class="nextstepaction"]
-> [Egy mozaikréteg hozzáadása](./map-add-tile-layer.md)
+> [Csempe rétegének hozzáadása](./map-add-tile-layer.md)

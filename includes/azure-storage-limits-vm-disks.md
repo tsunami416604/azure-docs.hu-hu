@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
-ms.openlocfilehash: ef9c46c0b55f97b8931f16d751f1b1e6099e6c9d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 8b25d2395811a2197aff6d653c5038a4380021e9
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68328613"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68669678"
 ---
 Több adatlemezt is csatolhat egy Azure-beli virtuális géphez. A virtuális gépek adatlemezei skálázhatósági és teljesítményi céljai alapján meghatározhatja a teljesítményre és a kapacitásra vonatkozó követelmények teljesítéséhez szükséges lemez számát és típusát.
 
@@ -18,12 +18,12 @@ Több adatlemezt is csatolhat egy Azure-beli virtuális géphez. A virtuális g�
 
 **Azure Managed Disks esetén:**
 
-Az alábbi táblázat az erőforrások számának alapértelmezett és maximális korlátját mutatja régiónként/előfizetés szerint
+Az alábbi táblázat az erőforrások számának alapértelmezett és maximális korlátját mutatja régiónként/előfizetésben. A Managed Disks, a pillanatképek és a lemezképek száma nincs korlátozva erőforráscsoport esetén.  
 
 > | Resource | Alapértelmezett korlát  | Felső korlát |
 > | --- | --- | --- |
 > | Standard szintű felügyelt lemezek | 50,000 | 50,000 |
-> | Felügyelt lemezek standard SSD | 50,000 | 50,000 |
+> | Standard SSD típusú felügyelt lemezek | 50,000 | 50,000 |
 > | Prémium szintű Managed Disks | 50,000 | 50,000 |
 > | Standard_LRS-Pillanatképek | 50,000 | 50,000 |
 > | Standard_ZRS-Pillanatképek | 50,000 | 50,000 |

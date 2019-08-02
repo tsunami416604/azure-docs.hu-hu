@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: bb0e146ef32ba24c3911bae86806c84768c005ef
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b62cbe6be7f48aa05bf3756580df0777aeee8cae
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405953"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726080"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Oracle Eloqua
 
@@ -44,7 +44,7 @@ Oracle Eloqua társított szolgáltatás a következő tulajdonságok támogatot
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **Eloqua** | Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **Eloqua** | Igen |
 | endpoint | A végpont a Eloqua kiszolgáló. Eloqua támogatja, több adatközpontot, határozza meg a végpont, jelentkezzen be a https://login.eloqua.com a hitelesítő adataival, majd másolja a **alap URL** részen található mintát követik az átirányított URL-CÍMÉT `xxx.xxx.eloqua.com`. | Igen |
 | username | A hely neve és a képernyőn a Eloqua fiók felhasználóneve: `SiteName\Username` például `Eloqua\Alice`.  | Igen |
 | password | A felhasználónévhez tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
@@ -79,7 +79,7 @@ Adatok másolása az Oracle Eloqua, állítsa be a type tulajdonság, az adatké
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **EloquaObject** | Igen |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **EloquaObject** | Igen |
 | tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
@@ -89,11 +89,12 @@ Adatok másolása az Oracle Eloqua, állítsa be a type tulajdonság, az adatké
     "name": "EloquaDataset",
     "properties": {
         "type": "EloquaObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Eloqua linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -108,7 +109,7 @@ Oracle Eloqua adatmásolás, állítsa be a forrás típusaként a másolási te
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **EloquaSource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **EloquaSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Accounts"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**

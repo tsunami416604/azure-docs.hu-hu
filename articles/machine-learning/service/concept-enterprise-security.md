@@ -1,7 +1,7 @@
 ---
 title: Vállalati biztonság
 titleSuffix: Azure Machine Learning service
-description: 'Biztonságosan használata az Azure Machine Learning szolgáltatás: hitelesítés, engedélyezés, hálózati biztonság, adatok titkosítására és figyelése.'
+description: 'Az Azure Machine Learning szolgáltatás biztonságos használata: hitelesítés, engedélyezés, hálózati biztonság, adattitkosítás és figyelés.'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,37 +10,48 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
-ms.openlocfilehash: 8682baa961ca3270e76614702b51ac50f197e847
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: f9fd9f88a0aa6af9cd4160bf5879b9b8f383dca1
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795491"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720432"
 ---
-# <a name="enterprise-security-for-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatás nagyvállalati szintű biztonság
+# <a name="enterprise-security-for-azure-machine-learning-service"></a>Vállalati biztonság Azure Machine Learning szolgáltatáshoz
 
-Ebben a cikkben ismertetik elérhető biztonsági funkciók és az Azure Machine learning-szolgáltatás.
+Ebben a cikkben megismerheti az Azure Machine learning szolgáltatással elérhető biztonsági funkciókat.
 
-Ha a használt felhő alapú szolgáltatás, korlátozhatja a hozzáférést a felhasználók, akiknek szükség van, ajánlott eljárás. Ekkor elindul a hitelesítési és engedélyezési modellje a szolgáltatás által használt megismerése. Előfordulhat, hogy a is szeretné korlátozni a hálózati hozzáférés, vagy biztonságosan csatlakozzon a helyszíni hálózat szervezhet marketingkampányokat, felhőalapú erőforrásokat. Adattitkosítás létfontosságú is, inaktív és az adatok szolgáltatások közötti áthelyezése közben. Végül, képeseknek kell lenniük a szolgáltatás figyelésére, és minden tevékenység egy naplók.
+A felhőalapú szolgáltatás használatakor ajánlott a hozzáférés korlátozása csak azokra a felhasználókra, akiknek szükségük van rá. Ez a szolgáltatás által használt hitelesítési és engedélyezési modell megismerésével kezdődik. Előfordulhat, hogy korlátozni kívánja a hálózati hozzáférést, vagy biztonságos módon csatlakoztatja a helyszíni hálózatban lévő erőforrásokat a felhőben. Az adatok titkosítása is létfontosságú, mind a nyugalmi állapotban, mind pedig az adatok a szolgáltatások között mozognak. Végezetül meg kell tudnia figyelni a szolgáltatást, és minden tevékenységhez létre kell hoznia egy naplót.
 
 ## <a name="authentication"></a>Authentication
-Ha az Azure Active Directory (Azure AD) van konfigurálva a többtényezős hitelesítés támogatott.
-* Ügyfél bejelentkezik az Azure ad-ben, és Azure Resource Manager-token beolvasása.  Felhasználók és az egyszerű szolgáltatások teljes mértékben támogatottak.
-* Ügyfél bemutatja az Azure Resource Manager-token & az összes Azure Machine Learning-szolgáltatások
-* Az Azure Machine Learning szolgáltatás egy Azure Machine Learning-jogkivonatot a felhasználó számítási biztosít. Ha például Machine Learning Compute. Az Azure Machine Learning jogkivonat felhasználói által használt számítási visszahívja (korlátozza hatókör munkaterülethez) Azure Machine Learning szolgáltatás a Futtatás után befejeződött.
 
-![Képernyőfelvétel: a hitelesítés az Azure Machine Learning szolgáltatás működése](./media/enterprise-readiness/authentication.png)
+A többtényezős hitelesítés akkor támogatott, ha a Azure Active Directory (Azure AD) ugyanahhoz a szolgáltatáshoz van konfigurálva.
 
-### <a name="authentication-keys-for-web-service-deployment"></a>A webszolgáltatás üzembe a hitelesítési kulcsok
+* Az ügyfél bejelentkezik az Azure AD-be, és Azure Resource Manager tokent kap.  A felhasználók és az egyszerű szolgáltatások teljes mértékben támogatottak.
+* Az ügyfél jogkivonatot jelenít meg Azure Resource Manager & az összes Azure Machine Learning szolgáltatást
+* Azure Machine Learning szolgáltatás Azure Machine Learning tokent biztosít a felhasználó számítási feladatokhoz. Például Machine Learning Compute. Ezt a Azure Machine Learning tokent a felhasználói számítás használja, hogy a Futtatás befejezése után visszahívja Azure Machine Learning szolgáltatásba (a hatókört a munkaterületre korlátozza).
 
-Ha engedélyezi a hitelesítést egy központi telepítés, hitelesítési kulcsok automatikus létrehozása.
+![Képernyőfelvétel a hitelesítés működéséről Azure Machine Learning szolgáltatásban](./media/enterprise-readiness/authentication.png)
 
-* Hitelesítés alapértelmezés szerint engedélyezve van, az Azure Kubernetes Service-ben való telepítéséhez.
-* Hitelesítés le van tiltva alapértelmezés szerint az Azure Container Instancesben való telepítéséhez.
+### <a name="authentication-for-web-service-deployment"></a>Hitelesítés a webszolgáltatások üzembe helyezéséhez
 
-Hitelesítés beállításához használja a `auth_enabled` paraméter létrehozása vagy frissítése egy központi telepítést.
+Azure Machine Learning két hitelesítési módszert támogat a webszolgáltatásokhoz, a kulcsokhoz és a jogkivonatokhoz. Az egyes webszolgáltatások egyszerre csak egy hitelesítési űrlapot tudnak engedélyezni.
 
-Ha a hitelesítés engedélyezve van, használhatja a `get_keys` metódusának segítéségével lekérheti az egy elsődleges és másodlagos hitelesítési kulcs:
+|Hitelesítési módszer|ACI|AKS|
+|---|---|---|
+|Kulcs|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezve|
+|Jogkivonat| Nem állnak rendelkezésre adatok| Alapértelmezés szerint letiltva |
+
+#### <a name="authentication-with-keys"></a>Hitelesítés kulcsokkal
+
+Ha engedélyezi a kulcsos hitelesítést a központi telepítéshez, automatikusan létrehozza a hitelesítési kulcsokat.
+
+* A hitelesítés alapértelmezés szerint engedélyezve van az Azure Kubernetes Service-ben való üzembe helyezéskor.
+* A hitelesítés alapértelmezés szerint le van tiltva, amikor Azure Container Instances telepíti.
+
+A kulcsos hitelesítés engedélyezéséhez használja `auth_enabled` a paramétert a központi telepítés létrehozásakor vagy frissítésekor.
+
+Ha a kulcsos hitelesítés engedélyezve van, a metódussal kérheti le az `get_keys` elsődleges és a másodlagos hitelesítési kulcsot:
 
 ```python
 primary, secondary = service.get_keys()
@@ -48,168 +59,207 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Ha a kulcs újragenerálása van szüksége, használja a [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
+> Ha újra kell létrehoznia egy kulcsot, használja a következőt[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
 
+#### <a name="authentication-with-tokens"></a>Hitelesítés jogkivonatokkal
+
+Ha engedélyezi a jogkivonat-hitelesítést egy webszolgáltatáshoz, a felhasználónak meg kell adnia egy Azure Machine Learning JSON Web Token a webszolgáltatásnak, hogy hozzáférjen.
+
+* Alapértelmezés szerint a jogkivonat-hitelesítés le van tiltva az Azure Kubernetes Service-ben való üzembe helyezéskor.
+* A jogkivonat-hitelesítés nem támogatott a Azure Container Instances való telepítésekor.
+
+A jogkivonat-hitelesítés vezérléséhez használja `token_auth_enabled` a paramétert a központi telepítés létrehozásakor vagy frissítésekor.
+
+Ha engedélyezve van a jogkivonat-hitelesítés, a `get_token` metódus használatával kérhet le egy JWT-tokent és a jogkivonat lejárati idejét:
+
+```python
+token, refresh_by = service.get_token()
+print(token)
+```
+
+> [!IMPORTANT]
+> A jogkivonat `refresh_by` időpontját követően új jogkivonatot kell kérnie.
+>
+> Javasoljuk, hogy a Azure Machine Learning munkaterületet ugyanabban a régióban hozza létre, mint az Azure Kubernetes Service-fürtöt. A webszolgáltatások tokenekkel történő hitelesítéséhez a webszolgáltatás meghívja a Azure Machine Learning munkaterület létrehozásához használt régiót. Ha a munkaterület régiója nem érhető el, akkor sem fogja tudni lehívni a webszolgáltatáshoz tartozó jogkivonatot, ha a fürt a munkaterülettől eltérő régióban található. Ez az Azure AD-hitelesítés gyakorlatilag nem érhető el, amíg a munkaterület régiója újra elérhetővé nem válik. Emellett minél nagyobb a távolság a fürt régiója és a munkaterület régiója között, annál hosszabb ideig tart a token beolvasása.
 
 ## <a name="authorization"></a>Authorization
 
-Több munkaterületet is létrehozhat, és minden munkaterülethez több személy közösen használhat. Ha megoszt egy munkaterületet, szabályozhatja a hozzáférést a következő szerepkörök hozzárendelésével a felhasználók számára:
+Több munkaterületet is létrehozhat, és minden munkaterülethez több személy közösen használhat. Munkaterületek megosztásakor a hozzáférését a következő szerepköröknek a felhasználókhoz való hozzárendelésével szabályozhatja:
+
 * Tulajdonos
 * Közreműködő
 * Olvasó
-    
-Az alábbi táblázat a fő Azure Machine Learning szolgáltatás műveletek és a szerepkör által végrehajtható műveleteket:
 
-| Az Azure Machine Learning szolgáltatás művelet | Tulajdonos | Közreműködő | Olvasó |
+A következő táblázat felsorolja a főbb Azure Machine Learning szolgáltatási műveleteit és a velük végrehajtható szerepköröket:
+
+| Azure Machine Learning szolgáltatási művelet | Tulajdonos | Közreműködő | Olvasó |
 | ---- |:----:|:----:|:----:|
-| Create Workspace | ✓ | ✓ | |
+| Munkaterület létrehozása | ✓ | ✓ | |
 | Munkaterület megosztása | ✓ | |  |
-| Számítási létrehozása | ✓ | ✓ | |
-| Számítási csatolása | ✓ | ✓ | |
+| Számítás létrehozása | ✓ | ✓ | |
+| Számítás csatolása | ✓ | ✓ | |
 | Adattárolók csatolása | ✓ | ✓ | |
 | Kísérlet futtatása | ✓ | ✓ | |
-| Futtatások/metrikáinak megtekintése | ✓ | ✓ | ✓ |
+| Futtatások/mérőszámok megtekintése | ✓ | ✓ | ✓ |
 | Modell regisztrálása | ✓ | ✓ | |
-| Rendszerkép létrehozása | ✓ | ✓ | |
+| Lemezkép létrehozása | ✓ | ✓ | |
 | Webszolgáltatás üzembe helyezése | ✓ | ✓ | |
-| Modellek/képek/megtekintése | ✓ | ✓ | ✓ |
+| Modellek/lemezképek megtekintése | ✓ | ✓ | ✓ |
 | Webszolgáltatás hívása | ✓ | ✓ | ✓ |
 
-Ha a beépített szerepkörök az igényeinek megfelelő, létrehozhat egyéni szerepköröket is. A csak egyéni szerepkör, támogatjuk a a munkaterület és a Machine Learning COMPUTE számítási műveletekhez. Az egyéni szerepkör előfordulhat, hogy rendelkezik olvasási, írási és engedélyek a munkaterülethez és a számítási erőforrás munkaterület törlése. Elérhetővé teheti a szerepkör egy adott munkaterület szintjén, egy adott erőforráscsoport szintjén vagy egy adott előfizetés szintjén. További információkért lásd: [felhasználók és szerepkörök az Azure Machine Learning-munkaterület kezelése](how-to-assign-roles.md)
+Ha a beépített szerepkörök nem elégségesek az igényeinek kielégítéséhez, létrehozhat egyéni szerepköröket is. Az egyetlen támogatott egyéni szerepkör a munkaterületen és a Machine Learning Computeon végzett műveletekhez használható. Előfordulhat, hogy az egyéni szerepkörök olvasási, írási vagy törlési engedélyekkel rendelkeznek a munkaterületen, illetve a számítási erőforrásban az adott munkaterületen. A szerepkört egy adott munkaterület-szinten, egy adott erőforráscsoport-szinten vagy egy adott előfizetési szinten is elérhetővé teheti. További információ: [felhasználók és szerepkörök kezelése Azure Machine learning](how-to-assign-roles.md) munkaterületen
 
-### <a name="securing-compute-and-data"></a>Számítási és adatok védelme
-Tulajdonosok és a közreműködőknek minden számítási célok és adattárakat, a munkaterülethez csatlakoztatott használhatja.  
-Minden munkaterülethez társított alapértelmezett felügyelt identitás (a neve megegyezik a munkaterületen) is rendelkezik csatlakoztatott erőforrásokon a munkaterületen használja a következő engedélyekkel:
+### <a name="securing-compute-and-data"></a>A számítás és az adatok biztonságossá tétele
 
-A felügyelt identitásokból további információkért lásd: [felügyelt identitások az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+A tulajdonosok és a közreműködők használhatják a munkaterülethez csatolt összes számítási célt és adattárat.  
+Minden munkaterülethez tartozik egy társított, rendszerhez rendelt felügyelt identitás is (a munkaterülettel megegyező névvel), a következő engedélyekkel a munkaterületen használt csatolt erőforrásokhoz:
+
+A felügyelt identitásokkal kapcsolatos további információkért lásd: [felügyelt identitások az Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) -erőforrásokhoz
 
 | Resource | Engedélyek |
 | ----- | ----- |
-| Munkaterület | Közreműködő | 
-| Tárfiók | Storage-Blobadatok Közreműködője | 
-| Key Vault | Kulcsok, titkos kódok, összes tanúsítványhoz hozzá | 
-| Azure Container Registry | Közreműködő | 
-| A munkaterületet tartalmazó erőforráscsoport | Közreműködő | 
-| A Key Vault (ha eltérnek a munkaterületet tartalmazó) tartalmazó erőforráscsoport | Közreműködő | 
+| Munkaterület | Közreműködő |
+| Tárfiók | Storage-blobadatok közreműködője |
+| Key Vault | Hozzáférés az összes kulcshoz, titokhoz, tanúsítványhoz |
+| Azure Container Registry | Közreműködő |
+| A munkaterületet tartalmazó erőforráscsoport | Közreműködő |
+| Az Key Vaultt tartalmazó erőforráscsoport (ha eltér a munkaterületet tartalmazó csoporttól) | Közreműködő |
 
-Javasoljuk, hogy a rendszergazdák nem visszavonni a hozzáférést, a fent említett erőforrások felügyelt identitásnak. Hozzáférés a kulcsok újraszinkronizálása művelettel állítható vissza.
+Javasoljuk, hogy a rendszergazdák ne vonja vissza a felügyelt identitás hozzáférését a fent említett erőforrásokhoz. A hozzáférés visszaállítható a kulcsok újraszinkronizálása művelettel.
 
-Az Azure Machine Learning szolgáltatás egy további alkalmazást hoz létre (kezdődő nevű `aml-`) a közreműködője szintű hozzáféréssel rendelkező az előfizetésében minden munkaterület régióhoz. Az ex. Ha rendelkezik egy munkaterületet, az USA keleti régiójában és Észak-Európában ugyanazt az előfizetést egy másik munkaterületet látni fogja a két alkalmazás. Erre azért van szükség, így a számítási erőforrásokat az Azure Machine Learning szolgáltatás segítségével kezelheti.
-
+A Azure Machine learning szolgáltatás létrehoz egy további alkalmazást (a neve `aml-`a következővel kezdődik), és az előfizetéshez tartozó közreműködői szintű hozzáféréssel rendelkezik minden munkaterület-régióhoz. Pl.: Ha az USA keleti régiójában és egy másik, észak-európai munkaterületen található munkaterülettel azonos előfizetésben található, két ilyen alkalmazást fog látni. Erre azért van szükség, hogy Azure Machine Learning szolgáltatás segítséget nyújtson a számítási erőforrások kezelésében.
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-Az Azure Machine Learning szolgáltatás más Azure-szolgáltatások számítási erőforrások is támaszkodik. A számítási erőforrások (számítási céljainak) segítségével betanítása és a modellek üzembe helyezése. Ezek a számítási céljainak egy virtuális hálózaton belül hozható létre. Például használhatja a Microsoft Data Science virtuális gép betanítja a modellt, és majd a modell üzembe helyezése az Azure Kubernetes Service (AKS).  
+A Azure Machine Learning szolgáltatás más Azure-szolgáltatásokra támaszkodik számítási erőforrásokhoz. A számítási erőforrások (számítási célok) a modellek betanítására és üzembe helyezésére szolgálnak. Ezeket a számítási célokat egy virtuális hálózaton belül lehet létrehozni. Például a Microsoft Data Science Virtual Machine használatával betaníthatja a modelleket, majd üzembe helyezheti a modellt az Azure Kubernetes szolgáltatásban (ak).  
 
-További információkért lásd: [kísérletek tanuláshoz és következtetésekhez futtatása a virtuális hálózat](how-to-enable-virtual-network.md).
+További információ: [kísérletek futtatása egy virtuális hálózatban](how-to-enable-virtual-network.md).
 
 ## <a name="data-encryption"></a>Adattitkosítás
 
 ### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
+
 #### <a name="azure-blob-storage"></a>Azure Blob Storage
-Az Azure Machine Learning szolgáltatás pillanatképeket, kimenetek és a naplók az Azure Blob Storage-fiók, amely vannak kötve, az Azure Machine Learning szolgáltatás munkaterület és a felhasználó előfizetése formában tárolja. Az Azure Blob Storage szolgáltatásban tárolt összes adat titkosítása Microsoft-Managed kulcsokkal.
 
-Ahhoz, hogy a saját kulcsok az Azure Blob Storage-ban tárolt adatok hogyan további információkért lásd: [ügyfél által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys).
+Azure Machine Learning a szolgáltatás a Azure Machine Learning szolgáltatás munkaterületéhez kötődő Azure Blob Storage-fiókban tárolja a pillanatképeket, kimeneteket és naplókat, és a felhasználó előfizetésében él. Az Azure Blob Storage tárolt összes adatok titkosítva vannak a Microsoft által felügyelt kulcsok használatával.
 
-Betanítási adatok általában is tárolódik az Azure Blob storage-ban, hogy képzési számítási számára is elérhető legyen. Ez a tároló nem kezeli az Azure Machine Learning, de egy távoli fájlkiszolgáló-rendszer számítási csatlakoztatva van.
+Az Azure Blob Storageban tárolt adatok saját kulcsaival kapcsolatos további információkért lásd: [Storage Service encryption az ügyfél által felügyelt kulcsok használatával Azure Key Vault](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys).
 
-A használt munkaterületét az Azure storage-fiókok a elérési kulcsainak újragenerálása információkért lásd: a [tárelérési kulcsok újragenerálása](how-to-change-storage-access-key.md) cikk.
+A betanítási adatok általában az Azure Blob Storage-ban is tárolódnak, hogy elérhetők legyenek a kiképzésben. Ezt a tárolót nem Azure Machine Learning felügyeli, de távoli fájlrendszerként van csatlakoztatva a számításhoz.
+
+A munkaterülethez használt Azure Storage-fiókok hozzáférési kulcsainak újragenerálásával kapcsolatos információkért lásd a [Storage-hozzáférési kulcsok](how-to-change-storage-access-key.md) újragenerálása című cikket.
 
 #### <a name="cosmos-db"></a>Cosmos DB
-Az Azure Machine Learning szolgáltatás egy Microsoft Azure Machine Learning szolgáltatás által kezelt előfizetésben metrikák és a Cosmos DB-hez, amely él metaadatait tárolja. Az összes, a Cosmos DB-ben tárolt adatok titkosítása a Microsoft által felügyelt kulcsok használatával.
 
-#### <a name="azure-container-registry-acr"></a>Az Azure Container Registry (ACR)
-A beállításjegyzék (ACR) az összes tárolórendszerkép titkosítása inaktív. Az Azure automatikusan titkosítja a képet a tárolás előtt, és visszafejti a működés közbeni amikor az Azure Machine Learning szolgáltatás lekéri a rendszerképet.
+Azure Machine Learning a szolgáltatás metrikákat és metaadatokat tárol a Cosmos DB, amely Azure Machine Learning szolgáltatás által kezelt Microsoft-előfizetésben él. A Cosmos DB tárolt összes adatok titkosítva maradnak a Microsoft által felügyelt kulcsok használatával.
 
-#### <a name="machine-learning-compute"></a>A Machine Learning Compute
-Az operációsrendszer-lemez esetében az Azure Storage szolgáltatásban tárolt minden számítási csomópont kulcsokkal van titkosítva a Microsoft kezeli az Azure Machine Learning szolgáltatás tárfiókok. A számítási rövid élettartamú, és a fürtök vertikálisan leskálázni általában vannak, ha ott nem találhatók futtatások várakozási sorba állított. A mögöttes virtuális gép eltávolítjuk és operációsrendszer-lemez törlése. Az Azure disk encryption nem támogatott a rendszerlemez számára.
-Minden virtuális gép is rendelkezik az operációs rendszer operations helyi ideiglenes lemezt. Ez a lemez is igény szerint használható a betanítási adatok készíthetők elő. Ez a lemez nincs titkosítva. Inaktív adatok titkosítását az Azure-ban működésével kapcsolatos további információkért lásd: [Azure adatok titkosítása inaktív](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest). 
+#### <a name="azure-container-registry-acr"></a>Azure Container Registry (ACR)
 
-### <a name="encryption-in-transit"></a>Titkosítás az átvitel során
-Mindkét belső kommunikációs között különböző micro Azure Machine Learning-szolgáltatások és a pontozási végpontot hív-e a külső kommunikációs SSL használatával támogatott. Minden Azure Storage-hozzáférés egyben egy biztonságos csatornán. További információkért lásd: [SSL használatával biztonságossá tétele az Azure Machine Learning webszolgáltatások](https://docs.microsoft.com/azure/machine-learning/service/how-to-secure-web-service).
+A beállításjegyzékben található összes tároló lemezkép (ACR) inaktív állapotban van. Az Azure automatikusan titkosítja a rendszerképet a tárolás előtt, és visszafejti azt, amikor Azure Machine Learning szolgáltatás lekéri a rendszerképet.
 
-### <a name="using-azure-key-vault"></a>Az Azure Key Vault használatával
-Key Vault-példány a munkaterülethez társított Azure Machine Learning szolgáltatás által használt különböző típusú hitelesítő adatok tárolásához:
-* A társított tárfiók kapcsolati sztringje
-* A jelszavakat az Azure tároló-beállításjegyzékbe példányok
-* Kapcsolati karakterláncok adatokat tárolja. 
+#### <a name="machine-learning-compute"></a>Machine Learning Compute
 
-SSH-jelszavak és kulcsok például a HDI HDInsight és a virtuális gép cél számítási külön kulcstároló, amelyet a Microsoft-előfizetéssel társítva van tárolva. Az Azure Machine Learning szolgáltatásban tárolja a jelszavakat, vagy a kulcsok a felhasználó által megadott inkább állít elő, engedélyezi, és tárolja a saját SSH-kulcsok használata esetén csatlakozhassanak az történő futtatásához a virtuális gép vagy HDInsight. Minden munkaterülethez társított alapértelmezett felügyelt identitás (a neve megegyezik a munkaterületen), amely hozzáfér az összes kulcsok, titkos kódok és tanúsítványok a Key vaultban van.
+Az egyes számítási csomópontok operációsrendszer-lemezét az Azure Storage tárolja a Microsoft által felügyelt kulcsok használatával Azure Machine Learning Service Storage-fiókokban. Ez a számítás elmúló, és a fürtöket általában lefelé kell méretezni, ha nincsenek várólistán lévő futtatások. A mögöttes virtuális gép kiépítés alatt áll, és az operációsrendszer-lemez törölve lett. Az operációsrendszer-lemez nem támogatja az Azure Disk Encryption használatát.
+Minden virtuális gép helyi ideiglenes lemezzel is rendelkezik az operációs rendszer műveleteihez. Ezt a lemezt igény szerint is felhasználhatja a betanítási adatgyűjtéshez. Ez a lemez nincs titkosítva.
+További információ arról, hogyan működik a titkosítás az Azure-ban: [Azure-beli adattitkosítás – Rest](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest).
 
- 
+### <a name="encryption-in-transit"></a>Titkosítás átvitel közben
+
+Az SSL használatával mind a belső kommunikáció, mind a különböző Azure Machine Learning Micro Services, mind a pontozási végpont meghívásával kapcsolatos külső kommunikáció is támogatott. Az Azure Storage összes hozzáférése egy biztonságos csatornán is elérhető.
+További információ: [biztonságos Azure Machine learning webszolgáltatások SSL használatával](https://docs.microsoft.com/azure/machine-learning/service/how-to-secure-web-service).
+
+### <a name="using-azure-key-vault"></a>Azure Key Vault használata
+
+A munkaterülethez társított Key Vault-példányt a Azure Machine Learning szolgáltatás a különböző típusú hitelesítő adatok tárolására használja:
+
+* A társított Storage-fiókhoz tartozó kapcsolatok karakterlánca
+* Az Azure Container repository példányainak jelszavai
+* Az adattárakhoz való kapcsolódási karakterláncok.
+
+A számítási célokat, például a HDI HDInsight és a virtuális gépet az SSH-jelszavak és-kulcsok egy külön Key Vault tárolják, amely a Microsoft-előfizetéshez van társítva. Azure Machine Learning a szolgáltatás a felhasználó által megadott jelszavakat vagy kulcsokat tárolja, ehelyett a saját SSH-kulcsait hozza létre, engedélyezi és tárolja, hogy a kísérleteket a virtuális gépekhez vagy HDInsight kapcsolódjon.
+Minden munkaterülethez tartozik egy társított, rendszerhez rendelt felügyelt identitás (a munkaterülettel megegyező névvel), amely hozzáféréssel rendelkezik a Key Vault összes kulcsához, titkához és tanúsítványához.
+
 ## <a name="monitoring"></a>Figyelés
 
-Felhasználók láthatják a tevékenységnaplóban a munkaterületen, és tekintse meg a munkaterület különböző műveleteket az alapvető információkat, mint például a művelet neve, esemény kezdeményezője, időbélyegző stb.
+A felhasználók a munkaterület alatt láthatják a tevékenység naplóját, és megtekinthetik a munkaterületen végrehajtott különféle műveleteket, például a művelet nevét, a által kezdeményezett eseményt, az időbélyeget stb.
 
-Az alábbi képernyőfelvételen a tevékenységnapló egy munkaterület:
+A következő képernyőfelvételen a munkaterület tevékenységi naplója látható:
 
-![Képernyőkép – bemutató tevékenységnapló munkaterület](./media/enterprise-readiness/workspace-activity-log.png)
+![A munkaterület alatti tevékenység naplóját ábrázoló képernyőfelvétel](./media/enterprise-readiness/workspace-activity-log.png)
 
+A pontozási kérés részleteit a rendszer a AppInsights tárolja, amely a felhasználó előfizetésében jön létre a munkaterület létrehozásakor. Ide tartoznak például a HTTPMethod, a UserAgent, a ComputeType, a RequestUrl, a StatusCode, a Kérelemazonosító, az időtartam stb.
 
-Pontozó a kérelem részletes adatainak vannak tárolva az AppInsights, amely jön létre a felhasználói előfizetést a munkaterület létrehozása során. This includes fields like HTTPMethod, UserAgent, ComputeType, RequestUrl, StatusCode, RequestId, Duration etc.
+## <a name="data-flow-diagram"></a>Adatfolyam-diagram
 
+### <a name="create-workspace"></a>Munkaterület létrehozása
 
-## <a name="data-flow-diagram"></a>Adatfolyam-Diagram
+A következő ábra a munkaterület létrehozása munkafolyamatot mutatja be.
+A felhasználó bejelentkezik az Azure AD-be bármely támogatott Azure Machine Learning Service-ügyfélről (CLI, Python SDK, Azure Portal), és a megfelelő Azure Resource Manager tokent kéri le. A felhasználó ezután meghívja a Azure Resource Manager a munkaterület létrehozásához.  Azure Resource Manager a munkaterület kiépítéséhez kapcsolatba lép a Azure Machine Learning szolgáltatás erőforrás-szolgáltatóval.  A Munkaterületek létrehozása során további erőforrások jönnek létre az ügyfél előfizetésében:
 
-### <a name="create-workspace"></a>Create Workspace
-Az alábbi ábrán látható, a létrehozás munkaterület munkafolyamat.
-Felhasználó Azure ad-ben egyetlen Azure Machine Learning szolgáltatás támogatott ügyfelek (parancssori felület, a Python SDK-t, az Azure portal) és a megfelelő Azure Resource Manager-tokent kér.  Felhasználó ekkor meghívja a munkaterület létrehozásához Azure Resource Manager.  Az Azure Resource Manager-ügyfelek az Azure Machine Learning szolgáltatás erőforrás-szolgáltató a munkaterület kiépítése.  További erőforrások jönnek létre a munkaterület létrehozása során az ügyfél előfizetését:
-* KeyVault (a titkos kulcsokat tárolhat)
-* Azure Storage-fiókba (beleértve a Blob & fájlmegosztás)
-* Az Azure Container Registry (a következtetésekhez/pontozási és kísérletezés docker-rendszerképek tárolásához)
-* Az Application Insights (a telemetriai adatok tárolása)
+* Kulcstartó (a titkok tárolására)
+* Egy Azure Storage-fiók (beleértve a blob & fájlmegosztás)
+* Azure Container Registry (a Docker-rendszerképek tárolása a következtetések/pontozás és kísérletezés érdekében)
+* Application Insights (a telemetria tárolásához)
 
-Más számítási erőforrások (Azure Kubernetes Service-ben, virtuális gépek stb.) egy munkaterülethez csatlakoztatott is bővítheti ügyfél igény szerint. 
+A munkaterülethez (Azure Kubernetes szolgáltatás, virtuális gép stb.) kapcsolódó egyéb számítások igény szerint az ügyfelek által is kiállíthatók.
 
-![Képernyőfelvétel: a munkaterület munkafolyamat létrehozása](./media/enterprise-readiness/create-workspace.png)
+![A munkaterület-munkafolyamatot bemutató képernyőkép](./media/enterprise-readiness/create-workspace.png)
 
-### <a name="save-source-code-training-scripts"></a>Mentse a forráskód (betanítási szkriptekhez)
-Az alábbi ábrán látható, a kód pillanatkép munkafolyamat.
-Az Azure Machine Learning társított szolgáltatás munkaterületén könyvtárak (kísérletek), a forráskód (betanítási szkriptekhez) tartalmazó.  Ezeket a rendszer az ügyfél helyi gépen, és a felhőben (az Azure Blob Storage, az ügyfél-előfizetéshez) tárolja. A kód pillanatképek végrehajtása vagy a korábbi naplózás ellenőrzés szolgálnak.
+### <a name="save-source-code-training-scripts"></a>Forráskód mentése (betanítási parancsfájlok)
 
-![Képernyőfelvétel: a munkaterület munkafolyamat létrehozása](./media/enterprise-readiness/code-snapshot.png)
+Az alábbi ábrán a kód pillanatkép-munkafolyamata látható.
+Egy Azure Machine Learning szolgáltatási munkaterülethez társított könyvtárak (kísérletek), amely tartalmazza a forráskódot (betanítási parancsfájlok).  Ezeket a rendszer az ügyfél helyi számítógépén és a felhőben tárolja (az Azure Blob Storage az ügyfél előfizetése alatt). Ezek a kód-Pillanatképek a korábbi naplózás végrehajtásához vagy ellenőrzéséhez használatosak.
+
+![A munkaterület-munkafolyamatot bemutató képernyőkép](./media/enterprise-readiness/code-snapshot.png)
 
 ### <a name="training"></a>Képzés
-Az alábbi ábrán látható, a képzési munkafolyamat.
-* Az Azure Machine Learning szolgáltatás menti a fenti kód elkészíteni a pillanatképet a pillanatkép-Azonosítóval rendelkező neve
-* Az Azure Machine Learning szolgáltatás hoz létre azonosítója (nem kötelező) és az Azure Machine Learning szolgáltatás jogkivonatot, amely később használják a számítási célokhoz, például a Machine Learning számítási/VM vissza kommunikáljon az Azure Machine Learning szolgáltatás futtatása
-* Választhat, vagy egy felügyelt számítási (például. A Machine Learning Compute) vagy a nem felügyelt számítási (például. Virtuális gép) való betanítási feladatok futtatása. Az adatfolyam kifejtett mindkét az alábbi esetekben:
-* (Virtuális gép vagy HDInsight – elért SSH hitelesítő adatok használata a Key Vaultban a Microsoft-előfizetés) Az Azure Machine Learning szolgáltatás felügyeleti kódot futtat a számítási célnak, amely:
-    1.  A környezetet előkészíti (Megjegyzés: A docker egy virtuális gép/helyi beállítást is. Tekintse meg a lépéseket a Machine Learning Compute alábbi tudni, hogyan fut, a docker-tároló működéséről kísérlet)
-    2.  A kód letöltése
-    3.  Beállítja a környezeti változók/konfigurációk
-    4.  (A fent említett kód pillanatkép) felhasználói parancsfájl futtatása
-* (Machine Learning számítási – elérhető munkaterület felügyelt identitás használata) Vegye figyelembe, hogy mivel a Machine Learning Compute egy felügyelt számítási, a Microsoft által felügyelt, ezért futása alatt a Microsoft-előfizetést.
-    1.  Távoli Docker-építési megkezdődik a szükség esetén
-    2.  Felügyeleti kódot ír a felhasználó Azure-fájlmegosztás
-    3.  Kezdeti kezdődik tároló parancsot, hogy felügyeleti kód az előző lépésben
 
+Az alábbi ábra a betanítási munkafolyamatot mutatja be.
 
-#### <a name="querying-runs--metrics"></a>Futtatások és a metrikák lekérdezése
-Ezt a lépést jelenik meg a folyamatban, ahol a betanítási számítási írások a *metrikák futtatása* térjen vissza az Azure Machine Learning szolgáltatás, amely lekérdezi a Cosmos DB-ben tárolja. Az ügyfelek meghívhat Azure Machine Learning szolgáltatás, amely viszont kérje le a metrikákat a Cosmos DB-ből, és térjen vissza az ügyfél.
+* Azure Machine Learning szolgáltatást a rendszer a fentiekben mentett kód-pillanatképhez tartozó pillanatkép-AZONOSÍTÓval hívja meg
+* Azure Machine Learning szolgáltatás létrehoz egy futtatási azonosítót (nem kötelező) & Azure Machine Learning Service tokent, amelyet később a számítási célok, például a Machine Learning Compute/virtuális gép használ a Azure Machine Learning szolgáltatáshoz való visszatéréshez.
+* Kiválaszthat egy felügyelt számítást (pl.: Machine Learning Compute) vagy nem felügyelt számítás (pl. Virtuális gép) a betanítási feladatok futtatásához. Az adatfolyamot az alábbi forgatókönyvek esetében is meg kell magyarázni:
+* (VM/HDInsight – a Microsoft-előfizetésben Key Vault SSH-alapú creds használatával érhető el) Azure Machine Learning szolgáltatás a következő számítási célra futtatja a felügyeleti kódot:
 
-![Képernyőfelvétel: a munkaterület munkafolyamat létrehozása](./media/enterprise-readiness/training-and-metrics.png)
+   1. Előkészíti a környezetet. (Vegye figyelembe, hogy a Docker a virtuális gép és a helyi lehetőség is. A következő lépésekből megtudhatja, hogyan működik a kísérlet a Docker-tárolóban Machine Learning Compute.)
+   1. Letölti a kódot.
+   1. Beállítja a környezeti változókat és a konfigurációkat.
+   1. Futtatja a felhasználói parancsfájlt (a fent említett kód pillanatképét).
 
-### <a name="creating-web-services"></a>Webes szolgáltatások létrehozása
-Az alábbi ábrán látható a következtetésekhez munkafolyamat. Következtetésekhez vagy a modell pontozása, nem a fázis, az üzembe helyezett modell előrejelzési leggyakrabban a termelési adatok szolgál.
-A részleteket alább találja:
-* Felhasználó regisztrálja a modellt, például az Azure Machine Learning-SDK-ügyfél használatával
-* Felhasználó hoz létre a model, pontszám fájl és egyéb modell függőségek a képet
-* A Docker-rendszerképet, és az ACR
-* Webszolgáltatás telepítve van a fent létrehozott rendszerkép használatával számítási célnak (ACI/AKS)
-* Pontozó a kérelem részletes adatainak vannak tárolva, az felhasználó előfizetése van, amely az AppInsights
-* Telemetria szintén leküldéssel Microsoft/Azure-előfizetéshez
+* (Machine Learning Compute – a munkaterület által felügyelt identitás használatával érhető el) Vegye figyelembe, hogy mivel Machine Learning Compute felügyelt számítási megoldás, amelyet a Microsoft felügyel, ennek eredményeképpen a Microsoft-előfizetésben fut.
 
-![Képernyőfelvétel: a munkaterület munkafolyamat létrehozása](./media/enterprise-readiness/inferencing.png)
+   1. Ha szükséges, a távoli Docker-konstrukció indult el.
+   1. Felügyeleti kód írása a felhasználói Azure-fájlmegosztás.
+   1. Elindítja a tárolót egy kezdeti paranccsal, azaz a felügyeleti kóddal az előző lépésben leírtak szerint.
+
+#### <a name="querying-runs-and-metrics"></a>Futtatások és metrikák lekérdezése
+
+Ez a lépés jelenik meg a folyamatban, ahol a betanítási számítás a futtatási metrikákat a Azure Machine learning szolgáltatásba írja vissza, ahonnan a Cosmos db tárolja. Az ügyfelek meghívhatják Azure Machine Learning szolgáltatást, amely lekéri a metrikákat a Cosmos DBról, majd visszaküldi az ügyfélnek.
+
+![A munkaterület-munkafolyamatot bemutató képernyőkép](./media/enterprise-readiness/training-and-metrics.png)
+
+### <a name="creating-web-services"></a>Webszolgáltatások létrehozása
+
+A következő ábra a következtetési munkafolyamatot mutatja be. A következtetés vagy a modell pontozása az a fázis, ahol az üzembe helyezett modellt az előrejelzéshez használják, leggyakrabban a termelési adatforgalomban.
+Tekintse meg az alábbi részleteket:
+
+* A felhasználó egy olyan ügyféllel regisztrál egy modellt, mint az Azure ML SDK
+* A felhasználó létrehoz egy rendszerképet a Model, a score file és más modellek függőségeivel
+* A Docker-rendszerkép létrehozása és tárolása ACR-ben történik
+* A webszolgáltatás üzembe helyezése a számítási célra (ACI/ak) történik a fent létrehozott rendszerkép használatával
+* A pontozási kérés részleteit a felhasználó előfizetésében található AppInsights tárolja.
+* A telemetria a Microsoft/Azure-előfizetésre is leküldve
+
+![A munkaterület-munkafolyamatot bemutató képernyőkép](./media/enterprise-readiness/inferencing.png)
 
 ## <a name="next-steps"></a>További lépések
 
 * [Biztonságos SSL-lel az Azure Machine Learning-webszolgáltatások](how-to-secure-web-service.md)
 * [Webszolgáltatásként üzembe helyezett gépi Tanulási modell felhasználása](how-to-consume-web-service.md)
 * [Hogyan futtathat batch-előrejelzés](how-to-run-batch-predictions.md)
-* [Az Application insights szolgáltatással az Azure Machine Learning-modellek figyelése](how-to-enable-app-insights.md)
-* [A modellek éles adatok gyűjtése](how-to-enable-data-collection.md)
-* [Azure Machine Learning service SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-* [Az Azure Machine Learning szolgáltatás használata az Azure Virtual Network szolgáltatással](how-to-enable-virtual-network.md)
-* [Gyakorlati tanácsok a javaslattételi rendszerek készítése](https://github.com/Microsoft/Recommenders)
-* [Valós idejű ajánlás API létrehozása az Azure-ban](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)
+* [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
+* [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)
+* [Azure Machine Learning Service SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+* [Azure Machine Learning szolgáltatás használata Azure-beli virtuális hálózatokkal](how-to-enable-virtual-network.md)
+* [Ajánlott eljárások az ajánlásokat tartalmazó rendszerek létrehozásához](https://github.com/Microsoft/Recommenders)
+* [Valós idejű ajánlási API létrehozása az Azure-ban](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

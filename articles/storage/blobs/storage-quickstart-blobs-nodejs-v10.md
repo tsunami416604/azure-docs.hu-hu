@@ -1,22 +1,20 @@
 ---
-title: Blobok feltöltése, letöltése, lista, és törölje az Azure Storage v10 SDK for JavaScript
+title: Blobok feltöltése, letöltése, listázása és törlése a JavaScripthez készült Azure Storage v10 SDK-val
 description: Blobok és tárolók létrehozása, feltöltése és törlése a Node.js-ben az Azure Storage használatával
-services: storage
 author: mhopkins-msft
+ms.author: mhopkins
+ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 11/14/2018
-ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: e2deda6bc9a5d13a631e9917f3020cfa68ee1e10
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: cada5c3dd74832140fd76cbdd637554b5f829c33
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536168"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722007"
 ---
-# <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Gyors útmutató: Blobok feltöltése, letöltése, lista, és törölje az Azure Storage v10 SDK for JavaScript
+# <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Gyors útmutató: Blobok feltöltése, letöltése, listázása és törlése a JavaScripthez készült Azure Storage v10 SDK-val
 
 Ebből a rövid útmutatóból megtudhatja, hogyan lehet a [JavaScripthez készült Azure Storage SDK 10-es verziójának](https://github.com/Azure/azure-sdk-for-js) használatával a Node.js-ben a blobokat fel- és letölteni, listázni és törölni, valamint a tárolókat kezelni.
 

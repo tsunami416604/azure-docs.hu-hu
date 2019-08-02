@@ -16,10 +16,10 @@ ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5967f2ac8c766005cee876b5b42109062abad6a1
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68323852"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Alkalmazások üzembe helyezése számítási csomópontokhoz batch-alkalmazási csomagokkal
@@ -31,7 +31,7 @@ Ebből a cikkből megtudhatja, hogyan tölthet fel és kezelhet alkalmazás-csom
 > [!NOTE]
 > Az alkalmazáscsomagok az összes 2017. július 5. után létrehozott Batch-készleten támogatottak. A 2016. március 10. és 2017. július 5. között létrehozott Batch-készletek esetében csak akkor támogatottak, ha a készlet felhőszolgáltatás-konfigurációval lett létrehozva. A 2016. március 10. előtt létrehozott Batch-készletek nem támogatják az alkalmazáscsomagokat.
 >
-> Az alkalmazáscsomag létrehozásának és kezelésének API-jai a [Batch Management .net][api_net_mgmt] library. The APIs for installing application packages on a compute node are part of the [Batch .NET][api_net] könyvtár részét képezik. Az összehasonlítható funkciók a más nyelvekhez elérhető batch API-k. 
+> Az alkalmazáscsomag létrehozásának és kezelésének API-jai a [Batch Management .net][api_net_mgmt] könyvtár részét képezik. Az alkalmazáscsomag számítási csomópontra történő telepítésének API-jai a [Batch .net][api_net] -könyvtár részei. Az összehasonlítható funkciók a más nyelvekhez elérhető batch API-k. 
 >
 > Az itt leírt alkalmazáscsomag-szolgáltatás felülbírálja a szolgáltatás korábbi verzióiban elérhető batch Apps szolgáltatást.
 
@@ -39,7 +39,7 @@ Ebből a cikkből megtudhatja, hogyan tölthet fel és kezelhet alkalmazás-csom
 Az alkalmazáscsomag használatához [egy Azure Storage-fiókot](#link-a-storage-account) kell összekapcsolnia a Batch-fiókkal.
 
 ## <a name="about-applications-and-application-packages"></a>Tudnivalók az alkalmazásokról és az alkalmazási csomagokról
-Azure Batchon belül egy *alkalmazás* olyan verziószámú bináris fájlokra hivatkozik, amelyek automatikusan letöltődnek a készlet számítási csomópontjaira. Az *alkalmazáscsomag* a bináris fájlok egy  adott készletére hivatkozik, és az alkalmazás egy adott *verzióját* jelöli.
+Azure Batchon belül egy *alkalmazás* olyan verziószámú bináris fájlokra hivatkozik, amelyek automatikusan letöltődnek a készlet számítási csomópontjaira. Az *alkalmazáscsomag* a bináris fájlok egy adott készletére hivatkozik, és az alkalmazás egy adott *verzióját* jelöli.
 
 ![Alkalmazások és alkalmazáscsomag magas szintű diagramja][1]
 
@@ -201,7 +201,7 @@ Most, hogy megismerte, hogyan kezelheti az alkalmazás-csomagokat a Azure Portal
 ### <a name="install-pool-application-packages"></a>Készlet alkalmazáscsomag telepítése
 Egy adott készlet összes számítási csomópontján lévő alkalmazáscsomag telepítéséhez válasszon egy vagy több alkalmazáscsomag- *referenciát* a készlethez. A készlethez megadott alkalmazáscsomag minden számítási csomópontra telepítve van, amikor a csomópont csatlakozik a készlethez, és a csomópont újraindítása vagy rendszerképbe állítása történik.
 
-A Batch .net-ben egy vagy több [CloudPool][net_cloudpool] .[ApplicationPackageReferences][net_cloudpool_pkgref] adhat meg új készlet létrehozásakor vagy egy meglévő készlethez. A [ApplicationPackageReference][net_pkgref] osztály a készlet számítási csomópontjain telepítendő alkalmazás-azonosítót és verziót határozza meg.
+A Batch .NET-ben válasszon ki egy vagy több [CloudPool][net_cloudpool]. Új készlet létrehozásakor vagy egy meglévő készlet [ApplicationPackageReferences][net_cloudpool_pkgref] . A [ApplicationPackageReference][net_pkgref] osztály a készlet számítási csomópontjain telepítendő alkalmazás-azonosítót és verziót határozza meg.
 
 ```csharp
 // Create the unbound CloudPool
@@ -231,9 +231,9 @@ await myCloudPool.CommitAsync();
 > 
 
 ### <a name="install-task-application-packages"></a>Task Application-csomagok telepítése
-A készlethez hasonlóan a tevékenységhez tartozó alkalmazáscsomag  -referenciák is megadhatók. Ha egy adott tevékenység egy csomóponton való futásra van ütemezve, a csomag letöltése és kibontása közvetlenül a Feladat parancssorának végrehajtása előtt történik. Ha egy adott csomag és verzió már telepítve van a csomóponton, a csomag nem töltődik le, és a rendszer a meglévő csomagot használja.
+A készlethez hasonlóan a tevékenységhez tartozó alkalmazáscsomag -referenciák is megadhatók. Ha egy adott tevékenység egy csomóponton való futásra van ütemezve, a csomag letöltése és kibontása közvetlenül a Feladat parancssorának végrehajtása előtt történik. Ha egy adott csomag és verzió már telepítve van a csomóponton, a csomag nem töltődik le, és a rendszer a meglévő csomagot használja.
 
-A Task alkalmazáscsomag telepítéséhez konfigurálja a feladat [CloudTask][net_cloudtask] .[ApplicationPackageReferences][net_cloudtask_pkgref] tulajdonságát:
+A Task alkalmazáscsomag telepítéséhez konfigurálja a feladat [CloudTask][net_cloudtask]. [ApplicationPackageReferences][net_cloudtask_pkgref] tulajdonság:
 
 ```csharp
 CloudTask task =
@@ -309,7 +309,7 @@ Ha egy meglévő készlet már konfigurálva van egy alkalmazáscsomag használa
 * A csomagok hivatkozásainak frissítésekor a készletben már szereplő számítási csomópontok nem telepítik automatikusan az új alkalmazáscsomag-csomagot. Ezeket a számítási csomópontokat újra kell indítani vagy rendszerképbe kell állítani az új csomag fogadásához.
 * Új csomag telepítésekor a létrehozott környezeti változók az új alkalmazáscsomag-hivatkozásokat tükrözik.
 
-Ebben a példában a meglévő készlet a [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref]egyike konfigurált *Blender* -alkalmazás 2,7-es verziójával rendelkezik. Ha frissíteni szeretné a készlet csomópontjait a b verziójú 2.76, egy új [ApplicationPackageReference]-[net_pkgref] kell megadnia az új verzióval, és véglegesíteni kell a változást.
+Ebben a példában a meglévő készlet a [CloudPool][net_cloudpool]egyike konfigurált *Blender* -alkalmazás 2,7-es verziójával rendelkezik. [ApplicationPackageReferences][net_cloudpool_pkgref]. Ha frissíteni szeretné a készlet csomópontjait a b verziójú 2.76, egy új [ApplicationPackageReference][net_pkgref] kell megadnia az új verzióval, és véglegesíteni kell a változást.
 
 ```csharp
 string newVersion = "2.76b";
@@ -326,7 +326,7 @@ await boundPool.CommitAsync();
 Most, hogy az új verzió konfigurálva lett, a Batch szolgáltatás telepíti a 2.76-es verziót a készlethez csatlakozó *új* csomópontra. Ha a 2.76 b-t a készletben *már* szereplő csomópontokon szeretné telepíteni, indítsa újra vagy rendszerképbe. Vegye figyelembe, hogy az újraindított csomópontok megőrzik a korábbi csomagok központi telepítésének fájljait.
 
 ## <a name="list-the-applications-in-a-batch-account"></a>Batch-fiókban lévő alkalmazások listázása
-A Batch-fiókban lévő alkalmazásokat és azok csomagjait a [ApplicationOperations][net_appops] .[ListApplicationSummaries][net_appops_listappsummaries] metódus használatával listázhatja.
+Az alkalmazásokat és azok csomagjait a [ApplicationOperations][net_appops]használatával listázhatja egy batch-fiókban. [ListApplicationSummaries][net_appops_listappsummaries] metódus.
 
 ```csharp
 // List the applications and their application packages in the Batch account.
@@ -346,7 +346,7 @@ foreach (ApplicationSummary app in applications)
 Az alkalmazáscsomag segítségével az ügyfelek számára kiválaszthatja a feladataikat, és megadhatja a pontos verziót, amelyet a feladatok a Batch-kompatibilis szolgáltatással végzett feldolgozásakor kell használni. Lehetősége van arra is, hogy az ügyfelek feltöltsék és nyomon kövessék saját alkalmazásaikat a szolgáltatásban.
 
 ## <a name="next-steps"></a>További lépések
-* A [készlet hozzáadása a fiókhoz][rest_add_pool] a [Batch REST API][api_rest] also provides support to work with application packages. For example, see the [applicationPackageReferences][rest_add_pool_with_packages] elemet a REST API használatával telepítendő csomagok megadásával kapcsolatban. Az alkalmazás adatainak a Batch REST API használatával történő beszerzésével kapcsolatos további információkért lásd: [alkalmazások][rest_applications] .
+* A [Batch REST API][api_rest] Emellett támogatást biztosít az alkalmazáscsomag működéséhez. Például tekintse meg a [készlet hozzáadása][rest_add_pool] egy fiókhoz című témakör [applicationPackageReferences][rest_add_pool_with_packages] elemét, amely arról nyújt tájékoztatást, hogyan kell megadnia a telepítendő csomagokat a REST API használatával. Az alkalmazás adatainak a Batch REST API használatával történő beszerzésével kapcsolatos további információkért lásd: [alkalmazások][rest_applications] .
 * Ismerje meg, hogyan felügyelheti [Azure batch fiókokat és kvótákat a Batch Management .net-](batch-management-dotnet.md)tel. A [Batch Management .net][api_net_mgmt] -függvénytár lehetővé teheti a fiókok létrehozási és törlési funkcióit a Batch-alkalmazáshoz vagy-szolgáltatáshoz.
 
 [api_net]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/client?view=azure-dotnet

@@ -1,30 +1,30 @@
 ---
-title: Az Azure Data Explorer duplikált adatok kezelése
-description: Ez a témakör bemutatja, különböző megközelítések a duplikált adatok foglalkozik, amikor az Azure az adatkezelő segítségével.
+title: Ismétlődő adatkezelés az Azure-ban Adatkezelő
+description: Ez a témakör az Azure-Adatkezelő használatának különböző módszereit mutatja be az ismétlődő adatkezeléshez.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 8f55b6dfb7b5bc9eda675aca4ed80a66b8a25a7f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 60ec2b86e0205060f907f1fe39d084dca3aac1cd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60445770"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608226"
 ---
-# <a name="handle-duplicate-data-in-azure-data-explorer"></a>Az Azure Data Explorer duplikált adatok kezelése
+# <a name="handle-duplicate-data-in-azure-data-explorer"></a>Ismétlődő adatkezelés az Azure-ban Adatkezelő
 
-A felhőbe történő adatküldés eszközök kezelése az adatok a helyi gyorsítótárat. Az adatok méretétől függően a helyi gyorsítótár sikerült tárolja az adatokat napokat vagy akár hónapok. Küldje el újra a gyorsítótárazott adatok, és az analitikai adatbázis okozhat az adatdeduplikáció nem megfelelően működő eszközökre az analitikai adatbázisok védelme érdekében szeretné. Ez a témakör ismerteti az ajánlott eljárások az ilyen típusú forgatókönyvek duplikált adatok kezelésének alapelveit.
+Az adatokat a felhőbe küldő eszközök fenntartják az adatok helyi gyorsítótárát. Az adatmérettől függően a helyi gyorsítótár napok vagy akár hónapok között is tárolhatja az adattárolást. A gyorsítótárazott adatok újraküldését és az elemzési adatbázisban az adatok ismétlődését okozó hibás eszközökről szeretné védeni az analitikai adatbázisokat. Ez a témakör az ilyen típusú forgatókönyvek ismétlődő adatok kezelésére vonatkozó ajánlott eljárásokat ismerteti.
 
-A legjobb megoldás az adatdeduplikáció megakadályozza, hogy az ismétlődést. Ha lehetséges az adatok folyamatot, amely mentén adatfolyamat adatáthelyezés társított költségek menti, és elkerülhető az erőforrásokat fordítania a duplikált adatok betöltődnek a rendszer másolásának menetét ismerheti meg a korábbi a probléma megoldásához. Azonban az olyan esetekben, ahol nem lehet módosítani a forrásrendszerben, különböző módja van ebben a forgatókönyvben kezelésére.
+Az adatismétlődéssel kapcsolatos legjobb megoldás megakadályozza az ismétlődést. Ha lehetséges, javítsa ki a problémát az adatfolyamatnál korábban, ami az adatfolyamattal együtt az adatátvitelhez kapcsolódó költségeket takarítja meg, és elkerüli a kiadások erőforrásait a rendszerbe betöltött ismétlődő adatmennyiséggel. Azonban olyan helyzetekben, amikor a forrásoldali rendszer nem módosítható, többféle módon is kezelheti ezt a forgatókönyvet.
 
-## <a name="understand-the-impact-of-duplicate-data"></a>A duplikált adatok hatását ismertetése
+## <a name="understand-the-impact-of-duplicate-data"></a>Az ismétlődő adatmennyiség következményeinek megismerése
 
-Figyelheti a duplikált adatok aránya. Százalékos aránya a duplikált adatok felderítése, után elemezheti a problémát, és üzleti hatás hatókörét, és válassza ki a megfelelő megoldást.
+Az ismétlődő adatmennyiség százalékos arányának figyelése. Miután felderíti az ismétlődő adatmennyiséget, elemezheti a probléma hatókörét és az üzleti hatást, és kiválaszthatja a megfelelő megoldást.
 
-Mintalekérdezés ismétlődő rekordok aránya azonosításához:
+Példa lekérdezésre az ismétlődő rekordok százalékos arányának azonosításához:
 
 ```kusto
 let _sample = 0.01; // 1% sampling
@@ -39,17 +39,17 @@ _data
 | extend duplicate_percentage = (duplicateRecords / _sample) / _totalRecords  
 ```
 
-## <a name="solutions-for-handling-duplicate-data"></a>Ismétlődő adatok kezelésének alapelveit megoldások
+## <a name="solutions-for-handling-duplicate-data"></a>Ismétlődő adatkezelési megoldások
 
-### <a name="solution-1-dont-remove-duplicate-data"></a>#1. megoldás: Ne távolítsa el a duplikált adatok
+### <a name="solution-1-dont-remove-duplicate-data"></a>Megoldás #1: Ne távolítsa el az ismétlődő elemeket
 
-Ismerje meg, az üzleti követelmények és a duplikált adatok hibatűrésének. Bizonyos adatkészletek és a duplikált adatok bizonyos százalék kezelheti. Ha a duplikált adatok az jelentős hatással nem rendelkezik, figyelmen kívül hagyhatja a jelenléte. A nem távolítja el a duplikált adatok előnye a betöltési folyamat és a lekérdezések teljesítményének a nincs szükség további erőforrásokra.
+Ismerje meg az üzleti követelményeket és a duplikált adatmennyiségek tűréshatárát. Egyes adatkészletek képesek kezelni az ismétlődő adatokat egy adott százalékával. Ha a duplikált adatértéknek nincs jelentős hatása, figyelmen kívül hagyhatja a jelenlétét. Ha nem távolítja el az ismétlődő adatokat, a betöltési folyamat vagy a lekérdezési teljesítmény nem jár további terheléssel.
 
-### <a name="solution-2-handle-duplicate-rows-during-query"></a>#2. megoldás: Ismétlődő sorok kezelésére lekérdezési során
+### <a name="solution-2-handle-duplicate-rows-during-query"></a>Megoldás #2: Ismétlődő sorok kezelése a lekérdezés során
 
-Egy másik lehetőség, hogy az ismétlődő sorok az adatok kiszűréséhez lekérdezés során. A [ `arg_max()` ](/azure/kusto/query/arg-max-aggfunction) összesített függvény használható kiszűrhetők az ismétlődő rekordok, és az időbélyegző (vagy egy másik oszlopot) alapuló utolsó rekordját adja vissza. Ezzel a módszerrel előnye gyorsabb adatfeldolgozást, mivel a duplikátumok lekérdezési idő során történik. Emellett minden rekord (a duplikáltakat is beleértve) érhetők el a naplózás és hibaelhárítás. A hátránya, hogy használatával a `arg_max` függvény egy további lekérdezési idő- és a Processzor terhelése minden alkalommal, amikor a rendszer lekéri az adatokat. A lekérdezett adatok mennyiségétől függően ez a megoldás nem működik vagy memória-igényes válhat, és a szükséges átváltása más beállítások.
+Egy másik lehetőség az, hogy kiszűrje az adatsorok ismétlődő sorait a lekérdezés során. Az [`arg_max()`](/azure/kusto/query/arg-max-aggfunction) összesített függvény használható az ismétlődő rekordok szűrésére és az utolsó rekord visszaküldésére az időbélyeg (vagy egy másik oszlop) alapján. Ennek a módszernek a használatának előnye a gyorsabb betöltés, mivel a lekérdezés ideje alatt a rendszer duplikálja a ismétlődést. Emellett az összes rekord (beleértve az ismétlődéseket is) elérhető a naplózáshoz és a hibaelhárításhoz. A `arg_max` függvény használatának hátránya a további lekérdezési idő és a CPU betöltése minden alkalommal, amikor az adat le van kérdezve. A lekérdezett adatmennyiségtől függően ez a megoldás nem működőképes vagy a memóriát is igénybe vehet, és más beállításokra kell váltania.
 
-A következő példában betöltött oszlopkészleteket, amelyek meghatározzák az egyedi bejegyzések utolsó rekordját azt lekérdezés:
+Az alábbi példában lekérdezjük az utolsó olyan rekordot, amely az egyedi rekordokat meghatározó oszlopok halmazára mutat:
 
 ```kusto
 DeviceEventsAll
@@ -57,7 +57,7 @@ DeviceEventsAll
 | summarize hint.strategy=shuffle arg_max(EventDateTime, *) by DeviceId, EventId, StationId
 ```
 
-Ez a lekérdezés is elhelyezhető közvetlenül kérdez le a táblázat helyett egy függvényen belül:
+Ez a lekérdezés egy függvényen belül is elhelyezhető a tábla közvetlen lekérdezése helyett:
 
 ```kusto
 .create function DeviceEventsView
@@ -68,19 +68,19 @@ DeviceEventsAll
 }
 ```
 
-### <a name="solution-3-filter-duplicates-during-the-ingestion-process"></a>#3. megoldás: Ismétlődő szűrése a betöltési folyamat során
+### <a name="solution-3-filter-duplicates-during-the-ingestion-process"></a>Megoldás #3: Ismétlődések szűrése a betöltési folyamat során
 
-Egy másik megoldás, ha ismétlődő szűrése a betöltési folyamat során. A rendszer figyelmen kívül hagyja a a duplikált adatok során Adatbetöltési Kusto-táblákba. Adatok betöltődnek az előkészítési táblába, és átmásolja egy másik tábla az ismétlődő sorok eltávolítása után. Ez a megoldás előnye, hogy a lekérdezési teljesítmény jelentős mértékben javítja szemben a korábbi megoldás. A hátrányait közé tartozik a megnövekedett betöltési időt és további tárolási költségeket.
+Egy másik megoldás az ismétlődések szűrése a betöltési folyamat során. A Kusto táblákba való betöltés során a rendszeren figyelmen kívül hagyja az ismétlődő adatot. Az adatgyűjtés egy előkészítési táblába történik, és az ismétlődő sorok eltávolítása után egy másik táblába másolódik. A megoldás előnye, hogy a lekérdezési teljesítmény jelentősen javul az előző megoldáshoz képest. A hátrányok közé tartozik a megnövekedett betöltési idő és a további adattárolási költségek. További, ez a megoldás csak akkor működik, ha az ismétlődések nem kerülnek be egyszerre. Ha többször is ismétlődő rekordokat tartalmazó betöltések vannak, akkor a rendszer az összes betöltést elvégezheti, mivel a deduplikálás folyamata nem talál a táblában meglévő egyező rekordokat.    
 
-A következő példa ezt a módszert ábrázolja:
+A következő példa a metódust ábrázolja:
 
-1. Hozzon létre egy másik tábla ugyanazzal a sémával:
+1. Hozzon létre egy másik táblát ugyanazzal a sémával:
 
     ```kusto
     .create table DeviceEventsUnique (EventDateTime: datetime, DeviceId: int, EventId: int, StationId: int)
     ```
 
-1. Hozzon létre egy függvényt, az ismétlődő rekordok által kiszűréséhez elleni volt az új bejegyzések a korábban betöltött olyanokra cserélni.
+1. Hozzon létre egy függvényt az ismétlődő rekordok szűréséhez, ha az új rekordokat a korábban betöltött adatokkal kívánja összekapcsolni.
 
     ```kusto
     .create function RemoveDuplicateDeviceEvents()
@@ -97,9 +97,9 @@ A következő példa ezt a módszert ábrázolja:
     ```
 
     > [!NOTE]
-    > Illesztések processzorigénye műveletek, és adja hozzá a további terhelést a rendszeren.
+    > Az illesztések CPU-kötésű műveletek, és további terhelést vesznek fel a rendszeren.
 
-1. Állítsa be [frissítési szabályzat](/azure/kusto/management/update-policy) a `DeviceEventsUnique` tábla. A frissítési szabályzat akkor aktiválódik, amikor a hiányzóra változik az új adatok a `DeviceEventsAll` tábla. A Kusto-motor automatikusan végrehajtja a függvényt, új [egységek](/azure/kusto/management/extents-overview) jönnek létre. A feldolgozás az újonnan létrehozott adatok hatókörét. A következő parancsot a forrástábla összefűzi (`DeviceEventsAll`), céltábla (`DeviceEventsUnique`), és a függvény `RemoveDuplicatesDeviceEvents` a frissítési szabályzat létrehozása.
+1. Állítsa be a [frissítési szabályzatot](/azure/kusto/management/update-policy) a `DeviceEventsUnique` táblára. A frissítési szabályzat akkor aktiválódik, amikor az új adatbevitel `DeviceEventsAll` bekerül a táblába. A Kusto motor automatikusan végrehajtja a függvényt új [egységek](/azure/kusto/management/extents-overview) létrehozásakor. A feldolgozás az újonnan létrehozott adathalmazra terjed ki. A következő parancs a forrástábla (`DeviceEventsAll`), a céltábla (`DeviceEventsUnique`) és a függvény `RemoveDuplicatesDeviceEvents` együttes használatával hozza létre a frissítési szabályzatot.
 
     ```kusto
     .alter table DeviceEventsUnique policy update
@@ -107,17 +107,17 @@ A következő példa ezt a módszert ábrázolja:
     ```
 
     > [!NOTE]
-    > Frissítési szabályzat kibővíti az Adatbetöltési időtartama, mivel az adatok betöltési során szűrve és majd kétszer betöltött (az a `DeviceEventsAll` táblát, és a `DeviceEventsUnique` tábla).
+    > A frissítési szabályzat meghosszabbítja a betöltés időtartamát, mivel az adatfeldolgozás során szűri az adatmennyiséget, majd `DeviceEventsAll` kétszer (a táblához és a `DeviceEventsUnique` táblához).
 
-1. (Nem kötelező) Egy alacsonyabb adatmegőrzés beállítani a `DeviceEventsAll` tábla elkerülése érdekében az adatok másolatainak tárolásához. Válassza ki az adatmennyiség függően napok száma, és mennyi ideig szeretné megőrizni az adatokat a hibaelhárításhoz. Beállíthatja `0d` napos megőrzés COGS mentéséhez, és javítható a teljesítmény, mivel az adatok tárolási nem feltöltött.
+1. Választható Állítsa be a `DeviceEventsAll` tábla alacsonyabb adatmegőrzését, hogy ne tárolja az adatok másolatait. Válassza ki az adatmennyiségtől függően a napok számát, valamint azt, hogy mennyi ideig kívánja megőrizni a hibaelhárításhoz szükséges információkat. Beállíthatja, hogy `0d` a napok megőrzésével mentse az ELÁBÉ-t, és javítsa a teljesítményt, mivel az adatok nincs feltöltve a tárolóba.
 
     ```kusto
     .alter-merge table DeviceEventsAll policy retention softdelete = 1d
     ```
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
-Adatdeduplikáció többféle módon lehet kezelni. Értékelje ki a beállításokat, gondosan meg, hogy a megfelelő módszert a vállalati fiók ára és teljesítménye, figyelembe véve.
+Az adatismétlődés több módon is kezelhető. Alaposan értékelje ki a beállításokat, figyelembe véve a díjszabást és a teljesítményt, hogy meghatározza a vállalat megfelelő módszerét.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,21 +10,20 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 07/18/2019
-ms.openlocfilehash: bd68909f51ff6cead8484ae4ab9f2557e9d6554e
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 5d79edc4db07a2c5916725efc312d9f94fe985dc
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443323"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640092"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 
 Az automatikus feladatátvételi csoportok egy SQL Database funkció, amely lehetővé teszi a SQL Database-kiszolgálón vagy a felügyelt példányban lévő összes adatbázisban lévő adatbázisok replikálásának és feladatátvételének kezelését egy másik régióba. A meglévő [aktív geo-replikálási](sql-database-active-geo-replication.md) szolgáltatás egyik deklaratív absztrakciója, amely a földrajzilag replikált adatbázisok nagy léptékű üzembe helyezésének és kezelésének egyszerűsítésére szolgál. A feladatátvételt manuálisan is kezdeményezheti, vagy delegálhatja a SQL Database szolgáltatásnak egy felhasználó által definiált házirend alapján. Az utóbbi lehetőség lehetővé teszi, hogy egy végzetes hiba vagy más nem tervezett esemény után automatikusan helyreállítson több kapcsolódó adatbázist egy másodlagos régióban, ami az SQL Database szolgáltatás rendelkezésre állásának teljes vagy részleges elvesztését eredményezi az elsődleges régióban. A feladatátvételi csoportok tartalmazhatnak egy vagy több adatbázist, jellemzően ugyanazt az alkalmazást használják. Emellett az olvasható másodlagos adatbázisokat is használhatja az írásvédett lekérdezési feladatok kiszervezéséhez. Mivel az automatikus feladatátvételi csoportok több adatbázist is tartalmaznak, ezeket az adatbázisokat az elsődleges kiszolgálón kell konfigurálni. A feladatátvételi csoportban lévő adatbázisokhoz tartozó elsődleges és másodlagos kiszolgálóknak ugyanahhoz az előfizetéshez kell tartoznia. Az automatikus feladatátvételi csoportok támogatják a csoportban lévő összes adatbázis replikációját egy másik régióban lévő egyetlen másodlagos kiszolgálóra.
 
 > [!NOTE]
-> Ha SQL Database-kiszolgálón található önálló vagy készletezett adatbázisokkal dolgozik, és több formátumú másodlagos zónák szeretne ugyanabban vagy különböző régiókban, használja az [aktív földrajzi replikálást](sql-database-active-geo-replication.md).
+> Ha SQL Database-kiszolgálón található önálló vagy készletezett adatbázisokkal dolgozik, és több formátumú másodlagos zónák szeretne ugyanabban vagy különböző régiókban, használja az [aktív földrajzi replikálást](sql-database-active-geo-replication.md). 
 
 Ha automatikus feladatátvételi házirenddel rendelkező automatikus feladatátvételi csoportokat használ, a csoport egy vagy több adatbázisára hatással lévő kimaradások automatikusan feladatátvételt eredményeznek. Az automatikus feladatátvételi csoportok emellett olyan írási és olvasási figyelőket is biztosítanak, amelyek változatlanok maradnak a feladatátvételek során. Akár kézi, akár automatikus feladatátvételi aktiválást használ, a feladatátvétel a csoportban lévő összes másodlagos adatbázist elsődlegesre váltja. Az adatbázis-feladatátvétel befejeződése után a rendszer automatikusan frissíti a DNS-rekordot, hogy átirányítsa a végpontokat az új régióba. Az adott RPO-és RTO-információk esetében lásd: [az üzletmenet folytonosságának áttekintése](sql-database-business-continuity.md).
 
@@ -234,7 +233,7 @@ Ha [Virtual Network szolgáltatási végpontokat és szabályokat](sql-database-
 4. A manuális feladatátvétel elindítása a leállás észlelésekor. Ez a beállítás olyan alkalmazásokra van optimalizálva, amelyek konzisztens késést igényelnek az előtér és az adatréteg között, és támogatja a helyreállítást, ha az előtér, az adatréteg vagy mindkettő hatással van a kimaradásra.
 
 > [!NOTE]
-> Ha az írásvédett figyelőt  a csak olvasási feladatok terheléselosztásához használja, akkor győződjön meg arról, hogy ez a számítási feladat a másodlagos régióban lévő virtuális gépen vagy más erőforráson fut, így a másodlagos adatbázishoz csatlakozhat.
+> Ha az írásvédett figyelőt a csak olvasási feladatok terheléselosztásához használja, akkor győződjön meg arról, hogy ez a számítási feladat a másodlagos régióban lévő virtuális gépen vagy más erőforráson fut, így a másodlagos adatbázishoz csatlakozhat.
 
 ### <a name="using-failover-groups-and-sql-database-firewall-rules"></a>Feladatátvételi csoportok és SQL Database-tűzfalszabályok használata
 
@@ -256,14 +255,14 @@ A fenti konfiguráció biztosítja, hogy az automatikus feladatátvétel ne blok
 
 ## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>A földrajzi replikálás engedélyezése a felügyelt példányok és a virtuális hálózatok között
 
-Ha az elsődleges és a másodlagos felügyelt példányok közötti feladatátvételi csoportot állít be két különböző régióban, az egyes példányok különálló VNet vannak elkülönítve. A virtuális hálózatok közötti replikációs forgalom engedélyezéséhez ellenőrizze, hogy teljesülnek-e az előfeltételek:
+Ha az elsődleges és a másodlagos felügyelt példányok közötti feladatátvételi csoportot állít be két különböző régióban, az egyes példányok különálló virtuális hálózattal vannak elkülönítve. A virtuális hálózatok közötti replikációs forgalom engedélyezéséhez ellenőrizze, hogy teljesülnek-e az előfeltételek:
 
 1. A két felügyelt példánynak különböző Azure-régiókban kell lennie.
-2. A másodlagosnak üresnek kell lennie (nincs felhasználói adatbázis).
-3. Az elsődleges és a másodlagos felügyelt példánynak ugyanabban az erőforráscsoporthoz kell lennie.
-4. A felügyelt példányok részét képező virtuális hálózatok egy [VPN Gatewayon](../vpn-gateway/vpn-gateway-about-vpngateways.md)keresztül kell csatlakozniuk. A globális VNet-társítás nem támogatott.
-5. A felügyelt példányok két virtuális hálózatok nem rendelkezhet átfedéses IP-címekkel.
-6. Be kell állítania a hálózati biztonsági csoportokat (NSG) úgy, hogy a 5022-es és a 11000 ~ 12000-as tartomány nyitott bejövő és kimenő a többi felügyelt példányhoz tartozó alhálózat kapcsolataihoz. Ez lehetővé teszi a példányok közötti replikációs forgalmat.
+1. A két felügyelt példánynak ugyanazt a szolgáltatási szintet kell megadnia, és ugyanazzal a tárolási mérettel kell rendelkeznie. 
+1. A másodlagos felügyelt példánynak üresnek kell lennie (nincs felhasználói adatbázis).
+1. A felügyelt példányok által használt virtuális hálózatokat [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy expressz útvonalon keresztül kell csatlakoztatni. Ha két virtuális hálózat egy helyszíni hálózaton keresztül kapcsolódik, győződjön meg arról, hogy nincs tűzfalszabály blokkolja a 5022-es és a 11000-11999-es portot. A globális VNet-társítás nem támogatott.
+1. A felügyelt példányok két virtuális hálózatok nem rendelkezhet átfedéses IP-címekkel.
+1. Be kell állítania a hálózati biztonsági csoportokat (NSG) úgy, hogy a 5022-es és a 11000 ~ 12000-as tartomány nyitott bejövő és kimenő a többi felügyelt példányhoz tartozó alhálózat kapcsolataihoz. Ez lehetővé teszi a példányok közötti replikációs forgalmat.
 
    > [!IMPORTANT]
    > Helytelenül konfigurált NSG biztonsági szabályok vezetnek az adatbázis-másolási műveletek elakadása érdekében.
@@ -369,9 +368,9 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 ## <a name="next-steps"></a>További lépések
 
 - A minta parancsfájlokat lásd:
-  - [Önálló adatbázis konfigurálása és a feladatainak átvétele aktív georeplikációval](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-  - [Rugalmas készletbe helyezett adatbázis konfigurálása és a feladatainak átvétele aktív georeplikációval](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-  - [Önálló adatbázis feladatátvételi csoportjának konfigurálása és feladatainak átvétele](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
+  - [A PowerShell használatával konfigurálhatja az aktív földrajzi replikálást egyetlen adatbázishoz Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+  - [A PowerShell használatával konfigurálhatja az aktív földrajzi replikálást egy készletezett adatbázishoz Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
+  - [Azure SQL Database önálló adatbázis hozzáadása feladatátvételi csoporthoz a PowerShell használatával](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
 - Az üzletmenet folytonosságának áttekintése és forgatókönyvei: az [üzletmenet folytonosságának áttekintése](sql-database-business-continuity.md)
 - Az automatikus biztonsági mentések Azure SQL Databaseáról a [SQL Database automatizált biztonsági mentések](sql-database-automated-backups.md)című témakörben olvashat bővebben.
 - Ha többet szeretne megtudni a helyreállítás automatizált biztonsági mentéséről, olvassa el [az adatbázis visszaállítása a szolgáltatás által kezdeményezett biztonsági másolatokból](sql-database-recovery-using-backups.md)című témakört.

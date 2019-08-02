@@ -4,7 +4,7 @@ description: Ismerje meg az eszközök és segédprogramok előre telepített a 
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2019
-ms.author: gokuma
-ms.openlocfilehash: 0a503b82c07da62b5c5c768d8e1c92cb19e75aee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vijetaj
+ms.openlocfilehash: d48c2b849f875289c89201f20478deebf4c00db9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236478"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565236"
 ---
 # <a name="get-to-know-your-data-science-virtual-machine"></a>Ismerje meg az adatelemző virtuális gép
 
 Az adatelemzési virtuális gép (DSVM) az adatplatformok, népszerű adatelemzési és machine learning/mesterséges Intelligencia eszközök széles körű listáját tartalmazza. Az eszköz-konfigurációk ellenőrizteti kell megvizsgálni, az adatelemzők és fejlesztők a Microsoft és a szélesebb körű adatelemzési Közösség stabilitását és általános életképességgel által.
 
-A dsvm-hez is több Kódminták és útmutatók Jupyter notebookok helyileg végrehajtható formájában. Ezeket a mintákat, ezzel elősegítve a szövegértést dokumentációját is van. 
+A DSVM több kódrészletet és bemutatót is tartalmaz a helyileg végrehajtható Jupyter jegyzetfüzetek formájában. Ezek a minták dokumentációt is nyújtanak a megértéshez. 
 
 > [!NOTE]
-> Használhat [Azure notebookok](/azure/notebooks/azure-notebooks-overview) létrehozása, futtatása és megosztása a Jupyter notebookok a felhőben. Is [egy adatelemző virtuális gép csatlakoztatása Azure-jegyzetfüzetek](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier) bontsa ki a rendelkezésre álló számítási teljesítmény.
+> A [Azure Notebooks](../../notebooks/azure-notebooks-overview.md) használatával Jupyter jegyzetfüzeteket hozhat létre, futtathat és oszthat meg a felhőben. A rendelkezésre álló számítási teljesítmény kibontásához [Data Science VM csatolhat Azure Notebookshoz](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) .
 
 Az eszközöket, platformokat, segédprogramok és mintákat, amelyek szerepelnek az adatelemző virtuális gép a következő szakaszokra vannak rendszerezve:
 

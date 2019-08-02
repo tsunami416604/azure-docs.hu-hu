@@ -1,45 +1,42 @@
 ---
-title: Az Azure Maps szolgáltatásban elérhető kérelem |} A Microsoft Docs
-description: Az Azure Maps használata az elérhető alkalmazások készítése
+title: Elérhető alkalmazás készítése Azure Mapsokkal | Microsoft Docs
+description: Elérhető alkalmazás létrehozása Azure Maps használatával
 services: azure-maps
-keywords: ''
 author: chgennar
 ms.author: chgennar
-ms.date: 09/17/2018
-ms.topic: article
+ms.date: 07/29/2019
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
 manager: timlt
-ms.devlang: na
-ms.openlocfilehash: ef948b4dca3d3800a81ac52f3a73beee2558d21c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8865027c895be09150797608e43184f1fdefb267
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769702"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638785"
 ---
-# <a name="building-an-accessible-application"></a>Elérhető alkalmazások készítése
+# <a name="building-an-accessible-application"></a>Akadálymentes alkalmazás létrehozása
 
-Ez a cikk bemutatja, hogyan hozhat létre egy térkép-alkalmazás, amely a képernyőolvasó használható.
+Ebből a cikkből megtudhatja, hogyan készíthet olyan Térkép-alkalmazást, amelyet képernyőolvasók használhatnak.
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-<iframe height='500' scrolling='no' title='Az elérhető alkalmazások' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>, hogy az elérhető alkalmazás</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Elérhető alkalmazás létrehozása' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg, hogy a toll elérhetővé teszi<a href='https://codepen.io/azuremaps'>@azuremaps</a>-e a Azure Maps () <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>alkalmazást</a> a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-A térkép kisegítő lehetőségeket nyújtó szolgáltatásai az előre összeállított származnak. A felhasználók kaphatnak a billentyűzet használata a térképen. Ha egy képernyőolvasó fut, a térkép értesíti a felhasználót, állapotában módosításait.
-Például felhasználó értesítést kap változások térképen a térkép eltolja vagy nagyítása. A kiinduló térképre figyelőszoftvert, amely további adatokat kell rendelkeznie a képernyőolvasót használók megfelelő szöveges adatokat.
+A Térkép a kisegítő lehetőségekkel előre összeépítve érhető el. A felhasználók a billentyűzettel is megkereshetik a térképet. Ha egy képernyőolvasó fut, a Térkép értesíti a felhasználót, hogy az állapota megváltozik.
+Például a felhasználók értesítést kapnak a Térkép változásairól, amikor a Térkép megpárol vagy kicsinyítve van. Az alaptérképre helyezett további információknak megfelelő szöveges információval kell rendelkezniük a képernyőolvasó felhasználói számára.
 
-Használatával [előugró](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) egyik módja, ennek érdekében. Keresés a fenti példában egy előugró ablak, a szöveges adatokat hozzáadni a térkép a térképre figyelőszoftvert, amely minden PIN-kódot. Használatával a [előugró a](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) [csatolása](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#attach) módszer lehetővé teszi, hogy a vizuális megjelenítése a térképen az előugró ablak nélkül láthatók a képernyőolvasó legyenek az előugró ablak.
+Az [előugró ablak](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) használata az egyik lehetőség ennek a megvalósítására. A fenti keresési példában egy szöveges adatokat tartalmazó felugró ablak jelenik meg a térképen a térképen elhelyezett összes PIN-kódhoz. Az [előugró ablak](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) [csatolási](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#attach) metódusának használatával az előugró ablak látható egy képernyőolvasóban anélkül, hogy az előugró ablak vizuálisan jelenjen meg a térképen.
 
 ## <a name="next-steps"></a>További lépések
 
-További tudnivalók a helyi menü osztály és az ebben a cikkben használt módszerek:
+További információ az előugró osztályról és a cikkben használt módszerekről:
 
 > [!div class="nextstepaction"]
-> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Lakosság](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
-Tekintse meg a további Kódminták:
+További példák a kód megadására:
 
 > [!div class="nextstepaction"]
-> [Znaková stránka-minta](https://aka.ms/AzureMapsSamples)
+> [Kód mintájának lapja](https://aka.ms/AzureMapsSamples)

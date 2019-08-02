@@ -1,6 +1,6 @@
 ---
-title: Aktív georeplikáció – Azure SQL Database |} A Microsoft Docs
-description: Aktív georeplikáció használatával az egyes adatbázisok olvasható másodlagos adatbázis létrehozása az azonos vagy eltérő adatközpontban (régió).
+title: Aktív geo-replikáció – Azure SQL Database | Microsoft Docs
+description: Az aktív földrajzi replikálás használatával az egyes adatbázisokból olvasható másodlagos adatbázisok hozhatók létre ugyanazon vagy más adatközpontban (régió).
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,176 +10,175 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 07/09/2019
-ms.openlocfilehash: 4b525c3cbea600859106062ed34dc6df9622dec5
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 4b1a551ea2dd62d428fee6a7be475472235a3994
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807311"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569616"
 ---
-# <a name="creating-and-using-active-geo-replication"></a>Létrehozásáról és használatáról az aktív georeplikáció
+# <a name="creating-and-using-active-geo-replication"></a>Aktív geo-replikáció létrehozása és használata
 
-Aktív georeplikáció az Azure SQL Database szolgáltatás, amely lehetővé teszi, hogy az egyes adatbázisok olvasható másodlagos adatbázis létrehozása az azonos vagy eltérő adatközpontban (régió) az SQL Database-kiszolgálón.
+Az aktív geo-replikálás Azure SQL Database funkció, amely lehetővé teszi, hogy az azonos vagy eltérő adatközpontban (régióban) található SQL Database-kiszolgálón lévő egyes adatbázisok olvasható másodlagos adatbázisait hozzon létre.
 
 > [!NOTE]
-> Aktív georeplikáció által a felügyelt példány nem támogatott. A földrajzi feladatátvétel felügyelt példányok esetén használja [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md).
+> Felügyelt példány nem támogatja az aktív geo-replikációt. A felügyelt példányok földrajzi feladatátvételéhez használjon [automatikus feladatátvételi csoportokat](sql-database-auto-failover-group.md).
 
-Aktív georeplikáció üzleti folytonossági megoldás, amely lehetővé teszi az alkalmazásnak, hogy az egyes adatbázisok egy regionális katasztrófa vagy a nagyméretű méretezési szolgáltatáskimaradás esetén gyors vészhelyreállítás tervezték. Ha engedélyezve van a georeplikáció, az alkalmazás kezdeményezhet feladatátvételt egy másodlagos adatbázist egy másik Azure-régióban. Legfeljebb négy meghatározhatják az azonos vagy eltérő régiókban támogatottak, és a másodlagos példány hozható létre a csak olvasási hozzáféréssel lekérdezésekhez is használható. A feladatátvétel kell kezdeményeznie manuálisan az alkalmazás vagy a felhasználó. A feladatátvételt követően az új elsődleges rendelkezik egy másik kapcsolat végpontját. Az alábbi ábra egy tipikus konfigurációja aktív georeplikációt használ georedundáns felhőalapú alkalmazások.
+Az aktív földrajzi replikálás olyan üzletmenet-folytonossági megoldás, amely lehetővé teszi, hogy az alkalmazás az egyes adatbázisok gyors vész-helyreállítását regionális katasztrófa vagy nagy léptékű leállás esetén hajtsa végre. Ha a Geo-replikáció engedélyezve van, az alkalmazás feladatátvételt kezdeményezhet egy másik Azure-régióban található másodlagos adatbázisba. Akár négy formátumú másodlagos zónák is támogatott ugyanazon vagy különböző régiókban, és a formátumú másodlagos zónák csak olvasási hozzáférési lekérdezésekhez használható. A feladatátvételt az alkalmazásnak vagy a felhasználónak manuálisan kell kezdeményeznie. A feladatátvételt követően az új elsődleges végpont eltérő kapcsolódási ponttal rendelkezik. Az alábbi ábra egy geo-redundáns felhőalapú alkalmazás tipikus konfigurációját szemlélteti az aktív geo-replikáció használatával.
 
-![Aktív georeplikáció](./media/sql-database-active-geo-replication/geo-replication.png )
+![aktív geo-replikáció](./media/sql-database-active-geo-replication/geo-replication.png )
 
 > [!IMPORTANT]
-> Az SQL Database automatikus feladatátvételi csoportok is támogatja. További információkért lásd: használatával [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md). Aktív georeplikáció által a felügyelt példány belül létrehozott adatbázisok esetében is, nem támogatott. Fontolja meg [feladatátvételi csoportok](sql-database-auto-failover-group.md) felügyelt példányaival.
+> A SQL Database támogatja az automatikus feladatátvételi csoportokat is. További információ: [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md)használata. Emellett az aktív földrajzi replikálás nem támogatott a felügyelt példányon belül létrehozott adatbázisok esetén. Vegye fontolóra a felügyelt példányokkal rendelkező [feladatátvételi csoportok](sql-database-auto-failover-group.md) használatát.
 
-Ha bármilyen okból az elsődleges adatbázis meghibásodik, vagy egyszerűen csak van szüksége, offline állapotba kell helyezni, a másodlagos adatbázisok valamelyik is kezdeményezhető feladatátvétel. Feladatátvétel a másodlagos adatbázisok egyik aktiválásakor összes másodlagos a rendszer automatikusan összekapcsolja az új elsődleges.
+Ha bármilyen okból kifolyólag az elsődleges adatbázis meghibásodik, vagy egyszerűen offline állapotba kell helyezni, a feladatátvételt bármely másodlagos adatbázisba elindíthatja. Ha a feladatátvételt az egyik másodlagos adatbázisra aktiválja, az összes többi formátumú másodlagos zónák automatikusan az új elsődlegeshez lesz kapcsolva.
 
-Replikáció és a egy önálló adatbázis feladatátvételét, vagy egy kiszolgálón vagy az aktív georeplikáció használatával rugalmas készlet adatbázisai is kezelheti. A segítségével teheti meg:
+Az egyes adatbázisok replikálását és feladatátvételét kezelheti egy kiszolgálón vagy egy rugalmas készletben az aktív földrajzi replikálás használatával. Ezt a következőket teheti:
 
 - Az [Azure Portal](sql-database-geo-replication-portal.md)
-- [PowerShell: Önálló adatbázis](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-- [PowerShell: Rugalmas készlet](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-- [Transact-SQL: Önálló adatbázis és rugalmas készlet](/sql/t-sql/statements/alter-database-azure-sql-database)
+- [PowerShell Önálló adatbázis](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+- [PowerShell Rugalmas készlet](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
+- [Transact-SQL: Önálló adatbázis vagy rugalmas készlet](/sql/t-sql/statements/alter-database-azure-sql-database)
 - [REST API: Önálló adatbázis](https://docs.microsoft.com/rest/api/sql/replicationlinks)
 
 
-Aktív georeplikáció kihasználja a [Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) technológia az SQL Server replikálása aszinkron módon véglegesített tranzakciók száma, az elsődleges adatbázison egy másodlagos adatbázis-pillanatkép-elkülönítés használatával. Automatikus feladatátvételi csoportok a csoport szemantikát felett aktív georeplikációt biztosít, de az azonos aszinkrón replikációs mechanizmus használatos. Közben lekérdezhet, a másodlagos adatbázis némileg lehet az elsődleges adatbázis mögött, a másodlagos adatok garantáltan soha többé nem kell a részleges tranzakciók. Régiók közötti redundancia lehetővé teszi az alkalmazások gyorsan helyreállíthatók a teljes adatközpont vagy az egy kínai adatközpont természeti katasztrófa, katasztrofális az emberi hibák vagy rosszindulatú jogszabályok által okozott részei végleges adatvesztést. Az adott helyreállítási Időkorlát adatokat tekinthet meg [üzleti folytonosság – áttekintés](sql-database-business-continuity.md).
+Az aktív geo-replikálás kihasználja SQL Server [mindig](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) technológiáját, hogy aszinkron módon replikálja a véglegesített tranzakciókat az elsődleges adatbázison egy másodlagos adatbázisba a pillanatkép-elkülönítés használatával. Az automatikus feladatátvételi csoportok lehetővé teszik a csoportos szemantika használatát az aktív földrajzi replikáláson, de ugyanazt az aszinkron replikációs módszert használják. Amíg a másodlagos adatbázis egy adott ponton nem lehet az elsődleges adatbázis mögött, a másodlagos adat garantáltan soha nem lesz részleges tranzakció. A régiók közötti redundancia lehetővé teszi az alkalmazások számára, hogy a természeti katasztrófák, a katasztrofális emberi hibák vagy a kártékony tevékenységek által okozott teljes adatközpontok vagy adatközpontok részeinek végleges elvesztésével gyorsan helyreállítsák az alkalmazásokat. Az adott RPO-információk az [üzletmenet folytonosságának áttekintése című témakörben](sql-database-business-continuity.md)találhatók.
 
 > [!NOTE]
-> Ha két régió között hálózati hiba, így újra létrehozza a kapcsolatokat próbálkozni 10 másodpercenként.
+> Ha a két régió között hálózati hiba történik, a kapcsolatok újbóli létrehozásához 10 másodpercenként próbálkozunk.
 > [!IMPORTANT]
-> Garantálja, hogy a kritikus változásokat az elsődleges adatbázis egy másodlagos, a feladatátvétel előtt replikálódnak, kényszerítheti a szinkronizálási annak biztosítására, a replikáció kritikus változások (például jelszó frissítések). A kényszerített szinkronizálási mert blokkolja a hívó szálat mindaddig, amíg minden véglegesített tranzakciók replikálva vannak hatással van a teljesítményre. További információkért lásd: [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). A replikációs késés az elsődleges adatbázis és a geo-secondary figyeléséről lásd: [sys.dm_geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
+> Annak biztosításához, hogy a feladatátvétel előtt a rendszer replikálja az elsődleges adatbázis kritikus módosításait, kényszerítse a szinkronizálást, hogy biztosítsa a kritikus módosítások (például a jelszavak frissítései) replikálását. A kényszerített szinkronizálás hatással van a teljesítményre, mert blokkolja a hívó szálat, amíg az összes véglegesített tranzakció replikálódik. Részletekért lásd: [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). Az elsődleges adatbázis és a Geo-másodlagos közötti replikációs késés figyeléséhez tekintse meg a [sys. DM _geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
 
-Az alábbi ábra példát mutat be egy aktív georeplikáció által beállított, az elsődleges régióban az USA északi középső Régiójában és a másodlagos régióban az USA déli középső Régiója.
+Az alábbi ábra egy olyan aktív geo-replikálási példát mutat be, amely az Egyesült Államok északi középső régiójában, az USA déli középső régiójában, a másodlagos régióban található.
 
-![georeplikációs kapcsolatban](./media/sql-database-active-geo-replication/geo-replication-relationship.png)
+![földrajzi replikálási kapcsolat](./media/sql-database-active-geo-replication/geo-replication-relationship.png)
 
-Mivel a másodlagos adatbázisok olvasható, azokat a csak olvasható munkaterhelésekkel, például jelentéskészítéssel feladatok kiszervezése használható. Ha aktív georeplikációt használ, lehetséges, a másodlagos adatbázis létrehozásához az ugyanabban a régióban, az elsődleges, de nem növeli a katasztrofális hibák az alkalmazás rugalmasságát. Ha automatikus feladatátvételi csoportokat használ, a másodlagos adatbázis mindig létrejön egy másik régióban.
+Mivel a másodlagos adatbázisok olvashatók, használhatók csak olvasható munkaterhelések, például jelentési feladatok kiszervezéséhez. Ha aktív földrajzi replikálást használ, akkor a másodlagos adatbázist ugyanabban a régióban lehet létrehozni az elsődlegesnél, de az alkalmazás nem fokozza a katasztrofális hibák miatti rugalmasságot. Ha automatikus feladatátvételi csoportokat használ, a másodlagos adatbázist a rendszer mindig egy másik régióban hozza létre.
 
-Mellett vész helyreállítási aktív georeplikáció a következő esetekben használhatók:
+A vész-helyreállítási aktív földrajzi replikáción kívül a következő esetekben is használhatók:
 
-- **Adatbázis-migrálási**: Aktív georeplikáció használatával adatbázis áttelepítése az egyik kiszolgálóról a másikra online, minimális állásidővel.
-- **Alkalmazásfrissítések**: Létrehozhat egy extra másodlagos sikertelen vissza másolatként alkalmazásfrissítések során.
+- **Adatbázis migrálása**: Az aktív geo-replikálás használatával áttelepíthet egy adatbázist az egyik kiszolgálóról a másikra minimális állásidővel.
+- **Alkalmazások frissítése**: Az alkalmazások frissítése során további másodlagosként is létrehozhat egy feladat-visszavételi másolatot.
 
-Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia adatközpontok között csak a megoldás része. Egy alkalmazás (szolgáltatás) – teljes körű helyreállítása, végzetes hiba van szükség a szolgáltatást alkotó összetevők és minden függő szolgáltatás helyreállítás után. Ezen összetevők közé tartoznak az ügyfélszoftver (például egy egyéni JavaScript böngésző), a webes előtérrendszerek, a storage és a DNS. Rendkívül fontos, hogy az összes összetevő ellenálljanak a azonos hibákat, és a helyreállítási idő célértéke (RTO) az alkalmazás belül elérhetővé válnak. Ezért kell azonosítsa az összes függő szolgáltatást, és megismerheti a garanciák és képességeket biztosítanak. Ezt követően végre kell hajtania megfelelő lépéseket annak érdekében, hogy a szolgáltatások, amelytől a feladatátvétel során a szolgáltatás függvények. Vész-helyreállítási megoldások tervezésével kapcsolatos további információkért lásd: [felhőalapú megoldások tervezéséhez a vész-helyreállítási használatával aktív georeplikáció](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
+A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti adatbázis-redundancia csak a megoldás része. Egy alkalmazás (szolgáltatás) teljes körű helyreállítása végzetes hiba után a szolgáltatást és a függő szolgáltatásokat alkotó összes összetevő helyreállítását igényli. Ezen összetevők közé tartoznak például az ügyfélszoftverek (például egy egyéni JavaScripttel rendelkező böngésző), a webes kezelőfelületek, a tárterület és a DNS. Kritikus fontosságú, hogy minden összetevő azonos hibákra legyen rugalmas, és az alkalmazás helyreállítási idő célkitűzésén (RTO) belül elérhetővé váljon. Ezért az összes függő szolgáltatást azonosítania kell, és ismernie kell az általuk nyújtott garanciákat és képességeket. Ezt követően meg kell tennie a megfelelő lépéseket annak biztosításához, hogy a szolgáltatás a szolgáltatások feladatátvétele alatt működjön, amelytől függ. A megoldásoknak a vész-helyreállításhoz való kialakításával kapcsolatos további információkért lásd: [felhőalapú megoldások tervezése a vész-helyreállításhoz az aktív földrajzi replikálás használatával](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
 
-## <a name="active-geo-replication-terminology-and-capabilities"></a>Aktív georeplikáció terminológia és képességek
+## <a name="active-geo-replication-terminology-and-capabilities"></a>Aktív geo-replikációs terminológia és képességek
 
-- **Az automatikus aszinkron replikáció**
+- **Automatikus aszinkron replikáció**
 
-  Létrehozhat egy másodlagos adatbázis csak meglévő adatbázis hozzáadásával. Minden Azure SQL Database Server a másodlagos hozható létre. Létrehozása után megjelenik a másodlagos adatbázis az adatokat másolja az elsődleges adatbázisból. Ez a folyamat van áttöltésként is ismert. Miután létrehozott és áttöltésekor másodlagos adatbázis, az elsődleges adatbázis frissítések aszinkron módon replikált a másodlagos adatbázis automatikusan. Aszinkron replikáció azt jelenti, hogy tranzakció véglegesítve az elsődleges adatbázison, mielőtt azok replikálódnak a másodlagos adatbázis.
+  Létrehozhat egy másodlagos adatbázist egy meglévő adatbázis hozzáadásával. A másodlagos a Azure SQL Database-kiszolgálókon is létrehozható. A létrehozást követően a másodlagos adatbázis az elsődleges adatbázisból másolt adatokkal lesz feltöltve. Ez a folyamat más néven kivetés. A másodlagos adatbázis létrehozása és összevetése után a rendszer automatikusan replikálja az elsődleges adatbázis frissítéseit a másodlagos adatbázisba. Az aszinkron replikáció azt jelenti, hogy a tranzakciók véglegesítése az elsődleges adatbázison történik, mielőtt a rendszer replikálja őket a másodlagos adatbázisba.
 
-- **Olvasható másodlagos adatbázis**
+- **Olvasható másodlagos adatbázisok**
 
-  Az alkalmazás hozzáférhet egy másodlagos adatbázis csak olvasható műveletekhez az elsődleges adatbázis eléréséhez használt azonos vagy eltérő rendszerbiztonsági használatával. A másodlagos adatbázisok annak érdekében, hogy a frissítések az elsődleges (napló visszajátszását) replikációs nem késnek-e a másodlagos végrehajtott lekérdezések snapshot elkülönítési módban működik.
+  Egy alkalmazás az elsődleges adatbázishoz való hozzáféréshez használt azonos vagy eltérő rendszerbiztonsági tag használatával tud hozzáférni egy másodlagos adatbázishoz az írásvédett műveletekhez. A másodlagos adatbázisok pillanatkép-elkülönítési módban működnek, így biztosítva, hogy az elsődleges (log replay) frissítések replikálása ne legyen késleltetve a másodlagos lekérdezésekben.
 
 > [!NOTE]
-> A napló visszajátszását a másodlagos adatbázis késik, ha az elsődleges sémafrissítések. Az utóbbi séma zárolva van a másodlagos adatbázis szükséges.
+> A napló újrajátszása késleltetve van a másodlagos adatbázisban, ha az elsődlegesen vannak séma-frissítések. Az utóbbihoz a másodlagos adatbázis sémájának zárolása szükséges.
 > [!IMPORTANT]
-> Használhatja a georeplikáció másodlagos adatbázis létrehozásához az elsődleges ugyanabban a régióban. Terheléselosztás egy írásvédett számítási feladatokat a másodlagos ugyanabban a régióban is használhatja. Azonban egy másodlagos adatbázist ugyanabban a régióban nem biztosít a hibatűrés rugalmasság, ezért nem vész-helyreállítási megfelelő feladatátvételi célnak. Azt is nem garantálja a avaialability zóna elkülönítés. Üzletileg kritikus vagy a prémium szolgáltatásszinten [zóna redundáns konfigurációs](sql-database-high-availability.md#zone-redundant-configuration) avaialability zóna egységekre bonthatja.   
+> A Geo-replikálás használatával létrehozhat egy másodlagos adatbázist ugyanabban a régióban, ahol az elsődleges. Ezt a másodlagost használhatja a csak olvasási feladatok terheléselosztásához ugyanabban a régióban. Az ugyanabban a régióban található másodlagos adatbázisok azonban nem biztosítanak további hibatűrési rugalmasságot, ezért nem megfelelő feladatátvételi cél a vész-helyreállításhoz. Emellett nem garantálja a avaialability zónák elkülönítését. A avaialability zónák elkülönítéséhez használja az üzleti szempontból kritikus vagy prémium szintű szolgáltatási szintet a [zóna redundáns konfigurációjával](sql-database-high-availability.md#zone-redundant-configuration) .   
 >
 
 - **Tervezett feladatátvétel**
 
-  Tervezett feladatátvétel kapcsolók az elsődleges és másodlagos adatbázisok a szerepköröket, a teljes szinkronizálás befejeződése után. Egy online művelet, amely az adatvesztést eredményez. A művelet az idő az elsődleges, amely szinkronizálni kell a tranzakciós napló méretétől függ. Tervezett feladatátvétel célja a következő forgatókönyvekhez: – hajtsa végre a DR működéseinek éles környezetben ha az adatok elvesztése nem elfogadható; (b), helyezze át az adatbázist egy másik régióban; és (c) adja vissza az adatbázist az elsődleges régió felé, a szolgáltatáskiesés megszüntetése után (feladat-visszavétel).
+  A tervezett feladatátvétel az elsődleges és a másodlagos adatbázisok szerepköreit a teljes szinkronizálás befejeződése után váltja át. Ez egy online művelet, amely nem eredményez adatvesztést. A művelet időpontja a szinkronizálni kívánt elsődleges tranzakciós napló méretétől függ. A tervezett feladatátvételt a következő esetekben tervezték meg: (a) a DR működés közbeni működéséhez, ha az adatvesztés nem fogadható el; (b) az adatbázis másik régióba való áthelyezéséhez; és (c) az adatbázis visszaadása az elsődleges régióba a leállás csökkentése után (feladat-visszavétel).
 
 - **Nem tervezett feladatátvétel**
 
-  Nem tervezett vagy a kényszerített feladatátvétel közvetlenül a másodlagos vált, amennyiben az elsődleges szerepkör minden olyan elsődleges-szinkronizálás nélkül. Tranzakciók véglegesítése az elsődleges, de nem replikálja a másodlagos el fog veszni. Ez a művelet célja egy helyreállítási módszerként leállások idején az elsődleges nem érhető el, de az adatbázis-elérhetőségi gyorsan kell helyreállítani. Ha az eredeti elsődleges újra online állapotba kerül, automatikusan újból csatlakozni és egy új másodlagos lesz. A feladatátvétel előtt az összes nem szinkronizált tranzakciók megőrzi a biztonságimásolat-fájlt, de nem lesznek szinkronizálva az ütközések elkerülése érdekében az új elsődleges. Ezek a tranzakciók kell manuálisan egyesíthető a fő adatbázis az alkalmazás legújabb verziójára.
+  A nem tervezett vagy kényszerített feladatátvétel azonnal átváltja a másodlagost az elsődleges szerepkörre anélkül, hogy szinkronizálnia kellene az elsődlegesével. Az elsődleges, de a másodlagosra nem replikált tranzakciók elvesznek. A művelet a leállás során helyreállítási módszerként van kialakítva, ha az elsődleges nem érhető el, de az adatbázis rendelkezésre állását gyorsan vissza kell állítani. Amikor az eredeti elsődleges újra online állapotba kerül, automatikusan újrakapcsolódik, és új másodlagos lesz. A rendszer a feladatátvétel előtt minden nem szinkronizált tranzakciót megtart a biztonságimásolat-fájlban, de az ütközések elkerülése érdekében nem szinkronizálja az új elsődleges művelettel. Ezeket a tranzakciókat manuálisan kell egyesíteni az elsődleges adatbázis legújabb verziójával.
  
-- **Több olvasható másodlagos példánnyal**
+- **Több olvasható formátumú másodlagos zónák**
 
-  Minden elsődleges legfeljebb 4 másodlagos adatbázis hozható létre. Ha csak egy másodlagos adatbázist, és ez nem sikerül, az alkalmazás van kitéve nagyobb eséllyel addig, amíg létrejön egy új másodlagos adatbázis. Ha több másodlagos adatbázis létezik, az alkalmazás akkor is védett akkor is, ha egy másodlagos adatbázis nem sikerül. A további másodlagos példány hozható létre is használható a horizontális felskálázás a csak olvasható számítási feladatokhoz
+  Akár 4 másodlagos adatbázis is létrehozható az egyes elsődlegesekhez. Ha csak egy másodlagos adatbázis van, és az nem sikerül, az alkalmazás nagyobb kockázatnak van kitéve, amíg új másodlagos adatbázist nem hoznak létre. Ha több másodlagos adatbázis létezik, az alkalmazás akkor is védve marad, ha a másodlagos adatbázisok egyike meghibásodik. A további formátumú másodlagos zónák a csak olvasási feladatok felskálázására is felhasználhatók
 
   > [!NOTE]
-  > Ha egy globálisan elosztott alkalmazás létrehozása, és meg kell adnia a csak olvasási hozzáféréssel az adatok több mint négy régióban aktív georeplikációt használ, másodlagos, egy másodlagos (láncolási néven ismert folyamat) hozhat létre. Ily módon érheti el adatbázis-replikáció gyakorlatilag korlátlan méretezhetőségét. Emellett láncolási csökkenti a replikáció az elsődleges adatbázisból. Kompromisszumot kötni a rendszer a megnövekedett replikációs késés a levél – a legtöbb másodlagos adatbázisokon.
+  > Ha aktív geo-replikálást használ egy globálisan elosztott alkalmazás létrehozásához, és csak olvasási hozzáférést kell biztosítania a négynél több régióban található adatmennyiséghez, másodlagos másodlagos (azaz láncolási folyamat) létrehozását is létrehozhatja. Így gyakorlatilag korlátlan számú adatbázis-replikáció valósítható meg. Emellett a láncolás csökkenti az elsődleges adatbázis replikációjának terhelését is. A kikapcsolás a levelek és a legfelső szintű adatbázisok megnövekedett replikálási késése.
 
-- **A rugalmas készletben található adatbázisok georeplikáció**
+- **Adatbázisok földrajzi replikálása rugalmas készletben**
 
-  Minden másodlagos adatbázis külön-külön részt venni a rugalmas készlet vagy egyáltalán nem tudja bármilyen rugalmas készletben is. A készlet minden egyes másodlagos adatbázis választás külön, és nem függ semmilyen más másodlagos konfigurációjának adatbázis-(akár a elsődleges vagy másodlagos). Minden rugalmas készletet szerepel egy adott régión belül, így az azonos topológia több másodlagos adatbázis soha nem oszthatnak meg a rugalmas készlet.
+  Minden másodlagos adatbázis külön részt vehet egy rugalmas készletben, vagy egyáltalán nem lehet rugalmas készletben. Az egyes másodlagos adatbázisok készletének kiválasztása különálló, és nem függ más másodlagos adatbázisok konfigurációjától (elsődleges vagy másodlagos). Az egyes rugalmas készletek egyetlen régióban találhatók, ezért az azonos topológiában található több másodlagos adatbázis soha nem oszthat meg rugalmas készletet.
 
 
-- **Felhasználó általi feladatátvétel és feladat-visszavétel**
+- **Felhasználó által vezérelt feladatátvétel és feladat-visszavétel**
 
-  Egy másodlagos adatbázis explicit módon lehessen kapcsolni az elsődleges szerepre bármikor az alkalmazás vagy a felhasználó. Egy valódi kimaradás során az "tervezett" kell beállítással, amely azonnal elősegíti a másodlagos kell az elsődleges. A sikertelen elsődleges állítja helyre, és megint elérhetővé válik, amikor a rendszer automatikusan jelöli meg a helyreállított elsődleges, másodlagos, és naprakészen tartása az új elsődleges állapotba. Replikáció aszinkron jellege miatt kisebb mennyiségű adatot elvesznek, nem tervezett feladatátvételek során ha elsődleges meghibásodik, a legutóbbi módosítások a másodlagos replikálás előtt. Több másodlagos helyekkel elsődleges átadja a feladatokat, amikor a rendszer automatikusan újrakonfigurálja a replikációs kapcsolatok, és hivatkozásokat tartalmaz a fennmaradó másodlagos példány hozható létre az újonnan előléptetett elsődleges felhasználói beavatkozás nélkül. A szolgáltatáskimaradás, amely miatt a feladatátvétel után, az alkalmazás az elsődleges régióba visszaadandó kívánatos lehet. Ehhez a feladatátvétel parancs a "tervezett" lehetőséggel lehet meghívni.
+  Egy másodlagos adatbázis az alkalmazás vagy a felhasználó által bármikor átváltható az elsődleges szerepkörre. Valós leállás esetén a "nem tervezett" beállítást kell használni, amely azonnal előlépteti a másodlagosat elsődlegesként. Ha a sikertelen elsődleges helyreállítások újra elérhetővé válnak, a rendszer automatikusan másodlagosként jelöli meg a helyreállított elsődlegest, és az új elsődleges értékkel állítja be azt. A replikáció aszinkron jellege miatt a nem tervezett feladatátvételek során a rendszer kis mennyiségű adatvesztést okozhat, ha az elsődleges meghibásodás előtt a legutóbbi módosítások replikálódnak a másodlagosra. Ha a több formátumú másodlagos zónák rendelkező elsődleges művelet feladatátvételt végez, a rendszer automatikusan újrakonfigurálja a replikálási kapcsolatokat, és a fennmaradó formátumú másodlagos zónák az újonnan előléptetett elsődleges értékre kapcsolja anélkül, hogy felhasználói beavatkozásra lenne szükség. A feladatátvételt okozó leállás után érdemes lehet az alkalmazást az elsődleges régióba visszaállítani. Ehhez a feladatátvételi parancsot a "tervezett" beállítással kell meghívni.
 
-## <a name="preparing-secondary-database-for-failover"></a>Másodlagos adatbázis feladatátvétel előkészítése
+## <a name="preparing-secondary-database-for-failover"></a>Másodlagos adatbázis előkészítése feladatátvételhez
 
-Győződjön meg arról, hogy az alkalmazás a feladatátvétel után azonnal hozzáférhet az új elsődleges, győződjön meg, hogy a hitelesítési követelmények, a másodlagos kiszolgáló és az adatbázis megfelelően legyenek konfigurálva. További információkért lásd: [vész-helyreállítása után az SQL Database biztonsági](sql-database-geo-replication-security-config.md). Garantáljuk a feladatátvételt követően megfelelőségi, győződjön meg róla, hogy a másodlagos adatbázis biztonságimásolat-megőrzési házirend megegyezik az elsődleges. Ezek a beállítások nem részei az adatbázist, és nem lesznek replikálva. Alapértelmezés szerint hét nap alapértelmezés PITR a megőrzési idővel a másodlagos fog konfigurálni. További információkért lásd: [SQL-adatbázis automatikus biztonsági mentések](sql-database-automated-backups.md).
+Annak biztosítása érdekében, hogy az alkalmazás azonnal hozzáférhessen az új elsődleges feladatátvételhez, ellenőrizze, hogy a másodlagos kiszolgáló és az adatbázis hitelesítési követelményei megfelelően vannak-e konfigurálva. Részletekért lásd: [SQL Database biztonság a katasztrófa utáni helyreállítás után](sql-database-geo-replication-security-config.md). A megfelelőség biztosítása érdekében a feladatátvételt követően ellenőrizze, hogy a másodlagos adatbázis biztonsági mentési adatmegőrzési szabályzata megegyezik-e az elsődleges értékkel. Ezek a beállítások nem részei az adatbázisnak, és nem replikálódnak. Alapértelmezés szerint a másodlagos beállítás a hét nap alapértelmezett PITR megőrzési időtartamával lesz konfigurálva. Részletekért lásd: [SQL Database automatikus biztonsági mentések](sql-database-automated-backups.md).
 
 ## <a name="configuring-secondary-database"></a>Másodlagos adatbázis konfigurálása
 
-Elsődleges és másodlagos adatbázisok ugyanazon a szolgáltatásszinten van szüksége. A másodlagos adatbázis jön létre a számítási mérete (dtu-k vagy virtuális magok) megegyezik az elsődleges is erősen ajánlott. Ha az elsődleges adatbázis egy nagy írási számítási feladatok tapasztalja, alacsonyabb számítási méretű másodlagos nem lehet tudják azt tartani. Az ismétlés lag a másodlagos és potenciális elérhetetlenné fog okozni. A másodlagos adatbázis esetében, amely az elsődleges adatbázishoz képest késik, szintén felmerülhet a nagy adatvesztés kockázata, és kényszerített feladatátvételre lehet szükség. Kockázatok csökkentése érdekében hatékony aktív georeplikációt, hogy a másodlagos példány hozható létre, hogy értesülhessen az elsődleges naplófájl arány fog szabályozás. Az egyéb következményei egy imbalanced másodlagos konfigurációs, hogy a feladatátvételt követően az alkalmazás teljesítmény romlani fog az új elsődleges elegendő számítási kapacitás miatt. A szükséges szintre, és nem lesz lehetséges mindaddig, amíg a szolgáltatáskimaradás elhárítása után teljesítményköltségeket csökkenti egy újabb számítási frissítése szükséges lesz. 
+Mind az elsődleges, mind a másodlagos adatbázisnak azonos szolgáltatási szinten kell lennie. Javasoljuk továbbá, hogy a másodlagos adatbázist ugyanazzal a számítási mérettel (DTU vagy virtuális mag) hozza létre, mint az elsődlegesként. Ha az elsődleges adatbázis nagy mennyiségű írási feladatot észlel, akkor előfordulhat, hogy az alacsonyabb számítási mérettel rendelkező másodlagos nem tud lépést tartani. Ennek hatására az ismételt késés a másodlagos és lehetséges elérhetetlenség miatt nem lesz elérhető. A másodlagos adatbázis esetében, amely az elsődleges adatbázishoz képest késik, szintén felmerülhet a nagy adatvesztés kockázata, és kényszerített feladatátvételre lehet szükség. A kockázatok enyhítése érdekében a hatékony aktív földrajzi replikálás az elsődleges napló sebességét fogja szabályozni, hogy a formátumú másodlagos zónák felkerüljön. Egy kiegyensúlyozatlan másodlagos konfiguráció másik következménye, hogy a feladatátvételt követően az alkalmazás teljesítménye az új elsődleges számítási kapacitás hiánya miatt fog szenvedni. A szükséges szintre kell frissíteni a magasabb számítási kapacitást, amely a leállás mérséklése előtt nem lesz lehetséges. 
 
 
 > [!IMPORTANT]
-> A közzétett RPO = 5 mp nem garantálható, kivéve, ha a másodlagos adatbázis legyen konfigurálva a számítási mérete megegyezik az elsődleges. 
+> A közzétett RPO = 5 MP nem garantálható, ha a másodlagos adatbázis ugyanazzal a számítási mérettel van konfigurálva, mint az elsődleges. 
 
 
-Ha úgy dönt, hogy a másodlagos létrehozása a kisebb számítási mérete, a napló i/o százalékos diagramra az Azure portal nyújt egy jó módszer a szükséges ahhoz, hogy a replikáció terhelés fenntartása másodlagos minimális számítási mérete. Például, ha az elsődleges adatbázis P6 (1000 DTU), és i/o-százalék naplót a másodlagos kell lennie legalább 50 %-a P4 (500 DTU). Is lekérhet használatával i/o-naplóadatok [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) vagy [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) adatbázis-nézeteket.  A szabályozás jelentett a HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO várakozási állapot a [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) és [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) adatbázis-nézeteket. 
+Ha úgy dönt, hogy az alacsonyabb számítási mérettel hozza létre a másodlagos értéket, a log IO százalékos diagramja Azure Portal jó módszert kínál a replikálási terhelés fenntartásához szükséges másodlagos minimális számítási méret becslésére. Ha például az elsődleges adatbázisa P6 (1000 DTU), és a log IO százalék értéke 50%, a másodlagosnak legalább P4 (500 DTU) értékkel kell rendelkeznie. A log IO-adatai a [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) vagy a [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) adatbázis-nézetek használatával is lekérhető.  A szabályozás HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO várakozási állapotként van jelenteni a [sys. DM _exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) és a [sys. DM _os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) adatbázis-nézeteiben. 
 
-Az SQL-adatbázis számítási méretek további információkért lásd: [Mik az SQL Database szolgáltatási szinteken](sql-database-purchase-models.md).
+A SQL Database számítási méretekkel kapcsolatos további információkért lásd: [Mi a SQL Database szolgáltatási szintek](sql-database-purchase-models.md).
 
-## <a name="keeping-credentials-and-firewall-rules-in-sync"></a>Hitelesítő adatok és -tűzfalszabályok szinkronban tartása
+## <a name="keeping-credentials-and-firewall-rules-in-sync"></a>A hitelesítő adatok és a tűzfalszabályok szinkronizálásának megtartása
 
-Azt javasoljuk, [adatbázisszintű IP-tűzfalszabályainak](sql-database-firewall-configure.md) adatbázisok georeplikált, így ezek a szabályok az összes másodlagos adatbázis legyen azonos IP-tűzfalszabályainak elsődlegesként Database lehet replikálni. Ezzel a módszerrel nem kell az ügyfelek manuális konfigurálása és karbantartása, mind az elsődleges és másodlagos adatbázisok üzemeltetési kiszolgáló tűzfalszabályait. Ehhez hasonlóan használatával [tartalmazott adatbázis felhasználóit](sql-database-manage-logins.md) adatok hozzáférés biztosítja, mind az elsődleges, mind a másodlagos adatbázisok mindig azonos felhasználói hitelesítő adatokat, így a feladatátvétel során a nem a felhasználónevek és jelszavak eltérések miatt szolgáltatások. Igény szerinti hozzáadásával [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), ügyfelek kezelhetik a felhasználói hozzáférést az elsődleges és másodlagos adatbázisok, és szükségtelenné teszik a kezeléséhez hitelesítő adatait érvényesítette adatbázisokban.
+Javasoljuk, hogy az [adatbázis-szintű IP-tűzfalszabályok](sql-database-firewall-configure.md) használatával geo-alapú adatbázisokat használjon, így ezek a szabályok replikálhatók az adatbázissal annak biztosítása érdekében, hogy az összes másodlagos adatbázis azonos IP-tűzfalszabályok legyenek az elsődlegesek. Ez a megközelítés szükségtelenné teszi az ügyfelek számára a tűzfalszabályok manuális konfigurálását és karbantartását az elsődleges és másodlagos adatbázisokat üzemeltető kiszolgálókon. Hasonlóképpen, a [tárolt adatbázis-felhasználók](sql-database-manage-logins.md) adathozzáféréshez való használata biztosítja, hogy az elsődleges és a másodlagos adatbázisok mindig ugyanazzal a felhasználói hitelesítő adatokkal rendelkezzenek, ezért a feladatátvétel során a bejelentkezések és a jelszavak nem egyeznek. [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)hozzáadásával az ügyfelek az elsődleges és a másodlagos adatbázisokhoz is kezelhetik a felhasználói hozzáférést, így nem kell a hitelesítő adatoknak az adatbázisokban való kezelését.
 
-## <a name="upgrading-or-downgrading-primary-database"></a>A frissítés, vagy alacsonyabb verziójúra változtatása az elsődleges adatbázis
+## <a name="upgrading-or-downgrading-primary-database"></a>Elsődleges adatbázis frissítése vagy visszaminősítése
 
-Frissítés vagy Visszaléptetés a különböző számítási méret (belül ugyanazon a szolgáltatásszinten, nem az általános célú és a kritikus fontosságú üzleti között) az elsődleges adatbázis bármely másodlagos adatbázisok leválasztása nélkül is. Amikor frissít, javasoljuk, hogy először frissítse a másodlagos adatbázist, és utána frissítse az elsődleges. Ha alacsonyabb szolgáltatásszintre, fordított sorrendben: először alacsonyabbra az elsődleges, majd a gyűjteményt majd a másodlagos. Frissítésekor vagy eltérő szolgáltatási réteg az adatbázisról, a javaslat lép érvénybe.
+A másodlagos adatbázisok leválasztása nélkül frissítheti vagy visszaminősítheti az elsődleges adatbázist más számítási méretre (ugyanazon a szolgáltatási szinten belül, általános célú és üzletileg kritikus között). A frissítéskor javasoljuk, hogy először frissítse a másodlagos adatbázist, majd frissítse az elsődlegest. Ha a rendszer visszaminősíti a visszalépést, a sorrend megfordításakor a rendszer visszaminősíti az elsődlegest, majd lecseréli a másodlagost. Ha az adatbázist egy másik szolgáltatási szintre frissíti vagy visszaminősíti, ez a javaslat érvénybe lép.
 
 > [!NOTE]
-> Ha másodlagos adatbázis nem javasoljuk, hogy a másodlagos adatbázisról, a feladatátvételi csoport konfigurációjának részeként hozta létre. Ez azért szükséges az adatszint rendelkezzen elegendő kapacitással a normál számítási feladatok feldolgozásához a feladatátvétel aktiválása után.
+> Ha a másodlagos adatbázist a feladatátvételi csoport konfigurációjának részeként hozta létre, a másodlagos adatbázis visszalépéséhez nem ajánlott. Ezzel biztosíthatja, hogy az adatmennyiség elegendő kapacitással legyen feldolgozva a rendszeres számítási feladatok elvégzése után a feladatátvétel aktiválása után.
 
 > [!IMPORTANT]
-> Az elsődleges adatbázis egy feladatátvételi csoportot a magasabb szintre nem méretezhető, kivéve, ha a másodlagos adatbázis először van méretezve, hogy a magasabb szintű csomagra. Ha az elsődleges adatbázis méretezését, mielőtt a másodlagos adatbázis méretezése, a következő hiba jelenhet meg:
+> A feladatátvételi csoportban lévő elsődleges adatbázis nem méretezhető magasabb szintűre, kivéve, ha a másodlagos adatbázist először a magasabb szintűre méretezi. Ha az elsődleges adatbázist a másodlagos adatbázis skálázása előtt próbálja meg méretezni, a következő hibaüzenet jelenhet meg:
 >
 > `Error message: The source database 'Primaryserver.DBName' cannot have higher edition than the target database 'Secondaryserver.DBName'. Upgrade the edition on the target before upgrading the source.`
 >
 
-## <a name="preventing-the-loss-of-critical-data"></a>Megakadályozza a fontos adatok elvesztését
+## <a name="preventing-the-loss-of-critical-data"></a>A kritikus fontosságú adatmennyiség elvesztésének megakadályozása
 
-A nagy kiterjedésű hálózaton magas késést, mert a folyamatos másolás használ egy aszinkrón replikációs mechanizmus. Az aszinkron replikáció révén kis mértékű adatvesztést elkerülhetetlen, ha hiba történik. Egyes alkalmazások azonban szükség lehet adatvesztés nélkül. Ezek a kritikus frissítések védelme érdekében a alkalmazásfejlesztő meghívhatja a [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) közvetlenül a tranzakció véglegesítése után a rendszer eljárást. Hívó **sp_wait_for_database_copy_sync** blokkolja a hívó szálat, amíg a másodlagos adatbázisra továbbítva lett az utolsó véglegesített tranzakció. Azt azonban nem vár a továbbított játssza vissza és a másodlagos véglegesített tranzakciók. **az sp_wait_for_database_copy_sync** hivatkozás egy adott folyamatos másolása hatókörét. A kapcsolódási jogok az elsődleges adatbázissal rendelkező bármelyik felhasználó meghívhatja ezt az eljárást.
-
-> [!NOTE]
-> **az sp_wait_for_database_copy_sync** megakadályozza az adatvesztést a feladatátvételt követően, de nem garantálja a teljes szinkronizálás olvasási hozzáféréssel. A késleltetés által okozott egy **sp_wait_for_database_copy_sync** eljáráshívási is lehet, és a hívás idején a tranzakciós napló méretétől függ.
-
-## <a name="monitoring-geo-replication-lag"></a>Georeplikáció lag figyelése
-
-RPO megállapodást lag monitorozásához használja *replication_lag_sec* oszlopa [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) az elsődleges adatbázison. Késés másodpercben között a tranzakciókat az elsődleges véglegesítve és rögzítve a másodlagos jeleníti meg. Például a lag értéke 1 másodperc, ha az azt jelenti, ha az elsődleges kihatással van a kimaradások jelen pillanatban és a feladatátvétel indításáig, 1 másodperc, a legutóbbi átmenetek nem lesznek mentve. 
-
-Alkalmazása megtörtént-e a másodlagos, azaz elérhető olvasni a másodlagos módosításokat az elsődleges adatbázison megállapodást lag mérésére összehasonlítása *last_commit* ugyanazt az értéket az elsődleges és a másodlagos adatbázis idő az adatbázis.
+A nagyméretű hálózatok nagy késése miatt a folyamatos másolás aszinkron replikációs mechanizmust használ. Az aszinkron replikáció során az adatvesztés elkerülhető, ha hiba történik. Előfordulhat azonban, hogy egyes alkalmazások nem igényelnek adatvesztést. A kritikus frissítések elleni védelem érdekében az alkalmazás fejlesztői a tranzakció véglegesítése után azonnal meghívhatják a [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) rendszereljárást. A **sp_wait_for_database_copy_sync** meghívásával a rendszer addig blokkolja a hívó szálat, amíg az utolsó véglegesített tranzakció át nem lett továbbítva a másodlagos adatbázisba. Azonban nem várja meg, amíg a továbbított tranzakciók újra le lesznek játszva és véglegesítve lettek a másodlagoson. a **sp_wait_for_database_copy_sync** hatóköre egy adott folytonos másolási hivatkozásra terjed ki. Minden olyan felhasználó, aki az elsődleges adatbázishoz kapcsolódási jogokkal rendelkezik, meghívhatja ezt az eljárást.
 
 > [!NOTE]
-> Néha *replication_lag_sec* az elsődleges adatbázis rendelkezik a NULL értéket, ami azt jelenti, hogy az elsődleges jelenleg nem ismeri a másodlagos illesztésnek van.   Ez általában akkor fordul elő folyamat újraindítását követően, miután kell hogy csupán átmeneti állapotról. Fontolja meg az alkalmazás riasztás, ha a *replication_lag_sec* hosszabb ideig NULL értéket ad vissza. Azt jelzi, hogy a másodlagos adatbázis nem tud kommunikálni az elsődleges állandó csatlakozási hiba miatt. Még nincsenek feltételek, amelyek a különbség a között *last_commit* idő, a másodlagos és az elsődleges adatbázison az nagyok. Például egy véglegesítés az elsődleges módosítása nélkül hosszú idő után történik, ha a különbség az útmutató a nagy érték legfeljebb gyorsan visszatér a 0. Vegye figyelembe, hibát amikor hosszú ideje nagy marad ezen két érték különbsége.
+> a **sp_wait_for_database_copy_sync** megakadályozza az adatvesztést a feladatátvétel után, de nem garantálja a teljes szinkronizálást az olvasási hozzáféréshez. A **sp_wait_for_database_copy_sync** eljárás hívása által okozott késleltetés jelentős lehet, és a tranzakciós napló méretétől függ a hívás időpontjában.
+
+## <a name="monitoring-geo-replication-lag"></a>Földrajzi replikációs késés figyelése
+
+A RPO vonatkozó késés figyeléséhez használja a [sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) *replication_lag_sec* oszlopát az elsődleges adatbázison. Másodpercek alatt az elsődleges és a másodlagoson megőrzött tranzakciók közötti késést jeleníti meg. Például Ha a késés értéke 1 másodperc, akkor az azt jelenti, hogy ha az elsődlegest egy kimaradás okozta, és a feladatátvételt kezdeményezték, a legutóbbi átmenetek közül 1 másodperc nem lesz mentve. 
+
+Annak érdekében, hogy az elsődleges adatbázison végrehajtott, a másodlagosnál alkalmazott változásokkal kapcsolatos késés mértékét, azaz a másodlagosról való olvasásra elérhető legyen, hasonlítsa össze a másodlagos adatbázis *last_commit* idejét ugyanazzal az értékkel az elsődleges adatbázison.
+
+> [!NOTE]
+> Előfordulhat, hogy az elsődleges adatbázis *replication_lag_sec* értéke null, ami azt jelenti, hogy az elsődleges nem tudja, hogy meddig tart a másodlagos.   Ez általában a folyamat újraindítása után történik, és átmeneti feltételnek kell lennie. Vegye fontolóra az alkalmazás riasztását, ha a *replication_lag_sec* hosszabb ideig null értéket ad vissza. Ez azt jelzi, hogy a másodlagos adatbázis nem tud kommunikálni az elsődlegesvel állandó csatlakozási hiba miatt. Olyan feltételek is fennállnak, amelyek a másodlagos és az elsődleges adatbázis *last_commit* ideje közötti különbséget okozhatják. Például Ha az elsődleges végrehajtás hosszú időn belül nem változik, a különbség egy nagy értékre ugrik, mielőtt a rendszer gyorsan visszatér 0-ra. Vegye figyelembe, hogy a hiba feltétele, ha a két érték közötti különbség hosszú ideig nagy marad.
 
 
-## <a name="programmatically-managing-active-geo-replication"></a>Aktív georeplikáció szoftveres kezelése
+## <a name="programmatically-managing-active-geo-replication"></a>Az aktív földrajzi replikáció programozott kezelése
 
-Korábban említett aktív georeplikáció is kezelhetők programozott módon az Azure PowerShell és a REST API használatával. Az alábbi táblázatok ismertetik az elérhető parancsok. Aktív georeplikáció tartalmaz egy, az Azure Resource Manager API-k Management, beleértve a [Azure SQL Database REST API-t](https://docs.microsoft.com/rest/api/sql/) és [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview). Ezekkel az API-erőforráscsoportok használatát, és támogatja a szerepköralapú biztonság (RBAC). Szerepkörök hozzáférést megvalósításával további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
+Amint azt korábban már említettük, az aktív geo-replikáció programozott módon felügyelhető Azure PowerShell és a REST API használatával is. A következő táblázatok ismertetik az elérhető parancsok készletét. Az aktív geo-replikálás Azure Resource Manager API-kat tartalmaz a felügyelethez, beleértve a [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) és [Azure PowerShell parancsmagokat](https://docs.microsoft.com/powershell/azure/overview). Ezek az API-k az erőforráscsoportok használatát igénylik, és támogatják a szerepköralapú biztonságot (RBAC). A hozzáférési szerepkörök megvalósításával kapcsolatos további információkért lásd: [Azure szerepköralapú Access Control](../role-based-access-control/overview.md).
 
-### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: Egyetlen vagy készletezett adatbázisok feladatátvételét kezelése
+### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: Önálló és készletezett adatbázisok feladatátvételének kezelése
 
 > [!IMPORTANT]
-> Ezeket a Transact-SQL-parancsokat csak aktív georeplikáció vonatkoznak, és nem vonatkoznak a feladatátvételi csoportok. Emiatt a is nem vonatkoznak a felügyelt példányok csak támogatják a feladatátvételi csoportok szerint.
+> Ezek a Transact-SQL-parancsok csak az aktív földrajzi replikálásra vonatkoznak, és nem vonatkoznak a feladatátvételi csoportokra. Ezért nem vonatkoznak a felügyelt példányokra is, mivel csak a feladatátvételi csoportokat támogatják.
 
 | Parancs | Leírás |
 | --- | --- |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |MÁSODLAGOS ON-kiszolgáló hozzáadása argumentum használatával egy meglévő adatbázist, és elindítja az adatreplikációt egy másodlagos adatbázis létrehozása |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |A FELADATÁTVÉTELI vagy FORCE_FAILOVER_ALLOW_DATA_LOSS használatával válthat egy másodlagos adatbázist elsődlegessé, hogy feladatátvételt kezdeményezzen |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Használja másodlagos ON SERVER eltávolítása egy SQL-adatbázis és a megadott másodlagos adatbázis közötti adatreplikáció leáll. |
-| [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Az Azure SQL Database-kiszolgálón az összes meglévő replikációs hivatkozások az egyes adatbázisok kapcsolatos információkat ad vissza. |
-| [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Lekéri egy adott SQL-adatbázis a legutóbbi replikációs utolsó replikációs késés és egyéb információ a replikációs hivatkozást. |
-| [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Az összes adatbázis-műveletek, beleértve a replikációs hivatkozások állapotát állapotát jeleníti meg. |
-| [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |hatására végrehajtott tranzakciók lapblobokban replikálja, és arra vonatkozik, az aktív másodlagos adatbázis várnia, hogy az alkalmazás. |
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Másodlagos adatbázis hozzáadása egy meglévő adatbázishoz, és az adatreplikálás elindításához használja a másodlagos kiszolgáló hozzáadása argumentumot. |
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Feladatátvétel vagy FORCE_FAILOVER_ALLOW_DATA_LOSS használatával válthat másodlagos adatbázist elsődlegesként a feladatátvétel elindításához |
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Használja a másodlagos eltávolítása a kiszolgálón lehetőséget a SQL Database és a megadott másodlagos adatbázis közötti adatreplikáció megszakításához. |
+| [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |A Azure SQL Database-kiszolgálón található egyes adatbázisok összes meglévő replikációs hivatkozására vonatkozó információt adja vissza. |
+| [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Lekérdezi a legutóbbi replikálási időt, a legutóbbi replikálási késést és az adott SQL-adatbázis replikációs hivatkozásával kapcsolatos egyéb információkat. |
+| [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Megjeleníti az összes adatbázis-művelet állapotát, beleértve a replikációs hivatkozások állapotát is. |
+| [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |azt eredményezi, hogy az alkalmazás megvárja az összes véglegesített tranzakció replikálását és az aktív másodlagos adatbázis által történő elfogadását. |
 |  | |
 
-### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell: Egyetlen vagy készletezett adatbázisok feladatátvételét kezelése
+### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell: Önálló és készletezett adatbázisok feladatátvételének kezelése
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
 | A parancsmag | Leírás |
 | --- | --- |
@@ -191,28 +190,28 @@ Korábban említett aktív georeplikáció is kezelhetők programozott módon az
 |  | |
 
 > [!IMPORTANT]
-> Mintaszkriptek, lásd: [konfigurálása és a egy önálló adatbázis aktív georeplikációs feladatátvételi](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) és [konfigurálása és a egy készletezett adatbázis aktív georeplikációt használ feladatátvételi](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md).
+> A példákat lásd: [önálló adatbázisok konfigurálása és feladatátvétele az aktív geo-replikációval](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) , valamint [a készletezett adatbázisok konfigurálása és feladatátvétele az aktív geo-replikáció használatával](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md).
 
-### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API: Egyetlen vagy készletezett adatbázisok feladatátvételét kezelése
+### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API: Önálló és készletezett adatbázisok feladatátvételének kezelése
 
 | API | Leírás |
 | --- | --- |
-| [Hozzon létre vagy az adatbázis frissítése (createMode visszaállítási =)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Hoz létre, frissít, vagy visszaállítja az elsődleges vagy másodlagos adatbázis. |
-| [Get létrehozása, vagy az adatbázis állapotának frissítése](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |A létrehozási művelet során állapotának visszaadása. |
-| [Másodlagos adatbázist beállítani az elsődleges (tervezett feladatátvétel)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failover) |Beállítja a másodlagos adatbázis elsődleges által az aktuális elsődleges adatbázis feladatátvételét. **Ezt a beállítást a felügyelt példány esetében nem támogatott.**|
-| [Másodlagos adatbázist beállítani az elsődleges (nem tervezett feladatátvétel)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failoverallowdataloss) |Beállítja a másodlagos adatbázis elsődleges által az aktuális elsődleges adatbázis feladatátvételét. Ez a művelet adatvesztést okozhat. **Ezt a beállítást a felügyelt példány esetében nem támogatott.**|
-| [Replikációs hivatkozás beszerzése](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Lekéri egy adott replikációs hivatkozás egy adott SQL-adatbázis georeplikációs partnerséget. Lekéri az adatokat a sys.geo_replication_links katalógusnézet látható. **Ezt a beállítást a felügyelt példány esetében nem támogatott.**|
-| [Replikációs hivatkozások - lista-adatbázis](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Minden replikációs hivatkozásnak lekéri egy adott SQL-adatbázis georeplikációs partnerséget. Lekéri az adatokat a sys.geo_replication_links katalógusnézet látható. |
-| [Replikációs hivatkozás törlése](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Egy adatbázis-replikációs hivatkozás törlése. Nem hajtható végre feladatátvétel során. |
+| [Adatbázis létrehozása vagy frissítése (createMode = Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Egy elsődleges vagy egy másodlagos adatbázis létrehozása, frissítése vagy visszaállítása. |
+| [Adatbázis-létrehozási vagy-frissítési állapot beolvasása](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Az állapotot adja vissza egy létrehozási művelet során. |
+| [Másodlagos adatbázis beállítása elsődlegesként (tervezett feladatátvétel)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failover) |Meghatározza, hogy melyik másodlagos adatbázis legyen elsődleges, ha az aktuális elsődleges adatbázisból feladatátvételt hajt végre. **Ez a beállítás felügyelt példány esetén nem támogatott.**|
+| [Másodlagos adatbázis beállítása elsődlegesként (nem tervezett feladatátvétel)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failoverallowdataloss) |Meghatározza, hogy melyik másodlagos adatbázis legyen elsődleges, ha az aktuális elsődleges adatbázisból feladatátvételt hajt végre. A művelet adatvesztéshez vezethet. **Ez a beállítás felügyelt példány esetén nem támogatott.**|
+| [Replikációs hivatkozás beolvasása](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Egy adott SQL-adatbázis adott replikációs hivatkozásának beolvasása egy földrajzi replikálási partnerségben. Lekéri a sys. Geo _replication_links katalógus nézetben látható információkat. **Ez a beállítás felügyelt példány esetén nem támogatott.**|
+| [Replikációs hivatkozások – lista adatbázis szerint](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Egy adott SQL-adatbázis összes replikációs hivatkozásának beolvasása egy földrajzi replikálási partnerségben. Lekéri a sys. Geo _replication_links katalógus nézetben látható információkat. |
+| [Replikációs hivatkozás törlése](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Töröl egy adatbázis-replikációs hivatkozást. Feladatátvétel közben nem végezhető el. |
 |  | |
 
 ## <a name="next-steps"></a>További lépések
 
-- Mintaszkriptek lásd:
+- A minta parancsfájlokat lásd:
   - [Önálló adatbázis konfigurálása és a feladatainak átvétele aktív georeplikációval](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
   - [Rugalmas készletbe helyezett adatbázis konfigurálása és a feladatainak átvétele aktív georeplikációval](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-- Az SQL Database automatikus feladatátvételi csoportok is támogatja. További információkért lásd: használatával [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md).
-- Egy üzleti folytonosság – áttekintés és forgatókönyvek: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md)
-- További információ az Azure SQL Database automatikus biztonsági mentések, lásd: [SQL-adatbázis automatikus biztonsági mentések](sql-database-automated-backups.md).
-- Az automatikus biztonsági másolatokból helyreállítási kapcsolatos további információkért lásd: [adatbázis visszaállítása a szolgáltatás által létrehozott biztonsági másolatokból](sql-database-recovery-using-backups.md).
-- Hitelesítési követelmények, egy új elsődleges kiszolgáló és az adatbázis kapcsolatos további információkért lásd: [vész-helyreállítása után az SQL Database biztonsági](sql-database-geo-replication-security-config.md).
+- A SQL Database támogatja az automatikus feladatátvételi csoportokat is. További információ: [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md)használata.
+- Az üzletmenet folytonosságának áttekintése és forgatókönyvei: az [üzletmenet folytonosságának áttekintése](sql-database-business-continuity.md)
+- Az automatikus biztonsági mentések Azure SQL Databaseáról a [SQL Database automatizált biztonsági mentések](sql-database-automated-backups.md)című témakörben olvashat bővebben.
+- Ha többet szeretne megtudni a helyreállítás automatizált biztonsági mentéséről, olvassa el [az adatbázis visszaállítása a szolgáltatás által kezdeményezett biztonsági másolatokból](sql-database-recovery-using-backups.md)című témakört.
+- Az új elsődleges kiszolgáló és adatbázis hitelesítési követelményeinek megismeréséhez tekintse meg a SQL Database biztonság a vész- [helyreállítás után](sql-database-geo-replication-security-config.md)című témakört.

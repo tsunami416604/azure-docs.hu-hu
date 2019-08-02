@@ -1,6 +1,6 @@
 ---
-title: Egybérlős SaaS-oktatóanyag – Azure SQL Database |} A Microsoft Docs
-description: Üzembe helyezése, és a egy önálló egybérlős SaaS-alkalmazásban, amely az Azure SQL Database megismerése.
+title: Egybérlős SaaS-oktatóanyag – Azure SQL Database | Microsoft Docs
+description: Egy önálló, egybérlős SaaS-alkalmazás üzembe helyezése és megismerése, amely Azure SQL Databaset használ.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -10,97 +10,96 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
-manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: b1b281c7beac6b6cb48834e636edff818f89bf12
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2e6b18e53358cad1bfe89e8c0ae7fbacec24d179
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304139"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570204"
 ---
-# <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Üzembe helyezése és megismerése az Azure SQL-adatbázist használó önálló egybérlős alkalmazás
+# <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>A Azure SQL Databaset használó önálló egybérlős alkalmazás üzembe helyezése és megismerése
 
-Ebben az oktatóanyagban üzembe helyezése, és a Wingtip Tickets SaaS-mintaalkalmazás egy önálló alkalmazás, vagy az alkalmazás bérlőnkénti, mintát fejlesztett megismerése.  Az alkalmazás az Azure SQL Database szolgáltatások, amelyek megkönnyítik a több-bérlős SaaS-forgatókönyveket lehetővé bemutatására lett tervezve.
+Ebben az oktatóanyagban üzembe helyezi és felderíti a Wingtip tickets SaaS-minta alkalmazást, amelyet az önálló alkalmazás, vagy az alkalmazás-bérlői minta használatával fejlesztett ki.  Az alkalmazás a több-bérlős SaaS-forgatókönyvek egyszerűsítését megkönnyítő Azure SQL Database funkcióinak bemutatására szolgál.
 
-Az önálló alkalmazás vagy alkalmazás bérlőnkénti minta üzembe helyez egy alkalmazáspéldány az egyes bérlők számára.  Minden alkalmazás egy adott bérlő konfigurálva, és a egy külön Azure-erőforráscsoport üzembe helyezve. Több-bérlős megoldást kínál az alkalmazás több példánya érvénybe lépnek. Ez a minta akkor kisebb számokat, a bérlők, ahol a bérlők elkülönítését prioritást jelent a legmegfelelőbb. Azure-partner programok, amelyek lehetővé teszik az erőforrások egy bérlő-előfizetésben helyezi üzembe helyezni és felügyelt egy szolgáltató által a bérlő nevében megtalálható. 
+Az önálló alkalmazás vagy az alkalmazás/bérlő minta az egyes bérlők számára telepít egy alkalmazás-példányt.  Az egyes alkalmazások egy adott bérlőhöz vannak konfigurálva, és egy külön Azure-erőforráscsoporthoz vannak telepítve. Több-bérlős megoldás biztosításához az alkalmazás több példánya van kiépítve. Ez a minta olyan bérlők számára ideális, amelyek a bérlők elkülönítésének elsődleges prioritása. Az Azure olyan partneri programokkal rendelkezik, amelyek lehetővé teszik, hogy az erőforrások a bérlő előfizetésében legyenek üzembe helyezhetők, és a bérlők nevében egy szolgáltató felügyeli. 
 
-Ebben az oktatóanyagban az Azure-előfizetéshez, három különálló alkalmazás három bérlők számára elérhetővé telepítésre.  Fedezze fel és az egyes alkalmazás-összetevők teljes hozzáféréssel rendelkezik.
+Ebben az oktatóanyagban három különálló alkalmazást fog telepíteni három bérlőre az Azure-előfizetésében.  Teljes hozzáféréssel rendelkezik az egyes alkalmazás-összetevők megismeréséhez és használatához.
 
-Az alkalmazás forrás-kód és a felügyeleti parancsprogramokat érhetők el a [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub-adattárban. Az alkalmazás a Visual Studio 2015-ben lett létrehozva, és nem sikeresen nyissa meg és fordítsa le a Visual Studio 2019 frissítése nélkül.
+Az alkalmazás forráskódja és a felügyeleti szkriptek a [WingtipTicketsSaaS-StandaloneApp GitHub-](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) tárházban érhetők el. Az alkalmazás a Visual Studio 2015 használatával lett létrehozva, és a frissítés nélkül nem sikerült megnyitni és lefordítani a Visual Studio 2019-ben.
 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * A Wingtip Tickets SaaS önálló alkalmazás telepítésének módjáról.
-> * Az alkalmazás forráskódjának és felügyeleti parancsfájlokat helyét.
-> * A kiszolgálók és adatbázisok az alkalmazás alkotó.
+> * A Wingtip tickets SaaS önálló alkalmazás üzembe helyezése.
+> * Az alkalmazás forráskódjának és felügyeleti parancsfájljainak beszerzése.
+> * Az alkalmazást alkotó kiszolgálók és adatbázisok ismertetése.
 
-További oktatóanyagok elérhető lesz. Fogja lehetővé teszik, hogy ismerje meg, ezen alkalmazás mintán alapuló felügyeleti forgatókönyvek széles.   
+A rendszer további oktatóanyagokat is felszabadít. Lehetővé teszik, hogy az alkalmazás mintája alapján számos felügyeleti forgatókönyvet ismerjen meg.   
 
-## <a name="deploy-the-wingtip-tickets-saas-standalone-application"></a>A Wingtip Tickets SaaS önálló alkalmazás üzembe helyezése
+## <a name="deploy-the-wingtip-tickets-saas-standalone-application"></a>A Wingtip tickets SaaS önálló alkalmazás üzembe helyezése
 
-Az alkalmazás üzembe helyezése a három megadott bérlők esetén:
+Telepítse az alkalmazást a három megadott bérlőhöz:
 
-1. Kattintson az egyes kék **üzembe helyezés az Azure** gombra kattintva nyissa meg a központi telepítési sablont a [az Azure portal](https://portal.azure.com). Mindegyik sablon szükséges paraméter két értéket; egy új erőforráscsoport nevét, és a egy felhasználónevet, amely megkülönbözteti ezt az alkalmazás más központi telepítését. A következő lépésben részletesen állítja ezeket az értékeket.<br><br>
-    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Contoso Concert Hall**
+1. Kattintson a kék **üzembe helyezés az Azure** -ban gombra, hogy megnyissa a központi telepítési sablont a [Azure Portal](https://portal.azure.com). Minden sablonhoz két paraméter érték szükséges; egy új erőforráscsoport neve, valamint egy olyan Felhasználónév, amely megkülönbözteti a központi telepítést az alkalmazás más központi telepítései között. A következő lépés az értékek beállításának részleteit tartalmazza.<br><br>
+    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>**Contoso Concert Hall** &nbsp;
 <br><br>
-    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Somfát Dojo**
+    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>**Somfai Dojo** &nbsp;
 <br><br>
-    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Fabrikam Jazz Club**
+    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>**Fabrikam Jazz Club** &nbsp;
 
-2. Adja meg a szükséges paraméterértékeket minden egyes üzemelő példányhoz.
+2. Adja meg az egyes központi telepítések kötelező paramétereinek értékét.
 
     > [!IMPORTANT]
-    > Bizonyos hitelesítési és kiszolgálói tűzfalak szándékosan nem biztonságos, bemutatási céllal. **Hozzon létre egy új erőforráscsoportot** minden egyes alkalmazás üzembe helyezéshez.  Ne használjon egy meglévő erőforráscsoportot. Ne használja az alkalmazást vagy az azzal létrehozott erőforrásokat éles környezetben. Törölje az erőforráscsoportok, amikor befejezte az alkalmazásokat a kapcsolódó számlázások leállításához.
+    > Bizonyos hitelesítési és kiszolgálói tűzfalak szándékosan nem biztonságosak a demonstrációs célokra. **Hozzon létre egy új erőforráscsoportot** az egyes alkalmazások telepítéséhez.  Ne használjon meglévő erőforráscsoportot. Ne használja az alkalmazást vagy az általa létrehozott erőforrásokat éles környezetben. Törölje az összes erőforráscsoportot, ha elkészült az alkalmazásokkal a kapcsolódó számlázás leállításához.
 
-    A legcélszerűbb használata az erőforrás neve csak kisbetűket, számokat és kötőjeleket tartalmazhat.
-    * A **erőforráscsoport**, hozzon létre új és a egy kis az erőforráscsoport nevét adja meg. **a Wingtip-sa -\<venueName\>-\<felhasználói\>**  a javasolt minta.  A \<venueName\>, cserélje le a helyszín neve nem tartalmazhat szóközöket. A \<felhasználói\>, cserélje le a felhasználói értékét az alábbi.  Ezzel a mintával az erőforráscsoportok nevei lehet *wingtip-sa-contosoconcerthall-af1*, *wingtip-sa-dogwooddojo-af1*, *wingtip-sa-fabrikamjazzclub-af1*.
-    * Válassza ki a **hely** a legördülő listából.
+    A legjobb, ha csak kisbetűket, számokat és kötőjeleket használ az erőforrásnevek.
+    * Az **erőforráscsoport**területen válassza az új létrehozása lehetőséget, majd adja meg az erőforráscsoport kisbetűs nevét. a **Wingtip-SA\<-\>-venueNamefelhasználó\<azajánlottminta\>**  .  A \<venueName\>cserélje le a helyszín nevét szóközök nélkül. A \<felhasználó\>mezőben cserélje le a felhasználói értéket alulról.  Ezzel a mintával az erőforráscsoportok nevei lehetnek *Wingtip-SA-contosoconcerthall-AF1*, *Wingtip-SA-dogwooddojo-AF1*, *Wingtip-SA-fabrikamjazzclub-AF1*.
+    * Válasszon ki egy **helyet** a legördülő listából.
 
-    * A **felhasználói** – javasoljuk, hogy egy felhasználó rövid értéket a monogramját és egy számjegyet: például *af1*.
+    * **Felhasználó** számára – egy rövid felhasználói értéket ajánlunk, például a monogramját és egy számjegyét: például *AF1*.
 
 
 3. **Az alkalmazás üzembe helyezése**.
 
-    * Ide kattintva elfogadja a feltételeket és kikötéseket.
+    * Kattintson ide a feltételek és kikötések elfogadásához.
     * Kattintson a **Purchase** (Vásárlás) gombra.
 
-4. Kattintson a három központi telepítések állapotának figyelése **értesítések** (a harang ikonra a jobb oldalon, a keresőmező). Az alkalmazások üzembe helyezése körülbelül öt percet vesz igénybe.
+4. Mindhárom központi telepítés állapotának figyeléséhez kattintson az **értesítések** elemre (a keresőmező jobb oldalán található harang ikonra). Az alkalmazások üzembe helyezése körülbelül öt percet vesz igénybe.
 
 
 ## <a name="run-the-applications"></a>Az alkalmazások futtatása
 
-Az alkalmazás események üzemeltető helyszínek bemutatja.  A helyszínek a bérlők számára az alkalmazás. Minden helyszín kap egy személyre szabott webhely listában azok az események és jegyek értékesítésére. Helyszíntípusok például koncerttermeket, különböző helyszíneket és sportklubokat által az olimpián. A mintában a helyszín típusa határozza meg, a háttérben futó fénykép a helyszín webhely jelenik meg.   Az önálló app modellben minden egyes helyszín egy külön alkalmazáspéldány saját önálló SQL-adatbázissal rendelkezik.
+Az alkalmazás az eseményeket üzemeltető helyszíneket mutatja be.  A helyszínek az alkalmazás bérlői. Minden helyszín egy személyre szabott webhelyet kap az események listázásához és jegyek eladásához. A helyszín típusok közé tartoznak a koncert termek, a jazz klubok és a sport klubok. A mintában a helyszín típusa határozza meg a helyszín webhelyén látható háttér-fényképet.   Az önálló alkalmazás modelljében minden egyes helyszín külön alkalmazás-példánnyal rendelkezik saját önálló SQL-adatbázissal.
 
-1. A három külön böngészőlapokon bérlők mindegyike esetében nyissa meg az események lapról:
+1. Nyissa meg az Events (események) lapot a három bérlő mindegyikéhez külön böngésző lapjain:
 
    - http://events.contosoconcerthall.&lt ;user&gt;.trafficmanager.net
    - http://events.dogwooddojo.&lt ;user&gt;.trafficmanager.net
    - http://events.fabrikamjazzclub.&lt ;user&gt;.trafficmanager.net
 
-     (Egyes URL-címben cserélje le a &lt;felhasználói&gt; az üzemelő példány felhasználói értékkel.)
+     (Minden URL-címben cserélje &lt;le&gt; a felhasználót a telepítés felhasználói értékére.)
 
    ![Events](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
-Bejövő kérelmek, az alkalmazás által használt elosztását [ *Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md). Minden bérlő-specifikus alkalmazás-példány URL-CÍMÉT a bérlő nevét a tartomány nevének részeként tartalmazza. Az összes bérlői URL-címeket tartalmazza a konkrét **felhasználói** értéket. Az URL-címeket hajtsa végre a következő formátumban:
+A bejövő kérelmek eloszlásának szabályozásához az alkalmazás az [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md)-t használja. Minden bérlőre jellemző alkalmazás-példány tartalmazza a bérlő nevét a tartománynév részeként az URL-címben. Az összes bérlői URL-cím tartalmazza az adott **felhasználói** értéket. Az URL-címek a következő formátumot követik:
 - http://events.&lt ;venuename&gt;.&lt; user&gt;.trafficmanager.net
 
-Minden bérlői adatbázis **hely** az a megfelelő telepített alkalmazások beállításait tartalmazza.
+Az egyes bérlők adatbázis- **helye** a megfelelő telepített alkalmazás Alkalmazásbeállítások részét képezi.
 
-Éles környezetben általában hoz létre egy CNAME DNS-rekord [ *egy vállalati internetes tartomány* ](../traffic-manager/traffic-manager-point-internet-domain.md) URL-címét a traffic manager-profilt.
+Éles környezetben általában egy CNAME DNS-rekordot hoz létre, amely a [*vállalati internetes tartományt*](../traffic-manager/traffic-manager-point-internet-domain.md) a Traffic Manager-profil URL-címére irányítja.
 
 
-## <a name="explore-the-servers-and-tenant-databases"></a>Ismerje meg a kiszolgálók és a bérlői adatbázisok
+## <a name="explore-the-servers-and-tenant-databases"></a>A kiszolgálók és a bérlői adatbázisok megismerése
 
-Nézzük, egyes üzembe helyezett erőforrások:
+Nézzük meg az üzembe helyezett erőforrásokat:
 
-1. Az a [az Azure portal](https://portal.azure.com), tallózással keresse meg a azon erőforráscsoportok listája.
-2. A három bérlői erőforrás-csoportok kell megjelennie.
-3. Nyissa meg a **wingtip-sa-fabrikam -&lt;felhasználói&gt;**  a Fabrikam Jazz Club központi telepítés az erőforrásokat tartalmazó erőforráscsoportot.  A **fabrikamjazzclub -&lt;felhasználói&gt;**  kiszolgáló tartalmazza a **fabrikamjazzclub** adatbázis.
+1. A [Azure Portal](https://portal.azure.com)tallózással keresse meg az erőforráscsoportok listáját.
+2. Ekkor látnia kell a három bérlői erőforráscsoportot.
+3. Nyissa meg a **Wingtip-SA-&lt;Fabrikam&gt; -User** erőforráscsoportot, amely a fabrikam Jazz Club üzembe helyezésének erőforrásait tartalmazza.  A **fabrikamjazzclub-&lt;User&gt;**  kiszolgáló tartalmazza a **fabrikamjazzclub** -adatbázist.
 
-Minden bérlői adatbázis egy 50 DTU *önálló* adatbázis.
+Minden bérlői adatbázis 50 DTU *önálló* adatbázis.
 
 ## <a name="additional-resources"></a>További források
 
@@ -110,22 +109,22 @@ Minden bérlői adatbázis egy 50 DTU *önálló* adatbázis.
 * To learn about elastic jobs, see [*Managing scaled-out cloud databases*](elastic-jobs-overview.md)
 -->
 
-- Több-bérlős SaaS-alkalmazások kapcsolatos további információkért lásd: [tervezési minták több-bérlős SaaS-alkalmazások](saas-tenancy-app-design-patterns.md).
+- A több-bérlős SaaS-alkalmazásokkal kapcsolatos további információkért lásd: [tervezési minták a több-bérlős SaaS-alkalmazásokhoz](saas-tenancy-app-design-patterns.md).
 
  
-## <a name="delete-resource-groups-to-stop-billing"></a>Erőforráscsoportok leállítani a számlázási törlése ##
+## <a name="delete-resource-groups-to-stop-billing"></a>Erőforráscsoportok törlése a számlázás leállításához ##
 
-Miután végzett, a minta használatával, és törölje az összes, a kapcsolódó számlázások leállításához létrehozott erőforráscsoport.
+Ha befejezte a minta használatát, törölje az összes létrehozott erőforráscsoportot a társított számlázás leállításához.
 
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta az alábbiakat:
 
 > [!div class="checklist"]
-> * A Wingtip Tickets SaaS önálló alkalmazás telepítésének módjáról.
-> * A kiszolgálók és adatbázisok az alkalmazás alkotó.
-> * Hogyan törlése a kapcsolódó számlázások leállításához.
+> * A Wingtip tickets SaaS önálló alkalmazás üzembe helyezése.
+> * Az alkalmazást alkotó kiszolgálók és adatbázisok ismertetése.
+> * Mintavételi erőforrások törlése a kapcsolódó számlázás leállításához.
 
-Ezt követően próbálja meg a [kiépítéssel és Katalogizálással](saas-standaloneapp-provision-and-catalog.md) oktatóanyag, amelyben azt vizsgáljuk meg, a bérlők egy katalógus, amely lehetővé teszi a több-bérlős forgatókönyvek, például a séma felügyeletet és a bérlői analitikai számos használatát.
+Ezután próbálja ki a kiépítéssel [és a katalógussal](saas-standaloneapp-provision-and-catalog.md) foglalkozó oktatóanyagot, amelyben megtekintheti a bérlők katalógusának használatát, amely több bérlős forgatókönyv, például a séma-felügyeleti és a bérlői elemzések széles körét teszi lehetővé.
  
 

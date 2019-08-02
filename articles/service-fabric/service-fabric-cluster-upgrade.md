@@ -1,9 +1,9 @@
 ---
-title: Egy Azure Service Fabric-fürt frissítése |} A Microsoft Docs
-description: További információ az, illetve Azure Service Fabric-fürt konfigurációjának frissítése.  Ez a cikk ismerteti a beállítás fürt frissítési mód, frissítése, tanúsítványok, hozzáadás, application portok, operációsrendszer-javítások, és hogy mire számíthat, ha a frissítés el kell végezni
+title: Azure Service Fabric-fürt frissítése | Microsoft Docs
+description: Ismerje meg, hogyan frissítheti az Azure Service Fabric-fürtök verzióját vagy konfigurációját.  Ez a cikk a fürt frissítési módjának beállítását, a tanúsítványok frissítését, az alkalmazások portjainak hozzáadását, az operációsrendszer-javítások elvégzését, valamint a frissítések végrehajtásának várható időpontját ismerteti.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
@@ -13,99 +13,99 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
-ms.author: aljo
-ms.openlocfilehash: 8fa461d8c3a70d4b0d2d9973a840ffc7d1ff6470
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 2c8465a3aba4a21efaa20a118807d739dd501b09
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65472769"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599778"
 ---
-# <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>A frissítés és az Azure Service Fabric-fürt frissítése
+# <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Azure Service Fabric-fürt frissítése és frissítése
 
-Minden modern rendszeren bővíthetőség for designing fontos a termék hosszú távú sikert eléréséhez. Azure Service Fabric-fürt egy erőforrás, amelynek a tulajdonosa, de részben a Microsoft felügyeli. Ez a cikk bemutatja, milyen automatikusan kezeli, és amit konfigurálhat saját magának.
+Bármely modern rendszer esetében a minőségének megtervezése kulcsfontosságú a termék hosszú távú sikerességének megvalósításához. Az Azure Service Fabric-fürt olyan erőforrás, amelyet Ön birtokol, de részben a Microsoft felügyeli. Ez a cikk azt ismerteti, hogy mi felügyelhető automatikusan, és mi konfigurálható.
 
-## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>A fabric-verziót a fürtön futó szabályozása
+## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>A fürtön futó háló verziójának szabályozása
 
-Győződjön meg arról, hogy a fürtöt, egy [fabric verziója támogatott](service-fabric-versions.md) mindig. És hogy jelentjük be az új verzióját a service fabric, az előző verzió után 60 napon, hogy legalább támogatásuk van megjelölve. Az új kiadásokkal teszi közzé a service fabric blogján. Az új kiadásban érhető el, majd válassza ki.
+Ügyeljen arra, hogy a fürtön mindig a [támogatott háló verziót](service-fabric-versions.md) futtassa. Ahogy és amikor bejelentjük a Service Fabric új verziójának kiadását, az előző verzió a támogatás végére van megjelölve, legalább 60 nappal az adott dátumtól számítva. Az új kiadások a Service Fabric csapatának blogjában jelennek meg. Az új kiadás elérhető lesz a választáshoz.
 
-a fürt fut, a kiadás lejárta előtt 14 nappal állapottal kapcsolatos esemény jön létre, amely a fürt beteszi a figyelmeztetési állapot. A fürt figyelmeztetési állapotban marad, amíg nem támogatott fabric-verzióra frissít.
+a fürt kiadásának lejárta előtt 14 nappal egy állapot-esemény jön létre, amely figyelmeztetési állapotba helyezi a fürtöt. A fürt figyelmeztetési állapotban marad, amíg nem frissít egy támogatott Fabric-verzióra.
 
-Beállíthatja, hogy a fürt automatikus hálófrissítések fogadásához, azok a Microsoft által kiadott, vagy kiválaszthat egy azt szeretné, hogy a rendszer a fürt támogatott fabric verziója.  További tudnivalókért olvassa el a [a fürt Service Fabric-verziójának frissítése](service-fabric-cluster-upgrade-version-azure.md).
+Beállíthatja, hogy a fürt a Microsoft által kiadott automatikus háló-frissítéseket fogadja, vagy kiválaszthat egy olyan támogatott háló-verziót, amelyet be szeretne állítani a fürtön.  További információért olvassa el [a fürt Service Fabric verziójának frissítése](service-fabric-cluster-upgrade-version-azure.md)című témakört.
 
-## <a name="fabric-upgrade-behavior-during-automatic-upgrades"></a>Fabric frissítési viselkedést automatikus frissítések során
-A Microsoft fenntartja a fabric-kódra, és a egy Azure-fürtön futó configuration. A szoftver figyelt automatikus frissítései révén igény szerint elvégzése. Ezek a frissítések lehet kódot, konfigurációs vagy mindkettőt. Ahhoz, hogy az alkalmazás romlik a, hogy ezek a frissítések miatt csak minimális hatással van, vagy nem gyakorolt hatás, a következő szakaszában, a Microsoft végzi a frissítéseket:
+## <a name="fabric-upgrade-behavior-during-automatic-upgrades"></a>A háló frissítési viselkedése az automatikus frissítések során
+A Microsoft karbantartja az Azure-fürtön futó háló kódját és konfigurációját. A szoftverhez szükség szerint automatikusan figyelt frissítéseket végzünk. Ezek a frissítések kód, konfiguráció vagy mindkettő lehet. Annak érdekében, hogy az alkalmazás a frissítések miatt ne érje el a negatív hatást vagy a minimális hatást, a következő fázisokban hajtjuk végre a frissítéseket:
 
-### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>1\. fázis: Frissítés az összes fürt állapotházirendeket használatával történik
-Ebben a fázisban a frissítéseket a egyszerre több frissítési tartományt folytatja, és az alkalmazások, a fürtben futó tovább állásidő nélkül. A fürt állapotházirendeket (csomópont állapotát, az kombinációja a fürtben futó összes alkalmazás) a frissítés során betartását.
+### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>1\. fázis: A rendszer a fürt összes állapotfigyelő szabályzatának használatával hajtja végre a frissítést.
+Ebben a fázisban a frissítések egyszerre egy frissítési tartományt végeznek, a fürtön futó alkalmazások pedig leállás nélkül is futnak. A fürt állapot-házirendjei (a csomópont állapotának és a fürtben futó összes alkalmazás állapotának kombinációja) be vannak tartva a frissítés során.
 
-Ha a fürt állapotházirendeket nem teljesülnek, a frissítés vissza lesz állítva. Ezután e-mailt küldeni az előfizetés tulajdonosa van. Az e-mailt a következő információkat tartalmazza:
+Ha a fürt állapot-házirendjei nem teljesülnek, a rendszer visszaállítja a frissítést. Ezt követően a rendszer elküld egy e-mailt az előfizetés tulajdonosának. Az e-mail a következő információkat tartalmazza:
 
-* Értesítés az, hogy a fürtfrissítések visszavonásához kellett.
-* Helyreigazító műveletek végrehajtásához, akkor javasolt, ha van ilyen.
-* (N), amíg nem tudjuk hajtsa végre a 2. fázis napok száma.
+* Értesítés arról, hogy a fürt frissítését vissza kellett állítani.
+* Javasolt javító műveletek, ha vannak ilyenek.
+* A napok száma (n), amíg végre nem Hajtjuk a 2. fázist.
 
-Próbálja meg hajtsa végre ugyanezt a frissítést néhány alkalommal abban az esetben a megjelenjenek infrastruktúra miatt nem sikerült. Az n nap elteltével a rendszer elküldte az e-mail dátumától számítva hogy folytassa a 2. fázis.
+Megpróbáljuk végrehajtani ugyanezt a frissítést néhány alkalommal, ha az infrastruktúra miatt nem sikerült frissíteni a frissítéseket. Az e-mailek elküldésének napjától számított n nappal azután folytassa a 2. fázissal.
 
-Ha a fürt állapotházirendeket teljesülnek, a frissítés sikeresnek minősül és befejezettként. Ez akkor fordulhat elő, a kezdeti frissítés, vagy a frissítési ismétlések során ebben a fázisban. Nincs nem sikeres Futtatás megerősítő e-mailt. Ez a ne küldjön túl sok e-mailek--fogad e-mailt, a szokásos kivételt kell tekinteni. Terveink szerint már a legtöbb a fürtfrissítések sikeres végrehajtásához az rendelkezésre állásának befolyásolása nélkül.
+Ha a fürt állapot-házirendjei teljesülnek, a frissítés sikeresnek minősül, és készen van megjelölve. Ez a kezdeti frissítés során vagy az ebben a fázisban lévő frissítési ismétlések során fordulhat elő. A sikeres Futtatás e-mail-megerősítése nem történt meg. Ezzel elkerülhető, hogy túl sok e-mailt küldjön – az e-mailek fogadása kivételként normálisnak tekintendő. Az alkalmazás rendelkezésre állásának befolyásolása nélkül elvárjuk, hogy a fürt legtöbb frissítése sikeres legyen.
 
-### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>2\. fázis: Frissítés alapértelmezett egészségügyi házirendek segítségével történik
-Ebben a fázisban a házirendek úgy, hogy voltak a frissítés kezdetén kifogástalan állapotú alkalmazások száma továbbra is ugyanazt a frissítési folyamat idejére vannak beállítva. 1\. fázis, mint a 2. fázis verziófrissítések több frissítési tartományt folytatható egy időben, és az alkalmazások, a fürtben futó tovább állásidő nélkül. A fürt állapotházirendeket (csomópont állapotát, az kombinációja a fürtben futó összes alkalmazás) betartsák a frissítés idejére.
+### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>2\. fázis: A frissítés csak az alapértelmezett állapotházirendek használatával hajtható végre.
+Az ebben a fázisban lévő állapotfigyelő házirendek úgy vannak beállítva, hogy a frissítés elején a kifogástalan állapotú alkalmazások száma változatlan maradjon a frissítési folyamat időtartamára. Ahogy az 1. fázisban, a 2. fázis frissíti egyszerre egy frissítési tartományt, a fürtön futó alkalmazások pedig leállás nélkül is futnak. A fürt állapot-házirendjei (a csomópont állapotának és a fürtben futó összes alkalmazás állapotának kombinációja) a frissítés időtartamára vannak betartva.
 
-Ha a fürt állapotának házirendek érvényben nem teljesülnek, a frissítés vissza lesz állítva. Ezután e-mailt küldeni az előfizetés tulajdonosa van. Az e-mailt a következő információkat tartalmazza:
+Ha a fürt állapotára vonatkozó házirendek nem teljesülnek, a rendszer visszaállítja a frissítést. Ezt követően a rendszer elküld egy e-mailt az előfizetés tulajdonosának. Az e-mail a következő információkat tartalmazza:
 
-* Értesítés az, hogy a fürtfrissítések visszavonásához kellett.
-* Helyreigazító műveletek végrehajtásához, akkor javasolt, ha van ilyen.
-* (N), amíg nem tudjuk hajtsa végre a 3. fázis napok száma.
+* Értesítés arról, hogy a fürt frissítését vissza kellett állítani.
+* Javasolt javító műveletek, ha vannak ilyenek.
+* Azon napok száma (n), amíg a 3. fázist végre nem hajtjuk.
 
-Próbálja meg hajtsa végre ugyanezt a frissítést néhány alkalommal abban az esetben a megjelenjenek infrastruktúra miatt nem sikerült. Emlékeztető e-mailt néhány nap alatt, mielőtt n napig mentése zajlik. Az n nap elteltével a rendszer elküldte az e-mail dátumától számítva hogy folytassa a 3. fázis. Az e-mailt küldünk, 2. fázis komolyan kell venni, és kell tenni a helyreigazító műveletek végrehajtásához.
+Megpróbáljuk végrehajtani ugyanezt a frissítést néhány alkalommal, ha az infrastruktúra miatt nem sikerült frissíteni a frissítéseket. A rendszer elküld egy emlékeztető e-mailt néhány nappal az n nap előtt. Az e-mailek elküldésének napjától számított n nappal azután folytassa a 3. fázissal. A 2. fázisban elküldött e-maileket komolyan kell venni, és a javító műveleteket is el kell végezni.
 
-Ha a fürt állapotházirendeket teljesülnek, a frissítés sikeresnek minősül és befejezettként. Ez akkor fordulhat elő, a kezdeti frissítés, vagy a frissítési ismétlések során ebben a fázisban. Nincs nem sikeres Futtatás megerősítő e-mailt.
+Ha a fürt állapot-házirendjei teljesülnek, a frissítés sikeresnek minősül, és készen van megjelölve. Ez a kezdeti frissítés során vagy az ebben a fázisban lévő frissítési ismétlések során fordulhat elő. A sikeres Futtatás e-mail-megerősítése nem történt meg.
 
-### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>3\. fázis: Frissítés agresszív állapotházirendeket használatával történik
-Ebben a fázisban a health házirendek helyett az alkalmazások állapotát a frissítés felé egyszerűsítését szolgálja. Ebben a fázisban végül néhány fürtfrissítések. Ha a fürt lekérdezi az ebben a fázisban, van esély arra, hogy az alkalmazás akkor kerül sérült, és/vagy elveszíti a rendelkezésre állás.
+### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>3\. fázis: A frissítés agresszív állapotházirend használatával történik.
+Az ebben a fázisban található állapot-szabályzatok az alkalmazások állapota helyett a frissítés befejezését célozzák. Ebben a fázisban a fürt néhány frissítése megszűnik. Ha a fürt erre a fázisba kerül, jó eséllyel lehet, hogy az alkalmazás nem megfelelő állapotba kerül, és/vagy elveszti a rendelkezésre állást.
 
-A két fázisban hasonlóan, 3. fázis verziófrissítések folytatható, több frissítési tartományt egyszerre.
+A másik két fázishoz hasonlóan a 3. fázis frissítése egyszerre csak egy frissítési tartományt hajt végre.
 
-Ha a fürt állapotházirendeket nem teljesülnek, a frissítés vissza lesz állítva. Próbálja meg hajtsa végre ugyanezt a frissítést néhány alkalommal abban az esetben a megjelenjenek infrastruktúra miatt nem sikerült. Ezt követően a fürt ki van tűzve, így már nem kap támogatást és/vagy a frissítéseket.
+Ha a fürt állapot-házirendjei nem teljesülnek, a rendszer visszaállítja a frissítést. Megpróbáljuk végrehajtani ugyanezt a frissítést néhány alkalommal, ha az infrastruktúra miatt nem sikerült frissíteni a frissítéseket. Ezt követően a fürt rögzítve lett, így többé nem fog támogatást és/vagy frissítéseket kapni.
 
-Ezt az információt egy e-mailt az előfizetés tulajdonosa a helyreigazító műveletek együtt érkezik. Bármely olyan állapotba, ahol a 3. fázis nem sikerült beolvasni a fürtök várhatóan nem lesz.
+A rendszer e-mailt küld az előfizetés tulajdonosának a javító műveletekkel együtt. Nem várjuk, hogy egy fürt olyan állapotba kerüljön, amelyben a 3. fázis sikertelen volt.
 
-Ha a fürt állapotházirendeket teljesülnek, a frissítés sikeresnek minősül és befejezettként. Ez akkor fordulhat elő, a kezdeti frissítés, vagy a frissítési ismétlések során ebben a fázisban. Nincs nem sikeres Futtatás megerősítő e-mailt.
+Ha a fürt állapot-házirendjei teljesülnek, a frissítés sikeresnek minősül, és készen van megjelölve. Ez a kezdeti frissítés során vagy az ebben a fázisban lévő frissítési ismétlések során fordulhat elő. A sikeres Futtatás e-mail-megerősítése nem történt meg.
 
 ## <a name="manage-certificates"></a>Tanúsítványok kezelése
-A Service Fabric használ [X.509 kiszolgálói tanúsítványok](service-fabric-cluster-security.md) fürtcsomópontok közötti kommunikáció biztonságossá tételéhez és-ügyfelek hitelesítésére a fürt létrehozásakor megadott. Hozzáadása, módosítása és törlése a fürt és az ügyfél tanúsítványai a [az Azure portal](https://portal.azure.com) vagy a PowerShell vagy az Azure CLI használatával.  További tudnivalókért olvassa el a [hozzáadni vagy eltávolítani a tanúsítványokat](service-fabric-cluster-security-update-certs-azure.md)
+A Service Fabric [X. 509 kiszolgálói tanúsítványokat](service-fabric-cluster-security.md) használ, amelyeket akkor ad meg, amikor fürt létrehozásakor a fürtcsomópontok közötti kommunikációt és az ügyfelek hitelesítését végzi. A fürthöz és az ügyfélhez tanúsítványokat adhat hozzá, frissíthet vagy törölhet a [Azure Portal](https://portal.azure.com) vagy a PowerShell vagy az Azure CLI használatával.  További információ a [tanúsítványok hozzáadása és eltávolítása](service-fabric-cluster-security-update-certs-azure.md) című témakörben olvasható.
 
-## <a name="open-application-ports"></a>Portok megnyitása
-Alkalmazásportok typ uzlu társított terheléselosztó erőforrás-tulajdonságok módosításával módosíthatja. Az Azure Portalon is használhatja, vagy használhatja a PowerShell vagy az Azure parancssori felület. További információkért olvassa el [nyissa meg a fürt alkalmazásportok](create-load-balancer-rule.md).
+## <a name="open-application-ports"></a>Alkalmazás portjainak megnyitása
+Az alkalmazás portjait a csomópont típusához társított Load Balancer erőforrás-tulajdonságok módosításával módosíthatja. Használhatja a Azure Portal, vagy használhatja a PowerShellt vagy az Azure CLI-t is. További információért olvassa el az [alkalmazás-portok megnyitása fürthöz](create-load-balancer-rule.md)című témakört.
 
-## <a name="define-node-properties"></a>Csomópont-tulajdonságok meghatározása
-Néha érdemes győződjön meg arról, hogy bizonyos munkaterhelések csak bizonyos típusú, a fürtben található csomópontok futtassa. Például néhány számítási feladat lehet szükség gpu-kat vagy SSD-k, míg mások nem. A fürtben csomóponttípusok mindegyikéhez fürtcsomópontok egyéni csomópont tulajdonságokat adhat hozzá. Elhelyezési korlátozások az egyes szolgáltatásai, válassza ki egy vagy több csomópont-tulajdonságok csatolt utasításokat. Elhelyezési korlátozások határozza meg, ahol szolgáltatásainak futnia kell.
+## <a name="define-node-properties"></a>Csomópont tulajdonságainak megadása
+Előfordulhat, hogy bizonyos számítási feladatok csak bizonyos típusú csomópontokon futnak a fürtben. Előfordulhat például, hogy egyes számítási feladatok GPU vagy SSD-ket igényelnek, míg mások esetleg nem. A fürt minden egyes csomópont-típusához hozzáadhat egyéni csomópont-tulajdonságokat a fürtcsomópontok számára. Az elhelyezési megkötések az egyes szolgáltatásokhoz csatolt utasítások, amelyek egy vagy több csomópont-tulajdonságot választanak ki. Az elhelyezési megkötések határozzák meg a szolgáltatások futtatásának helyét.
 
-Elhelyezési korlátozások, a csomópont-tulajdonságok és hogyan adhat meg hozzájuk használatára vonatkozó további tudnivalókért olvassa el [csomópont-tulajdonságok és elhelyezési korlátozások](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
+Az elhelyezési megkötések, a csomópont-tulajdonságok és a definiált beállítások használatával kapcsolatos részletekért olvassa el a [csomópont-tulajdonságok és az elhelyezési korlátozások](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)című témakört.
 
-## <a name="add-capacity-metrics"></a>Adja hozzá a kapacitási mérőszámot
-Minden egyes csomóponttípus betöltésének jelentéséhez az alkalmazásban használni kívánt egyéni kapacitási mérőszámokat adhat hozzá. Betöltésének jelentéséhez a kapacitási mérőszámot használatának részletes ismertetéséért tekintse meg a Service Fabric-fürt Resource Manager-dokumentumok a [a fürt leíró](service-fabric-cluster-resource-manager-cluster-description.md) és [metrikák és a terhelés](service-fabric-cluster-resource-manager-metrics.md).
+## <a name="add-capacity-metrics"></a>Kapacitási mérőszámok hozzáadása
+Az egyes csomópont-típusoknál hozzáadhat egyéni kapacitási mérőszámokat, amelyeket az alkalmazásokban használni szeretne a betöltés jelentéséhez. A kapacitási mérőszámok betöltésének jelentésével kapcsolatos részletekért tekintse meg a fürt és a metrikák, [valamint](service-fabric-cluster-resource-manager-metrics.md)a terhelések [leírását ismertető](service-fabric-cluster-resource-manager-cluster-description.md) Service Fabric fürterőforrás-kezelő dokumentumait.
 
-## <a name="set-health-policies-for-automatic-upgrades"></a>Az automatikus frissítésekre házirendek beállítása
-Egyéni házirendek a fabric frissítése is megadhat. Ha a fürt automatikus hálófrissítések értékre állította, ezek a szabályzatok a – 1. fázisa az automatikus hálófrissítések legyenek alkalmazva.
-Ha a manuális fabric-fürtöt verziófrissítések állított be, ezeket a szabályzatokat alkalmazva minden alkalommal, amikor egy új verzió indítása a rendszer a fabric frissítése a fürt elindítson választja. Ha nem bírálja felül a szabályzatokat, az alapértelmezett értékeket használják.
+## <a name="set-health-policies-for-automatic-upgrades"></a>Állapotházirendek beállítása az automatikus frissítésekhez
+Megadhat egyéni állapot-házirendeket a háló frissítéséhez. Ha úgy állította be a fürtöt, hogy az automatikus háló frissítése megtörténjen, akkor ezek a szabályzatok az automatikus háló frissítéseinek 1. fázisára vonatkoznak.
+Ha a fürtöt manuális hálós frissítésre állította be, akkor a rendszer minden alkalommal alkalmazza ezeket a házirendeket, amikor kiválaszt egy új verziót, amely elindítja a rendszerindítást a fürtben. Ha nem bírálja felül a szabályzatokat, a rendszer az alapértelmezett értékeket használja.
 
-Adja meg az egyéni állapotházirendeket, vagy tekintse át a jelenlegi beállítások szerint a "fabric frissítése" panel a speciális frissítési beállítások kiválasztásával. Tekintse át a következő képen látható, hogyan. 
+A speciális frissítési beállítások kiválasztásával megadhatja az egyéni állapotfigyelő házirendeket, vagy áttekintheti az aktuális beállításokat a "háló frissítése" panelen. Tekintse át a következő képet a című témakörben. 
 
-![Egyéni házirendek kezelése][HealthPolices]
+![Egyéni állapotfigyelő házirendek kezelése][HealthPolices]
 
-## <a name="customize-fabric-settings-for-your-cluster"></a>A fürt háló beállításainak testreszabása
-Számos különböző konfigurációs beállítások testre szabható a megbízhatósági szint a fürt és a csomópont tulajdonságait, például egy fürtön. További információkért olvassa el [Service Fabric-fürt hálóbeállítások](service-fabric-cluster-fabric-settings.md).
+## <a name="customize-fabric-settings-for-your-cluster"></a>A fürthöz tartozó háló beállításainak testreszabása
+Számos különböző konfigurációs beállítás testreszabható a fürtön, például a fürt és a csomópont tulajdonságainak megbízhatósági szintje. További információkért olvassa el [Service Fabric a fürt hálójának beállításait](service-fabric-cluster-fabric-settings.md).
 
-## <a name="patch-the-os-in-the-cluster-nodes"></a>Az operációs rendszer, a fürtcsomópontok javítása
-A patch orchestration application (POA) a Service Fabric-alkalmazás, amely automatizálja az operációs rendszer javításának Service Fabric-fürt, üzemkimaradás nélkül. A [Patch Orchestration Application for Windows](service-fabric-patch-orchestration-application.md) telepíthetők a javítások telepítése összehangolt módon folyamatosan elérhető szolgáltatások megtartva a fürtön.
+## <a name="patch-the-os-in-the-cluster-nodes"></a>Az operációs rendszer javítása a fürtcsomópontok között
+A javítási előkészítési alkalmazás (POA) egy Service Fabric alkalmazás, amely az operációs rendszer javítását automatizálja egy Service Fabric-fürtön állásidő nélkül. A [Windowshoz készült patch](service-fabric-patch-orchestration-application.md) -előkészítési alkalmazás üzembe helyezhető a fürtön úgy, hogy a javításokat koordinált módon telepítse, miközben a szolgáltatások rendelkezésre állását is megőrizheti.
 
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan szabhatja testre az egyes a [service fabric-fürt hálóbeállítások](service-fabric-cluster-fabric-settings.md)
-* Ismerje meg, hogyan [fürt kétirányú méretezése](service-fabric-cluster-scale-up-down.md)
-* Ismerje meg [alkalmazásfrissítések](service-fabric-application-upgrade.md)
+* Megtudhatja, hogyan szabhatja testre a [Service Fabric-fürtök](service-fabric-cluster-fabric-settings.md) néhány beállítását
+* Ismerje meg, hogyan [méretezheti a fürtöt és ki](service-fabric-cluster-scale-up-down.md)
+* Az [alkalmazások frissítéseinek](service-fabric-application-upgrade.md) megismerése
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

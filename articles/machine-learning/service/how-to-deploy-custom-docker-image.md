@@ -1,7 +1,7 @@
 ---
-title: Egyéni Docker-rendszerkép használata modell üzembe helyezése
+title: Modellek üzembe helyezése egyéni Docker-lemezképpel
 titleSuffix: Azure Machine Learning service
-description: Útmutató egyéni Docker-rendszerkép használata az Azure Machine Learning szolgáltatás modellek üzembe helyezésekor. Betanított modell üzembe helyezésekor, egy Docker-rendszerképet gazdagép a lemezképet, webkiszolgáló és a szolgáltatás futtatásához szükséges más összetevők jön létre. Azure Machine Learning szolgáltatáshoz biztosít egy alapértelmezett lemezkép, miközben használhatja a saját rendszerképét is.
+description: Megtudhatja, hogyan használhat egyéni Docker-rendszerképet a Azure Machine Learning szolgáltatási modelljeinek üzembe helyezése során. A betanított modell telepítésekor a rendszer létrehoz egy Docker-rendszerképet, amely a szolgáltatás futtatásához szükséges lemezképet, webkiszolgálót és egyéb összetevőket tárolja. Míg Azure Machine Learning szolgáltatás alapértelmezett rendszerképet biztosít Önnek, saját rendszerkép is használható.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,108 +10,108 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/11/2019
-ms.openlocfilehash: b8591fe750d4bb1441cdc28c488b2c860eb0bccb
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: f51c6bdc6cb2e381d5d5b855bf2f87b07d7fc180
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840071"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638423"
 ---
-# <a name="deploy-a-model-using-a-custom-docker-image"></a>Modell üzembe helyezése egy egyéni Docker-rendszerkép használata
+# <a name="deploy-a-model-using-a-custom-docker-image"></a>Modell üzembe helyezése egyéni Docker-rendszerkép használatával
 
-Ismerje meg, hogyan lehet egyéni Docker-rendszerkép használata az Azure Machine Learning szolgáltatással betanított modellek üzembe helyezésekor.
+Megtudhatja, hogyan használhat egyéni Docker-rendszerképet a betanított modellek a Azure Machine Learning szolgáltatással való üzembe helyezése során.
 
-Amikor telepít egy webszolgáltatás vagy az IoT Edge-eszköz betanított modell, egy Docker-rendszerképet jön létre. Ez a rendszerkép tartalmazza a modellt, conda-környezet és a modell használatához szükséges eszközök. A webkiszolgáló egy webszolgáltatás, valamint az Azure IoT Hub használatához szükséges összetevő telepítésekor a bejövő kérések kezelésére is tartalmaz.
+Ha egy webszolgáltatáshoz vagy IoT Edge eszközhöz helyez üzembe egy betanított modellt, a rendszer létrehoz egy Docker-rendszerképet. Ez a rendszerkép tartalmazza a modell, a Conda-környezet és a modell használatához szükséges eszközöket. Továbbá tartalmaz egy webkiszolgálót, amely a beérkező kérelmeket webszolgáltatásként való üzembe helyezéskor kezeli, és az Azure IoT Hub való együttműködéshez szükséges összetevőket.
 
-Az Azure Machine Learning szolgáltatás biztosít egy alapértelmezett Docker-rendszerképet, így nem kell aggódnia, hozzon létre egyet. Is használhatja az Ön által létrehozott, egyéni rendszerkép egy _alaplemezkép_. Alapképet lemezkép központi telepítés létrehozásakor a kiindulási pontként szolgál. Az alapul szolgáló operációs rendszer és összetevők biztosít. A telepítési folyamat további összetevők, például a modell, conda-környezet és más eszközök, majd hozzáadja a rendszerkép üzembe helyezése előtt.
+Azure Machine Learning a szolgáltatás egy alapértelmezett Docker-rendszerképet biztosít, így nem kell aggódnia a létrehozásával kapcsolatban. Használhat egy alaprendszerképként létrehozott egyéni rendszerképet is. Alapszintű rendszerképet kell használni a központi telepítés rendszerképének létrehozásakor. A mögöttes operációs rendszert és összetevőket tartalmazza. Az üzembe helyezési folyamat ezután további összetevőket (például a modellt, a Conda-környezetet és más eszközöket) helyez el a lemezképbe a telepítés előtt.
 
-Általában egy egyéni lemezkép készítése, ha meg szeretné összetevő verziók szabályozhatja, vagy üzembe helyezés során időt. Például érdemes egy Python-, Conda vagy más összetevő adott verziójának egységesen ezeket. Érdemes azt is, a modellt, ahol a telepítési folyamat hosszú ideig tart a szükséges szoftverek telepítéséhez. A szoftver telepítése az alaprendszerképet létrehozásakor, az azt jelenti, hogy nem kell telepíteni az egyes központi telepítések.
+Általában egyéni rendszerképet kell létrehoznia, ha az összetevő-verziókat szeretné vezérelni, vagy időt takarít meg az üzembe helyezés során. Előfordulhat például, hogy a Python, a Conda vagy más összetevő egy adott verziójára szeretne szabványosítani. Előfordulhat, hogy a modellhez szükséges szoftvert is telepítenie kell, ahol a telepítési folyamat hosszú időt vesz igénybe. Ha az alaprendszerkép létrehozásakor telepíti a szoftvert, azt jelenti, hogy nem kell telepítenie az összes központi telepítéshez.
 
 > [!IMPORTANT]
-> Amikor egy modell üzembe helyezésével, alapvető összetevői, például a webalkalmazás-kiszolgáló vagy az IoT Edge-összetevőket nem lehet felülírni. Ezek az összetevők biztosítják, amelyek tesztelése, és támogatja a Microsoft által ismert működő környezethez.
+> Modell telepítésekor nem bírálhatja felül a fő összetevőket, például a webkiszolgálót vagy a IoT Edge összetevőket. Ezek az összetevők olyan ismert munkahelyi környezetet biztosítanak, amelyet a Microsoft tesztelt és támogat.
 
 > [!WARNING]
-> A Microsoft nem lehet egyéni rendszerkép által okozott problémák elhárításához. Ha problémákat tapasztal, előfordulhat, hogy megkérdezi, hogy az alapértelmezett lemezkép vagy a rendszerképeket a Microsoft biztosít annak ellenőrzéséhez, hogy a probléma csak a rendszerkép használatára.
+> Előfordulhat, hogy a Microsoft nem tud segíteni az egyéni rendszerkép által okozott problémák elhárításában. Ha problémákba ütközik, előfordulhat, hogy az alapértelmezett lemezképet vagy a Microsoft által biztosított lemezképek valamelyikét kell használnia annak ellenőrzéséhez, hogy a probléma kifejezetten a lemezképre vonatkozik-e.
 
-Ez a dokumentum két szakaszra van osztva:
+Ez a dokumentum két részre oszlik:
 
-* Hozzon létre egy egyéni rendszerképet: A rendszergazdák és a fejlesztési és üzemeltetési információkat biztosít egyéni rendszerkép létrehozása és a egy Azure Container Registry használatával, az Azure CLI-vel és a Machine Learning parancssori hitelesítésének konfigurálása.
-* Egyéni kép használata: Az Adatszakértők és a fejlesztési és üzemeltetési/MLOps információt nyújt az egyéni lemezképek, a Python SDK-t vagy az ML parancssori felületének betanított modell üzembe helyezésekor.
+* Egyéni rendszerkép létrehozása: Információt nyújt a rendszergazdáknak és a DevOps az Egyéni rendszerképek létrehozásáról és a hitelesítés konfigurálásáról egy Azure Container Registry az Azure CLI és a Machine Learning parancssori felület használatával.
+* Egyéni rendszerkép használata: Információt nyújt az adatszakértőknek és a DevOps/MLOps az Egyéni rendszerképek használatával, amikor betanított modellt telepít a Python SDK-ból vagy a ML CLI-ből.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure Machine Learning szolgáltatás munkacsoporthoz. További információkért lásd: a [hozzon létre egy munkaterületet](setup-create-workspace.md) cikk.
-* The Azure Machine Learning SDK. Python SDK-t című szakaszában talál további információt a [hozzon létre egy munkaterületet](setup-create-workspace.md#sdk) cikk.
+* Egy Azure Machine Learning szolgáltatás munkacsoportja. További információt a [Munkaterület létrehozása](setup-create-workspace.md) című cikkben talál.
+* A Azure Machine Learning SDK. További információ: a [Munkaterület létrehozása](setup-create-workspace.md#sdk) című cikk Python SDK szakasza.
 * A [az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-* A [az Azure Machine Learning CLI-bővítmény](reference-azure-machine-learning-cli.md).
-* Egy [Azure Container Registry](/azure/container-registry) vagy másik Docker-jegyzék, amely az interneten érhető el.
-* A jelen dokumentumban leírt lépések azt feltételezik, hogy Ön ismeri a létrehozásával és használatával egy __következtetésekhez konfigurációs__ objektum modell központi telepítésének részeként. További információ "üzembe helyezés előkészítése" című szakaszában talál [az üzembe helyezés, és hogyan](how-to-deploy-and-where.md#prepare-to-deploy).
+* A [Azure Machine learning CLI](reference-azure-machine-learning-cli.md)-bővítménye.
+* Az interneten elérhető [Azure Container Registry](/azure/container-registry) vagy más Docker-beállításjegyzék.
+* A jelen dokumentum lépései azt feltételezik, hogy a modell üzembe helyezésének részeként már ismeri a __következtetési konfigurációs__ objektum létrehozását és használatát. További információ: a telepítésének előkészítése című rész, [ahol a üzembe helyezés és az útmutató](how-to-deploy-and-where.md#prepare-to-deploy).
 
 ## <a name="create-a-custom-image"></a>Egyéni lemezkép létrehozása
 
-Ebben a szakaszban található információk azt feltételezi, hogy egy Azure Container Registry segítségével Docker-rendszerképek tárolásához. A következő ellenőrzőlista használható tervezése során az Azure Machine Learning szolgáltatás egyéni rendszerképek létrehozásához:
+Az ebben a szakaszban található információk azt feltételezik, hogy Azure Container Registry használ a Docker-rendszerképek tárolásához. A következő ellenőrzőlista használható egyéni rendszerképek létrehozásához Azure Machine Learning szolgáltatáshoz:
 
-* Használja az Azure Container Registry létrehozása az Azure Machine Learning szolgáltatás munkaterületén vagy egy önálló Azure Container Registry?
+* A Azure Machine Learning szolgáltatás munkaterülethez vagy önálló Azure Container Registryhoz létrehozott Azure Container Registry fogja használni?
 
-    Amikor lemezképek használatával tárolja a __a munkaterület a tárolóregisztrációs adatbázis__, nem kell hitelesíteni a regisztrációs adatbázisba. Hitelesítés a munkaterület kezeli.
+    Ha a munkaterülethez tartozó __tároló beállításjegyzékében__tárolt rendszerképeket használ, nem kell hitelesítenie magát a beállításjegyzékben. A hitelesítést a munkaterület kezeli.
 
     > [!WARNING]
-    > A munkaterület az Azure Container Rzegistry van __jön létre, betanítását, vagy a modell üzembe helyezése__ a munkaterület használatával. Ha már létrehozott egy új munkaterületet, de nem betanított vagy létrehozott egy modellt, nem az Azure Container Registry a munkaterületet fog léteznek.
+    > A munkaterülethez tartozó Azure Container Rzegistry akkor jön létre, amikor a munkaterülettel __először betanít vagy üzembe helyez egy modellt__ . Ha létrehozott egy új munkaterületet, de nem képzett vagy nem hozott létre modellt, akkor a munkaterülethez nem tartozik Azure Container Registry.
 
-    Lekérésével kapcsolatos információk az Azure Container Registry a munkaterület nevére, tekintse meg a [Get tárolóregisztrációs adatbázis nevét](#getname) című szakaszát.
+    A munkaterület Azure Container Registry nevének beolvasásával kapcsolatos információkért tekintse meg a jelen cikk [tároló beállításjegyzékének](#getname) beolvasása című szakaszát.
 
-    Amikor rendszerképekből tárolja egy __önálló tárolóregisztrációs adatbázis__, szüksége lesz egy legalább olvasási hozzáféréssel rendelkezik egyszerű szolgáltatás konfigurálása. Majd adja meg a szolgáltatásnév-Azonosítót (felhasználónév) és a jelszót bárki által használt rendszerképek a beállításjegyzékből. A kivétel az, ha elvégezte a tároló-beállításjegyzék nyilvánosan elérhető-e.
+    __Önálló tároló__-beállításjegyzékben tárolt rendszerképek használata esetén konfigurálnia kell egy egyszerű szolgáltatásnevet, amely legalább olvasási hozzáféréssel rendelkezik. Ezután megadhatja az egyszerű szolgáltatás AZONOSÍTÓját (felhasználónevét) és jelszavát, amely a beállításjegyzékből származó lemezképeket használ. Ez alól kivételt képez, ha nyilvánosan elérhetővé teszi a tároló-beállításjegyzéket.
 
-    Egy privát Azure Container Registry létrehozásával kapcsolatos információkért lásd: [hozzon létre egy privát tárolójegyzékben](/azure/container-registry/container-registry-get-started-azure-cli).
+    A privát Azure Container Registry létrehozásával kapcsolatos információkért lásd: [saját tároló beállításjegyzékének létrehozása](/azure/container-registry/container-registry-get-started-azure-cli).
 
-    Információ a szolgáltatásnevek használata az Azure Container Registryvel: [Azure Tárolóregisztrációs adatbázis hitelesítési szolgáltatásnevekkel](/azure/container-registry/container-registry-auth-service-principal).
+    További információ az egyszerű szolgáltatások Azure Container Registry használatával történő használatáról: [Azure Container Registry hitelesítés az egyszerű szolgáltatásokkal](/azure/container-registry/container-registry-auth-service-principal).
 
-* Az Azure Container Registry- és képfájlok információkat: Adja meg a rendszerkép nevének bárki használja azt. Például nevű kép `myimage`nevű beállításjegyzékben tárolt `myregistry`, mint hivatkozott `myregistry.azurecr.io/myimage` a rendszerkép használata esetén a modell üzembe helyezése
+* Azure Container Registry és rendszerkép adatai: Adja meg a rendszerkép nevét bárkinek, akinek használni szeretné. Például egy nevű `myregistry`beállításjegyzékbeli nevű `myimage`rendszerképet a rendszer a rendszerképnek a modell központi `myregistry.azurecr.io/myimage` telepítésére való használatakor hivatkozik.
 
-* A rendszerképre vonatkozó követelmények: Az Azure Machine Learning szolgáltatás csak a Docker-rendszerképek, amelyek a következő szoftvereket támogatja:
+* Rendszerképekre vonatkozó követelmények: Azure Machine Learning a szolgáltatás csak a következő szoftvereket biztosító Docker-rendszerképeket támogatja:
 
-    * Ubuntu 16.04 vagy nagyobb.
+    * Ubuntu 16,04 vagy újabb.
     * Conda 4.5. # vagy nagyobb.
-    * Python 3.5-ös verzióját. # vagy 3.6. #.
+    * Python 3.5. # vagy 3.6. #.
 
 <a id="getname"></a>
 
-### <a name="get-container-registry-information"></a>Tároló-beállításjegyzék-információk lekérése
+### <a name="get-container-registry-information"></a>Tároló beállításjegyzék-adatainak beolvasása
 
-Ebben a szakaszban megtudhatja, hogyan tehet szert az Azure Container Registry neve az Azure Machine Learning szolgáltatás a munkaterülethez.
+Ebből a szakaszból megtudhatja, hogyan kérheti le a Azure Machine Learning szolgáltatás munkaterülethez tartozó Azure Container Registry nevét.
 
 > [!WARNING]
-> Az Azure Container Registry a munkaterület __jön létre, betanítását, vagy a modell üzembe helyezése__ a munkaterület használatával. Ha már létrehozott egy új munkaterületet, de nem betanított vagy létrehozott egy modellt, nem az Azure Container Registry a munkaterületet fog léteznek.
+> A munkaterülethez tartozó Azure Container Registry akkor jön létre, amikor a munkaterületen __először betanít vagy telepít egy modellt__ . Ha létrehozott egy új munkaterületet, de nem képzett vagy nem hozott létre modellt, akkor a munkaterülethez nem tartozik Azure Container Registry.
 
-Ha már betanított vagy üzembe helyezve az Azure Machine Learning szolgáltatás használatával, a munkaterület egy tároló-beállításjegyzéket hoztuk létre. A tárolóregisztrációs adatbázis nevét, használja az alábbi lépéseket:
+Ha már betanított vagy telepített modelleket a Azure Machine Learning szolgáltatással, a rendszer létrehoz egy tároló-beállításjegyzéket a munkaterülethez. A tároló-beállításjegyzék nevének megkereséséhez kövesse az alábbi lépéseket:
 
-1. Nyisson meg egy új shell vagy az parancssor és a hitelesítést az Azure-előfizetéshez a következő paranccsal:
+1. Nyisson meg egy új rendszerhéjt vagy egy parancssort, és az alábbi paranccsal hitelesítheti magát az Azure-előfizetésében:
 
     ```azurecli-interactive
     az login
     ```
 
-    Kövesse az utasításokat az előfizetéshez való hitelesítéséhez.
+    Az előfizetések hitelesítéséhez kövesse az utasításokat.
 
-2. A következő paranccsal listázhatja a tároló-beállításjegyzékbe a munkaterület számára. Cserélje le `<myworkspace>` az Azure Machine Learning munkaterület szolgáltatásnévvel. Cserélje le `<resourcegroup>` együtt az Azure-erőforráscsoportot, amely tartalmazza a munkaterülethez:
+2. Használja a következő parancsot a munkaterület tároló-beállításjegyzékének listázásához. Cserélje `<myworkspace>` le a helyére a Azure Machine learning szolgáltatás-munkaterület nevét. Cserélje `<resourcegroup>` le a helyére a munkaterületet tartalmazó Azure-erőforráscsoportot:
 
     ```azurecli-interactive
     az ml workspace show -w <myworkspace> -g <resourcegroup> --query containerRegistry
     ```
 
-    A visszaadott információ az alábbi szöveghez hasonlít:
+    A visszaadott információ az alábbi szöveghez hasonló:
 
     ```text
     /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.ContainerRegistry/registries/<registry_name>
     ```
 
-    A `<registry_name>` értéke az Azure Container Registry a munkaterület nevét.
+    Az `<registry_name>` érték a munkaterület Azure Container Registry neve.
 
-### <a name="build-a-custom-image"></a>Egyéni rendszerkép készítése
+### <a name="build-a-custom-image"></a>Egyéni rendszerkép létrehozása
 
-Az ebben a szakaszban az útmutatóban egyéni Docker-rendszerkép létrehozása az Azure Container Registry a lépéseket.
+Az ebben a szakaszban ismertetett lépések végigvezetik az egyéni Docker-rendszerkép létrehozásán a Azure Container Registry.
 
-1. Hozzon létre egy új szöveges fájlt `Dockerfile`, és használja a következő szöveg tartalma:
+1. Hozzon létre egy nevű `Dockerfile`új szövegfájlt, és használja a következő szöveget a tartalomként:
 
     ```text
     FROM ubuntu:16.04
@@ -138,82 +138,82 @@ Az ebben a szakaszban az útmutatóban egyéni Docker-rendszerkép létrehozása
         find / -type d -name __pycache__ -prune -exec rm -rf {} \;
     ```
 
-2. Rendszerhéj vagy a parancssorból használja a következő hitelesítéséhez az Azure Container registrybe. Cserélje le a `<registry_name>` szeretné tárolni a rendszerképet a tároló-beállításjegyzék nevére:
+2. Egy rendszerhéjból vagy parancssorból a következő paranccsal hitelesítheti magát a Azure Container Registry. A `<registry_name>` helyére írja be annak a tároló-beállításjegyzéknek a nevét, amelyben a rendszerképet tárolni szeretné:
 
     ```azurecli-interactive
     az acr login --name <registry_name>
     ```
 
-3. A docker-fájl feltöltése, és építse fel, használja a következő parancsot. Cserélje le `<registry_name>` szeretné tárolni a rendszerképet a tároló-beállításjegyzék nevére:
+3. A Docker feltöltéséhez és a létrehozásához használja a következő parancsot. A `<registry_name>` helyére írja be annak a tároló-beállításjegyzéknek a nevét, amelyben a rendszerképet tárolni szeretné:
 
     ```azurecli-interactive
     az acr build --image myimage:v1 --registry <registry_name> --file Dockerfile .
     ```
 
-    Az összeállítási folyamat során információk adatfolyamként történő vissza a parancssorhoz. Ha a build sikeres, az alábbi szöveghez hasonló üzenetet kapja:
+    A létrehozási folyamat során a rendszer továbbítja az adatokat a parancssorba. Ha a Build sikeres, az alábbihoz hasonló üzenet jelenik meg:
 
     ```text
     Run ID: cda was successful after 2m56s
     ```
 
-Az Azure Container Registry rendszerképek további információkért lásd: [létrehozása és futtatása egy tárolórendszerképet az Azure Container Registry feladatok használatával](https://docs.microsoft.com/azure/container-registry/container-registry-quickstart-task-cli)
+A rendszerképek Azure Container Registry használatával történő létrehozásával kapcsolatos további információkért lásd: [tároló lemezképének létrehozása és futtatása Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-quickstart-task-cli) feladatokkal
 
-További információ a meglévő rendszerképek feltöltése egy Azure Container registrybe: [az első rendszerkép leküldése egy privát Docker-tárolójegyzék](/azure/container-registry/container-registry-get-started-docker-cli).
+A meglévő lemezképek Azure Container Registryra való feltöltésével kapcsolatos további információkért lásd: [az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékbe](/azure/container-registry/container-registry-get-started-docker-cli).
 
 ## <a name="use-a-custom-image"></a>Egyéni rendszerkép használata
 
-Egyéni rendszerkép használatára, szüksége van a következő információkat:
+Egyéni rendszerkép használatához a következő információk szükségesek:
 
-* A __lemezképnév__. Ha például `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` alapszintű Docker-rendszerkép a Microsoft által biztosított elérési útját.
-* Ha a kép egy __privát tárház__, a következő információk szükségesek:
+* A __rendszerkép neve__. Például `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` a Microsoft által biztosított alapszintű Docker-rendszerkép elérési útja.
+* Ha a rendszerkép egy __privát tárházban__található, a következő információkra lesz szüksége:
 
-    * A beállításjegyzék __cím__. Például: `myregistry.azureecr.io`.
-    * Egyszerű szolgáltatás __felhasználónév__ és __jelszó__ , amely olvasási hozzáféréssel rendelkezik a regisztrációs adatbázisba.
+    * A beállításjegyzék __címe__. Például: `myregistry.azureecr.io`.
+    * Egy egyszerű szolgáltatásnév __felhasználóneve__ és __jelszava__ , amely olvasási hozzáféréssel rendelkezik a beállításjegyzékhez.
 
-    Ha ezt az információt, a rendszergazda az Azure Container Registry a rendszerképet tartalmazó beszéljenek nem rendelkeznek.
+    Ha nem rendelkezik ezekkel az információkkal, beszéljen a rendszerképet tartalmazó Azure Container Registry rendszergazdájához.
 
 ### <a name="publicly-available-images"></a>Nyilvánosan elérhető lemezképek
 
-A Microsoft több docker-rendszerképeket tartalmazza egy nyilvánosan elérhető tárház, amely a jelen szakaszban ismertetett lépések használhatók:
+A Microsoft számos Docker-rendszerképet biztosít egy nyilvánosan elérhető adattáron, amely az ebben a szakaszban ismertetett lépésekkel használható:
 
 | Image | Leírás |
 | ----- | ----- |
-| `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Az Azure Machine Learning szolgáltatás alapszintű kép |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0` | Az ONNX-futtatókörnyezet tartalmazza. |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-cuda10.0-cudnn7` | Az ONNX-futtatókörnyezet és a CUDA összetevőket tartalmazza. |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-tensorrt19.03` | Az ONNX-futtatókörnyezet és TensorRT tartalmazza. |
+| `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure Machine Learning szolgáltatás alapszintű képe |
+| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0` | A ONNX futtatókörnyezetet tartalmazza. |
+| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-cuda10.0-cudnn7` | A ONNX Runtime és a CUDA összetevőket tartalmazza. |
+| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-tensorrt19.03` | ONNX futtatókörnyezetet és TensorRT tartalmaz. |
 
 > [!TIP]
-> Mivel ezek a lemezképek nyilvánosan elérhető, nem kell egy címe, felhasználónév vagy jelszó szolgáltatni használja őket.
+> Mivel ezek a lemezképek nyilvánosan elérhetők, nem kell megadnia a szükséges címeket, felhasználónevet vagy jelszót.
 
 > [!IMPORTANT]
-> Microsoft-lemezképek, amelyek CUDA vagy TensorRT csak a Microsoft Azure-szolgáltatásokra kell használni.
+> A CUDA vagy TensorRT használó Microsoft-rendszerképeket csak Microsoft Azure szolgáltatásokban kell használni.
 
 > [!TIP]
->__Ha a modell tanítása az Azure Machine Learning Compute__révén __1.0.22 verzió vagy annál nagyobb__ , az Azure Machine Learning SDK-lemezkép létrehozása betanítás során. Fedezze fel a lemezkép nevét, használja a `run.properties["AzureML.DerivedImageName"]`. A következő példa bemutatja, hogyan használhatja ezt a képet:
+>__Ha a modell Azure Machine learning számítási__feladatokra van betanítva, az Azure Machine learning SDK __1.0.22 vagy újabb verziójával__ , a rendszer a betanítás során létrehoz egy rendszerképet. A rendszerkép nevének felderítéséhez használja `run.properties["AzureML.DerivedImageName"]`a következőt:. Az alábbi példa bemutatja, hogyan használhatja ezt a rendszerképet:
 >
 > ```python
 > # Use an image built during training with SDK 1.0.22 or greater
 > image_config.base_image = run.properties["AzureML.DerivedImageName"]
 > ```
 
-### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Lemezképek használata az Azure Machine Learning SDK-val
+### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Rendszerkép használata az Azure Machine Learning SDK-val
 
-Egyéni rendszerkép használatához állítsa a `base_image` tulajdonságát a [következtetésekhez konfigurációs objektum](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) a lemezkép-címére:
+Egyéni rendszerkép használatához állítsa a `base_image` [következtetési konfigurációs objektum](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) tulajdonságát a rendszerkép címeként:
 
 ```python
 # use an image from a registry named 'myregistry'
 inference_config.base_image = "myregistry.azurecr.io/myimage:v1"
 ```
 
-Ez a formátum mindkét a a munkaterületet, és a tároló beállításjegyzékekhez, amelyek nyilvánosan elérhetők az Azure Container Registryben tárolt rendszerképek esetében működik. A következő kód például a Microsoft által biztosított alapértelmezett kép használja:
+Ez a formátum a munkaterülethez és a nyilvánosan elérhető tároló-beállításjegyzékek Azure Container Registryban tárolt rendszerképekre is használható. Az alábbi kód például a Microsoft által biztosított alapértelmezett rendszerképet használja:
 
 ```python
 # use an image available in public Container Registry without authentication
 inference_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
 ```
 
-A rendszerkép használatához egy __privát tárolójegyzékben__ , amely nem szerepel a munkaterülethez, meg kell adnia a címet, a tárházat és a egy felhasználónevet és jelszót:
+Ha olyan rendszerképet szeretne használni a __saját tároló__ -beállításjegyzékből, amely nem szerepel a munkaterületén, meg kell adnia a tárház nevét és a felhasználónevet és a jelszót:
 
 ```python
 # Use an image available in a private Container Registry
@@ -223,12 +223,12 @@ inference_config.base_image_registry.username = "username"
 inference_config.base_image_registry.password = "password"
 ```
 
-### <a name="use-an-image-with-the-machine-learning-cli"></a>Egy rendszerkép használata a Machine Learning parancssori felület
+### <a name="use-an-image-with-the-machine-learning-cli"></a>Rendszerkép használata a Machine Learning parancssori felülettel
 
 > [!IMPORTANT]
-> Jelenleg a Machine Learning parancssori rendszerképeit is használhatják az Azure Container Registry a munkaterületet, vagy a nyilvánosan elérhető tárházak számára. A privát beállításjegyzékek önálló képeket nem használható.
+> A Machine Learning CLI jelenleg a munkaterülethez vagy a nyilvánosan elérhető adattárakhoz tartozó Azure Container Registry képeket is használhat. Önálló privát beállításjegyzékből származó lemezképeket nem használhat.
 
-Ha üzembe helyezéséhez a Machine Learning parancssori felület használatával, meg kell adnia egy következtetésekhez konfigurációs fájlt, amely az egyéni rendszerkép hivatkozik. A következő JSON-dokumentum való hivatkozáshoz egy nyilvános tároló-beállításjegyzéket egy kép mutatja be:
+Ha a Machine Learning parancssori felület használatával helyez üzembe egy modellt, olyan következtetési konfigurációs fájlt ad meg, amely az egyéni lemezképre hivatkozik. A következő JSON-dokumentum bemutatja, hogyan hivatkozhat egy rendszerképre egy nyilvános tároló beállításjegyzékében:
 
 ```json
 {
@@ -243,15 +243,15 @@ Ha üzembe helyezéséhez a Machine Learning parancssori felület használatáva
 }
 ```
 
-Ez a fájl szolgál a `az ml model deploy` parancsot. A `--ic` paraméterrel adja meg a következtetésekhez konfigurációs fájlt.
+Ezt a fájlt a `az ml model deploy` paranccsal lehet használni. A `--ic` paraméter a következtetési konfigurációs fájl megadására szolgál.
 
 ```azurecli
 az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json --ct akscomputetarget
 ```
 
-Egy modellt az ML parancssori felület használatával történő telepítéséről további információkért lásd: "a modell regisztrálását, a profilkészítési, és a központi telepítés" szakaszában a [CLI-bővítmény az Azure Machine Learning szolgáltatás](reference-azure-machine-learning-cli.md#model-registration-profiling-deployment) cikk.
+A modellek ML parancssori felülettel történő üzembe helyezésével kapcsolatos további információkért tekintse meg az [Azure Machine learning Service cikk CLI](reference-azure-machine-learning-cli.md#model-registration-profiling-deployment) -bővítményének "modell regisztrálása, profilkészítés és központi telepítése" című szakaszát.
 
 ## <a name="next-steps"></a>További lépések
 
-* Tudjon meg többet [az üzembe helyezés, és hogyan](how-to-deploy-and-where.md).
-* Ismerje meg, hogyan [Train és üzembe helyezése Azure folyamatok használatával a gépi tanulási modellek](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops).
+* További információ a [telepítéséről és](how-to-deploy-and-where.md)a módjáról.
+* Ismerje meg, hogyan lehet [gépi tanulási modelleket betanítani és üzembe helyezni az Azure-folyamatok használatával](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops).

@@ -1,90 +1,90 @@
 ---
-title: Azure Analysis Services-kiszolgáló metrikáinak monitorozása |} A Microsoft Docs
-description: Ismerje meg, hogyan figyelheti az Analysis Services kiszolgálói metrikák az Azure-portálon.
+title: Azure Analysis Services kiszolgáló metrikáinak monitorozása | Microsoft Docs
+description: Megtudhatja, hogyan figyelheti Analysis Services kiszolgáló metrikáit Azure Portal.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/26/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cdffa8e138062a91bd1876ac6e44728c47d9cdd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5431dd74629b9ed76a6a072d8ada286ce71a7633
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61065048"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596091"
 ---
 # <a name="monitor-server-metrics"></a>A kiszolgáló metrikáinak monitorozása
 
-Analysis Services mérőszámait megfigyelheti a teljesítmény és a kiszolgálók állapotát. Például figyelésére, a memória és CPU-használat, a kapcsolatok és lekérdezési erőforrás-használat. Analysis Services figyelési keretrendszert használja, mint a legtöbb más Azure-szolgáltatásokat. További tudnivalókért lásd: [Microsoft Azure-ban mérőszámok](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+A Analysis Services metrikákat biztosít az Azure Metrikaböngészőban, amely egy ingyenes eszköz a portálon, amely segít a kiszolgálók teljesítményének és állapotának figyelésében. Figyelje például a memória és a processzor kihasználtságát, az ügyfélkapcsolatok számát és a lekérdezési erőforrások felhasználását. Analysis Services ugyanazt a figyelési keretrendszert használja, mint a legtöbb más Azure-szolgáltatás. További információ: [Az Azure Metrikaböngésző első lépései](../azure-monitor/platform/metrics-getting-started.md).
 
-További részletes diagnosztikai végrehajtásához követheti nyomon, és egy erőforráscsoport vagy előfizetés több szolgáltatási erőforrások azonosíthatja a trendeket, használja [Azure Monitor](https://azure.microsoft.com/services/monitor/). Az Azure Monitor (szolgáltatás) egy számlázható szolgáltatás létrejöttét eredményezheti.
+A részletesebb diagnosztika végrehajtásához, a teljesítmény nyomon követéséhez és az erőforráscsoport vagy előfizetés több szolgáltatási erőforrása közötti trendek azonosításához használja a [Azure monitor](../azure-monitor/overview.md). A Azure Monitor (szolgáltatás) számlázható szolgáltatást eredményezhet.
 
 
-## <a name="to-monitor-metrics-for-an-analysis-services-server"></a>Az Analysis Services-kiszolgáló metrikáinak monitorozása
+## <a name="to-monitor-metrics-for-an-analysis-services-server"></a>Analysis Services-kiszolgáló metrikáinak figyelése
 
-1. Az Azure Portalon, válassza ki a **metrikák**.
+1. A Azure Portal területen válasszaa metrikák lehetőséget.
 
     ![Monitorozás az Azure Portalon](./media/analysis-services-monitor/aas-monitor-portal.png)
 
-2. A **rendelkezésre álló metrikák**, válassza ki a mérőszámok közé tartozik a diagramon. 
+2. A **rendelkezésre álló metrikák**területen válassza ki a diagramba felvenni kívánt metrikákat. 
 
-    ![A figyelő diagram](./media/analysis-services-monitor/aas-monitor-chart.png)
+    ![Diagram figyelése](./media/analysis-services-monitor/aas-monitor-chart.png)
 
 <a id="#server-metrics"></a>
 
-## <a name="server-metrics"></a>Kiszolgáló-metrikák
+## <a name="server-metrics"></a>Kiszolgálói metrikák
 
-Ez a táblázat segítségével meghatározhatja, pontosan mely mérőszámokat a legjobbak a figyelési forgatókönyv. Csak ugyanazon mértékegység mérőszámait ugyanezen a diagramon megjeleníthető.
+A táblázat segítségével meghatározhatja, hogy mely mérőszámok a legmegfelelőbbek a figyelési forgatókönyvekhez. Ugyanazon a diagramon csak az azonos egység mérőszámai jeleníthetők meg.
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|
 |---|---|---|---|---|
-|CommandPoolJobQueueLength|A parancs feladat-várólistájának hossza|Darabszám|Átlag|Az a parancs szálkészlet üzenetsorában található feladatok száma.|
-|CurrentConnections|Kapcsolat: Jelenlegi kapcsolatok száma|Count|Átlag|A létrehozott ügyfélkapcsolatok aktuális száma.|
-|CurrentUserSessions|Jelenlegi felhasználói munkamenetek|Count|Átlag|A létrehozott felhasználói munkamenetek aktuális száma.|
-|mashup_engine_memory_metric|M motor memóriája|Bájt|Átlag|Az adategyesítési motor folyamatainak memóriafelhasználása|
-|mashup_engine_qpu_metric|M motor qpu-ja|Darabszám|Átlag|Az adategyesítési motor folyamatainak QPU használatáról|
-|memory_metric|Memory (Memória)|Bájt|Átlag|A memória. Tartomány 0 – 25 GB – S1, 0-50 GB – S2 és 0 – 100 GB – S4|
-|memory_thrashing_metric|Memóriaakadozás|Százalék|Átlag|Átlagos memóriaakadozás.|
-|CleanerCurrentPrice|Memória: Tisztító – aktuális ár|Count|Átlag|Aktuális ára $/ bájt/idő, a memória, 1000-re normalizálva.|
-|CleanerMemoryNonshrinkable|Memória: Tisztább memória – nem zsugorítható|Bájt|Átlag|Memória (bájt) nem vonatkoznak a háttérben futó tisztító kiürítése mennyisége.|
-|CleanerMemoryShrinkable|Memória: Tisztító – zsugorítható memória|Bájt|Átlag|Memória (bájt) vonatkoznak a háttérben futó tisztító kiürítése mennyisége.|
-|MemoryLimitHard|Memória: Szigorú Memóriakorlát|Bájt|Átlag|Szigorú Memóriakorlát a konfigurációs fájlból.|
-|MemoryLimitHigh|Memória: Felső Memóriakorlát|Bájt|Átlag|Felső Memóriakorlát a konfigurációs fájlból.|
-|MemoryLimitLow|Memória: Alsó Memóriakorlát|Bájt|Átlag|Alsó Memóriakorlát a konfigurációs fájlból.|
-|MemoryLimitVertiPaq|Memória: VertiPaq-Memóriakorlát|Bájt|Átlag|Memóriabeli korlát a konfigurációs fájlból.|
-|MemoryUsage|Memória: Memóriahasználat|Bájt|Átlag|A kiszolgálói folyamat tisztító memória ár kiszámításakor memóriahasználat. Megegyezik a számláló Process\PrivateBytes plusz a memória által leképezett adatok figyelmen kívül hagyva, amely a leképezett vagy lefoglalt biztosította a motor memória felső korlátja a memóriabeli elemzési motor (VertiPaq) által méretét.|
-|Kvóta|Memória: Kvóta|Bájt|Átlag|Aktuális memóriakvóta bájtban. A memóriakvóta memória grant vagy a memória foglalás is nevezik.|
-|QuotaBlocked|Memória: Blokkolt kvóta|Count|Átlag|Aktuális száma, amelyek le vannak tiltva, amíg a további Memóriakvóták felszabadítását.|
-|VertiPaqNonpaged|Memória: VertiPaq Nonpaged|Bájt|Átlag|Bájt memóriát a memóriabeli motor általi használatra munkakészletében lévő zárolva van.|
-|VertiPaqPaged|Memória: VertiPaq Paged|Bájt|Átlag|Lapozható memória, a memóriában lévő adatok bájt.|
-|ProcessingPoolJobQueueLength|Feldolgozási készlet feladat-várólistájának hossza|Count|Átlag|Az a feldolgozási szálkészlet üzenetsorában lévő nem I/o feladatok száma.|
-|RowsConvertedPerSec|Feldolgozás: Másodpercenként konvertált sorok|CountPerSecond|Átlag|Sorok konvertálásának sebessége a feldolgozás során.|
-|RowsReadPerSec|Feldolgozás: Másodpercenként beolvasott sorok száma|CountPerSecond|Átlag|Sorok beolvasásának sebessége az összes relációs adatbázisból.|
-|RowsWrittenPerSec|Feldolgozás: Másodpercenként írt sorok|CountPerSecond|Átlag|Sorok írásának sebessége a feldolgozás során.|
-|qpu_metric|QPU|Count|Átlag|QPU. Tartomány 0 és 100 s1, 0 – 200 – S2 és 0 – 400 – S4|
-|QueryPoolBusyThreads|Lekérdezési készlet foglalt szálai|Count|Átlag|A lekérdezési szálkészletben lévő foglalt szálak száma.|
-|SuccessfullConnectionsPerSec|Sikeres kapcsolatok másodpercenként|CountPerSecond|Átlag|A sikeres kapcsolat befejezésekből sebessége.|
-|CommandPoolBusyThreads|Szálak: A parancs parancskészlet – foglalt szálak|Count|Átlag|A parancs szálkészletben lévő foglalt szálak száma.|
-|CommandPoolIdleThreads|Szálak: A parancs készlet – üresjárati szálak|Count|Átlag|A parancsszálkészletben az üresjárati szálak száma.|
-|LongParsingBusyThreads|Szálak: Tartós folyamatok elemzési foglalt szálak|Count|Átlag|A tartós folyamatok elemzési szálkészletben lévő foglalt szálak száma.|
-|LongParsingIdleThreads|Szálak: Tartós folyamatok elemzési üresjárati szálak|Darabszám|Átlag|A tartós folyamatok elemzési szálkészletében az üresjárati szálak száma.|
-|LongParsingJobQueueLength|Szálak: Tartós folyamatok elemzési feladat üzenetsorának hossza|Darabszám|Átlag|A tartós folyamatok elemzési szálkészlet üzenetsorában található feladatok száma.|
-|ProcessingPoolIOJobQueueLength|Szálak: Feldolgozási készlet – I/O feladat üzenetsorának hossza|Darabszám|Átlag|Az a feldolgozási szálkészlet üzenetsorában található I/O feladatok száma.|
-|ProcessingPoolBusyIOJobThreads|Szálak: Készlet foglalt i/o-feladat szálak feldolgozása|Darabszám|Átlag|A feldolgozási szálkészletben I/O feladatokat futtató szálak száma.|
-|ProcessingPoolBusyNonIOThreads|Szálak: Feldolgozási készlet a nem I/o feladat foglalt szálai|Count|Átlag|A feldolgozási szálkészletben nem I/o feladatokat futtató szálak száma.|
-|ProcessingPoolIdleIOJobThreads|Szálak: Feldolgozási készlet – üresjárati i/o feladat szálak|Count|Átlag|A feldolgozási szálkészletben I/O feladatok üresjárati szálak száma.|
-|ProcessingPoolIdleNonIOThreads|Szálak: Feldolgozási készlet a nem I/o feladat üresjárati szálai|Count|Átlag|A feldolgozási szálkészletben nem I/o feladatok számára kijelölt üresjárati szálak száma.|
-|QueryPoolIdleThreads|Szálak: Lekérdezési készlet – üresjárati szálak|Count|Átlag|A feldolgozási szálkészletben I/O feladatok üresjárati szálak száma.|
-|QueryPoolJobQueueLength|Szálak: Lekérdezési készlet feladat-várólistájának hossza|Count|Átlag|Az a lekérdezési szálkészlet üzenetsorában található feladatok száma.|
-|ShortParsingBusyThreads|Szálak: Rövid elemzés a foglalt szálak|Count|Átlag|A rövid elemzési szálkészletben lévő foglalt szálak száma.|
-|ShortParsingIdleThreads|Szálak: Rövid elemzési üresjárati szálak|Count|Átlag|A rövid elemzési szálkészletben az üresjárati szálak száma.|
-|ShortParsingJobQueueLength|Szálak: Rövid elemzési feladat üzenetsorának hossza|Darabszám|Átlag|A a rövid elemzési szálkészlet üzenetsorában található feladatok száma.|
-|TotalConnectionFailures|Csatlakozási hibák teljes száma|Darabszám|Átlag|A sikertelen csatlakozási kísérletek összesen.|
-|TotalConnectionRequests|Csatlakozási kérelmek teljes száma|Count|Átlag|Csatlakozási kérelmek teljes száma. |
+|CommandPoolJobQueueLength|Parancssori feladatok várólistájának hossza|Count|Average|A parancsfájl-készlet várólistájában lévő feladatok száma.|
+|Összege|Kapcsolat: Aktuális kapcsolatok|Count|Average|A létesített ügyfélkapcsolatok aktuális száma.|
+|CurrentUserSessions|Aktuális felhasználói munkamenetek|Count|Average|A létrejött felhasználói munkamenetek aktuális száma.|
+|mashup_engine_memory_metric|M motor memóriája|Bájt|Average|Memóriahasználat az adategyesítési motor folyamatai szerint|
+|mashup_engine_qpu_metric|M motor QPU|Count|Average|QPU-használat az adategyesítési motor folyamatai szerint|
+|memory_metric|Memory (Memória)|Bájt|Average|Memória. 0-25 GB-os tartomány S1, 0-50 GB az S2 és 0-100 GB for S4 esetében|
+|memory_thrashing_metric|Memória-Kiverés|Percent|Average|Memória átlagos kiverése.|
+|CleanerCurrentPrice|Memória: Tisztító aktuális díja|Count|Average|A memória aktuális ára, a $ re normalizálva, 1000-ra normalizálva.|
+|CleanerMemoryNonshrinkable|Memória: Nem zsugorodó tisztító memória|Bájt|Average|A memória mennyisége (bájtban), amelyet a háttérben futó tisztító nem szabályoz.|
+|CleanerMemoryShrinkable|Memória: Tisztító memória zsugorodó|Bájt|Average|A memória mennyisége (bájtban kifejezve), amely a háttér-tisztító általi törlés tárgya.|
+|MemoryLimitHard|Memória: Memória korlátozása – kemény|Bájt|Average|Rögzített memória korlátja a konfigurációs fájlból.|
+|MemoryLimitHigh|Memória: Memória korlátja magas|Bájt|Average|Magas memória korlátja a konfigurációs fájlból.|
+|MemoryLimitLow|Memória: Kevés a memória korlátja|Bájt|Average|Kevés a memória korlátja a konfigurációs fájlból.|
+|MemoryLimitVertiPaq|Memória: Memória korlátja VertiPaq|Bájt|Average|Memóriabeli korlát a konfigurációs fájlból.|
+|MemoryUsage|Memória: Memóriahasználat|Bájt|Average|A kiszolgálói folyamat memóriahasználat a tisztább memória árának kiszámításakor használt módon. Egyenlő a számláló Process\PrivateBytes és a memóriához rendelt adatmennyiséggel, figyelmen kívül hagyva a memóriát, amelyet a memória-elemzési motor (VertiPaq) leképezett vagy lefoglalt a memória korlátja felett.|
+|Kvóta|Memória: Kvóta|Bájt|Average|Az aktuális memória kvótája (bájt). A memória kvótáját memória-engedélyezési vagy memória-foglalásnak is nevezzük.|
+|QuotaBlocked|Memória: Kvóta letiltva|Count|Average|A letiltott kvóta-kérelmek aktuális száma, amíg a többi memória kvótája fel nem szabadul.|
+|VertiPaqNonpaged|Memória: VertiPaq nem lapozható|Bájt|Average|A memóriában lévő motor általi használatra a munkakészletben zárolt memória mennyisége (bájtban).|
+|VertiPaqPaged|Memória: VertiPaq lapozható|Bájt|Average|A memóriában tárolt adatmennyiséghez használt lapozható memória bájtjai.|
+|ProcessingPoolJobQueueLength|Feldolgozási készlet nyomtatási várólistájának hossza|Count|Average|A feldolgozási szál készletének várólistájában nem I/O típusú feladatok száma.|
+|RowsConvertedPerSec|Feldolgozás: Másodpercenként konvertált sorok száma|Egység/s|Average|A sorok konvertálásának sebessége a feldolgozás során.|
+|RowsReadPerSec|Feldolgozás: Olvasott sorok száma másodpercenként|Egység/s|Average|Az összes kapcsolódó adatbázisból beolvasott sorok száma.|
+|RowsWrittenPerSec|Feldolgozás: Másodpercenként írt sorok száma|Egység/s|Average|A sorok írásának sebessége a feldolgozás során.|
+|qpu_metric|QPU|Count|Average|QPU. 0-100-es tartomány S1, 0-200 az S2 és 0-400 for S4 esetében|
+|QueryPoolBusyThreads|Lekérdezési készlet foglalt szálai|Count|Average|A lekérdezési szál készletében lévő foglalt szálak száma.|
+|SuccessfullConnectionsPerSec|Sikeres kapcsolatok másodpercenként|Egység/s|Average|A sikeres kapcsolatok gyakorisága.|
+|CommandPoolBusyThreads|Szálak A parancssori készlet foglalt szálai|Count|Average|A parancsfájl-készletben lévő foglalt szálak száma.|
+|CommandPoolIdleThreads|Szálak Parancs-készlet üresjárati szálai|Count|Average|Az üresjárati szálak száma a parancs szálának készletében.|
+|LongParsingBusyThreads|Szálak A foglalt szálak hosszú elemzése|Count|Average|A foglalt szálak száma a hosszú elemzési szál készletében.|
+|LongParsingIdleThreads|Szálak Hosszú távú elemzés – üresjárati szálak|Count|Average|Az üresjárati szálak száma a hosszú elemzési szál készletében.|
+|LongParsingJobQueueLength|Szálak Hosszú elemzési feladatok várólistájának hossza|Count|Average|A hosszú elemzési szál készletének várólistájában lévő feladatok száma.|
+|ProcessingPoolIOJobQueueLength|Szálak Feldolgozási készlet I/O-feladatok várólistájának hossza|Count|Average|A feldolgozási szál készletének várólistájában lévő I/O-feladatok száma.|
+|ProcessingPoolBusyIOJobThreads|Szálak Feldolgozási készlet foglalt I/O-feladatok szálai|Count|Average|Az I/O feladatokat futtató szálak száma a feldolgozási szál készletében.|
+|ProcessingPoolBusyNonIOThreads|Szálak Feldolgozási készlet elfoglalatlan nem I/O-szálai|Count|Average|A feldolgozási szál készletében nem I/O feladatokat futtató szálak száma.|
+|ProcessingPoolIdleIOJobThreads|Szálak Feldolgozási készlet – üresjárati I/O-feladatok szálai|Count|Average|Az I/O-feladatokhoz tartozó üresjárati szálak száma a feldolgozási szál készletében.|
+|ProcessingPoolIdleNonIOThreads|Szálak Feldolgozási készlet üresjáratban lévő nem I/O-szálai|Count|Average|A feldolgozási szál készletében a nem I/O-feladatok számára dedikált üresjárati szálak száma.|
+|QueryPoolIdleThreads|Szálak Lekérdezési készlet üresjárati szálai|Count|Average|Az I/O-feladatokhoz tartozó üresjárati szálak száma a feldolgozási szál készletében.|
+|QueryPoolJobQueueLength|Szálak Lekérdezési készlet feladatok várólistájának hossza|Count|Average|A lekérdezési szál készletének várólistájában lévő feladatok száma.|
+|ShortParsingBusyThreads|Szálak Foglalt szálak rövid elemzése|Count|Average|A foglalt szálak száma a rövid elemzési szál készletében.|
+|ShortParsingIdleThreads|Szálak Rövid elemzési üresjárati szálak|Count|Average|Az üresjárati szálak száma a rövid elemzési szál készletében.|
+|ShortParsingJobQueueLength|Szálak Rövid elemzési feladatok várólistájának hossza|Count|Average|A rövid elemzési szál készletének várólistájában lévő feladatok száma.|
+|TotalConnectionFailures|Összes sikertelen Kapcsolatfelvétel|Count|Average|A sikertelen csatlakozási kísérletek teljes száma.|
+|TotalConnectionRequests|Kapcsolatkérelmek teljes száma|Count|Average|A kapcsolatkérelmek teljes száma. |
 
 ## <a name="next-steps"></a>További lépések
-[Figyelés a Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md)   
-[A Microsoft Azure-ban mérőszámok](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)   
-[Mérőszámok az Azure Monitor REST API-val](/rest/api/monitor/metrics)
+[Azure Monitor áttekintése](../azure-monitor/overview.md)      
+[Első lépések az Azure Metrikaböngésző](../azure-monitor/platform/metrics-getting-started.md)      
+[Metrikák a Azure Monitor REST API](/rest/api/monitor/metrics)

@@ -1,21 +1,19 @@
 ---
-title: PHP – Azure Storage Queue storage használata
-description: Ismerje meg, hogyan használhatja az Azure Queue storage szolgáltatás létrehozása és törlése, üzenetsorok, és helyezze, beolvasása, és törli az üzenetet. Minta PHP nyelven íródtak.
-services: storage
+title: A üzenetsor-tárolás használata a PHP-Azure Storage-ból
+description: Megtudhatja, hogyan hozhat létre és törölhet várólistákat az Azure Queue Storage szolgáltatással, valamint hogyan szúrhat be, kérhet le és törölhet üzeneteket. A minták PHP-ben íródnak.
 author: mhopkins-msft
-ms.service: storage
-ms.devlang: php
-ms.topic: article
-ms.date: 01/11/2018
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 01/11/2018
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 4ff54f9ca20c101de55bec2c7acf914c17bd7709
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: b175c34f131a7a0f172c7be0dda083fbfda3dc1e
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951209"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721449"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>How to use Queue storage from PHP (A Queue Storage használata PHP-val)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -23,20 +21,20 @@ ms.locfileid: "65951209"
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyvek az Azure Queue storage szolgáltatás használatával. A minták írt származó keresztül a [Azure Storage ügyféloldali kódtára a PHP][download]. A kezelt forgatókönyvek között megtalálható a beszúrásához, Bepillantás, lekérését, és üzenetsorbeli üzenetek, törlése, valamint a létrehozása és üzenetsorok törlése.
+Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure üzenetsor-tárolási szolgáltatás használatával. A mintákat a [PHP-hez készült Azure Storage ügyféloldali kódtár][download]osztályain keresztül írták. A kezelt forgatókönyvek közé tartozik például a várólista-üzenetek beszúrása, bepillantása, beolvasása és törlése, valamint a várólisták létrehozása és törlése.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-php-application"></a>PHP-alkalmazás létrehozása
-A csak követelmény a PHP-alkalmazás létrehozása, amely hozzáfér az Azure Queue storage, az osztályok a hivatkozó a [Azure Storage ügyféloldali kódtára a PHP] [ download] származó a kódon belül. Az alkalmazás létrehozásához bármilyen fejlesztői eszközt (pl. Jegyzettömböt) használhat.
+Az Azure üzenetsor-tárolóhoz hozzáférő PHP-alkalmazások létrehozásának egyetlen követelménye az, hogy az [Azure Storage ügyféloldali kódtáraban][download] található osztályokra hivatkozik a PHP-n belül a kódból. Az alkalmazás létrehozásához bármilyen fejlesztői eszközt (pl. Jegyzettömböt) használhat.
 
-Ez az útmutató a Queue storage szolgáltatásainak, amely nem hívható meg egy PHP-alkalmazás helyi, illetve egy Azure webes szerepkör, feldolgozói szerepkör vagy webhelyén belül futó kód használhatja.
+Ebben az útmutatóban a üzenetsor-tárolási szolgáltatás olyan funkcióit használja, amelyek a PHP-alkalmazásokban helyileg, vagy egy Azure-beli webes szerepkörben, feldolgozói szerepkörben vagy webhelyen futó kódban hívhatók.
 
-## <a name="get-the-azure-client-libraries"></a>Az Azure-ügyfél-kódtárak beszerzése
-### <a name="install-via-composer"></a>Composer-n keresztül telepítése
-1. Hozzon létre egy fájlt **composer.json** a projekt gyökérkönyvtárában található és adja hozzá a következő kódot:
+## <a name="get-the-azure-client-libraries"></a>Az Azure-ügyfél kódtárainak beszerzése
+### <a name="install-via-composer"></a>Telepítés a Zeneszerzőn keresztül
+1. Hozzon létre egy **zeneszerző. JSON** nevű fájlt a projekt gyökérkönyvtárában, és adja hozzá a következő kódot:
    
     ```json
     {
@@ -45,49 +43,49 @@ Ez az útmutató a Queue storage szolgáltatásainak, amely nem hívható meg eg
       }
     }
     ```
-2. Töltse le **[composer.phar] [ composer-phar]** a projekt gyökérkönyvtárában.
-3. Nyisson meg egy parancssort, és hajtsa végre a következő parancsot a projekt gyökérkönyvtárában
+2. A **[zeneszerző. farmakovigilancia][composer-phar]** letöltése a projekt gyökerében.
+3. Nyisson meg egy parancssort, és hajtsa végre a következő parancsot a projekt gyökerében
    
     ```
     php composer.phar install
     ```
 
-Másik lehetőségként lépjen a [Azure Storage PHP ügyféloldali kódtár] [ download] klónozásához a forráskód a githubon.
+Alternatív megoldásként nyissa meg az [Azure Storage php ügyféloldali kódtár][download] a githubon a forráskód klónozásához.
 
-## <a name="configure-your-application-to-access-queue-storage"></a>A Queue storage eléréséhez az alkalmazás konfigurálása
-Az Azure Queue storage, az API-k használatához kell tennie:
+## <a name="configure-your-application-to-access-queue-storage"></a>Az alkalmazás konfigurálása a várólista-tároló eléréséhez
+Az Azure üzenetsor-tároláshoz szükséges API-k használatához a következőket kell tennie:
 
-1. Hivatkozzon a szalaghibák használatával a [require_once] utasítást.
-2. Bármely osztályokat, amelyekre szüksége lehet hivatkozni.
+1. Hivatkozzon az automatikus betöltő fájlra az [require_once] utasítás használatával.
+2. Hivatkozzon az esetlegesen használt osztályokra.
 
-Az alábbi példa bemutatja, hogyan foglalhat bele a szalaghibák fájlt, és hivatkozás a **QueueRestProxy** osztály.
+Az alábbi példa azt mutatja be, hogyan lehet felvenni az automatikus betöltő fájlt, és hivatkozni a **QueueRestProxy** osztályra.
 
 ```php
 require_once 'vendor/autoload.php';
 use MicrosoftAzure\Storage\Queue\QueueRestProxy;
 ```
 
-A következő példákban a `require_once` utasítás mindig látható, de csak az a példában végrehajtásához szükséges osztályok hivatkozott.
+Az alábbi példákban az `require_once` utasítás mindig látható, de csak a végrehajtáshoz szükséges osztályok vannak hivatkozva.
 
-## <a name="set-up-an-azure-storage-connection"></a>Az Azure storage-kapcsolat beállítása
-Hozza létre az Azure Queue storage-kliens, először szüksége van egy érvényes kapcsolati karakterláncot. A queue szolgáltatás kapcsolati karakterláncának formátuma a következő.
+## <a name="set-up-an-azure-storage-connection"></a>Azure Storage-beli kapcsolatok beállítása
+Azure üzenetsor-tárolási ügyfél létrehozásához először érvényes kapcsolódási karakterláncot kell megadni. A várólista-szolgáltatás összekapcsolási karakterláncának formátuma a következő.
 
-Egy élő szolgáltatás eléréséhez:
+Élő szolgáltatás eléréséhez:
 
 ```php
 DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]
 ```
 
-Az emulator tárolóinak eléréséhez:
+Az Emulator-tároló eléréséhez:
 
 ```php
 UseDevelopmentStorage=true
 ```
 
-Az Azure Queue szolgáltatásügyfél létrehozásának, kell használnia a **QueueRestProxy** osztály. Az alábbi módszerek bármelyikét használhatja:
+Azure Queue szolgáltatás-ügyfél létrehozásához a **QueueRestProxy** osztályt kell használnia. A következő módszerek egyikét használhatja:
 
-* Adja meg a kapcsolati karakterlánc közvetlenül azt.
-* A webalkalmazásban a környezeti változók használatával tárolja a kapcsolati karakterláncot. Lásd: [Azure webalkalmazás-konfigurációs beállítások](../../app-service/configure-common.md) dokumentum kapcsolati karakterláncok konfigurálása.
+* Adja át közvetlenül a kapcsolódási karakterláncot.
+* A webalkalmazásban környezeti változók használatával tárolhatja a kapcsolati karakterláncot. A kapcsolati karakterláncok konfigurálásához tekintse meg az [Azure-webalkalmazás konfigurációs beállításainak](../../app-service/configure-common.md) dokumentumát.
 Az itt ismertetett példák esetében a kapcsolati sztringet közvetlenül továbbítjuk.
 
 ```php
@@ -100,7 +98,7 @@ $queueClient = QueueRestProxy::createQueueService($connectionString);
 ```
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
-A **QueueRestProxy** objektum lehetővé teszi a várólista létrehozása a **createQueue** metódust. Egy üzenetsor létrehozásakor az üzenetsor beállításokat is megadhat, de ez így nem kötelező. (Az alábbi példa bemutatja, hogyan metaadatok beállítása az üzenetsorba.)
+A **QueueRestProxy** objektum lehetővé teszi, hogy a **createQueue** metódus használatával hozzon létre egy várólistát. Várólista létrehozásakor megadhatja a várólista beállításait, de erre nincs szükség. (Az alábbi példa bemutatja, hogyan állíthatja be a metaadatokat egy várólistán.)
 
 ```php
 require_once 'vendor/autoload.php';
@@ -134,12 +132,12 @@ catch(ServiceException $e){
 ```
 
 > [!NOTE]
-> Kis-és nagybetűk metaadatok kulcsok nem támaszkodhat. Az összes kulcs olvasható kisbetűs a szolgáltatásból.
+> A metaadat-kulcsok esetében ne használjon kis-és nagybetűket. A rendszer minden kulcsot kisbetűsen olvas be a szolgáltatásból.
 > 
 > 
 
-## <a name="add-a-message-to-a-queue"></a>Adjon meg egy üzenetet egy üzenetsorba
-Vegyen fel egy üzenetet egy üzenetsorba, használja a **QueueRestProxy -> createMessage**. A metódus szükséges, az üzenetsor neve, az üzenet szövege és üzenet-beállításokat (nem kötelező).
+## <a name="add-a-message-to-a-queue"></a>Üzenet hozzáadása egy várólistához
+Ha üzenetet szeretne hozzáadni egy várólistához, használja a **QueueRestProxy-> createMessage**. A metódus az üzenetsor nevét, az üzenet szövegét és az üzenet beállításait (amelyek nem kötelezőek).
 
 ```php
 require_once 'vendor/autoload.php';
@@ -168,7 +166,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="peek-at-the-next-message"></a>Betekintés a következő üzenetbe
-Is bepillanthat, egy üzenet (vagy üzenetek) egy üzenetsor elején anélkül, hogy eltávolítaná az üzenetsorból meghívásával **QueueRestProxy -> peekMessages**. Alapértelmezés szerint a **peekMessage** metódus adja vissza egy üzenet, de az érték használatával módosíthatja a **PeekMessagesOptions -> setNumberOfMessages** metódust.
+A várólista elején megtekintheti az üzenetet (vagy üzeneteket) anélkül, hogy el kellene távolítania azt a sorból a **QueueRestProxy-> peekMessages**meghívásával. Alapértelmezés szerint a **peekMessage** metódus egyetlen üzenetet ad vissza, de a **PeekMessagesOptions-> setNumberOfMessages** metódus használatával módosíthatja ezt az értéket.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -216,7 +214,7 @@ else{
 ```
 
 ## <a name="de-queue-the-next-message"></a>A következő üzenet kivétele az üzenetsorból
-A kód két lépésben egy üzenetsorból eltávolítja az üzenetet. Először meghívja **QueueRestProxy -> listMessages**, ami lehetővé teszi az üzenetet az üzenetsorból olvasó többi kód számára. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. (Ha ez az időtartam az üzenet nem törlődik, azt láthatóvá válik az üzenetsor újra.) A befejezéshez, az üzenet eltávolítása az üzenetsorból, meg kell hívni **QueueRestProxy -> deleteMessage**. Az üzenet eltávolítása a két lépésből álló folyamat biztosítja, hogy a kód nem tudja feldolgozni egy üzenetet, mert hardveres vagy szoftveres hiba, amikor a kód egy másik példánya is megkaphassa ugyanazt az üzenetet, és próbálkozzon újra. A kód meghívja **deleteMessage** jobb gombbal az üzenet feldolgozása után.
+A kód két lépésben eltávolít egy üzenetet egy várólistából. Először hívja meg a **QueueRestProxy-> listMessages**, amely az üzenetet a várólistából beolvasott bármely más kód számára láthatatlanná teszi. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. (Ha az üzenet nem törlődik ebben az időszakban, ismét láthatóvá válik a várólistán.) Az üzenet várólistából való eltávolításának befejezéséhez hívnia kell a **QueueRestProxy-> deleteMessage**. Az üzenetek eltávolításának kétlépéses folyamata biztosítja, hogy ha a kód a hardver vagy a szoftver meghibásodása miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya ugyanazt az üzenetet kapja, és próbálkozzon újra. A kód a **deleteMessage** közvetlenül az üzenet feldolgozása után hívja meg.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -257,7 +255,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="change-the-contents-of-a-queued-message"></a>Üzenetsorban található üzenet tartalmának módosítása
-Módosíthatja a tartalmát egy üzenet helyben, az üzenetsor meghívásával **QueueRestProxy -> updateMessage**. Ha az üzenet munkafeladatot jelöl, ezzel a funkcióval frissítheti a munkafeladat állapotát. Az alábbi kód frissíti az üzenetsorban található üzenet az új tartalommal, és beállítja a láthatósági időkorlátot további 60 másodperccel bővíti. Ez az üzenet társított munkahelyi állapotát menti, és az ügyfél az üzenet használatának folytatására további egy percet biztosít. Ezzel a technikával többlépéses munkafolyamatokat is nyomon követhet az üzenetsor üzenetein anélkül, hogy újra kéne kezdenie, ha a folyamat valamelyik lépése hardver- vagy szoftverhiba miatt meghiúsul. A rendszer általában nyilván tartja az újrapróbálkozások számát, és ha az üzenettel *n* alkalomnál többször próbálkoznak, akkor törlődik. Ez védelmet biztosít az ellen, hogy egy üzenetet minden feldolgozásakor kiváltson egy alkalmazáshibát.
+A várólistán található üzenet tartalmát a **QueueRestProxy-> updateMessage**meghívásával módosíthatja. Ha az üzenet munkafeladatot jelöl, ezzel a funkcióval frissítheti a munkafeladat állapotát. A következő kód új tartalommal frissíti az üzenetsor-üzenetet, és beállítja a láthatósági időtúllépést, hogy kiterjesszen egy újabb 60 másodpercet. Ezzel elmenti az üzenethez társított munkahelyi állapotot, és egy percet ad az ügyfélnek, hogy folytassa a munkát az üzeneten. Ezzel a technikával többlépéses munkafolyamatokat is nyomon követhet az üzenetsor üzenetein anélkül, hogy újra kéne kezdenie, ha a folyamat valamelyik lépése hardver- vagy szoftverhiba miatt meghiúsul. A rendszer általában nyilván tartja az újrapróbálkozások számát, és ha az üzenettel *n* alkalomnál többször próbálkoznak, akkor törlődik. Ez védelmet biztosít az ellen, hogy egy üzenetet minden feldolgozásakor kiváltson egy alkalmazáshibát.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -301,8 +299,8 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="additional-options-for-de-queuing-messages"></a>További lehetőségek az üzenetek üzenetsorból
-Két módon, hogy testre szabhatja az üzenetek lekérését egy üzenetsorból. Az első lehetőség az üzenetkötegek (legfeljebb 32) lekérése. A második beállíthat egy hosszabb vagy rövidebb láthatósági időkorlát hosszabb vagy rövidebb idő teljesen feldolgozni az egyes üzenet, amely lehetővé teszi, hogy a kód. Az alábbi példakód a **getMessages** metódus egyetlen hívásával 16 darab lekéréséhez. Ezután minden üzenetet használatával feldolgozza a **a** ciklus. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be.
+## <a name="additional-options-for-de-queuing-messages"></a>További beállítások az üzenetsor-kezelő üzenetekhez
+Az üzenetek várólistából való lekérését kétféleképpen lehet testreszabni. Az első lehetőség az üzenetkötegek (legfeljebb 32) lekérése. Másodszor beállíthatja a hosszabb vagy rövidebb láthatósági időtúllépést, így a kód több vagy kevesebb időt vehet igénybe az egyes üzenetek teljes feldolgozásához. A következő kódrészlet a **getMessages** metódus használatával 16 üzenetet kap egy hívásban. Ezután az összes üzenetet feldolgozza a **for** hurok használatával. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -351,8 +349,8 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="get-queue-length"></a>Első sor hossza
-Megbecsülheti egy üzenetsorban található üzenetek számát. A **QueueRestProxy -> getQueueMetadata** módszert kéri a queue szolgáltatásból az üzenetsor metaadatait adja vissza. Hívása a **getApproximateMessageCount** hány üzenetek vannak egy üzenetsorban lévő számát módszerrel a visszaadott objektumon. A számláló értéke csak hozzávetőleges, mert üzeneteket is lehet hozzáadni vagy eltávolítani után a queue szolgáltatás válaszol a kérésre.
+## <a name="get-queue-length"></a>Várólista hosszának beolvasása
+Megbecsülheti egy üzenetsorban található üzenetek számát. A **QueueRestProxy-> getQueueMetadata** metódus arra kéri a várólista-szolgáltatást, hogy a várólistára vonatkozó metaadatokat ad vissza. A visszaadott objektum **getApproximateMessageCount** metódusának meghívása megadja, hogy hány üzenet van egy várólistában. A darabszám csak hozzávetőleges, mert az üzenetsor-szolgáltatás a kérésre való reagálás után üzeneteket adhat hozzá vagy távolíthat el.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -383,7 +381,7 @@ echo $approx_msg_count;
 ```
 
 ## <a name="delete-a-queue"></a>Üzenetsor törlése
-Egy üzenetsor és a benne lévő összes üzenet törléséhez hívja a **QueueRestProxy -> deleteQueue** metódust.
+Ha törölni szeretne egy várólistát és a benne lévő összes üzenetet, hívja meg a **QueueRestProxy-> deleteQueue** metódust.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -411,12 +409,12 @@ catch(ServiceException $e){
 ```
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megismerte az Azure Queue storage alapjait, az alábbi hivatkozásokból tájékozódhat az összetettebb tárolási feladatok:
+Most, hogy megismerte az Azure üzenetsor-tárolás alapjait, az alábbi hivatkozásokat követve megismerheti az összetettebb tárolási feladatokat:
 
-* Látogasson el a [az Azure Storage PHP ügyféloldali kódtár API-referencia](https://azure.github.io/azure-storage-php/)
-* Tekintse meg a [várólista speciális példa](https://github.com/Azure/azure-storage-php/blob/master/samples/QueueSamples.php).
+* Az [Azure Storage php ügyféloldali kódtár API](https://azure.github.io/azure-storage-php/) -referenciájának felkeresése
+* Lásd a [speciális üzenetsor példáját](https://github.com/Azure/azure-storage-php/blob/master/samples/QueueSamples.php).
 
-További információ: a [PHP fejlesztői központ](https://azure.microsoft.com/develop/php/).
+További információ: a [php fejlesztői központ](https://azure.microsoft.com/develop/php/)is.
 
 [download]: https://github.com/Azure/azure-storage-php
 [require_once]: https://www.php.net/manual/en/function.require-once.php

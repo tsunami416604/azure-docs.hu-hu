@@ -1,96 +1,96 @@
 ---
-title: Adatbázis-szerepkörök és a felhasználók az Azure Analysis Servicesben kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan kezelheti az adatbázis-szerepkörök és a felhasználók az Analysis Services-kiszolgáló, az Azure-ban.
+title: Adatbázis-szerepkörök és-felhasználók kezelése a Azure Analysis Servicesban | Microsoft Docs
+description: Ismerje meg, hogyan kezelheti az adatbázis-szerepköröket és a felhasználókat egy Azure-beli Analysis Services-kiszolgálón.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 462625ce61f4538aa0769667648e07cc6307cbb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c38b11ceda010c122e17a7fad3df1684e0a1cf42
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61023610"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696274"
 ---
-# <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és a felhasználók kezelése
+# <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és-felhasználók kezelése
 
-A modell adatbázis szintjén minden felhasználó egy szerepkörhöz kell tartoznia. Szerepkörök definiálása a model adatbázishoz adott engedélyekkel rendelkező felhasználók. Minden olyan felhasználó vagy biztonsági csoportot hozzáadni egy szerepkörhöz az Azure AD-bérlő ugyanahhoz az előfizetéshez tartozik, mint a kiszolgáló-fiókkal kell rendelkeznie. 
+A modell adatbázis szintjén minden felhasználónak egy szerepkörhöz kell tartoznia. A szerepkörök meghatározott engedélyekkel rendelkező felhasználókat határoznak meg a modell adatbázisához. A szerepkörhöz hozzáadott összes felhasználónak vagy biztonsági csoportnak rendelkeznie kell egy, a-kiszolgálóval megegyező előfizetésben lévő fiókkal egy Azure AD-bérlőben. 
 
-Hogyan adhatja meg a szerepkörök attól függően változik, a használt eszköz, de a hatás megegyezik.
+A szerepkörök definiálása eltérő lehet a használt eszköztől függően, de a hatás ugyanaz.
 
-Szerepkör-engedélyek a következők:
-*  **Rendszergazdai** -felhasználók az adatbázis teljes körű jogosultsággal rendelkezik. Rendszergazdai jogosultságokkal rendelkező adatbázis-szerepkörök nem azonosak a kiszolgálói rendszergazdák.
-*  **Folyamat** -felhasználók csatlakozhat és folyamat műveleteket az adatbázison, és model adatbázis adatok elemzéséhez.
-*  **Olvasási** -felhasználók egy ügyfélalkalmazás segítségével csatlakozhat, és a model adatbázis adatok elemzéséhez.
+A szerepkör engedélyei a következők:
+*  **Rendszergazda** – a felhasználók teljes körű engedélyekkel rendelkeznek az adatbázishoz. A rendszergazdai engedélyekkel rendelkező adatbázis-szerepkörök eltérnek a kiszolgálói rendszergazdáktól.
+*  **Folyamat** – a felhasználók csatlakozhatnak az adatbázishoz, és elvégezhetik a folyamatokat, és elemezhetik a modell adatbázis-adataikat.
+*  **Olvasási** – a felhasználók egy ügyfélalkalmazás segítségével csatlakozhatnak a modell adatbázis-adatbázisaihoz, és elemezhetik azokat.
 
-Táblázatosmodell-projekt létrehozásakor, hozhat létre szerepköröket, és a felhasználók vagy csoportok hozzáadása, ezeket a szerepköröket a szerepkörkezelővel az SSDT-ben. Telepítésekor egy kiszolgálóhoz az SSMS-használja [Analysis Services PowerShell-parancsmagok](/sql/analysis-services/powershell/analysis-services-powershell-reference), vagy [táblázatos modell Scripting Language](https://msdn.microsoft.com/library/mt614797.aspx) hozzáadása vagy eltávolítása a szerepkörök és a felhasználói tagok (TMSL).
+Táblázatos modell projekt létrehozásakor szerepköröket hozhat létre, és felhasználókat vagy csoportokat adhat hozzá ezekhez a szerepkörökhöz SQL Server Data Tools (SSDT) szerepkör-kezelő használatával. A kiszolgálókon való üzembe helyezéskor SQL Server Management Studio (SSMS), [Analysis Services PowerShell](/sql/analysis-services/powershell/analysis-services-powershell-reference)-parancsmagok vagy táblázatos [modell parancsnyelv](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL) használatával adhat hozzá vagy távolíthat el szerepköröket és felhasználói tagokat.
 
-> [!NOTE]
-> Biztonsági csoportok kell rendelkeznie a `MailEnabled` tulajdonság `True`.
+A **biztonsági csoportoknak** e- `True` [mail-kompatibilisnek](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) kell lenniük a `MailEnabled` tulajdonsághoz beállított tulajdonsággal. A csoportok e-mail-cím `obj:groupid@tenantid`szerinti megadásakor.
 
-## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>Adja hozzá, vagy kezelheti a szerepköröket és a felhasználók az SSDT-ben  
+
+## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>Szerepkörök és felhasználók hozzáadása vagy kezelése a SSDT-ben  
   
-1.  Az SSDT > **Táblázatosmodell-tallózóban**, kattintson a jobb gombbal **szerepkörök**.  
+1.  A SSDT > **táblázatos modell Explorerben**kattintson a jobb gombbal a **szerepkörök**elemre.  
   
 2.  A **Szerepkörkezelőben** kattintson az **Új** lehetőségre.  
   
-3.  Írja be a szerepkör nevét.  
+3.  Adja meg a szerepkör nevét.  
   
-     Alapértelmezés szerint az alapértelmezett szerepkör neve növekményes számozott minden új szerepkörhöz. Javasoljuk, adjon meg egy nevet, amely egyértelműen azonosítja a tag típusa, például a pénzügyi igazgatók vagy az emberi erőforrások szakértőitől.  
+     Alapértelmezés szerint a rendszer az alapértelmezett szerepkör nevét fokozatosan számozza az egyes új szerepkörökhöz. Javasoljuk, hogy adjon meg egy nevet, amely egyértelműen azonosítja a tag típusát, például: pénzügyi vezetők vagy emberi erőforrások szakemberei.  
   
-4.  Válassza ki a következő engedélyekkel:  
+4.  Válasszon egyet a következő engedélyek közül:  
   
     |Engedély|Leírás|  
     |----------------|-----------------|  
-    |**Nincsenek**|A tagok nem módosítható, ha a, és adatokat nem lehet lekérdezni.|  
-    |**Olvasás**|A tagok lekérdezheti az adatokat (Sorszűrők alapján), de nem módosíthatja a modellsémát.|  
-    |**Olvasás és feldolgozás**|Tagok (alapján sorszintű szűrők) adatok és a futtatási folyamat és a folyamat minden műveletek lekérdezheti, de nem módosítható a modellsémát.|  
-    |**Folyamat**|Tagok folyamat és a folyamat minden műveleteket is futtathat. Nem módosítható, ha a, és adatokat nem lehet lekérdezni.|  
-    |**Rendszergazda**|A tagok modellsémát módosíthatja, és minden adat lekérdezése.|   
+    |**Nincsenek**|A tagok nem módosíthatják a modell sémáját, és nem tudnak adatlekérdezést végrehajtani.|  
+    |**Olvasás**|A tagok adatlekérdezéseket végezhetnek (a sorok szűrőinek alapján), de nem módosíthatják a modell sémáját.|  
+    |**Olvasás és feldolgozás**|A tagok adatlekérdezéseket végezhetnek (a sor szintű szűrők alapján), és futtathatják a folyamatokat, és az összes műveletet feldolgozzák, de nem módosíthatják a modell sémáját.|  
+    |**Folyamat**|A tagok az összes művelet feldolgozását és feldolgozását is futtathatják. A modell sémája nem módosítható, és nem lehet adatlekérdezést végrehajtani.|  
+    |**Rendszergazda**|A tagok módosíthatják a modell sémáját, és lekérhetik az összes adatlekérdezést.|   
   
-5.  Ha a szerepkör létrehozása rendelkezik-e olvasási vagy olvasás és feldolgozás engedélyt adhat hozzá Sorszűrők DAX-képlet használatával. Kattintson a **Sorszűrők** lapra, majd válasszon ki egy táblát, majd kattintson a **DAX-szűrő** mezőben, majd írja be egy DAX-képletet.
+5.  Ha a létrehozandó szerepkör olvasási vagy olvasási és feldolgozási engedéllyel rendelkezik, akkor a DAX-képletek használatával hozzáadhat sorokhoz tartozó szűrőket. Kattintson a **sorok szűrők** fülre, majd jelöljön ki egy táblát, majd kattintson a **DAX-szűrő** mezőre, majd írjon be egy DAX-képletet.
   
-6.  Kattintson a **tagok** > **adja hozzá a külső**.  
+6.  Kattintson a **tagok** > **külső hozzáadása**elemre.  
   
-8.  A **külső tag hozzáadása**, felhasználók vagy csoportok megadása az Azure AD-bérlőben a e-mail-címe. Után kattintson az OK gombra, és zárja be a szerepkör-kezelőt, a szerepkörök és a Tabular Model Explorerben megjelenik. 
+8.  A **külső tag hozzáadása**területen adja meg a bérlői Azure ad-beli felhasználókat vagy csoportokat e-mail-cím szerint. Miután rákattintott az OK gombra, és lezárta a szerepkör-kezelőt, a szerepkörök és szerepkörök tagjai megjelennek a táblázatos modell Explorerben. 
  
-     ![Szerepkörök és a felhasználók a Tabular Model Explorerben](./media/analysis-services-database-users/aas-roles-tmexplorer.png)
+     ![Szerepkörök és felhasználók a táblázatos modell Explorerben](./media/analysis-services-database-users/aas-roles-tmexplorer.png)
 
-9. Helyezze üzembe az Azure Analysis Services-kiszolgáló.
+9. Telepítse a Azure Analysis Services-kiszolgálóra.
 
 
-## <a name="to-add-or-manage-roles-and-users-in-ssms"></a>Adja hozzá, vagy kezelheti a szerepköröket és a felhasználók az ssms-ben
+## <a name="to-add-or-manage-roles-and-users-in-ssms"></a>Szerepkörök és felhasználók hozzáadása vagy kezelése a SSMS-ben
 
-Szerepkörök és a felhasználók hozzáadása egy üzembe helyezett modellű adatbázisához, akkor kapcsolódnia kell a kiszolgáló kiszolgáló-rendszergazdaként vagy a rendszergazda engedélyekkel rendelkező adatbázis-szerepkör már.
+Szerepkörök és felhasználók egy központilag telepített modell-adatbázishoz való hozzáadásához kiszolgálói rendszergazdaként vagy már egy rendszergazdai engedélyekkel rendelkező adatbázis-szerepkörben kell csatlakoznia a kiszolgálóhoz.
 
-1. Az objektum Exporer, kattintson a jobb gombbal **szerepkörök** > **új szerepkör**.
+1. Az Object Exporer kattintson a jobb gombbal a **szerepkörök** > **Új szerepkör**elemre.
 
-2. A **szerepkör létrehozása**, adja meg a szerepkör nevét és leírását.
+2. A **szerepkör létrehozása**területen adja meg a szerepkör nevét és leírását.
 
-3. Válasszon egy engedélyt.
+3. Válasszon ki egy engedélyt.
 
    |Engedély|Leírás|  
    |----------------|-----------------|  
-   |**Teljes hozzáférés (rendszergazda)**|Tagjai módosíthatják az eszközmodell sémájának feldolgozásához, és lekérdezheti az összes adatot.| 
-   |**Folyamat adatbázis**|Tagok folyamat és a folyamat minden műveleteket is futtathat. Nem módosítható, ha a, és adatokat nem lehet lekérdezni.|  
-   |**Olvasás**|A tagok lekérdezheti az adatokat (Sorszűrők alapján), de nem módosíthatja a modellsémát.|  
+   |**Teljes hozzáférés (rendszergazda)**|A tagok módosíthatják a modell sémáját, feldolgozhatják és lekérhetik az összes adatlekérdezést.| 
+   |**Adatbázis feldolgozása**|A tagok az összes művelet feldolgozását és feldolgozását is futtathatják. A modell sémája nem módosítható, és nem lehet adatlekérdezést végrehajtani.|  
+   |**Olvasás**|A tagok adatlekérdezéseket végezhetnek (a sorok szűrőinek alapján), de nem módosíthatják a modell sémáját.|  
   
-4. Kattintson a **tagsági**, majd adjon meg egy felhasználót vagy csoportot a bérlő Azure ad-ben a e-mail-címe.
+4. Kattintson a **tagság**elemre, majd adjon meg egy felhasználót vagy csoportot a bérlő Azure ad-ban e-mail-cím szerint.
 
      ![Felhasználó hozzáadása](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
 
-5. Ha a szerepkör létrehozásakor olvasási engedéllyel rendelkezik, a Sorszűrők DAX-képlet használatával is hozzáadhat. Kattintson a **Sorszűrők**, válasszon ki egy táblát, és írja be egy DAX-képletet a a **DAX-szűrő** mező. 
+5. Ha a létrehozandó szerepkör olvasási engedéllyel rendelkezik, akkor egy DAX-képlet használatával adhat hozzá sor szűrőket. Kattintson a **sorok szűrők**elemre, jelöljön ki egy táblát, majd írjon be egy DAX-képletet a **DAX-szűrő** mezőbe. 
 
-## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Szerepkörök és a felhasználók hozzáadása a TMSL-parancsfájl használatával
+## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Szerepkörök és felhasználók hozzáadása TMSL-parancsfájl használatával
 
-Az XMLA-ablak az ssms-ben vagy a PowerShell használatával is futtathatja a TMSL-parancsfájl. Használja a [CreateOrReplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) parancsot, és a [szerepkörök](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-objects/roles-object-tmsl) objektum.
+A TMSL parancsfájlt a SSMS XMLA ablakában vagy a PowerShell használatával futtathatja. Használja a [CreateOrReplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) parancsot és a [roles](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-objects/roles-object-tmsl) objektumot.
 
-**A példaszkript TMSL**
+**Példa TMSL-parancsfájlra**
 
-Ebben a példában egy külső B2B-felhasználó és csoport hozzáadva a SalesBI adatbázis olvasási engedéllyel rendelkező elemző szerepköréhez. A külső felhasználó és a csoport az Azure ad-ben ugyanazt bérlőhöz kell lennie.
+Ebben a példában egy B2B külső felhasználót és egy csoportot adnak hozzá az elemző szerepkörhöz a SalesBI-adatbázis olvasási engedélyeivel. A külső felhasználónak és a csoportnak ugyanabban a bérlői Azure AD-ben kell lennie.
 
 ```
 {
@@ -118,39 +118,39 @@ Ebben a példában egy külső B2B-felhasználó és csoport hozzáadva a SalesB
 }
 ```
 
-## <a name="to-add-roles-and-users-by-using-powershell"></a>Szerepkörök és a felhasználók hozzáadása a PowerShell használatával
+## <a name="to-add-roles-and-users-by-using-powershell"></a>Szerepkörök és felhasználók hozzáadása a PowerShell használatával
 
-A [SqlServer](/sql/analysis-services/powershell/analysis-services-powershell-reference) a modul adja meg a feladat-specifikus adatbázis felügyeleti parancsmagok és az általános célú Invoke-ASCmd parancsmag, amely egy táblázatos modell parancsnyelv (TMSL) lekérdezést vagy parancsfájlt. A következő parancsmagok használhatók, adatbázis-szerepkörök és felhasználók kezeléséhez.
+A [SQLServer](/sql/analysis-services/powershell/analysis-services-powershell-reference) modul a feladat-specifikus adatbázis-kezelési parancsmagokat és az általános célú meghívó-ASCmd parancsmagot biztosít, amely egy táblázatos modell parancsnyelv-(TMSL-) lekérdezését vagy parancsfájlját fogadja el. Az adatbázis-szerepkörök és a felhasználók kezeléséhez a következő parancsmagok használhatók.
   
-|Parancsmag|Leírás|
+|A parancsmag|Leírás|
 |------------|-----------------| 
-|[Adjon hozzá RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Egy tag hozzáadása egy adatbázis-szerepkörhöz.| 
-|[Remove-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Tag eltávolítása egy adatbázis-szerepkörhöz.|   
-|[Invoke-ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Hajtsa végre a TMSL-parancsfájlt.|
+|[Add-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Vegyen fel egy tagot egy adatbázis-szerepkörbe.| 
+|[Remove-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Egy tag eltávolítása egy adatbázis-szerepkörből.|   
+|[Invoke-ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|TMSL-szkript végrehajtása.|
 
-## <a name="row-filters"></a>Sorszűrők  
+## <a name="row-filters"></a>Sorok szűrői  
 
-Sorszűrők határozza meg, hogy mely sorokat egy táblában egy adott szerepkör tagjai által kérhető le. Sorszűrők határozzák meg a modellben minden táblához DAX-képletek használatával.  
+A sorok szűrői határozzák meg, hogy egy adott szerepkör tagjai hogyan tudják lekérdezni egy tábla sorait. A sorokhoz tartozó szűrők a modell minden egyes táblájához a DAX-képletek használatával definiálhatók.  
   
-Sorszűrők definiálható csak olvasható, és olvasási szerepkörökhöz tartozó és a folyamat engedélyeket. Alapértelmezés szerint ha egy adott tábla nincs definiálva a sorszűrőt tagok lekérdezheti a tábla összes sorát, ha egy másik tábla keresztszűrés vonatkozik.
+A sorok szűrői csak olvasási és olvasási és feldolgozási engedélyekkel rendelkező szerepkörökhöz definiálhatók. Alapértelmezés szerint, ha egy adott táblához nincs megadva egy sor szűrő, a tagok a tábla összes sorát lekérhetik, kivéve, ha a szűrés egy másik táblából történik.
   
- Sorszűrők egy DAX-képlet, amely értéket kell adnia egy igaz vagy hamis értéket, hogy lekérdezhetők legyenek, hogy az adott szerepkör tagjai sorok megadásához szükséges. A DAX-képlet nem szereplő sorok nem kérdezhető le. Például a következő sor Customers tábla szűri a kifejezés, *ügyfelek [Ország] = "USA" =* , az értékesítési szerepkör tagjai csak tekintheti meg az ügyfeleknek az USA-ban.  
+ A sorok szűrői egy DAX-képletet igényelnek, amelyet igaz/hamis értékre kell kiértékelni az adott szerepkör tagjai által lekérdezhető sorok definiálásához. Nem lehet lekérdezni a DAX-képletben nem szereplő sorokat. Például az ügyfelek tábla a következő sorcsoport-kifejezéssel, *= ügyfelek [ország] = "USA"* , az értékesítési szerepkör tagjai csak az USA-beli ügyfeleket láthatják.  
   
-A megadott sort és a hozzá tartozó sorok Sorszűrők vonatkoznak. A tábla több kapcsolattal rendelkezik, a szűrők a kapcsolat aktív biztonsági vonatkoznak. Sorszűrők vannak szakít az egyéb kapcsolódó táblát, például meghatározott sor kiemelik:  
+A sorok szűrői a megadott sorokra és a kapcsolódó sorokra vonatkoznak. Ha egy táblának több kapcsolata van, a szűrők az aktív kapcsolat biztonságát alkalmazzák. A sorok szűrői a kapcsolódó táblákhoz definiált más sorokkal vannak összemetszve, például:  
   
 |Tábla|DAX-kifejezés|  
 |-----------|--------------------|  
 |Régió|=Region[Country]="USA"|  
-|ProductCategory|= ProductCategory [Name] = "Kerékpárokat"|  
+|ProductCategory|= ProductCategory [név] = "kerékpárok"|  
 |Tranzakciók|=Transactions[Year]=2016|  
   
- Az eredő hatás tagok sornyi adatot, ahol egy az USA-ban, a termékkategória kerékpárokat, pedig az év 2016 lekérdezheti. Felhasználók nem tudják lekérdezni a tranzakciók kívül az Amerikai Egyesült Államok, tranzakciók, amelyek nem kerékpárokat, vagy a tranzakció nem a 2016-ban, ha azok egy másik szerepkör, amely engedélyezi ezeket az engedélyeket.
+ A háló hatására a tagok lekérhetik az adatsorokat, ahol az ügyfél az USA-ban található, a termék kategóriája kerékpárok, az év pedig 2016. A felhasználók nem tudják lekérdezni az Egyesült Államokon kívüli tranzakciókat, a nem kerékpárokat vagy a 2016-es tranzakciókat, kivéve, ha azok egy másik szerepkör tagja, amely ezeket az engedélyeket megadja.
   
- Használhatja a szűrő *=FALSE()* , egy egész tábla összes sorát hozzáférését.
+ A szűrő, *= false ()* használatával megtagadhatja a hozzáférést egy teljes tábla összes sorához.
 
 ## <a name="next-steps"></a>További lépések
 
-  [A kiszolgálók rendszergazdáinak kezelése](analysis-services-server-admins.md)   
-  [A PowerShell-lel az Azure Analysis Services kezelése](analysis-services-powershell.md)  
-  [Táblázatos modell parancsfájl-kezelési (TMSL) nyelvi referencia](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
+  [Kiszolgáló-rendszergazdák kezelése](analysis-services-server-admins.md)   
+  [Azure Analysis Services kezelése a PowerShell-lel](analysis-services-powershell.md)  
+  [Táblázatos modell programozási nyelv (TMSL) – dokumentáció](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 

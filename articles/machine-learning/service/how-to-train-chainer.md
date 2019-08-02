@@ -1,7 +1,7 @@
 ---
-title: Betanítása és Chainer modellek regisztrálása
+title: A Chainer-modellek betanítása és regisztrálása
 titleSuffix: Azure Machine Learning service
-description: Ez a cikk bemutatja, hogyan képzése, és regisztrálja a Chainer modellt az Azure Machine Learning szolgáltatás használatával.
+description: Ebből a cikkből megtudhatja, hogyan végezheti el a láncolt modellek betanítását és regisztrálását Azure Machine Learning szolgáltatás használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,46 +10,46 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 06/15/2019
-ms.openlocfilehash: 8ecefccbdf5f02652e935858b6ae8fb4cdfde640
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 7cf5650708cd951e872e3df6ea533a62bde0389d
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840041"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618339"
 ---
-# <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Betanítása és ipari méretekben Chainer modellek regisztrálása az Azure Machine Learning szolgáltatás
+# <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Láncolt modellek betanítása és regisztrálása Azure Machine Learning szolgáltatással
 
-Ez a cikk bemutatja, hogyan képzése, és regisztrálja a Chainer modellt az Azure Machine Learning szolgáltatás használatával. Használja a népszerű [MNIST adatkészlet](http://yann.lecun.com/exdb/mnist/) felhasználásával Neurális hálózat (DNN) használatával kézzel írott számjegyek besorolása a [Chainer Python-kódtár](https://Chainer.org) a futó [numpy](https://www.numpy.org/).
+Ebből a cikkből megtudhatja, hogyan végezheti el a láncolt modellek betanítását és regisztrálását Azure Machine Learning szolgáltatás használatával. A szolgáltatás a népszerű [MNIST](http://yann.lecun.com/exdb/mnist/) -adatkészletet használja a kézzel írt számjegyek besorolására egy olyan Deep neurális hálózat (DNN) használatával, amely a [NumPy](https://www.numpy.org/)-on futó, a [chainer Python-kódtár](https://Chainer.org) használatával készült.
 
-Chainer egy olyan magas szintű Neurális hálózati API képes futtatni a felső részén más elterjedt DNN-keretrendszerek használatával leegyszerűsítheti a fejlesztést. Az Azure Machine Learning szolgáltatás gyors horizontális felskálázása lehetséges betanítási feladatokat a rugalmas felhőalapú számítási erőforrások használatával. Is nyomon követheti a betanítási futtatás, a verzió modellek üzembe helyezése a modelleket, és még sok más.
+A chainer egy magas szintű neurális hálózati API, amely más népszerű DNN-keretrendszereken is futtatható a fejlesztés egyszerűsítése érdekében. A Azure Machine Learning szolgáltatással rugalmas felhőalapú számítási erőforrásokkal gyorsan bővítheti a betanítási feladatokat. Nyomon követheti a képzések futtatását, a verziók modelljeit, a modellek üzembe helyezését és még sok mást is.
 
-Akár az alapoktól a Chainer modell fejleszt, vagy már meglévő modell üzembe a felhőben, Azure Machine Learning szolgáltatás segítségével éles használatra kész modelleket.
+Akár az alapoktól, akár egy meglévő modellt kíván létrehozni a felhőbe, Azure Machine Learning szolgáltatás segít az üzemi használatra kész modellek létrehozásában.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a kód futtatása ezekben a környezetekben valamelyikét:
+Futtassa ezt a kódot ezen környezetek bármelyikén:
 
-- Az Azure Machine Learning Notebook Virtuálisgép - letöltések vagy nem szükséges telepítés
+- Azure Machine Learning notebook VM – nincs szükség letöltésre vagy telepítésre
 
-    - Végezze el a [felhőalapú notebook rövid](quickstart-run-cloud-notebook.md) hozhat létre egy dedikált notebook server előre betöltött az SDK-t és a mintaadattárat.
-    - A notebook server minták mappájában található egy befejezett jegyzetfüzet és a fájlok a **how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer** mappát.  A notebook intelligens hiperparaméter finomhangolása, a modell üzembe helyezése és a notebook widgetek kibontott szakaszokat tartalmazza.
+    - Fejezze be a [felhőalapú jegyzetfüzet](quickstart-run-cloud-notebook.md) rövid útmutatóját, és hozzon létre egy dedikált jegyzetfüzet-kiszolgálót, amely előre be van töltve az SDK-val és a minta adattárral.
+    - A notebook-kiszolgáló Samples (minták) mappájában keresse meg a kész jegyzetfüzetet és fájlokat a **használati útmutató-azureml/Training-with-Deep-learning/Train-hiperparaméter-Tune-Deploy-with** -láncolási mappában.  A jegyzetfüzet tartalmaz kibővített szakaszt az intelligens hiperparaméter hangolás, a modell üzembe helyezése és a notebook widgetek számára.
 
-- A saját Jupyter Notebook server
+- Saját Jupyter Notebook-kiszolgáló
 
-    - [Telepítse az Azure Machine Learning SDK a Pythonhoz](setup-create-workspace.md#sdk)
+    - [A Pythonhoz készült Azure Machine Learning SDK telepítése](setup-create-workspace.md#sdk)
     - [Munkaterület-konfigurációs fájl létrehozása](setup-create-workspace.md#write-a-configuration-file)
-    - Töltse le a minta parancsfájl [chainer_mnist.py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/chainer_mnist.py)
-     - Is megtalálhatja a befejezett [Jupyter Notebook verzió](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb) Ez az útmutató a GitHub-minták lapon. A notebook intelligens hiperparaméter finomhangolása, a modell üzembe helyezése és a notebook widgetek kibontott szakaszokat tartalmazza.
+    - Töltse le a [chainer_mnist.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/chainer_mnist.py) a minta parancsfájlt
+     - Megtalálhatja az útmutató befejezett [Jupyter notebook verzióját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb) is a GitHub-minták oldalon. A jegyzetfüzet tartalmaz kibővített szakaszt az intelligens hiperparaméter hangolás, a modell üzembe helyezése és a notebook widgetek számára.
 
 ## <a name="set-up-the-experiment"></a>A kísérlet beállítása
 
-Ez a szakasz által a szükséges python-csomagok betöltése, a munkaterület inicializálása, egy kísérlet létrehozásától és feltöltése a betanítási adatok és a betanítási szkriptekhez beállítja a tanítási kísérlet.
+Ez a szakasz a betanítási kísérletet a szükséges Python-csomagok betöltésével, egy munkaterület inicializálásával, egy kísérlet létrehozásával, valamint a betanítási adat és a betanítási parancsfájlok feltöltésével állítja be.
 
 ### <a name="import-packages"></a>Csomagok importálása
 
-Először importálja a azureml.core Python kódtár ad megjelenítése a verziószámot.
+Először importálja a azureml. Core Python-függvénytárat, és jelenítse meg a verziószámot.
 
 ```
 # Check core SDK version number
@@ -60,16 +60,16 @@ print("SDK version:", azureml.core.VERSION)
 
 ### <a name="initialize-a-workspace"></a>Munkaterület inicializálása
 
-A [Azure Machine Learning szolgáltatás munkaterület](concept-workspace.md) a szolgáltatás a legfelső szintű erőforrás. Is tartalmaz egy központi helyen hoz létre minden összetevő dolgozhat. A Python SDK-ban, hozzáférhet a munkaterület-összetevők létrehozásával egy [ `workspace` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum.
+A [Azure Machine learning szolgáltatás munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum létrehozásával érheti el a munkaterület összetevőit.
 
-A munkaterület-objektum létrehozása a `config.json` létrehozott fájlt a [előfeltételeknél](#prerequisites).
+Hozzon létre egy munkaterület-objektumot `config.json` az [Előfeltételek szakaszban](#prerequisites)létrehozott fájl beolvasásával:
 
 ```Python
 ws = Workspace.from_config()
 ```
 
-### <a name="create-a-project-directory"></a>Hozzon létre egy projektet könyvtárat
-Hozzon létre egy könyvtárat, amely tartalmazza a szükséges kódot, hogy kell-e a távoli erőforrás elérését a helyi gépen. Ez magában foglalja a tanítási szkriptet és a további fájlokat a tanítási szkriptet függ.
+### <a name="create-a-project-directory"></a>Projekt könyvtárának létrehozása
+Hozzon létre egy könyvtárat, amely tartalmazni fogja a helyi gépről az összes szükséges kódot, amelyhez hozzá kell férnie a távoli erőforráshoz. Ez magában foglalja a betanítási szkriptet és a betanítási szkripttől függő további fájlokat.
 
 ```
 import os
@@ -78,13 +78,15 @@ project_folder = './chainer-mnist'
 os.makedirs(project_folder, exist_ok=True)
 ```
 
-### <a name="prepare-training-script"></a>Készítse elő a tanítási szkriptet
+### <a name="prepare-training-script"></a>Betanítási szkript előkészítése
 
-Ebben az oktatóanyagban a tanítási szkriptet **chainer_mnist.py** már az Ön számára biztosított. A gyakorlatban majd bármely egyéni tanítási szkriptet, és futtassa az Azure ML segítségével a kód módosítása nélkül kell lennie.
+Ebben az oktatóanyagban már meg van biztosítva a **chainer_mnist.** a betanítási szkript. A gyakorlatban a kód módosítása nélkül is elvégezheti az egyéni betanítási szkriptek futtatását, és futtathatja azt az Azure ML-ben.
 
-Az Azure Machine Learning követési és metrikák képességeit szeretné használni, fel kell vennie a tanítási szkriptet az Azure Machine Learning kódot a kisebb mennyiségű.  A tanítási szkriptet **chainer_mnist.py** bemutatja, hogyan bizonyos metrikák bejelentkezni az Azure ML futtatni. Ehhez az Azure ML eléréséhez `Run` a parancsfájl-objektummal.
+Az Azure ML követési és metrikái képességeinek használatához vegyen fel egy kis mennyiségű Azure ML-kódot a betanítási szkriptbe.  A **chainer_mnist.** a betanítási szkript azt mutatja be, hogyan lehet naplózni néhány mérőszámot az `Run` Azure ml-ben a szkripten belüli objektum használatával.
 
-Másolja ki a tanítási szkriptet **chainer_mnist.py** be a projektkönyvtárba.
+A megadott betanítási parancsfájl példákat használ a láncolási `datasets.mnist.get_mnist` függvényből.  A saját adatok esetében előfordulhat, hogy olyan lépéseket kell használnia, mint például az [adatkészlet és a parancsfájlok feltöltése](how-to-train-keras.md#upload-dataset-and-scripts) , hogy az adatok elérhetők legyenek a képzés során.
+
+Másolja a **chainer_mnist.** a betanítási szkriptet a projekt könyvtárába.
 
 ```
 import shutil
@@ -94,7 +96,7 @@ shutil.copy('chainer_mnist.py', project_folder)
 
 ### <a name="create-an-experiment"></a>Kísérlet létrehozása
 
-Hozzon létre egy kísérletet és a egy mappát a betanítási szkriptekhez tárolásához. Ebben a példában egy "chainer-mnist" nevű kísérlet létrehozása.
+Hozzon létre egy kísérletet. Ebben a példában hozzon létre egy "chainer-mnist" nevű kísérletet.
 
 ```
 from azureml.core import Experiment
@@ -104,11 +106,11 @@ experiment = Experiment(ws, name=experiment_name)
 ```
 
 
-## <a name="create-or-get-a-compute-target"></a>Hozzon létre, vagy szerezze be egy számítási célnak
+## <a name="create-or-get-a-compute-target"></a>Számítási cél létrehozása vagy beszerzése
 
-Szüksége lesz egy [számítási célt](concept-compute-target.md) a modell betanításához. Ebben az oktatóanyagban az távoli képzési számítási erőforrás által felügyelt Azure ML compute (AmlCompute) fogja használni.
+Szüksége lesz egy [számítási célra](concept-compute-target.md) a modell betanításához. Ebben a példában az Azure ML felügyelt számítási feladatokhoz (AmlCompute) használja a távoli képzés számítási erőforrását.
 
-**Létrehozási, AmlCompute körülbelül 5 percet vesz igénybe**. Ha az ilyen nevű AmlCompute már a munkaterületen, ez a kód kihagyja a létrehozás folyamatát.  
+**A AmlCompute létrehozása körülbelül 5 percet vesz igénybe**. Ha az adott névvel rendelkező AmlCompute már szerepel a munkaterületen, ez a kód kihagyja a létrehozási folyamatot.  
 
 ```Python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -134,13 +136,13 @@ except ComputeTargetException:
 print(compute_target.get_status().serialize())
 ```
 
-A számítási célokhoz további információkért lásd: a [mi egy számítási célnak](concept-compute-target.md) cikk.
+A számítási célokkal kapcsolatos további információkért tekintse meg a [Mi az a számítási cél](concept-compute-target.md) című cikket.
 
-## <a name="create-a-chainer-estimator"></a>Hozzon létre egy Chainer estimator
+## <a name="create-a-chainer-estimator"></a>Láncolási kalkulátor létrehozása
 
-A [Chainer estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) Chainer betanítási feladatokat a számítási célnak a állapotára egyszerű módszert kínál.
+A [láncolási kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) egyszerű módszert kínál a chainer-betanítási feladatok elindítására a számítási célra.
 
-A Chainer estimator biztosítják az általános [ `estimator` ](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) osztály, amely bármely keretrendszer támogatásához használható. Az általános estimator használó modellek betanítása kapcsolatos további információkért lásd: [modelleket taníthat be az Azure Machine Learning estimator használatával](how-to-train-ml-models.md)
+A láncolási kalkulátor az általános [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) osztályon keresztül valósul meg, amely bármely keretrendszer támogatásához használható. További információ a képzési modellekről az általános kalkulátor használatával: [modellek betanítása Azure Machine learning a kalkulátor használatával](how-to-train-ml-models.md)
 
 ```Python
 from azureml.train.dnn import Chainer
@@ -159,48 +161,57 @@ estimator = Chainer(source_directory=project_folder,
                     use_gpu=True)
 ```
 
-## <a name="submit-a-run"></a>Küldje el a Futtatás
+## <a name="submit-a-run"></a>Futtatás küldése
 
-A [objektumot futtatni](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) a futtatási előzmények a felületet biztosít, a feladat futása közben és után befejeződött.
+A [Run objektum](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) biztosítja a felületet a futtatási előzményekhez, miközben a feladatot futtatja, és a művelet befejeződött.
 
 ```Python
 run = exp.submit(est)
 run.wait_for_completion(show_output=True)
 ```
 
-A Futtatás hajtja végre, a következő szakaszokra végighalad:
+A Futtatás végrehajtásakor a következő szakaszokon halad végig:
 
-- **Felkészülés**: Docker-rendszerkép a Chainer estimator alapján jön létre. A rendszerkép feltöltött a munkaterület container Registry tárolóregisztrációs adatbázisba, és későbbi futtatások gyorsítótárazza. Naplók a is rendszer streamként továbbítja a futtatási előzmények és megtekinthetők a folyamat állapotának monitorozásához.
+- **Felkészülés**: A Docker-rendszerkép létrehozása a láncolási kalkulátor alapján történik. A rendszer feltölti a rendszerképet a munkaterület tároló-Hivatalához, és a gyorsítótárba helyezi a későbbi futtatásokhoz. A naplók a futtatási előzményekre is továbbítva lesznek, és a folyamat figyelésére is megtekinthetők.
 
-- **Méretezés**: A fürt próbál vertikális felskálázás, ha a Batch AI-fürt csomópontjait a Futtatás végrehajtásához, mint a jelenleg elérhető igényel.
+- **Méretezés**: A fürt akkor kísérli meg a skálázást, ha a Batch AI-fürthöz több csomópont szükséges a jelenleg elérhető futtatáshoz.
 
-- **Futó**: A parancsfájl mappában található összes parancsfájl töltenek fel a számítási célnak, adattárak csatlakoztatva van, vagy másolja és a entry_script hajtja végre. Az stdout adatsorból kimenetek és a. / logs mappában a rendszer streamként továbbítja a futtatási előzmények és a Futtatás figyelésére használható.
+- **Futtatás**: A rendszer a parancsfájl mappájában lévő összes parancsfájlt feltölti a számítási célra, az adattárakat csatlakoztatja vagy másolja, és a entry_script hajtja végre. Az stdout és a./Logs mappa kimeneteit a rendszer a futtatási előzményekre továbbítja, és a Futtatás figyelésére használható.
 
-- **Utófeldolgozási**: A. / kimenete a Futtatás mappába másolja a rendszer a futtatási előzményekben.
+- **Feldolgozás utáni**: A Futtatás./outputs mappáját a rendszer átmásolja a futtatási előzményekbe.
 
-## <a name="save-and-register-the-model"></a>Mentse, és regisztrálja a modellt
+## <a name="save-and-register-the-model"></a>A modell mentése és regisztrálása
 
-Ha a modell már betanított, mentheti, és regisztrálja a munkaterülethez. Modell regisztrálását lehetővé teszi a tároló és verzió egyszerűsítése érdekében a munkaterület a modellek [kezelés és üzembe helyezési modell](concept-model-management-and-deployment.md).
+A modell kiképzése után mentheti és regisztrálhatja azt a munkaterületen. A modell regisztrálása lehetővé teszi a modellek tárolását és verzióját a munkaterületen a [modell kezelésének és üzembe helyezésének](concept-model-management-and-deployment.md)egyszerűsítése érdekében.
 
-Adja hozzá a következő kódot a tanítási szkriptet **chainer_mnist.py**, a modell mentéséhez. 
 
-``` Python
-    serializers.save_npz(os.path.join(args.output_dir, 'model.npz'), model)
-```
-
-Regisztrálja a modellt, a munkaterület az alábbi kódra.
+A modell betanításának befejeződése után regisztrálja a modellt a munkaterületen a következő kóddal.  
 
 ```Python
 model = run.register_model(model_name='chainer-dnn-mnist', model_path='outputs/model.npz')
 ```
 
+> [!TIP]
+> Ha hibaüzenet jelenik meg, hogy a modell nem található, adjon meg egy percet, és próbálkozzon újra.  Időnként némi késés áll fenn a képzés vége és a modell rendelkezésre állása között a kimenetek könyvtárban.
 
+Letöltheti a modell helyi példányát is. Ez akkor lehet hasznos, ha a modell további ellenőrzése helyileg működik. A betanítási parancsfájlban `chainer_mnist.py`egy megmentő objektum a modellt egy helyi mappába menti (helyi a számítási célra). A Futtatás objektum használatával letöltheti az adattárból származó másolatot.
+
+```Python
+# Create a model folder in the current directory
+os.makedirs('./model', exist_ok=True)
+
+for f in run.get_file_names():
+    if f.startswith('outputs/model'):
+        output_file_path = os.path.join('./model', f.split('/')[-1])
+        print('Downloading from {} to {} ...'.format(f, output_file_path))
+        run.download_file(name=f, output_file_path=output_file_path)
+```
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben Azure Machine Learning szolgáltatásban egy Chainer modell tanítása. 
+Ebben a cikkben a Azure Machine Learning Service-ben egy Chainer-modellt oktatott. 
 
-* Ismerje meg, hogyan helyezhet üzembe modelleket, továbbléphet a következőre a [üzembe helyezési modell](how-to-deploy-and-where.md) cikk.
+* A modellek üzembe helyezésének megismeréséhez folytassa a [modell üzembe](how-to-deploy-and-where.md) helyezésével kapcsolatos cikket.
 
 * [Hiperparaméterek hangolása](how-to-tune-hyperparameters.md)
 

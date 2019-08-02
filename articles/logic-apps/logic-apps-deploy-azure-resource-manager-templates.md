@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 07/26/2019
-ms.openlocfilehash: dbc92502cdab6e76ba6b8730fca7e0aed3966a43
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.date: 08/01/2019
+ms.openlocfilehash: 083c908609ebcf1bdc6dcad5e37ae03daa41758f
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494938"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706505"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps Azure Resource Manager sablonjainak üzembe helyezése
 
@@ -35,7 +35,7 @@ A Logic app-sablonok Azure-ba történő automatikus üzembe helyezéséhez vál
 
 [![Üzembe helyezés az Azure-ban](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
-Ezt az információt például a rendszer a Azure Portalba való bejelentkezés után kéri:
+Ha például a Azure Portalba való bejelentkezés után kéri a következő információkat:
 
 * Azure-előfizetés neve
 * Használni kívánt erőforráscsoport
@@ -59,7 +59,7 @@ Ha a Visual Studióval létrehozott Azure erőforráscsoport-projektből szeretn
 
 ## <a name="deploy-with-azure-powershell"></a>Üzembe helyezés az Azure PowerShell-lel
 
-Egy adott Azure-erőforráscsoport üzembe helyezéséhez használja a következő parancsot:
+Egy adott *Azure-erőforráscsoport*üzembe helyezéséhez használja a következő parancsot:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
@@ -91,10 +91,14 @@ További információkért tekintse meg a következő témaköröket:
 
 A logikai alkalmazások sablonjainak üzembe helyezéséhez és a környezetek kezeléséhez a csapatok általában olyan eszközt használnak, mint például az Azure- [DevOps](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops-services)az Azure- [folyamatok](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines) . Az Azure-folyamatok egy [Azure erőforráscsoport-telepítési feladatot](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2) biztosítanak, amelyet bármely Build-vagy kiadási folyamathoz hozzáadhat. A kiadási folyamat üzembe helyezésének és létrehozásának engedélyezéséhez szükség van egy Azure Active Directory (AD) [egyszerű szolgáltatásra](../active-directory/develop/app-objects-and-service-principals.md)is. További információ az [egyszerű szolgáltatások Azure-folyamatokkal való használatáról](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure).
 
-További információ a folyamatos integrációról és a folyamatos üzembe helyezésről (CI/CD) az Azure-folyamatokkal rendelkező Azure Resource Manager-sablonokkal kapcsolatban:
+További információ a folyamatos integrációról és a folyamatos üzembe helyezésről (CI/CD) az Azure-folyamatokkal rendelkező Azure Resource Manager-sablonokkal kapcsolatban: a következő témakörökben és példákban:
 
 * [Resource Manager-sablonok integrálása az Azure-folyamatokkal](../azure-resource-manager/vs-resource-groups-project-devops-pipelines.md)
 * [Oktatóanyag: Azure Resource Manager sablonok folyamatos integrálása az Azure-folyamatokkal](../azure-resource-manager/resource-manager-tutorial-use-azure-pipelines.md)
+* [Minta: Kapcsolódás Azure Service Bus várólistákhoz Azure Logic Apps és üzembe helyezése Azure-folyamatokkal az Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Minta: Kapcsolódás Azure Storage-fiókokhoz Azure Logic Apps és üzembe helyezése Azure-DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Minta: Function app-művelet beállítása Azure Logic Apps és üzembe helyezése az Azure-DevOps Azure-folyamatokkal](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Minta: Csatlakozás egy integrációs fiókhoz Azure Logic Apps és üzembe helyezése Azure-folyamatokkal az Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 Az Azure-folyamatok használatának általános magas szintű lépései:
 

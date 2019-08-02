@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: b462f0c427020b1422b91fbd7ac34e3023e546b8
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 998471d99a785eeff39ef7c99e60e1d9b49e0d7a
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677869"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725832"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Oktatóanyag: Azure Time Series Insights előnézeti környezet beállítása
 
@@ -62,7 +62,7 @@ Ebben a szakaszban három szimulált eszközt hoz létre, amelyek az Azure IoT H
 
     [![Eszköz-szimulációs megoldás létrehozása lap](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
 
-## <a name="create-a-time-series-insights-preview-payg-environment"></a>Time Series Insights előnézet TB-környezet létrehozása
+## <a name="create-a-preview-payg-environment"></a>Előzetes verziójú TB-környezet létrehozása
 
 Ez a szakasz azt ismerteti, hogyan hozhat létre Azure Time Series Insights előnézeti környezetet, és hogyan csatlakoztathatja a IoT-megoldás-gyorsító által létrehozott IoT hub-hoz a [Azure Portal](https://portal.azure.com/)használatával.
 
@@ -130,7 +130,9 @@ Ez a szakasz azt ismerteti, hogyan hozhat létre Azure Time Series Insights elő
 
    Ha a hitelesítő adatai nem szerepelnek a felsorolásban, meg kell adnia magadnak a környezet eléréséhez szükséges engedélyt. Ha többet szeretne megtudni az engedélyek beállításáról, olvassa el az [adathozzáférés engedélyezése](./time-series-insights-data-access.md)című témakört.
 
-## <a name="stream-data-into-your-environment"></a>Adatfolyamok továbbítása a környezetbe
+## <a name="stream-data"></a>Adatfolyam-adatforrások
+
+Most, hogy üzembe helyezte a Time Series Insights-környezetet, adatfolyamként továbbítja azokat az elemzéshez.
 
 1. Váltson vissza az [Azure IoT megoldás](https://www.azureiotsolutions.com/Accelerators)-gyorsítók lapjára. Keresse meg a megoldást a megoldás-gyorsító irányítópultján. Ezután válassza az **Indítás**lehetőséget:
 
@@ -158,7 +160,7 @@ Ez a szakasz azt ismerteti, hogyan hozhat létre Azure Time Series Insights elő
 
     [![Az Azure IoT szimulációjának irányítópultja](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
-## <a name="analyze-data-in-your-environment"></a>A környezetben lévő adatok elemzése
+## <a name="analyze-data"></a>Adatok elemzése
 
 Ebben a szakaszban az idősorozat-adatokra vonatkozó alapszintű elemzéseket a [Azure Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md)használatával hajtja végre.
 

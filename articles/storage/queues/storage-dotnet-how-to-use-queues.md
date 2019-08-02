@@ -1,21 +1,19 @@
 ---
-title: Azure Queue Storage .NET-keretrendszerhez – Azure Storage használatának első lépései
+title: Az Azure üzenetsor-tárolás használatának első lépései a .NET-Azure Storage használatával
 description: Az Azure-üzenetsorok megbízható, aszinkron üzenetkezelést biztosítanak az alkalmazások összetevői között. A felhőbeli üzenetkezelésnek köszönhetően az alkalmazások összetevői függetlenül méretezhetők.
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 05/21/2019
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 05/21/2019
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 59995715ab42b4682befa7d1512b14427740dea2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: aa92b72b09ed28b41d85ac7c7605077761657d40
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446860"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721567"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel
 
@@ -31,13 +29,13 @@ Az Azure Queue Storage felhőbeli üzenetkezelést biztosít az alkalmazások ö
 
 Ez az oktatóanyag bemutatja, hogyan írhat .NET-kódot néhány, az Azure Queue Storage szolgáltatást használó általános forgatókönyvhöz. Az ismertetett forgatókönyvek az üzenetsorok létrehozására és törlésére, valamint az üzenetsor üzeneteinek hozzáadására, olvasására és törlésére vonatkoznak.
 
-**Becsült időtartama:** 45 perc
+**Várható befejezési idő:** 45 perc
 
 ### <a name="prerequisites"></a>Előfeltételek
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Az Azure Storage közös ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
-* [Az Azure Storage-üzenetsor ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
+* [Azure Storage-üzenetsor .NET-hez készült ügyféloldali kódtára](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
 * [Azure Configuration Manager a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
 * Egy [Azure-tárfiók](../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 
@@ -51,38 +49,38 @@ A következő lépésként állítsa be a fejlesztési környezetet a Visual Stu
 
 ### <a name="create-a-windows-console-application-project"></a>Windows-konzolalkalmazás projekt létrehozása
 
-Hozzon létre egy új Windows-konzolalkalmazást a Visual Studióban. A következő lépések bemutatják, hogyan hozzon létre egy konzolalkalmazást a Visual Studio 2019. A lépések a Visual Studio más verziói esetén is hasonlók.
+Hozzon létre egy új Windows-konzolalkalmazást a Visual Studióban. A következő lépések bemutatják, hogyan hozhat létre egy Console-alkalmazást a Visual Studio 2019-ben. A lépések a Visual Studio más verziói esetén is hasonlók.
 
 1. Válassza a **File** (Fájl) > **New** (Új) > **Project** (Projekt) lehetőséget.
-2. Válassza ki **Platform** > **Windows**
+2. **Platform** > **Windows** kiválasztása
 3. Válassza a **Console App (.NET Framework)** (Konzolalkalmazás (.NET keretrendszer) lehetőséget
 4. Kattintson a **Tovább** gombra.
-5. Az a **projektnév** mezőben adjon meg egy nevet az alkalmazásnak
+5. A **projekt neve** mezőben adja meg az alkalmazás nevét
 6. Kattintson a **Létrehozás** elemre.
 
-Ebben az oktatóanyagban szereplő példák lehet hozzáadni a **Main()** módszere a Konzolalkalmazás **Program.cs** fájlt.
+Az oktatóanyagban szereplő összes példa a konzol alkalmazás **program.cs** fájljának **Main ()** metódusához adható hozzá.
 
-Az Azure Storage ügyfélkódtáraival bármilyen típusú .NET-alkalmazást, beleértve egy Azure-felhő vagy -webappokat alkalmazást, és az asztali és mobil alkalmazások is használhatja. Ebben az útmutatóban az egyszerűség kedvéért egy konzolalkalmazást használunk.
+Az Azure Storage ügyféloldali kódtárait bármilyen típusú .NET-alkalmazásban használhatja, beleértve az Azure Cloud Service-t vagy a webalkalmazást, valamint az asztali és mobil alkalmazásokat is. Ebben az útmutatóban az egyszerűség kedvéért egy konzolalkalmazást használunk.
 
 ### <a name="use-nuget-to-install-the-required-packages"></a>A szükséges csomagok telepítése a NuGettel
 
-Kell hivatkoznia a projektben az oktatóanyag elvégzéséhez a következő három csomagok:
+A következő három csomagra kell hivatkoznia a projektben az oktatóanyag elvégzéséhez:
 
-* [A Microsoft Azure Storage közös ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Ez a csomag a tárfiókja adatforrásaihoz programozás alapú hozzáférést biztosít.
-* [A Microsoft Azure Storage Queue kódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Az ügyféloldali kódtár a Microsoft Azure Storage-üzenetsor-szolgáltatás, előfordulhat, hogy egy ügyfél által elérhető üzenetek tárolását való munkát teszi lehetővé.
-* [A Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlban, függetlenül attól, hol futnak az alkalmazás kapcsolati karakterlánc elemzéséhez.
+* [A .net-hez készült általános ügyféloldali függvénytár Microsoft Azure Storage](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Ez a csomag programozott hozzáférést biztosít a Storage-fiókban található adaterőforrásokhoz.
+* [Microsoft Azure Storage üzenetsor-függvénytár a .net-hez](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Ez az ügyféloldali kódtár lehetővé teszi, hogy az ügyfél által elérhető üzenetek tárolásához a Microsoft Azure Storage Queue szolgáltatás is működjön.
+* [Microsoft Azure Configuration Manager .net-függvénytár](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlban lévő kapcsolatok karakterláncának elemzéséhez, függetlenül attól, hogy az alkalmazás hol fut.
 
-NuGet használatával szerezze be ezeket a csomagokat. Kövesse az alábbi lépéseket:
+A NuGet a csomagok beszerzéséhez használható. Kövesse az alábbi lépéseket:
 
 1. Kattintson a jobb gombbal a projektjére a **Megoldáskezelőben**, és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget.
-2. Válassza ki **tallózása**
-3. Keressen rá az interneten a "Microsoft.Azure.Storage.Queue", és válassza ki **telepítése** a Storage ügyféloldali kódtár és függőségeinek telepítéséhez. Ez a várólista-függvénytár függősége szalagtárban Microsoft.Azure.Storage.Common is telepíti.
-4. Keressen rá az interneten a "Microsoft.Azure.ConfigurationManager", és válassza ki **telepítése** az Azure Configuration Manager telepítéséhez.
+2. **Tallózás** kiválasztása
+3. Keressen rá az interneten a "Microsoft. Azure. Storage. üzenetsor" kifejezésre, és válassza a **telepítés** lehetőséget a Storage ügyféloldali kódtár és függőségeinek telepítéséhez. Ez a Microsoft. Azure. Storage. Common könyvtárat is telepíti, amely a várólista-függvénytár függősége.
+4. Keressen rá az interneten a "Microsoft. Azure. ConfigurationManager" kifejezésre, és válassza a **telepítés** lehetőséget az Azure Configuration Manager telepítéséhez.
 
 > [!NOTE]
-> A Storage ügyféloldali kódtárak csomagok is megtalálhatók a [Azure SDK for .NET](https://azure.microsoft.com/downloads/). Azt javasoljuk azonban, telepítenie a tároló ügyfélkódtárai a Nugetből ellenőrizze, hogy mindig a legújabb verzióra.
+> A Storage ügyféloldali kódtárainak csomagjai a [.net-hez készült Azure SDK](https://azure.microsoft.com/downloads/)-ban is szerepelnek. Javasoljuk azonban, hogy a Storage ügyféloldali kódtárait a NuGet-ből is telepítse, hogy mindig a legújabb verzióval rendelkezzen.
 >
-> A .NET-keretrendszerhez készült Storage ügyfélkódtáraival ODataLib-függőségeit a nem a WCF-adatszolgáltatások a Nugeten elérhető ODataLib-csomagok által megoldott. Az ODataLib-kódtárak letölthetők közvetlenül, vagy a kódprojektje hivatkozhat rájuk a NuGeten keresztül. A tároló ügyfélkódtárai által használt konkrét ODataLib-csomagok [OData](https://nuget.org/packages/Microsoft.Data.OData/), [Edm](https://nuget.org/packages/Microsoft.Data.Edm/), és [Spatial](https://nuget.org/packages/System.Spatial/). Ezek a kódtárak az Azure Table storage osztályai használják, amíg azok szükséges függőségek a Storage ügyfélkódtárai való programozáshoz.
+> A .NET-hez készült Storage ügyféloldali kódtárak ODataLib-függőségeit a NuGet-on elérhető ODataLib-csomagok oldják meg, nem pedig WCF Data Services. Az ODataLib-kódtárak letölthetők közvetlenül, vagy a kódprojektje hivatkozhat rájuk a NuGeten keresztül. A Storage ügyféloldali kódtárai által használt konkrét ODataLib-csomagok a következők: [OData](https://nuget.org/packages/Microsoft.Data.OData/), [EDM](https://nuget.org/packages/Microsoft.Data.Edm/)és [térbeli](https://nuget.org/packages/System.Spatial/). Habár ezeket a kódtárakat az Azure Table Storage osztályai használják, a Storage ügyféloldali kódtárakkal való programozáshoz szükséges függőségek.
 
 ### <a name="determine-your-target-environment"></a>A célkörnyezet meghatározása
 
@@ -98,14 +96,14 @@ Ha egy felhőbeli tárfiókot céloz meg, akkor másolja ki a tárfiók elsődle
 
 ### <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati sztring konfigurálása
 
-Az Azure Storage ügyfélkódtáraival a .NET-támogatásnak egy tárolási kapcsolati karakterlánc használatával konfigurálja a végpontokat és tárolási szolgáltatások eléréséhez használt hitelesítő adatokat. A tárolási kapcsolati sztring egy konfigurációs fájlban tartható fenn a legjobban.
+Az Azure Storage ügyféloldali kódtárai a .NET-támogatáshoz egy Storage-kapcsolódási karakterlánc használatával konfigurálja a végpontokat és a hitelesítő adatokat a tárolási szolgáltatások eléréséhez. A tárolási kapcsolati sztring egy konfigurációs fájlban tartható fenn a legjobban.
 
 A kapcsolati sztringekkel kapcsolatos további információkért lásd: [Az Azure Storage kapcsolati sztringjének konfigurálása](../common/storage-configure-connection-string.md).
 
 > [!NOTE]
 > A tárfiók kulcsa hasonlít a tárfiók rendszergazdai jelszavához. Mindig ügyeljen a tárfiók kulcsának védelmére. Ne adja ki másoknak, ne kódolja fixen és ne mentse egy mások számára elérhető egyszerű szöveges fájlban. Ha azt gyanítja, hogy a kulcs biztonsága sérült, az Azure portál segítségével generálja újra.
 
-A kapcsolati karakterlánc konfigurálásához nyissa meg a **app.config** fájlt a Megoldáskezelőből a Visual Studióban. Adja hozzá a tartalmát a **\<appSettings\>** elemet az alább látható. Cserélje le *fióknév* a tárfiók nevével és *-fiókkulcs* értékeket a fiók hozzáférési kulcsára:
+A kapcsolódási karakterlánc konfigurálásához nyissa meg az **app. config** fájlt megoldáskezelő a Visual Studióban. Adja hozzá az alább látható **\<appSettings\>** elem tartalmát. Cserélje le a *Account-Name nevet* a Storage-fiók nevére, és a fiókhoz tartozó hozzáférési kulcshoz *tartozó Account-Key* :
 
 ```xml
 <configuration>

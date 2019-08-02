@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center az IoT-Előfeltételek előzetes verzió |} A Microsoft Docs
-description: Minden, a részletek szükséges készült IoT-szolgáltatás Előfeltételek az Azure Security Center használatának első lépései.
+title: A IoT előfeltételei Azure Security Center | Microsoft Docs
+description: A IoT szolgáltatás előfeltételeinek megkezdéséhez szükséges Azure Security Center részletei.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,57 +13,77 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/28/2019
 ms.author: mlottner
-ms.openlocfilehash: 198459887ff19b16e897b2a8dde55bca1217c8ac
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: cc2dc3a190e3ad06bdc048f2a5770eae2a6990ec
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616436"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596831"
 ---
-# <a name="azure-security-center-for-iot-prerequisites"></a>Azure Security Center az IoT-Előfeltételek
+# <a name="azure-security-center-for-iot-prerequisites"></a>A IoT előfeltételei Azure Security Center
 
-> [!IMPORTANT]
-> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
-> Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Ez a cikk a különböző építőelemeket, az Azure Security Center (ASC) IoT service, a kezdéshez szükséges és alapvető fogalmait bővebben tájékozódhat a szolgáltatás magyarázattal szolgál. 
+Ez a cikk ismerteti a IoT szolgáltatáshoz tartozó Azure Security Center (ASC) különböző építőelemeit, a kezdéshez szükséges tudnivalókat, valamint ismerteti az alapvető fogalmakat, amelyek segítenek a szolgáltatás megismerésében. 
 
 ## <a name="minimum-requirements"></a>Minimális követelmények
 
-- IoT Hub standard szintű csomag
-    - RBAC szerepkör **tulajdonosa** szintű jogosultságok 
-- [Log Analytics-munkaterület](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) 
-- Az Azure Security Center (ajánlott)
-    - Bár az Azure Security Center használata csak egy javaslatot, és nem követelmény, anélkül, akkor megtekintheti az egyéb Azure-erőforrások belül az IoT Hub. 
+- Standard szintű IoT Hub
+    - RBAC szerepkör -tulajdonosi szintű jogosultságok 
+- [Log Analytics munkaterület](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) 
+- Azure Security Center (ajánlott)
+    - A Azure Security Center használata javaslat, nem követelmény. Azure Security Center nélkül nem tudja megtekinteni a többi Azure-erőforrást IoT Hubon belül. 
  
-## <a name="working-with-asc-for-iot-service"></a>ASC IoT-szolgáltatás használata
+## <a name="working-with-asc-for-iot-service"></a>Az ASC használata a IoT szolgáltatáshoz
 
-IoT-elemzések és jelentéskészítés ASC érhetők el az Azure IoT Hub és az Azure Security Center használatával. ASC engedélyezése az Azure IoT hub, a fiók IoT **tulajdonosa** szintű jogosultságok megadása kötelező. Miután engedélyezte a ASC az IoT hub IOT, IoT-elemzések az ASC jelennek meg, a **biztonsági** funkció az Azure IoT Hub és az as **IoT** az Azure Security Centerben. 
+Az IoT-észlelések és jelentéskészítési ASC az Azure IoT Hub és Azure Security Center használatával érhető el. Ha engedélyezni szeretné az ASC-t az Azure-IoT Hub IoT, a tulajdonosi szintű jogosultságokkal rendelkező fiókra van szükség. Miután engedélyezte az ASC szolgáltatást a IoT Hub IoT, a IoT-megállapítások ASC az Azure IoT Hub **biztonsági** funkciójaként jelenik meg, Azure Security Center pedig **IoT** . 
 
 ## <a name="supported-service-regions"></a>Támogatott szolgáltatási régiók 
 
-Az IoT ASC IoT hub a következő Azure-régióban jelenleg támogatott:
-  - USA középső régiója
-  - Northern Europe
+A IoT esetében az ASC jelenleg a következő Azure-régiókban támogatott az IoT-hubok esetében:
+  - USA középső régiója  
+  - East US 
+  - USA 2. keleti régiója
+  - USA nyugati középső régiója
+  - USA nyugati régiója
+  - USA 2. nyugati régiója
+  - USA déli középső régiója
+  - USA északi középső régiója
+  - Közép-Kanada
+  - Kelet-Kanada 
+  - Észak-Európa    
+  - Dél-Brazília
+  - Közép-Franciaország  
+  - Az Egyesült Királyság nyugati régiója 
+  - Az Egyesült Királyság déli régiója
+  - Nyugat-Európa 
+  - Észak-Európa 
+  - Nyugat-Japán  
+  - Kelet-Japán  
+  - Délkelet-Ausztrália
+  - Kelet-Ausztrália
+  - Kelet-Ázsia   
   - Délkelet-Ázsia
+  - Korea középső régiója
+  - Korea déli régiója 
+  - Közép-India
+  - Dél-India
+  
+## <a name="wheres-my-iot-hub"></a>Hol van a IoT Hub?
 
-## <a name="wheres-my-iot-hub"></a>Hol található a saját IoT Hub?
+A szolgáltatás elérhetőségének megkezdése előtt ellenőrizze a IoT Hub helyét. 
 
-Ellenőrizze az IoT Hub hely megkezdése előtt, a szolgáltatás rendelkezésre állásának ellenőrzése. 
-
-1. Nyissa meg az IoT hubnak. 
+1. Nyissa meg a IoT Hub. 
 2. Kattintson az **Áttekintés** elemre. 
-3. Ellenőrizze a megadott helyre megegyezik az egyik a [szolgáltatási régiók támogatott](#supported-service-regions). 
+3. Ellenőrizze, hogy a felsorolt hely megfelel-e a [támogatott szolgáltatási régiók](#supported-service-regions)egyikének. 
 
 
-## <a name="supported-platforms-for-agents"></a>Ügynökök által támogatott platformok 
+## <a name="supported-platforms-for-agents"></a>Az ügynökök által támogatott platformok 
 
-IoT-ügynökök ASC egyre nagyobb számban elérhető eszközöket és platformokat támogatja. Tekintse meg a [támogatott platformok listáját](how-to-deploy-agent.md) ellenőrizheti a meglévő vagy tervezett hálózatieszköz-könyvtár.  
+A IoT-ügynökök ASC az eszközök és platformok egyre bővülő listáját támogatja. Tekintse meg a [támogatott platformok listáját](how-to-deploy-agent.md) , hogy ellenőrizze a meglévő vagy tervezett eszköz könyvtárát.  
 
 ## <a name="next-steps"></a>További lépések
-- [Áttekintés](overview.md)
-- [A szolgáltatás engedélyezése](quickstart-onboard-iot-hub.md)
-- [ASC IOT – gyakori kérdések](resources-frequently-asked-questions.md)
-- [Az IoT-riasztásokhoz ASC ismertetése](concept-security-alerts.md)
+- Az Azure IoT biztonsági [áttekintése](overview.md)
+- Útmutató [a szolgáltatás engedélyezéséhez](quickstart-onboard-iot-hub.md)
+- Olvassa el a [IoT kapcsolatos gyakori kérdéseket Azure Security Center](resources-frequently-asked-questions.md)
+- A IoT- [riasztások Azure Security Center megismerése](concept-security-alerts.md)

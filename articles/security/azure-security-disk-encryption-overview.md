@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 07/17/2019
+ms.date: 07/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: a67f19f0823827dad74e7aba15a92d696fbf580b
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: c5e568dd073376295e4865994fba8ae5b5ac59a0
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304268"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640992"
 ---
 # <a name="azure-disk-encryption-overview"></a>Azure Disk Encryption áttekintése
 
@@ -72,6 +72,7 @@ A Azure Disk Encryption a következő forgatókönyvek, funkciók és technológ
 * Az Azure Files (megosztott fájlrendszert).
 * Hálózati fájlrendszer (NFS).
 * A dinamikus köteteket.
+* Ideiglenes operációsrendszer-lemezek.
 
 ## <a name="encryption-features"></a>Titkosítási funkciók
 

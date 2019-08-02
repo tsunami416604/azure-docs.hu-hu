@@ -1,43 +1,43 @@
 ---
-title: A Xamarin objektumtárat (Blobtárat) storage használata |} A Microsoft Docs
-description: Az Azure Storage ügyféloldali kódtára a Xamarin lehetővé teszi a fejlesztők számára az iOS, Android és Windows Store apps és a natív felhasználói felületek. Ez az oktatóanyag bemutatja, hogyan hozhat létre alkalmazást az Azure Blob storage a Xamarin segítségével.
-services: storage
-documentationcenter: xamarin
+title: Az Object (blob) tároló használata a Xamarin | Microsoft Docs
+description: A Xamarin készült Azure Storage ügyféloldali kódtára lehetővé teszi, hogy a fejlesztők iOS-, Android-és Windows áruházbeli alkalmazásokat hozzanak létre natív felhasználói felületekkel. Ez az oktatóanyag bemutatja, hogyan használható a Xamarin az Azure Blob Storage-t használó alkalmazások létrehozásához.
 author: mhopkins-msft
-ms.service: storage
-ms.topic: article
-ms.date: 05/11/2017
 ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: 1953a0af89e5ea018bd3654c3b82087331b3d565
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/11/2017
+ms.service: storage
+ms.subservice: blobs
+ms.topic: conceptual
+ms.openlocfilehash: 8a1c91c8a8a59af26386e70e68e7c4fd93f5eaa9
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65141279"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726343"
 ---
-# <a name="how-to-use-blob-storage-from-xamarin"></a>A Xamarin Blob Storage használata
+# <a name="how-to-use-blob-storage-from-xamarin"></a>A Blob Storage használata a Xamarin
 
-Xamarin-fejlesztők számára lehetővé teszi, hogy egy megosztott C# használatával hozhat létre iOS, Android és Windows Store apps és a natív felhasználói felületek kódbázis. Az oktatóanyag bemutatja, hogyan használható az Azure Blob storage egy Xamarin-alkalmazással. Ha szeretne további Azure Storage-ról a kód áttekintése előtt kapcsolatos információkért tekintse meg [a Microsoft Azure Storage bemutatása](../common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+A Xamarin lehetővé teszi a fejlesztők számára C# , hogy a natív felhasználói felülettel rendelkező iOS-, Android-és Windows áruházbeli alkalmazásokat közös kód használatával hozzanak létre. Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Blob Storage-t egy Xamarin-alkalmazással. Ha többet szeretne megtudni az Azure Storage-ról, a kód kimerülése előtt olvassa el a [Microsoft Azure Storage bemutatása](../common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)című témakört.
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 [!INCLUDE [storage-mobile-authentication-guidance](../../../includes/storage-mobile-authentication-guidance.md)]
 
-## <a name="create-a-new-xamarin-application"></a>Egy új Xamarin-alkalmazás létrehozása
-Ebben az oktatóanyagban azt hoz létre egy alkalmazást, amely az Android, iOS és Windows célozza. Ez az alkalmazás egyszerűen hozzon létre egy tárolót, és a blob feltöltése a tárolóba. Fogjuk használni a Visual Studio a Windows, de az azonos tapasztalatainkat is alkalmazható, amikor egy alkalmazást a Xamarin Studiót használja a macOS rendszeren hoz létre.
+## <a name="create-a-new-xamarin-application"></a>Új Xamarin-alkalmazás létrehozása
 
-Kövesse az alábbi lépéseket az alkalmazás létrehozása:
+Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely az Android, az iOS és a Windows rendszert célozza meg. Ez az alkalmazás egyszerűen létrehoz egy tárolót, és feltölt egy blobot ebbe a tárolóba. A Visual studiót a Windowson fogjuk használni, de ugyanezek a betanulások is alkalmazhatók, ha a Xamarin Studio használatával macOS rendszeren is létrehoz egy alkalmazást.
 
-1. Ha még nem tette, töltse le és telepítse [Xamarin for Visual Studio](https://www.xamarin.com/download).
-2. Nyissa meg a Visual Studiót, és létrehoz egy üres alkalmazást (natív hordozható): **Fájl > Új > Projekt > többplatformos > Üres alkalmazás (natív hordozható)** .
-3. Kattintson a jobb gombbal a megoldás a Solution Explorer panelen, és válassza ki **NuGet-csomagok kezelése megoldáshoz**. Keresse meg **WindowsAzure.Storage** , és telepítse a legújabb stabil verzióra az összes projektet a megoldásban.
-4. Hozhat létre, és futtassa a projektet.
+Az alkalmazás létrehozásához kövesse az alábbi lépéseket:
 
-Ekkor rendelkezik olyan alkalmazás, amely lehetővé teszi, hogy egy gombra, amely növeli a számlálót.
+1. Ha még nem tette meg, töltse le és telepítse [a Xamarin for Visual Studio](https://www.xamarin.com/download)alkalmazást.
+2. Nyissa meg a Visual studiót, és hozzon létre egy üres alkalmazást (natív hordozható): **Fájl > új > projekt > platformfüggetlen > üres alkalmazás (natív hordozható)** .
+3. Kattintson a jobb gombbal a megoldásra a Megoldáskezelő ablaktáblán, és válassza a **megoldás NuGet-csomagok kezelése**lehetőséget. Keressen rá a **WindowsAzure. Storage** kifejezésre, és telepítse a legújabb stabil verziót a megoldás összes projektje számára.
+4. Hozza létre és futtassa a projektet.
 
-## <a name="create-container-and-upload-blob"></a>Tároló létrehozása és feltöltése a blob
-A következő a `(Portable)` projektben adunk hozzá néhány kódot `MyClass.cs`. Ez a kód létrehoz egy tárolót, és feltölt egy blobot a tárolóba. `MyClass.cs` a következőhöz hasonlóan kell kinéznie:
+Ekkor egy olyan alkalmazásra van szüksége, amely lehetővé teszi, hogy rákattint egy olyan gombra, amely növeli a számlálót.
+
+## <a name="create-container-and-upload-blob"></a>Tároló létrehozása és blob feltöltése
+
+Ezután a `(Portable)` projekt alatt hozzá kell adnia egy kódot a `MyClass.cs`következőhöz:. Ez a kód létrehoz egy tárolót, és feltölt egy blobot ebbe a tárolóba. `MyClass.cs`a következőhöz hasonlóan kell kinéznie:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -76,9 +76,9 @@ namespace XamarinApp
 }
 ```
 
-Ellenőrizze, hogy "your_account_name_here" és "your_account_key_here" cserélje a tényleges fiók nevét és kulcsát. 
+Ügyeljen arra, hogy a "your_account_name_here" és a "your_account_key_here" kifejezést cserélje le a tényleges fióknév és a fiók kulcsaként.
 
-Az iOS, Android és Windows Phone-projektek minden hivatkoznak a hordozható projekt – azaz írhat összes megosztott kódot egy helyezze el, és a projektek összes vele. Most már minden projekthez, hogy éljen adja hozzá a következő kódsort: `MyClass.performBlobOperation()`
+Az iOS-, Android-és Windows Phone-telefon-projektjei mind a hordozható projektre hivatkoznak, ami azt jelenti, hogy az összes megosztott kód egy helyen írható, és az összes projektben használható. Most már hozzáadhatja az alábbi kódrészletet az egyes projektekhez, így kihasználhatja az előnyeit:`MyClass.performBlobOperation()`
 
 ### <a name="xamarinappdroid--mainactivitycs"></a>XamarinApp.Droid > MainActivity.cs
 
@@ -116,7 +116,7 @@ namespace XamarinApp.Droid
 }
 ```
 
-### <a name="xamarinappios--viewcontrollercs"></a>XamarinApp.iOS > ViewController.cs
+### <a name="xamarinappios--viewcontrollercs"></a>XamarinApp. iOS > ViewController.cs
 
 ```csharp
 using System;
@@ -163,7 +163,7 @@ namespace XamarinApp.iOS
 }
 ```
 
-### <a name="xamarinappwinphone--mainpagexaml--mainpagexamlcs"></a>XamarinApp.WinPhone > MainPage.xaml > MainPage.xaml.cs
+### <a name="xamarinappwinphone--mainpagexaml--mainpagexamlcs"></a>XamarinApp. WinPhone > Főoldal. XAML > MainPage.xaml.cs
 
 ```csharp
 using Windows.UI.Xaml.Controls;
@@ -230,15 +230,17 @@ namespace XamarinApp.WinPhone
 ```
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
-Most már futtathatja az alkalmazás egy Android vagy Windows Phone-emulátoron. Ez az alkalmazás egy iOS-emulátorban is futtathatja, de ehhez az szükséges, Mac Az információk arra vonatkozóan, hogyan teheti ezt, kérjük, olvassa el a dokumentációban [egy Mac számítógéphez való csatlakoztatásával a Visual Studio](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/)
 
-Az alkalmazás futtatása után, hozza létre a tároló `mycontainer` a Storage-fiókban. Tartalmaznia kell a blob `myblob`, a szöveg, amelynek `Hello, world!`. Ennek segítségével ellenőrizheti a [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
+Most már futtathatja az alkalmazást egy Android-vagy Windows Phone-telefon-emulátorban. Ezt az alkalmazást iOS-emulátorban is futtathatja, de ehhez Mac rendszer szükséges. Az ehhez szükséges részletes útmutatásért olvassa el a [Visual Studio Mac-](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/) hez való csatlakoztatásának dokumentációját.
+
+Az alkalmazás futtatása után létrehozza a `mycontainer` tárolót a Storage-fiókban. Tartalmaznia kell a blobot `myblob`, amely a `Hello, world!`szöveggel rendelkezik. Ezt a [Microsoft Azure Storage Explorer](https://storageexplorer.com/)használatával ellenőrizheti.
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban megtudhatta, hogyan az Azure Storage, Blob Storage-ban egy forgatókönyv kifejezetten összpontosító használó Xamarin többplatformos alkalmazások létrehozásához. Azonban megteheti sokkal nem csak Blob Storage-tárolókat, hanem a Table, File és Queue Storage. Tekintse meg a további a következő cikkeket:
+
+Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre többplatformos alkalmazást az Azure Storage-t használó Xamarin, különös tekintettel a Blob Storage egyik forgatókönyvére. Ugyanakkor sokkal többet is megtehet, ha nem csak Blob Storage, hanem a tábla, a fájl és a Queue Storage is. További információért olvassa el a következő cikkeket:
 
 * [Az Azure Blob Storage használatának első lépései a .NET-keretrendszerrel](storage-dotnet-how-to-use-blobs.md)
-* [Bevezetés az Azure Files használatába](../files/storage-files-introduction.md)
+* [Bevezetés a Azure Filesba](../files/storage-files-introduction.md)
 * [Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel](../files/storage-dotnet-how-to-use-files.md)
 * [Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 * [Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel](../queues/storage-dotnet-how-to-use-queues.md)

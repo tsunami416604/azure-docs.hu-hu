@@ -1,7 +1,7 @@
 ---
 title: A Custom Decision Service munkafolyamata
 titlesuffix: Azure Cognitive Services
-description: A cikkben javasolt munkafolyamat az Azure Custom Decision Service.
+description: Ez a cikk az Azure Custom Decision Service ajánlott munkafolyamatát ismerteti.
 services: cognitive-services
 author: noellelacharite
 manager: nitinme
@@ -10,20 +10,21 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: nolachar
-ms.openlocfilehash: 086858f88a1b058e0e94fb356fbd06cf299b14f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: cce40c53fdfb052cc6c1f2941b2e3b4ae710ae21
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60580042"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707203"
 ---
 # <a name="custom-decision-service-workflow"></a>A Custom Decision Service munkafolyamata
 
-Javasoljuk, hogy kövesse ezt a mintát az alkalmazások készítése során.
+Javasoljuk, hogy az alkalmazások létrehozásakor ezt a mintát kövesse.
 
 ![A Custom Decision Service munkafolyamata](media/custom-decision-service-workflow.png)
 
-Adjon hozzá egy [Azure Storage kapcsolati karakterlánc](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string).
+Adja hozzá az [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string)-beli kapcsolatok karakterláncát.
 
 ## <a name="next-steps"></a>További lépések
 

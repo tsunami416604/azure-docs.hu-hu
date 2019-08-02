@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578f78d1853194cad000aa2e54b40d1ac5003544
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 64a81a871d811c68f5e92822ca88446966be4d5c
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489053"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678109"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Hozzáférési csomaghoz való hozzáférés kérése az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -44,7 +44,7 @@ Első lépésként jelentkezzen be a saját hozzáférési portálra, ahol hozz�
 
 1. Jelentkezzen be a saját hozzáférési portálra.
 
-    Ügyeljen arra, hogy a szervezeti fiókját használja. Ha nem biztos benne, forduljon a projekthez vagy a Business Managerhez.
+    Ügyeljen arra, hogy a szervezeti (munkahelyi vagy iskolai) fiókot használja. Ha nem biztos a dolgában, forduljon a projekthez vagy a Business Managerhez.
 
 ## <a name="request-an-access-package"></a>Hozzáférési csomag igénylése
 
@@ -52,6 +52,9 @@ Miután megtalálta a hozzáférési csomagot a saját hozzáférési portálon,
 
 **Előfeltételként szükséges szerepkör:** Kérelmező
 
+1. Keresse meg a hozzáférési csomagot a listában.  Ha szükséges, a kereséshez írja be a keresési karakterláncot, majd válassza ki a **nevet**, a **katalógust**vagy az **erőforrások** szűrőt.
+
+    ![Saját hozzáférési portál – erőforrás-keresés](./media/entitlement-management-request-access/elm-myaccess-resource-search.png)
 1. Kattintson a pipa jelre a hozzáférési csomag kiválasztásához.
 
     ![Hozzáférési portál – hozzáférési csomagok](./media/entitlement-management-shared/my-access-access-packages.png)
@@ -80,7 +83,7 @@ Ha hozzáférési kérelmet küld be, és a kérés még mindig a függőben lé
 
 1. A saját hozzáférési portál bal oldalán kattintson a kérelmek **előzményei** elemre a kérések és az állapot megjelenítéséhez.
 
-1. Kattintson a  megszakítani kívánt kérelem megtekintési hivatkozására.
+1. Kattintson a megszakítani kívánt kérelem megtekintési hivatkozására.
 
 1. Ha a kérelem továbbra is a **függőben lévő jóváhagyási** állapotban van, a kérelem megszakításához kattintson a **kérelem megszakítása** lehetőségre.
 

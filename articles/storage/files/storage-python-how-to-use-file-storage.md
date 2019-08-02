@@ -1,20 +1,18 @@
 ---
 title: Fejlesztés a Azure Files Pythonban | Microsoft Docs
 description: Megtudhatja, hogyan fejleszthet olyan Python-alkalmazásokat és-szolgáltatásokat, amelyek a fájlok tárolásához Azure Files használnak.
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: python
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f3a741216b50811868687b124463e10e65355094
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 139e3009722761172b7bbd57805a7f5b07e55fc0
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360065"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699396"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Fejlesztés Azure Files Python-val
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Database biztonsági mentéseinek Store akár 10 évig |} A Microsoft Docs
-description: Ismerje meg, hogyan Azure SQL Database támogatja akár 10 évig tárolását teljes adatbázis biztonsági másolatait.
+title: Tárolja Azure SQL Database biztonsági mentéseit akár 10 évig | Microsoft Docs
+description: Ismerje meg, hogyan támogatja a Azure SQL Database a teljes adatbázis biztonsági másolatainak tárolását akár 10 évig.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -10,74 +10,73 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 05/18/2019
-ms.openlocfilehash: 6549892bfd04065bf83ab50fa5f5b439c35c4238
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: b43097dee6a3b4e8ec762e193dc2faf006ec796c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190549"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567758"
 ---
-# <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Az Azure SQL Database biztonsági mentéseinek Store akár 10 évig
+# <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Azure SQL Database biztonsági mentések akár 10 évig is tárolhatók
 
-Számos alkalmazás rendelkezik szabályozási, megfelelőségi vagy egyéb üzleti célra használja, amely esetében megtarthatja az adatbázisok biztonsági mentése az Azure SQL Database által biztosított 7 – 35 napon túl [automatikus biztonsági mentések](sql-database-automated-backups.md). A hosszú távú megőrzés (LTR) szolgáltatással tárolhatja a megadott SQL adatbázis teljes biztonsági mentés a [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) a blob storage akár 10 évig. A biztonsági másolatokat új adatbázisként állíthatja helyre.
+Számos alkalmazás rendelkezik olyan szabályozással, megfelelőséggel vagy más üzleti céllal, amely megköveteli az adatbázis biztonsági másolatainak megőrzését Azure SQL Database [automatikus biztonsági mentések](sql-database-automated-backups.md)által biztosított 7-35 napon túl. A hosszú távú adatmegőrzési (LTR) funkció használatával akár 10 évig is tárolhatja a megadott SQL-adatbázis teljes biztonsági másolatait az [ra-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) blob Storage-ban. A biztonsági másolatokat új adatbázisként állíthatja helyre.
 
 > [!NOTE]
-> Egyetlen vagy készletezett adatbázisok LTR engedélyezhető. Még nem érhető el például adatbázisok, a felügyelt példány van. Használhatja az SQL Agent-feladatok ütemezése [csak másolatot adatbázis biztonsági másolatait](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) alternatívájaként LTR 35 napos időszak letelte után.
+> A LTR engedélyezhető egyetlen és készletezett adatbázis esetében is. A felügyelt példányokban lévő példány-adatbázisok esetében még nem érhető el. Az SQL-ügynök feladatainak használatával a csak a 35 napnál nem régebben ütemezett [biztonsági mentéseket](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) ÜTEMEZHET a ltr helyett.
 > 
 
-## <a name="how-sql-database-long-term-retention-works"></a>SQL-adatbázis hosszú távú megőrzés működése
+## <a name="how-sql-database-long-term-retention-works"></a>SQL Database hosszú távú adatmegőrzés működése
 
-Hosszú távú megőrzésének (LTR) használja az adatbázis teljes biztonsági mentéseket, amelyek [automatikusan létrehozott](sql-database-automated-backups.md) időpontban visszaállításának (PITR) engedélyezéséhez. Az LTR-szabályzat van konfigurálva, ha ezek a biztonsági mentések hosszú távú tárolás különböző blobok lesz másolva. A másolási művelet, amely az adatbázis-munkaterhelés nem teljesítményét befolyásolja háttérfeladat. Az LTR biztonsági mentések megmaradnak az LTR-szabályzat által egy ideig. Minden egyes SQL database LTR házirendje is megadhatja, hogy milyen gyakran jönnek létre az LTR biztonsági mentések. A rugalmasság a szabályzat négy paraméter együttes használatával adhatja meg: heti biztonsági másolatok megőrzése (W), havi biztonsági másolatok megőrzése (M), éves biztonsági másolatok megőrzése (Y), és hét év (WeekOfYear). Ha megad egy biztonsági mentés hetente W lesznek másolva a hosszú távú tároláshoz. M ad meg, ha egy biztonsági mentés során minden hónap első hetében másolandó a hosszú távú tároláshoz. Y ad meg, ha egy biztonsági mentés WeekOfYear által megadott hétre esik-e a hosszú távú tárolásra másolhatók. Minden egyes biztonsági másolat ezeket a paramétereket által megadott időszakban marad a hosszú távú tárolására. A későbbi biztonsági mentések minden olyan változás az LTR-szabályzat vonatkozik. Például ha a megadott WeekOfYear a múltban, ha a szabályzat van konfigurálva, az első LTR biztonsági mentés létrejön következő évben. 
+A biztonsági másolatok hosszú távú megőrzése (LTR) az [automatikusan létrehozott](sql-database-automated-backups.md) teljes adatbázis biztonsági másolatait használja az időponthoz kötött visszaállítás (PITR) engedélyezéséhez. Ha egy LTR házirend konfigurálva van, a rendszer a biztonsági másolatokat különböző blobokra másolja a hosszú távú tároláshoz. A másolási művelet olyan háttérben futó feladat, amely nem befolyásolja az adatbázis számítási feladatát. A LTR biztonsági mentéseit a rendszer a LTR szabályzat által beállított ideig őrzi meg. Az egyes SQL-adatbázisok LTR házirendje azt is megadhatja, hogy milyen gyakran legyenek létrehozva a LTR biztonsági mentések. Ennek a rugalmasságnak a megadásához négy paraméter kombinációja alapján határozhatja meg a házirendet: heti biztonsági mentési megőrzés (W), havi biztonsági mentés megőrzése (M), éves biztonsági mentési megőrzés (Y) és év hetének (WeekOfYear). Ha a W lehetőséget választja, a rendszer minden héten a hosszú távú tárterületre másolja a biztonsági mentést. Az M érték megadásával az egyes hónapok első hetében az egyik biztonsági mentést a rendszer a hosszú távú tárterületre másolja. Ha az Y értéket adja meg, a WeekOfYear által megadott hét során a rendszer a hosszú távú tárterületre másolja az egyik biztonsági mentést. Minden biztonsági mentés a hosszú távú tárolóban történik a paraméterek által megadott időszakra vonatkozóan. A LTR szabályzat minden változása a jövőbeli biztonsági másolatokra vonatkozik. Ha például a megadott WeekOfYear a házirend konfigurálásakor a múltban van, akkor az első LTR biztonsági másolat jön létre a következő évben. 
 
-Példák az LTR-szabályzat:
+Példák a LTR házirendre:
 
--  W=0, M=0, Y=5, WeekOfYear=3
+-  W = 0, M = 0, Y = 5, WeekOfYear = 3
 
-   A harmadik teljes biztonsági mentés minden évben folyamatosan öt év során.
+   Az egyes évek harmadik teljes biztonsági mentését öt évig őrzi meg a rendszer.
    
 - W=0, M=3, Y=0
 
-   Az első teljes biztonsági mentés minden hónapban a három hónapig megmarad.
+   Az egyes hónapok első teljes biztonsági mentését három hónapig őrzi meg a rendszer.
 
 - W=12, M=0, Y=0
 
-   A heti teljes biztonsági 12 hetes marad.
+   Minden heti teljes biztonsági mentés 12 hétig lesz tárolva.
 
 - W=6, M=12, Y=10, WeekOfYear=16
 
-   A heti teljes biztonsági hat hét alatt marad. Minden hónap első teljes biztonsági, kivéve, amely folyamatosan 12 hónapig. Kivételével a teljes készült biztonsági másolatok 16 év hete, amely folyamatosan 10 évig. 
+   Minden heti teljes biztonsági mentés hat hétig tart. Minden hónap első teljes biztonsági mentésének kivételével, amelyet 12 hónapig tartanak. Az év 16. hetében készített teljes biztonsági mentés kivételével, amelyet a rendszer 10 évig tart. 
 
-Az alábbi táblázat azt mutatja be, a kiadása ütemben történik, és a lejárati a hosszú távú biztonsági mentését a következő szabályzatot:
+A következő táblázat a hosszú távú biztonsági mentések ritmusát és lejáratát mutatja be a következő szabályzathoz:
 
-W = 12 hetes (84 nap), M = 12 hónap (365 napos), Y = 10 év (3650 nap), WeekOfYear = 15 (hét után április 15.)
+W = 12 hét (84 nap), M = 12 hónap (365 nap), Y = 10 év (3650 nap), WeekOfYear = 15 (hét április 15. után)
 
-   ![az ltr-példa](./media/sql-database-long-term-retention/ltr-example.png)
+   ![ltr példa](./media/sql-database-long-term-retention/ltr-example.png)
 
 
 
-Ha a fenti szabályzatot módosítja, és a set W = 0 (nincs heti biztonsági mentések), a kiadása ütemben történik a biztonsági másolatok változik jelenik meg a fenti táblázat kiemelt dátuma szerint. A szükséges, hogy ezeket a biztonsági másolatokat tároló összeg csökkentené a ennek megfelelően. 
+Ha módosítja a fenti szabályzatot, és a W = 0 értéket állítja be (heti biztonsági mentések nélkül), a biztonsági másolatok lépésszám a Kiemelt dátumok szerint a fenti táblázatban látható módon változik. A biztonsági másolatok megtartásához szükséges tárolási mennyiség ennek megfelelően csökken. 
 
 > [!IMPORTANT]
-> Azure SQL Database az egyes LTR biztonsági mentés ütemezése határozza meg. Nem manuálisan LTR biztonsági másolatot készíteni, és a biztonsági mentés létrehozása szabályozásához. Az LTR-szabályzat konfigurálása, után legfeljebb 7 napig előtt az első LTR biztonsági mentés be automatikusan megjelennek az elérhető biztonsági másolatok listáját is eltarthat.  
+> Az egyes LTR biztonsági mentések időzítését Azure SQL Database szabályozza. Nem hozhat létre manuálisan LTR biztonsági mentést, vagy szabályozhatja a biztonsági másolat létrehozásának időzítését. Egy LTR házirend konfigurálását követően akár 7 nappal is eltarthat, amíg az első LTR biztonsági mentés megjelenik az elérhető biztonsági másolatok listáján.  
 > 
 
-## <a name="geo-replication-and-long-term-backup-retention"></a>Georeplikáció és a hosszú távú adatmegőrzés
+## <a name="geo-replication-and-long-term-backup-retention"></a>Földrajzi replikálás és hosszú távú biztonsági mentés megőrzése
 
-Aktív georeplikációs és feladatátvételi csoportok használ az üzleti folytonossági megoldásként, ha a végleges feladatátvétel előkészítése, és a ugyanazt az LTR-házirend konfigurálása a geo-secondary adatbázisra. Az LTR tárolási költsége nem nő, a biztonsági mentések nem jönnek létre, a másodlagos példány hozható létre. Csak akkor, ha a másodlagos elsődleges válik a biztonsági mentések jön létre. Az LTR biztonsági mentések nem megszakított generációja biztosítja azt, amikor a feladatátvételi akkor aktiválódik, és az elsődleges áthelyezi a másodlagos régióba. 
+Ha aktív geo-replikációs vagy feladatátvételi csoportokat használ üzleti folytonossági megoldásként, elő kell készítenie a végleges feladatátvételeket, és konfigurálnia kell ugyanazt a LTR-házirendet a Geo-másodlagos adatbázison. A LTR tárolási díja nem növekszik, mivel a biztonsági másolatok nem jönnek létre a formátumú másodlagos zónák. A biztonsági mentések csak akkor lesznek létrehozva, ha a másodlagos elsődleges lesz. Biztosítja a LTR biztonsági mentések nem megszakított generációját a feladatátvétel indításakor, és az elsődleges áthelyezést a másodlagos régióba. 
 
 > [!NOTE]
-> Ha az eredeti elsődleges adatbázis, amely a feladatátvétel miatt a kimaradás utáni állítja helyre, egy új másodlagos lesz belőle. Ezért a biztonsági mentés létrehozása nem folytatódik, és a meglévő LTR-szabályzat nem lépnek érvénybe, amíg az elsődleges újra lesz. 
+> Amikor az eredeti elsődleges adatbázis helyreállítja a feladatátvételt okozó kimaradást, az új másodlagos lesz. Ezért a biztonsági másolat létrehozása nem folytatódik, és a meglévő LTR-házirend mindaddig nem lép érvénybe, amíg a rendszer újra nem válik. 
 
 ## <a name="configure-long-term-backup-retention"></a>A biztonsági másolatok hosszú távú megőrzésének konfigurálása
 
-Az Azure portal vagy a PowerShell használatával hosszú távú megőrzésének konfigurálása kapcsolatban lásd: [hosszú távú megőrzésének kezelése az Azure SQL Database](sql-database-long-term-backup-retention-configure.md).
+Ha meg szeretné tudni, hogyan konfigurálhatja a hosszú távú adatmegőrzést a Azure Portal vagy a PowerShell használatával, tekintse meg a [Azure SQL Database hosszú távú biztonsági mentés kezelése](sql-database-long-term-backup-retention-configure.md)című témakört.
 
-## <a name="restore-database-from-ltr-backup"></a>Adatbázisban LTR biztonsági másolatból
+## <a name="restore-database-from-ltr-backup"></a>Adatbázis visszaállítása a LTR biztonsági mentésből
 
-Adatbázis visszaállítása az LTR-storage-ból, kiválaszthatja az időbélyegző alapján meghatározott biztonsági másolat. Az adatbázis az eredeti adatbázissal azonos előfizetéshez tartozó meglévő kiszolgáló visszaállítható. Megtudhatja, hogyan állíthatja vissza az adatbázist egy biztonsági mentésből balról jobbra, használja az Azure portal vagy a PowerShell-lel, tekintse meg a [hosszú távú megőrzésének kezelése az Azure SQL Database](sql-database-long-term-backup-retention-configure.md).
+Ha egy adatbázist szeretne visszaállítani a LTR-tárolóból, kiválaszthatja az időbélyeg alapján egy adott biztonsági mentést. Az adatbázis az eredeti adatbázissal megegyező előfizetéshez tartozó meglévő kiszolgálókra állítható vissza. Ha szeretné megtudni, hogyan állíthatja vissza az adatbázist egy LTR biztonsági másolatból a Azure Portal vagy a PowerShell használatával, tekintse meg a [Azure SQL Database hosszú távú biztonsági mentés kezelése](sql-database-long-term-backup-retention-configure.md)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-Adatbázisok biztonsági mentése a véletlen sérülés vagy törlés adatok védelme, mert azok bármely üzletmenet-folytonossági és vészhelyreállítási stratégia nagyon fontos részét. Az SQL Database üzletmenet-folytonossági megoldásait kapcsolatos további információkért lásd: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md).
+Mivel az adatbázis biztonsági mentései védik az adatokat a véletlen sérüléstől vagy törléstől, fontos szerepet játszanak az üzletmenet folytonossága és a vész-helyreállítási stratégia. SQL Database az üzletmenet-folytonossági megoldásokkal kapcsolatos további információkért lásd: az [üzletmenet folytonosságának áttekintése](sql-database-business-continuity.md).

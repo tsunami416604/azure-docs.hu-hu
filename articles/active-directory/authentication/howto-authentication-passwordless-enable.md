@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad2f25aac7f74c74eb63fd4666c5184ae751ec1f
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: cce5de98fe4914e18ee0154d4ac5f1af008d32a6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499936"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561297"
 ---
 # <a name="enable-passwordless-sign-in-for-azure-ad-preview"></a>Jelszó nélküli bejelentkezés engedélyezése az Azure AD-ben (előzetes verzió)
 
@@ -77,7 +77,7 @@ Az Intune által nem felügyelt eszközök esetében a kiépítési csomag telep
 1. Válassza a **Finish** (Befejezés) elemet.
 1. Az újonnan létrehozott projektben keresse meg a **Futásidejű beállítások** > **WindowsHelloForBusiness** > **SecurityKeys** > **UseSecurityKeyForSignIn**.
 1. Állítsa be a **UseSecurityKeyForSignIn** beállítást **engedélyezve**értékre.
-1. Válassza  > ki a**kiépítési csomag** exportálása lehetőséget
+1. Válassza > ki a**kiépítési csomag** exportálása lehetőséget
 1. Hagyja meg az alapértelmezett értékeket a **létrehozási** ablakban a **kiépítési csomag leírása** szakaszban, majd válassza a **tovább**lehetőséget.
 1. Hagyja meg az alapértelmezett értékeket a **létrehozási** ablakban a kiépítési **csomag biztonsági adatainak kiválasztása** területen, majd válassza a **tovább**lehetőséget.
 1. Jegyezze fel, vagy módosítsa a **Build** -ablakok elérési útját a **válassza ki, hová szeretné menteni a kiépítési csomagot** , és válassza a **tovább**lehetőséget.
@@ -109,7 +109,7 @@ A FIDO2 biztonsági kulcsaihoz tartozó regisztrációs funkciók a közös regi
 ### <a name="enable-new-passwordless-authentication-methods"></a>Új, jelszóval nem rendelkező hitelesítési módszerek engedélyezése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
-1. Keresse meg **Azure Active Directory** > **hitelesítési módszerek** > **hitelesítési módszerének házirendjét (előzetes verzió)**
+1. Keresse meg **Azure Active Directory** > **biztonsági** > **hitelesítési**módszerekhitelesítési > módszerének házirendjét **(előzetes verzió)**
 1. Az egyes **módszerek**alatt válassza ki a következő beállításokat
    1. **Engedélyezés** – igen vagy nem
    1. **Cél** – az összes felhasználó vagy a felhasználók kiválasztása

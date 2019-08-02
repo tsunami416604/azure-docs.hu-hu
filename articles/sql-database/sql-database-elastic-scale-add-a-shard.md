@@ -1,6 +1,6 @@
 ---
-title: Rugalmas Adatbáziseszközök használatáról szilánk hozzáadása |} A Microsoft Docs
-description: Állítsa be a rugalmas, méretezhető API-k használata új szegmensek hozzáadása egy szegmens.
+title: Szegmens hozzáadása rugalmas adatbázis-eszközök használatával | Microsoft Docs
+description: Rugalmas méretezési API-k használata új szegmensek egy szegmens készletbe való felvételéhez.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,26 +10,25 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: dda3c34dccfdaa041cf9f547244d5529482a3138
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 679c1bea640644cd46c436ec04278558f610ceda
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60585812"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568518"
 ---
-# <a name="adding-a-shard-using-elastic-database-tools"></a>Rugalmas Adatbáziseszközök használatáról szilánk hozzáadása
+# <a name="adding-a-shard-using-elastic-database-tools"></a>Szegmens hozzáadása Elastic Database eszközök használatával
 
-## <a name="to-add-a-shard-for-a-new-range-or-key"></a>Egy új tartományt vagy a kulcs szilánk hozzáadása
+## <a name="to-add-a-shard-for-a-new-range-or-key"></a>Szegmens hozzáadása új tartományhoz vagy kulcshoz
 
-Alkalmazások gyakran kell hozzáadni az új kulcsok vagy kulcstartományokkal horizontálispartíció-térkép, amely már létezik a várt adatok kezelésének új szegmensekre. Például előfordulhat, hogy egy új szegmensen üzembe helyezhet egy új bérlőt kell szilánkokra osztott alkalmazás bérlői azonosító alapján, vagy adatok horizontálisan skálázott havi szükség lehet egy új szegmensen üzembe helyezett minden egyes új hónap kezdete előtt.
+Az alkalmazásoknak gyakran új szegmenseket kell felvenniük ahhoz, hogy kezelni tudják az új kulcsokból vagy a kulcsok tartományokból várt adatok kezelését. Előfordulhat például, hogy egy, a bérlői azonosító által áthelyezett alkalmazásnak új szegmenst kell kiépítenie, vagy a havonta felhasznált adatokat egy új, minden új hónap kezdete előtt létre kell hozni.
 
-Ha a kulcs értékeit az új tartomány még nem részei egy létező hozzárendelés, egyszerűen adja hozzá az új szegmensen, és társítsa az új kulcs vagy a tartományt a többi.
+Ha a kulcsok új tartománya már nem része egy meglévő leképezésnek, egyszerűen hozzáadhatja az új szegmenst, és hozzárendelheti az új kulcsot vagy tartományt a szegmenshez.
 
-### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Példa: szegmensek és a tartomány hozzáadása egy meglévő szegmenstérkép
+### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Példa: szegmens és a hozzá tartozó tartomány hozzáadása egy meglévő felosztási térképhez
 
-Ebben a példában a TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard), [.NET](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))) a CreateShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)), CreateRangeMapping ([ Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) módszereket, és létrehoz egy példányt a ShardLocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)) osztály. A minta az alábbi nevű adatbázis **sample_shard_2** és alapjait, az összes szükséges sémaobjektumok elkészültek, amely tárolja a napnak a [300, 400-as).  
+Ez a példa a TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard), [.net](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))) használja a CreateShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)), a CreateRangeMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) metódusokat), és létrehozza a ShardLocation egy példányát ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)). osztály. Az alábbi példában egy **sample_shard_2** nevű adatbázis és a benne található összes szükséges séma objektum létrejött a (z) [300, 400) tartományhoz.  
 
 ```csharp
 // sm is a RangeShardMap object.
@@ -46,15 +45,15 @@ sm.CreateRangeMapping(new RangeMappingCreationInfo<long>
                             (new Range<long>(300, 400), shard2, MappingStatus.Online));
 ```
 
-A .NET-verzióhoz is használhatja PowerShell alternatívájaként hozhat létre egy új Szilánkleképezés-kezelővel. Példa érhető el [Itt](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
+A .NET verzióban a PowerShellt is használhatja Alternatív megoldásként az új szegmenses Térkép-kezelő létrehozásához. [Itt](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)egy példa érhető el.
 
-## <a name="to-add-a-shard-for-an-empty-part-of-an-existing-range"></a>A meglévő tartomány egyik üres része horizontális partíció hozzáadása
+## <a name="to-add-a-shard-for-an-empty-part-of-an-existing-range"></a>Szegmens hozzáadása egy meglévő tartomány üres részéhez
 
-Bizonyos körülmények között előfordulhat, hogy már számos rendelve szegmensek és részlegesen adatokkal feltöltött, de közelgő adatokat a rendszer a másik adatszilánkba író most szeretnénk. Például, szegmens szerint naptartomány és már van lefoglalt 50 napja van egy szegmensre, de napja 24, a kívánt jövőbeli adatkezelési eltérő szegmensben kerül. A rugalmas adatbázis [felosztási-egyesítési eszközének](sql-database-elastic-scale-overview-split-and-merge.md) hajthatják végre ezt a műveletet, de ha adatáthelyezés nem szükséges (például adatokat a különböző, [25, 50 nap), azaz, naponta 25 kizárólagos, 50 között lehet még nem létezik) Ez a szegmens térkép felügyeleti API-k teljes egészében közvetlenül használatával.
+Bizonyos esetekben előfordulhat, hogy már hozzárendelt egy tartományt egy szegmenshez, és részben kitöltötte az adathalmazt, de mostantól egy másik szegmensre irányítja. Például, ha a napi tartományba tartozik, és már 50 nap van hozzárendelve egy szegmenshez, de 24. napon belül, a jövőbeli adatnak egy másik szegmensbe kell esnie. A rugalmas adatbázis [felosztása és egyesítése eszköz](sql-database-elastic-scale-overview-split-and-merge.md) elvégezheti ezt a műveletet, ha azonban nincs szükség adatáthelyezésre (például a napok tartományára vonatkozó adatok [25, 50), azaz a 25. nap, a 50 kizárólagos, de még nem létezik), ezt teljes mértékben a következő használatával végezheti el: A szegmensek közötti Térkép felügyeleti API-jai közvetlenül.
 
-### <a name="example-splitting-a-range-and-assigning-the-empty-portion-to-a-newly-added-shard"></a>Példa: egy tartományt felosztása, és az üres részét hozzárendelése egy újonnan hozzáadott szegmensek
+### <a name="example-splitting-a-range-and-assigning-the-empty-portion-to-a-newly-added-shard"></a>Példa: tartomány felosztása és az üres rész kiosztása egy újonnan hozzáadott szegmenshez
 
-"Sample_shard_2" és az összes szükséges séma objektum belül, egy adatbázist létrehozni.  
+A rendszer létrehozta a "sample_shard_2" nevű adatbázist és a benne található összes szükséges sémakezelő objektumot.  
 
 ```csharp
 // sm is a RangeShardMap object.
@@ -79,6 +78,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**Fontos**:  Ezt a módszert használja, csak ha biztos abban, hogy a frissített leképezése tartománya üres.  A fenti módszerek nem ellenőrzi a tartomány áthelyezése esetén az adatok, így érdemes ellenőrzéseket tartalmazzák a kódban.  Ha a sorok léteznek, a tartomány áthelyezése folyamatban van, a tényleges adatok terjesztési nem egyeznek meg a frissített szegmenstérkép. Használja a [felosztási-egyesítési eszközének](sql-database-elastic-scale-overview-split-and-merge.md) ezekben az esetekben ehelyett a művelet végrehajtására.  
+**Fontos**:  Ezt a technikát csak akkor használja, ha biztos abban, hogy a frissített leképezés tartománya üres.  Az előző metódusok nem ellenőrzik az áthelyezett tartomány adatait, ezért a legjobb megoldás a kód ellenőrzésének belefoglalása.  Ha sorok találhatók az áthelyezett tartományban, a tényleges adateloszlás nem felel meg a frissített szegmenses térképnek. A művelet elvégzéséhez használja a [Split-Merge eszközt](sql-database-elastic-scale-overview-split-and-merge.md) a következő esetekben.  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

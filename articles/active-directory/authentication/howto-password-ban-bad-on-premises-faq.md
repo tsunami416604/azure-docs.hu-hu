@@ -1,6 +1,6 @@
 ---
-title: A helyszíni Azure AD-jelszó alkalmazásvédelmi gyakori kérdések – az Azure Active Directory
-description: A helyszíni Azure AD-jelszó Protection – gyakori kérdések
+title: Helyszíni Azure AD jelszavas védelem – gyakori kérdések – Azure Active Directory
+description: Helyszíni Azure AD jelszavas védelem – gyakori kérdések
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,129 +11,135 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b4879093ed80a554219b053cc5a2bc895126725
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9f1f2e06eb6b5f8d402515ff1c07a4163174495d
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702897"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666362"
 ---
-# <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Az Azure AD jelszóvédelem helyszíni – gyakori kérdések
+# <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Helyszíni Azure AD jelszavas védelem – gyakori kérdések
+
+Ez a szakasz az Azure AD jelszavas védelmével kapcsolatos gyakran feltett kérdésekre ad választ.
 
 ## <a name="general-questions"></a>Általános kérdések
 
-**K: Milyen útmutatást felhasználók kell adni egy biztonságos jelszót kijelöléséhez?**
+**K: Milyen útmutatást kell adni a felhasználóknak a biztonságos jelszó kiválasztásához?**
 
-A Microsoft jelenlegi útmutatást ebben a témakörben tekinthet meg a következő hivatkozásra:
+A jelen témakörben a Microsoft aktuális útmutatója a következő hivatkozásra kattintva érhető el:
 
-[Tájékoztató a jelszavakról Microsoft](https://www.microsoft.com/research/publication/password-guidance)
+[Microsoft-jelszó – útmutató](https://www.microsoft.com/research/publication/password-guidance)
 
-**K: Az a helyszíni Azure AD-jelszó védelmet támogatja a nem nyilvános felhők?**
+**K: Támogatja a helyszíni Azure AD jelszavas védelmet a nem nyilvános felhőkben?**
 
-A helyszíni Azure AD jelszóvédelem nem – csak akkor támogatott a nyilvános felhőben. Nincs dátum bejelentettük a nem nyilvános felhő rendelkezésre állás érdekében.
+A helyszíni Azure AD-alapú jelszavas védelem csak a nyilvános felhőben támogatott. Nem jelentettek be dátumot a nem nyilvános Felhőbeli rendelkezésre álláshoz.
 
-**K: Hogyan használhatom az Azure AD jelszóvédelem előnyeit a helyszíni felhasználók egy alhalmazára?**
+**K: Hogyan alkalmazhatom az Azure AD jelszavas védelem előnyeit a helyszíni felhasználók egy részhalmazára?**
 
-Nem támogatott. Miután üzembe helyezte, és engedélyezve van, az Azure AD jelszóvédelem nem tesz különbséget – az összes felhasználó megkapja egyenlő biztonsági funkcióit.
+Nem támogatott. A üzembe helyezés és az engedélyezés után az Azure AD jelszavas védelme nem tesz különbséget – az összes felhasználó egyenlő biztonsági előnyöket kap.
 
-**K: Mi a különbség a jelszómódosítás és a egy jelszóbeállítási (vagy alaphelyzetbe állítása) között?**
+**K: Mi a különbség a jelszó módosítása és a jelszó beállítása (vagy alaphelyzetbe állítás) között?**
 
-A jelszó módosítása esetén a felhasználó általi új jelszó után igazolására, a régi jelszó rendelkeznek. Ez a példa, mi történik, ha a felhasználó bejelentkezik a Windows kéri majd, hogy egy új jelszót.
+A jelszó módosítása akkor történik meg, amikor egy felhasználó új jelszót választ, miután igazolta, hogy ismeri a régi jelszót. Tegyük fel például, hogy mi történik, amikor egy felhasználó bejelentkezik a Windowsba, és a rendszer kéri, hogy válasszon ki egy új jelszót.
 
-A jelszóbeállítási (más néven a jelszó alaphelyzetbe állítása) esetén, hogy egy rendszergazda cseréli a jelszót a fiókhoz egy új jelszót, például az Active Directory – felhasználók és számítógépek felügyeleti eszköz használatával. Ehhez a művelethez szükséges egy magas szintű jogosultságokra (általában a tartományi rendszergazda), és a művelet általában végző személy nem rendelkezik a régi jelszó ismerete. Ügyfélszolgálati forgatókönyvekhez gyakran ehhez, például amikor egy felhasználó elfelejtette a jelszavát, akinek támogatást nyújtanak. Jelszó beállítása eseményeket, amikor egy új felhasználói fiók létrehozása folyamatban van egy jelszóval először is megjelenik.
+A jelszó beállítása (más néven jelszó-visszaállítás) az, amikor egy rendszergazda új jelszóval helyettesíti egy fiók jelszavát, például a Active Directory felhasználók és számítógépek felügyeleti eszköz használatával. Ehhez a művelethez magas szintű jogosultság szükséges (általában tartományi rendszergazda), és a műveletet végző személy általában nem ismeri a régi jelszót. Az ügyfélszolgálati forgatókönyvek gyakran ezt teszik lehetővé, például olyan felhasználók segítésekor, akik elfelejtették a jelszavukat. A jelszó-megadási eseményeket is látni fogja, ha új felhasználói fiókot hoz létre első alkalommal egy jelszóval.
 
-A jelszóházirend-ellenőrzés ugyanúgy működik, függetlenül attól, hogy a jelszó módosítása vagy a set történik-e. Az Azure AD-jelszó DC védelmi ügynök szolgáltatás különböző eseménynaplózás tájékoztatja, hogy a jelszó módosítása vagy a set művelet volt.  Lásd: [Azure AD jelszó-védelmi figyelés és naplózás](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
+A jelszó-ellenőrzési házirend ugyanúgy viselkedik, függetlenül attól, hogy megtörtént-e a jelszó módosítása vagy beállítása. Az Azure AD Password Protection DC Agent szolgáltatás különböző eseményeket naplóz, hogy megtudja, van-e jelszó-módosítási vagy-beállítási művelet.  Lásd: [Az Azure ad jelszavas védelem figyelése és naplózása](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
 
-**K: Miért használja az Active Directory – felhasználók és számítógépek felügyeleti beépülő modul ismétlődő jelszó elutasító eseményeket naplóz, amikor gyenge jelszóval próbál?**
+**K: Miért történik a duplikált jelszó-elutasítási események naplózása, amikor gyenge jelszót próbál beállítani a Active Directory felhasználók és számítógépek kezelése beépülő modullal?**
 
-Az Active Directory – felhasználók és számítógépek felügyeleti beépülő modul először megpróbálja a Kerberos protokoll használatával az új jelszót állíthat be. Hiba esetén a beépülő modul fogja elérhetővé tenni egy második megpróbál beállítani a jelszót (a használt adott protokollok nem számítanak fontos) örökölt (SAM RPC) protokoll használatával. Az új jelszó az Azure AD jelszóvédelem gyenge számít, ha a jelszó alaphelyzetbe állítása elutasító eseményeket a naplózott két készletnyi eredményez.
+A Active Directory felhasználók és számítógépek kezelése beépülő modul először megpróbálja beállítani az új jelszót a Kerberos protokoll használatával. Hiba esetén a beépülő modul egy második kísérletet tesz a jelszó megadására egy örökölt (SAM RPC) protokoll használatával (a használt protokollok nem fontosak). Ha az új jelszót az Azure AD jelszavas védelme gyengenak tekinti, a rendszer két, a jelszó-visszaállítási elutasítási esemény naplózását eredményezi.
 
-**K: Támogatja az Azure AD-jelszó Protection tartalomcsomagjai egyéb jelszó-szűrő-alapú termékek telepítése?**
+**K: Miért jelentkeznek be az Azure AD jelszavas védelem jelszavas védelme nevű jelszó-ellenőrzési események egy üres felhasználónévvel?**
 
-Igen. Több regisztrált jelszó szűrő DLL-ek egy olyan alapvető Windows szolgáltatás támogatása és a nem kifejezetten az Azure AD jelszóvédelem. Az összes regisztrált jelszó szűrő DLL-ek jelszó el kell fogadnia.
+A Active Directory támogatja a jelszavak tesztelését, így ellenőrizheti, hogy a tartomány aktuális jelszó-összetettségi követelményeit adja-e át, például a [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) API használatával. Ha a rendszer ily módon érvényesíti a jelszót, a tesztelés a jelszó-szűrő-DLL-alapú termékek (például az Azure AD jelszavas védelem) érvényesítését is magában foglalja, de a jelszó-szűrési dll-hez átadott felhasználónevek üresek lesznek. Ebben az esetben az Azure AD jelszavas védelme a jelenleg érvényben lévő jelszóházirend használatával továbbra is érvényesíti a jelszót, és egy eseménynapló-üzenetet ad ki az eredmény rögzítéséhez, azonban az Eseménynapló-üzenetben üres lesz a Felhasználónév mező.
 
-**K: Hogyan lehet üzembe helyezése és konfigurálása az Azure AD jelszóvédelem saját Active Directory-környezetben anélkül, hogy az Azure?**
+**K: Támogatott az Azure AD jelszavas védelem telepítése egymás mellett más jelszó-szűrő alapú termékekkel?**
 
-Nem támogatott. Az Azure AD jelszóvédelem egy Azure-szolgáltatás, amely támogatja a kiterjesztendő egy helyszíni Active Directory-környezetbe.
+Igen. A több regisztrált jelszó-szűrési dll-fájl támogatása egy alapvető Windows-szolgáltatás, amely nem jellemző az Azure AD jelszavas védelmére. A jelszó fogadása előtt minden regisztrált jelszó-szűrő dll-fájlnak meg kell egyeznie.
 
-**K: Hogyan módosíthatja a szabályzatot, az Active Directory szintjén tartalmát?**
+**K: Hogyan helyezhetem üzembe és konfigurálható az Azure AD jelszavas védelem az Active Directory-környezetben az Azure használata nélkül?**
 
-Nem támogatott. A szabályzat csak az Azure AD felügyeleti portál használatával lehet felügyelni. Is megtekintheti az előző kérdéssel.
+Nem támogatott. Az Azure AD jelszavas védelme egy olyan Azure-szolgáltatás, amely támogatja a helyszíni Active Directory környezetbe való kiterjesztését.
 
-**K: Elosztott fájlrendszer-replikációs miért van szükség a sysvol replikáció?**
+**K: Hogyan változtathatom meg a szabályzat tartalmát a Active Directory szinten?**
 
-A fájlreplikációs szolgáltatás (az elosztott fájlrendszer-replikációs megelőző technológia) számos ismert problémák merülnek fel, és nem teljes mértékben támogatott a Windows Server Active Directory újabb verzióiban. A fájlreplikációs szolgáltatás használatára konfigurált tartományok nulla tesztelése az Azure AD jelszóvédelem történik.
+Nem támogatott. A szabályzat csak az Azure AD felügyeleti portál használatával felügyelhető. Lásd még az előző kérdést is.
 
-További információkért tekintse meg a következő cikkeket:
+**K: Miért szükséges a DFSR a SYSVOL-replikációhoz?**
 
-[Az elosztott fájlrendszer-replikációs történő áttelepítés sysvol-replikáció eset](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
+A fájlreplikációs szolgáltatás (a DFSR megelőző technológia) számos ismert problémát tartalmaz, és a Windows Server újabb verzióiban nem támogatott. Active Directory. Az Azure AD jelszavas védelem zéró tesztelését a fájlreplikációs szolgáltatás által konfigurált tartományokon hajtja végre.
 
-[A végpont az FRS Nigh](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
+További információt a következő cikkekben talál:
 
-**K: Mennyi lemezterületet igényel a funkció a tartomány sysvol-megosztás a?**
+[A SYSVOL-replikáció DFSR való áttelepítésének esete](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
 
-A pontos lemezterület-használat változik, mivel azt például számát és a Microsoft globális kitiltott listáját és a bérlőnkénti egyéni lista, valamint titkosítási terhelést a kitiltott jogkivonatokat hossza tényezőtől függ. Ezek a listák tartalmát valószínűleg a jövőben nő. Vegye figyelembe, hogy a fordulni, hogy a szolgáltatást kell-e legalább öt (5) MB lemezterületet a tartomány sysvol-megosztás.
+[A Befejezés közel van a fájlreplikációs szolgáltatáshoz](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
 
-**K: Miért van egy újraindítás szükséges, a tartományvezérlő ügynök szoftver telepítése vagy frissítése**
+**K: Mekkora lemezterületre van szükség a szolgáltatás a tartomány SYSVOL-megosztásán?**
 
-Ez a követelmény alapvető Windows viselkedés okozza.
+A pontos lemezterület-használat változhat, mivel ez olyan tényezőktől függ, mint a tiltott tokenek száma és hossza a Microsoft globálisan tiltott listájában, valamint a bérlői egyéni listán, valamint a titkosítási terhelést is. Ennek a listának a tartalma valószínűleg növekedni fog a jövőben. Ennek szem előtt tartásával ésszerű elvárás, hogy a szolgáltatásnak legalább öt (5) megabájt lemezterülettel kell rendelkeznie a tartomány SYSVOL-megosztásán.
 
-**K: Van mód konfigurálása a tartományvezérlő-ügynök egy konkrét proxykiszolgálóval?**
+**K: Miért van szükség újraindításra a DC-ügynök szoftverének telepítéséhez vagy frissítéséhez?**
 
-Nem. Mivel a proxy server állapot nélküli, akkor nem számít mely adott proxykiszolgálót használ.
+Ezt a követelményt az alapvető Windows-viselkedés okozza.
 
-**K: Rendben van az Azure AD-jelszó védelmi proxyszolgáltatás tartalomcsomagjai más szolgáltatások, például az Azure AD Connect telepítése?**
+**K: Van mód arra, hogy a TARTOMÁNYVEZÉRLŐi ügynököt egy adott proxykiszolgáló használatára konfigurálja?**
 
-Igen. Az Azure AD-jelszó védelme Proxy szolgáltatás és az Azure AD Connect kell soha nem közvetlenül egymással ütköző.
+Nem. Mivel a proxykiszolgáló állapota nem megfelelő, nem fontos, hogy a rendszer mely konkrét proxykiszolgálót használja.
 
-**K: Milyen sorrendben kell a tartományvezérlő-ügynökök és a proxyk telepítését és regisztrálását?**
+**K: Rendben van az Azure AD-beli jelszavas védelem proxy szolgáltatásának üzembe helyezése más szolgáltatásokkal, például Azure AD Connectokkal?**
 
-Bármely Proxy ügynök telepítése, ügynök telepítése DC, erdő regisztrációs és Proxy regisztrációs rendezése támogatott.
+Igen. Az Azure AD jelszavas védelmi proxy szolgáltatás és Azure AD Connect soha nem ütköznek közvetlenül egymással.
 
-**K: Kell fordítani a a teljesítményt a tartományvezérlők, ez a szolgáltatás üzembe helyezése a?**
+**K: Milyen sorrendben kell telepíteni és regisztrálni a DC-ügynököket és-proxykat?**
 
-Az Azure AD-jelszó DC védelmi ügynök szolgáltatás nem szabad jelentős hatással vannak a tartományvezérlő teljesítményét a meglévő megfelelő Active Directory-környezet.
+A proxy Agent telepítésének, a DC-ügynök telepítésének, az erdő regisztrálásának és a proxy regisztrációnak a rendezése támogatott.
 
-A legtöbb Active Directory telepítések jelszó-módosítási műveletek a teljes számítási feladatnak az egy adott tartományvezérlőt egy kis részét. Tegyük fel imagine 10000 felhasználói fiókokat az Active Directory-tartomány és a egy MaxPasswordAge szabályzatot a 30 nap. Átlagosan, tekintse meg ezt a tartományt 10000 – 30 = ~ 333 jelszó-módosítási műveletek minden nap, amely akár egyetlen tartományvezérlő műveletek kisebb száma. Fontolja meg egy lehetséges legrosszabb esetben: Tegyük fel, hogy azokat egyetlen tartományvezérlőn jelszómódosítások elkészült, egy egyetlen órában ~ 333. Ebben a forgatókönyvben például akkor is fordulhat, ha sok alkalmazott összes működését egy hétfő reggel ismét elindíthatja az származnak. Még ebben az esetben továbbra is láthatunk ~333/60 perc = / perc, amely újra nem komoly terhelést hat jelszó módosítására.
+**K: Aggódom a tartományvezérlők a szolgáltatás üzembe helyezésével kapcsolatos teljesítménybeli találatok esetén?**
 
-Azonban ha az aktuális tartományvezérlők már fut (például maximumot megállapodást Processzor, a szabad lemezterület, lemez I/O, stb.) a teljesítmény-korlátozott szinteken, célszerű adjon hozzá további tartományvezérlőket, vagy bontsa ki a szabad lemezterület, mielőtt Ez a szolgáltatás üzembe helyezése. Sysvol lemezterület-használat a fenti kérdése fent is látható.
+Az Azure AD jelszavas védelem-tartományvezérlő ügynöke nem befolyásolja jelentős mértékben a tartományvezérlő teljesítményét egy meglévő kifogástalan állapotú Active Directory üzemelő példányban.
 
-**K: Szeretném tesztelni az Azure AD jelszóvédelem néhány tartományvezérlők saját tartomány. Az esetleges kényszerítése a felhasználói jelszó módosítására ezen konkrét tartományvezérlők használatához?**
+A legtöbb Active Directory központi telepítéshez tartozó jelszó-módosítási művelet a teljes munkaterhelés kis hányada az adott tartományvezérlőn. Tegyük fel például, hogy egy Active Directory tartomány 10000 felhasználói fiókkal és egy 30 napos MaxPasswordAge-házirenddel van beállítva. Ez a tartomány átlagosan 10 000/30 = ~ 333 jelszó-módosítási műveletet lát el naponta, ami egy kis számú művelet akár egyetlen tartományvezérlő esetében is. Tekintse át a lehetséges legrosszabb esetet: tegyük fel, hogy a ~ 333 jelszó módosításait egyetlen TARTOMÁNYVEZÉRLŐn hajtották végre egy órán belül. Ez a forgatókönyv például akkor fordulhat elő, ha sok alkalmazott dolgozik hétfőn reggel. Még ebben az esetben is a ~ 333/60 perc = hat jelszó módosítása percenként, ami nem jelentős terhelés.
 
-Nem. A Windows ügyfél operációs rendszer szabályozza, hogy melyik tartományvezérlő használatos, amikor a felhasználó megváltoztatja a jelszavát. A tartományvezérlő van kiválasztva, például Active Directory-hely és az alhálózati hozzárendelések, környezetspecifikus hálózati konfiguráció és egyéb tényezők alapján. Az Azure AD jelszóvédelem nem szabályozza ezeket a tényezőket, és nem befolyásolja, melyik tartományvezérlő van kiválasztva, a felhasználó jelszavának módosítására.
+Ha azonban az aktuális tartományvezérlők már csak teljesítmény-korlátozott szinten futnak (például maxed a CPU-ra, lemezterületre, lemezes I/O-re stb.), ajánlatos további tartományvezérlőket hozzáadni vagy bővíteni a rendelkezésre álló lemezterületet. a szolgáltatás telepítése. Lásd még a fenti, SYSVOL lemezterület-használatról szóló kérdést.
 
-Részlegesen elérni a cél egyik módja lehet a üzembe helyezése az Azure AD-jelszó védelmét az összes, a tartományvezérlő egy adott Active Directory-helyet. Ez a megközelítés ésszerű lefedettséget biztosít a Windows-ügyfelek, amelyek adott helyhez hozzárendelt, és így is a felhasználók számára, amely jelentkezik be ezeket az ügyfeleket és jelszavuk módosítása.
+**K: Szeretném tesztelni az Azure AD jelszavas védelmet a saját tartományában található néhány tartományvezérlőn. Lehetséges a felhasználói jelszó módosításának kényszerítése az adott tartományvezérlők használatára?**
 
-**K: Az Azure AD-jelszó Protection tartományvezérlő ügynök szolgáltatás telepítése a csak az elsődleges tartományvezérlőn (PDC), a tartomány minden tartományvezérlőjének is védi?**
+Nem. A Windows ügyfél operációs rendszere határozza meg, hogy melyik tartományvezérlőt használja a rendszer, amikor a felhasználó megváltoztatja a jelszavát. A tartományvezérlő kiválasztására olyan tényezők alapján van kiválasztva, mint például a Active Directory hely és az alhálózati hozzárendelések, a környezet-specifikus hálózati konfiguráció stb. Az Azure AD jelszavas védelme nem szabályozza ezeket a tényezőket, és nem befolyásolhatja, hogy melyik tartományvezérlő van kiválasztva a felhasználó jelszavának módosításához.
 
-Nem. Amikor egy felhasználó jelszavát egy adott, nem elsődleges tartományvezérlőn módosul, a tiszta szöveges jelszó sem küldjük el az elsődleges tartományvezérlő (ezt az elképzelést egy közös hibás érzete). Egy új jelszót adott tartományvezérlőn elfogadása után a DC ezt a jelszót használja, hogy a jelszó a különböző hitelesítési-protocol-specifikus kivonatok létrehozásához, és majd továbbra is fennáll e kivonatokat a címtárban. A tiszta szöveges jelszó nincs megőrizve. A frissített kivonatok replikálja az elsődleges Tartományvezérlőt. Felhasználói jelszavak előfordulhat, hogy bizonyos esetekben módosítható közvetlenül az elsődleges Tartományvezérlőt, újra függően különféle tényezők, például a hálózati topológia és az Active Directory tervezése. (Lásd az előző kérdéssel.)
+A cél részleges elérésének egyik módja az Azure AD jelszavas védelem üzembe helyezése az adott Active Directory-hely összes tartományvezérlőjén. Ez a módszer ésszerű lefedettséget biztosít a helyhez hozzárendelt Windows-ügyfelek számára, ezért az ügyfeleknek bejelentkezett felhasználókra és a jelszavuk módosítására is érvényes lesz.
 
-Összefoglalva üzembe helyezés az Azure AD-jelszó DC védelmi ügynök szolgáltatás az elsődleges tartományvezérlő szükséges elérni a 100 %-os biztonsági lefedettség a funkció a tartományban. Az elsődleges tartományvezérlő szolgáltatás telepítésének csak nem biztosít az Azure AD jelszóvédelem biztonsági előnyöket bármely más tartományvezérlők a tartomány.
+**K: Ha az Azure AD jelszavas védelem DC Agent szolgáltatást csak az elsődleges tartományvezérlőn (PDC) telepíti, a rendszer a tartomány összes többi tartományvezérlőjét is védeni fogja?**
 
-**K: A System Center Operations Manager felügyeleti csomag érhető el az Azure AD jelszóvédelem?**
+Nem. Ha egy felhasználó jelszava megváltozik egy adott nem PDC-alapú tartományvezérlőn, a rendszer soha nem továbbítja a tiszta szöveges jelszót az elsődleges tartományvezérlőnek (ez az ötlet egy gyakori helytelen érzékelés). Miután elfogadták az új jelszót egy adott TARTOMÁNYVEZÉRLŐn, a tartományvezérlő ezt a jelszót használja az adott jelszó különböző hitelesítési protokoll-specifikus kivonatának létrehozásához, majd megőrzi ezeket a kivonatokat a címtárban. A tiszta szöveges jelszó nem marad meg. A frissített kivonatok ezután replikálódnak az elsődleges tartományvezérlőre. Bizonyos esetekben előfordulhat, hogy a felhasználói jelszavakat közvetlenül az elsődleges tartományvezérlőn változtatják meg, a különböző tényezőktől, például a hálózati topológiától és a Active Directory hely kialakítástól függően. (Lásd az előző kérdést.)
+
+Összefoglalva, az Azure AD jelszavas védelem DC Agent szolgáltatásának az elsődleges tartományvezérlőn való üzembe helyezéséhez szükség van a szolgáltatás 100%-os biztonsági lefedettségének elérésére a tartományon belül. A szolgáltatás csak az elsődleges tartományvezérlőn való telepítése nem biztosít Azure AD jelszavas védelmet a tartomány bármely más tartományvezérlőjén.
+
+**K: Elérhető az Azure AD jelszavas védelem System Center Operations Manager felügyeleti csomagja?**
 
 Nem.
 
-**K: Miért érdemes az Azure továbbra is visszautasítja a gyenge jelszavakat annak ellenére, hogy már konfiguráltam a házirend rendszervizsgálati módban kell?**
+**K: Az Azure miért is elutasítja a gyenge jelszavakat, bár úgy konfiguráltam, hogy a házirend naplózási módban legyen?**
 
-Vizsgálati üzemmód csak akkor támogatott a helyszíni Active Directory-környezetet. Azure, amely implicit módon mindig "kényszerítéséhez" mód jelszavak értékelésekor.
+A naplózási mód csak a helyszíni Active Directory környezetekben támogatott. Az Azure implicit módon mindig "kényszerítve" módban van, amikor kiértékeli a jelszavakat.
 
-## <a name="additional-content"></a>További tartalmat
+## <a name="additional-content"></a>További tartalom
 
-Az alábbi hivatkozások nem részei az alapvető Azure AD jelszóvédelem dokumentáció, de lehet, hogy egy hasznos forrás a szolgáltatásról további információt.
+Az alábbi hivatkozások nem részei az Azure AD jelszavas védelem alapszintű dokumentációjának, de hasznos információforrásnak számítanak a szolgáltatással kapcsolatos további információk.
 
-[Az Azure AD jelszóvédelem már általánosan elérhető!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
+[Az Azure AD jelszavas védelme már általánosan elérhető!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
 
-[E-mail adathalász Protection útmutatója – 15. rész: A Microsoft Azure AD-jelszó szolgáltatás megvalósítása (helyszíni túl!)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
+[E-mailes adathalászat elleni védelem útmutatója – 15. rész: A Microsoft Azure AD jelszavas védelmi szolgáltatás implementálása (helyszíni is)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
 
-[Az Azure AD jelszóvédelem és az intelligens zárolás, mostantól nyilvános előzetes verzió!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
+[Az Azure AD jelszavas védelme és az intelligens zárolás mostantól nyilvános előzetes verzióban érhető el.](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
 
-## <a name="microsoft-premierunified-support-training-available"></a>A Microsoft Premier\Unified támogatási képzések érhető el
+## <a name="microsoft-premierunified-support-training-available"></a>Microsoft Premier\Unified-támogatás érhető el
 
-Ha érdeklik a nyújt az Azure AD jelszóvédelem alaposabb megismerésére, és üzembe helyezése a környezetében, kihasználhatja elérhető Microsoft proaktív szolgáltatás azoknak az ügyfeleknek a Premier szintű vagy egyesített támogatási szerződés. A szolgáltatás Azure Active Directory neve: Jelszavas védelem. További információért forduljon a műszaki Partnerkezelőjéhez.
+Ha többet szeretne megtudni az Azure AD jelszavas védelméről, és üzembe helyezi azt a környezetében, kihasználhatja a Microsoft proaktív szolgáltatásának előnyeit a Premier vagy Unified támogatási szerződéssel rendelkező ügyfelek számára. A szolgáltatás neve Azure Active Directory: Jelszavas védelem. További információért forduljon a technikai fiók kezelőjéhez.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha kérdése van egy helyszíni Azure AD jelszóvédelem, amely itt nem válaszolt, küldje el az alábbi – Köszönjük, hogy egy visszajelzéshez!
+Ha van olyan helyszíni Azure AD-beli jelszavas védelem kérdése, amely itt nem válaszol, küldje el az alábbi visszajelzési elemeket – Köszönjük!
 
 [Azure AD jelszóvédelem üzembe helyezése](howto-password-ban-bad-on-premises-deploy.md)

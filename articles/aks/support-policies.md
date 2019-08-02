@@ -1,164 +1,164 @@
 ---
-title: Támogatja a szabályzatok az Azure Kubernetes Service (AKS)
-description: Útmutató az Azure Kubernetes Service (AKS) támogatási házirendek, közös felelősség és funkciók előzetes (vagy alpha vagy beta).
+title: Támogatási szabályzatok az Azure Kubernetes Service (ak) szolgáltatáshoz
+description: Ismerje meg az Azure Kubernetes Service (ak) támogatási szabályzatait, a közös felelősséget és az előzetes verzióban (vagy az Alpha-ban vagy a Beta-ban) elérhető szolgáltatásokat.
 services: container-service
 author: jnoller
 ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: 0d2c080be727d2ae13d6d9e5274f17cadffbe640
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf29799bc2aee12a27216ad45f7ed1e3355bab8a
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65786461"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596125"
 ---
-# <a name="support-policies-for-azure-kubernetes-service"></a>Házirendek támogatása az Azure Kubernetes Service-ben
+# <a name="support-policies-for-azure-kubernetes-service"></a>Támogatási szabályzatok az Azure Kubernetes Service-hez
 
-Ez a cikk részletesen műszaki támogatási irányelveik és korlátozások az Azure Kubernetes Service (AKS). A cikk a munkavégző csomópont-felügyelet, a felügyelt vezérlési sík összetevők, a külső nyílt forráskódú összetevőkkel és a biztonsági vagy patch management is részletesen.
+Ez a cikk részletesen ismerteti az Azure Kubernetes Service (ak) technikai támogatási szabályzatait és korlátozásait. A cikk a feldolgozó csomópontok felügyeletét, a felügyelt vezérlési sík összetevőit, a harmadik féltől származó nyílt forráskódú összetevőket, valamint a biztonsági vagy javítási felügyeletet is ismerteti.
 
-## <a name="service-updates-and-releases"></a>Szolgáltatási hírek és kiadások
+## <a name="service-updates-and-releases"></a>Szolgáltatások frissítései és kiadásai
 
-* Kiadási információkért lásd: [AKS kibocsátási megjegyzések](https://github.com/Azure/AKS/releases).
-* Előzetes verzióban elérhető funkciókról további információért lásd: [AKS előzetes verziójú funkciók és a kapcsolódó projektek](https://github.com/Azure/AKS/blob/master/previews.md).
+* A kiadással kapcsolatos információkért lásd az [AK kibocsátási megjegyzéseit](https://github.com/Azure/AKS/releases).
+* Az előzetes verzió szolgáltatásaival kapcsolatos információkért lásd: az [AK előzetes verziójának funkciói és kapcsolódó projektjei](https://github.com/Azure/AKS/blob/master/previews.md).
 
-## <a name="managed-features-in-aks"></a>Felügyelt szolgáltatások, az aks-ben
+## <a name="managed-features-in-aks"></a>Felügyelt funkciók az AK-ban
 
-Alapvető infrastruktúra-szolgáltatás (IaaS) cloud egy összetevők, például a számítási és hálózati összetevőket, hozzáférést a felhasználóknak alacsony szintű vezérlők és a testreszabási lehetőségek. Ezzel szemben az AKS biztosít egy kulcsrakész üzemelő Kubernetes-példányt, amelyekkel a felhasználók a konfigurációkat és funkciókat kell közös csoportját. AKS-ügyfelek csak korlátozottan testreszabási, üzembe helyezésére és egyéb lehetőségek. Ezeket az ügyfeleket nem kell foglalkoznia, vagy közvetlenül a Kubernetes-fürtök kezelése.
+Az alap infrastruktúra szolgáltatásként (IaaS) Felhőbeli összetevői, például a számítási vagy hálózatkezelési összetevők hozzáférést biztosítanak a felhasználóknak az alacsony szintű vezérlőkhöz és a testreszabási lehetőségekhez. Ezzel szemben az AK egy kulcsrakész Kubernetes-telepítést biztosít, amely az ügyfeleknek a szükséges konfigurációk és képességek közös készletét biztosítja. Az AK-ügyfelek korlátozott testreszabási, üzembe helyezési és egyéb beállításokkal rendelkeznek. Ezeknek az ügyfeleknek nem kell aggódniuk, vagy közvetlenül a Kubernetes-fürtöket kell kezelnie.
 
-Az aks-sel, az ügyfél lekéri egy teljes körűen felügyelt *vezérlősík*. A vezérlősík összes összetevőjének és az ügyfél az működtetni, és adja meg a Kubernetes-fürtök a végfelhasználók számára szükséges szolgáltatásokat tartalmazza. Az összes Kubernetes összetevő kezeli és a Microsoft által üzemeltetett.
+Az AK-val az ügyfél egy teljes körűen felügyelt *vezérlési gépet*kap. A vezérlő síkja tartalmazza az ügyfél által igényelt összes összetevőt és szolgáltatást, és Kubernetes-fürtöket biztosít a végfelhasználók számára. Az összes Kubernetes-összetevőt a Microsoft tartja karban és üzemelteti.
 
-A Microsoft felügyeli, és figyeli a Vezérlőpulton keresztül a következő összetevők:
+A Microsoft a következő összetevőket felügyeli és figyeli a vezérlés ablaktáblán:
 
-* Kubelet- vagy Kubernetes API-kiszolgáló
-* Etcd vagy egy kompatibilis kulcs-érték tároló, a szolgáltatásminőség (QoS), a méretezhetőség és a futtatókörnyezet megadása
-* DNS-szolgáltatások (például kube-dns vagy CoreDNS)
-* Kubernetes-proxy és a hálózat
+* Kubelet vagy Kubernetes API-kiszolgálók
+* Etcd vagy egy kompatibilis kulcs-érték tároló, amely a szolgáltatásminőség (QoS), a méretezhetőség és a futtatókörnyezet biztosítására szolgál.
+* DNS-szolgáltatások (például Kube-DNS vagy CoreDNS)
+* Kubernetes proxy vagy hálózatkezelés
 
-Az AKS nem egy teljesen felügyelt fürt megoldás. Egyes összetevők, például a munkavégző csomópontok, rendelkezik *megosztott felelősségre*, ahol felhasználókat kell segít fenntartani az AKS-fürtöt. Felhasználói bevitel szükséges, ha például egy feldolgozó csomópont operációs rendszer (OS) biztonsági javítást.
+Az AK nem teljesen felügyelt fürt megoldás. Egyes összetevők, például a feldolgozó csomópontok *megosztott felelősséggel*rendelkeznek, ahol a felhasználóknak segíteniük kell az AK-fürt fenntartásában. Felhasználói bevitel szükséges, például a munkavégző csomópont operációs rendszer (OS) biztonsági javításának alkalmazásához.
 
-A szolgáltatások *felügyelt* abban az értelemben, hogy a Microsoft és az AKS-csapat helyez üzembe, működik, és a szolgáltatás rendelkezésre állása és funkciókat. Ügyfeleink ezeket felügyelt összetevőket nem módosítható. A Microsoft testreszabási egységesek és méretezhetőek legyenek a felhasználói élmény biztosítása érdekében korlátozza. Egy teljes mértékben testreszabható megoldással, lásd: [AKS motor](https://github.com/Azure/aks-engine).
+A szolgáltatások *kezelése* abban az értelemben történik, hogy a Microsoft és az AK-csoport üzembe helyezi, működteti és felelős a szolgáltatás rendelkezésre állásának és működésének biztosításáért. Az ügyfelek nem változtathatják meg ezeket a felügyelt összetevőket. A Microsoft korlátozza a testreszabást, hogy konzisztens és skálázható felhasználói élményt biztosítson. A teljes mértékben testreszabható megoldásért lásd: [AK-motor](https://github.com/Azure/aks-engine).
 
 > [!NOTE]
-> AKS-munkavégző csomópontok az Azure Portalon rendszeres Azure IaaS-erőforrások tartalomként jelennek meg. De ezek a virtuális gépek vannak üzembe helyezve egy egyéni Azure-erőforráscsoportot (minősítéssel, MC előtaggal\\*). Akkor lehet módosítani az AKS-feldolgozó csomópontok. Például használja a Secure Shell (SSH) AKS munkavégző csomópontok megváltoztatni megváltoztatja normál virtuális gépek (azonban nem, módosíthatja az alap operációsrendszer-képet, és a változtatások esetleg nem megőrzéséhez a frissítés vagy újraindítás) és egyéb Azure-erőforrások csatolhat az aks-ben munkavégző csomópontok. Ha módosít, de *sávon kívüli felügyelet és a testreszabás,* észleltek válhat az AKS-fürtöt. Ne változtassa feldolgozó csomópontokat, hacsak Support arra utasítja a hajthat végre.
+> Az AK munkavégző csomópontok a Azure Portalban normál Azure IaaS-erőforrásokként jelennek meg. Ezeket a virtuális gépeket azonban egy egyéni Azure-erőforráscsoporthoz helyezik üzembe (az MC\\* előtaggal). Az AK munkavégző csomópontok módosíthatók. Például a Secure Shell (SSH) segítségével módosíthatja az AK feldolgozó csomópontokat a normál virtuális gépek módosításakor (azonban nem módosíthatja az alapszintű rendszerképet, és előfordulhat, hogy a módosítások nem maradnak meg frissítés vagy újraindítás közben), és más Azure-erőforrásokat is csatolhat az AK-hoz munkavégző csomópontok. Ha azonban a *sávon kívüli felügyeletet és* a testreszabást hajtja végre, az AK-fürt nem lesz támogatott. Kerülje a munkavégző csomópontok módosítását, kivéve, ha a Microsoft ügyfélszolgálata a módosítások elvégzésére utasítja.
 
 ## <a name="shared-responsibility"></a>Közös felelősség
 
-Ha a fürt létrejött, az ügyfél a Kubernetes AKS létrehozó feldolgozó csomópontok határozza meg. Ügyfél munkaterheléseinek végrehajtása ezeken a csomópontokon. Ügyfelek a saját, és megtekintheti vagy módosíthatja a feldolgozó csomópontok.
+Fürt létrehozásakor az ügyfél meghatározza a Kubernetes munkavégző csomópontokat, amelyeket az AK hoz létre. Az ügyfelek számítási feladatait ezeken a csomópontokon hajtja végre. A saját ügyfelei, és megtekinthetik és módosíthatják a munkavégző csomópontokat.
 
-Ügyfél fürtcsomópontok titkos kódot, és a bizalmas adatok tárolása, mert Support hozzájuk férhetnek csak korlátozott módon. A Microsoft Support, hajtsa végre a parancsokat és megtekinthetők a naplófájlok számára ezek a csomópontok expressz ügyfél engedélyt vagy támogatás nélkül nem tud bejelentkezni.
+Mivel az ügyfél-fürtcsomópontok saját kódokat hajtanak végre, és bizalmas adatokat tárolnak, Microsoft ügyfélszolgálata csak korlátozott módon férhetnek hozzájuk. Microsoft ügyfélszolgálata nem tud bejelentkezni a alkalmazásba, végrehajthatja a parancsokat a-ben, vagy megtekintheti a csomópontok naplóit kifejezett ügyfél engedélye vagy segítsége nélkül.
 
-Mivel a munkavégző csomópontok-és nagybetűket, a Microsoft bármilyen korlátozása a háttérben futó felügyeleti vesz igénybe. Sok esetben a számítási feladatok futtatásához, akkor is, ha a Kubernetes fő csomópontok etcd és más Microsoft által felügyelt összetevői sikertelen továbbra is. Carelessly módosított munkavégző csomópontok okozhatnak a veszteségeket és számítási feladatok, és találja meg a fürt észleltek.
+Mivel a feldolgozó csomópontok érzékenyek, a Microsoft nagy gondossággal gondoskodik a háttérben történő felügyelet korlátozásáról. Sok esetben a munkaterhelés továbbra is futni fog, még akkor is, ha a Kubernetes főcsomópontok, a etcd és a Microsoft által felügyelt egyéb összetevők meghiúsulnak. A gondatlanul módosított munkavégző csomópontok adatvesztést okozhatnak az adatok és a munkaterhelések számára, és a fürt nem támogatható.
 
-## <a name="aks-support-coverage"></a>AKS-támogatás terjedelme
+## <a name="aks-support-coverage"></a>AK-támogatás lefedettsége
 
 A Microsoft technikai támogatást nyújt a következőkhöz:
 
-* Kapcsolódás a Kubernetes összetevők a Kubernetes-szolgáltatást biztosít, amely támogatja, például az API-kiszolgálóhoz.
-* Felügyeleti, hasznos üzemidőt, a QoS és kubernetes operations szabályozhatja az adatsík szolgáltatások (fő Kubernetes-csomópontokon, API-t kiszolgáló, etcd és kube-dns, a példában).
-* Etcd. Támogatás magában foglalja az adatok etcd automatikus, átlátható biztonsági mentések a vészhelyreállítás megtervezése és a fürt állapot visszaállítását 30 percenként. Ezeket a biztonsági másolatokat közvetlenül elérhető az ügyfelek vagy a felhasználók nem. Biztosítják az adatok megbízhatóságának és konzisztenciát.
-* Minden integrációs pontokat a Kubernetes Azure-felhő szolgáltató illesztőprogramját. Ezek közé tartozik például terheléselosztók, állandó kötetek vagy (a Kubernetes és az Azure CNI) hálózat más Azure-szolgáltatásokkal való integráció.
-* Kérdések és problémák kapcsolatos testreszabási vezérlési sík összetevők, például a Kubernetes API-t, a etcd és a kube-dns kiszolgáló.
-* Hálózati, például az Azure CNI, kubenet, vagy más hálózati hozzáférés és funkcionális problémák kapcsolatos probléma. Problémák lehetnek a DNS feloldási, csomagvesztés, Útválasztás és így tovább. A Microsoft a különböző hálózati forgatókönyveket támogatja:
-  * Kubenet (alapszintű) és a speciális hálózatkezelés (Azure CNI) a fürtön belül, és a kapcsolódó összetevők
-  * Más Azure-szolgáltatásokhoz és alkalmazásokhoz való kapcsolódás
-  * Bejövő forgalom vezérlőket és a bejövő és a load balancer-konfigurációk
-  * Hálózati teljesítmény és a késés
+* A Kubernetes szolgáltatás által biztosított és támogatott összes Kubernetes-összetevő, például az API-kiszolgáló kapcsolata.
+* A Kubernetes Control Plant-szolgáltatások (Kubernetes főcsomópontok, API-kiszolgáló, etcd és Kube-DNS) felügyelete, üzemidő, QoS és műveletei.
+* Etcd. A támogatás 30 percenként, a etcd és a fürt állapotának visszaállítására vonatkozó, automatizált, transzparens biztonsági mentéseket tartalmaz. Ezek a biztonsági másolatok nem érhetők el közvetlenül az ügyfelek és a felhasználók számára. Biztosítják az adatmegbízhatóságot és a konzisztenciát.
+* Bármely integrációs pont az Azure Cloud Provider-illesztőprogramban a Kubernetes-hez. Ezek közé tartoznak más Azure-szolgáltatások, például a terheléselosztó, az állandó kötetek vagy a hálózatkezelés (Kubernetes és Azure CNI) integrációja.
+* A vezérlési sík összetevőinek, például a Kubernetes API-kiszolgáló, a etcd és a Kube-DNS testreszabásával kapcsolatos kérdések és problémák.
+* A hálózatkezeléssel kapcsolatos problémák, például az Azure CNI, a kubenet vagy más hálózati hozzáférési és működési problémák. A problémák magukban foglalhatják a DNS-feloldást, a csomagok elvesztését, az útválasztást és így tovább. A Microsoft különböző hálózati forgatókönyveket támogat:
+  * Kubenet (alapszintű) és speciális hálózatkezelés (Azure CNI) a fürtön és a társított összetevőkön belül
+  * Kapcsolódás más Azure-szolgáltatásokhoz és alkalmazásokhoz
+  * Bejövő vezérlők és bejövő vagy terheléselosztó konfigurációk
+  * Hálózati teljesítmény és késés
 
-A Microsoft nem nyújt technikai támogatást, a a következőket:
+A Microsoft nem nyújt technikai támogatást a következőkhöz:
 
-* Kubernetes használatával kapcsolatos kérdésekre. Ha például Microsoft Support nem tanácsainak hozzon létre egyéni bejövő tartományvezérlőket, alkalmazások és szolgáltatások használatával, vagy külső és nyílt forráskódú szoftvercsomagokat vagy eszközök.
+* Kérdések a Kubernetes használatáról. A Microsoft ügyfélszolgálata például nem ad tanácsot az egyéni bejövő vezérlők létrehozásához, az alkalmazások számítási feladatainak használatához, vagy harmadik féltől származó vagy nyílt forráskódú szoftvercsomagok vagy eszközök alkalmazásához.
   > [!NOTE]
-  > A Microsoft Support is tanácsokkal AKS fürt funkcióit, testreszabási és a finomhangolással kapcsolatban (a példában, Kubernetes-működési problémákra és eljárások).
-* A Kubernetes részeként nem biztosított külső nyílt forráskódú projektek adatsík szabályozhatja, vagy az AKS-fürt üzembe helyezéséhez. Ezek a projektek lehetnek Istio, a Helm, az Envoy vagy mások.
+  > Microsoft ügyfélszolgálata tud tanácsot adni az AK-fürtök működéséről, testreszabásáról és finomhangolásáról (például Kubernetes működési problémák és eljárások).
+* Harmadik féltől származó nyílt forráskódú projektek, amelyek nem a Kubernetes-vezérlési sík részeként vannak megadva, vagy AK-fürtökkel vannak telepítve. Ezek a projektek lehetnek Istio, Helm, megbízottat vagy mások.
   > [!NOTE]
-  > A Microsoft legjobb támogatás külső nyílt forráskódú projekt, például a Helm és Kured is biztosít. A külső nyílt forráskódú eszköz a Kubernetes Azure felhőszolgáltató vagy más AKS-specifikus hibák integrálható, ahol a Microsoft támogatja, példákat és az alkalmazások a Microsoft-dokumentációt.
-* Külső lezárt forráskódú szoftver. Ez a szoftver biztonsági vizsgálati eszközök és a hálózati eszközök vagy a szoftver tartalmazhat.
-* Multicloud vagy multivendor build mintáit kapcsolatos problémákat. Például a Microsoft nem támogatja egy összevont multipublic felhőalapú gyártói megoldást futtató kapcsolatos problémákat.
-* Hálózati testreszabások kivételével, amelyek nem szerepelnek a [AKS dokumentációját](https://docs.microsoft.com/azure/aks/).
+  > A Microsoft a harmadik féltől származó nyílt forráskódú projektek, például a Helm és a Kured számára nyújt legjobb támogatást. Ha a harmadik féltől származó nyílt forráskódú eszköz integrálva van a Kubernetes Azure Cloud providerrel vagy más AK-specifikus hibákkal, a Microsoft a Microsoft dokumentációjában szereplő példákat és alkalmazásokat támogatja.
+* Harmadik féltől származó zárt forrású szoftver. Ez a szoftver biztonsági ellenőrzési eszközöket és hálózati eszközöket, illetve szoftvereket tartalmazhat.
+* A többfelhős vagy a többgyártós kiépítéssel kapcsolatos problémák. A Microsoft például nem támogatja az összevont többnyilvános felhő-gyártói megoldás futtatásával kapcsolatos problémákat.
+* Az [AK dokumentációjában](https://docs.microsoft.com/azure/aks/)nem szereplő hálózati testreszabások.
   > [!NOTE]
-  > A Microsoft támogatja a problémákat és a hálózati biztonsági csoportok (NSG) kapcsolatos hibákat. Ha például Support kérdésekre képes választ adni egy NSG-t frissítése sikertelen, vagy egy nem várt NSG-t vagy a Betöltés a terheléselosztó viselkedését.
+  > A Microsoft támogatja a hálózati biztonsági csoportokkal (NSG) kapcsolatos problémákat és hibákat. A Microsoft ügyfélszolgálata például választ kaphat a NSG sikertelen frissítésével vagy váratlan NSG vagy terheléselosztó viselkedésével kapcsolatos kérdésekre.
 
-## <a name="aks-support-coverage-for-worker-nodes"></a>Az AKS támogatás terjedelme munkavégző csomópontok
+## <a name="aks-support-coverage-for-worker-nodes"></a>AK-támogatás a munkavégző csomópontok számára
 
-### <a name="microsoft-responsibilities-for-aks-worker-nodes"></a>A Microsoft feladatkörei AKS munkavégző csomópontok
+### <a name="microsoft-responsibilities-for-aks-worker-nodes"></a>A Microsoft feladatai az AK munkavégző csomópontjaihoz
 
-A Microsoft és az ügyfelek felelőssége Kubernetes munkavégző csomópontok megosztása ahol:
+A Microsoft és az ügyfelek megosztják a Kubernetes munkavégző csomópontok felelősségét, ahol:
 
-* Az alap operációsrendszer-lemezkép hozzáadása (például a figyelés, és a hálózat ügynökök) szükséges.
-* A feldolgozó csomópontok automatikusan megkapja az operációsrendszer-javítások.
-* A Kubernetes-szel kapcsolatos problémák automatikusan megtörténjen a feldolgozó csomópontokon futó összetevők adatsík szabályozza. Összetevők a következők:
+* Az alap operációs rendszer rendszerképének a szükséges kiegészítései vannak (például figyelési és hálózati ügynökök).
+* A munkavégző csomópontok automatikusan kapják meg az operációs rendszer javításait.
+* A Kubernetes vezérlő síkja a munkavégző csomópontokon futó összetevőivel kapcsolatos problémákat automatikusan szervizeli a rendszer. Az összetevők többek között a következők:
   * Kube-proxy
-  * a kubernetes kommunikációs útvonalak biztosító hálózati alagutak fő összetevői
-  * kubelet
-  * Docker vagy Moby démon
+  * Hálózati alagutak, amelyek kommunikációs útvonalakat biztosítanak a Kubernetes fő összetevőinek
+  * Kubelet
+  * Docker vagy Moby Daemon
 
 > [!NOTE]
-> A munkavégző csomóponton Ha egy vezérlő adatsík összetevő nem működik, az AKS-csapat előfordulhat, hogy kell a teljes munkavégző csomópont újraindítása. A korlátozott hozzáférés az ügyfél aktív számítási feladatok és az adatokat, mert az AKS-csapat munkavégző csomópont újraindul, csak akkor, ha az ügyfél a probléma kivizsgálásához. Amikor csak lehetséges, az AKS-csapat működik, nehogy egy újra kell indítani az alkalmazást.
+> Ha egy feldolgozó csomóponton nem működik a vezérlő síkja összetevő, akkor előfordulhat, hogy az AK-csapatnak újra kell indítania a teljes munkavégző csomópontot. Mivel korlátozott hozzáférésük van az ügyfél aktív munkaterheléséhez és adataihoz, az AK-csapat csak akkor indítja újra a munkavégző csomópontot, ha az ügyfél ezt a problémát kiterjeszti. Ahol csak lehetséges, az AK csapata úgy működik, hogy megakadályozza a szükséges újraindítást az alkalmazás befolyásolása érdekében.
 
-### <a name="customer-responsibilities-for-aks-worker-nodes"></a>Az AKS munkavégző csomópontok az ügyfél feladatkörei
+### <a name="customer-responsibilities-for-aks-worker-nodes"></a>Az AK munkavégző csomópontjaihoz tartozó ügyfél-felelősségi körök
 
-A Microsoft nem bejelölve operációsrendszer-szintű-javítások alkalmazása a feldolgozó csomópontokat. Bár a feldolgozó csomópontok operációsrendszer-javítások érkeznek a *ügyfél* felelős az újraindítás a feldolgozó csomópontok, a módosítások életbe léptetéséhez. Megosztott szalagtárakkal, például a hibrid tartós állapotú meghajtót (SSHD) démonok és más összetevőket, a rendszer vagy az operációs rendszer szintjén automatikusan javítani.
+A Microsoft nem indít automatikusan újraindítási munkavégző csomópontokat az operációsrendszer-szintű javítások alkalmazásához. Bár az operációsrendszer-javítások a munkavégző csomópontokra érkeznek, az *ügyfél* feladata a munkavégző csomópontok újraindítása a módosítások alkalmazásához. A megosztott kódtárak, démonok, például a szilárdtest hibrid meghajtója (SSHD) és a rendszer vagy operációs rendszer szintjén található egyéb összetevők automatikusan kijavítottak.
 
-Kubernetes-frissítések végrehajtása ügyfelek felelőssége. Frissítés az Azure Vezérlőpultján vagy az Azure CLI, hajthat végre. Ez vonatkozik a frissítések, amelyek biztonsági vagy Kubernetes funkció fejlesztései tartalmazzák.
-
-> [!NOTE]
-> Mivel az AKS- *felügyelt szolgáltatás*, a záró célokat tartalmazza a javítások, frissítések, felelősséget eltávolítása és a naplót, hogy a service management befejeződött, és hands-off. Növeli a kapacitást a szolgáltatás teljes körű felügyeleti, mivel a jövőbeli kiadások előfordulhat, hogy hagyja el bizonyos funkciók (például csomópont újraindítása, és automatikus javítás).
-
-### <a name="security-issues-and-patching"></a>Biztonsági problémák és javítása
-
-Ha egy biztonsági hiba található egy vagy több összetevőt az AKS, az AKS-csapat a probléma megoldásához az összes érintett fürtök fog javítások. Azt is megteheti a csapat biztosít a felhasználók frissítéséhez.
-
-A feldolgozó csomópontokat, hogy egy biztonsági hiba merül fel az, ha az üzemszünet nélküli javítás érhető el az AKS-csapat a alkalmazni a javítást, és értesítse a felhasználókat a változásról.
-
-Amikor egy szervizcsomag szükséges a munkavégző csomópont újraindítása, a Microsoft értesíti ügyfeleit, ennek a követelménynek. Az ügyfél újraindítása vagy frissítése az beolvasása a fürt javítás felelős. Ha a felhasználók nem alkalmazza a javításokat az AKS útmutatás alapján, a fürt továbbra is sebezhetők az a biztonsági probléma.
-
-### <a name="node-maintenance-and-access"></a>Csomópont karbantartási és hozzáférés
-
-Munkavégző csomópontok ügyfelek tulajdonosa, és a egy megosztott kell eljárnia. Emiatt az ügyfélnél jelentkezzen be a munkavégző csomópontok és vélhetően kárt okozó módosításokat például kernelfrissítés és telepítése vagy eltávolítása a csomagokat.
-
-Ha ügyfelek romboló módosításokat, vagy okozhat vezérlési sík összetevők kapcsolat nélkül vagy működésképtelenné válik, az AKS ezt a hibát észleli, és automatikus visszaállítása a munkavégző csomópont a korábbi működési állapotát.
-
-Bár az ügyfelek jelentkezzen be, és módosítsa a feldolgozó csomópontokat, ez nem javasolt, mert is módosításokat egy fürt észleltek.
-
-## <a name="network-ports-access-and-nsgs"></a>Hálózati portok, hozzáférési és NSG-k
-
-Felügyelt szolgáltatásként az AKS a saját hálózati és a csatlakozási követelményekkel rendelkezik. Ezek a követelmények kevésbé rugalmas normál IaaS-összetevők követelményei. Az aks-ben műveletek, például egy adott portot (például, amely letiltja a 443-as porton keresztüli kimenő tűzfalszabályok) blokkolja az NSG-szabályok testreszabása, és engedélyezési URL-címeket is elérhetővé a fürt észleltek.
+Az ügyfelek a Kubernetes-frissítések végrehajtásáért felelősek. Az Azure vezérlőpulton vagy az Azure CLI-n keresztül végezhetnek frissítéseket. Ez azokra a frissítésekre vonatkozik, amelyek a Kubernetes biztonsági vagy funkcionalitásbeli tökéletesítését tartalmazzák.
 
 > [!NOTE]
-> Jelenleg az AKS nem teszi lehetővé a fürtből (például explicit tartomány vagy port engedélyezési) származó kimenő forgalom teljes mértékben zárolását. Az URL-címek és portok listája az figyelmeztetés nélkül változhatnak. Az Azure támogatási jegy létrehozásával kérheti le a frissített listát tartalmazza. A lista csak azoknak az ügyfeleinknek, akik hajlandó elfogadni, hogy a fürt rendelkezésre állási hatással lehet a *bármikor.*
+> Mivel az AK egy *felügyelt szolgáltatás*, a végső céljai közé tartozik a javítások, a frissítések és a naplók felelősségének eltávolítása, hogy a szolgáltatások kezelése még teljesebb legyen és kikapcsolható legyen. Ahogy a szolgáltatás kapacitása a teljes körű felügyelet növekedésével nő, a jövőbeli kiadások kihagyhatnak bizonyos funkciókat (például a csomópontok újraindítását és az automatikus javítást).
 
-## <a name="unsupported-alpha-and-beta-kubernetes-features"></a>Nem támogatott alfa és béta Kubernetes-szolgáltatások
+### <a name="security-issues-and-patching"></a>Biztonsági problémák és javítás
 
-Az AKS támogatja a felsőbb rétegbeli Kubernetes-projektben csak a stabil funkciókat. Kivéve, ha egyébként dokumentálva, az AKS nem támogatja a alfa és béta elérhető funkciókat a felsőbb rétegbeli Kubernetes-projektben.
+Ha egy vagy több AK-összetevőben talál biztonsági hibát, az AK-csapat az összes érintett fürtöt kijavítja a probléma enyhítése érdekében. Azt is megteheti, hogy a csapat a felhasználók számára is frissíti az útmutatót.
 
-A két esetben alfa vagy a bétaverzió funkciói esetleg történni általánosan elérhető:
+A biztonsági hiányosságot okozó munkavégző csomópontok esetében, ha a nulla leállás miatti javítás elérhető, az AK csapata ezt a javítást fogja alkalmazni, és értesíti a felhasználókat a változásról.
 
-* Ügyfelek az AKS-termék, támogatási vagy fejlesztői csapataival megfelelt, és próbálja ki az új funkciókról kérte.
-* Ezek a funkciók már [jelzőt a szolgáltatás által engedélyezett](https://github.com/Azure/AKS/blob/master/previews.md). Ügyfelek explicit módon kell engedélyezve a a funkciók használatához.
+Ha egy biztonsági javításhoz a munkavégző csomópont újraindítása szükséges, a Microsoft értesíti az ügyfeleket erről a követelményről. Az ügyfél feladata a fürt javításának vagy frissítésének lekérése. Ha a felhasználók az AK-útmutatás szerint nem alkalmazzák a javításokat, a fürt továbbra is sebezhető marad a biztonsági problémákkal kapcsolatban.
 
-## <a name="preview-features-or-feature-flags"></a>Előzetes verziójú funkciók vagy a szolgáltatás jelzők
+### <a name="node-maintenance-and-access"></a>Csomópont-karbantartás és-hozzáférés
 
-Szolgáltatásainak és a kiterjesztett tesztelés igénylő funkciók és felhasználói visszajelzéseket a Microsoft közzétette új előzetes verziójú funkciók vagy szolgáltatások mögött funkció azt a jelzőt. Vegye figyelembe ezeket a funkciókat, prerelease vagy a bétaverzió funkciói.
+A munkavégző csomópontok közös felelősséggel rendelkeznek, és az ügyfelek tulajdonában vannak. Emiatt az ügyfeleknek lehetősége van bejelentkezni a munkavégző csomópontokra, és potenciálisan ártalmas változásokat, például kernel-frissítéseket, illetve csomagok telepítését vagy eltávolítását végezni.
 
-Előzetes verziójú funkciók vagy a szolgáltatás-jelző funkciók nem éles céljára. API-k és a viselkedés, a hibajavítások és a további módosításokat folyamatban lévő változásai nem stabil fürtök és az állásidőt eredményezhet.
+Ha az ügyfelek romboló módosításokat végeznek, vagy a vezérlési sík összetevői offline állapotba lépnek vagy nem működnek, az AK felismeri ezt a hibát, és automatikusan visszaállítja a munkavégző csomópontot az előző munkaállapotba.
 
-Nyilvános előzetes verzióban érhető el a szolgáltatások olyan "ajánlott beavatkozást" támogatás keretében tartoznak, ezek a szolgáltatások előzetes verzióként érhetők el és nem éles céljára, és csak munkaidőben az AKS technikai támogatási csapat által támogatott. További információért tekintse meg:
+Bár az ügyfelek bejelentkezhetnek és módosíthatják a munkavégző csomópontokat, ezt nem kell elhagyni, mert a módosítások nem támogatják a fürtöt.
 
-* [Az Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/)
+## <a name="network-ports-access-and-nsgs"></a>Hálózati portok, hozzáférés és NSG
+
+Felügyelt szolgáltatásként az AK speciális hálózatkezelési és kapcsolódási követelményekkel rendelkezik. Ezek a követelmények kevésbé rugalmasak, mint a normál IaaS-összetevőkre vonatkozó követelmények. Az AK-ban az olyan műveletek, mint például a NSG-szabályok testreszabása, egy adott port blokkolása (például a 443-as kimenő portot letiltó tűzfalszabályok használata), valamint az engedélyezési URL-címek lehetővé teszik a fürt nem támogatott.
 
 > [!NOTE]
-> Előzetes verziójú funkciók az Azure érvénybe *előfizetés* szintjét. Ne telepítse az előzetes verziójú funkciók egy éles előfizetésre. Egy adott éles előfizetés előzetes verziójú funkciók API alapértelmezés módosíthatja, és befolyásolja a normál működést.
+> Az AK jelenleg nem teszi lehetővé, hogy teljes mértékben zárolja a kimenő forgalmat a fürtből. A fürt által a kimenő forgalomhoz használható URL-címek és portok listájának szabályozásához lásd: a kimenő [forgalom korlátozása](limit-egress-traffic.md).
+
+## <a name="unsupported-alpha-and-beta-kubernetes-features"></a>Az Alpha és a Beta Kubernetes funkciói nem támogatottak
+
+Az AK csak a felsőbb rétegbeli Kubernetes projektben lévő stabil funkciókat támogatja. Ha másként nincs dokumentálva, az AK nem támogatja a felsőbb rétegbeli Kubernetes projektben elérhető Alpha és Beta funkciókat.
+
+Előfordulhat, hogy az Alpha vagy a Beta funkcióit az általánosan elérhetővé tétel előtt két forgatókönyvben kell elvégezni:
+
+* Az ügyfelek az AK-termékekkel, támogatással vagy mérnöki csapatokkal találkoztak, és kérték az új funkciók kipróbálását.
+* Ezeket [a funkciókat a szolgáltatás jelzője engedélyezte](https://github.com/Azure/AKS/blob/master/previews.md). Az ügyfeleknek explicit módon be kell jelentkezniük a szolgáltatások használatára.
+
+## <a name="preview-features-or-feature-flags"></a>Előzetes verziójú funkciók vagy szolgáltatások jelzői
+
+A kiterjesztett tesztelést és felhasználói visszajelzéseket igénylő funkciók és funkciók esetében a Microsoft új előzetes verziójú funkciókat vagy szolgáltatásokat bocsát ki a szolgáltatás jelölője mögött. Ezeket a funkciókat előzetes vagy bétaverziós funkciókként érdemes figyelembe venni.
+
+Az előzetes verziójú funkciók vagy a szolgáltatás-jelölő funkciók nem éles környezetben használhatók. Az API-k és a viselkedés, a hibajavítások és más változások folyamatos változásai instabil fürtöket és állásidőt okozhatnak.
+
+A nyilvános előzetes verzióban elérhető funkciók a "legjobb erőfeszítés" támogatásban részesülnek, mivel ezek a funkciók előzetes verzióban érhetők el, és nem éles környezetben, és az AK technikai támogatási csapatai csak munkaidőben támogatottak. További információt a következő témakörben talál:
+
+* [Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/)
+
+> [!NOTE]
+> Az előzetes verziójú funkciók az Azure- előfizetések szintjén lépnek életbe. Ne telepítse az előzetes verziójú szolgáltatásokat éles előfizetésre. Éles előfizetésnél az előzetes verziójú funkciók megváltoztathatják az alapértelmezett API-viselkedést, és befolyásolhatják a rendszeres műveleteket.
 
 ## <a name="upstream-bugs-and-issues"></a>Felsőbb rétegbeli hibák és problémák
 
-Adja meg a fejlesztés sebessége a felsőbb rétegbeli Kubernetes-projektben, hibák tüntetnek merülhetnek fel. Ezek a hibák némelyike nem tudjon fókuszálni vagy az AKS rendszerből körül működött. Hibajavításokat tartalmaz, nagyobb javítások felsőbb rétegbeli projektekben (például a Kubernetes, a csomópont- vagy feldolgozói operációs rendszerek és a kernelt) van szükség. A Microsoft tulajdonában van (például az Azure-felhő szolgáltató) összetevők AKS és Azure személyzet elkötelezettek közösségi felső problémák kijavítása.
+A felsőbb rétegbeli Kubernetes projekt fejlesztésének gyorsasága miatt a hibák mindig felmerülhetnek. Ezen hibák némelyike nem oldható fel és nem dolgozható fel az AK-rendszeren belül. A hibajavítások Ehelyett nagyobb javítások szükségesek a felsőbb rétegbeli projektekhez (például Kubernetes, node vagy Worker operációs rendszerekhez és kernelekhez). A Microsoft tulajdonában lévő összetevők (például az Azure Cloud Provider), az AK és az Azure személyzete elkötelezett a Közösségen belüli felsőbb szintű problémák megoldásában.
 
-A technikai támogatási probléma a gyökér-oka egy vagy több felsőbb rétegbeli hibák, az AKS támogatási és mérnöki csapat fogja végrehajtani:
+Ha egy vagy több felsőbb rétegbeli hiba okozza a technikai támogatási problémát, az AK-támogatás és a mérnöki csapatok a következőket teszik:
 
-* Határozza meg, és a felsőbb rétegbeli hibái támogató részletes magyarázatát, hogy miért érdemes ezt a hibát észleli, a fürt vagy a számítási feladatok való hivatkozásra. Ügyfelei a szükséges tárházak mutató hivatkozásokat fogadjon, így tekintse meg a problémákat, és tekintse meg, mikor adjon meg egy új kiadás javításokat.
-* Adja meg a lehetséges megoldások vagy megoldásokkal kapcsolatban. Ha a probléma enyhíthető, egy [ismert hiba](https://github.com/Azure/AKS/issues?q=is%3Aissue+is%3Aopen+label%3Aknown-issue) az AKS-tárházban fogja benyújtani. Az ismert-probléma-bejelentési ismerteti:
-  * A probléma, beleértve a felsőbb rétegbeli hibák mutató hivatkozásokat.
-  * A megoldás és a egy frissítés, vagy egy másik részleteit a megoldás megőrzését.
-  * Durva vonatkozóan a probléma a felvételt a felsőbb rétegbeli tempót alapján.
+* Azonosítsa és kapcsolja össze a felsőbb rétegbeli hibákat az összes kiegészítő részlettel, hogy elmagyarázza, miért befolyásolja a probléma a fürtjét vagy a munkaterhelést. Az ügyfelek a szükséges adattárakra mutató hivatkozásokat kapnak, így megtekinthetik a problémákat, és megtekinthetik, hogy egy új kiadás mikor fog javításokat nyújtani.
+* Adja meg a lehetséges megkerülő megoldásokat és a megoldást. Ha a problémát enyhíteni lehet, a rendszer egy [ismert problémát](https://github.com/Azure/AKS/issues?q=is%3Aissue+is%3Aopen+label%3Aknown-issue) fog benyújtani az AK-tárházban. Az ismert problémákkal kapcsolatos bejelentés a következőket ismerteti:
+  * A probléma, beleértve a felsőbb rétegbeli hibákra mutató hivatkozásokat is.
+  * Megkerülő megoldás, valamint a frissítés vagy a megoldás más megőrzésének részletei.
+  * A probléma felvételének durva ütemezése a felsőbb rétegbeli kiadási lépésszám alapján.

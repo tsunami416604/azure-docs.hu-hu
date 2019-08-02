@@ -1,27 +1,25 @@
 ---
-title: Válassza ki a lemez típusát az Azure IaaS Linux rendszerű virtuális gépek – felügyelt lemezek
-description: További információ az elérhető Azure-lemeztípusokkal Linux rendszerű virtuális gépek, beleértve a ultranagy SSD-k, prémium szintű SSD-k, standard SSD-k és HDD-k szabványos.
-services: virtual-machines-linux,storage
+title: Lemez típusának kiválasztása az Azure IaaS Linux rendszerű virtuális gépek által felügyelt lemezek számára
+description: Ismerkedjen meg a Linux rendszerű virtuális gépekhez elérhető Azure-lemezekkel, például az ultra SSD-k, a prémium SSD-k, a standard SSD-k és a standard HDD
 author: roygara
 ms.author: rogarana
 ms.date: 05/10/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 2413cfe02dfb3be61ec01518e4fdd7f4b78f5773
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d0acd49b6f1545ab6020adf498c683a28850730b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65538395"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695829"
 ---
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-overview.md)]
 
-Ha szeretné ultranagy SSD-k használatának megkezdése, ismertető a cikk a tulajdonos: [Az Azure ultranagy SSD-k engedélyezése](disks-enable-ultra-ssd.md).
+Ha az ultra SSD-ket szeretné használni, tekintse meg a tárgyat ismertető cikket: Az [Azure Ultra SSD](disks-enable-ultra-ssd.md)-k engedélyezése.
 
 [!INCLUDE [virtual-machines-managed-disks-types-ga](../../../includes/virtual-machines-managed-disks-types-ga.md)]
 
-A pillanatképek további információkért lásd a pillanatképek a [felügyelt lemez – áttekintés](managed-disks-overview.md).
+A pillanatképekkel kapcsolatos további információkért tekintse meg a [felügyelt lemez – áttekintés](managed-disks-overview.md)című témakör a pillanatképek című szakaszát.
 
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-billing-and-fees.md)]

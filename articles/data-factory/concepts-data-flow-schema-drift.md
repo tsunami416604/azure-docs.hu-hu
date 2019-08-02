@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 562daa024985a546ffb49c4da11eace3bc81a659
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: b5777300f5033569caf3868218e747df3ff83a76
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314811"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640235"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>Adatáramlási séma leképezése – drift
 
@@ -65,7 +65,7 @@ Ezután kerekítjük és összegezjük az egyes egyező oszlopok értékeit:
 
 ```round(sum ($$))```
 
-Ezt kipróbálhatja a "taxi-bemutató" Azure Data Factory adatfolyam-minta használatával. Váltson át a hibakeresési munkamenetre az adatfolyam-tervezési felület tetején található hibakeresési kapcsoló használatával, hogy az eredmények interaktív módon megjelenjenek:
+Ezt a séma-drift funkciót a "taxi demó" Azure Data Factory adatfolyam-minta használatával tekintheti meg. Váltson át a hibakeresési munkamenetre az adatfolyam-tervezési felület tetején található hibakeresési kapcsoló használatával, hogy az eredmények interaktív módon megjelenjenek:
 
 <img src="media/data-flow/taxidrift2.png" width="800">
 
@@ -75,6 +75,9 @@ Amikor új oszlopokat állít elő oszlopos mintákkal, a következő módszerek
 * A "byPosition" paranccsal azonosíthatja az új oszlopokat a pozíció száma alapján.
 * A "byName" paranccsal azonosíthatja az új oszlopokat a nevük alapján.
 * Az oszlopok mintái a "név", a "Stream", a "position" vagy a "type", illetve az új oszlopoknak megfelelő kombinációt használják.
+
+## <a name="rule-based-mapping"></a>Szabály alapú leképezés
+A Select és a fogadó transzformáció támogatja a szabályon alapuló leképezésen keresztüli egyeztetést. Ez lehetővé teszi olyan szabályok összeállítását, amelyek felhasználhatják az oszlopok oszlopait az oszlopok aliasai számára, valamint az oszlopok célhelyre való elfogadását.
 
 ## <a name="next-steps"></a>További lépések
 Az [adatáramlás kifejezésének nyelvén](data-flow-expression-functions.md) további létesítményeket talál az oszlopok és a séma drift esetében, beleértve az "byName" és a "ByPosition" típust is.
