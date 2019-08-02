@@ -1,5 +1,5 @@
 ---
-title: Egy HTTP által aktivált függvény létrehozása az Azure-ban
+title: HTTP által aktivált függvény létrehozása az Azure-ban
 description: Útmutató az első Python-függvény létrehozása az Azure-ban az Azure Functions Core Tools és az Azure CLI használatával.
 services: functions
 keywords: ''
@@ -11,30 +11,30 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 5ef30fbf647492f79c64508d8306868aa1f6b278
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 58f5cfd3718720cafc922bbd7b974a353e0d9d02
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444580"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722784"
 ---
-# <a name="create-an-http-triggered-function-in-azure"></a>Egy HTTP által aktivált függvény létrehozása az Azure-ban
+# <a name="create-an-http-triggered-function-in-azure"></a>HTTP által aktivált függvény létrehozása az Azure-ban
 
 [!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
-Ez a cikk bemutatja, hogyan hozzon létre egy Python-projektet, amely futtatja az Azure Functions parancssori eszközök használatával. A létrehozott függvény HTTP-kérelmekre váltja ki. Végül a projekthez, hogy a futtató közzéteszi egy [kiszolgáló nélküli függvény](functions-scale.md#consumption-plan) az Azure-ban.
+Ez a cikk bemutatja, hogyan hozhat létre olyan Python-projektet, amely Azure Functionsban fut. A létrehozott függvényt HTTP-kérések aktiválják. Végezetül közzé kell tenni a projektet, hogy kiszolgáló nélküli [függvényként](functions-scale.md#consumption-plan) fusson az Azure-ban.
 
-Ez a cikk az Azure Functions két útmutatóink első. Ez a cikk befejezése után, [hozzáadása egy Azure Storage üzenetsor kimeneti kötésének](functions-add-output-binding-storage-queue-python.md) a függvényt.
+Ez a cikk a Azure Functions első két rövid útmutatója. A cikk elvégzése után [hozzáadhat egy Azure Storage-üzenetsor kimeneti kötését](functions-add-output-binding-storage-queue-python.md) a függvényhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, az alábbiakkal kell rendelkeznie:
+A Kezdés előtt a következőkkel kell rendelkeznie:
 
-+ Telepítés [Python 3.6-os](https://www.python.org/downloads/).
++ Telepítse a [Python 3,6](https://www.python.org/downloads/)-es frissítést.
 
-+ Telepítés [Azure Functions Core Tools](./functions-run-local.md#v2) 2.6.1071 vagy újabb verzióját.
++ Telepítse [Azure functions Core Tools](./functions-run-local.md#v2) 2.6.1071 vagy újabb verziót.
 
-+ Telepítse a [Azure CLI-vel](/cli/azure/install-azure-cli) verzió 2.x-es vagy újabb verziója.
++ Telepítse az [Azure CLI](/cli/azure/install-azure-cli) 2. x vagy újabb verzióját.
 
 + Aktív Azure-előfizetés.
 
@@ -42,77 +42,77 @@ Mielőtt elkezdené, az alábbiakkal kell rendelkeznie:
 
 ## <a name="create-and-activate-a-virtual-environment"></a>Hozzon létre, és aktiválja a virtuális környezet
 
-Helyi fejlesztés és Python-funkciók teszteléséhez a Python 3.6-os környezetben kell működniük. Futtassa a következő parancsokat, létrehozása és aktiválása nevű virtuális környezetet `.env`.
+A Python-függvények helyi fejlesztéséhez és teszteléséhez Python 3,6-környezetben kell dolgoznia. Futtassa a következő parancsokat, létrehozása és aktiválása nevű virtuális környezetet `.venv`.
 
-### <a name="bash"></a>Bash:
+### <a name="bash"></a>Bash
 
 ```bash
 python3.6 -m venv .venv
 source .venv/bin/activate
 ```
 
-### <a name="powershell-or-a-windows-command-prompt"></a>PowerShell vagy egy Windows parancssorban:
+### <a name="powershell-or-a-windows-command-prompt"></a>PowerShell vagy Windows-Parancssor:
 
 ```powershell
 py -3.6 -m venv .venv
 .venv\scripts\activate
 ```
 
-A fennmaradó parancsok futtatása a virtuális környezeten belül.
+A többi parancs a virtuális környezeten belül fut.
 
 ## <a name="create-a-local-functions-project"></a>Egy helyi Functions-projekt létrehozása
 
-A Functions-projekt megegyezik egy függvényalkalmazást az Azure-ban. Több függvényt, hogy az összes megosztás ugyanezzel a helyi és üzemeltetési konfigurációval rendelkezhet.
+A functions-projekt egyenértékű az Azure-beli Function alkalmazásokkal. Több funkcióval is rendelkezhet, amelyek mindegyike ugyanazokat a helyi és üzemeltetési konfigurációkat használja.
 
-A virtuális környezetben, futtassa a következő parancsot, kiválasztása **python** , a worker futásidejű.
+A virtuális környezetben futtassa a következő parancsot, és válassza a **Python** lehetőséget munkavégző futtatókörnyezetként.
 
 ```console
 func init MyFunctionProj
 ```
 
-Nevű mappa _MyFunctionProj_ jön létre, amely tartalmazza a következő három fájlokat:
+Létrejön egy _MyFunctionProj_ nevű mappa, amely a következő három fájlt tartalmazza:
 
-* `local.settings.json` helyi futtatás során Alkalmazásbeállítások és a kapcsolati karakterláncok tárolásához használatos. Ez a fájl nem közzéteheti az Azure-bA.
-* `requirements.txt` a közzététel az Azure-bA telepítendő csomagok listáját tartalmazza.
-* `host.json` a függvényalkalmazás a függvények érintő globális konfigurációs beállításait tartalmazza. Ez a fájl közzéteheti az Azure-bA.
+* `local.settings.json`az alkalmazás beállításainak és a kapcsolódási karakterláncoknak a helyi futtatásakor történő tárolására szolgál. Ez a fájl nem jelenik meg az Azure-ban.
+* `requirements.txt`Az Azure-ba való közzétételre telepítendő csomagok listáját tartalmazza.
+* `host.json`olyan globális konfigurációs beállításokat tartalmaz, amelyek a Function alkalmazás összes funkcióját érintik. Ez a fájl közzé van téve az Azure-ban.
 
-Keresse meg az új MyFunctionProj mappa:
+Navigáljon az új MyFunctionProj mappára:
 
 ```console
 cd MyFunctionProj
 ```
 
-Ezután frissítse a host.json fájl kiterjesztése csomagok engedélyezéséhez.  
+Ezután frissítse a Host. JSON fájlt a bővítmény-csomagok engedélyezéséhez.  
 
 ## <a name="create-a-function"></a>Függvény létrehozása
 
-Függvény hozzáadása a projekthez, futtassa a következő parancsot:
+Ha függvényt szeretne hozzáadni a projekthez, futtassa a következő parancsot:
 
 ```console
 func new
 ```
 
-Válassza ki a **HTTP-eseményindító** írja be a sablon `HttpTrigger` , a függvény nevét, majd nyomja le az Enter.
+Válassza ki a **http-trigger** sablonját, írja be `HttpTrigger` a függvény nevét, majd nyomja le az ENTER billentyűt.
 
-Egy almappát _HttpTrigger_ jön létre, amely a következő fájlokat tartalmazza:
+A rendszer létrehoz egy _HttpTrigger_ nevű almappát, amely a következő fájlokat tartalmazza:
 
-* **Function.JSON**: konfigurációs fájlt, amely meghatározza a függvény, eseményindító és más kötéseit. Ezt a fájlt, és megnézheti, hogy az érték `scriptFile` a fájlt, amely tartalmazza a függvény, amíg a meghívási triggerét és kötéseit meghatározott mutat a `bindings` tömb.
+* **function. JSON**: konfigurációs fájl, amely meghatározza a függvényt, az triggert és az egyéb kötéseket. Tekintse át ezt a fájlt, és tekintse meg, hogy a függvényt tartalmazó fájlra mutató `scriptFile` pontok értéke, míg a meghívásos trigger és kötések definiálva vannak a `bindings` tömbben.
 
-  Minden egyes kötés szükséges iránya, típusa és a egy egyedi nevet. A HTTP-eseményindítóval rendelkezik típusú bemeneti kötést [ `httpTrigger` ](functions-bindings-http-webhook.md#trigger) és a kimeneti kötés típusú [ `http` ](functions-bindings-http-webhook.md#output).
+  Minden kötéshez meg kell adni egy irányt, egy típust és egy egyedi nevet. A http [`httpTrigger`](functions-bindings-http-webhook.md#trigger) -trigger típusa és kimeneti kötése típusú [`http`](functions-bindings-http-webhook.md#output)bemeneti kötést tartalmaz.
 
-* **\_\_Init\_\_.py**: parancsfájlt, amely a HTTP által aktivált függvény. Ezt a szkriptet, és megnézheti, hogy tartalmaz egy alapértelmezett `main()`. Ez a funkció használatával HTTP-adatok a trigger által átadott a `req` kötési paraméter neve. Function.json, meghatározott `req` példánya a [azure.functions.HttpRequest osztály](/python/api/azure-functions/azure.functions.httprequest). 
+* **init.file\_: a http által aktivált függvényt tartalmazó parancsfájl.\_ \_ \_** Tekintse át ezt a parancsfájlt, és ellenőrizze `main()`, hogy az tartalmaz-e alapértelmezett értéket. Az triggerből származó http-adatok átadása ehhez a `req` függvényhez a nevesített kötési paraméter használatával történik. A function. JSON `req` fájlban definiált érték az [Azure. functions. HttpRequest osztály](/python/api/azure-functions/azure.functions.httprequest)egy példánya. 
 
-    A visszaadott objektum definiálva `$return` function.json, a rendszer egy példánya [azure.functions.HttpResponse osztály](/python/api/azure-functions/azure.functions.httpresponse). További tudnivalókért lásd: [Azure Functions – HTTP-eseményindítók és kötések](functions-bindings-http-webhook.md).
+    A function. JSON fájlban megadott `$return` visszatérési objektum az [Azure. functions. HttpResponse osztály](/python/api/azure-functions/azure.functions.httpresponse)egy példánya. További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](functions-bindings-http-webhook.md).
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
-A következő parancsot helyileg használja az ugyanazon az Azure Functions runtime az Azure-függvényalkalmazás elindul.
+A következő parancs elindítja a Function alkalmazást, amely az Azure-ban használt Azure Functions futtatókörnyezettel helyileg fut.
 
 ```bash
 func host start
 ```
 
-A Functions gazdagép indításakor ír a következő kimenetet, amely az olvashatóság érdekében csonkolva lett hasonló:
+A functions gazdagép indításakor a következő kimenetnek kell megadnia, amelyet az olvashatóság érdekében csonkolt:
 
 ```output
 
@@ -154,9 +154,9 @@ Most, hogy már futtatta a függvényt helyben, létrehozhatja az Azure-ban a f�
 
 [!INCLUDE [functions-create-storage-account](../../includes/functions-create-storage-account.md)]
 
-## <a name="create-a-function-app-in-azure"></a>Függvényalkalmazás létrehozása az Azure-ban
+## <a name="create-a-function-app-in-azure"></a>Function-alkalmazás létrehozása az Azure-ban
 
-Egy függvényalkalmazás szolgáltat környezetet a függvénykód végrehajtása. Lehetővé teszi, hogy egyszerűbb felügyelete, üzembe helyezéséhez és erőforrás-megosztás logikai egységbe csoportosítsa a függvényeket.
+A Function alkalmazás egy környezetet biztosít a függvény kódjának végrehajtásához. Lehetővé teszi, hogy egyszerűbb felügyelete, üzembe helyezéséhez és erőforrás-megosztás logikai egységbe csoportosítsa a függvényeket.
 
 Futtassa a következő parancsot egy egyedi függvényalkalmazás-nevet helyén használatával a `<APP_NAME>` helyőrző és a tárfiók nevét `<STORAGE_NAME>`. Az `<APP_NAME>` egyben a függvényalkalmazás alapértelmezett DNS-tartományaként is szolgál, ezért az Azure összes alkalmazásában csak egyszer használhatja.
 
@@ -167,9 +167,9 @@ az functionapp create --resource-group myResourceGroup --os-type Linux \
 ```
 
 > [!NOTE]
-> Az Azure Functions Linux rendszeren a Használatalapú csomag jelenleg előzetes verzióban és csak akkor érhető el a következő régiókban: USA nyugati RÉGIÓJA, USA keleti RÉGIÓJA, Nyugat-Európa, Kelet-Ázsia. Továbbá Linux és Windows-alkalmazások nem futhat az ugyanabban az erőforráscsoportban. Ha rendelkezik egy meglévő erőforráscsoportot `myResourceGroup` Windows függvényalkalmazás vagy webalkalmazás, egy másik erőforráscsoportot kell használnia.
+> Azure Functions a Linux rendszerhez készült használati terv jelenleg előzetes verzióban érhető el, és csak a következő régiókban érhető el: USA nyugati régiója, USA keleti régiója, Nyugat-Európa, Kelet-Ázsia. A Linux-és Windows-alkalmazások továbbá nem futtathatók ugyanabban az erőforráscsoporthoz. Ha már van egy nevű `myResourceGroup` erőforráscsoport egy Windows-függvény alkalmazással vagy webalkalmazással, egy másik erőforráscsoportot kell használnia.
 
-Most már készen áll a helyi functions-projekt közzététele a függvényalkalmazáshoz az Azure-ban.
+Most már készen áll a helyi functions-projekt közzétételére az Azure-beli Function alkalmazásban.
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
@@ -177,7 +177,7 @@ Most már készen áll a helyi functions-projekt közzététele a függvényalka
 
 ## <a name="next-steps"></a>További lépések
 
-Egy Python functions-projekt létrehozta egy HTTP által aktivált függvény, futtassa a helyi gépén, és üzembe helyezte azt az Azure-bA. Most már kiterjesztheti a függvény által...
+Létrehozott egy Python functions-projektet egy HTTP által aktivált függvénnyel, futtatta azt a helyi gépen, és üzembe helyezte az Azure-ban. Most terjessze ki a függvényt...
 
 > [!div class="nextstepaction"]
-> [Azure Storage-tárolók hozzáadása üzenetsor kimeneti kötése](functions-add-output-binding-storage-queue-python.md)
+> [Azure Storage-üzenetsor kimeneti kötésének hozzáadása](functions-add-output-binding-storage-queue-python.md)

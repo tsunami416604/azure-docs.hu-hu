@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9f854e1771eec1d02fd14e040510688bf33c59c8
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 9465c1991418c7ebef8c4eed825affc7b1d93492
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442434"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693345"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása LinkedIn-fiókkal egyéni szabályzatok használatával Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést a LinkedIn-fiók f
 
 - Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az [Egyéni szabályzatokkal Azure Active Directory B2Cban](active-directory-b2c-get-started-custom.md).
 - LinkedIn-fiók – ha még nem rendelkezik ilyennel, [hozzon létre egy fiókot](https://www.linkedin.com/start/join).
-- LinkedIn lap – szükség van egy [LinkedIn-oldalra](https://www.linkedin.com/company/setup/new/) , amelyet a következő szakaszban létrehozott LinkedIn-alkalmazáshoz szeretne rendelni.
+- LinkedIn lap – szükség van egy [LinkedIn-oldalra](https://www.linkedin.com/help/linkedin/answer/710/creating-a-linkedin-company-page) , amelyet a következő szakaszban létrehozott LinkedIn-alkalmazáshoz szeretne rendelni.
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 
@@ -193,7 +193,7 @@ Ezen a ponton az identitás-szolgáltató beállítása megtörtént, de a regis
 
 A **ClaimsProviderSelection** elem hasonló a bejelentkezési vagy bejelentkezési képernyőn lévő Identity Provider gombhoz. Ha **ClaimsProviderSelection** elemet ad hozzá egy LinkedIn-fiókhoz, egy új gomb jelenik meg, amikor a felhasználó az oldalon landol.
 
-1. Keresse meg  az Ön által létrehozott `Order="1"` felhasználói útra kiterjedő OrchestrationStep elemet.
+1. Keresse meg az Ön által létrehozott `Order="1"` felhasználói útra kiterjedő OrchestrationStep elemet.
 2. A **ClaimsProviderSelections**területen adja hozzá a következő elemet. Állítsa a **TargetClaimsExchangeId** értékét egy megfelelő értékre, például `LinkedInExchange`:
 
     ```XML
@@ -204,7 +204,7 @@ A **ClaimsProviderSelection** elem hasonló a bejelentkezési vagy bejelentkezé
 
 Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A művelet, ebben az esetben a Azure AD B2C, hogy kommunikáljon egy LinkedIn-fiókkal a jogkivonat fogadásához.
 
-1. Keresse meg  a felhasználói útra `Order="2"` kiterjedő OrchestrationStep.
+1. Keresse meg a felhasználói útra `Order="2"` kiterjedő OrchestrationStep.
 2. Adja hozzá a következő **ClaimsExchange** elemet, és győződjön meg arról, hogy ugyanazt az értéket használja a **TargetClaimsExchangeId**használt azonosítóhoz:
 
     ```XML
@@ -260,7 +260,7 @@ Címzett:
 
 ### <a name="add-items-to-the-metadata"></a>Elemek hozzáadása a metaadatokhoz
 
-A Kivonatjogcím **metaadataiban** adja hozzá a következő **elem** elemeit:
+A Kivonatjogcím **metaadataiban** adjahozzá a következő **elem** elemeit:
 
 ```XML
 <Item Key="external_user_identity_claim_id">id</Item>
@@ -286,7 +286,7 @@ Címzett:
 
 ### <a name="add-new-outputclaimstransformation-elements"></a>Új OutputClaimsTransformation elemek hozzáadása
 
-A Kivonatjogcím **OutputClaimsTransformations** adja hozzá a következő **OutputClaimsTransformation** elemeket:
+A Kivonatjogcím **OutputClaimsTransformations** adja hozzáa következő **OutputClaimsTransformation** elemeket:
 
 ```XML
 <OutputClaimsTransformation ReferenceId="ExtractGivenNameFromLinkedInResponse" />

@@ -9,12 +9,12 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 description: Hogyan működik a Visual Studio Code az Azure dev Spaces-szel
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 0d80643b366b6d7313f24e73258056e492eb56fc
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 7809f0215137b0c473e13143404a031497906ebf
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297871"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725818"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Hogyan működik a Visual Studio Code az Azure dev Spaces-szel
 
@@ -41,7 +41,7 @@ Miután létrehozta a projekthez tartozó eszközöket, futtathatja Java-, Node.
 
 Létre kell hoznia az AK-fürtöt, és engedélyeznie kell az Azure dev-helyeket a fürtön a Visual Studio code-on kívül. Használhatja például az Azure CLI-t vagy a Azure Portalt a beállítás elvégzéséhez. Újra felhasználhatja a meglévő Dockerfiles, Helm- `azds.yaml` diagramokat és a Visual Studio code-on kívül létrehozott fájlokat, például a `azds prep`futtatásával létrehozott eszközöket. Ha nem a Visual Studio code-on kívül generált eszközöket használ fel, akkor továbbra is `.vscode` rendelkeznie kell egy könyvtárral. Ezt `.vscode` a könyvtárat a Visual Studio Code és az Azure dev Spaces bővítmény újra létrehozhatja, és nem írja felül a meglévő eszközöket.
 
-A .net Core-projektek esetében telepítve installed to run your .NET service from Visual Studio Code. Also for Java projects using Maven, you must have the [Java Debugger for Azure Dev Spaces extension][java-extension] kell lennie a [ C# bővítménynek][csharp-extension] , valamint a Maven [telepített és konfigurált][mavennek] a Java-szolgáltatás Visual Studio Code-ból való futtatásához.
+A .net Core-projektek esetében telepíteni kell a [ C# bővítményt][csharp-extension] a .net-szolgáltatás Visual Studio Code-ból való futtatásához. A Mavent használó Java-projektekhez is rendelkeznie kell a Java-hibakeresővel az [Azure dev Spaces bővítménnyel][java-extension] , valamint a [telepített és konfigurált Maven][maven] használatával, hogy a Java-szolgáltatás a Visual Studio Code-ból fusson.
 
 ## <a name="debug-your-service-in-aks"></a>Szolgáltatás hibakeresése az AK-ban
 
@@ -52,9 +52,9 @@ A projekt elindítása után a Java-, Node. js-és .NET Core-szolgáltatásait k
 
 A Visual Studio Code és az Azure dev Spaces bővítmény az Azure dev Spaces szolgáltatással használható az alábbi rövid útmutatókban:
 
-* [Fejlesztés a Javával][quickstart-java]
-* [Fejlesztés a .NET-tel][quickstart-netcore]
-* [Fejlesztés Node. js-sel][quickstart-node]
+* [Gyors iteráció és hibakeresés a Visual Studio Code és a Java révén][quickstart-java]
+* [Gyors iteráció és hibakeresés a Visual Studio Code és a .NET használatával][quickstart-netcore]
+* [Gyors iteráció és hibakeresés a Visual Studio Code és a Node. js-sel][quickstart-node]
 
 [azds-extension]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds
 [azds-yaml]: how-dev-spaces-works.md#prepare-your-code

@@ -1,7 +1,7 @@
 ---
 title: LogDownloader – Custom Decision Service
 titlesuffix: Azure Cognitive Services
-description: Töltse le a naplófájlok Azure Custom Decision Service által készített.
+description: Az Azure Custom Decision Service által létrehozott naplófájlok letöltése.
 services: cognitive-services
 author: marco-rossi29
 manager: nitinme
@@ -10,27 +10,28 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: marossi
-ms.openlocfilehash: 8a8f669c33f40fb80dc826ec04203880dee74d82
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 33cc0d0dcf16ff82ac128507566427e123020236
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60829990"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707232"
 ---
 # <a name="logdownloader"></a>LogDownloader
 
-Letölti a naplófájlokat, amelyek Azure Custom Decision Service által készített, és hozzon létre a *.gz* Kísérletezési által használt fájlokat.
+Töltse le az Azure Custom Decision Service által létrehozott naplófájlokat, és létrehozza a kísérletezéshez használt *. gz* fájlokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Python 3: Telepítve van, és az elérési útra. Azt javasoljuk, hogy a 64 bites verziója, nagy méretű fájlok kezeléséhez.
-- A *Microsoft/MOLWT-ds* tárházat: [A tárház klónozása](https://github.com/Microsoft/mwt-ds).
-- A *azure-storage-blob* csomag: A telepítés részleteit, nyissa meg [a Microsoft Azure Storage kódtára a Pythonhoz](https://github.com/Azure/azure-storage-python#option-1-via-pypi).
-- Adja meg az Azure storage kapcsolati karakterláncát az *mwt-ds/DataScience/ds.config*: Kövesse a *my_app_id: my_connectionString* sablont. Megadhatja, hogy több `app_id`. Futtatásakor `LogDownloader.py`, ha a bemeneti `app_id` nem található a `ds.config`, `LogDownloader.py` használja a `$Default` kapcsolati karakterláncot.
+- Python 3: Az elérési útra. A nagyméretű fájlok kezelésére a 64 bites verziót javasoljuk.
+- A *Microsoft/MWT-DS* adattár: [A](https://github.com/Microsoft/mwt-ds)tárház klónozása.
+- Az *Azure-Storage-blob* csomag: A telepítés részleteit a [Python Microsoft Azure Storage könyvtárában](https://github.com/Azure/azure-storage-python#option-1-via-pypi)találhatja meg.
+- Adja meg az Azure Storage-beli kapcsolatok karakterláncát a *MWT-DS/DataScience/DS. config fájlban*: Kövesse a *my_app_id: my_connectionString* sablont. Több `app_id`is megadható. `LogDownloader.py`Ha a futtatásakor a bemenet `ds.config` `app_id` nem található a alkalmazásban, `LogDownloader.py` a a `$Default` kapcsolódási karakterláncot használja.
 
 ## <a name="usage"></a>Használat
 
-Lépjen a `mwt-ds/DataScience` , és futtassa `LogDownloader.py` megfelelő argumentumokkal, ahogy az az alábbi kódot:
+Nyissa `mwt-ds/DataScience` meg a `LogDownloader.py` parancsot, és futtassa a megfelelő argumentumokat a következő kódban részletezett módon:
 
 ```cmd
 python LogDownloader.py [-h] -a APP_ID -l LOG_DIR [-s START_DATE]
@@ -43,38 +44,38 @@ python LogDownloader.py [-h] -a APP_ID -l LOG_DIR [-s START_DATE]
 
 | Input (Bemenet) | Leírás | Alapértelmezett |
 | --- | --- | --- |
-| `-h`, `--help` | A súgóüzenetet és kilépési megjelenítése. | |
-| `-a APP_ID`, `--app_id APP_ID` | Az alkalmazás azonosítója (azaz a Azure blob tároló nevét). | Kötelező |
-| `-l LOG_DIR`, `--log_dir LOG_DIR` | Az alap könyvtár (almappa létrehozott) adatokat tölti le.  | Szükséges |
-| `-s START_DATE`, `--start_date START_DATE` | A letöltés kezdő dátuma (tartalmazza), a *éééé-hh-nn* formátumban. | `None` |
-| `-e END_DATE`, `--end_date END_DATE` | A letöltés záró dátum (tartalmazza), *éééé-hh-nn* formátumban. | `None` |
-| `-o OVERWRITE_MODE`, `--overwrite_mode OVERWRITE_MODE` | A felülírás módot használja. | |
-| | `0`: Soha ne írja felül; Kérje meg a felhasználót, hogy blobok jelenleg használatban van. | Alapértelmezett |
-| | `1`: Kérje meg a felhasználó folytatásról, ha a fájlok a különböző méretű, vagy ha a blobokat éppen használatban vannak. | |
-| | `2`: Mindig felülírja a; Töltse le a jelenleg használt blobokat. | |
-| | `3`: Soha ne írja felül, és fűzze hozzá a Ha a mérete nagyobb, nélkül megkérdezi; Töltse le a jelenleg használt blobokat. | |
-| | `4`: Soha ne írja felül, és fűzze hozzá a Ha a mérete nagyobb, nélkül megkérdezi; hagyja ki a jelenleg használt blobokat. | |
-| `--dry_run` | A nyomtatási melyik blobok lenne le vannak töltve, hogy nem tölti le. | `False` |
-| `--create_gzip` | Hozzon létre egy *gzip* Vowpal Wabbit fájlt. | `False` |
-| `--delta_mod_t DELTA_MOD_T` | Időablak (másodpercben), az azt észlelte, hogy a fájl jelenleg használatban van. | `3600` mp-ben (`1` óra) |
-| `--verbose` | Nyomtatási további részleteket. | `False` |
-| `-v VERSION`, `--version VERSION` | Napló letöltési segédprogramja verziót kell használni. | |
-| | `1`: Nyers naplók (csak a visszamenőleges kompatibilitás érdekében). | Elavult |
-| | `2`: Főtt naplók. | Alapértelmezett |
+| `-h`, `--help` | Jelenítse meg a Súgó üzenetet, és lépjen ki. | |
+| `-a APP_ID`, `--app_id APP_ID` | Az alkalmazás azonosítója (azaz az Azure Storage blob-tároló neve). | Kötelező |
+| `-l LOG_DIR`, `--log_dir LOG_DIR` | Az adatok letöltésének alapkönyvtára (a rendszer létrehoz egy almappát).  | Kötelező |
+| `-s START_DATE`, `--start_date START_DATE` | A letöltés kezdő dátuma (tartalmazza), *éééé-hh-nn* formátumban. | `None` |
+| `-e END_DATE`, `--end_date END_DATE` | A letöltés befejezési dátuma (tartalmazza), *éééé-hh-nn* formátumban. | `None` |
+| `-o OVERWRITE_MODE`, `--overwrite_mode OVERWRITE_MODE` | A használandó felülírási mód. | |
+| | `0`: Soha ne írja felül; kérje meg a felhasználót, hogy jelenleg használják-e a blobokat. | Alapértelmezett |
+| | `1`: Kérje meg a felhasználót, hogy a fájlok különböző méretekkel való elvégzése, illetve a Blobok jelenleg való használata esetén hogyan járjon el. | |
+| | `2`: Mindig írja felül; jelenleg használt Blobok letöltése. | |
+| | `3`: Soha ne írja felül a felülírást, és fűzze hozzá, ha a méret nagyobb, a kérés nélkül; jelenleg használt Blobok letöltése. | |
+| | `4`: Soha ne írja felül a felülírást, és fűzze hozzá, ha a méret nagyobb, a kérés nélkül; jelenleg használt Blobok kihagyása. | |
+| `--dry_run` | A letöltés nélkül kinyomtathatja, hogy mely Blobok lettek letöltve. | `False` |
+| `--create_gzip` | Hozzon létre egy *gzip* -fájlt a Vowpal Wabbit. | `False` |
+| `--delta_mod_t DELTA_MOD_T` | Az az időintervallum (másodpercben), amely azt észleli, hogy egy fájl jelenleg használatban van-e. | `3600`másodperc (`1` óra) |
+| `--verbose` | További részletek nyomtatása. | `False` |
+| `-v VERSION`, `--version VERSION` | A használni kívánt log Downloader-verzió. | |
+| | `1`: A nem főtt naplók esetében (csak visszamenőleges kompatibilitás esetén). | Elavult |
+| | `2`: A főtt naplókhoz. | Alapértelmezett |
 
 ### <a name="examples"></a>Példák
 
-Egy tesztfuttatás letöltés, az Azure Storage blob-tároló lévő összes adatot használja a következő kódot:
+Az Azure Storage blob-tárolóban lévő összes érték letöltésének száraz futtatásához használja a következő kódot:
 ```cmd
 python LogDownloader.py -a your_app_id -l d:\data --dry_run
 ```
 
-Csak létre, mert a 2018. január 1. a naplók letöltéséhez `overwrite_mode=4`, a következő kóddal:
+Csak a 2018 `overwrite_mode=4`-as január 1. óta létrehozott naplók letöltéséhez használja a következő kódot:
 ```cmd
 python LogDownloader.py -a your_app_id -l d:\data -s 2018-1-1 -o 4
 ```
 
-Hozhat létre egy *gzip* fájlt a letöltött fájlok egyesítését, a következő kóddal:
+Az összes letöltött fájlt egyesítő *gzip* -fájl létrehozásához használja a következő kódot:
 ```cmd
 python LogDownloader.py -a your_app_id -l d:\data -s 2018-1-1 -o 4 --create_gzip
 ```

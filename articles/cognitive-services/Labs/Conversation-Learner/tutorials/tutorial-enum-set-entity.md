@@ -1,7 +1,7 @@
 ---
-title: Mikor érdemes használni az ENUM entitásokat, és ÁLLÍTSA ENTITÁSOKKAL végezhető műveletek a beszélgetés Learner modellel – Azure Cognitive Services |} A Microsoft Docs
+title: Mikor kell használni az ENUMERÁLÁSi entitásokat, és be kell állítani az ENTITÁSok műveleteit egy Conversation Learner modellel – Azure Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg, abban az esetben a beszélgetés Learner modell ENUM entitásokat, és ÁLLÍTSA ENTITÁSOKKAL végezhető műveletek használata.
+description: Ismerje meg, hogy megfelelő-e az ENUMERÁLÁSi entitások használata, valamint az ENTITÁSok műveleteinek Conversation Learner modellel történő beállítása.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,155 +10,156 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nolachar
-ms.openlocfilehash: ed18d30a0c3f5d51cb3a07b8948863cdda16c1ae
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5443b97febd6bf3831690531bceb540181e7676c
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67845963"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706978"
 ---
-# <a name="when-to-use-enum-entities-and-set-entity-actions"></a>Mikor érdemes használni, ENUM entitásokat, és ÁLLÍTSA ENTITÁSOKKAL végezhető műveletek
+# <a name="when-to-use-enum-entities-and-set-entity-actions"></a>Mikor kell használni az ENUMERÁLÁSi entitásokat és beállítani az ENTITÁSok műveleteit
 
-Ez az oktatóanyag elmagyarázza mikor ENUM (enumerálási) entitásokat és SET_ENTITY műveletek használja.
+Ez az oktatóanyag azt ismerteti, hogy mikor kell használni az ENUMERÁLÁSi (enumerálási) entitásokat és a SET_ENTITY műveleteket.
 
 ## <a name="video"></a>Videó
 
-[![Állítsa be az entitás oktatóanyag előzetes verzió](https://aka.ms/cl_Tutorial_v3_SetEntity_Preview)](https://aka.ms/cl_Tutorial_v3_SetEntity)
+[![Entitás-oktatóanyag előzetes verziójának beállítása](https://aka.ms/cl_Tutorial_v3_SetEntity_Preview)](https://aka.ms/cl_Tutorial_v3_SetEntity)
 
 
 
-## <a name="what-is-covered"></a>Témák
+## <a name="what-is-covered"></a>Mit takar
 
-Ebben az oktatóanyagban két új funkciókat vezet be. Egy entitás új típusú nevű ENUM (rövid a enumerálási) és a egy új típusú művelet SET_ENTITY, amely enum értékek egyikét, olvassa el, és a neve is mutatja, ahogy az entitás állítja ezt az értéket. Alább ismertetjük, új funkciókról együtt használja, és ismertetjük őket, és hogyan használhatja az alábbi. Mielőtt a részleteit, fontos tudni, mely a probléma megoldásához ezeket a funkciókat.
+Ez az oktatóanyag két új funkciót fog bevezetni. Egy új, ENUM (short for enumerálás) típusú entitás és egy új, SET_ENTITY nevű művelet, amely hivatkozhat ezen enumerálási értékek egyikére, és ahogy a neve is jelzi, az entitást erre az értékre állítja be. Ahogy az alábbiakban is megismerheti, ezeket az új funkciókat együttesen használják, és elmagyarázjuk, hogy mi és hogyan használhatók. A részletek beszerzése előtt fontos tisztában lennie azzal, hogy milyen problémát jelent ezek a funkciók.
 
 ![enum_entity_type.png](../media/tutorial-enum-set-entity/enum_entity_type.png)
 ![action_set_entity_type.png](../media/tutorial-enum-set-entity/action_set_entity_type.png)
 
 ## <a name="problem"></a>Probléma
 
-Előfordulhatnak olyan esetek témák, ahol a értelmében szavakat a környezettől függ.  Általában a címkével ellátott kulcsot szavakat küszöbértéket, és ki kell olvasni a hangfelismerési szolgáltatás használatával, de ebben az esetben ezek a rendszerek nem lehet címkézett példák segítségével további.
+Vannak olyan esetek a beszélgetésekben, amikor a szavak jelentése a kontextustól függ.  A címkével ellátott kulcsfontosságú szavakat általában a Language Understanding Service használatával lehet megtanulni és kinyerni, de ezekben az esetekben előfordulhat, hogy ezek a rendszerek nem tudnak a címkével ellátott példákat használni.
 
-Tegyük fel, overhear személyek közeli hasznos helyek közötti beszélgetés része, és csak hallott szót "Igen" gombra. Nem tudhatja meg, mi az "Igen" elfogadja a, vagy, mielőtt ismételt megerősíti, mert nem érkezett rá válasz a kérdésre. Előtt feltett kérdés a környezetet igényel, amely lehetővé teszi a választ a jelentése. Hasonlóképpen óta az "Igen" megadásával példákat, mint a nem megtanult számos különböző kérdéseket ilyen gyakori válasz [egyéni betanított](04-introduction-to-entities.md) entitások mert szeretne címkével ellátni minden "Yes" entitás, ismerje meg, majd.
+Képzelje el, hogy a közeli személyek közötti beszélgetés egy részét meghallgatja, és csak az "igen" szót hallja. Nem tudhatja, mi az "igen", és nem is erősíti meg, mert nem hallotta a kérdést. Az előtt feltett kérdés a kontextus, amely a válasz jelentését adja. Hasonlóképpen, mivel az "igen" olyan gyakori válasz, amely sok különböző kérdésre vonatkozik, nem lehet megtanulni, ha olyan példákat ad meg, mint például az [Egyéni képzettséggel](04-introduction-to-entities.md) rendelkező entitások esetében, mivel ez azt is megtudhatja, hogy az összes "igen" címkét adja meg.
 
 ### <a name="example"></a>Példa
 
-Most további tisztázása a következő példában:
+Pontosítsa a következő példát:
 
-A robot: Tetszett Önnek az Azure Cognitive Services?
-Felhasználó: A robot Igen: Az ice cream tetszett Önnek?
+Bot Tetszik az Azure Cognitive Services?
+Felhasználó: Igen bot: Szeret fagylaltot?
 Felhasználó: Igen
 
-Az előző oktatóanyagokban megvizsgáltunk, [egyéni betanított](04-introduction-to-entities.md) entitásokat és a kezdeti gondolat "likesCogServices" nevű entitás létrehozása és az első "Yes" ehhez az entitáshoz, a címke lehet.  Azonban a rendszer akkor is címkét a második "Yes". Kísérel meg "Igen", "likesIceCream" a második címkéjének kijavíthatja, ha azt szeretné majd hozzon létre két azonos bemeneti ütközés "Yes" jelentése különböző dolgok és elakadt a lenne.
+Az előző oktatóanyagokban megvizsgáltuk az [Egyéni](04-introduction-to-entities.md) betanított entitásokat, és az első gondolat, hogy létrehoz egy "likesCogServices" nevű entitást, és az első "igen" címkét adja meg az entitásként.  A System azonban a második "igen" címkét is felcímkézi. Amikor megpróbálta kijavítani a második "igen" címkét a "likesIceCream" értékre, akkor két azonos bemenetből álló "igen" típusú ütközést hozunk létre, ami különböző dolgokat jelent, és beragadhat.
 
-Ezekben az esetekben kell használnia, ENUM entitásokat és SET_ENTITY műveletek van.
+Ezekben az esetekben az ENUMERÁLÁSi entitásokat és a SET_ENTITY műveleteket kell használnia.
 
-## <a name="when-to-use-enums-or-setentity-actions"></a>Mikor érdemes használni, enumerálások és SET_ENTITY műveletek
+## <a name="when-to-use-enums-or-setentity-actions"></a>Mikor használjon ENUMERÁLÁSokat vagy SET_ENTITY műveleteket
 
-Ezek a szabályok az alábbi használatával, hogy mikor ENUM entitásokat és SET_ENTITY műveletek:
+Az alábbi szabályok segítségével tájékozódhat az ENUMERÁLÁSi entitások és a SET_ENTITY műveletek használatáról:
 
-- Észlelési vagy a beállítás entitás nem környezeti változó
-- A lehetséges értékek száma rögzített (Igen, és nem lehet két értéket)
+- Az entitás észlelése vagy beállítása a kontextustól függ
+- A lehetséges értékek száma rögzített (igen, és nem lenne két érték)
 
-Más szóval használja ezeket a Bezárás ért utasításokat, például a megerősítő kérdésekre, amelyek mindig Igen vagy nem értéket.
+Más szóval ezeket minden olyan lezárult kérdéshez használhatja, mint például a megerősítő kérdések, amelyek mindig az igen vagy a nem értéket eredményezik.
 
 > [!NOTE]
-> Jelenleg legfeljebb 5 értéket, enum entitás korlátozása van. Az egyes értékek használja az egyik tárolóhely a jelenleg legfeljebb 64. See [cl-values-and-boundaries](../cl-values-and-boundaries.md)
+> Az enumerálási entitások esetében jelenleg legfeljebb 5 érték van korlátozva. Minden érték az aktuális 64-as korlát egyik tárolóhelyét használja. Lásd: [CL-Values-and-határok](../cl-values-and-boundaries.md)
 
-Példa: A robot: A helyes rendelését?
+Példa: Bot Helyes a megrendelés?
 Felhasználó: Igen
 
-Ha a lehetséges értékek az entitás nyílt, és nem állandó, például egy másik szolgáltatás használata kell [várt entitás](05-expected-entity.md).
+Ha az entitás lehetséges értékei nyitottak és nem rögzítettek, alternatív szolgáltatást kell használni, például a [várt entitást](05-expected-entity.md).
 
-Példa: A robot: hogy hívnak?
-Felhasználó: Matt Bot: Mi a kedvenc színét?
-Felhasználó: Ezüst
+Példa: Bot hogy hívnak?
+Felhasználó: Matt bot: Mi a kedvenc színe?
+Felhasználó: Silver
 
-Ezek a felkérések nyílt minősülnek, mert sikerült megválaszolandó tetszőleges értékekkel.
+Ezek a kérések nyílt végűek, mert tetszőleges értékekkel megválaszolható.
 
-## <a name="what"></a>Mi
+## <a name="what"></a>Mi:
 
-### <a name="enum-entities"></a>ENUM entitások
+### <a name="enum-entities"></a>Entitások ENUMERÁLÁSa
 
-Csakúgy, mint a más szervezetek ENUM entitások jönnek létre. "Programozott" entitásokhoz hasonlóan szavak nem címkét, ezeket az entitásokat. Ehelyett hogy meg kell kód vagy SET_ENTITY műveletek.
+Az ENUMERÁLÁSi entitások ugyanúgy jönnek létre, mint a többi entitás. A "programozott" entitásokhoz hasonlóan a szavakat nem címkézheti az entitások alapján. Ehelyett kódokat vagy SET_ENTITY műveleteket kell beállítania.
 
 ![enum_entity_creation.png](../media/tutorial-enum-set-entity/enum_entity_creation.png)
 
-### <a name="set-entity-actions"></a>Entitásokkal végezhető műveletek beállítása
+### <a name="set-entity-actions"></a>Entitás-műveletek beállítása
 
-Amint már említettük, a "Entitás beállítása" műveletek egy entitás egyszerűen egy ismert enumerálási értéket állítsa be. API visszahívási művelet létrehozásával, és a memória-kezelő segítségével értékre az entitást sikerült érhet el ugyanazokat az eredményeket. Például `memory.Set(entityName, entityValue)`. Ez a kód írása, és ezek a műveletek létrehozása válnak fárasztó és nehéz kezelni – így Beszélgetéstanuló elősegítik ezt a munkát, és automatikusan létrehozni ezeket a műveleteket, használatukról speciális műveleteket. Ezeket az adatokat független műveletek kellene megőrzi a compose ezek nélkül folyamatban összefüggő egyéb műveletek vagy a kóddal a robot lehetővé teszi.
+Ahogy fent említettük, az "entitások beállítása" műveletekhez egyszerűen egy entitást kell beállítani egy ismert enumerálási értékre. Ugyanezeket az eredményeket úgy érheti el, ha létrehoz egy API-visszahívási műveletet, és a Memory Manager használatával beállítja az entitást egy értékre. Például `memory.Set(entityName, entityValue)`. A kód írásához és a műveletek létrehozásához unalmas és nehezen kezelhető lesz, ezért Conversation Learner speciális műveletekkel könnyíti meg ezt a munkát, és automatikusan hozza létre ezeket a műveleteket a használatuk során. Ezek a független műveletek megőrzik ezeket a képességeket anélkül, hogy a robotban más műveletekkel vagy kóddal párosítva lenne.
 
-- Entitás kapcsolatos műveletek csak ha hivatkozó enum entitás értékét, ezért létre kell hoznia egy enum entitás először hozza létre.
-- Entitás kapcsolatos műveletek is "nem-await", mivel azok nem látható kimenet rendelkezik, és szükség szerint a felhasználó számára látható a "wait" művelet nyomon kell követni.
-- Entitás kapcsolatos műveletek nem módosíthatók, ami azt jelenti, létrehozás után nem szerkeszthetők.
+- Az entitások beállítása művelet csak akkor hozható létre, ha egy enumerálási entitás értékére hivatkozik, így először létre kell hoznia egy enumerálási entitást.
+- Az entitások beállítása "nem várt", mivel nem látható kimenettel rendelkeznek, és egy "WAIT" művelettel kell követni, amelyet a felhasználó láthat.
+- Az entitások beállítása nem módosítható, mert a létrehozás után nem szerkesztheti őket.
 
 ![action_set_entity_creation.png](../media/tutorial-enum-set-entity/action_set_entity_creation.png)
 
 ### <a name="automatic-action-generation"></a>Automatikus művelet létrehozása
 
-Ha enum entitás már létezik a modellben, Beszélgetéstanuló helyőrző a lehetséges értékek mindegyike esetén végrehajtandó műveletek létrehozása, és elérhetővé tétele a betanítás során válassza. Kiválasztáskor a művelet automatikusan létrehozott az Ön számára.
+Ha egy enumerálási entitás létezik a modellben, Conversation Learner helyőrző műveleteket hoz létre az egyes lehetséges értékekhez, és elérhetővé teszi azokat a képzés során való kiválasztáshoz. A kiválasztás után a rendszer automatikusan létrehozza a műveletet.
 
-Például, ha hozok létre enum entitás az értékek az "Igen" és "No":
+Ha például egy "yes" és "No" értékkel rendelkező enumerálási entitást hoz létre:
 
 ![enum_entity_order_confirmation.png](../media/tutorial-enum-set-entity/enum_entity_order_confirmation.png)
 
-Explicit módon létrehozása az új enum műveletek nélkül is a betanítás során elérhető két új műveletet lenne láthatja:
+Még az új enumeráláshoz tartozó műveletek explicit létrehozása nélkül is megjelenhet két új, a képzés során elérhető művelet:
 
 ![action_set_entity_sample.png](../media/tutorial-enum-set-entity/action_set_entity_sample.png)
 
 
-## <a name="create-a-bot-using-these-new-features"></a>Hozzon létre egy új funkciók használatával Bot
+## <a name="create-a-bot-using-these-new-features"></a>Robot létrehozása ezekkel az új funkciókkal
 
 ### <a name="requirements"></a>Követelmények
 
-Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
+Ehhez az oktatóanyaghoz az általános oktatóanyag robotjának futtatására van szükség
 
     npm run tutorial-general
 
-Gyors food rendezése szimulálása robotprogramok hozunk létre. Méretek ital és fries (kis és közepes vagy nagy) diszkrét értékek fog rendelkezni, és a megerősítő kérdés az Igen / nem válaszokat. Mindkét ezeket az entitásokat felel meg a fenti két szabályt, hogy a környezet-függő válaszokat és a rögzített értékeit.
+Létre fogunk hozni egy robotot a gyors élelmiszer-rendezés szimulálása érdekében. Az italok és a krumpli mérete (kicsi/közepes/nagy) és a megerősítő kérdések igen/nem választ tartalmaznak. Mindkét entitás megfelel a környezettől függő válaszok és a rögzített értékek közötti két szabálynak.
 
 ### <a name="create-the-model"></a>A modell létrehozása
 
-1. A webes felhasználói felületen kattintson a "Importálása"
-2. Válassza az "Az oktatóanyag-számbavételi-Set-entitás" nevű oktatóanyag
+1. A webes felületen kattintson az "Importálás" elemre.
+2. Válassza ki a "tutorial-Enum-set-Entity" nevű oktatóanyagot
 
-Ez a modell kezelése lap jelenik meg.
-Figyelje meg, hogy a modell már néhány enum entitásokat tartalmaz, és állítsa be az entitásokkal végezhető műveletek.
+Ekkor megnyílik a modell-felügyeleti oldal.
+Figyelje meg, hogy a modell már tartalmaz néhány enumerálási entitást, és beállította az entitások műveleteit.
 
 ### <a name="create-the-first-dialog"></a>Az első párbeszédpanel létrehozása
 
-1. A bal oldali navigációs panelen kattintson a "Train-párbeszédpanelekhez", majd kattintson a "Train párbeszédpanel" gombra.
-2. A felhasználó típusaként a "Hi, szeretném, ha sorrend egy koksz és fries meg".
-3. Kattintson a "Score műveletek" gombra
+1. A bal oldali navigációs panelen kattintson a "betanítási párbeszédpanelek" elemre, majd kattintson az "új vonat" gombra.
+2. A felhasználó begépeli a "Hi, szeretném megrendelni a kokszot és a krumplit".
+3. Kattintson a "pontszám műveletek" gombra
 
-   > A felhasználó az ital méretei nem megadott vagy fries, ezért ellenőriznünk kell a kérje meg őket.
+   > A felhasználó nem adott meg méretet az italhoz vagy a krumplihoz, ezért fel kell kérni őket.
 
-4. A válasz művelet kiválasztása: "Milyen méretű ital szeretné használni?"
-5. A felhasználó írja be a "nagy"
-6. Kattintson a "Score műveletek" gombra
-7. Válassza ki a következő műveletet: SET_ENTITY – "drinkSize: LARGE"
-8. A válasz művelet kiválasztása: "Milyen méretű fries szeretné?"
-9. A típus használata, mint "Um, győződjön meg azok közepes.
-10. Kattintson a "Score műveletek" gombra
-11. Válassza ki a következő műveletet: SET_ENTITY – "friesSize: KÖZEPES"
-12. A válasz művelet kiválasztása: "Szeretné bármely fűszerek?"
-13. A használat típusa az "Igen"
-14. Kattintson a "Score műveletek" gombra
-15. Válassza ki a következő műveletet: SET_ENTITY – "condimentsConfirmation: IGEN LEHETŐSÉGET
-16. A válasz művelet kiválasztása: "Rendben, van egy olyan NAGYMÉRETŰ, amelyet és közepes méretű fries sorrendje. Az, hogy helyes-e?"
-17. A használat típusa az "Igen"
-18. Kattintson a "Score műveletek" gombra
-19. Válassza ki a következő műveletet: SET_ENTITY – "orderConfirmation: IGEN LEHETŐSÉGET
-20. A válasz művelet kiválasztása: "Rendben, az order number 58 is. Várjon, van ott."
-21. Kattintson a "Mentés" gombra kattintva zárja be a párbeszédpanelt
+4. Válassza ki a választ tartalmazó műveletet: "Milyen méretű italt szeretne?"
+5. A felhasználó típusaként a "nagy"
+6. Kattintson a "pontszám műveletek" gombra
+7. Válassza ki a műveletet SET_ENTITY-"drinkSize: NAGY
+8. Válassza ki a választ tartalmazó műveletet: "Milyen méretű krumplit szeretne?"
+9. Használja az "UM" kifejezést, és tegye meg ezeket a médiumokat.
+10. Kattintson a "pontszám műveletek" gombra
+11. Válassza ki a műveletet SET_ENTITY-"friesSize: KÖZEPES
+12. Válassza ki a választ tartalmazó műveletet: "Szeretné, ha bármilyen fűszer?"
+13. A használat típusaként az "igen"
+14. Kattintson a "pontszám műveletek" gombra
+15. Válassza ki a műveletet SET_ENTITY-"condimentsConfirmation: IGEN
+16. Válassza ki a választ tartalmazó műveletet: "Ok, megrendelésem egy nagy italra és közepes krumplira. Ez helyes? "
+17. A használat típusaként az "igen"
+18. Kattintson a "pontszám műveletek" gombra
+19. Válassza ki a műveletet SET_ENTITY-"orderConfirmation: IGEN
+20. Válassza ki a választ tartalmazó műveletet: "Ok, a megrendelés száma 58. Kis türelmet. "
+21. A párbeszédpanel bezárásához kattintson a Mentés gombra.
 
-Most hozta létre az első párbeszédpanel ENUM entitásokat és SET_ENTITY műveletek használatával. A felhasználó részleges kapcsolatos információk megadásával vagy más típusú kérdések Bezárás véget ért a kísérletezés számos további kombinációit is felvehető.
+Most létrehozta az első párbeszédpanelt az ENUMERÁLÁSi entitások és a SET_ENTITY műveletek használatával. A felhasználó több kombinációját is megadhatja részleges információkkal, vagy más típusú, lezárult kérdésekkel kísérletezve.
 
 > [!NOTE]
-> Betanítás során látni fogja helyőrzőket SET_ENTITY műveleteihez például
+> A képzés során megjelenik a SET_ENTITY műveletek helyőrzői, például:
 >
 > ![action_set_entity_training.png](../media/tutorial-enum-set-entity/action_set_entity_training.png)
 >
-> de amikor párbeszédpanelek vagy segítségével telepítve létrehozásához jelentkezzen robotokat felhasználók nem látják ezeket.
+> Ha azonban a naplófájlok létrehozásakor vagy a telepített robotok használatakor a felhasználók nem fogják látni ezeket.
 
 ## <a name="next-steps"></a>További lépések
 

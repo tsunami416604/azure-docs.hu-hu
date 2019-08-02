@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d2f06b054e433c0320019548c56539d102beaad
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 25ac894db42b2b5ee2612e2e3b2906bc2bffcc4c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386498"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717388"
 ---
 # <a name="set-up-security-info-to-use-a-security-key-preview"></a>Biztonsági adatok beállítása biztonsági kulcs használatára (előzetes verzió)
 
@@ -30,26 +30,26 @@ A biztonsági kulcsokat jelszó nélküli bejelentkezési módszerként is haszn
 
 ## <a name="what-is-a-security-key"></a>Mi az a biztonsági kulcs?
 
-Jelenleg a [Fast Identity online (](https://fidoalliance.org/fido2/) FIDO2) jelszóval nem rendelkező hitelesítési módszer használatával támogatjuk a biztonsági kulcsok több kialakítását és szolgáltatóját. Ez a módszer lehetővé teszi a munkahelyi vagy iskolai fiókba való bejelentkezést, hogy hozzáférjen a szervezet felhőalapú erőforrásaihoz és a támogatott böngészőkhöz.
+Jelenleg a [Fast Identity online (](https://fidoalliance.org/fido2/) FIDO2) jelszóval nem rendelkező hitelesítési protokollok használatával támogatjuk a biztonsági kulcsok számos tervét és szolgáltatóját. Ezek a kulcsok lehetővé teszik a munkahelyi vagy iskolai fiókjába való bejelentkezést, hogy egy támogatott eszközön és böngészőben hozzáférjenek a szervezet felhőalapú erőforrásaihoz.
 
 A rendszergazda vagy a szervezete biztonsági kulcsot fog biztosítani, ha a munkahelyi vagy iskolai fiókjához szükséges. Különböző típusú biztonsági kulcsokat használhat, például egy USB-kulcsot, amelyet csatlakoztathat az eszközhöz vagy egy NFC-kulcshoz, amely egy NFC-olvasóra koppint. A gyári dokumentációban talál további információt a biztonsági kulcsról, beleértve a típus típusát is.
 
 > [!Note]
-> Ha nem tud FIDO2 biztonsági kulcsot használni, más jelszó nélküli hitelesítési módszereket is használhat, például a Microsoft Authenticator alkalmazást vagy a Windows Hello-t. További információ a Microsoft Authenticator alkalmazásról: [Mi a Microsoft Authenticator alkalmazás?](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-overview). A Windows Hello szolgáltatással kapcsolatos további információkért lásd: a [Windows Hello áttekintése](https://www.microsoft.com/windows/windows-hello).
+> Ha nem tud FIDO2 biztonsági kulcsot használni, más jelszó nélküli hitelesítési módszereket is használhat, például a Microsoft Authenticator alkalmazást vagy a Windows Hello-t. További információ a Microsoft Authenticator alkalmazásról: [Mi a Microsoft Authenticator alkalmazás?](user-help-auth-app-overview.md). A Windows Hello szolgáltatással kapcsolatos további információkért lásd: a [Windows Hello áttekintése](https://www.microsoft.com/windows/windows-hello).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A biztonsági kulcs regisztrálásának megkezdése előtt ellenőrizze az alábbiakat:
+A biztonsági kulcs regisztrálásának megkezdése előtt az alábbiaknak igaznak kell lenniük:
 
 - A rendszergazda bekapcsolta ezt a funkciót a szervezeten belüli használatra.
 
-- Olyan eszközt használ, amely legalább Windows 10, 1903-es és a Microsoft Edge böngésző használatával fut.
+- Olyan eszközön van, amely a Windows 10 2019-es verzióját futtatja, és egy támogatott böngészőt használ.
 
-- A rendszergazda vagy a szervezete fizikai biztonsági kulcsot kapott. A biztonsági kulcsnak FIDO2 és Microsoft-kompatibilisnek kell lennie. Ha bármilyen kérdése van a biztonsági kulccsal kapcsolatban, és hogy kompatibilis-e, lépjen kapcsolatba a szervezet ügyfélszolgálatával.
+- A rendszergazda vagy a szervezete által jóváhagyott fizikai biztonsági kulccsal rendelkezik. A biztonsági kulcsnak FIDO2 és Microsoft-kompatibilisnek kell lennie. Ha bármilyen kérdése van a biztonsági kulccsal kapcsolatban, és hogy kompatibilis-e, lépjen kapcsolatba a szervezet ügyfélszolgálatával.
 
 ## <a name="register-your-security-key"></a>A biztonsági kulcs regisztrálása
 
-Elő kell készítenie a biztonsági kulcsot a Windows és egy egyedi PIN-kód használatához, mielőtt a kulcs használatával bejelentkezne a munkahelyi vagy iskolai fiókjába.
+Létre kell hoznia a biztonsági kulcsot, és egyedi PIN-kódot kell megadnia ahhoz, hogy a kulcs használatával bejelentkezzen a munkahelyi vagy iskolai fiókjába. Előfordulhat, hogy a fiókjában legfeljebb 10 kulcs van regisztrálva. 
 
 1. Lépjen a **saját profil** lapra https://myprofile.microsoft.com , és jelentkezzen be, ha még nem tette meg.
 
@@ -96,7 +96,7 @@ Elő kell készítenie a biztonsági kulcsot a Windows és egy egyedi PIN-kód h
 
 ## <a name="delete-a-security-key-from-your-security-info"></a>Biztonsági kulcs törlése a biztonsági adatokból
 
-Ha már nem szeretné használni a biztonsági kulcsot, törölheti a kulcsot a biztonsági adataiból. Habár ez leállítja a biztonsági kulcsot a munkahelyi vagy iskolai fiókjával, a biztonsági kulcs továbbra is tárolja az adatokat és a hitelesítő adatokat. Az adatok és a hitelesítő adatok biztonsági kulcsból való törléséhez kövesse a jelen cikk [Microsoft-kompatibilis biztonsági kulcs](#reset-your-security-key) alaphelyzetbe állítása című szakaszának utasításait.
+Ha rossz helyre vagy már nem szeretne biztonsági kulcsot használni, törölheti a kulcsot a biztonsági adataiból. Habár ez leállítja a biztonsági kulcsot a munkahelyi vagy iskolai fiókjával, a biztonsági kulcs továbbra is tárolja az adatokat és a hitelesítő adatokat. Az adatok és a hitelesítő adatok biztonsági kulcsból való törléséhez kövesse a jelen cikk [Microsoft-kompatibilis biztonsági kulcs](#reset-your-security-key) alaphelyzetbe állítása című szakaszának utasításait.
 
 1. A **Törlés** hivatkozásra kattintva távolítsa el a biztonsági kulcsot.
 
@@ -105,7 +105,7 @@ Ha már nem szeretné használni a biztonsági kulcsot, törölheti a kulcsot a 
     A biztonsági kulcsot törli a rendszer, és a továbbiakban nem fogja tudni használni a munkahelyi vagy iskolai fiókjába való bejelentkezéshez.
 
 >[!Important]
->Ha tévedésből törölte a biztonsági kulcsot, újra kell regisztrálnia a jelen cikk a [biztonsági kulcs regisztrálása](#register-your-security-key) című szakaszának útmutatásai alapján.
+>Ha tévedésből töröl egy biztonsági kulcsot, a jelen cikk a [biztonsági kulcs regisztrálása](#register-your-security-key) című szakaszában található utasítások alapján újra regisztrálhatja.
 
 ## <a name="manage-your-security-key-settings-from-windows-settings"></a>A biztonsági kulcs beállításainak kezelése a Windows beállításaiból
 
@@ -138,29 +138,19 @@ Létrehozhat egy új biztonsági kulcsot tartalmazó PIN-kódot a biztonsági ku
 
 1. Nyissa meg a Windows beállításai alkalmazást, válassza a **fiókok**, majd a **bejelentkezési beállítások**, majd a **biztonsági kulcs**elemet, és válassza a **kezelés**lehetőséget.
 
-2. Helyezze be a biztonsági kulcsot az USB-portba, vagy koppintson az NFC-olvasóra a személyazonosságának ellenőrzéséhez. 5
+2. Helyezze be a biztonsági kulcsot az USB-portba, vagy koppintson az NFC-olvasóra a személyazonosságának ellenőrzéséhez.
 3. Válassza a **Hozzáadás** lehetőséget a **biztonsági kulcs PIN** -kódjának területén, írja be és erősítse meg az új biztonsági kulcs PIN-kódját, majd kattintson **az OK gombra**.
 
-    A biztonsági kulcsot a rendszer az új biztonsági kulcs PIN-kódjával frissíti a munkahelyi vagy iskolai fiókjával való használathoz. Ha úgy dönt, hogy ismét módosítja a PIN-kódot, akkor a **módosítás** gombra kattinthat. 6
+     A biztonsági kulcsot a rendszer az új biztonsági kulcs PIN-kódjával frissíti a munkahelyi vagy iskolai fiókjával való használathoz. Ha úgy dönt, hogy ismét módosítja a PIN-kódot, akkor a **módosítás** gombra kattinthat.
 4. A **kezelés** képernyő bezárásához kattintson a **Bezárás** gombra.
 
 ## <a name="additional-security-info-methods"></a>További biztonsági információs módszerek
 
-További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a személyazonosságának ellenőrzéséhez a you're alapján. A lehetőségek a következők:
-
-- **Hitelesítő alkalmazás.** Töltse le és használjon egy hitelesítő alkalmazást a jóváhagyási értesítés vagy a véletlenszerűen generált jóváhagyási kód beszerzéséhez a kétlépéses ellenőrzéshez vagy a jelszó-visszaállításhoz. A Microsoft Authenticator alkalmazás beállításával és használatával kapcsolatos részletes utasításokért lásd: [biztonsági adatok beállítása hitelesítő alkalmazás használatára](security-info-setup-auth-app.md).
-
-- **Mobileszköz szövege.** Adja meg a mobileszköz számát, és szerezzen be egy, a kétlépéses ellenőrzéshez vagy a jelszó-visszaállításhoz használni kívánt kódot. Az identitás szöveges üzenettel (SMS) való ellenőrzésével kapcsolatos részletes utasításokért lásd: [biztonsági információk beállítása szöveges üzenetküldés (SMS) használatára](security-info-setup-text-msg.md).
-
-- **Mobileszköz vagy munkahelyi telefonhívás.** Adja meg a mobileszköz számát, és telefonhívást kap a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. Az identitás telefonszámmal történő ellenőrzésével kapcsolatos részletes útmutatásért lásd: [biztonsági információk beállítása telefonhívások használatához](security-info-setup-phone-number.md).
-
-- **E-mail-cím.** Adja meg a munkahelyi vagy iskolai e-mail-címét, hogy e-mailt kapjon a jelszó alaphelyzetbe állításához. Ez a beállítás kétlépéses ellenőrzés esetén nem érhető el. Az e-mailek beállításával kapcsolatos részletes útmutatásért lásd: [biztonsági adatok beállítása e-mailek használatára](security-info-setup-email.md).
-
-- **Biztonsági kérdések.** Válaszoljon a szervezete rendszergazdája által létrehozott biztonsági kérdésekre. Ez a beállítás csak a jelszó-visszaállításhoz érhető el, és nem a kétlépéses ellenőrzéshez. A biztonsági kérdések beállításával kapcsolatos részletes utasításokért tekintse meg a biztonsági [kérdések beállítása a biztonsági kérdésekre](security-info-setup-questions.md) című cikket.
+Egy biztonsági kulcs regisztrálásához legalább egy további, a biztonsági ellenőrzési módszer regisztrálása szükséges. További információért tekintse meg az [Áttekintés szakaszt](security-info-add-update-methods-overview.md) . 
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a jelszóval nem rendelkező hitelesítési módszerekről: a [Microsoft Azure ad megkezdi a FIDO2 biztonsági kulcsai nyilvános előzetes verziójának használatát,](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) a jelszavakat engedélyező bejelentkezések blogját, vagy a mi az [Microsoft Authenticator alkalmazás](https://docs.microsoft.com/azure/active-directory/user-help8user-help-auth-app-overview) beolvasását? [ Windows Hello –](https://www.microsoft.com/windows/windows-hello) áttekintő cikkek.
+- További információ a jelszóval nem rendelkező hitelesítési módszerekről: a [Microsoft Azure ad megkezdi a FIDO2 biztonsági kulcsai nyilvános előzetes verziójának használatát,](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) a jelszavakat engedélyező bejelentkezések blogját, vagy a mi az [Microsoft Authenticator alkalmazás](user-help-auth-app-overview.md) beolvasását? [ Windows Hello –](https://www.microsoft.com/windows/windows-hello) áttekintő cikkek.
 
 - Részletesebb információ a [Microsoft-kompatibilis biztonsági kulcsokról](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
 

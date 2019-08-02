@@ -1,18 +1,19 @@
 ---
 title: SQL Server munkaterhelések Azure Backup a Azure Backup Server használatával
 description: Bevezetés SQL Server adatbázisok biztonsági mentésére Azure Backup Server használatával
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.author: kasinh
-ms.openlocfilehash: 0aff75e37ec8184b6c23ff00cbf61e5cbe045b5f
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 5e91d63f4479d0677c57342cb1b726e33a45bb86
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465435"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689086"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>SQL Server biztonsági mentése az Azure-ba Azure Backup Server
 Ez a cikk végigvezeti a SQL Server adatbázisok Microsoft Azure Backup Server (MABS) használatával történő biztonsági mentésének konfigurációs lépésein.
@@ -128,7 +129,7 @@ Míg az előző lépések létrehozott egy biztonsági mentési szabályzatot, a
 ## <a name="recover-a-sql-server-database-from-azure"></a>SQL Server-adatbázis helyreállítása az Azure-ból
 A következő lépések szükségesek egy védett entitás (SQL Server adatbázis) Azure-ból történő helyreállításához.
 
-1. Nyissa meg a DPM-kiszolgáló felügyeleti konzolját. Navigáljon a **helyreállítási** munkaterületre, ahol megtekintheti a DPM által biztonsági mentés alatt lévő kiszolgálókat. Tallózással keresse meg a szükséges adatbázist (ebben az esetben a reportserver $ MSDPM2012). Válassza ki  a helyreállítást, amely **online**állapottal ér véget.
+1. Nyissa meg a DPM-kiszolgáló felügyeleti konzolját. Navigáljon a **helyreállítási** munkaterületre, ahol megtekintheti a DPM által biztonsági mentés alatt lévő kiszolgálókat. Tallózással keresse meg a szükséges adatbázist (ebben az esetben a reportserver $ MSDPM2012). Válassza ki a helyreállítást, amely **online**állapottal ér véget.
 
     ![Helyreállítási pont kiválasztása](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
 2. Kattintson a jobb gombbal az adatbázis nevére, és kattintson a **helyreállítás**elemre.

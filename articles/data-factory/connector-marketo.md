@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: d6d6517a85997265021573b2f9d481c81283c216
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37634a76b0c8e08d7a4688a7ba3fd913391cd408
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61400457"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726140"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Marketo
 
@@ -33,7 +33,7 @@ A Marketo szoftveréből származó adatok másolhatja bármely támogatott foga
 Az Azure Data Factory kapcsolat beépített illesztőprogramot tartalmaz, ezért nem kell manuálisan telepítenie az összes illesztőprogram ezzel az összekötővel.
 
 >[!NOTE]
->A Marketo-összekötő a Marketo REST API épül. Vegye figyelembe, hogy rendelkezik-e a Marketo [egyidejű kérelmeinek maximális száma](https://developers.marketo.com/rest-api/) szolgáltatás oldalán. Ha eléri közli, hogy hibákat "hiba történt a REST API-val kísérlet során: Maximális sebesség túllépte a korlátot "100" a "20" másodperc (606) "vagy" hiba történt a REST API-val kísérlet során: Egyidejű hozzáférés korlátozása '10' (615) elérte ", próbálják meg csökkenteni a kérések száma a szolgáltatás egyidejű másolási tevékenység-végrehajtás csökkentése érdekében érdemes lehet.
+>A Marketo-összekötő a Marketo REST API épül. Vegye figyelembe, hogy rendelkezik-e a Marketo [egyidejű kérelmeinek maximális száma](https://developers.marketo.com/rest-api/) szolgáltatás oldalán. Ha a "hiba" hibaüzenet jelenik meg a REST API használatának megkísérlése során: A maximálisan megengedett "100" érték túllépte a "20" másodperces (606) "vagy" hibát a REST API használatának megkísérlése során: A rendszer elérte az egyidejű hozzáférési korlátot (615) ", érdemes lehet csökkenteni az egyidejű másolási tevékenységek futtatását, hogy csökkentse a szolgáltatásra irányuló kérések számát.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -47,7 +47,7 @@ A Marketo-beli társított szolgáltatás a következő tulajdonságok támogato
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **Marketo** | Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **Marketo** | Igen |
 | endpoint | A végpont a Marketo-kiszolgáló. (i.e. 123-ABC-321.mktorest.com)  | Igen |
 | clientId | Az ügyfél a Marketo-szolgáltatás azonosítója.  | Igen |
 | clientSecret | Ügyfélkulcs a Marketo-szolgáltatás. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
@@ -82,7 +82,7 @@ Adatok másolása a Marketo szoftveréből származó, állítsa be a type tulaj
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **MarketoObject** | Igen |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **MarketoObject** | Igen |
 | tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
@@ -92,11 +92,12 @@ Adatok másolása a Marketo szoftveréből származó, állítsa be a type tulaj
     "name": "MarketoDataset",
     "properties": {
         "type": "MarketoObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Marketo linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -111,7 +112,7 @@ Adatok másolása a Marketo, állítsa be a forrás típusaként a másolási te
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **MarketoSource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MarketoSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Activitiy_Types"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**

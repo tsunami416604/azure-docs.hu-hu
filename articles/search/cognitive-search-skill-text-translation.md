@@ -1,6 +1,6 @@
 ---
 title: Szöveg-fordítási kognitív keresési képesség – Azure Search
-description: Kiértékeli a szöveget, és minden egyes rekord esetében visszaadja a megadott nyelvre fordított szöveget egy Azure Search alkoholtartalom-növelési folyamatban.
+description: Kiértékeli a szöveget, és minden rekord esetében visszaadja a megadott nyelvre fordított szöveget egy Azure Search alkoholtartalom-növelési folyamatban.
 services: search
 manager: briansmi
 author: careyjmac
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: cmacdo
 ms.custom: seodec2018
-ms.openlocfilehash: 0268a16ecc07d578e1e3dc2b15ad9208509c2a8c
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c267d6b2b5a8606c8caaba15c9316a8dbcb989b9
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68351454"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698826"
 ---
-#   <a name="text-translation-cognitive-skill-preview"></a>Szöveg-fordítási kognitív képesség (előzetes verzió)
+#   <a name="text-translation-cognitive-skill"></a>Szöveg fordítása – kognitív képességek
 
-A **szöveges fordítási** készség kiértékeli a szöveget, és minden rekord esetében a megadott nyelvre lefordított szöveget adja vissza. Ez a képesség a Cognitive Services elérhető [Translator Text API v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) -s verzióját használja.  Noha jelenleg a legújabb Azure Search általánosan elérhető API-verzióban érhető el, a rendszer előzetes verzióként tekinti meg, és az általánosan elérhetőként való bejelentésig kell kezelni.
+A **szöveges fordítási** készség kiértékeli a szöveget, és minden egyes rekord esetében a megadott nyelvre lefordított szöveget adja vissza. Ez a képesség a Cognitive Services elérhető [Translator Text API v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) -s verzióját használja.
 
 Ez a funkció akkor hasznos, ha úgy látja, hogy a dokumentumok nem mindegyike egy nyelven, ebben az esetben a szöveget egyetlen nyelvre is kihasználhatja, mielőtt lefordítja a keresést.  Hasznos lehet a honosítási használati esetekben is, ahol előfordulhat, hogy ugyanaz a szöveg több nyelven is elérhető.
 

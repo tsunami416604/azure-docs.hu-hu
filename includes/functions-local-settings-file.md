@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: e319356d555f26354ea29dc7be068bf6168abb17
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fef5cd38461fec67790fb67faf8e466d46b247fc
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67455149"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68669670"
 ---
 ## <a name="local-settings-file"></a>Local settings file (Helyi beállításfájl)
 
-A fájl local.settings.json tárolja az alkalmazásbeállításokat, a kapcsolati karakterláncok és a helyi fejlesztői eszközök által használt beállítások. A local.settings.json fájlban beállításokat csak helyi futtatás során használatosak. A helyi beállításokat fájlt az alábbi struktúrával rendelkezik:
+A local. Settings. JSON fájl az alkalmazás beállításait, a kapcsolatok karakterláncait és a helyi Fejlesztőeszközök által használt beállításokat tárolja. A local. Settings. JSON fájlban lévő beállításokat csak akkor használja a rendszer, ha helyileg futtat projekteket. A helyi beállítások fájlja a következő struktúrával rendelkezik:
 
 ```json
 {
@@ -35,16 +35,16 @@ A fájl local.settings.json tárolja az alkalmazásbeállításokat, a kapcsolat
 }
 ```
 
-Helyi futtatás során az alábbi beállításokat támogatja:
+Ezek a beállítások akkor támogatottak, ha helyileg futtatja a projekteket:
 
 | Beállítás      | Leírás                            |
 | ------------ | -------------------------------------- |
-| **`IsEncrypted`** | Ha a beállítása `true`, minden értéket a helyi gép kulcsa segítségével titkosítja. A használt `func settings` parancsokat. Alapértelmezett érték `false`. |
-| **`Values`** | Alkalmazásbeállítások és a helyi futtatás során használt kapcsolati karakterláncok tömbje. A (string, string) kulcs-érték párok felelnek meg az alkalmazásbeállításokat a függvényalkalmazáshoz az Azure-ban, mint például [ `AzureWebJobsStorage` ]. Számos eseményindítók és kötések rendelkezik olyan tulajdonságot, amely hivatkozik a kapcsolati karakterlánc Alkalmazásbeállítás, például `Connection` számára a [Blob storage-eseményindító](../articles/azure-functions/functions-bindings-storage-blob.md#trigger---configuration). Az ilyen tulajdonságok szüksége lesz a megadott alkalmazás-beállítás a `Values` tömb. <br/>[`AzureWebJobsStorage`] az eseményindítók nem HTTP beállítás kötelező alkalmazást. <br/>Verzió 2.x verzióját a Functions futtatókörnyezete van szükség a [`FUNCTIONS_WORKER_RUNTIME`] beállítást, amely a projekt Core Tools által generált. <br/> Ha rendelkezik a [az Azure storage emulator](../articles/storage/common/storage-use-emulator.md) telepítve helyben, beállíthatja [ `AzureWebJobsStorage` ] való `UseDevelopmentStorage=true` és Core Tools használja az emulátorban. Ez akkor hasznos, a fejlesztés során, de a telepítés előtt egy tényleges storage-kapcsolattal kell tesztelni.<br/> Értékek a karakterláncokat, és nem a JSON-objektumok vagy tömbök kell lennie. Beállítás neve nem tartalmazhat kettőspontot (`:`) vagy dupla aláhúzás (`__`); ezek a futtatókörnyezet számára van fenntartva.  |
-| **`Host`** | Ebben a szakaszban beállítások testre szabhatja a Functions gazdafolyamat helyi futtatás során. Ezek a elkülönül az host.json beállításokat, amelyeket is érvényesek, ha az Azure-ban futtatja. |
-| **`LocalHttpPort`** | Beállítja az alapértelmezett portot használja, amikor a függvények helyi állomás (`func host start` és `func run`). A `--port` parancssori kapcsoló elsőbbséget élvez ezt az értéket. |
-| **`CORS`** | Meghatározza az engedélyezett eredetek [eltérő eredetű erőforrások megosztása (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Források szóközök nélküli szövegláncként egy vesszővel tagolt lista formájában vannak megadva. A helyettesítő karaktert tartalmazó értéket (\*) támogatott, amely lehetővé teszi a kérelmek bármilyen forrásból. |
-| **`CORSCredentials`** |  Ha true értékre állítsa `withCredentials` kérelmeket. |
-| **`ConnectionStrings`** | Ne használja a gyűjtemény a kapcsolati karakterláncokat a függvénykötésnek használják. Ez a gyűjtemény csak használják, amely általában a kapcsolati karakterláncok keretrendszereket a `ConnectionStrings` szakaszában egy konfigurációs fájlba, például [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Kapcsolati karakterláncok ezt az objektumot a rendszer felveszi a környezetbe, a szolgáltató típusát [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Ebben a gyűjteményben lévő elemek az Azure-ban nincs közzétéve a többi alkalmazás beállításokkal. Ezekre az értékekre, explicit módon kell hozzáadnia a `Connection strings` gyűjteménye, a függvényalkalmazás-beállításokat. Létrehozásakor egy [ `SqlConnection` ](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) a függvénykódban, tárolja a kapcsolati karakterlánc értékét a **Alkalmazásbeállítások** a portálon a kapcsolatokkal. |
+| **`IsEncrypted`** | Ha ez a beállítás a `true`értékre van beállítva, az összes érték helyi számítógép kulccsal lesz titkosítva. `func settings` Parancsokkal használható. Az `false`alapértelmezett érték:. |
+| **`Values`** | Az Alkalmazásbeállítások és a kapcsolódási karakterláncok tömbje, amely akkor használatos, amikor egy projekt helyileg fut. Ezek a kulcs-érték (String-String) párok megfelelnek az Azure-beli Function alkalmazás beállításainak, például [`AzureWebJobsStorage`]:. Számos eseményindító és kötés olyan tulajdonsággal rendelkezik, amely egy kapcsolati karakterlánc-alkalmazásra `Connection` vonatkozó beállításra hivatkozik, például a [blob Storage eseményindítóhoz](../articles/azure-functions/functions-bindings-storage-blob.md#trigger---configuration). Ezen tulajdonságok esetében a `Values` tömbben definiált Alkalmazásbeállítás szükséges. <br/>[`AzureWebJobsStorage`]a kötelező Alkalmazásbeállítások a HTTP-n kívüli eseményindítók esetében. <br/>A functions Runtime 2. x verziójának a [`FUNCTIONS_WORKER_RUNTIME`] beállítást kell megadnia, amelyet a projekthez a Core Tools generál. <br/> Ha az [Azure Storage-emulátor](../articles/storage/common/storage-use-emulator.md) helyileg van telepítve [`AzureWebJobsStorage`] `UseDevelopmentStorage=true`, és a értékre van állítva, a Core Tools az emulátort használja. Az emulátor a fejlesztés során hasznos, de a telepítés előtt tesztelni kell egy tényleges tárolási kapcsolatban.<br/> Az értékeknek karakterláncnak és nem JSON-objektumoknak vagy tömböknek kell lenniük. A nevek beállítása nem tartalmazhat kettőspontot`:`() vagy dupla aláhúzást`__`(). Ezeket a karaktereket a futtatókörnyezet foglalta le.  |
+| **`Host`** | Az ebben a szakaszban található beállítások testre szabják a functions gazdagép folyamatát, amikor helyileg futtat projekteket. Ezek a beállítások eltérhetnek a gazdagép. JSON beállításaitól, amelyek akkor is érvényesek, amikor projekteket futtatnak az Azure-ban. |
+| **`LocalHttpPort`** | Beállítja a helyi functions-gazdagép (`func host start` és `func run`) futtatásakor használt alapértelmezett portot. A `--port` parancssori kapcsoló elsőbbséget élvez ezzel a beállítással szemben. |
+| **`CORS`** | Meghatározza a [több eredetű erőforrás-megosztás (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)számára engedélyezett származási erőforrásokat. Az eredetek vesszővel tagolt listaként vannak megadva, szóközök nélkül. A helyettesítő karakteres\*érték () támogatott, amely bármilyen forrásból engedélyezi a kérelmeket. |
+| **`CORSCredentials`** |  Ha a értékre van `withCredentials` állítva, a `true`kérelmeket engedélyezi. |
+| **`ConnectionStrings`** | Egy gyűjtemény. Ne használja ezt a gyűjteményt a függvények kötései által használt kapcsolati sztringekhez. Ezt a gyűjteményt kizárólag olyan keretrendszerek használják, amelyek általában a konfigurációs fájl ( `ConnectionStrings` például [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)) szakaszának a kapcsolatok karakterláncait kapják meg. Az objektumban található kapcsolódási karakterláncok a [System. SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). szolgáltatói típussal lesznek hozzáadva a környezethez. Az ebben a gyűjteményben lévő elemek nem jelennek meg az Azure-ban más Alkalmazásbeállítások használatával. Ezeket az értékeket explicit módon fel kell vennie `Connection strings` a Function app-beállítások gyűjteményéből. Ha a függvény kódjában [`SqlConnection`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) hoz létre egy kódot, a kapcsolati sztring értékét a portálon az **Alkalmazásbeállítások** között lévő többi kapcsolattal együtt kell tárolnia. |
 
 [`AzureWebJobsStorage`]: ../articles/azure-functions/functions-app-settings.md#azurewebjobsstorage

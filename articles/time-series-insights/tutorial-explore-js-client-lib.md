@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 2c1013829a7e6e94712e22ae235a47490c8c5eaa
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3e56792673c33ac641ce23213f2b3662b889ec2a
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677665"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725667"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Oktatóanyag: Az Azure Time Series Insights JavaScript ügyfélkódtár felderítése
 
@@ -40,14 +40,14 @@ Ha még nem rendelkezik ilyennel, regisztráljon egy [ingyenes Azure](https://az
 
 * Ez az oktatóanyag a böngésző **fejlesztői eszközök** funkcióját használja. A modern webböngészők ([Microsoft Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/)és mások) általában hozzáférést biztosítanak a webfelügyelői **nézethez** a billentyűzeten található F12 gyorsbillentyűn keresztül. A nézet elérésének másik módja, ha a jobb gombbal egy weblapra kattint, majd kiválasztja az **elem vizsgálata elemet**.
 
-## <a name="video"></a>Videó
+## <a name="review-video"></a>Videó áttekintése
 
 Ebben a videóban bemutatjuk a nyílt forráskódú Time Series Insights JavaScript SDK-t:
 <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/X8sSm7Pl9aA]
 
-## <a name="time-series-insights-sample-application"></a>A Time Series Insights mintaalkalmazás
+## <a name="sample-application"></a>Mintaalkalmazás
 
 Ebben az oktatóanyagban egy ingyenes, üzemeltetett Time Series Insights minta alkalmazást használunk az alkalmazás mögötti forráskód megismeréséhez és a Time Series Insights JavaScript-ügyféloldali kódtár megismeréséhez. A minta alkalmazás használatával megtudhatja, hogyan használhatja a Time Series Insightst a JavaScriptben, és hogyan jelenítheti meg az adatdiagramokat és diagramokat.
 
@@ -100,7 +100,7 @@ Először tekintse meg a megjelenített weblap [HTML-és JavaScript-forráskódj
 
    [![Szövegtörzs parancsfájlja](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png#lightbox)
 
-## <a name="time-series-insights-javascript-client-library-concepts"></a>A JavaScript-ügyfél függvénytárával kapcsolatos fogalmak Time Series Insights
+## <a name="javascript-client-library"></a>JavaScript ügyféloldali kódtár
 
 Az Time Series Insights ügyféloldali kódtár (*tsiclient. js*) a következő két fontos JavaScript-funkció absztrakcióját biztosítja:
 
@@ -231,7 +231,7 @@ A három diagram a következőképpen jelenik meg a rendereléskor:
 
 [![Több diagramtípus ugyanazokból az adatokból](media/tutorial-explore-js-client-lib/tcs-multiple-chart-types-from-the-same-data.png)](media/tutorial-explore-js-client-lib/tcs-multiple-chart-types-from-the-same-data.png#lightbox)
 
-## <a name="advanced-features"></a>Speciális funkciók
+## <a name="learn-about-advanced-features"></a>További tudnivalók a speciális funkciókról
 
 Az Time Series Insights ügyféloldali kódtár számos további funkcióval rendelkezik, amelyekkel kreatív módon implementálhatja az adatvizualizációkat.
 

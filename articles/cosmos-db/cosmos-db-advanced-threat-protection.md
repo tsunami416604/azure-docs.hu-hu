@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: v-mohabe
 ms.custom: seodec18
-ms.openlocfilehash: 02281a1cad9c7e6f9680441a699fa5d34558b890
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 0504da45cbbd60629954d3e3ca3230e05761c1d6
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501493"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640370"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Komplex veszélyforrások elleni védelem Azure Cosmos DB
 
@@ -23,7 +23,7 @@ A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáli�
 > [!NOTE]
 >
 > * A Azure Cosmos DB komplex veszélyforrások elleni védelme jelenleg csak az SQL API esetében érhető el.
-> * A Azure Cosmos DB komplex veszélyforrások elleni védelme jelenleg az Azure governmentben és a szuverén Felhőbeli régiókban érhető el.
+> * A Azure Cosmos DB komplex veszélyforrások elleni védelme jelenleg nem érhető el az Azure governmentben és a szuverén Felhőbeli régiókban.
 
 A biztonsági riasztások teljes körű vizsgálatához javasolt a [diagnosztikai naplózás](https://docs.microsoft.com/azure/cosmos-db/logging)engedélyezése Azure Cosmos DBban, amely maga az adatbázison naplózza a műveleteket, beleértve a szifiliszi műveleteket az összes dokumentumon, tárolón és adatbázison.
 
