@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 35d494702673d59290a0073c55135138f533b8bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2464332727b0ef1e616c04a975df5ac475a7b19
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956692"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610285"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Az Azure Disk Encryption – hibaelhárítási útmutató
 
@@ -34,9 +34,9 @@ Ez a hiba akkor fordulhat elő, során, és az operációs rendszer lemeztitkos�
 - Adatmeghajtók rekurzív módon a /mnt/ könyvtár vagy egymással (például /mnt/data1, /mnt/data2, /data3 + /data3/data4) csatlakoztatva.
 - Más az Azure Disk Encryption [Előfeltételek](azure-security-disk-encryption-prerequisites.md) Linux rendszeren nem teljesülnek.
 
-## <a name="bkmk_Ubuntu14"></a> Frissítés az alapértelmezett kernel Ubuntu 14.04 LTS
+## <a name="bkmk_Ubuntu14"></a>Az Ubuntu 14,04 LTS alapértelmezett kernelének frissítése
 
-Az Ubuntu 14.04 LTS rendszerképet tartalmaz egy alapértelmezett kernel 4.4-es verzióját. A kernel verziója rendelkezik egy ismert probléma, amelyben / memória ablak lelövés megfelelően megszakítja a dd parancs az operációs rendszer titkosítási folyamat során. Ezt a hibát kijavították a a legújabb Azure Linux-kernel lehetőségeire. Ez a hiba, a képet, a titkosítás engedélyezése előtt elkerülése érdekében frissítse a [Azure lehetőségeire kernel 4.15](https://packages.ubuntu.com/trusty/linux-azure) vagy később a következő parancsokkal:
+Az Ubuntu 14,04 LTS-rendszerkép a 4,4-es alapértelmezett kernel-verzióval rendelkezik. Ennek a kernel-verziónak van egy ismert hibája, amely miatt a memóriából való gyilkos helytelenül leállítja a dd parancsot az operációs rendszer titkosítási folyamata során. Ezt a hibát a legújabb Azure tuned Linux kernelben javítottuk. Ha el szeretné kerülni ezt a hibát, mielőtt engedélyezi a titkosítást a rendszerképben, frissítsen az Azure-ban [hangolt kernel 4,15](https://packages.ubuntu.com/trusty/linux-azure) -es vagy újabb verziójára az alábbi parancsok használatával:
 
 ```
 sudo apt-get update
@@ -44,27 +44,27 @@ sudo apt-get install linux-azure
 sudo reboot
 ```
 
-Miután a virtuális gép újraindult be az új kernelbe, az új kernelverzióját erősíthető használatával:
+Miután a virtuális gép újra lett indítva az új kernelbe, az új kernel verziója a következő használatával erősíthető meg:
 
 ```
 uname -a
 ```
 
-## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>Az Azure-beli virtuálisgép-ügynök és a bővítmény-verzió frissítése
+## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>Az Azure-beli virtuálisgép-ügynök és-bővítmények verziójának frissítése
 
-Az Azure Disk Encryption műveletei meghiúsulhatnak a virtuálisgép-lemezképek az Azure virtuálisgép-ügynök nem támogatott verzióját használja. Linux-rendszerképeket az ügynökök verzióinak rendszernél korábbi 2.2.38 titkosítás engedélyezése előtt kell frissíteni. További információkért lásd: [egy virtuális gépen az Azure Linux-ügynök frissítése](../virtual-machines/extensions/update-linux-agent.md) és [minimális verzió támogatása az Azure-beli virtuálisgép-ügynökök](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
+A Azure Disk Encryption műveletek a virtuálisgép-rendszerképeken az Azure Virtual Machine Agent nem támogatott verzióit használva sikertelenek lehetnek. A titkosítás engedélyezése előtt frissíteni kell a 2.2.38-nál korábbi ügynök-verziókkal rendelkező Linux-lemezképeket. További információkért lásd: [Az Azure Linux-ügynök frissítése](../virtual-machines/extensions/update-linux-agent.md) virtuális gépen, valamint a [virtuálisgép-ügynökök minimális verziójának támogatása az Azure-ban](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 
-A Microsoft.Azure.Security.AzureDiskEncryption vagy Microsoft.Azure.Security.AzureDiskEncryptionForLinux Vendég ügynök bővítmény megfelelő verziója is szükség. Bővítmény-verziók kezeli és automatikusan frissítheti a platform az Azure virtuálisgép-ügynök előfeltételek teljesülnek, és a virtuálisgép-ügynök támogatott verzióját használja.
+A Microsoft. Azure. Security. AzureDiskEncryption vagy a Microsoft. Azure. Security. AzureDiskEncryptionForLinux megfelelő verziója is szükséges. A bővítmények verzióit a platform automatikusan karbantartja és frissíti, amikor az Azure-beli virtuális gépek ügynökének előfeltételei teljesülnek, és a rendszer a virtuálisgép-ügynök támogatott verzióját használja.
 
-A Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux bővítmény már elavult, és már nem támogatott.  
+A Microsoft. OSTCExtensions. AzureDiskEncryptionForLinux kiterjesztés elavult, és már nem támogatott.  
 
-## <a name="unable-to-encrypt-linux-disks"></a>Nem sikerült titkosítani a Linux-lemezek
+## <a name="unable-to-encrypt-linux-disks"></a>A Linux-lemezek nem titkosíthatók
 
 Bizonyos esetekben a lemeztitkosítás úgy tűnik, hogy "Az operációs rendszer lemezén titkosítás lépései" megakad Linux- és SSH le van tiltva. A titkosítási folyamat között a tőzsdei katalóguslemezt és 16 közötti 3 órát vehet igénybe. Ha több terabájt méretű adatlemezek hozzá vannak adva, a folyamat eltarthat nap.
 
 A Linux operációsrendszer-lemez titkosítási feladatütemezési ideiglenesen leválasztja az operációs rendszer meghajtójának. Majd hajtja végre blokkonként-titkosítás a teljes operációsrendszer-lemezről, mielőtt titkosított állapotában Újracsatlakoztat azt. Ellentétben az Azure Disk Encryption a Windows Linux lemeztitkosítás nem engedélyezi a virtuális gép egyidejű használatra amíg folyamatban van a titkosítás. A virtuális gép a teljesítményjellemzők teheti a titkosítás befejezéséhez szükséges idő jelentős eltérés. Ezek a jellemzők a lemez, és hogy a tárfiók standard vagy prémium (SSD) tárolási méretét is.
 
-A titkosítás állapotának lekérdezéséhez a **Feladatnézetben** által visszaadott mező a [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) parancsot. Az operációs rendszer meghajtójának titkosított, miközben a virtuális gép karbantartási állapotba kerül, és letiltja az SSH a folyamatban lévő folyamat bármely szolgáltatáskimaradás elkerülése érdekében. A **EncryptionInProgress** üzenet jelentésekben a legtöbb az idő, amíg folyamatban van a titkosítás. Néhány óra múlva, egy **VMRestartPending** üzenetben kéri, hogy indítsa újra a virtuális Gépet. Példa:
+A titkosítás állapotának megtekintéséhez lekérdezheti a [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) parancs által visszaadott **feladatnézetben** mezőt. Az operációs rendszer meghajtójának titkosított, miközben a virtuális gép karbantartási állapotba kerül, és letiltja az SSH a folyamatban lévő folyamat bármely szolgáltatáskimaradás elkerülése érdekében. A **EncryptionInProgress** üzenet jelentésekben a legtöbb az idő, amíg folyamatban van a titkosítás. Néhány óra múlva, egy **VMRestartPending** üzenetben kéri, hogy indítsa újra a virtuális Gépet. Példa:
 
 
 ```azurepowershell
@@ -97,10 +97,10 @@ Hálózati biztonsági csoport beállításai alkalmazott továbbra is engedély
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Az Azure Key Vault tűzfal mögött
 
-Ha titkosítás alatt álló engedélyezve van a [Azure AD hitelesítő adatait](azure-security-disk-encryption-prerequisites-aad.md), a cél virtuális Gépen kell engedélyezi a csatlakozást az Azure Active Directory-végpontokhoz és a Key Vault-végpont. Azure Active Directory-hitelesítés aktuális végpontokat karbantartása az 56. és 59 a [Office 365 URL-címei és IP-címtartományok](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) dokumentációját. A Key Vault utasítások itt találhatók a dokumentációban való [hozzáférés az Azure Key Vault tűzfal mögötti](../key-vault/key-vault-access-behind-firewall.md).
+Ha engedélyezve van a titkosítás az [Azure ad hitelesítő adataival](azure-security-disk-encryption-prerequisites-aad.md), a CÉLKÉNT megadott virtuális gépnek Azure Active Directory végpontokhoz és Key Vault végpontokhoz is engedélyeznie kell a kapcsolatot. Az aktuális Azure Active Directory hitelesítési végpontok az [Office 365 URL-címeinek és IP-címtartományok](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) dokumentációjának 56-es és 59-es szakaszában maradnak. Key Vault útmutatást a [tűzfal mögötti Azure Key Vault elérésének](../key-vault/key-vault-access-behind-firewall.md)dokumentációjában talál.
 
-### <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás 
-A virtuális gép eléréséhez képesnek kell lennie a [Azure Instance Metadata szolgáltatás](../virtual-machines/windows/instance-metadata-service.md) végpontot, amely jól ismert nem átirányítható IP-címet használ (`169.254.169.254`), amelyek elérhetők csak a virtuális gépen.  Amely erre a címre (például egy X-továbbított – a fejléc hozzáadása) helyi HTTP-forgalom alter proxykiszolgáló-konfigurációk nem támogatottak.
+### <a name="azure-instance-metadata-service"></a>Azure-Instance Metadata Service 
+A virtuális gépnek képesnek kell lennie elérni az [Azure-példány metaadatainak szolgáltatási](../virtual-machines/windows/instance-metadata-service.md) végpontját, amely egy jól ismert, nem irányítható IP`169.254.169.254`-címet () használ, amely csak a virtuális gépről érhető el.  A helyi HTTP-forgalmat az erre a címmé megváltoztató proxy-konfigurációk nem támogatottak.
 
 ### <a name="linux-package-management-behind-a-firewall"></a>Linux-csomagkezelés tűzfal mögött
 
@@ -148,15 +148,15 @@ If the expected encryption state does not match what is being reported in the po
 
 ## <a name="troubleshooting-encryption-status"></a>Titkosítási állapot hibaelhárítása 
 
-A portál pedig megjelenítheti egy lemezt titkosított, volt a virtuális gépen nem titkosított után is.  Ez akkor fordulhat elő, amikor az alacsony szintű parancsok használják a lemezt a virtuális gépen, a magasabb szintű Azure Disk Encryption-kezelési parancsok használata helyett közvetlenül feloldására.  A magasabb szintű parancsai nem csak a lemezt a virtuális gépen feloldására, de a VM-en kívül is frissítse fontos platform a blokkszintű titkosítás és a virtuális Géphez társított bővítmény beállításait.  Ha ezek nem tartják összhangban, a platform nem lesz képes titkosítási állapotát, vagy a virtuális gép megfelelően üzembe.   
+A portál titkosított lemezként jelenhet meg, miután a virtuális gépen titkosítva lett.  Ez akkor fordulhat elő, ha az alacsony szintű parancsok használatával a rendszer a virtuális gépről közvetlenül titkosítja a lemezt a magasabb szintű Azure Disk Encryption felügyeleti parancsok használata helyett.  A magasabb szintű parancsok nem csak a virtuális gépről titkosítják a lemezt, hanem a virtuális GÉPEN kívül is frissítik a virtuális géphez tartozó fontos platform szintű titkosítási beállításokat és bővítmény-beállításokat.  Ha ezeket nem tartja összhangban, a platform nem fogja tudni bejelenteni a titkosítási állapotot, vagy megfelelően kiépíteni a virtuális gépet.   
 
-A PowerShell-lel az Azure Disk Encryption letiltásához használja [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) követ [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension). Remove-AzVMDiskEncryptionExtension futtatása előtt le van tiltva, a titkosítás sikertelen lesz.
+A Azure Disk Encryption PowerShell-lel való letiltásához használja a [disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) parancsot, majd a Remove [-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension). A Remove-AzVMDiskEncryptionExtension futtatása a titkosítás letiltása előtt sikertelen lesz.
 
-Az Azure Disk Encryption CLI-vel letiltásához használja [letiltása az vm encryption](/cli/azure/vm/encryption). 
+A CLI-vel való Azure Disk Encryption letiltásához használja [az az VM encryption disable](/cli/azure/vm/encryption)parancsot. 
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben a dokumentumban megtudhatta, további információt az Azure Disk Encryption és a problémák elhárítása néhány gyakori problémát. Ezt a szolgáltatást vagy képességeivel kapcsolatos további információkért lásd a következő cikkeket:
 
 - [Az Azure Security Centerben lemeztitkosítás alkalmazása](../security-center/security-center-apply-disk-encryption.md)
-- [Azure-beli adat-titkosítás inaktív állapotban](azure-security-encryption-atrest.md)
+- [Azure-beli adat-titkosítás inaktív állapotban](fundamentals/encryption-atrest.md)

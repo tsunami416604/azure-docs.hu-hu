@@ -1,18 +1,19 @@
 ---
 title: Az Microsoft Azure Backup-kiszolgáló újdonságai
 description: A Microsoft Azure Backup-kiszolgáló továbbfejlesztett biztonsági mentési lehetőségeket biztosít a virtuális gépek, fájlok és mappák, munkaterhelések és egyebek védelméhez. Megtudhatja, hogyan telepítheti vagy frissíthet Azure Backup Server v3-ra.
-author: rayne-wiselman
+ms.reviewer: adigan
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: adigan
-ms.openlocfilehash: 131f5ae31649bd1973a3048b8b52a451f27522b4
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: b7fc0e9819e3cbdd886271a8580af76923b6f819
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465005"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688541"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Az Microsoft Azure Backup-kiszolgáló újdonságai
 

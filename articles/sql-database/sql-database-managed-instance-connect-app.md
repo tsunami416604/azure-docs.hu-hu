@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Database felügyelt példányain-alkalmazás csatlakoztatása |} A Microsoft Docs
-description: Ez a cikk leírja, hogyan alkalmazását az Azure SQL Database felügyelt példányába való kapcsolódáshoz.
+title: Azure SQL Database felügyelt példányok összekapcsolására szolgáló alkalmazás | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan csatlakoztatható az alkalmazás Azure SQL Database felügyelt példányhoz.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,105 +10,104 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: 5f4a1962f90d54001f315827c1243e929344e3d7
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 5a09b8e589b0d4ae9daa3bbd32c38f4946d16d0e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274014"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567620"
 ---
-# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Az Azure SQL Database felügyelt példánya a alkalmazás csatlakoztatása
+# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Csatlakoztassa az alkalmazását az Azure SQL Database felügyelt példányához
 
-A mai több lehetőség közül választhat annak eldöntése, hogyan és hol üzemelteti az alkalmazást során.
+Ma már több lehetőség áll rendelkezésére az alkalmazás üzemeltetésének és helyének meghatározásakor.
 
-Választhatja a felhőben alkalmazás üzemeltetése az Azure App Service vagy az Azure virtuális hálózat (VNet) integrált lehetőség hasonlóan az Azure App Service-környezet, a virtuális gép, virtuálisgép-méretezési némelyike használva. Sikerült a hibrid felhőalapú megközelítést, és tartsa a helyszíni alkalmazásokhoz.
+Dönthet úgy is, hogy a felhőben futtatja az alkalmazást Azure App Service vagy egy Azure Virtual Network (VNet) integrált lehetőséggel, például a Azure App Service Environment, a virtuális géppel, a virtuálisgép-méretezési csoporttal. Hibrid felhőalapú megközelítést is használhat, és a helyszínen is megőrizheti alkalmazásait.
 
-Bármilyen tetszőleges végzett, csatlakozhat, a felügyelt példány.  
+Bármit is megadhat, csatlakozhat egy felügyelt példányhoz.  
 
 ![magas rendelkezésre állás](./media/sql-database-managed-instance/application-deployment-topologies.png)
 
-## <a name="connect-an-application-inside-the-same-vnet"></a>Az azonos virtuális hálózaton belüli alkalmazások csatlakoztatása
+## <a name="connect-an-application-inside-the-same-vnet"></a>Alkalmazás összekötése ugyanazon a VNet belül
 
-Ebben a forgatókönyvben a legegyszerűbb. A virtuális hálózaton belüli virtuális gépek csatlakozhatnak egymáshoz közvetlenül akkor is, ha külön alhálózatokon találhatók. Ez azt jelenti, hogy az összes alkalmazás egy alkalmazás az Azure-környezet vagy a virtuális gépen belül csatlakoznia kell, hogy megfelelően beállítjuk a kapcsolati karakterláncot.  
+Ez a forgatókönyv a legegyszerűbb. A VNet belüli virtuális gépek közvetlenül is csatlakozhatnak egymáshoz, még akkor is, ha különböző alhálózatokon belül vannak. Ez azt jelenti, hogy mindössze annyit kell tennie, hogy az alkalmazást egy Azure-alkalmazási környezetben vagy virtuális gépen kell csatlakoztatnia, hogy megfelelően állítsa be a kapcsolati karakterláncot.  
 
-## <a name="connect-an-application-inside-a-different-vnet"></a>Egy másik virtuális hálózaton belül alkalmazások csatlakoztatása
+## <a name="connect-an-application-inside-a-different-vnet"></a>Alkalmazás összekötése egy másik VNet belül
 
-Ebben a forgatókönyvben nem egy kicsit összetettebb, mert felügyelt példány magánhálózati IP-címmel rendelkezik a saját virtuális hálózatában. Szeretne csatlakozni, egy alkalmazást kell tudnia érnie a virtuális hálózathoz, ahol a felügyelt példány üzemel. Tehát először szüksége az alkalmazás és a felügyelt példány virtuális hálózatok közötti kapcsolat. A virtuális hálózatok nem kell lennie ahhoz, hogy ez a forgatókönyv működjön ugyanabban az előfizetésben.
+Ez a forgatókönyv egy kicsit összetettebb, mert a felügyelt példány saját IP-címmel rendelkezik saját VNet. A kapcsolódáshoz az alkalmazásnak hozzá kell férnie ahhoz a VNet, ahol a felügyelt példány telepítve van. Ezért először kapcsolatot kell létesítenie az alkalmazás és a felügyelt példány VNet között. A virtuális hálózatok nem kell ugyanabban az előfizetésben lennie ahhoz, hogy ez a forgatókönyv működjön.
 
-A virtuális hálózatok csatlakoztatása két lehetőség van:
+A virtuális hálózatok csatlakoztatásának két lehetősége van:
 
-- [Az Azure virtuális hálózatok közötti társviszony](../virtual-network/virtual-network-peering-overview.md)
-- A virtuális hálózatok közötti VPN-átjáró ([az Azure portal](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [Azure CLI-vel](../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
+- [Azure Virtual Network-társítás](../virtual-network/virtual-network-peering-overview.md)
+- VNet – VNet VPN Gateway ([Azure Portal](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [POWERSHELL](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [Azure CLI](../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
 
-A társviszony-létesítési beállítást azért előnyösebb egy társviszony-létesítés használja a Microsoft gerinchálózatán tehát kapcsolat szempontjából, a társított virtuális hálózat és az azonos virtuális hálózaton található virtuális gépek között nincs észrevehető különbség a késés. Virtuális hálózatok közötti társviszony korlátozva a hálózatok ugyanabban a régióban.  
+A társítási lehetőség az előnyben részesített megoldás, mivel a Microsoft gerinc hálózatot használja, a kapcsolati perspektívából azonban nincs észrevehető különbség a virtuális gépek között a VNet és ugyanabban a VNet. A VNet-társítás az azonos régióban található hálózatokra korlátozódik.  
 
 > [!IMPORTANT]
-> A hálózatok ugyanabban a régióban, mert a virtuális hálózatok közötti társviszony-létesítési forgatókönyv a felügyelt példány korlátozódik [korlátokat a globális virtuális hálózati társviszony](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Lásd még a vonatkozó részében a [Azure virtuális hálózatok gyakran ismételt kérdések](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) további részleteivel. 
+> A felügyelt példányok VNet-társítási forgatókönyve az azonos régióban található hálózatokra korlátozódik, a [globális Virtual Network](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)-társítás korlátai miatt. További részletekért tekintse meg az [Azure Virtual Networks – gyakori kérdések](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) című cikket is. 
 
-## <a name="connect-an-on-premises-application"></a>A helyi alkalmazások csatlakoztatása
+## <a name="connect-an-on-premises-application"></a>Helyszíni alkalmazás összekapcsolása
 
-Felügyelt példány csak egy magánhálózati IP-címen keresztül érhető el. Elérni a helyszíni, kell az alkalmazás és a felügyelt példány virtuális hálózatok között helyek közötti kapcsolat.
+A felügyelt példány csak magánhálózati IP-címen keresztül érhető el. A helyszíni környezetből való hozzáféréshez helyek közötti kapcsolatot kell létrehoznia az alkalmazás és a felügyelt példány VNet között.
 
-Két lehetőség van a helyszíni csatlakozás Azure vnethez:
+Két lehetőség áll rendelkezésre a helyszíni és az Azure VNet közötti kapcsolódásra:
 
-- Site-to-Site VPN-kapcsolat ([az Azure portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI-vel](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
-- [Az ExpressRoute](../expressroute/expressroute-introduction.md) kapcsolat  
+- Helyek közötti VPN-kapcsolat ([Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [POWERSHELL](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
+- [ExpressRoute](../expressroute/expressroute-introduction.md) -kapcsolatok  
 
-Sikeresen létrehozta az Azure-kapcsolat helyszíni, és nem létesít kapcsolatot egy felügyelt példányra, ellenőrzi, hogy a tűzfal tartalmazza-e kimenő kapcsolat megnyitása az 1433-as port SQL, valamint a 11000-11999 átirányítás portok tartománya.
+Ha a helyszíni és az Azure közötti kapcsolat sikeresen létrejött, és nem tud kapcsolatot létesíteni a felügyelt példánnyal, ellenőrizze, hogy a tűzfal rendelkezik-e nyitott kimenő kapcsolattal a 11000-11999 1433-es SQL-porton, valamint az átirányításhoz használt portok tartományán.
 
-## <a name="connect-an-application-on-the-developers-box"></a>A fejlesztők Box alkalmazások csatlakoztatása
+## <a name="connect-an-application-on-the-developers-box"></a>Alkalmazás összekapcsolása a Developers box-ban
 
-A felügyelt példánynak keresztül érhetők el csak magánhálózati IP-cím így a fejlesztői boxból eléréséhez, először létre kell a fejlesztői box és a felügyelt példány virtuális hálózatok közötti kapcsolat létrehozása. Ehhez a virtuális hálózathoz az Azure natív tanúsítványalapú hitelesítésének használatával pont – hely kapcsolat konfigurálása. További információkért lásd: [csatlakozni egy Azure SQL Database felügyelt példánya a helyi számítógépről egy pont – hely kapcsolat konfigurálása](sql-database-managed-instance-configure-p2s.md).
+A felügyelt példányok csak magánhálózati IP-címeken keresztül érhetők el, így a fejlesztői Box-ból való hozzáféréshez először kapcsolatot kell létesítenie a fejlesztői és a felügyelt példány VNet. Ehhez konfiguráljon egy pont – hely típusú kapcsolatokat egy VNet natív Azure tanúsítványalapú hitelesítés használatával. További információ: [pont – hely kapcsolat konfigurálása Azure SQL Database felügyelt példányhoz a helyszíni számítógépről](sql-database-managed-instance-configure-p2s.md)való kapcsolódáshoz.
 
-## <a name="connect-from-on-premises-with-vnet-peering"></a>Csatlakozás a másodlagos adatbázisoké pedig a virtuális hálózatok közötti társviszony
+## <a name="connect-from-on-premises-with-vnet-peering"></a>Helyszíni kapcsolat VNet-társítással
 
-Ügyfelek által megvalósított egy másik helyzet lehet, ahol a VPN-átjáró telepítve van a különálló virtuális hálózat és a egy üzemeltetési felügyelt példányhoz az előfizetés. Ezután a két virtuális hálózat társviszonyba. A mintául szolgáló alábbi Architektúradiagram bemutatja, hogyan ez alkalmazásokon és szolgáltatásokon futtatható.
+Az ügyfelek által megvalósított egy másik forgatókönyv, amelyben a VPN-átjáró egy különálló virtuális hálózatban van telepítve, és egy, a felügyelt példányok egyikének előfizetése. Ezt követően a két virtuális hálózat összevonásra kerül. A következő minta architektúra-diagram bemutatja, hogyan valósítható meg ez a megoldás.
 
 ![Társviszony létesítése virtuális hálózatok között](./media/sql-database-managed-instance-connect-app/vnet-peering.png)
 
-Miután az alapszintű infrastruktúra készen áll, módosítania néhány beállítás a VPN-átjáró láthatják, az IP-címek a virtuális hálózat, amelyen a felügyelt példányhoz. Ehhez a következő módosításokat jellemző alatt a **társviszony-létesítés beállítások**.
+Miután beállította az alapszintű infrastruktúrát, módosítania kell néhány beállítást, hogy a VPN Gateway láthassa a felügyelt példányt futtató virtuális hálózat IP-címeit. Ehhez végezze el a következő nagyon specifikus módosításokat a társítási **Beállítások**alatt.
 
-1. A virtuális hálózat, amelyen a VPN-átjáró, lépjen a **Társviszonyok**, majd a felügyelt példánynak társviszonyban álló virtuális hálózatok közötti kapcsolat, és kattintson **Átjárótranzit engedélyezése**.
-2. A virtuális hálózat, amelyen a felügyelt példány, lépjen a **Társviszonyok**, majd a VPN-átjáróhoz társviszonyban álló virtuális hálózatok közötti kapcsolat, és kattintson **távoli átjárók használata**.
+1. A VPN-átjárót futtató VNet válassza a társítások **, majd**a felügyelt példányhoz tartozó VNet-kapcsolat lehetőséget, majd kattintson az **átjáró-átvitel engedélyezése**lehetőségre.
+2. A felügyelt példányt futtató VNet válassza a társítások, **majd**a VPN Gateway társ VNet-kapcsolatot, majd kattintson a **távoli átjárók használata**elemre.
 
-## <a name="connect-an-azure-app-service-hosted-application"></a>Azure App Service szolgáltatásban üzemeltetett alkalmazások csatlakoztatása
+## <a name="connect-an-azure-app-service-hosted-application"></a>Azure App Service üzemeltetett alkalmazás összekötése
 
-Így az Azure App Service-ben való eléréséhez először kell az alkalmazás és a felügyelt példány virtuális hálózatok közötti kapcsolat létrehozása csak egy privát IP-címen keresztül elérhető lesz a felügyelt példánynak. Lásd: [az alkalmazás integrálása az Azure-beli virtuális hálózathoz](../app-service/web-sites-integrate-with-vnet.md).  
+A felügyelt példányok csak a magánhálózati IP-címeken keresztül érhetők el, így ahhoz, hogy hozzáférhessenek a Azure App Service az alkalmazás és a felügyelt példány VNet közötti kapcsolatot kell létrehoznia. Lásd: [az alkalmazás integrálása Azure](../app-service/web-sites-integrate-with-vnet.md)-Virtual Networkokkal.  
 
-Című témakörben [hibaelhárítási virtuális hálózatok és az alkalmazások](../app-service/web-sites-integrate-with-vnet.md#troubleshooting). Ha a kapcsolat nem jön, próbálja meg [a hálózati konfiguráció szinkronizálása](sql-database-managed-instance-sync-network-configuration.md).
+Hibaelhárítást a [virtuális hálózatok és az alkalmazások hibaelhárítása](../app-service/web-sites-integrate-with-vnet.md#troubleshooting)című témakörben talál. Ha nem létesíthető kapcsolat, próbálja meg [szinkronizálni a hálózati konfigurációt](sql-database-managed-instance-sync-network-configuration.md).
 
-Csatlakozás az Azure App Service-ben egy felügyelt példányra egy különleges esetben akkor, ha integrált felügyelt példány virtuális hálózat társviszonyba Azure App Service-hálózathoz. Adott esetben szükséges, állítsa be a következő konfigurációt:
+A Azure App Service felügyelt példányhoz való csatlakoztatásának különleges esete az, amikor integrált Azure App Service a felügyelt példányok VNet a hálózatba. Ebben az esetben a következő konfigurációt kell beállítani:
 
-- Felügyelt példány virtuális hálózati átjáró nem lehet  
-- Felügyelt példány virtuális hálózathoz kell rendelkeznie a távoli átjárók használata a beállításhalmaz
-- Társviszonyban lévő virtuális hálózatok közötti engedélyezési átjáró átviteli beállítás kell rendelkeznie.
+- A felügyelt példány VNet nem rendelkezhet átjáróval  
+- A felügyelt példány VNet rendelkeznie kell a távoli átjárók használata beállítással
+- A társ-VNet engedélyezni kell az átjáró átviteli beállítását
 
-Ebben a forgatókönyvben a következő ábra mutatja be:
+Ezt a forgatókönyvet a következő ábra szemlélteti:
 
-![integrált alkalmazás társviszony-létesítés](./media/sql-database-managed-instance/integrated-app-peering.png)
+![integrált alkalmazás-társítás](./media/sql-database-managed-instance/integrated-app-peering.png)
 
 >[!NOTE]
->A VNet-integráció funkciót és a egy ExpressRoute-átjáróval rendelkező virtuális hálózat nem integrálható egy alkalmazást. Akkor is, ha az ExpressRoute-átjárót együttműködés üzemmódban lett konfigurálva a virtuális hálózat integrációja nem működik. Ha szeretne hozzáférni az erőforrásokhoz az ExpressRoute-kapcsolaton keresztül, majd használhatja az App Service Environment, amely a virtuális hálózatban fut.
+>A VNet integrációs funkciója nem integrálja az alkalmazást olyan VNet, amely ExpressRoute-átjáróval rendelkezik. Még akkor is, ha az ExpressRoute-átjáró párhuzamosan van konfigurálva, a VNet-integráció nem működik. Ha egy ExpressRoute-kapcsolaton keresztül kell hozzáférni az erőforrásokhoz, használhat egy App Service Environment, amely a VNet fut.
 
-## <a name="troubleshooting-connectivity-issues"></a>Csatlakozási problémák elhárítása
+## <a name="troubleshooting-connectivity-issues"></a>Kapcsolódási problémák elhárítása
 
-Csatlakozási problémák elhárítása, tekintse át a következőket:
+A kapcsolódási problémák elhárításához tekintse át a következőket:
 
-- Ha Ön nem lehet csatlakozni egy Azure virtuális gépen belül a ugyanazon a Vneten, de különböző alhálózati felügyelt példányra, ellenőrizze, hogy van-e állítva a Virtuálisgép-alhálózatot, amelyek esetleg blokkolják a hozzáférést a hálózati biztonsági csoport. Továbbá vegye figyelembe, hogy meg kell nyitnia az 1433-as port SQL, valamint a portokat a kimenő kapcsolatot 11000-11999 tartományban, mivel azok szükségesek, például az Azure határain belül létesít átirányítás használatával csatlakozik.
-- Győződjön meg arról, hogy a BGP-Útvonalpropagálás értékre van állítva **engedélyezve** a Vnethez társított útvonaltáblához.
-- Ha a P2S típusú VPN-kapcsolattal, ellenőrizze a konfigurációt, ha láthatja, hogy az Azure Portalon **bejövő/kimenő forgalom** számokat. Nem nulla értékű számok azt jelzi, hogy az Azure és-tárolókról a helyszíni irányítaná a forgalmat.
+- Ha nem tud csatlakozni a felügyelt példányhoz egy olyan Azure-beli virtuális gépről, amely ugyanabban a VNet, de eltérő alhálózatban található, ellenőrizze, hogy van-e olyan hálózati biztonsági csoport beállítva a virtuálisgép-alhálózaton, amely blokkolja a hozzáférést. Azt is vegye figyelembe, hogy a 1433-es SQL-porton és a 11000-11999-es tartományon belüli portokon is meg kell nyitnia a kimenő kapcsolatot, mivel ezek az Azure-határon belül történő átirányítás esetén szükségesek.
+- Győződjön meg arról, hogy a BGP-propagálás **engedélyezve** van a VNet társított útválasztási táblázathoz.
+- Ha P2S VPN-t használ, ellenőrizze a konfigurációt a Azure Portalban, hogy megjelenjen-e a **bejövő/kimenő** számok. A nullától eltérő számok azt jelzik, hogy az Azure átirányítja a forgalmat a helyszíni vagy a szolgáltatásba.
 
-   ![bejövő/kimenő forgalom számok](./media/sql-database-managed-instance-connect-app/ingress-egress-numbers.png)
+   ![bejövő/kimenő számok](./media/sql-database-managed-instance-connect-app/ingress-egress-numbers.png)
 
-- Ellenőrizze, hogy az ügyfél (futtató gép a VPN-ügyfél) rendelkezik-e az összes virtuális hálózatok eléréséhez szükséges útvonal bejegyzések. Az útvonalak tárolt `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt`.
+- Győződjön meg arról, hogy az ügyfélszámítógép (amely a VPN-ügyfelet futtatja) útválasztási bejegyzéseket tartalmaz az összes elérni kívánt virtuális hálózatok. Az útvonalak a-ben `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt`tárolódnak.
 
-   ![Route.txt](./media/sql-database-managed-instance-connect-app/route-txt.png)
+   ![Route. txt](./media/sql-database-managed-instance-connect-app/route-txt.png)
 
-   Ahogy az a képen, nincsenek két bejegyzést az egyes virtuális hálózatok és a egy harmadik bejegyzést a VPN-végpontnak konfigurált a portálon.
+   Ahogy az ebben a képen is látható, két bejegyzés van az érintett VNet, valamint a portálon konfigurált VPN-végpont harmadik bejegyzése.
 
-   Ellenőrizze az útvonalakat a másik módja, az alábbi parancs segítségével. A kimenet mutatja az útvonalakat a különböző alhálózatokhoz:
+   Az útvonalak vizsgálatának másik módja a következő parancson keresztül történik. A kimenet a különböző alhálózatokhoz tartozó útvonalakat mutatja:
 
    ```cmd
    C:\ >route print -4
@@ -132,24 +131,24 @@ Csatlakozási problémák elhárítása, tekintse át a következőket:
    None
    ```
 
-- Ha a virtuális hálózatok közötti társviszony használja, győződjön meg arról, hogy követte a következő útmutatót: beállítás [Átjárótranzit engedélyezése és a távoli átjárók használata](#connect-from-on-premises-with-vnet-peering).
+- VNet-társítás használata esetén győződjön meg arról, hogy követte az [átjáró engedélyezése és a távoli átjárók használata](#connect-from-on-premises-with-vnet-peering)beállításra vonatkozó utasításokat.
 
-## <a name="required-versions-of-drivers-and-tools"></a>Az illesztőprogramok és eszközök szükséges verzióinak
+## <a name="required-versions-of-drivers-and-tools"></a>Az illesztőprogramok és az eszközök szükséges verziói
 
-Az alábbi minimális verziók az eszközökkel és illesztőprogramokkal használata javasolt, ha azt szeretné, felügyelt példányhoz való csatlakozáshoz:
+Az eszközök és illesztőprogramok következő minimális verziói ajánlottak, ha a felügyelt példányhoz szeretne csatlakozni:
 
-| Illesztőprogram vagy eszköz | Version |
+| Illesztőprogram/eszköz | Version |
 | --- | --- |
-|.NET-keretrendszer | 4.6.1 (vagy a .NET Core) |
+|.NET-keretrendszer | 4.6.1 (vagy .NET Core) |
 |ODBC-illesztő| v17 |
 |PHP-illesztőprogram| 5.2.0 |
-|JDBC driver| 6.4.0 |
-|NODE.js-illesztőprogram| 2.1.1 |
-|OLEDB illesztőprogram| 18.0.2.0 |
-|SSMS| 18.0 vagy [magasabb](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
+|JDBC-illesztőprogram| 6.4.0 |
+|Node. js-illesztőprogram| 2.1.1 |
+|OLEDB-illesztőprogram| 18.0.2.0 |
+|SSMS| 18,0 vagy [újabb](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 |[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) vagy újabb |
 
 ## <a name="next-steps"></a>További lépések
 
 - A felügyelt példányokkal kapcsolatos információért lásd: [Mi az a felügyelt példány?](sql-database-managed-instance.md)
-- Bemutatja, hogyan hozzon létre egy új felügyelt példány oktatóanyagért lásd: [létrehoz egy felügyelt példányt](sql-database-managed-instance-get-started.md).
+- Az új felügyelt példányok létrehozásával kapcsolatos oktatóanyagért lásd: [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md).

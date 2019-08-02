@@ -1,18 +1,18 @@
 ---
 title: Azure-beli virtuális gépek biztonsági mentése
 description: Ismerje meg az Azure virtuális gépek biztonsági mentését, és jegyezze fel az ajánlott eljárásokat.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.author: raynew
-ms.openlocfilehash: bf6aa07319b8029744a5c8898a4104d330fbb1d1
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 7a470674fa9ccdde2b33bb33bfb52bead1822895
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465220"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639745"
 ---
 # <a name="about-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentése
 
@@ -111,8 +111,8 @@ Ezek a gyakori forgatókönyvek a teljes biztonsági mentés idejére hatással 
 Ha virtuális gépek biztonsági mentését konfigurálja, javasoljuk, hogy kövesse a következő eljárásokat:
 
 - Módosíthatja a házirendben beállított alapértelmezett ütemezett időpontokat. Ha például a házirendben az alapértelmezett idő 12:00, az időzítést több percen belül növelni kell, hogy az erőforrások optimálisan használhatók legyenek.
-- A Premium Storage szolgáltatást használó virtuális gépek biztonsági mentéséhez javasolt a Azure Backup legújabb verziójának futtatása ([azonnali visszaállítás](backup-instant-restore-capability.md)). Ha nem a legújabb verziót futtatja, a Backup a teljes tárolóhely 50 százalékát foglalja le. A Backup szolgáltatásnak erre a helyre kell másolnia a pillanatképet ugyanarra a Storage-fiókba, és át kell vinnie a tárolóba.
 - Ha egyetlen tárolóból állítja vissza a virtuális gépeket, javasoljuk, hogy használjon különböző [általános célú v2 Storage](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) -fiókokat annak biztosítására, hogy a cél Storage-fiók ne kapjon szabályozást. Az egyes virtuális gépeknek például eltérő Storage-fiókkal kell rendelkezniük. Ha például 10 virtuális gép van visszaállítva, használjon 10 különböző Storage-fiókot.
+- A Premium Storage szolgáltatást használó virtuális gépek biztonsági mentését azonnali visszaállítással ajánlott kiosztani a teljes lefoglalt tárterület *50%-os* szabad területét, amely **csak** az első biztonsági mentéshez szükséges. Az első biztonsági mentés befejezése után az 50%-os szabad terület nem követelmény a biztonsági mentéshez.
 - Az általános célú v1 tárolási réteg (snapshot) visszaállítása percek alatt elvégezhető, mivel a pillanatkép ugyanabban a Storage-fiókban található. Az általános célú v2 tárolási rétegből (tárolóból) való visszaállítás akár órákig is elvégezhető. Azokban az esetekben, amikor az adat elérhető az általános célú v1-tárolóban, javasoljuk, hogy az [azonnali visszaállítás](backup-instant-restore-capability.md) funkciót használja a gyorsabb visszaállításhoz. (Ha az adatok visszaállítását egy tárolóból kell visszaállítani, a rendszer több időt vesz igénybe.)
 - A lemezek tárolási fiókra vonatkozó korlátozása attól függ, hogy milyen mértékben fér hozzá a lemezek a szolgáltatásként szolgáló infrastruktúra-(IaaS-) virtuális gépen futó alkalmazások számára. Általános gyakorlatként, ha 5 – 10 lemez vagy több van jelen egyetlen Storage-fiókban, akkor a terhelést úgy egyenlítheti ki, hogy egyes lemezeket külön Storage-fiókokra helyez át.
 
