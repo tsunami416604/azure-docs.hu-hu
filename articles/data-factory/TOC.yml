@@ -584,6 +584,12 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Csomagvégrehajtás hibaelhárítása az Azure-SSIS integrációs modulban
           href: ssis-integration-runtime-ssis-activity-faq.md
+- name: Forgatókönyvek
+  items:
+    - name: Data Lake- és EDW-adatmigrálás
+      items:
+        - name: Miért érdemes az Azure Data Factoryt választani?
+          href: data-migration-guidance-overview.md
 - name: Referencia
   items:
     - name: .NET

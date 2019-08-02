@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Hozzon létre egy Azure Time Series Insights egyoldalas webalkalmazást |} A Microsoft Docs'
-description: Ismerje meg, hogyan hozhat létre egy egyoldalas webalkalmazást, amely lekérdezi, és ez a beállítás le adatokat Azure Time Series Insights-környezetből.
+title: 'Oktatóanyag: Azure Time Series Insights egyoldalas Webalkalmazás létrehozása | Microsoft Docs'
+description: Megtudhatja, hogyan hozhat létre egy egyoldalas webalkalmazást, amely Azure Time Series Insights-környezetből származó adatok lekérdezését és megjelenítését teszi lehetővé.
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
@@ -8,86 +8,86 @@ ms.date: 06/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 8ee4cd30d5742896df96ccfd714d85ebbab194f9
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4d9af918c222107cfca5863309efb391b8e6d2e0
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595700"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720869"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Oktatóanyag: Azure Time Series Insights egyoldalas webalkalmazás létrehozása
 
-Ez az oktatóanyag végigvezeti a felhasználót az Azure Time Series Insights-adatok eléréséhez a saját egyoldalas webes alkalmazás (SPA) létrehozásának folyamatán.
+Ez az oktatóanyag végigvezeti Önt a saját egyoldalas webalkalmazások (SPA) létrehozásának folyamatán, amely a Azure Time Series Insights adataihoz való hozzáférést teszi elérhetővé.
 
 Ezen oktatóanyag segítségével elsajátíthatja a következőket:
 
 > [!div class="checklist"]
 > * Az alkalmazás kialakítása
-> * Az alkalmazás regisztrálása az Azure Active Directoryval (Azure AD)
+> * Az alkalmazás regisztrálása a Azure Active Directory (Azure AD) használatával
 > * A webalkalmazás létrehozása, közzététele és tesztelése
 
 > [!NOTE]
-> * Ebben az oktatóanyagban a forráskódot a megadott [GitHub](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
-> * A Time Series Insights [ügyfélalkalmazás minta](https://insights.timeseries.azure.com/clientsample) üzemel, a jelen oktatóanyagban használt az elkészült alkalmazás megjelenítéséhez.
+> * Az oktatóanyag forráskódját a [githubon](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)kell megadnia.
+> * Az Time Series Insights [ügyfél-minta alkalmazás](https://insights.timeseries.azure.com/clientsample) az oktatóanyagban használt befejezett alkalmazás megjelenítésére szolgál.
+
+Ha még nem rendelkezik ilyennel, regisztráljon egy [ingyenes Azure](https://azure.microsoft.com/free/) -előfizetésre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Regisztráljon egy [ingyenes Azure-előfizetés](https://azure.microsoft.com/free/) Ha még nem rendelkezik.
+* A Visual Studio ingyenes példánya. A kezdéshez töltse le a [2017-es vagy a 2019-es közösségi verziót](https://www.visualstudio.com/downloads/) .
 
-* A Visual Studio ingyenes példánya. Töltse le a [2017-es vagy 2019 közösségi verzió](https://www.visualstudio.com/downloads/) a kezdéshez.
+* A Visual studióhoz készült IIS Express, web Deploy és Azure Cloud Services Core Tools összetevő. Adja hozzá az összetevőket a Visual Studio telepítésének módosításával.
 
-* Az IIS Express, Web Deploy és az Azure Cloud Services eszközök alapösszetevők a Visual Studióhoz. Az összetevők hozzáadása a Visual Studio telepítésének módosításával.
+## <a name="understand-application-design"></a>Az alkalmazás kialakításának megismerése
 
-## <a name="application-design"></a>Az alkalmazás kialakítása
+A Time Series Insights minta SPA az oktatóanyagban használt terv és kód alapja. A kód a Time Series Insights JavaScript ügyféloldali kódtárat használja. A Time Series Insights ügyféloldali kódtár két fő API-kategóriához biztosít absztrakciót:
 
-A Time Series Insights minta SPA alapja a tervezési és a jelen oktatóanyagban használt kódot. A kód a Time Series Insights JavaScript ügyféloldali kódtárat használja. A Time Series Insights-klienskódtára biztosítja egy absztrakciós két fő API-kategóriák:
+- **A Time Series Insights lekérdezési API**-k meghívására szolgáló burkoló metódusok: REST API-k JSON-alapú kifejezések használatával Time Series Insights adatok lekérdezésére használható. A metódusok a könyvtár TsiClient. Server névterében vannak rendszerezve.
 
-- **A Time Series Insights meghívására szolgáló burkoló módszerek lekérdezési API-k**: REST API-k használatával adatokat kérdezhet le a Time Series Insights JSON-alapú kifejezések használatával. A metódusok a könyvtár a TsiClient.server névtérben vannak rendszerezve.
+- **Különféle típusú diagramok létrehozásának és feltöltésének módszerei**: A weblapon lévő Time Series Insights-adatmegjelenítéshez használható metódusok. A metódusok a könyvtár TsiClient. UX névterében vannak rendszerezve.
 
-- **Módszerek a létrehozása és feltöltése számos különböző típusú vezérlők diagramkészítési**: A módszerek segítségével megjelenítheti a Time Series Insights adatait egy weblap. A metódusok a könyvtár a TsiClient.ux névtérben vannak rendszerezve.
+Ez az oktatóanyag a minta alkalmazás Time Series Insights környezetének adatait is használja. A Time Series Insights minta alkalmazás struktúrájával és a Time Series Insights ügyféloldali függvénytárával kapcsolatos részletekért tekintse meg az oktatóanyag [a Azure Time Series Insights JavaScript-ügyfél függvénytárában](tutorial-explore-js-client-lib.md)című témakört.
 
-Ez az oktatóanyag a mintaalkalmazás a Time Series Insights-környezet adatait is használja. A Time Series Insights-mintaalkalmazást, és hogyan használja a Time Series Insights ügyféloldali kódtár szerkezete, lásd az oktatóanyag [Fedezze fel az Azure Time Series Insights JavaScript ügyféloldali kódtár](tutorial-explore-js-client-lib.md).
-
-## <a name="register-the-application-with-azure-ad"></a>Az alkalmazás regisztrálása az Azure AD-ben
+## <a name="register-with-azure-ad"></a>Regisztrálás az Azure AD-vel
 
 [!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
-## <a name="build-and-publish-the-web-application"></a>A webalkalmazás létrehozása és közzététele
+## <a name="build-and-publish"></a>Létrehozás és közzététel
 
-1. Hozzon létre egy könyvtárat az alkalmazás projektfájljainak tárolásához. Ezt követően folytassa a következő URL-címek mindegyike. Kattintson a jobb gombbal a **Raw** hivatkozásra az oldal jobb felső sarkában, és válassza ki **Mentés másként** , mentse a fájlokat a projekt könyvtárában.
+1. Hozzon létre egy könyvtárat az alkalmazás projektfájljainak tárolásához. Ezután nyissa meg az alábbi URL-címeket. Kattintson a jobb gombbal a **nyers** hivatkozásra a lap jobb felső sarkában, majd válassza a **Mentés másként** lehetőséget a fájlok a projekt könyvtárába való mentéséhez.
 
-   - [*index.HTML*](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html): a HTML és JavaScript a laphoz
-   - [*sampleStyles.css*]( https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css): a CSS-stílus lap
+   - [*index. html*](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html): az oldal HTML-és JavaScript-kódja
+   - [*sampleStyles. css*](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css): a CSS-stíluslap
 
    > [!NOTE]
-   > A böngésző függően előfordulhat, hogy módosítani szeretné a kiterjesztések .html vagy .css a fájl mentése előtt.
+   > A böngészőtől függően előfordulhat, hogy a fájl mentése előtt módosítania kell a kiterjesztéseket. html vagy. CSS fájlra.
 
-1. Győződjön meg arról, hogy a szükséges összetevők telepítve vannak-e a Visual Studióban. Az IIS Express, Web Deploy és az Azure Cloud Services alapvető eszközök összetevői a Visual Studio kell telepíteni.
+1. Ellenőrizze, hogy a szükséges összetevők telepítve vannak-e a Visual Studióban. Telepíteni kell a IIS Express, a web Deploy és az Azure Cloud Services Core Tools összetevőt a Visual studióhoz.
 
-    [![A Visual Studio - módosíthatja a telepített összetevők](media/tutorial-create-tsi-sample-spa/vs-installation.png)](media/tutorial-create-tsi-sample-spa/vs-installation.png#lightbox)
+    [![Visual Studio – a telepített összetevők módosítása](media/tutorial-create-tsi-sample-spa/vs-installation.png)](media/tutorial-create-tsi-sample-spa/vs-installation.png#lightbox)
 
     > [!NOTE]
-    > A Visual Studio felhasználói élmény némileg eltérhet a leírt példák a verzió és a konfigurációs beállításoktól függően.
+    > A Visual Studio-élmény a verziótól és a konfigurációs beállításoktól függően némileg eltérő lehet a látható példáktól.
 
-1. Nyissa meg a Visual Studiót, és jelentkezzen be. Egy projektet a webes alkalmazás létrehozása a a **fájl** menüjében válassza **nyílt** > **webhely**.
+1. Nyissa meg a Visual studiót, és jelentkezzen be. A webalkalmazáshoz tartozó projekt létrehozásához a **fájl** menüben válassza a webhely **megnyitása** > **lehetőséget.**
 
     [![Visual Studio – új megoldás létrehozása](media/tutorial-create-tsi-sample-spa/vs-solution-create.png)](media/tutorial-create-tsi-sample-spa/vs-solution-create.png#lightbox)
 
-1. Az a **megnyitott webhely** ablaktáblán válassza ki a HTML és CSS-fájlok tárolására a munkakönyvtárat, és válassza **nyílt**.
+1. A webhely **megnyitása** ablaktáblán válassza ki azt a munkakönyvtárat, AHOVÁ a HTML-és CSS-fájlokat tárolta, majd kattintson a **Megnyitás**gombra.
 
-   [![Visual Studio – a Fájl menü megnyitása és a webhely beállításokkal](media/tutorial-create-tsi-sample-spa/vs-file-open-web-site.png)](media/tutorial-create-tsi-sample-spa/vs-file-open-web-site.png#lightbox)
+   [![Visual Studio – a Fájl menü a Megnyitás és a webhely beállításaival](media/tutorial-create-tsi-sample-spa/vs-file-open-web-site.png)](media/tutorial-create-tsi-sample-spa/vs-file-open-web-site.png#lightbox)
 
-1. A Visual Studio **nézet** menüjében válassza **Megoldáskezelőben**. Megnyílik az új megoldásokat. Egy webhely-projektet (földgömb ikon), a HTML és CSS-fájlokat tartalmazó tartalmazza.
+1. A Visual Studio **nézet** menüben válassza a **megoldáskezelő**lehetőséget. Megnyílik az új megoldás. Tartalmaz egy webhely-projektet (Globe ikon), amely tartalmazza a HTML-és CSS-fájlokat.
 
-   [![Visual Studio – új megoldásra a Megoldáskezelőben](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png)](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png#lightbox)
+   [![Visual Studio – az új megoldás a Megoldáskezelő](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png)](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png#lightbox)
 
-1. Mielőtt közzéteszi az alkalmazást, meg kell változtatnia a konfigurációs beállításai a *index.html*.
+1. Az alkalmazás közzététele előtt meg kell változtatnia az *index. html*konfigurációs beállításait.
 
-   1. Állítsa vissza a hozzászólás alatt a három sor `"PROD RESOURCE LINKS"` a függőségeket a FEJLESZTÉSTŐL az éles környezetbe váltás. Tegye megjegyzésbe a hozzászólás alatt a három sor `"DEV RESOURCE LINKS"`.
+   1. A Megjegyzés `"PROD RESOURCE LINKS"` alá tartozó három sor megjegyzésének visszahelyezése a függőségek fejlesztésből éles környezetbe való váltásához. Tegye megjegyzésbe a megjegyzésben `"DEV RESOURCE LINKS"`szereplő három sort.
 
       [!code-html[head-sample](~/samples-javascript/pages/tutorial/index.html?range=2-20&highlight=10-13,15-18)]
 
-      A függőségek az alábbi példához hasonlóan kell ellátva:
+      A függőségeket a következő példához hasonló módon kell megadnia:
 
       ```HTML
       <!-- PROD RESOURCE LINKS -->
@@ -101,7 +101,7 @@ Ez az oktatóanyag a mintaalkalmazás a Time Series Insights-környezet adatait 
       <link rel="stylesheet" type="text/css" href="../../dist/tsiclient.css"> -->
       ```
 
-   1. Konfigurálásához az alkalmazásnak, hogy az Azure AD alkalmazás regisztrációs Azonosítót használja, módosítsa a `clientID` használt értéket a **Alkalmazásazonosító** a másolt **3. lépés** amikor, [az alkalmazás használatához regisztrálni Az Azure AD](#register-the-application-with-azure-ad). Ha létrehozott egy **kijelentkezési URL-címe** az Azure ad-ben, állítsa be ezt az értéket a `postLogoutRedirectUri` értéket.
+   1. Ha úgy szeretné konfigurálni az alkalmazást, hogy az Azure ad-alkalmazás regisztrációs azonosítóját használja, `clientID` módosítsa az értéket a 3. **lépésben** átmásolt alkalmazás- **azonosító** használatára, ha [az alkalmazást az Azure ad használatára regisztrálta](#register-with-azure-ad). Ha létrehozott egy kijelentkezési **URL-címet** az Azure ad-ben, állítsa `postLogoutRedirectUri` az értéket értékként.
 
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-153&highlight=4-5)]
 
@@ -112,58 +112,58 @@ Ez az oktatóanyag a mintaalkalmazás a Time Series Insights-környezet adatait 
       postLogoutRedirectUri: 'https://tsispaapp.azurewebsites.net',
       ```
 
-   1. Ha elkészült, így a módosításokat, Mentés *index.html*.
+   1. A módosítások végrehajtása után mentse az *index. html*fájlt.
 
-1. Tegye közzé a webalkalmazást az Azure-előfizetésében, egy Azure App Service-ben.  
+1. Tegye közzé a webalkalmazást az Azure-előfizetésében Azure App Serviceként.  
 
    > [!NOTE]
-   > Több lehetőség képernyőképeken látható a következő lépések automatikusan fel van töltve az Azure-előfizetés adatait. Eltarthat néhány másodpercre egyes betöltése befejeződik.  
+   > Az alábbi lépésekben látható képernyőképek számos lehetőségét automatikusan feltölti az Azure-előfizetésből származó adatokkal. Az egyes ablaktáblák teljes betöltése eltarthat néhány másodpercig.  
 
-   1. A Megoldáskezelőben kattintson a jobb gombbal a projektcsomópontra webhelyet, és válassza **webalkalmazás közzététele**.  
+   1. Megoldáskezelő kattintson a jobb gombbal a webhely-projekt csomópontra, majd válassza a **webalkalmazás közzététele**lehetőséget.  
 
-      [![Visual Studio – a Solution Explorer közzététele webalkalmazás lehetőséget választja](media/tutorial-create-tsi-sample-spa/vs-solution-explorer-publish-web-app.png)](media/tutorial-create-tsi-sample-spa/vs-solution-explorer-publish-web-app.png#lightbox)
+      [![Visual Studio – válassza a webalkalmazás-közzététel Megoldáskezelő lehetőséget](media/tutorial-create-tsi-sample-spa/vs-solution-explorer-publish-web-app.png)](media/tutorial-create-tsi-sample-spa/vs-solution-explorer-publish-web-app.png#lightbox)
 
-   1. Válassza ki **Start** az alkalmazás közzététele a kezdéshez.
+   1. Válassza az **Indítás** lehetőséget az alkalmazás közzétételének megkezdéséhez.
 
-      [![Visual Studio – a közzétételi profil ablaktábla](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png#lightbox)
+      [![Visual Studio – a profil közzététele panel](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png#lightbox)
 
-   1. Jelölje ki az alkalmazás közzététele használni kívánt előfizetést. Válassza ki a **TsiSpaApp** projekt. Ezután válassza az **OK** lehetőséget.
+   1. Válassza ki az alkalmazás közzétételéhez használni kívánt előfizetést. Válassza ki a **TsiSpaApp** projektet. Ezután válassza az **OK** lehetőséget.
 
-      [![Visual Studio – a közzétételi profilt az App Service panel](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png#lightbox)
+      [![Visual Studio – a profil közzététele App Service panel](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png#lightbox)
 
-   1. Válassza ki **közzététel** webes alkalmazás üzembe helyezéséhez.
+   1. A webalkalmazás telepítéséhez válassza a **Közzététel** lehetőséget.
 
-      [![Visual Studio – a közzététel lehetőségről és a közzététel kimenet](media/tutorial-create-tsi-sample-spa/vs-publish-profile-output.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-output.png#lightbox)
+      [![Visual Studio – a közzétételi lehetőség és a közzétételi napló kimenete](media/tutorial-create-tsi-sample-spa/vs-publish-profile-output.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-output.png#lightbox)
 
-   1. A Visual studióban megjelenik a napló sikeres közzététel **kimeneti** ablaktáblán. Az üzembe helyezés befejezése a Visual Studio egy böngészőlapon nyílik meg a webalkalmazás, és kéri a bejelentkezéshez. A sikeres bejelentkezést követően a Time Series Insights vezérlőelemek adatokkal van feltöltve.
+   1. A Visual Studio **kimenet** paneljén megjelenik egy sikeres közzétételi napló. Az üzembe helyezés befejezésekor a Visual Studio megnyitja a webalkalmazást egy böngésző lapon, és bekéri a bejelentkezést. A sikeres bejelentkezést követően a Time Series Insights vezérlőelemek adatokkal vannak feltöltve.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás  
 
 Hibakód/állapot | Leírás
 ---------------------| -----------
-*AADSTS50011: A válaszcím nem az alkalmazás regisztrálva van.* | Az Azure AD-regisztrációs hiányzik a **válasz URL-cím** tulajdonság. Lépjen a **beállítások** > **válasz URL-címek** számára az Azure AD-alkalmazás regisztrációja. Ellenőrizze, hogy a **átirányítási URI-t** a adhat meg kellett **2. lépés** amikor, [az alkalmazást, hogy az Azure ad-ben regisztrált](#register-the-application-with-azure-ad) megtalálható.
-*AADSTS50011: A kérésben megadott URL-címet a válasz nem felel meg a válasz URL-címek az alkalmazáshoz konfigurált: '\<Application ID GUID>'.* | A `postLogoutRedirectUri` megadott **6. lépés** a [hozhat létre, és tegye közzé a webalkalmazást](#build-and-publish-the-web-application) meg kell egyeznie a megadott érték **beállítások**  >  **Válasz URL-címek** a az Azure AD-alkalmazás regisztrációja. Ügyeljen arra, hogy tartozó értéknek a módosításához is **cél URL-címe** használandó *https* kiszolgálónként **5. lépés** a [hozhat létre, és tegye közzé a webalkalmazást](#build-and-publish-the-web-application).
-A webalkalmazás betöltődik, de az még egy stílus nélküli, csak szöveges bejelentkezési oldala, amelyen egy fehér háttér. | Győződjön meg arról, hogy az elérési utak tárgyalt **4. lépés** a [hozhat létre, és tegye közzé a webalkalmazást](#build-and-publish-the-web-application) helyes-e. Ha a webalkalmazás nem találja a .css fájlokat, akkor a lapok nem a megfelelő stílussal jelennek meg.
+*AADSTS50011: Az alkalmazáshoz nincs regisztrálva Válaszcím.* | Az Azure AD-regisztrációból hiányzik a **Válasz URL-** tulajdonsága. Lépjen a **Beállítások** > **Válasz URL-címeire** az Azure ad-alkalmazás regisztrálásához. Győződjön meg arról, hogy az **átirányítási URI** -t a **2. lépésben** vagy a **4** . lépésben adta meg, amikor [regisztrálta az alkalmazást az Azure ad használatára](#register-with-azure-ad) .
+*AADSTS50011: A kérelemben megadott válasz URL-cím nem egyezik az alkalmazáshoz konfigurált válasz URL-címekkel: "\<Application ID GUID >".* |  > Awebalkalmazás [felépítése és közzététele](#build-and-publish) című **6. b lépésben** megadottértéknekmegkellegyeznieazAzuread-alkalmazásregisztrálásakorabeállításokválaszURL-címeiterületenmegadottértékkel`postLogoutRedirectUri` . |
+A webalkalmazás betöltődik, de egy stílus nélküli, csak szöveges bejelentkezési oldala van, fehér háttérrel. | Győződjön meg arról, hogy a [Webalkalmazás létrehozása és közzététele](#build-and-publish) című **6. lépésben** tárgyalt elérési utak helyesek. Ha a webalkalmazás nem találja a .css fájlokat, akkor a lapok nem a megfelelő stílussal jelennek meg.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ez az oktatóanyag több futó Azure-szolgáltatást hoz létre. Ha nem szeretné befejezni az oktatóanyag-sorozat, javasoljuk, hogy biztosan törölje a felesleges költségek elkerülése érdekében minden erőforrás.
+Ez az oktatóanyag több futó Azure-szolgáltatást hoz létre. Ha nem tervezi befejezni ezt az oktatóanyag-sorozatot, ajánlott törölni az összes erőforrást, hogy elkerülje a szükségtelen költségek felmerülését.
 
-Az Azure portal bal oldali menüben lévő:
+A Azure Portal bal oldali menüben:
 
-1. Válassza ki **erőforráscsoportok**, majd válassza ki a Time Series Insights-környezethez létrehozott erőforráscsoportot. A lap tetején válassza **erőforráscsoport törlése**, és adja meg az erőforráscsoport nevét, majd válassza ki **törlése**.
-1. Válassza ki **erőforráscsoportok**, majd válassza ki az erőforráscsoportot, amely az eszköz szimulálása megoldásgyorsító hozta létre. A lap tetején válassza **erőforráscsoport törlése**, és adja meg az erőforráscsoport nevét, majd válassza ki **törlése**.
+1. Válassza ki az **erőforráscsoportok**elemet, majd válassza ki a Time Series Insights-környezethez létrehozott erőforráscsoportot. Az oldal tetején válassza az **erőforráscsoport törlése**elemet, adja meg az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
+1. Válassza az **erőforráscsoportok**lehetőséget, majd válassza ki azt az erőforráscsoportot, amelyet az eszköz-szimulációs megoldás-gyorsító hozott létre. Az oldal tetején válassza az **erőforráscsoport törlése**elemet, adja meg az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megismerkedett:
+Ebben az oktatóanyagban megismerte a következőket:
 
 > [!div class="checklist"]
 > * Az alkalmazás kialakítása
-> * Az alkalmazás regisztrálása az Azure ad-vel
+> * Az alkalmazás regisztrálása az Azure AD-ben
 > * A webalkalmazás létrehozása, közzététele és tesztelése
 
-Ebben az oktatóanyagban integrálható az Azure ad-ben, és a hozzáférési jogkivonat beszerzése van bejelentkezett felhasználó az identitást használja. A Time Series Insights API eléréséhez egy szolgáltatás- vagy démonalkalmazásban alkalmazáshoz használatával kapcsolatban lásd: Ez a cikk:
+Ez az oktatóanyag integrálódik az Azure AD-vel, és a bejelentkezett felhasználó identitását használja a hozzáférési token beszerzéséhez. A Time Series Insights API szolgáltatás vagy démon alkalmazás identitásával való elérésének megismeréséhez tekintse meg ezt a cikket:
 
 > [!div class="nextstepaction"]
 > [Hitelesítés és engedélyezés az Azure Time Series Insights API-hoz](time-series-insights-authentication-and-authorization.md)

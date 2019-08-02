@@ -1,7 +1,7 @@
 ---
-title: Módszer – Academic Knowledge API értelmezi.
+title: Értelmezési módszer – Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: A értelmezése módszer használatával felhasználói lekérdezési karakterláncok Academic Graph-adatok és a Microsoft Cognitive Services Academic nyelvtani alapján formázott értelmezéseket ad vissza.
+description: A tolmácsolási módszer használatával a felhasználói lekérdezési karakterláncok formázott értelmezéseit lehet visszaadni a tudományos gráfok és a Microsoft Cognitive Services Academic nyelvtana alapján.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,18 +10,19 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: b679f1da0ada3e61fca79cdb985a43dc445877ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: d960aff109e0eca70cb87463770620093e563f63
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61338452"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706677"
 ---
-# <a name="interpret-method"></a>Módszer értelmezése
+# <a name="interpret-method"></a>Értelmezési módszer
 
-A **értelmezése** REST API-t vesz igénybe egy végfelhasználó lekérdezési karakterlánc (azaz egy lekérdezést az alkalmazás a felhasználó által megadott) és a formázott a felhasználói szándékot az Academic Graph-adatok és az oktatási nyelvtani alapján értelmezéseket ad vissza.
+A **tolmácsolási** REST API egy végfelhasználói lekérdezési karakterláncot (azaz egy, az alkalmazás felhasználója által megadott lekérdezést) használ, és a tudományos diagram adatai és a tudományos nyelvtan alapján a felhasználói szándék formázott értelmezéseit adja vissza.
 
-Ahhoz, hogy az interaktív élményt, meghívhatja ezt a módszert ismételten után a felhasználó által megadott karakterek. Ebben az esetben állítsa be a **teljes** paraméter 1-re automatikus kiegészítés javaslatok engedélyezéséhez. Ha az alkalmazás nem kell automatikus kiegészítését, kell beállítania a **teljes** paraméter 0 értékre.
+Ha interaktív élményt szeretne biztosítani, akkor ezt a metódust ismételten meghívhatja a felhasználó által megadott karakterek után. Ebben az esetben a **teljes** paramétert 1-re kell állítania az automatikus kiegészítési javaslatok engedélyezéséhez. Ha az alkalmazás nem igényel automatikus kiegészítést, állítsa a **teljes** paramétert 0-ra.
 
 **REST-végpont:**
 
@@ -29,14 +30,14 @@ Ahhoz, hogy az interaktív élményt, meghívhatja ezt a módszert ismételten u
 
 ## <a name="request-parameters"></a>A kérés paraméterei
 
-Name (Név)     | Érték | Kötelező?  | Leírás
+Name (Név)     | Value | Kötelező?  | Leírás
 ---------|---------|---------|---------
-**query**    | Szöveges karakterlánc | Igen | Felhasználó által megadott lekérdezés.  Ha teljes értéke 1, lekérdezés létrehozni lekérdezési automatikus kiegészítését javaslatok előtagjaként is értelmezhető.        
-**model**    | Szöveges karakterlánc | Nem  | A lekérdezni kívánt modell neve.  Jelenleg az alapértelmezett érték *legújabb*.        
-**Hajtsa végre** | 0 vagy 1 | Nem<br>Alapértelmezés: 0  | 1 azt jelenti, hogy automatikus kiegészítését javaslatok jönnek létre a szintaxis és a grafikon adatai alapján.         
-**count**    | Szám | Nem<br>Alapértelmezés: 10 | Maximális száma értelmezéseket ad vissza.         
-**eltolás**   | Szám | Nem<br>Alapértelmezés: 0  | Az első értelmezése index való visszatéréshez. Ha például *száma = 2 & eltolás = 0* 0 és 1 értelmezéseket ad vissza. *Count = 2 & eltolás = 2* 2. és 3 értelmezéseket ad vissza.       
-**Időtúllépés**  | Szám | Nem<br>alapértelmezett: 1000 | Időkorlát ezredmásodpercben. Csak a az időtúllépési letelte előtt található értelmezés adja vissza.
+**query**    | Szöveges karakterlánc | Igen | A felhasználó által megadott lekérdezés.  Ha a Complete (1) értékre van állítva, a lekérdezés előtagként lesz értelmezve a lekérdezés automatikus befejezésére vonatkozó javaslatok létrehozásához.        
+**modell**    | Szöveges karakterlánc | Nem  | A lekérdezni kívánt modell neve.  Jelenleg az alapértelmezett érték a *legújabb*.        
+**teljes** | 0 vagy 1 | Nem<br>alapértelmezett: 0  | 1 azt jelenti, hogy az automatikus kiegészítési javaslatok a nyelvtani és a Graph-adatértékek alapján jönnek létre.         
+**count**    | Number | Nem<br>alapértelmezett: 10 | A visszaadni kívánt értelmezések maximális száma.         
+**eltolás**   | Number | Nem<br>alapértelmezett: 0  | A visszatérés első értelmezésének indexe. Például: *Count = 2 & eltolás = 0* – a 0 és az 1 értelmezést adja vissza. *Count = 2 & eltolás = 2* – a 2. és a 3. értelmezést adja vissza.       
+**időtúllépés**  | Number | Nem<br>alapértelmezett: 1000 | Időtúllépés ezredmásodpercben. A rendszer csak az időtúllépés lejárta előtt talált értelmezéseket adja vissza.
 
 <br>
   
@@ -44,16 +45,16 @@ Name (Név)     | Érték | Kötelező?  | Leírás
 
 Name (Név)     | Leírás
 ---------|---------
-**query** |A *lekérdezés* paraméter a kérelemből.
-**értelmezése** |Az egyező felhasználói bevitel ellen a nyelvtani 0 vagy több különböző módon tömbje.
-**interpretations[x].logprob**  |A relatív természetes logaritmusát valószínűsége értelmezése. Nagyobb értékek nagy valószínűséggel.
-**interpretations[x].parse**  |XML-karakterlánc, amely megjeleníti a lekérdezés minden egyes részét értelmezését.
-**interpretations[x].rules**  |1 vagy több meghatározott szabályok a gramatice értelmezése során definiálásra tömbje. Az Academic Knowledge API esetében mindig lesz 1 szabályt.
-**interpretations[x].rules[y].name**  |a szabály nevét.
-**interpretations[x].rules[y].output**  |A szabály kimenetét.
-**interpretations[x].rules[y].output.type** |A szabály a kimeneti adattípus.  Az Academic Knowledge API Ez minden esetben az "query".
-**interpretations[x].rules[y].output.value**  |A szabály kimenete. Az Academic Knowledge API esetén ez a kifejezés karakterlánc, amely a kiértékelés és calchistogram módszerek adható át.
-**aborted** | IGAZ, ha a kérelem túllépte az időkorlátot.
+**query** |A kérelem lekérdezési paramétere.
+**értelmezések** |0 vagy több különböző módon, a nyelvtanhoz való felhasználói bevitel egyeztetésére szolgáló tömb.
+**interpretations[x].logprob**  |Az értelmezés relatív természetes naplójának valószínűsége. Nagyobb a valószínűsége.
+**interpretations[x].parse**  |Egy XML-karakterlánc, amely a lekérdezés egyes részeinek értelmezését mutatja.
+**értelmezések [x]. szabályok**  |A nyelvtanban az értelmezés során meghívott 1 vagy több szabály tömbje. A Academic Knowledge API esetében mindig 1 szabály lesz.
+**interpretations[x].rules[y].name**  |A szabály neve.
+**interpretations[x].rules[y].output**  |A szabály kimenete.
+**interpretations[x].rules[y].output.type** |A szabály kimenetének adattípusa.  A Academic Knowledge API esetében ez mindig "lekérdezés" lesz.
+**értelmezések [x]. rules [y]. output. Value**  |A szabály kimenete. A Academic Knowledge API esetében ez egy lekérdezési kifejezés karakterlánca, amely átadható a kiértékelési és számítási hisztogram metódusoknak.
+**megszakadt** | Értéke true, ha a kérelem időtúllépést adott meg.
 
 <br>
 
@@ -61,7 +62,7 @@ Name (Név)     | Leírás
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime&complete=1&count=2
  ```
-<br>A válasz az alábbi tartalmazza az első két (paraméter miatt *száma = 2*) legvalószínűbb értelmezések, amelyek befejezik a részleges felhasználói bevitel *tanulmányok szerint jaime*: *tanulmányok szerint jaime teevan*  és *tanulmányok szerint jaime zöld*.  A szolgáltatás létrehozott lekérdezés befejezésekből helyett csak a mérlegeli pontos egyezés a Szerző *jaime* , mert a kérelemben megadott *teljes = 1*. Vegye figyelembe, hogy a canonical érték *j l zöld* keresztül a szinonima matched *jamie zöld*, ahogyan a parse.
+<br>Az alábbi válasz tartalmazza a legfelső kettőt (a paraméterek *száma = 2*) a legvalószínűbb értelmezéseket, amelyek a részleges felhasználói adatbevitelt végzik *el Jaime*szerint: dokumentumok, Jaime *teevan* és Papers by *Jaime Green*.  A szolgáltatás által generált lekérdezések befejezése ahelyett, hogy csak a pontos egyezéseket kellene figyelembe venni a szerzői *Jaime* esetében, mert a kérelem *teljes = 1*értéket adott meg. Vegye figyelembe, hogy a " *j l* " kanonikus érték a *Jamie Green*szinonimán keresztül illeszkedik, az elemzésben jelzett módon.
 
 
 ```JSON
@@ -97,7 +98,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers 
   ]
 }
 ```  
-<br>Lekérdezheti az entitás eredmények egy értelmezéséhez, *output.value* származó a **értelmezése** API-t, és el kell küldenie azokat a **kiértékelése** API-n keresztül a *kifejezés*  paraméter. Ebben a példában a lekérdezés első értelmezésére van: 
+<br>Ha egy értelmezéshez szeretné beolvasni az entitások eredményeit, használja a *output. Value értéket* az **értelmező** API-ból, és adja át ezt a kiértékelési API-nak a *kifejezés* paraméter használatával. Ebben a példában az első értelmezés lekérdezése a következő: 
 ```
 evaluate?expr=Composite(AA.AuN=='jaime teevan')
 ```
