@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/23/2019
 ms.author: jowargo
-ms.openlocfilehash: baf7d5bdb156cc85a06ea2e315caca87832f3810
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: ba392f69c0c5803768a04b94d9f9c0ed4f032fbf
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742509"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775024"
 ---
 # <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések Xamarin. iOS-alkalmazásokhoz az Azure Notification Hubs használatával
 
@@ -56,25 +56,6 @@ Ebben az oktatóanyagban kódot fog létrehozni/frissíteni az alábbi feladatok
 Ennek az oktatóanyagnak az elvégzése a Xamarin.iOS-alkalmazásokkal kapcsolatos összes további Notification Hubs-oktatóanyag elvégzésének előfeltétele.
 
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
-
-## <a name="configure-your-notification-hub-for-ios-push-notifications"></a>Az értesítési központ konfigurálása iOS leküldéses értesítésekhez
-
-Ez a szakasz végigvezeti egy új értesítési központ létrehozásának, valamint az APNs-hitelesítés korábban létrehozott **.p12** leküldéses tanúsítvánnyal történő konfigurálásának lépésein. Ha egy már korábban létrehozott értesítési központot kíván használni, egyből az 5. lépésre ugorhat.
-
-[!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
-
-### <a name="configure-ios-settings-for-the-notification-hub"></a>Az értesítési központ iOS-beállításainak konfigurálása
-
-1. Válassza az **Apple (APNs)** lehetőséget a **NOTIFICATION SETTINGS** (Értesítési beállítások) csoportban.
-2. Válassza a **Certificate** (Tanúsítvány) lehetőséget, kattintson a **fájl** ikonra, és válassza ki a korábban exportált **.p12** fájlt.
-3. Adja meg a tanúsítványhoz tartozó **jelszót**.
-4. Válassza a **Védőfal** módot. Az **Éles** beállítást kizárólag akkor használja, ha olyan felhasználóknak szeretne leküldéses értesítéseket küldeni, akik megvásárolták az alkalmazást az áruházból.
-
-    ![Az APNs konfigurálása az Azure Portalon][6]
-
-    ![APNs-tanúsítvány konfigurálása az Azure Portalon][7]
-
-Az értesítési központ konfigurálva lett az APNs-sel való együttműködésre, és rendelkezik a kapcsolati sztringekkel az alkalmazás regisztrálásához és leküldéses értesítések küldéséhez.
 
 ## <a name="connect-your-app-to-the-notification-hub"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
 

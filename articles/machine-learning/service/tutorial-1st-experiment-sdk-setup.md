@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: Környezet és munkaterület beállítása.'
 titleSuffix: Azure Machine Learning service
-description: Ebben az oktatóanyagban a teljes körű lépéseket követve megkezdheti a Jupyter-jegyzetfüzetekben futó Azure Machine Learning Python SDK megkezdését.
+description: Ebben az oktatóanyag-sorozatban elvégezheti a teljes körű lépéseket a Jupyter-jegyzetfüzetekben futó Azure Machine Learning Python SDK megkezdéséhez.  Az első rész egy felhőalapú notebook-kiszolgáló környezet létrehozását, valamint a kísérletek és a gépi tanulási modellek kezelésére szolgáló munkaterület létrehozását ismerteti.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: e17d9286453aeb5c7eac688555177c2c42faad21
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: baeb175c57573e557d298ff3197394ab619434ff
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668629"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772651"
 ---
 # <a name="tutorial-setup-environment-and-workspace"></a>Oktatóanyag: Telepítési környezet és munkaterület
 
@@ -25,7 +25,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Machine learning-munkaterületet, amelyet a következő oktatóanyagban használhat.
-> * Hozzon létre egy felhőalapú notebook-kiszolgáló környezetet.
+> * Hozzon létre egy jegyzetfüzet virtuális gépet, amely egy felhőalapú Jupyter notebook-kiszolgáló Azure Machine Learning Python SDK-val előre telepítve és előre konfigurálva.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
