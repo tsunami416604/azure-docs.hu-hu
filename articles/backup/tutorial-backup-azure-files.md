@@ -7,15 +7,15 @@ ms.date: 06/10/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: a06504438340f62d5b338165cb8b159459ae35dc
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: e63ad75effb03cf9dd5eb5c66b142cce629ea290
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467077"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736238"
 ---
-# <a name="back-up-azure-file-shares"></a>Azure-fájlmegosztások biztonsági mentése
-Ez a cikk azt ismerteti, hogyan használhatja az Azure Portalt az [Azure-fájlmegosztások](../storage/files/storage-files-introduction.md) biztonsági mentésére és visszaállítására.
+# <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Azure-fájlmegosztás biztonsági mentése az Azure Portalon
+Ez az oktatóanyag azt ismerteti, hogyan használható a Azure Portal az [Azure-fájlmegosztás](../storage/files/storage-files-introduction.md)biztonsági mentéséhez.
 
 Ebből az útmutatóból a következőket tanulhatja meg:
 > [!div class="checklist"]
@@ -36,7 +36,7 @@ Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban é
 - Ne törölje az Azure Backuppal létrehozott pillanatképeket. A pillanatképek törlése helyreállítási pontok elvesztését és/vagy visszaállítási hibákat eredményezhet.
 - Ne törölje a Azure Backup által védett fájlmegosztást. A jelenlegi megoldás törli az Azure Backup által készített összes pillanatképet, miután a fájlmegosztás törölve lett, és így elveszíti az összes visszaállítási pontot
 
-A Storage-fiókokban tárolt Azure-fájlmegosztás biztonsági mentése a ZRS-replikációval jelenleg csak az USA középső régiójában (ke), az USA keleti régiójában (EUS) [, az USA](../storage/common/storage-redundancy-zrs.md) 2. keleti régiójában (EUS2), Észak-Európában (ne), Délkelet-Ázsiában (tenger), Nyugat-Európában (mi) és az USA 2. nyugati régiójában (WUS2
+A Storage-fiókokban tárolt Azure-fájlmegosztás biztonsági [](../storage/common/storage-redundancy-zrs.md) mentése a ZRS-replikációval jelenleg csak az USA középső régiójában (ke), az USA keleti régiójában (EUs), az USA 2. keleti régiójában (EUS2), Észak-Európában (ne), Délkelet-Ázsiában (tenger), Nyugat-Európában (mi) és az USA 2. nyugati régiójában (WUS2
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Azure-fájlmegosztások biztonsági mentésének konfigurálása
 Ez az oktatóanyag feltételezi, hogy már létrehozott egy Azure-fájlmegosztást. Az Azure-fájlmegosztás biztonsági mentése:

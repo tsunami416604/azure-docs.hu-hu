@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/01/2019
 ms.author: jowargo
-ms.openlocfilehash: d1aac5bb399fc113b57ad7e59f17d19f8bb1c97f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 39fa004b62bf7e2e2a50500f32fa7edcb0c4b6ba
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728835"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742439"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések Xamarin. Android-alkalmazásokhoz az Azure Notification Hubs használatával
 
@@ -66,6 +66,9 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
 
 ### <a name="create-visual-studio-project-and-add-nuget-packages"></a>Egy Visual Studio-projekt létrehozása és NuGet-csomagok hozzáadása
 
+> [!NOTE]
+> Az ebben az oktatóanyagban leírt lépések a Visual Studio 2017-es verziójában találhatók. 
+
 1. A Visual Studióban nyissa meg a **fájl** menüt, válassza az **új**, majd a **projekt**elemet. Az **új projekt** ablakban végezze el a következő lépéseket:
     1. Bontsa ki a **telepített**, a **vizualizáció C#** elemet, majd kattintson az **Android**elemre.
     2. Válassza az **Android-alkalmazás (Xamarin)** elemet a listából.
@@ -80,12 +83,18 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
 3. A **Solution Explorer** (Megoldáskezelő) ablakában bontsa ki a **Properties** (Tulajdonságok) elemet, majd kattintson az **AndroidManifest.xml** fájlra. Frissítse a csomag nevét arra a csomagnévre, amelyet akkor adott meg, amikor hozzáadta a Firebase Cloud Messaginget a projekthez a Google Firebase konzolján.
 
     ![Csomag neve a GCM-ben](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
-4. Kattintson a jobb gombbal a projektre, és válassza a **Manage Nuget Packages…** (NuGet-csomagok kezelése) lehetőséget.
-5. Válassza ki a **Browse** (Tallózás) lapot. Keressen rá a **Xamarin.GooglePlayServices.Base** kifejezésre. A találatok listájában válassza a **Xamarin.GooglePlayServices.Base** elemet. Ezt követően válassza az **Install** (Telepítés) parancsot.
+4. Állítsa be a projekt cél Android-verzióját az **android 9,0 (Pie)** értékre a következő lépések végrehajtásával: 
+    1. Kattintson a jobb gombbal a projektre, és válassza a **Tulajdonságok**lehetőséget. 
+    1. A fordításhoz az **Android-verzió használatával: (Cél-keretrendszer) mezőben válassza az **Android 9,0 (torta) lehetőséget.**** 
+    1. Válassza az **Igen** lehetőséget az üzenetablakban a cél keretrendszer módosításának folytatásához.
+1. Adja hozzá a szükséges NuGet-csomagokat a projekthez a következő lépések végrehajtásával:
+    1. Kattintson a jobb gombbal a projektre, és válassza a **Manage Nuget Packages…** (NuGet-csomagok kezelése) lehetőséget.
+    1. Váltson a **telepített** lapra, válassza a **Xamarin. Android. support. design**lehetőséget, majd a jobb oldali ablaktáblán kattintson a **frissítés** elemre a csomag legújabb verzióra való frissítéséhez.
+    1. Váltson a **Tallózás** lapra. Keressen rá a **Xamarin.GooglePlayServices.Base** kifejezésre. A találatok listájában válassza a **Xamarin.GooglePlayServices.Base** elemet. Ezt követően válassza az **Install** (Telepítés) parancsot.
 
-    ![Google Play-szolgáltatások NuGet-csomagjai](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
-6. A **NuGet Package Manager** (NuGet-csomagkezelő) ablakban keressen rá a **Xamarin.Firebase.Messaging** kifejezésre. A találatok listájában válassza a **Xamarin.Firebase.Messaging** elemet. Ezt követően válassza az **Install** (Telepítés) parancsot.
-7. Ezután keressen rá a **Xamarin.Azure.NotificationHubs.Android** kifejezésre. A találatok listájában válassza a **Xamarin.Azure.NotificationHubs.Android** elemet. Ezt követően válassza az **Install** (Telepítés) parancsot.
+        ![Google Play-szolgáltatások NuGet-csomagjai](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
+    6. A **NuGet Package Manager** (NuGet-csomagkezelő) ablakban keressen rá a **Xamarin.Firebase.Messaging** kifejezésre. A találatok listájában válassza a **Xamarin.Firebase.Messaging** elemet. Ezt követően válassza az **Install** (Telepítés) parancsot.
+    7. Ezután keressen rá a **Xamarin.Azure.NotificationHubs.Android** kifejezésre. A találatok listájában válassza a **Xamarin.Azure.NotificationHubs.Android** elemet. Ezt követően válassza az **Install** (Telepítés) parancsot.
 
 ### <a name="add-the-google-services-json-file"></a>A Google-szolgáltatás JSON-fájljának hozzáadása
 

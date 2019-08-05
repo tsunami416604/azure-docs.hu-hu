@@ -1,5 +1,5 @@
 ---
-title: SQL Server adatbázisok biztonsági mentése az Azure-ba | Microsoft Docs
+title: SQL Server adatbázisok biztonsági mentése az Azure-ba
 description: Ez az oktatóanyag a SQL Server Azure-ba történő biztonsági mentését ismerteti. A cikk a SQL Server helyreállítást is ismerteti.
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: cddb540eb0d6892426c4857b152ab6caa746f6da
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
-ms.translationtype: HT
+ms.openlocfilehash: 989a5689edf7b071d9afe06b1554fdbb0d7d2ebc
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639800"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737207"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
 
@@ -134,7 +134,7 @@ Csak másolás – teljes |  Másodlagos
 
 Ha nem hozta létre a SQL Server VM az Azure piactéren, vagy ha SQL 2008-es és 2008 R2-es verzióval rendelkezik, előfordulhat, hogy **UserErrorSQLNoSysadminMembership** hibaüzenetet kap.
 
-Ha a Windows 2008 R2 rendszeren futó **SQL 2008** és **2008 R2** esetén ad meg engedélyeket [, tekintse](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)meg a következőt:.
+Ha a Windows 2008 R2 rendszeren futó **SQL 2008** és **2008 R2** esetén ad meg engedélyeket, tekintse meg a következőt:. [](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)
 
 Az összes többi verzió esetében javítsa ki az engedélyeket a következő lépésekkel:
 
@@ -147,7 +147,7 @@ Az összes többi verzió esetében javítsa ki az engedélyeket a következő l
 
       ![A bejelentkezés – új párbeszédpanelen válassza a keresés lehetőséget.](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. A virtuális gép regisztrálása és az SQL-felderítési fázis során létrejött a Windows Virtual Service Account **NT SERVICE\AzureWLBackupPluginSvc** . Adja meg a fiók nevét az **adja meg a kijelölendő objektum nevét mezőben**látható módon. Válassza **a** Névellenőrzés lehetőséget a név feloldásához. Kattintson az **OK** gombra.
+  4. A virtuális gép regisztrálása és az SQL-felderítési fázis során létrejött a Windows Virtual Service Account **NT SERVICE\AzureWLBackupPluginSvc** . Adja meg a fiók nevét az **adja meg a kijelölendő objektum nevét mezőben**látható módon. Válassza a Névellenőrzés lehetőséget a név feloldásához. Kattintson az **OK** gombra.
 
       ![Az ismeretlen szolgáltatásnév feloldásához válassza a Névellenőrzés lehetőséget](./media/backup-azure-sql-database/check-name.png)
 
@@ -232,6 +232,6 @@ catch
 
 ## <a name="next-steps"></a>További lépések
 
-* Tudnivalók SQL Server [adatbázisok biztonsági](backup-sql-server-database-azure-vms.md) mentéséről.
+* [](backup-sql-server-database-azure-vms.md) Tudnivalók SQL Server adatbázisok biztonsági mentéséről.
 * [Tudnivalók a](restore-sql-database-azure-vm.md) SQL Server adatbázisok biztonsági másolatának visszaállításáról.
 * [Tudnivalók a](manage-monitor-sql-database-backup.md) SQL Server adatbázisok biztonsági másolatának kezeléséről.

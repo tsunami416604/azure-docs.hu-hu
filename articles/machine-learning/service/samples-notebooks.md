@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7fdf9c52df502bc94519ab6c65be2e9fb546ce48
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e5088cfa417c76933be6785188f2b173b7b461d0
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699138"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772575"
 ---
 # <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Azure Machine Learning szolgáltatás megismerése Jupyter notebookokkal
 
@@ -35,7 +35,7 @@ Ez a cikk bemutatja, hogyan érheti el a tárházat az alábbi környezetekben:
 <a name="notebookvm"></a>
 ## <a name="get-samples-on-azure-machine-learning-notebook-vm"></a>Minták beolvasása Azure Machine Learning notebook virtuális gépen
 
-A minták megkezdésének legegyszerűbb módja a [felhőalapú jegyzetfüzet](quickstart-run-cloud-notebook.md)rövid útmutatójának elvégzése. Ha elkészült, az SDK-val és a minta adattárral előre be kell töltenie egy dedikált jegyzetfüzet-kiszolgálót. Nincs szükség letöltésre vagy telepítésre.
+A minták megkezdésének legegyszerűbb módja az [oktatóanyag befejezése: Környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md)beállítása. Ha elkészült, az SDK-val és a minta adattárral előre be kell töltenie egy dedikált jegyzetfüzet-kiszolgálót. Nincs szükség letöltésre vagy telepítésre.
 
 <a name="byo"></a>
 

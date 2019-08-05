@@ -1,93 +1,94 @@
 ---
 title: Mi az Azure Private DNS?
-description: Az üzemeltetési szolgáltatás a Microsoft Azure saját DNS áttekintése.
+description: A privát DNS-üzemeltetési szolgáltatás áttekintése Microsoft Azureon.
 services: dns
 author: vhorne
 ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: aedace031eaedf2709993b5185979e8777821759
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0921a1ac7aa1192fae78f168c2eb51ee3e74e24a
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444840"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774623"
 ---
 # <a name="what-is-azure-private-dns"></a>Mi az Azure Private DNS?
 
 > [!IMPORTANT]
-> Privát Azure DNS jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure saját DNS jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-A Domain Name System, vagy a DNS-beli felelős fordítása (vagy feloldása) a szolgáltatás nevét annak IP-címét.  Az Azure DNS a DNS-tartományok, a üzemeltetési szolgáltatás biztosítani a névfeloldást a Microsoft Azure infrastruktúráját használja. Internetre irányuló DNS-tartományok támogatása esetén mellett az Azure DNS privát DNS-zónák is támogatja.
+A tartománynévrendszer vagy a DNS felelős a szolgáltatás nevének az IP-címére való fordításához (vagy feloldásához).  A Azure DNS a DNS-tartományok üzemeltetési szolgáltatása, amely névfeloldást biztosít a Microsoft Azure-infrastruktúra használatával. Az internetre irányuló DNS-tartományok támogatása mellett Azure DNS is támogatja a magánhálózati DNS-zónákat.
 
-Az Azure Private DNS kezeléséhez és a egy virtuális hálózatot, adjon hozzá egy egyéni DNS-megoldás nélkül tartomány neveinek feloldásához megbízható és biztonságos DNS szolgáltatást nyújt. Privát DNS-zónák használatával még ma elérhető az Azure által biztosított nevek helyett saját egyéni tartománynevet is használhatja. Egyéni tartománynevek használata segít testre szabni a virtuális hálózati architektúra ajánlott megfeleljen a szervezet igényei szerint. Névfeloldás biztosítja a virtuális gépek (VM) egy virtuális hálózaton belül és virtuális hálózatok között. Ezenkívül konfigurálhatja zónák nevek split zónaneveket nézetet, amely lehetővé teszi a névnek a megosztását a saját és a egy nyilvános DNS-zónát.
+Az Azure saját DNS megbízható, biztonságos DNS-szolgáltatást biztosít a tartománynevek kezeléséhez és megoldásához egy virtuális hálózaton anélkül, hogy egyéni DNS-megoldást kellene hozzáadnia. Privát DNS-zónák használatával a jelenleg elérhető Azure-nevek helyett saját egyéni tartományneveket is használhat. Az egyéni tartománynevek segítségével testre szabhatja a virtuális hálózati architektúrát, hogy az megfeleljen a szervezet igényeinek. A virtuális gépek (VM-EK) névfeloldását biztosítja a virtuális hálózatokon és a virtuális hálózatokon belül. Emellett a zónák nevét is konfigurálhatja egy osztott horizontú nézettel, amely lehetővé teszi, hogy a privát és a nyilvános DNS-zónák megosszák a nevet.
 
-A virtuális hálózatról egy saját DNS-zóna rekordjait háríthatja el a virtuális hálózat, a zónát kell kapcsolni. Társított virtuális hálózatok teljes hozzáféréssel rendelkezik, és megoldhatja a saját zóna közzétett összes DNS-rekord. Ezenkívül is engedélyezheti a virtuális hálózat hivatkozáshoz automatikus regisztrációnak. Ha egy virtuális hálózati csatlakozás automatikus regisztrációnak engedélyezi, a virtuális gépek a virtuális hálózat DNS-rekordjait a privát zónában vannak regisztrálva. Automatikus regisztrációnak engedélyezve van, amikor az Azure DNS-ben is frissíti a zóna rekordok, amikor egy virtuális gép létrejött, módosításokat az "IP-címet, vagy törölték.
+Ha egy magánhálózati DNS-zóna rekordjait szeretné feloldani a virtuális hálózatról, a virtuális hálózatot a zónával kell összekapcsolni. A csatolt virtuális hálózatok teljes hozzáféréssel rendelkeznek, és a magánhálózati zónában közzétett összes DNS-rekordot feloldják. Emellett a virtuális hálózati kapcsolaton is engedélyezheti az automatikus regisztrációt. Ha engedélyezi az automatikus regisztrációt egy virtuális hálózati kapcsolaton, a virtuális hálózaton lévő virtuális gépek DNS-rekordjait a rendszer regisztrálja a privát zónában. Ha engedélyezve van az automatikus regisztráció, a Azure DNS a zóna rekordjait is frissíti, amikor létrejön egy virtuális gép, megváltoztatja az IP-címét, vagy törli azt.
 
-![DNS áttekintése](./media/private-dns-overview/scenario.png)
+![A DNS áttekintése](./media/private-dns-overview/scenario.png)
 
 > [!NOTE]
-> Ajánlott eljárásként, ne használjon egy *.local* tartomány és a privát DNS-zónához. Nem minden operációs rendszer támogatja ezt.
+> Ajánlott eljárásként ne használjon *. local* tartományt a saját DNS-zónájához. Nem minden operációs rendszer támogatja ezt.
 
 ## <a name="benefits"></a>Előnyök
 
-Privát Azure DNS a következő előnyöket nyújtja:
+Az Azure saját DNS a következő előnyöket biztosítja:
 
-* **Nincs szükség az egyéni DNS-megoldások**. Korábban a számos ügyfél létrehozott egyéni DNS-megoldások a virtuális hálózat DNS-zónák kezelése. DNS-zónák a natív Azure-infrastruktúra, amely eltávolítja a létrehozása és kezelése az egyéni DNS-megoldások terhe használata kezelheti.
+* **Eltávolítja az egyéni DNS-megoldások szükségességét**. Korábban számos ügyfél hozott létre egyéni DNS-megoldásokat a virtuális hálózat DNS-zónáinak kezeléséhez. Mostantól a natív Azure-infrastruktúrával kezelheti a DNS-zónákat, ami eltávolítja az egyéni DNS-megoldások létrehozásának és kezelésének terheit.
 
-* **Minden gyakori DNS rekordjait típust használja**. Azure DNS supports A, AAAA, CNAME, MX, PTR, SOA, SRV, and TXT records.
+* **Használja az összes általános DNS-rekord típust**. Azure DNS supports A, AAAA, CNAME, MX, PTR, SOA, SRV, and TXT records.
 
-* **Automatikus állomásnév-rekord-kezelésre**. Egyéni DNS-rekordjait üzemelteti, valamint az Azure automatikusan is kezeli gazdanév-rekordokat a megadott virtuális hálózatokat a virtuális gépek. Ebben a forgatókönyvben optimalizálhatja a tartománynevek egyéni DNS-megoldások létrehozása és alkalmazások módosítása nélkül használhatja.
+* **Automatikus állomásnév-nyilvántartás kezelése**. Az egyéni DNS-rekordok üzemeltetése mellett az Azure automatikusan a megadott virtuális hálózatokban lévő virtuális gépek gazdagép-rekordjait is fenntartja. Ebben az esetben optimalizálhatja a használt tartományneveket anélkül, hogy egyéni DNS-megoldásokat kellene létrehoznia, vagy alkalmazásokat kellene módosítania.
 
-* **Állomásnév-feloldási virtuális hálózatok közötti**. Ellentétben az Azure által biztosított állomásnevek privát DNS-zónák virtuális hálózatok között is megoszthatók. Ez a funkció egyszerűbbé teszi a kereszt-hálózat és a szolgáltatásészlelés forgatókönyvek, például a virtuális hálózatok közötti társviszony.
+* **Állomásnév feloldása a virtuális hálózatok között**. Az Azure által biztosított állomásnevektól eltérően a magánhálózati DNS-zónák megoszthatók a virtuális hálózatok között. Ez a funkció egyszerűsíti a hálózatok közötti és a szolgáltatás-felderítési forgatókönyveket, például a virtuális hálózati társítást.
 
-* **Ismerős eszközökkel és a felhasználói élmény**. Gyorsan elsajátítható csökkentése érdekében ez a szolgáltatás jól bevált Azure DNS-eszközök (az Azure portal, Azure PowerShell-lel, az Azure CLI, Azure Resource Manager-sablonok és a REST API-t) használ.
+* **Ismerős eszközök és felhasználói élmény**. A tanulási görbe csökkentése érdekében a szolgáltatás jól bevált Azure DNS-eszközöket (Azure Portal, Azure PowerShell, Azure CLI, Azure Resource Manager sablonokat és a REST API) használ.
 
-* **Split zónaneveket DNS-támogatás**. Az Azure DNS használata esetén létrehozhat zónák ugyanazzal a névvel, hogy különböző választ az egy virtuális hálózaton belül, és a nyilvános interneten keresztül. Split zónaneveket DNS jellemzően olyan helyzetben, hogy a virtuális hálózaton belüli használatra a szolgáltatás egy dedikált verziója.
+* **Felosztási horizontú DNS-támogatás**. A Azure DNS használatával olyan zónákat hozhat létre, amelyek ugyanazzal a névvel rendelkeznek, mint a virtuális hálózaton belüli és a nyilvános internetről érkező különböző válaszokra. A megosztott horizontú DNS tipikus forgatókönyve, hogy a szolgáltatás dedikált verzióját adja meg a virtuális hálózaton belüli használatra.
 
-* **Az összes Azure-régióban elérhető**. Az Azure DNS saját zónák funkció az Azure nyilvános felhő összes Azure-régióban érhető el.
+* **Minden Azure-régióban elérhető**. Az Azure DNS Private Zones szolgáltatás az Azure nyilvános felhőben található összes Azure-régióban elérhető.
 
 ## <a name="capabilities"></a>Funkciók
 
-Az Azure DNS az alábbi képességeket biztosítja:
+Azure DNS a következő képességeket biztosítja:
 
-* **Automatikus regisztráció a privát zónák automatikus regisztrációnak engedélyezve van a csatolt virtuális hálózatból a virtuális gépek**. A virtuális gépek, regisztrált (hozzáadott) a privát zónához a magánhálózati IP-címek mutató rögzíti. Automatikus regisztrációnak engedélyezve van a virtuális hálózat hivatkozást a virtuális gép törlésekor az Azure DNS automatikusan eltávolítja a megfelelő DNS-rekord a társított saját zóna.
+* **Virtuális gépek automatikus regisztrálása egy olyan virtuális hálózatból, amely egy privát zónához van csatolva, és engedélyezve van az automatikus regisztráció**. A virtuális gépek regisztrálva vannak (hozzáadva) a privát zónához a magánhálózati IP-címekre mutató rekordokként. Ha az automatikus regisztrációval rendelkező virtuális hálózati kapcsolaton belül egy virtuális gép törölve lett, Azure DNS automatikusan eltávolítja a megfelelő DNS-rekordot a társított privát zónából.
 
-* **A privát zónához kapcsolódó virtuális hálózatok között támogatott továbbítása DNS-feloldás**. Közötti – virtuális hálózat DNS-feloldás nincs nincs explicit függőség úgy, hogy a virtuális hálózatok társviszonyban állnak egymással. Érdemes azonban, más esetekben (például HTTP-forgalom) virtuális hálózatok társviszonyba állítása.
+* **A továbbítási DNS-feloldás a privát zónához csatolt virtuális hálózatok között támogatott**. A virtuális hálózatok közötti DNS-feloldáshoz nincs olyan explicit függőség, amely a virtuális hálózatokat egymáshoz társítja. Előfordulhat azonban, hogy más forgatókönyvek (például HTTP-forgalom) esetében is szeretne egyenrangú virtuális hálózatokat használni.
 
-* **A virtuális hálózat hatókörén belül támogatott névkeresési DNS**. A privát zónák rendelt virtuális hálózaton belül egy privát IP-címet a DNS-névkeresési adja vissza, amely tartalmazza a gazdagép/rekord neve és a zóna nevét a utótagként teljes Tartománynevét.
+* **A fordított DNS-keresés a virtuális hálózat hatókörén belül támogatott**. A privát zónákhoz rendelt virtuális hálózaton belüli magánhálózati IP-címek névkeresési DNS-címkeresés a gazdagép/rekord nevét és a zóna nevét tartalmazó teljes tartománynevet adja vissza utótagként.
 
 ## <a name="known-issues"></a>Ismert problémák
-A következő elemek ismert hibák és az előzetes kiadásban problémák:
-* Ha törli a privát DNS-zónához társított virtuális hálózat, azzal nem törli a saját DNS-zóna mutató hivatkozásokat. A hivatkozás sikertelen lesz, ha hozza létre újra a virtuális hálózat azonos nevű és az erőforráscsoportot, és próbálja meg újra csatolása bármely saját DNS-zóna. A probléma megkerüléséhez, hozzon létre a virtuális hálózat egy másik erőforráscsoportban vagy egy másik nevet a ugyanabban az erőforráscsoportban.
-* Virtuális hálózat egy másik erőforráscsoportba vagy előfizetésbe helyezi át, ha nem frissíti a hivatkozásokat, a saját DNS-zóna. A névfeloldás az áthelyezett virtuális hálózat továbbra is működik, azonban megjelenik a virtuális hálózat régi ARM-azonosítók megtekintheti a virtuális hálózati kapcsolatok a privát DNS-zóna.
-* Jelenleg társított virtuális hálózatok, az Egyesült Arab Emírségek északi régiója, Egyesült Arab Emírségek középső, Dél-Afrika nyugati régiója, Dél-Afrika északi régiója, kelet-Kanadában, Dél-Franciaország lévő üzemeltetett sikertelen lehet, és láthatja a DNS-feloldási időszakos probléma. 
+A következő elemek ismert hibákat és problémákat észleltek az előzetes kiadásban:
+* Ha egy magánhálózati DNS-zónához csatolt virtuális hálózatot töröl, nem törli a magánhálózati DNS-zónára mutató hivatkozásokat. A hivatkozás meghiúsul, ha a virtuális hálózatot ugyanazzal a névvel és erőforráscsoporthoz hozza létre, és megpróbálja újra csatolni a saját DNS-zónához. A probléma megkerüléséhez hozzon létre egy másik erőforráscsoporthoz tartozó virtuális hálózatot, vagy adjon meg egy másik nevet ugyanabban az erőforráscsoporthoz.
+* Ha egy virtuális hálózatot másik erőforráscsoporthoz vagy előfizetésbe helyez át, a nem frissíti a magánhálózati DNS-zónára mutató hivatkozásokat. Az áthelyezett virtuális hálózat névfeloldása továbbra is működik, azonban a virtuális hálózat régi ARM-azonosítóit látja, amikor megtekinti a magánhálózati DNS-zóna virtuális hálózati kapcsolatait.
+* Jelenleg az Egyesült Arab Emírségek északi régiójában, az Egyesült Királyság nyugati régiójában, Dél-Afrikában, Dél-Afrikában, Észak-Kanadában, Kelet-Kanada, Dél-Afrika, és előfordulhat, hogy időszakos DNS-feloldási problémák merülhetnek fel. 
 
 
 ## <a name="other-considerations"></a>Egyéb szempontok
 
-Az Azure DNS a következő korlátozások vonatkoznak:
+A Azure DNS a következő korlátozásokkal rendelkezik:
 
-* Egy adott virtuális hálózati kapcsolhatók csak egy privát zónához, mint ha a virtuális gép DNS-rekordok automatikus regisztráció engedélyezve van. Több virtuális hálózat azonban csatolása egyetlen DNS-zónát.
-* Fordított DNS csak működik a társított virtuális hálózat privát IP-címtér
-* Fordított DNS, a társított virtuális hálózati magánhálózati IP-cím a virtuális gép alapértelmezett utótagját "internal.cloudapp.net" értéket ad vissza. Virtual Network hálózatokhoz használható, amely automatikus regisztrációnak engedélyezve van a privát zónához van csatolva, fordított DNS egy magánhálózati IP-címet visszaadja 2 teljes tartományneveket, egy alapértelmezett utótag *internal.cloudapp.net* és a egy másik, a privát zónák utótagot.
-* Feltételes továbbítás natív módon nem támogatott abban a pillanatban. Ahhoz, hogy a megoldás az Azure és helyszíni hálózat között. Lásd: [névfeloldás virtuális gépek és szerepkörpéldányok](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
+* Egy adott virtuális hálózat csak egy privát zónához kapcsolható, ha engedélyezve van a virtuális gépek DNS-rekordjainak automatikus regisztrálása. Azonban több virtuális hálózatot is csatolhat egyetlen DNS-zónához.
+* A fordított DNS csak a társított virtuális hálózat magánhálózati IP-címére működik
+* A csatolt virtuális hálózat magánhálózati IP-címéhez fordított DNS a "internal.cloudapp.net" értéket adja vissza a virtuális gép alapértelmezett utótagjának. Az automatikus regisztrációt engedélyező privát zónához kapcsolt virtuális hálózatok esetében a magánhálózati IP-címek fordított DNS-je 2 teljes tartománynevet ad vissza, egyet az alapértelmezett utótag *Internal.cloudapp.net* , a másik pedig a privát zóna utótagját.
+* A feltételes továbbítás jelenleg nem támogatott natív módon. Az Azure és a helyszíni hálózatok közötti megoldás engedélyezéséhez lásd [a virtuális gépek és a szerepkör](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)-példányok névfeloldását ismertető témakört.
+
  
 ## <a name="pricing"></a>Díjszabás
 
-Díjszabási információkért tekintse meg a [Azure DNS díjszabási](https://azure.microsoft.com/pricing/details/dns/).
+A díjszabással kapcsolatos információkért tekintse meg a [Azure DNS díjszabását](https://azure.microsoft.com/pricing/details/dns/).
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan hozhat létre a privát zónák az Azure DNS használatával [Azure PowerShell-lel](./private-dns-getstarted-powershell.md) vagy [Azure CLI-vel](./private-dns-getstarted-cli.md).
+* Megtudhatja, hogyan hozhat létre saját zónát Azure DNSban [Azure PowerShell](./private-dns-getstarted-powershell.md) vagy az [Azure CLI](./private-dns-getstarted-cli.md)használatával.
 
-* Olvassa el néhány gyakori [privát zónák – forgatókönyvek](./private-dns-scenarios.md) , amelyek megvalósíthatók az Azure DNS saját zónáival kapcsolatos.
+* További információ a privát [](./private-dns-scenarios.md) zónák Azure DNS-beli privát zónákkal való használatával kapcsolatban.
 
-* A gyakori kérdések és válaszok az Azure DNS privát zónái kapcsolatban, beleértve a viselkedést is várható bizonyos típusú műveletek, lásd: [Private DNS – gyakori kérdések](./dns-faq-private.md).
+* A Azure DNS privát zónákkal kapcsolatos gyakori kérdések és válaszok, beleértve a bizonyos típusú műveletek várható viselkedését, [saját DNS a gyakori](./dns-faq-private.md)kérdések című témakört.
 
-* További információ a DNS-zónák és rekordok funkcionáló [DNS-zónák és rekordok áttekintése](dns-zones-records.md).
+* A DNS-zónák és-rekordok megismerése a [DNS-zónák és-rekordok áttekintésével](dns-zones-records.md).
 
 * Ebben a dokumentumban az Azure egyéb lényeges [hálózat képességeivel](../networking/networking-overview.md) ismerkedhet meg.

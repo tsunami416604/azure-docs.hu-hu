@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: d03abee7c7a4adb65e1d6146501ee5b7d9e1534c
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 3db63be8856b5bd57323ecd0be767d09032404e9
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348659"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741891"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Űrlap-felismerő tárolók telepítése és futtatása
 
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az űrlap-felismerő tárolók használata előtt meg kell felelnie a következő előfeltételeknek:
 
-|Szükséges|Cél|
+|Kötelező|Cél|
 |--|--|
 |Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)és [Linux](https://docs.docker.com/engine/installation/#supported-platforms)rendszereken. A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> Windows rendszeren a Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
 |A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a beállításjegyzékekről, a tárházról, a tárolók és a tárolók képeiről, valamint az alapszintű `docker` parancsokról.|
@@ -97,14 +97,14 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recogn
 
 Miután a tároló a gazdagépen [](#the-host-computer)található, a következő folyamat használatával dolgozhat a tárolóval.
 
-1. [Futtassa a tárolót](#run-the-container-by-using-the-docker-run-command)a kötelező, de nem használt számlázási beállításokkal. További [példák](form-recognizer-container-configuration.md#example-docker-run-commands) a `docker run` parancsra.
+1. [Futtassa a tárolót](#run-the-container-by-using-the-docker-run-command)a kötelező számlázási beállításokkal. További [példák](form-recognizer-container-configuration.md#example-docker-run-commands) a `docker run` parancsra.
 1. [A tároló előrejelzési végpontjának lekérdezése](#query-the-containers-prediction-endpoint).
 
 ## <a name="run-the-container-by-using-the-docker-run-command"></a>A tároló futtatása a Docker Run parancs használatával
 
 A három tároló bármelyikének futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A parancs a következő paramétereket használja:
 
-| Helyőrző | Value |
+| Helyőrző | Érték |
 |-------------|-------|
 |{FORM_RECOGNIZER_API_KEY} | Ez a kulcs a tároló elindítására szolgál. Ez a Azure Portal **űrlap-felismerési kulcsok** lapon érhető el.  |
 |{FORM_RECOGNIZER_ENDPOINT_URI} | A számlázási végpont URI-értéke a Azure Portal űrlap- **felismerő eszköz áttekintés** lapján érhető el.|
