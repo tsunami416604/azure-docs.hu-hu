@@ -1,5 +1,5 @@
 ---
-title: Állítsa be az Apache Kafka on HDInsight használata az Azure portal – rövid útmutató
+title: A HDInsight Apache Kafka beállítása a Azure Portal-gyors útmutató használatával
 description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre Apache Kafka-fürtöt az Azure HDInsightban az Azure Portal használatával. A Kafka-témakörökről, -előfizetőkről és -fogyasztókról is olvashat.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -7,14 +7,14 @@ ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 61ae6cdf7c31c9a6e40860eb1dc4628bb2d37496
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 9fa6ad3c52e9b01fe9a62a2de52f62b1b1a95aa8
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150907"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779528"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Gyors útmutató: Az Apache Kafka-fürt létrehozása az Azure HDInsight az Azure portal használatával
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Gyors útmutató: Apache Kafka-fürt létrehozása az Azure HDInsight Azure Portal használatával
 
 Az Apache Kafka egy nyílt forráskódú, elosztott adatstreamelési platform. Sokszor használják üzenetközvetítőként, mivel a közzétételi-feliratkozási üzenetsorokhoz hasonló funkciókat kínál. 
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy SSH-ügyfél. További információkért lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka-fürt létrehozása
 
@@ -36,7 +36,7 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Lépjen a bal oldali menüből **+ erőforrás létrehozása** > **Analytics** > **HDInsight**.
+2. A bal oldali menüben navigáljon a **+ erőforrás** > létrehozása**elemzési** > **HDInsight**elemre.
    
     ![HDInsight-fürt létrehozása](./media/apache-kafka-get-started/create-hdinsight.png)
 
@@ -51,16 +51,16 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
    
    ![A HDInsight-beli Apache Kafka-fürt alapszintű konfigurálása](./media/apache-kafka-get-started/custom-basics-kafka.png)
 
-4. A __fürtkonfiguráció__, válassza ki a következő értékeket:
+4. A __fürtkonfiguráció__területen válassza ki a következő értékeket:
 
     | Beállítás | Érték |
     | --- | --- |
     | Fürt típusa | Kafka |
     | Version | Kafka 1.1.0 (HDI 3.6) |
 
-    Válassza ki **kiválasztása** mentse a fürttípus típus beállításait, és térjen vissza __alapjai__.
+    Válassza a **kijelölés** lehetőséget a fürt típusának beállításainak mentéséhez ésaz alapismeretekhez való visszatéréshez.
 
-    ![Fürttípus kiválasztása](./media/apache-kafka-get-started/kafka-cluster-type.png)
+    ![Fürt típusának kiválasztása](./media/apache-kafka-get-started/kafka-cluster-type.png)
 
 5. Az __Alapvető beállítások__ képernyőn adja meg vagy válassza ki a következő információkat:
 
@@ -78,7 +78,7 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
 
    ![Előfizetés kiválasztása](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
 
-    Válassza ki __tovább__ az alapszintű konfiguráció befejezéséhez.
+    Kattintson a __tovább__ gombra az alapszintű konfiguráció befejezéséhez.
 
 6. Ebben a rövid útmutatóban hagyja meg az alapértelmezett biztonsági beállításokat. Az Enterprise Security Package csomaggal kapcsolatos további információért lásd: [HDInsight-fürt konfigurálása az Enterprise Security Package használatára az Azure Active Directory Domain Services használatával](../domain-joined/apache-domain-joined-configure-using-azure-adds.md). A saját kulcs Apache Kafka-lemeztitkosításhoz való használatával kapcsolatos információért lásd: [Saját kulcs használata az Apache Kafka on Azure HDInsightban](apache-kafka-byok.md)
 
@@ -86,7 +86,7 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
 
    ![Fürt hozzáadása egy virtuális hálózathoz](./media/apache-kafka-get-started/kafka-security-config.png)
 
-7. A **Tárolás** panelen válasszon ki vagy hozzon létre egy Storage-fiókot. A jelen dokumentumban leírt lépésekben a többi mező alapértelmezett értékét ne módosítsa. Kattintson a __Tovább__ gombra a tárolókonfiguráció mentéséhez. A Data Lake Storage Gen2 használatával további információkért lásd: [a rövid útmutató: A HDInsight-fürtök beállítása](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+7. A **Tárolás** panelen válasszon ki vagy hozzon létre egy Storage-fiókot. A jelen dokumentumban leírt lépésekben a többi mező alapértelmezett értékét ne módosítsa. Kattintson a __Tovább__ gombra a tárolókonfiguráció mentéséhez. További információ a Data Lake Storage Gen2 használatáról: gyors [útmutató: Fürtök beállítása a HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)-ben.
 
    ![A tárfiók HDInsight-beállításainak konfigurálása](./media/apache-kafka-get-started/storage-configuration.png)
 
@@ -102,7 +102,7 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
 
 10. A __Speciális beállítások__ lapon kattintson a __Tovább__ gombra az alapértelmezett beállítások használatával való folytatáshoz.
 
-11. Az **Összegzés** lapon tekintse át a fürt konfigurációját. A __Szerkesztés__ hivatkozásai használatával módosítsa a hibás beállításokat. Végül válassza **létrehozás** a fürt létrehozásához.
+11. Az **Összegzés** lapon tekintse át a fürt konfigurációját. A __Szerkesztés__ hivatkozásai használatával módosítsa a hibás beállításokat. Végül válassza a **Létrehozás** elemet a fürt létrehozásához.
 
     ![A fürtkonfiguráció összegzése](./media/apache-kafka-get-started/kafka-configuration-summary.png)
 
@@ -110,7 +110,7 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
-1. Az Apache Kafka-fürt az elsődleges átjárócsomóponthoz csatlakozik, használja a következő parancsot. Cserélje le az `sshuser` elemet az SSH-felhasználónévre. Cserélje le `mykafka` az Apache Kafkacluster nevére.
+1. A Apache Kafka-fürt elsődleges fő csomópontjára való kapcsolódáshoz használja a következő parancsot. Cserélje le az `sshuser` elemet az SSH-felhasználónévre. Cserélje `mykafka` le az helyére az Apache-Kafkacluster nevét.
 
     ```bash
     ssh sshuser@mykafka-ssh.azurehdinsight.net
@@ -122,7 +122,7 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
 
     Miután csatlakozott, az alábbi szöveghez hasonló információkat lát:
     
-    ```text
+    ```output
     Authorized uses only. All activity may be monitored and reported.
     Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
     
@@ -140,42 +140,41 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
     Welcome to Apache Kafka on HDInsight.
     
     Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
-    ssuhuser@hn0-mykafk:~$
     ```
 
-## <a id="getkafkainfo"></a>Az Apache Zookeeper és a közvetítő gazdagép információinak lekérése
+## <a id="getkafkainfo"></a>Az Apache Zookeeper és a Broker gazdagép adatainak beszerzése
 
-A Kafka használata során ismernie kell a *Apache Zookeeper* és *Broker* gazdagépek. Az Apache Kafka API és a Kafkában elérhető számos segédprogram használja ezeket a gazdagépeket.
+A Kafka használatakor ismernie kell az *Apache Zookeeper* és a *Broker* gazdagépeit. Az Apache Kafka API és a Kafkában elérhető számos segédprogram használja ezeket a gazdagépeket.
 
-Ebben a szakaszban a gazdagép adatait az Apache Ambari REST API a fürtön kap.
+Ebben a szakaszban a gazdagépre vonatkozó információkat a fürt Apache Ambari-REST API szerezheti be.
 
-1. Telepítés [jq](https://stedolan.github.io/jq/), egy parancssori JSON feldolgozó. A segédprogram JSON-dokumentumok elemzését végzi, és olyan hasznos, elemzés, a gazdagép adatait. Nyitott fennálló SSH-kapcsolatból, adja meg az alábbi paranccsal telepíthető `jq`:
+1. Telepítse a [jQ](https://stedolan.github.io/jq/)parancssori JSON-processzort. Ez a segédprogram a JSON-dokumentumok elemzésére szolgál, és hasznos a gazdagép adatainak elemzéséhez. Az Open SSH-kapcsolatban adja meg a következő parancsot a `jq`telepítéséhez:
    
     ```bash
     sudo apt -y install jq
     ```
 
-2. Állítsa be a környezeti változók. Cserélje le `PASSWORD` és `CLUSTERNAME` a fürt bejelentkezési jelszava és a fürt neve rendre, majd adja meg a parancsot:
+2. Környezeti változók beállítása. Cserélje `PASSWORD` le `CLUSTERNAME` a és a nevet a fürt bejelentkezési jelszavára és a fürt nevére, majd írja be a parancsot:
 
     ```bash
     export password='PASSWORD'
     export clusterNameA='CLUSTERNAME'
     ```
 
-3. Bontsa ki a fürt megfelelően kisbetűsek nevét. A fürt nevét, a tényleges kis-és várható, a fürt létrehozási módjától függően eltérő lehet. Ez a parancs szerezze be a tényleges kis-és nagybetűhasználatot, egy változó tárolja, és majd jelenítse meg a megfelelő cased nevét és a korábban megadott nevét. Írja be a következő parancsot:
+3. Helyesen kibontott fürt neve. A fürt nevének tényleges burkolata különbözhet attól függően, hogy a fürt hogyan lett létrehozva. Ez a parancs beolvassa a tényleges burkolatot, tárolja egy változóban, majd megjeleníti a megfelelő tokozási nevet és a korábban megadott nevet. Írja be a következő parancsot:
 
     ```bash
     export clusterName=$(curl -u admin:$password -sS -G "https://$clusterNameA.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     echo $clusterName, $clusterNameA
     ```
 
-4. Környezeti változók Zookeeper gazdagépadatok, használja az alábbi parancsot. A parancs lekéri a fürtözni Zookeeper, majd csak az első két tételeket ad vissza. Ez azért van, mert hasznos lehet a redundancia, ha az egyik gazdagép esetleg nem érhető el.
+4. A Zookeeper gazdagép-információkkal rendelkező környezeti változók beállításához használja az alábbi parancsot. A parancs lekéri az összes Zookeeper-gazdagépet, majd csak az első két bejegyzést adja vissza. Ez azért van, mert hasznos lehet a redundancia, ha az egyik gazdagép esetleg nem érhető el.
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin:$password -G http://headnodehost:8080/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
     ```
 
-    A parancs közvetlenül a fürt átjárócsomópontján kérdezi le az Ambari szolgáltatást. Is elérhető az Ambari használatával nyilvános címe `https://$CLUSTERNAME.azurehdinsight.net:80/`. Egyes hálózati beállítások megakadályozhatják a nyilvános cím elérését. Ilyen például a hálózati biztonsági csoportok (NSG-k) használata a HDInsighthoz való hozzáférés korlátozására a virtuális hálózatokon.
+    A parancs közvetlenül a fürt átjárócsomópontján kérdezi le az Ambari szolgáltatást. A Ambari a nyilvános címe `https://$CLUSTERNAME.azurehdinsight.net:80/`alapján is elérheti. Egyes hálózati beállítások megakadályozhatják a nyilvános cím elérését. Ilyen például a hálózati biztonsági csoportok (NSG-k) használata a HDInsighthoz való hozzáférés korlátozására a virtuális hálózatokon.
 
 5. A környezeti változók helyes beállításának ellenőrzését az alábbi paranccsal végezheti el:
 
@@ -227,7 +226,7 @@ A Kafka *témakörökben* tárolja az adatstreameket. A `kafka-topics.sh` segéd
 
         Az Apache Kafka nem észleli a tartalék Azure-tartományokat. Témakörök számára történő partícióreplikák létrehozásakor lehetséges, hogy a Kafka nem a magas rendelkezésre állásnak megfelelően osztja ki a replikákat.
 
-        Magas rendelkezésre állás biztosítása érdekében használhatja a [Apache Kafka partíció-újraegyensúlyozó eszközt](https://github.com/hdinsight/hdinsight-kafka-tools). Ezt az eszközt egy SSH-kapcsolatból kell futtatni az Apache Kafka-fürt főcsomópontjához.
+        A magas rendelkezésre állás biztosítása érdekében használja a [Apache Kafka Partition rebalance eszközt](https://github.com/hdinsight/hdinsight-kafka-tools). Ezt az eszközt egy SSH-kapcsolatból kell futtatni az Apache Kafka-fürt főcsomópontjához.
 
         Az Apache Kafka-adatok lehető legmagasabb rendelkezésre állása érdekében egyensúlyozza újra a témaköre partícióreplikáit a következő esetekben:
 
@@ -288,7 +287,7 @@ Kövesse az alábbi lépéseket a rekordoknak a korábban létrehozott test tém
 
 4. Használja a __Ctrl + C__ billentyűparancsot a fogyasztó leállításához.
 
-Szoftveresen is létrehozhat előállítókat és fogyasztókat. Ez az API használatának példájáért lásd a [Apache Kafka Producer és Consumer API-hoz a HDInsight](apache-kafka-producer-consumer-api.md) dokumentum.
+Szoftveresen is létrehozhat előállítókat és fogyasztókat. Az API használatára példaként tekintse meg a [Apache Kafka producer és fogyasztói API HDInsight-](apache-kafka-producer-consumer-api.md) dokumentummal című témakört.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -308,4 +307,4 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Apache Spark használata az Apache kafka platformmal](../hdinsight-apache-kafka-spark-structured-streaming.md)
+> [Apache Spark használata a Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

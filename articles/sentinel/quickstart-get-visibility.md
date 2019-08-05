@@ -1,6 +1,6 @@
 ---
-title: Sentinel Azure rövid útmutató – Ismerkedés az Azure-on Előzetesben Sentinel-|} A Microsoft Docs
-description: Sentinel Azure rövid útmutató – Ismerkedés az Azure-Sentinel
+title: Azure Sentinel rövid útmutató – első lépések az Azure Sentinel előzetes verziójával | Microsoft Docs
+description: Azure Sentinel rövid útmutató – az Azure Sentinel használatának első lépései
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -16,88 +16,88 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 75bfdce02313ab7e799f6535f247407c239653b8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c6434b4f5808c349d5e0ab04dafc5233f6ec63ac
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619809"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780468"
 ---
-# <a name="quickstart-get-started-with-azure-sentinel-preview"></a>Gyors útmutató: Ismerkedés az Azure-Sentinel-on Előzetesben
+# <a name="quickstart-get-started-with-azure-sentinel-preview"></a>Gyors útmutató: Ismerkedés az Azure Sentinel előzetes verziójával
 
 > [!IMPORTANT]
 > Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-Ebben a rövid, megtudhatja, hogyan is gyorsan megtekintheti és figyelheti, mi történik az Azure Sentinel-környezet között. Az adatforrásokhoz csatlakozik az Azure-Sentinel, miután kap az azonnali megjelenítése és elemzése az adatok így tudhatja, mi történik a csatlakoztatott minden adatforrás esetében. Azure Sentinel biztosítja az eszközök már elérhető az Azure, valamint a táblák teljes képességeit biztosító irányítópultok és a biztosít a naplók és a lekérdezések analytics beépített diagramokat. Beépített irányítópultokkal, vagy teljesen új vagy egy meglévő irányítópultot alapján könnyen, hozzon létre egy új irányítópultot. 
+Ebből a rövid útmutatóból megtudhatja, hogyan lehet gyorsan megtekinteni és figyelni, hogy mi történik a környezetben az Azure Sentinel használatával. Miután csatlakoztatta az adatforrásokat az Azure Sentinelhez, azonnal megjelenítheti és elemezheti az adatait, hogy tudja, mi történik az összes csatlakoztatott adatforráson. Az Azure Sentinel olyan irányítópultokat biztosít, amelyek az Azure-ban már elérhető eszközök teljes körű hatékonyságát, valamint a naplókat és a lekérdezéseket is lehetővé teszik a beépített táblázatokhoz és diagramokhoz. Használhatja a beépített irányítópultokat, vagy létrehozhat egy új irányítópultot egyszerűen, akár teljesen, akár egy meglévő irányítópulton. 
 
 ## <a name="get-visualization"></a>Vizualizáció beolvasása
 
-Megjelenítése és elemzése, hogy mi történik, az adott környezet, először tekintse meg az áttekintő irányítópult képet kapjon a szervezete biztonsági állapotát. Ezek a csempék lehatolhat a nyers adatokat, amelyből létre minden egyes elem kattintva. Zaj csökkentésére, és tekintse át és vizsgálja meg a riasztások számának minimalizálása érdekében az Azure-Sentinel használ fusion technika, amelyek esetek riasztások. **Esetek** csoportjai, a kapcsolódó riasztásokat, amelyek együtt hozzon létre egy gyakorlatban hasznosítható eseményt, vizsgálja meg és oldja meg.
+A környezettel kapcsolatos események megjelenítéséhez és elemzéséhez először tekintse meg az Áttekintés irányítópultot, és kérje meg a szervezete biztonsági helyzetének a megismerését. A csempék minden elemére kattintva megtekintheti azokat a nyers adatforrásokat, amelyekről létrehozták őket. A zaj csökkentése és a riasztások számának csökkentése érdekében az Azure Sentinel fúziós technikát használ a riasztások incidensekkel való összekapcsolásához. az incidensek a kapcsolódó riasztások csoportjai, amelyek együttesen megvizsgálható és elhárítható, végrehajtható incidenseket hoznak létre.
 
-- Az Azure Portalon válassza ki az Azure-Sentinel, és válassza ki a figyelni kívánt munkaterülethez.
+- A Azure Portal válassza az Azure Sentinel lehetőséget, majd válassza ki a figyelni kívánt munkaterületet.
 
   ![Az Azure Sentinel áttekintése](./media/qs-get-visibility/overview.png)
 
-- A felső eszköztáron jelzi, hogy hány eseményt a kiválasztott időszakra kapott, és a megelőző 24 órához hasonlítja össze. Az eszköztár jelzi, hogy ezeket az eseményeket a, a riasztásokat, amelyek korábban aktivált (a kis számú jelöli változása az elmúlt 24 órában), és ezután Megadja, hogy az események, hány meg nyitva, folyamatban van, és lezárt. Ellenőrizze, hogy nem olyan drámai növelését, vagy dobja el az események száma. Ha egy közvetlen, annak oka az lehet, hogy a kapcsolat az Azure-Sentinel jelentéskészítés kikapcsolva. Ha növelését, valami gyanús azért következhetett be. Ellenőrizze, hogy van-e új riasztásokat.
+- A felső eszköztáron látható, hogy hány esemény van kiválasztva a kiválasztott időszakban, és összehasonlítja azt az előző 24 órában. Az eszköztár tájékoztat ezekről az eseményekről, az aktivált riasztásokról (a kis szám az elmúlt 24 órában változik), majd elmondja Önnek, hogy hányan nyitott, folyamatban és lezárult. Ellenőrizze, hogy az események száma nem drámai növekedést vagy csökkenést eredményez-e. Ha van eldobás, lehetséges, hogy a kapcsolatok leállították a jelentést az Azure Sentinelnek. Ha nő a növekedés, előfordulhat, hogy gyanús esemény történt. Ellenőrizze, hogy vannak-e új riasztások.
 
-   ![Az Azure Sentinel tölcsér](./media/qs-get-visibility/funnel.png)
+   ![Azure Sentinel tölcsér](./media/qs-get-visibility/funnel.png)
 
-Az Áttekintés oldal törzse betekintést enged egyetlen pillantással a munkaterület biztonsági állapotáról:
+Az áttekintő lap fő törzse áttekintést nyújt a munkaterület biztonsági állapotáról:
 
-- **Események és riasztások adott idő alatt**: Események és ezen események alapján létrehozott hány riasztást számát sorolja fel. Ha olyan kiugrás, amely a szokatlan, kell megjelennie riasztások esetében – ha szokatlan körülményt ahol egy kiugrás tapasztalható események, de nem látja a riasztásokat lát, lehet adhatnak okot.
+- **Események és riasztások az idő múlásával**: Felsorolja az események számát, valamint azt, hogy az események hány riasztást hoztak létre. Ha olyan tüske jelenik meg, amely szokatlan, akkor riasztásokat kell látnia – ha van valami szokatlan, hogy van-e olyan esemény, amely az események között van, de nem látja a riasztásokat, aggodalomra adhat okot.
 
-- **A lehetséges kártevő események**: Ha rosszindulatú is lehet ismert forrásokból származó forgalmat észlelt, Azure Sentinel-riasztást jelenít meg a térképen. Narancssárga megtekintéséhez, hogy a bejövő forgalom: valaki megpróbál hozzáférni a szervezet egy ismert rosszindulatú IP-címről. Ha kimenő (piros) tevékenység, az azt jelenti, hogy a hálózatról, folyamatos adatátvitel kívül a szervezet számára egy ismert rosszindulatú IP-címet.
+- **Lehetséges kártékony események**: Ha a rendszer forgalmat észlel a kártékonyként ismert forrásokból, az Azure Sentinel riasztást küld a térképen. Ha a narancssárga látható, akkor bejövő forgalom: valaki megpróbál hozzáférni a szervezethez egy ismert kártékony IP-címről. Ha a kimenő (vörös) tevékenységet látja, az azt jelenti, hogy a hálózatról származó adatok a szervezetből egy ismert kártékony IP-címről áramlanak.
 
-   ![Azure Sentinel-térkép](./media/qs-get-visibility/map.png)
-
-
-- **Legutóbbi esetek**: A legutóbbi esetek, súlyosság és az esethez társított riasztások számának megtekintéséhez. Ha egy adott típusú riasztás hirtelen csúcs látható, ez azt jelentheti, hogy nincs-e folyamatban aktív támadás. Például ha rendelkezik egy hirtelen csúcs 20 Pass-the-hash események az Azure ATP, lehetséges, hogy valaki éppen megpróbálja a támadásokkal szemben.
-
-- **Adatforrás-anomáliák**: A Microsoft az adatelemzők létrehozott modellek, amelyek folyamatosan az adatokat az adatforrásból a rendellenességeket. Ha nincs felismerheti a rendellenességeket, semmi nem jelenik meg. Rendellenességek észlelése esetén, a mély kell őket, tekintse meg az ismertetése. Kattintson például az Azure-tevékenység a megnövekedett. Kattintson a **diagram** tekintse meg, amikor a megnövekedett történt, és szűrjön rá az tevékenységeket, hogy mi okozta, hogy a megnövekedett időszak során fellépő.
-
-   ![Azure Sentinel-térkép](./media/qs-get-visibility/anomolies.png)
-
-## Beépített irányítópultokkal<a name="dashboards"></a>
-
-Beépített irányítópultok biztosít, lehetővé teszi, hogy részletes csatlakoztatott adatforrásokból származó integrált adatok ismerje meg, az esemény jön létre ezeket a szolgáltatásokat. A beépített irányítópultok közé tartozik az Azure-azonosító, Azure-tevékenységi események és a helyszínen, amely lehet a kiszolgálók, az első entitás riasztásait, semmilyen harmadik félnek, beleértve a tűzfal forgalmi naplók, az Office 365 és a Windows-alapú nem biztonságos protokollokkal adatait a Windows-események események.
-
-1. A **beállítások**válassza **irányítópultok**. A **telepített**, láthatja, hogy a telepített irányítópultjait. A **összes** láthatja, hogy az egész gyűjtemény legyen elérhető telepítés beépített irányítópultok. 
-2. Keresse meg a meghatározott irányítópultra szeretné megtekinteni a teljes listája és leírása, mi minden kínál. 
-3. Feltételezve, hogy használja az Azure AD-ben üzembe, és futtat az Azure-Sentinel, javasoljuk, hogy telepítse legalább a következőkben felsorolt irányítópultok:
-   - **Az Azure AD**: Használja az egyik vagy mindkét alábbi:
-       - **Az Azure AD bejelentkezési** elemzi a bejelentkezések megtekintéséhez, hogy vannak-e rendellenességek időbeli. Ezt az irányítópultot biztosít a sikertelen bejelentkezések alkalmazások, eszközök és a helyek, észlelheti, egyetlen pillantással szokatlan történik, ha. Több sikertelen bejelentkezést figyelmet fordítania. 
-       - **Az Azure AD auditnaplóinak** elemzi a felügyeleti tevékenységek, például a felhasználók módosításokat (hozzáadhatja, eltávolíthatja, stb.), csoportok létrehozását és módosítását.  
-
-   - Adjon hozzá egy irányítópultot, a tűzfal. Például adja hozzá a Palo Alto irányítópultot. Az irányítópult a tűzfal forgalmat, hogy a tűzfal adatok és a veszélyforrások elleni események közti korrelációk elemzi, és kiemeli a gyanús eseményeket entitások között. Irányítópultok nyújt információkat a forgalom a trendeket, és lehetővé teszi a feltárásához és szűrheti az eredményeket. 
-
-      ![PAL Alto irányítópult](./media/qs-get-visibility/palo-alto-week-query.png)
+   ![Azure Sentinel-Térkép](./media/qs-get-visibility/map.png)
 
 
-Testre szabhatja az irányítópultokat a fő lekérdezés szerkesztésével vagy ![gomb](./media/qs-get-visibility/edit-query-button.png). A gombra ![gomb](./media/qs-get-visibility/go-to-la-button.png) nyissa meg a [van a lekérdezés szerkesztése a Log Analytics](../azure-monitor/log-query/get-started-portal.md), és kattintson a három pontra (...), és válassza ki **testreszabás csempék adatainak**, ami lehetővé teszi a fő Időszűrő szerkesztéséhez, vagy távolítsa el az adott csempét az irányítópulton.
+- **Legutóbbi incidensek**: A legutóbbi incidensek, súlyosságuk és az incidenshez kapcsolódó riasztások számának megtekintéséhez. Ha egy adott típusú riasztás hirtelen csúcsát látja, az azt jelentheti, hogy jelenleg fut aktív támadás. Ha például hirtelen 20 Pass-The-hash típusú eseményt használ az Azure ATP-ből, lehetséges, hogy valaki megpróbálja megtámadni Önt.
 
-Lekérdezések való használatáról további információkért lásd: [oktatóanyag: A Log Analytics a vizuális adatok](../azure-monitor/learn/tutorial-logs-dashboards.md)
+- **Adatforrás-rendellenességek**: A Microsoft adatelemzői olyan modelleket hoztak létre, amelyek folyamatosan keresik az adatforrásokból származó adatvesztési rendellenességeket. Ha nincs rendellenesség, semmi sem jelenik meg. Ha rendellenességek észlelhetők, érdemes részletesen bemutatni, hogy mi történt. Kattintson például az Azure-tevékenység csúcsára. A diagramra kattintva megtekintheti, hogy mikor történt a nyárs, majd szűrheti az adott időszakban bekövetkezett tevékenységeket, hogy megtudja, mi okozta a nyársat.
 
-### <a name="add-a-new-tile"></a>Adjon hozzá egy új csempe
+   ![Azure Sentinel-Térkép](./media/qs-get-visibility/anomolies.png)
 
-Ha szeretne egy új csempe hozzáadása, hozzáadhat egy meglévő irányítópultot, egy Ön által létrehozott és a egy Azure-Sentinel beépített irányítópult. 
-1. A Log Analyticsben, hozzon létre egy csempe található utasításokat követve [oktatóanyag: A Log Analytics a vizuális adatok](../azure-monitor/learn/tutorial-logs-dashboards.md). 
-2. A csempe létrehozása után a **PIN-kód**, válassza ki a használni kívánt jelennek meg a csempét az irányítópulton.
+## Beépített irányítópultok használata<a name="dashboards"></a>
+
+A beépített irányítópultok integrált adatokkal szolgálnak a csatlakoztatott adatforrásokból, így részletesen megismerheti az ezekben a szolgáltatásokban létrehozott eseményeket. A beépített irányítópultok közé tartozik az Azure-azonosító, az Azure-tevékenység eseményei és a helyszíni adatok, amelyek a kiszolgálókról származó Windows-eseményektől, az első féltől származó riasztásokból, a tűzfalakon, az Office 365-ből és a Windowson alapuló nem biztonságos protokollokból származó adatokat tartalmazhatnak. események.
+
+1. A **Beállítások**területen válasszaaz irányítópultok lehetőséget. A **telepítés**alatt láthatja az összes telepített irányítópultot. Az **összes** lehetőség alatt megtekintheti a telepítéshez elérhető beépített irányítópultok teljes katalógusát. 
+2. Egy adott irányítópult megkeresésével megtekintheti az egyes ajánlatok teljes listáját és leírását. 
+3. Feltételezve, hogy az Azure AD-t használja az Azure Sentinel használatának megkezdéséhez, javasoljuk, hogy legalább a következő irányítópultokat telepítse:
+   - **Azure ad**: Használja az alábbiak egyikét vagy mindkettőt:
+       - Az **Azure ad-bejelentkezések** időben elemzik a bejelentkezéseket, hogy megjelenjenek-e anomáliák. Ez az irányítópult lehetővé teszi, hogy az alkalmazások, az eszközök és a helyszínek nem tudnak bejelentkezni, így észreveheti, ha valami szokatlan történik. Figyeljen a több sikertelen bejelentkezésre. 
+       - Az **Azure ad-naplók** elemzik a rendszergazdai tevékenységeket, például a felhasználók változásait (Hozzáadás, eltávolítás stb.), a csoportok létrehozását és a módosításokat.  
+
+   - Adjon hozzá egy irányítópultot a tűzfalhoz. Adja meg például a Palo Alto irányítópultot. Az irányítópult elemzi a tűzfal forgalmát, és összekapcsolja a tűzfal adatai és a veszélyforrás események közötti összefüggéseket, és kiemeli a gyanús eseményeket az entitások között. Az irányítópultok információt biztosítanak a forgalom trendjeiről, és lehetővé teszi az eredmények részletezését és szűrését. 
+
+      ![Pal Alto-irányítópult](./media/qs-get-visibility/palo-alto-week-query.png)
+
+
+Az irányítópultokat a főlekérdezés ![gomb](./media/qs-get-visibility/edit-query-button.png)szerkesztésével is testreszabhatja. ![A gombra](./media/qs-get-visibility/go-to-la-button.png) kattintva megtekintheti a log Analytics a [lekérdezés szerkesztéséhez](../azure-monitor/log-query/get-started-portal.md), és kiválaszthatja a három pontot (...), és kiválaszthatja a csempék **testreszabása**lehetőséget, amely lehetővé teszi a Főidő szűrő szerkesztését, vagy a Az irányítópult adott csempéi.
+
+További információ a lekérdezések [használatáról: oktatóanyag: Vizualizációs adatLog Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
+
+### <a name="add-a-new-tile"></a>Új csempe hozzáadása
+
+Ha új csempét szeretne felvenni, azt hozzáadhatja egy meglévő irányítópulthoz, vagy létrehozhatja azt, vagy egy beépített Azure Sentinel-irányítópultot is. 
+1. A log Analytics-ban hozzon létre egy csempét a [következő oktatóanyagban található utasítások használatával: Vizualizációs adatLog Analyticsek](../azure-monitor/learn/tutorial-logs-dashboards.md). 
+2. Miután létrehozta a csempét, a **PIN**elemnél válassza ki azt az irányítópultot, amelyben meg szeretné jeleníteni a csempét.
 
 ## <a name="create-new-dashboards"></a>Új irányítópultok létrehozása
-Előzmények nélküli új irányítópult létrehozása, vagy egy beépített irányítópult alapjaként használni, az új irányítópulthoz.
+Létrehozhat egy új irányítópultot a semmiből, vagy használhat egy beépített irányítópultot az új irányítópult alapjaként.
 
-1. Sablon nélkül hozzon létre egy új irányítópultot, válassza a **irányítópultok** , majd **+ új irányítópult**.
-2. Válassza ki az előfizetést, az irányítópult jön létre, és adjon meg egy leíró nevet. Minden irányítópult egy mint minden más Azure-erőforrás, és hozzárendelheti szerepkörök (RBAC) meghatározásához és a limit, ki férhet hozzá. 
-3. Az engedélyezéshez megjelenjen a Vizualizációk rögzítése az irányítópultokon, akkor megoszthatja azt. Kattintson a **megosztás** , majd **felhasználók kezelése**. 
+1. Új irányítópult létrehozásához válassza az irányítópultok, majd az **+ új irányítópult**elemet.
+2. Válassza ki azt az előfizetést, amelyben az irányítópult létre van hozva, és adjon meg egy leíró nevet. Minden irányítópult egy olyan Azure-erőforrás, mint bármely más, és hozzárendelheti az RBAC-szerepköröket, és korlátozhatja, hogy ki férhet hozzá. 
+3. Annak engedélyezéséhez, hogy az irányítópulton megjelenjenek a vizualizációk, meg kell osztania azt. Kattintson a **megosztás** , majd a **felhasználók kezelése**lehetőségre. 
  
-1. Használja a **hozzáférés ellenőrzése** és **szerepkör-hozzárendelések** mint bármely más Azure-beli erőforráshoz. További információkért lásd: [megosztás Azure-irányítópultok RBAC használatával](../azure-portal/azure-portal-dashboard-share-access.md).
+1. A **hozzáférés** -és **szerepkör** -hozzárendeléseket a többi Azure-erőforráshoz hasonlóan használhatja. További információ: Azure- [irányítópultok megosztása RBAC használatával](../azure-portal/azure-portal-dashboard-share-access.md).
 
 
 ## <a name="new-dashboard-examples"></a>Új irányítópult-példák
 
-Az alábbi mintalekérdezés lehetővé teszi, hogy a forgalom trendek összehasonlíthasson hét. Eszköz forgalmazói és futtassa a lekérdezést a adatforrás könnyedén válthat. Ez a példa SecurityEvent használja a Windows, a bármely más tűzfalat AzureActivity vagy CommonSecurityLog futtathatja válthat.
+A következő minta lekérdezéssel összehasonlíthatja a forgalom trendjeinek hetek közötti összehasonlítását. Egyszerűen átválthatja, hogy melyik eszköz gyártója és adatforrás futtatja a lekérdezést. Ez a példa a Windows SecurityEvent használja, átválthatja a AzureActivity-on vagy a CommonSecurityLog-on való futtatásra bármely más tűzfalon.
 
      |where DeviceVendor = = "Palo Alto Networks":
       // week over week query
@@ -107,7 +107,7 @@ Az alábbi mintalekérdezés lehetővé teszi, hogy a forgalom trendek összehas
       | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
 
 
-Előfordulhat, hogy szeretne létrehozni egy lekérdezést, amely magában foglalja a több forrásból származó adatokat. Létrehozhat egy lekérdezést, amely az Azure Active Directory naplóinak újonnan létrehozott új felhasználókat, és ellenőrizze, hogy a felhasználó létrehozásának 24 órán belül hozzárendelési módosítások elvégzése szerepkör elindult naplózza az Azure-ellenőrzések. A gyanús tevékenységek jelennek meg az irányítópulton:
+Előfordulhat, hogy olyan lekérdezést szeretne létrehozni, amely több forrásból származó adatokkal rendelkezik. Létrehozhat egy olyan lekérdezést, amely megkeresi Azure Active Directory naplókat az imént létrehozott új felhasználók számára, majd ellenőrzi az Azure-naplókat, hogy a felhasználó elindította-e a szerepkör-hozzárendelés változásait 24 órán belül. Ez az irányítópulton a gyanús tevékenység jelenik meg:
 
     AuditLogs
     | where OperationName == "Add user"
@@ -117,26 +117,26 @@ Előfordulhat, hogy szeretne létrehozni egy lekérdezést, amely magában fogla
     | project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
     | project-away user1
 
-Az adatokat, és azokat, amit keres személy szerepkör alapján különböző irányítópultokat hozhat létre. Például a hálózat rendszergazdájával, hogy a tűzfal-adatokat tartalmaz egy irányítópultot hozhat létre. Milyen gyakran szeretné őket, nézze meg szeretné tekinteni a napi dolgot vannak-e azon alapuló irányítópultokat is létrehozhat, és a többi kívánt elemeket ellenőrzése óránként egyszer, például érdemes tekintse meg az Azure AD bejelentkezési óránként anomali keresése es. 
+Különböző irányítópultokat hozhat létre az adatelemzést végző személy és a keresett személyek szerepköre alapján. Létrehozhat például egy irányítópultot a hálózati rendszergazdának, amely magában foglalja a tűzfal adatait is. Irányítópultokat is létrehozhat, attól függően, hogy milyen gyakran szeretné megtekinteni őket, hogy vannak-e olyan dolgok, melyeket naponta szeretne ellenőrizni, és ha szeretné, hogy a rendszer óránként ellenőrizze az Azure AD-bejelentkezéseket, érdemes megkeresni a anomali es. 
 
-## <a name="create-new-detections"></a>Hozzon létre új észlelések
+## <a name="create-new-detections"></a>Új észlelések létrehozása
 
-Létrehozza a észlelések az [azokat az adatforrásokat, akkor csatlakozik Azure Sentinel-](connect-data-sources.md) a szervezet a fenyegetések kivizsgálására.
+Az [Azure sentinelhez csatlakoztatott](connect-data-sources.md) adatforrások észlelésének előállítása a szervezeten belüli fenyegetések kivizsgálásához.
 
-Amikor létrehoz egy új észlelés, használhatja a csatlakoztatott adatforrások vannak igazítva, a Microsoft biztonsági kutatói által kialakított beépített észlelések.
+Új észlelés létrehozásakor kihasználhatja a Microsoft biztonsági kutatói által készített beépített észleléseket, amelyek a csatlakoztatott adatforrásokhoz vannak igazítva.
 
-1. [A GitHub-Közösségben](https://github.com/Azure/Azure-Sentinel/tree/master/Detections) nyissa meg a **észlelések** mappára, és válassza a megfelelő mappákat.
-   ![megfelelő mappákat](./media/qs-get-visibility/detection-folders.png)
+1. [A GitHub-Közösségben](https://github.com/Azure/Azure-Sentinel/tree/master/Detections) lépjen az **észlelések** mappára, és válassza ki a megfelelő mappákat.
+   ![kapcsolódó mappák](./media/qs-get-visibility/detection-folders.png)
  
-3.  Nyissa meg a **Analytics** lapot, és válasszon **hozzáadása**.
-   ![a Log Analytics szabály létrehozása](./media/qs-get-visibility/query-params.png)
+3.  Lépjen az **elemzés** lapra, és válassza a **Hozzáadás**lehetőséget.
+   ![szabály létrehozása a Log Analyticsban](./media/qs-get-visibility/query-params.png)
 
-3.  A szabály minden paraméter másolja, majd kattintson a **létrehozás**.
-   ![Riasztási szabály létrehozása](./media/qs-get-visibility/create-alert-rule.png)
+3.  Másolja az összes paramétert a szabályba, és kattintson a **Létrehozás**gombra.
+   ![riasztási szabály létrehozása](./media/qs-get-visibility/create-alert-rule.png)
 
  
 ## <a name="next-steps"></a>További lépések
-Ebből a gyors útmutatóból megtudhatta, hogyan kezdheti el az Azure-Sentinel. A következő oktatóanyagban [fenyegetések észlelése](tutorial-detect-threats.md).
+Ebben a rövid útmutatóban megtanulta, hogyan kezdheti el az Azure Sentinel használatát. Folytassa az Oktatóanyaggal a [fenyegetések észleléséhez](tutorial-detect-threats.md).
 > [!div class="nextstepaction"]
-> [Fenyegetések észlelése](tutorial-detect-threats.md) fenyegetések a válaszok automatizálására.
+> [Észlelheti](tutorial-detect-threats.md) a fenyegetésekre adott válaszok automatizálását.
 

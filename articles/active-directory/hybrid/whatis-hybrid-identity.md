@@ -1,6 +1,6 @@
 ---
-title: Mi a hibrid identitás az Azure Active Directoryval?
-description: Hibrid identitás van egy általános felhasználói identitás a hitelesítéshez és engedélyezéshez kellene a helyszínen és a felhőben.
+title: Mi a hibrid identitás a Azure Active Directory?
+description: A hibrid identitás közös felhasználói identitással rendelkezik a hitelesítéshez és az engedélyezéshez mind a helyszínen, mind a felhőben.
 keywords: az Azure AD Connect bemutatása, az Azure AD Connect áttekintése, mi az Azure AD Connect, az Active Directory telepítése
 services: active-directory
 author: billmath
@@ -13,30 +13,30 @@ ms.date: 05/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c43238d44b2309d105ef14e696a5a16848d0b58
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: c3d681dd06f07f6174e31b59cccf42df5dc16a1e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65896833"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779853"
 ---
-# <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Mi a hibrid identitás az Azure Active Directoryval?
+# <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Mi a hibrid identitás a Azure Active Directory?
 
-Ma, a vállalatok és a vállalatok egyre több és több helyszíni vegyesen, és a felhőbeli alkalmazásokhoz.  Felhasználók igényelnek, ezeknek az alkalmazásoknak hozzáférést a helyszínen és a felhőben. Felhasználók kezelése a helyszíni és a felhő kockázatot kihívást forgatókönyveket. 
+Napjainkban a vállalatok és a vállalatok egyre többen használják a helyszíni és a felhőalapú alkalmazásokat.  Felhasználók igényelnek, ezeknek az alkalmazásoknak hozzáférést a helyszínen és a felhőben. A felhasználók helyszíni és Felhőbeli kezelése is kihívást jelentő forgatókönyveket jelent. 
 
 A Microsoft identitáskezelési megoldások kiterjednek a helyszíni és felhőalapú képességek.  Ezeket a megoldásokat hozzon létre egy általános felhasználói identitást, hitelesítés és engedélyezés az összes erőforráshoz, helytől függetlenül. Erre **hibrid identitás**.
 
-Az Azure AD hibrid identitás- és hibrid identitás-kezelési forgatókönyvekben lehetségessé válik.
+A hibrid identitás az Azure AD-vel és a hibrid Identitáskezelés kezelésével ezek a forgatókönyvek válnak elérhetővé.
 
-Hibrid identitás az Azure ad-vel eléréséhez három hitelesítési módszerek közül az használható, attól függően, a forgatókönyvekhez.   A következők: 
+Ha hibrid identitást szeretne elérni az Azure AD-vel, a forgatókönyvek függvényében a három hitelesítési módszer egyikét használhatja.   A következők: 
 
 - **[A Jelszókivonat-szinkronizálás (nál)](whatis-phs.md)**  
 - **[Az átmenő hitelesítés (ESP)](how-to-connect-pta.md)**  
-- **[Összevonáson (AD FS)](whatis-fed.md)** 
+- **[Összevonás (AD FS)](whatis-fed.md)** 
 
 Ezek a hitelesítési módszerek is biztosítanak [egyszeri bejelentkezéses](how-to-connect-sso.md) képességeket.  Egyszeri bejelentkezéses automatikusan bejelentkezik a felhasználók mikor legyenek a vállalati eszközeiket a vállalati hálózathoz csatlakozik.
 
-További információkért lásd: [válassza ki a megfelelő hitelesítési módszert az Azure Active Directory hibrid identitáskezelési megoldás](https://docs.microsoft.com/azure/security/azure-ad-choose-authn). 
+További információkért lásd: [válassza ki a megfelelő hitelesítési módszert az Azure Active Directory hibrid identitáskezelési megoldás](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn). 
 
 ## <a name="common-scenarios-and-recommendations"></a>Gyakori forgatókönyvek és javaslatok 
 
@@ -45,14 +45,14 @@ Szeretnénk bemutatni néhány gyakori hibrid identitás- és hozzáféréskezel
 |Cél:|PHS és SSO<sup>1</sup>| PTA és SSO<sup>2</sup> | AD FS<sup>3</sup>| 
 |-----|-----|-----|-----| 
 |A helyszíni Active Directoryban létrehozott új felhasználói, kapcsolattartói és csoportfiókok automatikus szinkronizálása a felhőbe|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
-|Állítsa be a hibrid forgatókönyvek Office 365-bérlőhöz.|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
-|Engedélyezze a felhasználók bejelentkezhet és elérheti a cloud services használatával a helyszíni jelszavát.|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
-|Bemutatjuk az egyszeri bejelentkezést a vállalati hitelesítő adatok.|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|  
-|Győződjön meg arról, nincs jelszókivonatokat a felhőben vannak tárolva.| |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
-|Engedélyezze a többtényezős hitelesítés felhőalapú megoldásokat.|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
-|Engedélyezze a helyszíni többtényezős hitelesítési megoldásokat.| | |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
-|Intelligens kártyás hitelesítés támogatása a felhasználók számára. <sup>4</sup>| | |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
-|Jelszó lejárati értesítés megjelenítése, az Office portálon és a Windows 10 asztali verzió.| | |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
+|Saját bérlő beállítása az Office 365 hibrid forgatókönyvekhez.|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
+|Lehetővé teheti a felhasználók számára a bejelentkezést és a felhőalapú szolgáltatások elérését a helyszíni jelszavuk használatával.|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
+|Egyszeri bejelentkezés implementálása vállalati hitelesítő adatok használatával.|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|  
+|Ügyeljen arra, hogy a rendszer ne tárolja a jelszó-kivonatokat a felhőben.| |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
+|Felhőalapú multi-Factor Authentication megoldások engedélyezése.|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
+|Helyszíni multi-Factor Authentication megoldások engedélyezése.| | |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
+|Támogatás intelligens kártyás hitelesítés a saját felhasználók számára. <sup>4</sup>| | |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
+|A jelszó lejárati értesítéseinek megjelenítése az Office-Portálon és a Windows 10 asztalán.| | |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
 
 > <sup>1</sup> Jelszókivonat-szinkronizálás egyszeri bejelentkezéssel. 
 > 
@@ -63,7 +63,7 @@ Szeretnénk bemutatni néhány gyakori hibrid identitás- és hozzáféréskezel
 > <sup>4</sup> Az AD FS a vállalati nyilvános kulcsú infrastruktúrával is integrálható, hogy tanúsítványokkal is be lehessen jelentkezni. Ezek a tanúsítványok lehetnek megbízható regisztrációs csatornákon (például MDM-en vagy csoportházirend-objektumon) keresztül kiosztott szoftveres tanúsítványok, intelligenskártya-tanúsítványok (beleértve a PIV/CAC-kártyákat) vagy Vállalati Windows Hello- (tanúsítvány-megbízhatósági) megoldások. Az intelligens kártyás hitelesítés támogatásával kapcsolatos további információkat [ebben a blogban](https://blogs.msdn.microsoft.com/samueld/2016/07/19/adfs-certauth-aad-o365/) talál. 
 > 
 
-## <a name="license-requirements-for-using-azure-ad-connect"></a>Licenckövetelmények vonatkoznak az Azure AD Connect használatával
+## <a name="license-requirements-for-using-azure-ad-connect"></a>A Azure AD Connect használatára vonatkozó licencfeltételek
 
 [!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-free-license.md)]
 

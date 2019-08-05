@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 080d1d68c2f2fb757bb51471b91a807b2f00fa2d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7fade5e73d7c571cea46c91cb952b590aca4b3c2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709527"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780314"
 ---
-# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Oktatóanyag: Hozzon létre egy egyéni rendszerképet egy Azure virtuális gépek az Azure CLI-vel
+# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Oktatóanyag: Azure-beli virtuális gép egyéni rendszerképének létrehozása az Azure CLI-vel
 
 Az egyéni rendszerképek olyanok, mint a piactérről beszerzett rendszerképek, de Ön hozza azokat létre. Az egyéni rendszerképek segítségével indíthatók olyan konfigurálások, mint az alkalmazások betöltése, alkalmazások konfigurálása és más operációsrendszer-konfigurálások. Ebben az oktatóanyagban létrehoz egy egyéni rendszerképet egy Azure-beli virtuális gépről. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -51,6 +51,9 @@ Egy virtuális gépről készült rendszerkép létrehozásához először elő 
 ### <a name="deprovision-the-vm"></a>A virtuális gép megszüntetése 
 
 A megszüntetés a gépspecifikus információk eltávolításával általánosítja a virtuális gépet. Ez az általánosítás teszi lehetővé, hogy több virtuális gépet helyezzen üzembe egyetlen rendszerképből. A megszüntetés során a gazdanév visszaáll a *localhost.localdomain* értékre. A rendszer törli az SSH-gazdakulcsokat, a névkiszolgáló-konfigurációkat, a rendszergazdai szintű jelszót és a gyorsítótárazott DHCP-bérleteket is.
+
+> [!WARNING]
+> A virtuális gép általánosított kiépítése és megjelölése a forrásként szolgáló virtuális gép használhatatlanná válik, és nem indítható újra. 
 
 A virtuális gép megszüntetéséhez használja az azure-os virtuálisgép-ügynököt (waagent). Az azure-os virtuálisgép-ügynök telepítve van a virtuális gépen, és felügyeli a kiépítést, valamint az Azure Fabric Controllerrel való kommunikációt. További információk: [Azure Linux-ügynök – felhasználói útmutató](../extensions/agent-linux.md).
 

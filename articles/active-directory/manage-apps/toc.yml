@@ -209,10 +209,6 @@
           href: /azure/active-directory/saas-apps/
     - name: Alapelvek
       items:
-        - name: Kezdeti üzembehelyezési szinkronizálás
-          href: user-provisioning.md
-        - name: Növekményes üzembehelyezési szinkronizálás
-          href: user-provisioning.md
         - name: Automatikus üzembe helyezés SCIM-kompatibilis alkalmazásokhoz
           href: use-scim-to-provision-users-and-groups.md
     - name: Útmutatók

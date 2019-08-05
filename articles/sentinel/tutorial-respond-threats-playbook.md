@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/25/2019
 ms.author: rkarlin
-ms.openlocfilehash: cdfe22b67585221e2d7e17f47c6a09ba929d68ef
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cd3288e308308729cf9b97e3c699d489857840a8
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599012"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780373"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>Oktatóanyag: Automatizált veszélyforrásokkal kapcsolatos válaszok beállítása az Azure Sentinel Preview-ban
 
@@ -49,7 +49,7 @@ A biztonsági forgatókönyvek olyan eljárások gyűjteményei, amelyek az Azur
 Ha például a hálózati erőforrásokhoz hozzáférő rosszindulatú támadók miatt aggódik, beállíthat egy riasztást, amely a hálózathoz hozzáférő kártékony IP-címeket keresi. Ezután létrehozhat egy forgatókönyvet, amely a következő műveleteket végzi el:
 1. Ha a riasztás aktiválva van, nyisson meg egy jegyet a ServiceNow-ben vagy más IT-szolgáltatói rendszeren.
 2. Küldjön üzenetet a biztonsági operatív csatornának a Microsoft Teams vagy a Slack szolgáltatásban, és győződjön meg arról, hogy a biztonsági elemzők tisztában vannak az incidenssel.
-3. Küldje el a riasztásban található összes információt a vezető hálózati rendszergazdai és biztonsági rendszergazdának. Az e-mail-üzenetben két felhasználói  gomb is blokkolható vagy **figyelmen kívül hagyható**.
+3. Küldje el a riasztásban található összes információt a vezető hálózati rendszergazdai és biztonsági rendszergazdának. Az e-mail-üzenetben két felhasználói gomb is blokkolható vagy **figyelmen kívül hagyható**.
 4. A forgatókönyv továbbra is fut a rendszergazdáktól kapott válasz után.
 5. Ha a rendszergazdák a **Letiltás**lehetőséget választják, az IP-cím blokkolva lesz a tűzfalon, és a felhasználó le van tiltva az Azure ad-ben.
 6. Ha a rendszergazdák úgy döntenek, hogy **figyelmen kívül hagyják**, a riasztás bezárult az Azure sentinelben, és az incidens bezárult a ServiceNow.
@@ -62,7 +62,7 @@ A biztonsági forgatókönyvek manuálisan vagy automatikusan is futtathatók. A
 Kövesse az alábbi lépéseket egy új biztonsági forgatókönyv létrehozásához az Azure Sentinelben:
 
 1. Nyissa meg az **Azure Sentinel** irányítópultját.
-2. A **kezelés** **területen válassza a**forgatókönyvek lehetőséget.
+2. A **kezelés**területen válasszaa forgatókönyvek lehetőséget.
 
    ![Logic App](./media/tutorial-respond-threats-playbook/playbookimg.png)
 
@@ -78,7 +78,7 @@ Kövesse az alábbi lépéseket egy új biztonsági forgatókönyv létrehozás�
 
 6. A Logic app Designerben hozhat létre új vagy szerkeszthető sablont. További információ a forgatókönyvek [Logic apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md)-vel való létrehozásáról.
 
-7. Ha üres forgatókönyvet hoz létre, a Keresés az **összes összekötő és eseményindító** mezőben írja be az *Azure Sentinel*kifejezést, és válassza ki, **hogy mikor aktiválódik az Azure Sentinel-riasztásra adott válasz**. <br>A létrehozást követően az új forgatókönyv megjelenik a forgatókönyvek **listájában** . Ha nem jelenik meg, kattintson a **frissítés**gombra. 
+7. Ha üres forgatókönyvet hoz létre, a Keresés az **összes összekötő és eseményindító** mezőben írja be az *Azure Sentinel*kifejezést, és válassza ki, **hogy mikor aktiválódik az Azure Sentinel-riasztásra adott válasz**. <br>A létrehozást követően az új forgatókönyv megjelenik a forgatókönyvek listájában. Ha nem jelenik meg, kattintson a **frissítés**gombra. 
 
 7. Most meghatározhatja, mi történjen a forgatókönyv aktiválásakor. Hozzáadhat egy műveletet, egy logikai feltételt, a váltási eset feltételeit vagy a hurkokat.
 
@@ -90,7 +90,7 @@ Igény szerint futtathat forgatókönyveket.
 
 Igény szerinti forgatókönyv futtatása:
 
-1. Az **esetek** lapon válasszon ki egy esetet, és kattintson a **teljes részletek megtekintése**elemre.
+1. Az **incidensek** lapon válasszon ki egy incidenst, és kattintson a **teljes részletek megtekintése**elemre.
 
 2. A **riasztások** lapon kattintson arra a riasztásra, amelyen futtatni szeretné a forgatókönyvét, és görgessen végig a jobb oldalon, majd kattintson a forgatókönyvek **megtekintése** lehetőségre, és válassza ki az előfizetésben elérhető forgatókönyvek listájából **futtatandó** forgatókönyvet. 
 

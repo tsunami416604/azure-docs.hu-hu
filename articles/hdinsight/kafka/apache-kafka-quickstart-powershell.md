@@ -1,5 +1,5 @@
 ---
-title: Állítsa be az Apache Kafka on HDInsight használata az Azure PowerShell – rövid útmutató
+title: A HDInsight Apache Kafka beállítása a Azure PowerShell-gyors útmutató használatával
 description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre Apache Kafka-fürtöt az Azure HDInsightban az Azure PowerShell használatával. A Kafka-témakörökről, -előfizetőkről és -fogyasztókról is olvashat.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,16 +8,16 @@ ms.reviewer: jasonh
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: a1ccfd23338e2ee18c335fe8bd9869ecdf9c2f08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c47df581edafbb2a378e7c5e75516a44fafcab71
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67120804"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779502"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Gyors útmutató: Az Apache Kafka-fürt létrehozása az Azure HDInsight PowerShell használatával
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Gyors útmutató: Apache Kafka-fürt létrehozása az Azure HDInsight a PowerShell használatával
 
-[Az Apache Kafka](https://kafka.apache.org/) egy nyílt forráskódú, elosztott adatstreamelési platform. Sokszor használják üzenetközvetítőként, mivel a közzétételi-feliratkozási üzenetsorokhoz hasonló funkciókat kínál. 
+A [Apache Kafka](https://kafka.apache.org/) egy nyílt forráskódú, elosztott streaming platform. Sokszor használják üzenetközvetítőként, mivel a közzétételi-feliratkozási üzenetsorokhoz hasonló funkciókat kínál. 
 
 Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre [Apache Kafka](https://kafka.apache.org)-fürtöt az Azure PowerShell használatával. Azt is megtudhatja, hogyan küldhet és fogadhat üzeneteket a mellékelt segédprogramokkal a Kafka segítségével.
 
@@ -29,13 +29,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A PowerShell [Az modul](https://docs.microsoft.com/powershell/azure/overview) telepítve.
+* A PowerShell az [modul](https://docs.microsoft.com/powershell/azure/overview) telepítve van.
 
-* Egy SSH-ügyfél. További információkért lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` parancsmagot, és kövesse a képernyőn megjelenő utasításokat.
+Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` parancsmaggal, és kövesse a képernyőn megjelenő utasításokat.
 
 ```azurepowershell-interactive
 # Login to your Azure subscription
@@ -51,7 +51,7 @@ if(-not($sub))
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy Azure-erőforráscsoportot [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példa a nevet és a helyet kéri, majd létrehoz egy új erőforráscsoportot:
+Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példa a nevet és a helyet kéri, majd létrehoz egy új erőforráscsoportot:
 
 ```azurepowershell-interactive
 $resourceGroup = Read-Host -Prompt "Enter the resource group name"
@@ -62,10 +62,10 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Míg a Kafka HDInsight az Azure Managed Disks használatával tárolja Kafka-adatokat, a fürt az Azure Storage-ban is tárol információkat, például naplókat. Használat [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) , hozzon létre egy új tárfiókot.
+Míg a Kafka HDInsight az Azure Managed Disks használatával tárolja Kafka-adatokat, a fürt az Azure Storage-ban is tárol információkat, például naplókat. A [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) használatával hozzon létre egy új Storage-fiókot.
 
 > [!IMPORTANT]  
-> A tárfiók típusának `BlobStorage` csak akkor használható másodlagos tárolóként HDInsight-fürtök esetén.
+> A Storage- `BlobStorage` fiók típusa csak másodlagos tárolóként használható HDInsight-fürtökhöz.
 
 ```azurepowershell-interactive
 $storageName = Read-Host -Prompt "Enter the storage account name"
@@ -79,7 +79,7 @@ New-AzStorageAccount `
     -EnableHttpsTrafficOnly 1
 ```
 
-A HDInsight egy blobtárolóban tárolja az adatokat a tárfiókban. Használat [New-AzStorageContainer](/powershell/module/Az.Storage/New-AzStorageContainer) hozhat létre egy új tárolót.
+A HDInsight egy blobtárolóban tárolja az adatokat a tárfiókban. Új tároló létrehozásához használja a [New-AzStorageContainer](/powershell/module/Az.Storage/New-AzStorageContainer) .
 
 ```azurepowershell-interactive
 $containerName = Read-Host -Prompt "Enter the container name"
@@ -96,7 +96,7 @@ New-AzStorageContainer -Name $containerName -Context $storageContext
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka-fürt létrehozása
 
-Hozzon létre egy Apache Kafka a HDInsight-fürt [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster).
+Hozzon létre egy Apache Kafkat a HDInsight-fürtön a [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster).
 
 ```azurepowershell-interactive
 # Create a Kafka 1.1 cluster
@@ -133,7 +133,7 @@ A HDInsight-fürt létrehozása 20 percig is eltarthat.
 
 A `-DisksPerWorkerNode` paraméter konfigurálja a Kafka on HDInsight méretezhetőségét. A Kafka on HDInsight a fürt virtuális gépeinek helyi lemezén tárolja az adatokat. Mivel a Kafka nagy ki- és bemenő adatforgalmat kezel, az [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) szolgáltatás gondoskodik a magas átviteli sebességről és csomópontonként több tárhelyről.
 
-A felügyelt lemez típusa __Standard__ (HDD) vagy __Prémium__ (SSD) lehet. A lemez típusa a feldolgozó csomópontok (Kafka-közvetítők) által használt virtuálisgép-mérettől függ. A DS és GS sorozatbeli virtuális gépek automatikusan prémium lemezeket használnak. Minden más virtuálisgép-típus standard lemezeket használ. A `-WorkerNodeSize` paraméterrel állíthatja be a virtuális gép típusát. A paraméterek további információkért lásd: a [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) dokumentációját.
+A felügyelt lemez típusa __Standard__ (HDD) vagy __Prémium__ (SSD) lehet. A lemez típusa a feldolgozó csomópontok (Kafka-közvetítők) által használt virtuálisgép-mérettől függ. A DS és GS sorozatbeli virtuális gépek automatikusan prémium lemezeket használnak. Minden más virtuálisgép-típus standard lemezeket használ. A `-WorkerNodeSize` paraméterrel állíthatja be a virtuális gép típusát. A paraméterekkel kapcsolatos további információkért tekintse meg a [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) dokumentációját.
 
 Ha több mint 32 feldolgozó csomópontot kíván használni (a fürt létrehozásakor vagy a létrehozás után a fürt méretezésével), a `-HeadNodeSize` paraméterrel kell megadnia egy VM-méretet legalább 8 maggal és 14 GB RAM-mal. További információ a csomópontméretekről és a velük járó költségekről: [A HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
 
@@ -151,7 +151,7 @@ Ha több mint 32 feldolgozó csomópontot kíván használni (a fürt létrehoz�
 
 Miután csatlakozott, az alábbi szöveghez hasonló információkat lát:
 
-```text
+```output
 Authorized uses only. All activity may be monitored and reported.
 Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
 
@@ -170,14 +170,13 @@ Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
 Welcome to Kafka on HDInsight.
 
 Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
-ssuhuser@hn0-mykafk:~$
 ```
 
-## <a id="getkafkainfo"></a>Az Apache Zookeeper és a közvetítő gazdagép információinak lekérése
+## <a id="getkafkainfo"></a>Az Apache Zookeeper és a Broker gazdagép adatainak beszerzése
 
-A Kafka használata során ismernie kell a *Apache Zookeeper* és *Broker* gazdagépek. A Kafka API és a Kafkában elérhető számos segédprogram használja ezeket a gazdagépeket.
+A Kafka használatakor ismernie kell az *Apache Zookeeper* és a *Broker* gazdagépeit. A Kafka API és a Kafkában elérhető számos segédprogram használja ezeket a gazdagépeket.
 
-Ebben a szakaszban a gazdagép adatait az Apache Ambari REST API a fürtön kap.
+Ebben a szakaszban a gazdagépre vonatkozó információkat a fürt Apache Ambari-REST API szerezheti be.
 
 1. Egy, a fürthöz csatlakozó SSH-kapcsolaton használja a következő parancsot a `jq` segédprogram telepítéséhez. A segédprogram JSON-dokumentumok elemzésére használható, és hasznos a gazdagép adatainak lekéréséhez:
    
@@ -193,7 +192,7 @@ Ebben a szakaszban a gazdagép adatait az Apache Ambari REST API a fürtön kap.
 
     Ha a rendszer kéri, írja be a Kafka-fürt nevét.
 
-3. Környezeti változók Zookeeper gazdagépadatok, használja az alábbi parancsot. A parancs lekéri a fürtözni Zookeeper, majd csak az első két tételeket ad vissza. Ez azért van, mert hasznos lehet a redundancia, ha az egyik gazdagép esetleg nem érhető el.
+3. A Zookeeper gazdagép-információkkal rendelkező környezeti változók beállításához használja az alábbi parancsot. A parancs lekéri az összes Zookeeper-gazdagépet, majd csak az első két bejegyzést adja vissza. Ez azért van, mert hasznos lehet a redundancia, ha az egyik gazdagép esetleg nem érhető el.
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
@@ -253,7 +252,7 @@ A Kafka *témakörökben* tárolja az adatstreameket. A `kafka-topics.sh` segéd
 
         A Kafka nem észleli a tartalék Azure-tartományokat. Témakörök számára történő partícióreplikák létrehozásakor lehetséges, hogy a Kafka nem a magas rendelkezésre állásnak megfelelően osztja ki a replikákat.
 
-        Magas rendelkezésre állás biztosítása érdekében használhatja a [Apache Kafka partíció-újraegyensúlyozó eszközt](https://github.com/hdinsight/hdinsight-kafka-tools). Ezt az eszközt egy SSH-kapcsolatból kell futtatni a Kafka-fürt fő csomópontjához.
+        A magas rendelkezésre állás biztosítása érdekében használja a [Apache Kafka Partition rebalance eszközt](https://github.com/hdinsight/hdinsight-kafka-tools). Ezt az eszközt egy SSH-kapcsolatból kell futtatni a Kafka-fürt fő csomópontjához.
 
         A Kafka-adatok lehető legmagasabb rendelkezésre állása érdekében egyensúlyozza újra a témaköre partícióreplikáit a következő esetekben:
 
@@ -314,11 +313,11 @@ Kövesse az alábbi lépéseket a rekordoknak a korábban létrehozott test tém
 
 4. Használja a __Ctrl + C__ billentyűparancsot a fogyasztó leállításához.
 
-Szoftveresen is létrehozhat előállítókat és fogyasztókat. Ez az API használatának példájáért lásd a [Apache Kafka Producer és Consumer API-hoz a HDInsight](apache-kafka-producer-consumer-api.md) dokumentum.
+Szoftveresen is létrehozhat előállítókat és fogyasztókat. Az API használatára példaként tekintse meg a [Apache Kafka producer és fogyasztói API HDInsight-](apache-kafka-producer-consumer-api.md) dokumentummal című témakört.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal eltávolítható az erőforráscsoport, a HDInsight, és az összes kapcsolódó erőforrás.
+Ha már nincs rá szükség, a Remove [-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal távolíthatja el az erőforráscsoportot, a HDInsight és az összes kapcsolódó erőforrást.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup
@@ -332,4 +331,4 @@ Remove-AzResourceGroup -Name $resourceGroup
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Apache Spark használata az Apache kafka platformmal](../hdinsight-apache-kafka-spark-structured-streaming.md)
+> [Apache Spark használata a Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

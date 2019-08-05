@@ -9,10 +9,10 @@ ms.date: 5/31/2019
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 11a5955d516d3a4144d9b63eec78d9c5741aaab9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/05/2019
 ms.locfileid: "67615268"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Gyors útmutató: Azure Kubernetes Service (ak) fürt üzembe helyezése a Azure Portal használatával
@@ -50,7 +50,7 @@ AKS-fürt létrehozásához hajtsa végre a következő lépéseket:
    - Hozzon létre egy új szolgáltatásnevet úgy, hogy az **(új) alapértelmezett egyszerű szolgáltatásnév**kihagyja az **egyszerű szolgáltatásnév** mezőt. Vagy választhatja az *egyszerű szolgáltatásnév beállítása* lehetőséget is, ha egy meglévőt szeretne használni. Ha meglévőt használ, meg kell adnia az SPN ügyfél-azonosítót és a titkos kulcsot.
    - Engedélyezze a Kubernetes szerepköralapú hozzáférés-vezérlők (RBAC) használatát. Ez részletesebben szabályozhatja az AK-fürtben üzembe helyezett Kubernetes-erőforrásokhoz való hozzáférést.
 
-    Alapértelmezés szerint a  rendszer alapszintű hálózatkezelést használ, a tárolók Azure monitor pedig engedélyezve van. Kattintson a **felülvizsgálat + létrehozás** , majd a **Létrehozás** gombra az érvényesítés befejeződése után.
+    Alapértelmezés szerint a rendszer alapszintű hálózatkezelést használ, a tárolók Azure monitor pedig engedélyezve van. Kattintson a **felülvizsgálat + létrehozás** , majd a **Létrehozás** gombra az érvényesítés befejeződése után.
 
 Az AK-fürt létrehozása néhány percet vesz igénybe. Ha befejeződött a telepítés, kattintson az **erőforrás**megnyitása lehetőségre, vagy keresse meg az AK-beli fürterőforrás-csoportot (például *myResourceGroup*), és válassza ki az AK-erőforrást, például *myAKSCluster*. Megjelenik az AK-fürt irányítópultja, ahogy az a következő példában látható:
 
@@ -202,14 +202,14 @@ A folyamat állapotának monitorozásához használja [kubectl get service][kube
 kubectl get service azure-vote-front --watch
 ```
 
-Kezdetben a *külső IP-cím* az *Azure-vote-elülső* szolgáltatáshoz függőben jelenik meg.
+Kezdetben a *külső IP-cím* az *Azure-vote-elülső* szolgáltatáshoz függőbenjelenik meg.
 
 ```
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-Ha a *külső IP-* cím függőben  állapotról tényleges nyilvános IP-címről változik, `CTRL-C` akkor a `kubectl` figyelési folyamat leállításához használja a következőt:. A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
+Ha a *külső IP-* cím függőben állapotról tényleges nyilvános IP-címről változik, `CTRL-C` akkor a `kubectl` figyelési folyamat leállításához használja a következőt:. A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
 
 ```
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
@@ -225,7 +225,7 @@ A fürt létrehozásakor a tárolók Azure Monitor engedélyezve lettek. Ez a mo
 
 Az adatok Azure Portalra történő feltöltése eltarthat néhány percig. Az Azure Vote-podok jelenlegi állapotának, üzemidejének és erőforrás-felhasználásának megjelenítéséhez lépjen vissza az AKS-erőforráshoz az Azure Portalon (például *myAKSCluster*). Az állapotot ezután a következő módon érheti el:
 
-1. A bal oldali **figyelés** **területen válassza az** eredmények lehetőséget
+1. A bal oldali **figyelés** területen válassza az eredmények lehetőséget
 1. Válassza a **+ Szűrő hozzáadása** elemet a képernyő felső részén
 1. Válassza ki a *Névtér* tulajdonságot, majd az *\<All but kube-system\>* (Összes, kivéve a kube rendszer) lehetőséget
 1. Válassza a **Tárolók** nézetet.

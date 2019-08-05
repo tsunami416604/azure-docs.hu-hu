@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d058282a9e903b37505f2a762d4264efbbec3a5a
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: a4f2b2ff1c42d18626fb2be27438b2f499ee9368
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399503"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782630"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Azure-beli virtuális gépek vészhelyreállítási próbájának végrehajtása egy másodlagos Azure-régióba
 
@@ -41,9 +41,9 @@ Ez az oktatóanyag azt ismerteti, hogy hogyan hajthat végre vészhelyreállít�
 
 2. A **Feladatátvételi teszt** területen válasszon ki egy helyreállítási pontot a feladatátvétel végrehajtásához:
 
-   - **Legutóbb feldolgozott**: A virtuális gép feladatait a Site Recovery szolgáltatás által feldolgozott legutóbbi helyreállítási pontot. Megjelenik az időbélyeg. Ezzel a beállítással a rendszer nem tölt időt az adatok feldolgozásával, így a helyreállítási időre vonatkozó célkitűzés (RTO) alacsony.
-   - **Legutóbbi alkalmazáskonzisztens**: Ez a beállítás minden virtuális gép a legutóbbi alkalmazáskonzisztens helyreállítási pontnak feladatait. Megjelenik az időbélyeg.
-   - **Egyéni**: Válassza ki bármelyik helyreállítási pontot.
+   - **Legutóbb feldolgozott**: A virtuális gép feladatátvétele a Site Recovery szolgáltatás által feldolgozott legutóbbi helyreállítási pontra meghiúsul. Megjelenik az időbélyeg. Ezzel a beállítással a rendszer nem tölt időt az adatok feldolgozásával, így a helyreállítási időre vonatkozó célkitűzés (RTO) alacsony.
+   - **Legújabb alkalmazás – konzisztens**: Ez a beállítás az összes virtuális gépet átadja a legújabb, alkalmazás-konzisztens helyreállítási pontra. Megjelenik az időbélyeg.
+   - **Egyéni**: Válassza ki a kívánt helyreállítási pontot.
 
 3. Válassza ki, hogy az Azure-beli virtuális gépek mely másodlagos régióban található cél Azure-beli virtuális hálózathoz csatlakozzanak majd a feladatátvételt követően.
 
