@@ -164,6 +164,8 @@
               href: devtest-lab-vmcli.md
             - name: Virtuális gép létrehozása – Resource Manager-sablon
               href: devtest-lab-use-resource-manager-template.md
+            - name: Virtuális gép létrehozása megosztott rendszerkép-katalógusból származó rendszerképpel
+              href: add-vm-use-shared-image.md
             - name: Virtuális gép indítása vagy leállítása PowerShell vagy CLI használatával
               href: use-command-line-start-stop-virtual-machines.md
             - name: Virtuális gép újraindítása

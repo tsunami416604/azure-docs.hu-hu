@@ -56,6 +56,8 @@
       maintainContext: true
     - name: Hibaelhárítás
       items:
+        - name: Nem lehet bejelentkezni egy HDInsight-fürtre
+          href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
         - name: A csomópontok HDInsight-fürthöz való hozzáadása nem sikerült
           href: ./hdinsight-troubleshoot-unable-add-nodes.md
         - name: InvalidNetworkSecurityGroupSecurityRules – a fürt létrehozása sikertelen

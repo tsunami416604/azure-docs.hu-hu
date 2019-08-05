@@ -536,6 +536,8 @@
           href: how-to-schedule-azure-ssis-integration-runtime.md
         - name: Az Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
           href: join-azure-ssis-integration-runtime-virtual-network.md
+        - name: Helyi integrációs modul konfigurálása Azure-SSIS IR proxyjaként
+          href: self-hosted-integration-runtime-proxy-ssis.md
         - name: Az Azure AD-hitelesítés engedélyezése az Azure SSIS IR-hez
           href: enable-aad-authentication-azure-ssis-ir.md
         - name: Az Azure SSIS IR Enterprise Edition kiadásának üzembe helyezése

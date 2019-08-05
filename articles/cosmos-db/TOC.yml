@@ -747,6 +747,8 @@
           href: cosmosdb-sql-api-migrate-data-striim.md
         - name: Adatok migrálása a Cassandra API-ba a Striim használatával
           href: cosmosdb-cassandra-api-migrate-data-striim.md
+        - name: Több száz terabájtnyi adat migrálása az Azure Cosmos DB-be
+          href: migrate-cosmosdb-data.md
     - name: Tömeges végrehajtói könyvtár
       items:
         - name: A tömeges végrehajtói kódtár ismertetése

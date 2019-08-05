@@ -87,6 +87,8 @@
       items:
         - name: Sablon létrehozása
           href: how-to-create-template.md
+        - name: Gyermekerőforrás neve és típusa
+          href: child-resource-name-type.md
         - name: Erőforráscsoportok és erőforrások létrehozása az előfizetésben
           displayName: subscription level deployment
           href: deploy-to-subscription.md

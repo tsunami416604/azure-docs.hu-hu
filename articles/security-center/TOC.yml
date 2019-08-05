@@ -43,6 +43,8 @@
       href: security-center-incident.md
     - name: Incidensmegoldás
       href: security-center-incident-response.md
+    - name: Bérlők közötti felügyelet
+      href: security-center-cross-tenant-management.md
 - name: Útmutatók
   items:
     - name: Biztonsági pontszám javítása
@@ -81,6 +83,8 @@
       items:
         - name: Mik azok a biztonsági javaslatok
           href: security-center-recommendations.md
+        - name: Szervizelési javaslatok
+          href: security-center-remediate-recommendations.md
         - name: Biztonsági helyzet megerősítése
           href: security-center-monitoring.md
         - name: Gépek és alkalmazások védelme

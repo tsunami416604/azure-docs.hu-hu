@@ -305,6 +305,8 @@
           href: logic-apps-enterprise-integration-accounts.md
         - name: Integrációs szolgáltatási környezetek kezelése
           href: ise-manage-integration-service-environment.md
+        - name: Logikai alkalmazás erőforrásainak áthelyezése
+          href: move-logic-app-resources.md
         - name: Migrálás a legfrissebb sémára
           href: ../connectors/connectors-schema-migration.md
     - name: Tesztelés

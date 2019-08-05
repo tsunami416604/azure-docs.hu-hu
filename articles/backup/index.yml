@@ -1,6 +1,6 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Az Azure Backup dokumentációja
+title: Az Azure Backup szolgáltatás dokumentációja
 metadata:
   title: Az Azure Backup dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
   description: 'Az Azure Backup segítségével biztonsági mentést készíthet helyszíni kiszolgálók, virtuális gépek, virtualizált számítási feladatok, SQL-kiszolgálók, SharePoint-kiszolgálók stb. adatairól. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti, hogyan készíthető biztonsági mentés az adatokról, és azok hogyan állíthatók vissza.'

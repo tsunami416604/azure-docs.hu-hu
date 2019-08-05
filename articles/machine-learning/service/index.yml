@@ -43,6 +43,9 @@ sections:
       - type: list
         style: unordered
         items:
+          - html: 'Első lépések: Az első automatizált ML-modell <a href="tutorial-first-experiment-automated-ml">betanítása és üzembe helyezése</a> az Azure Portalon.'
+          - html: 'Első lépések: <a href="tutorial-1st-experiment-sdk-setup">A fejlesztői környezet beállítása</a> és <a href="tutorial-1st-experiment-sdk-train">az első gépi tanulási modell</a> betanítása Jupyter notebook használatával (<b>kétrészes sorozat</b>).'
+          - html: 'Első lépések: Az első gépi tanulási kísérlet <a href="ui-tutorial-automobile-price-train-score">betanítása</a> és <a href="ui-tutorial-automobile-price-deploy">üzembe helyezése</a> a húzással használható vizuális felületen (<b>kétrészes sorozat</b>).'
           - html: Képbesorolási modellek <a href="tutorial-train-models-with-aml">betanítása</a> és <a href="tutorial-deploy-models-with-aml">üzembe helyezése</a> (<b>kétrészes sorozat</b>).
           - html: <a href="tutorial-data-prep">Adatok előkészítése</a> és <a href="tutorial-auto-train-models">automatizált gépi tanulás használata</a> regressziós modellek betanításához és hangolásához (<b>kétrészes sorozat</b>).
           - html: <a href="ui-tutorial-automobile-price-train-score">Autó árának előrejelzése</a> a vizuális felülettel és a regressziós modell <a href="ui-tutorial-automobile-price-deploy">üzembe helyezése</a>.

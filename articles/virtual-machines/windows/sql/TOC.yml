@@ -68,6 +68,8 @@
       items:
         - name: Microsoft SQL Server-adatbázis áttelepítése
           href: virtual-machines-windows-migrate-sql.md
+        - name: Virtuális gép új régióba
+          href: virtual-machines-windows-sql-move-different-region.md
     - name: Magas rendelkezésre állás konfigurálása
       items:
         - name: Az Azure Storage használata biztonsági mentéshez és helyreállításhoz
