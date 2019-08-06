@@ -41,7 +41,7 @@ Ha először szeretné megtekinteni a tartalmat, hajtson végre egy üres keres�
 
    **Results**
    
-   ![Üres lekérdezési példa] Nem (./media/search-explorer/search-explorer-example-empty.png "minősített vagy üres lekérdezési példa")
+   ![Üres lekérdezési példa Nem](./media/search-explorer/search-explorer-example-empty.png "minősített vagy üres lekérdezési példa")
 
 ### <a name="example-2---free-text-search"></a>2\. példa – ingyenes szöveges keresés
 
@@ -66,7 +66,7 @@ A szabad formátumú lekérdezések operátorokkal vagy anélkül is hasznosak a
    ```
    **Results**
 
-   ![Dokumentumok száma – példa] A (./media/search-explorer/search-explorer-example-count.png "megfelelő dokumentumok száma az indexben")
+   ![Dokumentumok száma – példa](./media/search-explorer/search-explorer-example-count.png "A megfelelő dokumentumok száma az indexben")
 
 ### <a name="example-4---restrict-fields-in-search-results"></a>4\. példa – mezők korlátozása a keresési eredmények között
 
@@ -136,13 +136,13 @@ Ha a szabadszöveges keresés helyett pontos feltételeket szeretne megadni, has
 
 5. Az index és az API-verzió kijelölése után írja be a keresési kifejezéseket vagy a teljes lekérdezési kifejezéseket a keresősávba, és kattintson a **Keresés** gombra a végrehajtáshoz.
 
-   ![Adja meg a keresési kifejezéseket, és kattintson a Keresés gombra] . (./media/search-explorer/search-explorer-query-string-example.png "Adja meg a keresési kifejezéseket, és kattintson a Keresés gombra") .
+   ![Adja meg a keresési kifejezéseket, és kattintson a Keresés gombra](./media/search-explorer/search-explorer-query-string-example.png "Adja meg a keresési kifejezéseket, és kattintson a Keresés gombra") .
 
 Tippek a **Search Explorerben**való kereséshez:
 
 + Az eredményeket a rendszer részletes JSON-dokumentumként adja vissza, így teljes egészében megtekintheti a dokumentumok szerkezetét és tartalmát. A példákban megjelenített lekérdezési kifejezésekkel korlátozhatja, hogy mely mezők legyenek visszaadva.
 
-+ A dokumentumok minden olyan mezőből állnak,  amely az indexben beolvasható van megjelölve. Ha szeretné megtekinteni az index attribútumokat a portálon, kattintson a *Realestate-US-Sample* elemre az **indexek** listájában a keresés – áttekintés oldalon.
++ A dokumentumok minden olyan mezőből állnak, amely az indexben beolvasható van megjelölve. Ha szeretné megtekinteni az index attribútumokat a portálon, kattintson a *Realestate-US-Sample* elemre az **indexek** listájában a keresés – áttekintés oldalon.
 
 + A kereskedelmi webböngészőben megadható, a szabad formátumú lekérdezések a végfelhasználói élmény teszteléséhez is hasznosak lehetnek. Tegyük fel például, hogy a beépített Realestate-minta indexe a "Seattle Apartments Lake Washington" kifejezést adja meg, majd a CTRL-F billentyűkombinációval megkeresheti a kifejezéseket a keresési eredmények között. 
 

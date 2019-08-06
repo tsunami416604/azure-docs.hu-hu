@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 06/11/2019
 ms.author: angrobe
-ms.openlocfilehash: d921e529140bc7446e3c9f97b33ba226431d7b91
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 7c41b09c35de7ef8694f9215b8f3dc271e243de2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67143510"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780499"
 ---
 # <a name="azure-security-documentation"></a>Az Azure Security dokumentációja
 
@@ -70,7 +70,7 @@ A biztonság minden szempontból az Azure integrált része. Az Azure a globáli
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-infrastructure">
+        <a href="/azure/security/fundamentals/infrastructure">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -135,7 +135,7 @@ A biztonság minden szempontból az Azure integrált része. Az Azure a globáli
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-encryption-atrest">
+        <a href="/azure/security/fundamentals/encryption-atrest">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -153,7 +153,7 @@ A biztonság minden szempontból az Azure integrált része. Az Azure a globáli
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
                         <div class="cardText">
-                            <p style="font-size: 1.12rem;">Hogyan titkosíthatom az Azure virtuális gépeket?</p>
+                            <p style="font-size: 1.12rem;">Hogyan titkosíthatom az Azure-beli virtuális gépeket?</p>
                         </div>
                     </div>
                 </div>
@@ -192,13 +192,13 @@ A biztonság minden szempontból az Azure integrált része. Az Azure a globáli
                                 <a class="barLink" href="https://aka.ms/SecurityResponsepaper">Azure biztonsági válasz a felhőben</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-threat-detection">Azure fejlett fenyegetésészlelés</a>
+                                <a class="barLink" href="/azure/security/fundamentals/threat-detection">Azure fejlett fenyegetésészlelés</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/abstract-azure-network-security">Azure hálózati biztonság</a>
+                                <a class="barLink" href="/azure/security/fundamentals/abstract-network-security>Azure network security"</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/abstract-develop-secure-apps">Biztonságos alkalmazások fejlesztése az Azure szolgáltatásban</a>
+                                <a class="barLink" href="/azure/security/fundamentals/abstract-develop-secure-apps">Biztonságos alkalmazások fejlesztése az Azure szolgáltatásban</a>
                             </li>
                         </ul>
                     </div>
@@ -218,25 +218,25 @@ A biztonság minden szempontból az Azure integrált része. Az Azure a globáli
                                 <a class="barLink" href="https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/">Ajánlott biztonsági eljárások az Azure-hoz</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-network-security-best-practices">Hálózati biztonság</a>
+                                <a class="barLink" href="/azure/security/fundamentals/network-best-practices">Hálózati biztonság</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-data-encryption-best-practices">Adatbiztonság</a>
+                                <a class="barLink" href="/azure/security/fundamentals/data-encryption-best-practices">Adatbiztonság</a>
                             </li>
                             <li style="list-style: none;">
                                 <a class="barLink" href="/azure/security/azure-security-best-practices-vms">Virtuális gépek biztonsága</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-identity-management-best-practices">Identitás és hozzáférés</a>
+                                <a class="barLink" href="/azure/security/fundamentals/identity-management-best-practices">Identitás és hozzáférés</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-iaas">IaaS-biztonság</a>
+                                <a class="barLink" href="/azure/security/fundamentals/iaas">IaaS-biztonság</a>
                             </li>
                             <li style="list-style: none;">
                                 <a class="barLink" href="/azure/security/security-paas-deployments">PaaS üzemelő példányainak biztonságossá tétele</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-global-admin">Azure-beli rendszergazdai fiókok biztonságossá tétele</a>
+                                <a class="barLink" href="/azure/security/fundamentals/global-admin">Azure-beli rendszergazdai fiókok biztonságossá tétele</a>
                             </li>
                         </ul>
                     </div>
@@ -380,7 +380,7 @@ A biztonság minden szempontból az Azure integrált része. Az Azure a globáli
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-cyber-services">
+        <a href="/azure/security/fundamentals/cyber-services">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -393,7 +393,7 @@ A biztonság minden szempontból az Azure integrált része. Az Azure a globáli
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-pen-testing">
+        <a href="/azure/security/fundamentals/pen-testing">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -463,7 +463,7 @@ A biztonság minden szempontból az Azure integrált része. Az Azure a globáli
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
                         <div class="cardText">
-                            <p style="font-size: 1.12rem;">Multi-factor authentication (MFA)</p>
+                            <p style="font-size: 1.12rem;">Többtényezős hitelesítés (Multi-Factor Authentication, MFA)</p>
                         </div>
                     </div>
                 </div>

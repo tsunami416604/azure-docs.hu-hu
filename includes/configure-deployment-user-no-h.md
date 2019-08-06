@@ -19,7 +19,7 @@ Az FTP és a helyi Gitből az Azure-webalkalmazás segítségével telepíthet e
 
 Az üzembe helyező felhasználó konfigurálásához futtassa a [az webapp deployment felhasználó beállított](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) parancsot az Azure Cloud Shellben. Cserélje le \<username > és \<jelszó > üzembe helyezési felhasználói felhasználónévvel és jelszóval. 
 
-- A felhasználónév Azure-on belül egyedinek kell lennie, és a helyi git leküldés, nem tartalmazhat a "@" szimbólummal. 
+- A felhasználónév Azure-on belül egyedinek kell lennie, és a helyi git leküldés, nem tartalmazhat a "\@" szimbólummal. 
 - A jelszónak legalább nyolc karakter hosszú, a következő három elem közül kell lennie: betűk, számok és szimbólumok. 
 
 ```azurecli-interactive

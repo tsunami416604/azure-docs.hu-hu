@@ -28,6 +28,8 @@
           items:
             - name: A szemétgyűjtés többletterhelési korlátja túllépve
               href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: ZooKeeperHiveClientException – HiveServer2-konfigurációk
+          href: ./interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
         - name: Apache Hive LLAP-lekérdezések teljesítménye
           href: ./interactive-query-troubleshoot-query-performance.md
 - name: Útmutató

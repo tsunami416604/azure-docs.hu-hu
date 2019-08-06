@@ -64,6 +64,8 @@
           href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: Szolgáltatásnév-tanúsítvány konvertálása
           href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
+        - name: Az Apache Ambari szívveréssel kapcsolatos problémái
+          href: ./apache-ambari-troubleshoot-heartbeat-issues.md
 - name: Útmutató
   items:
     - name: Apache Hadoop-tesztkörnyezet használata

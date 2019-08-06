@@ -13,7 +13,7 @@
   items:
     - name: Gyanús fenyegetések észlelése
       href: tutorial-detect-threats.md
-    - name: Esetek kivizsgálása
+    - name: Incidensek vizsgálata
       href: tutorial-investigate-cases.md
     - name: Reagálás a fenyegetésekre
       href: tutorial-respond-threats-playbook.md

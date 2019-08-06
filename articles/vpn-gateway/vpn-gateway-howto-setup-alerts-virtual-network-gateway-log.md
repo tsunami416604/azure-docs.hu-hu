@@ -88,7 +88,7 @@ A következő példa egy riasztást hoz létre egy leválasztási eseményhez, a
 
 12. A **szabály létrehozása** lapon adja meg a **műveletek testreszabásának** részleteit, és győződjön meg arról, hogy a megfelelő név jelenik meg a **műveleti csoport neve** szakaszban. A szabály létrehozásához válassza a **riasztási szabály létrehozása** lehetőséget.
 
-    ![Szabály létrehozására szolgáló] kiválasztások (./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "Válassza ki")
+    ![Szabály létrehozására szolgáló kiválasztások](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "Válassza ki")
 
 ## <a name="next-steps"></a>További lépések
 
