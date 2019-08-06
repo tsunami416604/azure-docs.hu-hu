@@ -287,8 +287,6 @@
       items:
         - name: Frissítés 2. generációs verzióra
           href: upgrade-to-latest-generation.md
-        - name: Az adattárház visszaállítsa
-          href: sql-data-warehouse-restore.md
         - name: A számítási feladatok monitorozása – portál
           href: sql-data-warehouse-monitor-workload-portal.md
         - name: A számítási feladatok monitorozása – DMV-k

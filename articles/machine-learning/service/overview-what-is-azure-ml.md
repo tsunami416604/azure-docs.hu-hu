@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: overview
 author: j-martens
 ms.author: jmartens
-ms.date: 05/02/2019
+ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1ec9db2b026dd1853eceb1f110878d6b2beb4d4
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 5323c996b8d974c9db11a508503f767cfee80301
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678018"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828102"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás?
 
@@ -29,7 +29,7 @@ A gépi tanulás által biztosított előrejelzéseket felhasználva intelligens
 
 ## <a name="what-is-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás?
 
-A Azure Machine Learning szolgáltatás olyan felhőalapú környezetet biztosít, amellyel előkészítheti az adatfeldolgozást, betaníthatja, üzembe helyezheti, kezelheti és nyomon követheti a gépi tanulási modelleket. Indítsa el a képzést a helyi gépen, majd bővítse a felhőt. A szolgáltatás teljes mértékben támogatja a nyílt forráskódú technológiákat, például a PyTorch, a TensorFlow és a scikit, és bármilyen gépi tanuláshoz használható, klasszikus ml-ből mély tanulásra, felügyelt és nem felügyelt tanulásra. 
+A Azure Machine Learning szolgáltatás olyan felhőalapú környezetet biztosít, amellyel előkészítheti az adatfeldolgozást, betaníthatja, üzembe helyezheti, kezelheti és nyomon követheti a gépi tanulási modelleket. Indítsa el a képzést a helyi gépen, majd bővítse a felhőt. A szolgáltatás teljes mértékben támogatja a nyílt forráskódú technológiákat, például a PyTorch, a TensorFlow és a scikit, és bármilyen gépi tanuláshoz használható, klasszikus ml-ből mély tanulásra, felügyelt és nem felügyelt tanulásra.
 
 Felderítheti és előkészítheti az adatfeldolgozási és-tesztelési modelleket, és számos olyan eszközt alkalmazhat, mint például a:
 + Olyan [vizualizációs felület](ui-tutorial-automobile-price-train-score.md) , amelyben az n-drop modulok használatával felépítheti a kísérleteket, majd üzembe helyezheti a modelleket
@@ -55,20 +55,25 @@ Az SDK segítségével [automatizálhatja a modell betanítását és finomhango
 A kód nélküli képzéshez próbálkozzon az alábbiakkal:
 
 + A drag-n-drop-kísérletezés és-telepítés vizuális felülete
-    
+
     ![Azure Machine Learning szolgáltatás vizuális felülete](media/overview-what-is-azure-ml/visual-interface.png)
 
 + Az automatikus ML-kísérletek Azure Portali beállítása
 
 ### <a name="operationalization-mlops"></a>Operacionalizálási (MLOps)
 
-Ha rendelkezik a megfelelő modellel, egyszerűen használhatja egy webszolgáltatásban, egy IoT-eszközön vagy Power BI. További információ: a [telepítésének és helyének](how-to-deploy-and-where.md)ismertetése. 
+Ha rendelkezik a megfelelő modellel, egyszerűen használhatja egy webszolgáltatásban, egy IoT-eszközön vagy Power BI. További információ: a [telepítésének és helyének](how-to-deploy-and-where.md)ismertetése.
 
-Ezután felügyelheti a telepített modelleket a Pythonhoz készült [Azure Machine learning SDK](https://aka.ms/aml-sdk) vagy a [Azure Portal](https://portal.azure.com/)használatával. 
+Ezután felügyelheti a telepített modelleket a Pythonhoz készült [Azure Machine learning SDK](https://aka.ms/aml-sdk) vagy a [Azure Portal](https://portal.azure.com/)használatával.
 
 Ezeket a modelleket felhasználhatja, és [valós időben](how-to-consume-web-service.md) vagy [aszinkron módon](how-to-run-batch-predictions.md) , nagy mennyiségű adattal lehet visszaadni az előrejelzéseket.
 
-A fejlett [gépi tanulási folyamatokkal](concept-ml-pipelines.md)pedig az üzembe helyezés során az adatok előkészítése, a modell betanítása és a kiértékelés egyes lépésein is dolgozhat.
+A fejlett [gépi tanulási folyamatokkal](concept-ml-pipelines.md)pedig az üzembe helyezés során az adatok előkészítése, a modell betanítása és a kiértékelés egyes lépésein is dolgozhat. A folyamatok a következőket teszik lehetővé:
+
+* a teljes körű gépi tanulási folyamat automatizálása a felhőben
+* összetevők újrafelhasználása, és csak akkor futtassa újra a lépéseket, ha szükséges
+* különböző számítási erőforrások használata az egyes lépésekben
+* batch-pontozási feladatok futtatása
 
 A Azure Machine Learning szolgáltatás használatának megkezdéséhez tekintse meg a [következő lépéseket](#next-steps).
 
@@ -86,7 +91,7 @@ A Azure Machine Learning szolgáltatás az SDK **-k és a-** a vizualizációs f
 |Illesztőfelületi modulok| Számos | Népszerű modulok kezdeti készlete|
 |Számítási célok betanítása| Tulajdonosi számítási cél, csak CPU-támogatás| A Azure Machine Learning számítást, GPU-t vagy CPU-t támogatja.<br/>(Egyéb, az SDK-ban támogatott számítások)|
 |Üzembe helyezési számítási célok| Tulajdonosi webszolgáltatás formátuma, nem testreszabható | Vállalati biztonsági beállítások & Azure Kubernetes szolgáltatás. <br/>([Egyéb](how-to-deploy-and-where.md) , az SDK-ban támogatott számítások) |
-|Automatizált modellek betanítása és hiperparaméter finomhangolása | Nem | Még nem a Visual Interface-ben. <br/> (Támogatott az SDK-ban és a Azure Portal.) | 
+|Automatizált modellek betanítása és hiperparaméter finomhangolása | Nem | Még nem a Visual Interface-ben. <br/> (Támogatott az SDK-ban és a Azure Portal.) |
 
 Próbálja ki a vizualizációs felületet (előzetes verzió [) az Oktatóanyaggal: Az autó árának előrejelzése a vizualizációs](ui-tutorial-automobile-price-train-score.md)felületen.
 
@@ -103,8 +108,8 @@ Azure-szolgáltatásokra elkölthető krediteket kap. A kreditek felhasználása
 
 - A kezdéshez [hozzon létre egy Machine learning szolgáltatás](setup-create-workspace.md) -munkaterületet.
 
-- Kövesse a teljes hosszúságú oktatóanyagokat: 
-  + [Rendszerkép-besorolási modell betanítása Azure Machine Learning szolgáltatással](tutorial-train-models-with-aml.md) 
+- Kövesse a teljes hosszúságú oktatóanyagokat:
+  + [Rendszerkép-besorolási modell betanítása Azure Machine Learning szolgáltatással](tutorial-train-models-with-aml.md)
   + [Az adatelőkészítés és az automatizált gépi tanulás használata a regressziós modell automatikus betanításához](tutorial-data-prep.md)
 
 - Ismerje meg a [gépi tanulási folyamatokat](/azure/machine-learning/service/concept-ml-pipelines) a gépi tanulási forgatókönyvek létrehozásához, optimalizálásához és felügyeletéhez.

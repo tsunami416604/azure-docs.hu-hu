@@ -53,13 +53,7 @@
     - name: Hibaelhárítás
       items:
         - name: OutOfMemoryError kivétel
-          items:
-            - name: Nincs elegendő halommemória
-              href: ./apache-spark-troubleshoot-outofmemory-heap.md
-            - name: Java-halomterület
-              href: ./apache-spark-troubleshoot-outofmemory-heap-space.md
-            - name: A Livy-kiszolgáló nem indul el
-              href: ./apache-spark-troubleshoot-outofmemory-native-thread.md
+          href: ./apache-spark-troubleshoot-outofmemory.md
         - name: Meghiúsult Apache Spark-feladat – NoClassDefFoundError
           href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
         - name: Meghiúsult Apache Spark-feladat – InvalidClassException

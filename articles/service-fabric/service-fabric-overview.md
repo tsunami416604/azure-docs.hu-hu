@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 55bcce3c5a4b0dd00d9217d6cb3cc2cfbe6d5828
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: da7e41ae77226c2a18b92329507855ac30891058
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753808"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816094"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Az Azure Service Fabric áttekintése
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások és tárolók csomagolását, üzembe helyezését és kezelését. A Service Fabric emellett választ ad a natív felhőalapú alkalmazások fejlesztésének és felügyeletének jelentős kihívásaira. A fejlesztők és a rendszergazdák elkerülhetik az infrastruktúrával kapcsolatos összetett problémákat, és a kritikus fontosságú, nagy erőforrás-igényű, skálázható, megbízható és felügyelhető számítási feladatok megvalósítására koncentrálhatnak. A Service Fabric egy következő generációs platform az ezen tárolókban futó, nagyvállalati szintű, első rétegbeli, felhőléptékű alkalmazások felépítésére és felügyeletére.
@@ -29,7 +29,7 @@ Ez a rövid videó bemutatja a Service Fabric platformot és a mikroszolgáltat�
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 ## <a name="compliance"></a>Megfelelőség
-Az Azure Service Fabric erőforrás-szolgáltató az összes Azure-régióban érhető el, és kompatibilis az összes megfelelőségi tanúsítványok, amelyek az Azure rendelkezik; Ez az alábbiakat tartalmazza: SOC, ISO, PCI DSS, HIPAA, and GDPR. Tekintse át a megfelelőségi tanúsítványok teljes listáját a következő: [Megfelelőségi ajánlatok](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
+Az Azure Service Fabric erőforrás-szolgáltató minden Azure-régióban elérhető, és megfelel az Azure által birtokolt összes megfelelőségi tanúsítványnak; Ez az alábbiakat foglalja magában: SOC, ISO, PCI DSS, HIPAA és GDPR. A megfelelőségi tanúsítványok teljes listájáért tekintse át a következőket: [Megfelelőségi ajánlatok](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
 
 ## <a name="applications-composed-of-microservices"></a>Mikroszolgáltatásokból álló alkalmazások 
 A Service Fabric lehetővé teszi mikroszolgáltatásokból álló, skálázható és megbízható alkalmazásokat készítését és felügyeletét, amelyek nagy sűrűség mellett futnak számítógépek egy megosztott készletén, vagyis fürtökön. Kifinomult, könnyen használható futtatókörnyezetet biztosít, amelyben elosztott, skálázható, állapot nélküli és állapotalapú, tárolókban futó mikroszolgáltatásokat állíthat össze. Ezenkívül átfogó alkalmazásfelügyeleti képességeket kínál a telepített alkalmazások kiépítéséhez, üzembe helyezéséhez, figyeléséhez, frissítéséhez/javításához és törléséhez, beleértve a tárolóalapú szolgáltatásokat is.
@@ -59,7 +59,7 @@ A fürtök létrehozásával kapcsolatos további információkért olvassa el a
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Állapot nélküli és állapotalapú mikroszolgáltatások a Service Fabrichez
 A Service Fabric segítségével mikroszolgáltatásokból vagy tárolókból álló alkalmazásokat építhet. Az állapot nélküli mikroszolgáltatások (például a protokollátjárók és webproxyk) nem tartanak fenn változtatható állapotot a kéréseken és a szolgáltatástól ezekre kapott válaszokon kívül. Az Azure Cloud Services feldolgozói szerepkörei például állapotmentes szolgáltatások. Az állapotalapú mikroszolgáltatások (például felhasználói fiókok, adatbázisok, eszközök, kosarak és üzenetsorok) változtatható, mérvadó állapotot tartanak fenn a kéréseken és a válaszokon kívül is. A modern webes alkalmazások állapot nélküli és állapotalapú mikroszolgáltatások kombinációjából állnak. 
 
-A Service Fabric legfontosabb különbséget az állapotalapú szolgáltatások, vagy erős koncentrálhat az [beépített programozási modellekkel](service-fabric-choose-framework.md) vagy a tárolóalapú állapotalapú szolgáltatásokkal. Az [alkalmazás-forgatókönyvek](service-fabric-application-scenarios.md) az állapotalapú szolgáltatások használatát mutatják be.
+A Service Fabric kulcsfontosságú különbséget tesz az állapot-nyilvántartó szolgáltatások kiépítéséhez, akár a [beépített programozási modellekkel](service-fabric-choose-framework.md) , akár a tárolós állapot-nyilvántartó szolgáltatásokkal. Az [alkalmazás-forgatókönyvek](service-fabric-application-scenarios.md) az állapotalapú szolgáltatások használatát mutatják be.
 
 
 ## <a name="application-lifecycle-management"></a>Alkalmazások életciklus-felügyelete
@@ -67,7 +67,7 @@ A Service Fabric támogatást nyújt a teljes alkalmazás-életciklushoz és a f
 
 A Service Fabric alkalmazáséletciklus-felügyeleti képességei lehetővé teszik az alkalmazás-rendszergazdák és az informatikai dolgozók számára egyszerű, kevés beavatkozást igénylő munkafolyamatok használatát az alkalmazások kiépítéséhez, üzembe helyezéséhez, javításához és figyeléséhez. Ezek a beépített munkafolyamatok nagy mértékben csökkentik az informatikai dolgozók az alkalmazások folyamatos elérhetőségének biztosításából eredő terheit.
 
-Az alkalmazások többsége együtt üzembe helyezett állapot nélküli és állapotalapú mikroszolgáltatások, tárolók és egyéb végrehajtható fájlok kombinációjából áll. Az erős típusmegadású alkalmazások révén a Service Fabric lehetővé teszi több alkalmazáspéldány üzembe helyezését. Az egyes példányok felügyelete és frissítése egymástól függetlenül történik. Ami azonban még ennél is fontosabb, a Service Fabric képes tárolókat vagy végrehajtható fájlokat üzembe helyezni és megbízhatóvá tenni. Például a Service Fabric segítségével telepíthet .NET-et, ASP.NET Core-t, node.js-t, Windows-tárolókat, Linux-tárolókat, Java virtuális gépeket, szkripteket, Angulart vagy szó szerint bármit, amelyre az alkalmazásnak szüksége van.
+Az alkalmazások többsége együtt üzembe helyezett állapot nélküli és állapotalapú mikroszolgáltatások, tárolók és egyéb végrehajtható fájlok kombinációjából áll. Az erős típusmegadású alkalmazások révén a Service Fabric lehetővé teszi több alkalmazáspéldány üzembe helyezését. Az egyes példányok felügyelete és frissítése egymástól függetlenül történik. Ami azonban még ennél is fontosabb, a Service Fabric képes tárolókat vagy végrehajtható fájlokat üzembe helyezni és megbízhatóvá tenni. Például Service Fabric a .NET, a ASP.NET Core, a Python, a Node. js, a Windows-tárolók, a Linux-tárolók, a Java-alapú virtuális gépek, a parancsfájlok, a szögletes vagy a szó bármilyen módon üzembe helyezhetővé teszi az alkalmazást.
 
 A Service Fabric olyan CI-/CD-eszközökkel van integrálva, mint az [Azure Pipelines](https://www.visualstudio.com/team-services/), a [Jenkins](https://jenkins.io/index.html) és az [Octopus Deploy](https://octopus.com/), és bármely más közismert CI-/CD-eszközzel is használható.
 

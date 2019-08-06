@@ -4,14 +4,14 @@ description: Megismerheti, hogyan kezelhetők az ütközések az Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 06/25/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 96171d4729187ca03f1e9529551a7fb6a26c6976
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 77fb0e195cee03405c4a601fe8c57d4a2690a4b2
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360375"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815071"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Az ütközés-feloldási házirendek kezelése Azure Cosmos DB
 
@@ -19,7 +19,7 @@ A többrégiós írások esetében, ha több ügyfél is ír ugyanarra az elemre
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Utolsó-író-WINS ütközés-feloldási szabályzat létrehozása
 
-Ezek a minták bemutatják, hogyan állíthat be egy tárolót egy utolsó író-WINS ütközés-feloldási házirenddel. Az utolsó-író-WINS alapértelmezett útvonala az időbélyeg mező vagy a `_ts` tulajdonság. Ezt egy numerikus típus felhasználó által definiált elérési útjára is lehet beállítani. Ütközés esetén a legmagasabb érték nyer. Ha az elérési út nincs beállítva vagy érvénytelen, a rendszer az alapértelmezett `_ts`értéket adja meg. A szabályzattal megoldott ütközések nem jelennek meg az ütközési hírcsatornában. Ezt a szabályzatot minden API használhatja.
+Ezek a minták bemutatják, hogyan állíthat be egy tárolót egy utolsó író-WINS ütközés-feloldási házirenddel. Az utolsó-író-WINS alapértelmezett útvonala az időbélyeg mező vagy a `_ts` tulajdonság. Az SQL API esetében ez egy numerikus típusú felhasználó által megadott elérési útra is beállítható. Ütközés esetén a legmagasabb érték nyer. Ha az elérési út nincs beállítva vagy érvénytelen, a rendszer az alapértelmezett `_ts`értéket adja meg. A szabályzattal megoldott ütközések nem jelennek meg az ütközési hírcsatornában. Ezt a szabályzatot minden API használhatja.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK V2
 
@@ -114,7 +114,6 @@ Az egyéni ütközések feloldására szolgáló tárolt eljárásokat az alább
 
 > [!IMPORTANT]
 > Akárcsak a tárolt eljárásokhoz hasonlóan, egy egyéni ütközés-feloldási eljárás ugyanazzal a partíciós kulccsal fér hozzá az adatokhoz, és bármilyen beszúrási, frissítési vagy törlési műveletet végrehajthat az ütközések feloldásához.
-
 
 Ez a minta tárolt eljárás az ütközéseket az `/myCustomId` elérési út legalacsonyabb értékének kiválasztásával oldja fel.
 
@@ -273,7 +272,6 @@ udp_collection = self.try_create_document_collection(
 
 A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
 
-
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Egyéni ütközésfeloldási szabályzat létrehozása
 
 Ezek a minták bemutatják, hogyan állíthat be egyéni ütközésfeloldási szabályzatot egy tárolóhoz. Ezek az ütközések az ütközési hírcsatornában jelennek meg.
@@ -428,10 +426,10 @@ while conflict:
 
 Ismerkedjen meg az alábbi Azure Cosmos DB fogalmakkal:
 
-* [Globális terjesztés – a motorháztető alatt](global-dist-under-the-hood.md)
-* [Több főkiszolgáló konfigurálása az alkalmazásokban](how-to-multi-master.md)
-* [Ügyfelek konfigurálása a többhelyű-hez](how-to-manage-database-account.md#configure-multiple-write-regions)
-* [Régiók hozzáadása vagy eltávolítása a Azure Cosmos DB-fiókból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [Több főkiszolgáló konfigurálása az alkalmazásokban](how-to-multi-master.md).
-* [Particionálás és adatelosztás](partition-data.md)
-* [Indexelés Azure Cosmos DB](indexing-policies.md)
+- [Globális terjesztés – a motorháztető alatt](global-dist-under-the-hood.md)
+- [Több főkiszolgáló konfigurálása az alkalmazásokban](how-to-multi-master.md)
+- [Ügyfelek konfigurálása a többhelyű-hez](how-to-manage-database-account.md#configure-multiple-write-regions)
+- [Régiók hozzáadása vagy eltávolítása a Azure Cosmos DB-fiókból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+- [Több főkiszolgáló konfigurálása az alkalmazásokban](how-to-multi-master.md).
+- [Particionálás és adatelosztás](partition-data.md)
+- [Indexelés Azure Cosmos DB](indexing-policies.md)

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/13/2019
+ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c20256fb712d9381ba2adc90e2e68ce4fdc8911a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: d4ca21ecf7ad0707ad33220a8e8c2700638f8e25
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382773"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824823"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>A biztonsági adatok (előzetes verzió) beállítása a bejelentkezési oldal parancssorában
 
@@ -40,7 +40,7 @@ A következő lépésekkel állíthatja be a munkahelyi vagy iskolai fiókjához
 >[!Important]
 >Ez csak egy példa a folyamatra. A szervezet követelményeitől függően előfordulhat, hogy a rendszergazda különböző ellenőrzési módszereket állított be, amelyeket be kell állítania a folyamat során. Ebben a példában két módszert igényelünk, a Microsoft Authenticator alkalmazást és egy mobiltelefon-számot a hitelesítési hívásokhoz vagy szöveges üzenetekhez.
 
-1. Miután kiválasztotta  a következőt a parancssorból, megjelenik a **fiók biztonságos létrehozása varázsló** , amely az első olyan metódust mutatja be, amelyet a rendszergazdának és a szervezetnek be kell állítania. Ebben a példában ez a Microsoft Authenticator alkalmazás.
+1. Miután kiválasztotta a következőt a parancssorból, megjelenik a **fiók biztonságos létrehozása varázsló** , amely az első olyan metódust mutatja be, amelyet a rendszergazdának és a szervezetnek be kell állítania. Ebben a példában ez a Microsoft Authenticator alkalmazás.
 
    > [!Note]
    > Ha a Microsoft Authenticator alkalmazástól eltérő hitelesítő alkalmazást szeretne használni, válassza a **másik hitelesítő alkalmazás használata** hivatkozást.
@@ -75,7 +75,7 @@ A következő lépésekkel állíthatja be a munkahelyi vagy iskolai fiókjához
 
 8. Hagyja jóvá az értesítést a Microsoft Authenticator alkalmazásban, majd kattintson a **tovább**gombra.
 
-    ![Sikeres értesítés, az alkalmazás és a fiók csatlakoztatása](media/security-info/securityinfo-prompt-auth-app-success.png).
+    ![Sikeres értesítés, az alkalmazás és a fiók csatlakoztatása](media/security-info/securityinfo-prompt-auth-app-success.png)
 
     A biztonsági adatokat a rendszer úgy frissíti, hogy a Microsoft Authenticator alkalmazás alapértelmezés szerint a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása során ellenőrizze az identitást.
 
@@ -98,6 +98,40 @@ A következő lépésekkel állíthatja be a munkahelyi vagy iskolai fiókjához
 12. A **siker** lapon ellenőrizheti, hogy sikeresen beállította-e a Microsoft Authenticator alkalmazást és a telefont (SMS vagy telefonhívás) a biztonsági adatokhoz, majd válassza a **kész**lehetőséget.
 
     ![A varázsló sikeresen befejezve oldal](media/security-info/securityinfo-prompt-setup-success.png)
+
+    >[!Note]
+    >Ha a szervezete megköveteli az alkalmazások jelszavainak használatát, a varázsló további szakasza is megjelenik, ahol beállíthatja. Ha egy harmadik, az **alkalmazás jelszavai**nevű szakaszt lát, ki kell töltenie azt, hogy el tudja végezni a varázslót. Az alkalmazás jelszavának hozzáadásával kapcsolatos lépésekért tekintse meg a jelen cikk az [alkalmazás jelszavainak kezelése](#manage-your-app-passwords) című szakaszát.
+
+### <a name="manage-your-app-passwords"></a>Az alkalmazás jelszavának kezelése
+
+Bizonyos alkalmazások, például az Outlook 2010, nem támogatják a kétlépéses ellenőrzést. Ez a támogatás hiánya azt jelenti, hogy ha kétlépéses ellenőrzést használ a szervezetében, az alkalmazás nem fog működni. A probléma megkerüléséhez létrehozhat egy automatikusan létrehozott jelszót, amelyet az egyes nem böngésző alkalmazásokhoz használhat, a normál jelszótól eltérő módon.
+
+>[!Note]
+>Ha nem látja ezt a lehetőséget a varázslóban, az azt jelenti, hogy a rendszergazda nem állította be. Ha ez nincs beállítva, de tudnia kell, hogy az alkalmazás jelszavait kell használnia, kövesse az [alkalmazás jelszavainak beállítása a biztonsági adatok (előzetes verzió) lapon](security-info-app-passwords.md)található lépéseket.
+
+Az alkalmazások jelszavainak használatakor fontos megjegyezni:
+
+- Az alkalmazás jelszavai automatikusan létrejönnek, és csak egyszer kerülnek be az alkalmazásba.
+
+- Felhasználónként legfeljebb 40 jelszó adható meg. Ha a korlát után megpróbál létrehozni egyet, a rendszer arra kéri, hogy töröljön egy meglévő jelszót, mielőtt az újat hozna létre.
+
+- Egy eszközön egyetlen alkalmazás jelszava használható, nem pedig alkalmazásként. Hozzon létre például egyetlen jelszót a laptopján lévő összes alkalmazáshoz, majd egy másik jelszót az összes alkalmazáshoz az asztalon.
+
+#### <a name="to-add-app-passwords-in-the-sign-in-wizard"></a>Alkalmazás jelszavainak hozzáadása a bejelentkezési varázslóban
+
+1. Miután befejezte a varázsló előző szakaszait, kattintson a **Tovább gombra** , és fejezze be az **alkalmazás jelszavának** szakaszát.
+
+2. Írja be a jelszót igénylő alkalmazás nevét, például `Outlook 2010`, majd kattintson a **tovább**gombra.
+
+    ![Adja hozzá az alkalmazás jelszava nevet a varázslóban.](media/security-info/app-password-app-password.png)
+
+3. Másolja a jelszót az **alkalmazás jelszava** képernyőről, és illessze be az alkalmazás **jelszó** területére (ebben a példában az Outlook 2010).
+
+    ![Alkalmazás jelszava lap, a másoláshoz használt jelszóval](media/security-info/app-password-copy-password.png)
+
+4. Miután átmásolta a jelszót, és beillesztette az alkalmazásba, térjen vissza ehhez a varázslóhoz, és győződjön meg arról, hogy a bejelentkezési módszer összes adata pontos, majd válassza a **kész**lehetőséget.
+
+    ![Alkalmazás jelszava lap, a befejezési megjegyzéssel](media/security-info/app-password-complete.png)
 
 ## <a name="next-steps"></a>További lépések
 

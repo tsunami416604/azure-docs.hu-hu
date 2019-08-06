@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 8b89f5572ae94986590fe76096daeb0ad088fe59
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 66a0c625d300a74787e3640992675d5a3f31610c
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668615"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828526"
 ---
 # <a name="tutorial-train-your-first-model"></a>Oktatóanyag: Az első modell betanítása
 
@@ -111,7 +111,7 @@ A képzés befejezését követően hívja meg a `experiment` változót, hogy b
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name (Név)</th><th>Munkaterület</th><th>Jelentés lapja</th><th>Docs oldal</th></tr><tr><td>cukorbetegség – kísérlet</td><td>saját-munkaterület neve</td><td><a href="" target="_blank" rel="noopener">Az Azure Portalra mutató hivatkozás</a></td><td><a href="" target="_blank" rel="noopener">Hivatkozás a dokumentációra</a></td></tr></table>
+<table style="width:100%"><tr><th>Name (Név)</th><th>Munkaterület</th><th>Jelentés lapja</th><th>Docs oldal</th></tr><tr><td>cukorbetegség – kísérlet</td><td>saját-munkaterület neve</td><td>Az Azure Portalra mutató hivatkozás</td><td>Hivatkozás a dokumentációra</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Képzés eredményeinek megtekintése a portálon
 
@@ -181,7 +181,7 @@ Ha Felhőbeli jegyzetfüzet-kiszolgálót használt, állítsa le a virtuális g
 
 1. A munkaterületen válassza a **notebook virtuális gépek**lehetőséget.
 
-   ![A virtuális gép kiszolgálójának leállítása](./media/quickstart-run-cloud-notebook/stop-server.png)
+   ![A virtuális gép kiszolgálójának leállítása](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
 
 1. Válassza ki a virtuális gépet a listából.
 

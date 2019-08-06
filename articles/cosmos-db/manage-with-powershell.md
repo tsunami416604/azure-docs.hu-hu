@@ -1,58 +1,58 @@
 ---
-title: Létrehozása és kezelése az Azure Cosmos DB PowerShell-lel
-description: Az Azure Powershell használata kezelheti az Azure Cosmos DB fiókok, adatbázisok, tárolók és átviteli sebességet.
+title: Azure Cosmos DB létrehozása és kezelése a PowerShell használatával
+description: Az Azure PowerShell használatával kezelheti Azure Cosmos DB fiókjait, adatbázisait, tárolóit és átviteli sebességét.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/09/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: b61c7bbc06d8d265e5dd5dddd31aceadce1f623b
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 79302fc0f9addc70461d21c03b02416d15a6fa6c
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797055"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814940"
 ---
-# <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell-lel az Azure Cosmos DB SQL API-erőforrások kezelése
+# <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Azure Cosmos DB SQL API-erőforrások kezelése a PowerShell használatával
 
-Ez az útmutató ismerteti parancsfájlt a PowerShell használatával, és az Azure Cosmos DB-erőforrásokat, beleértve a fiók, adatbázis, tároló és átviteli sebesség a kezelés automatizálása. Az Azure Cosmos DB kezelése az AzResource parancsmagot közvetlenül az Azure Cosmos DB erőforrás-szolgáltató kezeli. A tulajdonságokat, amelyeket az Azure Cosmos DB erőforrás-szolgáltató a PowerShell-lel kezelhető összes megtekintése: [Azure Cosmos DB erőforrás-szolgáltató sémáján](/azure/templates/microsoft.documentdb/allversions)
+Az alábbi útmutató ismerteti, hogyan használható a PowerShell a Azure Cosmos DB erőforrások, például a fiók, az adatbázis, a tároló és az átviteli sebesség kezelésére és automatizálására. A Azure Cosmos DB felügyeletét a AzResource-parancsmag közvetlenül a Azure Cosmos DB erőforrás-szolgáltatón keresztül kezeli. Az Azure Cosmos DB erőforrás-szolgáltató PowerShell használatával felügyelhető összes tulajdonság megtekintéséhez lásd: [Azure Cosmos db erőforrás-szolgáltató sémája](/azure/templates/microsoft.documentdb/allversions)
 
-A platformok közötti kezelése az Azure Cosmos DB, használhatja [Azure CLI-vel](manage-with-cli.md), a [REST API-val][rp-rest-api], vagy a [az Azure portal](create-sql-api-dotnet.md#create-account).
+Azure Cosmos DB platformfüggetlen felügyeletéhez használhatja az [Azure CLI](manage-with-cli.md)-t, a [REST API][rp-rest-api]vagy a [Azure Portal](create-sql-api-dotnet.md#create-account).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="getting-started"></a>Első lépések
 
-Kövesse a [telepítése és konfigurálása az Azure PowerShell-lel][powershell-install-configure] telepítéséhez, és jelentkezzen be az Azure Powershell-fiókjával.
+Kövesse a [Azure PowerShell telepítésének és konfigurálásának][powershell-install-configure] lépéseit a PowerShell Azure-fiókjába való telepítéséhez és bejelentkezéséhez.
 
 * Ha szeretné, hajtsa végre a következő parancsokat a felhasználó jóváhagyásának kérése nélkül, fűzze hozzá a `-Force` jelző a következő paranccsal.
 * Az alábbi parancsokat a rendszer szinkron.
 
-## <a name="azure-cosmos-accounts"></a>Az Azure Cosmos-fiókok
+## <a name="azure-cosmos-accounts"></a>Azure Cosmos-fiókok
 
-A következő szakaszok bemutatják, hogyan lehet az Azure Cosmos-fiók kezeléséhez, többek között:
+Az alábbi szakaszban bemutatjuk, hogyan kezelheti az Azure Cosmos-fiókot, beleértve a következőket:
 
-* [Egy Azure Cosmos-fiók létrehozása](#create-account)
-* [Egy Azure Cosmos-fiók frissítése](#update-account)
-* [Egy adott előfizetés összes Azure Cosmos-fiókok listázása](#list-accounts)
-* [Egy Azure Cosmos-fiók létrehozása](#get-account)
-* [Egy Azure Cosmos-fiók törlése](#delete-account)
-* [Frissítheti a címkéket egy Azure Cosmos-fiók](#update-tags)
-* [Egy Azure Cosmos-fiók kulcsainak listázása](#list-keys)
-* [Egy Azure Cosmos-fiók kulcsainak újragenerálása](#regenerate-keys)
-* [Lista kapcsolati karakterláncok az Azure Cosmos-fiók](#list-connection-strings)
-* [Feladatátvételi prioritását egy Azure Cosmos-fiók módosítása](#modify-failover-priority)
+* [Azure Cosmos-fiók létrehozása](#create-account)
+* [Azure Cosmos-fiók frissítése](#update-account)
+* [Az előfizetésben lévő összes Azure Cosmos-fiók listázása](#list-accounts)
+* [Azure Cosmos-fiók beszerzése](#get-account)
+* [Azure Cosmos-fiók törlése](#delete-account)
+* [Azure Cosmos-fiókhoz tartozó címkék frissítése](#update-tags)
+* [Azure Cosmos-fiók kulcsainak listázása](#list-keys)
+* [Kulcsok újragenerálása Azure Cosmos-fiókhoz](#regenerate-keys)
+* [Azure Cosmos-fiókhoz tartozó kapcsolatok karakterláncok listázása](#list-connection-strings)
+* [Azure Cosmos-fiók feladatátvételi prioritásának módosítása](#modify-failover-priority)
 
-### <a id="create-account"></a> Egy Azure Cosmos-fiók létrehozása
+### <a id="create-account"></a>Azure Cosmos-fiók létrehozása
 
-Ez a parancs létrehoz egy Azure Cosmos DB-adatbázisfiók a [több régiót][distribute-data-globally], kötött elavulás [konzisztencia-szabályzat](consistency-levels.md).
+Ez a parancs egy Azure Cosmos DB adatbázis-fiókot hoz létre, amely [több régiót][distribute-data-globally], határt nem okozó [konzisztencia-házirenddel](consistency-levels.md)rendelkezik.
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos Account for Core (SQL) API
 $resourceGroupName = "myResourceGroup"
 $location = "West US 2"
-$accountName = "mycosmosaccount" # must be lower case.
+$accountName = "mycosmosaccount" # must be lowercase and < 31 characters .
 
 $locations = @(
     @{ "locationName"="West US 2"; "failoverPriority"=0 },
@@ -77,17 +77,17 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-* `$accountName` Az Azure Cosmos-fiók neve. Csak kisbetűket, alfanumerikus fogad, és a "-" karakter, és 3. és 31 karakter közötti.
-* `$location` Az Azure Cosmos-fiók erőforrás helye.
-* `$locations` A replika régiók, az adatbázis fiókjához tartozó. 0, a feladatátvétel prioritási értékkel rendelkező adatbázis-fiókonként egy írási régiót kell lennie.
-* `$consistencyPolicy` Az Azure Cosmos-fiók alapértelmezett konzisztencia szintjét. További információkért lásd: [Azure Cosmos DB-ben Konzisztenciaszintek](consistency-levels.md).
-* `$CosmosDBProperties` A Cosmos DB az Azure erőforrás-kezelő szolgáltató üzembe helyezi a fiók a tulajdonságértékek kerülnek.
+* `$accountName`Az Azure Cosmos-fiók neve. Kisbetűnek kell lennie, alfanumerikus karaktereket és a "-" karaktert, valamint 3 – 31 karakterből állhat.
+* `$location`Az Azure Cosmos-fiók erőforrásának helye.
+* `$locations`Az adatbázis-fiók replikáinak régiói. A 0 értékű feladatátvételi prioritási értékkel rendelkező adatbázis-fiókok esetében egy írási régiónak kell lennie.
+* `$consistencyPolicy`Az Azure Cosmos-fiók alapértelmezett konzisztencia-szintje. További információkért lásd: [Azure Cosmos DB-ben Konzisztenciaszintek](consistency-levels.md).
+* `$CosmosDBProperties`A Cosmos DB Azure Resource Manager szolgáltatónak átadott tulajdonságértékek a fiók kiépítéséhez.
 
-Fiókok konfigurálhatók az IP-tűzfalon, valamint a virtuális hálózat az Azure Cosmos-végpontok szolgáltatás. Az IP-tűzfal konfigurálása az Azure Cosmos DB információkért lásd: [IP-tűzfal konfigurálása](how-to-configure-firewall.md).  További információ a Szolgáltatásvégpontok engedélyezése az Azure Cosmos DB: [hozzáférés a virtuális hálózatok konfigurálása](how-to-configure-vnet-service-endpoint.md).
+Az Azure Cosmos-fiókok IP-tűzfallal és Virtual Network szolgáltatásbeli végpontokkal is konfigurálhatók. További információ a Azure Cosmos DB IP-tűzfalának konfigurálásáról: az [IP-tűzfal konfigurálása](how-to-configure-firewall.md).  További információ a Azure Cosmos DB szolgáltatási végpontjának engedélyezéséről: [a virtuális hálózatokról való hozzáférés konfigurálása](how-to-configure-vnet-service-endpoint.md).
 
-### <a id="list-accounts"></a> Egy adott előfizetés összes Azure Cosmos-fiókok listázása
+### <a id="list-accounts"></a>Az előfizetésben lévő összes Azure Cosmos-fiók listázása
 
-Ez a parancs lehetővé teszi, hogy egy adott előfizetés összes az Azure Cosmos-fiók megjelenítése.
+Ez a parancs lehetővé teszi az összes Azure Cosmos-fiók listázását egy előfizetésben.
 
 ```azurepowershell-interactive
 # List Azure Cosmos Accounts
@@ -95,9 +95,9 @@ Ez a parancs lehetővé teszi, hogy egy adott előfizetés összes az Azure Cosm
 Get-AzResource -ResourceType Microsoft.DocumentDb/databaseAccounts | ft
 ```
 
-### <a id="get-account"></a> Egy Azure Cosmos-fiók tulajdonságainak beolvasása
+### <a id="get-account"></a>Azure Cosmos-fiók tulajdonságainak beolvasása
 
-Ez a parancs lehetővé teszi, hogy egy meglévő Azure-Cosmos-fiók tulajdonságainak beolvasása.
+Ez a parancs lehetővé teszi egy meglévő Azure Cosmos-fiók tulajdonságainak beszerzését.
 
 ```azurepowershell-interactive
 # Get the properties of an Azure Cosmos Account
@@ -110,19 +110,19 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName | Select-Object Properties
 ```
 
-### <a id="update-account"></a> Egy Azure Cosmos-fiók frissítése
+### <a id="update-account"></a>Azure Cosmos-fiók frissítése
 
-Ez a parancs lehetővé teszi az Azure Cosmos DB-adatbázis fiók tulajdonságainak frissítése. Frissíthető tulajdonságok a következők:
+Ez a parancs lehetővé teszi az Azure Cosmos DB-adatbázis fiók tulajdonságainak frissítése. A frissíthető tulajdonságok közé tartoznak a következők:
 
-* Hozzáadásával vagy eltávolításával régiók
-* Alapértelmezett konzisztencia-szabályzat módosítása
+* Régiók hozzáadása vagy eltávolítása
+* Alapértelmezett konzisztencia-házirend módosítása
 * Feladatátvételi szabályzat módosítása
-* IP-címtartományok szűrője módosítása
-* Virtuális hálózati konfiguráció módosítása
-* Több főkiszolgálós engedélyezése
+* IP-címtartomány módosítása
+* Virtual Network konfigurációk módosítása
+* Több főkiszolgáló engedélyezése
 
 > [!NOTE]
-> Ez a parancs lehetővé teszi, hogy hozzá és távolíthat el a régióban, de nem engedélyezi, hogy módosítsa a feladatátvételi prioritások. Feladatátvételi prioritás módosítása esetén lásd: [módosítása az Azure Cosmos-fiók feladatátvételi prioritását](#modify-failover-priority).
+> Ez a parancs lehetővé teszi, hogy hozzá és távolíthat el a régióban, de nem engedélyezi, hogy módosítsa a feladatátvételi prioritások. A feladatátvételi prioritás módosításához tekintse meg az [Azure Cosmos-fiók feladatátvételi prioritásának módosítása](#modify-failover-priority)című témakört.
 
 ```azurepowershell-interactive
 # Update an Azure Cosmos Account and set Consistency level to Session
@@ -143,9 +143,9 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-### <a id="delete-account"></a> Egy Azure Cosmos-fiók törlése
+### <a id="delete-account"></a>Azure Cosmos-fiók törlése
 
-Ez a parancs lehetővé teszi egy meglévő Azure-Cosmos-fiók törlése.
+Ez a parancs lehetővé teszi egy meglévő Azure Cosmos-fiók törlését.
 
 ```azurepowershell-interactive
 # Delete an Azure Cosmos Account
@@ -157,9 +157,9 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName
 ```
 
-### <a id="update-tags"></a> Frissítheti a címkéket egy Azure Cosmos-fiók
+### <a id="update-tags"></a>Azure Cosmos-fiók címkék frissítése
 
-Az alábbi példa azt ismerteti, hogyan állíthatja be [Azure-erőforráscímkék][azure-resource-tags] egy Azure Cosmos-fiók.
+Az alábbi példa azt ismerteti, hogyan állíthatja be az [Azure-erőforrás címkéit][azure-resource-tags] egy Azure Cosmos-fiókhoz.
 
 > [!NOTE]
 > Ez a parancs kombinálva, a létrehozás vagy frissítés parancsok hozzáfűzésével a `-Tags` jelzőt mellékel a megfelelő paraméter.
@@ -214,9 +214,9 @@ $keys = Invoke-AzResourceAction -Action listConnectionStrings `
 Select-Object $keys
 ```
 
-### <a id="regenerate-keys"></a> Fiókkulcsok ismételt létrehozása
+### <a id="regenerate-keys"></a>Fiók kulcsainak újragenerálása
 
-Egy Azure Cosmos-fiók hozzáférési kulcsokat rendszeres időközönként újragenerálása kell a kapcsolatok több biztonsága érdekében. A fiók elsődleges és másodlagos hívóbetűket vannak rendelve. Ez lehetővé teszi a hozzáférés fenntartása, míg a másik újra létrehozzák azok az ügyfelek. Négyféle (elsődleges, másodlagos, PrimaryReadonly és SecondaryReadonly) egy Azure Cosmos-fiók kulcsok
+Az Azure Cosmos-fiókhoz való hozzáférési kulcsokat rendszeresen újra kell generálni, hogy a kapcsolatok biztonságosabbak maradjanak. Az elsődleges és másodlagos hozzáférési kulcsok hozzá vannak rendelve a fiókhoz. Ez lehetővé teszi az ügyfelek számára a hozzáférés fenntartását, amíg a másik újragenerálta. Egy Azure Cosmos-fiókhoz négy típusú kulcs létezik (elsődleges, másodlagos, PrimaryReadonly és SecondaryReadonly)
 
 ```azurepowershell-interactive
 # Regenerate the primary key for an Azure Cosmos Account
@@ -233,14 +233,14 @@ $keys = Invoke-AzResourceAction -Action regenerateKey `
 Select-Object $keys
 ```
 
-### <a id="modify-failover-priority"></a> Feladatátvételi prioritás módosítása
+### <a id="modify-failover-priority"></a>Feladatátvétel prioritásának módosítása
 
-A többrégiós adatbázisfiókhoz módosíthatja a sorrendet, amelyben egy Cosmos-fiók lépteti másodlagos olvasási-replikák egy regionális feladatátvétel replikán kell az elsődleges írási. Ha a régió `failoverPriority=0` van módosítani, ez a parancs is használható kezdeményezni a vészhelyreállítási tervek tesztelésére egy vészhelyreállítási próbát.
+A többrégiós adatbázis-fiókok esetében megváltoztathatja azt a sorrendet, amelyben a Cosmos-fiók előlépteti a másodlagos olvasási replikákat, ha az elsődleges írási replika helyi feladatátvételt végez. Ha a régió `failoverPriority=0` módosítva van, ezzel a paranccsal a vész-helyreállítási terv tesztelésére is elindíthatja a vész-helyreállítási gyakorlatot.
 
-Az alábbi példában azt feltételezik, hogy a fiók rendelkezik-e egy westus aktuális feladatátvételi prioritását = 0 és az USA keleti régiója = 1, és a régiók tükrözés.
+Az alábbi példában feltételezzük, hogy a fiók aktuális feladatátvételi prioritása a westus = 0 és a eastus = 1, és a régiók tükrözése.
 
 > [!CAUTION]
-> Módosítása `locationName` a `failoverPriority=0` manuális feladatátvételt az Azure Cosmos-fiók vált. Prioritás más módosítást nem vált a feladatátvételt.
+> A `locationName` szolgáltatásra való `failoverPriority=0` váltáskor a rendszer manuális feladatátvételt indít el egy Azure Cosmos-fiókhoz. A többi prioritási változás nem indít el feladatátvételt.
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
@@ -258,18 +258,18 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
     -ResourceGroupName $resourceGroupName -Name $accountName -Parameters $failoverPolicies
 ```
 
-## <a name="azure-cosmos-database"></a>Az Azure Cosmos-adatbázis
+## <a name="azure-cosmos-database"></a>Azure Cosmos-adatbázis
 
-A következő szakaszok bemutatják, hogyan kezelheti az Azure Cosmos-adatbázis, többek között:
+Az alábbi szakaszban bemutatjuk, hogyan kezelheti az Azure Cosmos-adatbázist, beleértve a következőket:
 
-* [Hozzon létre egy Azure Cosmos database.](#create-db)
-* [Megosztott adattovábbítási kapacitással rendelkező Azure Cosmos-adatbázis létrehozása](#create-db-ru)
-* [Egy Azure Cosmos Database az átviteli sebesség lekérdezése](#get-db-ru)
-* [-Fiókban lévő összes az Azure Cosmos-adatbázis listázása](#list-db)
-* [Egy Azure Cosmos-adatbázis beolvasása](#get-db)
-* [Egy Azure Cosmos-adatbázis törlése](#delete-db)
+* [Azure Cosmos-adatbázis létrehozása](#create-db)
+* [Azure Cosmos-adatbázis létrehozása megosztott átviteli sebességgel](#create-db-ru)
+* [Azure Cosmos-adatbázis átviteli sebességének beolvasása](#get-db-ru)
+* [Egy fiókban található összes Azure Cosmos-adatbázis listázása](#list-db)
+* [Egyetlen Azure Cosmos-adatbázis beszerzése](#get-db)
+* [Azure Cosmos-adatbázis törlése](#delete-db)
 
-### <a id="create-db"></a>Hozzon létre egy Azure Cosmos database.
+### <a id="create-db"></a>Azure Cosmos-adatbázis létrehozása
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos database
@@ -287,7 +287,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $DataBaseProperties
 ```
 
-### <a id="create-db-ru"></a>Megosztott adattovábbítási kapacitással rendelkező Azure Cosmos-adatbázis létrehozása
+### <a id="create-db-ru"></a>Azure Cosmos-adatbázis létrehozása megosztott átviteli sebességgel
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -305,7 +305,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $DataBaseProperties
 ```
 
-### <a id="get-db-ru"></a>Egy Azure Cosmos Database az átviteli sebesség lekérdezése
+### <a id="get-db-ru"></a>Azure Cosmos-adatbázis átviteli sebességének beolvasása
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -320,7 +320,7 @@ Get-AzResource -ResourceType $databaseThroughputResourceType `
     -Name $databaseThroughputResourceName  | Select-Object Properties
 ```
 
-### <a id="list-db"></a>Egy fiók minden Azure Cosmos-adatbázis beolvasása
+### <a id="list-db"></a>Összes Azure Cosmos-adatbázis beolvasása egy fiókban
 
 ```azurepowershell-interactive
 # Get all databases in an Azure Cosmos account
@@ -333,7 +333,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName  | Select-Object Properties
 ```
 
-### <a id="get-db"></a>Egy Azure Cosmos-adatbázis beolvasása
+### <a id="get-db"></a>Egyetlen Azure Cosmos-adatbázis beszerzése
 
 ```azurepowershell-interactive
 # Get a single database in an Azure Cosmos account
@@ -347,7 +347,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName | Select-Object Properties
 ```
 
-### <a id="delete-db"></a>Egy Azure Cosmos-adatbázis törlése
+### <a id="delete-db"></a>Azure Cosmos-adatbázis törlése
 
 ```azurepowershell-interactive
 # Delete a database in an Azure Cosmos account
@@ -359,23 +359,23 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/data
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Name $resourceName
 ```
 
-## <a name="azure-cosmos-container"></a>Azure Cosmos Container
+## <a name="azure-cosmos-container"></a>Azure Cosmos-tároló
 
-A következő szakaszok bemutatják, hogyan kezelheti az Azure Cosmos-tárolót, többek között:
+Az alábbi szakaszban bemutatjuk, hogyan kezelheti az Azure Cosmos-tárolót, beleértve a következőket:
 
-* [Egy Azure Cosmos-tároló létrehozása](#create-container)
-* [Hozzon létre egy Azure Cosmos-tárolóhoz nagy partíciókulccsal rendelkező](#create-container-big-pk)
-* [Az Azure Cosmos-tároló átviteli sebesség lekérdezése](#get-container-ru)
-* [Hozzon létre egy Azure Cosmos-tárolóhoz megosztott átviteli sebesség](#create-container-ru)
-* [Egyéni indexelési hozzon létre egy Azure Cosmos-tárolóhoz](#create-container-custom-index)
-* [Hozzon létre egy Azure Cosmos-tárolóhoz indexelése ki van kapcsolva](#create-container-no-index)
-* [Hozzon létre egy Azure Cosmos-tárolóhoz egyedi kulcsot és a TTL](#create-container-unique-key-ttl)
-* [Hozzon létre egy Azure Cosmos-tárolóhoz ütközésének feloldása](#create-container-lww)
-* [Az adatbázis összes az Azure Cosmos-tárolót](#list-containers)
-* [Egy adatbázis egy egyetlen Azure Cosmos-tároló beolvasása](#get-container)
-* [Egy Azure Cosmos-tároló törlése](#delete-container)
+* [Azure Cosmos-tároló létrehozása](#create-container)
+* [Azure Cosmos-tároló létrehozása nagyméretű partíciós kulccsal](#create-container-big-pk)
+* [Azure Cosmos-tároló átviteli sebességének beolvasása](#get-container-ru)
+* [Azure Cosmos-tároló létrehozása megosztott átviteli sebességgel](#create-container-ru)
+* [Azure Cosmos-tároló létrehozása egyéni indexeléssel](#create-container-custom-index)
+* [Kikapcsolt indexeléssel rendelkező Azure Cosmos-tároló létrehozása](#create-container-no-index)
+* [Azure Cosmos-tároló létrehozása egyedi kulccsal és TTL-vel](#create-container-unique-key-ttl)
+* [Ütközéses feloldást biztosító Azure Cosmos-tároló létrehozása](#create-container-lww)
+* [Egy adatbázisban lévő összes Azure Cosmos-tároló listázása](#list-containers)
+* [Egyetlen Azure Cosmos-tároló beszerzése egy adatbázisban](#get-container)
+* [Azure Cosmos-tároló törlése](#delete-container)
 
-### <a id="create-container"></a>Egy Azure Cosmos-tároló létrehozása
+### <a id="create-container"></a>Azure Cosmos-tároló létrehozása
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos container with default indexes and throughput at 400 RU
@@ -401,7 +401,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="create-container-big-pk"></a>Hozzon létre egy Azure Cosmos-tárolóhoz egy nagy partíció kulcsának mérete
+### <a id="create-container-big-pk"></a>Azure Cosmos-tároló létrehozása nagyméretű partíciós kulcs méretével
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos container with a large partition key value (version = 2)
@@ -428,7 +428,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="get-container-ru"></a>Az Azure Cosmos-tároló átviteli sebesség lekérdezése
+### <a id="get-container-ru"></a>Azure Cosmos-tároló átviteli sebességének beolvasása
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -443,7 +443,7 @@ Get-AzResource -ResourceType $containerThroughputResourceType `
     -Name $containerThroughputResourceName  | Select-Object Properties
 ```
 
-### <a id="create-container-ru"></a>Hozzon létre egy Azure Cosmos-tárolóhoz megosztott átviteli sebesség
+### <a id="create-container-ru"></a>Azure Cosmos-tároló létrehozása megosztott átviteli sebességgel
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -468,7 +468,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties 
 ```
 
-### <a id="create-container-custom-index"></a>Hozzon létre egy Azure Cosmos-tárolóhoz egyéni index házirend
+### <a id="create-container-custom-index"></a>Egyéni index-házirenddel rendelkező Azure Cosmos-tároló létrehozása
 
 ```azurepowershell-interactive
 # Create a container with a custom indexing policy
@@ -504,7 +504,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="create-container-no-index"></a>Hozzon létre egy Azure Cosmos-tárolóhoz indexelése ki van kapcsolva
+### <a id="create-container-no-index"></a>Kikapcsolt indexeléssel rendelkező Azure Cosmos-tároló létrehozása
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos container with no indexing
@@ -533,7 +533,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="create-container-unique-key-ttl"></a>Egy Azure Cosmos-tároló létrehozása az egyedi és a TTL
+### <a id="create-container-unique-key-ttl"></a>Azure Cosmos-tároló létrehozása egyedi kulcs-házirenddel és TTL-vel
 
 ```azurepowershell-interactive
 # Create a container with a unique key policy and TTL
@@ -576,9 +576,9 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="create-container-lww"></a>Hozzon létre egy Azure Cosmos-tárolóhoz ütközésének feloldása
+### <a id="create-container-lww"></a>Ütközéses feloldást biztosító Azure Cosmos-tároló létrehozása
 
-Hozzon létre egy tárolt eljárás használatával ütközésfeloldási házirend, állítsa `"mode"="custom"` és a megoldási elérési útjának beállítása a tárolt eljárás neveként `"conflictResolutionPath"="myResolverStoredProcedure"`. Állítsa a ConflictsFeed írni az összes ütközést, és külön-külön kezelni, `"mode"="custom"` és `"conflictResolutionPath"=""`
+Ha egy tárolt eljárás használatára vonatkozó ütközés-feloldási szabályzatot szeretne `"mode"="custom"` létrehozni, állítsa be és állítsa be a megoldás elérési útját `"conflictResolutionPath"="myResolverStoredProcedure"`a tárolt eljárás neveként. Ha az összes ütközést a ConflictsFeed szeretné írni, és külön `"mode"="custom"` kezeli a leírót, állítsa be és`"conflictResolutionPath"=""`
 
 ```azurepowershell-interactive
 # Create container with last-writer-wins conflict resolution policy
@@ -608,7 +608,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="list-containers"></a>Az adatbázis összes az Azure Cosmos-tárolót
+### <a id="list-containers"></a>Egy adatbázisban lévő összes Azure Cosmos-tároló listázása
 
 ```azurepowershell-interactive
 # List all Azure Cosmos containers in a database
@@ -622,7 +622,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName | Select-Object Properties
 ```
 
-### <a id="get-container"></a>Egy adatbázis egy egyetlen Azure Cosmos-tároló beolvasása
+### <a id="get-container"></a>Egyetlen Azure Cosmos-tároló beszerzése egy adatbázisban
 
 ```azurepowershell-interactive
 # Get a single Azure Cosmos container in a database
@@ -637,7 +637,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName | Select-Object Properties
 ```
 
-### <a id="delete-container"></a>Egy Azure Cosmos-tároló törlése
+### <a id="delete-container"></a>Azure Cosmos-tároló törlése
 
 ```azurepowershell-interactive
 # Delete an Azure Cosmos container
@@ -653,10 +653,10 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/data
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az összes PowerShell-minták](powershell-samples.md)
-* [Az Azure Cosmos-fiók kezelése](how-to-manage-database-account.md)
-* [Egy Azure Cosmos-tároló létrehozása](how-to-create-container.md)
-* [Time-to-live konfigurálása az Azure Cosmos DB-ben](how-to-time-to-live.md)
+* [Minden PowerShell-minta](powershell-samples.md)
+* [Azure Cosmos-fiók kezelése](how-to-manage-database-account.md)
+* [Azure Cosmos-tároló létrehozása](how-to-create-container.md)
+* [A Azure Cosmos DB élettartamának konfigurálása](how-to-time-to-live.md)
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 

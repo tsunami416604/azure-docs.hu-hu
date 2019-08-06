@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9f4e001909fb739aa368e5201649e85cce9906d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 110dcb1531390b207ae741af07fe0ad18964aae1
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60910617"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816135"
 ---
-# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Gyors útmutató: Linux rendszerű számítógépek felvétele az Azure Security Centerben
-Az Azure-előfizetései felvétele után a Linux-ügynök kiépítésével engedélyezheti a Security Centert az Azure-on kívül, például a helyszínen vagy más felhőkben futó Linux-erőforrások számára.
+# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Gyors útmutató: Linux rendszerű számítógépek előkészítése Azure Security Center
+Az Azure-előfizetések előkészítése után az ügynök kiépítésével engedélyezheti az Azure-on kívül, például a helyszínen vagy más felhőkben futó Linux-erőforrások Security Centerét. Az ügynök neve Microsoft monitoring Agent (MMA), de más néven OMS-ügynök.
 
-Ez a rövid útmutató bemutatja, hogyan telepítheti a Linux-ügynököt egy Linux rendszerű számítógépre.
+Ez a rövid útmutató bemutatja, hogyan telepítheti az ügynököt egy Linux rendszerű számítógépre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
 
-A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Standard tarifacsomagjával. A frissítési utasításokért lásd az [Azure-előfizetés a Security Center Standard verziójába történő felvételét](security-center-get-started.md) ismertető szakaszt. A Security Center Standard díjmentesen próbálhatja ki. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Standard tarifacsomagjával. A frissítési utasításokért lásd az [Azure-előfizetés a Security Center Standard verziójába történő felvételét](security-center-get-started.md) ismertető szakaszt. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-linux-computer"></a>Új Linux rendszerű számítógép hozzáadása
 
@@ -57,7 +57,7 @@ A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Stand
 
    ![Az ügynök telepítése][5]
 
-A naplók a Security Center-ügynök Linux rendszeren található: */var/opt/microsoft/omsagent/\<munkaterület-azonosító > /log/*
+Az ügynök naplói a következő helyen találhatók: */var/opt/Microsoft/omsagent/\<Workspace ID >/log/*
 
   ![Az ügynök naplói][6]
 

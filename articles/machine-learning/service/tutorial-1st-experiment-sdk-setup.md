@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: baeb175c57573e557d298ff3197394ab619434ff
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: b3fdcfbb9869c0199c91f5bbc6ca1f02fec996cf
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772651"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828679"
 ---
 # <a name="tutorial-setup-environment-and-workspace"></a>Oktatóanyag: Telepítési környezet és munkaterület
 
@@ -49,14 +49,12 @@ A munkaterületről hozzon létre egy felhőalapú erőforrást a Jupyter-jegyze
 
 1. A notebook virtuális gép létrehozásához válassza az **+ új** lehetőséget.
 
-     ![Új virtuális gép kiválasztása](./media/quickstart-run-cloud-notebook/add-workstation.png)
+     ![Új virtuális gép kiválasztása](./media/tutorial-1st-experiment-sdk-setup/add-workstation.png)
 
 1. Adja meg a virtuális gép nevét. Ezután kattintson a **Létrehozás** elemre.
 
     > [!NOTE]
     > A notebook virtuális gép nevének 2 – 16 karakter közöttinek kell lennie. Az érvényes karakterek a betűk, a számok és a karakter.  A névnek egyedinek kell lennie az Azure-előfizetésen belül is.
-
-    ![Új virtuális gép létrehozása](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
 1. Várjon, amíg az állapot **futni**nem változik.
 
@@ -66,7 +64,7 @@ A virtuális gép futása után a **notebook virtuális gépek** szakasz haszná
 
 1. A virtuális gép **URI** oszlopában válassza a **Jupyter** lehetőséget.
 
-    ![A Jupyter notebook-kiszolgáló elindítása](./media/quickstart-run-cloud-notebook/start-server.png)
+    ![A Jupyter notebook-kiszolgáló elindítása](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
 
     A hivatkozás elindítja a notebook-kiszolgálót, és megnyitja a Jupyter notebook weboldalát egy új böngésző lapon.  Ez a hivatkozás csak a virtuális gépet létrehozó személy számára fog működni. A munkaterület minden felhasználójának létre kell hoznia a saját virtuális gépet.
 
@@ -87,7 +85,7 @@ Ha Felhőbeli jegyzetfüzet-kiszolgálót használt, állítsa le a virtuális g
 
 1. A munkaterületen válassza a **notebook virtuális gépek**lehetőséget.
 
-   ![A virtuális gép kiszolgálójának leállítása](./media/quickstart-run-cloud-notebook/stop-server.png)
+   ![A virtuális gép kiszolgálójának leállítása](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
 
 1. Válassza ki a virtuális gépet a listából.
 

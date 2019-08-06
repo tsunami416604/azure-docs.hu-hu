@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Gremlin API a Pythonnal – Azure Cosmos DB használatával'
+title: 'Gyors útmutató: Gremlin API Python-Azure Cosmos DB'
 description: Ez a rövid útmutató azt ismerteti, hogy miként használható az Azure Cosmos DB Gremlin API konzolalkalmazások az Azure Portal és a Python használatával történő létrehozására.
 author: luisbosquez
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
-ms.openlocfilehash: 18f54e64498c7809e662ceb71d1e497a0f275ad6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 545f679b11295485567a817d144225b361a262ce
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480450"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815196"
 ---
-# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Gyors útmutató: Gráfadatbázis létrehozása a Python és az Azure portal segítségével Azure Cosmos DB-ben
+# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Gyors útmutató: Graph-adatbázis létrehozása Azure Cosmos DB a Python és a Azure Portal használatával
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)
@@ -173,13 +173,13 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>Áttekintés és mintaadatok hozzáadása
 
-Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott csúcspontokat, valamint további adatpontokat is hozzáadhat.
+A csúcspontok és élek beszúrása után visszatérhet a Adatkezelőra, és megtekintheti a gráfhoz hozzáadott csúcspontokat, és további adatpontokat is hozzáadhat.
 
 1. Kattintson az **Adatkezelőre**, bontsa ki a **sample-graph** csomópontot, és kattintson a **Gráf**, majd a **Szűrő alkalmazása** lehetőségre. 
 
    ![Új dokumentumok létrehozása az Azure Portal Adatkezelőjében](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
 
-2. A **Találatok** listában megjelennek a gráfhoz hozzáadott új felhasználók. Válassza ki **ben** , és figyelje meg, hogy robin csatlakozott-e. A csúcspontokat szabadon mozgathatja húzással, nagyíthat és kicsinyíthet az egérgörgő görgetésével, illetve megnövelheti a gráf méretét a duplaszárú nyíllal. 
+2. Figyelje meg, hogy az **eredmények** listájában három új felhasználó kerül be a gráfba. A csúcspontokat szabadon mozgathatja húzással, nagyíthat és kicsinyíthet az egérgörgő görgetésével, illetve megnövelheti a gráf méretét a duplaszárú nyíllal. 
 
    ![Új csúcspontok az Azure Portal Adatkezelőjében megjelenő gráfban](./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png)
 
@@ -193,6 +193,7 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
     kulcs|érték|Megjegyzések
     ----|----|----
+    PK|/pk| 
     id|ashley|A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
     gender|female| 
     tech | java | 
@@ -210,6 +211,7 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
     kulcs|érték|Megjegyzések
     ----|----|----
+    PK|/pk| 
     id|rakesh|A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
     gender|male| 
     school|MIT| 

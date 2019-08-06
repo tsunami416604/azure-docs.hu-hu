@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Több adatforrást – Azure Search index'
-description: Ismerje meg, hogyan importálhat adatokat a különböző forrásokból származó egyetlen Azure Search-indexbe.
+title: 'Oktatóanyag: Több adatforrás indexelése – Azure Search'
+description: Megtudhatja, hogyan importálhat több adatforrásból származó adatait egyetlen Azure Search indexbe.
 author: RobDixon22
 manager: HeidiSteen
 services: search
@@ -8,108 +8,107 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: v-rodixo
-ms.custom: seodec2018
-ms.openlocfilehash: 8ce3c66432f3d2d0cb973886498aa46e7820698c
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: dcc4a7f267d1e852fcd50050f6683baa0e736199
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485262"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827203"
 ---
-# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Oktatóanyag: Egy Azure Search-index a különböző forrásokból származó adatok egyesítése
+# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Oktatóanyag Több adatforrásból származó adatok egyesítése egy Azure Search indexben
 
-Az Azure Search importálása, elemezheti és különböző forrásokból származó adatok indexelése egyetlen kombinált keresési indexbe. Ez olyan helyzetekben, ahol strukturált adatok összesített értéket jelenít meg kevesebb strukturált, vagy akár egy egyszerű szöveges adatok más forrásokból, például szöveg, HTML, támogat vagy JSON-dokumentumokat.
+Azure Search több adatforrásból is importálhat, elemezheti és indexelheti az adatait egyetlen kombinált keresési indexbe. Ez olyan helyzeteket támogat, amelyekben a strukturált adatok összesítése kevésbé strukturált vagy akár egyszerű szöveges adatokkal történik más forrásokból, például szöveg-, HTML-vagy JSON-dokumentumokból.
 
-Ebben az oktatóanyagban egy Azure Cosmos DB-adatforrásból Szálloda adatok indexelésére és egyesíteni, hogy származó Azure Blob Storage-dokumentumok hotel room adatokkal ismerteti. A kombinált Szálloda keresési indexet tartalmazó összetett adattípusok lesz.
+Ez az oktatóanyag azt ismerteti, hogyan indexelheti a szállodai adatokat egy Azure Cosmos DB adatforrásból, és hogyan egyesítheti az Azure Blob Storage-dokumentumokból kirajzolt szállodai helyiségek adatait. Az eredmény egy összetett szállodai keresési index, amely komplex adattípusokat tartalmaz.
 
-Ebben az oktatóanyagban C#, a .NET SDK, az Azure Search, és az Azure Portalon a következő feladatokat végezheti el:
+Ez az oktatóanyag C#a Azure Search .net SDK-t és a Azure Portalt használja a következő feladatok elvégzéséhez:
 
 > [!div class="checklist"]
 > * Mintaadatok feltöltése és adatforrások létrehozása
-> * A dokumentum-kulcs azonosításához
-> * Adja meg, és az index létrehozása
-> * Index Szálloda adatokat az Azure Cosmos DB-ből
-> * Egyesítse hotel room adatok blob storage-ból
+> * A dokumentum kulcsának azonosítása
+> * Az index meghatározása és létrehozása
+> * Szállodai adatok indexelése Azure Cosmos DBból
+> * Szállodai helyiség adatainak egyesítése a blob Storage-ból
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató az alábbi szolgáltatások, eszközök és adatok használatosak. 
+Ebben a rövid útmutatóban a következő szolgáltatásokat, eszközöket és adatfájlokat használja a rendszer. 
 
-- [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben az oktatóanyagban egy ingyenes szolgáltatás használhatja.
+- [Hozzon létre egy Azure Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást.
 
-- [Az Azure Cosmos DB-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) Szálloda mintaadatok tárolásához.
+- [Hozzon létre egy Azure Cosmos db fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a minta szállodai adattárolók tárolásához.
 
-- [Az Azure storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) JSON-mintának tárolására szolgáló blob-adatokat.
+- [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a minta JSON-blob-adattárolók tárolásához.
 
-- [A Visual Studio telepítése](https://visualstudio.microsoft.com/) az IDE adatokként.
+- [Telepítse a Visual studiót](https://visualstudio.microsoft.com/) ide-ként való használatra.
 
-### <a name="install-the-project-from-github"></a>Telepítse a projektet a Githubról
+### <a name="install-the-project-from-github"></a>A projekt telepítése a GitHubról
 
-1. Keresse meg a Githubon található mintaadattár: [azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
-1. Válassza ki **Klónozás vagy letöltés** , és adja meg a tárház saját helyi példányának.
-1. Nyissa meg a Visual Studiót, és telepítse a Microsoft Azure Search NuGet-csomagot, ha még nem telepítette. Az a **eszközök** menüjében válassza **NuGet-Csomagkezelő** , majd **NuGet-csomagok kezelése megoldáshoz...** . Válassza ki a **Tallózás** lapfülre, majd írja be az "Azure Search" kifejezést a keresőmezőbe. Telepítés **Microsoft.Azure.Search** amikor megjelenik a listában (9.0.1, verzió vagy újabb). Kattintson a telepítés befejezéséhez további párbeszédpanelek végig kell.
+1. Keresse meg a minta tárházat a GitHubon: [Azure-Search-DotNet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+1. Válassza a **klónozás vagy a letöltés** lehetőséget, és végezze el a tárház saját helyi példányát.
+1. Nyissa meg a Visual studiót, és telepítse a Microsoft Azure Search NuGet csomagot, ha még nincs telepítve. Az **eszközök** menüben válassza a **NuGet csomagkezelő** elemet, majd a **megoldáshoz tartozó NuGet-csomagokat..** . lehetőséget. Válassza a **Tallózás** fület, majd írja be a "Azure Search" kifejezést a keresőmezőbe. Telepítse a **Microsoft. Azure. Search** programot, ha az megjelenik a listában (9.0.1 vagy újabb verzió). A telepítés befejezéséhez kattintson a további párbeszédablakok lehetőségre.
 
-    ![Azure-kódtárak hozzáadása NuGet használatával](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    ![Azure-kódtárak hozzáadása a NuGet használatával](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
 
-1. A Visual Studio használatával, keresse meg a helyi tárházban, és nyissa meg a megoldásfájlt **AzureSearchMultipleDataSources.sln**.
+1. A Visual Studióban navigáljon a helyi tárházhoz, és nyissa meg a **AzureSearchMultipleDataSources. SLN**megoldást.
 
-## <a name="get-a-key-and-url"></a>Egy kulcsot és egy URL-cím beszerzése
+## <a name="get-a-key-and-url"></a>Kulcs és URL-cím lekérése
 
-Az Azure Search szolgáltatás kezelése, szüksége van a szolgáltatás URL-CÍMÉT és a egy hozzáférési kulcsot. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
+A Azure Search szolgáltatással való kommunikációhoz szükség van a szolgáltatás URL-címére és egy hozzáférési kulcsra. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
-1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com/), és a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
+1. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-get-started-postman/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
+![Http-végpont és elérési kulcs](media/search-get-started-postman/get-url-key.png "Http-végpont és elérési kulcs") beszerzése
 
-Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásnak küldött api-kulcsát. Érvényes kulcs megbízhatósági, egy kérelem alapon, a kérés és az azt kezelő szolgáltatás küldő alkalmazás közötti kapcsolatot hoz létre.
+Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Egy érvényes kulcs a kérést küldő alkalmazás és az azt kezelő szolgáltatás közötti megbízhatósági kapcsolatot hoz létre a kérelmek alapján.
 
-## <a name="prepare-sample-azure-cosmos-db-data"></a>Készítse elő az Azure Cosmos DB mintaadatok
+## <a name="prepare-sample-azure-cosmos-db-data"></a>Minta Azure Cosmos DB-adatfeldolgozás előkészítése
 
-Ebben a példában két kis adatkészletek hét képzeletbeli hotels ismertetik. Egy készlet a "Hotels" magukat ismerteti, és fogja betölteni az Azure Cosmos DB-adatbázishoz. A többi csoport hotel room részleteit tartalmazza és a egy, a hét külön JSON-fájlokat fel kell tölteni az Azure Blob Storage-bA.
+Ez a példa két kisebb adathalmazt használ, amelyek a hét kitalált szállodát írják le. Egy készlet maga írja le a szállodákat, és betöltődik egy Azure Cosmos DB adatbázisba. A másik készlet tartalmazza a szállodai szobák részleteit, és hét különálló JSON-fájlt biztosít az Azure Blob Storageba való feltöltéshez.
 
-1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com), és keresse meg az Azure Cosmos DB-fiók áttekintése lapra.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com), majd navigáljon a Azure Cosmos db-fiók áttekintő oldalára.
 
-1. A menüsávban kattintson a tároló hozzáadása. Adja meg az "Új adatbázis létrehozása" és a nevet használja **Szálloda-termek-db**. Adja meg **Szálloda-termek** az a gyűjtemény nevét, és **/HotelId** partíciókulcsa. Kattintson a **OK** az adatbázis és a tároló létrehozásához.
+1. A menüsávban kattintson a tároló hozzáadása elemre. Adja meg az "új adatbázis létrehozása" lehetőséget, és használja a következő nevet: **Hotel-Rooms-db**. Adja meg a **Hotel-Rooms** nevet a gyűjtemény neveként, valamint a **/HotelId** . Az adatbázis és a tároló létrehozásához kattintson **az OK** gombra.
 
-   ![Hozzáadás az Azure Cosmos DB-tárolók](media/tutorial-multiple-data-sources/cosmos-add-container.png "hozzáadása egy Azure Cosmos DB-tárolók")
+   ![Azure Cosmos db tároló hozzáadása](media/tutorial-multiple-data-sources/cosmos-add-container.png "Azure Cosmos db tároló hozzáadása")
 
-1. Nyissa meg a Cosmos DB adatkezelő, és válassza ki a **elemek** elemet a **hotels** tárolón belül a **Szálloda-termek-db** adatbázis. Kattintson a **elem feltöltése** a parancssávon.
+1. Lépjen a Cosmos DB Adatkezelő, és válassza ki a **Hotels** tárolóban található **Items** elemet a **Hotel-Rooms-db** adatbázisban. Ezután kattintson az **elem feltöltése** parancsra a parancssáv.
 
-   ![Töltse fel az Azure Cosmos DB-gyűjtemények](media/tutorial-multiple-data-sources/cosmos-upload.png "töltse fel a Cosmos DB-gyűjtemények")
+   ![Feltöltés Azure Cosmos db gyűjteménybe](media/tutorial-multiple-data-sources/cosmos-upload.png "Feltöltés Cosmos db gyűjteménybe")
 
-1. A feltöltés panelen kattintson a mappa gombra, és navigáljon arra a fájl **cosmosdb/HotelsDataSubset_CosmosDb.json** a projektmappában. Kattintson a **OK** való feltöltés indításához.
+1. A feltöltés panelen kattintson a mappa gombra, és keresse meg a **cosmosdb/HotelsDataSubset_CosmosDb. JSON** fájlt a Project mappában. A feltöltés elindításához kattintson **az OK** gombra.
 
-   ![Válassza ki a feltöltendő fájl](media/tutorial-multiple-data-sources/cosmos-upload2.png "a feltöltendő fájl kijelölése")
+   ![Válassza ki a feltölteni kívánt fájlt](media/tutorial-multiple-data-sources/cosmos-upload2.png "Válassza ki a feltölteni kívánt fájlt")
 
-1. A frissítés gomb használatával a "Hotels" gyűjtemény elemeinek nézetének frissítését. Felsorolt hét új adatbázis dokumentumokat kell megjelennie.
+1. A refresh (frissítés) gombbal frissítheti a Hotels gyűjteményben lévő elemek nézetét. A felsorolt hét új adatbázis-dokumentumnak kell megjelennie.
 
-## <a name="prepare-sample-blob-data"></a>Mintaadatok blob létrehozása
+## <a name="prepare-sample-blob-data"></a>Minta blob-adatfeldolgozás előkészítése
 
-1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com)lépjen az Azure storage-fiókot, kattintson a **Blobok**, és kattintson a **+ tároló**.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com), navigáljon az Azure Storage-fiókjához, kattintson a **Blobok**elemre, majd a **+ tároló**elemre.
 
-1. [Hozzon létre egy blobtárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) nevű **Szálloda-termek** a minta hotel room JSON-fájlok tárolására. A nyilvános hozzáférés szintje beállíthatja az érvényes értékek bármelyikére.
+1. [Hozzon létre egy](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) " **Hotel-Rooms** " nevű BLOB-tárolót a minta szállodai szoba JSON-fájljainak tárolásához. Megadhatja a nyilvános hozzáférési szintet bármelyik érvényes értékéhez.
 
-   ![Hozzon létre egy blobtárolót](media/tutorial-multiple-data-sources/blob-add-container.png "blobtároló létrehozása")
+   ![Blob-tároló létrehozása](media/tutorial-multiple-data-sources/blob-add-container.png "Blob-tároló létrehozása")
 
-1. A tároló létrehozása után nyissa meg és jelölje ki **feltöltése** a parancssávon.
+1. A tároló létrehozása után nyissa meg, majd válassza a parancssáv **feltöltés** elemét.
 
-   ![Töltse fel a parancssávon](media/search-semi-structured-data/upload-command-bar.png "parancssávon feltöltése")
+   ![Feltöltés a parancssáv](media/search-semi-structured-data/upload-command-bar.png "Feltöltés a parancssáv")
 
-1. Keresse meg a mintafájlokat tartalmazó mappát. Válassza ki az összes őket, és kattintson a **feltöltése**.
+1. Navigáljon a minta fájlokat tartalmazó mappához. Jelölje ki az összeset, majd kattintson a **feltöltés**elemre.
 
-   ![Fájlok feltöltése](media/tutorial-multiple-data-sources/blob-upload.png "fájlok feltöltése")
+   ![Fájlok feltöltése](media/tutorial-multiple-data-sources/blob-upload.png "Fájlok feltöltése")
 
-Befejeződött a feltöltés, a fájlok meg kell jelennie a listában, az adatokat tároló.
+A feltöltés befejeződése után a fájlok megjelennek az adattároló listájában.
 
 ## <a name="set-up-connections"></a>Kapcsolatok beállítása
 
-A keresési szolgáltatás és az adatforrás-kapcsolódási információt megadott a **appsettings.json** fájlt a megoldásban. 
+A keresési szolgáltatás és az adatforrások elérhetőségi adatai a megoldás **appSettings. JSON** fájljában vannak megadva. 
 
-1. A Visual Studióban nyissa meg a **AzureSearchMultipleDataSources.sln** fájlt.
+1. A Visual Studióban nyissa meg a **AzureSearchMultipleDataSources. SLN** fájlt.
 
-1. A Megoldáskezelőben, szerkesztheti a **appsettings.json** fájlt.  
+1. A Megoldáskezelőban szerkessze a **appSettings. JSON** fájlt.  
 
 ```json
 {
@@ -122,46 +121,46 @@ A keresési szolgáltatás és az adatforrás-kapcsolódási információt megad
 }
 ```
 
-Az első két bejegyzés az Azure Search szolgáltatás URL-cím és a rendszergazdai kulcsok használatához. A végpont megadott `https://mydemo.search.windows.net`, például a szolgáltatás nevét adja meg a rendszer `mydemo`.
+Az első két bejegyzés a Azure Search szolgáltatás URL-címét és rendszergazdai kulcsait használja. A végpontja `https://mydemo.search.windows.net`, például a `mydemo`megadni kívánt szolgáltatás neve.
 
-A következő bejegyzések adja meg a fiók nevét és kapcsolati sztring adatait az Azure Blob Storage és az Azure Cosmos DB-adatforrásokhoz.
+A következő bejegyzések megadják az Azure Blob Storage és Azure Cosmos DB adatforrások fiókjának nevét és a kapcsolatok karakterláncának adatait.
 
-### <a name="identify-the-document-key"></a>A dokumentum-kulcs azonosításához
+### <a name="identify-the-document-key"></a>A dokumentum kulcsának azonosítása
 
-Az Azure Search szolgáltatásban a kulcs mező minden egyes dokumentum az indexben egyedileg azonosítja. Minden keresési index rendelkeznie kell típusú pontosan egy kulcsmező `Edm.String`. Kulcs mező minden egyes dokumentum az index hozzáadott adatforrásban elérhetőnek kell lennie. (Tulajdonképpen azt az egyetlen mező kitöltése kötelező.)
+Azure Search a Key mező egyedileg azonosítja az indexben szereplő összes dokumentumot. Minden keresési indexnek pontosan egy típusú `Edm.String`Key mezővel kell rendelkeznie. A kulcs mezőnek jelen kell lennie az indexhez hozzáadott adatforrásban lévő minden dokumentumhoz. (Valójában ez az egyetlen kötelező mező.)
 
-A több adatforrásból származó adatok indexelése, ha egyes adatok forrása kulcsérték ugyanez a kulcs mező kombinált index kell rendelni. Gyakran van szükség az index egy jelentéssel bíró dokumentum-kulcs azonosításához, és ellenőrizze, hogy minden adatforrás létezik néhány kezdeti tervezése.
+Ha több adatforrásból indexeli az adatok indexelését, az egyes adatforrások kulcsának értékének ugyanahhoz a Key mezőhöz kell tartoznia a kombinált indexben. Gyakran igényel némi kezdeti megtervezést az index értelmes dokumentum-kulcsainak azonosításához, és győződjön meg arról, hogy az minden adatforrásban létezik.
 
-Az Azure Search-indexelők használatával Mezőleképezések nevezze át, és akkor formázza újra datová Pole az indexelési folyamat során, hogy a forrásadatok a megfelelő indexmezőt lehet irányítani.
+Azure Search indexelő segítségével az indexelési folyamat során átnevezheti és akár újraformázhatja az adatmezőket, így a forrásadatok a megfelelő index mezőre irányíthatók.
 
-Például a mintaadatokat az Azure Cosmos DB Szálloda azonosító neve **HotelId**. De a Szálloda termek blob JSON-fájlokat, a Szálloda azonosító neve **azonosító**. A program leképezésével kezeli ezt a **azonosító** a blobokon át a mezőt a **HotelId** kulcsmező az indexben.
+Például a minta Azure Cosmos DBi adatban a szállodai azonosító neve **HotelId**. A szállodai szobák JSON blob-fájljaiban azonban a szállodai azonosító neve **azonosító**. A program ezt úgy kezeli, hogy hozzárendeli az **azonosító** mezőt a blobokból az index **HotelId** Key mezőjéhez.
 
 > [!NOTE]
-> A legtöbb esetben automatikusan létrehozott dokumentum kulcsok, például az egyes indexelők által alapértelmezés szerint létrehozott ne legyen jó dokumentum kulcsokat a kombinált indexeket. Az általános, jelentéssel bíró, egyedi kulcs értékét, amely már létezik a használni kívánt, vagy lehet egyszerűen hozzáadni, az adatforrásokat.
+> A legtöbb esetben az automatikusan generált dokumentum-kulcsok, például az egyes indexelő által alapértelmezés szerint létrehozott, nem végeznek jó dokumentum-kulcsokat a kombinált indexekhez. Általánosságban olyan értelmes, egyedi kulcsot szeretne használni, amely már létezik a-ben, vagy egyszerűen hozzáadható az adatforrásokhoz.
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-Miután az adatok és a konfigurációs beállítások vannak érvényben, a minta a program **AzureSearchMultipleDataSources.sln** való létrehozásához és futtatásához készen áll.
+Az adatés konfigurációs beállítások megadását követően a **AzureSearchMultipleDataSources. SLN** programban a minta programnak készen kell állnia a létrehozásra és a futtatásra.
 
-Ez egyszerű C#/.NET-konzolalkalmazást a következő feladatokat hajtja végre:
-* Létrehoz egy új Azure Search-index, az adatok szerkezete alapján a C# Szálloda osztály (Ez a cím és a hely osztályokat is hivatkozik).
-* Létrehoz egy Azure Cosmos DB-adatforrásból és a egy indexelőt, amely az Azure Cosmos DB-adatai index mezőire.
-* Futtatja az Azure Cosmos DB-indexelő Szálloda adatok betöltéséhez.
-* Létrehoz egy Azure Blob Storage adatforrás és a egy indexelőt, amely leképezi a JSON-Blobadatok index mezőire.
-* Termek adatok betöltése az Azure blob storage-indexelő futtatja.
+Ez az C#egyszerű kódon-konzol alkalmazás a következő feladatokat hajtja végre:
+* Létrehoz egy új Azure Search indexet a C# Hotel osztály adatstruktúrája alapján (amely a címekre és a Room osztályokra is hivatkozik).
+* Létrehoz egy Azure Cosmos DB adatforrást és egy olyan indexelő, amely leképezi a Azure Cosmos db-adat index mezőibe.
+* A Azure Cosmos DB indexelő futtatásával tölti be a szállodai adatkészletet.
+* Létrehoz egy Azure Blob Storage adatforrást és egy olyan indexelő, amely a JSON-Blobok adatait indexelő mezőkbe képezi.
+* Futtatja az Azure Blob Storage-indexelő a szobákba való betöltéshez.
 
- A program futtatása előtt a kódot, és ez a minta az index és indexelő meghatározásainak tanulmányozására egy percig is tarthat. A megfelelő kód a következő két fájlban található meg:
+ A program futtatása előtt szánjon egy percet a minta kódjának és indexének és indexelő definícióinak tanulmányozására. A megfelelő kód a következő két fájlban található meg:
 
-  + **Hotel.cs** az indexet meghatározó sémát tartalmazza
-  + **Program.cs** függvényeket tartalmaz, amelyek az Azure Search-index, adatforrásból és indexelőből létrehozása és az összesített eredmények az indexbe.
+  + A **Hotel.cs** tartalmazza az indexet meghatározó sémát.
+  + A **program.cs** olyan függvényeket tartalmaz, amelyek létrehozzák a Azure Search indexet, az adatforrásokat és az indexelő, és betöltik az összesített eredményeket az indexbe.
 
 ### <a name="define-the-index"></a>Az index meghatározása
 
-A mintaprogram definiálása és Azure Search-index létrehozása a .NET SDK használatával. Használja ki a [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) létrehozni egy index struktúra az osztály egy C# adatmodell osztály.
+Ez a mintakód a .NET SDK használatával határozza meg és hozza létre Azure Search indexet. Kihasználja a [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) osztályt, hogy index-struktúrát állítson elő egy C# adatmodell osztályból.
 
-Az adatmodell határozza meg a Szálloda osztály, amely a címet és a hely osztályok mutató hivatkozásokat is tartalmaz. A FieldBuilder részletezi keresztül több osztálydefiníciókat egy összetett szerkezet az index létrehozására. Metaadat-címkéket az egyes mezők, például hogy kereshető vagy rendezhető az attribútumok meghatározásához használják.
+Az adatmodellt a Hotel osztály határozza meg, amely a címekre és a helyiségekre vonatkozó osztályokra mutató hivatkozásokat is tartalmaz. A FieldBuilder részletesen részletezi az indexek összetett adatstruktúrájának létrehozásához. A metaadatok címkéi az egyes mezők attribútumainak meghatározására szolgálnak, például hogy kereshető vagy rendezhető legyen.
 
-Az alábbi kódrészletek az a **Hotel.cs** fájl bemutatják, hogyan egyetlen mezőt, és a egy hivatkozást egy másik data model osztály adható meg.
+A **Hotel.cs** fájl következő kódrészletei azt mutatják be, hogyan adható meg egyetlen mező, és hogyan lehet megadni egy másik adatmodell-osztályra mutató hivatkozást.
 
 ```csharp
 . . . 
@@ -172,7 +171,7 @@ public Room[] Rooms { get; set; }
 . . .
 ```
 
-Az a **Program.cs** fájlt, az index nevét és a egy mezőben gyűjtemény által generált van definiálva a `FieldBuilder.BuildForType<Hotel>()` módszer, majd az alábbiak szerint létrehozott:
+Az **program.cs** -fájlban az index egy névvel és egy, a `FieldBuilder.BuildForType<Hotel>()` metódus által generált mező-gyűjteménysel van definiálva, majd a következőképpen jön létre:
 
 ```csharp
 private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
@@ -189,11 +188,11 @@ private static async Task CreateIndex(string indexName, SearchServiceClient sear
 }
 ```
 
-### <a name="create-azure-cosmos-db-data-source-and-indexer"></a>Azure Cosmos DB adatforrás és az indexelő létrehozása
+### <a name="create-azure-cosmos-db-data-source-and-indexer"></a>Azure Cosmos DB adatforrás és indexelő létrehozása
 
-Ezután a fő program beépített logikája képes a "Hotels" adatok az Azure Cosmos DB adatforrás létrehozása.
+A főprogram következő része a Azure Cosmos DB adatforrás létrehozásához szükséges logikát tartalmazza.
 
-Először azt fűzi össze az Azure Cosmos DB-adatbázis neve a kapcsolati karakterlánc. Ezután azt határozza meg az adatforrás-objektum, az Azure Cosmos DB-források, például az [useChangeDetection] tulajdonság egyedi beállításokat is beleértve.
+Először összefűzi a Azure Cosmos DB adatbázis nevét a kapcsolódási karakterlánchoz. Ezután meghatározza az adatforrás-objektumot, beleértve a Azure Cosmos DB forrásokra vonatkozó beállításokat, például a [useChangeDetection] tulajdonságot.
 
   ```csharp
 private static async Task CreateAndRunCosmosDbIndexer(string indexName, SearchServiceClient searchService)
@@ -215,7 +214,7 @@ private static async Task CreateAndRunCosmosDbIndexer(string indexName, SearchSe
     await searchService.DataSources.CreateOrUpdateAsync(cosmosDbDataSource);
   ```
 
-Az adatforrás létrehozása után a program beállítja az Azure Cosmos DB-indexelő nevű **Szálloda-termek-cosmos-indexelő**.
+Az adatforrás létrehozása után a program beállítja a **Hotel-Rooms-Cosmos-indexelő**nevű Azure Cosmos db indexelő.
 
 ```csharp
     Indexer cosmosDbIndexer = new Indexer(
@@ -235,13 +234,13 @@ Az adatforrás létrehozása után a program beállítja az Azure Cosmos DB-inde
     }
     await searchService.Indexers.CreateOrUpdateAsync(cosmosDbIndexer);
 ```
-A program törli ugyanazzal a névvel bármely meglévő indexelő létrehozása előtt az új, abban az esetben ez a példa egynél többször futtatni szeretné.
+A program az új létrehozása előtt törli az azonos nevű meglévő indexelő, ha egynél többször szeretné futtatni ezt a példát.
 
-Ebben a példában az indexelő ütemezés határozza meg, így naponta egyszer fog futni. Ha nem szeretné, hogy az indexelő automatikusan újra futtatni a jövőben, az ütemezés tulajdonság eltávolíthatók a hívás.
+Ez a példa az indexelő ütemtervét határozza meg, hogy naponta egyszer fusson. Ha nem szeretné, hogy az indexelő automatikusan újrafusson a jövőben, távolítsa el az ütemezett tulajdonságot ebből a hívásból.
 
-### <a name="index-azure-cosmos-db-data"></a>Index az Azure Cosmos DB-adatai
+### <a name="index-azure-cosmos-db-data"></a>Index Azure Cosmos DB-adathalmaz
 
-Az adatforrás és az indexelő létrehozása után, a kódot, amely az indexelő rövid:
+Az adatforrás és az indexelő létrehozása után az indexelő futtató kód rövid:
 
 ```csharp
     try
@@ -254,13 +253,13 @@ Az adatforrás és az indexelő létrehozása után, a kódot, amely az indexel�
     }
 ```
 
-Ebben a példában egy egyszerű try-catch blokk végrehajtása során esetleg fellépő hibákat jelenteni tartalmazza.
+Ez a példa egy egyszerű try-catch blokkot tartalmaz a végrehajtás során esetlegesen előforduló hibák jelentéséhez.
 
-Az Azure Cosmos DB-indexelő futtatása után a search-index Szálloda Mintadokumentumokat teljes körű fogja tartalmazni. Azonban minden Szálloda termek mezőjére lesz egy üres tömb, mivel az Azure Cosmos DB adatforrás szoba részletek nem található. Ezt követően a program kéri betöltése, és összefésüli a hely adatokat a Blob storage-ból.
+A Azure Cosmos DB indexelő futtatását követően a keresési index tartalmazni fogja a Sample Hotel-dokumentumok teljes készletét. Az egyes szállodákhoz tartozó Rooms mező azonban üres tömb lesz, mivel a Azure Cosmos DB adatforrás nem tartalmaz helyet. Ezután a program lekéri a blob Storage-ból a helyiség adatainak betöltését és egyesítését.
 
-### <a name="create-blob-storage-data-source-and-indexer"></a>A Blob storage-adatforrás és az indexelő létrehozása
+### <a name="create-blob-storage-data-source-and-indexer"></a>BLOB Storage adatforrás és indexelő létrehozása
 
-A hely részletes a program először hoz létre a Blob storage adatforrásként való hivatkozáshoz egyéni JSON-blob fájlokat.
+A helyiség részletes adatainak beszerzéséhez a program először egy blob Storage-adatforrást állít be, amely az egyes JSON-blob-fájlokra hivatkozik.
 
 ```csharp
 private static async Task CreateAndRunBlobIndexer(string indexName, SearchServiceClient searchService)
@@ -275,7 +274,7 @@ private static async Task CreateAndRunBlobIndexer(string indexName, SearchServic
     await searchService.DataSources.CreateOrUpdateAsync(blobDataSource);
 ```
 
-Az adatforrás létrehozása után a program beállít egy blob indexelőjével nevű **Szálloda-termek-blob-indexelők**.
+Az adatforrás létrehozása után a program beállítja a " **Hotel-Rooms-blob-indexelő**" nevű blob-indexet.
 
 ```csharp
     // Add a field mapping to match the Id field in the documents to 
@@ -301,19 +300,19 @@ Az adatforrás létrehozása után a program beállít egy blob indexelőjével 
     await searchService.Indexers.CreateOrUpdateAsync(blobIndexer);
 ```
 
-A JSON-blobok tartalmazzák a kulcs mező nevű **azonosító** helyett **HotelId**. A kód a `FieldMapping` állapítható meg, hogy az indexelő közvetlen osztály a **azonosító** mező értékét a **HotelId** Dokumentumkulcs az indexben.
+A JSON-Blobok a **HotelId**helyett egy **azonosító** nevű kulcsot tartalmaznak. A kód a `FieldMapping` osztály használatával adja meg az indexelő számára az **azonosító** mező értékét az index **HotelId** .
 
-A BLOB storage-indexelő használható paramétereket, amelyek azonosítják a elemzési módot kell használni. Az elemzési mód eltér a blobok, amelyek egyetlen dokumentum vagy ugyanennek a blobnak belül több dokumentumot jelölik. Ebben a példában a minden egyes blob egy index egyetlen dokumentum jelöli, így a kód a `IndexingParameters.ParseJson()` paraméter.
+A blob Storage-indexelő a használni kívánt elemzési mód azonosítására szolgáló paramétereket használhatnak. Az elemzési mód eltér az olyan Blobok esetében, amelyek egyetlen dokumentumot jelölnek, vagy több, ugyanazon a blobon belüli dokumentumot. Ebben a példában minden blob egyetlen index-dokumentumot képvisel, ezért a kód a `IndexingParameters.ParseJson()` paramétert használja.
 
-Az indexelő-elemzés JSON-blobok paramétereinek kapcsolatos további információkért lásd: [Index JSON-blobok](search-howto-index-json-blobs.md). Adja meg ezeket a paramétereket a .NET SDK-val kapcsolatos további információkért lásd: a [IndexerParametersExtension](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) osztály.
+További információ a JSON-Blobok indexelő paramétereinek elemzéséről: [JSON](search-howto-index-json-blobs.md)-Blobok indexelése. A paraméterek .NET SDK használatával történő megadásával kapcsolatos további információkért tekintse meg a [IndexerParametersExtension](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) osztályt.
 
-A program törli ugyanazzal a névvel bármely meglévő indexelő létrehozása előtt az új, abban az esetben ez a példa egynél többször futtatni szeretné.
+A program az új létrehozása előtt törli az azonos nevű meglévő indexelő, ha egynél többször szeretné futtatni ezt a példát.
 
-Ebben a példában az indexelő ütemezés határozza meg, így naponta egyszer fog futni. Ha nem szeretné, hogy az indexelő automatikusan újra futtatni a jövőben, az ütemezés tulajdonság eltávolíthatók a hívás.
+Ez a példa az indexelő ütemtervét határozza meg, hogy naponta egyszer fusson. Ha nem szeretné, hogy az indexelő automatikusan újrafusson a jövőben, távolítsa el az ütemezett tulajdonságot ebből a hívásból.
 
-### <a name="index-blob-data"></a>Blob adatok indexelése
+### <a name="index-blob-data"></a>BLOB-adatbázis indexelése
 
-A Blob storage-adatforrás és az indexelő létrehozása után, a kódot, amely az indexelő egyszerű:
+A blob Storage-adatforrás és az indexelő létrehozása után az indexelő futtató kód egyszerű:
 
 ```csharp
     try
@@ -326,33 +325,33 @@ A Blob storage-adatforrás és az indexelő létrehozása után, a kódot, amely
     }
 ```
 
-Az index már töltöttek fel Szálloda adatokat az Azure Cosmos DB-adatbázisból, mert a blob indexelőjével frissíti a meglévő dokumentumok az indexben, és hozzáadja a szoba részleteit.
+Mivel az index már fel van töltve a Azure Cosmos DB adatbázisból származó adatokkal, a blob indexelő frissíti a meglévő dokumentumokat az indexben, és hozzáadja a helyiség részleteit.
 
 > [!NOTE]
-> Ha nem kulcs mezőiben mindkét az adatforrásokat, és ezek a mezők belül az adatok nem egyeznek, akkor az index tartalmazza az értékeket bármelyik indexelő legutóbbi futtatása. Ebben a példában mindkét adatforrásokat tartalmaz egy **Mezőmeghatározása** mező. Ha valamilyen okból az adatokat a másik, azonos kulcsértékkel rendelkező dokumentumok-e ezt a mezőt, majd a **Mezőmeghatározása** adatok az adatforrásból indexelt volt legutóbb lesznek az indexben tárolt érték.
+> Ha ugyanazokat a nem kulccsal rendelkező mezőket tartalmazza mindkét adatforrásban, és az ezekben a mezőkben lévő adatok nem egyeznek, akkor az index a legutóbb futtatott indexelő értékeit fogja tartalmazni. A példánkban mindkét adatforrás tartalmaz egy **pezsgő** mezőt. Ha valamilyen okból kifolyólag az ebben a mezőben lévő adatok eltérnek, az azonos kulccsal rendelkező dokumentumok esetében a **pezsgő** az indexben tárolt érték lesz az aktuálisan indexelt adatforrás.
 
 ## <a name="search-your-json-files"></a>JSON-fájlok keresése
 
-Megismerheti az összeállított keresési index után a program futtatása használatával a [ **keresési ablak** ](search-explorer.md) a portálon.
+A program futtatása után megtekintheti a feltöltött keresési indexet a portálon található [**keresési ablak**](search-explorer.md) használatával.
 
-Az Azure Portalon nyissa meg a keresési szolgáltatás **áttekintése** lapon, majd keresse meg a **Szálloda-termek-sample** index a **indexek** listája.
+A Azure Portalban nyissa meg a keresési szolgáltatás **áttekintése** lapot, és keresse meg a **Hotel-Rooms-Sample** indexet az **indexek** listájában.
 
-  ![Azure Search-indexek listája](media/tutorial-multiple-data-sources/index-list.png "lista az Azure Search-indexek")
+  ![Azure Search indexek listája](media/tutorial-multiple-data-sources/index-list.png "Azure Search indexek listája")
 
-Kattintson a listában a Szálloda-termek-mintakód-index. Látni fogja az index egy keresési ablak felületet. Adja meg a lekérdezés például a "Engedélyezhető" kifejezés utal. Megjelenik az eredmények között legalább egy dokumentumot, és ez a dokumentum a termek tömb jelenítsen meg hely objektumok listája.
+Kattintson a Hotel-Rooms-Sample index elemre a listában. Ekkor megjelenik az indexhez tartozó keresési Explorer felülete. Adjon meg egy lekérdezést egy olyan kifejezéshez, mint a "Luxury". Meg kell jelennie legalább egy dokumentumnak az eredményekben, és a dokumentumnak tartalmaznia kell a Room Objects-objektumok listáját a szobák tömbben.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyagok után feleslegessé vált elemek az Azure Search szolgáltatást tartalmazó erőforráscsoport törlésével távolíthatók el a leggyorsabban. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport nevét az Azure Search szolgáltatás áttekintés oldalán van.
+Az oktatóanyagok után feleslegessé vált elemek az Azure Search szolgáltatást tartalmazó erőforráscsoport törlésével távolíthatók el a leggyorsabban. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve a Azure Search szolgáltatás áttekintés lapján található.
 
 ## <a name="next-steps"></a>További lépések
 
-Számos megközelítés és JSON-blobok indexelése több lehetőségei vannak. Ha a forrás JSON-tartalmak szerepel, ezek a beállítások megtekintéséhez, mit a legjobban a forgatókönyv tudja ellenőrizni.
+A JSON-Blobok indexeléséhez több módszer és több lehetőség is van. Ha a forrásadatok JSON-tartalmat tartalmaznak, áttekintheti ezeket a beállításokat, hogy megtudja, mi a legmegfelelőbb a forgatókönyvhöz.
 
 > [!div class="nextstepaction"]
-> [Az Azure Search Blob indexelőjével JSON-blobok indexelése](search-howto-index-json-blobs.md)
+> [JSON-Blobok indexelése Azure Search blob indexelő használatával](search-howto-index-json-blobs.md)
 
-Érdemes, mivel megvédi a strukturált index adatait egyetlen adatforrásból származó cognitively videószolgáltatás a strukturálatlan BLOB vagy a teljes szöveges tartalom. A következő oktatóanyag bemutatja, hogyan együtt az Azure Search, a Cognitive Services használata a .NET SDK használatával.
+Előfordulhat, hogy az egyik adatforrásból származó strukturált index-adatokat ki szeretné bővíteni a strukturálatlan blobokból vagy teljes szöveges tartalomból származó, kognitívan dúsított adatokkal. Az alábbi oktatóanyag azt mutatja be, hogyan használható a Cognitive Services együtt a Azure Search használatával a .NET SDK-val.
 
 > [!div class="nextstepaction"]
-> [Az egy Azure Search szolgáltatásban az indexelés folyamat a Cognitive Services API-k meghívása](cognitive-search-tutorial-blob-dotnet.md)
+> [Cognitive Services API-k hívása egy Azure Search indexelési folyamatban](cognitive-search-tutorial-blob-dotnet.md)

@@ -5,15 +5,15 @@ manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 06/29/2019
 ms.author: heidist
-ms.openlocfilehash: 5794a24931b613bf1bdddd983799367bb02cf44d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 139cb598ee774e52da8d97e8d209e11ec4ffc94d
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641014"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828448"
 ---
 # <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Ismerkedés a Knowledge Store szolgáltatással a Azure Search
 
@@ -50,7 +50,7 @@ A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-c
 
 1. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-    ![Http-végpont és elérési kulcs] beszerzése (media/search-get-started-postman/get-url-key.png "Http-végpont és elérési kulcs") beszerzése
+    ![Http-végpont és elérési kulcs](media/search-get-started-postman/get-url-key.png "Http-végpont és elérési kulcs") beszerzése
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. A szolgáltatás nevét és API-kulcsát minden HTTP-kérelemben meg kell adnia a következő szakaszokban.
 
@@ -98,7 +98,7 @@ Az összes JSON-dokumentum és-kérelem teljes körű elérhetővé tételéhez 
 
 1. Indítsa el a Poster-t, és importálja a Caselaw Poster-gyűjteményt:
 
-   1. **Kattintson az** **** importfájlimportálása > fájlok elemre. ****  >  
+   1. Kattintson azimportfájl > importálása fájlok elemre. >  
 
    1. Navigáljon a \azure-search-postman-samples-master\azure-search-postman-samples-master\Caselaw mappára.
 

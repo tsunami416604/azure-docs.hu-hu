@@ -1,264 +1,231 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció a Facebook által munkahelyi |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a munkahely által Facebook között.
+title: 'Oktatóanyag: Azure Active Directory a munkahelyi integrációt a Facebook használatával | Microsoft Docs'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést a Azure Active Directory és a munkahely között a Facebook használatával.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 30f2ee64-95d3-44ef-b832-8a0a27e2967c
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/12/2019
+ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db14df2dc24afbc8f7982d8d1e4e6429c1c4b1ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4328c6b5b85050ae5caf30fd4d321e50428f10b9
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086801"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68825331"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Oktatóanyag: Az Azure Active Directory-integráció a Facebook által munkahelyi
+# <a name="tutorial-integrate-workplace-by-facebook-with-azure-active-directory"></a>Oktatóanyag: A munkahelyi környezet integrálása a Facebook használatával Azure Active Directory
 
-Ebben az oktatóanyagban elsajátíthatja a Facebook munkahelyi integrálása az Azure Active Directory (Azure AD).
-Munkahelyi által Facebook integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a munkahelyeket Facebook-ba a Azure Active Directory (Azure AD) használatával. A munkahelyi Facebook és az Azure AD integrálásával a következőket teheti:
 
-* Az Azure AD, aki hozzáféréssel rendelkezik a munkahelyhez Facebook által szabályozható.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezett munkahelyi Facebook (egyszeri bejelentkezés) által az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Azure AD-ben elérhető, a Facebook által a munkahelyhez hozzáférő vezérlő.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a munkahelyre a Facebookban az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a munkahely által Facebook, a következőkre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* A Facebook egyszeri bejelentkezés munkahelyi előfizetés engedélyezve van
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* A munkahelyi Facebook egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 > [!NOTE]
-> Facebook két termék, munkahelyi Standard (ingyenes) és a munkaterület prémium szintű (fizetős) rendelkezik. Minden olyan munkahelyi Premium-bérlő nincs egyéb következmények költség vagy a szükséges licencek SCIM és egyszeri bejelentkezés integrációs is konfigurálhatja. Egyszeri Bejelentkezéssel és SCIM a munkahelyi normál esetben nem érhetők el.
+> A Facebook két termékkel rendelkezik, a munkahelyi standard (ingyenes) és a munkahelyi prémium (fizetős). A munkahelyhez tartozó prémium bérlők a SCIM és az SSO-integrációt más, a szükséges díjakra vagy licencekre vonatkozó tényezők nélkül is konfigurálhatják. Az SSO és a SCIM nem érhető el a munkahelyi standard példányokban.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Támogatja a munkahely által Facebook **SP** által kezdeményezett egyszeri bejelentkezés
-* Támogatja a munkahely által Facebook **just-in-time-kiépítés**
-* Támogatja a munkahely által Facebook  **[felhasználók automatikus átadása](workplacebyfacebook-provisioning-tutorial.md)**
+* A munkahelyi Facebook által támogatott, **SP** által kezdeményezett egyszeri bejelentkezés
+* A munkahelyen a Facebook az **igény szerinti üzembe** helyezést támogatja
+* A munkahelyi Facebook által támogatott  **[automatikus felhasználó](workplacebyfacebook-provisioning-tutorial.md) -kiépítés**
+* A Facebook Mobile alkalmazás munkahelye mostantól konfigurálható az Azure AD-vel az egyszeri bejelentkezés engedélyezéséhez. Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-## <a name="adding-workplace-by-facebook-from-the-gallery"></a>A Facebook munkahelyi hozzáadása a katalógusból
+## <a name="adding-workplace-by-facebook-from-the-gallery"></a>Munkahelyi felvétel a Facebook használatával a katalógusból
 
-Konfigurálása az Azure AD integrálása a munkahely által Facebook, hozzá kell munkahelyi Facebook által a galériából a felügyelt SaaS-alkalmazások listájára.
+A munkahelyi Facebook és az Azure AD közötti integráció konfigurálásához a Facebookban fel kell vennie a munkaterületet a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
 
-**A Facebook munkahelyi hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **munkahely a Facebookon** kifejezést a keresőmezőbe.
+1. Válassza a **munkahely a facebookban** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
-
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
-
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
-
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
-
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
-
-    ![Az új alkalmazás gomb](common/add-new-app.png)
-
-4. A Keresés mezőbe írja be a **munkahelyi Facebook által**, jelölje be **munkahelyi Facebook által** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
-
-     ![Munkahelyi a Facebook, a találatok listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a munkahelyi szerint nevű tesztfelhasználó alapján Facebook **Britta Simon**.
-Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó a munkahelyen, a Facebook között hivatkozás kapcsolat kell hozható létre.
+Konfigurálja és tesztelje az Azure AD SSO-t a munkahelyen a Facebook használatával egy **B. Simon**nevű teszt felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a munkahelyi felhasználó között a Facebook használatával.
 
-Az Azure AD egyszeri bejelentkezés a munkahelyi által Facebook tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
+Az Azure AD SSO és a munkahelyi Facebook közötti konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Munkahelyi által Facebook egyszeri bejelentkezés konfigurálása](#configure-workplace-by-facebook-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre munkahelyi Facebook teszt felhasználó](#create-workplace-by-facebook-test-user)**  – egy megfelelője a Britta Simon rendelkeznie a munkaterületen, a Facebook, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+2. **[Munkahelyi beállítások konfigurálása a Facebook SSO](#configure-workplace-by-facebook-sso)** -ben – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+5. **[Munkahelyi munkahely létrehozása Facebook](#create-workplace-by-facebook-test-user)** -teszttel – a felhasználó által a munkahelyi Azure ad-képviselethez kapcsolódó B. Simon-partnernek.
+6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Facebook a munkahelyhez, hajtsa végre az alábbi lépéseket:
+1. A [Azure Portal](https://portal.azure.com/)a **munkahelyi Facebook** -alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **munkahelyi Facebook által** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+1. Az alapszintű **SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<instancename>.facebook.com`
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
-
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
-
-    ![Facebook-tartomány és URL-címeket egyetlen bejelentkezési adatait a munkahelyhez](common/sp-identifier.png)
-
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<instancename>.facebook.com`
-
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://www.facebook.com/company/<instanceID>`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://www.facebook.com/company/<instanceID>`
 
     > [!NOTE] 
-    > Ezek az értékek nem a valós. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. A munkahelyi közösségi tekintse meg a hitelesítési lapon a munkahelyi céges irányítópult a megfelelő értékekre.
+    > Ezek az értékek nem valódiak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. A munkahelyi Közösség megfelelő értékeinek megtekintéséhez tekintse meg a munkahelyi vállalati irányítópult hitelesítés lapját.
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-6. Az a **létrehozott munkahelyi Facebook** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+6. A **munkahely beállítása Facebook használatával** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="configure-workplace-by-facebook-sso"></a>Munkahelyi konfiguráció konfigurálása a Facebook SSO használatával
 
-    b. Azure Ad Identifier
-
-    c. Kijelentkezési URL
-
-### <a name="configure-workplace-by-facebook-single-sign-on"></a>Konfigurálja a munkahely által Facebook Single Sign-On
-
-1. Egy másik böngészőablakban, jelentkezzen be rendszergazdaként Facebook vállalati hely által a munkahelyen.
+1. Egy másik böngészőablakban jelentkezzen be a munkahelyre a Facebook vállalati webhelyén rendszergazdaként.
   
     > [!NOTE]
-    > Az SAML-hitelesítési folyamat részeként a munkahelyi előfordulhat, hogy kihasználhassák a lekérdezési karakterláncok legfeljebb 2,5 kilobájt méretű annak érdekében, hogy az Azure AD át a paramétereket.
+    > Az SAML hitelesítési folyamat részeként a munkahely akár 2,5 kilobájtos lekérdezési karakterláncot is használhat a paraméterek Azure AD-ba való továbbításához.
 
-2. Az a **felügyeleti Panel**, nyissa meg a **biztonsági** fülre.
+2. A **felügyeleti panelen**lépjen a **Biztonság** lapra.
 
-    ![Felügyeleti Panel](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
+    ![Felügyeleti panel](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
 
-3. A **hitelesítési** lapon jelölje be **egyszeri bejelentkezést (SSO)** , és hajtsa végre az alábbi lépéseket:
+3. A **hitelesítés** lapon válassza az **egyszeri bejelentkezés (SSO)** lehetőséget, és hajtsa végre a következő lépéseket:
 
     ![Hitelesítés lap](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure02.png)
 
-    a. A **SAML URL-cím** szövegmező, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
+    a. Az **SAML URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
 
-    b. A **SAML kibocsátó URI szövegmező**, illessze be az értéket a **Azure Ad-azonosító**, az Azure Portalról másolt.
+    b. Az **SAML-kiállító URI-ja szövegmezőben**illessze be a Azure Portalból másolt **Azure ad-azonosító**értékét.
 
-    c. A **SAML kijelentkezési átirányítási** (nem kötelező), illessze be az értéket, **kijelentkezési URL-címe**, amely az Azure Portalról másolt.
+    c. Az **SAML** kijelentkezésének átirányítása (nem kötelező) mezőben illessze be a kijelentkezési **URL-címet**, amelyet a Azure Portalból másolt.
 
-    d. Nyissa meg a **base-64 kódolású tanúsítvány** a Jegyzettömbben az Azure-portálról letöltött, másolja a tartalmát a vágólapra, és illessze be azt a **SAML-tanúsítvány** szövegmezőbe.
+    d. Nyissa meg az alapszintű **64-kódolású tanúsítványt** a jegyzettömbben, Azure Portal letöltve, másolja ki a tartalmat a vágólapra, majd illessze be az **SAML-tanúsítvány** szövegmezőbe.
 
-    e. Másolás a **célközönség URL-cím** a példány, és illessze be a **azonosító (entityid)** szövegmezőjébe **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    e. Másolja a példány **célközönségének URL-címét** , és illessze be az **azonosító (Entity ID)** szövegmezőbe a Azure Portal alapszintű **SAML-konfiguráció** szakaszában.
 
-    f. Másolás a **címzett URL-cím** a példány, és illessze be a **bejelentkezési URL-cím** szövegmezőjébe **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    f. Másolja a példányhoz tartozó **címzett URL-címet** , és illessze be a **bejelentkezési URL-cím** szövegmezőbe az alapszintű **SAML-konfiguráció** szakaszának Azure Portalján.
 
-    g. A szakasz alján, és kattintson a **teszt SSO** gombra. Az eredmények egy felugró ablakban jelenik meg az Azure AD bejelentkezési oldal jelenik meg. Adja meg a hitelesítő adatait a hitelesítést a szokásos módon.
+    g. Görgessen a szakasz aljára, és kattintson az **egyszeri bejelentkezés tesztelése** gombra. Ennek eredményeként megjelenik egy előugró ablak, amely az Azure AD bejelentkezési oldalán jelenik meg. A hitelesítéshez adja meg a hitelesítő adatait a szokásos módon.
 
-    **Hibaelhárítás:** Győződjön meg arról, az Azure AD-ből vissza visszaadott e-mail-cím megegyezik a munkahelyi fiók van bejelentkezve a következővel.
+    **Hibaelhárítás** Győződjön meg arról, hogy az Azure AD-ből visszaadott e-mail-cím megegyezik azzal a munkahelyi fiókkal, amelybe bejelentkezett.
 
-    h. Ha a vizsgálat sikeresen befejeződött, görgessen a lap aljára, és kattintson a **mentése** gombra.
+    h. Miután a teszt sikeresen befejeződött, görgessen a lap aljára, és kattintson a Save ( **Mentés** ) gombra.
 
-    i. Munkahelyi használó összes felhasználó most már megjelenik az Azure AD bejelentkezési oldal a hitelesítéshez.
+    i. A munkahelyen használó összes felhasználó most megjelenik az Azure AD bejelentkezési oldala a hitelesítéshez.
 
-4. **SAML a kijelentkezési átirányítási (nem kötelező)**  -
+4. **SAML-kijelentkezés átirányítása (nem kötelező)**  -
 
-    Ha szeretné, igény szerint állítsa be a SAML kijelentkezési URL-címe, amely használható az Azure AD kijelentkezési lapon mutasson. Ha ezt a beállítást engedélyezve és konfigurálva van, a felhasználó már nem irányítja a rendszer a munkahelyi kijelentkezési lapra. Ehelyett a felhasználót a rendszer átirányítja az URL-címet, a SAML kijelentkezési átirányítási beállítás hozzáadva.
+    Dönthet úgy, hogy opcionálisan konfigurál egy SAML kijelentkezési URL-címet, amely az Azure AD kijelentkezési oldalán is használható. Ha ez a beállítás engedélyezve és konfigurálva van, a felhasználó nem lesz átirányítva a munkahelyi kijelentkezés lapra. Ehelyett a rendszer átirányítja a felhasználót az SAML kijelentkezési átirányítási beállításban hozzáadott URL-címre.
 
-### <a name="configuring-reauthentication-frequency"></a>Az újrahitelesítés gyakoriság beállítása
+### <a name="configuring-reauthentication-frequency"></a>Az újrahitelesítés gyakoriságának konfigurálása
 
-Konfigurálhat egy SAML-ellenőrzés kérése minden nap, három nap, heti, Kétheti, havi munkahelyi vagy soha nem.
+A munkahelyet beállíthatja úgy, hogy minden nap, három nap, hét, két hét, hónap vagy soha ne Kérdezzen rá SAML-vizsgálatra.
 
 > [!NOTE]
-> A SAML-ellenőrzés a mobilalkalmazások minimális értéke egy hét van beállítva.
+> A mobileszközök SAML-vizsgálatának minimális értéke egy hétig van beállítva.
 
-Kényszerítheti egy SAML kérését az összes felhasználónak a gomb használatával is: Most már az összes felhasználó számára szükséges SAML-hitelesítés.
+Az SAML alaphelyzetbe állítását az összes felhasználóra vonatkozóan a következő gomb használatával is kényszerítheti: SAML-hitelesítés megkövetelése az összes felhasználó számára.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
-
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
-
-2. Válassza ki **új felhasználó** a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
-  
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
-
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
-
-    d. Kattintson a **Create** (Létrehozás) gombra.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban Britta Simon ehhez biztosítson hozzáférést a munkahelyi Facebook által használandó Azure egyszeri bejelentkezés engedélyezése.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést a munkahelyi Facebook-hozzáférés biztosításával.
 
-1. Az Azure Portalon válassza ki **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **munkahelyi által Facebook**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **munkahely a Facebook alapján**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-2. Az alkalmazások listáját, írja be, és válassza ki **munkahelyi által Facebook**.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![Az alkalmazások listáját a Facebook-kapcsolat által a munkahelyen](common/all-applications.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+### <a name="create-workplace-by-facebook-test-user"></a>Munkahely létrehozása Facebook-teszt felhasználó által
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a munkahelyen a Facebookban. A munkahelyen a Facebook az igény szerinti üzembe helyezést támogatja, ami alapértelmezés szerint engedélyezve van.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
-
-### <a name="create-workplace-by-facebook-test-user"></a>Munkahelyi Facebook teszt felhasználó létrehozása
-
-Ebben a szakaszban egy Britta Simon nevű felhasználó létrehozta a munkaterületen Facebook. Munkahelyi Facebook szerint támogatja a just-in-time-kiépítés, amely alapértelmezés szerint engedélyezve van.
-
-Nem tartoznak, ez a szakasz a műveletek. Ha a felhasználó nem létezik a munkaterületen, a Facebook, egy új szolgáltatástelepítés Ha próbál meg hozzáférni a munkahely Facebook.
+Ebben a szakaszban nincs művelet. Ha a Facebookban nem szerepel egy felhasználó a munkahelyen, a rendszer létrehoz egy újat, amikor megpróbál hozzáférni a munkahelyi Facebook-hoz.
 
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználót, lépjen kapcsolatba kell [munkahelyi Facebook ügyfél-támogatási csoport szerint](https://workplace.fb.com/faq/)
+>Ha manuálisan kell létrehoznia egy felhasználót, lépjen kapcsolatba a munkahelyi kapcsolattal a [Facebook](https://workplace.fb.com/faq/) ügyfélszolgálati csapatával
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Kattintás után a munkahely által Facebook csempe a hozzáférési panelen, meg kell automatikusan megtörténik a a munkahelyhez, amelynek beállítása egyszeri bejelentkezés Facebook szerint. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a hozzáférési panelen a munkahelyi Facebook csempére kattint, automatikusan be kell jelentkeznie a munkahelyre a Facebookban, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="test-sso-for-workplace-by-facebook-mobile"></a>A munkahelyi egyszeri bejelentkezés tesztelése a Facebookban (mobil)
+
+1. Nyissa meg a munkahelyet Facebook Mobile-alkalmazással. A bejelentkezés lapon kattintson a **Bejelentkezés**elemre.
+
+    ![A bejelentkezés](./media/workplacebyfacebook-tutorial/test05.png)
+
+2. Adja meg az üzleti levelezését, és kattintson a **Folytatás**gombra.
+
+    ![Az e-mail cím](./media/workplacebyfacebook-tutorial/test02.png)
+
+3. Kattintson **egyszer csak egyszer**.
+
+    ![Egyszer](./media/workplacebyfacebook-tutorial/test04.png)
+
+4. Kattintson az **Engedélyezés**gombra.
+
+    ![Az engedélyezés](./media/workplacebyfacebook-tutorial/test03.png)
+
+5. Végül a sikeres bejelentkezés után megjelenik az alkalmazás kezdőlapja.    
+
+    ![A Kezdőlap](./media/workplacebyfacebook-tutorial/test01.png)
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Felhasználók átadásának konfigurálása](workplacebyfacebook-provisioning-tutorial.md)
+- [A felhasználók üzembe helyezésének konfigurálása](workplacebyfacebook-provisioning-tutorial.md)
+

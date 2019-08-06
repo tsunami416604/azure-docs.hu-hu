@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező dmarcian |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és dmarcian között.
+title: 'Oktatóanyag: Azure Active Directory integráció a dmarcian-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és dmarcian között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,104 +8,82 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: a04b9383-3a60-4d54-9412-123daaddff3b
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/30/2019
+ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 232742c9ca3f090e2900566c1e80f9720e284135
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 602c885deca429b56417181971ced495831ba5d3
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104059"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823699"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező dmarcian
+# <a name="tutorial-integrate-dmarcian-with-azure-active-directory"></a>Oktatóanyag: A dmarcian integrálása Azure Active Directory
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan dmarcian integrálása az Azure Active Directory (Azure AD).
-Dmarcian integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a dmarcian a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az dmarcian-t az Azure AD-vel, a következőket teheti:
 
-* Szabályozhatja, ki férhet hozzá dmarcian Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve dmarcian (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* A dmarcian-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a dmarcian az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Dmarcian az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* dmarcian egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* dmarcian egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* támogatja a dmarcian **SP** és **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+* a dmarcian támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
 
-## <a name="adding-dmarcian-from-the-gallery"></a>Dmarcian hozzáadása a katalógusból
+## <a name="adding-dmarcian-from-the-gallery"></a>Dmarcian hozzáadása a gyűjteményből
 
-Az Azure AD integrálása a dmarcian konfigurálásához hozzá kell dmarcian a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A dmarcian Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a dmarcian a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Dmarcian hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **dmarcian** kifejezést a keresőmezőbe.
+1. Válassza ki a **dmarcian** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
-
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
-
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
-
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
-
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
-
-    ![Az új alkalmazás gomb](common/add-new-app.png)
-
-4. A Keresés mezőbe írja be a **dmarcian**válassza **dmarcian** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
-
-     ![az eredmények listájában dmarcian](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az dmarcian nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó dmarcian hivatkozás kapcsolata kell létrehozni.
+Konfigurálja és tesztelje az Azure AD SSO-t a dmarcian a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a dmarcian-ben.
 
-Az Azure AD egyszeri bejelentkezés az dmarcian tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD SSO és a dmarcian konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Egyszeri bejelentkezés dmarcian konfigurálása](#configure-dmarcian-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre dmarcian tesztfelhasználót](#create-dmarcian-test-user)**  – egy megfelelője a Britta Simon a felhasználó Azure ad-ben reprezentációja kapcsolódó dmarcian rendelkeznie.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+2. **[DMARCIAN SSO konfigurálása](#configure-dmarcian-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+5. **[Hozzon létre dmarcian-teszt felhasználót](#create-dmarcian-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-dmarcian rendelkezik.
+6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés dmarcian, hajtsa végre az alábbi lépéseket:
+1. A [Azure Portal](https://portal.azure.com/) **dmarcian** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **dmarcian** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+4. Az alapszintű **SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
-
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
-
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
-
-    ![dmarcian tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
-
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím:
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
     | |
     | -- |
@@ -113,7 +91,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés dmarcian, hajtsa vé
     | `https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
     | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
     | |
     |--|
@@ -121,11 +99,9 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés dmarcian, hajtsa vé
     | `https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/` |
     | `https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/` |
 
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![dmarcian tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata-upload-additional-signon.png)
-
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
     | |
     |--|
@@ -134,131 +110,118 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés dmarcian, hajtsa vé
     | `https://dmarciam-ap.com/login/<ACCOUNT_ID>` |
      
     > [!NOTE] 
-    > Ezek a értékei nem valódi. A tényleges azonosítója, válasz URL-cím és bejelentkezési URL-címet az oktatóanyag későbbi részében ismertetett frissíteni ezeket az értékeket. 
+    > Ezek az értékek nem valósak. Ezeket az értékeket a tényleges azonosító, a válasz URL-cím és a bejelentkezési URL-cím alapján fogja frissíteni, amelyet az oktatóanyag későbbi részében ismertetünk.
 
-6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** és mentse a számítógép.
+4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozás](common/copy-metadataurl.png)
 
-### <a name="configure-dmarcian-single-sign-on"></a>Dmarcian egyszeri bejelentkezés konfigurálása
+### <a name="configure-dmarcian-sso"></a>Dmarcian SSO konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be dmarcian egy biztonsági-rendszergazdaként.
+1. A dmarcian belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
 
-2. Kattintson a **profil** a jobb felső sarokban, és keresse meg a **beállítások**.
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **telepítés dmarcian** gombra a dmarcian alkalmazáshoz. Itt adja meg a rendszergazdai hitelesítő adatokat a dmarcian való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-6-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+3. Ha manuálisan szeretné beállítani a dmarcian, nyisson meg egy új böngészőablakot, és jelentkezzen be a dmarcian vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
+
+4. Kattintson a **profil** elemre a jobb felső sarokban, és navigáljon a **Beállítások**pontra.
 
     ![A beállítások](./media/dmarcian-tutorial/tutorial_dmarcian_pref.png)
 
-3. Görgessen lefelé, és kattintson a **egyszeri bejelentkezés** területen, majd kattintson a **konfigurálása**.
+5. Görgessen le, és kattintson az **egyszeri bejelentkezés** szakaszra, majd a **Konfigurálás**elemre.
 
     ![Az egyetlen](./media/dmarcian-tutorial/tutorial_dmarcian_sso.png)
 
-4. Az a **SAML egyszeri bejelentkezés** lapon állítsa be a **állapot** , **engedélyezve** , és hajtsa végre az alábbi lépéseket:
+6. Az **SAML egyszeri bejelentkezés** lapon állítsa be az állapotot **engedélyezve** értékre, és hajtsa végre a következő lépéseket:
 
     ![A hitelesítés](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
 
-    * A **dmarcian ad hozzá az identitásszolgáltató** területén kattintson **MÁSOLÁSI** másolása a **helyességi feltétel fogyasztói URL-címe** a példány, és illessze be a  **Válasz URL-cím** szövegmezőjébe **alapszintű SAML-konfigurációja szakasz** az Azure Portalon.
+    * Az **Dmarcian hozzáadása az identitás** -szolgáltatóhoz szakaszban kattintson a **Másolás** elemre, és másolja be a példányhoz tartozó **felhasználói szolgáltatás URL-címét** , és illessze be a **válasz URL-címe** szövegmezőbe a Azure Portal alapszintű SAML- **konfiguráció szakaszában** .
 
-    * Alatt **dmarcian ad hozzá az identitásszolgáltató** területén kattintson **MÁSOLÁSI** másolása a **Entitásazonosító** a példány, és illessze be a **azonosító**szövegmezőjébe **alapszintű SAML-konfigurációja szakasz** az Azure Portalon.
+    * Az **Dmarcian hozzáadása az identitás** -szolgáltatóhoz szakaszban kattintson a **Másolás** elemre a példányhoz tartozó **entitás-azonosító** másolásához, majd illessze be az **azonosító** szövegmezőbe az alapszintű **SAML-konfigurációs szakaszban** Azure Portal.
 
-    * Alatt **hitelesítés beállítása** ebben a szakaszban a **Identity Provider metaadatok** szövegmező illessze be a **alkalmazás összevonási metaadatainak URL-címe**, az Azure Portalról másolt.
+    * A **hitelesítés beállítása** szakasz **identitás-szolgáltató metaadatai** szövegmezőbe illessze be az **alkalmazás-összevonási metaadatok URL-címét**, amelyet a Azure Portalból másolt.
 
-    * Alatt **hitelesítés beállítása** ebben a szakaszban a **attribútum utasítások** szövegmező illessze be az URL-cím `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    * A **hitelesítés beállítása** szakaszban a **Attribute utasítások** szövegmezőbe illessze be az URL-címet`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-    * Alatt **állítsa be a bejelentkezési URL-cím** területén másolja a **bejelentkezési URL-cím** a példány, és illessze be a **bejelentkezési URL-** szövegmezőjébe **alapszintűSAML-konfigurációjaszakasz** az Azure Portalon.
+    * A **bejelentkezési URL-cím beállítása** szakaszban másolja be a példányhoz tartozó **bejelentkezési URL-címet** , és ILLESSZE be a **bejelentkezési URL** SZÖVEGMEZŐbe az alapszintű **SAML-konfiguráció szakaszának** Azure Portal.
 
         > [!Note]
-        > Módosíthatja a **bejelentkezési URL-cím** a szervezet szerint.
+        > A **bejelentkezési URL-címet** a szervezete szerint módosíthatja.
 
     * Kattintson a **Save** (Mentés) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
-
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
-
-2. Válassza ki **új felhasználó** a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. Az a **neve** írja be a következőt **BrittaSimon**.
-  
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
-
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
-
-    d. Kattintson a **Create** (Létrehozás) gombra.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejelentkezés dmarcian való hozzáférést.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a dmarcian.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **dmarcian**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **dmarcian**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-2. Az alkalmazások listájában jelölje ki a **dmarcian**.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![Az alkalmazások listáját a dmarcian hivatkozásra](common/all-applications.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+### <a name="create-dmarcian-test-user"></a>Dmarcian-tesztelési felhasználó létrehozása
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a dmarcian, a dmarcian kell kiépíteni őket. A dmarcian-ben a kiépítés manuális feladat.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+**Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:**
 
-5. Az a **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+1. Jelentkezzen be a dmarcian biztonsági rendszergazdaként.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
-
-### <a name="create-dmarcian-test-user"></a>Dmarcian tesztfelhasználó létrehozása
-
-Ahhoz, hogy az Azure AD-felhasználók dmarcian bejelentkezni, akkor ki kell építeni dmarcian be. Dmarcian a kiépítés manuális feladat.
-
-**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
-
-1. Jelentkezzen be dmarcian egy biztonsági-rendszergazdaként.
-
-2. Kattintson a **profil** a felső jobb sarokban található, és keresse meg **felhasználók kezelése**.
+2. Kattintson a jobb felső sarokban található **profil** elemre, és navigáljon a **felhasználók kezeléséhez**.
 
     ![A felhasználó](./media/dmarcian-tutorial/tutorial_dmarcian_user.png)
 
-3. A jobb oldalán található **SSO felhasználók** területén kattintson a **új felhasználó hozzáadása**.
+3. Az **egyszeri bejelentkezés felhasználói** szakasz jobb oldalán kattintson az **új felhasználó hozzáadása**elemre.
 
     ![A felhasználó hozzáadása](./media/dmarcian-tutorial/tutorial_dmarcian_addnewuser.png)
 
-4. Az a **új felhasználó hozzáadása** előugró ablakban hajtsa végre az alábbi lépéseket:
+4. Az **új felhasználó hozzáadása** felugró ablakban végezze el a következő lépéseket:
 
     ![Az új felhasználó](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
-    a. Az a **új felhasználó e-mail-címe** szövegmezőben adja meg az e-mail címét, például a felhasználó **brittasimon\@contoso.com**.
+    a. Az **új felhasználói e-mail** szövegmezőbe írja be a felhasználó, például a **brittasimon\@contoso.com**-e-mail-címét.
 
-    b. Ha azt szeretné, hogy a felhasználó rendszergazdai jogokat, válassza ki a **győződjön meg arról, felhasználói rendszergazda**.
+    b. Ha rendszergazdai jogosultságot szeretne adni a felhasználónak, válassza a rendszergazda **felhasználó létrehozása**lehetőséget.
 
     c. Kattintson a **felhasználó hozzáadása**.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a dmarcian csempére kattint, meg kell lehet automatikusan bejelentkezett a dmarcian, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a dmarcian csempére kattint, automatikusan be kell jelentkeznie arra a dmarcian, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

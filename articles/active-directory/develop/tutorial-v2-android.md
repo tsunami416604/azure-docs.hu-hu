@@ -3,7 +3,7 @@ title: Első lépések az Androidban – Microsoft Identity platform | Azure
 description: Az Android-alkalmazások hozzáférési jogkivonatának beszerzése és a Microsoft Identity platform hozzáférési jogkivonatokat igénylő API-k hívása Microsoft Graph API vagy API-k esetén.
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: tylermsft
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bd19b6094d68277130916b5cda565ba9e633c59
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 76547fd708f880bdf5167d71db121e69fc5b1d30
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334111"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823798"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Bejelentkezés a felhasználókba és a Microsoft Graph meghívása Android-alkalmazásból
 
@@ -56,7 +56,7 @@ Ez a példa az Androidhoz készült Microsoft Authentication Library (MSAL) hasz
 Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktatóanyagot szeretné letölteni, [töltse le a kódot](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip).
 
 1. Nyissa meg Android Studio, majd válassza **az új Android Studio projekt indítása**lehetőséget.
-2. Válassza  az alaptevékenység lehetőséget, majd kattintson a **Tovább gombra**.
+2. Válassza az alaptevékenység lehetőséget, majd kattintson a **Tovább gombra**.
 3. Adjon nevet az alkalmazásnak.
 4. Mentse a csomag nevét. Később adja meg a Azure Portal.
 5. Állítsa a **minimális API** -szintet **API 19** vagy újabb értékre, majd kattintson a **Befejezés**gombra.
@@ -74,7 +74,7 @@ Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktat�
    > [!Note]
    > A. exe a Java Development Kit (JDK) részeként van telepítve. Az OpenSSL eszközt is telepítenie kell, hogy végrehajtsa a parancssori eszközt.
 
-7. Adja meg  a Főeszköz által generált aláírási kivonatot.
+7. Adja meg a Főeszköz által generált aláírási kivonatot.
 8. Kattintson `Configure` és mentse az **Android-konfiguráció** lapon megjelenő **MSAL** -konfigurációt, így megadhatja, amikor később konfigurálja az alkalmazást.  Kattintson a **Done** (Kész) gombra.
 
 ## <a name="build-your-app"></a>Alkalmazás létrehozása
@@ -531,7 +531,7 @@ Az alkalmazás létrehozása és üzembe helyezése tesztelési eszközön vagy 
 
 A bejelentkezést követően az alkalmazás megjeleníti az Microsoft Graph `/me` végpont által visszaadott adatok megjelenítését.
 
-### <a name="consent"></a>Hozzájárulása
+### <a name="consent"></a>Hozzájárulás
 
 Amikor a felhasználó először jelentkezik be az alkalmazásba, a Microsoft Identity a kért engedélyekkel való beleegyezett.  Habár a legtöbb felhasználó képes hozzájárulni, néhány Azure AD-bérlő letiltotta a felhasználói beleegyezését, amelyhez a rendszergazdáknak minden felhasználó nevében hozzá kell járulniuk. A forgatókönyv támogatásához regisztrálja az alkalmazás hatóköreit a Azure Portalban.
 

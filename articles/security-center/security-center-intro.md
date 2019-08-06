@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: f0ee4a1129246cedd7899056359144cab75f9475
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 7bd18ab0cedf94f0ecc08c3523a608a8d554e6b2
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782439"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827918"
 ---
 # <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
 
@@ -126,9 +126,9 @@ Security Center segít korlátozni a találgatásos támadásokra való kitetts�
 
 A Security Center olyan képességeket tartalmaz, amelyek segítenek az adatok automatikus besorolásában az Azure SQL-ben. Az Azure SQL és a Storage szolgáltatásokban is lehetséges biztonsági réseket is kiértékelheti, és javaslatokat kaphat a megoldásra.
 
-### <a name="protect-iot-and-hybrid-cloud-workloads-preview"></a>A IoT és a hibrid felhőalapú számítási feladatok (előzetes verzió) elleni védelem
+### <a name="protect-iot-and-hybrid-cloud-workloads"></a>A IoT és a hibrid felhőalapú számítási feladatok elleni védelem
 
-A IoT (eszközök internetes hálózata) Azure Security Center leegyszerűsíti a hibrid munkaterhelések védelmét azáltal, hogy egységes láthatóságot és vezérlést, adaptív veszélyforrások elleni védelmet, valamint intelligens veszélyforrások észlelését és reagálást tesz elérhetővé az Edge-ben, a helyszínen, Azure és más felhőkben. További információ: [Azure Security Center for IoT (előzetes verzió)](https://docs.microsoft.com/azure/asc-for-iot/).
+A IoT (eszközök internetes hálózata) Azure Security Center leegyszerűsíti a hibrid munkaterhelések védelmét azáltal, hogy egységes láthatóságot és vezérlést, adaptív veszélyforrások elleni védelmet, valamint intelligens veszélyforrások észlelését és reagálást tesz elérhetővé az Edge-ben, a helyszínen, Azure és más felhőkben. További információ: [Azure Security Center a IoT](https://docs.microsoft.com/azure/asc-for-iot/).
 
 ## <a name="get-secure-faster"></a>Gyorsabb biztonságos használat
 

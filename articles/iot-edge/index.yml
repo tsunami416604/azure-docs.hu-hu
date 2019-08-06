@@ -1,14 +1,22 @@
 ### YamlMime:Landing
-title: Azure IoT Edge
+title: Az Azure IoT Edge dokumentációja
 summary: Az Azure IoT Edge egy eszközök internetes hálózata (IoT) típusú szolgáltatás, amely az IoT Hubra épül. Ez a szolgáltatás olyan ügyfelek számára ideális, akik eszközökön, vagyis a „peremhálózatokon” szeretnék elemezni az adatokat, és nem a felhőben. A számítási feladat egy részének a peremhálózatra helyezése révén az eszközök kevesebb időt töltenek a felhőbe történő üzenetküldéssel, és gyorsabban reagálhatnak az eseményekre.
 metadata:
+  title: Az Azure IoT Edge dokumentációja
+  description: Az Azure IoT Edge egy eszközök internetes hálózata (IoT) típusú szolgáltatás, amely az IoT Hubra épül. Ez a szolgáltatás olyan ügyfelek számára ideális, akik eszközökön, vagyis a „peremhálózatokon” szeretnék elemezni az adatokat, és nem a felhőben. A számítási feladat egy részének a peremhálózatra helyezése révén az eszközök kevesebb időt töltenek a felhőbe történő üzenetküldéssel, és gyorsabban reagálhatnak az eseményekre.
+  services: iot-edge
+  ms.service: iot-edge
   ms.topic: landing-page
-  ms.openlocfilehash: 71589d66856b4f6d3a32da50252fadff564373ff
-  ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+  author: kgremban
+  ms.author: kgremban
+  manager: philmea
+  ms.date: 08/05/2019
+  ms.openlocfilehash: 673243b2e38b6d93091faea2e32a40d23b2a5267
+  ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/23/2019
-  ms.locfileid: "68414420"
+  ms.lasthandoff: 08/06/2019
+  ms.locfileid: "68815769"
 landingContent:
 - title: Fejlesztés Linux-eszközökhöz
   linkLists:

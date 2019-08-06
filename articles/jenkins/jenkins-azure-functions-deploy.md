@@ -1,77 +1,71 @@
 ---
-title: A Jenkins az Azure Functions beépülő modul használata az Azure Functions üzembe helyezése
-description: Ismerje meg, hogyan helyezhet üzembe Azure Functions használatával a Jenkins az Azure Functions beépülő modul
+title: Üzembe helyezés Azure Functions a Jenkins Azure Functions beépülő modullal
+description: Megtudhatja, hogyan helyezhet üzembe Azure Functions a Jenkins Azure Functions beépülő modullal
 ms.service: jenkins
-keywords: a jenkins, azure, devops, a java, az azure functions
+keywords: Jenkins, Azure, devops, Java, Azure functions
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 02/23/2019
-ms.openlocfilehash: bd8fa10ca0a9809891efc67ff930ab01d502eda9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1ee5a8d5f55422c9f8a0f20f3c6eb039f080dc2d
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60640959"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815734"
 ---
-# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>A Jenkins az Azure Functions beépülő modul használata az Azure Functions üzembe helyezése
+# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>Üzembe helyezés Azure Functions a Jenkins Azure Functions beépülő modullal
 
-[Az Azure Functions](/azure/azure-functions/) egy kiszolgáló nélküli számítási szolgáltatás. Azure Functions használatával futtathatja igény szerinti kiépítés és infrastruktúra kezelése nélkül. Ez az oktatóanyag bemutatja egy Java-függvény üzembe helyezése az Azure Functions az Azure Functions beépülő modul használatával.
+[Azure functions](/azure/azure-functions/) kiszolgáló nélküli számítási szolgáltatás. A Azure Functions használatával igény szerint futtathat programkódot az infrastruktúra kiépítése vagy kezelése nélkül. Ez az oktatóanyag bemutatja, hogyan helyezhet üzembe egy Java-függvényt Azure Functions a Azure Functions beépülő modullal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
-- **Jenkins-kiszolgáló**: Ha nem rendelkezik Jenkins-kiszolgáló telepítve van, tekintse meg a cikket [Jenkins-kiszolgáló létrehozása az Azure-ban](./install-jenkins-solution-template.md).
+- **Jenkins-kiszolgáló**: Ha nincs telepítve Jenkins-kiszolgáló, tekintse meg a [Jenkins-kiszolgáló létrehozása az Azure](./install-jenkins-solution-template.md)-ban című cikket.
 
   > [!TIP]
-  > Ebben az oktatóanyagban használt forráskódot található a [Visual Studio China GitHub-adattárat](https://github.com/VSChina/odd-or-even-function/blob/master/src/main/java/com/microsoft/azure/Function.java).
+  > Az oktatóanyaghoz használt forráskód a [Visual Studio China GitHub](https://github.com/VSChina/odd-or-even-function/blob/master/src/main/java/com/microsoft/azure/Function.java)-tárházban található.
 
-## <a name="create-a-java-function"></a>Egy Java-függvény létrehozása
+## <a name="create-a-java-function"></a>Java-függvény létrehozása
 
-Egy Java-függvény létrehozása a Java-futtatókörnyezet hibával, vagy használja a [az Azure portal](https://portal.azure.com) vagy a [Azure CLI-vel](/cli/azure/?view=azure-cli-latest).
+A Java-futtatókörnyezettel rendelkező Java-függvények létrehozásához használja a [Azure Portal](https://portal.azure.com) vagy az [Azure CLI](/cli/azure/?view=azure-cli-latest)-t.
 
-A következő lépések bemutatják, hogyan hozhat létre egy Java-függvényt az Azure CLI használatával:
+A következő lépések bemutatják, hogyan hozhat létre Java-függvényeket az Azure CLI használatával:
 
-1. Hozzon létre egy erőforráscsoportot, és cserélje le a  **&lt;resource_group >** helyőrzőt az erőforráscsoport nevét.
+1. Hozzon létre egy erőforráscsoportot, és cserélje le a  **&lt;resource_group >** helyőrzőt az erőforráscsoport nevére.
 
     ```cli
     az group create --name <resource_group> --location eastus
     ```
 
-1. Hozzon létre egy Azure storage-fiókot, és cserélje le a helyőrzőket a megfelelő értékekre.
+1. Hozzon létre egy Azure Storage-fiókot, és cserélje le a helyőrzőket a megfelelő értékekre.
  
     ```cli
     az storage account create --name <storage_account> --location eastus --resource-group <resource_group> --sku Standard_LRS    
     ```
 
-1. A helyőrzőket cserélje le a megfelelő értékeket a teszt függvényalkalmazás létrehozásához.
+1. Hozza létre a test Function alkalmazást, és cserélje le a helyőrzőket a megfelelő értékekre.
 
     ```cli
     az functionapp create --resource-group <resource_group> --consumption-plan-location eastus --name <function_app> --storage-account <storage_account>
     ```
-    
-1. Frissítési verzió 2.x verziójú futtatókörnyezet, és cserélje le a helyőrzőket a megfelelő értékekre.
-
-    ```cli
-    az functionapp config appsettings set --name <function_app> --resource-group <resource_group> --settings FUNCTIONS_EXTENSION_VERSION=~2
-    ```
 
 ## <a name="prepare-jenkins-server"></a>Jenkins-kiszolgáló előkészítése
 
-A következő lépések elmagyarázzák, hogyan készíti elő a Jenkins-kiszolgáló:
+A Jenkins-kiszolgáló előkészítését az alábbi lépések ismertetik:
 
-1. Üzembe helyezése egy [Jenkins-kiszolgáló](https://aka.ms/jenkins-on-azure) az Azure-ban. Ha még nem rendelkezik a Jenkins-kiszolgáló telepítve van, a cikk egy példányát [Jenkins-kiszolgáló létrehozása az Azure-ban](./install-jenkins-solution-template.md) végigvezeti a folyamaton.
+1. Jenkins- [kiszolgáló](https://aka.ms/jenkins-on-azure) üzembe helyezése az Azure-ban. Ha még nincs telepítve a Jenkins-kiszolgáló egy példánya, a cikk, [Jenkins-kiszolgáló létrehozása az Azure](./install-jenkins-solution-template.md) -ban végigvezeti Önt a folyamaton.
 
-1. Jelentkezzen be a Jenkins-példány az ssh-val.
+1. Jelentkezzen be a Jenkins-példányba SSH-val.
 
-1. A Jenkins-példány telepítse a maven használatával a következő parancsot:
+1. A Jenkins-példányon telepítse a mavent a következő parancs használatával:
 
     ```terminal
     sudo apt install -y maven
     ```
 
-1. A Jenkins-példány, telepítse a [Azure Functions Core Tools](/azure/azure-functions/functions-run-local) szerint a következő parancs a terminál a parancssorba:
+1. A Jenkins-példányon telepítse a [Azure functions Core toolst](/azure/azure-functions/functions-run-local) a következő parancsok parancssorból történő kiadásával:
 
     ```terminal
     wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
@@ -80,32 +74,32 @@ A következő lépések elmagyarázzák, hogyan készíti elő a Jenkins-kiszolg
     sudo apt-get install azure-functions-core-tools
     ```
 
-1. A Jenkins irányítópultján a következő beépülő modulok telepítése:
+1. A Jenkins-irányítópulton telepítse a következő beépülő modulokat:
 
-    - Az Azure Functions beépülő modul
+    - Azure Functions beépülő modul
     - EnvInject beépülő modul
 
-1. Jenkins az Azure-beli szolgáltatásnév hitelesítése és Azure-erőforrásokat kell. Tekintse meg a [üzembe helyezés az Azure App Service](./tutorial-jenkins-deploy-web-app-azure-app-service.md) részletes útmutatásait.
+1. A Jenkins-nek szüksége van egy Azure-szolgáltatásra az Azure-erőforrások hitelesítéséhez és eléréséhez. Részletes utasításokért tekintse meg a [központi telepítés Azure app Service](./tutorial-jenkins-deploy-web-app-azure-app-service.md) .
 
-1. Használja az Azure-szolgáltatás egyszerű, adja hozzá a "Microsoft Azure szolgáltatás egyszerű" hitelesítő adatok típusa a Jenkinsben. Tekintse meg a [üzembe helyezés az Azure App Service](./tutorial-jenkins-deploy-web-app-azure-app-service.md#add-service-principal-to-jenkins) oktatóanyag.
+1. Az Azure egyszerű szolgáltatásnév használatával adjon hozzá egy "Microsoft Azure egyszerű szolgáltatásnév" hitelesítő adatot a Jenkins-ben. Tekintse át a [központi telepítés Azure app Service](./tutorial-jenkins-deploy-web-app-azure-app-service.md#add-service-principal-to-jenkins) oktatóanyagot.
 
-## <a name="fork-the-sample-github-repo"></a>A minta GitHub-tárház elágaztatása
+## <a name="fork-the-sample-github-repo"></a>A minta GitHub-tárházának elágazása
 
-1. [Jelentkezzen be a GitHub-adattárat a páratlan vagy akár mintát alkalmazáshoz](https://github.com/VSChina/odd-or-even-function.git).
+1. [Jelentkezzen be a GitHub-tárházba a páratlan vagy akár a minta alkalmazáshoz](https://github.com/VSChina/odd-or-even-function.git).
 
-1. Válassza a jobb felső sarokban a GitHub **elágazás**.
+1. A GitHub jobb felső sarkában válassza az **elágazás**lehetőséget.
 
-1. Kövesse az utasításokat, jelölje be a GitHub-fiókot, és ezzel Befejezés.
+1. Az utasításokat követve válassza ki a GitHub-fiókját, és fejezze be az elágazást.
 
-## <a name="create-a-jenkins-pipeline"></a>Hozzon létre egy Jenkins-folyamat
+## <a name="create-a-jenkins-pipeline"></a>Jenkins-folyamat létrehozása
 
-Ebben a szakaszban hoz létre a [Jenkins folyamat](https://jenkins.io/doc/book/pipeline/).
+Ebben a szakaszban létrehozza a [Jenkins](https://jenkins.io/doc/book/pipeline/)-folyamatot.
 
-1. Folyamat létrehozása a Jenkins irányítópultján.
+1. Hozzon létre egy folyamatot a Jenkins-irányítópulton.
 
-1. Engedélyezése **készítse elő a környezetet a Futtatás**.
+1. **A környezet előkészítésének engedélyezése a futtatáshoz**.
 
-1. Adja hozzá az alábbi környezeti változókat a **tulajdonságok tartalom**, és cserélje le a helyőrzőket a környezetének megfelelő értékekkel:
+1. Adja hozzá az alábbi környezeti változókat a **Tulajdonságok tartalmához**, és cserélje le a helyőrzőket a környezete megfelelő értékeire:
 
     ```
     AZURE_CRED_ID=<service_principal_credential_id>
@@ -113,9 +107,9 @@ Ebben a szakaszban hoz létre a [Jenkins folyamat](https://jenkins.io/doc/book/p
     FUNCTION_NAME=<function_name>
     ```
     
-1. Az a **folyamat-definíció >** szakaszban jelölje be **SCM parancsfájlt folyamat**.
+1. A **folyamat – > definíció** szakaszban válassza ki **a folyamat parancsfájlt az SCM-ből**.
 
-1. Adja meg a GitHub-elágazásba URL-CÍMÉT és a parancsfájl elérési útja ("doc/erőforrás/jenkins/JenkinsFile") található a [JenkinsFile példa](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile).
+1. Adja meg a GitHub-elágazás URL-címét és a parancsfájl elérési útját ("doc/Resources/Jenkins/JenkinsFile") a [JenkinsFile példában](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile)való használatra.
 
    ```
    node {
@@ -137,18 +131,18 @@ Ebben a szakaszban hoz létre a [Jenkins folyamat](https://jenkins.io/doc/book/p
     }
     ```
 
-## <a name="build-and-deploy"></a>Létrehozása és üzembe helyezése
+## <a name="build-and-deploy"></a>Létrehozás és üzembe helyezés
 
-Azt már a Jenkins-feladat futtatásának időpontját.
+Most már ideje futtatni a Jenkins-feladatot.
 
-1. Először szerezze be a hitelesítési kulcs keresztül utasításait a [Azure Functions – HTTP-eseményindítók és kötések](/azure/azure-functions/functions-bindings-http-webhook#authorization-keys) cikk.
+1. Először szerezze be az engedélyezési kulcsot a [Azure FUNCTIONS http-eseményindítók és-kötések](/azure/azure-functions/functions-bindings-http-webhook#authorization-keys) című cikkben található utasítások alapján.
 
-1. A böngészőben adja meg az alkalmazás URL-CÍMÉT. A helyőrzőket cserélje le a megfelelő értékeket, és adjon meg egy numerikus értéket  **&lt;input_number >** a Java függvény bemeneteként.
+1. A böngészőben adja meg az alkalmazás URL-címét. Cserélje le a helyőrzőket a megfelelő értékekre, és adjon meg egy numerikus értéket  **&lt;a input_number >** a Java-függvény bemenete.
 
     ```
     https://<function_app>.azurewebsites.net/api/HttpTrigger-Java?code=<authorization_key>&number=<input_number>
     ```
-1. Látni fogja az alábbi példa kimenetében hasonló eredményeket (Ha páratlan szám - 365 – tesztként lett megadva):
+1. A következő példa kimenetéhez hasonló eredmények jelennek meg (ahol a páros szám-365 – tesztként használták):
 
     ```output
     The number 365 is Odd.
@@ -156,7 +150,7 @@ Azt már a Jenkins-feladat futtatásának időpontját.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem folytatja az alkalmazás használatához, törölje a következő lépésben létrehozott erőforrások:
+Ha nem folytatja az alkalmazás használatát, törölje a létrehozott erőforrásokat a következő lépéssel:
 
 ```cli
 az group delete -y --no-wait -n <resource_group>
@@ -164,6 +158,6 @@ az group delete -y --no-wait -n <resource_group>
 
 ## <a name="next-steps"></a>További lépések
 
-Azure Functions használatával kapcsolatos további tudnivalókért tekintse meg a következő erőforráshoz:
+Ha többet szeretne megtudni a Azure Functionsről, tekintse meg a következő erőforrást:
 > [!div class="nextstepaction"]
-> [Az Azure Functions – dokumentáció](/azure/azure-functions/)
+> [Azure Functions dokumentáció](/azure/azure-functions/)

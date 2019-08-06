@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció Meta hálózatok összekötővel |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Meta hálózatok összekötő és az Azure Active Directory között.
+title: 'Oktatóanyag: Azure Active Directory integráció a meta Networks-összekötővel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a meta Networks Connector között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,51 +14,51 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 82097b075ab86c4de5ab45e3110c9bc192ac7edb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ef49cb2e245e4af7b5d7f7d250194761cf0b375
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097351"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68826353"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Oktatóanyag: Meta hálózatok összekötő az Azure Active Directory-integráció
+# <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Oktatóanyag: Azure Active Directory integráció a meta Networks-összekötővel
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Meta hálózatok összekötő integrálása az Azure Active Directory (Azure AD).
-Meta hálózatok összekötő integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a meta Networks Connectort Azure Active Directory (Azure AD) használatával.
+A meta Networks-összekötő az Azure AD-vel való integrálásához a következő előnyöket nyújtja:
 
-* Szabályozhatja, ki férhet hozzá Meta hálózatok összekötő Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy a rendszer automatikusan bejelentkezve Meta hálózatok Connector (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A meta Networks-összekötőhöz hozzáféréssel rendelkező Azure AD-t vezérelheti.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a meta Networks-Összekötőbe (egyszeri bejelentkezés) az Azure AD-fiókjával.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása Meta hálózatok összekötővel, a következő elemek szükségesek:
+Az Azure AD-integráció a meta Networks-összekötővel való konfigurálásához a következő elemek szükségesek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Meta hálózatok összekötő egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* Meta Networks Connector egyszeri bejelentkezésre alkalmas előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Meta hálózatok összekötő támogatja az **SP** és **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+* A meta Networks Connector támogatja az **SP** és a **identitásszolgáltató** által kezdeményezett SSO-t
  
-* Meta hálózatok összekötő támogatja az **igény szerinti** felhasználók átadása
+* A meta Networks Connector **csak időben támogatja a** felhasználók üzembe helyezését
 
-## <a name="adding-meta-networks-connector-from-the-gallery"></a>Meta hálózatok összekötő hozzáadása a katalógusból
+## <a name="adding-meta-networks-connector-from-the-gallery"></a>Meta Networks-összekötő hozzáadása a katalógusból
 
-Meta hálózatok összekötő integrálása az Azure AD beállításához szüksége Meta hálózatok összekötő hozzáadása a felügyelt SaaS-alkalmazások listájában a katalógusból.
+A meta Networks Connector Azure AD-integrációjának konfigurálásához hozzá kell adnia a meta Networks Connectort a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Meta hálózatok összekötő hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**A meta Networks-összekötő a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
 
 1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
@@ -66,100 +66,100 @@ Meta hálózatok összekötő integrálása az Azure AD beállításához szüks
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Meta hálózatok összekötő**, jelölje be **Meta hálózatok összekötő** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a **meta Networks Connector**kifejezést, válassza a **meta Networks Connector** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Meta hálózatok összekötő a találatok listájában](common/search-new-app.png)
+     ![Meta Networks-összekötő az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés Meta hálózatok összekötővel nevű tesztfelhasználó alapján **Britta Simon**.
-Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó Meta hálózatok Connector közötti kapcsolat kapcsolatot kell hozható létre.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést a meta Networks összekötővel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a meta Networks Connector kapcsolódó felhasználója közötti kapcsolat létesítésére van szükség.
 
-Az Azure AD egyszeri bejelentkezés Meta hálózatok összekötő tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés meta Networks-összekötővel történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Meta hálózatok összekötő egyszeri bejelentkezés konfigurálása](#configure-meta-networks-connector-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. A **[meta Networks Connector egyszeri bejelentkezésének konfigurálása](#configure-meta-networks-connector-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Meta hálózatok összekötő tesztfelhasználót](#create-meta-networks-connector-test-user)**  – egy megfelelője a Britta Simon Meta hálózatok összekötő, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+5. **[Hozzon létre meta Networks Connector tesztelési felhasználót](#create-meta-networks-connector-test-user)** – hogy a meta Networks-összekötőn a Britta Simon partnere legyen, amely a felhasználó Azure ad-képviseletéhez van társítva.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Konfigurálja az Azure AD egyszeri bejelentkezés Meta hálózatok összekötővel, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezés meta Networks-összekötővel történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Meta hálózatok összekötő** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. A [Azure Portal](https://portal.azure.com/)a **meta Networks Connector** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
 3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
+4. Az alapszintű **SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Meta hálózatok összekötő tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
+    ![Meta Networks Connector tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/sso/saml`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/sso/saml`
 
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![Meta hálózatok összekötő tartomány és URL-címeket egyetlen bejelentkezési adatait](common/both-advanced-urls.png)
+    ![Meta Networks Connector tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-advanced-urls.png)
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`
 
-    b. Az a **továbbítási állapot** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/#/`
+    b. A **továbbítási állapot** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/#/`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítheti ezeket az értékeket a tényleges azonosítóval, válasz URL-cím, és a bejelentkezési URL-magyarázatát olvashatja az oktatóanyag későbbi részében.
+    > Ezek az értékek nem valósak. Az oktatóanyag későbbi részében a tényleges azonosító, a válasz URL-cím és a bejelentkezési URL-cím alapján frissítse ezeket az értékeket.
 
-6. Meta hálózatok összekötő alkalmazást a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+6. A meta Networks Connector alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
     
-7. Emellett a fent Meta hálózatok összekötőalkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
+7. A fentieken kívül a meta Networks Connector alkalmazás néhány további attribútumot vár az SAML-válaszba való visszatéréshez. A **felhasználó attribútumai** párbeszédpanel **felhasználói** jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
     
-    | Name (Név) | Adatforrás-attribútum | Névtér|
+    | Name (Név) | Forrásattribútum | Névtér|
     | ---------------| --------------- | -------- |
-    | Keresztnév | user.givenname | |
-    | Vezetéknév | user.surname | |
-    | e-mail cím| user.mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | FirstName | User. givenName | |
+    | LastName | felhasználó. vezetéknév | |
+    | EmailAddress| user.mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | name | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | Telefonszám | user.telephonenumber | |
+    | telefon | User. telephoneNumber | |
 
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
 
-    c. Hagyja a **Namespace** üres.
+    c. Hagyja üresen a **névteret** .
 
-    d. Válassza ki a forrás, **attribútum**.
+    d. Válassza a forrás **attribútumként**lehetőséget.
 
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
     f. Kattintson a **Ok**
 
     g. Kattintson a **Save** (Mentés) gombra.
 
-8. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+8. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-9. Az a **Meta hálózatok Connector telepítése** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+9. A **meta Networks Connector beállítása** szakaszban másolja ki a megfelelő URL-címet (ka) t a követelmény szerint.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
@@ -167,48 +167,48 @@ Konfigurálja az Azure AD egyszeri bejelentkezés Meta hálózatok összekötőv
 
     c. Kijelentkezési URL
 
-### <a name="configure-meta-networks-connector-single-sign-on"></a>Meta hálózatok összekötő egyszeri bejelentkezés konfigurálása
+### <a name="configure-meta-networks-connector-single-sign-on"></a>A meta Networks Connector egyszeri bejelentkezésének konfigurálása
 
-1. Nyisson meg egy új lapot a böngészőben, és jelentkezzen be a Meta hálózatok összekötő rendszergazdai fiókjával.
+1. Nyisson meg egy új fület a böngészőben, és jelentkezzen be a meta Network Connector rendszergazdai fiókjába.
     
     > [!NOTE]
-    > Meta hálózatok összekötő egy olyan biztonságos rendszer. Ezért a portál elérése előtt le szeretné kérni a nyilvános IP-cím azok oldalán az engedélyezési listához hozzáadni. A nyilvános IP-cím lekéréséhez kövesse az alábbi hivatkozással megadott [Itt](https://whatismyipaddress.com/). Az IP-cím küldése az [Meta hálózatokhoz csatlakozó ügyfél-támogatási csoport](mailto:support@metanetworks.com) , az IP-címet az engedélyezési listához hozzáadni.
+    > A meta Networks Connector egy biztonságos rendszer. Így a portálhoz való hozzáférés előtt hozzá kell adnia a nyilvános IP-címét az engedélyezési listához az oldalon. A nyilvános IP-cím lekéréséhez kövesse az [itt](https://whatismyipaddress.com/)megadott hivatkozást. Küldje el az IP-címet a [meta Networks Connector ügyfél-támogatási csapatának](mailto:support@metanetworks.com) , hogy az IP-címet hozzáadja az engedélyezési listához.
     
-2. Lépjen a **rendszergazda** válassza **beállítások**.
+2. Nyissa meg a rendszergazdát, és válassza a **Beállítások**lehetőséget.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/metanetworksconnector-tutorial/configure3.png)
     
-3. Győződjön meg arról, hogy **Log internetes forgalom** és **kényszerített VPN MFA** vannak beállítva, hogy ki.
+3. Győződjön meg arról, hogy a **naplózási internetes forgalom** és a **kényszerített VPN MFA** értéke off.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/metanetworksconnector-tutorial/configure1.png)
     
-4. Lépjen a **rendszergazda** válassza **SAML**.
+4. Nyissa meg a rendszergazdát, és válassza az **SAML**lehetőséget.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/metanetworksconnector-tutorial/configure4.png)
     
-5. Hajtsa végre a következő lépéseket a **részletek** oldalon:
+5. Hajtsa végre a következő lépéseket a **részletek** lapon:
     
     ![Egyszeri bejelentkezés konfigurálása](./media/metanetworksconnector-tutorial/configure2.png)
     
-    a. Másolás **egyszeri bejelentkezési URL-cím** értékét, és illessze be azt a **bejelentkezési URL** szövegmezőjébe a **Meta hálózatok összekötő tartomány és URL-címek** szakaszban.
+    a. Másolja az **SSO URL-címet** , és illessze be a **bejelentkezési URL** -szövegmezőbe a **meta Networks Connector tartomány és URL** -cím szakaszban.
     
-    b. Másolás **címzett URL-cím** értékét, és illessze be azt a **válasz URL-cím** szövegmezőjébe a **Meta hálózatok összekötő tartomány és URL-címek** szakaszban.
+    b. Másolja a **címzett URL-címét** , és illessze be a **Válasz URL-** szövegmezőbe a **meta Networks Connector tartomány és URL** -cím szakaszban.
     
-    c. Másolás **célközönség-URI (SP entitás azonosítója)** értékét, és illessze be azt a **azonosító (entityid)** szövegmezőjébe a **Meta hálózatok összekötő tartomány és URL-címek** szakaszban.
+    c. Másolja a **célközönség URI-ját (SP-entitás azonosítója)** , és illessze be a **meta Networks Connector tartomány és URL-cím** szakasz **azonosító (entitás azonosítója)** szövegmezőbe.
     
     d. Az SAML engedélyezése
     
-6. Az a **általános** lapon tegye a következőket:
+6. Az **általános** lapon végezze el a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/metanetworksconnector-tutorial/configure5.png)
 
-    a. Az a **identitás szolgáltató egyszeri bejelentkezési URL-cím**, illessze be a **bejelentkezési URL-cím** az Azure Portalról másolt érték.
+    a. Az **identitás-szolgáltató egyszeri bejelentkezési URL**-címében illessze be azt a **bejelentkezési URL** -címet, amelyet a Azure Portal másolt.
 
-    b. Az a **identitásszolgáltató kibocsátója**, illessze be a **az Azure AD-azonosító** az Azure Portalról másolt érték.
+    b. Az **Identity Provider kiállítójában**illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
 
-    c. Nyissa meg a letöltött tanúsítvány az Azure Portalról a Jegyzettömbben, illessze be azt a **X.509-tanúsítvány** szövegmezőbe.
+    c. Nyissa meg a letöltött tanúsítványt Azure Portal a Jegyzettömbben, illessze be az **X. 509 tanúsítvány** szövegmezőbe.
 
-    d. Engedélyezze a **Just-in-Time-kiépítés**.
+    d. Az igényszerinti kiépítés engedélyezése.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -228,51 +228,51 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain. Extension nevet.**  
     Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Meta hálózatok összekötő Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a meta Networks Connector elérésének biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Meta hálózatok összekötő**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **meta Networks Connector**elemet.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Meta hálózatok összekötő**.
+2. Az alkalmazások listában válassza a **meta Networks Connector**elemet.
 
-    ![Az alkalmazások listáját a Meta hálózatok összekötő hivatkozás](common/all-applications.png)
+    ![A meta Networks Connector hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
     ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
 5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-meta-networks-connector-test-user"></a>Meta hálózatok összekötő tesztfelhasználó létrehozása
+### <a name="create-meta-networks-connector-test-user"></a>Meta Networks Connector tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó Meta hálózatok összekötőben jön létre. Meta hálózatok összekötő támogatja az just-in-time-kiépítés, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik a metaadat-hálózatok összekötőben, egy új jön létre, Meta hálózatok összekötő eléréséhez megkísérlésekor.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a meta Networks Connectorban. A meta Networks Connector az igény szerinti üzembe helyezést is támogatja, ami alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a meta Networks-összekötőben, a rendszer létrehoz egy újat, amikor megpróbál hozzáférni a meta Networks-összekötőhöz.
 
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Meta hálózatokhoz csatlakozó ügyfél-támogatási csapatának](mailto:support@metanetworks.com).
+>Ha manuálisan kell létrehoznia egy felhasználót, forduljon a [meta Networks Connector ügyfél-támogatási csapatához](mailto:support@metanetworks.com).
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Meta hálózatok összekötő csempére kattint, akkor kell automatikusan megtörténik a az Adattisztítás hálózatok összekötőre, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a meta Networks Connector csempére kattint, automatikusan be kell jelentkeznie a meta Networks-Összekötőbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -280,5 +280,5 @@ Ha a hozzáférési panelen a Meta hálózatok összekötő csempére kattint, a
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
