@@ -422,7 +422,7 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
     | Támogatott forrásoldali adattár típusa                             | Támogatott forrás-hitelesítési típus                        |
     | :----------------------------------------------------------- | :---------------------------------------------------------- |
     | [Azure Blob](connector-azure-blob-storage.md)                | Fiók kulcsának hitelesítése, felügyelt identitások hitelesítése |
-    | [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md) | Egyszerű szolgáltatásnév hitelesítése                            |
+    | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | Egyszerű szolgáltatásnév hitelesítése                            |
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Fiók kulcsának hitelesítése, felügyelt identitások hitelesítése |
 
     >[!IMPORTANT]
