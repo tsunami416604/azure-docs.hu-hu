@@ -178,12 +178,12 @@ Az adatok másolása a mongodb-hez, amikor a következő hozzárendeléseket has
 |:--- |:--- |
 | Binary |Byte[] |
 | Boolean |Boolean |
-| Dátum |DateTime |
+| Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |String |
-| Karakterlánc |String |
+| String |String |
 | UUID |Guid |
 | Object |Renormalized be simítja egybe az oszlopok, "_" beágyazott elválasztóként |
 
