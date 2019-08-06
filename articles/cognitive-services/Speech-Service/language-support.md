@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 031367a8a05defad475ae077f9b38b7294837460
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ac3cb1d637eae1b4ee0a7db59efe631c7eb1ac6f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559395"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815258"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Nyelvi és területi támogatás a Speech Serviceshez
 
@@ -31,12 +31,12 @@ A Microsoft Speech Recognition SDK és a REST API egyaránt a következő nyelve
  ar – példa | Arab (Egyiptom), a modern standard | Nem | Igen | Nem
  CA-ES | katalán | Nem | Nem | Nem
  da-DK | dán (Dánia) | Nem | Nem | Nem
- de-DE | német (Németország) | Igen | Igen | Nem
- en-Ausztrália | angol (Ausztrália) | Nem | Igen | Igen
- en-hitelesítésszolgáltató | angol (Kanada) | Nem | Igen | Igen
- en-GB | angol (Egyesült Királyság) | Nem | Igen | Igen
- en-IN | Angol (India) | Igen | Igen | Igen
- en-NZ | angol (Új-Zéland) | Nem | Igen | Igen  
+ de-DE | német (Németország) | Igen | Igen | Igen
+ en-Ausztrália | angol (Ausztrália) | Nem | Igen | Nem
+ en-hitelesítésszolgáltató | angol (Kanada) | Nem | Igen | Nem
+ en-GB | angol (Egyesült Királyság) | Nem | Igen | Nem
+ en-IN | Angol (India) | Igen | Igen | Nem
+ en-NZ | angol (Új-Zéland) | Nem | Igen | Nem 
  en-US | angol (Egyesült Államok) | Igen | Igen | Igen
  es-ES | spanyol (spanyolországi) | Igen | Igen | Nem
  es-MX | spanyol (Mexikó) | Nem | Igen | Nem
