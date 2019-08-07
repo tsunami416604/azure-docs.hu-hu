@@ -1,5 +1,5 @@
 ---
-title: Azure Backup – offline biztonsági mentés vagy kezdeti előkészítés az Azure import/export szolgáltatás használatával
+title: Offline biztonsági mentési előkészítés a Azure Backup import/export szolgáltatás használatával
 description: Ismerje meg, hogy a Azure Backup lehetővé teszi, hogy az Azure import/export szolgáltatással a hálózatról küldjön adatküldést. Ez a cikk ismerteti a kezdeti biztonsági mentési információknak az Azure import export szolgáltatással történő offline előkészítését.
 ms.reviewer: saurse
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: dacurwin
-ms.openlocfilehash: 2c628b94879e54616f294e4c5f349f241fbbb98b
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: a59cff3b2edc4d5b94cc0a44472665c95652f868
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689479"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736674"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Offline biztonsági mentési munkafolyamat az Azure Backupban
 A Azure Backup számos beépített hatékonyságot biztosít, amelyek a hálózati és tárolási költségeket az Azure-ba irányuló összes adat kezdeti teljes biztonsági mentése során megtakarítják. A kezdeti teljes biztonsági mentések általában nagy mennyiségű adat átvitelét igénylik, és nagyobb hálózati sávszélességet igényelnek, ha az azokat követő biztonsági mentések során csak a különbözeteket/növekményeket továbbítják. Az offline előkészítési folyamat során a Azure Backup lemezek használatával töltheti fel az offline biztonsági mentési adatok az Azure-ba.

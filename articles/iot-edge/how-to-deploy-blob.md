@@ -9,12 +9,12 @@ ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: 4511510dec6f488e1a6ea9a6842b771d2a298fec
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 86040020c8f9163a327b2029008e3648723b14ec
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640675"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839686"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Az Azure Blob Storage üzembe helyezése IoT Edge modulon az eszközön
 
@@ -168,7 +168,7 @@ Az Azure IoT Edge segítségével peremhálózati megoldásokat fejleszthet a Vi
 
 1. Nyissa meg *deployment.template.json* az új megoldás munkaterületet, és a Keresés a **modulok** szakaszban. Végezze el a következő konfigurációs módosításokat:
 
-   1. Törölje a **tempSensor** modult, mert a nem ehhez a telepítéshez szükséges.
+   1. Törölje a **SimulatedTemperatureSensor** modult, mivel ez nem szükséges ehhez a központi telepítéshez.
 
    1. Másolja és illessze be a következő kódot a `createOptions` mezőbe:
 

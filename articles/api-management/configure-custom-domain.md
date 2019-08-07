@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 08/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 9eb03be5cd9704c3b124bfb16fd30c5c3466890d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b3513ab2583939943ff188b582f57f49530e5ded
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326143"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736260"
 ---
 # <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév konfigurálása
 
@@ -40,17 +40,19 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Egyéni tartománynév beállítása a Azure Portal használatával
 
 1. Navigáljon a API Management-példányhoz a [Azure Portal](https://portal.azure.com/).
-1. Válassza **az egyéni tartományok és az SSL**lehetőséget.
+1. Válassza az **Egyéni tartományok**lehetőséget.
 
     Több végpont is van, amelyekhez egyéni tartománynevet rendelhet hozzá. Jelenleg a következő végpontok érhetők el:
 
-    - **Proxy** (az alapértelmezett érték `<apim-service-name>.azure-api.net`:),
+    - **Átjáró** (az alapértelmezett érték `<apim-service-name>.azure-api.net`:),
     - **Portál** (az alapértelmezett érték `<apim-service-name>.portal.azure-api.net`:),
     - **Felügyelet** (az alapértelmezett érték `<apim-service-name>.management.azure-api.net`:),
     - **SCM** (az alapértelmezett érték `<apim-service-name>.scm.azure-api.net`:).
 
     > [!NOTE]
-    > Frissítheti az összes végpontot vagy azok némelyikét. Általában az ügyfelek frissítési **proxyja** (ez az URL-cím a API Management) és a portálon  (a fejlesztői portál URL-címe) keresztül elérhető API meghívására szolgál. A **felügyeleti** és az **SCM** -végpontokat csak a API Management példány tulajdonosai használják, így ritkábban rendelnek hozzá egyéni tartománynevet. A legtöbb esetben csak egyetlen Egyéni tartománynév állítható be egy adott végponthoz. A **prémium** szint azonban támogatja több állomásnév beállítását a **proxy** végpont számára.
+    > A felhasználási szinten csak a rendelkezésre álló **átjáró** -végpont használható a konfigurációhoz.
+    > Frissítheti az összes végpontot vagy azok némelyikét. Általában az ügyfelek Update **Gateway** (ez az URL-cím a API Management) és a portálon ( a fejlesztői portál URL-címe) elérhetővé tett API meghívására szolgál.
+    > A **felügyeleti** és az **SCM** -végpontokat csak a API Management példány tulajdonosai használják, így ritkábban rendelnek hozzá egyéni tartománynevet. A **prémium** szint támogatja több állomásnév beállítását az **átjáró** végpontja számára.
 
 1. Válassza ki a frissíteni kívánt végpontot.
 1. A jobb oldali ablakban kattintson az **Egyéni**elemre.

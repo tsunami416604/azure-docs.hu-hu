@@ -1,6 +1,6 @@
 ---
-title: Az Azure multi-factor Authentication – gyakori kérdések – az Azure Active Directory
-description: Gyakori kérdések és válaszok az Azure multi-factor Authentication kapcsolatos.
+title: Azure multi-Factor Authentication – gyakori kérdések – Azure Active Directory
+description: Az Azure multi-Factor Authentication szolgáltatással kapcsolatos gyakori kérdések és válaszok.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,217 +11,215 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3517f90d97a19740f5be8c2a755532d305522d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46abe367c9047616174a1e43dffd57861e6278e8
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65228172"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68811836"
 ---
-# <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication – gyakran ismételt kérdések
+# <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Gyakori kérdések az Azure multi-Factor Authenticationről
 
-Ez a GYIK az Azure multi-factor Authentication és a multi-factor Authentication szolgáltatás használatával kapcsolatos gyakori kérdésekre ad választ. Azt bontani a szolgáltatással kapcsolatos kérdéseit általában számlázási modellek, felhasználói élményt, és a hibaelhárítás.
+Ez a gyakori kérdések az Azure multi-Factor Authentication és a multi-Factor Authentication szolgáltatás használatával kapcsolatos gyakori kérdésekre adnak választ. A szolgáltatással kapcsolatos kérdésekre általánosságban, számlázási modellekkel, felhasználói élményekkel és hibaelhárítással foglalkozunk.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
-**K: Hogyan kezeli az Azure multi-factor Authentication kiszolgáló felhasználói adatok?**
+**K: Hogyan kezeli az Azure multi-Factor Authentication-kiszolgáló a felhasználói adatkezelést?**
 
-A multi-factor Authentication kiszolgáló felhasználói adatok csak a helyszíni kiszolgálókon tárolt. A felhőben nincsenek állandó felhasználói adatok. Amikor a felhasználó kétlépéses ellenőrzést végez, a multi-factor Authentication kiszolgáló adatokat küld az Azure multi-factor Authentication hitelesítés felhőalapú szolgáltatás. Multi-factor Authentication-kiszolgáló és a felhőbeli multi-factor Authentication szolgáltatás közötti kommunikációhoz használ Secure Sockets Layer (SSL) vagy Transport Layer Security (TLS) 443-as kimenő porton keresztül.
+A multi-Factor Authentication kiszolgáló esetében a felhasználói adatszolgáltatások tárolása csak a helyszíni kiszolgálókon történik. A felhőben nincsenek állandó felhasználói adatok. Ha a felhasználó kétlépéses ellenőrzést hajt végre, a multi-Factor Authentication kiszolgáló adatokat küld az Azure multi-Factor Authentication Cloud Service-be a hitelesítéshez. A multi-Factor Authentication kiszolgáló és a multi-Factor Authentication felhőalapú szolgáltatás közötti kommunikáció a 443-as porton keresztül SSL (SSL) vagy Transport Layer Security (TLS) protokollt használ.
 
-Ha hitelesítési kérések érkeznek a felhőszolgáltatáshoz adatgyűjtés a hitelesítéshez és a használati jelentések. A kétlépéses ellenőrzés naplókban szereplő adatmezőket a következők:
+Ha hitelesítési kérelmeket küld a Cloud Service-nek, a rendszer adatokat gyűjt a hitelesítési és használati jelentésekhez. A kétlépéses ellenőrzési naplókban szereplő adatmezők a következők:
 
-* **Egyedi azonosító** (vagy felhasználó neve vagy a helyszíni multi-factor Authentication hitelesítési kiszolgáló azonosítója)
-* **Első és utolsó neve** (nem kötelező)
-* **E-mail-cím** (nem kötelező)
-* **Telefonszám** (használatakor hanghívások vagy SMS-hitelesítés)
-* **Eszköztoken** (mobilalkalmazás-hitelesítés használatakor)
+* **Egyedi azonosító** (vagy Felhasználónév vagy helyszíni multi-Factor Authentication-kiszolgáló azonosítója)
+* Keresztnév **és vezetéknév** választható
+* **E-mail-cím** választható
+* **Telefonszám** (hanghívás vagy SMS-hitelesítés használatakor)
+* **Eszköz** jogkivonata (a Mobile App Authentication használatakor)
 * **Hitelesítési mód**
-* **Hitelesítés eredménye**
-* **Multi-factor Authentication-kiszolgáló neve**
-* **A multi-factor Authentication-kiszolgáló IP**
-* **Ügyfél IP** (ha elérhető)
+* **Hitelesítési eredmény**
+* **Multi-Factor Authentication kiszolgáló neve**
+* **Multi-Factor Authentication kiszolgáló IP-címe**
+* **Ügyfél IP-címe** (ha elérhető)
 
-Az opcionális mezők értékét a multi-factor Authentication-kiszolgálón konfigurálható.
+A nem kötelező mezők konfigurálhatók a multi-Factor Authentication kiszolgálón.
 
-Az ellenőrzési eredményeket (sikeres vagy elutasítási), és az a megtagadva, ha tárolja a hitelesítési adatokkal. A hitelesítés és a használati jelentésekben érhetők el az adatok.
+Az ellenőrzés eredményét (sikeres vagy elutasítás) és a Megtagadás okát a hitelesítő adatként tárolja a rendszer. Ezek az adatok a hitelesítési és használati jelentésekben érhetők el.
 
-**K: Milyen SMS rövid kódokat használnak a SMS-üzenetek küldését a felhasználók?**
+**K: Milyen SMS rövid kódokat használ SMS-üzenetek küldésére a felhasználóknak?**
 
-Az Egyesült Államok Microsoft használja a következő rövid SMS-kódok:
+A Egyesült Államok Microsoft a következő SMS-kódokat használja:
 
    * 97671
    * 69829
    * 51789
    * 99399
 
-A kanadai Microsoft használja a következő rövid SMS-kódok:
+A kanadai Microsoft a következő SMS-kódokat használja:
 
    * 759731 
    * 673801
 
-A Microsoft nem garantálja konzisztens SMS-ben vagy a multi-factor Authentication Voice-alapú Rákérdezés az azonos számát. Léptethetünk, hogy a felhasználók Microsoft adhatók hozzá, vagy rövid kód azt módosításokat útvonal SMS mailek kézbesítési eredményességét javítása érdekében bármikor eltávolíthatja. A Microsoft nem támogatja a rövid kód országok és régiók mellett az Egyesült Államok és Kanada.
+A Microsoft nem garantálja a konzisztens SMS-vagy hangalapú multi-Factor Authentication-kérések kézbesítését ugyanazzal a számmal. A felhasználók érdekében a Microsoft bármikor hozzáadhat vagy eltávolíthat rövid kódokat, ahogyan az útvonal-kiigazításokat az SMS-kézbesítés javítása érdekében. A Microsoft nem támogatja a rövid kódokat a Egyesült Államok és Kanadában kívüli országok/régiók számára.
 
 ## <a name="billing"></a>Számlázás
 
-A legtöbb számlázási kérdésekhez választ vagy hivatkozással a [multi-factor Authentication díjszabása oldalon](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) vagy ismertető dokumentációban [beszerzése az Azure multi-factor Authentication](concept-mfa-licensing.md).
+A legtöbb számlázási kérdés megválaszolható a [multi-Factor Authentication díjszabási lapjára](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) vagy az [Azure multi-Factor Authentication](concept-mfa-licensing.md)beszerzésére vonatkozó dokumentációra hivatkozva.
 
-**K: Saját szervezet kell fizetnie a telefonhívások és a hitelesítéshez használt szöveges üzenetek küldéséhez?**
+**K: Felszámítanak a szervezetem a hitelesítéshez használt telefonhívások és SMS-üzenetek küldésére?**
 
-Nem, akkor is nem számítunk fel díjat azokért a telefonhívásokért és SMS üzeneteket küldeni a felhasználók Azure multi-factor Authentication szolgáltatás révén. Ha a hitelesítésenkénti MFA-szolgáltatót használ, minden hitelesítést, de a használt módszer a nem számítunk fel.
+Nem, nem számítunk fel díjat a felhasználóknak az Azure multi-Factor Authentication szolgáltatáson keresztül elküldött telefonhívásokra vagy szöveges üzenetekre. Ha hitelesítési MFA-szolgáltatót használ, akkor minden egyes hitelesítés után a használt módszerhez nem kell fizetnie.
 
-A felhasználók a telefonhívások és SMS-EK kapnak, a saját telefonja szolgáltatás megfelelően előfordulhat, hogy kell fizetnie.
+A felhasználók a személyes telefonos szolgáltatásuk alapján felmerülhetnek a telefonhívások vagy a kapott szöveges üzenetekért.
 
-**K: Nem a felhasználónkénti számlázási modell díja szerint számítjuk fel nekem az összes engedélyezett felhasználók, vagy csak azokat a kétlépéses ellenőrzés végrehajtott?**
+**K: Díjköteles a felhasználónkénti számlázási modell az összes engedélyezett felhasználónál, vagy csak a kétlépéses ellenőrzést végzők?**
 
-A multi-factor Authentication szolgáltatás használata, függetlenül attól, hogy mindenképpen végre kell hajtani a kétlépéses ellenőrzés, hogy a hónap konfigurált felhasználók száma alapján számoljuk.
+A számlázás a többtényezős hitelesítés használatára konfigurált felhasználók számától függ, függetlenül attól, hogy az adott hónapban kétlépéses ellenőrzést hajtottak végre.
 
-**K: Hogyan működik a multi-factor Authentication szolgáltatás számlázása?**
+**K: Hogyan működik a multi-Factor Authentication számlázása?**
 
-Amikor létrehoz egy felhasználónkénti vagy hitelesítésenkénti MFA-szolgáltató, a szervezet Azure-előfizetés elszámolási havi használat alapján. Ez a számlázási modell hasonlít az Azure virtual machines és websites használatát számlák tartoznak.
+Felhasználónkénti vagy hitelesítési MFA-szolgáltató létrehozásakor a szervezet Azure-előfizetését havi használat alapján számítjuk fel. Ez a számlázási modell hasonló ahhoz, ahogyan az Azure számláz a virtuális gépek és webhelyek használatára vonatkozóan.
 
-Az Azure multi-factor Authentication megvásárolt egy előfizetést, a szervezet csak azért fizet az éves licencdíját, minden felhasználóhoz. MFA-licencek és Office 365, az Azure AD Premium vagy Enterprise Mobility + Security csomagok számlázása az ezzel a módszerrel. 
+Ha előfizetést vásárol az Azure multi-Factor Authentication szolgáltatáshoz, a szervezet csak az egyes felhasználókra vonatkozó éves licenc díját fizeti. Az MFA-licencek és az Office 365-, prémium szintű Azure AD-vagy Enterprise Mobility + Security-csomagok számlázása így történik. 
 
-További információ a lehetőségekről [beszerzése az Azure multi-factor Authentication](concept-mfa-licensing.md).
+További információ az [Azure multi-Factor Authentication](concept-mfa-licensing.md)beszerzésének lehetőségeiről.
 
-**K: Van olyan díjmentes verziója, az Azure multi-factor Authentication?**
-
-Bizonyos esetekben igen.
-
-A rendszergazdák az Azure multi-factor Authentication a Microsoft online szolgáltatásaihoz, beleértve a hozzáférési költségek nélkül az Azure MFA-funkciók egy részét biztosítja a [az Azure portal](https://portal.azure.com) és [Microsoft 365 felügyeleti központban](https://admin.microsoft.com). Ez az ajánlat csak a globális rendszergazdák az Azure Active Directory-példányok, amelyek nem rendelkeznek Azure MFA teljes verzióját az MFA-licencek, a csomag egyik gyermekszoftver vagy egy önálló fogyasztásalapú szolgáltató vonatkozik. Ha a rendszergazdák az ingyenes verzióját használja, és ezután vásárol egy Azure MFA teljes verzióját, majd minden globális rendszergazda emelt szintű a fizetős verzióra automatikusan.
-
-Office 365-felhasználók a multi-factor Authentication ingyenes Office 365-szolgáltatásokhoz, ideértve az Exchange online-hoz és a SharePoint online-hoz való hozzáféréshez az Azure MFA-funkciók egy részét biztosítja. Ez az ajánlat vonatkozik, amikor az Azure Active Directory megfelelő példánya nem rendelkezik Azure MFA teljes verzióját az MFA-licencek, a csomag egyik gyermekszoftver vagy egy önálló fogyasztásalapú szolgáltató hozzárendelt Office 365-licenccel rendelkező felhasználók számára.
-
-**K: Saját szervezet felhasználónkénti és hitelesítésenkénti használatalapú számlázási modellek között bármikor válthat?**
-
-Ha a szervezet megvásárolja az MFA a fogyasztás alapú számlázáshoz önálló szolgáltatásként, a számlázási modellt választja MFA-szolgáltató létrehozásakor. MFA-szolgáltató létrehozása után a számlázási modell nem módosítható. Azonban törölheti az MFA szolgáltatót, és majd létrehozhat egy újat egy eltérő számlázási modellt.
-
-MFA-szolgáltató jön létre, amikor azt lehet kapcsolódni az Azure Active Directory vagy az "Azure AD-bérlővel." Ha az aktuális MFA-szolgáltató Azure AD-bérlő van csatolva, biztonságosan törölheti az MFA szolgáltatót és hozzon létre egyet, amely kapcsolódik az Azure AD-bérlőhöz. Másik lehetőségként, ha elegendő MFA, prémium szintű Azure AD vagy Enterprise Mobility + Security (EMS) licencet vásárolt az összes olyan felhasználó lefedésére, akiknél az MFA engedélyezett, akkor teljes egészében törölheti az MFA szolgáltatót.
-
-Ha az MFA szolgáltató *nem* csatolva az Azure AD-bérlővel, vagy az új MFA szolgáltatót kapcsol egy másik Azure ad bérlői, felhasználói beállításokat és konfigurációs lehetőségeket vannak nem viszi át. Emellett a meglévő Azure MFA-kiszolgálókat újra aktiválni kell az új MFA szolgáltatón keresztül létrehozott aktiváló hitelesítők adatokkal. Az MFA-kiszolgálók az új MFA szolgáltatóhoz történő kapcsolás céljából történő újbóli aktiválása nincs hatással a telefonhívásban vagy szöveges üzenetben történő hitelesítésekre, a mobilalkalmazás-értesítések viszont minden felhasználó számára megszűnnek működni a mobilalkalmazás újbóli aktiválásáig.
-
-További információ az MFA-szolgáltatók [Ismerkedés az Azure multi-factor Auth szolgáltatót](concept-mfa-authprovider.md).
-
-**K: Saját szervezet válthat fogyasztásalapú számlázás és előfizetés (licenc-alapú modell) között bármikor?**
+**K: Létezik az Azure multi-Factor Authentication ingyenes verziója?**
 
 Bizonyos esetekben igen.
 
-Ha a címtár egy *felhasználónkénti* Azure multi-factor Authentication-szolgáltatót, az MFA-licencek is hozzáadhat. Licenccel rendelkező felhasználók nem számít az a felhasználónkénti fogyasztás alapú számlázáshoz. Licenccel nem rendelkező felhasználók továbbra is engedélyezhető a multi-factor Authentication az MFA szolgáltatón keresztül. Ha vásárol, és licencek hozzárendelése a multi-factor Authentication használatára konfigurálva minden felhasználó számára, törölheti az Azure multi-factor Authentication-szolgáltatót. Ha több felhasználó licencek a későbbiekben bármikor létrehozhat egy másik felhasználónkénti MFA-szolgáltató.
+Az Azure-rendszergazdák többtényezős hitelesítése az Azure MFA szolgáltatásainak egy részhalmazát kínálja díjmentesen a Microsoft online szolgáltatásokhoz való hozzáféréshez, beleértve a [Azure Portal](https://portal.azure.com) és a [Microsoft 365 felügyeleti](https://admin.microsoft.com)központot. Ez az ajánlat csak olyan Azure Active Directory-példányokban lévő globális rendszergazdákra vonatkozik, amelyek nem rendelkeznek az Azure MFA teljes verziójával egy MFA-licenccel, egy kötegtel vagy egy önálló fogyasztáson alapuló szolgáltatóval. Ha a rendszergazdák az ingyenes verziót használják, és az Azure MFA teljes verzióját vásárolja meg, akkor az összes globális rendszergazda automatikusan megemelt a fizetős verzióra.
 
-Ha a címtár egy *hitelesítésenkénti* Azure multi-factor Authentication-szolgáltatót, mindig számlázzuk ki minden hitelesítés mindaddig, amíg az MFA-szolgáltató az előfizetéshez van csatolva. MFA-licencek hozzárendelése felhasználókhoz, de továbbra is kell fizetnie minden kétlépéses ellenőrzési kérelmet, a hozzárendelt-e többtényezős hitelesítés licenccel rendelkező személytől származik-e.
+Az Office 365-felhasználók többtényezős hitelesítése az Azure MFA szolgáltatásainak egy részhalmazát kínálja díjmentesen az Office 365-szolgáltatásokhoz, például az Exchange Online-hoz és a SharePoint Online-hoz való hozzáféréshez. Ez az ajánlat azokra a felhasználókra vonatkozik, akiknek van hozzárendelve Office 365-licence, ha a Azure Active Directory megfelelő példánya nem rendelkezik az Azure MFA teljes verziójával egy MFA-licenccel, egy kötegtel vagy egy önálló fogyasztáson alapuló szolgáltatóval.
 
-**K: Rendelkezik a saját szervezet használja, és az Azure multi-factor Authentication használata az identitások szinkronizálásával?**
+**K: A szervezetem bármikor válthat a felhasználónkénti és a felhasználónkénti számlázási modellek között?**
 
-Ha a szervezet egy fogyasztásalapú számlázási modellt használja, az Azure Active Directory, nem kötelező, de nem szükséges. Ha az MFA-szolgáltató nem kapcsolódik az Azure AD-bérlővel, helyszíni Azure multi-factor Authentication-kiszolgáló csak is telepítheti.
+Ha a szervezete az MFA-t önálló szolgáltatásként vásárolja meg a fogyasztáson alapuló számlázást, akkor az MFA-szolgáltató létrehozásakor kiválaszthat egy számlázási modellt. Az MFA-szolgáltató létrehozása után nem módosítható a számlázási modell. 
 
-Az Azure Active Directory szükség a licencelési modell, mert licenceket hozzáadni az Azure AD-bérlőhöz, amikor beszerzési, és hozzárendelheti azokat a címtárban lévő felhasználó.
+Ha az MFA-szolgáltató nincs Azure ad-bérlőhöz csatolva, vagy az új MFA-szolgáltatót egy másik Azure ad-bérlőhöz kapcsolja, a felhasználói beállítások és a konfigurációs beállítások nem lesznek átadva. Emellett a meglévő Azure MFA-kiszolgálókat újra aktiválni kell az új MFA szolgáltatón keresztül létrehozott aktiváló hitelesítők adatokkal. Az MFA-kiszolgálók az új MFA szolgáltatóhoz történő kapcsolás céljából történő újbóli aktiválása nincs hatással a telefonhívásban vagy szöveges üzenetben történő hitelesítésekre, a mobilalkalmazás-értesítések viszont minden felhasználó számára megszűnnek működni a mobilalkalmazás újbóli aktiválásáig.
 
-## <a name="manage-and-support-user-accounts"></a>Kezelheti, és támogatja a felhasználói fiókok
+További információ az MFA-szolgáltatókról az [Azure multi-Factor Auth-szolgáltató első lépéseiben](concept-mfa-authprovider.md).
 
-**K: Mit kell tudom, hogy a felhasználók a teendő, ha azok nem kap választ telefonjukra?**
+**K: Válthatok-e a szervezetem a fogyasztáson alapuló számlázási és előfizetések (a licenc alapú modell) között bármikor?**
 
-A felhasználók számára, akár próbálja meg beolvasni a telefonhívást vagy SMS-hitelesítéshez 5 percen belül 5-ször rendelkezik. A Microsoft több szolgáltató hívások és az SMS-eket használ. Ha ez sem működik egy támogatási esetet kell nyitnia a Microsoft a további hibaelhárításhoz.
+Bizonyos esetekben igen.
 
-Ha a fenti lépések nem működnek remélhetőleg minden felhasználó konfigurálva egynél több ellenőrzési módszert. Tanácsolja nekik, hogy próbáljanak újra bejelentkeznie, ezúttal azonban válasszanak egy másik ellenőrzési módszert a bejelentkezési oldalon.
+Ha a címtár *felhasználónkénti* Azure multi-Factor Authentication-szolgáltatóval rendelkezik, MFA-licenceket adhat hozzá. A licenccel rendelkező felhasználókat nem számítjuk fel a felhasználónkénti fogyasztási számlázás. A licenccel nem rendelkező felhasználók továbbra is engedélyezhetők az MFA-szolgáltatón keresztül. Ha a többtényezős hitelesítés használatára konfigurált összes felhasználóhoz vásárol és rendel hozzá licenceket, törölheti az Azure multi-Factor Authentication-szolgáltatót. Ha a jövőben több felhasználóval rendelkezik, akkor mindig létrehozhat egy másik felhasználónkénti MFA-szolgáltatót.
 
-A felhasználók mutathat a [végfelhasználói – hibaelhárítási útmutató](../user-help/multi-factor-authentication-end-user-troubleshoot.md).
+Ha a címtárban egy *hitelesítéssel* ellátható Azure multi-Factor Authentication-szolgáltató van, akkor minden egyes hitelesítés esetében mindig számlázást kell fizetni, feltéve, hogy az MFA-szolgáltató az előfizetéshez van társítva. Az MFA-licenceket hozzárendelheti a felhasználókhoz, de minden kétlépéses ellenőrzési kérelem esetében továbbra is díjat számítunk fel, függetlenül attól, hogy a hozzárendelt MFA-licenccel rendelkező valakitől származik-e.
 
-**K: Mit tegyek, ha az egyik nem kérhető le fiókjához?**
+**K: Az Azure multi-Factor Authentication használatához a szervezetnek identitásokat kell használnia és szinkronizálnia?**
 
-Visszaállíthatja a felhasználói fiók azáltal, hogy azokat újra haladhat végig a regisztrációs folyamatot. Tudjon meg többet [kezelése az Azure multi-factor Authentication a felhőben a felhasználói és eszközbeállítások](howto-mfa-userdevicesettings.md).
+Ha a szervezet egy fogyasztáson alapuló számlázási modellt használ, Azure Active Directory megadása nem kötelező, de nem kötelező. Ha az MFA-szolgáltató nincs Azure AD-bérlőhöz társítva, akkor csak az Azure multi-Factor Authentication-kiszolgálót telepítheti a helyszínen.
 
-**K: Mit tegyek, ha egy felhasználó elveszíti által használt alkalmazásjelszók telefonon?**
+Azure Active Directory szükséges a licencelési modellhez, mert a licenceket az Azure AD-bérlőhöz adja hozzá, amikor megvásárolja és hozzárendeli a címtárban lévő felhasználókhoz.
 
-Jogosulatlan hozzáférés elkerülése érdekében törölje a felhasználó alkalmazásjelszókat. Miután a felhasználó rendelkezik őket, azokat újra létrehozhatja a jelszavakat. Tudjon meg többet [kezelése az Azure multi-factor Authentication a felhőben a felhasználói és eszközbeállítások](howto-mfa-userdevicesettings.md).
+## <a name="manage-and-support-user-accounts"></a>Felhasználói fiókok kezelése és támogatása
 
-**K: Mi történik, ha a felhasználó nem tud bejelentkezni a böngészőn kívüli alkalmazásokat?**
+**K: Mit kell mondanom a felhasználóknak, ha nem kapnak választ a telefonjára?**
 
-Ha a szervezet továbbra is használja a hagyományos, és [az alkalmazásjelszavak használata engedélyezett](howto-mfa-mfasettings.md#app-passwords), akkor a felhasználók nem jelentkezhet be a régebbi ügyfelek a felhasználónevüket és jelszavukat. Ehelyett szükségük [alkalmazásjelszavak beállítása](../user-help/multi-factor-authentication-end-user-app-passwords.md). A felhasználók kell törlése (delete) a bejelentkezési adatait, indítsa újra az alkalmazást, és jelentkezzen be a felhasználóneve és *alkalmazásjelszót* rendszeres jelszó helyett.
+A felhasználók 5 percen belül 5 alkalommal próbálnak meg telefonhívást vagy SMS-t kérni a hitelesítéshez. A Microsoft több szolgáltatót használ a hívások és SMS-üzenetek kézbesítéséhez. Ha ez nem működik, nyisson meg egy támogatási esetet a Microsofttal a további hibák megoldásához.
 
-Ha a szervezet nem rendelkezik a hagyományos, nem kell engedélyezné a felhasználóknak alkalmazásjelszavakat.
+Ha a fenti lépések nem működnek, remélhetőleg az összes felhasználó több ellenőrzési módszert konfigurált. Tanácsolja nekik, hogy próbáljanak újra bejelentkeznie, ezúttal azonban válasszanak egy másik ellenőrzési módszert a bejelentkezési oldalon.
+
+A felhasználókat a végfelhasználói hibaelhárítási [útmutatóhoz](../user-help/multi-factor-authentication-end-user-troubleshoot.md)irányíthatja.
+
+**K: Mi a teendő, ha az egyik felhasználó nem tud bejutni a fiókjába?**
+
+A felhasználó fiókját alaphelyzetbe állíthatja, ha újra el szeretné indítani a regisztrációs folyamatot. További információ a [felhasználók és eszközök beállításainak a Felhőbeli Azure multi-Factor Authentication szolgáltatással](howto-mfa-userdevicesettings.md)történő kezeléséről.
+
+**K: Mi a teendő, ha az egyik felhasználó elveszti az alkalmazás jelszavait használó telefont?**
+
+A jogosulatlan hozzáférés megakadályozása érdekében törölje az összes felhasználó alkalmazásának jelszavát. Miután a felhasználó rendelkezik egy helyettesítő eszközzel, újra létrehozhatja a jelszavakat. További információ a [felhasználók és eszközök beállításainak a Felhőbeli Azure multi-Factor Authentication szolgáltatással](howto-mfa-userdevicesettings.md)történő kezeléséről.
+
+**K: Mi a teendő, ha a felhasználó nem tud bejelentkezni a böngészőn kívüli alkalmazásokba?**
+
+Ha a szervezet továbbra is örökölt ügyfeleket használ, és [engedélyezte az alkalmazások jelszavainak használatát](howto-mfa-mfasettings.md#app-passwords), a felhasználók nem jelentkezhetnek be az örökölt ügyfelek felhasználónevével és jelszavával. Ehelyett az [alkalmazás jelszavait](../user-help/multi-factor-authentication-end-user-app-passwords.md)kell beállítania. A felhasználóknak törölnie kell a bejelentkezési adataikat, újra kell indítaniuk az alkalmazást, majd be kell jelentkezniük a felhasználónevével és az *alkalmazás jelszavával* a normál jelszó helyett.
+
+Ha a szervezet nem rendelkezik örökölt ügyfelekkel, ne engedélyezze a felhasználóknak az alkalmazás jelszavának létrehozását.
 
 > [!NOTE]
-> Az ügyfelek az Office 2013 modern hitelesítés
+> Modern hitelesítés az Office 2013-ügyfelek számára
 >
-> Alkalmazásjelszók csak azért szükséges, modern hitelesítést nem támogató alkalmazások esetében. Office 2013-ügyfelek támogatásához modern hitelesítési protokollok, de konfigurálni kell. Most már modern hitelesítést bármely, az Office 2013. március, 2015 vagy újabb frissítést futtató ügyfél számára érhető el. További információkért tekintse meg a következő blogbejegyzésben: [frissített Office 365 modern hitelesítését](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/).
+> Az alkalmazás jelszavai csak a modern hitelesítést nem támogató alkalmazásokhoz szükségesek. Az Office 2013-ügyfelek támogatják a modern hitelesítési protokollokat, de konfigurálni kell őket. A modern hitelesítés mostantól minden olyan ügyfél számára elérhető, amely az Office 2013 2015 márciusi vagy újabb frissítését futtatja. További információkért tekintse meg a [frissített Office 365 modern hitelesítés](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/)című blogbejegyzést.
 
-**K: A felhasználók tegyük fel, hogy nem néha kapnak a szöveges üzenetet, vagy azok válasz kétirányú szöveges üzenet, de az ellenőrzés túllépi az időkorlátot.**
+**K: A felhasználók azt mondják, hogy néha nem kapják meg a szöveges üzenetet, vagy választ adnak a kétirányú szöveges üzenetekre, de a hitelesítés időtúllépést mutat.**
 
-Szöveges üzenetek kézbesítésének és a kétirányú SMS válaszok átvételét nem garantált, mert ellenőrizhetetlen tényező, amelyek hatással lehetnek a szolgáltatás megbízhatóságát. Ezek a tényezők közé tartozik a cél az országban vagy régióban, a mobilszolgáltatók és a jel erőssége.
+A szöveges üzenetek kézbesítése és a válaszok fogadása kétirányú SMS-ben nem garantált, mert olyan nem ellenőrizhető tényezők vannak, amelyek hatással lehetnek a szolgáltatás megbízhatóságára. Ezek a tényezők közé tartoznak a rendeltetés országa/régiója, a mobiltelefon-szolgáltató és a jel erőssége.
 
-Ha a felhasználók gyakran megbízhatóan a szöveges üzenetek fogadása problémáit, mondja el neki, inkább a mobil alkalmazás vagy a telefonhívásos módszer használata. A mobilalkalmazás fogadhat értesítéseket, mind a mobil- és Wi-Fi-kapcsolatok felett. Emellett a mobilalkalmazást hozhat létre ellenőrző kódok kezelésére, akkor is, ha az eszköz rendelkezik egyáltalán nincs jel. A Microsoft Authenticator alkalmazás érhető el az [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [IOS](https://go.microsoft.com/fwlink/?Linkid=825073), és [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071).
+Ha a felhasználók gyakran problémákba ütköznek a szöveges üzenetek megbízható fogadásával, kérje a Mobile App vagy a telefonhívás módszer használatát. A Mobile alkalmazás a mobil-és Wi-Fi-kapcsolatokon keresztül is fogadhat értesítéseket. Emellett a Mobile alkalmazás akkor is létrehozhat ellenőrző kódokat, ha az eszközön nincs jel. Az Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)és [Windows Phone-telefon](https://go.microsoft.com/fwlink/?Linkid=825071)rendszerekhez érhető el.
 
-Ha SMS-eket kell használnia, amikor csak lehetséges kétirányú SMS helyett az egyirányú SMS használatát javasoljuk. Egyirányú SMS megbízhatóbb, és megakadályozza, hogy felhasználói költséggel globális SMS szöveges üzenetben küldött, egy másik országból/régióból megválaszolása.
+Ha szöveges üzeneteket kell használnia, javasoljuk, hogy használjon egyirányú SMS-t, nem pedig kétirányú SMS-t, ha lehetséges. Az egyirányú SMS megbízhatóbb, és megakadályozza, hogy a felhasználók egy másik országból vagy régióból küldött szöveges üzenetre válaszoljanak a globális SMS-ben.
 
-**K: Mennyi ideig kell a felhasználók előtt a rendszer túllépi az időkorlátot adja meg az ellenőrző kódot szöveges üzenetet is módosíthatja?**
+**K: Megváltoztathatom azt az időtartamot, ameddig a felhasználóknak meg kell adniuk az ellenőrző kódot egy szöveges üzenetből a rendszer időtúllépése előtt?**
 
-Néhány esetben igen. 
+Bizonyos esetekben igen. 
 
-Az Azure MFA-kiszolgáló 7.0-s vagy újabb egyirányú SMS a timeout beállítás által beállítás konfigurálása egy beállításkulcsot. Az MFA-felhőszolgáltatásnak a szöveges üzenetet küld, ha az MFA-kiszolgáló visszaküldi az ellenőrző kódot (vagy egyszeri jelszó). Az MFA-kiszolgáló tárolja a kódot a memóriában 300 másodpercig alapértelmezés szerint. Ha a felhasználó nem adja meg a kódot, mielőtt megfeleltek a 300 másodperc, a hitelesítés megtagadva. Az alapértelmezett időtúllépési beállításának módosításához tegye a következőket:
+Az Azure MFA Server 7.0-s vagy újabb verziójával rendelkező egyirányú SMS-ben a beállításkulcs beállításával állíthatja be az időtúllépési beállítást. Miután az MFA Cloud Service elküldi a szöveges üzenetet, a rendszer visszaadja az ellenőrző kódot (vagy egyszer használatos jelszót) az MFA-kiszolgálónak. Az MFA-kiszolgáló alapértelmezés szerint 300 másodpercig tárolja a kódot a memóriában. Ha a felhasználó nem adja meg a kódot a 300 másodperc eltelte előtt, a hitelesítés megtagadva. Az alapértelmezett időtúllépési beállítás módosításához kövesse az alábbi lépéseket:
 
 1. Ugrás a HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor.
-2. Hozzon létre egy DWORD beállításkulcsot nevű **pfsvc_pendingSmsTimeoutSeconds** és állítsa be az idő másodpercben, hogy szeretné-e egyszeri PIN-kódok tárolása az Azure MFA-kiszolgáló.
+2. Hozzon létre egy **pfsvc_pendingSmsTimeoutSeconds** nevű DWORD beállításkulcsot, és állítsa be azt az időpontot másodpercben, ameddig az Azure MFA-kiszolgálónak egyszer használatos PIN-kódot kell tárolnia.
 
 >[!TIP] 
->Ha több MFA-kiszolgálóval rendelkezik, csak az eredeti hitelesítési kérelmet az azokat feldolgozó egy tudja, hogy a felhasználónak küldött ellenőrző kód. Amikor a felhasználó a kódot, a hitelesítési kérelem érvényesítéséhez, ugyanarra a kiszolgálóra kell küldeni. Ha a kódérvényesítést küld egy másik kiszolgálóra, a rendszer megtagadja a hitelesítést. 
+>Ha több MFA-kiszolgálóval rendelkezik, csak az eredeti hitelesítési kérelem feldolgozását végző felhasználó ismeri a felhasználónak továbbított ellenőrző kódot. Ha a felhasználó megadja a kódot, az érvényesítéséhez szükséges hitelesítési kérést ugyanarra a kiszolgálóra kell elküldeni. Ha a kód érvényesítését egy másik kiszolgálóra küldik, a rendszer megtagadja a hitelesítést. 
 
-Kétirányú SMS az Azure MFA-kiszolgálóval beállíthatja az időkorlát az MFA felügyeleti portálon. Ha a felhasználó a megadott időkorláton belül nem válaszol az SMS, a hitelesítés megtagadva. 
+Az Azure MFA-kiszolgálóval való kétirányú SMS-ben beállíthatja az MFA-felügyeleti portál időtúllépési beállítását. Ha a felhasználók nem válaszolnak az SMS-re a megadott időtúllépési időtartamon belül, a hitelesítés megtagadva. 
 
-Az egyirányú SMS az Azure MFA a felhőben (beleértve az AD FS-adapter vagy a hálózati házirend-kiszolgáló kiterjesztéssel) az időkorlát nem konfigurálható. Azure ad-ben tárolja az ellenőrző kód 180 másodperc. 
+Az Azure MFA-t a felhőben (beleértve a AD FS adaptert vagy a hálózati házirend-kiszolgáló bővítményt) egyirányú SMS-ek esetében nem konfigurálhatja az időtúllépési beállítást. Az Azure AD 180 másodpercig tárolja az ellenőrző kódot. 
 
-**K: Használható az Azure multi-factor Authentication-kiszolgáló hardvertokenek?**
+**K: Használhatok hardveres tokeneket az Azure multi-Factor Authentication-kiszolgálóval?**
 
-Ha az Azure multi-factor Authentication-kiszolgálót használ, külső nyílt hitelesítés (OATH) időalapú, egyszer használatos jelszót (TOTP) tokenek importálása, és ezután használhatja őket a kétlépéses ellenőrzéshez.
+Ha Azure multi-Factor Authentication-kiszolgálót használ, akkor importálhat harmadik féltől származó nyílt hitelesítési (eskü) időalapú, egyszer használatos jelszó-(TOTP-) jogkivonatokat, majd a két lépéses ellenőrzéshez használhatja őket.
 
-ActiveIdentity jogkivonatokat OATH TOTP jogkivonatok importálása az Azure multi-factor Authentication-kiszolgáló és helyezze a titkos kulcsot tartalmazó CSV-fájl is használhatja. Az OATH-tokenek használhatja az Active Directory összevonási szolgáltatások (ADFS), az Internet Information Server (IIS) az űrlapalapú hitelesítés és a távoli Authentication Dial-In User Service (RADIUS), mindaddig, amíg az ügyfél rendszer elfogadhatja a felhasználói bevitel.
+Ha a titkos kulcsot egy CSV-fájlban helyezi el, és importálja az Azure multi-Factor Authentication-kiszolgálóra, használhatja az TOTP-tokeneket ActiveIdentity jogkivonatokat. A Active Directory összevonási szolgáltatások (AD FS) (ADFS), az Internet Information Server (IIS) űrlapalapú hitelesítésével és a távoli hitelesítés betárcsázási szolgáltatásával (RADIUS) is használhat eskü-tokeneket, feltéve, hogy az ügyfélrendszer el tudja fogadni a felhasználói adatokat.
 
-Az alábbi formátumok külső OATH TOTP jogkivonatok importálhatja:  
+A harmadik féltől származó eskü TOTP jogkivonatok importálása a következő formátumokkal végezhető el:  
 
-- Szimmetrikus kulcs hordozható tároló (PSKC)  
-- Ha a fájl tartalmaz, sorozatszám, titkos kulcs Base-32 formátumúnak és adott idő alatt CSV  
+- Hordozható szimmetrikus kulcstároló (PSKC)  
+- CSV, ha a fájl sorozatszámot, titkos kulcsot tartalmaz Base 32 formátumban, és egy időintervallumot  
 
-**K: Azure multi-factor Authentication-kiszolgáló segítségével biztonságos távoli asztali szolgáltatásokat?**
+**K: Használhatom az Azure multi-Factor Authentication-kiszolgálót a Terminálszolgáltatások biztonságossá tételéhez?**
 
-Igen, de ha használja a Windows Server 2012 R2 vagy újabb csak gondoskodhat a Terminálszolgáltatások használatával távoli asztali átjáró (RD átjáró).
+Igen, de ha Windows Server 2012 R2 vagy újabb rendszert használ, csak Távoli asztali átjáró (RD-átjáró) használatával biztosíthat biztonságos terminálszolgáltatásokat.
 
-Biztonsági módosítások a Windows Server 2012 R2 módosítani, hogy hogyan Azure multi-factor Authentication-kiszolgáló csatlakozik-e a helyi biztonsági szervezet (LSA) biztonsági csomag a Windows Server 2012 és korábbi verziói. A Terminálszolgáltatások a Windows Server 2012 vagy korábbi verziói esetén is [egy Windows-hitelesítést az alkalmazások biztonságossá tételéhez](howto-mfaserver-windows.md#to-secure-an-application-with-windows-authentication-use-the-following-procedure). A Windows Server 2012 R2 használatakor a távoli asztali átjáróra van szükség.
+A Windows Server 2012 R2 biztonsági módosításai megváltoztak, hogyan kapcsolódik az Azure multi-Factor Authentication-kiszolgáló a helyi biztonsági szervezet (LSA) biztonsági csomagjához a Windows Server 2012 és a korábbi verziókban. A Windows Server 2012-es vagy korábbi verziójú Terminálszolgáltatások esetében a Windows- [hitelesítéssel biztonságossá](howto-mfaserver-windows.md#to-secure-an-application-with-windows-authentication-use-the-following-procedure)teheti az alkalmazásokat. Ha a Windows Server 2012 R2 rendszert használja, RD-átjáróra van szüksége.
 
-**K: Hívóazonosító konfiguráltam az MFA-kiszolgáló, de a felhasználók továbbra is kaphat egy névtelen hívó multi-factor Authentication hívásokat.**
+**K: Konfiguráltam a hívót az MFA-kiszolgálón, de a felhasználók továbbra is megkapják a többtényezős hitelesítési hívásokat egy névtelen hívótól.**
 
-Ha a multi-factor Authentication hívásokat a telefon nyilvános hálózaton keresztül, néha keresztül halad a szolgáltató, amely nem támogatja a hívó azonosítóját. Emiatt hivó azonosítója nem garantált, annak ellenére, hogy a multi-factor Authentication rendszer mindig küld.
+Ha a többtényezős hitelesítési hívásokat a nyilvános telefonvonalon keresztül helyezi át, időnként egy olyan szolgáltatón keresztül irányítják őket, amely nem támogatja a hívó AZONOSÍTÓját. Emiatt a hívó azonosítója nem garantált, még akkor is, ha a multi-Factor Authentication rendszer mindig elküldi azt.
 
-**K: Miért vannak a felhasználók kérni a biztonsági adatok regisztrálása?**
-Több oka, hogy sikerült a rendszer kérni fogja a biztonsági adatok regisztrálása:
+**K: Miért kérik a felhasználókat, hogy regisztrálják a biztonsági adataikat?**
+Számos oka lehet annak, hogy a felhasználóknak meg kell adniuk biztonsági adataik regisztrálását:
 
-- A felhasználó engedélyezve van a multi-factor Authentication a rendszergazda által az Azure ad-ben, de nem rendelkezik még regisztrálva fiókjuk biztonsági adatokkal.
-- A felhasználó önkiszolgáló jelszó-visszaállítás, az Azure ad-ben engedélyezve van. A biztonsági információk segítenek őket a későbbiekben új jelszót kérnek, ha azok bármikor elfelejtené.
-- A felhasználó többtényezős hitelesítés a feltételes hozzáférési szabályzat és korábban még nem regisztrált multi-factor Authentication alkalmazás érhető el.
-- A felhasználó regisztrál egy eszközt az Azure ad-vel (beleértve az Azure AD Join), és a szervezet többtényezős Hitelesítést követel meg az eszközök regisztrációjával kapcsolatos, de a felhasználó nem korábban regisztrálva az MFA-hoz.
-- A felhasználó hoz létre Windows Hello for Business (amely többtényezős Hitelesítést igényel) Windows 10 és a korábban még nem regisztrált az MFA-hoz.
-- A szervezet által létrehozott és a egy MFA regisztrációs szabályzattal, amely a telepítve van a felhasználó engedélyezve van.
-- A felhasználó korábban regisztrálva a többtényezős hitelesítés, de úgy döntött, hogy mivel a rendszergazda letiltotta egy ellenőrzési módszert. A felhasználó ezért haladjon át MFA-regisztráción, újra egy új alapértelmezett ellenőrzési módszert.
+- A felhasználó engedélyezve lett az MFA számára az Azure AD-beli rendszergazdája számára, de még nem rendelkezik a fiókjához regisztrált biztonsági információkkal.
+- A felhasználó az Azure AD-ben engedélyezte az önkiszolgáló jelszó-visszaállítást. A biztonsági információk segítségével a későbbiekben is visszaállíthatja a jelszavát, ha elfelejtik.
+- A felhasználó olyan alkalmazást kapott, amely feltételes hozzáférési házirenddel rendelkezik az MFA megköveteléséhez, és korábban nem regisztrált az MFA-hoz.
+- A felhasználó regisztrálja az eszközt az Azure AD-vel (beleértve az Azure AD Joint is), és a szervezete megköveteli az MFA használatát az eszközök regisztrálásához, de a felhasználó korábban még nem regisztrált az MFA-ra.
+- A felhasználó a Windows Hello for businesst generálja a Windows 10 rendszerben (amely MFA-t igényel), és korábban nem regisztrált az MFA-ra.
+- A szervezet létrehozta és engedélyezte a felhasználóra alkalmazott MFA regisztrációs szabályzatot.
+- A felhasználó korábban már regisztrálta az MFA-t, de olyan ellenőrzési módszert választott, amelyet a rendszergazda letiltott. A felhasználónak ezért újra kell haladnia az MFA-regisztráción, hogy új alapértelmezett ellenőrzési módszert válasszon ki.
 
 ## <a name="errors"></a>Hibák
 
-**K: Mit kell felhasználók? ha azok egy "hitelesítési kérelmet nem egy aktivált fiókhoz" hibaüzenet jelenik meg mobilapp-értesítések használata**
+**K: Mit kell tenniük a felhasználóknak, ha "hitelesítési kérelem nem aktivált fiókhoz" hibaüzenet jelenik meg a Mobile apps értesítéseinek használatakor?**
 
-Tanácsolja nekik, hogy az alábbi eljárás segítségével eltávolíthatja a fiókját a mobilalkalmazásból, majd adja hozzá újra:
+Ezt az eljárást követve távolítsa el a fiókját a Mobile alkalmazásból, majd adja hozzá újra:
 
-1. Lépjen a [az Azure portal profil](https://account.activedirectory.windowsazure.com/profile/) , és jelentkezzen be munkahelyi fiókjával.
-2. Válassza ki **további biztonsági ellenőrzés**.
-3. Távolítsa el a meglévő fiókot a mobilalkalmazásból.
-4. Kattintson a **konfigurálása**, és kövesse az utasításokat követve konfigurálja újra a mobilalkalmazásban.
+1. Lépjen a [Azure Portal profiljához](https://account.activedirectory.windowsazure.com/profile/) , és jelentkezzen be szervezeti fiókjával.
+2. Válassza a **további biztonsági ellenőrzés**lehetőséget.
+3. Távolítsa el a meglévő fiókot a Mobile alkalmazásból.
+4. Kattintson a **Konfigurálás**elemre, majd kövesse az utasításokat a Mobile App újrakonfigurálásához.
 
-**K: Mit kell felhasználók? ha azok egy 0x800434D4L hibaüzenet jelenik meg a böngészőn kívüli alkalmazásokhoz bejelentkezéskor**
+**K: Mi a teendő, ha 0x800434D4L hibaüzenet jelenik meg a nem böngésző alkalmazásba való bejelentkezéskor?**
 
-A 0x800434D4L hiba akkor fordul elő, amikor megpróbál bejelentkezni egy böngészőn kívüli alkalmazásba, a helyi számítógépen, amely nem működik együtt a kétlépéses ellenőrzést igénylő fiókok telepítve.
+A 0x800434D4L hiba akkor fordul elő, ha egy helyi számítógépen telepített, nem böngészős alkalmazásba próbál bejelentkezni, amely nem működik olyan fiókokkal, amelyek kétlépéses ellenőrzést igényelnek.
 
-Megoldás esetében ez a hiba, hogy rendelkezzen külön felhasználói fiókok rendszergazdai kapcsolatos és a nem rendszergazdai műveletek. Később a rendszergazdai fiókot és a nem rendszergazdai fiókban között postaládák kapcsolat, így bejelentkezhet az Outlookot a nem rendszergazdai fiók használatával. Ez a megoldás kapcsolatos további információkért tekintse meg, hogyan [lehetővé teheti a rendszergazda megnyithatja és megtekintheti a felhasználók postaládáihoz tartalmát](https://help.outlook.com/141/gg709759.aspx?sl=1).
+Ennek a hibának a megkerülő megoldás, ha külön felhasználói fiókkal rendelkezik a rendszergazdai és a nem rendszergazdai műveletekhez. Később a rendszergazdai fiók és a nem rendszergazdai fiók között is csatolhat postaládákat, így a nem rendszergazdai fiókkal is bejelentkezhet az Outlookba. A megoldással kapcsolatos további információkért tekintse meg, hogy a [rendszergazda hogyan nyithatja meg és tekintheti meg a felhasználó postaládájának tartalmát](https://help.outlook.com/141/gg709759.aspx?sl=1).
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a kérdését itt nem válaszolt, hagyja a megjegyzések, az oldal alján. Vagy a segítségkéréshez néhány további lehetőség:
+Ha a kérdés itt nem válaszol, kérjük, hagyja meg az oldal alján található megjegyzéseket. Vagy Íme néhány további lehetőség a Súgó beszerzéséhez:
 
-* Keresés a [Microsoft támogatási tudásbázisát](https://www.microsoft.com/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) megoldások gyakori technikai problémákra.
-* Keresse meg és keresse meg a technikai kérdéseket és válaszokat a Közösségtől, vagy kérje meg a saját kérdését a [Azure Active Directory-fórumok](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required).
-* Ha már a régebbi PhoneFactor-ügyfelek és a kérdése van vagy segítségre van szüksége új jelszó kérése, használja a [új jelszó kérésére vonatkozó](mailto:phonefactorsupport@microsoft.com) támogatási eset nyitása mutató hivatkozást.
-* Forduljon a támogatási szakember keresztül [Azure multi-factor Authentication-kiszolgáló (PhoneFactor) támogatás](https://support.microsoft.com/oas/default.aspx?prid=14947). Ha felvette velünk a kapcsolatot, esetén lehet hasznos, a lehető a problémával kapcsolatban, hozzáadhatja a lehető legtöbb információt. Információt adhat meg az oldal, ahol a hiba, a konkrét hibakód, az adott munkamenet-azonosító és a felhasználó, akik láttak a hiba azonosítója látott tartalmazza.
+* A gyakori technikai problémák megoldásához keressen a [Microsoft ügyfélszolgálata Tudásbázisban](https://www.microsoft.com/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) .
+* Megkeresheti és böngészheti a Közösség technikai kérdéseit és válaszait, vagy megteheti a saját kérdéseit a [Azure Active Directory fórumokon](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required).
+* Ha Ön örökölt PhoneFactor-ügyfél, és kérdései vannak, vagy segítségre van szüksége a jelszó alaphelyzetbe állításához, a [jelszó](mailto:phonefactorsupport@microsoft.com) -visszaállítási hivatkozás használatával nyisson meg egy támogatási esetet.
+* Forduljon a támogatási szakemberekhez az [Azure multi-Factor Authentication-kiszolgáló (PhoneFactor) támogatásával](https://support.microsoft.com/oas/default.aspx?prid=14947). Amikor kapcsolatba lép velünk, hasznos lehet, ha a lehető legtöbb információt felveheti a probléma megoldására. A megadható információk közé tartozik az a lap, ahol a hiba, a megadott hibakód, a megadott munkamenet-azonosító és a hibát megtekintő felhasználó azonosítója szerepel.

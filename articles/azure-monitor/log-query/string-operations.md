@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: f53d3bd64b4f837fe29baa338cd338158d59d95d
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 0dd61deb372822c5c564758d26d4c4a4938c1064
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466954"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741465"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Karakterláncok használata Azure Monitor naplózási lekérdezésekben
 
@@ -34,7 +34,7 @@ A karakterlánc minden karakterének indexe a helye alapján történik. Az els�
 
 
 ## <a name="strings-and-escaping-them"></a>Karakterláncok és Escape-szövegek
-A karakterlánc-értékek egy vagy két idézőjeles karakterrel vannak becsomagolva. Fordított perjel\) (a karakterek a következő karakterrel való kiírására szolgálnak, például \t: Tab, \n a sortöréshez, és \" maga az idézőjel karakter.
+A karakterlánc-értékek egy vagy két idézőjeles karakterrel vannak becsomagolva. A fordított\\perjel () használatával a karakterek az azt követő karaktereken (például \t: Tab, \n a sortöréshez és \" maga az idézőjelben) használhatók.
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -90,7 +90,7 @@ Operator       |Leírás                         |Kis-és nagybetűk megkülönb
 
 ## <a name="countof"></a>countof
 
-Egy karakterláncban lévő alsztring előfordulásainak megszámlálása. Képes az egyszerű karakterláncok egyeztetésére vagy a regex használatára. Az egyszerű karakterlánc-egyezések átfedésben lehetnek, amíg a regex egyezései nem.
+Egy karakterláncban lévő alsztring előfordulásainak megszámlálása. Képes az egyszerű karakterláncok egyeztetésére vagy a regex használatára. Az egyszerű karakterlánc-egyezések átfedésben lehetnek, amíg a regex-egyezések nem.
 
 ### <a name="syntax"></a>Szintaxis
 ```
@@ -129,7 +129,7 @@ print countof("abcabc", "a.c", "regex");  // result: 2
 
 ## <a name="extract"></a>kivonat
 
-Egy adott sztringből származó reguláris kifejezés egyezésének beolvasása. Opcionálisan átalakítja a megadott típus kinyert alsztringjét is.
+Egy adott sztringből származó reguláris kifejezés egyezésének beolvasása. Opcionálisan a kinyert alsztringet is átalakítja a megadott típusra.
 
 ### <a name="syntax"></a>Szintaxis
 

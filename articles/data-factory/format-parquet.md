@@ -1,6 +1,6 @@
 ---
-title: Parquet formátum az Azure Data Factoryban |} A Microsoft Docs
-description: Ez a témakör ismerteti az Azure Data Factoryban Parquet formátum kezelése.
+title: Parketta formátuma Azure Data Factoryban | Microsoft Docs
+description: Ez a témakör azt ismerteti, hogyan kezelhető a parketta formátuma Azure Data Factoryban.
 author: linda33wj
 manager: craigg
 ms.reviewer: craigg
@@ -9,33 +9,33 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 360b794f0d8ba9c145a92f015f264eb624fbb0f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 572547f4e22a4fcb63a030e64ca95a0b9d3eff00
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65144880"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68734487"
 ---
-# <a name="parquet-format-in-azure-data-factory"></a>Az Azure Data Factoryban parquet formátum
+# <a name="parquet-format-in-azure-data-factory"></a>A parketta formátuma Azure Data Factory
 
-Ez a cikk kövesse, ha meg szeretné **elemezni a Parquet-fájlokat, vagy Parquet formátumban szeretne adatokat írni**. 
+Kövesse ezt a cikket, ha szeretné **elemezni a parketta-fájlokat, vagy a parketta formátumba írja az**adatírást. 
 
-Az alábbi csatlakozók parquet formátum támogatott: [Az Amazon S3](connector-amazon-simple-storage-service.md), [az Azure Blob](connector-azure-blob-storage.md), [az Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [az Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [az Azure File Storage](connector-azure-file-storage.md), [Fájlrendszer](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), és [ Az SFTP](connector-sftp.md).
+A parketta formátuma a következő összekötők esetén támogatott: [Amazon S3](connector-amazon-simple-storage-service.md), [azure blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure file Storage](connector-azure-file-storage.md), [fájlrendszer](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)és [SFTP](connector-sftp.md).
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a parquet eszközökben adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a Parquet-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
 | Tulajdonság         | Leírás                                                  | Szükséges |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | A type tulajdonságot az adatkészlet értékre kell állítani **Parquet**. | Igen      |
-| location         | A fájl(ok) beállításai. Minden egyes fájl alapú összekötő saját hely típusa és a támogatott tulajdonságok alapján `location`. **A részleteit az összekötő -> Tulajdonságok szakaszának adatkészlet**. | Igen      |
-| compressionCodec | A Parquet-fájlok írásához használt tömörítési kodek. A Parquet-fájlok olvasásakor a Data Factory automatikusan meghatározni a tömörítési kodek alapján a fájl metaadatait.<br>Támogatott típusok a következők "**nincs**","**gzip**","**snappy**" (alapértelmezett), és a "**lzo**". Jelenleg vegye figyelembe, a másolási tevékenység nem támogatja a LZO. | Nem       |
+| type             | Az adatkészlet Type tulajdonságát a Parquet értékrekell beállítani. | Igen      |
+| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location`. **Tekintse meg a részleteket az összekötő cikk-> adatkészlet tulajdonságai szakaszban**. | Igen      |
+| compressionCodec | A Parquet-fájlokba való íráskor használandó tömörítési kodek. A Parquet-fájlokból való olvasáskor Data Factory automatikusan meghatározza a tömörítési kodeket a fájl metaadatai alapján.<br>A támogatott típusok a következők: "**none**", "**gzip**", "**Snappy**" (alapértelmezett) és "**LZO**". Megjegyzés: a másolási tevékenység jelenleg nem támogatja a LZO. | Nem       |
 
 > [!NOTE]
-> Az oszlop neve szóközt nem támogatott a Parquet-fájlokat.
+> A Parquet-fájlok nem támogatják a szóközöket az oszlop nevében.
 
-Alább példaként szolgál a Parquet-adatkészlet az Azure Blob Storage:
+Alább látható egy példa a Parquet-adatkészletre az Azure Blob Storageban:
 
 ```json
 {
@@ -61,54 +61,54 @@ Alább példaként szolgál a Parquet-adatkészlet az Azure Blob Storage:
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a parquet eszközökben forrás és fogadó által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a Parquet forrás és a fogadó által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="parquet-as-source"></a>Parquet forrásként
+### <a name="parquet-as-source"></a>Parketta forrásként
 
-A következő tulajdonságok támogatottak a másolási tevékenység ***\*forrás\**** szakaszban.
-
-| Tulajdonság      | Leírás                                                  | Szükséges |
-| ------------- | ------------------------------------------------------------ | -------- |
-| type          | A másolási tevékenység forrása típusa tulajdonságát állítsa **ParquetSource**. | Igen      |
-| storeSettings | Egy csoport a adatok olvasása-adatokat az adattárból tulajdonságait. Minden fájl alapú összekötő rendelkezik a saját támogatott olvasási beállítás alatt `storeSettings`. **A részleteit az összekötő -> a másolási tevékenység tulajdonságok szakaszának**. | Nem       |
-
-### <a name="parquet-as-sink"></a>Ahogy a fogadó parquet eszközökben
-
-A következő tulajdonságok támogatottak a másolási tevékenység ***\*fogadó\**** szakaszban.
+A másolási tevékenység ***\*forrása\**** szakaszban a következő tulajdonságok támogatottak.
 
 | Tulajdonság      | Leírás                                                  | Szükséges |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | A másolási tevékenység forrása típusa tulajdonságát állítsa **ParquetSink**. | Igen      |
-| storeSettings | Hogyan lehet adatokat írni az adattár tulajdonságait tartalmazó csoport. Minden fájl alapú összekötő rendelkezik a saját támogatott írási beállításait `storeSettings`. **A részleteit az összekötő -> a másolási tevékenység tulajdonságok szakaszának**. | Nem       |
+| type          | A másolási tevékenység forrásának Type tulajdonságát **ParquetSource**értékre kell állítani. | Igen      |
+| storeSettings | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott olvasási beállításaival `storeSettings`rendelkeznek. **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
 
-## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok hozzárendelése
+### <a name="parquet-as-sink"></a>Parketta mint fogadó
 
-A részletek [átalakítási forrás](data-flow-source.md) és [átalakítási fogadó](data-flow-sink.md) az adatfolyam-leképezés.
+A másolási tevékenység ***\*\**** fogadója szakaszban a következő tulajdonságok támogatottak.
 
-## <a name="data-type-support"></a>Adattípus-támogatás
+| Tulajdonság      | Leírás                                                  | Szükséges |
+| ------------- | ------------------------------------------------------------ | -------- |
+| type          | A másolási tevékenység forrásának Type tulajdonságát **ParquetSink**értékre kell állítani. | Igen      |
+| storeSettings | Az adattárakba való adatíráshoz szükséges tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott írási beállításaival `storeSettings`rendelkeznek. **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
 
-A parquet eszközökben összetett adattípusok jelenleg nem támogatott (pl. MAP, LIST, STRUCT).
+## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok leképezése
 
-## <a name="using-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul használatával
+A forrás- [átalakítás](data-flow-source.md) és a fogadó [átalakítás](data-flow-sink.md) részleteinek megismerése a leképezési folyamatokban.
+
+## <a name="data-type-support"></a>Adattípusok támogatása
+
+A Parquet komplex adattípusok jelenleg nem támogatottak (például Térkép, lista, STRUCT).
+
+## <a name="using-self-hosted-integration-runtime"></a>Saját üzemeltetésű Integration Runtime használata
 
 > [!IMPORTANT]
-> A példány által felhatalmazott helyi integrációs modul például a helyszíni és a felhő között adatokat tárolja, ha nem másol Parquet-fájlokat **,-van**, telepítenie kell a **64 bites JRE 8 (Java-futtatókörnyezet) vagy Openjdk csomagját** az integrációs modul gépen. Olvassa el az alábbi részletekkel kapcsolatban.
+> A saját üzemeltetésű Integration Runtime, például a helyszíni és a Felhőbeli adattárak közötti másoláshoz, ha nem a (z) rendszerű parketta **-** fájlokat másolja, telepítenie kell a **64 bites JRE 8 (Java Runtime Environment) vagy a OpenJDK** az IR-gépen. További részletekért tekintse meg a következő bekezdést.
 
-Futó helyi IR a parquet eszközökben fájl szerializálás/deszerializálás másolásához, ADF a Java-futtatókörnyezet megkeresi a beállításjegyzék először is ellenőrzésével *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* a JRE, ha nem talál, másodszor ellenőrzése rendszerváltozó *`JAVA_HOME`* az openjdk csomagját.
+A saját üzemeltetésű, a Parquet-fájlok szerializálásával/deszerializálásával futó másolás esetén az ADF a Java futtatókörnyezetet úgy keresi meg, hogy *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* először ellenőrzi a JRE beállításjegyzékét, ha nem található, *`JAVA_HOME`* Másodsorban a OpenJDK rendszer-változó ellenőrzése.
 
-- **JRE használandó**: A 64 bites integrációs modul 64 bites JRE szükséges. Annak a [Itt](https://go.microsoft.com/fwlink/?LinkId=808605).
-- **Openjdk csomagját használandó**: IR 3.13 verziója óta támogatott. A jvm.dll, az összes többi csomagot annak megfelelően szükséges szerelvények openjdk csomagját, helyi integrációs modul gép és a rendszer környezeti változó beállítása JAVA_HOME.
+- **A JRE használata**: A 64 bites IR-hez 64 bites JRE szükséges. [Itt](https://go.microsoft.com/fwlink/?LinkId=808605)találhatja meg.
+- **A OpenJDK használata**: az IR 3,13-es verzió óta támogatott. Csomagolja a JVM. dll fájlt a OpenJDK összes többi szükséges szerelvényéhez a saját üzemeltetésű IR-gépre, és ennek megfelelően állítsa be a rendszerkörnyezeti változó JAVA_HOME.
 
 > [!TIP]
-> Ha másolja és a parquet vagy egyéb adatok formázása a helyi integrációs modul használatával, és hiba üzenettel találati "hiba történt a java meghívásakor üzenet: **java.lang.OutOfMemoryError:Java halommemória terület**", hozzáadhat egy környezeti változó `_JAVA_OPTIONS` a gépen, amelyen a helyi integrációs modul beállításához JVM megjelenő új ilyen példány a minimális/maximális halommemória mérete, majd futtassa újra a folyamatot.
+> Ha az adatok másolása a parketta formátumba vagy a saját üzemeltetésű Integration Runtime használatával történt, és a következő hibaüzenet jelenik meg: "hiba történt a Java meghívásakor, üzenet: **Java. lang. működése OutOfMemoryError: Java heap Space**", `_JAVA_OPTIONS` hozzáadhat egy környezeti változót a a saját üzemeltetésű integrációs modult futtató gép, amely a JVM minimális/maximális méretének módosítását teszi lehetővé az ilyen példányok kiépítéséhez, majd a folyamat újbóli futtatásához.
 
-![Állítsa be a JVM-halommemória mérete a helyi integrációs modul](C:/AzureContent/azure-docs-pr/articles/data-factory/media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
+![JVM-halom méretének beállítása a saját üzemeltetésű IR-ben](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Példa: set a változó `_JAVA_OPTIONS` értékkel `-Xms256m -Xmx16g`. A jelző `Xms` adja meg a hozzárendelés kezdeti memóriakészletben számára a Java virtuális gép (JVM), miközben `Xmx` megadja a maximális memóriát foglalási készletet. Ez azt jelenti, hogy a JVM fog elindulni `Xms` memória mennyiségét, és legfeljebb használható lesz `Xmx` memória mennyisége. Alapértelmezés szerint az ADF minimális 64 MB-ot használja, és legfeljebb 1G.
+Példa: állítsa be `_JAVA_OPTIONS` a változót értékkel. `-Xms256m -Xmx16g` A jelző `Xms` meghatározza a Java virtuális gép (JVM) kezdeti memória-kiosztási készletét `Xmx` , míg a maximális memória-kiosztási készletet adja meg. Ez azt jelenti, hogy a JVM a `Xms` memóriával fog elindulni, és a memória `Xmx` maximális mennyiségét fogja tudni használni. Alapértelmezés szerint az ADF min 64 MB és Max 1G értéket használ.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Másolási tevékenység áttekintése](copy-activity-overview.md)
-- [Az adatfolyam-leképezés](concepts-data-flow-overview.md)
+- [Adatfolyam hozzárendelése](concepts-data-flow-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)

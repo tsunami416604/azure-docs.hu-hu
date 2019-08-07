@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/19/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 08c9f958f5103da9961f4c2d29be97f455cecc4b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6ee7a661434bb756c6cf196937229db19d06b373
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359266"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779988"
 ---
 # <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Előre fizetés SQL Data Warehouse díjas, fenntartott kapacitással
 
@@ -61,15 +61,11 @@ Tegyük fel például, hogy a SQL Data Warehouse teljes fogyasztása DW3000c. Az
 8. Válassza a **Beszerzés** lehetőséget.
 9. Válassza a **foglalás megtekintése** lehetőséget a vásárlás állapotának megtekintéséhez.
 
-## <a name="cancellations-and-exchanges"></a>Megszakítások és cserék
+## <a name="cancel-exchange-or-refund-reservations"></a>Megszakítási, Exchange-vagy visszatérítési foglalások
 
-Ha le kell mondania a SQL Data Warehouse fenntartott kapacitást, a rendszer 12%-os korai lemondási díjat számít fel. A visszatérítést a rendszer a vételár vagy a foglalás jelenlegi ára közül az alacsonyabb összeg alapján számolja. A visszatérítések évente $50 000,00-re korlátozódnak. A kapott visszatérítés a fennmaradó arányú egyenleg, amely a 12%-os korai lemondási díjat számítja ki. A megszakításhoz nyissa meg a Azure Portal foglalását, és válassza a **visszatérítés**lehetőséget.
+Bizonyos korlátozásokkal megszakíthatja, átválthatja vagy visszaállíthatja a foglalásokat. További információ: önkiszolgáló [cserék és visszatérítések Azure Reservations számára](billing-azure-reservations-self-service-exchange-and-refund.md).
 
-Ha módosítania kell a SQL Data Warehouse fenntartott kapacitását egy másik régióra vagy kifejezésre, akkor egy másik, egyenlő vagy nagyobb értékű foglalásra cserélheti azt. Az új foglalási időszak kezdő dátuma nem kerül át a lecserélt foglalásból. Az új foglalás létrehozásakor az egy vagy három éves időszak kezdődik. Az Exchange szolgáltatásban nyissa meg a foglalást a Azure Portalban, és válassza az **Exchange**lehetőséget.
-
-A foglalások cseréjével és visszatérítésével kapcsolatos további információkért lásd: a [foglalási cserék és](billing-azure-reservations-self-service-exchange-and-refund.md)a visszafizetések.
-
-A foglalási kedvezményt a rendszer automatikusan alkalmazza azon SQL Data Warehouse-példányok számára, amelyek megfelelnek a SQL Data Warehouse fenntartott kapacitás hatókörének és régiójának. A SQL Data Warehouse fenntartott kapacitás hatókörét a [Azure Portal](https://portal.azure.com/), a PowerShell, a CLI vagy az API használatával frissítheti.
+A foglalási kedvezmény automatikusan érvényes azon SQL Data Warehouse példányok számára, amelyek megfelelnek a SQL Data Warehouse fenntartott kapacitás hatókörének és régiójának. A SQL Data Warehouse fenntartott kapacitás hatókörét a [Azure Portal](https://portal.azure.com/), a PowerShell, a CLI vagy az API használatával frissítheti.
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolat
 

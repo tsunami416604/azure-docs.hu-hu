@@ -1,5 +1,5 @@
 ---
-title: Azure Backup – Gyakori kérdések
+title: Válaszok a Azure Backup funkcióival kapcsolatos gyakori kérdésekre
 description: 'Válaszok a gyakori kérdésekre a következővel kapcsolatban: Azure Backup funkciók, például Recovery Services-tárolók, mire használhatók a biztonsági mentés, a működés, a titkosítás és a korlátok. '
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: c60b2bfae0d974d454c03b7eba655cbdacab5943
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: c41381dd3e53c80e74da3dc0d0a08e1ac83daec6
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466685"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827632"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – gyakran ismételt kérdések
 Ez a cikk a Azure Backup szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
@@ -24,6 +24,13 @@ Igen. Akár 500 Recovery Services-tárolót is létrehozhat, a Azure Backup tám
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Az egyes tárolókhoz regisztrálható kiszolgálók/gépek száma korlátozott?
 Akár 1000 Azure-beli virtuális gépet is regisztrálhat. Ha a Microsoft Azure Backup-ügynököt használja, akár 50 Mohácsi-ügynököt is regisztrálhat. Továbbá regisztrálhat 50 Mohácsi-kiszolgálókat/DPM-kiszolgálókat egy tárba.
+
+### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Hány adatforrást/elemet lehet védeni egy tárolóban? 
+A tárolóban akár 2000 adatforrást/elemet (IaaS VM, SQL, AFS stb.) is védetté tehet a tárolóban.<br>  
+Ha például már védett a 500-es virtuális gépek és a 400 Azure Files a tárolóban lévő megosztások, akkor csak a 1100-os SQL-adatbázisok védelmét tudja biztosítani. 
+
+### <a name="how-many-policies-can-i-create-per-vault"></a>Hány szabályzatot hozhatok létre a tárolóban? 
+A tár legfeljebb 200 házirendet tartalmazhat.
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-data-from-different-servers-in-the-vault-when-restoring-data"></a>Ha a szervezetem egy tárolóval rendelkezik, hogyan lehet elkülöníteni a tárolóban lévő különböző kiszolgálók adatait az adatok visszaállításakor?
 A helyreállítani kívánt kiszolgálói adatoknak ugyanazt a jelszót kell használniuk a biztonsági mentés beállításakor. Ha egy adott kiszolgálóra vagy kiszolgálókra szeretné elkülöníteni a helyreállítást, akkor csak az adott kiszolgálóhoz vagy kiszolgálókhoz tartozó hozzáférési kódot kell használnia. Például a humánerőforrás-kiszolgálók használhatnának egy titkosító hozzáférési kódot, a könyvelési kiszolgálók egy másikat és a tároló kiszolgálók egy harmadikat.
@@ -143,7 +150,7 @@ Nem. A legrégebbi vagy a legújabb pont helyreállításának ideje ugyanaz. Mi
 A tipikus hosszú távú megtartási pontok az adatok biztonsági másolatát teljes pontokként tárolják.
 
 - A teljes pontok tárolás szempontjából *nem hatékonyak*, azonban könnyebben és gyorsabban visszaállíthatók.
-- A növekményes másolatok  tárolási hatékonyságot igényelnek, de szükség van egy adatlánc visszaállítására, amely hatással van a helyreállítási időre
+- A növekményes másolatok tárolási hatékonyságot igényelnek, de szükség van egy adatlánc visszaállítására, amely hatással van a helyreállítási időre
 
 Az Azure Backup tárolási architektúrája ezen két megoldás előnyeit ötvözi az adatok optimális tárolásával a gyors visszaállítás érdekében és alacsony tárolási költségekkel. Ez biztosítja, hogy a bejövő és a kimenő forgalom hatékonyan használható legyen. Az adattárolás mennyiségét és az adatok helyreállításához szükséges időt a rendszer minimálisra tartja. További információ a [növekményes biztonsági mentésekről](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/).
 

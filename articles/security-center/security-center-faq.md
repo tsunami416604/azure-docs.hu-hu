@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 300d96a792663a32a326d5d01f281b77ccf9c4bf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6e41453a096f4812b9ba541a2693b9c9b975b7c9
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050505"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779062"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center egy szolgáltatás, amellyel megelőzését, észlelését és háríthatja el a fenyegetéseket átláthatóbbá és a Microsoft Azure-erőforrások kézben kapcsolatos kérdésekre ad választ.
@@ -42,10 +42,10 @@ A Security Center két szinten érhető el:
 
 A **ingyenes szint** biztonsági állapotát az Azure-erőforrások, az alapszintű biztonsági házirend, a biztonsági javaslatok és a integrációs rálátást biztosít a biztonsági termékeket és szolgáltatásokat partnereinktől.
 
-A **Standard szintű** hozzáadja a komplex veszélyforrások elleni képességeket tartalmaz, beleértve a fenyegetésészlelési intelligencia, a viselkedés-elemzés, a rendellenességek észlelése, a biztonsági incidensek és tesznek elérhetővé; ilyenek jelentések fenyegetés. Standard szint ingyenes próba megkezdése. Szeretné frissíteni, válassza ki a [Tarifacsomag](https://docs.microsoft.com/azure/security-center/security-center-pricing) a biztonsági szabályzatban. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+A **Standard szintű** hozzáadja a komplex veszélyforrások elleni képességeket tartalmaz, beleértve a fenyegetésészlelési intelligencia, a viselkedés-elemzés, a rendellenességek észlelése, a biztonsági incidensek és tesznek elérhetővé; ilyenek jelentések fenyegetés. Elindíthat egy standard szintű ingyenes próbaverziót is. Szeretné frissíteni, válassza ki a [Tarifacsomag](https://docs.microsoft.com/azure/security-center/security-center-pricing) a biztonsági szabályzatban. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
-### <a name="how-can-i-track-who-in-my-organization-performed-pricing-tier-changes-in-azure-security-center"></a>Hogyan követhető nyomon a mely munkatársaim árképzési szint módosításokat végzett az Azure Security Centerben
-Az Azure-előfizetéssel rendelkezhet több rendszergazdáknak szánt módosítsa a tarifacsomagot, mert egy felhasználó Kezdésként érdemes lehet tudni, hogy ki hajtotta végre a tarifacsomag módosítása. Szeretne használni, amely, egy Azure-tevékenységnapló használhatja. Adjon további utasításokat [Itt](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832)
+### <a name="how-can-i-track-who-in-my-organization-performed-pricing-tier-changes-in-azure-security-center"></a>Hogyan követhetem nyomon, hogy kik a szervezetem díjszabási szintjein végrehajtott változások Azure Security Center
+Mivel az Azure-előfizetés több rendszergazdai jogosultsággal is rendelkezhet az árképzési szint módosításához, előfordulhat, hogy a felhasználó tudni szeretné, hogy ki hajtotta végre az árképzési szint változását. Ennek használatához használhatja az Azure-tevékenység naplóját. További útmutatást [itt](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832) talál
 
 ## <a name="permissions"></a>Engedélyek
 Az Azure Security Center [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md) használ, amelynek [beépített szerepköreit](../role-based-access-control/built-in-roles.md) az Azure különböző csoportjaihoz, felhasználóihoz és szolgáltatásaihoz rendelheti.
@@ -55,10 +55,10 @@ A Security Center a biztonsági problémák és biztonsági rések azonosítás�
 Lásd: [engedélyek az Azure Security Centerben](security-center-permissions.md) tudhat meg többet a szerepkörök és a Security Centerben engedélyezett műveletek.
 
 ## <a name="data-collection-agents-and-workspaces"></a>Adatgyűjtés, az ügynökök és a-munkaterületek
-A Security Center adatokat gyűjt az Azure-beli virtuális gépek (VM), a virtuálisgép-méretezési csoportok (VMSS), az IaaS-tárolók és a nem Azure-beli (pl. helyszíni) számítógépek biztonsági rések és fenyegetések monitorozásához. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére.
+A Security Center adatokat gyűjt az Azure-beli virtuális gépekről (VM), a virtuálisgép-méretezési csoportokról (VMSS), a IaaS-tárolókra és a nem Azure-ból (beleértve a helyszíni gépeket is) a biztonsági rések és fenyegetések figyelésére. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére.
 
-### <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Kell fizetnem az Azure Monitor-naplók a Security Center által létrehozott munkaterületek a?
-Nem. Security Center által létrehozott munkaterületek amíg konfigurálása az Azure Monitor-naplók csomópont számlázás, nem terheli Azure Monitor naplók. A Security Center minden esetben elszámolt díj attól a Security Center biztonsági házirend és a megoldások a munkaterülethez telepítve:
+### <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Fizetnem kell Azure Monitor naplókat a Security Center által létrehozott munkaterületeken?
+Nem. A Security Center által létrehozott munkaterületek, miközben a csomópontok számlázása Azure Monitor naplókhoz van konfigurálva, nem számítanak fel Azure Monitor naplók díját. A Security Center minden esetben elszámolt díj attól a Security Center biztonsági házirend és a megoldások a munkaterülethez telepítve:
 
 - **Ingyenes szint** – Security Center lehetővé teszi, hogy a "SecurityCenterFree" megoldást az alapértelmezett munkaterületre. Az ingyenes szint nem számlázzuk ki.
 - **Standard szintű** – Security Center lehetővé teszi, hogy a "Security" megoldást az alapértelmezett munkaterületre.
@@ -66,7 +66,7 @@ Nem. Security Center által létrehozott munkaterületek amíg konfigurálása a
 További információ a díjszabásról lásd: [a Security Center díjszabási](https://azure.microsoft.com/pricing/details/security-center/). A díjszabási lapon biztonsági adattárolásban és az időarányos számlázásban 2017 júniusától módosításai megoldást.
 
 > [!NOTE]
-> A Security Center által létrehozott munkaterület tarifacsomagját a log analytics nincs hatással a Security Center a számlázás.
+> A Security Center által létrehozott munkaterületek log Analytics árképzési szintje nem befolyásolja Security Center számlázást.
 >
 >
 
@@ -77,7 +77,7 @@ Windows vagy Linux rendszerű IaaS virtuális gépek jogosultak, ha:
 
 - A Microsoft Monitoring Agent bővítményt jelenleg nem települ a virtuális gépen.
 - A virtuális gép futó állapotban van.
-- A Windows vagy Linux rendszerű [Azure-beli virtuálisgép-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) telepítve van.
+- A Windows vagy Linux rendszerű Azure-beli [virtuális gép ügynöke](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) telepítve van.
 - A virtuális gép nem használatos, például a webalkalmazási tűzfal vagy új generációs tűzfal telepíthetőek.
 
 ### <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>A Security Center által létrehozott alapértelmezett munkaterületet is törli?
@@ -118,25 +118,25 @@ Egy meglévő Log Analytics-munkaterület kiválasztása:
 
    - Válassza ki **Mégse** megszakítja a műveletet.
 
-### Mi történik, ha a Microsoft Monitoring Agent már telepítve van a virtuális gép bővítményeként?<a name="mmaextensioninstalled"></a>
-Amikor a Monitoring Agent bővítmény van telepítve, a bővítmény konfigurációja lehetővé teszi, hogy csak egyetlen munkaterület jelentéskészítés. A Security Center nem bírálja felül a meglévő kapcsolatok felhasználó munkaterületeket. A Security Center biztonsági adatokat tároló virtuális gép egy adott munkaterület már csatlakoztatva van, feltéve, hogy a "Security" vagy "SecurityCenterFree" megoldás telepítve van rajta. A Security Center előfordulhat, hogy a bővítmény verziója frissítsen a legújabb verzióra a folyamat.
+### Mi a teendő, ha a Microsoft monitoring Agent már telepítve van a virtuális gépen?<a name="mmaextensioninstalled"></a>
+Ha a figyelési ügynök bővítményként van telepítve, a bővítmény konfigurációja lehetővé teszi, hogy a jelentéskészítés csak egyetlen munkaterületre legyen elérhető. A Security Center nem bírálja felül a meglévő kapcsolatok felhasználó munkaterületeket. Security Center a biztonsági adatok egy már csatlakoztatott munkaterületen lévő virtuális gépről lesznek tárolva, ha a "biztonság" vagy a "SecurityCenterFree" megoldás telepítve van rajta. Security Center a folyamat legújabb verziójára frissítheti a bővítmény verzióját.
 
-További információkért lásd: [automatikus üzembe helyezés abban az esetben egy már létező ügynöktelepítés](security-center-enable-data-collection.md#preexisting).
+További információ: [az automatikus kiépítés egy már meglévő ügynök telepítése esetén](security-center-enable-data-collection.md#preexisting).
 
 
-### Mi történik, ha korábban a Microsoft Monitoring Agent közvetlenül telepítve van a gépen, de nem bővítményeként (közvetlen ügynök)?<a name="directagentinstalled"></a>
-Ha a Microsoft Monitoring Agent közvetlenül a virtuális gép (nem pedig egy Azure-bővítmény) van telepítve, a Security Center telepíti a Microsoft Monitoring Agent bővítményt, és előfordulhat, hogy a Microsoft Monitoring agent frissítése a legújabb verzióra.
-Az ügynök telepítve van továbbra is, hogy a már konfigurált munkaterületeire, és emellett a munkaterülethez, a Security Center konfigurált jelentést (többkiszolgálós támogatott Windows-gépeken).
-Ha a konfigurált munkaterületével felhasználói munkaterület (nem a Security Center alapértelmezett munkaterületen), akkor telepítenie kell a "biztonsági /"SecurityCenterFree"megoldás a Security Center használatával indítsa el az események feldolgozását a virtuális gépek és számítógépek számára, amely jelentéskészítés munkaterület.
+### Mi a teendő, ha a Microsoft monitoring Agent közvetlenül telepítve van a gépen, de nem bővítményként (közvetlen ügynök)?<a name="directagentinstalled"></a>
+Ha a Microsoft monitoring Agent közvetlenül a virtuális gépre van telepítve (nem Azure-bővítményként), Security Center telepíti a Microsoft monitoring Agent bővítményt, és a legújabb verzióra frissítheti a Microsoft monitoring agentet.
+A telepített ügynök továbbra is a már konfigurált munkaterülete (ke) t jelenti, és a jelentés a Security Center konfigurált munkaterületre fog jelentést adni (a többsoros vezérlés támogatott a Windows rendszerű gépeken).
+Ha a konfigurált munkaterület egy felhasználói munkaterület (nem Security Center alapértelmezett munkaterülete), akkor telepítenie kell a "Security/" SecurityCenterFree "megoldást arra, hogy Security Center a virtuális gépekről és számítógépekről jelentett események feldolgozásának megkezdéséhez. munkaterület.
 
-A Linux rendszerű gépek az ügynök többkiszolgálós még nem támogatott – ezért egy meglévő ügynöktelepítés észlelése esetén az Automatikus kiépítés nem történik, és a gép konfigurációja nem változik.
+Linux rendszerű gépek esetén az ügynök többsoros vezérlése még nem támogatott – ezért ha egy meglévő ügynök telepítését észleli, az automatikus kiépítés nem történik meg, és a gép konfigurációja nem módosul.
 
-Előfizetések előkészítette a Security Center a 2019-03-17., amikor egy meglévő ügynököt érzékeli, mielőtt a meglévő gépek nem lesz telepítve a Microsoft Monitoring Agent bővítményt, és a gép nem lesz hatással. Ezek a gépek lásd a "Feloldás a monitoring agent állapotproblémái a gépeken" javaslat ezeken a gépeken az ügynök telepítésével kapcsolatos problémák megoldásához
+A 2019-03-17 előtti Security Center előfizetésekben lévő meglévő gépek esetében a rendszer nem telepíti a Microsoft monitoring Agent bővítményt, és a gépet nem érinti a rendszer. Ezen gépek esetében tekintse meg a "figyelési ügynök állapotával kapcsolatos problémák megoldása a gépeken" című javaslatot az ügynök telepítési problémáinak megoldásához ezeken a gépeken
 
  További információkért tekintse meg a következő szakaszban [mi történik, ha egy SCOM vagy OMS közvetlen ügynök már telepítve van a virtuális gépemen?](#scomomsinstalled)
 
-### Mi történik, ha a System Center Operations Manager (SCOM) ügynök már telepítve van a virtuális gépemen?<a name="scomomsinstalled"></a>
-A Security center a Microsoft Monitoring Agent bővítmény egymás mellett telepíti a meglévő System Center Operations Manager-ügynök. A meglévő SCOM-ügynököt, hogy a System Center Operations Manager-kiszolgáló normál esetben továbbra is. Vegye figyelembe, hogy a System Center Operations Manager ügynök és a Microsoft Monitoring Agent megosztani futásidejű kódtárak, amely során a proccess a legújabb verzióra frissül. Megjegyzés: Ha a System Center Operations Manager 2012 ügynök verziója van telepítve, nem kapcsolja be az Automatikus kiépítés a (kezelhetőségi képességeit is lehet elveszett Ha a System Center Operations Manager-kiszolgáló is 2012 verzió).
+### Mi történik, ha egy System Center Operations Manager (SCOM) ügynök már telepítve van a virtuális gépre?<a name="scomomsinstalled"></a>
+A Security Center a Microsoft monitoring Agent bővítményt a meglévő System Center Operations Manager-ügynök mellé telepíti. A meglévő SCOM-ügynök a szokásos módon továbbra is jelentést küld a System Center Operations Manager-kiszolgálónak. Vegye figyelembe, hogy a System Center Operations Manager ügynök és a Microsoft monitoring Agent közös futásidejű kódtárakat használ, amelyeket a rendszer a folyamat utolsó verziójára frissít. Megjegyzés: Ha a System Center Operations Manager ügynök 2012-es verziója telepítve van, ne kapcsolja be az automatikus kiépítés funkciót (a kezelhetőségi képességek elvesznek, ha a System Center Operations Manager-kiszolgáló a 2012-es verzióban is megtalálható).
 
 ### <a name="what-is-the-impact-of-removing-these-extensions"></a>Mit jelent az ilyen bővítmények eltávolításának következményei?
 Ha eltávolítja a Microsoft Monitoring bővítményt, a Security Center nem tud a biztonsági adatok gyűjtésére a virtuális gép és az egyes biztonsági javaslatok és riasztások nem érhetők el. 24 órán belül a Security Center meghatározza, hogy a virtuális gép a bővítmény hiányzik, és újratelepíti a bővítményt.
@@ -161,7 +161,7 @@ Automatikus üzembe helyezés a biztonsági szabályzat az előfizetések ki is 
 Előfordulhat, hogy szeretné tilthatják le az automatikus kiépítést, ha Ön számára az alábbiak érvényesek:
 
 - A teljes előfizetés a Security Center által automatikus ügynöktelepítés vonatkozik.  Virtuális gépek egy része nem alkalmazhat automatikus telepítését. Ha nincsenek kritikus fontosságú virtuális gépek, amelyek a Microsoft Monitoring Agent nem telepíthető, majd kell kikapcsolja az Automatikus kiépítés.
-- A Microsoft Monitoring Agent (MMA) bővítmény telepítése az ügynök verzióját frissíti. Ez vonatkozik egy közvetlen ügynök és a egy SCOM-ügynök (az utóbbi esetben az SCOM és MMA közös futásidejű kódtárak – amely frissíti a folyamat során). Ha a telepített SCOM-ügynökök 2012 verzió, és frissítve van, a kezelhetőségi képességeit elveszhet, esetén az SCOM-kiszolgálóval is 2012 verzióra. Fontolja meg az Automatikus kiépítés, ha a telepített SCOM-ügynökök 2012 verzió megtagadja.
+- A Microsoft monitoring Agent (MMA) bővítmény telepítése frissíti az ügynök verzióját. Ez egy közvetlen ügynökre és egy SCOM-ügynökre vonatkozik (az utóbbi esetben a SCOM és az MMA közös futtatókörnyezet-kódtárakat – amely a folyamat során frissülni fog). Ha a telepített SCOM-ügynökök 2012 verzió, és frissítve van, a kezelhetőségi képességeit elveszhet, esetén az SCOM-kiszolgálóval is 2012 verzióra. Fontolja meg az Automatikus kiépítés, ha a telepített SCOM-ügynökök 2012 verzió megtagadja.
 - Ha egy egyéni munkaterület ahhoz az előfizetéshez (egy központosított munkaterületű) külső majd meg kell tilthatják le az automatikus kiépítést. Manuálisan telepítse a Microsoft Monitoring Agent bővítményt, és csatlakoztathatja azt a munkaterületet anélkül, hogy a Security Center a kapcsolat felülírása.
 - Ha el szeretné kerülni előfizetésenként több munkaterülettel létrehozását, és az előfizetésen belül a saját egyéni munkaterületet, majd, két lehetősége van:
 
@@ -185,7 +185,7 @@ A Security Center lehetővé teszi a munkaterületen a kijelölt tarifacsomag al
 Manuálisan távolítsa el a Microsoft Monitoring Agent. Ez nem ajánlott, mivel a Security Center javaslatait és riasztások korlátozza.
 
 > [!NOTE]
-> Ha az adatgyűjtés engedélyezve van, a Security Center újratelepíti az ügynök után távolítsa el azt.  Le kell tiltania az adatgyűjtés az ügynök manuális eltávolítása előtt. Tekintse meg, hogyan állítsa le az ügynök automatikus telepítés és a munkaterület létrehozását? útmutatás az adatok gyűjtésének letiltása.
+> Ha az adatgyűjtés engedélyezve van, a Security Center újratelepíti az ügynök után távolítsa el azt.  Le kell tiltania az adatgyűjtés az ügynök manuális eltávolítása előtt. Lásd: Hogyan az ügynök automatikus telepítésének leállítása és a munkaterület létrehozása? az adatgyűjtés letiltására vonatkozó utasítások.
 >
 >
 
@@ -218,7 +218,9 @@ Az ügynök emellett lehetővé teszi adatok gyűjtésének [adaptív Alkalmazá
 
 Ha a Security Center a virtuális gép gyanús tevékenységet észlel, az ügyfél értesítést e-mailben, ha a [biztonsági kapcsolattartási adatok](security-center-provide-security-contact-details.md) lett megadva. Egy riasztás akkor is a Security Center biztonsági riasztások irányítópult látható.
 
-
+### <a name="will-security-center-work-using-an-oms-gateway"></a>A Security Center OMS-átjáró használatával fog működni?
+Igen. Azure Security Center kihasználja a Azure Monitor az Azure-beli virtuális gépekről és kiszolgálókról származó adatok gyűjtésére a Microsoft monitoring Agent használatával.
+Az adatok gyűjtéséhez az egyes virtuális gépeknek és kiszolgálóknak HTTPS használatával kell csatlakozniuk az internethez. A csatlakozás lehet közvetlen, proxy használatával vagy a [OMS](../azure-monitor/platform/gateway.md)-átjárón keresztül.
 
 ### <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>A Monitoring Agent befolyásolja a kiszolgáló teljesítményét?
 Az ügynök egy névleges mennyiségű rendszer-erőforrásokat használ fel, és teljesítményére gyakorolt minimális hatás kell rendelkeznie. További információ a teljesítményt és az ügynök és a bővítmény: az [tervezéséhez és útmutató](security-center-planning-and-operations-guide.md#data-collection-and-storage).
@@ -226,12 +228,12 @@ Az ügynök egy névleges mennyiségű rendszer-erőforrásokat használ fel, é
 ### <a name="where-is-my-data-stored"></a>Hol tárolják az adataimat?
 Ettől az ügynöktől gyűjtött adatok tárolva van vagy egy meglévő Log Analytics-munkaterületet az Ön előfizetéséhez rendelve, vagy egy új munkaterületet. További információkért lásd: [adatbiztonság](security-center-data-security.md).
 
-## Meglévő Azure Monitor-naplók ügyfelek<a name="existingloganalyticscust"></a>
+## Meglévő Azure Monitor naplók ügyfeleinek<a name="existingloganalyticscust"></a>
 
 ### <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>A Security Center nem bírálja felül bármely meglévő kapcsolatokat a virtuális gépek és a munkaterületek között?
-Ha egy virtuális gép már a Microsoft Monitoring Agent telepítve van az Azure kiterjesztése, a Security Center nem bírálja felül a meglévő munkaterület-kapcsolatot. Ehelyett a Security Center a meglévő munkaterületet használja. A virtuális gép védi, feltéve, hogy a "Security" vagy "SecurityCenterFree" megoldás telepítve van a jelentések a munkaterületen. 
+Ha egy virtuális gép már a Microsoft Monitoring Agent telepítve van az Azure kiterjesztése, a Security Center nem bírálja felül a meglévő munkaterület-kapcsolatot. Ehelyett a Security Center a meglévő munkaterületet használja. A virtuális gép védett lesz, ha a "biztonság" vagy a "SecurityCenterFree" megoldás telepítve van azon a munkaterületen, amelyre a jelentést küldi. 
 
-A Security Center megoldás a munkaterület az adatok gyűjtésének képernyőn kiválasztott telepítve van, ha nincs már, és a megoldás csak a megfelelő virtuális gépek lesz alkalmazva. A megoldás hozzáadásakor az automatikusan telepített összes Windows és Linux-ügynökök az a Log Analytics-munkaterülethez kapcsolódó alapértelmezés szerint a. [Megoldás célcsoportkezelés](../operations-management-suite/operations-management-suite-solution-targeting.md) lehetővé teszi, hogy a alkalmazni egy hatókört a megoldások.
+Egy Security Center megoldás van telepítve az adatgyűjtési képernyőn kiválasztott munkaterületre, ha még nincs jelen, és a megoldás csak a megfelelő virtuális gépekre lesz alkalmazva. A megoldás hozzáadásakor az automatikusan telepített összes Windows és Linux-ügynökök az a Log Analytics-munkaterülethez kapcsolódó alapértelmezés szerint a. [Megoldás célcsoportkezelés](../operations-management-suite/operations-management-suite-solution-targeting.md) lehetővé teszi, hogy a alkalmazni egy hatókört a megoldások.
 
 A Microsoft Monitoring Agent közvetlenül a virtuális gép (nem pedig egy Azure-bővítmény) van telepítve, ha a Security Center nem telepíti a Microsoft Monitoring Agent, és a biztonság monitorozása korlátozva.
 
@@ -284,8 +286,8 @@ Az Azure Security Center automatikusan gyűjti, elemzi és biztosítók az Azure
 * Virtuális gépek elleni, a teljes kipróbálás módszerén alapuló támadások
 * Integrált partneri biztonsági megoldások, például a kártevő- vagy webalkalmazás-tűzfalak biztonsági riasztásai
 
-### Miért volt biztonságos pontszámok módosítása? <a name="secure-score-faq"></a>
-A Security Center kezdődően a 2019. február beállítani, néhány javaslatokat, annak érdekében, hogy jobban illeszkedjen a súlyosságuk a pontszámot. Ezt a beállítást, miatt előfordulhat, átfogó módosítások biztonságos pontszám értékeket.  Biztonságos pontszám kapcsolatos további információkért lásd: [biztonságos pontszám számítási](security-center-secure-score.md).
+### Miért változnak a biztonsági pontszámok értékei? <a name="secure-score-faq"></a>
+Február 2019-én a súlyosságuk jobb illeszkedése érdekében Security Center néhány javaslat pontszámát. Ennek a beállításnak az eredményeképpen előfordulhat, hogy a biztonsági pontszámok teljes értékei módosulnak.  A biztonságos pontszámról további információt a [biztonságos pontszám kiszámítása](security-center-secure-score.md)című témakörben talál.
 
 ### <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Mi a különbség a fenyegetéseket észlelt, és kapni a Microsoft Security Response Center és az Azure Security Center által?
 A Microsoft Security Response Center (MSRC) hajt végre, válassza ki a biztonsági figyelése az Azure-hálózat és az infrastruktúra, és harmadik felektől származó threat intelligence és visszaélések panaszok kap. MSRC tudomására jut, hogy vásárlói adatokat egy jogosulatlan vagy illetéktelen fél hozzáfért-e, illetve, hogy az Azure használatát az ügyfél nem felel meg a feltételeket az elfogadható használja, amikor egy biztonsági incidens manager értesíti a. Értesítés általában akkor fordul elő, a biztonsági felelősök kapcsolati adatait meg az Azure Security Center vagy az Azure-előfizetés tulajdonosa, ha nincs megadva a biztonsági kapcsolattartó e-mail elküldésével.
@@ -303,7 +305,7 @@ Az Azure Security Center figyeli a következő Azure-erőforrások:
 * Az Azure Web Apps (a [App Service Environment-környezet](../app-service/environment/intro.md))
 * Például a webalkalmazási tűzfal a virtuális gépek és az App Service Environment az Azure-előfizetésében integrált partnermegoldások
 
-Emellett nem Azure-beli (pl. helyszíni) számítógépek is megfigyelhetők az Azure Security Center (mindkettő [Windows-számítógépek](./quick-onboard-windows-computer.md) és [Linux rendszerű számítógépek](./quick-onboard-linux-computer.md) támogatottak)
+Emellett a nem Azure (beleértve a helyszíni) számítógépeket is figyelheti Azure Security Center (a [Windows rendszerű számítógépek](./quick-onboard-windows-computer.md) és a Linux rendszerű [számítógépek](./quick-onboard-linux-computer.md) is támogatottak)
 
 ## <a name="virtual-machines"></a>Virtuális gépek
 ### <a name="what-types-of-virtual-machines-are-supported"></a>Milyen típusú virtuális gépek támogatottak?

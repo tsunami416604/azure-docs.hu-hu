@@ -1,6 +1,6 @@
 ---
-title: Oracle-megoldások az Azure virtual machines |} A Microsoft Docs
-description: További információ a támogatott konfigurációk és korlátozások, a Microsoft Azure-on Oracle virtuálisgép-lemezképek.
+title: Oracle-megoldások az Azure Virtual Machines szolgáltatásban | Microsoft Docs
+description: Ismerkedjen meg az Oracle virtuálisgép-rendszerképek támogatott konfigurációinak és korlátaival Microsoft Azureon.
 services: virtual-machines-linux
 documentationcenter: ''
 author: romitgirdhar
@@ -15,24 +15,24 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 70e87a38373688c1b364a079cd07934309662e3e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f13c7e6db2bf13c0547ee8689e22c9f04fe6d511
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707436"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68826758"
 ---
-# <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle Virtuálisgép-rendszerképek és azok üzembe helyezését, a Microsoft Azure
+# <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM-rendszerképek és azok üzembe helyezése Microsoft Azure
 
-Ez a cikk ismerteti az Oracle-megoldások az Azure piactéren elérhető Oracle által közzétett virtuálisgép-rendszerképek alapján kapcsolatos információkat. Ha érdekli a felhőbe irányuló kérelem Oracle Felhőbeli infrastruktúra-megoldások, [Oracle-alkalmazási megoldások integrálása a Microsoft Azure és az Oracle-felhő-infrastruktúra](oracle-oci-overview.md).
+Ez a cikk az Oracle által az Azure piactéren közzétett virtuálisgép-rendszerképeken alapuló Oracle-megoldásokkal kapcsolatos információkat ismerteti. Ha az Oracle-alapú felhőalapú infrastruktúrával kapcsolatos felhőalapú alkalmazások megoldásait érdekli, tekintse meg az [Oracle Application solutions Microsoft Azure és az Oracle Cloud Infrastructure integrálását](oracle-oci-overview.md)ismertető témakört.
 
-Jelenleg az elérhető rendszerképek listájának lekéréséhez futtassa a következő parancsot:
+A jelenleg elérhető rendszerképek listájának lekéréséhez futtassa a következő parancsot:
 
 ```azurecli-interactive
 az vm image list --publisher oracle -o table --all
 ```
 
-2019. május kezdődően a következő rendszerképek érhetők el:
+A május 2019-től kezdve az alábbi rendszerképek érhetők el:
 
 ```bash
 Offer                   Publisher    Sku                     Urn                                                          Version
@@ -55,84 +55,84 @@ Oracle-Linux            Oracle       7.6                     Oracle:Oracle-Linux
 Oracle-WebLogic-Server  Oracle       Oracle-WebLogic-Server  Oracle:Oracle-WebLogic-Server:Oracle-WebLogic-Server:12.1.2  12.1.2
 ```
 
-Ezek a lemezképek tekinti a "Saját licenc", és mint ilyen, csak kell fizetni számítási, tárolási és hálózatkezelési költségei a futó virtuális gép.  Feltételezzük, hogy meg vannak megfelelően-licenccel rendelkező Oracle-szoftverek és, hogy már működik a az Oracle egy jelenlegi támogatási szerződés. Oracle garantálta licenchordozhatósági program a helyszínről az Azure-bA. Tekintse meg a közzétett [Oracle és a Microsoft](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html) Megjegyzés licenchordozhatósági részleteiért. 
+Ezeket a lemezképeket "saját licenc használatára" számítjuk, ezért csak a virtuális gép futtatásával járó számítási, tárolási és hálózati költségekért kell fizetni.  Feltételezi, hogy Ön megfelelő licenccel rendelkezik az Oracle-szoftverek használatához, és az Oracle-vel meglévő támogatási szerződése van érvényben. Az Oracle garantálta a helyszíni Azure-ba történő licenc-mobilitást. A licencek mobilitásával kapcsolatos részletekért tekintse meg a közzétett [Oracle-és Microsoft-](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html) megjegyzést. 
 
-Egyéni felhasználók számára is beállíthatja megoldásaikat alapuljon egyéni rendszerkép létrehozása az Azure-ban, vagy a saját a helyszíni környezetből egyéni kép feltöltéséhez.
+A felhasználók dönthetnek úgy is, hogy a megoldásaikat az Azure-ban létrehozott egyéni rendszerképre alapozzák, vagy egyéni rendszerképet töltenek fel a helyszíni környezetből.
 
-## <a name="support-for-jd-edwards"></a>JD Edwards támogatása
-Oracle-támogatási Megjegyzés [Doc azonosító 2178595.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4), 9.2 JD Edwards EnterpriseOne verziók és az újabb támogatott **bármely nyilvánosfelhő-ajánlat** , amely megfelel a saját konkrét `Minimum Technical Requirements` (MTR).  Azok az operációs rendszer és szoftverek Alkalmazáskompatibilitás MTR előírásokat teljesítő egyéni rendszerképek létrehozásához szükséges. 
+## <a name="support-for-jd-edwards"></a>A JD Edwards támogatása
+Az Oracle támogatási megjegyzése szerint a 2178595,1-as [doc-azonosító](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4), a JD Edwards EnterpriseOne 9,2-es és újabb verziói **minden olyan nyilvános Felhőbeli ajánlat** esetében támogatottak, amely megfelel az adott `Minimum Technical Requirements` (MTR) szolgáltatásnak.  Olyan egyéni rendszerképeket kell létrehoznia, amelyek megfelelnek az operációs rendszer és a szoftver alkalmazás kompatibilitásának MTR-specifikációinak. 
 
-## <a name="oracle-database-vm-images"></a>Oracle database Virtuálisgép-rendszerképek
-Oracle az Azure-ban futó Oracle DB 12.1 Standard és Enterprise kiadás támogatja az Oracle Linux-alapú virtuálisgép-lemezképek.  A legjobb teljesítmény érdekében az éles számítási feladatokhoz, Oracle DB, az Azure-ban mindenképpen a Virtuálisgép-lemezkép mérete és a Premium Storage élvezik Managed Disks használatához. A való gyorsan megkezdheti az Oracle DB az Azure-ban az Oracle Virtuálisgép-lemezkép közzétett [próbálja meg az Oracle DB-Quickstart forgatókönyv](oracle-database-quick-create.md).
+## <a name="oracle-database-vm-images"></a>Oracle Database VM-rendszerképek
+Az Oracle támogatja a Oracle DB 12,1 standard és Enterprise kiadásait az Azure-ban Oracle Linux-alapú virtuálisgép-rendszerképeken.  Az Azure-beli Oracle DB éles számítási feladataihoz a legjobb teljesítmény érdekében ügyeljen arra, hogy a virtuális gép rendszerképét megfelelően méretezze, és a Premium Storage által támogatott Managed Disks használjon. Az Azure-beli közzétett virtuálisgép-rendszerkép használatával gyorsan lekérhet egy Oracle DBt az Azure-ban, és megtekintheti [Oracle db a](oracle-database-quick-create.md)gyors üzembe helyezési útmutatót.
 
-### <a name="attached-disk-configuration-options"></a>Csatlakoztatott lemez konfigurációs beállítások
+### <a name="attached-disk-configuration-options"></a>Csatolt lemez konfigurációs beállításai
 
-Csatlakoztatott lemezek az Azure Blob storage szolgáltatás támaszkodnak. Minden standard szintű lemezes elméleti legfeljebb körülbelül 500 bemeneti/kimeneti műveletek másodpercenként (IOPS) alkalmas állapotban. Prémium szintű lemez ajánlat részesíti előnyben, kiemelkedő teljesítményű adatbázisokat számítási feladatokhoz, és érhet el akár 5000 iops-érték lemezenként. Egyetlen is használhatja, ha, amely megfelel a sorozatot. Azonban a hatékony IOPS-teljesítmény javításához, ha több csatlakoztatott lemezek használatát, adathalmazainak elosztva, és ezután használhatja az Oracle automatikus Storage szolgáltatásfelügyelet (ASM). Lásd: [Oracle automatikus Storage áttekintése](https://www.oracle.com/technetwork/database/index-100339.html) Oracle ASM adott bővebben. Telepítése és a egy Linux rendszerű Azure virtuális gépen Oracle ASM konfigurálása egy példa: a [telepítése és az Oracle automatikus Tároláskezelés konfigurálása](configure-oracle-asm.md) oktatóanyag.
+A csatolt lemezek az Azure Blob Storage szolgáltatásra támaszkodnak. Minden standard lemez másodpercenként körülbelül 500 bemeneti/kimeneti műveletből áll (IOPS). A prémium szintű lemezes ajánlat nagy teljesítményű adatbázis-számítási feladatokhoz ajánlott, és lemezenként akár 5000 IOps-t is elérhet. Ha megfelel a teljesítmény igényeinek, egyetlen lemezt is használhat. Ha azonban több csatlakoztatott lemezt is használ, akkor javíthatja a hatékony IOPS teljesítményt, az adatbázis-adathalmazokat, majd az Oracle automatikus tárterület-kezelést (ASM) használhatja. További Oracle ASM-specifikus információk: az [Oracle automatikus tárolásának áttekintése](https://www.oracle.com/technetwork/database/index-100339.html) . Az Oracle ASM Linux Azure-beli virtuális gépen történő telepítésével és konfigurálásával kapcsolatos példát a következő témakörben talál: [Oracle automatizált tároló-kezelési oktatóanyag telepítése és konfigurálása](configure-oracle-asm.md) .
 
-### <a name="shared-storage-configuration-options"></a>Megosztott tároló konfigurációs beállítások
+### <a name="shared-storage-configuration-options"></a>Megosztott tároló konfigurációs beállításai
 
-NetApp Azure Files úgy lett kialakítva, a core követelményeinek nagy teljesítményű számítási feladatokhoz, például adatbázisok a felhőben futó, és itt;
-- Az Azure natív megosztott NFS tárolási szolgáltatás vagy Oracle-feladatok futtatásához a virtuális gép natív NFS-ügyfelet, vagy az Oracle dNFS
-- A való életből vett IOPS tartomány igényeknek megfelelően méretezhető teljesítményszintek
+Azure NetApp Files úgy lett kialakítva, hogy megfeleljenek a nagy teljesítményű számítási feladatok, például az adatbázisok a felhőben való futtatásának alapvető követelményeinek, és biztosítson;
+- Azure natív megosztott NFS Storage szolgáltatás Oracle-alapú számítási feladatok futtatásához virtuális gépek natív NFS-ügyfelén vagy Oracle dNFS
+- Méretezhető teljesítményszint, amely a IOPS-igények valós tartományát tükrözi
 - Közel valós idejű adatelérés
-- Magas rendelkezésre állás, a nagyfokú tartósság és a nagy mennyiségű, az üzletmenet szempontjából kritikus fontosságú üzleti számítási feladatokhoz (például SAP és Oracle) által jellemzően igényelt kezelhetőség
-- Gyors és hatékony biztonsági mentés és helyreállítás elérése érdekében a legtöbb agresszív RTO és RPO SLA
+- Magas rendelkezésre állás, magas tartósság és kezelhetőség nagy méretekben, jellemzően a kritikus fontosságú vállalati munkaterhelések (például az SAP és az Oracle) iránt
+- Gyors és hatékony biztonsági mentés és helyreállítás, a legagresszívebb RTO és RPO SLA-k elérése érdekében
 
-Ezeket a képességeket is lehetséges, mert NetApp fájlokat az Azure-alapú környezetben az Azure data center – natív Azure szolgáltatásként futtató NetApp® ONTAP® teljes mértékben flash rendszereken. Ez egy ideális adatbázis tárolási technológia, amely üzembe helyezhető és hasonlóan más az Azure tárolási lehetőségeinek felhasznált. Lásd: [Azure NetApp fájlok dokumentáció](https://docs.microsoft.com/azure/azure-netapp-files/) hogyan helyezheti üzembe és Azure NetApp fájlok NFS-kötetek eléréséhez további tájékoztatást. Lásd: [Oracle az Azure üzembe helyezési ajánlott eljárás az útmutató használatával Azure NetApp fájlokat](https://www.netapp.com/us/media/tr-4780.pdf) az Oracle-adatbázis, az Azure Files-NetApp működő kapcsolatos ajánlott eljárásokat mutatják.
+Ezek a képességek azért lehetségesek, mert a Azure NetApp Files a NetApp® ONTAP® az Azure-adatközpont-környezetben futó összes Flash-rendszerre épül, Azure-beli natív szolgáltatásként. Az eredmény egy ideális adatbázis-tárolási technológia, amely ugyanúgy kiépíthető és felhasználható, mint a többi Azure Storage-lehetőség. Az Azure NetApp Files NFS-kötetek üzembe helyezésével és elérésével kapcsolatos további információkért tekintse meg [Azure NetApp Files dokumentációját](https://docs.microsoft.com/azure/azure-netapp-files/) . Tekintse meg az [Oracle az Azure-beli üzembe helyezéssel kapcsolatos ajánlott eljárásokat ismertető útmutatót](https://www.netapp.com/us/media/tr-4780.pdf) , amely az Oracle-adatbázisok Azure NetApp Files-on való üzemeltetésére vonatkozó ajánlott eljárások Azure NetApp Files
 
 
-## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle alkalmazás valós fürt (Oracle RAC)
-Oracle jogosultságifiók-tanúsítványok célja a több csomópontos fürt helyi konfigurációkban egyetlen csomópont a hiba elhárításához. Két helyszíni technológia, amely nem natív, rendkívül nagy kapacitású nyilvános felhő környezeteiben támaszkodik: hálózati csoportos küldéses és a megosztott lemez. Ha az adatbázis-megoldástól igényel Oracle jogosultságifiók-tanúsítványok az Azure-ban, szüksége van-e külső gyártótól származó szoftverrel, hogy ezek a technológiák =. Az Oracle jogosultságifiók-tanúsítványok további információkért lásd: a [FlashGrid SkyCluster oldal](https://www.flashgrid.io/oracle-rac-in-azure/).
+## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application-fürt (Oracle RAC)
+Az Oracle RAC úgy lett kialakítva, hogy csökkentse az egyetlen csomópont meghibásodását egy helyszíni, többcsomópontos fürt konfigurációjában. A szolgáltatás két helyszíni technológiára támaszkodik, amelyek nem natívak a Hyper-Scale Cloud Environment-környezetek számára: a hálózat több-Cast és a megosztott lemez. Ha az adatbázis-megoldáshoz Oracle RAC szükséges az Azure-ban, akkor ezeket a technológiákat harmadik = fél szoftverrel kell engedélyeznie. Az Oracle RAC-ról további információt a [FlashGrid SkyCluster oldalon](https://www.flashgrid.io/oracle-rac-in-azure/)talál.
 
-## <a name="high-availability-and-disaster-recovery-considerations"></a>Magas rendelkezésre állás és vészhelyreállítás kapcsolatos szempontok
-Az Azure-ban Oracle-adatbázisok használatakor Ön felelős végrehajtási egy magas rendelkezésre állási és vészhelyreállítási megoldás állásidő elkerülése érdekében. 
+## <a name="high-availability-and-disaster-recovery-considerations"></a>Magas rendelkezésre állás és vész-helyreállítási megfontolások
+Ha Oracle-adatbázisokat használ az Azure-ban, az állásidő elkerülése érdekében a magas rendelkezésre állású és vész-helyreállítási megoldás végrehajtásáért felelős. 
 
-Magas rendelkezésre állás és vészhelyreállítás helyreállítási Oracle Database Enterprise Edition (anélkül, hogy az Oracle RAC) elérhető Azure-beli [Data Guard, aktív Data Guard](https://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html), vagy [Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate), a két adatbázis két különálló virtuális gépeken. Virtuális gépeket is lehet ugyanazon [virtuális hálózat](https://azure.microsoft.com/documentation/services/virtual-network/) annak érdekében, hogy azok képesek elérni egymást az állandó magánhálózati IP-címen keresztül.  Emellett javasoljuk, hogy a virtuális gépek elhelyezése az azonos rendelkezésre állási beállításai lehetővé teszik az Azure-bA helyezze azokat különálló tartalék tartományokban és frissítési tartományokba. Meg szeretné georedundancia rendelkezik, állítsa be a két adatbázis között két különböző régióban replikálja, és a két példányok összekapcsolása VPN-átjáró.
+A magas rendelkezésre állás és a vész-helyreállítás a Oracle Database Enterprise Edition számára (az Oracle RAC-ra való támaszkodás nélkül) az Azure-ban az [Adatvédelem, az aktív adatvédelem](https://www.oracle.com/database/technologies/high-availability/dataguard.html)vagy az Oracle- [GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate)használatával érhető el, két adatbázissal két külön virtuális gépen gépek. Mindkét virtuális gépnek ugyanabban a [virtuális hálózatban](https://azure.microsoft.com/documentation/services/virtual-network/) kell lennie annak biztosításához, hogy a privát állandó IP-címen keresztül hozzáférhessenek egymáshoz.  Javasoljuk továbbá, hogy a virtuális gépeket ugyanazon rendelkezésre állási csoportba helyezze, hogy az Azure külön tartalék tartományba és frissítési tartományba helyezze őket. Ha szeretné, hogy a Geo-redundancia legyen, állítsa be a két adatbázist két különböző régió között, és kapcsolódjon a két példányhoz egy VPN Gateway.
 
-Az oktatóanyag [megvalósítása Oracle Data Guard az Azure-ban](configure-oracle-dataguard.md) végigvezeti azokon az alapvető beállítási eljárást az Azure-ban.  
+Az Azure-beli [Oracle](configure-oracle-dataguard.md) -adatvédelmet bemutató oktatóanyag végigvezeti az Azure-beli alapszintű telepítési eljáráson.  
 
-Az Oracle Data Guard, magas rendelkezésre állás érhető el egy virtuális gép, egy másik virtuális gépen, egy másodlagos (készenléti) adatbázis elsődleges adatbázis és a közöttük beállítása egyirányú replikálás. Ez az adatbázis másolatát olvasási hozzáférést. Az Oracle GoldenGate konfigurálhatja úgy a kétirányú replikációt a két adatbázis között. Állítsa be a magas rendelkezésre állású megoldás az adatbázisok, ezek az eszközök kezelésével kapcsolatos információkért lásd: [aktív Data Guard](https://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html) és [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html) az Oracle-webhelyen található dokumentáció. Ha meg kell olvasási és írási hozzáférés, a másolatot készít az adatbázisról, [Oracle aktív Data Guard](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html).
+Az Oracle-adatvédelemmel a magas rendelkezésre állást egyetlen virtuális gép elsődleges adatbázisa, egy másodlagos (készenléti) adatbázis egy másik virtuális gépen, valamint a közöttük zajló egyirányú replikáció is lehetővé teheti. Az eredmény olvasási hozzáférés az adatbázis másolatához. Az Oracle GoldenGate használatával kétirányú replikációt konfigurálhat a két adatbázis között. Ha meg szeretné tudni, hogyan állíthat be magas rendelkezésre állású megoldást az adatbázisaihoz ezekkel az eszközökkel, tekintse meg az Oracle webhelyén az [aktív](https://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html) adatvédelmet és a [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html) dokumentációját. Ha írási-olvasási hozzáféréssel kell rendelkeznie az adatbázis másolatához, használhatja az [Oracle aktív](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)adatvédelmet.
 
-Az oktatóanyag [megvalósítása Oracle GoldenGate az Azure-ban](configure-oracle-golden-gate.md) végigvezeti azokon az alapvető beállítási eljárást az Azure-ban.
+Az Azure-beli [Oracle GoldenGate üzembe](configure-oracle-golden-gate.md) helyezése az Azure-beli alapszintű telepítési eljárás végigvezeti.
 
-Mellett egy magas rendelkezésre ÁLLÁSÚ és Vészhelyreállítási megoldás lett tervezve, az Azure-ban, a biztonsági mentési stratégiájának helyen állíthatja vissza az adatbázist kell rendelkeznie. Az oktatóanyag [biztonsági mentése és helyreállítása az Oracle-adatbázis](oracle-backup-recovery.md) végigvezeti azokon az alapvető eljárás következetes biztonsági mentést.
+Az Azure-ban létrehozott HA-és DR-megoldás mellett egy biztonsági mentési stratégiával kell rendelkeznie az adatbázis visszaállításához. Az oktatóanyag [biztonsági mentése és helyreállítása egy Oracle Database](oracle-backup-recovery.md) végigvezeti a konzisztens biztonsági mentés létrehozásához szükséges alapvető eljáráson.
 
 ## <a name="oracle-weblogic-server-virtual-machine-images"></a>Oracle WebLogic Server virtuálisgép-lemezképek
 
-* **Fürtszolgáltatás támogatott Enterprise kiadásában csak.** WebLogic fürtözés csak az Enterprise Edition a WebLogic Server használatakor használandó rendelkezik licenccel. Ne használja a WebLogic Server Standard Edition fürtszolgáltatás.
-* **A csoportos UDP nem támogatott.** Az Azure támogatja az UDP Államokban, de nem csoportos vagy szórásos küldéshez. WebLogic Server számíthat a Azure UDP egyedi képességeit. A függő UDP egyedi küldést a legjobb eredmények érdekében azt javasoljuk, hogy a statikus vagy megtartott 10-nél több felügyelt kiszolgálókkal a WebLogic fürtméret tárolódik.
-* **WebLogic Server (például vállalati JavaBeans használatakor) T3 hozzáférés azonosnak kell lennie a nyilvános és magánhálózati portokra vár.** Egy többrétegű forgatókönyvet, a szolgáltatási réteg (EJB) alkalmazás futtató két vagy több virtuális gépet, egy nevű virtuális hálózatot álló WebLogic Server fürtön *SLWLS*. Az ügyfél szintje az azonos virtuális hálózatba, egy egyszerű Java-program, amelyhez EJB hívja meg a szolgáltatási réteg fut egy másik alhálózat. Terheléselosztás a szolgáltatási réteg szükség, mert egy nyilvános kiegyenlített terhelésű végpontot kell létrehozni a virtuális gépek, a WebLogic Server-fürt. Ha az Ön által megadott magánhálózati port különbözik a nyilvános portot (például 7006:7008), például a következő hiba jelenik meg:
+* **A fürtözés csak Enterprise Edition rendszeren támogatott.** A WebLogic-fürtözés csak akkor használható, ha a WebLogic Server Enterprise kiadását használja. Ne használjon fürtözést a WebLogic Server Standard Edition kiadásával.
+* **Az UDP csoportos küldés nem támogatott.** Az Azure támogatja az UDP-címes küldést, de nem csoportos küldést vagy szórást. A WebLogic-kiszolgáló képes az Azure UDP egyedi küldési képességeinek kihasználására. Az UDP egyedi küldésre támaszkodó legjobb eredmények érdekében javasoljuk, hogy a WebLogic-fürt mérete statikus legyen, vagy ne legyen több, mint 10 felügyelt kiszolgáló.
+* **A WebLogic-kiszolgáló nyilvános és magánhálózati portokat vár a T3-hozzáféréshez (például vállalati JavaBeans használatakor).** Vegyünk például egy többrétegű forgatókönyvet, amelyben a Service Layer (EJB) alkalmazás két vagy több virtuális gépet tartalmazó WebLogic Server-fürtön fut egy *SLWLS*nevű virtuális hálózatban. Az ügyfél szintje ugyanabban a virtuális hálózatban található egy másik alhálózatban, és egy egyszerű Java-program futtatásával próbálkozik a EJB meghívásával a szolgáltatási rétegben. Mivel a szolgáltatási réteg terheléselosztása szükséges, a WebLogic-kiszolgálófürt virtuális gépei számára létre kell hozni egy nyilvános terheléselosztási végpontot. Ha a megadott privát port eltér a nyilvános porttól (például 7006:7008), akkor a következő hiba történik:
 
        [java] javax.naming.CommunicationException [Root exception is java.net.ConnectException: t3://example.cloudapp.net:7006:
 
        Bootstrap to: example.cloudapp.net/138.91.142.178:7006' over: 't3' got an error or timed out]
 
-   Ennek az oka T3 távelérési WebLogic Server vár a terheléselosztó portja és a felügyelt WebLogic server port azonosnak kell lennie. Az előző esetben az ügyfél port 7006 (a terheléselosztó portja) fér hozzá, és a felügyelt kiszolgáló figyel 7008 (a magánhálózati port). Ez a korlátozás akkor alkalmazható, csak a T3 eléréséhez, nem HTTP.
+   Ennek az az oka, hogy bármely távoli T3-hozzáférés esetén a WebLogic-kiszolgáló a terheléselosztó portját és a WebLogic felügyelt kiszolgáló portját is megegyezőként várja. Az előző esetben az ügyfél eléri a 7006-as portot (a terheléselosztó portját), és a felügyelt kiszolgáló figyeli a 7008 (a magánhálózati portot). Ez a korlátozás csak a T3-hozzáférésre vonatkozik, HTTP-n keresztül.
 
-   A probléma elkerülése érdekében a következő kerülő megoldások valamelyikével:
+   A probléma elkerüléséhez használja a következő megkerülő megoldások egyikét:
 
-  * Elosztott terhelésű végpontok T3 hozzáférés dedikált azonos számú privát és nyilvános portot használni.
-  * Az alábbi JVM-paraméter WebLogic Server indítása során a következők:
+  * Ugyanazokat a magán-és nyilvános portszámokat használja a T3-hozzáféréshez dedikált elosztott terhelésű végpontokhoz.
+  * Adja meg a következő JVM paramétert a WebLogic-kiszolgáló indításakor:
 
     ```
     -Dweblogic.rjvm.enableprotocolswitch=true
     ```
 
-Kapcsolódó tudnivalókért lásd a Tudásbázis **860340.1** , <https://support.oracle.com>.
+A kapcsolódó információkról a TUDÁSBÁZISCIKK **860340,1** -es <https://support.oracle.com>cikkében olvashat.
 
-* **A dinamikus fürtözés és a terheléselosztási korlátozások.** Tegyük fel, a WebLogic Server dinamikus-fürtöt használ, és közzéteheti egyetlen, nyilvános kiegyenlített terhelésű végponton keresztül az Azure-ban. Ezt megteheti, mindaddig, amíg használja egy rögzített portszámot az egyes felügyelt kiszolgálókhoz (egy tartomány nem dinamikusan kiosztott), és ne indítsa el a több felügyelt kiszolgálók, mint a virtuális gépek a rendszergazda nyomon követéséhez. Azt jelenti hogy nem virtuális gépenként legfeljebb egy felügyelt kiszolgáló). Ha a konfigurációt eredményez további WebLogic-kiszolgálókat, mint a virtuális gép indítása folyamatban (azaz ahol több WebLogic Server-példány osztozik ugyanahhoz a virtuális géphez), akkor már nem lehetséges több ezekhez a példányokhoz, a WebLogic-kiszolgálók kötést létrehozni egy adott port számát. A többi virtuális gép által sikertelen.
+* **Dinamikus fürtözési és terheléselosztási korlátozások.** Tegyük fel, hogy dinamikus fürtöt szeretne használni a WebLogic-kiszolgálón, és az Azure-ban egyetlen, nyilvános terheléselosztási végponton keresztül teszi közzé. Ezt akkor teheti meg, ha rögzített portszámot használ az egyes felügyelt kiszolgálókon (a tartományhoz nem dinamikusan van rendelve), és nem indít el több felügyelt kiszolgálót, mint a rendszergazda által nyomon követett gépek. A virtuális gépen nincs több felügyelt kiszolgáló. Ha a konfigurációban több WebLogic-kiszolgáló indul el, mint a virtuális gépek (azaz ha több WebLogic-kiszolgálópéldány ugyanazt a virtuális gépet használja), akkor a WebLogic-kiszolgálók több példánya nem lehetséges. kötés egy adott portszámhoz. Az adott virtuális gépen lévő többi nem sikerül.
 
-   Ha konfigurál a felügyeleti kiszolgáló automatikusan hozzárendelni a felügyelt kiszolgálókra egyedi portszámot, majd terheléselosztás nem alkalmas, mert az Azure nem támogatja több magánhálózati port, egy nyilvános portot történő hozzárendelésével lenne szükséges a konfiguráció.
-* **A virtuális gépen a WebLogic Server több példánya.** Az üzemelő példány követelményeitől függően érdemes lehet WebLogic Server több példánya futó ugyanahhoz a virtuális géphez, ha a virtuális gép elég nagy. Például egy közepes méretű virtuális gépen, két magot tartalmazó dönthet WebLogic Server két példánya futtatásához. Azonban továbbra is ajánlott, kerülje a hibaérzékeny pontokat kíván bevezetni az architektúra, amely vonatkozik arra az esetre, ha csak egy virtuális gép, amelyen fut a WebLogic Server több példánya. Legalább két virtuális gép használatával jobb módszer lehet, és minden virtuális gép futtatására WebLogic Server több példánya. WebLogic Server mindegyik példányán is ugyanazon fürt része. Azonban ez jelenleg nem lehetséges az Azure-terheléselosztás végpontok belül ugyanahhoz a virtuális géphez, ilyen WebLogic Server üzemelő példányok által feltárt, mert az Azure load balancer az elosztott terhelésű kiszolgálókat szétosztására egyedi igényel virtuális gépek.
+   Ha úgy konfigurálja a felügyeleti kiszolgálót, hogy automatikusan rendeljen hozzá egyedi portszámokat a felügyelt kiszolgálókhoz, akkor a terheléselosztás nem lehetséges, mivel az Azure nem támogatja egyetlen nyilvános portról több privát portra való leképezést, mivel ehhez szükséges Configuration.
+* **A WebLogic-kiszolgáló több példánya egy virtuális gépen.** A központi telepítés követelményeitől függően érdemes lehet több példányban futtatni a WebLogic-kiszolgálót ugyanazon a virtuális gépen, ha a virtuális gép elég nagy méretű. Például egy közepes méretű virtuális gépen, amely két magot tartalmaz, dönthet úgy, hogy a WebLogic-kiszolgáló két példányát futtatja. Azonban azt javasoljuk, hogy ne vezessen be egyetlen meghibásodási pontot az architektúrába, ami akkor fordulhat elő, ha csak egy olyan virtuális gépet használt, amely a WebLogic-kiszolgáló több példányát futtatja. Ha legalább két virtuális gépet használ, jobb megközelítés lehet, és minden egyes virtuális gép a WebLogic-kiszolgáló több példányát futtathatja. A WebLogic-kiszolgáló minden példánya továbbra is ugyanahhoz a fürthöz tartozik. Azonban jelenleg nem lehet az Azure-ban olyan terheléselosztási végpontokat használni, amelyeket az ilyen WebLogic-kiszolgálók ugyanazon a virtuális gépen tesznek elérhetővé, mert az Azure Load Balancer megköveteli, hogy a terheléselosztási kiszolgálók egyediek legyenek elosztva virtuális gépek.
 
-## <a name="oracle-jdk-virtual-machine-images"></a>JDK-Oracle virtuálisgép-lemezképek
-* **JDK 6 és 7 legújabb frissítéseit.** Javasoljuk, hogy a legújabb nyilvános, támogatott Java (aktuálisan Java 8) verzióját használja, amíg az Azure is elérhetővé teszi JDK 6 és 7 lemezképek. Ennek célja, hogy még nem áll készen, frissíteni kell a JDK 8 örökölt alkalmazások számára. Bár előfordulhat, hogy a frissítések előző JDK-lemezképek már nem érhető el nyilvános, az Oracle, a Microsoft partneri adott a JDK 6 és 7, Azure által biztosított rendszerképek célja egy újabb nem nyilvános frissítés általában az Oracle által nyújtott tartalmaz csak bizonyos csoportjaira Oracle ügyfél a támogatott. A JDK-lemezképek újabb verzióit lesz elérhető a JDK 6. és 7 frissített kiadásokban idővel.
+## <a name="oracle-jdk-virtual-machine-images"></a>Oracle JDK virtuálisgép-rendszerképek
+* **JDK 6 és 7 legújabb frissítések.** Habár javasoljuk, hogy a legújabb nyilvános, támogatott Java-verzió (jelenleg a Java 8) használatával az Azure a JDK 6 és 7 rendszerképeket is elérhetővé teszi. Ez olyan örökölt alkalmazások számára készült, amelyek még nem állnak készen a JDK 8 verzióra való frissítésre. Habár előfordulhat, hogy a korábbi JDK-lemezképek frissítései többé nem lesznek elérhetők az Oracle-hez készült Microsoft-partneri együttműködés miatt, az Azure által biztosított JDK 6 és 7 rendszerképeket úgy tervezték, hogy az Oracle által általában kínált újabb, nem nyilvános frissítést tartalmazza csak az Oracle támogatott ügyfeleinek kiválasztott csoportja. A JDK-lemezképek új verziói időben elérhetővé válnak a JDK 6 és 7-es verziójának frissített kiadásaival.
 
-   A JDK a JDK 6 és 7 képeket, és a virtuális gépek és képek származik, csak akkor használható, Azure-ban.
-* **64-bit JDK.** Az Oracle WebLogic Server virtuálisgép-lemezképeket és az Azure által biztosított Oracle-JDK virtuálisgép-lemezképek tartalmazzák a Windows Server és a JDK 64 bites verzióit.
+   A JDK 6 és 7 lemezképben elérhető JDK, valamint a belőlük származtatott virtuális gépek és képek csak az Azure-on belül használhatók.
+* **64 bites JDK.** Az Oracle WebLogic Server virtuálisgép-lemezképek és az Azure által biztosított Oracle JDK virtuálisgép-lemezképek a Windows Server és a JDK 64 bites verzióit tartalmazzák.
 
 ## <a name="next-steps"></a>További lépések
-Most már a Microsoft Azure virtuálisgép-rendszerképek alapján aktuális Oracle megoldások áttekintése. A következő lépés, hogy az első Oracle database, az Azure-ban telepíti.
+Most áttekintheti az aktuális Oracle-megoldásokat a Microsoft Azure virtuális gépek rendszerképei alapján. A következő lépés az első Oracle-adatbázis üzembe helyezése az Azure-ban.
 
 > [!div class="nextstepaction"]
 > [Oracle-adatbázis létrehozása az Azure-ban](oracle-database-quick-create.md)

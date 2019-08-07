@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás az Azure ExpressRoute az Oracle-felhő-infrastruktúra |} A Microsoft Docs
-description: Az Azure ExpressRoute összekapcsolása Oracle Felhőbeli infrastruktúrát (OCI) FastConnect engedélyezéséhez a több felhőre kiterjedő Oracle alkalmazási megoldások
+title: Az Azure ExpressRoute és az Oracle Cloud Infrastructure összekötése | Microsoft Docs
+description: Az Azure ExpressRoute és az Oracle Cloud Infrastructure (OCI) FastConnect összekapcsolása a felhőalapú Oracle-alkalmazások megoldásának lehetővé tételéhez
 documentationcenter: virtual-machines
 author: romitgirdhar
 manager: gwallace
@@ -12,97 +12,95 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/24/2019
+ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 671d7c8eb9f10e346b49056e1cc117c9882bb6e8
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3b901f7aba40f3548a259d36b83fedca0ff2a5c2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707578"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781291"
 ---
-# <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>A közvetlen összekapcsolása az Azure és az Oracle-felhő-infrastruktúra beállítása  
+# <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Közvetlen kapcsolat beállítása az Azure és az Oracle Cloud Infrastructure között  
 
-Hozhat létre egy [integrált többfelhős felhasználói felület](oracle-oci-overview.md) (előzetes verzió), a Microsoft és Oracle kínálnak az Azure és az Oracle Felhőbeli infrastruktúrát (OCI) keresztül közvetlen összekapcsolása [ExpressRoute](../../../expressroute/expressroute-introduction.md) és [ FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm). Az ExpressRoute- és FastConnect összekapcsolása révén ügyfeleink tapasztalhatnak, alacsony késleltetésű, nagy átviteli sebességet, a két felhők közötti privát közvetlen kapcsolódás.
+[Integrált többfelhős felhasználói élmény](oracle-oci-overview.md) (előzetes verzió) létrehozásához a Microsoft és az Oracle közvetlen kapcsolatot biztosít az Azure és az Oracle Cloud Infrastructure (OCI) között a [ExpressRoute](../../../expressroute/expressroute-introduction.md) és a [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)segítségével. A ExpressRoute és a FastConnect összekapcsolásával az ügyfelek alacsony késést, nagy átviteli sebességet és közvetlen kapcsolatot tapasztalhatnak a két felhő között.
 
 > [!IMPORTANT]
-> Az előzetes fázisban van a Microsoft Azure és a OCI közötti kapcsolat. Ahhoz, hogy az Azure és a OCI közel valós idejű összekapcsolását, az Azure-előfizetés és OCI bérlős kell ezt a képességet az engedélyezési listán.
+> A Microsoft Azure és a OCI közötti kapcsolat az előzetes verziójú szakaszban található. Az Azure és a OCI közötti kis késleltetésű kapcsolat engedélyezéséhez először engedélyeznie kell az Azure-előfizetést ehhez a képességhez.
 
-Az alábbi képen látható, az összekapcsolás magas szintű áttekintését:
+Az alábbi képen az összekapcsolással kapcsolatos magas szintű áttekintés látható:
 
-![A felhőbe irányuló hálózati kapcsolat](media/configure-azure-oci-networking/azure-oci-connect.png)
+![Felhő közötti hálózati kapcsolatok](media/configure-azure-oci-networking/azure-oci-connect.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-ban és OCI közötti kapcsolatot létesíteni, rendelkeznie kell egy aktív Azure-előfizetéssel, és a egy aktív OCI bérlős.
+* Az Azure és a OCI közötti kapcsolat létesítéséhez aktív Azure-előfizetéssel és aktív OCI-bérlettel kell rendelkeznie.
 
-* Kapcsolat csak akkor lehetséges, ahol az Azure ExpressRoute-társviszony-létesítési helyszínen közel kerülhet a vagy a a OCI FastConnect társviszony-létesítési ugyanazon a helyen van. Lásd: [előzetes verzió korlátozásai](oracle-oci-overview.md#preview-limitations).
+* A kapcsolódás csak akkor lehetséges, ha egy Azure ExpressRoute-társítási hely közel van a OCI-FastConnect azonos egyenrangú helyéhez vagy ahhoz. Lásd az [előzetes](oracle-oci-overview.md#preview-limitations)verzióra vonatkozó korlátozásokat.
 
-* Az Azure-előfizetés szerepel az engedélyezési listán előzetes képességhez kell lennie. A Microsoft képviselőjétől engedélyezze ezt a funkciót, az előfizetéséhez.
+* Ehhez az előzetes verzióhoz az Azure-előfizetést is engedélyeznie kell. Forduljon a Microsoft képviselőjéhez, és engedélyezze ezt a funkciót az előfizetésében.
 
-* A OCI bérlős szerepel az engedélyezési listán előzetes képességhez kell lennie. Részletek az Oracle képviselőjétől kaphat.
+## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>Közvetlen kapcsolat konfigurálása a ExpressRoute és a FastConnect között
 
-## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>ExpressRoute- és FastConnect közötti közvetlen kapcsolat konfigurálása
+1. Hozzon létre egy szabványos ExpressRoute-áramkört az Azure-előfizetésben egy erőforráscsoport alatt. 
+    * A ExpressRoute létrehozásakor válassza az **Oracle Cloud FastConnect** szolgáltatást szolgáltatóként. ExpressRoute áramkör létrehozásához tekintse meg a [lépésenkénti útmutatót](../../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
+    * Az Azure ExpressRoute-áramkör részletes sávszélesség-beállításokat biztosít, míg a FastConnect 1, 2, 5 vagy 10 GB/s használatát támogatja. Ezért javasoljuk, hogy válasszon egyet a megfelelő sávszélesség-beállítások közül a ExpressRoute területen.
 
-1. Hozzon létre egy standard ExpressRoute-kapcsolatcsoport egy erőforráscsoportba tartozó Azure-előfizetéséhez. 
-    * Az ExpressRoute létrehozásakor válassza ki a **Oracle Felhőbeli FastConnect** a szolgáltató. Hozzon létre egy ExpressRoute-kapcsolatcsoportot, tekintse meg a [lépésenkénti útmutató](../../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
-    * Az Azure ExpressRoute-kapcsolatcsoport részletes sávszélesség beállításokat biztosít, mivel a FastConnect támogatja az 1, 2, 5 vagy 10 GB/s. Ezért ajánlott ezek alatt ExpressRoute egyező sávszélesség-lehetőségek közül.
+    ![ExpressRoute-kapcsolatcsoport](media/configure-azure-oci-networking/exr-create-new.png)
+1. Jegyezze fel a ExpressRoute **szolgáltatás kulcsát**. A FastConnect-áramkör konfigurálása során meg kell adnia a kulcsot.
 
-    ![ExpressRoute-kapcsolatcsoport létrehozása](media/configure-azure-oci-networking/exr-create-new.png)
-1. Jegyezze fel az ExpressRoute **Szolgáltatáskulcs**. Meg kell adnia a kulcsot a FastConnect kapcsolatcsoport konfigurálása közben.
-
-    ![Az ExpressRoute szolgáltatás kulcsa](media/configure-azure-oci-networking/exr-service-key.png)
+    ![ExpressRoute szolgáltatás kulcsa](media/configure-azure-oci-networking/exr-service-key.png)
 
     > [!IMPORTANT]
-    > Díjköteles az ExpressRoute költségeire, amint az ExpressRoute-kapcsolatcsoport ki van építve (akkor is, ha a **szolgáltató állapota** van **nincs kiépítve**).
+    > A ExpressRoute díjait a ExpressRoute áramkör kiépítés után számoljuk fel (még akkor is, ha a **szolgáltató állapota** nincs kiépítve).
 
-1. Különítsen el két magánhálózati IP-címterek / 30 minden egyes, amely nincs átfedésben az Azure virtuális hálózat vagy OCI felhőalapú virtuális hálózati IP-címtér. Hivatkozik az első IP-címtér elsődleges címteret, és a második IP-címtér, másodlagos címtér. Jegyezze fel a címeket, mert szüksége lesz a FastConnect kapcsolatcsoport konfigurálásakor.
-1. Hozzon létre egy dinamikus útválasztású átjárót (DARB). Szüksége lesz a FastConnect kapcsolatcsoport létrehozása során. További információkért lásd: a [dinamikus útválasztási átjárót](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm) dokumentációját.
-1. Hozzon létre egy FastConnect kapcsolatcsoportot, az Oracle-bérlőhöz. További információkért lásd: a [Oracle-dokumentáció](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm).
+1. Két magánhálózati IP-címtartomány kifaragása, amelyek nincsenek átfedésben az Azure Virtual Network vagy a OCI Virtual Cloud Network IP-címtartomány esetében. A rendszer az első IP-címtartományt használja elsődleges címterületként, a második IP-címtartományt pedig másodlagos címterületként. Jegyezze fel a címeket, amelyekre szüksége van a FastConnect-áramkör konfigurálásakor.
+1. Hozzon létre egy dinamikus útválasztási átjárót (DRG). Erre szüksége lesz a FastConnect-áramkör létrehozásakor. További információt a [dinamikus útválasztási átjáró](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm) dokumentációjában talál.
+1. Hozzon létre egy FastConnect áramkört az Oracle-bérlő alatt. További információkért tekintse meg az [Oracle dokumentációját](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm).
   
-    * FastConnect beállítás csoportban **Microsoft Azure: Az ExpressRoute** szolgáltatója.
-    * Válassza ki a dinamikus útválasztási átjárót, amely az Ön által üzembe helyezett az előző lépésben.
-    * Válassza ki a sávszélesség, ki kell építeni. Az optimális teljesítmény érdekében a sávszélesség egyeznie kell a sávszélesség, az ExpressRoute-kapcsolatcsoport létrehozása során kiválasztott.
-    * A **szolgáltató Szolgáltatáskulcs**, illessze be az ExpressRoute szolgáltatás kulcsot.
-    * Az előző lépésben faragottnak privát IP-címteret használja az első/30 a **elsődleges BGP IP-cím** és a második/30 a privát IP-címteret a **másodlagos BGP IP-Címét** címet.
-        * A első gyakorlatot cím hozzárendelése a két tartomány Oracle BGP IP-cím (elsődleges és másodlagos) és a második címet az ügyfél BGP IP-címét (a FastConnect szempontjából). Első gyakorlatot IP-címe, a második IP-cím a/30 címtér (az első IP-címét a Microsoft számára van fenntartva).
+    * A FastConnect konfigurálása területen válassza **a Microsoft Azure: ExpressRoute** szolgáltatóként.
+    * Válassza ki az előző lépésben kiépített dinamikus útválasztási átjárót.
+    * Válassza ki a kiépíteni kívánt sávszélességet. Az optimális teljesítmény érdekében a sávszélességnek meg kell egyeznie a ExpressRoute áramkör létrehozásakor kiválasztott sávszélességgel.
+    * A **szolgáltatói szolgáltatás kulcsában**illessze be a ExpressRoute szolgáltatás kulcsát.
+    * Az első/30 magánhálózati IP-címtartomány kifaragva az **elsődleges BGP IP-címére** és a **másodlagos BGP IP** -címéhez tartozó második/30 magánhálózati IP-címtartomány használatára.
+        * Rendelje hozzá a két tartomány első használható címét az Oracle BGP IP-címéhez (elsődleges és másodlagos) és a második címet az ügyfél BGP IP-címéhez (FastConnect perspektívából). Az első használható IP-cím a/30 címtartomány második IP-címe (az első IP-cím a Microsoft számára van fenntartva).
     * Kattintson a **Create** (Létrehozás) gombra.
-1. Fejezze be a FastConnect összekapcsolása a felhőbeli virtuális hálózati dinamikus útválasztási átjárót, útválasztási táblázatot használja az Oracle-bérlőből alatt.
-1. Keresse meg az Azure-ba, és ellenőrizze, hogy a **szolgáltató állapota** az expressroute kapcsolatcsoport változott **kiépített** , és hogy típusú társviszony-létesítés **Azure-beli privát** lett kiépítve. Ez a előfeltétele a következő lépéseket.
+1. A FastConnect a dinamikus útválasztási átjárón keresztül, az útválasztási táblázat használatával kapcsolja össze a virtuális felhőalapú hálózattal.
+1. Navigáljon az Azure-hoz, és ellenőrizze, hogy a ExpressRoute áramkör **szolgáltatói állapota** kiépítve értékre változott-e, és hogy van-e kiépítve egy **Azure Private** típusú társ. Ez a következő lépések előfeltétele.
 
-    ![Az ExpressRoute-szolgáltató állapota](media/configure-azure-oci-networking/exr-provider-status.png)
-1. Kattintson a **Azure-beli privát** társviszony-létesítés. Látni fogja a társviszony-létesítés részleteinek beállításakor a FastConnect kapcsolatcsoport mentése megadott információk alapján automatikusan konfigurálva.
+    ![ExpressRoute-szolgáltató állapota](media/configure-azure-oci-networking/exr-provider-status.png)
+1. Kattintson az **Azure Private** -partnerre. A rendszer a FastConnect áramkör beállításakor megadott információk alapján automatikusan beállítja a társítás részleteit.
 
-    ![Magánhálózati társviszony beállításai](media/configure-azure-oci-networking/exr-private-peering.png)
+    ![Privát egyenrangú beállítások](media/configure-azure-oci-networking/exr-private-peering.png)
 
-## <a name="connect-virtual-network-to-expressroute"></a>Virtuális hálózat csatlakoztatása ExpressRoute
+## <a name="connect-virtual-network-to-expressroute"></a>Virtuális hálózat összekötése a ExpressRoute
 
-1. Hozzon létre egy virtuális hálózatot és virtuális hálózati átjáró, ha még nem tette. További információkért lásd: a [lépésenkénti útmutató](../../../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md).
-1. Állítsa be a kapcsolatot a virtuális hálózati átjáró és az ExpressRoute-kapcsolatcsoport között úgy, hogy végrehajtja a [Terraform parancsfájl](https://github.com/microsoft/azure-oracle/tree/master/InterConnect-2) vagy a PowerShell-parancs végrehajtásával [konfigurálása ExpressRoute FastPath](../../../expressroute/expressroute-howto-linkvnet-arm.md#configure-expressroute-fastpath).
+1. Ha még nem tette meg, hozzon létre egy virtuális hálózatot és egy virtuális hálózati átjárót. Részletekért tekintse meg a [lépésenkénti útmutatót](../../../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md).
+1. Állítsa be a kapcsolatot a virtuális hálózati átjáró és a ExpressRoute áramkör között úgy, hogy végrehajtja a [Terraform parancsfájlt](https://github.com/microsoft/azure-oracle/tree/master/InterConnect-2) , vagy a PowerShell-parancs végrehajtásával [konfigurálja a ExpressRoute FastPath](../../../expressroute/expressroute-howto-linkvnet-arm.md#configure-expressroute-fastpath).
 
-Miután végzett a hálózati konfigurációt, a konfiguráció érvényességét kattintva ellenőrizheti **ARP-Rekodok első** és **Get útvonaltábla** alapján az ExpressRoute privát társviszony-létesítési panelen az Azure Portalon.
+A hálózati konfiguráció befejezését követően ellenőrizheti a konfiguráció érvényességét. ehhez kattintson az **ARP-rekordok** beolvasása elemre, majd a Azure Portal ExpressRoute privát társítás paneljén található **útválasztási táblázat** lekérése lehetőségre.
 
 ## <a name="automation"></a>Automation
 
-A Microsoft hozott létre ahhoz, hogy a hálózati memóriamodulok közötti automatikus telepítése a Terraform parancsfájlokat. A Terraform parancsfájlok végrehajtási, mielőtt Azure-hitelesítésre van szükség, mert azok megkövetelik, hogy az Azure-előfizetést a megfelelő engedélyekkel. Hitelesítés használatával végezheti el egy [Azure Active Directory egyszerű szolgáltatás](../../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) vagy az Azure CLI használatával. További információkért lásd: a [Terraform dokumentáció](https://www.terraform.io/docs/providers/azurerm/auth/azure_cli.html).
+A Microsoft Terraform parancsfájlokat hozott létre a hálózati összekötő automatikus üzembe helyezésének engedélyezéséhez. A Terraform parancsfájloknak a végrehajtás előtt hitelesíteniük kell az Azure-ban, mert az Azure-előfizetéshez megfelelő engedélyekkel kell rendelkezniük. A hitelesítés [Azure Active Directory egyszerű szolgáltatásnév](../../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) vagy az Azure CLI használatával végezhető el. További információkért tekintse meg a [Terraform dokumentációját](https://www.terraform.io/docs/providers/azurerm/auth/azure_cli.html).
 
-A Terraform parancsfájlok és üzembe helyezéséhez a inter-connect kapcsolódó dokumentáció megtalálható ez [GitHub-adattár](https://aka.ms/azureociinterconnecttf).
+A Terraform-parancsfájlok és a kapcsolódó dokumentáció a kapcsolaton keresztüli kapcsolódás központi telepítéséhez ebben a [GitHub](https://aka.ms/azureociinterconnecttf)-adattárban található.
 
 ## <a name="monitoring"></a>Figyelés
 
-Telepítse az ügynököket mindkét a felhőben, kihasználhatja az Azure [Network Performance monitort (NPM)](../../../expressroute/how-to-npm.md) a végpontok közötti hálózati teljesítményének figyeléséhez. Az NPM révén könnyen azonosíthatja a hálózati problémákat, és azok elhárításához nyújt segítséget.
+Ha az ügynököket mindkét felhőkre telepíti, használhatja az Azure [Network Performance monitor (NPM)](../../../expressroute/how-to-npm.md) szolgáltatást a végpontok közötti hálózat teljesítményének figyelésére. A NPM megkönnyíti a hálózati problémák azonosítását, és segít a hibák elhárításában.
 
-## <a name="delete-the-interconnect-link"></a>A memóriamodulok közötti kapcsolat törlése
+## <a name="delete-the-interconnect-link"></a>Az összekötő hivatkozásának törlése
 
-A memóriamodulok közötti törléséhez a következő lépéseket kell követnie, a megadott meghatározott sorrendben. Ezt egy "hibás állapotban" ExpressRoute-kapcsolatcsoport eredményez.
+Az összekötő törléséhez a következő lépéseket kell követni a megadott sorrendben. Ha ezt nem teszi meg, a "sikertelen állapot" ExpressRoute áramkört eredményez.
 
-1. Az ExpressRoute-kapcsolat törlése. A kapcsolat törlése gombra kattintva a **törlése** ikonra a kapcsolat az oldalon. További információkért lásd: a [az ExpressRoute dokumentációja](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#delete-a-connection-to-unlink-a-vnet).
-1. Az Oracle FastConnect törölje az Oracle Cloud konzoljáról.
-1. Az Oracle FastConnect-kapcsolatcsoport törlése után törölheti az Azure ExpressRoute-kapcsolatcsoporthoz.
+1. Törölje a ExpressRoute-kapcsolatokat. Törölje a kapcsolatokat úgy, hogy a **Törlés** ikonra kattint a kapcsolatok lapján. További információkért tekintse meg a [ExpressRoute dokumentációját](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#delete-a-connection-to-unlink-a-vnet).
+1. Törölje az Oracle-FastConnect az Oracle Cloud Console-ból.
+1. Az Oracle FastConnect-áramkör törlése után törölheti az Azure ExpressRoute áramkört.
 
-Ezen a ponton a Törlés és -megszüntetés folyamat befejeződött.
+Ezen a ponton a törlési és megszüntetési folyamat befejeződött.
 
 ## <a name="next-steps"></a>További lépések
 
-* A több felhőre kiterjedő kapcsolat OCI és az Azure közötti kapcsolatos további információkért lásd: a [Oracle-dokumentáció](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm).
-* Használat [Terraform parancsfájlok](https://aka.ms/azureociinterconnecttf) központi telepítése a célzott Oracle-alkalmazásokhoz tartozó infrastruktúra Azure keresztül, és a hálózati összekötöje konfigurálása. 
+* A OCI és az Azure közötti Felhőbeli kapcsolattal kapcsolatos további információkért tekintse meg az [Oracle dokumentációját](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm).
+* A [Terraform-parancsfájlok](https://aka.ms/azureociinterconnecttf) használatával az Azure-on keresztül megcélozhatja az Oracle-alkalmazások infrastruktúráját, és konfigurálhatja a hálózati összekötőt. 

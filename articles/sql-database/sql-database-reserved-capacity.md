@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 07/19/2019
-ms.openlocfilehash: adbc2c8818a3d7eff679dadc2245fb0ff8686fc2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/02/2019
+ms.openlocfilehash: 0139b3471eb9117830180088498eb14efd6ab661
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566924"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781304"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Előre fizetés SQL Database számítási erőforrásokhoz Azure SQL Database fenntartott kapacitással
 
@@ -63,13 +63,9 @@ A következő táblázat a kötelező mezőket ismerteti.
 1. Válassza a **Beszerzés** lehetőséget.
 1. Válassza a **foglalás megtekintése** lehetőséget a vásárlás állapotának megtekintéséhez.
 
-## <a name="cancellations-and-exchanges"></a>Megszakítások és cserék
+## <a name="cancel-exchange-or-refund-reservations"></a>Megszakítási, Exchange-vagy visszatérítési foglalások
 
-Ha meg kell szakítania a SQL Database fenntartott kapacitás foglalását, akkor 12%-os korai lemondási díj lehet. A visszatérítést a rendszer a vételár vagy a foglalás jelenlegi ára közül az alacsonyabb összeg alapján számolja. A visszatérítések felső korlátja évi 50 000 dollár. A kapott visszatérítés tehát a fennmaradó, arányosított egyenleg és a 12%-os korai felmondási díj különbsége lesz. A megszakításhoz nyissa meg a Azure Portal foglalását, és válassza a **visszatérítés**lehetőséget.
-
-Ha a fenntartott Azure SQL Database-kapacitás lefoglalását egy másik régióra, üzembe helyezési típusra, teljesítményszintre vagy eltérő feltételekre kell módosítania, akkor kicserélheti a foglalást egy azonos vagy magasabb értékűre. Az új foglalási időszak kezdő dátuma nem kerül át a lecserélt foglalásból. Az 1 vagy 3 éves időszak az új foglalás létrehozásakor indul. Az Exchange-hez lépjen a Azure Portal található foglaláshoz, és válassza az **Exchange**lehetőséget.
-
-A foglalások cseréjével és visszatérítésével kapcsolatos további információkért lásd: a [foglalási cserék és](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)a visszafizetések.
+Bizonyos korlátozásokkal megszakíthatja, átválthatja vagy visszaállíthatja a foglalásokat. További információ: önkiszolgáló [cserék és visszatérítések Azure Reservations számára](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="vcore-size-flexibility"></a>Virtuális mag méretének rugalmassága
 

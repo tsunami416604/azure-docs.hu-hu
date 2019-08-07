@@ -1,5 +1,5 @@
 ---
-title: 'A helyszíni hálózat csatlakoztatása az Azure-beli virtuális hálózathoz: Helyek közötti VPN: Portál |} A Microsoft Docs'
+title: 'A helyszíni hálózat összekapcsolása egy Azure-beli virtuális hálózattal: Helyek közötti VPN: Portál | Microsoft Docs'
 description: A helyszíni hálózatot az Azure-beli virtuális hálózattal a nyilvános interneten keresztül összekötő IPsec-kapcsolat létrehozásának lépései. Ezen lépéseket követve létrehozhat egy helyek közötti VPN-átjáró kapcsolatot a portál segítségével.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5b4be7464a4c19cd0a71d5a786b46091cdbc074b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60407632"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780254"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Helyek közötti kapcsolat létrehozása az Azure Portalon
 
@@ -42,23 +42,23 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 
 A cikkben szereplő példák a következő értékeket használják. Ezekkel az értékekkel létrehozhat egy tesztkörnyezetet, vagy a segítségükkel értelmezheti a cikkben szereplő példákat. További információkat a VPN Gateway beállításairól általánosságban [a VPN Gateway beállításaival kapcsolatos](vpn-gateway-about-vpn-gateway-settings.md) cikkben találhat.
 
-* **Virtuális hálózat neve:** A TestVNet1
+* **VNet neve:** VNet1
 * **Címtér:** 10.1.0.0/16
-* **Előfizetés:** A használni kívánt előfizetés
+* **Előfizetés** A használni kívánt előfizetés
 * **Erőforráscsoport:** TestRG1
-* **Hely:** USA keleti régiója
-* **Alhálózat:** Előtérbeli: 10.1.0.0/24, háttér: 10.1.1.0/24 (nem kötelező ehhez a gyakorlathoz)
-* **Átjáróalhálózat neve:** Átjáró-alhálózat (Ez lesz automatikusan ki a portál)
-* **Átjáróalhálózat címtartománya:** 10.1.255.0/27
+* **Helyen** East US
+* **Alhálózat** FrontEnd 10.1.0.0/24, háttérrendszer: 10.1.1.0/24 (nem kötelező ehhez a gyakorlathoz)
+* **Átjáró alhálózatának neve:** GatewaySubnet (ez automatikusan kitölti a portált)
+* **Átjáró-alhálózati címtartomány:** 10.1.255.0/27
 * **DNS-kiszolgáló:** 8.8.8.8 – nem kötelező. A saját DNS-kiszolgálójának IP-címe.
-* **Virtuális hálózati átjáró neve:** VNet1GW
-* **Nyilvános IP-címe:** VNet1GWIP
+* **Virtual Network átjáró neve:** VNet1GW
+* **Nyilvános IP-cím:** VNet1GWIP
 * **VPN típusa:** Útvonalalapú
-* **Kapcsolat típusa:** Site-to-site (IPsec)
+* **Kapcsolattípus:** Helyek közötti (IPsec)
 * **Átjáró típusa:** VPN
-* **Helyi hálózati átjáró neve:** Site1
-* **Kapcsolat neve:** VNet1toSite1
-* **Megosztott kulcs:** Ebben a példában az abc123 kulcsot használjuk. Használhat azonban bármi mást is, ami kompatibilis a VPN-hardverrel. A lényeg az, hogy az értékek azonosak legyenek a kapcsolat két oldalán.
+* **Helyi hálózati átjáró neve:** Hely1
+* **Kapcsolatok neve:** VNet1toSite1
+* **Megosztott kulcs:** Ebben a példában a abc123-t használjuk. Használhat azonban bármi mást is, ami kompatibilis a VPN-hardverrel. A lényeg az, hogy az értékek azonosak legyenek a kapcsolat két oldalán.
 
 ## <a name="CreatVNet"></a>1. Virtuális hálózat létrehozása
 
@@ -66,9 +66,11 @@ A cikkben szereplő példák a következő értékeket használják. Ezekkel az 
 
 ## <a name="dns"></a>2. DNS-kiszolgáló megadása
 
-A helyek közötti kapcsolatok létrehozásához nincs szükség DNS-re. Ha azonban azt szeretné, hogy a virtuális hálózatokon üzembe helyezett erőforrásokon működjön a névfeloldás, adjon meg egy DNS-kiszolgálót. Ezzel a beállítással megadhatja azt a DNS-kiszolgálót, amelyet névfeloldásra kíván használni ennél a virtuális hálózatnál. A beállítás nem hoz létre új DNS-kiszolgálót. A névfeloldással kapcsolatos további információkért tekintse meg [A virtuális gépek és szerepkörpéldányok névfeloldása](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) című cikket.
+A helyek közötti kapcsolatok létrehozásához nincs szükség DNS-re.
 
-[!INCLUDE [Specify a dns server - optional](../../includes/vpn-gateway-specify-dns-portal-include.md)]
+Ha azonban azt szeretné, hogy a virtuális hálózatokon üzembe helyezett erőforrásokon működjön a névfeloldás, adjon meg egy DNS-kiszolgálót. Ezzel a beállítással megadhatja azt a DNS-kiszolgálót, amelyet névfeloldásra kíván használni ennél a virtuális hálózatnál. A beállítás nem hoz létre új DNS-kiszolgálót. A névfeloldással kapcsolatos további információkért tekintse meg [A virtuális gépek és szerepkörpéldányok névfeloldása](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) című cikket.
+
+[!INCLUDE [Specify a dns server - optional](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
 ## <a name="gatewaysubnet"></a>3. Az átjáróalhálózat létrehozása
 

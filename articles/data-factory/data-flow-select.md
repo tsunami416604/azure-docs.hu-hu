@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 974243da07a2570e851b7d44eac2556c201c2782
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3c81ec5e213364ed6f159fd20e12879a098caad4
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678532"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774991"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Adatforgalom leképezése válassza az átalakítás lehetőséget
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
@@ -32,9 +32,11 @@ A Select (kijelölés) lehetőséggel kiválaszthatja az adatfolyamatból az osz
 ## <a name="options"></a>Beállítások
 * A "Select" alapértelmezett beállítása az összes bejövő oszlop belefoglalása, és az eredeti nevek megtartása. A streamet aliasként adhatja meg a Select átalakító nevének beállításával.
 * Az egyes oszlopok aliasához törölje az "összes kijelölése" lehetőséget, és használja a lenti oszlop-hozzárendelést.
-* A duplikált elemek kihagyása lehetőséget választotta a bemeneti vagy kimeneti metaadatok ismétlődő oszlopainak eltávolítására.
+* Válassza az ismétlődések kihagyása lehetőséget az ismétlődő oszlopok a bemeneti vagy kimeneti metaadatokból való eltávolításához.
 
 ![Ismétlődések] kihagyása (media/data-flow/select-skip-dup.png "Ismétlődések") kihagyása
+
+* Ha úgy dönt, hogy kihagyja a duplikált elemeket, az eredmények megjelennek a vizsgálat lapon. Az ADF megtartja az oszlop első előfordulását, és látni fogja, hogy az adott oszlop minden további előfordulása el lett távolítva a folyamatból.
 
 > [!NOTE]
 > A leképezési szabályok törléséhez nyomja le az alaphelyzetbe **állítás** gombot.

@@ -5,21 +5,23 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 05/16/2019
+ms.date: 07/31/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: da4bc51cdd8cdfad8212ee5a288f03874f673c2c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: db16a2f122da1bf6c767e0a47c93c22f1882c406
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678184"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68817221"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>Szabályzat: A címtárban lévő felhasználók számára
 
 Kövesse az alábbi lépéseket, ha azt szeretné, hogy a házirend a címtár azon felhasználói számára legyen, akik igényelhetik ezt a hozzáférési csomagot.  A **címtárban lévő felhasználók** a belső felhasználókra, valamint a korábban meghívott külső felhasználókra is utalnak, amelyek a jogosultságok felügyeletének megkövetelését kérik egy másik hozzáférési csomaggal, vagy az Azure ad B2B-vel meghívást kapnak. A szabályzat meghatározásakor megadhat egyéni felhasználókat vagy gyakrabban felhasználói csoportokat. Előfordulhat például, hogy a szervezet már rendelkezik egy csoporttal, például az **összes alkalmazottal**.  Ha ez a csoport hozzá van adva a szabályzatban azon felhasználók számára, akik hozzáférést igényelhetnek, akkor a csoport bármelyik tagja hozzáférhet a hozzáféréshez.
 
 1. A **hozzáférést kérő felhasználók** területen válassza a **címtárban lévő felhasználók**lehetőséget.
+
+    Vegye figyelembe, hogy a címtárban lévő **felhasználók** a címtárhoz hozzáadott tagokat és vendég felhasználókat is tartalmazzák. Ha csak a tagokat és a vendég felhasználókat szeretné bevonni, válassza **a címtárban lévő felhasználók** elemet, majd válassza ki a tag felhasználói csoportot. Ha szükséges, létrehozhat egy dinamikus csoportot a tag felhasználók (User. userType-EQ "tag") használatával. További információ: [Azure Active Directory-csoportok dinamikus tagsági szabályai](../articles/active-directory/users-groups-roles/groups-dynamic-membership.md).
 
 1. A **felhasználók és csoportok kiválasztása** szakaszban kattintson a **felhasználók és csoportok hozzáadása**lehetőségre.
 

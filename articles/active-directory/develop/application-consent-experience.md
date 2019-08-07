@@ -12,17 +12,17 @@ ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac9d278053f05f9041a002b1c6ef3f873b0d9efb
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 012a79969f2fa72589ba6b70aa5398b6f4e7e811
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324865"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835247"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Az Azure AD-alkalmazások hozzájárulási folyamatának ismertetése
 
@@ -47,9 +47,9 @@ A következő diagram és táblázat a hozzájárulási kérés építőelemeit 
 
 | # | Összetevő | Cél |
 | ----- | ----- | ----- |
-| 1 | Felhasználói azonosító | Ez az azonosító azt a felhasználót jelöli, akit az ügyfélalkalmazás a következő nevében a védett erőforrásokhoz való hozzáférésre kéri. |
+| 1 | Felhasználóazonosító | Ez az azonosító azt a felhasználót jelöli, akit az ügyfélalkalmazás a következő nevében a védett erőforrásokhoz való hozzáférésre kéri. |
 | 2 | Beosztás | A cím változása attól függően változik, hogy a felhasználók a felhasználói vagy a rendszergazdai beleegyező folyamaton keresztül mennek keresztül. A felhasználói beleegyező folyamatokban a cím "engedély kérése", míg a rendszergazda beleegyező folyamatában a cím egy további, "elfogadás a szervezet számára" sort fog tartalmazni. |
-| 3 | Alkalmazás emblémája | Ennek a képnek a segítségével a felhasználóknak vizuálisan kell megjelenniük, hogy az alkalmazás az elérni kívánt alkalmazás-e. Ezt a rendszerképet az alkalmazások fejlesztői biztosítják, és a rendszerkép tulajdonjoga nincs érvényesítve. |
+| 3 | Alkalmazásembléma | Ennek a képnek a segítségével a felhasználóknak vizuálisan kell megjelenniük, hogy az alkalmazás az elérni kívánt alkalmazás-e. Ezt a rendszerképet az alkalmazások fejlesztői biztosítják, és a rendszerkép tulajdonjoga nincs érvényesítve. |
 | 4 | App neve | Ennek az értéknek tájékoztatnia kell a felhasználókat arról, hogy az alkalmazásnak hozzáférést kell kérnie az adatkezeléshez. Megjegyzés: ezt a nevet a fejlesztők biztosítják, és ennek az alkalmazásnak a tulajdonjoga nincs érvényesítve. |
 | 5 | Közzétevő tartomány | Ennek az értéknek biztosítania kell a felhasználók számára, hogy a megbízhatóságot ki tudják értékelni. Ezt a tartományt a fejlesztők biztosítják, és a közzétevő tartomány tulajdonjoga érvényesítve van. |
 | 6 | Engedélyek | Ez a lista tartalmazza az ügyfélalkalmazás által kért engedélyeket. A felhasználóknak mindig értékelniük kell, hogy milyen típusú engedélyekre van szükség ahhoz, hogy megértsük, milyen az ügyfélalkalmazás jogosult a nevében való hozzáférésre. Alkalmazás-fejlesztőként a legkevesebb jogosultsággal rendelkező engedélyekhez ajánlott a hozzáférés kérése. |

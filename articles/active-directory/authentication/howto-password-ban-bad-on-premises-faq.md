@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1f2e06eb6b5f8d402515ff1c07a4163174495d
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 8ccefec9e548b7981f696712bb4a983f4b577a9b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666362"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779651"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Helyszíni Azure AD jelszavas védelem – gyakori kérdések
 
@@ -40,15 +40,15 @@ Nem támogatott. A üzembe helyezés és az engedélyezés után az Azure AD jel
 
 **K: Mi a különbség a jelszó módosítása és a jelszó beállítása (vagy alaphelyzetbe állítás) között?**
 
-A jelszó módosítása akkor történik meg, amikor egy felhasználó új jelszót választ, miután igazolta, hogy ismeri a régi jelszót. Tegyük fel például, hogy mi történik, amikor egy felhasználó bejelentkezik a Windowsba, és a rendszer kéri, hogy válasszon ki egy új jelszót.
+A jelszó módosítása akkor történik meg, amikor egy felhasználó új jelszót választ, miután igazolta, hogy ismeri a régi jelszót. A jelszó módosítása például az, hogy mi történik, amikor egy felhasználó bejelentkezik a Windowsba, és a rendszer kéri, hogy válasszon ki egy új jelszót.
 
-A jelszó beállítása (más néven jelszó-visszaállítás) az, amikor egy rendszergazda új jelszóval helyettesíti egy fiók jelszavát, például a Active Directory felhasználók és számítógépek felügyeleti eszköz használatával. Ehhez a művelethez magas szintű jogosultság szükséges (általában tartományi rendszergazda), és a műveletet végző személy általában nem ismeri a régi jelszót. Az ügyfélszolgálati forgatókönyvek gyakran ezt teszik lehetővé, például olyan felhasználók segítésekor, akik elfelejtették a jelszavukat. A jelszó-megadási eseményeket is látni fogja, ha új felhasználói fiókot hoz létre első alkalommal egy jelszóval.
+A jelszó beállítása (más néven jelszó-visszaállítás) az, amikor egy rendszergazda új jelszóval helyettesíti egy fiók jelszavát, például a Active Directory felhasználók és számítógépek felügyeleti eszköz használatával. Ehhez a művelethez magas szintű jogosultság szükséges (általában tartományi rendszergazda), és a műveletet végző személy általában nem ismeri a régi jelszót. Az ügyfélszolgálati forgatókönyvek gyakran jelszavas készleteket végeznek, például olyan felhasználók számára, akik elfelejtették a jelszavukat. A jelszó-megadási eseményeket is látni fogja, ha új felhasználói fiókot hoz létre első alkalommal egy jelszóval.
 
 A jelszó-ellenőrzési házirend ugyanúgy viselkedik, függetlenül attól, hogy megtörtént-e a jelszó módosítása vagy beállítása. Az Azure AD Password Protection DC Agent szolgáltatás különböző eseményeket naplóz, hogy megtudja, van-e jelszó-módosítási vagy-beállítási művelet.  Lásd: [Az Azure ad jelszavas védelem figyelése és naplózása](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
 
 **K: Miért történik a duplikált jelszó-elutasítási események naplózása, amikor gyenge jelszót próbál beállítani a Active Directory felhasználók és számítógépek kezelése beépülő modullal?**
 
-A Active Directory felhasználók és számítógépek kezelése beépülő modul először megpróbálja beállítani az új jelszót a Kerberos protokoll használatával. Hiba esetén a beépülő modul egy második kísérletet tesz a jelszó megadására egy örökölt (SAM RPC) protokoll használatával (a használt protokollok nem fontosak). Ha az új jelszót az Azure AD jelszavas védelme gyengenak tekinti, a rendszer két, a jelszó-visszaállítási elutasítási esemény naplózását eredményezi.
+A Active Directory felhasználók és számítógépek kezelése beépülő modul először megpróbálja beállítani az új jelszót a Kerberos protokoll használatával. Ha hiba történik, a beépülő modul egy második kísérletet tesz a jelszó megadására egy örökölt (SAM RPC) protokoll használatával (a használt protokollok nem fontosak). Ha az új jelszót az Azure AD jelszavas védelme gyengenak tekinti, ez a beépülő modul viselkedése két, a jelszó-visszaállítási elutasítási esemény naplózása után következik be.
 
 **K: Miért jelentkeznek be az Azure AD jelszavas védelem jelszavas védelme nevű jelszó-ellenőrzési események egy üres felhasználónévvel?**
 
@@ -115,6 +115,10 @@ A cél részleges elérésének egyik módja az Azure AD jelszavas védelem üze
 Nem. Ha egy felhasználó jelszava megváltozik egy adott nem PDC-alapú tartományvezérlőn, a rendszer soha nem továbbítja a tiszta szöveges jelszót az elsődleges tartományvezérlőnek (ez az ötlet egy gyakori helytelen érzékelés). Miután elfogadták az új jelszót egy adott TARTOMÁNYVEZÉRLŐn, a tartományvezérlő ezt a jelszót használja az adott jelszó különböző hitelesítési protokoll-specifikus kivonatának létrehozásához, majd megőrzi ezeket a kivonatokat a címtárban. A tiszta szöveges jelszó nem marad meg. A frissített kivonatok ezután replikálódnak az elsődleges tartományvezérlőre. Bizonyos esetekben előfordulhat, hogy a felhasználói jelszavakat közvetlenül az elsődleges tartományvezérlőn változtatják meg, a különböző tényezőktől, például a hálózati topológiától és a Active Directory hely kialakítástól függően. (Lásd az előző kérdést.)
 
 Összefoglalva, az Azure AD jelszavas védelem DC Agent szolgáltatásának az elsődleges tartományvezérlőn való üzembe helyezéséhez szükség van a szolgáltatás 100%-os biztonsági lefedettségének elérésére a tartományon belül. A szolgáltatás csak az elsődleges tartományvezérlőn való telepítése nem biztosít Azure AD jelszavas védelmet a tartomány bármely más tartományvezérlőjén.
+
+**K: Miért nem működik az egyéni intelligens zárolás, még azután sem, hogy az ügynököket a helyszíni Active Directory környezetbe telepítették?**
+
+Az egyéni intelligens zárolás csak az Azure-ban támogatott. Az Azure felügyeleti portál egyéni intelligens zárolási beállításainak módosításai nincsenek hatással a helyszíni Active Directory környezetre, még a telepített ügynökökkel is.
 
 **K: Elérhető az Azure AD jelszavas védelem System Center Operations Manager felügyeleti csomagja?**
 

@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 07/19/2019
-ms.openlocfilehash: 763d424d9d462c4a9531df84f3e5e26bfc1b0a14
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 08/02/2019
+ms.openlocfilehash: 5c300cb7d5416ada435811872e2cea8865e3c657
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68502294"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781273"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>Előre fizetés a Virtual Machineshoz Azure Reserved VM Instances (RI)
 
@@ -111,7 +111,7 @@ Példány vásárlása:
 
 A használati adatok a foglalási kedvezményt lefoglaló használati díj nulla értékeként érvényesek. Láthatja, hogy melyik virtuálisgép-példány fogadta el a foglalási kedvezményt az egyes foglalásokhoz.
 
-További információ arról, hogyan jelennek meg a foglalási kedvezmények a használati adatok között: az [Azure foglalási szolgáltatás használatának ismertetése](../articles/billing/billing-understand-reserved-instance-usage-ea.md) a nagyvállalati beléptetéshez, ha Ön EA-ügyfél. Ha egyéni előfizetéssel rendelkezik, tekintse meg [Az Azure foglalás használatának megismerése az](../articles/billing/billing-understand-reserved-instance-usage.md)utólagos elszámolású előfizetéshez című témakört.
+További információ arról, hogyan jelennek meg a foglalási kedvezmények a használati adatok között: az [Azure foglalási szolgáltatás használatának ismertetése](../articles/billing/billing-understand-reserved-instance-usage-ea.md) a nagyvállalati beléptetéshez, ha Ön EA-ügyfél. Ha egyéni előfizetéssel rendelkezik, tekintse meg [Az Azure foglalás használatának megismerése](../articles/billing/billing-understand-reserved-instance-usage.md)az utólagos elszámolású előfizetéshez című témakört.
 
 ## <a name="change-a-reservation-after-purchase"></a>Foglalás módosítása a vásárlás után
 
@@ -130,15 +130,11 @@ A vásárlás után a következő típusú módosításokat nem végezheti el k�
 - Mennyiség
 - Duration
 
-Ha szeretné módosítani a  módosításokat, lehetősége van a foglalások cseréjére.
+Ha szeretné módosítani a módosításokat, lehetősége van a foglalások cseréjére.
 
-## <a name="cancellations-and-exchanges"></a>Megszakítások és cserék
+## <a name="cancel-exchange-or-refund-reservations"></a>Megszakítási, Exchange-vagy visszatérítési foglalások
 
-A foglalás lemondásáért 12%-os korai felmondási díj számítható fel. A visszatérítést a rendszer a vételár vagy a foglalás jelenlegi ára közül az alacsonyabb összeg alapján számolja. A visszatérítések felső korlátja évi 50 000 dollár. A kapott visszatérítés tehát a fennmaradó, arányosított egyenleg és a 12%-os korai felmondási díj különbsége lesz. A megszakításhoz nyissa meg a Azure Portal foglalását, és válassza a **visszatérítés**lehetőséget.
-
-Ha módosítania kell a fenntartott VM-példányok foglalását egy másik régióba, a virtuálisgép-méretezési csoportra vagy a kifejezésre, akkor azt kicserélheti. Az Exchange-nek egy másik, egyenlő vagy nagyobb értékű foglalásnak kell lennie. Az új foglalási időszak kezdő dátuma nem kerül át a lecserélt foglalásból. Az új foglalás létrehozásakor az egy vagy három éves időszak kezdődik. Az Exchange-hez lépjen a Azure Portal található foglaláshoz, és válassza az **Exchange**lehetőséget.
-
-A foglalások cseréjével és visszatérítésével kapcsolatos további információkért lásd: a [foglalási cserék és](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md)a visszafizetések.
+Bizonyos korlátozásokkal megszakíthatja, átválthatja vagy visszaállíthatja a foglalásokat. További információ: önkiszolgáló [cserék és visszatérítések Azure Reservations számára](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 

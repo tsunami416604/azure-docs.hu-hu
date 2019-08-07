@@ -1,6 +1,6 @@
 ---
-title: Adjon meg egy HttpClient és a proxy (MSAL.NET) |} Az Azure
-description: Ismerje meg a saját HttpClient és a proxy szeretne csatlakozni az Azure AD-bA a Microsoft-hitelesítési tár .NET (MSAL.NET).
+title: HttpClient és proxy (MSAL.NET) megadása | Azure
+description: Ismerje meg, hogyan biztosíthatja saját HttpClient és proxyját az Azure AD-hez való csatlakozáshoz a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/23/2019
@@ -17,18 +17,18 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72ab8a85ecc5649352382469e09d7dfd83a5ddfa
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: daae88cd8e76d0ae1af04c45a7191027e9adece9
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305729"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834941"
 ---
-# <a name="providing-your-own-httpclient-and-proxy-using-msalnet"></a>A saját HttpClient és a proxy MSAL.NET használatával
-Amikor [inicializálása egy nyilvános ügyfélalkalmazás](msal-net-initializing-client-applications.md), használhatja a `.WithHttpClientFactory method` saját HttpClient biztosít.  Biztosítása a saját HttpClient lehetővé teszi a speciális forgatókönyvek ilyen egy HTTP proxy, a felhasználói ügynök fejlécek testreszabása, vagy egy adott HttpClient használata (például az ASP.NET Core web apps és API-k) MSAL kényszerítése.
+# <a name="providing-your-own-httpclient-and-proxy-using-msalnet"></a>Saját HttpClient és proxy biztosítása a MSAL.NET használatával
+[Egy nyilvános ügyfélalkalmazás inicializálásakor](msal-net-initializing-client-applications.md)a `.WithHttpClientFactory method` használatával biztosíthatja saját HttpClient.  A saját HttpClient lehetővé teszi a speciális forgatókönyvek, például a HTTP-proxyk részletes felügyeletét, a felhasználói ügynökök fejlécének testreszabását, vagy a MSAL adott HttpClient használatára való kényszerítését (például ASP.NET Core Web Apps/API-k).
 
-## <a name="initialize-with-httpclientfactory"></a>A HttpClientFactory inicializálása
-Az alábbi példa bemutatja, hozzon létre egy `HttpClientFactory` majd inicializálása egy nyilvános ügyfélalkalmazás vele:
+## <a name="initialize-with-httpclientfactory"></a>Inicializálás a HttpClientFactory
+A következő példa egy nyilvános ügyfélalkalmazás létrehozását `HttpClientFactory` mutatja be, majd inicializálja azt:
 
 ```csharp
 IMsalHttpClientFactory httpClientFactory = new MyHttpClientFactory();
@@ -38,5 +38,5 @@ var pca = PublicClientApplicationBuilder.Create(MsalTestConstants.ClientId)
                                         .Build();
 ```
 
-## <a name="httpclient-and-xamarin-ios"></a>HttpClient és a Xamarin IOS-es
-Ha Xamarin iOS-es, javasoljuk, hogy hozzon létre egy `HttpClient` , amely explicit módon használja a `NSURLSession`-kezelő iOS 7 és újabb-alapú. MSAL.NET automatikusan létrehoz egy `HttpClient` használó `NSURLSessionHandler` az iOS 7 és újabb. További információkért olvassa el a [Xamarin IOS-es dokumentációját HttpClient](/xamarin/cross-platform/macios/http-stack).
+## <a name="httpclient-and-xamarin-ios"></a>HttpClient és Xamarin iOS
+A Xamarin iOS használata esetén ajánlott létrehozni egy `HttpClient` , az `NSURLSession`iOS 7-es és újabb verzióit explicit módon használó kezelőt. A MSAL.net automatikusan létrehoz `HttpClient` egy, `NSURLSessionHandler` az iOS 7-es és újabb verzióját használót. További információért olvassa el a [Xamarin iOS](/xamarin/cross-platform/macios/http-stack)-dokumentációját a HttpClient.

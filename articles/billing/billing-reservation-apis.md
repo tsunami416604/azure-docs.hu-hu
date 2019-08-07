@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/25/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 20ed2bcf793ab5c3913ccf66d338e71c1a99a003
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 36bc403c4000e58541f22c2cb44f77a28e81cb72
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478921"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779903"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>API-k az Azure foglalási automatizálásához
 
@@ -84,7 +84,7 @@ Ha azt tapasztalja, hogy a szervezet foglalásai jelenleg használatban vannak:
 - Győződjön meg arról, hogy a szervezet által létrehozott virtuális gépek egyeznek a foglalásban található virtuálisgép-mérettel.
 - Győződjön meg arról, hogy a példány méretének rugalmassága be van kapcsolva. További információ: fenntartások [kezelése – a fenntartott VM-példányok optimalizálási beállításainak módosítása](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
 - Módosítsa a foglalás hatókörét úgy, hogy az szélesebb körben is érvénybe lépjen. További információ: foglalások [kezelése – foglalás hatókörének módosítása](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
-- A fel nem használt mennyiség cseréje. További információ: fenntartások [kezelése – lemondás és cserék](billing-manage-reserved-vm-instance.md#cancellations-and-exchanges).
+- A fel nem használt mennyiség cseréje. További információt a foglalások [kezelése](billing-manage-reserved-vm-instance.md)című témakörben talál.
 
 ## <a name="give-access-to-reservations"></a>Hozzáférés biztosítása a foglalásokhoz
 

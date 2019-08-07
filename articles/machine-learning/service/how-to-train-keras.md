@@ -1,7 +1,7 @@
 ---
-title: Betanítása és TensorFlow futó Keras-modellek regisztrálása
+title: Mély tanulási neurális hálózat betanítása a kerasz
 titleSuffix: Azure Machine Learning service
-description: Ez a cikk bemutatja, hogyan betanítása és regisztrálnia kell egy TensorFlow futó Keras-modell Azure Machine Learning szolgáltatás használatával.
+description: Ismerje meg, hogyan lehet betanítani és regisztrálni a TensorFlow-on futó kerasz Deep neurális hálózati besorolási modellt Azure Machine Learning szolgáltatás használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,43 +9,45 @@ ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
 ms.reviewer: peterlu
-ms.date: 06/07/2019
+ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9d405b454d755e0c848e9422c8d4cf6e7c505b68
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: bfe7f975539c76c1d369d111729820f4d0ada470
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840052"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775081"
 ---
-# <a name="train-and-register-keras-models-at-scale-with-azure-machine-learning-service"></a>Betanítása és a méretezett Keras-modellek regisztrálása az Azure Machine Learning szolgáltatás
+# <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning-service"></a>Kerasz besorolási modell betanítása és regisztrálása Azure Machine Learning szolgáltatással
 
-Ez a cikk bemutatja, hogyan képzése, és regisztrálja a Keras modellt, a tensorflow-hoz készült Azure Machine Learning szolgáltatás használatával. Használja a népszerű [MNIST adatkészlet](http://yann.lecun.com/exdb/mnist/) felhasználásával Neurális hálózat (DNN) használatával kézzel írott számjegyek besorolása a [Keras Python-kódtár](https://keras.io) a futó [TensorFlow](https://www.tensorflow.org/overview) .
+Ez a cikk bemutatja, hogyan lehet betanítani és regisztrálni a TensorFlow-re épülő kerasz-besorolási modellt Azure Machine Learning szolgáltatás használatával. A szolgáltatás a népszerű [MNIST](http://yann.lecun.com/exdb/mnist/) -adatkészletet használja a kézzel írt számjegyek besorolására egy olyan Deep neurális hálózat (DNN) használatával, amely a [TensorFlow](https://www.tensorflow.org/overview)-on futó [kerasz Python-kódtár](https://keras.io) használatával készült.
 
-Keras egy olyan magas szintű Neurális hálózati API képes futtatni a felső részén más elterjedt DNN-keretrendszerek használatával leegyszerűsítheti a fejlesztést. Az Azure Machine Learning szolgáltatás gyors horizontális felskálázása lehetséges betanítási feladatokat a rugalmas felhőalapú számítási erőforrások használatával. Is nyomon követheti a betanítási futtatás, a verzió modellek üzembe helyezése a modelleket, és még sok más.
+A kerasz egy magas szintű neurális hálózati API, amely a fejlesztés egyszerűsítése érdekében más népszerű DNN-keretrendszerek felett is futtatható. A Azure Machine Learning szolgáltatással rugalmas felhőalapú számítási erőforrásokkal gyorsan bővítheti a betanítási feladatokat. Nyomon követheti a képzések futtatását, a verziók modelljeit, a modellek üzembe helyezését és még sok mást is.
 
-Akár az alapoktól a Keras modell fejleszt, vagy már meglévő modell üzembe a felhőben, Azure Machine Learning szolgáltatás segítségével éles használatra kész modelleket.
+Függetlenül attól, hogy a kerasz-modellt fejleszti az alapoktól, vagy egy meglévő modellt hoz létre a felhőben, Azure Machine Learning a szolgáltatás segítséget nyújt a termelésre kész modellek létrehozásában.
+
+A gépi tanulás és a mély tanulás közötti különbségekkel kapcsolatos információkat a [fogalmi cikkben](concept-deep-learning-vs-machine-learning.md) találja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a kód futtatása ezekben a környezetekben valamelyikét:
+Futtassa ezt a kódot ezen környezetek bármelyikén:
 
- - Az Azure Machine Learning Notebook Virtuálisgép - letöltések vagy nem szükséges telepítés
+ - Azure Machine Learning notebook VM – nincs szükség letöltésre vagy telepítésre
 
-     - Végezze el a [felhőalapú notebook rövid](quickstart-run-cloud-notebook.md) hozhat létre egy dedikált notebook server előre betöltött az SDK-t és a mintaadattárat.
-    - A notebook server minták mappájában található befejeződött, és a bővített Jegyzetfüzet az ebben a könyvtárban: **útmutatóval-to-használat – azureml > képzés a deep learning > train-hyperparameter-tune-deploy-with-keras** a mappa. 
- 
- - A saját Jupyter Notebook server
+     - Fejezze be [az oktatóanyagot: Az SDK-val](tutorial-1st-experiment-sdk-setup.md) és a minta adattárral előre betöltött dedikált jegyzetfüzet-kiszolgáló létrehozásához beállíthatja a környezetet és a munkaterületet.
+    - A notebook-kiszolgáló Samples (minták) mappájában keresse meg a befejezett és kibontott jegyzetfüzetet, ehhez a következő könyvtárra navigálva: **útmutató – használat – azureml > képzés – Deep-learning > Train-hiperparaméter-Tune-Deploy-with-kerasz** Folder.
 
-     - [Telepítse az Azure Machine Learning SDK a Pythonhoz](setup-create-workspace.md#sdk)
+ - Saját Jupyter Notebook-kiszolgáló
+
+     - [A Pythonhoz készült Azure Machine Learning SDK telepítése](setup-create-workspace.md#sdk)
     - [Munkaterület-konfigurációs fájl létrehozása](setup-create-workspace.md#write-a-configuration-file)
-    - [Töltse le a minta parancsfájlok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras) `mnist-keras.py` és `utils.py`
-     
-    Is megtalálhatja a befejezett [Jupyter Notebook verzió](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb) Ez az útmutató a GitHub-minták oldalon. A notebook intelligens hiperparaméter finomhangolása, a modell üzembe helyezése és a notebook widgetek kibontott szakaszokat tartalmazza.
+    - [A minta parancsfájl fájljainak letöltése](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras) `mnist-keras.py` és`utils.py`
+
+    Az útmutató egy befejezett [Jupyter notebook verzióját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb) is megtalálhatja a GitHub-minták lapon. A jegyzetfüzet tartalmaz kibővített szakaszt az intelligens hiperparaméter hangolás, a modell üzembe helyezése és a notebook widgetek számára.
 
 ## <a name="set-up-the-experiment"></a>A kísérlet beállítása
 
-Ez a szakasz által a szükséges python-csomagok betöltése, a munkaterület inicializálása, egy kísérlet létrehozásától és feltöltése a betanítási adatok és a betanítási szkriptekhez beállítja a tanítási kísérlet.
+Ez a szakasz a betanítási kísérletet a szükséges Python-csomagok betöltésével, egy munkaterület inicializálásával, egy kísérlet létrehozásával, valamint a betanítási adat és a betanítási parancsfájlok feltöltésével állítja be.
 
 ### <a name="import-packages"></a>Csomagok importálása
 
@@ -66,9 +68,9 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Munkaterület inicializálása
 
-A [Azure Machine Learning szolgáltatás munkaterület](concept-workspace.md) a szolgáltatás a legfelső szintű erőforrás. Is tartalmaz egy központi helyen hoz létre minden összetevő dolgozhat. A Python SDK-ban, hozzáférhet a munkaterület-összetevők létrehozásával egy [ `workspace` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum.
+A [Azure Machine learning szolgáltatás munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum létrehozásával érheti el a munkaterület összetevőit.
 
-A munkaterület-objektum létrehozása a `config.json` létrehozott fájlt a [előfeltételeknél](#prerequisites).
+Hozzon létre egy munkaterület- `config.json` objektumot az [Előfeltételek szakaszban](#prerequisites)létrehozott fájlból.
 
 ```Python
 ws = Workspace.from_config()
@@ -76,7 +78,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-an-experiment"></a>Kísérlet létrehozása
 
-Hozzon létre egy kísérletet és a egy mappát a betanítási szkriptekhez tárolásához. Ebben a példában egy "keras-mnist" nevű kísérlet létrehozása.
+Hozzon létre egy kísérletet és egy mappát a betanítási szkriptek tárolásához. Ebben a példában hozzon létre egy "kerasz-mnist" nevű kísérletet.
 
 ```Python
 script_folder = './keras-mnist'
@@ -85,11 +87,11 @@ os.makedirs(script_folder, exist_ok=True)
 exp = Experiment(workspace=ws, name='keras-mnist')
 ```
 
-### <a name="upload-dataset-and-scripts"></a>Töltse fel az adatkészlet és parancsfájlok
+### <a name="upload-dataset-and-scripts"></a>Adatkészlet és parancsfájlok feltöltése
 
-A [adattárolója](how-to-access-data.md) olyan hely, ahol adatok tárolásának és csatlakoztatására, vagy másolja az adatokat a számítási célnak férhetnek hozzá. Az egyes munkaterületeken alapértelmezett adattárolót biztosít. Töltse fel az adatokat és a betanítási szkriptekhez az adattárral, hogy könnyen hozzáférhetők betanítás során.
+Az [adattár](how-to-access-data.md) olyan hely, ahol az adatok tárolása és elérése az adatoknak a számítási célra való csatlakoztatásával vagy másolásával történik. Mindegyik munkaterület alapértelmezett adattárt biztosít. Töltse fel az adatok és a betanítási szkripteket az adattárba, hogy azok könnyen elérhetők legyenek a betanítás során.
 
-1. Töltse le helyben a MNIST adatkészlet.
+1. Töltse le helyileg a MNIST adatkészletet.
 
     ```Python
     os.makedirs('./data/mnist', exist_ok=True)
@@ -100,14 +102,14 @@ A [adattárolója](how-to-access-data.md) olyan hely, ahol adatok tárolásának
     urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz', filename = './data/mnist/test-labels.gz')
     ```
 
-1. Töltse fel a MNIST-adatkészlet az alapértelmezett adattárral.
+1. Töltse fel a MNIST-adatkészletet az alapértelmezett adattárba.
 
     ```Python
     ds = ws.get_default_datastore()
     ds.upload(src_dir='./data/mnist', target_path='mnist', overwrite=True, show_progress=True)
     ```
 
-1. Töltse fel a Keras tanítási szkriptet `keras_mnist.py`, és a segítő fájl `utils.py`.
+1. Töltse fel a kerasz-betanítási szkriptet `keras_mnist.py`, és a segítő `utils.py`fájlt.
 
     ```Python
     shutil.copy('./keras_mnist.py', script_folder)
@@ -116,7 +118,7 @@ A [adattárolója](how-to-access-data.md) olyan hely, ahol adatok tárolásának
 
 ## <a name="create-a-compute-target"></a>Hozzon létre egy számítási célnak
 
-Hozzon létre egy számítási célnak, a TensorFlow feladat futtatását. Ebben a példában az Azure Machine Learning GPU-kompatibilis számítási fürt létrehozása.
+Hozzon létre egy számítási célt a TensorFlow-feladatokhoz a futtatásához. Ebben a példában hozzon létre egy GPU-kompatibilis Azure Machine Learning számítási fürtöt.
 
 ```Python
 cluster_name = "gpucluster"
@@ -126,7 +128,7 @@ try:
     print('Found existing compute target')
 except ComputeTargetException:
     print('Creating a new compute target...')
-    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_NC6', 
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_NC6',
                                                            max_nodes=4)
 
     compute_target = ComputeTarget.create(ws, cluster_name, compute_config)
@@ -134,13 +136,13 @@ except ComputeTargetException:
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-A számítási célokhoz további információkért lásd: a [mi egy számítási célnak](concept-compute-target.md) cikk.
+A számítási célokkal kapcsolatos további információkért tekintse meg a [Mi az a számítási cél](concept-compute-target.md) című cikket.
 
-## <a name="create-a-tensorflow-estimator-and-import-keras"></a>Hozzon létre egy TensorFlow estimator és Keras importálása
+## <a name="create-a-tensorflow-estimator-and-import-keras"></a>TensorFlow-kalkulátor létrehozása és kerasz importálása
 
-A [TensorFlow estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) állapotára TensorFlow betanítási feladatokat a számítási célnak egyszerű módszert kínál. Keras futtatható, TensorFlow felett fut, használhatja a TensorFlow estimator, és importálja a Keras könyvtár használatával a `pip_packages` argumentum.
+A [TensorFlow kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) egyszerű módszert kínál a TensorFlow-betanítási feladatok számítási célra való elindítására. Mivel a kerasz a TensorFlow-on fut, használhatja a TensorFlow-kalkulátort, és importálhatja a kerasz `pip_packages` könyvtárat az argumentum használatával.
 
-Az általános biztosítják a TensorFlow estimator [ `estimator` ](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) osztály, amely bármely keretrendszer támogatásához használható. Az általános estimator használó modellek betanítása kapcsolatos további információkért lásd: [modelleket taníthat be az Azure Machine Learning estimator használatával](how-to-train-ml-models.md)
+A TensorFlow kalkulátor az általános [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) osztályon keresztül valósul meg, amely bármely keretrendszer támogatásához használható. Emellett hozzon létre egy `script_params` szótárt, amely tartalmazza a DNN hiperparaméter beállításait. További információ a képzési modellekről az általános kalkulátor használatával: [modellek betanítása Azure Machine learning a kalkulátor használatával](how-to-train-ml-models.md)
 
 ```Python
 script_params = {
@@ -159,34 +161,34 @@ est = TensorFlow(source_directory=script_folder,
                  use_gpu=True)
 ```
 
-## <a name="submit-a-run"></a>Küldje el a Futtatás
+## <a name="submit-a-run"></a>Futtatás küldése
 
-A [objektumot futtatni](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) a futtatási előzmények a felületet biztosít, a feladat futása közben és után befejeződött.
+A [Run objektum](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) biztosítja a felületet a futtatási előzményekhez, miközben a feladatot futtatja, és a művelet befejeződött.
 
 ```Python
 run = exp.submit(est)
 run.wait_for_completion(show_output=True)
 ```
 
-A Futtatás hajtja végre, a következő szakaszokra végighalad:
+A Futtatás végrehajtásakor a következő szakaszokon halad végig:
 
-- **Felkészülés**: Docker-rendszerkép a TensorFlow estimator alapján jön létre. A rendszerkép feltöltött a munkaterület container Registry tárolóregisztrációs adatbázisba, és későbbi futtatások gyorsítótárazza. Naplók a is rendszer streamként továbbítja a futtatási előzmények és megtekinthetők a folyamat állapotának monitorozásához.
+- **Felkészülés**: A Docker-rendszerkép létrehozása a TensorFlow-kalkulátor alapján történik. A rendszer feltölti a rendszerképet a munkaterület tároló-Hivatalához, és a gyorsítótárba helyezi a későbbi futtatásokhoz. A naplók a futtatási előzményekre is továbbítva lesznek, és a folyamat figyelésére is megtekinthetők.
 
-- **Méretezés**: A fürt próbál vertikális felskálázás, ha a Batch AI-fürt csomópontjait a Futtatás végrehajtásához, mint a jelenleg elérhető igényel.
+- **Méretezés**: A fürt akkor kísérli meg a skálázást, ha a Batch AI-fürthöz több csomópont szükséges a jelenleg elérhető futtatáshoz.
 
-- **Futó**: A parancsfájl mappában található összes parancsfájl töltenek fel a számítási célnak, adattárak csatlakoztatva van, vagy másolja és a entry_script hajtja végre. Az stdout adatsorból kimenetek és a. / logs mappában a rendszer streamként továbbítja a futtatási előzmények és a Futtatás figyelésére használható.
+- **Futtatás**: A rendszer a parancsfájl mappájában lévő összes parancsfájlt feltölti a számítási célra, az adattárakat csatlakoztatja vagy másolja, és a entry_script hajtja végre. Az stdout és a./Logs mappa kimeneteit a rendszer a futtatási előzményekre továbbítja, és a Futtatás figyelésére használható.
 
-- **Utófeldolgozási**: A. / kimenete a Futtatás mappába másolja a rendszer a futtatási előzményekben.
+- **Feldolgozás utáni**: A Futtatás./outputs mappáját a rendszer átmásolja a futtatási előzményekbe.
 
 ## <a name="register-the-model"></a>Regisztrálja a modellt
 
-Ha a modell már betanított, regisztrálhatja a munkaterülethez. Modell regisztrálását lehetővé teszi a tároló és verzió egyszerűsítése érdekében a munkaterület a modellek [kezelés és üzembe helyezési modell](concept-model-management-and-deployment.md).
+Miután betöltötte a DNN modellt, regisztrálhatja azt a munkaterületen. A modell regisztrálása lehetővé teszi a modellek tárolását és verzióját a munkaterületen a [modell kezelésének és üzembe helyezésének](concept-model-management-and-deployment.md)egyszerűsítése érdekében.
 
 ```Python
 model = run.register_model(model_name='keras-dnn-mnist', model_path='outputs/model')
 ```
 
-A modell egy helyi példányát is letölthető. Ez lehet hasznos, ha további modell érvényesítési helyileg munkát végző. A képzési szkriptben `mnist-keras.py`, a TensorFlow képernyővédő objektum továbbra is fennáll, a modell egy helyi mappába (helyi, a számítási célnak). A Futtatás objektum segítségével töltse le az adattár egy példányát.
+Letöltheti a modell helyi példányát is. Ez akkor lehet hasznos, ha a modell további ellenőrzése helyileg működik. A betanítási parancsfájlban `mnist-keras.py`egy TensorFlow-megtakarítási objektum a modellt egy helyi mappába (a számítási cél számára) őrzi meg. A Futtatás objektum használatával letöltheti az adattárból származó másolatot.
 
 ```Python
 # Create a model folder in the current directory
@@ -201,7 +203,7 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben betanított és a egy Keras-modell Azure Machine Learning szolgáltatásban regisztrált. Megtudhatja, hogyan helyezhet üzembe modelleket, és továbbléphet a modell üzembe helyezési című cikkben.
+Ebben a cikkben a Azure Machine Learning Service-ben betanított és regisztrált egy kerasz modellt. A modellek üzembe helyezésének megismeréséhez folytassa a modell üzembe helyezésével kapcsolatos cikket.
 
 > [!div class="nextstepaction"]
-> [Hogyan és hol érdemes a modellek üzembe helyezése](how-to-deploy-and-where.md)
+> [Modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)

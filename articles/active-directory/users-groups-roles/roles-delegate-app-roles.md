@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 08/06/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896bd7f9af3c319ec4190131036d8aa8ee49bb79
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: e15fa8c79663fc2517039124f9be8c1ecd57b8a8
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705436"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68837883"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Alkalmazás-regisztrációs engedélyek delegálása Azure Active Directory
 
@@ -29,7 +29,7 @@ Ez a cikk azt ismerteti, hogyan használhatók az alkalmazások engedélyei a Az
 - Korlátozza, hogy kik hozhatnak [létre alkalmazásokat](#restrict-who-can-create-applications) és kezelhetik a létrehozott alkalmazásokat. Az Azure AD-ben alapértelmezés szerint minden felhasználó regisztrálhatja az alkalmazás regisztrációját, és kezelheti az általuk létrehozott alkalmazások minden aspektusát. Ez korlátozható úgy, hogy csak a kijelölt személyek számára engedélyezze az engedélyt.
 - [Egy vagy több tulajdonos társítása egy alkalmazáshoz](#assign-application-owners). Ez egy egyszerű módja annak, hogy valaki az Azure AD-konfiguráció minden aspektusát felügyelni tudja egy adott alkalmazáshoz.
 - [Egy beépített rendszergazdai szerepkör](#assign-built-in-application-admin-roles) kiosztása, amely hozzáférést biztosít az Azure ad-ben az összes alkalmazás konfigurációjának kezeléséhez. Ez az ajánlott módszer arra, hogy az informatikai szakértők hozzáférjenek a széles körű alkalmazás-konfigurációs engedélyek kezeléséhez anélkül, hogy hozzáférést kellene biztosítani az Azure AD más részeihez, amelyek nem kapcsolódnak az alkalmazás konfigurációjához.
-- [Egyéni szerepkör létrehozása](#create-and-assign-a-custom-role) , amely a nagyon konkrét engedélyeket definiálja, és hozzárendeli azt valakihöz, vagy egyetlen alkalmazás hatóköréhez korlátozott tulajdonosként, vagy a címtár hatókörében (az összes alkalmazás) korlátozott rendszergazdaként.
+- [Egyéni szerepkör létrehozása](#create-and-assign-a-custom-role-preview) , amely a nagyon konkrét engedélyeket definiálja, és hozzárendeli azt valakihöz, vagy egyetlen alkalmazás hatóköréhez korlátozott tulajdonosként, vagy a címtár hatókörében (az összes alkalmazás) korlátozott rendszergazdaként.
 
 Fontos figyelembe venni a hozzáférést a fenti módszerek egyikének két okból való megadásával. Először is a felügyeleti feladatok elvégzésére való jogosultságok delegálása csökkenti a globális rendszergazda terhelését. Másodszor, a korlátozott engedélyek használata javítja a biztonsági helyzeteket, és csökkenti a jogosulatlan hozzáférés lehetséges lehetőségét. A delegálással kapcsolatos problémákat és az általános irányelveket a [Azure Active Directory felügyeletének delegálása](roles-concept-delegation.md)című szakaszban tárgyaljuk.
 
@@ -86,16 +86,21 @@ Az alkalmazás-rendszergazda vagy a Felhőbeli alkalmazás rendszergazdai szerep
 > Az alkalmazás-rendszergazdák és a felhőalapú alkalmazások rendszergazdái hitelesítő adatokat adhatnak hozzá egy alkalmazáshoz, és a hitelesítő adatok használatával megszemélyesítik az alkalmazás identitását. Előfordulhat, hogy az alkalmazás jogosultságokat emel a rendszergazdai szerepkör engedélyeivel szemben. Az ebben a szerepkörben található rendszergazda létrehozhat vagy frissíthet felhasználókat vagy más objektumokat az alkalmazás megszemélyesítése közben az alkalmazás engedélyeitől függően.
 > Egyik szerepkör sem biztosít lehetőséget a feltételes hozzáférési beállítások kezelésére.
 
-## <a name="create-and-assign-a-custom-role"></a>Egyéni szerepkör létrehozása és társítása
+## <a name="create-and-assign-a-custom-role-preview"></a>Egyéni szerepkör létrehozása és társítása (előzetes verzió)
 
 Az egyéni szerepkörök létrehozása és az egyéni szerepkörök hozzárendelésének lépései külön lépések:
 
 - [Hozzon létre egy egyéni *szerepkör* ](roles-create-custom.md) -definíciót, és [adjon hozzá engedélyeket egy előre definiált listából](roles-custom-available-permissions.md). Ezek ugyanazok a beépített szerepkörökben használt engedélyek.
-- [Hozzon létre egy *szerepkör* ](roles-assign-graph.md) -hozzárendelést az egyéni szerepkör hozzárendeléséhez.
+- [Hozzon létre egy *szerepkör* ](roles-assign-powershell.md) -hozzárendelést az egyéni szerepkör hozzárendeléséhez.
 
 Ez az elkülönítés lehetővé teszi egyetlen szerepkör-definíció létrehozását, majd a különböző hatókörökben többszörihozzárendelését. Az egyéni szerepkört a szervezetre kiterjedő hatókörben lehet hozzárendelni, vagy ha egyetlen Azure AD-objektum is hozzárendelhető a hatókörhöz. Egy objektum hatóköre például egyetlen alkalmazás regisztrálása. A különböző hatókörök használata esetén ugyanaz a szerepkör-definíció rendelhető hozzá az Sally szolgáltatáshoz a szervezet összes alkalmazás-regisztrációjában, majd csak a contoso-költségelszámolás alkalmazás regisztrálására.
 
-Az egyéni szerepkörök alapjaival kapcsolatos további információkért tekintse meg az [Egyéni szerepkörök áttekintését](roles-custom-overview.md), valamint az [Egyéni szerepkör létrehozását](roles-create-custom.md) és [a szerepkör hozzárendelését](roles-assign-graph.md)ismertető cikket.
+Tippek az alkalmazások kezelésének delegálásához egyéni szerepkörök létrehozásakor és használatakor:
+- Az egyéni szerepkörök csak az Azure AD-portál legfrissebb alkalmazás-regisztrációs feladataiban biztosítanak hozzáférést. Nem biztosítanak hozzáférést a régi alkalmazás-regisztrációk paneleken.
+- Az egyéni szerepkörök nem biztosítanak hozzáférést az Azure AD-portálhoz, ha az "Azure AD felügyeleti portálhoz való hozzáférés korlátozása" felhasználói beállítás Igen értékre van állítva.
+- Alkalmazásregisztrációk, hogy a felhasználó csak a "minden alkalmazás" lapon jelenjen meg a szerepkör-hozzárendelések használatával, megjelenik az alkalmazás regisztrációs lapján. Nem jelennek meg a "tulajdonban lévő alkalmazások" lapon.
+
+Az egyéni szerepkörök alapjaival kapcsolatos további információkért tekintse meg az [Egyéni szerepkörök áttekintését](roles-custom-overview.md), valamint az [Egyéni szerepkör létrehozását](roles-create-custom.md) és [a szerepkör hozzárendelését](roles-assign-powershell.md)ismertető cikket.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: dc3b9cceda10ae1ff648306236d5ac4868b5b426
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5bfb3a093cd101f30daf4439dc8f58b5b4f693ca
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722155"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740887"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -101,7 +101,7 @@ Igen. Tekintse [meg a kérelem módosításait](https://docs.microsoft.com/azure
 
 Az új Application Gateway v1 SKU üzembe helyezése akár 20 percet is igénybe vehet. A példányok méretének vagy számának módosításai nem zavaróak, és az átjáró ebben az időszakban aktív marad.
 
-A v2 SKU-t használó központi telepítések üzembe helyezése akár 6 percet is igénybe vehet.
+A v2 SKU-t használó legtöbb üzemelő példány körülbelül 6 percet vesz igénybe. Azonban a telepítés típusától függően hosszabb időt is igénybe vehet. Ha például több Availability Zones több példányban üzemelő példányok több mint 6 percet vesznek igénybe. 
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Használhatom az Exchange Servert háttérként a Application Gateway?
 
@@ -323,10 +323,6 @@ Igen. Engedélyezheti a DDoS Protection szolgáltatást azon a virtuális háló
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Van elérhető útmutató a v1 SKU-ról a v2 SKU-ra való Migrálás céljából?
 
 Igen. Részletekért lásd: az [Azure Application Gateway és a webalkalmazási tűzfal áttelepítésének v1-ről v2-re](migrate-v1-v2.md).
-
-### <a name="does-waf-support-non-utf-8-encoding"></a>Támogatja a WAF a nem UTF-8 kódolást?
-
-Nem. A WAF jelenleg csak az UTF-8 kódolást támogatja.
 
 ## <a name="diagnostics-and-logging"></a>Diagnosztika és naplózás
 

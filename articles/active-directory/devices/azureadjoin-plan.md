@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e58762bd5bf4342804767a200c94b432dd152a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e5dc1c3fb7ae12c36a8c1fe383290435c03ee0c4
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562227"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741367"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: Az Azure AD-csatlakozás implementálásának megtervezése
 
@@ -68,7 +68,11 @@ Ezekhez a forgatókönyvekhez nem szükséges összevonási kiszolgálót konfig
 Egy összevont környezetnek rendelkeznie kell egy olyan identitás-szolgáltatóval, amely támogatja a WS-Trust és a WS-fed protokollokat:
 
 - **WS-Fed:** Ez a protokoll az eszköz Azure AD-hez való csatlakoztatásához szükséges.
-- **WS-Trust:** Ez a protokoll egy Azure AD-hez csatlakoztatott eszközre való bejelentkezéshez szükséges. 
+- **WS-Trust:** Ez a protokoll egy Azure AD-hez csatlakoztatott eszközre való bejelentkezéshez szükséges.
+AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat:`/adfs/services/trust/2005/usernamemixed`
+ `/adfs/services/trust/13/usernamemixed`
+ `/adfs/services/trust/2005/certificatemixed`
+ `/adfs/services/trust/13/certificatemixed`
 
 Ha az identitás-szolgáltató nem támogatja ezeket a protokollokat, az Azure AD JOIN nem működik natív módon. A Windows 10 1809-től kezdve a felhasználók az SAML-alapú identitás-szolgáltatóval bejelentkezhetnek egy Azure AD-hez csatlakoztatott eszközre a [Windows 10-es webes bejelentkezés](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)használatával. Jelenleg a webes bejelentkezés előzetes verziójú funkció, ezért nem ajánlott éles környezetekben üzemelő példányokhoz.
 

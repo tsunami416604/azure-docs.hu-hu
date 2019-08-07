@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 9906fe5de9c24f1b1a8c3f713fa772e56ed4e13f
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 135855ee33f783e85b398c7f9716c2c897633de9
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441966"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779544"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Virtuális hálózat megtervezése az Azure HDInsight
 
@@ -25,7 +25,7 @@ Az Azure Virtual Network a következő forgatókönyvek használatát teszi lehe
 * Közvetlen hozzáférés az interneten keresztül nyilvánosan nem elérhető [Apache Hadoop](https://hadoop.apache.org/) -szolgáltatásokhoz. Például [Apache Kafka](https://kafka.apache.org/) API-kat vagy az [Apache HBase](https://hbase.apache.org/) Java API-t.
 
 > [!IMPORTANT]
-> A HDInsight-fürt VNET való létrehozása számos hálózati erőforrást hoz létre, például hálózati adaptereket és terheléselosztókat. Ne **Törölje ezeket** a hálózati erőforrásokat, mivel azok szükségesek ahhoz, hogy a fürt megfelelően működjön a VNET.
+> A HDInsight-fürt VNET való létrehozása számos hálózati erőforrást hoz létre, például hálózati adaptereket és terheléselosztókat. Ne törölje ezeket a hálózati erőforrásokat, mivel azok szükségesek ahhoz, hogy a fürt megfelelően működjön a VNET.
 >
 > A 2019. február 28. után a VNET létrehozott új HDInsight-fürtök hálózati erőforrásai (például hálózati adapterek, LBs-EK stb.) ugyanabba a HDInsight-fürterőforrás-csoportba lesznek kiépítve. Korábban ezeket az erőforrásokat kiosztották a VNET erőforráscsoporthoz. Az aktuálisan futó fürtök és a VNET nélkül létrehozott fürtök nem változnak.
 
@@ -117,7 +117,7 @@ Az Azure a virtuális hálózatban telepített Azure-szolgáltatások névfelold
 
 * Bármely, az interneten elérhető erőforrás. Például: microsoft.com, windowsupdate.com.
 
-* Minden olyan erőforrás, amely ugyanabban az Azure-Virtual Networkban található, az erőforrás __belső DNS-nevének__ használatával. Például az alapértelmezett névfeloldás használatakor az alábbi példa belső DNS-neveket rendel hozzá a HDInsight Worker csomópontjaihoz:
+* Minden olyan erőforrás, amely ugyanabban az Azure-Virtual Networkban található, az erőforrás __belső DNS-nevének__ használatával. Ha például az alapértelmezett névfeloldást használja, a következő példák a HDInsight-feldolgozó csomópontokhoz rendelt belső DNS-nevekre:
 
   * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
   * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
@@ -232,7 +232,7 @@ A hálózati biztonsági csoportokkal kapcsolatos további információkért tek
 
 További információ a HDInsight-fürtök kimenő forgalmának szabályozásáról: a [kimenő hálózati forgalom korlátozásának konfigurálása az Azure HDInsight](hdinsight-restrict-outbound-traffic.md)-fürtökhöz.
 
-#### <a name="forced-tunneling-to-on-premise"></a>Kényszerített bújtatás helyi rendszerbe
+#### <a name="forced-tunneling-to-on-premise"></a>Kényszerített bújtatás helyszínre
 
 A kényszerített bújtatás egy felhasználó által megadott útválasztási konfiguráció, amelyben az alhálózat összes forgalma egy adott hálózatra vagy helyre, például a helyszíni hálózatra van kényszerítve. A HDInsight __nem__ támogatja a helyszíni hálózatokra irányuló forgalom kényszerített bújtatását. 
 
@@ -242,7 +242,7 @@ Ha hálózati biztonsági csoportokat vagy felhasználó által megadott útvona
     
 ## <a id="hdinsight-ports"></a>Szükséges portok
 
-Ha tűzfalat szeretne használni,  és bizonyos portokon kívülről fér hozzá a fürthöz, lehetséges, hogy engedélyeznie kell a forgalmat az adott forgatókönyvhöz szükséges portokon. Alapértelmezés szerint a portok speciális engedélyezési beállításai nem szükségesek, ha az előző szakaszban ismertetett Azure felügyeleti forgalom a 443-es porton keresztül érhető el a fürt számára.
+Ha tűzfalat szeretne használni, és bizonyos portokon kívülről fér hozzá a fürthöz, lehetséges, hogy engedélyeznie kell a forgalmat az adott forgatókönyvhöz szükséges portokon. Alapértelmezés szerint a portok speciális engedélyezési beállításai nem szükségesek, ha az előző szakaszban ismertetett Azure felügyeleti forgalom a 443-es porton keresztül érhető el a fürt számára.
 
 Az egyes szolgáltatásokhoz tartozó portok listáját lásd: [Apache Hadoop Services által használt portok a HDInsight](hdinsight-hadoop-port-settings-for-services.md) -dokumentumban.
 

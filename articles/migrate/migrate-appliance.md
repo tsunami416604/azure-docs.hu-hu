@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: 6537bfe5df8de298593428fb21448181ad8075fc
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c31a9fde50de8190cdd7bc19600344a8e58cf60b
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663464"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827321"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -42,7 +42,7 @@ A készülék telepítette ezeket az ügynököket.
 
 **Ügynök** | **Részletek**
 --- | ---
-Felderítési ügynök | Konfigurációs adatokat gyűjt a helyszíni virtuális gépekről.
+Felderítési ügynök | A helyszíni virtuális gépek konfigurációs adatok összegyűjtése
 Értékelési ügynök | A helyszíni környezetet a virtuális gép teljesítményadatait gyűjti.
 Áttelepítési adapter | Összehangolja a virtuális gépek replikálását, és koordinálja a virtuális gépek és az Azure közötti kommunikációt.
 Áttelepítési átjáró | Replikált virtuálisgép-adatokat küld az Azure-nak.
@@ -200,8 +200,8 @@ A készülék frissítve lett, mivel a készüléken futó Azure Migrate-ügynö
 
 - Ez automatikusan megtörténik, mert alapértelmezés szerint engedélyezve van az automatikus frissítés a készüléken.
 - Az alapértelmezett beállítás módosításával manuálisan is frissítheti az ügynököket.
-- Az automatikus frissítések letiltásához állítsa be a beállításkulcs-berendezés automatikus frissítését a HKLM\SOFTWAREMicrosoft\Azure.-ben
-
+- Az automatikus frissítés letiltásához nyissa meg a Beállításszerkesztőt > HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance, és állítsa az "AutoUpdate" beállításkulcsot 0-ra (DWORD).
+ 
 ### <a name="set-agent-updates-to-manual"></a>Az ügynökök frissítésének beállítása kézire
 
 Manuális frissítés esetén győződjön meg arról, hogy a készüléken lévő összes ügynököt egy időben frissíti, a készüléken lévő összes elavult ügynök **frissítés** gombjával. A frissítési beállítás bármikor visszaváltható az automatikus frissítésekre.

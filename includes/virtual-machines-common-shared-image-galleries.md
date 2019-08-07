@@ -8,79 +8,79 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 3ea41a16f79f903b5ff7d2b93f74f7d3d2a0dd83
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e43b8c951d8c7d5d60904fe49d8639efaba5c89f
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133864"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775882"
 ---
-Megosztott lemezkép-katalógus szolgáltatása segít kialakítani a struktúra és a szervezet a felügyelt rendszerképek körül. Megosztott kép katalógusok adja meg:
+A megosztott képkatalógus egy olyan szolgáltatás, amely segít felépíteni a felügyelt lemezképekre épülő struktúrát és szervezetet. A megosztott képtárak a következőket biztosítják:
 
-- Képek felügyelt globális replikálását.
-- Verziókezelés és a könnyebb kezelhetőség képek csoportosítása.
-- Magas rendelkezésre állású képek a Zónaredundáns Társzolgáltatási (ZRS) fiókokkal a rendelkezésre állási zónákat támogató régiók. A ZRS ellenállóbbá teszi a lemezképeket a zónán belüli hibákkal szemben.
-- Előfizetések között, és még az Active Directory (AD) bérlő, az RBAC használatával között megosztást.
-- Az üzemelő példányok, az egyes régiókban kép replikákkal rendelkező méretezése.
+- A lemezképek felügyelt globális replikálása.
+- A könnyebb felügyelet érdekében a rendszerképek verziószámozása és csoportosítása.
+- A Availability Zones-t támogató régiókban található, a zóna redundáns tárolási (ZRS) fiókjaival rendelkező, nagyon elérhető rendszerképek. A ZRS ellenállóbbá teszi a lemezképeket a zónán belüli hibákkal szemben.
+- Megosztás az előfizetések között, és akár Active Directory (AD) bérlők között a RBAC használatával.
+- Az üzembe helyezések skálázása minden egyes régióban képreplikákkal.
 
-Egy megosztott lemezkép-katalógus használatával megoszthatja a különböző felhasználók, az egyszerű szolgáltatások vagy AD-csoportokat a képeket a szervezeten belül. Megosztott lemezképeket több régióban, a gyorsabb skálázás az üzembe helyezést lehet replikálni.
+Megosztott képkatalógus használatával a képeket megoszthatja a szervezeten belüli különböző felhasználókkal, egyszerű szolgáltatásokkal vagy AD-csoportokkal. A megosztott lemezképek több régióba is replikálhatók, így az üzemelő példányok gyorsabban méretezhetők.
 
-Egy felügyelt rendszerképet egy példányát, vagy egy teljes virtuális Gépet (beleértve a bármely más csatolt lemez) vagy csak az operációsrendszer-lemez, attól függően, hogyan hoz létre a lemezképet. A lemezképből létrehozott virtuális gép, ha a virtuális merevlemezeket, a lemezkép egy példányát a lemezek létrehozása az új virtuális gép szolgálnak. A felügyelt rendszerkép tárolóban marad, és hozhat létre új virtuális gépeket és újra használható.
+A felügyelt lemezképek egy teljes virtuális gép (beleértve a csatlakoztatott adatlemezeket is) vagy csak az operációsrendszer-lemez másolata, attól függően, hogyan hozza létre a lemezképet. Amikor létrehoz egy virtuális gépet a lemezképből, a lemezképben található virtuális merevlemezek egy másolatát használják az új virtuális gép lemezeinek létrehozásához. A felügyelt rendszerkép a tárolóban marad, és újra felhasználható új virtuális gépek létrehozásához.
 
-Ha felügyelt rendszerkép található, biztosítani kell, és szeretné elérhetővé teheti azokat a vállalat nagy számú, egy adattár, amely megkönnyíti a rendszerképek megosztani egy megosztott lemezkép-katalógusában is használhatja. 
+Ha nagy számú felügyelt lemezképet kell fenntartania, és a vállalaton belül elérhetővé szeretné tenni őket, a megosztott képtárat tárházként használhatja, amely megkönnyíti a képek megosztását. 
 
-A megosztott lemezkép-katalógusában a szolgáltatás több erőforrástípusok rendelkezik:
+A megosztott képkatalógus funkció több erőforrástípust tartalmaz:
 
 | Resource | Leírás|
 |----------|------------|
-| **Felügyelt rendszerkép** | Egy alapszintű rendszerképet, amely önmagában, vagy létrehozásához használt egy **lemezkép verziója** egy rendszerkép-katalógusában. Felügyelt lemezképek általánosított virtuális gépek jönnek létre. Egy felügyelt rendszerképet egy speciális típusú virtuális Merevlemezt, amely használható, hogy több virtuális gép, és most már használható létrehozásához megosztott kép verzió. |
-| **Lemezkép-katalógusában** | Az Azure piactéren, például egy **lemezkép-katalógusában** egy adattár a kezelése és megosztása a rendszerképeket, de Ön szabályozza, ki férhet. |
-| **Rendszerkép definíciójában** | Képek ugyanazon a katalóguson belül határozza meg, és végezze a lemezkép és a szervezeten belül vonatkozó követelményekhez. Tartalmaznak információkat, például, hogy-e a kép a Windows vagy Linux-alapú, minimális és maximális memóriára vonatkozó követelményeknek, és a kibocsátási megjegyzéseket. Egy lemezkép definíciója. |
-| **Lemezkép verziója** | Egy **lemezkép verziója** meg használni a virtuális gép létrehozása katalógus használata során. Kép különböző verzióinak rendelkezhet saját környezetéhez szükséges módon. Használata esetén, egy felügyelt rendszerképet, például egy **lemezkép verziója** hozhat létre virtuális Gépet, a rendszerkép verziószámát új lemezeket a virtuális gép létrehozásához használt. Lemezkép verziója többször is használható. |
+| **Felügyelt rendszerkép** | Olyan alapszintű rendszerkép, amely önmagában vagy rendszerkép- **verzió** létrehozásához használható képgyűjteményben. A felügyelt lemezképek általánosított virtuális gépekről jönnek létre. A felügyelt rendszerkép olyan speciális VHD-típus, amellyel több virtuális gép hozható létre, és most már használható a megosztott rendszerkép-verziók létrehozásához is. |
+| **Képtár** | Az Azure Marketplace-hez hasonlóan a képkatalógus is a lemezképek kezeléséhez és megosztásához használható tárház, de Ön szabályozhatja, hogy ki férhet hozzá. |
+| **Rendszerkép definíciója** | A lemezképek a katalógusban vannak definiálva, és a rendszerképekkel és a szervezeten belüli használattal kapcsolatos követelményekkel kapcsolatos információkat hordoznak. Olyan információkat is tartalmazhat, mint például a Windows vagy Linux, a minimális és a maximális memória, valamint a kibocsátási megjegyzések. Ez egy adott típusú rendszerkép definíciója. |
+| **Rendszerkép verziója** | A **rendszerkép verziója** az, amit a virtuális gép létrehozásához használ gyűjtemény létrehozásakor. A környezethez szükség lehet a rendszerkép több verziójára. A felügyelt rendszerképekhez hasonlóan, amikor **rendszerkép-verziót** használ egy virtuális gép létrehozásához, a rendszerkép verziója a virtuális gép új lemezének létrehozására szolgál. A rendszerkép verziója többször is használható. |
 
 <br>
 
 
-![Hogyan lehet kép különböző verzióinak a katalógusban szereplő bemutató ábra](./media/shared-image-galleries/shared-image-gallery.png)
+![Ábra, amely bemutatja, hogyan lehet egy rendszerkép több verziója is a galériában](./media/shared-image-galleries/shared-image-gallery.png)
 
 ## <a name="image-definitions"></a>Lemezkép-definíciók
 
-Lemezkép-definíciókat kép verziói logikai jellegű csoportosítását. A rendszerkép definíciójában miért a rendszerkép létrejött kapcsolatos információkat, mely szolgáltatást, operációs rendszer és a lemezképpel kapcsolatos információkat tartalmazza. Egy rendszerkép definíciójában úgy működik, mint az összes részletes adat alkalmazásszabályok létrehozása egy adott rendszerkép egy tervet. Egy rendszerkép definíciójában, de a rendszerkép verziószámát a definíció alapján létrehozott virtuális gép nem kell telepítenie.
+A rendszerkép-definíciók egy adott rendszerkép verzióihoz tartozó logikai Csoportosítások. A rendszerkép definíciója információt tartalmaz arról, hogy a rendszerkép hogyan lett létrehozva, melyik operációs rendszer, és milyen információkkal szolgál a rendszerkép használatáról. A rendszerkép definíciója olyan, mint egy csomag, amely az adott rendszerkép létrehozásával kapcsolatos összes részletre vonatkozik. Nem telepít virtuális gépet lemezkép-definícióból, hanem a definícióból létrehozott rendszerkép-verzióból.
 
 
-Minden rendszerkép definíciójában három kombinációja – a használt paraméterek **közzétevő**, **ajánlat** és **Termékváltozat**. Ezek használhatók a keresés egy adott rendszerkép definíciójában. Lemezkép verziója, amelyek egy vagy két, de nem minden három érték lehet.  Ha például az alábbiakban három rendszerkép-definíciók és azok értékeit:
+Az egyes képdefiníciók három paramétert használnak a Publisherben, azajánlatban és az **SKU**-ban. Ezek egy adott rendszerkép-definíció megtalálására szolgálnak. Rendelkezhet egy vagy két, de nem mindhárom értékkel rendelkező képverzióval is.  Íme például három képdefiníció és értékeik:
 
-|Rendszerkép-definíció|Kiadó|Ajánlat|SKU|
+|Rendszerkép-definíció|Kiadó|Ajánlat|Termékváltozat|
 |---|---|---|---|
-|myImage1|Contoso|Pénzügy|Háttér|
+|myImage1|Contoso|Pénzügy|Háttérszolgáltatás|
 |myImage2|Contoso|Pénzügy|Előtér|
 |myImage3|Tesztelés|Pénzügy|Előtér|
 
-Az alábbi három egyedi értékek amelyekre. A formátum hasonlít a hogyan jelenleg megadhat közzétevő, ajánlat és a Termékváltozat [Azure Marketplace-rendszerképek](../articles/virtual-machines/windows/cli-ps-findimage.md) az Azure PowerShell, a Piactéri lemezképet legújabb verziójának beszerzéséhez. Minden rendszerkép definíciójában rendelkeznie kell egy egyedi készletét ezeket az értékeket.
+Mindhárom ilyen egyedi értéket tartalmaz. A formátum hasonló ahhoz, ahogyan jelenleg az [Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) -lemezképekhez tartozó közzétevőt, ajánlatot és SKU-t megadhatja Azure PowerShell a Piactéri lemezkép legújabb verziójának beszerzéséhez. Minden rendszerkép-definíciónak egyedi készlettel kell rendelkeznie ezeknek az értékeknek.
 
-Más paramétereket, amelyek is beállíthat a rendszerkép definíciójában, hogy könnyebben tudja követni az erőforrások a következők:
+A következő más paraméterek is megadhatók a képdefinícióban, így könnyebben nyomon követheti az erőforrásokat:
 
-* Operációs rendszer állapot – az operációs rendszer állapotáról és megadható általánosítva vagy specializált, de csak általánosítva jelenleg támogatott. Képek kell létrehozni, amely a Windows Sysprep használatával általánosított virtuális gépeket vagy `waagent -deprovision` Linux rendszeren.
+* Operációs rendszer állapota – az operációsrendszer-állapot beállítható általánosított vagy specializált értékre, de jelenleg csak általánosított érték adható meg. A lemezképeket olyan virtuális gépekről kell létrehozni, amelyek a Windows rendszerhez vagy `waagent -deprovision` a Linux rendszerhez készült Sysprep használatával lettek általánosítva.
 * Operációs rendszer – lehet Windows vagy Linux.
-* Leírás – miért a rendszerkép definíciójában létezik-e további részletes információkat biztosíthat leírás. Egy rendszerkép definíciójában Előfordulhat például, az előtér-kiszolgáló, amely rendelkezik az alkalmazás előre telepítve van.
-* Végfelhasználói licencszerződés - használható, hogy egy adott a rendszerkép definíciójában a végfelhasználói licencszerződés mutasson.
-* Adatvédelmi nyilatkozat és a kibocsátási megjegyzések – kibocsátási megjegyzések és adatvédelmi nyilatkozatai az Azure storage tárolja, és adjon meg egy URI-t a rendszerkép definíciójában részeként eléréséhez szükséges.
-* Teljes életciklusa dátum – egy teljes életciklusa dátum csatolása a rendszerkép definíciójában ahhoz, hogy törli a régi lemezképet definíciók automation használatával.
-* Címke - adhat hozzá címkéket a rendszerkép definíciójában létrehozásakor. Címkékkel kapcsolatos további információkért lásd: [az erőforrások rendszerezése címkék használatával](../articles/azure-resource-manager/resource-group-using-tags.md)
-* Minimális és maximális vCPU és javaslatok memória - vCPU, memória és javaslatokat, a lemezkép-e csatlakoztathat ezt az információt a rendszerkép definíciójában.
-* Nem engedélyezett a lemeztípusok – megadhatja a szükséges tárhelyet a virtuális gép kapcsolatos információkat. Például ha a kép nem alkalmas HDD a standard szintű lemezek, hozzá őket a letiltás lista.
+* Leírás – a Leírás használatával részletesebb információkat adhat meg arról, hogy miért létezik a rendszerkép definíciója. Előfordulhat például, hogy rendelkezik egy rendszerkép-definícióval az előtér-kiszolgálóhoz, amelyen az alkalmazás előre telepítve van.
+* Végfelhasználói licencszerződés – a rendszerkép-definícióra vonatkozó végfelhasználói licencszerződésre mutathat.
+* Adatvédelmi nyilatkozat és kibocsátási megjegyzések – a kibocsátási megjegyzések és az adatvédelmi nyilatkozatok tárolása az Azure Storage-ban, valamint egy URI megadása a rendszerkép definíciójának részeként való hozzáféréshez.
+* Élettartam utolsó dátuma – a rendszerkép-definícióhoz csatolja az élettartamot, hogy az Automation használatával törölni tudja a régi képdefiníciókat.
+* Címke – címkéket adhat hozzá a rendszerkép definíciójának létrehozásakor. További információ a címkékkel kapcsolatban: [címkék használata az erőforrások rendszerezéséhez](../articles/azure-resource-manager/resource-group-using-tags.md)
+* Minimális és maximális vCPU és memória-javaslatok – ha a rendszerképnek van vCPU-és memória-javaslata, csatolhatja ezeket az információkat a rendszerkép-definícióhoz.
+* Nem engedélyezett lemezek típusai – a virtuális gép tárolási igényeivel kapcsolatos információkat adhat meg. Ha például a rendszerkép nem szabványos HDD-lemezekhez van kiválasztva, akkor azokat a letiltási listához adja.
 
 
 ## <a name="regional-support"></a>Regionális támogatás
 
-Forrásrégiók az alábbi táblázatban láthatók. Az összes nyilvános régióban is lehetnek célrégiók, de Ausztrália középső régiója és Ausztrália 2. középső régiója replikálni kell rendelkeznie az előfizetésben szerepel az engedélyezési listán. Az engedélyezési kérést, nyissa meg: https://www.microsoft.com/en-au/central-regions-eligibility/
+A forrás régiói az alábbi táblázatban láthatók. Az összes nyilvános régió lehet célcsoport, de az ausztráliai közép-és ausztráliai Közép-Ausztrália 2-es verzióra való replikáláshoz az előfizetés engedélyezési listának kell lennie. A következő lépésekkel kérheti le az engedélyezési listát: https://azure.microsoft.com/en-au/global-infrastructure/australia/contact/
 
 
-| Forrás régiók |
+| Forrásoldali régiók |
 |---------------------|-----------------|------------------|-----------------|
-| Ausztrália középső régiója   | USA középső RÉGIÓJA – EUAP | Korea középső régiója    | USA nyugati középső régiója |
+| Ausztrália középső régiója   | USA középső régiója – EUAP | Korea középső régiója    | USA nyugati középső régiója |
 | Ausztrália 2. középső régiója | Kelet-Ázsia       | Korea déli régiója      | Nyugat-Európa     |
-| Kelet-Ausztrália      | USA keleti régiója         | USA északi középső régiója | Nyugat-India      |
+| Kelet-Ausztrália      | East US         | USA északi középső régiója | Nyugat-India      |
 | Délkelet-Ausztrália | USA 2. keleti régiója       | Észak-Európa     | USA nyugati régiója         |
 | Dél-Brazília        | USA 2. keleti régiója – EUAP  | USA déli középső régiója | USA nyugati régiója, 2.       |
 | Közép-Kanada      | Közép-Franciaország  | Dél-India      |                 |
@@ -90,90 +90,90 @@ Forrásrégiók az alábbi táblázatban láthatók. Az összes nyilvános régi
 
 
 
-## <a name="limits"></a>Limits 
+## <a name="limits"></a>Korlátok 
 
-Nincsenek korlátai, előfizetésenként, megosztott kép katalógusok-erőforrások üzembe helyezéséhez:
-- megosztott kép 100 katalógusok esetén előfizetésenként és régiónként
-- 1000 lemezkép-definíciókat, előfizetésenként és régiónként
-- 10 000 lemezkép-verzió, előfizetésenként és régiónként
+Az erőforrások megosztott képtárakkal való üzembe helyezéséhez korlátok, előfizetések vonatkoznak:
+- 100 megosztott képtárak, előfizetések száma régiónként
+- 1 000 képdefiníciók, előfizetések régiónként
+- 10 000 képverzió, előfizetések száma régiónként
 
-További információkért lásd: [ellenőrizze az erőforrás-használati korlátozások](https://docs.microsoft.com/azure/networking/check-usage-against-limits) hogyan ellenőrizheti az aktuális használati példák.
+További információ: az [erőforrás-használat korlátainak korlátozása](https://docs.microsoft.com/azure/networking/check-usage-against-limits) példákkal a jelenlegi használat ellenõrzéséhez.
  
 
 ## <a name="scaling"></a>Méretezés
-Megosztott lemezkép-katalógus lehetővé teszi, hogy meg szeretné tartani a rendszerképek Azure replikák száma. Ez segít több virtuális gépre kiterjedő központi telepítési forgatókönyvei szerint is oszlanak meg a virtuális gépek üzembe helyezése különböző replikába csökkenti az esélyét, hogy a példány létrehozása feldolgozása egyetlen replika túlterhelés miatt szabályozás alatt áll.
+A megosztott képkatalógus segítségével megadhatja, hogy az Azure hány replikát őrizzen meg a képeken. Ez segítséget nyújt a több virtuális gépre kiterjedő üzembe helyezési forgatókönyvekben, mivel a virtuális gépek központi telepítése különböző replikák számára lehetséges, ami csökkenti annak a valószínűségét, hogy egy replika túlterhelése miatt szabályozható a példány-létrehozási feldolgozás.
 
 
-A megosztott lemezkép-katalógusában, most már telepítheti legfeljebb 1000 Virtuálisgép-példányt a virtuális gép méretezési (a felügyelt képekkel 600 beállítása). Kép replikák adja meg a jobb teljesítmény érdekében üzembe helyezés, a megbízhatóság és a konzisztencia.  Beállíthat egy másik replika száma minden egyes célrégióban számára, a skálázási igényeinek megfelelően. Mivel minden egyes replikának a rendszerkép részletes másolatát, így minden további replika költségráfordításokkal egyenes arányban, az üzemelő példányok méretezését. Amíg nem két lemezképet tisztában vagyunk vele, vagy régiók ugyanazok, itt látható az általános iránymutatás a replikák használatát egy régióban:
+A megosztott képtárat mostantól egy virtuálisgép-méretezési csoportba helyezheti üzembe egy 1 000-es virtuálisgép-példányon (a 600-ból felügyelt lemezképekkel). A képreplikák jobb teljesítményt, megbízhatóságot és konzisztenciát biztosítanak a központi telepítéshez.  Az egyes célcsoportok között különböző replikákat állíthat be, a régió skálázási igényei alapján. Mivel minden replika a rendszerkép egy részletes másolata, ez segít az üzembe helyezések lineárisan történő méretezésében minden további replikával. Habár a két rendszerkép vagy régió nem egyezik, a következő általános útmutatást láthatjuk, hogyan használhat replikákat egy régióban:
 
-- Minden 20 virtuális gépet, amely létrehoz egy időben javasoljuk, tartsa egy replikát. Például egyszerre használja ugyanazt a lemezképet egy régióban 120 virtuális gépek létrehozásakor, javasoljuk, hogy a lemezkép legalább 6 replika maradjon. 
-- Minden egyes méretezési csoport üzembe helyezését legfeljebb 600 példányaival javasoljuk, tartsa legalább egy replikát. Például ha 5 méretezési csoportok egyidejűleg, egyenként 600 Virtuálisgép-példányok ugyanazt a lemezképet használ egy adott régióban hoz javasoljuk, hogy a lemezkép legalább 5 replikák maradjon. 
+- Minden olyan 20 virtuális gép esetében, amelyet egyszerre hoz létre, javasoljuk, hogy tartsa meg az egyik replikát. Ha például 120 virtuális gépet hoz létre egyidejűleg ugyanazon rendszerkép használatával egy régióban, javasoljuk, hogy legalább 6 replikát őrizzen meg a rendszerképből. 
+- Minden olyan méretezési csoport esetében, amely legfeljebb 600 példánnyal rendelkezik, javasoljuk, hogy tartsa meg legalább egy replikát. Ha például egyszerre 5 méretezési csoportot hoz létre, és mindegyik 600 virtuálisgép-példánnyal ugyanazt a rendszerképet használja egyetlen régióban, javasoljuk, hogy legalább 5 replikát őrizzen meg a rendszerképből. 
 
-Minden esetben javasoljuk, hogy overprovision tényezőtől, például a kép mérete, a tartalom és az operációs rendszer típusa replikák száma.
-
-
-![Hogyan méretezhetők a képek bemutató ábra](./media/shared-image-galleries/scaling.png)
+Mindig azt javasoljuk, hogy a replikák számát a képméret, a tartalom és az operációs rendszer típusa miatt ne felépítse.
 
 
-
-## <a name="make-your-images-highly-available"></a>Magas rendelkezésre állásúvá tenni a képek
-
-[Az Azure Zónaredundáns tárolás (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) régióban egy rendelkezésre állási zónában meghibásodása elleni rugalmasságot biztosít. A megosztott Képkatalógus általános elérhetőségét kiválaszthatja a lemezképek tárolását a ZRS-fiókok a rendelkezésre állási zónákat tartalmazó régiók. 
-
-Azt is beállíthatja a fióktípus a célként megadott régióban. Az alapértelmezett tárfiók típusa Standard_LRS, de Standard_ZRS választhat a rendelkezésre állási zónákat tartalmazó régiók. A ZRS regionális rendelkezésre állásának ellenőrzésére [Itt](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs).
-
-![A ZRS bemutató ábra](./media/shared-image-galleries/zrs.png)
+![A képek méretezését bemutató ábra](./media/shared-image-galleries/scaling.png)
 
 
-## <a name="replication"></a>Replikáció
-Megosztott lemezkép-katalógus lehetővé teszi a képek automatikusan replikálja más Azure-régiókban. Minden megosztott lemezkép verziója függően mi értelme a szervezet különböző régiókban lehet replikálni. Egy példa arra, hogy a legújabb lemezkép mindig replikálása több régióban, amíg az összes korábbi verziói csak érhető el 1 régió van. Ez segít mentse a megosztott lemezkép-verziók a tárolási költségekre. 
 
-A rendszer replikálja egy megosztott lemezkép verziója régiók létrehozásának időpontja után lehet frissíteni. A különböző régióban való replikálásához szükséges idő attól függ, másolását adatok mennyisége és a verzió a rendszer replikálja régiók száma. Ez eltarthat néhány óráig bizonyos esetekben. A replikáció történik, amíg a replikáció állapotát megtekintheti a régiónként. A kép replikáció befejezése után egy régióban, telepítheti a virtuális gép vagy a méretezési csoportot, hogy a lemezkép-verziót használó a régióban.
+## <a name="make-your-images-highly-available"></a>Képek nagyfokú elérhetővé tétele
 
-![Hogyan replikálhat lemezképek bemutató ábra](./media/shared-image-galleries/replication.png)
+Az [Azure Zone redundáns tároló (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) rugalmasságot biztosít a rendelkezésre állási zóna meghibásodása esetén a régióban. A megosztott képkatalógus általános elérhetősége mellett dönthet úgy, hogy a rendszerképeket a ZRS-fiókokban tárolja a Availability Zones régiókban. 
+
+Kiválaszthatja az egyes célcsoportok fiókjának típusát is. Az alapértelmezett Storage-fióktípus a Standard_LRS, de kiválaszthatja a Standard_ZRS-t a Availability Zones rendelkező régiók számára. A ZRS regionális elérhetőségét [itt](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)tekintheti meg.
+
+![ZRS mutató ábra](./media/shared-image-galleries/zrs.png)
+
+
+## <a name="replication"></a>Replikálás
+A megosztott képkatalógus lehetővé teszi a képek más Azure-régiókba történő automatikus replikálását is. Az egyes megosztott rendszerkép-verziók különböző régiókba replikálhatók, attól függően, hogy mi értelme van a szervezetnek. Az egyik példa az, hogy mindig replikálja a legújabb rendszerképet több régióban, míg az összes régebbi verzió csak 1 régióban érhető el. Ez a megosztott rendszerkép-verziók tárolási költségeinek megtakarítását is lehetővé teheti. 
+
+Az a régió, amelyet a megosztott rendszerkép replikál, a rendszer a létrehozási idő után frissítheti. A különböző régiókba való replikáláshoz szükséges idő a másolt adatok mennyiségétől és a verzió által replikált régiók számától függ. Bizonyos esetekben ez néhány órát is igénybe vehet. A replikáció során régiónként is megtekintheti a replikálás állapotát. Ha a lemezkép replikálása egy régióban fejeződött be, akkor az adott lemezkép verziójának használatával üzembe helyezhet egy virtuális gépet vagy méretezési készletet a régióban.
+
+![A képek replikálásának módját bemutató ábra](./media/shared-image-galleries/replication.png)
 
 
 ## <a name="access"></a>Access
 
-Mivel a megosztott lemezkép-katalógusában, a rendszerkép definíciójában és a lemezkép verziója összes erőforrást, azok megoszthatók a beépített natív Azure RBAC-vezérlők használatával. Az RBAC használatával megoszthatja ezeket az erőforrásokat más felhasználók, az egyszerű szolgáltatások és csoportokat. A hozzáférést a bérlőn belül létrehozták őket kívüli személyek is megoszthatja. Miután egy felhasználó hozzáfér a megosztott lemezkép verziója, azok telepíthet egy virtuális Gépet, vagy egy virtuálisgép-méretezési csoportban.  A megosztási mátrix, amely segít megérteni, hogy mi a felhasználó hozzáférést kap a következő:
+Mivel a megosztott képtára, a képdefiníció és a rendszerkép verziója minden erőforrás, a beépített natív Azure RBAC-vezérlőkkel is megoszthatók. A RBAC használatával ezeket az erőforrásokat megoszthatja más felhasználókkal, egyszerű szolgáltatásokkal és csoportokkal is. Akár a bérlőn kívüli személyekhez is megoszthatja a hozzáférést. Miután egy felhasználó hozzáfér a megosztott lemezkép verziójához, üzembe helyezhet egy virtuális gépet vagy egy virtuálisgép-méretezési készletet.  Itt látható a megosztási mátrix, amely segít megérteni, hogy a felhasználó milyen módon férhet hozzá:
 
-| Felhasználóval megosztott     | Megosztott rendszerkép-katalógus | Rendszerkép-definíció | Lemezkép verziója |
+| Felhasználóval megosztva     | Megosztott lemezképkatalógus | Rendszerkép-definíció | Lemezkép verziója |
 |----------------------|----------------------|--------------|----------------------|
-| Megosztott rendszerkép-katalógus | Igen                  | Igen          | Igen                  |
+| Megosztott lemezképkatalógus | Igen                  | Igen          | Igen                  |
 | Rendszerkép-definíció     | Nem                   | Igen          | Igen                  |
 
-Azt javasoljuk, hogy a gyűjtemény szintjén, a legjobb élmény megosztása. Egyéni rendszerkép verziók megosztása nem ajánlott. RBAC kapcsolatos további információkért lásd: [RBAC használatával Azure-erőforrásokhoz való hozzáférés kezelése](../articles/role-based-access-control/role-assignments-portal.md).
+A legjobb megoldás érdekében javasoljuk, hogy ossza meg a gyűjteményt a katalógus szintjén. Az egyes rendszerkép-verziók megosztását nem ajánlott. További információ a RBAC: az [Azure-erőforrásokhoz való hozzáférés kezelése a RBAC használatával](../articles/role-based-access-control/role-assignments-portal.md).
 
-Képek is megoszthatók, nagy mennyiségű, akár egy több-bérlős alkalmazásregisztráció használatával bérlők között. Bérlők között képek megosztásával kapcsolatos további információkért lásd: [katalógus Virtuálisgép-rendszerképek megosztása Azure bérlők](../articles/virtual-machines/linux/share-images-across-tenants.md).
+A képek a több-bérlős alkalmazások regisztrálásával is megoszthatók, akár a bérlők között is. A képek bérlők közötti megosztásával kapcsolatos további információkért lásd: katalógus virtuálisgép-rendszerképeinek [megosztása az Azure-bérlők között](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
 ## <a name="billing"></a>Számlázás
-A megosztott lemezkép-katalógus használata nem jár többletdíjakkal. Meg kell fizetni az alábbi forrásanyagokat:
-- Tárolási költségek, a megosztott kép verziók tárolásához. Költsége attól függ, a verzió a rendszer replikálja régiók számának és a rendszerkép verziószámát replikáin száma. Például ha mindkét replikálja a rendszer 3 régió 2 képek is vannak, majd, módosítani kell 6 felügyelt lemezek mérete alapján. További információkért lásd: [Managed Disks díjszabását ismertető](https://azure.microsoft.com/pricing/details/managed-disks/).
-- A hálózati kimenő forgalom költségeit, az első rendszerkép verziója a forrásrégióban a replikált régiókban való replikálásra. További replikák kezeli a régión belül, így nem vonatkozik külön díj. 
+A megosztott lemezkép-katalógus használata nem jár többletdíjakkal. A következő erőforrásokért kell fizetnie:
+- A megosztott rendszerkép-verziók tárolásának tárolási költségei. A díj a rendszerkép-verzió replikáinak számától és azon régiók számától függ, amelyre a verzió replikálódik. Ha például két lemezkép van, és mindkettő 3 régióba van replikálva, akkor a méretük alapján 6 felügyelt lemez lesz módosítva. További információ: [Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).
+- A hálózati kimenő forgalom díja a forrás régióból a replikált régiókba való első lemezkép-verzió replikálásához. A későbbi replikákat a régión belül kezeljük, így nincs további díj. 
 
 ## <a name="updating-resources"></a>Erőforrások frissítése
 
-Létrehozása után módosíthatja bizonyos, a lemezkép galéria-erőforrásai. Ezek korlátozva:
+A létrehozás után módosításokat végezhet a Képtár erőforrásaiban. Ezek a következőkre korlátozódnak:
  
 Megosztott képgyűjtemény:
 - Leírás
 
-kép definíciója:
-- Ajánlott vcpu-k
-- Ajánlott memóriaméret
+Rendszerkép definíciója:
+- Ajánlott vCPU
+- Ajánlott memória
 - Leírás
-- Élettartam dátum vége
+- Élettartam vége
 
-Lemezkép verziója:
-- Regionális replikáinak száma
+Rendszerkép verziója:
+- Regionális replika száma
 - Célrégiók
-- Legújabb kizárása
-- Élettartam dátum vége
+- Legutóbbi kizárás
+- Élettartam vége
 
 
 ## <a name="sdk-support"></a>SDK-támogatás
 
-A következő SDK-k támogatják a megosztott kép katalógusok létrehozása:
+A következő SDK-k támogatják a megosztott képtárak létrehozását:
 
 - [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
 - [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
@@ -183,106 +183,106 @@ A következő SDK-k támogatják a megosztott kép katalógusok létrehozása:
 
 ## <a name="templates"></a>Sablonok
 
-Lemezkép-katalógusában a megosztott erőforrás-sablonok használatával is létrehozhat. Nincsenek elérhető számos Azure gyorsindítási sablonok: 
+Létrehozhat megosztott képkatalógus-erőforrást sablonok használatával. Több Azure Gyorsindítás-sablon is elérhető: 
 
-- [Hozzon létre egy megosztott lemezkép-katalógusában](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [Kép definíció létrehozása egy megosztott rendszerkép-katalógusában](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [Hozzon létre egy lemezkép verziója egy megosztott rendszerkép-katalógusában](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [Lemezkép verziója egy virtuális gép létrehozása](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [Megosztott Képtár létrehozása](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [Rendszerkép-definíció létrehozása megosztott rendszerkép-gyűjteményben](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [Rendszerkép-verzió létrehozása megosztott rendszerkép-gyűjteményben](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [Virtuális gép létrehozása rendszerkép-verzióból](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések 
 
-**K.** Hogyan lehet az megosztott lemezkép-katalógusában-erőforrások listájának előfizetések között? 
+**K.** Hogyan lehet listázni az összes megosztott képgyűjtemény erőforrását az előfizetések között? 
  
- A. Annak érdekében, hogy a lista összes rendszerkép-katalógusában a megosztott erőforrást, hogy rendelkezik-e a hozzáférést az Azure Portal előfizetések között, kövesse az alábbi lépéseket:
+ A. A megosztott képkatalógus összes erőforrásának listázásához a Azure Portalhoz hozzáférő előfizetések között kövesse az alábbi lépéseket:
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-1. Lépjen a **összes erőforrás**.
-1. Válassza ki az összes olyan előfizetést, amelyben szeretné minden erőforrás listában.
-1. Keresse meg az típusú erőforrások **privát katalógust**.
+1. Nyissa meg az **összes erőforrást**.
+1. Válassza ki az összes olyan előfizetést, amelyben az összes erőforrást listázni szeretné.
+1. Keressen a **privát**katalógus típusú erőforrásokat.
  
-   A lemezkép-definíciók és a lemezkép-verziók megtekintéséhez is választhat **rejtett típusok megjelenítése**.
+   A képdefiníciók és a képfájlok megjelenítéséhez válassza a **rejtett típusok megjelenítése**lehetőséget is.
  
-   Lemezkép-katalógusában a megosztott erőforrások között, amely rendelkezik engedélyekkel az előfizetések listázásához használja a következő parancsot az Azure CLI-ben:
+   Ha az összes olyan előfizetésben szeretné listázni az összes megosztott képkatalógus-erőforrást, amelyre jogosult, használja a következő parancsot az Azure CLI-ben:
 
    ```bash
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
    ```
 
 
-**K.** Áthelyezhető-e a meglévő rendszerképet a megosztott lemezkép-katalógusban?
+**K.** Áthelyezhetem a meglévő rendszerképet a megosztott képgalériába?
  
- A. Igen. A képek lehet típusú alapján 3 forgatókönyv közül választhat.
+ A. Igen. A lemezképek típusain alapuló 3 forgatókönyv van.
 
- 1\. forgatókönyv: Ha egy felügyelt rendszerképet, majd létrehozhat egy rendszerképet definíció- és lemezkép verziója azt.
+ forgatókönyv 1: Ha felügyelt lemezképpel rendelkezik, létrehozhat egy rendszerkép-definíciót és egy rendszerkép-verziót is.
 
- 2\. forgatókönyv: Ha általánosított nem felügyelt rendszerkép, létrehozhat egy felügyelt rendszerképet belőle, és majd hozzon létre belőle egy rendszerkép definíciójában és lemezkép verziója. 
+ 2\. forgatókönyv: Ha nem felügyelt általánosított rendszerképpel rendelkezik, létrehozhat egy felügyelt rendszerképet, majd létrehozhatja a rendszerkép definícióját és a rendszerkép verzióját is. 
 
- 3\. forgatókönyv: Ha egy virtuális Merevlemezt a helyi fájlrendszerbe is van, akkor szüksége töltse fel a VHD-t, hozzon létre egy felügyelt rendszerképet, majd hozhat létre és definíció és származó lemezkép verziója.
-- Windows virtuális gépek a virtuális merevlemez esetén olvassa el [általános VHD feltöltése](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
-- Ha a VHD-t egy Linux virtuális gép számára, lásd: [VHD feltöltése](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
+ 3\. forgatókönyv: Ha a virtuális merevlemez a helyi fájlrendszerben van, akkor fel kell töltenie a VHD-t, létre kell hoznia egy felügyelt rendszerképet, majd létre kell hoznia és rendszerkép-definíciót és rendszerkép-verziót is.
+- Ha a VHD egy Windows rendszerű virtuális gép, tekintse meg az [általánosított virtuális merevlemez feltöltését](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)ismertető témakört.
+- Ha a virtuális merevlemez Linux rendszerű virtuális gépen van, lásd: [virtuális merevlemez feltöltése](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
 
 
-**K.** Létrehozhatok egy lemezkép verziója specializált lemezből?
+**K.** Létrehozhatok lemezkép-verziót egy speciális lemezről?
 
- A. Nem, hogy jelenleg nem támogatják speciális lemezről képek. Ha egy specializált lemezzel rendelkezik, akkor [virtuális gép létrehozása virtuális merevlemezről](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk) a speciális lemez csatlakoztatásával egy új virtuális géphez. Ha már rendelkezik egy futó virtuális Gépre, kövesse az utasításokat, létrehozhat egy felügyelt rendszerképet, a kell a [Windows virtuális gép](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) vagy [Linux rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Ha már rendelkezik egy általános felügyelt rendszerkép, elindíthatja a folyamatot, hozzon létre egy megosztott kép leírását és a lemezkép-verzió.
+ A. Nem, jelenleg nem támogatottak a speciális lemezek képként. Ha speciális lemezzel rendelkezik, [létre kell hoznia egy virtuális gépet a virtuális](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk) merevlemezről úgy, hogy a speciális lemezt egy új virtuális géphez csatolja. Miután futtatott egy virtuális gépet, kövesse az utasításokat, és hozzon létre egy felügyelt rendszerképet a [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) vagy Linux RENDSZERű [virtuális](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images)gépről. Ha már van egy általánosított felügyelt rendszerkép, a folyamat elindításával létrehozhatja a megosztott rendszerkép leírását és a rendszerkép verzióját.
 
  
-**K.** Létrehozása után lehet váltani a lemezkép-katalógusában a megosztott erőforrás egy másik előfizetésbe?
+**K.** A létrehozás után áthelyezhetem a megosztott rendszerkép-katalógus erőforrását egy másik előfizetésbe?
 
- A. Egy másik előfizetésbe nem, nem helyezhetők át a megosztott kép galéria-erőforrásokat. Azonban akkor fogja tudni replikálni a katalógusban a rendszerkép verziója a más régiókban, szükség szerint.
+ A. Nem, a megosztott rendszerkép-katalógus erőforrását nem lehet másik előfizetésbe áthelyezni. A katalógusban lévő rendszerképeket azonban szükség szerint más régiókban is replikálhatja.
 
-**K.** Replikálhatok a lemezkép-verziók felhőkben – Azure China 21Vianet, az Azure Germany és az Azure Government Cloud? 
+**K.** Replikálható a képverziók a felhők között – az Azure China 21Vianet, az Azure Germany és a Azure Government Cloud? 
 
- A. Lemezkép-verzió nem, több felhő között nem lehet replikálni.
+ A. Nem, a képverziókat nem lehet a felhők között replikálni.
 
-**K.** A kép verziók replikálhatok előfizetések között? 
+**K.** Replikálható a rendszerképem verziója az előfizetések között? 
 
- A. Nem, előfordulhat, hogy a lemezkép-verzió replikálja egy adott előfizetés régióban, és használhatja más előfizetések RBAC-n keresztül.
+ A. Nem, a képverziókat replikálhatja egy előfizetésben lévő régiók között, és más előfizetésekben is használhatja a RBAC-on keresztül.
 
-**K.** Az Azure AD-bérlőre kiterjedő is megoszthatok lemezkép verziója? 
+**K.** Megoszthatom a képverziókat az Azure AD-bérlők között? 
 
- A. Igen, az RBAC használatával egyéni felhasználók számára történő megosztása bérlők. De bármilyen méretekben és megosztásához lásd: "megosztás katalógus lemezképeket az Azure-bérlőre kiterjedő" használatával [PowerShell](../articles/virtual-machines/windows/share-images-across-tenants.md) vagy [CLI](../articles/virtual-machines/linux/share-images-across-tenants.md).
-
-
-**K.** Mennyi ideig tart a lemezkép-verzió replikálása a célként megadott régióban?
-
- A. A lemezkép verzió replikációs idő az teljes mértékben függ a lemezkép és régiók, replikálódnak számának méretét. Azonban ajánlott eljárásként javasoljuk, hogy kis tartania a rendszerképet, és a forrás és cél régiókat zárja be a legjobb eredmények elérése érdekében. Ellenőrizheti, hogy a replikáció állapota – jelző használatával a replikáció állapotát.
+ A. Igen, a RBAC használatával a bérlők között oszthat meg személyeket. Ha azonban a méretezést szeretné megosztani, tekintse meg a "katalógus-rendszerképek megosztása Azure-bérlők között" részt a [PowerShell](../articles/virtual-machines/windows/share-images-across-tenants.md) vagy a [CLI](../articles/virtual-machines/linux/share-images-across-tenants.md)használatával.
 
 
-**K.** Mi a különbség a forrásrégióban és célrégió?
+**K.** Mennyi ideig tart a képverziók replikálása a célcsoportok között?
 
- A. Forrásrégió a régió, amelyben a lemezkép verziója jön létre, célrégiók pedig a régió, amelyben tárolni egy példányát a lemezkép-verzió. Minden rendszerkép verzióhoz csak rendelkezhet egy forrásrégióban. Bizonyosodjon meg róla, hogy át kell adnia a terület forráshelyen a célrégiók egyik egy lemezkép verziója létrehozásakor.  
-
-
-**K.** Hogyan határozhatom meg a forrásrégióban a lemezkép-verzió létrehozása során?
-
- A. Egy lemezkép verziója létrehozásakor használhatja a **--hely** címke CLI-ben és a **-hely** címke a PowerShell használatával adja meg a forrásrégióban. Győződjön meg a felügyelt rendszerképet, amely az alaprendszerképet, a lemezkép-verzió létrehozásához használja a helyét, amelyben szeretné létrehozni a lemezkép verziója ugyanazon a helyen. Bizonyosodjon meg róla, hogy át kell adnia a terület forráshelyen a célrégiók egyik egy lemezkép verziója létrehozásakor.  
+ A. A lemezkép verziójának replikálási ideje teljes mértékben a rendszerkép méretétől és a replikált régiók számától függ. Javasoljuk azonban, hogy a képet kis méretűre kell állítani, a forrás-és a célcsoportok pedig a legjobb eredmények elérése érdekében. A replikáció állapotát a-ReplicationStatus jelzővel is megtekintheti.
 
 
-**K.** Hogyan határozhatom meg a rendszerkép verziója replikák hozhatók létre az egyes régiókban számát?
+**K.** Mi a különbség a forrásoldali régió és a célcsoport között?
 
- A. Lemezkép verziója replikák hozhatók létre az egyes régiókban számát is megadhat két módja van:
+ A. A forrástartomány az a régió, amelyben a rendszer létrehozza a rendszerkép verzióját, és a célcsoportok azok a régiók, amelyekben a rendszerkép verziójának másolatát tárolja a rendszer. Minden egyes rendszerkép-verzióhoz csak egy forrásoldali régió tartozhat. Továbbá győződjön meg arról, hogy a forrás régió helyét az egyik célként megadott régióként adja meg, amikor létrehozza a rendszerkép verzióját.  
+
+
+**K.** Hogyan megadnia a forrás régiót a rendszerkép verziójának létrehozásakor?
+
+ A. A rendszerkép verziójának létrehozásakor a PowerShellben a **--Location** címkét használhatja a parancssori felületen, és megadhatja a forrás régiót. Győződjön meg arról, hogy az alaprendszerképként használt felügyelt rendszerkép ugyanazon a helyen található, mint a rendszerkép verziójának létrehozásához használni kívánt hely. Továbbá győződjön meg arról, hogy a forrás régió helyét az egyik célként megadott régióként adja meg, amikor létrehozza a rendszerkép verzióját.  
+
+
+**K.** Hogyan az egyes régiókban létrehozandó rendszerkép-verziók replikáinak számát?
+
+ A. Kétféle módon adhatja meg az egyes régiókban létrehozandó rendszerkép-verziók replikáinak számát:
  
-1. A regionális replikáinak száma, amely azt adja meg a létrehozandó régiónként replikák száma. 
-2. A közös replikáinak száma ez az alapértelmezett beállítás szerint régiók száma abban az esetben, ha regionális replikáinak száma nincs megadva. 
+1. A regionális replikák száma, amely meghatározza, hogy régiónként hány replikát kíván létrehozni. 
+2. A közös replikák száma, amely az alapértelmezett régiónként szám, ha nincs megadva a területi replika száma. 
 
-A regionális replikáinak száma megadásához adja át a helyet szeretne létrehozni az adott régióban replikák számával együtt: "USA déli középső RÉGIÓJA = 2". 
+A területi replika számának megadásához adja meg a helyet a régióban létrehozni kívánt replikák számával együtt: "Az USA déli középső régiója = 2". 
 
-Ha regionális replikáinak száma nincs megadva, az egyes helyeken, replikák száma alapértelmezés szerint a megadott közös replikáinak száma lesz. 
+Ha a területi replikák száma nincs megadva az egyes helyekhez, akkor a replikák alapértelmezett száma lesz a megadott közös replika. 
 
-Adja meg a közös replika parancssori felületen, használja a **--replika-count** argumentumot a `az sig image-version create` parancsot.
-
-
-**K.** Létrehozhatom a megosztott lemezkép-katalógusában egy másik helyet a kívánt hozhat létre a rendszerkép definíciójában és lemezkép verziója fut, a?
-
- A. Igen, ez lehetséges. Azonban ajánlott eljárásként javasoljuk, hogy tartsa az erőforráscsoport, a megosztott lemezkép-katalógusában, a rendszerkép definíciójában és a lemezkép verziója ugyanazon a helyen.
+A gyakori replikák számának a CLI-ben való megadásához használja a `az sig image-version create` parancsban a **--replika-Count** argumentumot.
 
 
-**K.** Mik azok a megosztott lemezkép-katalógus használatával kell fizetni?
+**K.** Létrehozhatom a megosztott képtárat egy másik helyen, mint ahol a rendszerkép-definíciót és a rendszerkép verzióját szeretném létrehozni?
 
- A. Nem számítunk fel díjat a megosztott lemezkép-katalógus szolgáltatás, kivéve a tárolási díjakat a lemezkép-verzió és a hálózati kimenő forgalom költségeit való replikálásához a lemezkép-verzió a forrásrégióban célrégiók tárolására.
+ A. Igen, ez lehetséges. Javasoljuk azonban, hogy az erőforráscsoportot, a közös képtárat, a képdefiníciót és a rendszerkép verziószámát ugyanazon a helyen tartsa.
 
-**K.** Milyen API-verziót használjam hozhat létre közös lemezkép-katalógusában, a rendszerkép definíciójában, a lemezkép verziója és a VM/VMSS kívül a rendszerkép verziószámát?
 
- A. A VM és a Virtual Machine Scale Set-környezetek kép verzióját használja, azt javasoljuk, használjon API-verzió a 2018-04-01-es vagy újabb verziója. Megosztott kép katalógusok, a lemezkép-definíciók és a lemezkép-verzió használatát javasoljuk, használjon API-verzió a 2018-06-01. Zónaredundáns tárolás (ZRS) van szükség a 2019-03-01-es verzió vagy újabb.
+**K.** Milyen díjak vonatkoznak a megosztott képtárat használó szolgáltatásokra?
+
+ A. A megosztott képkatalógus szolgáltatás használatához nem számítunk fel díjat, kivéve a rendszerkép-verziók és a hálózati kimenő forgalom tárolási díját a forrás régióról a célként megadott régiókba történő replikáláshoz.
+
+**K.** Milyen API-verziót érdemes használni a megosztott képgyűjtemény, a képdefiníció, a képverzió és a virtuális gép/VMSS létrehozásához?
+
+ A. A virtuális gépek és a virtuálisgép-méretezési csoport rendszerképeket használó üzembe helyezése esetén javasoljuk, hogy a 2018-04-01-es vagy újabb API-verziót használja. A megosztott képtárakkal, képdefiníciókkal és képverziókkal való együttműködéshez javasoljuk, hogy használja a 2018-06-01-es API-verziót. A zóna redundáns tárterületének (ZRS) 2019-03-01-es vagy újabb verziójúnak kell lennie.

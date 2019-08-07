@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 32da92fb3c5573d24eb18a01a4ede8fe6a0bf36a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3637676a330b324d5620885f0cbe50d4aa68ed51
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567453"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779050"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database felügyelt példányok gyakran ismételt kérdései (GYIK)
 
@@ -79,9 +79,9 @@ Ha a hardveres generációk nem támogatottak ugyanabban a régióban, akkor a h
 
 ## <a name="how-do-i-tune-performance-of-my-managed-instance"></a>Hogyan a felügyelt példány teljesítményének finomhangolását? 
 
-Általános célú felügyelt példány a távoli tárterületet használja, mert az adatmennyiség és a naplófájlok teljesítménye fontos. Általános célú szolgáltatási rétegek teljesítményének finomhangolásához kövesse az ebben a blogbejegyzésben található utasításokat.
+Általános célú felügyelt példány a távoli tárterületet használja, mert az adatmennyiség és a naplófájlok teljesítménye fontos. További információ: a [naplófájl méretének hatása általános célú felügyelt példány teljesítményére](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
 
-Az i/o-igényes számítási feladatoknál érdemes lehet a Gen 5 hardvert használni, a 4. generációs számítási feladatokhoz pedig a Gen 4 használatát. További információ: a hardveres generációk közötti választásra vonatkozó gyakori kérdések című rész.
+Az i/o-igényes számítási feladatoknál érdemes lehet a Gen 5 hardvert használni, a 4. generációs számítási feladatokhoz pedig a Gen 4 használatát. További információ: Hogyan a [Gen 4 és a Gen 5 közötti választás](#how-do-i-choose-between-gen-4-and-gen-5-hardware-generation-for-managed-instance).
 
 Ha a munkaterhelés sok kis tranzakcióból áll, érdemes lehet átváltani a csatlakozás típusát a proxyról átirányítási módba.
 

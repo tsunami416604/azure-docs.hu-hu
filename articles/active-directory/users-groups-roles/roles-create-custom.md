@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae773bc1a4e1831dbe462149bb827c26b7e74b96
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e0e33cf9fa1c4661dd71fc41cb667b0373c9e955
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722308"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774823"
 ---
-# <a name="create-a-custom-role-and-assign-a-resource-scope-in-azure-active-directory"></a>Hozzon létre egy egyéni szerepkört, és rendeljen hozzá egy erőforrás-hatókört Azure Active Directory
+# <a name="create-a-custom-role-and-assign-at-resource-scope-in-azure-active-directory"></a>Hozzon létre egy egyéni szerepkört, és rendelje hozzá az erőforrás-hatókört Azure Active Directory
 
-Ez a cikk bemutatja, hogyan hozhat létre új egyéni szerepköröket a Azure Active Directoryban (Azure AD). Az egyéni szerepkörök az Azure AD áttekintés lapján vagy [az alkalmazás regisztrációs lapján](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)hozhatók létre a **szerepkörök és rendszergazdák** lapon. A szerepkör a címtár-szintű hatókörben vagy csak az alkalmazás-regisztrációhoz rendelhető hozzá.
+Ez a cikk bemutatja, hogyan hozhat létre új egyéni szerepköröket a Azure Active Directoryban (Azure AD). Az egyéni szerepkörök az Azure AD Áttekintés lapjának [szerepkörök és rendszergazdák](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) lapján hozhatók létre. A szerepkör csak a címtár szintű hatókörben vagy az alkalmazás regisztrációs erőforrásának hatókörében rendelhető hozzá.
 
 További információ: egyéni szerepkörök [– Áttekintés](roles-custom-overview.md) az egyéni szerepkörök alapjairól.
 
@@ -35,33 +35,31 @@ További információ: egyéni szerepkörök [– Áttekintés](roles-custom-ove
 
    ![Szerepkörök létrehozása vagy szerkesztése a szerepkörök és rendszergazdák lapról](./media/roles-create-custom/new-custom-role.png)
 
-1. Az **alapok** lapon adja meg a szerepkör nevét és leírását.
+1. Az **alapok** lapon adja meg a szerepkör nevét és leírását, majd kattintson a **tovább**gombra.
 
    ![adja meg az egyéni szerepkör nevét és leírását az alapok lapon](./media/roles-create-custom/basics-tab.png)
 
-1. Az alkalmazás-regisztrációs hitelesítő adatok és az alapszintű tulajdonságok, például a név kezeléséhez szükséges engedélyek kiválasztása:
-   1. Adja meg a "hitelesítő adatok" kifejezést a keresősáv alatt `microsoft.directory/applications/credentials/update` , és válassza ki az engedélyt.
+1. Az **engedélyek** lapon válassza ki az alkalmazás-regisztrációk alapszintű tulajdonságainak és hitelesítő adatainak kezeléséhez szükséges engedélyeket. Az egyes engedélyek részletes ismertetését lásd: [alkalmazás-regisztrációs altípusok és engedélyek a Azure Active Directory](./roles-custom-available-permissions.md).
+   1. Először írja be a "hitelesítő adatok" kifejezést a keresősáv mezőbe, `microsoft.directory/applications/credentials/update` és válassza ki az engedélyt.
 
       ![Egyéni szerepkör engedélyeinek kiválasztása az engedélyek lapon](./media/roles-create-custom/permissions-tab.png)
 
-   1. Írja be a "Basic" kifejezést a keresősávba, `microsoft.directory/applications/basic/update` válassza ki az engedélyt, majd kattintson a **tovább**gombra.
+   1. Ezután írja be az "alapszintű" kifejezést a keresősávba `microsoft.directory/applications/basic/update` , válassza ki az engedélyt, majd kattintson a **tovább**gombra.
 1. A **felülvizsgálat + létrehozás** lapon tekintse át az engedélyeket, és válassza a **Létrehozás**lehetőséget.
 
 Az egyéni szerepkör megjelenik a Hozzárendelendő elérhető szerepkörök listájában.
 
 ## <a name="assign-a-role-scoped-to-a-resource"></a>Szerepkör hatókörének társítása erőforráshoz
 
-A beépített szerepkörökhöz hasonlóan az egyéni szerepkörök is hozzárendelhetők az alapértelmezett szervezeti hatókörhöz, így hozzáférést biztosíthat az összes alkalmazás-regisztrációhoz. Az egyéni szerepkörök azonban az objektum hatókörében is hozzárendelhetők. Ez lehetővé teszi, hogy a megbízott jogosult legyen egy adott alkalmazás hitelesítő adatainak és alapvető tulajdonságainak frissítésére anélkül, hogy második egyéni szerepkört kellene létrehoznia.
+A beépített szerepkörökhöz hasonlóan az egyéni szerepköröket a szervezetre kiterjedő hatókörrel rendelheti hozzá az összes alkalmazás regisztrációjának biztosításához. Az egyéni szerepkörök pedig az erőforrás hatókörében is hozzárendelhetők. Ez lehetővé teszi, hogy a megbízott jogosult legyen egy adott alkalmazás hitelesítő adatainak és alapvető tulajdonságainak frissítésére anélkül, hogy második egyéni szerepkört kellene létrehoznia.
 
-1. Jelentkezzen be az [Azure ad felügyeleti](https://aad.portal.azure.com) központba az alkalmazás fejlesztői engedélyeivel az Azure ad-szervezetben.
+1. Ha még nem tette meg, jelentkezzen be az [Azure ad felügyeleti](https://aad.portal.azure.com) központba az alkalmazás fejlesztői engedélyeivel az Azure ad-szervezetben.
 1. Válassza az **Alkalmazásregisztrációk** elemet.
 1. Válassza ki azt az alkalmazás-regisztrációt, amelyhez hozzáférést kíván adni a kezeléshez. Előfordulhat, hogy az **összes alkalmazás** lehetőséget kell választania az Azure ad-szervezetben az alkalmazások regisztrálásának teljes listájának megtekintéséhez.
 
     ![Válassza ki az alkalmazás regisztrációját erőforrás-hatókörként a szerepkör-hozzárendeléshez](./media/roles-create-custom/appreg-all-apps.png)
 
 1. Az alkalmazás regisztrálása területen válassza a **szerepkörök és rendszergazdák**lehetőséget. Ha még nem hozott létre ilyet, az utasítások az [előző eljárásban](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations)találhatók.
-
-    Ha ezt a szerepkört egy nyílt alkalmazás-regisztráció környezetében rendeli hozzá, akkor a hozzárendelt engedélyekkel rendelkezik az adott alkalmazás regisztrálásához. Az Ön által hozzárendelt szerepkör megjelenik a listában minden alkalmazás regisztrálásakor. Ez a hozzáférési modell, ahol a tulajdonos jogosultságot rendelhet bizonyos Azure AD-erőforrásokhoz szerepkörök szerint, hasonló az [Azure RBAC](../../role-based-access-control/overview.md) for Azure erőforrás-hozzáférés-vezérléshez használt modellhez.
 
 1. Válassza ki a szerepkört a **hozzárendelések** lap megnyitásához.
 1. Felhasználó hozzáadásához válassza a **hozzárendelés hozzáadása** lehetőséget. A felhasználó nem kap semmilyen jogosultságot az alkalmazás regisztrációján kívül, kivéve a kiválasztott elemet.
@@ -70,7 +68,7 @@ A beépített szerepkörökhöz hasonlóan az egyéni szerepkörök is hozzáren
 
 ### <a name="prepare-powershell"></a>A PowerShell előkészítése
 
-Először [le kell töltenie az Azure ad PowerShell](https://www.powershellgallery.com/packages/AzureAD/)-modult.
+Először [le kell töltenie az Azure ad Preview PowerShell](https://www.powershellgallery.com/packages/AzureADPreview)-modult.
 
 Az Azure AD PowerShell-modul telepítéséhez használja az alábbi parancsokat:
 
@@ -82,10 +80,10 @@ import-module azureadpreview
 A következő parancs használatával ellenőrizheti, hogy a modul használatra kész-e:
 
 ``` PowerShell
-get-module azuread
+get-module azureadpreview
   ModuleType Version      Name                         ExportedCommands
   ---------- ---------    ----                         ----------------
-  Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
+  Binary     2.0.2.31     azuread                      {Add-AzureADAdministrati...}
 ```
 
 ### <a name="create-the-custom-role"></a>Az egyéni szerepkör létrehozása
@@ -101,7 +99,6 @@ $templateId = (New-Guid).Guid
 # Set of permissions to grant
 $allowedResourceAction =
 @(
-    "microsoft.directory/applications/allProperties/read",
     "microsoft.directory/applications/basic/update",
     "microsoft.directory/applications/credentials/update"
 )
@@ -110,7 +107,24 @@ $rolePermission = @{'resourceActions' = $resourceActions}
 $rolePermissions = $rolePermission
 
 # Create new custom admin role
-$customAdmin = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
+$customAdmin = New-AzureADMSRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
+```
+
+### <a name="assign-the-custom-role-using-azure-ad-powershell"></a>Egyéni szerepkör kiosztása az Azure AD PowerShell használatával
+
+Rendelje hozzá a szerepkört az alábbi PowerShell-parancsfájl használatával:
+
+``` PowerShell
+# Get the user and role definition you want to link
+$user = Get-AzureADUser -Filter "userPrincipalName eq 'cburl@f128.info'"
+$roleDefinition = Get-AzureADRoleDefinition -Filter "displayName eq ' Application Registration Creator'"
+
+# Get app registration and construct resource scope for assignment.
+$appRegistration = Get-AzureADApplication -Filter "displayName eq 'f/128 Filter Photos'"
+$resourceScopes = '/' + $appRegistration.objectId
+
+# Create a scoped role assignment
+$roleAssignment = New-AzureADRoleAssignment -ResourceScopes $resourceScopes -RoleDefinitionId $roleDefinition.objectId -PrincipalId $user.objectId
 ```
 
 ## <a name="create-a-custom-role-using-microsoft-graph-api"></a>Egyéni szerepkör létrehozása Microsoft Graph API használatával
@@ -134,13 +148,8 @@ $customAdmin = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -Disp
     "isEnabled":true,
     "rolePermissions":
     [
-        {
-            "allowedResourceActions": 
-            [
-                "microsoft.directory/applications/basic/read",
-                "microsoft.directory/applications/credentials/update"
-            ]
-        }
+        "microsoft.directory/applications/basic/update",
+        "microsoft.directory/applications/credentials/update"
     ]
     }
     ```
@@ -152,7 +161,7 @@ $customAdmin = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -Disp
     POST
 
     ``` HTTP
-    https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions/roleAssignments
+    https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
     ```
 
     Body
