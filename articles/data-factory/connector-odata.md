@@ -51,8 +51,8 @@ Egy társított OData-szolgáltatás a következő tulajdonságok támogatottak:
 | type | A **típus** tulajdonságot állítsa **OData**. |Igen |
 | url | A gyökér URL-címe az OData-szolgáltatás. |Igen |
 | authenticationType | Az OData-forráshoz való kapcsolódáshoz használt hitelesítés típusa. Engedélyezett értékek a következők **névtelen**, **alapszintű**, **Windows**, **AadServicePrincipal**, és **ManagedServiceIdentity** . A felhasználó alapján OAuth nem támogatott. | Igen |
-| userName | Adja meg **felhasználónév** alapszintű vagy Windows-hitelesítés használata esetén. | Nem |
-| password | Adja meg **jelszó** a felhasználó számára megadott fiók **felhasználónév**. Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett képes [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
+| userName | Adja meg **userName** alapszintű vagy Windows-hitelesítés használata esetén. | Nem |
+| password | Adja meg **password** a felhasználó számára megadott fiók **felhasználónév**. Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett képes [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
 | servicePrincipalId | Adja meg az Azure Active Directory-alkalmazás ügyfél-azonosítót. | Nem |
 | aadServicePrincipalCredentialType | Adja meg a szolgáltatás egyszerű hitelesítéshez használandó hitelesítő adatok típusa. Engedélyezett értékek a következők: `ServicePrincipalKey` vagy `ServicePrincipalCert`. | Nem |
 | servicePrincipalKey | Adja meg az Azure Active Directory-alkalmazás kulcsa. Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
