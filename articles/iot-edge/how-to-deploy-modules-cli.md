@@ -10,12 +10,12 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: edcde083934bb454f62ce3dd55c026138ad8fcca
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: fe947dbb7effde7bfa4f0b9824c6af645c85691c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797679"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840196"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Az Azure CLI-vel az Azure IoT Edge-modulok telepítése
 
@@ -73,7 +73,7 @@ Az Azure CLI-vel modulok üzembe helyezéséhez egy .JSON kiterjesztésű fájlt
              }
            },
            "modules": {
-             "tempSensor": {
+             "SimulatedTemperatureSensor": {
                "version": "1.0",
                "type": "docker",
                "status": "running",
@@ -97,7 +97,7 @@ Az Azure CLI-vel modulok üzembe helyezéséhez egy .JSON kiterjesztésű fájlt
            }
          }
        },
-       "tempSensor": {
+       "SimulatedTemperatureSensor": {
          "properties.desired": {}
        }
      }
@@ -108,7 +108,7 @@ Az Azure CLI-vel modulok üzembe helyezéséhez egy .JSON kiterjesztésű fájlt
 
 A modul információkkal konfigurált manifest nasazení alkalmazása modulok üzembe az eszközre.
 
-Módosítsa a könyvtárakat a mappát, ahol a manifest nasazení van. Ha a VS Code IoT Edge-sablonok egyikét, használja a `deployment.json` fájlt a **config** mappát a megoldás címtár, és nem a `deployment.template.json` fájl.
+Módosítsa a könyvtárakat a mappát, ahol a manifest nasazení van. Ha a vs Code IoT Edge-sablonok egyikét használta, használja a `deployment.json` fájlját a megoldás könyvtárának **konfigurációs** mappájába, és ne `deployment.template.json` a fájlt.
 
 A következő parancsot használja a alkalmazni a konfigurációt egy IoT Edge-eszközön:
 

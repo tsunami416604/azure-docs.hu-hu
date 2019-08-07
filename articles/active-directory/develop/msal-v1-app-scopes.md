@@ -1,6 +1,6 @@
 ---
-title: Hatókörök (Microsoft-hitelesítési tár) 1.0-s verzió alkalmazásra vonatkozóan |} Az Azure
-description: Ismerje meg a hatókörök 1.0-s verziójú alkalmazás használata a Microsoft-hitelesítési tár (MSAL).
+title: V 1.0-alkalmazás hatókörök (Microsoft Authentication Library) | Azure
+description: Ismerje meg a Microsoft Authentication Library (MSAL) használatával egy v 1.0-alkalmazás hatóköreit.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/23/2019
@@ -17,21 +17,21 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e43bc245a5908ba1bf91e7b4bee6df2f5cfc618
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 17837c6f4d1b3c690c39c9f99ca4896fcce16b00
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514366"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834902"
 ---
-# <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Hatókörök webes API 1.0-s verziójú jogkivonatok elfogadása
+# <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>A webes API-k 1.0-s verziójának elfogadására szolgáló hatókörök
 
-Az OAuth2-engedélyek engedélyhatókörök, amely egy Azure AD-hez (1.0-s verzió) a fejlesztők webes API (erőforrás) alkalmazás közzéteszi az ügyfélalkalmazások számára. Ezek engedélyhatókörök hozzájárulási során adható az ügyfélalkalmazások számára. Című témakör `oauth2Permissions` a a [Azure Active Directory application manifest referencia](reference-app-manifest.md#manifest-reference).
+A OAuth2 engedélyek olyan engedélyezési hatókörök, amelyeket az Azure AD for Developers (v 1.0) web API (Resource) alkalmazás tesz elérhetővé az ügyfélalkalmazások számára. A jogosultsági hatókörök az ügyfélalkalmazások számára is megadhatók a hozzájárulás során. Tekintse `oauth2Permissions` meg az [Azure Active Directory alkalmazás jegyzékfájljának](reference-app-manifest.md#manifest-reference)ismertetése című szakaszt.
 
-## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Hatókörök kérelmezzenek hozzáférést a megadott OAuth2 engedélyek 1.0-s verziójú alkalmazások
-Ha szeretné-e szerzi be a jogkivonatokat meghatározott hatókörök 1.0-s verziójú alkalmazások (például az Azure AD graph, amely a https:\//graph.windows.net), elkülönített változó összefűzésével előállítjuk a kívánt erőforrás-azonosítója egy kívánt OAuth2 engedéllyel rendelkező hatókörök létrehozásához szükséges az adott erőforráshoz.
+## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>A v 1.0 alkalmazás adott OAuth2 engedélyeihez való hozzáférést kérő hatókörök
+Ha egy v 1.0 alkalmazás adott hatóköréhez jogkivonatokat kíván beszerezni (például az Azure ad Graph (https:\//Graph.Windows.net), a hatóköröket a kívánt erőforrás-azonosító egy kívánt OAuth2 engedéllyel való összefűzésével kell létrehoznia. Ehhez az erőforráshoz.
 
-Például, hogy a felhasználó, ahol az alkalmazás Alkalmazásazonosító URI-ja az 1.0-s verziójú webes API nevében hozzáférés `ResourceId`:
+Ha például a felhasználó nevében egy v 1.0 webes API-t `ResourceId`szeretne elérni, amelyben az alkalmazás azonosítója URI:
 
 ```csharp
 var scopes = new [] {  ResourceId+"/user_impersonation"};
@@ -41,7 +41,7 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-Ha szeretné olvasása és írása az MSAL.NET Azure Active Directoryban az Azure AD graph API használatával (https:\//graph.windows.net/), akkor hasonlóan a következő hatókörök listájának hozzunk létre:
+Ha a MSAL.net Azure Active Directory az Azure ad Graph API-val (https:\//Graph.Windows.net/) szeretné olvasni és írni, a hatókörök listáját a következő módon kell létrehoznia:
 
 ```csharp
 string ResourceId = "https://graph.windows.net/";
@@ -53,7 +53,7 @@ var ResourceId = "https://graph.windows.net/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 
-Ha szeretne írni az Azure Resource Manager API-nak megfelelő hatóköre (https:\//management.core.windows.net/), meg kell kérnie a következő hatókörrel (Megjegyzés: a két perjeleket):
+Ha meg szeretné írni a Azure Resource Manager API-nak megfelelő hatókört (https:\//Management.Core.Windows.net/), akkor a következő hatókört kell megadnia (jegyezze fel a két perjelet):
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -63,16 +63,16 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 ```
 
 > [!NOTE]
-> Két perjeleket használni, mert az Azure Resource Manager API perjellel vár a célközönség jogcím (aud), és azután ott van az API-név a hatókörből külön perjellel kell.
+> Két perjelet kell használnia, mivel a Azure Resource Manager API egy perjelet vár a célközönségi jogcímben (AUD), majd egy perjelet választ az API nevének a hatókörből való elkülönítésére.
 
-Az Azure AD által használt logikai a következő:
+Az Azure AD által használt logika a következő:
 
-- Adal-t (1.0-s verzió) végpont egy 1.0-s verziójú hozzáférési jogkivonattal (az egyetlen lehetséges), aud erőforrás =
-- A hozzáférési jogkivonat kérése egy erőforrást, 2.0-s verziójú jogkivonatok, aud elfogadásával MSAL (a Microsoft identity platform (2.0-s verzió) végpont) erőforrást =. Alkalmazásazonosító
-- Az MSAL (v2.0-végpontra) egy hozzáférési jogkivonatot kér egy erőforrást egy 1.0-s verziójú hozzáférési jogkivonat (amely a fenti eset) elfogadása az Azure AD a kért hatókörhöz a kívánt célközönség elemzi a minden, a legutóbbi / előtti és használhatná az erőforrás-azonosítója alapján. Ezért ha https:\//database.windows.net vár egy adott célközönségnek, a "https:\//database.windows.net/", szüksége lesz egy hatókörének kérése "https:\//database.windows.net//.default". Lásd még: GitHub probléma [#747: Erőforrás URL-cím, záró perjellel hiányzik, amely az sql-hitelesítési hiba okozza,](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+- A ADAL (v 1.0) végponthoz egy v 1.0 hozzáférési jogkivonat (az egyetlen lehetséges), az AUD = erőforrás
+- A MSAL (Microsoft Identity platform (v 2.0) végpont) egy hozzáférési jogkivonatot kér egy v 2.0 tokent elfogadó erőforráshoz, AUD = erőforrás. AppId
+- A MSAL (v 2.0 Endpoint) esetében, ha egy olyan erőforrás hozzáférési jogkivonatát kérdezi le, amely egy v 1.0 hozzáférési jogkivonatot fogad el (ez a fenti eset), az Azure AD a kért hatókörből elemezi a kívánt célközönséget, így az utolsó perjel előtt mindent megtesz, és használja erőforrás-azonosítóként. Ezért ha a https\/:/Database.Windows.net "https:\//Database.Windows.net/" célközönséget vár, a "https:\//Database.Windows.net//.default" hatókört kell kérnie. Lásd még: GitHub [-probléma #747: Az erőforrás URL-címének záró perjele ki van hagyva, ami az](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)SQL-hitelesítési hibát okozta.
 
-## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Hatókörök igényelhet hozzáférést egy 1.0-s verziójú alkalmazás minden engedély
-Ha azt szeretné, a statikus hatókörök 1.0-s verziójú alkalmazások jogkivonat-beszerzési, Hozzáfűzés ".default formátummá lesznek feloldva" a app ID URI-ját az API-hoz:
+## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Hatókörök egy v 1.0 alkalmazás összes engedélyéhez való hozzáférés kérelmezéséhez
+Ha egy v 1.0 alkalmazás összes statikus hatóköréhez tokent szeretne beszerezni, fűzze hozzá az ". default" elemet az API app ID URI-hoz:
 
 ```csharp
 ResourceId = "someAppIDURI";
@@ -84,5 +84,5 @@ var ResourceId = "someAppIDURI";
 var scopes = [ ResourceId + "/.default"];
 ```
 
-## <a name="scopes-to-request-for-client-credential-flow--daemon-app"></a>Hatókörök kérni az ügyfél hitelesítőadat-folyamat / démon alkalmazás
-Ügyfél-hitelesítő adat folyamatát, esetén a hatókör át is lenne `/.default`. Azonban igen, az Azure AD: "minden az alkalmazásszintű engedélyek, amelyek a rendszergazda az alkalmazás regisztrálása a hozzájárult.
+## <a name="scopes-to-request-for-client-credential-flow--daemon-app"></a>Ügyfél-hitelesítő adat-és démon-alkalmazásra vonatkozó kérelmekre vonatkozó hatókörök
+Az ügyfél-hitelesítési folyamat esetében az átadandó hatókör is a következő lesz `/.default`:. Ez azt jelzi, hogy az Azure AD: "minden olyan alkalmazás-szintű engedély, amelyet a rendszergazda beleegyezett az alkalmazás regisztrálására.
