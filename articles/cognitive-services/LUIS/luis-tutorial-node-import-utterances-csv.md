@@ -179,7 +179,7 @@ upload done
 
 
 ## <a name="open-the-luis-app"></a>Nyissa meg a LUIS-alkalmazás
-Miután a szkript befejeződik, bejelentkezhet a Luisba [](luis-reference-regions.md) , és megtekintheti a **saját alkalmazások**alatt létrehozott Luis-alkalmazást. A hozzáadott megcímkézzen láthatja el a **bekapcsolása**, **Kikapcsolás**, és **nincs** szándék fog vonatkozni.
+Miután a szkript befejeződik, bejelentkezhet a [Luisba](luis-reference-regions.md) , és megtekintheti a **saját alkalmazások**alatt létrehozott Luis-alkalmazást. A hozzáadott megcímkézzen láthatja el a **bekapcsolása**, **Kikapcsolás**, és **nincs** szándék fog vonatkozni.
 
 ![Leképezés bekapcsolása](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 

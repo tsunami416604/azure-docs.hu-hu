@@ -110,7 +110,7 @@ Egy új metódusban hozza létre az ügyfelet a végponttal és a kulccsal. Hozz
     
 ## <a name="load-time-series-data-from-a-file"></a>Adatsorozat-adatok betöltése fájlból
 
-A rövid útmutatóhoz tartozó példa adatainak letöltése [](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv)a githubról:
+A rövid útmutatóhoz tartozó példa adatainak letöltése [a githubról](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv):
 1. A böngészőben kattintson a jobb gombbal a **RAW**elemre.
 2. Kattintson **a hivatkozás mentése másként**elemre.
 3. Mentse a fájlt egy. csv-fájlként az alkalmazás könyvtárába.
