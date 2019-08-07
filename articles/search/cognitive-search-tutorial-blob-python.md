@@ -1,20 +1,21 @@
 ---
-title: 'Python-oktatóanyag: Cognitive Services hívása egy indexelési folyamatban – Azure Search'
+title: 'Python-oktatóanyag: Cognitive Services hívása AI-dúsítási folyamatban – Azure Search'
 description: A Jupyter Python notebook használatával bemutatjuk a Azure Search az adatok kinyerésének, természetes nyelvének és a képek mesterséges intelligenciának feldolgozásának példáját. A kinyert adatértékek indexelve vannak, és a lekérdezés könnyen elérhető.
 manager: cgronlun
 author: LisaLeib
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: b7f1baa473ca28db696835a7b0895f1603c74770
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: af355ec353e12c30723597927883cb23dfa31e71
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359405"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840923"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Python-oktatóanyag: Cognitive Services API-k hívása egy Azure Search indexelési folyamatban
 
@@ -60,7 +61,7 @@ A Azure Search szolgáltatással való kommunikációhoz szüksége lesz a szolg
 
 1. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-![Http-végpont és elérési kulcs] beszerzése (media/search-get-started-postman/get-url-key.png "Http-végpont és elérési kulcs") beszerzése
+![Http-végpont és elérési kulcs](media/search-get-started-postman/get-url-key.png "Http-végpont és elérési kulcs") beszerzése
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Egy érvényes kulcs a kérést küldő alkalmazás és az azt kezelő szolgáltatás közötti megbízhatósági kapcsolatot hoz létre a kérelmek alapján.
 

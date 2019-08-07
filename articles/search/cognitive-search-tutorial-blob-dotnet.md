@@ -1,82 +1,83 @@
 ---
-title: C#Az oktatóanyag a Cognitive Services API-k hívása egy indexelési folyamat – Azure Search
+title: C#Oktatóanyag Cognitive Services API-k az indexelési folyamatokban való meghívásához – Azure Search
 description: Ez az oktatóanyag részletesen bemutat egy példát adatok mesterséges intelligencia segítségével történő kinyerésére, illetve természetes nyelvi és képfeldolgozásra az Azure Search adatkinyerési és -átalakítási indexelőszolgáltatásában.
 manager: eladz
 author: MarkHeff
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 2c77d509a0e66fd02bd949e481c5f0316fdd9afb
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 79e99e8311941e46c35c17472ed4833706834940
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672004"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840859"
 ---
-# <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Oktatóanyag: Az egy Azure Search szolgáltatásban az indexelés folyamat a Cognitive Services API-k meghívása
+# <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Oktatóanyag Cognitive Services API-k hívása egy Azure Search indexelési folyamatban
 
-Eben az oktatóanyagban az adatok Azure Search-beli bővítésének programozási mechanikájával fogjuk megismertetni, *kognitív képességek* használatával. Képességek természetes nyelvi feldolgozást (NLP) és a lemezkép elemzési képességeket biztosítanak a Cognitive Services élvezik. Képességcsoport összeállítás és konfigurációja kibonthatja a szöveget, és képet vagy beolvasott dokumentum fájl szöveges ábrázolását. Nyelv, az entitások, kulcskifejezéseket és további is felismeri. A végeredmény gazdag további Azure Search-index, mesterséges Intelligencia által működtetett indexelése folyamat által létrehozott tartalom.
+Eben az oktatóanyagban az adatok Azure Search-beli bővítésének programozási mechanikájával fogjuk megismertetni, *kognitív képességek* használatával. A szaktudást a természetes nyelvi feldolgozási (NLP) és a Cognitive Services képelemzési képességei is alátámasztják. A készségkészlet-összeállításon és-konfiguráción keresztül kinyerheti egy rendszerkép vagy beolvasott dokumentum szövegét és szöveges ábrázolását. Emellett a nyelv, az entitások, a legfontosabb kifejezések és egyebek is észlelhetők. A végeredmény egy Azure Search indexben gazdag további tartalmat hoz létre, amelyet egy AI-alapú indexelési folyamat hozott létre.
 
-Ebben az oktatóanyagban, a .NET SDK használatával a következő feladatokat:
+Ebben az oktatóanyagban a .NET SDK használatával hajtja végre a következő feladatokat:
 
 > [!div class="checklist"]
 > * Olyan indexelőfolyamat létrehozása, amely kibővíti a mintaadatokat egy indexhez vezető útvonalon
-> * Beépített ismeretek alkalmazására: optikai karakterfelismerés, szövegegyesítő, nyelv észlelése, szöveg felosztása, entitásfelismerés, kulcsszókeresés
+> * Beépített képességek alkalmazása: optikai karakterfelismerés, szöveges egyesítés, nyelvfelismerés, szöveg felosztása, entitások felismerése, fő kifejezés kibontása
 > * Megtudhatja, hogyan kapcsolhat össze képességeket egy képességcsoporton belül a bemenetek kimenetekhez való társításával
 > * Kérések végrehajtása és az eredmények áttekintése
 > * Az index és az indexelők alaphelyzetbe állítása további fejlesztés céljából
 
 A kimenet egy teljes szöveges, kereshető index az Azure Search szolgáltatásban. Az indexet egyéb standard képességekkel, például [szinonimákkal](search-synonyms.md), [pontozási profilokkal](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [elemzőkkel](search-analyzers.md) és [szűrőkkel](search-filters.md) is bővítheti.
 
-Ebben az oktatóanyagban az ingyenes szolgáltatás fut, de az ingyenes tranzakciók száma korlátozott a naponta 20 dokumentumokhoz. Ha azt szeretné, ez az oktatóanyag többször futtatása ugyanazon a napon, használja az egy kisebb fájlt, hogy a további futtatási illeszkednek.
+Ez az oktatóanyag az ingyenes szolgáltatáson fut, de az ingyenes tranzakciók száma napi 20 dokumentumra korlátozódik. Ha az oktatóanyagot többször is futtatni szeretné ugyanazon a napon, használjon kisebb fájlméretet, hogy több futtatással is elfér.
 
 > [!NOTE]
-> Növelje a feldolgozása, további dokumentumok hozzáadása, illetve további AI-algoritmusokat hozzáadása gyakorisága bontsa ki a hatókört, szüksége lesz egy számlázható Cognitive Services-erőforrás csatolása. A díjakat API-k hívásakor, a Cognitive Services, valamint a lemezkép kinyerése a az Azure Search-dokumentumfeltörést fázis részeként. Nem számítunk fel díjat a szövegkinyerés dokumentumok közül.
+> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor a számlázható Cognitive Services erőforrást kell csatolnia. Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.
 >
-> Végrehajtási beépített képességek a meglévő díjakat [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/) . A kép kinyerési díjszabás leírása a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/) történik. A rendszerkép kibontásának díjszabását a [Azure Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban a következő szolgáltatások, eszközök és adatok szerepelnek. 
+Ebben az oktatóanyagban a következő szolgáltatásokat, eszközöket és az adateszközöket használjuk. 
 
-+ [Az Azure storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a mintaadatok tárolásához. Ellenőrizze, hogy a storage-fiókot az Azure Search és ugyanabban a régióban.
++ [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a mintaadatok tárolásához. Győződjön meg arról, hogy a Storage-fiók ugyanabban a régióban található, mint a Azure Search.
 
-+ [Mintaadatok](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) lemezkészletből egy kis fájlt különböző típusú. 
++ A [mintaadatok](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) egy kisméretű, különböző típusú fájlból állnak. 
 
-+ [A Visual Studio telepítése](https://visualstudio.microsoft.com/) az IDE adatokként.
++ [Telepítse a Visual studiót](https://visualstudio.microsoft.com/) ide-ként való használatra.
 
-+ [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben az oktatóanyagban egy ingyenes szolgáltatás használhatja.
++ [Hozzon létre egy Azure Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást.
 
-## <a name="get-a-key-and-url"></a>Egy kulcsot és egy URL-cím beszerzése
+## <a name="get-a-key-and-url"></a>Kulcs és URL-cím lekérése
 
-Az Azure Search szolgáltatás kezelése szüksége lesz a szolgáltatás URL-CÍMÉT és a egy hozzáférési kulcsot. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
+A Azure Search szolgáltatással való kommunikációhoz szüksége lesz a szolgáltatás URL-címére és egy hozzáférési kulcsra. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
-1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com/), és a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
+1. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-   ![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-get-started-postman/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
+   ![Http-végpont és elérési kulcs](media/search-get-started-postman/get-url-key.png "Http-végpont és elérési kulcs") beszerzése
 
 Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-## <a name="prepare-sample-data"></a>Mintaadatok létrehozása
+## <a name="prepare-sample-data"></a>Mintaadatok előkészítése
 
-A bővítési folyamat az Azure-adatforrásokból hívja le az adatokat. A forrásadatoknak egy [Azure Search-indexelő](search-indexer-overview.md) által támogatott adatforrástípusból kell származniuk. Az Azure Table Storage a kognitív keresés nem támogatott. Ebben a gyakorlatban a blobtárolót használjuk több tartalomtípus bemutatásához.
+A bővítési folyamat az Azure-adatforrásokból hívja le az adatokat. A forrásadatoknak egy [Azure Search-indexelő](search-indexer-overview.md) által támogatott adatforrástípusból kell származniuk. Az Azure Table Storage a kognitív keresések esetében nem támogatott. Ebben a gyakorlatban a blobtárolót használjuk több tartalomtípus bemutatásához.
 
-1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com)lépjen az Azure storage-fiókot, kattintson a **Blobok**, és kattintson a **+ tároló**.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com), navigáljon az Azure Storage-fiókjához, kattintson a **Blobok**elemre, majd a **+ tároló**elemre.
 
-1. [Hozzon létre egy blobtárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) mintaadatok tárolásához. A nyilvános hozzáférés szintje beállíthatja az érvényes értékek bármelyikére. Ez az oktatóanyag feltételezi, hogy a tároló neve "basic-demo-data-pr".
+1. [Hozzon létre egy blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) -tárolót a mintaadatok tárolásához. Megadhatja a nyilvános hozzáférési szintet bármelyik érvényes értékéhez. Ez az oktatóanyag azt feltételezi, hogy a tároló neve "Basic-demo-adat-PR".
 
-1. A tároló létrehozása után nyissa meg és jelölje ki **feltöltése** feltölteni a parancssávon az [mintaadatok](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4).
+1. A tároló létrehozása után nyissa meg, és válassza a parancssáv **feltöltés** elemét a [mintaadatok](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)feltöltéséhez.
 
    ![Forrásfájlok az Azure Blob Storage-ban](./media/cognitive-search-quickstart-blob/sample-data.png)
 
-1. A mintafájlok feltöltése után kérje le a tároló nevét és a kapcsolati karakterláncot a Blob Storage-hoz. Ezt ellenőrizheti, hogy a storage-fiókot az Azure Portalon, és jelölje ki **hozzáférési kulcsok**, majd másolja a **kapcsolati karakterlánc** mező.
+1. A mintafájlok feltöltése után kérje le a tároló nevét és a kapcsolati karakterláncot a Blob Storage-hoz. Ezt úgy teheti meg, hogy a Azure Portal a Storage-fiókjához navigál, és kiválasztja a **hozzáférési kulcsok**elemet, majd a **kapcsolati sztring** mezőt másolja.
 
    A kapcsolati karakterláncnak a következő példához hasonló URL-címnek kell lennie:
 
@@ -88,25 +89,25 @@ A kapcsolati karakterlánc megadásának egyéb módjai is vannak, például egy
 
 ## <a name="set-up-your-environment"></a>A környezet kialakítása
 
-Első lépésként nyissa meg a Visual Studio és a egy új Konzolalkalmazás-projektet, .NET Core-on futtatható létrehozása.
+Először nyissa meg a Visual studiót, és hozzon létre egy új, a .NET Core-on futtatható Console app-projektet.
 
 ### <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
-A [Azure Search .NET SDK](https://aka.ms/search-sdk) áll, amelyek lehetővé teszik az indexek, adatforrások, indexelők és ismereteket, valamint töltse fel és kezelheti a dokumentumokat, és hajtsa végre a lekérdezéseket, anélkül hogy bajlódnia kezelése néhány klienskódtárak a HTTP- és JSON-adatokat. Ezen klienskódtárak NuGet-csomagként oszlanak.
+A [Azure Search .net SDK](https://aka.ms/search-sdk) néhány ügyféloldali kódtárat tartalmaz, amelyek lehetővé teszik az indexek, az adatforrások, az indexelő és a szakértelmével kezelését, valamint dokumentumok feltöltését és kezelését, valamint lekérdezések futtatását, anélkül, hogy a http-és JSON-adatokkal kellene foglalkoznia. . Ezek az ügyféloldali kódtárak mind NuGet-csomagként vannak elosztva.
 
-Ehhez a projekthez, telepítenie kell a 9-es verzió a `Microsoft.Azure.Search` NuGet csomag és a legújabb `Microsoft.Extensions.Configuration.Json` NuGet-csomagot.
+Ehhez a projekthez telepítenie kell a `Microsoft.Azure.Search` NuGet csomag 9-es verzióját és a legújabb `Microsoft.Extensions.Configuration.Json` NuGet-csomagot.
 
-Telepítse a `Microsoft.Azure.Search` a Package Manager konzol használatával a Visual Studióban NuGet-csomagot. Válassza a Package Manager console megnyitásához **eszközök** > **NuGet-Csomagkezelő** > **Package Manager Console**. A parancs futtatása lekéréséhez lépjen a [Microsoft.Azure.Search NuGet csomag lapon](https://www.nuget.org/packages/Microsoft.Azure.Search), válassza a 9-es verzió, és másolja a Package Manager parancsot. A Package Manager konzol, a következő parancs futtatásával.
+Telepítse a `Microsoft.Azure.Search` NuGet csomagot a Visual Studióban található Package Manager konzol használatával. A Package Manager konzol megnyitásához válassza az **eszközök** > **NuGet Package** > Manager**csomagkezelő konzolt**. A parancs futtatásához keresse meg a [Microsoft. Azure. Search NuGet-csomag lapot](https://www.nuget.org/packages/Microsoft.Azure.Search), válassza a 9-es verzió lehetőséget, és másolja a Package Manager parancsot. Futtassa ezt a parancsot a Package Manager konzolon.
 
-Telepítése a `Microsoft.Extensions.Configuration.Json` NuGet-csomagot a Visual Studióban válassza **eszközök** > **NuGet-Csomagkezelő** > **NuGet-csomagok kezelése megoldáshoz...** . Válassza a Tallózás gombra, és keresse meg a `Microsoft.Extensions.Configuration.Json` NuGet-csomagot. Miután azt tapasztaltuk, válassza ki a csomagot, jelölje ki a projektet, győződjön meg arról, a rendszer a a legújabb stabil verzióra, majd válassza ki a telepítés.
+Ha a NuGet `Microsoft.Extensions.Configuration.Json` csomagot a Visual Studióban szeretné telepíteni, válassza az **eszközök** > **NuGet Package Manager** > **NuGet-csomagok kezelése megoldást..** . lehetőséget. Válassza a Tallózás lehetőséget, és `Microsoft.Extensions.Configuration.Json` keresse meg a NuGet csomagot. Ha megtalálta, válassza ki a csomagot, válassza ki a projektet, erősítse meg, hogy a verzió a legújabb stabil verzió, majd válassza a telepítés lehetőséget.
 
-## <a name="add-azure-search-service-information"></a>Adja hozzá az Azure Search szolgáltatás adatai
+## <a name="add-azure-search-service-information"></a>Azure Search szolgáltatás adatainak hozzáadása
 
-Az Azure Search szolgáltatáshoz való csatlakozáshoz szüksége lesz a keresési szolgáltatás információinak hozzáadása a projekthez. Kattintson jobb gombbal a projektre a Megoldáskezelőben, és válassza ki **Hozzáadás** > **új elem...**  . A fájl neve `appsettings.json` válassza **Hozzáadás**. 
+Ahhoz, hogy csatlakozni tudjanak a Azure Search szolgáltatáshoz, hozzá kell adnia a keresési szolgáltatás információit a projekthez. Kattintson a jobb gombbal a projektre a megoldáskezelő, > majd válassza az**új elem hozzáadása..** . lehetőséget. Nevezze el a `appsettings.json` fájlt, majd válassza a **Hozzáadás**lehetőséget. 
 
-Ezt a fájlt kell szerepelnie a kimeneti könyvtárat. Ehhez kattintson a jobb gombbal `appsettings.json` válassza **tulajdonságok**. Módosítsa az értéket a **Copy to Output Directory** való **újabb példányát**.
+A fájlnak szerepelnie kell a kimeneti könyvtárban. Ehhez kattintson a jobb gombbal a elemre, és válassza a `appsettings.json` **Tulajdonságok**lehetőséget. Módosítsa a másolás értékét a **kimeneti könyvtárba** az **újabb másolatként**.
 
-Másolás az alábbi JSON-t az új JSON-fájlt.
+Másolja az alábbi JSON-t az új JSON-fájlba.
 
 ```json
 {
@@ -117,15 +118,15 @@ Másolás az alábbi JSON-t az új JSON-fájlt.
 }
 ```
 
-Adja hozzá a keresési szolgáltatás és a blob storage-fiók adatait.
+Adja hozzá a keresési szolgáltatás és a blob Storage-fiók adatait.
 
-A keresési szolgáltatás információkat szerezhet a keresési fiókoldalon az Azure Portalon. A fiók neve lesz a fő lapján, és a kulcsok kiválasztásával található **kulcsok**.
+A keresési szolgáltatás adatait a Azure Portal keresési fiók oldalán érheti el. A fiók neve a főoldalon jelenik meg, a kulcsok pedig a **kulcsok**elemre kattintva találhatók.
 
-Az Azure Portalon a tárfiókja blob kapcsolati karakterlánc kaphat kiválasztásával **hozzáférési kulcsok**, majd másolja a **kapcsolati karakterlánc** mező.
+A blob-kapcsolati karakterláncot úgy érheti el, ha a Azure Portal a Storage-fiókjához navigál, majd a **hozzáférési kulcsok**elemre kattint, majd a **kapcsolati sztring** mezőt másolja.
 
-## <a name="add-namespaces"></a>Névterek
+## <a name="add-namespaces"></a>Névterek hozzáadása
 
-Ebben az oktatóanyagban a különböző névterek számos különböző lemeztípusokat használnak. Annak érdekében, hogy használja ezeket a feldolgozástípusokat adja hozzá a következőt `Program.cs`.
+Ez az oktatóanyag számos különböző típusú névteret használ a különböző névterekben. Ezen típusok használatához adja hozzá a következőt a következőhöz `Program.cs`:.
 
 ```csharp
 using System;
@@ -135,9 +136,9 @@ using Microsoft.Azure.Search.Models;
 using Microsoft.Extensions.Configuration;
 ```
 
-## <a name="create-a-client"></a>-Ügyfél létrehozása
+## <a name="create-a-client"></a>Ügyfél létrehozása
 
-Hozzon létre egy példányt a `SearchServiceClient` osztály.
+Hozza létre a `SearchServiceClient` osztály egy példányát.
 
 ```csharp
 IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
@@ -145,7 +146,7 @@ IConfigurationRoot configuration = builder.Build();
 SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
 ```
 
-`CreateSearchServiceClient` létrehoz egy új `SearchServiceClient` az alkalmazás konfigurációs fájljában (appsettings.json) tárolt értékének a felhasználásával.
+`CreateSearchServiceClient`létrehoz egy új `SearchServiceClient` értéket az alkalmazás konfigurációs fájljában (appSettings. JSON) tárolt értékek használatával.
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
@@ -165,9 +166,9 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 
 ## <a name="create-a-data-source"></a>Adatforrás létrehozása
 
-Hozzon létre egy új `DataSource` meghívásával példány `DataSource.AzureBlobStorage`. `DataSource.AzureBlobStorage` megköveteli, hogy az adatforrás neve, a kapcsolati karakterlánc, és a blob-tároló nevének megadása.
+Hozzon létre `DataSource` egy új példányt `DataSource.AzureBlobStorage`a hívásával. `DataSource.AzureBlobStorage`Ehhez meg kell adnia az adatforrás nevét, a kapcsolati karakterláncot és a blob-tároló nevét.
 
-Bár nem szerepel ebben az oktatóanyagban egy helyreállítható törlésre vonatkozó házirendet is definiálva van ami helyreállítható törlés oszlop értékei alapján törölt blobok azonosítására szolgál. A következő szabályzatot is figyelembe veszi a blob metaadat-tulajdonságot, ha a törlendő `IsDeleted` értékkel `true`.
+Bár ez az oktatóanyag nem használatos, a törlési szabályzat is meg van határozva, amely a törölt Blobok azonosítására szolgál a Soft delete oszlop értéke alapján. A következő házirend azt a blobot veszi figyelembe, amelyet törölni kell, ha `IsDeleted` az értékkel `true`rendelkező metadata tulajdonsággal rendelkezik.
 
 ```csharp
 DataSource dataSource = DataSource.AzureBlobStorage(
@@ -180,9 +181,9 @@ DataSource dataSource = DataSource.AzureBlobStorage(
     description: "Demo files to demonstrate cognitive search capabilities.");
 ```
 
-Most, hogy van inicializálva a `DataSource` objektumazonosító, az adatforrás létrehozása. A `SearchServiceClient` rendelkezik egy `DataSources` tulajdonsággal. Ez a tulajdonság biztosítja mindazokat a módszereket kell létrehozásához, listázásához, frissítéséhez vagy törléséhez Azure Search-adatforrásokhoz.
+Most, hogy elvégezte az `DataSource` objektum inicializálását, hozza létre az adatforrást. A `SearchServiceClient` rendelkezik egy `DataSources` tulajdonsággal. Ez a tulajdonság biztosítja az Azure Search adatforrások létrehozásához, listázásához, frissítéséhez vagy törléséhez szükséges összes módszert.
 
-A kérelem sikeres a metódus visszaadja az adatforrás, amely lett létrehozva. Ha a probléma a kérelemmel, például érvénytelen egy paraméter, a metódus kivételt.
+Sikeres kérelem esetén a metódus a létrehozott adatforrást fogja visszaadni. Ha probléma merül fel a kéréssel, például egy érvénytelen paraméterrel, akkor a metódus kivételt jelez.
 
 ```csharp
 try
@@ -201,29 +202,29 @@ Mivel ez az első kérése, az Azure Portalon ellenőrizze, hogy létrejött-e a
 
 ## <a name="create-a-skillset"></a>Képességcsoport létrehozása
 
-Ebben a szakaszban adja meg, hogy az adatok a alkalmazni kívánt Adatbővítés lépések csoportját. Minden egyes Adatbővítés lépést nevezzük regisztrációnak egy *szakértelem* és az Adatbővítés lépéseket egy *indexmezők*. Ez az oktatóanyag [előre meghatározott kognitív képességeket](cognitive-search-predefined-skills.md) használ a képességcsoporthoz:
+Ebben a szakaszban megadhatja az adataira alkalmazni kívánt gazdagító lépések készletét. Az egyes alkoholtartalom-növelési lépéseket egy *készségkészlet*nevezzük, és a dúsítási lépések egyike. Ez az oktatóanyag [előre meghatározott kognitív képességeket](cognitive-search-predefined-skills.md) használ a képességcsoporthoz:
 
-+ [Optikai karakterfelismerés](cognitive-search-skill-ocr.md) a képfájlok nyomtatott és kézzel írt szöveg felismerése.
++ [Optikai karakterfelismerés](cognitive-search-skill-ocr.md) a nyomtatott és a kézírásos szöveg felismeréséhez a képfájlokban.
 
-+ [Szövegegyesítő](cognitive-search-skill-textmerger.md) egyesíthetők a szöveget a mezők gyűjteménye egyetlen mezőbe.
++ [Szöveges egyesítéssel](cognitive-search-skill-textmerger.md) egyesítheti a mezőket egy gyűjteményből egyetlen mezőbe.
 
 + [Nyelvfelismeréssel](cognitive-search-skill-language-detection.md) azonosítja a tartalom nyelvét.
 
-+ [Szöveg felosztása](cognitive-search-skill-textsplit.md) nagy méretű tartalom kezdetét szeletekre a kulcsfontosságú kifejezések kinyerése szakértelem és az entitások felismerése szakértelem hívása előtt. Kulcskifejezések kinyerése és entitások felismerése elfogadja a bemenetek legfeljebb 50 000 karakter. A mintafájlok közül néhányat fel kell osztani ahhoz, hogy beleférjen a korlátozásba.
++ A kinyerési képesség és az entitás-felismerési képesség meghívása előtt a [szöveg felosztása](cognitive-search-skill-textsplit.md) a nagyméretű tartalmak kisebb adattömbökbe való bontásához. A fő kifejezés kinyerése és az entitások felismerése 50 000 karakterből álló vagy annál kevesebb bemenetet fogad el. A mintafájlok közül néhányat fel kell osztani ahhoz, hogy beleférjen a korlátozásba.
 
-+ [Entitások felismerése](cognitive-search-skill-entity-recognition.md) szervezetek nevei kinyerését tartalom blob-tárolóban.
++ [Entitások felismerése](cognitive-search-skill-entity-recognition.md) a blob-tároló tartalmából származó szervezetek nevének kinyeréséhez.
 
 + A [Kulcskifejezések kinyerése](cognitive-search-skill-keyphrases.md) lehívja a leggyakoribb kulcskifejezéseket.
 
-Kezdeti a feldolgozás során az Azure Search repedések minden egyes dokumentum számára különböző fájlformátumokban lévő tartalmak olvasását. A forrásfájlban talált szöveg a létrehozott ```content``` mezőbe kerül, amelyből dokumentumonként egy jön létre. Ennek megfelelően állítsa be, bemeneti ```"/document/content"``` használni ezt a szöveget. 
+A kezdeti feldolgozás során Azure Search kipattintja az egyes dokumentumokat a különböző fájlformátumokból származó tartalmak olvasásához. A forrásfájlban talált szöveg a létrehozott ```content``` mezőbe kerül, amelyből dokumentumonként egy jön létre. Ennek megfelelően állítsa be a bemenetet úgy ```"/document/content"``` , hogy ezt a szöveget használja. 
 
 A kimenetek hozzárendelhetők egy indexhez, bemenetként használhatók egy alsóbb rétegbeli képességhez, vagy a fentiek mindegyike lehetséges, akárcsak a nyelvkód esetében. Az indexben a nyelvkód a szűréskor lehet hasznos. A nyelvkódot bemenetként a szövegelemzési képességek használják, a szótördeléssel kapcsolatos nyelvi szabályok megadásához.
 
 A képességcsoportok alapvető tudnivalóval kapcsolatos bővebb információkért lásd: [Képességcsoport megadása](cognitive-search-defining-skillset.md).
 
-### <a name="ocr-skill"></a>Optikai Karakterfelismerés szakértelem
+### <a name="ocr-skill"></a>OCR-képesség
 
-A **OCR** szakértelem szöveges állomány kinyerésére lemezképek. Ezen a képzettségi azt feltételezi, hogy létezik-e normalized_images mező. Ez a mező létrehozásához értékre állítjuk az oktatóanyag későbbi részében a ```"imageAction"``` az indexelő meghatározását, hogy a konfigurációs ```"generateNormalizedImages"```.
+Az **OCR** -képesség Kinyeri a szöveget a képekből. Ez a képesség azt feltételezi, hogy létezik egy normalized_images mező. A mező létrehozásához az oktatóanyag későbbi részében a ```"imageAction"``` konfigurációt az indexelő definíciójában kell ```"generateNormalizedImages"```beállítani.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -245,9 +246,9 @@ OcrSkill ocrSkill = new OcrSkill(
     shouldDetectOrientation: true);
 ```
 
-### <a name="merge-skill"></a>Ismeretek egyesítése
+### <a name="merge-skill"></a>Szaktudás egyesítése
 
-Ebben a szakaszban létrehozunk egy **egyesítése** szakértelem, amely egyesíti a dokumentum tartalom mezőben az a szöveg, amelyben a OCR szakértelem állította elő.
+Ebben a szakaszban egy **egyesítési** képességet hozunk létre, amely egyesíti a dokumentum tartalma MEZŐT az OCR-képesség által létrehozott szöveggel.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -275,9 +276,9 @@ MergeSkill mergeSkill = new MergeSkill(
     insertPostTag: " ");
 ```
 
-### <a name="language-detection-skill"></a>Nyelv észlelése szakértelem
+### <a name="language-detection-skill"></a>Nyelvi észlelési képesség
 
-A **nyelvfelismerés** szakértelem észleli a nyelvet, amely a bemeneti szöveg és a jelentések minden egyes dokumentum, a kérelem küldése egyetlen nyelvkód. Használjuk a kimenetét a **nyelvfelismerés** szakértelem bemeneti részeként a **szöveg felosztása** szakértelem.
+A **nyelvfelismerési** képesség észleli a bemeneti szöveg nyelvét, és egyetlen nyelvi kódot jelent a kérelemben elküldött összes dokumentumhoz. Az **nyelvfelismerés** skill kimenetét fogjuk használni a **szöveg felosztása** képességbe való bevitel részeként.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -297,9 +298,9 @@ LanguageDetectionSkill languageDetectionSkill = new LanguageDetectionSkill(
     outputs: outputMappings);
 ```
 
-### <a name="text-split-skill"></a>Szöveg felosztása szakértelem
+### <a name="text-split-skill"></a>Szöveg felosztása készség
 
-Az alábbi **Split** szakértelem fog szöveg felosztása lapok, és korlátozza az oldal megőrzési által mért 4000 karakter hosszúságú lehet `String.Length`. Az algoritmus a szöveg felosztása adattömbökre legfeljebb próbál `maximumPageLength` mérete. Ebben az esetben az algoritmus fog tenni a lehető legjobb megáll a mondat mondat határok, így előfordulhat, hogy az adatrészlet méretének valamivel kisebb, mint `maximumPageLength`.
+Az alábbi **felosztott** képesség a szövegeket lapok alapján osztja szét, és az oldal hosszát 4 000 karakterre `String.Length`korlátozza. Az algoritmus megpróbálja felosztani a szöveget a nagy `maximumPageLength` méretű adattömbökbe. Ebben az esetben az algoritmus elvégzi a legjobbat, hogy a mondatot egy mondat határán megtörje, így a tömb mérete valamivel kisebb `maximumPageLength`lehet.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -324,11 +325,11 @@ SplitSkill splitSkill = new SplitSkill(
     maximumPageLength: 4000);
 ```
 
-### <a name="entity-recognition-skill"></a>Entitások felismerése szakértelem
+### <a name="entity-recognition-skill"></a>Entitás-felismerési szakértelem
 
-Ez `EntityRecognitionSkill` példány beállítása ismeri fel a kategóriája `organization`. A **entitások felismerése** szakértelem is képes felismerni a kategória adattípusokat `person` és `location`.
+Ez `EntityRecognitionSkill` a példány a kategória típusának `organization`felismerésére van beállítva. Az **entitás** -felismerési képesség is felismerheti `location`a kategóriák típusát `person` és a.
 
-Figyelje meg, hogy a "környezet" mező értéke ```"/document/pages/*"``` csillaggal, tehát a Adatbővítés lépést nevezzük alatt minden olyan lap ```"/document/pages"```.
+Figyelje meg, hogy a "Context" mező csillaggal van beállítva ```"/document/pages/*"``` , ami azt jelenti, hogy a dúsítási lépést minden egyes ```"/document/pages"```lapon meg kell hívni.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -353,9 +354,9 @@ EntityRecognitionSkill entityRecognitionSkill = new EntityRecognitionSkill(
     defaultLanguageCode: EntityRecognitionSkillLanguage.En);
 ```
 
-### <a name="key-phrase-extraction-skill"></a>A kulcsfontosságú kifejezések kinyerése szakértelem
+### <a name="key-phrase-extraction-skill"></a>Kulcs kifejezés kinyerési készség
 
-Például a `EntityRecognitionSkill` példányt, amely az imént létrehozott, a **kulcs kulcsszókeresés** szakértelem nevezzük a dokumentum minden egyes oldalához.
+Az imént létrehozott példányhozhasonlóanakulcsszókeresésskillismeghívvaleszadokumentummindenoldalára`EntityRecognitionSkill` .
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -378,9 +379,9 @@ KeyPhraseExtractionSkill keyPhraseExtractionSkill = new KeyPhraseExtractionSkill
     outputs: outputMappings);
 ```
 
-### <a name="build-and-create-the-skillset"></a>Hozhat létre, és a képességcsoport létrehozása
+### <a name="build-and-create-the-skillset"></a>A készségkészlet készítése és létrehozása
 
-Hozhat létre a `Skillset` a létrehozott készségeit.
+Hozza létre `Skillset` az Ön által létrehozott ismeretek használatával.
 
 ```csharp
 List<Skill> skills = new List<Skill>();
@@ -397,7 +398,7 @@ Skillset skillset = new Skillset(
     skills: skills);
 ```
 
-A keresési szolgáltatás létrehozása a képességek alkalmazási lehetőségét.
+Hozza létre a készségkészlet a keresési szolgáltatásban.
 
 ```csharp
 try
@@ -423,18 +424,18 @@ A gyakorlat során az alábbi mezőket és mezőtípusokat használjuk:
 
 ### <a name="create-demoindex-class"></a>DemoIndex osztály létrehozása
 
-Ez az index a mezőket egy modellosztály segítségével vannak meghatározva. A modellosztály minden tulajdonsága olyan attribútumokkal rendelkezik, amelyek meghatározzák a vonatkozó indexmező kereséssel kapcsolatos viselkedéseit. 
+Az index mezői a Model osztály használatával vannak meghatározva. A modellosztály minden tulajdonsága olyan attribútumokkal rendelkezik, amelyek meghatározzák a vonatkozó indexmező kereséssel kapcsolatos viselkedéseit. 
 
-A modellosztály hozzáadunk egy új C# fájlt. A jobb gombbal a projekt, és válassza a **Hozzáadás** > **új elem...** válassza ki a "Class", a fájl neve `DemoIndex.cs`, majd **Hozzáadás**.
+A Model osztályt hozzáadjuk egy új C# fájlhoz. Kattintson a jobb gombbal a projektre > , és válassza az**új elem hozzáadása...** lehetőséget, válassza a " `DemoIndex.cs`class" elemet, és nevezze el a fájlt, majd válassza a **Hozzáadás**lehetőséget.
 
-Ügyeljen arra, hogy szeretné-e használni a típusát, hogy a `Microsoft.Azure.Search` és `Microsoft.Azure.Search.Models` névterek.
+Ügyeljen arra, hogy a és `Microsoft.Azure.Search` `Microsoft.Azure.Search.Models` a névterek típusait is használni kívánja.
 
 ```csharp
 using Microsoft.Azure.Search;
 using Microsoft.Azure.Search.Models;
 ```
 
-Adja hozzá a modell osztály definícióját az alábbi `DemoIndex.cs` adja hozzá ugyanazt a névteret, amelyben fog létrehozni az indexet.
+Adja hozzá az alábbi modell osztály definícióját, `DemoIndex.cs` és vegye fel azt ugyanabban a névtérbe, amelyben létre kívánja hozni az indexet.
 
 ```csharp
 // The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Search .NET SDK.
@@ -461,7 +462,7 @@ public class DemoIndex
 }
 ```
 
-Most, hogy meghatározta a modellosztályt, biztonsági `Program.cs` egy indexdefiníciót viszonylag egyszerűen hozhat létre. Ez az index neve "demoindex" lesz.
+Most, hogy meghatározta a modell osztályt, a `Program.cs` vissza lehetőséggel könnyedén létrehozhat egy index-definíciót. Az index neve "demoindex" lesz.
 
 ```csharp
 var index = new Index()
@@ -471,7 +472,7 @@ var index = new Index()
 };
 ```
 
-Tesztelés során azt tapasztalhatja, hogy végrehajtani kívánt egynél többször az index létrehozásához. Ez az oka ellenőrizze, hogy létezik-e, hogy Ön már létre az index létrehozása előtt.
+A tesztelés során előfordulhat, hogy egynél többször próbálkozik az index létrehozásával. Emiatt ellenőrizze, hogy a létrehozni kívánt index már létezik-e, mielőtt megpróbálja létrehozni.
 
 ```csharp
 try
@@ -497,11 +498,11 @@ További információk az indexek meghatározásáról: [Index létrehozása (Az
 
 Eddig létrehozott egy adatforrást, egy képességcsoportot és egy indexet. Ez a három összetevő egy olyan [indexelő](search-indexer-overview.md) része lesz, amely az egyes részeket egyetlen többszakaszos műveletben egyesíti. A három rész egy indexelőben való egyesítéséhez mezőleképezéseket kell meghatároznia.
 
-+ A fieldMappings dolgozza fel előbb a képességek alkalmazási lehetőségét, az adatforrásból származó mezők forrás az indexben lévő cél mezők leképezése. Ha a mező nevét és típusát azonosak mindkét végén, nincs leképezés nem szükséges.
++ A fieldMappings a rendszer az adatforrásból a készségkészlet, a leképezési forrás mezőinek feldolgozásával dolgozza fel az indexben lévő mezőkbe. Ha a mezők nevei és típusai mindkét végén azonosak, nincs szükség leképezésre.
 
-+ A outputFieldMappings feldolgozása után hivatkozik, amely még nem léteznek, amíg dokumentumfeltörést sourceFieldNames készségeitől vagy Adatbővítés létrehozza őket. A targetFieldName egy mezőt az indexben.
++ A outputFieldMappings a készségkészlet után dolgozzák fel, hivatkozva a sourceFieldNames, amelyek nem léteznek a dokumentum repedésének vagy dúsításának létrehozásakor. A targetFieldName egy index mezője.
 
-Bemenetek, kimenetek csatlakoztatása, mellett is használhatja Mezőleképezések datové struktury simítják. További információkért lásd: [képi elemekben gazdag mezők leképezése egy kereshető indexet](cognitive-search-output-field-mapping.md).
+A bemenetek kimenetekhez való csatlakoztatása mellett mező-hozzárendelések is használhatók az adatstruktúrák leállításához. További információ: [a dúsított mezők leképezése kereshető indexbe](cognitive-search-output-field-mapping.md).
 
 ```csharp
 IDictionary<string, object> config = new Dictionary<string, object>();
@@ -563,22 +564,22 @@ catch (Exception e)
 }
 ```
 
-A várt, hogy az indexelő létrehozása eltarthat egy kis ideig. Annak ellenére, hogy az adatkészlet kis méretű, az analitikai képességek számítási igénye nagy. Néhány képesség, például a képelemzés futásideje hosszú.
+Várható, hogy az indexelő létrehozása eltarthat egy kis ideig. Annak ellenére, hogy az adatkészlet kis méretű, az analitikai képességek számítási igénye nagy. Néhány képesség, például a képelemzés futásideje hosszú.
 
 > [!TIP]
 > Az indexelő létrehozása elindítja a folyamatot. Ha probléma lép fel az adatok elérésével, a bemenetek és kimenetek leképezésével vagy a műveletek sorrendjével kapcsolatban, az ebben a szakaszban jelenik meg.
 
-### <a name="explore-creating-the-indexer"></a>Ismerje meg, az indexelő létrehozása
+### <a name="explore-creating-the-indexer"></a>Az indexelő létrehozásának megismerése
 
-A kód készletek ```"maxFailedItems"``` -1 értéket, amely arra utasítja az indexelési motor adatok importálása során figyelmen kívül a hibát. Ez azért hasznos, mert az adatforrás kevés dokumentumot tartalmaz. Nagyobb méretű adatforrás esetén 0-nál nagyobb értéket kell megadnia.
+A kód a ```"maxFailedItems"``` -1 értékre van kijelölve, amely arra utasítja az indexelési motort, hogy hagyja figyelmen kívül a hibákat az adatimportálás során Ez azért hasznos, mert az adatforrás kevés dokumentumot tartalmaz. Nagyobb méretű adatforrás esetén 0-nál nagyobb értéket kell megadnia.
 
-Szintén figyelje meg, hogy a ```"dataToExtract"``` értékre van állítva ```"contentAndMetadata"```. Ez az utasítást meghatározza, hogy az indexelő automatikusan kinyerje a tartalmat a különböző fájlformátumokból, beleértve az egyes fájlokra vonatkozó metaadatokat is.
+Azt is figyelje ```"dataToExtract"``` meg, hogy ```"contentAndMetadata"```a be van állítva. Ez az utasítást meghatározza, hogy az indexelő automatikusan kinyerje a tartalmat a különböző fájlformátumokból, beleértve az egyes fájlokra vonatkozó metaadatokat is.
 
-Tartalom kinyerésekor az `imageAction` beállításával kinyerheti a szöveget az adatforrásban talált képekből. A ```"imageAction"``` beállítása ```"generateNormalizedImages"``` konfigurációs, optikai Karakterfelismerés szakértelem és szöveges egyesítése szakértelem arra utasítja a szöveg kinyerése a rendszerképek (például a word-forgalom bejelentkezéshez leállítása a "stop"), és beágyazza azt content mezőjének részeként az indexelő. Ez a működés mind a dokumentumokban beágyazott képekre (például egy PDF-fájlban található képre), mind az adatforrásban talált képekre (például egy JPG-fájlra) vonatkozik.
+Tartalom kinyerésekor az `imageAction` beállításával kinyerheti a szöveget az adatforrásban talált képekből. A ```"imageAction"``` konfiguráció```"generateNormalizedImages"``` beállítása, az OCR-képesség és a szöveges egyesítési képesség kombinálva azt jelzi, hogy az indexelő Kinyeri a szöveget a képekből (például a "Leállítás" szót egy forgalom leállításakor), és beágyazza a tartalom mezőbe. Ez a működés mind a dokumentumokban beágyazott képekre (például egy PDF-fájlban található képre), mind az adatforrásban talált képekre (például egy JPG-fájlra) vonatkozik.
 
 ## <a name="check-indexer-status"></a>Az indexelő állapotának ellenőrzése
 
-Az indexelő meghatározását követően az indexelő a kérés elküldésekor automatikusan lefut. Az indexelés a vártnál tovább is eltarthat attól függően, hogy mely kognitív képességeket adta meg. Ismerje meg, hogy az indexelő még mindig fut, használja a `GetStatus` metódust.
+Az indexelő meghatározását követően az indexelő a kérés elküldésekor automatikusan lefut. Az indexelés a vártnál tovább is eltarthat attól függően, hogy mely kognitív képességeket adta meg. Ha szeretné megtudni, hogy az indexelő továbbra is fut- `GetStatus` e, használja a metódust.
 
 ```csharp
 try
@@ -607,13 +608,13 @@ catch (Exception e)
 }
 ```
 
-`IndexerExecutionInfo` az indexelő aktuális állapot és végrehajtási előzményeinek jelöli.
+`IndexerExecutionInfo`az indexelő aktuális állapotát és végrehajtási előzményeit jelöli.
 
 A figyelmeztetések bizonyos forrásfájl- és képességkombinációk esetében gyakoriak, és nem mindig utalnak hibára. Ebben az oktatóanyagban a figyelmeztetések jóindulatúak (például nincs szöveges bemenet a JPEG-fájlokból).
  
 ## <a name="query-your-index"></a>Az index lekérdezése
 
-Indexelő befejezése után futtathatja az egyes mezők tartalmát visszaadó lekérdezések. Alapértelmezés szerint az Azure Search az első 50 eredményt adja vissza. A mintaadatok mérete kicsi, ezért az alapértelmezett beállítás megfelelő. Azonban nagyobb méretű adatkészletek esetén előfordulhat, hogy a lekérdezési karakterláncban meg kell adnia a megfelelő paramétereket, hogy a rendszer több eredményt adjon vissza. Részletes utasításokért lásd: [Eredmények lapokra bontása az Azure Searchben](search-pagination-page-layout.md).
+Az indexelés befejezése után futtathat olyan lekérdezéseket, amelyek az egyes mezők tartalmát adják vissza. Alapértelmezés szerint az Azure Search az első 50 eredményt adja vissza. A mintaadatok mérete kicsi, ezért az alapértelmezett beállítás megfelelő. Azonban nagyobb méretű adatkészletek esetén előfordulhat, hogy a lekérdezési karakterláncban meg kell adnia a megfelelő paramétereket, hogy a rendszer több eredményt adjon vissza. Részletes utasításokért lásd: [Eredmények lapokra bontása az Azure Searchben](search-pagination-page-layout.md).
 
 Ellenőrzési lépésként kérdezze le az index összes mezőjét.
 
@@ -632,7 +633,7 @@ catch (Exception e)
 }
 ```
 
-`CreateSearchIndexClient` létrehoz egy új `SearchIndexClient` az alkalmazás konfigurációs fájljában (appsettings.json) tárolt értékének a felhasználásával. Vegye figyelembe, hogy search szolgáltatás lekérdezési API-t használja a rendszer, és nem az adminisztrációs kulcsot.
+`CreateSearchIndexClient`létrehoz egy új `SearchIndexClient` értéket az alkalmazás konfigurációs fájljában (appSettings. JSON) tárolt értékek használatával. Vegye figyelembe, hogy a keresési szolgáltatás lekérdezési API-kulcsát használja a rendszer, nem pedig a rendszergazdai kulcsot.
 
 ```csharp
 private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
@@ -666,23 +667,23 @@ catch (Exception e)
 }
 ```
 
-Ismételje meg a műveletet további mezőket: tartalom, languageCode, keyPhrases és szervezetek ebben a gyakorlatban. Egyszerre több mezőt is lekérhet a vesszővel elválasztott listát használó `$select` megadásával.
+Ismételje meg a műveletet további mezők esetén: tartalom, languageCode, kifejezés és szervezet ebben a gyakorlatban. Egyszerre több mezőt is lekérhet a vesszővel elválasztott listát használó `$select` megadásával.
 
 <a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>Alaphelyzetbe állítás és ismételt futtatás
 
-Korai szakaszaiban kísérleti, fejlesztési a legtöbb gyakorlati megközelítést tervezési iteráció során, hogy törölni az objektumokat az Azure Search, és lehetővé teszi a kód újraépítése őket. Az erőforrásnevek egyediek. Egy objektum törlése révén újból létrehozhatja azt ugyanazzal a névvel.
+A fejlesztés korai kísérleti szakaszaiban a tervezési iterációk gyakorlati megközelítése az objektumok törlése a Azure Searchból, és a kód újraépítésének engedélyezése. Az erőforrásnevek egyediek. Egy objektum törlése révén újból létrehozhatja azt ugyanazzal a névvel.
 
-Ebben az oktatóanyagban tartott gondoskodik a meglévő indexelők és az indexek ellenőrzése és törlése őket, ha már van ilyen, hogy a kódot futtathatja.
+Ez az oktatóanyag a meglévő indexelő és indexek ellenőrzését és törlését vette igénybe, ha már léteztek, hogy újra lehessen futtatni a kódot.
 
-A portál használatával törölje az indexek, indexelők és ismereteket.
+A portál segítségével indexeket, indexelő és szakértelmével is törölhet.
 
 Ahogy a kód egyre kiforrottabbá válik, jó ötlet lehet az újraépítési stratégia finomítása. A további tudnivalókért lásd az [indexek újraépítését](search-howto-reindex.md) ismertető cikket.
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 
-Ez az oktatóanyag, amellyel összetevőit kell létrehozni egy képi elemekben gazdag indexelési folyamat alapvető lépéseit mutatja be: egy adatforrást, indexmezők, index és indexelő.
+Ez az oktatóanyag azt mutatja be, hogyan hozhatók létre egy bővített indexelési folyamat az összetevők létrehozásakor: adatforrás, készségkészlet, index és indexelő.
 
 Bemutattuk az [előre meghatározott képességeket](cognitive-search-predefined-skills.md), valamint a képességcsoport megadását, illetve a képességek bemenetek és kimenetek segítségével történő összekapcsolásának működését. Azt is megtanulta, hogy az indexelő definíciójának `outputFieldMappings` eleme szükséges a bővített értékek a folyamatból az Azure Search szolgáltatásban található, kereshető indexbe történő átirányításához.
 
@@ -697,4 +698,4 @@ Az oktatóanyagok után fölöslegessé vált elemek eltávolítása leggyorsabb
 Egyéni képességekkel testre szabhatja vagy kibővítheti a folyamatot. Egyéni képességek létrehozása és egy képességcsoporthoz adása révén saját kezűleg írt szöveg- vagy képelemzést használhat.
 
 > [!div class="nextstepaction"]
-> [Példa: Cognitive Search egyéni műveleteket létrehozása](cognitive-search-create-custom-skill-example.md)
+> [Példa: Egyéni képesség létrehozása a kognitív kereséshez](cognitive-search-create-custom-skill-example.md)

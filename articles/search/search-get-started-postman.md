@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Indexek létrehozása, betöltése és lekérdezése a Poster és a REST API-k használatával – Azure Search'
+title: 'REST gyors útmutató: Indexek létrehozása, betöltése és lekérdezése a Poster-Azure Search használatával'
 description: Megtudhatja, hogyan hívhatja meg a Azure Search REST API-kat a Poster és a mintaadatok és a definíciók használatával.
 author: HeidiSteen
 manager: cgronlun
@@ -9,13 +9,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 5a61f5476551d785f2db0ef52dff45554302fd07
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 5ad1708475200475669c5de8f4fbd316f04ebd04
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849811"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840785"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Gyors útmutató: Azure Search index létrehozása a Poster-ben REST API-k használatával
 > [!div class="op_single_selector"]
@@ -48,7 +47,7 @@ A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-c
 
 1. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-![Http-végpont és elérési kulcs] beszerzése (media/search-get-started-postman/get-url-key.png "Http-végpont és elérési kulcs") beszerzése
+![Http-végpont és elérési kulcs](media/search-get-started-postman/get-url-key.png "Http-végpont és elérési kulcs") beszerzése
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
@@ -67,7 +66,7 @@ A kérelem fejlécének összetétele két elemet tartalmaz: a tartalom típusá
     api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
     Content-Type: application/json
 
-A Poster-ben állítson össze egy, az alábbi képernyőképen láthatóhoz hasonló kérelmet. Válassza  a beolvasás művelet lehetőséget, adja meg az URL-címet, majd kattintson a **Küldés**gombra. Ez a parancs csatlakozik a Azure Searchhoz, beolvassa az indexek gyűjteményt, és visszaadja a 200-es HTTP-állapotkódot egy sikeres kapcsolaton. Ha a szolgáltatás már rendelkezik indexekkel, a válasz tartalmazni fog index-definíciókat is.
+A Poster-ben állítson össze egy, az alábbi képernyőképen láthatóhoz hasonló kérelmet. Válassza a beolvasás művelet lehetőséget, adja meg az URL-címet, majd kattintson a **Küldés**gombra. Ez a parancs csatlakozik a Azure Searchhoz, beolvassa az indexek gyűjteményt, és visszaadja a 200-es HTTP-állapotkódot egy sikeres kapcsolaton. Ha a szolgáltatás már rendelkezik indexekkel, a válasz tartalmazni fog index-definíciókat is.
 
 ![Poster-kérelem URL-címe és fejléce](media/search-get-started-postman/postman-url.png "Poster-kérelem URL-címe és fejléce")
 

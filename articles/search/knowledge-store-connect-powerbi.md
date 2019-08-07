@@ -4,16 +4,17 @@ description: Hozzon létre egy Knowledge Store-t a Azure Portal adatimportálás
 author: heidisteen
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: heidist
-ms.openlocfilehash: 66a051c430be9f59569a5843c0138c7ddc15b87c
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 518a96ae8ace5c9630d594fe70487635b6ec1d2c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707153"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840845"
 ---
 # <a name="create-an-azure-search-knowledge-store-and-connect-using-power-bi"></a>Hozzon létre egy Azure Search Knowledge Store-t, és kapcsolódjon a Power BI
 
@@ -99,7 +100,7 @@ Az adatimportálás varázsló segítségével hozza létre a tudásbázist. Imp
 
 1. Konfiguráljon egy indexet az opcionális teljes szöveges keresési lekérdezésekhez Azure Searchban. Bár a bemutató fókusza Power BI csatlakozik az Azure Table Storage-hoz, az **adatimportálás** varázsló is létrehozhat egy indexet a teljes szöveges kereséshez a Azure Searchban. 
 
-   A varázsló megtervezi az adatforrást a mezők és adattípusok kikötéséhez, ezért mindössze annyit kell tennie, hogy kiválasztja a szükséges attribútumokat a kívánt viselkedés eléréséhez. Például a lekérdezhető érték *azt jelenti,* hogy a tartalom a szolgáltatásból kérhető le, a kereshetőség pedig lehetővé teszi a teljes szöveges keresést a kijelölt mezőkön.
+   A varázsló megtervezi az adatforrást a mezők és adattípusok kikötéséhez, ezért mindössze annyit kell tennie, hogy kiválasztja a szükséges attribútumokat a kívánt viselkedés eléréséhez. Például a lekérdezhető érték azt jelenti, hogy a tartalom a szolgáltatásból kérhető le, a *kereshetőség* pedig lehetővé teszi a teljes szöveges keresést a kijelölt mezőkön.
 
    - Adjon egy nevet az indexnek, például: *Hotel-Reviews-idx*.
    - Az összes mezőt beolvasható értékre állítsa be.
