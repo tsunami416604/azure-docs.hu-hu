@@ -1,7 +1,7 @@
 ---
-title: 'Besorolás: Előrejelezheti a forgalom szolgáltatóváltást és felfelé értékesítése '
+title: Besorolási Forgalom előrejelzése + szolgáltatóváltást + értékesítés
 titleSuffix: Azure Machine Learning service
-description: Ez a mintakísérlet vizuális felhasználói felületet jeleníti meg a bináris osztályozó előrejelzési adatforgalom, az Ügyfélkapcsolat-kezelés (CRM) gyakori feladat.
+description: Ez a Visual Interface-példa a változás bináris osztályozó előrejelzését jeleníti meg, amely az Ügyfélkapcsolat-kezelés (CRM) általános feladata.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,62 +10,62 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 7d10d996febd0e31c9085bf5cb82324cce101c80
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 172089d5371d8c3e38a2a22b3285b5eb180baf00
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606139"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742285"
 ---
-# <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>5 – besorolási. példa: Előrejelezheti a forgalom szolgáltatóváltást és felfelé értékesítése 
+# <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>5\. példa – besorolás: A forgalom előrejelzése, a szolgáltatóváltást és az értékesítés 
 
-Ismerje meg, hogyan hozhat létre egy összetett gépi tanulási kísérletet a vizuális felhasználói felületének használatával egyetlen kódsor megírása nélkül.
+Megtudhatja, hogyan hozhat létre egy összetett gépi tanulási kísérletet anélkül, hogy egyetlen sor kódot kellene írnia a vizualizáció felületének használatával.
 
-Ezzel a kísérlettel betanítja három, **kétosztályos gyorsított döntési fa** előre jelezni az Ügyfélkapcsolat-kezelő (CRM) rendszerben kapcsolódó gyakori feladatok deklarációkkal: lemorzsolódási szolgáltatóváltást és felfelé értékesítése. Az adatok értékeit és címkék elosztja a több adatforrást és ügyfél-információkat anonimizálási betűtípus, azonban továbbra is használhatjuk a vizuális felhasználói felületet adatkészletek kombinálhatja, és a titkosított értékeket használó modell betanításához.
+Ez a kísérlet három, kétosztályos kibővített döntési faosztályozási struktúrát biztosít az Ügyfélkapcsolat-kezelési (CRM) rendszerek általános feladatainak előrejelzéséhez: adatforgalom, szolgáltatóváltást és értékesítés. Az adatértékek és a címkék több adatforráson oszlanak el, és a névtelenség az ügyfelek adataival vannak összekeverve, de továbbra is használhatjuk a vizualizációs felületet az adatkészletek összevonásához és a modell betanításához a kódolt értékek használatával.
 
-Mivel tudjuk visszaszerezni a választ a kérdésre "Melyiket?" Ezt hívják besorolás probléma. Azonban ez a kísérlet, amelynek célja a machine learning probléma bármilyen típusú, legyen szó regressziós, besorolás, fürtözés, és így tovább ugyanazokat a lépéseket alkalmazhatja.
+Mivel megpróbáljuk választ adni a "melyik?" kérdésre? ezt besorolási problémanak nevezzük. Ebben a kísérletben azonban ugyanezeket a lépéseket alkalmazhatja a gépi tanulási problémák bármilyen típusának kezelésére, akár a regresszió, a besorolás, a fürtözés és így tovább.
 
-A befejezett graph ehhez a kísérlethez itt látható:
+Itt látható a kísérlethez tartozó befejezett gráf:
 
-![Kísérlet diagram](./media/ui-sample-classification-predict-churn/experiment-graph.png)
+![Kísérleti gráf](./media/ui-sample-classification-predict-churn/experiment-graph.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Válassza ki a **nyílt** a minta 5 kísérlet gombra.
+4. Válassza a **Megnyitás** gombot a minta 5 kísérlethez.
 
-    ![Nyissa meg a kísérlet](media/ui-sample-classification-predict-churn/open-sample5.png)
+    ![A kísérlet megnyitása](media/ui-sample-classification-predict-churn/open-sample5.png)
 
 ## <a name="data"></a>Data
 
-Az adatok, ehhez a kísérlethez használjuk a évi Versenysorozatából Cup 2009. Az adatkészlet 50 000 sort és oszlopot. a szolgáltatás 230. rendelkezik. A feladat, hogy előrejelzése lemorzsolódási szolgáltatóváltást és fel értékesítési ezeket a funkciókat használó ügyfelek számára. Az adatok és a feladat kapcsolatos további információkért lásd: a [évi Versenysorozatából webhely](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
+A kísérlethez használt adatok a KDD Cup 2009-ból származnak. Az adatkészlet 50 000 sor és 230 szolgáltatás oszlopot tartalmaz. A feladat az ezeket a szolgáltatásokat használó ügyfelek számára a kivonások, a szolgáltatóváltást és az értékesítések előrejelzése. Az adatokról és a feladatról a [KDD webhelyén](https://www.kdd.org/kdd-cup/view/kdd-cup-2009)talál további információt.
 
-## <a name="experiment-summary"></a>Kísérlet összegzése
+## <a name="experiment-summary"></a>Kísérletezés összegzése
 
-A vizuális felhasználói felületet mintakísérlet lemorzsolódási szolgáltatóváltást és felfelé – értékesítés, az Ügyfélkapcsolat-kezelés (CRM) gyakori feladat bináris osztályozó előrejelzését mutatja.
+Ez a Visual Interface-minta-kísérlet a forgalom, a szolgáltatóváltást és a fel-eladás bináris osztályozó előrejelzését mutatja be, amely az Ügyfélkapcsolat-kezelés (CRM) általános feladata.
 
-Első lépésként végzünk néhány egyszerű adatfeldolgozás.
+Először is végezzünk el néhány egyszerű adatfeldolgozást.
 
-- A nyers adatkészletet tartalmaz sok érték hiányzik. Használjuk a **Clean Missing Data** modul cserélje le a hiányzó értékek 0-val.
+- A nyers adatkészlet sok hiányzó értéket tartalmaz. A **tiszta hiányzó adatok** modult használjuk a hiányzó értékek 0 értékre való lecseréléséhez.
 
-    ![Az Adatkészlet törlése](./media/ui-sample-classification-predict-churn/cleaned-dataset.png)
+    ![Az adatkészlet tisztítása](./media/ui-sample-classification-predict-churn/cleaned-dataset.png)
 
-- Az funkciók és a megfelelő adatváltozás, szolgáltatóváltást, és fel értékesítési címkék különböző adatkészleteket. Használjuk a **oszlopok hozzáadása** modul a címke oszlopok hozzáfűzése a szolgáltatás oszlopokat. Az első oszlop **Col1**, a címke oszlop. A többi oszlop, **Var1**, **Var2**, és így tovább, a szolgáltatás oszlop.
+- A funkciók és a megfelelő adatforgalom, szolgáltatóváltást és fel-eladási címkék különböző adatkészletekben találhatók. Az **Oszlopok hozzáadása** modul használatával fűzze hozzá a címke oszlopokat a szolgáltatás oszlopaihoz. Az első oszlop, a **Col1**, a felirat oszlop. A többi oszlop, a **Var1**, a **Var2**és más oszlopok a funkció oszlopai.
 
-    ![Az oszlop adatkészlet hozzáadása](./media/ui-sample-classification-predict-churn/added-column1.png)
+    ![Oszlop adatkészletének hozzáadása](./media/ui-sample-classification-predict-churn/added-column1.png)
 
-- Használjuk a **Split Data** modul az adatkészlet felosztása tanítási és tesztelje a csoportok.
+- Az adathalmazt a kiosztási és a tesztelési csoportokra bontva használjuk az adatfelosztási modul használatával.
 
-    Ezt követően segítségével a súlyozott döntési fa bináris osztályozó az alapértelmezett paraméterek a prediktív modellek létrehozása. Feladatonként, hogy egy modell előre jelezni az fel értékesítési szolgáltatóváltást és adatváltozás egyes egy modell készítünk.
+    Ezután a megnövelt döntési fa bináris besorolást használjuk az alapértelmezett paraméterekkel az előrejelzési modellek létrehozásához. Feladathoz egy modellt hozunk létre, azaz egy modellt, amely az értékesítés, a szolgáltatóváltást és a forgalom előrejelzésére szolgál.
 
 ## <a name="results"></a>Results (Eredmények)
 
-Megjelenítheti a kimenetét a **Evaluate Model** modult, tekintse meg a modell teljesítményét a vizsgálat beállítása. Az fel értékesítési feladat ROC-görbe mutatja be, hogy a modell jobban, mint egy véletlenszerű modell does. A görbe (AUC) alatti terület 0,857. 0\.5-ös küszöbértékkel a pontosság 0,7, a visszaírási 0.463, pedig a F1 pontszám 0.545.
+Jelenítse meg a **modell** kiértékelése modul kimenetét a modell teljesítményének megjelenítéséhez a tesztelési készleten. Az eladási feladatokhoz a ROC-görbe azt mutatja, hogy a modell jobb, mint egy véletlenszerű modell. A görbe alatti terület (AUC) 0,857. A 0,5-as küszöbértéknél a pontosság 0,7, a visszahívás 0,463, az F1 pontszám pedig 0,545.
 
-![Eredmények értékelése](./media/ui-sample-classification-predict-churn/evaluate-result.png)
+![Az eredmények kiértékelése](./media/ui-sample-classification-predict-churn/evaluate-result.png)
 
- Áthelyezheti a **küszöbérték** csúszka, és tekintse meg a mérőszámok módosításához a bináris osztályozási feladat.
+ Áthelyezheti a **küszöbérték** csúszkát, és megtekintheti a bináris besorolási feladat metrikáinak változását.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -73,10 +73,10 @@ Megjelenítheti a kimenetét a **Evaluate Model** modult, tekintse meg a modell 
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg a vizuális felületen érhető el a más minták:
+Ismerje meg a vizuális felületen elérhető egyéb mintákat:
 
-- [1 – regressziós. példa: Egy autó árát előrejelzése](ui-sample-regression-predict-automobile-price-basic.md)
-- [2 – regressziós. példa: Hasonlítsa össze az autó árának előrejelzése algoritmusok](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-- [Mintául szolgáló 3 - besorolás: Hitelkockázat előrejelzése](ui-sample-classification-predict-credit-risk-basic.md)
-- [4 – besorolási. példa: Hitelkockázatot (költség-és nagybetűket)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-- [6 – besorolási. példa: A járatok késésének előrejelzése](ui-sample-classification-predict-flight-delay.md)
+- [1. példa – regresszió: Autó árának előrejelzése](ui-sample-regression-predict-automobile-price-basic.md)
+- [2. minta – regresszió: Algoritmusok összehasonlítása az autó árának előrejelzéséhez](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+- [3. példa – besorolás: Hitelkockázat előrejelzése](ui-sample-classification-predict-credit-risk-basic.md)
+- [4. minta – besorolás: Hitelkockázat (Cost szenzitív)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [6. példa – besorolás: Repülési késések előrejelzése](ui-sample-classification-predict-flight-delay.md)

@@ -53,15 +53,21 @@
           href: cognitive-search-tutorial-blob-python.md
 - name: Példák
   items:
-    - name: Azure-kódminták
-      href: 'https://azure.microsoft.com/resources/samples/?service=search'
+    - name: 'C#-minták'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=csharp'
+    - name: Java-példák
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=java'
+    - name: Python-példák
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=python'
+    - name: REST-minták
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=rest'
 - name: Képzés
   items:
-    - name: Tudásbányászati intenzív kurzus
-      href: 'https://azure.github.io/LearnAI-KnowledgeMiningBootcamp/'
+    - name: Bevezetés (Microsoft Learn)
+      href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
     - name: Keresés hozzáadása alkalmazásokhoz (Pluralsight)
       href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
-    - name: Microsoft Azure fejlesztői képzés (Pluralsight)
+    - name: Fejlesztői képzés (Pluralsight)
       href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
 - name: Alapelvek
   items:

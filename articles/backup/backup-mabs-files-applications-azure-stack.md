@@ -8,14 +8,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: dacurwin
-ms.openlocfilehash: 7214cf4c16cc4ee5e76d479d153395085a7e3a6e
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 25e511a1596c1119d1db8c9270ce216cd5186e72
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688942"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735475"
 ---
-# <a name="back-up-files-on-azure-stack"></a>Fájlok biztonsági mentése Azure Stack
+# <a name="back-up-files-and-applications-on-azure-stack"></a>Fájlok és alkalmazások biztonsági mentése az Azure Stackben
 A Azure Backup a fájlok és az alkalmazások Azure Stackn való védelemmel (vagy biztonsági mentéssel) való ellátására is használható. Fájlok és alkalmazások biztonsági mentéséhez telepítse Microsoft Azure Backup-kiszolgálót Azure Stack rendszeren futó virtuális gépre. Az azonos virtuális hálózatban található Azure Stack-kiszolgálók fájljait is védelemmel láthatja el. A Azure Backup Server telepítése után hozzáadhat Azure-lemezeket a rövid távú biztonsági mentési adatmennyiséghez elérhető helyi tárterület növeléséhez. A Azure Backup Server hosszú távú adatmegőrzéshez az Azure Storage-t használja.
 
 > [!NOTE]
@@ -71,7 +71,7 @@ A Azure Stack virtuális gépek fájljainak védelemmel Azure Backup Server konf
 
 6. A **lemez kiosztásának áttekintése** képernyőn tekintse át a védelmi csoport számára lefoglalt tárterület lemezterületét.
 
-    A védelmi csoport számára ajánlott terület a **teljes adatméret** a biztonsági mentésre és **a** lemezterület kiszámítására szolgáló Azure Backup Server. Azure Backup Server kiválasztja az ideális biztonsági mentési kötetet a beállítások alapján. A lemez-foglalás részleteiben azonban szerkesztheti a kötetek biztonsági mentésének lehetőségeit. A munkaterhelések esetében válassza ki az előnyben részesített tárolót a legördülő menüben. A módosítások a rendelkezésre álló Disk Storage ablaktáblán a teljes tárterület és a szabad tárterület értékeit módosítják. A kiépített terület az a tárterület, Azure Backup Server a kötethez való hozzáadását javasolja, hogy a biztonsági mentések zökkenőmentesen folytatódnak a jövőben.
+    A védelmi csoport számára ajánlott terület a **teljes adatméret** a biztonsági mentésre és a lemezterület kiszámítására szolgáló Azure Backup Server. Azure Backup Server kiválasztja az ideális biztonsági mentési kötetet a beállítások alapján. A lemez-foglalás részleteiben azonban szerkesztheti a kötetek biztonsági mentésének lehetőségeit. A munkaterhelések esetében válassza ki az előnyben részesített tárolót a legördülő menüben. A módosítások a rendelkezésre álló Disk Storage ablaktáblán a teljes tárterület és a szabad tárterület értékeit módosítják. A kiépített terület az a tárterület, Azure Backup Server a kötethez való hozzáadását javasolja, hogy a biztonsági mentések zökkenőmentesen folytatódnak a jövőben.
 
 7. A **replika-létrehozási módszer**kiválasztása lapon válassza ki, hogyan szeretné kezelni a kezdeti teljes adatreplikációt. Ha úgy dönt, hogy a hálózaton keresztül replikál, az Azure azt javasolja, hogy válasszon ki egy off-Peak időpontot. Nagy mennyiségű vagy az optimális hálózati feltételeknél kisebb méretű adatforgalom esetén érdemes lehet a cserélhető adathordozó használatával replikálni az adatreplikálást.
 

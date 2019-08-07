@@ -1,29 +1,29 @@
 ---
-title: VMware megoldást, CloudSimple – az Azure hálózati kapcsolatok
-description: További tudnivalók az Azure virtuális hálózat csatlakoztatása az CloudSimple régió hálózathoz
+title: VMware-megoldás CloudSimple szerint – Azure hálózati kapcsolatok
+description: Ismerje meg, hogyan csatlakoztathatja Azure-beli virtuális hálózatát a CloudSimple-régió hálózatához
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f2ab82b6c1b4b373c186019eaf96f9864861b9d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8e99da05f71cb01744111b41c301b11a0969057
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497638"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812707"
 ---
-# <a name="azure-network-connections-overview"></a>Azure-beli hálózati kapcsolatok áttekintése
+# <a name="azure-network-connections-overview"></a>Az Azure hálózati kapcsolatainak áttekintése
 
-Egy régióban egy CloudSimple szolgáltatás létrehozásakor azt:
+Ha CloudSimple-szolgáltatást hoz létre egy régióban, akkor:
 
-* Létrehoz egy Azure ExpressRoute-kapcsolatcsoportot, és csatlakoztatja a szolgáltatás az adott régióban
-* Lehetővé teszi, hogy a kapcsolat CloudSimple terület hálózat az Azure virtuális hálózat vagy a helyszíni hálózat az Azure ExpressRoute használatával
-* Az Azure-előfizetés vagy a helyszíni hálózat, a Magánfelhő környezetből hozzáférési szolgáltatásokat nyújt
+* Létrehoz egy Azure ExpressRoute áramkört, és csatolja az adott régióban található szolgáltatáshoz
+* Lehetővé teszi a CloudSimple-régió hálózatról az Azure-beli virtuális hálózatra vagy a helyszíni hálózatra való kapcsolódást az Azure ExpressRoute használatával
+* Hozzáférést biztosít az Azure-előfizetésben vagy a helyszíni hálózaton futó hozzáférési szolgáltatásokhoz a saját felhőalapú környezetből
 
-A kapcsolat állapota:
+A kapcsolatok a következőket jelentik:
 
 * Biztonságos
 * Magánjellegű
@@ -32,25 +32,25 @@ A kapcsolat állapota:
 
 ## <a name="benefits"></a>Előnyök
 
-Az Azure hálózati kapcsolat teszi lehetővé:
+Az Azure-beli hálózati kapcsolatok a következőket teszik lehetővé:
 
-* Az Azure-t a biztonsági mentési cél virtuális gépeknél a Private Cloud.
-* A KMS-kiszolgálókat a Magánfelhő vSAN adattároló titkosítása az Azure-előfizetés telepítheti.
-* Hibrid alkalmazások, amelyben a webes szint, az alkalmazás fut, amíg az alkalmazás a nyilvános felhőben, és a Magánfelhő futtathat adatbázisrétegeknek használja.
+* Használja az Azure-t biztonsági mentési célként a saját felhőben lévő virtuális gépekhez.
+* KMS-kiszolgálók üzembe helyezése az Azure-előfizetésben a saját felhőalapú vSAN-adattár titkosításához.
+* Használjon olyan hibrid alkalmazásokat, amelyekben az alkalmazás webes szintje a nyilvános felhőben fut, miközben az alkalmazás és az adatbázis szintjei a saját felhőben futnak.
 
-## <a name="azure-virtual-network-connection"></a>Az Azure virtuális hálózati kapcsolat
+## <a name="azure-virtual-network-connection"></a>Azure-beli virtuális hálózati kapcsolatok
 
-Magánfelhők létrehozása az Azure-erőforrások ExpressRoute-tal is csatlakoztathatók.  Használhatja ezt a kapcsolatot az Azure-előfizetésben a privát felhőben futó különböző erőforrások eléréséhez.  Ehhez a kapcsolathoz, a Magánfelhő-hálózatot az Azure virtuális hálózat kiterjesztése teszi lehetővé.
+A privát felhők a ExpressRoute használatával csatlakoztathatók az Azure-erőforrásokhoz.  Ezzel a kapcsolattal elérheti az Azure-előfizetésében futó különböző erőforrásokat a privát felhőből.  Ez a kapcsolódás lehetővé teszi, hogy saját felhőalapú hálózatot terjesszen az Azure-beli virtuális hálózatra.
 
-![Az Azure ExpressRoute-kapcsolat virtuális hálózathoz](media/cloudsimple-azure-network-connection.png)
+![Azure ExpressRoute-kapcsolódás virtuális hálózathoz](media/cloudsimple-azure-network-connection.png)
 
-## <a name="expressroute-connection-to-on-premises-network"></a>A helyszíni hálózat az ExpressRoute-kapcsolat
+## <a name="expressroute-connection-to-on-premises-network"></a>ExpressRoute-kapcsolódás a helyszíni hálózathoz
 
-A meglévő Azure ExpressRoute-kapcsolatcsoporttal csatlakozhat a CloudSimple régió. Globális elérhetőségű az ExpressRoute szolgáltatás használható egymással a két kapcsolatcsoporttal csatlakozhat.  A helyszíni és a CloudSimple ExpressRoute-Kapcsolatcsoportok között létrejön a kapcsolat.  Ez a kapcsolat kiterjesztheti helyszíni hálózatait a Magánfelhő hálózati teszi lehetővé.
+A meglévő Azure ExpressRoute-áramkört a CloudSimple-régióhoz is összekapcsolhatja. A ExpressRoute Global Reach funkció a két áramkör egymással való összekapcsolására szolgál.  Létrejön egy kapcsolat a helyszíni és a CloudSimple ExpressRoute-áramkörök között.  Ez a kapcsolódás lehetővé teszi a helyszíni hálózatok kibővítését a saját felhőalapú hálózatra.
 
-![A helyi ExpressRoute-kapcsolat – globális elérhetőséggel](media/cloudsimple-global-reach-connection.png)
+![Helyszíni ExpressRoute-kapcsolatok – Global Reach](media/cloudsimple-global-reach-connection.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure virtuális hálózat CloudSimple kapcsolatra társviszony-létesítési megszerzése](https://docs.azure.cloudsimple.com/virtual-network-connection)
-* [CloudSimple ExpressRoute-tal tudjon csatlakozni a helyszíni](https://docs.azure.cloudsimple.com/on-premises-connection)
+* [Az Azure Virtual Network CloudSimple-hez való kapcsolódási információinak beszerzése](https://docs.azure.cloudsimple.com/virtual-network-connection)
+* [Kapcsolódás a helyszínről a CloudSimple a ExpressRoute használatával](https://docs.azure.cloudsimple.com/on-premises-connection)

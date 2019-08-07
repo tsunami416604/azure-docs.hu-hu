@@ -131,6 +131,8 @@
   items:
     - name: Az Azure Monitor kezelése
       items:
+        - name: Munkaterület üzembe helyezésének megtervezése
+          href: platform/design-logs-deployment.md
         - name: Szerepköri engedélyek és biztonság
           href: platform/roles-permissions-security.md
         - name: IP-címek

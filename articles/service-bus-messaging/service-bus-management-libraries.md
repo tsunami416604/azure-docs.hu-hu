@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus felügyeleti könyvtárak |} A Microsoft Docs
-description: A Service Bus-névtér és üzenetküldési entitások, a .NET használatával kezelheti.
+title: Azure Service Bus felügyeleti kódtárak | Microsoft Docs
+description: Service Bus névterek és üzenetküldési entitások kezelése a .NET-ből.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -14,45 +14,45 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2019
 ms.author: aschhab
-ms.openlocfilehash: bd2a594bfd7fbac53deacc767ace3cd44484798e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: faf0a5893b7de276b9a411745500daef4d39da6b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058109"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816075"
 ---
 # <a name="service-bus-management-libraries"></a>A Service Bus felügyeleti könyvtárai
 
-Az Azure Service Bus felügyeleti könyvtárak dinamikusan helyezhet üzembe Service Bus-névterek és entitásokat. Ez lehetővé teszi az összetett és üzenetküldési forgatókönyvre, és lehetővé teszi a programozott módon határozza meg az üzembe helyezni entitásokat. Ezek a kódtárak érhetők el jelenleg a .NET-hez.
+A Azure Service Bus felügyeleti kódtárak dinamikusan tudnak kiépíteni Service Bus névtereket és entitásokat. Ez összetett központi telepítéseket és üzenetkezelési forgatókönyveket tesz lehetővé, és lehetővé teszi, hogy programozott módon határozza meg, hogy milyen entitásokat kell kiépíteni. Ezek a kódtárak érhetők el jelenleg a .NET-hez.
 
 ## <a name="supported-functionality"></a>Támogatott funkciók
 
 * Namespace létrehozás, frissítés, törlés
-* Üzenetsor-létrehozás, frissítés, törlés
-* Témakör-létrehozás, frissítés, törlés
+* Üzenetsor létrehozása, frissítése, törlése
+* Témakör létrehozása, frissítése, törlése
 * Előfizetés létrehozása, frissítése, törlése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként a Service Bus felügyeleti könyvtárak használatával az Azure Active Directory (Azure AD) szolgáltatásban kell hitelesítenie. Az Azure AD szükséges, hogy hitelesítse magát egy egyszerű szolgáltatást, amely az Azure-erőforrásokhoz való hozzáférést biztosít. Egyszerű szolgáltatás létrehozása kapcsolatos információkért tekintse meg az alábbi cikkek:  
+A Service Bus felügyeleti kódtárak használatának megkezdéséhez hitelesítenie kell magát a Azure Active Directory (Azure AD) szolgáltatással. Az Azure AD-ben az Azure-erőforrásokhoz való hozzáférést biztosító egyszerű szolgáltatásként kell hitelesítenie magát. Egyszerű szolgáltatás létrehozása kapcsolatos információkért tekintse meg az alábbi cikkek:  
 
 * [Active Directory-alkalmazás és az erőforrások elérésére képes egyszerű szolgáltatás létrehozása az Azure portal használatával](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 * [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure PowerShell használatával](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure CLI használatával](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-Ezek az oktatóanyagok, és adjon meg egy `AppId` (ügyfél-azonosító), `TenantId`, és `ClientSecret` (hitelesítési kulcs), mindegyike által a kezelési kódtárakat hitelesítéshez használhatók. Rendelkeznie kell **tulajdonosa** , amelyen futtatni szeretné az erőforráscsoporthoz tartozó engedélyeket.
+Ezek az oktatóanyagok, és adjon meg egy `AppId` (ügyfél-azonosító), `TenantId`, és `ClientSecret` (hitelesítési kulcs), mindegyike által a kezelési kódtárakat hitelesítéshez használhatók. A futtatni kívánt erőforráscsoport tulajdonosi engedélyekkel kell rendelkeznie.
 
 ## <a name="programming-pattern"></a>Programozási minta
 
-A minta segítségével kezelheti a Service Bus-erőforrásoknál egy közös protokollt követi:
+A Service Bus-erőforrások kezelésére szolgáló minta egy közös protokollt követ:
 
-1. Jogkivonat beszerzése az Azure AD-t a **Microsoft.IdentityModel.Clients.ActiveDirectory** könyvtár:
+1. Szerezze be a tokent az Azure AD-ből a **Microsoft. IdentityModel. clients. ActiveDirectory** könyvtár használatával:
    ```csharp
    var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
-   var result = await context.AcquireTokenAsync("https://management.core.windows.net/", new ClientCredential(clientId, clientSecret));
+   var result = await context.AcquireTokenAsync("https://management.azure.com/", new ClientCredential(clientId, clientSecret));
    ```
-2. Hozzon létre a `ServiceBusManagementClient` objektum:
+2. Hozza létre `ServiceBusManagementClient` az objektumot:
 
    ```csharp
    var creds = new TokenCredentials(token);
@@ -61,7 +61,7 @@ A minta segítségével kezelheti a Service Bus-erőforrásoknál egy közös pr
        SubscriptionId = SettingsCache["SubscriptionId"]
    };
    ```
-3. Állítsa be a `CreateOrUpdate` a megadott értékek a paramétereket:
+3. Állítsa be `CreateOrUpdate` a paramétereket a megadott értékekre:
 
    ```csharp
    var queueParams = new QueueCreateOrUpdateParameters()
@@ -70,14 +70,14 @@ A minta segítségével kezelheti a Service Bus-erőforrásoknál egy közös pr
        EnablePartitioning = true
    };
    ```
-4. A hívás hajtható végre:
+4. A hívás végrehajtása:
 
    ```csharp
    await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, QueueName, queueParams);
    ```
 
-## <a name="complete-code-to-create-a-queue"></a>Fejezze be a kódot, hogy a várólista létrehozása
-Itt látható a teljes kód egy Service Bus-üzenetsor létrehozása: 
+## <a name="complete-code-to-create-a-queue"></a>A várólista létrehozásához szükséges kód végrehajtása
+A Service Bus üzenetsor létrehozásához a teljes kód a következő: 
 
 ```csharp
 using System;
@@ -139,7 +139,7 @@ namespace SBusADApp
                 var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
                 var result = await context.AcquireTokenAsync(
-                    "https://management.core.windows.net/",
+                    "https://management.azure.com/",
                     new ClientCredential(clientId, clientSecret)
                 );
 
@@ -164,7 +164,7 @@ namespace SBusADApp
 ```
 
 > [!IMPORTANT]
-> Egy teljes példa: a [.NET felügyeleti minta a Githubon](https://github.com/Azure-Samples/service-bus-dotnet-management/). 
+> Teljes példaként tekintse meg a [.net-felügyeleti mintát](https://github.com/Azure-Samples/service-bus-dotnet-management/)a githubon. 
 
 ## <a name="next-steps"></a>További lépések
-[Microsoft.Azure.Management.ServiceBus API reference](/dotnet/api/Microsoft.Azure.Management.ServiceBus)
+[Microsoft. Azure. Management. ServiceBus API-dokumentáció](/dotnet/api/Microsoft.Azure.Management.ServiceBus)

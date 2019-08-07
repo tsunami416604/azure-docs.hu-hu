@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d96f5bb189dfd20c65fc6fc6ddcb8fff66d52ff
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 07c035f4823ea8c8eaa96ca9bda22450246811cd
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666240"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779627"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD jelszavas védelem – hibaelhárítás
 
@@ -32,7 +32,7 @@ A probléma leggyakoribb oka, hogy a proxy még nincs regisztrálva. Ha egy prox
 
 Ennek a problémának a fő tünete a DC-ügynök rendszergazdai eseménynaplójának 30018 eseménye. A probléma több lehetséges oka lehet:
 
-1. A DC-ügynök a hálózat egy elkülönített részében található, amely nem engedélyezi a hálózati kapcsolatot a regisztrált proxy (ka) t. Ez a probléma ezért jóindulatú lehet, ha más TARTOMÁNYVEZÉRLŐk is tudnak kommunikálni a proxy (k) val, hogy letöltsék a jelszavakat az Azure-ból, amelyet azután az elkülönített tartományvezérlő szerez be a SYSVOL-megosztásban lévő házirend-fájlok replikálásával.
+1. A DC-ügynök a hálózat egy elkülönített részében található, amely nem engedélyezi a hálózati kapcsolatot a regisztrált proxy (ka) t. Ez a probléma akkor lehet jóindulatú, ha más TARTOMÁNYVEZÉRLŐk nem tudnak kommunikálni a proxy (k) vel az Azure-beli jelszóházirendek letöltése érdekében. A letöltés után ezeket a házirendeket a rendszer ezután az elkülönített tartományvezérlő szerzi be a SYSVOL-megosztásban lévő házirend-fájlok replikálásával.
 
 1. A proxykiszolgáló blokkolja az RPC Endpoint Mapper-végpont elérését (135-es port).
 
@@ -48,7 +48,7 @@ Ennek a problémának a fő tünete a DC-ügynök rendszergazdai eseménynaplój
 
 1. Győződjön meg arról, hogy az erdő és az összes proxykiszolgáló regisztrálva van ugyanazon az Azure-bérlőn.
 
-   Ezt a követelményt a és `Get-AzureADPasswordProtectionProxy` `Get-AzureADPasswordProtectionDCAgent` a PowerShell-parancsmagok futtatásával, majd az `AzureTenant` egyes visszaadott elemek tulajdonságának összehasonlításával is megtekintheti. A megfelelő működéshez a jelentett bérlő nevének meg kell egyeznie az összes tartományvezérlő-ügynök és proxykiszolgáló között.
+   Ezt a követelményt a és `Get-AzureADPasswordProtectionProxy` `Get-AzureADPasswordProtectionDCAgent` a PowerShell-parancsmagok futtatásával, majd az `AzureTenant` egyes visszaadott elemek tulajdonságának összehasonlításával is megtekintheti. A megfelelő működés érdekében a jelentett bérlő nevének meg kell egyeznie az összes tartományvezérlő-ügynök és proxykiszolgáló között.
 
    Ha egy Azure-bérlő regisztrációjának eltérési feltétele létezik, ezt a `Register-AzureADPasswordProtectionProxy` problémát a és/vagy `Register-AzureADPasswordProtectionForest` a PowerShell-parancsmagok igény szerint történő futtatásával lehet megállapítani, hogy az összes regisztrációhoz ugyanazt az Azure-bérlő hitelesítő adatait használja.
 
@@ -69,6 +69,8 @@ A KDS szolgáltatás nem indítható el a leggyakoribb alapvető oka az, hogy az
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>A rendszer nem fogadja el a gyenge jelszavakat, de nem feltétlenül kell
 
 A probléma több oka is lehet.
+
+1. A tartományvezérlő ügynöke a nyilvános előzetes verziót futtatja, amely lejárt. [A nyilvános előzetes VERZIÓJÚ DC-ügynök szoftvere lejárt](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired).
 
 1. A tartományvezérlő ügynöke nem tud letölteni egy házirendet, vagy nem tudja visszafejteni a meglévő szabályzatokat. A fenti témakörökben a lehetséges okokat érdemes megkeresni.
 
@@ -99,7 +101,7 @@ Setting password failed.
         Error Message: Password doesn't meet the requirements of the filter dll's
 ```
 
-Ha az Azure AD jelszavas védelem egy Active Directory címtárszolgáltatások helyreállító módjához tartozó jelszó-ellenőrzési esemény (eke) t naplóz, akkor az Eseménynapló üzenetei nem tartalmazzák a felhasználónevet. Ez azért történik, mert a Címtárszolgáltatások helyreállító fiókja olyan helyi fiók, amely nem része a tényleges Active Directory tartománynak.  
+Ha az Azure AD jelszavas védelem egy Active Directory címtárszolgáltatások helyreállító módjához tartozó jelszó-ellenőrzési esemény (eke) t naplóz, akkor az Eseménynapló üzenetei nem tartalmazzák a felhasználónevet. Ez a viselkedés azért fordul elő, mert a Címtárszolgáltatások helyreállító fiókja olyan helyi fiók, amely nem része a tényleges Active Directory tartománynak.  
 
 ## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>A tartományvezérlő replikájának előléptetése sikertelen, mert gyenge címtárszolgáltatások helyreállító jelszava
 
@@ -119,7 +121,67 @@ Ha a lefokozás sikeres volt, és a tartományvezérlőt újraindították, és 
 
 ## <a name="booting-into-directory-services-repair-mode"></a>A Címtárszolgáltatások helyreállító módjának indítása
 
-Ha a tartományvezérlő címtárszolgáltatás-javító módban van elindítva, a tartományvezérlő ügynöke észleli ezt a feltételt, és az összes jelszó-ellenőrzési vagy kényszerítési tevékenységet le fogja tiltani, az aktuálisan aktív házirend-konfigurációtól függetlenül.
+Ha a tartományvezérlő címtárszolgáltatás-javító módban van elindítva, a tartományvezérlői ügynök jelszavas szűrője dll észleli ezt a feltételt, és az összes jelszó-ellenőrzési vagy kényszerítési tevékenység le lesz tiltva, az aktuálisan aktív házirendtől függetlenül. Configuration. A DC Agent jelszavas szűrő DLL-je egy 10023-es figyelmeztetési eseményt naplóz a felügyeleti eseménynaplóba, például:
+
+```text
+The password filter dll is loaded but the machine appears to be a domain controller that has been booted into Directory Services Repair Mode. All password change and set requests will be automatically approved. No further messages will be logged until after the next reboot.
+```
+## <a name="public-preview-dc-agent-software-has-expired"></a>A nyilvános előzetes verziójú DC-ügynök szoftvere lejárt
+
+Az Azure AD jelszavas védelem nyilvános előzetes verziójában a DC-ügynök szoftverét nem lehetett a következő dátumokon leállítani a jelszó-ellenőrzési kérelmek feldolgozásának leállítására:
+
+* A 1.2.65.0 verziója leállítja a jelszó-ellenőrzési kérelmek feldolgozását szeptember 1 2019-én.
+* A 1.2.25.0 verzió és a korábban leállított jelszó-ellenőrzési kérések feldolgozása július 1 2019-én.
+
+A határidő megközelítése szerint az összes időkorlátos DC-ügynök verziója 10021 eseményt bocsát ki a DC-ügynök rendszergazdai eseménynaplójában a következőhöz hasonló rendszerindítási időpontban:
+
+```text
+The password filter dll has successfully loaded and initialized.
+
+The allowable trial period is nearing expiration. Once the trial period has expired, the password filter dll will no longer process passwords. Please contact Microsoft for an newer supported version of the software.
+
+Expiration date:  9/01/2019 0:00:00 AM
+
+This message will not be repeated until the next reboot.
+```
+
+A határidő lejárta után az összes időkorlátos DC-ügynök verziója 10022 eseményt bocsát ki a DC-ügynök rendszergazdai eseménynaplójában a következőhöz hasonló rendszerindítási időpontban:
+
+```text
+The password filter dll is loaded but the allowable trial period has expired. All password change and set requests will be automatically approved. Please contact Microsoft for a newer supported version of the software.
+
+No further messages will be logged until after the next reboot.
+```
+
+Mivel a határidőt csak a kezdeti rendszerindítás során ellenőrzi a rendszer, előfordulhat, hogy a naptári határidő lejárta után nem látja ezeket az eseményeket. A határidő felismerése után a rendszer nem gyakorol negatív hatást a tartományvezérlőre vagy a nagyobb környezetre, mint az összes jelszó, automatikusan jóvá lesz hagyva.
+
+> [!IMPORTANT]
+> A Microsoft azt javasolja, hogy a lejárt nyilvános előzetes tartományvezérlő ügynökök azonnal frissítve legyenek a legújabb verzióra.
+
+A parancsmag futtatásával egyszerűen felderítheti az olyan tartományvezérlői ügynököket, amelyeket frissíteni kell, `Get-AzureADPasswordProtectionDCAgent` például a következő módon:
+
+```powershell
+PS C:\> Get-AzureADPasswordProtectionDCAgent
+
+ServerFQDN            : bpl1.bpl.com
+SoftwareVersion       : 1.2.125.0
+Domain                : bpl.com
+Forest                : bpl.com
+PasswordPolicyDateUTC : 8/1/2019 9:18:05 PM
+HeartbeatUTC          : 8/1/2019 10:00:00 PM
+AzureTenant           : bpltest.onmicrosoft.com
+```
+
+Ebben a témakörben a SoftwareVersion mező nyilvánvalóan a legfontosabb tulajdonság, amellyel megtekintheti. A PowerShell-szűrés használatával kiszűrheti az olyan egyenáramú ügynököket, amelyek már megtalálhatók a szükséges alapkonfiguráció-verziónál, például:
+
+```powershell
+PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
+PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
+```
+
+Az Azure AD jelszavas védelmi proxy szoftver semmilyen verzióban nem korlátozott. A Microsoft továbbra is javasolja a DC és a proxy ügynökök frissítését a legújabb verzióra, amint azok megjelentek. A `Get-AzureADPasswordProtectionProxy` parancsmagot a DC-ügynököknél a fenti példában szereplő, frissítést igénylő proxy ügynökök keresésére lehet használni.
+
+Az adott frissítési eljárásokkal kapcsolatos további részletekért tekintse meg a [tartományvezérlő-ügynök frissítését](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) és [a proxy ügynök frissítését](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) ismertető témakört.
 
 ## <a name="emergency-remediation"></a>Vészhelyzeti szervizelés
 

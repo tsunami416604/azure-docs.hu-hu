@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: 881d89170c82731fca3f6977da486eac5be772f8
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 4c283e840208ab9f53d084ca17221ea2c835b794
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466993"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814140"
 ---
 # <a name="create-an-azure-bastion-host-preview"></a>Azure Bastion-gazdagép létrehozása (előzetes verzió)
 
@@ -54,7 +54,7 @@ Ez a szakasz segítséget nyújt egy új Azure Bastion-erőforrás létrehozás�
     * **Név**: Az új megerősített erőforrás neve
     * **Régió**: Az Azure nyilvános régiója, amelyben az erőforrás létrejön.
     * **Virtuális hálózat**: Az a virtuális hálózat, amelyben a megerősített erőforrás létre lesz hozva. A folyamat során létrehozhat egy új virtuális hálózatot a portálon abban az esetben, ha nem rendelkezik meglévő virtuális hálózattal, vagy nem szeretne használni. Ha meglévő virtuális hálózatot használ, ellenőrizze, hogy a meglévő virtuális hálózat rendelkezik-e elegendő szabad hellyel a megerősített alhálózat követelményeinek kielégítéséhez.
-    * **Alhálózat**: Annak a virtuális hálózatnak az alhálózata, amelyhez az új megerősített gazdagép erőforrása telepítve lesz. Létre kell hoznia egy alhálózatot a **AzureBastionSubnet**név érték használatával. Ez az érték lehetővé teszi, hogy az Azure tudja, melyik alhálózaton telepítse a megerősített erőforrásokat a következőre:. Ez nem más, mint az átjáró alhálózata. Javasoljuk, hogy legalább egy/27 vagy nagyobb alhálózatot használjon (/27,/26 stb.). Hozza létre a **AzureBastionSubnet** útválasztási táblák vagy delegálások nélkül. Ha hálózati biztonsági csoportokat használ a **AzureBastionSubnet**, olvassa el a következőt: a [NSG](bastion-nsg.md)használata.
+    * **Alhálózat**: Annak a virtuális hálózatnak az alhálózata, amelyhez az új megerősített gazdagép erőforrása telepítve lesz. Létre kell hoznia egy alhálózatot a **AzureBastionSubnet**név érték használatával. Ez az érték lehetővé teszi, hogy az Azure tudja, melyik alhálózaton telepítse a megerősített erőforrásokat a következőre:. Ez nem más, mint az átjáró alhálózata. Legalább egy/27 vagy nagyobb alhálózat (/27,/26 stb.) alhálózatot kell használnia. Hozza létre a **AzureBastionSubnet** útválasztási táblák vagy delegálások nélkül. Ha hálózati biztonsági csoportokat használ a **AzureBastionSubnet**, olvassa el a következőt: a [NSG](bastion-nsg.md)használata.
     * **Nyilvános IP-cím**: Az RDP/SSH elérésére használt megerősített erőforrás nyilvános IP-címe (az 443-as porton keresztül). Hozzon létre egy új nyilvános IP-címet, vagy használjon egy meglévőt. A nyilvános IP-címnek ugyanabban a régióban kell lennie, mint a létrehozandó megerősített erőforrásnak.
     * **Nyilvános IP-cím neve**: A nyilvános IP-cím erőforrásának neve.
     * **Nyilvános IP-cím SKU**: Alapértelmezés szerint a **standard**értékre van feltöltve. Az Azure Bastion csak a standard nyilvános IP-SKU-t használja/támogatja.

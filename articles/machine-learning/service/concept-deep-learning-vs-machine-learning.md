@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 07/30/2019
-ms.openlocfilehash: d97c3d47a277ecd8b1de635e3d835f9ee1f42057
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.date: 08/07/2019
+ms.openlocfilehash: 4b66d015e8a182e305a36dacaa2e082288a3e19e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700352"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840540"
 ---
 # <a name="introduction-to-deep-learning-vs-machine-learning"></a>A Deep learning és a Machine learning bemutatása
 
@@ -43,9 +43,9 @@ Most, hogy áttekintette a Machine learning és a Deep learning áttekintését,
 
 Az alábbi táblázat részletesebben összehasonlítja a két technikát:
 
-| |Gépi tanulás |Deep learning|
+| |Minden gépi tanulás |Csak mély tanulás|
 |---|---|---|
-|  **Adatpontok száma** | Használhat a felhasználók által biztosított kis adatmennyiségeket | Nagy mennyiségű címkézetlen betanítási adatmennyiséget igényel a rövid következtetések elvégzéséhez |
+|  **Adatpontok száma** | Használhat a felhasználók által biztosított kis adatmennyiségeket | Nagy mennyiségű betanítási adattal kell rendelkeznie a rövid következtetések elvégzéséhez |
 |  **Hardver függőségei** | Az alacsony végű gépeken is működhet. Nincs szükség nagy mennyiségű számítási teljesítményre | A magas végú gépektől függ. Természeténél fogva nagy számú mátrix-szorzási műveletet végez. Ezek a műveletek hatékonyan optimalizálható GPU használatával |
 |  **Featurization folyamat** | A funkciók pontos azonosítását és létrehozását igénylik a felhasználók számára | Megismerheti az adatok magas szintű funkcióit, és önmagában új szolgáltatásokat hoz létre |
 |  **Tanulási megközelítés** | Kis méretűre osztja a tevékenységeket, majd egyetlen következtetésbe egyesítheti a kapott eredményeket. | Feloldja a problémát egy teljes körű alapon |

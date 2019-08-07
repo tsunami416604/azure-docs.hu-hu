@@ -1,61 +1,61 @@
 ---
-title: VMware megoldást, CloudSimple – Azure csomópontok áttekintése
-description: Ismerje meg CloudSimple csomópontok és a fogalmakkal.
+title: A VMware-megoldás csomópontjainak áttekintése CloudSimple szerint – Azure
+description: Ismerje meg a CloudSimple-csomópontokat és-fogalmakat.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fb82e31d58d9955efc3b147eccf2b82b8768aeee
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 346bd046810ebae5142bc23400419857000d0c8e
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165799"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812569"
 ---
-# <a name="cloudsimple-nodes-overview"></a>CloudSimple csomópontok áttekintése
+# <a name="cloudsimple-nodes-overview"></a>A CloudSimple-csomópontok áttekintése
 
-Csomópontnak számít:
+Csomópont:
 
-* Egy dedikált operációs rendszer nélküli gazdagépet, amelyen telepítve van a VMware ESXi-hipervizorra compute  
-* Magánfelhők létrehozása helyezheti üzembe a számítási vagy fenntartott egység  
-* Rendelkezésre álló, üzembe helyezése, és foglaljon le egy régióban, ahol a CloudSimple szolgáltatás érhető el.
+* Dedikált operációs rendszer nélküli számítási gazdagép, ahol a VMware ESXi hypervisor telepítve van  
+* Saját felhők létrehozásához vagy lefoglalásához használható számítási egység  
+* Elérhető egy olyan régióban való üzembe helyezéshez vagy fenntartáshoz, ahol a CloudSimple szolgáltatás elérhető
 
-Csomópontok magánfelhő építőelemei.  Magánfelhő létrehozása a ugyanazon termékváltozat három csomóponttal legalább kell.  Bontsa ki a magánfelhő, adjon hozzá további csomópontokat.  Meglévő fürt csomópontokat adhat hozzá. Vagy létrehozhat egy új fürt üzembe helyezésével csomópontok az Azure Portalon, és társítja őket a CloudSimple szolgáltatással.  Üzembe helyezett összes csomópontja már a CloudSimple szolgáltatás alatt jelennek meg.  Magánfelhő CloudSimple Portal kiépített csomópontjából hozzon létre.
+A csomópontok egy privát felhő építőelemei.  Privát felhő létrehozásához legalább három csomópontra van szükség ugyanahhoz az SKU-hoz.  Privát felhő kibontásához adjon hozzá további csomópontokat.  Csomópontokat adhat hozzá egy meglévő fürthöz. Másik lehetőségként létrehozhat egy új fürtöt a Azure Portal csomópontjainak kiépítés, és társíthatja azokat a CloudSimple szolgáltatáshoz.  Az összes kiépített csomópont látható a CloudSimple szolgáltatás alatt.  A CloudSimple-portál kiépített csomópontjaiból hozzon létre egy privát felhőt.
 
-## <a name="provisioned-nodes"></a>Üzembe helyezett csomópontok
+## <a name="provisioned-nodes"></a>Kiépített csomópontok
 
-Üzembe helyezett csomópontok használatalapú-kapacitást biztosítanak. Csomópontok kiépítése segítségével igény szerint a VMware-fürtök gyors skálázásának. Csomópontok hozzáadása, igény szerint, vagy egy üzembe helyezett csomópont használatával csökkentheti a VMware-fürt törlése. üzembe helyezett csomópontok számlázása havi rendszerességgel történik, és azok üzemelnek, az előfizetésen felüli:
+A kiépített csomópontok utólagos elszámolású kapacitást biztosítanak. A kiépítési csomópontok segítségével gyorsan méretezheti igény szerint a VMware-fürtöt. Szükség szerint csomópontokat adhat hozzá, vagy törölhet egy kiépített csomópontot a VMware-fürt méretezéséhez. a kiépített csomópontok havi rendszerességgel kerülnek kiszámlázásra, és a kiépített előfizetésért kell fizetni:
 
-* Ha hitelkártyával fizet az Azure-előfizetése, a kártya azonnal történik.
-* A számlázás a számla ellenében, a költségek jelenik meg a következő számla.
+* Ha hitelkártyával fizet az Azure-előfizetésért, a kártyát azonnal kiszámlázzák.
+* Ha számlán számlázunk, a díjak a következő számlán jelennek meg.
 
-## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>VMware megoldást CloudSimple csomópontok Termékváltozat
+## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>VMware-megoldás CloudSimple-csomópontok SKU-ban
 
-A következő típusú csomópontokat kiépítés vagy foglalást érhetők el.
+A következő típusú csomópontok érhetők el a kiépítés vagy a foglalás számára.
 
-| SKU | CS28 - csomópont | CS36 - csomópont |
+| SKU | CS28 – csomópont | CS36 – csomópont |
 |-----|-------------|-------------|
-| CPU | 2x2.2 GHz-es, a 28 mag (56 HT) | 2x2.3 GHz-es, 36 mag (72 HT) |
+| CPU | 2x 2.2 GHz, 28 mag (56 HT) | 2x 2.3 GHz, 36 mag (72 HT) |
 | RAM | 256 GB | 512 GB |
-| Gyorsítótárlemez |  1.6-os TB-os NVMe | 3.2-es TB-os NVMe |
-| A kapacitás lemez | 5.625 TB nyers | 11,25 TB nyers |
-| Tárolás típusa | Az összes Flash | Az összes Flash |
+| Lemez gyorsítótára |  1,6 – TB NVMe | 3,2 – TB NVMe |
+| Kapacitás lemez | 5,625 TB nyers | 11,25 TB nyers |
+| Tárolási típus | Minden Flash | Minden Flash |
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>Korlátok
 
-Az alábbi csomópont korlátok vonatkoznak a magánfelhőben.
+A következő csomópont-korlátok a privát felhőkre vonatkoznak.
 
 | Resource | Korlát |
 |----------|-------|
-| Magánfelhő létrehozása a csomópontok minimális száma | 3 |
-| A magánfelhő a fürtben található csomópontok maximális száma | 16 |
-| A magánfelhőben csomópontok maximális száma | 64 |
-| Új fürt a csomópontok minimális száma | 3 |
+| A privát felhő létrehozásához szükséges csomópontok minimális száma | 3 |
+| Fürtben lévő csomópontok maximális száma egy privát felhőben | 16 |
+| A privát felhőben lévő csomópontok maximális száma | 64 |
+| Csomópontok minimális száma egy új fürtön | 3 |
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan [csomópontok üzembe helyezése](create-nodes.md)
-* Ismerje meg [privát felhő](cloudsimple-private-cloud.md)
+* További információ a [csomópontok](create-nodes.md) kiépítéséről
+* A [Private Cloud](cloudsimple-private-cloud.md) megismerése

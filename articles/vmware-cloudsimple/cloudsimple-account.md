@@ -1,40 +1,40 @@
 ---
-title: CloudSimple fiókkezelés – Azure
-description: Ismerje meg CloudSimple fiókok kezelése
+title: CloudSimple-fiók kezelése – Azure
+description: Tudnivalók a CloudSimple-fiókok kezeléséről
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: da0b948ff1445c98d3c254e97d0a02a6641699db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9fc39edfad18c756c2816f9eb0b3774d8bf882c
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64577780"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812683"
 ---
-# <a name="account-management-overview"></a>Fiók áttekintése
+# <a name="account-management-overview"></a>Fiókkezelés – áttekintés
 
-A CloudSimple szolgáltatás létrehozásakor a CloudSimple létrehoz egy fiókot.  A fiókhoz társítva az Azure-előfizetés, a szolgáltatás nem található.  Az összes felhasználó **tulajdonosa** és **közreműködői** az előfizetésben található szerepkörök rendelkeznek hozzáféréssel a CloudSimple portálra.  Az Azure-előfizetés Azonosítóját és bérlőazonosítóját a CloudSimple szolgáltatáshoz társított talált a [fiókok lap](https://docs.azure.cloudsimple.com/account/).
+A CloudSimple szolgáltatás létrehozásakor létrehoz egy fiókot a CloudSimple.  A fiók társítva van az Azure-előfizetéséhez, ahol a szolgáltatás található.  Az előfizetéshez tartozó **tulajdonosi** és **közreműködői** szerepkörökkel rendelkező felhasználók hozzáférhetnek a CloudSimple-portálhoz.  A CloudSimple szolgáltatáshoz társított Azure-előfizetés azonosítója és a bérlő azonosítója a [fiókok oldalon](https://docs.azure.cloudsimple.com/account/)található.
 
-## <a name="additional-alert-emails"></a>További értesítő e-mailek
+## <a name="additional-alert-emails"></a>További riasztási e-mailek
 
-E-mailek azonosítók érkező riasztások fogadásához CloudSimple lehet konfigurálni:
+A CloudSimple e-mail-azonosítóit a riasztások fogadására állíthatja be:
 
-* A szolgáltatáshoz kapcsolódó
-* Automatikus feldolgozás
+* A szolgáltatással kapcsolatos
+* Automatikus feldolgozáshoz
 
-## <a name="cloudsimple-operator-access"></a>CloudSimple hozzáférés korlátozása
+## <a name="cloudsimple-operator-access"></a>CloudSimple-kezelő hozzáférése
 
-Szabályozhatja a Portáljához való hozzáférésre CloudSimple szolgáltatás műveleti személyzet számára.  Műveleti személyzet jelentkezzen be a portálra, amikor Ön támogatási jegyet is küldhet.  Szolgáltatási műveletek kijavítja az minden olyan jelentett problémák, és a végrehajtott műveletek érhetők el naplók.
+A CloudSimple-portálhoz való hozzáférést a szolgáltatási műveletek személyzete számára szabályozhatja.  A Service Operations munkatársai bejelentkezhetnek a portálra a támogatási jegy beküldésekor.  A szolgáltatási műveletek kijavítja az összes jelentett problémát, és a naplókban elérhető műveleteket is.
 
 ## <a name="users"></a>Felhasználók
 
-Minden olyan felhasználó, aki rendelkezik **tulajdonosa** és **közreműködői** szerepkör az előfizetésben a CloudSimple Portáljához való hozzáférésre van.  A portál eléréséhez, ha a felhasználó a CloudSimple fiók jön létre.  Hozzáférés a fiókok lapról letilthatja a CloudSimple portálon megadott felhasználók számára.
+Az előfizetéshez tartozó tulajdonosi és **közreműködő** szerepkörrel rendelkező felhasználók hozzáférhetnek a CloudSimple-portálhoz.  Amikor hozzáfér a portálhoz, a rendszer létrehozza a felhasználót a CloudSimple-fiókban.  Letilthatja a hozzáférést a CloudSimple-portálhoz adott felhasználók számára a fiókok lapon.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Számla összegzésének megtekintése](https://docs.azure.cloudsimple.com/account/)
+* [Fiók összegzésének megtekintése](https://docs.azure.cloudsimple.com/account/)
 * [Felhasználói lista megtekintése](https://docs.azure.cloudsimple.com/users/)

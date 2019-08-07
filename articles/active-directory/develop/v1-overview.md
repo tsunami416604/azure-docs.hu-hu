@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory fejlesztők (1.0-s verzió) – áttekintés
-description: Ez a cikk áttekintést nyújt a Microsoft aláírási munkahelyi és iskolai fiókok az Azure Active Directory 1.0-s verziójú végpontján és a platform használatával.
+title: Azure Active Directory fejlesztők számára (v 1.0) – áttekintés
+description: Ez a cikk áttekintést nyújt a Microsoft munkahelyi és iskolai fiókjainak a Azure Active Directory v 1.0 végpont és platform használatával történő aláírásáról.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -9,7 +9,7 @@ ms.assetid: 5c872c89-ef04-4f4c-98de-bc0c7460c7c2
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/24/2018
@@ -17,19 +17,19 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13cc5c7ae428f74f2892e6066dfdcd7efb73efbb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91f406198418571ec0d2c4d488909d3baaa494b1
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545237"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834668"
 ---
-# <a name="azure-active-directory-for-developers-v10-overview"></a>Az Azure Active Directory fejlesztők (1.0-s verzió) – áttekintés
+# <a name="azure-active-directory-for-developers-v10-overview"></a>Azure Active Directory fejlesztők számára (v 1.0) – áttekintés
 
 Az Azure Active Directory (Azure AD) egy olyan felhőalapú identitásszolgáltatás, amely lehetővé teszi a fejlesztők számára az olyan alkalmazások létrehozását, amelyek biztosítják a munkahelyi vagy iskolai Microsoft-fiókkal rendelkező felhasználók biztonságos bejelentkeztetését. Az Azure AD egyaránt támogatja egybérlős, üzletági (LOB) alkalmazások, illetve a több-bérlős alkalmazások fejlesztését. Az alapszintű bejelentkezés mellett az Azure AD lehetővé teszi az alkalmazások számára, hogy Microsoft API-kat (pl. [Microsoft Graph](https://docs.microsoft.com/graph/overview)) és az Azure AD platformon alapuló egyéni API-kat egyaránt hívhassanak. Ebben a dokumentációban megtekintheti, hogyan történik az Azure AD-támogatás hozzáadása az alkalmazásához iparági szabvány szerinti protokollok (pl. OAuth2.0 és OpenID Connect) használatával.
 
 > [!NOTE]
-> Ezen az oldalon tartalmának nagy része foglalkozik az 1.0-s verziójú végpont és a platform, amely támogatja a csak a Microsoft munkahelyi vagy iskolai fiókokat. Ha a bejelentkezéshez használandó végfelhasználói és személyes Microsoft-fiókok, olvassa el a [v2.0-végpontra és a platform](v2-overview.md). A v2.0-végpont alkalmazásokat, jelentkezzen be az összes Microsoft-identitások szeretné egy egységesített fejlesztői felületet kínál.
+> Az oldal tartalmának nagy része a 1.0-s végpontra és platformra koncentrál, amely kizárólag a Microsoft munkahelyi vagy iskolai fiókjait támogatja. Ha felhasználói vagy személyes Microsoft-fiókokat szeretne bejelentkezni, tekintse meg a [v 2.0-végpont és-platform](v2-overview.md)információit. A v 2.0 végpontja olyan alkalmazások egységes fejlesztői felületét kínálja, amelyek az összes Microsoft-identitást szeretnék bejelentkezni.
 
 | | |
 | --- | --- |
@@ -39,11 +39,11 @@ Az Azure Active Directory (Azure AD) egy olyan felhőalapú identitásszolgálta
 
 ## <a name="get-started"></a>Bevezetés
 
-Az 1.0-s verziójú útmutatóink és oktatóanyagaink segítségével végigvezetik egy alkalmazást a kívánt platformon, az Azure AD Authentication Library (ADAL) SDK használatával. Tekintse meg a **1.0-s verziójú rövid útmutatók** és **1.0-s verziójú oktatóanyagok** a [Microsoft identitásplatformja (az Azure vonatkozó Active Directory fejlesztők számára)](index.yml) a kezdéshez.
+A 1.0-s verzióban elérhető gyors útmutatók és oktatóanyagok végigvezetik az alkalmazások az előnyben részesített platformon való létrehozásán az Azure AD Authentication Library (ADAL) SDK használatával. Első lépésként tekintse meg a [Microsoft Identity platform (Azure Active Directory for Developers)](index.yml) **1.0** -s és 1.0-s **verziójának oktatóanyagait** .
 
 ## <a name="how-to-guides"></a>Útmutatók
 
-Tekintse meg a **útmutató végigvezeti a v1.0** részletes adatai, valamint a legáltalánosabb feladatokat az Azure AD-forgatókönyvek esetében.
+Az Azure AD leggyakoribb feladatainak részletes információit és bemutatóit lásd a **v 1.0 útmutatók** című részben.
 
 ## <a name="reference-topics"></a>Referencia-témakörök
 

@@ -10,7 +10,7 @@ ms.assetid: a242a5ff-7300-40c2-ba83-fb6035707433
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/15/2019
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2e15bb8a069289a695643b3d7dc2e4b81d9b91d
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4b836810a859805c0f8d8cedc14465a505e06df7
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277860"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835320"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform Code Samples (v 2.0 végpont)
 
@@ -47,7 +47,7 @@ Emellett a GitHubon is hozzájárulhat a mintákhoz. További információ: [Mic
 
 Ezek a minták azt mutatják be, hogyan lehet egy egyoldalas alkalmazást biztonságossá tennie a Microsoft Identity platformmal. Ezek a minták a MSAL. js egyik ízeit használják.
 
-| Platform | Leírás | Hivatkozás |
+| Platform | Leírás | Összekapcsolás |
 | -------- | --------------------- | -------- |
 | ![Ez a képen a JavaScript-](media/sample-v2-code/logo_js.png) embléma [JavaScript (msal. js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Hívások Microsoft Graph |[javascript-graphapi-web-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
 | ![Ez a képen a JavaScript-](media/sample-v2-code/logo_js.png) embléma [JavaScript (msal. js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | B2C-hívások |[b2c-javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
@@ -100,7 +100,7 @@ Az alábbi példa egy, a webböngészőt nem használó eszközön futó nyilvá
 
 Az alábbi példák bemutatják, hogyan lehet védelemmel ellátni egy webes API-t a Microsoft Identity platform-végponttal, és hogyan hívhat meg egy alsóbb rétegbeli API-t a webes API-ból.
 
-| Platform | Sample |
+| Platform | Minta |
 | -------- | ------------------- |
 | ![Ez a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.2 | ASP.NET Core web API (szolgáltatás) a [DotNet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
 | ![Ez a képen a ASP.NET embléma látható](media/sample-v2-code/logo_NET.png)</p>ASP.NET, MVC | [MS-Identity-ASPNET-webapi-onbehalfof](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof) webes API (szolgáltatás) |

@@ -128,8 +128,6 @@
           href: directory-assign-admin-roles.md
         - name: Szerepkörök megtekintése és hozzárendelése
           href: directory-manage-roles-portal.md
-        - name: Egyéni szerepkörök hozzárendelése a Graph API-ban
-          href: roles-assign-powershell.md
         - name: Egyéni szerepkörök – előzetes verzió
           items:
             - name: Egyéni szerepkörök – előzetes verzió
@@ -142,6 +140,8 @@
               href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
             - name: Egyéni szerepkörök hozzárendelése a Graph API-ban
               href: roles-assign-graph.md
+            - name: Egyéni szerepkörök hozzárendelése a PowerShellben
+              href: roles-assign-powershell.md
             - name: Előzetes verziós egyéni szerepkörök engedélyei
               href: roles-custom-available-permissions.md
             - name: Alkalmazás rendszergazdai engedélyeinek delegálása

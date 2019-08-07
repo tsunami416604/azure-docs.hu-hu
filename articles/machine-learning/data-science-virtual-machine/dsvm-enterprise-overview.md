@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: vijetaj
-ms.openlocfilehash: 81aac356f49f7bf8dc57f77054d10aa3e09d473f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 40b8f101d968514ac599b43a79b7e62b7fd837a4
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565271"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779468"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Adatok tudományos virtuálisgép-alapú csapat elemzési és AI-környezet 
 A [adatelemző virtuális gép](overview.md) (DSVM) az Azure platformon, a mesterséges intelligencia (AI) és a data analytics előre összeállított szoftver gazdag környezetet biztosít. 
@@ -43,12 +43,12 @@ A fő építőelemeit csapat analytics vállalati környezetben a következők:
 
 A cikksorozat nyújt útmutatást és mutatók minden az előző elemek. A szempontok és igényeinek megfelelően a DSVM üzembe nagyvállalati konfigurációk nem fedi le. A következő egyéb Azure dokumentációja közben DSVM példányok megvalósítása a vállalati használható: 
 
-* [Hálózati biztonság](https://docs.microsoft.com/azure/security/azure-network-security)
+* [Hálózati biztonság] (https://docs.microsoft.com/azure/security/fundamentals/network-security
 * [Figyelés](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) és [kezelése](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
-* [Naplózás](https://docs.microsoft.com/azure/security/azure-log-audit)
+* [Naplózás](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
 * [Szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [A házirend-beállítással és végrehajtás](../../governance/policy/overview.md)
-* [Kártevőirtó](https://docs.microsoft.com/azure/security/azure-security-antimalware)
+* [Kártevőirtó](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 * [Titkosítás](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
 * [Adatfelderítés és irányítás](https://docs.microsoft.com/azure/data-catalog/)
 

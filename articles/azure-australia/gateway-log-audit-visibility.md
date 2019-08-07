@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: 5971fe53f52725a88c484edcc9a5a672fceceb07
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 153b9d503dfece404455fbb7e8cb51c51686ec57
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571366"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824293"
 ---
 # <a name="gateway-logging-auditing-and-visibility-in-azure-australia"></a>Átjáró naplózása, naplózása és láthatósága az Azure Ausztráliában
 
@@ -149,7 +149,7 @@ Az VPN Gateway egy lehetséges belépési pont az Azure-környezetbe irányuló 
 |További források|Összekapcsolás|
 |---|---|
 |A VPN Gateway dokumentációja|[https://docs.microsoft.com/azure/vpn-gateway/](https://docs.microsoft.com/azure/vpn-gateway)|
-|Ausztráliai kormányzati VPN Gateway útmutató|[https://aka.ms/AzGovAUSecurity](https://aka.ms/AzGovAUSecurity)|
+|Ausztráliai kormányzati VPN Gateway útmutató|[Azure VPN Gateway konfiguráció](vpn-gateway.md)|
 |
 
 ### <a name="azure-firewall"></a>Azure Firewall
@@ -225,7 +225,7 @@ A NSG az Azure-beli virtuális hálózatok felé és kívülre irányítja a for
 
 ### <a name="azure-activity-log"></a>Azure-tevékenységnapló
 
-A Azure Monitor részét képező Azure-tevékenységi napló egy előfizetési napló, amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. A műveletnapló segíthet meghatározni a "mit, ki és mikor" az előfizetésben lévő erőforrásokra vonatkozó írási műveletekhez (PUT, POST ****** , DELETE). A tevékenység naplója létfontosságú az Azure-környezetben végrehajtott konfigurációs változások nyomon követéséhez. Az Azure-tevékenység naplói Log Analytics megoldásokban automatikusan elérhetők, és az Event Hubs vagy az Azure Storage-ba is küldhetők feldolgozásra vagy megőrzésre.
+A Azure Monitor részét képező Azure-tevékenységi napló egy előfizetési napló, amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. A műveletnapló segíthet meghatározni a "mit, ki és mikor" az előfizetésben lévő erőforrásokra vonatkozó írási műveletekhez (PUT, POST , DELETE). A tevékenység naplója létfontosságú az Azure-környezetben végrehajtott konfigurációs változások nyomon követéséhez. Az Azure-tevékenység naplói Log Analytics megoldásokban automatikusan elérhetők, és az Event Hubs vagy az Azure Storage-ba is küldhetők feldolgozásra vagy megőrzésre.
 
 |További források|Összekapcsolás|
 |---|---|

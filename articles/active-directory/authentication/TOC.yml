@@ -129,14 +129,14 @@
               href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Azure AD intelligens zárolás
       href: howto-password-smart-lockout.md
-    - name: Vállalati Windows Hello
-      href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
     - name: Jelszó nélküli
       items:
-        - name: Jelszó nélküli hitelesítés engedélyezése
-          href: howto-authentication-passwordless-enable.md
+        - name: Jelszó nélküli biztonsági kulcsok
+          href: howto-authentication-passwordless-security-key.md
         - name: Jelszó nélküli telefonos bejelentkezés
-          href: howto-authentication-phone-sign-in.md
+          href: howto-authentication-passwordless-phone.md
+        - name: Vállalati Windows Hello
+          href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
     - name: Tanúsítványalapú hitelesítés
       items:
         - name: Bevezetés a tanúsítványalapú hitelesítésbe

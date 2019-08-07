@@ -1,6 +1,6 @@
 ---
-title: Az Azure-on Előzetesben Sentinel-fusion engedélyezése |} A Microsoft Docs
-description: Ismerje meg, hogyan engedélyezheti az Azure-Sentinel fusion.
+title: A Fusion engedélyezése az Azure Sentinel előzetes verziójában | Microsoft Docs
+description: Ismerje meg, hogyan engedélyezheti a fúziót az Azure Sentinelben.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1e17afb2f06265975442c127baecc8cab75d63f7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: f90bb86632886d8a2ca6c6e8c60d3b79f5d0b9e9
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611262"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780443"
 ---
 # <a name="enable-fusion"></a>Egyesítés engedélyezése
 
@@ -29,37 +29,37 @@ ms.locfileid: "67611262"
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az Azure-Sentinel Machine Learning szolgáltatás beépített közvetlenül az elejétől. Alkalmazkodva alakítottuk átgondolt a rendszer a célja, hogy adatbiztonsági elemzők, adatelemzők biztonsági és mérnökök hatékony gépi Tanulási innovációkat. Egy ilyen innováció Azure Sentinel-Fusion beépített, különösen a riasztási fáradás csökkentése érdekében.
+Az Azure Sentinel Machine Learning az elejétől kezdve beépített. A rendszerek elsajátítása és a biztonsági elemzők, a biztonsági adatszakértők és a mérnökök számára is hatékony volt. Az egyik ilyen innováció az Azure Sentinel Fusion, amely különösen a riasztások fáradtságának csökkentésére készült.
 
-Fusion működő graph gépi tanulási algoritmusok használatával korrelációját, ha alacsonyabb pontosságú rendellenes tevékenységek a különböző termékek, például az Azure AD Identity Protection millió, és a Microsoft Cloud App Security, úgy, hogy kezelhető számos között biztonsági esetek érdekes.
+A Fusion Graph-alapú gépi tanulási algoritmusokat használ a különböző termékekből, például Azure AD Identity Protectionokból és Microsoft Cloud App Securityokból származó alacsonyabb hűségű rendellenes tevékenységek millióinak összekapcsolásához, hogy azok kezelhető számú érdekes biztonsági incidensek.
 
 ## <a name="enable-fusion"></a>Egyesítés engedélyezése
 
-1. Az Azure Portalon válassza ki a ikonra kattintva nyissa meg a Cloud Shellben.
+1. A Azure Portal Cloud Shell megnyitásához válassza a ikont.
   ![Cloud Shell](./media/connect-fusion/cloud-shell.png)
 
-2.  Az a **üdvözli a Cloud Shell** , amely megnyitja az alábbi windows PowerShell válassza ki.
+2.  Az itt megjelenő **üdvözöljük Cloud Shell** Windows rendszerben válassza a PowerShell lehetőséget.
 
-3.  Válassza ki az előfizetést, amelyen üzembe helyezett Azure Sentinel, és **tároló létrehozása**.
+3.  Válassza ki azt az előfizetést, amelyen üzembe helyezte az Azure Sentinelt, és **hozzon létre**egy tárolót.
 
-4. Miután végzett a hitelesítéssel és az Azure-meghajtó épül, a parancssorban futtassa a következő parancsokat:
+4. Miután elvégezte a hitelesítést, és létrehozta az Azure-meghajtót, futtassa a következő parancsokat a parancssorban:
 
             az resource update --ids /subscriptions/{Subscription Guid}/resourceGroups/{Log analytics resource Group Name}/providers/Microsoft.OperationalInsights/workspaces/{Log analytics workspace Name}/providers/Microsoft.SecurityInsights/settings/Fusion --api-version 2019-01-01-preview --set properties.IsEnabled=true --subscription "{Subscription Guid}"
 
-## <a name="disable-fusion"></a>Fusion Tables letiltása
+## <a name="disable-fusion"></a>A Fusion letiltása
 
-Kövesse a fent ismertetett eljárást, és futtassa a következő parancsot:
+Kövesse a fenti eljárást, és futtassa a következő parancsot:
 
             az resource update --ids /subscriptions/{Subscription Guid}/resourceGroups/{Log analytics resource Group Name}/providers/Microsoft.OperationalInsights/workspaces/{Log analytics workspace Name}/providers/Microsoft.SecurityInsights/settings/Fusion --api-version 2019-01-01-preview --set properties.IsEnabled=false --subscription "{Subscription Guid}"
 
-## <a name="view-the-status-of-fusion"></a>Fusion Tables állapotának megtekintése
+## <a name="view-the-status-of-fusion"></a>A Fusion állapotának megtekintése
 
             az resource show --ids /subscriptions/{Subscription Guid}/resourceGroups/{Log analytics resource Group Name}/providers/Microsoft.OperationalInsights/workspaces/{Log analytics workspace Name}/providers/Microsoft.SecurityInsights/settings/Fusion --api-version 2019-01-01-preview --subscription "{Subscription Guid}"
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a dokumentumban megtudhatta, hogyan engedélyezése az Azure-Sentinel Fusion. Azure-Sentinel kapcsolatos további információkért tekintse meg a következő cikkeket:
-- Ismerje meg, hogyan [betekintést nyerhet az adatok és a potenciális fenyegetések](quickstart-get-visibility.md).
-- Első lépések [Azure Sentinel-fenyegetések észlelése](tutorial-detect-threats.md).
+Ebből a dokumentumból megtanulta, hogyan engedélyezheti a fúziót az Azure Sentinelben. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
 

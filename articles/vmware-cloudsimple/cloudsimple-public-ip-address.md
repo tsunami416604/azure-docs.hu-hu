@@ -1,36 +1,36 @@
 ---
-title: VMware megoldást CloudSimple – Azure nyilvános IP-cím szerint
-description: További információ a nyilvános IP-címek és a VMware-megoldások CloudSimple előnyeiket
+title: VMware-megoldás CloudSimple szerint – Azure nyilvános IP-cím
+description: Ismerje meg a nyilvános IP-címeket, valamint a VMware-megoldás előnyeit a CloudSimple
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f57b7397f4a2d288cd2b8b55cf23b2d635aa5f8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29d2bdb75a7f4409e6b3ffee2608cfe7adde6b1f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209566"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812522"
 ---
 # <a name="cloudsimple-public-ip-address-overview"></a>CloudSimple nyilvános IP-cím áttekintése
 
-Nyilvános IP-cím lehetővé teszi, hogy való kommunikációhoz az internetes erőforrások bejövő, a magánfelhő-alapú erőforrásokhoz egy magánhálózati IP-címen. Magánhálózati IP-címe, vagy egy virtuális gépet, vagy egy szoftveres terheléselosztót. A magánhálózati IP-címet a magánfelhő vcenter van. A nyilvános IP-cím lehetővé teszi, hogy az interneten a magánfelhőben futó szolgáltatások.
+A nyilvános IP-cím lehetővé teszi, hogy az internetes erőforrások a privát IP-címeken keresztül kommunikáljanak a belső felhőalapú erőforrásokkal. A magánhálózati IP-cím vagy egy virtuális gép, vagy egy szoftveres terheléselosztó. A magánhálózati IP-cím a saját felhőalapú vCenter van. A nyilvános IP-cím lehetővé teszi, hogy elérhetővé tegye a saját felhőben futó szolgáltatásokat az interneten.
 
-Nyilvános IP-cím addig, amíg Ön hozzárendeltem dedikált magánhálózati IP-címet. Nyilvános IP-cím csak egy magánhálózati IP-cím lehet hozzárendelni.
+A nyilvános IP-cím a magánhálózati IP-címhez van hozzárendelve, amíg meg nem rendeli a hozzárendelést. Egy nyilvános IP-cím csak egy magánhálózati IP-címhez rendelhető hozzá.
 
-Mindig társított nyilvános IP-cím erőforrás nyilvános IP-címet használja az internet-hozzáférés. Alapértelmezés szerint csak kimenő internet-hozzáférés engedélyezett nyilvános IP-címet.  A nyilvános IP-cím a bejövő forgalmat a rendszer megtagadja.  Bejövő forgalom engedélyezéséhez hozzon létre egy tűzfalszabályt az adott portot a nyilvános IP-címet.
+Egy nyilvános IP-címhez társított erőforrás mindig a nyilvános IP-címet használja az internet-hozzáféréshez. Alapértelmezés szerint csak a kimenő internet-hozzáférés engedélyezett a nyilvános IP-címen.  A nyilvános IP-cím bejövő forgalma megtagadva.  A bejövő forgalom engedélyezéséhez hozzon létre egy tűzfalszabályot a nyilvános IP-címhez az adott porton.
 
 ## <a name="benefits"></a>Előnyök
 
-Nyilvános IP-cím segítségével bejövő kommunikációt biztosít:
+Nyilvános IP-cím használata a bejövő kommunikációhoz:
 
-* Szolgáltatás (DDoS) támadások megelőzésére elosztott szolgáltatásmegtagadásos. Ez a védelem automatikusan engedélyezve van a nyilvános IP-címet.
-* – A forgalom figyelési és valós idejű csökkenti a hálózati szintű gyakori támadásoktól. Ezek a védelem a Microsoft online szolgáltatások által használt azonos védelem.
-* A teljes méretezési, az Azure globális hálózatán. A hálózat használható, és csökkentheti a támadási forgalom régiók között elosztva.  
+* Elosztott szolgáltatásmegtagadási (DDoS) támadások megelőzése. Ez a védelem automatikusan engedélyezve van a nyilvános IP-címhez.
+* A forgalom figyelése és a gyakori hálózati szintű támadások valós idejű enyhítése. Ezek a védelem a Microsoft online szolgáltatások által használt védelem.
+* Az Azure globális hálózatának teljes skálája. A hálózat használható a különböző régiók közötti támadási forgalom elosztására és enyhítésére.  
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan [foglaljon le egy nyilvános IP-cím](https://docs.azure.cloudsimple.com/public-ips/)
+* Útmutató [nyilvános IP-cím](https://docs.azure.cloudsimple.com/public-ips/) lefoglalásához

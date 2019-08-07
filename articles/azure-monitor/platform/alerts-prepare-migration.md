@@ -1,90 +1,90 @@
 ---
-title: A logic apps és a runbookok frissítésével az Azure Monitor klasszikus riasztások migrálásának előkészítése
-description: Ismerje meg, hogyan lehet módosítani a webhookok, a logic apps és a runbookok önkéntes migrálást előkészítése.
+title: Felkészülés Azure Monitor klasszikus riasztások áttelepítésére a Logic apps és a runbookok frissítésével
+description: Ismerje meg, hogyan módosítható a webhookok, a Logic apps és a runbookok az önkéntes áttelepítés előkészítéséhez.
 author: snehithm
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: bdbd45c2b10dec8f1c0a85110747a470e818dbf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5235db5cab39be6e36bdf145d3edc7c73fe9da54
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66015614"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827386"
 ---
-# <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>A logic apps és a runbookok előkészítése a klasszikus riasztási szabályok az áttelepítéshez
+# <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>A logikai alkalmazások és runbookok előkészítése a klasszikus riasztási szabályok áttelepítéséhez
 
-Mint [azt korábban bejelentettük](monitoring-classic-retirement.md), klasszikus riasztások az Azure monitorban vannak vezetve az szeptember 2019 (eredetileg július 2019 volt). A migrálási eszköz érhető el az ügyfelek számára, akik klasszikus riasztási szabályok és ki szeretne aktiválása áttelepítési magukat az Azure Portalon.
+Amint azt [korábban bejelentettük](monitoring-classic-retirement.md), a Azure monitor klasszikus riasztásai 2019 szeptemberében megszűnnek (eredetileg 2019. július). Az áttelepítési eszköz a Azure Portalban olyan ügyfelek számára érhető el, akik klasszikus riasztási szabályokat használnak, és magukat a migrációt szeretnék elindítani.
 
 > [!NOTE]
-> Bevezetés az áttelepítési eszköz késéssel klasszikus riasztások az áttelepítéshez a kivezetési dátum most már elérhető 2019. augusztus 31-edik eredetileg közzétett dátumától számítva 2019. június 30.
+> Az áttelepítési eszköz késése miatt a klasszikus riasztások áttelepítésének lejárati dátuma 2019 augusztus 31-ig, az eredetileg bejelentett, 2019. június 30-ig.
 
-Ha a klasszikus riasztási szabályok önkéntesen át Új riasztási szabályok mellett dönt, vegye figyelembe, hogy nincsenek-e a két rendszer közötti különbségeket. Ez a cikk ismerteti azokat a különbségeket, és hogyan készítheti elő a módosítás.
+Ha úgy dönt, hogy önként áttelepíti a klasszikus riasztási szabályokat az új riasztási szabályokra, vegye figyelembe, hogy a két rendszer között van néhány különbség. Ez a cikk ismerteti ezeket a különbségeket, és azt, hogy miként lehet előkészíteni a változást.
 
-## <a name="api-changes"></a>API-módosítás
+## <a name="api-changes"></a>API-változások
 
-API-k létrehozása és kezelése a klasszikus riasztási szabályok (`microsoft.insights/alertrules`) különböznek az API-k létrehozásához és kezeléséhez új metrikákhoz kapcsolódó riasztások (`microsoft.insights/metricalerts`). Ha programozott módon létrehozása, és jelenleg a klasszikus riasztási szabályok kezelése, frissítése az új API-khoz az üzembehelyezési szkriptek.
+A klasszikus riasztási szabályokat`microsoft.insights/alertrules`létrehozó és kezelő API-k eltérnek az új metrikai riasztásokat (`microsoft.insights/metricalerts`) létrehozó és kezelő API-kkal. Ha még ma hozza létre és felügyeli a klasszikus riasztási szabályokat, frissítse az üzembe helyezési parancsfájlokat az új API-kkal való együttműködéshez.
 
-Az alábbi táblázat eszköztáblára mutató hivatkozás a klasszikus és az új riasztások parancsvezérelt felületek:
+A következő táblázat a klasszikus és az új riasztások programozott interfészeit ismerteti:
 
-|         |Klasszikus riasztások  |Új metrikákhoz kapcsolódó riasztások |
+|         |Klasszikus riasztások  |Új metrikai riasztások |
 |---------|---------|---------|
 |REST API     | [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
-|Azure CLI     | [az a figyelő riasztást](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az a figyelő metrika-riasztás](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|Azure CLI     | [az monitor Alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor Metrics Alert](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
 |PowerShell      | [Referencia](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Referencia](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
-| Azure Resource Manager-sablon | [Klasszikus riasztások](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Az új metrikákhoz kapcsolódó riasztások](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
+| Azure Resource Manager-sablon | [Klasszikus riasztások esetén](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Új metrikai riasztások esetén](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
 
-## <a name="notification-payload-changes"></a>Értesítési hasznos módosítások
+## <a name="notification-payload-changes"></a>Értesítési tartalom változásai
 
-Az értesítési adattartalom formátuma kissé eltér, közötti [klasszikus riasztási szabályok](alerts-webhooks.md) és [új metrikákhoz kapcsolódó riasztások](alerts-metric-near-real-time.md#payload-schema). Ha bármilyen webhook, a logikai alkalmazásban vagy a klasszikus riasztási szabályok által elindított runbook-műveletek, frissítenie kell az új metrikákhoz kapcsolódó riasztások adattartalom formátuma fogadására notification végpontokhoz.
+Az értesítési hasznos adatok formátuma némileg eltér a [klasszikus riasztási szabályok](alerts-webhooks.md) és az [új metrikai riasztások](alerts-metric-near-real-time.md#payload-schema)között. Ha a klasszikus riasztási szabályok által aktivált webhookok, logikai alkalmazások vagy runbook műveletek vannak, akkor frissítenie kell ezeket az értesítési végpontokat az új metrikai riasztások adattartalom-formátumának elfogadásához.
 
-Használja az alábbi táblázat a webhook hasznos mezők, a klasszikus formátumból az új formátumra leképezése:
+A következő táblázat segítségével leképezheti a webhook hasznos adatait tartalmazó mezőket a klasszikus formátumból az új formátumba:
 
-|  |Klasszikus riasztások  |Új metrikákhoz kapcsolódó riasztások |
+|  |Klasszikus riasztások  |Új metrikai riasztások |
 |---------|---------|---------|
-|A riasztás aktív vagy megoldott?    | **status**       | **data.status** |
-|A riasztásra vonatkozó környezeti információk     | **context**        | **data.context**        |
-|Időbélyeg, amelyen a riasztás aktív vagy megoldott     | **context.timestamp**       | **data.context.timestamp**        |
+|Aktiválták vagy megoldották a riasztást?    | **status**       | **data.status** |
+|A riasztás kontextusával kapcsolatos információk     | **összefüggésben**        | **data.context**        |
+|A riasztás aktiválásának vagy feloldásának időbélyegzője     | **Context. timestamp**       | **data.context.timestamp**        |
 | Riasztási szabály azonosítója | **context.id** | **data.context.id** |
 | Riasztási szabály neve | **context.name** | **data.context.name** |
 | A riasztási szabály leírása | **context.description** | **data.context.description** |
-| Riasztási szabály a feltétel | **context.condition** | **data.context.condition** |
+| Riasztási szabály feltétele | **context.condition** | **data.context.condition** |
 | Metrika neve | **context.condition.metricName** | **data.context.condition.allOf[0].metricName** |
-| Idő összesítése (hogyan a metrika összesített értéket jelenít meg az értékelés ablakban)| **data.context.condition.timeAggregation** | **data.context.condition.timeAggregation** |
-| Kiértékelési időszak | **context.condition.windowSize** | **data.context.condition.windowSize** |
-| Operátor (hogyan az összesített metrika értékét a rendszer összehasonlítja a küszöbértéket) | **context.condition.operator** | **data.context.condition.operator** |
-| Küszöbérték | **context.condition.threshold** | **data.context.condition.allOf[0].threshold** |
-| Metrikaérték | **context.condition.metricValue** | **data.context.condition.allOf[0].metricValue** |
+| Idő összesítése (a mérőszám összesítésének módja a próbaverziós ablakban)| **Context. Condition. timeAggregation** | **Context. Condition. timeAggregation** |
+| Próbaidőszak | **context.condition.windowSize** | **data.context.condition.windowSize** |
+| Operátor (az összesített metrikai érték összehasonlítása a küszöbértékkel) | **context.condition.operator** | **data.context.condition.operator** |
+| Küszöbérték | **Context. Condition. küszöbérték** | **az. Context. Condition. allOf [0]. küszöbérték** |
+| Metrika értéke | **context.condition.metricValue** | **data.context.condition.allOf[0].metricValue** |
 | Előfizetés azonosítója | **context.subscriptionId** | **data.context.subscriptionId** |
-| Az erőforráscsoport az érintett erőforrás | **context.resourceGroup** | **data.context.resourceGroup** |
+| Az érintett erőforrás erőforráscsoport | **context.resourceGroup** | **data.context.resourceGroup** |
 | Az érintett erőforrás neve | **context.resourceName** | **data.context.resourceName** |
 | Az érintett erőforrás típusa | **context.resourceType** | **data.context.resourceType** |
-| Erőforrás-azonosító az érintett erőforrás | **context.resourceId** | **data.context.resourceId** |
-| Portál erőforrás összegzés lapján mutató közvetlen hivatkozás | **context.portalLink** | **data.context.portalLink** |
-| A webhook vagy a logikai alkalmazás átadandó egyéni adattartalom mezők | **Tulajdonságok** | **data.properties** |
+| Az érintett erőforrás erőforrás-azonosítója | **context.resourceId** | **data.context.resourceId** |
+| Közvetlen hivatkozás a portál erőforrás-összefoglaló lapjára | **context.portalLink** | **data.context.portalLink** |
+| A webhooknak vagy logikai alkalmazásnak átadandó egyéni adattartalom mezői | **Tulajdonságok** | **data.properties** |
 
-A hasznos adat található hasonlóak, ahogy láthatjuk. A következő szakaszban a következőket kínálja:
+A hasznos adatok hasonlóak, mint láthatja. A következő szakasz a következőket kínálja:
 
-- A logic apps, az új formátum használata módosításával kapcsolatos adatokat.
-- Egy runbook például, hogy az új riasztások az értesítési tartalom elemzi.
+- A Logic apps új formátummal való működésének módosítására vonatkozó részletek.
+- Egy runbook példa, amely elemzi az értesítési adattartalmat az új riasztásokhoz.
 
-## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>Módosítsa a metrikaalapú riasztási értesítések fogadása a Logic Apps-alkalmazás
+## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>Logikai alkalmazás módosítása metrikus riasztási értesítés fogadásához
 
-A klasszikus riasztások használata a logic apps, módosítania kell a logikaialkalmazás kód az új metrikákhoz kapcsolódó riasztások tartalom elemzése. Kövesse az alábbi lépéseket:
+Ha klasszikus riasztásokkal rendelkező logikai alkalmazásokat használ, módosítania kell a logikai alkalmazás kódját, hogy elemezze az új metrikai riasztások hasznos adatait. Kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy új logikai alkalmazást.
 
-1. Használja az "Azure Monitor – metrikák riasztási kezelő" sablont. Ez a sablon egy **HTTP-kérelem** eseményindító a meghatározott megfelelő sémáját.
+1. Használja a "Azure Monitor-metrikák riasztási kezelője" sablont. Ennek a sablonnak van egy **http** -kérelmi triggere, amely a megfelelő sémát határozza meg.
 
-    ![logikai alkalmazássablon](media/alerts-migration/logic-app-template.png "Metrikaalapú riasztási sablon")
+    ![logikai alkalmazás – sablon](media/alerts-migration/logic-app-template.png "Metrika riasztási sablonja")
 
-1. A feldolgozó logika üzemeltetésére művelet hozzáadása lehetőséget.
+1. Adjon hozzá egy műveletet a feldolgozási logika üzemeltetéséhez.
 
-## <a name="use-an-automation-runbook-that-receives-a-metric-alert-notification"></a>Automation-runbook, amely megkapja a metrikaalapú riasztási értesítések használata
+## <a name="use-an-automation-runbook-that-receives-a-metric-alert-notification"></a>Metrikus riasztási értesítést fogadó Automation-runbook használata
 
-Az alábbi példa a PowerShell-kódot, ha a runbookban tartalmaz. Ez a kód a is észleltünk adattartalmakat. klasszikus metrikariasztási szabályokra és a metrikaalapú riasztási szabályok új értelmezni tudja.
+Az alábbi példa PowerShell-kódot biztosít a runbook való használathoz. Ez a kód elemezheti a klasszikus metrikus riasztási szabályokhoz és az új metrikai riasztási szabályokhoz tartozó hasznos adatokat is.
 
 ```PowerShell
 ## Example PowerShell code to use in a runbook to handle parsing of both classic and new metric alerts.
@@ -151,19 +151,19 @@ else {
 
 ```
 
-Egy runbookot, amely a virtuális gép leáll, amikor a riasztás aktiválódik egy teljes példa: a [Azure Automation dokumentációja](https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook).
+A virtuális gépet egy riasztás indításakor leállító runbook teljes példáját a [Azure Automation dokumentációjában](https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook)találja.
 
-## <a name="partner-integration-via-webhooks"></a>Partnerintegráció webhookokkal
+## <a name="partner-integration-via-webhooks"></a>Partner-integráció webhookok használatával
 
-A legtöbb [, amelyek integrálhatók a klasszikus riasztások partnereink](https://docs.microsoft.com/azure/azure-monitor/platform/partners) már támogatja az újabb metrikákhoz kapcsolódó riasztások azok Integrációk keresztül. Már fog tudni új metrikákhoz kapcsolódó riasztások ismert integrációi a következők:
+A [klasszikus riasztásokkal integrált partnereink](https://docs.microsoft.com/azure/azure-monitor/platform/partners) többsége már támogatja az újabb metrikai riasztásokat az integrációjuk során. Az új metrikai riasztásokkal már működő ismert integrációk a következők:
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)
 - [Signl4](https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/)
 
-Használata egy partnerekkel való integráció, amely nem szerepel itt, erősítse meg integration-szolgáltatóval, hogy működik-e az integráció az új metrikákhoz kapcsolódó riasztások.
+Ha olyan partner-integrációt használ, amely itt nem szerepel, erősítse meg az integrációs szolgáltatót, hogy az integráció működik az új metrikai riasztásokkal.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az áttelepítési eszköz használata](alerts-using-migration-tool.md)
-- [Az áttelepítési eszköz működésének megismerése](alerts-understand-migration.md)
+- [A migrálási eszköz használata](alerts-using-migration-tool.md)
+- [A migrálási eszköz működésének ismertetése](alerts-understand-migration.md)

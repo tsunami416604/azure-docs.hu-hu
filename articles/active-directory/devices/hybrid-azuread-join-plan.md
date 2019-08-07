@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee3309bdd3629057d174866dde58ffd95e9e5ca8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 49f8d0e418f43648665b95f5bf1f672e9f9dae28
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562136"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779459"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>kézikönyv: A hibrid Azure Active Directory-csatlakozás megvalósításának megtervezése
 
@@ -111,12 +111,18 @@ Ezekhez a forgatókönyvekhez nem szükséges összevonási kiszolgálót konfig
 
 ### <a name="federated-environment"></a>Összevont környezet
 
-Az összevont környezetnek rendelkeznie kell egy olyan identitás-szolgáltatóval, amely a következő követelményeket támogatja:
+Az összevont környezetnek rendelkeznie kell egy olyan identitás-szolgáltatóval, amely a következő követelményeket támogatja. Ha Active Directory összevonási szolgáltatások (AD FS) (AD FS) használatával összevont környezettel rendelkezik, az alábbi követelmények már támogatottak.
 
-- **WS-Trust protokoll:** Ez a protokoll szükséges a Windows jelenlegi hibrid Azure AD-hez csatlakoztatott eszközök Azure AD-vel való hitelesítéséhez.
 - **WIAORMULTIAUTHN jogcím:** Ez a jogcím szükséges a hibrid Azure AD-csatlakozáshoz a Windows rendszerű eszközökön.
+- **WS-Trust protokoll:** Ez a protokoll szükséges a Windows jelenlegi hibrid Azure AD-hez csatlakoztatott eszközök Azure AD-vel való hitelesítéséhez. AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat:`/adfs/services/trust/2005/windowstransport`  
+`/adfs/services/trust/13/windowstransport`  
+  `/adfs/services/trust/2005/usernamemixed` 
+  `/adfs/services/trust/13/usernamemixed`
+  `/adfs/services/trust/2005/certificatemixed` 
+  `/adfs/services/trust/13/certificatemixed` 
 
-Ha Active Directory összevonási szolgáltatások (AD FS) (AD FS) használatával összevont környezettel rendelkezik, a fenti követelmények már támogatottak.
+> [!WARNING] 
+> Az **ADFS/Services/Trust/2005/windowstransport** , vagy az **ADFS/Services/Trust/13/windowstransport** beállítást csak intranetes végpontként kell engedélyezni, és a webalkalmazás-proxyn keresztül nem szabad az extranet felé irányuló végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust WIndows-végpontok letiltásáról, tekintse meg a következőt: [ws-Trust Windows-végpontok letiltása a proxyn](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Láthatja, hogy mely végpontok vannak engedélyezve a AD FS felügyeleti konzolon a **szolgáltatási** > **végpontok**alatt.
 
 > [!NOTE]
 > Az Azure AD nem támogatja a felügyelt tartományokban található intelligens kártyákat vagy tanúsítványokat.
@@ -130,7 +136,7 @@ Az identitás-infrastruktúrának megfelelő forgatókönyv alapján lásd:
 
 ## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>A hibrid Azure AD-csatlakozás helyszíni AD UPN-támogatásának áttekintése
 
-Időnként előfordulhat, hogy a helyszíni AD UPN-felhasználónevek nem azonosak az Azure AD UPN-vel. Ilyen esetekben a Windows 10 Hybrid Azure AD JOIN korlátozott támogatást biztosít a helyszíni AD UPN-hez a [hitelesítési módszer](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), a tartomány típusa és a Windows 10 verziója alapján. A környezetben két típusú helyszíni AD UPN létezik:
+Időnként előfordulhat, hogy a helyszíni AD UPN-felhasználónevek nem azonosak az Azure AD UPN-vel. Ilyen esetekben a Windows 10 Hybrid Azure AD JOIN korlátozott támogatást biztosít a helyszíni AD UPN-hez a [hitelesítési módszer](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), a tartomány típusa és a Windows 10 verziója alapján. A környezetben két típusú helyszíni AD UPN létezik:
 
 - Irányítható UPN: Az átirányítható UPN-nek van egy érvényes ellenőrzött tartománya, amely regisztrálva van egy tartományregisztrálónál. Ha például az contoso.com az elsődleges tartomány az Azure AD-ben, a contoso.org az elsődleges tartomány a contoso által birtokolt és az [Azure ad-ben ellenőrzött](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain) helyszíni ad-ben.
 - Nem irányítható UPN: Egy nem irányítható UPN-nek nincs ellenőrzött tartománya. Csak a szervezet magánhálózaton belül alkalmazható. Ha például az contoso.com az elsődleges tartomány az Azure AD-ben, a contoso. local az elsődleges tartomány a helyszíni AD-ben, de nem ellenőrizhető tartomány az interneten, és csak a contoso hálózatán belül használatos.

@@ -27,28 +27,25 @@ abstract:
     href: 'https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/'
     width: 250
 sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: "Miután \_ <a href=\"setup-create-workspace\">létrehozott egy munkaterületet</a> az Azure Machine Learning service-hez, a következő rövid útmutatókhoz kezdhet hozzá:"
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="quickstart-run-cloud-notebook">Kísérlet futtatása a felhőben</a> (nincs szükség telepítésre).
-          - html: <a href="quickstart-run-local-notebook">Kísérlet futtatása helyi notebookkiszolgáló használatával</a> (helyi SDK telepítésével).
   - title: Részletes útmutatók
     items:
       - type: paragraph
-        text: 'Megtudhatja, hogyan készítheti elő adatait és kísérleteit, illetve hogyan taníthatja be és működtetheti gépi tanulási modelljeit:'
+        text: 'Megtudhatja, hogyan készítheti elő adatait és kísérleteit, illetve hogyan taníthatja be és működtetheti gépi tanulási modelljeit.'
+      - type: paragraph
+        text: 'A könnyen, kódolás nélkül használható <b>Azure Portallal</b> a következőket teheti:'
       - type: list
         style: unordered
         items:
-          - html: 'Első lépések: Az első automatizált ML-modell <a href="tutorial-first-experiment-automated-ml">betanítása és üzembe helyezése</a> az Azure Portalon.'
-          - html: 'Első lépések: <a href="tutorial-1st-experiment-sdk-setup">A fejlesztői környezet beállítása</a> és <a href="tutorial-1st-experiment-sdk-train">az első gépi tanulási modell</a> betanítása Jupyter notebook használatával (<b>kétrészes sorozat</b>).'
-          - html: 'Első lépések: Az első gépi tanulási kísérlet <a href="ui-tutorial-automobile-price-train-score">betanítása</a> és <a href="ui-tutorial-automobile-price-deploy">üzembe helyezése</a> a húzással használható vizuális felületen (<b>kétrészes sorozat</b>).'
-          - html: Képbesorolási modellek <a href="tutorial-train-models-with-aml">betanítása</a> és <a href="tutorial-deploy-models-with-aml">üzembe helyezése</a> (<b>kétrészes sorozat</b>).
-          - html: <a href="tutorial-data-prep">Adatok előkészítése</a> és <a href="tutorial-auto-train-models">automatizált gépi tanulás használata</a> regressziós modellek betanításához és hangolásához (<b>kétrészes sorozat</b>).
-          - html: <a href="ui-tutorial-automobile-price-train-score">Autó árának előrejelzése</a> a vizuális felülettel és a regressziós modell <a href="ui-tutorial-automobile-price-deploy">üzembe helyezése</a>.
+          - html: <a href="tutorial-first-experiment-automated-ml">Az első automatizált gépi tanulási kísérlet betanítása</a>.
+          - html: <a href="ui-tutorial-automobile-price-train-score">Az első kísérlet betanítása a vizuális felület áthúzást használó felhasználói felületére.</a>
+      - type: paragraph
+        text: 'A szkriptekben és a jegyzetfüzetekben a <b>Python SDK-t használhatja</b> a gépi tanuláshoz:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorial-1st-experiment-sdk-setup">A környezet beállítása és az első gépi tanulási kísérlet betanítása.</a>
+          - html: <a href="tutorial-train-models-with-aml">Képbesorolási modellek betanítása és üzembe helyezése</a>.
+          - html: <a href="tutorial-data-prep">Adatok előkészítése és automatizált gépi tanulás a taxiutak árának előrejelzéséhez</b>).</a>
   - title: Példák
     items:
       - type: paragraph

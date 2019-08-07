@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/22/2019
+ms.date: 08/02/2019
 ms.author: magoedte
-ms.openlocfilehash: 96a312630c92048f36f79e3bec18f83ed5a445ff
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e1fca1532352c4955f478df70f818ee3151053c1
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414130"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742208"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Az Azure Monitor tárolók áttekintése
 
@@ -40,9 +40,11 @@ A Azure Monitor a tárolók számára átfogó figyelési élményt nyújt Azure
 * Riasztásokat állíthat be, amelyekkel proaktívan értesítheti Önt, vagy rögzítheti azt, ha a csomópontokon vagy tárolókban a CPU és a memória kihasználtsága túllépi a küszöbértéket.
 * A [Prometheus](https://prometheus.io/docs/introduction/overview/) -nal integrálva megtekintheti a csomópontokból és Kubernetes származó alkalmazások és munkaterhelések mérőszámait, és [lekérdezésekkel](container-insights-log-search.md) egyéni riasztásokat, irányítópultokat és részletes elemzéseket készíthet.
 
->[!NOTE]
->A Prometheus támogatása jelenleg a nyilvános előzetes verzióban érhető el.
->
+    >[!NOTE]
+    >A Prometheus támogatása jelenleg a nyilvános előzetes verzióban érhető el.
+    >
+
+* Figyelje [az AK-motor üzembe helyezett](https://github.com/microsoft/OMS-docker/tree/aks-engine)tárolók munkaterheléseit.
 
 Tekintse meg az alábbi videót, amely egy köztes szintű részletes bemutatót biztosít, amely segít megismerni az AK-fürt Azure Monitor for containers szolgáltatással való figyelését.
 

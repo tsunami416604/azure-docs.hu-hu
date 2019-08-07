@@ -56,14 +56,20 @@
       maintainContext: true
     - name: Hibaelhárítás
       items:
+        - name: Helyreállítható zárolás – CPU
+          href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
+        - name: InvalidNetworkConfigurationErrorCode – a fürt létrehozása sikertelen
+          href: ./troubleshoot-invalidnetworkconfigurationerrorcode-cluster-creation-fails.md
+        - name: InvalidNetworkSecurityGroupSecurityRules – a fürt létrehozása sikertelen
+          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: Nem lehet bejelentkezni egy HDInsight-fürtre
           href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
         - name: A csomópontok HDInsight-fürthöz való hozzáadása nem sikerült
           href: ./hdinsight-troubleshoot-unable-add-nodes.md
-        - name: InvalidNetworkSecurityGroupSecurityRules – a fürt létrehozása sikertelen
-          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: Szolgáltatásnév-tanúsítvány konvertálása
           href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
+        - name: A helyi HDFS csökkentett üzemmódban maradt
+          href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
         - name: Az Apache Ambari szívveréssel kapcsolatos problémái
           href: ./apache-ambari-troubleshoot-heartbeat-issues.md
 - name: Útmutató

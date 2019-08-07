@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/30/2019
+ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 7ee7d6434058da63883f8db0eae6a3f91c778338
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 14fbca6dea735ed1ee13fca20f19379cc2c4d0a9
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325131"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742326"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Vész-helyreállítás beállítása SQL Serverhoz
 
@@ -39,7 +39,7 @@ SQL Server egy Azure IaaS virtuális gépen vagy a helyszínen.| [Feladatátvét
 SQL Server egy Azure IaaS virtuális gépen vagy a helyszínen.| [Adatbázis-tükrözés (nagy teljesítményű mód)](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | A szolgáltatás kényszerítéséhez szükséges idő, amely a tükrözött kiszolgálót használja meleg készenléti kiszolgálóként. | A replikálás aszinkron módon történik. Előfordulhat, hogy a tükrözési adatbázis némileg elmarad az elsődleges adatbázis mögött. A késés általában kicsi. Azonban akkor is nagy lehet, ha a rendszerbiztonsági tag vagy a tükrözött kiszolgáló rendszere nagy terhelés alatt áll.<br/><br/>A napló szállítása az adatbázis-tükrözés kiegészítéseként lehet. Ez az aszinkron adatbázis-tükrözés számára kedvező alternatíva.
 Az SQL as platform szolgáltatásként (Péter) az Azure-ban.<br/><br/>Ez a központi telepítési típus rugalmas készleteket és Azure SQL Database-kiszolgálókat tartalmaz. | Aktív georeplikáció | a feladatátvétel elindítása után 30 másodperc.<br/><br/>Ha a feladatátvétel aktiválva van valamelyik másodlagos adatbázis esetében, az összes többi formátumú másodlagos zónák automatikusan az új elsődlegeshez lesz kapcsolva. | RPO öt másodperc.<br/><br/>Az aktív geo-replikáció a SQL Server mindig technológiáját használja. Aszinkron módon replikálja a véglegesített tranzakciókat az elsődleges adatbázison egy másodlagos adatbázisba a pillanatkép-elkülönítés használatával.<br/><br/>A másodlagos adatmennyiség garantáltan soha nem rendelkezhet részleges tranzakciókkal.
 Az SQL as Pásti aktív geo-replikációval van konfigurálva az Azure-ban.<br/><br/>Ez a központi telepítési típus SQL Database felügyelt példányt, rugalmas készleteket és SQL Database kiszolgálókat tartalmaz. | Automatikus feladatátvételi csoportok | RTO egy óra. | RPO öt másodperc.<br/><br/>Az automatikus feladatátvételi csoportok az aktív geo-replikáción alapuló csoportos szemantikai feladatokat biztosítják. Azonban ugyanazt az aszinkron replikációs mechanizmust használja a rendszer.
-SQL Server egy Azure IaaS virtuális gépen vagy a helyszínen.| Replikálás Azure Site Recovery | A RTO jellemzően 15 percnél rövidebb. További információért olvassa el a [site Recovery által biztosított RTO SLA](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)-t. | Egy óra az alkalmazás konzisztenciája érdekében, és öt perc összeomlási konzisztencia esetén.
+SQL Server egy Azure IaaS virtuális gépen vagy a helyszínen.| Replikálás Azure Site Recovery | A RTO jellemzően 15 percnél rövidebb. További információért olvassa el a [site Recovery által biztosított RTO SLA](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)-t. | Egy óra az alkalmazás konzisztenciája érdekében, és öt perc összeomlási konzisztencia esetén. Ha alacsonyabb RPO keres, használjon más BCDR-technológiákat.
 
 > [!NOTE]
 > Néhány fontos szempontot figyelembe kell venni, ha az SQL-munkaterheléseket a Site Recovery segítségével kívánja védetté tenni:

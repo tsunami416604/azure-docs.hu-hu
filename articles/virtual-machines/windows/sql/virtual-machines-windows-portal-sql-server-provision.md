@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 9d19441b2f2202573086a711c202d4b36bbee5fa
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: b1fa24f919888e4454096e1ef84d2ba2948b865a
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846147"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774294"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Windows SQL Server virtuális gép kiépítése a Azure Portal
 
@@ -77,7 +77,7 @@ SQL Server virtuális gép konfigurálásához több lap is rendelkezésre áll.
 | **Az SQL Server beállításai** |[Az SQL Server beállításainak konfigurálása](#3-configure-sql-server-settings) |
 | **Felülvizsgálat + létrehozás** | [Az összefoglalás áttekintése](#4-review--create) |
 
-## <a name="1-configure-basic-settings"></a>1. Az alapvető beállítások konfigurálása
+## <a name="1-configure-basic-settings"></a>1. Alapvető beállítások konfigurálása
 
 
 Az **alapvető beállítások** lapon adja meg a következő információkat:
@@ -112,7 +112,7 @@ Az **alapvető beállítások** lapon adja meg a következő információkat:
    ![Bejövőport-szabályok](media/quickstart-sql-vm-create-portal/basics-inbound-port-rules.png)
 
 
-## <a name="2-configure-optional-features"></a>2. Választható funkciók konfigurálása
+## <a name="2-configure-optional-features"></a>2. Opcionális funkciók konfigurálása
 
 ### <a name="disks"></a>Lemezek
 
@@ -131,9 +131,9 @@ A **lemezek** lapon adja meg a lemez beállításait.
 
 A **hálózatkezelés** lapon konfigurálja a hálózati beállításokat. 
 
-* Hozzon létre egy új **virtuális hálózatot**, vagy használjon egy meglévő vNet a SQL Server VMhoz. Jelölje ki az  alhálózatot is. 
+* Hozzon létre egy új **virtuális hálózatot**, vagy használjon egy meglévő vNet a SQL Server VMhoz. Jelölje ki az alhálózatot is. 
 
-* A **hálózati adapter biztonsági csoportjában**válasszon egy alapszintű biztonsági csoportot vagy a speciális biztonsági csoportot. Az alapszintű beállítás választása lehetővé teszi a bejövő portok kiválasztását a SQL Server VM számára (az **alaplapon** megegyező értékeket). A speciális beállítás kiválasztásával választhat egy meglévő hálózati biztonsági csoportot, vagy létrehozhat egy újat. 
+* A **NIC hálózati biztonsági csoport**területen válassza az alapszintű biztonsági csoport vagy a speciális biztonsági csoport lehetőséget. Az alapszintű beállítás választása lehetővé teszi a bejövő portok kiválasztását a SQL Server VM számára (az alaplapon megegyező értékeket). A speciális beállítás kiválasztásával választhat egy meglévő hálózati biztonsági csoportot, vagy létrehozhat egy újat. 
 
 * Más módosításokat is végezhet a hálózati beállításokon, vagy megtarthatja az alapértelmezett értékeket.
 
@@ -143,7 +143,7 @@ A **hálózatkezelés** lapon konfigurálja a hálózati beállításokat.
 
 A **figyelés** lapon konfigurálja a figyelést és az automatikus leállítást. 
 
-* Az Azure  alapértelmezés szerint a virtuális gép számára kijelölt Storage-fiókkal engedélyezi a rendszerindítási figyelést. Itt módosíthatja ezeket a beállításokat, valamint engedélyezheti az **operációs rendszer vendégének diagnosztikaát**is. 
+* Az Azure alapértelmezés szerint a virtuális gép számára kijelölt Storage-fiókkal teszi lehetővé a rendszerindítási **diagnosztika** használatát. Itt módosíthatja ezeket a beállításokat, valamint engedélyezheti az **operációs rendszer vendégének diagnosztikaát**is. 
 * Ezen a lapon is engedélyezheti a **rendszerhez rendelt felügyelt identitást** és automatikus leállítást. 
 
 ![SQL VM-felügyeleti beállítások](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-management.png)
@@ -238,12 +238,12 @@ A **Storage optimized for** (Tároló optimalizálási módja) területen válas
 
 ![SQL virtuális gép tárolójának konfigurációja](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-storage-configuration.png)
 
-### <a name="sql-server-license"></a>SQL Server licenc
+### <a name="sql-server-license"></a>SQL Server-licenc
 Ha frissítési garanciával rendelkező ügyfelet használ, használhatja a [Azure Hybrid Benefitt](https://azure.microsoft.com/pricing/hybrid-benefit/) saját SQL Server licenc használatára, és mentheti az erőforrásokat. 
 
 ![SQL VM-licenc](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-license.png)
 
-### <a name="automated-patching"></a>Automatikus javítás
+### <a name="automated-patching"></a>Javítások automatikus telepítése
 
 Az **Automatikus javítás** alapértelmezés szerint engedélyezve van. Az automatizált javítás lehetővé teszi, hogy az Azure automatikus javításokat alkalmazzon az SQL Serveren és az operációs rendszeren. A karbantartási időszak beállításához adja meg a hét egy napját, egy időpontot és egy időtartamot. Az Azure ebben a karbantartási időszakban végzi el a javításokat. A karbantartási időszak ütemezése a virtuális gép területi beállítása szerinti időt használja. Ha nem szeretné, hogy az Azure automatikusan alkalmazza a javításokat az SQL Serveren és az operációs rendszeren, kattintson a **Letiltás** elemre.  
 
@@ -263,7 +263,7 @@ Az SQL automatikus biztonsági mentésének engedélyezésekor konfigurálhatja 
 * Rendszeradatbázisok biztonsági mentése
 * Biztonsági mentések ütemezésének konfigurálása
 
-A biztonsági mentés titkosításához kattintson az **Engedélyezés** elemre. Ezután adja meg a **Jelszót**. Az Azure a biztonsági mentések titkosításához létrehoz egy tanúsítványt, amelyet a megadott jelszóval véd. Alapértelmezés szerint az ütemterv automatikusan be van állítva, de manuális ütemtervet is **létrehozhat.** 
+A biztonsági mentés titkosításához kattintson az **Engedélyezés** elemre. Ezután adja meg a **Jelszót**. Az Azure a biztonsági mentések titkosításához létrehoz egy tanúsítványt, amelyet a megadott jelszóval véd. Alapértelmezés szerint az ütemterv automatikusan be van állítva, de manuális ütemtervet is létrehozhat. 
 
 ![SQL virtuális gép automatikus biztonsági mentései](media/virtual-machines-windows-portal-sql-server-provision/automated-backup.png)
 
@@ -275,7 +275,7 @@ További információk: [Automated Backup for SQL Server in Azure Virtual Machin
 Lehetősége van a [SQL Server R Services (fejlett Analitika)](/sql/advanced-analytics/r/sql-server-r-services/)engedélyezésére. Ez a beállítás lehetővé teszi a fejlett Analitika használatát a SQL Server 2017 használatával. Az **SQL Server beállítások** ablakban válassza az **Engedélyezés** lehetőséget.
 
 
-## <a name="4-review--create"></a>4. Felülvizsgálat + létrehozás
+## <a name="4-review--create"></a>4. Áttekintés + létrehozás
 
 A **felülvizsgálat + létrehozás** lapon tekintse át az összegzést, és válassza a **Létrehozás** lehetőséget a virtuális géphez megadott SQL Server, erőforráscsoport és erőforrások létrehozásához.
 

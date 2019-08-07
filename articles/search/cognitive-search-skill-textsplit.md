@@ -1,6 +1,6 @@
 ---
-title: Szöveg felosztása a kognitív keresés szakértelem – Azure Search
-description: Szöveg felosztása adattömbökre vagy a szöveget az Azure Search-felderítési bővítést folyamatban hossza alapján.
+title: A kognitív keresési képességek szövegének felosztása – Azure Search
+description: Szöveg felosztása darabokra vagy szöveges lapokra egy Azure Search alkoholtartalom-növelési folyamaton alapuló hossz alapján.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,50 +10,50 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: c7f5fda405ca0e5ba9cf1dd0ed44c47cd3ee74b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: cognitive-search
+ms.openlocfilehash: 8fb7ff51507212dfb162c09fcee469d6f154f3c3
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65949860"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840898"
 ---
-#   <a name="text-split-cognitive-skill"></a>Szöveg felosztása cognitive szakértelem
+#   <a name="text-split-cognitive-skill"></a>Szöveg felosztása kognitív képességgel
 
-A **szöveg felosztása** szakértelem működésképtelenné válik a szöveg adattömbökbe szöveg. Megadhatja, hogy szeretné-e a szöveg kezdetét mondatokat vagy egy adott hosszúságú oldalak. Ez szakértelem, különösen hasznosak, ha olyan szöveg maximális aktiválásához megszerzett képességeit a hosszúsági követelményeknek. 
+A **szöveg felosztása** készséggel szövegrészek szövegét bontja. Megadhatja, hogy a szöveget mondatokra vagy adott hosszúságú lapokra kívánja-e bontani. Ez a képesség különösen akkor hasznos, ha az egyéb szakismeretekben legfeljebb egy szöveges hosszra vonatkozó követelmény van. 
 
 > [!NOTE]
-> Szakértelem nincs kötve a Cognitive Services API-t, és nem terheli útmutatójához. Továbbra is ajánlott [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md), azonban felül a **ingyenes** erőforrás beállítás, amely korlátozza, hogy naponta napi végrehajtott információbeolvasás kis számú.
+> Ez a képesség nem kötődik Cognitive Services API-hoz, és nem kell fizetnie a használatért. Továbbra is [csatlakoztatnia kell egy Cognitive Services](cognitive-search-attach-cognitive-services.md)-erőforrást, hogy felülírja az **ingyenes** erőforrás-beállítást, amely naponta csak kis mennyiségű napi dúsítást korlátozza.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SplitSkill 
 
-## <a name="skill-parameters"></a>Ismeretek paraméterek
+## <a name="skill-parameters"></a>Szakértelem paraméterei
 
-A paraméterei a kis-és nagybetűket.
+A paraméterek megkülönböztetik a kis-és nagybetűket.
 
-| Paraméter neve     | Leírás |
+| Paraméternév     | Leírás |
 |--------------------|-------------|
-| textSplitMode      | "Lapok" vagy "mondatok" | 
-| maximumPageLength | Ha textSplitMode "lapok" értékre van állítva, ez vonatkozik a mért maximális hossza `String.Length`. A minimális érték 100.  Ha a textSplitMode "lapok" értékre van állítva, az algoritmus megpróbálja a szöveg felosztása adattömbökre, amelyek mérete legfeljebb "maximumPageLength". Ebben az esetben az algoritmus fog tenni a lehető legjobb megáll a mondat mondat határok, így az adatrészlet méretének lehet valamivel kisebb, mint "maximumPageLength". | 
-| defaultLanguageCode   | (nem kötelező) A következő nyelvi kódok: `da, de, en, es, fi, fr, it, ko, pt`. Alapértelmezés szerint angol (en). Érdemes figyelembe venni néhány dolgot:<ul><li>Ha egy languagecode-countrycode formátum, a formátum csak a languagecode részét szolgál.</li><li>A nyelv nem szerepel a fenti listán, ha a felosztás szakértelem karakter határokat, működésképtelenné válik a szöveg.</li><li>Biztosít egy nyelvi kód hasznos darabolás szó nem terület nyelveken, például a kínai, japán és koreai megfelezése elkerülése érdekében.</li></ul>  |
+| textSplitMode      | Vagy "Pages" vagy "mondatok" | 
+| maximumPageLength | Ha a textSplitMode "Pages" (lapok `String.Length`) értékre van állítva, ez az oldal maximális hosszára vonatkozik. A minimális érték 100.  Ha a textSplitMode "Pages" értékre van állítva, az algoritmus megpróbálja felosztani a szöveget a legtöbb "maximumPageLength" méretű darabokra. Ebben az esetben az algoritmus elvégzi a legjobbat, hogy a mondatot egy mondat határán megtörje, így a tömb mérete valamivel kisebb lehet, mint a "maximumPageLength". | 
+| defaultLanguageCode   | választható A következő nyelvi kódok egyike: `da, de, en, es, fi, fr, it, ko, pt`. Az alapértelmezett érték az angol (en). Néhány megfontolandó szempont:<ul><li>Ha languagecode-országhívószám formátumot továbbít, a rendszer csak a formátum languagecode-részét használja.</li><li>Ha a nyelv nem szerepel az előző listán, a felosztott képesség megszakítja a szöveget a karakterek határain.</li><li>A nyelvi kód megadásával elkerülhető, hogy a szó ne legyen több, mint a kínai, Japán és koreai nyelveken.</li></ul>  |
 
 
-## <a name="skill-inputs"></a>Ismeretek bemenetek
+## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Paraméter neve       | Leírás      |
+| Paraméternév       | Leírás      |
 |----------------------|------------------|
-| szöveg  | Szöveg felosztása karakterláncrészletet. |
-| languageCode  | (Nem kötelező) A dokumentum nyelvkód.  |
+| text  | Az alsztringbe feldarabolt szöveg |
+| languageCode  | Választható A dokumentumhoz tartozó nyelvi kód.  |
 
-## <a name="skill-outputs"></a>Ismeretek kimenetek 
+## <a name="skill-outputs"></a>Szaktudás kimenetei 
 
-| Paraméter neve     | Leírás |
+| Paraméternév     | Leírás |
 |--------------------|-------------|
-| textItems | Egy tömb, amely a könyvtárban találhatók karakterláncrészletek. |
+| textItems | A kinyert alsztringek tömbje. |
 
 
-##  <a name="sample-definition"></a>Minta-definíció
+##  <a name="sample-definition"></a>Minta definíciója
 
 ```json
 {
@@ -80,7 +80,7 @@ A paraméterei a kis-és nagybetűket.
 }
 ```
 
-##  <a name="sample-input"></a>Minta beviteli
+##  <a name="sample-input"></a>Minta bemenet
 
 ```json
 {
@@ -103,7 +103,7 @@ A paraméterei a kis-és nagybetűket.
 }
 ```
 
-##  <a name="sample-output"></a>Kimeneti példa
+##  <a name="sample-output"></a>Minta kimenete
 
 ```json
 {
@@ -130,10 +130,10 @@ A paraméterei a kis-és nagybetűket.
 }
 ```
 
-## <a name="error-cases"></a>Hibák esetén
-A nyelv nem támogatott, ha generál a rendszer figyelmeztetést, és a szöveg van felosztva, karakter határok.
+## <a name="error-cases"></a>Hibák esetei
+Ha a nyelv nem támogatott, a rendszer figyelmeztetést generál, és a szöveg a karakter határain belülre van bontva.
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Előre megadott képesség](cognitive-search-predefined-skills.md)
-+ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
++ [Előre definiált képességek](cognitive-search-predefined-skills.md)
++ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

@@ -27,64 +27,31 @@ sections:
         style: cards
         type: list
   - items:
-      - text: 'Az Azure Machine Learning service beállítása és használatának megkezdése:'
+      - text: Az Azure Machine Learning szolgáltatás beállítása és használatának megkezdése.
         type: paragraph
-      - text: '<b>Rövid útmutatók:</b>'
-        type: paragraph
-      - items:
-          - html: <a href="service/quickstart-run-cloud-notebook">Kísérlet futtatása a felhőben</a> (nincs szükség telepítésre)
-          - html: <a href="service/quickstart-run-local-notebook">Kísérlet futtatása helyi notebookkiszolgálóval</a> (helyi SDK-telepítés)
-        style: unordered
-        type: list
-      - text: '<b>Oktatóanyag: Az első automatizált ML-modell betanítása és üzembe helyezése az Azure Portalon:</b>'
+      - text: 'A könnyen, kódolás nélkül használható Azure Portalon gépi tanulási modelleket taníthat be, helyezhet üzembe és kezelhet:'
         type: paragraph
       - items:
+          - html: <a href="service/ui-tutorial-automobile-price-train-score">Az első kísérlet betanítása a vizuális felület áthúzást használó felhasználói felületére</a>
           - html: <a href="service/tutorial-first-experiment-automated-ml">Automatizált gépi tanulás használata az első osztályozási modell betanításához és üzembe helyezéséhez</a>
         style: unordered
         type: list
-      - text: '<b>Oktatóanyag: Az első gépi tanulási modell betanítása SDK-val:</b>'
+      - text: 'A szkriptekben és a jegyzetfüzetekben a Python SDK-val gépi tanulási modelleket taníthat be, helyezhet üzembe és kezelhet:'
         type: paragraph
       - items:
-          - html: '1. rész: <a href="service/tutorial-1st-experiment-sdk-setup">A környezet és a munkaterület beállítása</a>'
-          - html: '2. rész: <a href="service/tutorial-1st-experiment-sdk-train">Az első modell betanítása</a>'
+          - html: <a href="service/tutorial-1st-experiment-sdk-setup">A környezet beállítása és az első gépi tanulási kísérlet betanítása</a>
+          - html: <a href="service/tutorial-train-models-with-aml">Képbesorolási modellek betanítása és üzembe helyezése</a>
+          - html: <a href="service/tutorial-data-prep">Adatok előkészítése és automatizált gépi tanulás a taxiutak árának előrejelzéséhez</a>
         style: unordered
         type: list
-      - text: '<b>Oktatóanyag: Az első kísérlet betanítása és üzembe helyezése a vizuális felületen:</b>'
-        type: paragraph
-      - items:
-          - html: '1. rész: <a href="service/ui-tutorial-automobile-price-train-score">Regressziós modell betanítása</a>'
-          - html: '2. rész: <a href="service/ui-tutorial-automobile-price-deploy">A modell üzembe helyezése</a>'
-        style: unordered
-        type: list
-      - text: '<b>Oktatóanyag: MNIST-adatok képbesorolása SDK-val:</b>'
-        type: paragraph
-      - items:
-          - html: '1. rész: <a href="service/tutorial-train-models-with-aml">Saját modell betanítása</a>'
-          - html: '2. rész: <a href="service/tutorial-deploy-models-with-aml">A modell üzembe helyezése</a>'
-        style: unordered
-        type: list
-      - text: '<b>Oktatóanyag: Taxiút árának előrejelzése SDK-val:</b>'
-        type: paragraph
-      - items:
-          - html: '1. rész: <a href="service/tutorial-data-prep">Adatok előkészítése modellezéshez</a>'
-          - html: '2. rész: <a href="service/tutorial-auto-train-models">Az automatizált gépi tanulás betanítja a modelleket Ön helyett</a>'
-        style: unordered
-        type: list
-      - text: '<b>Oktatóanyag: Autó árának előrejelzése vizuális felülettel:</b>'
-        type: paragraph
-      - items:
-          - html: '1. rész: <a href="service/ui-tutorial-automobile-price-train-score">Autó árának előrejelzése</a>'
-          - html: '2. rész: <a href="service/ui-tutorial-automobile-price-deploy">A regressziós modell üzembe helyezése</a>'
-        style: unordered
-        type: list
-      - text: '<b>Modellek felhasználása:</b>'
+      - text: 'Modellek felhasználása:'
         type: paragraph
       - items:
           - html: <a href="service/how-to-consume-web-service">Kérés-válasz modell felhasználása</a>
           - html: <a href="service/how-to-run-batch-predictions">Kötegelt előrejelzések gépi tanulási folyamatokkal</a>
         style: unordered
         type: list
-    title: Rövid útmutatók és oktatóanyagok
+    title: Részletes útmutatók
   - items:
       - className: cardsM
         columns: 2

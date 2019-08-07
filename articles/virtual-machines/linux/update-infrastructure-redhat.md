@@ -14,90 +14,95 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: 2add03d68b00fb18fb4323a6acd04480b3770c1c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: efc76616151776bc2f766f92ff9503413c6037d0
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708423"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774272"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Az igény szerinti Red Hat Enterprise Linux virtuális gépek az Azure-beli Red Hat frissítési infrastruktúrája
  [Red Hat frissítési infrastruktúrához](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) lehetővé teszi a felhőszolgáltatók, például az Azure Red Hat-ban üzemeltetett tárház tartalmának tükrözik, az Azure-ra vonatkozó egyéni adattárak tartalom létrehozása és végfelhasználói virtuális gépek számára elérhető legyen.
 
 Red Hat Enterprise Linux (RHEL) használatalapú fizetéssel szemben lemezképek származnak, előre konfigurált Azure RHUI eléréséhez. További konfiguráció nélkül van szükség. A legújabb frissítések lekéréséhez futtassa `sudo yum update` után készen áll az RHEL-példányhoz. Ez a szolgáltatás részét képezi részét képezi a RHEL Használatalapú szoftver díjak.
 
-További információk az Azure-ban, közzététel és adatmegőrzési szabályzatok, például az RHEL-lemezképekhez érhető el [Itt](./rhel-images.md).
+További információ az Azure-beli RHEL-lemezképekről, beleértve a közzétételi és adatmegőrzési szabályzatokat is [itt](./rhel-images.md)érhető el.
 
-Red Hat támogatási irányelveik RHEL összes verziója információk találhatók a [Red Hat Enterprise Linux életciklusának](https://access.redhat.com/support/policy/updates/errata) lapot.
+A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes verziójára vonatkozóan a [Red Hat Enterprise Linux életciklus](https://access.redhat.com/support/policy/updates/errata) oldalon találhatók.
 
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI vonatkozó fontos információk
-* Az Azure RHUI a frissítési infrastruktúra, amely támogatja a RHEL Használatalapú létrehozott minden virtuális gép az Azure-ban. Ez nem zárja ki, Regisztráljon a Használatalapú RHEL rendszerű virtuális géphez az előfizetés-kezelő, műholdas vagy más forrásból, a frissítések, de ezzel a virtuális gép PAYG közvetett double-számlázási eredményez. Tekintse meg a részleteket a következő pontot.
-* Az Azure-ban üzemeltetett RHUI a hozzáférést a RHEL Használatalapú lemezképének díja tartalmazza. Ha akkor regisztrációját, az Azure-ban üzemeltetett RHUI PAYG RHEL virtuális Gépet, amely nem átalakítása a virtuális gép egy virtuális gép bring-your-saját licenc (használata BYOL) típusú. Ha ugyanazon a virtuális Gépen egy másik forrása a frissítések regisztrál, vonatkozhatnak _közvetett_ díjak duplán. Az első alkalommal az Azure RHEL szoftvert díjat fizetnie. A második alkalommal a Red Hat-előfizetéseit, korábban beszerzett díjkötelesek. Ha folyamatosan szeretné használni egy frissítési infrastruktúra eltérő Azure-ban üzemeltetett RHUI, érdemes lehet használandó regisztrálása a [RHEL saját lemezképek](https://aka.ms/rhel-byos).
-* RHUI alapértelmezett viselkedését, hogy az RHEL virtuális gép frissítése a legújabb alverzió futtatásakor `sudo yum update`.
+* Az Azure RHUI a frissítési infrastruktúra, amely támogatja az Azure-ban létrehozott összes RHEL TB virtuális gépet. Ez nem zárja ki, hogy regisztrálja a TB RHEL-alapú virtuális gépeket az előfizetés-kezelővel, illetve a műholdon vagy más frissítési forrásokkal, de a TB virtuális géppel való használata esetén a rendszer közvetett kettős számlázást eredményez. A részletekért tekintse meg a következő pontot.
+* Az Azure-ban üzemeltetett RHUI a hozzáférést a RHEL Használatalapú lemezképének díja tartalmazza. Ha akkor regisztrációját, az Azure-ban üzemeltetett RHUI PAYG RHEL virtuális Gépet, amely nem átalakítása a virtuális gép egy virtuális gép bring-your-saját licenc (használata BYOL) típusú. Ha ugyanazon a virtuális Gépen egy másik forrása a frissítések regisztrál, vonatkozhatnak _közvetett_ díjak duplán. Az első alkalommal az Azure RHEL szoftvert díjat fizetnie. A második alkalommal a Red Hat-előfizetéseit, korábban beszerzett díjkötelesek. Ha az Azure által üzemeltetett RHUI eltérő frissítési infrastruktúrát kell használnia, érdemes regisztrálni a [RHEL BYOS](https://aka.ms/rhel-byos)-lemezképek használatára.
+* A RHUI alapértelmezett viselkedése a RHEL virtuális gép frissítése a legújabb másodlagos verzióra a futtatásakor `sudo yum update`.
 
     Például, ha egy RHEL 7.4 PAYG rendszerképből egy virtuális gép létrehozása és futtatása `sudo yum update`, akkor megtörténhet egy RHEL 7.6 virtuális gép (a legújabb alverzió a RHEL7 termékcsalád).
 
-    Ez a viselkedés elkerülése érdekében átválthat az [kiterjesztett támogatásának csatornák](#rhel-eus-and-version-locking-rhel-vms) , vagy létrehozhatja a saját rendszerképét leírtak szerint a [létrehozása és feltöltése a Red Hat-alapú virtuális gépek az Azure-ban](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) cikk. Ha saját rendszerképet hoz létre, csatlakoztathatja azt egy másik frissítési infrastruktúra szeretne ([közvetlenül a Red Hat content delivery kiszolgálók](https://access.redhat.com/solutions/253273) vagy egy [Red Hat műholdas kiszolgáló](https://access.redhat.com/products/red-hat-satellite)).
+    Ennek elkerüléséhez váltson a [kiterjesztett frissítési támogatási csatornákra](#rhel-eus-and-version-locking-rhel-vms) , vagy hozzon létre saját rendszerképet a [Red Hat-alapú virtuális gép létrehozása és feltöltése az Azure](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) -ba című cikkben leírtak szerint. Ha saját rendszerképet hoz létre, azt egy másik frissítési infrastruktúrához ([közvetlenül a Red Hat Content Delivery](https://access.redhat.com/solutions/253273) Serverhez vagy egy [Red Hat Satellite Serverhez](https://access.redhat.com/products/red-hat-satellite)) kell összekötnie.
 
 
 
-* RHEL SAP PAYG-lemezképek az Azure-ban (RHEL for SAP, az RHEL for SAP HANA és az RHEL for SAP Business Applications) dedikált RHUI csatornák, amelyek az adott RHEL alverzió SAP minősítésre szükség szerint továbbra is csatlakozik.
+* Az Azure-ban elérhető SAP-TB (RHEL for SAP, RHEL for SAP HANA és RHEL for SAP Business Applications) olyan dedikált RHUI-csatornákhoz csatlakoznak, amelyek az adott RHEL alverzióban maradnak, és az SAP-minősítéshez szükségesek.
 
 * Az Azure-ban üzemeltetett RHUI, korlátozott a virtuális gépeket a [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653). Ha Ön a proxyhasználat minden virtuális gép forgalom keresztül egy helyszíni hálózati infrastruktúrát, szüksége lehet a RHEL Használatalapú virtuális gépeket az Azure RHUI eléréséhez a felhasználó által megadott útvonalak beállítása.
 
-## <a name="rhel-eus-and-version-locking-rhel-vms"></a>RHEL EUS és RHEL rendszerű virtuális géphez verzió zárolása
-Előfordulhat, hogy egyes ügyfeleknek szeretné zárolni az RHEL rendszerű virtuális géphez egy bizonyos RHEL kisebb kiadásra. Így verzió-zárolási az RHEL virtuális gép egy adott alverzió, hogy a kiterjesztett támogatásának tárházak mutasson az adattárak frissítése. A EUS verzió zárolása műveletet is visszavonhatja.
+## <a name="rhel-eus-and-version-locking-rhel-vms"></a>RHEL EUS és verzió – RHEL virtuális gépek zárolása
+Előfordulhat, hogy egyes ügyfelek a RHEL-alapú virtuális gépeket egy bizonyos RHEL-kiadásra szeretnék zárolni. A RHEL virtuális gép egy adott alverzióra való rögzítéséhez frissítse a tárházat, hogy az a kiterjesztett frissítés támogatási tárházára mutasson. A EUS-zárolási műveletet is visszavonhatja.
 
 >[!NOTE]
-> EUS RHEL kiegészítő funkciók a nem támogatott. Ez azt jelenti, hogy telepít egy csomagot, amely általában a RHEL kiegészítő funkciók csatorna érhető el, ha nem tudja ehhez a EUS. A Red Hat kiegészítő funkciók életciklusáról részletes [Itt](https://access.redhat.com/support/policy/updates/extras/).
+> A EUS nem támogatott a RHEL-extrák esetében. Ez azt jelenti, hogy ha olyan csomagot telepít, amely általában az RHEL extrák csatornából érhető el, akkor a EUS-on nem fogja tudni elvégezni. [Itt](https://access.redhat.com/support/policy/updates/extras/)részletesen ismertetjük a Red Hat extrák termék életciklusát.
 
-A cikk írásának időpontjában EUS támogatása véget ért, az RHEL < = 7.3. A "Red Hat Enterprise Linux hosszabb támogatási bővítmények" című szakaszában talál a [Red Hat-dokumentáció](https://access.redhat.com/support/policy/updates/errata/) további részletekért.
-* RHEL 7.4 EUS támogatás véget 2019. augusztus 31-ig.
-* RHEL 7.5 EUS támogatás véget 2020. április 30.
-* RHEL 7.6 EUS támogatás véget 2020. október 31-ig.
+Az írás időpontjában a EUS-támogatás befejeződött a RHEL < = 7,3 esetében. További részletekért tekintse meg a [Red Hat dokumentációjának](https://access.redhat.com/support/policy/updates/errata/) "Red Hat Enterprise Linux a hosszabb támogatási bővítmények" című szakaszát.
+* RHEL 7,4 EUS-támogatás vége augusztus 31., 2019
+* RHEL 7,5 EUS támogatás vége április 30., 2020
+* RHEL 7,6 EUS-támogatás vége 2020. október 31.
 
-### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>Váltson egy RHEL rendszerű virtuális Géphez EUS (verzió zárolás egy meghatározott kisebb verzióra)
-Egy adott kisebb kiadás (Futtatás rendszergazdaként) az RHEL virtuális gép zárolását kövesse az alábbi utasításokat:
+### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>RHEL virtuális gép átváltása a EUS-re (verzió – egy adott alverzióra való zárolás)
+Az alábbi útmutatást követve zárolhat egy RHEL virtuális gépet egy adott másodlagos kiadásra (futtató gyökérként):
 
 >[!NOTE]
-> Ez csak érvényes RHEL-verziók, amelynek EUS érhető el. A cikk írásának időpontjában RHEL 7.2-7.6 ide tartoznak. További részletek a [Red Hat Enterprise Linux életciklusának](https://access.redhat.com/support/policy/updates/errata) lapot.
+> Ez csak azokra a RHEL-verziókra vonatkozik, amelyekhez EUS érhető el. Az írás időpontjában ez a RHEL 7.2-7.6 is vonatkozik. További részletek a [Red Hat Enterprise Linux életciklusa](https://access.redhat.com/support/policy/updates/errata) lapon érhetők el.
 
-1. Nem EUS adattárakkal letiltása:
+1. Nem EUS-alapú repók letiltása:
     ```bash
     yum --disablerepo='*' remove 'rhui-azure-rhel7'
     ```
 
-1. Adja hozzá a EUS adattárakkal:
+1. EUS-repók hozzáadása:
     ```bash
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config' install 'rhui-azure-rhel7-eus'
     ```
 
-1. Zárolási (Futtatás rendszergazdaként) releasever változó:
+1. A releasever változó zárolása (futtató gyökér):
     ```bash
     echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
     ```
 
     >[!NOTE]
-    > A fenti utasítás zárolja a RHEL kisebb kiadás, az aktuális kisebb kiadásra. Adjon meg egy adott kisebb kiadás, ha arra kíváncsi, frissítése és a egy újabb kisebb kiadás, amely nem a legújabb zárolása. Ha például `echo 7.5 > /etc/yum/vars/releasever` az RHEL-verzió az RHEL 7.5 lesz zárolva.
+    > A fenti utasítás a RHEL-alverzió zárolását az aktuális másodlagos kiadáshoz fogja zárolni. Adjon meg egy adott másodlagos kiadást, ha a frissítést és a zárolást egy későbbi, nem a legújabb verzióra szeretné használni. Például a RHEL `echo 7.5 > /etc/yum/vars/releasever` -verziót a RHEL 7,5-re fogja zárolni
 
-1. Az RHEL virtuális gép frissítése
+1. A RHEL virtuális gép frissítése
     ```bash
     sudo yum update
     ```
 
-### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>Váltson vissza egy RHEL rendszerű virtuális Géphez nem EUS (eltávolítása egy verzió zárolás)
-Futtassa a következő legfelső szintű:
+### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>RHEL virtuális gép átváltása nem EUS (verziók zárolásának eltávolítása)
+Futtassa a következőt root-ként:
 1. Távolítsa el a releasever fájlt:
     ```bash
     rm /etc/yum/vars/releasever
      ```
 
-1. EUS adattárakkal letiltása:
+1. EUS-repók letiltása:
     ```bash
     yum --disablerepo='*' remove 'rhui-azure-rhel7-eus'
    ```
 
-1. Az RHEL virtuális gép frissítése
+1. RHEL virtuális gép konfigurálása
+    ```bash
+    yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config' install 'rhui-azure-rhel7'
+    ```
+    
+1. A RHEL virtuális gép frissítése
     ```bash
     sudo yum update
     ```
@@ -127,20 +132,20 @@ Ha a hozzáférés további korlátozását RHEL Használatalapú virtuális gé
 51.4.228.145
 ```
 
-## <a name="azure-rhui-infrastructure"></a>Az Azure RHUI infrastruktúra
+## <a name="azure-rhui-infrastructure"></a>Azure RHUI-infrastruktúra
 
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>Frissítés a virtuális gép RHUI ügyféltanúsítvány lejárt
 
-Ha egy régebbi RHEL Virtuálisgép-rendszerképet, például az RHEL-7.4 használja (a kép URN: `RedHat:RHEL:7.4:7.4.2018010506`), kapcsolódási problémák miatt lejárt SSL-ügyféltanúsítvány RHUI fog tapasztalni. A hibát látja nézhet _"SSL társ visszautasította a tanúsítvány lejárt,"_ vagy _"hiba: Nem sikerült beolvasni a tárház metaadatok (repomd.xml) tárház:... Ellenőrizze az elérési útját, és próbálkozzon újra"_ . A probléma megoldásához frissítse az RHUI ügyfélcsomag, a virtuális gépen a következő paranccsal:
+Ha egy régebbi RHEL virtuálisgép-rendszerképet használ, például a RHEL 7,4 (rendszerkép urn: `RedHat:RHEL:7.4:7.4.2018010506`), a rendszer kapcsolódási problémákat tapasztal a RHUI miatt egy már lejárt SSL-ügyféltanúsítvány miatt. A megjelenített hiba a következőhöz hasonló lehet: _"SSL-társ elutasította a tanúsítvány lejártként"_ vagy _"hiba: Az adattár metaadatainak (repomd. xml) nem olvashatók be a tárházhoz:... Ellenőrizze az elérési útját, és_próbálkozzon újra ". A probléma megoldásához frissítse a RHUI-ügyfélszoftvert a virtuális gépen a következő parancs használatával:
 
 ```bash
 sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
 ```
 
-Másik lehetőségként futó `sudo yum update` is frissítheti a ügyfél-csomag (függően az RHEL verzió), annak ellenére, hogy más tárházakban megjelenik "a SSL-tanúsítvány lejárt" hibák. Ha a frissítés sikeres, más RHUI tárházakban normál kapcsolatot kell visszaállítani, ezért lesz futtatható `sudo yum update` sikeresen megtörtént.
+Azt is megteheti, hogy a Futtatás `sudo yum update` a RHEL-verziótól függően frissíti az ügyféltanúsítvány-csomagot (a lejárt SSL-tanúsítvány után), és más adattárakban is megjelenik. Ha ez a frissítés sikeres, a más RHUI-adattárakhoz való normál kapcsolatot vissza kell állítani, hogy sikeresen fusson `sudo yum update` .
 
-Ha a 404-es hiba futtatása közben egy `yum update`, a yum használatával gyorsítótár a következő:
+Ha a futtatása során `yum update`404-as hibát észlel, próbálja meg a következőt a yum-gyorsítótár frissítéséhez:
 ```bash
 sudo yum clean all;
 sudo yum makecache
@@ -180,5 +185,5 @@ Ez az eljárás csak referenciaként van megadva. RHEL Használatalapú lemezké
 
 ## <a name="next-steps"></a>További lépések
 * Red Hat Enterprise Linux virtuális gép létrehozása az Azure Marketplace-en PAYG rendszerképből, és használata az Azure-ban üzemeltetett RHUI, nyissa meg a [Azure Marketplace-en](https://azure.microsoft.com/marketplace/partners/redhat/).
-* Az Azure-beli Red Hat-lemezképeit kapcsolatos további tudnivalókért keresse fel a [dokumentációs oldalon](./rhel-images.md).
-* Red Hat támogatási irányelveik RHEL összes verziója információk találhatók a [Red Hat Enterprise Linux életciklusának](https://access.redhat.com/support/policy/updates/errata) lapot.
+* Ha többet szeretne megtudni az Azure-beli Red Hat-lemezképekről, lépjen a [dokumentáció lapra](./rhel-images.md).
+* A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes verziójára vonatkozóan a [Red Hat Enterprise Linux életciklus](https://access.redhat.com/support/policy/updates/errata) oldalon találhatók.
