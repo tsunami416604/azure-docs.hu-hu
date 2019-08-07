@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
-ms.openlocfilehash: f9fd9f88a0aa6af9cd4160bf5879b9b8f383dca1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: f0fb6f0d2b2579679ee8a6ec43b3241377701d48
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720432"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780904"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Vállalati biztonság Azure Machine Learning szolgáltatáshoz
 
@@ -161,7 +161,7 @@ A beállításjegyzékben található összes tároló lemezkép (ACR) inaktív 
 
 Az egyes számítási csomópontok operációsrendszer-lemezét az Azure Storage tárolja a Microsoft által felügyelt kulcsok használatával Azure Machine Learning Service Storage-fiókokban. Ez a számítás elmúló, és a fürtöket általában lefelé kell méretezni, ha nincsenek várólistán lévő futtatások. A mögöttes virtuális gép kiépítés alatt áll, és az operációsrendszer-lemez törölve lett. Az operációsrendszer-lemez nem támogatja az Azure Disk Encryption használatát.
 Minden virtuális gép helyi ideiglenes lemezzel is rendelkezik az operációs rendszer műveleteihez. Ezt a lemezt igény szerint is felhasználhatja a betanítási adatgyűjtéshez. Ez a lemez nincs titkosítva.
-További információ arról, hogyan működik a titkosítás az Azure-ban: [Azure-beli adattitkosítás – Rest](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest).
+További információ arról, hogyan működik a titkosítás az Azure-ban: [Azure-beli adattitkosítás – Rest](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
 ### <a name="encryption-in-transit"></a>Titkosítás átvitel közben
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/24/2019
 ms.author: v-mohabe
-ms.openlocfilehash: f33b69ac443a1bb8f6b7d6e1b19f2f077bf38f58
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 8812ac325e6bfd5ee019f6ddd6bf86c846ed5c10
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501484"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782453"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Veszélyforrások észlelése a Azure Security Center adatszolgáltatásaiban
 
@@ -60,6 +60,7 @@ Security Center elemzi az olvasási, írási és törlési kérelmeket a blob St
 |**Szokatlan hely elérési rendellenessége**|A mintavételes hálózati forgalom elemzése rendellenes kimenő RDP protokoll (RDP) kommunikációt észlelt az üzemelő példányból származó erőforrásból. Ez a tevékenység rendellenesnek minősül ebben a környezetben, és arra utalhat, hogy az erőforrást feltörték, és már használatban van a külső RDP-végpont találgatásos kényszerítéséhez. Megjegyzendő, hogy ez a tevékenység külső entitások számára rosszindulatúként sorolhatja be az Ön IP-címét is.|
 |**Alkalmazás-hozzáférési rendellenesség**|Azt jelzi, hogy egy szokatlan alkalmazás hozzáfért ehhez a Storage-fiókhoz. A lehetséges ok az, hogy egy támadó új alkalmazás használatával fér hozzá a Storage-fiókhoz.|
 |**Névtelen hozzáférési rendellenesség**|Azt jelzi, hogy a hozzáférési minta módosult egy Storage-fiókban. A fiókhoz például névtelenül (hitelesítés nélkül) férhet hozzá, ami nem várt, mint a fiók legutóbbi hozzáférési mintája. Ennek lehetséges oka, hogy egy támadó nyilvános olvasási hozzáférést kapott egy olyan tárolóhoz, amely blob (ok) tárolót tárol.|
+|**Tor-anomália**|Azt jelzi, hogy ez a fiók sikeresen elérhető egy olyan IP-címről, amely a Tor aktív kilépési csomópontjának (anonimizálásával-proxy) ismert. Ennek a riasztásnak a súlyossága figyelembe veszi a használt hitelesítési típust (ha van ilyen), és hogy ez az ilyen hozzáférés első esete-e. Lehetséges oka lehet, hogy a támadó a Tor használatával fér hozzá a Storage-fiókjához, vagy a megbízható felhasználó a Tor használatával fér hozzá a Storage-fiókhoz.|
 |**Az adatkiszűrése anomália**|Azt jelzi, hogy a tárolón a legutóbbi tevékenységhez képest szokatlanul nagy mennyiségű adattal lett kibontva. A lehetséges ok az, hogy egy támadó nagy mennyiségű adattal gyűjtött ki egy olyan tárolóból, amely blob (ok) tárolót tárol.|
 |**Váratlan törlési rendellenesség**|Azt jelzi, hogy egy vagy több váratlan törlési művelet történt egy Storage-fiókban, a fiókhoz tartozó legutóbbi tevékenységhez képest. Ennek lehetséges oka, hogy egy támadó törölte az adatait a Storage-fiókjából.|
 |**Azure Cloud Service-csomag feltöltése**|Azt jelzi, hogy egy Azure Cloud Service-csomag (. cspkg fájl) szokatlan módon lett feltöltve egy Storage-fiókba, a fiók legutóbbi tevékenységéhez képest. A lehetséges ok az, hogy egy támadó arra készül, hogy rosszindulatú kódot helyezzen üzembe a Storage-fiókból egy Azure Cloud Service-be.|
@@ -70,7 +71,7 @@ Security Center elemzi az olvasási, írási és törlési kérelmeket a blob St
 >[!NOTE]
 >Az Azure Storage komplex veszélyforrások elleni védelme jelenleg nem érhető el az Azure governmentben és a szuverén Felhőbeli régiókban.
 
-További információ a tárolási riasztásokról: az [Azure Storage komplex veszélyforrások elleni védelme](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) , valamint a védelmi riasztások szakasz áttekintése.
+További információ a tárolási riasztásokról: az [Azure Storage komplex veszélyforrások elleni védelme](../storage/common/storage-advanced-threat-protection.md) , valamint a védelmi riasztások szakasz áttekintése.
 
 ## Cosmos DB<a name="cosmos-db"></a>
 

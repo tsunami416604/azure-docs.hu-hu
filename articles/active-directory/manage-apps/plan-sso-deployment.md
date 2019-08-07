@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0602de13fefbf105e69ba42651216fb479c4c86
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 733b0d7650d68bddae60cf524947590c2b689968
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477133"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779366"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Egyszeri bejelentkezés üzembe helyezésének tervezése
 
@@ -95,7 +95,7 @@ A bejelentkezési perspektívából a megosztott fiókkal rendelkező alkalmazá
 
 A megfelelő hitelesítési módszer kiválasztása kulcsfontosságú első döntés az Azure AD Hybrid Identity megoldás létrehozásához. A Azure AD Connect használatával konfigurált hitelesítési módszer implementálása, amely a felhőben lévő felhasználókat is kiépíti.
 
-A hitelesítési módszer kiválasztásához figyelembe kell vennie az időt, a meglévő infrastruktúrát, az összetettséget és a választott megvalósítás költségeit. Ezek a tényezők minden szervezet esetében eltérőek, és idővel változhatnak. Válassza ki azt, amelyik leginkább megfelel az adott forgatókönyvnek. További információ: [válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz](https://docs.microsoft.com/azure/security/azure-ad-choose-authn).
+A hitelesítési módszer kiválasztásához figyelembe kell vennie az időt, a meglévő infrastruktúrát, az összetettséget és a választott megvalósítás költségeit. Ezek a tényezők minden szervezet esetében eltérőek, és idővel változhatnak. Válassza ki azt, amelyik leginkább megfelel az adott forgatókönyvnek. További információ: [válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
 
 ## <a name="plan-your-security-and-governance"></a>A biztonság és irányítás megtervezése 
 
@@ -236,9 +236,9 @@ Mindig a legkevesebb engedélyekkel rendelkező szerepkört használja a szüks�
 
 | Persona| Szerepkörök | Azure AD-szerepkör (ha szükséges) |
 |--------|-------|-----------------------------|
-| Ügyfélszolgálati rendszergazda | 1\. szintű támogatás | Nincsenek |
+| Ügyfélszolgálati rendszergazda | 1\. szintű támogatás | None |
 | Identity admin | Konfigurálás és hibakeresés az Azure AD-t érintő problémák esetén | Globális rendszergazda |
-| Alkalmazás-rendszergazda | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | None |
+| Alkalmazás-rendszergazda | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincsenek |
 | Infrastruktúra-rendszergazdák | Tanúsítvány-átváltási tulajdonos | Globális rendszergazda |
 | Üzleti tulajdonos/érintett fél | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincsenek |
 

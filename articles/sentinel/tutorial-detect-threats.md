@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: ad9c752898733286701db2d0f0b1fc40029b7521
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 2cc33a9ac55ae9e906d88b72476d4b5ee244d2c8
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370710"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780426"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>Oktatóanyag: Fenyegetések észlelése az Azure Sentinel előzetes verziójával
 
@@ -28,7 +28,7 @@ ms.locfileid: "68370710"
 > Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Miután [csatlakoztatta az](quickstart-onboard.md) adatforrásokat az Azure Sentinel szolgáltatáshoz, értesítést szeretne kapni, ha valamilyen gyanús esemény történik. Ennek lehetővé tételéhez az Azure Sentinel lehetővé teszi, hogy speciális riasztási szabályokat hozzon létre, amelyek olyan eseteket állítanak elő, amelyek a környezetében felhasználható rendellenességek és fenyegetések mélyebb kivizsgálásához rendelhetők. 
+Miután [csatlakoztatta az](quickstart-onboard.md) adatforrásokat az Azure Sentinel szolgáltatáshoz, értesítést szeretne kapni, ha valamilyen gyanús esemény történik. Ennek lehetővé tételéhez az Azure Sentinel lehetővé teszi, hogy speciális riasztási szabályokat hozzon létre, amelyek olyan incidenseket állítanak elő, amelyek a környezetében felmerülő rendellenességek és fenyegetések mélyebb kivizsgálására használhatók. 
 
 Ez az oktatóanyag segítséget nyújt az Azure Sentinel-fenyegetések észlelésében.
 > [!div class="checklist"]
@@ -37,7 +37,7 @@ Ez az oktatóanyag segítséget nyújt az Azure Sentinel-fenyegetések észlelé
 
 ## <a name="create-detection-rules"></a>Észlelési szabályok létrehozása
 
-Az esetek kivizsgálásához először létre kell hoznia az észlelési szabályokat. 
+Az incidensek kivizsgálásához először létre kell hoznia az észlelési szabályokat. 
 
 > [!NOTE]
 > Az Azure Sentinelben létrehozott riasztások [Microsoft Graph biztonságon](https://aka.ms/securitygraphdocs)keresztül érhetők el. További részletekért és integrációs partnereinkért tekintse meg a [Microsoft Graph Security riasztások dokumentációját](https://aka.ms/graphsecurityreferencebetadocs) .
@@ -52,7 +52,7 @@ Az észlelési szabályok azon veszélyforrások és rendellenességek típusain
 
    ![Riasztási szabály létrehozása](./media/tutorial-detect-threats/create-alert-rule.png)
 
-3. A **riasztási szabály létrehozása**területen adjon meg egy leíró nevet, és szükség szerint  állítsa be a súlyosságot. 
+3. A **riasztási szabály létrehozása**területen adjon meg egy leíró nevet, és szükség szerint állítsa be a súlyosságot. 
 
 4. Hozza létre a lekérdezést Log Analyticsban, majd illessze be a **riasztási szabály beállítása** mezőbe. Íme egy példa a lekérdezésre, amely riasztást küld, ha rendellenes számú erőforrás jön létre az Azure-tevékenységben.
 
@@ -69,17 +69,17 @@ Az észlelési szabályok azon veszélyforrások és rendellenességek típusain
 
 6. Riasztási trigger feltételeinek meghatározása a **riasztási trigger**alatt. Ez határozza meg a riasztást kiváltó feltételeket. 
 
-7. Állítsa be  , hogy a lekérdezés milyen gyakran fusson – akár 5 percenként, akár ritkábban, akár naponta egyszer. 
+7. Állítsa be , hogy a lekérdezés milyen gyakran fusson – akár 5 percenként, akár ritkábban, akár naponta egyszer. 
 
-8. Állítsa be  azt az időtartamot, amellyel szabályozható, hogy a lekérdezés mennyi adattal fusson, például óránként, 60 percen belül.
+8. Állítsa be azt az időtartamot, amellyel szabályozható, hogy a lekérdezés mennyi adattal fusson, például óránként, 60 percen belül.
 
 9. Megadhatja az elnyomást is. A tiltás akkor lehet hasznos, ha le szeretné állítani az ismétlődő riasztások aktiválását ugyanazon incidens esetén. Így leállíthatja a riasztásokat egy adott időszakban. Ez segít elkerülni az incidensek ismétlődő riasztásait, és lehetővé teszi az egymást követő riasztások kihagyását egy adott időszakra vonatkozóan. Ha például a **riasztás ütemezési** **gyakorisága** 60 percre van beállítva, és a **riasztások ütemezési időtartama** két óra, és a lekérdezés eredményei meghaladják a meghatározott küszöbértéket, akkor az első észlelése után a rendszer kétszer riasztást indít el. az elmúlt 60 percben, majd ismét, ha a minta 2 órás adat első 60 percében szerepel. Javasoljuk, hogy ha riasztást vált ki, a tiltásnak a riasztási időszakban beállított időtartamra kell esnie. A példánkban érdemes lehet letiltani a 60 percet, hogy a riasztások csak a legutóbbi órában történt események esetén legyenek aktiválva.
 
 8. Miután beillesztette a lekérdezést a **riasztási szabály beállítása** mezőbe, azonnal megtekintheti a riasztás szimulálása a **logikai riasztás szimulálása** alatt, így megtudhatja, hogy mennyi adat jön létre a riasztás adott időintervallumában. Ön által létrehozott. Ez attól függ, hogy mire van beállítva a **gyakoriság** és a **küszöbérték**. Ha úgy látja, hogy a riasztások átlaga túl gyakran aktiválódik, érdemes megadnia az eredmények számát, hogy az az átlagosnál nagyobb legyen.
 
-9. A riasztási szabály inicializálásához kattintson a **Létrehozás** gombra. A riasztás létrehozása után létrejön egy eset, amely tartalmazza a riasztást. A meghatározott észlelési szabályokat sorokként tekintheti meg a **Security Analytics** lapon. Megtekintheti az egyes szabályokhoz tartozó egyezések számát is – az elindított riasztásokat. Ebből a listából engedélyezheti, letilthatja vagy törölheti az egyes szabályokat. Azt is megteheti, hogy a sor végén lévő három pontra (...) kattint az egyes riasztások szerkesztéséhez, letiltásához, klónozásához, a találatok megjelenítéséhez vagy a szabály törléséhez. Az **elemzési** oldal az összes aktív riasztási szabály gyűjteménye, beleértve az Ön által engedélyezett sablonokat és a sablonok alapján létrehozott riasztási szabályokat.
+9. A riasztási szabály inicializálásához kattintson a **Létrehozás** gombra. A riasztás létrehozása után létrejön egy incidens, amely tartalmazza a riasztást. A meghatározott észlelési szabályokat sorokként tekintheti meg a **Security Analytics** lapon. Megtekintheti az egyes szabályokhoz tartozó egyezések számát is – az elindított riasztásokat. Ebből a listából engedélyezheti, letilthatja vagy törölheti az egyes szabályokat. Azt is megteheti, hogy a sor végén lévő három pontra (...) kattint az egyes riasztások szerkesztéséhez, letiltásához, klónozásához, a találatok megjelenítéséhez vagy a szabály törléséhez. Az **elemzési** oldal az összes aktív riasztási szabály gyűjteménye, beleértve az Ön által engedélyezett sablonokat és a sablonok alapján létrehozott riasztási szabályokat.
 
-1. A riasztási szabályok eredményei az **esetek** oldalon láthatók, ahol az osztályozás, az [esetek kivizsgálására](tutorial-investigate-cases.md)és a fenyegetések elhárítására van lehetőség.
+1. A riasztási szabályok eredményei az incidensek oldalon láthatók , ahol az osztályozás, az [incidensek](tutorial-investigate-cases.md)kivizsgálása és a fenyegetések szervizelése is megtekinthető.
 
 
 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: ce22efd6eccdc067b05697b8389c821c4c01a347
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 58db76401439befd476bc78c1a1a20eeed5c2342
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638596"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779167"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -45,13 +45,18 @@ ms.locfileid: "68638596"
 > [!NOTE]
 > Ha .NET Core-t használ, tekintse meg a .net-szabványt megcélzó [.net SDK](sql-api-sdk-dotnet-standard.md)legújabb 3. x verzióját. 
 
+### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
+
+* Az SDK System .net. http verziója mostantól megegyezik a NuGet csomagban definiált értékkel.
+* Egy másik régióba történő írási kérelmek engedélyezése, ha az eredeti hiba meghiúsul.
+* Munkamenet-újrapróbálkozási szabályzat hozzáadása írási kérelemhez.
+
 ### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 
 * Kijavítja az üres lapokat okozó lekérdezések nyomkövetési versenyhelyzet-feltételeit
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
-* Az SDK System .net. http verziója megegyezik a NuGet csomagban definiált értékkel
 * Nagyobb decimális pontossági méret a LINQ-lekérdezéseknél.
 * Új osztályok lettek hozzáadva a CompositePath, a CompositePathSortOrder, a SpatialSpec, a SpatialType és a PartitionKeyDefinitionVersion
 * TimeToLivePropertyPath hozzáadva a DocumentCollection-hoz
@@ -250,6 +255,7 @@ Ha az SDK-val kapcsolatos kérdése van, tegye közzé a [StackOverflow](https:/
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |Július 02, 2019 |--- |
 | [2.4.1](#2.4.1) |2019. június 20. |--- |
 | [2.4.0](#2.4.0) |Május 05., 2019 |--- |
 | [2.3.0](#2.3.0) |Április 04., 2019 |--- |

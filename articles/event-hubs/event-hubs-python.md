@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: f86dc92b4df45119930970acfe9e173f32f894fb
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 0960862da9e65cff4d957e97a7488dc7a245651a
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356056"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742124"
 ---
 # <a name="how-to-use-azure-event-hubs-from-a-python-application"></a>Python-alkalmazás az Azure Event Hubs használatával
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. További információkért lásd: [az Event Hubs bemutatása](event-hubs-what-is-event-hubs.md). 
@@ -113,7 +113,7 @@ client.stop()
 Események fogadása az eseményközpontok a pythonban írt alkalmazások teljes oktatóanyagot, tekintse meg a [Ez a cikk](event-hubs-python-get-started-receive.md)
 
 ## <a name="read-capture-event-data-from-azure-storage"></a>Olvasási rögzítési eseményadatokat az Azure Storage-ból
-A következő kód bemutatja, hogyan olvashatja el az **Azure Blob Storage** -ban tárolt rögzített események adatait egy Python-alkalmazásból: Az  Event hub rögzítési funkciójának engedélyezéséhez kövesse az alábbi utasításokat: [Event Hubs rögzítés engedélyezése a Azure Portal használatával](event-hubs-capture-enable-through-portal.md). Ezt követően bizonyos események küldése az event hubs a kódot tesztelés előtt. 
+A következő kód bemutatja, hogyan olvashatja el az **Azure Blob Storage** -ban tárolt rögzített események adatait egy Python-alkalmazásból: Az Event hub rögzítési funkciójának engedélyezéséhez kövesse az alábbi utasításokat: [Event Hubs rögzítés engedélyezése a Azure Portal használatával](event-hubs-capture-enable-through-portal.md). Ezt követően bizonyos események küldése az event hubs a kódot tesztelés előtt. 
 
 ```python
 import os
@@ -162,7 +162,7 @@ startProcessing('YOUR STORAGE ACCOUNT NAME', 'YOUR KEY', 'capture')
 Részletes útmutató egy Azure blob Storage rögzített az Event Hubs-adatok beolvasása egy pythonban írt alkalmazás, lásd: [Ez a cikk](event-hubs-capture-python.md)
 
 ## <a name="github-samples"></a>GitHub-minták
-További Python-minták az annak a [Git-tárházat az azure-event-hubs-python](https://github.com/Azure/azure-event-hubs-python/).
+További Python-minták az annak a [Git-tárházat az azure-event-hubs-python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs).
 
 ## <a name="next-steps"></a>További lépések
 Olvassa végig az alapelvek szakasz kezdve a cikkek [Event Hubs-szolgáltatások – áttekintés](event-hubs-features.md).

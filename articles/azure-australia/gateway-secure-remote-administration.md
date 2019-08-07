@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: 827dffc1c7544d9373b5f8d4426ea8c448fa25ab
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1e4c4712312faf2274a4a0737c4fc1f7ce39f98e
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571600"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824192"
 ---
 # <a name="secure-remote-administration-of-your-gateway-in-azure-australia"></a>Az átjáró biztonságos távoli felügyelete az Azure Ausztráliában
 
@@ -33,7 +33,6 @@ Ez a dokumentum a biztonságos felügyelet fontosságát tárgyalja, és egy biz
 |Naplózás és naplózás   |A biztonsági és adminisztratív kapcsolódó események automatizált létrehozása, gyűjtése és elemzése a munkaállomások, a kiszolgálók, a hálózati eszközök és a Jump Box mezők esetében lehetővé teszi a kompromisszumok észlelését és a támadási kísérleteket. Az Automation lehetővé teszi a szervezetek számára, hogy gyorsabban válaszoljanak, ami csökkenti a kompromisszum következményeit.|
 |Hálózati szegmentálás és elkülönítés|A hálózat szegmentálása logikai zónákba, például a különböző biztonsági tartományokban, és a logikai hálózatok további elkülönítése az egyik zónából a másikba áramló adattípusok korlátozásával, korlátozza az oldalirányú mozgást. A szegmentálás megakadályozza, hogy egy támadó hozzáférjen a további erőforrásokhoz.|
 |Jump boxok|A Jump Box egy megerősített távelérési kiszolgáló, amely általában a Microsoft Távoli asztali szolgáltatások vagy a Secure Shell-(SSH-) szoftvereket használja. A Jump Box a kritikus rendszerekhez és a dedikált gazdagépen végrehajtott összes felügyeleti művelethez hozzáférő rendszergazdák számára is kiugró pontként működik.|
-|
 
 Ez a cikk egy olyan hivatkozási architektúrát tartalmaz, amellyel a fenti elemek az Azure-ban üzembe helyezett rendszerek biztonságos felügyeletéhez használhatók.
 
@@ -77,7 +76,6 @@ Az adminisztrációhoz való hozzáférés több lépésből álló folyamat, am
 |Feltételes hozzáférés |A feltételes hozzáférési szabályzatok ellenőrizhetik a hitelesítési kísérletet annak biztosítására, hogy az megfeleljen a szükséges követelményeknek, például a kapcsolathoz tartozó IP-címet, a csoport tagságát a Kiemelt fiókhoz, valamint a felügyeleti és megfelelőségi állapotot a következőben: az Intune által jelentett, Kiemelt jogosultságú munkaállomás. |
 |Privileged Identity Management (PIM) |Az Azure Portal segítségével a rendszergazda aktiválhatja vagy kérheti az aktiválást azokhoz a Kiemelt szerepkörökhöz, amelyekhez a PIM-t engedélyezték. A PIM biztosítja, hogy a Kiemelt jogosultságú fiókok ne rendelkezzenek állandó rendszergazdai jogosultságokkal, és hogy az emelt szintű hozzáférésre irányuló kérelmek csak a rendszergazdai feladatok elvégzéséhez szükséges ideig legyenek. A PIM az összes kérelem és aktiválás naplózását is lehetővé teszi a naplózási célokra. |
 |Identitáskezelés és hozzáférés-menedzsment (Identity and Access Management)|Miután a rendszerjogosultságú fiókot biztonságosan azonosították és aktiválta a szerepköröket, a rendszergazda hozzáférést kap azokhoz az Azure-előfizetésekhez és erőforrásokhoz, amelyeket az identitás-és hozzáférés-kezeléshez rendeltek.|
-|
 
 Miután a rendszerjogosultságú fiók végrehajtotta a rendszergazdai hozzáférés megszerzésének lépéseit a Azure Portalhoz, konfigurálhatja a munkaterhelések elérését, és megteheti a felügyeleti kapcsolatokat.
 
@@ -91,7 +89,6 @@ Miután a rendszerjogosultságú fiók végrehajtotta a rendszergazdai hozzáfé
 |Hálózati házirend-kiszolgáló (NPS)|A hálózati házirend-kiszolgáló fogadja a hitelesítési kérést a RD-átjárótól, és érvényesíti a felhasználónevet és a jelszót Active Directory előtt, mielőtt elküld egy, az Azure MFA-hitelesítési kérelem elindítására Azure Active Directory irányuló kérelmet.|
 |Azure MFA|Az Azure MFA hitelesítési kérést küld a Kiemelt fiók regisztrált mobileszközének. A mobileszköz felügyeletét az Intune felügyeli a biztonsági követelmények teljesítése érdekében. A rendszergazdának először hitelesítenie kell a mobileszköz, majd a Microsoft Authenticator alkalmazás PIN-kód vagy biometrikus rendszer használatával, mielőtt a hitelesítési kísérlet engedélyezve lenne az Azure MFA-ra.|
 |Jump Server|A sikeres hitelesítés után az RDP-kapcsolat Transport Layer Security (TLS) protokollal van titkosítva, majd a titkosított IPSec-alagúton keresztül az Azure-VPN Gateway, a RD-átjáró és a Jump kiszolgálón A Jump Server-kiszolgálóról a rendszergazda mostantól RDP vagy SSH használatával is felhasználhatja a virtuális gépeket a JIT-kérelemben megadott módon.|
-|
 
 ## <a name="general-guidance"></a>Általános útmutatás
 
@@ -133,7 +130,6 @@ Az emelt szintű munkaállomás egy megerősített gép, amely rendszergazdai fe
 |---|---|
 |Emelt szintű hozzáférési munkaállomások architektúrájának áttekintése|[https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)|
 |A Kiemelt hozzáférési segédanyagok biztonságossá tétele|[https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)|
-|
 
 ### <a name="mobile-device"></a>Mobileszköz
 
@@ -143,7 +139,6 @@ A mobileszköz hordozhatósága és mérete miatt nagyobb a véletlen adatveszt�
 |---|---|
 |Azure AD-hitelesítési módszerek|[https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)|
 |Az Microsoft Authenticator alkalmazás használata|[https://support.microsoft.com/help/4026727/microsoft-account-how-to-use-the-microsoft-authenticator-app](https://support.microsoft.com/help/4026727/microsoft-account-how-to-use-the-microsoft-authenticator-app)|
-|
 
 ### <a name="microsoft-intune"></a>Microsoft Intune
 
@@ -153,7 +148,6 @@ Az Intune a mobileszközök és alkalmazások kezelését Enterprise Mobility + 
 |---|---|
 |Microsoft Intune dokumentáció|[https://docs.microsoft.com/intune/](https://docs.microsoft.com/intune/)|
 |Az eszközök megfelelőségének első lépései az Intune-ban|[https://docs.microsoft.com/intune/device-compliance-get-started](https://docs.microsoft.com/intune/device-compliance-get-started)|
-|
 
 ### <a name="group-policy"></a>Csoportházirend
 
@@ -162,7 +156,6 @@ Csoportházirend az operációs rendszerek és alkalmazások konfigurációjána
 |További források|Összekapcsolás|
 |---|---|
 |Helyi bejelentkezés engedélyezése Csoportházirend beállítás|[https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/allow-log-on-locally](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/allow-log-on-locally)|
-|
 
 ### <a name="jump-server--bastion-host"></a>Jump Server/megerősített gazdagép
 
@@ -171,7 +164,6 @@ A Jump Server/megerősített gazdagép egy központosított pont az adminisztrá
 |További források|Összekapcsolás|
 |---|---|
 |Biztonságos felügyeleti gazdagépek implementálása|[https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-secure-administrative-hosts](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-secure-administrative-hosts)|
-|
 
 ### <a name="just-in-time-jit-access"></a>Igény szerinti (JIT) hozzáférés
 
@@ -181,7 +173,6 @@ A JIT egy Azure Security Center képesség, amely hálózati biztonsági csoport
 |---|---|
 |Igény szerinti (JIT) hozzáférés kezelése|[https://docs.microsoft.com/azure/security-center/security-center-just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)|
 |Azure-beli virtuális gépekhez való hozzáférés automatizálása|[https://blogs.technet.microsoft.com/motiba/2018/06/24/automating-azure-just-in-time-vm-access](https://blogs.technet.microsoft.com/motiba/2018/06/24/automating-azure-just-in-time-vm-access)|
-|
 
 ## <a name="secure-communication"></a>Biztonságos kommunikáció
 
@@ -194,7 +185,6 @@ A Azure Portal kommunikációját Transport Layer Security (TLS) használatával
 |További források |Összekapcsolás |
 |---|---|
 |Az Azure encryption áttekintése – az átvitel titkosítása|[https://docs.microsoft.com/azure/security/security-azure-encryption-overview#encryption-of-data-in-transit](https://docs.microsoft.com/azure/security/security-azure-encryption-overview#encryption-of-data-in-transit)|
-|
 
 ### <a name="azure-vpn-gateway"></a>Azure VPN Gateway
 
@@ -204,8 +194,7 @@ Az Azure VPN Gateway biztonságos titkosított kapcsolódást biztosít a Kiemel
 |---|---|
 |Tudnivalók a pont – hely kapcsolatokról|[https://docs.microsoft.com/azure/vpn-gateway/point-to-site-about](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-about)|
 |Az Azure VPN Gateway titkosítási adatai|[https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-compliance-crypto](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-compliance-crypto)|
-|Azure VPN Gateway konfiguráció|[https://aka.ms/AzGovAUSecurity](https://aka.ms/AzGovAUSecurity)|
-|
+|Azure VPN Gateway konfiguráció|[Azure VPN Gateway konfiguráció](vpn-gateway.md)|
 
 ### <a name="remote-desktop-rd-gateway"></a>Távoli asztal (RD) átjáró
 
@@ -214,7 +203,6 @@ A RD-átjáró a rendszerek RDP-kapcsolatainak szabályozására és engedélyez
 |További források |Összekapcsolás |
 |---|---|
 |Távoli asztali szolgáltatások architektúra|[https://docs.microsoft.com/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)|
-|
 
 ### <a name="network-security-groups-nsgs"></a>Hálózati biztonsági csoportok (NSG)
 
@@ -224,7 +212,6 @@ A NSG az alhálózatok vagy virtuális gépek beléptetéséhez vagy elhagyásá
 |---|---|
 |Azure biztonsági csoportok – áttekintés|[https://docs.microsoft.com/azure/virtual-network/security-overview](https://docs.microsoft.com/azure/virtual-network/security-overview)|
 |Útmutató: Virtuális hálózatok megtervezése|[https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)|
-|
 
 ## <a name="strong-authentication"></a>Erős hitelesítés
 
@@ -237,7 +224,6 @@ A tartományvezérlő magas szinten tárolja a Active Directory adatbázis egy p
 |További források |Összekapcsolás |
 |---|---|
 |Active Directory tartományi szolgáltatások áttekintése|[https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)|
-|
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 
@@ -249,7 +235,6 @@ identitások és az Azure-környezet hitelesítésének és engedélyezésének 
 |---|---|
 |Azure Active Directory-dokumentáció|[https://docs.microsoft.com/azure/active-directory](https://docs.microsoft.com/azure/active-directory)|
 |Hibrid identitás dokumentációja|[https://docs.microsoft.com/azure/active-directory/hybrid](https://docs.microsoft.com/azure/active-directory/hybrid)|
-|
 
 ### <a name="network-policy-server-nps"></a>Hálózati házirend-kiszolgáló (NPS)
 
@@ -258,7 +243,6 @@ A hálózati házirend-kiszolgáló egy olyan hitelesítési és házirend-kiszo
 |További források |Összekapcsolás |
 |---|---|
 |A hálózati házirend-kiszolgáló dokumentációja|[https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)|
-|
 
 ### <a name="azure-mfa"></a>Azure MFA
 
@@ -268,7 +252,6 @@ Az Azure MFA egy olyan hitelesítési szolgáltatás, amely a Azure Active Direc
 |---|---|
 |Működés: Azure Multi-Factor Authentication|[https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)|
 |Útmutató: Felhőalapú Azure Multi-Factor Authentication üzembe helyezése|[https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)|
-|
 
 ## <a name="strong-authorisation"></a>Erős engedélyezés
 
@@ -282,7 +265,6 @@ Az Azure-ban az adott fiókhoz rendelt szerepkörökön alapuló jogosultsági s
 |---|---|
 |Azure-beli szerepköralapú Access Control|[https://docs.microsoft.com/azure/role-based-access-control](https://docs.microsoft.com/azure/role-based-access-control)|
 |A szerepkör-definíciók ismertetése|[https://docs.microsoft.com/azure/role-based-access-control/role-definitions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions)|
-|
 
 ### <a name="privileged-identity-management-pim"></a>Privileged Identity Management (PIM)
 
@@ -292,7 +274,6 @@ A PIM egy Azure Active Directory-összetevő, amely a Kiemelt szerepkörökhöz 
 |---|---|
 |Privileged Identity Management (PIM) dokumentációja|[https://docs.microsoft.com/azure/active-directory/privileged-identity-management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)|
 |Ismerkedés a PIM-mel|[https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-getting-started](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-getting-started)|
-|
 
 ### <a name="conditional-access"></a>Feltételes hozzáférés
 
@@ -302,7 +283,6 @@ A feltételes hozzáférés Azure Active Directory olyan összetevője, amely le
 |---|---|
 |A feltételes hozzáférés dokumentációja|[https://docs.microsoft.com/azure/active-directory/conditional-access](https://docs.microsoft.com/azure/active-directory/conditional-access)|
 |Útmutató: Felügyelt eszközök szükségesek a felhőalapú alkalmazásokhoz való hozzáféréshez feltételes hozzáféréssel|[https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|
-|
 
 ## <a name="next-steps"></a>További lépések
 

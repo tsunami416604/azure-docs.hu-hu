@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 06532369efb802606eb13a4b38a8579a3528f999
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dacc4179483de5d5ef8a05fd836e4241c161deac
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60777013"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741267"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Az Azure Log Analytics felügyeleti megoldás riasztás
 
 ![Kezelési figyelmeztető ikon](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Az Azure Monitor most már támogatja a bővített képességet biztosít a [ipari méretekben a riasztások kezelése](https://aka.ms/azure-alerts-overview), beleértve a rendszer által létrehozott [monitorozási eszközökkel, például az SCOM, Zabbix vagy Nagios](https://aka.ms/managing-alerts-other-monitoring-services).
+>  A Azure Monitor mostantól támogatja a nagy mennyiségű [riasztások kezelésére](https://aka.ms/azure-alerts-overview)szolgáló továbbfejlesztett képességeket, beleértve a [SCOM, a Zabbix vagy a Nagios figyelési eszközei](https://aka.ms/managing-alerts-other-monitoring-services)által generált lehetőségeket is.
 >  
 
 
@@ -87,28 +87,28 @@ A riasztási felügyeleti megoldás elemzi a típusú rekordot **riasztási**.  
 
 A megoldás riasztások importálása a System Center Operations Manager és a egy megfelelő rekordot hoz létre az egyes típusú **riasztási** és SourceSystem **OpsManager**.  Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:  
 
-| Tulajdonság | Description |
+| Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus |*Riasztás* |
-| SourceSystem |*OpsManager* |
-| AlertContext |Az adatelem XML formátumban kell létrehozni a riasztást kiváltó részletek. |
-| AlertDescription |A riasztás részletes leírása. |
-| AlertId |A riasztás GUID azonosítója. |
-| AlertName |A riasztás neve. |
-| AlertPriority |A riasztás prioritását. |
-| AlertSeverity |A riasztás súlyossági szintje. |
-| AlertState |A riasztás legutóbbi feloldási állapota. |
-| LastModifiedBy |A felhasználó, aki utoljára módosította a riasztás neve. |
-| ManagementGroupName |A felügyeleti csoport nevét, ahol a riasztást kiváltó. |
-| RepeatCount |Hányszor a azonos riasztás generálása a figyelt objektum óta feloldva. |
-| ResolvedBy |A riasztás feloldva felhasználó neve. Üres, ha a riasztás nem még lett feloldva. |
-| SourceDisplayName |A riasztást kiváltó figyelési objektum megjelenített neve. |
-| SourceFullName |A riasztást kiváltó figyelési objektum teljes neve. |
-| TicketId |Jegyazonosító a riasztás, ha a System Center Operations Manager-környezet integrálva van egy folyamat riasztások jegyek hozzárendeléséhez.  Üres nincs jegy azonosító hozzá van rendelve. |
-| TimeGenerated |Dátum és idő, hogy a riasztás létrejött. |
-| TimeLastModified |Dátum és a riasztás legutóbbi módosításának időpontja. |
-| TimeRaised |Dátum és idő, amely a riasztást kiváltó. |
-| TimeResolved |Dátum és idő, hogy a riasztás feloldva. Üres, ha a riasztás nem még lett feloldva. |
+| `Type` |*Riasztás* |
+| `SourceSystem` |*OpsManager* |
+| `AlertContext` |Az adatelem XML formátumban kell létrehozni a riasztást kiváltó részletek. |
+| `AlertDescription` |A riasztás részletes leírása. |
+| `AlertId` |A riasztás GUID azonosítója. |
+| `AlertName` |A riasztás neve. |
+| `AlertPriority` |A riasztás prioritását. |
+| `AlertSeverity` |A riasztás súlyossági szintje. |
+| `AlertState` |A riasztás legutóbbi feloldási állapota. |
+| `LastModifiedBy` |A felhasználó, aki utoljára módosította a riasztás neve. |
+| `ManagementGroupName` |A felügyeleti csoport nevét, ahol a riasztást kiváltó. |
+| `RepeatCount` |Hányszor a azonos riasztás generálása a figyelt objektum óta feloldva. |
+| `ResolvedBy` |A riasztás feloldva felhasználó neve. Üres, ha a riasztás nem még lett feloldva. |
+| `SourceDisplayName` |A riasztást kiváltó figyelési objektum megjelenített neve. |
+| `SourceFullName` |A riasztást kiváltó figyelési objektum teljes neve. |
+| `TicketId` |Jegyazonosító a riasztás, ha a System Center Operations Manager-környezet integrálva van egy folyamat riasztások jegyek hozzárendeléséhez.  Üres nincs jegy azonosító hozzá van rendelve. |
+| `TimeGenerated` |Dátum és idő, hogy a riasztás létrejött. |
+| `TimeLastModified` |Dátum és a riasztás legutóbbi módosításának időpontja. |
+| `TimeRaised` |Dátum és idő, amely a riasztást kiváltó. |
+| `TimeResolved` |Dátum és idő, hogy a riasztás feloldva. Üres, ha a riasztás nem még lett feloldva. |
 
 ## <a name="sample-log-searches"></a>Naplókeresési minták
 Az alábbi táblázat riasztási, a megoldás által összegyűjtött rekordokkal kapcsolatos naplókeresési mintákat tartalmazza: 

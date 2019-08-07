@@ -1,39 +1,39 @@
 ---
-title: Az Azure Data Catalog hibaelhárítása
-description: Ez a cikk ismerteti a gyakori hibaelhárítási problémák az Azure Data Catalog-erőforrásokhoz.
+title: A Azure Data Catalog hibáinak megoldása
+description: Ez a cikk a Azure Data Catalog erőforrásaival kapcsolatos gyakori hibaelhárítási problémákat ismerteti.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: troubleshooting
-ms.date: 06/13/2019
-ms.openlocfilehash: ed74e90e5e8ed55b75968f51cb50e6a1b4cdd75d
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.date: 08/01/2019
+ms.openlocfilehash: f37110138ae62272e56b155b7e8a9aac2f80cdf8
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203506"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68734586"
 ---
-# <a name="troubleshooting-azure-data-catalog"></a>Az Azure Data Catalog hibaelhárítása
+# <a name="troubleshooting-azure-data-catalog"></a>Hibaelhárítási Azure Data Catalog
 
-Ez a cikk ismerteti a gyakori hibaelhárítási problémák az Azure Data Catalog-erőforrásokhoz. 
+Ez a cikk a Azure Data Catalog erőforrásaival kapcsolatos gyakori hibaelhárítási problémákat ismerteti. 
 
-## <a name="functionality-limitations"></a>Funkciók korlátozások
+## <a name="functionality-limitations"></a>Működési korlátozások
 
-Az Azure Data Catalog használatakor az alábbi funkciókat korlátozva:
+Azure Data Catalog használatakor a következő funkciók korlátozottak:
 
-- Típusú fiókok **Vendég szerepkör** nem támogatottak. Az Azure Data Catalog felhasználói nem adható hozzá, a Vendég fiók, és www.azuredatacatalog.com, a vendég felhasználók nem használhatják a portálon.
+- A **vendég szerepkörrel** rendelkező fiókok nem támogatottak. Azure Data Catalog felhasználóinak nem adhat hozzá vendég fiókokat, és a vendég felhasználók nem használhatják a portált a www.azuredatacatalog.com címen.
 
-- Az Azure Resource Manager-sablonok vagy az Azure PowerShell-parancsok az Azure Data Catalog-erőforrások létrehozása nem támogatott.
+- Azure Data Catalog-erőforrások létrehozása Azure Resource Manager sablonokkal vagy Azure PowerShell parancsok használatával nem támogatott.
 
-- Az Azure Data Catalog-erőforrást nem lehet áthelyezni az Azure-bérlők között.
+- A Azure Data Catalog erőforrás nem helyezhető át az Azure-bérlők között.
 
 ## <a name="azure-active-directory-policy-configuration"></a>Azure Active Directory-szabályzat konfigurálása
 
-Előfordulhat, hogy ugyan be tud lépni az Azure Data Catalog portálra, de amikor megpróbál bejelentkezni az adatforrás-regisztrációs eszközbe, hibaüzenet jelenik meg, amely meggátolja a belépést. Ez a hiba akkor fordulhat elő, ha a vállalati hálózaton, vagy a vállalati hálózaton kívülről történő csatlakozáskor.
+Előfordulhat, hogy ugyan be tud lépni az Azure Data Catalog portálra, de amikor megpróbál bejelentkezni az adatforrás-regisztrációs eszközbe, hibaüzenet jelenik meg, amely meggátolja a belépést. Ez a hiba akkor fordulhat elő, ha a vállalati hálózaton van, vagy ha a vállalati hálózaton kívülről csatlakozik.
 
 A regisztrációs eszköz *űrlapos hitelesítés* segítségével veti össze a felhasználói bejelentkezéseket az Azure Active Directory adatbázisával. Ahhoz, hogy a bejelentkezés sikeres legyen, az Azure Active Directory rendszergazdájának engedélyeznie kell az űrlapos hitelesítést a *globális hitelesítési szabályzatban*.
 
-Ahogy az az alábbi képen is látható, a globális hitelesítési szabályzat segítségével különböző hitelesítést engedélyezhet az intranetes és az extranetes kapcsolatokhoz. Bejelentkezési hiba akkor fordulhat elő, ha nincs engedélyezve az űrlapos hitelesítés, amelyről csatlakozik a hálózathoz.
+Ahogy az az alábbi képen is látható, a globális hitelesítési szabályzat segítségével különböző hitelesítést engedélyezhet az intranetes és az extranetes kapcsolatokhoz. Bejelentkezési hibák akkor fordulhatnak elő, ha nincs engedélyezve az űrlapos hitelesítés azon a hálózaton, amelyhez csatlakozik.
 
  ![Az Azure Active Directory globális hitelesítési szabályzata](./media/troubleshoot-policy-configuration/global-auth-policy.png)
 
@@ -41,4 +41,4 @@ További információkért lásd a [Hitelesítési házirendek konfigurálása](
 
 ## <a name="next-steps"></a>További lépések
 
-* [Hozzon létre egy Azure Data Catalog](data-catalog-get-started.md)
+* [Azure Data Catalog létrehozása](data-catalog-get-started.md)

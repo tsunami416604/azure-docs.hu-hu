@@ -1,7 +1,7 @@
 ---
 title: Hiperparaméterek a modell finomhangolása
 titleSuffix: Azure Machine Learning service
-description: Hatékonyan finomhangolja az Azure Machine Learning szolgáltatás használatával a mély tanulás / gépi tanulási modell hiperparaméterek. Megtudhatja, hogyan határozza meg a paraméter keresési terület, adjon meg egy elsődleges metrika optimalizálása és a korai a rosszul működő fut le.
+description: Hatékonyan finomhangolja az Azure Machine Learning szolgáltatás használatával a mély tanulás / gépi tanulási modell hiperparaméterek. Megtudhatja, hogyan határozhatja meg a paraméterek keresési területét, hogyan adhat meg egy elsődleges metrikát az optimalizáláshoz, és korai megszakítást hajthat végre a rosszul futó futtatások.
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 730f39bf0b05ef33bbbca150532f96f1e495a9ed
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: cb4378047f34f3f635b2f1dd2425bbee28f91178
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302354"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815727"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>A modell Azure Machine Learning szolgáltatással hiperparaméterek hangolása
 
@@ -45,7 +45,7 @@ Hiperparaméterek hangolni által definiált minden egyes hiperparaméter érté
 
 ### <a name="types-of-hyperparameters"></a>Hiperparaméterek típusai
 
-Minden egyes hiperparaméter diszkrét és folytonos lehet.
+Minden hiperparaméter lehet különálló vagy folyamatos, és egy [paraméter-kifejezés](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py)által ismertetett értékek eloszlása.
 
 #### <a name="discrete-hyperparameters"></a>Különálló hiperparaméterek 
 
@@ -129,7 +129,7 @@ A [Bayes mintavételezés](https://docs.microsoft.com/python/api/azureml-train-c
 
 Bayes-mintavétel használatakor az egyidejű futtatásainak számát hatással van a beállítási folyamat hatékonyságát. Általában kisebb mennyiségű egyidejű Futtatás vezethet jobb mintavételi convergence, mivel a kisebb párhuzamossági fokot növeli, amelyek korábban befejezett futtatások futtatások száma.
 
-Bayes mintavételi támogatja a csak `choice` és `uniform` disztribúciók a keresési tér át. 
+A Bayes mintavételezés csak `choice`a `uniform`és `quniform` a keresési terület feletti eloszlásokat támogatja.
 
 ```Python
 from azureml.train.hyperdrive import BayesianParameterSampling
@@ -179,7 +179,7 @@ Kiszámítja a tanítási szkriptet a `val_accuracy` és naplózza, mint "pontos
 
 ## <a name="specify-early-termination-policy"></a>Korai lemondási házirend megadása
 
-A gyengén teljesítő futtatások automatikus leállítása egy [korai megszakítási házirenddel. Lemondási csökkenti az erőforrások veszteség, és helyette használja ezeket az erőforrásokat más paraméter konfigurációs átvizsgálását.
+Állítsa le a rosszul működő automatikusan fut egy korai lemondási szabályzatot. Lemondási csökkenti az erőforrások veszteség, és helyette használja ezeket az erőforrásokat más paraméter konfigurációs átvizsgálását.
 
 Egy korai lemondási szabályzat használatakor konfigurálhatja az alábbi paramétereket, amelyek vezérlik a házirend alkalmazásakor:
 
@@ -234,7 +234,7 @@ from azureml.train.hyperdrive import TruncationSelectionPolicy
 early_termination_policy = TruncationSelectionPolicy(evaluation_interval=1, truncation_percentage=20, delay_evaluation=5)
 ```
 
-Ebben a példában a korai lemondási házirendet alkalmazza minden időközönként kiértékelési időköze 5 díjtól. Futtatás befejeződik időköz 5, ha 5 időközönként teljesítménye minden Futtatás teljesítményét időköz 5 legkisebb 20 %-át.
+Ebben a példában a korai lemondási házirendet alkalmazza minden időközönként kiértékelési időköze 5 díjtól. A rendszer az 5. intervallumban leállítja a futtatást, ha az 5. intervallumbeli teljesítménye az 5. intervallumban az összes Futtatás legalacsonyabb 20%-ában van.
 
 ### <a name="no-termination-policy"></a>Nincs lemondási házirend
 
@@ -246,7 +246,7 @@ policy=None
 
 ### <a name="default-policy"></a>Alapértelmezett szabályzat
 
-Ha nincs szabályzat van megadva, a hiperparaméter finomhangolása a szolgáltatás lehetővé teszi az összes a betanítási Futtatás befejezését.
+Ha nincs megadva házirend, a hiperparaméter hangolási szolgáltatás lehetővé teszi, hogy az összes tanítás fusson a befejezésig.
 
 >[!NOTE] 
 >Megtakarítás ígéret feladatok megszakítása nélkül biztosító konzervatív szabályzatot keres, ha a középérték leállítása szabályzat használhatja `evaluation_interval` 1 és `delay_evaluation` 5. Ezek a konzervatív beállításait, amely körülbelül 35 %-os 25 %-os megtakarítás adatvesztés nélkül képes biztosítani az elsődleges metrika (értékelési adatok alapján).
@@ -275,7 +275,7 @@ max_total_runs=20,
 max_concurrent_runs=4
 ```
 
-Ez a kód a hiperparaméter finomhangolása a kísérletben legfeljebb 4 konfigurációk fut egyszerre 20 teljes futtatások használandó konfigurálja.
+Ez a kód úgy konfigurálja a hiperparaméter hangolási kísérletet, hogy legfeljebb 20 teljes futtatást használjon, egyszerre négy konfigurációt futtatva.
 
 ## <a name="configure-experiment"></a>Kísérlet konfigurálása
 

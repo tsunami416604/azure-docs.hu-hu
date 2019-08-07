@@ -1,82 +1,80 @@
 ---
 title: Az Azure Data Catalog billentyűparancsai
-description: Ez a cikk bemutatja a billentyűparancsok, az Azure Data Catalog.
-services: data-catalog
+description: Ez a cikk a Azure Data Catalog billentyűparancsait mutatja be.
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 00b77c88-fbca-4e6f-a175-d40b5cbbf144
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: ed101df5cd3d6e5754b88c5f66807f9fda846cf4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 499067f33bddbede6510f61e2cb5da3fb33a5e7c
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60998801"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736305"
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>Az Azure Data Catalog billentyűparancsai
-## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Az adatok katalógusadatok használható billentyűparancsok a frissítésregisztráló eszköz forrás
-### <a name="general-keyboard-shortcuts"></a>Általános használható billentyűparancsok
-| Művelet | Nyomja meg |
+## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Billentyűparancsok a Data Catalog adatforrás-regisztrációs eszközhöz
+### <a name="general-keyboard-shortcuts"></a>Általános billentyűparancsok
+| Művelet | Nyomja le ENTER |
 | --- | --- |
-| A lapon minden egyes vezérlőelem lap |Tab |
-| Válasszon egy lehetőséget |Adja meg vagy szóköz |
-| Maximalizálja a lap |WIN+UP |
-| Lap visszaállítás/minimalizálása érdekében |WIN+DOWN |
-| Lap megnyitása menü |ALT + SZÓKÖZ BILLENTYŰKOMBINÁCIÓT |
+| Lap a lapon lévő egyes vezérlőkhöz |Tab |
+| Válasszon egy lehetőséget |ENTER vagy szóköz |
+| Oldal maximalizálása |WIN+UP |
+| Oldal visszaállítása/kisméretre állítása |GYŐZELEM + LEFELÉ |
+| Oldal menü megnyitása |ALT + SZÓKÖZ |
 
 ### <a name="authentication-page"></a>Hitelesítés lap
-| Művelet | Nyomja meg |
+| Művelet | Nyomja le ENTER |
 | --- | --- |
-| Jelentkezzen be a szolgáltatás |ALT+S |
+| Bejelentkezés szolgáltatás |ALT+S |
 
-### <a name="data-source-selection-page"></a>Adatforrás-kiválasztási lapon
-| Művelet | Nyomja meg |
+### <a name="data-source-selection-page"></a>Adatforrás kiválasztása lap
+| Művelet | Nyomja le ENTER |
 | --- | --- |
-| Ugrás a következő lapra (Ha engedélyezve van) |ALT + N |
-| Ha egy csempére a fókusz a kiválasztott típusának módosítása |BALRA, jobbra felfelé vagy lefelé mutató nyíl |
+| Ugrás a következő lapra (ha engedélyezve van) |ALT + N |
+| Kijelölt típus módosítása, ha a fókusz egy csempén van |BALRA, fel, jobbra vagy lefelé nyíl |
 
-### <a name="data-source-connection-page"></a>Adatforrás kapcsolati lapon
-| Művelet | Nyomja meg |
+### <a name="data-source-connection-page"></a>Adatforrás-kapcsolatok lapja
+| Művelet | Nyomja le ENTER |
 | --- | --- |
-| Nyissa meg az előző lapra (Ha engedélyezve van) |ALT+P |
-| Válassza ki a Csatlakozás gombra. |ALT + C |
+| Ugrás az előző lapra (ha engedélyezve van) |ALT+P |
+| Kattintson a kapcsolat gombra. |ALT + C |
 
-### <a name="connection-context-page"></a>Kapcsolati környezet lapra
-| Művelet | Nyomja meg |
+### <a name="connection-context-page"></a>A kapcsolatok környezetének lapja
+| Művelet | Nyomja le ENTER |
 | --- | --- |
-| Regisztrálás gomb (Ha engedélyezve van) |ALT+R |
-| Például előnézeti jelölőnégyzetet (ha elérhető) |ALT+P |
-| Adatprofil jelölőnégyzet tartalmazzák (ha elérhető) |ALT + D |
-| Keresse meg az egyes listaelemek |FELFELÉ vagy lefelé mutató nyíl |
-| Kiszolgálóhierarchia, bontsa ki a fa nézetben csomópont |JOBBRA MUTATÓ NYÍL |
-| A kiválasztott elemek áthelyezése **rendelkezésre álló objektumok** vagy **regisztrálandó objektumok** |SZÓKÖZ |
+| Regisztráció gomb (ha engedélyezve van) |ALT+R |
+| Előnézet jelölőnégyzetének belefoglalása (ha elérhető) |ALT+P |
+| Adatprofil befoglalása jelölőnégyzet (ha elérhető) |ALT + D |
+| Navigáljon az egyes listaelemekhez |FEL vagy le nyíl |
+| Kiszolgálói hierarchia, fanézetek csomópontjának kibontása |JOBBRA MUTATÓ NYÍL |
+| Kijelölt elemek áthelyezése az **elérhető objektumok** vagy **objektumok** számára a regisztráláshoz |SZÓKÖZT |
 
-### <a name="publish-progress-page"></a>Közzétételi folyamat lap
-| Művelet | Nyomja meg |
+### <a name="publish-progress-page"></a>Közzétételi folyamat lapja
+| Művelet | Nyomja le ENTER |
 | --- | --- |
 | Mégse gomb |ALT + C |
-| Regisztrálás gomb több objektumok |ALT+R |
-| View Portal gomb |ALT+V |
+| További objektumok regisztrálása gomb |ALT+R |
+| Portál megtekintése gomb |ALT+V |
 
-### <a name="publish-progress-page"></a>Közzétételi folyamat lap
-| Művelet | Nyomja meg |
+### <a name="publish-progress-page"></a>Közzétételi folyamat lapja
+| Művelet | Nyomja le ENTER |
 | --- | --- |
-| Mentés gomb (Ha engedélyezve van) |ALT+S |
+| Mentés gomb (ha engedélyezve van) |ALT+S |
 | Mégse gomb |ALT + C |
 
-## <a name="keyboard-shortcuts-for-the-data-catalog-portal"></a>A Data Catalog-portál billentyűparancsai
-| Művelet | Nyomja meg |
+## <a name="keyboard-shortcuts-for-the-data-catalog-portal"></a>A Data Catalog portál billentyűparancsai
+| Művelet | Nyomja le ENTER |
 | --- | --- |
-| Navigálás |És SHIFT + lap |
-| Kattintson egy elemre |HELY vagy az ENTER BILLENTYŰT |
-| A szakasz feltárásához |HELY vagy az ENTER BILLENTYŰT |
-| Lépjen ki a szakasz |ESC |
-| Az eszköz PIN-kód/rögzítésének feloldása |ALT+P |
-| Ha egy eszköz fókusz van, a felderítési lapon válassza az eszköz |HELY vagy az ENTER BILLENTYŰT |
-| A többszörös kijelölés hozzáadása és törlése eszköz |CTRL + SZÓKÖZ vagy az ENTER BILLENTYŰT |
-| Váltsa át a keresési találatok menü |ALT+S |
-| Váltógomb **Megnyitás a következőben** menü |ALT + O |
-| Ismerje meg a tárolót, ha az eszköz egy tároló |ALT+L |
+| Navigálás |TAB és SHIFT + TAB |
+| Kattintson egy elemre |SZÓKÖZ vagy ENTER |
+| Részletezés egy szakaszra |SZÓKÖZ vagy ENTER |
+| Kilépés egy szakaszból |ESC |
+| Eszköz rögzítése/rögzítésének feloldása |ALT+P |
+| Ha egy eszköz fókuszban van, a Felderítés lapon válassza az eszköz lehetőséget. |SZÓKÖZ vagy ENTER |
+| Eszköz hozzáadásának és eltávolításának többszörös kijelölésből |CTRL + SZÓKÖZ vagy ENTER |
+| A keresés egyezésének váltása menü |ALT+S |
+| **Megnyitás a** menüben |ALT + O |
+| A tároló felderítése, ha az eszköz tároló |ALT+L |
 

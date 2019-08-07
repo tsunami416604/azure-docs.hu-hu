@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/21/2019
 ms.author: shvija
-ms.openlocfilehash: dfdeee9591b5d6ccbadadaef83c6598dd0e850d8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 117b7d4adb508628ee768bb9531d0bbc52f61121
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448140"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816056"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktív Directory Role-Based hozzáférés-vezérlés (előzetes verzió)
 
@@ -27,19 +27,19 @@ Azure Event hubs-névterek és az összes kapcsolódó erőforrást az Azure Por
 Azure AD RBAC használó alkalmazások nem kell kezelni a SAS-szabályok és a kulcsok vagy bármilyen más konkrét és az Event Hubs hozzáférési jogkivonatok. Az ügyfélalkalmazás kommunikál az Azure AD-hitelesítési környezetet létrehozni, és a egy hozzáférési jogkivonatot szerez az Event Hubs. A tartományi felhasználói fiókokat, amelyek interaktív bejelentkezést igényelnek, az alkalmazás soha nem kezeli a hitelesítő adatokat közvetlenül.
 
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs szerepkörök és engedélyek
-Az Azure Event Hubs-névtérré való hozzáférésre biztosít a következő beépített RBAC-szerepkörök:
+Az Azure a következő beépített RBAC szerepköröket biztosítja a Event Hubs névtérhez való hozzáférés engedélyezéséhez:
 
-A [Azure Event Hubs adatok tulajdonosa (előzetes verzió)](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview) szerepkör lehetővé teszi az adatokhoz való hozzáférést az Event Hubs-névtér és az entitások (üzenetsorok, témakörök, előfizetések és szűrők)
+Az [Azure Event Hubs adattulajdonosi (előzetes)](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview) szerepkör lehetővé teszi az adathozzáférést egy Event Hubs névtérhez és annak entitásához (várólisták, témakörök, előfizetések és szűrők)
 
 >[!IMPORTANT]
-> Korábban támogatva a felügyelt identitás hozzáadása a **tulajdonosa** vagy **közreműködői** szerepkör. Azonban, adat-hozzáférési jogosultságokat a **tulajdonosa** és **közreműködői** szerepkör már nem összes régió megfelel. Ha használja a **tulajdonosa** vagy **közreműködői** szerepkör, kapcsolót használó a **Azure Event Hubs adatok tulajdonosa (előzetes verzió)** szerepkör.
+> Korábban támogatott a felügyelt identitás hozzáadása a **tulajdonoshoz** vagy a **közreműködő** szerepkörhöz. Azonban a tulajdonosi és a **közreműködő** szerepkörre vonatkozó adathozzáférési jogosultságok már nem teljesülnek. Ha a **tulajdonos** vagy **közreműködő** szerepkört használja, váltson át az **Azure Event Hubs adattulajdonos (előzetes verzió)** szerepkör használatára.
 
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Event Hubs használata az Azure AD tartományi felhasználói fiók
 
 A következő szakasz azt ismerteti, hogyan hozhat létre és futtathat egy mintaalkalmazást, amely kérni fogja az interaktív Azure AD-felhasználó bejelentkezésének, hogyan lehet hozzáférést biztosítani az Event Hubs, a felhasználói fiók és az identitásukat el az Event Hubs használatával. 
 
-Ez a bevezető ismerteti egy egyszerű konzolalkalmazást a [, amelynek kódja a Githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Rbac/EventHubsSenderReceiverRbac/)
+Ez az oktatóanyag egy egyszerű konzolos alkalmazást ismertet, [amely a githubon található kód](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/AzureEventHubsSDK)
 
 ### <a name="create-an-active-directory-user-account"></a>Az Active Directory felhasználói fiók létrehozása
 
@@ -49,7 +49,7 @@ Ha továbbra is szeretne létrehozni ebben a forgatókönyvben egy külön fiók
 
 ### <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
-Ezután [Event Hubs-névtér létrehozása](event-hubs-create.md). 
+Ezután [hozzon létre egy Event Hubs névteret](event-hubs-create.md). 
 
 Miután létrejött a névteret, lépjen a **hozzáférés-vezérlés (IAM)** lapon a portálon, és kattintson a **szerepkör-hozzárendelés hozzáadása** az Azure AD felhasználói fiók hozzáadása a tulajdonosi szerepkör. Saját felhasználói fiókját használja, és létrehozta a névteret, ha Ön már a tulajdonosi szerepkör. Egy másik fiókot ad hozzá a szerepkört, keresse meg a webalkalmazás nevére a **engedélyek hozzáadása** panel **kiválasztása** mezőben, majd kattintson a bejegyzésre. Ezután kattintson a **Save** (Mentés) gombra. A felhasználói fiókot most már hozzáférhet az Event Hubs-névtér és az event hubs korábban hozott létre.
  
@@ -65,16 +65,16 @@ A részletes regisztrációs lépéseket mutatjuk be [ebben az oktatóanyagban](
 
 A minta futtatása előtt szerkessze az App.config fájlt, és a forgatókönyvtől függően adja meg a következő értékeket:
 
-- `tenantId`: Állítsa be **TenantId** értéket.
-- `clientId`: Állítsa be **ApplicationId** értéket. 
-- `clientSecret`: Ha azt szeretné, jelentkezzen be az ügyfél titkos kulcsát, hozza létre az Azure ad-ben. Egy webalkalmazás vagy API-t is, használja a natív alkalmazás helyett. Adja hozzá az alkalmazás alatt **hozzáférés-vezérlés (IAM)** a korábban létrehozott névtér.
-- `eventHubNamespaceFQDN`: Az újonnan létrehozott Event Hubs-névtér; teljesen minősített DNS-nevének beállítása Ha például `example.servicebus.windows.net`.
-- `eventHubName`: Állítsa be a létrehozott eseményközpont nevére.
+- `tenantId`: A **TenantId** értékre van állítva.
+- `clientId`: A **ApplicationId** értékre van állítva. 
+- `clientSecret`: Ha az ügyfél titkos kódjával szeretne bejelentkezni, hozza létre azt az Azure AD-ben. Egy webalkalmazás vagy API-t is, használja a natív alkalmazás helyett. Adja hozzá az alkalmazás alatt **hozzáférés-vezérlés (IAM)** a korábban létrehozott névtér.
+- `eventHubNamespaceFQDN`: Állítsa az újonnan létrehozott Event Hubs névtér teljesen minősített DNS-nevére; például `example.servicebus.windows.net`:.
+- `eventHubName`: Állítsa be a létrehozott Event hub nevét.
 - Az átirányítási URI-t az alkalmazásba az előző lépésben megadott.
  
 Futtassa a konzolalkalmazást, ha kéri választása; Kattintson a **interaktív felhasználói bejelentkezési** írja be a számát, és lenyomja az ENTER BILLENTYŰT. Az alkalmazás jeleníti meg a bejelentkezési ablakban, Ön hozzájárul az Event Hubs eléréséhez kéri, és a szolgáltatás segítségével a bejelentkezési azonosító használatával küldése/fogadása forgatókönyv futtatása.
 
-Az alkalmazás által használt `ServiceAudience.EventHubsAudience` , a token célrendszere. Használatakor más nyelvű vagy az SDK-k, a célközönség nem érhető el egy konstansként van-e a megfelelő értéket `https://eventhubs.azure.net/`.
+Az alkalmazás jogkivonat `ServiceAudience.EventHubsAudience` -célközönségként működik. Ha más nyelveket vagy SDK-kat használ, ahol a közönség nem érhető el állandóként, a megfelelő értéket `https://eventhubs.azure.net/`kell használnia.
 
 ## <a name="next-steps"></a>További lépések
 

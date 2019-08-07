@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 150d30085976c89e9053d4715da98e487684e45c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 1bb437511ed89de626489516ce5b06664ace6fba
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717254"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741844"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management megoldás az Azure-ban
 
@@ -23,7 +23,7 @@ A Azure Automation Update Management megoldásával kezelheti az operációs ren
 A virtuális gépeket közvetlenül a Azure Automation-fiókjából engedélyezheti Update Management. Ha szeretné megtudni, hogyan engedélyezheti a virtuális gépek Update Managementét az Automation-fiókjából, tekintse meg a [több virtuális gép frissítéseinek kezelése](manage-update-multi.md)című témakört. A virtuális gép Update Management is engedélyezheti a Azure Portal virtuális gép lapján. Ez a forgatókönyv [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) és [Windows rendszerű](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) virtuális gépek esetén érhető el.
 
 > [!NOTE]
-> A Update Management megoldáshoz egy Log Analytics-munkaterületet kell összekapcsolnia az Automation-fiókkal. A támogatott régiók végleges listáját lásd: [https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings ]. A régió-hozzárendelések nem befolyásolják a virtuális gépek az Automation-fióktól eltérő régióban való felügyeletének képességét.
+> A Update Management megoldáshoz egy Log Analytics-munkaterületet kell összekapcsolnia az Automation-fiókkal. A támogatott régiók végleges listáját az [Azure Workspace](./how-to/region-mappings.md)-hozzárendelések című témakörben tekintheti meg. A régió-hozzárendelések nem befolyásolják a virtuális gépek az Automation-fióktól eltérő régióban való felügyeletének képességét.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -173,7 +173,7 @@ Heartbeat
 Windows rendszerű számítógépen a következő információkat tekintheti meg az ügynök kapcsolatának ellenőrzéséhez Azure Monitor naplók használatával:
 
 1. A vezérlőpulton nyissa meg a **Microsoft monitoring Agent ügynököt**. Az **Azure log Analytics** lapon az ügynök a következő üzenetet jeleníti meg: **A Microsoft monitoring Agent sikeresen csatlakozott a log Analyticshoz**.
-2. Nyissa meg a Windows eseménynaplót. Nyissa meg az **Application and Services Logs\Operations Manager alkalmazást** , és keressen rá a 3000-es azonosítójú eseményre és a 5002-es azonosítójú eseményre **.** Ezek az események azt jelzik, hogy a számítógép regisztrálva van a Log Analytics munkaterületen, és fogadja a konfigurációt.
+2. Nyissa meg a Windows eseménynaplót. Nyissa meg az **Application and Services Logs\Operations Manager alkalmazást** , és keressen rá a 3000-es azonosítójú eseményre és a 5002-es azonosítójú eseményre. Ezek az események azt jelzik, hogy a számítógép regisztrálva van a Log Analytics munkaterületen, és fogadja a konfigurációt.
 
 Ha az ügynök nem tud kommunikálni Azure Monitor naplókkal, és az ügynök úgy van konfigurálva, hogy tűzfalon vagy proxykiszolgálón keresztül kommunikáljon az internettel, ellenőrizze, hogy a tűzfal vagy a proxykiszolgáló megfelelően van-e konfigurálva. A tűzfal vagy a proxykiszolgáló megfelelő konfigurálásának ellenőrzéséhez tekintse meg a [hálózati konfiguráció Windows](../azure-monitor/platform/agent-windows.md) -ügynökhöz vagy [a Linux-ügynök hálózati konfigurációja](../log-analytics/log-analytics-agent-linux.md)című témakört.
 

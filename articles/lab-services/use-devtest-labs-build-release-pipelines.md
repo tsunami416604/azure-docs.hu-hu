@@ -1,6 +1,6 @@
 ---
-title: DevTest Labs használata az Azure DevOps Build és Release folyamatokban | Microsoft Docs
-description: Ismerje meg, hogyan használhatók a Azure DevTest Labs az Azure DevOps Build és Release folyamatokban.
+title: DevTest Labs használata az Azure-folyamatokban folyamatokat épít és szabadít fel. Microsoft Docs
+description: Ismerje meg, hogyan használhatók a Azure DevTest Labs az Azure-folyamatok létrehozásához és kiadásához.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: spelluru
-ms.openlocfilehash: 606563cd7d7adcdd79bf9561876eb0640fb68b21
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 032f598fed765b281d4a6a124f8855abc201ee94
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620895"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774512"
 ---
-# <a name="use-devtest-labs-in-azure-devops-build-and-release-pipelines"></a>A DevTest Labs használata az Azure DevOps build- és kiadási folyamataiban
-Ez a cikk tájékoztatást nyújt arról, hogyan használhatók az DevTest Labs az Azure DevOps Build és Release folyamatokban. 
+# <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>DevTest Labs használata az Azure-folyamatokban folyamatok készítése és kiadása
+Ez a cikk azt ismerteti, hogyan használhatók az DevTest Labs az Azure-folyamatokban a folyamatok létrehozásához és kiadásához. 
 
 ## <a name="overall-flow"></a>Teljes folyamat
 Az alapszintű folyamat egy olyan **build-folyamat** , amely a következő feladatokat végzi el:
@@ -49,7 +49,7 @@ Már van néhány olyan elem, amelyet előzőleg létre kell hozni:
 A létrehozási folyamat létrehoz egy DevTest Labs-környezetet, és üzembe helyezi a kódot a teszteléshez.
 
 ## <a name="set-up-a-build-pipeline"></a>Build folyamat beállítása
-Az Azure DevOps hozzon létre egy összeállítási folyamatot az [oktatóanyag kódjának használatával: Hozzon létre egy .NET Core-és SQL Database-](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)webalkalmazást Azure app Service. Használja a **ASP.net Core** sablont, amely feltölti a szükséges feladatot a kód létrehozásához, teszteléséhez és közzétételéhez.
+Az Azure-folyamatokban hozzon létre egy összeállítási folyamatot az [oktatóanyag kódjának használatával: Hozzon létre egy .NET Core-és SQL Database-](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)webalkalmazást Azure app Service. Használja a **ASP.net Core** sablont, amely feltölti a szükséges feladatot a kód létrehozásához, teszteléséhez és közzétételéhez.
 
 ![ASP.NET-sablon kiválasztása](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
 
@@ -85,7 +85,7 @@ A harmadik feladat a **Azure app Service üzembe helyezése** feladat. Az alkalm
 
 ![App Service üzembe helyezése feladat](./media/use-devtest-labs-build-release-pipelines/app-service-deploy.png)
 
-## <a name="setup-release-pipeline"></a>Telepítési kiadási folyamat
+## <a name="set-up-release-pipeline"></a>Kiadási folyamat beállítása
 A kiadási folyamat két feladattal hozható létre: **Azure-beli üzembe helyezés: Hozzon létre vagy frissítsen erőforráscsoportot** , és telepítse a **Azure app Service**. 
 
 Az első feladathoz adja meg az erőforráscsoport nevét és helyét. A sablon helye egy csatolt összetevő. Ha a Resource Manager-sablon csatolt sablonokat tartalmaz, egy egyéni erőforráscsoport-telepítést kell megvalósítani. A sablon a közzétett drop-összetevőben van. A Resource Manager-sablonhoz tartozó sablon paramétereinek felülbírálása. A többi beállítás alapértelmezett értékekkel is meghagyható. 
@@ -98,5 +98,5 @@ Most, hogy mindkét folyamat be van állítva, manuálisan hozza létre a builde
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
-- [Azure DevTest Labs integrálása az Azure DevOps folyamatos integrációs és szállítási folyamatával](devtest-lab-integrate-ci-cd-vsts.md)
-- [Környezetek integrálása az Azure DevOps CI/CD-folyamatokba](integrate-environments-devops-pipeline.md)
+- [Azure DevTest Labs integrálása az Azure-folyamatok folyamatos integrációs és szállítási folyamatával](devtest-lab-integrate-ci-cd-vsts.md)
+- [Környezetek integrálása az Azure-folyamatokba CI/CD-folyamatokban](integrate-environments-devops-pipeline.md)

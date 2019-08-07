@@ -1,44 +1,44 @@
 ---
-title: Azure VMware-megoldás által CloudSimple - CloudSimple csomópont kvóta
-description: Útmutatást nyújt az CloudSimple csomópontok vonatkozó kvótát és a kvóta növelését a kérelem
+title: Azure VMware-megoldás CloudSimple szerint – CloudSimple Node kvóta
+description: Ismerteti a CloudSimple-csomópontok kvótáit, valamint a kvóta növelésének kérését
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/30/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fd1416befb74a7299136ea497eccc8a06b7f0f6a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e765d7c87f2f941a5e2d558b71c4e5a71d2df9b1
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164867"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816671"
 ---
-# <a name="cloudsimple-node-quota-limits"></a>CloudSimple csomópont kvóta korlátját
+# <a name="cloudsimple-node-quota-limits"></a>CloudSimple-kvóta korlátai
 
-Négy csomópont történő üzembe helyezés esetében érhető el az alapértelmezett mennyiséget esetén az előfizetés CloudSimple szolgáltatás engedélyezve van.  Bármely építhet [csomóponttípus](cloudsimple-node.md) Azure Portalról.  Három csomópont az azonos termékváltozatának legalább egy Magánfelhő létrehozásához szükségesek.  A csomópontok üzembe jelenhet meg hiba további csomópontok kiépítésére megkísérlésekor.
+Négy csomópont a kiépítés számára elérhető alapértelmezett mennyiség, ha előfizetése engedélyezve van a CloudSimple szolgáltatáshoz.  Bármely [csomópont-típus](cloudsimple-node.md) kiépíthető Azure Portalból.  Egy privát felhő létrehozásához legalább három csomópontnak kell futnia ugyanazon SKU-ban.  Ha kiépítte a csomópontokat, hibaüzenet jelenhet meg, ha további csomópontokat próbál kiépíteni.
 
-## <a name="quota-increase"></a>Kvóta növelése
+## <a name="quota-increase"></a>Kvóta növekedése
 
-A csomópont kvóta növelheti, ha beküld egy támogatási kérést. A szolgáltatás üzemeltetési csapat kiértékelése a kérelmet, és Önnel, a csomópont-kvóta növeléséhez.  Amikor megnyit egy új jegyet, válassza ki a következő beállításokat:
+Egy támogatási kérelem elküldésével növelheti a csomópont kvótáját. A szolgáltatási operatív csapat értékeli a kérést, és együttműködik Önnel a csomópont-kvóta növeléséhez.  Új jegy megnyitásakor válassza ki a következő beállításokat:
 
 * Probléma típusa: **Technikai**
-* Előfizetés: **Az előfizetés-azonosító**
-* Szolgáltatás típusa: **VMware megoldást CloudSimple szerint**
-* Probléma típusa: **Dedikált csomópontok kvóta**
-* A probléma altípus: **Növelje meg a dedikált csomópontok**
-* Tulajdonos: **Kvóta növelése**
+* Előfizetés: **Az előfizetés azonosítója**
+* Szolgáltatás típusa: **VMware-megoldás CloudSimple szerint**
+* Probléma típusa: **Dedikált csomópontok kvótája**
+* Probléma altípusa: **A dedikált csomópontok kvótájának bővítése**
+* Tárgy: **Kvóta növekedése**
 
-A részleteket a támogatási jegyet adja meg a megfelelő számú csomópont és csomópont Termékváltozat.
+A támogatási jegy részleteiben adja meg a szükséges számú csomópontot és a csomópont-SKU-t.
 
-Is kapcsolatba léphet a következő Microsoft-ügyfélmenedzserhez [ azurevmwaresales@microsoft.com ](mailto:azurevmwaresales@microsoft.com) az előfizetéshez, a csomópont kvóta növeléséhez.  Meg kell adnia a:
+Az előfizetéshez tartozó csomóponti kvóta [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) növeléséhez a Microsoft-fiók képviselőjével is kapcsolatba léphet.  A következőket kell megadnia:
 
 * Előfizetés azonosítója
-* Csomópont Termékváltozat
-* További csomópontokat, amelynek a kvótájának növelését, kért száma
+* Csomópont SKU
+* Azon további csomópontok száma, amelyekhez a kvóta növelését kéri
 
 ## <a name="next-steps"></a>További lépések
 
-* [Csomópontok üzembe helyezése](create-nodes.md)
-* [CloudSimple csomópontok áttekintése](cloudsimple-node.md)
+* [Csomópontok kiépítése](create-nodes.md)
+* [A CloudSimple-csomópontok áttekintése](cloudsimple-node.md)

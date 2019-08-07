@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 2695ee2751a2834466c42d224101af246b829aca
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: d50acc50880229626c847d41d9abe9a9e13d9c6e
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717625"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736118"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Webjobs-feladatok fejlesztése és üzembe helyezése a Visual Studio használatával – Azure App Service
 
@@ -228,7 +228,7 @@ Amikor [webjobs hoz létre a Azure Portal](webjobs-create.md), a Settings. job f
 
 ### <a name="cron-expressions"></a>CRON-kifejezések
 
-A webjobs ugyanazokat a CRON-kifejezéseket használja az ütemezéshez, mint az időzítő trigger Azure Functionsban. A CRON-támogatással kapcsolatos további tudnivalókért tekintse meg az [időzítő trigger](../azure-functions/functions-bindings-timer.md#cron-expressions)-referenciát ismertető cikket.
+A webjobs ugyanazokat a CRON-kifejezéseket használja az ütemezéshez, mint az időzítő trigger Azure Functionsban. A CRON-támogatással kapcsolatos további tudnivalókért tekintse meg az [időzítő trigger](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)-referenciát ismertető cikket.
 
 ### <a name="settingjob-reference"></a>Setting. job hivatkozás
 
@@ -238,7 +238,7 @@ A webjobs a következő beállításokat támogatja:
 | ----------- | --------- | --------------- |
 | `is_in_place` | Összes | Lehetővé teszi a feladatok futtatását anélkül, hogy először egy ideiglenes mappába kellene másolni. További információ: webjobs [Working Directory](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Folyamatos | A felskálázáskor csak egyetlen példányon futtassa a webjobs-feladatokat. További információ: [folyamatos munka beállítása](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton)egypéldányos beállítással. |
-| `schedule` | Triggerrel indított | Futtassa a Webjobs egy CRON-alapú ütemterven. További információért lásd az [időzítő trigger](../azure-functions/functions-bindings-timer.md#cron-expressions)-referenciát ismertető cikket. |
+| `schedule` | Triggerrel indított | Futtassa a Webjobs egy CRON-alapú ütemterven. További információért lásd az [időzítő trigger](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)-referenciát ismertető cikket. |
 | `stopping_wait_time`| Összes | Lehetővé teszi a leállítási viselkedés vezérlését. További információ: [kecses leállítás](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ## <a name="next-steps"></a>További lépések

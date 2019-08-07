@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: c8528ac81f2248e417d7d25d0f3c2650845c3d7d
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 87e6f69c06fb9f8bc03d184cfe160964403e7a2a
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404302"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780871"
 ---
 # <a name="get-started-with-device-management-java"></a>Ismerkedés az eszközkezelés (Java) szolgáltatással
 
@@ -63,6 +63,8 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
+## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hub-ban
+
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
@@ -91,7 +93,7 @@ Ez a konzol-alkalmazás csatlakozik a IoT Hubhoz, hogy meghívja a közvetlen me
 
 3. A parancssorban navigáljon a trigger-reboot mappára.
 
-4. Egy szövegszerkesztővel nyissa meg a Pom. xml fájlt a trigger-reboot mappában, és adja hozzá a következő függőséget  a függőségek csomóponthoz. Ezzel a függőséggel használhatja az IOT-Service-Client csomagot az alkalmazásban az IoT hub használatával folytatott kommunikációhoz:
+4. Egy szövegszerkesztővel nyissa meg a Pom. xml fájlt a trigger-reboot mappában, és adja hozzá a következő függőséget a függőségek csomóponthoz. Ezzel a függőséggel használhatja az IOT-Service-Client csomagot az alkalmazásban az IoT hub használatával folytatott kommunikációhoz:
 
     ```xml
     <dependency>
@@ -287,7 +289,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt s
     import java.util.HashSet;
     ```
 
-7. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje `{yourdeviceconnectionstring}` le az eszközt az *eszköz-identitás létrehozása* szakaszban feljegyzett eszköz-összekapcsolási sztringre:
+7. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje `{yourdeviceconnectionstring}` le az eszközt az [új eszköz regisztrálása az IoT hub-ben](#register-a-new-device-in-the-iot-hub) című szakaszban leírt eszköz-csatlakoztatási karakterláncra:
 
     ```java
     private static final int METHOD_SUCCESS = 200;

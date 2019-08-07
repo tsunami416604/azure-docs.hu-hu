@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: bb2d5733704b0b31dc010cec2a90e99e1be07b56
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7d4f36be51591d6be2b4c42eb8a8950ab52a0258
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592031"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782582"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection for Azure Storage
 
@@ -117,62 +117,7 @@ Az aktuális biztonsági riasztásokat a Azure Security Center [biztonsági rias
 
 ## <a name="protection-alerts"></a>Védelmi riasztások
 
-A riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják a Storage-fiókok eléréséhez vagy kiaknázásához. Ezek az események a következő riasztásokat indíthatják el:
-
-### <a name="anomalous-access-pattern-alerts"></a>Rendellenes hozzáférési minta riasztásai
-
-* **Hozzáférés szokatlan helyről**: Ez a riasztás akkor aktiválódik, ha valaki egy szokatlan földrajzi helyről fér hozzá egy Storage-fiókhoz.
-Lehetséges okok:
-   * Egy támadó hozzáfért a Storage-fiókhoz
-   * Egy megbízható felhasználó új helyről fér hozzá a Storage-fiókhoz
- 
-* **Alkalmazás anomália**: Ez a riasztás azt jelzi, hogy egy szokatlan alkalmazás hozzáfért ehhez a Storage-fiókhoz. Lehetséges okok:
-   * Egy támadó új alkalmazás használatával fér hozzá a Storage-fiókhoz.
-   * Egy megbízható felhasználó új alkalmazást vagy böngészőt használt a Storage-fiók eléréséhez.
-
-* **Névtelen hozzáférés**: Ez a riasztás azt jelzi, hogy ez a fiók névtelenül (azaz hitelesítés nélkül) lett elküldve, ami nem várt, mint a fiók legutóbbi hozzáférési mintája.
-Lehetséges okok:
-   * Egy támadó nyilvános olvasási hozzáférést kapott egy tárolóhoz.
-   * Egy megbízható felhasználó vagy alkalmazás nyilvános olvasási hozzáférést használt egy tárolóhoz.
-
-* **Tor**-anomália: Ez a riasztás azt jelzi, hogy ez a fiók sikeresen elérhető egy olyan IP-címről, amely a Tor (egy anonimizálásával proxy) aktív kilépési csomópontjának ismert. Ennek a riasztásnak a súlyossága figyelembe veszi a használt hitelesítési típust (ha van ilyen), és hogy ez az ilyen hozzáférés első esete-e.
-Lehetséges okok:
-   * A támadó a Tor használatával fér hozzá a Storage-fiókhoz.
-   * Egy megbízható felhasználó a Tor használatával fér hozzá a Storage-fiókhoz.
-
-
-### <a name="anomalous-extractupload-alerts"></a>Rendellenes kinyerési/feltöltési riasztások
-
-* **Az adatkiszűrése**: Ez a riasztás azt jelzi, hogy a tárolón a legutóbbi tevékenységhez képest szokatlanul nagy mennyiségű adattal lett kibontva. Lehetséges okok:
-   * Egy támadó nagy mennyiségű adattal kivont egy tárolóból. (Például: adatok kiszűrése/megszegése, jogosulatlan adatátvitel)
-   * Egy megbízható felhasználó vagy alkalmazás szokatlan mennyiségű adattal kibontotta a tárolót. (Például: karbantartási tevékenység)
-
-* **Váratlan törlés**: Ez a riasztás azt jelzi, hogy egy vagy több váratlan törlési művelet történt egy Storage-fiókban, a fiók legutóbbi tevékenységéhez képest. Lehetséges okok:
-   * Egy támadó törölte az adatait a Storage-fiókjából.
-   * Egy megbízható felhasználó szokatlan törlést hajtott végre.
-
-* **Azure Cloud Service-csomag feltöltése**: Ez a riasztás azt jelzi, hogy egy Azure Cloud Service-csomag (. cspkg fájl) szokatlan módon lett feltöltve egy Storage-fiókba, a fiókhoz tartozó közelmúltbeli tevékenységhez képest. Lehetséges okok: 
-   * Egy támadó arra készül, hogy rosszindulatú kódot helyezzen üzembe a Storage-fiókból egy Azure Cloud Service-be.
-   * Egy megbízható felhasználó előkészítette a megbízható szolgáltatás központi telepítését.
-
-### <a name="suspicious-storage-activities-alerts"></a>Gyanús tárolási tevékenységek riasztásai
-
-* **Hozzáférési engedély módosítása**: Ez a riasztás azt jelzi, hogy a tárolási tároló hozzáférési engedélyei szokatlan módon módosultak. Lehetséges okok: 
-   * A támadó megváltoztatta a tároló engedélyeit, hogy gyengítse a biztonságot.
-   * Egy megbízható felhasználó módosította a tároló engedélyeit.
-
-* **Hozzáférés ellenőrzése**: Ez a riasztás azt jelzi, hogy a Storage-fiók hozzáférési engedélyei szokatlan módon lettek megvizsgálva, a fiók legutóbbi tevékenységéhez képest. Lehetséges okok: 
-   * Egy támadó egy jövőbeli támadás felderítését végezte el.
-   * Egy megbízható felhasználó karbantartási műveleteket hajtott végre a Storage-fiókon.
-
-* **Adatelemzés**: Ez a riasztás azt jelzi, hogy a Storage-fiókban lévő Blobok vagy tárolók szokatlan módon vannak felsorolva a fiók legutóbbi tevékenységéhez képest. Lehetséges okok: 
-   * Egy támadó egy jövőbeli támadás felderítését végezte el.
-   * Egy megbízható felhasználó vagy alkalmazás logikája a Storage-fiókban található meg.
-
-
-
-
-
+A riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják a Storage-fiókok eléréséhez vagy kiaknázásához. A riasztások listájáért lásd: [Azure Storage](../../security-center/security-center-alerts-data-services.md#azure-storage) -riasztások
 
 ## <a name="next-steps"></a>További lépések
 

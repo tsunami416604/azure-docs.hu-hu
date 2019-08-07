@@ -1,99 +1,87 @@
 ---
-title: Azure VMware-megoldás által CloudSimple rövid útmutató – a szolgáltatás létrehozása
-description: Ismerje meg, hogyan hozhat létre a CloudSimple szolgáltatás csomópontok kiépítésére, és a csomópontok lefoglalása
+title: Azure VMware-megoldás CloudSimple rövid útmutató – szolgáltatás létrehozása
+description: Megtudhatja, hogyan hozhatja létre a CloudSimple szolgáltatást, hogyan építhet ki csomópontokat és foglaljon le csomópontokat
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5732ea726bdecc10d0757224870ee5d8be83a2b2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 13b07b3b50bdb03373275ca9594baa6357e9f66f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164220"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812291"
 ---
 # <a name="quickstart---create-service"></a>Rövid útmutató – szolgáltatás létrehozása
 
-Első lépésként hozzon létre az Azure VMware megoldás CloudSimple által az Azure Portalon.
+Első lépésként hozza létre az Azure VMware-megoldást a Azure Portal CloudSimple.
 
-## <a name="vmware-solution-by-cloudsimple---service-overview"></a>VMware megoldást, CloudSimple - szolgáltatás áttekintése
+## <a name="vmware-solution-by-cloudsimple---service-overview"></a>VMware-megoldás a CloudSimple-szolgáltatás áttekintése
 
-A CloudSimple szolgáltatás lehetővé teszi, hogy Azure VMware megoldás által CloudSimple felhasználásához.  A szolgáltatás létrehozása lehetővé teszi, hogy a csomópontok üzembe helyezése, lefoglalni a csomópontokat, és a magánfelhők létrehozása.  A CloudSimple szolgáltatás minden egyes Azure-régióban, az CloudSimple szolgáltatás érhető el hozzá.  A szolgáltatás az Azure VMware megoldás által CloudSimple edge-hálózatot határoz meg.  Az edge-hálózatot a magánfelhők, VPN, ExpressRoute és az Internet kapcsolat-szolgáltatásokhoz használható.
+A CloudSimple szolgáltatás lehetővé teszi, hogy a CloudSimple az Azure VMware-megoldást használja.  A szolgáltatás létrehozása lehetővé teszi a csomópontok kiépítését, a csomópontok fenntartását és a privát felhők létrehozását.  Adja hozzá a CloudSimple szolgáltatást minden olyan Azure-régióban, ahol a CloudSimple szolgáltatás elérhető.  A szolgáltatás a CloudSimple által definiált Azure VMware-megoldás peremhálózati hálózatát határozza meg.  Ez a peremhálózati hálózat olyan szolgáltatásokhoz használható, amelyek VPN-, ExpressRoute-és internetkapcsolattal rendelkeznek a privát felhőkhöz.
 
-A szolgáltatás hozzáadása a CloudSimple, létre kell hoznia egy átjáró-alhálózatot. Az átjáró-alhálózat létrehozásához az edge-hálózatot, és a egy/28-as igényel CIDR-blokkja. Az átjáró-alhálózat címtere egyedinek kell lennie. Azt nem lehet átfedésben a helyszíni hálózat címterei vagy Azure virtuális hálózat címterét.
+A CloudSimple szolgáltatás hozzáadásához létre kell hoznia egy átjáró-alhálózatot. Az átjáró-alhálózat a peremhálózati hálózat létrehozásakor használatos, és egy/28 CIDR blokkot igényel. Az átjáró alhálózatának címtartomány egyedinek kell lennie. A helyszíni hálózati címtartomány vagy az Azure-beli virtuális hálózati címtartomány egyikével sem lehet átfedésben.
+
+## <a name="before-you-begin"></a>Előkészületek
+
+Egy/28 CIDR-blokk lefoglalása az átjáró-alhálózathoz.  Az átjáró-alhálózatok CloudSimple szolgáltatáshoz szükségesek, és egyediek ahhoz a régióhoz, amelyben létrehozták. Az átjáró-alhálózat az Edge hálózati szolgáltatások esetében használatos, és egy/28 CIDR blokkot igényel. Az átjáró alhálózatának címtartomány egyedinek kell lennie. Nem lehet átfedésben a CloudSimple-környezettel kommunikáló hálózattal.  A CloudSimple kommunikáló hálózatok a helyszíni hálózatokat és az Azure-beli virtuális hálózatokat is tartalmazzák. 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="enable-microsoftvmwarecloudsimple-resource-provider"></a>Erőforrás-szolgáltató Microsoft.VMwareCloudSimple engedélyezése
-
-Az erőforrás-szolgáltató CloudSimple szolgáltatás engedélyezéséhez az alábbi lépésekkel.
-
-1. Válassza az **Összes szolgáltatás** elemet.
-2. Keresse meg és válassza **előfizetések**.
-
-    ![Keresés az előfizetések között](media/cloudsimple-service-select-subscriptions.png)
-
-3. Válassza ki az előfizetést, amelyen szeretné CloudSimple szolgáltatás engedélyezése
-4. Kattintson a **erőforrás-szolgáltatók** az előfizetés
-5. Használat **Microsoft.VMwareCloudSimple** az erőforrás-szolgáltató szűrése
-6. Válassza ki a **Microsoft.VMwareCloudSimple** erőforrás-szolgáltató, majd kattintson a **regisztrálása**
-
-    ![Erőforrás-szolgáltató regisztrálása](media/cloudsimple-service-enable-resource-provider.png)
-
 ## <a name="create-the-service"></a>A szolgáltatás létrehozása
 
 1. Válassza az **Összes szolgáltatás** elemet.
-2. Keresse meg **CloudSimple szolgáltatás**.
+2. Keresse meg a **CloudSimple szolgáltatást**.
 
     ![Search CloudSimple Service](media/create-cloudsimple-service-search.png)
 
-3. Válassza ki **CloudSimple szolgáltatások**.
-4. Kattintson a **Hozzáadás** új szolgáltatás létrehozása.
+3. Válassza a **CloudSimple Services**elemet.
+4. Új szolgáltatás létrehozásához kattintson a **Hozzáadás** gombra.
 
-    ![Add CloudSimple Service](media/create-cloudsimple-service-add.png)
+    ![CloudSimple szolgáltatás hozzáadása](media/create-cloudsimple-service-add.png)
 
-5. Válassza ki az előfizetést, ahol szeretné létrehozni a CloudSimple szolgáltatást.
-6. Válassza ki az erőforráscsoportot, a szolgáltatás. Egy új erőforráscsoport hozzáadásához kattintson **hozzon létre új**.
-7. Adja meg a szolgáltatás azonosítására szolgáló név.
-8. Adja meg a CIDR a felhőszolgáltatási átjárót. Adjon meg egy/28-as alhálózat, amely nincs átfedésben a helyszíni alhálózatok, az Azure-alhálózatok és tervezett CloudSimple alhálózatok. A CIDR a szolgáltatás létrehozása után nem módosítható.
+5. Válassza ki azt az előfizetést, amelyben létre szeretné hozni a CloudSimple szolgáltatást.
+6. Válassza ki a szolgáltatáshoz tartozó erőforráscsoportot. Új erőforráscsoport hozzáadásához kattintson az **új létrehozása**lehetőségre.
+7. A szolgáltatás azonosításához adja meg a nevet.
+8. Adja meg a CIDR a Service Gateway számára. Olyan/28 alhálózatot ad meg, amely nem fedi át a helyszíni alhálózatok, az Azure-alhálózatok vagy a tervezett CloudSimple alhálózatok egyikét sem. A CIDR nem módosítható a szolgáltatás létrehozása után.
 
     ![A CloudSimple szolgáltatás létrehozása](media/create-cloudsimple-service.png)
 
 9. Kattintson az **OK** gombra.
 
-A szolgáltatás létrehozása és hozzáadni a szolgáltatások listájában.
+Létrejön a szolgáltatás, és hozzá lesz adva a szolgáltatások listájához.
 
 ## <a name="provision-nodes"></a>Csomópontok kiépítése
 
-Használatalapú – mint-akkor lépjen kapacitás beállítására CloudSimple Magánfelhő-környezethez, először az Azure Portalon csomópontok kiépítésére.
+Ha a CloudSimple saját felhőalapú környezete számára szeretné beállítani az utólagos elszámolású kapacitást, először a Azure Portal csomópontjait kell kiépíteni.
 
 1. Válassza az **Összes szolgáltatás** elemet.
-2. Keresse meg **CloudSimple csomópontok**.
+2. CloudSimple- **csomópontok**keresése.
 
-    ![CloudSimple csomópontok keresése](media/create-cloudsimple-node-search.png)
+    ![CloudSimple-csomópontok keresése](media/create-cloudsimple-node-search.png)
 
-3. Válassza ki **CloudSimple csomópontok**.
-4. Kattintson a **Hozzáadás** csomópontok létrehozásához.
+3. Válassza a **CloudSimple**-csomópontok lehetőséget.
+4. Csomópontok létrehozásához kattintson a **Hozzáadás** gombra.
 
-    ![CloudSimple csomópontok hozzáadása](media/create-cloudsimple-node-add.png)
+    ![CloudSimple-csomópontok hozzáadása](media/create-cloudsimple-node-add.png)
 
-5. Válassza ki az előfizetést, ahol szeretné CloudSimple csomópontok kiépítésére.
-6. Válassza ki az erőforráscsoportot, a csomópontok. Egy új erőforráscsoport hozzáadásához kattintson **hozzon létre új**.
-7. Adja meg az előtagot a csomópontok azonosításához.
-8. Válassza ki a csomópont erőforrások helyét.
-9. Válassza ki a dedikált csomópont erőforrásokat üzemeltetni helyét.
-10. Válassza ki a csomópontot. Választhat a [CS28 vagy CS36](cloudsimple-node.md). Az utóbbi lehetőséget tartalmaz a maximális számítási és memória-kapacitás.
-11. Válassza ki a csomópontok kiépítéséhez.
-12. Válassza ki **felülvizsgálat + létrehozás**.
-13. Tekintse át a beállításokat. Valamelyik beállítás módosításához kattintson a **előző**.
+5. Válassza ki azt az előfizetést, ahol CloudSimple-csomópontokat kíván kiépíteni.
+6. Válassza ki a csomópontok erőforrás-csoportját. Új erőforráscsoport hozzáadásához kattintson az **új létrehozása**lehetőségre.
+7. Adja meg a csomópontok azonosításához szükséges előtagot.
+8. Válassza ki a csomópont-erőforrások helyét.
+9. Válassza ki a csomópont-erőforrások tárolására szolgáló dedikált helyet.
+10. Válassza ki a csomópont típusát. Kiválaszthatja a [CS28 vagy a CS36 lehetőséget](cloudsimple-node.md). Az utóbbi lehetőség a maximális számítási és memória-kapacitást is tartalmazza.
+11. Válassza ki a kiépíteni kívánt csomópontok számát.
+12. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
+13. Tekintse át a beállításokat. A beállítások módosításához kattintson az **előző**gombra.
 14. Kattintson a **Létrehozás** gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Magánfelhő létrehozása és a környezet konfigurálása](quickstart-create-private-cloud.md)
-* Tudjon meg többet [CloudSimple szolgáltatás](https://docs.azure.cloudsimple.com/cloudsimple-service)
+* [Saját felhő létrehozása és környezet konfigurálása](quickstart-create-private-cloud.md)
+* További információ a [CloudSimple szolgáltatásról](https://docs.azure.cloudsimple.com/cloudsimple-service)

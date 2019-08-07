@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 546abdae5d7c03bb0d4b49f9485fe06b521fdc1d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 82638e3e102f7b8e39cd797960a11f3193132bc1
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722221"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779388"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Egyéni rendszergazdai szerepkörök a Azure Active Directoryban (előzetes verzió)
 
@@ -72,7 +72,11 @@ A szerepkör-definíció vagy szerepkör az engedélyek gyűjteménye. A szerepk
 
 ### <a name="scope"></a>Scope
 
-A hatókör az adott Azure AD-erőforráson engedélyezett műveletek korlátozása. Ha szerepkört rendel hozzá, testreszabhatja a szerepkört, hogy a művelet hatókörének definiálásával korlátozza a rendszergazda által engedélyezett műveleteket. Ha például a fejlesztőknek nincs szükségük az összes alkalmazás teljes felügyeletére, az Azure AD egyéni szerepköreivel engedélyezheti, hogy csak az alkalmazások regisztrációját kezeljék.
+A hatókör egy adott Azure AD-erőforrásra vonatkozó engedélyezett műveletek korlátozása. Egy szerepkör hozzárendelésével megadhat egy hatókört, amely egy adott erőforrásra korlátozza a rendszergazda számára engedélyezett műveleteket. Ha például azt szeretné, hogy a fejlesztő egyéni szerepkört adjon meg, de csak egy adott alkalmazás regisztrálásának felügyeletéhez, akkor a szerepkör-hozzárendelésben a megadott alkalmazás-regisztráció hatókörként is megadható.
+
+  > [!Note]
+  > Az egyéni szerepköröket a címtár hatóköre és az erőforrás hatóköre szerint lehet hozzárendelni. A felügyeleti egység hatóköre még nem rendelhető hozzá.
+  > A beépített szerepkörök a címtár hatókörében, és bizonyos esetekben a felügyeleti egység hatókörében is hozzárendelhetők. Az objektumok hatóköre még nem rendelhető hozzá.
 
 ## <a name="required-license-plan"></a>Szükséges licencelési csomag
 

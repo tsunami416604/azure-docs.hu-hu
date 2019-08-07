@@ -5,24 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/30/2018
+ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fe90de618df04063a5486af80bdade67fb886a48
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 1e6bc9b0bc4df8ab4e5c801b95a0f607eb3231e1
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178963"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780233"
 ---
-1. Az a **beállítások** szakaszban a virtuális hálózat lapjának, válassza ki a **DNS-kiszolgálók** megnyitásához a **DNS-kiszolgálók** lap.
+1. A virtuális hálózat **Beállítások** lapján navigáljon a **DNS-kiszolgálók** elemre, és kattintson ide a **DNS-kiszolgálók** lap megnyitásához.
 
-2. Az a **DNS-kiszolgálók** lap, adja meg a következő értékeket:
+    ![DNS-kiszolgáló megadása](./media/vpn-gateway-add-dns-rm-portal-include/dns-server.png "DNS-kiszolgáló megadása")
 
-   - **DNS-kiszolgálók**: Válassza ki **egyéni**.
+   - **DNS-kiszolgálók:** Válassza az **Egyéni**lehetőséget.
+   - **DNS-kiszolgáló hozzáadása:** Adja meg a névfeloldáshoz használni kívánt DNS-kiszolgáló IP-címét.
 
-   - **DNS-kiszolgáló hozzáadása**: Adja meg a névfeloldáshoz használni kívánt DNS-kiszolgáló IP-címét.
-
-3. Ha elkészült a DNS-kiszolgálók hozzáadásával, válassza ki a **mentése**.
-
-    ![DNS-kiszolgáló megadása](./media/vpn-gateway-add-dns-rm-portal-include/specify-dns-server.png "DNS-kiszolgáló megadása")
+2. Amikor elkészült a DNS-kiszolgálók hozzáadásával, kattintson a lap tetején a **Mentés** gombra.

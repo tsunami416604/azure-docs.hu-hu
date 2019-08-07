@@ -1,41 +1,41 @@
 ---
-title: Azure VMware-megoldás által CloudSimple - CloudSimple Tevékenységkezelés
-description: A VMware-megoldások CloudSimple tevékenység kapcsolatos fogalmakat ismerteti
+title: Azure VMware-megoldás a CloudSimple által – CloudSimple Activity Management
+description: A CloudSimple VMware-megoldásának tevékenység-fogalmait ismerteti
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/30/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: dd073d040e6e7f149109c9988580dcd889f7c62f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b87a4e2889e9e65a3173a4c11d9c92a33e8e70b7
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65160140"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816246"
 ---
-# <a name="activity-management-overview"></a>Tevékenység áttekintése
+# <a name="activity-management-overview"></a>A tevékenységek kezelése – áttekintés
 
-CloudSimple nyomon követi a magánfelhők működését befolyásoló tevékenységekre. Ezek a tevékenységek például a riasztások, események, feladatok és tevékenységek naplózása. A [tevékenység oldalak](https://docs.azure.cloudsimple.com/activity/) az aktuális tevékenység összefoglalója, és lehetővé teszi további részleteket a részletezéshez.
+A CloudSimple nyomon követi az összes olyan tevékenységet, amely hatással lehet a privát felhők működésére. Ezek a tevékenységek, például riasztások, események, feladatok és naplózási tevékenységek. A [tevékenység oldalai](https://docs.azure.cloudsimple.com/activity/) összefoglalják az összes aktuális tevékenységet, és részletezik a további részleteket.
 
 ## <a name="events"></a>Events
 
-Események nyomon követheti a felhasználói és tevékenységét a CloudSimple portálon.  Események megjelenítése a tevékenység egy adott erőforrást és a hatás súlyosságát társított.  Az események a CloudSimple portálon tekintheti meg.
+Az események nyomon követik a felhasználói és rendszertevékenységeket a CloudSimple-portálon.  Az események egy adott erőforráshoz tartozó tevékenységet és a hatás súlyosságát mutatják be.  Az eseményeket a CloudSimple-portálon tekintheti meg.
 
 ## <a name="alerts"></a>Riasztások
 
-Figyelmeztetések olyan értesítések jelentős tevékenység CloudSimple környezetben.  Eseményeket, amelyek a számlázással vagy a felhasználó hozzáférése, riasztások jelennek meg.  Is elismeri a riasztást a CloudSimple portálról.
+A riasztások a CloudSimple-környezettel kapcsolatos jelentős tevékenységekről szóló értesítések.  A számlázási vagy felhasználói hozzáférést befolyásoló események riasztásként jelennek meg.  A CloudSimple-portálon visszaigazolhatja a felváltott riasztásokat.
 
 ## <a name="tasks"></a>Feladatok
 
-Feladatok nyomon követése bármilyen felhasználói művelet, amely több mint 30 másodpercet vesz igénybe.  Figyelheti a CloudSimple portálról feladat előrehaladását.  A feladat végrehajtásához szükséges teljes idő feladatok megjelenítése befejeződött.
+A feladatok nyomon követhetik a felhasználói műveleteket, ami több mint 30 másodpercet vesz igénybe.  A feladatok előrehaladását a CloudSimple-portálról követheti nyomon.  A Befejezett feladatok megjelenítik a feladat befejezéséhez szükséges teljes időt.
 
 ## <a name="audit"></a>Naplózás
 
-A naplók nyomon követése műveletet a felhasználó hajtott végre.  A naplókat, hogy a művelet, a felhasználó által megadott paramétereket tartalmazzák.  Auditnaplók segítségével figyelheti az összes felhasználó számára a felhasználói tevékenység.
+A naplók nyomon követik a felhasználó által végrehajtott műveleteket.  A naplók tartalmazzák a felhasználó által a művelethez megadott paramétereket.  A naplók segítségével figyelheti a felhasználói tevékenységeket az összes felhasználó számára.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megtekintheti a számla összegzése](https://docs.azure.cloudsimple.com/account/)
+* [A fiók összegzésének megtekintése](https://docs.azure.cloudsimple.com/account/)
 * [A használati napló megtekintése](https://docs.azure.cloudsimple.com/usage/)

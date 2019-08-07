@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: bbbec680cd2575cc63761c9fbe1335d548ec4d3b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ed7e53570127f12dbe41932481a3286a78865dde
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640791"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828282"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>A VMware felmérésének és migrálásának támogatási mátrixa
 
@@ -42,8 +42,12 @@ A táblázat összefoglalja a VMware virtuális gépek támogatott forgatóköny
 **Régiócsoport** | **Metaadatok tárolási helye**
 --- | ---
 Azure Government | USA-beli államigazgatás – Virginia
-Ázsia és a Csendes-óceáni térség | Délkelet-Ázsia vagy Kelet-Ázsia
-Európa | Dél-Európa vagy Nyugat-Európa
+Ázsia és a Csendes-óceáni térség | Kelet-Ázsia vagy Délkelet-Ázsia
+Ausztrália | Kelet-Ausztrália vagy Délkelet-Ausztrália
+Kanada | Közép-Kanada vagy Kelet-Kanada
+Európa | Észak-Európa vagy Nyugat-Európa
+India | Közép-India vagy Dél-India
+Japán |  Kelet-japán vagy Nyugat-Japán
 Egyesült Királyság | Egyesült Királyság déli régiója vagy Egyesült Királyság nyugati régiója
 Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
 
@@ -70,7 +74,7 @@ A VMware-hez készült Azure Migrate készülék üzembe helyezése vCenter Serv
 
 **Támogatás** | **Részletek**
 --- | ---
-**vCenter Server** | Elegendő erőforrásra van szüksége a vCenter Server egy virtuális gép lefoglalásához 32 GB memóriával, 4 vCPU és egy külső virtuális kapcsolóval.<br/><br/> A berendezéshez közvetlenül vagy proxyn keresztül kell internet-hozzáférést igényelni.
+**vCenter Server** | Elegendő erőforrásra van szüksége a vCenter Server egy virtuális gép lefoglalásához 32 GB RAM-mal, 8 vCPU és egy külső virtuális kapcsolóval.<br/><br/> A berendezéshez közvetlenül vagy proxyn keresztül kell internet-hozzáférést igényelni.
 **ESXi** | A berendezés virtuális gépnek a 5,5-es vagy újabb verzióját futtató ESXi-gazdagépre kell telepítenie.
 **Azure Migrate projekt** | Egy készülék egyetlen projekthez is társítható.
 **vCenter Server** | A készülékek akár 10 000 VMware virtuális gépet is felfedezhetnek vCenter Serveron.<br/> Egy készülék csatlakozhat egy vCenter Serverhoz.
@@ -78,7 +82,7 @@ A VMware-hez készült Azure Migrate készülék üzembe helyezése vCenter Serv
 
 ## <a name="assessment-url-access-requirements"></a>Assessment-URL-hozzáférési követelmények
 
-Az Azure Migrate berendezésnek internetkapcsolatra van szüksége az internethez.
+Az Azure Migrate berendezésnek internetkapcsolatra van szüksége.
 
 - A berendezés telepítésekor a Azure Migrate az alábbi táblázatban összefoglalt URL-címek kapcsolatát.
 - Ha URL-alapú proxyt használ az internethez való csatlakozáshoz, engedélyezze a hozzáférést ezekhez az URL-címekhez, és győződjön meg arról, hogy a proxy feloldja az URL-címek keresésekor fogadott CNAME-rekordokat.

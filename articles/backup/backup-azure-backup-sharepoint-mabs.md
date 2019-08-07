@@ -8,14 +8,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: dacurwin
-ms.openlocfilehash: 22f43bf1d3ac8282c4de3349656a21f51e788942
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 7a19b97e36bc28e5e629391f799b69370cf0fa38
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689489"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737279"
 ---
-# <a name="back-up-a-sharepoint-farm-to-azure"></a>SharePoint-farm biztonsági mentése az Azure-ba
+# <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>SharePoint-farm biztonsági mentése az Azure-ba a MABS használatával
 A SharePoint-farmok biztonsági mentését úgy végezheti el, hogy a Microsoft Azure Backup Server (MABS) használatával ugyanúgy Microsoft Azure a biztonsági mentést, mint az egyéb adatforrások. Azure Backup rugalmasságot biztosít a biztonsági mentési ütemezésben napi, heti, havi vagy éves biztonsági mentési pontok létrehozásához, és adatmegőrzési házirend-beállításokat biztosít a különböző biztonsági mentési pontokhoz. Lehetővé teszi továbbá a helyi lemezek másolását a gyors helyreállítási idejű célkitűzések (RTO) számára, valamint a másolatok Azure-ba történő tárolását gazdaságos, hosszú távú adatmegőrzés céljából.
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>A SharePoint által támogatott verziók és kapcsolódó védelmi forgatókönyvek
@@ -154,7 +154,7 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
 5. A helyreállításhoz különböző helyreállítási pontokat is megkereshet, és kiválaszthatja a helyreállítani kívánt adatbázist vagy elemet. Válassza a **dátum > a helyreállítási idő**lehetőséget, majd válassza ki a megfelelő **adatbázist > SharePoint-farm > helyreállítási pont > elem**.
 
     ![MABS SharePoint-Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. Kattintson a jobb gombbal az elemre, majd **válassza a** helyreállítás elemet a **helyreállítási varázsló**megnyitásához. Kattintson a **Tovább** gombra.
+6. Kattintson a jobb gombbal az elemre, majd válassza a helyreállítás elemet a **helyreállítási varázsló**megnyitásához. Kattintson a **Tovább** gombra.
 
     ![Visszaállítási kijelölés áttekintése](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
 7. Válassza ki a végrehajtani kívánt helyreállítás típusát, majd kattintson a **tovább**gombra.

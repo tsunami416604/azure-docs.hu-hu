@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 99bfab5a5f80fc0a49c7cc6405154394391f43e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a55de2d5f47274ea112e52ddbcc0d946db56470
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60908173"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775336"
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Az Azure Security Center használata incidensmegoldásra
 Sok szervezet csak akkor tanulja meg, hogyan reagáljon a biztonsági incidensekre, miután támadás érte. A költségek és a károk csökkentése érdekében fontos, hogy már a támadások bekövetkezte előtt létezzen egy incidensmegoldási terv. Az Azure Security Center az incidensmegoldás több szakaszában is alkalmazható.
@@ -51,12 +51,12 @@ A forgatókönyv szempontjából a Contoso CSIRT csapatának alábbi két tagjá
 
 ![Az incidensmegoldás életciklusa](./media/security-center-incident-response/security-center-incident-response-fig2.png)
 
-Judit biztonsági üzemeltetéssel foglalkozik. Feladatköre:
+Judit biztonsági üzemeltetéssel foglalkozik. Feladatai a következők:
 
 * A biztonsági fenyegetések non-stop figyelése és megoldása.
 * A problémák továbbítása szükség szerint a felhőbeli számítási feladat tulajdonosának vagy a biztonsági elemzőnek.
 
-Sándor biztonsági elemző, és feladatai a következők:
+A Sam egy biztonsági elemző, és feladatai közé tartoznak a következők:
 
 * A támadások kivizsgálása.
 * A riasztások javítása.
@@ -65,17 +65,17 @@ Sándor biztonsági elemző, és feladatai a következők:
 Amint látható, Judit és Sándor feladatai eltérőek, azonban együtt kell működniük a Security Center adatainak megosztásában.
 
 ## <a name="recommended-solution"></a>Javasolt megoldás
-Mivel Judit és Sándor különböző szerepkörökkel rendelkezik, a Security Center eltérő felületeit használják majd a napi feladataikhoz szükséges adatok kinyeréséhez. Judit a **Biztonsági riasztásokat** használja majd napi figyelési tevékenysége során.
+Mivel Judit és Sándor különböző szerepkörökkel rendelkezik, a Security Center eltérő felületeit használják majd a napi feladataikhoz szükséges adatok kinyeréséhez. Judy a **biztonsági riasztásokat** a napi monitorozás részeként fogja használni.
 
 ![Biztonsági riasztások](./media/security-center-incident-response/security-center-incident-response-fig3.png)
 
-Judit a Biztonsági riasztásokat az észlelési és a felmérési szakaszban használja majd. Miután Judit végzett a kezdeti vizsgálattal, az ügyet továbbíthatja Sándornak, amennyiben további vizsgálat szükséges. Ezen a ponton Sándor felhasználja a Security Center által biztosított adatokat, néha más adatforrásokkal együtt, majd rátér a diagnosztikai szakaszra.
+Judit a Biztonsági riasztásokat az észlelési és a felmérési szakaszban használja majd. Miután Judy befejezte a kezdeti értékelést, megadhatják a problémát a Sam-nek, ha további vizsgálatra van szükség. Ezen a ponton Sándor felhasználja a Security Center által biztosított adatokat, néha más adatforrásokkal együtt, majd rátér a diagnosztikai szakaszra.
 
 ## <a name="how-to-implement-this-solution"></a>A megoldás megvalósítása
 Az alábbiakban bemutatjuk, hogyan használhatja az Azure Security Centert az incidensmegoldási forgatókönyvhöz, ezért követjük Judit lépéseit az észlelési és felmérési szakaszokban, majd megtekintjük, hogyan diagnosztizálja Sándor a problémát.
 
 ### <a name="detect-and-assess-incident-response-stages"></a>Az észlelési és a felmérési incidensmegoldási szakaszok
-Judit bejelentkezett az Azure Portalra, és a Security Center konzolján dolgozik. Napi figyelési tevékenységei részeként a magas prioritású biztonsági riasztásokat újabban az alábbi lépések végrehajtásával végzi:
+Judit bejelentkezett az Azure Portalra, és a Security Center konzolján dolgozik. A napi figyelési tevékenységek részeként a következő lépések végrehajtásával kezdték meg a magas prioritású biztonsági riasztások áttekintését:
 
 1. A **Biztonsági riasztások** csempén a **Biztonsági riasztások** panelre lép.
     ![Biztonsági riasztások panel](./media/security-center-incident-response/security-center-incident-response-fig4.png)
@@ -84,12 +84,12 @@ Judit bejelentkezett az Azure Portalra, és a Security Center konzolján dolgozi
    > Ebben a forgatókönyvben Judit elvégez egy vizsgálatot a rosszindulatú SQL-tevékenységi riasztás alapján, ahogy az az előző ábrán is látható.
    >
    >
-2. Kattintson a **rosszindulatú SQL-tevékenység** riasztás megjelenítése, és áttekinti a megtámadott erőforrásokat a **rosszindulatú SQL-tevékenység** panelen:  ![Incidens részletei](./media/security-center-incident-response/security-center-incident-response-fig5.png)
+2. Kattintson a **rosszindulatú SQL-tevékenység** riasztására, és tekintse át a megtámadott erőforrásokat a **rosszindulatú SQL-tevékenység** panelen:  ![Incidens részletei](./media/security-center-incident-response/security-center-incident-response-fig5.png)
 
     Ezen a panelen Judit jegyzeteket készít a megtámadott erőforrásokkal, a támadások számával és az észlelés időpontjával kapcsolatban.
 3. Kattintson a **megtámadott erőforrásra**, hogy további információkat szerezzen a támadásról.
 
-Miután elolvasta a leírást, Judit meg van győződve arról, hogy ez nem hamis riasztás, és hogy az esetet továbbítania kell Sándornak.
+A Leírás elolvasása után Judy meggyőződve arról, hogy ez nem egy hamis pozitív, és hogy ezt az esetet Sam-nek kell kiterjeszteni.
 
 ### <a name="diagnose-incident-response-stage"></a>Az incidensmegoldás diagnosztizálási szakasza
 Sándor megkapja Judittól az esetet, és elkezdi átnézni a Security Center által javasolt hibaelhárítási lépéseket.

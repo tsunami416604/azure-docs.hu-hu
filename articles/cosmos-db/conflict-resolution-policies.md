@@ -4,15 +4,15 @@ description: Ez a cikk a Azure Cosmos DB ütközési kategóriáit és ütközé
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 45b7257f67be8ba5c134717d73488916056b7a7d
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: f69a70ef3bfc8830ed12173fddee41095937a1c0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384214"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815090"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Ütközéstípusok és -feloldási szabályzatok
 
@@ -30,16 +30,16 @@ Több írási régióval konfigurált Azure Cosmos-fiókok esetén a frissítés
 
 Azure Cosmos DB rugalmas, házirend által vezérelt mechanizmust kínál az írási ütközések feloldásához. Az Azure Cosmos-tárolóban két ütközés-feloldási szabályzat közül választhat:
 
-- **Utolsó írási WINS (LWW)** : Ez a megoldási szabályzat alapértelmezés szerint rendszer által definiált időbélyeg-tulajdonságot használ. Ez a Time-Sync Clock protokollon alapul. Ha az SQL API-t használja, megadhat bármilyen más egyéni numerikus tulajdonságot (például egy időbélyeg saját fogalmát) az ütközés feloldásához. Az egyéni numerikus tulajdonságokat az *ütközés feloldási útvonalnak*is nevezzük. 
+* **Utolsó írási WINS (LWW)** : Ez a megoldási szabályzat alapértelmezés szerint rendszer által definiált időbélyeg-tulajdonságot használ. Ez a Time-Sync Clock protokollon alapul. Ha az SQL API-t használja, megadhat bármilyen más egyéni numerikus tulajdonságot (például egy időbélyeg saját fogalmát) az ütközés feloldásához. Az egyéni numerikus tulajdonságokat az *ütközés feloldási útvonalnak*is nevezzük. 
 
   Ha két vagy több elem ütközik az INSERT vagy a Replace művelettel, az ütközés feloldási útvonalának legmagasabb értékét tartalmazó elem lesz a nyertes. A rendszer meghatározza a nyertest, ha több elemnek ugyanaz a numerikus értéke az ütközési feloldási útvonalhoz. Minden régió garantáltan egyetlen nyertesnek kell lennie, és a véglegesített elem azonos verziójával kell végződnie. Ha törlési ütközések merülnek fel, a törölt verzió mindig az INSERT vagy a Replace ütközések között nyer. Ennek az eredménynek az az oka, hogy az ütközés feloldási elérési útjának értéke nem számít.
 
   > [!NOTE]
-  > Az utolsó írási WINS az alapértelmezett ütközés-feloldási házirend. A következő API-khoz érhető el: SQL, MongoDB, Cassandra, Gremlin és Table.
+  > Az utolsó írási WINS az alapértelmezett ütközés-feloldási házirend, `_ts` és a következő API-k időbélyegét használja: SQL, MongoDB, Cassandra, Gremlin és Table. Az egyéni numerikus tulajdonság csak az SQL API esetében érhető el.
 
   További információért lásd: [LWW ütközési megoldási szabályzatokat használó példák](how-to-manage-conflicts.md).
 
-- **Egyéni**: Ez a megoldási szabályzat az alkalmazás által definiált szemantikai szabályokhoz készült az ütközések egyeztetéséhez. Amikor beállítja ezt a házirendet az Azure Cosmos-tárolón, regisztrálnia kell egy *egyesítéssel tárolt eljárást*is. Ezt az eljárást automatikusan meghívja a rendszer, ha ütközések észlelhetők a kiszolgálón található adatbázis-tranzakció alatt. A rendszer biztosít pontosan egyszer garantálja a kötelezettségvállalás protokoll részeként egy merge eljárás végrehajtására.  
+* **Egyéni**: Ez a megoldási szabályzat az alkalmazás által definiált szemantikai szabályokhoz készült az ütközések egyeztetéséhez. Amikor beállítja ezt a házirendet az Azure Cosmos-tárolón, regisztrálnia kell egy *egyesítéssel tárolt eljárást*is. Ezt az eljárást automatikusan meghívja a rendszer, ha ütközések észlelhetők a kiszolgálón található adatbázis-tranzakció alatt. A rendszer biztosít pontosan egyszer garantálja a kötelezettségvállalás protokoll részeként egy merge eljárás végrehajtására.  
 
   Ha a tárolót az egyéni feloldási lehetőséggel konfigurálja, és nem tud regisztrálni egy egyesítési eljárást a tárolón, vagy az egyesítési eljárás futásidejű kivételt jelez, az ütközések az *ütközések hírcsatornába*íródnak. Az alkalmazásnak ezután manuálisan kell feloldania az ütközéseket a hírcsatornában. További információ: példák az [Egyéni megoldási szabályzat használatára és az ütközések hírcsatornájának használatára](how-to-manage-conflicts.md).
 

@@ -1,80 +1,78 @@
 ---
-title: A keresések és a PIN-kód az adategységek mentése az Azure Data Catalog
-description: Útmutató a cikk kiemelése képességek az Azure Data Catalog az adatforrásokat és a későbbi használat céljából adategységek mentéséhez.
-services: data-catalog
+title: Keresések mentése és adategységek rögzítése Azure Data Catalog
+description: Útmutató a Azure Data Catalog képességeinek kiemeléséhez az adatforrások és adategységek későbbi használatra való mentéséhez.
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 6bd00a81-820d-4b7c-91fa-ab09e575474c
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: df3220ddb80ebc329ed6b0024ca4eefd2bdfb321
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 8e2a98748f4fef69b4fd6e3b32d15560641a6336
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61002062"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737058"
 ---
-# <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>A keresések és a PIN-kód az adategységek mentése az Azure Data Catalog
+# <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Keresések mentése és adategységek rögzítése Azure Data Catalog
 ## <a name="introduction"></a>Bevezetés
-Az Azure Data Catalog adatforrás-felderítés képességeket biztosít. Gyorsan kereshet, és keresse meg az adatforrásokat, és azok használatának célját megértése katalógus szűrése, így könnyebb megtalálni a megfelelő adatokat a feladat csak olyan mélységben.
+Azure Data Catalog az adatforrás-felderítés funkcióit biztosítja. Gyorsan kereshet és szűrheti a katalógust, hogy megkeresse az adatforrásokat, és megértse a kívánt célokat, így könnyebben megtalálhatja a feladathoz kapcsolódó megfelelő adatok körét.
 
-De mi történik, ha ugyanazokat az adatokat rendszeresen együttműködve kell? És mi történik, ha más felhasználók rendszeresen közreműködés adatforrásokat a katalógusban található ismereteit? Ebben az esetben nem kell ismételten ki ugyanazokat a kereséseket lehet nem elég hatékony. Ez az, ahol mentett keresés és a rögzített adategységek révén.
+De mi a teendő, ha rendszeresen ugyanazt az adatmennyiséget kell használnia? És mi a teendő, ha Ön és más felhasználók rendszeresen járulnak hozzá az Ön tudomásához a katalógusban szereplő adatforrásokhoz? Ezekben az esetekben az azonos keresések ismételt kibocsátása nem hatékony. A mentett keresés és a rögzített adategységek segíthetnek.
 
 ## <a name="saved-searches"></a>Mentett keresések
-Mentett keresés a Data Catalog egy újrafelhasználható, felhasználónkénti keresési definíciója. Adja meg a keresés, többek között a keresési kifejezéseket, a címkék és a többi szűrőt, és mentse. Újra futtathatja a mentett keresés definíciót később vissza bármely adategységeket a keresési feltételeknek.
+A Data Catalogban mentett keresés újrafelhasználható, felhasználónkénti keresési definíciót használ. Megadhat egy keresést, beleértve a keresési kifejezéseket, a címkéket és más szűrőket, majd mentheti azt. A mentett keresési definíciót később újra futtatva visszaállíthatja a keresési feltételeknek megfelelő adategységeket.
 
 ### <a name="create-a-saved-search"></a>Mentett keresés létrehozása
 Mentett keresés létrehozásához tegye a következőket:
-1. Az Azure Data Catalog-portálon található a **aktuális keresés** ablakban kattintson a **mentése**. 
+1. A Azure Data Catalog portál **aktuális keresési** ablakában kattintson a **Mentés**gombra. 
 
-    ![Aktuális keresési beállítások mentése hivatkozás](./media/data-catalog-how-to-save-pin/01-save-option.png) 
+    ![Aktuális keresési beállítások mentés hivatkozása](./media/data-catalog-how-to-save-pin/01-save-option.png) 
 
-2. Adja meg a keresési feltételeknek, hogy újra felhasználhatja, és kattintson a kívánt **mentése**.
+2. Adja meg az újra felhasználni kívánt keresési feltételeket, majd kattintson a **Mentés**gombra.
 
-    ![Aktuális keresési beállítások mentett keresés neve](./media/data-catalog-how-to-save-pin/02-name.png)
+    ![Aktuális keresési beállítások mentett keresési neve](./media/data-catalog-how-to-save-pin/02-name.png)
 
-3. Amikor a rendszer kéri, adja meg egy nevet a mentett keresésnek. Adjon meg egy beszédes nevet, és, amely leírja, hogy a keresés által visszaadott az adategységeket.
+3. Amikor a rendszer kéri, adja meg a mentett keresés nevét. Válasszon egy hasznos nevet, amely leírja a keresés által visszaadott adategységeket.
 
 ### <a name="manage-saved-searches"></a>Mentett keresések kezelése
-Egy vagy több keresések mentése után egy **mentett keresések** beállítás alatt jelennek meg a **aktuális keresés** mezőbe. Ha a listában ki van bontva, az összes mentett keresések jelennek meg.
+Egy vagy több Keresés mentése után az **aktuális keresőmező** alatt megjelenik egy **mentett keresések** lehetőség. A lista kibontásakor Az összes mentett keresés megjelenik.
 
  ![Mentett keresések listája](./media/data-catalog-how-to-save-pin/03-list.png)
 
 Tegye a következők egyikét:
 
-* A keresés végrehajtásához válassza ki a listából egy mentett keresés.
+* A keresés végrehajtásához válasszon egy mentett keresést a listában.
 
-* Mentett keresés felügyeleti beállítások listájának megtekintéséhez kattintson a keresés neve melletti lefelé mutató nyílra.
+* A mentett keresések kezelési beállításainak listájának megtekintéséhez kattintson a keresés neve melletti lefelé mutató nyílra.
 
-    ![Mentett keresések kezelésének lehetőségei](./media/data-catalog-how-to-save-pin/04-managing.png)
+    ![A mentett keresések kezelésének lehetőségei](./media/data-catalog-how-to-save-pin/04-managing.png)
 
-* Adjon meg egy új nevet a mentett keresésnek, jelölje be **átnevezése**. A search-definíció nem változott.
+* A mentett keresés új nevének megadásához válassza az **Átnevezés**lehetőséget. A keresési definíció nem módosul.
 
-* Válassza ki a mentett keresés törlése a listáról, hogy **törlése**, és erősítse meg a törlést.
+* Ha el szeretné távolítani a mentett keresést a listából, válassza a **Törlés**lehetőséget, majd erősítse meg a törlést.
 
-* A mentett keresésnek, mint az alapértelmezett keresési jel, jelölje be **mentése alapértelmezett**. Az Azure Data Catalog kezdőlapjáról "üres" keresést hajt végre, ha az alapértelmezett keresési hajtja végre. Emellett a keresés, amely az alapértelmezett keresési van megjelölve tetején megjelenik a **mentett keresések** listája.
+* A mentett keresés alapértelmezett keresésként való megjelöléséhez válassza a **Mentés alapértelmezettként**lehetőséget. Ha "üres" keresést végez a Azure Data Catalog kezdőlapján, a rendszer az alapértelmezett keresést hajtja végre. Emellett az alapértelmezett keresésként megjelölt keresés a **mentett keresések** listájának tetején jelenik meg.
 
-### <a name="organizational-saved-searches"></a>Szervezeti mentett keresések
-A szervezet minden felhasználójának mentheti a saját használatra keres. A Data Catalog rendszergazdái is mentheti a szervezet bármely felhasználója keres. Amikor a rendszergazdák a Keresés mentése, akkor áll rendelkezésre egy **megosztás a vállalaton belül** lehetőséget. Ez a beállítás megosztja a mentett keresés a szervezet minden felhasználója számára.
+### <a name="organizational-saved-searches"></a>Szervezet által mentett keresések
+A szervezet minden felhasználója a saját használatra mentheti a kereséseket. Data Catalog rendszergazdák a szervezeten belüli összes felhasználó keresését is menthetik. Ha a rendszergazdák egy keresést mentenek, a vállalaton **belül egy megosztás jelenik meg** . A beállítás kiválasztásával megoszthatja a szervezet összes felhasználójának mentett keresését.
 
- ![Szervezeti mentett keresések](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
+ ![Szervezet által mentett keresések](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
 
 ## <a name="pinned-data-assets"></a>Rögzített adategységek
-Mentett keresések mentheti, és újra felhasználhatja a keresési definíciókat. Az adategységeket, a keresés által visszaadott, a katalógus módosítás tartalmát idővel változhatnak. Amikor adatobjektumok kitűzése explicit módon azonosíthatja az egyszerűbb elérését anélkül, hogy a keresés meghatározott adategységeket.
+A mentett keresések segítségével mentheti és újrahasznosíthatja a keresési definíciókat. A keresés által visszaadott adategységek az idő múlásával változhatnak a katalógus tartalmának változásakor. Az adategységek rögzítésekor explicit módon azonosíthatja a konkrét adategységeket, hogy azok könnyebben hozzáférhessenek a kereséshez anélkül, hogy a keresést kellene használnia.
 
-Adategység rögzítés rendkívül egyszerű. Adja hozzá az adategységhez a rögzített listájához, akkor egyszerűen kattintson a **PIN-kód** ikonra. Az ikonra az eszköz csempe a csempe nézetben, és a listanézet, az Azure Data Catalog-portálon a bal szélső oszlopban a sarkában jelenik meg.
+Az adategységek rögzítése egyszerű. Ha az adategységet fel szeretné venni a rögzített listára, egyszerűen kattintson a **rögzítés** ikonra. Az ikon megjelenik az objektum csempe sarkában a csempe nézetben, valamint a Azure Data Catalog portál listájának bal szélső oszlopában.
 
-![Az adategység Gombostű ikon](./media/data-catalog-how-to-save-pin/05-pinning.png)
+![Az adategység PIN-kódjának ikonja](./media/data-catalog-how-to-save-pin/05-pinning.png)
 
-Feloldja az adategység egyaránt könnyen érthető megjegyzésblokkok írására. Egyszerűen kattintson a **rögzítésének** ikonra kattintva váltsa át a beállításokat a kiválasztott eszköz.
+Az adategységek kitűzése ugyanilyen egyszerű. A kiválasztott objektum beállításának váltásához egyszerűen kattintson a **rögzítés** ikonra.
 
-![Az adategység rögzítés ikon](./media/data-catalog-how-to-save-pin/06-unpinning.png)
+![Az adategység rögzítésének ikonja](./media/data-catalog-how-to-save-pin/06-unpinning.png)
 
 ## <a name="the-my-assets-section"></a>A saját eszközök szakasz
-A Data Catalog portál kezdőlapján tartalmaz egy **saját eszközök** szakaszt, amely megjeleníti a lényeges eszközök az aktuális felhasználónak. Ebben a szakaszban mindkét rögzített adategységek tartalmazza, és a mentett kereséseket.
+A Data Catalog portál kezdőlapján szerepel a **saját eszközök** szakasz, amely az aktuális felhasználó számára érdekes eszközöket jelenít meg. Ez a szakasz a rögzített eszközöket és a mentett kereséseket is tartalmazza.
 
-![A saját eszközök szakaszban a kezdőlapon](./media/data-catalog-how-to-save-pin/07-my-assets.png)
+![A Kezdőlap saját eszközök szakasza](./media/data-catalog-how-to-save-pin/07-my-assets.png)
 
-## <a name="summary"></a>Összefoglalás
-Az Azure Data Catalog képességeket biztosít, amelyek megkönnyítik a van szüksége, az adatforrások felderítését, így más szervezet tagja is hasznosítsa az adat- és több időt azt. Mentett keresések és a rögzített adatok eszközök az alábbi alapképességek hozhat létre, így a felhasználók könnyen megtalálják azokat az adatforrásokat, azok együttműködését ismételten.
+## <a name="summary"></a>Összegzés
+Azure Data Catalog olyan képességeket biztosít, amelyek megkönnyítik a szükséges adatforrások felderítését, így Ön és más szervezeti tagok kevesebb időt keresnek az adatkeresésre, és több időt is igénybe vehetnek. A mentett keresések és a rögzített adategységek ezekre az alapvető képességekre épülnek, így a felhasználók könnyen azonosíthatják azokat az adatforrásokat, amelyeket többször is dolgoznak.

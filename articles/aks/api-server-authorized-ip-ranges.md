@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 6516bbcb4ea879279812d61d9fe31f1ea4268280
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7dcf962345a2453fca52825c4be33a439d25df54
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67616259"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740930"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Előzetes verzió – biztonságos hozzáférés az API-kiszolgálóhoz az Azure Kubernetes szolgáltatásban (ak) lévő, jogosult IP-címtartományok használatával
 
@@ -218,13 +218,13 @@ Az API-kiszolgáló által engedélyezett IP-címtartományok engedélyezéséhe
 
 Használja az [az AK Update][az-aks-update] parancsot, és határozza meg a *--API-Server-engedélyezett-IP-tartományokat* az engedélyezéshez. Ezek az IP-címtartományok általában a helyszíni hálózatok által használt címtartományok. Adja hozzá az előző lépésben beszerzett saját Azure-tűzfal nyilvános IP-címét, például *20.42.25.196/32*.
 
-Az alábbi példa lehetővé teszi az API-kiszolgáló által a *myResourceGroup*nevű erőforráscsoport *myAKSCluster* nevű fürtön lévő, IP-címének engedélyezését. Az engedélyezett IP-címtartományok az *20.42.25.196/32* (az Azure tűzfal nyilvános IP-címe), majd a *172.0.0.10/16* és a *168.10.0.10/18*:
+Az alábbi példa lehetővé teszi az API-kiszolgáló által a *myResourceGroup*nevű erőforráscsoport *myAKSCluster* nevű fürtön lévő, IP-címének engedélyezését. Az engedélyezett IP-címtartományok az *20.42.25.196/32* (az Azure tűzfal nyilvános IP-címe), majd a *172.0.0.0/16* és a *168.10.0.0/18*:
 
 ```azurecli-interactive
 az aks update \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.10/16,168.10.0.10/18
+    --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.0/16,168.10.0.0/18
 ```
 
 ## <a name="update-or-disable-authorized-ip-ranges"></a>A hitelesítő IP-címtartományok frissítése vagy letiltása

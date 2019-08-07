@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 8948a620c27311f0371a557c91a971da37111cb9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 078c8763a08df339b9291807102e2d187d2a882f
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688591"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827588"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
@@ -64,14 +64,14 @@ Igen. A biztonsági mentések a gép leállításakor futnak. A helyreállítás
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Törölhetek egy folyamatban lévő biztonsági mentési feladatot?
 Igen. A biztonsági mentési feladatot megszakíthatja a pillanatképek állapotának megkezdéséhez. Nem lehet megszakítani egy feladatot, ha a pillanatképből való adatátvitel folyamatban van.
 
-### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprggeonumber-will-my-backups-continue-to-work"></a>Engedélyezve van a Azure Backup szolgáltatás által létrehozott erőforráscsoport zárolása (azaz `AzureBackupRG_<geo>_<number>`a biztonsági mentések továbbra is működni fognak?
+### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Engedélyezve van a Azure Backup szolgáltatás által létrehozott erőforráscsoport zárolása (azaz `AzureBackupRG_<geo>_<number>`a biztonsági mentések továbbra is működni fognak?
 Ha zárolja Azure Backup szolgáltatás által létrehozott erőforráscsoportot, a biztonsági mentések sikertelenek lesznek, mivel legfeljebb 18 visszaállítási pont lehet.
 
 A felhasználónak el kell távolítania a zárolást, és törölnie kell a visszaállítási pont gyűjteményét abból a célból, hogy a biztonsági mentések sikeresek legyenek, a visszaállítási pontok gyűjteményének eltávolításához [kövesse az alábbi lépéseket](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) .
 
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Támogatja az Azure Backup a standard SSD felügyelt lemezt?
-A Azure Backup támogatja a [standard SSD felügyelt lemezeket](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Az SSD által felügyelt lemezek új típusú tartós tárolást biztosítanak az Azure-beli virtuális gépek számára. Az SSD által felügyelt lemezek támogatása az [azonnali visszaállításban](backup-instant-restore-capability.md)érhető el.
+Igen, Azure Backup támogatja a [standard SSD felügyelt lemezeket](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/).
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Tud biztonsági másolatot készíteni egy virtuális gépről írásgyorsító (WA)-kompatibilis lemezzel?
 Nem lehet pillanatképeket felvenni a WA-kompatibilis lemezre. A Azure Backup szolgáltatás azonban kizárhatja a WA-kompatibilis lemezt a biztonsági mentésből.
@@ -119,7 +119,7 @@ Igen. Még ha törli a virtuális gépet is, a tárolóban található megfelel�
 A felügyelt lemezes Azure-beli virtuális gépek esetében a rendelkezésre állási csoportokra történő visszaállítás a felügyelt lemezként való visszaállításkor a sablonban beállítás engedélyezésével engedélyezhető. Ez a sablon tartalmazza a **rendelkezésre állási készletek**nevű bemeneti paramétert.
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Hogyan lehet gyorsabb visszaállítási teljesítményt kapni?
-A gyorsabb visszaállítási teljesítmény érdekében a rendszer [azonnali visszaállítási](backup-instant-restore-capability.md) képességre vált.
+Az [azonnali visszaállítási](backup-instant-restore-capability.md) funkció segíti a gyorsabb biztonsági mentést, és azonnal helyreállítja a pillanatképeket.
 
 ## <a name="manage-vm-backups"></a>Virtuális gép biztonsági mentéseinek kezelése
 

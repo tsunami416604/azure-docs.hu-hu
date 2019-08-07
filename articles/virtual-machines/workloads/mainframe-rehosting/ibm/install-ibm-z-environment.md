@@ -1,7 +1,8 @@
 ---
-title: IBM zD & T fejlesztési-tesztelési környezet telepítése az Azure-ban |} A Microsoft Docs
-description: Szolgáltatás (IaaS) az Azure virtuális gép (VM) infrastruktúra üzembe IBM Z fejlesztési és tesztelési környezetet (zD & T).
+title: Az IBM & T fejlesztési és tesztelési környezet telepítése az Azure-on | Microsoft Docs
+description: Az IBM Z fejlesztési és tesztelési környezet (& T) üzembe helyezése az Azure-beli virtuális gépek (VM) szolgáltatáson (IaaS) keresztül.
 services: virtual-machines-linux
+ms.service: virtual-machines-linux
 documentationcenter: ''
 author: njray
 ms.author: edprice
@@ -11,86 +12,86 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: ad02ec75dab4cb6971d0467899d80f5f745fd94b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 7ba3323f0811f3f9b76d73796264bf17712a1179
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621300"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841342"
 ---
-# <a name="install-ibm-zdt-devtest-environment-on-azure"></a>IBM zD & T fejlesztési-tesztelési környezet telepítése az Azure-ban
+# <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Az IBM & T fejlesztési és tesztelési környezet telepítése az Azure-ban
 
-A nagyszámítógépes számítási feladatok esetében fejlesztési-tesztelési környezet létrehozása IBM Z rendszereken, telepíthet IBM Z fejlesztése és tesztelése a környezet (zD & T) az Azure virtuális gép (VM) infrastruktúra szolgáltatás (IaaS).
+Ha fejlesztési/tesztelési környezetet kíván létrehozni az IBM Z rendszerekben található nagyszámítógépi számítási feladatokhoz, az IBM Z fejlesztői és tesztelési környezetet (& T) az Azure Virtual Machine (VM) infrastruktúra szolgáltatásként (IaaS) helyezheti üzembe.
 
-A zD & T, kihasználhatja a költségmegtakarításokat, az x86 platform a kevésbé fontos fejlesztési-tesztelési környezetet, és leküldéses Z rendszer éles környezetben vissza a frissítéseket. További információkért lásd: a [IBM ZD & T telepítési utasításokat](https://www-01.ibm.com/support/docview.wss?uid=swg24044565#INSTALL).
+A (Z) és a (Z) & T-T használja a kevésbé fontos fejlesztési és tesztelési környezetek x86 platformjának megtakarítására, majd visszaküldi a frissítéseket egy Z rendszerbeli éles környezetbe. További információkért tekintse meg az [IBM & T telepítési útmutatóját](https://www-01.ibm.com/support/docview.wss?uid=swg24044565#INSTALL).
 
-Az Azure és az Azure Stack támogatja a következő verziókat:
+Az Azure és a Azure Stack a következő verziókat támogatja:
 
-- zD&T Personal Edition
-- zD&T Parallel Sysplex
+- & T Personal kiadás
+- & T Parallel Sysplex
 - zD&T Enterprise Edition
 
-ZD & T minden kiadása csak futtassa x86 Linux rendszerek esetében nem a Windows Server. Enterprise Edition vagy a Red Hat Enterprise Linux (RHEL), vagy az Ubuntu vagy a Debian esetében támogatott. Az Azure RHEL és a Debian virtuális Gépet rendszerképek érhetők el.
+A & T összes kiadása csak x86 Linux rendszereken fut, nem Windows Server. A Enterprise Edition Red Hat Enterprise Linux (RHEL) vagy Ubuntu/Debian rendszeren támogatott. A RHEL és a Debian rendszerű virtuálisgép-lemezképek is elérhetők az Azure-ban.
 
-Ez a cikk bemutatja, hogyan állítható be zD & T Enterprise Edition, az Azure-ban, így használhatja a zD & T Enterprise Edition webkiszolgáló-környezetek létrehozása és kezelése. Telepítése zD & T minden olyan környezetekben nem telepít. Létre kell hoznia ezeket külön-külön telepítési csomagokat. Például az alkalmazás fejlesztők szabályozott Disztribúciók (ADCD) kötetlemezképet tesztelési környezetek. Az IBM elérhető media terjesztési zip-rendszerképek szerepel. Lásd: hogyan [az Azure-ban ADCD környezet beállításával](demo.md).
+Ebből a cikkből megtudhatja, hogyan állíthatja be a & T Enterprise Edition rendszert az Azure-ban, hogy a kihasználható & T Enterprise Edition webkiszolgálót használja a környezetek létrehozásához és kezeléséhez. A & T-T nem telepítheti környezetbe. Ezeket külön kell létrehoznia telepítési csomagokként. Például az Application Developers által vezérelt disztribúciók (ADCD-EK) a tesztelési környezetek mennyiségi rendszerképei. Ezeket a zip-képek tartalmazzák az IBM-től elérhető adathordozó-terjesztésben. Lásd: [ADCD-környezet beállítása az Azure](demo.md)-ban.
 
-További információkért lásd: a [zD & T áttekintése](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zdt.overview.gs.doc/topics/c_product_overview.html) az IBM Tudásbázis központban.
+További információkért tekintse meg az IBM Knowledge Center adatkezelési [& T áttekintését](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zdt.overview.gs.doc/topics/c_product_overview.html) .
 
-Ez a cikk bemutatja, hogyan állíthat be Z fejlesztési és tesztelési környezet (zD & T) Enterprise Edition, az Azure-ban. Ezután használhatja a zD & T Enterprise Edition webkiszolgáló hozhat létre és kezelheti a Z-alapú környezeteket az Azure-ban.
+Ez a cikk bemutatja, hogyan állíthatja be a Z fejlesztési és tesztelési környezet (& T) Enterprise Edition rendszert az Azure-ban. Ezután használhatja a & T Enterprise Edition webkiszolgálót a Z-alapú környezetek Azure-beli létrehozásához és kezeléséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!NOTE]
-> IBM lehetővé teszi, hogy zD & T Enterprise Edition telepíthetők a csak fejlesztési és tesztelési környezetek –*nem* éles környezetben.
+> Az IBM lehetővé teszi, hogy a & T Enterprise Edition csak fejlesztési és tesztelési környezetekben legyen telepítve –*nem* éles környezetekben.
 
 - Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
-- Az adathordozó, amely csak az IBM-ügyfelek és partnerek számára érhető el hozzáférésre van szüksége. További információ a IBM képviselőjétől kaphat, vagy tekintse meg a kapcsolattartási adatokat a a [zD & T](https://www.ibm.com/us-en/marketplace/z-systems-development-test-environment) webhelyén.
+- Hozzáférésre van szüksége az adathordozóhoz, amely csak az IBM-ügyfelek és-partnerek számára érhető el. További információért forduljon az IBM-képviselőjéhez, vagy tekintse meg a kapcsolattartási adatokat a [& T](https://www.ibm.com/us-en/marketplace/z-systems-development-test-environment) webhelyén.
 
-- A [licencelési kiszolgáló](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.tools.user.guide.doc/topics/zdt_ee.html). Ez a környezet eléréséhez szükséges. Létrehozás módja attól függ, hogyan licencet, a szoftver IBM:
+- Egy [licencelési kiszolgáló](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.tools.user.guide.doc/topics/zdt_ee.html). Ez a környezetekhez való hozzáféréshez szükséges. A Létrehozás módja attól függ, hogyan történik az IBM szoftver licence:
 
-     - **Licencelési kiszolgáló hardveres** USB hardvereszköz, amely tartalmazza a szoftver összes részének eléréséhez szükséges ésszerű jogkivonatok igényel. Ez az IBM kell beszereznie.
+     - A **hardveres licencelési kiszolgálónak** olyan USB-Hardvereszközre van szüksége, amely tartalmazza a szoftver összes részének eléréséhez szükséges racionális jogkivonatokat. Ezt az IBM-től kell megszereznie.
 
-     - **-Alapú szoftver licencelési kiszolgáló** központi licencelési kulcsok a felügyeleti kiszolgáló beállításához szükséges. Ezt a módszert részesíti előnyben, és megköveteli, hogy a kulcsokat, a felügyeleti kiszolgáló IBM fogadjon beállítása.
+     - A **szoftveres licencelési kiszolgálónak** be kell állítania egy központi kiszolgálót a licencelési kulcsok kezeléséhez. Ez a módszer előnyben részesített, és megköveteli az IBM-től kapott kulcsok beállítását a felügyeleti kiszolgálón.
 
-## <a name="create-the-base-image-and-connect"></a>Az alap rendszerképet létrehozása és csatlakoztatása
+## <a name="create-the-base-image-and-connect"></a>Az alaprendszerkép létrehozása és a kapcsolat
 
-1. Az Azure Portalon [hozzon létre egy virtuális Gépet](/azure/virtual-machines/linux/quick-create-portal) kívánt operációsrendszer-konfigurációval. Ez a cikk feltételezi, hogy B4ms virtuális gép (4 vcpu-k és 16 GB memóriája) Ubuntu 16.04 operációs rendszerű.
+1. A Azure Portal-ben [hozzon létre egy virtuális gépet](/azure/virtual-machines/linux/quick-create-portal) a kívánt operációsrendszer-konfigurációval. Ez a cikk feltételezi, hogy a B4ms virtuális gép (4 vCPU és 16 GB memóriával) Ubuntu 16,04 rendszert futtat.
 
-2. A virtuális gép létrehozása után nyissa meg a 22-es az SSH-hoz, a 21 az FTP és a 9443-as-kiszolgáló bejövő portokat.
+2. A virtuális gép létrehozása után nyissa meg a 22-es bejövő portokat az SSH-hoz, 21 FTP-hez és 9443-hez a webkiszolgálóhoz.
 
-3. Látható, az SSH hitelesítő adatainak lekérése a **áttekintése** a virtuális gép paneljén a **Connect** gombra. Válassza ki a **SSH** lapra, és az SSH-bejelentkezési parancs másolása a vágólapra.
+3. Szerezze be a virtuális gép **Áttekintés** paneljén látható SSH hitelesítő adatokat a **kapcsolat** gomb használatával. Válassza az **SSH** fület, és másolja az SSH-bejelentkezési parancsot a vágólapra.
 
-4. Jelentkezzen be egy [Bash rendszerhéjat](/azure/cloud-shell/quickstart) , a helyi Számítógépről, majd illessze be a parancsot. A képernyő lesz **ssh\<felhasználóazonosító\>\@\<IP-cím\>** . Ha a rendszer kéri a hitelesítő adatait, adja meg azokat a kezdőkönyvtára kapcsolatot létesíteni.
+4. Jelentkezzen be egy [bash](/azure/cloud-shell/quickstart) -rendszerhéjba a helyi számítógépről, és illessze be a parancsot. Az **SSH\<-felhasználói azonosító\>\@IP-címe\>lesz.\<** Ha a rendszer kéri a hitelesítő adatok megadását, adja meg őket a saját kezdőkönyvtár kapcsolatának létrehozásához.
 
-## <a name="copy-the-installation-file-to-the-server"></a>Másolja a fájlt a kiszolgálóra
+## <a name="copy-the-installation-file-to-the-server"></a>A telepítési fájl másolása a kiszolgálóra
 
-A telepítőfájl a webkiszolgáló **ZDT\_telepítése\_EE\_V12.0.0.1.tgz**. Az IBM által biztosított adathordozó szerepel. Az Ubuntu rendszerű virtuális gép fel kell tölteni a fájlt.
+A webkiszolgáló telepítési fájlja a **ZDT\_install\_EE\_v 12.0.0.1. tgz**. Ez az IBM által biztosított adathordozó részét képezi. Ezt a fájlt fel kell töltenie Ubuntu rendszerű virtuális gépre.
 
-1. A parancssorból adja meg, hogy minden rendben az újonnan létrehozott képen naprakész a következő parancsot:
+1. A parancssorban adja meg a következő parancsot, hogy minden naprakész legyen az újonnan létrehozott rendszerképben:
 
     ```
     sudo apt-get update
     ```
 
-2. A telepítéséhez a következő könyvtár létrehozásakor:
+2. Hozza létre a telepítendő könyvtárat:
 
     ```
     mkdir ZDT
     ```
 
-3. Másolja a fájlt a helyi gépen a virtuális géphez:
+3. Másolja a fájlt a helyi gépről a virtuális gépre:
 
     ```
     scp ZDT_Install_EE_V12.0.0.1.tgz  your_userid@<IP Address /ZDT>   =>
     ```
     
 > [!NOTE]
-> Ez a parancs a kezdőlap címtárban, attól függően, hogy az ügyfél fut-e a Windows vagy Linux-alapú működésmódja ZDT könyvtárba másolja át a telepítőfájlt.
+> Ez a parancs a saját kezdőkönyvtár ZDT könyvtárába másolja a telepítőfájlt, amely attól függően változik, hogy az ügyfél Windows vagy Linux rendszert futtat-e.
 
-## <a name="install-the-enterprise-edition"></a>Az Enterprise kiadás telepítése
+## <a name="install-the-enterprise-edition"></a>Az Enterprise Edition telepítése
 
-1. Nyissa meg a ZDT könyvtárat, és a ZDT kibontása\_telepítése\_EE\_V12.0.0.1.tgz fájlt a következő parancsokkal:
+1. Nyissa meg a ZDT könyvtárat, és bontsa\_ki\_a\_ZDT install EE v 12.0.0.1. tgz fájlt a következő parancsokkal:
 
     ```
     cd ZDT
@@ -103,38 +104,38 @@ A telepítőfájl a webkiszolgáló **ZDT\_telepítése\_EE\_V12.0.0.1.tgz**. Az
     ./ZDT_Install_EE_V12.0.0.0.x86_64
     ```
 
-3. Válassza ki **1** vállalati kiszolgáló telepítése.
+3. Válassza az **1** lehetőséget a vállalati kiszolgáló telepítéséhez.
 
-4. Nyomja meg **Enter** és figyelmesen olvassa el a licencszerződést. Adja meg a licenc végén **Igen** a folytatáshoz.
+4. Nyomja le az **ENTER** billentyűt, és figyelmesen olvassa el a licencszerződéseket. A licenc végén adja meg az **Igen** értéket a folytatáshoz.
 
-5. Amikor a rendszer kéri az újonnan létrehozott felhasználó jelszavának módosításához **ibmsys1**, a paranccsal **sudo passwd ibmsys1** , és adja meg az új jelszót.
+5. Amikor a rendszer felszólítja az újonnan létrehozott felhasználó jelszavának módosítására, **ibmsys1**használja a **sudo passwd ibmsys1** parancsot, és adja meg az új jelszót.
 
-6. Ha a telepítés sikerességének ellenőrzéséhez adja meg
+6. Annak ellenőrzése, hogy a telepítés sikeres volt-e
 
     ```
     dpkg -l | grep zdtapp
     ```
 
-7. Győződjön meg arról, hogy a kimenet tartalmazza a karakterláncot **zdtapp 12.0.0.0**jelzi, hogy a csomag gáz telepítése sikeresen befejeződött
+7. Ellenőrizze, hogy a kimenet tartalmazza-e a **zdtapp 12.0.0.0**karakterláncot, amely azt jelzi, hogy a csomag gázzal való telepítése sikerült
 
-### <a name="starting-enterprise-edition"></a>Enterprise Edition indítása
+### <a name="starting-enterprise-edition"></a>Enterprise kiadás indítása
 
-Ne feledje, hogy a kiszolgáló indításakor, akkor fut, amely a telepítési folyamat során létrehozott zD & T felhasználói azonosító alapján.
+Ne feledje, hogy a webkiszolgáló indításakor a rendszer a telepítési folyamat során létrehozott & T felhasználói azonosító alatt fut.
 
-1. A webkiszolgáló elindításához futtassa a következő parancsot a legfelső szintű felhasználói azonosító használatával:
+1. A webkiszolgáló elindításához használja a root user azonosítót a következő parancs futtatásához:
 
     ```
     sudo /opt/ibm/zDT/bin/startServer
     ```
 
-2. Másolja az URL-cím kimeneti szerint a parancsfájl, amely a következőhöz hasonló:
+2. Másolja ki az URL-kimenetet a parancsfájlból, amely a következőhöz hasonló:
 
     ```
     https://<your IP address or domain name>:9443/ZDTMC/login.htm
     ```
 
-3. Illessze be az URL-CÍMÉT egy webböngészőben nyissa meg a felügyeleti összetevő a zD & T telepítés.
+3. Illessze be az URL-címet egy webböngészőbe, és nyissa meg a felügyeleti összetevőt a & T-telepítéshez.
 
 ## <a name="next-steps"></a>További lépések
 
-[Állítsa be az alkalmazás fejlesztők szabályozott terjesztési (ADCD) IBM zD & T v1](./demo.md)
+[Alkalmazás-fejlesztőknek vezérelt terjesztés (ADCD) beállítása az IBM & T v1-ben](./demo.md)

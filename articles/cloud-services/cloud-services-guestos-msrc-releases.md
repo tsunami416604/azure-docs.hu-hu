@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/26/2019
+ms.date: 8/2/2019
 ms.author: raiye
-ms.openlocfilehash: dd0adbe7cc27389e3b1d6533b038042824daea22
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 534a77ad29338ca1cdba22a3adeb8113521a6246
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592428"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780091"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Microsoft Security Response Center (MSRC) frissítéseiket mutatják be. A cikkben megkeresve megállapíthatja, hogy egy adott frissítés a használt vendég operációs rendszerre vonatkozik-e. A frissítések mindig továbbítva lesznek az adott [család][family-explain] számára, melyeket a alkalmazásban bevezettek.
@@ -28,7 +28,6 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | Termék kategóriája | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 |  Rel 19-07   |  [4507434]  |  Internet Explorer   |  2,88, 3,75, 4,68  |  2019. július 9.  |
-|  Rel 19-07   |  [4506621]  |  Windows-Biztonság   |  2,88, 3,75, 4,68  |  2019. július 9.  |
 |  Rel 19-07   |  [4506966]  |  .NET 4.5.2 biztonság   |  2,88  |  2019. július 9.  |
 |  Rel 19-07   |  [4506976]  |  .NET 3.5.1 biztonság   |  2,88  |  2019. július 9.  |
 |  Rel 19-07   |  [4507456]  |  Windows-Biztonság   |  2,88  |  2019. július 9.  |

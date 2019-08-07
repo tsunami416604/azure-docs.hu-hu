@@ -7,12 +7,12 @@ ms.author: nakhanha
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: f3a0fa1ecdb2db94b43a5380f9497b4b1c266e47
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: bf9bb7adfa25ea16498a32b57d4927de7e81c007
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441948"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68826916"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Apache Spark és Apache Hive integrálása a méhkas Warehouse-összekötővel
 
@@ -51,7 +51,7 @@ Az alábbi lépéseket követve beállíthatja a kaptár Warehouse-összekötőt
 
         ![Spark2 Ambari-konfiguráció](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-    1. A `spark.hadoop.hive.llap.daemon.service.hosts` **speciális struktúra – interaktív – env**területen állítsa be a tulajdonságot a **LLAP** tulajdonság értékeként. Például: `@llap0`
+    1. A `spark.hadoop.hive.llap.daemon.service.hosts` **speciális struktúra – interaktív – env**területen állítsa be a tulajdonságot a **LLAP** tulajdonság értékeként. Például: `llap0`
 
     1. Állítsa `spark.sql.hive.hiveserver2.jdbc.url` be a JDBC kapcsolati sztringet, amely az interaktív lekérdezési fürt Hiveserver2 kapcsolódik. A fürthöz tartozó kapcsolatok karakterlánca az alábbi URI-hoz hasonlóan fog kinézni. `CLUSTERNAME`a a Spark-fürt neve, a és `user` `password` a paraméter pedig a fürt megfelelő értékeire van beállítva.
 

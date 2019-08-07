@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: a9de7c75ef2bd29b2e401ba387ca16a5dfda34fb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 30eb922e17810ddd53166a702b5fc513684f2140
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68442051"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742377"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Milyen Apache Hadoop-összetevők és-verziók érhetők el a HDInsight-ben?
 
@@ -88,7 +88,7 @@ A következő táblázat felsorolja azokat a HDInsight-verziókat, amelyek **nem
 
 | HDInsight verziója | HDP verziója | VM OS | Kiadás dátuma | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3,5 <br> (Nem Spark) |HDP 2,5 |Ubuntu 16.0.4 LTS |Szeptember 30., 2016 |Szeptember 5., 2017 |2018. június 28. |Igen |Nem |
+| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |Szeptember 30., 2016 |Szeptember 5., 2017 |2018. június 28. |Igen |Nem |
 | HDInsight 3,4 |HDP 2.4 |Ubuntu 14.0.4 LTS |2016. március 29-én |December 29., 2016 |2018. január 9. |Igen |Nem |
 | HDInsight 3,3 |HDP 2.3 |Windows Server 2012 R2 |2015. december 2. |2016. június 27. |2018. július 31. |Igen |Nem |
 | HDInsight 3,3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2015. december 2. |2016. június 27. |2017. július 31. |Igen |Nem |

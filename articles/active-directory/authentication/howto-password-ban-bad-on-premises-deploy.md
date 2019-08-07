@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ebeed3636ea6da77e05a9a790e51c7771ebe685
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 596020952fd02a414c050ac7fe7ab37d7137c391
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666284"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779665"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD jelszóvédelem üzembe helyezése
 
@@ -282,12 +282,29 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
 
    A Szoftvertelepítés szabványos MSI-eljárások használatával automatizálható. Példa:
 
-   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn`
+   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 
-   > [!WARNING]
-   > Az alábbi példában az msiexec parancs azonnali újraindítást eredményez. Ennek elkerüléséhez használja a `/norestart` jelzőt.
+   Ha szeretné, hogy `/norestart` a telepítő automatikusan újraindítsa a gépet, kihagyhatja a jelzőt.
 
 A telepítés akkor fejeződik be, ha a tartományvezérlő ügynök szoftverét tartományvezérlőre telepítették, és a számítógép újraindul. Nincs szükség más konfigurációra.
+
+## <a name="upgrading-the-proxy-agent"></a>A proxy ügynök frissítése
+
+Ha elérhető az Azure ad jelszavas védelmi proxy szoftver újabb verziója, a frissítés a `AzureADPasswordProtectionProxySetup.exe` szoftver telepítőjének legújabb verziójának futtatásával valósítható meg. A proxy szoftver aktuális verziójának eltávolítása nem szükséges – a telepítő helyben történő frissítést hajt végre. A proxy szoftver frissítése során nincs szükség újraindításra. Előfordulhat, hogy a szoftverfrissítés szabványos MSI-eljárások használatával automatizálható, például `AzureADPasswordProtectionProxySetup.exe /quiet`:.
+
+A proxy ügynök támogatja az automatikus frissítést. Az automatikus frissítés a Microsoft Azure AD összekapcsolási ügynök frissítési szolgáltatását használja, amely a proxy szolgáltatással párhuzamosan települ. Az automatikus frissítés alapértelmezés szerint be van kapcsolva, és a set-AzureADPasswordProtectionProxyConfiguration parancsmag használatával engedélyezhető vagy letiltható. Az aktuális beállítás a Get-AzureADPasswordProtectionProxyConfiguration parancsmag használatával kérdezhető le. A Microsoft azt javasolja, hogy az automatikus frissítés engedélyezve legyen.
+
+A `Get-AzureADPasswordProtectionProxy` parancsmag segítségével lekérdezhető a jelenleg telepített proxy-ügynökök szoftveres verziója egy erdőben.
+
+## <a name="upgrading-the-dc-agent"></a>A DC-ügynök frissítése
+
+Ha az Azure ad jelszavas védelem DC-ügynökének újabb verziója érhető el, a frissítés a `AzureADPasswordProtectionDCAgentSetup.msi` szoftvercsomag legújabb verziójának futtatásával valósítható meg. Nincs szükség a DC-ügynök szoftverének aktuális verziójának eltávolítására – a telepítő helyben történő frissítést hajt végre. A DC-ügynök szoftverének frissítésekor mindig újraindítás szükséges – ezt az alapszintű Windows-viselkedés okozza. 
+
+Előfordulhat, hogy a szoftverfrissítés szabványos MSI-eljárások használatával automatizálható, például `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`:.
+
+Ha szeretné, hogy `/norestart` a telepítő automatikusan újraindítsa a gépet, kihagyhatja a jelzőt.
+
+A `Get-AzureADPasswordProtectionDCAgent` parancsmag használható a jelenleg telepített DC-ügynökök szoftveres verziójának lekérdezésére egy erdőben.
 
 ## <a name="multiple-forest-deployments"></a>Több erdőre üzemelő példányok
 
@@ -301,7 +318,7 @@ A jelszó módosításait/készleteit a rendszer nem dolgozza fel és nem őrzi 
 
 A jelszavas védelem fő elérhetősége a proxykiszolgálók rendelkezésre állása, amikor egy erdőben lévő tartományvezérlők megpróbálnak letölteni új házirendeket vagy más, az Azure-ból származó adatok letöltését. Minden tartományvezérlő ügynök egy egyszerű, ciklikusan megjelenő algoritmust használ, amikor eldönti, melyik proxykiszolgálót kell meghívni. Az ügynök kihagyja a nem válaszoló proxykiszolgáló-kiszolgálókat. A címtár-és SYSVOL-mappa állapotának kifogástalan replikálásával rendelkező Active Directory központi telepítések esetében két proxykiszolgáló elegendő a rendelkezésre állás biztosításához. Ez időben letölti az új szabályzatokat és egyéb adatmennyiségeket. Azonban további proxykiszolgálók is üzembe helyezhetők.
 
-A DC-ügynök szoftverének kialakítása csökkenti a magas rendelkezésre álláshoz kapcsolódó szokásos problémákat. A tartományvezérlő ügynöke a legutóbb letöltött jelszóházirend helyi gyorsítótárát tárolja. Még ha az összes regisztrált proxykiszolgáló elérhetetlenné válik, a tartományvezérlő-ügynökök továbbra is kikényszerítik a gyorsítótárazott jelszavas szabályzatot. A nagyméretű üzemelő példányok jelszavas házirendjének ésszerű frissítési gyakorisága általában *nap*, nem óra vagy kevesebb. Így a proxykiszolgálók rövid kimaradása nem befolyásolja jelentősen az Azure AD jelszavas védelmét.
+A DC-ügynök szoftverének kialakítása csökkenti a magas rendelkezésre álláshoz kapcsolódó szokásos problémákat. A tartományvezérlő ügynöke a legutóbb letöltött jelszóházirend helyi gyorsítótárát tárolja. Még ha az összes regisztrált proxykiszolgáló elérhetetlenné válik, a tartományvezérlő-ügynökök továbbra is kikényszerítik a gyorsítótárazott jelszavas szabályzatot. A nagyméretű üzemelő példányok jelszavas házirendjének ésszerű frissítési gyakorisága általában nap, nem óra vagy kevesebb. Így a proxykiszolgálók rövid kimaradása nem befolyásolja jelentősen az Azure AD jelszavas védelmét.
 
 ## <a name="next-steps"></a>További lépések
 

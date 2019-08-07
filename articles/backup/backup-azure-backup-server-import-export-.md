@@ -1,6 +1,6 @@
 ---
 title: Azure Backup – offline biztonsági mentés a DPM és a Azure Backup Server
-description: Ismerje meg, hogy a Azure Backup lehetővé teszi, hogy az Azure import/export szolgáltatással a hálózatról küldjön adatküldést. Ez a cikk ismerteti a kezdeti biztonsági mentési információknak az Azure import export szolgáltatással történő offline előkészítését.
+description: A Azure Backup lehetővé teszi, hogy az Azure import/export szolgáltatással a hálózaton kívülről küldjön adatküldést. Ez a cikk a DPM és a Azure Backup Server offline biztonsági mentési munkafolyamatát ismerteti (MABS).
 ms.reviewer: saurse
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: dacurwin
-ms.openlocfilehash: 4bc0421f16d56d34e3f3156700a7a141d38fd63d
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0f60fbf22541e5fdd003d0ab663b5905cd31adcd
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689382"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737242"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Offline – a DPM és a Azure Backup Server biztonsági mentési munkafolyamata
 A Azure Backup számos beépített hatékonyságot biztosít, amelyek a hálózati és tárolási költségeket az Azure-ba irányuló összes adat kezdeti teljes biztonsági mentése során megtakarítják. A kezdeti teljes biztonsági mentések általában nagy mennyiségű adat átvitelét igénylik, és nagyobb hálózati sávszélességet igényelnek, ha az azokat követő biztonsági mentések során csak a különbözeteket/növekményeket továbbítják. Azure Backup tömöríti a kezdeti biztonsági mentéseket. Az offline kivetés folyamatán keresztül a Azure Backup lemezek használatával feltölthetik a tömörített kezdeti biztonsági mentési adatok az Azure-ba.

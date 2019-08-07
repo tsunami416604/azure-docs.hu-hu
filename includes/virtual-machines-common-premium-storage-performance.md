@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d3d4679703f6d98cb2062144cfde7d11fe44130c
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 8aeb32ecddc0ef368b615a201179f17178ececad
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386887"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68817222"
 ---
 ## <a name="application-performance-indicators"></a>Alkalmazás-teljesítménymutatók
 
@@ -256,7 +256,7 @@ Az adatlemezek ajánlott lemezgyorsítótár-beállításai a következők:
 
 | **Lemezes gyorsítótárazási beállítás** | **a beállítás használatára vonatkozó javaslat** |
 | --- | --- |
-| Nincsenek |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
+| None |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
 | ReadOnly |A gazdagép-gyorsítótár írásvédettként való konfigurálása írásvédett és írható lemezekhez. |
 | ReadWrite |Konfigurálja a gazdagép-gyorsítótárat úgy, hogy csak akkor ReadWrite, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatlemezek írását, ha szükséges. |
 
@@ -268,6 +268,9 @@ A Premium Storage adatlemezek ReadOnly gyorsítótárazásának konfigurálásá
 
 *ReadWrite*  
 Alapértelmezés szerint az operációsrendszer-lemezeken engedélyezve van a ReadWrite gyorsítótárazás. Mostanában a ReadWrite gyorsítótárazásának támogatása is támogatott az adatlemezeken. Ha ReadWrite gyorsítótárazást használ, megfelelő módon kell megadnia az adatok gyorsítótárból állandó lemezzé való írását. Például a SQL Server kezeli a gyorsítótárazott adatlemezek saját tárolóba való írását. Ha a ReadWrite cache-t olyan alkalmazással használja, amely nem kezeli a szükséges adatmegőrzést, adatvesztést okozhat, ha a virtuális gép összeomlik.
+
+*Nincsenek*  
+Jelenleg a **none** érték csak adatlemezeken támogatott. OPERÁCIÓSRENDSZER-lemezeken nem támogatott. Ha a **nincs** beállítást egy operációsrendszer-lemezen állítja be, akkor a rendszer felülbírálja ezt belsőleg, és **readonly**értékre állítja azt.
 
 Az alábbi irányelvek alkalmazásával például Premium Storage futtathatja SQL Server a következő műveleteket:
 

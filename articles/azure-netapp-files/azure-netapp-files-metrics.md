@@ -1,6 +1,6 @@
 ---
-title: Metrikák, a Azure NetApp-fájlok |} A Microsoft Docs
-description: Metrikák Azure NetApp fájlokat ismerteti.
+title: A Azure NetApp Files metrikái | Microsoft Docs
+description: A Azure NetApp Files metrikáinak leírása.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,41 +12,47 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 08/06/2019
 ms.author: b-juche
-ms.openlocfilehash: 1563b60ef26ac5e4d40f45095d0109dd9dd71570
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a56fb27fdf9e196291942041d68b249d7f16648
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61084939"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839233"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Az Azure NetApp Files metrikái
 
-NetApp Azure Files mérőszámait lefoglalt tároló, tényleges tárterület-használat, kötet átviteli sebesség, IOPS és a késés. Ezek a metrikák elemzésével szerezhet a NetApp fiókok használati mintáját és mennyiségi teljesítményét jobb megértése.  
+Azure NetApp Files metrikákat biztosít a lefoglalt tárolóban, a tényleges tárterület-használatot, a kötet átviteli sebességét, a IOPS és a késést. A metrikák elemzésével jobban megismerheti a NetApp-fiókok használati mintáját és a kötet teljesítményét.  
 
-## <a name="capacity_pools"></a>Kapacitás készletek használati metrikái
+## <a name="capacity_pools"></a>A kapacitási készletek használati metrikái
 
-- *Kötet lefoglalt készlet mérete*  
-    Ez az a kiosztott kapacitást készlet mérete (GiB).  
-- *Lefoglalt kötet készlet használt*  
-    Ez az a teljes kötet kvóta (GB) a megadott kapacitás készletben (azt jelenti, a teljes kiosztott méretek a kötet a kapacitás a készletben található). Ez a kötet létrehozása során kiválasztott méretét.  
-- *Kötet készlet teljes logikai mérete*  
-    Ez az a teljes kapacitás készletben található kötetek között használt logikai terület (GB).  
-- *Kötet készlet teljes pillanatkép mérete*  
-    Ez az az összes növekményes, a pillanatképek által használt logikai területet.  
+<!-- 
+- *Volume pool allocated size*  
+    This is the size (GiB) of the provisioned capacity pool.  
+--> 
+- *Lefoglalt kötet-készlet*  
+    Ez az adott kapacitási készletben lévő mennyiségi kvóta (GiB) teljes mennyisége (azaz a kötetek kiosztott méretei összesen). A kötet létrehozása során kiválasztott méret.  
+- *Kötet készletének teljes logikai mérete*  
+    A kapacitási készlet kötetei között használt logikai terület összesen (GiB).  
+<!-- 
+- *Volume pool total snapshot size*  
+    This is the total of incremental logical space used by the snapshots.  
+-->
 
-## <a name="volumes"></a>Kötetek használati metrikái
+## <a name="volumes"></a>A kötetek használati metrikái
 
-- *Kötet lefoglalt méret*   
-    Ez az a kötet méretétől (kvóta) GiB-ban.  
-- *A kötet logikai mérete*   
-    Ez az a teljes logikai terület egy köteten (GB) használt. Ez a méret aktív fájlrendszerek és pillanatképek által használt logikai terület tartalmazza.  
-- *Kötet-pillanatképek mérete*   
-    Ez az a növekményes, a pillanatképek a kötet által használt logikai területet.  
+<!-- 
+- *Volume allocated size*   
+    This is the volume size (quota) provisioned in GiB.  
+--> 
+- *Kötet logikai mérete*   
+    Egy köteten (GiB) használt teljes logikai terület. Ez a méret magában foglalja az aktív fájlrendszerek és Pillanatképek által használt logikai teret.  
+- *Kötet pillanatképének mérete*   
+    Ez egy köteten található Pillanatképek által használt növekményes logikai terület.  
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megismerheti a NetApp Azure-fájlok hierarchiája](azure-netapp-files-understand-storage-hierarchy.md)
+* [A Azure NetApp Files tárolási hierarchiájának megismerése](azure-netapp-files-understand-storage-hierarchy.md)
 * [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
 * [Kötet létrehozása Azure NetApp Files-hoz](azure-netapp-files-create-volumes.md)

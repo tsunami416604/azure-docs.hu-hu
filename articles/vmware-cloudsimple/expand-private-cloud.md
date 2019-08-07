@@ -1,60 +1,60 @@
 ---
-title: Bontsa ki az Azure VMware-megoldás által CloudSimple Magánfelhő
-description: Ismerteti, hogyan bővít ki egy meglévő CloudSimple Magánfelhő kapacitásának hozzáadása egy meglévő vagy új fürt
+title: Az Azure VMware-megoldás kibontása a CloudSimple Private Cloud használatával
+description: Ismerteti, hogyan bővíthető egy meglévő CloudSimple-felhő a kapacitás meglévő vagy új fürthöz való hozzáadásához
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/06/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 293a09c57ca95e2774e44ff4bc9f9f2c31be2f49
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: a82ba1b433e62ed1c4b72b8e942d4ade29f26c4a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332576"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816158"
 ---
-# <a name="expand-a-cloudsimple-private-cloud"></a>Bontsa ki a CloudSimple Magánfelhő
+# <a name="expand-a-cloudsimple-private-cloud"></a>CloudSimple privát felhő kibontása
 
-CloudSimple rugalmasságot biztosít, és dinamikusan bontsa ki a Magánfelhő. Kisebb konfiguráció kezdődik, és bontsa ki a nagyobb kapacitást igény szerint. Vagy a jelenlegi igények alapján Magánfelhő létrehozása, és bontsa ki a fogyasztás növekedésével.
+A CloudSimple rugalmasságot biztosít a privát felhők dinamikus kibővítéséhez. Ha nagyobb kapacitásra van szüksége, kezdjen egy kisebb konfigurációval, majd bontsa ki a csomópontot. Vagy létrehozhat egy saját felhőt a jelenlegi igények alapján, majd kiterjesztheti a felhasználás növekedését.
 
-Magánfelhő egy vagy több vSphere-fürtöket tartalmaz. Ha mindegyik fürthöz is 3 – 16 csomóponttal rendelkezik.  Magánfelhő kibővítésekor, csomópontok hozzáadása a meglévő fürthöz, vagy hozzon létre egy új fürtöt. Bontsa ki a meglévő fürt, további csomópontokat a meglévő csomópontok azonos típusú (Termékváltozat) kell lennie. Egy új fürtöt hoz létre, a csomópont lehet egy másik típusú. A Magánfelhő korlátok további információkért lásd: korlátozza szakaszában [CloudSimple magánfelhő áttekintése](cloudsimple-private-cloud.md) cikk.
+A privát felhő egy vagy több vSphere-fürtből áll. Minden fürthöz 3 – 16 csomópont tartozhat.  A privát felhő bővítésekor csomópontokat kell hozzáadnia a meglévő fürthöz, vagy létre kell hoznia egy új fürtöt. Meglévő fürt kibontásához a további csomópontoknak ugyanolyan típusúnak (SKU) kell lenniük, mint a meglévő csomópontoknak. Új fürt létrehozásához a csomópontok eltérő típusúak lehetnek. A saját Felhőbeli korlátokkal kapcsolatos további információkért lásd: a [CloudSimple privát felhő](cloudsimple-private-cloud.md) áttekintő cikk korlátozásai szakasza.
 
-Magánfelhő létrehozása az alapértelmezett érték **adatközpont** vcenter.  Minden adatközpont szolgálja ki a legfelső szintű felügyeleti egységként.  Egy új fürtöt CloudSimple biztosítja a választás a meglévő adatközpontjának hozzáadását és a egy új adatközpont létrehozása.
+A privát felhőt a vCenter alapértelmezett adatközpontja hozza létre.  Minden adatközpont legfelső szintű felügyeleti entitásként működik.  Új fürt esetén a CloudSimple lehetőséget biztosít a meglévő adatközponthoz való hozzáadásra vagy egy új adatközpont létrehozására.
 
-Az új fürt konfiguráció részeként CloudSimple konfigurálja a VMware-infrastruktúrára.  A beállítások közé tartozik a tárolási beállítások vsan-hoz lemez csoportok, a VMware magas rendelkezésre állás és a Distributed erőforrás ütemező (DRS).
+Az új fürtkonfiguráció részeként a CloudSimple konfigurálja a VMware-infrastruktúrát.  A beállítások közé tartozik a vSAN, a VMware magas rendelkezésre állása és az elosztott erőforrás-ütemező (DRS) tárolási beállításai.
 
-Magánfelhő többször bővíthetők. Bővítés teheti meg, csak akkor, ha a teljes csomópont korlátokon belül marad. Minden alkalommal, bontsa ki a Magánfelhő adja hozzá a meglévő fürthöz, vagy hozzon létre egy újat.
+A privát felhő többször is kiterjeszthető. A bővítés csak akkor végezhető el, ha a csomópontok általános korlátain belül marad. Minden alkalommal, amikor kibővít egy saját felhőt, amelyet hozzáad a meglévő fürthöz, vagy újat hoz létre.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Csomópont kibontásával, a Magánfelhő előtt ki kell építeni.  A csomópont kiépítése további információkért lásd: [csomópontok kiépítésére CloudSimple – Azure által a VMware megoldás](create-nodes.md) cikk.  Egy új fürtöt hoz létre, az azonos termékváltozatának legalább három elérhető csomópont kell rendelkeznie.
+A csomópontokat a saját felhő kibontása előtt kell kiépíteni.  A csomópontok kiépítésével kapcsolatos további információkért lásd: [csomópontok kiépítése a VMware-megoldáshoz a CloudSimple – Azure-](create-nodes.md) cikk.  Új fürt létrehozásához legalább három elérhető csomópontnak kell lennie ugyanahhoz az SKU-hoz.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="expand-a-private-cloud"></a>Bontsa ki a Magánfelhő
+## <a name="expand-a-private-cloud"></a>Privát felhő kibontása
 
-1. [A CloudSimple portál eléréséhez](access-cloudsimple-portal.md).
+1. [Nyissa meg a CloudSimple portált](access-cloudsimple-portal.md).
 
-2. Nyissa meg a **erőforrások** lapon, és válassza a privát felhő, amelynek meg szeretné kiterjeszteni.
+2. Nyissa meg az **erőforrások** lapot, és válassza ki azt a privát felhőt, amelynek ki szeretné bővíteni a szolgáltatását.
 
-3. Összegzési területen kattintson **Kibontás**.
+3. Az összefoglalás szakaszban kattintson a **Kibontás**elemre.
 
-    ![Bontsa ki a magánfelhőben](media/resources-expand-private-cloud.png)
+    ![Privát felhő kibontása](media/resources-expand-private-cloud.png)
 
-4. Döntse el, bontsa ki a meglévő fürtök vagy a vSphere-fürtöt létrehozni. A módosítások, az összefoglaló információkat a lapon frissül.
+4. Adja meg, hogy ki szeretné-e bontani a meglévő fürtöt, vagy új vSphere-fürtöt szeretne létrehozni. A módosítások elvégzése közben a lapon található összegző információk frissülnek.
 
-    * A meglévő fürt kibontásához kattintson **bontsa ki a meglévő fürt**. Válassza ki a fürtöt, bontsa ki, és írja be a hozzáadandó csomópontok számát. Minden egyes fürt egy legfeljebb 16 csomóponttal rendelkezhet.
-    * Adjon hozzá egy új fürtöt, kattintson a **új fürt létrehozása**. Adjon egy nevet a fürtnek. Válassza ki egy meglévő adatközpont, vagy adjon meg egy nevet, hozzon létre egy új adatközpontra. Válassza ki a csomópontot. Amikor egy új vSphere-fürtöt hoz létre, de nem egy meglévő vSphere-fürt kibővítésekor választhat egy másik csomópont típusa. Válassza ki a csomópontok számát. Minden egyes új fürthöz legalább három csomóponttal kell rendelkeznie.
+    * A meglévő fürt kibontásához kattintson a **meglévő fürt**kibontása elemre. Válassza ki a kibontani kívánt fürtöt, és adja meg a hozzáadandó csomópontok számát. Minden fürt legfeljebb 16 csomópontot tartalmazhat.
+    * Új fürt hozzáadásához kattintson az **új fürt létrehozása**lehetőségre. Adjon egy nevet a fürtnek. Válasszon egy meglévő adatközpontot, vagy adjon meg egy nevet egy új adatközpont létrehozásához. Válassza ki a csomópont típusát. Új vSphere-fürt létrehozásakor választhat másik csomópont-típust is, de a meglévő vSphere-fürt kibővítésekor nem. Válassza ki a csomópontok számát. Minden új fürtnek legalább három csomóponttal kell rendelkeznie.
 
-    ![Bontsa ki a magánfelhő - csomópontok hozzáadása](media/resources-expand-private-cloud-add-nodes.png)
+    ![Privát felhő kibontása – csomópontok hozzáadása](media/resources-expand-private-cloud-add-nodes.png)
 
-5. Kattintson a **küldés** bontsa ki a magánfelhő.
+5. Kattintson a **Submit (Küldés** ) elemre a privát felhő kibontásához.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure-ban a VMware virtuális gépeket felhasználására](quickstart-create-vmware-virtual-machine.md)
-* Tudjon meg többet [Magánfelhők létrehozása](cloudsimple-private-cloud.md)
+* [VMware virtuális gépek használata az Azure-ban](quickstart-create-vmware-virtual-machine.md)
+* További információ a [privát felhőkről](cloudsimple-private-cloud.md)

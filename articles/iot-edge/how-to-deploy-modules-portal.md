@@ -10,12 +10,12 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8337c8672eb886d79b38b2a38a74037f88604497
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f27484fd1d47a2e29aa5083a7d440e5c7dba11c1
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448544"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839643"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Az Azure Portalról az Azure IoT Edge-modulok telepítése
 
@@ -39,25 +39,25 @@ Ez a cikk bemutatja, hogyan az Azure Portalon végigvezeti egy manifest nasazen�
 
 A manifest nasazení egy JSON-dokumentum, amely azt ismerteti, hogy mely modulok üzembe helyezéséhez a modulokat, és az ikermodulokkal tulajdonságaiként közti adatfolyamok. Hogyan alkalmazásjegyzékeket az üzembe helyezési a munkahelyi, és hogyan hozhat létre, azokat kapcsolatos további információkért lásd: [megismerheti, hogyan IoT Edge-modulok használják, konfigurálhatók, és újra felhasználható](module-composition.md).
 
-Az Azure Portalon rendelkezik egy varázslót, amely manifest nasazení, a JSON-dokumentum manuálisan semmint létrehozásának módját ismerteti. Ez a három lépésből áll: **Modulok hozzáadása**, **útvonalak megadása**, és **tekintse át a központi telepítési**.
+Az Azure Portalon rendelkezik egy varázslót, amely manifest nasazení, a JSON-dokumentum manuálisan semmint létrehozásának módját ismerteti. Három lépésből áll: **Modulok hozzáadása**, **útvonalak megadása**és az **üzembe helyezés áttekintése**.
 
 ### <a name="add-modules"></a>Modulok hozzáadása
 
-1. Az a **tároló-beállításjegyzékek beállításai** szakasz az oldal bármely privát tárolójegyzékek, amelyek tartalmazzák a modul rendszerképek eléréséhez hitelesítő adatok megadása.
+1. A lap **Container Registry beállítások** szakaszában adja meg a modul lemezképeit tartalmazó privát tároló-nyilvántartók eléréséhez szükséges hitelesítő adatokat.
 
-1. Az a **üzembe helyezési modulok** című oldalon válassza **Hozzáadás**.
+1. A lap **központi telepítési modulok** szakaszában válassza a **Hozzáadás**lehetőséget.
 
 1. A modulok típusú tekintse meg a legördülő listából:
 
    * **IoT Edge-modul** – az alapértelmezett beállítás.
    * **Az Azure Stream Analytics modul** – csak a modulok által létrehozott egy Azure Stream Analytics számítási feladatot.
-   * **Az Azure Machine Learning modul** – csak modellezheti az Azure Machine Learning-munkaterület az a képeket.
+   * **Azure Machine learning modul** – csak Azure Machine learning munkaterületről generált modell-lemezképek.
 
 1. Válassza ki a **IoT Edge-modul**.
 
 1. Adja meg a modul nevét, majd adja meg a tároló rendszerképét. Példa:
 
-   * **Név** -tempSensor
+   * **Név** – SimulatedTemperatureSensor
    * **Lemezkép URI** -mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0
 
 1. Töltse ki az opcionális mezőket, ha szükséges. További információ a tároló-létrehozási beállítások, újraindítási szabályzata, és tekintse meg a kívánt állapot [EdgeAgent kívánt tulajdonságok](module-edgeagent-edgehub.md#edgeagent-desired-properties). További információ az ikermodul: [meghatározása vagy a frissítés kívánt tulajdonságok](module-composition.md#define-or-update-desired-properties).
@@ -84,28 +84,28 @@ Tekintse át a telepítési adatokat, majd válassza a **küldés**.
 
 Miután telepítette a modulokat az eszközön, megtekintheti azokat a **eszközadatok** a portál. Ezen a lapon minden egyes telepített modul, valamint a hasznos információk, például a központi telepítési állapot és a kilépési kód nevét jeleníti meg.
 
-## <a name="deploy-modules-from-azure-marketplace"></a>Azure Marketplace-ről modulok telepítése
+## <a name="deploy-modules-from-azure-marketplace"></a>Modulok üzembe helyezése az Azure Marketplace-en
 
-Az Azure Marketplace-en, tallózhat a vállalati alkalmazások és megoldások, hitelesített és optimalizált futtatásához az Azure-ban számos online alkalmazások és szolgáltatások piactérről köztük [IoT Edge-modulok](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Az Azure Marketplace-en is elérhető az Azure Portalon a **erőforrás létrehozása**.
+Az Azure Marketplace egy online alkalmazások és szolgáltatások piaca, ahol az Azure-on futó Nagyvállalati alkalmazások és megoldások széles körét böngészheti, beleértve a [IoT Edge modulokat](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)is. Az Azure Marketplace a Azure Portal **erőforrás létrehozása**lehetőség alatt is elérhető.
 
-Azure Marketplace-en vagy az Azure Portalon lehet telepíteni az IoT Edge-modul:
+IoT Edge modult az Azure Marketplace-ről vagy a Azure Portalról is telepíthet:
 
-1. Keresse meg a modult, és a telepítési folyamat.
+1. Keresse meg a modult, és kezdje el a telepítési folyamatot.
 
-   * Az Azure Portalon: Egy modul megkeresése és kiválasztása **létrehozás**.
+   * Azure Portal: Keresse meg a modult, és válassza a **Létrehozás**lehetőséget.
 
-   * Az Azure Marketplace-en:
+   * Azure Marketplace:
 
-     1. Egy modul megkeresése és kiválasztása **Letöltés most**.
-     1. Tudomásul veszi a szolgáltató használati feltételei és adatvédelmi szabályzat kiválasztásával **Folytatás**.
+     1. Keresse meg a modult, és válassza a **Letöltés most**lehetőséget.
+     1. A **Folytatás**gombra kattintva nyugtázza a szolgáltató használati feltételeit és adatvédelmi szabályzatát.
 
-1. Válassza ki az előfizetés és az IoT Hub, az eszköznek, amelyhez csatlakozik.
+1. Válassza ki az előfizetését és azt a IoT Hub, amelyhez a céleszköz csatolva van.
 
-1. Válasszon **üzembe helyezés az eszköz**.
+1. Válassza **a telepítés eszközre**lehetőséget.
 
-1. Adja meg a nevét, válassza ki vagy az **található eszköz** , keresse meg a központon regisztrált eszközök között.
+1. Adja meg az eszköz nevét, vagy válassza az **eszköz keresése** lehetőséget a hub-ban regisztrált eszközök között a tallózáshoz.
 
-1. Válassza ki **létrehozás** konfigurálása a központi telepítési jegyzékfájl, beleértve a más modulok hozzáadása, ha szükséges, a standard szintű folyamat folytatásához. Lemezkép URI-ja, például az új modul részletei beállítások létrehozása, és kívánt tulajdonságok előre, de módosítható.
+1. Válassza a **Létrehozás** lehetőséget a telepítési jegyzék konfigurálásának szabványos folyamatának folytatásához, beleértve a további modulok hozzáadását, ha szükséges. Az új modul adatai, például a rendszerkép URI-ja, a létrehozási beállítások és a kívánt tulajdonságok előre definiálva vannak, de módosíthatók.
 
 ## <a name="next-steps"></a>További lépések
 

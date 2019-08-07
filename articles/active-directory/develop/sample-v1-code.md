@@ -10,7 +10,7 @@ ms.assetid: a242a5ff-7300-40c2-ba83-fb6035707433
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/15/2019
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf5ee766a1db51e14ca5bc6ee2d447e3db374683
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4bc671080a05e2c4e27fabcbab5cc40b9717dc85
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276775"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834898"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory kód mintái (v 1.0 végpont)
 
@@ -67,9 +67,9 @@ Az alábbi példák bemutatják a felhasználók aláírására szolgáló webal
 
 A következő példák bemutatják, hogyan valósítható meg a szerepköralapú hozzáférés-vezérlés (RBAC). A RBAC egy webalkalmazás bizonyos szolgáltatásai engedélyeinek bizonyos felhasználókra való korlátozására szolgál. A felhasználók jogosultak attól függően, hogy egy **Azure ad-csoporthoz** tartoznak-e, vagy egy adott alkalmazási **szerepkörrel**rendelkeznek.
 
-Platform | Sample |
+Platform | Minta |
  -------- | ------------------- |
-![Ez a képen a ASP.NET embléma látható](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Azure AD-szerepköröket használó .NET 4,5 MVC-  alapú webalkalmazások engedélyezéséhez
+![Ez a képen a ASP.NET embléma látható](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Azure AD-szerepköröket használó .NET 4,5 MVC- alapú webalkalmazások engedélyezéséhez
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Microsoft Graph vagy webes API-t hívó asztali és mobil nyilvános ügyfélalkalmazások
 
@@ -88,7 +88,7 @@ Mobile (Android)           | ![Ez a rendszerkép az Android-emblémát jeleníti
 Mobil (iOS)           | ![A képen az iOS/Objective C vagy SWIFT látható](media/sample-v2-code/logo_iOS.png) | Interaktív |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
 Asztal (konzol)          | ![Ez a rendszerkép a .NET/C# emblémát jeleníti meg](media/sample-v2-code/logo_NET.png) | Felhasználónév/jelszó </p>  Integrált Windows-hitelesítés | | [dotnet-native-headless](https://github.com/azure-samples/active-directory-dotnet-native-headless)
 Asztal (konzol)          | ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_Java.png) | Felhasználónév/jelszó | | [java-native-headless](https://github.com/Azure-Samples/active-directory-java-native-headless)
-Asztal (konzol)           | ![Ez a rendszerkép a .NET Core/C# emblémát jeleníti meg](media/sample-v2-code/logo_NETcore.png) | Eszköz kódjának folyamata | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
+Asztal (konzol)           | ![Ez a rendszerkép a .NET Core/C# emblémát jeleníti meg](media/sample-v2-code/logo_NETcore.png) | Eszközkód folyamata | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
 
 ## <a name="daemon-applications-accessing-web-apis-with-the-applications-identity"></a>Daemon-alkalmazások (webes API-k elérése az alkalmazás identitásával)
 
@@ -108,7 +108,7 @@ Az alábbi példa bemutatja, hogyan védhető a Node. js webes API-k az Azure AD
 
 A cikk előző részeiben más mintákat is megtalálhat, amelyek egy ASP.NET vagy ASP.NET Core **webes API**-t **hívó** ügyfélalkalmazás bemutatnak. Ezek a minták még nem szerepelnek ebben a szakaszban, de a fenti táblázatok utolsó oszlopában is megtalálhatók.
 
-| Platform | Sample |
+| Platform | Minta |
 |--------|-------------------|
 | ![Ez a képen a Node. js-embléma látható](media/sample-v2-code/logo_nodejs.png)  | [node-webapi](https://github.com/Azure-Samples/active-directory-node-webapi) |
 

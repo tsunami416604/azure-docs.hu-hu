@@ -1,133 +1,133 @@
 ---
-title: Azure-bA replikációs architektúra az Azure Site Recovery |} A Microsoft Docs
-description: Ez a cikk az Azure virtuális gépek, az Azure Site Recovery szolgáltatással az Azure-régiók között vész-helyreállítási beállításakor használt összetevőkről és architektúráról áttekintést nyújt.
+title: Azure-ról Azure-ra történő replikálási architektúra a Azure Site Recoveryban | Microsoft Docs
+description: Ez a cikk áttekintést nyújt azokról az összetevőkről és architektúráról, amelyeket az Azure-beli virtuális gépekhez tartozó Azure-régiók közötti vész-helyreállítás beállításakor használ a Azure Site Recovery szolgáltatás használatával.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 9f985260175e5f54a17799ef07b3a280f42b716e
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 2ed93846e0a1ab98b25bdfbe33b34779996da82b
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491888"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782645"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
 
 
-Ez a cikk ismerteti az architektúra, összetevők és vészhelyreállítás Azure virtuális gépek (VM-EK) használatával telepítéséhez használt folyamatok a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás. Állítsa be a vészhelyreállítás, az Azure virtuális gépek folyamatosan-bA replikálni egy másik célrégióban. Egy kimaradás során, virtuális gépek feladatainak átadása a másodlagos régióba, és ahonnan érheti el őket. Ha minden megfelelően fut újra, feladat-visszavételt, és továbbra is működik az elsődleges helyen.
+Ez a cikk azokat az architektúrát, összetevőket és folyamatokat ismerteti, amelyeket az Azure-beli virtuális gépek (VM-EK) vész-helyreállításának telepítésekor használ a [Azure site Recovery](site-recovery-overview.md) szolgáltatással. A vész-helyreállítási beállítással az Azure-beli virtuális gépek folyamatosan replikálódnak egy másik célcsoportra. Leállás esetén a virtuális gépek átadhatók a másodlagos régiónak, és onnan érhetik el azokat. Ha minden a szokásos módon fut, visszatérhet, és folytathatja a munkát az elsődleges helyen.
 
 
 
 ## <a name="architectural-components"></a>Az architektúra összetevői
 
-A következő összetevők kapnak szerepet Azure virtuális gépek vészhelyreállítása az alábbi táblázat foglalja össze.
+Az Azure-beli virtuális gépek vész-helyreállításában részt vevő összetevőket a következő táblázat foglalja össze.
 
 **Összetevő** | **Követelmények**
 --- | ---
-**Virtuális gépek a forrásrégióban** | A több Azure virtuális gépek egyike egy [forrásrégió támogatott](azure-to-azure-support-matrix.md#region-support).<br/><br/> Virtuális gépek futtathat bármely [támogatott operációs rendszert](azure-to-azure-support-matrix.md#replicated-machine-operating-systems).
-**Forrás Virtuálisgép-tároló** | Azure virtuális gépek kezelhetők, vagy nem felügyelt lemezek terjednek rendelkezik tárfiókok között.<br/><br/>[Ismerje meg](azure-to-azure-support-matrix.md#replicated-machines---storage) támogatott az Azure storage.
-**Forrás Virtuálisgép-hálózatok** | Virtuális gépek egy vagy több alhálózatot a virtuális hálózat (VNet) a forrásrégióban található. [További](azure-to-azure-support-matrix.md#replicated-machines---networking) érvényes hálózati követelmények.
-**A gyorsítótár tárfiókja** | A gyorsítótárfiók a forrás-hálózatban van szüksége. A replikáció során virtuális gépek változásainak gyorsítótárában vannak tárolva a céloldali tárolóra való elküldése előtt.  Gyorsítótárfiókok Standard kell lennie.<br/><br/> Gyorsítótár használata biztosítja, hogy éles üzemi alkalmazások pedig a virtuális gép futó csak minimális hatással van.<br/><br/> [További](azure-to-azure-support-matrix.md#cache-storage) gyorsítótár tárolási követelményekkel kapcsolatos. 
-**Célerőforrások** | Célerőforrások replikáció során, és a egy feladatátvétel esetén használt. Alapértelmezés szerint a Site Recovery állíthat be célerőforrás, vagy hozzon létre és testre szabhatja őket.<br/><br/> A célrégióban ellenőrizze a tudja létrehozni a virtuális gépeket, és hogy előfizetése rendelkezik-e elegendő erőforrás a célrégióban szükséges Virtuálisgép-méretek támogatják. 
+**A forrás régióban lévő virtuális gépek** | Egy másik Azure-beli virtuális gép egy [támogatott forrás-régióban](azure-to-azure-support-matrix.md#region-support).<br/><br/> A virtuális gépek bármely [támogatott operációs rendszert](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)futtatnak.
+**Forrásként szolgáló virtuális gép tárolója** | Az Azure-beli virtuális gépek felügyelhetők, vagy nem felügyelt lemezeket osztanak szét a Storage-fiókok között.<br/><br/>[További információ a](azure-to-azure-support-matrix.md#replicated-machines---storage) támogatott Azure Storage-ról.
+**Forrás virtuálisgép-hálózatok** | A virtuális gépek egy vagy több alhálózatban találhatók a forrás régiójában (VNet). [További](azure-to-azure-support-matrix.md#replicated-machines---networking) információ a hálózatkezelési követelményekről.
+**Gyorsítótáras Storage-fiók** | A forrásoldali hálózatban szüksége lesz egy gyorsítótárbeli Storage-fiókra. A replikáció során a virtuális gépek módosításait a rendszer a gyorsítótárban tárolja, mielőtt elküldi őket a célként megadott tárhelyre.  A gyorsítótár-tárolási fiókoknak standard szintűnek kell lenniük.<br/><br/> A gyorsítótár használatával minimális hatással lehet a virtuális gépeken futó éles alkalmazásokra.<br/><br/> [További](azure-to-azure-support-matrix.md#cache-storage) információ a gyorsítótár tárolási követelményeiről. 
+**Cél erőforrásai** | A cél erőforrásait a rendszer a replikáció során, valamint feladatátvétel esetén használja. A Site Recovery alapértelmezés szerint beállíthatja a célként megadott erőforrást, vagy létrehozhat/testreszabhatja őket.<br/><br/> Győződjön meg arról, hogy a célként megadott régióban virtuális gépeket hozhat létre, és hogy az előfizetése elegendő erőforrással rendelkezik a megcélzott régióban szükséges virtuálisgép-méretek támogatásához. 
 
-![Forrás és cél replikációs](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
+![Forrás-és cél replikáció](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
 
-## <a name="target-resources"></a>Célerőforrások
+## <a name="target-resources"></a>Cél erőforrásai
 
-Amikor engedélyezi egy virtuális gép replikációját, a Site Recovery segít célerőforrások automatikus létrehozására. 
+Amikor engedélyezi a replikációt egy virtuális gép számára, Site Recovery lehetőséget ad a célként megadott erőforrások automatikus létrehozására. 
 
-**Célerőforrás** | **Alapértelmezett beállítás**
+**Cél erőforrás** | **Alapértelmezett beállítás**
 --- | ---
-**Célként megadott előfizetés** | Ugyanaz, mint a forrás-előfizetés.
-**Céloldali erőforráscsoport** | Az erőforráscsoport virtuális gépek tartozik, amelyhez a feladatátvételt követően.<br/><br/> A forrásrégió kivételével bármelyik Azure-régióban is lehet.<br/><br/> A Site Recovery létrehoz egy új erőforráscsoportot a célrégióban, egy "asr" utótaggal rendelkező.<br/><br/>
-**Cél: virtuális hálózat** | A virtuális hálózat (VNet), amelyben a replikált virtuális gépek találhatók a feladatátvételt követően. A hálózatleképezés létrejön a forrás- és virtuális hálózatok között, és fordítva.<br/><br/> A Site Recovery létrehoz egy új virtuális hálózatot és alhálózatot, az "asr" utótaggal.
-**Cél tárfiók** |  Ha a virtuális gép nem használ egy felügyelt lemezt, akkor a storage-fiókot, amelyhez adatokat a rendszer replikálja.<br/><br/> Site Recovery egy új tárfiókot hoz létre a célrégióban a forrás tárfiókban tükrözéséhez.
-**Replikált felügyelt lemezeken** | Ha a virtuális gép egy felügyelt lemezt használ, akkor a felügyelt lemezek, amelyhez adatokat a rendszer replikálja.<br/><br/> Site Recovery replika felügyelt lemezeket hoz létre a tárolási terület a forrás tükrözéséhez.
-**Cél rendelkezésre állási csoportok** |  Rendelkezésre állási csoport, amelyhez replikáló virtuális gépek a feladatátvételt követően találhatók.<br/><br/> A Site Recovery létrehoz egy rendelkezésre állási csoportot a célrégióban az "asr", utótaggal rendelkező virtuális gépek rendelkezésre állási csoport a forráshelyen található. Ha egy rendelkezésre állási csoport már létezik, szolgál, és a egy új nem jön létre.
-**Cél rendelkezésre állási zónák** | Ha a célrégióban a rendelkezésre állási zónák használatát támogatja, a Site Recovery zóna száma azonos a forrásrégióban használt rendeli hozzá.
+**Cél-előfizetés** | Ugyanaz, mint a forrás-előfizetés.
+**Cél erőforráscsoport** | Az erőforráscsoport, amelyhez a virtuális gépek a feladatátvételt követően tartoznak.<br/><br/> Bármely Azure-régióban lehet, kivéve a forrás-régiót.<br/><br/> A Site Recovery egy új erőforráscsoportot hoz létre a célként megadott régióban egy "ASR" utótaggal.<br/><br/>
+**Cél VNet** | A virtuális hálózat (VNet), amelyben a replikált virtuális gépek a feladatátvétel után találhatók. A rendszer a forrás és a cél virtuális hálózatok között hozza létre a hálózati leképezést, és fordítva.<br/><br/> A Site Recovery egy új VNet és alhálózatot hoz létre az "ASR" utótaggal.
+**Cél Storage-fiók** |  Ha a virtuális gép nem felügyelt lemezt használ, akkor ez az a Storage-fiók, amelybe a rendszer replikálja az adattárakat.<br/><br/> A Site Recovery egy új Storage-fiókot hoz létre a célként megadott régióban, hogy tükrözze a forrásként szolgáló Storage-fiókot.
+**Replika által felügyelt lemezek** | Ha a virtuális gép felügyelt lemezt használ, akkor azokat a felügyelt lemezeket, amelyekhez az adatreplikációt végzi.<br/><br/> A Site Recovery replika felügyelt lemezeket hoz létre a tárolási régióban a forrás tükrözéséhez.
+**Cél rendelkezésre állási csoportok** |  Az a rendelkezésre állási csoport, amelyben a replikáló virtuális gépek a feladatátvétel után találhatók.<br/><br/> Site Recovery létrehoz egy rendelkezésre állási készletet a célként megadott régióban az "ASR" utótaggal a forrás helyének rendelkezésre állási csoportjában található virtuális gépek esetében. Ha létezik egy rendelkezésre állási csoport, az használatban van, és a rendszer nem hoz létre újat.
+**Cél rendelkezésre állási zónák** | Ha a célként megadott régió támogatja a rendelkezésre állási zónákat, akkor Site Recovery ugyanazt a zónát rendeli hozzá, mint amelyet a forrás régióban használt.
 
-### <a name="managing-target-resources"></a>Tároló-erőforrások kezelése
+### <a name="managing-target-resources"></a>A cél erőforrásainak kezelése
 
-Céloldali erőforrások is kezelhetők a következőképpen:
+A cél erőforrásait a következőképpen kezelheti:
 
-- Módosíthatja a célbeállítások módon engedélyezi a replikációt.
-- Módosíthatja a célbeállítások után már a replikálás működik. A kivétel a rendelkezésre állási típusa (Egypéldányos, készlet vagy zóna). Ez a beállítás módosításához kell tiltsa le a replikációt, és módosítsa a beállítást, majd újraengedélyezni.
+- A cél beállításait a replikálás engedélyezésekor módosíthatja.
+- A célhely beállításait a replikálás után is módosíthatja. A kivétel a rendelkezésre állási típus (egy példány, a készlet vagy a zóna). A beállítás módosításához le kell tiltania a replikációt, módosítania kell a beállítást, majd újra kell engedélyeznie.
 
 
 
-## <a name="replication-policy"></a>Replikációs szabályzat 
+## <a name="replication-policy"></a>Replikációs házirend 
 
-Ha engedélyezi az Azure virtuális gép replikációja, alapértelmezés szerint a Site Recovery létrehoz egy új replikációs házirendet az alapértelmezett beállításokkal, hogy a táblázat foglalja össze.
+Az Azure-beli virtuális gépek replikálásának engedélyezésekor a Site Recovery alapértelmezés szerint létrehoz egy új replikációs házirendet a táblázatban összegzett alapértelmezett beállításokkal.
 
 **Szabályzat-beállítás** | **Részletek** | **Alapértelmezett**
 --- | --- | ---
-**Helyreállítási pont megőrzése** | Itt adhatja meg, mennyi ideig tartja a Site Recovery a helyreállítási pontok | 24 óra
-**Alkalmazáskonzisztens pillanatkép gyakorisága** | Milyen gyakran a Site Recovery egy alkalmazáskonzisztens pillanatképet vesz igénybe. | 60 percenként.
+**Helyreállítási pont megőrzése** | Meghatározza, hogy a Site Recovery mennyi ideig tart a helyreállítási pontok | 24 óra
+**Alkalmazás-konzisztens pillanatkép gyakorisága** | Milyen gyakran Site Recovery egy alkalmazás-konzisztens pillanatképet. | 60 percenként.
 
 ### <a name="managing-replication-policies"></a>Replikációs házirendek kezelése
 
-Kezelheti és módosíthatja az alapértelmezett replikációs házirendek beállításait az alábbiak szerint:
-- Módosíthatja a beállításokat, a replikáció engedélyezése.
-- Bármikor létrehozhat egy replikációs házirendet, és majd azt alkalmazhatja, ha engedélyezi a replikációt.
+Az alapértelmezett replikációs házirendek beállításait a következőképpen kezelheti és módosíthatja:
+- A beállításokat a replikálás engedélyezése után módosíthatja.
+- Bármikor létrehozhat egy replikációs szabályzatot, majd alkalmazhatja azt a replikálás engedélyezésekor.
 
 ### <a name="multi-vm-consistency"></a>Több virtuális gépre kiterjedő konzisztencia
 
-Ha azt szeretné, virtuális gépek replikálása együtt, és megosztott összeomlás-konzisztens és alkalmazáskonzisztens helyreállítási pontok a feladatátvétel során, ezeket együtt gyűjthet be egy replikációs csoportot. Több virtuális gépre kiterjedő konzisztencia hatással van a számítási feladatok teljesítményére, és csak a futó számítási feladatok, amelyek minden gép közötti konzisztenciára van szükség virtuális gépek esetében használható. 
+Ha azt szeretné, hogy a virtuális gépek együtt replikálják őket, és megosztott összeomlás-konzisztens és alkalmazás-konzisztens helyreállítási pontokat biztosítanak a feladatátvétel során, akkor egyesítheti őket egy replikációs csoportba. A több virtuális gépre kiterjedő konzisztencia hatással van a számítási feladatok teljesítményére, és csak olyan munkaterheléseket futtató virtuális gépek esetében használható, amelyek az összes gépen konzisztencia szükségesek. 
 
 
 
-## <a name="snapshots-and-recovery-points"></a>A pillanatképek és a helyreállítási pontok
+## <a name="snapshots-and-recovery-points"></a>Pillanatképek és helyreállítási pontok
 
-Helyreállítási pontok pillanatképeiből venni egy adott időpontban időben Virtuálisgép-lemezek jönnek létre. Amikor feladatátvételt hajt végre egy virtuális Gépet, a helyreállítási pont használatával állítsa helyre a virtuális Gépet a célhelyen.
+A helyreállítási pontok a virtuálisgép-lemezek egy adott időpontban vett pillanatképei alapján jönnek létre. Ha feladatátvételt végez egy virtuális gépen, egy helyreállítási pont használatával állíthatja vissza a virtuális gépet a célhelyen.
 
-Amikor feladatátvétele, általában szeretnénk győződjön meg arról, hogy a virtuális gép elindul-e sérülés vagy adatvesztés nélkül, és hogy a virtuális gép adatai az operációs rendszerhez, és a virtuális gépen futtatott alkalmazások konzisztens. Ez a készített pillanatkép típusától függ.
+A feladatátvétel során általában biztosítani szeretnénk, hogy a virtuális gép ne legyen sérülés vagy adatvesztés nélkül, és hogy a virtuális gép adatai konzisztensek legyenek az operációs rendszer és a virtuális gépen futó alkalmazások esetében. Ez az elkészített Pillanatképek típusától függ.
 
-A Site Recovery következő pillanatképeket készít:
+A Site Recovery a következőképpen veszi fel a pillanatképeket:
 
-1. A Site Recovery összeomlás-konzisztens pillanatképekkel az adatok alapértelmezés szerint, és alkalmazáskonzisztens pillanatképek akkor kerül, ha a gyakoriságot adja meg a számukra.
-2. Helyreállítási pontok a pillanatképekből létrehozott, és tárolja a replikációs házirendben megőrzési beállításoknak.
+1. Az Site Recovery alapértelmezés szerint az összeomlás-konzisztens pillanatképeket és az alkalmazással konzisztens pillanatképeket vesz igénybe, ha megadja a gyakoriságot.
+2. A helyreállítási pontok a pillanatképek alapján jönnek létre, és a replikációs házirend megőrzési beállításoknak megfelelően tárolódnak.
 
 ### <a name="consistency"></a>Konzisztencia
 
-A következő táblázat ismerteti a különböző típusú konzisztencia.
+A következő táblázat a konzisztencia különböző típusait ismerteti.
 
-### <a name="crash-consistent"></a>Crash-consistent
-
-**Leírás** | **Részletek** | **Az ajánlás**
---- | --- | ---
-Összeomlási alkalmazáskonzisztens pillanatkép készítésének volt a lemezen, ha a pillanatkép adatokat rögzíti. Ez nem foglalhatnak magukban a memóriában.<br/><br/> A lemezen lévő adatokat, amely jelen lehet, ha a virtuális gép leállt, vagy a tápkábel felhasználásával lett létrehozva a kiszolgálóról, a pillanatkép azonnali egyenértékű tartalmazza.<br/><br/> Egy összeomlás-konzisztens nem garantálja az adatkonzisztencia az operációs rendszerhez, vagy a virtuális gép található alkalmazásokhoz. | A Site Recovery összeomlás-konzisztens helyreállítási pontokat hoz létre öt percenként alapértelmezés szerint. Ez a beállítás nem módosítható.<br/><br/>  | A legtöbb alkalmazás még ma, összeomlás-konzisztens pontokról is helyreállíthatja.<br/><br/> Összeomlás-konzisztens helyreállítási pontok általában elegendő az operációs rendszerek és alkalmazások, például a DHCP-kiszolgáló és a nyomtatókiszolgálók a replikációhoz.
-
-### <a name="app-consistent"></a>App-consistent
+### <a name="crash-consistent"></a>Összeomlás-konzisztens
 
 **Leírás** | **Részletek** | **Az ajánlás**
 --- | --- | ---
-Alkalmazáskonzisztens helyreállítási pontok az alkalmazáskonzisztens pillanatképek jönnek létre.<br/><br/> Az alkalmazáskonzisztens pillanatkép összeomlás-konzisztens pillanatkép található összes információt, valamint az adatokat a memóriában, és a folyamatban lévő tranzakciók tartalmaznak. | Alkalmazáskonzisztens pillanatképek a kötet árnyékmásolata szolgáltatás (VSS) használja:<br/><br/>   1.) Ha kezdeményezték egy pillanatkép, VSS a kötet módosításkori másolási (vonatkozó) műveletek végrehajtása.<br/><br/>   2.) előtt hajtja végre a mintavételt, VSS tájékoztatja a minden alkalmazás, amely a memória rezidens ürítése a lemezre kell a gépen.<br/><br/>   (3) a VSS majd lehetővé teszi a biztonsági mentési és vész-helyreállítási app (Ez esetben a Site Recovery) olvassa el a pillanatkép adatainak és a folytatáshoz. | Alkalmazáskonzisztens pillanatképek készülnek, a megadott gyakorisága beállítás szerint. Ez a gyakoriság mindig kisebbnek kell lennie, mint a beállított helyreállítási pontok megőrzése. Például ha megőrzi a helyreállítási pontok használata az alapértelmezett beállítás 24 órás, kell beállítania a gyakorisága kisebb, mint 24 órával.<br/><br/>Ezek összetettebb és hosszabb időt vesz igénybe, mint az összeomlás-konzisztens pillanatképekkel.<br/><br/> A replikáció engedélyezése virtuális gépeken futó alkalmazások teljesítményét befolyásolja. 
+Az összeomlás-konzisztens Pillanatképek rögzítik a lemezen lévő, a pillanatkép elkészítéséhez szükséges adatok mennyiségét. Nem tartalmaz semmit a memóriában.<br/><br/> Tartalmazza a lemezen lévő adatok megfelelőjét, amely akkor jelenik meg, ha a virtuális gép összeomlott vagy a tápkábelt a kiszolgálóról húzta le a pillanattól kezdve, hogy a pillanatkép elkészítése megtörtént.<br/><br/> Az összeomlás-konzisztens érték nem garantálja az operációs rendszer vagy a virtuális gépen futó alkalmazások adatkonzisztenciáját. | A Site Recovery alapértelmezés szerint öt percenként hoz létre összeomlás-konzisztens helyreállítási pontokat. Ez a beállítás nem módosítható.<br/><br/>  | Napjainkban a legtöbb alkalmazás jól helyreállítható az összeomlás-konzisztens pontokból.<br/><br/> Az összeomlás-konzisztens helyreállítási pontok általában elegendőek az operációs rendszerek és az alkalmazások, például a DHCP-kiszolgálók és a nyomtatókiszolgálók replikálásához.
+
+### <a name="app-consistent"></a>Alkalmazáskonzisztens
+
+**Leírás** | **Részletek** | **Az ajánlás**
+--- | --- | ---
+Az alkalmazással konzisztens helyreállítási pontok az alkalmazással konzisztens Pillanatképek alapján jönnek létre.<br/><br/> Az alkalmazás-konzisztens Pillanatképek tartalmazzák az összeomlás-konzisztens Pillanatképek összes adatát, valamint a memóriában lévő összes adatot és a folyamatban lévő tranzakciókat. | Az alkalmazással konzisztens Pillanatképek a Kötet árnyékmásolata szolgáltatást (VSS) használják:<br/><br/>   1.) Ha pillanatképet kezdeményez, a VSS a köteten egy másolási írási (COW) műveletet hajt végre.<br/><br/>   2) mielőtt elvégezte a TEHENEt, a VSS tájékoztatja a gépen lévő összes alkalmazást, hogy a memóriában tárolt adatok lemezre való kiürítése szükséges.<br/><br/>   3) a VSS ezután lehetővé teszi a biztonsági mentési/vész-helyreállítási alkalmazás (ebben az esetben Site Recovery) számára a pillanatkép-adatok olvasását és a folytatást. | Az alkalmazással konzisztens Pillanatképek a megadott gyakoriságnak megfelelően készülnek. A gyakoriságnak mindig kisebbnek kell lennie, mint a helyreállítási pontok megőrzéséhez. Ha például megőrzi a helyreállítási pontokat a 24 órás alapértelmezett beállítással, a gyakoriságot 24 óránál rövidebb ideig kell beállítania.<br/><br/>Összetettebbek, és hosszabb időt is igénybe vehetik, mint az összeomlás-konzisztens Pillanatképek.<br/><br/> Hatással vannak a replikálásra engedélyezett virtuális gépeken futó alkalmazások teljesítményére. 
 
 ## <a name="replication-process"></a>Replikációs folyamat
 
-Amikor engedélyezi egy Azure virtuális gép replikációját, a következők történnek:
+Az Azure-beli virtuális gépek replikálásának engedélyezésekor a következők történnek:
 
-1. A Site Recovery mobilitási szolgáltatás bővítmény automatikus telepítve van a virtuális gépen.
-2. A bővítményt a virtuális gép regisztrálja a Site recoveryvel.
-3. A folyamatos replikáció a virtuális gép kezdődik.  Lemezírások azonnal átkerülnek a gyorsítótárfiók a forráshelyen.
-4. A Site Recovery feldolgozza az adatokat a gyorsítótárban, és elküldi azokat a célként megadott tárfiók, vagy a replika felügyelt lemezeket.
-5. Az adatok feldolgozása után az összeomlás-konzisztens helyreállítási pontok öt percenként akkor jönnek létre. Alkalmazáskonzisztens helyreállítási pontokat a replikációs szabályzatban megadott beállítások alapján jönnek létre.
+1. A Site Recovery mobilitási szolgáltatás bővítménye automatikusan települ a virtuális gépre.
+2. A bővítmény regisztrálja Site Recovery a virtuális gépet.
+3. A virtuális gép folyamatos replikációja megkezdődik.  A lemez írásait a rendszer azonnal továbbítja a gyorsítótárbeli Storage-fiókba a forrás helyén.
+4. Site Recovery feldolgozza a gyorsítótárban lévő adatokat, és elküldi azt a cél Storage-fiókba vagy a replikált felügyelt lemezekre.
+5. Az adatfeldolgozást követően az összeomlás-konzisztens helyreállítási pontok öt percenként jönnek létre. Az alkalmazással konzisztens helyreállítási pontok a replikációs házirendben megadott beállításnak megfelelően jönnek létre.
 
-![Replikációs folyamat, 2. lépés engedélyezése](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
+![Replikációs folyamat engedélyezése, 2. lépés](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
 
 **Replikációs folyamat**
 
-## <a name="connectivity-requirements"></a>Hálózati kapcsolati követelményeinek
+## <a name="connectivity-requirements"></a>Kapcsolódási követelmények
 
- Az Azure virtuális gépek replikálása kimenő kapcsolat szükséges. A Site Recovery soha nem kell a virtuális gép bejövő kapcsolatot. 
+ A replikált Azure-beli virtuális gépeknek kimenő kapcsolatra van szükségük. Site Recovery soha nem kell bejövő kapcsolatot létesítenie a virtuális géppel. 
 
-### <a name="outbound-connectivity-urls"></a>Kimenő kapcsolatok (URL-címek)
+### <a name="outbound-connectivity-urls"></a>Kimenő kapcsolat (URL-címek)
 
-Ha a virtuális gépek kimenő hozzáférésének vezérli az URL-címek, ezeket az URL-címek.
+Ha a virtuális gépek kimenő hozzáférése URL-címekkel van vezérelve, engedélyezze ezeket az URL-címeket.
 
 | **URL-cím** | **Részletek** |
 | ------- | ----------- |
@@ -138,39 +138,39 @@ Ha a virtuális gépek kimenő hozzáférésének vezérli az URL-címek, ezeket
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Kimenő kapcsolat az IP-címtartományokhoz
 
-IP-címeket használó virtuális gépek kimenő kapcsolat szabályozásához, hogy engedélyezze ezeket a címeket.
+Az IP-címeket használó virtuális gépek kimenő kapcsolatának vezérléséhez engedélyezze ezeket a címeket.
 
-#### <a name="source-region-rules"></a>Forrás régió szabályok
+#### <a name="source-region-rules"></a>A forrásoldali régió szabályai
 
-**Rule** |  **Részletek** | **Szolgáltatáscímke**
+**Szabály** |  **Részletek** | **Szolgáltatáscímke**
 --- | --- | --- 
-Kimenő HTTPS-forgalom engedélyezése: 443-as port | Lehetővé teszi a tartományok, amelyek megfelelnek a forrásrégióban storage-fiókok | Storage. \<régió-neve >.
-Kimenő HTTPS-forgalom engedélyezése: 443-as port | Lehetővé teszi a tartományok, amelyek megfelelnek az Azure Active Directory (Azure AD).<br/><br/> Ha a jövőben hozzáadja az Azure AD-címeket szeretne létrehozni új hálózati biztonsági csoport (NSG) szabályai.  | AzureActiveDirectory
-Kimenő HTTPS-forgalom engedélyezése: 443-as port | Való hozzáférés engedélyezése [Site Recovery végpontok](https://aka.ms/site-recovery-public-ips) , amelyek megfelelnek a célhelyen. 
+HTTPS-kimenő engedélyezése: 443-es port | A forrás régióban lévő Storage-fiókoknak megfelelő tartományok engedélyezése | Storage. \<régió neve >.
+HTTPS-kimenő engedélyezése: 443-es port | Azure Active Directory (Azure AD)-nak megfelelő tartományok engedélyezése.<br/><br/> Ha a jövőben Azure AD-címeket adnak hozzá, új hálózati biztonsági csoport (NSG) szabályokat kell létrehoznia.  | AzureActiveDirectory
+HTTPS-kimenő engedélyezése: 443-es port | A célhelynek megfelelő [site Recovery végpontok](https://aka.ms/site-recovery-public-ips) elérésének engedélyezése. 
 
-#### <a name="target-region-rules"></a>Cél régió szabályok
+#### <a name="target-region-rules"></a>A célként megadott régió szabályai
 
-**Rule** |  **Részletek** | **Szolgáltatáscímke**
+**Szabály** |  **Részletek** | **Szolgáltatáscímke**
 --- | --- | --- 
-Kimenő HTTPS-forgalom engedélyezése: 443-as port | Engedélyezze, hogy a storage-fiókok a célrégióban megfelelnek tartományait. | Storage. \<régió-neve >.
-Kimenő HTTPS-forgalom engedélyezése: 443-as port | Lehetővé teszi a tartományok, amelyek megfelelnek az Azure ad-hez.<br/><br/> Ha a jövőben hozzáadja az Azure AD-címeket szeretne létrehozni új NSG-szabályokat.  | AzureActiveDirectory
-Kimenő HTTPS-forgalom engedélyezése: 443-as port | Való hozzáférés engedélyezése [Site Recovery végpontok](https://aka.ms/site-recovery-public-ips) , amelyek megfelelnek a helyét. 
+HTTPS-kimenő engedélyezése: 443-es port | A célként megadott régióban lévő Storage-fiókoknak megfelelő tartományok engedélyezése. | Storage. \<régió neve >.
+HTTPS-kimenő engedélyezése: 443-es port | Az Azure AD-nek megfelelő tartományok engedélyezése.<br/><br/> Ha a jövőben Azure AD-címeket adnak hozzá, új NSG-szabályokat kell létrehoznia.  | AzureActiveDirectory
+HTTPS-kimenő engedélyezése: 443-es port | Hozzáférés engedélyezése a forrás helyének megfelelő [site Recovery](https://aka.ms/site-recovery-public-ips) -végpontokhoz. 
 
 
-#### <a name="control-access-with-nsg-rules"></a>Hozzáférés vezérlése az NSG-szabályok
+#### <a name="control-access-with-nsg-rules"></a>Hozzáférés szabályozása NSG-szabályokkal
 
-Ha a virtuális gépek kapcsolatai szabályozhatja a hálózati forgalom és az Azure hálózatok vagy alhálózatok segítségével a szűréssel [NSG-szabályok](https://docs.microsoft.com/azure/virtual-network/security-overview), vegye figyelembe az alábbi követelményeknek:
+Ha a virtuális gép kapcsolatát úgy szabályozza, hogy az Azure-hálózatokra/alhálózatokra irányuló hálózati forgalmat [NSG-szabályok](https://docs.microsoft.com/azure/virtual-network/security-overview)használatával szűri, vegye figyelembe a következő követelményeket:
 
-- NSG-szabályok a forrás az Azure-régióban kell engedélyezi a kimenő hozzáférést a replikációs forgalmat.
-- Javasoljuk, hogy szabályokat hozzon létre egy tesztkörnyezetben, mielőtt éles környezetbe helyezi őket.
-- Használat [szolgáltatáscímkéket](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) engedélyezése egyes IP-címek helyett.
-    - Szolgáltatáscímkék IP-címelőtagok csoportjait össze minimálisra összetettségét, amikor a biztonsági szabályok létrehozása egy csoport képviseli.
-    - A Microsoft automatikusan frissíti a szolgáltatáscímkéket idővel. 
+- A forrásként szolgáló Azure-régió NSG-szabályainak engedélyezniük kell a kimenő hozzáférést a replikálási forgalom számára.
+- Javasoljuk, hogy hozzon létre szabályokat tesztkörnyezetben, mielőtt éles környezetbe helyezné őket.
+- Az egyes IP-címek engedélyezése helyett használja a [szolgáltatás címkéit](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) .
+    - A szolgáltatás címkéi az IP-címek egy csoportját alkotják, amelyek a biztonsági szabályok létrehozásakor a bonyolultságuk csökkentése érdekében vannak összegyűjtve.
+    - A Microsoft az idő múlásával automatikusan frissíti a szolgáltatás címkéit. 
  
-Tudjon meg többet [kimenő kapcsolat](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) Site Recovery és [szabályozása az NSG-ket kapcsolat](concepts-network-security-group-with-site-recovery.md).
+További információ a Site Recovery [kimenő](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) kapcsolatairól és a [NSG-vel való kapcsolat szabályozásáról](concepts-network-security-group-with-site-recovery.md).
 
 
-### <a name="connectivity-for-multi-vm-consistency"></a>Kapcsolat a virtuális gépre kiterjedő konzisztencia
+### <a name="connectivity-for-multi-vm-consistency"></a>Kapcsolat a több virtuális gépre kiterjedő konzisztencia érdekében
 
 Ha engedélyezte a több virtuális gépre kiterjedő konzisztenciát, a replikációs csoportban található gépek a 20004-es porton kommunikálnak egymással.
 - Ellenőrizze, hogy nem blokkolja-e tűzfal a virtuális gépek között a 20004-es porton keresztül zajló belső kommunikációt.
@@ -179,12 +179,12 @@ Ha engedélyezte a több virtuális gépre kiterjedő konzisztenciát, a replik�
 
 
 
-## <a name="failover-process"></a>Feladatátvételi folyamatot
+## <a name="failover-process"></a>Feladatátvételi folyamat
 
-Kezdeményezzen feladatátvételt, ha a virtuális gépek létrehozása a céloldali erőforráscsoport, célként megadott virtuális hálózat, alhálózat, és a cél rendelkezésre állási csoportban. A feladatátvétel során a bármelyik helyreállítási pontot is használhat.
+Feladatátvétel kezdeményezése esetén a virtuális gépek a célként megadott erőforráscsoporthoz, a célként megadott alhálózatra, valamint a cél rendelkezésre állási csoportba kerülnek. Feladatátvétel során bármelyik helyreállítási pontot használhatja.
 
-![Feladatátvételi folyamatot](./media/concepts-azure-to-azure-architecture/failover.png)
+![Feladatátvételi folyamat](./media/concepts-azure-to-azure-architecture/failover.png)
 
 ## <a name="next-steps"></a>További lépések
 
-[Gyorsan replikálja](azure-to-azure-quickstart.md) egy Azure virtuális Gépen egy másodlagos régióba.
+[Gyorsan replikálhat](azure-to-azure-quickstart.md) egy Azure-beli virtuális gépet egy másodlagos régióba.

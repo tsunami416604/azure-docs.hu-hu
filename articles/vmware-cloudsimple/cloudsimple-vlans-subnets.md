@@ -1,85 +1,85 @@
 ---
-title: Virtuális helyi hálózatok és alhálózatok a VMware megoldás által CloudSimple – Azure
-description: További információ a virtuális helyi hálózatok és alhálózatok CloudSimple magánfelhőben
+title: VLAN-ok és alhálózatok a VMware-megoldásban a CloudSimple által – Azure
+description: További tudnivalók a CloudSimple privát felhőben található VLAN-okra és alhálózatokra
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9d29445054848d798476fed8184b89f9b6c1210f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6659c50b79237907cf596d65e0ba9fb72113246
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497591"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812480"
 ---
-# <a name="vlans-and-subnets-overview"></a>Virtuális helyi hálózatok és alhálózatok áttekintése
+# <a name="vlans-and-subnets-overview"></a>VLAN-ok és alhálózatok áttekintése
 
-CloudSimple biztosít egy hálózati régiónként a CloudSimple szolgáltatás telepítési helyét.  A hálózat egy egyetlen 3. rétegbeli TCP-címterületek IP-útválasztás alapértelmezés szerint engedélyezve.  Az összes magánfelhők és alhálózatok ebben a régióban létrehozott kommunikálhatnak egymással további konfiguráció nélkül.  Elosztott portcsoportokat a vcenter-kiszolgáló a VLAN-ok használatával is létrehozhat.
+A CloudSimple olyan hálózatot biztosít régiónként, ahol a CloudSimple szolgáltatás telepítve van.  A hálózat egy olyan TCP-rétegbeli 3 címtartomány, amelynek alapértelmezés szerint engedélyezve van az Útválasztás.  Az ebben a régióban létrehozott privát felhők és alhálózatok további beállítások nélkül kommunikálhatnak egymással.  A VLAN-ok használatával elosztott portokat hozhat létre a vCenter.
 
 ![CloudSimple hálózati topológia](media/cloudsimple-network-topology.png)
 
-## <a name="vlans"></a>VLAN-OK
+## <a name="vlans"></a>VLAN
 
-VLAN-ok (2. rétegbeli hálózati) privát felhő / jönnek létre.  A 2. rétegbeli forgalom a magánfelhő, amely lehetővé teszi, hogy elkülönítse a helyi adatforgalmat a magánfelhőhöz belül marad.  Egy VLAN-t a magánfelhőben létrehozott elosztott port csoportok létrehozása csak a privát felhőben használható.  Egy VLAN-hoz létre a magánfelhő konfigurálása automatikusan történik meg a magánfelhő a gazdagépekhez csatlakozó összes kapcsolók.
+A VLAN-ok (2. rétegbeli hálózat) egy saját felhőből jönnek létre.  A 2. rétegbeli forgalom egy privát felhő határain belül marad, ami lehetővé teszi a helyi forgalom elkülönítését a privát felhőben.  A privát felhőben létrehozott VLAN-hoz csak az adott privát felhőben hozhatók létre elosztott portok.  A privát felhőben létrehozott VLAN-t a rendszer automatikusan konfigurálja az összes olyan kapcsolón, amely a privát felhő gazdagépéhez csatlakozik.
 
 ## <a name="subnets"></a>Alhálózatok
 
-Egy alhálózat is létrehozhat, ha egy VLAN-t, az alhálózat címtartománya a definiálásával jön létre. A címtér az IP-cím hozzá van rendelve az átjáró alhálózatot. Egyetlen titkos 3. rétegbeli címtér ügyfél és a régió van hozzárendelve. A helyszíni hálózat vagy az Azure virtual network bármely RFC 1918 egymást nem átfedő címterek konfigurálhatja a hálózati régióban.
+A VLAN létrehozásakor létrehozhat egy alhálózatot az alhálózat címterület definiálásával. A Címterület IP-címe alhálózati átjáróként van hozzárendelve. Az ügyfél és a régió számára egy privát 3. rétegbeli címtartomány van hozzárendelve. A hálózati régióban bármely, a helyszíni vagy az Azure-beli virtuális hálózattal nem átfedésben lévő RFC 1918-es címtartomány konfigurálható.
 
-Összes alhálózat-alapértelmezés szerint a konfigurációját többletterhelést okoz a privát felhők közötti útválasztást csökkentése kommunikálhatnak egymással. Kelet – Nyugat-adatokkal ugyanabban a régióban a számítógépek egyaránt ugyanazon a 3. rétegbeli hálózaton marad, és átviszi a helyi hálózati infrastruktúrán a régión belül. Nincs kimenő forgalom nem egy régióban privát felhők közötti kommunikációhoz szükséges. Ez a megközelítés kiküszöböli a különböző magánfelhőkben különböző számítási feladatok üzembe helyezése bármely WAN/kimenő forgalom teljesítményét.
+Alapértelmezés szerint minden alhálózat képes kommunikálni egymással, így csökkentve a privát felhők közötti útválasztás konfigurációját. Az ugyanabban a régióban található számítógépeken található kelet-nyugati adat ugyanabban a 3. rétegbeli hálózaton marad, és a helyi hálózati infrastruktúrán keresztül továbbítja a régión belüli forgalmat. Egy régióban a privát felhők közötti kommunikációhoz nincs szükség kimenő forgalomra. Ez a megközelítés kiküszöböli a különböző számítási feladatok különböző privát felhőkben való üzembe helyezése során felmerülő WAN/kimenő teljesítménybeli szankciókat.
 
-## <a name="vspherevsan-subnets-cidr-range"></a>vSphere/vSAN-alhálózatokat CIDR-tartományt
+## <a name="vspherevsan-subnets-cidr-range"></a>vSphere/vSAN alhálózatok CIDR tartománya
 
-Magánfelhő létrehozása egy elkülönített VMware-környezetet (ESXi-gazdagépek, vCenter, vsan-hoz és NSX), a vCenter-kiszolgáló által felügyelt környezetben.  A kiválasztott hálózati összetevőket vannak üzembe helyezve **vSphere/vSAN-alhálózatokat CIDR**.  A hálózati CIDR-tartományt az üzembe helyezés során különböző alhálózatokon van felosztva.
+A privát felhőt egy vCenter-kiszolgáló által kezelt elkülönített VMware stack (ESXi-gazdagépek, vCenter, vSAN és NSX) környezete hozza létre.  A felügyeleti összetevők a **vSphere/vSAN alhálózatok CIDR**kiválasztott hálózatban vannak telepítve.  A hálózati CIDR tartománya különböző alhálózatokra van osztva az üzembe helyezés során.
 
-Minimális vSphere/vSAN-alhálózatokat CIDR-tartományt előtag: **/24** maximális vSphere/vSAN-alhálózatokat CIDR-tartományt előtag:   **/21-én**
+Minimális vSphere/vSAN alhálózatok CIDR tartományának előtagja: **/24** maximális vSphere/vSAN alhálózatok CIDR tartomány előtagja: **/21**
 
 > [!CAUTION]
-> A vSphere/vSAN CIDR-tartományt IP-címek szerint Magánfelhő-infrastruktúra számára vannak fenntartva. Ne használjon IP-cím a tartományban lévő bármelyik virtuális gépet.
+> A vSphere/vSAN CIDR-tartomány IP-címei a saját felhőalapú infrastruktúra általi használatra vannak fenntartva. Egyetlen virtuális gépen ne használjon IP-címet ebben a tartományban.
 
 
-### <a name="vspherevsan-subnets-cidr-range-limits"></a>vSphere/vSAN-alhálózatokat CIDR-tartományt korlátok
+### <a name="vspherevsan-subnets-cidr-range-limits"></a>vSphere/vSAN alhálózatok CIDR tartományának korlátai
 
-A Magánfelhő méretének vSphere/vSAN-alhálózatokat CIDR tartomány méretének hatással van.  Az alábbi táblázat az Ön is rendelkezik a mérete alapján vSphere/vSAN-alhálózatokat CIDR csomópontok maximális számát.
+A vSphere/vSAN alhálózatok CIDR-tartomány méretének kiválasztásával hatással lehet a saját felhő méretére.  Az alábbi táblázat a vSphere-/vSAN-alhálózatok CIDR méretétől függően a csomópontok maximális számát mutatja.
 
-| Megadott vSphere/vSAN-alhálózatokat CIDR-előtag hossza | Csomópontok maximális száma |
+| Megadott vSphere/vSAN alhálózatok CIDR előtag hossza | Csomópontok maximális száma |
 |---------------------------------------------------|-------------------------|
 | /24 | 26 |
 | /23 | 58 |
 | /22 | 118 |
 | /21 | 220 |
 
-### <a name="management-subnets-created-on-a-private-cloud"></a>A Magánfelhő létrehozott felügyeleti alhálózatok
+### <a name="management-subnets-created-on-a-private-cloud"></a>Privát felhőben létrehozott felügyeleti alhálózatok
 
-Magánfelhő létrehozásakor jönnek létre következő felügyeleti alhálózatokra. 
+A következő felügyeleti alhálózatok jönnek létre a privát felhő létrehozásakor. 
 
-* **Rendszer-felügyeleti** -VLAN-alhálózat az ESXi-gazdagépek felügyeleti hálózati, DNS-kiszolgáló, a vCenter-kiszolgálót.
-* **VMotion** -VLAN és az ESXi-gazdagépek vMotion hálózati alhálózatot.
-* **VSAN** -VLAN és az ESXi-gazdagépek vsan-hoz hálózati alhálózatot.
-* **NsxtEdgeUplink1** -VLAN és a VLAN kimenő portokhoz külső hálózat, alhálózat.
-* **NsxtEdgeUplink2** -VLAN és a VLAN kimenő portokhoz külső hálózat, alhálózat.
-* **NsxtEdgeTransport** -VLAN-alhálózat átviteli zónák szabályozhatja a 2. rétegbeli hálózatok NSX-T. a alkalmazásfelhasználói ügyfélkörét
-* **NsxtHostTransport** -VLAN-alhálózat gazdagép átviteli zóna.
+* **Rendszerkezelés** – az ESXi-gazdagépek felügyeleti hálózata, a DNS-kiszolgáló, a vCenter-kiszolgáló VLAN-és alhálózata.
+* **VMotion** – az ESXi gazdagépek VMotion-hálózatának VLAN-és alhálózata.
+* **VSAN** – az ESXi gazdagépek VSAN-hálózatának VLAN-és alhálózata.
+* **NsxtEdgeUplink1** – VLAN és alhálózat VLAN-kapcsolatokhoz egy külső hálózathoz.
+* **NsxtEdgeUplink2** – VLAN és alhálózat VLAN-kapcsolatokhoz egy külső hálózathoz.
+* **NsxtEdgeTransport** – a átviteli zónák VLAN-és alhálózata szabályozza a 2. rétegbeli hálózatok elérhetőségét a NSX-T-ben.
+* **NsxtHostTransport** – VLAN és alhálózat a gazdagép-átviteli zónához.
 
-### <a name="management-network-cidr-range-breakdown"></a>Felügyeleti hálózati CIDR-tartomány lebontása
+### <a name="management-network-cidr-range-breakdown"></a>Felügyeleti hálózat CIDR-tartományának bontása
 
-a megadott vSphere/vSAN-alhálózatokat CIDR-tartományt több alhálózatra van felosztva.  Az alábbi táblázat az előtagok megengedett bontásához egy példát mutat be.  A példában **192.168.0.0** , a CIDR-tartományt.
+a vSphere/vSAN alhálózatok CIDR megadott tartománya több alhálózatra van osztva.  Az alábbi táblázat egy példát mutat be az engedélyezett előtagok részletezésére.  A példa a **192.168.0.0** használja CIDR-tartományként.
 
 Példa:
 
-| A megadott vSphere/vSAN-alhálózatokat CIDR-előtagot | 192.168.0.0/21 | 192.168.0.0/22 | 192.168.0.0/23 | 192.168.0.0/24 |
+| Megadott vSphere/vSAN alhálózatok CIDR/előtag | 192.168.0.0/21 | 192.168.0.0/22 | 192.168.0.0/23 | 192.168.0.0/24 |
 |---------------------------------|----------------|----------------|----------------|----------------|
-| Rendszerfelügyelet | 192.168.0.0/24 | 192.168.0.0/24 | 192.168.0.0/25 | 192.168.0.0/26 |
+| Rendszerkezelés | 192.168.0.0/24 | 192.168.0.0/24 | 192.168.0.0/25 | 192.168.0.0/26 |
 | vMotion | 192.168.1.0/24 | 192.168.1.0/25 | 192.168.0.128/26 | 192.168.0.64/27 |
 | vSAN | 192.168.2.0/24 | 192.168.1.128/25 | 192.168.0.192/26 | 192.168.0.96/27 |
-| Gazdagép-átviteli NSX-T | 192.168.4.0/23 | 192.168.2.0/24 | 192.168.1.0/25 | 192.168.0.128/26 |
-| Edge-átviteli NSX-T | 192.168.7.208/28 | 192.168.3.208/28 | 192.168.1.208/28 | 192.168.0.208/28 |
-| Edge Uplink1 NSX-T | 192.168.7.224/28 | 192.168.3.224/28 | 192.168.1.224/28 | 192.168.0.224/28 |
-| Edge uplink2 NSX-T | 192.168.7.240/28 | 192.168.3.240/28 | 192.168.1.240/28 | 192.168.0.240/28 |
+| NSX-T gazdagép átvitele | 192.168.4.0/23 | 192.168.2.0/24 | 192.168.1.0/25 | 192.168.0.128/26 |
+| NSX – T Edge-átvitel | 192.168.7.208/28 | 192.168.3.208/28 | 192.168.1.208/28 | 192.168.0.208/28 |
+| NSX – T Edge-Uplink1 | 192.168.7.224/28 | 192.168.3.224/28 | 192.168.1.224/28 | 192.168.0.224/28 |
+| NSX – T Edge-uplink2 | 192.168.7.240/28 | 192.168.3.240/28 | 192.168.1.240/28 | 192.168.0.240/28 |
 
 ## <a name="next-steps"></a>További lépések
 
-* [Virtuális helyi hálózatok és alhálózatok létrehozása és kezelése](https://docs.azure.cloudsimple.com/create-vlan-subnet/)
+* [VLAN-ok és alhálózatok létrehozása és kezelése](https://docs.azure.cloudsimple.com/create-vlan-subnet/)

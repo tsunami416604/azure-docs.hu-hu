@@ -1,6 +1,6 @@
 ---
-title: Alkalmazásregisztráció portál súgótémakörök |} A Microsoft Docs
-description: A Microsoft app-regisztrálási portál különböző szolgáltatásaihoz leírása.
+title: Az alkalmazás regisztrációs portál súgó témakörei | Microsoft Docs
+description: A Microsoft app Registration portál különböző funkcióinak leírása.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -12,49 +12,49 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec615e1c6229539958f66d0dca15cf7eb788e597
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 357ef290bd24d1d0f48830913511b8cc8944a239
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546098"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835236"
 ---
 # <a name="app-registration-reference"></a>Alkalmazásregisztráció-referencia
-Ez a dokumentum kontextust biztosít a és a különféle funkcióinak leírása megtalálható a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/).
+Ez a dokumentum az [alkalmazás regisztrációs portálján](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/)található különféle funkciók kontextusát és leírásait tartalmazza.
 
 > [!NOTE]
-> Már nem támogatjuk regisztrálása és a konvergens és az Azure AD-alkalmazások kezelése a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/) 2019. május indítása. Javasoljuk, hogy a meglévő alkalmazások kezeléséhez, és az új alkalmazások regisztrálását a [alkalmazásregisztrációk](https://aka.ms/appregistrations) élmény az Azure Portalon.
+> A már nem támogatja a konvergens és az Azure AD-alkalmazások regisztrálását és kezelését az [alkalmazás regisztrációs portálján](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/) , a 2019-es naptól kezdve. Javasoljuk, hogy kezelje meglévő alkalmazásait, és regisztrálja az új alkalmazásokat a Azure Portal [Alkalmazásregisztrációk](https://aka.ms/appregistrations) felületének használatával.
 
-## <a name="my-applications-or-converged-applications"></a>Saját alkalmazások vagy összevont alkalmazások
-Ez a lista tartalmazza az összes alkalmazás regisztrálása az Azure AD v2.0-végpontra való használatra. Ezeket az alkalmazásokat a felhasználók személyes Microsoft-fiókok és az Azure Active Directoryból a munkahelyi vagy iskolai fiókokkal is tudnak. Az Azure AD v2.0-végpont kapcsolatos további információkért tekintse meg a [v2.0 áttekintése](active-directory-appmodel-v2-overview.md). Ezek az alkalmazások integrálása a Microsoft fiók hitelesítési végpontot is használható `https://login.live.com`.
+## <a name="my-applications-or-converged-applications"></a>Saját alkalmazások vagy konvergens alkalmazások
+Ez a lista tartalmazza az Azure AD v 2.0-végponttal való használatra regisztrált összes alkalmazást. Ezek az alkalmazások személyes Microsoft-fiókokkal és munkahelyi/iskolai fiókokkal is bejelentkezhetnek a felhasználóktól Azure Active Directory. Az Azure AD v 2.0-végponttal kapcsolatos további tudnivalókért tekintse meg a [v 2.0 áttekintését](active-directory-appmodel-v2-overview.md). Ezek az alkalmazások a Microsoft-fiók hitelesítési végponttal `https://login.live.com`való integrálásra is használhatók.
 
-## <a name="azure-ad-only-applications"></a>Az Azure AD csak alkalmazások
-Ez a lista tartalmazza az összes alkalmazás regisztrálása az Azure AD-1.0-s verziójú végpont való használatra. Ezeket az alkalmazásokat csak kell lehetővé teszi a felhasználók munkahelyi vagy iskolai fiókok az Azure Active Directoryból. Ez a lista tartalmazza az alkalmazásokat, amelyek használatával lett regisztrálva a **alkalmazásregisztrációk** felületét a [az Azure Portal](https://portal.azure.com).
+## <a name="azure-ad-only-applications"></a>Csak Azure AD-t használó alkalmazások
+Ez a lista tartalmazza az Azure AD 1.0-s verziójának végpontján regisztrált összes alkalmazást. Ezeknek az alkalmazásoknak csak a munkahelyi vagy iskolai fiókkal rendelkező felhasználók jelentkezhetnek be Azure Active Directoryból. Ez a lista olyan alkalmazásokat tartalmaz, amelyek az [Azure Portalon](https://portal.azure.com)a **Alkalmazásregisztrációk** felhasználói felület használatával lettek regisztrálva.
 
-## <a name="live-sdk-applications"></a>Live SDK-alkalmazások
-Ez a lista tartalmazza az összes alkalmazás kizárólag a Microsoft-fiókkal való használatra regisztrálva. Nincsenek engedélyezve az Azure Active Directoryval történő használatra. Ez a érheti el olyan alkalmazásokat, amelyek az MSA fejlesztői portálja, a korábban már regisztrált `https://account.live.com/developers/applications`. Minden függvény, amely a korábban végrehajtott `https://account.live.com/developers/applications` most már az új portálon végrehajtható `https://apps.dev.microsoft.com`.
+## <a name="live-sdk-applications"></a>Élő SDK-alkalmazások
+Ez a lista tartalmazza az összes olyan alkalmazást, amely kizárólag a Microsoft-fiók használatára van regisztrálva. Nincsenek engedélyezve a Azure Active Directorysal való használatra. Itt megtalálhatja azokat az alkalmazásokat, amelyek korábban már regisztrálva lettek a MSA `https://account.live.com/developers/applications`fejlesztői portálon. Az összes korábban végrehajtott `https://account.live.com/developers/applications` funkció most már elvégezhető ebben az új `https://apps.dev.microsoft.com`portálon.
 
-## <a name="application-secrets"></a>Titkos Alkalmazáskulcsok
-Titkos alkalmazáskulcsok rendszer hitelesítő adatokat, amelyek lehetővé teszik az alkalmazásnak, hogy megbízható [ügyfél-hitelesítés](https://tools.ietf.org/html/rfc6749#section-2.3) az Azure ad-ben. Az OAuth és OpenID Connect, az alkalmazás titkos gyakran nevezik egy `client_secret`. A 2.0-s protokoll, minden olyan alkalmazás, amely fogad egy biztonsági jogkivonatot egy webes címezhető helyen (használatával egy `https` séma) segítségével azonosítja magát a biztonsági jogkivonat beváltása után az Azure AD-alkalmazás titkos kell használnia. Továbbá minden olyan natív ügyfél, amely megkapja a tokenek egy eszközön lesz tiltott egy alkalmazás titkos kulcs az ügyfél-hitelesítés végrehajtásához. Ez megnehezíti a nem biztonságos környezetben titkos kulcsok tárolására.
+## <a name="application-secrets"></a>Alkalmazástitkok
+Az alkalmazás titkos kulcsai olyan hitelesítő adatok, amelyek lehetővé teszik, hogy az alkalmazás megbízható [ügyfél-hitelesítést](https://tools.ietf.org/html/rfc6749#section-2.3) végezzen az Azure ad-vel. A OAuth & OpenID Connect esetében az alkalmazás titkos kulcsát általában a `client_secret`-nek nevezzük. A v 2.0 protokollban minden olyan alkalmazás, amely a biztonsági jogkivonatot egy webes címezhető helyen fogadja `https` (egy sémát használva), az alkalmazás titkos kulcsát kell használnia az adott biztonsági jogkivonat beváltásakor az Azure ad-hez való azonosításához. Továbbá minden olyan natív ügyfél, amely az eszközön jogkivonatokat fogad, nem fogja tudni használni az alkalmazás titkos kulcsát az ügyfél-hitelesítés végrehajtásához. Ez nem akadályozza meg a titkok tárolását a nem biztonságos környezetekben.
 
-Minden alkalmazás két érvényes titkos alkalmazáskulcsok tartalmazhat egy adott időpontban. Két titkos kódok megőrzése révén az alkalmazás teljes környezetre rendszeres kulcsváltás képességével rendelkezik. Után az alkalmazás egy új titkos kulcsot a teljes migrálás, törölje a régi titkos kulcsot, és egy új beállítására.
+Minden alkalmazás tartalmazhat két érvényes alkalmazás-titkot egy adott időpontban. Két titok fenntartásával lehetősége van arra, hogy az alkalmazás teljes környezetében rendszeres időközönként átváltást végezzen. Miután áttelepítette az alkalmazást egy új titokba, törölheti a régi titkot, és kiépítheti az újat.
 
-Az alkalmazás regisztrációs portál jelenleg csak kétféle típusú titkos alkalmazáskulcsok használata engedélyezett. Választás **új jelszó készítése** állít elő, és a egy közös titkos kulcsot tárol a megfelelő adattár, amely az alkalmazásban is használhatja. Választás **hozzon létre új kulcspár** hoz létre az új nyilvános/titkos kulcspárt, amely letölthető, és az ügyfél-hitelesítéshez az Azure ad-hez használt. Választás **nyilvános kulcs feltöltése** lehetővé teszi, hogy a saját nyilvános/titkos kulcspár.
-A nyilvános kulcsot tartalmazó tanúsítvány feltöltése szükségesek.
+Jelenleg a regisztrációs portálon csak két típusú alkalmazás-titok engedélyezett. Ha az **új jelszó létrehozása** lehetőséget választja, a rendszer létrehoz egy közös titkot a megfelelő adattárban, amelyet az alkalmazásban használhat. Az **új kulcspár létrehozása** lehetőség választásával egy új, nyilvános/titkos kulcspár hozható létre, amely letölthető, és az ügyfél-hitelesítéshez használható az Azure ad-ben. A **nyilvános kulcs feltöltésének** kiválasztása lehetővé teszi a saját nyilvános/titkos kulcspár használatát.
+Egy nyilvános kulcsot tartalmazó tanúsítványt kell feltöltenie.
 
 ## <a name="profile"></a>Profil
-A profil szakaszához az alkalmazás regisztrációs portál segítségével az alkalmazás bejelentkezési oldal testreszabható. Most módosíthatja a bejelentkezési oldal alkalmazás emblémája, használati szolgáltatás URL-CÍMÉT, és az adatvédelmi nyilatkozat URL-címe. Az embléma képnek kell lennie átlátszó 48 x 48 vagy 50 x 50 képpontos GIF, PNG vagy JPEG formátumú fájl 15 KB-os vagy kisebb. Próbálja ki az értékek módosítása, és az eredményül kapott bejelentkezési oldal megtekintése!
+Az alkalmazás regisztrációs portál profil szakasza segítségével testre szabhatja az alkalmazás bejelentkezési lapját. Ekkor megváltoztathatja a bejelentkezési oldal alkalmazás emblémáját, a szolgáltatási URL-címet és az adatvédelmi nyilatkozat URL-címét. Az emblémának áttetsző hátterű, 48x48 vagy 50x50 képpontos, legfeljebb 15 KB-os, GIF, PNG vagy JPEG formátumú képnek kell lennie. Próbálja meg módosítani az értékeket, és tekintse meg az eredményül kapott bejelentkezési oldalt!
 
-## <a name="live-sdk-support"></a>Live SDK-támogatás
-Ha engedélyezi a "Live SDK-támogatás", bármely hoz létre a titkos alkalmazáskulcsok vehető át az Azure AD és a Microsoft Account adattárakban. Ez lehetővé teszi az alkalmazás közvetlen integráció a Microsoft Account szolgáltatás (login.live.com). Ha alkalmazás készítése Microsoft Account használatával közvetlenül (szemben az Azure AD v2.0-végpont használatával), győződjön meg arról, hogy engedélyezve van a Live SDK-támogatás.
+## <a name="live-sdk-support"></a>Élő SDK-támogatás
+Ha engedélyezi az "élő SDK-támogatás" lehetőséget, az Ön által létrehozott összes alkalmazás-titok az Azure AD-és a Microsoft-fiók adattárolókban lesz kiépítve. Ez lehetővé teszi, hogy az alkalmazás közvetlenül integrálható legyen a Microsoft account Service (login.live.com) szolgáltatással. Ha közvetlenül a Microsoft-fiókkal szeretne létrehozni egy alkalmazást (az Azure AD v 2.0-végpont használata helyett), akkor győződjön meg arról, hogy az élő SDK-támogatás engedélyezve van.
 
-Live SDK támogatja biztosítja, hogy az alkalmazás titkos csak írja be az Azure AD-adatok tárolására. Az Azure AD-adatokat tároló tartalmazza, amelyek lehetővé teszik, hogy bizonyos követelményeknek, például a FISMA-megfelelőségi szabályzat nagyvállalati szintű. Ha engedélyezi a Live SDK támogatását, az alkalmazás nem érhetik el néhány ezeknek a szabványoknak való megfelelést.
+Az élő SDK-támogatás letiltása biztosítja, hogy az alkalmazás titkos kulcsa csak az Azure AD-adattárba legyen beírva. Az Azure AD-adattár olyan nagyvállalati szintű szabályozásokat tartalmaz, amelyek lehetővé teszik bizonyos szabványok, például a FISMA megfelelőség teljesítését. Ha engedélyezi az élő SDK támogatását, előfordulhat, hogy az alkalmazás nem fog megfelelni ezeknek a szabványoknak.
 
-Ha csak egyre tervezi használni az Azure AD v2.0-végpont, biztonságosan letilthatja a Live SDK-támogatás.
+Ha csak az Azure AD v 2.0-végpontot szeretné használni, nyugodtan letilthatja az élő SDK-támogatást.
 

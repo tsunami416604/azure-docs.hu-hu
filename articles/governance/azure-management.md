@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: 520b84722d9434b309d3eb6da0baa3c1e4da33d0
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 958f82ef94a08adaf2bbae1ef8ceefae5db289ea
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608189"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780793"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Az Azure-beli felügyeleti szolgáltatások áttekintése
 
@@ -40,7 +40,7 @@ Ezek a feladatok automatizálását a redundancia, minimálisra csökkentik az i
 ## <a name="govern"></a>Irányítás
 
 Az irányítás azokat a mechanizmusok és folyamatokat biztosítja, amelyekre az Azure-beli alkalmazások és erőforrások szabályozásához van szükség. Magában foglalja a kezdeményezések megtervezését és a stratégiai prioritások meghatározását.
-Az Azure-ban az irányítás implementálásának feladatát nagyrészt két szolgáltatás végzi el. [Az Azure Policy](./policy/overview.md) hozhat létre, rendelje hozzá és kezelhet szabályzatdefiníciókat az erőforrások szabályok érvényesítése. Ez a funkció biztosítja, hogy ezek az erőforrások megfelelnek-e a vállalati szabványoknak. [Az Azure Cost Management by Cloudyn](../cost-management/overview.md) nyomon követheti az Azure-erőforrások és egyéb felhőszolgáltatók felhőhasználatát és költségeit.
+Az Azure-ban az irányítás implementálásának feladatát nagyrészt két szolgáltatás végzi el. [Az Azure Policy](./policy/overview.md) hozhat létre, rendelje hozzá és kezelhet szabályzatdefiníciókat az erőforrások szabályok érvényesítése. Ez a funkció biztosítja, hogy ezek az erőforrások megfelelnek-e a vállalati szabványoknak. A [Azure Cost Management](../cost-management/overview-cost-mgt.md) segítségével nyomon követheti az Azure-erőforrások és más felhőalapú szolgáltatók Felhőbeli használatát és kiadásait.
 
 ## <a name="secure"></a>Biztonságos
 

@@ -1,85 +1,85 @@
 ---
-title: Távoli asztali ügyfél-kapcsolatok a Windows virtuális asztal – Azure
-description: Kapcsolatos problémák megoldását, virtuális asztali Windows-bérlős környezetben kapcsolatok beállításakor.
+title: Ügyfélkapcsolatok Távoli asztal a Windows rendszerű virtuális asztalon – Azure
+description: Az ügyfélkapcsolatok Windows virtuális asztali bérlői környezetben való beállításakor felmerülő problémák megoldása.
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
-ms.author: v-chjenk
-ms.openlocfilehash: b7a6daa791e44227fd146c9c328a939560ebb3b1
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.author: helohr
+ms.openlocfilehash: 9cd754b1810595c3ae82a7e4edfd9a3abe145b3f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605295"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816411"
 ---
 # <a name="remote-desktop-client-connections"></a>Távoli asztali ügyfélkapcsolatok
 
-Ez a cikk segítségével Windows virtuális asztali kapcsolatok problémáinak megoldásához.
+Ez a cikk a Windows rendszerű virtuális asztali ügyfélkapcsolatokkal kapcsolatos problémák megoldásához használható.
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 
-A Microsoft jelenleg nem tart támogatási esetek Windows virtuális asztal pedig előzetes verzióban érhető el. Látogasson el a [Windows virtuális asztal technikai Közösség](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) vitatni a virtuális asztali Windows-szolgáltatás a termékért felelős csoport és az aktív Közösség tagjai.
+Jelenleg nem veszünk fel támogatási eseteket, amíg a Windows rendszerű virtuális asztal előzetes verzióban érhető el. Látogasson el a [Windows rendszerű virtuális asztali technikai Közösségbe](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , és beszéljen a Windows Virtual Desktop szolgáltatásról a termék csapatával és az aktív közösség tagjaival.
 
-## <a name="you-cant-open-a-web-client"></a>A webes ügyfél nem nyitható meg
+## <a name="you-cant-open-a-web-client"></a>Webes ügyfél nem nyitható meg
 
-Ellenőrizze, hogy nincs megnyitva egy másik webhely; internetkapcsolat Ha például [www.Bing.com](https://www.bing.com).
+Erősítse meg az internetkapcsolatot egy másik webhely megnyitásával; például: [www.Bing.com](https://www.bing.com).
 
-Használat **nslookup** ellenőrizze a DNS képes feloldani a teljes Tartománynevet:
+Az **nslookup** használatával ellenőrizze, hogy a DNS képes-e a teljes tartománynév feloldására:
 
 ```cmd
 nslookup rdweb.wvd.microsoft.com
 ```
 
-Próbáljon meg csatlakozni egy másik ügyfél, például a távoli asztali ügyfél Windows 7 vagy Windows 10 és az ellenőrzés tekintse meg, ha a webes ügyfél megnyitható.
+Próbáljon meg csatlakozni egy másik ügyfélhez, például Távoli asztal Windows 7 vagy Windows 10 rendszerű ügyfélhez, és ellenőrizze, hogy meg tudja-e nyitni a webes ügyfelet.
 
-### <a name="error-opening-another-site-fails"></a>Hiba: Nyissa meg egy másik hely sikertelen
+### <a name="error-opening-another-site-fails"></a>Hiba: Egy másik hely megnyitása sikertelen
 
-**OK:** Hálózati problémák és/vagy valamilyen okból kimaradás lép.
+**Okozhat** Hálózati problémák és/vagy kimaradások.
 
-**Javítás:** Hálózati ügyfélszolgálatától kérhet.
+**Javítsa ki** Forduljon a hálózat támogatási szolgálatához.
 
-### <a name="error-nslookup-cannot-resolve-the-name"></a>Hiba: Az nslookup nem oldható fel a neve
+### <a name="error-nslookup-cannot-resolve-the-name"></a>Hiba: Az nslookup nem tudja feloldani a nevet
 
-**OK:** Hálózati problémák és/vagy valamilyen okból kimaradás lép.
+**Okozhat** Hálózati problémák és/vagy kimaradások.
 
-**Javítás:** Forduljon a hálózati támogatás
+**Javítsa ki** Kapcsolatfelvétel a hálózati ügyfélszolgálattal
 
-### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>Hiba: Nem lehet csatlakoztatni, de más ügyfelek csatlakozhatnak.
+### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>Hiba: Nem lehet kapcsolatot létesíteni, de más ügyfelek is csatlakozhatnak
 
-**OK:** A böngésző nem megszokott módon működő várt és leállt.
+**Okozhat** A böngésző nem a várt módon működik, és leállt.
 
-**Javítás:** Kövesse ezeket az utasításokat a böngésző hibaelhárítása.
+**Javítsa ki** Kövesse ezeket az utasításokat a böngésző hibakereséséhez.
 
 1. Indítsa újra a böngészőt.
-2. Törölje a böngésző cookie-kat. Lásd: [törlése a cookie-fájlokat az Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-3. Törölje a böngésző-gyorsítótár tartalmát. Lásd: [törölje a böngésző számára a böngésző gyorsítótárát](https://binged.it/2RKyfdU).
-4. Nyissa meg a böngészőt privát üzemmódban.
+2. Böngészőbeli cookie-k törlése. Lásd: [cookie-fájlok törlése az Internet Explorerben](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
+3. Törölje a böngésző-gyorsítótár tartalmát. Lásd: [böngésző gyorsítótárának törlése](https://binged.it/2RKyfdU)a böngészőben.
+4. Nyissa meg a böngészőt privát módban.
 
-## <a name="web-client-stops-responding-or-disconnects"></a>Webes ügyfél nem válaszol, vagy leválasztása
+## <a name="web-client-stops-responding-or-disconnects"></a>A webes ügyfél nem válaszol vagy bontja a kapcsolatot
 
-Próbáljon meg egy másik böngészőben vagy ügyfél használatával.
+Próbáljon meg csatlakozni egy másik böngésző vagy ügyfél használatával.
 
-### <a name="error-other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Hiba: Más böngészőkkel és ügyfelek is megfelelően működni, vagy nem nyílik meg
+### <a name="error-other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Hiba: Más böngészők és ügyfelek is meghibásodnak vagy nem nyithatók meg
 
-**OK:** Hálózati és/vagy műveletet a rendszer probléma vagy szünetelés
+**Okozhat** Hálózati és/vagy operációs rendszerrel kapcsolatos problémák vagy kimaradások
 
-**Javítás:** Forduljon a támogatási csapat.
+**Javítsa ki** Forduljon a támogatási csapathoz.
 
-## <a name="web-client-keeps-prompting-for-credentials"></a>Webes ügyfél tartja kéri a hitelesítő adatokat
+## <a name="web-client-keeps-prompting-for-credentials"></a>A webes ügyfél megkéri a hitelesítő adatok megadását
 
-Ha a webes ügyfél tartja kéri a hitelesítő adatokat, kövesse az alábbi utasításokat.
+Ha a webes ügyfél a hitelesítő adatok megadását kéri, kövesse az alábbi utasításokat.
 
-1. Ellenőrizze a webes ügyfél URL-címe.
-2. Győződjön meg arról, hogy hitelesítő adatokat a Windows virtuális asztali környezetben, az URL-címhez kötött.
-3. Törölje a böngésző cookie-kat. Lásd: [törlése a cookie-fájlokat az Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-4. Törölje a böngésző-gyorsítótár tartalmát. Lásd: [törölje a böngésző számára a böngésző gyorsítótárát](https://binged.it/2RKyfdU).
-5. Nyissa meg a böngészőt privát üzemmódban.
+1. Ellenőrizze, hogy helyes-e a webes ügyfél URL-címe.
+2. Győződjön meg arról, hogy a hitelesítő adatok az URL-címhez kötött Windowsos virtuális asztali környezethez tartoznak.
+3. Böngészőbeli cookie-k törlése. Lásd: [cookie-fájlok törlése az Internet Explorerben](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
+4. Törölje a böngésző-gyorsítótár tartalmát. Lásd: [böngésző gyorsítótárának törlése](https://binged.it/2RKyfdU)a böngészőben.
+5. Nyissa meg a böngészőt privát módban.
 
-## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Távoli asztali ügyfél Windows 7 vagy Windows 10-es nem válaszol, vagy nem nyitható meg
+## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>A Windows 7 vagy Windows 10 rendszerhez készült Távoli asztal-ügyfél nem válaszol, vagy nem nyitható meg
 
-A következő PowerShell-parancsmagok használatával sávon kívüli (OOB) ügyfél beállításjegyzékek karbantartása.
+A következő PowerShell-parancsmagokkal törölheti a sávon kívüli (OOB) ügyfelek beállításjegyzékét.
 
 ```PowerShell
 Remove-ItemProperty 'HKCU:\Software\Microsoft\Terminal Server Client\Default' - Name FeedURLs
@@ -93,36 +93,36 @@ Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
 
 Navigáljon a **%AppData%\RdClientRadc** , és törölje az összes tartalmat.
 
-Távolítsa el, majd telepítse újra a távoli asztali ügyfél Windows 7 és Windows 10-es.
+Távolítsa el és telepítse újra Távoli asztal ügyfelet a Windows 7 és a Windows 10 rendszerhez.
 
-## <a name="troubleshooting-end-user-connectivity"></a>A végfelhasználói hibaelhárítása
+## <a name="troubleshooting-end-user-connectivity"></a>Végfelhasználói kapcsolat hibaelhárítása
 
-Egyes esetekben a felhasználók a csatorna és a helyi erőforrások elérésére, de továbbra is fennáll, konfigurálás, rendelkezésre állási és teljesítménybeli problémák, amelyek meggátolják távoli erőforrásokhoz való hozzáférés. Ebben az esetben a felhasználó lekéri az üzeneteket hasonló:
+Bizonyos esetekben a felhasználók hozzáférhetnek a hírcsatornához és a helyi erőforrásokhoz, de továbbra is rendelkeznek olyan konfigurációval, rendelkezésre állással vagy teljesítménnyel kapcsolatos problémákkal, amelyek megakadályozzák a távoli erőforrások elérését. Ezekben az esetekben a felhasználó a következőhöz hasonló üzeneteket kap:
 
 ![Távoli asztali kapcsolat hibaüzenet.](media/eb76b666808bddb611448dfb621152ce.png)
 
-![Nem lehet csatlakozni az átjáró hibaüzenet.](media/a8fbb9910d4672147335550affe58481.png)
+![Nem lehet csatlakozni az átjáróhoz tartozó hibaüzenethez.](media/a8fbb9910d4672147335550affe58481.png)
 
-Kövesse az alábbi általános hibaelhárítási utasításokat az ügyfél csatlakozási hibakódok.
+Kövesse az alábbi általános hibaelhárítási útmutatót az ügyfélkapcsolati hibák kódjaival kapcsolatban.
 
-1. Erősítse meg a felhasználónevet és az idő, amikor probléma lépett fel.
-2. Nyissa meg **PowerShell** , valamint a Windows virtuális asztal bérlőhöz, ahol a hiba történt a következő kapcsolat.
-3. Ellenőrizze a kapcsolatot a megfelelő bérlő **Get-RdsTenant.**
-4. Használatával **Get-RdsHostPool** és **Get-RdsSessionHost** parancsmagok, győződjön meg arról, hogy hibaelhárítási történik a megfelelő gazdagép készleten.
-5. Hajtsa végre az alábbi parancsot a megadott időtartomány típusú kapcsolat összes sikertelen tevékenységek listájának lekérése:
+1. Erősítse meg a Felhasználónév és az idő, amikor a probléma megtörtént.
+2. Nyissa meg a **PowerShellt** , és hozzon létre kapcsolatot a Windows rendszerű virtuális asztali Bérlővel, ahol a problémát jelentették.
+3. Győződjön meg arról, hogy a megfelelő bérlőhöz csatlakozik a **Get-RdsTenant.**
+4. A **Get-RdsHostPool** és a **Get-RdsSessionHost** parancsmagok használatával ellenőrizze, hogy a hibaelhárítás a megfelelő gazdagépen történik-e.
+5. Hajtsa végre az alábbi parancsot az összes sikertelen kapcsolódási tevékenység listájának lekéréséhez a megadott időszakra vonatkozóan:
 
     ```PowerShell
      Get-RdsDiagnosticActivities -TenantName <TenantName> -username <UPN> -StartTime
      "11/21/2018 1:07:03 PM" -EndTime "11/21/2018 1:27:03 PM" -Outcome Failure -ActivityType Connection
     ```
 
-6. Használatával a **ActivityId** az előző parancsmag kimenetében, futtassa az alábbi parancsot:
+6. Az előző parancsmag kimenetének **tevékenységazonosító** használatával futtassa az alábbi parancsot:
 
     ```PowerShell
     (Get-RdsDiagnosticActivities -TenantName $tenant -ActivityId <ActivityId> -Detailed).Errors
     ```
 
-7. A parancs az alábbi kimeneti hasonló kimenetet eredményez. Használat **ErrorCodeSymbolic** és **ErrorMessage** hibaelhárítása a hiba okát.
+7. A parancs az alább látható kimenethez hasonló kimenetet hoz létre. A **ErrorCodeSymbolic** és a **errorMessage** használatával hárítsa el a kiváltó okot.
 
     ```PowerShell
     ErrorSource       : <Source>
@@ -135,45 +135,45 @@ Kövesse az alábbi általános hibaelhárítási utasításokat az ügyfél csa
     Time              : <Timestampt>
     ```
 
-### <a name="error-oaddusertogroupfailed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32errornosuchmember"></a>Hiba: O_ADD_USER_TO_GROUP_FAILED / nem sikerült hozzáadni a felhasználói csoporthoz ≤username≥ = Remote Desktop Users =. OK: Win32.ERROR_NO_SUCH_MEMBER
+### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Hiba: O_ADD_USER_TO_GROUP_FAILED/nem sikerült hozzáadni a felhasználót = ≤ Felhasználónév ≥ a Group = Távoli asztal felhasználókhoz. Indoklás: Win32.ERROR_NO_SUCH_MEMBER
 
-**OK:** Virtuális gép nem csatlakozik a tartományban, ahol felhasználói objektum.
+**Okozhat** A virtuális gép nincs csatlakoztatva ahhoz a tartományhoz, ahol a felhasználói objektum található.
 
-**Javítás:** Adja hozzá a virtuális gép a megfelelő tartományhoz. Lásd: [egy Windows Servert futtató virtuális gép csatlakoztatása felügyelt tartományokhoz](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
+**Javítsa ki** Adja hozzá a virtuális gépet a megfelelő tartományhoz. Lásd: [Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
 
-### <a name="error-nslookup-cannot-resolve-the-name"></a>Hiba: Az nslookup nem oldható fel a neve
+### <a name="error-nslookup-cannot-resolve-the-name"></a>Hiba: Az nslookup nem tudja feloldani a nevet
 
-**OK:** Hálózati problémák vagy valamilyen okból kimaradás lép.
+**Okozhat** Hálózati problémák vagy kimaradások.
 
-**Javítás:** Forduljon a hálózati támogatás
+**Javítsa ki** Kapcsolatfelvétel a hálózati ügyfélszolgálattal
 
 ### <a name="error-connectionfailedclientprotocolerror"></a>Hiba: ConnectionFailedClientProtocolError
 
-**OK:** Virtuális gépek, hogy a felhasználó próbál csatlakozni amelyek nem tartományhoz csatlakozó-e.
+**Okozhat** Azok a virtuális gépek, amelyekhez a felhasználó megpróbál csatlakozni, nincs tartományhoz csatlakoztatva.
 
-**Javítás:** Csatlakozzon a tartományvezérlő egy gazdagép készlet részét képező összes virtuális gépet.
+**Javítsa ki** Csatlakoztassa a gazdagép részét képező összes virtuális gépet a tartományvezérlőhöz.
 
-## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Felhasználó kapcsolódik, de semmi nem jelenik meg (nincs adatcsatorna)
+## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>A felhasználó csatlakozik, de semmi nem jelenik meg (nincs hírcsatorna)
 
-A felhasználó megkezdheti a távoli asztali ügyfelek, és elvégezheti a hitelesítést, azonban a felhasználó nem látja a webalkalmazás-felderítés hírcsatorna ikonokat.
+A felhasználók elindíthatják Távoli asztal-ügyfeleket, és képesek hitelesíteni magukat, azonban a felhasználó nem lát ikonokat a webes felderítési hírcsatornában.
 
-Győződjön meg arról, hogy a felhasználó a hibáknak felelősként alkalmazáscsoportok Ez a parancssor használatával:
+Győződjön meg arról, hogy a problémát jelentő felhasználó a következő parancssor használatával van hozzárendelve az alkalmazási csoportokhoz:
 
 ```PowerShell
 Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 ```
 
-Győződjön meg arról, hogy a felhasználó jelentkezik be a helyes hitelesítő adataival.
+Győződjön meg arról, hogy a felhasználó a megfelelő hitelesítő adatokkal jelentkezik be.
 
-Ha a webes ügyfél használatban van, győződjön meg arról, hogy nincsenek-e problémák gyorsítótárazott hitelesítő adatok.
+Ha a webes ügyfél használatban van, ellenőrizze, hogy nincsenek-e gyorsítótárazott hitelesítő adatok.
 
 ## <a name="next-steps"></a>További lépések
 
-- Hibaelhárítási Windows virtuális asztal és a kiterjesztés nyomon követi az áttekintést lásd: [hibaelhárítási áttekintése, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
-- Windows virtuális asztali környezetben egy bérlő és a gazdagép-készlet létrehozása során problémák hibaelhárítása: [bérlő és a gazdagép-készlet létrehozása](troubleshoot-set-up-issues.md).
-- Egy virtuális gépet (VM) konfigurálása a Windows virtuális asztal során problémák hibaelhárítása: [munkamenetgazda virtuális gép konfigurálása](troubleshoot-vm-configuration.md).
-- A virtuális asztal Windows PowerShell-lel kapcsolatos problémák elhárításához lásd: [Windows virtuális asztal PowerShell](troubleshoot-powershell.md).
-- Az előzetes verziójú szolgáltatások kapcsolatos további információkért lásd: [Windows Desktop előzetes verziójú környezet](https://docs.microsoft.com/azure/virtual-desktop/environment-setup?).
-- Nyissa meg a hibaelhárítás az oktatóanyagot, tekintse meg [oktatóanyag: Resource Manager-sablon üzemelő példányok hibaelhárítása](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
-- Naplózási műveletek kapcsolatos további információkért lásd: [auditálási műveletek a Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-- Üzembe helyezés során a hibák megállapításához műveleteivel kapcsolatos tudnivalókért lásd: [üzembehelyezési műveletek megtekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
+- A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
+- A bérlők és a gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [bérlői és az alkalmazáskészletek létrehozását](troubleshoot-set-up-issues.md)ismertető részt.
+- A virtuális gép (VM) Windows rendszerű virtuális asztali gépen való konfigurálása során felmerülő problémák elhárításával kapcsolatban lásd: a [munkamenet-gazdagép virtuális gép konfigurálása](troubleshoot-vm-configuration.md).
+- A PowerShell és a Windows virtuális asztal használatával kapcsolatos problémák elhárításához tekintse meg a [Windows rendszerű virtuális asztali PowerShell](troubleshoot-powershell.md)című témakört.
+- Az előzetes verziójú szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Windows asztali előnézet környezetét](https://docs.microsoft.com/azure/virtual-desktop/environment-setup?)ismertető témakört.
+- A következő témakörben talál útmutatást [a hibakereséshez: oktatóanyag: Resource Manager-sablonok központi telepítésének](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)hibája.
+- További információ a naplózási műveletekről: [műveletek naplózása a Resource Managerrel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
+- Az üzembe helyezés során felmerülő hibák meghatározásával kapcsolatos további tudnivalókért lásd: [telepítési műveletek megtekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).

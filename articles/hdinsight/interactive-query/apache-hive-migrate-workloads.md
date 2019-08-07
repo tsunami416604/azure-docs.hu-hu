@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: b9bf3b41bcd0a79027c5dd9a4f3df979fb0bd9f0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: eb6b42a88e47e3fcb35700ec542c8ca642e17a6a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250153"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815805"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Az Azure HDInsight 3,6 kaptár számítási feladatait áttelepítheti HDInsight 4,0
 
@@ -30,7 +30,7 @@ Ez a cikk a következő témákat tárgyalja:
 A kaptár egyik előnye, hogy lehetővé teszi a metaadatok exportálását egy külső adatbázisba (ez a struktúra Metaadattár néven ismert). A **Metaadattár struktúra** feladata a táblák statisztikáinak tárolása, beleértve a tábla tárolási helyét, az oszlopnevek és a tábla indexét. A metaadattár-adatbázis sémája eltér a kaptár-verzióktól. Az alábbi lépések végrehajtásával frissítheti a HDInsight 3,6 kaptár Metaadattár, hogy az kompatibilis legyen a HDInsight 4,0-mel.
 
 1. Hozzon létre egy új másolatot a külső metaadattár. A HDInsight 3,6 és a HDInsight 4,0 különböző metaadattár sémákat igényel, és nem oszthat meg egyetlen metaadattár. További információ a külső metaadattár HDInsight-fürthöz való csatolásáról: [külső metaadat-tárolók használata az Azure HDInsight](../hdinsight-use-external-metadata-stores.md) . 
-2. Indítson el egy parancsfájl-műveletet a HDI 3,6-fürtön a "fő csomópontok" csomóponttal a végrehajtáshoz. Illessze be a következő URI-t a "bash script URI" jelölésű szövegmezőbe: https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh. Az "argumentumok" jelölésű szövegmezőbe írja be a másolt Hive-metaadattár servername, adatbázis,  Felhasználónév és jelszó mezőt, szóközzel elválasztva. A servername megadásakor ne tartalmazza a ". database.windows.net" értéket.
+2. Indítson el egy parancsfájl-műveletet a HDI 3,6-fürtön a "fő csomópontok" csomóponttal a végrehajtáshoz. Illessze be a következő URI-t a "bash script URI" jelölésű szövegmezőbe: https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh. Az "argumentumok" jelölésű szövegmezőbe írja be a másolt Hive-metaadattár servername, adatbázis, Felhasználónév és jelszó mezőt, szóközzel elválasztva. A servername megadásakor ne tartalmazza a ". database.windows.net" értéket.
 
 > [!Warning]
 > A HDInsight 3,6 metaadat-sémát a HDInsight 4,0 sémába konvertáló frissítés nem vonható vissza.
@@ -99,9 +99,7 @@ A HDInsight 3,6-ben a kaptár-kiszolgálóval való interakcióra szolgáló gra
 
 Indítson el egy parancsfájl-műveletet a fürtön a "fő csomópontok" csomóponttal a végrehajtáshoz. Illessze be a következő URI-t a "bash script URI" jelölésű szövegmezőbe: https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
 
-A (z) https://\<clustername >. azurehdinsight. net/Das/
-
-
+Várjon 5 – 10 percet, majd indítsa el az adatelemzési studiót a következő\<URL-cím használatával: https://clustername >. azurehdinsight. net/Das/
 
 Ha a DAS telepítve van, ha nem látja a futtatott lekérdezéseket a lekérdezések megjelenítőben, hajtsa végre a következő lépéseket:
 

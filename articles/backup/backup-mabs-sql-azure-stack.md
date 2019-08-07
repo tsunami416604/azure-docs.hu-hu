@@ -8,14 +8,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3b116e25635873429dd164288c2764fd76c8f7a7
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 3dcf2188fd4fed211c96d4cc5241044d32ab6577
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689000"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737175"
 ---
-# <a name="back-up-sql-server-on-stack"></a>SQL Server biztonsági mentése a veremben
+# <a name="back-up-sql-server-on-azure-stack"></a>SQL Server biztonsági mentése Azure Stack
 Ebből a cikkből megtudhatja, Microsoft Azure Backup-kiszolgáló (MABS) SQL Server-adatbázisok védelméhez Azure Stack.
 
 Az Azure-ba való SQL Server adatbázis biztonsági mentésének és az Azure-ba történő helyreállításnak a kezelése három lépést tesz szükségessé:

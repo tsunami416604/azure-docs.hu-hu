@@ -6,18 +6,18 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: a2711339f5e952747adeeb6217b283770cb6cc6b
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0512facbdf5f2222aee1e9bb5d2be64e22bf1a69
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689047"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774633"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 
-Ez a cikk a SAP HANA adatbázisok Azure-beli virtuális gépeken történő biztonsági mentésével kapcsolatos hibaelhárítási információkat tartalmaz.
+Ez a cikk a SAP HANA adatbázisok Azure-beli virtuális gépeken történő biztonsági mentésével kapcsolatos hibaelhárítási információkat tartalmaz. A következő szakasz a SAP HANA biztonsági mentés gyakori hibáinak diagnosztizálásához szükséges fontos fogalmakat ismerteti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,6 +56,26 @@ Miután kiválasztott egy adatbázist a biztonsági mentéshez, a Azure Backup s
 
 > [!NOTE]
 > Győződjön meg arról, hogy ezek a paraméterek *nem* találhatók a gazdagép szintjén. A gazdagép szintű paraméterek felülbírálják ezeket a paramétereket, és váratlan viselkedést okozhatnak.
+
+## <a name="restore-checks"></a>Visszaállítási ellenőrzések
+
+### <a name="single-container-database-sdc-restore"></a>Egy tároló-adatbázis (SDC) visszaállítása
+
+Ügyeljen a bevitelre, miközben egyetlen tároló-adatbázist (SDC) állít vissza a HANA-hoz egy másik SDC-gépre. Az adatbázis nevét kisbetűs értékkel kell megadni, és zárójelek között a "SDC" utótaggal kell kiegészíteni. A HANA-példány a fővárosokban fog megjelenni.
+
+Tegyük fel, hogy a "H21" SDC HANA-példányról biztonsági másolat készül. A biztonsági mentési elemek lapon megjelenik a biztonsági mentési elem neve **"H21 (SDC)"** néven. Ha megpróbálja visszaállítani az adatbázist egy másik cél SDC, tegyük fel, hogy a H11 a következő bemeneteket kell megadnia.
+
+![SDC-visszaállítási bemenetek](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
+
+Vegye figyelembe a következőket
+- Alapértelmezés szerint a visszaállított adatbázis neve a biztonsági mentési elem nevével lesz feltöltve, azaz H21 (SDC)
+- A cél kiválasztása, mivel a H11 nem módosítja automatikusan a visszaállított adatbázis nevét. **Ezt a H11 (SDC) kell szerkeszteni**. A SDC esetében a visszaállított adatbázis neve a célként megadott példány-azonosító kisbetűkkel és a "SDC" zárójelek között.
+- Mivel a SDC csak egyetlen adatbázissal rendelkezhet, a jelölőnégyzetre kattintva engedélyezheti a meglévő adatbázis-adatmennyiség felülbírálását a helyreállítási pontra vonatkozó adattal.
+- A Linux megkülönbözteti a kis-és nagybetűket, ezért ügyeljen arra, hogy megőrizze az esetet.
+
+### <a name="multiple-container-database-mdc-restore"></a>Több tároló-adatbázis (MDC) visszaállítása
+
+A HANA-hoz készült több Container Database-ben a standard konfiguráció SYSTEMDB + 1 vagy több bérlői adatbázis. A teljes SAP HANA példány visszaállítása a SYSTEMDB és a bérlői adatbázisok visszaállítását jelenti. Először az egyik visszaállítja a SYSTEMDB, majd a bérlői adatbázist folytatja. A rendszeradatbázis lényegében azt jelenti, hogy felülbírálja a kiválasztott cél rendszerinformációit. Ez felülbírálja a BackInt kapcsolatos információkat is a cél példányban. Ezért miután a rendszeradatbázist visszaállította egy cél példányra, az egyiknek újra kell futtatnia az előzetes regisztrációs parancsfájlt. A következő bérlői adatbázis-visszaállítások sikeresek lesznek.
 
 ## <a name="common-user-errors"></a>Gyakori felhasználói hibák
 

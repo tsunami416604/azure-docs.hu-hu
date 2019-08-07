@@ -1,58 +1,58 @@
 ---
-title: Jupyter Notebook használata az adatok elemzése az Azure Data Explorer
-description: Ez a témakör bemutatja, hogyan az adatok elemzése az Azure Data Explorer Jupyter Notebook és a Kqlmagic bővítmény használatával.
+title: Jupyter Notebook használata az Azure-ban tárolt adatelemzéshez Adatkezelő
+description: Ebből a témakörből megtudhatja, hogyan elemezheti az Azure Adatkezelőban tárolt adatelemzést egy Jupyter Notebook és a Kqlmagic bővítmény használatával.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: a894052e54bd1ca9f8316342f714074c92753448
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 312e39ff1b699bb3c7f2baea3c66cbf8999ee44b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806340"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814519"
 ---
-# <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Adatok elemzése az Azure Data Explorer egy Jupyter Notebookot, és Kqlmagic bővítmény használatával
+# <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Jupyter Notebook-és Kqlmagic-bővítmény használata az Azure-ban tárolt adatelemzéshez Adatkezelő
 
-Jupyter Notebook egy nyílt forráskódú webes alkalmazás, amely lehetővé teszi, hogy hozzon létre és megoszthatja a dokumentumokat, amely tartalmazza az élő kód, a egyenletek, a Vizualizációk és a leíró szöveg. Használati adatok tisztítása és átalakítása numerikus szimuláció, statisztikai modellezési, adatvizualizáció és machine learning tartalmazza.
-[Jupyter Notebook](https://jupyter.org/) magic függvények támogatásával, további parancsok a kernel képességeit kibővítő támogatja. KQL Magic Quadrant, amely bővíti a Python-kernel a Jupyter Notebook Kusto nyelvi lekérdezések futtatásához natív módon parancs. A Python és Kusto lekérdezési nyelv lekérdezése és gazdag és integrált Plot.ly könyvtár használatával adatok vizualizációja révén könnyedén egyesítheti `render` parancsokat. A futó lekérdezések adatforrások támogatottak. Ezeknek az adatforrásoknak az Azure az adatkezelőt, egy gyors és hatékonyan méretezhető exploration szolgáltatás napló és a telemetriai adatokat, csakúgy, mint az Azure Monitor naplóira és az Application Insights tartalmazza. KQL Magic Quadrant Azure notebookok, a Jupyter labor és a Visual Studio Code Jupyter kiterjesztésű is működik.
+A Jupyter Notebook egy nyílt forráskódú webes alkalmazás, amellyel élő kódokat, egyenleteket, vizualizációkat és narratív szövegeket tartalmazó dokumentumokat hozhat létre és oszthat meg. A használat magában foglalja az adatok tisztítását és átalakítását, a numerikus szimulációt, a statisztikai modellezést, az adatvizualizációt és a gépi tanulást
+[Jupyter notebook](https://jupyter.org/) támogatja a Magic functions szolgáltatást, amely további parancsok támogatásával bővíti a kernel képességeit. A KQL Magic egy olyan parancs, amely kibővíti a Python-kernel képességeit Jupyter Notebookban, így natív módon futtathatja a Kusto nyelvi lekérdezéseit. A Python és a Kusto lekérdezési nyelvét könnyedén kombinálhatja a `render` parancsokkal integrált, gazdag Plot.ly-kódtár használatával történő lekérdezéséhez és megjelenítéséhez. A lekérdezések futtatásához szükséges adatforrások támogatottak. Ezek az adatforrások közé tartoznak az Azure Adatkezelő, a gyors és rugalmasan méretezhető adatfelderítési szolgáltatás a napló-és telemetria, valamint Azure Monitor naplók és Application Insights. A KQL Magic a Azure Notebooks, a Jupyter Lab és a Visual Studio Code Jupyter bővítménnyel is működik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Munkahelyi e-mail-fiók, amely tagja az Azure Active Directory (AAD).
-- A Jupyter Notebook telepítve van a helyi gépén vagy Azure notebookok használata, és klónozza a minta [Azure Notebook](https://kustomagicsamples-manojraheja.notebooks.azure.com/j/notebooks/Getting%20Started%20with%20kqlmagic%20on%20Azure%20Data%20Explorer.ipynb)
+- A szervezeti e-mail-fiók, amely Azure Active Directory (HRE) tagja.
+- Jupyter Notebook telepítve a helyi gépen, vagy használja Azure Notebooks és klónozása a minta [Azure notebookot](https://kustomagicsamples-manojraheja.notebooks.azure.com/j/notebooks/Getting%20Started%20with%20kqlmagic%20on%20Azure%20Data%20Explorer.ipynb)
 
-## <a name="install-kql-magic-library"></a>KQL magic erőforrástár telepítése
+## <a name="install-kql-magic-library"></a>A KQL Magic Library telepítése
 
-1. KQL Magic Quadrant telepítése:
+1. A KQL Magic telepítése:
 
     ```python
     !pip install Kqlmagic --no-cache-dir  --upgrade
     ```
     > [!NOTE]
-    > Az Azure-notebookok használata esetén ez a lépés nem kötelező.
+    > Azure Notebooks használatakor ez a lépés nem szükséges.
 
-1. Betöltés KQL Magic Quadrant:
+1. KQL Magic betöltése:
 
     ```python
-    reload_ext Kqlmagic
+    %reload_ext Kqlmagic
     ```
 
-## <a name="connect-to-the-azure-data-explorer-help-cluster"></a>Csatlakozás az Azure Data Explorer súgója fürthöz
+## <a name="connect-to-the-azure-data-explorer-help-cluster"></a>Kapcsolódás az Azure Adatkezelő Súgó fürthöz
 
-A következő paranccsal csatlakozhat a *minták* adatbázisban lévő üzemeltetett a *súgó* fürt. A Microsoft AAD-felhasználók számára, cserélje le a bérlő neve `Microsoft.com` az AAD-bérlőben.
+A következő parancs használatával csatlakozhat a *Súgó* fürtön tárolt mintaadatbázis-adatbázishoz. A nem a Microsofttól származó HRE felhasználók esetében cserélje le `Microsoft.com` a bérlő nevét a HRE-bérlőre.
 
 ```python
 %kql AzureDataExplorer://tenant="Microsoft.com";code;cluster='help';database='Samples'
 ```
 
-## <a name="query-and-visualize"></a>Lekérdezése és megjelenítése
+## <a name="query-and-visualize"></a>Lekérdezés és megjelenítés
 
-Lekérdezési adatok használatával a [operátor render](/azure/kusto/query/renderoperator) és az adatok megjelenítése a ploy.ly kódtár használatával. Ehhez a lekérdezéshez és vizualizációs választékát kínálja, amely natív KQL integrált megoldást. Kqlmagic támogatja kivételével a legtöbb diagramok `timepivot`, `pivotchart`, és `ladderchart`. Renderelési támogatott, kivéve az összes attribútum `kind`, `ysplit`, és `accumulate`. 
+Az adatlekérdezés a [Render operátor](/azure/kusto/query/renderoperator) használatával és az adatmegjelenítés a Ploy.ly-könyvtár használatával. Ez a lekérdezés és vizualizáció olyan integrált felhasználói élményt nyújt, amely natív KQL használ. A Kqlmagic a legtöbb diagramot `pivotchart`támogatja, `ladderchart`a és a kivételével `timepivot`. A renderelés az összes attribútummal támogatott `kind`, `ysplit`kivéve: `accumulate`, és. 
 
-### <a name="query-and-render-piechart"></a>Lekérdezés és a renderelési piechart
+### <a name="query-and-render-piechart"></a>Piechart lekérdezése és megjelenítése
 
 ```python
 %%kql
@@ -63,7 +63,7 @@ StormEvents
 | render piechart title="My Pie Chart by State"
 ```
 
-### <a name="query-and-render-timechart"></a>Lekérdezés és a renderelési idődiagramját
+### <a name="query-and-render-timechart"></a>Idődiagramját lekérdezése és megjelenítése
 
 ```python
 %%kql
@@ -73,19 +73,19 @@ StormEvents
 ```
 
 > [!NOTE]
-> Ezek a diagramok használata interaktív. Jelöljön ki egy időtartományt, egy adott időpont nagyíthatja.
+> Ezek a diagramok interaktívak. Válasszon ki egy időtartományt, amely egy adott időpontra nagyít.
 
-### <a name="customize-the-chart-colors"></a>A diagram színeinek testreszabásához
+### <a name="customize-the-chart-colors"></a>A diagram színeinek testreszabása
 
-Ha nem szeretné az alapértelmezett színpalettát, testre szabhatja a diagramok paletta beállítások használatával. A rendelkezésre álló palettára itt található: [A KQL magic lekérdezési diagram eredményhez színpaletta kiválasztása](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
+Ha nem tetszik az alapértelmezett színpaletta, testreszabhatja a diagramokat a paletta beállításainak használatával. A rendelkezésre álló paletta itt található: [A KQL Magic Query diagram eredményének kiválasztása szín paletta](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
 
-1. Színpaletták listáját:
+1. A paletták listája:
 
     ```python
     %kql --palettes -popup_window
     ```
 
-1. Válassza ki a `cool` paletta szín és jelennek meg újra a lekérdezést:
+1. Válassza ki `cool` a színpalettát, és jelenítse meg újra a lekérdezést:
 
     ```python
     %%kql -palette_name "cool"
@@ -96,13 +96,13 @@ Ha nem szeretné az alapértelmezett színpalettát, testre szabhatja a diagramo
     | render piechart title="My Pie Chart by State"
     ```
 
-## <a name="parameterize-a-query-with-python"></a>A Python egy lekérdezés paraméterezése
+## <a name="parameterize-a-query-with-python"></a>Parametrizálja egy lekérdezést a Pythonban
 
-Lehetővé teszi a KQL Magic Quadrant egyszerű adatcsere Kusto lekérdezési nyelvet és a Python között. További tudnivalók: [A Python használatával KQL magic lekérdezés paraméterezése](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
+A KQL Magic lehetővé teszi a Kusto-lekérdezési nyelv és a Python közötti egyszerű váltást. További információ: [Parametrizálja a KQL Magic-lekérdezést a Pythonban](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
 
-### <a name="use-a-python-variable-in-your-kql-query"></a>Használhat egy Python-változót a KQL lekérdezés
+### <a name="use-a-python-variable-in-your-kql-query"></a>Python-változó használata a KQL-lekérdezésben
 
-Egy Python-változó értékét használhatja a lekérdezésben az adatok szűrése:
+Az adatszűréshez használhatja a lekérdezés Python-változó értékét:
 
 ```python
 statefilter = ["TEXAS", "KANSAS"]
@@ -117,9 +117,9 @@ StormEvents
 | render timechart title = "Trend"
 ```
 
-### <a name="convert-query-results-to-pandas-dataframe"></a>Lekérdezési eredmények átalakítása Pandas DataFrame
+### <a name="convert-query-results-to-pandas-dataframe"></a>Lekérdezési eredmények konvertálása pandák DataFrame
 
-Pandas DataFrame KQL lekérdezések eredményeit is elérheti. Az utolsó végrehajtott lekérdezési eredmények eléréséhez a változó által `_kql_raw_result_` és egyszerűen alakíthatja az eredmények Pandas DataFrame módon:
+A KQL-lekérdezés eredményei a pandák DataFrame érhetők el. A legutóbbi lekérdezési eredmények változó `_kql_raw_result_` alapján érhetők el, és könnyen átalakíthatók a pandák DataFrame az eredmények a következőképpen:
 
 ```python
 df = _kql_raw_result_.to_dataframe()
@@ -128,9 +128,9 @@ df.head(10)
 
 ### <a name="example"></a>Példa
 
-Számos elemzési forgatókönyvek érdemes létrehozni, amely számos lekérdezéseket tartalmaz, és az eredmények hírcsatorna egy lekérdezés által az ezt követő lekérdezéseket újrafelhasználható notebookok. Az alábbi példa Python változót használja `statefilter` az adatok szűréséhez.
+Számos elemzési forgatókönyv esetén érdemes lehet olyan újrafelhasználható jegyzetfüzeteket létrehozni, amelyek sok lekérdezést tartalmaznak, és az eredményeket egy lekérdezésből az azt követő lekérdezésekben táplálják. Az alábbi példa a Python változót `statefilter` használja az adatszűréshez.
 
-1. Az első 10 állapotot, legfeljebb egy lekérdezés futtatásával `DamageProperty`:
+1. Futtasson egy lekérdezést, amely a legfelső 10 állapotot jeleníti meg maximálisan `DamageProperty`:
 
     ```python
     %%kql
@@ -140,7 +140,7 @@ Számos elemzési forgatókönyvek érdemes létrehozni, amely számos lekérdez
     | limit 10
     ```
 
-1. Bontsa ki a felső állapotot, és állítsa be egy Python-változóba egy lekérdezés futtatásával:
+1. Futtasson egy lekérdezést a legfelső állapot kinyeréséhez és egy Python-változóra való beállításához:
 
     ```python
     df = _kql_raw_result_.to_dataframe()
@@ -148,7 +148,7 @@ Számos elemzési forgatókönyvek érdemes létrehozni, amely számos lekérdez
     statefilter
     ```
 
-1. Egy lekérdezés segítségével futtassa a `let` utasítás és a Python-változó:
+1. Futtasson egy lekérdezést az `let` utasítás és a Python változó használatával:
 
     ```python
     %%kql
@@ -159,20 +159,20 @@ Számos elemzési forgatókönyvek érdemes létrehozni, amely számos lekérdez
     | render timechart title = "Trend"
     ```
 
-1. A Súgó parancs futtatásához:
+1. Futtassa a Súgó parancsot:
 
     ```python
     %kql --help "help"
     ```
 
 > [!TIP]
-> Az összes elérhető konfigurációk használata szeretne információt kapni `%config KQLmagic`. Kusto-hibák, például kapcsolati problémák és helytelen lekérdezéseket, rögzítése és hibáinak elhárítása használja `%config Kqlmagic.short_errors=False`
+> Az összes elérhető konfigurációval `%config KQLmagic`kapcsolatos információ fogadása. A Kusto hibák, például a kapcsolódási problémák és a helytelen lekérdezések hibaelhárításához és rögzítéséhez használja a következőt`%config Kqlmagic.short_errors=False`
 
 ## <a name="next-steps"></a>További lépések
 
-A help paranccsal Fedezze fel a következő mintafüzetek, amelyek tartalmazzák a támogatott szolgáltatások:
-- [Ismerkedés az KQL magic Azure adatkezelő](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStart.ipynb) 
-- [Ismerkedés a KQL magic az Application Insights](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartAI.ipynb) 
-- [Az Azure Monitor-naplók KQL magic használatának első lépései](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) 
-- [A KQL magic lekérdezés Parametrize Python használatával](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb) 
-- [A KQL magic lekérdezési diagram eredményhez színpaletta kiválasztása](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
+A Súgó parancs futtatásával vizsgálja meg a következő minta-jegyzetfüzeteket, amelyek tartalmazzák az összes támogatott funkciót:
+- [Ismerkedés a KQL Magic for Azure Adatkezelő](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStart.ipynb) 
+- [Ismerkedés a KQL Magic szolgáltatással Application Insights](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartAI.ipynb) 
+- [Ismerkedés a KQL Magic szolgáltatással Azure Monitor naplókhoz](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) 
+- [Parametrize a KQL Magic-lekérdezést a Pythonban](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb) 
+- [A KQL Magic Query diagram eredményének kiválasztása szín paletta](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)

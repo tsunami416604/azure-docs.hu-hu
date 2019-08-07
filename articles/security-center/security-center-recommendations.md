@@ -1,6 +1,6 @@
 ---
-title: Biztonsági javaslatok az Azure Security Centerben |} A Microsoft Docs
-description: Ez a dokumentum végigvezeti hogyan javaslatokat az Azure Security Center segítségével megvédheti Azure-erőforrásait, és legyen naprakész, megfelel a biztonsági szabályzatoknak.
+title: Biztonsági javaslatok a Azure Security Centerban | Microsoft Docs
+description: Ez a dokumentum részletesen ismerteti, hogyan segíti az Azure Security Center az Azure-erőforrások védelmében és a biztonsági szabályzatoknak való megfelelésben.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -12,75 +12,66 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/13/2019
+ms.date: 07/29/2019
 ms.author: v-mohabe
-ms.openlocfilehash: fe1d4bf27f3c4bb1f70c1c1fa9767c27f8767998
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 229b8949facae34a809c0789154a3b56264ee2c5
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064224"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779020"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Biztonsági javaslatok az Azure Security Centerben 
-Ez a témakör ismerteti, hogyan lehet megtekinteni és megérteni a javaslatok az Azure Security Centerben az Azure-erőforrások védelmére.
+Ez a témakör azt ismerteti, hogyan lehet megtekinteni és értelmezni a Azure Security Centerban található javaslatokat az Azure-erőforrások védelmének elősegítése érdekében.
 
 > [!NOTE]
-> Ez a dokumentum egy üzembe helyezést szemléltető példa segítségével mutatja be a szolgáltatást.  Ez a dokumentum nem tartalmaz lépésenkénti útmutatót.
+> Ez a dokumentum egy üzembe helyezést szemléltető példa segítségével mutatja be a szolgáltatást.  Ez a dokumentum nem az útmutató lépésről lépésre.
 >
 
 ## <a name="what-are-security-recommendations"></a>Mik azok a biztonsági javaslatok?
-A Security Center rendszeresen elemzi az Azure-erőforrások biztonsági állapotát. A Security Center javaslatokat hoz létre, amikor lehetséges biztonsági réseket észlel. A javaslatok végigvezetik Önt a szükséges vezérlők konfigurálásának folyamatán.
 
-## <a name="implementing-security-recommendations"></a>Biztonsági javaslatok alkalmazása
-### <a name="set-recommendations"></a>Set-javaslatok
-A [biztonsági szabályzatok beállítása az Azure Security Center](tutorial-security-policy.md), fog megismerkedni:
+A javaslatok olyan műveletek, amelyekkel biztonságossá teheti az erőforrásokat.
 
-* Biztonsági szabályzatok konfigurálása.
-* Kapcsolja be az adatgyűjtést.
-* Válassza ki, melyik javaslatok a biztonsági szabályzat részeként megtekintéséhez.
+Az esetleges biztonsági rések azonosítása érdekében rendszeresen Security Center az Azure-erőforrások biztonsági állapotának elemzését. Ezután javaslatokat tesz a eltávolításához.
 
-Aktuális javaslatok szabályzatközpontban Rendszerfrissítések, az alapkonfigurációs szabályok, a kártevőirtó programok, körül [hálózati biztonsági csoportok](../virtual-network/security-overview.md) alhálózatok és a hálózati adapterek, SQL database naplózási szolgáltatása, az SQL database transzparens adattitkosítás, és a webalkalmazás-tűzfalak.  [Biztonsági szabályzatok beállítása](tutorial-security-policy.md) minden javaslat beállítás leírását.
+Az egyes javaslatok a következőket biztosítják:
 
-### <a name="monitor-recommendations"></a>A figyelő javaslatok
-Miután beállított egy biztonsági házirendet, a Security Center elemzi az Ön erőforrásainak állapotát, hogy észlelhesse a potenciális biztonsági réseket. A **javaslatok** alatt csempe **áttekintése** javaslatok a Security Center által azonosított teljes számát jeleníti meg.
+- A javaslat rövid leírása.
+- A javaslat végrehajtásához szükséges szervizelési lépések. <!-- In some cases, one-click remediation is available. -->
+- Mely erőforrásokra van szükség a javasolt művelet végrehajtásához.
+- A **biztonságos pontszám hatása**, ami azt az összeget befolyásolja, amelyet a biztonságos pontszám felvesz, ha végrehajtja ezt a javaslatot.
 
-![Security center – áttekintés](./media/security-center-recommendations/asc-overview.png)
+## Javaslatok figyelése<a name="monitor-recommendations"></a>
 
-1. Válassza ki a **csempére a javaslatok** alatt **áttekintése**. A **javaslatok** listát.
-    
+Security Center elemzi az erőforrások biztonsági állapotát, hogy azonosítsa a lehetséges biztonsági réseket. A **javaslatok** csempéje az **áttekintés** területen a Security Center által azonosított javaslatok teljes számát jeleníti meg.
+
+![A Security Center áttekintése](./media/security-center-recommendations/asc-overview.png)
+
+1. Kattintson a **javaslatok csempére** az **Áttekintés**területen. Megnyílik a **javaslatok** listája.
+
       ![Javaslatok megtekintése](./media/security-center-recommendations/view-recommendations.png)
 
-    Javaslatok szűrheti. A javaslatok szűréséhez válasszon **szűrő** a a **javaslatok** panelen. A **szűrő** panel megnyílik, és szeretne látni a fontossága és állapota értékek választja.
+    Lehetőség van a javaslatok szűrésére. A javaslatok szűréséhez válassza a **szűrés** lehetőséget a **javaslatok** panelen. Megnyílik a **szűrő** panel, és kiválasztja a megtekinteni kívánt súlyossági és állapot-értékeket.
 
    * **JAVASLATOK**: A javaslat.
-   * **PONTSZÁM HATÁS BIZTONSÁGOS**: A Security Center a biztonsági javaslatok használatával, és fejlett algoritmusok alkalmazásával annak megállapításához, hogy kulcsfontosságú minden javaslat által generált pontszámot. További információkért lásd: [biztonságos pontszám számítási](security-center-secure-score.md#secure-score-calculation).
-   * **ERŐFORRÁS**: Listázza az erőforrásokat, amelyekre ez a javaslat vonatkozik.
-   * **ÁLLAPOTSORAIRÓL**:  Ismerteti, hogy az adott javaslat súlyosságát:
-       * **Nagy (piros)** : Biztonsági rés fontos erőforrásnál (például egy alkalmazást, a virtuális gép vagy a hálózati biztonsági csoport) létezik, és beavatkozást igényel.
-       * **Közepes (narancs)** : A biztonsági rés, és nem kritikus vagy kiegészítő lépések szükségesek egy folyamat befejezéséhez vagy ezt meg kell szüntetni.
-       * **Alacsony (kék)** : A biztonsági rés, amelyek beavatkozást igényel, de nem igényel azonnali beavatkozást. (Alapértelmezés szerint alacsony súlyosságú javaslatok nem jelennek meg, de Ön is szűrővel bekapcsolhatja, ha meg szeretné tekinteni azokat.) 
+   * A **BIZTONSÁGOS PONTSZÁM HATÁSA**: A Security Center által generált pontszám a biztonsági javaslatokkal, valamint a speciális algoritmusok alkalmazásával határozható meg, hogy az egyes javaslatok mennyire fontosak. További információ: [biztonságos pontszámok kiszámítása](security-center-secure-score.md#secure-score-calculation).
+   * **ERŐFORRÁS**: Felsorolja azokat az erőforrásokat, amelyekre ez a javaslat vonatkozik.
+   * **ÁLLAPOTJELZŐ SÁVOK**:  Az adott javaslat súlyosságát írja le:
+       * **Magas (piros)** : A biztonsági rés egy értelmes erőforrással (például egy alkalmazással, egy virtuális géppel vagy egy hálózati biztonsági csoporttal) van, és figyelmet igényel.
+       * **Közepes (narancssárga)** : Egy biztonsági rés létezik, és nem kritikus fontosságú vagy további lépések szükségesek az eltávolításához vagy egy folyamat befejezéséhez.
+       * **Alacsony (kék)** : Létezik egy olyan biztonsági rés, amelynek meg kell oldania, de nem igényel azonnali beavatkozást. (Alapértelmezés szerint az alacsony javaslatok nem jelennek meg, de ha szeretné megtekinteni, az alacsony javaslatokat is szűrheti.) 
        * **Kifogástalan (zöld)** :
        * **Nem érhető el (szürke)** :
 
-1. Minden javaslat részleteinek megtekintéséhez kattintson a javaslatot.
+1. Az egyes javaslatok részleteinek megtekintéséhez kattintson a javaslatra.
 
     ![Javaslat részletei](./media/security-center-recommendations/recommendation-details.png)
 
 >[!NOTE] 
-> Lásd: [klasszikus és Resource Manager üzembe helyezési modellek](../azure-classic-rm.md) az Azure-erőforrásokhoz.
-  
- ### <a name="apply-recommendations"></a>Javaslatok alkalmazása
-> Az összes javaslatok áttekintése, után döntse el, melyiket érdemes először a alkalmazni. Azt javasoljuk, hogy használja a biztonságos pontozása hatás kiértékeléséhez, hogy mely ajánlások előbb alkalmazni kell.
-
-1. A listából kattintson a javaslatot.
-1. Kövesse az utasításokat a *javítási lépések* szakaszban.
-
+> Lásd: [klasszikus és Resource Manager-](../azure-classic-rm.md) alapú üzemi modellek az Azure-erőforrásokhoz.
+ 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megismerhette a Security Center biztonsági javaslatokat. A Security Centerrel kapcsolatos további tudnivalókért lásd a következő témaköröket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Center](tutorial-security-policy.md) – ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok.
-* [Biztonsági állapotmonitorozás az Azure Security Centerben](security-center-monitoring.md) – Útmutató az Azure-erőforrások állapotának monitorozásához.
-* [Kezelése és válaszadás a biztonsági riasztásokra az Azure Security Center](security-center-managing-and-responding-alerts.md) – ismerje meg, hogyan kezelése és válaszadás a biztonsági riasztásokra.
-* [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md) – Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
-* [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center: Gyakran ismételt kérdések) – Válaszok a szolgáltatás használatára vonatkozó gyakori kérdésekre.
-* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+Ebben a dokumentumban a Security Center biztonsági javaslataira került sor. További információ a javaslatok megoldásáról:
+
+* [Javaslatok szervizelése](security-center-remediate-recommendations.md) – Ismerje meg, hogyan konfigurálhatja az Azure-előfizetések és-erőforráscsoportok biztonsági szabályzatait.

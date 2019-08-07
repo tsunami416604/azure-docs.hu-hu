@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 849065460acda36426f8a594a984ad1cc8590c34
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 323470adfe56ee20fe0fb64aeba38b6af4330351
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688824"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827600"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>SQL Server adatbázis biztonsági mentésének hibáinak megoldása Azure Backup használatával
 
@@ -119,6 +119,19 @@ Ha egy SQL Server adatbázis védelmét szeretné konfigurálni egy virtuális g
 | Hibaüzenet | A lehetséges okok | Javasolt művelet |
 |---|---|---|
 | Az automatikus védelem szándéka el lett távolítva vagy nem érvényes. | Ha engedélyezi az automatikus védelmet egy SQL Server-példányon, **konfigurálja a biztonsági mentési** feladatok futtatását az adott példány összes adatbázisához. Ha letiltja az automatikus védelmet a feladatok futása közben, akkor a **folyamatban** lévő feladatok megszakadnak ezzel a hibakódtal. | Engedélyezze újra az automatikus védelmet az összes fennmaradó adatbázis védelme érdekében. |
+
+### <a name="clouddosabsolutelimitreached"></a>CloudDosAbsoluteLimitReached
+
+| Hibaüzenet | A lehetséges okok | Javasolt művelet |
+|---|---|---|
+A művelet le van tiltva, mert elérte a 24 órán belül engedélyezett műveletek számának korlátját. | Ha elérte a maximális megengedett korlátot egy 24 órás span művelethez, a hiba a következő:. <br> Példa: Ha elérte a napi indítású biztonsági mentési feladatok konfigurálásának korlátját, és a biztonsági mentést egy új elemen próbálja meg konfigurálni, akkor ez a hibaüzenet jelenik meg. | A művelet 24 óra elteltével történő újrapróbálkozása általában megoldja ezt a problémát. Ha azonban nem szűnik meg a probléma, segítségért forduljon a Microsoft támogatási szolgálatához.
+
+### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
+
+| Hibaüzenet | A lehetséges okok | Javasolt művelet |
+|---|---|---|
+A művelet le van tiltva, mert a tároló elérte a maximális korlátot az ilyen műveletekhez, amely 24 órás időtartam alatt engedélyezett. | Ha elérte a maximális megengedett korlátot egy 24 órás span művelethez, a hiba a következő:. Ez a hiba általában a méretezési műveletek, például a házirend módosítása vagy az automatikus védelem esetében jelentkezik. A CloudDosAbsoluteLimitReached esetében nem sok mindent megtehet ennek az állapotnak a megoldásához, ugyanis Azure Backup a szolgáltatás a szóban forgó összes elemre vonatkozóan újra megpróbálja végrehajtani a műveleteket.<br> Példa: Ha nagy számú adatforrással védett egy házirend, és megpróbálja módosítani ezt a házirendet, a rendszer elindítja a védelmi feladatok konfigurálását az egyes védett elemekhez, és esetenként az ilyen műveletek esetében a maximálisan engedélyezett korlátot is elérheti naponta.| A Azure Backup szolgáltatás 24 óra elteltével automatikusan újrapróbálkozik a művelettel. 
+
 
 ## <a name="re-registration-failures"></a>Ismételt regisztrálási hibák
 
