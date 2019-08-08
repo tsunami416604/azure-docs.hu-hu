@@ -24,10 +24,10 @@
       maintainContext: true
     - name: Hibaelhárítás
       items:
-        - name: OutOfMemoryError kivétel
-          items:
-            - name: A szemétgyűjtés többletterhelési korlátja túllépve
-              href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: A szemétgyűjtés többletterhelési korlátja túllépve
+          href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: Az Apache Ambari Tez View lassan töltődik be
+          href: ./interactive-query-troubleshoot-tez-view-slow.md
         - name: Az Apache Hive-nézetben nem jelenik meg egy hibaüzenet
           href: ./interactive-query-troubleshoot-error-message-hive-view.md
         - name: Elérhetetlen Apache Hive-nézet

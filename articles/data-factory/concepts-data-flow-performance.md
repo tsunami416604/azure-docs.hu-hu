@@ -68,7 +68,7 @@ Erre az ikonra kattintva megjelenik az adatfolyam végrehajtási terve és az az
 
 ### <a name="set-sink-batch-size"></a>Fogadó köteg méretének beállítása
 
-![] Fogadó (media/data-flow/sink4.png "") Fogadó
+![Fogadó](media/data-flow/sink4.png "Fogadó")
 
 * Az adatfolyamatok soron belüli feldolgozásának elkerülése érdekében állítsa be a "batch size" kifejezést az Azure SQL DB fogadó beállításainál. Ez azt jelzi, hogy az ADF az adatbázis-írásokat kötegekben dolgozza fel a megadott méret alapján.
 
