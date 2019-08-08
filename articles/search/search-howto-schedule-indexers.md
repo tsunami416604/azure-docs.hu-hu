@@ -1,73 +1,72 @@
 ---
-title: Az indexelők – Azure Search ütemezése
-description: Tartalom indexelése az Azure Search-indexelők ütemezése, rendszeres időközönként vagy egy adott időpontban.
+title: Indexelő ütemezhetnek – Azure Search
+description: Ütemezze Azure Search indexelő tartalmat rendszeres időközönként vagy adott időpontra.
 ms.date: 05/31/2019
-author: RobDixon22
+author: HeidiSteen
 manager: HeidiSteen
-ms.author: v-rodixo
+ms.author: heidist
 services: search
 ms.service: search
-ms.devlang: rest-api
+ms.devlang: ''
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 4bf931b19b7490a94f30afde49038cdc7573fab3
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 245a2139aae0910ea1415811234667f2c06500ec
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302243"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855796"
 ---
-# <a name="how-to-schedule-indexers-for-azure-search"></a>Az Azure Search indexelők ütemezése
-Az indexelő normális esetben lefut egyszer, azonnal a létrehozást követően. Futtathatja azt újra igény szerint a portálon, a REST API vagy a .NET SDK használatával. Beállíthatja, hogy az indexelő futtatása rendszeres ütemezés szerint.
+# <a name="how-to-schedule-indexers-for-azure-search"></a>Indexelő ütemezett Azure Search
+Az indexelő általában egyszer fut, közvetlenül a létrehozása után. Igény szerint újra futtathatja a portál, a REST API vagy a .NET SDK használatával. Az indexelő konfigurálható úgy is, hogy rendszeres időközönként fusson az ütemterven.
 
-Bizonyos helyzetekben, ahol az indexelő ütemezés hasznos:
+Bizonyos helyzetekben hasznos lehet az indexelő ütemezése:
 
-* Idővel változni fognak a forrásadatokat, és azt szeretné, hogy az Azure Search indexelők automatikusan fel a módosított adatokat.
-* Az index több adatforrásból kitöltődnek, és ellenőrizze, hogy az indexelő ütközések csökkentése érdekében különböző időpontokban futtatni szeretné.
-* A forrásadatok nagyon nagy, és szeretné elosztani az indexelő idővel feldolgozása. Nagy mennyiségű adatot indexelő kapcsolatos további információkért lásd: [indexelése az Azure Search nagy méretű adatkészleteket](search-howto-large-index.md).
+* A forrásadatok idővel változnak, és azt szeretné, hogy a Azure Search indexelő automatikusan feldolgozzák a módosított adatait.
+* Az index több adatforrásból lesz feltöltve, és biztosítani szeretné, hogy az indexelő a konfliktusok csökkentése érdekében különböző időpontokban fussanak.
+* A forrásadatok nagyon nagy méretűek, és az indexelő feldolgozását az idő múlásával szeretné elosztani. A nagy mennyiségű adat indexelésével kapcsolatos további információkért lásd: a [nagyméretű](search-howto-large-index.md)adathalmazok indexelése Azure Searchban.
 
-A scheduler az Azure Search egy beépített funkciója. Nem használhat egy külső ütemezőn search-indexelők szabályozására.
+Az ütemező a Azure Search beépített funkciója. A keresési indexelő vezérléséhez nem használhat külső ütemező funkciót.
 
-## <a name="define-schedule-properties"></a>Ütemezési tulajdonságok meghatározása
+## <a name="define-schedule-properties"></a>Ütemterv tulajdonságainak megadása
 
-Az indexelő ütemezés két tulajdonsággal rendelkezik:
-* **Intervallum**, amely megadja, mennyi ideig köztes ütemezett indexelő végrehajtások. A legkisebb megengedett időköz 5 perc, és a legnagyobb 24 óra.
-* **Indítsa el a világidő (UTC)** , ami azt jelenti, hogy az első alkalommal, amikor az indexelő kell futtatni.
+Az indexelő ütemtervének két tulajdonsága van:
+* **Intervallum**, amely meghatározza az ütemezett indexelő végrehajtások közötti időt. A legkisebb megengedett intervallum 5 perc, a legnagyobb pedig 24 óra.
+* **Kezdési időpont (UTC)** , amely azt jelzi, hogy az indexelő Mikor fusson először.
 
-Megadhat egy ütemezést az indexelő első létrehozásakor vagy frissítésekor az indexelő-tulajdonságokat később. Az indexelő ütemezések lze nastavit pomocí a [portál](#portal), a [REST API-t](#restApi), vagy a [.NET SDK-val](#dotNetSdk).
+Az indexelő első létrehozásakor megadhat egy ütemtervet, vagy később is frissítheti az indexelő tulajdonságait. Az indexelő-ütemtervek a [portál](#portal), a [REST API](#restApi)vagy a [.net SDK](#dotNetSdk)használatával állíthatók be.
 
-Az indexelő csak egy végrehajtásának futtatható egyszerre. Ha az indexelő már fut a következő végrehajtási ütemezése, a végrehajtási van elhalaszthatók, amíg a következő ütemezett időpontban.
+Egyszerre csak egy indexelő végrehajtása futhat. Ha egy indexelő már fut a következő végrehajtás ütemezésekor, a végrehajtás a következő ütemezett időpontig Elhalasztva lesz.
 
-Vegyünk egy példát, ez részletesebb legyen. Tegyük fel, hogy úgy konfiguráljuk, hogy az indexelő ütemezés egy **időköz** óránként történik, és a egy **kezdő időpont** 2019. június 1. 8:00:00-kor (UTC): a. Íme, mi akkor fordulhat elő, amikor az indexelők futtatása egy óránál hosszabb ideig tart:
+Vegyünk egy példát erre a konkrétra. Tegyük fel, hogy az indexelő- ütemtervet óránként, a 2019-as és a 8:00:00-es UTC-kor számított 1. június 1-től **kezdődően** konfiguráljuk. Ez akkor fordulhat elő, ha egy indexelő futtatása egy óránál hosszabb időt vesz igénybe:
 
-* Az első indexelő végrehajtás, vagy 2019. június 1. 8:00-kor (UTC): elindul. Tegyük fel, a végrehajtási vesz igénybe, 20 perc (vagy bármely idő kevesebb mint 1 óra).
-* A második végrehajtása, vagy 2019. június 1 9:00-kor kezdődik (UTC). Tegyük fel, hogy a végrehajtási perc 70 - több mint egy óra –, és 10:10-kor (UTC) amíg nem fejeződik.
-* A harmadik végrehajtását, 10:00-kor (UTC) történő futásra van ütemezve, de ekkor még mindig fut. az előző végrehajtás. Ez az ütemezett végrehajtási majd a rendszer kihagyta. Az indexelő végrehajtásának tovább nem fog elindulni, amíg 11:00-kor (UTC).
+* Az első indexelő végrehajtása a 2019-as vagy az 8:00-os UTC-kor kezdődik. Feltételezzük, hogy ez a végrehajtás 20 percet vesz igénybe (vagy 1 óránál rövidebb ideig).
+* A második végrehajtás 2019 9:00 AM UTC vagy újabb időpontban kezdődik. Tegyük fel, hogy ez a végrehajtás 70 percet vesz igénybe – több mint egy óra –, és a 10:10-es UTC-ig nem fog elindulni.
+* A harmadik végrehajtás a következő időpontban indul: 10:00 UTC, de az előző végrehajtás még mindig fut. Ezt követően az ütemezett végrehajtás ki lesz hagyva. Az indexelő következő végrehajtása nem indul el a 11:00 UTC-ig.
 
 > [!NOTE]
-> Ha az indexelő értéke egy meghatározott ütemezés, de ismételten sikertelen lesz, ugyanazon dokumentum és újra minden alkalommal, amikor azt fut, az indexelő megkezdődik futtatása kevésbé gyakori időközönként (akár a legfeljebb 24 óránként legalább egyszer), amíg sikeresen teszi folyamatban aga a.  Ha úgy véli, hogy bármilyen kijavítása, amely egy bizonyos ponton elakadt, az indexelő okozta a problémát, egy az igény szerinti futtatása az indexelő is végezhet, hogy sikeresen ez, és folyamatban van, az indexelő vissza fog térni a set-ütemezési időköz újra.
+> Ha egy indexelő egy bizonyos ütemezésre van beállítva, de többször is meghibásodik ugyanazon a dokumentumon, és minden egyes futtatásakor újra leáll, az indexelő egy ritkábban (legfeljebb legalább 24 óránként) fog futni, amíg a folyamat sikeresen elvégezte az előrehaladást. a.  Ha úgy gondolja, hogy rögzítette a problémát, amely miatt az indexelő egy bizonyos ponton elakadt, igény szerint futtathatja az Indexelő szolgáltatást, és ha a folyamat sikeresen elvégezte az előrehaladást, az indexelő az ütemezési intervallumba ismét visszatér.
 
 <a name="portal"></a>
 
-## <a name="define-a-schedule-in-the-portal"></a>Ütemezés meghatározása a portálon
+## <a name="define-a-schedule-in-the-portal"></a>Ütemterv meghatározása a portálon
 
-A portálon az adatok importálása varázsló lehetővé teszi az ütemezés egy indexelő meghatározásához a létrehozás időpontjában. Az alapértelmezett ütemezési beállítás **óránkénti**, ami azt jelenti, hogy az indexelőt egyszer fut, miután jön létre, és óránként fut le újra később.
+A portálon az adatimportálás varázsló lehetővé teszi az indexelő ütemezésének definiálását a létrehozási időpontnál. Az alapértelmezett ütemterv-beállítás **óránként**történik, ami azt jelenti, hogy az indexelő a létrehozása után egyszer fut, és ezt követően minden órában fut.
 
-Az ütemezési beállítást módosíthatja **után** Ha nem szeretné, hogy újra automatikusan fusson az indexelő vagy **napi** naponta egyszer futtatni. Állítsa be **egyéni** Ha azt szeretné, adja meg egy másik időközt vagy egy adott későbbi kezdő időpont.
+Ha nem szeretné, hogy az indexelő automatikusan fusson, vagy **naponta** egyszer fusson, módosítsa az ütemterv beállítását. Állítsa be az **Egyéni** értékre, ha más intervallumot vagy adott jövőbeli kezdési időt szeretne megadni.
 
-Ha az ütemezés beállítása **egyéni**, mező jelenik meg, hogy adja meg a **időköz** és a **Start világidő (UTC)** . A legrövidebb megengedett időköz 5 perc és a leghosszabb ideje 1440 perc (24 óra).
+Ha az ütemtervet **Egyéni**értékre állítja, a mezők úgy jelennek meg , hogy megadják az intervallumot és a kezdési időpontot **(UTC)** . A legrövidebb időtartam 5 perc, a leghosszabb pedig 1440 perc (24 óra).
 
-   ![Adatok importálása varázsló beállítás indexelő ütemezés](media/search-howto-schedule-indexers/schedule-import-data.png "beállítás indexelő ütemezés az adatok importálása varázsló")
+   ![Az indexelő ütemtervének beállítása az adatimportálás varázslóban](media/search-howto-schedule-indexers/schedule-import-data.png "Az indexelő ütemtervének beállítása az adatimportálás varázslóban")
 
-Az indexelők létrehozása után módosíthatja az ütemezési beállításokat, az indexelő szerkesztése panel használatával. Az ütemezés mezők ugyanazok, mint az adatok importálása varázsló.
+Az indexelő létrehozása után az indexelő szerkesztési paneljén módosíthatja az ütemterv beállításait. Az ütemterv mezői megegyeznek az adat importálása varázslóban.
 
-   ![Az ütemezés beállítása az indexelő szerkesztése panel](media/search-howto-schedule-indexers/schedule-edit.png "indexelő szerkesztése panelen az ütemezés beállítása")
+   ![Az ütemterv beállítása az indexelő szerkesztési paneljén](media/search-howto-schedule-indexers/schedule-edit.png "Az ütemterv beállítása az indexelő szerkesztési paneljén")
 
 <a name="restApi"></a>
 
-## <a name="define-a-schedule-using-the-rest-api"></a>A REST API-val ütemezés meghatározása
+## <a name="define-a-schedule-using-the-rest-api"></a>Ütemterv meghatározása a REST API használatával
 
-Meghatározhatja az ütemezésben az indexelők REST API használatával. Ehhez közé tartozik a **ütemezés** létrehozásakor vagy frissítésekor az indexelő tulajdonság. Az alábbi példában látható egy PUT kérelmet egy meglévő indexelő frissítése:
+Az indexelő ütemtervét az REST API használatával adhatja meg. Ehhez adja meg a **Schedule** tulajdonságot az indexelő létrehozásakor vagy frissítésekor. Az alábbi példa egy PUT-kérelmet mutat be egy meglévő indexelő frissítéséhez:
 
     PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2019-05-06
     Content-Type: application/json
@@ -79,19 +78,19 @@ Meghatározhatja az ütemezésben az indexelők REST API használatával. Ehhez 
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-A **időköz** paraméter megadása kötelező. Az intervallum hivatkozik a két egymást követő indexelő végrehajtásának kezdete közötti idő. A legkisebb megengedett intervallum értéke 5 perc; a leghosszabb érték egy nap. Egy XSD "nyelv szerinti dayTimeDuration" értékként kell formázni (korlátozott részhalmaza olyan [ISO 8601 időtartama](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) érték). A minta: `P(nD)(T(nH)(nM))`. Példák: `PT15M` 15 percenként, a `PT2H` 2 óránként számára.
+Az **intervallum** paraméter megadása kötelező. Az intervallum a két egymást követő indexelő végrehajtásának kezdete közötti időpontra utal. A legkisebb megengedett intervallum 5 perc; a leghosszabb egy nap. A fájlnak XSD "dayTimeDuration" értéknek kell lennie (az [ISO 8601 időtartam](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) értékének korlátozott részhalmaza). A minta ehhez a következő: `P(nD)(T(nH)(nM))`. Példák: `PT15M` 15 percenként, `PT2H` minden 2 órában.
 
-A választható **startTime** azt jelzi, hogy mikor kell elkezdeni az ütemezett végrehajtás. Ha ezt kihagyja, az aktuális UTC időpontig szolgál. Lehet, hogy az idő, amelyben az első végrehajtás eset van ütemezve, mintha az indexelő futása során folyamatosan óta az eredeti korábban **startTime**.
+Az opcionális kezdési **időpont** azt jelzi, hogy mikor kell megkezdeni az ütemezett végrehajtást. Ha nincs megadva, a rendszer az aktuális UTC-időt használja. Ez az idő lehet a múltban, amely esetben az első végrehajtás ütemezve van, mintha az indexelő az eredeti **kezdő időpont**óta folyamatosan fut.
 
-Az indexelő igény szerint bármely szoftvertermékére, az indexelő futtatása hívás használatával is futtathatja. Az indexelők futtatása és az indexelő ütemezések beállítása kapcsolatos további információkért lásd: [indexelő futtatása](https://docs.microsoft.com/rest/api/searchservice/run-indexer), [első indexelő](https://docs.microsoft.com/rest/api/searchservice/get-indexer), és [frissítés indexelő](https://docs.microsoft.com/rest/api/searchservice/update-indexer) a REST API-referencia a.
+Az indexelő igény szerint bármikor futtatható a Run indexelő hívásával is. További információ az indexelő futtatásáról és az indexelő-ütemtervek beállításáról: [Indexelő futtatása](https://docs.microsoft.com/rest/api/searchservice/run-indexer), [Indexelő letöltése](https://docs.microsoft.com/rest/api/searchservice/get-indexer)és az [Indexelő frissítése](https://docs.microsoft.com/rest/api/searchservice/update-indexer) a REST API-referenciában.
 
 <a name="dotNetSdk"></a>
 
-## <a name="define-a-schedule-using-the-net-sdk"></a>A .NET SDK használatával ütemezés meghatározása
+## <a name="define-a-schedule-using-the-net-sdk"></a>Ütemterv meghatározása a .NET SDK használatával
 
-Megadhatja az ütemezés egy indexelő az Azure Search .NET SDK használatával. Ehhez közé tartozik a **ütemezés** létrehozásakor vagy frissítésekor az indexelő tulajdonság.
+Az indexelő ütemtervét a Azure Search .NET SDK használatával határozhatja meg. Ehhez az indexelő létrehozásakor vagy frissítésekor adja meg az **Schedule** tulajdonságot.
 
-A következő C# példa létrehoz egy előre definiált adatforrás és az index, indexelő, és beállítja az ütemezett kezdési 30 perc múlva minden naponta egyszer futtatni:
+Az alábbi C# példa létrehoz egy indexelő egy előre definiált adatforrás és egy index használatával, és az ütemtervet úgy állítja be, hogy minden nap 30 perc múlva fusson:
 
 ```
     Indexer indexer = new Indexer(
@@ -105,14 +104,14 @@ A következő C# példa létrehoz egy előre definiált adatforrás és az index
         );
     await searchService.Indexers.CreateOrUpdateAsync(indexer);
 ```
-Ha a **ütemezés** paraméter nincs megadva, az indexelő csak akkor fog futni egyszer a létrehozást követően azonnal.
+Ha az **ütemterv** paraméter nincs megadva, az indexelő csak a létrehozás után azonnal fut.
 
-A **startTime** paraméter értékre lehet beállítani egyszerre a múltban. Ebben az esetben az első végrehajtás van ütemezve, mintha az indexelő futása során folyamatosan óta az adott **startTime**.
+A **kezdő időpont** paraméter a múltbeli időpontra állítható be. Ebben az esetben az első végrehajtás úgy van ütemezve, hogy az indexelő a megadott **kezdő időpont**óta folyamatosan fusson.
 
-Az ütemezés használatával van definiálva a [IndexingSchedule](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) osztály. A **IndexingSchedule** konstruktor van szükség egy **időköz** használatával megadott paraméter egy **TimeSpan** objektum. A legkisebb időköz érték 5 perc, és a legnagyobb 24 óra. A második **startTime** paramétert, mint a megadott egy **DateTimeOffset** objektumazonosító, nem kötelező.
+Az ütemterv a [IndexingSchedule](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) osztály használatával van definiálva. A **IndexingSchedule** konstruktorhoz egy **TimeSpan** objektum használatával megadott **intervallum** -paraméter szükséges. A legkisebb megengedett érték 5 perc, a legnagyobb pedig 24 óra. A **DateTimeOffset** objektumként megadott második **kezdő időpont** paraméter nem kötelező.
 
-A .NET SDK használatával vezérlő indexelőműveletek teszi lehetővé a [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) osztály és annak [indexelők](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) tulajdonság, amely megvalósítja a metódusok a **IIndexersOperations**felületet. 
+A .NET SDK lehetővé teszi az indexelő műveletek vezérlését a [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) osztály és az [Indexelő](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) tulajdonság használatával, amely metódusokat valósít meg a **IIndexersOperations** felületéről. 
 
-Az indexelő segítségével bármikor futtathatja a [futtatása](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run), [RunAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync), vagy [RunWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) módszereket.
+Az indexelő igény szerint bármikor futtatható a [Run](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run), a [RunAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)vagy a [RunWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) metódusok egyikének használatával.
 
-Létrehozásával kapcsolatos további információkért frissítése, és futtatja az indexelők, lásd: [IIindexersOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet).
+Az indexelő létrehozásáról, frissítéséről és futtatásáról további információt a következő témakörben talál: [IIindexersOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet).

@@ -3,20 +3,20 @@ title: Projekt akusztika Azure Batch fiók beállítása
 titlesuffix: Azure Cognitive Services
 description: Ez a útmutató leírja, hogyan állítható be egy Azure Batch-fiók a Project akusztikai egység és az Unreal Engine integrációjának használatával.
 services: cognitive-services
-author: ashtat
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f11dfda62ebb53aba6254f2db4eace7c524141d4
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 8f0f726d9d23f20698d3510ad674331ad74fb703
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704885"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855083"
 ---
 # <a name="project-acoustics-azure-batch-account-setup"></a>Projekt akusztika Azure Batch fiók beállítása
 Ez a útmutató leírja, hogyan állítható be egy Azure Batch-fiók a Project akusztikai egység és az Unreal Engine integrációjának használatával.

@@ -1,77 +1,77 @@
 ---
-title: 'Besorolás: Hitelkockázatot (költség-és nagybetűket)'
+title: Besorolási Hitelkockázat (Cost szenzitív)
 titleSuffix: Azure Machine Learning service
-description: Ez a cikk bemutatja, hogyan hozhat létre olyan összetett gépi tanulási kísérlet eredménye a vizuális felhasználói felületén. Egyéni Python-szkriptek végrehajtása és a legjobb lehetőség kiválasztása a több modell összehasonlítására is mutatja.
+description: Ez a cikk bemutatja, hogyan hozhat létre egy összetett gépi tanulási kísérletet a vizualizációs felületen. Megtudhatja, hogyan implementálhat egyéni Python-parancsfájlokat, és hogyan hasonlíthat össze több modellt a legjobb lehetőség kiválasztásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: efed981b500ff14a66c2355a1d14bd762000622f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 942d6fa6db7ee2fc07fd11d3448ac7ec96c3bd43
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606165"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845978"
 ---
-# <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>4 – besorolási. példa: Hitelkockázatot (költség-és nagybetűket)
+# <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>4\. minta – besorolás: Hitelkockázat (Cost szenzitív)
 
-Ez a cikk bemutatja, hogyan hozhat létre olyan összetett gépi tanulási kísérlet eredménye a vizuális felhasználói felületén. Python-szkriptekkel egyéni logikát alkalmazzák, és a legjobb lehetőség kiválasztása a több modell összehasonlítására is mutatja.
+Ez a cikk bemutatja, hogyan hozhat létre egy összetett gépi tanulási kísérletet a vizualizációs felületen. Megismerheti, hogyan hozhat létre egyéni logikát Python-szkriptek használatával, és hogyan hasonlíthat össze több modellt a legjobb lehetőség kiválasztásához.
 
-Ez a minta betanítja a hitelkockázatot a kredit alkalmazással kapcsolatos adatok, például a kreditelőzmények életkor és a hitelkártya száma használatával besorolás. Ebben a cikkben, amelynek célja a saját machine learning problémák fogalmakat is alkalmazhat.
+Ez a példa egy osztályozó beosztásával Jósolja meg a hitelkockázat-használati adatokat, például a kreditek előzményeit, az életkort és a hitelkártyák számát. A cikkben szereplő fogalmakat azonban a saját gépi tanulási problémák megoldására is alkalmazhatja.
 
-Most csak ismerkedik a machine learninggel, ha akkor is vessen egy pillantást a [alapszintű osztályozó által igénybe vett minta](ui-sample-classification-predict-credit-risk-basic.md) első.
+Ha most ismerkedik a gépi tanulással, tekintse meg az alapszintű osztályozó [mintát](ui-sample-classification-predict-credit-risk-basic.md) .
 
-A befejezett graph ehhez a kísérlethez itt látható:
+Itt látható a kísérlethez tartozó befejezett gráf:
 
-[![A kísérlet diagram](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![A kísérlet gráfja](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Válassza ki a **nyílt** gomb a minta 4 kísérlet:
+4. Válassza a minta 4 kísérlet **Megnyitás** gombját:
 
-    ![Nyissa meg a kísérlet](media/ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
+    ![A kísérlet megnyitása](media/ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
 
 ## <a name="data"></a>Data
 
-A Németországi hitelkártya adatkészlet a UC Irvine adattárból használjuk. Ez az adatkészlet 20 funkciók és 1 címkével 1000 mintákat tartalmazza. Minden minta egy személyt jelöl. 20 szolgáltatásai közé tartozik a numerikus és a kategorikus funkciókat. Tekintse meg a [UCI webhely](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) az adatkészlet további információt. Az utolsó oszlop, a címke, amely azt jelzi, hogy a hitelkockázat kiszámításához, és csak két lehetséges értékek: magas hitelkockázat = 2, és alacsony hitelkockázat = 1.
+A németországi hitelkártya-adatkészletet az UC Irvine adattárból használjuk. Ez az adatkészlet 20 funkcióval és 1 címkével rendelkező 1 000-mintákat tartalmaz. Mindegyik minta egy személyt jelöl. A 20 funkció számszerű és kategorikus funkciókat tartalmaz. Az adatkészletről az [UCI webhelyén](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) talál további információt. Az utolsó oszlop a címkéje, amely a hitelkockázat kialakulását jelöli, és csak két lehetséges értékkel rendelkezik: magas hitelkockázati kockázat = 2, és alacsony hitelkockázat = 1.
 
-## <a name="experiment-summary"></a>Kísérlet összegzése
+## <a name="experiment-summary"></a>Kísérletezés összegzése
 
-Ez a kísérlet a probléma megoldásához modellek létrehozásának két különböző megközelítést összehasonlítva:
+Ebben a kísérletben két különböző megközelítést hasonlítunk össze a modellek létrehozásához a probléma megoldásához:
 
-- Képzés és az eredeti adathalmazból.
-- Az adatkészlet replikált képzést.
+- Képzés az eredeti adatkészlettel.
+- Betanítás replikált adatkészlettel.
 
-Mindkét módszer azt a modellek használatával tesztelési adathalmazon replikációs győződjön meg arról, hogy eredmények összhangban legyenek a költségek függvény kiértékelése. Mindkét módszerénél a két osztályozó teszteljük: **Kétosztályos támogató Vektorgép** és **Kétosztályos gyorsított döntési fa**.
+Mindkét megközelítéssel kiértékeljük a modelleket úgy, hogy a tesztelési adatkészletet használja a replikálással, így biztosítva, hogy az eredmények összhangban legyenek a Cost függvénnyel. Két, mindkét megközelítéssel rendelkező minősítőt tesztelünk: **Kétosztályos támogatású vektoros gép** és kétosztályos kibővített **döntési fa**.
 
-Egy magas, alacsony kockázatú példa misclassifying költségének értéke 1, és egy, alacsony kockázatú példa misclassifying költsége 5. Használjuk egy **Python-szkript végrehajtására** fiókra a helytelen osztályozásra költsége a modult.
+Az alacsony kockázatú példa magas szintű beosztályozásának díja 1, a magas kockázatú példa pedig alacsony érték esetén pedig az 5. Ezt a helytelen besorolási költségeket a **Python** -szkriptek futtatására szolgáló modul segítségével vesszük figyelembe.
 
-A grafikon a kísérlet a következő:
+Itt látható a kísérlet gráfja:
 
-[![A kísérlet diagram](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![A kísérlet gráfja](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="data-processing"></a>Adatfeldolgozás
 
-Módszertan használatával a **metaadat-szerkesztő** modul hozzáadása oszlopnevek el az alapértelmezett oszlopnevek kifejezőbb nevekkel, az adatkészlet leírása a UCI webhelyen szerzett. Az új oszlopnevek kínálunk, vesszővel tagolt értékek a **új oszlop** nevét tartalmazó mező a **metaadat-szerkesztő**.
+Először a **metaadat-szerkesztő** modullal kell megadnia az oszlopnevek hozzáadását, hogy az alapértelmezett OSZLOPNEVEK az UCI-helyen található adatkészlet leírásában szereplő, pontosabb nevekkel legyenek lecserélve. Az új oszlopnevek vesszővel tagolt értékként jelennek meg a **metaadat-szerkesztő** **új oszlop** neve mezőjében.
 
-Ezután azt létrehozni a képzés, és tesztelje a kockázati előrejelzési modell fejlesztéséhez használt. Osztottuk fel, az eredeti adathalmazból az azonos méretű betanítási és vizsgálati csoportokba használatával a **Split Data** modul. Egyenlő méretű csoportok létrehozásához, hogy állítsa a **az első kimeneti adatkészletnél a sorok** 0,5 lehetőséget.
+Ezután létrehozjuk a kockázati előrejelzési modell fejlesztéséhez használt képzési és tesztelési készleteket. Az eredeti adatkészletet az adatfelosztási modul használatával az azonos méretű betanítási és tesztelési csoportokra bontottuk. Az egyenlő méretű készletek létrehozásához az **első kimeneti** adatkészletben a sorok töredékét állítsa 0,5-ra.
 
-### <a name="generate-the-new-dataset"></a>Az új adatkészlet létrehozása
+### <a name="generate-the-new-dataset"></a>Az új adatkészlet előállítása
 
-Mivel a magas kockázati alábecslésének költségét, ehhez hasonló téves besorolás költsége beállított:
+Mivel a kockázatok kiszámításának díja magas, a következőhöz hasonló módon állíthatjuk be a téves besorolás költségeit:
 
-- Alacsony kockázatot misclassified magas kockázatú esetek: 5
-- Magas kockázatot misclassified alacsony kockázatú esetek: 1
+- Magas kockázatú esetekben az alacsony kockázatnak minősülő esetek: 5
+- Az alacsony kockázatú esetekben a nagy kockázatú esetek nem tartoznak ide: 1
 
-Költség függvény megfelelően, hogy egy új adatkészlet hozzon létre. Az új adatkészletre a rendszer replikálja az egyes magas kockázatú példa ötször, de alacsony kockázatú példák száma nem változik. Hogy az adatok felosztása tanítási és tesztelési adatkészleteket, így megakadályozhatja a ugyanabban a sorban a mindkét replikáció előtt.
+Ennek a Cost-funkciónak a tükrözéséhez új adatkészletet hozunkunk. Az új adatkészletben az egyes magas kockázatú példák öt alkalommal replikálódnak, de az alacsony kockázatú példák száma nem változik. A replikáció előtt az adatokat kiosztjuk a betanítási és tesztelési adatkészletekkel, hogy a sorok ne legyenek mindkét készletben.
 
-A magas kockázatú az adatok replikálása, tárgyaljuk, a Python-kód be egy **Python-szkript végrehajtására** modul:
+A magas kockázatú adatforrások replikálásához a Python-kódot egy **Execute Python parancsfájl** -modulba tesszük:
 
 ```Python
 import pandas as pd
@@ -85,42 +85,42 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     return result,
 ```
 
-A **Python-szkript végrehajtására** modul replikálja a képzés és a teszt adatkészletek.
+A **Python-szkript végrehajtása** modul a betanítási és tesztelési adatkészleteket is replikálja.
 
 ### <a name="feature-engineering"></a>Jellemzőkiemelés
 
-A **Kétosztályos támogató Vektorgép** algoritmus normalizált adatokra van szüksége. Ezért használjuk a **normalizálása adatok** modul optimalizálására a tartományokat az összes numerikus funkcióit egy `tanh` átalakításában. A `tanh` átalakítási összes numerikus szolgáltatás alakít számos 0 és 1 között szereplő értékek általános elosztásának megőrzése.
+A **kétosztályos támogatás vektoros gépi** algoritmusához Normalizált érték szükséges. Ezért a normalizálás adatmodul használatával normalizáljuk a numerikus funkciók tartományait egy `tanh` átalakítással. Az `tanh` átalakítások az összes numerikus funkciót egy 0 és 1 tartományon belül értékre alakítják, miközben megőrzik az értékek teljes eloszlását.
 
-A **Kétosztályos támogató Vektorgép** modul karakterlánc funkciók, a konvertálása 0 vagy 1 értékű kategorikus szolgáltatása és majd a bináris kezeli. Így nem szükséges optimalizálására ezeket a funkciókat.
+A **kétosztályos támogatású vektoros gépi** modul a karakterlánc-funkciókat kezeli, és a kategorikus funkciókra, majd a 0 vagy az 1 értékű bináris funkciókra konvertálja. Ezért nem kell normalizálni ezeket a funkciókat.
 
 ## <a name="models"></a>Modellek
 
-Mivel két osztályozó alkalmazunk **Kétosztályos támogató Vektorgép** (SVM) és **két osztályú súlyozott döntési fa**, és két adatkészletet is használhatja, hogy összesen négy modell létrehozásához:
+Mivel két osztályozást alkalmazunk, a kétosztályos **támogató vektoros gépet** (SVM) és a kétosztályos kibővített **döntési fát**, és két adatkészletet is használhatunk, összesen négy modellt hozunk elő:
 
-- Eredeti adatokhoz képzett SVM.
-- Képzett SVM replikált adatokat.
-- Gyorsított döntési fa eredeti adatokhoz képzett.
-- Gyorsított döntési fa képzett replikált adatokat.
+- A SVM az eredeti adattal van kiképezve.
+- A replikált SVM betanítva.
+- Megnövelt döntési fa, amely az eredeti adattal lett kiképezve.
+- A megerősített döntési fa replikált adattal van kiképezve.
 
-A standard szintű kísérleti munkafolyamat létrehozását, betanítását és a modell teszteléséhez használjuk:
+A modellek létrehozásához, betanításához és teszteléséhez a szabványos kísérleti munkafolyamatot használjuk:
 
-1. A tanulási algoritmusokat használ inicializálása **Kétosztályos támogató Vektorgép** és **két osztályú súlyozott döntési fa**.
-1. Használat **tanítási modell** a alkalmazni az algoritmus az adatokat, és a tényleges modell létrehozása.
-1. Használat **Score Model** pontszámok előállításához a tesztelési példák segítségével.
+1. Inicializálja a tanulási algoritmusokat a **kétosztályos támogatású vektoros gép** és a kétosztályos kibővített **döntési fa**használatával.
+1. A **Train Model** használatával alkalmazza az algoritmust az adatokra, és hozza létre a tényleges modellt.
+1. A **pontszám modell** használatával pontszámokat hozhat létre a tesztelési példák alapján.
 
-Az alábbi ábrán látható egy részét, amelyben az eredeti és replikált képzési csoportok segítségével két különböző SVM modelleket taníthat be ehhez a kísérlethez. **Modell betanításához** a gyakorlókészlethez csatlakozik és **Score Model** csatlakoztatva van a vizsgálat beállítása.
+Az alábbi ábrán a kísérlet egy része látható, amelyben az eredeti és a replikált betanítási készletek két különböző SVM-modell betanítására szolgálnak. A betanítási **modell** a betanítási készlethez csatlakozik, és a **pontszám modell** a tesztelési készlethez van csatlakoztatva.
 
-![Kísérlet diagram](media/ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
+![Kísérleti gráf](media/ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
 
-A kiértékelés fázisban a kísérlet azt a számítási négy a modell pontosságát. Ehhez a kísérlethez használjuk **Evaluate Model** költség összehasonlítására példa, amelyek az ugyanazon téves besorolás rendelkezik.
+A kísérlet kiértékelési szakaszában a négy modell pontosságát számítjuk ki. Ebben a kísérletben a kiértékelési **modell** segítségével hasonlítjuk össze azokat a példákat, amelyeknek azonos a téves besorolási díja.
 
-A **Evaluate Model** modul képes a számítási teljesítmény-mérőszámait akár két pontozott modellek esetén. Ezért használjuk egy példánya **Evaluate Model** értékelheti ki a két SVM modell és a egy másik példánya **Evaluate Model** a két súlyozott döntési fa modelleket szeretne értékelni.
+A **modell** kiértékelése modul a teljesítmény mérőszámait akár két gólt is kiszámíthatja. Ezért a **modell** kiértékelésének egyik példányát használjuk a két SVM-modell kiértékelésére és a **modell** egy másik példányára, hogy kiértékelje a két Kiemelt döntési fa modelljét.
 
-Figyelje meg, hogy a replikált tesztadatkészlet használja-e a bemeneti **Score Model**. Más szóval a végső pontossága pontszámok kapcsolódnak a nem megfelelő címkéket magukba.
+Figyelje meg, hogy a rendszer a replikált tesztelési adatkészletet használja a **pontszám modell**bemenetként. Más szóval a végső pontossági pontszámok tartalmazzák a címkék hibás beolvasásának költségeit.
 
-## <a name="combine-multiple-results"></a>Több eredmények összevonása
+## <a name="combine-multiple-results"></a>Több eredmény egyesítése
 
-A **Evaluate Model** modul egyetlen sor, amely tartalmazza a különböző mérőszámokat tartalmazó táblát hoz létre. Az eredmények pontosságának egyetlen készlet létrehozásához, először használjuk **sorok hozzáadása** úgy, hogy az eredmények ezeket egyetlen táblában. Használjuk majd a következő Python-szkriptet a **Python-szkript végrehajtására** az eredmények táblázatát adja meg a modell neve és a képzési megközelítés minden egyes sorára modult:
+A **modell** kiértékelése modul olyan táblázatot hoz létre, amely egy sor különböző metrikákat tartalmaz. A pontossági eredmények egyetlen készletének létrehozásához először a **sorok hozzáadása** lehetőséget használjuk az eredmények egyetlen táblába való összevonásához. Ezután az alábbi Python-szkriptet használjuk a **Python szkript végrehajtása** modulban a modell nevének és a betanítási módszernek a táblázat minden egyes sorához való hozzáadásához:
 
 ```Python
 import pandas as pd
@@ -142,15 +142,15 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 ## <a name="results"></a>Results (Eredmények)
 
-A kísérlet az eredmények megtekintéséhez, jobb gombbal az utolsó Visualize kimenete **Select Columns in Dataset** modul.
+A kísérlet eredményeinek megtekintéséhez kattintson a jobb gombbal az adatkészlet modul utolsó **Select oszlopának** vizualizáció kimenetére.
 
-![Kimenet vizualizációja](media/ui-sample-classification-predict-credit-risk-cost-sensitive/result.png)
+![Kimenet megjelenítése](media/ui-sample-classification-predict-credit-risk-cost-sensitive/result.png)
 
-Az első oszlop a gépi tanulási algoritmus a modell generálásához használt sorolja fel.
-A második oszlop a gyakorlókészlethez típusát jelzi.
-A harmadik oszlop a költségérzékeny pontossága értéket tartalmaz.
+Az első oszlop felsorolja a modell létrehozásához használt gépi tanulási algoritmust.
+A második oszlop a betanítási készlet típusát jelöli.
+A harmadik oszlop a költséghatékony pontossági értéket tartalmazza.
 
-Ezekkel az eredményekkel, láthatja, hogy a modell, amellyel létrehozták a legpontosabb adott **Kétosztályos támogató Vektorgép** és a replikált betanítási adatkészletet a betanított.
+Ezekből az eredményekből láthatja, hogy a legjobb pontosságot a kétosztályos **támogatású vektoros géppel** létrehozott modell adta meg, és a replikált betanítási adatkészletre van kiképezve.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -158,10 +158,10 @@ Ezekkel az eredményekkel, láthatja, hogy a modell, amellyel létrehozták a le
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg a vizuális felületen érhető el a más minták:
+Ismerje meg a vizuális felületen elérhető egyéb mintákat:
 
-- [1 – regressziós. példa: Egy autó árát előrejelzése](ui-sample-regression-predict-automobile-price-basic.md)
-- [2 – regressziós. példa: Hasonlítsa össze az autó árának előrejelzése algoritmusok](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-- [Mintául szolgáló 3 - besorolás: Hitelkockázat előrejelzése](ui-sample-classification-predict-credit-risk-basic.md)
-- [5 – besorolási. példa: Forgalom előrejelzése](ui-sample-classification-predict-churn.md)
-- [6 – besorolási. példa: A járatok késésének előrejelzése](ui-sample-classification-predict-flight-delay.md)
+- [1. példa – regresszió: Autó árának előrejelzése](ui-sample-regression-predict-automobile-price-basic.md)
+- [2. minta – regresszió: Algoritmusok összehasonlítása az autó árának előrejelzéséhez](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+- [3. példa – besorolás: Hitelkockázat előrejelzése](ui-sample-classification-predict-credit-risk-basic.md)
+- [5. példa – besorolás: Forgalom előrejelzése](ui-sample-classification-predict-churn.md)
+- [6. példa – besorolás: Repülési késések előrejelzése](ui-sample-classification-predict-flight-delay.md)

@@ -1,128 +1,128 @@
 ---
-title: 'Besorolás: Repülőjáratok késéseinek előrejelzése'
+title: Besorolási Repülőjáratok késéseinek előrejelzése
 titleSuffix: Azure Machine Learning service
-description: Ez a cikk bemutatja, hogyan hozhat létre a machine learning-modell előre jelezni a járatok késésének a vizuális fogd és vidd felület és az egyéni R-kód használatával.
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy gépi tanulási modellt a repülési késések előrejelzésére a fogd és vidd vizualizáció felület és az egyéni R-kód használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 07/02/2019
-ms.openlocfilehash: 773e55fe4b5ca5acf27ba1765e5a16075f625187
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f2ef5fd17d6c6a91fa5f3c5d62700b68c5fbca24
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607636"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855963"
 ---
-# <a name="sample-6---classification-predict-flight-delays-using-r"></a>6 – besorolási. példa: Az R használata a járatok késésének előrejelzése
+# <a name="sample-6---classification-predict-flight-delays-using-r"></a>6\. példa – besorolás: Repülési késések előrejelzése R használatával
 
-Ezzel a kísérlettel előre jelezni, ha repülőjáratok késni fog több mint 15 perces korábbi repülési és időjárási adatait használja.
+Ez a kísérlet a korábbi repülési és időjárási adatszolgáltatásokat használja annak előrejelzésére, hogy egy ütemezett utasszállító járat 15 percnél hosszabb ideig késleltetve lesz-e.
 
-Ez a probléma is megközelíthető, osztályozási probléma, előrejelzésére két osztály – késleltetett, vagy időben. A besorolás, ez a modell példákat a korábbi repülőjáratok adatainak nagy számú használatával hozhat létre.
+Ez a probléma besorolási problémaként is megközelíthető, két osztály előrejelzése – késleltetett vagy időben. Osztályozó létrehozásához a modell nagy számú példát használ a történelmi repülési adatokból.
 
-Az elkészült kísérletnek a következőképpen graph itt látható:
+Itt látható a végső kísérleti gráf:
 
-[![A kísérlet diagram](media/ui-sample-classification-predict-flight-delay/experiment-graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![A kísérlet gráfja](media/ui-sample-classification-predict-flight-delay/experiment-graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Válassza ki a **nyílt** gomb a minta 6 kísérlet:
+4. Válassza a 6. minta kísérlet **Megnyitás** gombját:
 
-    ![Nyissa meg a kísérlet](media/ui-sample-classification-predict-flight-delay/open-sample6.png)
+    ![A kísérlet megnyitása](media/ui-sample-classification-predict-flight-delay/open-sample6.png)
 
 ## <a name="get-the-data"></a>Az adatok lekérése
 
-Ez kísérletezhet, használja a **repülőjáratok késések adatainak** adatkészlet. Az Egyesült Államok TranStats adatgyűjtést része Minisztériumának. Az adatkészlet repülési késleltetés információkat tartalmaz az április 2013. októberi. Az adatok feltöltése a vizuális felhasználói felületet, mielőtt azt előkészítette a következő:
+Ez a kísérlet a **repülési késések** adatkészletét használja. Az Egyesült államokbeli TranStats-adatgyűjtés részét képezi. Közlekedési Minisztérium. Az adatkészlet az áprilistól október 2013-ig terjedő repülési késleltetési adatokat tartalmaz. Mielőtt feltölti az adattárat a vizualizációs felületre, az a következőképpen lett feldolgozva:
 
-* Szűrt 70 legforgalmasabb repülőterek Egyesült Államok kontinentális területén tároljuk.
-* A járatok relabeled késnek-e több mint 15 perc, megszakadt.
-* Kiszűrte forgalomelterelés repülőjáratok.
-* A kijelölt 14 oszlopok.
+* Szűrve, hogy tartalmazza a 70 legforgalmasabb repülőteret a kontinentális Egyesült Államok.
+* A megszakított járatok esetében több mint 15 perc késleltetéssel lett ellátva.
+* Kiszűrt fordított járatok.
+* Kiválasztott 14 oszlop.
 
-A flight data, kiegészítve a **időjárási adatkészlet** szolgál. Az időjárási adatok óránkénti szárazföldi időjárási megfigyelések a NOAA tartalmaz, és repülőtér időjárási állomások kiterjedő azonos 2013. április október időtartammal a megfigyelések jelöli. Mielőtt feltöltené az Azure ML vizuális felhasználói felületet, hogy előkészítette a következő:
+A repülési adatokat a rendszer az **időjárási adatkészlet** használatával egészíti ki. Az időjárási adatok a NOAA-től származó, óránkénti, szárazföldön alapuló időjárási megfigyeléseket tartalmaznak, és a repülőtéri meteorológiai állomások észrevételeit jelölik, amelyek a 2013. április 1-jétől érvényes időszakra vonatkoznak. Az Azure ML vizualizációs kezelőfelületre való feltöltés előtt a következő módon lett feldolgozva:
 
-* Megfelelő repülőtér azonosítók időjárásjelző azonosítók hozzá lettek rendelve.
-* Időjárás-állomások 70 legforgalmasabb repülőterek hozzá nem rendelt el lettek távolítva.
-* A dátum oszlop lett felosztva külön oszlopban: Év, hónap és nap.
-* A kijelölt 26 oszlopok.
+* A meteorológiai állomás azonosítói a megfelelő repülőtéri azonosítóra vannak leképezve.
+* Az 70-es legforgalmasabb repülőtérhez nem társított meteorológiai állomások el lettek távolítva.
+* A Date oszlop különálló oszlopokra van bontva: Év, hónap és nap.
+* Kiválasztott 26 oszlop.
 
-## <a name="pre-process-the-data"></a>Az adatok előzetes feldolgozása
+## <a name="pre-process-the-data"></a>Az adatfeldolgozás előkezelése
 
-Egy adatkészlet általában néhány előre feldolgozását, mielőtt azok elemezhetők igényel.
+Az adatkészletek általában valamilyen előzetes feldolgozást igényelnek, mielőtt elemezni lehetne őket.
 
-![adat-folyamata](media/ui-sample-classification-predict-flight-delay/data-process.png)
+![adatfeldolgozás](media/ui-sample-classification-predict-flight-delay/data-process.png)
 
-### <a name="flight-data"></a>Repülőjáratok adatainak
+### <a name="flight-data"></a>Repülési adatcsatorna
 
-Az oszlopok **szolgáltatója**, **OriginAirportID**, és **DestAirportID** lesznek mentve az egész számok. Azonban azok kategorikus attribútumok, használja a **metaadatainak szerkesztése** történő váltás kategorikus modul.
+A **Carrier**, a **OriginAirportID**és a **DestAirportID** oszlopok egész számként lesznek mentve. Azonban kategorikus attribútumok, a **metaadatok szerkesztése** modullal alakítsa át azokat a kategorikusba.
 
-![edit-metadata](media/ui-sample-classification-predict-flight-delay/edit-metadata.png)
+![metaadatok szerkesztése](media/ui-sample-classification-predict-flight-delay/edit-metadata.png)
 
-Ezután a **Select Columns** adatkészlet modul lehetséges cél leakers az adatkészlet oszlopok kizárása: **DepDelay**, **DepDel15**, **ArrDelay**, **meg lett szakítva**, **év**. 
+Ezután az adatkészlet **kijelölése oszlopban válassza** ki az adatkészletek oszlopait, amelyekkel lehetséges a szivárgások célja: **DepDelay**, **DepDel15**, **ArrDelay**,megszakítva, **év**. 
 
-Csatlakozzon a flight rekordok óránkénti időjárási rekordjait, használja az ütemezett indulási idő, az illesztési kulcsok egyikét. A csatlakozás ehhez a CSRDepTime oszlop kell kerekíti a legközelebbi órára, amely a végzi el a **R-szkript végrehajtása** modul. 
+Ha a repülési rekordokat az óránkénti időjárási adatokkal szeretné csatlakoztatni, használja az ütemezett indulási időt az illesztési kulcsok egyikének megfelelően. Az illesztés végrehajtásához a CSRDepTime oszlopot a legközelebbi órára kell kerekíteni, amelyet az **R-parancsfájl végrehajtása modul hajt** végre. 
 
-### <a name="weather-data"></a>Időjárási adatok
+### <a name="weather-data"></a>Időjárási adatszolgáltatások
 
-Hiányzó értékek nagy részét rendelkező oszlopok ki legyenek zárva, használja a **Projektoszlopok** modul. Ezekben az oszlopokban összes karakterláncos oszlopokat tartalmazza: **ValueForWindCharacter**, **WetBulbFarenheit**, **WetBulbCelsius**, **PressureTendency**, **PressureChange**, **SeaLevelPressure**, és **StationPressure**.
+A hiányzó értékek nagy hányadát tartalmazó oszlopok ki vannak zárva a **Project Columns** modul használatával. Ezek az oszlopok az összes karakterlánc értékű oszlopot tartalmazzák: **ValueForWindCharacter**, **WetBulbFarenheit**, **WetBulbCelsius**, **PressureTendency**, **PressureChange**, **SeaLevelPressure**és **StationPressure**.
 
-A **Clean Missing Data** modul tüntetjük fel a többi oszlopot eltávolítja a hiányzó sorokat.
+Ekkor a rendszer a hiányzó oszlopokra alkalmazza a **tiszta hiányzó** adatmodult, hogy eltávolítsa a hiányzó adatsorokat.
 
-Időjárási megfigyelési többször vannak kerekítve a legközelebbi teljes órára. Járatok ideje és az időjárási megfigyelési időpontok annak érdekében, hogy a modell csak időjárási használ a flight időpont előtt ellentétes irányú kerekíti. 
+Az időjárási megfigyelési idők a legközelebbi teljes órára vannak kerekítve. Az ütemezett repülési időpontok és az időjárási megfigyelések időpontját az ellenkező irányba kerekítjük, így biztosítva, hogy a modell csak a repülési idő előtti időjárási időt használja. 
 
-Mivel az időjárási adatok, jelentett helyi idő időzóna különbségek számolják el az ütemezett indulási idő és az időjárási megfigyelési idő időzóna oszlopai kivonásával történik. Ezeket a műveleteket hajthatja végre használatával a **R-szkript végrehajtása** modul.
+Mivel az időjárási adatok helyi időben kerülnek jelentésre, az időzóna-különbségek az ütemezett indulási idő és az időjárási megfigyelési idő kivonásával vannak elszámolva. Ezek a műveletek az **R szkript végrehajtása** modul használatával hajthatók végre.
 
-### <a name="joining-datasets"></a>Az adatkészletek csatlakoztatása
+### <a name="joining-datasets"></a>Adatkészletek csatlakoztatása
 
-Repülési rekordok csatlakoznak az időjárási adatok származási félóránként rögzíti helyen (**OriginAirportID**) használatával a **csatlakozzon adatok** modul.
+A repülési rekordok a beléptetési **adatok** modul használatával a Flight (**OriginAirportID**) által használt időjárási adatokkal vannak csatlakoztatva.
 
- ![Csatlakoztassa a flight és időjárási származási hely](media/ui-sample-classification-predict-flight-delay/join-origin.png)
+ ![Csatlakozás a repüléshez és az időjáráshoz forrás szerint](media/ui-sample-classification-predict-flight-delay/join-origin.png)
 
 
-Időjárási adatok és a flight segítségével a csatlakoztatott repülési rekordok (**DestAirportID**).
+A repülési rekordok időjárási adatokkal vannak összekapcsolva a repülési cél (**DestAirportID**) használatával.
 
- ![Csatlakozzon a flight és weather cél szerint](media/ui-sample-classification-predict-flight-delay/join-destination.png)
+ ![Csatlakozás a repüléshez és az időjáráshoz célhoz](media/ui-sample-classification-predict-flight-delay/join-destination.png)
 
-### <a name="preparing-training-and-test-samples"></a>Betanítási és vizsgálati minták előkészítése
+### <a name="preparing-training-and-test-samples"></a>Képzések és tesztelési minták előkészítése
 
-A **Split Data** modul bontja az április adatokat képzéshez szeptember rekordok, és október tesztelési rögzíti.
+Az **adatok felosztása** modul a betanítási és a tesztelési feladatokra vonatkozó októberi rekordokra osztja fel az adatokat.
 
- ![Felosztása a betanítási és vizsgálati adatok](media/ui-sample-classification-predict-flight-delay/split.png)
+ ![A képzési és tesztelési célú megosztások](media/ui-sample-classification-predict-flight-delay/split.png)
 
-Év, hónap és időzóna-oszlopok a betanítási adatkészletet az oszlopok kiválasztása modullal törlődnek.
+Az év, hónap és timezone oszlop törlődik a betanítási adatkészletből az Oszlopok kiválasztása modul használatával.
 
-## <a name="define-features"></a>A jellemzők meghatározása
+## <a name="define-features"></a>Funkciók definiálása
 
-A Machine learning a szolgáltatások olyan egyéni mérhető tulajdonságok, érdekli. Rengeteg funkciók megkeresése Kísérletezési és a tartomány ismeretek szükségesek. Bizonyos jellemzők ugyanis hasznosabbak a cél előrejelzéséhez, mint mások. Néhány funkció is, előfordulhat, hogy az egyéb szolgáltatásokkal erős korreláció, és nem fog új információk hozzáadása a modellhez. Ezek a funkciók távolíthatja el.
+A gépi tanulásban a funkciók a érdeklik egyes, mérhető tulajdonságai. Erős funkciók megkeresése kísérletezést és tartományi ismereteket igényel. Bizonyos jellemzők ugyanis hasznosabbak a cél előrejelzéséhez, mint mások. Emellett előfordulhat, hogy egyes funkciók erős korrelációt mutatnak más funkciókkal, és nem vesznek fel új adatokat a modellbe. Ezek a funkciók eltávolíthatók.
 
-A modell létrehozása minden funkcióját használja, vagy válassza ki a funkciók egy részét.
+Modell létrehozásához használhatja az összes elérhető funkciót, vagy kiválaszthatja a szolgáltatások egy részhalmazát.
 
-## <a name="choose-and-apply-a-learning-algorithm"></a>A tanulási algoritmus kiválasztása és alkalmazása
+## <a name="choose-and-apply-a-learning-algorithm"></a>Tanulási algoritmus kiválasztása és alkalmazása
 
-Hozzon létre egy modellt a **Two-Class logisztikai regressziós** modul, és azt a betanítási adatkészletet. 
+Hozzon létre egy modellt a kétosztályos logisztikai regressziós modullal, és tanítsa be azt a betanítási adatkészleten. 
 
-Eredményét a **tanítási modell** modul egy betanított osztályozási modell használható pontszámot rendelni az új mintát, hogy előrejelzéseket végezzen. A pontszámok generálhatnak a betanított modellek beállítása teszt használja. Ezután a **Evaluate Model** modul elemzéséhez, és hasonlítsa össze a modell minőségét.
+A betanítási **modell** modul eredménye egy betanított besorolási modell, amely az előrejelzések készítéséhez használható új minták kiértékelésére. A test (teszt) beállítással pontokat hozhat létre a betanított modellből. Ezután használja a **modell** kiértékelése modult a modellek minőségének elemzéséhez és összehasonlításához.
 
-Után futtassa a kísérletet, megtekintheti a kimenete a **Score Model** modult. Ehhez kattintson a kimeneti portra, majd válasszon **Visualize**. A kimenet tartalmazza a pontozott címkék és a feliratok a valószínűségek.
+A kísérlet futtatása után megtekintheti a **pontszám modell** modul kimenetét. ehhez kattintson a kimeneti portra, és válassza a **Megjelenítés**lehetőséget. A kimenet tartalmazza a pontszámmal ellátható címkéket és a címkék valószínűségét.
 
-Végül az eredmények minőségének ellenőrzéséhez adja hozzá a **Evaluate Model** modult a kísérletvászonra vászonra, és csatlakozzon a bal oldali bemeneti portját a Score Model-modul kimenete. A kísérlet futtatásához és megtekintéséhez a **Evaluate Model** modult, kattintson a kimeneti portra, majd válasszon **Visualize**.
+Végül az eredmények minőségének teszteléséhez adja hozzá a **modell** kiértékelése modult a kísérlet vászonhoz, és a bal oldali bemeneti portot a pontszám modell modul kimenetéhez kapcsolja. Futtassa a kísérletet, és tekintse meg a **modell** kiértékelése modul kimenetét a kimeneti portra kattintva, és válassza a **Megjelenítés**lehetőséget.
 
 ## <a name="evaluate"></a>Értékelés
-A logisztikai regressziós modellt állítsa be a teszteléshez használt 0.631 AUC rendelkezik.
+A logisztikai regressziós modell 0,631 AUC rendelkezik a tesztelési készleten.
 
  ![értékelés](media/ui-sample-classification-predict-flight-delay/evaluate.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg a vizuális felületen érhető el a más minták:
+Ismerje meg a vizuális felületen elérhető egyéb mintákat:
 
-- [1 – regressziós. példa: Egy autó árát előrejelzése](ui-sample-regression-predict-automobile-price-basic.md)
-- [2 – regressziós. példa: Hasonlítsa össze az autó árának előrejelzése algoritmusok](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-- [Mintául szolgáló 3 - besorolás: Hitelkockázat előrejelzése](ui-sample-classification-predict-credit-risk-basic.md)
-- [4 – besorolási. példa: Hitelkockázatot (költség-és nagybetűket)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-- [5 – besorolási. példa: Forgalom előrejelzése](ui-sample-classification-predict-churn.md)
+- [1. példa – regresszió: Autó árának előrejelzése](ui-sample-regression-predict-automobile-price-basic.md)
+- [2. minta – regresszió: Algoritmusok összehasonlítása az autó árának előrejelzéséhez](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+- [3. példa – besorolás: Hitelkockázat előrejelzése](ui-sample-classification-predict-credit-risk-basic.md)
+- [4. minta – besorolás: Hitelkockázat (Cost szenzitív)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [5. példa – besorolás: Forgalom előrejelzése](ui-sample-classification-predict-churn.md)
