@@ -3,20 +3,20 @@ title: Projekt akusztikai egységének tervezési oktatóanyaga
 titlesuffix: Azure Cognitive Services
 description: Ez az oktatóanyag a Project Acoustics in Unity tervezési munkafolyamatát ismerteti.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f9ff4225e7e855ed666d3554631015b8ce51df37
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: fd00e4105ce4edae9d014df2a83c5ae3aaf778da
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706588"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854264"
 ---
 # <a name="project-acoustics-unity-design-tutorial"></a>Projekt akusztikai egységének tervezési oktatóanyaga
 Ez az oktatóanyag ismerteti a projekt akusztikai eszközeinek tervezési eszközeit és munkafolyamatát az Unity-ben.

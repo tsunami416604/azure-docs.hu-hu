@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/25/2019
 ms.author: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3d9f96f0b61129a0f881c8fe8676bd5df7376ad
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 946eb0343c2858e275e40b7a581fd48e1713accd
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494582"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853516"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Hitelesítési folyamatok és alkalmazási helyzetek
 
@@ -185,7 +185,7 @@ A jogkivonatok beszerzését érintő forgatókönyvek a [Microsoft Identity pla
 
 ## <a name="scenarios-and-supported-platforms-and-languages"></a>Forgatókönyvek és támogatott platformok és nyelvek
 
-Nem minden alkalmazás-típus érhető el minden platformon. Az alkalmazások létrehozásához különböző nyelveket is használhat. A Microsoft hitelesítési könyvtárai számos platformot  támogatnak (JavaScript, .NET-keretrendszer, .net Core, Windows 10/UWP, Xamarin. iOS, Xamarin. Android, natív iOS, natív Android, Java, Python)
+Nem minden alkalmazás-típus érhető el minden platformon. Az alkalmazások létrehozásához különböző nyelveket is használhat. A Microsoft hitelesítési könyvtárai számos platformot támogatnak (JavaScript, .NET-keretrendszer, .net Core, Windows 10/UWP, Xamarin. iOS, Xamarin. Android, natív iOS, natív Android, Java, Python)
 
 |Forgatókönyv  | Windows | Linux | Mac | iOS | Android
 |--|--|--|--|--|--|--|

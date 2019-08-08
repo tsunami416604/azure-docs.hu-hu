@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory B2C közösségi identitású felhasználók áttelepítése |} A Microsoft Docs
-description: Alapfogalmakat tárgyalja a közösségi identitású felhasználók Azure AD B2C-be Graph API-val, az áttelepítés.
+title: A felhasználók áttelepíthetők a közösségi identitásokkal a Azure Active Directory B2Cban | Microsoft Docs
+description: A közösségi identitásokkal rendelkező felhasználók áttelepítésével kapcsolatos főbb fogalmakat a Graph API használatával tárgyalhatja Azure AD B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,30 +10,31 @@ ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bca802bb0099b0d854d752db8341dfe74031ef3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 0117a0881422584e3cb949661b1d58cd0257cf67
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508028"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853865"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Felhasználók migrálása közösségi identitásokkal
-Ha azt tervezi, az identitásszolgáltató migrálása az Azure AD B2C-vel, szükség lehet a közösségi identitású felhasználók áttelepítése. Ez a cikk azt ismerteti, hogyan telepítheti át meglévő közösségi identitások fiókokat, például: Facebook, a LinkedIn, a Microsoft és a Google fiókok Azure AD B2C-t. Ez a cikk az összevont identitások kialakítása, is vonatkozik, azonban ezek áttelepítések kevésbé gyakoriak.
+Ha azt tervezi, hogy Azure AD B2Cra telepíti át az identitás-szolgáltatót, akkor a felhasználókat a közösségi identitásokkal is át kell telepítenie. Ez a cikk a meglévő közösségi identitások fiókjainak áttelepítését ismerteti, például: Facebook-, LinkedIn-, Microsoft-és Google-fiókok Azure AD B2C. Ez a cikk az összevont identitásokra is vonatkozik, azonban ezek a Migrálás kevésbé gyakoriak. A cikk további részében vegye figyelembe, hogy a közösségi fiókokra vonatkozó egyéb típusú összevont fiókok esetében is érvényesek.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk a felhasználó áttelepítési cikk folytatása, és közösségi áttelepítési összpontosít. Mielőtt elkezdené, olvassa el a [felhasználóáttelepítés](active-directory-b2c-user-migration.md).
+Ez a cikk a felhasználói áttelepítési cikk folytatása, és a közösségi identitások áttelepítésére koncentrál. Mielőtt elkezdené, olvassa el a [felhasználó](active-directory-b2c-user-migration.md)áttelepítését.
 
-## <a name="social-identities-migration-introduction"></a>Közösségi identitások áttelepítési bemutatása
+## <a name="social-identities-migration-introduction"></a>A közösségi identitások áttelepítésének bemutatása
 
-* Az Azure AD B2C- **helyi fiókok** bejelentkezési nevét (felhasználói név vagy e-mail cím) vannak tárolva a `signInNames` a felhasználói rekord gyűjteményhez. A `signInNames` tartalmaz egy vagy több `signInName` rekordokat, amelyek adja meg a felhasználó bejelentkezési nevét. Minden bejelentkezési nevének egyedinek kell lennie a bérlőket.
+* Azure ad B2C a **helyi fiókok** bejelentkezési nevei (Felhasználónév vagy e-mail-cím) a `signInNames` gyűjteményben tárolódnak a felhasználói rekordban. A `signInNames` egy vagy több `signInName` olyan rekordot tartalmaz, amely megadja a felhasználó bejelentkezési nevét. Minden bejelentkezési névnek egyedinek kell lennie a bérlőn belül.
 
-* **Közösségi fiókok** identitások tárolt `userIdentities` gyűjtemény. A bejegyzés határozza meg a `issuer` (identitásszolgáltató neve) például Facebook.com weboldalt, és a `issuerUserId`, amely az a kibocsátó egyedi felhasználói azonosító. A `userIdentities` attribútum egy vagy több UserIdentity olyan rekordokat tartalmaz, adja meg a közösségi fiók típusát és a közösségi identitásszolgáltatótól egyedi felhasználói azonosítót.
+* A **közösségi fiókok** identitásait a `userIdentities` gyűjtemény tárolja. A bejegyzés megadja az `issuer` (identitás-szolgáltató nevét), például a Facebook.com `issuerUserId`és a, amely a kiállító egyedi felhasználói azonosítója. Az `userIdentities` attribútum egy vagy több UserIdentity-rekordot tartalmaz, amelyek meghatározzák a közösségi fiók típusát és a közösségi identitás-szolgáltató egyedi felhasználói azonosítóját.
 
-* **Helyi fiók kombinálva közösségi**. Ahogy említettük, a helyi fiók bejelentkezési nevét és a közösségi fiók identitások tárolódnak különböző attribútumokat. `signInNames` a helyi fiókot használt, miközben `userIdentities` közösségi fiók. Egyetlen Azure AD B2C-fiókot, csak a helyi fiók, a közösségi fiók csak, vagy helyi fiók kombinálhatja a közösségi identitású egy felhasználórekordban tárolja. Ez a viselkedés lehetővé teszi, hogy egyetlen fiókban, kezelheti, amíg egy felhasználó jelentkezhet be a helyi fiók credential(s) vagy a közösségi identitású.
+* **Helyi fiók kombinálása a közösségi identitással**. Ahogy említettük, a helyi fiók bejelentkezési neve és a közösségi fiók identitásai különböző attribútumokban vannak tárolva. `signInNames`helyi fiók esetén használatos, míg `userIdentities` a közösségi fiókok esetében használatos. Egyetlen Azure AD B2C fiók csak helyi fiók lehet, csak közösségi fiók, vagy helyi fiók kombinálása egy vagy több közösségi identitással egy felhasználói rekordban. Ez a viselkedés lehetővé teszi egyetlen fiók kezelését, míg a felhasználó bejelentkezhet a helyi fiók hitelesítő adataival vagy a közösségi identitásokkal.
 
-* `UserIdentity` Írja be – a közösségi fiók felhasználó az Azure AD B2C-bérlő identitását információt tartalmaz:
-  * `issuer` Az identitásszolgáltató a felhasználói azonosító, például Facebook.com weboldalt kiadó karakteres formáját.
-  * `issuerUserId` Base64 formátumban a közösségi identitásszolgáltató által használt egyedi felhasználói azonosító.
+* `UserIdentity`Type (típus) – a közösségi fiók felhasználójának identitásával kapcsolatos információkat tartalmaz egy Azure AD B2C bérlőben:
+  * `issuer`A felhasználói azonosítót kiállító identitás-szolgáltató karakterlánc-ábrázolása, például facebook.com.
+  * `issuerUserId`A közösségi identitás-szolgáltató által Base64 kódolású formátumban használt egyedi felhasználói azonosító.
 
     ```JSON
     "userIdentities": [{
@@ -43,35 +44,35 @@ Ez a cikk a felhasználó áttelepítési cikk folytatása, és közösségi át
     ]
     ```
 
-* Az identitásszolgáltató függően a **közösségi Felhasználóazonosító** egyedi érték alkalmazást vagy fejlesztői fiókonként az adott felhasználó számára. A közösségi hálózati szolgáltató által korábban hozzárendelt ugyanazon Alkalmazásazonosítóval konfigurálhatja az Azure AD B2C-szabályzathoz. Vagy egy adott fejlesztői fiókban egy másik alkalmazás.
+* Az identitás-szolgáltatótól függően a **kiállító felhasználói azonosító** egyedi érték egy adott felhasználó számára alkalmazás-vagy fejlesztői fiókban. Konfigurálja a Azure AD B2C szabályzatot ugyanazzal az alkalmazás-AZONOSÍTÓval, amelyet korábban a közösségi szolgáltató vagy egy másik alkalmazás rendelt hozzá ugyanazon a fejlesztési fiókon belül.
 
-## <a name="use-graph-api-to-migrate-users"></a>Felhasználók migrálása a Graph API használatával
-Az Azure AD B2C felhasználói fiók használatával létrehozott [Graph API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet). A Graph API-val folytatott kommunikációhoz, először kell rendelkeznie a szolgáltatás-rendszergazdai jogosultsággal rendelkező fiókot. Az Azure AD-ben regisztrál egy alkalmazás és az Azure AD-hitelesítés. Az alkalmazás hitelesítő adatok olyan Alkalmazásazonosítót és az alkalmazás titkos. Az alkalmazás maga nem felhasználóként, a Graph API meghívása funkcionál. Kövesse az utasításokat az 1. lépésben [felhasználóáttelepítés](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-user-migration) cikk.
+## <a name="use-graph-api-to-migrate-users"></a>Felhasználók migrálása Graph API használatával
+A Azure AD B2C felhasználói fiókot a [Graph API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet)használatával hozza létre. A Graph APIával folytatott kommunikációhoz először rendszergazdai jogosultságokkal rendelkező szolgáltatásfiók szükséges. Az Azure AD-ben regisztrálni kell egy alkalmazást és hitelesítést az Azure AD-ben. Az alkalmazás hitelesítő adatai az alkalmazás azonosítója és az alkalmazás titkos kulcsa. Az alkalmazás önmagát, nem pedig felhasználóként működik a Graph API meghívásához. Kövesse az 1. lépésben szereplő utasításokat a [felhasználói](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-user-migration) áttelepítési cikkben.
 
 ## <a name="required-properties"></a>Kötelező tulajdonságai
-Az alábbi lista tartalmazza a tulajdonságokat, amelyeket van szükség, amikor egy felhasználó létrehoz.
+A következő lista azokat a tulajdonságokat mutatja be, amelyek a felhasználó létrehozásakor szükségesek.
 * **accountEnabled** – igaz
-* **displayName** – a felhasználó címjegyzékben megjelenítendő nevét.
-* **passwordProfile** – a jelszót a felhasználó profilját. 
+* **DisplayName** – a felhasználó címjegyzékében megjelenítendő név.
+* **passwordProfile** – a felhasználó jelszavas profilja. 
 
 > [!NOTE]
-> Közösségi fiók csak (nélküli helyi fiók hitelesítő adatait) továbbra is kell adnia a jelszót. Az Azure AD B2C figyelmen kívül hagyja a jelszót, adja meg a közösségi fiókok esetében.
+> Csak közösségi fiókok esetében (a helyi fiók hitelesítő adatai nélkül) továbbra is meg kell adnia a jelszót. Azure AD B2C figyelmen kívül hagyja a közösségi fiókokhoz megadott jelszót.
 
-* **userPrincipalName** – egyszerű felhasználónév (someuser@contoso.com). Egyszerű felhasználónév tartalmaznia kell egy ellenőrzött tartománynak a bérlő számára. Annak megadásához, az egyszerű Felhasználónevet, hozzon létre új GUID azonosítót, a ÖSSZEFŰZ `@` és a bérlő neve.
-* **mailNickname** – a felhasználó e-mail-alias. Ez az érték a userPrincipalName tulajdonsághoz használt ugyanazzal az Azonosítóval lehet. 
-* **signInNames** – adja meg a bejelentkezési nevét, a felhasználó egy vagy több SignInName rekordot. Minden bejelentkezési nevének egyedinek kell lennie a vállalat vagy a bérlőjéhez között. Csak közösségi fiók ezt a tulajdonságot is üresen kell hagyni.
-* **userIdentities** -közösségi adjon meg egy vagy több UserIdentity rekordot fiók típusát és a közösségi identitásszolgáltatótól egyedi felhasználói azonosítót.
-* [opcionális] **otherMails** – közösségi fiók csak a felhasználó e-mail-címei 
+* **userPrincipalName** – a felhasználó egyszerű neve (someuser@contoso.com). Az egyszerű felhasználónévnek tartalmaznia kell az egyik ellenőrzött tartományt a bérlő számára. Az egyszerű felhasználónév megadásához adjon meg új GUID-értéket, `@` fűzze össze a és a bérlő nevét.
+* **mailNickname** – a felhasználó levelezési aliasa. Ez az érték lehet a userPrincipalName használt azonosító. 
+* **signInNames** – egy vagy több SignInName-rekord, amely megadja a felhasználó bejelentkezési nevét. Minden bejelentkezési névnek egyedinek kell lennie a vállalaton/bérlőn belül. Csak közösségi fiók esetén ez a tulajdonság üres maradhat.
+* **userIdentities** – egy vagy több olyan UserIdentity-rekord, amely megadja a közösségi fiók típusát és a közösségi identitás-szolgáltató egyedi felhasználói azonosítóját.
+* választható **otherMails** – csak közösségi fiók esetén a felhasználó e-mail-címei 
 
-További információkért lásd: [Graph API-referencia](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
+További információkért lásd: [Graph API referenciája](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
 
-## <a name="migrate-social-account-only"></a>Közösségi fiók (csak) áttelepítése
-Csak a közösségi fiók létrehozása nélkül helyi fiók hitelesítő adatait. HTTPS POST kérés küldése a Graph API-t. A kérés törzse tartalmazza a felhasználó tulajdonságait a a közösségi fiók létrehozásához. Minimális meg kell adnia a szükséges tulajdonságokat. 
+## <a name="migrate-social-account-only"></a>Közösségi fiók migrálása (csak)
+Ha csak közösségi fiókot szeretne létrehozni, helyi fiók hitelesítő adatai nélkül, küldjön egy HTTPS POST-kérelmet Graph API. A kérelem törzse tartalmazza a létrehozandó közösségi fiók felhasználójának tulajdonságait. Legalább a szükséges tulajdonságokat kell megadnia. 
 
 
-**POST**  https://graph.windows.net/tenant-name.onmicrosoft.com/users
+**UTÁNI**  https://graph.windows.net/tenant-name.onmicrosoft.com/users
 
-A következő űrlapadatok elküldése: 
+Küldje el a következő űrlapot: 
 
 ```JSON
 {
@@ -97,12 +98,12 @@ A következő űrlapadatok elküldése:
     "userPrincipalName": "c8c3d3b8-60cf-4c76-9aa7-eb3235b190c8@tenant-name.onmicrosoft.com"
 }
 ```
-## <a name="migrate-social-account-with-local-account"></a>Közösségi fiók helyi fiókkal áttelepítése
-A közösségi identitásuk hozzon létre egy kombinált helyi fiókot. HTTPS POST kérés küldése a Graph API-t. A kérés törzse tartalmazza a felhasználó tulajdonságait a a közösségi fiók létrehozásához. Minimális meg kell adnia a szükséges tulajdonságokat. 
+## <a name="migrate-social-account-with-local-account"></a>Közösségi fiók migrálása helyi fiókkal
+Ha közösségi identitással rendelkező kombinált helyi fiókot szeretne létrehozni, küldjön egy HTTPS POST-kérelmet a Graph API. A kérelem törzse tartalmazza a közösségi fiókhoz tartozó felhasználó tulajdonságait, beleértve a helyi fiók bejelentkezési nevét is. Legalább a szükséges tulajdonságokat kell megadnia. 
 
-**POST**  https://graph.windows.net/tenant-name.onmicrosoft.com/users
+**UTÁNI**  https://graph.windows.net/tenant-name.onmicrosoft.com/users
 
-Küldje el a következő képernyő-adatok: 
+A következő űrlap beküldése – az adatértékek: 
 
 ```JSON
 {
@@ -134,25 +135,25 @@ Küldje el a következő képernyő-adatok:
 ```
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
-### <a name="how-can-i-know-the-issuer-name"></a>Hogyan lehet, hogy a kibocsátó neve?
-A kibocsátó neve vagy az identitásszolgáltató nevét, a szabályzat van konfigurálva. Ha nem ismeri az értéket adja meg a `issuer`, kövesse az alábbi lépéseket:
-1. Jelentkezzen be a közösségi fiókok
-2. A JWT jogkivonat másolja a `sub` értéket. A `sub` általában tartalmazza az Azure AD B2C-ben a felhasználó Objektumazonosítója. Vagy az Azure Portalon nyissa meg a felhasználó tulajdonságait és másolja az objektumazonosítót.
-3. Nyissa meg [az Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net)
-4. Jelentkezzen be a rendszergazdához.
-5. Futtassa a következő GET kérelmet. Cserélje le a userObjectId kimásolt felhasználói azonosító. **GET** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
-6. Keresse meg a `userIdentities` elem található a JSON-ban lépjen vissza az Azure AD B2C-ből.
-7. [Opcionális] Dekódolandó is érdemes a `issuerUserId` értéket.
+### <a name="how-can-i-know-the-issuer-name"></a>Honnan tudhatom meg a kiállító nevét?
+A kiállító neve vagy az identitás-szolgáltató neve konfigurálva van a házirendben. Ha nem tudja `issuer`, hogy melyik értéket kell megadnia, kövesse az alábbi eljárást:
+1. Bejelentkezés az egyik közösségi fiókkal
+2. Az JWT-tokenből másolja az `sub` értéket. A `sub` általában a felhasználó objektumazonosító-azonosítóját tartalmazza Azure ad B2C. Vagy Azure Portal, nyissa meg a felhasználó tulajdonságait, és másolja az objektumazonosító.
+3. Az [Azure ad Graph Explorer](https://graphexplorer.azurewebsites.net) megnyitása
+4. Jelentkezzen be a rendszergazdájával.
+5. Futtassa a következő GET kérelmet. Cserélje le a userObjectId a másolt felhasználói AZONOSÍTÓra. **GET**https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
+6. Keresse meg `userIdentities` a JSON-ban lévő elemet a Azure ad B2Cból.
+7. Választható Érdemes lehet dekódolni az `issuerUserId` értéket is.
 
 > [!NOTE]
-> A B2C-Bérlői rendszergazda fiókjával, helyi a B2C-bérlő használatához. A fiók nevének szintaxisa admin@tenant-name.onmicrosoft.com.
+> Használjon B2C bérlői rendszergazdai fiókot, amely helyi a B2C-bérlőhöz. A fióknév szintaxisa admin@tenant-name.onmicrosoft.com:.
 
-### <a name="is-it-possible-to-add-social-identity-to-an-existing-local-account"></a>A lehetséges közösségi hozzáadása egy meglévő helyi fiókot?
-Igen. A közösségi identitását a helyi fiók létrehozása után is hozzáadhat. Futtassa a HTTPS-PATCH kérés. Cserélje le a userObjectId a frissíteni kívánt felhasználói azonosító. 
+### <a name="is-it-possible-to-add-a-social-identity-to-an-existing-user"></a>Lehetséges a közösségi identitás hozzáadása egy meglévő felhasználóhoz?
+Igen. A közösségi identitást a Azure AD B2C fiók létrehozása után is hozzáadhatja (legyen az a helyi vagy közösségi fiók, vagy ezek kombinációja). HTTPS-javítási kérelem futtatása. Cserélje le a userObjectId a frissíteni kívánt felhasználói AZONOSÍTÓra. 
 
-**JAVÍTÁS** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
+**JAVÍTÁS**https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 
-Küldje el a következő képernyő-adatok: 
+A következő űrlap beküldése – az adatértékek: 
 
 ```JSON
 {
@@ -165,12 +166,12 @@ Küldje el a következő képernyő-adatok:
 }
 ```
 
-### <a name="is-it-possible-to-add-multiple-social-identities"></a>Az hozzáadhat több közösségi identitások?
-Igen. Egyetlen Azure AD B2C fiókkal közösségi dentitásai adhat hozzá. Futtassa a HTTPS-PATCH kérés. A userObjectId cserélje le a felhasználói azonosítóját. 
+### <a name="is-it-possible-to-add-multiple-social-identities"></a>Lehet több közösségi identitást is felvenni?
+Igen. Egyetlen Azure AD B2C-fiókhoz több közösségi identitást is hozzáadhat. HTTPS-javítási kérelem futtatása. Cserélje le a userObjectId a felhasználói AZONOSÍTÓra. 
 
-**JAVÍTÁS** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
+**JAVÍTÁS**https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 
-Küldje el a következő képernyő-adatok: 
+A következő űrlap beküldése – az adatértékek: 
 
 ```JSON
 {
@@ -187,16 +188,16 @@ Küldje el a következő képernyő-adatok:
 }
 ```
 
-## <a name="optional-user-migration-application-sample"></a>[Opcionális] Példa a migrálás felhasználói alkalmazás
-[Töltse le és futtassa a mintaalkalmazást V2](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-user-migration). A mintaalkalmazás V2, amely tartalmazza a próbafelhasználó adatok, beleértve a JSON-fájlt használ: helyi fiók, a közösségi fiók és a helyi és közösségi identitások egyetlen fiókban.  A JSON-fájl szerkesztéséhez nyissa meg a `AADB2C.UserMigration.sln` Visual Studio-megoldás. Az a `AADB2C.UserMigration` projektben nyissa meg a `UsersData.json` fájlt. A fájl felhasználói entitások listáját tartalmazza. Minden egyes felhasználó típusú entitás a következő tulajdonságokkal rendelkezik:
-* **signInName** – helyi fiók, jelentkezzen be az e-mail-cím
-* **displayName** -felhasználó megjelenített neve
-* **firstName** -felhasználó utóneve
-* **Vezetéknév** -felhasználó vezetékneve
-* **jelszó** helyi fiók, jelszó a felhasználónak (üres is lehet)
-* **kiállító** – közösségi fiók, az identitásszolgáltató neve
-* **issuerUserId** – közösségi fiók, a közösségi identitásszolgáltató által használt egyedi felhasználói azonosító. Az érték lehet szövegként. A mintaalkalmazás kódolása base64 ezt az értéket.
-* **e-mailek** a közösségi fiók csak (nem kombinált) felhasználó e-mail-cím
+## <a name="optional-user-migration-application-sample"></a>Választható Felhasználói áttelepítési alkalmazás mintája
+[Töltse le és futtassa a minta alkalmazás v2-es verzióját](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-user-migration). A minta alkalmazás v2 egy olyan JSON-fájlt használ, amely a dummy felhasználói adattartalmakat tartalmazza, beleértve a következőket: helyi fiók, közösségi fiók és helyi & közösségi identitások egyetlen fiókban.  A JSON-fájl szerkesztéséhez nyissa `AADB2C.UserMigration.sln` meg a Visual Studio-megoldást. A projektben nyissa meg `UsersData.json` a fájlt. `AADB2C.UserMigration` A fájl tartalmazza a felhasználói entitások listáját. Minden felhasználói entitás a következő tulajdonságokkal rendelkezik:
+* **signInName** – helyi fiók, a bejelentkezéshez használt e-mail-cím
+* **DisplayName** – a felhasználó megjelenítendő neve
+* **firstName** – a felhasználó keresztneve
+* **lastName** – a felhasználó vezetékneve
+* **jelszó** Helyi fiók esetén a felhasználó jelszava (üres is lehet)
+* **kiállító** – közösségi fiók, identitás-szolgáltató neve
+* **issuerUserId** – közösségi fiók esetén a közösségi identitás-szolgáltató által használt egyedi felhasználói azonosító. Az értéknek tiszta szövegnek kell lennie. A minta alkalmazás ezt az értéket Base64-re kódolja.
+* **e-mail cím** Csak a közösségi fiók (nem együttesen), a felhasználó e-mail-címe
 
 ```JSON
 {
@@ -234,6 +235,6 @@ Küldje el a következő képernyő-adatok:
 ```
 
 > [!NOTE]
-> Ha nem frissíti a UsersData.json fájlt a mintában az adatokkal, is bejelentkezik a minta helyi fiók hitelesítő adatait, de nem a közösségi fiók példák. A közösségi fiókok át, adja meg a tényleges adatok.
+> Ha nem frissíti a UsersData. JSON fájlt a mintában az adataival, bejelentkezhet a helyi fiók hitelesítő adataival, de nem a közösségi fiókra vonatkozó példákkal. A közösségi fiókok átadásához valós adatait kell megadnia.
 
-További információ a mintaalkalmazás használja, olvassa el [Azure Active Directory B2C: Felhasználói áttelepítése](active-directory-b2c-user-migration.md)
+További információt a minta alkalmazás [használatáról a Azure Active Directory B2C: Felhasználói áttelepítés](active-directory-b2c-user-migration.md)

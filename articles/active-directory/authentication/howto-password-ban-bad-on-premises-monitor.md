@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bd6d3abc6080c0ab1b6137511af719b23e5bcd4
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a763f15b57bf7f23eeb52c81dd48de7f02adc5e4
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736834"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853560"
 ---
 # <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD jelszavas védelem figyelése és naplózása
 
@@ -269,7 +269,7 @@ Lehetséges, hogy a parancsmag lekérdezésének hatóköre az – erdő vagy �
 
 Ha a HeartbeatUTC értéke elavult, ez az egyik tünet lehet, hogy az adott tartományvezérlőn az Azure AD jelszavas védelem tartományvezérlő ügynöke nem fut, vagy el lett távolítva, vagy a gép le lett tiltva, és már nem tartományvezérlő.
 
-Ha a PasswordPolicyDateUTC értéke elavult, ez lehet az a tünet, hogy az Azure AD jelszavas védelem tartományvezérlő ügynöke nem működik megfelelően.
+Ha a PasswordPolicyDateUTC értéke elavult, akkor lehet, hogy az Azure AD jelszavas védelem tartományvezérlő ügynöke nem működik megfelelően.
 
 ## <a name="dc-agent-newer-version-available"></a>A DC Agent újabb verziója érhető el
 

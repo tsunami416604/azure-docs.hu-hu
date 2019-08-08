@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/13/2017
-ms.openlocfilehash: a0358859d6f806a94c529bae2eb6fa9d1ab82963
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 284dcd99dc77d7ec0fb5cb214d49b6fcf93a6aef
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884822"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854488"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
 
@@ -62,7 +62,7 @@ Ebben a szakaszban egy Azure-szolgáltatásnevet hozunk létre, valamint két Te
 
 6. Hozzon létre egy új fájlt a Terraform-változók értékeinek tárolására. A Terraform-változók fájlját szokás a `terraform.tfvars` néven elnevezni, mivel a Terraform automatikusan betölti a `terraform.tfvars` (vagy a `*.auto.tfvars` mintát követő) nevű fájlt, ha az aktuális könyvtárban található ilyen fájl. 
 
-7. Másolja az alábbi kódot a változók fájljába. Ügyeljen arra, hogy cserélje le a helyőrzőket a következőképpen: A `subscription_id`, használja az Azure-előfizetés azonosítója futtatásakor megadott `az account set`. A `tenant_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `tenant` értéket. A `client_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `appId` értéket. A `client_secret` helyett használja az `az ad sp create-for-rbac` által visszaadott `password` értéket.
+7. Másolja az alábbi kódot a változók fájljába. Ügyeljen arra, hogy a helyőrzőket a következőképpen cserélje le: A `subscription_id`esetében használja a futtatáskor `az account set`megadott Azure-előfizetés azonosítóját. A `tenant_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `tenant` értéket. A `client_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `appId` értéket. A `client_secret` helyett használja az `az ad sp create-for-rbac` által visszaadott `password` értéket.
 
    ```tf
    subscription_id = "<azure-subscription-id>"
@@ -103,7 +103,7 @@ Ebben a szakaszban egy fájlt hozunk létre az infrastruktúra erőforrás-defin
     name                         = "publicIPForLB"
     location                     = "${azurerm_resource_group.test.location}"
     resource_group_name          = "${azurerm_resource_group.test.name}"
-    public_ip_address_allocation = "static"
+    allocation_method            = "Static"
    }
 
    resource "azurerm_lb" "test" {

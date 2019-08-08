@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/10/2019
-ms.openlocfilehash: f0fb6f0d2b2579679ee8a6ec43b3241377701d48
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/07/2019
+ms.openlocfilehash: d1ad89943f6acfec6e42199ef399643be12e2b8b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780904"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856244"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Vállalati biztonság Azure Machine Learning szolgáltatáshoz
 
@@ -176,12 +176,24 @@ A munkaterülethez társított Key Vault-példányt a Azure Machine Learning szo
 * Az Azure Container repository példányainak jelszavai
 * Az adattárakhoz való kapcsolódási karakterláncok.
 
-A számítási célokat, például a HDI HDInsight és a virtuális gépet az SSH-jelszavak és-kulcsok egy külön Key Vault tárolják, amely a Microsoft-előfizetéshez van társítva. Azure Machine Learning a szolgáltatás a felhasználó által megadott jelszavakat vagy kulcsokat tárolja, ehelyett a saját SSH-kulcsait hozza létre, engedélyezi és tárolja, hogy a kísérleteket a virtuális gépekhez vagy HDInsight kapcsolódjon.
+A számítási célokat, például a HDI HDInsight és a virtuális gépet az SSH-jelszavak és-kulcsok egy külön Key Vault tárolják, amely a Microsoft-előfizetéshez van társítva. Azure Machine Learning a szolgáltatás nem tárolja a felhasználó által megadott jelszavakat vagy kulcsokat, hanem a saját SSH-kulcsait hozza létre, engedélyezi és tárolja, hogy a kísérleteket a virtuális gépekhez vagy HDInsight kapcsolódjon.
 Minden munkaterülethez tartozik egy társított, rendszerhez rendelt felügyelt identitás (a munkaterülettel megegyező névvel), amely hozzáféréssel rendelkezik a Key Vault összes kulcsához, titkához és tanúsítványához.
 
 ## <a name="monitoring"></a>Figyelés
 
-A felhasználók a munkaterület alatt láthatják a tevékenység naplóját, és megtekinthetik a munkaterületen végrehajtott különféle műveleteket, például a művelet nevét, a által kezdeményezett eseményt, az időbélyeget stb.
+### <a name="metrics"></a>Mérőszámok
+
+Azure Monitor metrikák használatával megtekintheti és figyelheti a Azure Machine Learning szolgáltatás munkaterületének mérőszámait. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet, majd használja a metrikák hivatkozást.
+
+![A munkaterület mérőszámait ábrázoló képernyőkép](./media/enterprise-readiness/workspace-metrics.png)
+
+A metrikák a futtatások, a központi telepítések és a regisztrációk információit tartalmazzák.
+
+További információ: [Azure monitor mérőszámai](/azure/azure-monitor/platform/data-platform-metrics).
+
+### <a name="activity-log"></a>Tevékenységnapló
+
+A munkaterületen a tevékenység naplójában megtekintheti a munkaterületen végrehajtott különféle műveleteket, valamint az alapszintű információkat, például a művelet nevét, a által kezdeményezett eseményt, valamint az időbélyeget stb.
 
 A következő képernyőfelvételen a munkaterület tevékenységi naplója látható:
 

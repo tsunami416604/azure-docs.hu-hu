@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5409ed799454a6bb64077ee884065fc518556142
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 03918976935f9071ba2a7951e29195118943a8ef
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227812"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845832"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -50,7 +50,7 @@ A natív Azure-eszközökön kívül a Azure Migrate számos ISV-ajánlattal is 
 
 ### <a name="selecting-an-isv-tool"></a>ISV-eszköz kiválasztása
 
-Miután hozzáadta az ISV-eszközt egy Azure Migrate projekthez, a licenc beszerzésével vagy az ingyenes próbaverzióra való feliratkozással megkezdheti az eszközt az ISV-szabályzatnak megfelelően. Minden eszközön lehetőség van a Azure Migratehoz való kapcsolódásra. Az eszköz Azure Migrate való összekapcsolásához kövesse az eszköz útmutatásait és dokumentációját.
+Miután hozzáadta az ISV-eszközt egy Azure Migrate projekthez, a licenc beszerzésével vagy az ingyenes próbaverzióra való feliratkozással megkezdheti az eszközt az ISV-szabályzatnak megfelelően. Minden eszközön lehetőség van a Azure Migratehoz való kapcsolódásra. Az eszköz Azure Migrate való összekapcsolásához kövesse az eszköz útmutatásait és dokumentációját. Az ISV-eszközök licencelése az ISV licencelési modellel összhangban történik.
 
 ## <a name="azure-migrate-server-assessment"></a>Azure Migrate kiszolgáló értékelése
 
@@ -90,7 +90,7 @@ Az Azure Migrate központban a helyszíni webalkalmazásokat az Azure-ba is felh
 
 [Részletek](https://appmigration.microsoft.com/)
 
-## <a name="offline-data-migration"></a>Offline adatáttelepítés
+## <a name="offline-data-migration"></a>Offline adatok migrálása
 
 A Data Box offline termékcsalád használatával nagy mennyiségű adatátvitelt helyezhet át az Azure-ba. [További információ](https://docs.microsoft.com/azure/databox/)
 

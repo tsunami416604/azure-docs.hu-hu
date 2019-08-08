@@ -1,5 +1,5 @@
 ---
-title: Alkalmazás regisztrálása az a Microsoft identity platform – a Microsoft identity platform
+title: Alkalmazás regisztrálása a Microsoft Identity platformmal – Microsoft Identity platform
 description: Ismerje meg, hogyan adhat hozzá és regisztrálhat alkalmazást a Microsoft Identity Platformon.
 services: active-directory
 documentationcenter: ''
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2019
 ms.author: ryanwi
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 541253cf3a8f2628ea0e76f1115ddc4a290daf62
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 80040aab0ea9d1444e1afd77d45d990f3d05f0de
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655480"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853020"
 ---
-# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Gyors útmutató: Alkalmazás regisztrálása a Microsoft identity platform használatával
+# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Gyors útmutató: Alkalmazás regisztrálása a Microsoft Identity platformmal
 
 A nagyvállalati fejlesztők és SaaS-szolgáltatók (szoftverszolgáltatók) a Microsoft Identity Platformmal integrálható kereskedelmi felhőszolgáltatásokat és üzletági alkalmazásokat fejleszthetnek, hogy a szolgáltatásaikhoz biztonságos bejelentkezést és engedélyezést biztosítsanak.
 
-Ez a rövid útmutató bemutatja, hogyan adhat hozzá, és regisztrálni egy alkalmazást a a **alkalmazásregisztrációk** élmény az Azure Portalon, hogy az alkalmazás integrálható a Microsoft identitásplatformjához. Az új funkciók és fejlesztések azzal kapcsolatban, az új regisztrációk alkalmazásélményről kapcsolatos további információkért lásd: [ebben a blogbejegyzésben](https://developer.microsoft.com/graph/blogs/new-app-registration/).
+Ez a rövid útmutató bemutatja, hogyan adhat hozzá és regisztrálhat egy alkalmazást a Azure Portal **Alkalmazásregisztrációk** felületének használatával, hogy az alkalmazás integrálható legyen a Microsoft Identity platformmal. Ha többet szeretne megtudni az új alkalmazás-regisztrálási élményről, tekintse meg ezt a [blogbejegyzést](https://developer.microsoft.com/graph/blogs/new-app-registration/).
 
 ## <a name="register-a-new-application-using-the-azure-portal"></a>Új alkalmazás regisztrálása az Azure Portal használatával
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatásra, és válassza ki **alkalmazásregisztrációk > Új regisztrációs**.
+1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk > új regisztráció**lehetőséget.
 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
 
    - **Név** – az alkalmazás felhasználói számára megjelenített, kifejező alkalmazásnevet adjon meg.
@@ -54,11 +54,11 @@ Ez a rövid útmutató bemutatja, hogyan adhat hozzá, és regisztrálni egy alk
 
 1. Miután végzett, válassza a **Regisztrálás** lehetőséget.
 
-    [![Megjeleníti a képernyőn egy új alkalmazás regisztrálása az Azure Portalon](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
+    [![Megjeleníti a képernyőt, amely új alkalmazást regisztrál a Azure Portal](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
 
 Az Azure AD egyedi alkalmazásazonosítót (ügyfélazonosítót) rendel az alkalmazásához, Önt pedig átirányítja az alkalmazás **Áttekintés** lapjára. Ha alkalmazását szeretné további funkciókkal bővíteni, más beállítási lehetőségeket, többek között védjegyzést, tanúsítványokat és titkos kulcsokat és API-engedélyeket is kiválaszthat.
 
-[![Példa egy újonnan regisztrált app – áttekintés oldalra](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
+[![Példa az újonnan regisztrált alkalmazások áttekintő oldalára](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 

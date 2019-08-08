@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: 3c925e0160a4c57f7e43c3463fc1db7098a6e606
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 65db847c5df1a05671e3b1c0ac4541f00506c8fd
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553604"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854700"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Gyors útmutató: Beszéd szintézise a .NET-keretrendszerhez készült Speech SDK (Windows) használatával
 
@@ -31,7 +31,7 @@ Szerezze be a legfrissebb [Cognitive Services SPEECH SDK-mintákat](https://gith
 
 A projekt teljesítéséhez a következők szükségesek:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 * A beszédfelismerési szolgáltatáshoz tartozó előfizetési kulcs. [Szerezze be az egyiket ingyenesen](get-started.md).
 * Egy beszélő (vagy fülhallgató) érhető el.
 

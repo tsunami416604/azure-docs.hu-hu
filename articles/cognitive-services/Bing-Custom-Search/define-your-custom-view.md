@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: e4ed781544d3cd11e8494e40589676adf57a9c75
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 1827bfdbebaf1ffa17c7c631a94aa8fc6471d13b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405120"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854103"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>A Bing Custom Search-élmény konfigurálása
 
@@ -40,7 +40,7 @@ Az egyéni keresési példány létrehozásakor megadhatja a Web: tartományok, 
 
 Ha ismeri az egyéni keresési példányba felvenni kívánt szeleteket, adja hozzá őket a példány **aktív** listájához. 
 
-Ha nem tudja, hogy mely szeletek szerepeljenek, a keresési lekérdezések a Bing szolgáltatásba küldhetők  a betekintő ablaktáblán, és kiválaszthatja a kívánt szeleteket. Ehhez tegye a következőket: 
+Ha nem tudja, hogy mely szeletek szerepeljenek, a keresési lekérdezések a Bing szolgáltatásba küldhetők a betekintő ablaktáblán, és kiválaszthatja a kívánt szeleteket. Ehhez tegye a következőket: 
 
 1. Válassza a "Bing" elemet a betekintő ablaktábla legördülő listából, és adjon meg egy keresési lekérdezést.
 
@@ -64,8 +64,8 @@ Ha URL-címeket ad hozzá az **aktív** listához, egyetlen URL-címet vagy egys
 Fájl feltöltéséhez hozzon létre egy szövegfájlt, és határozzon meg soronként egy tartományt, egy allapot vagy egy weblapot. Ha a fájl nem megfelelően van formázva, a rendszer elutasítja a fájlt.
 
 > [!NOTE]
-> * Csak egy fájlt tölthet fel az **aktív** listára. Nem használható szeletek hozzáadásához a blokkolt  listához.  
-> * Ha a **letiltott** lista tartalmaz egy tartományt, allapot vagy weboldalt, amelyet a feltöltési fájlban megadott, akkor a rendszer eltávolítja  a letiltott listából, és hozzáadja az **aktív** listához.
+> * Csak egy fájlt tölthet fel az **aktív** listára. Nem használható szeletek hozzáadásához a blokkolt listához.  
+> * Ha a **letiltott** lista tartalmaz egy tartományt, allapot vagy weboldalt, amelyet a feltöltési fájlban megadott, akkor a rendszer eltávolítja a letiltott listából, és hozzáadja az **aktív** listához.
 > * A rendszer figyelmen kívül hagyja a feltöltött fájlban lévő ismétlődő bejegyzéseket Bing Custom Search. 
 
 ### <a name="get-website-suggestions-for-your-search-experience"></a>Webhelyek javaslatainak beszerzése a keresési élményhez
@@ -129,7 +129,7 @@ Alapértelmezés szerint a weblapok csak akkor vannak rögzítve a keresési ere
 > [!NOTE]
 > A felhasználó keresési lekérdezése és a PIN-kód keresési lekérdezése közötti összes összehasonlítás a kis-és nagybetűk megkülönböztetése nélkül történik.
 
-| Value | Leírás                                                                          |
+| Érték | Leírás                                                                          |
 |---------------|----------------------------------------------------------------------------------|
 | Ezzel kezdődik | A PIN-kód akkor egyezik, ha a felhasználó lekérdezési karakterlánca a PIN-kód lekérdezési karakterláncával kezdődik. |
 | végződik   | A PIN-kód akkor egyezik, ha a felhasználó lekérdezési karakterlánca a PIN-kód lekérdezési karakterláncával végződik.  |
@@ -150,7 +150,7 @@ Ha a megfelelő szinten előfizetett az egyéni keresésre (lásd a [díjszabás
 
 ## <a name="usage-guidelines"></a>Használati irányelvek
 
-- Az egyes egyéni keresési példányok esetében az **aktív** és a blokkolt szeletekre vonatkozó rangsorolási módosítások  maximális száma 400.
+- Az egyes egyéni keresési példányok esetében az **aktív** és a blokkolt szeletekre vonatkozó rangsorolási módosítások maximális száma 400.
 - Ha egy szeletet ad hozzá az aktív vagy a letiltott lapokhoz, egy rangsorolási beállításnak számít.
 - A szám növelése és lefokozása két rangsorolási beállításként.
 - Az egyes egyéni keresési példányok esetében az elvégezhető PIN-kódok maximális száma a 200-ra korlátozódik.
@@ -159,5 +159,5 @@ Ha a megfelelő szinten előfizetett az egyéni keresésre (lásd a [díjszabás
 
 - [Egyéni keresés meghívása](./search-your-custom-view.md)
 - [Üzemeltetett felhasználói felület konfigurálása](./hosted-ui.md)
-- [Díszítő jelölők használata szövegkiemeléshez](./hit-highlighting.md)
+- [Díszítő jelölők használata szövegkiemeléshez](../bing-web-search/hit-highlighting.md)
 - [Weboldalak lapozása](./page-webpages.md)

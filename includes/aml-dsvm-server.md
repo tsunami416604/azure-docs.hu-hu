@@ -9,14 +9,14 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
-ms.openlocfilehash: a882a874574395095e98079cd0f8aa4a4987c749
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 09a3cc5a623be2ee5a9d50204f0902ca9f400a76
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391792"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857397"
 ---
-1. [Hozzon létre egy Azure Machine Learning szolgáltatás munkaterület](../articles/machine-learning/service/setup-create-workspace.md).
+1. [Hozzon létre egy Azure Machine learning szolgáltatás](../articles/machine-learning/service/how-to-manage-workspace.md)munkaterületet.
 
 1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
 
@@ -24,13 +24,13 @@ ms.locfileid: "66391792"
     git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
 
-1. Munkaterület konfigurációs fájl hozzáadása a klónozott könyvtárra, az alábbi módszerek egyikével:
+1. Vegyen fel egy munkaterület-konfigurációs fájlt a klónozott könyvtárba a következő módszerek bármelyikével:
 
-    * Az a [az Azure portal](https://ms.portal.azure.com)válassza **config.json letöltése** a a **áttekintése** szakasz a munkaterület. 
+    * A [Azure Portal](https://ms.portal.azure.com)a munkaterület **Áttekintés** szakaszában válassza a **config. JSON letöltése** lehetőséget. 
 
-    ![Töltse le a config.json](./media/aml-dsvm-server/download-config.png)
+    ![A config. JSON fájl letöltése](./media/aml-dsvm-server/download-config.png)
 
-    * Hozzon létre egy új munkaterületet, a kód használatával a [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) jegyzetfüzetet a klónozott könyvtárra.
+    * Hozzon létre egy új munkaterületet a Code ( [konfiguráció. ipynb)](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) jegyzetfüzetben a klónozott címtárban.
 
 1. Indítsa el a notebook-kiszolgálót a klónozott könyvtárból.
 

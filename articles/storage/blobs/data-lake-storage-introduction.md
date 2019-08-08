@@ -1,24 +1,23 @@
 ---
-title: Az Azure Data Lake Storage Gen2 bemutatása
-description: Az Azure Data Lake Storage Gen2 nyújt áttekintést
-services: storage
+title: Azure Data Lake Storage Gen2 Bemutatkozás
+description: Áttekintést nyújt Azure Data Lake Storage Gen2
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: daa5efcf1be075e81e402edff56239a7cf21db18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3dea4dfc58bf087b8f6bc0a3f45646da5cb597ad
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939231"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847226"
 ---
-# <a name="introduction-to-azure-data-lake-storage-gen2"></a>Bevezetés az Azure Data Lake Storage Gen2-re
+# <a name="introduction-to-azure-data-lake-storage-gen2"></a>Bevezetés a Azure Data Lake Storage Gen2ba
 
-Az Azure Data Lake Storage Gen2 dedikált alapuló, big data-elemzési képességeket [Azure Blob storage](storage-blobs-introduction.md). Data Lake Storage Gen2 beépül a két meglévő storage-szolgáltatások, az Azure Blob storage és az Azure Data Lake Storage Gen1 képességeit eredménye. A szolgáltatások [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index), mint például a fájlrendszer szemantikáját, a könyvtárban, és a fájl biztonság és a méretezési csoport alacsony költségű, a többrétegű tárolást, magas rendelkezésre állás/vész-helyreállítási lehetőségei a kombinálva[Azure Blob storage](storage-blobs-introduction.md).
+A Azure Data Lake Storage Gen2 az [Azure Blob Storage](storage-blobs-introduction.md)-ra épülő, Big Data Analytics szolgáltatáshoz dedikált képességek összessége. Data Lake Storage Gen2 beépül a két meglévő storage-szolgáltatások, az Azure Blob storage és az Azure Data Lake Storage Gen1 képességeit eredménye. A szolgáltatások [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index), mint például a fájlrendszer szemantikáját, a könyvtárban, és a fájl biztonság és a méretezési csoport alacsony költségű, a többrétegű tárolást, magas rendelkezésre állás/vész-helyreállítási lehetőségei a kombinálva[Azure Blob storage](storage-blobs-introduction.md).
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>Vállalati big data-elemzés tervezve
 
@@ -38,13 +37,13 @@ Múltbeli időpont felhőalapú elemzési kellett veszélyeztetheti a teljesítm
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage Gen2 főbb funkciói
 
--   **Hadoop-kompatibilis hozzáférés**: Data Lake Storage Gen2 lehetővé teszi, hogy a kezelése és az adatok eléréséhez, ugyanúgy, mint az egy [Hadoop elosztott fájlrendszer (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Az új [ABFS illesztőprogram](data-lake-storage-abfs-driver.md) elérhető összes Apache Hadoop-környezetekben, beleértve a [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index) *,* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index), és [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/) a Data Lake Storage Gen2 tárolt adatok elérését.
+-   **Hadoop-kompatibilis hozzáférés**: Data Lake Storage Gen2 lehetővé teszi az adatkezelést és az adathozzáférést ugyanúgy, mint egy [Hadoop-elosztott fájlrendszer (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Az új [ABFS illesztőprogram](data-lake-storage-abfs-driver.md) elérhető összes Apache Hadoop-környezetekben, beleértve a [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index) *,* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index), és [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/) a Data Lake Storage Gen2 tárolt adatok elérését.
 
--   **Felülbírálja a POSIX-engedélyek**: A Data Lake Gen2 biztonsági modell támogatja az ACL-JEI és POSIX engedélyekkel együtt néhány további pontossággal megadott Data Lake Storage Gen2-re. Beállítások keretrendszereket, mint például a Hive és a Spark vagy a Tártallózó keresztül konfigurálhatók.
+-   **POSIX-engedélyek felülbírálása**: A Data Lake Gen2 biztonsági modellje támogatja az ACL és a POSIX engedélyeket, valamint a Data Lake Storage Gen2ra vonatkozó további részletességet. Beállítások keretrendszereket, mint például a Hive és a Spark vagy a Tártallózó keresztül konfigurálhatók.
 
--   **Költséghatékony**: Data Lake Storage Gen2 költséghatékony tárolási kapacitás és a tranzakciók érhetők el. A teljes körű életciklus keresztül adatok transitions lehetőségnél szerint díjszabása nem módosul módosítja a megtartja költségeket a beépített funkciók használatával minimális például [Azure Blob storage életciklus](storage-lifecycle-management-concepts.md).
+-   **Költséghatékony**: A Data Lake Storage Gen2 alacsony költséghatékonyságú tárolási kapacitást és tranzakciókat biztosít. A teljes körű életciklus keresztül adatok transitions lehetőségnél szerint díjszabása nem módosul módosítja a megtartja költségeket a beépített funkciók használatával minimális például [Azure Blob storage életciklus](storage-lifecycle-management-concepts.md).
 
--   **Optimalizált illesztőprogram**: A ABFS illesztőprogram [kifejezetten optimalizált](data-lake-storage-abfs-driver.md) big data-elemzőeszközöket. A megfelelő REST API-k a végpont végzetesnek `dfs.core.windows.net`.
+-   **Optimalizált illesztőprogram**: A ABFS-illesztőprogram [kifejezetten](data-lake-storage-abfs-driver.md) Big Data elemzésekhez van optimalizálva. A megfelelő REST API-k a végponton `dfs.core.windows.net`keresztül vannak felszínen.
 
 ### <a name="scalability"></a>Méretezhetőség
 
@@ -77,10 +76,10 @@ Számos nyílt forráskódú platformra támogatja a Data Lake Storage Gen2. Eze
 | Platform |  Támogatott verziót | További információ |
 | --- | --- | --- |
 | [HDInsight](https://azure.microsoft.com/services/hdinsight/) | 3.6. + | [Mik azok az Apache Hadoop-összetevők és verziók a HDInsight?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fstorm%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
-| [Hadoop](https://hadoop.apache.org/) | 3.2+ | [Az Apache Hadoop-kiadások archívum](https://hadoop.apache.org/release.html) |
+| [Hadoop](https://hadoop.apache.org/) | 3.2 + | [Az Apache Hadoop-kiadások archívum](https://hadoop.apache.org/release.html) |
 | [Cloudera](https://www.cloudera.com/) | 6.1 + | [Cloudera Enterprise 6.x kibocsátási megjegyzései](https://www.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_6_release_notes.html) |
-| [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 5.1+ | [Databricks futtatókörnyezet-verzió](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
-|[Hortonworks](https://hortonworks.com/)| 3.1.x++ | [Felhőbeli adatok hozzáférés konfigurálása](https://docs.hortonworks.com/HDPDocuments/Cloudbreak/Cloudbreak-2.9.0/cloud-data-access/content/cb_configuring-access-to-adls2.html) |
+| [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 5.1 + | [Databricks futtatókörnyezet-verzió](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
+|[Hortonworks](https://hortonworks.com/)| 3.1.x++ | [A Felhőbeli adathozzáférés konfigurálása](https://docs.hortonworks.com/HDPDocuments/Cloudbreak/Cloudbreak-2.9.0/cloud-data-access/content/cb_configuring-access-to-adls2.html) |
 
 ## <a name="next-steps"></a>További lépések
 

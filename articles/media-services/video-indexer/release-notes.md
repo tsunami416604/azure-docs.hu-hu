@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 07/22/2019
 ms.author: juliako
-ms.openlocfilehash: fd67e867b5eac58838551ac29e1fca5e860b15ff
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: b627a78edef1c0b0fe6b3ed011678145aea397ae
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414210"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845884"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
@@ -27,6 +27,16 @@ Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 * Ismert problémák
 * Hibajavítások
 * Elavult funkciók
+
+## <a name="july-2019"></a>Július 2019
+
+### <a name="editor-as-a-widget"></a>Szerkesztő widgetként
+
+A Video Indexer AI-Editor mostantól elérhető widgetként, amely beágyazható az ügyfelek alkalmazásaiba.
+
+### <a name="update-custom-language-model-from-closed-caption-file-from-the-portal"></a>Egyéni nyelvi modell frissítése a lezárt képaláírás-fájlból a portálról
+
+Az ügyfelek a portál Testreszabás lapján VTT, SRT és TTML fájlformátumokat is biztosíthatnak a nyelvi modellekhez.
 
 ## <a name="june-2019"></a>Június 2019
 

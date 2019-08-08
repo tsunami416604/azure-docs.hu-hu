@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: dech
-ms.openlocfilehash: 19312e6c6aa71a81c3339e7d40de582490c4ffff
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: e6a04c840e0982947e1223abf82737e1cd9d4445
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986344"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854170"
 ---
 # <a name="quickstart-build-a-nodejs-app-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Node. js-alkalmazás létrehozása Azure Cosmos DB SQL API-fiók használatával
 
@@ -87,7 +87,7 @@ Az alábbi kódrészletek mind az **app.js** fájlból származnak.
 * A `CosmosClient` inicializálva van.
 
     ```javascript
-    const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
+    const client = new CosmosClient({ endpoint, key });
     ```
 
 * A rendszer létrehozza az új adatbázist.
@@ -111,21 +111,25 @@ Az alábbi kódrészletek mind az **app.js** fájlból származnak.
 * A egy SQL-lekérdezést hajt végre a JSON-on.
 
     ```javascript
-    const querySpec = {
-        query: "SELECT VALUE r.children FROM root r WHERE r.lastName = @lastName",
+      const querySpec = {
+        query: 'SELECT VALUE r.children FROM root r WHERE r.lastName = @lastName',
         parameters: [
-            {
-                name: "@lastName",
-                value: "Andersen"
-            }
+          {
+            name: '@lastName',
+            value: 'Andersen'
+          }
         ]
-    };
+      }
 
-    const { result: results } = await client.database(databaseId).container(containerId).items.query(querySpec).toArray();
-    for (var queryResult of results) {
-        let resultString = JSON.stringify(queryResult);
-        console.log(`\tQuery returned ${resultString}\n`);
-    }
+      const { resources: results } = await client
+        .database(databaseId)
+        .container(containerId)
+        .items.query(querySpec)
+        .fetchAll()
+      for (var queryResult of results) {
+        let resultString = JSON.stringify(queryResult)
+        console.log(`\tQuery returned ${resultString}\n`)
+      }
     ```    
 
 ## <a name="update-your-connection-string"></a>A kapcsolati sztring frissítése
@@ -142,9 +146,9 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
     `config.endpoint = "https://FILLME.documents.azure.com"`
 
-4. Ezután másolja ki az ELSŐDLEGES KULCS értékét a Portalról, és adja meg a `config.primaryKey` értékeként a `config.js`-ben. Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
+4. Ezután másolja ki az ELSŐDLEGES KULCS értékét a Portalról, és adja meg a `config.key` értékeként a `config.js`-ben. Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 
-    `config.primaryKey = "FILLME"`
+    `config.key = "FILLME"`
     
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 1. Futtassa a `npm install` parancsot egy terminálban a szükséges npm-modulok telepítéséhez

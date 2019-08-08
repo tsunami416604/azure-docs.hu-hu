@@ -1,19 +1,18 @@
 ---
 title: Az Azure Storage-ba másolhatja vagy áthelyezheti az AzCopy v10 használatával | Microsoft Docs
 description: A AzCopy egy parancssori segédprogram, amellyel az adatok átmásolhatók a, a-ból vagy a Storage-fiókok között. Ez a cikk segítséget nyújt a AzCopy letöltésében, a Storage-fiókhoz való kapcsolódásban, majd a fájlok átvitelében.
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 7ad5be0c7774beacaa15fcca0646c78e2d328ba4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9dc53867cb780b2c40e76cc6f24f7e6cf882b407
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699848"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68844863"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AZCopy használatába
 

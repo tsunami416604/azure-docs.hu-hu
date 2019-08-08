@@ -4,14 +4,14 @@ description: A Azure Migrateekkel kapcsolatos gyakori kérdések címei
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 0708502087ae6880d9559cf17f0ba9982b2ba040
-ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
+ms.openlocfilehash: bf591306220b2c8c1e6c8166686836d96432fc7d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68372486"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856280"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – gyakran ismételt kérdések (GYIK)
 
@@ -71,7 +71,8 @@ A berendezés a berendezés beállításakor megadott hitelesítő adatok haszn�
 
 ### <a name="can-i-connect-the-same-appliance-to-multiple-vcenter-servers"></a>Csatlakozhatok ugyanahhoz a berendezéshez több vCenter-kiszolgálóhoz is?
 
-Igen, egyetlen Azure Migrate berendezés használatával több vCenter-kiszolgáló is felderíthető, de nem párhuzamosan. A felfedezéseket egy másik után kell futtatnia.
+Nem. A készülék és a vCenter Server között egy-az-egyhez típusú hozzárendelés található. Ha több vCenter-kiszolgálón is fel kell derítenie a virtuális gépeket, több berendezést kell telepítenie. 
+
 
 ### <a name="i-changed-my-machine-size-can-i-rerun-an-assessment"></a>Módosítottam a gép méretét. Újrajátszható egy Értékelés?
 

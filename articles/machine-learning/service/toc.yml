@@ -9,11 +9,6 @@
     - name: A szolgáltatás működése
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
-- name: Beállítás
-  items:
-    - name: Munkaterület létrehozása
-      displayName: install sdk workspace
-      href: setup-create-workspace.md
 - name: Oktatóanyagok
   items:
     - name: Python SDK

@@ -3,20 +3,20 @@ title: A Project akusztika áttekintése
 titlesuffix: Azure Cognitive Services
 description: A Project Acoustics egy akusztikus motor a 3D interaktív funkciókhoz, amely a kisült hullámos fizika szimulációját interaktív tervezési vezérlőkkel integrálja.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: overview
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: a654dd966c40b5b079f92b910ade52f4eda10344
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 382d4febed98b53a469ac2788e6e8c8cbf064c23
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704756"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854819"
 ---
 # <a name="what-is-project-acoustics"></a>Mi az a Project Acoustics?
 A Project Acoustics egy Wave akusztikus motor a 3D interaktív élményekhez. Az informatikai modellek olyan hullámos hatásokat mutatnak be, mint a diffrakciós, a portál-és a reverb-effektusok az összetett jeleneteknél anélkül, hogy kézi Emellett magában foglalja a Game Engine és a audio middleware integrációját is. A Project Acoustics filozófiája hasonló a statikus világításhoz: a részletes fizikát offline állapotba helyezheti a fizikai alapkonfiguráció biztosításához, és egy egyszerű, kifejező tervezési vezérlőkkel rendelkező, a művészi célok elérésére szolgáló, könnyű futtatókörnyezetet használ.

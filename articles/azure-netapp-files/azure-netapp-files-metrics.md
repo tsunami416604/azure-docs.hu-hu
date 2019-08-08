@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 9a56fb27fdf9e196291942041d68b249d7f16648
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7cf382f511d2ba8452d77bf207f36b749cb31e94
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839233"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848795"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Az Azure NetApp Files metrikái
 
@@ -29,27 +29,40 @@ Azure NetApp Files metrikákat biztosít a lefoglalt tárolóban, a tényleges t
 
 <!-- 
 - *Volume pool allocated size*  
-    This is the size (GiB) of the provisioned capacity pool.  
+    The size (GiB) of the provisioned capacity pool  
 --> 
 - *Lefoglalt kötet-készlet*  
-    Ez az adott kapacitási készletben lévő mennyiségi kvóta (GiB) teljes mennyisége (azaz a kötetek kiosztott méretei összesen). A kötet létrehozása során kiválasztott méret.  
+    Az adott kapacitási készletben lévő mennyiségi kvóta (GiB) összege (azaz a kötetek kiosztott méretei összesen)  
+    A kötet létrehozása során kiválasztott méret.  
 - *Kötet készletének teljes logikai mérete*  
-    A kapacitási készlet kötetei között használt logikai terület összesen (GiB).  
+    A kapacitási készlet kötetei között használt logikai terület teljes mérete (GiB)  
 <!-- 
 - *Volume pool total snapshot size*  
-    This is the total of incremental logical space used by the snapshots.  
+    The total of incremental logical space used by the snapshots  
 -->
 
 ## <a name="volumes"></a>A kötetek használati metrikái
 
 <!-- 
 - *Volume allocated size*   
-    This is the volume size (quota) provisioned in GiB.  
+    The volume size (quota) provisioned in GiB  
 --> 
 - *Kötet logikai mérete*   
-    Egy köteten (GiB) használt teljes logikai terület. Ez a méret magában foglalja az aktív fájlrendszerek és Pillanatképek által használt logikai teret.  
+    A kötetben használt teljes logikai terület (GiB)  
+    Ez a méret magában foglalja az aktív fájlrendszerek és Pillanatképek által használt logikai teret.  
 - *Kötet pillanatképének mérete*   
-    Ez egy köteten található Pillanatképek által használt növekményes logikai terület.  
+   A pillanatképek által a köteten használt növekményes logikai terület  
+
+## <a name="performance-metrics-for-volumes"></a>A kötetek teljesítmény-mérőszámai
+
+- *AverageReadLatency*   
+    A kötet olvasási idejének átlagos ideje ezredmásodpercben
+- *AverageWriteLatency*   
+    A kötet írási idejének átlagos ideje ezredmásodpercben
+- *ReadIops*   
+    A kötetre irányuló olvasási műveletek száma másodpercenként
+- *WriteIops*   
+    A kötetbe való írások másodpercenkénti száma
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,19 +1,19 @@
 ---
-title: A Java használata Azure Database for PostgreSQL-egyetlen kiszolgálóhoz való kapcsolódáshoz
+title: 'Gyors útmutató: A Java használata Azure Database for PostgreSQL-egyetlen kiszolgálóhoz való kapcsolódáshoz'
 description: Ez a rövid útmutató egy Java-kódrészletet tartalmaz, amellyel összekapcsolhatók és lekérhető Azure Database for PostgreSQL-kiszolgálóról származó adatok lekérdezése.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: mvc
+ms.custom: seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 6984cd456c0c119e86fec0960160e93e79d4d361
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: acb59c75441c729aabaea8b33b5253f4df7c1fc0
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359353"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845855"
 ---
 # <a name="azure-database-for-postgresql---single-server-use-java-to-connect-and-query-data"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló: A Java használata a kapcsolódáshoz és az adatlekérdezéshez
 Ebben a rövid útmutatóban azt szemléltetjük, hogy miként lehet Java-alkalmazás használatával csatlakozni a PostgreSQL-hez készült Azure Database-hez. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Java használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.
@@ -31,8 +31,8 @@ Emellett a következőket kell elvégezni:
 Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
-3. Kattintson a kiszolgálónévre.
+2. Azure Portal bal oldali menüjében válassza a **minden erőforrás**elemet, majd keresse meg a létrehozott kiszolgálót (például **mydemoserver**).
+3. Válassza ki a kiszolgálónevet.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
  ![Azure Database for PostgreSQL-kiszolgáló neve](./media/connect-java/1-connection-string.png)
 

@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 617a8fc823b7c40d047e5825dc31b095da132f29
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 886c93871a719770cbcbbcef2f536fd7515da34e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321455"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854215"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Rendellenesség-Kiderítő tárolók konfigurálása
 
@@ -41,7 +41,7 @@ Ez a tároló a következő konfigurációs beállításokkal rendelkezik:
 
 ## <a name="apikey-configuration-setting"></a>Konfigurációs beállítás apikey tulajdonsággal végzett tesztelése
 
-A `ApiKey` beállítás határozza meg a számlázási adatokat tároló nyomon követésére használt Azure-erőforrás kulcs. Meg kell adnia egy értéket a ApiKey, és az értéknek érvényes kulcsnak kell lennie  a [`Billing`](#billing-configuration-setting) konfigurációs beállításhoz megadott anomália-detektor erőforráshoz.
+A `ApiKey` beállítás határozza meg a számlázási adatokat tároló nyomon követésére használt Azure-erőforrás kulcs. Meg kell adnia egy értéket a ApiKey, és az értéknek érvényes kulcsnak kell lennie a [`Billing`](#billing-configuration-setting) konfigurációs beállításhoz megadott anomália-detektor erőforráshoz.
 
 Ez a beállítás a következő helyen érhető el:
 
@@ -59,7 +59,7 @@ Ez a beállítás a következő helyen érhető el:
 
 * Azure Portal: **Anomália detektor** A címkével ellátott áttekintés`Endpoint`
 
-|Szükséges| Name (Név) | Adattípus | Leírás |
+|Kötelező| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Karakterlánc | A számlázás végpont URI azonosítója<br><br>Példa:<br>`Billing=https://westus2.api.cognitive.microsoft.com` |
 
@@ -88,10 +88,10 @@ Az anomáliák Kiderítő tárolói nem használnak bemeneti vagy kimeneti csatl
 
 A gazdagép csatlakoztatási helye a pontos szintaxisa a gazdagép operációs rendszere függően változik. Emellett előfordulhat, hogy a [gazdaszámítógép](anomaly-detector-container-howto.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek. 
 
-|Optional| Name (Név) | Adattípus | Leírás |
+|Választható| Name (Név) | Adattípus | Leírás |
 |-------|------|-----------|-------------|
-|Nem engedélyezett| `Input` | Karakterlánc | Az anomália detektor tárolói nem használják ezt.|
-|Optional| `Output` | Sztring | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`. Ez az a hely a naplófájlok. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nem engedélyezett| `Input` | Sztring | Az anomália detektor tárolói nem használják ezt.|
+|Választható| `Output` | Sztring | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`. Ez az a hely a naplófájlok. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Példa docker-parancsok futtatása 
 
@@ -134,3 +134,8 @@ A következő Docker-példák az anomália detektor tárolóhoz tartoznak.
   Billing={ENDPOINT_URI} ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
   ```
+
+## <a name="next-steps"></a>További lépések
+
+* [Rendellenesség-Kiderítő tároló üzembe helyezése Azure Container Instances](how-to/deploy-anomaly-detection-on-container-instances.md)
+* [További információ az anomália-érzékelő API szolgáltatásáról](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

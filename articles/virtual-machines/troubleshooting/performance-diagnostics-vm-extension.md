@@ -1,6 +1,6 @@
 ---
-title: A teljesítmény az Azure Diagnostics Virtuálisgép-bővítmény Windows |} A Microsoft Docs
-description: A Windows vezet be az Azure teljesítménydiagnosztikai Virtuálisgép-bővítmény.
+title: Azure Performance Diagnostics virtuálisgép-bővítmény a Windowshoz | Microsoft Docs
+description: Bemutatja az Azure Performance Diagnostics virtuálisgép-bővítményét a Windows rendszerhez.
 services: virtual-machines-windows'
 documentationcenter: ''
 author: genlin
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f9a50b0e5dd4e96c9235348bbfaae1d8a6e54d53
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60307908"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846618"
 ---
-# <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>A teljesítmény az Azure Diagnostics Virtuálisgép-bővítmény Windows
+# <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure Performance Diagnostics VM-bővítmény Windows rendszerhez
 
-Az Azure teljesítménydiagnosztikai Virtuálisgép-bővítmény segít a teljesítmény diagnosztikai adatok gyűjtését a Windows virtuális gépek. A bővítmény elemzési hajt végre, és egy jelentésre az eredményeket és meglátásokat bemutató javaslatok azonosításához, és a virtuális gépen a teljesítménnyel kapcsolatos problémák megoldásához nyújt. Ez a bővítmény telepítését nevű hibaelhárítási eszköz [PerfInsights](https://aka.ms/perfinsights).
+Az Azure Performance Diagnostics VM-bővítmény segít a Windows rendszerű virtuális gépekről származó teljesítmény-diagnosztikai adatok gyűjtésében. A bővítmény elemzést végez, és jelentést készít a virtuális gépen a teljesítménnyel kapcsolatos problémák azonosításához és megoldásához szükséges eredményekről és javaslatokról. Ez a bővítmény egy [PerfInsights](https://aka.ms/perfinsights)nevű hibaelhárítási eszközt telepít.
 
 > [!NOTE]
-> Ha meg szeretné diagnosztika futtatása a virtuális Gépen az Azure Portalról a nem klasszikus virtuális gépek, az új felhasználói felület használata ajánlott. További információkért lásd: [teljesítménybeli problémák diagnosztizálása az Azure-beli virtuális gépek](performance-diagnostics.md) 
+> Ha a virtuális gépen lévő diagnosztikát szeretné futtatni a Azure Portal a nem klasszikus virtuális gépek számára, ajánlott az új felület használata. További információ: [Az Azure-beli virtuális gépek teljesítmény-diagnosztikája](performance-diagnostics.md) 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a bővítmény telepíthető a Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 és Windows Server 2016-ban. Is telepíthető a Windows 8.1 és Windows 10-es.
+Ez a bővítmény a Windows Server 2008 R2, a Windows Server 2012, a Windows Server 2012 R2 és a Windows Server 2016 rendszerre telepíthető. A Windows 8,1 és a Windows 10 rendszerre is telepíthető.
 
 ## <a name="extension-schema"></a>Bővítményséma
-A következő JSON-ra a séma Azure teljesítménydiagnosztikai Virtuálisgép-bővítmény mutatja be. Ez a bővítmény nevét és kulcsát egy tárfiókot a diagnosztikai kimenetet és a jelentés tárolásához szükséges. Ezek az értékek érzékenyek. Tárfiók kulcsa egy védett beállítás konfigurációjának belül kell tárolni. Azure-beli virtuális gép bővítmény védett beállítás adat titkosítva van, és csak a cél virtuális gépen a rendszer visszafejti. Vegye figyelembe, hogy **storageAccountName** és **storageAccountKey** kis-és nagybetűket. A következő szakaszban felsorolt más szükséges paramétereket.
+A következő JSON az Azure Performance Diagnostics virtuálisgép-bővítményének sémáját mutatja be. Ehhez a bővítményhez meg kell adni egy Storage-fiók nevét és kulcsát a diagnosztika kimenetének és jelentésének tárolásához. Ezek az értékek érzékenyek. A Storage-fiók kulcsát védett beállítási konfigurációban kell tárolni. Az Azure virtuálisgép-bővítmény védett beállítási adatvédelme titkosítva van, és csak a cél virtuális gépen van visszafejtve. Vegye figyelembe, hogy a **storageAccountName** és a **storageAccountKey** a kis-és nagybetűk megkülönböztetése. Az egyéb szükséges paraméterek a következő szakaszban vannak felsorolva.
 
 ```JSON
     {
@@ -67,61 +67,61 @@ A következő JSON-ra a séma Azure teljesítménydiagnosztikai Virtuálisgép-b
 
 ### <a name="property-values"></a>Tulajdonságok értékei
 
-|   **Name (Név)**   |**Érték és példa**|       **Leírás**      |
+|   **Name**   |**Érték/példa**|       **Leírás**      |
 |--------------|-------------------|----------------------------|
-|apiVersion|2015-06-15|API-verzió.
-|publisher|Microsoft.Azure.Performance.Diagnostics|A bővítmény közzétevő névterét.
-|type|AzurePerformanceDiagnostics|A Virtuálisgép-bővítmény típusa.
-|typeHandlerVersion|1.0|A kiterjesztés kezelő verziója.
-|performanceScenario|Alapszintű|A teljesítmény eset, amelyekre kapcsolatos adatok rögzítéséhez. Érvényes értékek a következők: **alapszintű**, **vmslow**, **Azure filesba –** , és **egyéni**.
-|traceDurationInSeconds|300|A nyomkövetési adatok, a nyomkövetési beállítások választásakor időtartama.
-|perfCounterTrace|p|Teljesítmény-számláló nyomkövetési lehetővé teszi. Érvényes értékek a következők **p** vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az üres érték.
-|networkTrace|n|Hálózati nyomkövetés engedélyezése lehetőséget. Érvényes értékek a következők **n** vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az üres érték.
-|xperfTrace|x|Lehetőség van a következő helyen nyomkövetés engedélyezése. Érvényes értékek a következők **x** vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az üres érték.
-|storPortTrace|s|StorPort-nyomkövetés engedélyezése lehetőséget. Érvényes értékek a következők **s** vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az üres érték.
-|srNumber|123452016365929|A támogatási jegy száma, ha elérhető. Hagyja meg az értéket, ha üres, ha nem rendelkezik.
-|requestTimeUtc|2017-09-28T22:08:53.736Z|Aktuális dátum és időpont (UTC). Ha a portálon a bővítmény telepítéséhez használ, nem kell ezt az értéket adja meg.
-|resourceId|/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}|A virtuális gép egyedi azonosítója.
-|storageAccountName|mystorageaccount|A diagnosztikai naplók és az eredmények tárolásához a tárfiók neve.
-|storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|A tárfiók kulcsa.
+|apiVersion|2015-06-15|Az API verziója.
+|publisher|Microsoft.Azure.Performance.Diagnostics|A bővítmény közzétevői névterét.
+|type|AzurePerformanceDiagnostics|A virtuálisgép-bővítmény típusa.
+|typeHandlerVersion|1.0|A bővítmény kezelőjének verziója.
+|performanceScenario|alapszintű|Az a teljesítménnyel kapcsolatos forgatókönyv, amelynek az adatai rögzítésére kerül. Az érvényes értékek akövetkezők: alapszintű, **vmslow**, **azurefiles**és **Custom**.
+|traceDurationInSeconds|300|A Nyomkövetések időtartama, ha a nyomkövetési beállítások bármelyike ki van választva.
+|perfCounterTrace|p|A teljesítményszámláló nyomkövetésének engedélyezése lehetőség. Az érvényes értékek: **p** vagy üres érték. Ha nem szeretné rögzíteni ezt a nyomkövetést, hagyja üresen az értéket.
+|networkTrace|n|A hálózati nyomkövetés engedélyezésének lehetősége. Az érvényes értékek: **n** vagy üres érték. Ha nem szeretné rögzíteni ezt a nyomkövetést, hagyja üresen az értéket.
+|xperfTrace|x|A XPerf nyomkövetés engedélyezésének lehetősége. Az érvényes értékek **x** vagy Empty értékűek. Ha nem szeretné rögzíteni ezt a nyomkövetést, hagyja üresen az értéket.
+|storPortTrace|s|A StorPort nyomkövetés engedélyezésének lehetősége. Az érvényes értékek: **s** vagy üres érték. Ha nem szeretné rögzíteni ezt a nyomkövetést, hagyja üresen az értéket.
+|srNumber|123452016365929|A támogatási jegy száma, ha elérhető. Ha nincs, hagyja üresen az értéket.
+|requestTimeUtc|2017-09-28T22:08:53.736Z|Az aktuális dátum időpontja (UTC). Ha a portált használja a bővítmény telepítéséhez, nem kell megadnia ezt az értéket.
+|resourceId|/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}|Egy virtuális gép egyedi azonosítója.
+|storageAccountName|mystorageaccount|A diagnosztikai naplók és eredmények tárolására szolgáló Storage-fiók neve.
+|storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|A Storage-fiók kulcsa.
 
 ## <a name="install-the-extension"></a>A bővítmény telepítése
 
-Kövesse ezeket az utasításokat a bővítmény telepíthető Windows virtuális gépek:
+Az alábbi utasításokat követve telepítse a bővítményt a Windows rendszerű virtuális gépekre:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki a virtuális gép, ahol szeretné telepíteni a bővítményt.
+2. Válassza ki azt a virtuális gépet, amelyre telepíteni kívánja ezt a bővítményt.
 
-    ![Képernyőkép az Azure portal, a virtuális gépek vannak kiemelve](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
-3. Válassza ki a **bővítmények** panelen, és válassza ki **Hozzáadás**.
+    ![Képernyőkép a Azure Portalről, a virtuális gépek kiemelésével](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
+3. Válassza ki a bővítmények panelt, és válassza a **Hozzáadás**lehetőséget.
 
-    ![Képernyőkép a bővítmények panelen, a kiemelt Hozzáadás](media/performance-diagnostics-vm-extension/select-extensions.png)
-4. Válassza ki **Azure teljesítménybeli problémák diagnosztizálása**, tekintse át a feltételeket és kikötéseket, és válassza ki **létrehozás**.
+    ![Képernyőkép a bővítmények panelről, a Hozzáadás Kiemelt](media/performance-diagnostics-vm-extension/select-extensions.png)
+4. Válassza az **Azure Performance Diagnostics**elemet, tekintse át a használati feltételeket, majd válassza a **Létrehozás**lehetőséget.
 
-    ![Képernyőfelvétel az új képernyő, a kiemelt Azure teljesítménybeli problémák diagnosztizálása](media/performance-diagnostics-vm-extension/create-azure-performance-diagnostics-extension.png)
-5. Adja meg a paraméterértékeket a telepítés, és válassza ki **OK** a bővítmény telepítésére. Támogatott forgatókönyvekkel kapcsolatos további információkért lásd: [a PerfInsights használata](how-to-use-perfInsights.md#supported-troubleshooting-scenarios). 
+    ![Képernyőkép az új erőforrás-képernyőről, az Azure Performance Diagnostics kiemelve](media/performance-diagnostics-vm-extension/create-azure-performance-diagnostics-extension.png)
+5. Adja meg a telepítés paramétereinek értékeit, majd kattintson az **OK** gombra a bővítmény telepítéséhez. További információ a támogatott forgatókönyvekről: [a PerfInsights használata](how-to-use-perfinsights.md#supported-troubleshooting-scenarios). 
 
-    ![Bővítmény párbeszédpanel telepítés képernyőképe](media/performance-diagnostics-vm-extension/install-the-extension.png)
-6. Ha a telepítés sikeres, megjelenik egy üzenet, ezt az állapotot jelzi.
+    ![A bővítmény telepítése párbeszédpanel képernyőképe](media/performance-diagnostics-vm-extension/install-the-extension.png)
+6. Ha a telepítés sikeres, megjelenik egy üzenet, amely jelzi, hogy ez az állapot jelenik meg.
 
-    ![Képernyőkép a kiépítés sikeres üzenetek](media/performance-diagnostics-vm-extension/provisioning-succeeded-message.png)
+    ![A kiépítés sikeres üzenetének képernyőképe](media/performance-diagnostics-vm-extension/provisioning-succeeded-message.png)
 
     > [!NOTE]
-    > A bővítmény akkor fut, amikor a kiépítés sikeres volt. Két percet vesz igénybe, vagy kevesebb, az alapszintű forgatókönyv végrehajtásához. Más esetekben futtatja az időtartam a telepítés során megadott keresztül.
+    > A bővítmény a kiépítés sikerességét követően fut. Az alapszintű forgatókönyvhöz legalább két percet vesz igénybe. Más esetekben a telepítés során megadott időtartamon keresztül fut.
 
 ## <a name="remove-the-extension"></a>Távolítsa el a bővítményt
-Távolítsa el a bővítményt a virtuális gépről, kövesse az alábbi lépéseket:
+A bővítmény virtuális gépről való eltávolításához kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), válassza ki a virtuális gépet, ahonnan a távolítsa el a bővítményt, majd válassza a **bővítmények** panelen. 
-2. Válassza ki a ( **...** ) a teljesítmény a diagnosztikai bővítmény bejegyzést a listából, és válassza ki a **Eltávolítás**.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), válassza ki azt a virtuális gépet, amelyről el szeretné távolítani ezt a bővítményt, majd válassza a **bővítmények** panelt. 
+2. Válassza a ( **..** .) lehetőséget a teljesítmény diagnosztikai bővítmény bejegyzéséhez a listából, majd válassza az **Eltávolítás**lehetőséget.
 
-    ![Képernyőkép a bővítmények panelről, eltávolítás kiemelésével](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
+    ![Képernyőkép a bővítmények panelről, az Eltávolítás kiemelve](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
 
     > [!NOTE]
-    > Is válassza ki a bővítmény bejegyzést, és válassza ki a **Eltávolítás** lehetőséget.
+    > Kiválaszthatja a bővítmény bejegyzését is, és az **Eltávolítás** lehetőséget is kiválaszthatja.
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
-Az Azure virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. A JSON-sémájában az előző szakaszban ismertetett Azure Resource Manager-sablon használható. Ez futtatja az Azure teljesítményét diagnosztikai Virtuálisgép-bővítmény egy Azure Resource Manager-sablon telepítése során. Itt látható egy minta sablont:
+Az Azure-beli virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. Az előző szakaszban részletezett JSON-sémát Azure Resource Manager sablonban lehet használni. Ezzel futtatja az Azure Performance Diagnostics virtuálisgép-bővítményt egy Azure Resource Manager sablon központi telepítése során. Példa a sablonra:
 
 ```
 {
@@ -209,8 +209,8 @@ Az Azure virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource
 }
 ```
 
-## <a name="powershell-deployment"></a>PowerShell környezetben végzett telepítés
-A `Set-AzVMExtension` parancs használható egy már meglévő virtuális gépek üzembe helyezéséhez Azure teljesítménydiagnosztikai Virtuálisgép-bővítmény.
+## <a name="powershell-deployment"></a>PowerShell-telepítés
+A `Set-AzVMExtension` parancs használatával üzembe helyezhető az Azure Performance Diagnostics virtuálisgép-bővítmény egy meglévő virtuális gépre.
 
 PowerShell
 
@@ -229,31 +229,31 @@ Set-AzVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -Location WestUS
 ```
 
-## <a name="information-on-the-data-captured"></a>Információ a rögzített adatokat
-A PerfInsights eszköz különböző naplókat, konfiguráció és diagnosztikai adatokat, attól függően, a választott forgatókönyv gyűjti. További információkért lásd: a [PerfInsights dokumentáció](https://aka.ms/perfinsights).
+## <a name="information-on-the-data-captured"></a>Információk a rögzített adatokról
+A PerfInsights eszköz különböző naplókat, konfigurációkat és diagnosztikai adatokat gyűjt a kiválasztott forgatókönyvtől függően. További információkért tekintse meg a [PerfInsights dokumentációját](https://aka.ms/perfinsights).
 
-## <a name="view-and-share-the-results"></a>Megjelenítheti és megoszthatja az eredmények
+## <a name="view-and-share-the-results"></a>Az eredmények megtekintése és megosztása
 
-A bővítmény kimenetében található egy zip-fájl feltöltése a tárfiókba, a telepítés során megadott, és 30 napig használatával megosztott [közös hozzáférésű Jogosultságkódok (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). A zip-fájl tartalmazza a diagnosztikai naplók és a egy jelentés eredményeket és meglátásokat bemutató javaslatok. Kimeneti zip-fájl egy SAS-hivatkozás nevű szöveges fájlban található *zipfilename*a mappában _saslink.txt **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<verzió >** . Bárki, aki ezt a hivatkozást a rendszer a zip-fájl letöltéséhez.
+A bővítmény kimenete olyan zip-fájlban található, amely fel van töltve a telepítés során megadott Storage-fiókba, és a megosztott [hozzáférési aláírások (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)használatával 30 napig meg van osztva. Ez a zip-fájl tartalmazza a diagnosztikai naplókat, valamint az eredményeket és javaslatokat tartalmazó jelentést. A kimeneti zip-fájlra mutató SAS-hivatkozás egy *zipfilename*_saslink. txt nevű szövegfájlban található a **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\\ \< mappában. > verziója**. Bárki, aki rendelkezik ezzel a hivatkozással, letöltheti a zip-fájlt.
 
-Segítse a támogatási szakember, a támogatási jegy dolgozik, a Microsoft előfordulhat, hogy használja a SAS-hivatkozás a diagnosztikai adatok letöltéséhez.
+Ha segítségre van szükség a támogatási szakembernek a támogatási jegyén való munkához, a Microsoft ezt az SAS-hivatkozást használja a diagnosztikai adatai letöltéséhez.
 
-A jelentés megtekintéséhez bontsa ki a zip-fájlt, és nyissa meg a **PerfInsights diagram jelentés.HTML** fájlt.
+A jelentés megtekintéséhez bontsa ki a zip-fájlt, és nyissa meg a **PerfInsights report. html** fájlt.
 
-Azt is tudnia kell, töltse le a zip-fájlt a bővítmény kiválasztásával közvetlenül a portálról.
+A zip-fájlt közvetlenül a portálról is letöltheti a bővítmény kiválasztásával.
 
-![Képernyőkép a teljesítménybeli problémák diagnosztizálása részletes állapota](media/performance-diagnostics-vm-extension/view-detailed-status.png)
+![A teljesítmény-diagnosztika részletes állapotának képernyőképe](media/performance-diagnostics-vm-extension/view-detailed-status.png)
 
 > [!NOTE]
-> A SAS-hivatkozásra a portálon megjelenő egyes esetekben nem működik. Ezt okozhatja egy hibás formátumú URL-címet a kódolási és dekódolási műveletek során. Ehelyett kérheti le a hivatkozást közvetlenül a fájlból *_saslink.txt a virtuális gépről.
+> Előfordulhat, hogy a portálon megjelenő SAS-hivatkozás néha nem működik. Ezt egy helytelen formátumú URL-cím okozhatja a kódolási és a dekódolási műveletek során. Ehelyett közvetlenül a * _saslink. txt fájlból kérheti le a hivatkozást a virtuális gépről.
 
 ## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
-- Bővítmény telepítési állapota (az értesítési területen) előfordulhat, hogy megjelenítése "Üzembe helyezés folyamatban", annak ellenére, hogy a bővítmény sikeresen van kiépítve.
+- A bővítmény központi telepítési állapota (az értesítési régióban) "központi telepítés folyamatban" állapotú lehet, noha a bővítmény sikeresen kiépítve.
 
-    A probléma biztonságosan figyelmen kívül hagyható, mindaddig, amíg a bővítmény állapota azt jelzi, hogy a bővítmény sikeresen van kiépítve.
-- A telepítés során problémák kezelheti a bővítmény-naplók használatával. Bővítmény végrehajtás kimenetének a rendszer naplózza a következő könyvtárban található fájlok:
+    Ez a probléma nyugodtan figyelmen kívül hagyható, ha a bővítmény állapota azt jelzi, hogy a bővítmény sikeresen kiépítve.
+- A telepítés során bizonyos hibákat a bővítményi naplók használatával lehet kezelni. A bővítmény-végrehajtás kimenete a következő könyvtárban található fájlokra van naplózva:
 
         C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
 
-Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/), és válassza ki **támogatás**. Az Azure-támogatás használatáról további információért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/)webhelyét, és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).

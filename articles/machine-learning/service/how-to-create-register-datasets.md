@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/21/2019
-ms.openlocfilehash: 473bf87e1961c3c7687b0867885adef40c14d71f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c5b423fca3e0ec116fceefb6867189f4f8413b96
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694330"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856090"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Adatkészletek létrehozása és elérése (előzetes verzió) Azure Machine Learning
 
@@ -38,7 +38,7 @@ Az adatkészletek létrehozásához és működéséhez a következőkre lesz sz
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-* Egy [Azure Machine learning szolgáltatás](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace) munkaterülete
+* Egy [Azure Machine learning szolgáltatás](how-to-manage-workspace.md) munkaterülete
 
 * A [Azure Machine learning SDK for Python telepítve](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), amely tartalmazza a azureml-adatkészletek csomagot.
 

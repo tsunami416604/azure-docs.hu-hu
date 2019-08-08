@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0e8df116a82f73af2348651a91aee3c34a595c45
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 452230a263e623f53346fcdb8cf310e73f171aee
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814097"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848607"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure-erőforrások támogatásának címkézése
 Ez a cikk azt mutatja be, hogy az erőforrástípus támogatja-e a [címkéket](resource-group-using-tags.md). A címkével ellátott oszlopban szereplő címke jelzi, hogy az erőforrástípus rendelkezik-e tulajdonsággal a címkéhez. A **címke a Cost jelentésben** feliratú oszlop jelzi, hogy az erőforrástípus átadja-e a címkét a Cost jelentésnek.
@@ -857,9 +857,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
-> | services | Igen |Igen |
-> | szolgáltatások/projektek | Igen |Igen |
-> | bővítőhely | Igen |Igen |
+> | services | Nem |Nem |
+> | szolgáltatások/projektek | Nem |Nem |
 
 ## <a name="microsoftdatashare"></a>Microsoft. DataShare
 

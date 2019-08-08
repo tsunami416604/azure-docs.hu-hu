@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 596020952fd02a414c050ac7fe7ab37d7137c391
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 4a745648f1b7abac7267d51cac9e1fe642ae13d8
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779665"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853682"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD jelszóvédelem üzembe helyezése
 
@@ -290,7 +290,9 @@ A telepítés akkor fejeződik be, ha a tartományvezérlő ügynök szoftverét
 
 ## <a name="upgrading-the-proxy-agent"></a>A proxy ügynök frissítése
 
-Ha elérhető az Azure ad jelszavas védelmi proxy szoftver újabb verziója, a frissítés a `AzureADPasswordProtectionProxySetup.exe` szoftver telepítőjének legújabb verziójának futtatásával valósítható meg. A proxy szoftver aktuális verziójának eltávolítása nem szükséges – a telepítő helyben történő frissítést hajt végre. A proxy szoftver frissítése során nincs szükség újraindításra. Előfordulhat, hogy a szoftverfrissítés szabványos MSI-eljárások használatával automatizálható, például `AzureADPasswordProtectionProxySetup.exe /quiet`:.
+Ha elérhető az Azure ad jelszavas védelmi proxy szoftver újabb verziója, a frissítés a `AzureADPasswordProtectionProxySetup.exe` szoftver telepítőjének legújabb verziójának futtatásával valósítható meg. A szoftver legújabb verziója a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=57071)érhető el.
+
+A proxy szoftver aktuális verziójának eltávolítása nem szükséges – a telepítő helyben történő frissítést hajt végre. A proxy szoftver frissítése során nincs szükség újraindításra. Előfordulhat, hogy a szoftverfrissítés szabványos MSI-eljárások használatával automatizálható, például `AzureADPasswordProtectionProxySetup.exe /quiet`:.
 
 A proxy ügynök támogatja az automatikus frissítést. Az automatikus frissítés a Microsoft Azure AD összekapcsolási ügynök frissítési szolgáltatását használja, amely a proxy szolgáltatással párhuzamosan települ. Az automatikus frissítés alapértelmezés szerint be van kapcsolva, és a set-AzureADPasswordProtectionProxyConfiguration parancsmag használatával engedélyezhető vagy letiltható. Az aktuális beállítás a Get-AzureADPasswordProtectionProxyConfiguration parancsmag használatával kérdezhető le. A Microsoft azt javasolja, hogy az automatikus frissítés engedélyezve legyen.
 
@@ -298,7 +300,9 @@ A `Get-AzureADPasswordProtectionProxy` parancsmag segítségével lekérdezhető
 
 ## <a name="upgrading-the-dc-agent"></a>A DC-ügynök frissítése
 
-Ha az Azure ad jelszavas védelem DC-ügynökének újabb verziója érhető el, a frissítés a `AzureADPasswordProtectionDCAgentSetup.msi` szoftvercsomag legújabb verziójának futtatásával valósítható meg. Nincs szükség a DC-ügynök szoftverének aktuális verziójának eltávolítására – a telepítő helyben történő frissítést hajt végre. A DC-ügynök szoftverének frissítésekor mindig újraindítás szükséges – ezt az alapszintű Windows-viselkedés okozza. 
+Ha az Azure ad jelszavas védelem DC-ügynökének újabb verziója érhető el, a frissítés a `AzureADPasswordProtectionDCAgentSetup.msi` szoftvercsomag legújabb verziójának futtatásával valósítható meg. A szoftver legújabb verziója a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=57071)érhető el.
+
+Nincs szükség a DC-ügynök szoftverének aktuális verziójának eltávolítására – a telepítő helyben történő frissítést hajt végre. A DC-ügynök szoftverének frissítésekor mindig újraindítás szükséges – ezt az alapszintű Windows-viselkedés okozza. 
 
 Előfordulhat, hogy a szoftverfrissítés szabványos MSI-eljárások használatával automatizálható, például `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`:.
 

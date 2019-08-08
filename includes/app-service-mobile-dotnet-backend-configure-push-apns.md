@@ -4,17 +4,17 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 83a0adf98298225b52d3b4fdfa2ca861ebb70bb9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 346f63109e673692d425ede6bdbcb6f633af80bb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179805"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857406"
 ---
-**.NET-háttérrendszert (C#)** :
+**.Net-háttérC#()** :
   
-1. A Visual Studióban kattintson a jobb gombbal a kiszolgálói projektet, és kattintson a **NuGet-csomagok kezelése**, keressen `Microsoft.Azure.NotificationHubs`, majd kattintson a **telepítése**. Ez telepíti a Notification Hubs kódtárat az értesítések küldése a háttérrendszerből.
-2. A háttérrendszer a Visual Studio-projektben nyissa meg a **tartományvezérlők** > **TodoItemController.cs**. A fájl elejéhez adja hozzá a következő `using` utasítást:
+1. A Visual Studióban kattintson a jobb gombbal a kiszolgálói projektre, majd kattintson a NuGet- `Microsoft.Azure.NotificationHubs` **csomagok kezelése**elemre, keresse meg, majd kattintson a **telepítés**gombra. Ezzel telepíti a Notification Hubs könyvtárat a háttérbeli értesítések küldéséhez.
+2. A háttér Visual Studio-projektben nyissa meg a **vezérlők** > **TodoItemController.cs**. Adja hozzá a következő `using` utasítást a fájl elejéhez:
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;
@@ -63,13 +63,13 @@ ms.locfileid: "67179805"
     }
     ```
 
-4. Tegye közzé újra a kiszolgálói projektet.
+4. A kiszolgálói projekt ismételt közzététele.
 
 **Node.js háttérrendszer**:
 
-1. Ha ezt még nem tette meg, [töltse le a gyorsindítási projekt](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) vagy más használatát a [online szerkesztő az Azure Portalon](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).    
+1. Állítsa be a háttér-projektet.    
 
-2. Cserélje le a todoitem.js tábla szkript a következő kódot:
+2. Cserélje le a todoitem. js tábla parancsfájlját a következő kódra:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -110,4 +110,4 @@ ms.locfileid: "67179805"
     module.exports = table;
     ```
 
-3. Ha szerkeszti a fájlt a helyi számítógépen, tegye közzé újra a kiszolgálói projektet.
+3. Ha a helyi számítógépen szerkeszti a fájlt, tegye közzé újra a kiszolgálói projektet.

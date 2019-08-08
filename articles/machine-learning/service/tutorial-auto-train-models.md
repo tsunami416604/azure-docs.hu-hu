@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: bbb9653173925e1443504aa3f2e9c5e6edbfc486
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 70a95cdba2a8b41c7b2fc3ee4b2664f049a84e95
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371040"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846016"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Oktatóanyag: Az automatizált gépi tanulás használata a regressziós modell létrehozásához
 
@@ -54,7 +54,7 @@ Ugorjon a telepítési [környezet beállítása](#start) a jegyzetfüzet lépé
 
 Az alábbi részekben ismertetett előfeltételek bármelyikét lekérheti.
 
-* [Felhőalapú notebook-kiszolgáló használata a](#azure) munkaterületen 
+* [Felhőalapú notebook-kiszolgáló használata a](#azure) munkaterületen
 * [Saját notebook-kiszolgáló](#server) használata
 
 ### <a name="azure"></a>Felhőalapú notebook-kiszolgáló használata a munkaterületen
@@ -688,6 +688,9 @@ automated_ml_config = AutoMLConfig(task='regression',
                                    **automl_settings)
 ```
 
+> [!NOTE]
+> Az automatizált gépi tanulás előfeldolgozásának lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos előfeldolgozási lépéseket a rendszer automatikusan alkalmazza a bemeneti adatokra.
+
 ### <a name="train-the-automatic-regression-model"></a>Az automatikus regressziós modell betanítása
 
 Indítsa el a kísérlet helyi futtatását. Adja át a `automated_ml_config` definiált objektumot a kísérletnek. Állítsa be a kimenetet `True` , hogy megtekintse az előrehaladást a kísérlet során:
@@ -764,7 +767,7 @@ Ugyanazokat az eredményeket a rendszer a munkaterületen tárolja.  A Futtatás
 ```
 local_run.get_portal_url()
 ```
-  
+
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>2\. lehetőség: Minden futtatási iteráció beolvasása és vizsgálata a Pythonban
 
@@ -1163,7 +1166,7 @@ plt.show()
 
 ![Előrejelzési pontdiagram](./media/tutorial-auto-train-models/automl-scatter-plot.png)
 
-`root mean squared error` Az eredmények kiszámítása. Használja a `y_test` dataframe. Alakítsa át egy listára, hogy összehasonlítsa az előre jelzett értékeket. A függvény `mean_squared_error` két tömb értéket vesz igénybe, és kiszámítja a közöttük lévő átlagos négyzetes hibát. Az eredmény négyzet gyökerének megadásával az y változóval megegyező egységekben talál **hibát.** Nagyjából azt jelzi, hogy a taxi viteldíjai milyen mértékben vannak a tényleges díjaktól:
+`root mean squared error` Az eredmények kiszámítása. Használja a `y_test` dataframe. Alakítsa át egy listára, hogy összehasonlítsa az előre jelzett értékeket. A függvény `mean_squared_error` két tömb értéket vesz igénybe, és kiszámítja a közöttük lévő átlagos négyzetes hibát. Az eredmény négyzet gyökerének megadásával az y változóval megegyező egységekben talál hibát. Nagyjából azt jelzi, hogy a taxi viteldíjai milyen mértékben vannak a tényleges díjaktól:
 
 ```python
 from sklearn.metrics import mean_squared_error

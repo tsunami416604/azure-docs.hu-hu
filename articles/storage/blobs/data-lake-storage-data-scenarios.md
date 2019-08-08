@@ -1,19 +1,19 @@
 ---
 title: Az Azure Data Lake Storage Gen2t érintő adatforgatókönyvek | Microsoft Docs
 description: Megismerheti azokat a különböző forgatókönyveket és eszközöket, amelyek segítségével az adatok betölthetők, feldolgozhatók, letölthetők és megjeleníthetők Data Lake Storage Gen2ban (korábbi nevén Azure Data Lake Store)
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: normesta
-ms.openlocfilehash: 010b7bc38caf83c12dd0d8b8e731fdbad6e45256
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.reviewer: stewu
+ms.openlocfilehash: cafe761d2b566a7bddce503765c11bf9f8e00f2a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422882"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847455"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>A Azure Data Lake Storage Gen2 használata big data követelményekhez
 
@@ -73,7 +73,7 @@ Ez a táblázat bemutatja, hogyan biztosíthat hozzáférést az egyes Azure-szo
 |Apache DistCp | Szerepkör hozzárendelése felhasználóhoz rendelt felügyelt identitáshoz | [HDInsight-fürt létrehozása Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
 |Azure Data Factory| Szerepkör hozzárendelése felhasználó által hozzárendelt felügyelt identitáshoz<br>**or**<br> Szerepkör hozzárendelése való kihelyezése<br>**or**<br> A Storage-fiók kulcsainak használata | [Társított szolgáltatás tulajdonságai](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#linked-service-properties) |
 |Azure HDInsight| Szerepkör hozzárendelése felhasználóhoz rendelt felügyelt identitáshoz | [HDInsight-fürt létrehozása Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)|
-|Azure Databricks| Szerepkör kiosztása egy egyszerű szolgáltatáshoz | [Útmutató: A portál használatával létrehozhat egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
+|Azure Databricks| Szerepkör kiosztása egy egyszerű szolgáltatáshoz | [Útmutató: Az erőforrásokhoz hozzáférő Azure AD-alkalmazás és -szolgáltatásnév létrehozása a portálon](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
 
 Az adott fájlokhoz és mappákhoz való hozzáférés biztosításához tekintse meg ezeket a cikkeket.
 

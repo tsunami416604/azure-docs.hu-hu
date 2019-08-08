@@ -15,20 +15,20 @@ ms.topic: quickstart
 ms.date: 02/05/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d7ff28d65c68c25613d1f61c00a6132ae93fdf6
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 703976e328eabb891e76459785484d929e2c5d3b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962498"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853141"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>Gyors útmutató: Fejlesztési környezet beállítása
 
-A Microsoft identitásplatformja lehetővé teszi a fejlesztők számára az egyéni Microsoft 365-környezetek és -identitások széles választékát célzó alkalmazások létrehozását. Első lépésként a Microsoft identity platform használatával kell hozzáférést egy környezethez, más néven az Azure AD-bérlővel, amely regisztrálása és alkalmazások kezelése, a Microsoft 365-adatokhoz való hozzáférése, és egyéni feltételes hozzáférési és a bérlői korlátozások telepítése.
+A Microsoft identitásplatformja lehetővé teszi a fejlesztők számára az egyéni Microsoft 365-környezetek és -identitások széles választékát célzó alkalmazások létrehozását. A Microsoft Identity platform használatának megkezdéséhez hozzá kell férnie egy olyan környezethez (más néven Azure AD-bérlőhöz), amely képes regisztrálni és kezelni az alkalmazásokat, hozzáférni Microsoft 365 adatokhoz, és üzembe helyezi az egyéni feltételes hozzáférési és bérlői korlátozásokat.
 
-A bérlő az egy szervezet reprezentációját. Az Azure AD egy dedikált példánya, amelyet a szervezetek vagy alkalmazásfejlesztők kapnak, amikor kapcsolatot hoznak létre a Microsofttal, például regisztrálnak az Azure, a Microsoft Intune vagy a Microsoft 365 szolgáltatásra.
+A bérlő egy szervezet képviselete. Az Azure AD egy dedikált példánya, amelyet a szervezetek vagy alkalmazásfejlesztők kapnak, amikor kapcsolatot hoznak létre a Microsofttal, például regisztrálnak az Azure, a Microsoft Intune vagy a Microsoft 365 szolgáltatásra.
 
 Mindegyik Azure AD-bérlő önálló, elkülönül a többi Azure AD-bérlőtől, és a munkahelyi, iskolai és ügyfélidentitások (ha Azure AD B2C-bérlőről van szó) saját leképezésével, valamint saját alkalmazásregisztrációkkal rendelkeznek. A bérlőn belül található alkalmazásregisztrációkkal megadható, hogy a hitelesítés csak a saját bérlőben vagy az összes bérlőben található fiókokból legyen-e lehetséges.
 
@@ -68,7 +68,7 @@ Ha még nem rendelkezik Azure AD-bérlővel, vagy ha újat szeretne létrehozni,
 - **Ország vagy régió**
 
 > [!NOTE]
-> A bérlő elnevezésekor alfanumerikus karaktereket használjon. Különleges karakterek nem engedélyezettek. A név nem haladhatja meg a maximális hossz 256 karakter.
+> A bérlő elnevezése esetén alfanumerikus karaktereket használjon. A speciális karakterek használata nem engedélyezett. A név nem lehet hosszabb 256 karakternél.
 
 ## <a name="social-and-local-accounts"></a>Közösségi és helyi fiókok
 

@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b89bd3992bd6249e0acd576fee7e1556968ad65
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 46b2ec4a790b5425d837d6a5530b8562ce85ca38
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334184"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852774"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Gyors útmutató: A Microsoft Graph API meghívása Univerzális Windows-platform- (UWP-) alkalmazásból
 
@@ -98,7 +98,7 @@ Ez a rövid útmutató egy olyan kódrészletet tartalmaz, amely bemutatja, hogy
 Ha a Windowsos gépen szeretné kipróbálni a gyors útmutatót:
 
 1. A Visual Studio eszköztárán válassza ki a megfelelő platformot (valószínűleg **x64** vagy **x86**, nem ARM).
-   > Figyelje meg, hogy a cél eszköz  az eszközről a *helyi gépre* változik
+   > Figyelje meg, hogy a cél eszköz az eszközről a *helyi gépre* változik
 1. Hibakeresés kiválasztása | **Indítás hibakeresés nélkül**
 
 ## <a name="more-information"></a>További információ

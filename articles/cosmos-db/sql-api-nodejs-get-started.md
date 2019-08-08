@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/05/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: ba1ec821bd25e3b9f4479c3d09fdf5ab981ab0a7
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: d30016381740c6e1a881ba8fcdaa6a6a719e6275
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305515"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855653"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node. js-konzol-alkalmazás létrehozása a JavaScript SDK-val Azure Cosmos DB SQL API-adat kezeléséhez
 
@@ -81,7 +81,7 @@ Most, hogy az alkalmazás már létezik, meg kell győződnie arról, hogy tud b
 
 1. Nyissa meg a ```config.js``` fájlt egy tetszőleges szövegszerkesztőben.
 
-1. Másolja és illessze be az alábbi kódrészletet, majd állítsa be a ```config.endpoint``` és ```config.primaryKey``` tulajdonságot a saját Azure Cosmos DB-végpontjának URI- és elsődleges kulcs értékeire. Mindkettő konfiguráció megtalálható az [Azure Portalon](https://portal.azure.com).
+1. Másolja és illessze be az alábbi kódrészletet, majd állítsa be a ```config.endpoint``` és ```config.key``` tulajdonságot a saját Azure Cosmos DB-végpontjának URI- és elsődleges kulcs értékeire. Mindkettő konfiguráció megtalálható az [Azure Portalon](https://portal.azure.com).
 
    ![Kulcsok lekérése az Azure Portalról képernyőkép][keys]
 
@@ -90,10 +90,10 @@ Most, hogy az alkalmazás már létezik, meg kell győződnie arról, hogy tud b
    var config = {}
 
    config.endpoint = "~your Azure Cosmos DB endpoint uri here~";
-   config.primaryKey = "~your primary key here~";
+   config.key = "~your primary key here~";
    ``` 
 
-1. Másolja és illessze be a ```database```, ```container``` és ```items``` adatokat az alábbi ```config```-objektumba oda, ahol megadta a ```config.endpoint``` és ```config.primaryKey``` tulajdonságot. Ha már rendelkezik olyan adattal, amelyet szeretne az adatbázisban tárolni, a Azure Cosmos DB adatáttelepítési eszközét az itt megadott módon nem definiálhatja. A config. js fájlnak a következő kóddal kell rendelkeznie:
+1. Másolja és illessze be a ```database```, ```container``` és ```items``` adatokat az alábbi ```config```-objektumba oda, ahol megadta a ```config.endpoint``` és ```config.key``` tulajdonságot. Ha már rendelkezik olyan adattal, amelyet szeretne az adatbázisban tárolni, a Azure Cosmos DB adatáttelepítési eszközét az itt megadott módon nem definiálhatja. A config. js fájlnak a következő kóddal kell rendelkeznie:
 
    [!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/config.js)]
 
@@ -112,26 +112,23 @@ Most, hogy az alkalmazás már létezik, meg kell győződnie arról, hogy tud b
    const config = require('./config');
    ```
 
-1. Másolja és illessze be a kódot, ha az előzőleg mentett ```config.endpoint``` és ```config.primaryKey``` használatával szeretne létrehozni egy új CosmosClient-ügyfelet.
+1. Másolja és illessze be a kódot, ha az előzőleg mentett ```config.endpoint``` és ```config.key``` használatával szeretne létrehozni egy új CosmosClient-ügyfelet.
 
    ```javascript
    const config = require('./config');
 
    // ADD THIS PART TO YOUR CODE
    const endpoint = config.endpoint;
-   const masterKey = config.primaryKey;
+   const key = config.key;
 
-   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
+   const client = new CosmosClient({ endpoint, key });
    ```
    
 > [!Note]
-> Ha csatlakozik a **Cosmos db emulátorhoz**, tiltsa le az SSL-ellenőrzést egyéni kapcsolati házirend létrehozásával.
+> Ha csatlakozik a **Cosmos db emulátorhoz**, tiltsa le az SSL-ellenőrzést a csomóponti folyamathoz:
 >   ```
->   const ConnectionPolicy = require('@azure/cosmos').ConnectionPolicy;
->   const connectionPolicy = new ConnectionPolicy();
->   connectionPolicy.DisableSSLVerification = true;
->
->   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey }, connectionPolicy });
+>   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+>   const client = new CosmosClient({ endpoint, key });
 >   ```
 
 Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges kóddal, vessünk egy pillantást az Azure Cosmos DB-erőforrások használatára.
@@ -141,7 +138,7 @@ Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges 
 1. Másolja és illessze be az alábbi kódot az adatbázis-azonosító és a tároló AZONOSÍTÓjának megadásához. Ezek az azonosítók azt ismertetik, hogy a Azure Cosmos DB ügyfél hol találja a megfelelő adatbázist és tárolót.
 
    ```javascript
-   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
+   const client = new CosmosClient({ endpoint, key } });
 
    // ADD THIS PART TO YOUR CODE
    const HttpStatusCodes = { NOTFOUND: 404 };
@@ -168,7 +165,7 @@ Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges 
    * Read the database definition
    */
    async function readDatabase() {
-      const { body: databaseDefinition } = await client.database(databaseId).read();
+      const { resource: databaseDefinition } = await client.database(databaseId).read();
       console.log(`Reading database:\n${databaseDefinition.id}\n`);
    }
    ```
@@ -203,9 +200,9 @@ Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges 
    const config = require('./config');
 
    const endpoint = config.endpoint;
-   const masterKey = config.primaryKey;
+   const key = config.key;
 
-   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
+   const client = new CosmosClient({ endpoint, key });
 
    const HttpStatusCodes = { NOTFOUND: 404 };
 
@@ -225,7 +222,7 @@ Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges 
    * Read the database definition
    */
    async function readDatabase() {
-     const { body: databaseDefinition } = await client.database(databaseId).read();
+     const { resource: databaseDefinition } = await client.database(databaseId).read();
     console.log(`Reading database:\n${databaseDefinition.id}\n`);
    }
 
@@ -279,7 +276,7 @@ A tárolók a **tárolók** osztály vagy a `createIfNotExists` Create függvén
     * Read the container definition
    */
    async function readContainer() {
-      const { body: containerDefinition } = await client.database(databaseId).container(containerId).read();
+      const { resource: containerDefinition } = await client.database(databaseId).container(containerId).read();
     console.log(`Reading container:\n${containerDefinition.id}\n`);
    }
    ```
@@ -307,9 +304,9 @@ A tárolók a **tárolók** osztály vagy a `createIfNotExists` Create függvén
    const config = require('./config');
 
    const endpoint = config.endpoint;
-   const masterKey = config.primaryKey;
+   const key = config.key;
 
-   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
+   const client = new CosmosClient({ endpoint, key });
 
    const HttpStatusCodes = { NOTFOUND: 404 };
 
@@ -347,7 +344,7 @@ A tárolók a **tárolók** osztály vagy a `createIfNotExists` Create függvén
     * Read the container definition
    */
    async function readContainer() {
-      const { body: containerDefinition } = await client.database(databaseId).container(containerId).read();
+      const { resource: containerDefinition } = await client.database(databaseId).container(containerId).read();
     console.log(`Reading container:\n${containerDefinition.id}\n`);
    }
 
@@ -379,7 +376,7 @@ A tárolók a **tárolók** osztály vagy a `createIfNotExists` Create függvén
 
 ## <a id="CreateItem"></a>Elemek létrehozása
 
-Egy elem az Items osztály Create függvényének használatával hozható létre  . Az SQL API használatakor az elemek dokumentumokként vannak kiképezve, amelyek felhasználó által definiált (tetszőleges) JSON-tartalmak. Most már beszúrhat egy elemet az Azure Cosmos DB-be.
+Egy elem az Items osztály Create függvényének használatával hozható létre . Az SQL API használatakor az elemek dokumentumokként vannak kiképezve, amelyek felhasználó által definiált (tetszőleges) JSON-tartalmak. Most már beszúrhat egy elemet az Azure Cosmos DB-be.
 
 1. Másolja és illessze be a **createFamilyItem** függvényt a **readContainer** függvény alá. A **createFamilyItem** függvény hozza létre a ```config``` objektumban mentett JSON-adatokat tartalmazó elemeket. Ellenőrizzük, hogy a létrehozás előtt nem létezik-e már ugyanazzal az AZONOSÍTÓval rendelkező tétel.
 
@@ -441,8 +438,8 @@ Azure Cosmos DB támogatja az egyes tárolókban tárolt JSON-dokumentumokon vé
         ]
     };
 
-    const { result: results } = await client.database(databaseId).container(containerId).items.query(querySpec, {enableCrossPartitionQuery:true}).toArray();
-    for (var queryResult of results) {
+    const { resources } = await client.database(databaseId).container(containerId).items.query(querySpec, {enableCrossPartitionQuery:true}).fetchAll();
+    for (var queryResult of resources) {
         let resultString = JSON.stringify(queryResult);
         console.log(`\tQuery returned ${resultString}\n`);
     }

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dae3f9f2f4a9f6966d3453123773887c244cf4e2
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 519a86bed6a3a09b476bce6435ae666d655dbe03
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334071"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852267"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Microsoft Graph API meghívása Univerzális Windows-platform alkalmazásból (XAML)
 
@@ -50,7 +50,7 @@ Ez az útmutató a következő NuGet-csomagokat használja:
 
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
-Ez a szakasz részletesen ismerteti a Windows asztali .NET-alkalmazások (XAML) integrálását a Microsofttal való bejelentkezéssel. Ezután lekérdezheti a tokent igénylő webes API-kat, például Microsoft Graph API-t.
+Ez a szakasz részletesen ismerteti a Windows asztali .NET-alkalmazások (XAML) integrálását a Microsofttalvaló bejelentkezéssel. Ezután lekérdezheti a tokent igénylő webes API-kat, például Microsoft Graph API-t.
 
 Ez az útmutató egy olyan alkalmazást hoz létre, amely egy Graph API, egy kijelentkezési gomb és a hívások eredményét megjelenítő szövegmezők lekérdezését jeleníti meg.
 
@@ -368,7 +368,7 @@ Ha készen áll a tesztelésre, válassza a **Microsoft Graph API**meghívása l
 
 ![Bejelentkezési oldal](./media/tutorial-v2-windows-uwp/sign-in-page.png)
 
-### <a name="consent"></a>Hozzájárulása
+### <a name="consent"></a>Hozzájárulás
 
 Amikor először jelentkezik be az alkalmazásba, a következőhöz hasonló beleegyezési képernyő jelenik meg. Válassza az **Igen** lehetőséget a hozzáféréshez való explicit beleegyezéshez:
 
@@ -389,7 +389,7 @@ A jogkivonat- `AcquireTokenInteractive` **információ** mezőben a vagy `Acquir
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>További információ a hatókörökről és a delegált engedélyekről
 
-A Microsoft Graph API-  nak a felhasználónak kell olvasnia a hatókört a felhasználói profil olvasásához. A rendszer alapértelmezés szerint automatikusan hozzáadja ezt a hatókört minden olyan alkalmazáshoz, amely az alkalmazás regisztrációs portálján van regisztrálva. A Microsoft Graph többi API-jának és a háttér-kiszolgáló egyéni API-jai további hatóköröket igényelhetnek. Microsoft Graph API-nak a naptárakat kell megadnia *. olvasási* hatókör a felhasználók naptárának listázásához.
+A Microsoft Graph API- nak a felhasználónak kell olvasnia a hatókört a felhasználói profil olvasásához. A rendszer alapértelmezés szerint automatikusan hozzáadja ezt a hatókört minden olyan alkalmazáshoz, amely az alkalmazás regisztrációs portálján van regisztrálva. A Microsoft Graph többi API-jának és a háttér-kiszolgáló egyéni API-jai további hatóköröket igényelhetnek. Microsoft Graph API-nak a naptárakat kell megadnia *. olvasási* hatókör a felhasználók naptárának listázásához.
 
 Ha egy alkalmazás kontextusában szeretné elérni a felhasználó naptárait, adja hozzá a *naptárakat. olvassa el* a delegált jogosultságokat az alkalmazás regisztrációs adataihoz. Ezután adja hozzá a *naptárak. Read* hatókört `acquireTokenSilent` a híváshoz.
 

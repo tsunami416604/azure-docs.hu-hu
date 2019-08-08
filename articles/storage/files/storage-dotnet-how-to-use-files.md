@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/22/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 35f29e425fc471e4df4a037ef312af0fd041dcd7
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: da8e82652b5406cb4e5fe6438f721e3394a4cd96
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699781"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854585"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel
 
@@ -55,10 +55,11 @@ Az oktatóanyagban szereplő példák hozzáadhatók a konzolalkalmazás `Progra
 Az Azure Storage ügyféloldali kódtárat bármilyen típusú .NET-alkalmazásban használhatja, beleértve az Azure Cloud Service-t vagy a webalkalmazást, valamint az asztali és mobil alkalmazásokat is. Ebben az útmutatóban az egyszerűség kedvéért egy konzolalkalmazást használunk.
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>A szükséges csomagok telepítése a NuGettel
-Két csomagra kell hivatkoznia a projektben az oktatóanyag teljesítéséhez:
+Ezek a csomagok, amelyekre a projektben hivatkozni kell az oktatóanyag elvégzéséhez:
 
 * [A .net-hez készült közös kódtár Microsoft Azure Storage](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Ez a csomag programozott hozzáférést biztosít a Storage-fiókjában található általános erőforrásokhoz.
 * [A .net-hez készült blob-függvénytár Microsoft Azure Storage](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/): Ez a csomag programozott hozzáférést biztosít a blob-erőforrásokhoz a Storage-fiókban.
+* [Microsoft Azure Storage a .net-hez készült file Library](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/): Ez a csomag programozott hozzáférést biztosít a Storage-fiókban található fájlok erőforrásaihoz.
 * [Microsoft Azure Configuration Manager .net-függvénytár](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlban lévő kapcsolatok karakterláncának elemzéséhez, függetlenül attól, hogy az alkalmazás hol fut.
 
 A NuGettel mindkét csomagot beszerezheti. Kövesse az alábbi lépéseket:

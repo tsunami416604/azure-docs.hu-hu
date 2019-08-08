@@ -3,20 +3,20 @@ title: Projekt akusztikai útmutatója egységgel
 titlesuffix: Azure Cognitive Services
 description: A mintaszöveg használatával kísérletezzen a Project akusztikai tervezési vezérlőkkel az egységben, és telepítse a Windows asztalra.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 93eb44bf91bc2c8346660a4d770ee6d83501c3ae
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: a36a16b6cb64c300647d16695edfbb73f4884104
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706605"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854862"
 ---
 # <a name="project-acoustics-unity-quickstart"></a>Projekt akusztikai egység – rövid útmutató
 A Project akusztikai minta tartalmának használata az egységhez a szimulált kialakítási vezérlőkkel való kísérletezéshez.

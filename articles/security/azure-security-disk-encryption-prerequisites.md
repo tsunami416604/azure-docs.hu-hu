@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 423fad943190232d9e5e674b98b62f4f0dffb8ae
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 2f7ad49fc56fc82955f79155838c69ff714aba2f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728751"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845877"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Az Azure Disk Encryption előfeltételei
 
@@ -28,7 +28,7 @@ A támogatott forgatókönyveket, amelyek a aktorcsoportot tárgyalt számára a
 
 ## <a name="supported-vm-sizes"></a>Támogatott virtuálisgép-méretek
 
-Azure Disk Encryption a minimális memória követelményeinek megfelelő virtuális gépeken érhető el:
+Azure Disk Encryption nem érhető el az [alapszintű, a sorozatú virtuális gépeken](/pricing/details/virtual-machines/series/). Azure Disk Encryption a minimális memória követelményeinek megfelelő más virtuális gépeken érhető el:
 
 | Virtuális gép | Minimális memória követelménye |
 |--|--|

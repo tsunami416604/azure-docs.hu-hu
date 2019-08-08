@@ -1,6 +1,6 @@
 ---
-title: A PerfInsights használata a Microsoft Azure-ban |} A Microsoft Docs
-description: A PerfInsights használata Windows VM teljesítménnyel kapcsolatos hibák elhárítására megtanulni.
+title: A PerfInsights használata a Microsoft Azureban | Microsoft Docs
+description: Megtudhatja, hogyan használható a PerfInsights a Windowsos virtuális gépek teljesítményével kapcsolatos problémák elhárításához.
 services: virtual-machines-windows'
 documentationcenter: ''
 author: anandhms
@@ -14,305 +14,305 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 26301e9a8aef29f1ff786f4fcd28b806eb10b8df
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318352"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846739"
 ---
 # <a name="how-to-use-perfinsights"></a>A PerfInsights használata
 
-[A PerfInsights](https://aka.ms/perfinsightsdownload) önsegítő diagnosztikai eszköz, amely összegyűjti és elemzi a diagnosztikai adatokat, és jelentést készít az Azure-beli Windows virtuális gép teljesítmény kapcsolatos problémák elhárítása érdekében. Virtuális gépeken is futtatható a PerfInsights önálló eszközként, a portál segítségével közvetlenül a [teljesítménybeli problémák diagnosztizálása az Azure-beli virtuális gépek](performance-diagnostics.md), vagy ha [Azure teljesítménydiagnosztikai Virtuálisgép-bővítmény ](performance-diagnostics-vm-extension.md).
+A [PerfInsights](https://aka.ms/perfinsightsdownload) egy önsegítő diagnosztikai eszköz, amely összegyűjti és elemzi a diagnosztikai adatokat, és jelentést nyújt a Windows rendszerű virtuális gépek teljesítményével kapcsolatos problémák megoldásához az Azure-ban. A PerfInsights virtuális gépeken is futtathatók önálló eszközként, közvetlenül a portálról az [Azure Virtual Machines teljesítmény-diagnosztika](performance-diagnostics.md)használatával vagy az [Azure Performance Diagnostics](performance-diagnostics-vm-extension.md)virtuálisgép-bővítményének telepítésével.
 
-Ha teljesítményproblémákat okozhat a virtuális gépeket, mielőtt kapcsolatba lépne a támogatási tapasztalja, futtassa ezt az eszközt.
+Ha teljesítménnyel kapcsolatos problémákat tapasztal a virtuális gépekkel kapcsolatban, akkor a támogatáshoz való kapcsolatfelvétel előtt futtassa ezt az eszközt.
 
 ## <a name="supported-troubleshooting-scenarios"></a>Támogatott hibaelhárítási forgatókönyvek
 
-A PerfInsights összegyűjtheti, és elemezheti a különféle információkat. Az alábbiakban gyakori forgatókönyveket fednek le.
+A PerfInsights több fajta információt gyűjthet és elemez. A következő szakaszban a gyakori forgatókönyvek jelennek meg.
 
 ### <a name="quick-performance-analysis"></a>Gyors teljesítmény elemzése
 
-Ebben a forgatókönyvben gyűjti a lemezkonfiguráció és egyéb fontos információkat, beleértve:
+Ez a forgatókönyv a lemez konfigurációját és egyéb fontos információkat gyűjt, beleértve a következőket:
 
 -   Eseménynaplók
 
--   Az összes bejövő és kimenő kapcsolatok hálózati állapota
+-   Az összes bejövő és kimenő kapcsolat hálózati állapota
 
--   Hálózati és tűzfalbeállításokat konfigurációs beállításai
+-   Hálózati és tűzfal konfigurációs beállításai
 
--   A rendszer a jelenleg futó összes alkalmazás feladatlista
+-   A rendszeren jelenleg futó összes alkalmazás feladatlistája
 
--   A Microsoft SQL Server adatbázis konfigurációs beállításai (Ha a virtuális gép ki van jelölve egy SQL Servert futtató kiszolgáló)
+-   Adatbázis-konfigurációs beállítások Microsoft SQL Server (ha a virtuális gép SQL Server-t futtató kiszolgálóként van azonosítva)
 
--   Tárolási megbízhatóság számlálók
+-   Tárolási megbízhatósági számlálók
 
 -   Fontos Windows-gyorsjavítások
 
--   Telepített fájlrendszerszűrő-illesztőprogramok
+-   Telepített szűrő-illesztőprogramok
 
-Ez a passzív gyűjtemény, amely nem lehet hatással a rendszer. 
+Ez az információ passzív gyűjteménye, amely nem érinti a rendszerét. 
 
 >[!Note]
->Ebben a forgatókönyvben az alábbi esetekben minden automatikusan tartalmazza:
+>Ezt a forgatókönyvet a következő esetekben automatikusan tartalmazza a rendszer:
 
-### <a name="benchmarking"></a>A teljesítménytesztek
+### <a name="benchmarking"></a>Teljesítménymérésre
 
-Ebben a forgatókönyvben futtatja a [Diskspd](https://github.com/Microsoft/diskspd) teljesítményteszt (IOPS és MB/s) az összes olyan meghajtón, a virtuális géphez csatolt. 
+Ez a forgatókönyv a [Diskspd](https://github.com/Microsoft/diskspd) teljesítményteszt-tesztet (IOPS és MBPS) futtatja a virtuális géphez csatolt összes meghajtón. 
 
 > [!Note]
-> Ebben a forgatókönyvben befolyásolhatja a rendszer, és a egy éles rendszeren nem futtatható. Ha szükséges, futtassa az ebben a forgatókönyvben egy dedikált karbantartási időszakban esetleges problémák elkerülése érdekében. Egy nyomkövetési vagy a teljesítményteszt teszt által okozott nagyobb munkaterhelést hátrányosan befolyásolhatja a virtuális gép teljesítményét.
+> Ez a forgatókönyv hatással lehet a rendszerre, és nem futtatható éles üzemi rendszeren. Ha szükséges, futtassa ezt a forgatókönyvet egy dedikált karbantartási ablakban a problémák elkerülése érdekében. A nyomkövetési vagy teljesítményteszt-tesztek által okozott megnövekedett munkaterhelés negatív hatással lehet a virtuális gép teljesítményére.
 >
 
-### <a name="performance-analysis"></a>Teljesítményelemzés
+### <a name="performance-analysis"></a>Teljesítmény elemzése
 
-Ebben a forgatókönyvben fut egy [teljesítményszámláló](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) nyomkövetési a számlálók a RuleEngineConfig.json fájlban megadott használatával. Ha a virtuális gép, amelyen fut az SQL Server-kiszolgálóként, futtatja a teljesítmény a számláló a nyomkövetés. Így a számlálók a RuleEngineConfig.json fájlban található használatával hajtja végre. Ebben a forgatókönyvben a diagnosztikai teljesítményadatokat is tartalmaz.
+Ez a forgatókönyv a [teljesítményszámláló](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) nyomkövetését a RuleEngineConfig. JSON fájlban megadott számlálók használatával futtatja. Ha a virtuális gép a SQL Server rendszert futtató kiszolgálóként van azonosítva, a teljesítményszámláló-nyomkövetés fut. Ezt a RuleEngineConfig. JSON fájlban található számlálók használatával végezheti el. Ez a forgatókönyv a teljesítmény-diagnosztikai adatait is tartalmazza.
 
-### <a name="azure-files-analysis"></a>Az Azure Files-elemzés
+### <a name="azure-files-analysis"></a>Azure Files elemzése
 
-Ebben a forgatókönyvben egy speciális teljesítmény számláló rögzítési együtt a hálózati nyomkövetés futtatja. A rögzítési minden a Server Message Block (SMB) ügyfél megosztások számlálókat tartalmaz. Az alábbiakban néhány főbb SMB ügyfél megosztás teljesítményszámlálók, amelyek részei a rögzítést:
+Ez a forgatókönyv egy speciális teljesítményszámláló-rögzítést futtat egy hálózati nyomkövetéssel együtt. A rögzítés magában foglalja az összes SMB-ügyfél megosztási számlálóját. Az alábbiakban néhány, a rögzítés részét képező SMB-ügyfél-megosztási teljesítményszámlálók találhatók:
 
-| **Típus**     | **Az SMB-ügyfél megosztások számláló** |
+| **Típus**     | **SMB-ügyfél megosztási számlálója** |
 |--------------|-------------------------------|
-| IO         | Adatok vonatkozó kérelmek/másodperc             |
-|              | Olvasási kéréseinek száma másodpercenként             |
-|              | Írási kéréseinek száma másodpercenként            |
-| Késés      | Átlagos műveleti idő (mp) / kérelem         |
-|              | Átlagos mp/Olvasás                 |
-|              | Átlagos mp/írás                |
-| I/o-mérete      | Átl. Bájt/kérelem       |
-|              | Átl. Olvasott bájtok /               |
+| IOPS         | Adatkérések másodpercenkénti száma             |
+|              | Olvasási kérelmek/másodperc             |
+|              | Írási kérelmek/másodperc            |
+| Késés      | Átlagos/mp/adatkérés         |
+|              | Átlagos/olvasási sebesség (mp)                 |
+|              | Átlagos/írási sebesség (mp)                |
+| IO-méret      | Átl. Bájt/adat kérése       |
+|              | Átl. Bájt/olvasás               |
 |              | Átl. Bájt/írás              |
-| Teljesítmény   | Adatok bájt/mp                |
-|              | Olvasási bájt/mp                |
-|              | Írási bájt/mp               |
-| Várólista hossza | Átl. Olvasási várólistájának hossza        |
-|              | Átl. Írás a várólista hossza       |
-|              | Átl. Adatok várólistájának hossza        |
+| Teljesítmény   | Adatmennyiség (bájt/s)                |
+|              | Olvasott bájt/mp                |
+|              | Írt bájt/mp               |
+| Várólista hossza | Átl. Olvasási várólista hossza        |
+|              | Átl. Írási várólista hossza       |
+|              | Átl. Adatvárólista hossza        |
 
-### <a name="advanced-performance-analysis"></a>Speciális teljesítményelemzése
+### <a name="advanced-performance-analysis"></a>Fejlett teljesítmény-elemzés
 
-Egy speciális Teljesítményelemzés futtatásakor a nyomkövetések párhuzamos választja. Ha azt szeretné, futtathatja őket az összes (teljesítményszámláló, következő helyen, hálózati és StorPort).  
+Ha speciális teljesítmény-elemzést futtat, a Nyomkövetések lehetőség kiválasztásával párhuzamosan futtathatók. Ha szeretné, futtathatja az összeset (teljesítményszámláló, XPerf, hálózat és StorPort).  
 
 > [!Note]
-> Ebben a forgatókönyvben befolyásolhatja a rendszer, és a egy éles rendszeren nem futtatható. Ha szükséges, futtassa az ebben a forgatókönyvben egy dedikált karbantartási időszakban esetleges problémák elkerülése érdekében. Egy nyomkövetési vagy a teljesítményteszt teszt által okozott nagyobb munkaterhelést hátrányosan befolyásolhatja a virtuális gép teljesítményét.
+> Ez a forgatókönyv hatással lehet a rendszerre, és nem futtatható éles üzemi rendszeren. Ha szükséges, futtassa ezt a forgatókönyvet egy dedikált karbantartási ablakban a problémák elkerülése érdekében. A nyomkövetési vagy teljesítményteszt-tesztek által okozott megnövekedett munkaterhelés negatív hatással lehet a virtuális gép teljesítményére.
 >
 
-## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>Milyen típusú információkat gyűjti a PerfInsights?
+## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>Milyen típusú információkat gyűjt a PerfInsights?
 
-Windows virtuális gép, a lemezek vagy a tárolási készletek konfigurációt, a teljesítményszámlálók, információkat naplózza, és különböző nyomkövetéseket. Attól függ, a teljesítmény forgatókönyvet használja. Az alábbi táblázat részletesen:
+A Windows rendszerű virtuális gépekre, lemezekre vagy tárolási készletek konfigurálására, a teljesítményszámlálók, a naplók és a különböző nyomkövetési adatok gyűjtésére vonatkozó információk. Ez a használt teljesítménnyel kapcsolatos forgatókönyvtől függ. A következő táblázat a részleteket tartalmazza:
 
-|Összegyűjtött adatok                              |  |  | Teljesítmény-forgatókönyvek |  |  | |
+|Összegyűjtött adatok                              |  |  | Teljesítménnyel kapcsolatos forgatókönyvek |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | Gyors teljesítmény elemzése | A teljesítménytesztek | Teljesítményelemzés | Az Azure Files-elemzés | Speciális teljesítményelemzése |
-| Eseménynaplók adatait       | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
+|                               | Gyors teljesítmény elemzése | Teljesítménymérésre | Teljesítmény elemzése | Azure Files elemzése | Fejlett teljesítmény-elemzés |
+| Az eseménynaplók adatai       | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Rendszerinformáció                | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Kötet térkép                        | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Lemez térkép                          | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Feladatok futtatása                     | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Tárolási megbízhatóság számlálók      | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
+| Kötet térképe                        | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
+| Lemezes Térkép                          | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
+| Futó tevékenységek                     | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
+| Tárolási megbízhatósági számlálók      | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Szolgáltatás adatai               | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Fsutil kimenet                     | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Szűrő-illesztőprogram adatai                | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Netstat parancs kimenete                    | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
+| Illesztőprogram-adatok szűrése                | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
+| Netstat kimenet                    | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Hálózati konfiguráció             | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Tűzfal-konfiguráció            | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| SQL Server-konfiguráció          | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Teljesítmény-diagnosztikai nyomkövetés *  | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Teljesítmény-számláló nyomkövetési **      |                            |                                    | Igen                      |                      | Igen                  |
-| Az SMB-számláló nyomkövetési **              |                            |                                    |                          | Igen                  |                      |
-| Az SQL Server számláló nyomkövetési **       |                            |                                    | Igen                      |                      | Igen                  |
-| A következő helyen nyomkövetési                       |                            |                                    |                          |                      | Igen                  |
+| Tűzfal konfigurációja            | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
+| SQL Server konfiguráció          | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
+| Teljesítmény-diagnosztika nyomkövetése *  | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
+| Teljesítményszámláló nyomkövetése * *      |                            |                                    | Igen                      |                      | Igen                  |
+| SMB-számláló nyomkövetése * *              |                            |                                    |                          | Igen                  |                      |
+| SQL Server számláló nyomkövetése * *       |                            |                                    | Igen                      |                      | Igen                  |
+| XPerf nyomkövetés                       |                            |                                    |                          |                      | Igen                  |
 | StorPort-nyomkövetés                    |                            |                                    |                          |                      | Igen                  |
 | Hálózati nyomkövetés                     |                            |                                    |                          | Igen                  | Igen                  |
-| A Diskspd referenciaalap nyomkövetési x       |                            | Igen                                |                          |                      |                      |
+| Diskspd teljesítményteszt nyomkövetése * * *       |                            | Igen                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
-### <a name="performance-diagnostics-trace-"></a>Teljesítménybeli problémák diagnosztizálása a nyomkövetési (*)
+### <a name="performance-diagnostics-trace-"></a>Teljesítmény-diagnosztika nyomkövetése (*)
 
-Az adatok gyűjtéséhez és a folyamatban lévő teljesítménybeli problémák diagnosztizálása a háttérben fut, egy szabályalapú motor. A következő szabályok jelenleg támogatja:
+A háttérben futtat egy szabály-alapú motort az adatok gyűjtéséhez és a folyamatban lévő teljesítménnyel kapcsolatos problémák diagnosztizálásához. Jelenleg a következő szabályok támogatottak:
 
-- HighCpuUsage szabály: Magas CPU-használat időszakok észleli, és a felső CPU-használat fogyasztók megjelenítése az érintett időszakokban.
-- HighDiskUsage szabály: Észleli a időszakai méretű fizikai lemezeken, és bemutatja az első lemez használati fogyasztók az érintett időszakokban.
-- HighResolutionDiskMetric szabály: Az egyes fizikai lemezek 50 ezredmásodperc IOPS, az átviteli sebesség és az i/o várakozási ideje metrika mutatja. Segít gyorsan azonosítani az időszakok szabályozás lemez.
-- HighMemoryUsage szabály: Magas memória időszakai észleli, és bemutatja a felső memória használati fogyasztók az érintett időszakokban.
+- HighCpuUsage szabály: Észleli a PROCESSZORok magas kihasználtsági időszakait, és megjeleníti az adott időszakokban a legfelső szintű CPU-használati felhasználókat.
+- HighDiskUsage szabály: Észleli a nagy kihasználtságú lemezeket a fizikai lemezeken, és megjeleníti a legfelső szintű felhasználási felhasználókat az adott időszakokban.
+- HighResolutionDiskMetric szabály: Az egyes fizikai lemezek IOPS, átviteli sebességét és I/O-késleltetési metrikáit jeleníti meg 50 ezredmásodpercben. Segít a lemez-szabályozási időszakok gyors azonosításában.
+- HighMemoryUsage szabály: Észleli a nagy memória-használati időszakokat, és megjeleníti az adott időszakokban a legfelső szintű használatú felhasználókat.
 
 > [!NOTE] 
-> Jelenleg a Windows-verziókat, amelyek tartalmazzák a .NET-keretrendszer 4.5-ös vagy újabb verziói támogatottak.
+> Jelenleg a .NET-keretrendszer 4,5-es vagy újabb verzióit tartalmazó Windows-verziók támogatottak.
 
-### <a name="performance-counter-trace-"></a>Teljesítmény-számláló nyomkövetési (*)
+### <a name="performance-counter-trace-"></a>Teljesítményszámláló nyomkövetése (* *)
 
-Gyűjti a következő teljesítményszámlálókkal:
+A következő teljesítményszámlálók összegyűjtése:
 
-- \Process, \Processor, \Memory, \Thread, \PhysicalDisk és \LogicalDisk
-- Lapok, \Cache\Lazy írási kiürítéseinek száma/s, \Server\Pool \Cache\Dirty lapozható, és a lapozható \Server\Pool hibák
-- Kijelölt számlálók alatt \Network \IPv4\Datagrams, \IPv6\Datagrams, \TCPv4\Segments, \TCPv6\Segments, \Network Adapter, \WFPv4\Packets, \WFPv6\Packets, \UDPv4\Datagrams, \UDPv6\Datagrams, \TCPv4\Connection, \TCPv6\Connection, felületén \ Hálózati QoS Policy\Packets \Per hálózati adapter kártya processzortevékenység és \Microsoft Winsock BSP
+- \Process, \Processor, \Memory, \Thread, \PhysicalDisk és \Logikai lemez
+- \Cache\Dirty-lapok, \Cache\Lazy-írási ürítések/mp, \Server\Pool-nem lapozható, hibák és \Server\Pool lapozható hibák
+- A \ hálózati felület, a \IPv4\Datagrams, a \IPv6\Datagrams, a \TCPv4\Segments, a \TCPv6\Segments, a \ hálózati-adapter, a \WFPv4\Packets, a \WFPv6\Packets, a \UDPv4\Datagrams, a \UDPv6\Datagrams, a \TCPv4\Connection, a \TCPv6\Connection, \ Hálózati QoS-Policy\Packets, \Per processzor hálózati kártya tevékenység és \Microsoft Winsock BSP
 
-#### <a name="for-sql-server-instances"></a>Az SQL Server-példányok
-- \SQL server: Buffer Manager \SQLServer:Resource készlet statisztikák és \SQLServer:SQL Statistics\
+#### <a name="for-sql-server-instances"></a>SQL Server példányok esetén
+- \SQL-kiszolgáló: puffer-kezelő, \SQLServer: erőforráskészlet-statisztika és \SQLServer: SQL-statisztika \
 - \SQLServer:Locks, \SQLServer:General, Statistics
 - \SQLServer:Access Methods
 
-#### <a name="for-azure-files"></a>Az Azure Files szolgáltatáshoz
-\SMB Ügyfélmegosztások
+#### <a name="for-azure-files"></a>Azure Files
+\SMB-ügyfelek megosztása
 
-### <a name="diskspd-benchmark-trace-"></a>A Diskspd referenciaalap nyomkövetési (*)
-A Diskspd-i/o terhelési tesztek (operációsrendszer-lemez [írási] és [olvasási/írási] készlet meghajtók)
+### <a name="diskspd-benchmark-trace-"></a>Diskspd teljesítményteszt nyomkövetése (* * *)
+Diskspd I/O-munkaterhelési tesztek (operációsrendszer-lemez [írás] és készlet-meghajtók [olvasás/írás])
 
-## <a name="run-the-perfinsights-tool-on-your-vm"></a>A PerfInsights eszköz futtatásához a virtuális Gépen
+## <a name="run-the-perfinsights-tool-on-your-vm"></a>Futtassa a PerfInsights eszközt a virtuális gépen
 
-### <a name="what-do-i-have-to-know-before-i-run-the-tool"></a>Mit kell tudni szeretnék az eszköz futtatása előtt? 
+### <a name="what-do-i-have-to-know-before-i-run-the-tool"></a>Mit kell tudni az eszköz futtatása előtt? 
 
-#### <a name="tool-requirements"></a>Eszköz követelményei
+#### <a name="tool-requirements"></a>Eszközre vonatkozó követelmények
 
--  Ezzel az eszközzel kell futtatni a virtuális gépen, amely rendelkezik a teljesítménnyel kapcsolatos problémák. 
+-  Ezt az eszközt a teljesítménnyel kapcsolatos problémát biztosító virtuális gépen kell futtatni. 
 
--  A következő operációs rendszerek támogatottak: A Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 és Windows Server 2016-ban; Windows 8.1 és Windows 10-es.
+-  A következő operációs rendszerek támogatottak: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 és Windows Server 2016; Windows 8,1 és Windows 10.
 
-#### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Lehetséges problémákat, amikor az eszközt futtatja az éles virtuális gépek
+#### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Lehetséges problémák az eszköz éles virtuális gépeken való futtatásakor
 
--  Teljesítménymérési forgatókönyv vagy a "Komplex Teljesítményelemzés" forgatókönyvet, amely a következő helyen vagy a Diskspd használatára van konfigurálva az eszköz kedvezőtlen hatással lehet a teljesítmény, a virtuális gép. Ezek a forgatókönyvek nem éles környezetben fog futni.
+-  A benchmarking forgatókönyvhöz vagy a XPerf vagy Diskspd használatára konfigurált "Advanced Performance Analysis" forgatókönyv esetén az eszköz negatív hatással lehet a virtuális gép teljesítményére. Ezeket a forgatókönyveket nem szabad éles környezetben futtatni.
 
--  Teljesítménymérési forgatókönyv vagy a "Komplex Teljesítményelemzés" forgatókönyvet, amely a Diskspd használatára van konfigurálva győződjön meg arról, hogy nincs más háttérben futó tevékenység rontja az I/O munkaterheléstől.
+-  A benchmarking forgatókönyvhöz vagy a Diskspd használatára konfigurált "Advanced Performance Analysis" forgatókönyvhöz győződjön meg arról, hogy egyetlen más háttérbeli tevékenység sem zavarja az I/O-munkaterhelést.
 
--  Alapértelmezés szerint az eszköz az ideiglenes meghajtó használja a adatainak gyűjtéséről. Ha a nyomkövetés engedélyezve van a hosszabb ideig marad, az összegyűjtött adatok mennyisége hasznosak lehetnek. Csökkentheti az ideiglenes lemezen található rendelkezésre állását, és így hatással lehet a bármilyen alkalmazás, amely a meghajtó támaszkodik.
+-  Alapértelmezés szerint az eszköz az ideiglenes tárolót használja az adatok gyűjtésére. Ha hosszabb ideig van engedélyezve a nyomkövetés, a gyűjtött adatok mennyisége is releváns lehet. Ezzel csökkentheti az ideiglenes lemez tárterületének rendelkezésre állását, és így hatással lehet a meghajtón alapuló alkalmazásokra.
 
-### <a name="how-do-i-run-perfinsights"></a>Hogyan működik a PerfInsights? 
+### <a name="how-do-i-run-perfinsights"></a>Hogyan futtatni a PerfInsights-t? 
 
-Futtathatja a PerfInsights virtuális gépen történő telepítésével [Azure teljesítménydiagnosztikai Virtuálisgép-bővítmény](performance-diagnostics-vm-extension.md). Is futtathatja azt egy önálló eszközként. 
+Az [Azure Performance Diagnostics](performance-diagnostics-vm-extension.md)virtuálisgép-bővítményének telepítésével virtuális gépen is futtathat PerfInsights. Önálló eszközként is futtatható. 
 
-**Telepítse és futtassa a PerfInsights az Azure Portalról**
+**A PerfInsights telepítése és futtatása a Azure Portal**
 
-Ezzel a beállítással kapcsolatos további információkért lásd: [telepítése Azure teljesítménydiagnosztikai Virtuálisgép-bővítmény](performance-diagnostics-vm-extension.md#install-the-extension).  
+További információ erről a lehetőségről: az [Azure Performance Diagnostics virtuálisgép-bővítmény telepítése](performance-diagnostics-vm-extension.md#install-the-extension).  
 
-**A PerfInsights futtatása a önálló módban**
+**PerfInsights futtatása önálló módban**
 
 A PerfInsights eszköz futtatásához kövesse az alábbi lépéseket:
 
 
-1. Töltse le [PerfInsights.zip](https://aka.ms/perfinsightsdownload).
+1. Töltse le a [PerfInsights. zip fájlt](https://aka.ms/perfinsightsdownload).
 
-2. A PerfInsights.zip fájl tiltásának feloldásához. Ehhez kattintson a jobb gombbal a PerfInsights.zip fájlt, és válassza ki **tulajdonságok**. Az a **általános** lapon jelölje be **feloldása**, majd válassza ki **OK**. Ez biztosítja, hogy az eszköz fut-e minden olyan további biztonsági kéri nélkül.  
+2. Oldja fel a PerfInsights. zip fájlt. Ehhez kattintson a jobb gombbal a PerfInsights. zip fájlra, és válassza a **Tulajdonságok**lehetőséget. Az **általános** lapon válassza a **Tiltás feloldása**elemet, majd kattintson **az OK gombra**. Ez biztosítja, hogy az eszköz további biztonsági kérések nélkül fusson.  
 
-    ![Képernyőkép a PerfInsights tulajdonságok, kiemelt feloldása](media/how-to-use-perfInsights/unlock-file.png)
+    ![Képernyőkép a PerfInsights tulajdonságairól, Kiemelt feloldással](media/how-to-use-perfInsights/pi-unlock-file.png)
 
-3.  Bontsa ki a tömörített PerfInsights.zip be az ideiglenes meghajtó (alapértelmezés szerint ez a általában a D meghajtó). 
+3.  Bontsa ki a tömörített PerfInsights. zip fájlt az ideiglenes meghajtóra (alapértelmezés szerint ez általában a D meghajtó). 
 
-4.  Nyissa meg a Windows-parancssort rendszergazdaként, és futtassa a PerfInsights.exe a rendelkezésre álló parancssori paraméterek megjelenítéséhez.
+4.  Nyissa meg a Windows-parancssort rendszergazdaként, majd futtassa a PerfInsights. exe fájlt, és tekintse meg az elérhető parancssori paramétereket.
 
     ```
     cd <the path of PerfInsights folder>
     PerfInsights
     ```
-    ![Képernyőkép a PerfInsights parancssori kimenet](media/how-to-use-perfInsights/PerfInsightsCommandline.png)
+    ![Képernyőkép a PerfInsights parancssori kimenetről](media/how-to-use-perfInsights/pi-commandline.png)
     
-    Az alapszintű futtató PerfInsights forgatókönyvek szintaxisa:
+    A PerfInsights-forgatókönyvek futtatásának alapvető szintaxisa a következő:
     
     ```
     PerfInsights /run <ScenarioName> [AdditionalOptions]
     ```
 
-    Használhatja az alábbi példában 5 perc teljesítményét elemző forgatókönyv futtatása:
+    Az alábbi példát követve futtathat teljesítmény-elemzési forgatókönyvet 5 percen keresztül:
     
     ```
     PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics
     ```
 
-    Az alábbi példa használatával futtassa a következő helyen és a teljesítmény-számláló nyomkövetéseinek 5 perc a speciális forgatókönyvhöz:
+    Az alábbi példát követve futtathatja a speciális forgatókönyvet a XPerf és a teljesítményszámláló nyomkövetésével 5 percen keresztül:
     
     ```
     PerfInsights /run advanced xp /d 300 /AcceptDisclaimerAndShareDiagnostics
     ```
 
-    Használhatja az alábbi példa futtatása teljesítményét elemző forgatókönyv 5 perc, és az eredmény zip-fájl feltöltése a storage-fiókhoz:
+    Az alábbi példát követve futtathat teljesítmény-elemzési forgatókönyvet 5 percen keresztül, és feltöltheti az eredményként szolgáló zip-fájlt a Storage-fiókba:
     
     ```
     PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics /sa <StorageAccountName> /sk <StorageAccountKey>
     ```
 
-    Kereshet a rendelkezésre álló forgatókönyveket és a beállítások használatával a **/listában** parancsot:
+    Az összes rendelkezésre álló forgatókönyvet és beállítást a **/List** parancs használatával tekintheti meg:
     
     ```
     PerfInsights /list
     ```
 
     >[!Note]
-    >Egy forgatókönyvben futó, mielőtt a PerfInsights kéri a felhasználót, hogy fogadja el a diagnosztika adatok megosztása, és fogadja el a végfelhasználói LICENCSZERZŐDÉST. Használat **/AcceptDisclaimerAndShareDiagnostics** arra, hogy hagyja ki ezeket az utasításokat. 
+    >Egy forgatókönyv futtatása előtt a PerfInsights felszólítja a felhasználót, hogy fogadja el a diagnosztikai adatok megosztását, és fogadja el a végfelhasználói licencszerződést. Használja az **/AcceptDisclaimerAndShareDiagnostics** kapcsolót az ilyen kérések kihagyásához. 
     >
-    >Ha egy aktív támogatási jegyet a Microsoft és a támogatási szakember dolgozik, a kérelmenként futó PerfInsights, ügyeljen arra, hogy adja meg a támogatási jegy száma a a **/sr** lehetőséget.
+    >Ha aktív támogatási jegyet használ a Microsofttal, és az PerfInsights-t futtatja a támogatási szakember kérelmére, akkor ügyeljen arra, hogy a támogatási jegy számát a **/SR** beállítással adja meg.
     >
-    >Alapértelmezés szerint a PerfInsights megkísérli frissítése magát a legújabb verzióra, ha elérhető. Használat **/SkipAutoUpdate** vagy **/sau** paraméter kihagyása az automatikus frissítés.  
+    >Alapértelmezés szerint a PerfInsights megpróbálja frissíteni magát a legújabb verzióra, ha elérhető. Az automatikus frissítés kihagyása az **/SkipAutoUpdate** vagy a **/Sau** paraméterrel.  
     >
-    >Ha az időtartam kapcsoló **/d** nincs megadva, a PerfInsights figyelmezteti, hogy Reprodukálja a problémát vmslow, az Azure filesba – és a speciális forgatókönyvek futtatása során. 
+    >Ha nincs megadva az időtartam kapcsoló **/d** értéke, a PerfInsights felszólítja, hogy Reprodukálási a problémát a vmslow, a azurefiles és a speciális forgatókönyvek futtatásakor. 
 
-A nyomkövetések vagy a műveletek végezhető el, amikor új fájlt a PerfInsights ugyanabban a mappában jelenik meg. A fájl neve **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-mm-fff.zip.** Ez a fájl küldhet a támogatási szakembere elemzés céljából, vagy nyissa meg a jelentést a zip-fájlt, tekintse át az eredményeket és meglátásokat bemutató javaslatok belül.
+A Nyomkövetések vagy műveletek befejezésekor az új fájl ugyanabban a mappában jelenik meg, mint a PerfInsights. A fájl neve **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-SS-fff. zip.** Ezt a fájlt elküldheti a támogatási ügynöknek elemzésre, vagy megnyithatja a jelentést a zip-fájlban a megállapítások és javaslatok áttekintéséhez.
 
-## <a name="review-the-diagnostics-report"></a>Tekintse át a diagnosztikai jelentést
+## <a name="review-the-diagnostics-report"></a>A diagnosztikai jelentés áttekintése
 
-Belül a **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-mm-fff.zip** fájlt, egy HTML-jelentést, amely leírja a PerfInsights eredményeit, találja. Tekintse át a jelentést, bontsa ki a **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-mm-fff.zip** fájlt, és nyissa meg a **PerfInsights diagram jelentés.HTML** fájlt.
+A **\_PerformanceDiagnostics éééé-hh-nn\_hh-mm-SS-fff. zip** fájlon belül egy HTML-jelentést talál, amely a PerfInsights eredményeit részletezi. A jelentés áttekintéséhez bontsa ki **a\_PerformanceDiagnostics éééé-hh-\_nn hh-mm-SS-fff. zip** fájlt, majd nyissa meg a **PerfInsights report. html** fájlt.
 
-Válassza ki a **megállapításokat** fülre.
+Válassza az **eredmények** lapot.
 
-![Képernyőkép a PerfInsights jelentés](media/how-to-use-perfInsights/findingtab.png)
-![PerfInsights jelentés képernyőképe](media/how-to-use-perfInsights/findings.PNG)
+![Képernyőkép a PerfInsights jelentésről](media/how-to-use-perfInsights/pi-finding-tab.png)
+![a PerfInsights-jelentésről](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
-> Kategóriába sorolt magas megállapításokat ismert problémák, amelyek teljesítményproblémákat okozhatnak. Eredmények kategorizált, közepes méretű képviseli, amely nem feltétlenül okoznak teljesítményproblémákat nem optimális konfigurációkat. Alsó kategóriája megállapításokat informatív utasítások csak olyan.
+> A magas kategóriába sorolt megállapítások olyan ismert problémák, amelyek teljesítménnyel kapcsolatos problémákat okozhatnak. A közepesként kategorizált eredmények olyan nem optimális konfigurációkat jelentenek, amelyek nem szükségszerűen okoznak teljesítménnyel kapcsolatos problémákat. Az alacsonyként kategorizált eredmények csak tájékoztató utasítások.
 
-Tekintse át a javaslatokat, valamint az összes magas és közepes megállapításokat mutató hivatkozásokat. Ismerje meg, hogyan azok befolyásolhatja a teljesítményt, és emellett teljesítményre optimalizált konfigurációk esetén ajánlott eljárásokkal kapcsolatos.
+Tekintse át az ajánlásokat és a hivatkozásokat az összes magas és közepes eredményhez. Ismerje meg, hogy miként befolyásolhatják a teljesítményt és az ajánlott eljárásokat a teljesítményre optimalizált konfigurációk esetében.
 
 ### <a name="storage-tab"></a>Tároló lap
 
-A **megállapításokat** szakasz különféle megállapításokat és tárolással kapcsolatos javaslatokat jelenít meg.
+Az **eredmények** szakasz a tárolással kapcsolatos különböző eredményeket és javaslatokat jeleníti meg.
 
-A **lemez térkép** és **kötet térkép** szakaszok ismertetik, hogyan logikai kötetek és a fizikai lemezek kapcsolódnak egymáshoz.
+A **Disk Map** és a **Volume Map** szakasz ismerteti, hogyan kapcsolódnak egymáshoz a logikai kötetek és a fizikai lemezek.
 
-A fizikai lemez szempontból (lemez térkép) a táblázat összes logikai kötetet a lemezen futtató. A következő példában **PhysicalDrive2** két, több partíción (J és H) létrehozott logikai kötetek fut:
+A fizikai lemez perspektívájában (Disk map) a táblázatban a lemezen futó összes logikai kötet látható. A következő példában a **PhysicalDrive2** két, több partíción létrehozott logikai kötetet futtat (J és H):
 
-![Lemezek lap képernyőképe](media/how-to-use-perfInsights/disktab.png)
+![A lemez lap képernyőképe](media/how-to-use-perfInsights/pi-disk-tab.png)
 
-A kötet szempontból (kötet térkép) a táblázatokban a fizikai lemezek az egyes logikai hangereje. Figyelje meg, hogy RAID/dinamikus lemez esetében előfordulhat, hogy futtatja egy logikai kötet több fizikai lemezen. A következő példában *C:\\csatlakoztatási* csatlakoztatási pont beállítás értéke *SpannedDisk* fizikai lemezen, 2. és 3:
+A kötet perspektívájában (Volume map) a táblázatok az egyes logikai kötetek összes fizikai lemezét megjelenítik. Figyelje meg, hogy a RAID/dinamikus lemezek esetében több fizikai lemezen is futtathat logikai köteteket. A következő példában a *C:\\Mount* egy csatlakoztatási pont, amely a 2. és 3. fizikai lemezeken *SpannedDisk* van konfigurálva:
 
-![Képernyőkép a kötet lap](media/how-to-use-perfInsights/volumetab.png)
+![Képernyőfelvétel a Volume lapról](media/how-to-use-perfInsights/pi-volume-tab.png)
 
 ### <a name="sql-tab"></a>SQL lap
 
-Ha a cél virtuális Gépen üzemelteti az minden olyan SQL Server-példányokat, megjelenik egy lap a jelentésben, nevű **SQL**:
+Ha a célként megadott virtuális gép bármely SQL Server példányt futtat, a jelentés egy további lapja jelenik meg, az **SQL**neve:
 
-![Képernyőkép az SQL lap](media/how-to-use-perfInsights/sqltab.png)
+![Az SQL Tab képernyőképe](media/how-to-use-perfInsights/pi-sql-tab.png)
 
-Ez a szakasz egy **megállapításokat** lapon és a további lapon az egyes virtuális gépen futó SQL Server-példányokat.
+Ez a szakasz egy **ténymegállapítás** lapot tartalmaz, valamint a virtuális gépen futó SQL Server-példányok további lapjait.
 
-A **megállapításokat** lapon megtalálhatja az összes SQL kapcsolódó található, a javaslatok és teljesítményproblémák.
+Az **eredmények** lap tartalmazza az összes talált SQL-teljesítménnyel kapcsolatos problémát, valamint a javaslatokat.
 
-A következő példában **PhysicalDrive0** (fut a C meghajtó) jelenik meg. Ennek az az oka is a **modeldev** és **modellog** a C: meghajtón található fájlokat, és azok különböző típusú (például az adatok fájl és a tranzakciós napló jelölik).
+A következő példában a **PhysicalDrive0** (a C meghajtó futtatása) üzenet jelenik meg. Ennek az az oka, hogy mind a **modeldev** , mind a **Modellog** fájl a C meghajtón található, és különböző típusúak (például adatfájlok és tranzakciónaplók).
 
-![Képernyőkép a naplóadatok](media/how-to-use-perfInsights/loginfo.png)
+![A naplózási információk képernyőképe](media/how-to-use-perfInsights/pi-log-info.png)
 
-Olyan specifikus példányai, az SQL Server-lapokat tartalmaz egy általános szakaszt, amely megjeleníti a kiválasztott példány alapvető adatait. A lapokon további szakaszaiban olvashat speciális információk, beállítások, a konfigurációk és a felhasználói beállítások is tartalmaznak.
+A SQL Server adott példányaihoz tartozó lapok egy általános szakaszt tartalmaznak, amely a kiválasztott példánnyal kapcsolatos alapvető adatokat jeleníti meg. A lapok további részeket is tartalmaznak a speciális információkhoz, beleértve a beállításokat, a konfigurációkat és a felhasználói beállításokat.
 
-### <a name="diagnostic-tab"></a>Diagnosztikai lap
-A **diagnosztikai** lapon információt tartalmaz a Processzor, lemez és a memória felső fogyasztók azon a számítógépen futó időtartama a PerfInsights. Is annak kritikus javításokat kapcsolatos információkat, hogy a rendszer hiányzik, a feladatlistában és fontos eseményeket lehet-e. 
+### <a name="diagnostic-tab"></a>Diagnosztika lap
+A **diagnosztika** lapon a PerfInsights futtatásának időtartamára vonatkozó információk találhatók a számítógép felső CPU-, lemez-és memória-fogyasztóiról. A rendszerből esetlegesen hiányzó kritikus javításokkal, a feladatlistával és a fontos rendszereseményekkel kapcsolatos információk is megtalálhatók. 
 
-## <a name="references-to-the-external-tools-used"></a>A külső eszközök használt mutató hivatkozások
+## <a name="references-to-the-external-tools-used"></a>A használt külső eszközökre mutató hivatkozások
 
-### <a name="diskspd"></a>A Diskspd
+### <a name="diskspd"></a>Diskspd
 
-A Diskspd egy olyan tárolási terhelés készítő és a teljesítmény vizsgálati eszköz a Microsoft. További információkért lásd: [Diskspd](https://github.com/Microsoft/diskspd).
+A Diskspd egy Storage Load Generator és Performance test eszköz a Microsofttól. További információ: [Diskspd](https://github.com/Microsoft/diskspd).
 
 ### <a name="xperf"></a>Xperf
 
-Következő helyen egy olyan parancssori eszköz rögzíthesse a hívásláncokat, a a Windows-teljesítmény eszközkészletéből. További információkért lásd: [Windows Performance Toolkit – a következő helyen](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/).
+A XPerf egy parancssori eszköz, amely a Windows Performance Toolkit nyomkövetéseit rögzíti. További információ: [Windows Performance Toolkit – XPerf](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/).
 
 ## <a name="next-steps"></a>További lépések
 
-Feltöltheti-diagnosztikai naplók és jelentések Microsoft Support további ellenőrzésre. Támogatási kérheti, hogy a PerfInsights, amelyek segítik a hibaelhárítást a által létrehozott kimeneti költött.
+A diagnosztikai naplókat és jelentéseket feltöltheti Microsoft ügyfélszolgálata további áttekintés céljából. A támogatás kérheti, hogy továbbítsa a PerfInsights által generált kimenetet, hogy segítséget nyújtson a hibaelhárítási folyamathoz.
 
-A következő képernyőképen látható üzenetet hasonlóan mi kaphat:
+Az alábbi képernyőképen egy, a következőhöz hasonló üzenet látható:
 
-![A Microsoft Support mintaüzenet képernyőképe](media/how-to-use-perfInsights/supportemail.png)
+![Képernyőkép a Microsoft ügyfélszolgálataról](media/how-to-use-perfInsights/pi-support-email.png)
 
-Kövesse az utasításokat a fájl átvitele munkaterület eléréséhez az üzenetben. A fokozott biztonság érdekében a jelszót az első használatkor módosítania kell.
+Az üzenetben található utasításokat követve férhet hozzá a fájlátviteli munkaterülethez. A további biztonság érdekében meg kell változtatnia a jelszavát az első használatkor.
 
-Miután bejelentkezett, egy párbeszédpanel a feltöltendő megtalálja a **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-mm-fff.zip** PerfInsights által gyűjtött fájl.
+A bejelentkezést követően egy párbeszédpanel jelenik meg, amely feltölti a PerfInsights által gyűjtött **\_PerformanceDiagnostics éééé-hh\_-nn hh-mm-SS-fff. zip** fájlt.
 

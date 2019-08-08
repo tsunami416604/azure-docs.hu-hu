@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/11/2019
-ms.openlocfilehash: f51c6bdc6cb2e381d5d5b855bf2f87b07d7fc180
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 0025f488f6a9b0af4e05a8bdf3ddf36c089d4d9f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638423"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856119"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-image"></a>Modell üzembe helyezése egyéni Docker-rendszerkép használatával
 
@@ -40,8 +40,8 @@ Ez a dokumentum két részre oszlik:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure Machine Learning szolgáltatás munkacsoportja. További információt a [Munkaterület létrehozása](setup-create-workspace.md) című cikkben talál.
-* A Azure Machine Learning SDK. További információ: a [Munkaterület létrehozása](setup-create-workspace.md#sdk) című cikk Python SDK szakasza.
+* Egy Azure Machine Learning szolgáltatás munkacsoportja. További információt a [Munkaterület létrehozása](how-to-manage-workspace.md) című cikkben talál.
+* A [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). 
 * A [az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * A [Azure Machine learning CLI](reference-azure-machine-learning-cli.md)-bővítménye.
 * Az interneten elérhető [Azure Container Registry](/azure/container-registry) vagy más Docker-beállításjegyzék.

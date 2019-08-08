@@ -8,43 +8,48 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b105fb14608d53c5c2ef469ab44e211ccdf4d3c8
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 928b0bcfb32d1a319c811d00fc84a37f85702895
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812511"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857401"
 ---
-A következő táblázat felsorolja a kvóták, és korlátozza az adott [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). További információ az Event Hubs-díjszabás: [Event Hubs-díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/).
+Az alábbi táblázat az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)-ra vonatkozó kvótákat és korlátozásokat sorolja fel. További információ a Event Hubs díjszabásáról: [Event Hubs díjszabása](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-| Korlát | Scope | Megjegyzések | Value |
+| Korlát | Scope | Megjegyzések | Érték |
 | --- | --- | --- | --- |
-| Előfizetésenként az Event Hubs-névterek száma |Subscription |- |100 |
-| Az event hubs-névterenként száma |Névtér |A rendszer elutasítja a további kérések, egy új eseményközpont létrehozásához. |10 |
-| A partíciók száma az eseményközpont száma |Entitás |- |32 |
-| Egy eseményközpont fogyasztói csoportok száma |Entitás |- |20 |
-| Az AMQP-kapcsolatok száma névterenként száma |Névtér |További kapcsolatok későbbi kérelmeket a rendszer elutasítja, és a egy kivételt a hívó kód által fogadott. |5,000 |
-| Az Event Hubs esemény maximális mérete|Entitás |- |1 MB |
-| Maximális mérete egy eseményközpont neve |Entitás |- |50 karakter hosszú lehet |
-| Fogyasztói csoportok szerinti nem alapidőpont fogadók száma |Entitás |- |5 |
-| Az esemény adatok maximális megőrzési időtartam |Entitás |- |1 – 7 nap |
-| Kapacitásegységek maximális száma |Névtér |Az átviteli egység túllépő esetén az szabályozottan az adatok, és létrehoz egy [kiszolgáló foglalt kivétel](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Kérhető az átviteli egységek a Standard szintű, hogy a fájl egy [támogatási kérelem](/azure/azure-supportability/how-to-create-azure-support-request). [További átviteli egységek](../articles/event-hubs/event-hubs-auto-inflate.md) blokkok 20 vállalt vásárlási alapon érhetők el. |20 |
-| Az engedélyezési szabályok névterenként száma |Névtér|Engedélyezési szabály létrehozása a későbbi kérelmeket a rendszer elutasítja.|12 |
-| A GetRuntimeInformation metódus hívások száma | Entitás | - | 50 / másodperc | 
-| Virtuális hálózat (VNet) és IP-konfigurációs szabályok száma | Entitás | - | 128 | 
+| Event Hubs névterek száma/előfizetés |Subscription |- |100 |
+| Az Event hubok száma névtérben |Névtér |Az új Event hub létrehozására vonatkozó további kérelmeket a rendszer elutasítja. |10 |
+| Partíciók száma az Event hub-ban |Entitás |- |32 |
+| Event Hubs esemény maximális mérete|Entitás |- |1 MB |
+| Event hub-név maximális mérete |Entitás |- |50 karakter |
+| Nem EPOCH-fogadók száma fogyasztói csoportonként |Entitás |- |5 |
+| Kapacitásegységek maximális száma |Névtér |Az átviteli egység korlátja meghaladja az adatok szabályozását, és létrehoz egy [kiszolgáló](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)által foglalt kivételt. Ha nagyobb számú átviteli egységet szeretne igényelni egy standard szintű csomaghoz, a [támogatási kérést](/azure/azure-supportability/how-to-create-azure-support-request). A [további átviteli egységek](../articles/event-hubs/event-hubs-auto-inflate.md) 20 blokkban érhetők el egy véglegesített vásárlás alapján. |20 |
+| Engedélyezési szabályok száma névtérben |Névtér|Az engedélyezési szabályok létrehozására vonatkozó további kérelmeket a rendszer elutasítja.|12 |
+| A GetRuntimeInformation metódushoz tartozó hívások száma | Entitás | - | 50 másodpercenként | 
+| A virtuális hálózat (VNet) és az IP-konfigurációs szabályok száma | Entitás | - | 128 | 
 
-### <a name="event-hubs-dedicated---quotas-and-limits"></a>Event Hubs dedikált - kvóták és korlátozások
-Az Event Hubs dedikált ajánlat fix havi díja, legalább 4 óra számoljuk fel. A dedikált szintet kínál összes funkciót, a standard szintű csomag, de a vállalati méretezés és korlátait az erőforrás-igényű számítási feladatok rendelkező ügyfelek számára. 
+### <a name="event-hubs-basic-and-standard---quotas-and-limits"></a>Alapszintű és standard – kvóták és korlátozások Event Hubs
+| Korlát | Scope | Megjegyzések | Alapszintű | Standard |
+| --- | --- | --- | -- | --- |
+| Fogyasztói csoportok száma az Event hub-ban |Entitás | - |1 |20 |
+| AMQP-kapcsolatok száma névtérben |Névtér |A további kapcsolatokra vonatkozó további kérelmeket a rendszer elutasítja, és a hívási kód kivételt kap. |100 |5,000|
+| Esemény-adatok maximális megőrzési ideje |Entitás | - |1 nap |1-7 nap |
+
+
+### <a name="event-hubs-dedicated---quotas-and-limits"></a>Dedikált Event Hubs – kvóták és korlátok
+Az dedikált Event Hubs ajánlat számlázása rögzített havi díjszabással történik, amely legalább 4 órányi használatot biztosít. A dedikált szint a standard csomag összes funkcióját felkínálja, de nagyvállalati kapacitást és korlátokat biztosít az ügyfelek számára igényes számítási feladatokkal. 
 
 | Funkció | Korlátok |
 | --- | ---|
-| A sávszélesség |  20 kapacitásegység használható |
-| Névterek | 50 / Kapacitásegység |
-| Event Hubs |  1000 névterenként |
+| A sávszélesség |  20 ke |
+| Névterek | 50/CU |
+| Event Hubs |  1000/névtér |
 | Belépő események | Tartalmazza |
-| Üzenet mérete | 1 millió bájt |
-| Partíciók | 2000 / Kapacitásegység |
-| Felhasználói csoportok | Nincs korlátozva az event hubs 1000 / Kapacitásegység, |
+| Üzenet mérete | 1 000 000 bájt |
+| Partíciók | 2000/CU |
+| Felhasználói csoportok | Az Event hub-ban nincs korlát/CU, 1000 |
 | Felügyelt kapcsolatok | 100 K csomagban foglalt |
-| Üzenetmegőrzés | Fel és 7 nap (90 napos megőrzési idejét hamarosan elérhető), 10 TB-ot foglalt / Kapacitásegység |
+| Üzenetmegőrzés | Legfeljebb 7 nap (a 90 napos megőrzés hamarosan elérhető), 10 TB-ot tartalmaz |
 | Rögzítés | Tartalmazza |

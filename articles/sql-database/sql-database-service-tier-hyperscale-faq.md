@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 70ba6c5507cf31732d679a61c3e185a520b4c5f3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 94894126be98f0d3d4d404d97d0a4a39fff2e665
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566669"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847393"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású-adatbázisokkal kapcsolatos gyakori kérdések
 
@@ -44,7 +44,7 @@ A virtuális mag-alapú szolgáltatási rétegek elsődlegesen a rendelkezésre 
 - A üzletileg kritikus szolgáltatási szintje olyan üzleti számítási feladatokhoz megfelelő, ahol az IO-késés prioritás.
 
 | | Erőforrás típusa | Általános rendeltetés |  Rugalmas skálázás | Üzleti szempontból kulcsfontosságú |
-|:---|:---:|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|:---:|:---:|
 | **Legjobb a következőhöz:** |Összes|  A legtöbb üzleti számítási feladat. A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál. | Nagy adatkapacitási követelményekkel rendelkező adatalkalmazások, valamint a tárterület automatikus méretezésének és méretezésének képessége. | OLTP alkalmazások nagy tranzakciós sebességgel és a legalacsonyabb késleltetésű IO-val. A maximális rugalmasságot nyújt a hibákhoz több, elkülönített replika használatával.|
 |  **Erőforrás típusa** ||Önálló adatbázis/rugalmas készlet/felügyelt példány | Önálló adatbázis | Önálló adatbázis/rugalmas készlet/felügyelt példány |
 | **Számítási méret**|Önálló adatbázis/rugalmas készlet * | 1 – 80 virtuális mag | 1 – 80 virtuális mag * | 1 – 80 virtuális mag |
@@ -55,7 +55,7 @@ A virtuális mag-alapú szolgáltatási rétegek elsődlegesen a rendelkezésre 
 | **IO-átviteli sebesség** | Önálló adatbázis * * | 500 IOPS/virtuális mag 7000 maximális IOPS | A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPs a munkaterheléstől függ. | 5000 IOPS 200 000 maximális IOPS|
 | | Felügyelt példány | A fájl méretétől függ | – | Felügyelt példány: A fájl méretétől függ|
 |**Rendelkezésre állás**|Összes|1 replika, nincs olvasási méretezés, nincs helyi gyorsítótár | Több replika, legfeljebb 15 olvasási léptékű, részleges helyi gyorsítótár | 3 replika, 1 olvasási méretezés, zóna – redundáns HA, teljes helyi gyorsítótár |
-|**Mentések**|Összes|RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap)| RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap), állandó időpontra történő helyreállítás (PITR) | RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap) |
+|**Mentések**|Összes|RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap)| RA-GRS, 7 nap, állandó időpontra történő helyreállítás (PITR) | RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap) |
 
 \*A nagy kapacitású szolgáltatási szintje nem támogatja a rugalmas készleteket
 

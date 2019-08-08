@@ -16,12 +16,12 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 47a068ac6a7941c8ce71cf5c6745d2958c75fe74
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 55d040e96b92f73a632fd415220f9cf135335736
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736599"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851007"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Háttérben futó feladatok futtatása webjobs-feladatokkal Azure App Service
 
@@ -173,9 +173,9 @@ when making changes in one don't forget the other two.
 
    ![Webjobs-feladatok listája](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-## <a name="cron-expressions"></a>CRON-kifejezések
+## <a name="ncrontab-expressions"></a>NCRONTAB kifejezések
 
-Megadhat egy [cron-kifejezést](../azure-functions/functions-bindings-timer.md#ncrontab-expressions) a portálon, vagy belefoglalhat egy `settings.job` fájlt a webjobs *. zip* fájl gyökerébe, ahogy az alábbi példában is látható:
+Megadhat egy [NCRONRAB kifejezést](../azure-functions/functions-bindings-timer.md#ncrontab-expressions) a portálon, vagy belefoglalhat egy `settings.job` fájlt a webjobs *. zip* fájl gyökerébe, ahogy az alábbi példában is látható:
 
 ```json
 {

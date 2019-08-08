@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: c01e138c8afcdd59fcb0c87f189d98bec10e16d7
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 13f80b42ef6dfd0c70067a3ecf5f3e172527a63f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828142"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846532"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profiltárolók és Azure Files
 
@@ -75,13 +75,13 @@ A S2D-fürtök olyan operációs rendszert igényelnek, amely egy javított, fri
 
 A beszerzés óta a Microsoft megkezdte a meglévő felhasználói profil-megoldások, például a UPD FSLogix-profilok tárolására való lecserélését.
 
-## <a name="azure-files-integration-with-azure-active-directory"></a>Azure Files integráció a Azure Active Directory
+## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure Files integráció Azure Active Directory tartományi szolgáltatással
 
-A FSLogix-profil tárolóinak teljesítménye és funkciói kihasználják a felhő előnyeit. A 2018-es szeptember 24-én Microsoft Azure fájlok nyilvános előzetes kiadást jelentettek [Azure Files támogató Azure Active Directory hitelesítéshez](https://azure.microsoft.com/blog/azure-active-directory-integration-for-smb-access-now-in-public-preview/). A költségek és az adminisztrációs terhelések kezelésével a Azure Files a Azure Active Directory-hitelesítéssel az új Windows virtuális asztali szolgáltatásban található felhasználói profilokhoz tartozó prémium megoldás.
+A FSLogix-profil tárolóinak teljesítménye és funkciói kihasználják a felhő előnyeit. 2019. augusztus 7-én Microsoft Azure fájlok Azure Files hitelesítés általános elérhetőségét jelentették be [Azure Active Directory tartományi szolgáltatással (AD DS)](/articles/storage/files/storage-files-active-directory-overview.md). A költségek és az adminisztrációs terhelések kezelésével az Azure AD DS-hitelesítéssel Azure Files a Windows virtuális asztali szolgáltatás felhasználói profiljainak prémium szintű megoldása.
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Ajánlott eljárások a Windows rendszerű virtuális asztali gépekhez
 
-A Windows rendszerű virtuális asztali szolgáltatás teljes körű vezérlést biztosít az ügyfelek által igénybe vett virtuális gépek méretének, típusának és számának. További információ: [Mi az a Windows rendszerű virtuális asztali előnézet?](https://docs.microsoft.com/azure/virtual-desktop/overview).
+A Windows rendszerű virtuális asztali szolgáltatás teljes körű vezérlést biztosít az ügyfelek által igénybe vett virtuális gépek méretének, típusának és számának. További információ: [Mi az a Windows rendszerű virtuális asztali előnézet?](overview.md).
 
 Annak biztosítása érdekében, hogy a Windows rendszerű virtuális asztali környezet az ajánlott eljárásokat követi:
 
@@ -94,11 +94,11 @@ Annak biztosítása érdekében, hogy a Windows rendszerű virtuális asztali k�
 
 ## <a name="next-steps"></a>További lépések
 
-A Windows rendszerű virtuális asztali környezet beállításához kövesse az alábbi utasításokat.
+A következő útmutatók segítségével állíthatja be a Windows rendszerű virtuális asztali környezetet.
 
-- Az asztali virtualizálási megoldás létrehozásának megkezdéséhez lásd: [bérlő létrehozása a Windows rendszerű virtuális asztalon](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory).
-- A Windows rendszerű virtuális asztali bérlőn belüli gazdagépek létrehozásával kapcsolatban lásd: [állomáslista létrehozása az Azure Marketplace-szel](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace).
-- A teljes körűen felügyelt fájlmegosztás felhőben való beállításával kapcsolatban lásd: [Azure Files megosztás beállítása](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable).
-- A FSLogix-profilok tárolóinak konfigurálásával kapcsolatban lásd: [felhasználói profil megosztásának beállítása egy gazdagéphez](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-user-profile).
-- A felhasználók egy gazdagéphez való hozzárendelésével kapcsolatban lásd: [Manage app groups for Windows Virtual Desktop](https://docs.microsoft.com/azure/virtual-desktop/manage-app-groups).
-- A Windows rendszerű virtuális asztali erőforrások webböngészőből való eléréséhez tekintse meg a [Kapcsolódás a Windows rendszerű virtuális asztalhoz](https://docs.microsoft.com/azure/virtual-desktop/connect-web)című témakört.
+- Az asztali virtualizálási megoldás létrehozásának megkezdéséhez lásd: [bérlő létrehozása a Windows rendszerű virtuális asztalon](tenant-setup-azure-active-directory.md).
+- A Windows rendszerű virtuális asztali bérlőn belüli gazdagépek létrehozásával kapcsolatban lásd: [állomáslista létrehozása az Azure Marketplace-szel](create-host-pools-azure-marketplace.md).
+- A teljes körűen felügyelt fájlmegosztás felhőben való beállításával kapcsolatban lásd: [Azure Files megosztás beállítása](/articles/storage/files/storage-files-active-directory-enable.md).
+- A FSLogix-profilok tárolóinak konfigurálásával kapcsolatban lásd: [felhasználói profil megosztásának beállítása egy gazdagéphez](create-host-pools-user-profile.md).
+- A felhasználók egy gazdagéphez való hozzárendelésével kapcsolatban lásd: [Manage app groups for Windows Virtual Desktop](manage-app-groups.md).
+- A Windows rendszerű virtuális asztali erőforrások webböngészőből való eléréséhez tekintse meg a [Kapcsolódás a Windows rendszerű virtuális asztalhoz](connect-web.md)című témakört.

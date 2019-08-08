@@ -4,18 +4,18 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: f289da08c63f655006801d89f82640c6e3c6b7be
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 5c90d7b5eefdf8357c0f6f8efb619bd69af12b06
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68622535"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843224"
 ---
 Fontos, hogy a virtuális gép (VM) biztonságos legyen a futtatott alkalmazások számára. A virtuális gépek biztonságossá tételéhez tartozhat egy vagy több olyan Azure-szolgáltatás és szolgáltatás, amely a virtuális gépek biztonságos elérését és az adatai biztonságos tárolását is magában foglalja. Ez a cikk a virtuális gép és az alkalmazások védelmét lehetővé tevő információkat tartalmaz.
 
 ## <a name="antimalware"></a>Kártevőirtó
 
-A Felhőbeli környezetek modern fenyegetési tájképe dinamikus, és a megfelelőségi és biztonsági követelmények teljesítése érdekében egyre nagyobb nyomást biztosít a hatékony védelem fenntartásához. Az Azure-hoz készült [Microsoft antimalware](../articles/security/fundamentals/antimalware.md) egy ingyenes, valós idejű védelmi képesség, amely segít azonosítani és eltávolítani a vírusokat, kémprogramokat és egyéb kártevő szoftvereket. A riasztások úgy konfigurálhatók, hogy tájékoztassanak arról, ha az ismert kártékony vagy nemkívánatos szoftverek megkísérlik telepíteni vagy futtatni magukat a virtuális gépen.
+A Felhőbeli környezetek modern fenyegetési tájképe dinamikus, és a megfelelőségi és biztonsági követelmények teljesítése érdekében egyre nagyobb nyomást biztosít a hatékony védelem fenntartásához. Az Azure-hoz készült [Microsoft antimalware](../articles/security/fundamentals/antimalware.md) egy ingyenes, valós idejű védelmi képesség, amely segít azonosítani és eltávolítani a vírusokat, kémprogramokat és egyéb kártevő szoftvereket. A riasztások úgy konfigurálhatók, hogy tájékoztassanak arról, ha az ismert kártékony vagy nemkívánatos szoftverek megkísérlik telepíteni vagy futtatni magukat a virtuális gépen. A Linux vagy a Windows Server 2008 rendszerű virtuális gépeken nem támogatott.
 
 ## <a name="azure-security-center"></a>Azure Security Center
 

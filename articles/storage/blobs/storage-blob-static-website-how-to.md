@@ -1,18 +1,18 @@
 ---
 title: Statikus webhely üzemeltetése az Azure Storage-ban
 description: Megtudhatja, hogyan szolgálhat ki statikus tartalmat (HTML-, CSS-, JavaScript-és képfájlokat) közvetlenül egy Azure Storage GPv2-fiókban található tárolóból.
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.subservice: blobs
+ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: e53f8dd832b7f19692b9095e913330848e5b0330
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 591a62ebb6b83ea23d3ed6cf867c07b91e1596b3
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385762"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847050"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 

@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 06194537a0c0cce3a52510e6f426a9c2904387b2
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9cf39230d6a2c615925222b6545a091a4be941ac
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694341"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847980"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Mély tanulási modell üzembe helyezése a GPU-val való következtetéshez
 
@@ -31,9 +31,9 @@ A következtetés vagy a modell pontozása az a fázis, amelyben az üzembe hely
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure Machine Learning szolgáltatás munkaterületén. További információ: [Azure Machine learning szolgáltatás munkaterületének létrehozása](setup-create-workspace.md).
+* Az Azure Machine Learning szolgáltatás munkaterületén. További információ: [Azure Machine learning szolgáltatás munkaterületének létrehozása](how-to-manage-workspace.md).
 
-* A Azure Machine Learning SDK-val telepített Python-fejlesztési környezet. További információ: a munkaterület létrehozása című cikk [PYTHON SDK](setup-create-workspace.md#sdk) szakasza.
+* A Azure Machine Learning SDK-val telepített Python-fejlesztési környezet. További információ: [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
 
 * GPU-t használó regisztrált modell.
 
@@ -48,7 +48,7 @@ A következtetés vagy a modell pontozása az a fázis, amelyben az üzembe hely
 Egy meglévő munkaterülethez való kapcsolódáshoz használja a következő kódot:
 
 > [!IMPORTANT]
-> Ez a kódrészlet arra vár, hogy a munkaterület-konfiguráció az aktuális könyvtárba vagy a szülőbe legyen mentve. További információ a munkaterület létrehozásáról és a konfiguráció fájlra való mentéséről: [Azure Machine learning szolgáltatás munkaterületének létrehozása](setup-create-workspace.md).
+> Ez a kódrészlet arra vár, hogy a munkaterület-konfiguráció az aktuális könyvtárba vagy a szülőbe legyen mentve. A munkaterület létrehozásával kapcsolatos további információkért lásd: [Azure Machine learning szolgáltatás-munkaterületek létrehozása és kezelése](how-to-manage-workspace.md).   A konfiguráció fájlra való mentésével kapcsolatos további információkért lásd: [munkaterület konfigurációs fájljának létrehozása](how-to-configure-environment.md#workspace).
 
 ```python
 from azureml.core import Workspace

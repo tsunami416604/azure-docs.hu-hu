@@ -1,27 +1,26 @@
 ---
-title: Oktatóanyag az Azure Stream Analytics-feladat az Azure IoT Edge - eszköz üzembe helyezése |} A Microsoft Docs
-description: Ebben az oktatóanyagban, üzembe helyezése az Azure Stream Analytics modulként egy IoT Edge-eszközön
+title: Stream Analytics az Edge-Azure IoT Edge | Microsoft Docs
+description: Ebben az oktatóanyagban üzembe helyezi Azure Stream Analytics modulként egy IoT Edge eszközön
 author: kgremban
-manager: philmea
 ms.author: kgremban
-ms.date: 09/21/2018
+ms.date: 08/07/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: cea0d091620d53892f3334306a341b196765879d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0128574ff0ef9db1c5a4326e3ebce25fbba0c2e7
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575887"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845130"
 ---
-# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Oktatóanyag: Az Azure Stream Analytics az IoT Edge-modul üzembe helyezése
+# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Oktatóanyag: Azure Stream Analytics üzembe helyezése IoT Edge modulként
 
-Számos IoT-megoldás alkalmaz elemzési szolgáltatásokat az IoT-eszközökről a felhőbe érkező adatok beható elemzéséhez. Az Azure IoT Edge segítségével az [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/)-logikát kihelyezheti magára az eszközre is. A telemetriastreamek peremeszközökön végzett feldolgozásával csökkenthető a feltöltött adatok mennyisége, valamint a gyakorlatban is használható elemzésekre való reagáláshoz szükséges idő.
+Számos IoT-megoldás használja az analitikai szolgáltatásokat, hogy betekintést kapjon a felhőben a IoT-eszközökről érkező adatokkal. Az Azure IoT Edge segítségével az [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/)-logikát kihelyezheti magára az eszközre is. A telemetriastreamek peremeszközökön végzett feldolgozásával csökkenthető a feltöltött adatok mennyisége, valamint a gyakorlatban is használható elemzésekre való reagáláshoz szükséges idő.
 
 Az Azure IoT Edge és az Azure Stream Analytics integrációja révén az Azure Portalon létrehozhat Azure Stream Analytics-feladatokat, majd további kód írása nélkül üzembe helyezheti azokat az IoT Edge-modulokon.  
 
-Az Azure Stream Analytics gazdagon strukturált lekérdezési szintaxist biztosít az adatelemzéshez a felhőben és az IoT Edge-eszközökön egyaránt. Az IoT Edge-en futó Azure Stream Analyticsszel kapcsolatos további információkat [az Azure Stream Analytics dokumentációjában](../stream-analytics/stream-analytics-edge.md) talál.
+A Azure Stream Analytics a felhőben és a IoT Edge eszközökön egyaránt részletesen strukturált lekérdezési szintaxist biztosít az adatelemzéshez. További információ: [Azure stream Analytics dokumentáció](../stream-analytics/stream-analytics-edge.md).
 
 Ebben az oktatóanyagban a Stream Analytics modul az átlaghőmérsékletet számítja egy gördülő 30 másodperces ablakon belül. Ha az átlag eléri a 70-es értéket, a modul egy riasztást küld az eszköznek, amely egy műveletet hajt végre. Esetünkben a művelet a szimulált hőmérséklet-érzékelő visszaállítása. Éles környezetben ezzel a funkcióval leállíthat egy gépet vagy óvintézkedéseket tehet, amint a hőmérséklet veszélyes szintet ér el. 
 
@@ -34,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 <center>
 
-![Diagram – oktatóanyag architektúra tesztelése és üzembe helyezése az ASA-feladat](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
+![Diagram – oktatóanyag architektúrája, fázis és üzembe helyezés ASA-feladatok](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
 </center>
 
 
@@ -44,7 +43,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Egy Azure IoT Edge-eszköz:
 
-* Használhatja az Azure virtuális gép IoT Edge-eszköz esetében ez a rövid útmutató lépéseit követve [Linux](quickstart-linux.md) vagy [Windows-eszközök](quickstart.md).
+* Az Azure-beli virtuális gépeket IoT Edge eszközként is használhatja a gyors útmutató a [Linux](quickstart-linux.md) vagy [Windows rendszerű eszközökhöz](quickstart.md)című témakör lépéseit követve.
 
 Felhőerőforrások:
 
@@ -53,28 +52,34 @@ Felhőerőforrások:
 
 ## <a name="create-an-azure-stream-analytics-job"></a>Azure Stream Analytics-feladat létrehozása
 
-Ebben a szakaszban egy Azure Stream Analytics-feladatot hozunk létre az IoT-központról érkező adatok fogadására, az eszközről küldött telemetriaadatok lekérdezésére, majd az eredmények továbbítására egy Azure Blob Storage-tárolóba. 
+Ebben a szakaszban egy Azure Stream Analytics feladatot hoz létre, amely végrehajtja a következő lépéseket:
+* Adatok fogadása a IoT Edge eszközről.
+* A telemetria-adatok lekérdezése egy meghatározott tartományon kívüli értékekhez.
+* A lekérdezés eredményei alapján tegyen lépéseket a IoT Edge eszközön. 
 
 ### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Amikor Azure Stream Analytics-feladatot hoz létre egy IoT Edge-eszköz futtatásához, azt úgy kell tárolni, hogy meghívható legyen az eszközről. Használhat egy már létező Azure Storage-tárfiókot, vagy létrehozhat most egy újat. 
 
-1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Tárolás** > **Tárfiók – blob, fájl, tábla, üzenetsor** elemet. 
+1. A Azure Portal válassza az **erőforrás** > létrehozása**Storage** > **Storage-fiók**lehetőséget. 
 
 1. Adja meg a következő értékeket a tárfiók létrehozásához:
 
-   | Mező | Érték |
+   | Mező | Value |
    | ----- | ----- |
+   | Subscription | Válassza ugyanazt az előfizetést, mint az IoT Hub esetében. |
+   | Erőforráscsoport | Javasoljuk, hogy az IoT Edge rövid útmutatók és oktatóanyagok során elkészített erőforráscsoportot használja minden teszterőforráshoz. Például: **IoTEdgeResources**. |
    | Name (Név) | Adja meg a tárfiók egyedi nevét. | 
    | Hely | Válassza ki az Önhöz legközelebb eső helyet. |
-   | Előfizetés | Válassza ugyanazt az előfizetést, mint az IoT Hub esetében. |
-   | Erőforráscsoport | Javasoljuk, hogy az IoT Edge rövid útmutatók és oktatóanyagok során elkészített erőforráscsoportot használja minden teszterőforráshoz. Például: **IoTEdgeResources**. |
 
-1. Fogadja el az alapértelmezett értékeket a többi mezőben, és válassza a **Létrehozás** lehetőséget. 
+
+1. Tartsa meg a többi mező alapértelmezett értékeit, és válassza a **felülvizsgálat + létrehozás**lehetőséget.
+
+1. Tekintse át a beállításokat, majd válassza a **Létrehozás**lehetőséget.
 
 ### <a name="create-a-new-job"></a>Új feladat létrehozása
 
-1. Az Azure Portalon lépjen az **Erőforrás létrehozása** > **Eszközök internetes hálózata** > **Stream Analytics-feladat** pontra.
+1. A Azure Portal válassza az **erőforrás** > létrehozása**eszközök internetes hálózata** > **stream Analytics feladatot**.
 
 1. Adja meg a következő értékeket a feladat létrehozásához:
 
@@ -98,7 +103,7 @@ Ebben a szakaszban három elem (bemenet, kimenet és lekérdezés) használatáv
 
 1. A **Feladattopológia** területen válassza a **Bemenetek** lehetőséget, majd a **Streambemenet hozzáadása** elemet.
 
-   ![Az Azure Stream Analytics bemenet hozzáadása](./media/tutorial-deploy-stream-analytics/asa_input.png)
+   ![Azure Stream Analytics – bemenet hozzáadása](./media/tutorial-deploy-stream-analytics/asa-input.png)
 
 1. Válassza az **Edge Hub** elemet a legördülő listából.
 
@@ -108,7 +113,7 @@ Ebben a szakaszban három elem (bemenet, kimenet és lekérdezés) használatáv
 
 1. A **Feladattopológia** területen nyissa meg a **Kimenetek** pontot, és válassza a **Hozzáadás** elemet.
 
-   ![Az Azure Stream Analytics kimenet hozzáadása](./media/tutorial-deploy-stream-analytics/asa_output.png)
+   ![Azure Stream Analytics – kimenet hozzáadása](./media/tutorial-deploy-stream-analytics/asa-output.png)
 
 1. Válassza az **Edge Hub** elemet a legördülő listából.
 
@@ -137,11 +142,11 @@ Ebben a szakaszban három elem (bemenet, kimenet és lekérdezés) használatáv
 
 Ha elő szeretné készíteni a Stream Analytics-feladatot egy IoT Edge-eszközre való üzembe helyezésre, a feladatot egy tárfiókon lévő tárolóval kell társítania. Amikor a feladat üzembe helyezésébe kezd, a feladat definícióját exportálja a tárolóba. 
 
-1. A **Konfigurálás** területen válassza a **Tárfiók beállításai** lehetőséget.
+1. A **Konfigurálás**területen válassza a **Storage-fiók beállításai** lehetőséget, majd kattintson a **Storage-fiók hozzáadása**lehetőségre. 
 
-1. Válassza ki a **Tárfiók hozzáadása** lehetőséget. 
+   ![Azure Stream Analytics – Storage-fiók hozzáadása](./media/tutorial-deploy-stream-analytics/add-storage-account.png)
 
-1. Válassza ki a **tárfiókját** a legördülő listából.
+1. Válassza ki az oktatóanyag elején létrehozott **Storage-fiókot** a legördülő menüből.
 
 1. A **Tároló** mezőben válassza az **Új létrehozása** lehetőséget, és adja meg a tárfiók nevét. 
 
@@ -153,16 +158,18 @@ Most készen áll az Azure Stream Analytics-feladat IoT Edge-eszközön való ü
 
 Ebben a szakaszban az Azure Portal **Modulok beállítása** varázslójával hozhat létre *üzembehelyezési jegyzéket*. Az üzembehelyezési jegyzék egy olyan JSON-fájl, amely leírja az eszközre üzembe helyezendő összes modult, a modul rendszerképeit tároló tárolóregisztrációs adatbázisokat, a modulok kezelésének módját és azt, hogyan kommunikálhatnak egymással a modulok. Az IoT Edge-eszköz lekéri az üzembehelyezési jegyzéket az IoT Hubról, majd az abban lévő információkkal üzembe helyezi és konfigurálja az összes hozzárendelt modult. 
 
-Ebben az oktatóanyagban két modult helyezhet üzembe. Az első a **tempSensor**, amely egy hőmérséklet- és páratartalom-érzékelőt szimuláló modul. A második a Stream Analytics-feladat. Az érzékelőmodul biztosítja az adatstreamet, amelyet a feladatlekérdezés elemezni fog. 
+Ebben az oktatóanyagban két modult helyezhet üzembe. Az első a **SimulatedTemperatureSensor**, amely egy hőmérséklet-és páratartalom-érzékelőt szimuláló modul. A második a Stream Analytics-feladat. Az érzékelőmodul biztosítja az adatstreamet, amelyet a feladatlekérdezés elemezni fog. 
 
-1. Az Azure Portalon, az IoT-központban lépjen az **IoT Edge** részhez, és nyissa meg az IoT Edge-eszköz adatait tartalmazó lapot.
+1. Az Azure Portalon keresse meg az IoT-központot.
+
+1. Lépjen **IoT Edge**, majd nyissa meg a IoT Edge eszköz részletek lapját.
 
 1. Válassza a **Set modules** (Modulok beállítása) lehetőséget.  
 
-1. Ha korábban már üzembe helyezte a tempSensor modult ezen az eszközön, előfordulhat, hogy az automatikusan megjelenik a mezőben. Amennyiben nem, vegye fel a modult a következő lépésekkel:
+1. Ha korábban telepítette az SimulatedTemperatureSensor modult ezen az eszközön, az automatikusan feltölthető. Amennyiben nem, vegye fel a modult a következő lépésekkel:
 
    1. Kattintson a **Hozzáadás** gombra, és válassza az **IoT Edge-modul** lehetőséget.
-   1. A névnél adja meg a **tempSensor** nevet.
+   1. A név mezőbe írja be a következőt: **SimulatedTemperatureSensor**.
    1. A kép URI-címénél adja meg az **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0** címet. 
    1. Hagyja változatlanul a többi beállítást, és válassza a **Mentés** lehetőséget.
 
@@ -172,13 +179,17 @@ Ebben az oktatóanyagban két modult helyezhet üzembe. Az első a **tempSensor*
    1. Válassza ki az előfizetést, és a létrehozott Azure Stream Analytics Edge-feladatot. 
    1. Kattintson a **Mentés** gombra.
 
-1. Miután a Stream Analytics-feladatot közzétette a létrehozott tárolóban, kattintson a modul nevére a Stream Analytics-modul felépítésének megtekintéséhez. 
+   A módosítások mentése után a Stream Analyticsi feladatának részletes adatait a rendszer közzéteszi a létrehozott tárolóban. 
 
-   A rendszerkép URI egy standard Azure Stream Analytics rendszerképre mutat. Ez ugyanaz a rendszerkép, amelyet az IoT Edge-eszközökre üzembe helyezett összes feladathoz használ. 
+1. Ha a Stream Analytics modult hozzáadja a modulok listájához, válassza a **Konfigurálás** lehetőséget, hogy megtudja, hogyan strukturált. 
 
-   Az ikermodul az **ASAJobInfo** nevű kívánt tulajdonsággal van konfigurálva. A tulajdonság értéke a feladat tárolóban lévő definíciójára mutat. Ez a tulajdonság meghatározza, hogyan van konfigurálva a Stream Analytics-rendszerkép az adott feladat információival. 
+   A rendszerkép URI egy standard Azure Stream Analytics rendszerképre mutat. Ezt a lemezképet minden olyan Stream Analytics-modulhoz használni fogja, amely egy IoT Edge eszközön lesz üzembe helyezve. 
 
-1. Zárja be a modul oldalát.
+   Az ikermodul az **ASAJobInfo** nevű kívánt tulajdonsággal van konfigurálva. A tulajdonság értéke a feladat tárolóban lévő definíciójára mutat. Ez a tulajdonság azt szemlélteti, hogy a Stream Analytics rendszerkép hogyan van konfigurálva az adott feladatok részleteivel. 
+
+   Alapértelmezés szerint a Stream Analytics modul ugyanazokat a nevet adja, mint az alapul szolgáló feladatoknak. Ha szeretné, módosíthatja a modul nevét ezen a lapon, de nem szükséges. 
+
+1. Zárjuk be a modul konfigurációs lapját.
 
 1. Jegyezze fel a Stream Analytics-modul nevét, mert a következő lépésben szüksége lesz rá, majd a folytatáshoz válassza a **Következő** lehetőséget.
 
@@ -187,29 +198,29 @@ Ebben az oktatóanyagban két modult helyezhet üzembe. Az első a **tempSensor*
     ```json
     {
         "routes": {
-            "telemetryToCloud": "FROM /messages/modules/tempSensor/* INTO $upstream",
+            "telemetryToCloud": "FROM /messages/modules/SimulatedTemperatureSensor/* INTO $upstream",
             "alertsToCloud": "FROM /messages/modules/{moduleName}/* INTO $upstream",
-            "alertsToReset": "FROM /messages/modules/{moduleName}/* INTO BrokeredEndpoint(\"/modules/tempSensor/inputs/control\")",
-            "telemetryToAsa": "FROM /messages/modules/tempSensor/* INTO BrokeredEndpoint(\"/modules/{moduleName}/inputs/temperature\")"
+            "alertsToReset": "FROM /messages/modules/{moduleName}/* INTO BrokeredEndpoint(\"/modules/SimulatedTemperatureSensor/inputs/control\")",
+            "telemetryToAsa": "FROM /messages/modules/SimulatedTemperatureSensor/* INTO BrokeredEndpoint(\"/modules/{moduleName}/inputs/temperature\")"
         }
     }
     ```
 
-   Az itt megadott útvonalak határozzák meg az adatok áramlását az IoT Edge-eszközben. A tempSensor érzékelőből küldött telemetriai adatok az IoT Hubra kerülnek, valamint a Stream Analytics-feladatban konfigurált **hőmérséklet** bemenethez. A **riasztás** kimenet üzenetei az IoT Hubra kerülnek, valamint a visszaállítás parancs aktiválása érdekében a tempSensor modulhoz. 
+   Az itt megadott útvonalak határozzák meg az adatok áramlását az IoT Edge-eszközben. A rendszer elküldi a SimulatedTemperatureSensor telemetria adatait a IoT Hub és a Stream Analytics feladatban konfigurált **hőmérséklet** -bemenetre. A rendszer elküldi a **riasztás** kimeneti üzeneteit IoT hub és a SimulatedTemperatureSensor modulnak az Alaphelyzetbe állítás parancs elindításához. 
 
 1. Kattintson a **Tovább** gombra.
 
-1. Az **Üzembe helyezés áttekintése** lépésben kattintson a **Küldés** elemre.
+1. Az **üzembe helyezés áttekintése** lépésben megtekintheti, hogyan történik a varázslóban megadott információk JSON-telepítési jegyzékbe való konvertálása. Ha végzett a jegyzékfájl áttekintésével, válassza a Submit ( **Küldés**) lehetőséget.
 
 1. Térjen vissza az eszköz részleteit tartalmazó oldalra, majd kattintson a **Frissítés** elemre.  
 
-    Látható, hogy az új Stream Analytics-modul az IoT Edge-ügynökmodullal és az IoT Edge-központtal együtt fut.
+    Meg kell jelennie az új Stream Analytics modulnak, amely a IoT Edge Agent és IoT Edge hub-modulokkal együtt jelenik meg. Eltarthat néhány percig, amíg az információ elérheti IoT Edge eszközét, majd az új modulok elindításához. Ha nem látja azonnal a modulokat, folytassa az oldal frissítésével.
 
-    ![tempSensor és az eszköz által jelentett ASA-modul](./media/tutorial-deploy-stream-analytics/module_output2.png)
+    ![Az eszköz által jelentett SimulatedTemperatureSensor és ASA-modul](./media/tutorial-deploy-stream-analytics/module-output2.png)
 
 ## <a name="view-data"></a>Adatok megtekintése
 
-Most az IoT Edge-eszközre lépve ellenőrizze az Azure Stream Analytics-modul és a tempSensor modul közti interakciót.
+Most nyissa meg IoT Edge eszközét, és tekintse meg az Azure Stream Analytics modul és a SimulatedTemperatureSensor modul közötti interakciót.
 
 1. Ellenőrizze, hogy fut-e mindegyik modul a Dockerben:
 
@@ -225,7 +236,13 @@ Most az IoT Edge-eszközre lépve ellenőrizze az Azure Stream Analytics-modul �
    iotedge logs -f {moduleName}  
    ```
 
-Látnia kell, ahogy a géphőmérséklete folyamatosan emelkedik, amíg valamelyik 30 másodperces ablakban eléri a 70 fokot. A Stream Analytics-modul ekkor kiváltja a rendszer alaphelyzetbe állítását, és a géphőmérséklet visszaáll 21 fokra. 
+1. Az Alaphelyzetbe állítás parancs hatására a SimulatedTemperatureSensor az érzékelő naplófájljainak megtekintésével lehet megtekinteni:
+
+   ```cmd/sh
+   iotedge logs SimulatedTemperatureSensor
+   ```
+
+   A gép hőmérsékletét fokozatosan megtekintheti, amíg 30 másodpercig eléri a 70 fokos értéket. A Stream Analytics-modul ekkor kiváltja a rendszer alaphelyzetbe állítását, és a géphőmérséklet visszaáll 21 fokra. 
 
    ![A parancs kimenete alaphelyzetbe modulnaplóinak be](./media/tutorial-deploy-stream-analytics/docker_log.png)
 
@@ -233,7 +250,7 @@ Látnia kell, ahogy a géphőmérséklete folyamatosan emelkedik, amíg valamely
 
 Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a létrehozott erőforrásokat és konfigurációkat. Azt is megteheti, hogy ugyanezt az IoT Edge-eszközt használja teszteszközként. 
 
-Ellenkező esetben törölheti a helyi konfigurációk és az Azure-erőforrások használt ebben a cikkben díjak elkerülése érdekében. 
+Ellenkező esetben törölheti a cikkben használt helyi konfigurációkat és az Azure-erőforrásokat a díjak elkerüléséhez. 
  
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 

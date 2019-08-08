@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 3ba8a8e5922c012b93ab19a5859aab5c31d35b2b
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 88664238fa7cf21381ad6f95e77e02ad89103556
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424177"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850852"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata eseményvezérelt háttérben végzett feldolgozáshoz
 
@@ -282,7 +282,7 @@ Az alapszolgáltatások részét képező időzítő vagy fájlok kötésének h
 
 #### <a name="version-2x"></a>2\. verzió. *x*
 
-Ezek az triggerek és kötési típusok a 2. verzióban szerepelnek.  a`Microsoft.Azure.WebJobs` csomag x:
+Ezek az triggerek és kötési típusok a 2. verzióban szerepelnek. a`Microsoft.Azure.WebJobs` csomag x:
 
 * Blob Storage
 * Queue Storage
@@ -1009,7 +1009,7 @@ config.LoggerFactory = new LoggerFactory()
 
 ## <a id="nextsteps"></a> Következő lépések
 
-Ez a cikk kódrészleteket adott meg, amelyek bemutatják, hogyan kezelheti a webjobs SDK-val való használat gyakori forgatókönyveit. A teljes mintákat lásd: [Azure-webjobs-SDK-Samples](https://github.com/Azure/azure-webjobs-sdk-samples).
+Ez a cikk kódrészleteket adott meg, amelyek bemutatják, hogyan kezelheti a webjobs SDK-val való használat gyakori forgatókönyveit. A teljes mintákat lásd: [Azure-webjobs-SDK-Samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost).
 
 [`ExecutionContext`]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
 [`TelemetryClient`]: /dotnet/api/microsoft.applicationinsights.telemetryclient

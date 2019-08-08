@@ -1,55 +1,54 @@
 ---
-title: Feladat-visszavétel az Azure Site Recovery a vészhelyreállítás során |} A Microsoft Docs
-description: Ez a cikk áttekintést különféle típusú feladat-visszavétel és figyelmeztetések irányuló vissza a helyszíni az Azure Site Recovery szolgáltatással vészhelyreállítás során figyelembe kell venni.
-services: site-recovery
+title: Feladat-visszavétel a vész-helyreállítás során a Azure Site Recovery | Microsoft Docs
+description: Ez a cikk áttekintést nyújt a feladat-visszavétel különböző típusairól és azokról a kikötésekről, amelyeket a rendszer a Azure Site Recovery szolgáltatással való vész-helyreállítási folyamat során figyelembe vesz.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/19/2019
+ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 1e5dc91018df822c72381e4a162c5af5d74ed83c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399472"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847485"
 ---
-# <a name="failback-after-disaster-recovery-of-vmware-vms"></a>Feladat-visszavétel VMware virtuális gépek vészhelyreállítása után
+# <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>A VMware virtuális gépek feladat-visszavétel az Azure-ba való vész-helyreállítás után
 
-Miután Ön rendelkezik a feladatátvétel az Azure-bA a vész-helyreállítási folyamat részeként is visszaadja a feladatokat a helyszíni helyre. Van két különböző típusú feladat-visszavétel az Azure Site Recovery lehetséges: 
+Miután elvégezte a feladatátvételt az Azure-ba a vész-helyreállítási folyamat részeként, visszatérhet a helyszíni helyhez. Két különböző feladat-visszavételi típus lehetséges a Azure Site Recovery: 
 
-- A feladat-visszavételhez az eredeti helyre 
-- A feladat-visszavételhez egy másik helyre
+- Feladat-visszavétel az eredeti helyre 
+- Feladat-visszavétel másik helyre
 
-Ha VMware virtuális gépek feladatátvétele, is visszaadja a feladatokat a azonos forrás a helyszíni virtuális gép Ha továbbra is létezik. Ebben a forgatókönyvben csak replikálja a módosításokat vissza. Ez a forgatókönyv más néven **eredeti helyre történő helyreállítás**. A helyszíni virtuális gép nem létezik, a forgatókönyv-e egy **eredetitől eltérő helyre**.
+Ha a feladatátvételt egy VMware virtuális gépen végzi, akkor a feladatátvételt a helyszíni virtuális gépekre is visszaállíthatja, ha még létezik. Ebben az esetben csak a módosítások replikálódnak vissza. Ez a forgatókönyv **eredeti helyre történő helyreállítás**néven ismert. Ha a helyszíni virtuális gép nem létezik, a forgatókönyv egy **másik helyre történő helyreállítás**.
 
 > [!NOTE]
-> Csak térjen vissza az eredeti vCenter és a konfigurációs kiszolgáló meghiúsulhat. Nem lehet új konfigurációs kiszolgáló üzembe helyezése, és sikertelen, vissza használja azt. Ezenkívül nem adhat új vCenter a meglévő konfigurációs kiszolgáló és a feladat-visszavétel be a vcenter-kiszolgáló.
+> Csak az eredeti vCenter és a konfigurációs kiszolgálóra lehet visszaadni. Nem telepíthet új konfigurációs kiszolgálót, és nem végezheti el a feladat-visszavételt. Emellett nem adhat hozzá új vCenter a meglévő konfigurációs kiszolgálóhoz és a feladat-visszavételhez az új vCenter.
 
-## <a name="original-location-recovery-olr"></a>Eredeti helyre történő helyreállítás (való)
-Ha a feladat-visszavételhez az eredeti virtuális gépet választja, a következő feltételeknek kell teljesülniük:
+## <a name="original-location-recovery-olr"></a>Eredeti helyre történő helyreállítás (OLR)
+Ha úgy dönt, hogy visszaadja az eredeti virtuális gépet, a következő feltételeknek kell teljesülniük:
 
-* Ha a virtuális gép vCenter-kiszolgáló által felügyelt, a fő célkiszolgáló ESX-gazdagépen a virtuális gép adattárolója hozzáféréssel kell rendelkeznie.
-* Ha a virtuális gépet az ESX-gazdagépen van, de nem felügyeli a vCenter, majd a virtuális gép merevlemezének olyan adattárolón a fő cél gazdagépet elérő kell lennie.
-* Ha a virtuális gépet az ESX-gazdagépen van, és nem használ vCenter, el kell végeznie a fő célkiszolgáló ESX gazdagép felderítését, az ismételt védelem előtt. Ez vonatkozik, ha fizikai kiszolgálók túl.
-* Visszaadhatja a virtuális tárolóhálózat (vSAN) és a egy lemezt, amely alapján a mapping (RDM), ha a lemezek már létezik, és a helyszíni virtuális géphez csatlakoztatott nyers eszköz.
+* Ha a virtuális gépet egy vCenter-kiszolgáló felügyeli, akkor a fő cél ESX-gazdagépének hozzá kell férnie a virtuális gép adattárához.
+* Ha a virtuális gép ESX-gazdagépen található, de nem a vCenter kezeli, akkor a virtuális gép merevlemezének olyan adattárolóban kell lennie, amelyhez a fő cél gazdagépe hozzáférhet.
+* Ha a virtuális gép ESX-gazdagépen található, és nem használja a vCenter-t, akkor az ismételt védelem előtt el kell végeznie a fő cél ESX-gazdagépének felderítését. Ez akkor is érvényes, ha a fizikai kiszolgálókat is felhasználja.
+* Ha a lemezek már léteznek, és a helyszíni virtuális géphez vannak csatlakoztatva, visszatérhet a virtuális tárolóhelyek hálózatához (vSAN) vagy egy olyan lemezhez, amely a nyers eszköz-hozzárendelésen (RDM) alapul.
 
 > [!IMPORTANT]
-> Fontos disk.enableUUID= igaz engedélyezése, hogy a feladat-visszavétel során az Azure Site Recovery szolgáltatás nem lehet azonosítani a virtuális gépen, amelyre a függőben lévő módosítások lesz írva az eredeti VMDK. Ha ez az érték értéke nem lehet igaz, akkor a szolgáltatás megpróbálja a megfelelő helyi VMDK az elérhető legjobb lehetőség alapján azonosíthatja. Ha nem található a megfelelő VMDK, egy további lemezt hoz létre, és az adatok beolvasása írt be, amely.
+> Fontos, hogy engedélyezze a lemez. enableUUID = TRUE értéket, hogy a feladat-visszavétel során a Azure Site Recovery szolgáltatás azonosítani tudja a virtuális gép azon eredeti VMDK, amelybe a függőben lévő módosításokat írni fogja. Ha ez az érték nem TRUE (igaz) értékű, akkor a szolgáltatás a megfelelő helyszíni VMDK próbálja meg azonosítani a legjobb erőfeszítés alapján. Ha a megfelelő VMDK nem található, akkor a rendszer egy további lemezt hoz létre, és a rendszer az adatbevitelt kéri.
 
-## <a name="alternate-location-recovery-alr"></a>Másik helyre történő helyreállítást (ALR)
-Ha a helyszíni virtuális gép nem létezik a virtuális gép ismételt védelme előtt, a forgatókönyv neve egy másodlagos hely helyreállítását. A védelem-újrabeállítás munkafolyamat újra létrehozza a helyszíni virtuális gépet. Ennek hatására a teljes adatok letöltését.
+## <a name="alternate-location-recovery-alr"></a>Másik helyre történő helyreállítás (ALR)
+Ha a helyszíni virtuális gép nem létezik a virtuális gép újbóli megóvása előtt, akkor a forgatókönyv más helyre történő helyreállításnak nevezzük. Az ismételt védelem munkafolyamat újra létrehozza a helyszíni virtuális gépet. Ez a teljes adatletöltést is eredményezi.
 
-* Visszaadja a feladatokat egy másik helyre, ha a helyreállítás a virtuális gépet az ESX-gazdagépre, amelyre telepítve van a fő célkiszolgáló helyén helyreállíthatók. Az adattárral, amellyel létrehozza a lemezt a virtuális gép ismételt védelme kiválasztott adattárolóba lesz.
-* Sikertelen lehet vissza csak egy virtuális gép fájlrendszer (VMFS) vagy a vSAN-adattárhoz. Ha egy RDM, védelem-újrabeállítást és a feladat-visszavétel nem működik.
-* Az ismételt védelem magában foglalja egy nagy kezdeti adatátvitelt, amely követi a módosításokat. Ez a folyamat létezik, mert a virtuális gép nem létezik a helyszínen. A teljes adatokat vissza kell replikálni rendelkezik. A védelem-újrabeállításba is, mint az eredeti helyre történő helyreállítás több időt vesz igénybe.
-* Nem utasíthat el vissza a lemezeket RDM-alapú. Csak új virtuális gép lemezeinek (vmdk-inak) is létrehozható egy VMFS és vsan-hoz az adattárban.
+* Ha egy másik helyre végzi a feladatátvételt, a virtuális gép ugyanarra az ESX-gazdagépre lesz helyreállítva, amelyen a fő célkiszolgáló telepítve van. A lemez létrehozásához használt adattár a virtuális gép ismételt védetté kiválasztásakor megjelenő adattár lesz.
+* Csak egy virtuálisgép-fájlrendszerre (VMFS) vagy egy vSAN adattárra lehet visszaadni. Ha rendelkezik RDM, az ismételt védelem és a feladat-visszavétel nem fog működni.
+* Az ismételt védelem egy nagy kezdeti adatátvitelt is magában foglal, amelyet a módosítások követnek. Ez a folyamat azért van, mert a virtuális gép nem létezik a helyszínen. A teljes adatreplikációt vissza kell állítani. Ez az ismételt védelem több időt is igénybe vesz, mint az eredeti helyre történő helyreállítás.
+* Nem lehet visszaadni a RDM-alapú lemezeket. VMFS-vagy vSAN-adattáron csak új virtuálisgép-lemezek (VMDK-EK) hozhatók létre.
 
 > [!NOTE]
-> Az Azure-ba irányuló feladatátvételkor egy fizikai gép is lehet nem sikerült biztonsági másolatot csak a VMware virtuális gépként. Ez a következő ugyanabban a munkafolyamatban, a helyreállítás a másik helyen. Győződjön meg arról, hogy legalább egy fő célkiszolgáló és a szükséges ESX/ESXi-gazdagépek, amelyhez vissza szeretné felderíteni.
+> Egy fizikai gép, amikor a feladatátvételt az Azure-ba küldi, csak VMware virtuális gép lehet. Ez ugyanazt a munkafolyamatot követi, mint a másik helyre történő helyreállítás. Győződjön meg arról, hogy legalább egy fő célkiszolgáló és a szükséges ESX/ESXi-gazdagépek felderítésére van szükség, amelyekre vissza kell állítania.
 
 ## <a name="next-steps"></a>További lépések
 
-A lépések végrehajtásához kövesse a [feladat-visszavételi műveletet](vmware-azure-failback.md).
+Kövesse a feladat-visszavételi [művelet](vmware-azure-failback.md)végrehajtásához szükséges lépéseket.
 

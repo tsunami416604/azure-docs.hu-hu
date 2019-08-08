@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5d8cd7799dd23dabc2cbb423e82b8c7203b7bed
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c897d52c10efdb8824f676d7640dcc7275915a9e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834633"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851777"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás szabályozott ellenőrzése
 
@@ -72,7 +72,7 @@ A következő példa segítségével hozzon létre egy Csoportházirend objektum
       1. Kulcs elérési útja: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Érték neve: **TenantName**
       1. Érték típusa: **REG_SZ**
-      1. Érték: Az ellenőrzött **tartománynevet** , ha összevont környezetet használ, például AD FS. Az ellenőrzött * * tartománynév vagy a onmicrosoft.com tartományneve, `contoso.onmicrosoft.com` Ha például felügyelt környezetet használ
+      1. Érték: Az ellenőrzött **tartománynevet** , ha összevont környezetet használ, például AD FS. A hitelesített **tartománynevet** vagy az onmicrosoft.com tartománynevet, `contoso.onmicrosoft.com` Ha például felügyelt környezetet használ
    1. Kattintson az **OK** gombra
 1. Az újonnan létrehozott csoportházirend-objektum szerkesztőjének lezárása
 1. Csatolja az újonnan létrehozott GPO-t az ellenőrzött bevezetési populációhoz tartozó, tartományhoz csatlakoztatott számítógépeket tartalmazó kívánt szervezeti egységhez.

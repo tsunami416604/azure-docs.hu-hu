@@ -1,88 +1,88 @@
 ---
-title: 'Regresszió: Ár előrejelzése és algoritmusok összehasonlítása'
+title: Regressziós Előrejelzési ár és összehasonlítási algoritmusok
 titleSuffix: Azure Machine Learning service
-description: Ez a cikk bemutatja, hogyan hozhat létre egy összetett gépi tanulási kísérletet a vizuális felhasználói felületének használatával egyetlen kódsor megírása nélkül. Ismerje meg, hogyan betanítása és a egy autó árát, műszaki jellemzők alapján előre több regressziós modell összehasonlítására
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy összetett gépi tanulási kísérletet anélkül, hogy egyetlen sor kódot kellene írnia a vizualizáció felületének használatával. Ismerje meg, hogyan lehet több regressziós modellt betanítani és összehasonlítani, hogy az autó árát a technikai funkciók alapján Jósolja meg
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: aa0a1fc2acdc9687030040c23cdb1781e9529169
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 28af7b814a8d214c3529ecb12ffe25ede78b1cb6
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605691"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855941"
 ---
-# <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>2 – regressziós. példa: Ár előrejelzése és algoritmusok összehasonlítása
+# <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>2\. minta – regresszió: Előrejelzési ár és összehasonlítási algoritmusok
 
-Ismerje meg, hogyan hozhat létre egy összetett gépi tanulási kísérletet a vizuális felhasználói felületének használatával egyetlen kódsor megírása nélkül. Ez a példa betanítja és hasonlítja össze több regressziós modell előre jelezni egy autó árát annak műszaki jellemzők alapján. A közösségértékek biztosítunk a kiválasztott lehetőségeket ehhez a kísérlethez, így Ön is saját machine learning problémák kiszolgálókon.
+Megtudhatja, hogyan hozhat létre egy összetett gépi tanulási kísérletet anélkül, hogy egyetlen sor kódot kellene írnia a vizualizáció felületének használatával. Ez a minta a több regressziós modellt is összehasonlítja, hogy az autó árát a technikai jellemzői alapján Jósolja meg. Biztosítjuk az ebben a kísérletben meghozott döntések indoklását, hogy kezelni tudja a gépi tanulási problémákat.
 
-Most csak ismerkedik a machine learninggel, ha akkor is vessen egy pillantást a [Alapverzió](ui-sample-regression-predict-automobile-price-basic.md) ezzel a kísérlettel egy alapszintű regressziós kísérlet megtekintéséhez.
+Ha most ismerkedik a gépi tanulással, tekintse meg a kísérlet alapszintű [verzióját](ui-sample-regression-predict-automobile-price-basic.md) , és tekintse meg az alapszintű regressziós kísérletet.
 
-A befejezett graph ehhez a kísérlethez itt látható:
+Itt látható a kísérlethez tartozó befejezett gráf:
 
-[![A kísérlet diagram](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![A kísérlet gráfja](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Válassza ki a **nyílt** gomb a minta 2. kísérlet:
+4. Válassza a minta 2 kísérlet **Megnyitás** gombját:
 
-    ![Nyissa meg a kísérlet](media/ui-sample-regression-predict-automobile-price-compare-algorithms/open-sample2.png)
+    ![A kísérlet megnyitása](media/ui-sample-regression-predict-automobile-price-compare-algorithms/open-sample2.png)
 
-## <a name="experiment-summary"></a>Kísérlet összegzése
+## <a name="experiment-summary"></a>Kísérletezés összegzése
 
-Ezeket a lépéseket a kísérletet használjuk:
+A kísérletet a következő lépésekkel hozhatja létre:
 
-1. Az adatok lekérése.
-1. Előzetesen feldolgozni az adatokat.
-1. A modell betanításához.
-1. Tesztelheti, kiértékelheti és a modell összehasonlítására.
+1. Szerezze be az adatgyűjtést.
+1. Az adatfeldolgozás előtt.
+1. A modell betanítása.
+1. Tesztelje, értékelje ki és hasonlítsa össze a modelleket.
 
 ## <a name="get-the-data"></a>Az adatok lekérése
 
-Ehhez a kísérlethez használjuk a **Automobile price data (Raw)** adatkészletet, amely a UCI Machine Learning tárházból. Ez az adatkészlet 26 autók, beleértve a márkája, típusa, ár, jármű-funkciók (például a hengerszám), MPG, és egy biztosítási kockázati pontszám információt tartalmazó oszlopokat tartalmaz. Ez a kísérlet célja előrejelzésére egy autó árát.
+Ebben a kísérletben az UCI Machine Learning adattárból származó **Automobile Price (nyers)** adatkészletet használjuk. Ez az adatkészlet 26 oszlopot tartalmaz, amelyek az autókkal kapcsolatos információkat tartalmaznak, beleértve a make, a Model, a Price, a jármű funkcióit (például a hengerek számát), az MPG és a biztosítási kockázati pontszámot. A kísérlet célja egy autó árának előrejelzése.
 
-## <a name="pre-process-the-data"></a>Az adatok előzetes feldolgozása
+## <a name="pre-process-the-data"></a>Az adatfeldolgozás előkezelése
 
-A fő adat-előkészítési tevékenységeket adattisztító, integráció, átalakítási, csökkentését, és a diszkretizálási vagy mennyiségmeghatározási tartalmazza. Vizuális felületen, a modul végre ezeket a műveleteket és más adatok előzetes feldolgozás feladatokat találja a **adatátalakítás** csoportot a bal oldali panelen.
+A fő adat-előkészítési feladatok közé tartozik az adatok tisztítása, az integráció, az átalakítás, a csökkentés és a diszkretizálási vagy a kvantálás. A Visual Interface-ben a bal oldali panel Adatátalakítási csoportjában található modulok segítségével elvégezheti ezeket a műveleteket és egyéb, az adatok előfeldolgozását végző feladatokat.
 
-Ehhez a kísérlethez használjuk a **Select Columns in Dataset** normalized-losses oszlop kizárása számos hiányzó értéket tartalmazó modult. Használjuk majd **Clean Missing Data** hiányzó értéket tartalmazó sorok eltávolításához. Ez segít egy tiszta betanítási adatkészletet létrehozása.
+Ebben a kísérletben az adathalmaz-modul **Select oszlopait** használjuk a sok hiányzó értékkel rendelkező normalizált veszteségek kizárásához. Ezután tiszta, **hiányzó adatok** használatával távolítsa el a hiányzó értékeket tartalmazó sorokat. Ez segít a betanítási adathalmazok tiszta készletének létrehozásában.
 
-![Üzem előtti adatfeldolgozás](media/ui-sample-regression-predict-automobile-price-compare-algorithms/data-processing.png)
+![Adatfeldolgozás előtti](media/ui-sample-regression-predict-automobile-price-compare-algorithms/data-processing.png)
 
 ## <a name="train-the-model"></a>A modell betanítása
 
-Machine learning problémák eltérőek lehetnek. Általános gépi tanulási feladatok közé tartozik a besorolás, fürtözés, regressziós és ajánló rendszerek, amelyek mindegyike egy teljesen más algoritmust is szükség lehet. A választott algoritmust gyakran a használati eset követelményeinek függ. Miután egy algoritmus kiválasztásához kell hangolása paramétereket egy pontosabb modell betanításához. Kell például a pontosságot, a képminőséget és a hatékonyság teljesítménymetrikák alapján minden modelleket szeretne értékelni.
+A gépi tanulási problémák változhatnak. Az általános gépi tanulási feladatok közé tartoznak a besorolási, fürtözési, regressziós és ajánlott rendszerek, amelyek mindegyike más algoritmust igényelhet. Az Ön által választott algoritmus gyakran a használati eset követelményeitől függ. Az algoritmus kiválasztása után a paramétereket a pontosabb modell betanításához kell hangolnia. Ezután ki kell értékelnie az összes modellt, például a pontosságot, az érthetőséget és a hatékonyságot mutató mérőszámok alapján.
 
-Mivel ez a kísérlet célja az, hogy autó árának előrejelzése, és a egy regressziós modell akkor hasznos, mert a címke (ár) oszlopot tartalmaz valós számmá. Figyelembe véve, hogy a szolgáltatások száma viszonylag kicsi (kevesebb mint 100), és ezeket a funkciókat nem ritka, a döntési határ várhatóan nem lineáris.
+Mivel a kísérlet célja az autó árának előrejelzése, és mivel a Label (ár) oszlop valós számokat tartalmaz, a regressziós modell jó választás. Figyelembe véve, hogy a szolgáltatások száma viszonylag kicsi (kevesebb, mint 100), és ezek a funkciók nem ritkák, a döntési határ valószínűleg nem lineáris.
 
-A különféle algoritmusok teljesítményének összehasonlítására, a két nemlineáris algoritmusok, használjuk **súlyozott regressziós döntési fa** és **döntési erdő regressziós**, modelleket hozhat létre. Mindkét algoritmusok kell paramétereket, módosíthatja, de ehhez a kísérlethez használjuk az alapértelmezett értékeket.
+A különböző algoritmusok teljesítményének összehasonlításához két nemlineáris algoritmust használunk, a **döntési fa regresszióját** és a döntési **erdő regresszióját**a modellek létrehozásához. Mindkét algoritmushoz meg lehet változtatni a paramétereket, de a kísérlet alapértelmezett értékeit használjuk.
 
-Használjuk a **Split Data** modul véletlenszerűen osztani a bemeneti adatokat, így a betanítási adatkészletet tartalmaz az eredeti adatok 70 %-át és a tesztelési adatkészletet tartalmaz az eredeti adatok 30 %-át.
+Az **adatok felosztása** modul használatával véletlenszerűen osztjuk meg a bemeneti adatokat, így a betanítási adatkészlet az eredeti adatok 70%-át, a tesztelési adatkészlet pedig az eredeti adatok 30%-át tartalmazza.
 
-## <a name="test-evaluate-and-compare-the-models"></a>Tesztelheti, kiértékelheti és a modell összehasonlítására
+## <a name="test-evaluate-and-compare-the-models"></a>Modellek tesztelése, kiértékelése és összehasonlítása
 
-Használjuk véletlenszerűen kiválasztott adatokat két különböző eljáráscsoport betanítására és tesztelésére a modell az előző szakaszban leírtak szerint. Hogy az adatkészlet fel különböző adatkészleteket taníthat vagy tesztelhet a modellt, hogy a modell értékelése több cél.
+A véletlenszerűen kiválasztott adat két különböző készletét használjuk a betanításhoz, majd tesztelni a modellt az előző szakaszban leírtak szerint. Feldaraboljuk az adatkészletet, és különböző adatkészleteket használunk a modell betanításához és teszteléséhez, hogy a modell kiértékelése nagyobb legyen.
 
-Miután a modell tanítása, használjuk a **Score Model** és **Evaluate Model** hozhat létre prediktív eredményeket, és a modell kiértékelése modul. **Pontszám modell** állít elő, a tesztelési adatkészletnél előrejelzések a betanított modell használatával. Azt, akkor továbbítja a pontszámokat **Evaluate Model** értékelési mérőszámok létrehozásához.
+A modell betanítása után a **pontszám modellt** használjuk, és kiértékeljük a **modell** moduljait az előre jelzett eredmények létrehozásához és a modellek kiértékeléséhez. A **score Model** a betanított modell használatával generál előrejelzéseket a teszt adatkészlethez. Ezután továbbítjuk a pontszámokat a **modell** kiértékeléséhez, hogy kiértékeljék az értékelési mérőszámokat.
 
-Az ehhez a kísérlethez két példányát használjuk **Evaluate Model** két párok modell összehasonlítására.
+Ebben a kísérletben két modellt használunk a **modell** kiértékelésére két pár modell összehasonlítására.
 
-Először a betanítási adatkészletet a két algoritmus összehasonlítva.
-A második összehasonlítva a tesztelési adatkészletet a két algoritmust.
+Először hasonlítjuk össze két algoritmust a betanítási adatkészleten.
+Másodszor, két algoritmust hasonlítunk össze a tesztelési adatkészletből.
 Az eredmények a következők:
 
 ![Az eredmények összehasonlítása](media/ui-sample-regression-predict-automobile-price-compare-algorithms/result.png)
 
-Ezekkel az eredményekkel megjelenítése, hogy a létrehozott modell **súlyozott regressziós döntési fa** rendelkezik egy alacsonyabb root mean squared hiba történt a modell épül, mint **döntési erdő regressziós**.
+Ezek az eredmények azt mutatják, hogy a **megnövelt döntési fa regressziós** modellje alacsonyabb, legfelső szintű, négyzetes hibával rendelkezik, mint a döntési **erdő regressziós**modelljére épülő modell.
 
-Mindkét algoritmusokat a betanítási adatkészletet a látott tesztelési adatkészleten, mint az alacsonyabb hiba van.
+Mindkét algoritmus alacsonyabb hibával rendelkezik a betanítási adatkészletnél, mint a láthatatlan tesztelési adatkészleten.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -90,10 +90,10 @@ Mindkét algoritmusokat a betanítási adatkészletet a látott tesztelési adat
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg a vizuális felületen érhető el a más minták:
+Ismerje meg a vizuális felületen elérhető egyéb mintákat:
 
-- [1 – regressziós. példa: Egy autó árát előrejelzése](ui-sample-regression-predict-automobile-price-basic.md)
-- [Mintául szolgáló 3 - besorolás: Hitelkockázat előrejelzése](ui-sample-classification-predict-credit-risk-basic.md)
-- [4 – besorolási. példa: Hitelkockázatot (költség-és nagybetűket)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-- [5 – besorolási. példa: Forgalom előrejelzése](ui-sample-classification-predict-churn.md)
-- [6 – besorolási. példa: A járatok késésének előrejelzése](ui-sample-classification-predict-flight-delay.md)
+- [1. példa – regresszió: Autó árának előrejelzése](ui-sample-regression-predict-automobile-price-basic.md)
+- [3. példa – besorolás: Hitelkockázat előrejelzése](ui-sample-classification-predict-credit-risk-basic.md)
+- [4. minta – besorolás: Hitelkockázat (Cost szenzitív)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [5. példa – besorolás: Forgalom előrejelzése](ui-sample-classification-predict-churn.md)
+- [6. példa – besorolás: Repülési késések előrejelzése](ui-sample-classification-predict-flight-delay.md)

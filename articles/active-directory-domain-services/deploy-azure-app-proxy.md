@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: eca421697081310b1bf245172b3ff125e11c8728
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: b3fb5d665380bc15b61d3b4b7913a992915f9afb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234173"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853839"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure-AD Application Proxy üzembe helyezése Azure AD Domain Services felügyelt tartományon
 A Azure Active Directory (AD) alkalmazásproxy segítséget nyújt a távoli dolgozók támogatásához azáltal, hogy közzéteszi a helyszíni alkalmazásokat az interneten keresztül. A Azure AD Domain Services segítségével mostantól a helyszínen futó örökölt alkalmazások áthelyezhetők az Azure-infrastruktúra szolgáltatásaiba. Ezeket az alkalmazásokat az Azure AD Application Proxy használatával teheti közzé, így biztonságos távoli hozzáférést biztosíthat a szervezet felhasználói számára.
@@ -46,13 +46,10 @@ A következő lépések végrehajtásával engedélyezheti az Azure-AD Applicati
 
 2. A címtár áttekintéséhez kattintson **Azure Active Directory** gombra. Kattintson a **vállalati alkalmazások**elemre.
 
-    ![Azure AD-címtár kiválasztása](./media/app-proxy/app-proxy-enable-start.png)
-3. Kattintson a **alkalmazásproxy**elemre. Ha nem rendelkezik alapszintű Azure AD-vagy prémium szintű Azure AD-előfizetéssel, a próbaverzió engedélyezésének lehetősége jelenik meg. Be kell kapcsolni az **alkalmazásproxy engedélyezése beállítást?** az **engedélyezéshez** és a **Mentés**gombra.
+3. Kattintson a **alkalmazásproxy**elemre.
 
-    ![Alkalmazásproxy engedélyezése](./media/app-proxy/app-proxy-enable-proxy-blade.png)
 4. Az összekötő letöltéséhez kattintson az **összekötő** gombra.
 
-    ![Összekötő letöltése](./media/app-proxy/app-proxy-enabled-download-connector.png)
 5. A letöltési oldalon fogadja el a licencfeltételeket és az adatvédelmi szerződést, majd kattintson a **Letöltés** gombra.
 
     ![Letöltés megerősítése](./media/app-proxy/app-proxy-enabled-confirm-download.png)
@@ -75,7 +72,7 @@ Korábban kiépített egy Windows Server rendszerű virtuális gépet, és csatl
 
     ![A telepítés feltételeinek elfogadása](./media/app-proxy/app-proxy-install-connector-terms.png)
 3. A telepítés során a rendszer felszólítja, hogy regisztrálja az összekötőt az Azure AD-címtár alkalmazásproxy használatával.
-   * Adja meg az **Azure ad globális rendszergazdai hitelesítő adatait**. A globális rendszergazdai bérlő adatai eltérhetnek a Microsoft Azure rendszerre vonatkozó hitelesítő adatoktól.
+   * Adja meg az **Azure ad-alkalmazás rendszergazdai hitelesítő adatait**. Az alkalmazás-rendszergazda bérlője eltérhet a Microsoft Azure hitelesítő adataitól.
    * Az összekötő regisztrálásához használt rendszergazdai fióknak ugyanahhoz a címtárhoz kell tartoznia, ahol engedélyezte az alkalmazásproxy szolgáltatást. Ha például a bérlő tartománya contoso.com, akkor a rendszergazdának vagy bármely admin@contoso.com más érvényes aliasnak kell lennie az adott tartományban.
    * Ha az Internet Explorer fokozott biztonsági beállításai be vannak kapcsolva azon a kiszolgálón, amelyen az összekötőt telepíti, lehetséges, hogy a regisztrációs képernyő blokkolva van. A hozzáférés engedélyezéséhez kövesse a hibaüzenet utasításait. Győződjön meg arról, hogy az Internet Explorer fokozott biztonsági beállításai ki vannak kapcsolva.
    * Ha az összekötő regisztrálása meghiúsul, tekintse meg a [Troubleshoot Application Proxy](../active-directory/manage-apps/application-proxy-troubleshoot.md) (Alkalmazásproxy hibaelhárítása) című anyagot.

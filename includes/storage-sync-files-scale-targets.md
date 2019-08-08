@@ -8,27 +8,27 @@ ms.topic: include
 ms.date: 05/05/2019
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: 2614c9290bf31813d59ee753a31622bccf0682b8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 46bf9851ccf8877885d9f98a023aa95ebdc533bc
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179326"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857400"
 ---
-| Resource | Target | Rögzített korlátja |
+| Resource | Target | Rögzített korlát |
 |----------|--------------|------------|
-| Társzinkronizálási szolgáltatás régiónként | 20 Társzinkronizálási szolgáltatás | Igen |
-| Szinkronizálási csoportok tárolási szinkronizálási szolgáltatásonként | 100 szinkronizálási csoportok | Igen |
-| Regisztrált kiszolgálók tárolási szinkronizálási szolgáltatásonként | 99 kiszolgálók | Igen |
-| Felhőbeli végpont szinkronizálási csoportonként | 1 felhőbeli végpont | Igen |
-| Kiszolgálóvégpontok szinkronizálási csoportonként | 50 kiszolgálói végpontot | Nem |
-| Kiszolgálóvégpontok kiszolgálónként | 30 kiszolgálói végpontot | Igen |
-| Fájlrendszer-objektumok (fájlok és könyvtárak) szinkronizálási csoportonként | 25 millió objektumok | Nem |
-| Fájlrendszer-objektumok (fájlok és könyvtárak) egy könyvtár a maximális számát | 1 millió objektumok | Igen |
-| Maximális (fájlok és könyvtárak) biztonsági leíró objektumméret | 64 KiB | Igen |
+| Tárolási szinkronizálási szolgáltatások régiónként | 20 Storage Sync Services | Igen |
+| Szinkronizálási csoportok/Storage Sync Service | 100 szinkronizálási csoportok | Igen |
+| Regisztrált kiszolgálók/Storage Sync Service | 99-kiszolgálók | Igen |
+| Felhőbeli végpontok szinkronizálása csoportonként | 1 Felhőbeli végpont | Igen |
+| Kiszolgálói végpontok szinkronizálási csoportonként | 50 kiszolgálói végpontok | Nem |
+| Kiszolgálói végpontok száma kiszolgálónként | 30 kiszolgálói végpont | Igen |
+| Fájlrendszerbeli objektumok (címtárak és fájlok) szinkronizálási csoportonként | 25 000 000 objektum | Nem |
+| A fájlrendszer objektumainak maximális száma (címtárak és fájlok) a címtárban | 5 000 000 objektum | Igen |
+| Maximális objektum (címtárak és fájlok) biztonsági leíró mérete | 64 KiB | Igen |
 | Fájlméret | 100 GiB | Nem |
-| A fájlok helyezhető el a minimális fájlméret | 64 KiB | Igen |
-| Egyidejű szinkronizálási munkamenetek | V4-ügynököt, és később: Elérhető rendszererőforrásokat attól függően változik, a korlát. <BR> V3 ügynök: Két aktív szinkronizálási munkamenetek processzor- és a egy legfeljebb nyolc aktív szinkronizálási munkamenetek kiszolgálónként. | Igen
+| A többszintű fájl minimális fájlmérete | 64 KiB | Igen |
+| Egyidejű szinkronizálási munkamenetek | V4-ügynök és újabb verziók: A korlát a rendelkezésre álló rendszererőforrások alapján változhat. <BR> V3-ügynök: Másodpercenként két aktív szinkronizálási munkamenet vagy legfeljebb nyolc aktív szinkronizálási munkamenet kiszolgálónként. | Igen
 
 > [!Note]  
-> Az Azure File Sync végpont is vertikális felskálázás az Azure-fájlmegosztás méretét. Ha eléri az Azure-beli fájlmegosztás méretének korlátját, szinkronizálási nem tudják megfelelően működjenek.
+> Egy Azure File Sync végpont akár egy Azure-fájlmegosztás méretére is méretezhető. Ha az Azure-fájlmegosztás mérete eléri a korlátot, a szinkronizálás nem fog működni.

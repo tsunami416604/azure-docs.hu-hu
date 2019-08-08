@@ -56,7 +56,8 @@
     - name: Egyéni automatikus kiegészítési élmény konfigurálása
       href: define-custom-suggestions.md
     - name: Találatok kiemelésének kezelése
-      href: hit-highlighting.md
+      href: ../Bing-Web-Search/hit-highlighting.md
+      maintainContext: true
     - name: Lapozás a webhelyek között
       href: page-webpages.md
 - name: Referencia

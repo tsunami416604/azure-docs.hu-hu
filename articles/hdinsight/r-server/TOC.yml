@@ -18,13 +18,13 @@
 - name: Alapelvek
   items:
     - name: HDInsight-alkalmazások telepítése
-      href: ../hdinsight-apps-install-applications.md
+      href: ../hdinsight-apps-install-applications.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
     - name: A fürtök kapacitástervezése
-      href: ../hdinsight-capacity-planning.md
+      href: ../hdinsight-capacity-planning.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
     - name: HDInsight-alapú Apache Hadoop-összetevők
-      href: ../hdinsight-component-versioning.md
+      href: ../hdinsight-component-versioning.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
     - name: HDInsight 4.0
-      href: ../hdinsight-version-release.md
+      href: ../hdinsight-version-release.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
 - name: Útmutató
   items:
     - name: Az ML-szolgáltatások használata
@@ -38,71 +38,71 @@
         - name: Számítási környezet
           href: r-server-compute-contexts.md
         - name: ScaleR és SparkR
-          href: ../hdinsight-hadoop-r-scaler-sparkr.md
+          href: ../hdinsight-hadoop-r-scaler-sparkr.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
     - name: Fürttároló használata
       items:
         - name: Az Azure Storage használata
-          href: ../hdinsight-hadoop-use-blob-storage.md
+          href: ../hdinsight-hadoop-use-blob-storage.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: A 2. generációs Azure Data Lake Storage használata
-          href: ../hdinsight-hadoop-use-data-lake-storage-gen2.md
+          href: ../hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Az 1. generációs Azure Data Lake Storage használata
-          href: ../hdinsight-hadoop-use-data-lake-store.md
+          href: ../hdinsight-hadoop-use-data-lake-store.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
     - name: HDInsight-eszközök használata
       items:
         - name: Visual Studio-eszközök
-          href: ../hadoop/apache-hadoop-visual-studio-tools-get-started.md
+          href: ../hadoop/apache-hadoop-visual-studio-tools-get-started.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: VSCode-eszközök
-          href: ../hdinsight-for-vscode.md
+          href: ../hdinsight-for-vscode.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Feladatok beküldése az R Tools for Visual Studio használatával
           href: r-server-submit-jobs-r-tools-vs.md
     - name: Fürtök kiterjesztése
       items:
         - name: Fürtök testreszabása a Bootstrap használatával
-          href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
+          href: ../hdinsight-hadoop-customize-cluster-bootstrap.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Fürtök testreszabása szkriptműveletek használatával
-          href: ../hdinsight-hadoop-customize-cluster-linux.md
+          href: ../hdinsight-hadoop-customize-cluster-linux.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Szkriptműveletek fejlesztése
-          href: ../hdinsight-hadoop-script-actions-linux.md
+          href: ../hdinsight-hadoop-script-actions-linux.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Apache Hive-kódtárak hozzáadása
-          href: ../hdinsight-hadoop-add-hive-libraries.md
+          href: ../hdinsight-hadoop-add-hive-libraries.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Az Apache Giraph használata
-          href: ../hdinsight-hadoop-giraph-install-linux.md
+          href: ../hdinsight-hadoop-giraph-install-linux.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: A Hue használata
-          href: ../hdinsight-hadoop-hue-linux.md
+          href: ../hdinsight-hadoop-hue-linux.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Az R használata
-          href: ../hdinsight-hadoop-r-scripts-linux.md
+          href: ../hdinsight-hadoop-r-scripts-linux.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Az Apache Zeppelin használata
-          href: ../hdinsight-apache-spark-zeppelin-notebook.md
+          href: ../hdinsight-apache-spark-zeppelin-notebook.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Üres élcsomópontok használata
-          href: ../hdinsight-apps-use-edge-node.md
+          href: ../hdinsight-apps-use-edge-node.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: HDInsight-alkalmazások fejlesztése
           items:
             - name: Egyedi alkalmazások telepítése
-              href: ../hdinsight-apps-install-custom-applications.md
+              href: ../hdinsight-apps-install-custom-applications.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: A REST használata alkalmazások telepítéséhez
               href: 'https://msdn.microsoft.com/library/mt706515.aspx'
             - name: HDInsight-alkalmazások közzététele az Azure Marketplace-en
-              href: ../hdinsight-apps-publish-applications.md
+              href: ../hdinsight-apps-publish-applications.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
     - name: Biztonságos
       items:
         - name: SSH használata a HDInsighttal
-          href: ../hdinsight-hadoop-linux-use-ssh-unix.md
+          href: ../hdinsight-hadoop-linux-use-ssh-unix.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: SSH-alagútkezelés használata
-          href: ../hdinsight-linux-ambari-ssh-tunnel.md
+          href: ../hdinsight-linux-ambari-ssh-tunnel.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Adatokhoz hozzáférésének korlátozása
-          href: ../hdinsight-storage-sharedaccesssignature-permissions.md
+          href: ../hdinsight-storage-sharedaccesssignature-permissions.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Az Apache Ambari Views használatának engedélyezése felhasználók számára
-          href: ../hdinsight-authorize-users-to-ambari.md
+          href: ../hdinsight-authorize-users-to-ambari.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
     - name: Kezelés
       items:
         - name: HDInsight-fürtök létrehozása
-          href: ../hdinsight-hadoop-provision-linux-clusters.md
+          href: ../hdinsight-hadoop-provision-linux-clusters.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
           items:
             - name: Az Azure Portal használata
-              href: ../hdinsight-hadoop-create-linux-clusters-portal.md
+              href: ../hdinsight-hadoop-create-linux-clusters-portal.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: Használjon Azure Resource Manager-sablonokat
               displayName: 'resource manager template, arm template, resource manager group'
-              href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
+              href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: A .NET-hez készült SDK használata
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster'
             - name: A Pythonhoz készült SDK használata
@@ -110,17 +110,17 @@
             - name: A Javához készült SDK használata
               href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable#create-a-cluster'
             - name: Azure PowerShell használatával
-              href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
+              href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: A cURL és az Azure REST API használata
-              href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
+              href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: Az Azure parancssori felületének használata
-              href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
+              href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: Igény szerinti fürtök létrehozása
-              href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+              href: ../hdinsight-hadoop-create-linux-clusters-adf.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Igény szerinti fürtök létrehozása
-          href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+          href: ../hdinsight-hadoop-create-linux-clusters-adf.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: HDInsight-fürtök kezelése
-          href: ../hdinsight-administer-use-portal-linux.md
+          href: ../hdinsight-administer-use-portal-linux.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
           items:
             - name: A .NET-hez készült SDK használata
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#management'
@@ -131,76 +131,76 @@
             - name: A Góhoz készült SDK (előzetes verzió) használata
               href: 'https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview'
             - name: Azure PowerShell használatával
-              href: ../hdinsight-administer-use-powershell.md
+              href: ../hdinsight-administer-use-powershell.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: Az Azure parancssori felületének használata
-              href: ../hdinsight-administer-use-command-line.md
+              href: ../hdinsight-administer-use-command-line.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Fürtök kezelése az Apache Ambari webes felülettel
-          href: ../hdinsight-hadoop-manage-ambari.md
+          href: ../hdinsight-hadoop-manage-ambari.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
           items:
             - name: Fürtök optimalizálása az Apache Ambari webes felülettel
-              href: ../hdinsight-changing-configs-via-ambari.md
+              href: ../hdinsight-changing-configs-via-ambari.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: Az Apache Ambari REST API használata
-              href: ../hdinsight-hadoop-manage-ambari-rest-api.md
+              href: ../hdinsight-hadoop-manage-ambari-rest-api.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: HDInsight-fürt naplóinak kezelése
-          href: ../hdinsight-log-management.md
+          href: ../hdinsight-log-management.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Tárfiókok hozzáadása
-          href: ../hdinsight-hadoop-add-storage.md
+          href: ../hdinsight-hadoop-add-storage.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Adatok feltöltése Apache Hadoop-feladatokhoz
-          href: ../hdinsight-upload-data.md
+          href: ../hdinsight-upload-data.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Több HDInsight-fürt a Data Lake Storage-dzsel
-          href: ../hdinsight-multiple-clusters-data-lake-store.md
+          href: ../hdinsight-multiple-clusters-data-lake-store.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Adatok importálása és exportálása az Apache Sqoop használatával
-          href: ../hadoop/hdinsight-use-sqoop.md
+          href: ../hadoop/hdinsight-use-sqoop.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
           items:
             - name: Kapcsolódás az SSH-val
-              href: ../hadoop/apache-hadoop-use-sqoop-mac-linux.md
+              href: ../hadoop/apache-hadoop-use-sqoop-mac-linux.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: Futtatás a cURL használatával
-              href: ../hadoop/apache-hadoop-use-sqoop-curl.md
+              href: ../hadoop/apache-hadoop-use-sqoop-curl.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: Futtatás a .NET-hez készült SDK használatával
-              href: ../hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md
+              href: ../hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: Futtatás az Azure PowerShell használatával
-              href: ../hadoop/apache-hadoop-use-sqoop-powershell.md
+              href: ../hadoop/apache-hadoop-use-sqoop-powershell.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Az Apache Oozie használata a munkafolyamatokhoz
-          href: ../hdinsight-use-oozie-linux-mac.md
+          href: ../hdinsight-use-oozie-linux-mac.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: 'Fürt- és szolgáltatásportok, valamint URI-k'
-          href: ../hdinsight-hadoop-port-settings-for-services.md
+          href: ../hdinsight-hadoop-port-settings-for-services.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Áttelepítés Resource Manager fejlesztői eszközökre
-          href: ../hdinsight-hadoop-development-using-azure-resource-manager.md
+          href: ../hdinsight-hadoop-development-using-azure-resource-manager.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Rendelkezésre állás és megbízhatóság
-          href: ../hdinsight-high-availability-linux.md
+          href: ../hdinsight-high-availability-linux.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: A HDInsight-fürt frissítése újabb verzióra
-          href: ../hdinsight-upgrade-cluster.md
+          href: ../hdinsight-upgrade-cluster.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Az operációs rendszer javításai a HDInsight-fürthöz
-          href: ../hdinsight-os-patching.md
+          href: ../hdinsight-os-patching.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
     - name: Hibaelhárítás
-      href: ../hdinsight-troubleshoot-guide.md
+      href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
       items:
         - name: Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
-          href: ../hdinsight-troubleshoot-failed-cluster.md
+          href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Apache Hadoop HDFS-hibaelhárítás
-          href: ../hdinsight-troubleshoot-hdfs.md
+          href: ../hdinsight-troubleshoot-hdfs.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Apache HIVE-hibaelhárítás
-          href: ../hdinsight-troubleshoot-hive.md
+          href: ../hdinsight-troubleshoot-hive.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Apache Hadoop YARN-hibaelhárítás
-          href: ../hdinsight-troubleshoot-yarn.md
+          href: ../hdinsight-troubleshoot-yarn.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: További források
           items:
             - name: Információk a HDInsight Linuxon való használatáról
-              href: ../hdinsight-hadoop-linux-information.md
+              href: ../hdinsight-hadoop-linux-information.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: Apache Hadoop – memória és teljesítmény
-              href: ../hdinsight-hadoop-stack-trace-error-messages.md
+              href: ../hdinsight-hadoop-stack-trace-error-messages.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: Apache Hadoop YARN-alkalmazásnaplók elérése Linuxon
-              href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
+              href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: Halomürítések engedélyezése az Apache Hadoop-szolgáltatásokhoz
-              href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
+              href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: WebHCat-hibák megértése és megoldása
-              href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
+              href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: Apache Hive-beállítások a Nincs elég memória hiba javításához
-              href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
+              href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: Apache Hive-lekérdezések optimalizálása
-              href: ../hdinsight-hadoop-optimize-hive-query.md
+              href: ../hdinsight-hadoop-optimize-hive-query.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
             - name: Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
-              href: ../hdinsight-migrate-granular-access-cluster-configurations.md
+              href: ../hdinsight-migrate-granular-access-cluster-configurations.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
 - name: Referencia
   items:
     - name: Kódminták
@@ -214,7 +214,7 @@
     - name: Javához készült SDK
       href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable'
     - name: Góhoz készült SDK
-      href: ../hdinsight-go-sdk-overview.md
+      href: ../hdinsight-go-sdk-overview.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
     - name: .NET (Apache HBase)
       href: 'https://www.nuget.org/packages/Microsoft.HBase.Client/'
     - name: REST
@@ -231,9 +231,9 @@
     - name: Kibocsátási megjegyzések
       items:
         - name: Aktuális kibocsátási megjegyzések
-          href: ../hdinsight-release-notes.md
+          href: ../hdinsight-release-notes.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Archivált kibocsátási megjegyzések
-          href: ../hdinsight-release-notes-archive.md
+          href: ../hdinsight-release-notes-archive.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: Segítség kérése a fórumokon
@@ -245,30 +245,30 @@
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: A HDInsight Windows-eszközei
-      href: ../hdinsight-hadoop-windows-tools.md
+      href: ../hdinsight-hadoop-windows-tools.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
 - name: Alkalmasság vállalati használatra
   items:
     - name: Adatok védelme
-      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
     - name: Hálózati hozzáférés
       items:
         - name: HDInsight virtuális hálózati architektúra
-          href: ../hdinsight-virtual-network-architecture.md
+          href: ../hdinsight-virtual-network-architecture.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: HDInsight-alapú virtuális hálózatok tervezése
-          href: ../hdinsight-plan-virtual-network-deployment.md
+          href: ../hdinsight-plan-virtual-network-deployment.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: HDInsight-alapú virtuális hálózatok létrehozása
-          href: ../hdinsight-create-virtual-network.md
+          href: ../hdinsight-create-virtual-network.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: NSG-khez és UDR-ekhez szükséges IP-címek
-          href: ../hdinsight-management-ip-addresses.md
+          href: ../hdinsight-management-ip-addresses.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Tűzfal használata a kimenő forgalom korlátozására
-          href: ../hdinsight-restrict-outbound-traffic.md
+          href: ../hdinsight-restrict-outbound-traffic.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: A HDInsight csatlakoztatása a helyszíni hálózathoz
-          href: ../connect-on-premises-network.md
+          href: ../connect-on-premises-network.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
     - name: Monitorozás Azure Monitor-naplókkal
       items:
         - name: Az Azure Monitor-naplók használata
-          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Lekérdezések használata az Azure Monitor-naplókkal
-          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json
         - name: Fürtteljesítmény monitorozása
-          href: ../hdinsight-key-scenarios-to-monitor.md
+          href: ../hdinsight-key-scenarios-to-monitor.md?toc=/azure/hdinsight/r-server/toc.json&bc=/azure/hdinsight/r-server/breadcrumb/toc.json

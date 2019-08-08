@@ -1,6 +1,6 @@
 ---
-title: Hitelesítés és engedélyezés felhasználóknak – teljes körű linuxon – az Azure App Service |} A Microsoft Docs
-description: Ismerje meg, hogyan használhatja az App Service-hitelesítés és engedélyezés az App Service-alkalmazások, a linuxon futó, beleértve a távoli API-khoz való hozzáférés biztonságossá tételéhez.
+title: A felhasználók hitelesítése és engedélyezése a Linux-Azure App Service teljes körű használatával | Microsoft Docs
+description: Megtudhatja, hogyan használhatja a App Service hitelesítést és engedélyezést a Linuxon futó App Service-alkalmazások biztonságossá tételéhez, beleértve a távoli API-khoz való hozzáférést is.
 keywords: app service, azure app service, authN, authZ, védelem, biztonság, többrétegű, azure active directory, azure ad
 services: app-service\web
 documentationcenter: dotnet
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2c173da9bfb60f74b90a17f4f3c5ea6f930ca528
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 5ea16b1f92080f74afa05dcf8137c9b7e0ef4e3d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705834"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851204"
 ---
-# <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Oktatóanyag: Hitelesítés és engedélyezés felhasználóknak-végpontok a linuxon futó Azure App Service-ben
+# <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Oktatóanyag: A felhasználók hitelesítése és engedélyezése a Linuxon Azure App Service teljes körűen
 
 A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Az App Service továbbá beépített támogatást nyújt a [felhasználók hitelesítéséhez és engedélyezéséhez](../overview-authentication-authorization.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json). Ebből az oktatóanyagból megtudhatja, hogyan gondoskodhat az alkalmazások védelméről az App Service-hitelesítés és -engedélyezés segítségével. Az oktatóanyag ASP.NET Core-alkalmazást használ Angular.js előtérrendszerrel, de ez csak példaként szolgál. Az App Service-hitelesítés és -engedélyezés támogatja az összes nyelvi futtatókörnyezetet, Ön pedig az oktatóanyag elvégzésével megismerheti, hogyan alkalmazhatja ezt a kívánt nyelvre.
 
@@ -86,7 +86,7 @@ Ebben a lépésben üzembe helyezi a projektet két App Service-alkalmazásban. 
 
 ### <a name="create-azure-resources"></a>Azure-erőforrások létrehozása
 
-A Cloud Shellben futtassa a következő parancsokat két App Service-alkalmazások létrehozásához. Cserélje le az _&lt;előtér\_rendszeri\_alkalmazás\_neve>_ és a _&lt;háttér\_rendszeri\_alkalmazás\_neve>_ helyőrzőt két globális szinten egyedi alkalmazásnévre (érvényes karakterek: `a-z`, `0-9` és `-`). Az egyes parancsok további információkért lásd: [egy .NET Core-alkalmazás létrehozása Linuxon futó App Service-ben](quickstart-dotnetcore.md).
+A Cloud Shell futtassa a következő parancsokat két App Service alkalmazás létrehozásához. Cserélje le az _&lt;előtér\_rendszeri\_alkalmazás\_neve>_ és a _&lt;háttér\_rendszeri\_alkalmazás\_neve>_ helyőrzőt két globális szinten egyedi alkalmazásnévre (érvényes karakterek: `a-z`, `0-9` és `-`). Az egyes parancsokkal kapcsolatos további információkért lásd: [.net Core-alkalmazás létrehozása Linux rendszeren app Service](quickstart-dotnetcore.md).
 
 ```azurecli-interactive
 az group create --name myAuthResourceGroup --location "West Europe"
@@ -101,7 +101,7 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 
 ### <a name="configure-cors"></a>A CORS konfigurálása
 
-Ez a lépés nem kapcsolódik a hitelesítéshez és az engedélyezéshez. Később azonban szükség van rá [a háttérrendszeri API előtérrendszerbeli böngészőből való meghívásához](#call-api-securely-from-browser-code), hogy a böngésző lehetővé tegye a tartományok közötti API-hívásokat az Angular.js-alkalmazásból. A linuxon futó App Service-ben mostantól támogatja a CORS-funkciók, például a [Windows párjukhoz does](../app-service-web-tutorial-rest-api.md#add-cors-functionality).
+Ez a lépés nem kapcsolódik a hitelesítéshez és az engedélyezéshez. Később azonban szükség van rá [a háttérrendszeri API előtérrendszerbeli böngészőből való meghívásához](#call-api-securely-from-browser-code), hogy a böngésző lehetővé tegye a tartományok közötti API-hívásokat az Angular.js-alkalmazásból. A Linuxon App Service mostantól támogatja az olyan CORS funkciókat, mint [a Windows-partnere](../app-service-web-tutorial-rest-api.md#add-cors-functionality).
 
 A helyi adattárban nyissa meg a _Startup.cs_ fájlt. Adja hozzá a következő kódsort a `ConfigureServices(IServiceCollection services)` metódushoz:
 
@@ -143,7 +143,7 @@ git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
 git push frontend master
 ```
 
-### <a name="browse-to-the-azure-apps"></a>Tallózással keresse meg az Azure-alkalmazások
+### <a name="browse-to-the-azure-apps"></a>Tallózással keresse meg az Azure-alkalmazásokat
 
 Nyissa meg a következő URL-címeket egy böngészőben, és ellenőrizze a két alkalmazás működését.
 
@@ -242,7 +242,7 @@ Az Azure Active Directoryt fogja használni identitásszolgáltatóként. Továb
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>Hitelesítés és engedélyezés engedélyezése a háttéralkalmazás számára
 
-Az a [az Azure portal](https://portal.azure.com), a háttér-alkalmazás kezelése lap megnyitásához kattintson a bal oldali menüből: **Erőforráscsoportok** > **myAuthResourceGroup** >  _\<vissza\_záró\_alkalmazás\_neve >_ .
+A [Azure Portal](https://portal.azure.com)nyissa meg a háttérbeli alkalmazás felügyeleti lapját a bal oldali menüből: **Az erőforráscsoportok**myAuthResourceGroup >  _>.\_\<\_\__  > 
 
 ![Az Azure App Service-ben futó ASP.NET Core API](./media/tutorial-auth-aad/portal-navigate-back-end.png)
 
@@ -303,7 +303,7 @@ Jelentkezzen be az [Azure Erőforrás-kezelőbe](https://resources.azure.com). K
 
 ![Az Azure App Service-ben futó ASP.NET Core API](./media/tutorial-auth-aad/resources-enable-write.png)
 
-A bal oldali böngészőben kattintson az **Előfizetések** > ** _&lt;saját\_előfizetés>_**  > **resourceGroups** > **myAuthResourceGroup** > **szolgáltatók** > **Microsoft.Web** > **helyek** >  ** _\<előtér\_rendszerbeli\_alkalmazás\_neve>_**  > **config** > **authsettings** elemre.
+A bal oldali böngészőben kattintson az **Előfizetések** >  **_&lt;saját\_előfizetés>_**  > **resourceGroups** > **myAuthResourceGroup** > **szolgáltatók** > **Microsoft.Web** > **helyek** >  **_\<előtér\_rendszerbeli\_alkalmazás\_neve>_**  > **config** > **authsettings** elemre.
 
 Az **authsettings** nézetben kattintson a **Szerkesztés** gombra. A vágólapra másolt alkalmazásazonosító használatával állítsa az `additionalLoginParams` értéket a következő JSON-karakterláncra. 
 
@@ -337,7 +337,7 @@ public override void OnActionExecuting(ActionExecutingContext context)
 
     _client.DefaultRequestHeaders.Accept.Clear();
     _client.DefaultRequestHeaders.Authorization =
-        new AuthenticationHeaderValue("Bearer", Request.Headers["x-ms-token-aad-access_token"]);
+        new AuthenticationHeaderValue("Bearer", Request.Headers["x-ms-token-aad-access-token"]);
 }
 ```
 
@@ -453,7 +453,7 @@ Az alábbiak elvégzését ismerte meg:
 > * Hozzáférési kódok használata kiszolgálói kódból
 > * Hozzáférési kódok használata az ügyfél (böngésző) kódjából
 
-Folytassa a következő oktatóanyaggal, megtudhatja, hogyan képezhet le egyedi DNS-nevet az alkalmazáshoz.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan képezhető le egyéni DNS-név az alkalmazáshoz.
 
 > [!div class="nextstepaction"]
-> [Meglévő egyéni DNS-név leképezése az Azure App Service-ben](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+> [Meglévő egyéni DNS-név leképezése Azure App Service](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)

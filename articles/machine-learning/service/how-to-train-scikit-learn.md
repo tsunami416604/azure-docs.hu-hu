@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98c04c50bc4a52e9b2e4e267895fdd94888885f5
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: e76a747f7e1d7ca7056edf5b69df0677aeff96a1
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775164"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856003"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning-service"></a>Scikit-modellek készítése Azure Machine Learning szolgáltatással méretezéssel
 
@@ -35,8 +35,8 @@ Futtassa ezt a kódot ezen környezetek bármelyikén:
 
  - Saját Jupyter Notebook-kiszolgáló
 
-    - [A Pythonhoz készült Azure Machine Learning SDK telepítése](setup-create-workspace.md#sdk)
-    - [Munkaterület-konfigurációs fájl létrehozása](setup-create-workspace.md#write-a-configuration-file)
+    - [Telepítse a Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)-t.
+    - [Hozzon létre egy munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
     - Az adatkészlet és a minta parancsfájl letöltése 
         - [Írisz-adatkészlet](https://archive.ics.uci.edu/ml/datasets/iris)
         - [`train_iris.py`](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn)
@@ -133,7 +133,7 @@ A számítási célokkal kapcsolatos további információkért tekintse meg a [
 
 ## <a name="create-a-scikit-learn-estimator"></a>Scikit létrehozása – Learn kalkulátor
 
-A [scikit-Learn kalkulátor](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py) egyszerű módszert kínál a scikit képzési feladatok számítási célra való elindítására. Ez az [`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) osztályon keresztül valósul meg, amely az egycsomópontos CPU-képzések támogatásához használható.
+A [scikit-Learn kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py) egyszerű módszert kínál a scikit képzési feladatok számítási célra való elindítására. Ez az [`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) osztályon keresztül valósul meg, amely az egycsomópontos CPU-képzések támogatásához használható.
 
 Ha a képzési szkriptnek további pip-vagy Conda-csomagokat kell futtatnia, akkor az eredményül kapott Docker-rendszerképre is telepítheti a csomagokat `pip_packages` , `conda_packages` ha a és az argumentumokat át szeretné adni a nevüknek.
 

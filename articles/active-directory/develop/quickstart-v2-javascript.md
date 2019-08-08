@@ -8,7 +8,7 @@ manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ca7e7f282d63160cd1f729fba00f6d7d7704270
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 59b5ddbff646104b3d4a35c26c1ecf3968dea31d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334132"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852909"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Gyors útmutató: Bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy JavaScript egyoldalas alkalmazásból
 
@@ -59,7 +59,7 @@ Ehhez a rövid útmutatóhoz a következő beállítás szükséges:
 > 1. Válassza az **új regisztráció**lehetőséget.
 > 1. Amikor megjelenik az **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
 > 1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
-> 1. Az **átirányítási URI** szakasz legördülő listájában válassza ki a webplatformot  , majd állítsa be `http://localhost:30662/`az értéket a következőre:.
+> 1. Az **átirányítási URI** szakasz legördülő listájában válassza ki a webplatformot , majd állítsa be `http://localhost:30662/`az értéket a következőre:.
 > 1. Kattintson a **Register** (Regisztrálás) elemre. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
 > 1. Ez a rövid útmutató az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezését igényli. A regisztrált alkalmazás bal oldali ablaktábláján válassza a **hitelesítés**lehetőséget.
 > 1. A **Speciális beállítások** szakasz **implicit támogatás**területén jelölje be az **azonosító** jogkivonatok és **hozzáférési tokenek** jelölőnégyzetet. AZONOSÍTÓ jogkivonatok és hozzáférési tokenek szükségesek, mert az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
@@ -116,8 +116,8 @@ var msalConfig = {
 > - A Enter_the_Application_Id_here > a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** .  *\<*
 > - A Enter_the_Tenant_info_here > az alábbi lehetőségek egyikére van beállítva:  *\<*
 >    - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére** (például *contoso.microsoft.com*).
->    - Ha az alkalmazás *minden szervezeti címtárban*támogatja a fiókokat, cserélje le ezt az értéket szervezetekkel.
->    - Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is*támogatja a fiókokat , cserélje le ezt az értéket közösre. Ha *csak a személyes Microsoft-fiókok*támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**.
+>    - Ha az alkalmazás *minden szervezeti címtárban*támogatja a fiókokat, cserélje leezt az értéket szervezetekkel.
+>    - Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is*támogatja a fiókokat, cserélje le ezt az értéket közösre. Ha *csak a személyes Microsoft-fiókok*támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**.
 >
 > > [!TIP]
 > > Az **alkalmazás (ügyfél) azonosítója**, a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.

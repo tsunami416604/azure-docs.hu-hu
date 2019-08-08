@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 07/17/2019
+ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 03105232cb92a65f8c38d6d755910739a3fc4720
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 7c331a4a7395069dc4dc3ab1dcfc89415be0898c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305053"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854457"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Mi a Windows rendszerű virtuális asztali előnézet? 
 
@@ -29,9 +29,11 @@ A következő műveleteket végezheti el a Windows rendszerű virtuális asztalo
 
 ## <a name="introductory-video"></a>Bevezető videó
 
-A következő videóban Scott Manchester a Windows virtuális asztal néhány funkcióját mutatja be:
+Ismerje meg a Windows rendszerű virtuális asztalt, hogy miért egyedi, és mi a videó újdonságai:
 
-<br></br><iframe src="https://www.youtube-nocookie.com/embed/30dOLcZ4_9U" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+<br></br><iframe src="https://www.youtube.com/embed/NQFtI3JLtaU" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+
+További videók a Windows rendszerű virtuális asztalról: [lejátszási lista](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev).
 
 ## <a name="key-capabilities"></a>Főbb képességek
 

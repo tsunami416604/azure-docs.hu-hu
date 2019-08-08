@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e139b274ab8a1f7d91d46ec56171b84db4f5025e
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a4d692110a304cbfbbfda69bb2b10e3a065b2450
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812833"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851530"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkör engedélyei Azure Active Directory
 
@@ -200,9 +200,7 @@ Emellett a felhasználó hozzáférhet a bevezetéshez kapcsolódó jelentésekh
   > [!NOTE]
   > A Microsoft Graph API, az Azure AD Graph API és az Azure AD PowerShell esetében ez a szerepkör "Power BI szolgáltatás-rendszergazda" néven azonosítható. A [Azure Portal](https://portal.azure.com)"Power bi rendszergazda".
 
-* **[Kiemelt jogosultságú hitelesítés rendszergazdája](#privileged-authentication-administrator)** : Az ezzel a szerepkörrel rendelkező felhasználók az összes felhasználóra vonatkozóan állíthatnak be vagy állíthatnak vissza nem jelszavas hitelesítő adatokat, beleértve a globális rendszergazdákat is, és frissíthetik az összes felhasználó jelszavát. A Kiemelt jogosultságú hitelesítő rendszergazdák kényszerítheti a felhasználókat, hogy újra regisztráljanak a meglévő, nem jelszóval nem rendelkező hitelesítő adatokkal (pl. MFA, pont), és visszavonják az eszközön az MFA megjegyzésének visszavonását, az összes felhasználó következő bejelentkezésekor az MFA-t kérik. A Kiemelt hitelesítő rendszergazdák a következőket tehetik:
-  * A felhasználók újbóli regisztrálásának kényszerítése a meglévő, nem jelszavas hitelesítő adatokkal (például MFA, pont)
-  * A "Remember MFA on the Device" utasítás visszavonása az MFA-ra a következő bejelentkezéskor
+* **[Kiemelt jogosultságú hitelesítés rendszergazdája](#privileged-authentication-administrator)** : Az ezzel a szerepkörrel rendelkező felhasználók az összes felhasználóra vonatkozóan állíthatnak be vagy állíthatnak vissza nem jelszavas hitelesítő adatokat, beleértve a globális rendszergazdákat is, és frissíthetik az összes felhasználó jelszavát. A Kiemelt jogosultságú hitelesítő rendszergazdák kényszerítheti a felhasználókat, hogy újra regisztráljanak a meglévő, nem jelszóval nem rendelkező hitelesítő adatokkal (pl. MFA, pont), és visszavonják az eszközön az MFA megjegyzésének visszavonását, az összes felhasználó következő bejelentkezésekor az MFA-t kérik.
 
 * **[Kiemelt szerepkörű rendszergazda](#privileged-role-administrator)** : Az ezzel a szerepkörrel rendelkező felhasználók a szerepkör-hozzárendeléseket kezelhetik Azure Active Directoryban, valamint a Azure AD Privileged Identity Managementon belül is. Emellett ez a szerepkör lehetővé teszi Privileged Identity Management és felügyeleti egységek valamennyi aspektusának kezelését.
 

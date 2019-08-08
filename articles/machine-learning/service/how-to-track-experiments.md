@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: edc0da77fc1c2813c2485fca18d50952e3060db8
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: f7cd0125de886eed4b3e5c31503fdd4b7cbb76dd
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370473"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847826"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>A betanítási metrikák a Azure Machine Learningban való futtatásakor
 
@@ -49,7 +49,7 @@ Ha szeretné nyomon követni vagy figyelése is futtathatja a kísérletet, hozz
 ## <a name="set-up-the-workspace"></a>A munkaterület beállítása
 Mielőtt hozzáadná a naplózás és a egy kísérlet elküldése, be kell állítania a munkaterületen.
 
-1. Töltse be a munkaterület. Ha többet szeretne megtudni a munkaterület-konfiguráció beállításáról, kövesse az [Azure Machine learning szolgáltatás munkaterületének létrehozása](setup-create-workspace.md#sdk)című témakör lépéseit.
+1. Töltse be a munkaterület. A munkaterület-konfiguráció beállításával kapcsolatos további tudnivalókért lásd a [munkaterület konfigurációs fájlját](how-to-configure-environment.md#workspace).
 
    ```python
    from azureml.core import Experiment, Run, Workspace
@@ -58,7 +58,7 @@ Mielőtt hozzáadná a naplózás és a egy kísérlet elküldése, be kell áll
    ws = Workspace.from_config()
    ```
   
-## <a name="option-1-use-startlogging"></a>1\. lehetőség: Start_logging használata
+## <a name="option-1-use-start_logging"></a>1\. lehetőség: Start_logging használata
 
 **start_logging** notebookok – egyéb felhasználási helyzetek egy interaktív Futtatás használatra hoz létre. A munkamenet során naplózott összes metrikák kerülnek a futtatási rekordját a kísérletben.
 

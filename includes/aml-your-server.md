@@ -9,18 +9,23 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
-ms.openlocfilehash: ce8b117a3cbe0e3a5c4265729ccf5c0264241013
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 6c93d1243db1b3c4277a54cf71e10f6bbc648d26
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391780"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846008"
 ---
-1. Kövesse az utasításokat, [hozzon létre egy Azure Machine Learning szolgáltatás munkaterület](../articles/machine-learning/service/setup-create-workspace.md#portal) , tegye a következőket:
-    * A Miniconda-környezet létrehozása
-    * Telepítse az Azure Machine Learning SDK a Pythonhoz
-    * Munkaterület létrehozása
-    * Munkaterület konfigurációs fájl írása (**aml_config/config.json**).
+- A Azure Machine Learning SDK for Python telepítve van. A [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) utasításait követve tegye a következőket:
+
+
+1. A [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) utasításait követve tegye a következőket:
+    * Miniconda-környezet létrehozása [Azure Machine Learning szolgáltatás-munkaterületek létrehozása és kezelése]
+    * A Pythonhoz készült Azure Machine Learning SDK telepítése
+
+1. Hozzon létre egy [Azure Machine learning szolgáltatás](../articles/machine-learning/service/how-to-manage-workspace.md)munkaterületet.
+
+1. Írja be a [konfigurációs fájlt](../articles/machine-learning/service/how-to-configure-environment.md#workspace) (**aml_config/config. JSON**).
 
 1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
 

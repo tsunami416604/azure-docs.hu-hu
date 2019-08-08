@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: f13c7e6db2bf13c0547ee8689e22c9f04fe6d511
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 44fb955c4539a3330386c38a7798c9f3c3fed2d9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826758"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846054"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM-rendszerképek és azok üzembe helyezése Microsoft Azure
 
@@ -91,7 +91,7 @@ A magas rendelkezésre állás és a vész-helyreállítás a Oracle Database En
 
 Az Azure-beli [Oracle](configure-oracle-dataguard.md) -adatvédelmet bemutató oktatóanyag végigvezeti az Azure-beli alapszintű telepítési eljáráson.  
 
-Az Oracle-adatvédelemmel a magas rendelkezésre állást egyetlen virtuális gép elsődleges adatbázisa, egy másodlagos (készenléti) adatbázis egy másik virtuális gépen, valamint a közöttük zajló egyirányú replikáció is lehetővé teheti. Az eredmény olvasási hozzáférés az adatbázis másolatához. Az Oracle GoldenGate használatával kétirányú replikációt konfigurálhat a két adatbázis között. Ha meg szeretné tudni, hogyan állíthat be magas rendelkezésre állású megoldást az adatbázisaihoz ezekkel az eszközökkel, tekintse meg az Oracle webhelyén az [aktív](https://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html) adatvédelmet és a [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html) dokumentációját. Ha írási-olvasási hozzáféréssel kell rendelkeznie az adatbázis másolatához, használhatja az [Oracle aktív](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)adatvédelmet.
+Az Oracle-adatvédelemmel a magas rendelkezésre állást egyetlen virtuális gép elsődleges adatbázisa, egy másodlagos (készenléti) adatbázis egy másik virtuális gépen, valamint a közöttük zajló egyirányú replikáció is lehetővé teheti. Az eredmény olvasási hozzáférés az adatbázis másolatához. Az Oracle GoldenGate használatával kétirányú replikációt konfigurálhat a két adatbázis között. Ha meg szeretné tudni, hogyan állíthat be magas rendelkezésre állású megoldást az adatbázisaihoz ezekkel az eszközökkel, tekintse meg az Oracle webhelyén az [aktív](https://www.oracle.com/database/technologies/high-availability/dataguard.html) adatvédelmet és a [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html) dokumentációját. Ha írási-olvasási hozzáféréssel kell rendelkeznie az adatbázis másolatához, használhatja az [Oracle aktív](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)adatvédelmet.
 
 Az Azure-beli [Oracle GoldenGate üzembe](configure-oracle-golden-gate.md) helyezése az Azure-beli alapszintű telepítési eljárás végigvezeti.
 

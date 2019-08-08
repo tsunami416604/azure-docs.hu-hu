@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 064fd0e2bf503d917c809aa576bbc332b5b18a77
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 3fb4d953f575dcf6582f9f1c8c2a725971134159
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742361"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856259"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
@@ -66,6 +66,9 @@ A modell létrehozása automatizálható, és azt is megtudhatja, [milyen fontos
 ## <a name="preprocessing"></a>Előfeldolgozás
 
 Minden automatizált gépi tanulási kísérlet során az adatai az alapértelmezett módszerekkel és opcionálisan a speciális előfeldolgozással vannak feldolgozva.
+
+> [!NOTE]
+> Az automatizált gépi tanulás előfeldolgozásának lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos előfeldolgozási lépéseket a rendszer automatikusan alkalmazza a bemeneti adatokra.
 
 ### <a name="automatic-preprocessing-standard"></a>Automatikus előfeldolgozás (standard)
 

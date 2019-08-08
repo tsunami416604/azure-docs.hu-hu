@@ -1,6 +1,6 @@
 ---
-title: A JavaScript egyoldalas alkalmazás forgatókönyv áttekintése – a Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre egy egyoldalas alkalmazás (forgatókönyv áttekintése), amely integrálható a Microsoft identitásplatformjához.
+title: JavaScript egyoldalas alkalmazás forgatókönyvének áttekintése – Microsoft Identity platform
+description: Megtudhatja, hogyan hozhat létre egy egyoldalas alkalmazást (forgatókönyv áttekintése), amely integrálja a Microsoft Identity platformot.
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07a21e83f304f3e1acc0ed4033d832dd8e901ac9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3c4e671473ff6c6fecdc13fe61dbde1d3fb3809
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65076360"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852521"
 ---
 # <a name="scenario-single-page-application"></a>Forgatókönyv: Egyoldalas alkalmazás
 
-Ismerje meg, mindössze egy egyoldalas alkalmazás (SPA).
+Ismerje meg az egyoldalas alkalmazások (SPA) létrehozásához szükséges tudnivalókat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,26 +32,26 @@ Ismerje meg, mindössze egy egyoldalas alkalmazás (SPA).
 
 ## <a name="getting-started"></a>Első lépések
 
-A JavaScript SPA rövid útmutatót követve hozhat létre az első alkalmazás:
+Az első alkalmazást az alábbi JavaScript SPA-útmutató segítségével hozhatja létre:
 
 > [!div class="nextstepaction"]
 > [Rövid útmutató: Egyoldalas alkalmazás](./quickstart-v2-javascript.md)
 
 ## <a name="overview"></a>Áttekintés
 
-Számos modern webes alkalmazások beépített JavaScript- vagy például az Angularrel, oldalon a Vue.js és React.js SPA keretrendszer használatával írt ügyféloldali egyoldalas alkalmazásokként. Ezek az alkalmazások futtatásához egy webböngészőben, és különböző hitelesítési jellemzőit, mint a hagyományos kiszolgálóoldali webes alkalmazások. A Microsoft identity platform lehetővé teszi, hogy az egyoldalas alkalmazások a felhasználók és a tokenekhez Háttérszolgáltatásokhoz vagy webes API-k használatával való eléréséhez a [OAuth 2.0 implicit folyamat](./v2-oauth2-implicit-grant-flow.md). Az implicit folyamatot lehetővé teszi, hogy az alkalmazás és a hitelesített felhasználó is elérhetik a védett API-k meghívásához szükséges jogkivonatok azonosító tokenekhez.
+Számos modern webalkalmazás úgy van kialakítva, mint a JavaScript vagy egy SPA-keretrendszer, például a szögletes, a Vue. js és a reakciós. js segítségével írt ügyféloldali egyoldalas alkalmazások. Ezek az alkalmazások webböngészőben futnak, és különböző hitelesítési jellemzőkkel rendelkeznek, mint a hagyományos kiszolgálóoldali webes alkalmazások. A Microsoft Identity platform lehetővé teszi, hogy az egyoldalas alkalmazások bejelentkezzenek a felhasználókba, és jogkivonatokat kérjenek a háttér-szolgáltatások vagy webes API-k elérésére a [OAuth 2,0 implicit folyamat](./v2-oauth2-implicit-grant-flow.md)használatával. Az implicit folyamat lehetővé teszi, hogy az alkalmazás azonosító jogkivonatokat kapjon a hitelesített felhasználó képviseletére, valamint a védett API-k meghívásához szükséges jogkivonatok elérésére is.
 
-![Egylapos alkalmazások](./media/scenarios/spa-app.svg)
+![Egyoldalas alkalmazások](./media/scenarios/spa-app.svg)
 
-A hitelesítési folyamat nem tartalmazza az alkalmazás-forgatókönyvek Electron, React natív JavaScript keretrendszereket használó platformfüggetlen használatával és így tovább. azóta igényelnek további képességek a natív platformokhoz való együttműködéshez szükséges.
+Ez a hitelesítési folyamat nem tartalmaz olyan alkalmazási helyzeteket, amelyek platformfüggetlen JavaScript-keretrendszereket, például elektronokat, reagáló natív és így tovább. mivel további képességeket igényelnek a natív platformokkal való interakcióhoz.
 
-## <a name="specifics"></a>Tulajdonságairól
+## <a name="specifics"></a>Sajátosságai
 
-Ezt a forgatókönyvet, az alkalmazás a következő szempontok alapján szükséges:
+A forgatókönyvnek az alkalmazáshoz való engedélyezéséhez a következő szempontokat kell figyelembe vennie:
 
-* Az Azure AD alkalmazás regisztrálása az implicit folyamat engedélyezése és a egy átirányítási URI-t, amelyhez a tokenek adott vissza beállítása magában foglalja.
-* Alkalmazás konfigurációja a regisztrált alkalmazás tulajdonságai, például az alkalmazás azonosítóját.
-* A hitelesítési folyamat jelentkezik be, és szerzi be a jogkivonatokat ehhez az MSAL kódtár használatával.
+* Az Azure AD-beli alkalmazások regisztrálása magában foglalja az implicit folyamat engedélyezését és egy átirányítási URI-t, amely a visszaadott tokeneket adja vissza.
+* Az alkalmazás konfigurációja a regisztrált alkalmazás tulajdonságaival, például az alkalmazás azonosítójával.
+* A MSAL-kódtár használatával jelentkezzen be a hitelesítési folyamatba, és szerezzen be jogkivonatokat.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54146927bf344eed63e24a3df073aa13f7fa0676
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 98a339f3fe9d5318b71ef60ac916bc4dcc6112fb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68319913"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853741"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Egy felhasználó kétlépéses ellenőrzésének megkövetelése
 
@@ -45,11 +45,11 @@ Az Azure multi-Factor Authentication felhasználói fiókjai a következő háro
 |:---:|:---:|:---:|:--:|:--:|
 | Letiltva |Az Azure MFA-ban nem regisztrált új felhasználó alapértelmezett állapota. |Nem |Nem |Nem |
 | Enabled |A felhasználó regisztrálva lett az Azure MFA-ban, de nincs regisztrálva. A következő bejelentkezés alkalmával a rendszer felszólítja a regisztrálásra. |Nem.  Továbbra is működnek, amíg a regisztrációs folyamat be nem fejeződik. | Igen. A munkamenet lejárata után az Azure MFA-regisztrációra van szükség.| Igen. A hozzáférési jogkivonat lejárta után az Azure MFA-regisztrációra van szükség. |
-| Kényszerítve |A felhasználó regisztrálva lett, és befejezte az Azure MFA regisztrációs folyamatát. |Igen. Az alkalmazásokhoz alkalmazások jelszava szükséges. |Igen. Bejelentkezéskor az Azure MFA szükséges. | Igen. Bejelentkezéskor az Azure MFA szükséges. |
+| Érvényben van |A felhasználó regisztrálva lett, és befejezte az Azure MFA regisztrációs folyamatát. |Igen. Az alkalmazásokhoz alkalmazások jelszava szükséges. |Igen. Bejelentkezéskor az Azure MFA szükséges. | Igen. Bejelentkezéskor az Azure MFA szükséges. |
 
 A felhasználó állapota azt jelzi, hogy egy rendszergazda regisztrálta-e őket az Azure MFA-ban, és hogy elvégezték-e a regisztrációs folyamatot.
 
-Az összes felhasználó *le van tiltva*. Amikor felhasználókat regisztrál az Azure MFA-ban, az állapotuk *engedélyezve*értékre vált. Ha az engedélyezett felhasználók bejelentkeznek, és elvégzik a regisztrációs folyamatot , az állapotuk kényszerítve értékűre vált.  
+Az összes felhasználó *le van tiltva*. Amikor felhasználókat regisztrál az Azure MFA-ban, az állapotuk *engedélyezve*értékre vált. Ha az engedélyezett felhasználók bejelentkeznek, és elvégzik a regisztrációs folyamatot, az állapotuk kényszerítve értékűre vált.  
 
 ### <a name="view-the-status-for-a-user"></a>Felhasználó állapotának megtekintése
 
@@ -86,7 +86,7 @@ Ha módosítani szeretné a felhasználói állapotot az [Azure ad PowerShell](/
 * Kényszerítve
 * Letiltva  
 
-Ne helyezze át a felhasználókat közvetlenül  a kényszerített állapotba. Ha így tesz, a nem böngészőalapú alkalmazások nem működnek, mert a felhasználó nem ment át az Azure MFA-regisztrációval, és nem kapott meg egy [alkalmazás jelszavát](howto-mfa-mfasettings.md#app-passwords).
+Ne helyezze át a felhasználókat közvetlenül a kényszerített állapotba. Ha így tesz, a nem böngészőalapú alkalmazások nem működnek, mert a felhasználó nem ment át az Azure MFA-regisztrációval, és nem kapott meg egy [alkalmazás jelszavát](howto-mfa-mfasettings.md#app-passwords).
 
 Először telepítse a modult a használatával:
 
@@ -142,11 +142,7 @@ A következő PowerShell segítséget nyújt a feltételes hozzáférésen alapu
 # Disable MFA for all users, keeping their MFA methods intact
 Get-MsolUser -All | Disable-MFA -KeepMethods
 
-# Enforce MFA for all users
-Get-MsolUser -All | Set-MfaState -State Enforced
-
-# Wrapper to disable MFA with the option to keep the MFA
-# methods (to avoid having to proof-up again later)
+# Wrapper to disable MFA with the option to keep the MFA methods (to avoid having to proof-up again later)
 function Disable-Mfa {
 
     [CmdletBinding()]

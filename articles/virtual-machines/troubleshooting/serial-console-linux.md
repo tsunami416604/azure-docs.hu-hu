@@ -1,6 +1,6 @@
 ---
-title: Linuxhoz készült Azure-soros konzolon |} A Microsoft Docs
-description: Soros konzol és a kétirányú Azure-beli virtuális gépek és a Virtual Machine Scale Sets.
+title: Azure soros konzol Linux rendszerhez | Microsoft Docs
+description: Kétirányú soros konzol az Azure Virtual Machines és Virtual Machine Scale Setshoz.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -14,119 +14,119 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: f3fa646fcca99d5762f480b3fd12c5e249eabaf8
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 0eda9fe0e16a945dcb9f9a1b686afcd2aebe6306
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710580"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854385"
 ---
-# <a name="azure-serial-console-for-linux"></a>Linuxhoz készült Azure-soros konzolon
+# <a name="azure-serial-console-for-linux"></a>Azure soros konzol Linux rendszerhez
 
-Az Azure Portalon a soros konzol Linux rendszerű virtuális gépek (VM) egy szöveges alapú konzol hozzáférést biztosít, és a virtuális gép méretezési csoport példányaihoz. A soros kapcsolat a virtuális gép vagy a virtuális gép méretezési készlet példány, azt a hálózati vagy az operációs rendszer állapotának független való hozzáférés biztosítása a ttys0 soros porton csatlakozik. A soros konzol csak lehet hozzáférni az Azure portal használatával, és csak a közreműködői hozzáférés szerepkörrel rendelkező felhasználók számára engedélyezett vagy újabb, a virtuális gép vagy virtuálisgép-méretezési csoporthoz.
+A Azure Portal soros konzolja hozzáférést biztosít a linuxos virtuális gépekhez (VM) és virtuálisgép-méretezési csoport példányaihoz. Ez a soros kapcsolat a virtuális gép vagy a virtuálisgép-méretezési csoport példányának ttyS0 soros portjához csatlakozik, és hozzáférést biztosít a hálózattól vagy az operációs rendszer állapotától függetlenül. A soros konzol csak a Azure Portal használatával érhető el, és csak azon felhasználók számára engedélyezett, akik a virtuális gép vagy a virtuálisgép-méretezési csoport számára a közreműködő vagy annál magasabb hozzáférési szerepkörrel rendelkeznek.
 
-Soros konzol virtuális gépek azonos módon működik, és a virtuális gép méretezési csoport példányaihoz. Ez a dokumentum a virtuális gépek összes említései implicit módon tartalmazza a virtuális gép méretezési csoport példányaihoz Ha másként nincs jelezve.
+A soros konzol a virtuális gépek és a virtuálisgép-méretezési csoport példányai esetében is ugyanúgy működik. Ebben a doc-ban a virtuális gépekre vonatkozó összes említés implicit módon tartalmazza a virtuálisgép-méretezési csoport példányait, hacsak másként nincs megadva.
 
-A soros konzol dokumentációja a Windows: [soros konzol a Windows](../windows/serial-console.md).
+A Windows soros konzoljának dokumentációját lásd: [a Windows soros konzolja](../windows/serial-console.md).
 
 > [!NOTE]
-> A soros konzol szolgáltatás általánosan elérhető a globális Azure-régióban. Ez még nem érhető el az Azure government vagy Azure China felhőkben.
+> A soros konzol általánosan elérhető a globális Azure-régiókban. Ez még nem érhető el az Azure government vagy Azure China felhőkben.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A virtuális gép vagy a virtuális gép méretezési készlet példány kell használnia a resource management üzemi modellhez. Klasszikus üzemi modellben nem támogatottak.
+- A virtuális gép vagy virtuálisgép-méretezési csoport példányának a Resource Management-alapú üzemi modellt kell használnia. Klasszikus üzemi modellben nem támogatottak.
 
-- A soros konzol használó fióknak rendelkeznie kell a [virtuális gépek Közreműködője szerepkör](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) a virtuális gép és a [rendszerindítási diagnosztika](boot-diagnostics.md) storage-fiók
+- A soros konzolt használó fióknak rendelkeznie kell a [virtuálisgép-közreműködő szerepkörrel a virtuális](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) géphez és a [rendszerindítási diagnosztika](boot-diagnostics.md) Storage-fiókhoz.
 
-- A virtuális gép vagy a virtuális gép méretezési készlet példány jelszóalapú felhasználó kell rendelkeznie. Létrehozhat egyet a [jelszó alaphelyzetbe állítása](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) a Virtuálisgép-hozzáférési bővítmény funkcióját. Válassza ki **jelszó alaphelyzetbe állítása** származó a **támogatás + hibaelhárítás** szakaszban.
+- A virtuális gép vagy virtuálisgép-méretezési csoport példányának jelszó-alapú felhasználónak kell lennie. Létrehozhat egyet a [jelszó alaphelyzetbe állítása](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) a Virtuálisgép-hozzáférési bővítmény funkcióját. Válassza ki **jelszó alaphelyzetbe állítása** származó a **támogatás + hibaelhárítás** szakaszban.
 
-- Rendelkeznie kell a virtuális gép vagy a virtuális gép méretezési készlet példány [rendszerindítási diagnosztika](boot-diagnostics.md) engedélyezve van.
+- A virtuális gép vagy virtuálisgép-méretezési csoport példányának engedélyezve kell lennie a rendszerindítási [diagnosztika](boot-diagnostics.md) szolgáltatásnak.
 
     ![Rendszerindítási diagnosztikai beállításokat](./media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
-- Linux-disztribúciók jellemző beállításait, lásd: [soros konzol Linux terjesztési rendelkezésre állási](#serial-console-linux-distribution-availability).
+- A Linux-disztribúciókkal kapcsolatos beállításokért lásd: [Serial Console Linux-disztribúció rendelkezésre állása](#serial-console-linux-distribution-availability).
 
-- A virtuális gép vagy a virtuális gép méretezési készlet példány kell konfigurálni a soros kimeneti `ttys0`. Ez az alapértelmezett Azure-rendszerképek, de célszerű gondosan ellenőrizze ezt az egyéni lemezképek. Részletek [alább](#custom-linux-images).
+- A virtuális gép vagy virtuálisgép-méretezési csoport példányát be kell állítani a `ttys0`soros kimenethez. Ez az alapértelmezett Azure-lemezképek esetében, de ezt az egyéni rendszerképeken érdemes megtekinteni. Részletek [alább](#custom-linux-images).
 
 
-## <a name="get-started-with-the-serial-console"></a>A soros konzol használatának első lépései
-A soros konzol virtuális gépek és virtuálisgép-méretezési csoportban csak az Azure Portalon keresztül érhető el:
+## <a name="get-started-with-the-serial-console"></a>Ismerkedés a soros konzollal
+A virtuális gépek és a virtuálisgép-méretezési csoport soros konzolja csak a Azure Portal érhető el:
 
-### <a name="serial-console-for-virtual-machines"></a>A virtuális gépek soros konzol
-A virtuális gépek soros konzol olyan egyszerű, amilyennek kattint **soros konzol** belül a **támogatás + hibaelhárítás** szakaszban az Azure Portalon.
+### <a name="serial-console-for-virtual-machines"></a>Virtual Machines soros konzolja
+A virtuális gépek soros konzolja olyan egyszerű, mint a Azure Portal **támogatás + hibaelhárítás** szakaszának **Serial consoleére** kattintva.
   1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
-  1. Navigáljon a **összes erőforrás** , és válasszon egy virtuális gépet. A virtuális gép megnyílik.
+  1. Navigáljon az **összes erőforráshoz** , és válasszon ki egy virtuális gépet. Megnyílik a virtuális gép áttekintő lapja.
 
   1. Görgessen le a **támogatás + hibaelhárítás** szakaszt, és válassza **soros konzol**. A soros konzol segítségével egy új panel nyílik meg, és elindítja a kapcsolatot.
 
-     ![Linux soros konzol ablakából](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
+     ![Linux soros konzol ablak](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
 
-### <a name="serial-console-for-virtual-machine-scale-sets"></a>Soros konzol a Virtual Machine Scale Sets
-Soros konzol virtuálisgép-méretezési csoportokhoz tartozó példányonként alapon érhető el. Nyissa meg egy virtuálisgép-méretezési csoportot az egyes példányához csapatához kell a **soros konzol** gombra. Ha a virtuálisgép-méretezési készlet nem rendelkezik a rendszerindítási diagnosztika engedélyezve van, győződjön meg arról, frissíti a virtuálisgép-méretezési csoport modelljét a rendszerindítási diagnosztika engedélyezése, majd utána frissítse az összes példányt az új modellre annak érdekében, hogy a soros konzol eléréséhez.
+### <a name="serial-console-for-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets soros konzolja
+A soros konzol a virtuálisgép-méretezési csoportok esetében egy példányban érhető el. A **Serial Console** gomb meglátása előtt navigáljon a virtuálisgép-méretezési csoport egyes példányaira. Ha a virtuálisgép-méretezési csoport nem rendelkezik engedélyezve a rendszerindítási diagnosztika szolgáltatással, frissítse a virtuálisgép-méretezési csoport modelljét a rendszerindítási diagnosztika engedélyezéséhez, majd frissítse az összes példányt az új modellre a soros konzol eléréséhez.
   1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
-  1. Navigáljon a **összes erőforrás** , és válasszon egy virtuálisgép-méretezési csoportban. Megnyílik a virtuálisgép-méretezési csoport áttekintő oldala megadása
+  1. Navigáljon az **összes erőforráshoz** , és válasszon ki egy virtuálisgép-méretezési készletet. Megnyílik a virtuálisgép-méretezési csoport Áttekintés lapja.
 
-  1. Navigáljon a **példányok**
+  1. A **példányok** navigálása
 
-  1. Válassza ki a virtuálisgép-méretezési készlet példány
+  1. Virtuálisgép-méretezési csoport példányának kiválasztása
 
-  1. Az a **támogatás + hibaelhárítás** szakaszban jelölje be **soros konzol**. A soros konzol segítségével egy új panel nyílik meg, és elindítja a kapcsolatot.
+  1. A **támogatás + hibaelhárítás** szakaszban válassza a **Serial Console**lehetőséget. A soros konzol segítségével egy új panel nyílik meg, és elindítja a kapcsolatot.
 
-     ![Linux virtuálisgép-méretezési csoport beállítása a soros konzol](./media/virtual-machines-serial-console/vmss-start-console.gif)
+     ![Linuxos virtuálisgép-méretezési csoport soros konzolja](./media/virtual-machines-serial-console/vmss-start-console.gif)
 
-
-> [!NOTE]
-> A soros konzol beállított jelszóval rendelkező helyi felhasználó szükséges. Virtuális gépek vagy az SSH nyilvános kulcs csak a konfigurált virtuális gépek méretezési nem fog tudni jelentkezzen be a soros konzol. Egy helyi felhasználót egy jelszó létrehozásához használja a [VMAccess bővítmény](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension), amely érhető el a portálon kiválasztásával **jelszó alaphelyzetbe állítása** az Azure Portalon, és hozzon létre egy helyi felhasználói jelszó.
-> A rendszergazdai jelszó alaphelyzetbe állítása szerint a fiókban [GRUB használatával egyfelhasználós módban indul](./serial-console-grub-single-user-mode.md).
-
-## <a name="serial-console-linux-distribution-availability"></a>Soros konzol Linux terjesztési rendelkezésre állása
-A soros konzol megfelelő működéséhez konfigurálni kell a vendég operációs rendszer olvasása és írása az üzenetek konzol a soros port. A legtöbb [Azure által támogatott Linux-disztribúciók](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) a soros konzol alapértelmezés szerint konfigurálva van. Kiválasztásával **soros konzol** a a **támogatás + hibaelhárítás** az Azure Portalon szakasza nyújt a soros konzoljához való hozzáférés.
 
 > [!NOTE]
-> Ha semmit a soros konzol nem láthatóak, ügyeljen arra, hogy a rendszerindítási diagnosztika engedélyezve van a virtuális Gépen. Szerezze meg a **Enter** fog gyakran problémák megoldása, semmi nem feltűnik-e a soros konzolon.
+> A soros konzolon helyi felhasználónak kell lennie egy konfigurált jelszóval. A csak SSH nyilvános kulccsal konfigurált virtuális gépek vagy virtuálisgép-méretezési csoportok nem tudnak bejelentkezni a soros konzolra. Ha jelszót használó helyi felhasználót szeretne létrehozni, használja a [VMAccess bővítményt](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension), amely a portálon elérhető Azure Portal **jelszó alaphelyzetbe állítása** lehetőség kiválasztásával, valamint a jelszóval rendelkező helyi felhasználó létrehozásával érhető el.
+> A fiók rendszergazdai jelszavát a GRUB használatával is alaphelyzetbe állíthatja, ha az egyfelhasználós [módba szeretné indítani](./serial-console-grub-single-user-mode.md)a rendszerindítást.
+
+## <a name="serial-console-linux-distribution-availability"></a>Soros konzol Linux-disztribúció rendelkezésre állása
+Ahhoz, hogy a soros konzol megfelelően működjön, a vendég operációs rendszert úgy kell konfigurálni, hogy a konzol üzeneteinek olvasására és írására a soros portra legyen konfigurálva. A legtöbb [támogatott Azure Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -disztribúcióhoz alapértelmezés szerint a soros konzol van konfigurálva. A Azure Portal támogatás és **Hibaelhárítás** területén a **Serial Console** kiválasztása lehetőséget biztosít a soros konzolhoz való hozzáféréshez.
+
+> [!NOTE]
+> Ha nem lát semmit a soros konzolon, győződjön meg arról, hogy a rendszerindítási diagnosztika engedélyezve van a virtuális gépen. Az **ENTER billentyű** lenyomásával gyakran problémák merülnek fel, ha a soros konzolon semmi sem jelenik meg.
 
 Disztribúció      | Csatlakozás a soros konzolhoz
 :-----------|:---------------------
-Red Hat Enterprise Linux    | Soros hozzáférés alapértelmezés szerint engedélyezve van.
-CentOS      | Soros hozzáférés alapértelmezés szerint engedélyezve van.
-Ubuntu      | Soros hozzáférés alapértelmezés szerint engedélyezve van.
-CoreOS      | Soros hozzáférés alapértelmezés szerint engedélyezve van.
-SUSE        | Az Azure-ban elérhető újabb SLES lemezképek hozzáférése soros konzolon alapértelmezés szerint engedélyezve van. Ha régebbi verzióit (10 vagy korábbi) SLES használja az Azure-on, tekintse meg a [tudásbáziscikk](https://www.novell.com/support/kb/doc.php?id=3456486) soros konzol engedélyezéséhez.
-Oracle Linux        | Soros hozzáférés alapértelmezés szerint engedélyezve van.
+Red Hat Enterprise Linux    | Serial console hozzáférés alapértelmezés szerint engedélyezve van.
+CentOS      | Serial console hozzáférés alapértelmezés szerint engedélyezve van.
+Ubuntu      | Serial console hozzáférés alapértelmezés szerint engedélyezve van.
+CoreOS      | Serial console hozzáférés alapértelmezés szerint engedélyezve van.
+SUSE        | Az Azure-ban elérhető újabb SLES-lemezképek alapértelmezés szerint engedélyezve vannak a soros konzolon. Ha az Azure-ban a SLES régebbi verzióit (10 vagy korábbi verziót) használja, akkor a soros konzol engedélyezéséhez tekintse meg a [Tudásbázis cikkét](https://www.novell.com/support/kb/doc.php?id=3456486) .
+Oracle Linux        | Serial console hozzáférés alapértelmezés szerint engedélyezve van.
 
 ### <a name="custom-linux-images"></a>Egyéni Linux-rendszerképek
-A Linux rendszerű virtuális gép egyéni rendszerkép soros konzolon engedélyezéséhez a fájl hozzáféréséhez a konzolhoz */etc/inittab* , futtassa a parancsot egy terminálban `ttyS0`. Például: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`.
+Ha engedélyezni szeretné az egyéni linuxos virtuálisgép-rendszerkép soros konzolját, engedélyezze a konzol hozzáférését a fájl */etc/inittab* a terminál `ttyS0`futtatásához. Például: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`.
 
-Érdemes azt is, soros kimenetének célhelyeként ttys0 hozzáadása. Egyéni kép használata a soros konzol konfigurálásával kapcsolatos további információkért tekintse meg az általános rendszerkövetelményeket itt: [létrehozása és feltöltése az Azure-ban Linux rendszerű virtuális merevlemez](https://aka.ms/createuploadvhd#general-linux-system-requirements).
+A ttyS0 a soros kimenethez célként is hozzá kell adni. Ha szeretne többet megtudni arról, hogyan konfigurálhat egyéni rendszerképeket a soros konzollal, tekintse meg az általános rendszerkövetelményeket a [linuxos virtuális merevlemez létrehozása és feltöltése az Azure-ban](https://aka.ms/createuploadvhd#general-linux-system-requirements)című témakörben.
 
-Ha egy egyéni kernel fejleszt, érdemes megfontolni a kernel jelző: `CONFIG_SERIAL_8250=y` és `CONFIG_MAGIC_SYSRQ_SERIAL=y`. A konfigurációs fájl helye általában a */boot/* elérési útja. |
+Ha egyéni kernelt hoz létre, érdemes lehet engedélyezni a következő kernel- `CONFIG_SERIAL_8250=y` jelzőket: és `CONFIG_MAGIC_SYSRQ_SERIAL=y`. A konfigurációs fájl általában a */boot/* útvonalon található.
 
-## <a name="common-scenarios-for-accessing-the-serial-console"></a>A soros konzol eléréséhez a gyakori forgatókönyvek
+## <a name="common-scenarios-for-accessing-the-serial-console"></a>A soros konzol elérésének gyakori forgatókönyvei
 
-Forgatókönyv          | A soros konzol műveletek
+Forgatókönyv          | Műveletek a soros konzolon
 :------------------|:-----------------------------------------
-Hibás *FSTAB* fájl | Nyomja le az **Enter** billentyűt a folytatáshoz, és a egy szövegszerkesztő segítségével hárítsa el a *FSTAB* fájlt. Előfordulhat, hogy kell lenniük ehhez egyfelhasználós módban. További információkért lásd: a soros konzol szakaszában [fstab-hibák megoldása](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) és [GRUB és egyfelhasználós üzemmódban használja a soros konzol](serial-console-grub-single-user-mode.md).
-Helytelen tűzfal-szabályok |  Engedélyezze az iptables SSH-kapcsolat blokkolására van beállítva, ha a soros konzol segítségével anélkül, hogy az SSH a virtuális gép kezelése. További részleteket tekinthet meg a [engedélyezze az iptables ember lap](https://linux.die.net/man/8/iptables).<br>Ehhez hasonlóan ha SSH-hozzáférését blokkolja a firewalld, hozzáférhet a virtuális gép soros konzolon keresztül és firewalld újrakonfigurálása. További részletek találhatók a [firewalld dokumentáció](https://firewalld.org/documentation/).
-Fájlrendszer sérülése és ellenőrzése | Tekintse át a soros konzol szakaszában [Azure Linux rendszerű virtuális gép nem indítható el miatt fájlrendszer hibáinak](https://support.microsoft.com/en-us/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck) további hibaelhárítási részleteket sérült fájlrendszerek soros konzol használatával.
-SSH konfigurációs problémák | A soros konzol eléréséhez, és módosítsa a beállításokat. Soros konzol használható függetlenül a virtuális gépek SSH-konfigurációja nem követeli meg a virtuális gép hálózati kapcsolat működjön. Hibaelhárítási útmutató érhető el: [hibaelhárítása SSH kapcsolatok az Azure Linux rendszerű virtuális géphez, amelyek nem sikerül, hibák, vagy elutasítják](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection). További részletek [részletes SSH hibaelhárítási lépései Linux rendszerű virtuális gép az Azure-ban való csatlakozással kapcsolatos problémákat](./detailed-troubleshoot-ssh-connection.md)
-A rendszertöltő használata | Indítsa újra a virtuális Gépet a soros konzol panelen a Linux rendszerű virtuális gépen lévő GRUB eléréséhez. További részletek és disztribúció kapcsolatos információkat lásd: [GRUB és egyfelhasználós üzemmódban használja a soros konzol](serial-console-grub-single-user-mode.md).
+Törött *FSTAB* -fájl | Nyomja le az **ENTER** billentyűt a folytatáshoz, majd egy szövegszerkesztővel javítsa ki az *FSTAB* fájlt. Előfordulhat, hogy egyfelhasználós módban kell lennie. További információért lásd a soros konzol című szakaszt, amely [bemutatja, hogyan lehet az fstab-problémákat kijavítani](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) és a [soros konzol használatával hozzáférni a grub és az](serial-console-grub-single-user-mode.md)egyfelhasználós üzemmódhoz.
+Helytelen tűzfal-szabályok |  Ha úgy konfigurálta az iptables-t, hogy letiltsa az SSH-kapcsolatot, akkor a soros konzol használatával az SSH használata nélkül is dolgozhat a virtuális géppel. További részletek az [iptables man oldalon](https://linux.die.net/man/8/iptables)találhatók.<br>Hasonlóképpen, ha a tűzfal blokkolja az SSH-hozzáférést, a virtuális gépet a soros konzolon keresztül érheti el, és újrakonfigurálhatja a tűzfalat. További részletek a tűzfalon keresztül elérhető [dokumentációban](https://firewalld.org/documentation/)találhatók.
+Fájlrendszer sérülése és ellenőrzése | Az Azure Linux rendszerű virtuális gép soros konzol szakasza [nem indítható el, mert](https://support.microsoft.com/en-us/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck) a soros konzol használatával a sérült fájlrendszerek hibaelhárításával kapcsolatos további részletek a fájlrendszer hibája miatt megtalálhatók.
+SSH-konfigurációs problémák | A soros konzol eléréséhez, és módosítsa a beállításokat. A Serial console a virtuális gép SSH-konfigurációjától függetlenül is használható, mivel nincs szükség hálózati kapcsolatra a virtuális géppel. A hibaelhárítási útmutató az [olyan Azure Linux rendszerű virtuális gépek SSH-kapcsolatainak hibaelhárítását ismerteti, amelyek meghibásodnak, hibákkal vagy](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection)visszautasítással rendelkeznek. További részletek a Linux rendszerű [virtuális gépek Azure-beli csatlakoztatásával kapcsolatos problémák részletes SSH-hibaelhárítási lépéseiben](./detailed-troubleshoot-ssh-connection.md) olvashatók.
+A rendszertöltő használata | Indítsa újra a virtuális gépet a soros konzol paneljén a GRUB eléréséhez a Linux rendszerű virtuális gépen. További részletek és a disztribúcióra vonatkozó információk: [a soros konzol használata a grub és az single user mód eléréséhez](serial-console-grub-single-user-mode.md).
 
-## <a name="disable-the-serial-console"></a>Tiltsa le a soros konzol
-Alapértelmezés szerint minden előfizetés rendelkezik a soros konzol hozzáférés engedélyezve. A soros konzol vagy az előfizetés vagy virtuális Gépenként/gép scale set szintjén is letilthatja. Vegye figyelembe, hogy a rendszerindítási diagnosztika a virtuális gépen ahhoz, hogy a soros konzol működéséhez engedélyezni kell.
+## <a name="disable-the-serial-console"></a>A soros konzol letiltása
+Alapértelmezés szerint minden előfizetéshez engedélyezve van a soros konzolhoz való hozzáférés. A soros konzolt letilthatja az előfizetés szintjén vagy a VM/virtuálisgép-méretezési csoport szintjén. Vegye figyelembe, hogy a soros konzol működéséhez engedélyezni kell a rendszerindítási diagnosztikát a virtuális gépen.
 
-### <a name="vmvirtual-machine-scale-set-level-disable"></a>Virtuális gép/virtuális gép scale set-szintű letiltása
-A soros konzol egy adott virtuális gép vagy virtuálisgép-méretezési csoportot a rendszerindítási diagnosztikai beállítás letiltásával lehet letiltani. Kapcsolja ki a rendszerindítási diagnosztika letiltásához a soros konzol a virtuális gép vagy a virtuálisgép-méretezési csoportot az Azure Portalról. Ha a soros konzol egy virtuálisgép-méretezési csoportot használ, győződjön meg arról, a legújabb modellre való frissítése a virtuális gép méretezési csoport példányaihoz.
+### <a name="vmvirtual-machine-scale-set-level-disable"></a>VM/virtuálisgép-méretezési csoport – szintű letiltás
+A soros konzol le lehet tiltani egy adott virtuális gép vagy virtuálisgép-méretezési csoport számára a rendszerindítási diagnosztika beállítás letiltásával. Kapcsolja ki a rendszerindítási diagnosztikát a Azure Portal a virtuális gép vagy a virtuálisgép-méretezési csoport soros konzoljának letiltásához. Ha a soros konzolt egy virtuálisgép-méretezési csoporton használja, a virtuálisgép-méretezési csoport példányait a legújabb modellre kell frissítenie.
 
 > [!NOTE]
-> Engedélyezi vagy letiltja a soros konzol-előfizetéssel, az előfizetés írási engedélyekkel rendelkeznie. Ezeket az engedélyeket a rendszergazda vagy tulajdonos szerepkörök közé tartozik. Egyéni szerepkörök is lehet írási engedéllyel.
+> Engedélyezi vagy letiltja a soros konzol-előfizetéssel, az előfizetés írási engedélyekkel rendelkeznie. Ezek az engedélyek rendszergazdai vagy tulajdonosi szerepköröket is tartalmaznak. Egyéni szerepkörök is lehet írási engedéllyel.
 
 ### <a name="subscription-level-disable"></a>Előfizetés-szintű letiltása
-A soros konzolon keresztül egy teljes előfizetésre letiltható a [tiltsa le a konzolon REST API-hívás](/rest/api/serialconsole/console/disableconsole). Ez a művelet közreműködője szintű hozzáférésre van szüksége, vagy a fenti az előfizetéshez. Használhatja a **Kipróbálom** funkció letiltása és engedélyezése a soros konzol egy előfizetés az API dokumentációja oldalon érhető el. Adja meg az előfizetés-azonosítója **subscriptionId**, adja meg **alapértelmezett** a **alapértelmezett**, majd válassza ki **futtatása**. Az Azure CLI-parancsok még nem érhetők el.
+A soros konzolon keresztül egy teljes előfizetésre letiltható a [tiltsa le a konzolon REST API-hívás](/rest/api/serialconsole/console/disableconsole). Ehhez a művelethez közreműködő vagy magasabb szintű hozzáférésre van szükség az előfizetéshez. Használhatja a **Kipróbálom** funkció letiltása és engedélyezése a soros konzol egy előfizetés az API dokumentációja oldalon érhető el. Adja meg a **subscriptionId**ELŐfizetési azonosítóját , írjabe az alapértelmezett értéket az alapértelmezett értékre, majd válassza a **Futtatás**lehetőséget. Az Azure CLI-parancsok még nem érhetők el.
 
-Soros konzol egy előfizetés újbóli engedélyezéséhez használja a [engedélyezése konzol REST API-hívás](/rest/api/serialconsole/console/enableconsole).
+Az előfizetéshez tartozó soros konzol újraengedélyezéséhez használja a [konzol engedélyezése REST API hívást](/rest/api/serialconsole/console/enableconsole).
 
 ![REST API-t próbálja ki](./media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
 
@@ -175,83 +175,83 @@ A soros konzoljához való hozzáférés teljes jelenleg be van jelentkezve a [r
 Ha egy felhasználó csatlakozik a soros konzol és a egy másik felhasználó sikeresen kéri, hogy ugyanahhoz a virtuális géphez való hozzáférés, az első felhasználó megszakítja, és a második felhasználó csatlakozik-e ugyanabban a munkamenetben.
 
 > [!CAUTION]
-> Ez azt jelenti, hogy le van választva a felhasználó nem kijelentkeztetjük. Kapcsolat bontása esetén a kijelentkezési kikényszerítheti (használatával SIGHUP vagy hasonló mechanizmus) továbbra is tervbe van. A Windows nincs engedélyezve a speciális felügyeleti konzol (SAC); egy automatikus időkorlátja Linux esetén konfigurálhatja a terminál időkorlátozási beállítást. Ehhez adja hozzá a `export TMOUT=600` a a *.bash_profile* vagy *.profile* fájlt a felhasználó jelentkezzen be a konzol használatával. Ez a beállítás a munkamenet 10 perc elteltével időtúllépést okoz.
+> Ez azt jelenti, hogy le van választva a felhasználó nem kijelentkeztetjük. A Kilépés (SIGHUP vagy hasonló mechanizmus használatával) leválasztásának lehetősége továbbra is az ütemterven látható. A Windows rendszerben automatikus időtúllépés van engedélyezve a speciális felügyeleti konzolon (SAC); a Linux esetében azonban beállíthatja a terminál időtúllépési beállítását. Ehhez adja hozzá `export TMOUT=600` a *. bash_profile* vagy a *. profil* fájlt a konzolra való bejelentkezéshez használt felhasználóhoz. Ez a beállítás 10 perc elteltével időtúllépést eredményez a munkamenetben.
 
 ## <a name="accessibility"></a>Kisegítő lehetőségek
-Kisegítő lehetőségek az Azure soros konzol egy kulcs fókusz. Ebből a célból keresztülhaladnak, hogy a soros konzolon érhető el teljesen.
+A kisegítő lehetőségek az Azure soros konzol egyik fő témája. Ennek érdekében biztosítjuk, hogy a soros konzol teljes mértékben elérhető legyen.
 
 ### <a name="keyboard-navigation"></a>Billentyűzetnavigációt
 Használja a **lapon** billentyűt a billentyűzeten a soros konzol felületen az Azure Portalról nyissa meg. A hely kiemelten jelenik meg a képernyőn. Hagyja a lépéseknek az ismertetése, a soros konzol ablakából, nyomja le a **Ctrl**+**F6** a billentyűzeten.
 
-### <a name="use-serial-console-with-a-screen-reader"></a>A képernyőolvasó soros konzol használata
+### <a name="use-serial-console-with-a-screen-reader"></a>Soros konzol használata képernyőolvasóval
 A soros konzol rendelkezik beépített képernyőolvasó támogatása. Kapcsolva képernyőolvasóval való navigálni lehetővé teszi a helyettesítő szöveget a jelenleg kijelölt gombra kattintva a képernyőolvasó felolvassa olvasni.
 
 ## <a name="errors"></a>Hibák
-Mivel a legtöbb hiba átmeneti, a kapcsolat újrapróbálása milyen gyakran oldhatja meg őket. Az alábbi táblázat azon hibákat és kezelési lehetőségeiket listáját. Hibák és megoldások a alkalmazni mindkét virtuális gép számára, és a virtuális gép méretezési csoport példányaihoz.
+Mivel a legtöbb hiba átmeneti, a kapcsolat újrapróbálása milyen gyakran oldhatja meg őket. Az alábbi táblázat azon hibákat és kezelési lehetőségeiket listáját. Ezek a hibák és enyhítések mind a virtuális gépek, mind a virtuálisgép-méretezési csoport példányai esetében érvényesek.
 
 Hiba                            |   Kezelés
 :---------------------------------|:--------------------------------------------|
 Nem sikerült beolvasni a rendszerindítási diagnosztikai beállításait  *&lt;VMNAME&gt;* . A soros konzol használatához győződjön meg arról, hogy a rendszerindítási diagnosztika engedélyezve van a virtuális gép. | Győződjön meg arról, hogy rendelkezik-e a virtuális gép [rendszerindítási diagnosztika](boot-diagnostics.md) engedélyezve van.
-A virtuális gép leállított felszabadított állapotban van. Indítsa el a virtuális Gépet, és ismételje meg a soros konzol kapcsolat. | A virtuális gép a soros konzol eléréséhez elindított állapotban kell lennie.
-Nem rendelkezik a szükséges engedélyekkel, ez a virtuális gép használata a soros konzol. Győződjön meg arról, hogy a virtuális gépek Közreműködője szerepkör engedélyei.| A soros konzol hozzáférést bizonyos engedélyekre van szüksége. További információkért lásd: [Előfeltételek](#prerequisites).
-Nem sikerült meghatározni a rendszerindítási diagnosztika tárfiókja erőforráscsoportjának  *&lt;STORAGEACCOUNTNAME&gt;* . Győződjön meg arról, hogy a rendszerindítási diagnosztika engedélyezve van a virtuális gép, és rendelkezik a tárfiókhoz való hozzáférést. | A soros konzol hozzáférést bizonyos engedélyekre van szüksége. További információkért lásd: [Előfeltételek](#prerequisites).
+A virtuális gép leállított felszabadított állapotban van. Indítsa el a virtuális Gépet, és ismételje meg a soros konzol kapcsolat. | A soros konzol eléréséhez a virtuális gépnek elindított állapotban kell lennie.
+Nem rendelkezik a virtuális gép soros konzollal való használatához szükséges engedélyekkel. Győződjön meg arról, hogy a virtuális gépek Közreműködője szerepkör engedélyei.| A soros konzolhoz való hozzáféréshez bizonyos engedélyek szükségesek. További információkért lásd: [Előfeltételek](#prerequisites).
+Nem sikerült meghatározni a rendszerindítási diagnosztika tárfiókja erőforráscsoportjának  *&lt;STORAGEACCOUNTNAME&gt;* . Győződjön meg arról, hogy a rendszerindítási diagnosztika engedélyezve van a virtuális gép, és rendelkezik a tárfiókhoz való hozzáférést. | A soros konzolhoz való hozzáféréshez bizonyos engedélyek szükségesek. További információkért lásd: [Előfeltételek](#prerequisites).
 Web socket le van zárva, vagy nem nyitható meg. | Szükség lehet az engedélyezési listára `*.console.azure.com`. Egy részletesebb, de hosszabb megközelítés az engedélyezési listára a [a Microsoft Azure adatközpont IP-tartományai](https://www.microsoft.com/download/details.aspx?id=41653), amelyek viszonylag sűrűn változnak.
-Egy "Tiltott" válasz fordult elő a virtuális gép rendszerindítás-diagnosztikai tárfiók elérésekor. | Győződjön meg arról, hogy a rendszerindítási diagnosztika nincs egy fiók tűzfal. Egy elérhető rendszerindítás-diagnosztikai tárfiók a soros konzol működéséhez szükséges.
+Egy "Tiltott" válasz fordult elő a virtuális gép rendszerindítás-diagnosztikai tárfiók elérésekor. | Győződjön meg arról, hogy a rendszerindítási diagnosztika nem rendelkezik fiók-tűzfallal. Egy elérhető rendszerindítás-diagnosztikai tárfiók a soros konzol működéséhez szükséges.
 
 ## <a name="known-issues"></a>Ismert problémák
-A soros konzol problémák tisztában vagyunk. Ezekről a problémákról és kockázatcsökkentési lépések listáját itt látható. Ezekről a problémákról és megoldások a alkalmazni mindkét virtuális gép számára, és a virtuális gép méretezési csoport példányaihoz.
+A soros konzol problémák tisztában vagyunk. Ezekről a problémákról és kockázatcsökkentési lépések listáját itt látható. Ezek a problémák és enyhítések mind a virtuális gépek, mind a virtuálisgép-méretezési csoport példányai esetében érvényesek.
 
 Probléma                           |   Kezelés
 :---------------------------------|:--------------------------------------------|
-Billentyű **Enter** után a kapcsolaton transzparens, nem váltják ki a bejelentkezési kérések jelenhetnek megjeleníteni. | További információkért lásd: [Hitting adja meg a hatástalan](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). A probléma akkor fordulhat elő, ha egy egyéni virtuális Gépet, megerősített készülék vagy GRUB konfigurációs, amelynek hatására a Linux, nem tud csatlakozni a soros port futtatja.
-Soros konzol szöveg mindössze egy részét a képernyő méretétől (gyakran után egy szövegszerkesztő használatával). | Soros konzol nem támogatják a vonatkozó ablakméret egyeztetése ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)), ez azt jelenti, nem lesznek nincs SIGWINCH jel küldött frissíteni a képernyőméret és a virtuális gép nincs tudomásuk a terminálban mérete fog rendelkezni. Telepítse a xterm vagy egy hasonló segédprogramot, és adja meg a `resize` parancsot, és futtassa `resize`.
+Billentyű **Enter** után a kapcsolaton transzparens, nem váltják ki a bejelentkezési kérések jelenhetnek megjeleníteni. | További információkért lásd: [Hitting adja meg a hatástalan](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Ez a probléma akkor fordulhat elő, ha egy egyéni virtuális gépet, megerősített készüléket vagy GRUB-konfigurációt futtat, amely miatt a Linux nem tud csatlakozni a soros porthoz.
+Serial console a szöveg csak a képernyőméret egy részét veszi fel (általában egy szövegszerkesztő használata után). | A soros konzolok nem támogatják az ablakméret ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)) egyeztetését, ami azt jelenti, hogy a rendszer nem küld SIGWINCH-jelet a frissítési képernyő méretétől, és a virtuális gép nem ismeri a terminál méretét. Telepítse a xterm-t vagy egy hasonló segédprogramot a `resize` parancs megadásához, `resize`majd futtassa a parancsot.
 Illessze be a hosszú karakterláncok nem működik. | A soros konzol illeszthetők be a terminál 2048 karakter hosszúságú lehet, megelőzve a soros port sávszélesség sztring hossza korlátozza.
-Soros konzol nem működik egy storage-fiók tűzfal. | Soros konzol szándékosan nem képes együttműködni az engedélyezve a rendszerindítás-diagnosztikai tárfiók a storage-fiók tűzfalak.
-Soros konzol nem működik a storage-fiók az Azure Data Lake Storage Gen2 a hierarchikus névterek. | Ez a hierarchikus névterek egy ismert hibája. Megoldásához, győződjön meg arról, hogy a virtuális gép rendszerindítási diagnosztika tárfiókja nem jön létre az Azure Data Lake Storage Gen2 használatával. Ez a beállítás csak akkor állítható tárfiók létrehozása után. Előfordulhat, hogy egy külön a rendszerindítási diagnosztika tárfiók létrehozása az Azure Data Lake Storage Gen2 engedélyezve van probléma megoldásához nélkül.
-A SLES saját lemezképek bemeneti egyenetlen billentyűzettel. Bevitelt a billentyűzetről csak ritkán ismerhető fel. | Ez a probléma a Plymouth csomagot. Plymouth nem kell futtatni az Azure-ban nem kell egy kezdőképernyőjén és Plymouth zavarja a soros konzol platform lehetővé teszi. Távolítsa el a Plymouth `sudo zypper remove plymouth` majd indítsa újra a rendszert. Azt is megteheti, módosítsa a GRUB-config kernel üzletági hozzáfűzésével `plymouth.enable=0` a sor végére. Ezt megteheti is [indításakor a rendszerindítási bejegyzés szerkesztése](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles), vagy az GRUB_CMDLINE_LINUX sor szerkesztésével `/etc/default/grub`, újraépítési a LÁRVAJÁRAT `grub2-mkconfig -o /boot/grub2/grub.cfg`, majd újraindítja a rendszert.
+A Serial console nem működik a Storage-fiók tűzfallal. | A Serial console by design nem tud működni a rendszerindítási diagnosztika Storage-fiókjában engedélyezve lévő Storage-fiók tűzfalakkal.
+A Serial console a Azure Data Lake Storage Gen2 hierarchikus névtereket használó Storage-fiókkal nem működik. | Ez egy ismert probléma a hierarchikus névterek esetében. A megoldáshoz győződjön meg arról, hogy a virtuális gép rendszerindítási diagnosztikai tárolási fiókja nem Azure Data Lake Storage Gen2 használatával jön létre. Ez a beállítás csak a Storage-fiók létrehozásakor állítható be. Előfordulhat, hogy létre kell hoznia egy különálló rendszerindítási diagnosztikai Storage-fiókot anélkül, hogy Azure Data Lake Storage Gen2 engedélyezve lenne a probléma enyhítése érdekében.
+Kiszámíthatatlan billentyűzet-bevitel a SLES BYOS-lemezképekben. A billentyűzet bemenete csak szórványosan ismerhető fel. | Ez a Plymouth-csomaggal kapcsolatos probléma. A Plymouth nem futtatható az Azure-ban, mert nincs szükség a splash-képernyőre, és az nem zavarja a platformot a soros konzol használatának. Távolítsa el `sudo zypper remove plymouth` a Plymouth-t, majd indítsa újra. Másik lehetőségként módosítsa a grub `plymouth.enable=0` -konfiguráció kernel-vonalát úgy, hogy hozzáfűzi a sor végéhez. Ezt úgy teheti meg, hogy a rendszerindítási [bejegyzést a rendszerindítás](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)során szerkeszti, vagy szerkeszti a GRUB_CMDLINE_LINUX-sort `grub2-mkconfig -o /boot/grub2/grub.cfg`a alkalmazásban `/etc/default/grub`, újraépíti a grub-t, majd újraindítja a rendszert.
 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 **Q. Hogyan küldhetek visszajelzést?**
 
-A. Visszajelzés a githubon található létrehozásával https://aka.ms/serialconsolefeedback. Másik lehetőségként (kevésbé elsődleges), visszajelzést küldhet keresztül azserialhelp@microsoft.com vagy virtuálisgép-kategóriába https://feedback.azure.com.
+A. Visszajelzés létrehozásához hozzon létre egy GitHub https://aka.ms/serialconsolefeedback -problémát a következő címen:. Másik lehetőségként (kevésbé elsődleges), visszajelzést küldhet keresztül azserialhelp@microsoft.com vagy virtuálisgép-kategóriába https://feedback.azure.com.
 
 **Q. Támogatja a soros konzol másolja és illessze be?**
 
 A. Igen. Használat **Ctrl**+**Shift**+**C** és **Ctrl**+**Shift** + **V** másolja és illessze be a terminálba.
 
-**Q. Használható a soros konzol helyett az SSH-kapcsolatot?**
+**Q. Használhatok soros konzolt SSH-kapcsolat helyett?**
 
-A. Tűnhet, hogy a használat technikailag lehetséges, amíg a soros konzol használható elsősorban a hibaelhárító eszköz helyzetekben, ahol nem lehetséges SSH-n keresztüli kapcsolat célja. Azt javasoljuk, szemben a soros konzol segítségével egy SSH-helyettesítője a következő okok miatt:
+A. Habár ez a használat technikailag lehetségesnek tűnhet, a soros konzol elsődlegesen hibaelhárítási eszközként használható olyan helyzetekben, amikor az SSH-n keresztüli kapcsolat nem lehetséges. Javasoljuk, hogy a soros konzolt SSH-helyettesítéssel használja a következő okok miatt:
 
-- A soros konzol nem rendelkezik a legtöbb sávszélesség SSH-t. Mivel a szolgáltatás csak szöveg kapcsolat, több grafikus felhasználói Felülettel műveltekből interakciók nehezen.
-- Soros hozzáférés rendszer a pillanatnyilag lehetségesnél csak a felhasználónév és jelszó használatával. Mivel az SSH-kulcsok sokkal biztonságosabb, mint felhasználónév/jelszó kombináció, biztonsági szempontból ajánlott SSH soros konzolon keresztül.
+- A soros konzol nem rendelkezik annyi sávszélességgel, mint az SSH. Mivel ez egy csak szöveges kapcsolat, a grafikus felhasználói felület több nehéz interakciót okoz.
+- Serial console hozzáférés jelenleg csak Felhasználónév és jelszó használatával lehetséges. Mivel az SSH-kulcsok sokkal biztonságosabbak, mint a Felhasználónév/jelszó kombinációk, a bejelentkezési biztonsági szempontból javasoljuk, hogy az SSH-t a soros konzolon keresztül.
 
-**Q. Ki engedélyezheti vagy letilthatja a soros konzol az előfizetésemet?**
+**Q. Ki engedélyezheti vagy tilthatja le az előfizetéshez tartozó soros konzolt?**
 
 A. Engedélyezi vagy letiltja a soros konzol egy előfizetési szintű szintjén, az előfizetés írási engedélyekkel rendelkeznie. Írási engedéllyel rendelkező szerepek közé tartozik a rendszergazda vagy tulajdonos szerepkörök. Egyéni szerepkörök is lehet írási engedéllyel.
 
-**Q. Ki férhet hozzá a saját virtuális Gépenként/virtuálisgép-méretezési csoportot a soros konzolon?**
+**Q. Ki férhet hozzá a virtuális gép/virtuálisgép-méretezési csoport soros konzolján?**
 
-A. A virtuális gép közreműködő szerepkörrel kell rendelkeznie, vagy egy virtuális gép vagy virtuálisgép-méretezési csoportot a soros konzol eléréséhez a magasabb.
+A. A soros konzol eléréséhez a virtuális gép közreműködői szerepköre vagy a virtuális gép vagy virtuálisgép-méretezési csoport számára is magasabbnak kell lennie.
 
 **Q. A soros konzol nem jelennek meg, mi a teendő?**
 
-A. A rendszerkép valószínűleg hibásan konfigurált, soros hozzáféréshez. A lemezkép engedélyezése a soros konzol konfigurálásával kapcsolatos további információkért lásd: [soros konzol Linux terjesztési rendelkezésre állási](#serial-console-linux-distribution-availability).
+A. A rendszerkép valószínűleg hibásan konfigurált, soros hozzáféréshez. További információ a rendszerképek a soros konzol engedélyezéséről való konfigurálásáról: [Serial Console Linux-disztribúció rendelkezésre állása](#serial-console-linux-distribution-availability).
 
 **Q. A soros konzolon érhető el a virtuálisgép-méretezési csoportok?**
 
-A. igen! Lásd: [soros konzol a Virtual Machine Scale Sets](#serial-console-for-virtual-machine-scale-sets)
+A. igen! Lásd [a Virtual Machine Scale sets soros konzolját](#serial-console-for-virtual-machine-scale-sets)
 
-**Q. Ha állíthatom be a virtuális gép vagy virtuálisgép-méretezési csak SSH-kulcs hitelesítés használatával, akkor is használhatom a soros konzol saját virtuális Gépenként/machine scale set-példányhoz való csatlakozáshoz?**
+**Q. Ha a virtuális gép vagy a virtuálisgép-méretezési csoport csak az SSH-kulcsos hitelesítés használatával lett beállítva, akkor is használhatom a soros konzolt a virtuális gép/virtuálisgép-méretezési csoport példányához való kapcsolódáshoz?**
 
-A. Igen. A soros konzol nincs szükség az SSH-kulcsokat, mert csak állítsa be a felhasználónév/jelszó kombináció kell. Kiválasztásával teheti **jelszó alaphelyzetbe állítása** az Azure Portalon, és ezekkel a hitelesítő adatokkal jelentkezzen be a soros konzol használatával.
+A. Igen. Mivel a soros konzol nem igényel SSH-kulcsokat, csak Felhasználónév/jelszó kombinációt kell beállítania. Ehhez válassza a **jelszó** alaphelyzetbe állítása lehetőséget a Azure Portalban, és használja ezeket a hitelesítő adatokat a soros konzolra való bejelentkezéshez.
 
 ## <a name="next-steps"></a>További lépések
-* Használja a soros konzol [GRUB és egyfelhasználós üzemmódban](serial-console-grub-single-user-mode.md).
-* A soros konzol a [NMI és SysRq hívások](serial-console-nmi-sysrq.md).
-* Ismerje meg, hogyan használható a soros konzol [GRUB engedélyezése a különböző disztribúciók](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/).
-* A soros konzolon érhető el is [Windows virtuális gépek](../windows/serial-console.md).
+* A soros konzollal elérheti a [grub és](serial-console-grub-single-user-mode.md)az egyfelhasználós üzemmódot.
+* A soros konzolon [NMI és SYSRQ hívásokat](serial-console-nmi-sysrq.md)használhat.
+* Megtudhatja, hogyan engedélyezheti a [grub használatát különböző disztribúciókban](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)a soros konzol használatával.
+* A soros konzol a Windows rendszerű [virtuális gépekhez](../windows/serial-console.md)is elérhető.
 * Tudjon meg többet [rendszerindítási diagnosztika](boot-diagnostics.md).
 

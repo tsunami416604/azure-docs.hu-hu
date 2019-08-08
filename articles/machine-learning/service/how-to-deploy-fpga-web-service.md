@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: cec1a74938690a4f781ea7850fdd6d649550b3eb
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 5e780c1a1d18954d0b3e9413e26f478e4ea3a8b1
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494916"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856110"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Modell üzembe helyezése webszolgáltatásként Azure Machine Learning szolgáltatással rendelkező FPGA
 
@@ -63,7 +63,7 @@ A FPGA az alábbi Azure-régiókban érhetők el:
 
     Ha nem rendelkezik kvótával, küldje el a kérelmet a következő [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI)címen:.
 
-- Az Azure Machine Learning szolgáltatás munkaterület és az Azure Machine Learning SDK telepítve van a Pythonhoz készült. További információ: [Munkaterület létrehozása](setup-create-workspace.md).
+- Az Azure Machine Learning szolgáltatás munkaterület és az Azure Machine Learning SDK telepítve van a Pythonhoz készült. További információ: [Munkaterület létrehozása](how-to-manage-workspace.md).
  
 - A Python SDK a hardveres gyorsítású modellekhez:
 

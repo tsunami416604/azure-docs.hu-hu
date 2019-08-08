@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Uberflip |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Uberflip között.
+title: 'Oktatóanyag: Azure Active Directory integráció a Uberflip-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Uberflip között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,193 +14,193 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: fb55840a3423f32d2d6d6d2531628ae4361a0cc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8760606c981f494b38d4eb8ac1b2cd50ceb8582c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088207"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852111"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Uberflip
+# <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Oktatóanyag: Azure Active Directory integráció a Uberflip
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Uberflip integrálása az Azure Active Directory (Azure AD).
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Uberflip a Azure Active Directory (Azure AD) szolgáltatással.
 
-Uberflip integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+A Uberflip és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-* Szabályozhatja, ki férhet hozzá Uberflip Azure AD-ben.
-* Engedélyezheti a felhasználók számára, hogy automatikusan jelentkezzenek be Uberflip (egyszeri bejelentkezés), az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen kezelheti: az Azure Portalon.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Uberflip.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Uberflip (egyszeri bejelentkezés) az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-További információk az Azure AD-szoftverként (saas biztosított) alkalmazás integrációja: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Az Azure AD-vel való szolgáltatott szoftverek (SaaS) alkalmazással kapcsolatos részletekért tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Uberflip az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció Uberflip való konfigurálásához a következő elemek szükségesek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
-* Az egyszeri bejelentkezés engedélyezve Uberflip előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+* Egyszeri bejelentkezést használó Uberflip-előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-Uberflip támogatja a következő funkciókat:
+A Uberflip a következő funkciókat támogatja:
 
-* SP által kezdeményezett, és az Identitásszolgáltató által kezdeményezett egyszeri bejelentkezés (SSO).
-* Just-in-time-felhasználók létrehozásának.
+* Az SP által kezdeményezett és IDENTITÁSSZOLGÁLTATÓ-alapú egyszeri bejelentkezés (SSO).
+* Igény szerinti felhasználó üzembe helyezése.
 
-## <a name="add-uberflip-from-the-azure-marketplace"></a>Az Azure Marketplace-ről Uberflip hozzáadása
+## <a name="add-uberflip-from-the-azure-marketplace"></a>Uberflip hozzáadása az Azure Marketplace-ről
 
-Az Azure AD integrálása a Uberflip konfigurálásához hozzá kell Uberflip az Azure Marketplace-ről a felügyelt SaaS-alkalmazások listájára:
+A Uberflip Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Uberflip az Azure Marketplace-ből a felügyelt SaaS-alkalmazások listájához:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldali panelen válassza az **Azure Active Directory** lehetőséget.
 
-   ![Az Azure Active Directoryval opciót.](common/select-azuread.png)
+   ![Az Azure Active Directory lehetőség](common/select-azuread.png)
 
-1. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
-   ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+   ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-1. Új alkalmazás hozzáadásához válassza **+ új alkalmazás** a panel tetején.
+1. Új alkalmazás hozzáadásához válassza az **+ új alkalmazás** elemet a panel tetején.
 
-   ![Az új alkalmazás-beállítás](common/add-new-app.png)
+   ![Az új alkalmazás lehetőség](common/add-new-app.png)
 
-1. A Keresés mezőbe írja be a **Uberflip**. A keresési eredmények között, válassza ki a **Uberflip**, majd válassza ki **Hozzáadás** , vegye fel az alkalmazást.
+1. A keresőmezőbe írja be a **Uberflip**kifejezést. A keresési eredmények között válassza a **Uberflip**lehetőséget, majd válassza a **Hozzáadás** lehetőséget az alkalmazás hozzáadásához.
 
-   ![Az eredmények listájában Uberflip](common/search-new-app.png)
+   ![Uberflip az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az nevű tesztfelhasználó alapján Uberflip **B Simon**. Az egyszeri bejelentkezés működéséhez Azure AD-felhasználót és a egy kapcsolódó felhasználó közötti kapcsolatot létesít a Uberflip kell.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Uberflip-mel konfigurálja és teszteli a **B Simon**nevű teszt felhasználó alapján. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolatot egy Azure AD-felhasználó és egy kapcsolódó felhasználó között a Uberflip-ben.
 
-Az Azure AD egyszeri bejelentkezés az Uberflip tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés Uberflip való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Uberflip egyszeri bejelentkezés konfigurálása](#configure-uberflip-single-sign-on)**  az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazás oldalán.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés a b Simon teszteléséhez.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  b Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Hozzon létre egy Uberflip tesztfelhasználót](#create-an-uberflip-test-user)**  úgy, hogy a felhasználó a Uberflip elnevezett olyan b Simon kapcsolódik az Azure AD-felhasználó, aki nevű b Simon.
-1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  ellenőrzése, hogy működik-e a konfiguráció.
+1. Az **[Azure ad egyszeri bejelentkezés konfigurálásával](#configure-azure-ad-single-sign-on)** engedélyezheti a felhasználók számára a funkció használatát.
+1. **[Konfigurálja az Uberflip egyszeri bejelentkezést](#configure-uberflip-single-sign-on)** az alkalmazás oldalának egyszeri bejelentkezési beállításainak konfigurálásához.
+1. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[Hozzon létre egy Uberflip-teszt felhasználót](#create-an-uberflip-test-user)** , hogy egy b. Simon nevű felhasználó legyen a Uberflip, aki a b. Simon nevű Azure ad-felhasználóhoz van társítva.
+1. **[Tesztelje az egyszeri bejelentkezést](#test-single-sign-on)** annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Uberflip, tegye a következőket:
+Az Azure AD egyszeri bejelentkezés Uberflip való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Uberflip** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. A [Azure Portal](https://portal.azure.com/) **Uberflip** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési beállítás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési lehetőség konfigurálása](common/select-sso.png)
 
-1. Az a **egyszeri bejelentkezési módszer** ablaktáblán válassza ki az **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+1. Az egyszeri bejelentkezési **módszer kiválasztása** ablaktáblán válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** ablaktáblán válassza **szerkesztése** (a ceruza ikon) nyissa meg a **alapszintű SAML-konfigurációja** ablaktáblán.
+1. Az **egyszeri bejelentkezés az SAML-vel** panelen való beállítása lapon válassza a **Szerkesztés** (a ceruza ikon) lehetőséget az alapszintű **SAML-konfiguráció** panel megnyitásához.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az a **alapszintű SAML-konfigurációja** ablaktáblán, tegye a következőket, attól függően, melyik egyszeri bejelentkezési mód a konfigurálni kívánt egyikét:
+1. Az alapszintű **SAML-konfiguráció** ablaktáblán hajtsa végre a következő lépések egyikét attól függően, hogy melyik SSO-módot szeretné konfigurálni:
 
-   * Az Identitásszolgáltató által kezdeményezett egyszeri Bejelentkezést a módban az alkalmazás konfigurálása a **válasz URL-cím (helyességi feltétel fogyasztói szolgáltatás URL-címe)** mezőbe írjon be egy URL-címet a következő minta használatával:
+   * Az alkalmazás IDENTITÁSSZOLGÁLTATÓ egyszeri bejelentkezéses módban való konfigurálásához a **Válasz URL-címe (a fogyasztói szolgáltatás URL-címe)** mezőben adjon meg egy URL-címet a következő minta használatával:
 
      `https://app.uberflip.com/sso/saml2/<IDPID>/<ACCOUNTID>`
 
-     ![Uberflip tartomány és URL-címeket egyetlen bejelentkezési adatait](common/both-replyurl.png)
+     ![Uberflip tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-replyurl.png)
 
      > [!NOTE]
-     > Ez az érték nem valódi. Ez az érték frissítse a tényleges válasz URL-cím. A tényleges érték beolvasása, lépjen kapcsolatba a [Uberflip támogatási csapatának](mailto:support@uberflip.com). Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** panel az Azure Portalon.
+     > Ez az érték nem valós. Frissítse ezt az értéket a tényleges válasz URL-címével. A tényleges érték beszerzéséhez lépjen kapcsolatba a [Uberflip támogatási csapatával](mailto:support@uberflip.com). A Azure Portal alapszintű **SAML-konfiguráció** paneljén látható mintázatokat is megtekintheti.
 
-   * Az alkalmazás konfigurálása a Szolgáltató által kezdeményezett egyszeri bejelentkezési módot, válassza ki a **további URL-címet beállítani**, majd a a **bejelentkezési URL-** mezőbe írja be az URL-cím:
+   * Az alkalmazás SP-ben kezdeményezett egyszeri bejelentkezéses módban való konfigurálásához válassza a **további URL-címek beállítása**lehetőséget, majd a **bejelentkezési URL-cím** mezőbe írja be a következő URL-címet:
 
      `https://app.uberflip.com/users/login`
 
-     ![Uberflip tartomány és URL-címeket egyetlen bejelentkezési adatait](common/both-signonurl.png)
+     ![Uberflip tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-signonurl.png)
 
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** ablaktáblán, a a **SAML-aláíró tanúsítvány** szakaszban jelölje be **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül, és mentse el a számítógépen.
+1. Az **egyszeri bejelentkezés SAML-** panelen való beállításához az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget, hogy letöltse az **összevonási metaadatok XML-** fájlját a megadott beállításokból, és mentse a számítógépre.
 
-   ![Az összevonási metaadatok XML a letöltési lehetőséget](common/metadataxml.png)
+   ![Az összevonási metaadatok XML-letöltési lehetősége](common/metadataxml.png)
 
-1. Az a **Uberflip beállítása** panelen másolja az URL-címe vagy URL-CÍMEKET, amelyekre szüksége:
+1. A **Uberflip beállítása** panelen másolja a szükséges URL-címet vagy URL-címeket:
 
-   * **Bejelentkezési URL-címe**
-   * **Azure AD Identifier**
-   * **Kijelentkezési URL-címe**
+   * **Bejelentkezési URL-cím**
+   * **Azure AD-azonosító**
+   * **Kijelentkezési URL-cím**
 
-   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+   ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
 ### <a name="configure-uberflip-single-sign-on"></a>Uberflip egyszeri bejelentkezés konfigurálása
 
-A Uberflip oldalon konfigurálása egyszeri bejelentkezéshez, kell küldenie a letöltött összevonási metaadatainak XML és a megfelelő másolt URL-címek az Azure Portalon a [Uberflip támogatási csapatának](mailto:support@uberflip.com). A Uberflip csapat fogja győződjön meg arról, a SAML SSO-kapcsolat mindkét oldalán megfelelően beállítva.
+Az egyszeri bejelentkezés az Uberflip oldalon való konfigurálásához el kell küldenie a letöltött összevonási metaadatok XML-jét és a Azure Portal megfelelő másolt URL-címeket a [Uberflip támogató csapatnak](mailto:support@uberflip.com). A Uberflip-csoport gondoskodik arról, hogy az SAML SSO-kapcsolatok mindkét oldalon megfelelően legyenek beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ebben a szakaszban hozzon létre egy tesztfelhasználót b Simon nevű az Azure Portalon.
+Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory** > **felhasználók** > **minden felhasználó**.
+1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory** > **felhasználók** > **minden felhasználó**lehetőséget.
 
-    ![A felhasználók és a "Minden felhasználó" lehetőség](common/users.png)
+    ![A felhasználók és a "minden felhasználó" lehetőség](common/users.png)
 
-1. Válassza ki a képernyő tetején lévő **+ új felhasználó**.
+1. A képernyő felső részén válassza az **+ új felhasználó**lehetőséget.
 
     ![Új felhasználói beállítás](common/new-user.png)
 
-1. Az a **felhasználói** ablaktáblán tegye a következőket:
+1. A **felhasználó** ablaktáblán hajtsa végre a következő lépéseket:
 
-    ![A felhasználói panelen](common/user-properties.png)
+    ![A felhasználó panel](common/user-properties.png)
 
-    1. Az a **neve** mezőbe írja be **BSimon**.
+    1. A név mezőbe írja be a **BSimon** **nevet** .
   
-    1. Az a **felhasználónév** mezőbe írja be **BSimon\@\<vállalati_tartomány >.\< bővítmény >** . Ha például **BSimon\@contoso.com**.
+    1. A **Felhasználónév** mezőbe írja be a **BSimon\@\<yourcompanydomain > értéket.\< bővítmény >** . Például **BSimon\@contoso.com**.
 
-    1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
 
     1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze b Simon által biztosított a hozzáférés Uberflip Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezi a B. Simon számára az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Uberflip.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások** > **minden alkalmazás** > **Uberflip**.
+1. A Azure Portal válassza a **vállalati alkalmazások** > **minden alkalmazás** > **Uberflip**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-1. Az alkalmazások listájában jelölje ki a **Uberflip**.
+1. Az alkalmazások listában válassza a **Uberflip**lehetőséget.
 
-    ![Az alkalmazások listáját a Uberflip](common/all-applications.png)
+    ![Uberflip az alkalmazások listájában](common/all-applications.png)
 
-1. A bal oldali panelen alatt **kezelés**válassza **felhasználók és csoportok**.
+1. A bal oldali ablaktábla **kezelés**területén válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" lehetőséget](common/users-groups-blade.png)
+    ![A "felhasználók és csoportok" lehetőség](common/users-groups-blade.png)
 
-1. Válassza ki **+ Hozzáadás felhasználó**, majd válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** ablaktáblán.
+1. Válassza a **+ felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** panelen válassza **B Simon** a a **felhasználók** listában, és válassza a **kiválasztása** a panel alján.
+1. A **felhasználók és csoportok** panelen válassza a **B Simon** elemet a **felhasználók** listában, majd válassza a **Kiválasztás elemet** a panel alján.
 
-1. Ha valakitől egy szerepkör értéket a SAML helyességi feltétel, majd a a **Szerepkörválasztás** ablaktáblán válassza ki a megfelelő szerepkört a felhasználóhoz a listából. A panel alján válassza **kiválasztása**.
+1. Ha az SAML-állításban a szerepkör értékét várja, akkor a **szerepkör kiválasztása** panelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. A panel alján válassza a **kiválasztás**lehetőséget.
 
-1. Az a **hozzárendelés hozzáadása** ablaktáblán válassza előbb **hozzárendelése**.
+1. A **hozzárendelés hozzáadása** panelen válassza a **hozzárendelés**lehetőséget.
 
-### <a name="create-an-uberflip-test-user"></a>Hozzon létre egy Uberflip tesztfelhasználó számára
+### <a name="create-an-uberflip-test-user"></a>Uberflip-teszt felhasználó létrehozása
 
-B Simon nevű felhasználót a Uberflip megtörtént. Nem kell tennie semmit, a felhasználó létrehozásához. Uberflip támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Ha a b Simon nevű felhasználó már nem létezik az Uberflip, egy új hitelesítés után jön létre.
+A rendszer most létrehoz egy B. Simon nevű felhasználót a Uberflip-ben. A felhasználó létrehozásához semmit nem kell tennie. A Uberflip támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ha egy B. Simon nevű felhasználó már nem létezik a Uberflip-ben, akkor a hitelesítés után létrejön egy újat.
 
 > [!NOTE]
-> Ha manuálisan hozzon létre egy felhasználót van szüksége, lépjen kapcsolatba a [Uberflip támogatási csapatának](mailto:support@uberflip.com).
+> Ha manuálisan kell létrehoznia egy felhasználót, lépjen kapcsolatba a [Uberflip támogatási csapatával](mailto:support@uberflip.com).
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban a az Azure AD egyszeri bejelentkezés beállításai a saját alkalmazások portál segítségével tesztelnie.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a saját alkalmazások portál használatával.
 
-Ha bejelöli **Uberflip** a saját alkalmazások portál meg kell hogy automatikusan jelentkezzenek be, amelynek beállítása egyszeri bejelentkezéshez Uberflip az előfizetéshez. A saját alkalmazások portál kapcsolatos további információkért lásd: [alkalmazások használatának és elérésének a saját alkalmazások portál](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a **Uberflip** lehetőséget a saját alkalmazások portálján, automatikusan be kell jelentkeznie a Uberflip-előfizetésbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a saját alkalmazások portálján: [alkalmazások elérése és használata a saját alkalmazások portálon](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory számára oktatóanyagokkal listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [Az SaaS-alkalmazások Azure Active Directory-vel való integrálására szolgáló oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-* [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -284,7 +284,7 @@ https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/
 
 Az `/stats` URL-címhez való Hozzáadás az index adatait adja vissza. A Postmanben a kérelem az alábbihoz fog hasonlítani, a válaszban pedig szerepleni fog a dokumentumok száma és a felhasznált lemezterület mérete bájtban megadva.
 
- ![Index információinak] lekérése (media/search-get-started-postman/postman-system-query.png "Index információinak") lekérése
+ ![Index információinak](media/search-get-started-postman/postman-system-query.png "Index információinak") lekérése
 
 Figyelje meg, hogy az api-version szintaxisa eltér. Ebben a kérelemben a `?` karakterrel fűzheti hozzá az api-version paramétert. A `?` leválasztja az URL-útvonalat a lekérdezési karakterláncból, míg & elválasztja az egyes "Name = Value" párokat a lekérdezési karakterláncban. Ebben a lekérdezésben az api-version az első és egyetlen lekérdezési sztring.
 

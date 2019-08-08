@@ -21,13 +21,13 @@
     - name: Alkalmazás fejlesztése az Apache Kafka Streams API-val
       href: apache-kafka-streams-api.md
     - name: Az Apache Spark strukturált streamelésének használata
-      href: ../hdinsight-apache-kafka-spark-structured-streaming.md
+      href: ../hdinsight-apache-kafka-spark-structured-streaming.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Írás/olvasás az Apache Kafkából az Apache Storm használatával
-      href: ../hdinsight-apache-storm-with-kafka.md
+      href: ../hdinsight-apache-storm-with-kafka.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
 - name: Alapelvek
   items:
     - name: Kapacitástervezés
-      href: ../hdinsight-capacity-planning.md
+      href: ../hdinsight-capacity-planning.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Tárolás és méretezhetőség
       href: apache-kafka-scalability.md
     - name: Az adatok magas rendelkezésre állása
@@ -35,9 +35,9 @@
     - name: Teljesítmény-finomhangolás
       href: apache-kafka-performance-tuning.md
     - name: HDInsight-alapú Apache Hadoop-összetevők
-      href: ../hdinsight-component-versioning.md
+      href: ../hdinsight-component-versioning.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: HDInsight 4.0
-      href: ../hdinsight-version-release.md
+      href: ../hdinsight-version-release.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
 - name: Útmutató
   items:
     - name: Automatikus témakör-létrehozás engedélyezése
@@ -45,7 +45,7 @@
     - name: Az Apache Kafka használata az IoT Hubbal
       href: apache-kafka-connector-iot-hub.md
     - name: HDInsight-alkalmazások telepítése
-      href: ../hdinsight-apps-install-applications.md
+      href: ../hdinsight-apps-install-applications.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Az Apache Kafka használata virtuális hálózaton
       href: apache-kafka-connect-vpn-gateway.md
     - name: Apache Kafka-adatok replikálása
@@ -55,53 +55,53 @@
     - name: Streaming folyamatok létrehozása
       items:
         - name: 'Apache Spark, Apache Kafka és Azure Cosmos DB'
-          href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
+          href: ../apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Apache Kafka és Apache Spark (DStream)
-          href: ../hdinsight-apache-spark-with-kafka.md
+          href: ../hdinsight-apache-spark-with-kafka.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Az Apache Kafka használata az Azure Container Service-szel
           href: apache-kafka-azure-container-services.md
     - name: Fejlesztés
       items:
         - name: Üres élcsomópontok használata
-          href: ../hdinsight-apps-use-edge-node.md
+          href: ../hdinsight-apps-use-edge-node.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Fürtök kiterjesztése
       items:
         - name: Fürtök testreszabása a Bootstrap használatával
-          href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
+          href: ../hdinsight-hadoop-customize-cluster-bootstrap.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Fürtök testreszabása szkriptműveletek használatával
-          href: ../hdinsight-hadoop-customize-cluster-linux.md
+          href: ../hdinsight-hadoop-customize-cluster-linux.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Szkriptműveletek fejlesztése
-          href: ../hdinsight-hadoop-script-actions-linux.md
+          href: ../hdinsight-hadoop-script-actions-linux.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: HDInsight-alkalmazások fejlesztése
           items:
             - name: Egyedi alkalmazások telepítése
-              href: ../hdinsight-apps-install-custom-applications.md
+              href: ../hdinsight-apps-install-custom-applications.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: A REST használata alkalmazások telepítéséhez
               href: 'https://msdn.microsoft.com/library/mt706515.aspx'
             - name: HDInsight-alkalmazások közzététele az Azure Marketplace-en
-              href: ../hdinsight-apps-publish-applications.md
+              href: ../hdinsight-apps-publish-applications.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Biztonságos
       items:
         - name: SSH használata a HDInsighttal
-          href: ../hdinsight-hadoop-linux-use-ssh-unix.md
+          href: ../hdinsight-hadoop-linux-use-ssh-unix.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: SSH-alagútkezelés használata
-          href: ../hdinsight-linux-ambari-ssh-tunnel.md
+          href: ../hdinsight-linux-ambari-ssh-tunnel.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Saját kulcs használata
           href: apache-kafka-byok.md
         - name: SSL-titkosítás és -hitelesítés
           href: apache-kafka-ssl-encryption-authentication.md
         - name: Apache Kafka RBAC és Apache Ranger
-          href: ../domain-joined/apache-domain-joined-run-kafka.md
+          href: ../domain-joined/apache-domain-joined-run-kafka.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Kezelés
       items:
         - name: HDInsight-fürtök létrehozása
-          href: ../hdinsight-hadoop-provision-linux-clusters.md
+          href: ../hdinsight-hadoop-provision-linux-clusters.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
           items:
             - name: Az Azure Portal használata
-              href: ../hdinsight-hadoop-create-linux-clusters-portal.md
+              href: ../hdinsight-hadoop-create-linux-clusters-portal.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Használjon Azure Resource Manager-sablonokat
               displayName: 'resource manager template, arm template, resource manager group'
-              href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
+              href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: A .NET-hez készült SDK használata
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster'
             - name: A Pythonhoz készült SDK használata
@@ -109,15 +109,15 @@
             - name: A Javához készült SDK használata
               href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable#create-a-cluster'
             - name: Azure PowerShell használatával
-              href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
+              href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: A cURL és az Azure REST API használata
-              href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
+              href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Az Azure parancssori felületének használata
-              href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
+              href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Igény szerinti fürtök létrehozása
-              href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+              href: ../hdinsight-hadoop-create-linux-clusters-adf.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: HDInsight-fürtök kezelése
-      href: ../hdinsight-administer-use-portal-linux.md
+      href: ../hdinsight-administer-use-portal-linux.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
       items:
         - name: A .NET-hez készült SDK használata
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#management'
@@ -128,53 +128,53 @@
         - name: A Góhoz készült SDK (előzetes verzió) használata
           href: 'https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview'
         - name: Azure PowerShell használatával
-          href: ../hdinsight-administer-use-powershell.md
+          href: ../hdinsight-administer-use-powershell.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Az Azure parancssori felületének használata
-          href: ../hdinsight-administer-use-command-line.md
+          href: ../hdinsight-administer-use-command-line.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Fürtök kezelése az Apache Ambari webes felülettel
-          href: ../hdinsight-hadoop-manage-ambari.md
+          href: ../hdinsight-hadoop-manage-ambari.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
           items:
             - name: Fürtök optimalizálása az Apache Ambari webes felülettel
-              href: ../hdinsight-changing-configs-via-ambari.md
+              href: ../hdinsight-changing-configs-via-ambari.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Az Apache Ambari REST API használata
-              href: ../hdinsight-hadoop-manage-ambari-rest-api.md
+              href: ../hdinsight-hadoop-manage-ambari-rest-api.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Fürtök rendelkezésre állásának monitorozása Azure Monitor-naplókkal
-              href: ../hdinsight-cluster-availability.md
+              href: ../hdinsight-cluster-availability.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: HDInsight-fürt naplóinak kezelése
-          href: ../hdinsight-log-management.md
+          href: ../hdinsight-log-management.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Tárfiókok hozzáadása
-          href: ../hdinsight-hadoop-add-storage.md
+          href: ../hdinsight-hadoop-add-storage.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Adatok feltöltése Apache Hadoop-feladatokhoz
-          href: ../hdinsight-upload-data.md
+          href: ../hdinsight-upload-data.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Több HDInsight-fürt a Data Lake Store-ral
-          href: ../hdinsight-multiple-clusters-data-lake-store.md
+          href: ../hdinsight-multiple-clusters-data-lake-store.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: 'Fürt- és szolgáltatásportok, valamint URI-k'
-          href: ../hdinsight-hadoop-port-settings-for-services.md
+          href: ../hdinsight-hadoop-port-settings-for-services.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: 'Rendelkezésre állás és megbízhatóság '
-          href: ../hdinsight-high-availability-linux.md
+          href: ../hdinsight-high-availability-linux.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: A HDInsight-fürt frissítése újabb verzióra
-          href: ../hdinsight-upgrade-cluster.md
+          href: ../hdinsight-upgrade-cluster.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Az operációs rendszer javításai a HDInsight-fürthöz
-          href: ../hdinsight-os-patching.md
+          href: ../hdinsight-os-patching.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Hibaelhárítás
-      href: ../hdinsight-troubleshoot-guide.md
+      href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
       items:
         - name: Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
-          href: ../hdinsight-troubleshoot-failed-cluster.md
+          href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Apache Hadoop HDFS-hibaelhárítás
-          href: ../hdinsight-troubleshoot-hdfs.md
+          href: ../hdinsight-troubleshoot-hdfs.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Apache Hadoop YARN-hibaelhárítás
-          href: ../hdinsight-troubleshoot-yarn.md
+          href: ../hdinsight-troubleshoot-yarn.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: További források
           items:
             - name: Információk a HDInsight Linuxon való használatáról
-              href: ../hdinsight-hadoop-linux-information.md
+              href: ../hdinsight-hadoop-linux-information.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Apache Hadoop – memória és teljesítmény
-              href: ../hdinsight-hadoop-stack-trace-error-messages.md
+              href: ../hdinsight-hadoop-stack-trace-error-messages.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Apache Hadoop YARN-alkalmazásnaplók elérése Linuxon
-              href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
+              href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Halomürítések engedélyezése az Apache Hadoop-szolgáltatásokhoz
-              href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
+              href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
 - name: Referencia
   items:
     - name: Kódminták
@@ -188,7 +188,7 @@
     - name: Javához készült SDK
       href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable'
     - name: Góhoz készült SDK
-      href: ../hdinsight-go-sdk-overview.md
+      href: ../hdinsight-go-sdk-overview.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: REST
       href: /rest/api/hdinsight/
     - name: REST (Apache Spark)
@@ -209,24 +209,24 @@
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: A HDInsight Windows-eszközei
-      href: ../hdinsight-hadoop-windows-tools.md
+      href: ../hdinsight-hadoop-windows-tools.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
 - name: Alkalmasság vállalati használatra
   items:
     - name: Adatok védelme
-      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Hálózati hozzáférés
       items:
         - name: HDInsight virtuális hálózati architektúra
-          href: ../hdinsight-virtual-network-architecture.md
+          href: ../hdinsight-virtual-network-architecture.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Tűzfal használata a kimenő forgalom korlátozására
-          href: ../hdinsight-restrict-outbound-traffic.md
+          href: ../hdinsight-restrict-outbound-traffic.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: A HDInsight csatlakoztatása a helyszíni hálózathoz
-          href: ../connect-on-premises-network.md
+          href: ../connect-on-premises-network.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Monitorozás Azure Monitor-naplókkal
       items:
         - name: Az Azure Monitor-naplók használata
-          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Lekérdezések használata az Azure Monitor-naplókkal
-          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Fürtteljesítmény monitorozása
-          href: ../hdinsight-key-scenarios-to-monitor.md
+          href: ../hdinsight-key-scenarios-to-monitor.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json

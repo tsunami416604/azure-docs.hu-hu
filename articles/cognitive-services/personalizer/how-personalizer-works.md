@@ -39,7 +39,7 @@ A **jutalmazási** API:
 
 Az alábbi képen a rang és a jutalmazási hívások meghívásának építészeti folyamata látható:
 
-![helyettesítő szöveg] A (./media/how-personalizer-works/personalization-how-it-works.png "személyre szabás működése")
+![helyettesítő szöveg](./media/how-personalizer-works/personalization-how-it-works.png "személyre szabás működése")
 
 1. A megszemélyesítő egy belső AI-modellt használ a művelet rangsorának meghatározásához.
 1. A szolgáltatás eldönti, hogy kihasználja-e az aktuális modellt, vagy új választási lehetőségeket keres a modellhez.  

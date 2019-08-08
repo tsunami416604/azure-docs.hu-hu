@@ -1,44 +1,44 @@
 ---
-title: Adatok átvitele az Azure Storage a Amazon S3 gyűjtő az AzCopy v10 |} A Microsoft Docs
-description: Adatok áthelyezése az AzCopy és az Amazon S3 gyűjtő
+title: Adatok átvitele az Azure Storage-ba az Amazon S3-gyűjtők számára a AzCopy v10 használatával | Microsoft Docs
+description: Adatok átvitele a AzCopy és az Amazon S3 gyűjtővel
 services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 414573a90e5a7b7de845b65e6e88715a26024f10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3c0943ceeadd725ac0e0fb2624d37bc9fb8c3bf
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67125788"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68844778"
 ---
-# <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>Adatok másolása az Amazon S3 gyűjtő AzCopy használatával
+# <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>Adatok másolása az Amazon S3-gyűjtőből a AzCopy használatával
 
-Az AzCopy parancssori segédprogram, amely a blobok és a fájlok másolása, illetve a storage-fiók használatával. Ez a cikk másolása objektumok, könyvtárak és gyűjtők Amazon Web Services (AWS) S3-ból az Azure blob storage-AzCopy használatával.
+A AzCopy olyan parancssori segédprogram, amellyel blobokat vagy fájlokat másolhat a Storage-fiókba, vagy átmásolhatja azokat. Ebből a cikkből megtudhatja, hogyan másolhat objektumokat, címtárakat és gyűjtőket Amazon Web Services (AWS) S3-ról az Azure Blob Storage-ba az AzCopy használatával.
 
-## <a name="choose-how-youll-provide-authorization-credentials"></a>Válassza ki, hogyan fogja engedélyezési hitelesítő adatok megadása
+## <a name="choose-how-youll-provide-authorization-credentials"></a>Adja meg, hogyan adja meg az engedélyezési hitelesítő adatokat
 
-* Ahhoz, hogy az Azure Storage, használja az Azure Active Directory (AD) vagy egy közös hozzáférésű Jogosultságkód (SAS) tokent.
+* Az Azure Storage-ban való engedélyezéshez használja a Azure Active Directory (AD) vagy egy közös hozzáférésű aláírás (SAS) tokent.
 
-* Hitelesítés az AWS S3, használja az AWS hozzáférési kulcs és titkos hívóbetűje.
+* Az AWS S3 engedélyezéséhez használjon AWS-hozzáférési kulcsot és egy titkos hozzáférési kulcsot.
 
-### <a name="authorize-with-azure-storage"></a>Az Azure Storage engedélyezése
+### <a name="authorize-with-azure-storage"></a>Engedélyezés az Azure Storage-ban
 
-Tekintse meg a [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md) article AzCopy letöltéséhez, és válassza a hogyan ehhez meg kell adnia engedélyezési hitelesítő adatok a storage szolgáltatásra.
+A AzCopy letöltéséhez tekintse meg az [első lépések a AzCopy](storage-use-azcopy-v10.md) című cikket, és válassza ki, hogyan adja meg az engedélyezési hitelesítő adatokat a Storage szolgáltatás számára.
 
 > [!NOTE]
-> Ebben a cikkben szereplő példák feltételezik, hogy Ön már hitelesítve az identitás használatával a `AzCopy login` parancsot. Az AzCopy ezután a Blob Storage-adatokhoz való hozzáférés engedélyezéséhez használja az Azure AD-fiókot.
+> A cikkben szereplő példák azt feltételezik, hogy a `AzCopy login` parancs használatával hitelesítette a személyazonosságát. A AzCopy ezután az Azure AD-fiók használatával engedélyezi a blob Storage-beli adathozzáférését.
 >
-> Ha szeretné inkább használni egy SAS-token blobadatokhoz való hozzáférés engedélyezése, majd fűzze hozzá a ezt a jogkivonatot az erőforrás URL-címet minden egyes AzCopy-parancs.
+> Ha inkább SAS-tokent használ a blob-adathozzáférés engedélyezéséhez, akkor a tokent az erőforrás URL-címéhez is hozzáfűzheti az egyes AzCopy-parancsokban.
 >
 > Például: `https://mystorageaccount.blob.core.windows.net/mycontainer?<SAS-token>`.
 
-### <a name="authorize-with-aws-s3"></a>Az AWS S3 engedélyezése
+### <a name="authorize-with-aws-s3"></a>Engedélyezés az AWS S3-vel
 
-Az AWS-hozzáférési kulcsot és titkos hívóbetűje gyűjthet, és állítsa az ezeket a környezeti változók:
+Gyűjtse össze az AWS-hozzáférési kulcsot és a titkos hozzáférési kulcsot, majd állítsa be az alábbi környezeti változókat:
 
 | Operációs rendszer | Parancs  |
 |--------|-----------|
@@ -48,12 +48,12 @@ Az AWS-hozzáférési kulcsot és titkos hívóbetűje gyűjthet, és állítsa 
 
 ## <a name="copy-objects-directories-and-buckets"></a>Objektumok, könyvtárak és gyűjtők másolása
 
-Az AzCopy használja a [URL blokk Put](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API-t, így közvetlenül az AWS S3 és a tároló kiszolgálók közötti adatokat másolja. Ezek a másolási műveletek ne használja a hálózati sávszélesség számítógép.
+A AzCopy a [put blokkot használja az URL API-ból](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) , így az adatok közvetlenül az AWS S3 és a Storage kiszolgálók között másolódnak át. Ezek a másolási műveletek nem használják a számítógép hálózati sávszélességét.
 
 > [!IMPORTANT]
-> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Ha úgy dönt, hogy az S3 gyűjtő adat eltávolításához a másolási műveletek után, ügyeljen arra, hogy ellenőrizze, hogy az adatok megfelelően másolta a tárfiók az adatok eltávolítása előtt.
+> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Ha úgy dönt, hogy egy másolási művelet után eltávolítja az S3 gyűjtők adatait, ügyeljen arra, hogy az adatok eltávolítása előtt ellenőrizze, hogy az adatok megfelelően lettek-e átmásolva a Storage-fiókba.
 
-### <a name="copy-an-object"></a>Egy objektum másolása
+### <a name="copy-an-object"></a>Objektum másolása
 
 |    |     |
 |--------|-----------|
@@ -61,84 +61,84 @@ Az AzCopy használja a [URL blokk Put](https://docs.microsoft.com/rest/api/stora
 | **Példa** | `azcopy cp "https://s3.amazonaws.com/mybucket/myobject" "https://mystorageaccount.blob.core.windows.net/mycontainer/myblob"` |
 
 > [!NOTE]
-> Ebben a cikkben szereplő példák elérési út stílusú URL-címeket használja, az AWS S3 időtartamgyűjtők (például: `http://s3.amazonaws.com/<bucket-name>`). 
+> A jelen cikkben szereplő példák az AWS S3-gyűjtők elérési útja stílusú URL-címeket `http://s3.amazonaws.com/<bucket-name>`használják (például:). 
 >
-> Virtuális üzemeltetett stílusú URL-címeket is használhatja (például: `http://bucket.s3.amazonaws.com`). 
+> Emellett használhatja a virtuálisan üzemeltetett stílusú URL-címeket is (például: `http://bucket.s3.amazonaws.com`). 
 >
-> Gyűjtők virtuális üzemeltető kapcsolatos további információkért lásd: [virtuális üzemeltető a gyűjtők]] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html).
+> Ha többet szeretne megtudni a gyűjtők virtuális üzemeltetéséről, tekintse meg a következőt: [a https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) gyűjtők virtuális üzemeltetése]] (.
 
-### <a name="copy-a-directory"></a>Másolja egy könyvtár
+### <a name="copy-a-directory"></a>Könyvtár másolása
 
 |    |     |
 |--------|-----------|
 | **Syntax** | `azcopy cp "https://s3.amazonaws.com/<bucket-name>/<directory-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>" --recursive=true` |
 | **Példa** | `azcopy cp "https://s3.amazonaws.com/mybucket/mydirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory" --recursive=true` |
 
-### <a name="copy-a-bucket"></a>Másolja a gyűjtőhöz
+### <a name="copy-a-bucket"></a>Gyűjtő másolása
 
 |    |     |
 |--------|-----------|
 | **Syntax** | `azcopy cp "https://s3.amazonaws.com/<bucket-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>" --recursive=true` |
 | **Példa** | `azcopy cp "https://s3.amazonaws.com/mybucket" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive=true` |
 
-### <a name="copy-all-buckets-in-all-regions"></a>Az összes gyűjtők másolja az összes régióban
+### <a name="copy-all-buckets-in-all-regions"></a>Összes gyűjtő másolása minden régióban
 
 |    |     |
 |--------|-----------|
 | **Syntax** | `azcopy cp "https://s3.amazonaws.com/" "https://<storage-account-name>.blob.core.windows.net" --recursive=true` |
 | **Példa** | `azcopy cp "https://s3.amazonaws.com" "https://mystorageaccount.blob.core.windows.net" --recursive=true` |
 
-### <a name="copy-all-buckets-in-a-specific-s3-region"></a>Másolja ki az összes gyűjtők egy adott régióban S3
+### <a name="copy-all-buckets-in-a-specific-s3-region"></a>Az összes gyűjtő másolása egy adott S3 régióban
 
 |    |     |
 |--------|-----------|
 | **Syntax** | `azcopy cp "https://s3-<region-name>.amazonaws.com/" "https://<storage-account-name>.blob.core.windows.net" --recursive=true` |
 | **Példa** | `azcopy cp "https://s3-rds.eu-north-1.amazonaws.com" "https://mystorageaccount.blob.core.windows.net" --recursive=true` |
 
-## <a name="handle-differences-in-object-naming-rules"></a>Elnevezési szabályok közötti különbségek kezelésére
+## <a name="handle-differences-in-object-naming-rules"></a>Az objektumok elnevezési szabályai közötti különbségek kezelése
 
-Az AWS S3 rendelkezik egy másik gyűjtőbe nevek szemben az Azure blob-tárolók elnevezési szabályai. Itt olvashat őket [Itt](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules). Ha egy csoport azon gyűjtők másolása az Azure storage-fiók lehetőséget választja, akkor a másolási művelet elnevezési eltérések miatt meghiúsulhat.
+Az AWS S3 az Azure Blob-tárolókkal összehasonlítva különböző elnevezési konvenciókat tartalmaz a gyűjtők neveihez. [Itt](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules)olvashat róluk. Ha a gyűjtők egy csoportját egy Azure Storage-fiókba másolja, a másolási művelet a névadási különbségek miatt sikertelen lehet.
 
-Az AzCopy kezeli a két, esetlegesen felmerülő; a leggyakoribb problémák és a gyűjtőket, amely tartalmazhat egymást követő kötőjelet tartalmazó gyűjtőkbe. Az AWS S3 gyűjtő nevek időszakok és egymást követő kötőjelet tartalmazhat, de nem egy tárolót az Azure-ban. Az AzCopy időszakok lecseréli az kötőjeleket tartalmazhat, és egymást követő kötőjelet számát jelölő több egymást követő kötőjelet (például: nevű kérelemegységeket `my----bucket` válik `my-4-bucket`. 
+A AzCopy két leggyakoribb problémát okoz, amelyek felmerülhetnek; az egymást követő kötőjeleket tartalmazó pontokat és gyűjtőket tartalmazó gyűjtők. Az AWS S3-gyűjtők neve tartalmazhat pontokat és egymást követő kötőjeleket, de az Azure-beli tárolók nem. A AzCopy lecseréli a kötőjelekkel és egymást követő kötőjelekkel rendelkező időszakokat egy számmal, amely az egymást követő kötőjelek `my----bucket` számát `my-4-bucket`jelöli (például: egy nevű gyűjtő. 
 
-Is az AzCopy átmásolja a fájlokat, azt ellenőrzi, hogy elnevezési ütközések és megkísérli feloldani őket. Például, ha nincsenek a gyűjtők nevű `bucket-name` és `bucket.name`, nevű kérelemegységeket oldja fel az AzCopy `bucket.name` first `bucket-name` majd `bucket-name-2`.
+Továbbá, mivel a AzCopy fájlokba másolja a fájlokat, ellenőrzi a névadási ütközéseket, és megkísérli a megoldását. Ha például vannak olyan gyűjtők, amelyeknek a neve `bucket-name` és `bucket.name`a, a AzCopy először a nevű `bucket.name` gyűjtőt oldja `bucket-name` fel, majd `bucket-name-2`a (z) értékre.
 
-## <a name="handle-differences-in-object-metadata"></a>Objektum-metaadatait különbségek kezelésére
+## <a name="handle-differences-in-object-metadata"></a>Az objektum metaadatai közötti különbségek kezelése
 
-Az AWS S3 és az Azure más-más részhalmazához karakterek engedélyezése objektum kulcsok nevei. Itt olvashat a karakterek, hogy használja-e az AWS S3 [Itt](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys). Az Azure részéről blob objektum kulcsok formátumhoz elnevezési szabályait [ C# azonosítók](https://docs.microsoft.com/dotnet/csharp/language-reference/).
+Az AWS S3 és az Azure különböző karakterkészleteket tesz lehetővé az objektumok kulcsainak neveiben. [Itt](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)olvashat azokról a karakterekről, amelyeket az AWS S3 használ. Az Azure-oldalon a blob Object-kulcsok megfelelnek az [ C# azonosítók](https://docs.microsoft.com/dotnet/csharp/language-reference/)elnevezési szabályainak.
 
-Az AzCopy részeként `copy` parancsot, megadhat egy értéket nem kötelező a `s2s-invalid-metadata-handle` jelzőt, amely meghatározza, hogyan szeretné kezelni a fájlokat, ahol a fájl metaadatait tartalmazza-e a kulcsnevek nem kompatibilis. A következő táblázat ismerteti az egyes jelző érték.
+Egy AzCopy `copy` parancs részeként megadhat egy értéket a nem `s2s-invalid-metadata-handle` kötelezően megadandó jelzőhöz, amely meghatározza, hogyan szeretné kezelni azokat a fájlokat, amelyekben a fájl metaadatai a nem kompatibilis kulcsok nevét tartalmazzák. A következő táblázat ismerteti az egyes jelző értékeket.
 
-| Jelző érték | Leírás  |
+| Jelölő értéke | Leírás  |
 |--------|-----------|
-| **ExcludeIfInvalid** | (Alapértelmezett beállítás) A metaadatok az átadott objektum nem található. Az AzCopy egy figyelmeztetést naplóz. |
-| **FailIfInvalid** | Objektumokat a rendszer nem másolja. Az AzCopy naplózza a hibát, és a sikertelen száma, az adatátviteli összefoglalás jelenik meg a hibát tartalmaz.  |
-| **RenameIfInvalid**  | Az AzCopy oldja fel az érvénytelen metaadat-kulcsot, és másolja át az objektumot az Azure-ban a feloldott metaadatok kulcs-érték pár. Pontosan milyen lépések AzCopy veszi átnevezése objektumhoz kulcsok kapcsolatban lásd: a [hogyan AzCopy átnevezi objektum kulcsok](#rename-logic) szakaszt. Ha az AzCopy nem nevezhető át a kulcsot, majd az objektum nem másolhatók. |
+| **ExcludeIfInvalid** | (Alapértelmezett beállítás) A metaadatok nem szerepelnek az átvitt objektumban. A AzCopy egy figyelmeztetést naplóz. |
+| **FailIfInvalid** | Az objektumok nem másolhatók. A AzCopy naplóz egy hibát, és tartalmazza azt a hibás darabszámot, amely megjelenik az átvitel összegzésében.  |
+| **RenameIfInvalid**  | A AzCopy feloldja az érvénytelen metaadat-kulcsot, és átmásolja az objektumot az Azure-ba a megoldott metaadat-kulcs értéke pár használatával. Ha pontosan szeretné megtudni, hogy milyen lépések szükségesek az AzCopy átnevezéséhez, tekintse meg az alábbi [AzCopy átnevezése az objektumok kulcsairól](#rename-logic) című szakaszt. Ha a AzCopy nem tudja átnevezni a kulcsot, az objektum nem lesz átmásolva. |
 
 <a id="rename-logic" />
 
-### <a name="how-azcopy-renames-object-keys"></a>Hogyan átnevezi az AzCopy a objektum kulcsok
+### <a name="how-azcopy-renames-object-keys"></a>A AzCopy átnevezi az objektumok kulcsait
 
-Az AzCopy hajtja végre a következő lépéseket:
+A AzCopy a következő lépéseket hajtja végre:
 
-1. Cserél érvénytelen karaktereket (_).
+1. Az érvénytelen karaktereket az "_" karakter váltja fel.
 
-2. Hozzáadja a karakterlánc `rename_` új érvényes kulcs elejére.
+2. Hozzáadja a karakterláncot `rename_` egy új érvényes kulcs elejéhez.
 
-   Ezt a kulcsot fogja menteni az eredeti metaadatait **érték**.
+   Ezt a kulcsot fogja használni a rendszer az eredeti metaadat **értékének**mentéséhez.
 
-3. Hozzáadja a karakterlánc `rename_key_` új érvényes kulcs elejére.
-   Ezt a kulcsot fogja menteni eredeti metaadatait érvénytelen **kulcs**.
-   Ez a kulcs segítségével próbálja ki, és helyreállítani a metaadatokat az Azure oldaláról, mivel értékként a Blob storage szolgáltatás metaadataihoz megadott kulcs megőrződik.
+3. Hozzáadja a karakterláncot `rename_key_` egy új érvényes kulcs elejéhez.
+   Ezt a kulcsot fogja használni a rendszer az eredeti metaadatokérvénytelen kulcsának mentéséhez.
+   A kulcs használatával kipróbálhatja és helyreállíthatja a metaadatokat az Azure-ban, mivel a metaadat-kulcs megmarad a blob Storage szolgáltatásban.
 
 ## <a name="next-steps"></a>További lépések
 
-További példa található a következő cikkeket:
+További példákat a következő cikkekben talál:
 
-- [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
+- [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
 
-- [Adatok áthelyezése az AzCopy és a blob storage](storage-use-azcopy-blobs.md)
+- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
 
-- [Adatok áthelyezése az AzCopy és a file storage](storage-use-azcopy-files.md)
+- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
 
-- [Konfigurálja, optimalizálhat és AzCopy hibaelhárítása](storage-use-azcopy-configure.md)
+- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)

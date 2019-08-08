@@ -1,7 +1,6 @@
 ---
 title: Webes végpont - Powershell az Azure Blob storage-események küldése |} A Microsoft Docs
 description: Az Azure Event Griddel előfizethet Blob Storage-eseményekre.
-services: storage,event-grid
 author: normesta
 ms.author: normesta
 ms.reviewer: dastanfo
@@ -9,15 +8,14 @@ ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.custom: seodec18
-ms.openlocfilehash: cf1b0ba5d70ed0934418a147c09791725b5465bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0dae5ae79234ea29e6b17627fc07abcb3b5dfcb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65143369"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847157"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Gyors útmutató: Storage-események átirányítása webes végpontra a PowerShell-lel
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Gyors útmutató: Tárolási események továbbítása webes végponthoz a PowerShell használatával
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben az Azure PowerShell használatával feliratkozás Blob storage-események, az eseményindító egy eseményt, és az eredmény megtekintéséhez. 
 
@@ -51,7 +49,7 @@ $location = "westus2"
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot.
+Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal.
 
 A következő példában létrehozunk egy **gridResourceGroup** nevű erőforráscsoportot a **westus2** helyen.  
 
@@ -64,7 +62,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 Blobtároló események általános célú v2 tárfiókokban vagy Blob tárfiókokban érhetők el. Az **általános célú v2** fiókok olyan tárfiókok, amelyek a társzolgáltatások összes funkcióját támogatják, beleértve a blobokat, a fájlokat, az üzenetsorokat és a táblákat is. A **Blob Storage-fiók** egy speciális tárfiók a strukturálatlan adatok blobként (objektumként) való tárolására az Azure Storage-ban. A Blob Storage-fiókok olyanok, mint a meglévő általános célú tárfiókjai, és a jelenlegi rendszereivel megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtanak, beleértve a 100%-os API-konzisztenciát a blokkblobokhoz és a hozzáfűző blobokhoz. További információkat az [Azure Storage-fiókok áttekintésében](../common/storage-account-overview.md) találhat.
 
-Az LRS replikációt a Blob storage-fiók létrehozása [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount), majd lekérheti a tárfiók környezetét, amely meghatározza a használandó tárfiókot. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat. Ez a példa létrehoz egy nevű tárfiókot **gridstorage** a helyileg redundáns tárolás (LRS). 
+Hozzon létre egy blob Storage-fiókot LRS-replikációval a [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount)használatával, majd kérje le a használni kívánt Storage-fiókot definiáló Storage-fiók környezetét. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat. Ez a példa létrehoz egy nevű tárfiókot **gridstorage** a helyileg redundáns tárolás (LRS). 
 
 > [!NOTE]
 > Tárfiókok nevének találhatók globális névtér úgy kell hozzáfűznie valamilyen véletlenszerű karakter, ez a szkript megadott névvel.

@@ -1,7 +1,6 @@
 ---
 title: A Azure Data Lake Storage Gen2 hozzáférés-vezérlésének áttekintése | Microsoft Docs
 description: Ismerje meg, hogyan működik a hozzáférés-vezérlés Azure Data Lake Storage Gen2
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 112d3b18df8205aac173eafb8f8e30ed6c32e048
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: aa2cfbee6feeacf46003fdc244f0aeea5df0f41a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249080"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847341"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés Azure Data Lake Storage Gen2
 
@@ -37,7 +36,7 @@ A RBAC szerepkör-hozzárendelések használata egy hatékony mechanizmus a hozz
 Ha egy rendszerbiztonsági tag egy [beépített szerepkörön](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)vagy egy egyéni szerepkörön keresztül kap RBAC-adatengedélyeket, akkor ezeket az engedélyeket először a kérelem engedélyezése után értékeli ki a rendszer. Ha a kért műveletet a rendszerbiztonsági tag RBAC-hozzárendelései engedélyezik, akkor az engedélyezés azonnal megoldódik, és a rendszer nem végez további ACL-ellenőrzéseket. Ha a rendszerbiztonsági tag nem rendelkezik RBAC-hozzárendeléssel, vagy a kérelem művelete nem felel meg a hozzárendelt engedélynek, akkor az ACL-ellenőrzések végrehajtásával megállapíthatja, hogy a rendszerbiztonsági tag jogosult-e a kért művelet végrehajtására.
 
 > [!NOTE]
-> Ha a rendszerbiztonsági tag a Storage blob-adatok tulajdonosának beépített szerepkör-hozzárendelését rendelte hozzá, akkor a rendszerbiztonsági tag  egy felügyelőnek minősül, és teljes hozzáférést kap az összes mutációs művelethez, beleértve a címtár tulajdonosának beállítását, vagy fájl és ACL-ek a címtárakhoz és fájlokhoz, amelyekhez nem a tulajdonos. A felügyelői hozzáférés csak az erőforrás tulajdonosának módosítására jogosult.
+> Ha a rendszerbiztonsági tag a Storage blob-adatok tulajdonosának beépített szerepkör-hozzárendelését rendelte hozzá, akkor a rendszerbiztonsági tag egy felügyelőnek minősül, és teljes hozzáférést kap az összes mutációs művelethez, beleértve a címtár tulajdonosának beállítását, vagy fájl és ACL-ek a címtárakhoz és fájlokhoz, amelyekhez nem a tulajdonos. A felügyelői hozzáférés csak az erőforrás tulajdonosának módosítására jogosult.
 
 ## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>Megosztott kulcs és közös hozzáférésű aláírás (SAS) hitelesítése
 
@@ -91,7 +90,7 @@ A fájlrendszer-objektum engedélyei a következők: **olvasás**, **írás**és
 | **Végrehajtás (X)** | Nem jelent semmit a Data Lake Storage Gen2 kontextusában | Egy könyvtár alárendelt elemeinek bejárásához szükséges. |
 
 > [!NOTE]
-> Ha csak ACL-ek (nem RBAC) használatával ad meg engedélyeket, az egyszerű szolgáltatásnak olvasási vagy írási jogosultságot kell adnia egy fájlhoz, meg kell adnia a szolgáltatásnév számára a fájlrendszert, valamint a mappák hierarchiájában lévő minden olyan mappát, amely  a fájlhoz vezethet.
+> Ha csak ACL-ek (nem RBAC) használatával ad meg engedélyeket, az egyszerű szolgáltatásnak olvasási vagy írási jogosultságot kell adnia egy fájlhoz, meg kell adnia a szolgáltatásnév számára a fájlrendszert, valamint a mappák hierarchiájában lévő minden olyan mappát, amely a fájlhoz vezethet.
 
 #### <a name="short-forms-for-permissions"></a>Az engedélyek rövid alakjai
 

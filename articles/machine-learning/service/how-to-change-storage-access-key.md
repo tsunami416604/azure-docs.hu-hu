@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/17/2019
-ms.openlocfilehash: 0721542811709e9b938fea3f31bc2a0a28ecdc74
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: b23d54cb74bea7eaaea5f55bd491bed40381ee2b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358772"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848188"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>A Storage-fiók elérési kulcsainak újragenerálása
 
@@ -25,7 +25,7 @@ Biztonsági okokból előfordulhat, hogy módosítania kell egy Azure Storage-fi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure Machine Learning szolgáltatás munkaterületén. További információt a [Munkaterület létrehozása](setup-create-workspace.md) című cikkben talál.
+* Az Azure Machine Learning szolgáltatás munkaterületén. További információt a [Munkaterület létrehozása](how-to-manage-workspace.md) című cikkben talál.
 
 * A [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 

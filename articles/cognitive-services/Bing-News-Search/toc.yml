@@ -47,7 +47,8 @@
 - name: Útmutatók
   items:
     - name: Találatok kiemelésének kezelése
-      href: hit-highlighting.md
+      href: ../Bing-Web-Search/hit-highlighting.md
+      maintainContext: true
     - name: Lapozás a hírek között
       href: paging-news.md
     - name: Miniatűrök átméretezése és körülvágása

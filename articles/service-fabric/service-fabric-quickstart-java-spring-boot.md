@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f7cf3f4cc0ceba89c031f5c36e90bbd6ef3dd20a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 8bb25fc373ff0816154795d2ef25a44066c1acc1
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327156"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847760"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Gyors útmutató: Java Spring boot-alkalmazás üzembe helyezése Service Fabric
 
@@ -90,7 +90,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     java -jar gs-spring-boot-0.1.0.jar
     ```
 
-1. Adja hozzá  a végpontok erőforrást a *GS-Spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest. xml fájlban.*
+1. Adja hozzá a végpontok erőforrást a *GS-Spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest. xml fájlban.*
 
     ```xml 
         <Resources>
@@ -149,7 +149,7 @@ Mostanra más létrehozta Spring Boot mintájához tartozó Service Fabric-alkal
     
     ![A helyi fürt kifogástalan](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
 
-1. Navigáljon a `gs-spring-boot/SpringServiceFabric` mappához.
+1. Nyissa meg a `gs-spring-boot/SpringServiceFabric` mappát.
 1. A helyi fürthöz való csatlakozáshoz futtassa a következő parancsot.
 
     ```bash
@@ -176,13 +176,13 @@ A Service Fabric Explorer az összes Service Fabric-fürtben fut. Az eléréséh
 A webes előtér-szolgáltatás skálázásához tegye a következőket:
 
 1. Nyissa meg a Service Fabric Explorert a fürtben – például: `http://localhost:19080`.
-1. Kattintson a három pontra a fanézetben a **fabric:/SpringServiceFabric/SpringGettingStarted** csomópont mellett, és válassza a **Szolgáltatás méretezése** lehetőséget.
+1. Válassza a fanézetben a **Fabric:/SpringServiceFabric/SpringGettingStarted** csomópont melletti három pontot ( **..** .), és válassza a **méretezési szolgáltatás**elemet.
 
     ![A Service Fabric Explorer méretezési szolgáltatása](./media/service-fabric-quickstart-java-spring-boot/sfxscaleservicehowto.png)
 
     Most már méretezheti a szolgáltatás példányainak számát.
 
-1. Módosítsa a számot **3**-ra, és kattintson a **Szolgáltatás méretezése** parancsra.
+1. Módosítsa a számot **3** értékre, majd válassza a **méretezési szolgáltatás**elemet.
 
     A szolgáltatás parancssorral történő skálázása a következőképpen is végrehajtható.
 
@@ -194,7 +194,7 @@ A webes előtér-szolgáltatás skálázásához tegye a következőket:
     sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted' --instance-count 3 --stateless 
     ``` 
 
-1. Kattintson a **fabric:/SpringServiceFabric/SpringGettingStarted** csomópontra a fanézetben, és bontsa ki a partíciós csomópontot (egy GUID jelöli).
+1. Válassza ki a **Fabric:/SpringServiceFabric/SpringGettingStarted** csomópontot a fanézetben, és bontsa ki a partíciós csomópontot (egy GUID jelöli).
 
     ![A Service Fabric Explorer skálázási szolgáltatása kész](./media/service-fabric-quickstart-java-spring-boot/sfxscaledservice.png)
 
@@ -207,7 +207,7 @@ Ezzel az egyszerű felügyeleti eljárással megduplázta az előtér-szolgálta
 A szolgáltatás feladatátvételének bemutatásához a Service Fabric Explorerben szimuláljuk egy csomópont újraindítását. Győződjön meg arról, hogy a szolgáltatásnak kizárólag egy példánya fut.
 
 1. Nyissa meg a Service Fabric Explorert a fürtben – például: `http://localhost:19080`.
-1. Kattintson a három pontra a szolgáltatás példányát futtató csomópont mellett, és indítsa újra a csomópontot.
+1. Válassza a szolgáltatás példányát futtató csomópont melletti három pontot ( **..** .), majd indítsa újra a csomópontot.
 
     ![Csomópont újraindítása a Service Fabric Explorerben](./media/service-fabric-quickstart-java-spring-boot/sfxhowtofailover.png)
 1. A szolgáltatás példánya egy új csomópontra kerül át anélkül, hogy az alkalmazás leállna.
