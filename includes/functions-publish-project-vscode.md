@@ -9,18 +9,18 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: ba3cf3e77e5414804e881e0cddb151fb14fb7fd5
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: abb8b6bed6766ff0ea85eab1434014a057af4ca3
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68669673"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843228"
 ---
 ## <a name="publish-the-project-to-azure"></a>A projekt közzététele az Azure-ban
 
 A Visual Studio Code lehetővé teszi a függvényprojekt közzétételét közvetlenül az Azure-ba. A folyamat során létrehoz egy függvényalkalmazást és az azokhoz tartozó erőforrásokat az Azure-előfizetésében. A függvényalkalmazás végrehajtási környezetet biztosít a függvények számára. A projektet a rendszer becsomagolja, és az Azure-előfizetésben lévő új függvényalkalmazásban helyezi üzembe.
 
-Alapértelmezés szerint a Visual Studio létrehozza a Function alkalmazás létrehozásához szükséges összes Azure-erőforrást. Ezeknek az erőforrásoknak a neve a kiválasztott Function app-név alapján történik. Ha teljes hozzáférésre van szüksége a létrehozott erőforrásokhoz, a [speciális beállításokkal tehet közzé](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options)helyet.
+Alapértelmezés szerint a Visual Studio Code létrehozza a Function alkalmazás létrehozásához szükséges összes Azure-erőforrást. Ezeknek az erőforrásoknak a neve a kiválasztott Function app-név alapján történik. Ha teljes hozzáférésre van szüksége a létrehozott erőforrásokhoz, a [speciális beállításokkal tehet közzé](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options)helyet.
 
 Ez a szakasz azt feltételezi, hogy új Function-alkalmazást hoz létre az Azure-ban.
 
