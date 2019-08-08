@@ -1,6 +1,6 @@
 ---
-title: Kép elemzése cognitive search szakértelem – Azure Search
-description: Képelemzés ImageAnalysis cognitive szakértelem használata az Azure Search-felderítési bővítést folyamatban keresztül szemantikai szöveg kinyerése.
+title: Képelemzési kognitív keresési képesség – Azure Search
+description: Szemantikai szöveg kinyerése a képelemzés segítségével a ImageAnalysis kognitív képességgel egy Azure Search alkoholtartalom-növelési folyamatban.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,47 +10,47 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: f10ac45266eefac41f3ba9ac442c3be3f5106ef3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: cognitive-search
+ms.openlocfilehash: ebff47360aa78a7774be50bcce8518f6e30ca073
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388407"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841059"
 ---
-#   <a name="image-analysis-cognitive-skill"></a>Kép elemzése cognitive szakértelem
+#   <a name="image-analysis-cognitive-skill"></a>Képelemzés – kognitív képesség
 
-A **képelemzés** szakértelem kinyeri a sokféle kép tartalma alapján vizuális jellemzőket. Például hozzon létre egy felirat kép, címkék létrehozása, vagy hírességek és tereptárgyak felismerése azonosításához. Ezen a képzettségi használja a gépi tanulási modellek által biztosított [számítógépes Látástechnológiai](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) a Cognitive Services. 
+A képelemzési képesség a vizualizációs funkciók gazdag készletét Kinyeri a kép tartalma alapján. Létrehozhat például egy képfeliratot egy képből, létrehozhat címkéket, vagy azonosíthatja a hírességeket és a tereptárgyait. Ez a képesség a Cognitive Services [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) által biztosított gépi tanulási modelleket használja. 
 
 > [!NOTE]
-> Bontsa ki a hatókört által a feldolgozás, gyakoriságának növelése további dokumentumok hozzáadása, vagy adja hozzá a további AI-algoritmusokat, kell [számlázható Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md). A díjakat API-k hívásakor, a Cognitive Services, valamint a lemezkép kinyerése a az Azure Search-dokumentumfeltörést fázis részeként. Nem számítunk fel díjat a szövegkinyerés dokumentumok közül.
+> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást](cognitive-search-attach-cognitive-services.md)kell csatolnia. Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.
 >
-> Végrehajtási beépített képességek a meglévő díjakat [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/). A kép kinyerési díjszabás leírása a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását a [Azure Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Vision.ImageAnalysisSkill 
 
-## <a name="skill-parameters"></a>Ismeretek paraméterek
+## <a name="skill-parameters"></a>Szakértelem paraméterei
 
-A paraméterei a kis-és nagybetűket.
+A paraméterek megkülönböztetik a kis-és nagybetűket.
 
-| Paraméter neve     | Leírás |
+| Paraméternév     | Leírás |
 |--------------------|-------------|
-| defaultLanguageCode   |  A visszaadandó nyelv jelző karakterlánc. A szolgáltatás megadott nyelvre a felismerési eredményeket adja vissza. Ha ez a paraméter nincs megadva, alapértelmezett értéke "en". <br/><br/>Támogatott nyelvek a következők: <br/>*en* – angol (alapértelmezett) <br/> *zh* – egyszerűsített kínai|
-|visualFeatures |   Jelző vizuális szolgáltatást való visszatéréshez karakterláncok tömbje. Érvényes visual funkció típusok a következők:  <ul><li> *kategóriák* -kép tartalmához a besorolás, a Cognitive Services meghatározott szerint kategorizálja [dokumentáció](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy).</li><li> *a címkék* -megjelöli a lemezképet a szavakat a képen tartalommal kapcsolatos részletes listáját.</li><li>*Leírás* – ismerteti a tartalmat a teljes angol nyelvű mondatot kép.</li><li>*Arcok* -észleli, hogy megtalálhatók-e a arcokat. Ha jelen van, akkor állít elő, koordináták, nem és életkor.</li><li> *ImageType* -azt észleli, ha a kép ClipArt vagy vonalrajz.</li><li>  *Szín* – a gombszöveg színét, színig, határozza meg, és hogy egy kép fekete-fehér.</li><li>*Felnőtt* -azt észleli, ha a kép pornográf jellegű (ábrázolja meztelenség vagy egy nemek act). Nyíltan kétértelmű tartalmat is észlelhető.</li></ul> Vizuális jellemzőket nevei és nagybetűk.|
-| Részletek   | Egy karakterlánctömb, jelezve, hogy mely tartomány-specifikus részletek való visszatéréshez. Érvényes visual funkció típusok a következők: <ul><li>*Hírességek* – hírességek azonosítja a kép észlelésekor.</li><li>*Arcrész* -arcrész azonosítja a kép észlelésekor.</li></ul>
+| defaultLanguageCode   |  A visszaadni kívánt nyelvet jelző sztring. A szolgáltatás egy megadott nyelven adja vissza az elismerés eredményét. Ha a paraméter nincs megadva, az alapértelmezett érték az "en". <br/><br/>A támogatott nyelvek a következők: <br/>*hu* – angol (alapértelmezett) <br/> *zh* -egyszerűsített kínai|
+|visualFeatures |   Karakterláncok tömbje, amely a vizuális szolgáltatások visszatérési típusait jelzi. A vizuális funkciók érvényes típusai a következők:  <ul><li> *Kategóriák* – a képtartalom kategorizálása a Cognitive Services dokumentációjában meghatározott besorolásnak megfelelően. [](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)</li><li> *címkék* – a képet a képtartalommal kapcsolatos szavak részletes listájával címkézheti.</li><li>*Leírás* – a rendszerkép tartalmának teljes angol mondattal történő leírása.</li><li>*Faces* – észleli, hogy vannak-e arcok. Ha van, a a koordinátákat, a nemeket és a kort hozza létre.</li><li> *imageType* – észleli, ha a kép ClipArt vagy vonalas rajz.</li><li>  *Color (szín* ) – meghatározza az ékezetes színeket, a domináns színeket, valamint azt, hogy a képek fekete & fehérek-e.</li><li>*felnőtt* – észleli, ha a rendszerkép a természetben található (a meztelenség vagy a szexuális cselekedet ábrázolása). A rendszer a szexuálisan szuggesztív tartalmat is észleli.</li></ul> A vizualizációs funkciók nevei megkülönböztetik a kis-és nagybetűket.|
+| details   | Karakterláncok tömbje, amely azt jelzi, hogy melyik tartományra vonatkozó adatokat kell visszaadnia. A vizuális funkciók érvényes típusai a következők: <ul><li>*hírességek* – azonosítja a hírességeket, ha a rendszerkép észleli őket.</li><li>*tereptárgyak* – a rendszerképben észlelt tereptárgyak azonosítására szolgál.</li></ul>
  |
 
-## <a name="skill-inputs"></a>Ismeretek bemenetek
+## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név      | Leírás                                          |
+| Bemenet neve      | Leírás                                          |
 |---------------|------------------------------------------------------|
-| image         | Komplex típus. Az Azure Blob indexelőjével által előállított jelenleg csak akkor működik a "/ dokumentum/normalized_images" mezőt, amikor ```imageAction``` értékre van állítva egy eltérő ```none```. Tekintse meg a [minta](#sample-output) további információt.|
+| image         | Összetett típus. A jelenleg csak az Azure Blob indexelő által létrehozott "/Document/normalized_images" mezővel működik, ```imageAction``` ha a értéke nem ```none```a (z) értékre van állítva. További információért tekintse meg a [mintát](#sample-output) .|
 
 
 
-##  <a name="sample-definition"></a>Minta-definíció
+##  <a name="sample-definition"></a>Minta definíciója
 ```json
         {
             "description": "Extract image analysis.",
@@ -85,7 +85,7 @@ A paraméterei a kis-és nagybetűket.
             ]
         }
 ```
-### <a name="sample-index-for-only-the-categories-description-faces-and-tags-fields"></a>Mintakód-index (a csak a kategóriákat, leírás, arcokat és címkék mezők)
+### <a name="sample-index-for-only-the-categories-description-faces-and-tags-fields"></a>Minta index (csak a kategóriák, a leírás, az arcok és a címkék mezőihez)
 ```json
 {
     "fields": [
@@ -297,7 +297,7 @@ A paraméterei a kis-és nagybetűket.
 }
 
 ```
-### <a name="sample-output-field-mapping-for-the-above-index"></a>Minta kimeneti mezőleképezés (a fenti index)
+### <a name="sample-output-field-mapping-for-the-above-index"></a>Minta kimeneti mező leképezése (a fenti indexhez)
 ```json
     "outputFieldMappings": [
         {
@@ -318,7 +318,7 @@ A paraméterei a kis-és nagybetűket.
         }
 ```
 
-##  <a name="sample-input"></a>Minta beviteli
+##  <a name="sample-input"></a>Minta bemenet
 
 ```json
 {
@@ -333,7 +333,8 @@ A paraméterei a kis-és nagybetűket.
                     "originalWidth": 5000,
                     "originalHeight": 3000,
                     "rotationFromOriginal": 90,
-                    "contentOffset": 500
+                    "contentOffset": 500,
+                    "pageNumber": 2
                 }
             }
         }
@@ -481,21 +482,21 @@ A paraméterei a kis-és nagybetűket.
 ```
 
 
-## <a name="error-cases"></a>Hibák esetén
-Hiba történt a következő esetekben nincsenek elemek ki kell olvasni.
+## <a name="error-cases"></a>Hibák esetei
+A következő hiba esetekben egyetlen elem sincs kibontva.
 
 | Hibakód | Leírás |
 |------------|-------------|
 | NotSupportedLanguage | A megadott nyelv nem támogatott. |
-| InvalidImageUrl | Kép URL-címe, a program rosszul formázott vagy nem érhető el.|
-| InvalidImageFormat | A bemeneti adatok nem egy érvényes rendszerképet. |
-| InvalidImageSize | Bemeneti kép mérete túl nagy. |
-| NotSupportedVisualFeature  | A szolgáltatás megadott típus nem érvényes. |
-| NotSupportedImage | Nem támogatott kép, például gyermekpornográfia. |
-| InvalidDetails | Tartomány-specifikus modell nem támogatott. |
+| InvalidImageUrl | A képurl-cím helytelen formátumú vagy nem érhető el.|
+| InvalidImageFormat | A bemeneti adatok nem érvényes rendszerkép. |
+| InvalidImageSize | A bemeneti rendszerkép túl nagy. |
+| NotSupportedVisualFeature  | A megadott szolgáltatástípus érvénytelen. |
+| NotSupportedImage | Nem támogatott rendszerkép, például gyermekpornográfia. |
+| InvalidDetails | A tartományhoz tartozó modell nem támogatott. |
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Előre megadott képesség](cognitive-search-predefined-skills.md)
-+ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
-+ [Az indexelő (REST) létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Előre definiált képességek](cognitive-search-predefined-skills.md)
++ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
++ [Indexelő létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

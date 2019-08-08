@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: f680a1cb15edf0141897c74da3b7c7afa01acae0
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
-ms.translationtype: MT
+ms.openlocfilehash: 31a367fcde909f393efa4fea65b25716f95c56ee
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699118"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828432"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Az adatkészletek osztályának megismerése és előkészítése (előzetes verzió)
 
@@ -35,7 +35,7 @@ Az adatai feltárásához és előkészítéséhez a következőkre lesz szüks�
 
 * A Pythonhoz készült Azure Machine Learning SDK (1.0.21 vagy újabb verzió), amely tartalmazza a azureml-adatkészletek csomagot. Az SDK legújabb verziójának telepítéséhez vagy frissítéséhez lásd: [az SDK telepítése vagy frissítése](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
-* A Azure Machine Learning adat-előkészítési SDK. A legújabb verzió telepítéséhez vagy frissítéséhez lásd: [az adat-előkészítési SDK telepítése vagy frissítése](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py#install).
+* A Azure Machine Learning adat-előkészítési SDK. A legújabb verzió telepítéséhez vagy frissítéséhez lásd: [az adat-előkészítési SDK telepítése vagy frissítése](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py).
 
 * Töltse le a következő példákkal ellátott mintát: [Crime. csv](https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv) és [City. JSON](https://dprepdata.blob.core.windows.net/dataset-sample-files/city.json).
 

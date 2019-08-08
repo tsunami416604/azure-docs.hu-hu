@@ -7,14 +7,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 44bf85eafe3f5cfa801b6c845a51e3dcd5e1262a
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 3165183d4a5e0dcfecee62b128ee8cfa9d94209b
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466871"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736709"
 ---
-# <a name="azure-backup-architecture"></a>Azure Backup architektúra
+# <a name="azure-backup-architecture-and-components"></a>Architektúra és összetevők Azure Backup
 
 A [Azure Backup szolgáltatással](backup-overview.md) biztonsági másolatot készíthet az Microsoft Azure Cloud platformra. Ez a cikk Azure Backup architektúrát, összetevőket és folyamatokat foglalja össze. 
 
@@ -35,7 +35,7 @@ Több módszer használatával biztonsági mentést készíthet a gépekről és
     - A MARS-ügynök futtatásával biztonsági mentést készíthet az Azure-beli virtuális gépen lévő adott fájlokról és mappákról.
     - Az Azure-beli virtuális gépekről biztonsági mentést készíthet az Azure-ban futó MABS, és biztonsági mentést készíthet a MABS egy Recovery Services-tárolóra.
 
-További információ a biztonsági mentésről [és a](backup-overview.md) [támogatott biztonsági mentési forgatókönyvekről](backup-support-matrix.md).
+További információ a [](backup-overview.md) biztonsági mentésről és a [támogatott biztonsági mentési forgatókönyvekről](backup-support-matrix.md).
 
 ## <a name="where-is-data-backed-up"></a>Hol történik a biztonsági másolat készítése?
 

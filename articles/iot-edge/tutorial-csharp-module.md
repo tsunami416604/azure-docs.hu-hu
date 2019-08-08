@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 305804682ede9833619837807d6f174ec670560e
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 7fca5709a1c7c3ecae11a5fc7de2109f1b20645e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414260"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839578"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Oktatóanyag: C# IoT Edge modul fejlesztése linuxos eszközökhöz
 
@@ -279,7 +279,7 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
 
 2. A VS Code Explorerben kattintson a jobb gombbal a **deployment.template.json** fájlra, és válassza a **Build and Push IoT Edge solution** (IoT Edge-megoldás összeállítása és leküldése) lehetőséget.
 
-   A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a konfigurációban, amely tartalmazza  a teljes telepítési jegyzékfájlt, kiépítve a telepítési sablonban és más megoldási fájlokban található információkat. Másodszor, futtatja `docker build` a tároló rendszerképét a célként megadott architektúra megfelelő Docker alapján. Ezután futtatja `docker push` , hogy leküldi a rendszerkép-tárházat a tároló-beállításjegyzékbe.
+   A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a konfigurációban, amely tartalmazza a teljes telepítési jegyzékfájlt, kiépítve a telepítési sablonban és más megoldási fájlokban található információkat. Másodszor, futtatja `docker build` a tároló rendszerképét a célként megadott architektúra megfelelő Docker alapján. Ezután futtatja `docker push` , hogy leküldi a rendszerkép-tárházat a tároló-beállításjegyzékbe.
 
 ## <a name="deploy-and-run-the-solution"></a>A megoldás üzembe helyezése és futtatása
 
@@ -293,7 +293,7 @@ Ellenőrizze, hogy a IoT Edge eszköz működik-e.
 
 5. Válassza ki a **deployment.json** fájlt a **config** mappában, majd kattintson a **Select Edge Deployment Manifest** (Edge üzembehelyezési jegyzék kiválasztása) elemre. Ne használja a deployment.template.json fájlt. 
 
-6. Kattintson a frissítés gombra. Látható, hogy az új **CSharpModule** fut a **TempSensor** modul, valamint a **$edgeAgent** és a **$edgeHub** mellett.  
+6. Kattintson a frissítés gombra. Meg kell jelennie az új **CSharpModule** , amelyen a **SimulatedTemperatureSensor** modul, valamint a **$edgeAgent** és a **$edgeHub**fut.  
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
@@ -303,7 +303,7 @@ Az IoT Edge-eszköz állapotát a Visual Studio Code Explorer **Azure IoT Hub-es
 
 1. A Visual Studio Code Explorerben kattintson a jobb gombbal a IoT Edge eszköz nevére, és válassza a **figyelés beépített esemény végpontjának indítása**lehetőséget.
 
-2. Megtekintheti a IoT Hub érkező üzeneteket. Eltarthat egy ideig, amíg az üzenetek megérkeznek, mivel a IoT Edge eszköznek meg kell kapnia az új központi telepítést, és el kell indítania az összes modult. Ezután megvárja a CModule-kód módosításait, amíg a gép hőmérséklete 25 fokkal nem éri el az üzenetek küldését. Az üzenet típusú riasztást is  hozzáadja az adott hőmérsékleti küszöbértéket elérő üzenetekhez. 
+2. Megtekintheti a IoT Hub érkező üzeneteket. Eltarthat egy ideig, amíg az üzenetek megérkeznek, mivel a IoT Edge eszköznek meg kell kapnia az új központi telepítést, és el kell indítania az összes modult. Ezután megvárja a CModule-kód módosításait, amíg a gép hőmérséklete 25 fokkal nem éri el az üzenetek küldését. Az üzenet típusú riasztást is hozzáadja az adott hőmérsékleti küszöbértéket elérő üzenetekhez. 
 
    ![IoT Hubra érkező üzenetek megtekintése](./media/tutorial-csharp-module/view-d2c-message.png)
  

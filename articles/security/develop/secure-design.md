@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 67687e217372c17b007982ef99bf1f80c3e6be5f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e31db74807b850b3d8cb8fc057e94e98db18fca2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728700"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780626"
 ---
 # <a name="design-secure-applications-on-azure"></a>Biztonságos alkalmazások tervezése az Azure-ban
 Ebben a cikkben a Felhőbeli alkalmazások tervezésekor megfontolandó biztonsági tevékenységeket és vezérlőket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) követelményei és tervezési szakaszaiban figyelembe venni kívánt biztonsági kérdések és fogalmak betanítása, valamint az erőforrások képzése. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások kialakításához használhat.
@@ -156,7 +156,7 @@ Az alkalmazások megtervezése és enumerálása, a hamisítás, a hamisítás, 
 | Hamisítási               | Authentication        | [HTTPS-kapcsolatok](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio)megkövetelése. |
 | Módosítás              | Integritás             | Ellenőrizze az SSL/TLS-tanúsítványokat. Az SSL/TLS protokollt használó alkalmazásoknak teljes mértékben ellenőriznie kell azon entitások X. 509 tanúsítványait, amelyekhez csatlakoznak. [A x509-tanúsítványok kezeléséhez](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)használjon Azure Key Vault tanúsítványokat. |
 | Letagadhatóság            | Letagadhatatlanság       | Az Azure [monitorozásának és diagnosztizálásának](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)engedélyezése.|
-| Információfelfedés | Titoktartási       | Bizalmas adatok titkosítása [a nyugalmi](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) [állapotban és az átvitel során](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit). |
+| Információfelfedés | Titoktartási       | Bizalmas adatok titkosítása [a nyugalmi](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) [állapotban és az átvitel során](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit). |
 | Szolgáltatásmegtagadás      | Rendelkezésre állás          | Teljesítmény-mérőszámok figyelése a szolgáltatási feltételek esetleges megtagadásához. A kapcsolatok szűrőinek implementálása. Az [Azure DDoS Protection](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps)az alkalmazás-tervezési ajánlott eljárásokkal együtt védelmet nyújt a DDoS-támadásokkal szemben.|
 | Jogok kiterjesztése | Authorization         | Azure Active Directory <span class="underline"></span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)használata.|
 
@@ -226,7 +226,7 @@ Győződjön meg arról, hogy az [](https://docs.microsoft.com/windows-server/id
 
 #### <a name="implement-just-in-time-access"></a>Igény szerinti hozzáférés megvalósítása
 
-Igény *szerinti (JIT* ) hozzáférés megvalósítása a jogosultságok expozíciós idejének további csökkentése érdekében. [Azure ad Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#stage-3-build-visibility-and-take-full-control-of-admin-activity) használata a következőhöz:
+Igény szerinti (JIT) hozzáférés megvalósítása a jogosultságok expozíciós idejének további csökkentése érdekében. [Azure ad Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#stage-3-build-visibility-and-take-full-control-of-admin-activity) használata a következőhöz:
 
 - Adja meg a felhasználóknak azokat az engedélyeket, amelyekre csak JIT szükséges.
 - A lerövidített időtartamhoz rendeljen hozzá szerepköröket úgy, hogy a jogosultságok automatikusan visszavonásra kerülnek.
@@ -246,7 +246,7 @@ A kulcsokat, tanúsítványokat, titkokat és a kapcsolatok karakterláncait min
 
 A Key Vault *titkos tároló*: ez egy központi felhőalapú szolgáltatás az alkalmazási titkok tárolásához. Key Vault a bizalmas adatok biztonsága érdekében az alkalmazás titkos adatait egyetlen, központi helyen tárolhatja, és biztonságos hozzáférést, engedélyek vezérlését és hozzáférés-naplózást biztosít.
 
-A titkokat *külön*tárolókban tárolja a rendszer. Mindegyik tároló rendelkezik saját konfigurációs és biztonsági házirendekkel a hozzáférés szabályozásához. Az adatokat egy REST APIon vagy egy, a legtöbb programozási nyelvhez elérhető ügyféloldali SDK-n keresztül érheti el.
+A titkokat külön tárolókban tárolja a rendszer. Mindegyik tároló rendelkezik saját konfigurációs és biztonsági házirendekkel a hozzáférés szabályozásához. Az adatokat egy REST APIon vagy egy, a legtöbb programozási nyelvhez elérhető ügyféloldali SDK-n keresztül érheti el.
 
 > [!IMPORTANT]
 > Azure Key Vault úgy van kialakítva, hogy a kiszolgálói alkalmazások konfigurációs titkait tárolja. A szolgáltatás nem az alkalmazás felhasználóihoz tartozó adattárolásra szolgál. Ez a teljesítmény jellemzőinek, az API-nak és a Cost modellnek megfelelően jelenik meg.
@@ -267,7 +267,7 @@ Az adatformátumok tervezésekor az összes vonatkozó adat megkülönböztethet
 #### <a name="use-encryption"></a>Titkosítás használata
 
 Az adatok védelmének fontos részét kell képeznie a biztonsági stratégiának.
-Ha az adatok egy adatbázisban vannak tárolva, vagy ha a hely között oda-vissza mozog, használja az inaktív [adatok](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) titkosítását (az adatbázisban) és az adatátviteli adattitkosítást [(a](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit) felhasználó, az adatbázis, az API vagy a szolgáltatási végpont felé). Javasoljuk, hogy mindig használjon SSL/TLS protokollokat az adatcseréhez. Győződjön meg arról, hogy a TLS legújabb verzióját használja a titkosításhoz (jelenleg ez a 1,2-es verzió).
+Ha az adatok egy adatbázisban vannak tárolva, vagy ha a hely között oda-vissza mozog, használja az inaktív [adatok](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) titkosítását (az adatbázisban) és az adatátviteli adattitkosítást (a felhasználó, az adatbázis, az API vagy a szolgáltatási végpont felé). [](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit) Javasoljuk, hogy mindig használjon SSL/TLS protokollokat az adatcseréhez. Győződjön meg arról, hogy a TLS legújabb verzióját használja a titkosításhoz (jelenleg ez a 1,2-es verzió).
 
 #### <a name="avoid-hard-coding"></a>A nehezen megfejthető kódolás elkerülése
 

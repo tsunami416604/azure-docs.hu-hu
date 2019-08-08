@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 688492188bb8a29e33568011c2cf75439ca5f4af
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: fbce475e1f783595fb67e62e15d5a503a4c687ed
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726670"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780596"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure Security – technikai képességek
 Ez a cikk az Azure-beli biztonsági szolgáltatások bevezetését ismerteti, amelyek segítenek a felhőben tárolt adatvédelmek, erőforrások és alkalmazások védelmében, és megfelelnek a vállalat biztonsági igényeinek.
@@ -331,7 +331,7 @@ Az Azure számos könnyen használható funkciót is biztosít, amelyek segíten
 
 - [Az alkalmazás biztonságos összekapcsolása egy magánhálózat erőforrásaival Hibrid kapcsolatok használatával](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
 
-A Azure App Service az Azure Cloud Services és a Virtual Machines által használt kártevő-elhárító megoldást használja. Ha többet szeretne megtudni erről, tekintse [](https://docs.microsoft.com/azure/security/azure-security-antimalware)meg a kártevők elleni dokumentációt.
+A Azure App Service az Azure Cloud Services és a Virtual Machines által használt kártevő-elhárító megoldást használja. Ha többet szeretne megtudni erről, tekintse [](https://docs.microsoft.com/azure/security/fundamentals/antimalware)meg a kártevők elleni dokumentációt.
 
 ## <a name="secure-your-network"></a>A hálózatok védelme
 Microsoft Azure tartalmaz egy robusztus hálózati infrastruktúrát, amely támogatja az alkalmazások és szolgáltatások csatlakozási követelményeit. A hálózati kapcsolat az Azure-ban, a helyszíni és az Azure által üzemeltetett erőforrások, valamint az internetről és az Azure-ból származó erőforrások között lehetséges.
@@ -352,7 +352,7 @@ Az Azure támogatja a dedikált WAN-kapcsolatot a helyszíni hálózattal és eg
 
 Az [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/) számos számítástechnikai megoldás üzembe helyezését teszi lehetővé agilis módon. Számítási feladatait a Windows-, Linux-, SQL Server-, Oracle-, IBM-, SAP- és Azure BizTalk Services-támogatás révén mérettől és programnyelvtől függetlenül, szinte bármely operációs rendszerben üzembe helyezheti.
 
-Az Azure-ban olyan biztonsági [](https://docs.microsoft.com/azure/security/azure-security-antimalware) gyártóktól származó antimalware szoftvereket használhat, mint a Microsoft, a Symantec, a Trend Micro és a Kaspersky, hogy megvédje a virtuális gépeket a kártékony fájlokkal, a reklámprogramokkal és más fenyegetésekkel szemben.
+Az Azure-ban olyan biztonsági [](https://docs.microsoft.com/azure/security/fundamentals/antimalware) gyártóktól származó antimalware szoftvereket használhat, mint a Microsoft, a Symantec, a Trend Micro és a Kaspersky, hogy megvédje a virtuális gépeket a kártékony fájlokkal, a reklámprogramokkal és más fenyegetésekkel szemben.
 
 A Microsoft antimalware for Azure Cloud Services és Virtual Machines egy valós idejű védelmi képesség, amely segít azonosítani és eltávolítani a vírusokat, kémprogramokat és egyéb kártevő szoftvereket. A Microsoft antimalware konfigurálható riasztásokat biztosít, amikor az ismert kártékony vagy nemkívánatos szoftverek megkísérlik telepíteni vagy futtatni magukat az Azure-rendszereken.
 
@@ -382,7 +382,7 @@ Emellett az Ellenőrzőlista:
 
 ## <a name="azure-infrastructure-and-application-security-validation"></a>Az Azure-infrastruktúra és az alkalmazások biztonságának ellenőrzése
 
-Az [Azure Operational Security](https://docs.microsoft.com/azure/security/azure-operational-security) a felhasználók számára elérhető szolgáltatásokat, vezérlőket és szolgáltatásokat jelenti a Microsoft Azureban tárolt adatok, alkalmazások és egyéb eszközök védelmére.
+[Azure Operational Security] (https://docs.microsoft.com/azure/security/fundamentals/operational-security a felhasználók számára elérhető szolgáltatásokra, vezérlőelemekre és szolgáltatásokra hivatkozik Microsoft Azure-ban lévő adatok, alkalmazások és egyéb eszközök védelmére.
 
 ![biztonsági ellenőrzés (észlelés)](./media/technical-capabilities/azure-security-technical-capabilities-fig7.png)
 

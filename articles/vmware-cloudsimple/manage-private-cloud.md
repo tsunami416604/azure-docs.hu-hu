@@ -1,23 +1,23 @@
 ---
-title: Azure VMware-megoldás által CloudSimple Magánfelhő kezelése
-description: CloudSimple magánjellegű felhő erőforrásait és tevékenységek kezeléséhez elérhető lehetőségeket ismerteti
+title: Azure VMware-megoldás kezelése CloudSimple privát felhővel
+description: Ismerteti a CloudSimple saját Felhőbeli erőforrásainak és tevékenységének kezeléséhez rendelkezésre álló képességeket
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 05a2fb451b3acce1011c1d5f4cf17f0a865d57d0
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 620c0226d3aca907352658ebbe1b94c7673d91cd
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67333243"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812270"
 ---
-# <a name="manage-private-cloud-resources-and-activity"></a>Magánfelhő-erőforrások és tevékenységek kezelése
+# <a name="manage-private-cloud-resources-and-activity"></a>Saját Felhőbeli erőforrások és tevékenységek kezelése
 
-Magánfelhők CloudSimple portálon kezelhetők.  Ellenőrizze a állapotát, a rendelkezésre álló erőforrások, a tevékenység a magánfelhőhöz és az egyéb beállításokat a CloudSimple portálról.
+A privát felhők kezelése a CloudSimple-portálról történik.  A CloudSimple-portálon keresse meg az állapotot, a rendelkezésre álló erőforrásokat, a saját Felhőbeli tevékenységeket és egyéb beállításokat.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -25,70 +25,70 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="access-the-cloudsimple-portal"></a>Hozzáférés a CloudSimple portáljához
 
-Hozzáférés a [CloudSimple portál](access-cloudsimple-portal.md).
+Nyissa meg a [CloudSimple portált](access-cloudsimple-portal.md).
 
-## <a name="view-the-list-of-private-clouds"></a>A privát felhők listájának megtekintése
+## <a name="view-the-list-of-private-clouds"></a>Privát felhők listájának megtekintése
 
-A **Magánfelhők** lapján a **erőforrások** lap felsorolja az összes privát felhő az előfizetésében. Nevét, a vSphere száma fürtök, hely, a privát felhő és az erőforrás információkat aktuális állapotát.
+Az **erőforrások** lap **privát felhők** lapja felsorolja az előfizetésben található összes privát felhőt. Az adatok tartalmazzák a nevet, a vSphere-fürtök számát, a helyet, a saját felhő aktuális állapotát és az erőforrás-információkat.
 
-![Magánfelhő lap](media/manage-private-cloud.png)
+![Saját felhő lapja](media/manage-private-cloud.png)
 
-Válassza ki a Private Cloud, műveleteket és további információkat.
+További információért és műveletekhez válasszon ki egy privát felhőt.
 
-## <a name="private-cloud-summary"></a>Privát felhő összegzése
+## <a name="private-cloud-summary"></a>Saját felhő összefoglalása
 
-A kijelölt privát felhő átfogó összegzésének megtekintése.  Összefoglaló lap tartalmazza a DNS-kiszolgálók a privát felhőben üzembe helyezett.  DNS-t beállíthatja, továbbítja a helyi DNS-kiszolgálók a privát felhő DNS-kiszolgálók.  A DNS-továbbítást további információkért lásd: [DNS konfigurálása a helyszíni privát felhő vCenter névfeloldásra](https://docs.azure.cloudsimple.com/on-premises-dns-setup/).
+A kiválasztott privát felhő átfogó összefoglalásának megtekintése.  Az összefoglalás lapon a privát felhőben üzembe helyezett DNS-kiszolgálók szerepelnek.  A DNS-továbbítást beállíthatja a helyszíni DNS-kiszolgálókról a saját felhőalapú DNS-kiszolgálóira.  A DNS-továbbítással kapcsolatos további információkért lásd: [a DNS konfigurálása névfeloldáshoz a saját felhőalapú vCenter](https://docs.azure.cloudsimple.com/on-premises-dns-setup/)a helyszíni környezetből.
 
-![Privát felhő összegzése](media/private-cloud-summary.png)
+![Saját felhő összefoglalása](media/private-cloud-summary.png)
 
-### <a name="available-actions"></a>Rendelkezésre álló műveletek
+### <a name="available-actions"></a>Elérhető műveletek
 
-* [Indítsa el a vSphere client](https://docs.azure.cloudsimple.com/vsphere-access/). Hozzáférés a vcenter-kiszolgáló a Magánfelhő számára.
-* [Csomópontok beszerzési](create-nodes.md). Csomópontok hozzáadása a Magánfelhő.
-* [Bontsa ki a](expand-private-cloud.md). Csomópontok hozzáadása a Magánfelhő.
-* **Frissítés**. Frissítse a információkat ezen az oldalon.
-* **Törlés**. A Magánfelhő bármikor törölheti. **Mielőtt törölné, győződjön meg arról, hogy biztonsági másolatot az összes rendszerekkel és adatokkal.** Magánfelhő törlése törli a virtuális gépek, vCenter konfigurációs és adatokat. Kattintson a **törlése** a kiválasztott Magánfelhő összefoglaló részben. Törlés, a következő összes Magánfelhő adatot egy biztonságos, erősen kompatibilis a Törlés folyamatban törölve lesz.
-* [A vSphere-jogosultságok módosítása](escalate-private-cloud-privileges.md).  Eszkalálni a jogosultságokat a privát felhőben.
+* [Indítsa el a vSphere](https://docs.azure.cloudsimple.com/vsphere-access/)-ügyfelet. A vCenter elérése ehhez a privát felhőhöz.
+* [](create-nodes.md)Megvásárlási csomópontok. Csomópontok hozzáadása ehhez a privát felhőhöz.
+* [Bontsa ki](expand-private-cloud.md)a elemet. Csomópontok hozzáadása ehhez a privát felhőhöz.
+* **Frissítés**. Az oldalon található információk frissítése.
+* **Törlés**. A privát felhőt bármikor törölheti. **A törlés előtt győződjön meg róla, hogy minden rendszerről és adattal készített biztonsági másolatot.** A privát felhő törlése törli az összes virtuális gépet, a vCenter-konfigurációt és az összes adathalmazt. Kattintson a **Törlés** lehetőségre a kiválasztott privát felhő Összegzés szakaszában. A törlést követően az összes magánjellegű Felhőbeli adat törlődik egy biztonságos, szigorúan kompatibilis törlési folyamatba.
+* [VSphere-jogosultságok módosítása](escalate-private-cloud-privileges.md)  A jogosultságokat a privát felhőben is kiterjesztheti.
 
-## <a name="private-cloud-vlanssubnets"></a>Privát felhő VLAN-OK/alhálózatok
+## <a name="private-cloud-vlanssubnets"></a>Privát felhő VLAN-ok/alhálózatok
 
-A kiválasztott Magánfelhő meghatározott VLAN-OK/alhálózatok listájának megtekintéséhez.  A lista tartalmazza a VLAN-OK/alhálózatok a magánfelhő létrehozásakor létrehozott felügyeleti.
+Megtekintheti a kijelölt VLAN-ok/alhálózatok listáját a kiválasztott privát felhőhöz.  A lista tartalmazza a privát felhő létrehozásakor létrehozott felügyeleti VLAN-okat/alhálózatokat.
 
-![Magánfelhő - VLAN-OK/alhálózatok](media/private-cloud-vlans-subnets.png) 
+![Privát felhő – VLAN-ok/alhálózatok](media/private-cloud-vlans-subnets.png) 
 
-### <a name="available-actions"></a>Rendelkezésre álló műveletek
+### <a name="available-actions"></a>Elérhető műveletek
 
-* [VLAN-OK/alhálózatok](https://docs.azure.cloudsimple.com/create-vlan-subnet/). Adja hozzá a Magánfelhő egy VLAN/részére.
+* [VLAN-ok/alhálózatok hozzáadása](https://docs.azure.cloudsimple.com/create-vlan-subnet/). Adjon hozzá egy VLAN/részhalmazt ehhez a privát felhőhöz.
 
-Válassza ki a következő műveletek egy VLAN/alhálózat
-* [Tűzfal táblázat csatolása](https://docs.azure.cloudsimple.com/firewall/). A Magánfelhő csatolása egy tűzfal táblát.
+Válasszon VLAN-t/alhálózatot a következő műveletekhez
+* [Tűzfalszabály csatolása](https://docs.azure.cloudsimple.com/firewall/). Csatoljon egy tűzfalat ehhez a privát felhőhöz.
 * **Szerkesztése**
-* **Törlés** (csak felhasználó által megadott VLAN-OK/alhálózatok)
+* **Törlés** (csak a felhasználó által definiált VLAN-ok/alhálózatok)
 
-## <a name="private-cloud-activity"></a>Magánfelhő-tevékenység
+## <a name="private-cloud-activity"></a>Saját Felhőbeli tevékenység
 
-Megtekintheti a kiválasztott Magánfelhő az alábbi adatokat.  Az ügyféltevékenységgel kapcsolatos információk az összes tevékenység a kiválasztott privát felhő szűrt listája.  Ezen a lapon látható legutóbbi tevékenységek legfeljebb 25.
+Tekintse meg a következő információkat a kiválasztott privát felhőhöz.  A tevékenység adatai a kiválasztott privát felhő összes tevékenységének szűrt listája.  Ezen az oldalon legfeljebb 25 legutóbbi tevékenység látható.
 
 * Legutóbbi riasztások
 * Legutóbbi események
 * Legutóbbi tevékenységek
-* Legutóbbi naplózása
+* Legutóbbi naplózás
 
-![Magánfelhő - tevékenység](media/private-cloud-activity.png)
+![Saját felhő – tevékenység](media/private-cloud-activity.png)
 
-## <a name="cloud-racks"></a>Felhőbeli állványt
+## <a name="cloud-racks"></a>Felhőalapú állványok
 
-Felhőalapú állványokon, a Magánfelhő építőkövei. Minden állványban egy kapacitási egység, biztosít. CloudSimple automatikusan konfigurálja a felhő állványt létrehozásakor vagy Magánfelhő bővülő alapján.  Felhőbeli állványt teljes listájának megtekintéséhez, beleértve a Magánfelhő, hogy minden hozzá van rendelve.
+A felhőalapú állványok a saját felhő építőelemei. Mindegyik rack kapacitási egységet biztosít. A CloudSimple automatikusan konfigurálja a Felhőbeli állványokat a privát felhő létrehozásakor vagy bővítésekor megadott beállítások alapján.  Megtekintheti a felhőalapú állványok teljes listáját, beleértve az egyesekhez rendelt saját felhőt is.
 
-![Magánfelhő - felhő állványt](media/private-cloud-cloudracks.png)
+![Privát felhő – felhőalapú állványok](media/private-cloud-cloudracks.png)
 
-## <a name="vsphere-management-network"></a>vSphere Management Network
+## <a name="vsphere-management-network"></a>vSphere felügyeleti hálózat
 
-VMware-kezelési erőforrásainak és virtuális gépek, amelyeken jelenleg a privát felhő listája. Információ a szoftververzió, teljesen minősített tartománynevét (FQDN) és az erőforrások IP-címét tartalmazza.
+A saját felhőben jelenleg konfigurált VMware felügyeleti erőforrások és virtuális gépek listája. Az információk közé tartozik a szoftver verziója, a teljes tartománynév (FQDN) és az erőforrások IP-címe.
 
-![Magánfelhő - vSphere felügyeleti hálózat](media/private-cloud-vsphere-management-network.png)
+![Saját felhőalapú vSphere felügyeleti hálózat](media/private-cloud-vsphere-management-network.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure-ban a VMware virtuális gépeket felhasználására](quickstart-create-vmware-virtual-machine.md)
-* Tudjon meg többet [Magánfelhők létrehozása](cloudsimple-private-cloud.md)
+* [VMware virtuális gépek használata az Azure-ban](quickstart-create-vmware-virtual-machine.md)
+* További információ a [privát felhőkről](cloudsimple-private-cloud.md)

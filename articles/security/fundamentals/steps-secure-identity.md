@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martinco
-ms.openlocfilehash: 0ccd2ee8b2c9f542eabe7a297f4c99a3993a47e9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c5cdd12c3075d48ff32c40d686b32a650ec43d8e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726739"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779780"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez
 
@@ -74,7 +74,7 @@ A PowerShell használatával [megakadályozhatja, hogy a jelszavak](https://docs
 Ha a szervezet hibrid identitási megoldást használ átmenő hitelesítéssel vagy összevonással, akkor a jelszó-kivonatolási szinkronizálást a következő két okból kell engedélyeznie:
 
 * A [kiszivárgott hitelesítő adatokkal rendelkező felhasználók](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events) az Azure ad-ben figyelmeztetnek a Felhasználónév és a jelszó párokra, amelyek elérhetők a "Dark web"-ben. A rendszer az adathalászat, a kártevők és a jelszavak újbóli felhasználását a későbbiekben megsértő külső webhelyeken végezheti el. A Microsoft megkeresi ezeket a kiszivárgott hitelesítő adatokat, és tájékoztatja Önt a jelentésben, ha megfelelnek a szervezet hitelesítő adatainak, de csak akkor, ha [engedélyezi a jelszó](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)-kivonatok szinkronizálását.
-* Helyszíni leállás esetén (például egy ransomware támadás esetében) a [jelszó-kivonatoló szinkronizálás használatával](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)átválthat a Felhőbeli hitelesítés használatára. Ez a biztonsági mentési hitelesítési módszer lehetővé teszi, hogy továbbra is hozzáférjen a hitelesítéshez konfigurált alkalmazások Azure Active Directory, például az Office 365-hez. Ebben az esetben az informatikai részlegnek nem kell személyes e-mail-fiókokat használnia az adatmegosztáshoz, amíg a helyszíni leállás megoldódik.
+* Helyszíni leállás esetén (például egy ransomware támadás esetében) a [jelszó-kivonatoló szinkronizálás használatával](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)átválthat a Felhőbeli hitelesítés használatára. Ez a biztonsági mentési hitelesítési módszer lehetővé teszi, hogy továbbra is hozzáférjen a hitelesítéshez konfigurált alkalmazások Azure Active Directory, például az Office 365-hez. Ebben az esetben az informatikai részlegnek nem kell személyes e-mail-fiókokat használnia az adatmegosztáshoz, amíg a helyszíni leállás megoldódik.
 
 További információ a [jelszó-kivonatolási szinkronizálás](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization) működéséről.
 
@@ -146,7 +146,7 @@ A biztonsággal kapcsolatos események és a kapcsolódó riasztások naplózás
 
 ### <a name="monitor-azure-ad"></a>Az Azure AD figyelése
 
-Microsoft Azure szolgáltatások és szolgáltatások konfigurálható biztonsági naplózási és naplózási lehetőségeket biztosítanak, amelyek segítségével azonosíthatja a biztonsági házirendekben és mechanizmusokban mutatkozó réseket, és orvosolhatja ezeket a hiányosságokat a szabálysértések megelőzése érdekében. [A Azure Active Directory-portálon](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)az [Azure naplózási és naplózási](https://docs.microsoft.com/azure/security/azure-log-audit) szolgáltatásait, valamint a naplózási tevékenység jelentéseit használhatja.
+Microsoft Azure szolgáltatások és szolgáltatások konfigurálható biztonsági naplózási és naplózási lehetőségeket biztosítanak, amelyek segítségével azonosíthatja a biztonsági házirendekben és mechanizmusokban mutatkozó réseket, és orvosolhatja ezeket a hiányosságokat a szabálysértések megelőzése érdekében. [A Azure Active Directory-portálon](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)az [Azure naplózási és naplózási](https://docs.microsoft.com/azure/security/fundamentals/log-audit) szolgáltatásait, valamint a naplózási tevékenység jelentéseit használhatja.
 
 ### <a name="monitor-azure-ad-connect-health-in-hybrid-environments"></a>Azure AD Connect Health monitorozása hibrid környezetekben
 

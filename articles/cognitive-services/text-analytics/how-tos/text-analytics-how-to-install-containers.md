@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: dapine
-ms.openlocfilehash: f658e8d0f820ccec513b5665fc1ce94c083c3b3e
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: ddbe586c03d9f722d844d06968aa25e4b4a5aac0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68703528"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815297"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics tárolók telepítése és futtatása
 
@@ -52,8 +52,7 @@ A következő táblázat ismerteti a minimális és ajánlott, processzormagot l
 |-----------|---------|-------------|--|
 |Kulcskifejezések kinyerése | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
 |Nyelvfelismerés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
-|Hangulatelemzés 2. x | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
-|Hangulatelemzés 3. x | 1 mag, 2 GB memória | 4 mag, 4 GB memória |15, 30|
+|Véleményelemzés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
 
 * Minden mag legalább 2,6 gigahertz (GHz) vagy gyorsabb lehet.
 * TPS – tranzakció/másodperc
@@ -68,8 +67,7 @@ Tárolórendszerképek szövegelemzési Microsoft Tárolóregisztrációs adatb�
 |-----------|------------|
 |Kulcskifejezések kinyerése | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
 |Nyelvfelismerés | `mcr.microsoft.com/azure-cognitive-services/language` |
-|Hangulatelemzés 2. x| `mcr.microsoft.com/azure-cognitive-services/sentiment` |
-|Hangulatelemzés 3. x| `containerpreview.azurecr.io/microsoft/cognitive-services-sentiment-v3.0` |
+|Véleményelemzés| `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
 A [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal tölthet le egy tároló rendszerképet a Microsoft Container Registryból.
 
@@ -93,16 +91,10 @@ docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
 docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
 ```
 
-### <a name="docker-pull-for-the-sentiment-2x-container"></a>Docker lekérése a 2. x. tárolóhoz
+### <a name="docker-pull-for-the-sentiment-container"></a>Docker-lekérés az érzelmek tárolója számára
 
 ```
 docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
-```
-
-### <a name="docker-pull-for-the-sentiment-3x-container"></a>A Docker lekéri az "3. x" tárolót
-
-```
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-sentiment-v3.0:latest
 ```
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
@@ -112,7 +104,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-sentiment-v
 Miután a tároló a gazdagépen [](#the-host-computer)található, a következő eljárással dolgozhat a tárolóval.
 
 1. [Futtassa a tárolót](#run-the-container-with-docker-run)a kötelező számlázási beállításokkal. További [példák](../text-analytics-resource-container-config.md#example-docker-run-commands) a `docker run` parancsra.
-1. A tároló előrejelzési végpontjának lekérdezése [v2](#query-the-containers-v2-prediction-endpoint) vagy [v3](#query-the-containers-v3-prediction-endpoint)esetén.
+1. [A tároló előrejelzési végpontjának lekérdezése](#query-the-containers-prediction-endpoint).
 
 ## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a`docker run`
 
@@ -120,7 +112,7 @@ A három tároló bármelyikének futtatásához használja a [Docker Run](https
 
 [](../text-analytics-resource-container-config.md#example-docker-run-commands) A`docker run` parancs például elérhető.
 
-### <a name="run-v2-container-example-of-docker-run-command"></a>Példa a v2-tároló futtatására a Docker parancs futtatásakor
+### <a name="run-container-example-of-docker-run-command"></a>Tároló futtatása példa a Docker Run parancsra
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -137,134 +129,17 @@ Ez a parancs:
 * Elérhetővé teszi az 5000-es TCP-porton és a egy pszeudo-TTY lefoglalja a tároló
 * A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen.
 
-### <a name="run-v3-container-example-of-docker-run-command"></a>Példa a Docker futtatására szolgáló v3 tárolóra
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
-containerpreview.azurecr.io/microsoft/cognitive-services-sentiment-v3.0 \
-Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
-```
-
-Ez a parancs:
-
-* Egy Key mondat tárolót futtat a tároló rendszerképből.
-* 4 CPU-mag és 4 gigabájt (GB) memória foglalása
-* Elérhetővé teszi az 5000-es TCP-porton és a egy pszeudo-TTY lefoglalja a tároló
-* A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen.
 
 > [!IMPORTANT]
 > A `Eula`, `Billing`, és `ApiKey` beállítások meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információkért lásd: [számlázási](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
-## <a name="query-the-containers-v2-prediction-endpoint"></a>A tároló v2-előrejelzési végpontjának lekérdezése
+## <a name="query-the-containers-prediction-endpoint"></a>A tároló előrejelzési végpontjának lekérdezése
 
 A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat biztosít.
 
 A tároló API `https://localhost:5000`-k esetében használja a gazdagépet.
-
-## <a name="query-the-containers-v3-prediction-endpoint"></a>A tároló v3 előrejelzési végpontjának lekérdezése
-
-A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat biztosít.
-
-A tároló API `https://localhost:5000`-k esetében használja a gazdagépet.
-
-### <a name="v3-api-request-post-body"></a>V3 API-kérelem POST Body
-
-A következő JSON példa egy V3 API-kérelem POST törzsére:
-
-```json
-{
-  "documents": [
-    {
-      "language": "en",
-      "id": "1",
-      "text": "Hello world. This is some input text that I love."
-    },
-    {
-      "language": "en",
-      "id": "2",
-      "text": "It's incredibly sunny outside! I'm so happy."
-    }
-  ]
-}
-```
-
-### <a name="v3-api-response-body"></a>V3 API-válasz törzse
-
-A következő JSON példa egy V3 API-kérelem POST törzsére:
-
-```json
-{
-    "documents": [
-        {
-            "id": "1",
-            "sentiment": "positive",
-            "documentScores": {
-                "positive": 0.98570585250854492,
-                "neutral": 0.0001625834556762,
-                "negative": 0.0141316400840878
-            },
-            "sentences": [
-                {
-                    "sentiment": "neutral",
-                    "sentenceScores": {
-                        "positive": 0.0785155147314072,
-                        "neutral": 0.89702343940734863,
-                        "negative": 0.0244610067456961
-                    },
-                    "offset": 0,
-                    "length": 12
-                },
-                {
-                    "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.98570585250854492,
-                        "neutral": 0.0001625834556762,
-                        "negative": 0.0141316400840878
-                    },
-                    "offset": 13,
-                    "length": 36
-                }
-            ]
-        },
-        {
-            "id": "2",
-            "sentiment": "positive",
-            "documentScores": {
-                "positive": 0.89198976755142212,
-                "neutral": 0.103382371366024,
-                "negative": 0.0046278294175863
-            },
-            "sentences": [
-                {
-                    "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.78401315212249756,
-                        "neutral": 0.2067587077617645,
-                        "negative": 0.0092281140387058
-                    },
-                    "offset": 0,
-                    "length": 30
-                },
-                {
-                    "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.99996638298034668,
-                        "neutral": 0.0000060341349126,
-                        "negative": 0.0000275444017461
-                    },
-                    "offset": 31,
-                    "length": 13
-                }
-            ]
-        }
-    ],
-    "errors": []
-}
-```
 
 <!--  ## Validate container is running -->
 

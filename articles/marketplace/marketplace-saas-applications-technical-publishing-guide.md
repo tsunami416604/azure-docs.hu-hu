@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: 92c3452e07dee126666e6ee1fe0c46b1f8f6dfa4
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f9ff6e19a0f0091cb5b831279eee90727bbb89fd
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876534"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742255"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-alkalmazások ajánlat-közzétételi útmutató
 
@@ -25,7 +25,7 @@ Az SaaS-alkalmazások az Azure kirakatokban is elérhetők. az alábbi tábláza
 | Kirakat lehetőség | Listázása | Próbaverzió/Transact |  
 | --- | --- | --- |  
 | AppSource | Igen (Kapcsolatfelvétel) | Igen (PowerBI/Dynamics) |
-| Azure Piactér | Nem | Igen (SaaS-alkalmazások) |   
+| Azure Marketplace | Nem | Igen (SaaS-alkalmazások) |   
 
 **Listáját**  A tőzsdei közzétételi lehetőség egy kapcsolatfelvételi ajánlat típusát tartalmazza, és akkor használható, ha a próbaverziós vagy tranzakciós szintű részvétel nem valósítható meg. Ennek a megközelítésnek az az előnye, hogy lehetővé teszi a kiadók számára, hogy a piacon elérhető megoldással azonnal elkezdhetik a vállalkozása növekedéséhez szükséges érdeklődők fogadását.  
 **Próbaverzió/tranzakció:**  Az ügyfél lehetősége van arra, hogy közvetlenül vásároljon vagy kérjen próbaverziót a megoldásához. A próbaverziós szolgáltatás megadásával növelheti az ügyfelek számára felkínált engagement szintet, és a vásárlás előtt lehetővé teszi az ügyfeleknek a megoldás megismerését. A próbaverziós szolgáltatással jobb eséllyel népszerűsítheti a kirakatokat, és több és gazdagabb érdeklődőket kell várnia az ügyfelek bevonásával. A próbaverzióknak legalább a próbaidőszak időtartama alatt ingyenes támogatást kell tartalmazniuk.  
@@ -126,13 +126,13 @@ Ha még nem ismeri az Azure AD összevont egyszeri bejelentkezést, tegye a köv
 ## <a name="saas-subscriptions"></a>SaaS-előfizetések
 
 Az SaaS-alkalmazások ajánlatának típusa lehetővé teszi, hogy az ügyfél a SaaS-alapú, technikai megoldását előfizetésként vásárolja meg. A következő követelményeknek kell teljesülniük az SaaS-alkalmazáshoz:
-- A szolgáltatás ára és számlázása lapos, havi díjszabással.
+- Díj és számlázás a szolgáltatással (havonta vagy évente), vagy felhasználónkénti díjszabással.
 - Adjon meg egy módszert a szolgáltatás frissítésére vagy megszakítására.
-A Microsoft üzemelteti a kereskedelmi tranzakciót. A Microsoft az Ön nevében számlázza az ügyfelet. Az SaaS-alkalmazások előfizetésként való használatához engedélyeznie kell a saját előfizetés-kezelési szolgáltatás API-ját. Az előfizetés-kezelési szolgáltatás API-jának közvetlenül kell kommunikálnia a Azure Resource Manager API-kkal. Az előfizetés-kezelési szolgáltatás API-nak támogatnia kell a szolgáltatás üzembe helyezését, frissítését és megszakítását.
+A Microsoft üzemelteti a kereskedelmi tranzakciót. A Microsoft az Ön nevében számlázza az ügyfelet. Az SaaS-alkalmazások előfizetésként való ellátásához integrálni kell a SaaS-megvalósítási API-kkal.  A szolgáltatásnak támogatnia kell a kiépítés, a verziófrissítés és a megszakítást.
 
 | Követelmény | Részletek |  
 |:--- |:--- |  
-|Számlázás és mérés | Ajánlatunk havi átalánydíjas díjszabással érhető el. A használaton alapuló díjszabás és a használaton alapuló "true-up" képesség jelenleg nem támogatott. |  
+|Számlázás és mérés | Az ajánlat díjszabása a közzététel előtt kiválasztott árképzési modell alapján történik (átalány vagy felhasználónként).  Az átalány-modell használata esetén igény szerint további dimenziókat is megadhat, amelyeket a rendszer az átalányban nem szereplő használati díjak megadására használ fel. |  
 |Lemondás | Ajánlatát bármikor megszakíthatja az ügyfél. |  
 |Tranzakció kezdőlapja | Egy Azure-beli közös védjeggyel ellátott tranzakció-kezdőlapot üzemeltet, ahol a felhasználók létrehozhatják és kezelhetik az SaaS-szolgáltatásfiókot. |   
 | Előfizetés API | Olyan szolgáltatást tesz elérhetővé, amely képes kommunikálni az SaaS-előfizetéssel egy felhasználói fiók és szolgáltatáscsomag létrehozásához, frissítéséhez és törléséhez. A kritikus API-módosításokat 24 órán belül támogatni kell. A nem kritikus API-változások rendszeresen jelennek majd meg. |  

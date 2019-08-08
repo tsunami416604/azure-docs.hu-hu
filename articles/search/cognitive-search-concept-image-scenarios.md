@@ -5,18 +5,19 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 589f8c8f11138b4fb5c3c3096229e28c633efb0d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e60eeb601a0a5796609b9c38b7394c2de0610cdf
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423007"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841276"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Információk feldolgozása és kinyerése a rendszerképekből a kognitív keresési helyzetekben
 
@@ -72,7 +73,8 @@ Ha a *imageAction* egy másik értékre van állítva, akkor az új *normalized_
 | originalWidth      | A rendszerkép eredeti szélessége a normalizálás előtt. |
 | originalHeight      | A rendszerkép eredeti magassága a normalizálás előtt. |
 | rotationFromOriginal |  A normalizált rendszerkép létrehozásához szükséges fokban lévő óramutató járása. 0 fok és 360 fok közötti érték. Ez a lépés beolvassa a metaadatokat a kamera vagy képolvasó által generált rendszerképből. Általában a 90 fok többszöröse. |
-| contentOffset |Az a tartalom mezőn belüli eltolás, amelyből a képet kinyerték. Ez a mező csak beágyazott rendszerképekkel rendelkező fájlokra alkalmazható. |
+| contentOffset | Az a tartalom mezőn belüli eltolás, amelyből a képet kinyerték. Ez a mező csak beágyazott rendszerképekkel rendelkező fájlokra alkalmazható. |
+| pageNumber | Ha a képet kibontották vagy PDF-fájlként állították ki, akkor ez a mező tartalmazza a PDF-fájl oldalszámát, amelyet a program kinyert vagy megjelenített, 1-től kezdődően.  Ha a rendszerkép nem PDF-fájlból származik, ez a mező 0 lesz.  |
 
  *Normalized_images*-minta értéke:
 ```json
@@ -84,7 +86,8 @@ Ha a *imageAction* egy másik értékre van állítva, akkor az új *normalized_
     "originalWidth": 5000,  
     "originalHeight": 3000,
     "rotationFromOriginal": 90,
-    "contentOffset": 500  
+    "contentOffset": 500,
+    "pageNumber": 2
   }
 ]
 ```

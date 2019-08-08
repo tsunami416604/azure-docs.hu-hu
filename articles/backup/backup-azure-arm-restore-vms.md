@@ -9,14 +9,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: f961f472c0b00932bf5ee6302af58f39fa8421ed
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
-ms.translationtype: HT
+ms.openlocfilehash: 126e33d4bedb56eb479361f16c02e7e167e49392
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720443"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736698"
 ---
-# <a name="restore-azure-vms"></a>Azure-beli virtuális gépek visszaállítása
+# <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure-beli virtuális gépekre vonatkozó Azure Portal visszaállítása
 
 Ez a cikk azt ismerteti, hogyan állíthatja vissza az Azure-beli virtuális gépek adatait a [Azure Backup](backup-overview.md) Recovery Services-tárolókban tárolt helyreállítási pontokból.
 
@@ -93,7 +93,7 @@ A [visszaállítási lehetőségek](#restore-options)egyike gyorsan létrehozhat
 
     ![Konfiguráció visszaállítása varázsló](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
-6. A **visszaállítási konfiguráció**területen kattintson **az OK gombra**. Avisszaállítás elemre **kattintva aktiválja** a visszaállítási műveletet.
+6. A **visszaállítási konfiguráció**területen kattintson **az OK gombra**. Avisszaállítás elemre kattintva aktiválja a visszaállítási műveletet.
 
 
 ## <a name="restore-disks"></a>Lemezek visszaállítása
@@ -110,7 +110,7 @@ Az egyik visszaállítási [lehetőségként](#restore-options)létrehozhat egy 
 
     ![A helyreállítási konfiguráció befejeződött](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
-4. A **visszaállítási konfiguráció**területen kattintson **az OK gombra**. Avisszaállítás elemre **kattintva aktiválja** a visszaállítási műveletet.
+4. A **visszaállítási konfiguráció**területen kattintson **az OK gombra**. Avisszaállítás elemre kattintva aktiválja a visszaállítási műveletet.
 
 Ha a virtuális gép felügyelt lemezeket használ, és kiválasztja a **virtuális gép létrehozása** lehetőséget, Azure Backup nem a megadott Storage-fiókot használja. **Visszaállítási lemezek** és **azonnali visszaállítás**esetén a Storage-fiók csak a sablon tárolására szolgál. A felügyelt lemezek a megadott erőforráscsoporthoz jönnek létre.
 Ha a virtuális gép nem felügyelt lemezeket használ, a rendszer blobként állítja vissza őket a Storage-fiókba.
@@ -153,7 +153,7 @@ Számos gyakori forgatókönyv létezik, amelyekben szükség lehet a virtuális
 
 **Forgatókönyv** | **Útmutatás**
 --- | ---
-**Virtuális gépek visszaállítása Hybrid use Benefit használatával** | Ha egy Windows rendszerű virtuális gép a [hibrid használati juttatás (hub) licencelését](../virtual-machines/windows/hybrid-use-benefit-licensing.md)használja, állítsa vissza a lemezeket, és hozzon létre egy új virtuális gépet a megadott sablonnal (a **Windows_Server** **beállítással** ) vagy a PowerShell-lel.  Ezt a beállítást a virtuális gép létrehozása után is lehet alkalmazni.
+**Virtuális gépek visszaállítása Hybrid use Benefit használatával** | Ha egy Windows rendszerű virtuális gép a [hibrid használati juttatás (hub) licencelését](../virtual-machines/windows/hybrid-use-benefit-licensing.md)használja, állítsa vissza a lemezeket, és hozzon létre egy új virtuális gépet a megadott sablonnal (a **Windows_Server**beállítással) vagy a PowerShell-lel.  Ezt a beállítást a virtuális gép létrehozása után is lehet alkalmazni.
 **Virtuális gépek visszaállítása Azure-adatközponti katasztrófa esetén** | Ha a tároló a GRS-t használja, és a virtuális gép elsődleges adatközpontja leáll, a Azure Backup támogatja a biztonsági másolatban lévő virtuális gépeknek a párosított adatközpontba történő visszaállítását. Válasszon egy Storage-fiókot a párosított adatközpontban, és állítsa vissza a szokásos módon. A Azure Backup a párosított helyen lévő számítási szolgáltatást használja a visszaállított virtuális gép létrehozásához. [További](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md) információ az adatközpont rugalmasságáról.
 **Önálló tartományvezérlő virtuális gép visszaállítása egyetlen tartományból** | Állítsa vissza a virtuális gépet, mint bármely más virtuális gépet. Vegye figyelembe:<br/><br/> Egy Active Directory perspektívából az Azure-beli virtuális gép olyan, mint bármely más virtuális gép.<br/><br/> A Címtárszolgáltatások helyreállító módja (címtárszolgáltatás-javító mód) is elérhető, így az összes Active Directory-helyreállítási forgatókönyv életképes. [További](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/virtualized-domain-controllers-hyper-v) információ a virtualizált tartományvezérlők biztonsági mentési és visszaállítási szempontjairól.
 **Több tartományvezérlőt tartalmazó virtuális gép visszaállítása egyetlen tartományból** | Ha ugyanabban a tartományban más tartományvezérlők is elérhetők a hálózaton keresztül, akkor a tartományvezérlőt bármely virtuális géphez hasonlóan vissza lehet állítani. Ha a tartomány utolsó fennmaradó tartományvezérlője, vagy egy elszigetelt hálózatban lévő helyreállítást hajt végre, használjon [erdő](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)-helyreállítást.

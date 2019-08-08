@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 4115964533072e5d8f1760c8c5cdf0f20c9b7625
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0c07cbd9fef865f3fc7b782210ef44094df9f629
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727142"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779829"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhőben
 ##  <a name="introduction"></a>Bevezetés
@@ -240,7 +240,7 @@ Az átvitel közbeni titkosítás egy olyan mechanizmus, amely az adatok védelm
 -   [Ügyféloldali titkosítás](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage), amely a tárterületre való átvitel előtt titkosítja az adatátvitelt, és visszafejti az adatmennyiséget a tárterületről való átadást követően.
 
 #### <a name="encryption-at-rest"></a>Titkosítás nyugalmi állapotban
-Számos szervezet esetében az [adattitkosítás](https://docs.microsoft.com/azure/security/azure-isolation) az adatok védelme, a megfelelőség és az adatok szuverenitása szempontjából kötelező lépés. Három Azure-szolgáltatás áll rendelkezésre, amelyek a "nyugalmi állapotban" lévő adatok titkosítását teszik lehetővé:
+Számos szervezet esetében az [adattitkosítás](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices) az adatok védelme, a megfelelőség és az adatok szuverenitása szempontjából kötelező lépés. Három Azure-szolgáltatás áll rendelkezésre, amelyek a "nyugalmi állapotban" lévő adatok titkosítását teszik lehetővé:
 
 -   [Storage Service encryption](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) lehetővé teszi, hogy a Storage szolgáltatás automatikusan titkosítsa az adattitkosítást az Azure Storage-ba való íráskor.
 

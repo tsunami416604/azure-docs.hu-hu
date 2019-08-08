@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 7504fe890f9a7c0b282e2c2442307aeab27d6ff4
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: d863edba17b3dc688624e7095ee09744ca07192d
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726845"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780534"
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – áttekintés
 
-Az [Azure Operational Security](/azure/security/azure-operational-security) a felhasználók számára elérhető szolgáltatásokat, vezérlőket és szolgáltatásokat jelenti a Microsoft Azureban tárolt adatok, alkalmazások és egyéb eszközök védelmére. Ez egy keretrendszer, amely magában foglalja a Microsoft számára egyedülálló különböző funkciókkal szerzett ismereteket. Ezek a képességek közé tartozik a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response Center program, valamint a kiberbiztonsági fenyegetések tájképének alapos ismerete.
+[Azure Operational Security] (a/Azure/Security/Fundamentals/Operational-Security a felhasználók számára elérhető szolgáltatásokat, vezérlőket és szolgáltatásokat jelöli Microsoft Azure-ban lévő adatok, alkalmazások és egyéb eszközök védelmére. Ez egy keretrendszer, amely magában foglalja a Microsoft számára egyedülálló különböző funkciókkal szerzett ismereteket. Ezek a képességek közé tartozik a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response Center program, valamint a kiberbiztonsági fenyegetések tájképének alapos ismerete.
 
 ## <a name="azure-management-services"></a>Azure felügyeleti szolgáltatások
 
@@ -175,7 +175,7 @@ A DevOps lehetővé teszi, hogy a csapatok gyorsabban és olcsóbban nyújtsanak
 
 A Felhőbeli platformok, például a Microsoft Azure a hagyományos szűk keresztmetszeteket távolították el, és segítették a commoditize-infrastruktúrát. A szoftver minden üzletágban meguralkodik, mint a kulcsfontosságú differenciálás és az üzleti eredményekben felmerülő tényező. Nincs szervezet, fejlesztő vagy informatikai dolgozó, vagy el kell kerülnie a DevOps mozgását.
 
-Az érett DevOps-szakemberek az alábbi eljárások közül többet is elfogadnak. Ezek a [gyakorlatok a](https://www.visualstudio.com/learn/what-is-devops-culture/) stratégiákat az üzleti forgatókönyvek alapján alkotják. Az eszközök megkönnyítik a különböző eljárások automatizálását.
+Az érett DevOps-szakemberek az alábbi eljárások közül többet is elfogadnak. Ezek a [](https://www.visualstudio.com/learn/what-is-devops-culture/) gyakorlatok a stratégiákat az üzleti forgatókönyvek alapján alkotják. Az eszközök megkönnyítik a különböző eljárások automatizálását.
 
 - Az [agilis tervezési és projektmenedzsment](https://www.visualstudio.com/learn/what-is-agile/) technikák használatával megtervezheti és elkülönítheti a munkafolyamatokat a Sprint szolgáltatásban, kezelheti a csapat kapacitását, és a csoportok gyorsan alkalmazkodnak a változó üzleti igényekhez.
 - A [verziókövetés általában a git](https://www.visualstudio.com/learn/what-is-git/)használatával lehetővé teszi a világ bármely pontján található csapatok számára, hogy megosszák a forrást, és integrálják a szoftverfejlesztői eszközöket a kiadási folyamat automatizálására.

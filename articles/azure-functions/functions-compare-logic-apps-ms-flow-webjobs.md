@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: d6abf266d4af5c79333819f5077009124fa28247
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 7bfe586294aec5938e2245c38fbe88aa5e57a66c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348238"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839497"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Mi a Microsoft Flow, a Logic Apps, a functions és a webjobs?
 
@@ -51,7 +51,7 @@ Az alábbi táblázat segítségével meghatározhatja, hogy Microsoft Flow vagy
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Az Azure Functions és az Azure Logic Apps összehasonlítása
 
-A Functions és a Logic Apps egy Azure-szolgáltatás, melyek kiszolgáló nélküli feladatokhoz nyújtanak támogatást. Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, míg a Azure Logic Apps kiszolgáló nélküli munkafolyamatokat biztosít. Mindkettő összetett előkészítéseket is létrehozhat. A vezénylés a függvények vagy lépések – a Logic Appsben ezeket *műveleteknek* nevezzük – egy olyan készlete, amelynek a végrehajtásával összetett feladatokat tud elvégezni. Ha például egy köteget szeretne feldolgozni, egy függvény több példánya is végrehajtható párhuzamosan, várjon, amíg az összes példány befejeződik, majd hajtson végre egy olyan függvényt, amely kiszámítja az Összesítés eredményét.
+A Functions és a Logic Apps egy Azure-szolgáltatás, melyek kiszolgáló nélküli feladatokhoz nyújtanak támogatást. Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, míg a Azure Logic Apps kiszolgáló nélküli munkafolyamatokat biztosít. Mindkettő összetett előkészítéseketis létrehozhat. A vezénylés a függvények vagy lépések – a Logic Appsben ezeket *műveleteknek* nevezzük – egy olyan készlete, amelynek a végrehajtásával összetett feladatokat tud elvégezni. Ha például egy köteget szeretne feldolgozni, egy függvény több példánya is végrehajtható párhuzamosan, várjon, amíg az összes példány befejeződik, majd hajtson végre egy olyan függvényt, amely kiszámítja az Összesítés eredményét.
 
 Az Azure Functions esetében a vezénylések fejlesztéséhez kódot kell írnia a [Durable Functions bővítmény](durable/durable-functions-concepts.md) segítségével. A Logic Appsben a vezényléseket grafikus felhasználói felülettel vagy konfigurációs fájlok szerkesztésével tudja létrehozni.
 
@@ -74,7 +74,7 @@ Ugyanúgy, mint az Azure Functions, az Azure App Service WebJobs a WebJobs SDK-v
 
 ### <a name="webjobs-and-the-webjobs-sdk"></a>WebJobs és WebJobs SDK
 
-A App Service webjobs  funkciójának használatával parancsfájlt vagy kódot futtathat egy app Service webalkalmazás környezetében. A *WebJobs SDK* egy, a WebJobshoz tervezett keretrendszer, amely leegyszerűsíti az Azure-szolgáltatások válaszadására írt kódokat. Előfordulhat például, hogy egy miniatűr rendszerkép létrehozásával válaszol egy képblob létrehozására az Azure Storage-ban. A WebJobs SDK .NET-konzolalkalmazásként fut, amelyet üzembe helyezhet egy WebJobon. 
+A App Service webjobs funkciójának használatával parancsfájlt vagy kódot futtathat egy app Service webalkalmazás környezetében. A *WebJobs SDK* egy, a WebJobshoz tervezett keretrendszer, amely leegyszerűsíti az Azure-szolgáltatások válaszadására írt kódokat. Előfordulhat például, hogy egy miniatűr rendszerkép létrehozásával válaszol egy képblob létrehozására az Azure Storage-ban. A WebJobs SDK .NET-konzolalkalmazásként fut, amelyet üzembe helyezhet egy WebJobon. 
 
 A WebJobs és a WebJobs SDK együtt működnek a leghatékonyabban, de használhatja az egyiket a másik nélkül is. A WebJobs képes bármilyen programot vagy szkriptet futtatni, amely képes futni az App Service tesztkörnyezetben. A WebJobs SDK-konzolalkalmazások bárhol futtathatók, ahol konzolalkalmazások futtathatók, például a helyszíni kiszolgálókon.
 
@@ -89,7 +89,7 @@ Az Azure Functions a WebJobs SDK-ra épül, így sok, más Azure-szolgáltatáso
 |[Használatalapú fizetés](functions-scale.md#consumption-plan)|✔||
 |[Integráció a Logic Apps szolgáltatással](functions-twitter-email.md)|✔||
 | Kiváltó események |[Időzítő](functions-bindings-timer.md)<br>[Azure Storage üzenetsorok és blobok](functions-bindings-storage-blob.md)<br>[Azure Service Bus – üzenetsorok és témakörök](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Időzítő](functions-bindings-timer.md)<br>[Azure Storage üzenetsorok és blobok](functions-bindings-storage-blob.md)<br>[Azure Service Bus – üzenetsorok és témakörök](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Fájlrendszer](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| Támogatott nyelvek  |C#<br>F#<br>JavaScript<br>Java (előzetes verzió)<br>Python (előzetes verzió) |C#<sup>1</sup>|
+| Támogatott nyelvek  |C#<br>F#<br>JavaScript<br>Java<br>Python (előzetes verzió) |C#<sup>1</sup>|
 |Csomagkezelők|NPM és NuGet|NuGet<sup>2</sup>|
 
 <sup>1</sup> a webjobs (a webjobs SDK nélkül) C#támogatja a következőt: Java, JavaScript, bash,. cmd,. bat, PowerShell, php, írógéppel, Python és sok más. Ez nem egy átfogó lista. A WebJobs képes bármilyen programot vagy szkriptet futtatni, amely képes futni az App Service tesztkörnyezetben.

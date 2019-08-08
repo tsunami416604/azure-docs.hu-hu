@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: e815c038cce2e792fe7ea39f1ee43342be0b679f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 97f061d94209d84b70626f8735d08f89870e7319
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726901"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828729"
 ---
 # <a name="azure-operational-security-best-practices"></a>Az Azure működési biztonságának ajánlott eljárásai
 Ez a cikk az Azure-ban tárolt adatok, alkalmazások és egyéb eszközök védelmére vonatkozó ajánlott eljárásokat ismerteti.
@@ -118,7 +118,7 @@ A biztonságos pontszám, amely a Center for Internet Security (CIS) vezérlők�
 **Részletek**: A SIEM-vel rendelkező szervezetek többsége központi adatközpontként használja az elemzői választ igénylő biztonsági riasztásokat. A Security Center által készített feldolgozott események közzé lesznek téve az Azure-tevékenység naplójában, amely az Azure Monitoron keresztül elérhető naplók egyike. A Azure Monitor összevont folyamatot biztosít a figyelési adatainak egy SIEM-eszközre történő átirányításához. Útmutatásért lásd: a [biztonsági megoldások integrálása Security Center](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem) . Ha az Azure Sentinelt használja, tekintse meg a [Azure Security Center](../../sentinel/connect-azure-security-center.md)összekapcsolását ismertető témakört.
 
 **Ajánlott eljárás**: Az Azure-naplók integrálása a SIEM-szel.   
-**Részletek**: [Adatok összegyűjtéséhez és exportálásához használja a Azure monitor](/azure/azure-monitor/overview.md#integrate-and-export-data). Ez a gyakorlat kritikus fontosságú a biztonsági incidensek vizsgálatának engedélyezéséhez, és az online napló megtartásának korlátozása. Ha Azure Sentinelt használ, tekintse meg [az](../../sentinel/connect-data-sources.md)adatforrások összekapcsolását ismertető témakört.
+**Részletek**: [Adatok összegyűjtéséhez és exportálásához használja a Azure monitor](/azure/azure-monitor/overview#integrate-and-export-data). Ez a gyakorlat kritikus fontosságú a biztonsági incidensek vizsgálatának engedélyezéséhez, és az online napló megtartásának korlátozása. Ha Azure Sentinelt használ, tekintse meg [az](../../sentinel/connect-data-sources.md)adatforrások összekapcsolását ismertető témakört.
 
 **Ajánlott eljárás**: Gyorsítsa fel a nyomozást és a vadászatot, és csökkentse a téves pozitív eredményt azáltal, hogy a támadási vizsgálat során integrálja a végponti észlelési és reagálási (EDR) funkciókat.   
 **Részletek**: [Engedélyezze a Windows DEFENDER ATP](../../security-center/security-center-wdatp.md#enable-windows-defender-atp-integration) -integrációt a Security Center biztonsági házirend segítségével. Vegye fontolóra az Azure Sentinel használatát a fenyegetések vadászatához és az incidensek megválaszolásához.

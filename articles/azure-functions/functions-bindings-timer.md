@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: ef02c8120775aa119aff44ff7a06bccf2bc70a21
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
-ms.translationtype: HT
+ms.openlocfilehash: 962c28c8b081980c2715d4d78739662e86748bd1
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377343"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814446"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Időzítő trigger a Azure Functionshoz 
 
@@ -125,7 +125,7 @@ A következő példa függvény elindítja és végrehajtja az öt percenkénti 
 ```java
 @FunctionName("keepAlive")
 public void keepAlive(
-  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo,
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
       ExecutionContext context
  ) {
      // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
@@ -225,14 +225,14 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**type** | n/a | "TimerTrigger" értékre kell állítani. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
 |**direction** | n/a | Meg kell "a". Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
 |**name** | n/a | Annak a változónak a neve, amely az időzítő objektumot jelöli a függvény kódjában. | 
-|**schedule**|**ScheduleExpression**|Egy [cron kifejezés](#cron-expressions) vagy egy [TimeSpan](#timespan) érték. A `TimeSpan` csak egy app Service csomagon futó Function alkalmazás esetében használható. Az ütemezett kifejezést beállíthatja egy alkalmazás-beállításban, és ezt a tulajdonságot megadhatja a jelek között **%** becsomagolt Alkalmazásbeállítások nevében, az alábbi példában látható módon: "% ScheduleAppSetting%". |
+|**schedule**|**ScheduleExpression**|Egy [cron kifejezés](#ncrontab-expressions) vagy egy [TimeSpan](#timespan) érték. A `TimeSpan` csak egy app Service csomagon futó Function alkalmazás esetében használható. Az ütemezett kifejezést beállíthatja egy alkalmazás-beállításban, és ezt a tulajdonságot megadhatja a jelek között **%** becsomagolt Alkalmazásbeállítások nevében, az alábbi példában látható módon: "% ScheduleAppSetting%". |
 |**runOnStartup**|**RunOnStartup**|Ha `true`a rendszer meghívja a függvényt a futtatókörnyezet indításakor. Például a futtatókörnyezet akkor indul el, amikor a Function alkalmazás felébred, miután inaktivitás miatt tétlen marad. Ha a Function alkalmazás újraindul a függvény változásai miatt, és a függvény alkalmazás skálázása. Így a **runOnStartup** ritkán kell beállítani `true`, különösen éles környezetben. |
 |**useMonitor**|**UseMonitor**|Állítsa be `false` vagy értékre, ha azt szeretné, hogy a program figyelje az ütemtervet. `true` Az ütemterv figyelése továbbra is fenntartja az ütemezett előfordulásokat, hogy a támogatás az ütemterv megfelelő karbantartása legyen, még akkor is, ha a Function app instances újraindul Ha nincs beállítva explicit módon, az alapértelmezett `true` érték az olyan ütemezések esetében, amelyek az 1 percnél nagyobb ismétlődési intervallummal rendelkeznek. Az olyan ütemtervek esetében, amelyek percenként többször aktiválódnak, az alapértelmezett `false`érték.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!CAUTION]
-> Javasoljuk, hogy éles  környezetben runOnStartup `true` a beállítást. Ha ezt a beállítást használja, a kód nagy előre nem látható időpontokban lesz végrehajtva. Bizonyos éles beállításokban ezek az extra végrehajtások jelentős mértékben magasabb költségekkel járhatnak a használati tervekben üzemeltetett alkalmazások esetében. Ha például a **runOnStartup** engedélyezve van, akkor a rendszer meghívja az eseményindítót, amikor a Function alkalmazás skálázásra kerül. Győződjön meg arról, hogy teljesen tisztában van a függvények üzemi viselkedésével, mielőtt engedélyezi a **runOnStartup** az éles környezetben.   
+> Javasoljuk, hogy éles környezetben runOnStartup `true` a beállítást. Ha ezt a beállítást használja, a kód nagy előre nem látható időpontokban lesz végrehajtva. Bizonyos éles beállításokban ezek az extra végrehajtások jelentős mértékben magasabb költségekkel járhatnak a használati tervekben üzemeltetett alkalmazások esetében. Ha például a **runOnStartup** engedélyezve van, akkor a rendszer meghívja az eseményindítót, amikor a Function alkalmazás skálázásra kerül. Győződjön meg arról, hogy teljesen tisztában van a függvények üzemi viselkedésével, mielőtt engedélyezi a **runOnStartup** az éles környezetben.   
 
 ## <a name="usage"></a>Használat
 
@@ -253,9 +253,9 @@ Időzítő eseményindító függvény meghívásakor a függvény egy időzít�
 
 A `IsPastDue` tulajdonság az `true` , amikor az aktuális függvény meghívása az ütemezettnél későbbi. Előfordulhat például, hogy egy Function alkalmazás újraindítása miatt a hívás kimarad.
 
-## <a name="cron-expressions"></a>CRON-kifejezések 
+## <a name="ncrontab-expressions"></a>NCRONTAB kifejezések 
 
-Azure Functions a [NCronTab](https://github.com/atifaziz/NCrontab) könyvtár használatával értelmezi a cron-kifejezéseket. A CRON kifejezés hat mezőt tartalmaz:
+Azure Functions a [NCronTab](https://github.com/atifaziz/NCrontab) -függvénytárat használja a NCronTab kifejezések értelmezéséhez. Egy NCRONTAB-exppression hasonló egy CRON-kifejezéshez, azzal a különbséggel, hogy az elején egy további hatodik mezőt is tartalmaz, amelyet másodpercek alatt használhat az időpontossághoz:
 
 `{second} {minute} {hour} {day} {month} {day-of-week}`
 
@@ -271,9 +271,9 @@ Minden mezőhöz a következő típusú értékek tartozhatnak:
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
-### <a name="cron-examples"></a>CRON-példák
+### <a name="ncrontab-examples"></a>NCRONTAB-példák
 
-Íme néhány példa a Azure Functions időzítő triggeréhez használható CRON-kifejezésekre.
+Íme néhány példa a Azure Functions időzítő-triggeréhez használható NCRONTAB-kifejezésekre.
 
 |Példa|Aktiváláskor  |
 |---------|---------|
@@ -284,25 +284,24 @@ Minden mezőhöz a következő típusú értékek tartozhatnak:
 |`"0 30 9 * * *"`|minden nap 9:30-kor|
 |`"0 30 9 * * 1-5"`|minden hétköznap 9:30 órakor|
 |`"0 30 9 * Jan Mon"`|Január 9:30 órakor|
->[!NOTE]   
->A cron Expression-példákat online is megtalálhatja, de ezek `{second}` közül sokan kihagyják a mezőt. Ha egyikből másolja őket, adja hozzá a hiányzó `{second}` mezőt. Általában nulla értéket szeretne használni ebben a mezőben, nem pedig csillagot.
 
-### <a name="cron-time-zones"></a>CRON időzónák
+
+### <a name="ncrontab-time-zones"></a>NCRONTAB időzónái
 
 A CRON-kifejezésben szereplő számok egy időre és dátumra hivatkoznak, nem pedig időtartományra. A `hour` mezőben lévő 5 érték például 5:00, nem 5 óránként.
 
 A CRON-kifejezésekkel használt alapértelmezett időzóna az egyezményes világidő (UTC) szerint van megadva. Ha egy másik időzóna alapján szeretné megkeresni a CRON-kifejezést, hozzon létre egy alkalmazást `WEBSITE_TIME_ZONE`az nevű Function-alkalmazáshoz. Állítsa az értéket a kívánt időzóna nevére a [Microsoft időzóna](https://technet.microsoft.com/library/cc749073)-indexben látható módon. 
 
-A *keleti téli idő* például UTC-05:00. A következő, az UTC-időzónához tartozó CRON-kifejezéssel kell elindulnia, hogy az időzítő elindítson tüzet a 10:00 ÓRAKOR:
+A *keleti téli idő* például UTC-05:00. A következő NCRONTAB-kifejezéssel, amely az UTC-időzónához 10:00 tartozik:
 
-```json
-"schedule": "0 0 15 * * *"
+```
+"0 0 15 * * *"
 ``` 
 
-Vagy hozzon létre egy alkalmazás-beállítást a Function `WEBSITE_TIME_ZONE` alkalmazáshoz, és állítsa be az értéket **keleti téli**időpontra.  Ezután a következő CRON-kifejezést használja: 
+Vagy hozzon létre egy alkalmazás-beállítást a Function `WEBSITE_TIME_ZONE` alkalmazáshoz, és állítsa be az értéket **keleti téli**időpontra.  Ezután a következő NCRONTAB kifejezést használja: 
 
-```json
-"schedule": "0 0 10 * * *"
+```
+"0 0 10 * * *"
 ``` 
 
 A használatakor `WEBSITE_TIME_ZONE`az idő az adott időzónában, például a nyári időszámítás időpontjára módosul. 

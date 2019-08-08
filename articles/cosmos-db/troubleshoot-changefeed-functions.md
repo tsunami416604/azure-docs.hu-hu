@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b90986e449df7e81f97f9ef86ce3cf69621c76d6
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 17fa443c3b0113d80a020f2a43c7099cf5a832d2
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335755"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772901"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Problémák diagnosztizálása és hibaelhárítása Azure Functions trigger használatakor Cosmos DB
 
@@ -88,6 +88,15 @@ Ha azt tapasztalja, hogy a trigger nem fogadta el a módosításokat, a leggyako
 Emellett a forgatókönyv érvényesíthető is, ha tudja, hány Azure függvényalkalmazás példány fut. Ha megvizsgálja a bérletek tárolóját, és megszámolja a címbérleti elemek számát, a bennük lévő `Owner` tulajdonság különböző értékeinek meg kell egyezniük a függvényalkalmazás példányainak számával. Ha több tulajdonos van, mint az ismert Azure függvényalkalmazás-példányok, az azt jelenti, hogy ezek a további tulajdonosok a módosítások ellopása.
 
 A helyzet megkerülő megoldásának egyik egyszerű módja, ha `LeaseCollectionPrefix/leaseCollectionPrefix` a függvényt egy új/eltérő értékkel alkalmazza, vagy Alternatív megoldásként egy új bérletek tárolóval kell tesztelni.
+
+### <a name="need-to-restart-and-re-process-all-the-items-in-my-container-from-the-beginning"></a>Újra kell indítania és újra fel kell dolgoznia a tárolóban lévő összes elemet az elejéről 
+Egy tároló összes elemének újbóli feldolgozása az elejétől:
+1. Ha éppen fut, állítsa le az Azure-függvényt. 
+1. Törölje a címbérleti gyűjtemény dokumentumait (vagy törölje, majd hozza létre újra a címbérleti gyűjteményt, hogy az üres legyen)
+1. Állítsa a függvény [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) CosmosDBTrigger attribútumát True (igaz) értékre. 
+1. Indítsa újra az Azure-függvényt. Most már elolvashatja és feldolgozhatja az összes módosítást a kezdetektől fogva. 
+
+A [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) True értékre állításával megtudhatja, hogy az Azure-függvény az aktuális idő helyett a gyűjtemény előzményeinek elejéről olvassa be a módosításokat. Ez csak akkor működik, ha nincsenek már létrehozott bérletek (azaz dokumentumok a bérletek gyűjteményében). Ha a tulajdonságot igaz értékre állítja, akkor a már létrehozott bérletek nem lépnek érvénybe. Ebben az esetben, ha egy függvény leáll és újraindul, a a bérletek gyűjteményében meghatározottak szerint megkezdi az utolsó ellenőrzőpont olvasását. Az elejétől a fenti lépéseket követve újra feldolgozhatja a 1-4-as lépést.  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>A kötés csak a IReadOnlyList\<Document > vagy a JArray használatával végezhető el.
 

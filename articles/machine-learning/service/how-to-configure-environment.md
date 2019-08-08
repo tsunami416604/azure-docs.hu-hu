@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45b28b4d88c670a8b2ec34b93a342f06b80e02d7
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
-ms.translationtype: MT
+ms.openlocfilehash: efe5829ffbe4db304f9ffab0a259ab9d10279b27
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668484"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772690"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -28,7 +28,7 @@ A következő táblázat a jelen cikkben tárgyalt összes fejlesztési környez
 | --- | --- | --- |
 | [Felhőalapú notebook-alapú virtuális gép](#notebookvm) | A legegyszerűbb módszer a kezdéshez. A teljes SDK már telepítve van a munkaterület virtuális gépén, és a jegyzetfüzet-oktatóanyagok előre klónozottak, és készen állnak a futtatásra. | A fejlesztési környezet és a függőségek szabályozásának hiánya. A Linux rendszerű virtuális gépekkel kapcsolatos további költségek (a virtuális gép leállítható, ha nem használatban van a költségek elkerülése érdekében). Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
 | [Helyi környezet](#local) | A fejlesztési környezet és a függőségek teljes körű vezérlése. Bármilyen felépíthető eszközzel, környezettel vagy tetszőleges IDE-val futtatható. | A kezdéshez tovább tart. Telepíteni kell a szükséges SDK-csomagokat, és a környezetnek is telepítve kell lennie, ha még nem rendelkezik ilyennel. |
-| [Azure Databricks](#aml-databricks) | A méretezhető Apache Spark platformon ideális megoldás a nagyméretű intenzív gépi tanulási munkafolyamatok futtatására. | A kísérleti gépi tanulás vagy a kisebb léptékű kísérletek és munkafolyamatok meggyilkolása. További költségek Azure Databricksért. Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/databricks/). |
+| [Azure Databricks](#aml-databricks) | Ideális megoldás a méretezhető Apache Spark platformon nagy léptékű, intenzív gépi tanulási munkafolyamatok futtatására. | A kísérleti gépi tanulás vagy a kisebb léptékű kísérletek és munkafolyamatok meggyilkolása. További költségek Azure Databricksért. Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/databricks/). |
 | [A Data Science Virtual Machine (DSVM)](#dsvm) | Hasonlóan a felhőalapú notebook virtuális géphez (a Python és az SDK előre telepítve van), de további népszerű adatelemzési és gépi tanulási eszközökkel előre telepítve van. Egyszerűen méretezhető és kombinálható más egyéni eszközökkel és munkafolyamatokkal. | A felhőalapú notebook virtuális géphez képest lassabban megkezdhető a kezdeti lépések. |
 | [Azure Notebooks](#aznotebooks) | A Python és az SDK előre telepített, ingyenes és könnyű súlyt nyújt az első lépésekhez. | A kevésbé nagy teljesítményű virtuális gépek elérhetők a felhőalapú notebook-alapú virtuális gépekhez képest. Elkülönített a munkaterületről és egyéb erőforrásokról. |
 
@@ -72,11 +72,11 @@ A notebook virtuális gép:
 
   Ha kódot használ, a virtuális gép oktatóanyagokat és mintákat tartalmaz, amelyek segítségével megismerheti a Azure Machine Learning szolgáltatás használatát. A minta jegyzetfüzeteket a munkaterület Azure Blob Storage fiókjában tárolja, így azok megoszthatók a virtuális gépek között. A futtatáskor hozzáférhetnek a munkaterület adattárakhoz és számítási erőforrásaihoz is.
 
-+ **Egyszerű beállítás**: Hozzon létre egyet bármikor a Azure Machine Learning munkaterületen belülről. Adjon meg csak egy nevet, és adjon meg egy Azure-beli virtuálisgép-típust. Próbálja ki most ezt [a rövid útmutatót: A Azure Machine Learning](quickstart-run-cloud-notebook.md)használatának megkezdéséhez használjon felhőalapú notebook-kiszolgálót.
++ **Egyszerű beállítás**: Hozzon létre egyet bármikor a Azure Machine Learning munkaterületen belülről. Adjon meg csak egy nevet, és adjon meg egy Azure-beli virtuálisgép-típust. Próbálja ki most ezt [az oktatóanyagot: Környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md)beállítása.
 
 + **Testreszabható**. A felügyelt és biztonságos virtuálisgép-ajánlat során teljes hozzáférést biztosít a hardver képességeihez, és testre szabhatja a szíved iránti vágyát. Például gyorsan létrehozhatja a legújabb NVidia V100-alapú virtuális gépet az új neurális hálózati architektúra lépésenkénti hibakeresésének végrehajtásához.
 
-A notebook virtuális gépekkel kapcsolatos költségek leállításához [állítsa le a notebook virtuális gépet](quickstart-run-cloud-notebook.md#stop-the-notebook-vm).
+A notebook virtuális gépekkel kapcsolatos költségek leállításához [állítsa le a notebook virtuális gépet](tutorial-1st-experiment-sdk-setup.md#stop-the-notebook-vm). 
 
 ## <a id="dsvm"></a>Adatelemző virtuális gép
 

@@ -1,52 +1,51 @@
 ---
-title: Biztonságos hozzáférés az Azure Data Catalog hogyan
-description: Ez a cikk azt ismertetik, hogyan secure data cataloghoz és annak adategységeket.
-services: data-catalog
+title: A Azure Data Cataloghoz való hozzáférés biztonságossá tétele
+description: Ez a cikk bemutatja, hogyan védheti meg a adatkatalógust és az adategységeit.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 6c09b509399647f4cacbc96427200da5a1b00ac9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: c6c99eb62ba628ffc8c84799a6729540b572c580
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61000751"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736387"
 ---
-# <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>A data catalog és adategységeket való hozzáférés biztonságossá tétele
+# <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>A adatforrásokhoz és adateszközökhöz való hozzáférés biztonságossá tétele
 > [!IMPORTANT]
-> Ez a funkció csak az Azure Data Catalog standard kiadása érhető el.
+> Ez a funkció csak a Azure Data Catalog standard kiadásában érhető el.
 
-Az Azure Data Catalog lehetővé teszi a data catalog férhet hozzá, és milyen műveleteket (regisztrálásához, megjegyzésekkel, saját tulajdonba vétel), a katalógus metaadat hajthat végre. 
+Azure Data Catalog lehetővé teszi annak megadását, hogy ki férhet hozzá az adatkatalógushoz, és hogy milyen műveleteket (regisztráció, jegyzet, tulajdonos) végezhet el a katalógus metaadatainak használatával. 
 
-## <a name="catalog-users-and-permissions"></a>Katalógus felhasználói és engedélyek
-A hozzáférést egy felhasználó vagy csoport az adatkatalógust, valamint engedélyeket állíthat be:
+## <a name="catalog-users-and-permissions"></a>Katalógus felhasználói és engedélyei
+Az adatkatalógushoz való hozzáférés biztosítása egy felhasználónak vagy csoportnak, illetve engedélyek beállítása:
 
-1. Az a [kezdőlapja a data Catalog](https://www.azuredatacatalog.com), kattintson a **beállítások** az eszköztáron.
+1. Az [adatkatalógus kezdőlapján](https://www.azuredatacatalog.com)kattintson a **Beállítások** elemre az eszköztáron.
 
-    ![a Data catalog – beállítások](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
-2. A beállítások lapon bontsa ki a **katalógus felhasználói** szakaszban.
-    ![Felhasználók – a katalógus hozzáadása](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
+    ![adatkatalógus – beállítások](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
+2. A beállítások lapon bontsa ki a **katalógus felhasználói** szakaszát.
+    ![Katalógus felhasználói – Hozzáadás](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
 3. Kattintson a **Hozzáadás**lehetőségre.
-4. Adja meg a teljes **felhasználónév** neve vagy a **biztonsági csoport** a az Azure Active Directory (AAD) társított a katalógusban. Vesszővel (', '), hozzáadásakor az elválasztó több mint egy felhasználónak vagy csoportnak.
-    ![Katalógus felhasználói - felhasználók vagy csoportok](media/data-catalog-how-to-secure-catalog/data-catalog-users-groups.png)
-5. Nyomja meg **ENTER** vagy **lapon** a szövegmezőben jelölje ki. 
-6.  Ellenőrizze, hogy minden engedélyt (**jegyzetkészítés**, **regisztrálása**, és **saját tulajdonba vétel**) alapértelmezés szerint a felhasználókhoz vagy csoportokhoz tartoznak. Ez azt jelenti, hogy a felhasználó vagy csoport is [adategységeket]( data-catalog-how-to-register.md), [adategységek ellátása dekorációkkal]( data-catalog-how-to-annotate.md), és [adategységek saját tulajdonba]( data-catalog-how-to-manage.md). 
-    ![Katalógus-felhasználók – az alapértelmezett engedélyek](media/data-catalog-how-to-secure-catalog/data-catalog-default-permissions.png)
-7.  Adjon egy felhasználót vagy csoportot a csak olvasási hozzáférés a katalógus, törölje a jelet a **jegyzettel láthatja el** lehetőséget a felhasználó vagy csoport. Ha így tesz, a felhasználó vagy csoport nem adategységek ellátása dekorációkkal a katalógusban, de azok tudja őket tekinteni. 
-8.  Adategységek regisztrálása megtagadása egy felhasználót vagy csoportot, törölje a jelet a **regisztrálása** lehetőséget a felhasználó vagy csoport.
-9.  Adategység tulajdonba egy felhasználó hozzáférésének megtagadása, törölje a jelet a **saját tulajdonba vétel** lehetőséget a felhasználó vagy csoport. 
-10. A katalógus felhasználóinak egy felhasználói csoport törléséhez kattintson **x** a felhasználó vagy csoport a lista alján. 
-    ![Felhasználók a katalógus - felhasználó törlése](media/data-catalog-how-to-secure-catalog/data-catalog-delete-user.png)
+4. Adja meg a katalógushoz társított Azure Active Directory (HRE) **biztonsági csoportjának** teljes felhasználónevét vagy nevét. Használjon vesszőt (",") elválasztó, ha egynél több felhasználót vagy csoportot ad hozzá.
+    ![Katalógus felhasználói – felhasználók vagy csoportok](media/data-catalog-how-to-secure-catalog/data-catalog-users-groups.png)
+5. Nyomja le az **ENTER** vagy a **Tab** billentyűt a szövegmezőből. 
+6.  Győződjön meg arról, hogy a felhasználókhoz vagy csoportokhoz tartozó összes engedély (**jegyzet**, **regisztráció**és **tulajdonos**) alapértelmezés szerint hozzá van rendelve ehhez a felhasználóhoz vagy csoporthoz. A felhasználó vagy csoport [regisztrálhatja]( data-catalog-how-to-register.md)az adategységeket, [megjegyzéseket fűzhet]( data-catalog-how-to-annotate.md)az adategységekhez, és az adategységek tulajdonjogát is elvégezheti. []( data-catalog-how-to-manage.md) 
+    ![Katalógus felhasználói – alapértelmezett engedélyek](media/data-catalog-how-to-secure-catalog/data-catalog-default-permissions.png)
+7.  Ha csak olvasási hozzáférést szeretne adni egy felhasználónak vagy csoportnak a katalógushoz, törölje az adott felhasználóhoz vagy csoporthoz tartozó feliratozási beállítást. Ha így tesz, a felhasználó vagy csoport nem láthatja az adategységeket a katalógusban, de megtekintheti őket. 
+8.  Ha meg szeretné tagadni egy felhasználó vagy csoport adategységek regisztrálását , törölje az adott felhasználó vagy csoport regisztrálási beállítását.
+9.  Ahhoz, hogy egy felhasználó megtagadja egy adategység tulajdonjogának megtagadását, törölje az adott felhasználó vagy csoport **tulajdonjogának** átvétele beállítást. 
+10. Ha törölni szeretne egy felhasználót vagy csoportot a katalógus felhasználói közül, kattintson a lista alján található felhasználó/csoport **x** elemére. 
+    ![Katalógus felhasználói – felhasználó törlése](media/data-catalog-how-to-secure-catalog/data-catalog-delete-user.png)
 
     > [!IMPORTANT]
-    > Azt javasoljuk, hogy közvetlenül katalógus helyett felhasználók hozzáadása és engedélyek hozzárendelése a biztonsági csoportokat hoz létre. Ezt követően a biztonsági csoportokat, amelyek megfelelnek a szerepkörökhöz, és a megfelelő hozzáféréssel a katalógus vehet fel felhasználókat.
+    > Javasoljuk, hogy adjon hozzá biztonsági csoportokat a felhasználók katalógusához, ahelyett, hogy közvetlenül hozzáadja a felhasználókat, és nem rendel hozzá engedélyeket. Ezután adja hozzá a felhasználókat a szerepköreiknek megfelelő biztonsági csoportokhoz és a szükséges hozzáféréshez a katalógushoz.
 
 ## <a name="special-considerations"></a>Különleges szempontok
 
-- A biztonsági csoportokhoz rendelt engedélyek a következők additív. Tegyük fel a felhasználó két csoport van. Egy csoport engedélyekkel rendelkezik megjegyzésekkel és egyéb csoport nem rendelkezik megjegyzésekkel engedélyeket. Ezután felhasználói engedélyek rendelkezik megjegyzésekkel. 
-- Az explicit módon a felhasználóhoz rendelt engedélyek felülbírálják az engedélyek hozzárendelve a csoport, amelyhez a felhasználó tartozik. Az előző példában tegyük fel, akkor explicit módon hozzáadva a felhasználót, hogy a felhasználók a katalógus, és végezze el a jegyzet nem rendelhet hozzá engedélyeket. A felhasználó nem adategységek ellátása dekorációkkal annak ellenére, hogy a felhasználó tagja egy csoportnak, amelyen telepítve jegyzettel láthatja el engedélyeket.
+- A biztonsági csoportokhoz hozzárendelt engedélyek az adalékanyag. Tegyük fel, hogy a felhasználó két csoportban van. Az egyik csoport Megjegyzés-jogosultságokkal rendelkezik, és az egyéb csoportok nem rendelkeznek megjegyzési engedélyekkel. Ezután a felhasználó jegyzetekkel rendelkezik engedéllyel. 
+- A felhasználóhoz explicit módon hozzárendelt engedélyek felülbírálják a felhasználóhoz tartozó csoportokhoz rendelt engedélyeket. Az előző példában tegyük fel, hogy explicit módon felvette a felhasználót a katalógusba a felhasználók számára, és nem rendel hozzá feliratozási engedélyeket. A felhasználó nem láthatja az adategységeket, annak ellenére, hogy a felhasználó egy olyan csoport tagja, amelynek van jegyzetekkel kapcsolatos engedélye.
 
 ## <a name="next-steps"></a>További lépések
 - [Ismerkedés az Azure Data Catalog szolgáltatással](data-catalog-get-started.md)

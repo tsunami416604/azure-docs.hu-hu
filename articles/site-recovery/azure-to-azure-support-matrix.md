@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: 87362b785ecbb17c5a49a8c087b6a70715480877
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: d0e24d7621218ccac23842072a5f08be94c80d9d
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679380"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840582"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Támogatási mátrix az Azure virtuális gépek egyik régióból a másikba való replikálásához
 
@@ -117,7 +117,7 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 14,04 LTS | 9,25 | 3.13.0-24 – általános – 3.13.0-169-Generic,<br/>3.16.0-25 – általános – 3.16.0-77 – általános,<br/>3.19.0-18 – általános – 3.19.0 – 80 – általános,<br/>4.2.0-18 – általános – 4.2.0 – 42 – általános,<br/>4.4.0-21 – általános 4.4.0-146-Generic,<br/>4.15.0-1023-Azure-4.15.0-1042-Azure |
 14,04 LTS | 9,24 | 3.13.0-24-Generic – 3.13.0-167 – általános,<br/>3.16.0-25 – általános – 3.16.0-77 – általános,<br/>3.19.0-18 – általános – 3.19.0 – 80 – általános,<br/>4.2.0-18 – általános – 4.2.0 – 42 – általános,<br/>4.4.0-21 – általános – 4.4.0 – 143 – általános,<br/>4.15.0-1023-Azure-4.15.0-1040-Azure |
 |||
-16.04 LTS | 9,27 | 4.4.0-21 – általános – 4.4.0 – 154 – általános,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0-42 – általános<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13 – általános – 4.15.0 – 54 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure – 4.15.0-1050 – Azure|
+16.04 LTS | 9,27 | 4.4.0-21 – általános – 4.4.0 – 154 – általános,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0-42 – általános<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13 – általános – 4.15.0-55 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1051-Azure|
 16.04 LTS | 9,26 | 4.4.0-21 – általános – 4.4.0 – 148 – általános,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0-42 – általános<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13 – általános – 4.15.0 – 50 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1045-Azure|
 16.04 LTS | 9,25 | 4.4.0-21 – általános 4.4.0-146-Generic,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0 – 42 – általános,<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13 – általános – 4.15.0 – 48 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1042-Azure|
 16.04 LTS | 9,24 | 4.4.0-21 – általános – 4.4.0 – 143 – általános,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0 – 42 – általános,<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13-Generic – 4.15.0-46 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1040-Azure|
@@ -136,7 +136,7 @@ Debian 8 | 9,24 | 3.16.0-4-amd64 to 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0
 
 **Kiadási** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,27 | SP1 3.12.49-11 – alapértelmezett érték: 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-default a 3.12.74-60.64.115-default</br></br> SP2 4.4.21-69 – alapértelmezett érték: 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-default a 4.4.121-92.114-default</br></br>SP3 4.4.73-5 – alapértelmezett érték: 4.4.180-94.97-default</br></br>SP3 4.4.138-4.7-Azure-4.4.180-4.31-Azure</br></br>SP4 4.12.14-94.41 – alapértelmezett érték: 4.12.14-95.19 – alapértelmezett</br>SP4 4.12.14-6.3-Azure-4.12.14-6.15-Azure |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,27 | SP1 3.12.49-11 – alapértelmezett érték: 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-default a 3.12.74-60.64.115-default</br></br> SP2 4.4.21-69 – alapértelmezett érték: 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-default a 4.4.121-92.117-default</br></br>SP3 4.4.73-5 – alapértelmezett érték: 4.4.180-94.97-default</br></br>SP3 4.4.138-4.7-Azure-4.4.180-4.31-Azure</br></br>SP4 4.12.14-94.41 – alapértelmezett érték: 4.12.14-95.24 – alapértelmezett</br>SP4 4.12.14-6.3-Azure-4.12.14-6.18-Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,26 | SP1 3.12.49-11 – alapértelmezett érték: 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-default a 3.12.74-60.64.110-default</br></br> SP2 4.4.21-69 – alapértelmezett érték: 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-default a 4.4.121-92.109-default</br></br>SP3 4.4.73-5 – alapértelmezett érték: 4.4.178-94.91-default</br></br>SP3 4.4.138-4.7-Azure-4.4.178-4,28-Azure</br></br>SP4 4.12.14-94.41 – alapértelmezett érték: 4.12.14-95.16 – alapértelmezett</br>SP4 4.12.14-6.3-Azure-4.12.14-6.9-Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,25 | SP1 3.12.49-11 – alapértelmezett érték: 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-default a 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69 – alapértelmezett érték: 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-default a 4.4.121-92.104-default</br></br>SP3 4.4.73-5 – alapértelmezett érték: 4.4.176-94.88-default</br></br>SP3 4.4.138-4.7-Azure-4.4.176-4.25-Azure</br></br>SP4 4.12.14-94.41 – alapértelmezett érték: 4.12.14-95.13 – alapértelmezett</br>SP4 4.12.14-6.3-Azure-4.12.14-6.9-Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,24 | SP1 3.12.49-11 – alapértelmezett érték: 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-default a 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69 – alapértelmezett érték: 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-default a 4.4.121-92.104-default</br></br>SP3 4.4.73-5 – alapértelmezett érték: 4.4.176-94.88-default</br></br>SP4 4.12.14-94.41 – alapértelmezett érték: 4.12.14-95.13 – alapértelmezett |
@@ -197,7 +197,7 @@ Redundancia | A LRS és a GRS támogatottak.<br/><br/> A ZRS nem támogatott.
 Ritka elérésű és gyors tárolás | Nem támogatott | A virtuálisgép-lemezek nem támogatottak a ritka elérésű és a gyors tárolásban
 Tárolóhelyek | Támogatott |
 Titkosítás nyugalmi állapotban (SSE) | Támogatott | Az SSE a Storage-fiókok alapértelmezett beállítása.   
-Azure Disk Encryption (ADE) Windows operációs rendszerhez | Az [Azure ad](https://aka.ms/ade-aad-app) -alkalmazással titkosításra engedélyezett virtuális gépek támogatottak |
+Azure Disk Encryption (ADE) Windows operációs rendszerhez | Támogatott |
 Azure Disk Encryption (ADE) Linux operációs rendszerhez | Nem támogatott |
 Gyors Hozzáadás | Támogatott | A replikált Azure-beli virtuális géphez hozzáadott adatlemez replikálásának engedélyezése támogatott a felügyelt lemezeket használó virtuális gépek esetében.
 Gyors lemez eltávolítása | Nem támogatott | Ha eltávolít egy adatlemezt a virtuális gépen, le kell tiltania a replikációt, és újra engedélyeznie kell a replikációt a virtuális gépen.

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3a316de54600d18f7ab839b8459bfe4eb0ff86e8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
-ms.translationtype: MT
+ms.openlocfilehash: 5dee966f8664bc14d81004e625ad9632066ffcb2
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479793"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742306"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált ML-kísérletek konfigurálása a Pythonban
 
@@ -40,7 +40,7 @@ Ha nem szeretne programkódot felvenni, akkor [a Azure Portal is létrehozhatja 
 
 Mielőtt elkezdené a kísérlethez, meg kell határoznia a megoldandó, machine learning probléma típusú. Automatizált machine learning támogatja a besorolást, regressziós és előrejelzés tevékenységtípust.
 
-Automatizált machine learning az automatizálás és a hangolási folyamat során a következő algoritmusokat támogatja. Felhasználójaként van, nem szükséges, hogy adja meg az algoritmus. 
+Automatizált machine learning az automatizálás és a hangolási folyamat során a következő algoritmusokat támogatja. Felhasználójaként van, nem szükséges, hogy adja meg az algoritmus.
 
 Besorolás | Regresszió | Idősorozat-előrejelzés
 |-- |-- |--
@@ -104,7 +104,7 @@ Távoli végrehajtáshoz a távoli számításból elérhetővé kell tennie az 
 ```python
     import pandas as pd
     from sklearn import datasets
-    
+
     data_train = datasets.load_digits()
 
     pd.DataFrame(data_train.data[100:,:]).to_csv("data/X_train.csv", index=False)
@@ -114,7 +114,7 @@ Távoli végrehajtáshoz a távoli számításból elérhetővé kell tennie az 
     ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progress=True)
 ```
 
-### <a name="define-deprep-references"></a>Deprep-hivatkozások definiálása
+### <a name="define-dprep-references"></a>Dprep-hivatkozások definiálása
 
 Az X és az y meghatározása dprep-hivatkozásként, amelyet az alábbihoz hasonló `AutoMLConfig` automatizált Machine learning-objektumnak továbbít a rendszer:
 
@@ -122,8 +122,8 @@ Az X és az y meghatározása dprep-hivatkozásként, amelyet az alábbihoz haso
 
     X = dprep.auto_read_file(path=ds.path('digitsdata/X_train.csv'))
     y = dprep.auto_read_file(path=ds.path('digitsdata/y_train.csv'))
-    
-    
+
+
     automl_config = AutoMLConfig(task = 'classification',
                                  debug_log = 'automl_errors.log',
                                  path = project_folder,
@@ -253,9 +253,60 @@ automl_config = AutoMLConfig(task='forecasting',
                              **time_series_settings)
 ```
 
+### <a name="ensemble"></a>Ensemble-konfiguráció
+
+Az Ensemble-modellek alapértelmezés szerint engedélyezve vannak, és az automatikus gépi tanulás futtatásakor a végső futtatási ismétlésként jelennek meg. A jelenleg támogatott Ensemble-módszerek a szavazás és a halmozás. A szavazás a súlyozott átlagokat használó, Soft-szavazóként van megvalósítva, és a halmozási implementáció két rétegbeli implementációt használ, ahol az első réteg ugyanazokkal a modellekkel rendelkezik, mint a szavazói együttes, és a második réteg modellje a következő optimális kombinációját használja: az első réteg modelljei. Ha ONNX-modelleket használ, **vagy** ha a modell-magyarázat engedélyezve van, a halmozás le lesz tiltva, és csak a szavazást fogja használni.
+
+Több alapértelmezett argumentum is megadható, mint `kwargs` egy `AutoMLConfig` olyan objektumban, amely megváltoztatja az alapértelmezett stack Ensemble viselkedését.
+
+* `stack_meta_learner_type`: a meta-Learner egy modell, amely az egyes különböző-modellek kimenetére van kiképezve. Az alapértelmezett meta-tanulók `LogisticRegression` a besorolási feladatokhoz (vagy `LogisticRegressionCV` ha a többszörös ellenőrzés engedélyezve `ElasticNet` van), valamint a regresszió/előrejelzési feladatokhoz (vagy `ElasticNetCV` ha a kereszt-ellenőrzés engedélyezve van). Ez a paraméter a következő karakterláncok egyike lehet `LogisticRegression`: `LogisticRegressionCV` `LightGBMClassifier`, `LightGBMRegressor` `ElasticNet` `ElasticNetCV`,,,, vagy `LinearRegression`.
+* `stack_meta_learner_train_percentage`: meghatározza a betanítási készletnek azt az arányát (a betanítási típus kiválasztásakor), amelyet a meta-tanuló képzéséhez kell foglalni. Az `0.2`alapértelmezett érték:.
+* `stack_meta_learner_kwargs`: választható paraméterek, amelyeket át kell adni a meta-Learner inicializálásához. Ezek a paraméterek és paraméterek típusú tükrözések a megfelelő modell konstruktorával, és a modell konstruktorának továbbítva lesznek.
+
+Az alábbi kód egy példát mutat be az egyéni Ensemble viselkedésének megadására egy `AutoMLConfig` objektumban.
+
+```python
+ensemble_settings = {
+    "stack_meta_learner_type": "LogisticRegressionCV",
+    "stack_meta_learner_train_percentage": 0.3,
+    "stack_meta_learner_kwargs": {
+        "refit": True,
+        "fit_intercept": False,
+        "class_weight": "balanced",
+        "multi_class": "auto",
+        "n_jobs": -1
+    }
+}
+
+automl_classifier = AutoMLConfig(
+        task='classification',
+        primary_metric='AUC_weighted',
+        iterations=20,
+        X=X_train,
+        y=y_train,
+        n_cross_validations=5,
+        **ensemble_settings
+        )
+```
+
+Az Ensemble-képzés alapértelmezés szerint engedélyezve van, de a és `enable_voting_ensemble` `enable_stack_ensemble` a logikai paraméterek használatával letiltható.
+
+```python
+automl_classifier = AutoMLConfig(
+        task='classification',
+        primary_metric='AUC_weighted',
+        iterations=20,
+        X=X_train,
+        y=y_train,
+        n_cross_validations=5,
+        enable_voting_ensemble=False,
+        enable_stack_ensemble=False
+        )
+```
+
 ## <a name="run-experiment"></a>Kísérlet futtatása
 
-Az automatikus ml `Workspace` -hez létre kell hoznia `Experiment` egy objektumot, amely egy megnevezett objektum, amely a kísérletek futtatására szolgál.
+Az automatikus ml `Workspace` -ben létrehoz `Experiment` egy objektumot, amely egy megnevezett objektum, amely a kísérletek futtatására szolgál.
 
 ```python
 from azureml.core.experiment import Experiment

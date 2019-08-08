@@ -1,37 +1,42 @@
 ---
-title: Azure VMware-megoldás által CloudSimple Magánfelhő létrehozása
-description: Ismerteti, hogyan lehet VMware számítási feladatok felhőbe kiterjeszteni a működési rugalmasság és folytonossági CloudSimple Magánfelhő létrehozása
+title: Azure VMware-megoldás létrehozása a CloudSimple Private Cloud használatával
+description: Ismerteti, hogyan hozhat létre CloudSimple-alapú privát felhőt a VMware számítási feladatok felhőbe való kiterjesztéséhez, működési rugalmassággal és folytonossággal
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e5c03c1d8a865b792ce79e3e2b576a629b71e02c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 02a2bd311ea1e89a49eb12ef57a167a08eea5f98
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332906"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812250"
 ---
-# <a name="create-a-cloudsimple-private-cloud"></a>Create a CloudSimple Private Cloud
+# <a name="create-a-cloudsimple-private-cloud"></a>CloudSimple saját felhő létrehozása
 
-Magánfelhő létrehozása segítségével közös kielégítése, a hálózati infrastruktúra-cím:
+A privát felhő létrehozása segít a hálózati infrastruktúra számos gyakori igényének kielégítésében:
 
-* **Növekedési**. A hardverek frissítési pont elérte a meglévő infrastruktúra, ha a Magánfelhő lehetővé teszi a nem szükséges új hardverberuházás.
+* **Növekedés**. Ha elérte a meglévő infrastruktúra hardveres frissítési pontját, a privát felhő lehetővé teszi, hogy az új hardveres befektetés nélkül bővítse a-t.
 
-* **Bővítés gyors**. Ha bármely ideiglenes vagy nem tervezett kapacitást kell merülnek fel, Magánfelhő teszi lehetővé a megnövelt kapacitás létrehozása késleltetés nélkül.
+* **Gyors bővítés**. Ha bármilyen ideiglenes vagy nem tervezett kapacitás merül fel, a privát felhő lehetővé teszi a további kapacitás késleltetés nélküli létrehozását.
 
-* **Nagyobb védelem**. A Magánfelhő három vagy több csomópont kap automatikus redundancia és magas rendelkezésre állású védelmét.
+* **Fokozott védelem**. A három vagy több csomópontból álló privát felhővel automatikus redundanciát és magas rendelkezésre állású védelmet érhet el.
 
-* **Hosszú távú infrastruktúra kell**. Az adatközpontok kapacitását, vagy azt szeretné átalakításának csökkentheti a költségeket, ha a Magánfelhő lehetővé teszi kivonása adatközpontok és a egy felhőalapú megoldás közben a vállalati műveletek kompatibilis át.
+* **Hosszú távú infrastrukturális igények**. Ha az adatközpontok kapacitása vagy a költségek csökkentése érdekében szeretné átstrukturálni a költségeket, a privát felhő lehetővé teszi az adatközpontok kivonását és a felhőalapú megoldásba való átállást, miközben továbbra is kompatibilis a vállalati műveletekkel.
 
-Magánfelhő létrehozásakor kap egy egyetlen vSphere-fürt és a felügyeleti fürt létrehozott virtuális gépeket.
+Privát felhő létrehozásakor egyetlen vSphere-fürtöt és az abban a fürtben létrehozott összes felügyeleti virtuális gépet kap.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A Magánfelhő létrehozása előtt ki kell építeni a csomópontokat.  A csomópont kiépítése további információkért lásd: [csomópontok kiépítésére CloudSimple – Azure által a VMware megoldás](create-nodes.md) cikk.
+A csomópontokat a privát felhő létrehozása előtt kell kiépíteni.  A csomópontok kiépítésével kapcsolatos további információkért lásd: [csomópontok kiépítése a VMware-megoldáshoz a CloudSimple – Azure-](create-nodes.md) cikk.
+
+CIDR-tartomány kiosztása a vSphere/vSAN alhálózatokhoz a privát felhőben. A privát felhőt egy vCenter-kiszolgáló által kezelt elkülönített VMware stack (ESXi-gazdagépek, vCenter, vSAN és NSX) környezete hozza létre. A felügyeleti összetevők a vSphere/vSAN alhálózatok CIDR kiválasztott hálózatban vannak telepítve. A hálózati CIDR tartománya különböző alhálózatokra van osztva az üzembe helyezés során.  A vSphere/vSAN alhálózati címtartomány egyedinek kell lennie. Nem lehet átfedésben a CloudSimple-környezettel kommunikáló hálózattal.  A CloudSimple kommunikáló hálózatok a helyszíni hálózatokat és az Azure-beli virtuális hálózatokat is tartalmazzák.  A vSphere/vSAN alhálózatokkal kapcsolatos további információkért lásd: a [VLAN-ok és](cloudsimple-vlans-subnets.md)az alhálózatok áttekintése.
+
+* Minimális vSphere/vSAN alhálózatok CIDR tartományának előtagja:/24 
+* VSphere/vSAN alhálózatok maximális CIDR-tartományának előtagja:/21
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -39,39 +44,39 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="access-the-cloudsimple-portal"></a>Hozzáférés a CloudSimple portáljához
 
-Hozzáférés a [CloudSimple portál](access-cloudsimple-portal.md).
+Nyissa meg a [CloudSimple portált](access-cloudsimple-portal.md).
 
-## <a name="create-a-new-private-cloud"></a>Hozzon létre egy új privát felhő
+## <a name="create-a-new-private-cloud"></a>Új privát felhő létrehozása
 
-1. Az a **erőforrások** kattintson **új Magánfelhő**.
+1. Az **erőforrások** lapon kattintson az **új privát felhő**elemre.
 
-    ![Hozzon létre egy Magánfelhő - elindítása](media/create-pc-button.png)
+    ![Hozzon létre egy privát felhőt – a kezdéshez](media/create-pc-button.png)
 
-2. Válassza ki a helyet, a Magánfelhő-erőforrások üzemeltetéséhez.
+2. Válassza ki a saját felhő erőforrásainak tárolására szolgáló helyet.
 
-3. Válassza ki a CS28 vagy CS36 csomópont típusa you'ev megjelenjen a Magánfelhő. Az utóbbi lehetőséget tartalmaz a maximális számítási és memória-kapacitás.
+3. Válassza ki a CS28 vagy a CS36 you'ev kiépített csomópont-típusát a privát felhő számára. Az utóbbi lehetőség a maximális számítási és memória-kapacitást is tartalmazza.
 
-4. Válassza ki a csomópontok számát a Magánfelhő számára. Választhat, legfeljebb a rendelkezésre álló csomópontok számát, hogy you'ev [kiépített](create-nodes.md).
+4. Válassza ki a privát felhő csomópontjainak számát. Kiválaszthatja a you'ev által kiépített csomópontok számát [](create-nodes.md).
 
-    ![Hozzon létre egy Magánfelhő - alapbeállítások](media/create-private-cloud-basic-info.png)
+    ![Egyéni felhő – alapszintű beállítások létrehozása](media/create-private-cloud-basic-info.png)
 
-5. Kattintson a **tovább: Speciális beállítások**.
+5. Kattintson **a Tovább gombra: Speciális beállítások**.
 
-6. VSphere/vSAN alhálózatokat a CIDR-tartományt adja meg. Győződjön meg arról, hogy a CIDR-tartományt nem lehetnek átfedésben a helyszíni vagy más Azure alhálózatok (virtuális hálózatok) vagy az átjáró-alhálózat.  Ne használja az Azure virtuális hálózataiban működő meghatározott minden CIDR-tartományt.
+6. Adja meg a vSphere/vSAN alhálózatok CIDR tartományát. Győződjön meg arról, hogy a CIDR-tartomány nem fedi átfedésben a helyszíni vagy más Azure-alhálózatokkal (virtuális hálózatokkal) vagy az átjáró-alhálózattal.  Ne használjon az Azure-beli virtuális hálózatokon definiált CIDR-tartományt.
     
-    **Beállítások CIDR-tartományt:** /24, /23, /22 vagy /21. Egy/24 CIDR-tartományt támogatja a legfeljebb kilenc csomópontokat, a /23 CIDR-tartományt legfeljebb a 41 csomópontokat, és a egy /22 és /21 CIDR-tartományt támogatja a legfeljebb 64 csomópontot (a Magánfelhő a csomópontok maximális száma).
+    **CIDR-tartomány beállításai:** /24,/23,/22, vagy/21. Az a/24 CIDR-tartomány legfeljebb kilenc csomópontot támogat, a/23 CIDR-tartomány akár 41 csomópontot is támogat, a/22 és/21 CIDR tartomány pedig legfeljebb 64 csomópontot támogat (a csomópontok maximális száma a privát felhőben).
 
     > [!CAUTION]
-    > IP-címeket a CIDR-tartományt vSphere/vsan-hoz az Magánfelhő-infrastruktúrájában használatra van fenntartva.  Ne használja az IP-cím a tartományban lévő bármelyik virtuális gépet.
+    > A vSphere/vSAN CIDR-tartomány IP-címei a saját felhőalapú infrastruktúra használatára vannak fenntartva.  Ne használja az IP-címet ezen a tartományon bármely virtuális gépen.
 
-7. Kattintson a **tovább: Tekintse át, és hozzon létre**.
+7. Kattintson **a Tovább gombra: Tekintse át**és hozza létre.
 
-8. Tekintse át a beállításokat. Ha módosítania kell a beállításokat, kattintson a **előző**.
+8. Tekintse át a beállításokat. Ha módosítania kell a beállításokat, kattintson az **előző**gombra.
 
 9. Kattintson a **Create** (Létrehozás) gombra.
 
-Kiépítés Magánfelhő indul kattintva hozzon létre.  Nyomon követheti a folyamat a [feladatok](https://docs.azure.cloudsimple.com/activity/#tasks) CloudSimple portál oldalán.  Kiépítés percig is eltarthat 30, két óra.  Az üzembe helyezés befejeződése után kapni fog egy e-mailt.
+A saját felhőalapú kiépítés a Létrehozás gombra kattintva indul el.  A CloudSimple-portál [feladatok](https://docs.azure.cloudsimple.com/activity/#tasks) lapján figyelheti a folyamat előrehaladását.  A kiépítés akár 30 percet is igénybe vehet.  A kiépítés befejeződése után e-mailt fog kapni.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Bontsa ki a magánfelhőben](expand-private-cloud.md)
+* [Privát felhő kibontása](expand-private-cloud.md)

@@ -1,70 +1,71 @@
 ---
-title: Az Azure-folyamatok használatával létrehozása és üzembe helyezése a HPC-megoldások – Azure Batch |} A Microsoft Docs
-description: Ismerje meg, hogyan helyezhet üzembe egy HPC-alkalmazás futtatása Azure Batch a build és kiadás folyamat.
+title: HPC-megoldások létrehozása és üzembe helyezése az Azure-folyamatokkal – Azure Batch | Microsoft Docs
+description: Megtudhatja, hogyan helyezhet üzembe Build/kiadási folyamatot egy Azure Batchon futó HPC-alkalmazáshoz.
 author: christianreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
-ms.openlocfilehash: a811a9cb1b124aff7c64d25cf71a1b84bff0c173
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.service: batch
+ms.openlocfilehash: 47665171ee5ae137e0503b3e5fa1d369aeabb356
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65541753"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840054"
 ---
-# <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Azure folyamatok használatával hozhat létre és HPC-megoldások üzembe helyezése
+# <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>HPC-megoldások létrehozása és üzembe helyezése az Azure-folyamatokkal
 
-Az Azure DevOps-szolgáltatásokkal, egy egyéni application készítése során, a fejlesztői csapatok által használt eszközök széles adja meg. Az Azure DevOps által biztosított eszközök is jelenti azt, hogy automatikus létrehozását és tesztelését, nagy teljesítményű számítási megoldásokat. Ez a cikk bemutatja, hogyan állíthat be egy folyamatos integrációs (CI) és folyamatos üzembe helyezés (CD) használatával egy nagy teljesítményű Azure folyamatok számítási üzembe helyezett Azure Batch megoldás.
+Az Azure DevOps Services olyan eszközöket biztosít, amelyeket a fejlesztői csapatok használnak egyéni alkalmazások létrehozásakor. Az Azure DevOps által biztosított eszközök a nagy teljesítményű számítási megoldások automatizált kiépítése és tesztelése révén fordíthatók le. Ez a cikk bemutatja, hogyan állítható be a folyamatos integráció (CI) és a folyamatos üzembe helyezés (CD) az Azure-folyamatokkal a Azure Batch üzembe helyezett nagy teljesítményű számítási megoldásokhoz.
 
-A folyamatok az Azure számos modern CI/CD-folyamatok létrehozását, üzembe helyezéséhez, tesztelés és felügyeleti szoftverek. Ezek a folyamatok felgyorsítása a szoftverterjesztés, amely lehetővé teszi, hogy a kód összpontosíthat, ahelyett hogy infrastruktúrájának és műveleteinek támogatásához.
+Az Azure-folyamatok számos modern CI/CD-folyamatot biztosítanak a szoftverek kiépítéséhez, üzembe helyezéséhez, teszteléséhez és figyeléséhez. Ezek a folyamatok felgyorsítják a szoftverek kézbesítését, így a támogatási infrastruktúra és műveletek helyett a kódra koncentrálhat.
 
-## <a name="create-an-azure-pipeline"></a>Hozzon létre egy Azure-folyamat
+## <a name="create-an-azure-pipeline"></a>Azure-folyamat létrehozása
 
-Ebben a példában a rendszer létrehoz egy build és kibocsátásában üzembe helyezése az Azure Batch-infrastruktúrát, és a egy alkalmazáscsomagot kiadási. Feltételezve, hogy a kód létrehozása helyileg, ez az az általános üzembe helyezési folyamat:
+Ebben a példában létrehozunk egy létrehozási és kiadási folyamatot egy Azure Batch infrastruktúra üzembe helyezéséhez és alkalmazáscsomag kiadásához. Feltételezve, hogy a kód helyileg lett kifejlesztve, ez az általános telepítési folyamat:
 
-![A folyamat üzembe helyezési folyamatot bemutató ábra.](media/batch-ci-cd/DeploymentFlow.png)
+![A folyamaton belüli üzembe helyezés folyamatát bemutató ábra](media/batch-ci-cd/DeploymentFlow.png)
 
 ### <a name="setup"></a>Beállítás
 
-A jelen cikkben ismertetett lépések követéséhez szüksége van egy Azure DevOps-szervezet és a egy csoportprojektet.
+A cikkben ismertetett lépések végrehajtásához egy Azure DevOps-szervezetre és egy Team-projektre van szükség.
 
-* [Hozzon létre egy Azure DevOps-szervezet](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)
-* [Az Azure DevOps-projekt létrehozása](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
+* [Azure DevOps-szervezet létrehozása](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)
+* [Projekt létrehozása az Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
 
-### <a name="source-control-for-your-environment"></a>A környezet verziókövetését
+### <a name="source-control-for-your-environment"></a>A környezet verziókövetés
 
-Verziókövetés lehetővé teszi a csapatok nyomon követheti a kódbázisnak végzett módosításokat, és vizsgálja meg a kód korábbi verziói.
+A verziókövetés lehetővé teszi, hogy a csapatok nyomon kövessék a kód módosításait, és megvizsgálják a kód korábbi verzióit.
 
-Általában a verziókövetés, az aktuális közötti közvetlen szoftver kóddal úgy Gondoltuk. Mi a helyzet az alapul szolgáló infrastruktúra? Elértünk infrastruktúra kódként, ahol az Azure Resource Manager-sablonok vagy más nyílt forráskódú lehetőségeket a használjuk az alapul szolgáló infrastruktúra deklaratív definiálása.
+A verziókövetés általában a szoftveres kóddal együtt történik. Mi a helyzet a mögöttes infrastruktúrával? Ez kódként szolgál az infrastruktúra számára, ahol Azure Resource Manager sablonokat vagy más nyílt forráskódú alternatívákat fogunk használni a mögöttes infrastruktúra deklaratív definiálásához.
 
-Ez a minta az erősen támaszkodik egy Resource Manager-sablonokat (JSON-dokumentumok) és a meglévő bináris fájlok száma. Ezekben a példákban másolhatja az adattárba, és azok leküldése az Azure DevOps.
+Ez a minta számos Resource Manager-sablonra (JSON-dokumentumra) és meglévő bináris fájlra támaszkodik. Ezeket a példákat átmásolhatja a tárházba, és leküldheti őket az Azure DevOps.
 
-A jelen példában használt kódbázis struktúráját a következőhöz;
+Az ebben a példában használt kód szerkezet a következőhöz hasonló:
 
-* Egy **arm-sablonok** mappába, az Azure Resource Manager-sablonok számú. A sablonok Ez a cikk ismerteti.
-* A **ügyfélalkalmazás** mappát, amely egy másolatot, a [Azure Batch .NET fájl feldolgozása ffmpeg segítségével](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) minta. Ebben a cikkben nem erre van szükség.
-* Egy **hpc-alkalmazás** mappát, amely a Windows 64 bites verzióját [ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip).
-* A **folyamatok** mappát. A létrehozási folyamat sbalování egy YAML-fájlt tartalmazza. Ez a cikk a következő cikkben.
+* Egy **ARM-templates** mappa, amely több Azure Resource Manager sablont tartalmaz. A sablonokat a cikk ismerteti.
+* Egy **ügyfél-alkalmazás** mappa, amely a [Azure Batch .net file Processing és az FFmpeg](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) minta másolata. Ez nem szükséges ehhez a cikkhez.
+* **HPC-Application** mappa, amely az [ffmpeg 3,4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip)Windows 64 bites verziója.
+* A **folyamatok** mappája. Ez egy YAML-fájlt tartalmaz, amely felvázolja a létrehozás folyamatát. Ezt a cikk tárgyalja.
 
-Ez a szakasz azt feltételezi, hogy ismeri a verzió-vezérlés és tervezési Resource Manager-sablonok. Ha nem ismeri ezeket a fogalmakat, a következő oldalakon további információt.
+Ez a szakasz feltételezi, hogy már ismeri a verziókövetés és a Resource Manager-sablonok tervezését. Ha nem ismeri ezeket a fogalmakat, további információért tekintse meg a következő lapokat.
 
-* [Mi az, hogy a verziókövetés?](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
+* [Mi az a verziókövetés?](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
 * [Az Azure Resource Manager-sablonok struktúrája és szintaxisa](../azure-resource-manager/resource-group-authoring-templates.md)
 
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 
-Ebben a példában több Resource Manager-sablonok üzembe helyezni a megoldást használja. Ehhez számos képesség sablonok (egységek és a modulok hasonló) egy adott adatrészletet funkciókat megvalósító használjuk. Azt is használhatja egy teljes körű megoldás sablont, amely felelős képességek mögöttes együtt történő visszaállítását. Van néhány előnye ennek a megoldásnak:
+Ez a példa több Resource Manager-sablont használ a megoldás üzembe helyezéséhez. Ehhez számos képességgel rendelkező sablont használunk (hasonló egységekhez vagy modulokhoz), amelyek egy adott funkciót implementálnak. Egy teljes körű megoldási sablont is használunk, amely felelős az alapul szolgáló képességek összekapcsolásához. Ennek a megközelítésnek több előnye is van:
 
-* Az alapul szolgáló funkció sablonokat külön-külön teszteltük egység is lehet.
-* Az alapul szolgáló funkció sablonok határozható meg, a szervezeten belül egy szabványos, és több megoldás újra felhasználhatók.
+* Az alapul szolgáló képességi sablonok külön egységesen vizsgálhatók.
+* A mögöttes képességgel rendelkező sablonok a szervezeten belül szabványosként definiálhatók, és több megoldásban is használhatók.
 
-Ebben a példában van egy teljes körű megoldás sablon (deployment.json), amely három sablonnal üzembe helyezi. Az alapul szolgáló sablonok olyan képességet sablonokat, a megoldás egy adott aspektusa telepítéséért felelős.
+Ebben a példában egy teljes körű megoldási sablon (Deployment. JSON) található, amely három sablont telepít. Az alapul szolgáló sablonok a megoldás egy adott aspektusának üzembe helyezéséhez szükséges képesség-sablonok.
 
-![A csatolt sablon struktúra Azure Resource Manager-sablonok használatával – példa](media/batch-ci-cd/ARMTemplateHierarchy.png)
+![Példa csatolt sablon szerkezetére Azure Resource Manager sablonok használatával](media/batch-ci-cd/ARMTemplateHierarchy.png)
 
-Az első sablon áttekintjük, hogy van egy Azure Storage-fiók. A megoldás egy tárfiókot, a Batch-fiókhoz az alkalmazás telepítéséhez szükséges. Észrevennék, érdemes a [Resource Manager sablon referencia-útmutató a Microsoft.Storage erőforrás-típus](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions) Storage-fiókok Resource Manager-sablonok készítése során.
+Az első megjelenő sablon egy Azure Storage-fiók. A megoldáshoz egy Storage-fiókra van szükség, amely a Batch-fiókba helyezi üzembe az alkalmazást. Érdemes lehet a Resource Manager-sablonokra vonatkozó [útmutató a Microsoft. Storage erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions) számára a Storage-fiókok Resource Manager-sablonjainak létrehozásakor.
 
 ```json
 {
@@ -104,7 +105,7 @@ Az első sablon áttekintjük, hogy van egy Azure Storage-fiók. A megoldás egy
 }
 ```
 
-Ezt követően áttekintjük az Azure Batch-fiók sablont. Az Azure Batch-fiók készletek (gépek csoportosításán) között számos olyan alkalmazások futtatására platformként működik. Észrevennék, érdemes a [Resource Manager sablon referencia-útmutató Microsoft.Batch erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions) Resource Manager-sablonok létrehozását, a Batch-fiókokkal.
+Ezt követően megtekintjük a Azure Batch fiók sablonját. A Azure Batch-fiók platformként szolgál számos alkalmazás különböző készletekben történő futtatásához (gépek csoportosítása). Érdemes lehet a Resource Manager-sablonokra [vonatkozó útmutató a Microsoft. batch erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions) számára a Batch-fiókok Resource Manager-sablonjainak létrehozásakor.
 
 ```json
 {
@@ -143,7 +144,7 @@ Ezt követően áttekintjük az Azure Batch-fiók sablont. Az Azure Batch-fiók 
 }
 ```
 
-A következő sablon létrehozása az Azure Batch-készletet (a háttérrendszer gépeken az alkalmazások feldolgozásához) mutat be. Észrevennék, érdemes a [Resource Manager sablon referencia-útmutató Microsoft.Batch erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions) Batch-fiók készletek Resource Manager-sablonok készítésekor.
+A következő sablon egy példát mutat be Azure Batch készlet létrehozásához (az alkalmazások feldolgozásához a háttérrendszer-gépeken). Érdemes lehet a Resource Manager-sablonokra [vonatkozó útmutató a Microsoft. batch erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions) számára a Batch-fiókok Resource Manager-sablonjainak létrehozásakor.
 
 ```json
 {
@@ -189,9 +190,9 @@ A következő sablon létrehozása az Azure Batch-készletet (a háttérrendszer
 }
 ```
 
-Végül van egy sablont, amely az orchestrator alkalmazáshoz hasonlóan működik. Ez a sablon üzembe helyezése a képesség sablonok felelős.
+Végezetül egy olyan sablonnal rendelkezünk, amely egy Orchestrator hasonló módon működik. Ez a sablon felelős a képességek sablonjainak telepítéséhez.
 
-Akkor is is tudjon meg többet [társított Azure Resource Manager-sablonok létrehozására](../azure-resource-manager/resource-manager-tutorial-create-linked-templates.md) egy külön cikkben.
+További információt a [csatolt Azure Resource Manager-sablonok létrehozásáról](../azure-resource-manager/resource-manager-tutorial-create-linked-templates.md) a különálló cikkben talál.
 
 ```json
 {
@@ -291,43 +292,43 @@ Akkor is is tudjon meg többet [társított Azure Resource Manager-sablonok lét
 
 #### <a name="the-hpc-solution"></a>A HPC-megoldás
 
-Az infrastruktúra és szoftverek kódként definiálhatók és védelmicsoport-készletek ugyanabban az adattárban.
+Az infrastruktúra és a szoftver definiálható kódként, és ugyanabban a tárházban helyezhető el.
 
-Ebben a megoldásban az ffmpeg segítségével az alkalmazáscsomag része lesz. Az ffmpeg csomag letölthető [Itt](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip).
+Ebben a megoldásban az FFmpeg-t használja alkalmazáscsomagként. Az FFmpeg-csomag [innen](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip)tölthető le.
 
-![Példa Git-tárház szerkezete](media/batch-ci-cd/git-repository.jpg)
+![Példa git-tárház struktúrájára](media/batch-ci-cd/git-repository.jpg)
 
-Van a tárházhoz négy fő részből áll:
+A tárház négy fő szakaszt tartalmaz:
 
-* A **arm-sablonok** mappát, amely tárolja az infrastruktúra mint kód
-* A **hpc-alkalmazás** ffmpeg bináris fájljait tartalmazó mappát
-* A **folyamatok** buildelési folyamat definícióját tartalmazó mappát.
-* **Nem kötelező**: A **ügyfélalkalmazás** mappát, amely a .NET-alkalmazás kódját szeretné tárolni. Nem használja ezt a mintát, de a saját project Kezdésként keresztül egy ügyfélalkalmazás a HPC Batch-alkalmazás futtatásának végrehajtásához.
+* Az infrastruktúrát kódként tároló **ARM-templates** mappa
+* A **HPC-Application** mappa, amely az FFmpeg bináris fájljait tartalmazza
+* A **folyamatokat** tartalmazó mappa, amely tartalmazza a létrehozási folyamat definícióját.
+* Nem **kötelező**: Az **ügyfél-alkalmazás** mappa, amely a .NET-alkalmazás kódját tárolja. Ezt a mintát nem használjuk, de a saját projektjeiben előfordulhat, hogy a HPC batch-alkalmazás futtatását egy ügyfélalkalmazás használatával szeretné végrehajtani.
 
 > [!NOTE]
-> Ez a csupán egy példa a struktúrát a kódbázisnak az. Ez a megközelítés annak bemutatására, hogy alkalmazást, az infrastruktúra és a folyamat kód tárolása ugyanabban az adattárban a célokat szolgál.
+> Ez csak egy példa a rendszerértékre történő rendszerszerkezetre. Ezt a módszert arra használjuk, hogy az alkalmazás, az infrastruktúra és a folyamat kódja ugyanabban a tárházban legyen tárolva.
 
-Most, hogy be van állítva a forráskódot, megkezdhetjük az első hozhat létre.
+Most, hogy beállította a forráskódot, megkezdheti az első felépítést.
 
 ## <a name="continuous-integration"></a>Folyamatos integráció
 
-[Az Azure folyamatok](https://docs.microsoft.com/azure/devops/pipelines/get-started/?view=azure-devops), Azure DevOps-szolgáltatásokban, segítséget nyújt az alkalmazások számára a buildelési, tesztelési és üzembe helyezési folyamat implementálásához.
+Az Azure DevOps Services szolgáltatáson belüli [Azure-folyamatok](https://docs.microsoft.com/azure/devops/pipelines/get-started/?view=azure-devops)segítenek a létrehozási, tesztelési és üzembe helyezési folyamat megvalósításában az alkalmazásaihoz.
 
-Ebben a szakaszban a folyamat általában teszteket kódot, és hozhat létre a megfelelő kódrészletek, a szoftver. Számát és típusát tesztek, és minden további feladatot, amely futtatja a szélesebb körű build attól függ, és kiadási stratégiát.
+A folyamat ezen szakaszában a tesztek általában a kód érvényesítésére és a szoftver megfelelő részeinek összeállítására futnak. A tesztek száma és típusai, valamint az Ön által futtatott további feladatok a szélesebb körű Build-és kiadási stratégiától függenek.
 
 ## <a name="preparing-the-hpc-application"></a>A HPC-alkalmazás előkészítése
 
-Ebben a példában fogunk dolgozni a **hpc-alkalmazás** mappát. A **hpc-alkalmazás** mappa a következő az ffmpeg szoftver, amely az Azure Batch-fiókon belül elindul.
+Ebben a példában a **HPC-Application** mappára fogunk összpontosítani. A **HPC-Application** mappa az az FFmpeg szoftver, amely a Azure batch fiókon belül fog futni.
 
-1. Keresse meg az Azure folyamatok buildek szakaszában az Azure DevOps-szervezetben. Hozzon létre egy **új adatcsatorna**.
+1. Navigáljon az Azure DevOps-szervezetének Azure-folyamatok buildek szakaszába. Hozzon létre egy **új**folyamatot.
 
-    ![Új Buildelési folyamat létrehozása](media/batch-ci-cd/new-build-pipeline.jpg)
+    ![Új build-folyamat létrehozása](media/batch-ci-cd/new-build-pipeline.jpg)
 
-1. A Build-folyamatok létrehozására két lehetősége van:
+1. A build folyamat létrehozásához két lehetőség közül választhat:
 
-    a. [A vizuális Tervezőeszköz segítségével](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav). Ennek használatához kattintson "A vizuális tervező használata a" az a **új adatcsatorna** lapot.
+    a. [A vizuális tervező használatával](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav). Ha ezt szeretné használni, kattintson a "Visual Designer használata" lehetőségre az **új folyamat** lapon.
 
-    b. [YAML használatával összeállít](https://docs.microsoft.com/azure/devops/pipelines/get-started-yaml?view=azure-devops). Egy új YAML-folyamatot az Azure-Adattárakkal vagy GitHub lehetőséget az új folyamat oldalon kattintva hozhatja létre. Azt is megteheti tárolása az alábbi példában a verziókövetési rendszerben, és kattintson a vizuális Tervező, és ezután a YAML sablonnal hivatkozni egy meglévő YAML-fájlt.
+    b. [YAML-buildek használata](https://docs.microsoft.com/azure/devops/pipelines/get-started-yaml?view=azure-devops). Az új folyamat lapon az Azure Repos vagy a GitHub lehetőségre kattintva hozhat létre új YAML-folyamatot. Azt is megteheti, hogy az alábbi példát a forrás vezérlőelemben tárolja, és egy meglévő YAML-fájlra hivatkozik, ha a Visual Designerre kattint, majd a YAML sablont használja.
 
     ```yml
     # To publish an application into Azure Batch, we need to
@@ -350,153 +351,153 @@ Ebben a példában fogunk dolgozni a **hpc-alkalmazás** mappát. A **hpc-alkalm
         targetPath: '$(Build.ArtifactStagingDirectory)/package'
     ```
 
-1. Ha a build igény szerint van konfigurálva, válassza **várólistára & mentése**. Ha engedélyezve van a folyamatos integráció (az a **eseményindítók** szakaszban), a build automatikusan aktiválódik egy új véglegesítés az adattárban szeretné tenni, a build a feltételeknek megfelelő beállítása.
+1. Ha a buildet igény szerint konfigurálta, válassza a **mentés & üzenetsor**lehetőséget. Ha engedélyezve van a folyamatos integráció (az **Eseményindítók** szakaszban), a Build automatikusan elindul, amikor új véglegesíti a tárházat, és megfelel a buildben megadott feltételeknek.
 
-    ![Egy meglévő Build-folyamatot – példa](media/batch-ci-cd/existing-build-pipeline.jpg)
+    ![Meglévő build-folyamat – példa](media/batch-ci-cd/existing-build-pipeline.jpg)
 
-1. Az Azure DevOps-beli build állapotát az élő frissítés megtekintése a **hozhat létre** Azure folyamatok szakaszában. Válassza ki a megfelelő build a builddefiníció.
+1. Tekintse meg az élő frissítéseket a Build Azure DevOps való fejlesztésének előrehaladásával az Azure-folyamatok **Build** szakaszának megnyitásával. Válassza ki a megfelelő buildet a Build definíciójában.
 
-    ![A build élő kimeneteinek megtekintése](media/batch-ci-cd/Build-1.jpg)
+    ![Élő kimenetek megtekintése a buildből](media/batch-ci-cd/Build-1.jpg)
 
 > [!NOTE]
-> Ha egy ügyfélalkalmazás segítségével hajtsa végre az HPC Batch-alkalmazás, az adott alkalmazáshoz külön builddefiníció létrehozása szeretné. Útmutatók a számos annak a [Azure folyamatok](https://docs.microsoft.com/azure/devops/pipelines/get-started/index?view=azure-devops) dokumentációját.
+> Ha egy ügyfélalkalmazás használatával hajtja végre a HPC batch-alkalmazást, létre kell hoznia egy külön Build-definíciót az alkalmazáshoz. Az [Azure-folyamatok](https://docs.microsoft.com/azure/devops/pipelines/get-started/index?view=azure-devops) dokumentációjában számos útmutatók találhatók.
 
-## <a name="continuous-deployment"></a>Folyamatos üzembe helyezés
+## <a name="continuous-deployment"></a>Folyamatos telepítés
 
-Az Azure folyamatok is telepítheti az alkalmazást, és az alapul szolgáló infrastruktúra. [Folyamatok felszabadítása](https://docs.microsoft.com/azure/devops/pipelines/release) az a komponens, amely lehetővé teszi a folyamatos üzembe helyezést, és a kibocsátási folyamat automatizálható.
+Az Azure-folyamatok az alkalmazás és a mögöttes infrastruktúra üzembe helyezéséhez is használhatók. [](https://docs.microsoft.com/azure/devops/pipelines/release) A kiadási folyamatok az az összetevő, amely lehetővé teszi a folyamatos üzembe helyezést, és automatizálja a kiadási folyamatokat.
 
-### <a name="deploying-your-application-and-underlying-infrastructure"></a>Az alkalmazás üzembe helyezése és az alapul szolgáló infrastruktúra
+### <a name="deploying-your-application-and-underlying-infrastructure"></a>Az alkalmazás és a mögöttes infrastruktúra üzembe helyezése
 
-Nincsenek érintett infrastruktúra telepítése több lépésből áll. Rendelkezik használtuk, [kapcsolódó sablonok](../azure-resource-manager/resource-group-linked-templates.md), akkor ezeket a sablonokat kell lennie egy nyilvános végpontot (HTTP vagy HTTPS) elérhető. Ez lehet egy tárházban a Githubon, vagy egy Azure Blob Storage-fiókot, vagy egy másik tárolási helye. A feltöltött sablon összetevők maradhat, biztonságos, mint egy privát módban tárolhatók, de valamilyen közös hozzáférésű jogosultságkód (SAS) használatával elért. A következő példa bemutatja, hogyan helyezhet üzembe a sablonokat az Azure Storage-blobból az infrastruktúrát.
+Az infrastruktúra üzembe helyezésének számos lépése van. A [csatolt sablonok](../azure-resource-manager/resource-group-linked-templates.md)használata során ezeknek a sablonoknak elérhetőnek kell lenniük egy nyilvános végpontról (http vagy https). Ez lehet egy adattár a GitHubon, vagy egy Azure Blob Storage-fiók vagy egy másik tárolási hely. A feltöltött sablon összetevői biztonságban maradhatnak, mivel azok privát módban is tárolhatók, de a közös hozzáférésű aláírás (SAS) jogkivonatának valamilyen formájával érhetők el. Az alábbi példa bemutatja, hogyan helyezhet üzembe egy infrastruktúrát sablonokkal egy Azure Storage-blob használatával.
 
-1. Hozzon létre egy **új kiadási definíció**, és válassza ki egy üres definíciót. Ezután meg kell egy, a folyamat az újonnan létrehozott környezet átnevezése.
+1. Hozzon létre egy **új kiadási definíciót**, és válasszon ki egy üres definíciót. Ezután át kell neveznie az újonnan létrehozott környezetet a folyamathoz kapcsolódóan.
 
-    ![Kezdeti kiadás folyamat](media/batch-ci-cd/Release-0.jpg)
+    ![Kezdeti kiadási folyamat](media/batch-ci-cd/Release-0.jpg)
 
-1. Függőség létrehozása a HPC-alkalmazás eredményének hozhat létre folyamathoz.
-
-    > [!NOTE]
-    > Ismét, vegye figyelembe a **forrás Alias**, ahogy feladatokat a kiadási definíció belül létrehozásakor ez lesz szükség.
-
-    ![A megfelelő buildelési folyamat-összetevő hivatkozás a HPCApplicationPackage létrehozásához](media/batch-ci-cd/Release-1.jpg)
-
-1. Egy hivatkozás egy másik összetevő, ennek során egy Azure-tárház létrehozásához. Ez a Resource Manager-sablonok a tárházban tárolt eléréséhez szükséges. Resource Manager-sablonok összeállításához nincs szükség, mert nem kell a buildelési folyamat keresztül küldje le őket.
+1. A HPC-alkalmazás kimenetének lekéréséhez hozzon létre egy függőséget a Build folyamaton.
 
     > [!NOTE]
-    > Ismét, vegye figyelembe a **forrás Alias**, ahogy feladatokat a kiadási definíció belül létrehozásakor ez lesz szükség.
+    > Ismét jegyezze fel a **forrás aliast**, mivel erre akkor van szükség, amikor a feladatok a kiadás definícióján belül jönnek létre.
 
-    ![Az Azure-Adattárakkal egy összetevő hivatkozás létrehozásához](media/batch-ci-cd/Release-2.jpg)
+    ![Összetevő-hivatkozás létrehozása a HPCApplicationPackage a megfelelő Build-folyamatban](media/batch-ci-cd/Release-1.jpg)
 
-1. Keresse meg a **változók** szakaszban. Azt javasoljuk, hogy hozzon létre egy változók száma a folyamatban, nem bevitelével ugyanazokat az adatokat több feladatokra. Az ebben a példában, és hogy azok hatással az üzembe helyezés használt változók az alábbiak.
+1. Hozzon létre egy hivatkozást egy másik összetevőre, ezúttal egy Azure-tárházra. Ez a tárházban tárolt Resource Manager-sablonok eléréséhez szükséges. Mivel a Resource Manager-sablonok nem igénylik a fordítást, nem szükséges leküldeni őket egy Build folyamaton keresztül.
 
-    * **applicationStorageAccountName**: HPC-alkalmazás bináris fájljainak tárolásához a Tárfiók neve
-    * **batchAccountApplicationName**: Az Azure Batch-fiókban az alkalmazás neve
-    * **batchAccountName**: Az Azure Batch-fiók neve
-    * **batchAccountPoolName**: Virtuális gépek a feldolgozást végző-készlet neve
-    * **batchApplicationId**: Az Azure Batch-alkalmazás egyedi azonosítója
-    * **batchApplicationVersion**: A batch-alkalmazás (azaz az ffmpeg bináris fájlok) sémantická verze
-    * **Hely**: Az Azure-erőforrások központi helye
-    * **resourceGroupName**: Létre kell hozni, az erőforráscsoport nevét, és amelyen telepítve lesz az erőforrások
-    * **storageAccountName**: A csatolt Resource Manager-sablonok tárolásához a Tárfiók neve
+    > [!NOTE]
+    > Ismét jegyezze fel a **forrás aliast**, mivel erre akkor van szükség, amikor a feladatok a kiadás definícióján belül jönnek létre.
 
-    ![A változók beállítása az Azure-folyamatok kiadás – példa](media/batch-ci-cd/Release-4.jpg)
+    ![Összetevő-hivatkozás létrehozása az Azure Reposhez](media/batch-ci-cd/Release-2.jpg)
 
-1. Keresse meg a fejlesztői környezetben a feladatokat. Az az alábbi, láthatja a hat tevékenység. Ezek a feladatok lesz: Töltse le az ffmpeg zip-fájlok, üzembe helyezhet egy tárfiókot, a beágyazott Resource Manager-sablonok üzemeltetésére, másolja ezeket a Resource Manager-sablonok a tárfiókba, a batch-fiók és a szükséges függőségek telepítése, az alkalmazás létrehozása az Azure Batch-fiók és feltöltése az alkalmazáscsomagot, az Azure Batch-fiókhoz.
+1. Navigáljon a **változók** szakaszhoz. Azt javasoljuk, hogy számos változót hozzon létre a folyamat során, így nem kell ugyanazt az információt több feladatba felvennie. Ezek az ebben a példában használt változók, és hogyan befolyásolják az üzemelő példányt.
 
-    ![A feladatokat a HPC-alkalmazás az Azure Batch feloldásához használt – példa](media/batch-ci-cd/Release-3.jpg)
+    * **applicationStorageAccountName**: A HPC-alkalmazás bináris fájljainak tárolására szolgáló Storage-fiók neve
+    * **batchAccountApplicationName**: Az alkalmazás neve a Azure Batch fiókban
+    * **batchAccountName**: A Azure Batch fiók neve
+    * **batchAccountPoolName**: A feldolgozást végző virtuális gépek készletének neve
+    * **batchApplicationId**: A Azure Batch alkalmazás egyedi azonosítója
+    * **batchApplicationVersion**: A Batch-alkalmazás szemantikai verziója (azaz az FFmpeg bináris fájljai)
+    * **hely**: A telepítendő Azure-erőforrások helye
+    * **resourceGroupName**: A létrehozandó erőforráscsoport neve, és hogy hol lesznek telepítve az erőforrások
+    * **storageAccountName**: A társított Resource Manager-sablonok tárolására szolgáló Storage-fiók neve
 
-1. Adja hozzá a **letöltési folyamat összetevő (előzetes verzió)** feladatot, és állítsa be a következő tulajdonságokat:
-    * **Megjelenített név:** ApplicationPackage ügynök letöltése
-    * **Töltse le a lehívandó összetevő neve:** hpc-alkalmazás
-    * **Letölti az elérési út**: $(System.DefaultWorkingDirectory)
+    ![Az Azure-folyamatok kiadására beállított változók – példa](media/batch-ci-cd/Release-4.jpg)
 
-1. Hozzon létre egy Tárfiókot, az összetevők tárolására. Egy meglévő tárfiókot a megoldásból használható, de az önálló minta és a tartalom elkülönítési igyekszünk egy dedikált tárfiókot az összetevők (pontosabban a Resource Manager-sablonok).
+1. Navigáljon a fejlesztői környezet feladataihoz. Az alábbi pillanatképben hat feladatot láthat. Ezek a feladatok: letölti a tömörített FFmpeg-fájlokat, telepíti a Storage-fiókot a beágyazott Resource Manager-sablonok tárolására, átmásolja a Resource Manager-sablonokat a Storage-fiókba, üzembe helyezi a Batch-fiókot és a szükséges függőségeket, létrehoz egy alkalmazást a alkalmazásban. a Azure Batch fiókot, és töltse fel az alkalmazáscsomag a Azure Batch-fiókba.
 
-    Adja hozzá a **Azure erőforráscsoport-telepítés** feladatot, és állítsa be a következő tulajdonságokat:
-    * **Megjelenített név:** Storage-fiók üzembe helyezése Resource Manager-sablonok
+    ![A HPC-alkalmazás Azure Batch való kiadásához használt feladatok – példa](media/batch-ci-cd/Release-3.jpg)
+
+1. Adja hozzá a **letöltési folyamat (előzetes verzió)** feladatot, és állítsa be a következő tulajdonságokat:
+    * **Megjelenítendő név:** ApplicationPackage letöltése az ügynöknek
+    * A **letölteni kívánt összetevő neve:** HPC-Application
+    * **Letöltés elérési útja**: $ (System. DefaultWorkingDirectory)
+
+1. Hozzon létre egy Storage-fiókot az összetevők tárolásához. A megoldásban meglévő Storage-fiókot lehet használni, de az önálló minta és a tartalom elkülönítéséhez dedikált Storage-fiókot adunk az összetevőkhöz (különösen a Resource Manager-sablonokhoz).
+
+    Adja hozzá az **Azure-erőforráscsoport telepítési** feladatát, és állítsa be a következő tulajdonságokat:
+    * **Megjelenítendő név:** A Storage-fiók üzembe helyezése Resource Manager-sablonokhoz
     * **Azure-előfizetés:** Válassza ki a megfelelő Azure-előfizetést
-    * **A művelet**: Erőforráscsoport létrehozása vagy frissítése
-    * **Erőforráscsoport**: $(resourceGroupName)
-    * **Hely**: $(location)
+    * **Művelet**: Erőforráscsoport létrehozása vagy frissítése
+    * **Erőforráscsoport**: $ (resourceGroupName)
+    * **Hely**: $ (hely)
     * **Template**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/storageAccount.json
-    * **Bírálja felül a Sablonparaméterek**: - accountName $(storageAccountName)
+    * **Felülbírálja a sablon paramétereit**:-accountName $ (storageAccountName)
 
-1. A verziókövetési rendszerekből az összetevők feltöltése a Storage-fiókban. Van egy Azure-folyamat tevékenységet végezni. Ez a feladat részeként a tárolási fiók tároló URL-címe és a SAS-Token is lehet használt kimeneti adattípus Azure folyamatokban változóhoz. Ez azt jelenti, hogy az ügynök fázis során felhasználhatók.
+1. Töltse fel az összetevőket a forrás vezérlőelemből a Storage-fiókba. Ez az Azure-folyamat feladata. Ennek a feladatnak a részeként a Storage-fiók tárolójának URL-címét és az SAS-tokent egy Azure-folyamatokban lévő változóban lehet kiépíteni. Ez azt jelenti, hogy az ügynök fázisában újra felhasználható.
 
-    Adja hozzá a **Azure fájlmásolás** feladatot, és állítsa be a következő tulajdonságokat:
+    Adja hozzá az **Azure file Copy** feladatot, és állítsa be a következő tulajdonságokat:
     * **Source:** $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/
-    * **Az Azure kapcsolattípus**: Azure Resource Manager
+    * **Azure-kapcsolattípus**: Azure Resource Manager
     * **Azure-előfizetés:** Válassza ki a megfelelő Azure-előfizetést
     * **Cél típusa**: Azure-blob
-    * **Erőforrás-kezelő Tárfiók**: $(storageAccountName)
-    * **Tárolónév**: sablonok
-    * **Storage-tároló URI**: templateContainerUri
-    * **Tárolási tároló SAS-Token**: templateContainerSasToken
+    * **RM Storage-fiók**: $ (storageAccountName)
+    * **Tároló neve**: sablonok
+    * **Storage Container URI**: templateContainerUri
+    * **Storage-tároló sas**-tokenje: templateContainerSasToken
 
-1. Az orchestrator-sablon üzembe helyezése. Az orchestrator-sablont a korábban visszahívása, megfigyelheti, hogy voltak-e a tárolási fiók tároló URL-címe, mellett az SAS-token paraméterek. Észrevehető, hogy a változók megadása kötelező a Resource Manager-sablonban vagy tartják a változók szakaszban, a kiadási definíció, vagy egy másik Azure-folyamatok feladat (például az Azure Blob másolási feladat része) a beállított.
+1. Telepítse a Orchestrator sablont. A korábbi Orchestrator sablon visszahívása, láthatja, hogy a Storage-fiók tárolójának URL-címe szerepel a SAS-tokenen kívül is. Figyelje meg, hogy a Resource Manager-sablonban szükséges változók megtalálhatók a kiadás definíciójának változók szakaszában, vagy egy másik Azure-folyamattól (például az Azure Blob Copy feladatának részeként) lettek beállítva.
 
-    Adja hozzá a **Azure erőforráscsoport-telepítés** feladatot, és állítsa be a következő tulajdonságokat:
-    * **Megjelenített név:** Az Azure Batch üzembe helyezése
+    Adja hozzá az **Azure-erőforráscsoport telepítési** feladatát, és állítsa be a következő tulajdonságokat:
+    * **Megjelenítendő név:** Azure Batch üzembe helyezése
     * **Azure-előfizetés:** Válassza ki a megfelelő Azure-előfizetést
-    * **A művelet**: Erőforráscsoport létrehozása vagy frissítése
-    * **Erőforráscsoport**: $(resourceGroupName)
-    * **Hely**: $(location)
+    * **Művelet**: Erőforráscsoport létrehozása vagy frissítése
+    * **Erőforráscsoport**: $ (resourceGroupName)
+    * **Hely**: $ (hely)
     * **Template**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/deployment.json
-    * **Bírálja felül a Sablonparaméterek**: ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
+    * A **sablon paramétereinek felülbírálása**:```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
-Általános gyakorlat, hogy az Azure Key Vault-feladatokat. Ha az egyszerű szolgáltatás (kapcsolat az Azure-előfizetéshez) rendelkezik egy megfelelő hozzáférési szabályzatok beállítása, titkos kódok tölthet le az Azure Key Vault, és változókat a folyamatban használhatók. A titkos kód nevét és a kapcsolódó érték fog szerepelni. Például sshPassword a titkos kulcs és a kiadási definíció a $(sshPassword) sikerült lehet hivatkozni.
+Gyakori eljárás a Azure Key Vault feladatok használata. Ha az egyszerű szolgáltatásnév (az Azure-előfizetéshez való kapcsolódás) megfelelő hozzáférési szabályzatok vannak beállítva, akkor letöltheti a titkokat egy Azure Key Vault, és változóként használhatja a folyamatában. A titok neve a társított értékkel lesz megadva. A sshPassword titka például a $ (sshPassword) kifejezéssel hivatkozhat a kiadás definíciójában.
 
-1. A következő lépéseket az Azure CLI hívja meg. Az első alkalmazás létrehozása az Azure Batchben szolgál. és töltse fel a hozzá tartozó csomagok.
+1. A következő lépések meghívja az Azure CLI-t. Az első az alkalmazás Azure Batchban való létrehozására szolgál. és töltse fel a társított csomagokat.
 
-    Adja hozzá a **Azure CLI-vel** feladatot, és állítsa be a következő tulajdonságokat:
-    * **Megjelenített név:** Alkalmazás létrehozása az Azure Batch-fiók
+    Adja hozzá az **Azure CLI** -feladatot, és állítsa be a következő tulajdonságokat:
+    * **Megjelenítendő név:** Alkalmazás létrehozása Azure Batch fiókban
     * **Azure-előfizetés:** Válassza ki a megfelelő Azure-előfizetést
-    * **Parancsfájl helye**: Beágyazott parancsfájlja
-    * **Beágyazott parancsfájlja**: ```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
+    * **Parancsfájl helye**: Beágyazott parancsfájl
+    * **Beágyazott parancsfájl**:```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
 
-1. A második lépés az alkalmazáshoz társított csomagok feltöltésére szolgál. A mi esetünkben az ffmpeg-fájlokat.
+1. A második lépés a társított csomagok alkalmazásba való feltöltésére szolgál. Ebben az esetben az FFmpeg-fájlokat.
 
-    Adja hozzá a **Azure CLI-vel** feladatot, és állítsa be a következő tulajdonságokat:
-    * **Megjelenített név:** Csomag feltöltése az Azure Batch-fiók
+    Adja hozzá az **Azure CLI** -feladatot, és állítsa be a következő tulajdonságokat:
+    * **Megjelenítendő név:** Csomag feltöltése Azure Batch fiókba
     * **Azure-előfizetés:** Válassza ki a megfelelő Azure-előfizetést
-    * **Parancsfájl helye**: Beágyazott parancsfájlja
-    * **Beágyazott parancsfájlja**: ```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
+    * **Parancsfájl helye**: Beágyazott parancsfájl
+    * **Beágyazott parancsfájl**:```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
 
     > [!NOTE]
-    > A verziószám az alkalmazás-csomag egy változóban van beállítva. Ez akkor hasznos, ha a csomag korábbi verzióinak felülírása működik az Ön számára, és ha manuálisan az Azure Batch leküldte a csomag verziószáma szabályozni szeretné.
+    > Az alkalmazáscsomag verziószáma változóra van állítva. Ez akkor lehet hasznos, ha a csomag korábbi verzióinak felülírásával Ön is működik, és ha manuálisan szeretné vezérelni a csomag verziószámát, amelyet leküldett a Azure Batch.
 
-1. Hozzon létre egy új kiadási kiválasztásával **kiadási > hozzon létre egy új kiadási**. Aktivált, miután a hivatkozásra az új kiadás állapotának megtekintéséhez.
+1. Új kiadás létrehozásához válassza a **kiadás > új kiadás létrehozása**lehetőséget. Az aktiválás után válassza ki az új kiadásra mutató hivatkozást az állapot megtekintéséhez.
 
-1. Az ügynök élő kimenete kiválasztásával is megtekintheti a **naplók** gomb alatt a környezet.
+1. Az ügynök élő kimenetét a környezet alatti **naplók** gombra kattintva tekintheti meg.
 
     ![A kiadás állapotának megtekintése](media/batch-ci-cd/Release-5.jpg)
 
 ### <a name="testing-the-environment"></a>A környezet tesztelése
 
-A környezet beállítása után győződjön meg arról, a következő vizsgálatokat is sikeresen befejeződött.
+A környezet beállítása után ellenőrizze, hogy a következő tesztek sikeresen befejeződtek-e.
 
-Csatlakoztassa az új Azure Batch-fiókhoz, egy PowerShell-parancssorból az Azure CLI használatával.
+Kapcsolódjon az új Azure Batch-fiókhoz az Azure CLI használatával egy PowerShell-parancssorból.
 
-* Jelentkezzen be az Azure-fiókjába `az login` és kövesse az utasításokat a hitelesítéshez.
-* Ettől kezdve hitelesíthetők a Batch-fiók: `az batch account login -g <resourceGroup> -n <batchAccount>`
+* Jelentkezzen be az Azure-fiókjába, `az login` és kövesse az utasításokat a hitelesítéshez.
+* Most hitelesítse a Batch-fiókot:`az batch account login -g <resourceGroup> -n <batchAccount>`
 
-#### <a name="list-the-available-applications"></a>A rendelkezésre álló alkalmazások listája
+#### <a name="list-the-available-applications"></a>Az elérhető alkalmazások listázása
 
 ```azurecli
 az batch application list -g <resourcegroup> -n <batchaccountname>
 ```
 
-#### <a name="check-the-pool-is-valid"></a>Ellenőrizze, érvényes a készlet
+#### <a name="check-the-pool-is-valid"></a>A készlet érvényességének ellenőrzéséhez
 
 ```azurecli
 az batch pool list
 ```
 
-Jegyezze fel az értékét a `currentDedicatedNodes` Ez a parancs kimenetében. Ez az érték a következő teszt módosul.
+Jegyezze fel `currentDedicatedNodes` a parancs kimenetének értékét. Ezt az értéket a következő tesztben kell beállítani.
 
 #### <a name="resize-the-pool"></a>A készlet átméretezése
 
-Méretezze át a készlethez, hogy nincsenek a számítási csomópontok, feladat és a feladat tesztelése érhető el, tekintse meg az aktuális állapot megtekintéséhez, amíg a méretezés befejezése és a rendelkezésre álló csomópontok a készlet lista paranccsal
+Méretezze át a készletet úgy, hogy elérhetők legyenek a feladatok és a tevékenységek teszteléséhez szükséges számítási csomópontok. a készlet lista parancsával ellenőrizze, hogy az aktuális állapot, amíg az átméretezés be nem fejeződik, és rendelkezésre áll-e csomópontok
 
 ```azurecli
 az batch pool resize --pool-id <poolname> --target-dedicated-nodes 4
@@ -504,7 +505,7 @@ az batch pool resize --pool-id <poolname> --target-dedicated-nodes 4
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk kívül két oktatóanyagok, amelyek ténylegesen használják az ffmpeg, .NET és Python használatával. További információk oktatóanyagokhoz hogyan kommunikál a Batch-fiók használatával egy egyszerű alkalmazás jelenik meg.
+A jelen cikk mellett két olyan oktatóanyag is létezik, amely az FFmpeg-t használja a .NET és a Python használatával. A Batch-fiók egyszerű alkalmazáson keresztül történő kezelésével kapcsolatos további információkért tekintse meg ezeket az oktatóanyagokat.
 
-* [Párhuzamos számítási feladatok futtatása az Azure Batch Python API használatával](tutorial-parallel-python.md)
-* [Párhuzamos számítási feladatok futtatása az Azure Batch .NET API használatával](tutorial-parallel-dotnet.md)
+* [Párhuzamos számítási feladatok futtatása Azure Batch a Python API használatával](tutorial-parallel-python.md)
+* [Párhuzamos számítási feladat futtatása Azure Batch a .NET API használatával](tutorial-parallel-dotnet.md)

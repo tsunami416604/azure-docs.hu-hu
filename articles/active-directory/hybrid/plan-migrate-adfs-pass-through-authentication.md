@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba63f9c04e062741eded9c39e44ba64281931387
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 6646217149cec48ca5fcee59b3dd9d850965c602
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311355"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779923"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrálás az összevonásból a Azure Active Directory áteresztő hitelesítésre
 
@@ -64,8 +64,8 @@ A következő részben ismertetett lépéseket követve megtudhatja, hogy melyik
 1. Jelentkezzen be az [Azure ad](https://aad.portal.azure.com/) -portálra egy globális rendszergazdai fiók használatával.
 2. A **felhasználói bejelentkezés** szakaszban ellenőrizze az alábbi beállításokat:
    * Az **összevonás** **engedélyezve**értékre van állítva.
-   * A **zökkenőmentes egyszeri bejelentkezés** letiltva értékre van állítva. ****
-   * Az **átmenő hitelesítés** letiltva értékre van állítva. ****
+   * A **zökkenőmentes egyszeri bejelentkezés** letiltva értékre van állítva.
+   * Az **átmenő hitelesítés** letiltva értékre van állítva.
 
    ![Képernyőkép a Azure AD Connect felhasználói bejelentkezési szakaszban található beállításokról](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image1.png)
 
@@ -156,7 +156,7 @@ A Windows 8 és a Windows 7 rendszerű számítógépfiókok esetében a hibrid 
 
 További információ: [hibrid Azure ad-hez csatlakoztatott eszközök konfigurálása](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup).
 
-#### <a name="branding"></a>Branding
+#### <a name="branding"></a>Védjegyezés
 
 Ha a szervezete [testreszabja a AD FS bejelentkezési oldalain](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) a szervezettel kapcsolatos információk megjelenítéséhez, érdemes lehet hasonló testreszabásokat felvenni [Az Azure ad bejelentkezési oldalára](https://docs.microsoft.com/azure/active-directory/customize-branding).
 
@@ -260,7 +260,7 @@ Először módosítsa a bejelentkezési módszert:
    ![A konfigurálásra kész lap képernyőképe](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image8.png)<br />
 7. Az Azure AD-portálon válassza a **Azure Active Directory**lehetőséget, majd válassza a **Azure ad Connect**lehetőséget.
 8. Ellenőrizze ezeket a beállításokat:
-   * Az **összevonás** letiltva értékre van állítva. ****
+   * Az **összevonás** letiltva értékre van állítva.
    * A **zökkenőmentes egyszeri bejelentkezés** **engedélyezve**értékre van állítva.
    * Az **átmenő hitelesítés** **engedélyezve**értékre van állítva.<br />
 
@@ -360,7 +360,7 @@ Fejezze be az átalakítást az Azure AD PowerShell-modul használatával:
  
 3. Az Azure ad-portálon válassza a **Azure Active Directory** > **Azure ad Connect**lehetőséget.
 4. Az összes összevont tartomány konvertálása után ellenőrizze ezeket a beállításokat:
-   * Az **összevonás** letiltva értékre van állítva. ****
+   * Az **összevonás** letiltva értékre van állítva.
    * A **zökkenőmentes egyszeri bejelentkezés** **engedélyezve**értékre van állítva.
    * Az **átmenő hitelesítés** **engedélyezve**értékre van állítva.<br />
 
@@ -454,5 +454,5 @@ További információ: [Azure Active Directory átmenő hitelesítés hibáinak 
 ## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg [Azure ad Connect tervezési fogalmakkal](plan-connect-design-concepts.md).
-* Válassza ki a [megfelelő hitelesítést](https://docs.microsoft.com/azure/security/azure-ad-choose-authn).
+* Válassza ki a [megfelelő hitelesítést](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
 * A [támogatott topológiák](plan-connect-design-concepts.md)megismerése.

@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: a623aa98cd26e1636e47cb0e2831eeced17935b9
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: abaf96b11abee0bf519a276f825b9c47cd333c1b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695399"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816325"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -65,7 +65,11 @@ A hely az a régió, ahol az egyéni rendszerkép létre lesz hozva. A rendszerk
 ```json
     "location": "<region>",
 ```
-    
+
+## <a name="tags"></a>Tags
+
+Ezek a generált rendszerképhez megadható kulcs/érték párok.
+
 ## <a name="depends-on-optional"></a>Függ (nem kötelező)
 
 Ez a választható szakasz használható annak biztosítására, hogy a folytatás előtt a függőségek befejeződik. 
@@ -344,7 +348,8 @@ Ezt a Windows-címtárak és a Linux-elérési utak támogatják, de vannak kül
  
 Ha hiba történt a fájl letöltése vagy egy megadott címtárba való behelyezése során, a testreszabási lépés sikertelen lesz, és ez a customization. log fájlban lesz.
 
->> Megjegyzés! A fájl-testreszabó csak kisméretű fájlok letöltésére alkalmas, < 20 MB-ot. A nagyobb fájlok letöltéséhez parancsfájl vagy beágyazott parancs használatos, a fájlok letöltésére szolgáló kód (például:, Linux `wget` vagy `curl`Windows `Invoke-WebRequest`).
+> [!NOTE]
+> A fájl-testreszabó csak kisméretű fájlok letöltésére alkalmas, < 20 MB-ot. A nagyobb fájlok letöltéséhez parancsfájl vagy beágyazott parancs használatos, a fájlok letöltésére szolgáló kód (például:, Linux `wget` vagy `curl`Windows `Invoke-WebRequest`).
 
 A fájl-testreszabó fájljai az [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)használatával tölthetők le az Azure Storage-ból.
 

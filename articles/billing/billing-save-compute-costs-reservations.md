@@ -5,14 +5,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/19/2019
+ms.date: 08/06/2019
 ms.author: banders
-ms.openlocfilehash: c63447ff0a3329e0cc0dc0605984ae4f26e9c25f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2e595fbee90b710ec6b8090a770d93e688a04818
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359234"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839992"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
@@ -38,7 +38,7 @@ A Windows rendszerű virtuális gépek és a SQL Database esetében a licencelé
 
 A csomagok megvásárlásához előfizetés-tulajdonosi szerepkörrel kell rendelkeznie egy vállalatnál (MS-AZR-0017P vagy MS-AZR-0148P) vagy utólagos elszámolású előfizetésben (MS-AZR-003P vagy MS-AZR-0023P). A felhőalapú megoldások szolgáltatói a Azure Portal vagy a [partner központ](/partner-center/azure-reservations) használatával vásárolhatják meg Azure Reservations.
 
-A Nagyvállalati Szerződés (EA) ügyfelek korlátozni tudják az EA-rendszergazdákra irányuló vásárlásokat. Ezt úgy teheti meg, hogy letiltja a **fenntartott példányok hozzáadása** lehetőséget az EA portálon. Egy foglalás megvásárlásához a nagyvállalati szerződéssel rendelkező rendszergazdának legalább egy EA-előfizetéshez előfizetés-tulajdonosnak kell lennie. Ez a lehetőség olyan vállalatok számára hasznos, akik egy központi csapatot szeretnének vásárolni a különböző költséghely-foglalások megvásárlásához. A vásárlást követően a központosított csapatok felvehetik a Cost Center-tulajdonosokat a foglalásokhoz. A tulajdonosok ezután a foglalást a saját előfizetésük körébe helyezhetik. A központi csapatnak nem kell előfizetés-tulajdonosi hozzáféréssel rendelkeznie a foglalás megvásárlásához.
+A Nagyvállalati Szerződés (EA) ügyfelek az EA-portálon a fenntartott **példányok hozzáadása** lehetőség letiltásával KORLÁTOZHATJÁK az EA rendszergazdáknak beérkező vásárlásokat. Egy foglalás megvásárlásához a nagyvállalati szerződéssel rendelkező rendszergazdának legalább egy EA-előfizetéshez előfizetés-tulajdonosnak kell lennie. Ez a lehetőség olyan vállalatok számára hasznos, akik egy központi csapatot szeretnének vásárolni a különböző költséghely-foglalások megvásárlásához. A vásárlást követően a központosított csapatok felvehetik a Cost Center-tulajdonosokat a foglalásokhoz. A tulajdonosok ezután a foglalást a saját előfizetésük körébe helyezhetik. A központi csapatnak nem kell előfizetés-tulajdonosi hozzáféréssel rendelkeznie a foglalás megvásárlásához.
 
 A foglalási kedvezmény csak a nagyvállalati, a felhőalapú megoldás-szolgáltató (CSP) és az utólagos elszámolású csomagok keretében vásárolt előfizetésekhez kapcsolódó erőforrásokra vonatkozik.
 
@@ -78,7 +78,7 @@ A hatókört bármikor frissítheti a foglalás megvásárlása után. Ehhez nyi
 
 ### <a name="monitor-and-optimize-reservation-usage"></a>A foglalások használatának monitorozása és optimalizálása
 
-A foglalási használatot többféleképpen is nyomon követheti – Azure Portalon, API-kon vagy a használati adatokon keresztül. Ha szeretné megtekinteni az összes olyan foglalást, amelyhez hozzáféréssel  rendelkezik, lépjen a Azure Portal foglalások pontra. A foglalások rács a foglalás utolsó rögzített kihasználtságának százalékos arányát jeleníti meg. Kattintson a foglalásra a foglalás hosszú távú kihasználtságának megtekintéséhez.
+A foglalási használatot többféleképpen is nyomon követheti – Azure Portalon, API-kon vagy a használati adatokon keresztül. Ha szeretné megtekinteni az összes olyan foglalást, amelyhez hozzáféréssel rendelkezik, lépjen a Azure Portal foglalások pontra. A foglalások rács a foglalás utolsó rögzített kihasználtságának százalékos arányát jeleníti meg. Kattintson a foglalásra a foglalás hosszú távú kihasználtságának megtekintéséhez.
 
 A foglalás kihasználtságát [API](billing-reservation-apis.md#see-reservation-usage) -k és a [használati adatok](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks) alapján is lekérheti, ha Ön nagyvállalati szerződéssel rendelkező ügyfél.
 

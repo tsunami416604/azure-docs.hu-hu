@@ -1,6 +1,6 @@
 ---
-title: További tudnivalók a Microsoft-hitelesítési tár (MSAL) |} Az Azure
-description: A Microsoft-hitelesítési tár (MSAL) lehetővé teszi az alkalmazásfejlesztők annak érdekében, hogy a védett webes API-jainak hívására jogkivonatok beszerzéséhez. Webes API-k a Microsoft Graph, más Microsoft APIS, külső webes API-k vagy saját webes API-t is lehet. Az MSAL több architektúrák és platformokat támogatja.
+title: Tudnivalók a Microsoft Authentication Library (MSAL) szolgáltatásról | Azure
+description: A Microsoft Authentication Library (MSAL) lehetővé teszi az alkalmazások fejlesztői számára a jogkivonatok beszerzését a biztonságos webes API-k meghívásához. Ezek a webes API-k lehetnek a Microsoft Graph, más Microsoft API-k, harmadik féltől származó webes API-k vagy a saját webes API-jai. A MSAL több alkalmazás-architektúrát és platformot is támogat.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/25/2019
@@ -17,51 +17,51 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bd3e7d47b6e3083af6f388a5cd750da240a76b6
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
-ms.translationtype: MT
+ms.openlocfilehash: be24ad78ae8f8977284deac0f3d978b35c621bcd
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66392880"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834964"
 ---
-# <a name="overview-of-microsoft-authentication-library-msal"></a>A Microsoft-hitelesítési tár (MSAL) áttekintése
-A Microsoft-hitelesítési tár (MSAL) lehetővé teszi a fejlesztők beszerezni [jogkivonatok](developer-glossary.md#security-token) a Microsoft identity platform végpont eléréséhez a védett webes API-k. Webes API-k a Microsoft Graph, más Microsoft APIS, külső webes API-k vagy saját webes API-t is lehet. Az MSAL érhető el .NET, JavaScript, Android és iOS-, amely számos különböző architektúrák és platformokat támogatja.
+# <a name="overview-of-microsoft-authentication-library-msal"></a>A Microsoft Authentication Library (MSAL) áttekintése
+A Microsoft Authentication Library (MSAL) lehetővé teszi a [](developer-glossary.md#security-token) fejlesztők számára a tokenek beszerzését a Microsoft Identity platform-végpontból a biztonságos webes API-k eléréséhez. Ezek a webes API-k lehetnek a Microsoft Graph, más Microsoft API-k, harmadik féltől származó webes API-k vagy a saját webes API-jai. A MSAL olyan .NET-, JavaScript-, Android-és iOS-eszközökhöz érhető el, amelyek számos különböző alkalmazás-architektúrát és platformot támogatnak.
 
-Az MSAL lekérni a jogkivonatokat, a különböző platformokhoz egységes API többféle lehetőséget kínál. Az MSAL használatával a következő előnyökkel jár:
+A MSAL számos lehetőséget kínál a jogkivonatok lekérésére, egy egységes API-val számos platformon. A MSAL használata a következő előnyöket biztosítja:
 
-* Nem kell közvetlenül az OAuth-kódtárak vagy a protokoll kódot használhatja az alkalmazásban.
-* Jogkivonatok nevében egy alkalmazás (ha alkalmazható a platform) vagy a felhasználó nevében beszerzi.
-* Token gyorsítótárazza, és frissíti az Ön számára jogkivonatok, amelyek közel jár le. Nem kell saját jogkivonat lejárati kezelni.
-* Adja meg, mely a célközönség az alkalmazásban (a szervezeti, több cégek vagy intézmények, munkahelyi, és az iskolai és személyes Microsoft-fiókok esetében közösségi identitások az Azure AD B2C felhasználóinak független, és az országos felhők) segítségével.
-* Állítsa be a konfigurációs fájlokat az alkalmazás segítségével.
-* Az alkalmazás hibaelhárítása teszi elérhetővé a gyakorlatban hasznosítható kivételek, a naplózás és a telemetriai adatok segítségével.
+* Nem kell közvetlenül használni a OAuth-kódtárakat vagy-kódokat az alkalmazás protokollján.
+* Egy felhasználó nevében vagy egy alkalmazás nevében szerzi be a jogkivonatokat (ha alkalmazható a platformra).
+* Fenntart egy jogkivonat-gyorsítótárat, és frissíti a jogkivonatokat, amikor közel vannak a lejárathoz. Nem kell kezelnie a token lejáratát a sajátján.
+* Segítséget nyújt annak megadásához, hogy az alkalmazás milyen célközönséget jelentkezzen be (szervezete, több szervezethez, munkahelyi és iskolai és személyes Microsoft-fiók, közösségi identitás a Azure AD B2C, a szuverén és az országos felhőkben).
+* Segítséget nyújt az alkalmazás konfigurációs fájlokból való beállításához.
+* Segítséget nyújt az alkalmazás hibakereséséhez, így végrehajtható kivételeket, naplózást és telemetria tehet közzé.
 
-## <a name="application-types-and-scenarios"></a>Alkalmazástípusok és forgatókönyvek
-Az MSAL használatával, egy jogkivonat szerezhetők be számos különböző alkalmazástípussal: webes alkalmazások, webes API-kat, egylapos alkalmazások (JavaScript), mobil- és natív alkalmazások, és démonok és kiszolgálóoldali alkalmazásoknak. 
+## <a name="application-types-and-scenarios"></a>Alkalmazások típusai és forgatókönyvei
+A MSAL használatával számos alkalmazásból szerezhet be tokent: webalkalmazások, webes API-k, egylapos alkalmazások (JavaScript), mobil és natív alkalmazások, valamint démonok és kiszolgálóoldali alkalmazások. 
 
-Az MSAL használható számos alkalmazás-forgatókönyvek, beleértve a következőket:
+A MSAL számos alkalmazási helyzetben használható, többek között az alábbiakat is beleértve:
 
-* [Egylapos alkalmazások (JavaScript)](scenario-spa-overview.md) 
-* [Bejelentkezés a felhasználók a webes alkalmazás](scenario-web-app-sign-user-overview.md)
-* [Webes alkalmazás a felhasználó bejelentkezik, és a felhasználó nevében a webes API meghívása](scenario-web-app-call-api-overview.md)
-* [Webes API-k védelme csak a hitelesített felhasználók hozzá tud férni](scenario-protected-web-api-overview.md)
-* [Webes API meghívása egy másik alsóbb rétegbeli webes API-t a bejelentkezett felhasználó nevében](scenario-web-api-call-api-overview.md)
-* [Asztali alkalmazás hívja a webes API a bejelentkezett felhasználó nevében](scenario-desktop-overview.md)
-* [Webes API meghívása interaktív módon van bejelentkezett felhasználó nevében mobilalkalmazás](scenario-mobile-overview.md).
-* [Asztali/szolgáltatás démon alkalmazás saját maga nevében webes API meghívása](scenario-daemon-overview.md)
+* [Egyoldalas alkalmazások (JavaScript)](scenario-spa-overview.md) 
+* [Webalkalmazás-aláírás a felhasználókban](scenario-web-app-sign-user-overview.md)
+* [Webalkalmazás-aláírás a felhasználó nevében, és webes API meghívása a felhasználó nevében](scenario-web-app-call-api-overview.md)
+* [Webes API-k védelme, hogy csak a hitelesített felhasználók férhessenek hozzá.](scenario-protected-web-api-overview.md)
+* [Webes API, amely egy másik alsóbb rétegbeli webes API-t hív meg a bejelentkezett felhasználó nevében](scenario-web-api-call-api-overview.md)
+* [A bejelentkezett felhasználó nevében webes API-t hívó asztali alkalmazás](scenario-desktop-overview.md)
+* A [mobil alkalmazás a webes API-t hívja interaktív módon bejelentkezett felhasználó nevében](scenario-mobile-overview.md).
+* [Desktop/Service Daemon-alkalmazás a webes API-t saját nevében hívja meg](scenario-daemon-overview.md)
 
 ## <a name="languages-and-frameworks"></a>Nyelvek és keretrendszerek
 
 | Erőforrástár | Támogatott platformok és keretrendszerek|
 | --- | --- | 
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/>[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET-keretrendszer, a .NET Core, Xamarin Android, Xamarin iOS-, univerzális Windows-Platform|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/>[MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript/TypeScript keretrendszerek, például az AngularJS, az Ember.js vagy Durandal.js|
-| ![Android az MSAL](media/sample-v2-code/logo_Android.png) <br/>[Az MSAL az Androidhoz (előzetes verzió)](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
-| ![Az MSAL iOS-hez](media/sample-v2-code/logo_iOS.png) <br/>[MSAL.Objective-C (preview)](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS|
+| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/>[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET-keretrendszer, .NET Core, Xamarin Android, Xamarin iOS, Univerzális Windows-platform|
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/>[MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript/írógéppel keretrendszerek, mint például a AngularJS, az ember. js vagy a Durante. js|
+| ![MSAL Android rendszerhez](media/sample-v2-code/logo_Android.png) <br/>[MSAL for Android (előzetes verzió)](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
+| ![MSAL iOS rendszerhez](media/sample-v2-code/logo_iOS.png) <br/>[MSAL. Objective-C (előzetes verzió)](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS|
 
-## <a name="differences-between-adal-and-msal"></a>Adal-t és az MSAL közötti különbségek
-Az Active Directory Authentication Library (ADAL) integrálható az Azure AD fejlesztőknek (1.0-s verzió) végponton, ahol a MSAL integrálható a Microsoft identity platform (2.0-s verzió) végponthoz. Az 1.0-s verziójú végpont munkahelyi fiókokat, de nem személyes fiókokat támogatja. A v2.0-végpont egyetlen hitelesítési rendszerben egyesíti a személyes és munkahelyi fiókokat. Ezenkívül az MSAL is kaphat az Azure AD B2C hitelesítések.
+## <a name="differences-between-adal-and-msal"></a>ADAL és MSAL közötti különbségek
+Active Directory-hitelesítési tár (ADAL) integrálható az Azure AD for Developers (v 1.0) végponttal, ahol a MSAL a Microsoft Identity platform (v 2.0) végponttal integrálódik. A v 1.0 végpont támogatja a munkahelyi fiókokat, a személyes fiókokat azonban nem. A 2.0-s végpont a személyes Microsoft-fiókok és-munkahelyi fiókok egységesítése egyetlen hitelesítési rendszerbe. Emellett a MSAL-mel is beszerezhetők a Azure AD B2C hitelesítései.
 
-További információkért olvassa el [MSAL.NET való áttérés ADAL.NET](msal-net-migration.md) és [MSAL.js való áttérés ADAL.js](msal-compare-msal-js-and-adal-js.md).
+További információért olvassa el az áttelepítés a [MSAL.net-ről a ADAL.net](msal-net-migration.md) -ről és a [MSAL. js-re való Migrálás a ADAL. js-ből](msal-compare-msal-js-and-adal-js.md)című témakört.
 
             

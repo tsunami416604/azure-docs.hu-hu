@@ -4,14 +4,14 @@ description: A funkciók az Azure Resource Manager-sablon használatával lekér
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 07/31/2019
+ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7548b75f201c896e3a5248cb9d0154a9a676a86f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2ec6e58438e7be953e1f672fb815ff3f68a7f252
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698197"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839256"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Erőforrás-funkciók az Azure Resource Manager-sablonok
 
@@ -342,8 +342,8 @@ Az erőforrások futásidejű állapotot képviselő objektumot adja vissza.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| resourceName vagy resourceIdentifier |Igen |sztring |Név vagy erőforrás egyedi azonosítója. |
-| apiVersion |Nem |sztring |A megadott erőforrás API-verzió. Adja meg az értékét üzembe helyezésekor az erőforrás nem található ugyanazt a sablont. Általában a következő formátumban **éééé-hh-nn**. |
+| resourceName vagy resourceIdentifier |Igen |sztring |Név vagy erőforrás egyedi azonosítója. Amikor egy erőforrást az aktuális sablon hivatkozik, adja meg az erőforrásnév csak paraméterként. Egy korábban központilag telepített erőforrásra hivatkozva adja meg az erőforrás-azonosítót. |
+| apiVersion |Nem |sztring |A megadott erőforrás API-verzió. Adja meg az értékét üzembe helyezésekor az erőforrás nem található ugyanazt a sablont. Általában a következő formátumban **éééé-hh-nn**. Az erőforrás érvényes API-verzióihoz lásd: [sablon-hivatkozás](/azure/templates/). |
 | "Teljes" |Nem |sztring |Érték, amely megadja, hogy a teljes erőforrás-objektumot ad vissza. Ha nem ad meg `'Full'`, csak az erőforrás tulajdonságai objektumot ad vissza. A teljes objektum például az erőforrás-azonosító és a hely értékeket tartalmaz. |
 
 ### <a name="return-value"></a>Vrácená hodnota
@@ -352,17 +352,7 @@ Minden erőforrástípus a referencia-függvény különböző tulajdonságait a
 
 ### <a name="remarks"></a>Megjegyzések
 
-A referencia-függvényt a korábban üzembe helyezett erőforrás vagy a jelenlegi sablon üzembe helyezett erőforrás futási állapotát olvassa be. Ez a cikk bemutatja a példák mindkét forgatókönyvet támogatja. Amikor egy erőforrást az aktuális sablon hivatkozik, adja meg az erőforrásnév csak paraméterként. Amikor egy korábban telepített erőforrásra hivatkozik, adja meg az erőforrás-azonosító és API-verziót az erőforrás. Az erőforrás érvényes API-verziók segítségével meghatározhatja a [sablonreferenciája](/azure/templates/).
-
-A referencia-függvény csak egy erőforrás-definíció tulajdonságainak és a kimeneti szakasz egy sablon vagy telepítési használható. Ha tulajdonság- [iterációt](resource-group-create-multiple.md#property-iteration)használ, használhatja a Reference függvényt `input` , mert a kifejezés hozzá van rendelve az erőforrás tulajdonsághoz. Nem használhatja a t, `count` mert a hivatkozási függvény feloldása előtt meg kell határozni a darabszámot.
-
-A [beágyazott](resource-group-linked-templates.md#nested-template) sablon kimenetében lévő Reference függvény nem használható a beágyazott sablonban üzembe helyezett erőforrások visszaküldéséhez. Ehelyett használjon [csatolt sablont](resource-group-linked-templates.md#external-template-and-external-parameters).
-
-A referencia-függvény használatával akkor implicit módon deklarálja, hogy egy erőforrás függ-e egy másik erőforrás, ha a hivatkozott erőforrás kiosztása belül ugyanazt a sablont, és a nevét (nem erőforrás-azonosító) az erőforrás hivatkozik. Emellett a dependsOn tulajdonság használatához nincs szükség. A függvény nem kerül kiértékelésre, a hivatkozott erőforrás üzembe helyezési befejeződéséig.
-
-Ha a **hivatkozási** függvényt egy feltételesen üzembe helyezett erőforrásban használja, akkor a függvény akkor is ki lesz értékelve, ha az erőforrás nincs telepítve.  Hibaüzenet jelenik meg, ha a **hivatkozási** függvény olyan erőforrásra hivatkozik, amely nem létezik. Az **IF** függvény használatával győződjön meg arról, hogy a függvény csak az erőforrás telepítésekor lesz kiértékelve. Tekintse [](resource-group-template-functions-logical.md#if) meg az IF függvényt egy olyan sablon esetében, amely a IF és a hivatkozást egy feltételesen telepített erőforrással használja.
-
-Tekintse meg a nevét és a egy erőforrástípushoz értékeit, hozzon létre egy sablont, amely az objektumot ad vissza, a kimeneti szakaszban. Ha az adott típusú erőforrással rendelkezik, a sablon bármely új erőforrások üzembe helyezése nélkül adja vissza az objektumot. 
+A referencia-függvényt a korábban üzembe helyezett erőforrás vagy a jelenlegi sablon üzembe helyezett erőforrás futási állapotát olvassa be. Ez a cikk bemutatja a példák mindkét forgatókönyvet támogatja.
 
 Általában használni a **referencia** funkció egy adott érték visszaadása egy objektumot, például a blob-végpont URI-t vagy teljesen minősített tartománynevét.
 
@@ -403,7 +393,45 @@ Használat `'Full'` erőforrás értékek, amelyek nem részei a Tulajdonságok 
     ...
 ```
 
-A fenti sablon teljes példa: [Key vault Windows](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo08.msiWindowsToKeyvault.json). Egy hasonló példa érhető el az [Linux](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo07.msiLinuxToArm.json).
+### <a name="valid-uses"></a>Érvényes használati módok
+
+A referencia-függvény csak egy erőforrás-definíció tulajdonságainak és a kimeneti szakasz egy sablon vagy telepítési használható. Ha tulajdonság- [iterációt](resource-group-create-multiple.md#property-iteration)használ, használhatja a Reference függvényt `input` , mert a kifejezés hozzá van rendelve az erőforrás tulajdonsághoz. Nem használhatja a t, `count` mert a hivatkozási függvény feloldása előtt meg kell határozni a darabszámot.
+
+A [beágyazott](resource-group-linked-templates.md#nested-template) sablon kimenetében lévő Reference függvény nem használható a beágyazott sablonban üzembe helyezett erőforrások visszaküldéséhez. Ehelyett használjon [csatolt sablont](resource-group-linked-templates.md#external-template-and-external-parameters).
+
+Ha a **hivatkozási** függvényt egy feltételesen üzembe helyezett erőforrásban használja, akkor a függvény akkor is ki lesz értékelve, ha az erőforrás nincs telepítve.  Hibaüzenet jelenik meg, ha a **hivatkozási** függvény olyan erőforrásra hivatkozik, amely nem létezik. Az **IF** függvény használatával győződjön meg arról, hogy a függvény csak az erőforrás telepítésekor lesz kiértékelve. Tekintse [](resource-group-template-functions-logical.md#if) meg az IF függvényt egy olyan sablon esetében, amely a IF és a hivatkozást egy feltételesen telepített erőforrással használja.
+
+### <a name="implicit-dependency"></a>Implicit függőség
+
+A referencia-függvény használatával akkor implicit módon deklarálja, hogy egy erőforrás függ-e egy másik erőforrás, ha a hivatkozott erőforrás kiosztása belül ugyanazt a sablont, és a nevét (nem erőforrás-azonosító) az erőforrás hivatkozik. Emellett a dependsOn tulajdonság használatához nincs szükség. A függvény nem kerül kiértékelésre, a hivatkozott erőforrás üzembe helyezési befejeződéséig.
+
+### <a name="resource-name-or-identifier"></a>Erőforrás neve vagy azonosítója
+
+Ha egy olyan erőforrásra hivatkozik, amely ugyanabban a sablonban van telepítve, adja meg az erőforrás nevét.
+
+```json
+"value": "[reference(parameters('storageAccountName'))]"
+```
+
+Ha olyan erőforrásra hivatkozik, amely nem ugyanabban a sablonban van telepítve, adja meg az erőforrás-azonosítót.
+
+```json
+"value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
+```
+
+Annak elkerülése érdekében, hogy a rendszer melyik erőforrásra hivatkozik, megadhat egy teljesen minősített erőforrás nevét.
+
+```json
+"value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')))]"
+```
+
+Egy erőforrásra vonatkozó teljes körű hivatkozás létrehozásakor a szegmensek és a név összevonásának sorrendje nem csupán a kettő összefűzése. Ehelyett a névtér után olyan *típusú/név* párokat használjon, amelyek legalább a legpontosabbak:
+
+**{erőforrás-szolgáltató-névtér}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-name}]**
+
+Példa:
+
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt``Microsoft.Compute/virtualMachines/extensions/myVM/myExt` helyes, helytelen
 
 ### <a name="example"></a>Példa
 
@@ -539,7 +567,9 @@ A visszaadott objektum a következő formátumban kell megadni:
 {
   "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
   "name": "{resourceGroupName}",
+  "type":"Microsoft.Resources/resourceGroups",
   "location": "{resourceGroupLocation}",
+  "managedBy": "{identifier-of-managing-resource}",
   "tags": {
   },
   "properties": {
@@ -547,6 +577,8 @@ A visszaadott objektum a következő formátumban kell megadni:
   }
 }
 ```
+
+A **többé** tulajdonság csak olyan erőforráscsoportok esetében lesz visszaadva, amelyek egy másik szolgáltatás által felügyelt erőforrásokat tartalmaznak. A felügyelt alkalmazások, a Databricks és az AK esetében a tulajdonság értéke a kezelő erőforrás erőforrás-azonosítója.
 
 ### <a name="remarks"></a>Megjegyzések
 
@@ -592,6 +624,7 @@ Az előző példában egy objektumot ad vissza a következő formátumban:
 {
   "id": "/subscriptions/{subscription-id}/resourceGroups/examplegroup",
   "name": "examplegroup",
+  "type":"Microsoft.Resources/resourceGroups",
   "location": "southcentralus",
   "properties": {
     "provisioningState": "Succeeded"

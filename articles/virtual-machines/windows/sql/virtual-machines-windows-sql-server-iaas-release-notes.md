@@ -12,18 +12,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 2/13/2019
-ms.openlocfilehash: e7dea69b507117ba8a3765b5e9bc1fad46be4c53
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.date: 08/01/2019
+ms.openlocfilehash: e656cd4d901ad9f3180963047a85cd980e56df8b
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444204"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774203"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>SQL Server Azure-beli virtuális gépek kibocsátási megjegyzései
 
 Az Azure-ban a SQL Server beépített rendszerképpel rendelkező virtuális gépek helyezhetők üzembe. Ez a cikk összefoglalja az [Azure Virtual machines SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)legújabb kiadásaiban található új szolgáltatásokat és fejlesztéseket. A cikk felsorolja azokat a jelentős tartalmi frissítéseket is, amelyek nem kapcsolódnak közvetlenül a kiadáshoz, hanem ugyanabban az időkeretben vannak közzétéve. További Azure-szolgáltatások fejlesztése: szolgáltatás- [frissítések](https://azure.microsoft.com/updates)
 
+## <a name="july-2019"></a>Július 2019
+
+### <a name="documentation-improvements"></a>A dokumentáció fejlesztése
+
+| Dokumentáció | Részletek |
+| --- | --- |
+| **SQL virtuális gép áthelyezése másik régióba** | A Azure Site Recovery használatával [áttelepítheti a SQL Server VM az egyik régióból](virtual-machines-windows-sql-move-different-region.md)a másikba. |
+| &nbsp; | &nbsp; |
 
 ## <a name="june-2019"></a>Június 2019
 
@@ -73,7 +81,7 @@ Az Azure-ban a SQL Server beépített rendszerképpel rendelkező virtuális gé
 | --- | --- |
 | **Egyéni rendszerkép-támogatás** | Most már telepítheti az [SQL IaaS bővítményt](virtual-machines-windows-sql-server-agent-extension.md#installation) az egyéni operációs rendszerre és az SQL-lemezképekre, amely a [rugalmas licencelés](virtual-machines-windows-sql-ahb.md)korlátozott funkcionalitását kínálja. Ha az SQL-erőforrás-szolgáltatóval regisztrálja az egyéni rendszerképet, adja meg a licenc típusát "AHUB" néven, ellenkező esetben a regisztráció sikertelen lesz. | 
 | **Megnevezett példányok támogatása** | Mostantól megnevezett példánnyal is használhatja az [SQL IaaS bővítményt](virtual-machines-windows-sql-server-agent-extension.md#installation) , ha az alapértelmezett példány eltávolítása megfelelő volt. | 
-| **Portál továbbfejlesztése** | A SQL Server VM üzembe helyezésének Azure Portali élményét a használhatóság javítása érdekében kialakítjuk. További információkért tekintse meg [a rövid útmutatót](quickstart-sql-vm-create-portal.md) , valamint a SQL Server VM üzembe helyezésének [részletes leírását](virtual-machines-windows-portal-sql-server-provision.md) .|
+| **Portál továbbfejlesztése** | A SQL Server VM üzembe helyezésének Azure Portali élményét a használhatóság javítása érdekében kialakítjuk. További információkért tekintse meg a rövid [](quickstart-sql-vm-create-portal.md) útmutatót, valamint a [](virtual-machines-windows-portal-sql-server-provision.md) SQL Server VM üzembe helyezésének részletes leírását.|
 | &nbsp; | &nbsp; |
 
 

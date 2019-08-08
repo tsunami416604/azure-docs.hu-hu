@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: d4724672510d6ccbbc819691d621400cb00d8c9a
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: cd55e078e14ec34006df05096f161e7bdef39a03
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405439"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827226"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Az adattárház frissítése a Gen2
 
@@ -88,7 +88,7 @@ Az alábbi lépéseket egy meglévő Gen1-adattárházon végezheti el: saját f
 - [Helyben történő frissítés](upgrade-to-latest-generation.md) – ez a beállítás a meglévő Gen1-adattárházat a Gen2-re frissíti. A frissítési folyamat során az adattárház újraindításakor a kapcsolat rövid csökkenése (körülbelül 5 perc) lesz.  Az adattárház újraindítása után a szolgáltatás teljes mértékben elérhető lesz. Ha a frissítés során problémák merülnek fel, nyisson meg egy [támogatási kérést](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) , és hivatkozzon a "Gen2 upgrade" kifejezésre a lehetséges okok miatt.
 - [Frissítés visszaállítási pontról](sql-data-warehouse-restore.md) – hozzon létre egy felhasználó által definiált visszaállítási pontot az aktuális Gen1-adatraktárban, majd állítsa vissza közvetlenül egy Gen2-példányra. A meglévő Gen1-adattárház továbbra is érvényben marad. A visszaállítás befejezése után a Gen2-adattárház teljes mértékben elérhető lesz a használatra.  Miután futtatta az összes tesztelési és érvényesítési folyamatot a visszaállított Gen2-példányon, törölheti az eredeti Gen1-példányt.
 
-   - 1\. lépés: A Azure Portal [hozza létre a felhasználó által definiált visszaállítási pontot](sql-data-warehouse-restore.md#create-a-user-defined-restore-point-using-the-azure-portal).
+   - 1\. lépés: A Azure Portal [hozza létre a felhasználó által definiált visszaállítási pontot](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal).
    - 2\. lépés: Felhasználó által definiált visszaállítási pontról történő visszaállításkor állítsa a "teljesítményszint" értéket az előnyben részesített Gen2-szintre.
 
 Visszaesést tapasztalhat a teljesítményben, miközben a frissítési folyamat az adatfájlok frissítését végzi a háttérben. A teljesítménycsökkenés teljes időtartama az adatfájlok méretétől függően változik.
@@ -110,7 +110,7 @@ További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.
 
 **K: Hogyan befolyásolja a frissítések az Automation-parancsfájlokat?**
 
-- V: A szolgáltatási szintre vonatkozó célkitűzésre hivatkozó Automation-parancsfájlokat úgy kell módosítani, hogy azok megfeleljenek a Gen2-nek.  Tekintse meg [a részleteket.](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal)
+- V: A szolgáltatási szintre vonatkozó célkitűzésre hivatkozó Automation-parancsfájlokat úgy kell módosítani, hogy azok megfeleljenek a Gen2-nek.  Tekintse [](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal)meg a részleteket.
 
 **K: Mennyi ideig tart az önálló frissítés?**
 
@@ -155,6 +155,6 @@ További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.
 - [Erőforrás-állapot figyelője](https://docs.microsoft.com/azure/service-health/resource-health-overview)
 - [Áttekintés az áttelepítés megkezdése előtt](upgrade-to-latest-generation.md#before-you-begin)
 - [Helyben történő frissítés frissítése visszaállítási pontról](upgrade-to-latest-generation.md)
-- [Felhasználó által definiált visszaállítási pont létrehozása](sql-data-warehouse-restore.md#restore-through-the-azure-portal)
-- [Útmutató a Gen2 való visszaállításhoz](sql-data-warehouse-restore.md#restore-an-active-or-paused-database-using-the-azure-portal)
+- [Felhasználó által definiált visszaállítási pont létrehozása](sql-data-warehouse-restore-points.md)
+- [Útmutató a Gen2 való visszaállításhoz](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal)
 - [SQL Data Warehouse támogatási kérelem megnyitása](https://go.microsoft.com/fwlink/?linkid=857950)

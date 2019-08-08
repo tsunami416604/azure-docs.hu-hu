@@ -1,6 +1,6 @@
 ---
-title: Titkosítás inaktív ügyfél által kezelt kulcsok használata az Azure Key Vault (előzetes verzió) – Azure Search
-description: Kiegészítés a kiszolgálóoldali titkosítás az indexeket és a kulcsok létrehozása és kezelése az Azure Key Vault révén az Azure Search szinonimatérképet keresztül.
+title: Inaktív titkosítás az ügyfél által felügyelt kulcsokkal Azure Key Vaultban (előzetes verzió) – Azure Search
+description: A Azure Key Vaultban létrehozott és felügyelt kulcsok használatával kiegészítheti a kiszolgálóoldali titkosítást az indexek és a szinonimák Azure Search segítségével.
 author: NatiNimni
 manager: jlembicz
 ms.author: natinimn
@@ -9,43 +9,43 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
-ms.openlocfilehash: 949628fa52b4b020d70b75f4a0e7895f1e0f8bba
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 9d4494cb46bece7402b1284ee6324ca9ff86e0f3
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485313"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779107"
 ---
-# <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Az Azure Search encryption ügyfél által kezelt kulcsok használata az Azure Key Vaultban
+# <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Search a titkosítást az ügyfél által felügyelt kulcsokkal Azure Key Vault
 
 > [!Note]
-> Az ügyfél által felügyelt kulcsok titkosítási előzetes állapotban van, nem éles használatra szánt. A [REST API verzióját 2019-05-06-Preview](search-api-preview.md) ezt a szolgáltatást biztosít. A .NET SDK 8.0. dátumú előzetes sémaverzióra is használhatja.
+> Az ügyfél által felügyelt kulcsokkal történő titkosítás előzetes verzióban érhető el, és nem éles használatra készült. A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Használhatja a .NET SDK 8,0-es verziójának előzetes verzióját is.
 >
-> Ez a szolgáltatás ingyenes szolgáltatásokhoz nem érhető el. Ekkor vagy később a 2019-01-01 létrehozott számlázható keresési szolgáltatás kell használnia. Rendszer jelenleg nem portál támogatja.
+> Ez a funkció ingyenes szolgáltatásokhoz nem érhető el. Az 2019-01-01-on vagy azt követően létrehozott számlázható keresési szolgáltatást kell használnia. Jelenleg nincs portál-támogatás.
 
-Alapértelmezés szerint az Azure Search titkosítja az inaktív felhasználói tartalom [szolgáltatás által kezelt kulcsokkal](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest#data-encryption-models). Egy további titkosítási réteget kulcsok létrehozása és kezelése az Azure Key Vault használata az alapértelmezett titkosítási egészítheti ki. Ez a cikk végigvezeti a lépéseken.
+Alapértelmezés szerint a Azure Search a [szolgáltatás](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models)által felügyelt kulcsokkal titkosítja a felhasználói tartalmakat. Az alapértelmezett titkosítás további titkosítási réteggel kiegészíthető a Azure Key Vaultban létrehozott és felügyelt kulcsok használatával. Ez a cikk végigvezeti a lépéseken.
 
-Kiszolgálóoldali titkosítás támogatott integrációjával [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview). Létrehozhat saját titkosítási kulcsok és a key vaultban tárolja őket, vagy használhatja az Azure Key Vault API-k készítése a titkosítási kulcsokat. Az Azure Key Vault is naplózhatja a kulcshasználatot. 
+A kiszolgálóoldali titkosítást a [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)integrációja támogatja. Létrehozhatja saját titkosítási kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-jait a titkosítási kulcsok létrehozásához. A Azure Key Vault használatával is naplózhatja a kulcshasználat. 
 
-Az ügyfél által felügyelt kulcsok titkosítási index vagy szinten szinonimát térkép létrehozásakor azokat az objektumokat, nem pedig a keresési szolgáltatási szint van beállítva. Tartalom, amely már nem titkosítható. 
+Az ügyfél által felügyelt kulcsokkal történő titkosítás az index vagy a szinonimák leképezési szintjén van konfigurálva, ha ezek az objektumok létre lettek hozva, és nem a keresési szolgáltatás szintjén. A már létező tartalmak nem titkosíthatók. 
 
-A Key vault-kulcstartók különböző különböző kulcsokat is használhat. Ez azt jelenti, hogy egyetlen keresési szolgáltatás több titkosított indexes\synonym térképek, minden egyes titkosítva, esetlegesen különböző ügyfél által felügyelt kulcsot használ, indexes\synonym leképezések nem titkosított ügyfél által kezelt kulcsok használata mellett is üzemeltethet. 
+A különböző kulcstartók különböző kulcsokat is használhatnak. Ez azt jelenti, hogy egyetlen keresési szolgáltatás több titkosított indexes\synonym-leképezést is képes tárolni, amelyek mindegyike egy másik, az ügyfél által felügyelt kulcsokat használó, az ügyfél által felügyelt kulcsokkal nem titkosított indexes\synonym-térképek mellett minden más felhasználó által felügyelt 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben a példában a következő szolgáltatásokat használja. 
+Ebben a példában a következő szolgáltatásokat használjuk. 
 
-+ [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben az oktatóanyagban egy ingyenes szolgáltatás használhatja.
++ [Hozzon létre egy Azure Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást.
 
-+ [Hozzon létre egy Azure Key Vault-erőforrást](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) vagy nem található az előfizetéshez tartozó meglévő-tároló.
++ [Hozzon létre egy Azure Key Vault erőforrást](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) , vagy keressen egy meglévő tárat az előfizetése alatt.
 
-+ [Az Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) vagy [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli) -konfigurációs feladatokhoz használatos.
++ A konfigurációs feladatokhoz [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) vagy [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) van használatban.
 
-+ [Postman](search-get-started-postman.md), [Azure PowerShell-lel](search-create-index-rest-api.md) és [Azure Search SDK](https://aka.ms/search-sdk-preview) hívja az előzetes verziójú REST API segítségével. Nincs portál vagy ügyfél által felügyelt titkosítás jelenleg .NET SDK-val támogatása.
++ [](search-get-started-postman.md)A Poster, a [Azure PowerShell](search-create-index-rest-api.md) és az [Azure Search SDK](https://aka.ms/search-sdk-preview) hívható meg az előzetes verziójú REST API. Jelenleg nem érhető el portál vagy .NET SDK-támogatás az ügyfél által felügyelt titkosításhoz.
 
-## <a name="1---enable-key-recovery"></a>1 - kulcs-helyreállítási engedélyezése
+## <a name="1---enable-key-recovery"></a>1 – kulcshelyreállítás engedélyezése
 
-Ez a lépés nem kötelező, de erősen ajánlott. Engedélyezése után az Azure Key Vault-erőforrás létrehozásához, **a helyreállítható Törlés** és **kiürítése védelmi** a kijelölt Key vaultban a következő PowerShell vagy az Azure CLI-parancsok végrehajtásával:   
+Ez a lépés nem kötelező, de kifejezetten ajánlott. A Azure Key Vault erőforrás létrehozása után a következő PowerShell-vagy Azure CLI-parancsok végrehajtásával engedélyezze a **védelem** **törlését** és kiürítését a kiválasztott kulcstartóban:   
 
 ```powershell
 $resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "<vault_name>").ResourceId
@@ -62,80 +62,80 @@ az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --en
 ```
 
 >[!Note]
-> A titkosítás, az ügyfél által felügyelt kulcsokat a szolgáltatás rendkívül jellege miatt az Azure Search nem sikerült beolvasni az adatokat az Azure Key vault-kulcs törlése. Véletlen Key Vault-kulcsok törlése okozta adatvesztés megelőzése érdekében azt javasoljuk a helyreállítható törlés és a végleges törlés védelem engedélyezése a kiválasztott kulcstartó. További információkért lásd: [Azure Key Vault helyreállítható Törlés](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).   
+> Az ügyfél által felügyelt kulcsok szolgáltatással való titkosítás jellegéből adódóan Azure Search nem fogja tudni lekérni az adatait, ha az Azure Key Vault-kulcsot törlik. Ha nem szeretné megakadályozni az adatvesztést a véletlen Key Vaulti törlések miatt, javasoljuk, hogy engedélyezze a helyreállítható törlést és a védelem kiürítését a kiválasztott kulcstartón. További információ: [Azure Key Vault Soft-delete](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).   
 
-## <a name="2---create-a-new-key"></a>2 – hozzon létre egy új kulcsot
+## <a name="2---create-a-new-key"></a>2 – új kulcs létrehozása
 
-Ha az Azure Search-tartalom titkosítása a meglévő kulcsot használ, akkor kihagyhatja ezt a lépést.
+Ha meglévő kulcsot használ a Azure Search tartalom titkosításához, hagyja ki ezt a lépést.
 
-1. [Jelentkezzen be az Azure portal](https://portal.azure.com) , és keresse meg a kulcstartó-irányítópultra.
+1. [Jelentkezzen](https://portal.azure.com) be Azure Portalba, és navigáljon a Key Vault irányítópultra.
 
-1. Válassza ki a **kulcsok** beállítást a bal oldali navigációs panelen, és kattintson a **+ létrehozás/importálás**.
+1. Válassza a bal oldali navigációs ablaktáblán a **kulcsok** beállítást, majd kattintson a **+ Létrehozás/importálás**elemre.
 
-1. Az a **hozzon létre egy kulcsot** panel listájában **beállítások**, válassza ki a kulcs létrehozásához használni kívánt módszert. Is **Generate** egy új kulcsot, **feltöltése** egy meglévő kulcs, vagy használjon **biztonsági másolat visszaállítása** kulcs biztonsági másolatának kiválasztásához.
+1. A **kulcs létrehozása** ablaktáblán a **Beállítások**listájából válassza ki a kulcs létrehozásához használni kívánt módszert. Létrehozhat egy új kulcsot, feltöltheti a meglévő kulcsot, vagy használhatja a **visszaállítás biztonsági mentést** a kulcsok biztonsági másolatának kiválasztásához.
 
-1. Adjon meg egy **neve** kulcs, és szükség esetén más kulcstulajdonságok kiválasztása.
+1. Adja meg a kulcs **nevét** , és ha kívánja, válassza ki a többi fontos tulajdonságot.
 
-1. Kattintson a **létrehozás** gombra kattintva indítsa el a központi telepítést.
+1. A telepítés elindításához kattintson a **Létrehozás** gombra.
 
-Jegyezze fel a kulcs azonosítóját – ez tevődik össze a **Uri értéket**, a **kulcsnév**, és a **kulcsverzió**. Szüksége lesz ezekre a titkosított index definiálása az Azure Search szolgáltatásban.
+Jegyezze fel a kulcs azonosítóját – ez a **kulcs értékének URI-ja**, a **kulcs neve**és a **kulcs verziószáma**. Ezekre a Azure Search titkosított indexek definiálására lesz szükség.
  
-![Hozzon létre egy új a key vault-kulcs](./media/search-manage-encryption-keys/create-new-key-vault-key.png "új a key vault-kulcs létrehozása")
+![Új Key Vault-kulcs létrehozása](./media/search-manage-encryption-keys/create-new-key-vault-key.png "Új Key Vault-kulcs létrehozása")
 
-## <a name="3---create-a-service-identity"></a>3 – a felügyeltszolgáltatás-identitás létrehozása
+## <a name="3---create-a-service-identity"></a>3 – szolgáltatás identitásának létrehozása
 
-Identitás hozzárendelése a keresési szolgáltatás lehetővé teszi, hogy a keresési szolgáltatás Key Vault hozzáférési engedélyeket. A keresési szolgáltatás hitelesítéséhez az Azure Key vault fogja használni a identitását.
+Ha identitást rendel a keresési szolgáltatáshoz, Key Vault hozzáférési engedélyeket adhat meg a keresési szolgáltatáshoz. A keresési szolgáltatás a személyazonosságát fogja használni az Azure Key vaultban való hitelesítéshez.
 
-Az Azure Search két különböző módon támogatja a identitás hozzárendelése: egy felügyelt identitás vagy külsőleg felügyelt Azure Active Directory-alkalmazás. 
+A Azure Search az identitás hozzárendelésének két módját támogatja: felügyelt identitást vagy külsőleg felügyelt Azure Active Directory alkalmazást. 
 
-Ha lehetséges használjon egy felügyelt identitás. Ez a legegyszerűbb módja az identitás hozzárendelése a keresési szolgáltatás, és a legtöbb esetben működik. Ha használ több kulcs indexek és szinonimatérképet, vagy ha a megoldás egy felosztott architektúrában, amely disqualifies azonosító-alapú hitelesítést, használja a speciális [külsőleg felügyelt Azure Active Directory megközelítés](#aad-app)Ez a cikk végén bemutatott.
+Ha lehetséges, használjon felügyelt identitást. Ez a legegyszerűbb módja annak, hogy identitást rendeljen a keresési szolgáltatáshoz, és a legtöbb esetben működjön. Ha az indexekhez és a szinonimához több kulcsot használ, vagy ha a megoldás olyan elosztott architektúrában van, amely nem jogosult az identitás-alapú hitelesítésre, használja a végén ismertetett, [külsőleg felügyelt Azure Active Directory megközelítést](#aad-app) . Ebből a cikkből.
 
- Egy felügyelt identitás általában lehetővé teszi, hogy a keresési szolgáltatás nélkül is végezhetnek az Azure Key Vaultba hitelesítő adatok tárolása a kódban. Az ilyen típusú felügyelt identitások életciklusát a keresési szolgáltatás, amely csak egyetlen felügyelt identitás életciklusának van kötve. [További tudnivalók a felügyelt identitások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+ Általánosságban elmondható, hogy egy felügyelt identitás lehetővé teszi a keresési szolgáltatás hitelesítését Azure Key Vault a hitelesítő adatok kódban való tárolása nélkül. Az ilyen típusú felügyelt identitás életciklusa a keresési szolgáltatás életciklusához van kötve, amely csak egyetlen felügyelt identitással rendelkezhet. [További információ a felügyelt identitásokról](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-1. Egy felügyelt identitás létrehozása [toAzure portál bejelentkezés](https://portal.azure.com) , és nyissa meg a search szolgáltatás irányítópultját. 
+1. Felügyelt identitás létrehozásához [Jelentkezzen be a toAzure](https://portal.azure.com) -portálra, és nyissa meg a keresési szolgáltatás irányítópultját. 
 
-1. Kattintson a **identitás** a bal oldali navigációs ablaktáblán, állítsa annak állapotát a **a**, és kattintson a **mentése**.
+1. A bal oldali navigációs ablaktáblán kattintson az **Identity (identitás** ) elemre, módosítsa az állapotát **a be**értékre, majd kattintson a **Mentés**gombra.
 
-![Egy felügyelt identitás engedélyezése](./media/search-enable-msi/enable-identity-portal.png "manged identitás engedélyezése")
+![Felügyelt identitás engedélyezése](./media/search-enable-msi/enable-identity-portal.png "A Mangal Identity engedélyezése")
 
-## <a name="4---grant-key-access-permissions"></a>4 – hozzáférés a kulcshoz engedélyek megadása
+## <a name="4---grant-key-access-permissions"></a>4 – kulcsokra vonatkozó hozzáférési engedélyek megadása
 
-Ahhoz, hogy a keresési szolgáltatás használata a Key Vault-kulcs, kell megadni a keresési szolgáltatás bizonyos hozzáférési engedélyeket.
+Ha engedélyezni szeretné, hogy a keresési szolgáltatás használhassa a Key Vault kulcsot, bizonyos hozzáférési engedélyeket kell adnia a keresési szolgáltatásnak.
 
-Hozzáférési engedélyek egy adott időpontban tudta vissza kell vonni. Miután visszavonja, minden keresési index vagy szinonimát szolgáltatástérkép, hogy a key vault használó használhatatlan lesz. Key vault-hozzáférési engedélyek visszaállítását egy későbbi időpontban index\synonym térkép hozzáférés állítja vissza. További információkért lásd: [biztonságos hozzáférés a key vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault).
+A hozzáférési engedélyeket bármikor visszavonhatja. A visszavonás után a Key vaultot használó keresési szolgáltatás indexe vagy szinonimája használhatatlan lesz. A Key Vault-hozzáférési engedélyek későbbi visszaállításakor a rendszer visszaállítja a index\synonym-leképezési hozzáférést. További információt a [kulcstartó biztonságos elérését](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)ismertető témakörben talál.
 
-1. [Jelentkezzen be az Azure portal](https://portal.azure.com) és a key vault – Áttekintés lap megnyitásához. 
+1. [Jelentkezzen](https://portal.azure.com) be Azure Portalba, és nyissa meg a Key Vault áttekintés lapját. 
 
-1. Válassza ki a **hozzáférési házirendek** beállítást a bal oldali navigációs panelen, és kattintson a **+ Hozzáadás, új**.
+1. Válassza ki a **hozzáférési házirendek** beállítást a bal oldali navigációs ablaktáblán, és kattintson az **+ új hozzáadása**lehetőségre.
 
-   ![Új kulcstartó-hozzáférési szabályzat hozzáadása](./media/search-manage-encryption-keys/add-new-key-vault-access-policy.png "új kulcstartó-hozzáférési szabályzat hozzáadása")
+   ![Új Key Vault hozzáférési szabályzat hozzáadása](./media/search-manage-encryption-keys/add-new-key-vault-access-policy.png "Új Key Vault hozzáférési szabályzat hozzáadása")
 
-1. Kattintson a **válassza egyszerű** , és válassza ki az Azure Search szolgáltatást. Kereshet, név, illetve a felügyelt identitás engedélyezése után megjelenő objektum azonosítója.
+1. Kattintson a **rendszerbiztonsági tag kiválasztása** elemre, és válassza ki a Azure Search szolgáltatást. A név vagy a felügyelt identitás engedélyezése után megjelenő objektumazonosító alapján is megkeresheti.
 
-   ![Válassza ki a key vault hozzáférési házirend egyszerű](./media/search-manage-encryption-keys/select-key-vault-access-policy-principal.png "jelölje be a key vault hozzáférési házirend rendszerbiztonsági tag")
+   A ![Key Vault hozzáférési szabályzatának kiválasztása] A (./media/search-manage-encryption-keys/select-key-vault-access-policy-principal.png "Key Vault hozzáférési szabályzatának kiválasztása")
 
-1. Kattintson a **Kulcsengedélyek** válassza *első*, *kulcs kicsomagolása* és *Wrap Key*. Használhatja a *Azure Data Lake Storage vagy az Azure Storage* sablon gyorsan kiválasztható a szükséges engedélyekkel.
+1. Kattintson a **legfontosabb engedélyek** elemre, és válassza a beolvasás, a *kulcs* és a betakarás *kulcsa*lehetőséget. A szükséges engedélyek gyors kiválasztásához használhatja a *Azure Data Lake Storage vagy az Azure Storage* -sablont.
 
-   Az Azure search kell biztosítani az alábbi [hozzáférési engedélyek](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-operations):
+   Az Azure Search szolgáltatásnak a következő [hozzáférési engedélyekkel](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-operations)kell rendelkeznie:
 
-   * *Első* – lehetővé teszi, hogy a keresési szolgáltatás lekérni a kulcsot a Key Vaultban nyilvános részei
-   * *Kulcs becsomagolása* – lehetővé teszi a keresési szolgáltatás használatához a kulcs védelme érdekében a belső titkosítási kulcs
-   * *Kulcs kicsomagolása* – lehetővé teszi a keresési szolgáltatás használatához a kulcs segítségével a belső titkosítási kulcs kicsomagolása
+   * *Get* -lehetővé teszi, hogy a keresési szolgáltatás lekérje a kulcs nyilvános részeit egy Key Vault
+   * *Wrap Key* – lehetővé teszi, hogy a keresési szolgáltatás a kulcs használatával megvédje a belső titkosítási kulcsot
+   * *Kicsomagolási kulcs* – lehetővé teszi, hogy a keresési szolgáltatás a kulcsot használja a belső titkosítási kulcs kicsomagolásához.
 
-   ![Válassza ki a kulcstartó hozzáférési házirend Kulcsengedélyek](./media/search-manage-encryption-keys/select-key-vault-access-policy-key-permissions.png "válassza ki a kulcstartó hozzáférési házirend Kulcsengedélyek")
+   ![Válassza ki a Key Vault hozzáférési szabályzatának kulcsának engedélyeit](./media/search-manage-encryption-keys/select-key-vault-access-policy-key-permissions.png "Válassza ki a Key Vault hozzáférési szabályzatának kulcsának engedélyeit")
 
-1. Kattintson a **OK** és **mentése** a hozzáférési szabályzatok módosításainak.
+1. Kattintson **az OK** gombra, és **mentse** a hozzáférési szabályzat módosításait.
 
 > [!Important]
-> Az Azure Search szolgáltatásban a titkosított tartalom és a egy adott egy adott Azure Key Vault-kulcs használatára van konfigurálva **verzió**. Ha módosítja a kulcsot vagy a verziója, az index vagy szinonimát térkép frissíteni kell az új key\version használandó **előtt** az előző key\version törlése. Ezt elmulasztja, akkor jelenik meg az index vagy szinonimát használhatatlan leképezése, akkor nem lehet visszafejteni a tartalmat, ha megszakad a hozzáférés a kulcshoz.   
+> Az Azure Search szolgáltatásban titkosított tartalom úgy van konfigurálva, hogy egy meghatározott Azure Key Vault kulcsothasználjon egy adott verzióval. Ha megváltoztatja a kulcsot vagy a verziót, az indexet vagy a szinonima-térképet frissíteni kell az új key\version használatára az előző key\version. törlése **előtt** . Ha ezt nem teszi meg, az index vagy a szinonimák leképezése használhatatlan lesz, a kulcs elérésének elvesztése után nem fogja tudni visszafejteni a tartalmat.   
 
 ## <a name="5---encrypt-content"></a>5 – tartalom titkosítása
 
-Az ügyfél által felügyelt kulccsal titkosított index vagy szinonimát térkép létrehozása még nem lehetséges az Azure portal használatával. Azure Search REST API használatával az ilyen egy index vagy szinonimát térkép létrehozásához.
+Az ügyfél által felügyelt kulccsal titkosított index vagy szinonima leképezés létrehozása még nem lehetséges a Azure Portal használatával. Hozzon létre egy ilyen indexet vagy szinonimát a Azure Search REST API használatával.
 
-Index és a szinonima leképezése támogatási új legfelső szintű **encryptionKey** a kulcs megadásához használt tulajdonságot. 
+Az index és a szinonimák leképezése is támogatja a kulcs megadásához használt új felső szintű **encryptionKey** tulajdonságot. 
 
-Használatával a **a key vault Uri**, **kulcsnév** és a **kulcs verziója** a Key vault-kulcs, létrehozhatunk egy **encryptionKey** definíciója:
+A Key Vault **URI-ja**, a **kulcs neve** és a Key Vault kulcsának **verziószáma** alapján létrehozhatunk egy **encryptionKey** -definíciót:
 
 ```json
 {
@@ -147,9 +147,9 @@ Használatával a **a key vault Uri**, **kulcsnév** és a **kulcs verziója** a
 }
 ```
 > [!Note] 
-> Ezeket az adatokat a key vault egyike számítanak secret, és navigáljon a megfelelő Azure Key Vault lapja az Azure Portalon az könnyen olvasható.
+> Ezek a kulcstartó-részletek egyike sem minősül titkosnak, és könnyen lekérhető, ha megkeresi a megfelelő Azure Key Vault kulcsot tartalmazó lapot Azure Portal.
 
-Ha egy felügyelt identitás használata helyett a Key Vault-hitelesítés az AAD-alkalmazást használ, adja hozzá az AAD-alkalmazás **hozzáférési hitelesítő adatokat** a titkosítási kulcs: 
+Ha HRE alkalmazást használ a Key Vault hitelesítéshez felügyelt identitás használata helyett, adja hozzá a HRE-alkalmazás **hozzáférési hitelesítő adatait** a titkosítási kulcshoz: 
 ```json
 {
   "encryptionKey": {
@@ -164,8 +164,8 @@ Ha egy felügyelt identitás használata helyett a Key Vault-hitelesítés az AA
 }
 ```
 
-## <a name="example-index-encryption"></a>Példa: Index titkosítás
-A REST API-val egy új index létrehozását részletei nem található a(z) [Index létrehozása (Azure Search szolgáltatás REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index), ahol az egyetlen különbség van adja meg a titkosítási kulcs adatai az index definícióját részeként: 
+## <a name="example-index-encryption"></a>Példa: Index titkosítása
+Az új indexnek a REST API használatával történő létrehozásának részletei a [create index (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)helyen találhatók, ahol az egyetlen különbség a titkosítási kulcs részleteinek megadása az index definíciójának részeként: 
 
 ```json
 {
@@ -189,11 +189,11 @@ A REST API-val egy új index létrehozását részletei nem található a(z) [In
  }
 }
 ```
-Most már küldhet az index létrehozására irányuló kérelem, és indítsa el az index általában használatát.
+Most már elküldheti az index-létrehozási kérelmet, majd megkezdheti a normál index használatát.
 
-## <a name="example-synonym-map-encryption"></a>Példa: Szinonima térkép titkosítás
+## <a name="example-synonym-map-encryption"></a>Példa: Szinonimák leképezésének titkosítása
 
-Egy új szinonimatérképet a REST API-n keresztül létrehozásának részleteit található [Szinonimatérkép létrehozása (Azure Search szolgáltatás REST API)](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map), ahol az egyetlen különbség van adja meg a titkosítási kulcs adatai a szinonima leképezésdefiníció részeként: 
+Az új szinonimák leképezésének a REST API használatával történő létrehozásának részleteit a [szinonimák leképezése (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)című rész tartalmazza, ahol az egyetlen különbség a titkosítási kulcs részleteinek megadása a szinonimák leképezése definíciójának részeként: 
 
 ```json
 {   
@@ -208,35 +208,35 @@ Egy új szinonimatérképet a REST API-n keresztül létrehozásának részletei
   }
 }
 ```
-Most már küldhet a szinonima térkép létrehozására vonatkozó kérést, és majd a szokásos módon használatának megkezdéséhez.
+Most már elküldheti a szinonima-hozzárendelési kérést, majd normál módon megkezdheti a használatát.
 
 >[!Important] 
-> Miközben **encryptionKey** nem adható hozzá meglévő Azure Search-indexek vagy szinonimát térképek, előfordulhat, hogy frissíthető különböző értékek azáltal, hogy bármely három a key vault részleteit (például a fő verziójának frissítése). Ha módosítja egy új Key Vault-kulcs vagy a kulcs új verziója, a kulcsot használja minden olyan Azure Search index vagy szinonimát térkép először frissíteni kell, hogy használja az új key\version **előtt** az előző key\version törlése. Ezt elmulasztja, akkor jelenik meg az index vagy használhatatlan, nem tudja majd visszafejteni a tartalom egyszer kulcshozzáférés szinonimatérkép elvész.   
-> Key vault-hozzáférési engedélyek visszaállítását egy későbbi időpontban tartalom-hozzáférési állítja vissza.
+> Míg a **encryptionKey** nem adható hozzá a meglévő Azure Search indexekhez vagy a szinonimái térképekhez, a frissítéshez különböző értékeket kell megadnia a három kulcstartó részleteihez (például a kulcs verziójának frissítése). Új Key Vault kulcsra vagy új kulcs verzióra való váltáskor a kulcsot használó Azure Search indexet vagy szinonimát tartalmazó térképet először frissíteni kell az új key\version használatára az előző key\version. törlése **előtt** . Ha ezt nem teszi meg, az index vagy a szinonimák leképezése használhatatlan lesz, mivel a kulcs elérésének elvesztése után nem tudja visszafejteni a tartalmat.   
+> A Key Vault-hozzáférési engedélyek későbbi visszaállításával visszaállíthatja a tartalom-hozzáférést.
 
-## <a name="aad-app"></a> Speciális: Egy Azure Active Directory külsőleg felügyelt alkalmazás használata
+## <a name="aad-app"></a>Speciális Külsőleg felügyelt Azure Active Directory alkalmazás használata
 
-Ha egy felügyelt identitás ez nem lehetséges, létrehozhat egy Azure Active Directory-alkalmazás biztonsági egyszerű az Azure Search szolgáltatás számára. Pontosabban az egy felügyelt identitás nem működőképes, ezen feltételek:
+Ha egy felügyelt identitás nem lehetséges, létrehozhat egy Azure Active Directory alkalmazást egy rendszerbiztonsági tag használatával a Azure Search szolgáltatáshoz. A felügyelt identitások nem életképesek az alábbi feltételek teljesülése esetén:
 
-* Nem közvetlenül biztosíthat a keresést a Key vault szolgáltatás a hozzáférési engedélyek (például, ha a keresési szolgáltatás, mint az Azure Key Vault egy másik Active Directory-bérlőben található).
+* A keresési szolgáltatás hozzáférési engedélyeit nem lehet közvetlenül a kulcstartóhoz adni (például ha a keresési szolgáltatás más Active Directory bérlő, mint a Azure Key Vault).
 
-* Egyetlen keresési szolgáltatás szükség több titkosított indexes\synonym térképek, üzemeltetéséhez, minden egyes használatával egy másik kulcsot egy másik Key vaultból, ahol minden egyes a key vault kell használnia **egy másik identitás** a hitelesítéshez. Ha egy másik identitással való kezelése a Key vault-kulcstartók különböző nem követelmény, fontolja meg a fenti felügyelt identitás lehetőséget.  
+* Egyetlen keresési szolgáltatás szükséges több titkosított indexes\synonym-Térkép üzemeltetéséhez, amelyek mindegyike egy másik Kulcstartóból származó másik kulcsot használ, ahol minden kulcstartónak **más identitást** kell használnia a hitelesítéshez. Ha más identitást használ a különböző kulcstartók kezelésére, érdemes lehet a fenti felügyelt identitást használni.  
 
-Az ilyen topológiák befogadásához Azure keresési támogatja az Azure Active Directory (AAD) alkalmazások használata a Key Vault és keresési szolgáltatás közötti hitelesítéshez.    
-Az AAD-alkalmazás létrehozása a portálon:
+Az ilyen topológiák befogadásához az Azure Search támogatja Azure Active Directory (HRE) alkalmazások használatát a keresési szolgáltatás és a Key Vault közötti hitelesítéshez.    
+HRE-alkalmazás létrehozása a portálon:
 
 1. [Egy Azure Active Directory-alkalmazás létrehozása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).
 
-1. [Az Alkalmazásazonosító és hitelesítési kulcs beszerzése](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) , azok titkosított index létrehozásához szükség lesz. Meg kell adnia értékeket tartalmaznak **Alkalmazásazonosító** és **hitelesítési kulcs**.
+1. [Szerezze be az alkalmazás azonosítóját és a hitelesítési kulcsot](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) , mivel ezek a titkosított indexek létrehozásához szükségesek lesznek. A megadható értékeknek tartalmaznia kell az **alkalmazás azonosítóját** és a **hitelesítési kulcsot**.
 
 >[!Important]
-> Hitelesítés az AAD-alkalmazás használata helyett egy felügyelt identitás meghatározásakor vegye figyelembe a tény, hogy nem jogosult az Azure Search kezelése az AAD-alkalmazás az Ön nevében, és Ön, mint a rendszeres elforgatási szögét az AAD-alkalmazás kezelése az alkalmazás hitelesítési kulcsát.
-> Az AAD-alkalmazás vagy a hitelesítési kulcs módosításakor bármely használó alkalmazást használó Azure Search-index vagy szinonimát térkép először frissíteni kell az új alkalmazás ID\key **előtt** a korábbi alkalmazás törlése vagy a hitelesítési kulcs, és mielőtt visszavonja az a Key Vault elérését.
-> Ezt elmulasztja, akkor jelenik meg az index vagy használhatatlan, nem tudja majd visszafejteni a tartalom egyszer kulcshozzáférés szinonimatérkép elvész.   
+> Ha úgy dönt, hogy felügyelt identitás helyett HRE-alkalmazást használ, vegye figyelembe, hogy Azure Search nem rendelkezik jogosultsággal a HRE-alkalmazásnak az Ön nevében történő kezeléséhez, és a HRE-alkalmazás kezelése, például a rendszeres rotációja az alkalmazás hitelesítési kulcsa.
+> Egy HRE-alkalmazás vagy annak hitelesítési kulcsának módosításakor az adott alkalmazást használó Azure Search indexet vagy szinonima-térképet először frissíteni kell az új alkalmazás-ID\key használatára az előző alkalmazás vagy az engedélyezési kulcs törlése **előtt** . a Key Vault hozzáférésének visszavonása előtt.
+> Ha ezt nem teszi meg, az index vagy a szinonimák leképezése használhatatlan lesz, mivel a kulcs elérésének elvesztése után nem tudja visszafejteni a tartalmat.   
 
 ## <a name="next-steps"></a>További lépések
 
-Ha ismeri az Azure biztonsági architektúra, tekintse át a [Azure Security dokumentációja](https://docs.microsoft.com/azure/security/), és ebben az esetben, ez a cikk:
+Ha nem ismeri az Azure biztonsági architektúráját, tekintse át az [Azure biztonsági dokumentációját](https://docs.microsoft.com/azure/security/), és különösen a következő cikket:
 
 > [!div class="nextstepaction"]
-> [Inaktív adatok titkosítása](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+> [Inaktív adatok titkosítása](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)

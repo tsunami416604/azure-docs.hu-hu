@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 8ee7db3ade594958729deeb12007f528376d5179
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 4f06e579e8548f4220d8f3fb4b618902f18b538e
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442412"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774810"
 ---
 # <a name="api-management-access-restriction-policies"></a>Hozzáférés-korlátozási szabályzatok API Management
 
@@ -34,6 +34,9 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 -   [Használati kvóta beállítása](api-management-access-restriction-policies.md#SetUsageQuota) előfizetéssel – lehetővé teszi, hogy előfizetések alapján kikényszerítse a megújítható vagy az élettartam szerinti hívások mennyiségét és/vagy sávszélesség-kvótáját.
 -   [Használati kvóta beállítása kulccsal](#SetUsageQuotaByKey) – lehetővé teszi a megújítható vagy élettartamos hívások mennyiségi és/vagy sávszélesség-kvótájának kikényszeríthető kulcs alapján.
 -   [JWT ellenőrzése](api-management-access-restriction-policies.md#ValidateJWT) – egy adott http-fejlécből vagy egy megadott lekérdezési paraméterből kinyert JWT létezését és érvényességét kényszeríti ki.
+
+> [!TIP]
+> A hozzáférési korlátozási házirendeket különböző hatókörökben használhatja különböző célokra. A teljes API-t biztonságossá teheti a HRE-hitelesítéssel `validate-jwt` , ha a szabályzatot az API szintjén alkalmazza, vagy az API-műveleti szinten alkalmazhatja, és részletesebb szabályozást is használhat. `claims`
 
 ## <a name="CheckHTTPHeader"></a>HTTP-fejléc keresése
 

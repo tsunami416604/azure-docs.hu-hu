@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/26/2018
+ms.date: 07/29/2019
 ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: a57089eb2cd87b08ba647afed002d90d6f14891a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 968ae62344f99edf8eb46eb62a4cf13f300c868f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846662"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815640"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Szerepkör-hozzárendelések létrehozása és kezelése az Azure Digital Ikrekben
 
@@ -39,13 +39,13 @@ Minden szerepkör-hozzárendelés megfelel a következő definíciónak:
 
 Az alábbi táblázat az egyes attribútumokat ismerteti:
 
-| Attribútum | Name (Név) | Szükséges | Típus | Leírás |
+| Attribútum | Name (Név) | Kötelező | Típus | Leírás |
 | --- | --- | --- | --- | --- |
 | Szerepkörazonosítónak | Szerepkör-definíciós azonosító | Igen | Sztring | A kívánt szerepkör-hozzárendelés egyedi azonosítója. Keresse meg a szerepkör-definíciókat és azok azonosítóját a System API lekérdezésével vagy az alábbi táblázat áttekintésével. |
-| objectId | Objektumazonosító | Igen | Sztring | Azure Active Directory azonosító, egyszerű szolgáltatásnév vagy tartománynév. A szerepkör-hozzárendelés hozzárendelése a következőhöz:. A szerepkör-hozzárendelést a hozzá tartozó típusnak megfelelően kell formázni. A `DomainName` objectIdType a objectId `“@”` karakterrel kell kezdődnie. |
-| objectIdType | Objektumazonosító típusa | Igen | Karakterlánc | A használt objektumazonosító típusa. Lásd alább a **támogatott ObjectIdTypes** . |
-| path | Hely elérési útja | Igen | Karakterlánc | Az `Space` objektum teljes elérési útja. Például: `/{Guid}/{Guid}`. Ha az azonosítónak a teljes gráf szerepkör-hozzárendelésére van szüksége `"/"`, akkor a következőt kell megadnia:. Ez a karakter kijelöli a gyökeret, de a használata nem ajánlott. Mindig kövesse a legalacsonyabb jogosultsági szint elvét. |
-| tenantId | Bérlő azonosítója | Változó | Karakterlánc | A legtöbb esetben egy Azure Active Directory bérlő azonosítója. A és `DeviceId` `TenantId` a ObjectIdTypes nem engedélyezett. A és `UserId` `ServicePrincipalId` a ObjectIdTypes szükséges. A tartománynév ObjectIdType nem kötelező megadni. |
+| objectId | Objektumazonosító | Igen | Karakterlánc | Azure Active Directory azonosító, egyszerű szolgáltatásnév vagy tartománynév. A szerepkör-hozzárendelés hozzárendelése a következőhöz:. A szerepkör-hozzárendelést a hozzá tartozó típusnak megfelelően kell formázni. A `DomainName` objectIdType a objectId `“@”` karakterrel kell kezdődnie. |
+| objectIdType | Objektumazonosító típusa | Igen | Sztring | A használt objektumazonosító típusa. Lásd alább a **támogatott ObjectIdTypes** . |
+| path | Hely elérési útja | Igen | Sztring | Az `Space` objektum teljes elérési útja. Például: `/{Guid}/{Guid}`. Ha az azonosítónak a teljes gráf szerepkör-hozzárendelésére van szüksége `"/"`, akkor a következőt kell megadnia:. Ez a karakter kijelöli a gyökeret, de a használata nem ajánlott. Mindig kövesse a legalacsonyabb jogosultsági szint elvét. |
+| tenantId | Bérlő azonosítója | Változó | Sztring | A legtöbb esetben egy Azure Active Directory bérlő azonosítója. A és `DeviceId` `TenantId` a ObjectIdTypes nem engedélyezett. A és `UserId` `ServicePrincipalId` a ObjectIdTypes szükséges. A tartománynév ObjectIdType nem kötelező megadni. |
 
 ### <a name="supported-role-definition-identifiers"></a>Támogatott szerepkör-definíciós azonosítók
 
@@ -61,7 +61,7 @@ Korábban a **objectIdType** attribútum lett bevezetve.
 
 ## <a name="role-assignment-operations"></a>Szerepkör-hozzárendelési műveletek
 
-Az Azure digitális Twins támogatja a szerepkör-hozzárendelések teljes létrehozási, *olvasási*és *törlési* műveleteit. A *frissítési* műveletek kezelése szerepkör-hozzárendelések hozzáadásával, szerepkör-hozzárendelések eltávolításával, illetve a szerepkör-hozzárendelések által elérhetővé tett [térbeli intelligencia Graph](./concepts-objectmodel-spatialgraph.md) -csomópontok módosításával történik.
+Az Azure digitális Twins támogatjaa szerepkör-hozzárendelések teljes létrehozási, *olvasási*és *törlési* műveleteit. A *frissítési* műveletek kezelése szerepkör-hozzárendelések hozzáadásával, szerepkör-hozzárendelések eltávolításával, illetve a szerepkör-hozzárendelések által elérhetővé tett [térbeli intelligencia Graph](./concepts-objectmodel-spatialgraph.md) -csomópontok módosításával történik.
 
 ![Szerepkör-hozzárendelési végpontok][1]
 
@@ -81,7 +81,7 @@ Az Azure-beli digitális Twins-használat során az első lépések egyike az, h
 1. Az egyszerű szolgáltatásnév adatainak beszerzése.
 1. Rendelje hozzá a kívánt szerepkört az egyszerű szolgáltatáshoz.
 
-Az alkalmazás AZONOSÍTÓját a rendszer a Azure Active Directoryban biztosítja. Ha többet szeretne megtudni a Active Directory Azure Digital ikrek konfigurálásáról és üzembe helyezéséről, olvassa el a gyors üzembe helyezési [útmutatót.](./quickstart-view-occupancy-dotnet.md)
+Az alkalmazás AZONOSÍTÓját a rendszer a Azure Active Directoryban biztosítja. Ha többet szeretne megtudni a Active Directory Azure Digital ikrek konfigurálásáról és üzembe helyezéséről, olvassa el a [](./quickstart-view-occupancy-dotnet.md)gyors üzembe helyezési útmutatót.
 
 Miután megadta az alkalmazás AZONOSÍTÓját, hajtsa végre a következő PowerShell-parancsokat:
 
@@ -232,13 +232,13 @@ Győződjön meg arról, hogy a JSON-törzs megfelel a következő sémának:
 }
 ```
 
-Egy sikeres kérelem a 201-es válasz állapotát és az újonnan  létrehozott szerepkör-hozzárendelés azonosítóját fogja visszaadni:
+Egy sikeres kérelem a 201-es válasz állapotát és az újonnan létrehozott szerepkör-hozzárendelés azonosítóját fogja visszaadni:
 
 ```JSON
 "d92c7823-6e65-41d4-aaaa-f5b32e3f01b9"
 ```
 
-## <a name="configuration-examples"></a>Konfigurációs példák
+## <a name="configuration-examples"></a>Példák konfigurációra
 
 Az alábbi példák bemutatják, hogyan konfigurálhatja a JSON-törzset számos gyakran észlelt szerepkör-hozzárendelési forgatókönyvben.
 

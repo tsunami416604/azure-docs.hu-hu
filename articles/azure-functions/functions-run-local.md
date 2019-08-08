@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: cee91de9e0a5d75be258705f636248a6a6213664
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 16e12021a65a09376293f28efe9a6e9ef74ef5c2
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444055"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839570"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools használata
 
@@ -91,7 +91,7 @@ A következő lépések a Homebrew-t használják a fő eszközök macOS rendsze
 
 #### <a name="linux"></a>Linux (Ubuntu/Debian) APT-vel
 
-Az alábbi [lépések segítségével](https://wiki.debian.org/Apt) telepítheti az alapvető eszközöket az Ubuntu/Debian Linux-disztribúción. Más Linux-disztribúciók esetében tekintse meg az [alapvető eszközök readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux)című témakört.
+Az alábbi lépések segítségével [](https://wiki.debian.org/Apt) telepítheti az alapvető eszközöket az Ubuntu/Debian Linux-disztribúción. Más Linux-disztribúciók esetében tekintse meg az [alapvető eszközök readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux)című témakört.
 
 1. Regisztrálja megbízhatóként a Microsoft-termékkulcsot:
 
@@ -166,7 +166,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--worker-runtime`** | Beállítja a projekt nyelvi futtatókörnyezetét. A támogatott értékek `dotnet`a `node` következők: (JavaScript `java`), `python`és. Ha nincs beállítva, a rendszer arra kéri, hogy válassza ki a futtatókörnyezetet az inicializálás során. |
 
 > [!IMPORTANT]
-> Alapértelmezés szerint a Core Tools 2. x verziója a .net futtatókörnyezethez [ C# (.](functions-dotnet-class-library.md) csproj) hoz létre Function app-projekteket. A C# Visual Studióval vagy a Visual Studio Code-hoz használható projektek a tesztelés során és az Azure-ba való közzététel során fordíthatók le. Ha ehelyett az 1. x verzióban és a portálon létrehozott ugyanazon C# parancsfájl-(. CSX) fájlokat szeretné létrehozni és használni, akkor a függvények létrehozásakor és `--csx` telepítésekor meg kell adnia a paramétert is.
+> Alapértelmezés szerint a Core Tools 2. x verziója a .net futtatókörnyezethez [ C# ](functions-dotnet-class-library.md) (. csproj) hoz létre Function app-projekteket. A C# Visual Studióval vagy a Visual Studio Code-hoz használható projektek a tesztelés során és az Azure-ba való közzététel során fordíthatók le. Ha ehelyett az 1. x verzióban és a portálon létrehozott ugyanazon C# parancsfájl-(. CSX) fájlokat szeretné létrehozni és használni, akkor a függvények létrehozásakor és `--csx` telepítésekor meg kell adnia a paramétert is.
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
@@ -314,7 +314,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 A függvények helyi teszteléséhez [indítsa el a functions gazdagépet](#start) , és hívja meg a végpontokat a helyi kiszolgálón a HTTP-kérelmek használatával. A hívott végpont a függvény típusától függ.
 
 >[!NOTE]
-> A jelen témakörben szereplő példák a cURL eszközzel küldenek HTTP-kéréseket a terminálról vagy egy parancssorból. Az Ön által választott eszköz használatával HTTP-kéréseket küldhet a helyi kiszolgálónak. A cURL eszköz alapértelmezés szerint a Linux-alapú rendszereken érhető el. Windows rendszeren először le kell töltenie és telepítenie kell a [curl eszközt](https://curl.haxx.se/).
+> A jelen témakörben szereplő példák a cURL eszközzel küldenek HTTP-kéréseket a terminálról vagy egy parancssorból. Az Ön által választott eszköz használatával HTTP-kéréseket küldhet a helyi kiszolgálónak. A cURL eszköz alapértelmezés szerint a Linux-alapú rendszereken és a Windows 10-es Build 17063-es és újabb verzióiban érhető el. A régebbi Windows rendszeren először le kell töltenie és telepítenie kell a [curl eszközt](https://curl.haxx.se/).
 
 A tesztelési funkciókkal kapcsolatos általánosabb információkért lásd: [stratégiák a kód teszteléséhez Azure functions](functions-test-a-function.md).
 
@@ -332,7 +332,7 @@ A következő curl-parancs elindítja `MyHttpTrigger` a gyors üzembe helyezési
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 ```
 
-A következő példa ugyanazt a függvényt _hívja meg a_ kérelem törzsében a post kérelem átadásakor:
+A következő példa ugyanazt a függvényt hívja meg a kérelem törzsében a post kérelem átadásakor:
 
 ```bash
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'

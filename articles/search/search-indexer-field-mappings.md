@@ -1,6 +1,6 @@
 ---
-title: Mezőleképezések az Automatikus indexelés indexelők – Azure Search használatával
-description: Állítsa be az Azure Search indexelők mező-leképezések a mezőnevek és az adatok formátumban különbségek figyelembe.
+title: Az indexelő segítségével automatizált indexeléshez használható mező-hozzárendelések – Azure Search
+description: Azure Search indexelő mező-hozzárendelések konfigurálása a mezőnevek és az adatábrázolások közötti különbségek figyelembevételéhez.
 ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
@@ -10,45 +10,45 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 3546e342b535a122ea4ed3f844cd5e28a76d551a
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 771a6e413cd08a338da41c09cd6a0da35e28e5e4
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147794"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840654"
 ---
-# <a name="field-mappings-and-transformations-using-azure-search-indexers"></a>Mező-leképezések és átalakítás Azure Search-indexelők használatával
+# <a name="field-mappings-and-transformations-using-azure-search-indexers"></a>Mező-hozzárendelések és átalakítások Azure Search indexelő használatával
 
-Azure Search-indexelők használata esetén néha találja, hogy a bemeneti adatok teljesen a célindex sémája nem egyezik. Ezekben az esetekben használható **mezőleképezéseivel** az indexelési folyamat során az adatok átalakításához.
+Azure Search indexelő használatakor előfordulhat, hogy a bemeneti adatok nem felelnek meg a célként megadott index sémájának. Ezekben az esetekben a **mező** -hozzárendelések segítségével átalakíthatja az adatait az indexelési folyamat során.
 
-Bizonyos helyzetekben, ahol Mezőleképezések hasznosak:
+Bizonyos helyzetekben hasznosak lehetnek a mezők leképezése:
 
-* Az adatforrás rendelkezik mezőnév `_id`, de az Azure Search nem engedélyezi a mezők nevei kezdődhet aláhúzásjellel. Mezőleképezés lehetővé teszi a hatékony nevezheti át a mezőt.
-* Adja meg az indexben, az adatokat forrás ugyanazokat az adatokat több mezőkben szeretné. Például előfordulhat, hogy szeretné alkalmazni a különböző elemzők ezekhez a mezőkhöz.
-* Egy index mezőt egynél több adatforrásból származó adatokkal feltölteni kívánt, és az adatforrások minden másik mező nevét használják.
-* Van szüksége a Base64 kódolás, vagy az adatok dekódolása. Mezőleképezések támogatja a több **funkciók leképezési**, többek között funkciók Base64 a kódolási és dekódolási.
+* Az adatforrás egy nevű `_id`mezővel rendelkezik, de a Azure Search nem engedélyezi a mezőneveket, amely aláhúzással kezdődik. A mezők leképezése lehetővé teszi egy mező tényleges átnevezését.
+* Az indexben több mezőt is fel szeretne tölteni ugyanabból az adatforrásból származó adatokból. Előfordulhat például, hogy különböző elemzőket szeretne alkalmazni ezekre a mezőkre.
+* Egynél több adatforrásból származó adatokkal szeretné feltölteni az index mezőt, és az egyes adatforrások különböző mezőneveket használnak.
+* Az adatai Base64 kódolása vagy dekódolása szükséges. A mező-hozzárendelések több **leképezési funkciót**is támogatnak, beleértve a Base64 kódoláshoz és a dekódoláshoz használható függvényeket.
 
 > [!NOTE]
-> A mező hálózatleképezési funkcióját az Azure Search-indexelők datová Pole leképezés index mezőire, van néhány lehetőség az adatkonvertálás egyszerű módszert biztosít. Összetettebb adatokat lehet szükség, amely egyszerűen index űrlapon átalakításához, előzetesen feldolgozni.
+> Azure Search indexek mező-hozzárendelési funkciója egyszerű módszert biztosít az adatmezők index mezőkhöz való leképezésére, néhány lehetőséggel az adatátalakításra. Az összetettebb adatfeldolgozáshoz szükség lehet az előzetes feldolgozásra, hogy egy könnyen indexelhető űrlapra alakítsa át azokat.
 >
-> A Microsoft Azure Data Factory hatékony felhőalapú megoldás importálása és az adatok átalakítása is. Átalakítják a forrásadatokat indexelés kódot is írhat. Hitelesítésikód-példák, lásd: [relációs adatok modellezése](search-example-adventureworks-modeling.md) és [értékkorlátozással többszintű modellezésére](search-example-adventureworks-multilevel-faceting.md).
+> A Microsoft Azure Data Factory egy hatékony felhőalapú megoldás az adatimportáláshoz és átalakításhoz. Az indexelés előtt kódot is írhat a forrásadatok átalakításához. A példákat a következő témakörben tekintheti meg: a [modellhez kapcsolódó kapcsolatok](search-example-adventureworks-modeling.md) és [modellek](search-example-adventureworks-multilevel-faceting.md)többszintű dimenziója.
 >
 
-## <a name="set-up-field-mappings"></a>Mezőleképezések beállítása
+## <a name="set-up-field-mappings"></a>Mezők leképezésének beállítása
 
-Mezőleképezés három részből áll:
+A mezők leképezése három részből áll:
 
-1. A `sourceFieldName`, amely jelöli, hogy az adatforrás egy mezője. Ez a tulajdonság megadása kötelező.
-2. Egy nem kötelező `targetFieldName`, amely egy mezőt a keresési index jelöli. Ha nincs megadva, ugyanazzal a névvel, mint az adatforrást használja.
-3. Egy nem kötelező `mappingFunction`, amely alakíthatja át az adatokat az egyik több előre meghatározott függvényeket. A funkciók teljes listája [alább](#mappingFunctions).
+1. A `sourceFieldName`, amely az adatforrás egy mezőjét jelöli. Ezt a tulajdonságot kötelező megadni.
+2. Egy opcionális `targetFieldName`, amely a keresési index egyik mezőjét jelöli. Ha nincs megadva, a rendszer ugyanazt a nevet használja, mint az adatforrásban.
+3. Opcionális `mappingFunction`, amely az adatok átalakítását számos előre definiált függvény használatával végezheti el. A függvények teljes listája [alább látható](#mappingFunctions).
 
-Mező-leképezések kerülnek a `fieldMappings` az indexelő definíciója tömbje.
+A mező-hozzárendelések az indexelő definíciójának `fieldMappings` tömbje számára lesznek hozzáadva.
 
-## <a name="map-fields-using-the-rest-api"></a>A mezők leképezése a REST API használatával
+## <a name="map-fields-using-the-rest-api"></a>Mezők leképezése a REST API használatával
 
-Mezőleképezések létrehozásakor egy új indexelő segítségével hozzáadhatja a [indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-Indexer) API-kérelem. A mező-leképezések egy meglévő indexelő használata kezelheti a [frissítés indexelő](https://docs.microsoft.com/rest/api/searchservice/update-indexer) API-kérelem.
+Az indexelő API-kérelem használatával új indexelő létrehozásakor mező- [](https://docs.microsoft.com/rest/api/searchservice/create-Indexer) hozzárendeléseket adhat hozzá. Az indexelő API-kérelem használatával kezelheti egy meglévő indexelő mező [](https://docs.microsoft.com/rest/api/searchservice/update-indexer) -hozzárendeléseit.
 
-Például a következő mező leképezése egy célmezőt, más néven:
+Például a következő módon képezhető le egy forrás mezőt egy célként megadott mezőre egy másik névvel:
 
 ```JSON
 
@@ -62,7 +62,7 @@ api-key: [admin key]
 }
 ```
 
-Több mező-leképezések beviteli mező lehet hivatkozni. Az alábbi példa bemutatja, hogyan "ágaztatnia" Másolás forrás ugyanahhoz a mezőhöz két különböző index mezőire mező:
+A forrás mező több mező-hozzárendelésre is hivatkozhat. Az alábbi példa azt szemlélteti, hogyan lehet "elágazást" lemásolni egy mezőből, és ugyanabból a forrásból két különböző index-mezőre másolni:
 
 ```JSON
 
@@ -73,17 +73,17 @@ Több mező-leképezések beviteli mező lehet hivatkozni. Az alábbi példa bem
 ```
 
 > [!NOTE]
-> Az Azure Search nem betűérzékeny összehasonlító használja a mező-leképezések mezőt és a függvény nevek feloldásához. Ez kényelmes (nem kell minden a kis-és kellhet), de az azt jelenti, hogy az adatforrás vagy az index nem rendelkezhet, amelyet csak az eset eltérő mezők.  
+> A Azure Search a kis-és nagybetűk megkülönböztetésének összehasonlításával oldja fel a mezők és függvények nevét a mezők leképezésében. Ez kényelmes (nem kell beolvasnia az összes burkolatot), de az azt jelenti, hogy az adatforrás vagy az index nem rendelkezhet olyan mezőkkel, amelyek csak esettől eltérőek lehetnek.  
 >
 >
 
-## <a name="map-fields-using-the-net-sdk"></a>A .NET SDK használatával a mezők leképezése
+## <a name="map-fields-using-the-net-sdk"></a>Mezők leképezése a .NET SDK használatával
 
-Mezőleképezések az a .NET SDK használatával meghatározott a [FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping) osztály, amely a tulajdonságokkal rendelkezik `SourceFieldName` és `TargetFieldName`, és a egy nem kötelező `MappingFunction` hivatkozást.
+A [FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping) osztály segítségével definiálhatja a mezők leképezéseit a .net SDK-ban, amely tartalmazza `SourceFieldName` a `TargetFieldName`tulajdonságokat, valamint a `MappingFunction` választható hivatkozást.
 
-Mezőleképezések az indexelő kapcsolatot létesítő beállításával, illetve később közvetlenül megadhatja a `Indexer.FieldMappings` tulajdonság.
+Az indexelő létrehozásakor vagy később a `Indexer.FieldMappings` tulajdonság közvetlen beállításával megadhatja a mezők leképezését.
 
-A következő C# példa beállítja a mező-leképezések az indexelő létrehozásánál.
+Az alábbi C# példa egy indexelő létrehozásakor beállítja a mező-hozzárendeléseket.
 
 ```csharp
   List<FieldMapping> map = new List<FieldMapping> {
@@ -105,26 +105,28 @@ A következő C# példa beállítja a mező-leképezések az indexelő létrehoz
 
 <a name="mappingFunctions"></a>
 
-## <a name="field-mapping-functions"></a>A mező leképezés funkciók
+## <a name="field-mapping-functions"></a>Mező-hozzárendelési függvények
 
-Egy mező leképezési függvény alakítja át egy mező tartalmát, előtt az indexben. A következő hozzárendelés-függvényeket jelenleg támogatja:
+Egy mező-hozzárendelési függvény átalakítja egy mező tartalmát, mielőtt az indexben tárolja őket. A következő leképezési függvények jelenleg támogatottak:
 
 * [base64Encode](#base64EncodeFunction)
 * [base64Decode](#base64DecodeFunction)
 * [extractTokenAtPosition](#extractTokenAtPositionFunction)
 * [jsonArrayToStringCollection](#jsonArrayToStringCollectionFunction)
+* [urlEncode](#urlEncodeFunction)
+* [urlDecode](#urlDecodeFunction)
 
 <a name="base64EncodeFunction"></a>
 
 ### <a name="base64encode-function"></a>base64Encode függvény
 
-Hajt végre *URL-cím környezetben is biztonságos* Base64 kódolás a bemeneti karakterláncot. Feltételezi, hogy a bemeneti UTF-8 kódolású.
+*URL-cím – biztonságos* Base64 kódolást végez a bemeneti karakterláncban. Feltételezi, hogy a bemenet UTF-8 kódolású.
 
-#### <a name="example---document-key-lookup"></a>Példa - dokumentum kulcskeresés
+#### <a name="example---document-key-lookup"></a>Példa – dokumentum kulcsának keresése
 
-Csak URL-cím biztonságos karakterek szerepelhetnek egy Azure Search-dokumentum kulcsot (mivel ügyfeleknek kell lennie arra, hogy a dokumentum használata a [keresési API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) ). Ha a forrás mező, a kulcs URL-címekben nem biztonságos karaktereket tartalmaz, akkor használhatja a `base64Encode` , indexelési idő átalakítása függvény.
+Csak URL-alapú biztonságos karakterek szerepelhetnek egy Azure Search dokumentum kulcsában (mivel az ügyfeleknek a [keresési API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) használatával tudniuk kell kezelni a dokumentumot). Ha a kulcs forrás mezőjében URL-nem biztonságos karakterek szerepelnek, akkor a függvény használatával `base64Encode` átalakíthatja az indexelési időt.
 
-Keresés időpontban lekérésekor a kódolt kulcs ezután használhatja a `base64Decode` függvény az eredeti kulcs értékét, és azt használja a dokumentum lekéréséhez.
+Ha a beolvasott kulcsot keresési időpontban kéri le, a `base64Decode` függvény használatával beolvashatja az eredeti kulcs értékét, és használhatja azt a forrásbizonylat lekéréséhez.
 
 ```JSON
 
@@ -139,19 +141,19 @@ Keresés időpontban lekérésekor a kódolt kulcs ezután használhatja a `base
   }]
  ```
 
-Ha a parameters tulajdonság nem adja meg a leképezési függvény, a rendszer alapértelmezés szerint az érték `{"useHttpServerUtilityUrlTokenEncode" : true}`.
+Ha nem tartalmaz Parameters tulajdonságot a leképezési függvényhez, az alapértelmezés szerint az értéket `{"useHttpServerUtilityUrlTokenEncode" : true}`adja meg.
 
-Az Azure Search két különböző Base64 kódolást támogatja. Ha a kódolási és dekódolási ugyanahhoz a mezőhöz ugyanazokat a paramétereket használja. További információkért lásd: [base64 kódolási beállítást](#base64details) eldönteni, melyik használandó paramétereket.
+A Azure Search két különböző Base64-kódolást támogat. Ugyanezeket a paramétereket kell használnia a kódoláshoz és a dekódoláshoz ugyanezen a mezőben. További információ: [Base64 kódolási beállítások](#base64details) a használandó paraméterek eldöntéséhez.
 
 <a name="base64DecodeFunction"></a>
 
 ### <a name="base64decode-function"></a>base64Decode függvény
 
-Végrehajtja a Base64 kódolású bemeneti karakterlánc dekódolása. A bemeneti adatforrásmérete egy *URL-cím környezetben is biztonságos* Base64-kódolású karakterlánc.
+A bemeneti karakterlánc Base64-dekódolását végzi. A bemenet a következő *URL-cím – biztonságos* Base64 kódolású karakterlánc lehet.
 
-#### <a name="example---decode-blob-metadata-or-urls"></a>Példa – blob metaadatait, vagy URL-dekódolást.
+#### <a name="example---decode-blob-metadata-or-urls"></a>Példa – blob metaadatainak vagy URL-címek dekódolása
 
-A forrásadatok Base64-kódolású karakterláncok, például a blob metaadatainak karakterláncokat vagy webes URL-címek, egyszerű szövegként kereshetővé kívánt tartalmazhat. Használhatja a `base64Decode` függvény a search-index adatokkal való feltöltésekor vissza alakítsa rendszeres karakterláncok a kódolt adatait.
+A forrásadatok olyan Base64 kódolású karakterláncokat tartalmazhatnak, mint például a blob metaadat-karakterláncok vagy a webes URL-címek, amelyeket egyszerű szövegként szeretne keresni. A `base64Decode` függvény használatával a kódolt adatokat visszaállíthatja normál karakterláncokra a keresési index feltöltésekor.
 
 ```JSON
 
@@ -166,45 +168,45 @@ A forrásadatok Base64-kódolású karakterláncok, például a blob metaadatain
   }]
 ```
 
-Ha nem adja meg a parameters tulajdonság, a rendszer alapértelmezés szerint az érték `{"useHttpServerUtilityUrlTokenEncode" : true}`.
+Ha nem tartalmaz Parameters tulajdonságot, a rendszer alapértelmezés szerint az értéket `{"useHttpServerUtilityUrlTokenEncode" : true}`adja meg.
 
-Az Azure Search két különböző Base64 kódolást támogatja. Ha a kódolási és dekódolási ugyanahhoz a mezőhöz ugyanazokat a paramétereket használja. További részletekért lásd: [base64 kódolási beállítást](#base64details) eldönteni, melyik használandó paramétereket.
+A Azure Search két különböző Base64-kódolást támogat. Ugyanezeket a paramétereket kell használnia a kódoláshoz és a dekódoláshoz ugyanezen a mezőben. További részletekért lásd a [Base64-kódolási beállításokat](#base64details) a használandó paraméterek eldöntéséhez.
 
 <a name="base64details"></a>
 
-#### <a name="base64-encoding-options"></a>Base64 kódolási beállítást
+#### <a name="base64-encoding-options"></a>Base64 kódolási beállítások
 
-Az Azure Search két különböző Base64 kódolást támogatja: **HttpServerUtility URL-cím jogkivonat**, és **URL-cím környezetben is biztonságos Base64 kódolás nélkül kitöltés**. Egy karakterlánc, amely a base64-kódolású az indexelés során később dekódolható kódolási beállítások, vagy pedig az eredmény az eredeti nem egyeznek.
+Azure Search két különböző Base64-kódolást támogat: **HTTPSERVERUTILITY URL-token**és **URL-cím – biztonságos Base64-kódolás kitöltés nélkül**. Az indexelés során Base64 kódolású karakterláncot később dekódolni kell ugyanazzal a kódolási lehetőséggel, különben az eredmény nem egyezik meg az eredetivel.
 
-Ha a `useHttpServerUtilityUrlTokenEncode` vagy `useHttpServerUtilityUrlTokenDecode` kódolási és dekódolási rendre paraméterek vannak beállítva `true`, majd `base64Encode` viselkedik [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) és `base64Decode` viselkedik [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
+Ha a `useHttpServerUtilityUrlTokenEncode` kódoláshoz és a `true`dekódoláshoz szükséges `useHttpServerUtilityUrlTokenDecode` paraméterek a (z) `base64Encode` értékre vannak beállítva, akkor a következőképpen `base64Decode` viselkedik: [HttpServerUtility. UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) , és úgy viselkedik, mint [ HttpServerUtility. UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
 
-Ha nem használja a teljes .NET-keretrendszer (azaz .NET Core vagy használ egy másik keretrendszer) az Azure Search viselkedésének emulációjához a kulcs értékeit állítja elő, majd állítsa be `useHttpServerUtilityUrlTokenEncode` és `useHttpServerUtilityUrlTokenDecode` való `false`. Attól függően, használja a könyvtárban a base64 kódolás és a visszafejtés funkciók eltérőek lehetnek az Azure Search által használt állók közül.
+Ha nem a teljes .NET-keretrendszert használja (azaz .net Core-t vagy más keretrendszert használ), hogy a kulcs értékeit a Azure Search viselkedésének emulálása céljából hozza létre, akkor a `useHttpServerUtilityUrlTokenEncode` és `useHttpServerUtilityUrlTokenDecode` a `false`értéket kell megadnia. A használt könyvtártól függően a Base64-kódolás és a dekódolási függvények eltérhetnek az Azure Search által használttól.
 
-Az alábbi táblázat összehasonlítja a különböző base64 kódolású karakterlánc `00>00?00`. Annak megállapításához, a szükséges további feldolgozás (ha van ilyen) a base64-függvények, a alkalmazni a szalagtár funkciót, a karakterlánc kódolása `00>00?00` és összehasonlítja a runbooknak milyen kimenetet `MDA-MDA_MDA`.
+A következő táblázat a karakterlánc `00>00?00`különböző Base64 kódolásait hasonlítja össze. Ha meg szeretné határozni a Base64-függvények szükséges további feldolgozását (ha van ilyen), alkalmazza a függvénytár-kódolás `00>00?00` függvényt a karakterláncon, és hasonlítsa össze a kimenetet a várt kimenettel `MDA-MDA_MDA`.
 
-| Encoding | Base64 kódolás kimenete | További erőforrástár-kódolás után feldolgozása | További feldolgozásra, mielőtt az erőforrástár-dekódolás |
+| Encoding | Base64 kódolású kimenet | További feldolgozás a függvénytár-kódolás után | További feldolgozás a könyvtár dekódolása előtt |
 | --- | --- | --- | --- |
-| A kitöltés Base64 | `MDA+MDA/MDA=` | URL-cím környezetben is biztonságos karaktereket használni, és távolítsa el a kitöltés | Standard Base64-kódolású karakterek, és adja hozzá a kitöltés |
-| Base64 kitöltése nélkül | `MDA+MDA/MDA` | URL-cím környezetben is biztonságos karakterek használhatók | Standard Base64-kódolású karakterek használhatók |
-| URL-cím környezetben is biztonságos base64-kitöltés | `MDA-MDA_MDA=` | Távolítsa el a kitöltés | Kitöltés hozzáadása |
-| URL-cím környezetben is biztonságos base64 kitöltése nélkül | `MDA-MDA_MDA` | None | None |
+| Base64 kitöltéssel | `MDA+MDA/MDA=` | URL-alapú biztonságos karakterek használata és kitöltés eltávolítása | Szabványos Base64-karakterek használata és kitöltés hozzáadása |
+| Base64 kitöltés nélkül | `MDA+MDA/MDA` | URL-alapú biztonságos karakterek használata | Szabványos Base64-karakterek használata |
+| URL – biztonságos Base64 kitöltéssel | `MDA-MDA_MDA=` | Kitöltés eltávolítása | Kitöltés hozzáadása |
+| URL – biztonságos Base64 kitöltés nélkül | `MDA-MDA_MDA` | Nincsenek | Nincsenek |
 
 <a name="extractTokenAtPositionFunction"></a>
 
 ### <a name="extracttokenatposition-function"></a>extractTokenAtPosition függvény
 
-Felosztja a megadott elválasztó használatával karakterlánc típusú, és kiválasztja a jogkivonat az eredményül kapott felosztása a megadott helyen.
+A megadott elválasztó karakterrel feldarabol egy sztring mezőt, és az eredményül kapott felosztásban kiválasztja a tokent a megadott pozícióban.
 
-Ez a függvény paraméterei a következők:
+Ez a függvény a következő paramétereket használja:
 
-* `delimiter`: egy karakterláncot megfeleltessen elválasztóként használhatja, ha a bemeneti sztring felosztásához.
-* `position`: egy egész számolt helyzetét megadja a jogkivonat választja ki, miután a bemeneti karakterlánc van felosztva.
+* `delimiter`: a bemeneti karakterlánc felosztásakor elválasztóként használandó karakterlánc.
+* `position`: a bemeneti sztring felosztása után kiválasztható token egészének nulla alapú pozíciója.
 
-Például, ha a bemeneti `Jane Doe`, a `delimiter` van `" "`(terület) és a `position` 0, az eredmény `Jane`; Ha a `position` : 1, az eredmény `Doe`. Ha a pozíció hivatkozik egy jogkivonatot, amely nem létezik, hibát ad vissza.
+Ha `Jane Doe`például a bemenet, `" "`a `delimiter` (szóköz) `Jane`és az `position` értéke 0, az `Doe`eredmény a következő:. Ha a `position` értéke 1, az eredmény. Ha a pozíció olyan tokenre hivatkozik, amely nem létezik, hibaüzenetet ad vissza.
 
-#### <a name="example---extract-a-name"></a>Példa - kivonat nevét
+#### <a name="example---extract-a-name"></a>Példa – név kinyerése
 
-Az adatforrás tartalmaz egy `PersonName` mező, és azt szeretné, két külön tárgymutatóhoz `FirstName` és `LastName` mezőket. Ez a függvény használatával az elválasztó karakter a szóköz karakter használata a bemeneti felosztása.
+Az adatforrás tartalmaz egy `PersonName` mezőt, és két különálló `FirstName` és `LastName` mezőként szeretné indexelni. Ezt a függvényt használhatja a bemenet elválasztóként való felosztásához.
 
 ```JSON
 
@@ -225,13 +227,13 @@ Az adatforrás tartalmaz egy `PersonName` mező, és azt szeretné, két külön
 
 ### <a name="jsonarraytostringcollection-function"></a>jsonArrayToStringCollection függvény
 
-Egy karakterlánc formátumú JSON-tömböt, karakterláncok való feltöltéséhez használható karakterlánc-tömbben alakítja át egy `Collection(Edm.String)` mezőt az indexben.
+A sztringek JSON-tömbként formázott karakterláncának átalakítása egy karakterlánc-tömbbe, amely az index `Collection(Edm.String)` mezőinek feltöltésére használható.
 
-Például, ha a bemeneti karakterlánc `["red", "white", "blue"]`, majd a célmező típusú `Collection(Edm.String)` tölti fel a három értékek `red`, `white`, és `blue`. A bemeneti értékek, amelyek nejde analyzovat jako JSON-karakterlánc tömbök hibát ad vissza.
+Ha `["red", "white", "blue"]`például a bemeneti karakterlánc, akkor a típusú cél mező a következő `Collection(Edm.String)` három értékkel `red` `white`lesz feltöltve:, és `blue`. A nem értelmezhető JSON-karakterlánc-tömbökkel rendelkező bemeneti értékek esetén hibaüzenetet ad vissza.
 
-#### <a name="example---populate-collection-from-relational-data"></a>Példa – töltse ki a relációs adatok gyűjtése
+#### <a name="example---populate-collection-from-relational-data"></a>Példa – a gyűjtemények feltöltése a kapcsolódó adatokból
 
-Az Azure SQL Database nem rendelkezik olyan beépített adattípust, természetesen leképező `Collection(Edm.String)` mezőket az Azure Search szolgáltatásban. Karakterlánc-gyűjtemény mezők feltöltésére, a forrásadatok JSON karakterlánctömbként előzetes feldolgozása és majd a `jsonArrayToStringCollection` leképezési függvény.
+A Azure SQL Database nem rendelkezik olyan beépített adattípussal, amely természetesen a `Collection(Edm.String)` Azure Search mezőihez van társítva. A karakterlánc-gyűjtési mezők feltöltéséhez JSON-karakterlánc-tömbként előre feldolgozhatja a forrásadatokat, majd használhatja a `jsonArrayToStringCollection` leképezési függvényt.
 
 ```JSON
 
@@ -242,4 +244,52 @@ Az Azure SQL Database nem rendelkezik olyan beépített adattípust, természete
   }]
 ```
 
-Egy részletes példa, amely relációs adatok alakítja a gyűjtemény indexmező: [relációs adatok modellezése](search-example-adventureworks-modeling.md).
+A viszonyítási adat index-gyűjtési mezőkbe való átalakításával kapcsolatos részletes példákért [](search-example-adventureworks-modeling.md)lásd: a rokoni adatmodellek modellezése.
+
+<a name="urlEncodeFunction"></a>
+
+### <a name="urlencode-function"></a>urlEncode függvény
+
+Ez a függvény egy karakterlánc kódolására használható, hogy az "URL-biztonság" legyen. Ha olyan karakterláncot használ, amely nem engedélyezett karaktereket tartalmaz egy URL-címben, akkor ez a függvény a "nem biztonságos" karaktereket átalakítja a karakter-entitások megfelelőbe. Ez a függvény az UTF-8 kódolási formátumot használja.
+
+#### <a name="example---document-key-lookup"></a>Példa – dokumentum kulcsának keresése
+
+`urlEncode`a függvény a függvény alternatívájaként is használható, ha `base64Encode` csak a nem biztonságos URL-címeket szeretné átalakítani, miközben más karaktereket is tart.
+
+Tegyük fel, hogy a `<hello>` bemeneti karakterlánc – a típusú cél mező `(Edm.String)` a következő értékkel lesz feltöltve:`%3chello%3e`
+
+Ha a beolvasott kulcsot keresési időpontban kéri le, a `urlDecode` függvény használatával beolvashatja az eredeti kulcs értékét, és használhatja azt a forrásbizonylat lekéréséhez.
+
+```JSON
+
+"fieldMappings" : [
+  {
+    "sourceFieldName" : "SourceKey",
+    "targetFieldName" : "IndexKey",
+    "mappingFunction" : {
+      "name" : "urlEncode"
+    }
+  }]
+ ```
+
+ <a name="urlDecodeFunction"></a>
+
+ ### <a name="urldecode-function"></a>urlDecode függvény
+
+ Ez a függvény UTF-8 kódolási formátumban konvertál egy URL-kódolású karakterláncot egy dekódolt karakterlánccá.
+
+ ### <a name="example---decode-blob-metadata"></a>Példa – blob metaadatainak dekódolása
+
+ Egyes Azure Storage-ügyfelek automatikusan URL-címet kódolnak a blob metaadatainak kódolásához, ha nem ASCII-karaktereket tartalmaznak. Ha azonban szeretné, hogy az ilyen metaadatok kereshetők legyenek (egyszerű szövegként), a `urlDecode` függvény használatával a kódolt adatokat visszaállíthatja normál karakterláncokra a keresési index feltöltésekor.
+
+ ```JSON
+
+"fieldMappings" : [
+  {
+    "sourceFieldName" : "UrlEncodedMetadata",
+    "targetFieldName" : "SearchableMetadata",
+    "mappingFunction" : {
+      "name" : "urlDecode"
+    }
+  }]
+ ```

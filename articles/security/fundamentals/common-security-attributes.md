@@ -10,12 +10,12 @@ ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: be39a623dc5dac09dcfe47de67e025191b5c7de3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 43eb7e5c4cab722eb97f9e2fe819c9c79bae45d9
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727503"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828768"
 ---
 # <a name="security-attributes-for-azure-services"></a>Az Azure-szolgáltatások biztonsági attribútumai
 
@@ -646,7 +646,7 @@ SQL Database magában foglalja az [önálló adatbázist](/azure/sql-database/sq
 | Szolgáltatás végpontjának támogatása| Igen | Csak az [önálló adatbázisra](/azure/sql-database/sql-database-single-index) vonatkozik. |
 | Azure Virtual Network injekciós támogatás| Igen | Csak a [felügyelt példányra](/azure/sql-database/sql-database-managed-instance) vonatkozik. |
 | Hálózati elkülönítés és tűzfal-támogatás| Igen | Tűzfal az adatbázis szintjén és a kiszolgáló szintjén is. A hálózati elkülönítés csak [felügyelt példány](/azure/sql-database/sql-database-managed-instance) esetén használható. |
-| Kényszerített bújtatás támogatása| Igen | [Felügyelt példány](/azure/sql-database/sql-database-managed-instance) egy [ExpressRoute](/azure/expressroute/index.yml) VPN-en keresztül. |
+| Kényszerített bújtatás támogatása| Igen | [Felügyelt példány](/azure/sql-database/sql-database-managed-instance) egy [ExpressRoute](/azure/expressroute/index) VPN-en keresztül. |
 
 ### <a name="detection"></a>Észlelés
 
@@ -659,7 +659,7 @@ SQL Database magában foglalja az [önálló adatbázist](/azure/sql-database/sq
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
 | Authentication| Igen | Azure Active Directory (Azure AD) |
-| Authorization| Igen | Nincsenek |
+| Authorization| Igen | None |
 
 ### <a name="audit-trail"></a>Naplózási nyomvonal
 
@@ -672,7 +672,7 @@ SQL Database magában foglalja az [önálló adatbázist](/azure/sql-database/sq
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Konfiguráció-felügyeleti támogatás, például a konfiguráció verziószámozása| Nem  | Nincsenek |
+| Konfiguráció-felügyeleti támogatás, például a konfiguráció verziószámozása| Nem  | None |
 
 ### <a name="additional-security-attributes-for-sql-database"></a>A SQL Database további biztonsági attribútumai
 

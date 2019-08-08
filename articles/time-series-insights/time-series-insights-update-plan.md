@@ -1,6 +1,6 @@
 ---
-title: Az Azure Time Series Insights – előzetes környezet megtervezése |} A Microsoft Docs
-description: Az Azure Time Series Insights – előzetes környezet megtervezése.
+title: A Azure Time Series Insights előzetes verzió környezetének megtervezése | Microsoft Docs
+description: Tervezze meg Azure Time Series Insights előnézeti környezetét.
 author: ashannon7
 ms.author: dpalled
 ms.workload: big-data
@@ -8,88 +8,88 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5f89105abc21f5ef6cce53ea55622a808f947e86
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 72d98e0ca4f75835e7dcc2e7a14b037ccf0d6d7f
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357311"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840561"
 ---
-# <a name="plan-your-azure-time-series-insights-preview-environment"></a>Az Azure Time Series Insights – előzetes környezet megtervezése
+# <a name="plan-your-azure-time-series-insights-preview-environment"></a>A Azure Time Series Insights előzetes verzió környezetének megtervezése
 
-Ez a cikk ismerteti az ajánlott eljárásokat és az Azure Time Series Insights előzetes verziója használatával gyorsan használatba.
+Ez a cikk azt ismerteti, hogyan lehet gyorsan megtervezni és megkezdeni az első lépéseket a Azure Time Series Insights előzetes verziójának használatával.
 
 > [!NOTE]
-> Ajánlott eljárásokat, és egy általánosan elérhető a Time Series Insights-példány megtervezése, lásd: [az Azure Time Series Insights általánosan elérhető környezet megtervezése](time-series-insights-environment-planning.md).
+> Az általánosan elérhető Time Series Insights-példány megtervezéséhez ajánlott eljárásokat a [Azure Time Series Insights általános elérhetőségi környezet](time-series-insights-environment-planning.md)megtervezése című témakörben talál.
 
-## <a name="best-practices-for-planning-and-preparation"></a>Ajánlott eljárások tervezése és előkészítése
+## <a name="best-practices-for-planning-and-preparation"></a>Ajánlott eljárások a tervezéshez és előkészítéshez
 
-Ismerkedés a Time Series Insights, az a legcélszerűbb megismerése:
+A Time Series Insights első lépéseihez érdemes megismernie a következőket:
 
-* Hogy mit kap mikor, [a Time Series Insights előzetes környezet kiépítése](#the-preview-environment).
-* Mi a [Time Series azonosítók és a Timestamp tulajdonság](#configure-time-series-ids-and-timestamp-properties).
-* Milyen új [Idősorozat-modell van](#understand-the-time-series-model), és hogyan hozhat létre saját.
-* Hogyan [események küldése hatékonyan JSON](#shape-your-events).
-* Time Series Insights [üzleti vész-helyreállítási lehetőségeket](#business-disaster-recovery).
+* Mit kap, ha [kiépít egy Time Series Insights előnézeti környezetet](#the-preview-environment).
+* Az [idősorozat-azonosítók és az időbélyeg tulajdonságai](#configure-time-series-ids-and-timestamp-properties).
+* Az új idősorozat- [modell](#understand-the-time-series-model), valamint a saját létrehozása.
+* [Események hatékony küldése a JSON-ban](#shape-your-events).
+* Time Series Insights [üzleti katasztrófák helyreállítási lehetőségei](#business-disaster-recovery).
 
-Az Azure Time Series Insights egy üzleti használatalapú modellt alkalmaz. További információ a költségek és a kapacitás: [Time Series Insights díjszabása](https://azure.microsoft.com/pricing/details/time-series-insights/).
+A Azure Time Series Insights az üzleti modellt is alkalmazza. További információ a díjakról és a kapacitásról: [Time Series Insights díjszabása](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
 ## <a name="the-preview-environment"></a>Az előzetes verziójú környezet
 
-A Time Series Insights előzetes környezet üzembe helyezésekor, hozzon létre két Azure-erőforrások:
+Time Series Insights előnézeti környezet kiépítésekor két Azure-erőforrást hoz létre:
 
-* Az Azure Time Series Insights – előzetes környezet
-* Azure Storage-általános célú V1 fiók
+* Azure Time Series Insights előnézeti környezet
+* Azure Storage általános célú v1-fiók
 
-Indítsa el, három további elemek szükségesek:
+A kezdéshez három további elemre van szükség:
 
-* A [Time Series-modell](./time-series-insights-update-tsm.md)
-* Egy [eseményforrás csatlakozik a Time Series Insights](./time-series-insights-how-to-add-an-event-source-iothub.md)
-* [Az eseményforrás beérkeznek események](./time-series-insights-send-events.md) , amely mindkét képeződik a modellt, és érvényes JSON formátumban vannak
+* Egy [Idősorozat-modell](./time-series-insights-update-tsm.md)
+* [Time Series Insightshoz csatlakoztatott eseményforrás](./time-series-insights-how-to-add-an-event-source-iothub.md)
+* [Az eseményforrás](./time-series-insights-send-events.md) , amely a modellhez van rendelve, és érvényes JSON formátumú.
 
-## <a name="configure-time-series-ids-and-timestamp-properties"></a>Time Series azonosítók és időbélyegzés tulajdonságainak konfigurálása
+## <a name="configure-time-series-ids-and-timestamp-properties"></a>Idősorozat-azonosítók és időbélyeg-tulajdonságok konfigurálása
 
-Hozzon létre egy új Time Series Insights-környezetet, válassza a Time Series azonosítóját. Ez tehát az adatok logikai partíció funkcionál. Feljegyzett, győződjön meg arról, hogy az a Time Series azonosítók készen áll.
+Új Time Series Insights-környezet létrehozásához válasszon egy idősorozat-azonosítót. Ez logikai partícióként működik az adatai számára. Ahogy azt említettük, győződjön meg arról, hogy az idősorozat-azonosítók készen állnak.
 
 > [!IMPORTANT]
-> Time Series-azonosítók *nem módosítható* és *később már nem módosítható*. Minden egyes végső kiválasztása előtt ellenőrizze, és először használja.
+> Az idősorozat- azonosítók nem változtathatók meg, és *később nem módosíthatók*. Győződjön meg róla, hogy a végső kiválasztás és az első használat előtt ellenőrizzen egyet.
 
-Kiválaszthatja, hogy legfeljebb három kulcsok egyedileg megkülönböztetni azokat az erőforrásokat. További információkért olvassa el [ajánlott eljárások a Time Series ID kiválasztására vonatkozó](./time-series-insights-update-how-to-id.md) és [tárolási a bejövő és kimenő](./time-series-insights-update-storage-ingress.md).
+Az erőforrások egyedi megkülönböztetéséhez legfeljebb három kulcsot választhat ki. További információ: [ajánlott eljárások az idősorozat-azonosító](./time-series-insights-update-how-to-id.md) és a [tárolás és a bejövő](./time-series-insights-update-storage-ingress.md)adatok kiválasztásához.
 
-Az időbélyeg-tulajdonság is fontos. Ez a tulajdonság is kijelölhet, eseményforrások hozzáadásakor. Minden egyes esemény forrása egy nem kötelező időbélyeg-tulajdonság, amely nyomon követése eseményforrások használta idővel rendelkezik. Időbélyegző értékeit a rendszer megkülönbözteti a kis-és nagybetűket, és formátumban kell lenniük az egyes eseményforrás egyes specifikációjának.
+Az időbélyeg tulajdonság szintén fontos. Ezt a tulajdonságot az eseményforrás hozzáadásakor lehet kijelölni. Minden eseményforrás egy nem kötelező időbélyeg-tulajdonsággal rendelkezik, amely az események időbeli alakulásának nyomon követésére szolgál. Az időbélyegző értékei megkülönböztetik a kis-és nagybetűket, és az egyes eseményforrás egyedi leírását kell formázni.
 
 > [!TIP]
-> Ellenőrizze a eseményforrások formázás és elemzés követelményei.
+> Ellenőrizze az eseményforrás formázásának és elemzésének követelményeit.
 
-Ha üresen hagyja, az Eseménynapló Timestamp lesz eseményforrás eseményt sorba idején. Előzményadatok vagy kötegelt eseményeket küld, ha az időbélyeg-tulajdonság testreszabása hasznos több, mint az alapértelmezett esemény sorba időpontja. További információkért olvassa el, hogyan [eseményforrások hozzáadása az Azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md).
+Ha üresen hagyja, az esemény időbélyegzője az sorba helyezni időpontját használja. Ha a múltbeli vagy kötegelt eseményeket küldi el, az időbélyegző tulajdonság testreszabása az alapértelmezett Event sorba helyezni-időpontnál hasznosabb lehet. További információkért olvassa el a következő témakört [: Event sources hozzáadása az Azure IoT Hubban](./time-series-insights-how-to-add-an-event-source-iothub.md).
 
-## <a name="understand-the-time-series-model"></a>Megismerheti a Time Series modell
+## <a name="understand-the-time-series-model"></a>Az idősorozat-modell ismertetése
 
-Most már beállíthatja a Time Series Insights-környezet Idősorozat-modellben. Az új modell egyszerűen keresése és elemzése IoT-adatot. Ez lehetővé teszi, hogy a válogatott, a karbantartással és a felderítési bővítést az idősorozat-adatok, és segít fogyasztói használatra kész adatkészleteket előkészítése. A modell egy példányt, amely összekapcsolja az egyedi erőforráscsoport változók, típusok és a hierarchiák néven ismert leképezése idő sorozat azonosítók használ. Olvassa el az új [Idősorozat-modell](./time-series-insights-update-tsm.md).
+Mostantól konfigurálhatja Time Series Insights környezete idősorozat-modelljét. Az új modell segítségével könnyedén megtalálhatja és elemezheti a IoT-adatbázisokat. Lehetővé teszi a Time Series-adatgyűjtési és-bővítési feladatok elvégzését, és segít a felhasználó által készített adatkészletek előkészítésében. A modell idősorozat-azonosítókat használ, amelyek olyan példányhoz képezhetők le, amely társítja az egyedi erőforrást változókkal, más néven típusokkal és hierarchiákkal. További információ az új [Idősorozat](./time-series-insights-update-tsm.md)-modellről.
 
-A modell le dinamikus, így bármikor építhetők fel. Gyorsan és egyszerűen hozhat létre, és töltse fel be a Time Series Insights adatok elküldése előtt. A modell létrehozásához, lásd: [használja az Idősorozat-modell](./time-series-insights-update-how-to-tsm.md).
+A modell dinamikus, így bármikor létrehozható. A gyors kezdéshez hozza létre és töltse fel az adatoknak a Time Series Insightsba való kitolása előtt. A modell létrehozásához tekintse meg [az idősorozat-modell használatát](./time-series-insights-update-how-to-tsm.md)ismertető témakört.
 
-Sok ügyfél az Idősorozat-modell képezi le egy meglévő eszköz modell vagy a rendszer ERP már megfelel. Ha nem rendelkezik egy meglévő modell, egy előre elkészített felhasználói élmény van [megadott](https://github.com/Microsoft/tsiclient) gyors üzembe helyezéséig. Elképzeli, hogyan modell segíthetnek, tekintse meg a [minta bemutató környezetben](https://insights.timeseries.azure.com/preview/demo).
+Sok ügyfél esetében az idősorozat-modell egy már meglévő eszköz-modellel vagy ERP-rendszerrel van leképezve. Ha nem rendelkezik meglévő modellel, a rendszer előre elkészített felhasználói élményt [biztosít](https://github.com/Microsoft/tsiclient) a gyors üzembe helyezéshez. Ha szeretné elképzelni, hogyan segíthet a modell, tekintse meg a [minta bemutató környezetét](https://insights.timeseries.azure.com/preview/demo).
 
 ## <a name="shape-your-events"></a>Az események formázása
 
-A Time Series Insights eseményeket küldeni módon ellenőrizheti. Ideális esetben az események vannak denormalizált hatékony és jól.
+Ellenőrizheti, hogy az események hogyan küldhetők Time Series Insightsba. Ideális esetben a rendszer jól és hatékonyan denormalizálja az eseményeket.
 
-Jó tapasztalatok:
+Egy jó ökölszabály:
 
-* Az Idősorozat-modellben levő Store a metaadatokat.
-* Time Series mód, a szolgáltatáspéldány-mezők és az események tartalmazzák az csak a szükséges információkat, például egy Time Series-azonosító és az időbélyegző.
+* Az idősorozat-modellben tárolja a metaadatokat.
+* Az idősorozat mód, a példány mezői és az események csak a szükséges információkat tartalmazzák, például egy idősorozat-azonosítót vagy egy időbélyeg-t.
 
-További információkért lásd: [alakzat-események](./time-series-insights-send-events.md#json).
+További információ: [Shape Events](./time-series-insights-send-events.md#json).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-- Felülvizsgálat [az Azure Advisor](../advisor/advisor-overview.md) , tervezze meg az üzleti helyreállítási konfigurációs beállítások.
+- Tekintse át [Azure Advisor](../advisor/advisor-overview.md) az üzleti helyreállítás konfigurációs beállításainak megtervezéséhez.
 
-- Tudjon meg többet [tárolási a bejövő és kimenő](./time-series-insights-update-storage-ingress.md) a Time Series Insights előzetes verziója.
+- További információ a [tárolásról és a bejövő](./time-series-insights-update-storage-ingress.md) forgalomról a Time Series Insights előzetes verziójában.
 
-- Ismerje meg [adatmodellezés](./time-series-insights-update-tsm.md) a Time Series Insights előzetes verziója.
+- Tudnivalók az [](./time-series-insights-update-tsm.md) adatmodellezésről a Time Series Insights előzetes verziójában.

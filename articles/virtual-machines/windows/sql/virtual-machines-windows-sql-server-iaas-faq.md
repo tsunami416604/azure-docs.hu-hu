@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/12/2018
+ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 7f6ec1ee65727fb8c3c7d98f696c288e95ec880a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 4b50b4acf6ea655c40821e7c49824af11aeeb9ab
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876197"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816307"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Gyakori kérdések az Azure-beli Windows rendszerű virtuális gépeken futó SQL Server
 
@@ -73,7 +73,7 @@ Ez a cikk az [Azure-beli Windows Virtual Machines SQL Server](https://azure.micr
 
    Először hozzon létre egy SQL Server példánnyal rendelkező Azure-beli virtuális gépet. Ezután telepítse át a helyszíni adatbázisait erre a példányra. Az adatáttelepítési stratégiákat lásd: [SQL Server adatbázis áttelepítése egy Azure-beli virtuális gépen SQL Server](virtual-machines-windows-migrate-sql.md).
 
-## <a name="licensing"></a>Licencek
+## <a name="licensing"></a>Licencelés
 
 1. **Hogyan telepíthetem az SQL Server egy licencelt példányát egy Azure-beli virtuális gépen?**
 
@@ -122,7 +122,12 @@ Ez a cikk az [Azure-beli Windows Virtual Machines SQL Server](https://azure.micr
 
     Igen. Ha a saját adathordozóról telepített SQL Serverokat, és telepítette az SQL IaaS bővítményt, akkor az SQL IaaS-bővítmény által biztosított kezelhetőségi előnyök beszerzéséhez regisztrálhatja SQL Server VM az erőforrás-szolgáltatóval. Azonban a saját maga által üzembe helyezett SQL-alapú virtuális gép nem alakítható át használatalapú fizetéses modell használatára.
 
-## <a name="administration"></a>Adminisztráció
+1. **Lehetséges a licencelési modell átváltása a klasszikus modell használatával üzembe helyezett SQL Server VMon?**
+
+   Nem. A licencelési modell módosítása klasszikus virtuális gépen nem támogatott. A virtuális gépet áttelepítheti a Resource Manager-modellbe (ARM), és regisztrálhatja az SQL VM erőforrás-szolgáltatóval. Ha a virtuális gép regisztrálva van az SQL VM erőforrás-szolgáltatónál, a licencelési modell módosításai elérhetők lesznek a virtuális gépen. 
+   
+
+## <a name="administration"></a>Felügyelet
 
 1. **Telepíthetek egy második SQL Server-példányt ugyanazon a virtuális gépen? Módosíthatom az alapértelmezett példány telepített szolgáltatásainak körét?**
 
@@ -146,9 +151,9 @@ Ez a cikk az [Azure-beli Windows Virtual Machines SQL Server](https://azure.micr
    
 ## <a name="updating-and-patching"></a>Frissítés és javítás
 
-1. **Hogyan egy Azure-beli virtuális gépen a SQL Server egy másik verziójára/kiadására váltani?**
+1. **Hogyan válthatok másik SQL Server-verzióra/-kiadásra egy Azure-beli virtuális gépen?**
 
-   Az ügyfelek a SQL Server kívánt verzióját vagy kiadását tartalmazó telepítési adathordozót használva módosíthatják SQL Server verzióját/kiadását. A kiadás módosítása után a Azure Portal segítségével módosíthatja a virtuális gép kiadási tulajdonságát, hogy pontosan tükrözze a virtuális gép számlázását. További információkért lásd: [SQL Server VM kiadásának módosítása](virtual-machines-windows-sql-change-edition.md). 
+   Az ügyfelek az SQL Server kívánt verzióját vagy kiadását tartalmazó telepítési adathordozóval módosíthatják az SQL Server verzióját/kiadását. A kiadás módosítása után az Azure Portalon módosítsa a virtuális gép kiadási tulajdonságát, hogy a virtuális gép számlázása a pontos adatokkal történjen. További információkért lásd: [SQL Server VM kiadásának módosítása](virtual-machines-windows-sql-change-edition.md). 
 
 
 1. **Hogyan történik a frissítések és szervizcsomagok alkalmazása egy SQL Server VM?**

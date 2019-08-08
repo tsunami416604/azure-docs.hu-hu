@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 08/02/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 236d880af780114dfb906021f53d5c09aee75332
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: f33193e3102afca73344fcd640d14d9af9c1d46e
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514895"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775341"
 ---
 # <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Azure-blobok és-várólisták hozzáférésének engedélyezése Azure Active Directory használatával
 
@@ -22,7 +22,7 @@ Az Azure Storage támogatja a Azure Active Directory (AD) használatát a blob-�
 
 Az Azure AD által visszaadott OAuth 2,0 tokent használó felhasználók vagy alkalmazások engedélyezése kiváló biztonságot és egyszerű használatot biztosít a megosztott kulcs engedélyezési és közös hozzáférési aláírásai (SAS) számára. Az Azure AD-ben nem szükséges a fiókhoz tartozó hozzáférési kulcs tárolása a kóddal és a potenciális biztonsági rések kockázatával. Habár továbbra is használhatja a megosztott kulcsos engedélyezést az alkalmazásokkal, az Azure AD megkerülésével megkerüli a fiók hozzáférési kulcsának a kóddal való tárolásának szükségességét. Továbbra is használhatja a közös hozzáférésű aláírásokat (SAS) a Storage-fiók erőforrásaihoz való részletes hozzáférés biztosításához, de az Azure AD hasonló képességeket kínál, anélkül, hogy az SAS-tokeneket kellene kezelnie, vagy nem kell aggódnia a sérült SAS visszavonásával kapcsolatban. A Microsoft az Azure AD-hitelesítés használatát javasolja az Azure Storage-alkalmazásokhoz, ha lehetséges.
 
-Az Azure AD-vel való engedélyezés az összes általános célú és blob Storage-fiókhoz elérhető az összes nyilvános régióban és nemzeti felhőben. Csak az Azure Resource Manager üzembehelyezési modellel létrehozott Storage-fiókok támogatják az Azure AD-hitelesítést.
+Az Azure AD-vel való engedélyezés az összes általános célú és blob Storage-fiókhoz elérhető az összes nyilvános régióban és nemzeti felhőben. Csak az Azure Resource Manager üzembehelyezési modellel létrehozott Storage-fiókok támogatják az Azure AD-hitelesítést. Az Azure AD-vel való engedélyezés nem támogatott az Azure Table Storage szolgáltatásban.
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>A blobok és a várólisták Azure AD-áttekintése
 

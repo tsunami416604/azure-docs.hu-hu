@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/18/2019
 ms.author: bwren
 ms.openlocfilehash: b9a4a0a18e120a2843e23d44b03c0fe53b0d84fc
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 08/08/2019
 ms.locfileid: "68370677"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure Monitor naplók standard tulajdonságai
@@ -51,7 +51,7 @@ exceptions
 | sort by timestamp asc 
 ```
 
-## <a name="timereceived"></a>\_TimeReceived
+## <a name="_timereceived"></a>\_TimeReceived
 A TimeReceived tulajdonság azt a dátumot és időpontot tartalmazza, ameddig a rekord az Azure-felhőben lévő Azure monitor betöltési ponttól érkezett.  **\_** Ez hasznos lehet az adatforrás és a felhő közötti késési problémák azonosításához. Erre példa lenne egy hálózati probléma, ami késlelteti az ügynöktől küldött adatok késését. További részletekért lásd: a [naplózási adatok betöltési ideje Azure monitorban](data-ingestion-time.md) .
 
 Az alábbi lekérdezés átlagos késést biztosít egy ügynöktől származó esemény-rekordok esetében óránként. Ez magában foglalja az ügynök és a felhő közötti időt, valamint azt, hogy a rekord teljes ideje elérhető legyen a naplók lekérdezéséhez.
@@ -77,11 +77,11 @@ search *
 | summarize count() by Type
 
 ```
-## <a name="itemid"></a>\_Elemazonosító
+## <a name="_itemid"></a>\_Elemazonosító
 A elemazonosító tulajdonság a rekord egyedi azonosítóját tárolja.  **\_**
 
 
-## <a name="resourceid"></a>\_ResourceId
+## <a name="_resourceid"></a>\_ResourceId
 A ResourceId tulajdonság az erőforrás egyedi azonosítóját tartalmazza, amelyhez a rekord társítva van.  **\_** Ez egy szabványos tulajdonságot biztosít, amellyel a lekérdezés hatókörét csak egy adott erőforrás rekordjaira, illetve a kapcsolódó adatok több táblába való csatlakoztatására használhatja.
 
 Az Azure-erőforrások esetében a **_ResourceId** értéke az [Azure-erőforrás azonosítójának URL-címe](../../azure-resource-manager/resource-group-template-functions-resource.md). A tulajdonság jelenleg Azure-erőforrásokra korlátozódik, de az Azure-on kívüli erőforrásokra, például a helyszíni számítógépekre is kiterjeszthető.
@@ -127,7 +127,7 @@ union withsource = tt *
 
 Ezeket `union withsource = tt *` a lekérdezéseket takarékosan használhatja az adattípusok megkereséséhez.
 
-## <a name="isbillable"></a>\_Számlázható
+## <a name="_isbillable"></a>\_Számlázható
 A  **\_számlázható** tulajdonság azt határozza meg, hogy a betöltött adatmennyiség számlázható-e. A számlázható megegyező, _hamis_ értékű adatok gyűjtése ingyenes, és nem számítunk fel az Azure-fiókra.  **\_**
 
 ### <a name="examples"></a>Példák
@@ -154,7 +154,7 @@ union withsource = tt *
 | summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
 ```
 
-## <a name="billedsize"></a>\_BilledSize
+## <a name="_billedsize"></a>\_BilledSize
 **A\_BilledSize** tulajdonság azt az adatmennyiséget adja meg bájtban, amely az Azure-fiókba kerül  **\_** , ha a számlázható értéke igaz.
 
 

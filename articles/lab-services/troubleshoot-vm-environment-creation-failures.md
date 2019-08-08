@@ -1,6 +1,6 @@
 ---
-title: Hibáinak VM és a környezet létrehozása az Azure DevTest Labs |} A Microsoft Docs
-description: Ismerje meg, hogyan háríthatók el a virtuális gép (VM) és az Azure DevTest Labs szolgáltatásban hibák környezet létrehozása során.
+title: A virtuális gépek és környezetek létrehozásával kapcsolatos hibák elhárítása Azure DevTest Labs | Microsoft Docs
+description: Megtudhatja, hogyan lehet elhárítani a virtuális gépek (VM) és a környezet-létrehozási hibák elhárítását Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,36 +10,42 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2019
+ms.date: 08/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 7baa5e4c113e6c21c6123ac7c8399533a7dfb358
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bcdb549ce5b522b2d456e2cbeb5471b9df984514
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410300"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774406"
 ---
-# <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Végezzen hibaelhárítást a virtuális gép (VM) és a környezet létrehozása sikertelen, az Azure DevTest Labs szolgáltatásban
-DevTest Labs lehetővé teszi, figyelmeztetések, ha egy gép neve érvénytelen, vagy ha a kívánt megsértik a labor házirend. Egyes esetekben látja red `X` mellett a labor virtuális gép vagy a környezet állapotát, amely tájékoztatja, hogy probléma merült fel.  Ez a cikk ismerteti, amellyel az alapul szolgáló problémát talál, és, remélhetőleg, a probléma jövőbeni elkerülése néhány trükköket.
+# <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>A virtuális gép (VM) és a környezet-létrehozási hibák elhárítása Azure DevTest Labs
+A DevTest Labs figyelmeztetést ad, ha a gép neve érvénytelen, vagy ha a rendszer megsért egy tesztkörnyezet-házirendet. Időnként a laborbeli virtuális `X` gép vagy a környezeti állapot mellett vörös színnel jelenik meg, amely arról tájékoztatja, hogy valamilyen hiba történt.  Ez a cikk néhány trükköt tartalmaz, amelyek segítségével megtalálhatja a mögöttes problémát, és remélhetőleg a későbbiekben elkerülhető a probléma.
 
-## <a name="portal-notifications"></a>Portál értesítési
-Ha használ az Azure Portalon, és tekintse meg az első hely van a **értesítések panel**.  Az értesítések panelen érhető el a fő parancssávon kattintson a **harang ikonra**, megtudhatja, hogy a labor virtuális gép vagy a környezet létrehozása sikeres volt-e.  Ha hiba lépett fel, a hibaüzenet a létrehozásának sikertelensége társított láthatja. A részletek gyakran adjanak meg további segítséget a probléma megoldásához. A következő példában a virtuális gép létrehozása nem sikerült, kevés a magok miatt. A részletes üzenet bemutatja, hogyan lehet kijavítani a problémát, és alapvető a kvóta növelésére.
+## <a name="portal-notifications"></a>Portál értesítései
+Ha a Azure Portal használja, a megtekinteni kívánt első hely az **értesítések panel**.  A **harang ikonra**kattintva a fő parancssáv elérhető értesítések paneljén megtudhatja, hogy a tesztkörnyezet virtuális gépe vagy a környezet létrehozása sikeres volt-e.  Ha hiba történt, a létrehozási hibához kapcsolódó hibaüzenet jelenik meg. A részletek gyakran további információkat nyújtanak a probléma megoldásához. A következő példában a virtuális gép létrehozása nem sikerült, mert a magok kifogytak. A részletes üzenetből megtudhatja, hogyan javíthatja ki a problémát, és hogyan kérheti le az alapvető kvóta növelését.
 
-![Az Azure portal értesítése](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
+![Értesítés Azure Portal](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
+
+### <a name="vm-in-corruption-state"></a>Virtuális gép sérült állapotban
+Ha a virtuális gép állapota sérültként jelenik meg a laborban, előfordulhat, hogy az alapul szolgáló virtuális gépet törölték a **virtuális gép** lapról, amelyet a felhasználó a **Virtual Machines** lapon tud megnyitni (nem a DevTest Labs oldalról). Törölje a labort a DevTest Labs szolgáltatásban úgy, hogy törli a virtuális gépet a laborból. Ezután hozza létre újra a virtuális gépet a laborban. 
+
+![A virtuális gép sérült állapotban van](./media/troubleshoot-vm-environment-creation-failures/vm-corrupted-state.png)
+
 
 
 ## <a name="activity-logs"></a>Tevékenységnaplók
-Ha a hiba a némi várakozás után a virtuális gép vagy a környezet létrehozásának megkísérlése lekérdezéskapcsolatokról meg tevékenységeket tartalmazó naplók. Ez a szakasz bemutatja, hogyan találhatja meg a naplók a virtuális gépek és környezetek.
+Tekintse meg a tevékenységek naplóit, ha a virtuális gép vagy a környezet létrehozásának megkísérlése után egy hibát vizsgál meg. Ez a szakasz bemutatja, hogyan találhatja meg a virtuális gépek és a környezetek naplóit.
 
-## <a name="activity-logs-for-virtual-machines"></a>A virtuális gépek tevékenységeket tartalmazó naplók
+## <a name="activity-logs-for-virtual-machines"></a>A virtuális gépek tevékenység-naplófájljai
 
-1. A kezdőlapon a tesztkörnyezethez, válassza ki a virtuális gép elindítása a **virtuális gép** lapot.
-2. Az a **virtuális gép** lap a **figyelés** szakaszban a bal oldali menüben válassza a **tevékenységnapló** a virtuális Géphez társított összes napló megtekintéséhez.
-3. A tevékenység cikkek válassza ki a sikertelen műveletet. A sikertelen műveletet hívja meg általában `Write Virtualmachines`.
-4. A jobb oldali ablaktáblán váltson a JSON-lapon. A részletek a naplóban JSON nézetében látja.
+1. A tesztkörnyezet kezdőlapján válassza ki a virtuális gépet, amelyen el szeretné indítani a **virtuális gép** lapját.
+2. A **virtuális gép** lap bal oldali menüjének **figyelés** területén válassza a **műveletnapló** lehetőséget a virtuális géphez társított összes napló megjelenítéséhez.
+3. A műveletnapló elemei területen válassza ki a sikertelen műveletet. A sikertelen műveletet általában a rendszer meghívja `Write Virtualmachines`.
+4. A jobb oldali ablaktáblán váltson a JSON lapra. A részleteket a napló JSON-nézetében tekintheti meg.
 
-    ![A tevékenységnapló egy virtuális géphez](./media/troubleshoot-vm-environment-creation-failures/vm-activity-log.png)
-5. Nézze át a JSON-naplót, amíg meg nem találja a `statusMessage` tulajdonság. Biztosít a fő hibaüzenet jelenik meg, és további részletes információkat, ha van ilyen. A következő JSON a cikk korábbi részében látható példa az alapvető quoted túllépte hiba.
+    ![A virtuális gép tevékenységi naplója](./media/troubleshoot-vm-environment-creation-failures/vm-activity-log.png)
+5. Nézze át a JSON-naplót egészen addig `statusMessage` , amíg meg nem találja a tulajdonságot. Ez biztosítja a fő hibaüzenetet és további részletes információkat, ha vannak ilyenek. A következő JSON-példa a cikk korábbi részében megjelenő, a legfontosabb idézett hibára mutat.
 
     ```json
     "properties": {
@@ -48,27 +54,27 @@ Ha a hiba a némi várakozás után a virtuális gép vagy a környezet létreho
     },
     ```
 
-## <a name="activity-log-for-an-environment"></a>Tevékenységnapló-környezetben
+## <a name="activity-log-for-an-environment"></a>Egy adott környezethez tartozó tevékenység naplója
 
-Tekintse meg a tevékenységnapló-környezet létrehozásához, kövesse az alábbi lépéseket:
+Az alábbi lépéseket követve tekintheti meg a környezet létrehozásához szükséges tevékenységeket:
 
-1. Válassza ki a labor kezdőlapja, **Konfigurace a zásady** a bal oldali menüben.
-2. az a **Konfigurace a zásady** lapon jelölje be **tevékenységeket tartalmazó naplók** menüben.
-3. A hiba a tevékenység listában a naplóban keresse meg és jelölje ki.
-4. A jobb oldali ablaktáblán, váltson át a JSON-lapon, és keresse meg a **állapotüzenet**.
+1. A tesztkörnyezet kezdőlapján válassza a **konfiguráció és házirendek** elemet a bal oldali menüben.
+2. a **konfiguráció és házirendek** lapon válassza a menü **tevékenység naplók** elemét.
+3. Keresse meg a hibát a naplóban, és válassza ki a műveletet.
+4. A jobb oldali ablaktáblán váltson a JSON lapra, és keresse meg a **statusMessage**.
 
-    ![Környezet tevékenységnapló](./media/troubleshoot-vm-environment-creation-failures/envirionment-activity-log.png)
+    ![Környezeti tevékenység naplója](./media/troubleshoot-vm-environment-creation-failures/envirionment-activity-log.png)
 
-## <a name="resource-manager-template-deployment-logs"></a>Resource Manager-sablon telepítési naplók
-Ha a környezet vagy a virtuális gép létrejött, az automatizálás, van egy utolsó helyen, és tekintse meg a hibaüzenetet. Ez az Azure Resource Manager-sablon telepítési naplót. A lab-erőforrás létrehozásakor az automatizálás, gyakran keresztül történik egy Azure Resource Manager-sablon üzembe helyezése. Lásd:[ https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates ](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) a minta az Azure Resource Manager-sablonok, amelyek a DevTest Labs-erőforrások létrehozásához.
+## <a name="resource-manager-template-deployment-logs"></a>Resource Manager-sablonok telepítési naplói
+Ha a környezet vagy a virtuális gép automatizáláson keresztül lett létrehozva, akkor van egy utolsó hely a hibaüzenetek kereséséhez. Ez a Azure Resource Manager sablon telepítési naplója. Ha egy tesztkörnyezet-erőforrás automatizáláson keresztül jön létre, gyakran egy Azure Resource Manager sablonon keresztül történik. A[https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) DevTest Labs-erőforrásokat létrehozó példákat lásd: Azure Resource Manager sablonok.
 
-A lab sablon telepítési naplók megtekintéséhez kövesse az alábbi lépéseket:
+A labor sablon telepítési naplófájljainak megtekintéséhez kövesse az alábbi lépéseket:
 
-1. Indítsa el az erőforráscsoport, amelyben a labor található az oldal.
-2. Válassza ki **központi telepítések** a bal oldali menü alatt **beállítások**.
-3. Keresse meg a sikertelen állapotú központi telepítések, és válassza ki azt.
-4. Az a **üzembe helyezési** lapon jelölje be **művelet részletei** meghiúsult művelet hivatkozására.
-5. Nem sikerült a művelet részleteit láthatja a **művelet részletei** ablak.
+1. Indítsa el azon erőforráscsoport lapját, amelyben a labor létezik.
+2. A **Beállítások**területen a bal oldali menüben válassza a **központi telepítések** lehetőséget.
+3. Keresse meg a sikertelen állapotú központi telepítéseket, és jelölje ki.
+4. A **telepítés** lapon válassza a **művelet részletei** hivatkozásra a sikertelen művelethez.
+5. A **művelet részletei** ablakban megjelenő művelet részletei láthatók.
 
 ## <a name="next-steps"></a>További lépések
-Lásd: [az összetevők hibáinak elhárítása](devtest-lab-troubleshoot-artifact-failure.md)
+Lásd [](devtest-lab-troubleshoot-artifact-failure.md) : az összetevők hibáinak elhárítása

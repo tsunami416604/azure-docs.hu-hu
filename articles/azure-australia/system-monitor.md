@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: b68bdb6d1c349df67943889b511eac87c940b531
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f7f78dbde9810c8786e2344555444efabcc989b0
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571886"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779325"
 ---
 # <a name="system-monitoring-for-security-in-azure-australia"></a>Rendszerfigyelés biztonsági funkciókhoz az Azure Ausztráliában
 
@@ -108,7 +108,7 @@ Az Azure-ban összegyűjtött naplók a következő három kategória egyike al�
 
 Az Azure virtuális gépek figyelését a Windows és a Linux rendszerhez készült virtuálisgép-ügynök üzembe helyezése fokozza. Ez jelentősen növeli az összegyűjtött naplózási adatok szélességét. Az ügynök üzembe helyezése beállítható úgy, hogy automatikusan megtörténjen a Azure Security Center használatával.
 
-A Microsoft részletes információkat nyújt az Azure-erőforrásokra vonatkozó naplókkal és azok [sémájával](https://docs.microsoft.com/azure/security/azure-log-audit)kapcsolatban.
+A Microsoft részletes információkat nyújt az Azure-erőforrásokra vonatkozó naplókkal és azok [sémájával](https://docs.microsoft.com/azure/security/fundamentals/log-audit)kapcsolatban.
 
 ### <a name="log-retention-and-protection"></a>Naplók megőrzése és védelme
 

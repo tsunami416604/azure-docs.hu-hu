@@ -18,10 +18,10 @@ ms.date: 05/07/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 11a54dee653bcfa6c94a861e483183ac39f465bf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/06/2019
 ms.locfileid: "67710182"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
@@ -344,7 +344,7 @@ A dokumentum teljes egészében a következő kifejezéseket használjuk:
 * SAP-környezet: egy vagy több SAP-összetevő logikailag csoportosítva olyan üzleti funkciók végrehajtásához, mint például a fejlesztés, a QAS, a képzés, a DR vagy a termelés.
 * SAP-környezet: Ez a kifejezés a teljes SAP-eszközre vonatkozik az ügyfél informatikai környezetében. Az SAP-környezet az összes éles és nem éles környezetet magában foglalja.
 * SAP-System: Az adatbázis-kezelő réteg és az alkalmazás rétegének kombinációja, például egy SAP ERP fejlesztői rendszer, SAP BW test System, SAP CRM üzemi rendszer stb. Az Azure-beli üzemelő példányok nem támogatják ezt a két réteget a helyszíni és az Azure közötti felosztásban. Azt jelenti, hogy az SAP-rendszer központi telepítése helyileg történik, vagy az Azure-ban van üzembe helyezve. Az SAP-környezetek különböző rendszereit azonban az Azure-ban vagy a helyszínen is üzembe helyezheti. Például üzembe helyezheti az SAP CRM fejlesztési és tesztelési rendszereit az Azure-ban, de az SAP CRM üzemi rendszerét a helyszínen.
-* Létesítmények közötti vagy hibrid: Leírja azt a forgatókönyvet, amelyben a virtuális gépeket egy olyan Azure-előfizetéshez telepítik, amely helyek közötti, többhelyes vagy ExpressRoute kapcsolatot létesít a helyszíni adatközpont (ok) és az Azure között. A közös Azure-dokumentációban az ilyen típusú központi telepítések a létesítmények közötti vagy hibrid forgatókönyvekben is szerepelnek. A kapcsolódás oka a helyszíni tartományok, a helyszíni Active Directory/OpenLDAP és a helyszíni DNS kiterjesztése az Azure-ba. A helyszíni környezet az előfizetés Azure-eszközeire van kiterjesztve. Ennek a bővítménynek a birtokában a virtuális gépek a helyszíni tartomány részei lehetnek. A helyszíni tartomány tartományi felhasználói hozzáférhetnek a kiszolgálókhoz, és szolgáltatásokat futtathatnak ezeken a virtuális gépeken (például az adatbázis-kezelő szolgáltatásokban). A helyszíni és az Azure-beli üzembe helyezett virtuális gépek közötti kommunikáció és névfeloldás lehetséges. Ez a leggyakoribb és szinte kizárólagos eset, ha SAP-eszközöket helyez üzembe az Azure-ban. További információt [ebben][vpn-gateway-cross-premises-options] a cikkben [talál.][vpn-gateway-site-to-site-create]
+* Létesítmények közötti vagy hibrid: Leírja azt a forgatókönyvet, amelyben a virtuális gépeket egy olyan Azure-előfizetéshez telepítik, amely helyek közötti, többhelyes vagy ExpressRoute kapcsolatot létesít a helyszíni adatközpont (ok) és az Azure között. A közös Azure-dokumentációban az ilyen típusú központi telepítések a létesítmények közötti vagy hibrid forgatókönyvekben is szerepelnek. A kapcsolódás oka a helyszíni tartományok, a helyszíni Active Directory/OpenLDAP és a helyszíni DNS kiterjesztése az Azure-ba. A helyszíni környezet az előfizetés Azure-eszközeire van kiterjesztve. Ennek a bővítménynek a birtokában a virtuális gépek a helyszíni tartomány részei lehetnek. A helyszíni tartomány tartományi felhasználói hozzáférhetnek a kiszolgálókhoz, és szolgáltatásokat futtathatnak ezeken a virtuális gépeken (például az adatbázis-kezelő szolgáltatásokban). A helyszíni és az Azure-beli üzembe helyezett virtuális gépek közötti kommunikáció és névfeloldás lehetséges. Ez a leggyakoribb és szinte kizárólagos eset, ha SAP-eszközöket helyez üzembe az Azure-ban. További információt [ebben][vpn-gateway-cross-premises-options] a cikkben talál. [][vpn-gateway-site-to-site-create]
 
 > [!NOTE]
 > Az SAP-rendszerek olyan létesítmények közötti vagy hibrid telepítései, amelyeken az Azure Virtual Machines az SAP Systems-t futtatja, az éles környezetben működő SAP-rendszerek tagjai. A létesítmények közötti vagy hibrid konfigurációk támogatják a részek üzembe helyezését vagy az SAP-tájak Azure-ba való betöltését. A teljes SAP-környezetnek az Azure-ban való futtatásához a virtuális gépeknek a helyszíni tartományhoz és a HIRDETÉSekhez/OpenLDAP kell tartozniuk. 
@@ -1491,7 +1491,7 @@ Add-AzVMDataDisk -VM $vm -Name datadisk -DiskSizeInGB 1023 -CreateOption empty -
 
 ##### <a name="cli"></a>parancssori felület
 
-A következő példában a kód Linux rendszeren is használható. Windows esetén a PowerShellt a fent leírtak szerint használja, vagy a példát a (z)% rgName% használatára a $rgName helyett, a környezeti változót pedig a Windows-paranccsal állíthatja *be.*
+A következő példában a kód Linux rendszeren is használható. Windows esetén a PowerShellt a fent leírtak szerint használja, vagy a példát a (z)% rgName% használatára a $rgName helyett, a környezetiváltozót pedig a Windows-paranccsal állíthatja be.
 
 * Új erőforráscsoport létrehozása minden betanítási vagy demó környezethez
 
@@ -1836,7 +1836,7 @@ Ha testre szeretné szabni az SAP-Enterprise Portal URL-címét és/vagy portjai
 
 ### <a name="definition-of-terminologies"></a>A terminológia definíciója
 
-A **magas rendelkezésre állású (ha)** kifejezés általában olyan technológiákhoz kapcsolódik, amelyek lekicsinyítik az IT-szolgáltatások üzletmenet-folytonosságát **a redundáns** , hibatűrő vagy feladatátvételi védelemmel ellátott összetevőkön belül. adatközpont. Ebben az esetben egy Azure-régión belül.
+A **magas rendelkezésre állású (ha)** kifejezés általában olyan technológiákhoz kapcsolódik, amelyek lekicsinyítik az IT-szolgáltatások üzletmenet-folytonosságát a redundáns, hibatűrő vagy feladatátvételi védelemmel ellátott összetevőkön belül. adatközpont. Ebben az esetben egy Azure-régión belül.
 
 A vész- **helyreállítási (Dr)** az IT-szolgáltatások megszakadásának minimalizálása és a helyreállításuk, de **különböző** adatközpontok esetében is megcélozza, amelyek általában több száz kilométerre találhatók. A mi esetünkben általában a különböző Azure-régiók között, amelyek ugyanabban a geopolitikai régióban találhatóak, vagy Ön az Ön által létrehozott ügyfél.
 
@@ -1910,7 +1910,7 @@ A kritikus fontosságú SAP-összetevők esetében eddig a következőt értünk
 
 * Az SAP-alkalmazások kiszolgálóinak magas rendelkezésre állása (AS)
 
-  Az SAP Application Server-példányok redundáns összetevők. Minden SAP mint példány a saját virtuális gépén van telepítve, amely egy másik Azure-beli hiba-és frissítési tartományban fut (lásd: a tartalék [tartományok és a][planning-guide-3.2.1] [frissítési tartományok][planning-guide-3.2.2]fejezetei). Ezt az Azure rendelkezésre állási csoportok használatával biztosítjuk (lásd az Azure-beli [rendelkezésre állási készletek][planning-guide-3.2.3]című fejezetet). Egy Azure-beli hiba vagy frissítési tartomány lehetséges tervezett vagy nem tervezett leállása miatt a korlátozott számú virtuális gép nem lesz elérhető az SAP-példányokkal.
+  Az SAP Application Server-példányok redundáns összetevők. Minden SAP mint példány a saját virtuális gépén van telepítve, amely egy másik Azure-beli hiba-és frissítési tartományban fut (lásd: [][planning-guide-3.2.1] a tartalék tartományok és a [frissítési tartományok][planning-guide-3.2.2]fejezetei). Ezt az Azure rendelkezésre állási csoportok használatával biztosítjuk (lásd az Azure-beli [rendelkezésre állási készletek][planning-guide-3.2.3]című fejezetet). Egy Azure-beli hiba vagy frissítési tartomány lehetséges tervezett vagy nem tervezett leállása miatt a korlátozott számú virtuális gép nem lesz elérhető az SAP-példányokkal.
 
   A rendszer minden egyes SAP-példányt saját Azure Storage-fiókba helyez el – az egyik Azure Storage-fiók lehetséges nem érhető el, mert az SAP-példánnyal csak egy virtuális gép lesz elérhető. Vegye azonban figyelembe, hogy az Azure Storage-fiókok egyetlen Azure-előfizetésen belül vannak korlátozva. Annak érdekében, hogy az (A) SCS-példány automatikus indítása a virtuális gép újraindítása után történjen, ügyeljen arra, hogy az (A) SCS-példány indítási profiljában a ( [][planning-guide-11.5]
   További részletekért olvassa el az [SAP-alkalmazások kiszolgálóinak magas rendelkezésre állásáról][planning-guide-11.4.1] szóló fejezetet is.
@@ -1959,7 +1959,7 @@ A magas rendelkezésre állás és a vész-helyreállítási funkciók általáb
 Csak a nem felügyelt lemezek: Előfordulhat, hogy az alább ismertetett fogalmakat egy kis mennyiségű SAP-rendszer központi telepítésekor kell megsérteni, és a telepített virtuális gépek száma meghaladja az előfizetések maximálisan engedélyezett tárolási fiókját. Ilyen esetekben a virtuális gépeket egy Storage-fiókon belül kell egyesíteni. Ezt általában úgy teheti meg, hogy kombinálja a különböző SAP-rendszerekben futó SAP-alkalmazási rétegbeli virtuális merevlemezeket.  Egy Azure Storage-fiókban különböző SAP-rendszerekkel rendelkező különböző adatbázis-kezelői virtuális gépek eltérő virtuális merevlemezeit is kombináljuk. Az Azure Storage-fiókok IOPS korlátainak megőrzése (<https://azure.microsoft.com/documentation/articles/storage-scalability-targets>)
 
 
-##### <a name="windowslogowindows-ha-on-windows"></a>![Windows][Logo_Windows] HA Windows rendszeren
+##### <a name="windowslogo_windows-ha-on-windows"></a>![Windows][Logo_Windows] HA Windows rendszeren
 
 ![SAP NetWeaver Application HA architektúra SQL Server az Azure IaaS][planning-guide-figure-3200]
 
@@ -1981,7 +1981,7 @@ A következő ábra ugyanazt a tájat mutatja Managed Disks használatával.
 
 ![SAP NetWeaver Application HA architektúra SQL Server az Azure IaaS][planning-guide-figure-3201]
 
-##### <a name="linuxlogolinux-ha-on-linux"></a>![Linux][Logo_Linux] HA Linuxon
+##### <a name="linuxlogo_linux-ha-on-linux"></a>![Linux][Logo_Linux] HA Linuxon
 
 A Linuxon az Azure-on futó SAP HA architektúrája alapvetően ugyanaz, mint a fentiekben leírtak szerint. Tekintse meg a támogatott magas rendelkezésre állású megoldások listáját a [1928533] -es SAP-megjegyzésben.
 

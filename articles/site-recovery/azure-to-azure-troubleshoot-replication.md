@@ -1,48 +1,48 @@
 ---
-title: Az Azure Site Recovery hibaelhárítás a folyamatban lévő Azure – Azure replikációs problémák |} A Microsoft Docs
-description: Vész-helyreállítási Azure-beli virtuális gépek replikálása hibák és problémák elhárítása
+title: Azure Site Recovery hibaelhárítás az Azure-ról Azure-ba történő folyamatos replikálási problémákra | Microsoft Docs
+description: Az Azure Virtual Machines szolgáltatás vész-helyreállításra való replikálásával kapcsolatos hibák és problémák elhárítása
 services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 11/27/2018
+ms.date: 8/2/2019
 ms.author: asgang
-ms.openlocfilehash: bf24b2d1395e128dc73361670ea93ac938574146
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02f3dff4c9649beeadade942f4b32595f8543c2d
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258789"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742553"
 ---
-# <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>Az Azure-ról Azure-beli virtuális gép replikálása folyamatban lévő kapcsolatos problémák elhárítása
+# <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>Az Azure – Azure virtuális gépek replikálásának folyamatban lévő problémáinak elhárítása
 
-Ez a cikk ismerteti a gyakori problémák az Azure Site Recoveryben takarít meg replikálása és helyreállítása Azure-beli virtuális gépek egyik régióból egy másik régióba. Azt is bemutatja, hogyan háríthatók el őket. Támogatott konfigurációk kapcsolatos további információkért lásd: a [támogatási mátrixa Azure virtuális gépek replikálása](site-recovery-support-matrix-azure-to-azure.md).
+Ez a cikk az Azure-beli virtuális gépek egyik régióból egy másik régióba való replikálásával és helyreállításával kapcsolatos gyakori problémákat ismerteti Azure Site Recovery. Emellett azt is ismerteti, hogyan lehet elhárítani ezeket. Támogatott konfigurációk kapcsolatos további információkért lásd: a [támogatási mátrixa Azure virtuális gépek replikálása](site-recovery-support-matrix-azure-to-azure.md).
 
-Az Azure Site Recovery folyamatosan replikálja az adatokat a forrás-régióból a vészhelyreállítási régióban, és 5 percenként összeomlás-konzisztens helyreállítási pont létrehozása. A Site Recovery 60 percig nem hozható létre helyreállítási pontokat, ha riasztást jelenít meg a következő információkkal:
+Azure Site Recovery folyamatosan replikálja az adatait a forrás régióból a vész-helyreállítási régióba, és 5 percenként létrehoz egy összeomlás-konzisztens helyreállítási pontot. Ha Site Recovery nem tud helyreállítási pontokat létrehozni 60 percre, akkor a következő információkat értesíti:
 
-Hibaüzenet jelenik meg: "Nincs összeomlási elérhető alkalmazáskonzisztens helyreállítási pont a virtuális gép az elmúlt 60 percben."</br>
+Hibaüzenet: "A virtuális géphez nem érhető el összeomlás-konzisztens helyreállítási pont az elmúlt 60 percben."</br>
 Hiba azonosítója: 153007 </br>
 
-A következő szakaszok ismertetik a okait és megoldásait.
+Az alábbi szakaszok az okait és megoldásait ismertetik.
 
-## <a name="high-data-change-rate-on-the-source-virtal-machine"></a>A forrás virtuális gépen nagy adatváltozási sebesség
-Az Azure Site Recovery egy esemény küldése, ha a forrás virtuális gép adatváltozási sebessége meghaladja a támogatott határértékeket. Ellenőrizze, hogy a probléma nagy forgalom miatt van-e, lépjen a **replikált elemek** > **VM** > **események – elmúlt 72 órában**.
-Az esemény "A módosult adatok aránya meghaladja a támogatott határértékeket" megjelennie:
+## <a name="high-data-change-rate-on-the-source-virtal-machine"></a>Magas adatváltozási arány a forrásként szolgáló virtuális gépen
+Azure Site Recovery egy eseményt, ha a forrás virtuális gép adatváltozási sebessége meghaladja a támogatott határértékeket. Annak megállapításához, hogy a probléma magas adatforgalom miatt > történt-e, nyissa meg a **replikált elemek** > virtuálisgép **-események – utolsó 72 óra**lehetőséget.
+Meg kell jelennie az "adatváltozási arány a támogatott korlátokon túl" értéknek:
 
 ![data_change_rate_high](./media/site-recovery-azure-to-azure-troubleshoot/data_change_event.png)
 
-Ha az eseményt, a pontos lemez adatainak kell megjelennie:
+Ha kijelöli az eseményt, a lemez pontos adatait kell megjelennie:
 
 ![data_change_rate_event](./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png)
 
 
 ### <a name="azure-site-recovery-limits"></a>Az Azure Site Recovery korlátai
-Az alábbi táblázat az Azure Site Recovery korlátait tartalmazza. Ezek a korlátok tesztjeinken alapulnak, de nem fedhetik le az összes lehetséges alkalmazások i/o-kombinációját. A tényleges eredmények a saját alkalmazásának I/O-műveletei alapján változhatnak. 
+Az alábbi táblázat az Azure Site Recovery korlátait tartalmazza. Ezek a korlátok a tesztek alapján működnek, de nem fedik le az alkalmazások minden lehetséges I/O-kombinációját. A tényleges eredmények a saját alkalmazásának I/O-műveletei alapján változhatnak. 
 
-Nincsenek, érdemes figyelembe venni két korlátok, a lemezenkénti adatváltozásról és adatváltozás virtuális gépenként. Ha például tekintsük át az alábbi táblázat a prémium szintű P20 lemez. A Site Recovery képes kezelni 5 MB/s lemez adatforgalom, amely legfeljebb öt ilyen lemezek virtuális gépenkénti, a virtuális gép összes adatváltozással 25 MB/s miatt.
+A virtuális gépenként két korlátozást kell figyelembe venni, a lemezre és az adatforgalomra vonatkozó adatváltozást. Tegyük fel például, hogy a prémium P20 lemezt a következő táblázatban tekintjük át. A Site Recovery legfeljebb 5 MB/s adatváltozást képes kezelni lemezenként, legfeljebb öt ilyen lemezzel, a virtuális gépenként legfeljebb 25 MB/s összegű korlát miatt.
 
-**Replikáció tárolási célja** | **Forráslemez átlagos i/o-mérethez** |**Forráslemez átlagos adatváltozása** | **Forráslemez adatok napi teljes adatváltozása**
+**Replikáció tárolási célja** | **A forrásoldali lemez átlagos I/O-mérete** |**Adatforgalom átlagos adatváltozása a forrásoldali lemezen** | **Adatváltozások napi száma a forrásadatok lemezén**
 ---|---|---|---
 Standard szintű Storage | 8 KB | 2 MB/s | Lemezenként 168 GB
 Prémium szintű P10 vagy P15 lemez | 8 KB  | 2 MB/s | Lemezenként 168 GB
@@ -52,87 +52,91 @@ Prémium szintű P20, P30, P40 vagy P50 lemez | 8 KB    | 5 MB/s | Lemezenként 
 Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több |10 MB/s | Lemezenként 842 GB
 
 ### <a name="solution"></a>Megoldás
-Az Azure Site Recovery korlátozások vonatkoznak az adatmódosítási arány, a lemez típusa alapján. Tudja meg, ha a probléma-e ismétlődő vagy pillanatnyi, keresse meg az érintett virtuális gép akkor változik, ha az adatokat. Nyissa meg a forrás virtuális gép, a metrikák alatt található **figyelés**, és adja hozzá a metrikák, ezen a képernyőfelvételen látható módon:
+A Azure Site Recovery a lemez típusától függően korlátozza az adatváltozások arányát. Ha tudni szeretné, hogy ez a probléma ismétlődő vagy pillanatnyi, keresse meg az érintett virtuális gép adatváltozási arányát. Nyissa meg a forrás virtuális gépet, keresse meg a **figyelés**területen található mérőszámokat, és adja hozzá a metrikákat az alábbi képernyőképen látható módon:
 
-![Három lépéses folyamat lehet megkeresni az adatmódosítási arány](./media/site-recovery-azure-to-azure-troubleshoot/churn.png)
+![Három lépésből álló folyamat az adatváltozási arány megkereséséhez](./media/site-recovery-azure-to-azure-troubleshoot/churn.png)
 
-1. Válassza ki **metrika hozzáadása**, és adja hozzá **operációs rendszer lemez írási bájt/mp** és **adatok lemezre írása bájt/mp**.
-2. Figyelheti a megnövekedett, a képernyőképen látható módon.
-3. A nézet az összes írási művelet, operációsrendszer-lemez és az összes adatlemezt együttesen történik. Ezek a metrikák előfordulhat, hogy nem körülményeiről a lemez szinten, de azt jelzik, hogy a teljes minta adatváltozások egyes típusai.
+1. Válassza a **metrika hozzáadása**lehetőséget, és adja hozzá az **operációsrendszer-lemezt írási sebesség (bájt/s** ) és az adatlemez írási sebessége ( **bájt/s**)
+2. Figyelje meg a nyársat a képernyőképen látható módon.
+3. Megtekintheti az operációsrendszer-lemezek és az összes adatlemez együttes összes írási műveletét. Előfordulhat, hogy ezek a metrikák nem biztosítanak információt a lemezen, de az adatforgalom teljes mintázatát jelzik.
 
-Ha ugrásszerű van egy burst alkalmanként adatokat és az adatok módosítsa a következőre arány értéke nagyobb, mint 10 MB/s (prémium szintű) és 2 MB/néhány (a standard szintű) s idő és előre, replikációs olvasásra lesznek. De ha a forgalom túlmutató a támogatott korlátozza a legtöbbször, lehetőség szerint fontolja meg az alábbi lehetőségek egyikét:
+Ha egy tüske alkalmi adattörésből származik, és az adatváltozások aránya nagyobb, mint 10 MB/s (prémium szintű) és 2 MB/s (standard), akkor a replikáció felveszik. Ha azonban a forgalom az idő nagy részében jóval meghaladja a támogatott korlátot, vegye figyelembe az alábbi lehetőségek egyikét, ha lehetséges:
 
-* **Egy magas szintű adatváltozások arány okozó lemezének kizárása**: A lemez használatával kizárhatják [PowerShell](./azure-to-azure-exclude-disks.md). A lemez kizárása kell először tiltsa le a replikációt. 
-* **A vész-helyreállítási tárolólemez szintjének módosítása**: Ez a beállítás akkor lehetséges, csak ha a lemez adatváltozásának kevesebb mint 10 MB/s. Tegyük fel, egy P10 lemezt egy virtuális Gépet egy nagyobb, mint a 8 MB/s, de kevesebb mint 10 MB/s adatváltozása tapasztalja. Az ügyfél védelem során P30 lemez használható a céloldali tárolóra, ha a probléma megoldhatók.
+* **A nagy adatváltozási arányt okozó lemez kizárása**: A lemezt a [PowerShell](./azure-to-azure-exclude-disks.md)használatával is kizárhatja. A lemez kizárásához először le kell tiltania a replikálást. 
+* **Módosítsa a vész-helyreállítási tároló lemezének szintjét**: Ez a beállítás csak akkor lehetséges, ha a lemez adatváltozása kevesebb, mint 20 MB/s. Tegyük fel, hogy egy P10 lemezzel rendelkező virtuális gép adatváltozása nagyobb, mint 8 MB/s, de kevesebb, mint 10 MB/s. Ha az ügyfél a védelem során P30-lemezt használhat a célként szolgáló tárolóhoz, akkor a probléma megoldható. Vegye figyelembe, hogy ez a megoldás csak a prémium szintű Managed Diskst használó gépek esetében lehetséges. Kövesse az alábbi lépéseket:
+    - Navigáljon az érintett replikált gép lemezek paneljére, és másolja a replika lemez nevét
+    - Navigáljon a replika felügyelt lemezéhez
+    - Előfordulhat, hogy megjelenik egy szalagcím az Áttekintés panelen, amely azt jelzi, hogy egy SAS URL-cím lett létrehozva. Kattintson erre a szalagcímre, és szakítsa meg az exportálást. Ha nem látja a szalagcímet, hagyja figyelmen kívül ezt a lépést.
+    - Amint visszavonják a SAS URL-címét, lépjen a felügyelt lemez konfiguráció paneljére, és növelje a méretet, hogy az ASR támogassa a forrás lemezen megfigyelt adatforgalom mértékét.
 
-## <a name="Network-connectivity-problem"></a>Hálózati kapcsolódási problémák
+## <a name="Network-connectivity-problem"></a>Hálózati kapcsolati problémák
 
-### <a name="network-latency-to-a-cache-storage-account"></a>Hálózati késés a gyorsítótárfiókba
-A Site Recovery a replikált adatokat küld a gyorsítótár tárfiókjához. Előfordulhat, hogy látja, hálózati késés, ha az adatok a virtuális gépről a gyorsítótárfiókba feltöltését lassabb, mint 4 MB-os 3 másodpercen belül. 
+### <a name="network-latency-to-a-cache-storage-account"></a>Hálózati késés egy gyorsítótárbeli Storage-fiókhoz
+Site Recovery replikált adatokat küld a gyorsítótár Storage-fiókba. Előfordulhat, hogy a hálózati késés akkor fordul elő, ha egy virtuális gépről a gyorsítótárbeli Storage-fiókba való feltöltéskor a rendszer 3 másodpercnél lassabban 4 MB-ot vesz igénybe. 
 
-Késéssel kapcsolatos probléma ellenőrzéséhez használja [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) feltölteni az adatokat a virtuális gépről a gyorsítótárfiókba. Ha nagy a késés, ellenőrizze, ha egy hálózati virtuális készüléket (nva-t) használ a virtuális gépek kimenő hálózati forgalom szabályozására. A berendezés előfordulhat, hogy leszabályozza, ha a replikációs forgalmat az nva-n keresztül halad. 
+A késéssel kapcsolatos problémák kereséséhez a [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) használatával töltse fel az adatok feltöltését a virtuális gépről a cache Storage-fiókba. Ha a késés magas, ellenőrizze, hogy egy hálózati virtuális berendezést (NVA) használ-e a virtuális gépek kimenő hálózati forgalmának szabályozására. Előfordulhat, hogy a készülék szabályozva van, ha az összes replikációs forgalom a NVA halad át. 
 
-Azt javasoljuk, hogy hoz létre egy hálózati végpontot a virtuális hálózat "Tároló" úgy, hogy a replikálás forgalma nem nyissa meg az nva-t. További információkért lásd: [hálózati virtuális berendezés konfigurációjának](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration).
+Javasoljuk, hogy hozzon létre egy hálózati szolgáltatási végpontot a virtuális hálózaton a "Storage" számára, hogy a replikálási forgalom ne lépjen a NVA. További információ: [hálózati virtuális berendezések konfigurálása](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration).
 
 ### <a name="network-connectivity"></a>Hálózati kapcsolat
-A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-címtartományok szükség a virtuális gépről. Ha a virtuális gép tűzfal mögött található, vagy használja a hálózati biztonsági csoport (NSG) szabályai kimenő kapcsolat szabályozásához, előfordulhat, hogy között ezek a problémák egyike. Gondoskodjon arról, hogy az URL-címeket kapcsolódnak, lásd: [kimenő kapcsolatok esetében a Site Recovery URL-címeinek](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges). 
+A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-címtartományok szükség a virtuális gépről. Ha a virtuális gép tűzfal mögött van, vagy hálózati biztonsági csoport (NSG) szabályok használatával vezérli a kimenő kapcsolatot, akkor előfordulhat, hogy ezek egyike a probléma. Az összes URL-cím csatlakoztatása előtt tekintse meg [site Recovery URL-címek kimenő kapcsolatát](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges). 
 
-## <a name="error-id-153006---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>Hiba azonosítója 153006 - nem az elmúlt percben: XXX"a virtuális Géphez elérhető alkalmazáskonzisztens helyreállítási pont
+## <a name="error-id-153006---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>153006-es AZONOSÍTÓJÚ hiba – nem érhető el alkalmazás-konzisztens helyreállítási pont a virtuális géphez az utolsó "XXX" percben
 
-Alább láthatók a leggyakoribb problémák
+A leggyakoribb problémák némelyike alább látható
 
-#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>1\. ok: Ismert hiba az SQL server 2008 és 2008 R2 
-**Hogyan háríthatja el a** : Egy ismert probléma van az SQL server 2008 és 2008 R2. Olvassa el az ebben a Tudásbáziscikkben találja [Azure Site Recovery-ügynök vagy egyéb nem összetevő VSS biztonsági mentése meghiúsul, az SQL Server 2008 R2 üzemeltető kiszolgálót](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>1\. ok: Ismert probléma az SQL Server 2008/2008 R2-ben 
+**A javítás módja** : Ismert probléma van az SQL Server 2008/2008 R2-vel. Tekintse meg ezt a TUDÁSBÁZISCIKK [Azure site Recovery Agent vagy más, nem összetevővel rendelkező VSS biztonsági mentést, amely a SQL Server 2008 R2-t futtató kiszolgálókon meghiúsul.](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-autoclose-dbs"></a>2\. ok: Az Azure Site Recovery-feladatok sikertelenek AUTO_CLOSE adatbázisainak az SQL Server-példányokat bármely verzióját futtató kiszolgálókon 
-**Hogyan háríthatja el a** : Tekintse meg a KB-os [cikk](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>2\. ok: Azure Site Recovery feladatok meghiúsulnak a SQL Server példányok bármely verzióját üzemeltető kiszolgálókon a AUTO_CLOSE-adatbázisok segítségével 
+**A javítás módja** : Tudásbáziscikk [](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
 
 
-#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>3\. ok: Ismert probléma az SQL Server 2016 és 2017.
-**Hogyan háríthatja el a** : Tekintse meg a KB-os [cikk](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
+#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>3\. ok: Ismert probléma a SQL Server 2016-es és 2017-es verziójában
+**A javítás módja** : Tudásbáziscikk [](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
 
-#### <a name="cause-4-you-are-using-storage-spaces-direct-configuration"></a>4\. ok: Storage spaces közvetlen konfigurációt használ
-**Hogyan háríthatja el a** : Az Azure Site Recovery nem hozható létre alkalmazáskonzisztens helyreállítási pont Storage spaces közvetlen konfiguráció. Tekintse meg a cikk megfelelően [a replikációs szabályzat konfigurálása](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication-s2d-vms)
+#### <a name="cause-4-you-are-using-storage-spaces-direct-configuration"></a>4\. ok: A közvetlen tárolóhelyek konfigurációját használja
+**A javítás módja** : Azure Site Recovery nem hozható létre konzisztens helyreállítási pont a közvetlen tárolóhelyek konfigurációjában. [A replikációs házirend](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication-s2d-vms) helyes konfigurálásához olvassa el a cikket.
 
-### <a name="more-causes-due-to-vss-related-issues"></a>További okok miatt VSS kapcsolatos problémákat:
+### <a name="more-causes-due-to-vss-related-issues"></a>További okok a VSS-vel kapcsolatos problémák miatt:
 
-További hibaelhárítást, tekintse meg a fájlokat a forrásgépen a pontos hibakódot lekérése sikertelen:
+A további hibaelhárításhoz tekintse meg a forrás gépen található fájlokat a hiba pontos hibakódjának lekéréséhez:
     
     C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
 
-Hogyan lehet a fájlban keresse meg a hibákat?
-Vacp.log fájl egy szövegszerkesztőben való megnyitásával "vacpError" karakterlánc keresése
+Hogyan lehet megtalálni a hibákat a fájlban?
+Keresse meg a "vacpError" karakterláncot a vacp. log fájl egy szerkesztőben való megnyitásával
         
     Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
 
-A fenti példában **2147754994** , mely szerint a hibával kapcsolatos, ahogy az alábbi hiba kódja
+A fenti példában a **2147754994** a hibakód, amely az alább látható hibával kapcsolatos információkat mutatja
 
-#### <a name="vss-writer-is-not-installed---error-2147221164"></a>Nincs telepítve a VSS-író - hiba 2147221164 
+#### <a name="vss-writer-is-not-installed---error-2147221164"></a>A VSS-író nincs telepítve – 2147221164-es hiba 
 
-*Hogyan háríthatja el a*: Konzisztenciacímke application készítése, az Azure Site Recovery Microsoft Kötet árnyékmásolata szolgáltatás (VSS) használja. Az alkalmazás konzisztenciájának pillanatképek ehhez a művelethez VSS-szolgáltatót telepíti. A VSS-szolgáltató szolgáltatás telepítve van. Abban az esetben a VSS-szolgáltató szolgáltatás nincs telepítve, a konzisztencia pillanatkép létrehozásának nem sikerül a hiba azonosítója: 0x80040154 "Osztály nem regisztrált". </br>
-Tekintse meg [VSS-író telepítési hibaelhárítási cikk](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
+*A javítás módja*: Az alkalmazás konzisztencia-címkéjének létrehozásához Azure Site Recovery a Microsoft Kötet árnyékmásolata szolgáltatást (VSS) használja. Telepíti a VSS-szolgáltatót a működéséhez, hogy az alkalmazás konzisztencia-pillanatképeket készítsen. Ez a VSS-szolgáltató szolgáltatásként van telepítve. Ha a VSS-szolgáltató szolgáltatás nincs telepítve, az alkalmazás konzisztencia-pillanatképének létrehozása sikertelen lesz, mert a 0x80040154 "osztály nincs regisztrálva" érték jelenik meg. </br>
+[A VSS-író telepítésével kapcsolatos hibaelhárításról szóló cikkben](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) olvashat 
 
-#### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS-író le van tiltva – hiba 2147943458
+#### <a name="vss-writer-is-disabled---error-2147943458"></a>A VSS-író le van tiltva – 2147943458-es hiba
 
-**Hogyan háríthatja el a**: Konzisztenciacímke application készítése, az Azure Site Recovery Microsoft Kötet árnyékmásolata szolgáltatás (VSS) használja. Az alkalmazás konzisztenciájának pillanatképek ehhez a művelethez VSS-szolgáltatót telepíti. A VSS-szolgáltató szolgáltatás telepítve van. Abban az esetben a VSS-szolgáltató szolgáltatás le van tiltva, az alkalmazás konzisztenciájának pillanatkép létrehozása sikertelen lesz a hiba azonosítója "a megadott szolgáltatás le van tiltva, és nem lehet started(0x80070422)". </br>
+**A javítás módja**: Az alkalmazás konzisztencia-címkéjének létrehozásához Azure Site Recovery a Microsoft Kötet árnyékmásolata szolgáltatást (VSS) használja. Telepíti a VSS-szolgáltatót a működéséhez, hogy az alkalmazás konzisztencia-pillanatképeket készítsen. Ez a VSS-szolgáltató szolgáltatásként van telepítve. Ha a VSS-szolgáltató szolgáltatás le van tiltva, az alkalmazás konzisztencia-pillanatképének létrehozása meghiúsul a következő hibakóddal: "a megadott szolgáltatás le van tiltva, és nem indítható el (0x80070422)". </br>
 
 - Ha a VSS le van tiltva,
-    - Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusát **automatikus**.
+    - Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusa **automatikus**értékre van-e állítva.
     - Indítsa újra a következő szolgáltatásokat:
-        - VSS-szolgáltatás
-        - Az Azure Site Recovery VSS Provider
-        - A VDS szolgáltatás
+        - VSS szolgáltatás
+        - Azure Site Recovery VSS-szolgáltató
+        - VDS szolgáltatás
 
-####  <a name="vss-provider-notregistered---error-2147754756"></a>VSS-SZOLGÁLTATÓ NOT_REGISTERED - 2147754756 hiba
+####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS-szolgáltató NOT_REGISTERED – 2147754756-es hiba
 
-**Hogyan háríthatja el a**: Konzisztenciacímke application készítése, az Azure Site Recovery Microsoft Kötet árnyékmásolata szolgáltatás (VSS) használja. Ellenőrizze, hogy ha az Azure Site Recovery VSS Provider szolgáltatás telepítve van-e, vagy sem. </br>
+**A javítás módja**: Az alkalmazás konzisztencia-címkéjének létrehozásához Azure Site Recovery a Microsoft Kötet árnyékmásolata szolgáltatást (VSS) használja. Ellenőrizze, hogy telepítve van-e a Azure Site Recovery VSS-szolgáltató szolgáltatás. </br>
 
-- Ismételje meg a szolgáltató telepítőprogramját a következő parancsokkal:
-- Meglévő-szolgáltató eltávolítása: C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
-- Újra kell telepítenie: C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd
+- Próbálja megismételni a szolgáltató telepítését a következő parancsok használatával:
+- Meglévő szolgáltató eltávolítása: C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
+- Telepítse újra C:\Program Files (x86) \Microsoft Azure site Recovery\agent\InMageVSSProvider_Install.cmd
  
-Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusát **automatikus**.
+Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusa **automatikus**értékre van-e állítva.
     - Indítsa újra a következő szolgáltatásokat:
-        - VSS-szolgáltatás
-        - Az Azure Site Recovery VSS Provider
-        - A VDS szolgáltatás
+        - VSS szolgáltatás
+        - Azure Site Recovery VSS-szolgáltató
+        - VDS szolgáltatás

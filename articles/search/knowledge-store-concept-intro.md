@@ -1,20 +1,21 @@
 ---
-title: A Knowledge Store bemutatása és áttekintése (előzetes verzió) – Azure Search
+title: A Knowledge Store bemutatása (előzetes verzió) – Azure Search
 description: Gazdagított dokumentumokat küldhet az Azure Storage-ba, ahol megtekintheti, átalakíthatja és felhasználhatja a Azure Search és más alkalmazásokban található dúsított dokumentumokat.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: 6cbf8dfe51e8b553fd84e9eb81a2ea37a65c387e
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 107478f7e2d3c6726d3b8fb9c503ef13271c6571
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668273"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840821"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Mi az a Knowledge Store a Azure Searchban?
 

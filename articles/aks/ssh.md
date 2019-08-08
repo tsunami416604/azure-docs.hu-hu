@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: mlearned
 ms.openlocfilehash: 748abc08c432518be4ce8698713b1df95077c3c1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 08/05/2019
 ms.locfileid: "68722461"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Kapcsolódás az SSH-val az Azure Kubernetes Service (ak) csomópontjaihoz karbantartáshoz vagy hibaelhárításhoz
@@ -34,7 +34,7 @@ Szüksége lesz az Azure CLI 2.0.64 vagy újabb verziójára is, valamint a tele
 
 A virtuálisgép-méretezési csoport SSH-hozzáféréshez való konfigurálásához keresse meg a fürt virtuálisgép-méretezési csoportjának nevét, és adja hozzá az SSH nyilvános kulcsát a méretezési csoporthoz.
 
-A méretezési csoport nevének lekéréséhez [használja az az][az-aks-show] [vmss List][az-vmss-list] parancsot az AK-fürt erőforráscsoport-nevének lekéréséhez.
+A méretezési csoport nevének lekéréséhez használja az az [vmss List][az-vmss-list] parancsot az AK-fürt erőforráscsoport-nevének lekéréséhez. [][az-aks-show]
 
 ```azurecli-interactive
 CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)

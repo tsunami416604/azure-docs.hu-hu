@@ -2,17 +2,17 @@
 title: Windows rendszerű virtuális asztali bérlő és gazdagép-készlet létrehozása – Azure
 description: A bérlői és a gazdagép-készletezési problémák elhárítása és megoldása a Windows rendszerű virtuális asztali bérlői környezet beállítása során.
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.author: v-chjenk
-ms.openlocfilehash: 9e58c3bfc0e74f9aac61085608a843954b0923c0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.author: helohr
+ms.openlocfilehash: 7ab8ec9536af74102d2c9384ea3d0d0503f58f63
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249558"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816490"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
 
@@ -24,7 +24,7 @@ Jelenleg nem veszünk fel támogatási eseteket, amíg a Windows rendszerű virt
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>A Windows 10 Enterprise több munkamenetet ábrázoló rendszerképének beszerzése
 
-A Windows 10 Enterprise multi-session rendszerképek használatához nyissa meg az Azure Marketplace-t **, válassza** > a**Microsoft Windows 10** > és [a Windows 10 Enterprise rendszerű virtuális asztalok előzetes verzióját, a 1809-es verziót](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
+A Windows 10 Enterprise multi-session rendszerképek használatához nyissa meg az Azure Marketplace-t > , válassza a**Microsoft Windows 10** > és [a Windows 10 Enterprise rendszerű virtuális asztalok előzetes verzióját, a 1809-es verziót](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
 
 ![Képernyőkép: a Windows 10 Enterprise for Virtual desktops előzetes verziója, 1809-es verzió.](media/AzureMarketPlace.png)
 
@@ -330,7 +330,7 @@ Nyers hiba – példa:
 
 Ha az Azure Marketplace-ajánlatot futtatja, adja meg a következő paraméterek értékeit a Windows rendszerű virtuális asztal megfelelő hitelesítéséhez:
 
-- Windows rendszerű virtuális asztali bérlői RDS-tulajdonos: Egyszerű szolgáltatásnév
+- Windows rendszerű virtuális asztali bérlői RDS-tulajdonos: Szolgáltatásnév
 - Alkalmazás azonosítója: A létrehozott új egyszerű szolgáltatás alkalmazás-azonosítója
 - Jelszó/Jelszó megerősítése: Az egyszerű szolgáltatáshoz létrehozott jelszó titkos kulcsa
 - Azure AD-bérlő azonosítója: A létrehozott szolgáltatásnév Azure AD-bérlői azonosítója

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/25/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 20ef71f98817a57f884e9c5a3cef4ceeaebe74eb
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 8321a9dd779406b2d1de44bd4c9313e4d855548d
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498441"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740900"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása Azure-Virtual Network
 Ez a dokumentum ismerteti a Azure App Service Virtual Network Integration funkciót, valamint azt, hogyan állíthatja be az [](https://go.microsoft.com/fwlink/?LinkId=529714)alkalmazásokkal a Azure app Serviceban. [Azure-beli virtuális hálózatok][VNETOverview] A (virtuális hálózatok) lehetővé teszi, hogy számos Azure-erőforrást egy nem internetes útválasztású hálózaton helyezzen el.  
@@ -103,7 +103,7 @@ A szolgáltatás előzetes verzióban is elérhető Linux rendszeren. A VNet-int
 
 Miután az alkalmazása integrálva van a VNet, ugyanazt a DNS-kiszolgálót fogja használni, amelyhez a VNet konfigurálva van. 
 
-Ha le szeretné bontani az alkalmazást a VNet, válassza a leválasztás lehetőséget. Ezzel újraindítja a webalkalmazást. 
+Ha le szeretné bontani az alkalmazást a VNet,válassza a leválasztás lehetőséget. Ezzel újraindítja a webalkalmazást. 
 
 
 #### <a name="web-app-for-containers"></a>Web App for Containers
@@ -136,11 +136,10 @@ Az átjáró szükséges VNet-integrációs funkciója:
 * Lehetővé teszi akár öt virtuális hálózatok integrálását egy App Service csomaggal 
 * Lehetővé teszi, hogy ugyanazt a VNet egy App Service-csomagban több alkalmazás is felhasználja anélkül, hogy ez hatással lenne egy App Service-csomag által használható teljes számra.  Ha ugyanazokkal a VNet rendelkező 6 alkalmazásokkal rendelkezik ugyanazon a App Service csomagon, akkor 1 VNet számít. 
 * Olyan Virtual Network átjárót igényel, amely pont – hely típusú VPN-kapcsolattal van konfigurálva
-* Linux-alkalmazásokkal való használata nem támogatott
 * A 99,9%-os SLA-t támogat az átjáró SLA-ja miatt
 
 Ez a funkció nem támogatja a következőket:
-
+* Használat Linux-alkalmazásokkal
 * Erőforrásokhoz való hozzáférés ExpressRoute-on keresztül 
 * Erőforrásokhoz való hozzáférés szolgáltatásvégpontokon keresztül 
 
@@ -225,7 +224,7 @@ Az alkalmazások a helyek közötti kapcsolatokkal rendelkező virtuális háló
 Nincs szükség további konfigurációra ahhoz, hogy a regionális VNet integrációs szolgáltatás elérje a VNet és a helyszíni környezettel. Egyszerűen csatlakoznia kell a VNet a helyszíni környezethez a ExpressRoute vagy a helyek közötti VPN használatával. 
 
 > [!NOTE]
-> Az átjáró szükséges VNet-integrációs funkciója nem integrálja az alkalmazást olyan VNet, amely ExpressRoute-átjáróval rendelkezik. Még akkor is, ha az [ExpressRoute-átjáró][VPNERCoex] párhuzamosan van konfigurálva, a VNet-integráció nem működik. Ha egy ExpressRoute-kapcsolaton keresztül kell hozzáférni az erőforrásokhoz, akkor használhatja a regionális VNet integrációs funkciót vagy egy [app Service Environment][ASE], amely a VNet fut. 
+> Az átjáró szükséges VNet-integrációs funkciója nem integrálja az alkalmazást olyan VNet, amely ExpressRoute-átjáróval rendelkezik. Még akkor is, ha az ExpressRoute- [][VPNERCoex] átjáró párhuzamosan van konfigurálva, a VNet-integráció nem működik. Ha egy ExpressRoute-kapcsolaton keresztül kell hozzáférni az erőforrásokhoz, akkor használhatja a regionális VNet integrációs funkciót vagy egy [app Service Environment][ASE], amely a VNet fut. 
 > 
 > 
 

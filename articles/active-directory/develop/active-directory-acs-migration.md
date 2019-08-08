@@ -11,19 +11,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3daf44ee29a2f7b29eec9215876ca6edc18a5800
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 59a2cc971fbc1df967bc2655c672ab8f419eef71
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325061"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835521"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Útmutató: Migrálás az Azure Access Control Service-ből
 
@@ -115,7 +115,7 @@ November 2017-ig az összes Access Control-összetevő teljes mértékben támog
 
 Itt látható a Access Control-összetevők elavulása:
 
-- **November 2017**:  A klasszikus [Azure portálon](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/)az Azure ad rendszergazdai felülete megszűnik. Ezen a ponton a Access Control névterek kezelése egy új, dedikált URL-címen érhető el `https://manage.windowsazure.com?restoreClassic=true`:. Ezzel az URl-címmel megtekintheti a meglévő névtereket, engedélyezheti és letilthatja a névtereket, és törölheti a névtereket, ha úgy dönt, hogy.
+- **November 2017**:  A klasszikus Azure portálon az Azure AD rendszergazdai felülete megszűnik. [](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/) Ezen a ponton a Access Control névterek kezelése egy új, dedikált URL-címen érhető el `https://manage.windowsazure.com?restoreClassic=true`:. Ezzel az URl-címmel megtekintheti a meglévő névtereket, engedélyezheti és letilthatja a névtereket, és törölheti a névtereket, ha úgy dönt, hogy.
 - **2018. április 2**.: A klasszikus Azure portál teljes mértékben kivonásra kerül, ami azt jelenti, Access Control a névtér kezelése már nem érhető el bármely URL-címen keresztül. Ezen a ponton nem tilthatja le, nem engedélyezheti, törölheti vagy enumerálhatja Access Control névtereit. A Access Control felügyeleti portál azonban teljesen működőképes lesz, és a következő helyen `https://\<namespace\>.accesscontrol.windows.net`található:. A Access Control összes többi összetevője továbbra is megfelelően működik.
 - **2018. november 7**.: Az összes Access Control-összetevő véglegesen le van állítva. Ide tartozik a Access Control felügyeleti portál, a felügyeleti szolgáltatás, az STS és a jogkivonat-átalakítási szabály motorja. Ezen a ponton a Access Control (a \<névtér\>. accesscontrol.Windows.net helyen található) küldött kérések meghiúsulnak. A meglévő alkalmazásokat és szolgáltatásokat más technológiákra is át kell telepítenie.
 
@@ -205,7 +205,7 @@ A következő táblázat összehasonlítja az Azure AD-ban elérhető szolgálta
 | WS-Trust | Támogatott | Nem támogatott |
 | **Jogkivonat-formátumok** | | |
 | JWT | Bétaverzióban támogatott | Támogatott |
-| SAML 1,1 | Támogatott | Előzetes verzió |
+| SAML 1.1 | Támogatott | Előzetes verzió |
 | SAML 2.0 | Támogatott | Támogatott |
 | SWT | Támogatott | Nem támogatott |
 | **Testreszabások** | | |
@@ -256,7 +256,7 @@ A következő táblázat összehasonlítja a webalkalmazásokhoz kapcsolódó Ac
 | WS-Trust | Támogatott | Nem támogatott |
 | **Jogkivonat-formátumok** | | |
 | JWT | Bétaverzióban támogatott | Támogatott |
-| SAML 1,1 | Támogatott | Nem támogatott |
+| SAML 1.1 | Támogatott | Nem támogatott |
 | SAML 2.0 | Támogatott | Nem támogatott |
 | SWT | Támogatott | Nem támogatott |
 | **Testreszabások** | | |
@@ -325,7 +325,7 @@ Az Azure AD-t a kiszolgálók közötti hitelesítéshez is használhatja az OAu
 | Webszolgáltatás regisztrálása | Függő entitás létrehozása a Access Control felügyeleti portálon | Azure AD-Webalkalmazás létrehozása a Azure Portalban |
 | Ügyfél regisztrálása | Szolgáltatás identitásának létrehozása a Access Control felügyeleti portálon | Hozzon létre egy másik Azure AD-webalkalmazást a Azure Portal |
 | Használt protokoll |-OAuth WRAP protokoll<br />-OAuth 2,0-draft 13 ügyfél-hitelesítő adatok megadása | OAuth 2.0-ügyfél hitelesítő adatainak megadása |
-| Ügyfél-hitelesítési módszerek |– Egyszerű jelszó<br />-Aláírt SWT<br />-SAML-jogkivonat összevont identitás-szolgáltatótól |– Egyszerű jelszó<br />-Aláírt JWT |
+| Ügyfél-hitelesítési módszer |– Egyszerű jelszó<br />-Aláírt SWT<br />-SAML-jogkivonat összevont identitás-szolgáltatótól |– Egyszerű jelszó<br />-Aláírt JWT |
 | Jogkivonat-formátumok |– JWT<br />– SAML 1,1<br />- SAML 2.0<br />– SWT<br /> | Csak JWT |
 | Jogkivonat-átalakítás |– Egyéni jogcímek hozzáadása<br />– Egyszerű, ha-akkor jogcím kiállítási logikája | Egyéni jogcímek hozzáadása | 
 | Konfigurációs és felügyeleti feladatok automatizálása | Access Control felügyeleti szolgáltatáson keresztül támogatott | Microsoft Graph és az Azure AD-n keresztül támogatott Graph API |

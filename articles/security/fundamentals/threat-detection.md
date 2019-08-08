@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 500ae75f9bf53c1633290e706e33165dd9d67a88
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 4e33b22c5bc931685f5848db55fc4b9b8fc6eafe
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726611"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780608"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure komplex veszélyforrások észlelése
 
@@ -216,7 +216,7 @@ Ezek az összetett erőfeszítések új és továbbfejlesztett észlelésekkel z
 
 ### <a name="virtual-machines-microsoft-antimalware"></a>Virtuális gépek: Microsoft antimalware
 
-Az Azure-hoz készült [Microsoft antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) egyetlen ügynökből álló megoldás az alkalmazások és a bérlői környezetek számára, amelyeket emberi beavatkozás nélkül lehet a háttérben futtatni. A védelmet az alkalmazás számítási feladatainak igényei szerint helyezheti üzembe, amely alapszintű biztonsági vagy speciális konfigurációval rendelkezik, beleértve a kártevő szoftverek figyelését is. Az Azure antimalware egy biztonsági lehetőség az Azure-beli virtuális gépekhez, amelyeket az Azure-beli virtuális gépeken automatikusan telepítenek.
+Az Azure-hoz készült [Microsoft antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) egyetlen ügynökből álló megoldás az alkalmazások és a bérlői környezetek számára, amelyeket emberi beavatkozás nélkül lehet a háttérben futtatni. A védelmet az alkalmazás számítási feladatainak igényei szerint helyezheti üzembe, amely alapszintű biztonsági vagy speciális konfigurációval rendelkezik, beleértve a kártevő szoftverek figyelését is. Az Azure antimalware egy biztonsági lehetőség az Azure-beli virtuális gépekhez, amelyeket az Azure-beli virtuális gépeken automatikusan telepítenek.
 
 #### <a name="microsoft-antimalware-core-features"></a>Microsoft antimalware Core-funkciók
 

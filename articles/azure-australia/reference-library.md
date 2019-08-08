@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: grgale
-ms.openlocfilehash: 0c575076439e3405d34fe0ef3beff0242a53a8c5
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: 48b4b71d80bcef1eaf3bf89c0b14c8033748684e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68601810"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779330"
 ---
 # <a name="additional-documentation-and-resources-by-focus-area"></a>További dokumentáció és erőforrások fókusz terület szerint
 
@@ -22,7 +22,7 @@ Ez az erőforrás-függvénytár olyan további hivatkozásokat és hivatkozáso
 * [A Microsoft szolgáltatás megbízhatósági portáljának ausztráliai lapja](https://aka.ms/au-irap)
 * [Microsoft adatvédelmi központ CCSL lapja](https://www.microsoft.com/trustcenter/compliance/ccsl)
 * [Azure biztonsági és megfelelőségi tervezetek védett](https://aka.ms/au-protected)
-* [Bérlő elkülönítése Microsoft Azure](https://docs.microsoft.com/azure/security/azure-isolation)
+* [Bérlő elkülönítése Microsoft Azure](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices)
 * [Ausztrál információs biztonsági kézikönyv](https://www.cyber.gov.au/ism)
 * [Australian Cyber Security Center (ASCS) minősített felhő listája](https://www.cyber.gov.au/irap/asd-certified-cloud-services)
 
@@ -32,7 +32,7 @@ Ez az erőforrás-függvénytár olyan további hivatkozásokat és hivatkozáso
 * [A kulcsok, titkos kódok és tanúsítványok ismertetése](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates)
 * [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/key-vault/key-vault-network-security)
 * [Biztonságos hozzáférés a kulcstartóhoz](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)
-* [Azure-beli adatok titkosítása – Rest](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+* [Azure-beli adatok titkosítása – Rest](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
 * [A Azure Key Vault használata az Azure Windows Virtual Machines a .NET-ben](https://docs.microsoft.com/azure/key-vault/tutorial-net-windows-virtual-machine)
 * [Felügyelt Storage-fiók Azure Key Vault – PowerShell](https://docs.microsoft.com/azure/key-vault/tutorial-net-windows-virtual-machine)
 * [Telepítési kulcs elforgatása és naplózása](https://docs.microsoft.com/azure/key-vault/key-vault-key-rotation-log-monitoring)
@@ -68,7 +68,7 @@ Ez az erőforrás-függvénytár olyan további hivatkozásokat és hivatkozáso
 * [Az Azure RBAC áttekintése](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [Az Azure Privileged azonosításának kezelése – áttekintés](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)
 * [Az Azure Management Groups áttekintése](https://docs.microsoft.com/azure/governance/management-groups/)
-* [Azure Identity és Access Control ajánlott eljárások](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices)
+* [Azure Identity és Access Control ajánlott eljárások](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
 * [Azure AD-csoportok kezelése](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
 * [Hibrid identitás](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
 * [RBAC egyéni szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)

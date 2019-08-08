@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/08/2019
+ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c7c2ba104b4d528cd3f8443e6f5615aa6ab3e672
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7e88b99cf0ecede64d75b36eafdcc88798e2e4a4
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720372"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840444"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -130,7 +130,7 @@ A parancsfájl két olyan függvényt tartalmaz, amelyek betöltik és futtatjá
 
 * `run(input_data)`: Ez a függvény a modellt használva előre jelez egy értéket a bemeneti adatok alapján. A futtatáshoz tartozó bemenetek és kimenetek általában a JSON-t használják a szerializáláshoz és a deszerializáláshoz. A nyers bináris adatmennyiségeket is használhatja. Átalakíthatja az adatokat a modellbe való küldés előtt, vagy az ügyfélnek való visszatérés előtt.
 
-#### <a name="what-is-getmodelpath"></a>Mi az a get_model_path?
+#### <a name="what-is-get_model_path"></a>Mi az a get_model_path?
 
 Modell regisztrálása esetén meg kell adnia a modellnek a beállításjegyzékben való kezeléséhez használt modell nevét. Ezt a nevet használja a [modellhez. szerezze be a _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) , hogy lekérje a modell fájljának elérési útját a helyi fájlrendszeren. Ha egy mappát vagy fájl-gyűjteményt regisztrál, az API a fájlokat tartalmazó könyvtár elérési útját adja vissza.
 
@@ -142,7 +142,7 @@ Az alábbi példa egy (a névvel `sklearn_mnist_model.pkl` `sklearn_mnist`regisz
 model_path = Model.get_model_path('sklearn_mnist')
 ```
 
-#### <a name="optional-automatic-swagger-schema-generation"></a>Választható Automatikus hencegés sémájának létrehozása
+#### <a name="optional-automatic-schema-generation"></a>Választható Séma automatikus létrehozása
 
 Ha automatikusan szeretne létrehozni egy sémát a webszolgáltatás számára, adja meg a bemeneti és/vagy kimeneti adatokat a konstruktorban egy adott típusú objektumhoz, és a típus és a minta használatával automatikusan létrehozza a sémát. A Azure Machine Learning szolgáltatás ezután létrehoz egy [OpenAPI](https://swagger.io/docs/specification/about/) (hencegő) specifikációt a webszolgáltatás számára az üzembe helyezés során.
 
@@ -153,9 +153,10 @@ Jelenleg a következő típusok támogatottak:
 * `pyspark`
 * Standard Python-objektum
 
-A séma-létrehozás használatához foglalja bele `inference-schema` a csomagot a Conda-környezet fájljába. Az alábbi példa `[numpy-support]` a NumPy paramétert használja, mivel a bejegyzési parancsfájl a következőt használja: 
+A séma-létrehozás használatához foglalja bele `inference-schema` a csomagot a Conda-környezet fájljába.
 
-#### <a name="example-dependencies-file"></a>Példa a függőségek fájlra
+##### <a name="example-dependencies-file"></a>Példa a függőségek fájlra
+
 Az alábbi YAML egy Conda-függőségi fájlra mutat példát.
 
 ```YAML
@@ -168,14 +169,11 @@ dependencies:
     - inference-schema[numpy-support]
 ```
 
-Ha automatikus séma-generálást szeretne használni, a belépési parancsfájlnak importálnia **kell** a `inference-schema` csomagokat. 
+Ha automatikus séma-generálást szeretne használni, a belépési parancsfájlnak importálnia **kell** a `inference-schema` csomagokat.
 
 Adja meg a bemeneti és kimeneti minták formátumait `input_sample` a `output_sample` és a változóban, amelyek a webszolgáltatáshoz tartozó kérések és válaszok formátumait jelölik. Ezeket a mintákat a `run()` függvény bemeneti és kimeneti függvényében használhatja. A scikit – az alábbi példa a séma generálását használja.
 
-> [!TIP]
-> A szolgáltatás telepítése után a `swagger_uri` tulajdonság használatával kérje le a séma JSON-dokumentumát.
-
-#### <a name="example-entry-script"></a>Példa a bejegyzés parancsfájlra
+##### <a name="example-entry-script"></a>Példa a bejegyzés parancsfájlra
 
 Az alábbi példa bemutatja, hogyan fogadhat és adhat vissza JSON-adattartalomot:
 
@@ -216,9 +214,7 @@ def run(data):
         return error
 ```
 
-#### <a name="example-script-with-dictionary-input-support-consumption-from-power-bi"></a>Példa a szótárba bevitt parancsfájlokra (a Power BItól származó felhasználás támogatása)
-
-Az alábbi példa bemutatja, hogyan határozhatja meg a bemeneti adatokat < kulcs: érték > szótár a Dataframe használatával. Ez a módszer a központilag telepített webszolgáltatás Power BI való felhasználására használható (További információ a webszolgáltatásnak[a Power BIból](https://docs.microsoft.com/power-bi/service-machine-learning-integration)történő használatáról):
+Az alábbi példa bemutatja, hogyan határozhatja meg a bemeneti adatokat `<key: value>` szótárként a Dataframe használatával. Ez a módszer a központilag telepített webszolgáltatás Power BI való felhasználására használható (További információ a webszolgáltatásnak[a Power BIból](https://docs.microsoft.com/power-bi/service-machine-learning-integration)történő használatáról):
 
 ```python
 import json
@@ -266,6 +262,7 @@ def run(data):
         error = str(e)
         return error
 ```
+
 További példák a parancsfájlokra:
 
 * Pytorch[https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
@@ -369,6 +366,9 @@ Lásd: [üzembe helyezés az Azure Kubernetes szolgáltatásban](how-to-deploy-a
 Minden üzembe helyezett webszolgáltatás REST API biztosít, így különböző programozási nyelveken hozhat létre ügyfélalkalmazások-alkalmazásokat. Ha engedélyezte a kulcs hitelesítését a szolgáltatáshoz, meg kell adnia egy szolgáltatási kulcsot a kérelem fejlécében lévő jogkivonatként.
 Ha engedélyezte a jogkivonat-hitelesítést a szolgáltatáshoz, meg kell adnia egy Azure Machine Learning JWT tokent tulajdonosi jogkivonatként a kérelem fejlécében.
 
+> [!TIP]
+> A séma JSON-dokumentum a szolgáltatás telepítése után kérhető le. Használja a [swagger_uri tulajdonságot](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) az üzembe helyezett webszolgáltatásból, például `service.swagger_uri`:, hogy az URI-t beolvassa a helyi webszolgáltatás hencegő fájljába.
+
 ### <a name="request-response-consumption"></a>Kérelem – válasz felhasználás
 
 Íme egy példa arra, hogyan hívhatja meg a szolgáltatást a Pythonban:
@@ -399,6 +399,147 @@ print(response.json())
 
 További információ: [ügyfélalkalmazások létrehozása a](how-to-consume-web-service.md)webszolgáltatások felhasználásához.
 
+### <a name="web-service-schema-openapi-specification"></a>Webszolgáltatás sémája (OpenAPI-specifikáció)
+
+Ha az automatikus séma létrehozását használta az üzemelő példányhoz, a [swagger_uri tulajdonság](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)használatával lekérheti a szolgáltatás OpenAPI-specifikációjának a címeit. Például: `print(service.swagger_uri)`. A specifikáció lekéréséhez használjon GET-kérést (vagy nyissa meg az URI-t egy böngészőben).
+
+A következő JSON-dokumentum egy példa egy központi telepítéshez létrehozott sémára (OpenAPI-specifikáció):
+
+```json
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "myservice",
+        "description": "API specification for the Azure Machine Learning service myservice",
+        "version": "1.0"
+    },
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "For example: Bearer abc123"
+        }
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "operationId": "ServiceHealthCheck",
+                "description": "Simple health check endpoint to ensure the service is up at any given point.",
+                "responses": {
+                    "200": {
+                        "description": "If service is up and running, this response will be returned with the content 'Healthy'",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "application/json": "Healthy"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/score": {
+            "post": {
+                "operationId": "RunMLService",
+                "description": "Run web service's model and get the prediction output",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "serviceInputPayload",
+                        "in": "body",
+                        "description": "The input payload for executing the real-time machine learning service.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The service processed the input correctly and provided a result prediction, if applicable.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceOutput"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ServiceInput": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                }
+            },
+            "example": {
+                "data": [
+                    [ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ]
+                ]
+            }
+        },
+        "ServiceOutput": {
+            "type": "array",
+            "items": {
+                "type": "number",
+                "format": "double"
+            },
+            "example": [
+                3726.995
+            ]
+        },
+        "ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "status_code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
+```
+
+A specifikációval kapcsolatos további információkért tekintse [meg az API-specifikáció megnyitása](https://swagger.io/specification/)című témakört.
+
+Egy olyan segédprogram esetében, amely a specifikációból tud ügyféloldali kódtárakat létrehozni, tekintse meg a következőt: [hencegés-CODEGEN](https://github.com/swagger-api/swagger-codegen).
 
 ### <a id="azuremlcompute"></a>Batch-következtetés
 Azure Machine Learning számítási célokat a Azure Machine Learning szolgáltatás hozza létre és kezeli. A kötegelt előrejelzésekhez Azure Machine Learning folyamatokból is felhasználhatók.

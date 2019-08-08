@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: gwallace
-ms.openlocfilehash: 802ece106099e8a475b83c820130c3c238d330d2
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 3f2c60be29d679d0b0d30b6bf471f083c66ba93f
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359212"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827671"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
 
@@ -514,7 +514,7 @@ var imagesQueue = queueClient.GetQueueReference("images");
 imagesQueue.CreateIfNotExists();
 ```
 
-### <a name="contosoadsweb---layoutcshtml"></a>ContosoAdsWeb – \_Layout.cshtml
+### <a name="contosoadsweb---_layoutcshtml"></a>ContosoAdsWeb – \_Layout.cshtml
 A *_Layout.cshtml* fájl beállítja az alkalmazás nevét a fejlécben és a láblécben, és létrehoz egy „Ads” menübejegyzést.
 
 ### <a name="contosoadsweb---viewshomeindexcshtml"></a>ContosoAdsWeb – Views\Home\Index.cshtml
@@ -696,7 +696,7 @@ public override void Run()
 }
 ```
 
-Ha a ciklus egyes ismétlései után nem található üzenet, a program egy másodpercre alvó állapotba vált. Ez megakadályozza, hogy a feldolgozói szerepkör túl sok CPU-időt használjon és további tárolási tranzakciós költségeket halmozzon fel. A Microsoft ügyféltanácsadói csapatának van egy története egy fejlesztőről, aki ezt elfelejtette beépíteni, elvégezte az éles környezetbe való telepítést, azután elment nyaralni. Mire visszatért, a figyelmetlensége többe került, mint az egész nyaralás.
+Ha a ciklus egyes ismétlései után nem található üzenet, a program egy másodpercre alvó állapotba vált. Ez megakadályozza, hogy a feldolgozói szerepkör túl sok CPU-időt használjon és további tárolási tranzakciós költségeket halmozzon fel. A Microsoft ügyféltanácsadói csapatának van egy története egy fejlesztőről, aki ezt elfelejtette beépíteni, elvégezte az éles környezetbe való telepítést, azután elment nyaralni. Amikor visszatértek, a felügyelete több, mint a vakáció.
 
 Néha előfordul, hogy az üzenetsor egyik üzenetének tartalma feldolgozási hibát okoz. Az ilyet *ártalmas üzenetnek* nevezik, és ha épp naplózott egy hibát, majd újraindította a ciklust, akkor az üzenet feldolgozásával a végtelenségig próbálkozhat.  Ezért a catch blokk tartalmaz egy if utasítást, amely ellenőrzi, hogy az alkalmazás hány alkalommal próbálta feldolgozni az aktuális üzenetet, és amennyiben több mint 5 alkalommal, az üzenet törlődik az üzenetsorból.
 

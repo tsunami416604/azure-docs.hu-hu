@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: a4947349e64d5f9bf95a9213701dc62a0e018b8f
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 300dd634cc99e5203145619b475d813705f09553
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501309"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815695"
 ---
 # <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 
@@ -317,7 +317,7 @@ Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, HTML-címk�
 
 #### <a name="contact-information"></a>Kapcsolattartási adatok
 
-- **Névjegyek**: Minden ügyfél-kapcsolattartó esetében adja meg az alkalmazott **nevét** , **telefonszámát**és **e-mail-** címét.  (Ezek *nem* lesznek nyilvánosan megjelenítve). A **támogatási kapcsolattartó** csoportnak egy **támogatási URL-címet** is meg kell adnia.  (Ez az *információ nyilvánosan* jelenik meg).
+- **Névjegyek**: Minden ügyfél-kapcsolattartó esetében adja meg az alkalmazott **nevét** , **telefonszámát**és **e-mail-** címét.  (Ezek *nem* lesznek nyilvánosan megjelenítve). A **támogatási kapcsolattartó** csoportnak egy **támogatási URL-címet** is meg kell adnia.  (Ez az információ nyilvánosan jelenik meg).
 
 **Támogatási kapcsolattartó** (kötelező): Általános támogatási kérdésekre.
 
@@ -385,7 +385,7 @@ A **terv áttekintésében** elérhető **műveletek** a csomag aktuális állap
 
 ### <a name="plan-listing"></a>Csomag listázása
 
-A  csomag listázása lapon azok a nyelvek (és piacok) láthatók, ahol a csomag elérhető, a jelenleg angol (Egyesült Államok) az egyetlen elérhető hely. Ezen felül az oldal megjeleníti a nyelvspecifikus lista állapotát és a hozzáadott dátumot és időt. Meg kell határoznia a piactér részleteit (az ajánlat nevét, leírását, keresési kifejezéseit stb.) az egyes nyelvekhez/piacokhoz.
+A csomag listázása lapon azok a nyelvek (és piacok) láthatók, ahol a csomag elérhető, a jelenleg angol (Egyesült Államok) az egyetlen elérhető hely. Ezen felül az oldal megjeleníti a nyelvspecifikus lista állapotát és a hozzáadott dátumot és időt. Meg kell határoznia a piactér részleteit (az ajánlat nevét, leírását, keresési kifejezéseit stb.) az egyes nyelvekhez/piacokhoz.
 
 #### <a name="plan-listing-details"></a>Lista részleteinek megtervezése
 
@@ -431,7 +431,7 @@ Ha már beállította a csomag árát Egyesült Államok dollárban (USD), és e
 
 **Átalány:** Az ajánlathoz való hozzáférés engedélyezése egyetlen havi vagy éves díjszabási díjszabással. Ezt más néven a hely alapú díjszabásnak is nevezzük. Ezzel az árképzési modellel meghatározhat olyan mért csomagokat is, amelyek a Piactéri mérési szolgáltatás API-ját használják, hogy a nem standard egységek alapján felszámolják az ügyfeleket.  A mért számlázással kapcsolatos további információkért lásd: [mért számlázás a Marketplace-mérési szolgáltatás használatával](./saas-metered-billing.md).
 
-**Ülőhely-alapú:** Az ajánlathoz való hozzáférést az ajánlatot vagy a foglalt munkaállomásokat elérő felhasználók számán alapuló díj alapján teheti *meg.* Ez az ülő modell lehetővé teszi, hogy az ár alapján beállítsa az ülőhelyek minimális és maximális számát. Így a különböző díjszabási pontok a felhasználók számától függően konfigurálhatók több csomag konfigurálásával.  Ezeket a mezőket nem kötelező megadni. Ha üresen hagyja, a rendszer úgy értelmezi a munkaállomások számát, hogy ne legyen korlát (min. 1, a maximális érték pedig annyi, amennyit a rendszer támogat). Ezeket a mezőket a csomag frissítésének részeként lehet szerkeszteni.
+**Felhasználónként:** Az ajánlathoz való hozzáférést az ajánlatot vagy a foglalt munkaállomásokat elérő felhasználók számán alapuló díj alapján teheti meg. Ez a felhasználó-alapú modell lehetővé teszi, hogy beállítsa az árak alapján engedélyezett felhasználók minimális és maximális számát. Így a különböző díjszabási pontok a felhasználók számától függően konfigurálhatók több csomag konfigurálásával.  Ezeket a mezőket nem kötelező megadni. Ha nem jelöli be a jelölőnégyzetet, a rendszer a felhasználók számát úgy értelmezi, hogy nem rendelkezik korláttal (az 1. és a maximális érték legfeljebb annyit tud támogatni). Ezeket a mezőket a csomag frissítésének részeként lehet szerkeszteni.
 
 A közzétételt követően a számlázási díjszabási modell választása nem módosítható. Emellett az ugyanarra az ajánlatra vonatkozó összes csomagnak ugyanazzal az árképzési modellel kell rendelkeznie.
 
@@ -543,7 +543,7 @@ Ha a tesztelési meghajtót az Ön nevében szeretné üzembe helyezni, hozzon l
 
 - **Azure-előfizetés azonosítója** (Azure Resource Manager és Logic apps esetén szükséges): Adja meg az előfizetés AZONOSÍTÓját, hogy hozzáférést biztosítson az Azure-fiók szolgáltatásaihoz az erőforrás-használati jelentéskészítéshez és a számlázáshoz. Javasoljuk, hogy hozzon [létre egy külön Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription) -előfizetést, amelyet tesztelési meghajtókhoz kíván használni, ha még nem rendelkezik ilyennel. Az Azure-előfizetésének AZONOSÍTÓját a Azure Portalba való [](https://portal.azure.com/) bejelentkezéssel és a bal oldali menü előfizetések lapján érheti el. A lap kiválasztása esetén megjelenik az előfizetési azonosító (például: "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **Azure ad-bérlő azonosítója** (kötelező): Adja meg a Azure Active Directory (AD [](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)) BÉRLŐi azonosítóját. Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a **Tulajdonságok** elemet, majd keresse **meg a felsorolt** 50c464d3-4930-494c-963c-1e951d15360e (például:). A szervezet bérlői AZONOSÍTÓját a tartománynév URL-címével is megkeresheti a [https://www.whatismytenantid.com](https://www.whatismytenantid.com)következő helyen:.
+- **Azure ad-bérlő azonosítója** (kötelező): Adja meg a Azure Active Directory (AD [](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)) BÉRLŐi azonosítóját. Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a **Tulajdonságok** elemet, majd keresse meg a felsorolt 50c464d3-4930-494c-963c-1e951d15360e (például:). A szervezet bérlői AZONOSÍTÓját a tartománynév URL-címével is megkeresheti a [https://www.whatismytenantid.com](https://www.whatismytenantid.com)következő helyen:.
 
 - **Azure ad-bérlő neve** (a dinamikus 365 szükséges): Adja meg a Azure Active Directory (AD) nevét. A név megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), a jobb felső sarokban a bérlő neve a fiók neve alatt jelenik meg.
 
@@ -555,7 +555,7 @@ Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni** .
 
 ### <a name="test-drive-listings-optional"></a>Tesztelési meghajtók listázása (nem kötelező)
 
-A test Drive (tesztelési meghajtó) **lapon található** tesztelési **meghajtók listázása** lehetőség megjeleníti azokat a nyelveket (és piacokat), ahol a tesztelési meghajtó elérhető, jelenleg angol (Egyesült Államok) az egyetlen elérhető hely. Ezen felül az oldal megjeleníti a nyelvspecifikus lista állapotát és a hozzáadott dátumot és időt. Meg kell határoznia a tesztvezetés részleteit (Leírás, felhasználói kézikönyv, videók stb.) az egyes nyelvekhez/piacokhoz.
+A test Drive (tesztelési meghajtó) lapon található tesztelési **meghajtók listázása** lehetőség megjeleníti azokat a nyelveket (és piacokat), ahol a tesztelési meghajtó elérhető, jelenleg angol (Egyesült Államok) az egyetlen elérhető hely. Ezen felül az oldal megjeleníti a nyelvspecifikus lista állapotát és a hozzáadott dátumot és időt. Meg kell határoznia a tesztvezetés részleteit (Leírás, felhasználói kézikönyv, videók stb.) az egyes nyelvekhez/piacokhoz.
 
 - **Leírás** (kötelező): Írja le a tesztelési meghajtót, a bemutatott funkciókat, a felhasználó által a kísérletezéshez szükséges célokat, a felderített szolgáltatásokat és a megfelelő információkat, amelyekkel a felhasználó eldöntheti, hogy szeretné-e beszerezni az ajánlatot. Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni. 
 

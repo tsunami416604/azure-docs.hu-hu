@@ -1,7 +1,7 @@
 ---
-title: A Chainer-modellek betanítása és regisztrálása
+title: Mély tanulási neurális hálózat betanítása a Chainer szolgáltatással
 titleSuffix: Azure Machine Learning service
-description: Ebből a cikkből megtudhatja, hogyan végezheti el a láncolt modellek betanítását és regisztrálását Azure Machine Learning szolgáltatás használatával.
+description: Megtudhatja, hogyan futtathatja nagyvállalati szintű PyTorch-betanítási parancsfájljait Azure Machine Learning Chainer kalkulátor-osztályának használatával.  A példa a kézírásos classifis, hogy egy Deep learning neurális hálózatot építsen ki a NumPy-on futó, a láncot használó Python-kódtár használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
-ms.date: 06/15/2019
-ms.openlocfilehash: 7cf5650708cd951e872e3df6ea533a62bde0389d
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
-ms.translationtype: MT
+ms.date: 08/02/2019
+ms.openlocfilehash: f95a7efd8b9303db0a9ba98c1be32e13d0c5e984
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618339"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780885"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Láncolt modellek betanítása és regisztrálása Azure Machine Learning szolgáltatással
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a láncolt modellek betanítását és regisztrálását Azure Machine Learning szolgáltatás használatával. A szolgáltatás a népszerű [MNIST](http://yann.lecun.com/exdb/mnist/) -adatkészletet használja a kézzel írt számjegyek besorolására egy olyan Deep neurális hálózat (DNN) használatával, amely a [NumPy](https://www.numpy.org/)-on futó, a [chainer Python-kódtár](https://Chainer.org) használatával készült.
+Ebből a cikkből megtudhatja, hogyan [](https://chainer.org/) futtathatja nagyvállalati szinten a chainer-betanítási szkripteket Azure Machine learning [chainer kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) -osztályának használatával. Az ebben a cikkben ismertetett betanítási szkript a népszerű [MNIST](http://yann.lecun.com/exdb/mnist/) adatkészletet használja a kézzel írt számjegyek besorolásához a [NumPy](https://www.numpy.org/)-on futó, a chainer Python-kódtár használatával létrehozott Deep neurális hálózat (DNN) használatával.
 
-A chainer egy magas szintű neurális hálózati API, amely más népszerű DNN-keretrendszereken is futtatható a fejlesztés egyszerűsítése érdekében. A Azure Machine Learning szolgáltatással rugalmas felhőalapú számítási erőforrásokkal gyorsan bővítheti a betanítási feladatokat. Nyomon követheti a képzések futtatását, a verziók modelljeit, a modellek üzembe helyezését és még sok mást is.
+Akár az alapoktól, akár egy meglévő modellt szeretne készíteni a felhőbe, az Azure Machine Learning segítségével rugalmas Felhőbeli számítási erőforrásokkal bővítheti a nyílt forráskódú képzési feladatokat. A Azure Machine Learning használatával előkészítheti, üzembe helyezheti, telepítheti és figyelheti a termelési szintű modelleket. 
 
-Akár az alapoktól, akár egy meglévő modellt kíván létrehozni a felhőbe, Azure Machine Learning szolgáltatás segít az üzemi használatra kész modellek létrehozásában.
+További információ a [Deep learning és a Machine learning](concept-deep-learning-vs-machine-learning.md)szolgáltatásról.
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
@@ -33,8 +33,8 @@ Futtassa ezt a kódot ezen környezetek bármelyikén:
 
 - Azure Machine Learning notebook VM – nincs szükség letöltésre vagy telepítésre
 
-    - Fejezze be a [felhőalapú jegyzetfüzet](quickstart-run-cloud-notebook.md) rövid útmutatóját, és hozzon létre egy dedikált jegyzetfüzet-kiszolgálót, amely előre be van töltve az SDK-val és a minta adattárral.
-    - A notebook-kiszolgáló Samples (minták) mappájában keresse meg a kész jegyzetfüzetet és fájlokat a **használati útmutató-azureml/Training-with-Deep-learning/Train-hiperparaméter-Tune-Deploy-with** -láncolási mappában.  A jegyzetfüzet tartalmaz kibővített szakaszt az intelligens hiperparaméter hangolás, a modell üzembe helyezése és a notebook widgetek számára.
+    - Fejezze be [az oktatóanyagot: Az SDK-val](tutorial-1st-experiment-sdk-setup.md) és a minta adattárral előre betöltött dedikált jegyzetfüzet-kiszolgáló létrehozásához beállíthatja a környezetet és a munkaterületet.
+    - A notebook-kiszolgáló minták Deep learning mappájában keresse meg az elkészült jegyzetfüzeteket és fájlokat a **használati útmutató-azureml/Training-with-Deep-learning/Train-hiperparaméter-Tune-Deploy-with** -láncolási mappában.  A jegyzetfüzet tartalmaz kibővített szakaszt az intelligens hiperparaméter hangolás, a modell üzembe helyezése és a notebook widgetek számára.
 
 - Saját Jupyter Notebook-kiszolgáló
 
@@ -94,7 +94,7 @@ import shutil
 shutil.copy('chainer_mnist.py', project_folder)
 ```
 
-### <a name="create-an-experiment"></a>Kísérlet létrehozása
+### <a name="create-a-deep-learning-experiment"></a>Mélyreható tanulási kísérlet létrehozása
 
 Hozzon létre egy kísérletet. Ebben a példában hozzon létre egy "chainer-mnist" nevű kísérletet.
 
@@ -209,9 +209,7 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben a Azure Machine Learning Service-ben egy Chainer-modellt oktatott. 
-
-* A modellek üzembe helyezésének megismeréséhez folytassa a [modell üzembe](how-to-deploy-and-where.md) helyezésével kapcsolatos cikket.
+Ebben a cikkben a Azure Machine Learning Service-ben a Chainer használatával egy mélyreható tanulási és neurális hálózatot oktatott és regisztrált. A modellek üzembe helyezésének megismeréséhez folytassa a [modell üzembe](how-to-deploy-and-where.md) helyezésével kapcsolatos cikket.
 
 * [Hiperparaméterek hangolása](how-to-tune-hyperparameters.md)
 

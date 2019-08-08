@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: cc0540f74b755e083855721ad62754c70edb88b6
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1b2e6e0aa74c06afea09a67dbdf65ca47727b72e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728692"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780562"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Biztonságos alkalmazások fejlesztése az Azure-ban
 Ebben a cikkben a Felhőbeli alkalmazások fejlesztésekor megfontolandó biztonsági tevékenységeket és ellenőrzéseket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) megvalósítási és ellenőrzési szakaszaiban megfontolandó biztonsági kérdések és fogalmak. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások fejlesztéséhez használhat.
@@ -44,7 +44,7 @@ Az Azure Marketplace olyan [fejlesztői eszközöket](https://azuremarketplace.m
 
 ### <a name="validate-and-sanitize-every-input-for-your-application"></a>Az alkalmazás minden bemenetének ellenőrzése és megtisztítása
 
-Az összes bemenetet nem megbízhatóként kezelheti az alkalmazás a leggyakoribb webalkalmazás-biztonsági rések elleni védelem érdekében. A nem megbízható adathalmazok az injekciós támadásoknak megfelelő járművek. Az alkalmazás bemenete magában foglalja az URL-cím paramétereit, a felhasználótól származó adatokat, az adatbázisból vagy egy API-ból származó adatokat, valamint minden olyan adatot, amelyet a felhasználó potenciálisan kezelhet. Az alkalmazásnak [ellenőriznie kell,](https://www.owasp.org/index.php/OWASP_Proactive_Controls_2016#4:_Validate_All_Inputs) hogy az adatkezelési és szemantikai szempontból érvényesek-e, mielőtt az alkalmazás bármilyen módon használja az adatforrásokat (beleértve a felhasználó számára történő megjelenítést is).
+Az összes bemenetet nem megbízhatóként kezelheti az alkalmazás a leggyakoribb webalkalmazás-biztonsági rések elleni védelem érdekében. A nem megbízható adathalmazok az injekciós támadásoknak megfelelő járművek. Az alkalmazás bemenete magában foglalja az URL-cím paramétereit, a felhasználótól származó adatokat, az adatbázisból vagy egy API-ból származó adatokat, valamint minden olyan adatot, amelyet a felhasználó potenciálisan kezelhet. Az alkalmazásnak [](https://www.owasp.org/index.php/OWASP_Proactive_Controls_2016#4:_Validate_All_Inputs) ellenőriznie kell, hogy az adatkezelési és szemantikai szempontból érvényesek-e, mielőtt az alkalmazás bármilyen módon használja az adatforrásokat (beleértve a felhasználó számára történő megjelenítést is).
 
 Az adatfolyam elején ellenőrizze, hogy csak a megfelelően formázott adatok jelennek-e meg a munkafolyamatban. Nem kívánja, hogy a helytelenül formázott adatmegőrzést végezze az adatbázisban, vagy hibásan aktiválja az alsóbb rétegbeli összetevőket.
 
@@ -97,11 +97,11 @@ Ha az alkalmazásnak automatikusan kell létrehoznia a jelszavakat, ügyeljen ar
 
 ### <a name="validate-file-uploads"></a>Fájlfeltöltés ellenőrzése
 
-Ha az [alkalmazás lehetővé teszi](https://www.owasp.org/index.php/Unrestricted_File_Upload)a fájlfeltöltés használatát, vegye figyelembe a kockázatos tevékenységhez szükséges óvintézkedéseket. A sok támadás első lépéseként egy rosszindulatú kód beszerzése egy támadás alatt álló rendszerbe. A fájlfeltöltés használatával a támadó elvégezheti ezt. A OWASP olyan megoldásokat kínál a fájlok érvényesítéséhez, amelyek biztosítják, hogy a feltöltött fájl biztonságos legyen.
+Ha az alkalmazás lehetővé [](https://www.owasp.org/index.php/Unrestricted_File_Upload)teszi a fájlfeltöltés használatát, vegye figyelembe a kockázatos tevékenységhez szükséges óvintézkedéseket. A sok támadás első lépéseként egy rosszindulatú kód beszerzése egy támadás alatt álló rendszerbe. A fájlfeltöltés használatával a támadó elvégezheti ezt. A OWASP olyan megoldásokat kínál a fájlok érvényesítéséhez, amelyek biztosítják, hogy a feltöltött fájl biztonságos legyen.
 
-A kártevők elleni védelem segítségével azonosíthatja és eltávolíthatja a vírusokat, kémprogramokat és egyéb kártevő szoftvereket. Telepítheti a [Microsoft antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) -t vagy egy Microsoft-partner Endpoint Protection-megoldását ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)és [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)).
+A kártevők elleni védelem segítségével azonosíthatja és eltávolíthatja a vírusokat, kémprogramokat és egyéb kártevő szoftvereket. Telepítheti a [Microsoft antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) -t vagy egy Microsoft-partner Endpoint Protection-megoldását ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)és [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)).
 
-A [Microsoft antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) olyan funkciókat tartalmaz, mint a valós idejű védelem, az ütemezett vizsgálat, a kártevők szervizelése, az aláírások frissítése, a motor frissítései, a minták jelentéskészítés és a kizárási események gyűjteménye. Az üzembe helyezéshez és a beépített észlelésekhez (riasztások és incidensek) egyszerűen integrálható a Microsoft antimalware és a partneri megoldások [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) használatával.
+A [Microsoft antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) olyan funkciókat tartalmaz, mint a valós idejű védelem, az ütemezett vizsgálat, a kártevők szervizelése, az aláírások frissítése, a motor frissítései, a minták jelentéskészítés és a kizárási események gyűjteménye. Az üzembe helyezéshez és a beépített észlelésekhez (riasztások és incidensek) egyszerűen integrálható a Microsoft antimalware és a partneri megoldások [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) használatával.
 
 ### <a name="dont-cache-sensitive-content"></a>Ne gyorsítótárazza a bizalmas tartalmat
 
@@ -128,7 +128,7 @@ A dinamikus Application Security Testing (Zsuzsanna) egy olyan folyamat, amely a
 
 A Zsuzsanna eltér a statikus alkalmazások biztonsági tesztelésének (17:00). A 17:00-eszközök elemzik a forráskódot vagy a kód lefordított verzióit, ha a kód nem fut a biztonsági hibák megállapítása érdekében.
 
-Zsuzsanna hajthat végre, lehetőleg egy biztonsági szakember (a penetrációs [teszter](https://docs.microsoft.com/azure/security/azure-security-pen-testing) vagy a sebezhetőségi felmérés) segítségével. Ha egy biztonsági szakember nem érhető el, a Zsuzsanna saját kezűleg is elvégezheti egy webproxy-olvasóval és néhány betanítással. A Zsuzsanna-szkennert korán csatlakoztatva biztosíthatja, hogy ne vezessen be nyilvánvaló biztonsági problémákat a kódban. A webalkalmazási sebezhetőségi képolvasók listáját a [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) webhelyén tekintheti meg.
+Zsuzsanna hajthat végre, lehetőleg egy biztonsági szakember (a penetrációs [teszter](https://docs.microsoft.com/azure/security/fundamentals/pen-testing) vagy a sebezhetőségi felmérés) segítségével. Ha egy biztonsági szakember nem érhető el, a Zsuzsanna saját kezűleg is elvégezheti egy webproxy-olvasóval és néhány betanítással. A Zsuzsanna-szkennert korán csatlakoztatva biztosíthatja, hogy ne vezessen be nyilvánvaló biztonsági problémákat a kódban. A webalkalmazási sebezhetőségi képolvasók listáját a [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) webhelyén tekintheti meg.
 
 ### <a name="perform-fuzz-testing"></a>A fuzz-tesztelés végrehajtása
 
@@ -140,11 +140,11 @@ A [biztonsági kockázatok észlelése](https://docs.microsoft.com/security-risk
 
 A támadási felületet a kód befejezése után felülvizsgálva segít meggyőződni arról, hogy az alkalmazás vagy a rendszer bármilyen tervezési vagy megvalósítási változását mérlegelték. Ezzel biztosítható, hogy a módosítások eredményeképpen létrehozott új támadási vektorok, beleértve a veszélyforrásokat, felülvizsgálva és enyhítve legyenek.
 
-A támadási felületről az alkalmazás vizsgálatával készíthet képet. A Microsoft a támadási felület elemző eszközét is felhasználja [.](https://www.microsoft.com/download/details.aspx?id=24487) Számos kereskedelmi dinamikus tesztelési és sebezhetőségi vizsgálati eszköz vagy szolgáltatás közül választhat, például a [OWASP Zed Attack proxy Project](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), a [Arachni](http://arachni-scanner.com/), a [Skipfish](https://code.google.com/p/skipfish/)és a [w3af](http://w3af.sourceforge.net/). Ezek a vizsgálati eszközök bemutatják az alkalmazást, és leképezik az alkalmazás azon részeit, amelyek elérhetők a weben keresztül. Az Azure Marketplace-en is kereshet hasonló [fejlesztői eszközöket](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
+A támadási felületről az alkalmazás vizsgálatával készíthet képet. A Microsoft a támadási felület elemző eszközét is felhasználja. [](https://www.microsoft.com/download/details.aspx?id=24487) Számos kereskedelmi dinamikus tesztelési és sebezhetőségi vizsgálati eszköz vagy szolgáltatás közül választhat, például a [OWASP Zed Attack proxy Project](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), a [Arachni](http://arachni-scanner.com/), a [Skipfish](https://code.google.com/p/skipfish/)és a [w3af](http://w3af.sourceforge.net/). Ezek a vizsgálati eszközök bemutatják az alkalmazást, és leképezik az alkalmazás azon részeit, amelyek elérhetők a weben keresztül. Az Azure Marketplace-en is kereshet hasonló [fejlesztői eszközöket](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
 
 ### <a name="perform-security-penetration-testing"></a>Biztonsági behatolási teszt végrehajtása
 
-Győződjön meg arról, hogy az alkalmazás biztonságban van, mivel minden más funkciót tesztel. Az előkészítési és a üzembe helyezési folyamat standard részét a [behatolási teszt](https://docs.microsoft.com/azure/security/azure-security-pen-testing) végzi. Rendszeres biztonsági tesztek és sebezhetőségi vizsgálat ütemezett végrehajtása a telepített alkalmazásokon, valamint a nyitott portok, végpontok és támadások figyelése.
+Győződjön meg arról, hogy az alkalmazás biztonságban van, mivel minden más funkciót tesztel. Az előkészítési és a üzembe helyezési folyamat standard részét a [behatolási teszt](https://docs.microsoft.com/azure/security/fundamentals/pen-testing) végzi. Rendszeres biztonsági tesztek és sebezhetőségi vizsgálat ütemezett végrehajtása a telepített alkalmazásokon, valamint a nyitott portok, végpontok és támadások figyelése.
 
 ### <a name="run-security-verification-tests"></a>Biztonsági ellenőrzési tesztek futtatása
 

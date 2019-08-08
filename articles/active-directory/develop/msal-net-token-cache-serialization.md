@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14c7495653f369d7a51cab6fedb136268b7b3378
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: caea0b7e64c7079156480aef0f65279989285ff3
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277933"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834985"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Jogkivonat-gyorsítótár szerializálása a MSAL.NET-ben
 A [jogkivonat](msal-acquire-cache-tokens.md)beszerzése után a Microsoft Authentication Library (MSAL) gyorsítótárazza azt.  Az alkalmazás kódjának meg kell próbálnia kapni a tokent a gyorsítótárból, mielőtt másik módszerrel beszerezze a jogkivonatot.  Ez a cikk a jogkivonat-gyorsítótár alapértelmezett és egyéni szerializálását ismerteti a MSAL.NET-ben.
@@ -282,7 +282,7 @@ Példák a Web Apps és a webes API-k jogkivonat-gyorsítótárának használat�
 ## <a name="next-steps"></a>További lépések
 A következő minták a jogkivonat-gyorsítótár szerializálását szemléltetik.
 
-| Sample | Platform | Leírás|
+| Minta | Platform | Leírás|
 | ------ | -------- | ----------- |
 |[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Asztali (WPF) | A Microsoft Graph API-t hívó Windowsos asztali .NET (WPF) alkalmazás. ![Topológia](media/msal-net-token-cache-serialization/topology.png)|
 |[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Asztal (konzol) | A Visual Studio-megoldások készlete az Azure AD v 1.0-alkalmazások (ADAL.NET használatával) Azure AD v 2.0-alkalmazásokba való áttelepítését mutatja be (MSAL.NET használatával), különösen a [jogkivonat-gyorsítótár](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md) áttelepítését.|

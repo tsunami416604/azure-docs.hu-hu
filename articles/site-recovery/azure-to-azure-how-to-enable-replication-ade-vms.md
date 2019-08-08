@@ -8,19 +8,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 25f8c19ad1c574f6a3d84d50d911b4da6b52cfc3
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
-ms.translationtype: MT
+ms.openlocfilehash: 5e5ae11a00b2a3656deceeeaf928536238a325fc
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516506"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840634"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption-kompatibilis virtuális gépek replikálása egy másik Azure-régióba
 
 Ez a cikk azt ismerteti, hogyan replikálhat Azure Disk Encryption-kompatibilis virtuális gépeket egyik Azure-régióból a másikba.
 
 >[!NOTE]
->Azure Site Recovery jelenleg csak olyan Azure-beli virtuális gépeket támogat, amelyek Windows operációs rendszert futtatnak, és amelyek [Azure Active Directory (Azure ad) titkosításra vannak engedélyezve](https://aka.ms/ade-aad-app).
+>Azure Site Recovery jelenleg csak a Windows operációs rendszert futtató Azure-beli virtuális gépeket támogatja.
 
 ## <a id="required-user-permissions"></a>Szükséges felhasználói engedélyek
 Site Recovery megköveteli a felhasználónak, hogy rendelkezzen a kulcstartó létrehozásához szükséges engedélyekkel, és a forrástartomány kulcstartóból másolja a kulcsokat a cél régió kulcstartóba.

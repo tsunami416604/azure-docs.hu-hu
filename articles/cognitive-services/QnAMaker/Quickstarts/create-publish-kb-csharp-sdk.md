@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 07/10/2019
+ms.date: 08/06/2019
 ms.author: diberry
-ms.openlocfilehash: af3de85cb2d32b4828a4641318f66f91c9254e24
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 686bdf834efd637db49a7b51dc2bf7effa1eb4cb
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563018"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839970"
 ---
 # <a name="quickstart-qna-maker-client-library-for-net"></a>Gyors útmutató: A .NET-hez készült ügyféloldali kódtár QnA Maker
 
@@ -26,6 +26,7 @@ A .NET-hez készült QnA Maker ügyféloldali kódtára a következőre használ
 * Tudásbázis létrehozása 
 * Tudásbázis kezelése
 * Tudásbázis közzététele
+* Válasz létrehozása a Tudásbázisból
 
 [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet) | A dokumentációs[könyvtár forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [-csomagjához (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/)  |  [ C# tartozó minták](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp)
 
@@ -68,7 +69,6 @@ Build succeeded.
 ...
 ```
 
-
 ### <a name="install-the-sdk"></a>Az SDK telepítése
 
 Az alkalmazás könyvtárában telepítse az QnA Maker .NET-hez készült ügyféloldali kódtárat a következő paranccsal:
@@ -84,7 +84,7 @@ Ha a Visual Studio IDE-t használja, az ügyféloldali kódtár letölthető NuG
 
 A QnA Maker ügyfél egy [QnAMakerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-dotnet) objektum, amely az Azure-ban a Microsoft. Rest. ServiceClientCredentials használatával hitelesíti a kulcsot.
 
-Az ügyfél létrehozása után [használja a](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient.knowledgebase?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_QnAMakerClient_Knowledgebase) tudásbázist a Tudásbázis létrehozásához, kezeléséhez és közzétételéhez. 
+Az ügyfél létrehozása után használja a tudásbázist [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient.knowledgebase?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_QnAMakerClient_Knowledgebase) a Tudásbázis létrehozásához, kezeléséhez és közzétételéhez. 
 
 A tudásbázist egy JSON-objektum küldésével kezelheti. Az azonnali műveletekhez a metódus általában egy JSON-objektumot ad vissza, amely az állapotot jelzi. A hosszú ideig futó műveletek esetében a válasz a művelet azonosítója. Hívja meg az [ügyfelet. Operations. GetDetailsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.operationsextensions.getdetailsasync?view=azure-dotnet) metódus a műveleti azonosítóval a [kérelem állapotának](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.operationstatetype?view=azure-dotnet)meghatározásához. 
 
@@ -99,6 +99,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket az
 * [Tudásbázis közzététele](#publish-a-knowledge-base)
 * [Tudásbázis törlése](#delete-a-knowledge-base)
 * [Művelet állapotának beolvasása](#get-status-of-an-operation)
+* [Válasz létrehozása a Tudásbázisból](#generate-an-answer-from-the-knowledge-base)
 
 ## <a name="add-the-dependencies"></a>Függőségek hozzáadása
 
@@ -106,7 +107,7 @@ A projekt könyvtárában nyissa meg a **program.cs** fájlt az előnyben része
 
 [!code-csharp[Using statements](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=Dependencies)]
 
-## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
+## <a name="authenticate-the-client-for-authoring-the-knowledge-base"></a>Az ügyfél hitelesítése a Tudásbázis létrehozásához
 
 A **Main** metódusban hozzon létre egy változót az erőforrás Azure-kulcsához egy nevű `QNAMAKER_SUBSCRIPTION_KEY`környezeti változóból. Ha az alkalmazás elindítása után hozta létre a környezeti változót, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusok később lesznek létrehozva.
 
@@ -115,6 +116,14 @@ Ezután hozzon létre egy [ApiKeyServiceClientCredentials](https://docs.microsof
 Ha a kulcs nem a `westus` régióban található, mint a mintakód, módosítsa a **végpont** változó helyét. Ez a hely a Azure Portal QnA Maker erőforrásának **Áttekintés** lapján található.
 
 [!code-csharp[Authorization to resource key](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=Authorization)]
+
+## <a name="authenticate-the-runtime-for-generating-an-answer"></a>A futtatókörnyezet hitelesítése a válasz létrehozásához
+
+A **Main** metódusban hozzon létre egy változót az erőforrás Azure- `QNAMAKER_ENDPOINT_HOSTNAME` `QNAMAKER_ENDPOINT_KEY`kulcsához egy nevű környezeti változóból. A Tudásbázis közzétételekor a rendszer ezeket az értékeket adja vissza. A közzététel után ezeket a beállításokat a QnA Maker portál **Beállítások** lapján tekintheti meg. 
+
+Hozzon létre egy [QnAMakerRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerruntimeclient?view=azure-dotnet) , amely lekérdezi a tudásbázist az aktív tanulásból kapott válasz vagy képzés létrehozásához.
+
+[!code-csharp[Authenticate the runtime](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=EndpointKey)]
 
 ## <a name="create-a-knowledge-base"></a>Tudásbázis létrehozása
 
@@ -148,6 +157,13 @@ Tegye közzé a tudásbázist a [PublishAsync](https://docs.microsoft.com/dotnet
 
 [!code-csharp[Publish a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=PublishKB&highlight=2)]
 
+## <a name="generate-an-answer-from-the-knowledge-base"></a>Válasz létrehozása a Tudásbázisból
+
+Egy közzétett Tudásbázis válaszának létrehozása a [RuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient.knowledgebase?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_QnAMakerClient_Knowledgebase)használatával. [GenerateAnswerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtimeextensions.generateanswerasync?view=azure-dotnet) metódus. Ez a metódus elfogadja a Tudásbázis AZONOSÍTÓját és a [QueryDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.querydto?view=azure-dotnet). Hozzáférés a QueryDTO további tulajdonságaihoz, például a [legfelső](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.querydto.top?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_Models_QueryDTO_Top) és [kontextushoz](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.querydto.context?view=azure-dotnet) a csevegési robotban való használatra. 
+
+[!code-csharp[Generate an answer from a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=GenerateAnswer&highlight=2)]
+
+
 ## <a name="delete-a-knowledge-base"></a>Tudásbázis törlése
 
 Törölje a tudásbázist a [DeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.deleteasync?view=azure-dotnet) metódussal a TUDÁSBÁZIS-azonosító paraméterének használatával. 
@@ -169,6 +185,8 @@ Futtassa az alkalmazást a DotNet `run` paranccsal az alkalmazás könyvtáráb�
 ```dotnet
 dotnet run
 ```
+
+[Ennek](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.css) a rövid útmutatónak a forráskódja elérhető a QnA Maker C# Samples GitHub-tárházban.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

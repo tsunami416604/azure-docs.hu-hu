@@ -13,16 +13,16 @@ ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 148324f293c36b88657f50a7405d85210b62dcc4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 091fb7cb9e74166b1e01c00834c2346dd2f0fd8b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321240"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835540"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: Az SAML-jogkivonatban kiadott szerepkör-jogcím konfigurálása nagyvállalati alkalmazásokhoz
 
@@ -134,7 +134,7 @@ Ha az alkalmazás egy SAML-válaszban egyéni szerepköröket vár, ezt a funkci
       ```
 
       > [!Note]
-      > A javítási művelet msiam_access után csak új szerepköröket adhat hozzá. Emellett a szervezet igényeinek megfelelő számú szerepkört is hozzáadhat. Az Azure AD ezeket a szerepköröket az SAML-válaszban szereplő jogcím értékként fogja elküldeni. Az új szerepkörök AZONOSÍTÓjának GUID-értékeinek létrehozásához használja a következőhöz hasonló [webes](https://www.guidgenerator.com/) eszközöket:
+      > A javítási művelet msiam_access után csak új szerepköröket adhat hozzá. Emellett a szervezet igényeinek megfelelő számú szerepkört is hozzáadhat. Az Azure AD ezeket a szerepköröket az SAML-válaszban szereplő jogcím értékként fogja elküldeni. Az új szerepkörök AZONOSÍTÓjának GUID-értékeinek létrehozásához használja a következőhöz hasonló [](https://www.guidgenerator.com/) webes eszközöket:
 
     i. Lépjen vissza a Graph Explorerben, és változtassa meg a **Get** to **patch**metódust. Az előző példában látható módon frissítse a **appRoles** tulajdonságot úgy, hogy az egyszerű szolgáltatásnév objektummal rendelkezzen a kívánt szerepkörökkel. Válassza a **lekérdezés futtatása** lehetőséget a javítási művelet végrehajtásához. A sikeres üzenet megerősíti a szerepkör létrehozását.
 

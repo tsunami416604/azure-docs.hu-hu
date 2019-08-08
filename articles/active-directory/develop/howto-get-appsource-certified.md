@@ -1,6 +1,6 @@
 ---
-title: AppSource minősítés az Azure Active Directory beszerzése |} A Microsoft Docs
-description: Részletes információk az alkalmazás AppSource certified for Azure Active Directoryban.
+title: A Azure Active Directory minősítésű AppSource beszerzése | Microsoft Docs
+description: Az alkalmazás AppSource minősítése Azure Active Directory számára.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -10,7 +10,7 @@ ms.assetid: 21206407-49f8-4c0b-84d1-c25e17cd4183
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/21/2018
@@ -18,111 +18,111 @@ ms.author: ryanwi
 ms.reviewer: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc42ab8a8cfb0d182c69bd0940e23cffdb2be0af
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 034c02c89c6e720311b3dc36428035e8cbdd2b3b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807233"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835214"
 ---
-# <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>AppSource Certified beszerzése az Azure Active Directory
+# <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>A Azure Active Directory minősítésének beszerzése a AppSource
 
-[A Microsoft AppSource](https://appsource.microsoft.com/) egy cél az üzleti felhasználók felderítése, próbálja meg és kezelése – üzleti SaaS-alkalmazások (önálló SaaS és bővítményt az meglévő Microsoft SaaS-termékek).
+[Microsoft AppSource](https://appsource.microsoft.com/) az üzleti felhasználók számára az üzletági SaaS-alkalmazások (önálló SaaS és a meglévő Microsoft SaaS-termékekhez való bővítmény) felderítésére, kipróbálására és kezelésére szolgáló cél.
 
-Az alkalmazás egyszeri bejelentkezés a munkahelyi fiókok bármely vállalat vagy szervezet, amely rendelkezik az Azure Active Directory (Azure AD) egy különálló SaaS-alkalmazás az appsource-on listázásához, el kell fogadnia. A bejelentkezési folyamatot kell használnia a [OpenID Connect](v1-protocols-openid-connect-code.md) vagy [OAuth 2.0](v1-protocols-oauth-code.md) protokollokat. SAML-integráció nem fogadja az AppSource-tanúsítvány.
+Ha önálló SaaS-alkalmazást szeretne listázni a AppSource-on, az alkalmazásnak el kell fogadnia az egyszeri bejelentkezést a munkahelyi fiókokból bármely olyan vállalattól vagy szervezettől, amely Azure Active Directory (Azure AD). A bejelentkezési folyamatnak az [OpenID Connect](v1-protocols-openid-connect-code.md) vagy a [OAuth 2,0](v1-protocols-oauth-code.md) protokollt kell használnia. Az SAML-integráció nem fogadható el a AppSource-hitelesítéshez.
 
-## <a name="guides-and-code-samples"></a>Útmutatók és Kódminták
+## <a name="guides-and-code-samples"></a>Útmutatók és mintakód-minták
 
-Ha azt szeretné, hogyan integrálható az alkalmazás az Azure AD szolgáltatással Open ID connect, hajtsa végre az útmutatókat, és Kódminták a a [Azure Active Directory fejlesztői útmutatója](v1-overview.md#get-started "Ismerkedés az Azure AD-hez a fejlesztők").
+Ha szeretné megtudni, hogyan integrálhatja alkalmazását az Azure AD-vel az Open ID-vel való kapcsolat használatával, kövesse az útmutatókat és a kód mintáit a [Azure Active Directory fejlesztői útmutatójában], és ismerkedjen meg a(v1-overview.md#get-started "fejlesztők számára készült Azure ad-val").
 
 ## <a name="multi-tenant-applications"></a>Több-bérlős alkalmazások
 
-A *több-bérlős alkalmazás* olyan alkalmazás, amely elfogadja a felhasználók bármely vállalat vagy szervezet, amely rendelkezik az Azure AD anélkül, hogy egy külön példányt, konfigurációs vagy telepítési történő bejelentkezések. Appsource-ban azt javasolja, hogy az alkalmazások valósítható meg több-bérlős engedélyezéséhez a *egyetlen kattintással* ingyenes kipróbálására nyújt lehetőséget.
+A *több-bérlős alkalmazások* olyan alkalmazások, amelyek bármely olyan cég vagy szervezet felhasználóitól fogadnak bejelentkezést, amely külön példány, konfiguráció vagy központi telepítés nélkül rendelkezik az Azure ad-vel. A AppSource javasolja, hogy az alkalmazások több-bérlőt alkalmazzanak az ingyenes próbaidőszakos felhasználói élmény érdekében.
 
-Ahhoz, hogy az alkalmazás több-bérlős, kövesse az alábbi lépéseket:
-1. Állítsa be `Multi-Tenanted` tulajdonságot `Yes` a az alkalmazás regisztrációs információit a [az Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Alapértelmezés szerint az Azure Portalon létrehozott alkalmazásokat alkalmazásbeállításait  *[egybérlős](#single-tenant-applications)* .
-1. Kérelmek küldése a kód frissítése a `common` végpont. Ehhez a végponthoz való frissítése `https://login.microsoftonline.com/{yourtenant}` való `https://login.microsoftonline.com/common*`.
-1. Egyes platformokon, például az ASP .NET is frissíteni szeretné a kód több kiállítók fogadására.
+Az alkalmazáson belüli több-bérlő engedélyezéséhez kövesse az alábbi lépéseket:
+1. Állítsa `Multi-Tenanted` be a `Yes` tulajdonságot az alkalmazás regisztrációjának adataira a [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Alapértelmezés szerint a Azure Portalban létrehozott alkalmazások egybérlős konfigurációként vannak konfigurálva. *[](#single-tenant-applications)*
+1. Frissítse a kódot a kérelmeknek a `common` végpontba való küldéséhez. Ehhez frissítse a végpontot `https://login.microsoftonline.com/{yourtenant}` `https://login.microsoftonline.com/common*`a verzióról a verzióra.
+1. Egyes platformok, például az ASP .NET esetében frissíteni kell a kódot, hogy több kiállító is el legyen fogadva.
 
-Több-bérlős kapcsolatos további információkért lásd: [Azure Active Directory (Azure AD) felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával hogyan](howto-convert-app-to-be-multi-tenant.md).
+A több-bérlős alkalmazással kapcsolatos további információkért lásd: [Hogyan lehet bejelentkezni bármelyik Azure Active Directory (Azure ad) felhasználót a több-bérlős alkalmazás mintájának használatával](howto-convert-app-to-be-multi-tenant.md).
 
 ### <a name="single-tenant-applications"></a>Egybérlős alkalmazások
 
-A *egybérlős alkalmazás* olyan alkalmazás, amely csak a meghatározott Azure-felhasználók történő bejelentkezések fogad AD-példányt. Külső felhasználókat (beleértve a személyes, munkahelyi vagy iskolai fiókok más szervezetek) egy egybérlős alkalmazást minden felhasználó, hogy az alkalmazás regisztrálva van az Azure AD-példányt, amely a Vendég fiók hozzáadása után bejelentkezhet. 
+Az *egybérlős alkalmazások* olyan alkalmazások, amelyek csak egy meghatározott Azure ad-példány felhasználóitól fogadnak bejelentkezéseket. A külső felhasználók (beleértve a más szervezetektől származó munkahelyi vagy iskolai fiókokat, vagy a személyes fiókok) bejelentkezhetnek egy egybérlős alkalmazásba az egyes felhasználók vendég fiókként való hozzáadása után az Azure AD-példányhoz, amelyet az alkalmazás regisztrál. 
 
-Az Azure AD-keresztül, a vendég felhasználók is hozzáadhat a [Azure AD B2B együttműködés](../b2b/what-is-b2b.md) és ehhez [programozott módon](../../active-directory-b2c/code-samples.md). B2B használata esetén a felhasználók egy önkiszolgáló portált, jelentkezzen be a meghívót nem igénylő hozhat létre. További információ: [önkiszolgáló portál az Azure AD B2B együttműködés előfizetési](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal).
+A felhasználókat az Azure ad [B2B](../b2b/what-is-b2b.md) -együttműködésen keresztül is hozzáadhatja vendég fiókként az Azure ad-hez, és ezt [programozott](../../active-directory-b2c/code-samples.md)módon is elvégezheti. A B2B használatakor a felhasználók létrehozhatnak olyan önkiszolgáló portált, amelyhez nem szükséges meghívót bejelentkezni. További információ: önkiszolgáló [portál az Azure ad B2B Collaboration-regisztrációhoz](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal).
 
-Egybérlős alkalmazások engedélyezheti a *kapcsolatfelvételi* tapasztal, de az egyetlen kattintással/ingyenes próbaverziója által AppSource javasolt engedélyezni szeretné, ha több bérlős üzemmód engedélyezése az alkalmazás helyett.
+Az egybérlős alkalmazások lehetővé teszik a kapcsolatfelvételt, de ha engedélyezni szeretné a AppSource által javasolt egyszeres vagy ingyenes próbaverziót, engedélyezze a többszörös kihelyezés használatát az alkalmazásban.
 
-## <a name="appsource-trial-experiences"></a>Próbaverziós élményt appsource-ban
+## <a name="appsource-trial-experiences"></a>AppSource próbaverziók
 
-### <a name="free-trial-customer-led-trial-experience"></a>Ingyenes próbaverzió (ügyfél által vezetett kipróbálására nyújt lehetőséget)
+### <a name="free-trial-customer-led-trial-experience"></a>Ingyenes próbaverzió (ügyfél által vezetett próbaverzió)
 
-Az ügyfél által irányított próbaverzió, amely az appsource-ban javasol, mert az egy kattintással az alkalmazáshoz való hozzáférést biztosít a számítógép jelenik meg. Az alábbi példa bemutatja, hogy ez a tapasztalat néz ki:
+Az ügyfél által vezetett próbaverzió az a tapasztalat, amellyel a AppSource azt javasolja, hogy egyetlen kattintással hozzáférhessen az alkalmazáshoz. Az alábbi példa bemutatja, hogyan néz ki ez a felület:
 
 <table >
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt-text="Shows Free trial for customer-led trial experience"/><ul><li>Felhasználói megkeresi az alkalmazást az AppSource webhelyen</li><li>"Ingyenes" lehetőség kiválasztása</li></ul></td>
-    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" alt-text="Shows how user is redirected to a URL in your web site"/><ul><li>Appsource-ban átirányítja a felhasználót, hogy a webhely URL-címet</li><li>A webhely elindul a <i>single-sign-on</i> folyamatát automatikusan (betöltés)</li></ul></td>
-    <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%" alt-text="Shows the Microsoft sign-in page"/><ul><li>A Microsoft bejelentkezési oldala a rendszer átirányítja a felhasználót</li><li>A felhasználó megadja hitelesítő adatait, jelentkezzen be</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt-text="Shows Free trial for customer-led trial experience"/><ul><li>A felhasználó megkeresi az alkalmazást a AppSource webhelyen</li><li>Az "ingyenes próbaverzió" lehetőség kiválasztása</li></ul></td>
+    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" alt-text="Shows how user is redirected to a URL in your web site"/><ul><li>A AppSource átirányítja a felhasználót a webhelyén lévő URL-címre</li><li>A webhely automatikusan elindítja az <i>egyszeri bejelentkezés</i> folyamatát (az oldal betöltésekor)</li></ul></td>
+    <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%" alt-text="Shows the Microsoft sign-in page"/><ul><li>A rendszer átirányítja a felhasználót a Microsoft bejelentkezési oldalára</li><li>A felhasználó hitelesítő adatokat biztosít a bejelentkezéshez</li></ul></td>
 </tr>
 <tr>
-    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png" width="85%" alt-text="Example: Consent page for an application"/><ul><li>Felhasználó beleegyezésével az alkalmazáshoz</li></ul></td>
-    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>Jelentkezzen be befejeződött, és vissza a webhelyet a rendszer átirányítja a felhasználót</li><li>Felhasználó elindítja az ingyenes próbaverzióra</li></ul></td>
+    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png" width="85%" alt-text="Example: Consent page for an application"/><ul><li>A felhasználó beleegyezik az alkalmazásba</li></ul></td>
+    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>A bejelentkezés befejeződik, és a rendszer visszairányítja a felhasználót a webhelyre</li><li>A felhasználó elindítja az ingyenes próbaverziót</li></ul></td>
     <td></td>
 </tr>
 </table>
 
-### <a name="contact-me-partner-led-trial-experience"></a>Megkeresést kérek (partner által irányított kipróbálására nyújt lehetőséget)
+### <a name="contact-me-partner-led-trial-experience"></a>Kapcsolatfelvétel (partner által vezetett próbaverziós felület)
 
-A partner kipróbálására nyújt lehetőséget is használhatja, amikor egy manuális vagy hosszú távú műveletet kell rendelkezni kell a felhasználó és vállalat – például az alkalmazás üzembe helyezése a virtuális gépek, az adatbázis-példány vagy a műveletek, amelyek befejezéséhez sok időt vesz igénybe. Ebben az esetben után a felhasználó által a **próbaverzió kérése** gombra, és alapján tölti ki egy űrlapot, AppSource küld Önnek a felhasználó kapcsolattartási adatait. Ha megkapta ezt az információt, ezután kiépítése a környezet és az utasítások küldése a felhasználónak az próbaverziója elérésével:<br/><br/>
+A partneri próbaidőszakot akkor használhatja, ha egy manuális vagy hosszú távú műveletnek a felhasználó/vállalat kiépítéséhez kell történnie – például az alkalmazásnak olyan virtuális gépeket, adatbázis-példányokat vagy műveleteket kell kiépítenie, amelyek végrehajtása sok időt is igénybe vehet. Ebben az esetben, miután a felhasználó kiválasztja a **kérelem próbaverziója** gombot, és kitölti az űrlapot, a AppSource elküldi a felhasználó kapcsolattartási adatait. Amikor megkapja ezeket az információkat, kiépítheti a környezetet, és elküldheti az utasításokat a felhasználónak a próbaverziós felület elérésének módjával kapcsolatban:<br/><br/>
 
 <table valign="top">
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt-text="Shows Contact me for partner-led trial experience"/><ul><li>Felhasználó az alkalmazás az AppSource webhelyen talál.</li><li>"Me Contact" lehetőség kiválasztása</li></ul></td>
-    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%" alt-text="Shows an example form with contact info"/><ul><li>Kitölt egy űrlapot, a kapcsolattartási adatok</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt-text="Shows Contact me for partner-led trial experience"/><ul><li>A felhasználó megkeresi az alkalmazást a AppSource webhelyen</li><li>A kapcsolatfelvételi lehetőség kiválasztása</li></ul></td>
+    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%" alt-text="Shows an example form with contact info"/><ul><li>Űrlap kitöltése kapcsolattartási adatokkal</li></ul></td>
      <td valign="top" width="33%">3.<br/><br/>
         <table bgcolor="#f7f7f7">
         <tr>
             <td><img src="media/active-directory-devhowto-appsource-certified/UserContact.png" width="55%" alt-text="Shows placeholder for user information"/></td>
-            <td>Felhasználói adatok kap</td>
+            <td>Felhasználói adatokat kap</td>
         </tr>
         <tr>
             <td><img src="media/active-directory-devhowto-appsource-certified/SetupEnv.png" width="55%" alt-text="Shows placeholder for setup environment info"/></td>
-            <td>Környezet beállítása</td>
+            <td>Telepítési környezet</td>
         </tr>
         <tr>
             <td><img src="media/active-directory-devhowto-appsource-certified/ContactCustomer.png" width="55%" alt-text="Shows placeholder for trial info"/></td>
-            <td>Ügyfél felhasználói próbaverziós információval</td>
+            <td>Forduljon a felhasználóhoz a próbaverziós adatokkal</td>
         </tr>
         </table><br/><br/>
-        <ul><li>Felhasználó információkat és a telepítő próbaverziós példányt kap</li><li>Küldünk, érhetik el az alkalmazást a felhasználó számára, hogy a hivatkozás</li></ul>
+        <ul><li>A felhasználó információi és beállítási próbaverziós példánya jelenik meg</li><li>Elküldi a hiperhivatkozást, hogy hozzáférjen az alkalmazáshoz a felhasználóhoz</li></ul>
     </td>
 </tr>
 <tr>
-    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step3.png" width="85%" alt-text="Shows the application sign-in screen"/><ul><li>Felhasználó hozzáfér az alkalmazáshoz, és a single-sign-on befejezéséhez</li></ul></td>
-    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step4.png" width="85%" alt-text="Shows an example consent page for an application"/><ul><li>Felhasználó beleegyezésével az alkalmazáshoz</li></ul></td>
-    <td valign="top" width="33%">6.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>Jelentkezzen be befejeződött, és vissza a webhelyet a rendszer átirányítja a felhasználót</li><li>Felhasználó elindítja az ingyenes próbaverzióra</li></ul></td>
+    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step3.png" width="85%" alt-text="Shows the application sign-in screen"/><ul><li>A felhasználó hozzáfér az alkalmazáshoz, és elvégzi az egyszeri bejelentkezés folyamatát.</li></ul></td>
+    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step4.png" width="85%" alt-text="Shows an example consent page for an application"/><ul><li>A felhasználó beleegyezik az alkalmazásba</li></ul></td>
+    <td valign="top" width="33%">6.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>A bejelentkezés befejeződik, és a rendszer visszairányítja a felhasználót a webhelyre</li><li>A felhasználó elindítja az ingyenes próbaverziót</li></ul></td>
    
 </tr>
 </table>
 
 ### <a name="more-information"></a>További információ
 
-Az appsource-ban próbaverziója kapcsolatos további információkért lásd: [ebben a videóban](https://aka.ms/trialexperienceforwebapps). 
+A AppSource-próbaverzióval kapcsolatos további információkért tekintse meg [ezt a videót](https://aka.ms/trialexperienceforwebapps). 
 
 ## <a name="next-steps"></a>További lépések
 
-- Az alkalmazásokat, amelyek támogatják az Azure AD bejelentkezési további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
-- Az SaaS-alkalmazását az appsource-ban való információkért látogasson el lásd: [partneradatok appsource-ban](https://appsource.microsoft.com/partners)
+- Az Azure AD-bejelentkezéseket támogató alkalmazások létrehozásával kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-hez](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
+- A SaaS-alkalmazás AppSource való listázásával kapcsolatos információkért lásd: AppSource- [partner adatai](https://appsource.microsoft.com/partners)
 
 ## <a name="get-support"></a>Támogatás kérése
 
-Az Azure AD-integrációhoz használjuk [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) támogatásához a Közösséggel.
+Az Azure AD-integrációhoz a [stack Overflowt](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) használjuk a Közösséggel a támogatás biztosításához.
 
-Először a Stack overflow-ra tesz fel kérdéseket, és keresse meg a meglévő problémák megtekintéséhez, ha valaki kérte a kérdés előtt erősen ajánlott. Győződjön meg arról, hogy a kérdéseit vagy megjegyzéseit címkével ellátott [ `[azure-active-directory]` és `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
+Javasoljuk, hogy először Kérdezzen rá Stack Overflow kérdéseire, és Böngésszen a meglévő problémák között, és ellenőrizze, hogy valaki megkérdezte-e a kérdést. Győződjön meg arról, hogy a kérdései vagy megjegyzései szerepelnek a [ `[azure-active-directory]` és `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource)a címkével.
 
-Használja a következő megjegyzéseket visszajelzést, és segítsen finomíthatja és a tartalom formázása.
+A következő Megjegyzések szakaszban visszajelzéseket adhat meg, és segítheti a tartalom pontosítását és kialakítását.
 
 <!--Reference style links -->
 [AAD-Auth-Scenarios]:authentication-scenarios.md

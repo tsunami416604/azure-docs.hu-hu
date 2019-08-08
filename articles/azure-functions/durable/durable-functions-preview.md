@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7356541ed6288603a66d5caa43138284d8d4d918
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1609931cd5fcab0977ff64f680fbb1f253f3caaf
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320472"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782189"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Durable Functions 2,0 előzetes verzió (Azure Functions)
 
@@ -101,7 +101,7 @@ Az Entity functions olyan műveleteket határoz meg, amelyek olyan kis méretű 
 
 ### <a name="net-programing-models"></a>.NET-programozási modellek
 
-A tartós entitások létrehozásához két választható programozási modell szükséges. A következő kód egy egyszerű, szabványos függvényként ** megvalósított számlálós entitásra mutat példát. Ez a függvény három *műveletet* `add` `reset`határoz meg:, `get`és, amelyek `currentValue`mindegyike egész állapot értékre van kialakítva.
+A tartós entitások létrehozásához két választható programozási modell szükséges. A következő kód egy egyszerű, szabványos függvényként megvalósított számlálós entitásra mutat példát. Ez a függvény három *műveletet* `add` `reset`határoz meg:, `get`és, amelyek `currentValue`mindegyike egész állapot értékre van kialakítva.
 
 ```csharp
 [FunctionName("Counter")]
@@ -149,7 +149,7 @@ public class Counter
 
 Az osztály alapú modell hasonló a [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/)által népszerűsítette programozási modellhez. Ebben a modellben az entitás típusa .NET-osztályként van definiálva. Az osztály minden metódusa egy olyan művelet, amelyet külső ügyfél hívhat meg. A Orleanstól eltérően azonban a .NET-felületek nem kötelezőek. Az előző *számláló* példa nem használ felületet, de más függvények vagy http API-hívások útján is meghívható.
 
-Az ** entitás-példányok egy egyedi azonosítóval, az *entitás azonosítójának*használatával érhetők el. Az entitás-AZONOSÍTÓk egyszerűen olyan karakterláncok, amelyek egyedileg azonosítanak egy entitás-példányt. A következőkből áll:
+Az entitás-példányok egy egyedi azonosítóval, az *entitás azonosítójának*használatával érhetők el. Az entitás-AZONOSÍTÓk egyszerűen olyan karakterláncok, amelyek egyedileg azonosítanak egy entitás-példányt. A következőkből áll:
 
 * Az **entitás neve**: az entitás típusát azonosító név (például "számláló").
 * **Entitás kulcsa**: olyan karakterlánc, amely egyedileg azonosítja az entitást az azonos nevű entitások között (például egy GUID azonosító).
@@ -167,7 +167,7 @@ A tartós entitások kialakítását nagy mértékben befolyásolja a [színész
 
 Van azonban néhány fontos különbség, amelyeket érdemes megjegyezni:
 
-* A tartós entitások ** a késleltetést rangsorolják a *késéshez*képest, ezért nem feltétlenül alkalmazhatók szigorú késési követelményekkel rendelkező alkalmazások esetében.
+* A tartós entitások a késleltetést rangsorolják a *késéshez*képest, ezért nem feltétlenül alkalmazhatók szigorú késési követelményekkel rendelkező alkalmazások esetében.
 * Az entitások között küldött üzenetek megbízhatóan és sorrendben lesznek kézbesítve.
 * A tartós entitások tartós előkészítésekkel együtt használhatók, és elosztott zárolásként szolgálnak, amelyek a jelen cikk későbbi részében olvashatók.
 * Az entitásokban a kérelmek és válaszok mintája csak az előkészítésre korlátozódik. Az entitások közötti kommunikációhoz csak egy egyirányú üzenet (más néven "jelzés") engedélyezett, ahogy az eredeti modellben is. Ez a viselkedés megakadályozza az elosztott holtpontokat.
@@ -242,6 +242,16 @@ public static async Task AddValueClient(
 ```
 
 Az előző példában `proxy` a paraméter a dinamikusan generált `ICounter`példánya, amely belsőleg `Add` lefordítja a hívást az `SignalEntityAsync`egyenértékű (nem típusos) hívásra.
+
+A Type paraméter `SignalEntityAsync<T>` a következő korlátozásokkal rendelkezik:
+
+* A Type paraméternek illesztőfelületnek kell lennie.
+* Csak metódusok határozhatók meg az illesztőfelületen. A tulajdonságok nem támogatottak.
+* Minden metódusnak definiálnia kell egy vagy több paramétert.
+* Minden metódusnak a következőt `Task`kell visszaadnia `void`:, vagy `Task<T>` ha `T` egy bizonyos JSON-serializeable típus.
+* Az illesztőfelületet pontosan egy típussal kell megvalósítani a csatoló szerelvényén belül.
+
+A legtöbb esetben a fenti követelményeknek meg nem felelő felületek futtatókörnyezeti kivételt eredményeznek.
 
 > [!NOTE]
 > Fontos megjegyezni, hogy a és `ReadEntityStateAsync` `SignalEntityAsync` a módszer `IDurableOrchestrationClient` a teljesítmény prioritással való rangsorolására szolgál. `ReadEntityStateAsync`egy elavult értéket adhat vissza, és `SignalEntityAsync` visszatérhet a művelet befejeződése előtt.

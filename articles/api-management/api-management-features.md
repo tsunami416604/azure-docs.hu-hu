@@ -1,6 +1,6 @@
 ---
-title: Az Azure API Management csomagjairól szolgáltatásalapú összehasonlítása |} A Microsoft Docs
-description: Ez a cikk összehasonlítja az API Management csomagjairól az eddigieknél szolgáltatások alapján.
+title: Az Azure API Management szintjeinek szolgáltatáson alapuló összehasonlítása | Microsoft Docs
+description: Ez a cikk az általuk kínált funkciók alapján összehasonlítja API Managementi szinteket.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,34 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: apimpm
-ms.openlocfilehash: a57f8e44d19432f82abe4fa5e7bafce900db3394
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c06e297d3d81623b7224082cb66f8faa6879205d
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448016"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774953"
 ---
-# <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Az Azure API Management csomagjairól szolgáltatásalapú összehasonlítása
+# <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Az Azure API Management szintjeinek szolgáltatáson alapuló összehasonlítása
 
-Minden API Management [tarifacsomag](https://aka.ms/apimpricing) kínál különböző funkcióit és egységenként [kapacitás](api-management-capacity.md). Az alábbi táblázat foglalja össze az egyes rétegek a legfontosabb funkcióit. Előfordulhat, hogy egyes funkciók eltérően működik, vagy a csomagtól függően különböző képességekkel rendelkeznek. Ebben az esetben a különbségek hívjuk a dokumentációba leíró egyedi ezeket a funkciókat.
+>[!IMPORTANT]
+> Vegye figyelembe, hogy a fejlesztői réteg nem üzemi célú használati esetekre és értékelésekre szolgál. Nem biztosít SLA-t. 
 
-| Funkció                                                                                      | Használat | Fejlesztői      | Alapszintű          | Standard       | Prémium        |
+Az egyes API Management [díjszabási szintjei](https://aka.ms/apimpricing) különböző szolgáltatásokat és egységnyi kapacitást kínálnak [](api-management-capacity.md). A következő táblázat összefoglalja az egyes szintjein elérhető főbb funkciókat. Egyes funkciók eltérően működhetnek, vagy a szinttől függően különböző képességekkel rendelkezhetnek. Ilyen esetekben a különbségeket az ezeket az egyéni funkciókat ismertető dokumentációs cikkekben nevezzük.
+
+| Funkció                                                                                      | Használat | Fejlesztő      | Alapszintű          | Standard       | Prémium        |
 | -------------------------------------------------------------------------------------------- | ----------------------------- | -------------- | -------------- | -------------- | -------------- |
-| Az Azure AD-integrációs<sup>1</sup>                                                             | Nem                            | Igen            | Nem             | Igen            | Igen            |
+| Azure AD-integráció<sup>1</sup>                                                             | Nem                            | Igen            | Nem             | Igen            | Igen            |
 | Virtual Network (VNet) támogatása                                                               | Nem                            | Igen            | Nem             | Nem             | Igen            |
 | Többrégiós üzembe helyezés                                                                      | Nem                            | Nem             | Nem             | Nem             | Igen            |
 | Több egyéni tartománynév                                                                 | Nem                            | Nem             | Nem             | Nem             | Igen            |
 | Fejlesztői portál<sup>2</sup>                                                                 | Nem                            | Igen            | Igen            | Igen            | Igen            |
 | Beépített gyorsítótár                                                                               | Nem                            | Igen            | Igen            | Igen            | Igen            |
-| Beépített elemzési                                                                           | Nem                            | Igen            | Igen            | Igen            | Igen            |
-| [Az SSL-beállítások](api-management-howto-manage-protocols-ciphers.md)                             | Igen                            | Igen            | Igen            | Igen            | Igen            |
+| Beépített Analitika                                                                           | Nem                            | Igen            | Igen            | Igen            | Igen            |
+| [SSL-beállítások](api-management-howto-manage-protocols-ciphers.md)                             | Igen                            | Igen            | Igen            | Igen            | Igen            |
 | [Külső gyorsítótár](https://aka.ms/apimbyoc)                                                    | Igen                           | Igen            | Igen            | Igen            | Igen            |
 | [Ügyféltanúsítvány-alapú hitelesítés](api-management-howto-mutual-certificates-for-clients.md) | Igen                | Igen            | Igen            | Igen            | Igen            |
 | [Biztonsági mentés és visszaállítás](api-management-howto-disaster-recovery-backup-restore.md)               | Nem                            | Igen            | Igen            | Igen            | Igen            |
-| [Git-felügyeletet](api-management-configuration-repository-git.md)                        | Nem                            | Igen            | Igen            | Igen            | Igen            |
-| Közvetlen felügyelet API                                                                        | Nem                            | Igen            | Igen            | Igen            | Igen            |
-| Az Azure Monitor-naplók és mérőszámok                                                               | Nem                | Igen            | Igen            | Igen            | Igen            |
+| [Felügyelet a git felett](api-management-configuration-repository-git.md)                        | Nem                            | Igen            | Igen            | Igen            | Igen            |
+| Közvetlen felügyeleti API                                                                        | Nem                            | Igen            | Igen            | Igen            | Igen            |
+| Naplók és mérőszámok Azure Monitor                                                               | Nem                | Igen            | Igen            | Igen            | Igen            |
 | Statikus IP-cím                                                               | Nem                | Igen            | Igen            | Igen            | Igen            |
 
-<sup>1</sup> lehetővé teszi az Azure ad-ben használható (és az Azure AD B2C-t) egy identitás-szolgáltatója felhasználó jelentkezzen be a fejlesztői portálon.<br/>
-<sup>2</sup> kapcsolódó funkciókat többek között például felhasználók, csoportok, problémák, alkalmazások és az e-mail-sablonok és értesítések.<br/>
+<sup>1</sup> lehetővé teszi az Azure ad (és Azure ad B2C) identitás-szolgáltatóként való használatát a fejlesztői portálon való felhasználói bejelentkezéshez.<br/>
+<sup>2</sup> beleértve a kapcsolódó funkciókat, például a felhasználókat, a csoportokat, a problémákat, az alkalmazásokat és az e-mail sablonokat és az értesítéseket.<br/>

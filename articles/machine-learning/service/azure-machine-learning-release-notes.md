@@ -10,18 +10,75 @@ ms.author: jmartens
 author: j-martens
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ade107f51fabb133e8e4046bf645f4dff284102b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ec913133ef97a632b12db2859bd4ac32df70a1c5
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565107"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828618"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
 Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](https://aka.ms/aml-sdk) -referenciát tartalmazó oldalt.
 
 Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismert hibák és a lehetséges megoldások megismeréséhez.
+
+## <a name="2019-08-05"></a>2019-08-05
+
+### <a name="azure-machine-learning-sdk-for-python-v1055"></a>Azure Machine Learning SDK a Python v 1.0.55
+
++ **Új funkciók**
+  + A jogkivonat-alapú hitelesítés mostantól támogatott az AK-on üzembe helyezett pontozási végponton kezdeményezett hívásokban. Továbbra is támogatni fogjuk az aktuális kulcs alapú hitelesítést, és a felhasználók egyszerre használhatják ezeket a hitelesítési mechanizmusokat.
+  + Lehetőség a virtuális hálózat (VNet) mögött lévő blob Storage adattárként való regisztrálására.
+  
++ **Hibajavítások és javítások**
+  + **azureml-automl-Core**
+    + Kijavít egy hibát, ahol a CV-felosztások érvényesítési mérete kicsi, és a regressziós és az előrejelzési eredményhez rossz előre jelzett és igaz diagramokat eredményez.
+    + A távoli futtatások előrejelzési feladatainak naplózása továbbfejlesztett, mostantól a felhasználó átfogó hibaüzenetet kap, ha a Futtatás sikertelen volt.
+    + A idősor rögzített hibái, ha az előfeldolgozás jelzője igaz.
+    + Az előrejelzési adatellenőrzéssel kapcsolatos egyes hibaüzenetek további műveleteket végeznek.
+    + Az adatkészletek ledobásával és/vagy lusta betöltésével a AutoML kevesebb memóriát használ, különösen a folyamatok között
+  + **azureml – feltörzs – magyarázat – modell**
+    + A model_task jelző hozzáadása a magyarázatokhoz, amely lehetővé teszi, hogy a felhasználó felülbírálja az alapértelmezett automatikus következtetési logikát a modell típusaként
+    + Widget-változások: A automatikusan települ a következővel: a nbextension telepítése/engedélyezése – támogatás magyarázata csak globális fontosságú (például Permutative) funkciókkal
+    + Irányítópult-változások: Box-mintaterületek és hegedű-diagramok az összefoglalás oldal beeswarm mellett – sokkal gyorsabb a beeswarm-ábrázolás a "Top-k" csúszka módosítása – hasznos üzenet, amely leírja, hogy a Top-k hogyan számítja ki a diagramokat – hasznos testreszabható üzenetek a diagramok helyett, ha nincs megadva információ
+  + **azureml-core**
+    + A Model. package () metódussal olyan Docker-lemezképeket és Dockerfiles hozhat létre, amelyek a modelleket és a függőségeiket beágyazzák.
+    + Frissített helyi webszolgáltatások a környezeti objektumokat tartalmazó InferenceConfigs fogadásához.
+    + Fixed Model. Register () érvénytelen modelleket állít elő, ha "." (az aktuális könyvtár esetében) a model_path paraméterként lesz átadva.
+    + Adja hozzá a Run. submit_child, a funkció-tükrözések kísérlet. Submit parancsot, miközben megadja az elküldött gyermek futtatásának szülőjét.
+    + A Model. register konfigurációs beállításainak támogatása a Run. register_model.
+    + JAR-feladatok futtatása meglévő fürtön.
+    + Most már támogatja a instance_pool_id és a cluster_log_dbfs_path paramétereket.
+    + Egy környezeti objektum használatának támogatása a modell webszolgáltatásba történő telepítésekor. A környezeti objektum most már megadható a InferenceConfig objektum részeként.
+    + Új régiókhoz tartozó appinsifht-leképezés hozzáadása – CentralUS-westus-northcentralus
+    + Dokumentáció hozzáadva az összes adattár osztály összes attribútumához.
+    + A blob_cache_timeout paraméter hozzáadva a `Datastore.register_azure_blob_container`következőhöz:.
+    + Save_to_directory és load_from_directory metódusok lettek hozzáadva a azureml. Core. environment. Environmenthoz.
+    + Hozzáadta az "az ml-környezet letöltése" és az "az ml-környezet regisztrálása" parancsokat a CLI-hez.
+    + Hozzáadott környezet. adja hozzá a _private_pip_wheel metódust.
+  + **azureml-explain-model**
+    + Az adatkészlet nyomon követése az adatkészlet szolgáltatás (előzetes verzió) használatával magyarázatokkal bővült.
+    + Csökkent az alapértelmezett köteg mérete, amikor a globális magyarázatot a 10k-ról 100-re.
+    + A model_task jelzőt adtak hozzá a magyarázatokhoz, hogy a felhasználó felülbírálja a modell típusának alapértelmezett automatikus következtetési logikáját.
+  + **azureml-mlflow**
+    + Kijavítva a hiba a mlflow. azureml. build_image helyen, ahol a rendszer figyelmen kívül hagyja a beágyazott könyvtárakat.
+  + **azureml-pipeline-steps**
+    + A JAR-feladatok meglévő Azure Databricks-fürtön való futtatásának lehetősége hozzáadva.
+    + A instance_pool_id és a cluster_log_dbfs_path paraméterek hozzáadása a DatabricksStep lépéshez.
+    + A DatabricksStep lépésben hozzáadta a folyamat paramétereinek támogatását.
+  + **azureml-train-automl**
+    + Hozzáadott docstrings az Ensemble-hez kapcsolódó fájlokhoz.
+    + A dokumentumok frissítése a megfelelő nyelvre `max_cores_per_iteration` és a`max_concurrent_iterations`
+    + A távoli futtatások előrejelzési feladatainak naplózása továbbfejlesztett, mostantól a felhasználó átfogó hibaüzenetet kap, ha a Futtatás sikertelen volt.
+    + A get_data eltávolítva a folyamat automlstep jegyzetfüzetből.
+    + Megkezdődött a adatelőkészítés támogatása a automlstep-ben.
+
+### <a name="azure-machine-learning-data-prep-sdk-v1110"></a>Azure Machine Learning adat-előkészítési SDK v 1.1.10
+
++ **Új funkciók**
+  + Most már kérheti az adott oszlopokra vonatkozó bizonyos ellenőrök (például hisztogram, pontdiagram stb.) futtatását is.
+  + Egy integrálással argumentum hozzáadva `append_columns`a következőhöz:. Ha az értéke igaz, a rendszer a memóriába tölti be az adatmennyiséget, a végrehajtás pedig párhuzamosan fut. Ha a False (hamis), a végrehajtás streaming, de egyszálas lesz.
 
 ## <a name="2019-07-23"></a>2019-07-23
 
@@ -352,7 +409,7 @@ A Azure Portal mostantól a következőket teheti:
 ### <a name="notebook-virtual-machine"></a>Notebook virtuális gép 
 
 A notebookos virtuális gépek biztonságos, nagyvállalati használatra kész üzemeltetési környezetként használhatók Jupyter jegyzetfüzetekhez, ahol gépi tanulási kísérleteket végezhet, webvégpontként telepíthet modelleket, és elvégezheti az Azure Machine Learning SDK által támogatott összes egyéb műveletet a Python használatával. Számos képességet biztosít:
-+ [Gyorsan elindíthat egy előre konfigurált jegyzetfüzet virtuális gépet](quickstart-run-cloud-notebook.md) , amely az Azure Machine learning SDK és a kapcsolódó csomagok legújabb verzióját tartalmazza.
++ [Gyorsan elindíthat egy előre konfigurált jegyzetfüzet virtuális gépet](tutorial-1st-experiment-sdk-setup.md) , amely az Azure Machine learning SDK és a kapcsolódó csomagok legújabb verzióját tartalmazza.
 + A hozzáférést bizonyított technológiák, például HTTPS, Azure Active Directory hitelesítés és engedélyezés biztosítja.
 + A notebookok és kódok megbízható Felhőbeli tárolása a Azure Machine Learning-munkaterület blob Storage-fiókban. A notebook virtuális gépet biztonságosan törölheti a munka elvesztése nélkül.
 + Előtelepített minta-jegyzetfüzetek Azure Machine Learning szolgáltatás funkcióinak megismeréséhez és kipróbálásához.

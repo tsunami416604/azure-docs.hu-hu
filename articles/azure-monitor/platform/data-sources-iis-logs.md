@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 05d9dc8f676589dcb301c19b0a2e80e9fd4c1fa0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: cc0fcbb2005ce2aaa70c9e1d2a9993d341169209
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249738"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814220"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>IIS-naplók összegyűjtése Azure Monitor
 A Internet Information Services (IIS) olyan naplófájlokban tárolja a felhasználói tevékenységeket, amelyeket Azure Monitor tárolhat, és [naplózó adatként](data-platform.md)tárolhatja őket.
@@ -34,7 +34,7 @@ Konfigurálja az IIS-naplókat Azure Monitor a [Speciális beállítások menüb
 
 
 ## <a name="data-collection"></a>Adatgyűjtés
-A Azure Monitor az egyes ügynököktől érkező IIS-naplókat gyűjti össze minden alkalommal, amikor a napló időbélyege megváltozik vagy egy új fájlt hoz létre. A napló 5 percenként olvasható. Az új fájl létrehozásának gyakoriságát az IIS-hely **naplófájl** -átváltási ütemezési beállítása szabályozza, amely alapértelmezés szerint naponta egyszer történik. Ha bármilyen okból kifolyólag az IIS nem frissíti az időbélyeget az átváltási idő előtt, ha a beállítás **óránként**történik, a Azure monitor óránként gyűjti a naplót. Ha a beállítás **naponta**történik, Azure monitor 24 óránként gyűjti a naplót.
+A Azure Monitor az egyes ügynököktől érkező IIS-naplókat gyűjti össze minden alkalommal, amikor megváltozik a napló időbélyege. A napló **5 percenként**olvasható. Ha bármilyen okból kifolyólag az IIS nem frissíti az időbélyeget az új fájl létrehozásakor, a rendszer az új fájl létrehozása után begyűjti a bejegyzéseket. Az új fájl létrehozásának gyakoriságát az IIS-hely **naplófájl** -átváltási ütemezési beállítása szabályozza, amely alapértelmezés szerint naponta egyszer történik. Ha a beállítás **óránként**történik, Azure monitor óránként gyűjti a naplót. Ha a beállítás **naponta**történik, Azure monitor 24 óránként gyűjti a naplót.
 
 
 ## <a name="iis-log-record-properties"></a>IIS-napló rekordjának tulajdonságai

@@ -4,14 +4,14 @@ description: Azure Resource Manager-sablonok használata az SQL (Core) API-hoz v
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4cd66c9da0650c9eb9de5b51ce82b48fe781c6f4
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: b4d121e0628512f7bbd6aedc0a9067b31d46d0ed
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500508"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814973"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB SQL-(Core-) API-erőforrások kezelése Azure Resource Manager-sablonok használatával
 
@@ -23,6 +23,7 @@ Azure Cosmos DB erőforrások létrehozása Azure Resource Manager sablon haszn�
 >
 > - Jelenleg nem telepíthet felhasználói függvényeket (UDF), tárolt eljárásokat és eseményindítókat Resource Manager-sablonok használatával.
 > - Egy Azure Cosmos-fiókhoz nem adhat hozzá és nem távolíthat el helyet, és módosíthatja a többi tulajdonságot. Ezeket külön műveletként kell elvégezni.
+> - A fiók nevének kisbetűnek kell lennie, és < 31 karakterből kell állnia.
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
 

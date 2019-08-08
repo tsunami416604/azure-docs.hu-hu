@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 93c36ccb244931c12d8b038f448fbda4eff77f16
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 287902c149fd3a8732ce9ce95b05b0d9fa36147b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721713"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816602"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -62,7 +62,7 @@ Azure Files több beépített lehetőség áll rendelkezésre az adatbiztonság 
     * Azok az ügyfelek, amelyek nem támogatják az SMB 3,0 titkosítást, titkosítás nélkül kommunikálhatnak az SMB 2,1 vagy az SMB 3,0 használatával. Az SMB-ügyfelek nem jogosultak az adatközpontok közötti kommunikációra SMB 2,1 vagy SMB 3,0 titkosítás nélkül.
     * Az ügyfelek HTTP-vagy HTTPS-kapcsolaton keresztül is kommunikálhatnak a fájlokon keresztül.
 * REST-alapú titkosítás ([Azure Storage Service encryption](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): A Storage Service Encryption (SSE) engedélyezve van az összes Storage-fiókhoz. A REST-adatok titkosítása teljes mértékben felügyelt kulccsal történik. A REST-alapú titkosítás nem növelheti a tárolási költségeket, vagy csökkentheti a teljesítményt. 
-* A titkosított adatforgalom opcionális követelménye: Ha ki van választva, Azure Files elutasítja az adathozzáférést a titkosítatlan csatornákon keresztül. Pontosabban csak HTTPS és SMB 3,0 engedélyezett a titkosítási kapcsolatokkal.
+* A titkosított adatforgalom opcionális követelménye: Ha be van jelölve, Azure Files elutasítja az adathoz való hozzáférést titkosítatlan csatornákon keresztül. Pontosabban csak HTTPS és SMB 3,0 engedélyezett a titkosítási kapcsolatokkal.
 
     > [!Important]  
     > Az adatok biztonságos átvitelének megkövetelése miatt a régebbi SMB-ügyfelek nem tudnak kommunikálni az SMB 3,0-mel, és sikertelen lesz a titkosítás. További információ: [Csatlakoztatás Windows](storage-how-to-use-files-windows.md)rendszeren, [Csatlakoztatás Linux](storage-how-to-use-files-linux.md)rendszeren, és [Csatlakoztatás MacOS rendszeren](storage-how-to-use-files-mac.md).
@@ -136,7 +136,7 @@ Az alábbi táblázat néhány példát mutat be a kiosztott megosztási mérete
 
 #### <a name="bursting"></a>Tele
 
-A prémium fájlmegosztás a IOPS akár három tényezővel is feltörte. A bursás automatizált, és kreditrendszer alapján működik. Az adatbontás a legjobb megoldási szinten működik, és a burst korlát nem garantálható, és a fájlmegosztás a korlátra is *feltört.*
+A prémium fájlmegosztás a IOPS akár három tényezővel is feltörte. A bursás automatizált, és kreditrendszer alapján működik. Az adatbontás a legjobb megoldási szinten működik, és a burst korlát nem garantálható, és a fájlmegosztás a korlátra is feltört.
 
 A kreditek felhalmozódnak egy burst gyűjtőben, amikor a fájlmegosztás forgalma az alapszintű IOPS alatt van. Egy 100 GiB-megosztás például 100 alapterv-IOPS rendelkezik. Ha a megosztás tényleges forgalma 40 IOPS volt egy adott 1 másodperces intervallumhoz, akkor a 60 fel nem használt IOPS jóváírásra kerül egy burst gyűjtőn. Ezeket a krediteket később akkor fogjuk használni, amikor a műveletek túllépik az alapkonfiguráció IOPs.
 
@@ -207,11 +207,12 @@ A standard fájlmegosztás minden régióban 5 TiB-ig elérhető. Bizonyos régi
 
 |Régió |Támogatott redundancia |Meglévő Storage-fiókok támogatása |Portál támogatása *   |
 |-------|---------|---------|---------|
-|Kelet-Ausztrália  |LRS|Nem         |Igen|
-|Közép-Franciaország  |LRS|Nem         |még nem|
-|Délkelet-Ázsia  |LRS, ZRS|Nem         |Csak LRS, ZRS-még nem|
-|Nyugat-Európa     |LRS, ZRS|Nem       |Igen|
-|USA nyugati régiója, 2.       |LRS, ZRS|Nem         |Igen|
+|Kelet-Ausztrália  |LRS     |Nem    |Igen|
+|Közép-Franciaország  |LRS     |Nem    |még nem|
+|Dél-Franciaország    |LRS     |Nem    |még nem|
+|Délkelet-Ázsia  |LRS, ZRS|Nem    |Igen|
+|Nyugat-Európa     |LRS, ZRS|Nem    |Igen|
+|USA nyugati régiója, 2.       |LRS, ZRS|Nem    |Igen|
 
 \* A portál támogatása nélküli régiók esetében továbbra is használhatja a PowerShell vagy az Azure parancssori felület (CLI) használatát 5 TiB-nál nagyobb megosztás létrehozásához. A Altenatively új megosztást hozhat létre a portálon a kvóta meghatározása nélkül. Ezzel létrehoz egy, az 100 TiB alapértelmezett mérettel rendelkező megosztást, amely később frissíthető a PowerShell vagy az Azure CLI használatával.
 
@@ -242,7 +243,7 @@ A regisztráció állapotának ellenőrzéséhez futtassa a következő parancso
 Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
 ```
 
-Az állapot frissítése akár 15 percet is igénybe **vehet.** Miután regisztrálta azállapotát, használhatja a funkciót.
+Az állapot frissítése akár 15 percet is igénybe vehet. Miután regisztrálta azállapotát, használhatja a funkciót.
 
 ### <a name="use-larger-file-shares"></a>Nagyobb fájlmegosztás használata
 
