@@ -1,6 +1,6 @@
 ---
-title: Endpoint protection megoldások felderítés és az egészségügyi értékelése az Azure Security Centerben |} A Microsoft Docs
-description: A végpontvédelmi megoldások hogyan felderítésének és kifogástalan állapotúként azonosított.
+title: Endpoint Protection-megoldások felderítése és állapotának felmérése Azure Security Centerban | Microsoft Docs
+description: Az Endpoint Protection-megoldások felderítése és azonosítása kifogástalanként.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -11,29 +11,29 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/23/2019
+ms.date: 08/08/2019
 ms.author: v-mohabe
-ms.openlocfilehash: b17e5f16b988bfa562b00bc6f5b9dfd34be4ca43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d3fc90a722b9f4043e891a14b542e6b90c94c55
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247964"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881034"
 ---
-# <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint protection-értékelés és javaslatok az Azure Security Centerben
+# <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection-Értékelés és javaslatok a Azure Security Center
 
-Endpoint protection-értékelés és javaslatok az Azure Security Center észleli, és az egészségügyi értékelési keretrendszert biztosít [támogatott](https://docs.microsoft.com/azure/security-center/security-center-os-coverage#supported-platforms-for-windows-computers-and-vms) Végpontvédelmi megoldások verzióit. Ez a témakör ismerteti, hogy a Végpontvédelmi megoldások az Azure Security Center a következő két javaslatok létrehozása.
+Az Endpoint Protection felmérése és ajánlásai a Azure Security Center észlelik és biztosítják az Endpoint Protection-megoldások [támogatott](https://docs.microsoft.com/azure/security-center/security-center-os-coverage#supported-platforms-for-windows-computers-and-vms) verzióinak egészségügyi értékelését. Ez a témakör azokat a forgatókönyveket ismerteti, amelyek az Endpoint Protection-megoldásokra Azure Security Center alapján létrehozzák az alábbi két javaslatot.
 
-* **A virtuális gépekre telepített végpontvédelmi megoldások**
-* **Oldja meg az endpoint protection állapotbeli problémák a gépeken**
+* **Endpoint Protection-megoldások telepítése a virtuális gépre**
+* **Az Endpoint Protection állapotával kapcsolatos problémák megoldása a gépeken**
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* A **"A végpontvédelmi megoldások telepítése a virtuális gép"** javaslat jön létre, amikor [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) futtatások és az eredmény **AMServiceEnabled: FALSE (hamis)**
+* Az **"Endpoint Protection-megoldások telepítése virtuális gépen"** javaslat a [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) futtatásakor jön létre, és **az eredmény AMServiceEnabled: Hamis**
 
-* A **"Az endpoint protection állapotbeli problémák a gépeken megoldása"** javaslat jön létre, amikor [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) futtatások és valamelyike vagy mindegyike a következő történik:
+* A **"végpontok elleni védelem állapotával kapcsolatos problémák megoldása a gépeken"** javaslat a [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) futtatásakor jön létre, és a következők valamelyike történik:
 
-  * A következő tulajdonságok közül legalább a False (hamis):
+  * A következő tulajdonságok közül legalább az egyik hamis:
 
      **AMServiceEnabled**
 
@@ -47,19 +47,19 @@ Endpoint protection-értékelés és javaslatok az Azure Security Center észlel
 
      **OnAccessProtectionEnabled**
 
-  * Ha egyik vagy mindkét a következő tulajdonságok nagyobb vagy egyenlő a 7.
+  * Ha a következő tulajdonságok egyike vagy mindkettő nagyobb vagy egyenlő, mint 7.
 
      **AntispywareSignatureAge**
 
      **AntivirusSignatureAge**
 
-## <a name="microsoft-system-center-endpoint-protection"></a>A Microsoft System Center endpoint protection
+## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
 
-* A **"A végpontvédelmi megoldások telepítése a virtuális gép"** javaslat jön létre importálásakor **SCEPMpModule ("$env: ProgramFiles\Microsoft biztonsági Client\MpProvider\MpProvider.psd1")** és futó **Get-MProtComputerStatus** az eredmények **AMServiceEnabled = false**
+* Az **"Endpoint Protection-megoldások telepítése a virtuális gépen"** javaslat a SCEPMpModule importálásakor **("$env:P rogramfiles\microsoft biztonsági Client\MpProvider\MpProvider.psd1")** és a futtatáskor **jön létre. Get-MProtComputerStatus** eredmények a **AMServiceEnabled = false értékkel**
 
-* A **"Az endpoint protection állapotbeli problémák a gépeken megoldása"** javaslat jön létre, amikor **Get-MprotComputerStatus** futtatások és valamelyike vagy mindegyike a következő történik:
+* A **"végpontok elleni védelem állapotával kapcsolatos problémák megoldása a gépeken"** javaslat a **Get-MprotComputerStatus** futtatásakor jön létre, és a következők valamelyike történik:
 
-    * A következő tulajdonságok közül legalább a False (hamis):
+    * A következő tulajdonságok közül legalább az egyik hamis:
 
        **AMServiceEnabled**
     
@@ -73,7 +73,7 @@ Endpoint protection-értékelés és javaslatok az Azure Security Center észlel
     
        **OnAccessProtectionEnabled**
           
-    * Egyikét vagy mindkettőt a következő aláírást frissítések-e nagyobb vagy egyenlő a 7. 
+    * Ha a következő aláírások egyike vagy mindkét frissítése nagyobb vagy egyenlő, mint 7. 
 
        **AntispywareSignatureAge**
     
@@ -81,69 +81,105 @@ Endpoint protection-értékelés és javaslatok az Azure Security Center észlel
 
 ## <a name="trend-micro"></a>Trend Micro
 
-* A **"A végpontvédelmi megoldások telepítése a virtuális gép"** javaslat generál, ha egy vagy több, a következő ellenőrzések nem teljesülnek:
-    * **HKLM:\SOFTWARE\TrendMicro\Deep biztonsági ügynök** létezik
-    * **HKLM:\SOFTWARE\TrendMicro\Deep biztonsági Agent\InstallationFolder** létezik
-    * A **dsq_query.cmd** fájl megtalálható a telepítési mappa
-    * Futó **dsa_query.cmd** az eredmények **Component.AM.mode: a - Trend Micro Deep Security Agent észlelt**
+* Ha a következő ellenőrzések közül egy vagy több nem teljesül, az **"Endpoint Protection-megoldások telepítése virtuális gépen"** javaslat jön létre:
+    * **HKLM: \ SOFTWARE\TrendMicro\Deep biztonsági ügynök** létezik
+    * **HKLM: \ SOFTWARE\TrendMicro\Deep biztonsági Agent\InstallationFolder** létezik
+    * A **dsq_query. cmd** fájl a telepítési mappában található.
+    * A **dsa_query. cmd** eredményének futtatása az **Component. am. Mode: on-Trend Micro Deep Security Agent észlelve**
 
-## <a name="symantec-endpoint-protection"></a>A Symantec endpoint protection
-A **"A végpontvédelmi megoldások telepítése a virtuális gép"** javaslat akkor jön létre, ha nem teljesülnek az alábbi ellenőrzéseket bármelyikét:
+## <a name="symantec-endpoint-protection"></a>Symantec Endpoint Protection
+Az **"Endpoint Protection-megoldások telepítése a virtuális gépen"** javaslat akkor jön létre, ha a következő ellenőrzések bármelyike nem teljesül:
 
-* **HKLM:\Software\Symantec\Symantec végpont Protection\CurrentVersion\PRODUCTNAME = "A Symantec Endpoint Protection"**
+* **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
 * **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 Vagy
 
-* **HKLM:\Software\Wow6432Node\Symantec\Symantec végpont Protection\CurrentVersion\PRODUCTNAME = "A Symantec Endpoint Protection"**
+* **HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
 * **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-A **"Az endpoint protection állapotbeli problémák a gépeken megoldása"** javaslat akkor jön létre, ha nem teljesülnek az alábbi ellenőrzéseket bármelyikét:  
+**"Az Endpoint Protection állapotával kapcsolatos problémák megoldása a gépeken"** javaslat akkor jön létre, ha a következő ellenőrzések bármelyike nem teljesül:  
 
-* Ellenőrizze a Symantec verzió > = 12:  Beállításjegyzék helye: **HKLM:\Software\Symantec\Symantec végpont Protection\CurrentVersion"-"PRODUCTVERSION"érték**
+* A Symantec > = 12 verziójának megkeresése:  Beállításjegyzék helye: **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion "-value" PRODUCTVERSION "**
 
-* Ellenőrizze a valós idejű védelem állapota: **HKLM:\Software\Wow6432Node\Symantec\Symantec végpont Protection\AV\Storages\Filesystem\RealTimeScan\OnOff == 1**
+* Valós idejű védelem állapotának keresése: **HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff = = 1**
 
-* Ellenőrizze az adatbázis-frissítés állapotát: **HKLM\Software\Symantec\Symantec végpont Protection\CurrentVersion\public-opstate\LatestVirusDefsDate < = 7 nap**
+* Aláírás frissítési állapotának ellenőrzését: **HKLM\Software\Symantec\Symantec-végpont Protection\CurrentVersion\public-opstate\LatestVirusDefsDate < = 7 nap**
 
-* Ellenőrizze a teljes vizsgálat állapota: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime <= 7 days**
+* Teljes vizsgálat állapotának ellenőrzése: **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime < = 7 nap**
 
-* Adatbázis verziója aláírás verziószám elérési út keresése Symantec 12: **Beállításjegyzékbeli elérési út + "CurrentVersion\SharedDefs"-"SRTSP" érték** 
+* Az aláírás verziószámának elérési útja a Symantec 12 aláírási verziójának megkereséséhez: **Beállításjegyzékbeli elérési utak + "CurrentVersion\SharedDefs" – érték "SRTSP"** 
 
-* A Symantec 14 aláírás-verzió elérési útja: **Beállításjegyzékbeli elérési út + "CurrentVersion\SharedDefs\SDSDefs"-"SRTSP" érték**
+* A Symantec 14 aláírási verziójának elérési útja: **Beállításjegyzékbeli elérési utak + "CurrentVersion\SharedDefs\SDSDefs" – érték "SRTSP"**
 
-Beállításjegyzékbeli elérési út:
+Beállításjegyzékbeli elérési utak:
 
-**"HKLM:\Software\Symantec\Symantec Endpoint Protection" + $Path; ** 
- **"HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection" + $Path**
+* **"HKLM: \ Software\Symantec\Symantec Endpoint Protection" + $Path;**
+* **"HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection" + $Path**
 
-## <a name="mcafee-endpoint-protection-for-windows"></a>McAfee endpoint protection Windows
+## <a name="mcafee-endpoint-protection-for-windows"></a>A Windows rendszerhez készült McAfee Endpoint Protection
 
-A **"A végpontvédelmi megoldások telepítése a virtuális gép"** javaslat akkor jön létre, ha az alábbi ellenőrzéseket nem teljesülnek:
+Ha a következő ellenőrzések nem teljesülnek, az **"Endpoint Protection-megoldások telepítése virtuális gépen"** javaslat jön létre:
 
-* **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion** létezik
+* **HKLM: \ SOFTWARE\McAfee\Endpoint\AV\ProductVersion** létezik
 
-* **HKLM:\SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
+* **HKLM: \ SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
 
-A **"Az endpoint protection állapotbeli problémák a gépeken megoldása"** javaslat akkor jön létre, ha az alábbi ellenőrzéseket nem teljesülnek:
+**"Az Endpoint Protection állapotával kapcsolatos problémák megoldása a gépeken"** javaslat akkor jön létre, ha a következő ellenőrzések nem teljesülnek:
 
 * McAfee verziója: **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion >= 10**
 
-* Keresse meg az adatbázis verziója: **HKLM:\Software\McAfee\AVSolution\DS\DS -Value "dwContentMajorVersion"**
+* Aláírás verziójának keresése: **HKLM:\Software\McAfee\AVSolution\DS\DS -Value "dwContentMajorVersion"**
 
-* Keresse meg az aláírás dátuma: **HKLM:\Software\McAfee\AVSolution\DS\DS -Value "szContentCreationDate" >= 7 days**
+* Aláírási dátum keresése: **HKLM: \ Software\McAfee\AVSolution\DS\DS-Value "szContentCreationDate" > = 7 nap**
 
-* Keresse meg a vizsgálati dátuma: **HKLM:\Software\McAfee\Endpoint\AV\ODS-érték "LastFullScanOdsRunTime" > = 7 nap**
+* Vizsgálat dátumának keresése: **HKLM: \ Software\McAfee\Endpoint\AV\ODS-Value "LastFullScanOdsRunTime" > = 7 nap**
+
+## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>A McAfee-végpont biztonsága a Linux-veszélyforrások megelőzésére 
+
+Ha a következő ellenőrzések közül egyet vagy mindkettőt nem teljesíti, a rendszer létrehozza az **Endpoint Protection-megoldások telepítését a virtuális gépen** :  
+
+- A fájl **/opt/ISEC/ENS/threatprevention/bin/isecav** bezárása 
+
+- a **"/opt/ISEC/ENS/threatprevention/bin/isecav--version"** kimenet a következő: **McAfee name = a McAfee Endpoint Security for Linux Threat Prevention és a McAfee verziója > = 10**
+
+Ha a következő ellenőrzések közül egy vagy több nem teljesült, akkor az **Endpoint Protection állapotával kapcsolatos problémák megoldása a gépekre vonatkozó** javaslat.
+
+- **"/opt/ISEC/ENS/threatprevention/bin/isecav--listtask"** – a **gyors vizsgálat, a teljes ellenőrzés** és mindkét vizsgálat eredménye < = 7 nap
+
+- a **"/opt/ISEC/ENS/threatprevention/bin/isecav--listtask"** függvény a **dat és a motor frissítési idejét** , valamint mindkettőt adja vissza < = 7 nap
+
+- **"/opt/ISEC/ENS/threatprevention/bin/isecav--getoasconfig--Summary"** **a hozzáférési vizsgálat** állapotának visszaadása
+
+## <a name="sophos-antivirus-for-linux"></a>A Linux rendszerhez készült Sophos Antivirus 
+
+Ha a következő ellenőrzések közül egyet vagy mindkettőt nem teljesíti, a rendszer létrehozza az **Endpoint Protection-megoldások telepítését a virtuális gépen** :
+
+- A fájl **/opt/Sophos-AV/bin/savdstatus** kilép, vagy megkeresi a **"readlink $ (amely savscan)"** testreszabott helyet
+
+- a **"/opt/Sophos-AV/bin/savdstatus--version"** a Sophos name = **Sophos Anti-Virus és a Sophos > = 9 verzióját** adja vissza.
+
+Ha a következő ellenőrzések közül egy vagy több nem teljesült, akkor az **Endpoint Protection állapotával kapcsolatos problémák megoldása a gépekre vonatkozó** javaslat.
+
+- **"/opt/Sophos-AV/bin/savlog--MaxAge = 7 | GREP-i "ütemezett vizsgálat. a\* (z) "| tail-1" befejeződött**, egy értéket ad vissza.   
+
+- **"/opt/Sophos-AV/bin/savlog--MaxAge = 7 | a GREP "vizsgálat elkészült"** | farok-1 ", egy értéket ad vissza.   
+
+- a **"/opt/Sophos-AV/bin/savdstatus--LastUpdate"** függvény a LastUpdate értéket adja vissza, amelynek < = 7 nap 
+
+- a **"/opt/Sophos-AV/bin/savdstatus-v"** egyenlő **"a hozzáférés-ellenőrzés fut"** értékkel. 
+
+- a **"/opt/Sophos-AV/bin/savconfig Get LiveProtection"** érték engedélyezve  
 
 ## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-A Microsoft Antimalware bővítmény naplók webhelyen érhetők el:  
+A Microsoft antimalware-bővítmény naplói a következő címen érhetők el:  
 **%Systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware(Or PaaSAntimalware)\1.5.5.x(version#)\CommandExecution.log**
 
 ### <a name="support"></a>Támogatás
 
-Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Vagy egy Azure-támogatási esemény fájl is. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Vagy egy Azure-támogatási incidenst is betölthet. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).

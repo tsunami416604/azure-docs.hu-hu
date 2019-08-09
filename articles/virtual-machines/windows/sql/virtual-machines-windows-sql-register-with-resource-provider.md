@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 87db36936ee4aee45b7e8d83e1512d22c2a49eee
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 552caf0f09dcfa291981ef73152cf4febfc4a840
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846140"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882376"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>SQL Server virtuális gép regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
 
@@ -41,9 +41,14 @@ A SQL Server VM erőforrás-szolgáltatóval való regisztrálásához a követk
 - Egy [SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). 
 - Az [Azure CLI](/cli/azure/install-azure-cli) és a [PowerShell](/powershell/azure/new-azureps-module-az). 
 
-## <a name="register-with-the-sql-vm-resource-provider"></a>Regisztrálás az SQL VM erőforrás-szolgáltatóval
-Ha a [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md) már telepítve van a virtuális gépen, akkor az SQL VM erőforrás-szolgáltatóhoz való regisztrálás egyszerűen létrehoz egy Microsoft. SqlVirtualMachine/SqlVirtualMachines típusú metaadat-erőforrást. 
 
+## <a name="register-with-sql-vm-resource-provider"></a>Regisztrálás az SQL VM erőforrás-szolgáltatóval
+Ha a [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md) nincs telepítve a virtuális gépen, akkor az egyszerűsített SQL Management mód megadásával regisztrálhat az SQL VM erőforrás-szolgáltatóval. Az egyszerűsített SQL Management mode-ban az SQL VM erőforrás-szolgáltatója [egyszerűsített módban](virtual-machines-windows-sql-server-agent-extension.md#install-in-lightweight-mode) telepíti az SQL IaaS bővítményt, és ellenőrzi SQL Server példány metaadatait; Ez nem fog újraindulni SQL Server szolgáltatás. Meg kell adnia SQL Server licenc típusát, ha az SQL VM erőforrás-szolgáltatót "TB" vagy "AHUB" néven regisztrálja.
+
+Az SQL VM erőforrás-szolgáltató [egyszerű módban](virtual-machines-windows-sql-server-agent-extension.md#install-in-lightweight-mode) való regisztrálása biztosítja a megfelelőséget, és lehetővé teszi a rugalmas licencelést, valamint a helyi SQL Server kiadási frissítéseket. A feladatátvevő fürtök példányai és a többpéldányos központi telepítések csak kis-és nagyvállalati módban regisztrálhatók az SQL VM erőforrás-szolgáltatóval. A Azure Portal található útmutatást követve [teljes módba](virtual-machines-windows-sql-server-agent-extension.md#install-in-full-mode) frissíthet, és engedélyezheti az átfogó kezelhetőségi funkciót SQL Server újraindítással bármikor. 
+
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 A következő kódrészlettel regisztrálhat az SQL VM erőforrás-szolgáltatóval, ha a SQL Server IaaS bővítmény már telepítve van a virtuális gépen. Meg kell adnia, hogy milyen típusú SQL Server-licencet szeretne regisztrálni az SQL VM erőforrás-szolgáltatónál: vagy utólagos elszámolású (`PAYG`) vagy Azure Hybrid Benefit (`AHUB`). 
 
 Regisztrálja a SQL Server VM a következő PowerShell-kódrészlet használatával:
@@ -52,33 +57,49 @@ Regisztrálja a SQL Server VM a következő PowerShell-kódrészlet használatá
      # Get the existing compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
           
-     # Register with the SQL VM resource provider
-     New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
-        -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
-        -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='AHUB'}  
-  
-  ```
-
-Ha a SQL Server IaaS bővítmény nincs telepítve a virtuális gépen, akkor az egyszerűsített felügyeleti mód megadásával regisztrálhat az SQL VM erőforrás-szolgáltatóra. Könnyűsúlyú felügyeleti módban az SQL VM erőforrás-szolgáltatója automatikusan telepíti a SQL Server IaaS-bővítményt az [egyszerűsített módban](virtual-machines-windows-sql-server-agent-extension.md#install-in-lightweight-mode) , és ellenőrzi SQL Server példány metaadatainak. Ez nem fogja újraindítani a SQL Server szolgáltatást. Meg kell adnia, hogy milyen típusú SQL Server-licencet szeretne regisztrálni az SQL VM erőforrás-szolgáltatónál: vagy utólagos elszámolású (`PAYG`) vagy Azure Hybrid Benefit (`AHUB`). 
-
-A következő PowerShell-kódrészlet használatával regisztrálja az SQL Server VMt az egyszerűsített felügyeleti módban:
-
-  ```powershell-interactive
-     # Get the existing compute VM
-     $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-          
-     # Register the SQL VM with the lightweight SQL IaaS agent
+     # Register SQL VM with 'Lightweight' SQL IaaS agent
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
         -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='AHUB';sqlManagement='LightWeight'}  
   
   ```
 
-Az SQL VM erőforrás-szolgáltató [egyszerű módban](virtual-machines-windows-sql-server-agent-extension.md#install-in-lightweight-mode) való regisztrálása biztosítja a megfelelőséget, és lehetővé teszi a rugalmas licencelést, valamint a helyi SQL Server kiadási frissítéseket. A feladatátvevő fürtök példányai és a több példányra kiterjedő központi telepítések csak könnyű módban regisztrálhatók az SQL VM erőforrás-szolgáltatóban. Bármikor követheti a Azure Portal található utasításokat a [teljes módra](virtual-machines-windows-sql-server-agent-extension.md#install-in-full-mode) való frissítéshez, és egy SQL Server újraindítással rendelkező átfogó kezelhetőségi funkció engedélyezéséhez. 
+# <a name="az-clitabbash"></a>[AZ PARANCSSORI FELÜLET](#tab/bash)
+
+Fizetős kiadásokhoz (Enterprise vagy standard):
+
+  ```azurecli-interactive
+  # Register Enterprise or Standard self-installed VM in Lightweight mode
+
+  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type AHUB 
+
+  ```
+
+Ingyenes kiadásokhoz (fejlesztői, web vagy Express):
+
+  ```azurecli-interactive
+  # Register Developer, Web, or Express self-installed VM in Lightweight mode
+
+  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type PAYG 
+  ```
+---
+
+Ha az SQL IaaS bővítmény már telepítve van a virtuális gépen, akkor az SQL VM erőforrás-szolgáltatóhoz való regisztrálás egyszerűen létrehoz egy Microsoft. SqlVirtualMachine/SqlVirtualMachines típusú metaadat-erőforrást. Az alábbi kódrészlettel regisztrálhat az SQL VM erőforrás-szolgáltatóval, ha az SQL IaaS bővítmény már telepítve van a virtuális gépen. Meg kell adnia SQL Server licenc típusát, ha az SQL VM erőforrás-szolgáltatót "TB" vagy "AHUB" néven regisztrálja.
+
+  ```powershell-interactive
+  # Get the existing  Compute VM
+   $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+        
+   # Register with SQL VM resource provider
+   New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
+      -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
+      -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='AHUB'}
+  ```
+
 
 ## <a name="register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms"></a>Regisztrálja SQL Server 2008 vagy 2008 R2 rendszert Windows Server 2008 rendszerű virtuális gépeken
 
-A Windows Server 2008 rendszerre telepített SQL Server 2008 és 2008 R2 a ([nem ügynök](virtual-machines-windows-sql-server-agent-extension.md)) módban regisztrálható az SQL VM erőforrás-szolgáltatóval. Ez a beállítás biztosítja a megfelelőséget, és lehetővé teszi a SQL Server VM figyelését a Azure Portal korlátozott funkcionalitással.
+A Windows Server 2008 rendszerre telepített SQL Server 2008 és 2008 R2 az SQL VM erőforrás-szolgáltatón keresztül regisztrálható az [ügynök nélküli](virtual-machines-windows-sql-server-agent-extension.md) módban. Ez a beállítás biztosítja a megfelelőséget, és lehetővé teszi a SQL Server VM figyelését a Azure Portal korlátozott funkcionalitással.
 
 Az alábbi táblázat a regisztráció során megadott paraméterek elfogadható értékeit részletezi:
 
@@ -89,8 +110,9 @@ Az alábbi táblázat a regisztráció során megadott paraméterek elfogadható
 | &nbsp;             | &nbsp;                                   |
 
 
-A SQL Server 2008 vagy 2008 R2 példány Windows Server 2008 rendszeren való regisztrálásához használja a következő PowerShell-kódrészletet:  
+Ha regisztrálni szeretné a SQL Server 2008-es vagy 2008 R2-példányt a Windows Server 2008-példányon, használja a következő PowerShell-vagy az CLI-kódrészletet:  
 
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
   ```powershell-interactive
      # Get the existing compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
@@ -100,6 +122,16 @@ A SQL Server 2008 vagy 2008 R2 példány Windows Server 2008 rendszeren való re
       -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='AHUB'; `
        sqlManagement='NoAgent';sqlImageSku='Standard';sqlImageOffer='SQL2008R2-WS2008'}
   ```
+
+# <a name="az-clitabbash"></a>[AZ PARANCSSORI FELÜLET](#tab/bash)
+
+  ```azurecli-interactive
+   az sql vm create -n sqlvm -g myresourcegroup -l eastus |
+   --license-type AHUB --sql-mgmt-type NoAgent 
+   --image-sku Enterprise --image-offer SQL2008-WS2008R2
+ ```
+
+---
 
 ## <a name="verify-registration-status"></a>Regisztrációs állapot ellenőrzése
 A Azure Portal, az Azure CLI vagy a PowerShell használatával ellenőrizheti, hogy a SQL Server VM már regisztrálva van-e az SQL VM erőforrás-szolgáltatóban. 
@@ -111,21 +143,28 @@ A Azure Portal, az Azure CLI vagy a PowerShell használatával ellenőrizheti, h
 1. Válassza ki a SQL Server VM a listából. Ha a SQL Server VM nem szerepel a listán, valószínűleg nincs regisztrálva az SQL VM erőforrás-szolgáltatónál. 
 1. Tekintse meg az **állapot**alatt lévő értéket. Ha az állapot **sikeres**, akkor a SQL Server VM sikeresen regisztrálva lett az SQL VM erőforrás-szolgáltatónál. 
 
-    ![SQL RP-regisztrációval rendelkező állapot ellenőrzése](media/virtual-machines-windows-sql-register-with-rp/verify-registration-status.png)
+![SQL RP-regisztrációval rendelkező állapot ellenőrzése](media/virtual-machines-windows-sql-register-with-rp/verify-registration-status.png)
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="command-line"></a>Parancssor
+
+Ellenőrizze az aktuális SQL Server VM regisztrációs állapotot az az CLI vagy a PowerShell használatával. `ProvisioningState`azt mutatja `Succeeded` , hogy a regisztráció sikeres volt-e. 
+
+# <a name="az-clitabbash"></a>[AZ PARANCSSORI FELÜLET](#tab/bash)
+
 
   ```azurecli-interactive
   az sql vm show -n <vm_name> -g <resource_group>
-  ```
-`ProvisioningState`azt mutatja `Succeeded` , hogy a regisztráció sikeres volt-e. 
+ ```
 
-### <a name="powershell"></a>PowerShell
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
   ```powershell-interactive
-  Get-AzResource -ResourceName <vm_name> -ResourceGroupName <resource_group> -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines
+  Get-AzResource -ResourceName <vm_name> -ResourceGroupName <resource_group> `
+  -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines
   ```
-`ProvisioningState`azt mutatja `Succeeded` , hogy a regisztráció sikeres volt-e.
+
+---
 
 A hiba azt jelzi, hogy a SQL Server VM nincs regisztrálva az erőforrás-szolgáltatónál. 
 
@@ -143,25 +182,33 @@ Ha regisztrálni szeretné a SQL Server VM az SQL VM erőforrás-szolgáltatóva
 
 ![A szolgáltató módosítása](media/virtual-machines-windows-sql-ahb/select-resource-provider-sql.png)
 
-### <a name="azure-cli"></a>Azure CLI
+
+### <a name="command-line"></a>Parancssor
+
+Regisztrálja az SQL-alapú virtuális gép erőforrás-szolgáltatóját az Azure-előfizetéséhez az az CLI vagy a PowerShell használatával. 
+
+# <a name="az-clitabbash"></a>[AZ PARANCSSORI FELÜLET](#tab/bash)
+A következő kódrészlet regisztrálja az SQL VM erőforrás-szolgáltatót az Azure-előfizetésében. 
 
 ```azurecli-interactive
 # Register the new SQL VM resource provider to your subscription 
 az provider register --namespace Microsoft.SqlVirtualMachine 
 ```
 
-### <a name="powershell"></a>PowerShell
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell-interactive
 # Register the new SQL VM resource provider to your subscription
 Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 ```
+---
 
 ## <a name="remarks"></a>Megjegyzések
 
 - Az SQL VM erőforrás-szolgáltató csak a Azure Resource Manager használatával telepített SQL Server virtuális gépeket támogatja. SQL Server a klasszikus modellen keresztül üzembe helyezett virtuális gépek nem támogatottak. 
 - Az SQL VM erőforrás-szolgáltató csak a nyilvános felhőbe telepített SQL Server virtuális gépeket támogatja. A privát vagy kormányzati felhőbe való központi telepítések nem támogatottak. 
  
+
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések 
 
 **Regisztrálhatom a SQL Server VM az Azure Marketplace-en egy SQL Server rendszerképből kiépítve?**
@@ -188,7 +235,7 @@ Az SQL VM erőforrás-szolgáltatóhoz nem szükséges előfeltétel, hogy egysz
 
 Igen, ha nem rendelkezik a virtuális gépre telepített SQL Server IaaS bővítménnyel, akkor az egyszerűsített felügyeleti módban regisztrálhatja az SQL VM erőforrás-szolgáltatót. A könnyű mód esetében az SQL VM erőforrás-szolgáltató egy konzol alkalmazást fogja használni a SQL Server példány verziójának és kiadásának ellenőrzéséhez. 
 
-Miután meggyőződött róla, hogy legalább egy SQL Server példány fut a virtuális gépen, a konzol-alkalmazás le fog állni. Ha az SQL VM erőforrás-szolgáltatót egyszerűsített módban regisztrálja, a rendszer nem indítja újra SQL Server, és nem hoz létre ügynököt a virtuális gépen.
+Az SQL VM erőforrás-szolgáltatóval való regisztráláskor az alapértelmezett SQL-kezelési mód megtelt. Ha az SQL-alapú virtuális gép erőforrás-szolgáltatójának regisztrálásakor nincs beállítva az SQL Management tulajdonság, a mód teljes Kezelhetőségként lesz beállítva. Ha a virtuális gépen telepítve van az SQL IaaS bővítmény, a teljes körű kezelhetőségi módban regisztrálnia kell az SQL VM erőforrás-szolgáltatót.
 
 **Regisztrálja az SQL VM erőforrás-szolgáltatót az ügynök telepítése a virtuális gépre?**
 

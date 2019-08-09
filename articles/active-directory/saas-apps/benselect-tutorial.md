@@ -1,240 +1,173 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező BenSelect |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és BenSelect között.
+title: 'Oktatóanyag: Azure Active Directory integráció a BenSelect-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és BenSelect között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: ffa17478-3ea1-4356-a289-545b5b9a4494
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/23/2017
+ms.topic: tutorial
+ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 699afd4703efc5e8f63bb13fe1dd753a0c72594d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f5ca12f89615cd4b3110b0d67268c048b8e44561
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60282987"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879724"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-benselect"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező BenSelect
+# <a name="tutorial-integrate-benselect-with-azure-active-directory"></a>Oktatóanyag: A BenSelect integrálása Azure Active Directory
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan BenSelect integrálása az Azure Active Directory (Azure AD).
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a BenSelect a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az BenSelect-t az Azure AD-vel, a következőket teheti:
 
-BenSelect integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+* A BenSelect-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a BenSelect az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-- Szabályozhatja, hogy ki férhet hozzá BenSelect Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett BenSelect (egyszeri bejelentkezés) az Azure AD-fiókjukkal
-- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
-
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-BenSelect az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-- Azure AD-előfizetés
-- Egy BenSelect egyszeri bejelentkezés engedélyezve van az előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* BenSelect egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. BenSelect hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-## <a name="adding-benselect-from-the-gallery"></a>BenSelect hozzáadása a katalógusból
-Az Azure AD integrálása a BenSelect konfigurálásához hozzá kell BenSelect a katalógusból a felügyelt SaaS-alkalmazások listájára.
+* A BenSelect támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
 
-**BenSelect hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+## <a name="adding-benselect-from-the-gallery"></a>BenSelect hozzáadása a gyűjteményből
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+A BenSelect Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a BenSelect a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-    ![Active Directory][1]
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **BenSelect** kifejezést a keresőmezőbe.
+1. Válassza ki a **BenSelect** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![Alkalmazások][2]
-    
-1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-    ![Alkalmazások][3]
+Konfigurálja és tesztelje az Azure AD SSO-t a BenSelect a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a BenSelect-ben.
 
-1. A Keresés mezőbe írja be a **BenSelect**.
+Az Azure AD SSO és a BenSelect konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/benselect-tutorial/tutorial_benselect_search.png)
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+2. **[BENSELECT SSO konfigurálása](#configure-benselect-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+5. **[Hozzon létre BenSelect-teszt felhasználót](#create-benselect-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-BenSelect rendelkezik.
+6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-1. Az eredmények panelen válassza ki a **BenSelect**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/benselect-tutorial/tutorial_benselect_addfromgallery.png)
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
-Ebben a szakaszban konfigurálja, és a teszt "Britta Simon." nevű felhasználó BenSelect az Azure AD egyszeri bejelentkezés tesztelése
+1. A [Azure Portal](https://portal.azure.com/) **BenSelect** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó BenSelect mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó BenSelect hivatkozás kapcsolata kell létrehozni.
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-BenSelect, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+1. Az alapszintű **SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-Az Azure AD egyszeri bejelentkezés az BenSelect tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://www.benselect.com/enroll/login.aspx?Path=<tenant name>`
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[BenSelect tesztfelhasználó létrehozása](#creating-a-benselect-test-user)**  – egy megfelelője a Britta Simon BenSelect, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+    > [!NOTE]
+    > Az érték nem valódi. Frissítse az értéket a tényleges válasz URL-címével. Az érték beszerzéséhez forduljon a [BenSelect](mailto:support@selerix.com) ügyfélszolgálati csapatához. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+1. A BenSelect alkalmazás megadott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és BenSelect alkalmazását az egyszeri bejelentkezés konfigurálása.
+    ![image](common/edit-attribute.png)
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés BenSelect, hajtsa végre az alábbi lépéseket:**
+1. A **név azonosító értékének**szerkesztéséhez kattintson a **Szerkesztés** ikonra.
 
-1. Az Azure Portalon az a **BenSelect** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+    ![image](media/benselect-tutorial/mail-prefix1.png)
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+1. A **felhasználói jogcímek kezelése** szakaszban hajtsa végre a következő lépéseket:
 
-1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/benselect-tutorial/tutorial_benselect_samlbase.png)
+    ![image](media/benselect-tutorial/mail-prefix2.png)
 
-1. Az a **BenSelect tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+    a. Válassza a **transzformáció** **forrásként**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/benselect-tutorial/tutorial_benselect_url.png)
+    b. Az **átalakítás** legördülő listában válassza a **ExtractMailPrefix ()** elemet.
 
-    Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.benselect.com/enroll/login.aspx?Path=<tenant name>`
+    c. Az **1. paraméter** legördülő listában válassza a **User. userPrincipalName**elemet.
 
-    > [!NOTE] 
-    > Az érték nem valódi. Ez az érték frissítse a tényleges válasz URL-cím. Kapcsolattartó [BenSelect támogatási csapatának](mailto:support@selerix.com) lekérni ezt az értéket.
- 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Raw)** , és mentse a tanúsítványfájlt, a számítógépen.
+    d. Kattintson a **Save** (Mentés) gombra.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/benselect-tutorial/tutorial_benselect_certificate.png) 
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (RAW)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
-1. BenSelect alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható erre egy példa látható.
+    ![A tanúsítvány letöltési hivatkozás](common/certificateraw.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/benselect-tutorial/tutorial_benselect_06.png)
+1. A **BenSelect beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
-1. Az a **felhasználói attribútumok** szakaszában a **egyszeri bejelentkezési** párbeszédpanel:
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Az a **felhasználóazonosító** legördülő listában válassza **ExtractMailPrefix**.
+### <a name="configure-benselect-sso"></a>BenSelect SSO konfigurálása
 
-    b. Az a **Mail** legördülő listában válassza **user.userprincipalname**.
+Az egyszeri bejelentkezés **BenSelect** -oldalon való konfigurálásához el kell küldenie a letöltött **tanúsítványt (RAW)** és a megfelelő másolt url-címeket a Azure Portal a [BenSelect támogatási csapatának](mailto:support@selerix.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
-1. Kattintson a **mentése** gombra.
+> [!NOTE]
+> Meg kell említenie, hogy az integrációhoz szükség van a SHA256 algoritmusra (az SHA1 nem támogatott) az egyszeri bejelentkezés beállításához a megfelelő kiszolgálón (például app2101 stb.).
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/benselect-tutorial/tutorial_general_400.png)
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-1. Az a **BenSelect konfigurációs** területén kattintson **konfigurálása BenSelect** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/benselect-tutorial/tutorial_benselect_configure.png) 
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
-1. Az egyszeri bejelentkezés konfigurálása **BenSelect** oldalon kell küldenie a letöltött **Certificate(Raw)** és **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím**való [BenSelect támogatási csapatának](mailto:support@selerix.com).
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-   >[!NOTE]
-   >Megemlíteni, hogy ezt az integrációt igényel az SHA256 algoritmust (SHA1 nem támogatott) szeretné az egyszeri bejelentkezés beállítása a megfelelő kiszolgálón például app2101 stb. 
-   
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a BenSelect.
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **BenSelect**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-![Az Azure AD-felhasználó létrehozása][100]
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/benselect-tutorial/create_aaduser_01.png) 
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
-    
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/benselect-tutorial/create_aaduser_02.png) 
+### <a name="create-benselect-test-user"></a>BenSelect-tesztelési felhasználó létrehozása
 
-1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/benselect-tutorial/create_aaduser_03.png) 
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a BenSelect-ben. Együttműködik a [BenSelect támogatási csapatával](mailto:support@selerix.com) , hogy hozzáadja a felhasználókat a BenSelect platformhoz. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/benselect-tutorial/create_aaduser_04.png) 
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
-
-    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
-
-    d. Kattintson a **Create** (Létrehozás) gombra.
- 
-### <a name="creating-a-benselect-test-user"></a>BenSelect tesztfelhasználó létrehozása
-
-Ez a szakasz célja BenSelect Britta Simon nevű felhasználó létrehozásához. Együttműködve [BenSelect támogatási csapatának](mailto:support@selerix.com) a felhasználók hozzáadása a BenSelect fiókban.
-
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
-
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés BenSelect Azure egyszeri bejelentkezés használatára.
-
-![Felhasználó hozzárendelése][200] 
-
-**Britta Simon rendel BenSelect, hajtsa végre az alábbi lépéseket:**
-
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
-
-    ![Felhasználó hozzárendelése][201] 
-
-1. Az alkalmazások listájában jelölje ki a **BenSelect**.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/benselect-tutorial/tutorial_benselect_app.png) 
-
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
-
-    ![Felhasználó hozzárendelése][202] 
-
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![Felhasználó hozzárendelése][203]
-
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
-
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
-
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
-
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés konfigurációja a hozzáférési panelen.
-
-Ha a hozzáférési panelen a BenSelect csempére kattint, meg kell lekérése automatikusan bejelentkezett az BenSelect alkalmazáshoz.
+Ha a hozzáférési panelen a BenSelect csempére kattint, automatikusan be kell jelentkeznie arra a BenSelect, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/benselect-tutorial/tutorial_general_01.png
-[2]: ./media/benselect-tutorial/tutorial_general_02.png
-[3]: ./media/benselect-tutorial/tutorial_general_03.png
-[4]: ./media/benselect-tutorial/tutorial_general_04.png
-
-[100]: ./media/benselect-tutorial/tutorial_general_100.png
-
-[200]: ./media/benselect-tutorial/tutorial_general_200.png
-[201]: ./media/benselect-tutorial/tutorial_general_201.png
-[202]: ./media/benselect-tutorial/tutorial_general_202.png
-[203]: ./media/benselect-tutorial/tutorial_general_203.png
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

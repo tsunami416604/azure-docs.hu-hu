@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 30f25ad9152bc722b54a834ef0ed037ac1666014
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 845ce631209f341612b65b8d6a97e45e6b025a1f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615293"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880668"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>HTTPS bejövő adatkezelő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -189,7 +189,7 @@ helm install azure-samples/aks-helloworld \
 
 Mindkét alkalmazás már fut a Kubernetes-fürtön, azonban egy típusú `ClusterIP`szolgáltatással vannak konfigurálva. Így az alkalmazások nem érhetők el az internetről. A nyilvánosan elérhetővé tételéhez hozzon létre egy Kubernetes-bejövő erőforrást. A bejövő erőforrás konfigurálja azokat a szabályokat, amelyek átirányítják a forgalmat a két alkalmazás egyikére.
 
-A következő példában a címnek `https://demo-aks-ingress.eastus.cloudapp.azure.com/` való adatforgalom a nevű `aks-helloworld`szolgáltatáshoz lesz irányítva. A `https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two` `ingress-demo` rendszer átirányítja a címnek a szolgáltatás felé irányuló forgalmat. Frissítse a *gazdagépeket és a* *gazdagépet* az előző lépésben létrehozott DNS-névre.
+A következő példában a címnek `https://demo-aks-ingress.eastus.cloudapp.azure.com/` való adatforgalom a nevű `aks-helloworld`szolgáltatáshoz lesz irányítva. A `https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two` `ingress-demo` rendszer átirányítja a címnek a szolgáltatás felé irányuló forgalmat. Frissítse a gazdagépeket és a *gazdagépet* az előző lépésben létrehozott DNS-névre.
 
 Hozzon létre egy `hello-world-ingress.yaml` nevű fájlt, és másolja a következő példában YAML.
 
@@ -310,6 +310,7 @@ A teljes minta névtér törléséhez használja a `kubectl delete` parancsot, �
 
 ```console
 kubectl delete namespace ingress-basic
+kubectl delete namespace cert-manager
 ```
 
 Ezután távolítsa el a Helm-tárházat az AK Hello World alkalmazáshoz:

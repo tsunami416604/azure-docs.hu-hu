@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: ebb1723a9a2b2d069a1766d4f78151f2b684c5b9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 797caae3caaca14c10481cb58654c45b4bed55ae
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464666"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884320"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
 
@@ -155,14 +155,14 @@ A megszakítások elkerülése érdekében frissítsen az [az PowerShell Version
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>A HDInsight-fürt szerepkör-hozzárendelésének hozzáadása egy felhasználóhoz
 
-A [közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) vagy tulajdonosi szerepkörrel [](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) rendelkező felhasználók hozzárendelhet a [HDInsight-kezelő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) szerepkört azokhoz a felhasználókhoz, akik számára olvasási/írási hozzáférést szeretne adni a bizalmas HDInsight-fürt konfigurációs értékeihez (például a fürt átjárójának hitelesítő adataihoz). és a Storage-fiók kulcsai).
+A [tulajdonosi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) szerepkörrel rendelkező felhasználók hozzárendelhet a [HDInsight-kezelő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) szerepkört azokhoz a felhasználókhoz, akik számára olvasási/írási hozzáférést szeretne adni a bizalmas HDInsight-fürt konfigurációs értékeihez (például a fürt átjárójának hitelesítő adatait és a Storage-fiók kulcsait).
 
 ### <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
 
 A szerepkör-hozzárendelés hozzáadásának legegyszerűbb módja a parancs használata az `az role assignment create` Azure CLI-ben.
 
 > [!NOTE]
-> Ezt a parancsot a közreműködő vagy tulajdonos szerepkörrel rendelkező felhasználónak kell futtatnia, mivel csak ezek az engedélyek adhatók meg. `--assignee` Annak a felhasználónak az e-mail-címe, akihez a HDInsight-kezelő szerepkört hozzá szeretné rendelni.
+> Ezt a parancsot a tulajdonosi szerepkörrel rendelkező felhasználónak kell futtatnia, mivel csak ezek az engedélyek adhatók meg. A `--assignee` azon felhasználó egyszerű szolgáltatásnév vagy e-mail-címe, akihez a HDInsight-kezelő szerepkört hozzá szeretné rendelni. Ha nem rendelkezik megfelelő engedélyekkel, tekintse meg az alábbi gyakori kérdéseket.
 
 #### <a name="grant-role-at-the-resource-cluster-level"></a>Szerepkör megadása az erőforrás (fürt) szintjén
 
@@ -185,3 +185,23 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
 A Azure Portal segítségével hozzáadhatja a HDInsight-fürt operátori szerepkör-hozzárendelését egy felhasználóhoz. Tekintse meg a dokumentációt, [és kezelje az Azure-erőforrásokhoz való hozzáférést a RBAC és a Azure Portal használatával – szerepkör-hozzárendelés hozzáadása](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment).
+
+## <a name="faq"></a>GYIK
+
+### <a name="why-am-i-seeing-a-403-forbidden-response-after-updating-my-api-requests-andor-tool"></a>Miért jelenik meg a 403 (tiltott) válasz az API-kérelmek és/vagy az eszközök frissítése után?
+
+A fürt konfigurációi mostantól a részletes szerepköralapú hozzáférés-vezérlés mögött vannak `Microsoft.HDInsight/clusters/configurations/*` , és az engedélyek elérését igénylik. Az engedély beszerzéséhez rendelje hozzá a HDInsight-kezelőt, a közreműködőt vagy a tulajdonosi szerepkört a felhasználóhoz vagy az egyszerű szolgáltatáshoz, és próbálja meg elérni a konfigurációkat.
+
+### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>Miért tekintheti meg a "nincs elegendő jogosultság a művelet végrehajtásához" kifejezést, ha az Azure CLI-parancs futtatásával rendeli hozzá a HDInsight-kezelő szerepkört egy másik felhasználóhoz vagy egyszerű szolgáltatáshoz?
+
+A tulajdonosi szerepkörön kívül a parancsot végrehajtó felhasználónak vagy egyszerű szolgáltatásnak megfelelő HRE engedélyekkel kell rendelkeznie a megbízott objektumazonosítók kereséséhez. Ez az üzenet nem megfelelő HRE engedélyeket jelez. Próbálja meg lecserélni `–assignee-object-id` az `-–assignee` argumentumot a (z) értékre, és adja meg a hozzárendelt objektum azonosítóját paraméterként a név helyett (vagy egy felügyelt identitás esetén a résztvevő azonosítóját). További információért tekintse meg az az [role hozzárendelés Create dokumentációjának](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) választható paraméterek szakaszát.
+
+Ha ez továbbra sem működik, forduljon a HRE rendszergazdájához, és szerezze be a megfelelő engedélyeket.
+
+### <a name="what-will-happen-if-i-take-no-action"></a>Mi történik, ha nem végezek műveletet?
+
+A `GET /configurations` `GET /configurations/{configurationName}` és `POST /configurations/gateway` a többé nem ad vissza semmilyen információt, és a hívás többé nem ad vissza bizalmas paramétereket, például a Storage-fiók kulcsát vagy a fürt jelszavát. Ugyanez vonatkozik a megfelelő SDK-módszerekre és a PowerShell-parancsmagokra is.
+
+Ha a fent említett Visual Studio-, VSCode-, IntelliJ-vagy Eclipse-eszközök valamelyikének egy régebbi verzióját használja, a továbbiakban nem fog működni, amíg nem frissíti.
+
+Részletesebb információkért tekintse meg a jelen dokumentum megfelelő szakaszát a forgatókönyvhöz.

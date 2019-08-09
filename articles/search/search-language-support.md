@@ -6,15 +6,14 @@ manager: jlembicz
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 08/08/2019
 ms.author: jlembicz
-ms.custom: seodec2018
-ms.openlocfilehash: 403febfcb54194602051aaebe2952265c0675e9d
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 5383ad44f665ce809772143e23817932c3e2b7e6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854397"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883891"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-search"></a>Index létrehozása több nyelvhez Azure Search
 
@@ -35,7 +34,7 @@ Egy adott mező létrehozásakor nyelvi analizátor van megadva. Az analizátor 
 
 ![Nyelvi elemzők kiosztása a mező meghatározása során](media/search-language-support/select-analyzer.png "Nyelvi elemzők kiosztása a mező meghatározása során")
 
-Alapértelmezés szerint minden kereshető mező a [szabványos Lucene](https://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) -elemzőt használja, amely nyelvtől független. A támogatott elemzők teljes listájának megtekintéséhez lásd: [nyelvi elemzők hozzáadása egy Azure Search indexhez](index-add-language-analyzers.md).
+Alapértelmezés szerint minden kereshető mező a [szabványos Lucene](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) -elemzőt használja, amely nyelvtől független. A támogatott elemzők teljes listájának megtekintéséhez lásd: [nyelvi elemzők hozzáadása egy Azure Search indexhez](index-add-language-analyzers.md).
 
 A portálon az elemzők célja, hogy használhatók legyenek. Ha testreszabásra vagy szűrők és tokenizers egyedi konfigurációra van szüksége, hozzon [létre egy egyéni elemzőt](index-add-custom-analyzers.md) a kódban. A portál nem támogatja az egyéni elemzők kijelölését és konfigurálását.
 

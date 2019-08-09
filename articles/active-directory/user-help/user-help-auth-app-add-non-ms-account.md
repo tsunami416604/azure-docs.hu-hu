@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: effe48c859e711f0efc41c1a4d651e5d15d5ada9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 8d7a039f25339d91d77d5b6924674ea36a16c15b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382611"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880817"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>A nem Microsoft-fiókok hozzáadása
 
@@ -48,7 +48,7 @@ A kétfaktoros ellenőrzés bekapcsolásával adja hozzá Google-fiókját, majd
 
 ### <a name="add-your-google-account-to-the-app"></a>Google-fiók hozzáadása az alkalmazáshoz
 
-1. A számítógép Google lapján lépjen a **másodlagos második lépés beállítása** szakaszra, majd válassza a **beállítás** a hitelesítő alkalmazásból szakaszt  .
+1. A számítógép Google lapján lépjen a **másodlagos második lépés beállítása** szakaszra, majd válassza a **beállítás** a hitelesítő alkalmazásból szakaszt .
 
 2. A **hitelesítő alkalmazás kódjának** beolvasása lapon válassza az **Android** vagy az **iPhone** lehetőséget a telefon típusa alapján, majd kattintson a **tovább**gombra.
 
@@ -142,7 +142,7 @@ Adja hozzá a GitHub-fiókját a kétfaktoros ellenőrzés bekapcsolásával, ma
 
 5. Adja meg a **fiók nevét** (például GitHub), és írja be a **titkos kulcsot** a 4. lépésből, majd válassza a **Befejezés**gombot.
 
-6. A számítógép  kétfaktoros hitelesítő lapján írja be a GitHub-fiókhoz tartozó alkalmazásban megadott hat számjegyű ellenőrző kódot, majd válassza az **Engedélyezés**lehetőséget.
+6. A számítógép kétfaktoros hitelesítő lapján írja be a GitHub-fiókhoz tartozó alkalmazásban megadott hat számjegyű ellenőrző kódot, majd válassza az **Engedélyezés**lehetőséget.
 
     Az alkalmazás **fiókok** lapján megjelenik a fiók neve és egy hat számjegyű ellenőrző kód. A további biztonság érdekében az ellenőrző kód 30 másodpercenként változik, ami megakadályozza, hogy valaki többször is felhasználja a kódot.
 
@@ -168,6 +168,9 @@ A kétfaktoros ellenőrzés bekapcsolásával adja hozzá az Amazon-fiókját, m
     Az oldal úgy változik, hogy megmutassa a QR-kódot. Ne zárjuk be ezt a lapot.
 
 5. Nyissa meg a Microsoft Authenticator alkalmazást, válassza a jobb felső sarokban található **Testreszabás és vezérlés** ikonban a **fiók hozzáadása** lehetőséget, majd válassza az **egyéb fiók (Google, Facebook stb.)** lehetőséget.
+
+    >[!Note]
+    >Ha első alkalommal állítja be a Microsoft Authenticator alkalmazást, megkérdezheti, hogy engedélyezi-e az alkalmazásnak a kamera (iOS) elérését, vagy hogy az alkalmazás képeket készítsen, és videót rögzítsen (Android). Az **Engedélyezés lehetőséget** kell választania, hogy a hitelesítő alkalmazás hozzáférhessen a kamerához, hogy a következő lépésben képet készítsen a QR-kódból. Ha nem engedélyezi a kamerát, akkor továbbra is beállíthatja a hitelesítő alkalmazást, de a kód adatait manuálisan kell hozzáadnia. A kód manuális hozzáadásával kapcsolatos további információkért lásd: [fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md).
 
 6. Az eszköz kamerájának használatával beszkennelheti a QR-kódot a számítógépén a **kódok fogadásának kiválasztása** lapon.
 

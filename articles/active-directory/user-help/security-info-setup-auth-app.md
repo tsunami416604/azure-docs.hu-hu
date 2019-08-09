@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 912bda010ddcf9b02506df14f06fb0650271a53b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 20d5131c773e2a9f7b6830725ccd934786d6dd67
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382982"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880950"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>A biztonsági adatok (előzetes verzió) beállítása a hitelesítő alkalmazás használatára
 
@@ -65,7 +65,10 @@ A szervezet beállításaitól függően előfordulhat, hogy egy hitelesítési 
 
 6. Nyissa meg a Microsoft Authenticator alkalmazást, jelölje be az értesítések engedélyezését (ha a rendszer kéri), válassza a **fiók hozzáadása** lehetőséget a **Testreszabás és vezérlés** ikonban a jobb felső sarokban, majd válassza a **munkahelyi vagy iskolai fiók**lehetőséget.
 
-7. Térjen vissza a **fiók beállítása** lapra, majd válassza a **tovább**lehetőséget.
+    >[!Note]
+    >Ha első alkalommal állítja be a Microsoft Authenticator alkalmazást, megkérdezheti, hogy engedélyezi-e az alkalmazásnak a kamera (iOS) elérését, vagy hogy az alkalmazás képeket készítsen, és videót rögzítsen (Android). Az **Engedélyezés lehetőséget** kell választania, hogy a hitelesítő alkalmazás hozzáférhessen a kamerához, hogy a következő lépésben képet készítsen a QR-kódból. Ha nem engedélyezi a kamerát, akkor továbbra is beállíthatja a hitelesítő alkalmazást, de a kód adatait manuálisan kell hozzáadnia. A kód manuális hozzáadásával kapcsolatos további információkért lásd: [fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md).
+
+7. Térjen vissza a **fiók beállítása** lapra a számítógépen, majd válassza a **tovább**lehetőséget.
 
     Megjelenik a **QR-kód vizsgálata** lap.
 

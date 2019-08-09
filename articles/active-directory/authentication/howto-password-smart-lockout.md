@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd03e2b98b1fd1a2a45b5feecc963bcfc7bfe83c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 489ff1824c4bc45ee7ed31e9c96377975a32baa4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499883"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879238"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Intelligens zárolás Azure Active Directory
 
@@ -31,7 +31,7 @@ Az intelligens zárolási szolgáltatás az utolsó három rossz jelszó-kivonat
 
 A AD FS 2016-es és AF FS 2019-et használó összevont telepítések a [AD FS extranetes zárolás és az extranetes intelligens zárolás](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)használatával is engedélyezhetik a hasonló előnyöket.
 
-Az intelligens zárolás mindig az összes Azure AD-ügyfélre vonatkozik, ezekkel az alapértelmezett beállításokkal a biztonság és a használhatóság megfelelő kombinációját kínálja. Az intelligens zárolási beállítások testre szabása a szervezetre jellemző értékekkel alapszintű Azure AD vagy magasabb szintű licenceket igényel a felhasználók számára.
+Az intelligens zárolás mindig az összes Azure AD-ügyfélre vonatkozik, ezekkel az alapértelmezett beállításokkal a biztonság és a használhatóság megfelelő kombinációját kínálja. Az intelligens zárolási beállítások testre szabása a szervezetre jellemző értékekkel a felhasználóknak fizetett Azure AD-licenceket igényel.
 
 Az intelligens zárolás használata nem garantálja, hogy egy valódi felhasználó soha nem lesz zárolva. Amikor az intelligens zárolás zárol egy felhasználói fiókot, igyekszünk a legjobbat választani, hogy ne zárolja a valódi felhasználót. A zárolási szolgáltatás megkísérli biztosítani, hogy a rossz szereplők ne férhessenek hozzá valódi felhasználói fiókhoz.  
 
@@ -57,18 +57,18 @@ A helyszíni Active Directory fiókzárolási házirend ellenőrzéséhez köves
 1. Nyissa meg a Csoportházirend felügyeleti eszközt.
 2. Szerkessze a szervezet fiókzárolási házirendjét (például az **alapértelmezett tartományi házirendet**) tartalmazó csoportházirendet.
 3. Tallózás a **számítógép-konfigurációs** > **házirendek** > **Windows-beállítások** > **biztonsági beállítások** > **fiók szabályzatok** > fiókzárolási **Házirend**.
-4. Ellenőrizze a  fiókzárolás küszöbértékét, és állítsa alaphelyzetbe a fiókzárolás számlálóját az értékek **után** .
+4. Ellenőrizze a fiókzárolás küszöbértékét, és állítsa alaphelyzetbe a fiókzárolás számlálóját az értékek **után** .
 
 ![A helyszíni Active Directory fiókzárolási házirend módosítása](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>Azure AD intelligens zárolási értékek kezelése
 
-A szervezeti követelmények alapján előfordulhat, hogy az intelligens zárolási értékeket testre kell szabni. Az intelligens zárolási beállítások testre szabása a szervezetre jellemző értékekkel alapszintű Azure AD vagy magasabb szintű licenceket igényel a felhasználók számára.
+A szervezeti követelmények alapján előfordulhat, hogy az intelligens zárolási értékeket testre kell szabni. Az intelligens zárolási beállítások testre szabása a szervezetre jellemző értékekkel a felhasználóknak fizetett Azure AD-licenceket igényel.
 
 A szervezet intelligens zárolási értékeinek vizsgálatához vagy módosításához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és kattintson a **Azure Active Directory**, majd a **hitelesítési módszerek**elemre.
-1. Állítsa be a zárolási küszöbértéket attól függően, hogy az első zárolás előtt hány sikertelen bejelentkezés engedélyezett a fiókon. Az alapértelmezett érték 10.
+1. Állítsa bea zárolási küszöbértéket attól függően, hogy az első zárolás előtt hány sikertelen bejelentkezés engedélyezett a fiókon. Az alapértelmezett érték 10.
 1. Állítsa a **zárolás időtartamát másodpercben**, az egyes zárolások hosszára másodpercben. Az alapértelmezett érték 60 másodperc (egy perc).
 
 > [!NOTE]

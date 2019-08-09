@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ccefec9e548b7981f696712bb4a983f4b577a9b
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 8ece7f93b5397db16e03c1eab1d2dc1e568113d9
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779651"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879264"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Helyszíni Azure AD jelszavas védelem – gyakori kérdések
 
@@ -33,6 +33,8 @@ A jelen témakörben a Microsoft aktuális útmutatója a következő hivatkozá
 **K: Támogatja a helyszíni Azure AD jelszavas védelmet a nem nyilvános felhőkben?**
 
 A helyszíni Azure AD-alapú jelszavas védelem csak a nyilvános felhőben támogatott. Nem jelentettek be dátumot a nem nyilvános Felhőbeli rendelkezésre álláshoz.
+
+Az Azure AD-portál lehetővé teszi, hogy a nem nyilvános felhőkben még a helyi "jelszavas védelem a Windows Server-Active Directory" konfigurációjában is módosítsa a beállításokat. ezeket a módosításokat megőrzi a rendszer, de más esetben soha nem lép érvénybe. A helyszíni proxy ügynökök vagy erdők regisztrálása nem támogatott, ha a rendszer nem nyilvános Felhőbeli hitelesítő adatokat használ, és az ilyen regisztrációs kísérletek mindig sikertelenek lesznek.
 
 **K: Hogyan alkalmazhatom az Azure AD jelszavas védelem előnyeit a helyszíni felhasználók egy részhalmazára?**
 
@@ -64,7 +66,7 @@ Nem támogatott. Az Azure AD jelszavas védelme egy olyan Azure-szolgáltatás, 
 
 **K: Hogyan változtathatom meg a szabályzat tartalmát a Active Directory szinten?**
 
-Nem támogatott. A szabályzat csak az Azure AD felügyeleti portál használatával felügyelhető. Lásd még az előző kérdést is.
+Nem támogatott. A szabályzat csak az Azure AD-portál használatával felügyelhető. Lásd még az előző kérdést is.
 
 **K: Miért szükséges a DFSR a SYSVOL-replikációhoz?**
 
@@ -118,15 +120,15 @@ Nem. Ha egy felhasználó jelszava megváltozik egy adott nem PDC-alapú tartom�
 
 **K: Miért nem működik az egyéni intelligens zárolás, még azután sem, hogy az ügynököket a helyszíni Active Directory környezetbe telepítették?**
 
-Az egyéni intelligens zárolás csak az Azure-ban támogatott. Az Azure felügyeleti portál egyéni intelligens zárolási beállításainak módosításai nincsenek hatással a helyszíni Active Directory környezetre, még a telepített ügynökökkel is.
+Az egyéni intelligens zárolás csak az Azure AD-ben támogatott. Az Azure AD-portál egyéni intelligens zárolási beállításainak módosításai nincsenek hatással a helyszíni Active Directory környezetre, még a telepített ügynökökkel is.
 
 **K: Elérhető az Azure AD jelszavas védelem System Center Operations Manager felügyeleti csomagja?**
 
 Nem.
 
-**K: Az Azure miért is elutasítja a gyenge jelszavakat, bár úgy konfiguráltam, hogy a házirend naplózási módban legyen?**
+**K: Az Azure AD miért is elutasítja a gyenge jelszavakat, bár úgy konfiguráltam, hogy a házirend naplózási módban legyen?**
 
-A naplózási mód csak a helyszíni Active Directory környezetekben támogatott. Az Azure implicit módon mindig "kényszerítve" módban van, amikor kiértékeli a jelszavakat.
+A naplózási mód csak a helyszíni Active Directory környezetekben támogatott. Az Azure AD implicit módon mindig "kényszerítve" módban van, amikor kiértékeli a jelszavakat.
 
 ## <a name="additional-content"></a>További tartalom
 

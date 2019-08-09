@@ -1,98 +1,98 @@
 ---
-title: A Microsoft Azure-ban üzemeltetett virtuális gép konfigurálása az Azure Marketplace-en
-description: Méretezés, frissítése és az Azure-ban üzemeltetett virtuális gép általánosítása a módját ismerteti.
+title: A Microsoft Azure által üzemeltetett virtuális gép konfigurálása az Azure Marketplace-en
+description: Ismerteti, hogyan lehet méretezni, frissíteni és általánosítani az Azure-ban üzemeltetett virtuális gépeket.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 0637491a1d7799bcaef594123aab53f89690c86f
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 1270dff0bcb8de117247a454ab9c144250cfb17c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654033"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880361"
 ---
-# <a name="configure-the-azure-hosted-vm"></a>Az Azure-ban üzemeltetett virtuális gép konfigurálása
+# <a name="configure-the-azure-hosted-vm"></a>Az Azure által üzemeltetett virtuális gép konfigurálása
 
-Ez a cikk a méretezés, frissítése és általánosítani a virtuális gépet (VM) az Azure-ban üzemeltetett ismerteti.  Ezeket a lépéseket az Azure Marketplace-ről üzembe helyezni a virtuális gép előkészítése szükségesek.
+Ez a cikk az Azure-ban üzemeltetett virtuális gépek (VM-EK) méretének, frissítésének és általánosításának módját ismerteti.  Ezek a lépések szükségesek ahhoz, hogy előkészítse a virtuális gépet az Azure piactéren való üzembe helyezéshez.
 
 
-## <a name="sizing-the-vhds"></a>A virtuális merevlemezeket méretezése
+## <a name="sizing-the-vhds"></a>A VHD-k méretezése
 
 <!--TD: Check if the following assertion is true. I didn't understand the original content. -->
-Ha kiválasztotta a virtuális gépek előre konfigurált operációs rendszert (és szükség esetén további szolgáltatások), majd, már kivételezett egy standard Azure Virtuálisgép-méretet leírtak szerint [VM-termékváltozatok lapon](./cpp-skus-tab.md).  Az ajánlott módszer a megoldás kezdve egy előre konfigurált operációs rendszer.  Azonban ha manuálisan telepíti az operációs rendszer, majd kell méretezze az elsődleges virtuális Merevlemezt a VM-lemezképben található:
+Ha kiválasztotta az operációs rendszerhez előre konfigurált virtuális gépek valamelyikét (és opcionálisan további szolgáltatásokat is), akkor a [virtuális gép SKU](./cpp-skus-tab.md)-ban található szabványos Azure-beli virtuálisgép-méretet már leválasztotta.  Az ajánlott módszer a megoldás elindítása előre konfigurált operációs rendszerrel.  Ha azonban manuálisan telepít egy operációs rendszert, akkor az elsődleges virtuális merevlemezt a virtuálisgép-rendszerképbe kell méreteznie:
 
-- A Windows, az operációs rendszer VHD-fájlként kell létrehoznia egy 127 – 128 GB-os rögzített formátumú VHD-t. 
-- Linux rendszeren ez a VHD-fájlként kell létrehoznia egy 30 – 50 GB-os rögzített formátumú VHD-t.
+- Windows esetén az operációs rendszer virtuális merevlemezét 127-128 GB-os rögzített formátumú VHD-ként kell létrehozni. 
+- Linux esetén ezt a virtuális merevlemezt 30-50 GB-os rögzített formátumú VHD-ként kell létrehozni.
 
-Ha a fizikai méret kisebb, mint 127 – 128 GB-os, a virtuális merevlemez ritka fájlnak kell lennie. Biztosított alap Windows- és SQL Server rendszerképek megfelel ezeknek a követelményeknek, ezért ne módosítsa a formátumot vagy beszerzett virtuális merevlemez méretét. 
+Ha a fizikai méret kisebb, mint 127-128 GB, a VHD-nek ritkanak kell lennie. A megadott alapszintű Windows-és SQL Server-lemezképek már megfelelnek ezeknek a követelményeknek, ezért ne módosítsa a virtuális merevlemez formátumát vagy méretét. 
 
-Az adatlemezek mérete akár 1 TB is lehet. Amikor eldönti, azok méretét, ne feledje, hogy ügyfelek nem tudják átméretezni a virtuális merevlemezek lemezképen belüli a telepítéshez. Az adatlemezek virtuális rögzített formátumú vhd-fájlként kell létrehoznia. Akkor is ritka fájlnak kell lennie. Adatlemezek kezdetben lehet üres, vagy adatokat tartalmaznak.
-
-
-## <a name="install-the-most-current-updates"></a>A legújabb frissítéseinek telepítéséhez
-
-Az operációs rendszer virtuális gépek tartalmazzák a legújabb frissítéseket, azok közzétett dátummal záródó részéből. Az operációs rendszer VHD létrehozott közzététele, győződjön meg arról, frissítse az operációs rendszer és az összes telepített szolgáltatásokat az összes a legújabb biztonsági és karbantartási javítások.
-
-A Windows Server 2016-ra, futtassa az alábbi parancsot a **frissítései** parancsot.  Ellenkező esetben a Windows korábbi verziói esetén lásd [frissítés beszerzése a Windows Update](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update).  Windows update automatikusan telepíti a legújabb kritikus fontosságú és fontos biztonsági frissítések.
-
-Linux-disztribúciókra vonatkozó frissítéseket gyakran letölthető és telepíthető egy parancssori eszköz vagy egy grafikus segédprogramot.  Például az Ubuntu Linux nyújt a [apt-get paranccsal](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) parancsot és a [kezelő](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) az operációs rendszer frissítésére szolgáló eszköz.
+Az adatlemezek mérete akár 1 TB is lehet. A méretük meghatározásakor ne feledje, hogy az ügyfelek nem tudják átméretezni a rendszerképeken belüli virtuális merevlemezeket az üzembe helyezés időpontjában. Az adatlemezek virtuális merevlemezeit rögzített formátumú VHD-ként kell létrehozni. Emellett ritka is lehet. Az adatlemezek kezdetben üresek vagy tartalmazhatnak adatfájlokat.
 
 
-## <a name="perform-additional-security-checks"></a>További biztonsági ellenőrzést
+## <a name="install-the-most-current-updates"></a>A legújabb frissítések telepítése
 
-A megoldás rendszerképeket az Azure piactéren, a magas biztonsági szintű fenn kell tartania.  A következő cikkben biztonsági konfigurációk és eljárások segítséget nyújtanak e cél feladatlistát tartalmazza: [Biztonsági javaslatok az Azure Marketplace-rendszerképek](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Ezek a javaslatok némelyike Linux-alapú rendszerképekhez jellemző, de bármely Virtuálisgép-lemezkép legtöbb vonatkoznak. 
+Az operációs rendszer virtuális gépei alapképei a közzétételük napjáig tartalmazzák a legújabb frissítéseket. Mielőtt közzéteszi a létrehozott operációsrendszer-VHD-t, győződjön meg arról, hogy az operációs rendszer és az összes telepített szolgáltatás frissítése megtörtént a legújabb biztonsági és karbantartási javításokkal.
+
+A Windows Server 2016 esetén futtassa a **frissítések keresése** parancsot.  Ellenkező esetben a Windows régebbi verzióiban tekintse [meg a frissítés beszerzése a Windows Update használatával](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update)című témakört.  A Windows Update automatikusan telepíti a legújabb kritikus és fontos biztonsági frissítéseket.
+
+A Linux-disztribúciók esetében a frissítések általában egy parancssori eszközzel vagy egy grafikus segédprogrammal tölthetők le és telepíthetők.  Például Ubuntu Linux biztosítja az [apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) parancsot és az [Update Manager](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) eszközt az operációs rendszer frissítéséhez.
 
 
-## <a name="perform-custom-configuration-and-scheduled-tasks"></a>Egyéni konfigurációs és ütemezett feladatok végrehajtása
+## <a name="perform-additional-security-checks"></a>További biztonsági ellenőrzések végrehajtása
 
-Ha további konfigurációs van szükség, az ajánlott módszer az végső módosításokat a virtuális gép után üzembe helyezéskor elvégzik rendszerindításkor futó ütemezett feladatot használni.  Továbbá vegye figyelembe az alábbi javaslatokat:
-- Ha egyszer futtatott feladat, javasoljuk, hogy a feladat törli magát sikeresen befejeződik.
-- Konfigurációk nem igazolható meghajtóra C, D, mert csak ez a két meghajtó, amely mindig garantáltan létezik. A C meghajtó az operációsrendszer-lemez, és a D meghajtón, az átmeneti helyi lemezt.
+Az Azure Marketplace-en magas szintű biztonságot kell biztosítania a megoldási lemezképek számára.  A következő cikk az ebben a célkitűzésben segítséget nyújtó biztonsági konfigurációkról és eljárásokról tartalmaz feladatlistát: [Biztonsági javaslatok az Azure Marketplace](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images)-lemezképekhez.  A javaslatok némelyike a Linux-alapú rendszerképekre jellemző, de a legtöbb esetben a virtuálisgép-lemezképekre is érvényes. 
 
-Linux-testreszabások kapcsolatos további információkért lásd: [virtuális gépi bővítmények és szolgáltatások Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux).
+
+## <a name="perform-custom-configuration-and-scheduled-tasks"></a>Egyéni konfiguráció és ütemezett feladatok végrehajtása
+
+Ha további konfigurálásra van szükség, az ajánlott módszer egy olyan ütemezett feladat használata, amely indításkor fut, hogy az üzembe helyezést követően végső módosításokat végezzen a virtuális gépen.  Vegye figyelembe az alábbi ajánlásokat is:
+- Ha ez egy egyszeri futtatású feladat, azt javasoljuk, hogy a feladat sikeres befejeződése után törölje magát.
+- A konfigurációk nem hivatkozhatnak a C vagy a D-től eltérő meghajtókra, mert csak ez a két meghajtó létezik, amely mindig garantált. A C meghajtó az operációs rendszer lemeze, a D meghajtó pedig az ideiglenes helyi lemez.
+
+A Linux testreszabásával kapcsolatos további információkért lásd: [virtuálisgép-bővítmények és-szolgáltatások Linux rendszerhez](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux).
 
 
 ## <a name="generalize-the-image"></a>A lemezkép általánossá tétele
 
-Az Azure piactéren elérhető összes rendszerkép újrafelhasználható újrafelhasználhatónak kell lennie. Érhet el az újrahasznosíthatóság, az operációs rendszer VHD-t kell *általánosítva*, egy műveletet, amely az összes példány-specifikus azonosítók és szoftverillesztők távolít el egy virtuális Gépet.
+Az Azure Marketplace-en lévő összes lemezképet általános módon újrafelhasználhatónak kell lennie. Ennek a felhasználhatóságnak az elvégzéséhez általánosítva kelllennie az operációs rendszer virtuális merevlemezének, egy művelettel, amely eltávolítja az összes példány-specifikus azonosítót és a szoftver ILLESZTŐPROGRAMJAIT egy virtuális gépről.
 
 ### <a name="windows"></a>Windows
 
-Windows operációsrendszer-lemezek a általánosítva vannak a [a sysprep eszköz](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview). Ha ezt követően frissítse vagy konfigurálja újra az operációs rendszer, újra futtatnia kell a sysprep. 
+A Windows operációsrendszer-lemezek általánosítva vannak a [Sysprep eszközzel](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview). Ha később frissíti vagy újrakonfigurálja az operációs rendszert, újra kell futtatnia a Sysprep programot. 
 
 > [!WARNING]
->  Mert frissítések automatikusan, előfordulhat, hogy futtatja a sysprep futtatása után, akkor kapcsolja ki a virtuális gép, amíg nem telepítik.  A Leállítás elkerüli a virtuális merevlemez operációs rendszerének példány-specifikus módosítása az ezt követő frissítésekben vagy szolgáltatások telepítése.
+>  Mivel a frissítések automatikusan is futtathatók, a Sysprep futtatása után ki kell kapcsolni a virtuális gépet, amíg üzembe nem helyezi őket.  Ez a Leállítás megakadályozza, hogy a következő frissítések példány-specifikus módosításokat hozzanak a VHD operációs rendszer vagy a telepített szolgáltatások számára.
 
-A sysprep futtatásával kapcsolatos további információkért lásd: [lépéseket általánosítani a virtuális merevlemez](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)
+A Sysprep futtatásával kapcsolatos további információkért lásd: [virtuális merevlemez általánosításának lépései](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)
 
 ### <a name="linux"></a>Linux
 
-A következő két lépésből álló folyamat Linux rendszerű virtuális gép általánosítása és ismételt egy különálló virtuális gép üzembe helyezése.  További információ: [Rendszerkép készítése virtuális gépről vagy virtuális merevlemezről](../../../virtual-machines/linux/capture-image.md). 
+A következő kétlépéses folyamat általánosít egy Linux rendszerű virtuális gépet, és újratelepíti külön virtuális gépre. Ez a két lépés csak a folyamat lényegét képezi. További információ erről a két lépésről, valamint arról, hogy miért kell őket elvégezni. a [virtuális gép vagy VHD rendszerképének létrehozása](../../../virtual-machines/linux/capture-image.md)című témakörben talál további információt. Az Azure Marketplace-ajánlat virtuális merevlemezének létrehozása céljából leállíthatja a virtuális gép létrehozása a rögzített lemezképből című szakaszt.
 
 #### <a name="remove-the-azure-linux-agent"></a>Az Azure Linux-ügynök eltávolítása
-1.  A Linux virtuális gép egy SSH-ügyfél csatlakozhat.
+1.  Csatlakozhat a linuxos virtuális géphez egy SSH-ügyfél használatával.
 2.  Az SSH ablakban írja be a következő parancsot: <br/>
     `sudo waagent -deprovision+user`
-3.  Típus `y` folytatásához. (Is hozzáadhat a `-force` paramétert az előző parancs elkerülése érdekében ebben a lépésben megerősítő.)
-4.  A parancs befejeződése után írja be a `exit` gombra kattintva zárja be az SSH-ügyfél.
+3.  A `y` folytatáshoz írja be a következőt:. (A `-force` paramétert hozzáadhatja az előző parancshoz, így elkerülheti ezt a megerősítő lépést.)
+4.  A parancs befejezése után írja be `exit` a parancsot az SSH-ügyfél bezárásához.
 
 <!-- TD: I need to add meat and/or references to the following steps -->
-#### <a name="capture-the-image"></a>A lemezkép rögzítése
-1.  Nyissa meg az Azure Portalon, válassza ki az erőforráscsoportot (RG), és megszüntetéséhez foglal le a virtuális gép.
-2.  A virtuális merevlemez már általánosítva van, és létrehozhat egy új virtuális Gépet a virtuális merevlemez használatával.
+#### <a name="capture-the-image"></a>A rendszerkép rögzítése
+1.  Nyissa meg a Azure Portalt, válassza ki az erőforráscsoportot (RG) és a virtuális gép lefoglalását.
+2.  A VHD-fájl már általánosítva van, és létrehozhat egy új virtuális gépet a virtuális merevlemez használatával.
 
 
-## <a name="create-one-or-more-copies"></a>Hozzon létre egy vagy több példányban
+## <a name="create-one-or-more-copies"></a>Egy vagy több másolat létrehozása
 
-Másolatokat készít a virtuális gép hasznos gyakran a biztonsági mentés, tesztelés, testre szabott feladatátvétel vagy terheléselosztás, különböző konfigurációjú megoldást kínálnak, és így tovább. A duplikált, és töltse le az elsődleges virtuális Merevlemezt, hogy egy nem felügyelt Klónozás információkért lásd:
+A virtuális gép példányainak létrehozása gyakran hasznos a biztonsági mentés, a tesztelés, a testreszabott feladatátvétel vagy a terheléselosztás számára, hogy különböző konfigurációkat nyújtson a megoldásokhoz, és így tovább. A nem felügyelt klónok megkettőzéséről és letöltéséről további információt a következő témakörben talál:
 
-- Linux rendszerű virtuális Gépen: [Linux rendszerű VHD letöltése az Azure-ból](../../../virtual-machines/linux/download-vhd.md)
-- Windows VM: [Töltse le a virtuális merevlemez Windows Azure-ból](../../../virtual-machines/windows/download-vhd.md)
+- Linuxos virtuális gép: [Linuxos virtuális merevlemez letöltése az Azure-ból](../../../virtual-machines/linux/download-vhd.md)
+- Windows rendszerű virtuális gép: [Windows rendszerű virtuális merevlemez letöltése az Azure-ból](../../../virtual-machines/windows/download-vhd.md)
 
 
 ## <a name="next-steps"></a>További lépések
 
-A virtuális gép konfigurálása után készen áll [virtuális gép üzembe helyezése egy virtuális merevlemezről](./cpp-deploy-vm-vhd.md).
+Miután a virtuális gép általánosítva lett, fel lett távolítva, és létrehozta a virtuális gép lemezképét, készen áll a [virtuális gépek virtuális merevlemezről történő üzembe helyezésére](./cpp-deploy-vm-vhd.md).

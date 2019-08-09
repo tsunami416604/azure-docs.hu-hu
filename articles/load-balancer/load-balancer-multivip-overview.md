@@ -1,7 +1,7 @@
 ---
-title: Az Azure Load Balancer több Előtérrendszer
+title: Több előtér Azure Load Balancer
 titlesuffix: Azure Load Balancer
-description: Több Előtérrendszer az Azure Load Balancer áttekintése
+description: Több előtérbeli felület áttekintése Azure Load Balancer
 services: load-balancer
 documentationcenter: na
 author: chkuhtz
@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2018
+ms.date: 08/07/2019
 ms.author: chkuhtz
-ms.openlocfilehash: b9a140314b8eba6386c37bdbcf2bb3de58589335
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b109e87a8fcbef0bfca356c83716509ebc6cecd4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60594123"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884213"
 ---
-# <a name="multiple-frontends-for-azure-load-balancer"></a>Az Azure Load Balancer több Előtérrendszer
+# <a name="multiple-frontends-for-azure-load-balancer"></a>Több előtér Azure Load Balancer
 
-Az Azure Load Balancer segítségével betöltése kiegyensúlyozottan elosztani a szolgáltatásokat több portra vagy több IP-cím. Használhatja a nyilvános és belső load balancer definíciók virtuális gépek terheléselosztása folyamatok elosztását.
+Azure Load Balancer lehetővé teszi, hogy terheléselosztási szolgáltatásokat több porton, több IP-címen vagy mindkettőn. A nyilvános és a belső terheléselosztó-definíciók használatával terheléselosztási folyamatokat helyezhet át a virtuális gépek egy csoportján belül.
 
-Ez a cikk ismerteti a alapjait mutatja be, ez lehetővé teszi, fontos fogalmakat és korlátozások. Ha csak szeretne egy IP-címet a szolgáltatások, Észreveheti, hogy egyszerűsített utasításokat [nyilvános](load-balancer-get-started-internet-portal.md) vagy [belső](load-balancer-get-started-ilb-arm-portal.md) betölteni a terheléselosztó konfigurációjában. Több előtérrendszer hozzáadása nem növekményes egy egyetlen előtér-konfigurációjához. Ez a cikk az alapfogalmak használ, egy egyszerűsített konfigurációt bármikor bővítheti.
+Ez a cikk ismerteti a képesség alapjait, a fontos fogalmakat és a megkötéseket. Ha csak egyetlen IP-címen kívánja közzétenni a szolgáltatásokat, a [nyilvános](load-balancer-get-started-internet-portal.md) vagy [belső](load-balancer-get-started-ilb-arm-portal.md) terheléselosztó-konfigurációk egyszerűsített utasításait találhatja meg. Több előtér hozzáadása egyetlen előtér-konfigurációhoz. A cikkben szereplő fogalmak használatával bármikor kiterjesztheti az egyszerűsített konfigurációt.
 
-Az Azure Load Balancerhez határozza meg, amikor egy előtér- és a háttérrendszer készletkonfigurációt csatlakoznak a szabályoknak. Az állapotminta-szabály által hivatkozott azt határozza meg, hogy új folyamatok érkeznek a háttérkészlet egyik csomópontja. Az előtér (más néven virtuális IP-CÍMEK) egy 3 rekordos áll (nyilvános vagy belső) IP-cím, egy átviteli protokoll (UDP vagy TCP) és a terheléselosztási szabály a port számát határozza meg. A háttérkészlet virtuális gép IP-konfigurációja (a hálózati erőforrás része) hivatkozik a terheléselosztó háttérkészletének gyűjteménye.
+Azure Load Balancer definiálásakor a rendszer egy előtér-és egy háttér-készlet konfigurációját is csatlakoztatja a szabályokhoz. A szabály által hivatkozott állapot-mintavételi módszer segítségével határozható meg, hogy a rendszer hogyan küldje el az új folyamatokat a háttér-készlet egyik csomópontjára. A frontend (más néven VIP) egy 3 rekordból áll, amely egy IP-cím (nyilvános vagy belső), egy átviteli protokoll (UDP vagy TCP) és egy portszám a terheléselosztási szabályból. A háttér-készlet a virtuális gépek IP-konfigurációinak gyűjteménye (a NIC-erőforrás része), amely a Load Balancer háttér-készletre hivatkozik.
 
-Az alábbi táblázatban néhány példa előtérbeli konfigurációkat tartalmazza:
+A következő táblázat néhány példát tartalmaz a frontend-konfigurációkra:
 
 | Előtér | IP-cím | protocol | port |
 | --- | --- | --- | --- |
@@ -37,105 +37,105 @@ Az alábbi táblázatban néhány példa előtérbeli konfigurációkat tartalma
 | 3 |65.52.0.1 |*UDP* |80 |
 | 4 |*65.52.0.2* |TCP |80 |
 
-A táblázat négy különböző előtérrendszer. Előtérrendszer 1, #2 és a #3 egy egyetlen előtér-több szabály is. Az azonos IP-címet használja, de a port vagy protokoll egyes eltér. Előtérrendszer 1 és a #4 is több előtérrendszer, például ahol a frontend ugyanazt a protokollt és portot újra felhasználhatók több előtérrendszer között.
+A táblázat négy különböző előtérbeli felületet mutat be. A #1, #2 és #3 frontendek egyetlen, több szabállyal rendelkező előtéri felületet is kapnak. Ugyanazt az IP-címet használja a rendszer, de a port vagy protokoll különbözik az egyes előtérben. A #1 és #4 előtérben például több előtér-felület található, ahol ugyanazt a frontend protokollt és portot használja a rendszer több előtér-felületre.
 
-Az Azure Load Balancer a terheléselosztási szabályok rugalmasságot biztosít. Egy szabály deklarálja, hogy hogyan egy címet és az előtérbeli port le van képezve a cél címe és a háttérbeli portot. E szabályok között háttérportokat újra felhasználhatók attól függ, hogy a szabály típusát. Minden szabály rendelkezik konkrét követelmények, amelyek hatással lehetnek a gazdagép konfigurációja és a mintavételi megtervezése. Szabályok két típusa van:
+Azure Load Balancer rugalmasságot biztosít a terheléselosztási szabályok definiálásához. A szabály azt deklarálja, hogy a felület egy címe és portja a háttérbeli célcím és port számára van leképezve. Annak megadása, hogy a háttérbeli portok újra felhasználva vannak-e a szabályok között, a szabály típusától függ. Minden egyes szabályhoz konkrét követelmények vonatkoznak, amelyek befolyásolhatják a gazdagép konfigurációját és a mintavételi terveket. A szabályoknak két típusa van:
 
-1. Nincs háttér port újból az alapértelmezett szabály
-2. A nem fix IP-szabály, ahol háttérportokat újra felhasználhatók
+1. Az alapértelmezett szabály, amely nem rendelkezik háttér-port újrafelhasználásával
+2. Az a lebegő IP-szabály, amelyben a háttérbeli portok újra fel lesznek használva
 
-Az Azure Load Balancer lehetővé teszi az ugyanazon terheléselosztói konfigurációban mindkét szabálytípusokat kombinálhatók. A load balancer használhatja őket egyszerre egy adott virtuális gép, vagy tetszőleges kombinációjának mindaddig, amíg Ön betartja a korlátokat a szabály a. A szabály típusának úgy dönt, az alkalmazás követelményeit és összetettségét, ez a konfiguráció támogató függ. Ki kell értékelni mely szabályok típusai a forgatókönyv esetén ajánlott használni.
+Azure Load Balancer lehetővé teszi mindkét szabálytípus összekeverését ugyanazon a terheléselosztó-konfiguráción. A terheléselosztó egyszerre használhatja őket egy adott virtuális géphez vagy bármely kombinációhoz, ha a szabály korlátai betartanak. A választott szabálytípus az alkalmazás követelményeitől és a konfiguráció támogatásának összetettségtől függ. Érdemes kiértékelni, hogy milyen típusú szabályok a legmegfelelőbbek a forgatókönyvhöz.
 
-További ezekben az esetekben az alapértelmezett viselkedés kezdi tárgyaljuk.
+Ezeket a forgatókönyveket tovább vizsgálja az alapértelmezett viselkedéstől kezdve.
 
-## <a name="rule-type-1-no-backend-port-reuse"></a>Szabály típusa #1: Nincs háttér port újrafelhasználása
+## <a name="rule-type-1-no-backend-port-reuse"></a>Szabály típusa #1: Nincs háttér-port újrahasznosítása
 
-![Az előtéri zöld és a lila több előtér-ábra](./media/load-balancer-multivip-overview/load-balancer-multivip.png)
+![Több előtér-illusztráció zöld és lila felülettel](./media/load-balancer-multivip-overview/load-balancer-multivip.png)
 
-Ebben a forgatókönyvben az előtérrendszer az alábbiak szerint vannak konfigurálva:
+Ebben az esetben a frontendek konfigurálása a következőképpen történik:
 
 | Előtér | IP-cím | protocol | port |
 | --- | --- | --- | --- |
-| ![előtéri zöld](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
-| ![lila frontend](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
+| ![zöld frontend](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
+| ![lila felület](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
 
-A dedikált IP-CÍMMEL az a hely a bejövő forgalom. A háttérkészlet minden egyes virtuális Géphez a kívánt szolgáltatás egy dedikált IP-CÍMMEL az egyedi port mutatja meg. Ez a szolgáltatás az előtér egy szabálydefiníciót keresztül kapcsolódik.
+A DIP a bejövő folyamat célja. A háttér-készletben minden virtuális gép egy DIP-on lévő egyedi porton teszi elérhetővé a kívánt szolgáltatást. Ez a szolgáltatás egy szabály definícióján keresztül van társítva a frontendhez.
 
-Azt adja meg a két szabályt:
+Két szabályt definiálunk:
 
-| Szabály | Térkép frontend | A háttérkészlet |
+| Szabály | Térkép előtér | Háttérbeli készlet |
 | --- | --- | --- |
-| 1 |![előtéri zöld](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
+| 1 |![zöld frontend](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
 | 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
-Az Azure Load balancerben teljes leképezés most a következőképpen történik:
+A Azure Load Balancer teljes leképezése mostantól a következő:
 
 | Szabály | Előtérbeli IP-cím | protocol | port | Cél | port |
 | --- | --- | --- | --- | --- | --- |
-| ![zöld szabály](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |DIP IP Address |80 |
-| ![lila szabály](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |DIP IP Address |81 |
+| ![zöld szabály](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |DIP IP-címe |80 |
+| ![lila szabály](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |DIP IP-címe |81 |
 
-Minden egyes szabály egy folyamatot egy cél IP-cím és céloldali port egyedi kombinációja révén kell dolgoznia. A folyamat célport vonalszínnel több szabály a különböző portokat azonos DIP folyamatok közvetíti.
+Minden szabálynak egy olyan folyamatot kell létrehoznia, amely a cél IP-cím és a célport egyedi kombinációjával rendelkezik. A folyamat rendeltetési portjának megváltoztatásával több szabály is továbbíthat folyamatokat ugyanazon a DIP-on különböző portokon.
 
-Állapot-mintavételei mindig irányítja a virtuális gépek a dedikált IP-CÍMMEL. Bizonyosodjon meg, hogy a mintavétel tükrözi a virtuális gép állapotát.
+Az állapot-mintavételek mindig egy virtuális gép bemerítésére vannak irányítva. Gondoskodnia kell arról, hogy a mintavétel a virtuális gép állapotát tükrözze.
 
-## <a name="rule-type-2-backend-port-reuse-by-using-floating-ip"></a>Szabály típusa #2: a nem fix IP-háttérrendszer port újbóli
+## <a name="rule-type-2-backend-port-reuse-by-using-floating-ip"></a>Szabály típusa #2: háttérbeli port újrafelhasználása lebegőpontos IP használatával
 
-Az Azure Load Balancer felhasználhatja a frontend-port több előtérrendszer, függetlenül a használt szabály típusát különböző biztosít. Bizonyos esetekben emellett igény szerint, vagy ugyanazt a portot, a háttérkészletben egyetlen virtuális géphez több alkalmazáspéldány által használandó szükséges. Port újbóli néhány gyakori példa tartalmazza a fürtszolgáltatás magas rendelkezésre állás, a hálózati virtuális berendezések, és több TLS végpont újbóli titkosítás nélkül is közzéteheti.
+Azure Load Balancer rugalmasságot biztosít a frontend-port több előtérben történő újrafelhasználásához, a használt szabálytípustől függetlenül. Emellett egyes alkalmazási forgatókönyvek előnyben részesítettek, vagy megkövetelik, hogy ugyanazt a portot több alkalmazás-példány is használja egyetlen virtuális gépen a háttér-készletben. A portok használatának gyakori példái közé tartozik a fürtözés a magas rendelkezésre álláshoz, a hálózati virtuális berendezések, valamint a több TLS-végpont ismételt titkosítás nélküli kimutatása.
 
-Ha szeretné újra felhasználhatja a háttérport között több szabály, engedélyeznie kell nem fix IP-a szabály-definícióban.
+Ha több szabályban szeretné felhasználni a háttér-portot, akkor a szabály definíciójában engedélyeznie kell a lebegőpontos IP-címet.
 
-"Nem fix IP-címe" az Azure-terminológia esetén, a közvetlen kiszolgálói adja vissza (DSR) néven ismert. DSR két részből áll: egy flow-topológia és a egy IP-cím hozzárendelést sémát. A platform szintjén Azure Load Balancer mindig működik egy DSR-folyamat topológia, függetlenül attól, hogy a nem fix IP engedélyezve van-e vagy sem. Ez azt jelenti, hogy a flow a kimenő részét mindig megfelelően feladatátvitelt térjen vissza a forrás közvetlen áramlását.
+A "Floating IP" az Azure terminológiai része, amely a Direct Server Return (DSR) néven ismert részét képezi. A DSR két részből áll: egy folyamat topológiából és egy IP-cím-hozzárendelési sémából. A platform szintjén Azure Load Balancer mindig a DSR-folyamat topológiájában működik, függetlenül attól, hogy engedélyezve van-e a lebegőpontos IP-cím. Ez azt jelenti, hogy a folyamat kimenő részét mindig közvetlenül a forráshoz kell visszaírni a folyamatba.
 
-Az alapértelmezett szabály típusa, az Azure hagyományos terheléselosztási IP cím hozzárendelési séma a használat megkönnyítése érdekében tesz elérhetővé. Floating IP engedélyezése módosítja az IP cím leképezés sémát, és lehetővé teszik a rugalmasságra, kövesse az alábbi utasításokat.
+Az alapértelmezett szabálytípus esetében az Azure egy hagyományos terheléselosztási IP-cím-hozzárendelési sémát tesz elérhetővé a könnyű használat érdekében. A lebegő IP-címek engedélyezése az IP-cím-hozzárendelési séma lehetővé teszi a további rugalmasságot az alább leírtak szerint.
 
 A következő ábra szemlélteti ezt a konfigurációt:
 
-![A DSR-zöld és a lila előtérbeli több előtérbeli ábra](./media/load-balancer-multivip-overview/load-balancer-multivip-dsr.png)
+![Több előtér-illusztráció zöld és lila felülettel a DSR-vel](./media/load-balancer-multivip-overview/load-balancer-multivip-dsr.png)
 
-Ebben a forgatókönyvben a háttérkészletben lévő összes virtuális Géphez a három hálózati adapterrel rendelkezik:
+Ebben az esetben a háttér-készlet minden virtuális gépe három hálózati csatolóval rendelkezik:
 
-* Dedikált IP-CÍMMEL: egy virtuális hálózati Adaptert a virtuális gép (IP-konfigurációja, az Azure-hálózati erőforrás) társított
-* : 1 egy visszacsatolási ifindex belül a vendég operációs rendszer, amely 1 előtérbeli IP-címmel van konfigurálva
-* : 2 egy visszacsatolási ifindex belül a vendég operációs rendszer, amely 2-es előtérbeli IP-címmel van konfigurálva
+* DIP: a virtuális GÉPHEZ társított virtuális hálózati adapter (az Azure NIC-erőforrás IP-konfigurációja)
+* 1\. frontend: a vendég operációs rendszeren belüli visszacsatolási felület, amely az 1. előtér IP-címével van konfigurálva
+* 2\. frontend: a vendég operációs rendszeren belüli, a 2. előtér IP-címével konfigurált visszacsatolási felület
 
 > [!IMPORTANT]
-> A visszacsatolás felületek konfigurációját a vendég operációs rendszeren belül történik. Ez a konfiguráció nem végzett vagy az Azure által felügyelt. Ez a konfiguráció nélkül a szabályok nem fognak működni. Egészségügyi mintavételi definíciókat a DIP DSR előtér jelölő visszacsatolási helyett a virtuális gép használja. Ezért a szolgáltatás adjon meg mintavételi válaszok egy DIP portot, amely a DSR előtérbeli jelölő visszacsatolási a kínált szolgáltatás állapotát mutatja.
+> A visszacsatolási felületek konfigurációja a vendég operációs rendszeren belül történik. Ezt a konfigurációt az Azure nem végzi el vagy nem kezeli. Ezen konfiguráció nélkül a szabályok nem fognak működni. Az állapot-mintavételi definíciók a virtuális gép DIP felületét használják a DSR-felületet jelképező visszacsatolási interfész helyett. Ezért a szolgáltatásnak mintavételi válaszokat kell adnia egy olyan DIP-porton, amely tükrözi a DSR-felületet jelképező visszacsatolási felületen kínált szolgáltatás állapotát.
 
-Tegyük fel, mint az előző forgatókönyvben ugyanazt a frontend konfigurációt:
+Tegyük fel, hogy ugyanazt a frontend-konfigurációt feltételezzük, mint az előző forgatókönyvben:
 
 | Előtér | IP-cím | protocol | port |
 | --- | --- | --- | --- |
-| ![előtéri zöld](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
-| ![lila frontend](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
+| ![zöld frontend](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
+| ![lila felület](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
 
-Azt adja meg a két szabályt:
+Két szabályt definiálunk:
 
-| Szabály | Előtér | Háttérkészlet leképezése |
+| Szabály | Előtér | Leképezés a háttérrendszer-készletre |
 | --- | --- | --- |
-| 1 |![A szabály](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) (A VM1 és VM2) Frontend1:80 |
-| 2 |![A szabály](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) (A VM1 és VM2) Frontend2:80 |
+| 1 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (a VM1 és a VM2) |
+| 2 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (a VM1 és a VM2) |
 
-Az alábbi táblázatban látható a teljes leképezés a terheléselosztó:
+A következő táblázat a terheléselosztó teljes leképezését tartalmazza:
 
 | Szabály | Előtérbeli IP-cím | protocol | port | Cél | port |
 | --- | --- | --- | --- | --- | --- |
-| ![zöld szabály](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |ugyanaz, mint a frontend (65.52.0.1) |ugyanaz, mint a frontend (80-as) |
-| ![lila szabály](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |ugyanaz, mint a frontend (65.52.0.2) |ugyanaz, mint a frontend (80-as) |
+| ![zöld szabály](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |ugyanaz, mint a frontend (65.52.0.1) |ugyanaz, mint a frontend (80) |
+| ![lila szabály](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |ugyanaz, mint a frontend (65.52.0.2) |ugyanaz, mint a frontend (80) |
 
-A bejövő forgalom és az előtérbeli IP-cím a virtuális gép visszacsatolási vonatkozó. Minden egyes szabály egy folyamatot egy cél IP-cím és céloldali port egyedi kombinációja révén kell dolgoznia. A folyamat a cél IP-cím, port újbóli ugyanarról a virtuális gépről lehetőség. A szolgáltatás által az előtérbeli IP-cím és port megfelelő visszacsatolási vonatkozó való kötés elérhetővé a terheléselosztóhoz.
+A bejövő folyamat célja a virtuális gép visszacsatolási felületének IP-címe. Minden szabálynak egy olyan folyamatot kell létrehoznia, amely a cél IP-cím és a célport egyedi kombinációjával rendelkezik. A folyamat cél IP-címének megváltoztatásával a portok újrafelhasználása ugyanazon a virtuális gépen lehetséges. A szolgáltatás a terheléselosztó számára elérhetővé válik úgy, hogy a megfelelő visszacsatolási felület IP-címéhez és portjához köti.
 
-Figyelje meg, hogy ebben a példában nem változtatja meg a célport. Annak ellenére, hogy ez a nem fix IP-forgatókönyv, az Azure Load Balancer is támogatja cél háttérport újraírási és, hogy az előtérbeli célport eltérő szabályt.
+Figyelje meg, hogy ez a példa nem változtatja meg a célként megadott portot. Annak ellenére, hogy ez egy lebegő IP-forgatókönyv, Azure Load Balancer is támogatja a szabályok definiálását a háttérbeli célport újraírásához, és annak eltérővé tételéhez a frontend célport.
 
-A nem fix IP-szabály alapját a több load balancer konfigurációs minták esetében. Jelenleg elérhető egyik példája a [több Kérésfigyelőt az SQL AlwaysOn](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) konfigurációja. Idővel azt fogja a dokumentum több ezekben a forgatókönyvekben.
+A lebegőpontos IP-szabály típusa több terheléselosztó-konfigurációs minta alapja. A jelenleg elérhető egyik példa a [több figyelővel rendelkező SQL-AlwaysOn](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) . Az idő múlásával több ilyen forgatókönyvet fogunk dokumentálni.
 
 ## <a name="limitations"></a>Korlátozások
 
-* Több előtér-konfiguráció csak IaaS virtuális gépek használata támogatott.
-* A nem fix IP-szabályt az alkalmazás a kimenő forgalom kell használnia az elsődleges IP-konfiguráció. Ha az alkalmazás az előtérbeli IP-cím konfigurálva van kötve a visszacsatolási a vendég operációs rendszer, az Azure az SNAT felület nem érhető el a kimenő folyam újraírási, és a folyamatnak nem sikerül.
-* Nyilvános IP-címek számlázási hatással. További információkért lásd: [IP-címek díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses/)
-* Előfizetési korlátok vonatkoznak. További információkért lásd: [szolgáltatási korlátozásaival](../azure-subscription-service-limits.md#networking-limits) részleteiről.
+* Több előtér-konfiguráció csak IaaS virtuális gépek esetén támogatott.
+* A lebegőpontos IP-szabállyal az alkalmazásnak a kimenő SNAT-folyamatok elsődleges IP-konfigurációját kell használnia. Ha az alkalmazás a vendég operációs rendszerben a visszacsatolási felületen konfigurált előtérbeli IP-címhez van kötve, az Azure kimenő SNAT nem érhető el a kimenő folyamat újraírásához, és a folyamat meghiúsul.  Tekintse át a [kimenő forgatókönyveket](load-balancer-outbound-connections.md).
+* A nyilvános IP-címek a számlázásra érvényesek. További információt az [IP-címek díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses/) című témakörben talál.
+* Az előfizetés korlátai érvényesek. További információ: [szolgáltatási korlátozások](../azure-subscription-service-limits.md#networking-limits) a részletekért.
 
 ## <a name="next-steps"></a>További lépések
 
-- Felülvizsgálat [kimenő kapcsolatok](load-balancer-outbound-connections.md) a kimenő kapcsolatok viselkedését több előtérrendszer hatásának megértéséhez.
+- Tekintse át a [kimenő kapcsolatokat](load-balancer-outbound-connections.md) , hogy megértse, milyen hatással van több előtér a kimenő kapcsolat viselkedésére.

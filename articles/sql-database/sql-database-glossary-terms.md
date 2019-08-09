@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/26/2019
-ms.openlocfilehash: d940cfa91890d26a48b682a6eb09410b3b7de045
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5fccf1ffc76c824c81f8b8b826f90bf8314ff1e3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568074"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883347"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>A kifejezések szószedetének Azure SQL Database
 
@@ -49,6 +49,6 @@ Adatbázis-objektumok|Azure SQL-adatbázis|Azure SQL Database összes adatbázis
 ||Tárolási mennyiség|Egy adatbázis, rugalmas készlet vagy felügyelt példány számára elérhető tárterület|
 ||Számítási generáció|A processzor egy szolgáltatási szinten belüli generálása|
 |Adatbázis-kiszolgáló IP-tűzfalszabályai|IP-tűzfalszabályok|[IP-tűzfalszabályok](sql-database-firewall-configure.md)|
-||Kiszolgálószintű IP-tűzfalszabályok|[Kiszolgálói szintű IP-tűzfalszabályok](sql-database-firewall-configure.md#overview)|
-|| Adatbázis szintű IP-tűzfalszabályok|[Adatbázis szintű IP-tűzfalszabályok](sql-database-firewall-configure.md#overview)|
+||Kiszolgálószintű IP-tűzfalszabályok|[Kiszolgálói szintű IP-tűzfalszabályok](sql-database-firewall-configure.md)|
+|| Adatbázis szintű IP-tűzfalszabályok|[Adatbázis szintű IP-tűzfalszabályok](sql-database-firewall-configure.md)|
 ||Virtuális hálózati végpontok és szabályok|[Virtuális hálózati végpontok és szabályok](sql-database-vnet-service-endpoint-rule-overview.md)|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 5c156e30f4fa0270082cd1108958c3472130a460
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 1401e378daa0c0a9258858840653899e76c9421c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640821"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881776"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>A hálózati biztonsági csoportok flow-naplózásának bemutatása
 
@@ -57,13 +57,13 @@ A flow-naplók a következő tulajdonságokat tartalmazzák:
             * **folyamatok** – folyamatok gyűjteménye
                 * **Mac** – a virtuális gép hálózati adapterének MAC-címe, ahová a folyamat begyűjtése történik
                 * **flowTuples** – a flow-rekord több tulajdonságát tartalmazó sztring vesszővel tagolt formátumban
-                    * Időbélyegző **– Ez** az érték a folyamat UNIX EPOCH formátumban való előfordulásának időbélyegzője.
+                    * Időbélyegző – ez az érték a folyamat UNIX EPOCH formátumban való előfordulásának időbélyegzője.
                     * **Forrás IP** -címe – a forrás IP-címe
                     * **Cél IP** -címe – a cél IP-címe
                     * **Forrásoldali port** – a forrásport
                     * **Célport** – a célport
                     * **Protokoll** – a folyamat protokollja. Az UDP esetében érvényes értékek: **T** , TCP és **U**
-                    * **Forgalmi folyamat** – a forgalom iránya. Az érvényes értékek a bejövő és kimenő **kimeneti** értékekhez **tartoznak.**
+                    * **Forgalmi folyamat** – a forgalom iránya. Az érvényes értékek a bejövő és kimenő **kimeneti** értékekhez tartoznak.
                     * **Forgalmi döntés** – azt, hogy a forgalom engedélyezett vagy tiltott. Az érvényes értékek a megengedettek, a **D** megtagadva.
                     * **Flow State – csak 2-es verzió** – rögzíti a folyamat állapotát. A lehetséges állapotok **B**: Kezdés, amikor létrejön egy folyamat. Nincs megadva statisztika. **C**: Folyamatos folyamat folyamatban. A statisztikák 5 perces időközönként vannak megadva. **E**: Befejezés a folyamat leállításakor. Statisztikákat biztosítunk.
                     * **Csomagok – forrás – cél – csak 2-es verzió** A forrásról a célhelyre küldött TCP-vagy UDP-csomagok teljes száma az utolsó frissítés óta.

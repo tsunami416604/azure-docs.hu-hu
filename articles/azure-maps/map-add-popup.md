@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 92d44ef3d0db8e93d4babd7441238c7fa105dbd5
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: caf661faf00d1d32664b7958a14a8719a37ab36e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639002"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882100"
 ---
 # <a name="add-a-popup-to-the-map"></a>Felugró ablak hozzáadása a térképhez
 
@@ -24,26 +24,40 @@ Ez a cikk bemutatja, hogyan adhat hozzá egy előugró pontot egy térképen.
 
 <a id="addAPopup"></a>
 
+A következő kód egy szimbólum réteget használva hozzáadja a térképhez `description` egy pont funkciót, amely rendelkezik `name` a és a tulajdonsággal. Az [előugró osztály](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) egy példánya jön létre, de nem jelenik meg. Az egérmutató a szimbólum rétegbe kerül, és az előugró ablak megnyitására és bezárására szolgál, amikor az egérmutató a szimbólum jelölője fölé vagy lefelé mutat. Ha a jelölő szimbólum `position` látható, az előugró ablak tulajdonsága a jelölő pozíciójának megfelelően frissül, és a `content` beállítás frissül, és egy olyan `name` HTML-kódot tartalmaz, `description` amely betakarja az egérmutatót a pont funkció és tulajdonságai között. Ekkor megjelenik a felugró ablak a térképen a `open` függvény használatával.
+
+<br/>
+
 <iframe height='500' scrolling='no' title='Felugró ablak hozzáadása a Azure Maps használatával' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a következőt: <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>Azure Maps</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-A fenti kódban a kód első blokkja egy Térkép objektumot hoz létre. Ehhez útmutatást a [Térkép létrehozása](./map-create.md) című témakörben találhat. Emellett az előugró ablakban megjelenő HTML-tartalmat is létrehoz.
-
-A kód második blokkja egy adatforrás-objektumot hoz létre az [adatforrás osztály használatával](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) . A pont a [pont](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) osztály egyik [funkciója](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) . Ekkor létrejön egy név és egy leírás tulajdonsággal rendelkező pont objektum, amely hozzá lesz adva az adatforráshoz.
-
-A [szimbólum-réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) szöveggel vagy ikonokkal jeleníti meg a pont-alapú adatforrásokat az adatforrásban szimbólumként a térképen. [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)  A rendszer létrehoz egy szimbólum réteget a kód harmadik blokkjában. A rendszer hozzáadja az adatforrást a szimbólum réteghez, amelyet aztán hozzáad a térképhez.
-
-A kód negyedik blokkja egy előugró [objektumot](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) hoz `new atlas.Popup()`létre a használatával. Az előugró tulajdonságok, például a pozíció és a pixelOffset a [PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions)részei. A PopupOptions megadható a felugró ablakban vagy az előugró osztály [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) funkciójával. Ekkor `mouseover` létrejön egy esemény-figyelő a szimbólum réteghez.
-
-A kód utolsó blokkja létrehoz egy függvényt, amelyet az `mouseover` esemény-figyelő aktivál. Beállítja az előugró ablak tartalmát és tulajdonságait, és hozzáadja a felugró objektumot a térképhez.
-
 ## <a name="reusing-a-popup-with-multiple-points"></a>Felugró ablak újrahasználata több ponttal
 
-Ha sok ponttal rendelkezik, és egyszerre csak egy előugró ablak jelenik meg, akkor a legjobb megoldás egy előugró ablak létrehozása és újbóli használata ahelyett, hogy előugró ablakokat hozzon létre minden egyes pont szolgáltatáshoz. Ezzel az alkalmazás által létrehozott DOM-elemek száma jelentősen csökkent, ami jobb teljesítményt biztosít. Ez a minta 3 pont funkciót hoz létre. Ha bármelyikre kattint, megjelenik egy előugró ablak, amely az adott pont funkciójának tartalmát jeleníti meg.
+Ha nagy számú ponttal rendelkezik, és egyszerre csak egy előugró ablak jelenik meg, a legjobb módszer egy előugró ablak létrehozása és újbóli használata, mint az egyes pontokhoz tartozó előugró ablakok létrehozása. A felugró ablak újrafelhasználásával az alkalmazás által létrehozott DOM-elemek száma jelentősen csökkent, ami jobb teljesítményt nyújt. Az alábbi minta 3 pont funkciót hoz létre. Ha bármelyikre kattint, megjelenik egy előugró ablak, amely az adott pont funkciójának tartalmát jeleníti meg.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='Felugró ablak újrahasználata több PIN-kód használatával' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a <a href='https://codepen.io'>CodePen</a>-on Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) által <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>több PIN</a> -kód használatával.
+</iframe>
+
+## <a name="customizing-a-popup"></a>Felugró ablak testreszabása
+
+Alapértelmezés szerint az előugró ablak fehér háttérrel, egy mutató nyilat tartalmaz az alján, valamint egy Bezárás gombot a jobb felső sarokban. A következő minta a háttérszínt fekete `fillColor` színnel változtatja meg a felugró ablak beállításával. A Bezárás gomb eltávolításához állítsa a `shoCloseButton` beállítást hamis értékre. A felugró ablak HTML-tartalma a felugró ablak széleitől számított 10 képpontot használ, és a szöveg fehér színűvé válik, így szépen jelenik meg a fekete háttéren.  
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Testreszabott előugró ablak" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a tollal <a href='https://codepen.io/azuremaps/pen/ymKgdg/'>testreszabott előugró ablakokat</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## <a name="popup-events"></a>Felugró események
+
+Az előugró ablakok megnyithatók, lezárhatók és áthúzhatók. Az előugró osztály olyan eseményeket biztosít, amelyek segítségével a fejlesztők reagálni tudnak ezekre a műveletekre. Az alábbi példa kiemeli, hogy az előugró ablak megnyitásakor, zárásakor vagy húzásakor milyen események égetése következik be. 
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Felugró események" src="//codepen.io/azuremaps/embed/BXrpvB/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a toll előugró <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>eseményeit</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>További lépések

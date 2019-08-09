@@ -1,6 +1,6 @@
 ---
-title: Reagálás eseményekre az Azure Media Services |} A Microsoft Docs
-description: Azure Event Grid használatával előfizetni a Media Services-események.
+title: Reagálás Azure Media Services eseményekre | Microsoft Docs
+description: Media Services eseményekre való előfizetéshez használja a Azure Event Grid.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,36 +9,37 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: cb5d6474a0c830933c712e1008015b5220617c96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64bf8f5c8de5f56ee1140e91d0472a33b35570cf
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60996154"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68878802"
 ---
 # <a name="handling-event-grid-events"></a>Event Grid-események kezelése
 
-Media Services-események lehetővé teszik a különböző események (például a feladat állapotváltozási esemény), a modern, kiszolgáló nélküli architektúra használatával reagálni alkalmazások. Így összetettebb kódja vagy költséges és hatékony lekérdezési szolgáltatások nélkül hajtja végre. Ehelyett eseményt leküld [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) eseménykezelőket, mint például a [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), vagy akár a saját Webhook, és Ön csak fizetniük a Mi használhat. Díjszabással kapcsolatos információkért lásd: [Event Grid díjszabási](https://azure.microsoft.com/pricing/details/event-grid/).
+Media Services események lehetővé teszik az alkalmazások számára a különböző eseményekre való reagálást (például a feladatok állapotának változási eseményét) a modern kiszolgáló nélküli architektúrák használatával. Ehhez nincs szükség bonyolult programkódra vagy költséges és nem hatékony lekérdezési szolgáltatásokra. Ehelyett az eseményeket [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) az eseménykezelők, például a [Azure Functions](https://azure.microsoft.com/services/functions/), a [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/), vagy akár a saját webhook számára, és csak azért kell fizetnie, amit ténylegesen használ. További információ a díjszabásról: [Event Grid díjszabása](https://azure.microsoft.com/pricing/details/event-grid/).
 
-A Media Services-eseményekhez rendelkezésre állási vannak kötve, Event Grid [rendelkezésre állási](../../event-grid/overview.md) és Event Grid választókkal válnak más régiókban érhető el.  
+Media Services események rendelkezésre állása Event Grid [rendelkezésre álláshoz](../../event-grid/overview.md) kötődik, és más régiókban is elérhetővé válik, mint Event Grid.  
 
-## <a name="media-services-events-and-schemas"></a>Media Services-események és sémák
+## <a name="media-services-events-and-schemas"></a>Események és sémák Media Services
 
-Event grid használ [esemény-előfizetések](../../event-grid/concepts.md#event-subscriptions) eseményt üzenetek továbbítását-előfizetők számára. Media Services-események összes kell reagálni az igények változásaira az adatokban adatokat tartalmazzák. A Media Services esemény is azonosítani, mert az esemény típusa tulajdonság "Microsoft.Media." karakterlánccal kezdődik.
+Az Event Grid [esemény](../../event-grid/concepts.md#event-subscriptions) -előfizetések használatával irányítja az esemény-üzeneteket az előfizetőknek. Media Services események tartalmazzák az adatok változásaira való válaszadáshoz szükséges összes információt. Azonosíthatja Media Services eseményt, mert a eventType tulajdonság a "Microsoft. Media" karakterlánccal kezdődik.
 
-További információkért lásd: [Media Services Eseménysémák](media-services-event-schemas.md).
+További információ: [Media Services esemény sémái](media-services-event-schemas.md).
 
-## <a name="practices-for-consuming-events"></a>Eljárások az események felhasználásához
+## <a name="practices-for-consuming-events"></a>Az események felhasználásának eljárásai
 
-Az alkalmazásokat, amelyek a Media Services-események kezeléséhez kövesse kell néhány ajánlott eljárást:
+Az Media Services eseményeket kezelő alkalmazásoknak néhány ajánlott gyakorlatot követniük kell:
 
-* Több előfizetés is beállíthatók úgy, hogy az azonos eseménykezelő események átirányítása, fontos, nem egy adott forrásból származó események feltételezik, de ellenőrzéséhez győződjön meg arról, hogy a tárfiók várt származnak üzenet a témakörben.
-* Ehhez hasonlóan ellenőrizze, hogy az esemény típusa egy folyamat kész, és nem feltételezi, hogy kap az összes esemény lesz-e a várt típusú.
-* Hagyja figyelmen kívül nem ismeri a mezőket.  Ez az eljárás fog megakadályozhatja, hogy rugalmas, előfordulhat, hogy a jövőben hozzáadott új funkciókhoz.
-* A "tulajdonos" előtagot és utótagot egyezések segítségével korlátozhatja az egy adott eseményt eseményeket.
+* Mivel több előfizetést is konfigurálhat az események ugyanahhoz az eseménykezelőhöz való átirányításához, fontos, hogy ne feltételezzük, hogy az események egy adott forrásból származnak, de az üzenet témakörének ellenőrzésével győződjön meg arról, hogy a várt Storage-fiókból származik.
+* Hasonlóképpen győződjön meg arról, hogy a eventType az egyik készen áll a feldolgozásra, és nem feltételezi, hogy az összes kapott esemény lesz a várt típus.
+* Figyelmen kívül hagyhatja a nem értelmezhető mezőket.  Ez a gyakorlat segít megőrizni a jövőben esetlegesen hozzáadott új funkciókkal való ellenálló képességet.
+* Az események adott eseményre való korlátozásához használja a "tárgy" előtagot és utótagot.
 
 ## <a name="next-steps"></a>További lépések
 
-[Feladat állapota események beolvasása](job-state-events-cli-how-to.md)
+* [Események figyelése – portál](monitor-events-portal-how-to.md)
+* [Események figyelése – parancssori felület](job-state-events-cli-how-to.md)

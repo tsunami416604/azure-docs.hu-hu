@@ -1,51 +1,53 @@
 ---
-title: Az Azure virtuális WAN helyek-partnerek |} A Microsoft Docs
-description: Ez a cikk az Azure virtuális WAN-partnerek és hub helyek listáját tartalmazza.
+title: Azure Virtual WAN-partnerek helyei | Microsoft Docs
+description: Ez a cikk az Azure-beli virtuális WAN-partnerek és a központ helyeinek listáját tartalmazza.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 08/08/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect find a Virtual WAN partner
-ms.openlocfilehash: f38cd0565b2e90fe0803d8e815c622e22e954a18
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a871a527a4f8440ea3e388b1a91c19355eab3676
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60459848"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879298"
 ---
-# <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuális WAN-partnerek és a virtuális központ helye
+# <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuális WAN-partnerek és virtuális központ helyei
 
-Ez a cikk tájékoztatást virtuális WAN támogatott régiók és a partnerek virtuális központ kapcsolatot.
+Ez a cikk a virtuális WAN által támogatott régiókkal és partnerekkel kapcsolatos információkat nyújt a virtuális központhoz való kapcsolódáshoz.
 
-Az Azure Virtual WAN egy olyan hálózati szolgáltatás, amely optimalizált és automatizált ágak közötti kapcsolódást biztosít az Azure-on keresztül. A Virtual WAN segítségével ágeszközöket csatlakoztathat és konfigurálhat az Azure-ral való kommunikációra. Ez elvégezhető manuálisan vagy egy virtuális WAN-partneren keresztül szolgáltató eszközök használatával. Partner eszközökkel, könnyen használható, kapcsolat és a konfigurációkezelés egyszerűsítése lehetővé teszi.
+Az Azure Virtual WAN egy olyan hálózati szolgáltatás, amely optimalizált és automatizált ágak közötti kapcsolódást biztosít az Azure-on keresztül. A Virtual WAN segítségével ágeszközöket csatlakoztathat és konfigurálhat az Azure-ral való kommunikációra. Ezt manuálisan is megteheti, vagy egy virtuális WAN-partneren keresztül a szolgáltatói eszközök használatával. A partneri eszközök lehetővé teszik a könnyű használatot, a kapcsolatok egyszerűsítését és a konfiguráció felügyeletét.
 
-A helyszíni eszköz kapcsolat jön létre, a virtuális központ automatikus módon átalakítson. Egy virtuális központtal egy Microsoft által felügyelt virtuális hálózatot. Az elosztó különféle szolgáltatásvégpontokat tartalmaz a helyszíni hálózatból (vpnsite) induló kapcsolatok biztosításához. Régiónként csak egy eseményközpont rendelkezhet.
+A helyszíni eszköz kapcsolatát a virtuális központ automatizált módon hozza meg. A virtuális központ egy Microsoft által felügyelt virtuális hálózat. Az elosztó különféle szolgáltatásvégpontokat tartalmaz a helyszíni hálózatból (vpnsite) induló kapcsolatok biztosításához. Régiónként csak egy hubhoz tartozhat.
 
-## <a name="automation"></a>Automation kapcsolati partnerek
+## <a name="automation"></a>Automatizálás a kapcsolati partnerektől
 
-Azure virtuális WAN csatlakozó eszközökön való kapcsolódáshoz a beépített automation rendelkezik. Ez általában be felfelé a Eszközfelügyelet – felhasználói felület (vagy egyenértékű), amely állítja be a kapcsolat és a konfigurációkezelés egy Azure-beli virtuális központ VPN-végpontnak (VPN-átjáró) ágat VPN-eszköz között.
+Az Azure Virtual WAN-hoz csatlakozó eszközökhöz beépített Automation szükséges a kapcsolódáshoz. Ez általában az Eszközkezelő felhasználói felületén (vagy ezzel egyenértékű) van beállítva, amely a VPN-ág eszköz és egy Azure Virtual hub VPN-végpont (VPN-átjáró) közötti kapcsolat és konfiguráció kezelését állítja be.
 
-A következő magas szintű automatizálási van beállítva, az eszköz konzol/felügyeleti központban:
+A következő magas szintű automatizálás van beállítva az Eszközkezelőben/felügyeleti központban:
 
-* Az Azure virtuális WAN erőforráscsoport elérését az eszköz számára a megfelelő engedélyeket
-* Ág eszköz tölthet fel az Azure virtuális WAN
-* Az Azure hálózati adatai automatikus letöltése
-* Az a helyszíni ág eszköz konfigurálása 
+* Megfelelő engedélyek az eszköz számára az Azure Virtual WAN-erőforráscsoport eléréséhez
+* Ág-eszköz feltöltése az Azure Virtual WAN-ba
+* Azure-kapcsolati információk automatikus letöltése
+* Helyszíni ág-eszköz konfigurálása 
 
-Néhány kapcsolati partnerek meghosszabbíthatja az automatizálás, többek között az Azure virtuális agyi virtuális hálózat és VPN-átjáró létrehozása. Ha szeretne többet megtudni az automation, [konfigurálása Automation – WAN partnerek](virtual-wan-configure-automation-providers.md).
+Néhány csatlakozási partner kiterjesztheti az automationt, hogy az tartalmazza az Azure Virtual hub VNet és VPN Gateway létrehozását. Ha többet szeretne megtudni az automatizálásról, tekintse meg az [Automation konfigurálása – WAN-partnerek](virtual-wan-configure-automation-providers.md)című témakört.
 
-## <a name="partners"></a>Kapcsolódás a partnerek keresztül
+## <a name="partners"></a>Kapcsolódás partnereken keresztül
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-## <a name="locations"></a>helyek
+A következő partnerek a közeljövőben a tervek szerint vannak felkészülve: Fortinet, Silver-Peak, Velocloud, fordítva, Nuage Nokia.
+
+## <a name="locations"></a>Helyek
 
 [!INCLUDE [regions](../../includes/virtual-wan-regions-include.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-* Virtuális WAN kapcsolatos további információkért lásd: a [virtuális WAN – gyakori kérdések](virtual-wan-faq.md).
+* A virtuális WAN-ról további információt a [virtuális WAN gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 
-* Hogyan automatizálható a kapcsolatot az Azure virtuális WAN kapcsolatos további információkért lásd: [virtuális WAN-partnerek – automatizálása](virtual-wan-configure-automation-providers.md).
+* További információ az Azure Virtual WAN-kapcsolat automatizálásával kapcsolatban: [Virtual WAN-partnerek – útmutató az automatizáláshoz](virtual-wan-configure-automation-providers.md).

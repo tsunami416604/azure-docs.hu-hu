@@ -1,6 +1,6 @@
 ---
-title: Kiterjesztése GeoJSON geometriája Azure Maps-|} A Microsoft Docs
-description: Ismerje meg, hogyan kiterjesztése GeoJSON geometriája Azure Maps-Közösséghez
+title: Kiterjesztett GeoJSON geometriák a Azure Mapsban | Microsoft Docs
+description: Ismerje meg, hogyan bővítheti a GeoJSON-geometriákat Azure Maps
 author: sataneja
 ms.author: sataneja
 ms.date: 05/17/2018
@@ -8,51 +8,53 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: be3c31951c4721a861f9239c5220419dec11b6bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52325248d21a5d5112c9a7f9497c3e03fdf102a4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60799147"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881985"
 ---
-# <a name="extending-geojson-geometries"></a>Kiterjesztése GeoJSON geometriája
+# <a name="extended-geojson-geometries"></a>Kiterjesztett GeoJSON geometriák
 
-Az Azure Maps belső/mentén földrajzi funkciókat keresés hatékony API-k listáját tartalmazza.
-Ezen API-k egységesen ezeket [GeoJSON specifikációja] [ 1] megjelenítésére a földrajzi funkciókat (például: állapot határokat, útvonalak).  
+Azure Maps a földrajzi funkciókon belüli és azok mentén történő keresésre szolgáló hatékony API-k listáját tartalmazza.
+Ezek az API-k a [GeoJSON spec][1] -ra szabványosítják a földrajzi funkciókat (például az állami határokat, az útvonalakat) jelképező specifikációkat.  
 
-A [GeoJSON specifikációja] [ 1] csak az a következő geometriája támogatja:
+A [GeoJSON spec][1] csak a következő geometriákat támogatja:
 
 * GeometryCollection
 * LineString
 * MultiLineString
-* MultiPoint
+* Többpontos
 * MultiPolygon
 * Pont
 * Sokszög
 
-Néhány Azure Maps API-k (például: [Keresés belül geometriai](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)) fogadja el a "Kör", például geometriája nem része a [GeoJSON specifikációja][1].
+Néhány Azure Maps API-k (például: [Keresés a geometrián belül](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)) olyan geometriákat fogad el, mint a "Circle", amelyek nem részei a [GeoJSON][1]-specifikációnak.
 
-Ez a cikk részletes leírást nyújt a hogyan terjeszti ki az Azure Maps a [GeoJSON specifikációja] [ 1] képviseletére geometriája bizonyos.
+Ez a cikk részletesen ismerteti, hogy Azure Maps kiterjeszti a [GeoJSON SPECT][1] bizonyos geometriák ábrázolására.
 
-### <a name="circle"></a>Kör
+## <a name="circle"></a>Kör
 
-A `Circle` geometriai nem támogatja a [GeoJSON specifikációja][1]. Használjuk a `GeoJSON Feature` kör képviselő objektum.
+A `Circle` [GeoJSON-specifikáció][1]nem támogatja a geometriát. Egy olyan `GeoJSON Point Feature` objektumot használunk, amely egy kört jelöl.
 
-A `Circle` geometriai jelölt használatával a `GeoJSON Feature` objektum __kell__ tartalmazhatja a következő:
+Az `Circle` objektummal jelölt geometriának a következőket kell tartalmaznia `GeoJSON Feature` :
 
-1. Központ
-   >A kör center jelölt használatával egy `GeoJSON Point` típusa.
+- Középre
 
-2. RADIUS
-   >A kör `radius` használatával jelölt `GeoJSON Feature`a tulajdonságai. A radius-érték _mérőszámok_ típusúnak kell lennie, és `double`.
+    A kör középpontja egy `GeoJSON Point` objektum használatával van ábrázolva.
 
-3. SubType
-   >A körgeometriának a `subType` tulajdonságot is tartalmaznia kell. Ennek a tulajdonságnak szerepelnie kell a `GeoJSON Feature` tulajdonságai között, és _Circle_ értékűnek kell lennie
+- Sugár
 
+    A kör a `radius` tulajdonságok használatával `GeoJSON Feature`jelenik meg. A sugár értéke méterben , és a típusnak `double`kell lennie.
+
+- Altípus
+
+    A körgeometriának a `subType` tulajdonságot is tartalmaznia kell. Ennek a tulajdonságnak a tulajdonságok részének `GeoJSON Feature`kell lennie, és az értékének _kör_ típusúnak kell lennie
 
 #### <a name="example"></a>Példa
 
-Itt látható, hogyan fogja kijelenti középre kör (földrajzi szélesség: 47.639754, földrajzi hosszúság:-122.126986) 100 mérőszámok használatával egyenlő egy radius-szal egy `GeoJSON Feature` objektum:
+A (z) (földrajzi szélesség: 47,639754, hosszúság:-122,126986) 100 méternél nagyobb sugárral, `GeoJSON Feature` objektum használatával:
 
 ```json            
 {
@@ -67,5 +69,46 @@ Itt látható, hogyan fogja kijelenti középre kör (földrajzi szélesség: 47
     }
 }          
 ```
+
+## <a name="rectangle"></a>Téglalap
+
+A `Rectangle` [GeoJSON-specifikáció][1]nem támogatja a geometriát. Egy téglalapot `GeoJSON Polygon Feature` jelölő objektumot használunk. A téglalap-bővítményt elsősorban a web SDK rajzolási eszközei modulja használja.
+
+Az `Rectangle` objektummal jelölt geometriának a következőket kell tartalmaznia `GeoJSON Polygon Feature` :
+
+- Sarkok
+
+    A téglalap sarkai egy `GeoJSON Polygon` objektum koordinátái alapján jelennek meg. Öt koordinátáknak kell lennie, egyet az egyes sarokokhoz, és egy ötödik koordináta, amely ugyanaz, mint az 1. a sokszög-gyűrű bezárásához. A rendszer azt feltételezi, hogy a fejlesztő a kívánt módon igazítja és elforgatja ezeket a koordinátákat.
+
+- Altípus
+
+    A négyszög geometriájának tartalmaznia kell a `subType` tulajdonságot is. Ennek a tulajdonságnak a tulajdonságok részének `GeoJSON Feature`kell lennie, és az értékének _négyszögnek_ kell lennie
+
+### <a name="example"></a>Példa
+
+```json
+{
+    "type": "Feature",
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[5,25],[14,25],[14,29],[5,29],[5,25]]]
+    },
+    "properties": {
+        "subType": "Rectangle"
+    }
+}
+
+```
+## <a name="next-steps"></a>További lépések
+
+További információ a Azure Maps GeoJSON-adatainak használatáról:
+
+> [!div class="nextstepaction"]
+> [Geokerítésen GeoJSON formátuma](geofence-geojson.md)
+
+Tekintse át a Azure Maps és a hely intelligenciát használó alkalmazásokkal kapcsolatos általános technikai feltételek szószedetét:
+
+> [!div class="nextstepaction"]
+> [Szószedet Azure Maps](glossary.md)
 
 [1]: https://tools.ietf.org/html/rfc7946

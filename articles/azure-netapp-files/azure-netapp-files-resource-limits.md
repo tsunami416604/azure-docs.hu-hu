@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: fe8d46c897ef68563f2e0e5a1da106174ae504c5
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 763b3961bfd621f05ab5cd021526b0d6d109c020
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424085"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881709"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Az Azure NetApp Files erőforráskorlátai
 
@@ -42,6 +42,7 @@ Az alábbi táblázat a Azure NetApp Files erőforrás-korlátozásait ismerteti
 |  Egyetlen kötet minimális mérete    |    100 GiB    |    Nem    |
 |  Egyetlen kötet maximálisan hozzárendelt kvótája *   |   92 TiB   |    Nem   |
 |  Egyetlen kötet maximális mérete *     |    100 TiB    |    Nem       |
+|  Fájlok maximális száma (inode)/kötet     |    50 000 000    |    Nem    |    
 
 \* A köteteket manuálisan lehet létrehozni vagy átméretezni a maximális 92 TiB-ra. Egy kötet azonban akár 100 TiB-t is felhasználhat egy túlhasználatos forgatókönyvben. A kapacitás túlterhelésével kapcsolatos részletekért lásd: [Azure NetApp Files](azure-netapp-files-cost-model.md) . 
 

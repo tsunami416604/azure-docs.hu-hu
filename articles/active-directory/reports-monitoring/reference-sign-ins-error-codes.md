@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 05/08/2019
+ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6972c91a18f9deb240871d8c64a14647474d9d78
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 4cbaa8f22335da083506a76ad1a791576b109a00
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377277"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879769"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Bejelentkezési tevékenység jelentésének hibakódja 
 
@@ -127,6 +127,7 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |50177|A külső kihívás áteresztő felhasználók számára nem támogatott.|
 |50178|A munkamenet-vezérlő továbbító felhasználók számára nem támogatott.|
 |50180|Integrált Windows-hitelesítés szükséges. Engedélyezze a Seamless SSO-t a bérlőn.|
+|50201|Ez az üzenet jelenik meg a felhasználó bejelentkezésekor, amikor további információt kell megadni a felhasználónak.|
 |51001|A tartományi útmutató nem található a helyszíni biztonsági azonosító – helyszíni egyszerű felhasználónév szolgáltatással.|
 |51004|A felhasználói fiók nem létezik a címtárban.|
 |51006|Integrált Windows-hitelesítés szükséges. A felhasználó a jogcím alapján hiányzó munkamenet-jogkivonat használatával jelentkezett be. A felhasználónak újra be kell jelentkeznie.|
@@ -181,6 +182,9 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |500121| Az erős hitelesítési kérelem során sikertelen volt a hitelesítés.|
 |500133| Az érvényesítés nem az érvényes időtartományán belül van. Győződjön meg arról, hogy a hozzáférési jogkivonat nem járt le, mielőtt felhasználói állításhoz használta, vagy kérjen új jogkivonatot.|
 |530021|Az alkalmazás nem felel meg a feltételes hozzáférés jóváhagyott alkalmazási követelményeinek.|
+|530032|Biztonsági házirend tiltja.| 
+|700016|A (z) {appIdentifier} azonosítójú alkalmazás nem található a (z) {tenantName} címtárban. Ez akkor fordulhat elő, ha az alkalmazást nem a bérlő rendszergazdája telepítette, vagy a bérlő bármelyik felhasználója beleegyezett. Lehetséges, hogy nem megfelelő bérlőnek küldi el a hitelesítési kérést.|
+|900432|A bizalmas ügyfél nem támogatott a felhőalapú kérelemben.|
 |7000218|A kérelem törzsének tartalmaznia kell a következő paramétert: "client_assertion" vagy "client_secret".|
 
 

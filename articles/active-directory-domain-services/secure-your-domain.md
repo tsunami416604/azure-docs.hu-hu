@@ -1,5 +1,5 @@
 ---
-title: Az Azure Active Directory Domain Services felügyelt tartomány Secure |} A Microsoft Docs
+title: A Azure Active Directory Domain Services felügyelt tartomány biztonságossá tétele | Microsoft Docs
 description: Felügyelt tartomány védelme
 services: active-directory-ds
 documentationcenter: ''
@@ -15,30 +15,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: iainfou
-ms.openlocfilehash: e94cd9ca049cfdfd2321ce046714506ed1f23390
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 923ecae9dc649b8f5cdcfd447b78fdec0805927a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483281"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879151"
 ---
-# <a name="secure-your-azure-ad-domain-services-managed-domain"></a>Az Azure AD Domain Services felügyelt tartomány Secure
-Ez a cikk segítséget nyújt a felügyelt tartomány secure. Kapcsolja ki a gyenge titkosító csomag használatát, és NTLM hitelesítő adatok a Jelszókivonat-szinkronizálás letiltása.
+# <a name="secure-your-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services felügyelt tartomány biztonságossá tétele
+Ez a cikk segítséget nyújt a felügyelt tartomány biztonságossá tételében. Kikapcsolhatja a gyenge titkosítási csomagok használatát, és letilthatja az NTLM hitelesítő adatok kivonatának szinkronizálását.
 
 ## <a name="install-the-required-powershell-modules"></a>A szükséges PowerShell-modulok telepítése
 
 ### <a name="install-and-configure-azure-ad-powershell"></a>Az Azure AD PowerShell telepítése és konfigurálása
-Kövesse a cikkben szereplő utasításokat [Azure AD PowerShell-modul telepítéséhez és az Azure AD connect](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
+A cikk utasításait követve [telepítse az Azure ad PowerShell-modult, és kapcsolódjon az Azure ad](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json)-hez.
 
 ### <a name="install-and-configure-azure-powershell"></a>Az Azure PowerShell telepítése és konfigurálása
-Kövesse a cikkben szereplő utasításokat [az Azure PowerShell-modul telepítése és csatlakozás az Azure-előfizetéshez](https://docs.microsoft.com/powershell/azure/install-az-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
+A cikk utasításait követve [telepítse a Azure PowerShell modult, és kapcsolódjon az Azure-](https://docs.microsoft.com/powershell/azure/install-az-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json)előfizetéséhez.
 
 
-## <a name="disable-weak-cipher-suites-and-ntlm-credential-hash-synchronization"></a>A gyenge titkosító csomagok és NTLM hitelesítő adatok a Jelszókivonat-szinkronizálás letiltása
-A következő PowerShell-parancsprogram használata:
+## <a name="disable-weak-cipher-suites-and-ntlm-credential-hash-synchronization"></a>A gyenge titkosítási csomagok és az NTLM hitelesítő adatok kivonatának szinkronizálásának letiltása
+Használja az alábbi PowerShell-szkriptet a következőhöz:
+
 1. Tiltsa le a NTLM v1-támogatást a felügyelt tartományban.
-2. A helyszíni NTLM-jelszókivonatok szinkronizálásának letiltása AD.
+2. Tiltsa le az NTLM-jelszó kivonatok szinkronizálását a helyszíni AD-ből.
 3. Tiltsa le a TLS v1-et a felügyelt tartományban.
+
+Ha hibaüzenet jelenik meg azzal `Get-AzResource` a paranccsal, hogy a *Microsoft. HRE/DomainServices* erőforrás nem létezik, [emelje ki a hozzáférést az összes Azure-előfizetés és-felügyeleti csoport kezeléséhez](../role-based-access-control/elevate-access-global-admin.md).
 
 ```powershell
 // Login to your Azure AD tenant
@@ -58,9 +61,9 @@ Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySetti
 ```
 
 > [!IMPORTANT]
-> Felhasználók (és szolgáltatásfiókok) nem hajtható végre egyszerű LDAP-kötések, ha az Azure AD Domain Services-példányon a Jelszókivonat-szinkronizálás az NTLM le van tiltva.  További információk az NTLM Jelszókivonat-szinkronizálás letiltása, [biztonságossá tétele az Azure AD tartományi szolgáltatásokkal felügyelt tartományban](secure-your-domain.md).
+> A felhasználók (és a szolgáltatásfiókok) nem hajthatnak végre LDAP egyszerű kötéseket, ha letiltotta az NTLM-jelszó kivonatának szinkronizálását a Azure AD Domain Services-példányon.  Az NTLM jelszó-kivonatok szinkronizálásának letiltásával kapcsolatos további információkért olvassa el [Az Azure ad tartományi szolgáltatások által felügyelt tartomány biztonságossá tétele](secure-your-domain.md)című témakört.
 >
 >
 
 ## <a name="next-steps"></a>További lépések
-* [Szinkronizálás az Azure AD tartományi szolgáltatások ismertetése](synchronization.md)
+* [A Azure AD Domain Services szinkronizálásának megismerése](synchronization.md)

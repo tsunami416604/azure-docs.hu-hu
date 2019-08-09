@@ -9,47 +9,74 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8a4f67290e93d8b296added9023fe9b6947ba02c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9f1188fcf2aa24791ca5181f5c94a1b0f6b15dc1
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638684"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882069"
 ---
 # <a name="create-a-map"></a>Térkép létrehozása
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre térképet és animálhat egy térképet.  
 
-## <a name="understand-the-code"></a>A kód értelmezése
+## <a name="loading-a-map"></a>Térkép betöltése
 
-Kétféleképpen hozhat létre térképet. A Térkép kameráját beállíthatja a középpont és a nagyítás szintjének megadásával, vagy megadhatja a Térkép kamera-határait a délnyugati és északkeleti határoló pontok megadásával.
+A Térkép betöltéséhez hozzon létre egy új, a [map osztály](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)egy példányát. A térképnek a DIV-elem AZONOSÍTÓjának inicializálásakor a Térkép és a leképezés betöltéséhez használni kívánt beállítások megadása után kell megadni a leképezést. Ha a `atlas` névtérben nincs megadva az alapértelmezett hitelesítési információ, ezeket az adatokat a térképi beállításokban kell megadni a Térkép betöltésekor. A Térkép a teljesítmény érdekében aszinkron módon több erőforrást is betölt. Ilyenkor a Map-példány létrehozása után csatoljon egy `ready` vagy `load` egy eseményt a térképhez, majd adja hozzá az eseménykezelő térképéhez kapcsolódó további kódokat. Az `ready` esemény akkor következik be, amikor a térképnek elegendő erőforrása van betöltve a programozott módon való interakcióhoz. Az `load` esemény akkor következik be, amikor a Térkép kezdeti nézete befejeződött. 
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Alapszintű Térkép terhelése" src="//codepen.io/azuremaps/embed/rXdBXx/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg <a href='https://codepen.io/azuremaps/pen/rXdBXx/'></a> a toll alapszintű leképezésének terhelését Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+> [!TIP]
+> Több Térkép is betölthető ugyanarra az oldalra, és mindegyik használhatja ugyanazt a vagy a különböző hitelesítési és nyelvi beállításokat.
+
+## <a name="show-a-single-copy-of-the-world"></a>A világ egyetlen példányának megjelenítése
+
+Ha a Térkép széles képernyőre van nagyítva, a világ több példánya is vízszintesen jelenik meg. Ez nagy a legtöbb forgatókönyvhöz, de néhány alkalmazás esetében érdemes lehet csak egyetlen példányt látni a világból. Ezt úgy teheti meg, hogy `renderWorldCopies` `false`a Maps beállítást a értékre állítja.
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="renderWorldCopies = false" src="//codepen.io/azuremaps/embed/eqMYpZ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a <a href='https://codepen.io'>CodePen</a>-on található <a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderWorldCopies = false</a> () értéket a következőben: Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>).
+</iframe>
+
+## <a name="controlling-the-map-camera"></a>A Térkép kamera vezérlése
+
+A Térkép megjelenített területét kétféleképpen állíthatja be a kamera használatával. Megadhatja a kamera beállításait, például a középpontot és a nagyítást, amikor betölti a `setCamera` térképet, vagy a Térkép betöltését követően bármikor meghívja a lehetőséget, hogy programozott módon frissítse a Térkép nézetét.  
 
 <a id="setCameraOptions"></a>
 
 ### <a name="set-the-camera"></a>A kamera beállítása
 
+A következő kódban létrejön egy [leképezési objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) , és a középpont és a nagyítási beállítások vannak megadva. A Térkép tulajdonságai, például a középpont és a nagyítási szint a [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)részei.
+
+<br/>
+
 <iframe height='500' scrolling='no' title='Térkép létrehozása a CameraOptions használatával' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a <a href='https://codepen.io'>CodePen</a>-on<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>keresztül `CameraOptions` </a>Azure Location based Services () használatával.
 </iframe>
-
-A fenti kódban a [Térkép objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) a-on keresztül `new atlas.Map()` jön létre, a középpont és a nagyítás pedig be van állítva. A Térkép tulajdonságai, például a középpont és a nagyítási szint a [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)részei.
 
 <a id="setCameraBoundsOptions"></a>
 
 ### <a name="set-the-camera-bounds"></a>A kamera határainak beállítása
 
+A következő kódban a [Térkép objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) a-on keresztül `new atlas.Map()`épül fel. Térképi tulajdonságok, `CameraBoundsOptions` például a Térkép osztály [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) függvényében definiálhatók. A határértékek és a kitöltés tulajdonságai a használatával `setCamera`állíthatók be.
+
+<br/>
+
 <iframe height='500' scrolling='no' title='Térkép létrehozása a CameraBoundsOptions használatával' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a <a href='https://codepen.io'>CodePen</a>-on<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>keresztül `CameraBoundsOptions` </a>Azure Maps () használatával.
 </iframe>
 
-A fenti kódban a [Térkép objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) a-on keresztül `new atlas.Map()`épül fel. Térképi tulajdonságok, `CameraBoundsOptions` például a Térkép osztály [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) függvényében definiálhatók. A határértékek és a kitöltés tulajdonságai a használatával `setCamera`állíthatók be.
-
 ### <a name="animate-map-view"></a>Animálási Térkép nézet
+
+A következő kódban az első kód blokk létrehoz egy térképet, és beállítja a Térkép stílusát, a középpontot és a nagyítási értékeket. A második blokkban az animálás gombra kattintva létrejön egy Click eseménykezelő. Ha erre a gombra kattint, a rendszer a setCamera függvényt a [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions), [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions)véletlenszerű értékekkel hívja meg.
+
+<br/>
 
 <iframe height='500' scrolling='no' title='Animálási Térkép nézet' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Lásd a toll <a href='https://codepen.io/azuremaps/pen/WayvbO/'>animálása Térkép nézetet</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
-
-A fenti kódban az első kód blokk egy [Térkép objektumot](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) hoz létre a használatával `new atlas.Map()`. A Térkép tulajdonságai, például a középpont és a nagyítási szint a [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)részei. `CameraOptions`a Map konstruktorban vagy a Map osztály [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) függvényében adható meg. A [Térkép stílusa](https://docs.microsoft.com/azure/azure-maps/supported-map-styles) a következőre `road`van beállítva:.
-
-A második kódrészlet egy animálási leképezési függvényt hoz létre, amely a [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions) a [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) függvénnyel való definiálásával animál a Térkép nézetben. A függvényt a "animálási Térkép" gomb aktiválja, hogy minden kattintás után véletlenszerű nagyítási szintet állítson elő.
 
 ## <a name="try-out-the-code"></a>A kód kipróbálása
 
@@ -64,10 +91,16 @@ További információ a cikkben használt osztályokról és módszerekről:
 > [!div class="nextstepaction"]
 > [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
+> [!div class="nextstepaction"]
+> [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)
+
+> [!div class="nextstepaction"]
+> [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions)
+
 Az alkalmazás funkcióinak hozzáadásához tekintse meg a kód példáit:
 
 > [!div class="nextstepaction"]
-> [Válasszon egy leképezési stílust](choose-map-style.md)
+> [A Térkép stílusának módosítása](choose-map-style.md)
 
 > [!div class="nextstepaction"]
-> [Leképezési vezérlők hozzáadása](map-add-controls.md)
+> [Vezérlőelemek hozzáadása a térképhez](map-add-controls.md)

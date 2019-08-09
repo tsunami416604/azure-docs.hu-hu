@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5dc1c3fb7ae12c36a8c1fe383290435c03ee0c4
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 906ab4da941c6a0e1bc98f2f724141c719d04b89
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741367"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879423"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: Az Azure AD-csatlakozás implementálásának megtervezése
 
@@ -75,6 +75,10 @@ AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat:`/a
  `/adfs/services/trust/13/certificatemixed`
 
 Ha az identitás-szolgáltató nem támogatja ezeket a protokollokat, az Azure AD JOIN nem működik natív módon. A Windows 10 1809-től kezdve a felhasználók az SAML-alapú identitás-szolgáltatóval bejelentkezhetnek egy Azure AD-hez csatlakoztatott eszközre a [Windows 10-es webes bejelentkezés](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)használatával. Jelenleg a webes bejelentkezés előzetes verziójú funkció, ezért nem ajánlott éles környezetekben üzemelő példányokhoz.
+
+>[!NOTE]
+> Az Azure AD JOIN jelenleg nem működik, [mert a külső hitelesítő szolgáltatókkal konfigurált AD FS 2019 elsődleges hitelesítési módszer](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Az Azure AD-hez való csatlakozás alapértelmezett értéke a jelszó-hitelesítés elsődleges módszerként, amely hitelesítési hibákat eredményez ebben a forgatókönyvben
+
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>Intelligens kártyák és tanúsítványalapú hitelesítés
 

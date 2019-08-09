@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 07/17/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 1e4227578b078dde64f9a8c041eeea57a28fe1e0
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: fe3d47d41d10a3abc8c9c889081af2db337963ad
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68402343"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883770"
 ---
 <!-- This contains intro text for the "Get an IoT hub connection string" section in the iot-hub-lang-lang-module-twin-getstarted.md files-->
 
-Ebben a cikkben egy háttér-szolgáltatást hoz létre, amely hozzáadja az eszközt az identitás-beállításjegyzékben, majd hozzáadja a modult az eszközhöz. Ezeknek a műveleteknek a végrehajtásához a szolgáltatás a **beállításjegyzék írási** engedélyét igényli. Alapértelmezés szerint minden IoT Hub egy **registryReadWrite** nevű megosztott hozzáférési házirenddel jön létre, amely megadja ezt az engedélyt.
+Ebben a cikkben egy olyan háttér-szolgáltatást hoz létre, amely hozzáadja az eszközt az identitás-beállításjegyzékben, majd hozzáadja a modult az eszközhöz. A szolgáltatáshoz a **beállításjegyzék írási** engedélye szükséges. Alapértelmezés szerint minden IoT hub egy **registryReadWrite** nevű megosztott hozzáférési házirenddel jön létre, amely megadja ezt az engedélyt.

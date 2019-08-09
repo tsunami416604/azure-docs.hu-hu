@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: 8829f16e580d0b926781ce0a3e9f8e6a63cf3110
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 30f4558339bbfddd2296cd1cb918c6ef8999b67e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853780"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879195"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Jelszó-és fiókzárolási házirendek a felügyelt tartományokban
 Ez a cikk a felügyelt tartományok alapértelmezett jelszavas házirendjeit ismerteti. Emellett ismerteti a szabályzatok konfigurálásának módját is.
@@ -38,7 +38,8 @@ A FGPP használatával a következő beállításokat állíthatja be:
     * Fiókzárolás időtartama
     * Sikertelen bejelentkezési kísérletek száma engedélyezett
     * Sikertelen bejelentkezési próbálkozások számának alaphelyzetbe állítása
-
+    
+A FGPP csak a közvetlenül az Azure AD DSban létrehozott felhasználókat érinti. A jelszó-bonyolultsági beállítások nem érintik a Felhőbeli felhasználókat és a tartományi felhasználókat, akik az Azure AD-ben szinkronizálva vannak az Azure AD DS felügyelt tartományba. A FGPP a csoportok társítása az Azure AD DS felügyelt tartományon keresztül történik, és az elvégzett módosítások a következő felhasználói bejelentkezéskor lesznek alkalmazva. A házirend módosítása nem oldja fel a már kizárt felhasználói fiók zárolását.
 
 ## <a name="default-fine-grained-password-policy-settings-on-a-managed-domain"></a>Alapértelmezett részletes jelszóházirend-beállítások a felügyelt tartományokban
 Az alábbi képernyőfelvételen a Azure AD Domain Services felügyelt tartományon konfigurált alapértelmezett részletes jelszóházirendek láthatók.

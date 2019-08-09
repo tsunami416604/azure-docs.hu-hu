@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 4/3/2019
 ms.author: dacurwin
-ms.openlocfilehash: 71a33b7263cd7a3b2f5e39ce9d24df11a7d6283c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 5c6e3ef74ea2d77ba03526e05145fe6faa61c050
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688606"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882063"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Titkosított Azure-beli virtuális gép biztonsági mentése és visszaállítása
 
@@ -130,7 +130,7 @@ Engedélyek beállítása:
 2. Válassza ki a titkosított virtuális géphez társított kulcstartót.
 3. Válassza a **hozzáférési szabályzatok** > **új hozzáadása**elemet.
 4. Válassza a **résztvevő kiválasztása**lehetőséget, majd írja be a **biztonsági mentés kezelése**elemet.
-5. Válassza a **biztonsági mentési felügyeleti szolgáltatás** > **elemet.**
+5. Válassza a **biztonsági mentési felügyeleti szolgáltatás** > elemet.
 
     ![Backup szolgáltatás kiválasztása](./media/backup-azure-vms-encryption/select-backup-service.png)
 
@@ -154,10 +154,11 @@ A titkosított virtuális gépeket a következőképpen állíthatja vissza:
 2. Ezután tegye a következők egyikét:
     - A visszaállítási művelet során létrehozott sablon segítségével testre szabhatja a virtuális gép beállításait, és aktiválhatja a virtuális gépek telepítését. [További információk](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
     - Hozzon létre egy új virtuális gépet a helyreállított lemezekről a PowerShell használatával. [További információk](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+    - Linux rendszerű virtuális gépek esetén állítsa alaphelyzetbe az ADE-bővítményt, hogy az adatlemezek nyitva és csatlakoztatva legyenek. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha bármilyen problémába ütközik, tekintse át a
+Ha bármilyen problémába ütközik, tekintse át a következő cikkeket:
 
 - [Gyakori hibák](backup-azure-vms-troubleshoot.md) a titkosított Azure-beli virtuális gépek biztonsági mentése és visszaállítása során.
 - [Azure VM-ügynök/biztonsági mentési bővítményekkel](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) kapcsolatos problémák.
