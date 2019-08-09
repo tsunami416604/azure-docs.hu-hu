@@ -26,7 +26,7 @@ A következőhöz használhatja a a Pythonhoz készült rendellenesség-Kiderít
 * Az idősorozat-adatkészlet összes rendellenességének észlelése batch-kérelemként
 * Az idősorozat legújabb adatpontjának anomália állapotának észlelése
 
-[Könyvtár](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | -dokumentációs[függvénytár](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [-csomag (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [mintái](https://github.com/Azure-Samples/anomalydetector)
+[Könyvtár](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [-dokumentációs függvénytár](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [-csomag (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [mintái](https://github.com/Azure-Samples/anomalydetector)
 
 ## <a name="prerequisites"></a>Előfeltételek
 

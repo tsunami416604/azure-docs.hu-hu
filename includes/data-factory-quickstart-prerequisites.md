@@ -52,14 +52,14 @@ Ebben a rövid útmutatóban az Azure Storage-fiók nevét és kulcsát használ
 #### <a name="create-a-blob-container"></a>Blobtároló létrehozása
 Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre az Azure Blob Storage-ban.
 
-1. A -  >  ****  *\<fiók neve >* **hozzáférési kulcsok** oldal oldalsávján válassza az Áttekintés**Blobok**lehetőséget.
+1. A -  >   *\<fiók neve >* **hozzáférési kulcsok** oldal oldalsávján válassza az Áttekintés**Blobok**lehetőséget.
 2. A  *\<fiók neve >*  - **Blobok** lap eszköztárán válassza a **tároló**elemet.
 3. Az **Új tároló** párbeszédablakban adja meg az **adftutorial** nevet, és kattintson az **OK** gombra.  -   *A\<fiók neve >* **Blobok** lap frissül, hogy tartalmazza a **adftutorial** a tárolók listájában.
 
    ![Tárolók listája](media/data-factory-quickstart-prerequisites/list-of-containers.png)
 
 #### <a name="add-an-input-folder-and-file-for-the-blob-container"></a>Bemeneti mappa és fájl hozzáadása a blob-tárolóhoz
-Ebben a szakaszban létrehoz egy **input** nevű mappát az imént létrehozott tárolóban, majd feltölt egy mintát a bemeneti mappába. Mielőtt elkezdené, nyisson meg egy szövegszerkesztőt, **** például a jegyzettömböt, és hozzon létre egy **EMP. txt** nevű fájlt az alábbi tartalommal:
+Ebben a szakaszban létrehoz egy **input** nevű mappát az imént létrehozott tárolóban, majd feltölt egy mintát a bemeneti mappába. Mielőtt elkezdené, nyisson meg egy szövegszerkesztőt,például a jegyzettömböt, és hozzon létre egy **EMP. txt** nevű fájlt az alábbi tartalommal:
 
 ```emp.txt
 John, Doe
@@ -68,7 +68,7 @@ Jane, Doe
 
 Mentse a fájlt a **C:\ADFv2QuickStartPSH** mappába. (Ha a mappa még nem létezik, hozza létre.) Ezután térjen vissza a Azure Portal, és kövesse az alábbi lépéseket:
 
-1.  -   *A\<fiók neve >* **Blobok** oldalon, ahol abbahagyta, válassza a **adftutorial** elemet a tárolók frissített listájából. (Ha bezárta az ablakot, vagy egy másik lapra lépett, jelentkezzen [](https://portal.azure.com) be újra a Azure Portalba, válassza a **minden szolgáltatás** > **Storage** > **Storage-fiókok**lehetőséget, válassza ki a Storage-fiókot, majd válassza a **Blobok** elemet. **adftutorial.** )  > 
+1.  -   *A\<fiók neve >* **Blobok** oldalon, ahol abbahagyta, válassza a **adftutorial** elemet a tárolók frissített listájából. (Ha bezárta az ablakot, vagy egy másik lapra lépett, jelentkezzen be újra a [Azure Portalba](https://portal.azure.com), válassza a **minden szolgáltatás** > **Storage** > **Storage-fiókok**lehetőséget, válassza ki a Storage-fiókot, majd válassza a **Blobok** elemet. **adftutorial.** )  > 
 2. A **adftutorial** -tároló lapja eszköztárán válassza a **feltöltés**lehetőséget.
 3. A **blob feltöltése** lapon kattintson a **fájlok** mezőre, majd keresse meg és válassza ki az **EMP. txt** fájlt.
 4. Bontsa ki a **speciális** fejlécet. A lap ekkor megjelenik:

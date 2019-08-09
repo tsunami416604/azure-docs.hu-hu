@@ -133,12 +133,14 @@
       items:
         - name: Az androidos térképvezérlő használatának első lépései
           href: how-to-use-android-map-control-library.md
+        - name: A térkép stílusának módosítása
+          href: set-android-map-styles.md
         - name: Szimbólumréteg hozzáadása
           href: how-to-add-symbol-to-android-map.md
         - name: Alakzatok hozzáadása
           href: how-to-add-shapes-to-android-map.md
-        - name: A térkép stílusának módosítása
-          href: set-android-map-styles.md
+        - name: Mozaikréteg hozzáadása
+          href: how-to-add-tile-layer-android-map.md
 - name: Referencia
   items:
     - name: API- és paraméterbővítmények
