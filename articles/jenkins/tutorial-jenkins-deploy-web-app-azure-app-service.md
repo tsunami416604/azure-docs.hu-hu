@@ -8,12 +8,12 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 019c4a8f77f2664c68dcc6499fb2f27cc0d1447c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 51ca9602ff155bf61eb28a59a97faa7a06322c7a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326922"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855175"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Oktatóanyag: Üzembe helyezés a GitHubról Azure App Service a Jenkins folyamatos integrációja és üzembe helyezése révén
 
@@ -68,7 +68,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz ezekre az elemekre:
 
    Ha ezek a beépülő modulok nem jelennek meg, győződjön meg arról, hogy még nincsenek telepítve a **telepített** lapon.
 
-1. A kiválasztott beépülő modulok telepítéséhez válassza a **Letöltés most lehetőséget, és telepítse újra a telepítést**.
+1. A kiválasztott beépülő modulok telepítéséhez válassza a **Letöltés most lehetőséget, majd az újraindítás után telepítse a telepítést**.
 
 1. Miután elkészült, a Jenkins menüben válassza a **Jenkins kezelése** lehetőséget, hogy a későbbi lépésekhez térjen vissza a Jenkins-felügyeleti oldalára.
 
@@ -102,7 +102,7 @@ Ahhoz, hogy a Jenkins figyelje a GitHubot, és válaszoljon arra, amikor új vé
 
    ![GitHub-kiszolgáló hozzáadása](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
 
-1. Ha nincs kiválasztva a **hookok kezelése** tulajdonság, válassza ki ezt a tulajdonságot. Válassza a **speciális** lehetőséget, hogy más beállításokat is megadhat. 
+1. Ha nincs kiválasztva a **hookok kezelése** tulajdonság, válassza ki ezt a tulajdonságot. Válassza a **speciális** lehetőséget, így további beállításokat is megadhat. 
 
    ![További beállításokért válassza a "speciális" lehetőséget.](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
 
@@ -170,7 +170,7 @@ A **`create-for-rbac`** parancs által generált kimenet:
    | **Bérlő azonosítója** | <*yourAzureActiveDirectoryTenant-ID*> | A `tenant` Azure Active Directory-bérlő GUID-értéke | 
    | **Azonosító** | <*yourAzureServicePrincipalName*> | Az `displayName` Azure-szolgáltatásnév értéke | 
 
-1. Az egyszerű szolgáltatás működésének ellenőrzéséhez válassza a **szolgáltatásnév ellenőrzése**lehetőséget. Ha elkészült, kattintson **az OK gombra**.
+1. Az egyszerű szolgáltatás működésének ellenőrzéséhez válassza a **szolgáltatásnév ellenőrzése**lehetőséget. Amikor elkészült, válassza az **OK** lehetőséget.
 
 Ezután hozza létre a Jenkins-folyamatot, amely létrehozza és telepíti az alkalmazást.
 
@@ -200,7 +200,7 @@ A Jenkins-ben hozza létre az alkalmazás felépítéséhez és üzembe helyezé
 
       ![Válassza a "környezet előkészítése a futtatáshoz" és a környezeti változók beállítása lehetőséget.](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-run.png)
 
-1. Ha elkészült, kattintson a **Mentés** gombra.
+1. Amikor elkészült, válassza a **Mentés** lehetőséget.
 
 Következő lépésként hozzon létre Build-és üzembe helyezési parancsfájlokat a Jenkins számára.
 
@@ -273,7 +273,7 @@ Most adja meg azt a létrehozási és üzembe helyezési parancsfájlt, amelyet 
 
    ![Pont folyamata parancsfájlban](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
 
-1. Ha elkészült, kattintson a **Mentés** gombra.
+1. Amikor elkészült, válassza a **Mentés** lehetőséget.
 
 Ezután hozza létre és telepítse az alkalmazást Azure App Servicere. 
 
@@ -309,7 +309,7 @@ Ezután hozza létre és telepítse az alkalmazást Azure App Servicere.
 
    `complete/src/main/java/Hello/Application.java`
    
-1. A GitHub jobb felső sarkában válassza a **fájl szerkesztése**lehetőséget.
+1. A GitHub jobb felső sarkában válassza **a fájl szerkesztése**lehetőséget.
 
 1. Végezze el ezt a `commandLineRunner()` módosítást a metóduson, és véglegesítse a `master` változást a tárház ágában. Ez a commit `master` in the Branch megkezdi a Jenkins-ben való kiépítést. 
    

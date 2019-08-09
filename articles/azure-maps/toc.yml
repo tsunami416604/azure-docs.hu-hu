@@ -105,6 +105,8 @@
               href: clustering-point-data-web-sdk.md
             - name: Adatvezérelt stíluskifejezések használata
               href: data-driven-style-expressions-web-sdk.md
+            - name: Rendszerképsablonok használata
+              href: how-to-use-image-templates-web-sdk.md
             - name: Kép átfedése
               href: map-add-image-layer.md
             - name: Csemperétegek hozzáadása

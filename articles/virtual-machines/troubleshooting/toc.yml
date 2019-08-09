@@ -65,13 +65,19 @@
       href: detailed-troubleshoot-ssh-connection.md
 - name: Gyakori hibaüzenetek
   href: error-messages.md
-- name: Windows rendszerű virtuális gépek teljesítményproblémái
+- name: Virtuális gépek teljesítményproblémái
   href: performance-diagnostics.md
   items:
-    - name: A PerfInsights használata
-      href: how-to-use-perfInsights.md
-    - name: Teljesítménydiagnosztikai bővítmény
-      href: performance-diagnostics-vm-extension.md
+    - name: Windows
+      items:
+        - name: A PerfInsights használata
+          href: how-to-use-perfinsights.md
+        - name: Teljesítménydiagnosztikai bővítmény
+          href: performance-diagnostics-vm-extension.md
+    - name: Linux
+      items:
+        - name: A PerfInsights használata
+          href: how-to-use-perfinsights-linux.md
 - name: A Windows rendszerű virtuálisgép-ügynök offline telepítése
   href: install-vm-agent-offline.md
 - name: Virtuális gép ismételt üzembe helyezése

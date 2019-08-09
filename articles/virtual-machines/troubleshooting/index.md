@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
-ms.openlocfilehash: 47db174042f7dd2e9d1bd1503c8e8b8f635b4dbe
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1db5829abd52a1b010d38dd8e9151ab2df3f1de5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705751"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854411"
 ---
 # <a name="troubleshooting-azure-virtual-machines"></a>Azure-beli virtuális gépek hibaelhárítása
 
@@ -34,10 +34,14 @@ ms.locfileid: "67705751"
     - [Az SSH hibaelhárítása](troubleshoot-ssh-connection.md)
     - [Az SSH részletes hibaelhárítása](detailed-troubleshoot-ssh-connection.md)
     - [Gyakori hibaüzenetek](error-messages.md)
-    - [Windows rendszerű virtuális gépek teljesítményproblémái](performance-diagnostics.md  )
-    - [A PerfInsights használata](how-to-use-perfInsights.md)
-    - [Teljesítménydiagnosztikai bővítmény](performance-diagnostics-vm-extension.md)
 - [A Windows rendszerű virtuálisgép-ügynök offline telepítése](install-vm-agent-offline.md)
+- Virtuális gép teljesítményproblémáinak elhárítása
+    - [Virtuális gépek teljesítményproblémái](performance-diagnostics.md)
+    - Windows
+        - [A PerfInsights használata](how-to-use-perfinsights.md)
+        - [Teljesítménydiagnosztikai bővítmény](performance-diagnostics-vm-extension.md)
+    - Linux
+        - [A PerfInsights használata](how-to-use-perfinsights-linux.md)
 - Virtuális gép ismételt üzembe helyezése
     - [Linux](redeploy-to-new-node-linux.md)
     - [Windows](redeploy-to-new-node-windows.md)
