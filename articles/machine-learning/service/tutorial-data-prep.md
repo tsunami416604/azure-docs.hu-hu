@@ -11,12 +11,12 @@ ms.author: sihhu
 ms.reviewer: trbye
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6692f64dc7e7fa2799f9095af39171a2ddc0e76d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: aacb7cbaf3d5864d39d00bc341615f2a0e4e82f2
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360920"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855918"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Oktatóanyag: Adatelőkészítés a regressziós modellezéshez
 
@@ -56,7 +56,7 @@ Könnyedén megkezdheti saját felhőalapú notebook-kiszolgálójának megkezd�
 
 Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.  A lépések elvégzése után futtassa az **oktatóanyagok/Regression-part1-Data-PREP. ipynb** notebookot.
 
-1. A Miniconda-környezet létrehozásához és az SDK telepítéséhez hajtsa végre a [Azure Machine learning Python](setup-create-workspace.md#sdk) rövid útmutatójának telepítési lépéseit.  Ha szeretné, kihagyhatja a **Munkaterület létrehozása** szakaszt, de erre az oktatóanyag-Sorozat 2. [részében](tutorial-auto-train-models.md) szüksége lesz rá.
+1. Hajtsa végre a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)telepítési lépéseit.
 1. A `azureml-dataprep` csomag automatikusan települ az SDK telepítésekor.
 1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
 
@@ -100,10 +100,11 @@ Töltsön le két különböző New York-i taxi-adatkészletet a adatfolyam Obje
 
 ```python
 from IPython.display import display
-dataset_root = "https://dprepdata.blob.core.windows.net/demo"
 
-green_path = "/".join([dataset_root, "green-small/*"])
-yellow_path = "/".join([dataset_root, "yellow-small/*"])
+green_path = "https://dprepdata.blob.core.windows.net/demo/green-small/*"])
+yellow_path = "https://dprepdata.blob.core.windows.net/demo/yellow-small/*"])
+
+# (optional) Download and view a subset of the data: https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
 
 green_df_raw = dprep.read_csv(
     path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
@@ -113,9 +114,6 @@ yellow_df_raw = dprep.auto_read_file(path=yellow_path)
 display(green_df_raw.head(5))
 display(yellow_df_raw.head(5))
 ```
-
-> [!Note]
-> Az ebben a példában szereplő URL-cím nem teljes URL-cím. Ehelyett a blobban található demó mappára hivatkozik. Néhány adat teljes URL-címe https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
 
 Egy `Dataflow` objektum hasonló egy dataframe, és az adatokra vonatkozó, lustán kiértékelt, nem módosítható műveletek sorozatát jelöli. A műveletek hozzáadhatók a különböző transzformációs és szűrési módszerek meghívásával. Egy művelet `Dataflow` hozzáadásának eredménye mindig egy új `Dataflow` objektum.
 

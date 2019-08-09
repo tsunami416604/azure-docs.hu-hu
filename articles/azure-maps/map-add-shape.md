@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0696eba4f3cca7beedc2efcda0182ab82b3d69d9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 377cfbf93e45872e34242f9cd2432195b6ba6f92
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638697"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849118"
 ---
 # <a name="add-a-shape-to-a-map"></a>Alakzat hozzáadása térképhez
 
@@ -46,6 +46,9 @@ Ez a minta bemutatja, hogyan adhat hozzá nyíl ikonokat a Térkép egyik soráh
 <iframe height="500" style="width: 100%;" scrolling="no" title="Nyíl megjelenítése a vonal mentén" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a tollat mutató nyilat a<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io/azuremaps/pen/drBJwX/'>vonal mentén</a> Azure Maps () alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+> [!TIP]
+> A Azure Maps web SDK számos testreszabható képsablont biztosít, amelyeket a szimbólum rétegben használhat. További információért lásd a [képsablonok használata](how-to-use-image-templates-web-sdk.md) című dokumentumot.
 
 ### <a name="line-stroke-gradient"></a>Körvonal átmenetének hozzáadása sorba
 
@@ -113,6 +116,10 @@ A sokszögek színnel való kitöltése mellett a képmintázat is használható
 Tekintse meg a toll sokszögének kitöltésére szolgáló <a href='https://codepen.io/azuremaps/pen/JzQpYX/'>mintát</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+
+> [!TIP]
+> A Azure Maps web SDK számos testreszabható képsablont biztosít, amelyeket kitöltési mintázatként használhat. További információért lásd a [képsablonok használata](how-to-use-image-templates-web-sdk.md) című dokumentumot.
+
 ### <a name="customize-a-polygon-layer"></a>Sokszög-réteg testreszabása
 
 A sokszög rétegnek csak néhány stílusa van. Itt látható egy eszköz, amellyel kipróbálhatja őket.
@@ -165,11 +172,11 @@ Egy `Shape` osztály egy geometriát [](https://docs.microsoft.com/javascript/ap
 
 A fenti kód első blokkja egy Térkép objektumot hoz létre. Ehhez útmutatást a [Térkép létrehozása](./map-create.md) című témakörben találhat.
 
-Az a [pont az osztály](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) egyik [funkciója](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) . A kód második blokkja inicializálja a HTML-csúszka elem RADIUS-értékét, majd egy [alakzat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) osztály objektumban rajzolja és csomagolja ki a pont objektumot.
+Az a pont az osztály egyik [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) [funkciója](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) . A kód második blokkja inicializálja a HTML-csúszka elem RADIUS-értékét, majd egy [alakzat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) osztály objektumban rajzolja és csomagolja ki a pont objektumot.
 
 A harmadik kód blokk olyan függvényt hoz létre, amely a HTML-tartomány csúszka elemének értékét veszi át, és a sugár értékét a SHAPE osztály [addProperty](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) metódusával módosítja.
 
-A negyedik blokkban az adatforrás-objektum az [adatforrás osztály használatával](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jön létre. A rendszer Ezután hozzáadja a pontot az adatforráshoz.
+A negyedik blokkban az adatforrás-objektum az adatforrás osztály használatával jön létre. [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) A rendszer Ezután hozzáadja a pontot az adatforráshoz.
 
 A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) a térképen lévő adatforrásba burkolt [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) adatfeliratokat jeleníti meg. A kód harmadik blokkja egy sokszög réteget hoz létre. Tekintse meg a sokszögek rétegének tulajdonságait a következő helyen: [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Az adatforrást, a Click eseménykezelőt és a sokszög réteget hozza létre és adja hozzá a térképhez az [eseménykezelőn](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) belül, hogy a pont megjelenjen a teljes terhelés után.
 
@@ -179,3 +186,6 @@ A térképekhez hozzáadandó további példákat a következő cikkekben talál
 
 > [!div class="nextstepaction"]
 > [Adatvezérelt stílusú kifejezések használata](data-driven-style-expressions-web-sdk.md)
+
+> [!div class="nextstepaction"]
+> [A képsablonok használata](how-to-use-image-templates-web-sdk.md)

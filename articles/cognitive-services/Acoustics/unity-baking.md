@@ -3,20 +3,20 @@ title: Projekt akusztikai egység sütni oktatóanyag
 titlesuffix: Azure Cognitive Services
 description: Ez az oktatóanyag leírja az akusztikai és a projekt akusztikai funkcióit az Unity-ben.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2362b3916d1b1f430350d975dc0b61914a777be2
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: e26df58de08d0941b5e3165852ed0b26f8890f66
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706688"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854929"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Projekt akusztikai egység sütni oktatóanyag
 Ez az oktatóanyag leírja az akusztikai és a projekt akusztikai funkcióit az Unity-ben.
@@ -44,7 +44,7 @@ Nyissa meg az **akusztika** ablak **objektumok** lapját. Az objektumok megjelö
 
 Ne tartalmazzon olyan dolgokat, amelyek nem érintik az akusztikai tényezőket, például a láthatatlan ütközési hálókat.
 
-Egy objektumnak a mintavételi számítás időpontjában történő átalakítása (az alábbi mintavételek **lapon)** a sütni eredményekben van rögzítve. A jelenetben megjelölt objektumok bármelyikének áthelyezéséhez újra kell végezni a mintavétel számítását és a jelenet kisütését.
+Egy objektumnak a mintavételi számítás időpontjában történő átalakítása (az alábbi mintavételek lapon) a sütni eredményekben van rögzítve. A jelenetben megjelölt objektumok bármelyikének áthelyezéséhez újra kell végezni a mintavétel számítását és a jelenet kisütését.
 
 ### <a name="mark-the-navigation-mesh"></a>A navigációs háló megjelölése
 Az egység munkafolyamatával létrehozott navigációs rácsvonalak az akusztikai rendszer által lesznek kiválasztva. Ha saját rácsvonalat szeretne használni, az **objektumok** lapról jelölheti meg őket.
@@ -105,7 +105,7 @@ A helyiségben lévő adott anyag visszaverődési ideje fordítottan kapcsolód
 8. Az "egyéni" elemhez rendelt anyagok esetében a csúszka már nem lesz letiltva, és a csúszka használatával vagy egy érték beírásával kiválaszthatja az abszorpciós együtthatót.
 
 ## <a name="calculate-and-review-listener-probe-locations"></a>Figyelő mintavételi helyeinek kiszámítása és áttekintése
-Az anyagok kiosztása után váltson a mintavételek **lapra,** és kattintson a **számítás** gombra a figyelő mintavételi pontjainak szimulációhoz való elhelyezéséhez.
+Az anyagok kiosztása után váltson a mintavételek lapra, és kattintson a **számítás** gombra a figyelő mintavételi pontjainak szimulációhoz való elhelyezéséhez.
 
 ### <a name="what-the-calculate-button-calculates"></a>Mi a "számítás..." gomb kiszámításakor
 A **számítás...** gomb a kiválasztott akusztikus jelenet geometriáját használja a jelenet szimulációhoz való előkészítéséhez:
@@ -136,7 +136,7 @@ A jelenet neve a jelenet a mintavételi pont elhelyezését és a voxelization t
 ### <a name="for-reference-parts-of-the-probes-tab"></a>Hivatkozás: A mintavételek lap részei
 ![A Unity akusztikus mintavételek lapjának képernyőképe](media/probes-tab-detail.png)
 
-1. Az oldal felépítéséhez használt **mintavétel lap gomb**
+1. Az oldal felépítéséhez használt mintavétel lap gomb
 2. A lap használatának rövid leírása
 3. Ezek használatával durva vagy részletes szimulációs megoldást választhat. A durva gyorsabb, de bizonyos kompromisszumokkal rendelkezik. A részletekért lásd az alábbi [sütni](bake-resolution.md) -feloldást.
 4. Válassza ki azt a helyet, ahol az akusztikai adatfájlokat a mező használatával kell elhelyezni. Kattintson a "..." gombra. mappa-választó használata. Az alapértelmezett érték az **eszközök/AcousticsData**. Ezen a helyen a **szerkesztő** almappája is létrejön. További információ az adatfájlokról: az [](#Data-Files) alábbi adatfájlok.
@@ -144,7 +144,7 @@ A jelenet neve a jelenet a mintavételi pont elhelyezését és a voxelization t
 6. A mintavételek kiszámítása után a fenti vezérlőelemek le lesznek tiltva. Kattintson a **Törlés** gombra a számítások törléséhez és a vezérlők engedélyezéséhez, hogy az új beállítások használatával újraszámítsa a beállításokat.
 7. Kattintson a **számítás...** gombra a jelenet voxelize és a mintavételi pont helyeinek kiszámításához. Ez helyileg történik a gépen, és a sütni művelet előtt kell elvégezni.
 
-A Project akusztika ezen verziójában a mintavételek nem helyezhetők manuálisan, és a mintavételek **lapon megadott** automatikus folyamaton keresztül kell elhelyezni.
+A Project akusztika ezen verziójában a mintavételek nem helyezhetők manuálisan, és a mintavételek lapon megadott automatikus folyamaton keresztül kell elhelyezni.
 
 A durva és a részletes megoldással kapcsolatos további részletekért lásd a [sütni](bake-resolution.md) -feloldást ismertető témakört.
 
@@ -162,7 +162,7 @@ Az Azure Batch szolgáltatással a felhőben lévő számítási fürttel is sü
 6. Az Azure batch számítási csomópontjának típusa, amelyet a számításhoz kíván használni. Az Azure-adatközpont helyének támogatnia kell a csomópont típusát. Ha nem biztos benne, hagyja a következőt: **Standard_F8s_v2**.
 7. A számításhoz használni kívánt csomópontok száma. Az itt megadott szám befolyásolja a sütni elvégzéséhez szükséges időt, és a Azure Batch fő foglalása korlátozza. Az alapértelmezett foglalás csak két 8 fő csomópontot vagy a 1 16 Core csomópontot teszi lehetővé, de bővíthető. Az alapvető foglalási korlátozásokkal kapcsolatos további információkért lásd: [Azure batch fiók létrehozása](create-azure-account.md).
 8. Jelölje be ezt a jelölőnégyzetet, ha a számítási készletet [alacsony prioritású csomópontok](https://docs.microsoft.com/azure/batch/batch-low-pri-vms)használatára szeretné konfigurálni. Az alacsony prioritású számítási csomópontok jóval alacsonyabb költségeket jelentenek, de előfordulhat, hogy nem mindig lesznek elérhetők, vagy bármikor előzik.
-9. A jelenet mintavételi száma a mintavételek **lapon számítva** . A mintavételek száma határozza meg, hogy hány szimulációt kell futtatni a felhőben. A mintavételnél több csomópontot nem adhat meg.
+9. A jelenet mintavételi száma a mintavételek lapon számítva. A mintavételek száma határozza meg, hogy hány szimulációt kell futtatni a felhőben. A mintavételnél több csomópontot nem adhat meg.
 10. Az eltelt idő, ameddig a feladatainak a felhőben való futtatása várható. Ez nem tartalmazza a csomópont indítási idejét. Ha a feladatot elindítják, akkor ez azt mutatja, hogy mennyi ideig kell lennie ahhoz, hogy vissza lehessen állítani az eredményeket. Vegye figyelembe, hogy ez csak becslés.
 11. A szimulációk futtatásához szükséges számítási idő teljes mennyisége. Ez az Azure-ban használni kívánt csomópont-számítási idő teljes mennyisége. Ennek az értéknek a használatáról további információt az alábbi, a [sütni-költségeket](#Estimating-bake-cost) ismertető cikkben talál.
 12. Az üzenetből megtudhatja, hogy a rendszer hová menti a sütni eredményeit a feladatok befejeződése után.
@@ -209,14 +209,14 @@ A Docker telepítése és konfigurálása azon a számítógépen, amely a szimu
 A sütni folyamat során négy adatfájl jön létre. Az egyik tartalmazza a szimuláció eredményeit, és a címmel ellátott hajókat. A többiek az Unity Editor kapcsolódó adatait tárolják.
 
 Szimulációs eredmény:
-* **Eszközök\_/AcousticsData/akusztika [SceneName]. ACE. Bytes**: Ez a futásidejű keresési táblázat, amely a szimuláció eredményeit és a voxelized akusztikai jelenet elemeit tartalmazza. A fájl helye és neve módosítható a mintavételek **lapon lévő** mezők használatával.
+* **Eszközök\_/AcousticsData/akusztika [SceneName]. ACE. Bytes**: Ez a futásidejű keresési táblázat, amely a szimuláció eredményeit és a voxelized akusztikai jelenet elemeit tartalmazza. A fájl helye és neve módosítható a mintavételek lapon lévő mezők használatával.
 
 Ügyeljen arra, hogy ne törölje a szimulációs eredményhalmaz fájlját. Nem lehet helyreállítani, kivéve a jelenet kisütését.
 
 Szerkesztői adatfájlok:
 * **Assets/Editor/[SceneName]\_AcousticsParameters.asset**: Ez a fájl az akusztikai felhasználói felület mezőiben megadott adat tárolására szolgáló mezőket tárolja. A fájl helye és neve nem módosítható.
-* **Assets/AcousticsData/Editor/Acoustics_ [SceneName]. Vox**: Ez a fájl tárolja a voxelized akusztikai geometriáját, valamint a mintavétel **...** gomb használatával kiszámított anyag-tulajdonságokat a mintavételek lapon. A fájl helye és neve módosítható a mintavételek **lapon lévő** mezők használatával.
-* **Eszközök\_/AcousticsData/szerkesztő/akusztika [SceneName]\_config. XML**: Ez a fájl a mintavétel **..** . gomb használatával a mintavételek **lapon lévő** szimulációs paramétereket tárolja. A fájl helye és neve módosítható a mintavételek **lapon lévő** mezők használatával.
+* **Assets/AcousticsData/Editor/Acoustics_ [SceneName]. Vox**: Ez a fájl tárolja a voxelized akusztikai geometriáját, valamint a mintavétel **...** gomb használatával kiszámított anyag-tulajdonságokat a mintavételek lapon. A fájl helye és neve módosítható a mintavételek lapon lévő mezők használatával.
+* **Eszközök\_/AcousticsData/szerkesztő/akusztika [SceneName]\_config. XML**: Ez a fájl a mintavétel **..** . gomb használatával a mintavételek lapon lévő szimulációs paramétereket tárolja. A fájl helye és neve módosítható a mintavételek lapon lévő mezők használatával.
 
 ## <a name="set-up-the-acoustics-lookup-table"></a>Az akusztikai keresési táblázat beállítása
 Húzza át a **projekt akusztikai** paneljét a projekt panelről a jelenetbe:

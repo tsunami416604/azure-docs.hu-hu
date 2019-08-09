@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: overview
 ms.date: 05/24/2019
 ms.author: stevelas
-ms.openlocfilehash: e17b70843fcda1d183de1b81a98da53138835340
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 2fffa3b063969cbe68fb9a405f4198f15b3f9809
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309594"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845209"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikáció az Azure Container Registryben
 
@@ -60,7 +60,7 @@ A Azure Container Registry geo-replikációs funkciójának használatával ezek
 
 * Egyetlen beállításjegyzék kezelése minden régióban:`contoso.azurecr.io`
 * A rendszerkép központi telepítésének egyetlen konfigurációját kezelheti, mivel az összes régió ugyanazt a képurl-címet használta:`contoso.azurecr.io/public/products/web:1.2`
-* Leküldés egyetlen beállításjegyzékbe, míg az ACR kezeli a Geo-replikálást. A regionális webhookok konfigurálásával értesítéseket kaphat az eseményekről bizonyos replikákban. [](container-registry-webhook.md)
+* Leküldés egyetlen beállításjegyzékbe, míg az ACR kezeli a Geo-replikálást. A regionális webhookok konfigurálásával értesítéseket kaphat az adott replikákban lévő eseményekről. [](container-registry-webhook.md)
 
 ## <a name="configure-geo-replication"></a>Aktív georeplikáció konfigurálása
 
@@ -72,7 +72,7 @@ A Geo-replikáció csak a [prémium szintű kibocsátásiegység-forgalmi jegyz�
 
 A prémium szintű beállításjegyzék geo-replikációjának konfigurálásához jelentkezzen be a Azure Portalba https://portal.azure.com a következő címen:.
 
-Navigáljon a Azure Container Registryhoz, és **** válassza a replikálások lehetőséget:
+Navigáljon a Azure Container Registryhoz, ésválassza a replikálások lehetőséget:
 
 ![Replikációk az Azure Portal tárolójegyzékeinek felhasználói felületén](media/container-registry-geo-replication/registry-services.png)
 

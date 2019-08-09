@@ -1,7 +1,7 @@
 ---
-title: MLflow használata Azure Machine Learning szolgáltatással
+title: A MLflow használata a
 titleSuffix: Azure Machine Learning service
-description: A metrikák és összetevők naplózása és modellek üzembe helyezése éles környezetben a MLflow és a Azure Machine Learning szolgáltatás használatával.
+description: Állítsa be a MLflow-t a Azure Machine Learning használatával a metrikák & összetevők naplózásához, és telepítsen modelleket a Databricks, a helyi környezetből vagy a VM-környezetből.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 08/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 55722c35dddcbf8a20f4f51958170938225e87e5
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: dd451f4c7ada3c062862098d4cda5314152be0c0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668392"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882001"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>Metrikák nyomon követése és modellek üzembe helyezése a MLflow és a Azure Machine Learning szolgáltatással (előzetes verzió)
 
@@ -52,13 +52,12 @@ A [MLflow](https://www.mlflow.org) egy nyílt forráskódú kódtár a gépi tan
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Telepítse a MLflow.](https://mlflow.org/docs/latest/quickstart.html)
-* [Telepítse a Azure Machine learning PYTHON SDK-t a helyi számítógépre, és hozzon létre egy Azure Machine learning-munkaterület](setup-create-workspace.md#sdk). Az SDK biztosítja a kapcsolatot a MLflow a munkaterület eléréséhez.
+* [Telepítse a Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) -t a helyi számítógépre, az SDK biztosítja a kapcsolatot a MLflow a munkaterület eléréséhez.
+* [Hozzon létre egy Azure Machine learning-munkaterület](how-to-manage-workspace.md).
 
-## <a name="track-experiment-runs"></a>A kísérlet futtatásának nyomon követése
+## <a name="track-local-runs"></a>Helyi futtatások nyomon követése
 
-A Azure Machine Learning szolgáltatással történő MLflow-követés lehetővé teszi a naplózott metrikák és összetevők tárolását a helyi és távoli futtatásokból a Azure Machine Learning munkaterületen.
-
-### <a name="local-runs"></a>Helyi futtatások
+A Azure Machine Learning szolgáltatással történő MLflow nyomon követheti a naplózott metrikákat és összetevőket a helyi futtatásokból a Azure Machine Learning-munkaterületre.
 
 Telepítse a `azureml-contrib-run` csomagot a MLflow-követés használatára Azure Machine learning a kísérleteken helyileg futtatott Jupyter notebook vagy Kódszerkesztő használatával.
 
@@ -95,7 +94,9 @@ with mlflow.start_run():
     mlflow.log_metric('alpha', 0.03)
 ```
 
-### <a name="remote-runs"></a>Távoli futtatások
+## <a name="track-remote-runs"></a>Távoli futtatások nyomon követése
+
+A Azure Machine Learning szolgáltatással történő MLflow-követés lehetővé teszi a naplózott metrikák és összetevők tárolását a távoli futtatásokból a Azure Machine Learning-munkaterületre.
 
 A távoli futtatások lehetővé teszik, hogy a modelleket nagyobb teljesítményű számításokra, például GPU-t használó virtuális gépekre vagy Machine Learning Compute fürtökre tanítsa. A különböző számítási lehetőségek megismeréséhez lásd: [számítási célok beállítása a modell](how-to-set-up-training-targets.md) betanításához.
 
@@ -136,11 +137,13 @@ Ennek a számítási és betanítási futtatási konfigurációnak `Experiment.s
 run = exp.submit(src)
 ```
 
-### <a name="mlflow-with-azure-databricks-runs"></a>MLflow Azure Databricks futtatásokkal
+## <a name="track-azure-databricks-runs"></a>Azure Databricks futtatások nyomon követése
+
+A Azure Machine Learning szolgáltatással történő MLflow-követés lehetővé teszi a naplózott metrikák és összetevők tárolását a Databrick a Azure Machine Learning munkaterületen.
 
 Ha a Mlflow-kísérleteket Azure Databricks segítségével szeretné futtatni, először létre kell hoznia egy [Azure Databricks-munkaterületet és-fürtöt](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). A fürtben ügyeljen arra, hogy a *azureml-mlflow* függvénytárat a PyPi-ből telepítse, hogy a fürt hozzáférhessen a szükséges függvényekhez és osztályokhoz.
 
-#### <a name="install-libraries"></a>Tárak telepítése
+### <a name="install-libraries"></a>Tárak telepítése
 
 Ha a fürtön szeretné telepíteni a kódtárakat, navigáljon a **tárak** lapra, és kattintson az **új telepítése** parancsra.
 
@@ -150,11 +153,11 @@ A **csomag** mezőbe írja be a következőt: azureml-mlflow, majd kattintson a 
 
  ![mlflow az Azure Machine learning-diagrammal](media/how-to-use-mlflow/install-libraries.png)
 
-#### <a name="notebook-and-workspace-set-up"></a>Jegyzetfüzet és munkaterület beállítása
+### <a name="set-up-your-notebook-and-workspace"></a>A jegyzetfüzet és a munkaterület beállítása
 
 A fürt beállítása után importálja a kísérleti jegyzetfüzetet, nyissa meg, és csatolja hozzá a fürtöt.
 
-A következő kódnak a kísérleti jegyzetfüzetben kell szerepelnie. Ezzel beolvashatja az Azure-előfizetésének részleteit a munkaterület létrehozásához. Ez azt feltételezi, hogy rendelkezik egy meglévő erőforráscsoporthoz és Azure Machine Learning munkaterülettel, különben [létrehozhatja őket](setup-create-workspace.md#portal). 
+A következő kódnak a kísérleti jegyzetfüzetben kell szerepelnie. Ezzel beolvashatja az Azure-előfizetésének részleteit a munkaterület létrehozásához. Ez azt feltételezi, hogy rendelkezik egy meglévő erőforráscsoporthoz és Azure Machine Learning munkaterülettel, különben [létrehozhatja őket](how-to-manage-workspace.md). 
 
 ```python
 import mlflow
@@ -179,7 +182,7 @@ ws = Workspace.get(name=workspace_name,
                    resource_group=resource_group)
 
 ```
-#### <a name="set-mlflow-tracking-uri"></a>MLflow követési URI beállítása
+### <a name="link-mlflow-tracking-to-your-workspace"></a>A MLflow követésének összekapcsolása a munkaterülettel
 Miután létrehozta a munkaterületet, állítsa be a MLflow követési URI-t. Ezzel összekapcsolja a MLflow nyomon követését Azure Machine Learning munkaterületre. Ezt követően minden kísérlet a felügyelt Azure Machine Learning követési szolgáltatásban fog megjelenni.
 
 ```python

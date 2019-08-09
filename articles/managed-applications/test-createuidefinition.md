@@ -1,67 +1,68 @@
 ---
-title: Az Azure által felügyelt alkalmazások a felhasználói felület definíció tesztelése |} A Microsoft Docs
-description: Tesztelje a felhasználói élmény a portálon keresztül az Azure által felügyelt alkalmazás létrehozásának módját ismerteti.
+title: A Azure Managed Applications felhasználói felületi definíciójának tesztelése | Microsoft Docs
+description: Leírja, hogyan lehet tesztelni az Azure által felügyelt alkalmazásnak a portálon keresztül történő létrehozásához szükséges felhasználói élményt.
 author: tfitzmac
 ms.service: managed-applications
 ms.topic: conceptual
-ms.date: 05/26/2019
+ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 99ca319910be2cb20214172826eb40361abe72f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91dd661cf4900512390079751f400f6a9888c452
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257599"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845921"
 ---
-# <a name="test-your-portal-interface-for-azure-managed-applications"></a>A portál felület tesztelése az Azure által felügyelt alkalmazások
+# <a name="test-your-portal-interface-for-azure-managed-applications"></a>A portál felületének tesztelése Azure Managed Applications
 
-Miután [a createUiDefinition.json fájl létrehozása](create-uidefinition-overview.md) a felügyelt alkalmazás a felhasználói élmény tesztelni kell. Tesztelés leegyszerűsítése használja egy védőfal mögötti környezet, amely betölti a fájlt a portálon. Nem kell üzembe helyezni a felügyelt alkalmazás. A védőfal megadja a felhasználói felület az aktuális, teljes képernyős portál élményt nyújt. Vagy a tesztelés a felületet, de egy olyan örökölt nézetet a portál egy PowerShell-parancsfájlt használhatja. Ez a cikk mindkét módszerénél láthatók. A tesztkörnyezet-e az ajánlott módszer az előzetes verzióra a felületet.
+Miután létrehozta a felügyelt alkalmazáshoz tartozó [createUiDefinition. JSON fájlt](create-uidefinition-overview.md) , tesztelni kell a felhasználói élményt. A tesztelés egyszerűsítése érdekében használjon egy sandbox-környezetet, amely betölti a fájlt a portálon. Nem kell ténylegesen telepítenie a felügyelt alkalmazást. A Sandbox a felhasználói felületet mutatja be a jelenlegi, teljes képernyős portálon. Vagy használhat parancsfájlt az illesztőfelület teszteléséhez. Ebben a cikkben mindkét megközelítés látható. A munkaterületet az ajánlott eljárással tekintheti meg a kezelőfelületen.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A **createUiDefinition.json** fájlt. Ha nem ezt a fájlt, másolja a [mintafájl](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json).
+* Egy **createUiDefinition. JSON** fájl. Ha nem rendelkezik ezzel a fájllal, másolja a [](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json)fájlt.
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-## <a name="use-sandbox"></a>Használja a védőfalat
+## <a name="use-sandbox"></a>A homokozó használata
 
-1. Nyissa meg a [létrehozása a felhasználói felület definíció védőfal](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade).
+1. Nyissa meg a [felhasználói felület definíciójának létrehozása Sandboxot](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade).
 
-   ![A védőfal megjelenítése](./media/test-createuidefinition/show-sandbox.png)
+   ![Homokozó megjelenítése](./media/test-createuidefinition/show-sandbox.png)
 
-1. Cserélje le az üres definíciót a createUiDefinition.json fájl tartalmát. Válassza ki **előzetes**.
+1. Cserélje le az üres definíciót a createUiDefinition. JSON fájl tartalmára. Válassza az **előnézet**lehetőséget.
 
-   ![Válassza ki az előzetes verzió](./media/test-createuidefinition/select-preview.png)
+   ![Előnézet kiválasztása](./media/test-createuidefinition/select-preview.png)
 
-1. A létrehozott űrlapon jelenik meg. Lépkedjen végig a felhasználói élményt, és adja meg az értékeket.
+1. Megjelenik a létrehozott űrlap. Áttekintheti a felhasználói élményt, és kitöltheti az értékeket.
 
    ![Űrlap megjelenítése](./media/test-createuidefinition/show-ui-form.png)
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a képernyőn nem jelenik meg kiválasztása után **előzetes**, előfordulhat, hogy szintaktikai hiba. Keresse meg a piros kijelző a megfelelő görgetősávon, és keresse meg a fájlt.
+Ha az űrlap nem jelenik meg az **előnézet**kiválasztása után, lehet, hogy szintaktikai hiba történt. Keresse meg a piros kijelzőt a jobb oldali görgetősávon, és navigáljon hozzá.
 
-![Chyba syntaxe megjelenítése](./media/test-createuidefinition/show-syntax-error.png)
+![Szintaktikai hiba megjelenítése](./media/test-createuidefinition/show-syntax-error.png)
 
-Ha az űrlap nem jeleníti meg, és ehelyett könnycsepp dobja el a felhő ikonja megjelenik, az űrlapon szerepel egy hiba, például a hiányzó tulajdonságot. A böngészőben nyissa meg a Web Developer Tools. A **konzol** a felület fontos üzeneteket jelenít meg.
+Ha az űrlap nem jelenik meg, és helyette egy felhő ikonja jelenik meg a Tear droptel, az űrlap hibával rendelkezik, például hiányzó tulajdonság. Nyissa meg a webes Fejlesztői eszközök a böngészőben. A **konzolon** megjelennek a csatolóval kapcsolatos fontos üzenetek.
 
 ![Hiba megjelenítése](./media/test-createuidefinition/show-error.png)
 
-## <a name="use-test-script"></a>Teszt szkriptjét használja.
+## <a name="use-test-script"></a>Tesztelési parancsfájl használata
 
-A kapcsolat tesztelése a portálon, másolja az alábbi parancsfájlok egyikét a helyi számítógépre:
+Az interfész a portálon való teszteléséhez másolja a következő parancsfájlok egyikét a helyi gépre:
 
-* [PowerShell-példaszkript – közvetlen](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-CreateUIDefinition.ps1)
-* [Azure CLI-példaszkript – közvetlen](https://github.com/Azure/azure-quickstart-templates/blob/master/sideload-createuidef.sh)
+* [PowerShell-oldali betöltési parancsfájl – az modul](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-AzCreateUIDefinition.ps1)
+* [PowerShell-oldal – betöltési parancsfájl – Azure-modul](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-CreateUIDefinition.ps1)
+* [Azure CLI-oldal – betöltési parancsfájl](https://github.com/Azure/azure-quickstart-templates/blob/master/sideload-createuidef.sh)
 
-A portálon a felület fájl megtekintéséhez futtassa a letöltött szkript. A szkript létrehoz egy tárfiókot az Azure-előfizetésben, és feltölti a createUiDefinition.json fájlt a storage-fiókot. A szkript első futtatásakor jön létre a storage-fiók, vagy ha a tárfiók törölve lett. Ha a tárfiók már létezik az Azure-előfizetése, az a parancsfájlt használja. A parancsfájl a portál megnyitja, és betölti a fájlt a tárfiókból.
+Ha szeretné megtekinteni a csatoló fájlját a portálon, futtassa a letöltött parancsfájlt. A szkript létrehoz egy Storage-fiókot az Azure-előfizetésében, és feltölti a createUiDefinition. JSON fájlt a Storage-fiókba. A rendszer létrehozza a Storage-fiókot, amikor a parancsfájlt először futtatja, vagy ha a Storage-fiókot törölték. Ha a Storage-fiók már létezik az Azure-előfizetésben, a szkript újra felhasználja azt. A szkript megnyitja a portált, és betölti a fájlt a Storage-fiókból.
 
-Adja meg a tárfiók helyét, és adja meg a createUiDefinition.json fájlt tartalmazó mappát.
+Adja meg a Storage-fiók helyét, és adja meg a createUiDefinition. JSON fájlt tartalmazó mappát.
 
 PowerShell esetén használja az alábbi parancsot:
 
 ```powershell
-.\SideLoad-CreateUIDefinition.ps1 `
+.\SideLoad-AzCreateUIDefinition.ps1 `
   -StorageResourceGroupLocation southcentralus `
   -ArtifactsStagingDirectory .\100-Marketplace-Sample
 ```
@@ -74,12 +75,12 @@ Azure CLI esetén használja az alábbi parancsot:
   -a .\100-Marketplace-Sample
 ```
 
-Ha a createUiDefinition.json fájl a parancsfájl ugyanabban a mappában, és a tárfiók már létrehozott, nem kell meg ezeket a paramétereket.
+Ha a createUiDefinition. JSON fájl ugyanabban a mappában található, mint a parancsfájl, és már létrehozta a Storage-fiókot, nem kell megadnia ezeket a paramétereket.
 
 PowerShell esetén használja az alábbi parancsot:
 
 ```powershell
-.\SideLoad-CreateUIDefinition.ps1
+.\SideLoad-AzCreateUIDefinition.ps1
 ```
 
 Azure CLI esetén használja az alábbi parancsot:
@@ -88,22 +89,20 @@ Azure CLI esetén használja az alábbi parancsot:
 ./sideload-createuidef.sh
 ```
 
-A parancsfájl egy új lapot a böngészőben nyílik meg. A felületet a felügyelt alkalmazás létrehozása a portál megjeleníti.
+A parancsfájl új lapot nyit meg a böngészőben. Megjeleníti a portált a kezelőfelülettel a felügyelt alkalmazás létrehozásához.
 
-![Portál nézet](./media/test-createuidefinition/view-portal.png)
-
-Adja meg a mezők értékeit. Amikor végzett, megjelenik az értékeket, amelyeket a rendszer átad a sablont.
+Adja meg a mezők értékeit. Ha elkészült, megjelenik a sablonnak átadott értékek.
 
 ![Értékek megjelenítése](./media/test-createuidefinition/show-json.png)
 
-A központi telepítési sablont tesztelési alkalmazásparaméter-fájlt is használhatja ezeket az értékeket.
+Ezeket az értékeket használhatja paraméterként a telepítési sablon teszteléséhez.
 
-Ha a portálon az Összegzés képernyőn lefagy, lehet egy hiba a kimeneti szakaszban. Például, előfordulhat, hogy rendelkezik a hivatkozott olyan vezérlőelem, amely nem létezik. Ha a kimeneti paraméter üres, előfordulhat, hogy a paraméter hivatkozik olyan tulajdonságot, amely nem létezik. A vezérlő mutató hivatkozást például érvényes, de a tulajdonsághivatkozás nem érvényes.
+Ha a portál az összefoglalás képernyőn leáll, lehet, hogy hiba van a kimenet szakaszban. Előfordulhat például, hogy olyan vezérlőelemre hivatkozott, amely nem létezik. Ha a kimenet egyik paramétere üres, akkor előfordulhat, hogy a paraméter olyan tulajdonságra hivatkozik, amely nem létezik. Például a vezérlőre mutató hivatkozás érvényes, de a tulajdonság hivatkozása érvénytelen.
 
-## <a name="test-your-solution-files"></a>A megoldás fájl tesztelése
+## <a name="test-your-solution-files"></a>A megoldás fájljainak tesztelése
 
-Most, hogy a portál felület elvárt működésének ellenőrzése, ideje, hogy a createUiDefinition fájl megfelelően integrálva van a mainTemplate.json fájl ellenőrzéséhez. Futtathat egy érvényesítési parancsfájlja tesztelésével ellenőrizheti, hogy a megoldás fájlokat, beleértve a createUiDefinition fájl tartalmát. A parancsfájl ellenőrzi a JSON-szintaxist, ellenőrzi, hogy a szövegmezők regex kifejezés, és biztosítja, hogy a kimeneti értékeket a portál felület felel meg a sablon paramétereit. Ez a szkript futtatásával további információkért lásd: [sablonok statikus érvényességi ellenőrzések futtatása](https://github.com/Azure/azure-quickstart-templates/tree/master/test/template-validation-tests).
+Most, hogy ellenőrizte, hogy a portál felülete a várt módon működik-e, ideje ellenőrizni, hogy a createUiDefinition-fájl megfelelően van-e integrálva a mainTemplate. JSON fájllal. Az érvényesítési parancsfájl tesztelésével tesztelheti a megoldás fájljainak tartalmát, beleértve a createUiDefinition fájlt is. A parancsfájl érvényesíti a JSON-szintaxist, ellenőrzi a regex kifejezéseket a szövegmezőben, és gondoskodik arról, hogy a portál felületének kimeneti értékei megegyezzenek a sablon paramétereivel. A parancsfájl futtatásával kapcsolatos további információkért lásd: [statikus ellenőrzési ellenőrzések futtatása sablonokhoz](https://github.com/Azure/azure-quickstart-templates/tree/master/test/template-validation-tests).
 
 ## <a name="next-steps"></a>További lépések
 
-Miután ellenőrizte a felületén, további információ a [Azure felügyelt a piactéren elérhető alkalmazás](publish-marketplace-app.md).
+A portál felületének ellenőrzése után megismerheti, hogy az [Azure által felügyelt alkalmazás elérhető legyen a piactéren](publish-marketplace-app.md).

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: 31a367fcde909f393efa4fea65b25716f95c56ee
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
-ms.translationtype: HT
+ms.openlocfilehash: dbdd088e5a78a4f78eec27b5ee74856c6aecc209
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828432"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847909"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Az adatkészletek osztályának megismerése és előkészítése (előzetes verzió)
 
@@ -31,7 +31,7 @@ Az adatai feltárásához és előkészítéséhez a következőkre lesz szüks�
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-* Az Azure Machine Learning szolgáltatás munkaterületén. Lásd: [Azure Machine learning szolgáltatás munkaterületének létrehozása](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace).
+* Az Azure Machine Learning szolgáltatás munkaterületén. Lásd: [Azure Machine learning szolgáltatás munkaterületének létrehozása](how-to-manage-workspace.md).
 
 * A Pythonhoz készült Azure Machine Learning SDK (1.0.21 vagy újabb verzió), amely tartalmazza a azureml-adatkészletek csomagot. Az SDK legújabb verziójának telepítéséhez vagy frissítéséhez lásd: [az SDK telepítése vagy frissítése](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 

@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: db295f7644cae96eb00670cecf6e4eeba9bb6bed
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 86bd479eff48a7feb42557eb1d175345728f0a69
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567238"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879060"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Tranzakciós replikáció egyetlen, készletezett és példány-adatbázissal Azure SQL Database
 
@@ -96,8 +96,10 @@ A replikáció különböző [típusú](https://docs.microsoft.com/sql/relationa
 - A felügyelt példány alhálózatának biztonsági szabályaiban meg kell nyitni az 445 (TCP kimenő) portot az Azure-fájlmegosztás eléréséhez. 
 - A 1433-as (TCP kimenő) portot meg kell nyitni, ha a közzétevő/terjesztő felügyelt példányon található, és az előfizető helyszíni.
 
-  >[!NOTE]
-  > Ha a kimenő hálózati biztonsági csoport (NSG) 445-es portja le van tiltva, ha a terjesztő egy példány-adatbázis, és az előfizető a helyszínen van, akkor a 53-es hiba léphet fel az Azure Storage-fájlhoz való csatlakozáskor. A probléma megoldásához [frissítse a VNET NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) . 
+
+>[!NOTE]
+> - Ha a kimenő hálózati biztonsági csoport (NSG) 445-es portja le van tiltva, ha a terjesztő egy példány-adatbázis, és az előfizető a helyszínen van, akkor a 53-es hiba léphet fel az Azure Storage-fájlhoz való csatlakozáskor. A probléma megoldásához [frissítse a VNET NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) . 
+> - Ha a felügyelt példányok közzétevője és terjesztője [automatikusan feladatátvételi csoportokat](sql-database-auto-failover-group.md)használ, akkor a felügyelt példány rendszergazdájának törölnie kell az [összes kiadványt a régi elsődleges gépen, és újra kell konfigurálnia azokat az új elsődlegesen a feladatátvételt követően](sql-database-managed-instance-transact-sql-information.md#replication).
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>Adatszinkronizálás összehasonlítása tranzakciós replikációval
 
@@ -115,7 +117,7 @@ A replikáció különböző [típusú](https://docs.microsoft.com/sql/relationa
 
 ![Önálló példány Közzétevőként és terjesztőként](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
-A közzétevő és a terjesztő egyetlen felügyelt példányon belül van konfigurálva, és a módosításokat más felügyelt példányra, önálló adatbázisra, készletezett adatbázisra vagy SQL Server a helyszínen osztja el. Ebben a konfigurációban a kiadói/forgalmazói felügyelt példány nem konfigurálható [földrajzi replikálással és automatikus feladatátvételi csoportokkal](sql-database-auto-failover-group.md).
+A közzétevő és a terjesztő egyetlen felügyelt példányon belül van konfigurálva, és a módosításokat más felügyelt példányra, önálló adatbázisra, készletezett adatbázisra vagy SQL Server a helyszínen osztja el. 
 
 ### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Közzétevő távoli terjesztővel felügyelt példányon
 
@@ -123,11 +125,11 @@ Ebben a konfigurációban egy felügyelt példány közzétesz egy másik felüg
 
 ![A közzétevő és a terjesztő külön példányai](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 
-A közzétevő és a terjesztő két felügyelt példányon van konfigurálva. Ebben a konfigurációban
+A közzétevő és a terjesztő két felügyelt példányon van konfigurálva. Ehhez a konfigurációhoz bizonyos korlátozások vonatkoznak: 
 
 - Mindkét felügyelt példány ugyanazon a vNet található.
 - Mindkét felügyelt példány ugyanazon a helyen található.
-- A közzétett és terjesztő adatbázisokat üzemeltető felügyelt példányok nem [replikálhatók automatikus feladatátvételi csoportok használatával](sql-database-auto-failover-group.md).
+
 
 ### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-single-pooled-and-instance-database"></a>Kiadó és forgalmazó helyszíni előfizetővel egyetlen, készletezett és példányos adatbázisban 
 
@@ -141,11 +143,13 @@ Ebben a konfigurációban egy Azure SQL Database (egy, készletezett és példá
 1. [Konfigurálja a két felügyelt példány közötti replikálást](replication-with-sql-database-managed-instance.md). 
 1. [Hozzon létre egy kiadványt](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 1. [Hozzon létre egy](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) leküldéses előfizetést a Azure SQL Database-kiszolgáló nevének előfizetőként való használatával ( `N'azuresqldbdns.database.windows.net` például a Azure SQL Database nevet a céladatbázisként (például **AdventureWorks**). )
+1. Tudnivalók a [felügyelt példányok tranzakciós replikálásának korlátairól](sql-database-managed-instance-transact-sql-information.md#replication)
 
 
 
 ## <a name="see-also"></a>Lásd még:  
 
+- [Replikáció egy MI és egy feladatátvételi csoporttal](sql-database-managed-instance-transact-sql-information.md#replication)
 - [Replikáció az SQL Database-be](replication-to-sql-database.md)
 - [Replikálás felügyelt példányra](replication-with-sql-database-managed-instance.md)
 - [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: juliako
-ms.openlocfilehash: c730f41d1dbc48c6622d0a2ba43c32dd1a96c24c
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: f4a859f1e63866a50167031569dca05de3e9af27
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311808"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856305"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -33,6 +33,14 @@ Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 > Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [Rest APIt](https://aka.ms/ams-v3-rest-sdk), a CLI-t vagy az egyik támogatott SDK-t.
 
 További információ: áttelepítési [útmutató Media Services v2-ről v3-re](migrate-from-v2-to-v3.md#known-issues)való áttéréshez.
+
+## <a name="august-2019"></a>Augusztus 2019
+
+### <a name="south-africa-regional-pair-is-open-for-media-services"></a>A Dél-afrikai regionális pár nyitva van a Media Services 
+
+A Media Services mostantól elérhető Dél-Afrikában Észak-és Dél-Afrika nyugati régiójában.
+
+További információkért tekintse [meg a felhőket és a régiókat, amelyekben Media Services v3 létezik](azure-clouds-regions.md).
 
 ## <a name="july-2019"></a>Július 2019
 
@@ -246,7 +254,7 @@ Ha 09/28 és 10/12 közötti eszközöket vagy fiók-szűrőket hozott létre Me
 
 A .NET SDK-ban a következő funkciók találhatók:
 
-* **Átalakítja** és feladatait a médiatartalom kódolásához vagy elemzéséhez. **** Példák: adatfolyam- [fájlok](stream-files-tutorial-with-api.md) és- [elemzés](analyze-videos-tutorial-with-api.md).
+* **Átalakítja** és feladatait a médiatartalom kódolásához vagy elemzéséhez. Példák: adatfolyam- [fájlok](stream-files-tutorial-with-api.md) és- [elemzés](analyze-videos-tutorial-with-api.md).
 * **Streaming** -lokátorok tartalmak közzétételéhez és a végfelhasználói eszközökre való továbbításához
 * **Folyamatos átviteli szabályzatok** és **tartalmi kulcsokra vonatkozó házirendek** a kulcsfontosságú kézbesítés és a tartalomvédelem (DRM) konfigurálásához a tartalmak kézbesítése során.
 * Élő **események** és **élő kimenetek** élő adatfolyam-tartalmak betöltésének és archiválásának konfigurálásához.

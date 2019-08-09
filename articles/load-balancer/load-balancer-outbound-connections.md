@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/02/2019
+ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 833d0d0b17f7cc22b2ab37b4e225c1a8cce9c592
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9dcc5fa201c08ca4b1e65b8aae88118731eba427
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385541"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881074"
 ---
 # <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
 
@@ -66,7 +66,7 @@ Ha a terheléselosztásos virtuális gép kimenő folyamatot hoz létre, az Azur
 
 A terheléselosztó nyilvános IP-címének ideiglenes portjai a virtuális gép által kezdeményezett egyes folyamatok megkülönböztetésére szolgálnak. A SNAT dinamikusan használja az [előlefoglalt ideiglenes portokat](#preallocatedports) a kimenő folyamatok létrehozásakor. Ebben a kontextusban a SNAT használt ideiglenes portok neve SNAT-portok.
 
-A SNAT-portok előre le vannak foglalva a [SNAT és a Pat](#snat) című szakaszban leírtak szerint. Egy véges erőforrás, amely kimeríthető. Fontos megérteni a használatuk [módját.](#pat) Ha szeretné megtudni, hogyan tervezze meg ezt a felhasználást, és szükség esetén enyhítse a megoldást, tekintse át a [SNAT-kimerülés kezelését](#snatexhaust)ismertető
+A SNAT-portok előre le vannak foglalva a [SNAT és a Pat](#snat) című szakaszban leírtak szerint. Egy véges erőforrás, amely kimeríthető. Fontos megérteni a használatuk módját. [](#pat) Ha szeretné megtudni, hogyan tervezze meg ezt a felhasználást, és szükség esetén enyhítse a megoldást, tekintse át a [SNAT-kimerülés kezelését](#snatexhaust)ismertető
 
 Ha az alapszintű [Load Balancer több nyilvános IP-cím van társítva](load-balancer-multivip-overview.md), akkor ezek közül bármelyik nyilvános IP-cím a kimenő forgalomra jelölt, az egyik pedig véletlenszerűen van kiválasztva.  
 
@@ -81,7 +81,7 @@ Ebben az esetben a virtuális gép nem része egy nyilvános Load Balancer-kész
 
 Az Azure a SNAT-t használja a port maszkolásával ([Pat](#pat)) a függvény végrehajtásához. Ez a forgatókönyv hasonló a [2](#lb). forgatókönyvhöz, de a használt IP-cím nem szabályozható. Ez egy tartalék forgatókönyv, ha az 1. és a 2. forgatókönyvek nem léteznek. Ezt a forgatókönyvet nem javasoljuk, ha a kimenő címet szeretné szabályozni. Ha a kimenő kapcsolatok az alkalmazás kritikus részét képezik, válasszon másik forgatókönyvet.
 
-Az SNAT-portok a [SNAT és a Pat](#snat) című szakaszban leírtak szerint vannak kiosztva.  A rendelkezésre állási készletet megosztó virtuális gépek száma határozza meg, hogy melyik előfoglalási szintet alkalmazza a rendszer.  A rendelkezésre állási csoport nélküli önálló virtuális gépek gyakorlatilag 1-es készletet hoznak létre az előfoglalások (1024 SNAT-portok) meghatározása céljából. A SNAT-portok olyan véges erőforrás, amely kimeríthető. Fontos megérteni a használatuk [módját.](#pat) Ha szeretné megtudni, hogyan tervezze meg ezt a felhasználást, és szükség esetén enyhítse a megoldást, tekintse át a [SNAT-kimerülés kezelését](#snatexhaust)ismertető
+Az SNAT-portok a [SNAT és a Pat](#snat) című szakaszban leírtak szerint vannak kiosztva.  A rendelkezésre állási készletet megosztó virtuális gépek száma határozza meg, hogy melyik előfoglalási szintet alkalmazza a rendszer.  A rendelkezésre állási csoport nélküli önálló virtuális gépek gyakorlatilag 1-es készletet hoznak létre az előfoglalások (1024 SNAT-portok) meghatározása céljából. A SNAT-portok olyan véges erőforrás, amely kimeríthető. Fontos megérteni a használatuk módját. [](#pat) Ha szeretné megtudni, hogyan tervezze meg ezt a felhasználást, és szükség esetén enyhítse a megoldást, tekintse át a [SNAT-kimerülés kezelését](#snatexhaust)ismertető
 
 ### <a name="combinations"></a>Több, kombinált forgatókönyv
 
@@ -133,6 +133,10 @@ Több folyamat, amelyek mindegyike egy másik cél IP-címére, portra és proto
 
 Az UDP-SNAT portjait egy másik algoritmus kezeli, mint a TCP SNAT-portok.  A Load Balancer az UDP protokollhoz "Port-korlátozott kúp NAT" néven ismert algoritmust használ.  A rendszer egy SNAT-portot használ minden egyes folyamathoz, a cél IP-címétől, a porttól függetlenül.
 
+#### <a name="snat-port-reuse"></a>SNAT-port újrafelhasználása
+
+A portok felszabadítása után a port igény szerint újra felhasználható.  Egy adott forgatókönyv esetében úgy gondolhatja, hogy a SNAT-portok a legalacsonyabb és a legmagasabb rendelkezésre állási sorba kerülnek, és az első elérhető SNAT-portot használja az új kapcsolatokhoz. 
+ 
 #### <a name="exhaustion"></a>Fogyási
 
 A SNAT-portok erőforrásainak kimerítése esetén a kimenő folyamatok meghiúsulnak, amíg a meglévő folyamatok SNAT-portokat nem szabadítanak fel. Load Balancer visszaállítja a SNAT-portokat, amikor a folyamat lezárult, és [4 perces üresjárati](#idletimeout) időkorlátot használ a SNAT-portok üresjárati forgalomból való visszaigényléséhez.

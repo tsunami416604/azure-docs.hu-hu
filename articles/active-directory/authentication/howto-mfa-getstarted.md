@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 182b9da402e633033411f85eb59b31f76749f3cd
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 776a73f8a20a3f5ad4e97a08ff3871e805a61eb3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666254"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879117"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Felhőalapú Azure multi-Factor Authentication üzembe helyezésének megtervezése
 
@@ -32,7 +32,7 @@ Az Azure multi-Factor Authentication üzembe helyezésének megkezdése előtt t
 | --- | --- |
 | **Csak felhőalapú** identitás-környezet modern hitelesítéssel | **Nincsenek további előfeltétel-feladatok** |
 | **Hibrid** identitási forgatókönyvek | [Azure ad Connect](../hybrid/whatis-hybrid-identity.md) települ, és a felhasználói identitások szinkronizálása vagy összevonása a helyszíni Active Directory tartományi szolgáltatások a Azure Active Directory. |
-| Felhőbeli hozzáféréshez közzétett helyszíni örökölt alkalmazások | [Az Azure](../manage-apps/application-proxy.md) ad-alkalmazásproxy üzembe helyezése megtörténik. |
+| Felhőbeli hozzáféréshez közzétett helyszíni örökölt alkalmazások | Az Azure [](../manage-apps/application-proxy.md) ad-alkalmazásproxy üzembe helyezése megtörténik. |
 | Az Azure MFA használata RADIUS-hitelesítéssel | A [hálózati házirend-kiszolgáló (NPS)](howto-mfa-nps-extension.md) telepítve van. |
 | A felhasználók Microsoft Office 2010-es vagy korábbi verzióját, vagy az Apple Mail for iOS 11 vagy korábbi verzióját. | Frissítsen [Microsoft Office 2013-es vagy újabb](https://support.microsoft.com/help/4041439/modern-authentication-configuration-requirements-for-transition-from-o) verzióra, valamint az Apple Mail for iOS 12 vagy újabb verzióra. A régi hitelesítési protokollok nem támogatják a feltételes hozzáférést. |
 
@@ -177,9 +177,6 @@ Ha a felhasználók számára engedélyezte a felhasználónkénti engedélyezé
 # Disable MFA for all users, keeping their MFA methods intact
 Get-MsolUser -All | Disable-MFA -KeepMethods
 
-# Enforce MFA for all users
-Get-MsolUser -All | Set-MfaState -State Enforced
-
 # Wrapper to disable MFA with the option to keep the MFA methods (to avoid having to proof-up again later)
 function Disable-MFA {
 
@@ -256,11 +253,11 @@ Fontos, hogy megakadályozza, hogy véletlenül kizárja az Azure AD-bérlőt. A
 1. A **feltételek** szakaszban:
    * OPCIONÁLISAN Ha engedélyezte az Azure Identity Protection szolgáltatást, dönthet úgy, hogy a szabályzat részeként kiértékeli a bejelentkezési kockázatot.
    * OPCIONÁLISAN Ha megbízható helyekkel vagy elnevezett helyekkel konfigurálta a beállításokat, megadhatja, hogy belefoglalja vagy kizárja ezeket a helyeket a szabályzatból.
-1. Győződjön meg **arról, hogy**a **hozzáférés** engedélyezése választógomb be van jelölve.
+1. Győződjönmeg arról, hogy a **hozzáférés** engedélyezése választógomb be van jelölve.
     * Jelölje be a többtényezős **hitelesítés**megkövetelése jelölőnégyzetet.
     * Kattintson a **Kiválasztás** gombra.
 1. Ugorja át a **munkamenet** szakaszt.
-1. Állítsa be a **házirend engedélyezése** kapcsolót be értékre **.**
+1. Állítsa be a **házirend engedélyezése** kapcsolót be értékre.
 1. Kattintson a **Create** (Létrehozás) gombra.
 
 ![Feltételes hozzáférési szabályzat létrehozása a többtényezős hitelesítés engedélyezéséhez Azure Portal-felhasználók számára a kísérleti csoportban](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)

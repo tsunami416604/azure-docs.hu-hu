@@ -3,20 +3,20 @@ title: A Project akusztikai Unreal Bake oktatóanyaga
 titlesuffix: Azure Cognitive Services
 description: Ez a dokumentum leírja, hogyan kell beküldeni az akusztikai sütni-t az Unreal Editor bővítmény használatával.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
-ms.author: michem
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 47946570db305ff3d54dfed9ea6f698e5deb7b72
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 7a868a5f9b06499e23710399733b0659d97f900d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704793"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854893"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>A Project akusztikai Unreal Bake oktatóanyaga
 Ez a dokumentum leírja, hogyan kell beküldeni az akusztikai sütni-t az Unreal Editor bővítmény használatával.
@@ -108,20 +108,20 @@ Ha módosítja a jelenetben lévő anyagokat, a Project akusztikai beépülő mo
 
 ## <a name="calculate-and-review-listener-probe-locations"></a>Figyelő mintavételi helyeinek kiszámítása és áttekintése
 
-Az anyagok hozzárendelését követően váltson a mintavételek **lapra.**
+Az anyagok hozzárendelését követően váltson a mintavételek lapra.
 
 ### <a name="for-reference-parts-of-the-probes-tab"></a>Hivatkozás: A mintavételek lap részei
 
 ![Az Unreal-beli akusztikai mintavételi lapok képernyőképe](media/unreal-probes-tab-details.png)
 
-1. Az oldal felépítéséhez használt **mintavétel lap gomb**
+1. Az oldal felépítéséhez használt mintavétel lap gomb
 2. A lap használatának rövid leírása
 3. Ezzel a beállítással durva vagy részletes szimulációs megoldást választhat. A durva gyorsabb, de bizonyos kompromisszumokkal rendelkezik. A részletekért lásd az alábbi [sütni](bake-resolution.md) -feloldást.
 4. Válassza ki azt a helyet, ahol az akusztikai adatfájlokat a mező használatával kell elhelyezni. Kattintson a "..." gombra. mappa-választó használata. További információ az adatfájlokról: az [](#Data-Files) alábbi adatfájlok.
 5. Az ehhez a jelenethez tartozó adatfájlok az itt megadott előtag használatával lesznek elnevezve. Az alapértelmezett érték a "[Level name] _AcousticsData".
 6. Kattintson a **számítás** gombra a jelenet voxelize és a mintavételi pont helyeinek kiszámításához. Ez helyileg történik a gépen, és a sütni művelet előtt kell elvégezni. A mintavételek kiszámítását követően a fenti vezérlőelemek le lesznek tiltva, és ez a gomb egyértelművé válik. Kattintson a **Törlés** gombra a számítások törléséhez és a vezérlők engedélyezéséhez, hogy az új beállítások használatával újraszámítsa a beállításokat.
 
-A mintavételeket a mintavételek **lapon megadott** automatikus folyamaton keresztül kell elhelyezni.
+A mintavételeket a mintavételek lapon megadott automatikus folyamaton keresztül kell elhelyezni.
 
 
 ### <a name="what-the-calculate-button-calculates"></a>A "számítás" gomb kiszámítása
@@ -184,8 +184,8 @@ Az Azure Batch szolgáltatással a felhőben lévő számítási fürttel is sü
 7. Jelölje be ezt a jelölőnégyzetet, ha a számítási készletet [alacsony prioritású csomópontok](https://docs.microsoft.com/azure/batch/batch-low-pri-vms)használatára szeretné konfigurálni. Az alacsony prioritású számítási csomópontok jóval alacsonyabb költségeket jelentenek, de előfordulhat, hogy nem mindig lesznek elérhetők, vagy bármikor előzik.
 8. Az eltelt idő, ameddig a feladatainak a felhőben való futtatása várható. Ez nem tartalmazza a csomópont indítási idejét. Ha a feladatot elindítják, akkor ez azt mutatja, hogy mennyi ideig kell lennie ahhoz, hogy vissza lehessen állítani az eredményeket. Vegye figyelembe, hogy ez csak becslés.
 9. A szimulációk futtatásához szükséges számítási idő teljes mennyisége. Ez az Azure-ban használni kívánt csomópont-számítási idő teljes mennyisége. Ennek az értéknek a használatáról további információt az alábbi, a [sütni-költségeket](#Estimating-bake-cost) ismertető cikkben talál.
-10. Kattintson a sütni gombra a sütni a felhőbe való beküldéséhez. A feladat futása közben ez a feladat **megszakítását** mutatja. Ha a lapon hibák léptek fel, vagy ha a mintavételek **lapon nem** fejeződött be a munkafolyamat, a gomb le lesz tiltva.
-11. A jelenet mintavételi száma a mintavételek **lapon számítva** . A mintavételek száma határozza meg, hogy hány szimulációt kell futtatni a felhőben. A mintavételnél több csomópontot nem adhat meg.
+10. Kattintson a sütni gombra a sütni a felhőbe való beküldéséhez. A feladat futása közben ez a feladat **megszakítását** mutatja. Ha a lapon hibák léptek fel, vagy ha a mintavételek lapon nem fejeződött be a munkafolyamat, a gomb le lesz tiltva.
+11. A jelenet mintavételi száma a mintavételek lapon számítva. A mintavételek száma határozza meg, hogy hány szimulációt kell futtatni a felhőben. A mintavételnél több csomópontot nem adhat meg.
 12. Ez az üzenet megadja a feladatok aktuális állapotát, vagy ha a lapon hibák léptek fel, ezek a hibák.
 
 Az aktív feladatokról, a számítási készletekről és a [Azure Portal](https://portal.azure.com)a tárterületről mindig teljes körű információkhoz juthat.
@@ -209,9 +209,9 @@ A sütni befejezését követően győződjön meg arról, hogy a voxels és a m
 Ez a beépülő modul négy adatfájlt hoz létre különböző pontokon. A futtatáskor csak az egyik szükséges, és a projekt Content/akusztikai mappájába kerül, amelyet a rendszer automatikusan hozzáad a projekt csomagolási útvonalához. A másik három a akusztikai adatmappa belsejében található, és nincsenek csomagolva.
 
 * **[Project]/Config/ProjectAcoustics.cfg**: Ez a fájl tárolja azokat az adattípusokat, amelyeket az akusztikai mód felhasználói felületének mezőiben megadott. A fájl helye és neve nem módosítható. A fájlban lévő más értékek is vannak, amelyek hatással vannak a sütni-re, de a speciális felhasználókra vonatkoznak, és nem szabad módosítani őket.
-* **[Project]/Content/Acoustics/[LevelName]\_AcousticsData.ace**: Ez a fájl a sütni szimuláció során jön létre, és a futtatókörnyezet által a jelenet akusztikaának megjelenítéséhez használt keresési adatait tartalmazza. A fájl helye és neve módosítható a mintavételek **lapon lévő** mezők használatával. Ha ezt a fájlt a létrehozása után szeretné átnevezni, törölje a UAsset az Unreal-projektből, nevezze át a fájlt az Unreal használatával a Fájlkezelőben, majd importálja újra a fájlt az Unreal-be egy új UAsset létrehozásához. A UAsset saját maga általi átnevezése nem fog működni.
-* **[Project]/Plugins/ProjectAcoustics/AcousticsData/[LevelName]\_AcousticsData.vox**: Ez a fájl a voxelized akusztikai geometriáját és az anyag tulajdonságait tárolja. Kiszámítva a mintavételek lap számítás gombjának használatával. A fájl helye és neve módosítható a mintavételek **lapon lévő** mezők használatával.
-* **[Project]/Plugins/ProjectAcoustics/AcousticsData/[LevelName]\_AcousticsData\_config.xml**: Ez a fájl tárolja a paramétereket a mintavételek **lapon a** **számítás** gomb használatával. A fájl helye és neve módosítható a mintavételek **lapon lévő** mezők használatával.
+* **[Project]/Content/Acoustics/[LevelName]\_AcousticsData.ace**: Ez a fájl a sütni szimuláció során jön létre, és a futtatókörnyezet által a jelenet akusztikaának megjelenítéséhez használt keresési adatait tartalmazza. A fájl helye és neve módosítható a mintavételek lapon lévő mezők használatával. Ha ezt a fájlt a létrehozása után szeretné átnevezni, törölje a UAsset az Unreal-projektből, nevezze át a fájlt az Unreal használatával a Fájlkezelőben, majd importálja újra a fájlt az Unreal-be egy új UAsset létrehozásához. A UAsset saját maga általi átnevezése nem fog működni.
+* **[Project]/Plugins/ProjectAcoustics/AcousticsData/[LevelName]\_AcousticsData.vox**: Ez a fájl a voxelized akusztikai geometriáját és az anyag tulajdonságait tárolja. Kiszámítva a mintavételek lap **számítás** gombjának használatával. A fájl helye és neve módosítható a mintavételek lapon lévő mezők használatával.
+* **[Project]/Plugins/ProjectAcoustics/AcousticsData/[LevelName]\_AcousticsData\_config.xml**: Ez a fájl tárolja a paramétereket a mintavételek lapon a **számítás** gomb használatával. A fájl helye és neve módosítható a mintavételek lapon lévő mezők használatával.
 
 Ügyeljen arra, hogy ne törölje az Azure-ból letöltött *. ACE fájlt. Ez a fájl nem helyreállítható, kivéve a jelenet kisütését.
 

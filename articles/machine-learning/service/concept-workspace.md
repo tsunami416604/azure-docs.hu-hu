@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 05/21/2019
-ms.openlocfilehash: fc3f88e627e0ce19195f6df947d4f11f5f8a73ae
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
-ms.translationtype: HT
+ms.date: 08/06/2019
+ms.openlocfilehash: cb1fd8e98a5eba350774ff6ccb8f86dcd3e4d734
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772756"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856198"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>Mi az Azure Machine Learning szolgáltatás munkaterülete?
 
@@ -65,6 +65,9 @@ A gépi tanulási feladatok beolvassák és/vagy leírják a munkaterületet.
 + Megtekintheti a gépi tanulási összetevőket, például a kísérleteket, a folyamatokat, a modelleket, a központi telepítéseket.
 + Modellek nyomon követése és figyelése.
 
+
+
+
 ## <a name="workspace-management"></a>Munkaterület-kezelés
 
 A következő munkaterület-felügyeleti feladatokat is végrehajthatja:
@@ -76,7 +79,14 @@ A következő munkaterület-felügyeleti feladatokat is végrehajthatja:
 | Munkaterület-hozzáférés kezelése    | **&check;**   | |  **&check;**    |
 | Jegyzetfüzet-alapú virtuális gép létrehozása | **&check;**   | |     |
 
-Ismerkedjen meg a szolgáltatással [egy munkaterület létrehozásával](setup-create-workspace.md).
+### <a name='create-workspace'></a>Munkaterület létrehozása
+
+Több módon is létrehozhat egy munkaterületet.
+
+* A pont-és kattintási felület [Azure Portal](how-to-manage-workspace.md) az egyes lépések lépésein végezhető el.
+* A Pythonhoz készült [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) használatával létrehozhat egy munkaterületet a Python-parancsfájlok vagy a Jupiter-jegyzetfüzetek segítségével
+* Ha automatizálni vagy testre szeretné szabni a vállalati biztonsági szabványokkal való létrehozást, használjon [Azure Resource Manager sablont](how-to-create-workspace-template.md) vagy a [Azure Machine learning CLI](reference-azure-machine-learning-cli.md) -t.
+* Ha a Visual Studio Code-ban dolgozik, használja a [vs Code bővítményt](how-to-vscode-tools.md#get-started-with-azure-machine-learning).
 
 ## <a name="resources"></a>Társított erőforrások
 
@@ -95,6 +105,6 @@ Amikor létrehoz egy új munkaterületet, automatikusan létrehoz több Azure-a 
 A Azure Machine Learning szolgáltatás megkezdéséhez lásd:
 
 + [Azure Machine Learning szolgáltatás áttekintése](overview-what-is-azure-ml.md)
-+ [Munkaterület létrehozása](setup-create-workspace.md)
++ [Munkaterület létrehozása](how-to-manage-workspace.md)
 + [Munkaterületek kezelése](how-to-manage-workspace.md)
 + [Oktatóanyag: Modell betanítása](tutorial-train-models-with-aml.md)

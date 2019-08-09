@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a64bad11f5b83ddd7f6d7236ffed4ff4a6e39c2c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fb4fa92d8b3c174cdf9b3695f8564cc11c1ad291
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561866"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851749"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Hozzárendelése vagy Azure-előfizetés hozzáadása az Azure Active Directory-bérlővel
 
@@ -66,7 +66,7 @@ Mielőtt hozzárendelése, vagy adja hozzá az előfizetés, el kell végeznie a
     A címtár megváltozott az előfizetés, és megjelenik a sikert jelző üzenet.
 
     ![A címtár változásával kapcsolatos sikeres üzenet](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
-4. A **címtár-kapcsoló** használatával lépjen az új könyvtárba. Több órát is igénybe vehet, hogy minden megfelelően megjelenjen. Ha úgy tűnik, hogy túl sokáig tart, ellenőrizze az áthelyezett előfizetés **globális előfizetési szűrőjét** , hogy az ne legyen egyszerűen rejtve.
+4. A **címtár-kapcsoló** használatával lépjen az új könyvtárba. Több órát is igénybe vehet, hogy minden megfelelően megjelenjen. Ha úgy tűnik, hogy túl sokáig tart, ellenőrizze az áthelyezett előfizetés **globális előfizetési szűrőjét** , és győződjön meg róla, hogy nem rejtett. Előfordulhat, hogy ki kell jelentkeznie a Azure Portalból, és újra be kell jelentkeznie, hogy láthassa az új könyvtárat. 
 
     ![Címtár-kapcsoló oldal, a minta adataival](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 06/18/2019
-ms.openlocfilehash: e33f195ea821b34147c748e9c0aa64cb63b58fdc
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a35e0496c7e36d42e28a64fef438fe56713d3c78
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249982"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855002"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Gyakori Azure Database Migration Service problémák és hibák elhárítása
 
@@ -54,11 +54,11 @@ Ha a MySQL-ből Azure Database for MySQL Azure Database Migration Service haszn�
 
 A Azure Database Migration Service példány leállításakor a következő hibaüzenetet kapja:
 
-* **Hiba**: A szolgáltatás leállítása sikertelen. Hiba: {"Error": {"code": "InvalidRequest", "Message": egy vagy több tevékenység jelenleg fut. A szolgáltatás leállításához várjon, amíg a tevékenységek befejeződik, vagy állítsa le manuálisan a tevékenységeket, és próbálkozzon újra. "}}
+* **Hiba**: A szolgáltatás leállítása sikertelen. Hiba: {'error':{'code':'InvalidRequest','message':'Egy vagy több tevékenység jelenleg is fut. A szolgáltatás leállításához várjon, amíg a tevékenységek befejeződik, vagy állítsa le manuálisan a tevékenységeket, és próbálkozzon újra. "}}
 
 | Ok         | Megoldás: |
 | ------------- | ------------- |
-| Ez a hiba akkor jelenik meg, ha a leállítani próbált szolgáltatási példány olyan tevékenységeket tartalmaz, amelyek továbbra is futnak, vagy amelyek az áttelepítési projektekben szerepelnek. <br><br><br><br><br><br> | Győződjön meg arról, hogy nincsenek olyan tevékenységek, amelyek a leállítani kívánt Azure Database Migration Service példányán futnak. A szolgáltatás leállításának megkísérlése előtt törölheti a tevékenységeket vagy a projekteket is. Az alábbi lépések bemutatják, hogyan távolíthat el projekteket az áttelepítési szolgáltatás példányának tisztításához az összes futó feladat törlésével:<br>1. Install-Module-Name AzureRM. DataMigration <br>2. Login-AzureRmAccount <br>3. Select-AzureRmSubscription-SubscriptionName "\<alnév >" <br> 4. Remove-AzureRmDataMigrationProject- \<Name projektnév >- \<ResourceGroupName rgName >- \<szolgáltatásnév szolgáltatásnév >-DeleteRunningTask |
+| Ez a hiba akkor jelenik meg, ha a leállítani próbált szolgáltatási példány olyan tevékenységeket tartalmaz, amelyek továbbra is futnak, vagy amelyek az áttelepítési projektekben szerepelnek. <br><br><br><br><br><br> | Győződjön meg arról, hogy nincsenek olyan tevékenységek, amelyek a leállítani kívánt Azure Database Migration Service példányán futnak. A szolgáltatás leállításának megkísérlése előtt törölheti a tevékenységeket vagy a projekteket is. Az alábbi lépések bemutatják, hogyan távolíthat el projekteket az áttelepítési szolgáltatás példányának tisztításához az összes futó feladat törlésével:<br>1. Install-Module -Name AzureRM.DataMigration <br>2. Login-AzureRmAccount <br>3. Select-AzureRmSubscription-SubscriptionName "\<alnév >" <br> 4. Remove-AzureRmDataMigrationProject- \<Name projektnév >- \<ResourceGroupName rgName >- \<szolgáltatásnév szolgáltatásnév >-DeleteRunningTask |
 
 ## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Hiba történt a Azure Database Migration Service indításakor
 
@@ -98,7 +98,7 @@ Amikor az Azure Database Migration Service projektvarázslóban próbál csatlak
 | ------------- | ------------- |
 | A [ExpressRoute](https://azure.microsoft.com/services/expressroute/)használatakor Azure Database Migration Service a szolgáltatáshoz társított Virtual Network alhálózaton három szolgáltatási végpontot [kell](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) kiépíteni:<br> – Service Bus végpont<br> – Tárolási végpont<br> – Céladatbázis végpontja (például SQL-végpont, Cosmos DB végpont)<br><br><br><br><br> | [Engedélyezze](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) a szükséges szolgáltatási végpontokat a forrás-és a Azure Database Migration Service közötti ExpressRoute-kapcsolathoz. <br><br><br><br><br><br><br><br> |
 
-## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-mysql"></a>Időtúllépési hiba történt egy MySQL-adatbázis Azure MySQL-re való áttelepítésekor
+## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>Időtúllépési hiba történt egy MySQL-adatbázisnak a MySQL-hez készült Azure DB-re való áttelepítésekor
 
 Ha Azure Database Migration Service használatával telepít át egy MySQL-adatbázist egy Azure Database for MySQL példányra, az áttelepítés a következő időtúllépési hiba miatt meghiúsul:
 

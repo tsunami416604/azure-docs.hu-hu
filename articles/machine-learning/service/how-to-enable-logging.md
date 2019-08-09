@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 384cd2df9c629a73095cc55f4f6d65aa6a727225
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 9deb369dc812616cd7256bbab4101531ca08f127
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360962"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847924"
 ---
 # <a name="enable-logging-in-azure-machine-learning-service"></a>Bejelentkezés engedélyezése Azure Machine Learning szolgáltatásban
 
@@ -27,7 +27,7 @@ A Azure Machine Learning Python SDK lehetővé teszi, hogy az alapértelmezett P
 > * Üzembe helyezett modellek
 > * Python `logging` -beállítások
 
-[Hozzon létre egy Azure Machine learning szolgáltatás](setup-create-workspace.md)munkaterületet. Az SDK-val kapcsolatos további információkért tekintse meg az [útmutatót](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) .
+[Hozzon létre egy Azure Machine learning szolgáltatás](how-to-manage-workspace.md)munkaterületet. Az SDK-val kapcsolatos további információkért tekintse meg az [útmutatót](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) .
 
 ## <a name="training-models-and-compute-target-logging"></a>Képzési modellek és számítási cél naplózása
 

@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: 7c4c4ff611b35cac9aa8be1a9697a0d11bc4dc8b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
-ms.translationtype: HT
+ms.openlocfilehash: 9bd56984f088ab16fc5d80c588afce2cdc31240b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815967"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848120"
 ---
 # <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Kísérletek és következtetések biztonságos futtatása Azure-beli virtuális hálózaton belül
 
@@ -27,7 +27,7 @@ Ez a cikk részletes információkat tartalmaz a **speciális biztonsági beáll
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nem rendelkezik [](setup-create-workspace.md) ilyennel, hozzon létre egy Azure Machine learning szolgáltatás-munkaterületet. Ez a dokumentum azt feltételezi, hogy az Azure-beli virtuális hálózatokat és az IP-hálózatkezelést általában ismeri. Ez a dokumentum azt is feltételezi, hogy létrehozott egy virtuális hálózatot és alhálózatot a számítási erőforrásokhoz való használatra. Ha nem ismeri az Azure Virtual Networks szolgáltatást, olvassa el a következő cikkeket a szolgáltatás megismeréséhez:
+Ha még nem rendelkezik [](how-to-manage-workspace.md) ilyennel, hozzon létre egy Azure Machine learning szolgáltatás-munkaterületet. Ez a dokumentum azt feltételezi, hogy az Azure-beli virtuális hálózatokat és az IP-hálózatkezelést általában ismeri. Ez a dokumentum azt is feltételezi, hogy létrehozott egy virtuális hálózatot és alhálózatot a számítási erőforrásokhoz való használatra. Ha nem ismeri az Azure Virtual Networks szolgáltatást, olvassa el a következő cikkeket a szolgáltatás megismeréséhez:
 
 * [IP-címzés](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
 * [Biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview)
@@ -36,7 +36,7 @@ Ha még nem rendelkezik [](setup-create-workspace.md) ilyennel, hozzon létre eg
 
 ## <a name="storage-account-for-your-workspace"></a>A munkaterület Storage-fiókja
 
-Ha a virtuális hálózatban lévő munkaterület alapértelmezett Azure Storage-fiókját szeretné használni, kövesse az alábbi lépéseket:
+Ha egy virtuális hálózatban lévő munkaterülethez Azure Storage-fiókot szeretne használni, kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy kísérletezési számítást. Machine Learning Compute egy virtuális hálózat mögött, vagy egy kísérletezési számítási feladatokhoz csatolja a munkaterületet. HDInsight-fürt vagy virtuális gép. További információ: a [Machine learning Compute használata](#use-machine-learning-compute) és [virtuális gépek vagy HDInsight használata](#use-a-virtual-machine-or-hdinsight-cluster) a jelen dokumentumban
 2. Nyissa meg a munkaterülethez csatolt tárterületet. ![A Azure Machine Learning szolgáltatás munkaterületéhez csatolt Azure Storage-t bemutató Azure Portal képe](./media/how-to-enable-virtual-network/workspace-storage.png)
@@ -55,7 +55,9 @@ Ha a virtuális hálózatban lévő munkaterület alapértelmezett Azure Storage
 > [!IMPORTANT]
 > A Azure Machine Learning szolgáltatás __alapértelmezett Storage__ -fiókja __csak a kísérletezés__során helyezhető el egy virtuális hálózaton.
 >
-> A __nem alapértelmezett Storage-fiókok esetében__a kísérletezéshez, illetve ha a következtetéshez Storage-fiókothasznál, __korlátlan hozzáféréssel kell rendelkeznie a Storage__-fiókhoz.
+> A __nem alapértelmezett tárolási fiókok__ a virtuális hálózatba is helyezhetők, de __csak kísérletezéshez__.
+>
+> A következtetésekhez használt alapértelmezett vagy nem alapértelmezett Storage -fiókoknak __korlátlan hozzáféréssel kell rendelkezniük a Storage-fiókhoz__.
 >
 > Ha nem biztos abban, hogy módosította ezeket a beállításokat, vagy nem, tekintse meg az [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security) __az alapértelmezett hálózati hozzáférési szabály módosítása__ című témakört. A következő lépésekkel engedélyezheti a hozzáférést az összes hálózatról a következtetések során, vagy a modell pontozásával.
 

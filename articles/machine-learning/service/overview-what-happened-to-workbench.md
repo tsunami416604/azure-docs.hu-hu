@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2bc036fcde7ac541dbf7d8511f82080e52135777
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: e043847db09eec6ec05cca1e259024cf08e91ed0
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772623"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846041"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Mi történt az Azure Machine Learning Workbench alkalmazással?
 
@@ -40,7 +40,7 @@ Azure Machine Learning szolgáltatás legújabb kiadása a következő funkciók
 + Egy új, átfogóbb Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>.
 + Az új bővített [Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) a gépi tanuláshoz.
 
-Az [architektúra](concept-azure-machine-learning-architecture.md) újratervezése egyszerű használat érdekében. Több Azure-erőforrás és -fiók helyett csak egy [Azure Machine Learning-munkaterület](concept-workspace.md) szükséges. Munkaterületek gyorsan hozhat létre, az [Azure portal]\((setup-create-workspace.md#portal). Munkaterületek használatával több felhasználó is tárolhatja a képzési és üzembe helyezési számítási célokat, a modellek kísérleteit, a Docker-rendszerképeket, a telepített modelleket stb.
+Az [architektúra](concept-azure-machine-learning-architecture.md) újratervezése egyszerű használat érdekében. Több Azure-erőforrás és -fiók helyett csak egy [Azure Machine Learning-munkaterület](concept-workspace.md) szükséges. Munkaterületeket gyorsan létrehozhat a [Azure Portal] ((útmutató – kezelés-workspace.md) területen. Munkaterületek használatával több felhasználó is tárolhatja a képzési és üzembe helyezési számítási célokat, a modellek kísérleteit, a Docker-rendszerképeket, a telepített modelleket stb.
 
 Bár új továbbfejlesztett CLI-és SDK-ügyfelek találhatók a jelenlegi kiadásban, maga a Desktop Workbench alkalmazás is ki lett vonva. A kísérletek a [Azure Portal munkaterület irányítópultján](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)kezelhetők. Használja az irányítópultot a kísérlet előzményeinek beolvasására, a munkaterülethez rendelt számítási célok, a modellek és a Docker-rendszerképek kezelésére, vagy akár webszolgáltatások üzembe helyezésére.
 
@@ -50,7 +50,7 @@ Bár új továbbfejlesztett CLI-és SDK-ügyfelek találhatók a jelenlegi kiad�
 
 Január 9 2019-én a Machine Learning Workbench, Azure Machine Learning-kísérletezés és modellkezelés fiókok, valamint a hozzájuk tartozó SDK-és CLI-támogatás megszűnt. 
 
-Az <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>, a [CLI](reference-azure-machine-learning-cli.md)és a [portál](setup-create-workspace.md#portal)használatával minden legújabb funkció elérhető.
+Az <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>, a [CLI](reference-azure-machine-learning-cli.md)és a [portál](how-to-manage-workspace.md)használatával minden legújabb funkció elérhető.
 
 ## <a name="what-about-run-histories"></a>Mi a helyzet a futtatási előzményekkel?
 
@@ -82,7 +82,7 @@ run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)
 ```
 
-[Hozzon létre egy](setup-create-workspace.md#portal) munkaterületet az első lépésekhez.
+[Hozzon létre egy](how-to-manage-workspace.md) munkaterületet az első lépésekhez.
 
 ## <a name="what-about-my-registered-models-and-images"></a>Mi a helyzet a regisztrált modellekkel és képekkel?
 

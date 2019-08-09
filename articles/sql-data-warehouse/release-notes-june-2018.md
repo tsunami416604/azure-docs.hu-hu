@@ -11,10 +11,10 @@ ms.date: 07/23/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4348a634fd5b2b33f36d8e79f28caf659b82ccf4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/09/2019
 ms.locfileid: "67626152"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>A Azure SQL Data Warehouse újdonságai 2018. június
@@ -38,7 +38,7 @@ New-AzSqlDatabaseRestorePoint
 ## <a name="column-level-security"></a>Oszlop szintű biztonság
 Az adattárházban az adathozzáférés és a biztonság kezelése kritikus fontosságú az ügyfelekkel és partnerekkel való bizalom kiépítésekor. SQL Data Warehouse [mostantól támogatja az oszlop szintű biztonságot (CLS)](https://azure.microsoft.com/blog/column-level-security-is-now-supported-in-azure-sql-data-warehouse/) , amely lehetővé teszi a bizalmas adatok megtekintésére vonatkozó engedélyek módosítását azáltal, hogy az adattárház újratervezése nélkül korlátozza a felhasználók hozzáférését a táblák adott oszlopaihoz.
 
-A CLS lehetővé teszi a táblázat oszlopaihoz való hozzáférés szabályozását a felhasználó végrehajtási környezete vagy a csoporttagság alapján [a standard szintű](https://docs.microsoft.com/azure/sql-data-warehouse/column-level-security) T-SQL-utasítás használatával. A hozzáférés-korlátozási logika maga az adatbázis rétegében található, nem pedig a más alkalmazásokban lévő adatoktól, így egyszerűbbé válik a teljes biztonsági implementáció.
+A CLS lehetővé teszi a táblázat oszlopaihoz való hozzáférés szabályozását a felhasználó végrehajtási környezete vagy a csoporttagság alapján a standard [](https://docs.microsoft.com/azure/sql-data-warehouse/column-level-security) szintű T-SQL-utasítás használatával. A hozzáférés-korlátozási logika maga az adatbázis rétegében található, nem pedig a más alkalmazásokban lévő adatoktól, így egyszerűbbé válik a teljes biztonsági implementáció.
 
 
 ```sql
@@ -51,7 +51,7 @@ Msg 230, Level 14, State 1, Line 12
 The SELECT permission was denied on the column 'SSN' of the object 'Membership', database 'CLS_TestDW', schema 'dbo'.
 ```
 
-## <a name="objectschemaname"></a>OBJECT_SCHEMA_NAME
+## <a name="object_schema_name"></a>OBJECT_SCHEMA_NAME
 A [OBJECT_SCHEMA_NAME ()](https://docs.microsoft.com/sql/t-sql/functions/object-schema-name-transact-sql) függvény a séma hatókörű objektumaihoz tartozó adatbázis-séma nevét adja vissza. Ez a függvény az ETL-eszközökben az objektum sémájának érvényesítése során lett meghatározva. 
 
 ```sql
@@ -72,7 +72,7 @@ dbo               nation
 dbo               orders
 ```
 
-## <a name="support-for-the-systimezoneinfo-view"></a>A sys. time_zone_info nézet támogatása
+## <a name="support-for-the-systime_zone_info-view"></a>A sys. time_zone_info nézet támogatása
 A [sys. time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) nézet a Azure SQL Data Warehouseon belüli támogatott időzónákra vonatkozó adatokat adja vissza.
 
 ```sql
@@ -89,7 +89,7 @@ Mountain Standard Time (Mexico)   -06:00               1
 Central Standard Time             -05:00               1
 ```
 
-## <a name="auto-stats-operations-appear-in-sysdmpdwexecrequests-behavior-change"></a>Az automatikus stats műveletek megjelennek a sys. DM _pdw_exec_requests (viselkedés változása)
+## <a name="auto-stats-operations-appear-in-sysdm_pdw_exec_requests-behavior-change"></a>Az automatikus stats műveletek megjelennek a sys. DM _pdw_exec_requests (viselkedés változása)
 
 Az [automatikus létrehozási statisztikák](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)bevezetésével a Azure SQL Data Warehouse statisztikát készít a lekérdezés-végrehajtás optimalizálásához. A június 2018-os kiadással megfigyelhető, hogy mikor történik a statisztikák automatikus létrehozása azáltal, hogy hozzáad egy rekordot a [sys. DM _pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) -nézethez, amikor a [create Statistics](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql) művelet végrehajtása folyamatban van.
 

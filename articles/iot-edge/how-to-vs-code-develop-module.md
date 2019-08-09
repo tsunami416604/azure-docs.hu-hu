@@ -4,23 +4,22 @@ description: A Visual Studio Code használatával olyan modulokat fejleszthet, �
 services: iot-edge
 keywords: ''
 author: shizn
-manager: philmea
 ms.author: xshi
-ms.date: 07/23/2019
+ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 39b8485ac3f98cb7ca6739fe31378726bea3452b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2efda0e506cf0525b1a8ea868acca48a929f8f41
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565357"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848282"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Modulok fejlesztése és hibakeresése a Visual Studio Code használatával Azure IoT Edge
 
 Az Azure IoT Edge kapcsolhatja az üzleti logikára modulokat. Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studio Code-ot a modulok fejlesztésére és hibakeresésére szolgáló fő eszközként.
 
-A (z) C#, Node. js vagy Java nyelven írt modulok esetében kétféleképpen lehet hibakeresést végezni a Visual Studio Code-ban: Csatlakoztathat egy folyamatot egy modul-tárolóban, vagy hibakeresési módban is elindíthatja a modul kódját. A Pythonban vagy C-ben írt modulok esetében csak egy Linux amd64-tárolóban található folyamathoz kapcsolhatók le.
+A Visual Studio Code-ban C#kétféleképpen lehet hibakeresési modulokat, Node. js-t vagy Java-t írni: Csatlakoztathat egy folyamatot egy modul-tárolóban, vagy hibakeresési módban is elindíthatja a modul kódját. A Pythonban vagy C-ben írt modulok hibakereséséhez csak Linux amd64-tárolókban lévő folyamatokhoz lehet kapcsolódni.
 
 Ha nem ismeri a Visual Studio Code hibakeresési képességeit, olvassa el a [hibakeresést](https://code.visualstudio.com/Docs/editor/debugging)ismertető cikkét.
 
@@ -43,7 +42,7 @@ Először telepítse a [Visual Studio Code](https://code.visualstudio.com/) -ot,
   - Java: [Java Extension Pack a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
   - C [C/C++ bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 
-A modul fejlesztése érdekében további, nyelvspecifikus eszközöket is telepítenie kell:
+Emellett további, nyelvfüggő eszközöket is telepítenie kell a modul fejlesztéséhez:
 
 - C#, beleértve a Azure Functions: [.net Core 2,1 SDK](https://www.microsoft.com/net/download)
 
@@ -107,7 +106,7 @@ A megoldásban négy elem található:
   > [!NOTE]
   > A környezeti fájl csak akkor jön létre, ha megadja a modulhoz tartozó rendszerkép-tárházat. Ha elfogadta a localhost alapértelmezéseket a helyi teszteléshez és hibakereséshez, akkor nem kell deklarálnia környezeti változókat.
 
-- A **Deployment. template. JSON** fájl felsorolja az új modult, valamint egy minta **tempSensor** modult, amely szimulálja a teszteléshez használható adatforrásokat. További információ az üzembe helyezési jegyzékek működéséről: az üzembe helyezési [jegyzékek használata modulok üzembe helyezéséhez és útvonalak létrehozásához](module-composition.md).
+- A **Deployment. template. JSON** fájl felsorolja az új modult, valamint egy minta **SimulatedTemperatureSensor** modult, amely szimulálja a teszteléshez használható adatforrásokat. További információ az üzembe helyezési jegyzékek működéséről: az üzembe helyezési [jegyzékek használata modulok üzembe helyezéséhez és útvonalak létrehozásához](module-composition.md).
 
 ## <a name="add-additional-modules"></a>További modulok hozzáadása
 
@@ -124,7 +123,7 @@ A megoldás alapértelmezett moduljának kódja a következő helyen található
 - Java: **modulok > *&lt;a modul neve&gt;* > src > Main > Java > com > edgemodulemodules > app. Java**
 - C: **modulok > *&lt;a modul neve&gt;* > Main. c**
 
-A modul és a deployment.template.json fájl legyenek beállítva, hogy a megoldás felépítéséhez, küldje le azt a tárolóregisztrációs adatbázisba, és telepítheti az eszközöket, hogy a kód módosítása nélkül tesztelés megkezdése. A modul csak igénybe vehet a bemeneti forrásból (ami jelen esetben a tempSensor modul, amely szimulálja az adatokat), és átadhatja azt az IoT hubhoz való használatra készült.
+A modul és a deployment.template.json fájl legyenek beállítva, hogy a megoldás felépítéséhez, küldje le azt a tárolóregisztrációs adatbázisba, és telepítheti az eszközöket, hogy a kód módosítása nélkül tesztelés megkezdése. A modul úgy van felépítve, hogy egyszerűen egy forrásból (ebben az esetben az adatokat szimuláló SimulatedTemperatureSensor modulból) beírja a bemenetet, és átadja a IoT Hubnak.
 
 Ha készen áll a sablon testre szabására a saját kódjával, az [Azure IoT hub SDK](../iot-hub/iot-hub-devguide-sdks.md) -k segítségével olyan modulokat hozhat létre, amelyek a IoT-megoldások, például a biztonság, az eszközkezelés és a megbízhatóság szempontjából szükségesek.
 
@@ -227,7 +226,7 @@ A fejlesztői gépen elindíthat egy IoT Edge szimulátort a IoT Edge biztonság
 
 1. A Visual Studio Code Explorer nézetben kattintson a jobb gombbal a megoldásra, majd válassza az `deployment.debug.template.json` **IoT Edge megoldás létrehozása és futtatása szimulátorban**lehetőséget. Megtekintheti az összes modul-tároló naplóját ugyanabban az ablakban. A tároló állapotának megtekintéséhez a Docker-nézetet is használhatja.
 
-   ![Változók megtekintése](media/how-to-develop-csharp-module/view-log.png)
+   ![Változók megtekintése](media/how-to-vs-code-develop-module/view-log.png)
 
 1. Navigáljon a Visual Studio Code hibakeresés nézetéhez, és válassza ki a modul hibakeresési konfigurációs fájlját. A hibakeresési beállítás neve nem lehet hasonló  ***&lt;a modul neve&gt;* távoli hibakereséshez**
 

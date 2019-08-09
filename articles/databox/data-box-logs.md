@@ -1,87 +1,87 @@
 ---
-title: Nyomon követheti, és az Azure Data Box, az Azure Data Box nehéz események naplózása |} A Microsoft Docs
-description: Ismerteti, hogyan lehet nyomon követése és naplózása az Azure Data Box és az Azure Data Box nehéz rendelését különböző szakaszaiban.
+title: Azure Data Box nyomon követése és naplózása, Azure Data Box Heavy események | Microsoft Docs
+description: Ismerteti, hogyan lehet nyomon követni és naplózni az eseményeket a Azure Data Box különböző szakaszaiban, és Azure Data Box Heavy sorrendet.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 08/07/2019
 ms.author: alkohli
-ms.openlocfilehash: ba08cd7fdecda99c04d5bb1007b3e5f61cd1bd5c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 309dc8e1fd15ae4088ed6ee87bdbb8aa4d636951
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446770"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848573"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Tracking és az eseménynaplózás az Azure Data Box-és az Azure Data Box (nagy erőforrásigényű)
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box és Azure Data Box Heavy követése és eseménynaplózása
 
-A Data Box vagy a Data Box nehéz sorrendet halad át az alábbi lépéseket: order, állítsa be, másolja, adja vissza, az Azure-bA adatfeltöltési és győződjön meg arról, és az adatok törlését. Megfelelő a sorrendben, tegye meg több a rendelés való hozzáférésnek, az események naplózása, nyomon követheti a rendelés, és a különböző előállított naplók értelmezése.
+Egy Data Box vagy Data Box Heavy megrendelés a következő lépésekből áll: megrendelés, beállítás, Adatmásolás, visszatérés, feltöltés az Azure-ba, ellenőrzés és adatok törlése. A sorrend egyes lépéseinek megfelelően több műveletet is végrehajthat a rendeléshez való hozzáférés szabályozásához, az események naplózásához, a sorrend nyomon követéséhez és a létrehozott naplók értelmezéséhez.
 
-Az alábbi táblázat a Data Box vagy a Data Box nehéz rendelés lépéseket, és nyomon követése és naplózása a rendelés során minden lépés használható eszközök összegzését jeleníti meg.
+Az alábbi táblázat a Data Box vagy Data Box Heavy sorrendtel kapcsolatos lépések összegzését, valamint az egyes lépésekben a sorrend nyomon követésére és naplózására használható eszközöket tartalmazza.
 
-| Data Box rendelés fázis       | Eszköz nyomon követése és naplózása                                                                        |
+| Data Box rendelési szakasz       | Nyomon követhető és naplózható eszköz                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| Rendelés létrehozása               | [Állítsa be a hozzáférés-vezérlés a sorrendben, RBAC-n keresztül](#set-up-access-control-on-the-order)                                                    |
-| A rendelés feldolgozása            | [Nyomon követheti a rendelés](#track-the-order) keresztül <ul><li> Azure Portal </li><li> A szállítási címhez tartozó szolgáltató webhely </li><li>E-mail-értesítések</ul> |
-| Eszköz beállítása              | Eszköz hitelesítő adatai hozzáférést bejelentkezett [tevékenységeket tartalmazó naplók](#query-activity-logs-during-setup)                                              |
-| Adatok másolása eszköz        | [Nézet *error.xml* fájlok](#view-error-log-during-data-copy) az adatok másolása                                                             |
-| A szállítás előkészítése            | [A AJ fájlokat](#inspect-bom-during-prepare-to-ship) vagy az eszközön lévő fájlok                                      |
-| Adatok feltöltése az Azure-bA       | [Felülvizsgálat *copylogs* ](#review-copy-log-during-upload-to-azure) adatok során hibák feltöltése az Azure-adatközpont                         |
-| Adatok törlését az eszközről   | [Felügyeleti lánc naplók lánc megtekintéséhez](#get-chain-of-custody-logs-after-data-erasure) többek között a naplók és a rendelési előzmények                |
+| Megrendelés létrehozása               | [Hozzáférés-vezérlés beállítása a rendelésen a RBAC használatával](#set-up-access-control-on-the-order)                                                    |
+| Megrendelés feldolgozva            | [A sorrend nyomon követése](#track-the-order) <ul><li> Azure Portal </li><li> Szállítási szolgáltató webhelye </li><li>E-mail értesítés</ul> |
+| Eszköz beállítása              | Az eszköz hitelesítő adatai naplózása a [tevékenység naplófájljaiban](#query-activity-logs-during-setup)                                              |
+| Adatmásolás az eszközre        | [A *hiba. XML* fájlok megtekintése](#view-error-log-during-data-copy) az adatmásoláshoz                                                             |
+| Szállításra való előkészítés            | Az [Anyagjegyzék-fájlok](#inspect-bom-during-prepare-to-ship) vagy a jegyzékfájlok vizsgálata az eszközön                                      |
+| Adatok feltöltése az Azure-ba       | A hibák [másolási naplóinak áttekintése](#review-copy-log-during-upload-to-azure) az adatok feltöltésekor az Azure-adatközpontban                         |
+| Adatok törlése az eszközről   | [Felügyeleti naplók láncának megtekintése](#get-chain-of-custody-logs-after-data-erasure) , beleértve a naplókat és a sorrendi előzményeket                |
 
-Ez a cikk ismerteti részletesen ismertetjük a különböző mechanizmusokat vagy nyomon követése és naplózása a Data Box vagy a Data Box nehéz sorrendben elérhető eszközöket. Ebben a cikkben található információk, Data Box mind a Data Box nehéz vonatkozik. Az ezt követő szakaszokban Data Box mutató hivatkozásokat is érvényesek a Data Box (nagy erőforrásigényű).
+Ez a cikk részletesen ismerteti a Data Box vagy Data Box Heavy sorrend nyomon követésére és naplózására rendelkezésre álló különböző mechanizmusokat vagy eszközöket. A cikkben található információk a következőkre vonatkoznak: Data Box és Data Box Heavy. A következő szakaszban a Data Boxra való hivatkozás a Data Box Heavyra is vonatkozik.
 
-## <a name="set-up-access-control-on-the-order"></a>Ahhoz, a hozzáférés-vezérlés beállítása
+## <a name="set-up-access-control-on-the-order"></a>Hozzáférés-vezérlés beállítása a rendeléshez
 
-Szabályozhatja, hogy ki férhet hozzá a rendeléséhez a sorrend létrehozásakor. Szerepköralapú hozzáférés-vezérlés (RBAC) szerepkörök beállítása a különböző hatókörök szabályozhatja a hozzáférést a Data Box-rendelését. Az RBAC szerepkör határozza meg a hozzáférés – olvasási és írási, olvasási, olvasási és írási műveletek egy részét.
+Megadhatja, hogy ki férhet hozzá a rendeléshez a rendelés első létrehozásakor. Szerepköralapú Access Control-(RBAC-) szerepkörök beállítása különböző hatókörökön a Data Box-rendeléshez való hozzáférés szabályozása érdekében. Egy RBAC-szerepkör határozza meg a hozzáférés típusát – írható és olvasható, írásvédett, írás és olvasás a műveletek egy részhalmazára.
 
-A két lehetséges szerepkör, amely az Azure Data Box szolgáltatás adható meg a következők:
+A Azure Data Box szolgáltatáshoz definiálható két szerepkör a következő:
 
-- **Box Adatolvasó** – egy rendelés (ek) a csak olvasási hozzáféréssel rendelkezik, a hatókör szerint. Csak akkor megtekintheti a rendelés részleteit. Ezeket nem lehet hozzáférni a storage-fiókokhoz kapcsolódó összes többi részletet, vagy a rendelés részleteit, például cím szerkesztése és így tovább.
-- **Data Box Közreműködője** -adatok átviteléhez a megadott tárfiókhoz rendelés csak hozhat létre *Ha írási hozzáférést a tárfiókhoz már rendelkeznek*. Nem rendelkeznek a tárfiókhoz való hozzáférést, ha azok még nem hozható létre másolhat adatokat a fiókot a Data Box-rendelését. Ez a szerepkör nem határoz meg minden olyan Storage-fiók kapcsolódó tárfiókok és az engedélyek nem biztosít hozzáférést.  
+- **Data Box-olvasó** – a hatókörben megadott rendelés (ek) hez csak olvasási hozzáférése van. Csak egy megrendelés részleteit tekinthetik meg. Nem férhetnek hozzá a Storage-fiókokkal kapcsolatos egyéb adatokhoz, vagy szerkesztheti a rendelés részleteit, például a címeket és így tovább.
+- **Data Box közreműködő** – csak olyan megrendelés hozható létre, amely az adatok átvitelét egy adott Storage-fiókba, *Ha már rendelkezik írási hozzáféréssel egy Storage-fiókhoz*. Ha nem fér hozzá egy Storage-fiókhoz, akkor sem hozhatnak létre Data Box, hogy az Adatmásolást a fiókba. Ez a szerepkör nem határozza meg a Storage-fiókhoz kapcsolódó engedélyeket, és nem biztosít hozzáférést a Storage-fiókokhoz.  
 
-A hozzáférés korlátozása egy rendelést, a következőket teheti:
+Egy megrendelés elérésének korlátozásához a következőket teheti:
 
-- Rendelje hozzá a szerepkört egy rendelés szintjén. A felhasználó csak rendelkezik ilyen engedéllyel, a szerepkörök számára, hogy adott Data Box-rendelés csak, és semmi más szerint.
-- Az erőforráscsoport szintjén szerepkör hozzárendelése, a felhasználó rendelkezik hozzáféréssel az erőforráscsoporton belül Data Box-rendelés.
+- Rendeljen hozzá egy szerepkört egy rendelési szinten. A felhasználónak csak a szerepkörök által meghatározott engedélyekkel kell megfelelnie az adott Data Box sorrendtel való interakcióhoz, és semmi más nem.
+- Rendeljen hozzá egy szerepkört az erőforráscsoport szintjén, a felhasználó hozzáfér az adott erőforráscsoporthoz tartozó összes Data Box-rendeléshez.
 
-Javasolt az RBAC használatát további információkért lásd: [ajánlott eljárások az RBAC](../role-based-access-control/overview.md#best-practice-for-using-rbac).
+További információ a javasolt RBAC használatáról: [ajánlott eljárások a RBAC](../role-based-access-control/overview.md#best-practice-for-using-rbac).
 
 ## <a name="track-the-order"></a>A megrendelés nyomon követése
 
-Nyomon követheti a rendelést, az Azure Portalon keresztül, és a szállítási szolgáltatója webhelyen keresztül. Az alábbi módszerek a rendszer a bármikor a Data Box-rendelését nyomon követéséhez:
+A megrendelés nyomon követhető a Azure Portal és a szállítási szolgáltató webhelyén. A következő mechanizmusok állnak rendelkezésre a Data Box sorrendjének nyomon követéséhez:
 
-- A rendelés nyomon, amikor az eszköz van az Azure-adatközpontban vagy a helyszínen, nyissa meg a **Data Box-rendelését > Áttekintés** az Azure Portalon.
+- Ha nyomon szeretné követni a sorrendet, amikor az eszköz az Azure-adatközpontban vagy az Ön telephelyén található, lépjen a **Data Box order > áttekintés** Azure Portal.
 
-    ![Rendelés állapota és nyomon követése nem megtekintése](media/data-box-logs/overview-view-status-1.png)
+    ![Megrendelés állapotának és követésének megtekintése](media/data-box-logs/overview-view-status-1.png)
 
-- Nyomon követheti sorrendben, amikor az eszköz az átvitel során, lépjen a regionális szolgáltató webhelyén, például UPS webhely velünk a KAPCSOLATOT. Adja meg az ahhoz tartozó követési szám.
-- Data Box is küld értesítő e-mailek, bármikor a rendelés állapota módosul az e-maileket a sorrend létrehozásakor megadott alapján. Minden Data Box-állapot listáját lásd: [megtekintheti a rendelés állapota](data-box-portal-admin.md#view-order-status). A társított értesítési beállítások módosításához tekintse meg a [értesítés adatainak szerkesztése](data-box-portal-admin.md#edit-notification-details).
+- Ha nyomon szeretné követni a sorrendet az eszköz továbbítása közben, lépjen a regionális szolgáltató webhelyére, például az Egyesült államokbeli UPS webhelyre. Adja meg a rendeléshez társított követési számot.
+- Data Box e-mail-értesítéseket is küld, amikor a megrendelés állapota megváltozik a rendelés létrehozásakor megadott e-mailek alapján. A Data Box rendelés állapotának listáját a [sorrend állapotának megtekintése](data-box-portal-admin.md#view-order-status)című részben tekintheti meg. A rendeléshez társított értesítési beállítások módosításához tekintse meg az [értesítési adatok szerkesztése](data-box-portal-admin.md#edit-notification-details)című részt.
 
-## <a name="query-activity-logs-during-setup"></a>Lekérdezés Tevékenységnaplók a telepítés során
+## <a name="query-activity-logs-during-setup"></a>Lekérdezési tevékenység naplófájljai a telepítés során
 
-- A Data Box érkezik, a helyszíni zárolt állapotban. Az eszköz hitelesítő adatait az Azure Portalon elérhető használhatja a rendeléséhez.  
+- A Data Box zárolt állapotban érkezik a helyszínen. A megrendeléséhez a Azure Portal elérhető hitelesítő adatok használhatók.  
 
-    Ha a Data Box be van állítva, szükség lehet tudni, akik az összes elérhető, az eszköz hitelesítő adatait. A döntse el, hogy ki fért a **hitelesítő adatai** panelen lekérdezheti a Tevékenységnaplókban.  Minden művelet, amely magában foglalja a elérése **. eszköz részletei > hitelesítő adatok** panel be legyen jelentkezve a tevékenységnaplókat, `ListCredentials` művelet.
+    Egy Data Box beállításakor előfordulhat, hogy tudnia kell, hogy ki fér hozzá az eszköz hitelesítő adataihoz. Annak megállapításához, hogy ki fér hozzá az **eszköz hitelesítő adatai** panelhez, lekérdezheti a tevékenység naplóit.  Minden olyan művelet, amely magában foglalja az **eszköz adatainak** elérését > a hitelesítő adatok panelje `ListCredentials` műveletként van bejelentkezve a tevékenység naplóiba.
 
     ![Tevékenységnaplók lekérdezése](media/data-box-logs/query-activity-log-1.png)
 
-- Minden egyes jelentkezzen be a Data Box naplózott valós idejű. Azonban ez az információ érhető el csak a [Auditnaplók](#audit-logs) a rendelés sikeres végrehajtása után.
+- A rendszer minden bejelentkezést valós időben naplóz a Data Boxba. Ezek az információk azonban csak a sorrend sikeres befejezése [](#audit-logs) után érhetők el a naplókban.
 
-## <a name="view-error-log-during-data-copy"></a>Adatok másolása során hiba napló megtekintése
+## <a name="view-error-log-during-data-copy"></a>Hibanapló megtekintése az Adatmásolás során
 
-Során az adatok Data Box vagy a Data Box nehéz való másolását egy hiba történt a fájl generál, ha az adatok másolását a merül fel.
+Az Adatmásolás során Data Box vagy Data Box Heavy a rendszer hibaüzenetet küld, ha az Adatmásolás során problémák merülnek fel.
 
-### <a name="errorxml-file"></a>Error.xml fájl
+### <a name="errorxml-file"></a>Error. xml fájl
 
-Győződjön meg arról, hogy a másolási feladatokat hiba nélkül befejeződött. Ha a másolási folyamat közben hibák, töltse le a naplók a **csatlakozás és másolás** lapot.
+Győződjön meg arról, hogy a másolási feladatok végrehajtása hibák nélkül befejeződött. Ha a másolási folyamat során hibák léptek fel, töltse le a naplókat a **csatlakozás és másolás** lapról.
 
-- Ha egy fájlt, amely nem 512 bájt igazítva a Data Box egy felügyelt lemez mappájába másolja, a fájl feltöltve nem lapblob, az előkészítési tárfiókból. Látni fogja a naplókban hiba. Távolítsa el a fájlt, és másolja át a fájlt, amely pedig 512 bájt igazítva.
-- Ha vhdx-fájlt, vagy dinamikus virtuális merevlemez, vagy egy különbséglemez VHD-t (ezek a fájlok nem támogatottak) másolja, látni fogja a naplókban hiba.
+- Ha olyan fájlt másolt, amely nem 512 bájtra van igazítva a Data Box felügyelt lemez mappájába, a fájl nem lesz feltöltve az átmeneti tárolási fiókba. Hibaüzenet jelenik meg a naplókban. Távolítsa el a fájlt, és másolja a 512 bájtra igazított fájlt.
+- Ha másolt egy VHDX, vagy egy dinamikus VHD-t vagy egy különbséglemezek VHD-t (ezek a fájlok nem támogatottak), akkor hibaüzenet jelenik meg a naplókban.
 
-Íme egy példa, a *error.xml* a különböző hibákat, amikor a felügyelt lemezek másolása.
+Íme egy példa a *error. XML fájlra* , amely a felügyelt lemezekre történő másolás során különböző hibákat tartalmaz.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\differencing-vhd-022019.vhd</file>
@@ -90,7 +90,7 @@ Győződjön meg arról, hogy a másolási feladatokat hiba nélkül befejeződ�
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\insidediffvhd-022019.vhd</file>
 ```
 
-Íme egy példa, a *error.xml* a különböző hibákat lapblobok másolásakor.
+Íme egy példa a *error. XML fájlra* , amely különböző hibákat mutat a Blobok másolásakor.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT">\PageBlob512NotAligned\File100Bytes</file>
@@ -101,7 +101,7 @@ Győződjön meg arról, hogy a másolási feladatokat hiba nélkül befejeződ�
 ```
 
 
-Íme egy példa, a *error.xml* a különböző hibákat történő másolásakor a blokkblobok használatát támogatják.
+Íme egy példa a *error. XML fájlra* , amely különböző hibákat tartalmaz a Blobok másolásakor.
 
 ```xml
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_LENGTH">\ab</file>
@@ -129,7 +129,7 @@ Győződjön meg arról, hogy a másolási feladatokat hiba nélkül befejeződ�
 <file error="ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL" name_encoding="Base64">XEludmFsaWRVbmljb2RlRmlsZXNcU3BjQ2hhci01NTI5Ny3vv70=</file>
 ```
 
-Íme egy példa, a *error.xml* a különböző hibákat az Azure Files másolásakor.
+Itt látható egy példa a *error. XML fájlra* , amely különböző hibákat mutat be Azure Filesre való másoláskor.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_LIMIT">\AzFileMorethan1TB\AzFile1.2TB</file>
@@ -147,31 +147,31 @@ Győződjön meg arról, hogy a másolási feladatokat hiba nélkül befejeződ�
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH">\Starting with Capital</file>
 ```
 
-A fenti esetek mindegyikében javítsa ki a hibákat, mielőtt továbblép a következő lépéssel. Az adatok másolása a Data Boxba SMB vagy NFS protokoll használatával során kapott hibáival kapcsolatos további információkért lépjen [Data Box – hibaelhárítás és a Data Box nehéz problémák](data-box-troubleshoot.md). Információk a Data Box REST-en keresztül az adatok másolása során kapott, Ugrás [hibaelhárítása Data Box Blob tárolási problémák](data-box-troubleshoot-rest.md).
+A fenti esetek mindegyikében hárítsa el a hibákat, mielőtt továbblépne a következő lépésre. Az adatmásolások SMB-vagy NFS-protokollon keresztüli Data Box során kapott hibákról további információt a [Data Box és a Data Box Heavy problémák elhárítása](data-box-troubleshoot.md)című témakörben talál. További információ az Adatmásolás során a REST-Data Box során kapott hibákról: [Data Box blob Storage-problémák elhárítása](data-box-troubleshoot-rest.md).
 
-## <a name="inspect-bom-during-prepare-to-ship"></a>Vizsgálja meg a AJ szállításra való előkészítése során
+## <a name="inspect-bom-during-prepare-to-ship"></a>ANYAGJEGYZÉK vizsgálata a szállítás előkészítése során
 
-Során készítse elő szállításra, az anyagok anyagjegyzék (AJ) vagy a jegyzékfájl létrehozása néven fájlok listája.
+A szállítás előkészítése során létrejön az anyagjegyzék (AJ) vagy a manifest-fájl néven ismert fájlok listája.
 
-- Ez a fájl segítségével ellenőrizze a tényleges nevét és a Data Box átmásolt fájlok száma.
-- Ez a fájl segítségével ellenőrizze a fájl tényleges mérete alapján.
-- Ellenőrizze, hogy a *crc64* felel meg egy nem nulla értékű karakterlánc. <!--A null value for crc64 indicates that there was a reparse point error)-->
+- Ezzel a fájllal ellenőrizheti a tényleges neveket és a Data Boxba másolt fájlok számát.
+- Ezt a fájlt használva ellenőrizheti a fájlok tényleges méretét.
+- Győződjön meg arról, hogy a *crc64* nem nulla karakterláncnak felel meg. <!--A null value for crc64 indicates that there was a reparse point error)-->
 
-További információk a a során kapott előkészítése szállításra, ugorjon a [Data Box – hibaelhárítás és a Data Box nehéz problémák](data-box-troubleshoot.md).
+A szállítás előkészítése során kapott hibákról a [Data Box és Data Box Heavy problémák elhárítása](data-box-troubleshoot.md)című témakörben olvashat bővebben.
 
-### <a name="bom-or-manifest-file"></a>Anyagjegyzék vagy manifest fájl
+### <a name="bom-or-manifest-file"></a>AJ-vagy manifest-fájl
 
-Az Anyagjegyzék vagy a jegyzékfájlt a Data Box-eszközre másolt fájlok listáját tartalmazza. A AJ fájl rendelkezik a fájl nevéből és a megfelelő méret, valamint az ellenőrzőösszeg. A blokkblobok, lapblobok és Azure fájlok másolása a REST API-kon keresztül, valamint a felügyelt lemezek a Másolás a Data Box egy külön AJ-fájl jön létre. A szállításra való előkészítés alatt letöltheti a AJ fájlokat a helyi webes felületén az eszközön.
+Az AJ vagy a manifest fájl tartalmazza a Data Box eszközre másolt fájlok listáját. Az AJ-fájl fájlnevei és a hozzájuk tartozó méretek, valamint az ellenőrzőösszeg. A rendszer külön AJ-fájlt hoz létre a blokk Blobok, a Blobok, a Azure Files, a REST API-k használatával történő másoláshoz, valamint a Data Box felügyelt lemezekre történő másolásához. Az ANYAGJEGYZÉK-fájlokat letöltheti az eszköz helyi webes KEZELŐFELÜLETéről a felkészülés a szállításra lehetőségre.
 
-Ezeket a fájlokat is találhatók a Data Box-eszközre, és töltenek fel a társított storage-fiókot az Azure-adatközpontban.
+Ezek a fájlok a Data Box eszközön is találhatók, és az Azure-adatközpontban a társított Storage-fiókba lesznek feltöltve.
 
-### <a name="bom-file-format"></a>AJ fájlformátum
+### <a name="bom-file-format"></a>AJ-fájl formátuma
 
-Anyagjegyzék vagy manifest fájl általános formátuma a következő:
+Az AJ-vagy manifest-fájl formátuma a következő:
 
 `<file size = "file-size-in-bytes" crc64="cyclic-redundancy-check-string">\folder-path-on-data-box\name-of-file-copied.md</file>`
 
-Itt látható egy minta jegyzékfájl jönnek létre, ha az adatokat a rendszer átmásolta a block blob megosztásra a Data Box.
+Az alábbi példa egy olyan jegyzékfájlt mutat be, amely akkor jön létre, amikor a rendszer átmásolta az adatmennyiséget a Data Box a blob megosztására.
 
 ```
 <file size="10923" crc64="0x51c78833c90e4e3f">\databox\media\data-box-deploy-copy-data\connect-shares-file-explorer1.png</file>
@@ -191,27 +191,29 @@ Itt látható egy minta jegyzékfájl jönnek létre, ha az adatokat a rendszer 
 <file size="3220" crc64="0x7257a263c434839a">\databox\data-box-system-requirements.md</file>
 ```
 
-Az Anyagjegyzék vagy jegyzékfájlok is másolja az Azure storage-fiókhoz. Használhatja az Anyagjegyzék vagy ellenőrizze, hogy az Azure-bA feltöltött fájlok egyeznek-e az adatokat, hogy a rendszer átmásolta a Data Box-fájlok jegyzékfájl.
+Az AJ-vagy MANIFEST-fájlokat a rendszer az Azure Storage-fiókba is másolja. Az AJ vagy a manifest fájlok segítségével ellenőrizheti, hogy az Azure-ba feltöltött fájlok megfelelnek-e a Data Boxba másolt adatfájloknak.
 
-## <a name="review-copy-log-during-upload-to-azure"></a>Tekintse át a másolási naplót az Azure-ba való feltöltésekor
+## <a name="review-copy-log-during-upload-to-azure"></a>A másolási napló áttekintése az Azure-ba való feltöltés során
 
-Az Azure-bA az adatfeltöltés során egy *copylog* jön létre.
+Az Azure-ba történő adatfeltöltés során létrejön egy másolási napló.
 
 ### <a name="copylog"></a>Copylog
 
-A Data Box szolgáltatás hoz létre minden egyes rendelés feldolgozása, *copylog* társított storage-fiókban. A *copylog* feltöltött fájlok teljes száma és a Data Box másolása az Azure storage-fiókot, amely hibát eredményező ki során az adatok fájlok száma.
+A Data Box szolgáltatás minden feldolgozott rendeléshez létrehoz egy másolási naplót a társított Storage-fiókban. A másolási naplóban szerepel a feltöltött fájlok teljes száma, valamint a Data Boxról az Azure Storage-fiókba való Adatmásolás során hibás fájlok száma.
 
-Egy ciklikus redundancia ellenőrzése (CRC) számítási történik a feltöltés során, az Azure-bA. Az adatok másolását, és összehasonlítja az adatok feltöltése után CRCs. CRC eltérés azt jelzi, hogy a megfelelő fájlokat nem sikerült feltölteni.
+Az Azure-ba való feltöltés során ciklikus redundancia-ellenőrzési (CRC) számítás történik. A FCSF az adatmásolatból és az adatok feltöltése után összehasonlítjuk. A CRC-eltérés azt jelzi, hogy a megfelelő fájlokat nem sikerült feltölteni.
 
-Alapértelmezés szerint a naplók nevű tárolóba írták `copylog`. A naplókat tárolja az alábbi elnevezési szabályt követik:
+Alapértelmezés szerint a rendszer a naplókat egy nevű `copylog`tárolóba írja. A naplók tárolása a következő elnevezési konvencióval történik:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
-A copylog elérési útját is megjelenik a **áttekintése** a portál panelén.
+A másolási napló elérési útja a portál **Áttekintés** paneljén is megjelenik.
 
-![Az Áttekintés panelen befejezésekor copylog elérési útja](media/data-box-logs/copy-log-path-1.png)
+![Elérési út a másolási napló áttekintő paneljén, ha elkészült](media/data-box-logs/copy-log-path-1.png)
 
-Az alábbi mintában Ez a cikk ismerteti egy copylog fájl általános formátumát a Data Box feltöltése sikeresen befejeződött:
+### <a name="upload-completed-successfully"></a>A feltöltés sikeresen befejeződött 
+
+A következő minta a másolási napló általános formátumát írja le egy Data Box feltöltéshez, amely sikeresen befejeződött:
 
 ```
 <?xml version="1.0"?>
@@ -222,11 +224,13 @@ Az alábbi mintában Ez a cikk ismerteti egy copylog fájl általános formátum
 </CopyLog>
 ```
 
-Azure-bA feltöltendő hibákkal is elvégezheti.
+### <a name="upload-completed-with-errors"></a>A feltöltés hibákkal fejeződött be 
 
-![Az Áttekintés panelen, amikor hibákkal fejeződött be copylog elérési útja](media/data-box-logs/copy-log-path-2.png)
+A feltöltés az Azure-ba hibákkal is elvégezhető.
 
-Íme egy példa, egy copylog, ahol a feltöltés hibákkal fejeződött be:
+![Elérési út a másolási napló áttekintő paneljén a hibákkal fejeződött be](media/data-box-logs/copy-log-path-2.png)
+
+Íme egy példa arra a másolási naplóra, amelyben a feltöltés hibákkal fejeződött be:
 
 ```xml
 <ErroredEntity Path="iso\samsungssd.iso">
@@ -245,9 +249,13 @@ Azure-bA feltöltendő hibákkal is elvégezheti.
   <FilesErrored>2</FilesErrored>
 </CopyLog>
 ```
-Íme egy példa egy `copylog` ahol a tárolók, amely nem felelt meg az Azure elnevezési konvencióinak lettek átnevezve, során az adatok feltöltése az Azure-bA.
+### <a name="upload-completed-with-warnings"></a>A feltöltés figyelmeztetésekkel fejeződött be
 
-A következő formátumban van az új egyedi nevet az tárolók `DataBox-GUID` és az adatokat a tároló a új átnevezve tárolóba kerülnek. A `copylog` a régi és a tároló az új tároló nevét adja meg.
+Az Azure-ba való feltöltés figyelmeztetésekkel fejeződött be, ha az adatok olyan tároló/blob/fájlnévvel rendelkeznek, amelyek nem feleltek meg az Azure elnevezési konvencióinak, és a nevek módosultak az adatok Azure-ba való feltöltéséhez.
+
+Íme egy példa arra a másolási naplóra, amelyben az Azure elnevezési konvenciókkal nem egyező tárolók át lettek nevezve az Azure-ba történő adatfeltöltés során.
+
+A tárolók új egyedi nevei a formátum `DataBox-GUID` , a tárolók pedig az új átnevezve tárolóba kerülnek. A másolási napló megadja a régi és az új tároló nevét a tárolóhoz.
 
 ```xml
 <ErroredEntity Path="New Folder">
@@ -258,9 +266,9 @@ A következő formátumban van az új egyedi nevet az tárolók `DataBox-GUID` �
 </ErroredEntity>
 ```
 
-Íme egy példa egy `copylog` , a blobok vagy a fájlokat, amely nem felelt meg az Azure elnevezési konvencióinak, lett átnevezve során az adatok feltöltése az Azure-bA. Az új blob vagy fájlneveket SHA256 kivonatoló tároló relatív elérési útja alakítja, és töltődnek fel a cél típusa alapján elérési útja. A cél a blokkblobok, lapblobok vagy az Azure Files lehet.
+Íme egy példa arra a másolási naplóra, amelyben az Azure elnevezési konvenciókkal nem egyező Blobok vagy fájlok át lettek nevezve az Azure-ba történő adatfeltöltés során. Az új blob-vagy fájlneveket a rendszer a tároló relatív elérési útjának SHA256-kivonatára konvertálja, és a célhely típusa alapján feltölti az elérési útra. A cél lehet a Blobok, a Blobok vagy a Azure Files blokkolása.
 
-A `copylog` a régi és az új blob vagy a fájl neve és elérési útját megadja az Azure-ban.
+A `copylog` a régi és az új blob vagy fájl nevét és elérési útját adja meg az Azure-ban.
 
 ```xml
 <ErroredEntity Path="TesDir028b4ba9-2426-4e50-9ed1-8e89bf30d285\Ã">
@@ -281,15 +289,15 @@ A `copylog` a régi és az új blob vagy a fájl neve és elérési útját mega
 </ErroredEntity>
 ```
 
-## <a name="get-chain-of-custody-logs-after-data-erasure"></a>Adatok a törlés után lánc felügyeleti lánc naplók lekérése
+## <a name="get-chain-of-custody-logs-after-data-erasure"></a>Adattörlési lánc beolvasása az adattörlés után
 
-Miután az adatokat a Data Box-lemezek a 800-88 NIST SP 1 változat irányelvek alapján való törlése, a lánc felügyeleti lánc naplók érhetők el. Ezeket a naplókat a naplók és a rendelési előzményeit tartalmazza. Az Anyagjegyzék vagy jegyzékfájlok is másolja a vizsgálati naplók.
+Miután az adatok törlődnek a Data Box lemezekről a NIST SP 800-88 1. verziójának útmutatása szerint, a felügyeleti naplók lánca elérhető. Ezek a naplók tartalmazzák a naplókat és a megrendelési előzményeket. A rendszer a naplókat is másolja az AJ-vagy manifest-fájlokba.
 
 ### <a name="audit-logs"></a>Naplók
 
-Auditnaplók bekapcsolási információt tartalmaznak, és ha az Azure-beli adatközpont-en kívül tartalmazó fájlmegosztás elérését a Data Box vagy a Data Box (nagy erőforrásigényű). Ezek a naplók a következő helyen találhatók: `storage-account/azuredatabox-chainofcustodylogs`
+A naplók az Azure-adatközponton kívüli Data Box vagy Data Box Heavy megosztásának bekapcsolásával és elérésével kapcsolatos információkat tartalmaznak. Ezek a naplók a következő helyeken találhatók:`storage-account/azuredatabox-chainofcustodylogs`
 
-Íme egy példa a Data Box naplók:
+Íme egy példa a naplóból a Data Box:
 
 ```
 9/10/2018 8:23:01 PM : The operating system started at system time ‎2018‎-‎09‎-‎10T20:23:01.497758400Z.
@@ -344,15 +352,15 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>Rendelés előzményeinek letöltése
 
-Rendelési előzmények az Azure Portalon érhető el. Ha a rendelés befejeződik, és az eszköz (adatok törlését lemezeiről) a törlés befejeződött, majd nyissa meg az eszközt ahhoz, és keresse meg **rendelés részletei**. ** Töltse le a rendelési előzmények** lehetőség érhető el. További információkért lásd: [töltse le a rendelési előzmények](data-box-portal-admin.md#download-order-history).
+A rendelési előzmények a Azure Portalban érhetők el. Ha a megrendelés befejeződött, és az eszköz tisztítása (a lemezekről történő adattörlés) befejeződött, lépjen az eszköz sorrendjébe, és navigáljon a **Rendelés részletei**elemre.  **Rendelési előzmények letöltése**  a lehetőség elérhető. További információ: a [rendelési előzmények letöltése](data-box-portal-admin.md#download-order-history).
 
-Ha a rendelési előzmények görgetve láthatja:
+Ha a sorrendet az előzmények között görgeti, a következőt látja:
 
-- A szolgáltató nyomkövetési adatokat az eszközhöz.
-- Az események *SecureErase* tevékenység. Ezek az események felel meg a lemezen lévő adatok törlése.
-- Data Box log hivatkozásokat. Az elérési utakat a *auditnaplók*, *copylogs*, és *AJ* fájlok jelennek meg.
+- Az eszköz hordozófrekvencia-követési adatai.
+- Események *SecureErase* -tevékenységgel. Ezek az események a lemezen tárolt adattörlésnek felelnek meg.
+- Data Box a napló hivatkozásait. A naplók elérésiútjait, a *másolási naplókat*és az *Anyagjegyzék* -fájlokat mutatjuk be.
 
-Íme egy példa a rendelési előzmények napló az Azure Portalról:
+Az alábbi példa az Azure Portal:
 
 ```
 -------------------------------
@@ -403,4 +411,4 @@ BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [a Data Box és a Data Box gyakori hibáinak elhárítása](data-box-troubleshoot.md).
+- Ismerje meg, hogy miként lehet elhárítani a [Data Box és Data Box Heavy kapcsolatos problémákat](data-box-troubleshoot.md).

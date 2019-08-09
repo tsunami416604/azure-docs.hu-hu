@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Azure integrálása az Oracle-felhő-infrastruktúra |} A Microsoft Docs
-description: Az adatbázisok Oracle Felhőbeli infrastruktúrát (OCI) a Microsoft Azure-ban futtatott Oracle-alkalmazások integrált megoldások tudnivalók.
+title: Microsoft Azure integrálása az Oracle Cloud Infrastructure szolgáltatással | Microsoft Docs
+description: Ismerje meg azokat a megoldásokat, amelyek a Microsoft Azureon futó Oracle-alkalmazásokat integrálják az Oracle Cloud Infrastructure (OCI) adatbázisaival.
 services: virtual-machines-linux
 documentationcenter: ''
 author: romitgirdhar
@@ -15,66 +15,66 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: fcdd46ea60ea53088ffacd7d13693b16a208d527
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 309c481c0ebf0e6061524a12356e67394e5db8d2
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707465"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880832"
 ---
-# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Oracle-alkalmazási megoldások integrálása a Microsoft Azure és az Oracle-felhő-infrastruktúra (előzetes verzió)
+# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Oracle Application Solutions Microsoft Azure és Oracle Cloud Infrastructure integrációja (előzetes verzió)
 
-A Microsoft és az Oracle szállíthatnak alacsony késleltetésű, nagy átviteli sebességet a felhőbe irányuló kapcsolatot, így mindkét felhőben a legjobb kihasználásához. 
+A Microsoft és az Oracle partneri kapcsolatban állt a kis késleltetésű, nagy átviteli sebességű, Felhőbeli kapcsolattal, így kihasználhatja mindkét felhő közül a legjobbat. 
 
-A több felhőre kiterjedő kapcsolat használata esetén particionáló egy többrétegű alkalmazás futtatása az adatbázisszint az Oracle Felhőbeli infrastruktúrát (OCI), és a az alkalmazás és az egyéb szintek, a Microsoft Azure-ban. A felhasználói élményt a teljes megoldás verem egy egyetlen felhőben futó hasonlít. 
+Ezzel a Felhőbeli kapcsolattal particionálhat többrétegű alkalmazást az adatbázis rétegének az Oracle Cloud Infrastructure (OCI) szolgáltatásban való futtatásához, valamint az alkalmazáshoz és a Microsoft Azure egyéb szintjeihez is. Az élmény hasonló a teljes megoldási verem egyetlen felhőben való futtatásához. 
 
 > [!IMPORTANT]
-> Ez a több felhőre kiterjedő funkció jelenleg előzetes verzióban érhető el, és néhány [korlátozások érvényesek a](#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> Ez a többfelhős képesség jelenleg előzetes verzióban érhető el, és bizonyos [korlátozások érvényesek](#preview-limitations). Az Azure és a OCI közötti alacsony késésű kapcsolat engedélyezéséhez az Azure-előfizetésnek először fehérnek kell lennie a funkcióhoz. Az előzetes verzióban regisztrálnia kell egy e-mailt oracleconnect@microsoft.com az előfizetés-azonosítójával. Az előfizetés regisztrációja után egy e-mailt fog kapni. Nem használhatja a funkciót, amíg meg nem kap egy megerősítő e-mailt. A Microsoft képviselőjének is felveheti a kapcsolatot az előzetes verzióra. Ez az előzetes verzió szolgáltatói szerződés nélkül van megadva, és nem használható éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részletekért tekintse meg a Microsoft Azure előzetes [verziójának kiegészítő használati](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) feltételeit. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
-Ha érdekli az Oracle-megoldások teljes egészében az Azure-infrastruktúra telepítése, lásd: [Oracle Virtuálisgép-rendszerképek és a Microsoft Azure-on üzembe helyezésükben](oracle-vm-solutions.md).
+Ha az Oracle-megoldások teljes egészében Azure-infrastruktúrán való üzembe helyezését érdekli, tekintse meg az [Oracle virtuálisgép-rendszerképek és azok üzembe helyezése Microsoft Azure](oracle-vm-solutions.md).
 
 ## <a name="scenario-overview"></a>Forgatókönyv áttekintése
 
-A felhőbe irányuló kapcsolat Oracle-szolgáltatás piacvezető alkalmazásokat és saját egyéni alkalmazások futtatását az Azure virtuális gépeken, miközben OCI lévő üzemeltetett adatbázis szolgáltatások előnyeit élvező megoldást kínál. 
+A Felhőbeli kapcsolat lehetővé teszi, hogy az Oracle piacvezető alkalmazásait és saját egyéni alkalmazásait az Azure Virtual Machines szolgáltatásban futtassa, miközben élvezi az üzemeltetett adatbázis-szolgáltatások előnyeit a OCI-ben. 
 
-Alkalmazások futtatása a több felhőre kiterjedő konfigurációban a következők:
+A több felhőalapú konfigurációban futtatható alkalmazások a következők:
 
-* E-Business Suite
+* E-Business csomag
 * JD Edwards EnterpriseOne
 * PeopleSoft
-* Kiskereskedelmi Oracle-alkalmazásokhoz
-* Oracle Hyperion pénzügyi adatok kezelésére
+* Oracle kereskedelmi alkalmazások
+* Oracle Hyperion pénzügyi felügyelet
 
-Az alábbi ábrán az a csatlakoztatott megoldás magas szintű áttekintése. Az egyszerűség kedvéért a diagram csak egy alkalmazásrétegbe és a egy adatrétegbeli jeleníti meg. Az alkalmazásarchitektúra függően a megoldás további szinten a webes szint például lehetnek az Azure-ban. További információkért tekintse meg a következő szakaszok.
+A következő ábra a csatlakoztatott megoldás magas szintű áttekintését mutatja be. Az egyszerűség kedvéért a diagram csak az alkalmazási szintet és az adatszinteket jeleníti meg. Az alkalmazás-architektúrától függően a megoldás további csomagokat is tartalmazhat, például egy webes réteget az Azure-ban. További információkért tekintse meg a következő szakaszok.
 
-![Az Azure OCI megoldás áttekintése](media/oracle-oci-overview/crosscloud.png)
+![Az Azure OCI-megoldás áttekintése](media/oracle-oci-overview/crosscloud.png)
 
 ## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
-* Előzetes verzióban érhető el a felhőbe irányuló kapcsolat az Azure keleti régiója (USA keleti régiója) régiójában és a OCI Ashburn (USA-ashburn-1) régióban korlátozódik.
+* Az előzetes verzióban a Felhőbeli kapcsolatok az USA keleti régiójában (eastus) és a OCI Ashburn (US-Ashburn-1) régióra korlátozódnak.
 
 ## <a name="networking"></a>Hálózat
 
-Nagyvállalati ügyfeleink gyakran diversify és számítási feladatot helyezhet üzembe több, különböző üzleti és működési okokból felhők felett válassza ki. Diversify, hogy az ügyfelek követelő felhőalapú hálózatokhoz az interneten, IPSec VPN-, vagy pedig a felhőbeli szolgáltató közvetlen kapcsolódás megoldást a helyszíni hálózaton keresztül. Felhőalapú hálózatokhoz biztosítva az időt, költséget takaríthat meg, tervezési, beszerzési, telepítési, tesztelése és operations megkövetelheti a jelentős befektetéseket. 
+A nagyvállalati ügyfelek gyakran úgy döntenek, hogy különböző üzleti és üzemeltetési okokból több felhőben is diverzifikálják és üzembe helyezik a számítási feladatokat. Az ügyfelek változatossá teszik a felhőalapú hálózatokat az interneten, az IPSec VPN-en vagy a felhőalapú szolgáltató közvetlen csatlakozási megoldásának használatával a helyszíni hálózaton keresztül. A felhőalapú hálózatok összekapcsolásával jelentős mértékű befektetésekre lehet szükség az idő, a pénz, a tervezés, a beszerzés, a telepítés, a tesztelés és a műveletek terén. 
 
-Ezen ügyfelek fontos kihívásaira, az Oracle és a Microsoft engedélyezte többfelhős integrált megoldást. Felhők közötti kapcsolódás létrejött, csatlakozzon egy [ExpressRoute](../../../expressroute/expressroute-introduction.md) kapcsolatcsoport az Microsoft Azure-ban egy [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) OCI a kapcsolatcsoportot. A kapcsolat akkor lehetséges, egy Azure ExpressRoute-társviszony-létesítési helyszínen közel kerülhet a vagy a OCI FastConnect társviszony-létesítési ugyanazon a helyen. Ez a beállítás lehetővé teszi, hogy egy köztes szolgáltatót nélkül a két felhők közötti biztonságos és gyors kapcsolat.
+Az Oracle és a Microsoft integrált többfelhős felhasználói élményt nyújt az ügyfelekkel kapcsolatos problémák megoldásához. A Felhőbeli hálózatkezelést úgy kell megalkotni, hogy összekapcsolja a [ExpressRoute](../../../expressroute/expressroute-introduction.md) áramkört Microsoft Azure egy [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) áramkörrel a OCI-ben. Ez a kapcsolat akkor lehetséges, ha egy Azure-ExpressRoute-társítási hely közel van a OCI-FastConnect azonos egyenrangú helyéhez vagy ahhoz. Ez a beállítás lehetővé teszi a két felhő közötti biztonságos és gyors kapcsolódást, anélkül, hogy egy köztes szolgáltatóra lenne szükség.
 
-Használja az ExpressRoute- és FastConnect, ügyfelek társviszonyt OCI, a felhőbeli virtuális hálózattal egy virtuális hálózatot az Azure-ban feltéve, hogy a magánhálózati IP-címtér nem fedik át egymást. A két hálózat közötti társviszony lehetővé teszi, hogy egy erőforrást a virtuális hálózatban a OCI felhőalapú virtuális hálózati erőforrás közli, ha mindkettő ugyanazon a hálózaton.
+A ExpressRoute és a FastConnect használatával az ügyfelek az Azure-beli virtuális hálózatokat a OCI-ben virtuális felhőalapú hálózattal is felhasználhatják, ha a magánhálózati IP-címtartomány nem fedi át a területet. A két hálózat társításával lehetővé válik, hogy a virtuális hálózat egy erőforrása kommunikáljon a OCI virtuális felhőalapú hálózatában lévő erőforrásokkal, mintha mindkettő ugyanabban a hálózatban legyen.
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-Hálózati biztonság felhőtermékekkel minden vállalati alkalmazás, és ez a megoldás több felhő központi. Minden forgalmat az ExpressRoute és FastConnect magánhálózaton keresztül továbbítja. Ez a konfiguráció lehetővé teszi, hogy az Azure-beli virtuális hálózathoz, és az Oracle felhőbeli virtuális hálózat közötti biztonságos kommunikációhoz. Nem kell minden olyan virtuális gépek az Azure-ban egy nyilvános IP-címet adjon meg. Hasonlóképpen nem kell egy OCI az internetes átjárónkhoz. Minden kommunikáció a gépek magánhálózati IP-cím-n keresztül történik.
+A hálózati biztonság a vállalati alkalmazások egyik kulcsfontosságú összetevője, amely a több felhőalapú megoldás központi eleme. A ExpressRoute és a FastConnect feletti forgalom egy magánhálózaton halad át. Ez a konfiguráció lehetővé teszi az Azure-beli virtuális hálózatok és az Oracle-alapú virtuális felhőalapú hálózatok közötti biztonságos kommunikációt. Nem kell megadnia nyilvános IP-címet az Azure-beli virtuális gépekhez. Ehhez hasonlóan nincs szüksége Internet-átjáróra a OCI-ben. Minden kommunikáció a gépek magánhálózati IP-címén keresztül történik.
 
-Emellett beállíthat [biztonsági listáival](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) a OCI felhőalapú virtuális hálózati és biztonsági szabályok (az Azure-hoz csatlakoztatott [hálózati biztonsági csoportok](../../../virtual-network/security-overview.md)). Ezek a szabályok segítségével szabályozhatja a virtuális hálózat közötti forgalom vezérléséhez. Hálózati biztonsági szabályok a gépek szintjén, egy alhálózat szintjén, valamint a virtuális hálózat szintjén adhatók hozzá.
+Emellett [biztonsági listát](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) is BEÁLLÍTHAT a OCI virtuális felhőalapú hálózati és biztonsági szabályaihoz (az Azure [hálózati biztonsági csoportjaihoz](../../../virtual-network/security-overview.md)csatolva). Ezekkel a szabályokkal szabályozhatja a virtuális hálózatokban lévő gépek közötti forgalmat. A hálózati biztonsági szabályok a gép szintjén, az alhálózat szintjén és a virtuális hálózat szintjén is hozzáadhatók.
  
 ## <a name="identity"></a>Identitás
 
-Identitás egyike a Microsoft és az Oracle közti partneri kapcsolatról core területei legyenek elérhetők. Jelentős mennyiségű munkával jár végeztük el integrálásához [Oracle felhőalapú Identitásszolgáltatás](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html) (IDCS) rendelkező [Azure Active Directory](../../../active-directory/index.yml) (Azure AD). Az Azure AD a Microsoft felhőalapú identitás- és hozzáférés felügyeleti szolgáltatása. Ez segít a felhasználók bejelentkezniük és elérniük különböző erőforrásokat. Az Azure AD lehetővé teszi a felhasználók és engedélyeik felügyelete.
+Az identitás a Microsoft és az Oracle közötti partnerség egyik legfontosabb pillére. Jelentős munka történt az [Oracle Identity Cloud Service](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html) (IDCS) [Azure Active Directory](../../../active-directory/index.yml) (Azure ad) szolgáltatással való integrálásához. Az Azure AD a Microsoft felhőalapú identitás-és hozzáférés-kezelési szolgáltatása. Segítségével a felhasználók bejelentkezhetnek, és különböző erőforrásokhoz férhetnek hozzá. Az Azure AD lehetővé teszi a felhasználók és az engedélyeik kezelését is.
 
-Jelenleg ez az integráció lehetővé teszi, hogy egyetlen központi helyen, amely az Azure Active Directory kezeléséhez. Azure ad-ben a directory módosításainak szinkronizálása a megfelelő Oracle-könyvtárat, és egyszeri bejelentkezést a több felhőre kiterjedő Oracle-megoldásokról szolgál.
+Jelenleg ez az integráció lehetővé teszi, hogy egyetlen központi helyen kezelje a Azure Active Directory. Az Azure AD szinkronizálja a címtárban bekövetkezett változásokat a megfelelő Oracle-címtárral, és az egyszeri bejelentkezést használja a felhőalapú Oracle-megoldásokhoz.
 
 ## <a name="next-steps"></a>További lépések
 
-Első lépések a [a felhőbe irányuló hálózati](configure-azure-oci-networking.md) Azure és a OCI között. 
+Ismerkedjen meg az [](configure-azure-oci-networking.md) Azure és a OCI közötti Felhőbeli hálózattal. 
 
-További információkért és OCI kapcsolatos tanulmányok, tekintse meg a [Oracle Felhőbeli](https://docs.cloud.oracle.com/iaas/Content/home.htm) dokumentációját.
+A OCI kapcsolatos további információkért és tanulmányokhoz tekintse meg az [Oracle Cloud](https://docs.cloud.oracle.com/iaas/Content/home.htm) dokumentációját.

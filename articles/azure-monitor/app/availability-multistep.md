@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 150c41dce06c81f2e9e07605ab6d5afa9e424453
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: a836e4cf66bf1e957f7b3779e21ec6a0296f7abe
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494487"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881449"
 ---
 # <a name="multi-step-web-tests"></a>Többlépéses webtesztek
 
@@ -48,7 +48,7 @@ Többlépéses teszt létrehozásához rögzíteni kell a forgatókönyvet a Vis
 
 A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
 
-1. Hozzon létre egy webes teljesítmény-és terhelési teszt projektet. **Fájl** > **új**  **projekt** **vizualizációs C#** tesztelése >  >   > 
+1. Hozzon létre egy webes teljesítmény-és terhelési teszt projektet. **Fájl** > **új** **projekt** **vizualizációs C#** tesztelése >  >   > 
 
     ![Visual Studio – új projekt felhasználói felülete](./media/availability-multistep/vs-web-performance-and-load-test.png)
 
@@ -73,7 +73,7 @@ A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
 
 ## <a name="upload-the-web-test"></a>A webes teszt feltöltése
 
-1. A rendelkezésre állás ablaktáblán a Application Insights portálon  > válassza a tesztelési**teszt típusa** > többlépéses**webes teszt**lehetőséget.
+1. A rendelkezésre állás ablaktáblán a Application Insights portálon > válassza a tesztelési**teszt típusa** > többlépéses**webes teszt**lehetőséget.
 
 2. A tesztelési helyszínek, a gyakoriság és a riasztás paramétereinek megadása.
 
@@ -136,7 +136,18 @@ Minden esetben ajánlott létrehozni egy fiókot az alkalmazásában tesztelési
 
 **Egyszerű felhasználónév és jelszó** A szokásos módon rögzíthet egy webes tesztet. Először törölje a cookie-kat.
 
-**SAML-hitelesítés** Használja a webes tesztek számára elérhető SAML beépülő modult. A beépülő modul elérése...
+**SAML-hitelesítés**
+
+|Tulajdonság neve| Leírás|
+|----|-----|
+| Célközönség URI-ja | Az SAML-jogkivonat célközönségének URI-ja.  Ez a Access Control Service (ACS) URI-ja – beleértve az ACS-névteret és a gazdagép nevét. |
+| Tanúsítvány jelszava | Az ügyféltanúsítvány jelszava, amely hozzáférést biztosít a beágyazott titkos kulcshoz. |
+| Ügyféltanúsítvány  | Az ügyféltanúsítvány értéke Base64 kódolású formátumú titkos kulccsal. |
+| Név azonosítója | A jogkivonat nevének azonosítója |
+| Nem később | Az a TimeSpan, amelyhez a jogkivonat érvényes lesz.  Az alapértelmezett érték 5 perc. |
+| Nem előtte | Az a TimeSpan, amelyhez a múltban létrehozott jogkivonat érvényes lesz (az időeltérések megcímzéséhez).  Az alapértelmezett érték (negatív) 5 perc. |
+| Cél környezeti paraméter neve | A generált állítást fogadó környezeti paraméter. |
+
 
 **Ügyfél titka** Ha az alkalmazás olyan bejelentkezési útvonallal rendelkezik, amely egy ügyfél titkos kulcsát is magában foglalja, használja ezt az útvonalat. Az Azure Active Directory (AAD) mint egy példa olyan szolgáltatásra, amely titkos ügyfélkulccsal történő bejelentkezést biztosít. Az AAD-ben a titkos ügyfélkulcs az alkalmazáskulcs.
 

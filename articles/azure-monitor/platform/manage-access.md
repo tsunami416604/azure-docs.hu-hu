@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 05b022be3bd460809de77945710ed0bdcd275648
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c6fa4df1fb2fc7559f706d81621ea198f5ca7cdc
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839310"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881428"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>A naplózási és munkaterületek kezelése Azure Monitor
 
@@ -32,7 +32,17 @@ Ez a cikk a naplókhoz való hozzáférés kezelését és az azokat tartalmazó
 
 * Hozzáférés biztosítása azokhoz a felhasználókhoz, akiknek hozzáférésre van szükségük a munkaterület adott táblájához az Azure RBAC használatával.
 
-## <a name="define-access-control-mode-in-azure-portal"></a>Hozzáférés-vezérlési mód definiálása Azure Portal
+## <a name="define-access-control-mode"></a>Hozzáférés-vezérlési mód definiálása
+
+A munkaterületen konfigurált hozzáférés-vezérlési módot a Azure Portal vagy a Azure PowerShell használatával tekintheti meg.  Ezt a beállítást a következő támogatott módszerek egyikével módosíthatja:
+
+* Azure Portal
+
+* Azure PowerShell
+
+* Azure Resource Manager-sablon
+
+### <a name="configure-from-the-azure-portal"></a>Konfigurálás a Azure Portal
 
 Az aktuális munkaterület-hozzáférés-vezérlési módot a munkaterület **Áttekintés** lapján tekintheti meg a **log Analytics munkaterület** menüjében. 
 
@@ -45,7 +55,7 @@ Ezt a beállítást a munkaterület **Tulajdonságok** lapján módosíthatja. H
 
 ![Munkaterület-hozzáférési mód módosítása](media/manage-access/change-access-control-mode.png)
 
-## <a name="define-access-control-mode-using-powershell"></a>Hozzáférés-vezérlési mód definiálása a PowerShell használatával
+### <a name="configure-using-powershell"></a>Konfigurálás a PowerShell használatával
 
 Az alábbi paranccsal ellenőrizheti az előfizetés összes munkaterületének hozzáférés-vezérlési módját:
 
@@ -89,7 +99,7 @@ else
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
 
-## <a name="define-access-mode-using-resource-manager-template"></a>Hozzáférési mód definiálása Resource Manager-sablon használatával
+### <a name="configure-using-a-resource-manager-template"></a>Konfigurálás Resource Manager-sablon használatával
 
 Ha Azure Resource Manager-sablonban szeretné konfigurálni a hozzáférési módot, állítsa be a **enableLogAccessUsingOnlyResourcePermissions** szolgáltatás jelölőjét a munkaterületen az alábbi értékek egyikére.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2019
 ms.author: manayar
-ms.openlocfilehash: eeb689f90197830dad98c213849b2e82ba43bbf1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: ac754acd61700dc39ebc633da4274c74d8463824
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296352"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884180"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure virtuálisgép-méretezési csoport automatikus operációsrendszer-rendszerképének frissítése
 
@@ -56,7 +56,7 @@ Jelenleg csak bizonyos operációsrendszer-platform-lemezképek támogatottak. A
 
 A következő SKU-EK jelenleg támogatottak (és a továbbiak rendszeresen bővülnek):
 
-| Kiadó               | Operációs rendszer ajánlata      |  SKU               |
+| Kiadó               | Operációs rendszer ajánlata      |  Termékváltozat               |
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18.04-LTS          |
@@ -128,7 +128,7 @@ az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradeP
 
 Az operációs rendszer frissítése során a méretezési csoportokban lévő virtuálisgép-példányok egyszerre egy köteget frissítenek. A frissítés csak akkor folytatható, ha az ügyfélalkalmazás kifogástalan állapotban van a frissített VM-példányokon. Javasoljuk, hogy az alkalmazás egészségügyi jeleket biztosítson a méretezési csoport operációsrendszer-frissítési motorjának. Alapértelmezés szerint az operációs rendszer frissítése során a platform úgy véli, hogy a virtuális gép energiagazdálkodási állapota és a bővítmények kiépítési állapota határozza meg, hogy a virtuálisgép-példány kifogástalan állapotú-e a frissítés után. Egy virtuálisgép-példány operációsrendszer-frissítése során a virtuálisgép-példány operációsrendszer-lemezét a rendszer a legújabb lemezkép-verzió alapján egy új lemezzel helyettesíti. Az operációs rendszer frissítésének befejeződése után a konfigurált bővítmények futnak ezeken a virtuális gépeken. Az alkalmazás csak akkor tekinthető kifogástalannak, ha a példány összes bővítménye sikeresen kiépítve.
 
-A méretezési csoport opcionálisan konfigurálható az Application Health-mintavételekkel, hogy a platform pontos információkat nyújtson az alkalmazás folyamatos állapotáról. Az Application Health-mintavételek olyan egyéni Load Balancer-mintavételek, amelyek állapot-jelzésként használatosak. A méretezési csoport virtuálisgép-példányán futó alkalmazás reagálhat a külső HTTP-vagy TCP-kérelmekre, ami azt jelzi, hogy kifogástalan-e. Az egyéni Load Balancer mintavételek működésével kapcsolatos további információkért lásd: a [Load Balancer](../load-balancer/load-balancer-custom-probe-overview.md)-tesztek megismerése. Service Fabric méretezési csoportokhoz nem szükséges alkalmazás-állapotú mintavétel, de ajánlott. A nem Service Fabric méretezési csoportoknak az alkalmazás állapotának vagy az [alkalmazás állapotának kiterjesztésére](virtual-machine-scale-sets-health-extension.md)van Load Balancer szükségük.
+A méretezési csoport opcionálisan konfigurálható az Application Health-mintavételekkel, hogy a platform pontos információkat nyújtson az alkalmazás folyamatos állapotáról. Az Application Health-mintavételek olyan egyéni Load Balancer-mintavételek, amelyek állapot-jelzésként használatosak. A méretezési csoport virtuálisgép-példányán futó alkalmazás reagálhat a külső HTTP-vagy TCP-kérelmekre, ami azt jelzi, hogy kifogástalan-e. Az egyéni Load Balancer mintavételek működésével kapcsolatos további információkért lásd: a [Load Balancer](../load-balancer/load-balancer-custom-probe-overview.md)-tesztek megismerése. Service Fabric méretezési csoportok nem támogatják az alkalmazás állapotának mintavételét. A nem Service Fabric méretezési csoportoknak az alkalmazás állapotának vagy az [alkalmazás állapotának kiterjesztésére](virtual-machine-scale-sets-health-extension.md)van Load Balancer szükségük.
 
 Ha a méretezési csoport több elhelyezési csoport használatára van konfigurálva, akkor standard Load Balancert [](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) használó mintavételt kell használnia.
 

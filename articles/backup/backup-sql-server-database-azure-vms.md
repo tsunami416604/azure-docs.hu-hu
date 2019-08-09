@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: b7bf9943afa2a79f98fd28d15e5ea46fa63af732
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 6a929359c0e4e0a5c64eadbf41f565dfeb56a233
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688645"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854118"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -177,7 +177,7 @@ Virtuális gépen futó adatbázisok felderítése:
 
     ![Automatikus védelem engedélyezése az Always On rendelkezésre állási csoport számára](./media/backup-azure-sql-database/enable-auto-protection.png)
 
-5. A **biztonsági mentési szabályzatban**válasszon ki egy házirendet, majd kattintson **az OK gombra**.
+5. A **biztonsági mentési szabályzatban**válasszon ki egy házirendet, majd kattintson **az OK gombra**.
 
    - Válassza ki az alapértelmezett szabályzatot HourlyLogBackup.
    - Válassza ki az SQL-hez korábban létrehozott meglévő biztonsági mentési szabályzatot.
@@ -185,11 +185,11 @@ Virtuális gépen futó adatbázisok felderítése:
 
      ![Biztonsági mentési házirend kiválasztása](./media/backup-azure-sql-database/select-backup-policy.png)
 
-6. A **biztonsági mentés**területen válassza a **biztonsági mentés engedélyezése**lehetőséget.
+6. A **biztonsági mentés**területen válassza a **biztonsági mentés engedélyezése**lehetőséget.
 
     ![A kiválasztott biztonsági mentési szabályzat engedélyezése](./media/backup-azure-sql-database/enable-backup-button.png)
 
-7. A konfigurációs folyamat nyomon követése a portál **értesítések** területén.
+7. A konfigurációs folyamat nyomon követése a portál **értesítések** területén.
 
     ![Értesítési térség](./media/backup-azure-sql-database/notifications-area.png)
 
@@ -273,7 +273,7 @@ Az automatikus védelem engedélyezésével automatikusan biztonsági másolatot
 
 - Egyszerre csak az automatikus védelemhez választható adatbázisok száma nem korlátozható.
 - Az automatikus védelem engedélyezésekor nem lehet szelektív védelemmel ellátni vagy kizárni az adatbázisokat a védelemből egy példányon.
-- Ha a példánya már tartalmaz néhány védett adatbázist, akkor az automatikus védelem bekapcsolása után is a megfelelő szabályzatok alatt maradnak. A később hozzáadott nem védett adatbázisok csak egyetlen szabályzattal rendelkeznek, amelyet az automatikus védelem engedélyezésekor a **biztonsági mentés beállítása**szakaszban talál. Az automatikusan védett adatbázishoz tartozó házirendet azonban később is módosíthatja.  
+- Ha a példánya már tartalmaz néhány védett adatbázist, akkor az automatikus védelem bekapcsolása után is a megfelelő szabályzatok alatt maradnak. A később hozzáadott nem védett adatbázisok csak egyetlen szabályzattal rendelkeznek, amelyet az automatikus védelem engedélyezésekor a **biztonsági mentés beállítása**szakaszban talál. Az automatikusan védett adatbázishoz tartozó házirendet azonban később is módosíthatja.  
 
 Az automatikus védelem engedélyezése:
 
@@ -288,7 +288,7 @@ Ha le kell tiltania az automatikus védelmet, válassza ki a példány nevét a 
 
 ![Automatikus védelem letiltása az adott példányon](./media/backup-azure-sql-database/disable-auto-protection.png)
 
- 
+ 
 ## <a name="next-steps"></a>További lépések
 
 Az alábbiak végrehajtásának módját ismerheti meg:

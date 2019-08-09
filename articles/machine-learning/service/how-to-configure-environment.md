@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: efe5829ffbe4db304f9ffab0a259ab9d10279b27
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
-ms.translationtype: HT
+ms.openlocfilehash: d2f60b496594946e9175ecf5c1948b08c9065b1b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772690"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848202"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -40,7 +40,7 @@ Ez a cikk további használati tippeket is tartalmaz a következő eszközökhö
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Machine Learning szolgáltatás munkaterületén. A munkaterület létrehozásával kapcsolatban tekintse meg a [Azure Machine learning szolgáltatás munkaterületének létrehozása](setup-create-workspace.md)című témakört. A munkaterület csak akkor érhető el, ha a saját [felhőalapú notebook-kiszolgálóval](#notebookvm), [DSVM](#dsvm), [Azure Databricks](#aml-databricks)vagy Azure Notebooksval szeretne kezdeni [](#aznotebooks).
+Az Azure Machine Learning szolgáltatás munkaterületén. A munkaterület létrehozásával kapcsolatban tekintse meg a [Azure Machine learning szolgáltatás munkaterületének létrehozása](how-to-manage-workspace.md)című témakört. A munkaterület csak akkor érhető el, ha a saját [felhőalapú notebook-kiszolgálóval](#notebookvm), [DSVM](#dsvm), [Azure Databricks](#aml-databricks)vagy Azure Notebooksval szeretne kezdeni [](#aznotebooks).
 
 A [helyi számítógép](#local)SDK-környezetének telepítéséhez a [Jupyter notebook Server](#jupyter) vagy a [Visual Studio Code](#vscode) is szükséges:
 
@@ -377,7 +377,7 @@ Ezt a fájlt a kód használatához `ws=Workspace.from_config()`. Ez a kód az a
 
 A konfigurációs fájlt háromféleképpen is létrehozhatja:
 
-* **Kövesse az [Azure Machine learning szolgáltatás-munkaterület létrehozása](setup-create-workspace.md#sdk)című témakör lépéseit**: A rendszer létrehoz egy *config. JSON* fájlt a Azure Notebooks könyvtárban. A fájl a munkaterület konfigurációs adatait tartalmazza. A *config. JSON* fájlt letöltheti vagy másolhatja más fejlesztői környezetbe.
+* **A [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)** : paranccsal írhat egy *config. JSON* fájlt. A fájl a munkaterület konfigurációs adatait tartalmazza. A *config. JSON* fájlt letöltheti vagy másolhatja más fejlesztői környezetbe.
 
 * **Töltse le a fájlt**: A [Azure Portal](https://ms.portal.azure.com)a munkaterület **Áttekintés** szakaszában válassza a **config. JSON letöltése** lehetőséget.
 

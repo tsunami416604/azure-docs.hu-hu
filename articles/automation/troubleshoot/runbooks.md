@@ -8,14 +8,30 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f732ab6ceb17dcd013c6d032ef3943f6ad9bef71
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
-ms.translationtype: HT
+ms.openlocfilehash: 759422ea8c327ae67278354217dac4c60b32f7a9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782350"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850322"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookok kapcsolatos hibák elhárítása
+
+Ez a cikk a runbookok kapcsolatos gyakori problémákat és azok megoldását ismerteti.
+
+## <a name="steps-to-troubleshoot-runbooks"></a>A runbookok hibaelhárításának lépései
+
+Ha a runbookok végrehajtása során hibák léptek fel Azure Automationban, a probléma diagnosztizálásához kövesse az alábbi lépéseket.
+
+1. **Győződjön meg arról, hogy a runbook-parancsfájl sikeresen lefut a helyi gépen:**  A nyelvi referenciák és a tanulási modulok a [PowerShell-dokumentumok](/powershell/scripting/overview) vagy a [Python-dokumentumok](https://docs.python.org/3/) című témakörben találhatók.
+
+   A szkript helyi végrehajtása a gyakori hibák felderítését és megoldását, például a következőket hajtja végre:
+
+   - **Hiányzó modulok**
+   - **Szintaktikai hibák**
+   - **Logikai hibák**
+
+2. **Győződjön meg arról, hogy a csomópontok és az Automation-munkaterület rendelkezik a szükséges modulokkal:** Ha a runbook bármely modult importál, győződjön meg arról, hogy elérhetők-e az Automation-fiókjába az [importálási modulok](../shared-resources/modules.md#import-modules)részben ismertetett lépések segítségével. További információ: [modulok hibakeresése](shared-resources.md#modules).
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Hitelesítési hibák Azure Automation runbookok használatakor
 

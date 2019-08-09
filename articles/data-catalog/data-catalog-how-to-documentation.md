@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 46e3780c7fc6e6a2481e774b89bfb69510865db3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 5c0bc97e5a5b362ea78f82ea99bb967a9607093a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734614"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882491"
 ---
 # <a name="document-data-sources"></a>Adatforrások dokumentálása
 ## <a name="introduction"></a>Bevezetés
@@ -23,7 +23,7 @@ Az [](data-catalog-how-to-annotate.md)adatforrások feliratozásával megismerhe
 
 A címkék és a leírások kiválóan használhatók az egyszerű jegyzetekhez. Ahhoz azonban, hogy az adatfogyasztók jobban megértsék az adatforrások használatát és az adatforráshoz kapcsolódó üzleti forgatókönyveket, a szakértők teljes körű és részletes dokumentációt is biztosíthatnak. Az adatforrások egyszerű dokumentálása. Válasszon ki egy adategységet vagy tárolót, és válassza a **dokumentáció**elemet.
 
-![](media/data-catalog-documentation/data-catalog-documentation.png)
+![Dokumentációs lap Data Catalog](media/data-catalog-documentation/data-catalog-documentation.png)
 
 ## <a name="documenting-data-assets"></a>Adategységek dokumentálása
 Az **Azure Data Catalog** dokumentáció előnyei lehetővé teszik, hogy az adategységek teljes elbeszélésének létrehozásához a Data Catalog használja a tartalom tárházában. Megtekintheti a tárolókat és táblákat leíró részletes tartalmakat. Ha már rendelkezik tartalommal egy másik adattárban, például a SharePointban vagy egy fájlmegosztásban, hozzáadhat az eszköz dokumentációs hivatkozásaihoz, és hivatkozhat erre a meglévő tartalomra. Ez a funkció lehetővé teszi, hogy a meglévő dokumentumok felderíthetők legyenek.
@@ -31,9 +31,8 @@ Az **Azure Data Catalog** dokumentáció előnyei lehetővé teszik, hogy az ada
 > [!NOTE]
 > A keresési index nem tartalmazza a dokumentációt.
 >
->
 
-![](media/data-catalog-documentation/data-catalog-documentation2.png)
+![Dokumentáció lap és hivatkozás a webes hivatkozásra](media/data-catalog-documentation/data-catalog-documentation2.png)
 
 A dokumentáció szintje az adategység-tároló jellemzőinek és értékének leírására terjedhet ki egy tárolóban lévő Table Schema részletes leírására. A dokumentáció szintjét az üzleti igényeknek megfelelően kell megadnia. Az adategységek dokumentálása azonban általában néhány előnye és hátránya:
 

@@ -1,30 +1,30 @@
 ---
-title: Az Azure Search szolgáltatás létrehozása a portálon – Azure Search
-description: Az Azure Portalon egy Azure Search-erőforrás kiépítéséhez. Válassza ki az erőforráscsoportok, régiók, és a Termékváltozat vagy tarifacsomag.
+title: Azure Search szolgáltatás létrehozása a portálon – Azure Search
+description: Azure Search erőforrás kiépítése a Azure Portal. Válassza az erőforráscsoportok, a régiók, az SKU vagy az árképzési szintet.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 07/09/2019
+ms.date: 08/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d0d1dbb81f00f500f3eb95c605ed0c15c634f624
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9de7a6fdddf732f13c8dc7ab50fd151d9f90dc20
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706835"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855854"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Azure Search szolgáltatás létrehozása a portálon
 
-Az Azure Search egy olyan önálló erőforrás, az egyéni alkalmazások keresési funkciókat beépülő modul segítségével. Bár az Azure Search egyszerűen integrálható más Azure-szolgáltatásokkal, is egy önálló összetevő szeretné használni, vagy hálózati kiszolgálók alkalmazásainak, vagy más felhőplatformon futó szoftverrel integrálva.
+A Azure Search egy önálló erőforrás, amely az egyéni alkalmazások keresési funkcióinak csatlakoztatására szolgál. Bár a Azure Search egyszerűen integrálható más Azure-szolgáltatásokkal, önálló összetevőként is használható, vagy integrálható a hálózati kiszolgálókon lévő alkalmazásokkal, illetve más felhőalapú platformokon futó szoftverekkel.
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre egy Azure Search-erőforrást a [az Azure portal](https://portal.azure.com/).
+Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Search erőforrást a [Azure Portalban](https://portal.azure.com/).
 
 [![Animált GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
-Szívesebben használja a PowerShellt? Használja az Azure Resource Manager [szolgáltatássablonját](https://azure.microsoft.com/resources/templates/101-azure-search-create/). Segítség az első lépések: [Azure Search kezelése a PowerShell-lel](search-manage-powershell.md).
+Szívesebben használja a PowerShellt? Használja az Azure Resource Manager [szolgáltatássablonját](https://azure.microsoft.com/resources/templates/101-azure-search-create/). Segítség az első lépésekhez: [Azure Search kezelése a PowerShell](search-manage-powershell.md)-lel.
 
 ## <a name="subscribe-free-or-paid"></a>Feliratkozás (ingyenes vagy fizetős)
 
@@ -35,16 +35,31 @@ Választhatja az [MSDN-előfizetői értékelemek aktiválását](https://azure.
 ## <a name="find-azure-search"></a>Az Azure Search megkeresése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Kattintson a plusz jelre ("+ erőforrás létrehozása") a bal felső sarokban.
-3. A Keresősáv használatával keresse meg az "Azure Search", vagy navigáljon arra az erőforrásra **webes** > **Azure Search**.
+2. Kattintson a plusz jelre ("+ Create Resource") a bal felső sarokban.
+3. A keresősáv használatával keresse meg a "Azure Search", vagy keresse meg az erőforrást a **webes** > **Azure Searchon**keresztül.
 
-![Keresse meg az Azure Search-erőforrás](./media/search-create-service-portal/find-search3.png "navigációs útvonal, az Azure Search")
+![Navigáljon egy Azure Search erőforráshoz](./media/search-create-service-portal/find-search3.png "Azure Search navigációs útvonala")
+
+## <a name="select-a-subscription"></a>Válasszon egy előfizetést
+
+Ha egynél több előfizetéssel rendelkezik, akkor olyat válasszon, amelyhez adat- vagy fájltárolási szolgáltatások is tartoznak. Az Azure Search képes automatikusan felderíteni az Azure Table és a blob Storage, a SQL Database [](search-indexer-overview.md)és az Azure Cosmos db indexelést az indexelő használatával, de csak az azonos előfizetésben lévő szolgáltatásokhoz.
+
+## <a name="select-a-resource-group"></a>Válasszon ki egy erőforráscsoportot
+
+Egy erőforráscsoport szükséges, amely az erőforrások teljes körű felügyeletéhez használható, beleértve a költséghatékonyságot is. Egy erőforráscsoport állhat egy szolgáltatásból vagy több, együtt használt szolgáltatásból is. Ha például Azure Searcht használ egy Azure Cosmos DB-adatbázis indexeléséhez, akkor az adott erőforráscsoport mindkét szolgáltatását felügyeleti célokra is elvégezheti. 
+
+Ha egyetlen csoporthoz sem egyesít erőforrásokat, vagy ha a meglévő erőforráscsoportok a nem kapcsolódó megoldásokban használt erőforrásokkal vannak kitöltve, hozzon létre egy új erőforráscsoportot a Azure Search erőforráshoz. 
+
+A szolgáltatás használata során nyomon követheti az aktuális és a tervezett költségeket (a képernyőképen látható módon), vagy görgessen le az egyes erőforrások díjainak megtekintéséhez.
+
+![Költségek kezelése az erőforráscsoport szintjén](./media/search-create-service-portal/resource-group-cost-management.png "Költségek kezelése az erőforráscsoport szintjén")
+
+> [!TIP]
+> Egy erőforráscsoport törlésekor a benne lévő szolgáltatások is törölve lesznek. Több szolgáltatást igénybe vevő prototípus-projektek végén könnyebb mindent törölni, ha az összeset egy erőforráscsoportban helyezi el.
 
 ## <a name="name-the-service-and-url-endpoint"></a>A szolgáltatás és az URL-végpont elnevezése
 
-A szolgáltatás neve része annak az URL-végpontnak, amelyre az API-hívások hivatkoznak: `https://your-service-name.search.windows.net`. Adja meg a szolgáltatás nevét az **URL** mezőben.
-
-Például, ha azt szeretné, hogy a végpont `https://my-app-name-01.search.windows.net`, adjon meg `my-app-name-01`.
+A példány részletei területen adja meg a szolgáltatás nevét az **URL** mezőben. A név annak az URL-végpontnak a része, amelyen az API- `https://your-service-name.search.windows.net`hívások ki vannak bocsátva:. Ha például azt szeretné, hogy a végpont legyen, `https://myservice.search.windows.net`a következőt kell `myservice`megadnia:.
 
 A szolgáltatásnévre vonatkozó követelmények:
 
@@ -54,63 +69,53 @@ A szolgáltatásnévre vonatkozó követelmények:
 * Kerülje a kötőjel ("-") használatát az első 2 és az utolsó karakterben
 * Sehol sem tartalmazhat két egymást követő kötőjelet ("--")
 
-## <a name="select-a-subscription"></a>Előfizetés kiválasztása
-
-Ha egynél több előfizetéssel rendelkezik, akkor olyat válasszon, amelyhez adat- vagy fájltárolási szolgáltatások is tartoznak. Az Azure Search is a kapcsolatok automatikus észleléssel Azure Table és a Blob storage, SQL Database és Azure Cosmos DB-n keresztül az indexelés [ *indexelők*](search-indexer-overview.md), de csak a szolgáltatások ugyanabban az előfizetésben.
-
-## <a name="select-a-resource-group"></a>Erőforráscsoport kiválasztása
-
-Az erőforráscsoport együtt használt Azure-szolgáltatások és -erőforrások gyűjteménye. Ha az Azure Search szolgáltatást például egy SQL-adatbázis indexelésére használja, akkor mindkét szolgáltatásnak ugyanabban az erőforráscsoportban kell lennie.
-
-Ha nem kombinálásával erőforrást rendezhet egy csoportba, vagy ha meglévő erőforráscsoportok ki vannak töltve az erőforrások nem kapcsolódó megoldásokban használt hozzon létre egy új erőforráscsoportot, és az Azure Search-erőforrást az.
-
 > [!TIP]
-> Egy erőforráscsoport törlésekor a benne lévő szolgáltatások is törölve lesznek. Több szolgáltatást igénybe vevő prototípus-projektek végén könnyebb mindent törölni, ha az összeset egy erőforráscsoportban helyezi el.
+> Ha úgy gondolja, hogy több szolgáltatást fog használni, javasoljuk, hogy a szolgáltatás neveként a régiót (vagy helyet) nevezze el elnevezési konvencióként. Az azonos régión belüli szolgáltatások díjmentesen cserélhetik az adatcserét, így ha Azure Search az USA nyugati régiójában van, és más szolgáltatásokkal is rendelkezik az USA `mysearchservice-westus` nyugati régiójában, akkor egy olyan név is, mint a tulajdonságok oldalának eldöntése során, hogyan lehet erőforrásokat egyesíteni vagy csatolni.
 
-## <a name="select-a-location"></a>Válasszon helyet
+## <a name="select-a-location"></a>Válasszon ki egy helyet
 
-Az Azure Search mint Azure-szolgáltatás világszerte sok adatközpontban üzemeltethető. A támogatott régiók listája megtalálható a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/search/). 
+Az Azure Search mint Azure-szolgáltatás világszerte sok adatközpontban üzemeltethető. A támogatott régiók listája a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/search/)található. 
 
-Ha egy másik Azure által biztosított adatok meg vannak indexelő szolgáltatás (Azure storage, Azure Cosmos DB, Azure SQL Database), javasoljuk, hogy az Azure Search szolgáltatás létrehozása a sávszélesség-díjak elkerülése érdekében ugyanabban a régióban. Nem számítunk fel díjat a kimenő ugyanabban a régióban szolgáltatások esetén.
+A sávszélességgel kapcsolatos díjak minimalizálásához vagy elkerüléséhez válassza ki ugyanazt a helyet több szolgáltatás számára. Ha például egy másik Azure-szolgáltatás (Azure Storage, Azure Cosmos DB, Azure SQL Database) által biztosított adatok indexelését végzi, a Azure Search szolgáltatás ugyanabban a régióban való létrehozása elkerüli a sávszélességgel kapcsolatos költségeket (a kimenő adatokért nem számítunk fel díjat, ha a szolgáltatások be vannak Ugyanez a régió).
 
-A kognitív keresés AI végrehajtott információbeolvasás használja, ha a szolgáltatás létrehozása és a Cognitive Services-erőforrás ugyanabban a régióban. *Az Azure Search és a Cognitive Services ugyanabban a régióban bérelt annak AI Adatbővítés*.
+Emellett, ha kognitív keresési AI-bővítést használ, a szolgáltatást a Cognitive Services erőforrással megegyező régióban hozza létre. *Az Azure Search és Cognitive Services közös helye az adott régióban az AI-* bővítés követelménye.
 
 > [!Note]
-> Közép-India új szolgáltatások jelenleg nem érhetők el. A szolgáltatás már a közép-India korlátozás nélkül vertikálisan felskálázhatja, és a szolgáltatás teljes körűen támogatott az adott régióban. A korlátozás az ebben a régióban, ideiglenes, és csak az új szolgáltatások korlátozódik. Ez a Megjegyzés megszüntetjük, ha a korlátozás már nem érvényes.
+> Közép-India jelenleg nem érhető el az új szolgáltatásokhoz. Az India középső régiójában már meglévő szolgáltatások esetében korlátozás nélkül is méretezhető, és a szolgáltatás teljes mértékben támogatott az adott régióban. A régió korlátozásai ideiglenesek, és csak az új szolgáltatásokra korlátozódnak. Ezt a megjegyzést akkor távolítjuk el, ha a korlátozás már nem érvényes.
 
 ## <a name="select-a-pricing-tier-sku"></a>Tarifacsomag (SKU) kiválasztása
 
-[Az Azure Search jelenleg többféle tarifacsomagban is kapható érhető el](https://azure.microsoft.com/pricing/details/search/): Ingyenes, alapszintű vagy Standard. Mindegyik szintet saját [kapacitás és korlátozások](search-limits-quotas-capacity.md) jellemzik. Útmutatást talál a [Tarifacsomag vagy SKU kiválasztása](search-sku-tier.md) című cikkben.
+[Azure Search jelenleg több díjszabási szinten is elérhető](https://azure.microsoft.com/pricing/details/search/): Ingyenes, alapszintű vagy standard. Mindegyik szintet saját [kapacitás és korlátozások](search-limits-quotas-capacity.md) jellemzik. Útmutatást talál a [Tarifacsomag vagy SKU kiválasztása](search-sku-tier.md) című cikkben.
 
-Az Ügyfelek éles számítási feladatokhoz általában a Standard tarifacsomagot, kezdésként pedig az Ingyenes szolgáltatást választják.
+Az alapszintű és a standard az éles munkaterhelések leggyakoribb lehetőségei, de a legtöbb ügyfél az ingyenes szolgáltatással kezdődik.
 
-A szolgáltatás létrehozása után már nem lehet tarifacsomagot váltani. Ha később magasabb vagy alacsonyabb csomagra kíván áttérni, akkor újra létre kell hoznia a szolgáltatást.
+Ne feledje, hogy a szolgáltatás létrehozása után nem módosítható az árképzési szintek. Ha később magasabb vagy alacsonyabb csomagra kíván áttérni, akkor újra létre kell hoznia a szolgáltatást.
 
 ## <a name="create-your-service"></a>A szolgáltatás létrehozása
 
-Adja meg a szükséges bemeneti adatokat a szolgáltatás létrehozásához. 
+Miután megadta a szükséges bemeneteket, lépjen tovább, és hozza létre a szolgáltatást. 
 
-![Tekintse át, és hozza létre a szolgáltatást](./media/search-create-service-portal/new-service3.png "tekintse át és a szolgáltatás létrehozása")
+![A szolgáltatás áttekintése és létrehozása](./media/search-create-service-portal/new-service3.png "A szolgáltatás áttekintése és létrehozása")
 
-A szolgáltatás üzembe helyezése percek alatt, amely Azure értesítések használatával figyelheti. Vegye figyelembe, hogy a jövőben rögzítés az irányítópulton a szolgáltatás egyszerűen hozzáférhetnek.
+A szolgáltatás percek alatt üzembe helyezhető, amelyet az Azure-értesítéseken keresztül figyelheti. Érdemes lehet a szolgáltatást az irányítópultra rögzíteni, hogy később könnyebben hozzáférhessen.
 
-![Figyelheti, és a szolgáltatás rögzítse](./media/search-create-service-portal/monitor-notifications.png "képernyő és PIN-kód a szolgáltatás")
+![A szolgáltatás monitorozása és rögzítése](./media/search-create-service-portal/monitor-notifications.png "A szolgáltatás monitorozása és rögzítése")
 
-## <a name="get-a-key-and-url-endpoint"></a>Egy kulcsot és -végpont URL-cím beszerzése
+## <a name="get-a-key-and-url-endpoint"></a>Kulcs és URL-cím végpontjának beolvasása
 
-A portál használata, eléréséhez az új szolgáltatást kell rendelkeznie, hogy megadta az URL-végpontot és a egy hitelesítési api-kulcs.
+Ha nem használja a portált, az új szolgáltatáshoz való programozott hozzáféréshez az URL-végpontot és egy hitelesítési API-kulcsot kell megadnia.
 
-1. Áttekintés oldalát keresse meg és másolja az URL-végpontot, az oldal jobb oldalán.
+1. A szolgáltatás áttekintése lapon keresse meg és másolja ki az URL-végpontot az oldal jobb oldalán.
 
-2. A bal oldali navigációs panelen válassza ki **kulcsok** , majd másolja az adminisztrációs kulcsok (azok egyenértékű) egyikét. Felügyeleti api-kulcsok létrehozása, frissítéséről és törléséről a szolgáltatás objektumok szükségesek.
+2. A bal oldali navigációs panelen válassza a **kulcsok** lehetőséget, majd másolja az egyik rendszergazdai kulcsot (ezek egyenértékűek). Felügyeleti API-kulcsok szükségesek a szolgáltatásban található objektumok létrehozásához, frissítéséhez és törléséhez.
 
-   ![Áttekintés oldalát az URL-végpontjának](./media/search-create-service-portal/get-url-key.png "URL-végpontot, és más szolgáltatás részletei")
+   ![A szolgáltatás áttekintő lapja URL-végponttal](./media/search-create-service-portal/get-url-key.png "URL-végpont és egyéb szolgáltatás részletei")
 
-Egy végpont és a kulcs nem szükségesek a feladat portálalapú. A portál már csatolva az Azure Search-erőforráshoz rendszergazdai jogosultságokkal. Portál bemutató, kezdje [a rövid útmutató: Az Azure Search-index létrehozása a portálon](search-get-started-portal.md).
+A portálon alapuló feladatokhoz nincs szükség végpontra és kulcsra. A portál már társítva van a Azure Search-erőforráshoz rendszergazdai jogosultságokkal. A portál bemutatójának első [lépései: Hozzon létre egy Azure Search indexet](search-get-started-portal.md)a portálon.
 
 ## <a name="scale-your-service"></a>A szolgáltatás méretezése
 
-A szolgáltatást annak üzembe helyezése után igényei szerint méretezheti. A standard szintű csomag választásakor az Azure Search szolgáltatás méretezheti a szolgáltatást két dimenzió: replikák és partíciók. Ha az alapszintű csomagot választotta volna, akkor csak replikákat adhatna hozzá. Ingyenes szolgáltatás üzembe helyezése esetén a méretezés nem elérhető.
+A szolgáltatást annak üzembe helyezése után igényei szerint méretezheti. Ha a standard szintű csomagot választotta a Azure Search szolgáltatáshoz, akkor két dimenzióban méretezheti a szolgáltatást: replikák és partíciók. Ha az alapszintű csomagot választotta volna, akkor csak replikákat adhatna hozzá. Ingyenes szolgáltatás üzembe helyezése esetén a méretezés nem elérhető.
 
 A ***partíciókkal*** a szolgáltatás több dokumentum tárolására és keresésére alkalmas.
 
@@ -125,14 +130,14 @@ Az erőforrások hozzáadása növeli a havi költségeket. A [díjkalkulátor](
 2. A bal oldali navigációs panelen válassza a **Beállítások** > **Méretezés** lehetőséget.
 3. A csúszka segítségével bármelyik típusú erőforrásokat hozzáadhatja.
 
-![Adja hozzá a kapacitás](./media/search-create-service-portal/settings-scale.png "növelhetjük a Kapacitásunkat replikák és partíciók")
+![Kapacitás hozzáadása](./media/search-create-service-portal/settings-scale.png "Kapacitás hozzáadása replikák és partíciók használatával")
 
 > [!Note]
-> Partíciónkénti, a magasabb szintű tárolás és sebesség növekedése. További információkért lásd: [kapacitás és korlátozások](search-limits-quotas-capacity.md).
+> A partíción belüli tárolás és a gyorsabb növekedés magasabb szintű szinten történik. További információ: [kapacitás és korlátok](search-limits-quotas-capacity.md).
 
 ## <a name="when-to-add-a-second-service"></a>Mikor érdemes hozzáadni egy második szolgáltatást?
 
-A legtöbb ügyfél a következő réteg megadása csak egy szolgáltatást használ a [az erőforrások helyes egyensúlyát](search-sku-tier.md). Egy szolgáltatásban több index is fenntartható [a választott csomag korlátozásainak megfelelő számban](search-capacity-planning.md), ha elkülönülnek egymástól. Az Azure Search szolgáltatásban a kérelmek csak egy indexre irányulhatnak. Így kisebb esély van adatok véletlen vagy szándékos lekérésére az egyazon szolgáltatáshoz tartozó más indexekből.
+A legtöbb ügyfél csak egy olyan szolgáltatást használ, amely az [erőforrások megfelelő egyensúlyát](search-sku-tier.md)biztosító szinten van kiépítve. Egy szolgáltatásban több index is fenntartható [a választott csomag korlátozásainak megfelelő számban](search-capacity-planning.md), ha elkülönülnek egymástól. Az Azure Search szolgáltatásban a kérelmek csak egy indexre irányulhatnak. Így kisebb esély van adatok véletlen vagy szándékos lekérésére az egyazon szolgáltatáshoz tartozó más indexekből.
 
 Bár az ügyfelek többsége csak egy szolgáltatást használ, szükség lehet a szolgáltatás redundanciájára, ha az üzemeltetési körülmények között az alábbiak szerepelnek:
 
@@ -141,13 +146,13 @@ Bár az ügyfelek többsége csak egy szolgáltatást használ, szükség lehet 
 * Ha globálisan üzembe helyezett alkalmazás esetén minimalizálni kívánja az alkalmazás belső forgalmának késését, akkor az Azure Search több példányára is szükség lehet különböző régiókban.
 
 > [!NOTE]
-> Az Azure Search szolgáltatásban az indexelés és a lekérdezés munkaterhelése nem választható szét, tehát sohasem fog több szolgáltatást létrehozni a külön munkaterhelésekhez. Az indexek lekérdezése mindig abban a szolgáltatásban történik, amelyben létre lettek hozva (nem lehet egy indexet egy szolgáltatásban létrehozni és egy másikba átmásolni).
+> A Azure Searchban nem lehet elkülöníteni az indexelési és lekérdezési műveleteket; így soha nem hozhat létre több szolgáltatást az elkülönített munkaterhelésekhez. Az indexek lekérdezése mindig abban a szolgáltatásban történik, amelyben létre lettek hozva (nem lehet egy indexet egy szolgáltatásban létrehozni és egy másikba átmásolni).
 
 A magas rendelkezésre álláshoz nincs szükség második szolgáltatásra. A lekérdezések magas rendelkezésre állása úgy érhető el, hogy egyazon szolgáltatáson belül 2 vagy több replikát használ. A replikák frissítése egymást követően történik, tehát legalább egy mindig működni fog a szolgáltatásfrissítés végrehajtása közben. A hasznos üzemidőről a [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/search/v1_0/) oldalán tájékozódhat bővebben.
 
 ## <a name="next-steps"></a>További lépések
 
-Üzembe helyezés az Azure Search szolgáltatást, után továbbra is az első index létrehozása a portálon.
+Egy Azure Search szolgáltatás kiépítés után folytathatja az első index létrehozását a portálon.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Az Azure Search-index létrehozása a portálon](search-get-started-portal.md)
+> [Rövid útmutató: Azure Search index létrehozása a portálon](search-get-started-portal.md)

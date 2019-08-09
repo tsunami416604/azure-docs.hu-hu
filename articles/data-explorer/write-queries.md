@@ -1,45 +1,45 @@
 ---
-title: Az Azure Data Explorer lekérdezéseket írni
-description: Ebben az útmutatóban megismerheti, hogyan hajthat végre alapszintű és speciális lekérdezéseket az Azure Data Explorer.
+title: Írási lekérdezések az Azure Adatkezelő
+description: Ebben a útmutatóban megismerheti, hogyan végezheti el az Azure Adatkezelő alapszintű és fejlettebb lekérdezéseit.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
-ms.openlocfilehash: b1a7e64cf6b85b517bc027d6541d63c9be729734
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80d3eaaf7e588766d62f5e5885d75e61c590970e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773978"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881182"
 ---
-# <a name="write-queries-for-azure-data-explorer"></a>Az Azure Data Explorer lekérdezéseket írni
+# <a name="write-queries-for-azure-data-explorer"></a>Írási lekérdezések az Azure Adatkezelő
 
-Ebből a cikkből elsajátíthatja a lekérdezési nyelv használata az Azure Data Explorer hajthat végre alapszintű lekérdezéseket a leggyakoribb szereplőkkel. Akkor is ajánlhassuk, a nyelv speciális funkcióit.
+Ebből a cikkből megtudhatja, hogyan használhatja az Azure Adatkezelő lekérdezési nyelvét a leggyakoribb operátorokkal rendelkező alapszintű lekérdezések végrehajtásához. Emellett a nyelv fejlettebb funkcióinak is kikerülnek.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A lekérdezések a cikkben szereplő kétféleképpen futtathatja:
+Az ebben a cikkben szereplő lekérdezéseket kétféleképpen futtathatja:
 
-- Az Azure Data Explorer *súgófürtben* , hogy azt állította be, ezzel elősegítve a tanulást.
-    [Jelentkezzen be a fürt](https://dataexplorer.azure.com/clusters/help/databases/samples) , amely tagja az Azure Active directory szervezeti e-mail fiókkal.
+- Az Azure Adatkezelő *súgójában* , amelyet a tanuláshoz hoztunk létre.
+    [Jelentkezzen be a fürtbe](https://dataexplorer.azure.com/clusters/help/databases/samples) egy olyan szervezeti e-mail-fiókkal, amely az Azure Active Directory tagja.
 
-- Egy saját fürtöt, amely tartalmazza a StormEvents mintaadatok. További információkért lásd: [a rövid útmutató: Hozzon létre egy Azure Data Explorer fürt és az adatbázis](create-cluster-database-portal.md) és [mintaadatok betöltése az Azure Data Explorer](ingest-sample-data.md).
+- A StormEvents-mintaadatok részét képező saját fürtön. További információ: gyors útmutató [: Hozzon létre egy Azure adatkezelő-](create-cluster-database-portal.md) fürtöt és-adatbázist, és a mintaadatok betöltését [Az Azure Adatkezelőba](ingest-sample-data.md).
 
     [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-## <a name="overview-of-the-query-language"></a>A lekérdezési nyelv áttekintése
+## <a name="overview-of-the-query-language"></a>A lekérdezés nyelvének áttekintése
 
-Egy lekérdezési nyelvet, az Azure Data Explorer olvasási kérést adatok feldolgozására, és adja vissza az eredményeket. A kérelem egy adatfolyam-modell számára, hogy könnyen olvasható, hozhat létre és automatizálja a szintaxis használatával egyszerű szövegként van megadva. A lekérdezés használja, amely hasonló az SQL-hierarchiában vannak rendszerezve séma entitások: adatbázisok, táblákat és oszlopokat.
+Az Azure Adatkezelő lekérdezési nyelve egy írásvédett kérelem, amely az adatfeldolgozást és az eredményeket jeleníti meg. A kérelem egyszerű szövegként van megadva, egy adatáramlási modell használatával, amely a szintaxis egyszerű elolvasását, elkészítését és automatizálását teszi lehetővé. A lekérdezés olyan séma-entitásokat használ, amelyek az SQL-hez hasonló hierarchiába vannak rendezve: adatbázisok, táblák és oszlopok.
 
-A lekérdezés áll egy feladatütemezési lekérdezés utasítások, pontosvesszővel elválasztva (`;`), egy táblázatos kifejezés utasítás folyamatban van legalább egy utasítással, azaz olyan utasításban, amely egy táblázat-szerű háló sorok és oszlopok rendezett adatok eredményez. A lekérdezés táblázatos kifejezés utasítások készít a lekérdezés eredményeit.
+A lekérdezés egy pontosvesszővel (`;`) tagolt lekérdezési utasítások sorozatát tartalmazza, amelynek legalább egy táblázatos kifejezési utasítása egy táblázatos kifejezés, amely egy tábla – például oszlopokból és sorokból álló hálóba rendezett adatokat eredményez. A lekérdezés táblázatos kifejezésének utasításai a lekérdezés eredményét eredményezik.
 
-A táblázatos kifejezés utasítás szintaxisa a következő táblázatos adatokat tartalmaz a másikra, kezdve az adatforrás (például egy tábla egy adatbázisban, vagy azokból adatokat előállító szolgáltatások operátor), és majd halad végig az Adatátalakítási folyamatot egy táblázatos operátor operátorok vannak kötve együttes használatával a függőleges vonal (`|`) elválasztó karaktert.
+A táblázatos kifejezés utasítás szintaxisa táblázatos adatfolyamattal rendelkezik az egyik táblázatos lekérdezési operátorról a másikra, az adatforrástól kezdve (például egy adatbázis táblájában vagy egy adatokat előállító operátoron), majd egy Adatátalakítási csoporton keresztül áramlik. a pipe (`|`) elválasztójának használatával kötött operátorok.
 
-Például a következő lekérdezést, egy utasítás, amely egy táblázatos kifejezés utasítást. Az utasítás egy hivatkozást a következő táblába kezdődik `StormEvents` (az ebben a táblában üzemeltető adatbázis az implicit itt, és a kapcsolati adatok egy részét). Az adatokat (sor), hogy a táblázat majd szűrve értékét a `StartTime` oszlopot, majd értéke szerint szűrt és a `State` oszlop. A lekérdezés majd visszaadja a "fennmaradó" sorok száma.
+Például a következő lekérdezés egyetlen utasítással rendelkezik, amely egy táblázatos kifejezési utasítás. Az utasítás a (z) nevű `StormEvents` táblára mutató hivatkozással kezdődik (a táblát üzemeltető adatbázis ebben az esetben implicit, a kapcsolati adatok részét képezi). Ezután az `StartTime` oszlop értékével szűri az adott tábla adatsorait, majd az `State` oszlop értéke alapján szűri. A lekérdezés ezután a "túlélő" sorok számát adja vissza.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVWws1VISSxJLQGyNYwMDMx1DQ11DQw1FRLzUpBU2aArMgIpQjGvJFXB1lZByc3HP8jTxVFJQQEkm5xfmlcCAHoR9euCAAAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVWws1VISSxJLQGyNYwMDMx1DQ11DQw1FRLzUpBU2aArMgIpQjGvJFXB1lZByc3HP8jTxVFJQQEkm5xfmlcCAHoR9euCAAAA) **\]**
 
 ```Kusto
 StormEvents
@@ -55,54 +55,54 @@ Ebben az esetben az eredmény a következő:
 |   23|
 | |
 
-További információ: a [lekérdezési nyelvi leírása](https://aka.ms/kustolangref).
+További információért lásd a [lekérdezés nyelvi referenciáját](https://aka.ms/kustolangref).
 
 ## <a name="most-common-operators"></a>Leggyakoribb operátorok
 
-Az ebben a szakaszban ismertetett operátorok ismertetése a lekérdezéseket az Azure Data Explorer építőkövei. A legtöbb lekérdezések írása ezen operátorok számos tartalmazza.
+Az ebben a szakaszban szereplő operátorok az Azure Adatkezelő lekérdezések megismerésére szolgáló építőelemek. A legtöbb írási lekérdezés több ilyen operátort is tartalmaz.
 
-A súgófürtben lekérdezések futtatására: válassza ki **kattintson ide a lekérdezés futtatásához** minden lekérdezés felett.
+Lekérdezések futtatása a Súgó fürtön: **kattintson a kattintás gombra az** egyes lekérdezések feletti lekérdezés futtatásához.
 
 Lekérdezések futtatása a saját fürtön:
 
-1. Minden egyes lekérdezés másolása a lekérdezés webes alkalmazásba, majd válassza ki a lekérdezést, vagy vigye a kurzort a lekérdezésben.
+1. Másolja az egyes lekérdezéseket a web-alapú lekérdezési alkalmazásba, majd válassza ki a lekérdezést, vagy helyezze a kurzort a lekérdezésbe.
 
-1. Válassza ki az alkalmazás tetején **futtatása**.
+1. Az alkalmazás tetején válassza a **Futtatás**lehetőséget.
 
 ### <a name="count"></a>count
 
-[**száma**](https://docs.microsoft.com/azure/kusto/query/countoperator): A táblázatban a sorok számát adja vissza.
+[**darabszám**](https://docs.microsoft.com/azure/kusto/query/countoperator): A tábla sorainak számát adja vissza.
 
-A következő lekérdezést a StormEvents táblában adja vissza a sorok száma.
+A következő lekérdezés a StormEvents tábla sorainak számát adja vissza.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRSM4vzSsBALU2eHsTAAAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRSM4vzSsBALU2eHsTAAAA) **\]**
 
 ```Kusto
 StormEvents | count
 ```
 
-### <a name="take"></a>hajtsa végre a megfelelő
+### <a name="take"></a>take
 
-[**igénybe**](https://docs.microsoft.com/azure/kusto/query/takeoperator): A megadott számú sornyi adatot adja vissza.
+[**igény**](https://docs.microsoft.com/azure/kusto/query/takeoperator): Az adatok megadott számú sorát adja vissza.
 
-A következő lekérdezést a StormEvents tábla öt sort adja vissza. A kulcsszó *korlát* aliasneve *igénybe vehet.*
+A következő lekérdezés a StormEvents tábla öt sorát adja vissza. A kulcsszó *korlátja* a Take aliasa *.*
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA%3d%3d) **\]**
 
 ```Kusto
 StormEvents | take 5
 ```
 
 > [!TIP]
-> Nincs garancia arra, hogy mely rekordok lesznek visszaadva, kivéve, ha a forrásadatok van rendezve.
+> Nincs garancia arra, hogy mely rekordok lesznek visszaadva, kivéve, ha a forrásadatok rendezése megtörtént.
 
 ### <a name="project"></a>project
 
-[**projekt**](https://docs.microsoft.com/azure/kusto/query/projectoperator): Oszlopok kijelölése.
+[**projekt**](https://docs.microsoft.com/azure/kusto/query/projectoperator): Kijelöli az oszlopok egy részhalmazát.
 
-A következő lekérdezés az oszlopok egy adott készletét adja vissza.
+A következő lekérdezés az oszlopok egy adott halmazát adja vissza.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUShJzE5VMAWxCorys1KTSxSCSxKLSkIyc1N1FFzzUiAMoFgJiA%2fSFlJZAGS6JOYmpqcGFOUXpBaVVAKlCjKL81NS%2fRKLihJLMstSAY%2buIINnAAAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUShJzE5VMAWxCorys1KTSxSCSxKLSkIyc1N1FFzzUiAMoFgJiA%2fSFlJZAGS6JOYmpqcGFOUXpBaVVAKlCjKL81NS%2fRKLihJLMstSAY%2buIINnAAAA) **\]**
 
 ```Kusto
 StormEvents
@@ -112,11 +112,11 @@ StormEvents
 
 ### <a name="where"></a>ahol
 
-[**ahol**](https://docs.microsoft.com/azure/kusto/query/whereoperator): A predikátum megfelelő sorokat részhalmazát tábla szűrése.
+[**hol**](https://docs.microsoft.com/azure/kusto/query/whereoperator): Kiszűr egy táblázatot a predikátumot teljesítő sorok részhalmazára.
 
-A következő lekérdezés szűri az adatokat `EventType` és `State`.
+Az alábbi lekérdezés a és `EventType` `State`a alapján szűri az adathalmazokat.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAEWMPQvCMBCGd8H%2fcFuWro4dBOvHkgoJOB%2fm0KjJhetRKfjjNe3g9n49r1OW1I2UdVivPvC%2bkxDM3k%2bFoG3B7F%2fMwQDmAE5Rl%2fCydceTPfjemsopPgk2VRXhB121TkV9TNRAl8MiZrz53zeww4Q3OgsXEp1%2bVYkDB7IoghpH%2bgI9OH8WnwAAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAEWMPQvCMBCGd8H%2fcFuWro4dBOvHkgoJOB%2fm0KjJhetRKfjjNe3g9n49r1OW1I2UdVivPvC%2bkxDM3k%2bFoG3B7F%2fMwQDmAE5Rl%2fCydceTPfjemsopPgk2VRXhB121TkV9TNRAl8MiZrz53zeww4Q3OgsXEp1%2bVYkDB7IoghpH%2bgI9OH8WnwAAAA%3d%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -127,11 +127,11 @@ StormEvents
 
 ### <a name="sort"></a>Rendezés
 
-[**Rendezés**](https://docs.microsoft.com/azure/kusto/query/sortoperator): A bemeneti tábla sorainak rendezése sorrendben be egy vagy több oszlop szerint.
+[**Rendezés**](https://docs.microsoft.com/azure/kusto/query/sortoperator): A bemeneti tábla sorait egy vagy több oszlop szerint rendezheti sorrendbe.
 
-A következő lekérdezés rendezi az adatokat csökkenő sorrend szerint `DamageProperty`.
+A következő lekérdezés csökkenő sorrendben `DamageProperty`rendezi az adathalmazokat.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2NPQvCMBCGd8H%2fcFuXrI4dBOvHEoUGnM%2fm0KjphctRKfjjNe0guL0fvM%2fbKktsBuo1LxdveN1ICCbvxkRQ11Btn8y%2bAuw9tIo6h%2bd1uz%2fYnTvaquwyi8JlhA1GvNJJOJHoCJ5yV2rFB8GqqCR8p04LSdSFSAaa3s9iopvfu%2fnDfasUMnuyKIIaBvoAtvGMsb4AAAA%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2NPQvCMBCGd8H%2fcFuXrI4dBOvHEoUGnM%2fm0KjphctRKfjjNe0guL0fvM%2fbKktsBuo1LxdveN1ICCbvxkRQ11Btn8y%2bAuw9tIo6h%2bd1uz%2fYnTvaquwyi8JlhA1GvNJJOJHoCJ5yV2rFB8GqqCR8p04LSdSFSAaa3s9iopvfu%2fnDfasUMnuyKIIaBvoAtvGMsb4AAAA%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -142,15 +142,15 @@ StormEvents
 ```
 
 > [!NOTE]
-> A műveletek sorrendje akkor fontos. Próbáljon üzembe `take 5` előtt `sort by`. Más eredményt kapunk?
+> A műveletek sorrendje fontos. Próbálja megismételni a következőt:. `sort by` `take 5` Különböző eredményekhez juthat?
 
-### <a name="top"></a>felső
+### <a name="top"></a>Top
 
-[**felső**](https://docs.microsoft.com/azure/kusto/query/topoperator): Visszaadja az első *N* rekordok a megadott oszlopok alapján rendezi.
+[**felül**](https://docs.microsoft.com/azure/kusto/query/topoperator): Az első *N* rekordot adja vissza a megadott oszlopok szerint rendezve.
 
-A következő lekérdezés ugyanazokat az eredményeket, fent egy kisebb operátorral adja vissza.
+A következő lekérdezés ugyanazt az eredményt adja vissza, mint a fenti egy kevesebb operátorral.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2NOwvCMBSFd8H%2fcLcsWR07CNbHkgoJOMfmohGTG24vlYA%2fXtsOgtt5cL5jhTi1I2YZ1qs3vO7ICLN3tSA0Daj9kygo8DmAFS9LeNna48kcXGfUtBMqsIFrhZ1P%2foZnpoIsFQIO%2fdQXpgf2MgFYXEyooc1hETNU%2f071H%2bRblThQQOOZvcQRP1rSng21AAAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2NOwvCMBSFd8H%2fcLcsWR07CNbHkgoJOMfmohGTG24vlYA%2fXtsOgtt5cL5jhTi1I2YZ1qs3vO7ICLN3tSA0Daj9kygo8DmAFS9LeNna48kcXGfUtBMqsIFrhZ1P%2foZnpoIsFQIO%2fdQXpgf2MgFYXEyooc1hETNU%2f071H%2bRblThQQOOZvcQRP1rSng21AAAA) **\]**
 
 ```Kusto
 StormEvents
@@ -159,13 +159,13 @@ StormEvents
 | project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative
 ```
 
-### <a name="extend"></a>Kiterjesztése
+### <a name="extend"></a>kiterjesztése
 
-[**kiterjesztheti**](https://docs.microsoft.com/azure/kusto/query/extendoperator): Számítási erőforrások származtatott oszlopokat.
+[**kiterjesztés**](https://docs.microsoft.com/azure/kusto/query/extendoperator): Származtatott oszlopok számítása.
 
-A következő lekérdezés egy olyan új oszlop szerint számítástechnika minden sor egy értéket hoz létre.
+A következő lekérdezés egy új oszlopot hoz létre az egyes sorokban lévő értékek kiszámításával.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2OvQ7CMAyEdyTewVuWMDJ2QGr5WQJSKzGHxoIiEkeuKVTi4WmooBKbfXeffaUQ%2b6LDIO189oLHBRnhs1d9RMgyUOsbkVNgg4NSrIzicVVud2ZT7Y1KnFCEJZx6yK23ZzwwRWTpwWFbJx%2bfggOf39lKQwEyKIKrGo%2bwSEdZ0pyCkemKtUyi%2fib1j9ZjDz311H9%2fBys2LTk0lhPT4RvwA3pn6AAAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2OvQ7CMAyEdyTewVuWMDJ2QGr5WQJSKzGHxoIiEkeuKVTi4WmooBKbfXeffaUQ%2b6LDIO189oLHBRnhs1d9RMgyUOsbkVNgg4NSrIzicVVud2ZT7Y1KnFCEJZx6yK23ZzwwRWTpwWFbJx%2bfggOf39lKQwEyKIKrGo%2bwSEdZ0pyCkemKtUyi%2fib1j9ZjDz311H9%2fBys2LTk0lhPT4RvwA3pn6AAAAA%3d%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -175,26 +175,26 @@ StormEvents
 | project StartTime, EndTime, Duration, State, EventType, DamageProperty, EpisodeNarrative
 ```
 
-Kifejezések tartalmazhatnak a szokásos operátorok (+, -, *, /, %), és nincs a számos hasznos funkció, amelyeket meghívhat.
+A kifejezések tartalmazhatják az összes szokásos operátort (+,-, *,/,%), és számos hasznos függvényt hívhatnak meg.
 
 ### <a name="summarize"></a>Összegzés
 
-[**Összegzés**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator): Összesíti a sorcsoportra.
+[**Összegzés**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator): Sorok összesítése.
 
-A következő lekérdezés visszaadja az események száma `State`.
+A következő lekérdezés az események `State`számát adja vissza.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIBYnFJ%2beX5pUo2CqAaQ1NhaRKheCSxJJUAB%2fedDI3AAAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIBYnFJ%2beX5pUo2CqAaQ1NhaRKheCSxJJUAB%2fedDI3AAAA) **\]**
 
 ```Kusto
 StormEvents
 | summarize event_count = count() by State
 ```
 
-A **összefoglalója** operátor összevonja a ugyanazokat az értékeket tartalmazó sorok a **által** záradék esetében, majd az összesítő függvény (például **száma**) úgy, hogy minden csoport egy egyetlen sorra. Tehát ebben az esetben van egy az egyes állapotokhoz, oszlopok és az abban az állapotban lévő sorok száma.
+Az **összegző** operátor csoportosítja azokat a sorokat, amelyek azonos értékekkel rendelkeznek a **by** záradékban, majd az összesítési függvényt (például **darabszám**) használják az egyes csoportok egyetlen sorba való összekapcsolásához. Így ebben az esetben minden állapothoz tartozik egy sor, valamint egy oszlop az adott állapotban lévő sorok számához.
 
-Nincs a, összesítési függvények széles, és a egy is használhatja őket számos **összefoglalója** előállításához több operátor számított oszlopokat. Például, hogy sikerült lekérni vihar az egyes állapotokhoz és állapot szerint vihar egyedi száma, majd a **felső** beolvasni a leginkább a storm-érintett állapotok.
+Számos aggregációs függvény létezik, és több számított oszlop létrehozásához használhatja őket egy **Összefoglaló** operátorban. Például megszerezheti az egyes állapotokban lévő viharok számát és az egyes állapotokban az egyedi Storms számot, majd a **Top** használatával beszerezhetik a legtöbb Storm által érintett állapotot.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlUIBkk455fmlSjYKiSDaA1NHYWQyoJU%2fzSwXDFQPAUiAdYPktJUSKoE6kwsSQUZVpJfoGAKEYGblZJanAwAgbFb73QAAAA%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlUIBkk455fmlSjYKiSDaA1NHYWQyoJU%2fzSwXDFQPAUiAdYPktJUSKoE6kwsSQUZVpJfoGAKEYGblZJanAwAgbFb73QAAAA%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -202,21 +202,21 @@ StormEvents
 | top 5 by StormCount desc
 ```
 
-Eredménye egy **összefoglalója** műveletet tartalmaz:
+Egy **Összefoglaló** művelet eredménye:
 
-- Minden oszlop **szerint**
+- Minden, a **által** megnevezett oszlop
 
-- Minden oszlop számított kifejezés
+- Egy oszlop az egyes számított kifejezésekhez
 
-- Egy sor minden értékek kombinációjának
+- Egy sor az egyes értékek szerinti kombinációhoz
 
 ### <a name="render"></a>renderelési
 
-[**leképezési**](https://docs.microsoft.com/azure/kusto/query/renderoperator): Ez a beállítás eredmények egy grafikus kimenetként.
+[**Megjelenítés**](https://docs.microsoft.com/azure/kusto/query/renderoperator): Az eredményeket grafikus kimenetként jeleníti meg.
 
-A következő lekérdezést egy oszlopdiagramot jelenít meg.
+Az alábbi lekérdezés egy oszlopdiagram megjelenítését jeleníti meg.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAFWMsQ7CQAxDdyT%2bIWMrdSgbSxmQ2Nj6Aei4Ru0hkqA0VwTi49uUBRZL9rPdmiidJmQbt5sPjJkoaHojoGeXKJmtWbUoK6DUQQNh6osj9onPwUq4vqC1YLjORc2Dpef2OaD%2bPcEBdvu6dvZQuWG077b6LTlV5A4VotwzcRyC2gxU6ktSqQAAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAFWMsQ7CQAxDdyT%2bIWMrdSgbSxmQ2Nj6Aei4Ru0hkqA0VwTi49uUBRZL9rPdmiidJmQbt5sPjJkoaHojoGeXKJmtWbUoK6DUQQNh6osj9onPwUq4vqC1YLjORc2Dpef2OaD%2bPcEBdvu6dvZQuWG077b6LTlV5A4VotwzcRyC2gxU6ktSqQAAAA%3d%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -227,9 +227,9 @@ StormEvents
 | render columnchart
 ```
 
-A következő lekérdezés egyszerű idő diagramot jelenít meg.
+A következő lekérdezés egy egyszerű idődiagramot jelenít meg.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIBYnFJ%2beX5pXYgkkNTYWkSoWkzDyN4JLEopKQzNxUHQXDFE2QtqLUvJTUIoUSoFhyBlASAAyXWQJWAAAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIBYnFJ%2beX5pXYgkkNTYWkSoWkzDyN4JLEopKQzNxUHQXDFE2QtqLUvJTUIoUSoFhyBlASAAyXWQJWAAAA) **\]**
 
 ```Kusto
 StormEvents
@@ -237,9 +237,9 @@ StormEvents
 | render timechart
 ```
 
-A következő lekérdezés események száma a modulus egy nap, ideje, az óra binned, és időt diagramot jelenít meg.
+A következő lekérdezés egy nap időkerete szerint számítja ki az eseményeket, dobozolni órákig, és megjeleníti az idődiagramot.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEADWNQQqDMBRE90LvMBtBwY0HcNkT2L2k8UuEJh9%2bfqSWHt4k4GZghpk3s7L450FB46P5g75KYYXjJJiwfZilm9WIvnZPaDGuGDC6vnRj8t7I%2fiNQ2S%2bWU9CpatfjfVZKLbLo7WGiLZnkGxJoxlqX%2bRf81ZbyiAAAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEADWNQQqDMBRE90LvMBtBwY0HcNkT2L2k8UuEJh9%2bfqSWHt4k4GZghpk3s7L450FB46P5g75KYYXjJJiwfZilm9WIvnZPaDGuGDC6vnRj8t7I%2fiNQ2S%2bWU9CpatfjfVZKLbLo7WGiLZnkGxJoxlqX%2bRf81ZbyiAAAAA%3d%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -249,9 +249,9 @@ StormEvents
 | render timechart
 ```
 
-A következő lekérdezést a diagram egy több napi sorozatát hasonlítja össze.
+A következő lekérdezés összehasonlítja a napi adatsorozatokat egy idődiagramon.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEACWPSwvCMBCE74L%2fYSgIFXrpD%2bihaKzxkUBTXyeputKCbSCmvvDHm9TL7gwzsN8qq03DHtTa%2b3DwBb0stRdUujMJrjetTQhlS2OLuiGMEF8QIa7GvvusyJBPLaFuEQbZZjWDnGHN9nwigyhYp1wwt7c8z7jgqZM7riZSKC6cFjIv5pimS1n4SLAdFixX7OCMzFkmRdAfundNU5r6QyAPejzrrrVJP8MxTu8eN%2fqT%2bL5xL5CBdcjnyrH%2fALPTSKnkAAAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEACWPSwvCMBCE74L%2fYSgIFXrpD%2bihaKzxkUBTXyeputKCbSCmvvDHm9TL7gwzsN8qq03DHtTa%2b3DwBb0stRdUujMJrjetTQhlS2OLuiGMEF8QIa7GvvusyJBPLaFuEQbZZjWDnGHN9nwigyhYp1wwt7c8z7jgqZM7riZSKC6cFjIv5pimS1n4SLAdFixX7OCMzFkmRdAfundNU5r6QyAPejzrrrVJP8MxTu8eN%2fqT%2bL5xL5CBdcjnyrH%2fALPTSKnkAAAA) **\]**
 
 ```Kusto
 StormEvents
@@ -262,19 +262,19 @@ StormEvents
 ```
 
 > [!NOTE]
-> A **render** operátor a motor része egy ügyféloldali szolgáltatás helyett. Integrálva van a könnyű használatra nyelvre. A webes alkalmazás támogatja a következő beállításokat: barchart, columnchart, piechart, idődiagramját, és linechart. 
+> A **Render** operátor egy ügyféloldali szolgáltatás, amely nem része a motornak. Az egyszerű használat érdekében integrálva van a nyelvbe. A webalkalmazás a következő beállításokat támogatja: barchart, columnchart, piechart, idődiagramját és linechart. 
 
 ## <a name="scalar-operators"></a>Skaláris operátorok
 
-Ez a szakasz ismerteti a legfontosabb skaláris operátorok némelyike.
+Ez a szakasz a legfontosabb skaláris operátorokat ismerteti.
 
-### <a name="bin"></a>bin()
+### <a name="bin"></a>bin ()
 
-[**Bin()** ](https://docs.microsoft.com/azure/kusto/query/binfunction): Értékek az egész számra kerekít egy adott doboz méretét többszöröse.
+[**bin ()** ](https://docs.microsoft.com/azure/kusto/query/binfunction): Egy adott raktárhely méretének többszörösére kerekíti az értékeket.
 
-A következő lekérdezést a szám egy nap gyűjtőbe mérettel számítja ki.
+A következő lekérdezés kiszámítja a darabszámot egy nap gyűjtői méretével.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVWwU0hJLEktATI1jAwMzHUNjHQNTTQVEvNSkBTZYCoyMtQEGVdcmpubWJRZlaqQCrIiPjm%2fNK9EwVYBTGtoKiRVKiRl5mnAjdJRMEzRBABIhjnmkwAAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVWwU0hJLEktATI1jAwMzHUNjHQNTTQVEvNSkBTZYCoyMtQEGVdcmpubWJRZlaqQCrIiPjm%2fNK9EwVYBTGtoKiRVKiRl5mnAjdJRMEzRBABIhjnmkwAAAA%3d%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -282,13 +282,13 @@ StormEvents
 | summarize event_count = count() by bin(StartTime, 1d)
 ```
 
-### <a name="case"></a>case()
+### <a name="case"></a>eset ()
 
-[**Case()** ](https://docs.microsoft.com/azure/kusto/query/casefunction): Predikátumok listája kiértékeli, és visszaadja az első eredmény kifejezés, amelynek predikátum teljesül, vagy az utolsó **más** kifejezés. Ez az operátor használatával kategorizálását, vagy a csoport adatokat:
+[**eset ()** ](https://docs.microsoft.com/azure/kusto/query/casefunction): Kiértékeli a predikátumok listáját, és az első eredmény kifejezést adja vissza, amelynek predikátuma teljesül, vagy az utolsó **Else** kifejezés. Az operátor használatával kategorizálhatja vagy csoportosíthatja az adatcsoportot:
 
-A következő lekérdezés visszaadja az egy olyan új oszlop `deaths_bucket` és a halála száma alapján csoportosítja.
+A következő lekérdezés egy új oszlopot `deaths_bucket` ad vissza, és szám szerint csoportosítja a haláleseteket.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAGWOwQrCQAxE74X%2bQ9hTCwX14FFBaK9e%2bgGS7gZdbFrYZEXFj7dbqgfNbfJmhml1DNzcaFDJsxdIZMbgnwSOUC8Cu%2fQq6lnUPpDVEroHtIpKKUB3pcEt7lMX7ZV0ClkUgiLPYLqlaQ%2fbdQWmx3AmU%2f2gTUJMzkf%2bYwkJY99%2fiDmuDqac545Bv3MAxb4Bic1Oy88AAAA%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAGWOwQrCQAxE74X%2bQ9hTCwX14FFBaK9e%2bgGS7gZdbFrYZEXFj7dbqgfNbfJmhml1DNzcaFDJsxdIZMbgnwSOUC8Cu%2fQq6lnUPpDVEroHtIpKKUB3pcEt7lMX7ZV0ClkUgiLPYLqlaQ%2fbdQWmx3AmU%2f2gTUJMzkf%2bYwkJY99%2fiDmuDqac545Bv3MAxb4Bic1Oy88AAAA%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -301,13 +301,13 @@ StormEvents
 | sort by State asc
 ```
 
-### <a name="extract"></a>extract()
+### <a name="extract"></a>Extract ()
 
-[**extract()** ](https://docs.microsoft.com/azure/kusto/query/extractfunction): Egyezés reguláris kifejezést olvas be egy szöveges karakterlánc.
+[**extract ()** ](https://docs.microsoft.com/azure/kusto/query/extractfunction): Egy szöveges karakterlánc reguláris kifejezésének egyezését kapja meg.
 
-A következő lekérdezést a nyomkövetési kigyűjti a meghatározott attribútumértékek.
+A következő lekérdezés kibontja a megadott attribútum-értékeket egy nyomkövetésből.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAE2OwQrCMBBE74X%2bw9BTojHYagSVHJRevXkrHqJdpVBbSVew4McbFYungeXtvKmJsetzxw4WZQh2x5og9t6daIWOfdVcJIpkY1OFrc0U8rt3XLWNTbOZnhultU4UfoD5A4zRmVkovInDOo6%2bojh6gh5MTTmQwR0uQckiGb5FMZ0s9WEsQ3uo%2fixSccT9jdqz8ORqKTECV1cSaSdfq2k6L8oAAAA%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAE2OwQrCMBBE74X%2bw9BTojHYagSVHJRevXkrHqJdpVBbSVew4McbFYungeXtvKmJsetzxw4WZQh2x5og9t6daIWOfdVcJIpkY1OFrc0U8rt3XLWNTbOZnhultU4UfoD5A4zRmVkovInDOo6%2bojh6gh5MTTmQwR0uQckiGb5FMZ0s9WEsQ3uo%2fixSccT9jdqz8ORqKTECV1cSaSdfq2k6L8oAAAA%3d) **\]**
 
 ```Kusto
 let MyData = datatable (Trace: string) ["A=1, B=2, Duration=123.45,...", "A=1, B=5, Duration=55.256, ..."];
@@ -315,15 +315,15 @@ MyData
 | extend Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) * time(1s)
 ```
 
-Ez a lekérdezés használ egy **teszik** utasítás, amely lekötné a nevét (ebben az esetben `MyData`) kifejezést. A hatókör, amelyben a többi a **lehetővé teszik** utasítás jelenik meg (globális hatókör vagy egy függvény törzsében hatókörében), a neve is használható az kötött értékére hivatkozunk.
+Ez a lekérdezés egy **let** utasítást használ, amely egy nevet (ebben az esetben `MyData`) egy kifejezéshez köti. Annak a hatókörnek a többi részén, amelyben az " **let** " utasítás megjelenik (globális hatókör vagy a függvény törzsének hatóköre), a név használható a megkötött értékre való hivatkozáshoz.
 
-### <a name="parsejson"></a>parse_json()
+### <a name="parse_json"></a>parse_json()
 
-[**parse_json()** ](https://docs.microsoft.com/azure/kusto/query/parsejsonfunction): Egy karakterláncot egy JSON-értékként értelmezi, és dinamikusként értékét adja vissza. A felső szintű a **extractjson()** függvényt, amikor szüksége van egy összetett JSON-objektum egynél több elem kibontásához.
+[**parse_json()** ](https://docs.microsoft.com/azure/kusto/query/parsejsonfunction): Egy karakterláncot JSON-értékként értelmez, és dinamikusként adja vissza az értéket. A **extractjson ()** függvény használata akkor jobb, ha egy összetett JSON-objektum egynél több elemét kell kinyerni.
 
-A következő lekérdezést a JSON-elemek kiolvassa a tömböt.
+A következő lekérdezés kibontja a JSON-elemeket egy tömbből.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAHWPQQuCQBCF74L%2fYdmLBSJ6EGKjU17r1E0kJh1C2XZlHc0w%2f3ur1s1O896bB%2fONRGKnVwIE7MAKOwhuEtnmYiBHwRoypbpvXSf1Bl60BqjUiot04B3IFrmIol0Q%2bpPLdauIi3iyj9KWojCcNfRWx7NuqEiw48KaMRu9bO86y3HXeTPsCVXBzvg8amlpajANXqtGq4VmO5VqoyvM6dsKfkhpmAUzkf9nM9OtLi3reg79ar788AEVX8GkOAEAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAHWPQQuCQBCF74L%2fYdmLBSJ6EGKjU17r1E0kJh1C2XZlHc0w%2f3ur1s1O896bB%2fONRGKnVwIE7MAKOwhuEtnmYiBHwRoypbpvXSf1Bl60BqjUiot04B3IFrmIol0Q%2bpPLdauIi3iyj9KWojCcNfRWx7NuqEiw48KaMRu9bO86y3HXeTPsCVXBzvg8amlpajANXqtGq4VmO5VqoyvM6dsKfkhpmAUzkf9nM9OtLi3reg79ar788AEVX8GkOAEAAA%3d%3d) **\]**
 
 ```Kusto
 let MyData = datatable (Trace: string)
@@ -333,9 +333,9 @@ MyData
 | project NewCol.duration[0].value, NewCol.duration[0].valcount, NewCol.duration[0].min, NewCol.duration[0].max, NewCol.duration[0].stdDev
 ```
 
-A következő lekérdezést a JSON-elemek adja eredményül.
+A következő lekérdezés kibontja a JSON-elemeket.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAE2OwQqCQBCG74LvsOzFBBE9CLHRKa916hYRkw6RbLuyO5pRvXvrGtZpvn9m4P8kEts%2bSiBga1a7QXCWyBZ7AxUKZslc1SVmh%2bjJe5AdcpHnyzRLxlTpThEXxRhvV%2bVOWeYZBseFZ0t1iT0XLryj4yoMprIweDEcCFXNdnjfaOnaWzAWT43VamqPx6fW6AYr%2bn6l3iH5S95hXjiLH8Mw82TxAQvJEB%2fsAAAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAE2OwQqCQBCG74LvsOzFBBE9CLHRKa916hYRkw6RbLuyO5pRvXvrGtZpvn9m4P8kEts%2bSiBga1a7QXCWyBZ7AxUKZslc1SVmh%2bjJe5AdcpHnyzRLxlTpThEXxRhvV%2bVOWeYZBseFZ0t1iT0XLryj4yoMprIweDEcCFXNdnjfaOnaWzAWT43VamqPx6fW6AYr%2bn6l3iH5S95hXjiLH8Mw82TxAQvJEB%2fsAAAA) **\]**
 
 ```Kusto
 let MyData = datatable (Trace: string) ['{"value":118.0,"valcount":5.0,"min":100.0,"max":150.0,"stdDev":0.0}'];
@@ -344,9 +344,9 @@ MyData
 | project NewCol.value, NewCol.valcount, NewCol.min, NewCol.max, NewCol.stdDev
 ```
 
-A következő lekérdezés kibontása egy dinamikus adattípusú JSON-elemek.
+A következő lekérdezés dinamikus adattípussal kibontja a JSON-elemeket.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAD2NMQvCMBBG90D%2bw5GphVLSoSARt65ubuJwJjdU0lZiWlrU%2f25MotO9x8H7LHk4bh16hAOYcDxeLUFxcqhJgdlGHHpdcnbOWDzFgnYmoZpmV8tK6GkePTmh2q8N%2fRg%2bUkbGNXAb%2beFNR4tQQd7lZc9ZGuXsBXc33Uh7iJN1jFdZcvunIf5HXCvOEqf2BwXmDCnKAAAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAD2NMQvCMBBG90D%2bw5GphVLSoSARt65ubuJwJjdU0lZiWlrU%2f25MotO9x8H7LHk4bh16hAOYcDxeLUFxcqhJgdlGHHpdcnbOWDzFgnYmoZpmV8tK6GkePTmh2q8N%2fRg%2bUkbGNXAb%2beFNR4tQQd7lZc9ZGuXsBXc33Uh7iJN1jFdZcvunIf5HXCvOEqf2BwXmDCnKAAAA) **\]**
 
 ```Kusto
 let MyData = datatable (Trace: dynamic)
@@ -357,11 +357,11 @@ MyData
 
 ### <a name="ago"></a>ago()
 
-[**ago()** ](https://docs.microsoft.com/azure/kusto/query/agofunction): A megadott időtartam a jelenlegi UTC idő a időpontból.
+[**ezelőtt ()** ](https://docs.microsoft.com/azure/kusto/query/agofunction): Kivonja a megadott TimeSpan az aktuális UTC időpontból.
 
-A következő lekérdezés számára az elmúlt 12 órában adatokat ad vissza.
+A következő lekérdezés az elmúlt 12 órában szolgáltatja az adatok értékét.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOQQ6CQAxF9yTc4S8hQcmQuNSNR4ALTKQyJDAlnSIuPLwzJGrctM3v+7+t684R7qMEhW6MafQUMJAnsUoIdl4mQm/VVrC+h0Z6shFOINZAIc/qOql24KIEL8nIAuWYohC6sfQB9yjtPtPA8SrhmGeLjF7RjTO1Gu+cIdYPVHjeisOpLyukKTbjYml5piuvXknwIU1lGlPm2Qvzg55L+u+b9udIyOZI6LfHZf/YNK58Ay2HrbAEAQAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOQQ6CQAxF9yTc4S8hQcmQuNSNR4ALTKQyJDAlnSIuPLwzJGrctM3v+7+t684R7qMEhW6MafQUMJAnsUoIdl4mQm/VVrC+h0Z6shFOINZAIc/qOql24KIEL8nIAuWYohC6sfQB9yjtPtPA8SrhmGeLjF7RjTO1Gu+cIdYPVHjeisOpLyukKTbjYml5piuvXknwIU1lGlPm2Qvzg55L+u+b9udIyOZI6LfHZf/YNK58Ay2HrbAEAQAA) **\]**
 
 ```Kusto
 //The first two lines generate sample data, and the last line uses
@@ -371,28 +371,28 @@ print TimeStamp= range(now(-5d), now(), 1h), SomeCounter = range(1,121)
 | where TimeStamp > ago(12h)
 ```
 
-### <a name="startofweek"></a>startofweek()
+### <a name="startofweek"></a>startofweek ()
 
-[**startofweek()** ](https://docs.microsoft.com/azure/kusto/query/startofweekfunction): A hét, a dátumot, ha meg van adva egy eltolás megjelenítjük tartalmazó kezdetét adja vissza.
+[**startofweek ()** ](https://docs.microsoft.com/azure/kusto/query/startofweekfunction): A dátumot tartalmazó hét kezdetét adja vissza, eltolással eltolt, ha meg van megadva
 
-A következő lekérdezést a hét különböző eltolású kezdetét adja vissza.
+A következő lekérdezés a hét kezdetét adja vissza eltérő eltolásokkal.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEACtKzEtPVchPSytOLVFIK8rPVdA1VCjJVzBUKC5JLVAw5OWqUSgoys9KTS5RKE9NzQ4uSSwqUbAFygLp%2fDSQkEZefrmGpg7UEE0dCA0AdE3lv1kAAAA%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEACtKzEtPVchPSytOLVFIK8rPVdA1VCjJVzBUKC5JLVAw5OWqUSgoys9KTS5RKE9NzQ4uSSwqUbAFygLp%2fDSQkEZefrmGpg7UEE0dCA0AdE3lv1kAAAA%3d) **\]**
 
 ```Kusto
 range offset from -1 to 1 step 1
 | project weekStart = startofweek(now(), offset),offset
 ```
 
-Ez a lekérdezés használ a **tartomány** operátor szerinti szűrése, amely értékeket tartalmazó egyoszlopos táblázatot hoz létre. Lásd még: [ **startofday()** ](https://docs.microsoft.com/azure/kusto/query/startofdayfunction), [ **startofweek()** ](https://docs.microsoft.com/azure/kusto/query/startofweekfunction), [ **startofyear()** ](https://docs.microsoft.com/azure/kusto/query/startofyearfunction)), [ **startofmonth()** ](https://docs.microsoft.com/azure/kusto/query/startofmonthfunction), [ **endofday()** ](https://docs.microsoft.com/azure/kusto/query/endofdayfunction), [ **endofweek()**  ](https://docs.microsoft.com/azure/kusto/query/endofweekfunction), [ **endofmonth()** ](https://docs.microsoft.com/azure/kusto/query/endofmonthfunction), és [ **endofyear()** ](https://docs.microsoft.com/azure/kusto/query/endofyearfunction).
+Ez a lekérdezés a **tartomány** operátort használja, amely az értékek egyoszlopos tábláját hozza létre. Lásd még: [**startofday ()** ](https://docs.microsoft.com/azure/kusto/query/startofdayfunction), [**startofweek ()** ](https://docs.microsoft.com/azure/kusto/query/startofweekfunction), [**STARTOFYEAR ()** ](https://docs.microsoft.com/azure/kusto/query/startofyearfunction)), [**STARTOFMONTH ()** ](https://docs.microsoft.com/azure/kusto/query/startofmonthfunction), [**endofday ()** ](https://docs.microsoft.com/azure/kusto/query/endofdayfunction), [**endofweek ()** ](https://docs.microsoft.com/azure/kusto/query/endofweekfunction), [**ENDOFMONTH ()** ](https://docs.microsoft.com/azure/kusto/query/endofmonthfunction)és [**ENDOFYEAR ()** ](https://docs.microsoft.com/azure/kusto/query/endofyearfunction).
 
 ### <a name="between"></a>between()
 
-[**between()** ](https://docs.microsoft.com/azure/kusto/query/betweenoperator): Megegyezik a bemenet, amely a határokat is beleértve tartományon belül van.
+[**között ()** ](https://docs.microsoft.com/azure/kusto/query/betweenoperator): Megfelel a befogadó tartományon belüli bemenetnek.
 
-A következő lekérdezés az adatok egy adott dátumtartomány szerint szűrik.
+Az alábbi lekérdezés egy adott Dátumtartomány alapján szűri az adathalmazt.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrApGRuaaCnp4ChrixgaYmyKTk%2fNK8EgBluyagXgAAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrApGRuaaCnp4ChrixgaYmyKTk%2fNK8EgBluyagXgAAAA%3d%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -400,9 +400,9 @@ StormEvents
 | count
 ```
 
-A következő lekérdezés szűri az adatokat egy adott időtartományban, a három nap enyhe változata szerint (`3d`), a kezdő dátum.
+A következő lekérdezés egy adott Dátumtartomány alapján szűri az adatait, a kezdő dátumtól számított három nap (`3d`) kis változatával.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrApGRuaaCnp6CcYomSF9yfmleCQCGAqjRTAAAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrApGRuaaCnp6CcYomSF9yfmleCQCGAqjRTAAAAA%3d%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -412,15 +412,15 @@ StormEvents
 
 ## <a name="tabular-operators"></a>Táblázatos operátorok
 
-Kusto rendelkezik, ez a cikk többi szakasza tárgyalja, amelyek sok táblázatos operátor. Itt az fogunk összpontosítani **elemezni**. 
+A Kusto számos táblázatos operátorral rendelkezik, amelyek némelyikét a cikk más részei tárgyalják. Itt az elemzésre fogunkösszpontosítani. 
 
-### <a name="parse"></a>elemzése
+### <a name="parse"></a>elemezni
 
-[**elemezni**](https://docs.microsoft.com/azure/kusto/query/parseoperator): Egy karakterlánc-kifejezés kiértékeli, és elemzi az értékét egy vagy több számított oszlopokat. Elemezni három módja van: egyszerű (alapértelmezett), a következő reguláris kifejezésre, és könnyített.
+[**elemzés**](https://docs.microsoft.com/azure/kusto/query/parseoperator): Kiértékel egy karakterlánc-kifejezést, és egy vagy több számított oszlopba elemzi az értékét. Háromféle módon elemezhető: egyszerű (alapértelmezett), regex és nyugodt.
 
-A következő lekérdezést a nyomkövetési elemzi, és kinyeri a megfelelő, egyszerű elemzése az alapértelmezett értékeket. A kifejezés (néven StringConstant) rendszeres karakterlánc-érték és az egyezés szigorú: kiterjesztett oszlopok egyeznie kell a szükséges típusokat.
+A következő lekérdezés egy nyomkövetést elemez, és Kinyeri a megfelelő értékeket az egyszerű elemzés alapértelmezett értékének használatával. A kifejezés (más néven StringConstant) egy reguláris karakterlánc, és a egyezés szigorú: a kiterjesztett oszlopoknak meg kell egyezniük a szükséges típusokkal.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAN2UTU%2fDMAyG75X6H6xcxlCkpRlsUNQjN6gQ2wnEoevMFsiaKk2HJvHjabqvlI91l11QLrH12vETW5Zo4H411kmKEME0MdWZSISz2yVmpvaHhdEim3V979n3OrU%2fhFgZ8boaSZHiI0pMiipEY6FKnWKcLDB6EDlKkeEoneO0lKgpGGUSWYcUER9SKOw1LhcT1BHvU5AqfR%2bLKpbxXjDscRYMgF2FFyxkwRMFvX7ngCLXuBSqLO5%2bT9S%2ftrJuh54OI7g8iMFaMdhxGOy0GJz9i25w%2fjdG0IoRHNWNNe1ph2pwEKNlqI7HsEPley83vrfZCL73CXmiq%2fr32wA%2bhJnDOZAGEQHXBNIEIq4VSpXNbAIXkbjAO8UOmuz4bWoXlrhWWO0vqyA2%2bAcw2f7B1rORd60calat3jA1TRbq1A6NxsC%2bLdCoCuj3p74AKTs4pmcFAAA%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAN2UTU%2fDMAyG75X6H6xcxlCkpRlsUNQjN6gQ2wnEoevMFsiaKk2HJvHjabqvlI91l11QLrH12vETW5Zo4H411kmKEME0MdWZSISz2yVmpvaHhdEim3V979n3OrU%2fhFgZ8boaSZHiI0pMiipEY6FKnWKcLDB6EDlKkeEoneO0lKgpGGUSWYcUER9SKOw1LhcT1BHvU5AqfR%2bLKpbxXjDscRYMgF2FFyxkwRMFvX7ngCLXuBSqLO5%2bT9S%2ftrJuh54OI7g8iMFaMdhxGOy0GJz9i25w%2fjdG0IoRHNWNNe1ph2pwEKNlqI7HsEPley83vrfZCL73CXmiq%2fr32wA%2bhJnDOZAGEQHXBNIEIq4VSpXNbAIXkbjAO8UOmuz4bWoXlrhWWO0vqyA2%2bAcw2f7B1rORd60calat3jA1TRbq1A6NxsC%2bLdCoCuj3p74AKTs4pmcFAAA%3d) **\]**
 
 ```Kusto
 let MyTrace = datatable (EventTrace:string)
@@ -436,9 +436,9 @@ MyTrace
 | project resourceName ,totalSlices , sliceNumber , lockTime , releaseTime , previouLockTime
 ```
 
-A következő lekérdezést a nyomkövetési elemzi, és kinyeri a megfelelő értékek, használatával `kind = regex`. A StringConstant reguláris kifejezés is lehet.
+A következő lekérdezés egy nyomkövetést elemez, és Kinyeri a megfelelő `kind = regex`értékeket a használatával. A StringConstant lehet reguláris kifejezés.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAN2UQU%2fCQBCF7036HyZ7gWKRbVHQmgY9eNPGCCcoh9KOsLK0ZLtFMf54l6LQBgUuXEyTTbP7pt3vvclwlPC47IkgRHAhCqR6Rhyher%2fAWOb7TioFi8eGrg10rZLvO%2bAlkr0su5yF%2bIwcg1SVCEyTTIToBTN0n9gcOYuxG04wyjgKE2QiA56XpK7dNiFdvXrZbITCtZsm8CSc9piqpXbDajdsarWAXjkX1KFW3wSx%2fs8exVzggiVZ%2bvD7h5rXK5lRMU%2bHYV3uxaAHMehxGPS0GDb9F2nY9t8Y1kEM66g01rSnbarWXowDTXU8xqqpdG14o2vfE0HXPmEeCHX%2fKYsjNR8EjvEdtqMB3picAKme1zrGIKh%2f3NX7w5pLoEgLt6SM56c1PzpTq6oqYpIitMOTeAxAlKb6c3Wjs3GBbAzJJUV8UjQjP91BJztuOGryKbHvGwQgxxbJK4ayTFKKBbahQCkA2DX7C29veJJmBQAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAN2UQU%2fCQBCF7036HyZ7gWKRbVHQmgY9eNPGCCcoh9KOsLK0ZLtFMf54l6LQBgUuXEyTTbP7pt3vvclwlPC47IkgRHAhCqR6Rhyher%2fAWOb7TioFi8eGrg10rZLvO%2bAlkr0su5yF%2bIwcg1SVCEyTTIToBTN0n9gcOYuxG04wyjgKE2QiA56XpK7dNiFdvXrZbITCtZsm8CSc9piqpXbDajdsarWAXjkX1KFW3wSx%2fs8exVzggiVZ%2bvD7h5rXK5lRMU%2bHYV3uxaAHMehxGPS0GDb9F2nY9t8Y1kEM66g01rSnbarWXowDTXU8xqqpdG14o2vfE0HXPmEeCHX%2fKYsjNR8EjvEdtqMB3picAKme1zrGIKh%2f3NX7w5pLoEgLt6SM56c1PzpTq6oqYpIitMOTeAxAlKb6c3Wjs3GBbAzJJUV8UjQjP91BJztuOGryKbHvGwQgxxbJK4ayTFKKBbahQCkA2DX7C29veJJmBQAA) **\]**
 
 ```Kusto
 let MyTrace = datatable (EventTrace:string)
@@ -454,9 +454,9 @@ MyTrace
 | project resourceName , sliceNumber , lockTime , releaseTime , previousLockTime
 ```
 
-A következő lekérdezést a nyomkövetési elemzi, és kinyeri a megfelelő értékek, használatával `kind = relaxed`. A StringConstant rendszeres karakterlánc-érték és az egyezés Könnyített: kiterjesztett oszlopok részben egyeznek meg a szükséges típusokat.
+A következő lekérdezés egy nyomkövetést elemez, és Kinyeri a megfelelő `kind = relaxed`értékeket a használatával. A StringConstant egy reguláris karakterlánc-érték, és a egyezés nyugodt: a kiterjesztett oszlopok részben megegyeznek a szükséges típusokkal.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAN2US0%2fCQBDH7036HSZ7wZpN2BYFrenRGzZG4KLxUNoRVpYu2W5REj%2b83fKw9QE1kYvppTOZx%2f%2b3MxmBGm5WQxXFCAEkkS6%2bsUA4uV5iqku%2fn2nF04ljWw%2b21Sr9PoRS86fVQPAY71BglBUpCjOZqxjDaI7BLV%2bg4CkO4ikmuUBFQUsdiTIlC7wehcz8hvl8jCrwOhSEjGdDXuQyr%2b322h5zu8Au%2fDPmM%2feeglr32ROxULjkMs%2f63xfqXJowp0WPh%2bGe78VgBzFYMwx2XAyP%2fYtpeN7PGO5BDLfRNNa0x12q7l6MA0vVHMMslW09XtnW5iLY1hssIlXon%2fE0CYom0SsmQP6IMxz1%2b7%2b7AnXQdX6TNXMIvHA9hVMgNYEEqiaQuj5StXwh04kpUNVLqup3ETsCsoMxpavSSdXyi7NrIohJ%2foJDtoRbzybcMeFQjkjJZ4x1nYVWtEPtleHjjaGmCujnVu%2fWU75tHgYAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAN2US0%2fCQBDH7036HSZ7wZpN2BYFrenRGzZG4KLxUNoRVpYu2W5REj%2b83fKw9QE1kYvppTOZx%2f%2b3MxmBGm5WQxXFCAEkkS6%2bsUA4uV5iqku%2fn2nF04ljWw%2b21Sr9PoRS86fVQPAY71BglBUpCjOZqxjDaI7BLV%2bg4CkO4ikmuUBFQUsdiTIlC7wehcz8hvl8jCrwOhSEjGdDXuQyr%2b322h5zu8Au%2fDPmM%2feeglr32ROxULjkMs%2f63xfqXJowp0WPh%2bGe78VgBzFYMwx2XAyP%2fYtpeN7PGO5BDLfRNNa0x12q7l6MA0vVHMMslW09XtnW5iLY1hssIlXon%2fE0CYom0SsmQP6IMxz1%2b7%2b7AnXQdX6TNXMIvHA9hVMgNYEEqiaQuj5StXwh04kpUNVLqup3ETsCsoMxpavSSdXyi7NrIohJ%2foJDtoRbzybcMeFQjkjJZ4x1nYVWtEPtleHjjaGmCujnVu%2fWU75tHgYAAA%3d%3d) **\]**
 
 ```Kusto
 let MyTrace = datatable (EventTrace:string)
@@ -474,24 +474,24 @@ MyTrace
 
 ## <a name="time-series-analysis"></a>Idősorozat-elemzések
 
-### <a name="make-series"></a>Gyártmány-sorozat
+### <a name="make-series"></a>sorozat készítése
 
-[**Gyártmány sorozat**](https://docs.microsoft.com/azure/kusto/query/make-seriesoperator): összesíti együtt például sorcsoportra [összefoglalója](https://docs.microsoft.com/azure/kusto/query/summarizeoperator), létrehoz egy (idő) sorozat, de vektor / értékek kombinációjának minden.
+[**make-Series**](https://docs.microsoft.com/azure/kusto/query/make-seriesoperator): összesíti a sorok csoportjait, [](https://docs.microsoft.com/azure/kusto/query/summarizeoperator)például az összesítést, de az értékek alapján minden kombinációban létrehoz egy (Time) adatsorozat-vektort.
 
-A következő lekérdezést a száma, a storm-események naponta idősorozat készletét adja vissza. A lekérdezés a három hónapos időszak, az egyes állapotokhoz hiányzó bins kitöltését az a konstans 0 mutatja be:
+A következő lekérdezés egy idősorozatot ad vissza a Storm-események napi számának megadásához. A lekérdezés az egyes állapotokhoz tartozó három hónapos időszakot fedi le, és a hiányzó raktárhelyeket kitölti a 0 konstanssal:
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUchNzE7VLU4tykwtVsizTc4vzSvR0FRISU1LLM0psTVQyM9TCC5JLCoJycxNVcjMUyhKzEtP1UhJLEktAYpoGBkYmOsaGAKRpo4CmqixrjFI1DBFUyGpEmRKSSoAazsM0n0AAAA%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUchNzE7VLU4tykwtVsizTc4vzSvR0FRISU1LLM0psTVQyM9TCC5JLCoJycxNVcjMUyhKzEtP1UhJLEktAYpoGBkYmOsaGAKRpo4CmqixrjFI1DBFUyGpEmRKSSoAazsM0n0AAAA%3d) **\]**
 
 ```Kusto
 StormEvents
 | make-series n=count() default=0 on StartTime in range(datetime(2007-01-01), datetime(2007-03-31), 1d) by State
 ```
 
-Miután létrehozott egy (idősorozat) készletét, észlelheti a rendellenes alakzatokat, szezonális mintázatokat, és sokkal több sorozat funkciókat is alkalmazhat.
+Miután létrehozta a (Time) adatsorozatot, alkalmazhatja az adatsorozat-függvényeket a rendellenes alakzatok, a szezonális mintázatok és még sok egyéb észlelésére.
 
-A következő lekérdezés kinyeri a felső három állapot, amely a legtöbb esemény volt az adott napon:
+A következő lekérdezés kinyeri az első három olyan állapotot, amely a legtöbb eseményt adott napon belül:
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2OsQoCMRBEe8F%2f2DIBAzmvsLrSLzj7EC%2brBs3mSPbkBD%2feLDYibPVmZmdGziUdn0hct5s3JH9HU7FErEDDlBdipSHgxS8PHixkgpF94VNMCJGgeLqiCp6RG1F7aw%2fGdu30Dv5ob3qhXdBwfskXRmnElZECfDtdbbgq0qJwnqEX76%2fmyCW%2ftkV1Ek9pWSwgNdOt7foAJIuybs8AAAA%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2OsQoCMRBEe8F%2f2DIBAzmvsLrSLzj7EC%2brBs3mSPbkBD%2feLDYibPVmZmdGziUdn0hct5s3JH9HU7FErEDDlBdipSHgxS8PHixkgpF94VNMCJGgeLqiCp6RG1F7aw%2fGdu30Dv5ob3qhXdBwfskXRmnElZECfDtdbbgq0qJwnqEX76%2fmyCW%2ftkV1Ek9pWSwgNdOt7foAJIuybs8AAAA%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -501,21 +501,21 @@ StormEvents
 | render timechart
 ```
 
-További információkért tekintse át a teljes listáját [sorozat funkciók](https://docs.microsoft.com/azure/kusto/query/scalarfunctions#series-processing-functions).
+További információkért tekintse át az adatsorozat- [függvények](https://docs.microsoft.com/azure/kusto/query/scalarfunctions#series-processing-functions)teljes listáját.
 
 ## <a name="advanced-aggregations"></a>Speciális aggregátumok
 
-Megismerte, egyszerű összesítés, mint **száma** és **összefoglalója**, ez a cikk elején. Ez a szakasz bemutatja a Speciális beállítások.
+Az alapszintű összesítések, például a **darabszám** és az **Összefoglalás**a jelen cikk korábbi részében szerepelnek. Ez a szakasz további speciális lehetőségeket mutat be.
 
-### <a name="top-nested"></a>top-nested
+### <a name="top-nested"></a>szigorúan beágyazott
 
-[**felső – beágyazott**](https://docs.microsoft.com/azure/kusto/query/topnestedoperator): Hierarchikus eredmények létrehozása; felső, ahol minden szintje a Lehatolás előző szintű értékek alapján.
+[**Top-nested**](https://docs.microsoft.com/azure/kusto/query/topnestedoperator): Hierarchikus legfelső szintű eredményeket hoz létre, ahol az egyes szintek részletezése az előző szint értékei alapján történik.
 
-Ez az operátor az irányítópult vizualizációs forgatókönyvek esetén, vagy ha a következőhöz hasonló kérdések megválaszolása szükséges: "A felső N értékek K1 (bizonyos összesítési használatával); keresése mindegyikük számára keresse meg, Mik azok a top-M értékek K2 (használatával egy másik összesítő); ..."
+Ez az operátor az irányítópult-vizualizációs forgatókönyvek esetében hasznos, vagy ha a következőhöz hasonló kérdéssel kell válaszolnia: "A K1 első N értékének megkeresése (néhány összesítés használatával); mindegyiknél keresse meg a K2 legfontosabb értékeit (egy másik összesítés használatával); ..."
 
-A következő lekérdezést a hierarchikus táblázatot ad vissza `State` a legfelső szinten követ `Sources`.
+A következő lekérdezés egy hierarchikus táblát ad vissza `State` , amely a legfelső szinttel `Sources`, majd ezt követi:.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjJL9DNSy0uSU1RMFLIT1MILkksSVVIqlQoLs3VcEpNz8zzSSzR1OHlQlJoDFaYX1qUTEilIUila16KT35yYklmfh6GcgDrXwk5jgAAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjJL9DNSy0uSU1RMFLIT1MILkksSVVIqlQoLs3VcEpNz8zzSSzR1OHlQlJoDFaYX1qUTEilIUila16KT35yYklmfh6GcgDrXwk5jgAAAA%3d%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -524,13 +524,13 @@ top-nested 3 of Source by sum(BeginLat),
 top-nested 1 of EndLocation by sum(BeginLat)
 ```
 
-### <a name="pivot-plugin"></a>Pivot() beépülő modul
+### <a name="pivot-plugin"></a>pivot () beépülő modul
 
-[**Pivot() beépülő modul**](https://docs.microsoft.com/azure/kusto/query/pivotplugin): Egy tábla elforgatása az egyik oszlopának egyedi értékeket kapcsolja a bemeneti tábla a kimeneti tábla több oszlopba. Az operátor elvégzi az aggregációt. Ha szüksége van rájuk minden fennmaradó oszlop értékeit a végeredmény.
+[**pivot () beépülő modul**](https://docs.microsoft.com/azure/kusto/query/pivotplugin): Elforgat egy táblát úgy, hogy a bemeneti tábla egyik oszlopának egyedi értékeit több oszlopba helyezi a kimeneti táblában. Az operátor olyan összesítéseket hajt végre, amelyeken a végső kimenetben lévő többi oszlop értékeire szükség van.
 
-A következő lekérdezés olyan szűrőt, és pivots a sorokat oszlopokra.
+A következő lekérdezés egy szűrőt alkalmaz, és a sorokat oszlopokba helyezi.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSgoys9KTS5RCC5JLEnVUQBLhFQWpILkyjNSi1IhMgrFJYlFJcXlmSUZCkqOPkoIabgOhYzEYgWl8My8FLBsalliTilIZ0FmWX6JBtgUTQDlv21NfQAAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSgoys9KTS5RCC5JLEnVUQBLhFQWpILkyjNSi1IhMgrFJYlFJcXlmSUZCkqOPkoIabgOhYzEYgWl8My8FLBsalliTilIZ0FmWX6JBtgUTQDlv21NfQAAAA%3d%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -540,13 +540,13 @@ StormEvents
 | evaluate pivot(State)
 ```
 
-### <a name="dcount"></a>DCount()
+### <a name="dcount"></a>DCount ()
 
-[**DCount()** ](https://docs.microsoft.com/azure/kusto/query/dcount-aggfunction): Egy kifejezés egyedi értékek számának becslése a csoporthoz adja vissza. Használat [ **count()** ](https://docs.microsoft.com/azure/kusto/query/countoperator) számát az összes értéket.
+[**DCount ()** ](https://docs.microsoft.com/azure/kusto/query/dcount-aggfunction): A csoportban található kifejezés különböző értékeinek becsült értékét adja vissza. Az összes érték számlálásához használja a [**Count ()** ](https://docs.microsoft.com/azure/kusto/query/countoperator) függvényt.
 
-A következő lekérdezés megszámlálja a különböző `Source` által `State`.
+A következő lekérdezési számok `Source` különböznek egymástól: `State`.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlUIzi8tSk4tVrBVSEnOL80r0YAIaCokVSoElySWpAIAFKgSBDoAAAA%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlUIzi8tSk4tVrBVSEnOL80r0YAIaCokVSoElySWpAIAFKgSBDoAAAA%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -555,11 +555,11 @@ StormEvents
 
 ### <a name="dcountif"></a>dcountif()
 
-[**dcountif()** ](https://docs.microsoft.com/azure/kusto/query/dcountif-aggfunction): A kifejezés, amelynek a predikátum kiértékeli a sorok esetében eltérő értékek számának becslése igaz értéket adja vissza.
+[**dcountif ()** ](https://docs.microsoft.com/azure/kusto/query/dcountif-aggfunction): A kifejezés azon soraihoz tartozó különböző értékek becslését adja vissza, amelyek esetében a predikátum értéke TRUE (igaz).
 
-A következő lekérdezés megszámlálja a különböző értékeket `Source` ahol `DamageProperty < 5000`.
+A következő lekérdezés a különböző értékeit `Source` számítja `DamageProperty < 5000`ki.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwNDDg5apRKC7NzU0syqxKVQjOLy1KTi1WsFVISc4vzSvJTNOACOkouCTmJqanBhTlF6QWlVQq2CiYGhgYaCokVSoElySWpAIAuk%2fTX14AAAA%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwNDDg5apRKC7NzU0syqxKVQjOLy1KTi1WsFVISc4vzSvJTNOACOkouCTmJqanBhTlF6QWlVQq2CiYGhgYaCokVSoElySWpAIAuk%2fTX14AAAA%3d) **\]**
 
 ```Kusto
 StormEvents 
@@ -567,13 +567,13 @@ StormEvents
 | summarize Sources = dcountif(Source, DamageProperty < 5000) by State
 ```
 
-### <a name="dcounthll"></a>dcount_hll()
+### <a name="dcount_hll"></a>dcount_hll()
 
-[**dcount_hll()** ](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): Kiszámítja a **dcount** HyperLogLog eredményekből (által generált [**hll**](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction) vagy [**hll_merge** ](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
+[**dcount_hll ()** ](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): Kiszámítja a **DCount** a HyperLogLog eredményekből ( [**HLL**](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction) vagy [**hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction)alapján létrehozva).
 
-A következő lekérdezést a HLL algoritmust használja a count létrehozásához.
+A következő lekérdezés a HLL algoritmus használatával állítja elő a darabszámot.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlXIyMkJSi1WsAUxNFwScxPTUwOK8gtSi0oqNRWSKhWSMvM0gksSi0pCMnNTdQwNcjUx9PumFqWnpkCMiM8FcTQgpoKVFhTlZ6UmlyikJOeX5pXEg6yB69EEAKm9wyCXAAAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlXIyMkJSi1WsAUxNFwScxPTUwOK8gtSi0oqNRWSKhWSMvM0gksSi0pCMnNTdQwNcjUx9PumFqWnpkCMiM8FcTQgpoKVFhTlZ6UmlyikJOeX5pXEg6yB69EEAKm9wyCXAAAA) **\]**
 
 ```Kusto
 StormEvents
@@ -582,13 +582,13 @@ StormEvents
 | project dcount_hll(hllMerged)
 ```
 
-### <a name="argmax"></a>arg_max()
+### <a name="arg_max"></a>arg_max()
 
-[**arg_max()** ](https://docs.microsoft.com/azure/kusto/query/arg-max-aggfunction): Egy sor megkeresi a lehető legnagyobbra növeli a kifejezés, és a egy másik kifejezés értékét adja vissza csoportban (vagy * az egész sort vissza).
+[**arg_max ()** ](https://docs.microsoft.com/azure/kusto/query/arg-max-aggfunction): Megkeresi a csoport egy olyan sorát, amely maximalizálja a kifejezést, és egy másik kifejezés (vagy *) értékét adja vissza a teljes sor visszaküldéséhez.
 
-A következő lekérdezés az idő az elmúlt elárasztó jelentés az egyes állapotokban adja vissza.
+A következő lekérdezés az utolsó özönvíz-jelentés időpontját adja vissza az egyes állapotokban.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQDzQyoLUhVsbRWU3HLy81OUQLLFpbm5iUWZVakKiUXp8bmJFRrBJYlFJSGZuak6ClqaCkmVCkCBklSQ2oKi%2fKzU5BKIgI4CkkLXvBQoA2YNAHO1S0OFAAAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQDzQyoLUhVsbRWU3HLy81OUQLLFpbm5iUWZVakKiUXp8bmJFRrBJYlFJSGZuak6ClqaCkmVCkCBklSQ2oKi%2fKzU5BKIgI4CkkLXvBQoA2YNAHO1S0OFAAAA) **\]**
 
 ```Kusto
 StormEvents
@@ -599,11 +599,11 @@ StormEvents
 
 ### <a name="makeset"></a>makeset()
 
-[**makeset()** ](https://docs.microsoft.com/azure/kusto/query/makeset-aggfunction): A csoport, amely egy kifejezés egyedi értékek tömbje dinamikus (JSON) adja vissza.
+[**makeset ()** ](https://docs.microsoft.com/azure/kusto/query/makeset-aggfunction): Egy olyan dinamikus (JSON) tömböt ad vissza, amely a kifejezés által a csoportba foglalt különböző értékek halmazát adja meg.
 
-Az alábbi lekérdezés minden esetben amikor áramlik egyes által jelentett, és létrehoz egy tömböt a készletből az eltérő értékeket ad vissza.
+A következő lekérdezés visszaadja az összes olyan időpontot, amikor az egyes állapotok elárasztják az árvizeket, és létrehoznak egy tömböt a különböző értékek készletében.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAFWLQQ6CQBAE7yb8ocNJE76wR3mA8IEFOxF1mM3siIHweAVPHqsq1bianCeOnovDiveNRuzczokIAWX9VL2WW80vkWjDQuzuwqTmGQESH8z0Y%2bPRvB2EJ3QzvuTcvmR6Z%2b8%2fUf3NH6ZkMFeAAAAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAFWLQQ6CQBAE7yb8ocNJE76wR3mA8IEFOxF1mM3siIHweAVPHqsq1bianCeOnovDiveNRuzczokIAWX9VL2WW80vkWjDQuzuwqTmGQESH8z0Y%2bPRvB2EJ3QzvuTcvmR6Z%2b8%2fUf3NH6ZkMFeAAAAA) **\]**
 
 ```Kusto
 StormEvents
@@ -614,11 +614,11 @@ StormEvents
 
 ### <a name="mv-expand"></a>mv-expand
 
-[**mv-expand**](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator): A dinamikus típusmegadású oszlop több értéket próbaidőszakában kibővíti az, hogy a gyűjteményben szereplő összes értékhez beolvas egy külön sort. Egy kibontott sorban az összes többi oszlop ismétlődik. Fontos makelist ellentéte.
+[**MV – Expand**](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator): Kibontja a többértékű gyűjtemény (eke) t egy dinamikus típusú oszlopból, hogy a gyűjtemény minden értéke külön sort kap. A kibontott sorokban lévő összes többi oszlop duplikálva van. Ez a MakeList ellentéte.
 
-A következő lekérdezést hoz létre egy csoportot, és oldalméretről bemutatása mintaadatok állít elő a **mv-bontsa ki a** képességeket.
+A következő lekérdezés létrehoz egy készletet, majd a segítségével bemutatja az **MV-Expand** képességeket.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAFWOQQ6CQAxF9yTcoWGliTcws1MPIFygyk9EKTPpVBTj4Z2BjSz%2f738v7WF06r1vD2xcp%2bCoNq9yHDFYLIsvvW5Q0JybKYCco2omqnyNTxHW7oPFckbwajFZhB%2bIsE1trNZ0gi1dpuRmQ%2baC%2bjuuthS7Fbwvi%2f%2bP8lpGvAMP7Wr3A6BceSu7AAAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAFWOQQ6CQAxF9yTcoWGliTcws1MPIFygyk9EKTPpVBTj4Z2BjSz%2f738v7WF06r1vD2xcp%2bCoNq9yHDFYLIsvvW5Q0JybKYCco2omqnyNTxHW7oPFckbwajFZhB%2bIsE1trNZ0gi1dpuRmQ%2baC%2bjuuthS7Fbwvi%2f%2bP8lpGvAMP7Wr3A6BceSu7AAAA) **\]**
 
 ```Kusto
 let FloodDataSet = StormEvents
@@ -629,13 +629,13 @@ FloodDataSet
 | mv-expand FloodReports
 ```
 
-### <a name="percentiles"></a>percentiles()
+### <a name="percentiles"></a>percentilis ()
 
-[**percentiles()** ](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): Visszaadja a megadott becsült [**legközelebbi rang PERCENTILIS**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) a lakosság kifejezés által meghatározott. Pontossága attól függ, hogy a régióban a PERCENTILIS sokaságát sűrűsége. Csak abban a környezetben, az összesítés belül használható [**összefoglalója**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator).
+[**százalékos érték ()** ](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): Egy kifejezés által meghatározott legközelebb [**rangsorolt százalékos**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) értékre vonatkozó becslést ad vissza. A pontosság a percentilis régiójában lévő populáció sűrűségét határozza meg. Csak az [**összegzésen**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator)belüli összesítés kontextusában használható.
 
-A következő lekérdezést. percentilisei storm időtartamának számítja ki.
+A következő lekérdezés kiszámítja a Storm időtartamának százalékos értékeit.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUUitKEnNS1FIKS1KLMnMz1OwVXDNSwnJzE1V0FUILkksKgGxQQrLM1KLUhHq7BQMirEI2ygYZ4CEi0tzcxOLMqtSFQpSi5KBlmXmpBZrwJTpKJjqKBgZACkgtgBiS1NNAEC7XiaYAAAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUUitKEnNS1FIKS1KLMnMz1OwVXDNSwnJzE1V0FUILkksKgGxQQrLM1KLUhHq7BQMirEI2ygYZ4CEi0tzcxOLMqtSFQpSi5KBlmXmpBZrwJTpKJjqKBgZACkgtgBiS1NNAEC7XiaYAAAA) **\]**
 
 ```Kusto
 StormEvents
@@ -645,9 +645,9 @@ StormEvents
 | summarize percentiles(duration, 5, 20, 50, 80, 95)
 ```
 
-A következő lekérdezés alapján számítja ki. percentilisei storm időtartamának állapota, és normalizálja az adatokat öt perces bins (`5m`).
+A következő lekérdezés az állapot szerint kiszámítja a Storm időtartamának százalékos értékeit, és öt perces raktárhely (`5m`) alapján normalizálja az adatmennyiséget.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAG1NSwrCMBTcC95hli1EKEpBQd31BHUvafOgAZNI8uIPD28SEBVcDDMM8%2bnZedNdyHKYz56gG5NVUNFL1s5ih86qgzaEBXqWnrPOwetEnj65PZrwx95iNWU7RGOk1w8C5avj6KLlNF64qjHcMWhbvXsCralFPmT6rZ%2fJj2lAnyh8pwWWTaKEdcKmLYul%2fgLODFs%2b4AAAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAG1NSwrCMBTcC95hli1EKEpBQd31BHUvafOgAZNI8uIPD28SEBVcDDMM8%2bnZedNdyHKYz56gG5NVUNFL1s5ih86qgzaEBXqWnrPOwetEnj65PZrwx95iNWU7RGOk1w8C5avj6KLlNF64qjHcMWhbvXsCralFPmT6rZ%2fJj2lAnyh8pwWWTaKEdcKmLYul%2fgLODFs%2b4AAAAA%3d%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -658,17 +658,17 @@ StormEvents
 | summarize percentiles(duration, 5, 20, 50, 80, 95) by State
 ```
 
-### <a name="cross-dataset"></a>Adatbázisközi adatkészlet
+### <a name="cross-dataset"></a>Több adathalmaz
 
-Ez a szakasz ismertet, amelyek lehetővé teszik, hogy az összetett lekérdezések létrehozása, adatok táblák és a lekérdezés adatbázisok és -fürtök csatlakozás elemeket.
+Ez a szakasz azokat az elemeket ismerteti, amelyekkel összetettebb lekérdezéseket hozhat létre, összekapcsolhatja az adatokat a táblák között, és lekérdezéseket végezhet az adatbázisok és a fürtök között.
 
 ### <a name="let"></a>lehetővé teszik
 
-[**lehetővé teszik**](https://docs.microsoft.com/azure/kusto/query/letstatement): Javítja a modularitás és újbóli felhasználáshoz. A **teszik** utasítás lehetővé teszi, hogy egy meglehetősen összetett kifejezést felosztása több részből, minden egyes nevét kötve, és a compose együtt a részeket. A **teszik** utasítás is használható, felhasználó által definiált függvények és -nézetek (táblák, amelyek eredményei egy új táblát kinéznie keresztül expressions) létrehozásához. Kifejezések kötelezőnek egy **teszik** utasítás táblázatos típusa, vagy a felhasználó által definiált függvény (lambdas) skaláris típusú is lehet.
+[**let**](https://docs.microsoft.com/azure/kusto/query/letstatement): Javítja a modularitást és a használatot. A **let** utasítás lehetővé teszi, hogy egy potenciálisan összetett kifejezést több részre lehessen bontani, amelyek mindegyike névvel van kötve, és ezeket a részeket együtt kell összeállítani. A **let** utasítással felhasználó által definiált függvények és nézetek hozhatók létre (kifejezések a táblákon, amelyek eredményei úgy néznek ki, mint egy új tábla). A **let** utasítás által kötött kifejezések skaláris típusúak, táblázatos típusúak vagy felhasználó által definiált függvények (lambda) lehetnek.
 
-Az alábbi példa létrehoz egy táblázatos típusú változót és annak egy későbbi kifejezésben.
+A következő példa egy táblázatos típusú változót hoz létre, és azt egy későbbi kifejezésben használja.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAMtJLVHwyUzPKMnLzEsPLskvyi1WsOXlArNcy1LzSop5uWoUyjNSi1IVwPyQyoJUBVtbBSW4LiVrXq4coDGOZYk5iXnJGakkGQPXBTIGzSUgPVn5mXkKGmhmayrk5ykElySWpIKUpGQWl2TmJZdARACul3kY0gAAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAMtJLVHwyUzPKMnLzEsPLskvyi1WsOXlArNcy1LzSop5uWoUyjNSi1IVwPyQyoJUBVtbBSW4LiVrXq4coDGOZYk5iXnJGakkGQPXBTIGzSUgPVn5mXkKGmhmayrk5ykElySWpIKUpGQWl2TmJZdARACul3kY0gAAAA%3d%3d) **\]**
 
 ```Kusto
 let LightningStorms =
@@ -684,11 +684,11 @@ LightningStorms
 
 ### <a name="join"></a>csatlakozás
 
-[**Csatlakozás**](https://docs.microsoft.com/azure/kusto/query/joinoperator): Az új tábla kialakításához, a megadott oszlopoknak az egyes táblákból egyező értékei alapján két tábla sorainak egyesítése. Kusto széles skáláját illesztési típust támogat: **fullouter**, **belső**, **innerunique**, **leftanti**, **leftantisemi **, **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter **, **rightsemi**.
+[**Csatlakozás**](https://docs.microsoft.com/azure/kusto/query/joinoperator): Egyesítse a két tábla sorait úgy, hogy az egyes táblákból a megadott oszlop (ok) megfelelő értékeivel új táblát formáljon. A Kusto az illesztési típusok teljes skáláját támogatja: **fullouter**, **Inner**, **innerunique**, **leftanti**, **leftantisemi**, **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter** , **rightsemi**.
 
-Az alábbi példa két tábla belső illesztést csatlakozik.
+A következő példa egy belső illesztéssel rendelkező két táblát illeszt be.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIULBVSEksAcKknFQN79RKq+KSosy8dB2FsMSc0lRDq5z8vHRNXq5oXi4FIFBPVNcx1IGyk9R1jJDYxjB2srqOCS9XrDUvVw7Qhkj8Nhih2wA0ydAAySgjZI4xnJMCtMQAYkuEQo1CVn5mnkJ2Zl6KbWZeXmoR0Nb8PAWgZQAFPLdO5AAAAA==) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIULBVSEksAcKknFQN79RKq+KSosy8dB2FsMSc0lRDq5z8vHRNXq5oXi4FIFBPVNcx1IGyk9R1jJDYxjB2srqOCS9XrDUvVw7Qhkj8Nhih2wA0ydAAySgjZI4xnJMCtMQAYkuEQo1CVn5mnkJ2Zl6KbWZeXmoR0Nb8PAWgZQAFPLdO5AAAAA==) **\]**
 
 ```Kusto
 let X = datatable(Key:string, Value1:long)
@@ -710,15 +710,15 @@ X
 ```
 
 > [!TIP]
-> Használat **ahol** és **projekt** operátorok csökkentése érdekében a sorok és a csatlakozás előtt, a bemeneti tábla oszlopainak számát. Ha egy tábla minden esetben kisebb, mint a másik, az legyen az illesztés bal oldali (védőeszközön) oldalán. Az oszlopok az illesztési egyezéssel ugyanazzal a névvel kell rendelkeznie. Használja a **projekt** operátor, ha szükséges, nevezze át az egyik táblázat oszlopában.
+> A és a **Project** operátorok segítségével csökkentheti a sorok és oszlopok számát a bemeneti táblákban az illesztés előtt. Ha egy tábla mindig kisebb, mint a másik, használja az illesztés bal oldali (vezetékes) oldalán. Az illesztési egyeztetés oszlopainak azonos névvel kell rendelkeznie. Ha szükséges, használja a **projekt** operátort az egyik táblában lévő oszlop átnevezéséhez.
 
 ### <a name="serialize"></a>szerializálása
 
-[**szerializálható**](https://docs.microsoft.com/azure/kusto/query/serializeoperator): A sorhalmaz, így használhatja a szerializált adatok, például átadhatók függvényt visszaadó szerializálja **row_number()** .
+[**szerializálás**](https://docs.microsoft.com/azure/kusto/query/serializeoperator): Szerializálja a sort, így olyan függvényeket használhat, amelyekben szerializált adatok, például a **row_number ()** is szükségesek.
 
-A következő lekérdezés sikeresen létrejön, mert a szerializált adatok.
+A következő lekérdezés sikeres, mert az adatszerializált.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIzi%2fNK9HQVEiqVAguSSxJBcumFmUm5gBlQZzUipLUvBSFovzy%2bLzS3KTUIgVbJI6GJgB4pV4NWgAAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIzi%2fNK9HQVEiqVAguSSxJBcumFmUm5gBlQZzUipLUvBSFovzy%2bLzS3KTUIgVbJI6GJgB4pV4NWgAAAA%3d%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -727,9 +727,9 @@ StormEvents
 | extend row_number = row_number()
 ```
 
-A sor-készlet is figyelembe veszi, ha eredménye szerializált: **rendezési**, **felső**, vagy **tartomány** operátorok, követheti **projekt**, **projekt távolléti**, **kiterjesztése**, **ahol**, **elemezni**, **mv-bontsa ki a**, vagy **igénybe** operátorok.
+A sor akkor is szerializált minősül, ha a következőkből áll: **Rendezés**, **felső**vagy **tartomány** operátorok, opcionálisan a **projekt**, a **projekt el**, a **kiterjesztés**, **hol**, **elemzés**, **MV – Expand** , vagy **vegyen** fel operátorokat.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIzi%2fNK9HQVEiqVAguSSxJBcvmF5XABRQSi5NBgqkVJal5KQpF%2beXxeaW5SalFCrZIHA1NAEGimf5iAAAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIzi%2fNK9HQVEiqVAguSSxJBcvmF5XABRQSi5NBgqkVJal5KQpF%2beXxeaW5SalFCrZIHA1NAEGimf5iAAAA) **\]**
 
 ```Kusto
 StormEvents
@@ -738,11 +738,11 @@ StormEvents
 | extend row_number = row_number()
 ```
 
-### <a name="cross-database-and-cross-cluster-queries"></a>Adatbázisközi és a fürt közötti lekérdezéseket.
+### <a name="cross-database-and-cross-cluster-queries"></a>Adatbázisok közötti és fürtök közötti lekérdezések
 
-[Adatbázisközi és a fürt közötti lekérdezések](https://docs.microsoft.com/azure/kusto/query/cross-cluster-or-database-queries): Úgy lekérdezheti, ha egy adatbázis ugyanazon a fürtön, hivatkozó `database("MyDatabase").MyTable`. Úgy lekérdezheti, ha egy adatbázis egy távoli fürtön rá, `cluster("MyCluster").database("MyDatabase").MyTable`.
+[Adatbázisok közötti és fürtök közötti lekérdezések](https://docs.microsoft.com/azure/kusto/query/cross-cluster-or-database-queries): Ugyanazon a fürtön lévő adatbázis lekérdezéséhez hivatkozva `database("MyDatabase").MyTable`kell lennie a következőre:. Egy távoli fürtön lévő adatbázis lekérdezéséhez hivatkozni kell rá `cluster("MyCluster").database("MyDatabase").MyTable`a következőre:.
 
-A következő lekérdezés az egyik fürtről nevezik, és lekéri az adatokat `MyCluster` fürt. A lekérdezés futtatására használja a saját fürt neve és az adatbázis nevét.
+A következő lekérdezés az egyik fürtből van meghívva, és `MyCluster` a fürt adatait kérdezi le. A lekérdezés futtatásához használja a saját fürt nevét és az adatbázis nevét.
 
 ```Kusto
 cluster("MyCluster").database("Wiki").PageViews
@@ -750,17 +750,17 @@ cluster("MyCluster").database("Wiki").PageViews
 | take 1000;
 ```
 
-### <a name="user-analytics"></a>A felhasználói elemzéséhez
+### <a name="user-analytics"></a>Felhasználói elemzés
 
-Ez a szakasz tartalmazza az elemeket, és a lekérdezések, amelyek bemutatják, mennyire egyszerű is Kusto a felhasználói viselkedés elemzését.
+Ez a szakasz olyan elemeket és lekérdezéseket tartalmaz, amelyek azt mutatják be, hogy milyen egyszerű a felhasználói viselkedések elemzése a Kusto-ben.
 
-### <a name="activitycountsmetrics-plugin"></a>activity_counts_metrics beépülő modul
+### <a name="activity_counts_metrics-plugin"></a>activity_counts_metrics beépülő modul
 
-[**activity_counts_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/activity-counts-metrics-plugin): Kiszámítja a hasznos tevékenységi metrikák (értékek teljes száma, eltérők darabszáma értékek, új értékeket darabszáma és összesített eltérők darabszáma). Metrikák kiszámítása minden egyes időtartomány, majd képest, és összesítve, és az összes korábbi időablakokat.
+[**activity_counts_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/activity-counts-metrics-plugin): Kiszámítja a hasznos tevékenység mérőszámait (a teljes darabszámot, a különböző értékek darabszámát, az új értékek különböző számát és az összesített eltérő darabszámot). A rendszer minden egyes időablakra kiszámítja a metrikákat, és összehasonlítja őket, és az összes korábbi időpontra összesíti a-t és a-t.
 
-A következő lekérdezés elemzi a felhasználói bevezetésére szerint kiszámításának napi tevékenységek számát.
+A következő lekérdezés a napi tevékenységek számának kiszámításával elemzi a felhasználók bevezetését.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAJXSPQvCMBAG4L3Q%2f5CtFlLoFyiVDn4M6mqdREpsggTaKs1VEfzxXm0LDiEimcJz3CW8VwogClgDKWcgQFZiEvrB1PNnnh%2b4c9sqsUDUXMPxyA9Z8%2bsjDfhwz0hKsBzPuRSTgxLNlicKGllfKMmwBw6sbsnY0bWto205C4cS3Rso2tpgO4MtDbbSWvixzGD6eb1ttBYZev42%2fbzI8L%2fe9n9b3NkJQ8xs60XEnZUt1hBWgLxLeObFta1B5ZXAKAs1BPuVKO03iXb7gp36tXDfExVB%2f2ICAAA%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAJXSPQvCMBAG4L3Q%2f5CtFlLoFyiVDn4M6mqdREpsggTaKs1VEfzxXm0LDiEimcJz3CW8VwogClgDKWcgQFZiEvrB1PNnnh%2b4c9sqsUDUXMPxyA9Z8%2bsjDfhwz0hKsBzPuRSTgxLNlicKGllfKMmwBw6sbsnY0bWto205C4cS3Rso2tpgO4MtDbbSWvixzGD6eb1ttBYZev42%2fbzI8L%2fe9n9b3NkJQ8xs60XEnZUt1hBWgLxLeObFta1B5ZXAKAs1BPuVKO03iXb7gp36tXDfExVB%2f2ICAAA%3d) **\]**
 
 ```Kusto
 let start=datetime(2017-08-01);
@@ -788,13 +788,13 @@ T
 window)
 ```
 
-### <a name="activityengagement-plugin"></a>activity_engagement beépülő modul
+### <a name="activity_engagement-plugin"></a>activity_engagement beépülő modul
 
-[**activity_engagement beépülő modul**](https://docs.microsoft.com/azure/kusto/query/activity-engagement-plugin): Tevékenység engagement arány keresztül egy idővonalon csúszóablakban azonosító oszlop alapján számítja ki. **activity_engagement beépülő modul** aktív felhasználók Naponta WAU és (napi, heti és havi aktív felhasználók) MAU kiszámításához használható.
+[**activity_engagement beépülő modul**](https://docs.microsoft.com/azure/kusto/query/activity-engagement-plugin): Az ID oszlop alapján kiszámítja a tevékenységek bevonási arányát egy csúszó idősor-ablakban. a **activity_engagement beépülő modul** használható Dau, WAU és Mau (napi, heti és havi aktív felhasználók) kiszámításához.
 
-A következő lekérdezés olyan alkalmazást, naponta, hetente, az alkalmazás használatával egy 7 napos mozgó időablak az egyedi felhasználók teljes képest egyedi felhasználók teljes aránya adja vissza.
+A következő lekérdezés a teljes számú felhasználó arányát adja vissza egy alkalmazással napi rendszerességgel az alkalmazás hetente, egy mozgó hét napján.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAG1RQWrDMBC8G%2fyHvUVOHGy1lByKD6GBviDkUIoR1tpVsS0jr0MCeXxXiigpVAiBVjOzM6uigHcc0SlCcGrUdgCtSIFtYZnRgWrInA0ZnNOkR4J6JuUIKo9CMgOKp1LutqXknb1GDI76P8RzQHCXDqHW6gqt43ZRkeydNxNOIHWa3AAv5Ctei2xvx06IQNtGTlZInT0AHQN9BpFt5EO59kHmKvQVUUivX8q1y3L4c9%2fIks%2bt5LoMwsMZLxMrgtHVXcb7pOuEthWemEFvBkPARL%2fSpCjgTfXN0vuBHvbH4rQ%2fsikyNjg6q37xL3GsV47cqQ4HHEl8rIxefeZhNHmMmIehsB2dp8nunnZy9hsbiriDWuqTWqpfxdBsLb2ZGzhm8y%2f6b2i%2bWO8HLFcMGe8BAAA%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAG1RQWrDMBC8G%2fyHvUVOHGy1lByKD6GBviDkUIoR1tpVsS0jr0MCeXxXiigpVAiBVjOzM6uigHcc0SlCcGrUdgCtSIFtYZnRgWrInA0ZnNOkR4J6JuUIKo9CMgOKp1LutqXknb1GDI76P8RzQHCXDqHW6gqt43ZRkeydNxNOIHWa3AAv5Ctei2xvx06IQNtGTlZInT0AHQN9BpFt5EO59kHmKvQVUUivX8q1y3L4c9%2fIks%2bt5LoMwsMZLxMrgtHVXcb7pOuEthWemEFvBkPARL%2fSpCjgTfXN0vuBHvbH4rQ%2fsikyNjg6q37xL3GsV47cqQ4HHEl8rIxefeZhNHmMmIehsB2dp8nunnZy9hsbiriDWuqTWqpfxdBsLb2ZGzhm8y%2f6b2i%2bWO8HLFcMGe8BAAA%3d) **\]**
 
 ```Kusto
 // Generate random data of user activities
@@ -812,15 +812,15 @@ range _day from _start to _end step 1d
 ```
 
 > [!TIP]
-> Aktív felhasználók Naponta/MAU kiszámításakor, módosítsa a végfelhasználók adatokat és a mozgó ablak időszak (OuterActivityWindow).
+> A DAU/MAU kiszámításakor módosítsa a befejezési és a áthelyezési időszakot (OuterActivityWindow).
 
-### <a name="activitymetrics-plugin"></a>activity_metrics beépülő modul
+### <a name="activity_metrics-plugin"></a>activity_metrics beépülő modul
 
-[**activity_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin): Hasznos tevékenységi metrikák (értékek eltérők száma, új értékeket, megtartási aránya és lemorzsolódási rátához darabszáma), és az előző időszak ablak az aktuális időszak ablak alapján számítja ki.
+[**activity_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin): Kiszámítja a hasznos tevékenység mérőszámait (eltérő számú értékeket, az új értékek különböző számát, a megőrzési arányt és a forgalom arányát) a jelenlegi időszak ablak és az előző időszak ablaka alapján.
 
-A következő lekérdezést egy adott adatkészlet és a megőrzési díjaival számítja ki.
+A következő lekérdezés kiszámítja egy adott adatkészlet adatváltozási és adatmegőrzési arányát.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAG2SwW7CMAyG70i8g2%2bk0KoNE%2bIwscsOe4hpqqLGQFjaVKkLVNrDLw7RxjRyqBTr%2fz%2f3t1OW8IYdekUIXnXataAVKXB7GAf0oBoyZ0MGh%2fnMIkE9kPIEO1YhmRbFupLbopJFtc6ekwY7%2fV%2bxKZ4kK0KXA0Kt1QR7H9olIrmbbyDsQer57AvwSlxhFjnruoMQ0VYkT1ZKnd0JfRByBpGt5F255iDDLvYVCaSXm2rpsxz%2b3FfrKnwLGeoygtszXvtABKN3Nwz%2fJ009ur1gYwbWtIZAVvGw53JEn%2fK9PJwSi3rvTthQlOWBPp%2bVJbwq24yWN3FB%2fLQTeAwByLgOeD8x0lnZkRVpL1PdInnTDOJ9YfTiI0%2fE24DyONIctvpB0x94zfBlSJBDcxz97509PgDCM%2bAMzTEgvwEO44wSMAIAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAG2SwW7CMAyG70i8g2%2bk0KoNE%2bIwscsOe4hpqqLGQFjaVKkLVNrDLw7RxjRyqBTr%2fz%2f3t1OW8IYdekUIXnXataAVKXB7GAf0oBoyZ0MGh%2fnMIkE9kPIEO1YhmRbFupLbopJFtc6ekwY7%2fV%2bxKZ4kK0KXA0Kt1QR7H9olIrmbbyDsQer57AvwSlxhFjnruoMQ0VYkT1ZKnd0JfRByBpGt5F255iDDLvYVCaSXm2rpsxz%2b3FfrKnwLGeoygtszXvtABKN3Nwz%2fJ009ur1gYwbWtIZAVvGw53JEn%2fK9PJwSi3rvTthQlOWBPp%2bVJbwq24yWN3FB%2fLQTeAwByLgOeD8x0lnZkRVpL1PdInnTDOJ9YfTiI0%2fE24DyONIctvpB0x94zfBlSJBDcxz97509PgDCM%2bAMzTEgvwEO44wSMAIAAA%3d%3d) **\]**
 
 ```Kusto
 // Generate random data of user activities
@@ -839,13 +839,13 @@ range _day from _start to _end step 1d
 | render timechart
 ```
 
-### <a name="newactivitymetrics-plugin"></a>new_activity_metrics beépülő modul
+### <a name="new_activity_metrics-plugin"></a>new_activity_metrics beépülő modul
 
-[**new_activity_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin): Hasznos tevékenységi metrikák (értékek eltérők száma, új értékeket, megtartási aránya és lemorzsolódási rátához darabszáma) kiszámítja az új felhasználók kohorsz. Ez a beépülő modul koncepciójuk hasonló [**activity_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin), azonban az új felhasználók összpontosít.
+[**new_activity_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin): Kiszámítja a hasznos tevékenység mérőszámait (eltérő számú értékek, az új értékek különböző száma, a megőrzési arány és a forgalom arányát) az új felhasználók kohorsza számára. A beépülő modul fogalma hasonló a [**activity_metrics beépülő modulhoz**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin), de az új felhasználókra koncentrál.
 
-A következő lekérdezést egy megőrzési és adatváltozás aránya egy over-hét hét ablak kiszámítja az új felhasználók kohorsz (az első héten a érkező felhasználók).
+A következő lekérdezés kiszámítja a megőrzési és a adatváltozási arányt az új felhasználók kohorsz (az első héten érkezett felhasználók) egy hétre felhasználva.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAG1Ry27DIBC8W%2fI%2f7C04wbJJFeVQ5VapP9BbVVnIrGMaGyy8eVjqxxcwh1QqBx7LzCwzVBW8o0EnCcFJo%2bwISpIE28F1RgeyJX3TpHHOswEJmpmkIzgFFJIeke1rcSzrQ1mL4jVh0Kj%2fEC8R4bucEd7kAp3z3ZIg2ZU2E04gVJ79AD4oVIIU2cGaM2OBVSZKUQlVPOGcxwUHrNiJp3ITbMyn2JUlHbU91FtXcPhz3u1rP5fC10UUHm%2f4mLwiaHVaZcIzaZnQdiwQCxj0qAlEHUeeVRV8yAuCNcMC1CN02s0Ed8QLtLa33igbpK9M0skRCd3q4CaHa%2fgBg%2fcmJb40%2ft7pdmafG602XzxExpN3HsPicFQ8z1IcQWhy9htbisk2EU92XZ1vZkhb04Sv5tD2V7fufwFYtolnAgIAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAG1Ry27DIBC8W%2fI%2f7C04wbJJFeVQ5VapP9BbVVnIrGMaGyy8eVjqxxcwh1QqBx7LzCwzVBW8o0EnCcFJo%2bwISpIE28F1RgeyJX3TpHHOswEJmpmkIzgFFJIeke1rcSzrQ1mL4jVh0Kj%2fEC8R4bucEd7kAp3z3ZIg2ZU2E04gVJ79AD4oVIIU2cGaM2OBVSZKUQlVPOGcxwUHrNiJp3ITbMyn2JUlHbU91FtXcPhz3u1rP5fC10UUHm%2f4mLwiaHVaZcIzaZnQdiwQCxj0qAlEHUeeVRV8yAuCNcMC1CN02s0Ed8QLtLa33igbpK9M0skRCd3q4CaHa%2fgBg%2fcmJb40%2ft7pdmafG602XzxExpN3HsPicFQ8z1IcQWhy9htbisk2EU92XZ1vZkhb04Sv5tD2V7fufwFYtolnAgIAAA%3d%3d) **\]**
 
 ```Kusto
 // Generate random data of user activities
@@ -861,13 +861,13 @@ range Day from _start to _end step 1d
 | project from_Day, to_Day, retention_rate, churn_rate
 ```
 
-### <a name="sessioncount-plugin"></a>session_count beépülő modul
+### <a name="session_count-plugin"></a>session_count beépülő modul
 
-[**session_count beépülő modul**](https://docs.microsoft.com/azure/kusto/query/session-count-plugin): Kiszámítja az azonosító oszlop alapján keresztül ütemterv munkamenetek száma.
+[**session_count beépülő modul**](https://docs.microsoft.com/azure/kusto/query/session-count-plugin): Az ID oszlop alapján számítja ki a munkamenetek számát az idősoron.
 
-A következő lekérdezés visszaadja a munkamenetek száma. A munkamenet aktív, ha a felhasználói azonosító megjelenik legalább egyszer egy 100-időszeletek időkeretét közben a munkamenet meg visszaírt ablak 41 időszeletek számít.
+A következő lekérdezés a munkamenetek számát adja vissza. A munkamenet akkor minősül aktívnak, ha egy felhasználói azonosító 100 időkereten belül legalább egyszer megjelenik, míg a munkamenet-visszatekintő ablak a 41-Time bővítőhely.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAFWPQYvCQAyF74X%2bh3dZUCjYgfUgMkcP3r2XoZPqaM3INK4u7I%2ffzOwiNQRC8pKPl5EEnXfiYJEcHwmHcKUxMGFI8QoDidhoYBK6wdTVD%2bgpxB5dd6FvPSuzcwyMS2BvAzMlLP5gez%2fDrNt%2fCN4Z1iwRua5Kk2GPE6WZkY%2bMsRZt1m4pnqmXl9qouK2r1Qo75cUB5RlPQ%2bAgoWDzpPj%2bcuPdCWGiaVKp6%2bOdZbH3zYxmNFuNUhp8mmU%2bTWpWv8or%2fckl%2bQXutT48NwEAAA%3d%3d) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAFWPQYvCQAyF74X%2bh3dZUCjYgfUgMkcP3r2XoZPqaM3INK4u7I%2ffzOwiNQRC8pKPl5EEnXfiYJEcHwmHcKUxMGFI8QoDidhoYBK6wdTVD%2bgpxB5dd6FvPSuzcwyMS2BvAzMlLP5gez%2fDrNt%2fCN4Z1iwRua5Kk2GPE6WZkY%2bMsRZt1m4pnqmXl9qouK2r1Qo75cUB5RlPQ%2bAgoWDzpPj%2bcuPdCWGiaVKp6%2bOdZbH3zYxmNFuNUhp8mmU%2bTWpWv8or%2fckl%2bQXutT48NwEAAA%3d%3d) **\]**
 
 ```Kusto
 let _data = range Timeline from 1 to 9999 step 1
@@ -881,13 +881,13 @@ _data
 | render linechart
 ```
 
-### <a name="funnelsequence-plugin"></a>funnel_sequence beépülő modul
+### <a name="funnel_sequence-plugin"></a>funnel_sequence beépülő modul
 
-[**funnel_sequence beépülő modul**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-plugin): Kiszámítja a felhasználók, akik állapotok; egy feladatütemezés végrehajtása darabszáma előző és a következő állapotok vezettek, vagy a feladatütemezés követte elosztását mutatja.
+[**funnel_sequence beépülő modul**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-plugin): Kiszámítja azoknak a felhasználóknak a különböző számát, akik az állapotok sorát vették igénybe; Megjeleníti a korábbi és a következő állapotok eloszlását, amelyek a sorozatot követték vagy követték.
 
-A következő lekérdezés jeleníti meg, milyen esemény előtt és után tornádó eseményeit a 2007 történik.
+A következő lekérdezés azt mutatja be, hogy milyen esemény történik az összes tornádó esemény előtt és után a 2007-ben.
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAGWOPYvCQBCG%2b0D%2bw3QmEEmieIqNVQrBRgxYiMhcdqKLyWzcnQiCP95V70DuYIrh5Xk%2f0hRWxpw1H8EwbMTYtrgSiwMnKNqJrtw8DNIU1vkcticUOGHXETv4ptpYgtJYRmWAnrbFGx39QbEWsv%2fIj7YwuHsZmx6FoO6ZqTk4uvTEFUVFp51RtFSJH4hWSt1SAsqj4r9olGXTYZb7i5Mw%2bJRnvzLkKhl%2fTXzAq668dc%2bAG2Orq2g3%2bBk22MfxA23MLGQQAQAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAGWOPYvCQBCG%2b0D%2bw3QmEEmieIqNVQrBRgxYiMhcdqKLyWzcnQiCP95V70DuYIrh5Xk%2f0hRWxpw1H8EwbMTYtrgSiwMnKNqJrtw8DNIU1vkcticUOGHXETv4ptpYgtJYRmWAnrbFGx39QbEWsv%2fIj7YwuHsZmx6FoO6ZqTk4uvTEFUVFp51RtFSJH4hWSt1SAsqj4r9olGXTYZb7i5Mw%2bJRnvzLkKhl%2fTXzAq668dc%2bAG2Orq2g3%2bBk22MfxA23MLGQQAQAA) **\]**
 
 ```Kusto
 // Looking on StormEvents statistics:
@@ -897,13 +897,13 @@ StormEvents
 | evaluate funnel_sequence(EpisodeId, StartTime, datetime(2007-01-01), datetime(2008-01-01), 1d,365d, EventType, dynamic(['Tornado']))
 ```
 
-### <a name="funnelsequencecompletion-plugin"></a>funnel_sequence_completion beépülő modul
+### <a name="funnel_sequence_completion-plugin"></a>funnel_sequence_completion beépülő modul
 
-[**funnel_sequence_completion beépülő modul**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-completion-plugin): Kiszámítja a tölcsér befejezett feladatütemezési lépések belül különböző időszakokra.
+[**funnel_sequence_completion beépülő modul**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-completion-plugin): Kiszámítja a befejezett sorszámú lépések tölcsérét a különböző időszakokon belül.
 
-A következő lekérdezés ellenőrzi a feladatütemezés, a befejezési tölcsér: `Hail -> Tornado -> Thunderstorm -> Wind` az egy órás, négy óra és a egy nap "teljes" időtartama (`[1h, 4h, 1d]`).
+A következő lekérdezés ellenőrzi a folyamat befejezési tölcsérét: `Hail -> Tornado -> Thunderstorm -> Wind` egy óra "általános" idején, négy órát és egy napot (`[1h, 4h, 1d]`).
 
-**\[** [**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12QTYvCMBCG74L/YW6tkIV2XT9g8SjsnlvwICKhM9JAOqlJqrj4402CW0RIIB/PPLwzmjwcnZfWwwZQevKqo/yzKFYfRRnW7Hs60ZEhxjdi/UZcFaO5VuqPAjhfLvD/w9F5IG7iM95YdqrJ99mPVDoTkNXGskSTju3ASNZ5Y7t43wVhdhj9PVll0L1aylbAV9glJqyKldsLsXfTyR3oIvUQAsNpYCY95jg2puuDUhnOt71yBukXBVRxCnVoTjwnIlLX4rUzAUlf3/pEPYViDDd7AOyqowFQAQAA) **\]**
+**\[** [**Kattintson ide a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12QTYvCMBCG74L/YW6tkIV2XT9g8SjsnlvwICKhM9JAOqlJqrj4402CW0RIIB/PPLwzmjwcnZfWwwZQevKqo/yzKFYfRRnW7Hs60ZEhxjdi/UZcFaO5VuqPAjhfLvD/w9F5IG7iM95YdqrJ99mPVDoTkNXGskSTju3ASNZ5Y7t43wVhdhj9PVll0L1aylbAV9glJqyKldsLsXfTyR3oIvUQAsNpYCY95jg2puuDUhnOt71yBukXBVRxCnVoTjwnIlLX4rUzAUlf3/pEPYViDDd7AOyqowFQAQAA) **\]**
 
 ```Kusto
 let _start = datetime(2007-01-01);
@@ -915,14 +915,14 @@ StormEvents
 | evaluate funnel_sequence_completion(EpisodeId, StartTime, _start, _end, _windowSize, EventType, _sequence, _periods)
 ```
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkciók
 
-Ez a szakasz ismertet [ **funkciók**](https://docs.microsoft.com/azure/kusto/query/functions): újrafelhasználható, amelyek a kiszolgálón tárolt lekérdezések. Lekérdezések és egyéb funkciók (rekurzív funkciók nem támogatottak) funkciókat is hivatkozhat.
+Ez a szakasz [](https://docs.microsoft.com/azure/kusto/query/functions)a függvényeket tartalmazza: a kiszolgálón tárolt újrafelhasználható lekérdezések. A függvényeket lekérdezések és egyéb függvények is meghívhatják (a rekurzív függvények nem támogatottak).
 
 > [!NOTE]
-> A csak olvasható súgófürtben függvények nem hozhatók létre. Ez a rész a saját tesztfürt használja.
+> A Súgó fürtön nem hozhatók létre függvények, amely csak olvasható. Ehhez a részhez használjon saját tesztelési fürtöt.
 
-Az alábbi példa létrehoz egy függvényt, amely egy állam neve (`MyState`) argumentumként.
+A következő példa egy olyan függvényt hoz létre, amely egy`MyState`állapot nevét () argumentumként veszi fel.
 
 ```Kusto
 .create function with (folder="Demo")
@@ -933,14 +933,14 @@ StormEvents
 }
 ```
 
-Az alábbi példa meghívja egy függvény, amely az adatok beolvasása a Texas állapota.
+A következő példa egy függvényt hív meg, amely a Texas államnak szóló adatmennyiséget kéri le.
 
 ```Kusto
 MyFunction ("Texas")
 | summarize count()
 ```
 
-A következő példa törli a függvényt, amely az első lépésben jött létre.
+A következő példa törli az első lépésben létrehozott függvényt.
 
 ```Kusto
 .drop function MyFunction
@@ -948,4 +948,4 @@ A következő példa törli a függvényt, amely az első lépésben jött létr
 
 ## <a name="next-steps"></a>További lépések
 
-[Kusto lekérdezési nyelv leírása](https://aka.ms/kustolangref)
+[Kusto lekérdezési nyelvi referenciája](https://aka.ms/kustolangref)

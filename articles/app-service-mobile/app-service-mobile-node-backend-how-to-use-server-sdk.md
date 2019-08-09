@@ -1,6 +1,6 @@
 ---
-title: A Node.js háttérrendszeri kiszolgáló SDK használata a Mobile Apps-alkalmazáshoz |} A Microsoft Docs
-description: Megtudhatja, hogyan használható a Node.js háttérrendszeri kiszolgáló SDK az Azure App Service Mobile Apps a.
+title: A Node. js háttérrendszer-kiszolgáló SDK használata a Mobile Appshoz | Microsoft Docs
+description: Megtudhatja, hogyan dolgozhat a Azure App Service Mobile Apps Node. js-alapú háttér-kiszolgálói SDK-val.
 services: app-service\mobile
 documentationcenter: ''
 author: elamalani
@@ -14,61 +14,61 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 831f6b4bdc99e63859b390f8a9bb88d74301284e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6eaaeba8a36bcba8134d605889185fb8827dd05c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128100"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851191"
 ---
-# <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>A Mobile Apps Node.js SDK használata
+# <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Az Mobile Apps Node. js SDK használata
 
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
 
-Ez a cikk részletes információkat nyújt, és használata a Node.js-példák az Azure App Service Mobile Apps funkcióját a háttéralkalmazás.
+Ez a cikk részletes információkat és példákat tartalmaz, amelyek bemutatják, hogyan használható a Node. js háttérrendszer a Azure App Service Mobile Apps szolgáltatásában.
 
 ## <a name="Introduction"></a>Bevezetés
 
-A Mobile Apps lehetővé teszi, hogy mobileszközökre optimalizált adatelérési webes API hozzáadása egy webalkalmazáshoz. A Mobile Apps SDK-t az ASP.NET és a Node.js webes alkalmazások biztosítunk. Az SDK biztosítja a következő műveleteket:
+A Mobile Apps lehetővé teszi a Mobile-optimalizált adatelérési webes API-k egy webalkalmazáshoz való hozzáadását. A Mobile Apps SDK a ASP.NET és a Node. js webalkalmazásokhoz van megadva. Az SDK a következő műveleteket biztosítja:
 
-* Tábla műveletek (olvassa el, beszúrása, frissítése és törlése) az adatok eléréséhez
+* Táblázatos műveletek (olvasási, beszúrási, frissítési, törlési) adatokhoz való hozzáféréshez
 * Egyéni API-műveletek
 
-Mindkét művelet összes Identitásszolgáltatók, amelyek az Azure App Service lehetővé teszi, hogy egységes a hitelesítéshez. Ezek a szolgáltatók közé tartozik a közösségi identitásszolgáltató, például Facebook, Twitter, Google, és a Microsoft, valamint az Azure Active Directory vállalati identitás.
+Mindkét művelet biztosítja a hitelesítést a Azure App Service összes olyan identitás-szolgáltatónál, amely lehetővé teszi. Ezek a szolgáltatók olyan közösségi identitás-szolgáltatókat foglalnak magukban, mint a Facebook, a Twitter, a Google és a Microsoft, valamint Azure Active Directory a vállalati identitáshoz.
 
-Szemléltető példák kereséséhez az egyes használati esetekhez a [minták könyvtárát a Githubon].
+Az egyes használati esetekhez mintákat a GitHubon található [Példák könyvtára a GitHubon]talál.
 
 ## <a name="supported-platforms"></a>Támogatott platformok
 
-A Mobile Apps Node.js SDK támogatja a jelenlegi LTS verzió, csomópont és újabb verziók. A legújabb LTS verzióját jelenleg csomópont v4.5.0. Csomópont más verzióiban előfordulhat, hogy működik, de nem támogatottak.
+A Mobile Apps Node. js SDK támogatja a Node és újabb verziók jelenlegi LTS-kiadását. Jelenleg a legújabb LTS-verzió a Node v 4.5.0. A csomópont más verziói is működhetnek, de nem támogatottak.
 
-A Mobile Apps Node.js SDK két adatbázis-illesztőprogram támogatja: 
+A Mobile Apps Node. js SDK két adatbázis-illesztőprogramot támogat: 
 
-* A csomópont-mssql-illesztőprogram támogatja az Azure SQL Database és a helyi SQL Server-példányokat.  
-* A sqlite3 illesztőprogram csak egyetlen példányán SQLite-adatbázis támogatja.
+* A Node-MSSQL illesztőprogram támogatja a Azure SQL Database és a helyi SQL Server példányokat.  
+* A sqlite3-illesztőprogram csak egyetlen példányon támogatja az SQLite-adatbázisokat.
 
-### <a name="howto-cmdline-basicapp"></a>Hozzon létre egy alapszintű Node.js-háttérrendszer a parancssor használatával
+### <a name="howto-cmdline-basicapp"></a>Alapszintű Node. js-háttér létrehozása a parancssor használatával
 
-Minden Mobile Apps Node.js háttérrendszer ExpressJS alkalmazást indítja el. ExpressJS népszerű webes szolgáltatás keretében elérhető, a node.js-hez. Létrehozhat egy alapszintű [Express] alkalmazás a következőképpen:
+Minden Mobile Apps Node. js-háttér ExpressJS-alkalmazásként indul el. A ExpressJS a Node. js-hez elérhető legnépszerűbb webszolgáltatás-keretrendszer. Alapszintű [Express] alkalmazást a következőképpen hozhat létre:
 
-1. Egy parancs vagy a PowerShell-ablakot hozzon létre egy könyvtárat a projekthez:
+1. A parancs vagy a PowerShell ablakban hozzon létre egy könyvtárat a projekthez:
 
         mkdir basicapp
 
-1. Futtatás `npm init` inicializálása a csomag szerkezete:
+1. Futtatás `npm init` a csomag szerkezetének inicializálásához:
 
         cd basicapp
         npm init
 
-   A `npm init` parancs kéri a projekt inicializálása kérdésekre. A példa kimenet látható:
+   A `npm init` parancs kérdéseket kér a projekt inicializálásához. Lásd a következő példában szereplő kimenetet:
 
-   ![Az npm init kimenet][0]
+   ![A NPM init kimenete][0]
 
-1. Telepítse a `express` és `azure-mobile-apps` az npm-adattárból könyvtárak:
+1. Telepítse a `express` és `azure-mobile-apps` a kódtárakat a NPM adattárból:
 
         npm install --save express azure-mobile-apps
 
-1. Hozzon létre egy app.js fájlban az alapvető mobileszköz kiszolgáló megvalósításához:
+1. Hozzon létre egy app. js fájlt az alapszintű mobil kiszolgáló megvalósításához:
 
     ```javascript
     var express = require('express'),
@@ -87,42 +87,42 @@ Minden Mobile Apps Node.js háttérrendszer ExpressJS alkalmazást indítja el. 
     app.listen(process.env.PORT || 3000);
     ```
 
-Ezt az alkalmazást a mobileszközökre optimalizált webes API-t hoz létre egyetlen végpontot (`/tables/TodoItem`), amely az alapul szolgáló SQL-adattár nem hitelesített hozzáférést biztosít a dinamikus séma használatával. Ez ideális az ügyféloldali kódtár rövid útmutatók a következő:
+Ez az alkalmazás egy olyan Mobile-optimalizált webes API-t hoz létre`/tables/TodoItem`egyetlen végponttal (), amely nem hitelesített hozzáférést biztosít egy mögöttes SQL-adattárhoz dinamikus séma használatával. Ez az ügyféloldali kódtár gyors üzembe helyezéséhez használható:
 
-* [Android ügyfél a rövid útmutató]
+* [Android-ügyfél rövid útmutatója]
 * [Apache Cordova-ügyfél gyors üzembe helyezés]
-* [iOS-es ügyfél a rövid útmutató]
-* [Windows Store-ügyfél a rövid útmutató]
-* [Xamarin.iOS Client quickstart]
+* [iOS-ügyfél rövid útmutatója]
+* [Windows áruházbeli ügyfél rövid útmutatója]
+* [Xamarin. iOS-ügyfél rövid útmutatója]
 * [Xamarin.Android Client quickstart]
-* [Xamarin.Forms Client quickstart]
+* [Xamarin. Forms-ügyfél rövid útmutatója]
 
-Ez a alapvető alkalmazás találja a kódot a [basicapp minta a Githubon].
+Az alapszintű alkalmazás kódját a GitHubon található [basicapp-minta a GitHubon]-mintában találja.
 
-### <a name="howto-vs2015-basicapp"></a>Egy Node.js-háttérrendszer létrehozása a Visual Studio 2015 használatával
+### <a name="howto-vs2015-basicapp"></a>Node. js-háttér létrehozása a Visual Studio 2015 használatával
 
-Visual Studio 2015-bővítményt az ide Node.js-alkalmazások fejlesztéséhez szükséges. Először telepítse a [1.1 node.js-eszközök a Visual Studióhoz]. Amikor befejezi a telepítést, hozzon létre egy expressz 4.x-es alkalmazás:
+A Visual Studio 2015 használatához bővítmény szükséges a Node. js-alkalmazások fejlesztéséhez az IDE-n belül. Az indításhoz telepítse a [Node. js-eszközök a Visual studióhoz 1,1]. A telepítés befejezése után hozzon létre egy Express 4. x alkalmazást:
 
-1. Nyissa meg a **új projekt** párbeszédpanel (a **fájl** > **új** > **projekt**).
-1. Bontsa ki a **sablonok** > **JavaScript** > **Node.js**.
-1. Válassza ki **alapszintű Azure Node.js Express 4-alkalmazás**.
+1. Nyissa meg az **új projekt** párbeszédpanelt (a **fájl** > **új** > **projektből**).
+1. Bontsa ki a **sablonok** > **JavaScript** > **Node. js fájlt**.
+1. Válassza az alapszintű **Azure Node. js Express 4 alkalmazást**.
 1. Adja meg a projekt nevét. Kattintson az **OK** gombra.
 
-   ![A Visual Studio 2015-ben új projekt][1]
-1. Kattintson a jobb gombbal a **npm** csomópontra, és válassza **új telepítése az npm csomagok**.
-1. Akkor lehet, hogy frissítenie kell az npm-katalógus az első Node.js-alkalmazás létrehozása után. Válassza ki **frissítése** szükség esetén.
-1. Adja meg **azure-mobilalkalmazások** kifejezést a keresőmezőbe. Válassza ki a **azure-mobile-alkalmazások 2.0.0-s** csomagot, és válassza ki **telepítőcsomag**.
+   ![Visual Studio 2015 új projekt][1]
+1. Kattintson a jobb gombbal a **NPM** csomópontra, és válassza az **új NPM-csomagok telepítése**lehetőséget.
+1. Előfordulhat, hogy az első Node. js-alkalmazás létrehozása után frissítenie kell az NPM-katalógust. Szükség esetén válassza a **frissítés** lehetőséget.
+1. A keresőmezőbe írja be az **Azure-Mobile-apps** kifejezést. Válassza ki az **Azure-Mobile-apps 2.0.0** csomagot, majd válassza a **csomag telepítése**lehetőséget.
 
-   ![Új npm-csomagok telepítése][2]
-1. Válassza ki **Bezárás**.
-1. Nyissa meg a Mobile Apps SDK-támogatás hozzáadása az app.js fájlban. At sor 6 at a tár alján `require` utasítások, adja hozzá a következő kódot:
+   ![Új NPM-csomagok telepítése][2]
+1. Válassza a **Bezárás**lehetőséget.
+1. A Mobile Apps SDK támogatásának hozzáadásához nyissa meg az app. js fájlt. A könyvtár `require` -utasítások alján található 6. sorban adja hozzá a következő kódot:
 
     ```javascript
     var bodyParser = require('body-parser');
     var azureMobileApps = require('azure-mobile-apps');
     ```
 
-    Egymás után körülbelül sor 27 at `app.use` utasítások, adja hozzá a következő kódot:
+    A többi `app.use` utasítás után körülbelül 27. sorban adja hozzá a következő kódot:
 
     ```javascript
     app.use('/users', users);
@@ -135,78 +135,78 @@ Visual Studio 2015-bővítményt az ide Node.js-alkalmazások fejlesztéséhez s
 
     Mentse a fájlt.
 
-1. Akár az a alkalmazás helyileg történő futtatása (az API-t a kiszolgált `http://localhost:3000`) vagy közzéteheti az Azure-bA.
+1. Futtassa az alkalmazást helyileg (az API `http://localhost:3000`-t kézbesítjük), vagy tegye közzé az Azure-ban.
 
-### <a name="create-node-backend-portal"></a>Egy Node.js-háttérrendszer létrehozása az Azure portal használatával
+### <a name="create-node-backend-portal"></a>Node. js-háttér létrehozása a Azure Portal használatával
 
-A Mobile Apps-háttéralkalmazás közvetlenül is létrehozhat a a [Azure Portal]. A következő lépéseket, vagy hozzon létre egy ügyfél és kiszolgáló együtt a következő a [mobilalkalmazás létrehozása](app-service-mobile-ios-get-started.md) oktatóanyag. Az oktatóanyag egy egyszerűsített változata ezeket az utasításokat tartalmaz, és nem proof-of-concept projektek esetén ajánlott használni.
+A [Azure Portal]közvetlenül is létrehozhat egy Mobile apps. Az alábbi lépéseket végrehajthatja, vagy létrehozhat egy ügyfelet és egy kiszolgálót a [Mobile App létrehozása](app-service-mobile-ios-get-started.md) oktatóanyag követésével. Az oktatóanyag az utasítások egyszerűsített verzióját tartalmazza, és a legjobb megoldás a megvalósíthatósági projektekhez.
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
-Térjen vissza a **első lépései** panel alatt **tábla API létrehozása**, válassza a **Node.js** háttér-nyelvet.
-Jelölje be a **tudomásul veszem, hogy ezzel felülírja az összes hely tartalmának**, majd válassza ki **TodoItem tábla létrehozása**.
+Vissza az **első lépések** ablaktáblán a **Table API létrehozása**területen válassza a **Node. js** lehetőséget a háttérrendszer nyelvének megfelelően.
+Jelölje be az Elfogadom jelölőnégyzetet, **hogy ez felülírja az összes webhely tartalmát**, majd válassza a **TodoItem tábla létrehozása**lehetőséget.
 
-### <a name="download-quickstart"></a>Töltse le a Node.js háttér-rövid kód projekt a Git használatával
+### <a name="download-quickstart"></a>Töltse le a Node. js háttérbeli gyors üzembe helyezési kód projektjét a git használatával
 
-Ha egy Node.js Mobile Apps-háttéralkalmazás létrehozása a portál használatával **gyors üzembe helyezési** ablaktáblán egy Node.js-projektet létre, és a hely telepítve. A portálon adja hozzá a táblák és API-k, és a Node.js-háttérrendszer tartozó kódfájlok szerkesztése. Különböző központi telepítési eszközök használatával töltse le a háttér-projektet, így hozzáadása vagy módosítása a táblák és API-k, és a projekt majd újbóli. További információkért lásd: a [Az Azure App Service üzembe helyezési útmutató].
+Amikor létrehoz egy Node. js-Mobile Apps a háttérben a portál **gyors üzembe** helyezési paneljén, a rendszer létrehoz egy Node. js-projektet, és telepíti őket a webhelyre. A portálon táblákat és API-kat vehet fel, és szerkesztheti a Node. js-háttér kódjának fájljait. A háttér-projekt letöltéséhez különböző üzembe helyezési eszközöket is használhat, így táblákat és API-kat adhat hozzá vagy módosíthat, majd újból közzéteheti a projektet. További információ: [Azure app Service telepítési útmutató].
 
-Az alábbi eljárás egy Git-tárház használatával töltse le a rövid útmutató projekt kódja:
+Az alábbi eljárás egy git-tárházat használ a gyors üzembe helyezési projekt kódjának letöltéséhez:
 
-1. Ha ezt még nem tette meg, telepítse a Git. A Git telepítéséhez szükséges lépések eltérőek lehetnek, operációs rendszerek között. Operációsrendszer-specifikus disztribúciók és a telepítéssel kapcsolatos útmutató: [telepítése Git](https://git-scm.com/book/en/Getting-Started-Installing-Git).
-2. Lásd: [készítse elő a tárház](../app-service/deploy-local-git.md#prepare-your-repository) ahhoz, hogy a Git-tárházba, a háttér-helyhez. Jegyezze fel a központi telepítési felhasználónevet és jelszót.
-3. A panelen for a Mobile Apps-háttéralkalmazáshoz, jegyezze fel a **Git clone URL-cím** beállítás.
-4. Hajtsa végre a `git clone` parancsot a Git clone URL-cím használatával. Adja meg a jelszót, ha szükséges, az alábbi példában látható módon:
+1. Ha még nem tette meg, telepítse a gitt. A git telepítéséhez szükséges lépések az operációs rendszerek között változnak. Operációs rendszerre vonatkozó disztribúciók és telepítési útmutatás: a [git telepítése](https://git-scm.com/book/en/Getting-Started-Installing-Git).
+2. A háttérbeli hely git-tárházának engedélyezéséhez lásd: [a tárház előkészítése](../app-service/deploy-local-git.md#prepare-your-repository) . Jegyezze fel a telepítési felhasználónevet és a jelszót.
+3. A Mobile Apps háttér ablaktábláján jegyezze fel a **git-klón URL-címének** beállítását.
+4. Futtassa a `git clone` parancsot a git Clone URL-cím használatával. Szükség esetén adja meg a jelszót, ahogy az az alábbi példában is látható:
 
         $ git clone https://username@todolist.scm.azurewebsites.net:443/todolist.git
 
-5. Tallózással keresse meg a helyi könyvtárban (`/todolist` az előző példában), és figyelje meg, hogy project fájlok le vannak töltve. Keresse meg a todoitem.json fájlt a `/tables` könyvtár. Ez a fájl engedélyeit a tábla határozza meg. Ugyanabban a címtárban todoitem.js fájl is található. Azt határozza meg a CRUD-MŰVELETEKKEL művelet parancsfájlok a táblához.
-6. Soubory projektu: futtassa a következő parancsokat hozzáadása, módosítása után véglegesítés, és ezután töltse fel a módosítások a hely:
+5. Tallózással keresse meg a helyi`/todolist` könyvtárat (az előző példában), és figyelje meg, hogy a projektfájlok letöltése megtörtént. Keresse meg a todoitem. JSON fájlt a `/tables` könyvtárban. Ez a fájl határozza meg a tábla engedélyeit. Keresse meg a todoitem. js fájlt is ugyanabban a könyvtárban. Meghatározza a tábla szifilisz-üzemeltetési parancsfájljait.
+6. A projektfájlok módosítása után futtassa a következő parancsokat a hely módosításainak hozzáadásához, végrehajtásához, majd feltöltéséhez:
 
         $ git commit -m "updated the table script"
         $ git push origin master
 
-   Ha új fájlokat ad hozzá a projekthez, először futtassa a `git add .` parancsot.
+   Amikor új fájlokat ad hozzá a projekthez, először futtatnia kell a `git add .` parancsot.
 
-A hely minden alkalommal, amikor a véglegesítés új készletét a rendszer továbbítja a hely ismételt közzététele.
+A rendszer minden alkalommal újra közzéteszi a helyet, amikor új véglegesíti a-készletet.
 
-### <a name="howto-publish-to-azure"></a>A Node.js-háttérrendszer közzététele az Azure-bA
+### <a name="howto-publish-to-azure"></a>A Node. js-háttér közzététele az Azure-ban
 
-Microsoft Azure lehetőséget kínál számos mechanizmusok közzétételéhez a Mobile Apps Node.js háttér az Azure-szolgáltatás. Ezek a mechanizmusok központi telepítési eszközök a Visual Studio integrált parancssori eszközökkel és verziókövetési alapuló folyamatos üzembe helyezési beállítások. További információkért lásd: a [Az Azure App Service üzembe helyezési útmutató].
+A Microsoft Azure számos mechanizmust biztosít a Mobile Apps Node. js-re való visszamenőleges közzétételéhez az Azure-szolgáltatásban. Ezek a mechanizmusok magukban foglalják a Visual studióba, a parancssori eszközökbe és a folyamatos üzembe helyezési lehetőségekkel integrált üzembe helyezési eszközöket a verziókövetés alapján. További információ: [Azure app Service telepítési útmutató].
 
-Az Azure App Service rendelkezik konkrét útmutatásért tekintse át Node.js-alkalmazásokhoz a háttérrendszer közzététele előtt:
+A Azure App Service a háttérrendszer közzététele előtt áttekinthető Node. js-alkalmazásokra vonatkozó tanácsokat tartalmaz:
 
-* Hogyan [adja meg a csomópont verziója]
-* Hogyan [Node-modulok használata]
+* [A csomópont verziószámának meghatározása]
+* A [Csomópont-modulok használata]
 
-### <a name="howto-enable-homepage"></a>Az alkalmazás kezdőlapját engedélyezése
+### <a name="howto-enable-homepage"></a>Kezdőlap engedélyezése az alkalmazáshoz
 
-Számos alkalmazás olyan webes és mobilalkalmazások kombinációját. Használhatja a ExpressJS keretrendszer úgy, hogy a két metszettel. Egyes esetekben azonban érdemes csak a mobil felület megvalósításához. Ez nem hasznos, ha szeretné, adja meg a kezdőlap, győződjön meg arról, hogy működik az app Service-ben, és futó. Adja meg a saját kezdőlapján, vagy egy ideiglenes kezdőlap engedélyezése. Ahhoz, hogy egy ideiglenes kezdőlapja, a következő kód használatával hozza létre a Mobile Apps:
+Számos alkalmazás a webes és a mobil alkalmazások kombinációja. A ExpressJS keretrendszert használhatja a két aspektus összevonásához. Időnként előfordulhat azonban, hogy csak mobil felületet szeretne megvalósítani. Érdemes megadnia a kezdőlapot az App Service működésének biztosításához. Megadhatja saját kezdőlapját, vagy engedélyezheti az ideiglenes kezdőlapot. Egy ideiglenes Kezdőlap engedélyezéséhez használja a következő kódot a Mobile Apps létrehozásához:
 
 ```javascript
 var mobile = azureMobileApps({ homePage: true });
 ```
 
-Ha csak ez a beállítás érhető el helyi fejlesztése során, ezzel a beállítással adhat a azureMobile.js fájlt.
+Ha ezt a lehetőséget csak helyi fejlesztés esetén szeretné használni, ezt a beállítást a azureMobile. js fájlba is hozzáadhatja.
 
-## <a name="TableOperations"></a>Tábla műveletek
+## <a name="TableOperations"></a>Tábla műveletei
 
-Az azure-mobilalkalmazások Node.js Server SDK teszi közzé a webes API-ként az Azure SQL Database-ben tárolt adattáblák mechanizmusokat biztosít. Öt műveleti biztosít:
+Az Azure-Mobile-apps Node. js Server SDK olyan mechanizmusokat biztosít, amelyek lehetővé teszik a Azure SQL Databaseban tárolt adattáblák webes API-ként való továbbítását. Öt műveletet biztosít:
 
 | Művelet | Leírás |
 | --- | --- |
-| GET /tables/*táblanév* |A tábla összes rekord beolvasása. |
-| GET /tables/*tablename*/:id |Kérje le a táblázat egy adott rekordot. |
-| POST /tables/*táblanév* |Hozzon létre egy rekordot a táblában. |
-| JAVÍTÁS /tables/*tablename*/:id |A táblázat rekordjának frissítése. |
-| TÖRLÉS /tables/*tablename*/:id |A tábla rekord törlése. |
+| /Tables/-*Táblanév* beolvasása |A tábla összes rekordjának beolvasása. |
+| /Tables/*Táblanév*/: azonosító beolvasása |Egy adott rekord beolvasása a táblában. |
+| /Tables/*TÁBLANÉV* közzététele |Hozzon létre egy rekordot a táblában. |
+| PATCH/Tables/*Táblanév*/: azonosító |Rekord frissítése a táblában. |
+| /Tables/*Táblanév*/: azonosító törlése |Rekord törlése a táblában. |
 
-A webes API támogatja a [OData] és kiterjeszti a támogatásához a következő tábla sémáját [offline adatszinkronizálást].
+Ez a webes API támogatja a [OData] , és kibővíti a tábla sémáját az [Offline adatszinkronizálás]támogatásához.
 
-### <a name="howto-dynamicschema"></a>-Táblát határoz meg a dinamikus séma használatával
+### <a name="howto-dynamicschema"></a>Táblázatok definiálása dinamikus séma használatával
 
-Egy tábla használata előtt meg kell határoznia. Statikus séma használatával (amikor Ön határozza meg az oszlopok a sémában) meghatározhatja a táblák vagy dinamikusan (ahol az SDK szabályozza a bejövő kérések alapján séma). Emellett a webes API meghatározott részeire szabályozhatja definíciójának JavaScript-kód hozzáadásával.
+A tábla használata előtt meg kell határoznia azt. A táblákat statikus sémával is definiálhatja (ahol meghatározhatja a sémában lévő oszlopokat), vagy dinamikusan (ahol az SDK a bejövő kérések alapján vezérli a sémát). Emellett a webes API adott szempontjait a JavaScript-kód a definícióhoz való hozzáadásával is szabályozhatja.
 
-Ajánlott eljárásként, be kell állítania az minden táblát egy JavaScript fájljában a `tables` könyvtárra, és majd a `tables.import()` módszerrel importálhatja a táblákat. Az alapszintű mintaalkalmazásban kiterjesztése, akkor módosíthatja az app.js fájlban:
+Ajánlott eljárásként definiálni kell minden táblázatot egy JavaScript-fájlban a `tables` címtárban, majd a `tables.import()` metódus használatával importálnia kell a táblákat. Az alap-alkalmazás minta kiterjesztése az app. js fájl módosítása:
 
 ```javascript
 var express = require('express'),
@@ -228,7 +228,7 @@ mobile.tables.initialize().then(function () {
 });
 ```
 
-A tábla meghatározása. / tables/TodoItem.js:
+Adja meg a táblát a./tables/TodoItem.js:
 
 ```javascript
 var azureMobileApps = require('azure-mobile-apps');
@@ -240,14 +240,14 @@ var table = azureMobileApps.table();
 module.exports = table;
 ```
 
-Táblák használata a dinamikus sémák alapértelmezés szerint. A dinamikus sémák kikapcsolását globálisan, állítsa be a `MS_DynamicSchema` Alkalmazásbeállítás hamisra az Azure Portalon.
+A táblák alapértelmezés szerint dinamikus sémát használnak. A dinamikus séma globális kikapcsolásához állítsa az `MS_DynamicSchema` alkalmazás beállítását false értékre a Azure Portal.
 
-A teljes példát talál a [teendőlista-minta a Githubon].
+A következő példában talál egy teljes példát a [teendői minta a GitHubon]elérhető Teendők közül.
 
-### <a name="howto-staticschema"></a>-Táblát határoz meg egy statikus séma használatával
+### <a name="howto-staticschema"></a>Táblák definiálása statikus sémák használatával
 
-A webes API-n keresztül közzétenni kívánt oszlopok explicit módon határozhatja meg. Az azure-mobilalkalmazások Node.js SDK automatikusan hozzáadja a listához, Ön által megadott offline adatszinkronizálást szükséges további oszlopokat. Ha például a a rövid útmutató ügyfélalkalmazások kell két oszlopot tartalmazó táblát: `text` (karakterlánc) és `complete` (Boolean).  
-A tábla lehet definiálni a tábla definícióját JavaScript-fájlt (található a `tables` könyvtár) a következő:
+Explicit módon megadhatja a webes API-n keresztül elérhetővé tenni kívánt oszlopokat. Az Azure-Mobile-apps Node. js SDK automatikusan hozzáadja az offline adatszinkronizáláshoz szükséges további oszlopokat az Ön által megadott listához. A gyors üzembe helyezési ügyfélalkalmazások például két oszloppal rendelkező táblázatot igényelnek: `text` (karakterlánc) és `complete` (logikai).  
+A tábla definiálható a Table definition JavaScript-fájljában (a `tables` könyvtárban található) a következőképpen:
 
 ```javascript
 var azureMobileApps = require('azure-mobile-apps');
@@ -266,85 +266,85 @@ table.dynamicSchema = false;
 module.exports = table;
 ```
 
-Táblák statikusan megadása esetén is hívja meg a `tables.initialize()` metódussal hoz létre az adatbázissémát az indításakor. A `tables.initialize()` metódus adja vissza egy [Megtartva] úgy, hogy a webszolgáltatás nem kiszolgálni a kérelmeket az adatbázis inicializálása előtt.
+Ha statikusan adja meg a táblákat, a `tables.initialize()` metódust is meg kell hívnia az adatbázis-séma indításkor történő létrehozásához. A `tables.initialize()` metódus egy [Ígéret] ad vissza, hogy a webszolgáltatás ne kézbesítse a kérelmeket az adatbázis inicializálása előtt.
 
-### <a name="howto-sqlexpress-setup"></a>SQL Server Expresst használ a helyi gépen fejlesztési adattárként
+### <a name="howto-sqlexpress-setup"></a>SQL Server Express használata fejlesztési adattárként a helyi gépen
 
-A Mobile Apps Node.js SDK-t, de az adatok beépített három lehetőséget kínál:
+A Mobile Apps Node. js SDK három lehetőséget biztosít az adatszolgáltatások kiszolgálása érdekében:
 
-* Használja a **memória** illesztőprogram adjon meg egy nem állandó példa tárolóban.
-* Használja a **mssql** illesztőprogram egy SQL Server Express adattár számára történő fejlesztését.
-* Használja a **mssql** illesztőprogram adjon meg egy Azure SQL Database data store éles üzemi környezetek részei.
+* A **memória** -illesztőprogram használatával nem állandó példaként használható tárolót biztosíthat.
+* Az **MSSQL** -illesztőprogrammal SQL Server Express adattárt biztosíthat a fejlesztéshez.
+* Az **MSSQL** -illesztőprogrammal megadhat egy Azure SQL Database adattárat az éles környezetben.
 
-A Mobile Apps Node.js SDK-t használ a [mssql Node.js-csomag] létrehozásához, és a egy SQL Server Express és SQL Database-kapcsolat használatát. Ez a csomag igényli-e, hogy az SQL Server Express-példány a TCP-kapcsolatok engedélyezése.
+Az Mobile Apps Node. js SDK az [MSSQL Node. js-csomag] használja a SQL Server Express és a SQL Database közötti kapcsolat létrehozásához és használatához. Ehhez a csomaghoz engedélyezni kell a TCP-kapcsolatokat a SQL Server Express-példányon.
 
 > [!TIP]
-> A memória-illesztőprogram nem biztosít tesztelési eszközök teljes körét. Tesztelje helyben a háttérrendszerének kívánt, ha egy SQL Server Express adattár és az mssql-illesztőprogram használatát javasoljuk.
+> A memória-illesztőprogram nem biztosít teljes körű szolgáltatást a teszteléshez. Ha helyileg szeretné tesztelni a háttérrendszer használatát, javasoljuk, hogy használjon egy SQL Server Express adattárat és az MSSQL-illesztőprogramot.
 
-1. Töltse le és telepítse [Microsoft SQL Server 2014 Express]. Győződjön meg arról, hogy telepíti az SQL Server 2014 Express Edition eszközök. Csak 64 bites támogatása explicit módon van szüksége, a 32 bites verziója a futtatásakor kevesebb memóriát használ fel.
-1. Futtassa az SQL Server 2014 Configuration Manager:
+1. Töltse le és telepítse a [Microsoft SQL Server 2014 Express]programot. Győződjön meg arról, hogy a SQL Server 2014 Express és a Tools Edition verzióját telepíti. Ha kifejezetten nem igényel 64-bites támogatást, a 32 bites verzió kevesebb memóriát használ a futtatáskor.
+1. SQL Server 2014 Configuration Manager futtatása:
 
-   a. Bontsa ki a **SQL Server hálózati konfigurációja** csomópontra a fanézetben menü.
+   a. Bontsa ki a **SQL Server hálózati konfiguráció** csomópontot a fa menüben.
 
-   b. Válassza ki **protokollokat az SQLEXPRESS**.
+   b. Válassza ki **a SQLExpress protokollokat**.
 
-   c. Kattintson a jobb gombbal **TCP/IP** válassza **engedélyezése**. Válassza ki **OK** az előugró párbeszédpanelen.
+   c. Kattintson a jobb gombbal a **TCP/IP** elemre, és válassza az **Engedélyezés**lehetőséget. A felugró párbeszédpanelen kattintson **az OK gombra** .
 
-   d. Kattintson a jobb gombbal **TCP/IP** válassza **tulajdonságok**.
+   d. Kattintson a jobb gombbal a **TCP/IP** elemre, és válassza a **Tulajdonságok**lehetőséget.
 
-   e. Válassza ki a **IP-címek** fülre.
+   e. Válassza az **IP-címek** fület.
 
-   f. Keresse meg a **IPAll** csomópont. Az a **TCP-Port** írja be a következőt **1433-as**.
+   f. Keresse meg a **IPAll** csomópontot. A **TCP-port** mezőben adja meg a **1433**értéket.
 
-      ![Az SQL Server Express TCP/IP konfigurálása][3]
+      ![A TCP/IP SQL Server Express konfigurálása][3]
 
-   g. Kattintson az **OK** gombra. Válassza ki **OK** az előugró párbeszédpanelen.
+   g. Kattintson az **OK** gombra. A felugró párbeszédpanelen kattintson **az OK gombra** .
 
-   h. Válassza ki **SQL Server Services** a fa menüben.
+   h. Válassza ki **SQL Server szolgáltatások** elemet a fa menüben.
 
-   i. Kattintson a jobb gombbal **SQL Server (SQLEXPRESS)** válassza **indítsa újra a**.
+   i. Kattintson a jobb gombbal a **SQL Server (SQLExpress)** elemre, majd válassza az **Újraindítás**lehetőséget.
 
-   j. Zárja be az SQL Server 2014 Configuration Manager.
+   j. SQL Server 2014 Configuration Manager bezárásához.
 
-1. SQL Server 2014 Management Studióban futtassa, és csatlakozzon az SQL Server Express helyi példányának:
+1. Futtassa SQL Server 2014 Management Studio, és kapcsolódjon a helyi SQL Server Express-példányhoz:
 
-   1. Kattintson a jobb gombbal a példány, az Object Explorerben, és válassza ki **tulajdonságok**.
-   1. Válassza ki a **biztonsági** lapot.
-   1. Ügyeljen arra, hogy **SQL Server és a Windows-hitelesítési mód** van kiválasztva.
+   1. Kattintson a jobb gombbal a példányra Object Explorer és válassza a **Tulajdonságok**lehetőséget.
+   1. Válassza a **Biztonság** lapot.
+   1. Győződjön meg arról, hogy a **SQL Server és a Windows-hitelesítési mód** van kiválasztva.
    1. Kattintson az **OK** gombra.
 
-      ![Az SQL Server Express-hitelesítés konfigurálása][4]
-   1. Bontsa ki a **biztonsági** > **bejelentkezések** az Object Explorerben.
-   1. Kattintson a jobb gombbal **bejelentkezések** válassza **új bejelentkezés**.
-   1. Adja meg a bejelentkezési névhez. Kattintson az **SQL Server-hitelesítés** lehetőségre. Adjon meg egy jelszót, és írja be ugyanezt a jelszót **jelszó megerősítése**. A jelszónak meg kell felelnie a bonyolultsági feltételeknek Windows.
+      ![SQL Server Express hitelesítés konfigurálása][4]
+   1. Bontsa ki a Object Explorer a **biztonsági** > **bejelentkezések** csomópontot.
+   1. Kattintson a jobb gombbal a bejelentkezések elemre, és válassza az **új bejelentkezés**lehetőséget.
+   1. Adja meg a bejelentkezési nevet. Kattintson az **SQL Server-hitelesítés** lehetőségre. Adjon meg egy jelszót, majd adja meg ugyanazt a jelszót a **Jelszó megerősítése**mezőben. A jelszónak meg kell felelnie a Windows bonyolultsági követelményeinek.
    1. Kattintson az **OK** gombra.
 
       ![Új felhasználó hozzáadása SQL Server Express][5]
-   1. Kattintson a jobb gombbal az új bejelentkezési adatait, és válassza ki **tulajdonságok**.
+   1. Kattintson a jobb gombbal az új bejelentkezésre, és válassza a **Tulajdonságok**lehetőséget.
    1. Válassza ki a **kiszolgálói szerepkörök** lapot.
-   1. Jelölje be a jelölőnégyzetet a **dbcreator** kiszolgálói szerepkört.
+   1. Jelölje be a **dbcreator** kiszolgálói szerepkör jelölőnégyzetét.
    1. Kattintson az **OK** gombra.
-   1. Close SQL Server 2015 Management Studio.
+   1. SQL Server 2015 Management Studio bezárásához.
 
-Mindenképpen jegyezze fel a felhasználónevet és jelszót, amelyet kiválasztott. Előfordulhat, hogy szeretne további kiszolgálói szerepkörök vagy engedélyek, az adatbázis követelményei hozzárendelése.
+Ügyeljen arra, hogy jegyezze fel a kiválasztott felhasználónevet és jelszót. Előfordulhat, hogy az adatbázis követelményeitől függően további kiszolgálói szerepköröket vagy engedélyeket kell rendelnie.
 
-A Node.js-alkalmazás olvasást a `SQLCONNSTR_MS_TableConnectionString` környezeti változó a kapcsolati karakterlánc ehhez az adatbázishoz. Ez a változó állíthatja be a környezetben. Például a PowerShell használatával állítsa be ezt a környezeti változót:
+A Node. js-alkalmazás beolvassa a `SQLCONNSTR_MS_TableConnectionString` környezeti változót az adatbázishoz tartozó kapcsolatok karakterláncához. Ezt a változót beállíthatja a környezetében. A PowerShell használatával például beállíthatja a környezeti változót:
 
     $env:SQLCONNSTR_MS_TableConnectionString = "Server=127.0.0.1; Database=mytestdatabase; User Id=azuremobile; Password=T3stPa55word;"
 
-TCP/IP-kapcsolaton keresztül érik el az adatbázist. Adjon meg egy felhasználónevet és jelszót a kapcsolathoz.
+Az adatbázis elérése TCP/IP-kapcsolaton keresztül. Adja meg a kapcsolatok felhasználónevét és jelszavát.
 
-### <a name="howto-config-localdev"></a>Helyi fejlesztési projekt konfigurálásához
+### <a name="howto-config-localdev"></a>A projekt konfigurálása helyi fejlesztéshez
 
-A Mobile Apps olvasó nevű JavaScript-fájlt *azureMobile.js* a helyi fájlrendszerből. A Mobile Apps SDK konfigurálásához éles környezetben ne használja ezt a fájlt. Ehelyett használjon **Alkalmazásbeállítások** a a [Azure Portal].
+Mobile Apps beolvas egy *azureMobile. js* nevű JavaScript-fájlt a helyi fájlrendszerből. Ne használja ezt a fájlt az Mobile Apps SDK éles környezetben való konfigurálásához. Ehelyett használja a [Azure Portal] **alkalmazás beállításait** .
 
-A azureMobile.js fájlt egy konfigurációs objektumot kell exportálni. A leggyakrabban használt beállítások a következők:
+A azureMobile. js fájlnak exportálnia kell egy konfigurációs objektumot. A leggyakoribb beállítások a következők:
 
 * Adatbázis-beállítások
-* Diagnosztikai naplózás beállításait
+* Diagnosztikai naplózási beállítások
 * Alternatív CORS-beállítások
 
-Ebben a példában **azureMobile.js** fájl valósítja meg az előző adatbázis beállításait:
+Ez a példa a **azureMobile. js** fájlt implementálja az előző adatbázis-beállításokkal:
 
 ```javascript
 module.exports = {
@@ -364,88 +364,88 @@ module.exports = {
 };
 ```
 
-Javasoljuk, hogy adja hozzá **azureMobile.js** , a **.gitignore** fájl (vagy más verziókövetési figyelmen kívül hagyja a fájl) megakadályozza, hogy a jelszavak tárolása a felhőben. Mindig úgy állítsa be az éles beállítások **Alkalmazásbeállítások** belül a [Azure Portal].
+Javasoljuk, hogy vegye fel a **azureMobile. js** fájlt a **. gitignore** fájlba (vagy más forráskód-vezérlőelem figyelmen kívül hagyása), hogy megakadályozza a jelszavak felhőben történő tárolását. Az **alkalmazás beállításaiban** mindig konfigurálja a termelési beállításokat []a Azure Portalon belül.
 
-### <a name="howto-appsettings"></a>A mobilalkalmazás beállításainak konfigurálása
+### <a name="howto-appsettings"></a>Alkalmazásbeállítások konfigurálása a Mobile App számára
 
-A azureMobile.js fájl beállításai a legtöbb rendelkezik egyenértékű alkalmazásbeállítást az [Azure Portal]. Az alábbi lista segítségével állítsa be alkalmazását a **Alkalmazásbeállítások**:
+A azureMobile. js fájl legtöbb beállítása egyenértékű alkalmazás-beállítást tartalmaz a Azure Portalban []. A következő lista használatával konfigurálhatja az alkalmazást az **alkalmazás beállításaiban**:
 
-| Alkalmazás-beállítás | azureMobile.js setting | Leírás | Érvényes értékek |
+| Alkalmazás beállítása | azureMobile.js setting | Leírás | Érvényes értékek |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |name |Az alkalmazás neve |string |
-| **MS_MobileLoggingLevel** |Logging.level |Minimális naplózási szint üzenetek naplózása |Hiba, figyelmeztetés, információ részletes, hibakeresési, silly |
-| **MS_DebugMode** |Hibakeresés |Engedélyezi vagy letiltja a hibakeresési mód |IGAZ, hamis |
-| **MS_TableSchema** |Data.Schema |SQL-táblák alapértelmezett séma neve |karakterlánc (alapértelmezett: dbo) |
-| **MS_DynamicSchema** |data.dynamicSchema |Engedélyezi vagy letiltja a hibakeresési mód |IGAZ, hamis |
-| **MS_DisableVersionHeader** |verzió (a nem definiált beállítása) |Az X-ZUMO-Server-verzió fejlécet letiltása |IGAZ, hamis |
-| **MS_SkipVersionCheck** |skipversioncheck |Letiltja az ügyfél API-verziójának ellenőrzése |IGAZ, hamis |
+| **MS_MobileAppName** |name |Az alkalmazás neve |sztring |
+| **MS_MobileLoggingLevel** |naplózási szint |A naplózandó üzenetek minimális naplózási szintje |hiba, figyelmeztetés, információ, részletes, hibakeresés, buta |
+| **MS_DebugMode** |hibakeresés |Hibakeresési mód engedélyezése vagy letiltása |true, false |
+| **MS_TableSchema** |az Adatséma |SQL-táblák alapértelmezett sémájának neve |karakterlánc (alapértelmezett: dbo) |
+| **MS_DynamicSchema** |az dynamicSchema. |Hibakeresési mód engedélyezése vagy letiltása |true, false |
+| **MS_DisableVersionHeader** |verzió (nem definiált értékre van állítva) |Letiltja az X-ZUMO-Server-Version fejlécet |true, false |
+| **MS_SkipVersionCheck** |skipversioncheck |Letiltja az ügyfél API-verziójának ellenőrzését |true, false |
 
-Alkalmazásbeállítás megadása:
+Alkalmazás beállításának beállítása:
 
 1. Jelentkezzen be az [Azure Portal].
-1. Válassza ki **összes erőforrás** vagy **App Services**, majd válassza a mobilalkalmazás neve.
-1. A **beállítások** panelen alapértelmezés szerint megnyílik. Ha nem, és válassza az **beállítások**.
-1. Az a **általános** menüjében válassza **Alkalmazásbeállítások**.
-1. Görgessen a **Alkalmazásbeállítások** szakaszban.
-1. Ha az alkalmazás, beállítás már létezik, válassza ki az érték szerkesztéséhez Alkalmazásbeállítás értékét.
-   Ha az alkalmazás-beállítás nem létezik, adja meg az Alkalmazásbeállítás a **kulcs** mezőbe, és az értéket a **érték** mezőbe.
+1. Válassza ki az **összes erőforrás** vagy **app Services**lehetőséget, majd válassza ki a mobil alkalmazás nevét.
+1. A **Beállítások** ablaktábla alapértelmezés szerint megnyílik. Ha nem, válassza a **Beállítások**lehetőséget.
+1. Az **általános** menüben válassza az **Alkalmazásbeállítások**lehetőséget.
+1. Görgessen az **Alkalmazásbeállítások** szakaszhoz.
+1. Ha az alkalmazás már létezik, válassza ki az alkalmazás beállítás értékét az érték szerkesztéséhez.
+   Ha az alkalmazás beállítása nem létezik, adja meg az alkalmazás beállításait a **kulcs** mezőben és az érték mezőben.
 1. Kattintson a **Mentés** gombra.
 
-A legtöbb alkalmazás beállításainak módosítása a szolgáltatás újraindítását igényli.
+A legtöbb alkalmazás beállításainak módosításához a szolgáltatás újraindítása szükséges.
 
-### <a name="howto-use-sqlazure"></a>Használata SQL Database-t az üzemi adatok tárolására.
+### <a name="howto-use-sqlazure"></a>SQL Database használata üzemi adattárként
 
 <!--- ALTERNATE INCLUDE - we can't use ../includes/app-service-mobile-dotnet-backend-create-new-service.md - slightly different semantics -->
 
-Azure SQL Database használatával adattárként megegyezik az Azure App Service-alkalmazás összes típusa. Ha Ön még nem tette már, kövesse az alábbi lépéseket egy Mobile Apps-háttéralkalmazás létrehozásához:
+A Azure SQL Database adattárakként való használata azonos az összes Azure App Service alkalmazás típusával. Ha még nem tette meg, kövesse az alábbi lépéseket Mobile Apps háttér létrehozásához:
 
 1. Jelentkezzen be az [Azure Portal].
-1. Az ablak bal felső sarokban válassza ki a **+ új** gomb > **Web + mobil** > **mobilalkalmazás**, majd adja meg egy nevet a Mobile Apps-háttéralkalmazás számára.
-1. Az a **erőforráscsoport** mezőbe írja be ugyanazzal a névvel, az alkalmazás.
-1. Az alapértelmezett App Service-csomag van kiválasztva. Ha azt szeretné, az App Service-csomag módosítása:
+1. Az ablak bal felső részén válassza az **+ új** gombot > **web és mobil** > **Mobile App**elemet, majd adja meg a Mobile apps háttér nevét.
+1. Az **erőforráscsoport** mezőben adja meg az alkalmazás nevének megadását.
+1. Az alapértelmezett App Service terv van kiválasztva. Ha módosítani szeretné a App Service tervet:
 
-   a. Válassza ki **App Service-csomag** >  **+ új létrehozása**.
+   a. Válassza a **app Service terv** >  **+ új létrehozása**lehetőséget.
 
-   b. Adjon meg egy nevet az új App Service-csomag, és válassza ki a megfelelő helyére.
+   b. Adja meg az új App Service terv nevét, és válasszon ki egy megfelelő helyet.
 
-   c. Válasszon egy megfelelő tarifacsomagot a szolgáltatáshoz. Válassza ki **az összes megtekintése** több díjszabás a beállítások, például a **ingyenes** és **megosztott**.
+   c. Válasszon ki egy megfelelő díjszabási szintet a szolgáltatáshoz. Az **összes megtekintése** elemre kattintva további díjszabási lehetőségeket jeleníthet meg, például az **ingyenes** és a **megosztott**lehetőséget.
 
-   d. Kattintson a **kiválasztása** gombra.
+   d. Kattintson a **kiválasztás** gombra.
 
-   e. Térjen vissza a **App Service-csomag** ablaktáblán válassza előbb **OK**.
+   e. A **app Service terv** ablaktáblán kattintson az **OK gombra**.
 1. Kattintson a **Létrehozás** gombra.
 
-Egy Mobile Apps-kiépítés háttérrendszer néhány percig is eltarthat. Miután a Mobile Apps biztonsági célból ki van építve, a portál megnyitja az **beállítások** panelen a Mobile Apps-háttéralkalmazás számára.
+Egy Mobile Apps-háttér kiépítés néhány percig is eltarthat. A Mobile Apps háttér kiépítés után a portál megnyitja a Mobile Apps háttér **Beállítások** paneljét.
 
-Választhat, vagy egy meglévő SQL database csatlakozhat a Mobile Apps-háttéralkalmazást, vagy hozzon létre egy új SQL-adatbázis. Ebben a szakaszban egy SQL-adatbázist hozunk létre.
+Választhat, hogy a meglévő SQL-adatbázist összekapcsolja-e a Mobile Apps háttérrel, vagy létrehozhat egy új SQL-adatbázist. Ebben a szakaszban egy SQL-adatbázist hozunk létre.
 
 > [!NOTE]
-> Ha Ön már rendelkezik adatbázissal ugyanazon a helyen, a Mobile Apps-háttéralkalmazáshoz, ehelyett válassza **létező adatbázis használata** , és válassza ki, hogy az adatbázis. Az egy másik helyen található adatbázis használata nem ajánlott miatt nagyobb késleltetéssel jár.
+> Ha már van olyan adatbázisa, amely a Mobile Apps háttérrel azonos helyen található, akkor válassza a **meglévő adatbázis használata** lehetőséget, majd válassza ki az adatbázist. A magasabb késések miatt nem javasoljuk, hogy más helyen használja az adatbázist.
 
-1. Válassza ki az új Mobile Apps-háttéralkalmazást, **beállítások** > **mobilalkalmazás** > **adatok** >  **+ Hozzáadás**.
-1. Az a **adatkapcsolat hozzáadása** ablaktáblán válassza **SQL Database – kötelező beállítások konfigurálása** > **hozzon létre egy új adatbázist**. Adja meg az új adatbázis nevét a **neve** mezőbe.
-1. Válassza ki **kiszolgáló**. Az a **új kiszolgáló** panelen adjon meg egy egyedi kiszolgálónevet a a **kiszolgálónév** mezőbe, majd adja meg a megfelelő kiszolgáló rendszergazdai bejelentkezési nevét és jelszavát. Ügyeljen arra, hogy **azure-szolgáltatások kiszolgálói hozzáférésének engedélyezése** van kiválasztva. Kattintson az **OK** gombra.
+1. Az új Mobile apps háttér lapon válassza a **Beállítások** > **Mobile App** > -adatelem >  **+ Hozzáadás**lehetőséget.
+1. Az **adatkapcsolatok hozzáadása** panelen válassza a **SQL Database – a kötelező beállítások** > konfigurálása**új adatbázis létrehozása**lehetőséget. Adja meg az új adatbázis nevét a **név** mezőben.
+1. Válassza a **kiszolgáló**lehetőséget. Az **új kiszolgáló** panelen adjon meg egy egyedi kiszolgálónevet a **kiszolgáló neve** mezőbe, és adjon meg egy megfelelő kiszolgálói rendszergazdai felhasználónevet és jelszót. Győződjön meg arról, hogy az **Azure-szolgáltatások elérésének engedélyezése kiszolgáló** van kiválasztva. Kattintson az **OK** gombra.
 
    ![Azure SQL-adatbázis létrehozása][6]
-1. Az a **új adatbázis** ablaktáblán válassza előbb **OK**.
-1. Térjen vissza a **adatkapcsolat hozzáadása** ablaktáblán válassza előbb **kapcsolati karakterlánc**, és adja meg a bejelentkezési és az adatbázis létrehozásakor megadott jelszót. Ha egy meglévő adatbázist használ, adja meg a bejelentkezési hitelesítő adatokat, hogy az adatbázis. Kattintson az **OK** gombra.
-1. Térjen vissza a **adatkapcsolat hozzáadása** panelt, válassza **OK** az adatbázis létrehozásához.
+1. Az **új adatbázis** ablaktáblán kattintson az **OK gombra**.
+1. Az adatkapcsolatok **hozzáadása** panelen lépjen vissza a **kapcsolódási karakterlánc**elemre, és adja meg az adatbázis létrehozásakor megadott felhasználónevet és jelszót. Ha meglévő adatbázist használ, adja meg az adatbázishoz tartozó bejelentkezési hitelesítő adatokat. Kattintson az **OK** gombra.
+1. Ismét az **adatkapcsolatok hozzáadása** ablaktáblán kattintson ismét az **OK** gombra az adatbázis létrehozásához.
 
 <!--- END OF ALTERNATE INCLUDE -->
 
-Az adatbázis létrehozása néhány percet is igénybe vehet. Használja a **értesítések** területen nyomon követheti az üzembe helyezés. Halad mindaddig, amíg az adatbázis sikeres üzembe helyezését. Az adatbázis üzembe helyezését követően egy kapcsolati karakterláncot a Mobile Apps-háttéralkalmazás között az SQL Database-példányban jön létre. Megtekintheti ennek az alkalmazásbeállításnak a **beállítások** > **Alkalmazásbeállítások** > **kapcsolati karakterláncok**.
+Az adatbázis létrehozása eltarthat néhány percig. A központi telepítés előrehaladásának figyeléséhez használja az **értesítések** területét. A folyamat addig nem fejeződik be, amíg az adatbázist nem sikerült üzembe helyezni. Az adatbázis üzembe helyezése után létrejön egy, a SQL Database példányhoz tartozó, a Mobile Apps háttérbeli alkalmazás beállításaiban létrehozott kapcsolatok karakterlánca. Ezt az alkalmazást a **Beállítások** > **alkalmazás-beállítások** > **kapcsolatok karakterláncok**szakaszban tekintheti meg.
 
-### <a name="howto-tables-auth"></a>Hitelesítés megkövetelése a hozzáféréshez táblákhoz
+### <a name="howto-tables-auth"></a>A táblákhoz való hozzáférés hitelesítésének megkövetelése
 
-Ha azt szeretné, az App Service-hitelesítés használatára a `tables` végpont, konfigurálnia kell az App Service-hitelesítés a [Azure Portal] első. További információkért olvassa el az, hogy a használni kívánt identitásszolgáltató konfigurációs Útmutató:
+Ha app Service hitelesítést kíván használni a `tables` végponttal, akkor először konfigurálnia kell app Service hitelesítést a [Azure Portal] . További információkért tekintse meg a használni kívánt identitás-szolgáltató konfigurációs útmutatóját:
 
-* [Az Azure Active Directory-hitelesítés konfigurálása]
+* [Azure Active Directory hitelesítés konfigurálása]
 * [Facebook-hitelesítés konfigurálása]
-* [Google-hitelesítés konfigurálása]
+* [A Google-hitelesítés konfigurálása]
 * [A Microsoft-hitelesítés konfigurálása]
 * [Twitter-hitelesítés konfigurálása]
 
-Minden tábla-hozzáférés tulajdonságot, amely segítségével férhet hozzá a tábla rendelkezik. Az alábbi minta statikusan meghatározott táblázatát jeleníti meg, a hitelesítés szükséges.
+Minden táblához tartozik egy hozzáférési tulajdonság, amellyel szabályozható a táblázathoz való hozzáférés. Az alábbi példa egy statikusan definiált táblázatot mutat be, amely hitelesítés szükséges.
 
 ```javascript
 var azureMobileApps = require('azure-mobile-apps');
@@ -467,18 +467,18 @@ table.access = 'authenticated';
 module.exports = table;
 ```
 
-A hozzáférés tulajdonság három érték egyikét hajthatja végre:
+A hozzáférési tulajdonság három érték egyikét veheti igénybe:
 
-* *Névtelen* azt jelzi, hogy az ügyfélalkalmazás engedélyezett a hitelesítés nélkül adatokat olvasni.
-* *hitelesített* azt jelzi, hogy az ügyfélalkalmazás el kell küldenie egy érvényes hitelesítési jogkivonatra a kérelemmel.
-* *le van tiltva* azt jelzi, hogy ez a táblázat jelenleg le van tiltva.
+* a *Névtelen* érték azt jelzi, hogy az ügyfélalkalmazás hitelesítés nélkül is engedélyezheti az adatolvasást.
+* a *hitelesített* érték azt jelzi, hogy az ügyfélalkalmazás érvényes hitelesítési jogkivonatot kell küldenie a kérelemmel.
+* a Letiltva érték azt jelzi, hogy ez a tábla jelenleg le van tiltva.
 
-Ha a hozzáférési tulajdonság nincs meghatározva, nem hitelesített hozzáférést engedélyezett.
+Ha a hozzáférés tulajdonság nincs meghatározva, a nem hitelesített hozzáférés engedélyezett.
 
-### <a name="howto-tables-getidentity"></a>A táblák használata a hitelesítéshez jogcímeket
-Beállíthat különböző jogcímeket kerül sor, amikor a hitelesítés be van állítva. Ezeket a jogcímeket nem használhatók általában a `context.user` objektum. Azonban, hogy le lehet kérdezni őket használatával a `context.user.getIdentity()` metódust. A `getIdentity()` metódus egy promise, amelyet egy objektumot ad vissza. Az objektum a hitelesítési módszer van ellátva (`facebook`, `google`, `twitter`, `microsoftaccount`, vagy `aad`).
+### <a name="howto-tables-getidentity"></a>Hitelesítési jogcímek használata a táblákkal
+A hitelesítés beállításakor különböző jogcímeket is beállíthat. Ezek a jogcímek általában nem érhetők `context.user` el az objektumon keresztül. Ezeket azonban a `context.user.getIdentity()` metódus használatával kérheti le. A `getIdentity()` metódus egy olyan ígéretet ad vissza, amely egy objektumra van feloldva. Az objektumot a hitelesítési módszer (`facebook` `twitter`, `google` `microsoftaccount`,, vagy `aad`) alapján írtuk be.
 
-Például ha beállította a Microsoft-fiók hitelesítési és az e-mail-címeket jogcím-kérelem, adhat hozzá az e-mail-cím a rekord a következő táblázat vezérlővel:
+Ha például beállít Microsoft-fiók hitelesítést, és kéri az e-mail-címek jogcímet, az alábbi táblázatos vezérlővel adhatja hozzá az e-mail-címet a rekordhoz:
 
 ```javascript
 var azureMobileApps = require('azure-mobile-apps');
@@ -535,18 +535,18 @@ table.delete(queryContextForEmail);
 module.exports = table;
 ```
 
-Tekintse meg, milyen jogcímeket érhetők el, egy webes böngésző segítségével megtekintheti a `/.auth/me` végpont a webhely.
+Ha szeretné megtekinteni, hogy milyen jogcímek érhetők el, `/.auth/me` a webböngészővel megtekintheti a hely végpontját.
 
-### <a name="howto-tables-disabled"></a>Tiltsa le a hozzáférést az adott táblát műveleteire
+### <a name="howto-tables-disabled"></a>Adott tábla műveleteihez való hozzáférés letiltása
 
-Mellett jelenik meg a tábla, az access tulajdonság segítségével szabályozhatja az egyes műveletek. Nincsenek négy műveletet:
+A táblázaton kívül a hozzáférési tulajdonság az egyes műveletek szabályozására is használható. Négy művelet létezik:
 
-* `read` az a REST-alapú beolvasása művelet a táblán.
-* `insert` az a REST-alapú POST művelet a táblán.
-* `update` az a REST-alapú JAVÍTÁSI művelet a táblán.
-* `delete` az a REST-alapú törlése művelet a táblán.
+* `read`a tábla REST-lekérési művelete.
+* `insert`a tábla REST-közzétételi művelete.
+* `update`a tábla REST-javító művelete.
+* `delete`a tábla REST-TÖRLÉSi művelete.
 
-Például előfordulhat, hogy szeretne biztosítani a nem hitelesített írásvédett tábla:
+Előfordulhat például, hogy csak olvasható, nem hitelesített táblát szeretne megadni:
 
 ```javascript
 var azureMobileApps = require('azure-mobile-apps');
@@ -562,9 +562,9 @@ table.delete.access = 'disabled';
 module.exports = table;
 ```
 
-### <a name="howto-tables-query"></a>A lekérdezést, table műveletek használt
+### <a name="howto-tables-query"></a>A táblázatos műveletekhez használt lekérdezés módosítása
 
-Általános követelmény a table műveletek, hogy az adatok korlátozott nézete. Ha például egy táblát, amely a hitelesített felhasználói azonosítóval van megjelölve, úgy, hogy a csak olvasási vagy a saját rekordok frissítése biztosíthat. A következő tábla definícióját a funkciókat biztosítja:
+A táblázatos műveletekre vonatkozó általános követelmény az adatok korlátozott nézetének biztosítása. Megadhat például egy olyan táblát, amely a hitelesített felhasználói AZONOSÍTÓval van megjelölve, hogy csak a saját rekordjait tudja olvasni vagy frissíteni. A következő táblázat definíciója biztosítja ezt a funkciót:
 
 ```javascript
 var azureMobileApps = require('azure-mobile-apps');
@@ -597,15 +597,15 @@ table.insert(function (context) {
 module.exports = table;
 ```
 
-Műveletek, amelyek normál esetben a lekérdezés futtatása rendelkezik használatával módosíthatja lekérdezési tulajdonságot egy `where` záradékban. A lekérdezés a tulajdonság egy [QueryJS] OData-lekérdezés úgy, hogy a háttéralkalmazás az adatok átalakítása használt objektumot tud feldolgozni. Olyan esetekben, egyszerű egyenlőség (például az előző egyet) a térkép is használhatja. Adott SQL záradékot is hozzáadhat:
+A lekérdezést általában futtató műveletek lekérdezési tulajdonsága egy `where` záradék használatával módosítható. A lekérdezési tulajdonság egy [QueryJS] objektum, amely egy OData-lekérdezés átalakítására szolgál az adatháttér által feldolgozható értékre. Az egyszerű esélyegyenlőségi esetekben (például az előzőnél) használhatja a térképet. Emellett adott SQL-záradékokat is hozzáadhat:
 
 ```javascript
 context.query.where('myfield eq ?', 'value');
 ```
 
-### <a name="howto-tables-softdelete"></a>Egy tábla a helyreállítható törlés konfigurálása
+### <a name="howto-tables-softdelete"></a>Egy tábla helyreállítható törlésének konfigurálása
 
-A helyreállítható törlés valójában nem töröl rekordokat. Ehelyett azt jelöli meg azokat az adatbázison belül a törölt oszlop igaz értékre állításával töröltként. A Mobile Apps SDK automatikusan eltávolítja helyreállíthatóan törölt rekordok eredményeket, kivéve, ha a Mobile ügyfél SDK-t használ `IncludeDeleted()`. Konfigurálja a táblát, a helyreállítható törlés, állítsa be a `softDelete` tulajdonság a tábla szolgáltatásdefiníciós fájlban:
+A helyreállítható törlés valójában nem törli A rekordokat. Ehelyett a törölt oszlop igaz értékre állításával az adatbázison belül töröltként jelöli meg őket. Az Mobile Apps SDK automatikusan eltávolítja a nem törölt rekordokat az eredményekből, kivéve, ha `IncludeDeleted()`a Mobile Client SDK-t használja. Ha egy táblát szeretne konfigurálni a helyreállítható törléshez, `softDelete` állítsa a tulajdonságot a tábla definíciós fájljába:
 
 ```javascript
 var azureMobileApps = require('azure-mobile-apps');
@@ -630,11 +630,11 @@ table.access = 'authenticated';
 module.exports = table;
 ```
 
-Létre kell hoznia egy mechanizmust bejegyzések törlése: az ügyfélalkalmazások, a Webjobs, egy Azure-függvényt vagy egyéni API-t.
+Létre kell hoznia egy mechanizmust a rekordok törléséhez: egy ügyfélalkalmazás, egy Webjobs, egy Azure-függvény vagy egy egyéni API.
 
-### <a name="howto-tables-seeding"></a>Rendezze az adatokat az adatbázisba
+### <a name="howto-tables-seeding"></a>Az adatbázis kiminősítése az adataival
 
-Egy új alkalmazást hoz létre, akkor érdemes rendezi az adatokat tartalmazó táblát. Ehhez a tábla definíciójának JavaScript fájlban a következő:
+Amikor új alkalmazást hoz létre, érdemes lehet egy táblázatot felosztania egy adattal. Ezt a táblázat definíciójának JavaScript-fájljában a következőképpen teheti meg:
 
 ```javascript
 var azureMobileApps = require('azure-mobile-apps');
@@ -660,38 +660,38 @@ table.access = 'authenticated';
 module.exports = table;
 ```
 
-Az adatok beültetés történik, csak akkor, ha már használta a Mobile Apps SDK-t a tábla létrehozásához. Ha a tábla már létezik az adatbázisban, nincs adat szúrhatja be a táblába. A dinamikus sémák be van kapcsolva, ha a sémát a fióktól vette a beállításait az előkészített adatok.
+Az adatgyűjtés csak akkor történik meg, ha a Mobile Apps SDK-t használta a tábla létrehozásához. Ha a tábla már létezik az adatbázisban, a táblázatba nem kerül be a rendszer az összes adattal. Ha a dinamikus séma be van kapcsolva, a séma a kikövetkeztetett adatokból származik.
 
-Azt javasoljuk, hogy explicit módon hívja a `tables.initialize()` metódus a tábla létrehozásához, amikor a szolgáltatás elindul.
+Javasoljuk, hogy kifejezetten hívja `tables.initialize()` meg a metódust a tábla létrehozásához, amikor a szolgáltatás elindul.
 
-### <a name="Swagger"></a>A Swagger-támogatás engedélyezése
-A Mobile Apps együttműködik a beépített [Swagger] támogatja. Swagger-támogatás engedélyezéséhez először telepítse a swagger-ui függőségei:
+### <a name="Swagger"></a>A hencegés támogatásának engedélyezése
+A Mobile Apps beépített hencegés- [] támogatással rendelkezik. A hencegés támogatásának engedélyezéséhez először telepítse a hencegő felületet a következő függőségként:
 
     npm install --save swagger-ui
 
-Engedélyezheti a Mobile Apps konstruktor Swagger-támogatás:
+Ezután engedélyezheti a hencegő támogatást a Mobile Apps konstruktorban:
 
 ```javascript
 var mobile = azureMobileApps({ swagger: true });
 ```
 
-Valószínűleg csak szeretné fejlesztési változatban Swagger-támogatás engedélyezése. Ezt megteheti használatával is a `NODE_ENV` Alkalmazásbeállítás:
+Valószínűleg csak a fejlesztési kiadásokban szeretné engedélyezni a hencegés támogatását. Ezt az `NODE_ENV` alkalmazás beállításával teheti meg:
 
 ```javascript
 var mobile = azureMobileApps({ swagger: process.env.NODE_ENV !== 'production' });
 ```
 
-A `swagger` végpont a http://*sajatwebhely*.azurewebsites.net/swagger. A Swagger felhasználói felületén keresztül érheti el a `/swagger/ui` végpont. Ha a teljes alkalmazás közötti hitelesítést igényelnek, a Swagger hibát ad vissza. A legjobb eredmények érdekében válassza ki, hogy a nem hitelesített kérelmek az Azure App Service hitelesítés/engedélyezés között, és majd hitelesítés használatával szabályozhatja a `table.access` tulajdonság.
+A `swagger` végpont a következő helyen található: http://*sajatwebhely*. azurewebsites.net/Swagger. A hencegő felületet a `/swagger/ui` végponton keresztül érheti el. Ha úgy dönt, hogy a teljes alkalmazásban megköveteli a hitelesítést, a hencegés hibát eredményez. A legjobb eredmények érdekében engedélyezze a nem hitelesített kérelmek használatát a Azure app Service hitelesítési/engedélyezési beállításokban, majd a tulajdonság használatával szabályozza a `table.access` hitelesítést.
 
-Is hozzáadhat a Swagger-beállítást a azureMobile.js fájl Ha kizárólag a Swagger-támogatás helyileg fejlesztéséhez.
+A azureMobile. js fájlhoz is hozzáadhatja a hencegés lehetőséget, ha azt szeretné, hogy a helyi fejlesztéshez csak a kivágási támogatás legyen használható.
 
-## <a name="a-namepushpush-notifications"></a><a name="push"/>Leküldéses értesítések küldése
+## <a name="a-namepushpush-notifications"></a><a name="push"/>Leküldéses értesítések
 
-Mobile Apps integrálható az Azure Notification hubs használatával, így célzott leküldéses értesítéseket küldhet eszközök millióira minden jelentősebb platformon. A Notification Hubs használatával leküldéses értesítéseket küldhet az iOS, Android és Windows eszközökhöz. A Notification hubs használatával elvégezhető az összes kapcsolatos további információkért tekintse meg a [Notification Hubs – áttekintés](../notification-hubs/notification-hubs-push-notification-overview.md).
+A Mobile Apps az Azure Notification Hubs integrálódik, így az összes jelentős platformon több millió eszközre küldhet célként leküldéses értesítéseket. A Notification Hubs használatával leküldéses értesítéseket küldhet iOS-, Android-és Windows-eszközökre. Ha többet szeretne megtudni a Notification Hubsekkel kapcsolatos összes lehetőségről, tekintse meg a [Notification Hubs áttekintését](../notification-hubs/notification-hubs-push-notification-overview.md).
 
 ### <a name="send-push"></a>Leküldéses értesítések küldése
 
-A következő kód bemutatja, hogyan használhatja a `push` objektum leküldéses értesítések küldéséhez regisztrált iOS-eszközök:
+Az alábbi kód bemutatja, hogyan küldhet leküldéses értesítéseket a regisztrált iOS-eszközökre az `push` objektum használatával:
 
 ```javascript
 // Create an APNS payload.
@@ -708,7 +708,7 @@ if (context.push) {
 }
 ```
 
-Az ügyfél hoz létre a sablon leküldéses regisztrálását, inkább elküldheti a sablon leküldéses üzenet eszközökre az összes támogatott platformon. A következő kód bemutatja, hogyan sablon értesítést küldeni:
+Egy sablon leküldéses regisztrációjának az ügyfélről történő létrehozásával Ehelyett egy sablon leküldéses üzenetet küldhet az összes támogatott platformon lévő eszközre. A következő kód bemutatja, hogyan küldhet el egy sablon-értesítést:
 
 ```javascript
 // Define the template payload.
@@ -725,8 +725,8 @@ if (context.push) {
 }
 ```
 
-### <a name="push-user"></a>Leküldéses értesítések küldése hitelesített felhasználók a címkék használatával
-Ha egy hitelesített felhasználó regisztrálja a leküldéses értesítésekhez, felhasználói azonosító címkét automatikusan hozzáadódik a regisztráció. Ez a címke használatával küldhet leküldéses értesítéseket egy adott felhasználó által regisztrált összes eszközt. A következő kód lekéri a kérés küldője, és minden eszköz regisztrálása a sablon leküldéses értesítést küld az adott felhasználó felhasználó biztonsági azonosítója:
+### <a name="push-user"></a>Leküldéses értesítések küldése hitelesített felhasználóknak címkék használatával
+Ha egy hitelesített felhasználó regisztrálja a leküldéses értesítéseket, a rendszer automatikusan hozzáadja a felhasználói azonosító címkét a regisztrációhoz. A címke használatával leküldéses értesítéseket küldhet az adott felhasználó által regisztrált összes eszközre. A következő kód lekéri a kérést küldő felhasználó SID-azonosítóját, és leküldéses értesítést küld a felhasználó minden eszközének regisztrálására:
 
 ```javascript
 // Only do the push if configured.
@@ -740,29 +740,29 @@ if (context.push) {
 }
 ```
 
-Regisztrálásakor, hogy a leküldéses értesítéseket állíthat be egy hitelesített ügyfél a győződjön meg arról, hogy a hitelesítés befejeződik, mielőtt elkezdené a regisztrációs.
+Ha hitelesített ügyfélről regisztrál leküldéses értesítéseket, a regisztráció megkísérlése előtt győződjön meg arról, hogy a hitelesítés befejeződött.
 
-## <a name="CustomAPI"></a> Egyéni API-k
+## <a name="CustomAPI"></a>Egyéni API-k
 
 ### <a name="howto-customapi-basic"></a>Egyéni API definiálása
 
-Az adatelérési API-n keresztül mellett a `/tables` Mobile Apps-végpont egyéni API lefedettség tud biztosítani. Egyéni API-k a tábladefiníciókat hasonló módon definiált, és hozzáférhetnek ugyanazokat létesítményekben, beleértve a hitelesítést.
+A `/tables` végponton keresztüli adatelérési API mellett Mobile apps egyéni API-lefedettséget is biztosíthat. Az egyéni API-k hasonló módon vannak definiálva a táblázat-definíciók számára, és hozzáférhetnek ugyanahhoz a szolgáltatáshoz, beleértve a hitelesítést is.
 
-Ha szeretné használni az App Service-hitelesítés egy egyéni API-val, konfigurálnia kell az App Service-hitelesítés a [Azure Portal] első. További információkért olvassa el az, hogy a használni kívánt identitásszolgáltató konfigurációs Útmutató:
+Ha egyéni API-val szeretne App Service hitelesítést használni, először konfigurálnia kell App Service hitelesítést a Azure Portalban [] . További információkért tekintse meg a használni kívánt identitás-szolgáltató konfigurációs útmutatóját:
 
-* [Az Azure Active Directory-hitelesítés konfigurálása]
+* [Azure Active Directory hitelesítés konfigurálása]
 * [Facebook-hitelesítés konfigurálása]
-* [Google-hitelesítés konfigurálása]
+* [A Google-hitelesítés konfigurálása]
 * [A Microsoft-hitelesítés konfigurálása]
 * [Twitter-hitelesítés konfigurálása]
 
-Egyéni API-k a tábla API-ként ugyanolyan módon vannak meghatározva:
+Az egyéni API-k a Tables API-val megegyező módon vannak definiálva:
 
-1. Hozzon létre egy `api` könyvtár.
-1. Hozzon létre egy API-definíciós JavaScript a fájlt a `api` könyvtár.
-1. Importálási módszer használatával importálhatja a `api` könyvtár.
+1. Hozzon `api` létre egy könyvtárat.
+1. Hozzon létre egy API-definíció JavaScript `api` -fájlt a címtárban.
+1. Importálja a `api` könyvtárat az importálási módszer használatával.
 
-Íme a korábban használt alap-alkalmazást a mintán alapuló API-definíció prototípus:
+Itt látható a prototípus API-definíciója, amely a korábban használt Basic-app minta alapján történik:
 
 ```javascript
 var express = require('express'),
@@ -781,7 +781,7 @@ app.use(mobile);
 app.listen(process.env.PORT || 3000);
 ```
 
-Vegyünk egy példát, API, amely segítségével a kiszolgáló dátumot adja vissza a `Date.now()` metódust. Íme a api/date.js fájlt:
+Vegyük egy példa API-t, amely a `Date.now()` metódus használatával visszaadja a kiszolgáló dátumát. Itt látható az API/Date. js fájl:
 
 ```javascript
 var api = {
@@ -794,11 +794,11 @@ var api = {
 module.exports = api;
 ```
 
-Egyes paramétereket az alábbiak egyike a szabványos REST-alapú HTTP-parancsokat: ELSŐ, közzététel, javítása vagy törlése. A metódus egy olyan szabvány [ExpressJS middleware] -függvény, amely a szükséges kimenetet küld.
+Minden paraméter a szabványos REST-műveletek egyike: Letöltés, közzététel, javítás vagy törlés. A metódus egy standard [ExpressJS middleware] -függvény, amely elküldi a szükséges kimenetet.
 
-### <a name="howto-customapi-auth"></a>Hitelesítés megkövetelése a hozzáféréshez egy egyéni API-hoz
+### <a name="howto-customapi-auth"></a>Hitelesítés megkövetelése egyéni API-hoz való hozzáféréshez
 
-A Mobile Apps SDK-t valósít meg hitelesítési ugyanúgy mind a `tables` végpont és az egyéni API-k. Hitelesítés hozzáadása az API-t az előző szakaszban fejlesztett, adjon hozzá egy `access` tulajdonság:
+A Mobile apps SDK ugyanúgy valósítja meg a hitelesítést, mint a végpontok `tables` és az egyéni API-k. Az előző szakaszban kifejlesztett API-hoz való hitelesítés hozzáadásához vegyen fel `access` egy tulajdonságot:
 
 ```javascript
 var api = {
@@ -813,7 +813,7 @@ api.access = 'authenticated';
 module.exports = api;
 ```
 
-Hitelesítés a meghatározott műveleteket is megadhat:
+Megadhatja az adott műveletek hitelesítését is:
 
 ```javascript
 var api = {
@@ -828,11 +828,11 @@ api.get.access = 'authenticated';
 module.exports = api;
 ```
 
-Ugyanezt a tokent szolgálja ki a `tables` végpontot az egyéni API-k hitelesítést igénylő kell használnia.
+A `tables` végponthoz használt jogkivonatot kell használni a hitelesítést igénylő egyéni API-khoz.
 
-### <a name="howto-customapi-auth"></a>Kezeli a nagy méretű fájlok feltöltése
+### <a name="howto-customapi-auth"></a>Nagyméretű fájlfeltöltés kezelése
 
-A Mobile Apps SDK-t használ a [body-parser közbenső](https://github.com/expressjs/body-parser) elfogadásához és a törzs tartalma a beküldött dekódolása. Fogadja el a nagyobb méretű fájlt tölt fel a törzselemzőt előre is megadhatja:
+Az Mobile Apps SDK a [Body-Parser middleware](https://github.com/expressjs/body-parser) használatával fogadja el és dekódolja a szövegtörzs tartalmát a beküldött szövegben. A szövegtörzs-elemző előre konfigurálható nagyobb fájlfeltöltés elfogadásához:
 
 ```javascript
 var express = require('express'),
@@ -856,11 +856,11 @@ app.use(mobile);
 app.listen(process.env.PORT || 3000);
 ```
 
-A fájl nem base-64 kódolású átvitele előtt. Ehhez a kódoláshoz a tényleges feltöltés (és a méretét, figyelembe kell venni) méretét is megnöveli.
+A fájl a Base-64 kódolású a továbbítás előtt. Ez a kódolás növeli a tényleges feltöltés méretét (és azt a méretet, amelyhez a szükséges).
 
 ### <a name="howto-customapi-sql"></a>Egyéni SQL-utasítások végrehajtása
 
-A Mobile Apps SDK lehetővé teszi a hozzáférést a teljes környezetet a kérelem objektumon keresztül. Egyszerűen a meghatározott adatszolgáltató paraméteres SQL-utasításokkal hajthat végre:
+A Mobile Apps SDK a kérelem objektumon keresztül lehetővé teszi a teljes környezet elérését. A paraméteres SQL-utasításokat egyszerűen végrehajthatja a definiált adatszolgáltatón:
 
 ```javascript
 var api = {
@@ -891,59 +891,18 @@ api.get.access = 'authenticated';
 module.exports = api;
 ```
 
-## <a name="Debugging"></a>Hibakeresés, könnyen kezelhető táblák és egyszerű API-k
+## <a name="Debugging"></a>Hibakeresés
 
-### <a name="howto-diagnostic-logs"></a>Hibakeresés, diagnosztizálása és hibaelhárítása a Mobile Apps
+### <a name="howto-diagnostic-logs"></a>Hibakeresés, diagnosztizálás és hibaelhárítás Mobile Apps
 
-Az Azure App Service számos hibakeresési és hibaelhárítási módszerekről Node.js-alkalmazásokhoz biztosít.
-Ismerkedés a Node.js a Mobile Apps-háttéralkalmazást a hibaelhárítás, tekintse meg a következő cikkeket:
+A Azure App Service számos hibakeresési és hibaelhárítási eljárást biztosít a Node. js-alkalmazásokhoz.
+A Node. js Mobile Apps háttér hibaelhárításának megkezdéséhez tekintse meg a következő cikkeket:
 
-* [Az Azure App Service figyelése]
-* [Az Azure App Service-diagnosztikai naplózás engedélyezése]
-* [Az Azure App Service a Visual Studio alkalmazásban hibaelhárításához]
+* [Figyelés Azure App Service]
+* [Diagnosztikai naplózás engedélyezése Azure App Service]
+* [A Visual Studióban Azure App Service hibakeresése]
 
-NODE.js-alkalmazások férhetnek hozzá a diagnosztikai naplót eszközök széles. Belsőleg, a Mobile Apps Node.js SDK-t használ [Winston] diagnosztikai naplózás. Naplózási automatikusan aktiválódik, amikor engedélyezi a hibakeresési mód vagy a set a `MS_DebugMode` Alkalmazásbeállítás true-ra a [Azure Portal]. Generált naplók jelennek meg a diagnosztikai naplókat a [Azure Portal].
-
-### <a name="in-portal-editing"></a><a name="work-easy-tables"></a>Könnyen kezelhető táblák használata az Azure Portalon
-
-Könnyen kezelhető táblák használatával létrehozhat és táblák közvetlenül a portálon kezelheti. A könnyen kezelhető táblák adatkészlet tölthet fel a CSV formátumban. Vegye figyelembe, hogy nem használhat a tulajdonságnevek (adatkészletben a fürt megosztott kötetei szolgáltatás), amely ütközik a Mobile Apps-háttéralkalmazás rendszer tulajdonság nevére. A rendszer nevei a következők:
-* createdAt
-* updatedAt
-* törölve
-* version
-
-Az App Service Editor table műveletek is szerkesztheti. Ha bejelöli **könnyen kezelhető táblák** a háttér-webhely között hozzáadása, módosítása és törlése egy táblát. A tábla adatait is megtekintheti.
-
-![Könnyen kezelhető táblák használata](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-tables.png)
-
-A következő parancsokat egy táblát a parancssáv érhetők el:
-
-* **Engedélyek módosítása**: Az olvasási engedélyekkel, beszúrása, frissítése és törlési műveletek a táblán.
- Is, hogy engedélyezze a névtelen hozzáférést, a hitelesítést igényel, vagy a művelet való hozzáférés teljes letiltásához.
-* **Parancsfájl szerkesztése**: A parancsfájl a táblához tartozó App Service Editor van nyitva.
-* **Séma kezelése**: Adja hozzá az oszlopok törlése, vagy módosítani a tábla indexe.
-* **Tábla tartalmának törlése**: Meglévő tábla csonkolása törlésével az összes adatsor, de a séma változatlanul.
-* **Sorok törlése**: Az adatok az egyes sorok törlése.
-* **Folyamatos átviteli naplók megtekintése**: Csatlakozzon a streamelési naplózási szolgáltatás webhelye számára.
-
-### <a name="work-easy-apis"></a>Egyszerű API-k használata az Azure Portalon
-
-Egyszerű API-k segítségével egyéni API-k közvetlenül a portálon a létrehozását és használatát. API-parancsprogramokat az App Service Editor használatával szerkesztheti.
-
-Ha bejelöli **egyszerű API-k** a háttér-webhely között hozzáadása, módosítása vagy egy egyéni API-végpont törlése.
-
-![Egyszerű API-khoz](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-apis.png)
-
-A portálon egy HTTP-művelet hozzáférési engedélyeinek módosítása, az API-parancsfájlt az App Service Editor szerkesztése vagy a folyamatos átviteli naplók megtekintéséhez.
-
-### <a name="online-editor"></a>Az App Service Editor kód szerkesztése
-
-Az Azure Portalon, a Node.js háttér-parancsfájlok az App Service Editor szerkesztheti a projekt letöltése a helyi számítógépen nélkül. Az online szerkesztőjében parancsfájlok szerkesztése:
-
-1. A ablaktábla számára a Mobile Apps-háttéralkalmazáshoz, válassza a **minden beállítás** > vagy **könnyen kezelhető táblák** vagy **egyszerű API-k**. Egy tábla vagy API-t, majd válassza ki és **parancsfájl szerkesztése**. A parancsfájl az App Service Editor nyílik meg.
-
-   ![App Service Editor](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
-1. A módosítások a kódfájl a online szerkesztőjében. Módosítások mentése automatikusan történik, akkor írja be.
+A Node. js-alkalmazások számos diagnosztikai naplózási eszközhöz férnek hozzá. Belsőleg a Mobile Apps Node. js SDK a Winstont [] használja a diagnosztikai naplózáshoz. A naplózás automatikusan engedélyezve van, ha engedélyezi a hibakeresési módot `MS_DebugMode` , vagy ha az alkalmazás beállítása igaz értékre van állítva a [Azure Portal]. A generált naplók a [Azure Portal]diagnosztikai naplóiban jelennek meg.
 
 <!-- Images -->
 [0]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/npm-init.png
@@ -955,25 +914,25 @@ Az Azure Portalon, a Node.js háttér-parancsfájlok az App Service Editor szerk
 [6]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/dotnet-backend-create-db.png
 
 <!-- URLs -->
-[Android ügyfél a rövid útmutató]: app-service-mobile-android-get-started.md
+[Android-ügyfél rövid útmutatója]: app-service-mobile-android-get-started.md
 [Apache Cordova-ügyfél gyors üzembe helyezés]: app-service-mobile-cordova-get-started.md
-[iOS-es ügyfél a rövid útmutató]: app-service-mobile-ios-get-started.md
-[Xamarin.iOS Client quickstart]: app-service-mobile-xamarin-ios-get-started.md
+[iOS-ügyfél rövid útmutatója]: app-service-mobile-ios-get-started.md
+[Xamarin. iOS-ügyfél rövid útmutatója]: app-service-mobile-xamarin-ios-get-started.md
 [Xamarin.Android Client quickstart]: app-service-mobile-xamarin-android-get-started.md
-[Xamarin.Forms Client quickstart]: app-service-mobile-xamarin-forms-get-started.md
-[Windows Store-ügyfél a rövid útmutató]: app-service-mobile-windows-store-dotnet-get-started.md
-[offline adatszinkronizálást]: app-service-mobile-offline-data-sync.md
-[Az Azure Active Directory-hitelesítés konfigurálása]: ../app-service/configure-authentication-provider-aad.md
+[Xamarin. Forms-ügyfél rövid útmutatója]: app-service-mobile-xamarin-forms-get-started.md
+[Windows áruházbeli ügyfél rövid útmutatója]: app-service-mobile-windows-store-dotnet-get-started.md
+[Offline adatszinkronizálás]: app-service-mobile-offline-data-sync.md
+[Azure Active Directory hitelesítés konfigurálása]: ../app-service/configure-authentication-provider-aad.md
 [Facebook-hitelesítés konfigurálása]: ../app-service/configure-authentication-provider-facebook.md
-[Google-hitelesítés konfigurálása]: ../app-service/configure-authentication-provider-google.md
+[A Google-hitelesítés konfigurálása]: ../app-service/configure-authentication-provider-google.md
 [A Microsoft-hitelesítés konfigurálása]: ../app-service/configure-authentication-provider-microsoft.md
 [Twitter-hitelesítés konfigurálása]: ../app-service/configure-authentication-provider-twitter.md
-[Az Azure App Service üzembe helyezési útmutató]: ../app-service/deploy-local-git.md
-[Az Azure App Service figyelése]: ../app-service/web-sites-monitor.md
-[Az Azure App Service-diagnosztikai naplózás engedélyezése]: ../app-service/troubleshoot-diagnostic-logs.md
-[Az Azure App Service a Visual Studio alkalmazásban hibaelhárításához]: ../app-service/troubleshoot-dotnet-visual-studio.md
-[Adja meg a csomópont verziója]: ../nodejs-specify-node-version-azure-apps.md
-[Node-modulok használata]: ../nodejs-use-node-modules-azure-apps.md
+[Azure App Service telepítési útmutató]: ../app-service/deploy-local-git.md
+[Figyelés Azure App Service]: ../app-service/web-sites-monitor.md
+[Diagnosztikai naplózás engedélyezése Azure App Service]: ../app-service/troubleshoot-diagnostic-logs.md
+[A Visual Studióban Azure App Service hibakeresése]: ../app-service/troubleshoot-dotnet-visual-studio.md
+[a csomópont verziószámának meghatározása]: ../nodejs-specify-node-version-azure-apps.md
+[Csomópont-modulok használata]: ../nodejs-use-node-modules-azure-apps.md
 [Create a new Azure App Service]: ../app-service/
 [azure-mobile-apps]: https://www.npmjs.com/package/azure-mobile-apps
 [Express]: https://expressjs.com/
@@ -981,14 +940,14 @@ Az Azure Portalon, a Node.js háttér-parancsfájlok az App Service Editor szerk
 
 [Azure Portal]: https://portal.azure.com/
 [OData]: https://www.odata.org
-[Megtartva]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-[basicapp minta a Githubon]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app
-[Teendőlista-minta a Githubon]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/todo
-[minták könyvtárát a Githubon]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples
+[Ígéret]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[basicapp-minta a GitHubon]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app
+[teendői minta a GitHubon]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/todo
+[Példák könyvtára a GitHubon]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples
 [static-schema sample on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/static-schema
 [QueryJS]: https://github.com/Azure/queryjs
-[1.1 node.js-eszközök a Visual Studióhoz]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
-[MSSQL Node.js-csomag]: https://www.npmjs.com/package/mssql
+[Node. js-eszközök a Visual studióhoz 1,1]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
+[MSSQL Node. js-csomag]: https://www.npmjs.com/package/mssql
 [Microsoft SQL Server 2014 Express]: https://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
 [ExpressJS middleware]: https://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston

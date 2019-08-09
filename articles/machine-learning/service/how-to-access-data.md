@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4bc035ba061a65f6770136240d8867f82858e67e
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
-ms.translationtype: HT
+ms.openlocfilehash: 545860a394c7eac953c1cbacc9dd05fc3737f6c1
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772733"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856172"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Az Azure Storage-szolgáltatásokban tárolt adathozzáférés
 
@@ -32,7 +32,7 @@ Ez az útmutató példákat mutat be a következő feladatokra:
 
 Adattárolók használatához szüksége lesz egy [munkaterület](concept-workspace.md).
 
-Első lépésként vagy [új munkaterület létrehozása](setup-create-workspace.md#sdk) vagy egy meglévő beolvasása:
+Első lépésként vagy [új munkaterület létrehozása](how-to-manage-workspace.md) vagy egy meglévő beolvasása:
 
 ```Python
 import azureml.core
