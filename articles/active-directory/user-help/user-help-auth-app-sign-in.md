@@ -52,7 +52,7 @@ A telefonos bejelentkezés csak az Android 6,0-es vagy újabb verzióját futtat
 
 - Nyissa meg a Microsoft Authenticator alkalmazást, lépjen a munkahelyi vagy iskolai fiókjába, és kapcsolja be a telefonos bejelentkezést:
 
-    - **Ha megjelenik a](media/user-help-auth-app-sign-in/icon.png)beállított ikon ![ikonja.** Ha ez az ikon a munkahelyi vagy iskolai fiók neve mellett jelenik meg, az azt jelenti, hogy már beállította a telefonos bejelentkezést a fiókhoz. Előfordulhat, hogy a rendszer leküldéses értesítések hozzáadását kéri a fiókjához, így értesítést kaphat az alkalmazáson kívüli hitelesítési kérelmekről.
+    - **Ha megjelenik a![beállított ikon ikonja.](media/user-help-auth-app-sign-in/icon.png)** Ha ez az ikon a munkahelyi vagy iskolai fiók neve mellett jelenik meg, az azt jelenti, hogy már beállította a telefonos bejelentkezést a fiókhoz. Előfordulhat, hogy a rendszer leküldéses értesítések hozzáadását kéri a fiókjához, így értesítést kaphat az alkalmazáson kívüli hitelesítési kérelmekről.
 
     - **Ha az alkalmazást kétfaktoros ellenőrzésre használta.** Ha már használta az alkalmazást és a kétfaktoros ellenőrzést, akkor válassza a fiók neve melletti legördülő nyilat, majd válassza a **telefonos bejelentkezés engedélyezése**lehetőséget.
 
@@ -85,7 +85,7 @@ Bekapcsolhatja a telefonos bejelentkezést a személyes Microsoft-fiók, példá
 
 - Nyissa meg a Microsoft Authenticator alkalmazást, nyissa meg a személyes Microsoft-fiók, és kapcsolja be a telefonos bejelentkezést:
 
-    - **Ha megjelenik a](media/user-help-auth-app-sign-in/icon.png)beállított ikon ![ikonja.** Ha ez az ikon a fiók neve mellett jelenik meg, az azt jelenti, hogy már beállította a telefonos bejelentkezést a fiókhoz. Előfordulhat, hogy a rendszer leküldéses értesítések hozzáadását kéri a fiókjához, így értesítést kaphat az alkalmazáson kívüli hitelesítési kérelmekről.
+    - **Ha megjelenik a![beállított ikon ikonja.](media/user-help-auth-app-sign-in/icon.png)** Ha ez az ikon a fiók neve mellett jelenik meg, az azt jelenti, hogy már beállította a telefonos bejelentkezést a fiókhoz. Előfordulhat, hogy a rendszer leküldéses értesítések hozzáadását kéri a fiókjához, így értesítést kaphat az alkalmazáson kívüli hitelesítési kérelmekről.
 
     - **Ha az alkalmazást kétfaktoros ellenőrzésre használta.** Ha már használta az alkalmazást és a kétfaktoros ellenőrzést, akkor válassza a fiók neve melletti legördülő nyilat, majd válassza a **telefonos bejelentkezés engedélyezése**lehetőséget.
 
