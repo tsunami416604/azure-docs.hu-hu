@@ -68,7 +68,7 @@ A társított REST-szolgáltatás a következő tulajdonságok támogatottak:
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | userName | A felhasználónév, a REST-végpont elérésére használhat. | Igen |
-| password | A felhasználó jelszava (a **felhasználónév** érték). Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| password | A felhasználó jelszava (a **userName** érték). Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 
 **Példa**
 
