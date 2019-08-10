@@ -8,14 +8,14 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: f21ab53b3beeead8cbd4ba781cd54b23420661f0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ed49d5763db4c9ffcb11d24dfa835c899d76aeec
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561011"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946194"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>Gyors útmutató: Rendszerkép-besorolási projekt létrehozása a Custom Vision go SDK-val
 
@@ -48,7 +48,7 @@ Hozzon létre egy *sample. go* nevű új fájlt a kívánt Project-címtárban.
 
 ### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
 
-Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba.
+Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. Tekintse meg a [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) metódust a projekt létrehozásakor a többi beállítás megadásához (az osztályozó webportál [összeállításával](getting-started-build-a-classifier.md) foglalkozó útmutatóban).
 
 ```go
 import(
@@ -98,7 +98,7 @@ cherryTag, _ := trainer.CreateTag(ctx, *project.ID, "Japanese Cherry", "Japanese
 
 ### <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
-A minta képek projekthez adásához, helyezze el a következő kódot a címke létrehozása után. Ez a kód a képeket a hozzájuk tartozó címkékkel együtt tölti fel. Az alap rendszerkép URL-címének elérési útját kell megadnia, amely alapján letöltötte a Cognitive Services go SDK Samples projektet.
+A minta képek projekthez adásához, helyezze el a következő kódot a címke létrehozása után. Ez a kód a képeket a hozzájuk tartozó címkékkel együtt tölti fel. Egyetlen kötegben akár 64 képet is feltölthet.
 
 > [!NOTE]
 > A lemezképek elérési útját módosítania kell, attól függően, hogy a Cognitive Services go SDK Samples projektet korábban letöltötte.

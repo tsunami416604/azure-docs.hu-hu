@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Pont CloudGuard Dome9 ív ellenőrizze az Azure Active Directory-integráció |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és az ellenőrzése pont CloudGuard Dome9 Arc között.
+title: 'Oktatóanyag: Azure Active Directory integráció a CloudGuard Dome9 Arcmal | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a CloudGuard Dome9 ív között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,212 +16,212 @@ ms.topic: tutorial
 ms.date: 06/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdaaab8257d3a79130902e1ba0466f9cf15484f4
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 240d962d56e4a2dc0758f3170c51b343d22ef98d
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147149"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944575"
 ---
-# <a name="tutorial-integrate-check-point-cloudguard-dome9-arc-with-azure-active-directory"></a>Oktatóanyag: Ellenőrzési pont CloudGuard Dome9 ív integrálása az Azure Active Directoryval
+# <a name="tutorial-integrate-check-point-cloudguard-dome9-arc-with-azure-active-directory"></a>Oktatóanyag: A CloudGuard Dome9-ív integrálása Azure Active Directory
 
-Ebben az oktatóanyagban megismerheti, hogyan pont CloudGuard Dome9 ív ellenőrzése integrálását Azure Active Directory (Azure AD) lesz. Ellenőrizze pont CloudGuard Dome9 ív integrálása az Azure ad-vel, akkor a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a CloudGuard Dome9-ívet a Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a CloudGuard Dome9-ívet, a következőket teheti:
 
-* Szabályozza, ki férhet hozzá pont CloudGuard Dome9 ív ellenőrizze az Azure AD-ben.
-* Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezve pont CloudGuard Dome9 ív ellenőrizze az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Vezérlés az Azure AD-ben, hogy ki férhet hozzá a CloudGuard Dome9-ív eléréséhez.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Point CloudGuard Dome9 arc és az Azure AD-fiókjaik használatával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként szüksége van a következő elemek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, hozzájuthat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* Ellenőrizze, hogy pont CloudGuard Dome9 ív egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* A jelölőnégyzetes CloudGuard Dome9 arc egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. Ellenőrizze a pont CloudGuard Dome9 ív támogatja **SP és IDP** által kezdeményezett egyszeri bejelentkezés.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. A CloudGuard Dome9 ív **az SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést támogatja.
 
-## <a name="adding-check-point-cloudguard-dome9-arc-from-the-gallery"></a>Ellenőrizze pont CloudGuard Dome9 ív hozzáadása a katalógusból
+## <a name="adding-check-point-cloudguard-dome9-arc-from-the-gallery"></a>Ellenőrzési pont CloudGuard Dome9 ív hozzáadása a katalógusból
 
-Ellenőrizze pont CloudGuard Dome9 ív integrálása az Azure AD beállítása, hozzá kell ellenőrizze pont CloudGuard Dome9 Arc a galériából a felügyelt SaaS-alkalmazások listájára.
+A CloudGuard Dome9-ív Azure AD-ba való integrálásának konfigurálásához hozzá kell adnia a CloudGuard Dome9 ív elemet a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
-1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
-1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
-1. Az a **Hozzáadás a katalógusból** területén írja be a **ellenőrizze pont CloudGuard Dome9 ív** kifejezést a keresőmezőbe.
-1. Válassza ki **ellenőrizze pont CloudGuard Dome9 ív** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **CloudGuard Dome9 ív** kifejezést a keresőmezőbe.
+1. Válassza a **jelölőnégyzet CloudGuard Dome9 ív** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Konfigurálás és tesztelés az Azure AD SSO ellenőrizze pont CloudGuard Dome9 Arc segítségével egy teszt nevű felhasználó **B.Simon**. Az SSO működjön kell pont CloudGuard Dome9 ív ellenőrizze az Azure AD-felhasználót és a kapcsolódó felhasználó közötti hivatkozás kapcsolatot hozhat létre.
+Konfigurálja és tesztelje az Azure AD SSO-t a CloudGuard Dome9-ív használatával egy **B. Simon**nevű teszt felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a CloudGuard Dome9-ív.
 
-Az Azure AD SSO ellenőrizze pont CloudGuard Dome9 ív tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
+Az Azure AD SSO konfigurálásához és teszteléséhez a jelölőnégyzetes CloudGuard Dome9 ív használatával végezze el a következő építőelemeket:
 
-1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Ellenőrizze pont CloudGuard Dome9 ív konfigurálása](#configure-check-point-cloudguard-dome9-arc)**  alkalmazás oldalán az egyszeri bejelentkezési beállításainak konfigurálására.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés az B.Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  B.Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre ellenőrizze pont CloudGuard Dome9 ív tesztfelhasználót](#create-check-point-cloudguard-dome9-arc-test-user)**  van egy megfelelője a B.Simon ellenőrizze pont CloudGuard Dome9 ív, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  ellenőrzése, hogy működik-e a konfiguráció.
+1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t, hogy a felhasználók használhatják ezt a funkciót.
+2. A **[CloudGuard Dome9-ív konfigurálása](#configure-check-point-cloudguard-dome9-arc)** az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+5. **[Hozzon létre egy ellenőrző pont CloudGuard Dome9 ív tesztelési felhasználót](#create-check-point-cloudguard-dome9-arc-test-user)** , hogy a "B. Simon" párja legyen a CloudGuard Dome9-ív, amely a felhasználó Azure ad-ábrázolásához van csatolva.
+6. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
+### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **ellenőrizze pont CloudGuard Dome9 ív** alkalmazás integrációs oldalán keresse meg a **kezelés** szakaszt, és válassza **egyszeri bejelentkezés** .
-1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
+1. A [Azure Portal](https://portal.azure.com/)a **jelölőnégyzet CloudGuard Dome9 arc** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
+4. Az alapszintű **SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://secure.dome9.com/`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://secure.dome9.com/`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://secure.dome9.com/sso/saml/yourcompanyname`
-
-    > [!NOTE]
-    > A vállalati név-érték a dome9 felügyeleti portálon, az oktatóanyag későbbi részében ismertetett kiválaszthatja.
-
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
-
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://secure.dome9.com/sso/saml/<yourcompanyname>`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://secure.dome9.com/sso/saml/yourcompanyname`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges válasz URL-cím és a bejelentkezési URL-CÍMÉT. Kapcsolattartó [ellenőrizze pont CloudGuard Dome9 ív ügyfél-támogatási csapatával](mailto:Dome9@checkpoint.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > A dome9 felügyeleti portálon ki kell választania a vállalat nevének értékét, amelyet az oktatóanyag későbbi részében ismertetünk.
 
-6. A Check Point CloudGuard Dome9 ív alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a felhasználói attribútumok párbeszédpanel.
+5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
+
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://secure.dome9.com/sso/saml/<yourcompanyname>`
+
+    > [!NOTE]
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. Az értékek beszerzéséhez forduljon a [CloudGuard Dome9 arc ügyfél-támogatási csapatához](mailto:Dome9@checkpoint.com) . Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+
+6. A CloudGuard Dome9 arc alkalmazás az SAML-jogcímeket egy adott formátumban várja, amelyhez egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
-7. Emellett a fent ellenőrizze pont CloudGuard Dome9 ív alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban: 
+7. A fentieken kívül a pipa CloudGuard Dome9 arc alkalmazás néhány további attribútumot vár az SAML-válaszban. A **felhasználó attribútumai** párbeszédpanel **felhasználói** jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon: 
 
-    | Name (Név) |  Adatforrás-attribútum|
+    | Name (Név) |  Forrás attribútum|
     | ---------------| --------------- |
-    | memberof | user.assignedroles |
+    | memberOf | User. assignedroles |
 
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
 
-    c. Hagyja a **Namespace** üres.
+    c. Hagyja üresen a **névteret** .
 
-    d. Válassza ki a forrás, **attribútum**.
+    d. Válassza a forrás **attribútumként**lehetőséget.
 
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
     f. Kattintson a **Ok**
 
     g. Kattintson a **Save** (Mentés) gombra.
 
-1. A a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén található **tanúsítvány (Base64)** válassza **letöltése** töltse le a tanúsítványt, és menti azt a számítógépet.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-1. Az a **ellenőrizze pont CloudGuard Dome9 ív beállítása** területén másolja a megfelelő URL-címe szerint.
+1. A **CloudGuard Dome9-ív beállítása** szakaszban másolja be a megfelelő URL-címeket a követelmény alapján.
 
-   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+   ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="configure-check-point-cloudguard-dome9-arc"></a>Configure Check Point CloudGuard Dome9 Arc
+### <a name="configure-check-point-cloudguard-dome9-arc"></a>A ellenőrzési pont CloudGuard Dome9 ív konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a ellenőrizze pont CloudGuard Dome9 ív vállalati hely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a pipa CloudGuard Dome9 arc vállalati webhelyre rendszergazdaként.
 
-2. Kattintson a a **Profilbeállítások** elemre a jobb felső sarokban, majd kattintson **fiókbeállításokat**. 
+2. Kattintson a jobb felső sarokban található **Profilbeállítások** lehetőségre, majd a **Fiókbeállítások**lehetőségre. 
 
-    ![Check Point CloudGuard Dome9 Arc Configuration](./media/dome9arc-tutorial/configure1.png)
+    ![Ellenőrzési pont CloudGuard Dome9 ív konfigurációja](./media/dome9arc-tutorial/configure1.png)
 
-3. Navigáljon a **SSO** majd **engedélyezése**.
+3. Navigáljon az **egyszeri bejelentkezéshez** , majd kattintson az **Engedélyezés**elemre.
 
-    ![Check Point CloudGuard Dome9 Arc Configuration](./media/dome9arc-tutorial/configure2.png)
+    ![Ellenőrzési pont CloudGuard Dome9 ív konfigurációja](./media/dome9arc-tutorial/configure2.png)
 
-4. Az egyszeri bejelentkezés konfigurációs szakaszban hajtsa végre az alábbi lépéseket:
+4. Az SSO-konfiguráció szakaszban hajtsa végre a következő lépéseket:
 
-    ![Check Point CloudGuard Dome9 Arc Configuration](./media/dome9arc-tutorial/configure3.png)
+    ![Ellenőrzési pont CloudGuard Dome9 ív konfigurációja](./media/dome9arc-tutorial/configure3.png)
 
-    a. Adja meg a cég neve a **Fiókazonosító** szövegmezőbe. Ezt az értéket, hogy a válasz-URL már említettük, az Azure Portalon használható **alapszintű SAML-konfigurációja** szakaszban.
+    a. Adja meg a vállalat nevét a **fiókazonosító** szövegmezőben. Ezt az értéket a Azure Portal alapszintű **SAML-konfiguráció** szakaszban említett válasz-URL-címben kell használni.
 
-    b. Az a **kibocsátó** szövegmezőbe, illessze be az értéket, **az Azure AD-azonosító**, amely az Azure Portalról másolta.
+    b. A **kiállító** szövegmezőbe illessze be az **Azure ad-azonosító**értékét, amelyet másolt a Azure Portal.
 
-    c. Az a **Idp-végpont URL-címe** szövegmezőbe, illessze be az értéket a **bejelentkezési URL-cím**, amely az Azure Portalról másolt.
+    c. A **identitásszolgáltató-végpont URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet másolt a Azure Portal.
 
-    d. Nyissa meg a letöltött Base64-kódolású tanúsítványt a Jegyzettömbben, a tartalmát a vágólapra másolja és illessze be azt a **X.509-tanúsítvány** szövegmezőbe.
+    d. Nyissa meg a letöltött Base64-kódolású tanúsítványt a Jegyzettömbben, másolja a vágólapra a tartalmát, majd illessze be az **X. 509 tanúsítvány** szövegmezőbe.
 
     e. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ebben a szakaszban az Azure Portalon B.Simon nevű tesztfelhasználó fog létrehozni.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 1. Válassza ki **új felhasználó** a képernyő tetején.
-1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
-   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban B.Simon által biztosított hozzáférés ellenőrzése pont CloudGuard Dome9 ív Azure egyszeri bejelentkezés használatához engedélyeznie kell.
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát, ha hozzáférést biztosít a CloudGuard Dome9-ív számára.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
-1. Az alkalmazások listájában jelölje ki a **ellenőrizze pont CloudGuard Dome9 ív**.
-1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **jelölőnégyzet CloudGuard Dome9 ív**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** párbeszédablakban válassza **B.Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
-1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-check-point-cloudguard-dome9-arc-test-user"></a>Ellenőrizze pont CloudGuard Dome9 ív tesztfelhasználó létrehozása
+### <a name="create-check-point-cloudguard-dome9-arc-test-user"></a>Ellenőrzési pont CloudGuard Dome9 ív tesztelési felhasználójának létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a pont CloudGuard Dome9 ív ellenőrizze, hogy ki kell építeni alkalmazásba. Ellenőrizze a pont CloudGuard Dome9 ív támogatja a just-in-time-kiépítés, de számára, hogy megfelelően működjön, a felhasználó rendelkezik, válassza ki az adott **szerepkör** és azonos hozzárendelése a felhasználóhoz.
+Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a CloudGuard Dome9-ívbe, az alkalmazásba kell azokat kiépíteni. A jelölőnégyzetes CloudGuard Dome9-ív támogatja az igény szerinti üzembe helyezést, de ahhoz, hogy megfelelően működjön, a felhasználónak ki kell választania egy adott szerepkört, és hozzá kell rendelnie azt a felhasználóhoz.
 
    >[!Note]
-   >A **szerepkör** létrehozása és egyéb részletek ügyfél [ellenőrizze pont CloudGuard Dome9 ív ügyfél-támogatási csapatával](mailto:Dome9@checkpoint.com).
+   >A **szerepkörök** létrehozásához és egyéb részletekért forduljon a következőhöz: [CloudGuard Dome9 arc ügyfél-támogatási csoport](mailto:Dome9@checkpoint.com).
 
-**Hozza létre manuálisan egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
+**Felhasználói fiók manuális üzembe helyezéséhez hajtsa végre a következő lépéseket:**
 
-1. Jelentkezzen be rendszergazdaként a ellenőrizze pont CloudGuard Dome9 ív vállalati webhely.
+1. Jelentkezzen be a CloudGuard Dome9 arc vállalati webhelyre rendszergazdaként.
 
-2. Kattintson a a **felhasználók és szerepkörök** majd **felhasználók**.
+2. Kattintson a **felhasználók & szerepkörök** elemre, majd kattintson a **felhasználók**elemre.
 
     ![Alkalmazott hozzáadása](./media/dome9arc-tutorial/user1.png)
 
-3. Kattintson a **felhasználó hozzáadása**.
+3. Kattintson a **felhasználó hozzáadása**elemre.
 
     ![Alkalmazott hozzáadása](./media/dome9arc-tutorial/user2.png)
 
-4. Az a **Create User** szakaszban, hajtsa végre az alábbi lépéseket:
+4. A **felhasználó létrehozása** szakaszban hajtsa végre a következő lépéseket:
 
     ![Alkalmazott hozzáadása](./media/dome9arc-tutorial/user3.png)
 
-    a. Az a **E-mail** szövegmezőbe írja be az e-mailt, felhasználó, például B.Simon@contoso.com.
+    a. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló B.Simon@contoso.come-mail címet.
 
-    b. Az a **Utónév** szövegmezőbe b például a felhasználó utóneve típusa
+    b. Az **Utónév** szövegmezőbe írja be a (z) "B" nevű felhasználó utónevét.
 
-    c. Az a **Vezetéknév** szövegmezőbe írja be a felhasználó például Simon vezetékneve.
+    c. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például Simon nevet.
 
-    d. Győződjön meg arról, **egyszeri bejelentkezési felhasználói** , **a**.
+    d. **Egyszeri bejelentkezéses felhasználó** bekapcsolása.
 
-    e. Kattintson a **létrehozás**.
+    e. Kattintson a **Létrehozás**gombra.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-A ellenőrizze pont CloudGuard Dome9 ív csempe kiválasztásakor a hozzáférési panelen, kell lennie automatikusan bejelentkezett ellenőrizze pont CloudGuard Dome9 ív, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen bejelöli a jelölőnégyzetes CloudGuard Dome9 ív csempét, akkor automatikusan be kell jelentkeznie a CloudGuard Dome9-ív számára, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -229,4 +229,4 @@ A ellenőrizze pont CloudGuard Dome9 ív csempe kiválasztásakor a hozzáféré
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

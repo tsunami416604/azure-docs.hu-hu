@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 069a0310d1baca4f1be3b5cda0d1e75fbcdfa4c4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 74f0a3c9c2d93eda35a364c9bac9d3aff7115312
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703472"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947263"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Oktatóanyag: A Key Vaultban tárolt SSL-tanúsítványokkal Linux rendszerű virtuális gép az Azure-ban a webkiszolgáló védelme
+# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Oktatóanyag: Webkiszolgáló védelme az Azure-ban található linuxos virtuális gépen az Key Vault tárolt SSL-tanúsítványokkal
 A webkiszolgálók védelméhez egy Secure Sockets Layer- (SSL-) tanúsítvánnyal titkosítható a webes adatforgalom. Ezek az SSL-tanúsítványok az Azure Key Vaultban tárolhatók, és lehetővé teszik a tanúsítványok biztonságos üzembe helyezését a Linux rendszerű virtuális gépeken az Azure-ban. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
@@ -50,7 +50,7 @@ Mielőtt létrehozhatna egy Key Vaultot és a tanúsítványokat, létre kell ho
 az group create --name myResourceGroupSecureWeb --location eastus
 ```
 
-Ezután hozzon létre egy Key Vaultot az [az keyvault create](/cli/azure/keyvault) paranccsal, és engedélyezze a használatát a virtuális gépek üzembe helyezésekor. Mindegyik Key Vaultnak egyedi névvel kell rendelkeznie, amely csak kisbetűkből állhat. Cserélje le  *\<mykeyvault >* a következő példában a saját egyedi Key Vault-névre:
+Ezután hozzon létre egy Key Vaultot az [az keyvault create](/cli/azure/keyvault) paranccsal, és engedélyezze a használatát a virtuális gépek üzembe helyezésekor. Mindegyik Key Vaultnak egyedi névvel kell rendelkeznie, amely csak kisbetűkből állhat. Cserélje le  *\<a mykeyvault >* a következő példában a saját egyedi Key Vault nevére:
 
 ```azurecli-interactive 
 keyvault_name=<mykeyvault>
@@ -78,7 +78,7 @@ secret=$(az keyvault secret list-versions \
           --vault-name $keyvault_name \
           --name mycert \
           --query "[?attributes.enabled].id" --output tsv)
-vm_secret=$(az vm secret format --secrets "$secret")
+vm_secret=$(az vm secret format --secrets "$secret" -g myResourceGroup --keyvault $keyvault_name)
 ```
 
 ### <a name="create-a-cloud-init-config-to-secure-nginx"></a>Cloud-init konfiguráció létrehozása az NGINX védelméhez
@@ -137,7 +137,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>A biztonságos webalkalmazás tesztelése
-Most nyisson meg egy webböngészőt, és adja meg *https:\/\/\<publicIpAddress >* címet a címsorba. Adja meg a saját nyilvános IP-címét, amelyet a virtuális gép létrehozásakor kapott. Fogadja el a biztonsági figyelmeztetést, ha önaláírt tanúsítványt használt:
+Most nyisson meg egy webböngészőt, és írja be a következőt *: https:\/\/\<publicIpAddress >* a címsorban. Adja meg a saját nyilvános IP-címét, amelyet a virtuális gép létrehozásakor kapott. Fogadja el a biztonsági figyelmeztetést, ha önaláírt tanúsítványt használt:
 
 ![Webböngésző biztonsági figyelmeztetésének elfogadása](./media/tutorial-secure-web-server/browser-warning.png)
 

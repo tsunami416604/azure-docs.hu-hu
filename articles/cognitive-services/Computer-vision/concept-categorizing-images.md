@@ -1,7 +1,7 @@
 ---
-title: Képek – Computer Vision kategorizálása
+title: Rendszerkép kategorizálása – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogy a lemezkép kategorizálási funkciója a Computer Vision API kapcsolatos fogalmakat.
+description: A Computer Vision API képkategorizálási funkciójával kapcsolatos fogalmak megismerése.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,28 +11,28 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 257da397e11843ee96e93f7b3e9bc5ada29822cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2b9b8da550d80b027da919ba0834e43e2c83d4b4
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60203322"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945312"
 ---
-# <a name="categorize-images-by-subject-matter"></a>Képek kategorizálása téma szerint
+# <a name="categorize-images-by-subject-matter"></a>Képek kategorizálása tárgy szerint
 
-Címkék és a egy leírást, mellett a Computer Vision észlelt a képet a besorolás-alapú kategóriák adja vissza. Ellentétben a címkék és kategóriák örökletes szülő-gyermek hierarchiában vannak rendezve, és kevesebb ilyen (ellentétben a címkék ezer 86). Alkalmazáskategória-neveket angolul jelennek meg. Kategorizálási teheti meg saját maga, vagy az újabb címke-modell mellett.
+A címkék és a leírások mellett Computer Vision a rendszerképben észlelt besorolási alapú kategóriákat adja vissza. A címkéktől eltérően a kategóriák egy szülő/gyermek örökletes hierarchiában vannak rendszerezve, és kevesebb van belőlük (86, több ezer címkével szemben). Az összes kategória neve angol nyelven van. A kategorizálás saját maga vagy az újabb címkék modellje mellett is elvégezhető.
 
 ## <a name="the-86-category-concept"></a>A 86 kategorizáló fogalom
 
-Számítógépes látástechnológia is kategorizálása kép széles körben vagy kifejezetten, 86 kategóriák listája segítségével az alábbi ábrán. Az elnevezések teljes, szöveges listáját a [Kategóriák elnevezései](category-taxonomy.md) oldalon találja meg.
+A számítógép-jövőkép a következő ábrán látható 86-kategóriák használatával széles körben kategorizálhatja a rendszerképet. Az elnevezések teljes, szöveges listáját a [Kategóriák elnevezései](category-taxonomy.md) oldalon találja meg.
 
-![a kategória besorolás minden kategória csoportosított listája](./Images/analyze_categories-v2.png)
+![A besorolási kategória összes kategóriájának csoportosított listája](./Images/analyze_categories-v2.png)
 
-## <a name="image-categorization-examples"></a>Kép kategorizálási példák
+## <a name="image-categorization-examples"></a>Példák a képek kategorizálására
 
-A következő JSON-választ mutatja be, milyen számítógépes Látástechnológiai ad vissza, ha a alapuló a vizuális jellemzőket példaképen kategorizálásához.
+A következő JSON-válasz azt szemlélteti, hogy milyen Computer Vision ad vissza, amikor a példa képének kategorizálása a vizualizáció tulajdonságai alapján történik.
 
-![Egy nő a tető egy apartman épület](./Images/woman_roof.png)
+![Egy lakás-épület tetején található nő](./Images/woman_roof.png)
 
 ```json
 {
@@ -51,15 +51,15 @@ A következő JSON-választ mutatja be, milyen számítógépes Látástechnoló
 }
 ```
 
-Az alábbi táblázatban egy jellemző kép beállítása és az egyes rendszerképek a Computer Vision által visszaadott kategória mutatja be.
+Az alábbi táblázat egy jellemző képkészletet és Computer Vision által visszaadott kategóriát mutat be minden egyes képhez.
 
 | Image | Category |
 |-------|----------|
-| ![Négy személyt együttesen, egy csomagcsalád feltételéről](./Images/family_photo.png) | people_group |
-| ![Egy grassy mező úgy ételadagot](./Images/cute_dog.png) | animal_dog |
-| ![Egy személy állandó az egy Hegyi rock napnyugta:](./Images/mountain_vista.png) | outdoor_mountain |
-| ![Egy táblán kenyér szerepkörök tárházát](./Images/bread.png) | food_bread |
+| ![Négy személy jelent együtt családként](./Images/family_photo.png) | people_group |
+| ![Egy kiskutya ült egy füves mezőben](./Images/cute_dog.png) | animal_dog |
+| ![A napnyugtakor egy hegyi sziklán álló személy](./Images/mountain_vista.png) | outdoor_mountain |
+| ![Egy halom kenyér szerepkörei egy táblán](./Images/bread.png) | food_bread |
 
 ## <a name="next-steps"></a>További lépések
 
-Fogalmak ismertetése [rendszerképek címkézése](concept-tagging-images.md) és [lemezképek leíró](concept-describing-images.md).
+Ismerje meg a [](concept-tagging-images.md) képek címkézésével és a [képek leírásával](concept-describing-images.md)kapcsolatos fogalmakat.

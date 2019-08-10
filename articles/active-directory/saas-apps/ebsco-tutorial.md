@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező EBSCO |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és EBSCO között.
+title: 'Oktatóanyag: Azure Active Directory integráció a EBSCO-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és EBSCO között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,153 +15,153 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: b6f1198334d8bd4ba58b4fbba02942fc8c54c578
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 35cb408473da8c6397c5034ae20ac0a50b0953ea
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442865"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944722"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező EBSCO
+# <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>Oktatóanyag: Azure Active Directory integráció a EBSCO
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan EBSCO integrálása az Azure Active Directory (Azure AD).
-EBSCO integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a EBSCO a Azure Active Directory (Azure AD) szolgáltatással.
+A EBSCO és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-* Szabályozhatja, ki férhet hozzá EBSCO Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve EBSCO (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a EBSCO.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a EBSCO (egyszeri bejelentkezés) az Azure AD-fiókokkal.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-EBSCO az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció EBSCO való konfigurálásához a következő elemek szükségesek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* EBSCO egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) szerezhet be
+* EBSCO egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Támogatja a EBSCO **SP** és **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+* A EBSCO támogatja az **SP** és a **identitásszolgáltató** által kezdeményezett SSO
 
-* Támogatja a EBSCO **igény szerinti** felhasználók átadása
+* A EBSCO **csak időben támogatja a** felhasználók kiépítési folyamatát
 
-## <a name="adding-ebsco-from-the-gallery"></a>EBSCO hozzáadása a katalógusból
+## <a name="adding-ebsco-from-the-gallery"></a>EBSCO hozzáadása a gyűjteményből
 
-Az Azure AD integrálása a EBSCO konfigurálásához hozzá kell EBSCO a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A EBSCO Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a EBSCO a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**EBSCO hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**Ha EBSCO szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)** , a bal oldali navigációs panelen, kattintson a **Azure Active Directory** ikonra.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson a **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **EBSCO**, jelölje be **EBSCO** az eredmény panelen, majd kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a **EBSCO**kifejezést, válassza az **EBSCO** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Az eredmények listájában EBSCO](common/search-new-app.png)
+     ![EBSCO az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az EBSCO nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó EBSCO hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az EBSCO-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a EBSCO kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-Az Azure AD egyszeri bejelentkezés az EBSCO tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés EBSCO való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[EBSCO egyszeri bejelentkezés konfigurálása](#configure-ebsco-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. **[EBSCO egyszeri bejelentkezés konfigurálása](#configure-ebsco-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre EBSCO tesztfelhasználót](#create-ebsco-test-user)**  – egy megfelelője a Britta Simon EBSCO, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+5. **[Hozzon létre EBSCO-teszt felhasználót](#create-ebsco-test-user)** – hogy a EBSCO Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés EBSCO, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezés EBSCO való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **EBSCO** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. A [Azure Portal](https://portal.azure.com/) **EBSCO** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az alapszintű SAML- **konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre a következő lépést:
+4. Az alapszintű **SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépést:
 
-    ![EBSCO tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-identifier.png)
+    ![EBSCO tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-identifier.png)
 
-    Az a **azonosító** szövegmezőbe írja be egy URL-címe:  `pingsso.ebscohost.com`
+    Az **azonosító** szövegmezőbe írja be az URL-címet:`pingsso.ebscohost.com`
 
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     ![image](common/both-preintegrated-signon.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://search.ebscohost.com/login.aspx?authtype=sso&custid=<unique EBSCO customer ID>&profile=<profile ID>`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://search.ebscohost.com/login.aspx?authtype=sso&custid=<unique EBSCO customer ID>&profile=<profile ID>`
 
     > [!NOTE]
-    > A bejelentkezési URL-érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [EBSCO ügyfél-támogatási csapatának](mailto:sso@ebsco.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > A bejelentkezési URL-cím értéke nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a [EBSCO](mailto:sso@ebsco.com) ügyfélszolgálati csapatához. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
     o **egyedi elemek:**  
 
-    o **Custid** adjon meg egyedi EBSCO ügyfél-azonosító = 
+    o **CustId** = egyedi EBSCO-ügyfél azonosítójának megadása 
 
-    o **profil** = ügyfelek testre szabhatnak a hivatkozásra kattintva a felhasználó egy adott profilhoz (attól függően, mire azok vásárolhatnak EBSCO). Megadhatják, hogy egy adott profil. A fő azonosítók a következők: eds (EBSCO Discovery szolgáltatás) és ehost (EBSOCOhost adatbázisok). Utasítások a [Itt](https://help.ebsco.com/interfaces/EBSCOhost/EBSCOhost_FAQs/How_do_I_set_up_direct_links_to_EBSCOhost_profiles_and_or_databases#profile).
+    o **profil** = az ügyfelek testre szabhatók a hivatkozás, hogy egy adott profilhoz irányítsák a felhasználókat (attól függően, hogy mit vásárolnak a EBSCO). Megadhatnak egy adott profil-azonosítót. A fő azonosítók az EDS (EBSCO Discovery Service) és a ehost (EBSOCOhost-adatbázisok). Az itt megjelenő utasításokat [itt](https://help.ebsco.com/interfaces/EBSCOhost/EBSCOhost_FAQs/How_do_I_set_up_direct_links_to_EBSCOhost_profiles_and_or_databases#profile)találja.
 
-6. EBSCO alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+6. A EBSCO alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
      > [!Note]
-    > A **neve** attribútum kötelező, és az le van képezve **Névazonosító érték** EBSCO alkalmazásban. Ez hozzáadódik alapértelmezés szerint, így nem kell manuálisan adja hozzá ezt.
+    > A **Name** attribútum kötelező, és a EBSCO alkalmazásban a **Name Identifier érték** van leképezve. Ez alapértelmezés szerint hozzá van adva, így nem kell manuálisan hozzáadnia.
 
-7. Emellett a fentiekben EBSCO alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban: 
+7. A fentieken kívül a EBSCO alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói** jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon: 
 
-    | Name (Név) | Adatforrás-attribútum|
+    | Name (Név) | Forrás attribútum|
     | ---------------| --------------- |    
-    | FirstName   | user.givenname |
-    | LastName   | user.surname |
-    | E-mail   | user.mail |
+    | FirstName   | User. givenName |
+    | LastName   | felhasználó. vezetéknév |
+    | Email   | user.mail |
 
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
 
-    c. Hagyja a **Namespace** üres.
+    c. Hagyja üresen a **névteret** .
 
-    d. Válassza ki a forrás, **attribútum**.
+    d. Válassza a forrás **attribútumként**lehetőséget.
 
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
     f. Kattintson a **Save** (Mentés) gombra.
 
-8. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+8. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-9. Az a **EBSCO beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+9. A **EBSCO beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
@@ -171,7 +171,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés EBSCO, hajtsa végre
 
 ### <a name="configure-ebsco-single-sign-on"></a>EBSCO egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **EBSCO** oldalon kell küldenie a letöltött **metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [EBSCO támogatási csoportjának](mailto:sso@ebsco.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Ha az egyszeri bejelentkezést szeretné konfigurálni a **EBSCO** oldalon, el kell küldenie a letöltött **metaadatok XML** -fájlját és a megfelelő másolt url-címeket a Azure Portalról a [EBSCO támogatási csapatához](mailto:sso@ebsco.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -189,67 +189,67 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. Az a **felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extensiona nevet. Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés EBSCO Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a EBSCO hozzáférésének biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **EBSCO**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **EBSCO**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **EBSCO**.
+2. Az alkalmazások listában válassza a **EBSCO**lehetőséget.
 
-    ![Az alkalmazások listáját a EBSCO hivatkozásra](common/all-applications.png)
+    ![Az EBSCO hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
     ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
 5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-ebsco-test-user"></a>EBSCO tesztfelhasználó létrehozása
+### <a name="create-ebsco-test-user"></a>EBSCO-tesztelési felhasználó létrehozása
 
-EBSCO, esetén felhasználókiépítés automatikusan sor kerül.
+A EBSCO esetében a felhasználók kiosztása automatikus.
 
-**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
+**Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:**
 
-Az Azure AD EBSCO alkalmazás továbbítja a szükséges adatokat. EBSCO a felhasználók átadásának lehet automatikus vagy egy egyszeri űrlap szükséges. Attól függ, hogy rendelkezik-e az ügyfél nagy mennyiségű előre meglévő EBSCOhost fiók személyes beállítások mentve. Ugyanaz az ezekről is a [EBSCO támogatási csoportjának](mailto:sso@ebsco.com) végrehajtása során. Mindkét módszer esetén a tesztelés előtt minden EBSCOhost fiókokat hozhat létre az ügyfél nem rendelkezik.
+Az Azure AD továbbítja a szükséges EBSCO alkalmazást. A EBSCO felhasználó-kiépítés lehet automatikus, vagy egy egyszeri űrlapra van szükség. Attól függ, hogy az ügyfél rendelkezik-e sok olyan meglévő EBSCOhost-fiókkal, amelyeken személyes beállítások lettek mentve. Ugyanezt a [EBSCO támogatási csapatával](mailto:sso@ebsco.com) is megvitathatja a megvalósítás során. Mindkét esetben az ügyfélnek nem kell EBSCOhost-fiókokat létrehoznia a tesztelés előtt.
 
    >[!Note]
-   >EBSCOhost kiépítés felhasználó/személyre szabása automatizálható. Kapcsolattartó [EBSCO támogatási csoportjának](mailto:sso@ebsco.com) kapcsolatos Just-In-Time felhasználóátadást készíthet elő. 
+   >Automatizálhatja a EBSCOhost-felhasználók üzembe helyezését vagy személyre szabását. Az igény szerinti felhasználói üzembe helyezéssel kapcsolatban forduljon a [EBSCO ügyfélszolgálatához](mailto:sso@ebsco.com) . 
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-1. Ha a hozzáférési panelen a EBSCO csempére kattint, meg kell lekérése automatikusan bejelentkezett az EBSCO alkalmazáshoz.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
+1. Ha a hozzáférési panelen a EBSCO csempére kattint, a rendszer automatikusan bejelentkezett a EBSCO alkalmazásba.
+További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/active-directory-saas-access-panel-introduction.md).
 
-2. Miután bejelentkezett az alkalmazásba, kattintson a a **jelentkezzen be a** gombra a jobb felső sarokban.
+2. Miután bejelentkezett az alkalmazásba, kattintson a jobb felső sarokban található **Bejelentkezés** gombra.
 
-    ![A EBSCO bejelentkezési alkalmazásainak listájában](./media/ebsco-tutorial/tutorial_ebsco_signin.png)
+    ![Az EBSCO-bejelentkezés az alkalmazások listájában](./media/ebsco-tutorial/tutorial_ebsco_signin.png)
  
-3. Párosítsa az intézményi SAML/bejelentkezés egyszeri felszólítást kapni fog egy **most már az intézmény fiókkal összekapcsolni MyEBSCOhost fiókját** vagy **MyEBSCOhost új fiók létrehozása és a hivatkozás a intézményi fiókot**. A fiók személyre szabása, a EBSCOhost alkalmazására szolgál. Válassza a **hozzon létre egy új fiókot** és látni fogja, hogy az űrlap személyre szabáshoz előre kitöltött a saml-válasz értékekkel-e az alábbi képernyőképen látható módon. Kattintson a **"Folytatás"** a mentéshez.
+3. A rendszer egyszeri kérést kap az intézményi/SAML-bejelentkezés összepárosításához, amely egy **meglévő MyEBSCOhost-fiókjának az intézmény-fiókjához való csatolását** veszi igénybe, vagy **létrehoz egy új MyEBSCOhost-fiókot, és összekapcsolja azt az intézmény fiókjával**. A fiók a EBSCOhost alkalmazás személyre szabására szolgál. Válassza az **új fiók létrehozása** lehetőséget, és látni fogja, hogy a személyre szabás űrlapja előre be van töltve az SAML-válaszból származó értékekkel, ahogy az alábbi képernyőképen is látható. A kijelölés mentéséhez kattintson a **"Folytatás"** gombra.
     
-     ![Az alkalmazások listáját a EBSCO felhasználó](./media/ebsco-tutorial/tutorial_ebsco_user.png)
+     ![A EBSCO felhasználó az alkalmazások listájában](./media/ebsco-tutorial/tutorial_ebsco_user.png)
 
-1. A fenti beállítás befejezése után törölje a jelet a cookie-k/gyorsítótár és a bejelentkezési újra. Nem kell manuálisan jelentkezzen be újra, és a személyre szabási beállításait a rendszer megjegyezze őket
+1. A fenti beállítás befejezése után törölje a cookie-k/gyorsítótár és a bejelentkezés újbóli beírását. Nem kell manuálisan bejelentkeznie, és a rendszer megjegyezi a személyre szabási beállításokat.
 
 ## <a name="additional-sesources"></a>További sesources
 
@@ -257,5 +257,5 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

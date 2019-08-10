@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0725988ff88baea2458f0a5e459440874e66088
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 579a553f151cf34215af3188cfddada6da42e691
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596441"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943631"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Oktatóanyag: Az Oracle felhőalapú infrastruktúra-konzol integrálása Azure Active Directory
 
@@ -101,13 +101,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-1. Az Oracle Cloud Infrastructure Console alkalmazás megadott formátumban várja az SAML-jogcímeket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
+1. Az Oracle Cloud Infrastructure Console alkalmazás megadott formátumban várja az SAML-jogcímeket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 
    ![image](common/edit-attribute.png)
 
-1. A fentieken kívül az Oracle Cloud Infrastructure Console alkalmazás néhány további attribútumot vár az SAML-válaszba való visszatéréshez. A **csoport jogcímek (előzetes verzió)**  párbeszédpanel **felhasználói attribútumok &**  jogcímek szakaszában hajtsa végre a következő lépéseket:
+1. A fentieken kívül az Oracle Cloud Infrastructure Console alkalmazás néhány további attribútumot vár az SAML-válaszba való visszatéréshez. A **csoport jogcímek (előzetes verzió)** párbeszédpanel **felhasználói attribútumok &** jogcímek szakaszában hajtsa végre a következő lépéseket:
 
-   1. Kattintson a  **név azonosító érték**melletti tollra.
+   1. Kattintson a **név azonosító érték**melletti tollra.
 
    1. Válassza az **állandó** lehetőséget a **név azonosító formátumának**kiválasztása lehetőségnél.
  

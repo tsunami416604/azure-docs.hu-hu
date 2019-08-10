@@ -8,14 +8,14 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 306f812ab10c0ef247fdc1201e7df2a23b949a54
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7f43507566109a52b914f27e37e5392345ec2eaf
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564173"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946169"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Gyors útmutató: Objektum-észlelési projekt létrehozása a Custom Vision Node. js SDK-val
 
@@ -87,7 +87,7 @@ Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a köve
 
 Ha képeket címkéz meg az objektumészlelési projektekben, meg kell adnia a címkével ellátott objektumok régióját a normalizált koordináták használatával.
 
-A képek, címkék és régiók projekthez való hozzáadásához szúrja be az alábbi kódot a címke létrehozása után. Vegye észre, hogy ebben az oktatóanyagban a régiókat a kódon belül fixen beprogramoztuk. A régiók normalizált koordinátákban adják meg a határolókeretet, és a következő sorrendben adják meg a koordinátákat: bal oldali, felső, szélesség, magasság.
+A képek, címkék és régiók projekthez való hozzáadásához szúrja be az alábbi kódot a címke létrehozása után. Vegye észre, hogy ebben az oktatóanyagban a régiókat a kódon belül fixen beprogramoztuk. A régiók normalizált koordinátákban adják meg a határolókeretet, és a következő sorrendben adják meg a koordinátákat: bal oldali, felső, szélesség, magasság. Egyetlen kötegben akár 64 képet is feltölthet.
 
 ```javascript
 const forkImageRegions = {

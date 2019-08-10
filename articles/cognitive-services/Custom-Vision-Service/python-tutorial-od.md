@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 2994d696f463c32ed05fd42b694f29fa2035b9d2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e5de456cb4f5779cbef58ffaf0ccb89e9e9134e0
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564150"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946120"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>Gyors útmutató: Objektum-észlelési projekt létrehozása a Custom Vision Python SDK-val
 
@@ -46,7 +46,7 @@ Hozzon létre egy új fájlt *sample.py* néven a használni kívánt projektkö
 
 ### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
 
-Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. Az objektum-észlelés és a képbesorolási projekt létrehozása közötti különbség a **create_project** -hívásban megadott tartomány.
+Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. Tekintse meg a [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) metódust a projekt létrehozásakor a további beállítások megadásához (lásd: a detektor webportáljának [összeállítása](get-started-build-detector.md) útmutató).  
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
@@ -135,7 +135,7 @@ scissors_image_regions = {
 }
 ```
 
-Ezután használja ezt a társítási térképet a mintaképek feltöltéséhez a régiókoordinátáikkal együtt. Adja hozzá a következő kódot.
+Ezután a társítások ezen térképével feltöltheti az egyes mintaképeket a régió koordinátáival (legfeljebb 64 lemezképet tölthet fel egyetlen kötegben). Adja hozzá a következő kódot.
 
 ```Python
 # Update this with the path to where you downloaded the images.

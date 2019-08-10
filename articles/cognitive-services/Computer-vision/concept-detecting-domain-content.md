@@ -1,7 +1,7 @@
 ---
-title: Tartomány-specifikus tartalommal – a Computer Vision észlelése
+title: Tartományi specifikus tartalom – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan adjon meg egy képet kategorizálási tartományt kép részletesebb információt ad vissza.
+description: Megtudhatja, hogyan adhat meg egy képkategorizálási tartományt a képekkel kapcsolatos részletesebb információk visszaadásához.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e4b64e00f71768a8821c83a73b019f77089e1b3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368075"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946339"
 ---
-# <a name="detect-domain-specific-content"></a>Tartomány-specifikus tartalom észlelése
+# <a name="detect-domain-specific-content"></a>Tartományra jellemző tartalom észlelése
 
-Emellett a címkézési és a magas szintű kategorizálási, Computer Vision is támogatja a további speciális adatokon, amely rendelkezik betanítva modellek használatával tartomány-specifikus elemzés.
+A címkézés és a magas szintű kategorizálás mellett a Computer Vision a speciális adatokra képzett modellekkel is támogatja a további, tartományra jellemző elemzéseket.
 
-A tartományspecifikus modellek használata két módja van: magukat (hatókörön belüli elemzés), akár a kategorizálási funkció továbbfejlesztése.
+A tartományszintű modelleket kétféleképpen használhatja: önmagukban (hatókörön belüli elemzés) vagy a kategorizálási funkció fejlesztésével.
 
 ### <a name="scoped-analysis"></a>Hatókörön belüli elemzés
 
-Csak a kiválasztott tartomány-specifikus modellt használó meghívásával kép elemezheti a [modellek /\<modell\>/elemzése](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API-t.
+A képeket a models [\</Model\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API meghívásával elemezheti úgy, hogy csak a kiválasztott tartományhoz tartozó modellt használja.
 
-Az alábbiakban a minta által visszaadott JSON-választ a **modellek, hírességek és elemzése** API a megadott lemezkép:
+Az alábbi példa egy, a **modell/hírességek/elemzés** API által visszaadott JSON-választ ad vissza az adott rendszerképhez:
 
-![Satya Nadella állandó, mosolygó](./images/satya.jpeg)
+![Németh Beáta állandó, mosolygós](./images/satya.jpeg)
 
 ```json
 {
@@ -55,13 +55,13 @@ Az alábbiakban a minta által visszaadott JSON-választ a **modellek, híressé
 }
 ```
 
-### <a name="enhanced-categorization-analysis"></a>Továbbfejlesztett kategorizálási elemzése
+### <a name="enhanced-categorization-analysis"></a>Továbbfejlesztett kategorizálási elemzés
 
-Tartomány-specifikus modellek használatával általános képelemzés kiegészítésére. Részeként ehhez [magas szintű kategorizálási](concept-categorizing-images.md) adja meg a tartomány-specifikus modelleket a *részletek* paraméterében a [elemzés](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-hívás.
+Az általános képelemzés kiegészítéseként a tartományra jellemző modelleket is használhatja. Ezt a [magas szintű kategorizálás](concept-categorizing-images.md) részeként úgy teheti meg, hogy a tartományra jellemző modelleket az elemzési API-hívás [](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) *részleteit* tartalmazó paraméterben megadja.
 
-Ebben az esetben a 86 kategóriaelnevezési osztályozó először neve. Ha észlelt kategóriákra rendelkezik a megfelelő tartomány-specifikus modellek, a lemezkép átadott is a modell és az eredmények kerülnek.
+Ebben az esetben az 86 kategóriába tartozó taxonómia-osztályozó a neve első. Ha az észlelt kategóriák bármelyike megfelel a tartományra jellemző modellnek, a rendszer átadja a rendszerképet a modellnek, és hozzáadja az eredményeket is.
 
-A következő JSON-válasz bemutatja, hogyan tartomány-specifikus elemzését is meg lehet adni, mint a `detail` egy szélesebb körű kategorizálási elemzési csomópontja.
+A következő JSON-válasz azt mutatja be, hogy a tartomány-specifikus elemzések hogyan szerepelhetnek a `detail` szélesebb kategorizálási elemzések csomópontjaiban.
 
 ```json
 "categories":[
@@ -96,16 +96,16 @@ A következő JSON-válasz bemutatja, hogyan tartomány-specifikus elemzését i
 ]
 ```
 
-## <a name="list-the-domain-specific-models"></a>A tartományspecifikus modellek listáját
+## <a name="list-the-domain-specific-models"></a>A tartományhoz tartozó modellek listázása
 
-Számítógépes Látástechnológia jelenleg a következő tartomány-specifikus modelleket támogatja:
+A Computer Vision jelenleg a következő tartományszintű modelleket támogatja:
 
 | Name (Név) | Leírás |
 |------|-------------|
-| hírességek | Hírességek felismerése, támogatja a lemezképek besorolni a `people_` kategória |
-| Arcrész | Tereptárgyak felismerése, támogatja a lemezképek besorolni a `outdoor_` vagy `building_` kategóriák |
+| hírességek | Híresség-felismerés, a `people_` kategóriába sorolt rendszerképek esetén támogatott. |
+| arcrész | A tereptárgyak felismerése, amely a `outdoor_` vagy `building_` kategóriába sorolt rendszerképek esetén támogatott |
 
-Hívása a [modellek](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) API ad vissza, ez az információ, amelyhez alkalmazhat az egyes kategóriák együtt:
+A [models](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) API meghívása ezeket az információkat az egyes modellek által alkalmazható kategóriákkal együtt fogja visszaadni:
 
 ```json
 {
@@ -139,4 +139,4 @@ Hívása a [modellek](https://westus.dev.cognitive.microsoft.com/docs/services/5
 
 ## <a name="next-steps"></a>További lépések
 
-Tudnivalók a fogalmak [lemezképek kategorizálásához](concept-categorizing-images.md).
+A [képek kategorizálásával](concept-categorizing-images.md)kapcsolatos fogalmak megismerése.

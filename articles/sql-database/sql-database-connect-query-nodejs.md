@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
-ms.openlocfilehash: 4a99acaaae0c0efee61d97605a81d74549e02509
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 72e509a9a7f820c26895bdfac9216b0373729f6c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569205"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947101"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Gyors útmutató: Node.js használata Azure SQL-adatbázis lekérdezéséhez
 
@@ -56,13 +56,13 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Navigáljon az **SQL-adatbázisok** vagy az **SQL-felügyelt példányok** lapra.
+2. Nyissa meg az **SQL-adatbázisok** vagy az SQL-felügyelt **példányok** lapot.
 
 3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett egyetlen adatbázishoz vagy a felügyelt példányhoz tartozó **gazdagép** melletti teljes kiszolgálónévhez. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont. 
 
 ## <a name="create-the-project"></a>A projekt létrehozása
 
-Nyisson meg egy parancssort, és hozzon létre egy *sqltest* nevű mappát. Keresse meg a létrehozott mappát, és futtassa a következő parancsot:
+Nyisson meg egy parancssort, és hozzon létre egy *sqltest* nevű mappát. Nyissa meg a létrehozott mappát, és futtassa a következő parancsot:
 
   ```bash
   npm init -y

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Optimizely |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Optimizely között.
+title: 'Oktatóanyag: Azure Active Directory integráció optimalizálása | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és optimalizálva.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,49 +15,49 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: bf4f1a08c4356a68db5315b7563adb3b6c884d41
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2e25c615e040dd4359e278b95045fbc71ca60ef1
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095505"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943960"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Optimizely
+# <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Oktatóanyag: Azure Active Directory integráció optimalizálása
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Optimizely integrálása az Azure Active Directory (Azure AD).
-Optimizely integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az optimalizálható Azure Active Directory (Azure AD) használatával.
+Az Azure AD-val való optimális integráció az alábbi előnyöket nyújtja:
 
-* Szabályozhatja, ki férhet hozzá Optimizely Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Optimizely (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Az Azure AD-ben beállíthatja, hogy a szolgáltatás optimalizálható legyen.
+* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezve legyenek az Azure AD-fiókokkal optimalizálva (egyszeri bejelentkezés).
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Optimizely az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció optimalizálással való konfigurálásához a következő elemek szükségesek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Optimizely egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* Az egyszeri bejelentkezést engedélyező előfizetés optimalizálása
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Támogatja a Optimizely **SP** által kezdeményezett egyszeri bejelentkezés
+* Az **SP** által kezdeményezett egyszeri bejelentkezés optimalizálása
 
-## <a name="adding-optimizely-from-the-gallery"></a>Optimizely hozzáadása a katalógusból
+## <a name="adding-optimizely-from-the-gallery"></a>Optimalizálás a katalógusból
 
-Az Azure AD integrálása a Optimizely konfigurálásához hozzá kell Optimizely a katalógusból a felügyelt SaaS-alkalmazások listájára.
+Az Azure AD-be való optimalizálása integrálásának konfigurálásához optimalizálni kell a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Optimizely hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**Ha optimalizálni szeretné a gyűjteményt a katalógusból, hajtsa végre a következő lépéseket:**
 
 1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
@@ -65,88 +65,88 @@ Az Azure AD integrálása a Optimizely konfigurálásához hozzá kell Optimizel
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Optimizely**válassza **Optimizely** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a következőt: **optimalizálás**, válassza az **optimalizálás** az eredmények panelen lehetőséget, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Az eredmények listájában Optimizely](common/search-new-app.png)
+     ![Optimalizálás az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Optimizely nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Optimizely hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés konfigurálását és tesztelését optimalizálja a **Britta Simon**nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez szükség van egy Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat létesítésére.
 
-Az Azure AD egyszeri bejelentkezés az Optimizely tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés optimalizálással történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Optimizely egyszeri bejelentkezés konfigurálása](#configure-optimizely-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. Az **[optimalizált egyszeri bejelentkezés konfigurálása](#configure-optimizely-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Optimizely tesztfelhasználót](#create-optimizely-test-user)**  – egy megfelelője a Britta Simon Optimizely, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+5. **[Optimalizálással tesztelheti a felhasználót](#create-optimizely-test-user)** , hogy a Britta Simon-nek a felhasználó Azure ad-képviseletéhez kapcsolódó, optimalizálás alatt álló partnere legyen.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Optimizely, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezés optimalizálással történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Optimizely** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. Az [Azure Portal](https://portal.azure.com/)az alkalmazás-integráció **optimalizálása** lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
 3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. Az alapszintű **SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Optimizely tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
+    ![A tartomány és az URL-címek egyszeri bejelentkezési adatainak optimalizálása](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://app.optimizely.net/<instance name>`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://app.optimizely.net/<instance name>`
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `urn:auth0:optimizely:contoso`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`urn:auth0:optimizely:contoso`
 
     > [!NOTE]
-    > Ezek az értékek nem a valós. A tényleges bejelentkezési URL-cím és az azonosítója, az oktatóanyag későbbi részében ismertetett frissíteni az értéket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek az értékek nem valódiak. A tényleges bejelentkezési URL-címmel és azonosítóval frissíti az értéket, amelyet később az oktatóanyagban talál. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Optimizely alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+5. Az optimalizált alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
-6. Emellett a fentiekben Optimizely alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
+6. A fentieken kívül az alkalmazás optimalizálása néhány további attribútumot vár az SAML-válaszban. A **felhasználó attribútumai** párbeszédpanel **felhasználói** jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Name (Név) | Adatforrás-attribútum |
+    | Name (Név) | Forrás attribútum |
     | ---------------| --------------- |
     | email | user.mail |
     
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
 
-    c. Hagyja a **Namespace** üres.
+    c. Hagyja üresen a **névteret** .
 
-    d. Válassza ki a forrás, **attribútum**.
+    d. Válassza a forrás **attribútumként**lehetőséget.
 
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
     f. Kattintson a **Ok**
 
     g. Kattintson a **Save** (Mentés) gombra.
 
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-6. Az a **Optimizely beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+6. A **beállítás optimalizálásával** szakaszban másolja a megfelelő URL-címeket a követelmények szerint.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
@@ -154,25 +154,25 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Optimizely, hajtsa v
 
     c. Kijelentkezési URL
 
-### <a name="configure-optimizely-single-sign-on"></a>Optimizely egyszeri bejelentkezés konfigurálása
+### <a name="configure-optimizely-single-sign-on"></a>Az optimalizált egyszeri bejelentkezés konfigurálása
 
-1. Az egyszeri bejelentkezés konfigurálása **Optimizely** oldalán, lépjen kapcsolatba Ügyfélmenedzserével Optimizely, és adja meg a letöltött **tanúsítvány (Base64)** és a megfelelő másolt URL-címeket.
+1. Az egyszeri bejelentkezés optimalizálási oldalon való konfigurálásához lépjen kapcsolatba az optimalizálási fiók kezelőjével, és adja meg a letöltött **tanúsítvány (Base64)** és a megfelelő másolt URL-címeket.
 
-2. Az e-mailben válaszul Optimizely biztosít a bejelentkezési URL-cím (SP által kezdeményezett egyszeri Bejelentkezést) és azonosítója (Service Provider entitás azonosítója) értékeit.
+2. Az e-mailekre adott válaszként optimalizálja a bejelentkezési URL-címet (SP által kezdeményezett SSO) és az azonosítót (szolgáltatói entitás AZONOSÍTÓját).
 
-    a. Másolás a **SP által kezdeményezett egyszeri bejelentkezési URL-cím** megadott Optimizely, és illessze be azokat a **bejelentkezési URL-** szövegmezőjébe **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    a. Másolja az optimalizálással megadott **SP-kezdeményező SSO URL-címet** , és illessze be a **bejelentkezési URL** szövegmezőbe az alapszintű **SAML-konfiguráció** szakaszának Azure Portal.
 
-    b. Másolás a **Service Provider Entitásazonosító** megadott Optimizely, és illessze be azokat a **azonosító** szövegmezőjébe **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    b. Másolja az optimalizálással megadott **szolgáltatói entitás azonosítóját** , és illessze be az alapszintű **SAML-konfiguráció** szakasz **azonosító** szövegmezőbe Azure Portal.
 
-3. Egy másik böngészőablakban bejelentkezés Optimizely alkalmazását.
+3. Egy másik böngészőablakban jelentkezzen be az optimalizált alkalmazásba.
 
-4. Kattintson a jobb sarokban található fiók felső neve, majd **fiókbeállításokat**.
+4. Kattintson a jobb felső sarokban a fiók nevére, majd a **Fiókbeállítások**lehetőségre.
 
-    ![Az Azure AD egyszeri bejelentkezés](./media/optimizely-tutorial/tutorial_optimizely_09.png)
+    ![Azure AD egyszeri bejelentkezés](./media/optimizely-tutorial/tutorial_optimizely_09.png)
 
-5. A fiók lapon jelölje be a jelölőnégyzetet **SSO engedélyezése** az egyszeri bejelentkezést az alatt a **áttekintése** szakaszban.
+5. A fiók lapon jelölje be az egyszeri bejelentkezés **engedélyezése** jelölőnégyzetet az **Áttekintés** szakaszban.
   
-    ![Az Azure AD egyszeri bejelentkezés](./media/optimizely-tutorial/tutorial_optimizely_10.png)
+    ![Azure AD egyszeri bejelentkezés](./media/optimizely-tutorial/tutorial_optimizely_10.png)
 
 6. Kattintson a **Save** (Mentés) gombra
 
@@ -192,62 +192,62 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Optimizely Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést az optimalizáláshoz való hozzáférés biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Optimizely**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd kattintson az **optimalizálás**lehetőségre.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Optimizely**.
+2. Az alkalmazások listában válassza az **optimalizálás**lehetőséget.
 
-    ![Az alkalmazások listáját a Optimizely hivatkozásra](common/all-applications.png)
+    ![Az alkalmazások listájának optimalizálási hivatkozása](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
     ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
 5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-optimizely-test-user"></a>Optimizely tesztfelhasználó létrehozása
+### <a name="create-optimizely-test-user"></a>Optimalizálási teszt felhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Optimizely hoz létre.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre optimalizálva.
 
-1. A kezdőlapon válassza **közreműködők** fülre.
+1. A Kezdőlap lapon válassza a **közreműködők** fület.
 
-2. Kattintson az új közreműködő hozzáadása a projekthez, **új közreműködő**.
+2. Ha új közreműködőt szeretne hozzáadni a projekthez, kattintson az **új közreműködő**elemre.
    
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/optimizely-tutorial/create_aaduser_10.png)
 
-3. Adja meg az e-mail-cím, és hozzárendelheti őket egy szerepkört. Kattintson a **meghívása**.
+3. Adja meg az e-mail-címet, és rendeljen hozzá egy szerepkört. Kattintson a **meghívás**gombra.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/optimizely-tutorial/create_aaduser_11.png)
 
-4. A meghívó e-mailt kapnak. E-mail-cím használatával kell Optimizely bejelentkezni.
+4. E-mailben meghívót kapnak. Az e-mail-cím használatával optimalizálni kell a bejelentkezni.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Optimizely csempére kattint, meg kell lehet automatikusan bejelentkezett a Optimizely, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen az optimalizálás csempére kattint, akkor automatikusan be kell jelentkeznie az optimalizáláshoz, amelyhez az egyszeri bejelentkezést beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -255,5 +255,5 @@ Ha a hozzáférési panelen a Optimizely csempére kattint, meg kell lehet autom
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

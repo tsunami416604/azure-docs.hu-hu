@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 08/08/2019
 ms.author: anroth
-ms.openlocfilehash: e79dcef1bdf415c13dafe31e925b08a4bd0f0cbf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ef5e1d7bb2c5b4404ce1a43bc719b7b5a242b1c7
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564258"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946251"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>Gyors útmutató: Rendszerkép-besorolási projekt létrehozása a Custom Vision .NET SDK-val
 
@@ -34,7 +34,7 @@ A Custom Visiont használó .NET-alkalmazás megírásához a Custom Vision NuGe
 
 Klónozza vagy töltse le a [Cognitive Services .NET-mintákat](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples) tartalmazó projektet. Lépjen a **CustomVision/ImageClassification** mappába, és nyissa meg az _ImageClassification.csproj_ fájlt a Visual Studióban.
 
-Ez a Visual Studio-projekt létrehoz egy új, __My New Project__ nevű Custom Vision-projektet, amely a [Custom Vision webhelyén](https://customvision.ai/) keresztül érhető el. Utána feltölti a képeket az osztályozó tanítására és kipróbálására. Ebben a projektben az osztályozónak meg kell határoznia, hogy a fa egy __hemlokfenyő__ vagy pedig egy __japáncseresznye__.
+Ez a Visual Studio-projekt létrehoz egy új, __My New Project__ nevű Custom Vision-projektet, amely a [Custom Vision webhelyén](https://customvision.ai/) keresztül érhető el. Utána feltölti a képeket az osztályozó tanítására és kipróbálására. Ebben a projektben az osztályozónak meg kell határoznia, hogy a fa egy __hemlokfenyő__ vagy pedig egy __japáncseresznye__ .
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
@@ -52,7 +52,7 @@ Az alábbi kódsorok a projekt elsődleges funkcióját hajtják végre.
 
 ### <a name="create-a-new-custom-vision-service-project"></a>Új Custom Vision Service-projekt létrehozása
 
-A létrehozott projekt a [Custom Vision webhelyén](https://customvision.ai/) jelenik meg, amelyet korábban felkeresett. 
+A létrehozott projekt a [Custom Vision webhelyén](https://customvision.ai/) jelenik meg, amelyet korábban felkeresett. Tekintse meg a [CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__) metódust a projekt létrehozásakor a többi beállítás megadásához (az osztályozó webportál [összeállításával](getting-started-build-a-classifier.md) foglalkozó útmutatóban).   
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=32-34)]
 
@@ -62,7 +62,7 @@ A létrehozott projekt a [Custom Vision webhelyén](https://customvision.ai/) je
 
 ### <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
-A projekt képei megtalálhatók a letöltött fájlban. A _Program.cs_ **LoadImagesFromDisk** metódusa tartalmazza a rájuk mutató hivatkozást.
+A projekt képei megtalálhatók a letöltött fájlban. A _Program.cs_ **LoadImagesFromDisk** metódusa tartalmazza a rájuk mutató hivatkozást. Egyetlen kötegben akár 64 képet is feltölthet.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=40-55)]
 

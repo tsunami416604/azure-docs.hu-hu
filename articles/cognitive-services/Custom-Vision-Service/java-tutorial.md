@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: fd1f7be5a098151793bd919cb84243564c9c4841
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 28d0728812de044d119a95e0ad8a1c746d33b645
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564184"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945122"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>Gyors útmutató: Rendszerkép-besorolási projekt létrehozása a Javához készült Custom Vision SDK-val
 
@@ -38,7 +38,7 @@ A Custom Vision SDK telepíthető a maven központi tárából:
 
 Klónozza vagy töltse le a [Cognitive Services Java SDK-mintákat](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master) tartalmazó projektet. Lépjen a **Vision/CustomVision/** mappára.
 
-Ez a Java-projekt létrehoz egy új képosztályozási Custom Vision-projektet __Sample Java Project__ néven, amely a [Custom Vision webhelyén](https://customvision.ai/) keresztül érhető el. Utána feltölti a képeket az osztályozó tanítására és kipróbálására. Ebben a projektben az osztályozónak meg kell határoznia, hogy a fa egy __hemlokfenyő__ vagy pedig egy __japáncseresznye__.
+Ez a Java-projekt létrehoz egy új képosztályozási Custom Vision-projektet __Sample Java Project__ néven, amely a [Custom Vision webhelyén](https://customvision.ai/) keresztül érhető el. Utána feltölti a képeket az osztályozó tanítására és kipróbálására. Ebben a projektben az osztályozónak meg kell határoznia, hogy a fa egy __hemlokfenyő__ vagy pedig egy __japáncseresznye__ .
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
@@ -55,7 +55,7 @@ Töltse be a `Vision/CustomVision` projektet a Java IDE-be, majd nyissa meg a _C
 
 ### <a name="create-a-custom-vision-service-project"></a>Custom Vision Service-projekt létrehozása
 
-Az első kódrészlet létrehoz egy képosztályozási projektet. A létrehozott projekt a [Custom Vision webhelyén](https://customvision.ai/) jelenik meg, amelyet korábban felkeresett. 
+Az első kódrészlet létrehoz egy képosztályozási projektet. A létrehozott projekt a [Custom Vision webhelyén](https://customvision.ai/) jelenik meg, amelyet korábban felkeresett. A projekt létrehozásakor további beállítások megadásához tekintse meg a [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) metódus túlterhelését (az [osztályozó](getting-started-build-a-classifier.md) webportál összeállításának útmutatója).
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?range=57-63)]
 
@@ -69,7 +69,7 @@ A mintaképeket a projekt **src/main/resources** mappája tartalmazza. Innen les
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?range=76-87)]
 
-Az előző kódrészlet két segédfüggvényt használ, amelyek a képeket erőforrásstreamként kérik le, majd feltöltik a szolgáltatásba.
+Az előző kódrészlet két segítő függvényt használ, amely erőforrás-adatfolyamként kéri le a lemezképeket, és feltölti őket a szolgáltatásba (egy kötegben akár 64 képet is feltölthet).
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?range=277-314)]
 

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező iLMS |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és iLMS között.
+title: 'Oktatóanyag: Azure Active Directory integráció a iLMS-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és iLMS között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,112 +16,112 @@ ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b2e012a4ce8ac4a9a5afb895d545beb0a0b8946
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50097aec1c4a003d3494029e8f25bb13b564f207
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100620"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944023"
 ---
-# <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>Oktatóanyag: ILMS integrálása az Azure Active Directoryval
+# <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>Oktatóanyag: A iLMS integrálása Azure Active Directory
 
-Ebben az oktatóanyagban elsajátíthatja a iLMS integrálása az Azure Active Directory (Azure AD) lesz. ILMS integrálása az Azure ad-vel, akkor a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a iLMS a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az iLMS-t az Azure AD-vel, a következőket teheti:
 
-* Szabályozza, ki férhet hozzá iLMS Azure AD-ben.
-* Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezve az Azure AD-fiókjukat iLMS.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* A iLMS-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a iLMS az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként szüksége van a következő elemek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, beszerezheti a egyhónapos ingyenes próbaidőszakot [Itt](https://azure.microsoft.com/pricing/free-trial/).
-* iLMS egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [itt](https://azure.microsoft.com/pricing/free-trial/)kérhet egy hónapos ingyenes próbaverziót.
+* iLMS egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. támogatja a iLMS **SP és IDP** által kezdeményezett egyszeri bejelentkezés
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. a iLMS támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
 
-## <a name="adding-ilms-from-the-gallery"></a>ILMS hozzáadása a katalógusból
+## <a name="adding-ilms-from-the-gallery"></a>ILMS hozzáadása a gyűjteményből
 
-Az Azure AD integrálása a iLMS konfigurálásához hozzá kell iLMS a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A iLMS Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a iLMS a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
-1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
-1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
-1. Az a **Hozzáadás a katalógusból** területén írja be a **iLMS** kifejezést a keresőmezőbe.
-1. Válassza ki **iLMS** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **iLMS** kifejezést a keresőmezőbe.
+1. Válassza ki a **iLMS** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Konfigurálás és tesztelés az Azure AD SSO nevű tesztfelhasználó használata iLMS **Britta Simon**. Az SSO működjön kell iLMS az Azure AD-felhasználót és a kapcsolódó felhasználó közötti hivatkozás kapcsolatot hozhat létre.
+Konfigurálja és tesztelje az Azure AD SSO-t a iLMS a **Britta Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a iLMS-ben.
 
-Konfigurálás, és tesztelés az Azure AD SSO iLMS, hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a iLMS konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Egyszeri bejelentkezés iLMS konfigurálása](#configure-ilms-sso)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+2. **[ILMS SSO konfigurálása](#configure-ilms-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre iLMS tesztfelhasználót](#create-ilms-test-user)**  – egy megfelelője a Britta Simon a felhasználó Azure ad-ben reprezentációja kapcsolódó iLMS rendelkeznie.
-6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+5. **[Hozzon létre iLMS-teszt felhasználót](#create-ilms-test-user)** – hogy a iLMS Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
+6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
+### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **iLMS** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezési**.
-1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
+1. A [Azure Portal](https://portal.azure.com/) **iLMS** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az a **alapszintű SAML-konfigurációja** lapon, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, adja meg az értékeket a következő mezőket:
+1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az alapszintű **SAML-konfiguráció** lapon adja meg a következő mezők értékeit:
 
-    a. Az a **azonosító** szövegbeviteli mezőben illessze be a **azonosító** másolt érték **szolgáltató** SAML beállításai iLMS felügyeleti portálon.
+    a. Az **azonosító** szövegmezőbe illessze be az SAML-beállítások a iLMS felügyeleti portálon a **szolgáltatótól** másolt **azonosító** értékét.
 
-    b. Az a **válasz URL-cím** szövegbeviteli mezőben illessze be a **végpontja (URL)** másolt érték **szolgáltató** SAML-beállítások a következő mintának kellene iLMS felügyeleti portál szakaszában `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
+    b. A **Válasz URL-címe** szövegmezőbe illessze be a iLMS felügyeleti portál SAML-beállítások a **szolgáltatótól** másolt **végpont (URL)** értékét a következő mintával`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
 
-1. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    Az a **bejelentkezési URL-** szövegbeviteli mezőben illessze be a **végpontja (URL)** másolt érték **szolgáltató** iLMS felügyeleti portálon, az SAML-beállításai `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
+    A **bejelentkezési URL-cím** szövegmezőben illessze be a iLMS felügyeleti portál SAML-beállítások a **szolgáltató** részéből másolt **végpont (URL)** értékét a következőre:`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
 
-1. Igény szerinti kiépítés engedélyezéséhez iLMS alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a felhasználói attribútumok párbeszédpanel.
+1. Az JIT-kiépítés engedélyezéséhez a iLMS-alkalmazás megadott formátumban várja az SAML-jogcímeket, amelyhez egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 
     > [!NOTE]
-    > Engedélyeznie kell a **Un-recognized felhasználói fiók létrehozása** a iLMS ezek az attribútumok leképezésére. Kövesse az utasításokat [Itt](https://support.inspiredelearning.com/help/adding-updating-and-managing-users#just-in-time-provisioning-with-saml-single-signon) az attribútumok konfigurációjában képet kapjon.
+    > Az attribútumok leképezéséhez engedélyeznie kell a nem **felismert felhasználói fiók létrehozását** a iLMS-ben. Az attribútumok konfigurációjának megismeréséhez kövesse az [itt](https://support.inspiredelearning.com/help/adding-updating-and-managing-users#just-in-time-provisioning-with-saml-single-signon) található utasításokat.
 
-1. Emellett a fentiekben iLMS alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
+1. A fentieken kívül a iLMS alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói** jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Name (Név) | Adatforrás-attribútum|
+    | Name (Név) | Forrás attribútum|
     | --------|------------- |
-    | körzet | user.department |
-    | régió | User.state |
+    | osztály | felhasználó. részleg |
+    | régió | felhasználó. állapot |
     | Szervezeti egység | user.jobtitle |
 
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
 
-    c. Hagyja a **Namespace** üres.
+    c. Hagyja üresen a **névteret** .
 
-    d. Válassza ki a forrás, **attribútum**.
+    d. Válassza a forrás **attribútumként**lehetőséget.
 
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
     f. Kattintson a **Ok**
 
     g. Kattintson a **Save** (Mentés) gombra.
 
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-1. Az a **iLMS beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+1. A **ILMS beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
@@ -129,114 +129,114 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
 
     c. Kijelentkezési URL
 
-### <a name="configure-ilms-sso"></a>ILMS egyszeri bejelentkezés konfigurálása
+### <a name="configure-ilms-sso"></a>ILMS SSO konfigurálása
 
-1. Egy másik böngészőablakban, jelentkezzen be a **iLMS felügyeleti portál** rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a **iLMS felügyeleti portálra** rendszergazdaként.
 
-2. Kattintson a **SSO:SAML** alatt **beállítások** lapon nyissa meg az SAML-beállítások, és hajtsa végre az alábbi lépéseket:
+2. Kattintson az **SSO: SAML** lehetőségre a **Beállítások** lapon az SAML-beállítások megnyitásához, és hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/ilms-tutorial/1.png)
 
-3. Bontsa ki a **szolgáltató** szakaszt, és másolja a **azonosító** és **végpontja (URL)** értéket.
+3. Bontsa ki a szolgáltató szakaszt, és másolja az **azonosító** és a **végpont (URL)** értéket.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/ilms-tutorial/2.png) 
 
-4. A **identitásszolgáltató** területén kattintson **metaadatok importálása**.
+4. Az **identitás-szolgáltató** szakaszban kattintson a **Metaadatok importálása**elemre.
 
-5. Válassza ki a **összevonási metaadatok** fájlt letölteni az Azure Portalon a **SAML-aláíró tanúsítvány** szakaszban.
+5. Válassza ki a Azure Portalból letöltött **összevonási metaadat** -fájlt az **SAML aláíró tanúsítvány** szakaszból.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
 
-6. Ha szeretné engedélyezni, igény szerinti kiépítés iLMS fiókok létrehozása az ENSZ-ismeri fel a felhasználók, kövesse az alábbi lépéseket:
+6. Ha engedélyezni szeretné a JIT-kiépítés használatát iLMS-fiókok létrehozásához a nem felismerhető felhasználók számára, kövesse az alábbi lépéseket:
 
-    a. Ellenőrizze **nem felismert felhasználói fiók létrehozása**.
+    a. Keresse meg a nem **ismert felhasználói fiók létrehozását**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
 
-    b. Az attribútumok leképezésére iLMS attribútumokat az Azure AD-ben. Az attribútum oszlopának adja meg az attribútum neve vagy az alapértelmezett értéket.
+    b. Képezze le az attribútumokat az Azure AD-ben a iLMS attribútumaival. Az attribútum oszlopban adja meg az attribútumok nevét vagy az alapértelmezett értéket.
 
-    c. Lépjen a **üzleti szabályok** lapra, és hajtsa végre az alábbi lépéseket:
+    c. Lépjen az **üzleti szabályok** lapra, és hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/ilms-tutorial/5.png)
 
-    d. Ellenőrizze **Un-recognized régióban hozzon létre, részlegek és szervezeti egységek** hozhat létre a régióban, részlegek és szervezeti egységek, amelyek még nem léteznek az egyszeri bejelentkezés időpontjában.
+    d. Az egyszeri bejelentkezés időpontjában még nem létező régiók, osztályok és részlegek létrehozásához keresse fel a nem **ismert régiók, osztályok és részlegek** létrehozását.
 
-    e. Ellenőrizze **Update felhasználói profil során bejelentkezési** , adja meg, hogy a felhasználói profil frissül minden egyszeri bejelentkezés.
+    e. A **bejelentkezés során jelölje be a felhasználói profil frissítése** annak megadásához, hogy a felhasználó profilja frissítve van-e az egyes egyszeri bejelentkezésekkel.
 
-    f. Ha a **frissítés üres értékek a felhasználói profil nem kötelező mezők** beállítás be van jelölve, a profil nem kötelező mezők, amelyek üres lesz bejelentkezés után is a felhasználó iLMS profilt tartalmazhatnak üres értékeket az adott mezők.
+    f. Ha a **felhasználó profilja nem kötelező mezőinek frissítése jelölőnégyzet be** van jelölve, akkor a bejelentkezéskor üres, opcionális profilok mező is a felhasználó iLMS-profiljában üres értékeket fog tartalmazni ezekhez a mezőkhöz.
 
-    g. Ellenőrizze **hiba az értesítési E-mail küldése** , és adja meg az e-mail a felhasználó, ahol a hiba értesítő e-mailt kapni szeretné.
+    g. Tekintse meg a **hibajelentési értesítő e-mailt** , és adja meg annak a felhasználónak az e-mail-címét, ahová az értesítő e-mailt kapni szeretné.
 
-7. Kattintson a **mentése** gombra kattintva mentse a beállításokat.
+7. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/ilms-tutorial/save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ebben a szakaszban az Azure Portalon Britta Simon nevű tesztfelhasználó fog létrehozni.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nevű Azure Portalban.
 
-1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 1. Válassza ki **új felhasználó** a képernyő tetején.
-1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
-   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `BrittaSimon@contoso.com`.
-   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `BrittaSimon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban Britta Simon használja az Azure egyszeri bejelentkezés iLMS való hozzáférést kell engedélyeznie.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a iLMS hozzáférésének biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
-1. Az alkalmazások listájában jelölje ki a **iLMS**.
-1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **iLMS**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
-1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-ilms-test-user"></a>ILMS tesztfelhasználó létrehozása
+### <a name="create-ilms-test-user"></a>ILMS-tesztelési felhasználó létrehozása
 
-Alkalmazás támogatja a csak az idő felhasználókiépítés, miután a felhasználók hitelesítésére automatikusan létrehozza az alkalmazásban. Igény szerinti fog működni, ha akkor kattintott a **Un-recognized felhasználói fiók létrehozása** jelölőnégyzet iLMS felügyeleti portálon található SAML konfigurációs beállítása során.
+Az alkalmazás a felhasználók üzembe helyezését támogatja, és a hitelesítéssel rendelkező felhasználók automatikusan jönnek létre az alkalmazásban. A JIT működni fog, ha a nem **felismert felhasználói fiók létrehozása** jelölőnégyzetre kattintott az SAML konfigurációs beállításakor a iLMS felügyeleti portálján.
 
-Ha létrehoz egy felhasználót manuálisan kell, majd kövesse az alábbi lépéseket:
+Ha manuálisan kell létrehoznia egy felhasználót, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be rendszergazdaként a iLMS vállalati webhely.
+1. Jelentkezzen be a iLMS vállalati webhelyre rendszergazdaként.
 
-2. Kattintson a **felhasználó regisztrálása** alatt **felhasználók** elemére kattintva nyissa meg **felhasználó regisztrálása** lapot.
+2. Kattintson a **felhasználó regisztrálása** elemre a **felhasználók** lapon a **felhasználó regisztrálása** lap megnyitásához.
 
    ![Alkalmazott hozzáadása](./media/ilms-tutorial/3.png)
 
-3. Az a **regisztrálása felhasználó** lapon, a következő lépésekkel.
+3. A **felhasználó regisztrálása** lapon hajtsa végre a következő lépéseket.
 
     ![Alkalmazott hozzáadása](./media/ilms-tutorial/create_testuser_add.png)
 
-    a. Az a **Utónév** szövegmezőbe írja be az első neve például Britta.
+    a. Az **Utónév** szövegmezőbe írja be az utónév nevét (például Britta).
 
-    b. Az a **Vezetéknév** szövegmezőbe írja be például a Simon utolsó nevét.
+    b. A **vezetéknév** szövegmezőbe írja be a vezetéknevet, például Simon nevet.
 
-    c. Az a **E-mail-azonosító** szövegmezőbe írja be az e-mail-cím a felhasználó például BrittaSimon@contoso.com.
+    c. Az **e-mail-azonosító** szövegmezőbe írja be a felhasználó e-mail címét BrittaSimon@contoso.com, például:.
 
-    d. Az a **régió** legördülő menüben válassza ki a régiót értékét.
+    d. A **régió** legördülő menüben válassza ki a régió értékét.
 
-    e. Az a **osztás** legördülő menüben válassza ki a részleg értékét.
+    e. A **divízió** legördülő menüben válassza ki a osztás értékét.
 
-    f. Az a **részleg** legördülő menüben válassza ki a részleg értékét.
+    f. A **részleg** legördülő menüben válassza ki a részleg értékét.
 
     g. Kattintson a **Save** (Mentés) gombra.
 
     > [!NOTE]
-    > Felhasználói regisztráció e-mail a kiválasztásával küldhet **regisztrációs üzenet küldése** jelölőnégyzetet.
+    > A regisztrációs e-mail **küldése** jelölőnégyzet bejelölésével elküldheti a felhasználónak a regisztrációs e-maileket.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-A iLMS csempe kiválasztásakor a hozzáférési panelen, kell lennie automatikusan bejelentkezett a iLMS, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a iLMS csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a iLMS, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -244,4 +244,4 @@ A iLMS csempe kiválasztásakor a hozzáférési panelen, kell lennie automatiku
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

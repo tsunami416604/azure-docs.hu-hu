@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Otsuka Shokai |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Otsuka Shokai között.
+title: 'Oktatóanyag: Azure Active Directory integráció a Otsuka Shokai | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Otsuka Shokai között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,148 +16,148 @@ ms.topic: tutorial
 ms.date: 06/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd06eafca2c508bc73fa2b327235621797be417c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: f558b33079821efcf56731eb95073e0170a72795
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274191"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943550"
 ---
-# <a name="tutorial-integrate-otsuka-shokai-with-azure-active-directory"></a>Oktatóanyag: Otsuka Shokai integrálása az Azure Active Directoryval
+# <a name="tutorial-integrate-otsuka-shokai-with-azure-active-directory"></a>Oktatóanyag: Otsuka-Shokai integrálása Azure Active Directory
 
-Ebben az oktatóanyagban elsajátíthatja a Otsuka Shokai integrálása az Azure Active Directory (Azure AD) lesz. Otsuka Shokai integrálása az Azure ad-vel, akkor a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Otsuka-Shokai a Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a Otsuka Shokai, a következőket teheti:
 
-* Szabályozza, ki férhet hozzá Otsuka Shokai Azure AD-ben.
-* Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezve Otsuka Shokai az Azure AD-fiókjukat.
+* Vezérlés az Azure AD-ben, aki hozzáfér a Otsuka Shokai.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Otsuka Shokai az Azure AD-fiókjával.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként szüksége van a következő elemek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, hozzájuthat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* Otsuka Shokai egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Otsuka Shokai egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. Támogatja a Otsuka Shokai **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. A Otsuka Shokai támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést.
 
-## <a name="adding-otsuka-shokai-from-the-gallery"></a>Otsuka Shokai hozzáadása a katalógusból
+## <a name="adding-otsuka-shokai-from-the-gallery"></a>Otsuka-Shokai hozzáadása a gyűjteményből
 
-Az Azure AD integrálása a Otsuka Shokai konfigurálásához hozzá kell Otsuka Shokai a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A Otsuka-Shokai Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Otsuka-Shokai a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
-1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
-1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
-1. Az a **Hozzáadás a katalógusból** területén írja be a **Otsuka Shokai** kifejezést a keresőmezőbe.
-1. Válassza ki **Otsuka Shokai** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
-1. Kattintson a **tulajdonságok** fülre, másolja a **Alkalmazásazonosító** , és mentse későbbi használatra a számítógépen.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Otsuka Shokai** kifejezést a keresőmezőbe.
+1. Válassza ki a **Otsuka Shokai** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Kattintson a **Tulajdonságok** lapra, másolja az **alkalmazás azonosítóját** , és mentse a számítógépre a későbbi használat érdekében.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Konfigurálás és tesztelés az Azure AD SSO nevű tesztfelhasználó használata Otsuka Shokai **b Simon**. Az SSO működjön kell Otsuka Shokai az Azure AD-felhasználót és a kapcsolódó felhasználó közötti hivatkozás kapcsolatot hozhat létre.
+Konfigurálja és tesztelje az Azure AD SSO-t a Otsuka Shokai egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Otsuka Shokai.
 
-Az Azure AD SSO Otsuka Shokai tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
+Az Azure AD SSO Otsuka-Shokai való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Konfigurálja a Otsuka Shokai](#configure-otsuka-shokai)**  alkalmazás oldalán az egyszeri bejelentkezési beállításainak konfigurálására.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés a b Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  b Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Otsuka Shokai tesztfelhasználót](#create-otsuka-shokai-test-user)**  van egy megfelelője a b Simon Otsuka Shokai, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  ellenőrzése, hogy működik-e a konfiguráció.
+1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t, hogy a felhasználók használhatják ezt a funkciót.
+2. **[Konfigurálja az Otsuka Shokai](#configure-otsuka-shokai)** az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+5. **[Hozzon létre Otsuka Shokai](#create-otsuka-shokai-test-user)** , amely a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon Otsuka-Shokai.
+6. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
+### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Otsuka Shokai** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezési**.
-1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
+1. A [Azure Portal](https://portal.azure.com/) **Otsuka Shokai** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** oldalon az alkalmazás előre konfigurálva, és a szükséges URL-címek vannak már előre fel van töltve az Azure-ral. A felhasználónak szüksége van a konfiguráció mentéséhez kattintson a **mentése** gombra.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az alkalmazás előre konfigurálva van, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Save (Mentés** ) gombra kattintva.
 
-1. Otsuka Shokai alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. Otsuka Shokai alkalmazás vár **nameidentifier** a leképezendő **user.objectid**, így kell szerkesztenie a attribútumleképezés kattintva **szerkesztése**  ikonra, és módosítsa a attribútumleképezés.
+1. A Otsuka Shokai alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A Otsuka Shokai alkalmazás azt várja, hogy a **NameIdentifier** a **User. ObjectId**használatával legyen leképezve, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a **Szerkesztés** ikonra kattint, és megváltoztatja az attribútumok leképezését.
 
     ![image](common/edit-attribute.png)
 
-1. Emellett a fentiekben Otsuka Shokai alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
+1. A fentieken kívül a Otsuka Shokai alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói** jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Name (Név) | Adatforrás-attribútum|
+    | Name (Név) | Forrás attribútum|
     | ---------------| --------------- |
-    | Appid | `<Application ID>` |
+    | AppID | `<Application ID>` |
 
     >[!NOTE]
-    >`<Application ID>` az érték, amely a másolta a **tulajdonságok** lapján az Azure Portalon.
+    >`<Application ID>`az az érték, amelyet a Azure Portal **Tulajdonságok** lapján másolt.
 
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
 
-    c. Hagyja a **Namespace** üres.
+    c. Hagyja üresen a **névteret** .
 
-    d. Válassza ki a forrás, **attribútum**.
+    d. Válassza a forrás **attribútumként**lehetőséget.
 
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
     f. Kattintson a **Ok**
 
     g. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="configure-otsuka-shokai"></a>Otsuka Shokai konfigurálása
+### <a name="configure-otsuka-shokai"></a>Otsuka-Shokai konfigurálása
 
-1. Ha csatlakozik az ügyfél saját lap alkalmazásból egyszeri Bejelentkezést, a varázsló, egyszeri bejelentkezési beállítás kezdődik.
+1. Ha az ügyfél saját lapjára csatlakozik az egyszeri bejelentkezés alkalmazásból, elindul az SSO-beállítás varázsló.
 
-2. Ha Otsuka azonosító nincs regisztrálva, folytassa a új regisztrációs Otsuka-azonosító.   Ha regisztrálta Otsuka-azonosító, folytassa a kapcsolat beállítása.
+2. Ha a Otsuka-azonosító nincs regisztrálva, folytassa a Otsuka-ID új regisztrációval.   Ha regisztrálta a Otsuka-ID-t, folytassa a kapcsolódási beállítással.
 
-3. A végfelhasználók továbbléphet, és a legfelső képernyőre Miután bejelentkezett az ügyfél saját lap jelenik meg, ha az egyszeri bejelentkezési beállításainak teljesülnek.
+3. Folytassa a végét, és amikor a felső képernyő jelenik meg az ügyfél saját oldalára való bejelentkezés után, az SSO-beállítások befejeződik.
 
-4. A következő való csatlakozáskor az ügyfél saját lap az egyszeri bejelentkezés alkalmazásból után megnyílik a útmutatást képernyő, a felső képernyő jelenik meg az ügyfél saját lap való bejelentkezés után.
+4. Amikor legközelebb az ügyfél saját lapjához csatlakozik az egyszeri bejelentkezés alkalmazásból, az útmutató képernyő megnyitása után a felső képernyő jelenik meg, miután bejelentkezett az ügyfél saját lapjára.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ebben a szakaszban az Azure Portalon b Simon nevű tesztfelhasználó fog létrehozni.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 1. Válassza ki **új felhasználó** a képernyő tetején.
-1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B. Simon`.  
-   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
-   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban b Simon által biztosított hozzáférés Otsuka Shokai Azure egyszeri bejelentkezés használatához engedélyeznie kell.
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Otsuka Shokai.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
-1. Az alkalmazások listájában jelölje ki a **Otsuka Shokai**.
-1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **Otsuka Shokai**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** párbeszédablakban válassza **b Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
-1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-otsuka-shokai-test-user"></a>Otsuka Shokai tesztfelhasználó létrehozása
+### <a name="create-otsuka-shokai-test-user"></a>Otsuka Shokai-tesztelési felhasználó létrehozása
 
-Új, SaaS-fiók regisztrálása történik, az első Otsuka Shokai hozzáférést. Emellett azt is társítja az Azure AD-fiókot és a SaaS-fiók új létrehozásának időpontjában.
+Az SaaS-fiók új regisztrációja a Otsuka Shokai első hozzáférésén lesz elvégezve. Emellett az új létrehozásakor az Azure AD-fiókot és az SaaS-fiókot is hozzárendeljük.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-A Otsuka Shokai csempe kiválasztásakor a hozzáférési panelen, érdemes lehet automatikusan bejelentkezett a Otsuka Shokai, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a Otsuka Shokai csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a Otsuka-Shokai, amelyhez be szeretné állítani az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -165,4 +165,4 @@ A Otsuka Shokai csempe kiválasztásakor a hozzáférési panelen, érdemes lehe
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

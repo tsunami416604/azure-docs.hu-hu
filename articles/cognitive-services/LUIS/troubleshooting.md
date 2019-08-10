@@ -8,15 +8,15 @@ ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 5122a5a88f5a0d67799930999236f2993bc43f8f
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b80c32fea0d62bb5800a677ff30cb0787e83afa2
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609759"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945844"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding gyakori kérdések (GYIK)
 
@@ -254,7 +254,7 @@ Ha a Azure bot Service használja, és a probléma az, hogy a **webes csevegésb
 1. Nyissa meg az online Kódszerkesztő alkalmazást. 
 1. A felső, kék navigációs sávban válassza ki a robot nevét (a második elem jobbra).
 1. Az eredményül kapott legördülő listában válassza a **kudu-konzol megnyitása**lehetőséget.
-1. Válassza ki a LogFiles elemet, majd válassza az **alkalmazás**lehetőséget. Tekintse át az összes naplófájlt. Ha nem látja a hibát az alkalmazás mappájában, tekintse át az összes naplófájlt a LogFiles ( **naplófájlok**) területen. 
+1. Válasszaki a LogFiles elemet, majd válassza az **alkalmazás**lehetőséget. Tekintse át az összes naplófájlt. Ha nem látja a hibát az alkalmazás mappájában, tekintse át az összes naplófájlt a LogFiles ( **naplófájlok**) területen. 
 1. Ne felejtse el újraépíteni a projektet, ha lefordított nyelvet használ C#, például:.
 
 > [!Tip] 

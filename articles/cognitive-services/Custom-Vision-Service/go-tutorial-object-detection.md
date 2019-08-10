@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 08/08/2019
 ms.author: daauld
-ms.openlocfilehash: fd305c0fa9f046e6601f1d94ad4ebb1677f1787d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3831f89842f969ecce582c5b5d7a5f8a54c5e7a1
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561022"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946206"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Gyors útmutató: Objektum-észlelési projekt létrehozása a Custom Vision go SDK-val
 
@@ -48,7 +48,7 @@ Hozzon létre egy *sample. go* nevű új fájlt a kívánt Project-címtárban.
 
 ### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
 
-Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. Ne feledje, hogy az objektumészlelési és a képosztályozási projekt létrehozásánál a különbség a **create_project** hívásban megadott tartományban rejlik.
+Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. Tekintse meg a [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) metódust a projekt létrehozásakor a további beállítások megadásához (lásd: a detektor webportáljának [összeállítása](get-started-build-detector.md) útmutató).
 
 ```go
 import(
@@ -157,7 +157,7 @@ scissorsImageRegions := map[string][4]float64{
     "scissors_20.jpg": [4]float64{ 0.158088237, 0.04047389, 0.6691176, 0.843137264 },
 }
 ```
-Ezután használja ezt a társítási térképet a mintaképek feltöltéséhez a régiókoordinátáikkal együtt. Adja hozzá a következő kódot.
+Ezután a társítások ezen térképével feltöltheti az egyes mintaképeket a régió koordinátáival (legfeljebb 64 lemezképet tölthet fel egyetlen kötegben). Adja hozzá a következő kódot.
 
 > [!NOTE]
 > A lemezképek elérési útját módosítania kell, attól függően, hogy a Cognitive Services go SDK Samples projektet korábban letöltötte.

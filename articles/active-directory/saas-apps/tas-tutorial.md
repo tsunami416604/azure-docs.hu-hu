@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A feladat az Azure Active Directory-integráció |} A Microsoft Docs'
-description: Ismerje meg, hogyan konfigurálása egyszeri bejelentkezéshez TAS. és az Azure Active Directory között
+title: 'Oktatóanyag: Azure Active Directory integráció a TAS szolgáltatással | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a TAS között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,49 +15,49 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 279f6970c34acbfea645366f7e965c830873fdbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: efd64830c0d9afa83838adef96cf1c103b4485e8
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089178"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943279"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tas"></a>Oktatóanyag: A feladat az Azure Active Directory-integráció
+# <a name="tutorial-azure-active-directory-integration-with-tas"></a>Oktatóanyag: Azure Active Directory integráció a TAS-sel
 
-Ebben az oktatóanyagban megismerheti, hogyan integrálható a feladat az Azure Active Directory (Azure AD).
-Feladat integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a TAS-t Azure Active Directory (Azure AD) használatával.
+A TAS Azure AD-vel való integrálása a következő előnyöket biztosítja:
 
-* Szabályozhatja, hogy ki férhet hozzá TAS. Azure AD-ben
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezett a feladat (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a TAS szolgáltatáshoz.
+* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek a TAS-ba (egyszeri bejelentkezés) az Azure AD-fiókjával.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a feladat, a következőkre van szükség:
+Az Azure AD-integráció a TAS-sel való konfigurálásához a következő elemek szükségesek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Feladat az egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* TAS egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Feladat támogatja **SP és IDP** által kezdeményezett egyszeri bejelentkezés
+* A TAS támogatja **az SP-t és a identitásszolgáltató** KEZDEMÉNYEZett SSO
 
-## <a name="adding-tas-from-the-gallery"></a>Feladat hozzáadása a katalógusból
+## <a name="adding-tas-from-the-gallery"></a>A TAS hozzáadása a katalógusból
 
-Az Azure AD integrálása a feladat konfigurálásához szüksége feladat hozzáadása a felügyelt SaaS-alkalmazások listájában a katalógusból.
+A TAS Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a TAS elemet a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Feladat hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**A TAS a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
 
 1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
@@ -65,66 +65,66 @@ Az Azure AD integrálása a feladat konfigurálásához szüksége feladat hozz�
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **feladat**válassza **feladat** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a **Tas**kifejezést, válassza ki a **Tas** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Az eredmények listájában feladat](common/search-new-app.png)
+     ![TAS az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a feladat egy teszt nevű felhasználó alapján **Britta Simon**.
-Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó a feladat hivatkozás kapcsolata kell hozható létre.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a TAS-vel egy **Britta Simon**nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a TAS-beli kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-Az Azure AD egyszeri bejelentkezés a feladat tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés a TAS szolgáltatással való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Feladat egyszeri bejelentkezés konfigurálása](#configure-tas-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. A **[Tas egyszeri bejelentkezés konfigurálása](#configure-tas-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre feladat tesztfelhasználót](#create-tas-test-user)**  – egy megfelelője a Britta Simon feladat, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+5. **[Hozzon létre](#create-tas-test-user)** egy felhasználóhoz tartozó Tas-tesztet, hogy a Britta Simon-beli partnere legyen, amely a felhasználó Azure ad-képviseletéhez van társítva.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-A feladat konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezés a TAS szolgáltatással való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **feladat** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. A [Azure Portal](https://portal.azure.com/)a **Tas** -alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
 3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
+4. Az alapszintű **SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Feladat tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
+    ![A TAS tartomány és az URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://taseu.combtas.com/<DOMAIN>`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://taseu.combtas.com/<DOMAIN>`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://taseu.combtas.com/<ENVIRONMENTNAME>/AssertionService.aspx`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://taseu.combtas.com/<ENVIRONMENTNAME>/AssertionService.aspx`
 
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![Feladat tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata-upload-additional-signon.png)
+    ![A TAS tartomány és az URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://taseu.combtas.com/<DOMAIN>`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://taseu.combtas.com/<DOMAIN>`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Ezek a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet az oktatóanyag későbbi részében ismertetett frissíteni fogja. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek az értékek nem valósak. Ezeket a tényleges azonosító, a válasz URL-cím és a bejelentkezési URL-cím alapján fogja frissíteni, amelyet az oktatóanyag későbbi részében ismertetünk. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-7. Az a **feladat beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+7. A **Tas beállítása** szakaszban másolja ki a megfelelő URL-címeket (ka) t a követelménynek megfelelően.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
@@ -132,36 +132,36 @@ A feladat konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre az 
 
     c. Kijelentkezési URL
 
-### <a name="configure-tas-single-sign-on"></a>Feladat egyszeri bejelentkezés konfigurálása
+### <a name="configure-tas-single-sign-on"></a>A TAS egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngészőablakban, jelentkezzen be rendszergazdaként egy feladat.
+1. Egy másik böngészőablakban jelentkezzen be a TAS-be rendszergazdaként.
 
-2. A bal oldali menü, kattintson a **beállítások** , és keresse meg **rendszergazda** majd kattintson a **egyetlen kezeléséhez jelentkezzen be**.
+2. A menü bal oldalán kattintson a **Beállítások** elemre, és keresse meg a rendszergazdát, majd kattintson az **egyszeri bejelentkezés kezelése**lehetőségre.
 
-    ![Feladat konfigurálása](./media/tas-tutorial/configure01.png)
+    ![TAS-konfiguráció](./media/tas-tutorial/configure01.png)
 
-3. Az a **egyetlen kezeléséhez jelentkezzen be** lapon, a következő lépésekkel:
+3. Az **egyszeri bejelentkezés kezelése** oldalon hajtsa végre a következő lépéseket:
 
-    ![Feladat konfigurálása](./media/tas-tutorial/configure02.png)
+    ![TAS-konfiguráció](./media/tas-tutorial/configure02.png)
 
-    a. Az a **neve** szövegmezőbe írja be a környezet nevét.
+    a. A **név** szövegmezőbe írja be a környezet nevét.
     
-    b. Válassza ki **egy SAML2** , **hitelesítési típus**.
+    b. Válassza a egy saml2 **hitelesítési típusként**lehetőséget.
 
-    c. A a **URL-CÍMÉT adja meg** szövegmezőjébe illessze be az értéket, **bejelentkezési URL-cím** az Azure Portalról másolt.
+    c. Az **adja meg az URL-címet** szövegmezőbe illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portal másolt.
 
-    d. A Jegyzettömbben, nyissa meg az Azure Portalról letöltött base-64 kódolású tanúsítványt, másolja a tartalmat, és illessze be azt a **adja meg hitelesítő** mezőbe.
+    d. Nyissa meg a Jegyzettömbben a Azure Portal letöltött Base-64 kódolású tanúsítványt, másolja ki a tartalmát, majd illessze be a **tanúsítvány megadása** mezőbe.
 
-    e. Az a **adja meg az új IP** szövegmezőbe írja be az IP-címet.
+    e. Az **új IP-cím megadása** szövegmezőbe írja be az IP-címet.
 
     >[!NOTE]
-    > Kapcsolattartó [feladat támogatási csapatának](mailto:support@combtas.com) IP-címének lekéréséhez.
+    > Az IP-cím lekéréséhez forduljon a [Tas ügyfélszolgálatához](mailto:support@combtas.com) .
 
-    f. Másolás a **az egyszeri bejelentkezést** URL-címe, és illessze be azt a **azonosító (entityid)** és **bejelentkezési URL-cím** szövegmezőben, hogy a **alapszintű SAML-konfigurációja** a Az Azure Portalon. Vegye figyelembe, hogy az URL-cím megkülönbözteti a kis-és nagybetűket, és a egy perjel (/) kell végződnie.
+    f. Másolja az **egyszeri bejelentkezési** URL-címet, és illessze be az **azonosítóba (Entity ID)** , és jelentkezzen be a Azure Portal alapszintű **SAML** -konfigurációjának **URL-címe** szövegmezőbe. Vegye figyelembe, hogy az URL-cím megkülönbözteti a kis-és nagybetűket, és egy perjelet (/) kell végződnie.
 
-    g. Másolás a **Tényfeldolgozó szolgáltatás** URL-címet a telepítés lapon, és illessze be azt a **válasz URL-cím** a szövegmező **alapszintű SAML-konfigurációja** az Azure Portalon.
+    g. Másolja ki az **állítási szolgáltatás** URL-címét a telepítő lapon, és illessze be a Azure Portal alapszintű **SAML** -konfigurációjának **Válasz URL** -szövegmezőbe.
 
-    h. Kattintson a **sor beszúrása SSO**.
+    h. Kattintson az **SSO-sor beszúrása**elemre.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -179,50 +179,50 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés TAS. Azure egyszeri bejelentkezés használatára
+Ebben a szakaszban a Britta Simon használatával engedélyezi az Azure egyszeri bejelentkezést a TAS elérésének biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **feladat**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Tas**elemet.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **feladat**.
+2. Az alkalmazások listában válassza a **Tas**elemet.
 
-    ![A feladat hivatkozásra az alkalmazások listáját](common/all-applications.png)
+    ![A TAS hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
     ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
 5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-tas-test-user"></a>Feladat tesztfelhasználó létrehozása
+### <a name="create-tas-test-user"></a>TAS-teszt felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű TAS. a felhasználó létrehozása Együttműködve [feladat támogatási csapatának](mailto:support@combtas.com) a felhasználók hozzáadása a feladat platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a TAS-ben. Működjön együtt a Tas [támogatási csapatával](mailto:support@combtas.com) , és vegye fel a felhasználókat a Tas platformba. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a feladat csempére kattint, meg kell kell automatikusan bejelentkezett a feladat, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a hozzáférési panelen a TAS csempére kattint, automatikusan be kell jelentkeznie arra a TAS-be, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -230,5 +230,5 @@ Ha a hozzáférési panelen a feladat csempére kattint, meg kell kell automatik
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -10,16 +10,16 @@ ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eda457747a6a3e374e7fdea571f64446e15ded21
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: a52b9ee26aac20d95356db6a280c5feb40023fed
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774173"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942792"
 ---
 # <a name="what-is-azure-active-directory"></a>Mi az az Azure Active Directory?
 
-Azure Active Directory (Azure AD) a Microsoft felhőalapú identitás-és hozzáférés-kezelési szolgáltatása, amely segít az alkalmazottak bejelentkezési és hozzáférési erőforrásainak elérésében:
+Azure Active Directory (Azure AD) a Microsoft felhőalapú identitás-és hozzáférés-kezelési szolgáltatása, amely segít az alkalmazottaknak bejelentkezni, és hozzáférni a következő erőforrásokhoz:
 
 - Külső erőforrások, például a Microsoft Office 365, az Azure Portalon, és több ezer más SaaS-alkalmazásokhoz.
 
@@ -50,9 +50,9 @@ Az Azure AD megvalósításának javítása érdekében a prémium szintű Azure
 
 - **Az Azure Active Directory ingyenes.** Lehetővé teszi a felhasználók és a csoportok felügyeletét, a helyszíni címtár-szinkronizálást, az alapszintű jelentéseket, az önkiszolgáló jelszó-módosítást a felhőalapú felhasználók számára, valamint az Azure, az Office 365 és számos népszerű SaaS-alkalmazás egyszeri bejelentkezését.
 
-- **P1 prémium szintű Azure Active Directory.** Az ingyenes és alapszintű funkciók mellett P1 is lehetővé teszi, hogy a hibrid felhasználók elérésére mind a helyszíni és felhőbeli erőforrásokhoz. Emellett támogatja a speciális felügyeleti, például a dinamikus csoportok, önkiszolgáló csoportfelügyelet, a Microsoft Identity Manager (egy a helyszíni identitás- és hozzáférés felügyeleti csomag) és a felhőalapú késleltetve visszaírt képességek, amelyek lehetővé teszik önkiszolgáló jelszó-visszaállítást a a helyszíni felhasználók.
+- **P1 prémium szintű Azure Active Directory.** Az ingyenes funkciók mellett a P1 lehetővé teszi a hibrid felhasználók számára a helyszíni és a Felhőbeli erőforrások elérését is. Emellett támogatja a speciális felügyeleti, például a dinamikus csoportok, önkiszolgáló csoportfelügyelet, a Microsoft Identity Manager (egy a helyszíni identitás- és hozzáférés felügyeleti csomag) és a felhőalapú késleltetve visszaírt képességek, amelyek lehetővé teszik önkiszolgáló jelszó-visszaállítást a a helyszíni felhasználók.
 
-- **P2 prémium szintű Azure Active Directory.** Az ingyenes, alapszintű és P1 funkciókon kívül a P2 is kínál [Azure Active Directory Identity Protection](../identity-protection/enable.md) az alkalmazásokhoz és a kritikus fontosságú vállalati adatokhoz való kockázatalapú feltételes hozzáférés biztosításához, és [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) , amely segít a felderítésben , korlátozhatja és figyelheti a rendszergazdákat és azok erőforrásokhoz való hozzáférését, és igény szerint igény szerinti hozzáférést biztosíthat.
+- **P2 prémium szintű Azure Active Directory.** Az ingyenes és a P1 funkciók mellett a P2 is [Azure Active Directory Identity Protection](../identity-protection/enable.md) biztosít az alkalmazásaihoz és a kritikus fontosságú vállalati adatokhoz való kockázatalapú feltételes hozzáférés biztosításához, és [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) segíti a felderítést, korlátozhatja és figyelheti a rendszergazdákat és azok erőforrásokhoz való hozzáférését, és igény szerint igény szerint biztosíthatja az igény szerinti hozzáférést.
 
 - **"Használatalapú fizetés" funkció licenceket.** A szolgáltatás további licenceket, például az Azure Active Directory üzleti és ügyfél közötti (B2C) is kaphat. B2C segítségével biztosíthat identitás- és hozzáférés-kezelés az ügyfelek által használt alkalmazások számára. További információkért lásd: [Azure Active Directory B2C dokumentációja](../../active-directory-b2c/index.yml).
 

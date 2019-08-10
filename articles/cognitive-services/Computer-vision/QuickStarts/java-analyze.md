@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Egy távoli kép – REST, a Java elemzése'
+title: 'Gyors útmutató: Távoli rendszerkép elemzése a REST API és a Javával'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban egy képet fog elemezni a Computer Vision API és a Java segítségével.
 services: cognitive-services
@@ -10,15 +10,15 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: eadf3aca848f1b8ad24cd387e1988cdf8ea55580
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.custom: seodec18, seo-java-august2019
+ms.openlocfilehash: 69d14b3ce84ddd1fbd54ab8a0f6f0c9e24ebac1e
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604421"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946314"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Gyors útmutató: A Computer Vision REST API és a Java használatával egy távoli kép elemzése
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Gyors útmutató: Távoli rendszerkép elemzése a Computer Vision REST API és a Java használatával
 
 Ebben a rövid útmutatóban egy távolban tárolt képet fog elemezni vizuális jellemzők kinyerése érdekében a Computer Vision REST API-jával. Az [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metódussal vizuális jellemzőket nyerhet ki a képek tartalma alapján.
 
@@ -27,7 +27,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A gépén telepítve kell lennie a [Java&trade;-platformhoz készült Standard Edition Development Kit 7-es vagy 8-as verziójának](https://aka.ms/azure-jdks) (JDK 7 vagy 8).
-- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Megjelenik a származó ingyenes próbaverziós kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) előfizetni a Computer Vision, és a kulcs beszerzése.
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait.
 
 ## <a name="create-and-run-the-sample-application"></a>A mintaalkalmazás létrehozása és futtatása
 
@@ -129,15 +129,15 @@ public class Main {
 1. Mentse a változtatásokat, majd hozza létre a Java-projektet.
 1. Ha IDE-t használ, futtassa a `Main` metódust.
 
-Azt is megteheti Ha a program egy parancssori ablakból rendszert használ, futtassa a következő parancsokat. Ezek a parancsok feltételezik, hogy egy nevű mappában találhatók a tárak `libs` , amely ugyanabban a mappában van `Main.java`; Ha nem, akkor cserélje le `libs` a kódtárakat az elérési útját.
+Ha a programot parancssori ablakból futtatja, akkor futtassa a következő parancsokat. Ezek a parancsok feltételezik, hogy a kódtárak egy `libs` nevű mappában találhatók, amely ugyanabban a `Main.java`mappában található, mint a; ha nem, `libs` a helyére a kódtárak elérési útját kell cserélnie.
 
-1. Fordítsa le a fájl `Main.java`.
+1. Fordítsa le a fájlt `Main.java`.
 
     ```bash
     javac -cp ".;libs/*" Main.java
     ```
 
-1. Futtassa a programot. A parancs egy kérést küld a QnA Maker API-ra a tudásbázis létrehozásához, majd 30 másodpercenként lekérdezi az eredményeket. Minden egyes választ ki a program a parancssori ablakba.
+1. Futtassa a programot. A parancs egy kérést küld a QnA Maker API-ra a tudásbázis létrehozásához, majd 30 másodpercenként lekérdezi az eredményeket. A rendszer minden választ kinyomtat a parancssori ablakba.
 
     ```bash
     java -cp ".;libs/*" Main

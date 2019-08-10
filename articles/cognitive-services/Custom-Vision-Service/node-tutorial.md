@@ -8,14 +8,14 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 2fe02bd48097b6e051f0203b4615c8c5683224cd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2fd9ccff68eb368107a299af02a54ae6fc6cc0e2
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560980"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946147"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Gyors útmutató: Rendszerkép-besorolási projekt létrehozása a Custom Vision Node. js SDK-val
 
@@ -82,7 +82,7 @@ const cherryTag = await trainer.createTag(sampleProject.id, "Japanese Cherry");
 
 ### <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
-A minta képek projekthez adásához, helyezze el a következő kódot a címke létrehozása után. Ez a kód a képeket a hozzájuk tartozó címkékkel együtt tölti fel. Az alapképfájl elérési útját a Cognitive Services Node. js SDK Samples projekt letöltése alapján kell megadnia.
+A minta képek projekthez adásához, helyezze el a következő kódot a címke létrehozása után. Ez a kód a képeket a hozzájuk tartozó címkékkel együtt tölti fel. Egyetlen kötegben akár 64 képet is feltölthet.
 
 > [!NOTE]
 > A *sampleDataRoot* a lemezképek elérési útjára kell váltania, attól függően, hogy a Cognitive Services Node. js SDK Samples projektet korábban letöltötte.
