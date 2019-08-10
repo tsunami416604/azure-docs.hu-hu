@@ -316,25 +316,25 @@ Az adatok Salesforce-ből való másolása során a rendszer a következő leké
 
 | Salesforce adattípusa | Data Factory közbenső adattípus |
 |:--- |:--- |
-| Auto Number |Karakterlánc |
-| Checkbox |Logikai |
+| Auto Number |String |
+| Checkbox |Boolean |
 | Currency |Decimal |
-| Date |Datetime |
-| Date/Time |Datetime |
-| Email |Sztring |
-| Id |Sztring |
-| Lookup Relationship |Sztring |
-| Multi-Select Picklist |Sztring |
+| Date |DateTime |
+| Date/Time |DateTime |
+| Email |String |
+| Id |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
 | Number |Decimal |
 | Percent |Decimal |
-| Phone |Sztring |
-| Picklist |Sztring |
-| Text |Sztring |
-| Text Area |Sztring |
-| Text Area (Long) |Sztring |
-| Text Area (Rich) |Karakterlánc |
-| Text (Encrypted) |Sztring |
-| URL |Sztring |
+| Phone |String |
+| Picklist |String |
+| Text |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
+| URL |String |
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység, Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
