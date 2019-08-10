@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 06/19/2019
 ms.author: mathoma
-ms.openlocfilehash: dd511375c6b007222185f25610aecbd9931a742b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ffa48d55703347883edf96a0a27ee52d19189976
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640059"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935017"
 ---
 Ebben a lépésben az erőforráscsoportot és egy Azure SQL Database önálló adatbázist fog létrehozni.
 
@@ -19,7 +19,7 @@ Ebben a lépésben az erőforráscsoportot és egy Azure SQL Database önálló 
 >
 > További információért lásd: [adatbázis-szintű tűzfalszabály létrehozása](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) vagy a kiszolgáló szintű tűzfalszabály által használt IP-cím meghatározása a számítógépen: [kiszolgáló szintű tűzfal létrehozása](../sql-database-server-level-firewall-rule.md).  
 
-# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 Hozza létre az erőforráscsoportot és az önálló adatbázist a Azure Portal használatával.
 
@@ -75,7 +75,7 @@ Hozza létre az erőforráscsoportot és az önálló adatbázist a Azure Portal
 
 9. A **SQL Database** űrlapon válassza a **Létrehozás** lehetőséget az erőforráscsoport, a kiszolgáló és az adatbázis üzembe helyezéséhez és kiépítéséhez.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -141,7 +141,7 @@ Hozzon létre egy erőforráscsoportot és egy önálló adatbázist a PowerShel
    $database
    ```
 
-# <a name="az-clitabbash"></a>[AZ PARANCSSORI FELÜLET](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Hozza létre az erőforráscsoportot és az önálló adatbázist AZ AZ parancssori felület használatával.
 

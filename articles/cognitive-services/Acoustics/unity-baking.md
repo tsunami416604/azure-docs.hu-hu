@@ -11,18 +11,18 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: e26df58de08d0941b5e3165852ed0b26f8890f66
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b7249c3048ba3af3adbaac01f43770482a0d38ad
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854929"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933205"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Projekt akusztikai egység sütni oktatóanyag
 Ez az oktatóanyag leírja az akusztikai és a projekt akusztikai funkcióit az Unity-ben.
 
 A szoftverre vonatkozó követelmények:
-* [Unity 2018.2 +](https://unity3d.com) Windowshoz
+* [Unity 2018.2 +](https://unity3d.com) Windows vagy MacOS rendszerhez
 * [Projekt akusztikai beépülő modul integrálva a Unity-projektbe](unity-integration.md) vagy a [projekt akusztikai egysége minta tartalma](unity-quickstart.md)
 * Nem kötelező: Egy [Azure batch-fiók](create-azure-account.md) , amellyel felgyorsíthatja a sütni a felhő-számítástechnika használatával
 
@@ -179,6 +179,25 @@ Miután elindította a sütni, lezárhatja az egységet. A Felhőbeli sütni a p
 
 Az Azure-beli hitelesítő adatokat a rendszer biztonságosan tárolja a helyi gépen, és társítja az egység-szerkesztőhöz. Kizárólag az Azure-hoz való biztonságos kapcsolat létesítésére szolgálnak.
 
+## <a name="to-find-the-status-of-a-running-job-on-the-azure-portal"></a>Futó feladatok állapotának megkeresése a Azure Portalon
+
+1. A Bake-feladatok AZONOSÍTÓjának megkeresése a sütni lapon:
+
+![Képernyőfelvétel az Unity Bake-feladatok AZONOSÍTÓról](media/unity-job-id.png)  
+
+2. Nyissa [](https://portal.azure.com)meg a Azure Portalt, navigáljon a Bake-hez használt batch-fiókhoz, és válassza a **feladatok** lehetőséget.
+
+![Képernyőkép a feladatok hivatkozásról](media/azure-batch-jobs.png)  
+
+3. Keresse meg a feladat azonosítóját a feladatok listájában.
+
+![Képernyőfelvétel a Bake-feladatok állapotáról](media/azure-bake-job-status.png)  
+
+4. Kattintson a feladat azonosítóra a kapcsolódó feladatok állapotának és az általános feladat állapotának megtekintéséhez.
+
+![Képernyőfelvétel a sütni feladat állapotáról](media/azure-batch-task-state.png)  
+
+
 ### <a name="Estimating-bake-cost"></a>Az Azure Bake Cost becslése
 
 Ha szeretné megbecsülni, hogy egy adott sütni Milyen költségekkel jár, a **becsült számítási költségek**, azaz az időtartam, és az óradíjat a kiválasztott virtuálisgép- **csomópont** helyi pénznemében adja meg. Az eredmény nem fogja tartalmazni a csomópontok üzembe helyezéséhez szükséges csomóponti időt. Ha például a **Standard_F8s_v2** lehetőséget választja, amelynek díja $0.40/HR, a becsült számítási költségek pedig 3 óra és 57 perc, a feladathoz tartozó becsült költségek $0,40 * ~ 4 óra = ~ $1,60. A tényleges költségeket valószínűleg egy kicsit magasabbra vált, mivel a csomópontok megkezdése hosszabb időt vesz igénybe. Az óránkénti csomópont költségét a [Azure batch díjszabási](https://azure.microsoft.com/pricing/details/virtual-machines/linux) oldalán találja (válassza a "számítás optimalizált" vagy a "nagy teljesítményű számítás" lehetőséget a kategória esetében).
@@ -188,6 +207,7 @@ Saját SZÁMÍTÓGÉPén is megadhatja saját jelenetét. Ez akkor lehet hasznos
 
 ### <a name="minimum-hardware-requirements"></a>Minimális hardverkövetelmények
 * X86-64 processzor legalább 8 maggal és 32 GB RAM-mal
+* A [Hyper-V engedélyezve van](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) a Docker futtatásához
 
 Például egy 8 magos, Intel Xeon E5-1660 @ 3 GHz-es és 32 GB RAM-mal rendelkező gépen
 * Az 100-es mintavételi teszttel ellátott kis jelenet körülbelül 2 órát vehet igénybe a durva sütni vagy a 32 órán át.
@@ -195,13 +215,15 @@ Például egy 8 magos, Intel Xeon E5-1660 @ 3 GHz-es és 32 GB RAM-mal rendelkez
 
 ### <a name="setup-docker"></a>A Docker telepítése
 A Docker telepítése és konfigurálása azon a számítógépen, amely a szimulációt fogja feldolgozni:
-1. Telepítse a [Docker](https://www.docker.com/products/docker-desktop)-eszközkészletet.
-2. Indítsa el a Docker-beállításokat, navigáljon a "speciális" beállításokhoz, és konfigurálja az erőforrásokat legalább 8 GB RAM-mal. Minél több CPU-t tud lefoglalni a Docker számára, annál gyorsabban fejeződik be a sütni. ![Képernyőfelvétel a Docker-beállításokról](media/docker-settings.png)
-3. Navigáljon a "megosztott meghajtók" elemre, és kapcsolja be a megosztást a feldolgozáshoz használt meghajtón.![Képernyőfelvétel a Docker Shared Drive lehetőségeiről](media/docker-shared-drives.png)
+1. Telepítse a [Docker Desktopot](https://www.docker.com/products/docker-desktop).
+2. Indítsa el a Docker-beállításokat, navigáljon a "speciális" beállításokhoz, és konfigurálja az erőforrásokat legalább 8 GB RAM-mal. Minél több CPU-t tud lefoglalni a Docker számára, annál gyorsabban fejeződik be a sütni.  
+![Képernyőfelvétel a Docker-beállításokról](media/docker-settings.png)
+1. Navigáljon a "megosztott meghajtók" elemre, és kapcsolja be a megosztást a feldolgozáshoz használt meghajtón.  
+![Képernyőfelvétel a Docker Shared Drive lehetőségeiről](media/docker-shared-drives.png)
 
 ### <a name="run-local-bake"></a>Helyi sütni futtatása
 1. Kattintson a "helyi sütni előkészítése" gombra a **sütni** lapon, és válassza ki azt a mappát, ahol a bemeneti fájlok és a végrehajtási parancsfájlok el lesznek mentve. Ezután bármilyen gépen futtathatja a sütni-t, ha megfelel a minimális hardverkövetelmények követelményeinek, és a Docker telepítve van, ha a mappát átmásolja a gépre.
-2. Indítsa el a szimulációt a "runlocalbake. bat" parancsfájl használatával. Ez a szkript beolvassa a projekt akusztikai Docker-rendszerképét a szimulációs feldolgozáshoz szükséges eszközkészlettel, és elindítja a szimulációt. 
+2. Indítsa el a szimulációt a "runlocalbake. bat" parancsfájllal a Windows rendszeren, vagy használja a "runlocalbake.sh" szkriptet MacOS rendszeren. Ez a szkript beolvassa a projekt akusztikai Docker-rendszerképét a szimulációs feldolgozáshoz szükséges eszközkészlettel, és elindítja a szimulációt. 
 3. A szimuláció befejezését követően másolja vissza az eredményül kapott. ACE fájlt az Unity-projektbe. Annak biztosítása érdekében, hogy az egység felismeri bináris fájlként, fűzze hozzá a ". Bytes" fájlt a fájlkiterjesztés (például "Scene1. ACE. Bytes"). A szimuláció részletes naplóit a "AcousticsLog. txt" fájl tárolja. Ha bármilyen problémába ütközik, ossza meg ezt a fájlt a diagnosztika támogatásához.
 
 ## <a name="Data-Files"></a>A sütni folyamat által hozzáadott adatfájlok

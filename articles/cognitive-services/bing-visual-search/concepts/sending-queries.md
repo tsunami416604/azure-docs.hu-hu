@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 7/01/2019
 ms.author: aahi
-ms.openlocfilehash: b0b26c771f19edeb45fd4fb6aa3f24c335d0f51e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6604e5d5b3b77955c9e5f78df5d2a5b804bf09ef
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562714"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883578"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Keresési lekérdezések küldése a Bing Visual Search API
 
@@ -75,8 +75,8 @@ Az alábbiakban azok a lekérdezési paraméterek láthatók, amelyeket a kérel
 
 | Name (Név) | Value | Type | Kötelező |
 | --- | --- | --- | --- |
-| <a name="cc" />cc  | Egy kétkarakteres országkód, amely a találatok helyét jelöli.<br /><br /> Ha beállítja ezt a paramétert, az [Accept-Language](#acceptlanguage) fejlécet is meg kell adnia. A Bing a nyelvek listájának első támogatott nyelvét használja, és kombinálja azt a megadott országkóddal, hogy meghatározza a piacot, ahonnan vissza fogja adni az eredményeket. Ha a nyelvek listája nem tartalmaz támogatott nyelvet, a Bing megkeresi a kérelmet támogató legközelebbi nyelvet és piacot. Másik lehetőségként a megadott piac helyett egy összesített vagy alapértelmezett piacot is használhat az eredmények megszerzéséhez.<br /><br /> Csak akkor használja ezt lekérdezési paramétert és az `Accept-Language` lekérdezési paramétert, ha több nyelvet ad meg, ellenkező esetben az `mkt` és a `setLang` paramétereket használja.<br /><br /> Ez a paraméter és az [mkt](#mkt) lekérdezési paraméter kölcsönösen kizárják egymást, ne adja meg mindkettőt. | Karakterlánc | Nem       |
-| <a name="mkt" />mkt   | A piac, ahonnan az eredmények származnak. <br /><br /> **MEGJEGYZÉS:** Ha ismert, mindig a piacot kell megadnia. Ha megadja a piacot, azzal elősegíti, hogy a Bing a kérelmet továbbítva megfelelő, optimális választ adjon vissza.<br /><br /> Ez a paraméter és a [cc](#cc) lekérdezési paraméter kölcsönösen kizárják egymást, ne adja meg mindkettőt. | Karakterlánc | Igen      |
+| <a name="cc" />cc  | Egy kétkarakteres országkód, amely a találatok helyét jelöli.<br /><br /> Ha beállítja ezt a paramétert, az [Accept-Language](#acceptlanguage) fejlécet is meg kell adnia. A Bing a nyelvek listájának első támogatott nyelvét használja, és kombinálja azt a megadott országkóddal, hogy meghatározza a piacot, ahonnan vissza fogja adni az eredményeket. Ha a nyelvek listája nem tartalmaz támogatott nyelvet, a Bing megkeresi a kérelmet támogató legközelebbi nyelvet és piacot. Másik lehetőségként a megadott piac helyett egy összesített vagy alapértelmezett piacot is használhat az eredmények megszerzéséhez.<br /><br /> Csak akkor használja ezt lekérdezési paramétert és az `Accept-Language` lekérdezési paramétert, ha több nyelvet ad meg, ellenkező esetben az `mkt` és a `setLang` paramétereket használja.<br /><br /> Ez a paraméter és az [mkt](#mkt) lekérdezési paraméter kölcsönösen kizárják egymást, ne adja meg mindkettőt. | Sztring | Nem       |
+| <a name="mkt" />mkt   | A piac, ahonnan az eredmények származnak. <br /><br /> **MEGJEGYZÉS:** Ha ismert, mindig a piacot kell megadnia. Ha megadja a piacot, azzal elősegíti, hogy a Bing a kérelmet továbbítva megfelelő, optimális választ adjon vissza.<br /><br /> Ez a paraméter és a [cc](#cc) lekérdezési paraméter kölcsönösen kizárják egymást, ne adja meg mindkettőt. | Sztring | Igen      |
 | <a name="safesearch" />safeSearch | A felnőtt tartalomra vonatkozó szűrő. A következők azok a lehetséges szűrőértékek, amelyek nem különböztetik meg a kis- és nagybetűket.<br /><ul><li>Off (Ki) – Visszaadja a felnőtt szöveget vagy képeket tartalmazó weblapokat.<br /><br/></li><li>Moderate (Közepes) – Visszaadja a felnőtt szöveget tartalmazó weblapokat, de a felnőtt képeket tartalmazó weblapokat nem.<br /><br/></li><li>Strict (Szigorú) – Nem ad vissza felnőtt szöveget és képeket tartalmazó weblapokat.</li></ul><br /> Az alapértelmezett érték a Moderate.<br /><br /> **MEGJEGYZÉS:** Ha a kérés olyan piacról származik, amelyet a Bing felnőtt házirendje `safeSearch` szigorú értékre van állítva, a Bing figyelmen `safeSearch` kívül hagyja az értéket, és szigorú értéket használ.<br/><br/>**MEGJEGYZÉS:** Ha a `site:` lekérdezési operátort használja, előfordulhat, hogy a válasz felnőtt tartalmat is tartalmaz, függetlenül attól, hogy a `safeSearch` lekérdezési paraméter melyik értékre van beállítva. Csak akkor használja a `site:` operátort, ha ismeri a webhely tartalmát, és a felnőtteknek szóló tartalmak megjelenítése nem okoz problémát.  | Sztring | Nem       |
 | <a name="setlang" />setLang  | A felhasználói felület sztringjeihez használni kívánt nyelv. A nyelvet az ISO 639-1 kétbetűs nyelvi kóddal kell megadnia. Az angol nyelv nyelvkódja például az EN. Az alapértelmezett érték az EN (angol).<br /><br /> Bár nem kötelező, javasoljuk, hogy mindig adja meg a nyelvet. A `setLang` paramétert általában az `mkt` által meghatározott nyelvre kell állítani, hacsak a felhasználó nem szeretné más nyelven megjeleníteni a felhasználói felület sztringjeit.<br /><br /> Ez a paraméter és az [Accept-Language](#acceptlanguage) fejléc kölcsönösen kizárják egymást, ne adja meg mindkettőt.<br /><br /> A felhasználóifelület-sztring egy olyan sztring, amelyet feliratként használnak a felhasználói felületen. A JSON-válaszobjektumok tartalmaznak néhány felhasználóifelület-sztringet. A válaszobjektumokban található, a Bing.com tulajdonságaira mutató hivatkozások is a megadott nyelvet alkalmazzák. | Sztring | Nem   |
 

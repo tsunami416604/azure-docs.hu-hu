@@ -1,55 +1,55 @@
 ---
-title: Frissítés a API V5-ös verziója a 7-es verzióját – a Bing webes keresési API
+title: Verziófrissítés az API V5-ből a v7-Bing Web Search APIra
 titleSuffix: Azure Cognitive Services
-description: Határozza meg, mely részei az alkalmazás megkövetelése frissíti a Bing Web Search 7-es API-k használata.
+description: Határozza meg, hogy az alkalmazás mely részeit kell frissíteni a Bing Web Search v7 API-k használatához.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.assetid: E8827BEB-4379-47CE-B67B-6C81AD7DAEB1
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: e3d78a1b7488e7489b02e34e9733a5d741213855
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2133cd59c524112ae8a77c0a20cbce1d1336a38d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384888"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881306"
 ---
-# <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Frissítés a Bing webes keresési API v5 a 7-es verziója
+# <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Frissítés Bing Web Search API V5-ről a v7-re
 
-A frissítési útmutató 5-ös verzió és a Bing Web Search API 7-es verziója közötti különbségek azonosítja. Ez az útmutató segítségével azonosíthatja, hogy 7-es verzió használatához frissítenie kell az alkalmazás részei.
+Ez a frissítési útmutató a Bing Web Search API 5. és 7. verziójának változásait azonosítja. Ez az útmutató segítséget nyújt az alkalmazás azon részeinek azonosításához, amelyeket frissítenie kell a 7-es verzió használatához.
 
 ## <a name="breaking-changes"></a>Kompatibilitástörő változások
 
 ### <a name="endpoints"></a>Végpontok
 
-- A 7-es verziója koncového bodu verziószám V5-ös verziója megváltozott. Ha például https:\/\/api.cognitive.microsoft.com/bing/**v7.0**  /keresése.
+- A végpont verziószáma a V5 verzióról a v7-re változott. Például: https:\/\/API.Cognitive.microsoft.com/Bing/**v 7.0**/Search.
 
-### <a name="error-response-objects-and-error-codes"></a>Hiba történt a válasz objektumok és hibakódok
+### <a name="error-response-objects-and-error-codes"></a>Hibás objektumok és hibakódok
 
-- Most már tartalmazza az összes sikertelen kérelem egy `ErrorResponse` objektum a válasz törzsében.
+- Az összes sikertelen kérelemnek tartalmaznia kell `ErrorResponse` egy objektumot a válasz törzsében.
 
-- A következő mezőket hozzáadni a `Error` objektum.  
-  - `subCode`&mdash;Hibakód particionálja be különálló gyűjtők, ha lehetséges
-  - `moreDetails`&mdash;A leírt hibával kapcsolatos további információkat a `message` mező
+- A következő mezőket adta hozzá az `Error` objektumhoz.  
+  - `subCode`&mdash;A hibakódot különálló gyűjtőbe particionálja, ha lehetséges
+  - `moreDetails`&mdash;További információ a `message` mezőben leírt hibáról
 
 
-- Az 5-ös verziójának hibakódok cseréli a következő lehetséges `code` és `subCode` értékeket.
+- Az V5-hibakódokat a következő lehetséges `code` és `subCode` értékekkel cserélte le.
 
 |Kód|SubCode|Leírás
 |-|-|-
-|Kiszolgálóhibái|UnexpectedError<br/>ResourceError<br/>NotImplemented|A Bing Kiszolgálóhibái adja vissza, minden alkalommal, amikor az alárendelt kód feltételek bármelyike teljesül. A válasz tartalmazza ezeket a hibákat, ha a HTTP-állapotkód: 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokkolt|A Bing InvalidRequest adja vissza, ha bármelyik részét a kérés érvénytelen, nem. Például egy kötelező paraméter hiányzik, vagy egy paraméter értéke nem érvényes.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a a HTTP-állapotkód: 400.<br/><br/>Ha a hiba HttpNotAllowed, 410-es HTTP-állapotkódot.
-|RateLimitExceeded||Minden alkalommal, amikor a lekérdezések másodpercenkénti (lekérdezési QPS) és a lekérdezések száma (QPM) havi kvótát túllépi a Bing RateLimitExceeded adja vissza.<br/><br/>A Bing 429-es HTTP-állapotkód: adja vissza, ha túllépte QPS és a 403-as, QPM túllépése.
-|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|A Bing InvalidAuthorization adja vissza, ha a Bing a hívó nem tudja hitelesíteni. Ha például a `Ocp-Apim-Subscription-Key` fejléc hiányzik, vagy az előfizetési kulcs nem érvényes.<br/><br/>A redundancia akkor fordul elő, ha egynél több hitelesítési módszer adja meg.<br/><br/>Ha a hiba InvalidAuthorization, a HTTP-állapotkód: a 401-es.
-|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|A Bing InsufficientAuthorization adja vissza, ha a hívó nem rendelkezik engedéllyel az erőforrás eléréséhez. Ez a hiba akkor fordulhat elő, ha az előfizetési kulcs le lett tiltva, vagy lejárt. <br/><br/>Ha a hiba InsufficientAuthorization, a HTTP-állapotkód: a 403-as.
+|ServerError|UnexpectedError<br/>ResourceError<br/>Nincs implementálva|A Bing visszaadja a ServerError, ha az alkódok bármely feltétele teljesül. A válasz ezeket a hibákat fogja tartalmazni, ha a HTTP-állapotkód 500.
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokkolt|A Bing visszaadja a InvalidRequest, ha a kérelem bármely része érvénytelen. Például hiányzik egy kötelező paraméter, vagy a paraméter értéke érvénytelen.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a HTTP-állapotkód 400.<br/><br/>Ha a hiba HttpNotAllowed, a 410-es HTTP-állapotkód.
+|RateLimitExceeded||A Bing visszaadja a RateLimitExceeded, amikor a másodpercenkénti lekérdezések (QPS) vagy a havi lekérdezés (QPM) kvóta meghaladja a kvótát.<br/><br/>A Bing a 429-as HTTP-állapotkódot adja vissza, ha túllépte a QPS és a 403 értéket, ha túllépte a QPM.
+|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|A Bing visszaadja a InvalidAuthorization, ha a Bing nem tudja hitelesíteni a hívót. Például hiányzik a `Ocp-Apim-Subscription-Key` fejléc, vagy az előfizetési kulcs érvénytelen.<br/><br/>A redundancia akkor fordul elő, ha egynél több hitelesítési módszert ad meg.<br/><br/>Ha a hiba InvalidAuthorization, a HTTP-állapotkód 401.
+|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|A Bing visszaadja a InsufficientAuthorization, ha a hívónak nincs engedélye az erőforrás elérésére. Ez a hiba akkor fordulhat elő, ha az előfizetési kulcs le van tiltva vagy lejárt. <br/><br/>Ha a hiba InsufficientAuthorization, a HTTP-állapotkód 403.
 
-- A következő képez le az előző hibakódok új kódokkal. Ha függőséget az 5-ös verziójának hibakódok készített, ennek megfelelően frissülnek a kódot.
+- A következő leképezi az előző hibakódokat az új kódokra. Ha az V5-hibakódok függőségét vette igénybe, frissítse a kódját ennek megfelelően.
 
-|5-ös verzió kód|7-es verzió code.subCode
+|5\. verzió kódja|7-es verzió kódja. alkód
 |-|-
 |RequestParameterMissing|InvalidRequest.ParameterMissing
 RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
@@ -58,31 +58,31 @@ ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
 Letiltva|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
-DataSourceErrors|ServerError.ResourceError
+DataSourceErrors|ServerError. ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
 HttpNotAllowed|InvalidRequest.HttpNotAllowed
 UserAgentMissing|InvalidRequest.ParameterMissing
-NotImplemented|ServerError.NotImplemented
+Nincs implementálva|ServerError.NotImplemented
 InvalidAuthorization|InvalidAuthorization
 InvalidAuthorizationMethod|InvalidAuthorization
 MultipleAuthorizationMethod|InvalidAuthorization.AuthorizationRedundancy
 ExpiredAuthorizationToken|InsufficientAuthorization.AuthorizationExpired
 InsufficientScope|InsufficientAuthorization
-Blokkolt|InvalidRequest.Blocked
+Blokkolt|InvalidRequest. Blocked
 
 
-## <a name="non-breaking-changes"></a>A nem kompatibilitástörő változások  
+## <a name="non-breaking-changes"></a>Nem törhető változások  
 
 ### <a name="headers"></a>Fejlécek
 
-- A választható hozzáadott [Pragma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) kérés fejlécéhez. Alapértelmezés szerint a Bing gyorsítótárazott tartalmat ad vissza, ha van ilyen. Ha nem szeretné, hogy a Bing gyorsítótárazott tartalmat adjon vissza, állítsa a Pragma fejlécet no-cache értékre (például Pragma: no-cache).
+- Hozzáadta a választható [sorpragmákat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) -kérelem fejlécét. Alapértelmezés szerint a Bing gyorsítótárazott tartalmat ad vissza, ha van ilyen. Ha nem szeretné, hogy a Bing gyorsítótárazott tartalmat adjon vissza, állítsa a Pragma fejlécet no-cache értékre (például Pragma: no-cache).
 
 ### <a name="query-parameters"></a>Lekérdezési paraméterek
 
-- Hozzáadja a [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) lekérdezési paraméter. Ez a paraméter használatával határozza meg a válasz tartalmazza a kívánt válaszokat. A válaszok rangsorolása alapján választják ki. Például, ha a paraméter értéke három (3), a válasz az első három rangsorolt adott válaszokat tartalmazza.  
+- A [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) lekérdezési paraméter hozzáadva. Ezzel a paraméterrel adhatja meg, hogy a válasz hány választ tartalmazzon. A válaszok rangsorolás alapján vannak kiválasztva. Ha például a paramétert három (3) értékre állítja be, a válasz az első három rangsorolt választ tartalmazza.  
 
-- Hozzáadja a [előléptetése](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) lekérdezési paraméter. Ezzel a paraméterrel együtt `answerCount` explicit módon felvenni egy vagy több válasz típusa, függetlenül attól, hogy ennek a területnek. Ha például a képek és videók támogatására, a válasz így állíthatja be előléptetés *videók, képek*. Az előléptetni kívánt válaszokat listája nem számítanak bele a `answerCount` korlátot. Például ha `answerCount` 2 és `promote` értékre van állítva *videók, képek*, a válasz tartalmazhat weblapok, híreket, videókat és lemezképek.
+- A [promóció](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) lekérdezési paramétere hozzáadva. Használja ezt a paramétert `answerCount` , hogy explicit módon tartalmazzon egy vagy több választ, függetlenül azok rangsorolásának. A videók és a képek válaszba való előléptetéséhez például az előléptetést a *videók, a képek*lehetőségre kell beállítani. Az előléptetni kívánt válaszok listája nem számít bele a `answerCount` korlátba. Ha `answerCount` például a 2 értékre van `promote` állítva, és a *videókra,* a képekre van beállítva, a válasz tartalmazhat weblapokat, híreket, videókat és képeket.
 
-### <a name="object-changes"></a>Objektum módosítása
+### <a name="object-changes"></a>Objektum változásai
 
-- Hozzáadja a `someResultsRemoved` mezőt a [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) objektum. A mező egy logikai érték, amely azt jelzi-e a válasz zárva néhány eredmények a webes válaszokat tartalmazza.  
+- Hozzáadta `someResultsRemoved` a mezőt a [](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) webválaszi objektumhoz. A mező egy logikai értéket tartalmaz, amely jelzi, hogy a válasz kizárta-e a webes válasz eredményét.  

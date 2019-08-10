@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/20/2019
 ms.author: mlearned
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 2079144cf6cb36870645d3182aabdecccfcbadd0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8a5fb9313fca2a8d787d0fbde47401f6d3e1d229
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615079"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880676"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Gyors útmutató: Azure Kubernetes szolgáltatásbeli (ak-) fürt üzembe helyezése az Azure CLI használatával
 
@@ -217,14 +217,14 @@ A folyamat állapotának monitorozásához használja [kubectl get service][kube
 kubectl get service azure-vote-front --watch
 ```
 
-Kezdetben a *külső IP-cím* az *Azure-vote-elülső* szolgáltatáshoz függőben jelenik meg.
+Kezdetben a *külső IP-cím* az *Azure-vote-elülső* szolgáltatáshoz függőbenjelenik meg.
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-Ha a *külső IP-* cím függőben  állapotról tényleges nyilvános IP-címről változik, `CTRL-C` akkor a `kubectl` figyelési folyamat leállításához használja a következőt:. A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
+Ha a *külső IP-* cím függőben állapotról tényleges nyilvános IP-címről változik, `CTRL-C` akkor a `kubectl` figyelési folyamat leállításához használja a következőt:. A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
 
 ```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
@@ -242,16 +242,16 @@ Az Azure vote hüvely aktuális állapotának, üzemidőének és erőforrás-ha
 
 1. Nyisson meg egy webböngészőt a [https://portal.azure.com][azure-portal]Azure Portal.
 1. Válassza ki az erőforráscsoportját (pl. *myResourceGroup*), majd válassza i az AKS-fürtöt (pl. *myAKSCluster*).
-1. A bal oldali **figyelés** **területen válassza az** eredmények lehetőséget
-1. Válassza a **+ Szűrő hozzáadása** elemet a képernyő felső részén
-1. Válassza ki a *Névtér* tulajdonságot, majd az *\<All but kube-system\>* (Összes, kivéve a kube rendszer) lehetőséget
-1. Válassza a **Tárolók** nézetet.
+1. A bal oldali **figyelés** területen válassza az eredmények lehetőséget.
+1. A felső részen válassza a **+ szűrő hozzáadása**elemet.
+1. Válassza ki a névteret tulajdonságként, majd válassza  *\<az összes,\>de Kube-rendszer*elemet.
+1. Válasszaa tárolók lehetőséget.
 
 Megjelenik az *azure-vote-back* és az *azure-vote-front* tároló, az alábbi példában látható módon:
 
 ![Futó tárolók állapotának megtekintése az AKS-ben](media/kubernetes-walkthrough/monitor-containers.png)
 
-Ha szeretné megtekinteni `azure-vote-back` a pod-naplókat, válassza a **Megtekintés az elemzésekben**lehetőséget, majd kattintson a **tárolók megtekintése** hivatkozásra a tárolók listájának jobb oldalán. Ezek a naplók tartalmazzák a tároló *stdout* és *stderr* streamjét is.
+Ha szeretné megtekinteni `azure-vote-back` a pod-naplókat, válassza a **Megtekintés az elemzésekben**lehetőséget, majd a tárolók listájának jobb oldalán válassza ki a **tárolók megtekintése** hivatkozást. Ezek a naplók tartalmazzák a tároló *stdout* és *stderr* streamjét is.
 
 ![Tárolók naplóinak megtekintése az AKS-ben](media/kubernetes-walkthrough/monitor-container-logs.png)
 

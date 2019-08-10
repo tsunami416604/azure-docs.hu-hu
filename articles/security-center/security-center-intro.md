@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 7bd18ab0cedf94f0ecc08c3523a608a8d554e6b2
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 2ef207a14582e6ba0d9f8a25c0314c5ec639c7cb
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827918"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882846"
 ---
 # <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
 
@@ -32,9 +32,9 @@ Azure Security Center a három legsürgetőbb biztonsági kihívással foglalkoz
 
 -   **Gyorsan változó** munkaterhelések – a felhő erőssége és kihívása. Egyrészt a végfelhasználók többek között felhatalmazást kapnak. A másik lehetőség, hogy hogyan gondoskodik arról, hogy az állandóan változó szolgáltatások használata és létrehozása a biztonsági szabványok szerint történjen, és kövesse az ajánlott biztonsági eljárásokat?
 
--   **Egyre kifinomultabb támadások** – bárhol is futtathatja a számítási feladatokat, a támadások egyre kifinomultabbak maradnak. Biztosítania kell a nyilvános Felhőbeli munkaterheléseket, amelyek valójában olyan internetes munkaterhelést jelentenek, amely még nagyobb biztonságot is biztosít, ha nem követi az ajánlott biztonsági eljárásokat.
+-   **Egyre kifinomultabb támadások** – bárhol is futtathatja a számítási feladatokat, a támadások egyre kifinomultabbak maradnak. Biztosítania kell a nyilvános Felhőbeli munkaterheléseket, amelyek valójában olyan internetes munkaterhelést jelentenek, amely még nagyobb biztonságot is biztosít, ha nem követi az ajánlott biztonsági eljárásokat.
 
--   **A biztonsági képességek rövid időn** belül megtalálhatók – a biztonsági riasztások és a riasztási rendszerek száma jóval több, mint a környezetek védelmének biztosításához szükséges háttérrel és tapasztalattal rendelkező rendszergazdák száma. Ha naprakészen tart a legújabb támadásokkal kapcsolatban, állandó kihívást jelent, ami lehetetlenné teszi a rendelkezésre állást, miközben a biztonság világa folyamatosan változik.
+-   A **biztonsági képességek rövid időn** belül megtalálhatók – a biztonsági riasztások és a riasztási rendszerek száma jóval több, mint a környezetek védelmének biztosításához szükséges háttérrel és tapasztalattal rendelkező rendszergazdák száma. Ha naprakészen tart a legújabb támadásokkal kapcsolatban, állandó kihívást jelent, ami lehetetlenné teszi a rendelkezésre állást, miközben a biztonság világa folyamatosan változik.
 
 Ha segítségre van szüksége a kihívások elleni védelemben, Security Center a következőket teszi lehetővé:
 
@@ -60,15 +60,15 @@ Azure Security Center lehetővé teszi a biztonsági helyzet megerősítését. 
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>A szervezet biztonsági házirendjének és megfelelőségének kezelése
 
-Ez egy biztonsági alapszintű, és gondoskodik arról, hogy a munkaterhelések biztonságosak legyenek, és a rendszer a testre szabott biztonsági házirendekkel kezdődik. Mivel a Security Center összes szabályzata az Azure Policy Controls szolgáltatásra épül, a **világszínvonalú házirend-megoldás**teljes skáláját és rugalmasságát tapasztalja. A Security Centerban beállíthatja, hogy a szabályzatok a felügyeleti csoportokon, az előfizetések között, vagy akár egy teljes bérlőn fussanak.
+Ez egy biztonsági alapszintű, és gondoskodik arról, hogy a munkaterhelések biztonságosak legyenek, és a rendszer a testre szabott biztonsági házirendekkel kezdődik. Mivel a Security Center összes szabályzata az Azure Policy Controls szolgáltatásra épül, a **világszínvonalú házirend-megoldás**teljes skáláját és rugalmasságát tapasztalja. A Security Centerban beállíthatja, hogy a szabályzatok a felügyeleti csoportokon, az előfizetések között, vagy akár egy teljes bérlőn fussanak.
 
 ![A Security Center irányítópultja](media/security-center-intro/sc-dashboard.png)
 
-Security Center segít **AZONOSÍTANI az árnyék**-előfizetéseket. Ha az irányítópulton **nem** szereplő előfizetéseket keres, azonnal megtudhatja, hogy vannak-e újonnan létrehozott előfizetések, és gondoskodjon róla, hogy a szabályzatok hatálya alá legyenek szabva, és Azure Security Center által védettek legyenek.
+Security Center segít **AZONOSÍTANI az árnyék**-előfizetéseket. Ha az irányítópulton **nem** szereplő előfizetéseket keres, azonnal megtudhatja, hogy vannak-e újonnan létrehozott előfizetések, és gondoskodjon róla, hogy a szabályzatok hatálya alá legyenek szabva, és Azure Security Center által védettek legyenek.
 
 ![Security Center szabályzat irányítópultja](media/security-center-intro/sc-policy-dashboard.png)
 
-A Security Center fejlett monitorozási képességei lehetővé teszik a **megfelelőség és a szabályozás időbeli nyomon követését és kezelését**. A **teljes megfelelőség** azt méri, hogy az előfizetések milyen mértékben felelnek meg a számítási feladathoz társított szabályzatoknak. 
+A Security Center fejlett monitorozási képességei lehetővé teszik a **megfelelőség és a szabályozás időbeli nyomon követését és kezelését**. A **teljes megfelelőség** azt méri, hogy az előfizetések milyen mértékben felelnek meg a számítási feladathoz társított szabályzatoknak. 
 
 ![Security Center a szabályzat időbeli alakulását](media/security-center-intro/sc-policy-time.png)
 
@@ -76,11 +76,11 @@ A Security Center fejlett monitorozási képességei lehetővé teszik a **megf
 
 Security Center folyamatosan felfedi a számítási feladatokban üzembe helyezett új erőforrásokat, és megállapítja, hogy az ajánlott biztonsági eljárásoknak megfelelően vannak-e konfigurálva, és ha nem, a rendszer megjelöli őket, és a javaslatok rangsorolt listáját kapja a gépek biztonsága érdekében javítania kell a számítógépet.
 
-Az egyik leghatékonyabb eszköz Security Center biztosítja a hálózat biztonsági állapotának folyamatos figyelését a **hálózati Térkép**. A térkép segítségével megtekintheti a számítási feladatok topológiáját, így megtekintheti, hogy az egyes csomópontok megfelelően vannak-e konfigurálva. Láthatja, hogy a csomópontok hogyan kapcsolódnak egymáshoz, ami segít letiltani a nemkívánatos kapcsolatokat, amelyek megkönnyítik a támadók számára a hálózatra való csúszást.
+Az egyik leghatékonyabb eszköz Security Center biztosítja a hálózat biztonsági állapotának folyamatos figyelését a **hálózati Térkép**. A térkép segítségével megtekintheti a számítási feladatok topológiáját, így megtekintheti, hogy az egyes csomópontok megfelelően vannak-e konfigurálva. Láthatja, hogy a csomópontok hogyan kapcsolódnak egymáshoz, ami segít letiltani a nemkívánatos kapcsolatokat, amelyek megkönnyítik a támadók számára a hálózatra való csúszást.
 
 ![Security Center hálózati Térkép](media/security-center-intro/sc-net-map.png)
 
-A Security Center egy **biztonságos pontszám**hozzáadásával megkönnyíti a biztonsági riasztások egy lépésének csökkentését. A biztonságos pontszámok mostantól a kapott javaslatokhoz vannak társítva, amelyek segítségével megismerheti, hogy az egyes javaslatok milyen fontosak az általános biztonsági helyzetek eléréséhez. Ez kulcsfontosságú a **biztonsági feladatok rangsorolásának**lehetővé tételéhez.
+A Security Center egy **biztonságos pontszám**hozzáadásával megkönnyíti a biztonsági riasztások egy lépésének csökkentését. A biztonságos pontszámok mostantól a kapott javaslatokhoz vannak társítva, amelyek segítségével megismerheti, hogy az egyes javaslatok milyen fontosak az általános biztonsági helyzetek eléréséhez. Ez kulcsfontosságú a **biztonsági feladatok rangsorolásának**lehetővé tételéhez.
 
 ![Security Center biztonságos pontszám](media/security-center-intro/sc-secure-score.png)
 

@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8809c80f2ecba4ea2b3e3d280be0c4ad81d78d37
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 927ce403130460c302f546038ff3a0c3a16e0368
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854848"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933016"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Projekt akusztikai Unreal/Wwise gyors útmutató
 Ebben a rövid útmutatóban a Project akusztikai tervezési vezérlőkkel kísérletezik a megadott minta tartalmakat használva az Unreal Engine és a Wwise számára.
 
-A szoftverre vonatkozó követelmények:
-* [Unreal Engine](https://www.unrealengine.com/) 4,21
-* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6
+A minta tartalmának használatához szükséges szoftverek:
+* [Unreal Engine](https://www.unrealengine.com/) 4,22
+* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2019.1.2
 
 ## <a name="download-the-sample-package"></a>A minta csomag letöltése
 Töltse le a [Project Acoustics Unreal + Wwise minta csomagot](https://www.microsoft.com/download/details.aspx?id=58090). A mintakód egy Unreal Engine-projektet, az adott Unreal-projekthez tartozó Wwise-projektet és a Project Acoustics Wwise beépülő modulját tartalmazza.
@@ -55,12 +55,16 @@ A Project akusztikai Unreal beépülő moduljának további viselkedést kell ki
 
     ![Képernyőkép a Kódszerkesztő DXSDK](media/directx-sdk-comment.png)
 
+* Ha a Visual Studio 2019-as verzióval állítja össze a Wwise-vel való összekapcsolási hibát, manuálisan `VSVersion` szerkessze `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` az `vc150`alapértelmezett értéket a következőben:
+
+    ![Képernyőfelvétel a VSVersion-ról vc150-ra módosított Kódszerkesztő](media/vsversion-comment.png)
+
 ### <a name="open-the-unreal-project"></a>Nyissa meg az Unreal projektet. 
 A rendszer felkéri a modulok újraépítésére; kattintson az Igen gombra.
 
 >Ha a projekt megnyitása nem sikerül a létrehozási hibáknál, ellenőrizze, hogy telepítette-e a Project Acoustics Wwise beépülő modult a Project akusztikus Wwise használt verzióra.
 
->Ha nem használja a [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6-t, újra kell létrehoznia a hangbankokat, mielőtt a hangfelvételt a minta projektben játssza.
+>Ha a 2019,1-nál korábbi [AudioKinetic-Wwise](https://www.audiokinetic.com/products/wwise/) használ, nem fog tudni hangbankokat előállítani a projekt akusztikai mintájának projektje alapján.  A Wwise 2019,1-es verziójának a megfelelő használatra való integrálása szükséges a mintavételi projektben.
 
 ## <a name="experiment-with-project-acoustics-design-controls"></a>Kísérletezés a Project akusztikai tervezési vezérlőkkel
 Figyelje meg, hogyan hangzik a jelenet az Unreal Editor Play (lejátszás) gombjára kattintva. Az asztalon a W, A, S, D és az egér használatával mozoghat. További billentyűparancsok megtekintéséhez nyomja le az **F1** billentyűt. Íme néhány tervezési tevékenység a kipróbáláshoz:

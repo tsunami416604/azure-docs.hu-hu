@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 9a06c8e3b50c3f54971694f8d3924a3a5ba5f071
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 0bbdba343888bc91521245d0c9a0e4eaa87c5538
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595039"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932000"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3.0: Keresés a szótárban
 
@@ -140,13 +140,9 @@ A sikeres válasz egy JSON-tömb, amely egyetlen eredménnyel rendelkezik a beme
 
 Ebből a példából megtudhatja, hogyan lehet megkeresni az `fly` alternatív fordításokat spanyol nyelven az angol kifejezéssel.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
 ```
-
----
 
 A válasz törzse (az egyértelműség rövidítése) a következő:
 
@@ -191,13 +187,9 @@ A válasz törzse (az egyértelműség rövidítése) a következő:
 
 Ez a példa azt mutatja be, hogy mi történik, ha a keresett kifejezés nem létezik az érvényes szótári pár esetében.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly123456'}]"
 ```
-
----
 
 Mivel a kifejezés nem található a szótárban, a válasz törzse üres `translations` listát tartalmaz.
 

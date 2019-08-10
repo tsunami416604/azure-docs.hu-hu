@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 7adced4088b1e155d6776f71e8f23a9eceae2297
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d13ee8c46df9433530df1d26a86978daab709a52
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566783"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883051"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Gyors útmutató: Kiszolgáló szintű tűzfalszabály létrehozása az önálló és a készletezett adatbázisokhoz a Azure Portal használatával
 
@@ -37,7 +37,7 @@ A SQL Database szolgáltatás egy tűzfalat hoz létre az adatbázis-kiszolgál�
 > [!NOTE]
 > Az SQL Database az 1433-as porton kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, előfordulhat, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni a Azure SQL Database-kiszolgálóhoz, ha az informatikai részleg nem nyitja meg a 1433-es portot.
 > [!IMPORTANT]
-> A 0.0.0.0 tűzfalszabály lehetővé teszi, hogy az összes Azure-szolgáltatás áthaladjon a kiszolgálói szintű tűzfalszabályok között, és megpróbáljon csatlakozni egyetlen vagy készletezett adatbázishoz a kiszolgálón keresztül. A virtuális hálózati szabályok használatával kapcsolatos további tudnivalókért lásd: [virtuális hálózati szabályok az IP-szabályok alternatívájaként](sql-database-firewall-configure.md#virtual-network-rules-as-alternatives-to-ip-rules).
+> A 0.0.0.0 tűzfalszabály lehetővé teszi, hogy az összes Azure-szolgáltatás áthaladjon a kiszolgálói szintű tűzfalszabályok között, és megpróbáljon csatlakozni egyetlen vagy készletezett adatbázishoz a kiszolgálón keresztül. 
 
 Kövesse az alábbi lépéseket egy kiszolgálói szintű IP-tűzfalszabály létrehozásához az ügyfél IP-címéhez, és engedélyezze a külső kapcsolatot a SQL Database tűzfalon keresztül csak az IP-címéhez.
 

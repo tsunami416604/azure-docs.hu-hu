@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 382d4febed98b53a469ac2788e6e8c8cbf064c23
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f0685b65ce9204221e93a1ea4aa47a5e09eaac9f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854819"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932977"
 ---
 # <a name="what-is-project-acoustics"></a>Mi az a Project Acoustics?
 A Project Acoustics egy Wave akusztikus motor a 3D interaktív élményekhez. Az informatikai modellek olyan hullámos hatásokat mutatnak be, mint a diffrakciós, a portál-és a reverb-effektusok az összetett jeleneteknél anélkül, hogy kézi Emellett magában foglalja a Game Engine és a audio middleware integrációját is. A Project Acoustics filozófiája hasonló a statikus világításhoz: a részletes fizikát offline állapotba helyezheti a fizikai alapkonfiguráció biztosításához, és egy egyszerű, kifejező tervezési vezérlőkkel rendelkező, a művészi célok elérésére szolgáló, könnyű futtatókörnyezetet használ.
@@ -40,11 +40,17 @@ A [Project akusztikai Unreal Integration](unreal-integration.md) az Unreal-hez k
 * **Sütni** Egy elemzési lépés helyileg fut, amely a voxelization és más geometriai elemzéseket végez a jeleneten a fenti beállítások alapján. Az eredmények a szerkesztőben láthatók a jelenet telepítőjének ellenőrzéséhez. A sütni-beküldéskor a rendszer az Voxel adatokat az Azure-ba küldi, és egy akusztikai játékbeli eszközt kap vissza.
 * **Runtime** Töltse be az eszközt a szintjébe, és készen áll arra, hogy meghallgassa az akusztikai szintet. Megtervezheti az akusztikai működést a szerkesztőben, és részletesen használhatja a forráskódot. A vezérlőelemek a szint parancsfájljaiból is futtathatók.
 
-## <a name="platforms"></a>Platformok
+## <a name="runtime-platforms"></a>Futtatókörnyezeti platformok
 A Project akusztikai futtatókörnyezet beépülő modulja jelenleg a következő platformokon telepíthető:
 * Windows
+* MacOS
 * Android
 * Xbox One
+
+## <a name="editor-platforms"></a>Szerkesztői platformok
+A Project akusztikai szerkesztő beépülő modulja a következő platformokon érhető el:
+* Windows
+* MacOS (csak Unity)
 
 ## <a name="download"></a>Letöltés
 * [Project akusztikai egység beépülő modul és minták](https://www.microsoft.com/en-us/download/details.aspx?id=57346)

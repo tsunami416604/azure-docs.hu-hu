@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: 42dfe4af56149e4305d076b0427f15038a01fadc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a5c60a4c7d4f1b441ec5e8444b10594a1e67d7db
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563634"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932721"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Az alkalmazás fejlesztése az irányítópult használatával
 
@@ -56,7 +56,7 @@ Ez megjeleníti a külső szolgáltatásokat, a közzétett régiókat és az ö
 
 ## <a name="review-training-evaluation"></a>A betanítás értékelésének áttekintése
 
-A  betanítási kiértékelési kártya az alkalmazás teljes pontossága terület összesített összegzését tartalmazza. A pontszám a szándék minőségét jelzi. 
+A betanítási kiértékelési kártya az alkalmazás teljes pontossága terület összesített összegzését tartalmazza. A pontszám a szándék minőségét jelzi. 
 
 ![A betanítási kiértékelési kártya az alkalmazás általános pontosságával kapcsolatos első adatterületet tartalmazza.](./media/luis-how-to-use-dashboard/analytics-card-2-shows-app-overall-accuracy.png)
 

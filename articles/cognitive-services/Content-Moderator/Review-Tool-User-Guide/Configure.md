@@ -7,15 +7,15 @@ author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: sajagtap
-ms.openlocfilehash: 70bc2c9f457aba09f3d3220061b2fd31d0923906
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5e12806aca7c53c254cc43c8ff5bb8d314f9993e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565672"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882735"
 ---
 # <a name="configure-the-review-tool"></a>A felülvizsgálati eszköz konfigurálása
 
@@ -35,7 +35,7 @@ Ez a szakasz azt ismerteti, hogyan hozhatók létre alcsoportok, és hogyan lehe
 
 ### <a name="create-a-subteam"></a>Alcsapat létrehozása
 
-Nyissa meg  az alcsoportok szakaszt, és kattintson az **alcsapat hozzáadása**lehetőségre. Adja meg az alcsoport nevét a párbeszédpanelen, majd kattintson a **Mentés**gombra.
+Nyissa meg az alcsoportok szakaszt, és kattintson az **alcsapat hozzáadása**lehetőségre. Adja meg az alcsoport nevét a párbeszédpanelen, majd kattintson a **Mentés**gombra.
 
 ![Alcsapat neve](images/1-Teams-2.PNG)
 
@@ -60,7 +60,7 @@ Ha tartalmat szeretne hozzárendelni egy alcsapathoz, kattintson a jobb felső s
 
 ### <a name="switch-between-subteams"></a>Váltás az alcsoportok között
 
-Ha egynél több alcsapat tagja, válthat az alcsoportok között, hogy megváltoztassa az Ön számára megjelenített tartalmi értékeléseket. A **felülvizsgálat** lapon válassza az **alapértelmezett** legördülő menüt, és válassza az alcsapat kiválasztása lehetőséget. Megtekintheti a különböző alcsoportok tartalmi felülvizsgálatait, de csak azokat, amelyeknek Ön a tagja.
+Ha egynél több alcsapat tagja, válthat az alcsoportok között, hogy megváltoztassa az Ön számára megjelenített tartalmi értékeléseket. A **felülvizsgálat** lapon válassza az **alapértelmezett** legördülő menüt, és válassza az alcsapat kiválasztásalehetőséget. Megtekintheti a különböző alcsoportok tartalmi felülvizsgálatait, de csak azokat, amelyeknek Ön a tagja.
 
 ![Váltás az alcsoportok között](images/3-review-image-subteam-2.png)
 
@@ -90,7 +90,7 @@ Az egyéni címkéket úgy törölheti, ha kiválasztja a Kuka ikont a címkék 
 
 Az **Összekötők** lapon kezelheti az összekötőket, amelyek olyan szolgáltatás-specifikus beépülő modulok, amelyek különböző módon dolgozzák fel a tartalmakat a tartalom-munkafolyamatok részeként. [](../review-api.md#workflows)
 
-A munkafolyamat létrehozásakor az alapértelmezett összekötő az Content Moderator-összekötő, amely a tartalmat felnőttként vagy  zamatként megjelölheti, megkeresheti a káromkodást és így tovább. Használhat azonban más összekötőket is, amelyeket itt láthat, ha rendelkezik a megfelelő szolgáltatásaihoz tartozó hitelesítő adatokkal (az Face API-összekötő használatához például egy [Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview) előfizetési kulcsot kell beszereznie).
+A munkafolyamat létrehozásakor az alapértelmezett összekötő az Content Moderator-összekötő, amely a tartalmat felnőttként vagy zamatkéntmegjelölheti, megkeresheti a káromkodást és így tovább. Használhat azonban más összekötőket is, amelyeket itt láthat, ha rendelkezik a megfelelő szolgáltatásaihoz tartozó hitelesítő adatokkal (az Face API-összekötő használatához például egy [Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview) előfizetési kulcsot kell beszereznie).
 
 A [felülvizsgálati eszköz](./human-in-the-loop.md) a következő összekötőket tartalmazza:
 
@@ -107,7 +107,7 @@ Ha hozzá szeretne adni egy összekötőt (és elérhetővé teszi a [](../revie
 
 ## <a name="workflows"></a>Workflows
 
-A  munkafolyamatok lapon kezelheti a [](../review-api.md#workflows)munkafolyamatokat. A munkafolyamatok felhőalapú szűrők a tartalomhoz, és összekötők segítségével rendezik a tartalmakat különböző módokon, és megtehetik a megfelelő műveleteket. Itt megadhatja, szerkesztheti és tesztelheti a munkafolyamatokat. További útmutatásért lásd: a munkafolyamatok [meghatározása és használata](Workflows.md) .
+A munkafolyamatok lapon kezelheti a [](../review-api.md#workflows)munkafolyamatokat. A munkafolyamatok felhőalapú szűrők a tartalomhoz, és összekötők segítségével rendezik a tartalmakat különböző módokon, és megtehetik a megfelelő műveleteket. Itt megadhatja, szerkesztheti és tesztelheti a munkafolyamatokat. További útmutatásért lásd: a munkafolyamatok [meghatározása és használata](Workflows.md) .
 
 ![Munkafolyamat-beállítások Content Moderator](images/settings-5-workflows.png)
 

@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: ab3d1e71515df80b5bdba1edf8cd16ba3ed6b0a9
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 786302b882fbd59932af17ccc6a390fa41b30ac9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500118"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932961"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Gyors útmutató: Videók keresése a Bing Video Search REST API és a Node. js használatával
 
@@ -75,7 +75,7 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Searc
        });
        ```
 
-# <a name="create-and-send-the-search-request"></a>A keresési kérelem létrehozása és elküldése
+## <a name="create-and-send-the-search-request"></a>A keresési kérelem létrehozása és elküldése
 
 1. Hozzon létre egy `bing_video_search()`nevű függvényt. Adja hozzá a kérelem paramétereit, beleértve az állomásnevet és a fejléceket. Kódolja a keresési kifejezést, és fűzze hozzá a Path paraméterhez a `?q=` (z) paraméterrel. Ezt követően küldje el a `req.end()`kérelmet a-val.
 

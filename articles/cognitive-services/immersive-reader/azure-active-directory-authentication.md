@@ -1,21 +1,21 @@
 ---
 title: Azure Active Directory (Azure AD) hitelesítés
 titleSuffix: Azure Cognitive Services
-description: A alámerülés olvasó SDK-ra vonatkozó referenciák
+description: Ez a cikk bemutatja, hogyan hozhat létre egy új, teljes értékű olvasó-erőforrást egy egyéni altartománnyal, majd hogyan konfigurálhatja az Azure AD-t az Azure-bérlőben.
 services: cognitive-services
 author: rwaller
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: de6a29e1c4c102aa7d4038185c1635544ba9dfe2
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 5a03c377a275fff489f1fb8371f9905411b67960
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688794"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881546"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>A Azure Active Directory-(Azure AD-) hitelesítés használata a magától ellátott olvasó szolgáltatással
 

@@ -1,6 +1,6 @@
 ---
-title: Azure térbeli horgonyok kapcsolatos gyakori kérdések |} A Microsoft Docs
-description: Az Azure térbeli horgonyok egy felügyelt felhőalapú szolgáltatás, és a fejlesztői platform, amely lehetővé teszi az eszközök közötti, a többfelhasználós, vegyes valóságot élmény HoloLens, iOS és Android-eszközök között. Ezek a gyakori kérdések a szolgáltatással kapcsolatos kérdésekre cím technikai szempontból.
+title: Gyakran ismételt kérdések az Azure térbeli Horgonyokkal kapcsolatban | Microsoft Docs
+description: Az Azure térbeli horgonyok egy felügyelt felhőalapú szolgáltatás és fejlesztői platform, amely lehetővé teszi az eszközökön, több felhasználón, vegyes valóságon alapuló, HoloLens, iOS és Android rendszerű eszközökön való használatot. Ezek a gyakori kérdések a szolgáltatással kapcsolatos kérdésekkel foglalkoznak a technikai szempontból.
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -8,124 +8,120 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 435ad986a9f0b96d42c88d450f40e5900ad33b7c
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 06936a196813dacfc1fc9d02945bee4119b7eea8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653251"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927495"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Gyakori kérdések az Azure Spatial Anchorsról
 
-Azure térbeli horgonyok egy felügyelt felhőszolgáltatás, amely HoloLens, az iOS és Android-eszközök észlel, amely lehetővé teszi több felhasználó, kijelölése figyelembe vegyes valóság fejlesztői platform.
+Az Azure térbeli horgonyok egy felügyelt felhőalapú szolgáltatás és fejlesztői platform, amely lehetővé teszi a többfelhasználós, térbelian tudatos, vegyes valóságot a HoloLens, iOS és Android rendszerű eszközökön.
 
-További információkért lásd: [Azure térbeli kapcsolatok alapjainak áttekintése](overview.md).
+További információ: [Azure térbeli horgonyok – áttekintés](overview.md).
 
-## <a name="azure-spatial-anchors-product-faqs"></a>Az Azure térbeli horgonyok termék – gyakori kérdések
+## <a name="azure-spatial-anchors-product-faqs"></a>Azure térbeli horgonyok termékkel kapcsolatos gyakori kérdések
 
-**K: Mely eszközöket támogatja az Azure térbeli horgonyok?**
+**K: Mely eszközök támogatják az Azure térbeli horgonyokat?**
 
-**V:** Az Azure térbeli horgonyok segítségével a fejlesztők alkalmazásokat készíthet a HoloLens, az iOS-eszközökön ARKit támogatással, és az Android-eszközök ARCore támogatás; iOS és Android rendszerhez készült Ez magában foglalja a telefonokon és táblagépeken egyaránt.
+**V:** Az Azure térbeli horgonyok lehetővé teszik a fejlesztők számára, hogy a ARKit-támogatással rendelkező iOS-eszközökön és ARCore-támogatással rendelkező Android-eszközökön alkalmazásokat HoloLens. iOS-és Android-eszközök esetén a telefonok és a tabletták is elérhetők.
 
-**K: Kell kapcsolódnia kell a felhőben Azure térbeli horgonyok használni?**
+**K: Csatlakoztatni kell a felhőhöz az Azure térbeli horgonyok használatához?**
 
-**V:** Az Azure térbeli horgonyok jelenleg Internet hálózati kapcsolat szükséges. Szívesen fogadjuk visszajelzését a a [visszajelzési webhelyet](https://feedback.azure.com/forums/919252-azure-spatial-anchors).
+**V:** Az Azure térbeli horgonyok jelenleg hálózati kapcsolatot igényelnek az internethez. Szívesen fogadjuk megjegyzéseit a [visszajelzési oldalunkon](https://feedback.azure.com/forums/919252-azure-spatial-anchors).
 
-**K: Mik az Azure térbeli horgonyok kapcsolati követelményei?**
+**K: Milyen kapcsolati követelmények vonatkoznak az Azure térbeli horgonyokra?**
 
-**V:** Az Azure térbeli horgonyok Wi-Fi és a mobil szélessávú kapcsolat működik.
+**V:** Az Azure térbeli horgonyok Wi-Fi-és mobil szélessávú kapcsolatokkal működnek.
 
-**K: Pontosan hogyan keresheti meg az Azure térbeli horgonyok horgonyok?**
+**K: Milyen pontosan tud az Azure térbeli horgonyok megtalálni a horgonyokat?**
 
-**V:** Sok tényező befolyásolja a horgonyok--fényviszonyok, a környezetet, és még a felület, amelyen a horgony kerül az objektumok keresése pontosságát. Annak megállapításához, hogy ha pontossága felel meg az igényeinek, próbálja ki a horgonyok a környezetek képviselője tervezi használni őket. Ha a környezetekben, ahol pontossága nem felel meg az igényeinek hibát tapasztal, tekintse meg [naplózás és diagnosztika Azure térbeli horgonyok](./concepts/logging-diagnostics.md).
+**V:** Számos tényező befolyásolja a horgonyok megkeresésének pontosságát – a megvilágítási körülményeket, a környezetben lévő objektumokat, valamint azt a felületet is, amelyen a horgony elhelyezve van. Annak eldöntéséhez, hogy a pontosság megfelel-e az igényeinek, próbálja meg a környezetekben található horgonyokat a használni kívánt környezetben. Ha olyan környezetekben találkozik, ahol a pontosság nem felel meg az igényeinek, lásd: [naplózás és diagnosztika az Azure térbeli horgonyokban](./concepts/logging-diagnostics.md).
 
-**K: Mennyi ideig tart hozhat létre, és keresse meg a központi jellegűek?**
+**K: Mennyi ideig tart a horgonyok létrehozása és megkeresése?**
 
-**V:** A hozhat létre, és keresse meg a központi jellegűek szükséges idő az--hálózati kapcsolat, az eszköz feldolgozási és terheléselosztást és az adott környezetben számos tényezőtől függ. Gyártási, a kiskereskedelmi és a játékok, amely jelzi, hogy a szolgáltatás lehetővé teszi, hogy azok a forgatókönyvek nagyszerű felhasználói élményt többek között számos iparágban alkalmazásokat fejlesztő ügyfelek van.
+**V:** A horgonyok létrehozásához és megkereséséhez szükséges idő számos tényezőtől függ: a hálózati kapcsolattól, az eszköz feldolgozásának és betöltésének, valamint az adott környezettől. Ügyfeleink számos iparágban, például a gyártásban, a kereskedelemben és a játékokban is kiépítik az alkalmazásokat, ami azt jelzi, hogy a szolgáltatás lehetővé teszi a nagyszerű felhasználói élményt a forgatókönyvekhez.
 
 ## <a name="privacy-faq"></a>Adatvédelem – gyakori kérdések
 
-**K: Ha az alkalmazásom egy térbeli kapcsolati alapot valahol minden alkalmazás rendelkezik hozzáféréssel?**
+**K: Ha az alkalmazás egy térbeli horgonyt helyez el valahol, akkor az összes alkalmazás hozzáfér hozzá?**
 
-**V:** Horgonyok legyenek különítve az Azure-fiók használatával. Amelyhez hozzáférést adhat a fiók csak alkalmazások fog tudni hozzáférni horgonyok a fiókon belül.
+**V:** A horgonyok az Azure-fiókkal vannak elkülönítve. Csak azok az alkalmazások férhetnek hozzá a fiókhoz, amelyekhez hozzáférést biztosít a fiókjához.
 
-**K: Továbbított adatok köre és a szolgáltatásban tárolt Azure térbeli horgonyok használatakor egy környezetre vonatkozó információk? A környezet képek továbbított adatok köre és tárolt?**
+**K: Milyen információkat továbbítanak és tárolnak a környezettel kapcsolatban az Azure térbeli horgonyok használatakor? Továbbítják és tárolják a környezet képeit?**
 
-**A**: Létrehozásakor, vagy horgonyok megkeresése, a környezet képek dolgozza fel az eszközön olyan származtatott formátumra. A származtatott formátumban továbbított és a szolgáltatásban tárolt.
+**A**: A horgonyok létrehozásakor vagy keresésekor a rendszer a környezet képeit egy származtatott formátumba dolgozza fel. A származtatott formátumot a szolgáltatás továbbítja és tárolja.
 
-Adja meg az átláthatóság, az alábbi, környezet és a származtatott újraelemzési pont felhő képe. Pont felhőbeli a környezetben, a szolgáltatásban tárolt és továbbított adatok köre geometriai reprezentációja látható. Az egyes újraelemzési pont felhőbeli azt továbbítja, és egy kivonatot az adott pont a vizuális jellemzőinek tárolja. A kivonatoló származik, de nem tartalmaz, képpontos adatokat.
+Az átláthatóság biztosításához az alábbi képen egy környezet és a származtatott ritka pont felhő látható. A pont felhő a szolgáltatás által továbbított és tárolt környezet geometriai ábrázolását mutatja. A ritka pont felhő minden pontjához az adott pont vizuális jellemzőinek kivonatát továbbítjuk és tároljuk. A kivonat a következőből származik:, de nem tartalmaz képpontos adatokat.
 
-Az Azure térbeli horgonyok betartja a [Azure szolgáltatási szerződés feltételeinek](https://go.microsoft.com/fwLink/?LinkID=522330&amp;amp;clcid=0x9), és a [Microsoft adatvédelmi nyilatkozatát](https://go.microsoft.com/fwlink/?LinkId=521839&amp;clcid=0x409).
+Az Azure térbeli horgonyok megfelelnek az [Azure szolgáltatási szerződés feltételeinek](https://go.microsoft.com/fwLink/?LinkID=522330&amp;amp;clcid=0x9)és a [Microsoft adatvédelmi nyilatkozatának](https://go.microsoft.com/fwlink/?LinkId=521839&amp;clcid=0x409).
 
-![Környezet és a származtatott újraelemzési pont felhőalapú](./media/sparse-point-cloud.png)
-*1. ábra: Környezet és a származtatott újraelemzési pont felhő*
+![Egy környezet és annak származtatott ritka pontjának](./media/sparse-point-cloud.png)
+*1. ábrája: Egy környezet és annak származtatott ritka pontjának felhője*
 
 
-**K: Van mód a küldhetők diagnosztikai adatokat a Microsoftnak?**
+**K: Van lehetőség diagnosztikai adatok küldésére a Microsoftnak?**
 
-**A**: Igen. Az Azure térbeli horgonyok rendelkezik egy diagnosztikai üzemmódra, amelyeket a fejlesztők is választható, ha az Azure térbeli horgonyok API-n keresztül. Ez akkor hasznos, például ha egy környezetet, ahol nem hozhat létre, és keresse meg a központi jellegűek kiszámítható módon tudja. Előfordulhat, hogy megkérjük, ha tartalmazó segíti a hibakeresés diagnosztikai jelentést küldhet. További információ: [naplózás és diagnosztika Azure térbeli horgonyok](./concepts/logging-diagnostics.md).
+**A**: Igen. Az Azure térbeli horgonyok diagnosztikai móddal rendelkeznek, amelyekkel a fejlesztők választhatnak az Azure térbeli horgonyok API-n keresztül. Ez akkor lehet hasznos, ha például olyan környezetben találkozik, amelyben előre nem hozhatók létre és nem találhatók meg a horgonyok. Megkérhetjük, hogy be tud-e jelenteni egy diagnosztikai jelentést, amely a hibakeresést segítő információkat tartalmaz. További információ: [naplózás és diagnosztika az Azure térbeli horgonyokban](./concepts/logging-diagnostics.md).
 
-## <a name="availability-and-pricing-faqs"></a>Rendelkezésre állás és a díjszabás – gyakori kérdések
+## <a name="availability-and-pricing-faqs"></a>Rendelkezésre állási és díjszabási GYIK
 
 **K: Biztosítanak SLA-t?**
 
-**V:** Az Azure-szolgáltatásokat standard szintű, most a cél egy rendelkezésre állási 99,9 %-nál nagyobb. Vegye figyelembe, hogy az Azure térbeli horgonyok jelenleg előzetes verzióban érhető el, és mint ilyen a [előzetes verziókra vonatkozó kiegészítő feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) vonatkoznak.
+**V:** A standard szintű Azure-szolgáltatásokhoz a 99,9%-nál nagyobb rendelkezésre állást célozunk meg. Vegye figyelembe, hogy az Azure térbeli horgonyok jelenleg előzetes verzióban érhetők el, ezért az előzetes verziókra vonatkozó [kiegészítő feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) érvényesek.
 
-**K: Közzéteheti a saját alkalmazások használata az Azure térbeli horgonyok alkalmazás-áruházak? Használhatok Azure térbeli horgonyok alapvető fontosságú üzemi forgatókönyvek esetén?**
+**K: Közzétehetem az alkalmazásokat az Azure térbeli horgonyok használatával az alkalmazás-áruházakban? Használhatom az Azure térbeli horgonyokat a kritikus fontosságú üzemi helyzetekben?**
 
-**V:** Az Azure térbeli horgonyok jelenleg előzetes verzióban érhető el, és ebben az időszakban Felkérjük, hogy fejleszthet alkalmazásokat, [visszajelzést](https://feedback.azure.com/forums/919252-azure-spatial-anchors) a termék, és a tervet az éles környezetekben üzemelő példányok.
+**V:** Az Azure térbeli horgonyok jelenleg előzetes verzióban üzemelnek, és ebben az időszakban meghívjuk az [](https://feedback.azure.com/forums/919252-azure-spatial-anchors) alkalmazások fejlesztésére, a termékkel kapcsolatos visszajelzések megtervezésére és az éles környezetekben való üzembe helyezésre.
 
-Általános elérhető (GA) dátumok hamarosan fogjuk bejelenteni.
+Az általánosan elérhető (GA) dátumok hamarosan bejelentve lesznek.
 
-**K: Van bármilyen szabályozási korlátok helyen?**
+**K: Vannak érvényben lévő szabályozási korlátok?**
 
-**A**: Igen, rendelkezünk szabályozási korlátait.  Várhatóan nem el fog érni őket az alkalmazások fejlesztéséhez és teszteléséhez. Éles környezetekben üzemelő példányok hogy vevőink nagy méretű memóriakonfigurációt készen áll. [Lépjen kapcsolatba velünk](mailto:azuremrs@microsoft.com) vitatni. Ebben a fázisban előzetes verziójának azt még nem tette közzé a rétegezést és díjszabási struktúrája, de várhatóan hamarosan ehhez.
+**A**: Igen, szabályozási korlátok vannak.  Nem várjuk, hogy az alkalmazások tipikus fejlesztése és tesztelése során is megtalálhatja őket. Éles üzembe helyezések esetén készek vagyunk támogatni ügyfeleink nagy léptékű követelményeit. [Lépjen kapcsolatba velünk](mailto:azuremrs@microsoft.com) , hogy beszéljen. Az előzetes verzió ezen fázisában még nem tették közzé a bevezetési és árképzési struktúrát, de hamarosan elvárjuk.
 
-**K: Mely régiókban érhető el az Azure térbeli horgonyok?**
+**K: Milyen régiókban érhetők el az Azure térbeli horgonyok?**
 
-**V:** Létrehozhat egy térbeli horgonyok Azure-fiókot még ma az Azure keleti régiója 2 régiójában. Ez azt jelenti, hogy mind a számítási és tárolási, ez a szolgáltatás működtetésére ebben a régióban. Ugyanakkor nem vonatkoznak korlátozások a, ahol az ügyfelek találhatók. A későbbiekben bővíteni fogjuk a szolgáltatás regionális elérhetősége elsődleges Azure-régióban.
+**V:** Az Azure-beli, USA 2. keleti régiójában jelenleg is létrehozhat Azure térbeli horgonyokat. Ez azt jelenti, hogy a szolgáltatáshoz tartozó számítási és tárolási kapacitás ebben a régióban van. Ez azt jelentette, hogy az ügyfelek hol találhatók. A jövőben a szolgáltatás regionális elérhetőségét minden elsődleges Azure-régióban ki fogjuk bővíteni.
 
-**K: Számítanak fel díjat az Azure Spatial Anchors használatáért? Minden eddiginél díja?**
+**K: Számítanak fel díjat az Azure Spatial Anchors használatáért? Kell-e fizetni?**
 
-**V:** Előzetes verzió ideje alatt a díjszabással kapcsolatos információk a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/spatial-anchors/).
+**V:** A díjszabással kapcsolatos részletekért tekintse meg a [](https://azure.microsoft.com/pricing/details/spatial-anchors/)díjszabási oldalunkat.
 
-## <a name="technical-faqs"></a>Gyakori technikai kérdések
+## <a name="technical-faqs"></a>Technikai gyakori kérdések
 
-**K: Hogyan működik az Azure térbeli horgonyok?**
+**K: Hogyan működik az Azure térbeli horgony?**
 
-**V:** Az Azure térbeli horgonyok függ a vegyes valóságon alapuló / kibővített valóság követő. Ezeket követő mennyire fogja világosnak látni a környezet kamera, és nyomon követheti az eszközre a 6-fok-az-szabadon (6DoF), ahogy azt a területet továbbítanak.
+**V:** Az Azure térbeli horgonyok vegyes valóságot/kibővített valóság-követési funkcióktól függenek. Ezek a Szemléző a környezetet a kamerákkal látják el, és nyomon követik az eszközt 6 fokos szabadságon (6DoF), ahogy az a térben halad át.
 
-Adja meg egy 6DoF tracker építőelemként, Azure térbeli horgonyok lehetővé teszi, hogy a valós környezetben hasznos helyek egyes pontok "forráshorgony" pontként. Előfordulhat, hogy, használhatja például horgonyra megjelenítése egy meghatározott helyen a való életből vett a tartalmat.
+Az Azure térbeli horgonyok lehetővé teszik, hogy a 6DoF Tracker felépítési blokkként bizonyos hasznos pontokat jelöljön ki a valódi környezetében "horgony" pontként. Előfordulhat például, hogy egy horgony használatával jeleníti meg a tartalmat a valós világ egy adott helyén.
 
-Horgonyra hoz létre, amikor az ügyfél-SDK rögzíti a környezeti információk a pont körül, és továbbítja azt a szolgáltatást. Ha egy másik eszköz figyeli a nem az, hogy ugyanaz a hely a horgony, hasonló adatokat a szolgáltatásnak továbbítja. Az adatok egyezik a környezet korábban tárolt adatokon. A horgony az eszköz viszonyított pozícióját vissza a használatra, az alkalmazás elküldi.
+Amikor létrehoz egy horgonyt, az ügyfél-SDK rögzíti a környezeti adatokat, és továbbítja azt a szolgáltatásnak. Ha egy másik eszköz ugyanazon a helyen keresi a horgonyt, a hasonló adatokat továbbítja a szolgáltatásnak. Ezek az adatértékek a korábban tárolt környezeti adatértékekkel egyeznek meg. Ezután a rendszer visszaküldi a horgony pozícióját az eszközhöz viszonyítva az alkalmazásban való használatra.
 
-**K: Hogyan nem térbeli horgonyok Azure integrálható ARKit és ARCore iOS és Android rendszeren?**
+**K: Hogyan integrálható az Azure térbeli alapjai a ARKit és a ARCore iOS és Android rendszereken?**
 
-**V:** Az Azure térbeli horgonyok ARKit és ARCore natív követési funkcióit kihasználva képes az. Emellett az SDK-Ink IOS és Android kínálnak képességek között megtalálható például egy felügyelt felhőszolgáltatásban horgonyok megőrzése, és lehetővé teszi az alkalmazások ismét keresse meg ezeket a horgonyok egyszerűen csatlakozik a szolgáltatáshoz.
+**V:** Az Azure térbeli horgonyok a ARKit és a ARCore natív követési képességeit használják. Emellett az iOS-hez és az Androidhoz készült SDK-k olyan funkciókkal is rendelkeznek, mint például a megőrzött horgonyok egy felügyelt felhőalapú szolgáltatásban, és lehetővé teszik az alkalmazások számára, hogy egyszerűen a szolgáltatáshoz csatlakozva megtalálják ezeket a horgonyokat.
 
-**K: Hogyan integrálható az Azure térbeli horgonyok HoloLens?**
+**K: Hogyan integrálható az Azure térbeli HoloLens?**
 
-**V:** HoloLens natív követési funkcióit kihasználva képes az Azure térbeli horgonyok. HoloLens található alkalmazások létrehozására vonatkozó biztosítunk egy Azure térbeli horgonyok SDK-t. Az SDK-t integrálja a natív HoloLens-képességekkel rendelkező, és olyan kiegészítő képességeket biztosít. Ezek a képességek lehetővé teszi az alkalmazásfejlesztők egy felügyelt felhőszolgáltatásban horgonyok megőrizni, és lehetővé teszi az alkalmazások kereséséhez ezen kapcsolatok alapjainak újra csatlakozik a szolgáltatáshoz.
+**V:** Az Azure térbeli horgonyok a HoloLens natív követési képességeit használják. Biztosítunk egy Azure térbeli horgonyt SDK-t a HoloLens-on futó alkalmazások létrehozásához. Az SDK integrálható a natív HoloLens képességekkel, és további képességeket biztosít. Ezek a képességek közé tartozik az alkalmazások fejlesztői számára, hogy egy felügyelt felhőalapú szolgáltatásban megmaradjanak a horgonyok, és lehetővé tegyék, hogy alkalmazásai újra megtalálják ezeket a horgonyokat a szolgáltatáshoz való csatlakozással.
 
-**K: Mely platformok és nyelvek Azure térbeli horgonyok támogatja?**
+**K: Mely platformokon és nyelveken támogatja az Azure térbeli-horgonyokat?**
 
-**V:** A fejlesztők olyan alkalmazásokat hozhatnak létre az Azure térbeli horgonyok ismerős eszközök és keretrendszerek használatával az eszközén:
+**V:** A fejlesztők az Azure térbeli Horgonyokkal hozhatnak létre alkalmazásokat az eszközük ismerős eszközeivel és keretrendszerek használatával:
 
-- HoloLens, az iOS és Android Unity
-- A SWIFT vagy Objective-C iOS rendszeren
-- A Java vagy az Android az Android Szünettel
-- C++/ A HoloLens WinRT
+- HoloLens, iOS és Android rendszerek közötti egység
+- Swift vagy Objective-C iOS rendszeren
+- Java-vagy Android-NDK az Androidon
+- C++/WinRT a HoloLens
 
-Ismerkedés a [fejlesztesz](index.yml).
+Kezdje el a [fejlesztést itt](index.yml).
 
 **K: Működik az Unreal?**
 
-**V:** Unreal támogatása a jövőben akkor minősül.
+**V:** Az Unreal támogatását a későbbiekben is figyelembe kell venni.
 
-**K: Működik a Xamarin?**
+**K: Milyen portokat és protokollokat használnak az Azure térbeli horgonyok?**
 
-**V:** Xamarin támogatása a jövőben akkor minősül.
-
-**K: Mi a portok és protokollok alkalmazza a térbeli horgonyok Azure?**
-
-**V:** Az Azure térbeli horgonyok egy titkosított protokoll használatával 443-as TCP-porton keresztül kommunikál. A hitelesítéshez használja [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/), amely a HTTPS protokoll használatával a 443-as porton keresztül kommunikál.
+**V:** Az Azure térbeli horgonyok a 443-as TCP-porton keresztül kommunikálnak titkosított protokoll használatával. A hitelesítéshez [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)használ, amely a HTTPS protokollon keresztül kommunikál a 443-as porton keresztül.

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9de7a6fdddf732f13c8dc7ab50fd151d9f90dc20
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0649fea0b598ffaaaf2611c9d1324174105ee5d4
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855854"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931539"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Azure Search szolgáltatás létrehozása a portálon
 
@@ -44,7 +44,7 @@ Választhatja az [MSDN-előfizetői értékelemek aktiválását](https://azure.
 
 Ha egynél több előfizetéssel rendelkezik, akkor olyat válasszon, amelyhez adat- vagy fájltárolási szolgáltatások is tartoznak. Az Azure Search képes automatikusan felderíteni az Azure Table és a blob Storage, a SQL Database [](search-indexer-overview.md)és az Azure Cosmos db indexelést az indexelő használatával, de csak az azonos előfizetésben lévő szolgáltatásokhoz.
 
-## <a name="select-a-resource-group"></a>Válasszon ki egy erőforráscsoportot
+## <a name="set-a-resource-group"></a>Erőforráscsoport beállítása
 
 Egy erőforráscsoport szükséges, amely az erőforrások teljes körű felügyeletéhez használható, beleértve a költséghatékonyságot is. Egy erőforráscsoport állhat egy szolgáltatásból vagy több, együtt használt szolgáltatásból is. Ha például Azure Searcht használ egy Azure Cosmos DB-adatbázis indexeléséhez, akkor az adott erőforráscsoport mindkét szolgáltatását felügyeleti célokra is elvégezheti. 
 
@@ -57,7 +57,7 @@ A szolgáltatás használata során nyomon követheti az aktuális és a terveze
 > [!TIP]
 > Egy erőforráscsoport törlésekor a benne lévő szolgáltatások is törölve lesznek. Több szolgáltatást igénybe vevő prototípus-projektek végén könnyebb mindent törölni, ha az összeset egy erőforráscsoportban helyezi el.
 
-## <a name="name-the-service-and-url-endpoint"></a>A szolgáltatás és az URL-végpont elnevezése
+## <a name="name-the-service"></a>A szolgáltatás neve
 
 A példány részletei területen adja meg a szolgáltatás nevét az **URL** mezőben. A név annak az URL-végpontnak a része, amelyen az API- `https://your-service-name.search.windows.net`hívások ki vannak bocsátva:. Ha például azt szeretné, hogy a végpont legyen, `https://myservice.search.windows.net`a következőt kell `myservice`megadnia:.
 
@@ -72,7 +72,7 @@ A szolgáltatásnévre vonatkozó követelmények:
 > [!TIP]
 > Ha úgy gondolja, hogy több szolgáltatást fog használni, javasoljuk, hogy a szolgáltatás neveként a régiót (vagy helyet) nevezze el elnevezési konvencióként. Az azonos régión belüli szolgáltatások díjmentesen cserélhetik az adatcserét, így ha Azure Search az USA nyugati régiójában van, és más szolgáltatásokkal is rendelkezik az USA `mysearchservice-westus` nyugati régiójában, akkor egy olyan név is, mint a tulajdonságok oldalának eldöntése során, hogyan lehet erőforrásokat egyesíteni vagy csatolni.
 
-## <a name="select-a-location"></a>Válasszon ki egy helyet
+## <a name="choose-a-location"></a>Hely kiválasztása
 
 Az Azure Search mint Azure-szolgáltatás világszerte sok adatközpontban üzemeltethető. A támogatott régiók listája a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/search/)található. 
 
@@ -83,11 +83,11 @@ Emellett, ha kognitív keresési AI-bővítést használ, a szolgáltatást a Co
 > [!Note]
 > Közép-India jelenleg nem érhető el az új szolgáltatásokhoz. Az India középső régiójában már meglévő szolgáltatások esetében korlátozás nélkül is méretezhető, és a szolgáltatás teljes mértékben támogatott az adott régióban. A régió korlátozásai ideiglenesek, és csak az új szolgáltatásokra korlátozódnak. Ezt a megjegyzést akkor távolítjuk el, ha a korlátozás már nem érvényes.
 
-## <a name="select-a-pricing-tier-sku"></a>Tarifacsomag (SKU) kiválasztása
+## <a name="choose-a-pricing-tier-sku"></a>Válasszon árképzési szintet (SKU)
 
 [Azure Search jelenleg több díjszabási szinten is elérhető](https://azure.microsoft.com/pricing/details/search/): Ingyenes, alapszintű vagy standard. Mindegyik szintet saját [kapacitás és korlátozások](search-limits-quotas-capacity.md) jellemzik. Útmutatást talál a [Tarifacsomag vagy SKU kiválasztása](search-sku-tier.md) című cikkben.
 
-Az alapszintű és a standard az éles munkaterhelések leggyakoribb lehetőségei, de a legtöbb ügyfél az ingyenes szolgáltatással kezdődik.
+Az alapszintű és a standard az éles munkaterhelések leggyakoribb lehetőségei, de a legtöbb ügyfél az ingyenes szolgáltatással kezdődik. A szintek közötti fő különbségek a partíció mérete és sebessége, valamint a létrehozható objektumok számának korlátai.
 
 Ne feledje, hogy a szolgáltatás létrehozása után nem módosítható az árképzési szintek. Ha később magasabb vagy alacsonyabb csomagra kíván áttérni, akkor újra létre kell hoznia a szolgáltatást.
 

@@ -1,130 +1,130 @@
 ---
-title: Méretezze át, és vágja körül képminiatűröket – a Bing Web Search API
+title: Képminiatűrök átméretezése és körülvágása – Bing Web Search API
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan méretezze át és vágja körül, a Bing keresési API-k által biztosított miniatűrök.
+description: Megtudhatja, hogyan méretezheti át és vágja le a Bing Search API-k által biztosított miniatűröket.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.assetid: 05A08B01-89FF-4781-AFE7-08DA92F25047
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: aahi
-ms.openlocfilehash: 6a5b2dada254a0bfc7fa60172f56221ba67ad279
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ecc6eb86e7115143fa63b44f9191b1fe8d3703b8
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868048"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881802"
 ---
-# <a name="resize-and-crop-thumbnail-images"></a>Méretezze át és vágja körül, a miniatűrök
+# <a name="resize-and-crop-thumbnail-images"></a>Miniatűr képek átméretezése és körülvágása
 
-Néhány válasz a Bing keresési API-kon keresztül is tartalmazó URL-címek, Bing, átméretezheti és körülvágása által kiszolgált miniatűr képeket, és tartalmazhat lekérdezési paramétereket. Példa:
+Néhány válasz a Bing Search API-k tartalmaz a Bing által szolgáltatott miniatűr rendszerképekre mutató URL-címeket, amelyek átméretezhetők és elhelyezhetők, és lekérdezési paramétereket is tartalmazhatnak. Példa:
 
 `https://<host>/th?id=AMMS_92772df988...&w=110&h=73&rs=1&qlt=80&cdv=1&pid=16.1`
 
-Ha jelenítjük meg ezeket a miniatűrök egy részét, adja meg a egy beállítást, a fennmaradó képek megtekintését.
+Ha megjeleníti a miniatűrök egy részhalmazát, adjon meg egy lehetőséget a fennmaradó képek megtekintéséhez.
 
 > [!NOTE]
-> Győződjön meg, hogy vágás és a miniatűr képek átméretezésének figyelembe veszi a harmadik féltől származó jogosultságok, a Bing Search API által kért keresés a forgatókönyv biztosít [használja, és megjelenítési követelményeihez](use-display-requirements.md).
+> Ügyeljen arra, hogy a miniatűr lemezképek kivágása és átméretezése olyan keresési forgatókönyvet biztosítson, amely tiszteletben tartja a harmadik fél jogosultságait, ahogy azt a Bing Search API [-használat és a megjelenítési követelmények](use-display-requirements.md)megkövetelik.
 
 ## <a name="resize-a-thumbnail"></a>Miniatűr átméretezése 
 
-Méretezze át a miniatűr, a Bing javasolja, hogy csak az egyiket adja a `w` (szélesség) vagy `h` (magasság) lekérdezési paraméterek a Miniatűr URL-címben. Csak a magasság és szélesség megadása lehetővé teszi, hogy a Bing, a kép eredeti oldalarány karbantartása. Adja meg a szélességét és magasságát (képpontban). 
+A miniatűr átméretezéséhez a Bing javasolja, hogy a miniatűr URL `w` -címében csak `h` egy (szélesség) vagy (magasság) lekérdezési paramétert határozzon meg. Csak a magasság vagy a szélesség meghatározása lehetővé teszi, hogy a Bing fenntartsa a rendszerkép eredeti aspektusát. Itt adhatja meg a szélességet és a magasságot képpontban megadva. 
 
-Például, ha az eredeti miniatűr 480 x 620:
+Ha például az eredeti miniatűr a 480x620:
 
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=480&h=620`
 
-És ezt szeretné csökkenteni a méretét, és állítsa a `w` paramétert az új értéket (például `336`), és távolítsa el a `h` paraméter:
+Ha csökkenteni szeretné a méretét, állítsa a `w` paramétert egy új értékre (például `336`), és távolítsa el a `h` paramétert:
 
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=336`
 
-Ha csak a szélességének vagy magasságának miniatűr ad meg, a kép eredeti oldalarányának fenn kell tartani. Ha mindkét paramétert is meghatároz, és az eredeti oldalarányok nem kezelt, Bing fehér kitöltés a kép szegélyének hozzáadja.
+Ha csak a miniatűr magasságát vagy szélességét állítja be, a kép eredeti oldalaránya megőrződik. Ha mindkét paramétert megadja, és a méretarány nem marad meg, a Bing a kép szegélyéhez adja hozzá a fehér margót.
 
-Például levágás nélküli átméretez egy 200 x 200 480 x 359-lemezképet, ha a teljes szélesség a lemezképet fog tartalmazni, de magasságát fogja tartalmazni, a felső és alsó kép padding fehér 25 képpont. Ha a rendszerkép sikeresen 359 x 480-as, a bal és jobb oldali szegély fehér kitöltési tartalmaz. Ha a kép levágja, fehér margó nem kerül.  
+Ha például egy 480x359-rendszerképet a 200x200-re való méretezés nélkül lakik, a teljes szélesség tartalmazni fogja a képet, de a magasság 25 képpontot tartalmaz a képen látható tetején és alján. Ha a képet 359x480, a bal és a jobb oldali szegély fehér margót fog tartalmazni. Ha levágja a képet, a fehér kitöltés nincs hozzáadva.  
 
-Az alábbi képen az eredeti méretével, egy miniatűrképet (300 x 480-as).  
+Az alábbi képen a miniatűr kép eredeti mérete (480x300) látható.  
   
-![Eredeti fekvő kép](./media/resize-crop/bing-resize-crop-landscape.png)  
+![Eredeti tájképi rendszerkép](./media/resize-crop/bing-resize-crop-landscape.png)  
   
-Az alábbi képen látható 200 x 200 átméretezte a képet. Az eredeti oldalarányok fenn lesz tartva, és a felső és alsó szegély helyeken fehér (a fekete szegély megtalálható kitöltése megjelenítéséhez).  
+Az alábbi ábrán a 200x200-re átméretezett kép látható. A rendszer karbantartja a méretarányt, és a felső és az alsó szegély fehér színű (a fekete szegély itt látható a kitöltés megjelenítéséhez).  
   
-![Az átméretezett fekvő kép](./media/resize-crop/bing-resize-crop-landscape-resized.png)  
+![Átméretezett tájképi rendszerkép](./media/resize-crop/bing-resize-crop-landscape-resized.png)  
 
-Adja meg, amely nagyobb, mint a kép eredeti szélessége és magassága dimenziókat, Bing a fehér kitöltési hozzáadása a bal oldali és a felső szegély.  
+Ha olyan dimenziókat ad meg, amelyek nagyobbak, mint a rendszerkép eredeti szélessége és magassága, a Bing a bal és a felső szegélyhez adja hozzá a fehér margót.  
 
-## <a name="request-different-thumbnail-sizes"></a>Miniatűr különböző méretű kérelem
+## <a name="request-different-thumbnail-sizes"></a>Különböző miniatűr méretek kérése
 
-Kérjen egy másik miniatűr kép mérete, távolítsa el minden lekérdezési paramétert a Miniatűr URL-CÍMÉT, kivéve a `id` és `pid` paramétereket. Majd adja hozzá vagy a `&w` (szélesség) vagy `&h` lekérdezési paramétert (magasság) képpont, de nem mindkettőt a kívánt lemezkép méretének. A Bing megőrzi a kép eredeti oldalarányának megőrzésével. 
+Ha más miniatűr képméretet szeretne kérni, távolítsa el az összes lekérdezési paramétert a miniatűr `id` URL `pid` -címéből, kivéve a és a paramétereket. Ezután adja hozzá a `&w` (szélesség) vagy `&h` a (magasság) lekérdezési paramétert a kívánt képmérethez képpontban, de ne mindkettőt. A Bing a kép eredeti oldalarányát fogja fenntartani. 
 
-A fenti URL-165 képpont a kép szélessége növelése érdekében használja a következő URL-címe:
+A fenti URL-cím által a 165 képpont értékre megadott képek szélességének növeléséhez használja a következő URL-címet:
 
 `https://<host>/th?id=AMMS_92772df988...&w=165&pid=16.1`
 
-Ha olyan lemezképet, amely nagyobb, mint a kép eredeti méretének kér, a Bing hozzáadja a kép körül fehér kitöltési, igény szerint. Például ha a kép eredeti méretének 474 x 316 és beállított `&w` 500-as, a Bing adja vissza egy 500 x 333 rendszerképet. Ez a rendszerkép fog rendelkezni a felső és alsó széle és a bal és jobb oldali kitöltése 13 képpont mentén fehér kitöltési 8,5 képpont.
+Ha a rendszerkép eredeti méreténél nagyobb méretű képet kér, a Bing szükség szerint fehér margót hoz létre a rendszerkép körül. Ha például a rendszerkép eredeti mérete 474x316, és a 500 értékre van `&w` állítva, a Bing egy 500x333-képet ad vissza. Ennek a képnek 8,5 képpont fehér kitöltése lesz a felső és az alsó szélen, a bal és a jobb szélen pedig 13 képpont kitöltéssel.
 
-Fehér kitöltési hozzáadása, ha a kért méret nagyobb, mint a kép eredeti méretének megakadályozni a Bing, állítsa be a `&p` lekérdezési paraméter 0 értékre. Ha például belefoglalja a `&p=0` fenti URL-címét, a Bing paraméter adja vissza egy 474 x 316 kép helyett egy 500 x 333 rendszerképet:
+Ha meg szeretné akadályozni, hogy a Bing ne adjon hozzá fehér kitöltést, ha a kért méret nagyobb, `&p` mint a rendszerkép eredeti mérete, állítsa 0-ra a lekérdezési paramétert. Ha például belefoglalja a `&p=0` paramétert a fenti URL-címre, a Bing a 500x333-rendszerkép helyett egy 474x316-képet ad vissza:
 
 `https://<host>/th?id=AMMS_92772df988...&w=500&p=0&pid=16.1`
 
-Ha mindkét megadott `&w` és `&h` lekérdezési paraméterek, a Bing megőrzi a kép eredeti oldalarányok, és hozzáadja a fehér kitöltési, igény szerint. Például, ha a kép eredeti mérete 474 x 316 és 200 x 200 beállította a szélességének és magasságának paraméterek (`&w=200&h=200`), a Bing, a felső és alsó fehér kitöltése 33 képpont tartalmazó lemezképek adja vissza. Ha a `&p` lekérdezési paraméter, a Bing 200 x 134 kép adja vissza.
+Ha a és `&h` a `&w` lekérdezési paramétereket is megadja, a Bing megtartja a kép méretarányát, és szükség esetén fehér kitöltés hozzáadását teszi szükségessé. Ha például a rendszerkép eredeti mérete 474x316, és a szélességi és a magassági paramétereket a 200x200 (`&w=200&h=200`) értékre állítja, a Bing egy olyan képet ad vissza, amely a felső és az alsó 33 képpontos fehér kitöltést tartalmaz. Ha a lekérdezési `&p` paramétert is tartalmazza, a Bing egy 200x134-képet ad vissza.
 
-## <a name="crop-a-thumbnail"></a>A miniatűr levágása 
+## <a name="crop-a-thumbnail"></a>Miniatűr körülvágása 
 
-Kép levágása, hogy tartalmazzák a `c` (a vágás) lekérdezési paraméter. A következő értékeket használhatja:
+Egy kép körülvágásához adja meg a `c` (Crop) lekérdezési paramétert. A következő értékeket használhatja:
   
-- `4` &mdash; Titkos arány  
-- `7` &mdash; Az intelligens arány  
+- `4`&mdash; Vak arány  
+- `7`&mdash; Intelligens arány  
 
-### <a name="smart-ratio-cropping"></a>Vágása arány Smart
+### <a name="smart-ratio-cropping"></a>Intelligens oldalarány levágása
 
-Ha arány Smart vágása kér (beállításával a `c` paramétert `7`), a Bing fog kép vágása, a tartományban, a központ passzív, a kép eredeti oldalarányok megtartásával. A tartományban, az a terület a képe, amely meghatározza a Bing, a legtöbb importálás részt tartalmaz. Az alábbiakban látható egy példa a régióban a lényeges.  
+Ha intelligens oldalarány-levágást kér (a `c` `7`paraméter értékének beállításával), a Bing egy képet fog kivenni a régiójának közepéről, a kép méretarányának megtartása mellett. Az érdeklődési régió a Bing által a legtöbb importálási rész részét képező rendszerkép területe. A következő példa egy érdekes régiót mutat be.  
   
-![A lényeges terület](./media/resize-crop/bing-resize-crop-regionofinterest.png)
+![Érdekes régió](./media/resize-crop/bing-resize-crop-regionofinterest.png)
 
-Ha egy kép átméretezéséhez, és kérelem arány Smart levágás, a Bing a kép a kért méret az eredeti oldalarányok megtartásával csökkenti. A Bing majd körülvágja a képet, az átméretezett dimenziók alapján. Ha átméretezett szélessége kisebb vagy megegyezik magasságának, például a Bing körülvágása lesz a lemezképet, a bal oldali és a régiót a lényeges közepén, a jobb. Ellenkező esetben a Bing fog vágja körül, azt hogy felső és alsó részén a tartományban, közepén.  
+Ha átméretezi a rendszerképet, és intelligens arányt szeretne leképezni, a Bing a Méretarány megtartása mellett csökkenti a kívánt méretet. A Bing ezt követően kivágja a képet az átméretezett méretek alapján. Ha például az átméretezett szélesség kisebb vagy egyenlő, mint a magasság, a Bing az érdeklődési régió középpontjának bal és jobb oldalán fogja kivágni a képet. Ellenkező esetben a Bing az érdeklődési régió központjának tetején és alján fogja levágni.  
   
  
-Az alábbiakban látható a lemezkép használatával arány Smart vágása 200 x 200-ra csökken. A Bing méri a bal felső sarokban a lemezképet, mert a rendszerkép alsó részén csonkolva van. 
+Az alábbi ábrán a 200x200-re csökkenthető az intelligens oldalarány levágása. Mivel a Bing a képet a bal felső sarokban méri, a kép alsó részét a rendszer levágja. 
   
-![A 200-as x 200 csonkolva fekvő kép](./media/resize-crop/bing-resize-crop-landscape200x200c7.png) 
+![Fekvő kép kivágása a 200x200-be](./media/resize-crop/bing-resize-crop-landscape200x200c7.png) 
   
-Az alábbiakban látható a lemezkép használatával arány Smart vágása 200 x 100-ra csökken. A Bing méri a bal felső sarokban a lemezképet, mert a rendszerkép alsó részén csonkolva van. 
+Az alábbi ábrán látható, hogy a képet a 200x100 az intelligens oldalarányok levágása segítségével csökkenti. Mivel a Bing a képet a bal felső sarokban méri, a kép alsó részét a rendszer levágja. 
    
-![A 200-as x 100 csonkolva fekvő kép](./media/resize-crop/bing-resize-crop-landscape200x100c7.png)
+![A fekvő kép bevágása a 200x100](./media/resize-crop/bing-resize-crop-landscape200x100c7.png)
   
-Az alábbiakban látható a lemezkép használatával arány Smart vágása 100 x 200-ra csökken. Bing méri a lemezképet a központból, mert hiányosak a kép jobb és bal oldali részeit.
+Az alábbi ábrán látható, hogy a képet a 100x200 az intelligens oldalarányok levágása segítségével csökkenti. Mivel a Bing méri a képet a központból, a kép bal és jobb oldali részének bevágása történik.
   
-![100 x 200 csonkolva fekvő kép](./media/resize-crop/bing-resize-crop-landscape100x200c7.png) 
+![A fekvő kép bevágása a 100x200](./media/resize-crop/bing-resize-crop-landscape100x200c7.png) 
 
-A Bing a kép tartományban, nem tudja megállapítani, ha a szolgáltatás által használt titkos arány vágása.  
+Ha a Bing nem tudja meghatározni a rendszerkép régióját, a szolgáltatás a vak arányok levágását fogja használni.  
 
-### <a name="blind-ratio-cropping"></a>Titkos vágása arány
+### <a name="blind-ratio-cropping"></a>Vak arányok levágása
 
-Ha vak arány vágása kér (beállításával a `c` paramétert `4`), a Bing a következő szabályokat használ a kép levágása.  
+Ha a vak arány levágását kéri (a `c` `4`paraméter értékének beállításával), a Bing a következő szabályok használatával vágja le a rendszerképet.  
   
-- Ha `(Original Image Width / Original Image Height) < (Requested Image Width / Requested Image Height)`, a rendszerkép mért bal felső sarokban, és alsó csonkolva.  
-- Ha `(Original Image Width / Original Image Height) > (Requested Image Width / Requested Image Height)`, a rendszerkép mért, és a bal és jobb csonkolva.  
+- Ha `(Original Image Width / Original Image Height) < (Requested Image Width / Requested Image Height)`a kép a bal felső sarokban található, és a lemez alul van levágva.  
+- Ha `(Original Image Width / Original Image Height) > (Requested Image Width / Requested Image Height)`a rendszer a képet a középpontból méri, a kép a bal és a jobb oldalon van.  
 
-Az alábbiakban látható egy álló rendszerképet, amely 225 x 300.  
+Az alábbi képen egy 225x300 álló portré látható.  
   
-![Eredeti napraforgó kép](./media/resize-crop/bing-resize-crop-sunflower.png)
+![Eredeti napraforgó képe](./media/resize-crop/bing-resize-crop-sunflower.png)
   
-Az alábbiakban látható a rendszerkép használatával, vak arány vágása 200 x 200-ra csökken. A bal felső sarokban, a kép alatt csonkolva alsó részén eredményez a kép mérése történik.  
+A következő ábrán látható, hogy a képet a "a" vak arányok levágásával csökkentettük. A képet a bal felső sarokban kell mérni, ami a bevágási kép alsó részét eredményezi.  
   
-![A 200-as x 200 csonkolva napraforgó kép](./media/resize-crop/bing-resize-crop-sunflower200x200c4.png)
+![A napraforgó képének bevágása a 200x200-be](./media/resize-crop/bing-resize-crop-sunflower200x200c4.png)
   
-Az alábbiakban látható a rendszerkép használatával, vak arány vágása 200 x 100-ra csökken. A bal felső sarokban, a kép alatt csonkolva alsó részén eredményez a kép mérése történik.  
+Az alábbi ábrán látható, hogy a 200x100 a vak arányok levágásával csökkenthető. A képet a bal felső sarokban kell mérni, ami a bevágási kép alsó részét eredményezi.  
   
-![A 200-as x 100 csonkolva napraforgó kép](./media/resize-crop/bing-resize-crop-sunflower200x100c4.png)
+![A napraforgó-kép bevágása a 200x100](./media/resize-crop/bing-resize-crop-sunflower200x100c4.png)
   
-Az alábbiakban látható a rendszerkép használatával, vak arány vágása 100 x 200-ra csökken. A kép a központ eredményez a kép alatt csonkolva bal és jobb részeit mérése történik.  
+Az alábbi ábrán látható, hogy a 100x200 a vak arányok levágásával csökkenthető. A képet a középpontból kell mérni, ami a levágott kép bal és jobb oldali részét eredményezi.  
   
-![100 x 200 csonkolva napraforgó kép](./media/resize-crop/bing-resize-crop-sunflower100x200c4.png)
+![A napraforgó-kép bevágása a 100x200](./media/resize-crop/bing-resize-crop-sunflower100x200c4.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mik azok a Bing Search APIs?](bing-api-comparison.md)
-* [A Bing keresési API-t használja, és megjelenítési követelményeihez](use-display-requirements.md)
+* [Mi a Bing Search API-k?](bing-api-comparison.md)
+* [Bing Search API-használati és megjelenítési követelmények](use-display-requirements.md)

@@ -7,15 +7,15 @@ author: anrothMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 8564095cc84a3f124ca41efd2e19787cd16902ab
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 22955ba4b885b264210dc8788f2a410b785b28b4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564130"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883967"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Modell használata az előrejelzési API-val
 
@@ -38,7 +38,7 @@ Miután a modell sikeresen közzé lett téve, megjelenik egy "közzétett" feli
 
 ## <a name="get-the-url-and-prediction-key"></a>Az URL és az előrejelzési kulcs megszerzése
 
-Ha a modell közzé lett téve, az __előrejelzési URL-cím__kiválasztásával kérheti le a szükséges információkat. Ekkor megnyílik egy párbeszédpanel, amely az előrejelzési API használatára vonatkozó információkat tartalmazza, beleértve az __előrejelzési URL-címet__ és az előrejelzési __kulcsot__.
+Ha a modell közzé lett téve, az __előrejelzési URL-cím__ kiválasztásával kérheti le a szükséges információkat. Ekkor megnyílik egy párbeszédpanel, amely az előrejelzési API használatára vonatkozó információkat tartalmazza, beleértve az __előrejelzési URL-címet__ és az előrejelzési __kulcsot__ .
 
 ![A teljesítmény lap az előrejelzési URL-cím gombját körülvevő piros négyszögtel jelenik meg.](./media/use-prediction-api/published-iteration-prediction-url.png)
 

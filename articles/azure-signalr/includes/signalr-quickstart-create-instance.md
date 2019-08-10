@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: 4e8bdc63daa7450a88c2fcf4b7e878e18cea260d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ac77f0b6a1d90fd78db64618c1e03ade198a67c0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179487"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882153"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>Azure SignalR Service-példány létrehozása
 
@@ -32,11 +32,12 @@ Az alkalmazás egy SignalR Service-példányhoz fog csatlakozni az Azure-ban.
     | **Előfizetés** | Az Ön előfizetése | Az új SignalR Service-példány létrehozásához használt előfizetés. | 
     | **[Erőforráscsoport](../../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Az új erőforráscsoport neve, amelyben létrehozza a SignalR Service-példányt. | 
     | **Location** | USA nyugati régiója | Válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/). |
-    | **Tarifacsomag** | Ingyenes | Az Azure SignalR Service-t ingyenesen is kipróbálhatja. |
+    | **Tarifacsomag** | Free | Az Azure SignalR Service-t ingyenesen is kipróbálhatja. |
     | **Egységek száma** |  Nem alkalmazható | Az egységek száma azt határozza meg, hogy a SignalR Service-példány hány kapcsolatot tud elfogadni. Ez a beállítás csak a Standard szinten konfigurálható. |
+    | **Szolgáltatási mód** |  Kiszolgáló nélküli | Azure Functions vagy REST API használatával. |
 
     ![SignalR szolgáltatás létrehozása](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
 
 1. A SignalR Service-példány üzembe helyezésének megkezdéséhez kattintson a **Létrehozás** gombra.
 
-1. A példány üzembe helyezését követően nyissa meg a portálon, és keresse meg a beállítások lapon. Módosítsa a szolgáltatás mód beállítást *kiszolgáló nélküli* csak akkor, ha az Azure SignalR Service kötés az Azure Functions vagy a REST API-t használja. Meghagyhatja a *klasszikus* vagy *alapértelmezett* más módon.
+1. A példány üzembe helyezése után nyissa meg a portálon, és keresse meg a beállítások lapot. A szolgáltatás mód beállítása csak *kiszolgáló* nélkülire módosítható, ha Azure functions kötés vagy REST API használatával használja az Azure signaler szolgáltatást. Hagyja meg *klasszikus* vagy *alapértelmezett* módon.

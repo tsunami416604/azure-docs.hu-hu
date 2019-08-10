@@ -1,47 +1,47 @@
 ---
-title: Gyakori kérdések (GYIK) – a Bing Image Search API
+title: Gyakori kérdések (GYIK) – Bing Image Search API
 titleSuffix: Azure Cognitive Services
-description: Kapcsolatos fogalmakat, a kód és a forgatókönyvek a Bing Image Search API kapcsolatos gyakori kérdésekre adott válaszok.
+description: A Bing Image Search API kapcsolódó fogalmakkal, kóddal és forgatókönyvekkel kapcsolatos gyakori kérdésekre adott válaszokat talál.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 20b8dbcae36555baf3913ab160575a631e204dd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6841e573446103466e2719797da9e4161b70b5a6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60917811"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881694"
 ---
-# <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>A Bing Image Search API kapcsolatos gyakori kérdések (GYIK)
+# <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Gyakran ismételt kérdések (GYIK) a Bing Image Search API
 
-Kapcsolatos fogalmakat, a kód és a forgatókönyvek a Bing Image Search API a Microsoft Cognitive Services, Azure-beli kapcsolatos gyakori kérdésekre adott válaszok.
+Válaszok az Azure-beli Microsoft Cognitive Services Bing Image Search API kapcsolatos fogalmakkal, kódokkal és forgatókönyvekkel kapcsolatos gyakori kérdésekre.
 
-## <a name="response-headers-in-javascript"></a>A JavaScript válaszfejlécek
+## <a name="response-headers-in-javascript"></a>Válaszok fejlécei a JavaScriptben
 
-Előfordulhat, hogy a következő fejléceket a Bing Image Search API érkező válaszokat.
+A következő fejlécek fordulhatnak elő a Bing Image Search API válaszában.
 
 | `Attribute`         | `Description` |
 | ------------------- | ------------- |
-| `X-MSEdge-ClientID` |A Bing a felhasználó rendelkezik hozzárendelt egyedi azonosítója |
-| `BingAPIs-Market`   |A piacon, amellyel a kérés teljesítéséhez |
-| `BingAPIs-TraceId`  |A Bing API-kiszolgálón (a támogatási) a kérés a naplóbejegyzés |
+| `X-MSEdge-ClientID` |A Bing által a felhasználóhoz hozzárendelt egyedi azonosító |
+| `BingAPIs-Market`   |A kérelem teljesítéséhez használt piac |
+| `BingAPIs-TraceId`  |A kéréshez tartozó Bing API-kiszolgálón található naplóbejegyzés (támogatáshoz) |
 
-Különösen fontos megőrizni az ügyfél-Azonosítót, és küldje vissza a későbbi kérelmeket. Ha így tesz, a Keresés a környezetben, a keresési eredmények rangsorolása korábbi, és egységes felhasználói élmény is biztosítanak.
+Különösen fontos az ügyfél-azonosító megőrzése, és a későbbi kérelmekkel való visszaküldése. Ha ezt teszi, a keresés a rangsorolás keresési eredményei között a múltbeli kontextust fogja használni, és egységes felhasználói élményt nyújt.
 
-Azonban amikor a Bing Image Search API hívása JavaScript, a böngésző beépített biztonsági funkciókat (CORS) előfordulhat, hogy megakadályozzák a fér hozzá a következő fejlécek értékeit.
+Ha azonban a Bing Image Search API a JavaScriptből hívja meg, a böngésző beépített biztonsági funkciói (CORS) megakadályozhatják a fejlécek értékének elérését.
 
-A fejlécek eléréséhez, hogy a Bing Image Search API-kérelem CORS proxyn keresztül. Az ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
+A fejlécek eléréséhez a Bing Image Search API kérelmet CORS-proxyn keresztül teheti meg. Az ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
 
-Egyszerű, hogy a CORS-proxy telepítéséhez a [oktatóanyag alkalmazása](tutorial-bing-image-search-single-page-app.md) eléréséhez a választható ügyféltanúsítvány-fejléceket. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Majd adja meg a következő parancsot a parancssorba.
+Egyszerűen telepíthet CORS-proxyt, hogy az oktatóanyag- [alkalmazás](tutorial-bing-image-search-single-page-app.md) hozzáférhessen a választható ügyfél-fejlécekhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután írja be a következő parancsot a parancssorba.
 
     npm install -g cors-proxy-server
 
-Ezután módosítsa a Bing Image Search API-végpont lévő a HTML-fájl:
+Ezután módosítsa a HTML-fájlban lévő Bing Image Search API végpontot a következőre:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
@@ -51,18 +51,18 @@ Végül indítsa el a CORS-proxyt a következő paranccsal:
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
-## <a name="response-headers-in-production"></a>Éles környezetben válaszfejlécek
+## <a name="response-headers-in-production"></a>Válasz fejlécei éles környezetben
 
-Az előző válasz leírt CORS proxy megközelítés a fejlesztés, tesztelés és tanulás a megfelelő.
+Az előző válaszban leírt CORS-proxy módszer a fejlesztés, a tesztelés és a tanulás számára megfelelő.
 
-Éles környezetben azonban kell üzemeltetése egy kiszolgálóoldali parancsprogram, amely a Bing Web Search API weblapként ugyanabban a tartományban. Ez a szkript kell ténylegesen hajtsa végre az API-hívások kérésre a weblap JavaScript-alapú, és adja át az összes eredmény, beleértve a fejléceket, az ügyfélnek. A két erőforrás (oldal és parancsfájl) oszt meg egy eredeti adatforrást, mert a CORS nem jut, és a speciális fejlécek elérhetők a JavaScript a weblapon.
+Éles környezetben azonban olyan kiszolgálóoldali parancsfájlt kell üzemeltetni, amely a Bing Web Search APIt használó weboldallal azonos tartományban található. Ennek a szkriptnek ténylegesen el kell végeznie az API-hívásokat a weblap JavaScript-kérelme alapján, és át kell adnia az összes találatot, beleértve a fejléceket, vissza kell térnie az ügyfélhez Mivel a két erőforrás (lap és parancsfájl) megosztja a forrást, a CORS nem válik lejátszásra, a speciális fejlécek pedig elérhetők a JavaScript számára a weblapon.
 
-Ez a megközelítés is védelmet nyújt az API-kulcsot a nyilvános való kitettség mivel csak a kiszolgálóoldali parancsprogram szükség van. A szkript egy másik módszerrel (például a odkazující HTTP) segítségével ellenőrizze, hogy a kérés engedélyezett.
+Ez a megközelítés az API-kulcs védelmét is védi a nyilvánosság számára, mivel csak a kiszolgálóoldali parancsfájlra van szükség. A parancsfájl egy másik módszert is használhat (például a HTTP-hivatkozót), hogy a kérelem engedélyezve legyen.
 
 ## <a name="next-steps"></a>További lépések
 
-Egy hiányzó szolgáltatás vagy funkció a kérdése van? Kérő vagy szavaz, fontolja meg a [felhasználói visszajelzési webhelyen](https://cognitive.uservoice.com/forums/555907-bing-search).
+Egy hiányzó funkcióval vagy funkcióval kapcsolatos kérdése van? Javasoljuk, hogy a [felhasználói hang](https://cognitive.uservoice.com/forums/555907-bing-search)webhelyére kérje vagy szavazzon rá.
 
 ## <a name="see-also"></a>Lásd még
 
- [A stack Overflow: A cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)
+ [Stack Overflow: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)

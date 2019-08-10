@@ -17,12 +17,12 @@ ms.date: 07/25/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 946eb0343c2858e275e40b7a581fd48e1713accd
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 507758831885bff7f61677ebae0224cc828dcb2e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853516"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879275"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Hitelesítési folyamatok és alkalmazási helyzetek
 
@@ -143,7 +143,7 @@ További információkért olvassa el a [webes API-kat meghívó Mobile App](sce
 
 ### <a name="protected-web-api"></a>Védett webes API
 
-A Microsoft Identity platform végpontján keresztül biztonságossá teheti a webszolgáltatásokat, például az alkalmazás REST-alapú webes API-ját. Egy védett webes API-t egy hozzáférési jogkivonattal kell meghívni az adatai biztonságossá tételéhez és a bejövő kérések hitelesítéséhez. Egy webes API hívója hozzáfűz egy hozzáférési jogkivonatot egy HTTP-kérelem engedélyezési fejlécében. Ha védelemmel szeretné ellátni a ASP.NET vagy ASP.NET Core webes API-t, érvényesíteni kell a hozzáférési jogkivonatot. Ehhez a ASP.NET JWT middleware-t fogja használni. A motorháztető alatt az érvényesítést a [.net Library IdentityModel bővítményei](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) végzik, nem MSAL.net
+A Microsoft Identity platform végpontján keresztül biztonságossá teheti a webszolgáltatásokat, például az alkalmazás REST-alapú webes API-ját. Egy védett webes API-t egy hozzáférési jogkivonattal kell meghívni az adatai biztonságossá tételéhez és a bejövő kérések hitelesítéséhez. Egy webes API hívója hozzáfűz egy hozzáférési jogkivonatot egy HTTP-kérelem engedélyezési fejlécében. Ha szeretné megóvni a ASP.NET vagy ASP.NET Core webes API-t, érvényesíteni kell a hozzáférési jogkivonatot. Ehhez a ASP.NET JWT middleware-t fogja használni. A motorháztető alatt az érvényesítést a [.net Library IdentityModel bővítményei](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) végzik, nem MSAL.net
 
 További információért olvassa el a [védett webes API](scenario-protected-web-api-overview.md)-t.
 

@@ -7,15 +7,15 @@ author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9b87529014a0eeb5561cd166a29f2309198733b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ca223735e64e5499313872ba0508bfb0d8ec7ed2
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565638"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882702"
 ---
 # <a name="define-and-use-moderation-workflows"></a>Moderálási munkafolyamatok definiálása és használata
 
@@ -51,7 +51,7 @@ Válassza ki a használni kívánt kimenetet, és adja meg a feltételeket, hogy
 
 ### <a name="define-the-action"></a>A művelet megadása
 
-Lépjen a következő **szakaszra** , ahol kiválaszthat egy műveletet. Az alábbi példa egy rendszerkép-áttekintést hoz létre, és hozzárendel egy címkét. Opcionálisan hozzáadhat egy alternatív (más) útvonalat is, és beállíthat egy műveletet is.
+Lépjen a következő szakaszra, ahol kiválaszthat egy műveletet. Az alábbi példa egy rendszerkép-áttekintést hoz létre, és hozzárendel egy címkét. Opcionálisan hozzáadhat egy alternatív (más) útvonalat is, és beállíthat egy műveletet is.
 
 ![Munkafolyamat-művelet definiálása](images/image-workflow-action.PNG)
 
@@ -61,7 +61,7 @@ Jegyezze fel a munkafolyamat nevét; a (z) munkafolyamat-API-val való moderál�
 
 ## <a name="test-the-workflow"></a>A munkafolyamat tesztelése
 
-Most, hogy definiált egy egyéni munkafolyamatot, tesztelje a minta tartalmával. Nyissa  meg a munkafolyamatokat, és válassza ki a megfelelő **végrehajtási munkafolyamat** gombot.
+Most, hogy definiált egy egyéni munkafolyamatot, tesztelje a minta tartalmával. Nyissa meg a munkafolyamatokat, és válassza ki a megfelelő **végrehajtási munkafolyamat** gombot.
 
 ![Munkafolyamat-teszt](images/image-workflow-execute.PNG)
 

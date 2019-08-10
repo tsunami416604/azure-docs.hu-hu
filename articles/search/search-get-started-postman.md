@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.author: heidist
-ms.openlocfilehash: 5ad1708475200475669c5de8f4fbd316f04ebd04
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e3912e90762977bc801279fde481fc26516e51a6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840785"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882645"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Gyors útmutató: Azure Search index létrehozása a Poster-ben REST API-k használatával
 > [!div class="op_single_selector"]
@@ -80,7 +80,7 @@ Ehhez tegye a következőket:
 
 1. Módosítsa a műveletet a **put**értékre.
 
-2. Másolás ebben az URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06`-ben.
+2. Másolás ebben az URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06`-ben.
 
 3. Adja meg az index definícióját (a másolásra kész kód a lenti) a kérelem törzsében.
 
@@ -298,6 +298,7 @@ Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három ind
 
 ## <a name="next-steps"></a>További lépések
 
-A REST-ügyfelek rendkívül hasznosak a rögtönzött vizsgálatokhoz, most azonban, hogy már ismeri a REST API-k működését, folytathatja a kódolást. A következő lépéshez tekintse meg a következő hivatkozást:
+Most, hogy már tudja, hogyan hajthat végre alapszintű feladatokat, további REST API hívásokat is használhat további speciális funkciókkal, például indexelő szolgáltatásokkal vagy [egy kognitív keresési folyamat beállításával](cognitive-search-tutorial-blob.md). A következő lépésként a következő hivatkozást javasoljuk:
 
-+ [Rövid útmutató: Index létrehozása a .NET SDK használatával](search-get-started-dotnet.md)
+> [!div class="nextstepaction"]
+> [REST-oktatóanyag: A részben strukturált adatfájlok (JSON-Blobok) indexelése és keresése Azure Search](search-semi-structured-data.md)

@@ -1,25 +1,25 @@
 ---
-title: Keresési kérések küldését a Bing Entity Search API
+title: Keresési kérelmek küldése a Bing Entity Search APInak
 titleSuffix: Azure cognitive Services
-description: Ismerje meg, hogyan keresési kérelmeket küldjön a Bing Entity Search API
+description: Megtudhatja, hogyan küldhet keresési kéréseket a Bing Entity Search API
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 25cb4845de9b23b04aa25140fae88f50e77cc72c
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 0788b220f2612170fdea974a8bb27e8374a0b3be
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542804"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879209"
 ---
-# <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Keresési kérések küldését a Bing Entity Search API
+# <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Keresési kérelmek küldése a Bing Entity Search APInak
 
-A Bing Entity Search API egy keresési lekérdezést küld a Bingnek, majd entitásokat és helyeket tartalmazó találatokat kap vissza. A helytalálatok lehetnek éttermek, szállodák vagy egyéb helyi vállalkozások. A helyekre vonatkozó lekérdezések meghatározhatják egy helyi vállalkozás nevét, vagy egy listát is lekérhetnek (például „éttermek a közelben”). Az entitástalálatok személyek, helyek vagy dolgok lehetnek. Ebben a környezetben idegenforgalmi létesítmények, állapotok, országok/régiók, stb.
+A Bing Entity Search API egy keresési lekérdezést küld a Bingnek, majd entitásokat és helyeket tartalmazó találatokat kap vissza. A helytalálatok lehetnek éttermek, szállodák vagy egyéb helyi vállalkozások. A helyekre vonatkozó lekérdezések meghatározhatják egy helyi vállalkozás nevét, vagy egy listát is lekérhetnek (például „éttermek a közelben”). Az entitástalálatok személyek, helyek vagy dolgok lehetnek. Ennek a kontextusnak a helyszíne turisztikai látványosságok, Államok, országok/régiók stb.
 
 ## <a name="the-endpoint"></a>A végpont
 
@@ -29,7 +29,7 @@ Az entitás- és helykeresés találatainak lekéréséhez egy GET kérelmet kel
 https://api.cognitive.microsoft.com/bing/v7.0/entities
 ```
 
-Kéréseket a HTTPS protokollt kell használnia.
+A kérelmeknek a HTTPS protokollt kell használniuk.
 
 Javasoljuk, hogy minden kérelem egy kiszolgálóról induljon. Az azonosítónak egy ügyfélalkalmazás részeként való terjesztése több lehetőséget ad arra, hogy rosszindulatú külső felek hozzáférjenek az azonosítóhoz. Emellett a hívások kiszolgálóról való indítása egyetlen frissítési pontot teremt az API későbbi verziói számára.
 
@@ -134,5 +134,5 @@ BingAPIs-Market: en-US
 
 ## <a name="next-steps"></a>További lépések
 
-* [Keresés a Bing Entity API-val rendelkező entitások esetében](search-for-entities.md)
-* [A Bing API használati és megjelenítési követelményeinek](../use-display-requirements.md)
+* [Entitások keresése a Bing Entity API-val](search-for-entities.md)
+* [A Bing API használatának és megjelenítési követelményei](../use-display-requirements.md)

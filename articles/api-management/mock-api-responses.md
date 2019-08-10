@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 9b9a691cb2bce2357d184420912ab340aee534e8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8840c85e35a371b8c7a0a76dbee6353a20b212be
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205306"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881116"
 ---
 # <a name="mock-api-responses"></a>API-válaszok utánzása
 
@@ -42,7 +42,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 + Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
 + Az [Azure API Management-szabályzatok alapelveinek](api-management-howto-policies.md) ismerete.
-+ Hajtsa végre a következő rövid útmutatót: [Az Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
++ Hajtsa végre a következő rövid útmutatót: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md).
 
 ## <a name="create-a-test-api"></a>Tesztelési API létrehozása 
 
@@ -64,7 +64,7 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan hozható létre egy
 1. Válassza ki az előző lépésben létrehozott API-t.
 2. Kattintson a **+ Művelet hozzáadása** elemre.
 
-    | Beállítás             | Value (Díj)                             | Leírás                                                                                                                                                                                   |
+    | Beállítás             | Érték                             | Leírás                                                                                                                                                                                   |
     |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | **Megjelenített név**    | *Teszthívás*                       | A **fejlesztői portálon** megjelenített név.                                                                                                                                       |
     | **URL** (HTTP-művelet) | GET                               | Az előre meghatározott HTTP-műveletek közül választhat.                                                                                                                                         |
@@ -79,7 +79,7 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan hozható létre egy
 5. Válassza a **200 OK** elemet a listából.
 6. A jobb oldali **Ábrázolások** fejléc alatt válassza a **+ Ábrázolás hozzáadása** lehetőséget.
 7. Írja be az „*alkalmazás/json*” kifejezést a keresőmezőbe, és válassza ki az **alkalmazás/json** tartalomtípust.
-8. A **Minta** szövegmezőbe írja be a következőt: `{ 'sampleField' : 'test' }`.
+8. A **Minta** szövegmezőbe írja be a következőt: `{ "sampleField" : "test" }`.
 9. Kattintson a **Létrehozás** gombra.
 
 ## <a name="enable-response-mocking"></a>Válaszutánzás engedélyezése

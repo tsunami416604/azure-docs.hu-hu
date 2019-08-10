@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c9de4a9b72e446a7d2b6687af380ee910b58980
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: a56fcc45d4efb21c4904380d731d9e95584c39fd
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741293"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879415"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Hibrid Azure Active Directory csatlakoztatott eszközök manuális konfigurálása
 
@@ -71,6 +71,8 @@ Ha a szervezet felügyelt (nem összevont) telepítőt használ a helyszíni Act
 A 1703-es vagy korábbi verziójú Windows 10-es eszközök esetén, ha a szervezet kimenő proxyn keresztül kíván hozzáférni az internethez, a Windows 10-es számítógépek Azure AD-ba való regisztrálásának engedélyezéséhez be kell vezetnie a webproxy automatikus felderítése (WPAD) szolgáltatást.
 
 A Windows 10 1803-től kezdve, még akkor is, ha egy összevont tartományban lévő eszköz hibrid Azure AD-csatlakoztatási kísérlete AD FS meghiúsul, és ha Azure AD Connect úgy van konfigurálva, hogy a számítógép/eszköz objektumait az Azure AD-be szinkronizálja, az eszköz megpróbálja befejezni a hibrid Azure AD-csatlakozást az USA-ban a szinkronizált számítógép/eszköz.
+
+Annak ellenőrzéséhez, hogy az eszköz képes-e hozzáférni a fenti Microsoft-erőforrásokhoz a rendszerfiókban, használhatja a [teszt eszköz regisztrációjának kapcsolati](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0) parancsfájlját.
 
 ## <a name="verify-configuration-steps"></a>Konfigurációs lépések ellenőrzése
 

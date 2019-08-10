@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – beállítása és lekérése egy Node-webalkalmazást az Azure Key vault titkos kulcs |} A Microsoft Docs
-description: Ezt a gyorsútmutatót követve állítsa be, és egy Node-webalkalmazást az Azure Key Vault titkos kulcs lekérése
+title: Gyors útmutató – a Azure Key Vault titkos kulcsának beállítása és beolvasása a Node Web App használatával | Microsoft Docs
+description: Ebben a rövid útmutatóban egy csomópont-webalkalmazás használatával állít be és kér le titkos kulcsot a Azure Key Vaultból
 services: key-vault
 author: msmbaldwin
 manager: sumedhb
@@ -9,36 +9,36 @@ ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 5e8c29e033d895e24047754e686420fb4db86142
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 5ca6289b1af02a54d8c66d5a9835e24f61c58559
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236639"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934460"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Gyors útmutató: Állítsa be, és a egy Node-webalkalmazást az Azure Key Vault titkos kulcs lekérése 
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Gyors útmutató: Azure Key Vault titkos kulcsának beállítása és beolvasása egy csomópont-webalkalmazás használatával 
 
-Ez a rövid útmutató bemutatja, titkos kulcs tárolása az Azure Key Vaultban, és hogyan kérheti le azt a webes alkalmazás használatával. A Key vault segítségével biztosíthatja az adatok biztonságos. A titkos érték megtekintéséhez kellene ebben a rövid útmutatóban az Azure-ban való futtatásához. A rövid útmutató Node.js kódot és Azure-erőforrásokhoz felügyelt-identitásokat alkalmaz. Az alábbiak végrehajtásának módját ismerheti meg:
+Ez a rövid útmutató bemutatja, hogyan tárolhatja a titkos kulcsokat a Azure Key Vaultban, és hogyan kérheti le azt egy webalkalmazás használatával. A Key Vault használata segít megőrizni az adatokat. A titkos érték megjelenítéséhez futtatnia kell ezt a rövid útmutatót az Azure-ban. A rövid útmutató Node.js kódot és Azure-erőforrásokhoz felügyelt-identitásokat alkalmaz. Az alábbiak végrehajtásának módját ismerheti meg:
 
 * Kulcstartó létrehozása.
 * Titkos kulcs tárolása a kulcstartóban.
 * Titkos kulcs lekérése a kulcstartóból.
 * Azure-webalkalmazás létrehozása.
-* [Felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) engedélyezése a webalkalmazáshoz.
+* [Felügyelt identitás](../active-directory/managed-service-identity/overview.md) engedélyezése a webalkalmazáshoz.
 * A szükséges engedélyek megadása a webalkalmazás számára az adatoknak a kulcstartóból való olvasásához.
 
-Folytatás előtt győződjön meg arról, hogy ismeri a [alapvető fogalmait a Key vault](key-vault-whatis.md#basic-concepts).
+A folytatás előtt győződjön meg arról, hogy már ismeri a [Key Vault alapvető fogalmait](key-vault-whatis.md#basic-concepts).
 
 > [!NOTE]
-> A Key Vault egy központi adattár a titkos kulcsok programozott módon való tárolásához. A használatához azonban az alkalmazásoknak és a felhasználóknak először hitelesíteniük kell magukat a Key Vaultban, azaz be kell mutatniuk egy titkos kulcsot. Ajánlott biztonsági eljárások megfelelnek az első titkos kulcsnak kell rendszeres időközönként kell-e forgatni. 
+> A Key Vault egy központi adattár a titkos kulcsok programozott módon való tárolásához. A használatához azonban az alkalmazásoknak és a felhasználóknak először hitelesíteniük kell magukat a Key Vaultban, azaz be kell mutatniuk egy titkos kulcsot. Az ajánlott biztonsági eljárásoknak megfelelően ezt az első titkot rendszeresen el kell forgatni. 
 >
-> A [felügyelt az Azure-erőforrásokat szolgáltatásidentitások](../active-directory/managed-identities-azure-resources/overview.md), az Azure-ban futó alkalmazások lekérése az identitás, amely az Azure automatikusan kezeli. Ez segít megoldani a *titkos kulcsok bemutatásának problémáját*, így a felhasználók és az alkalmazások az ajánlott eljárásokat követhetik, és nem kell aggódniuk az első titkos kulcs leváltása miatt.
+> Az Azure- [erőforrások felügyelt szolgáltatásbeli identitásával](../active-directory/managed-identities-azure-resources/overview.md)az Azure-ban futó alkalmazások az Azure által automatikusan felügyelt identitást kapnak. Ez segít megoldani a *titkos kulcsok bemutatásának problémáját*, így a felhasználók és az alkalmazások az ajánlott eljárásokat követhetik, és nem kell aggódniuk az első titkos kulcs leváltása miatt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Node.js](https://nodejs.org/en/)
 * [Git](https://www.git-scm.com/)
-* [Az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.4-es vagy újabb. Ez a rövid útmutatóhoz az Azure CLI helyi futtatása. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet: [Az Azure CLI 2.0 telepítése](https://review.docs.microsoft.com/en-us/cli/azure/install-azure-cli?branch=master&view=azure-cli-latest).
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -2.0.4 vagy újabb verzió. Ehhez a rövid útmutatóhoz helyileg kell futtatnia az Azure CLI-t. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet: [Az Azure CLI 2.0 telepítése](https://review.docs.microsoft.com/en-us/cli/azure/install-azure-cli?branch=master&view=azure-cli-latest).
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
@@ -54,7 +54,7 @@ az login
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
 Válasszon egy erőforráscsoport-nevet, és töltse ki a helyőrzőt.
-A következő példában létrehozunk egy erőforráscsoportot az USA keleti régiójában.
+Az alábbi példa egy erőforráscsoportot hoz létre az USA keleti régiójában.
 
 ```azurecli
 # To list locations: az account list-locations --output table
@@ -65,11 +65,11 @@ A cikkben végig az imént létrehozott erőforráscsoportot használjuk majd.
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
-A Tovább gombra az erőforráscsoport, amely az előző lépésben létrehozott használatával hozzon létre egy kulcstartót. Bár ez a cikk "ContosoKeyVault" nevet, adjon meg egy egyedi nevet kell. Adja meg az alábbi információkat:
+Ezután létrehoz egy kulcstartót az előző lépésben létrehozott erőforráscsoport használatával. Bár ez a cikk a "ContosoKeyVault" nevet használja névként, egyedi nevet kell használnia. Adja meg az alábbi információkat:
 
-* A Key vault neve.
-* Az erőforráscsoport neve. A név 3 – 24 karakter karakterláncnak kell lennie, és csak a 0-9, tartalmaznia kell a – z A – Z és kötőjelet (-).
-* Hely: **USA keleti Régiójában**.
+* Key Vault neve.
+* Az erőforráscsoport neve. A névnek 3-24 karakterből álló sztringnek kell lennie, és csak 0-9, a-z, A-Z és egy kötőjelet (-) tartalmazhat.
+* Hely: **USA keleti**régiója.
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "East US"
@@ -105,23 +105,23 @@ git clone https://github.com/Azure-Samples/key-vault-node-quickstart.git
 
 ## <a name="install-dependencies"></a>Függőségek telepítése
 
-Futtassa a függőségek telepítéséhez a következő parancsokat:
+A függőségek telepítéséhez futtassa a következő parancsokat:
 
 ```
 cd key-vault-node-quickstart
 npm install
 ```
 
-A projekt által használt két csomópontmodulok: [ms-rest-azure](https://www.npmjs.com/package/ms-rest-azure) és [azure-keyvault](https://www.npmjs.com/package/azure-keyvault).
+Ez a projekt két Node-modult használ: [MS-Rest-Azure](https://www.npmjs.com/package/ms-rest-azure) és [Azure-](https://www.npmjs.com/package/azure-keyvault)kulcstartó.
 
 ## <a name="publish-the-web-app-to-azure"></a>A webalkalmazás közzététele az Azure-ban
 
-Hozzon létre egy [Azure App Service](https://azure.microsoft.com/services/app-service/) tervet. Ebben a csomagban több webalkalmazást is tárolhat.
+Hozzon létre egy [Azure app Service](https://azure.microsoft.com/services/app-service/) tervet. Ebben a csomagban több webalkalmazást is tárolhat.
 
     ```
     az appservice plan create --name myAppServicePlan --resource-group myResourceGroup
     ```
-Ezután hozzon létre egy webalkalmazást. A következő példában cserélje le a `<app_name>` egy globálisan egyedi névre (érvényes karakterek: a-z, 0-9, és -). A futtatókörnyezet beállítása: NODE|6.9. Összes támogatott futtatókörnyezet megtekintéséhez futtassa `az webapp list-runtimes`.
+Következő lépésként hozzon létre egy webalkalmazást. A következő példában cserélje le `<app_name>` egy globálisan egyedi alkalmazás nevére (az érvényes karakterek: a-z, 0-9 és-). A futtatókörnyezet beállítása: NODE|6.9. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa a parancsot `az webapp list-runtimes`.
 
     ```
     # Bash
@@ -143,14 +143,14 @@ A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló
       < JSON data removed for brevity. >
     }
     ```
-Keresse meg az újonnan létrehozott webalkalmazáshoz, és megtekintheti, hogy működik-e. Cserélje le `<app_name>` egy egyedi névre.
+Keresse meg az újonnan létrehozott webalkalmazást, és ellenőrizze, hogy működik-e. Cserélje le `<app_name>` egy egyedi névre.
 
     ```
     http://<app name>.azurewebsites.net
     ```
-Az előző parancs is létrehoz egy Git-kompatibilis alkalmazást, amely lehetővé teszi, hogy az üzembe helyezés az Azure-ba, hogy a helyi Git-adattárban. A helyi Git-adattár az URL-cím van beállítva: `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`.
+Az előző parancs egy git-kompatibilis alkalmazást is létrehoz, amely lehetővé teszi az Azure-ba való üzembe helyezést a helyi git-tárházból. A helyi git-tárház a következő URL-címmel `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`van konfigurálva:.
 
-Miután elvégezte az előző parancs, a helyi Git-tárház egy távoli Azure is hozzáadhat. Cserélje le `<url>` a Git-adattár URL-címével.
+Az előző parancs befejezése után hozzáadhat egy távoli Azure-t a helyi git-tárházhoz. Cserélje `<url>` le a t a git-tárház URL-címére.
 
     ```
     git remote add azure <url>
@@ -178,21 +178,21 @@ Jegyezze fel az előző parancs kimenetét. A következő formátumban kell lenn
           "type": "SystemAssigned"
         }
         
-Ezután futtassa a következő parancsot a kulcstartó nevét és értékét **principalId**:
+Ezután futtassa a következő parancsot a Key Vault nevével és a **principalId**értékével:
 
 ```azurecli
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get set
 ```
 
-## <a name="deploy-the-node-app-to-azure-and-retrieve-the-secret-value"></a>A Node-alkalmazás üzembe helyezése az Azure-ba, és a titkos érték lekérése
+## <a name="deploy-the-node-app-to-azure-and-retrieve-the-secret-value"></a>A Node-alkalmazás üzembe helyezése az Azure-ban és a titkos érték beolvasása
 
-Futtassa a következő parancsot az alkalmazás telepítése az Azure-bA:
+Futtassa az alábbi parancsot az alkalmazás Azure-beli üzembe helyezéséhez:
 
 ```
 git push azure master
 ```
 
-Ezt követően Ha `https://<app_name>.azurewebsites.net`, láthatja, hogy a titkos érték. Győződjön meg arról, hogy lecseréli-e a neve, `<YourKeyVaultName>` a tároló nevére.
+Ezt követően a Tallózás gombra `https://<app_name>.azurewebsites.net`kattintva megtekintheti a titkos értéket. Győződjön meg arról, hogy a nevet `<YourKeyVaultName>` a tároló nevére cserélte.
 
 ## <a name="next-steps"></a>További lépések
 

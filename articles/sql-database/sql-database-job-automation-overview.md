@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: 1b8d4965edb446235e28f47a0226c82b89c73e0b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f4d2afd65ec06c331498ce974e933fe08c8e67dd
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845051"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935190"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Felügyeleti feladatok automatizálása adatbázis-feladatok használatával
 
@@ -44,7 +44,7 @@ A feladatok automatizálását több esetben is használhatja:
 A következő feladatütemezés-technológiák érhetők el Azure SQL Databaseban:
 
 - Az **SQL-ügynök feladatai** a klasszikus és a harci tesztelés alatt álló SQL Server feladatütemezés összetevő, amely felügyelt példányban érhető el. Az SQL Agent-feladatok egyetlen adatbázisban nem érhetők el.
-- **Elastic Database feladatok** olyan feladatütemezés-szolgáltatások, amelyek egy vagy több Azure SQL-adatbázisban hajtanak végre egyéni feladatokat.
+- **Elastic Database feladatok (előzetes verzió)** olyan feladatütemezés-szolgáltatások, amelyek egy vagy több Azure SQL-adatbázison futtatnak egyéni feladatokat.
 
 Érdemes figyelembe venni néhány különbséget az SQL-ügynök (a helyszínen és SQL Database felügyelt példány részeként) és az adatbázis rugalmas feladatainak (az Azure SQL Database-ben és a SQL Data Warehouse-ban lévő adatbázisok esetében elérhető önálló adatbázisok esetében) között.
 
@@ -168,7 +168,7 @@ A felügyelt példányok nem támogatják a SQL Serverban elérhető SQL Agent-f
 
 További információ a SQL Server Agentről: [SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
 
-## <a name="elastic-database-jobs"></a>Rugalmas adatbázis-feladatok
+## <a name="elastic-database-jobs-preview"></a>Elastic Database-kezelési feladatok (előzetes)
 
 **Rugalmas adatbázis-feladatok** segítségével egy vagy több T-SQL-szkriptet párhuzamosan, nagy számú adatbázison, ütemezve vagy igény szerint futtathat.
 

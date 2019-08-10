@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: f1d433dd7d919aa5d11f2f59b74a5e3f2dca0b59
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: b565ad8be1d8529d3650ec36fe7c4d61f6c5dc8f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500285"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879089"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Videók keresése a Bing Video Search API
 
@@ -144,7 +144,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>A lekérdezés bővítése
 
-Ha a Bing ki tudja bővíteni a lekérdezést az eredeti keresés szűkítéséhez, a [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) objektumban szerepelni fog a `queryExpansions` mező. Ha például a lekérdezés a *csatornák tisztítását*használta, a kibontott lekérdezések a következőket tehetik: A ereszcsatorna tisztító **eszközei**, **a lemez**tisztítása, a **ereszcsatorna tisztítása**és az **Easy** ereszcsatorna tisztítása.
+Ha a Bing ki tudja bővíteni a lekérdezést az eredeti keresés szűkítéséhez, a [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) objektumban szerepelni fog a `queryExpansions` mező. Ha például a lekérdezés a *csatornák tisztítását*használta, a kibontott lekérdezések a következőket tehetik: A ereszcsatorna tisztító **eszközei**, **a lemez**tisztítása, a ereszcsatorna tisztítása és az **Easy** ereszcsatorna tisztítása.
 
 Az alábbi példában a *Cleaning Gutters* bővített lekérdezései láthatók.
 

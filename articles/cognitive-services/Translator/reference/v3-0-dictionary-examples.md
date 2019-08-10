@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 15d23016df9b0c85b9d252b4c4a9ea48d3608f75
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 419e11862b2c584686922cfc8d1db72ee4751a03
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595048"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934035"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: Szótár – példák
 
@@ -108,7 +108,7 @@ A sikeres válasz egy JSON-tömb, amely egyetlen eredménnyel rendelkezik a beme
 
     * `sourceTerm`: A tényleges kifejezéssel megegyező sztring. A rendszer hozzáadja `sourcePrefix` a karakterláncot `sourceSuffix` a és a teljes példa formájában. Az értéke el van különítve, így egy felhasználói felületen is megadható, például félkövérrel.
 
-    * `sourceSuffix`: Az a karakterlánc, amelyet  `sourceTerm` a rendszer az érték után ÖSSZEFŰZ a teljes példa formájában. Ne adjon hozzá szóközt, mert már ott van. Ez az érték lehet üres karakterlánc.
+    * `sourceSuffix`: Az a karakterlánc, amelyet `sourceTerm` a rendszer az érték után ÖSSZEFŰZ a teljes példa formájában. Ne adjon hozzá szóközt, mert már ott van. Ez az érték lehet üres karakterlánc.
 
     * `targetPrefix`: A célhoz hasonló `sourcePrefix` karakterlánc.
 
@@ -123,13 +123,9 @@ A sikeres válasz egy JSON-tömb, amely egyetlen eredménnyel rendelkezik a beme
 
 Ez a példa bemutatja, hogyan lehet keresni példákat az angol kifejezésből `fly` és a spanyol fordításból `volar`álló párokra.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"
 ```
-
----
 
 A válasz törzse (az egyértelműség rövidítése) a következő:
 

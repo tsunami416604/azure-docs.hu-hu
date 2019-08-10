@@ -10,18 +10,18 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 886c93871a719770cbcbbcef2f536fd7515da34e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a2f743b2b7e63df8b81a1024b20e3e27a3f247a9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854215"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933000"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Rendellenesség-Kiderítő tárolók konfigurálása
 
 Az **anomália detektor** tároló futásidejű környezete a `docker run` parancs argumentumai alapján van konfigurálva. Ez a tároló számos kötelező beállítással rendelkezik, és néhány választható beállítás mellett. Több [példák](#example-docker-run-commands) a parancs érhetők el. A tárolóra jellemző beállítások a számlázási beállítások. 
 
-# <a name="configuration-settings"></a>Konfigurációs beállítások
+## <a name="configuration-settings"></a>Konfigurációs beállítások
 
 Ez a tároló a következő konfigurációs beállításokkal rendelkezik:
 

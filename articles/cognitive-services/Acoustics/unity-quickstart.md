@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: a36a16b6cb64c300647d16695edfbb73f4884104
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0ea020ca76381a4ae5d6b6e480c94e63f9aa2dab
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854862"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933136"
 ---
 # <a name="project-acoustics-unity-quickstart"></a>Projekt akusztikai egység – rövid útmutató
 A Project akusztikai minta tartalmának használata az egységhez a szimulált kialakítási vezérlőkkel való kísérletezéshez.
@@ -38,16 +38,35 @@ Importálja a mintavételi csomagot egy új Unity-projektbe.
 
 * Válassza a **ProjectAcoustics. unitypackage elemet.**
 
+* Kattintson az **Importálás** gombra az egység csomag projektbe való integrálásához  
+  
+    ![Képernyőfelvétel az egység importálási csomag párbeszédpanelről](media/import-dialog.png)  
+
 Ha egy meglévő projektbe importálja a csomagot, tekintse meg a további lépések és megjegyzések [Unity Integration](unity-integration.md) című témakört.
+
+>[!NOTE] 
+>Az importálás befejezése után több hiba jelenik meg a konzol naplójában.  Folytassa a következő lépéssel, és indítsa újra az egységet.
 
 ## <a name="restart-unity"></a>Egység újraindítása
 A akusztikai eszközkészlet sütni részének a .NET 4. x parancsfájl-futtatási verziójának kell lennie. A csomag importálásakor a rendszer frissíti az Unity Player beállításait. A beállítás érvénybe léptetéséhez indítsa újra az egységet.
 
 A beállítás érvénybe léptetéséhez nyissa meg a **lejátszó beállításait**:
 
-![Képernyőfelvétel az Unity Player beállítások panelről](media/player-settings.png)
+![Képernyőfelvétel az Unity Player beállítások panelről](media/player-settings.png)  
 
-![Képernyőfelvétel az Unity Player Settings panelről a .NET 4,5 kiválasztva](media/net45.png)
+![Képernyőfelvétel az Unity Player Settings panelről a .NET 4,5 kiválasztva](media/net45.png)  
+
+>[!NOTE]
+>A képernyőkép a 2018. x egységből készült. Az egység újabb verziói eltérőek lehetnek.
+
+## <a name="open-the-project-acoustics-bake-window"></a>A Project akusztikai sütni ablak megnyitása
+Válassza az **ablak > akusztika** elemet az egység menüben:
+
+![Képernyőfelvétel az Unity Editor és a akusztikai ablak menüpont kiválasztásával](media/window-acoustics.png)
+
+Ekkor megjelenik az Akusztikusok nevű új lebegő ablak.  Ebben az ablakban van beállítva az akusztikus szimulációk tulajdonságai.
+
+![Képernyőkép az Unity editorról az akusztikus ablak megnyitásával](media/unity-editor-plugin-window.png)  
 
 ## <a name="experiment-with-design-controls"></a>Kísérletezés a tervezési vezérlőkkel
 Nyissa meg a minta jelenetet a **ProjectAcousticsSample** mappában, és kattintson a Play (lejátszás) gombra az Unity Editorban. Használja a W, A, S, D és az egeret a mozgáshoz. Ha szeretné összehasonlítani, hogy a jelenet akusztika nélkül szólaljon meg, nyomja meg az **R** gombot, amíg az átfedésben lévő szöveg pirosra vált, és a "Akusztika: Letiltva. " További billentyűparancsok megtekintéséhez nyomja le az **F1** billentyűt. A vezérlőket a jobb gombbal kattintva is használhatja, hogy kiválassza a végrehajtandó műveletet, majd a művelet végrehajtásához kattintson a bal gombbal.
@@ -56,7 +75,7 @@ A szkript **AcousticsAdjust** a minta jelenetben lévő hangforrásokhoz van csa
 
 ![Képernyőfelvétel az Unity AcousticsAdjust parancsfájlról](media/acoustics-adjust.png)
 
-A következőkben néhány olyan effektus látható, amely a megadott vezérlőkkel hozható létre. Az egyes vezérlőkkel kapcsolatos részletes információkért tekintse meg a [projekt akusztikai egységének kialakítását ismertető oktatóanyagot](unreal-workflow.md).
+A következőkben néhány olyan effektus látható, amely a megadott vezérlőkkel hozható létre. Az egyes vezérlőkkel kapcsolatos részletes információkért tekintse meg a [projekt akusztikai egységének kialakítását ismertető oktatóanyagot](unity-workflow.md).
 
 ### <a name="modify-distance-based-attenuation"></a>Távolságon alapuló csillapítás módosítása
 A **Project akusztikai** Unity spatializer beépülő modul által biztosított HANGalapú DSP az egység-szerkesztőbe beépített, a forrás távolságon alapuló csillapítást veszi figyelembe. A távolságon alapuló csillapításhoz tartozó vezérlők a hangforrások **felügyelő** paneljén találhatók, a **3D hangbeállítások**alatt:

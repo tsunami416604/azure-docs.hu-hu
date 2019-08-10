@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3fe9a28a99ea8becbfc40e1e64d1f5b109caace3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 47f39e8dcd96ea3bdba564df348e9b89a6b036ba
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854377"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933157"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Projekt-akusztikai Unreal és Wwise Integration
 Ez a útmutató a projekt akusztikai beépülő moduljának részletes integrációs lépéseit tartalmazza a meglévő Unreal és Wwise game projektben. 
 
 A szoftverre vonatkozó követelmények:
-* [Unreal Engine](https://www.unrealengine.com/) 4,20 vagy 4,21
+* [Unreal Engine](https://www.unrealengine.com/) 4.20 +
 * [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018,1.\*
 * [Wwise beépülő modul az Unreal-hez](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
   * Ha a Wwise SDK közvetlen integrációját használja a Wwise Unreal beépülő modul használata helyett, tekintse át a Project Acoustics Unreal beépülő modulját, és állítsa be a Wwise API-hívásokat.
@@ -52,7 +52,7 @@ Ezek a főbb lépések a csomag telepítésére és a játékba való üzembe he
 
 * Válassza ki `AcousticsWwisePlugin\ProjectAcoustics` a letöltött csomag részét képező könyvtárat. Tartalmazza a Wwise keverő beépülő modulját.
 
-* A Wwise telepíti a beépülő modult. A Project akusztika ekkor megjelenik a Wwise telepített plugins listájában.
+* A Wwise telepíti a beépülő modult. A Project akusztika ekkor megjelenik a Wwise telepített plugins listájában.  
 ![Képernyőkép a Wwise telepített beépülő modulok listájáról a Project akusztikai telepítése után](media/unreal-integration-post-mixer-plugin-install.png)
 
 ## <a name="2-redeploy-wwise-into-your-game"></a>2. (Újra) telepítse a Wwise a játékba
@@ -81,9 +81,13 @@ Telepítse újra a Wwise a játékba még akkor is, ha már integrálva van a Ww
 
     ![Képernyőkép – a Windows Intéző ablakának kiemelése a megadott szkripttel a patch Wwise](media/patch-wwise-script.png)
 
-* Ha nem telepítette a DirectX SDK-t, jegyezze fel a DXSDK_DIR tartalmazó sort a következőben:`[UProject]\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`
+* Ha nincs telepítve a DirectX SDK, attól függően, hogy milyen verziójú Wwise használ, érdemes megadnia a következőt `DXSDK_DIR` `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`tartalmazó sort:
 
     ![Képernyőkép a Kódszerkesztő DXSDK](media/directx-sdk-comment.png)
+
+* Ha a Visual Studio 2019-as verzióval állítja össze a Wwise-vel való összekapcsolási hibát, manuálisan `VSVersion` szerkessze `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` az `vc150`alapértelmezett értéket a következőben:
+
+    ![Képernyőfelvétel a VSVersion-ról vc150-ra módosított Kódszerkesztő](media/vsversion-comment.png)
 
 ## <a name="5-build-game-and-check-python-is-enabled"></a>5. Játék létrehozása és a Python engedélyezése
 
@@ -117,7 +121,7 @@ Egy példa Wwise projekt szerepel a minták letöltésében. Javasoljuk, hogy te
 
 * Ezután lépjen a keverő beépülő modul lapra, és adja hozzá a Project akusztikai keverő beépülő modult a buszhoz
 
-    ![A Wwise-busz screenshow, amely bemutatja, hogyan adhat hozzá a Project akusztikai keverő beépülő modult](media/add-mixer-plugin.png)
+    ![Képernyőkép a Wwise-buszról, amely bemutatja, hogyan adhatja hozzá a Project akusztikai keverő beépülő modult](media/add-mixer-plugin.png)
 
 ### <a name="actor-mixer-hierarchy-setup"></a>Actor-mixer hierarchia beállítása
 * A Project Acoustics a következő teljesítményű eszközökön alkalmazza a hangalapú DSP-ket minden forrásra egyszerre. Ehhez a beépülő modulnak keverő beépülő modulként kell működnie. A Wwise a kimeneti buszon kell lennie, bár a kimeneti busz általában a száraz kimeneti jeleket végzi. A Project akusztikai funkció megköveteli, hogy a száraz jeleket az AUX-buszokon keresztül irányítsa a rendszer, `Project Acoustics Bus`miközben a nedves jelet hajtja végre. A következő folyamat támogatja a fokozatos áttelepítést ebbe a jelerősségbe.
@@ -159,7 +163,7 @@ Sajnos a más Object-alapú spatializer beépülő modulok jelenleg nem támogat
 
 * Most rendelje hozzá a sült akusztikai adategységet az akusztikai adattárolóhoz az akusztikai terület színészén. A jelenet most már akusztikai!
 
-    ![Képernyőkép az Unreal Editor s howing akusztikai eszköz-hozzárendeléséről](media/acoustics-asset-assign.png)
+    ![Képernyőkép az Unreal editorról, amely tartalmazza az akusztikai eszközök hozzárendelését](media/acoustics-asset-assign.png)
 
 * Most adjon hozzá egy üres színészet, és tegye a következőket:
 
@@ -167,7 +171,7 @@ Sajnos a más Object-alapú spatializer beépülő modulok jelenleg nem támogat
 
 1. Akusztikai hangösszetevő hozzáadása a szereplőhöz. Ez az összetevő kiterjeszti a Wwise audio összetevőjét a Project Acoustics funkcióival.
 2. A play on Start Box alapértelmezés szerint be van jelölve, amely a társított Wwise eseményt aktiválja a szint indításakor.
-3. Használja az akusztikai paraméterek megjelenítése jelölőnégyzetet a képernyőn a forrással kapcsolatos hibakeresési információk kinyomtatásához.
+3. Használja az akusztikai paraméterek megjelenítése jelölőnégyzetet a képernyőn a forrással kapcsolatos hibakeresési információk kinyomtatásához.  
     ![Képernyőkép az Unreal Editor akusztikai paneljéről a hangforráson, amelyen engedélyezve vannak a hibakeresési értékek](media/debug-values.png)
 4. Wwise-esemény kiosztása a szokásos Wwise-munkafolyamatban
 5. Győződjön meg arról, hogy a térbeli hang használata ki van kapcsolva. Ebben az esetben, ha a Project Acoustics szolgáltatást egy adott hangösszetevőhöz használja, akkor nem használhatja egyszerre a Wwise térbeli hangmotorját akusztikai eszközökre.

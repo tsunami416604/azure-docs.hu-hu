@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Table API Javával – Azure Cosmos DB'
+title: Alkalmazás létrehozása a Table API és a Java használatával – Azure Cosmos DB
 description: Ez a rövid útmutató ismerteti, hogyan használható az Azure Cosmos DB Table API alkalmazások létrehozására az Azure Portal és a Java használatával
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: daaf7db2ac75cec6cb5a305e994a7cbe558c83fc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: seo-java-august2019
+ms.openlocfilehash: d1eade1b5bdbbce2bc47c5e6177d21c7ff835936
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854682"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933949"
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>Gyors útmutató: Table API-alkalmazás létrehozása Javával és Azure Cosmos DB
 

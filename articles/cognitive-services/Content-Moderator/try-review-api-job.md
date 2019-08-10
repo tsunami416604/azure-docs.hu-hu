@@ -7,15 +7,15 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: c6f3d9c1605dc97b315550d8b7e3fdf08144c1bc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: af636deaafc05238c287d095e644588ed8c5f26d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561236"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880050"
 ---
 # <a name="define-and-use-moderation-jobs-rest"></a>Moderálási feladatok definiálása és használata (REST)
 
@@ -115,7 +115,7 @@ Adja meg a REST-hívás paramétereit a fenti szakaszban leírtak szerint. Ebben
 
 ### <a name="examine-the-new-reviews"></a>Vizsgálja meg az új felülvizsgálat (oka) t
 
-Ha a tartalmi feladatokban felülvizsgálatot eredményezett, azt a [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com)tekintheti meg. /Válassza  > a képszöveg Videójának áttekintése (a használt tartalomtól függően) lehetőséget./ A tartalomnak meg kell jelennie, és készen kell állnia az emberi felülvizsgálatra. Miután egy emberi moderátor áttekinti az automatikusan hozzárendelt címkéket és az előrejelzési adatokat, és elküld egy végső moderálási döntést, a feladatok API elküldi az összes információt a kijelölt visszahívási végpont végpontjának.
+Ha a tartalmi feladatokban felülvizsgálatot eredményezett, azt a [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com)tekintheti meg. /Válassza > a képszövegVideójának áttekintése (a használt tartalomtól függően) lehetőséget./ A tartalomnak meg kell jelennie, és készen kell állnia az emberi felülvizsgálatra. Miután egy emberi moderátor áttekinti az automatikusan hozzárendelt címkéket és az előrejelzési adatokat, és elküld egy végső moderálási döntést, a feladatok API elküldi az összes információt a kijelölt visszahívási végpont végpontjának.
 
 ## <a name="next-steps"></a>További lépések
 

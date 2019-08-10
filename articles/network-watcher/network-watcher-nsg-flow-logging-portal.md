@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 3bc06a8903fbc431d991e6ef2a4aad8fbaff2365
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: f254572f5c26a809f401e99f527ccd3d30451c3d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736864"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931588"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Oktatóanyag: A virtuális gép felé irányuló és onnan érkező hálózati forgalom naplózása a Azure Portal használatával
 
@@ -108,6 +108,11 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
    ![Flow-naplók verziójának kiválasztása](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
 
 9. Válassza ki a 3. lépésben létrehozott Storage-fiókot.
+   > [!NOTE]
+   > A NSG nem működnek a Storage-fiókokkal, ha:
+   > * A Storage-fiókokhoz engedélyezve van a tűzfal.
+   > * A Storage-fiókokhoz engedélyezve van a [hierarchikus névtér](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) .
+1. Válassza a portál bal felső sarkában található **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Amikor a **Network Watcher** elem megjelenik a keresési eredmények között, válassza ki.
 10. A **Megőrzés (nap)** beállítást állítsa 5 értékre, majd válassza a **Mentés** lehetőséget.
 
 ## <a name="download-flow-log"></a>Folyamatnapló letöltése
@@ -212,7 +217,7 @@ A **mac** érték az előző kimenetben azon hálózati adapter MAC-címét jel�
 | J            | Action                 | Azt jelöli, hogy a forgalom engedélyezve (A) vagy elutasítva (D) lett-e.  
 | C            | Csak a flow állapota **2. verzió** | Rögzíti a folyamat állapotát. A lehetséges állapotok **B**: Kezdés, amikor létrejön egy folyamat. Nincs megadva statisztika. **C**: Folyamatos folyamat folyamatban. A statisztikák 5 perces időközönként vannak megadva. **E**: Befejezés a folyamat leállításakor. Statisztikákat biztosítunk. |
 | 30 | Küldött csomagok – a forrás célhelye **csak a 2** . verzióra | A forrásról a célhelyre küldött TCP-vagy UDP-csomagok teljes száma az utolsó frissítés óta. |
-| 16978 | Küldési sebesség (bájt) – a forrás és a cél **2-es verziója csak** | A forrás és a célhely között a legutóbbi frissítés óta küldött TCP-vagy UDP-csomagok teljes száma. A csomagok bájtjai a csomagok fejlécét és a hasznos adatokat tartalmazzák. | 
+| 16978 | Küldési sebesség (bájt) – a forrás és a cél **2-es verziója csak** | A forrás és a célhely között a legutóbbi frissítés óta küldött TCP-vagy UDP-csomagok teljes száma. A csomagok bájtjai a csomagok fejlécét és a hasznos adatokat tartalmazzák. |
 | 24 | Küldött csomagok – célhely a forrás **2-es verzióra** | Az utolsó frissítés óta a célhelyről a forrásba küldött TCP-vagy UDP-csomagok teljes száma. |
 | 14008| Eljuttatott bájtok – célhely a forrás **2-es verzióra** | A célhelyről a forrásig a legutóbbi frissítés óta küldött TCP-és UDP-csomagok teljes száma. A csomagok bájtjai tartalmazzák a csomagok fejlécét és a hasznos adatokat.|
 

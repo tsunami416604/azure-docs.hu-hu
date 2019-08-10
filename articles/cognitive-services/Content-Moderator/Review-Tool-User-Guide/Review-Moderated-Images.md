@@ -7,15 +7,15 @@ author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5b73436153427019a7d0d2c641f50592a385f19c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 065d3cd80f93753eb91571d4ada4fe7151258ec0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564552"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882658"
 ---
 # <a name="create-human-reviews"></a>Emberi felülvizsgálatok létrehozása
 
@@ -34,7 +34,7 @@ Ebből az útmutatóból megtudhatja, hogyan állíthat be [](../review-api.md#r
 
     A képek az automatikus moderálási folyamat által hozzárendelt címkékkel jelennek meg. A felülvizsgálati eszközön keresztül elküldött rendszerképek nem láthatók más felülvizsgálók számára.
 
-1. A képernyőn megjelenő  képek számának beállításához áthelyezheti az értékeléseket (1). Kattintson a **címkézett** vagy **címkézetlen** gombokra (2) a képek megfelelő rendezéséhez. Kattintson a címke panelre (3) a be-vagy kikapcsolásához.
+1. A képernyőn megjelenő képek számának beállításához áthelyezheti az értékeléseket (1). Kattintson a **címkézett** vagy **címkézetlen** gombokra (2) a képek megfelelő rendezéséhez. Kattintson a címke panelre (3) a be-vagy kikapcsolásához.
 
     ![Chrome-böngésző, amely a felülvizsgálati eszközt tartalmazza a címkézett rendszerképekkel a felülvizsgálathoz](images/review-images-2.png)
 
@@ -46,7 +46,7 @@ Ebből az útmutatóból megtudhatja, hogyan állíthat be [](../review-api.md#r
 
     ![Egy külön ablaktáblán felsorolt moderálási részleteket tartalmazó rendszerkép](images/review-images-4.png)
 
-1. Miután áttekintette és frissítette a címke-hozzárendeléseket, kattintson a **tovább** gombra a felülvizsgálatok elküldéséhez. A beküldést követően öt másodpercre van szüksége, hogy az **Előző gombra kattintva** térjen vissza az előző képernyőre, és tekintse át a lemezképeket. Ezt követően a lemezképek már nem szerepelnek a küldési várólistában, és az **előző** gomb már nem érhető el.
+1. Miután áttekintette és frissítette a címke-hozzárendeléseket, kattintson a **tovább** gombra a felülvizsgálatok elküldéséhez. A beküldést követően öt másodpercre van szüksége, hogy az előző gombra kattintva térjen vissza az előző képernyőre, és tekintse át a lemezképeket. Ezt követően a lemezképek már nem szerepelnek a küldési várólistában, és az **előző** gomb már nem érhető el.
 
 ## <a name="text-reviews"></a>Szövegekre vonatkozó vélemények
 

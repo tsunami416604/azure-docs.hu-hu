@@ -1,5 +1,5 @@
 ---
-title: Egy Azure Cosmos DB dokumentum-adatbázis létrehozása javával "
+title: Dokumentum-adatbázis létrehozása a Java használatával – Azure Cosmos DB
 description: Egy Java-kódmintát mutat be, amellyel csatlakozni lehet az Azure Cosmos DB SQL API-hoz, és lekérdezést lehet végezni vele
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: d277ef51fd7f39ffab7ed4ace8848c682b28c383
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.custom: seo-java-august2019
+ms.openlocfilehash: 5f8555d23a43a3ca391ec03f827b0d81ac3c4698
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68001230"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933960"
 ---
 # <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB SQL API-fiók használatával
 

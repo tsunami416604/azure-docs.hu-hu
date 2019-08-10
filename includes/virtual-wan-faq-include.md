@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 07/22/2019
+ms.date: 08/06/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c46c11ead645b93d7710d1e11636037e4dcaf8e7
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 8a4bbe92cc1b34801abffa1e905d873d4382025a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444564"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912391"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Mi a különbség egy Azure-beli virtuális hálózati átjáró (VPN Gateway) és egy Azure Virtual WAN-beli VPNGateway között?
 
@@ -103,7 +103,7 @@ Egy virtuális WAN egyetlen hubhoz és egy vpnsite való egyszerű konfiguráci�
 
 Igen, az ágak közötti kapcsolat a Virtual WAN-ban VPN- és VPN–ExpressRoute kapcsolat esetén is elérhető. Habár a VPN-helyek közötti kapcsolat a GA, a ExpressRoute jelenleg előzetes verzióban érhető el.
 
-### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Az Azure Virtual WAN lehetővé teszi az ágak közötti adatforgalom bonyolítását?
+### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Az ág-ág forgalom áthalad az Azure Virtual WAN-on keresztül?
 
 Igen.
 
@@ -122,6 +122,10 @@ Nem, a Virtual WAN nem igényli minden hely esetében az ExpressRoute használat
 ### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Az Azure Virtual WAN használatakor vonatkozik korlátozás a hálózat átviteli sebességére?
 
 Az ágak száma hub/régió esetén 1000 kapcsolatra, a központban pedig összesen 20 GB-ra van korlátozva.
+
+### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-the-portal-how-do-i-configure-that"></a>Nem látom a 20 GB/s beállítást a virtuális hubhoz a portálon. Hogyan konfigurálja?
+
+Jelenleg az [Update-AzVpnGateway](https://docs.microsoft.com/powershell/module/az.network/update-azvpngateway) parancsmag használatával konfigurálhatja a 20 GB/s-os átjáró-méretezési egységeket. Ez a beállítás a portálon elérhető ütemterv szerint érhető el.
 
 ### <a name="how-many-vpn-connections-does-a-virtual-wan-hub-support"></a>Hány VPN-kapcsolat támogatja a virtuális WAN hub-t?
 

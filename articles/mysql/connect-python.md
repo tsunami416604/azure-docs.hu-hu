@@ -7,15 +7,15 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: f1059fac4d44138a4e9bc04c858501234974dc43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 08/08/2019
+ms.openlocfilehash: 5d7414d13b3fb1390b12084f0480e0549a380264
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60526219"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931623"
 ---
-# <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL: Csatlakozás és adatlekérdezés a Python használatával
+# <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL: A Python használata a kapcsolódáshoz és az adatlekérdezéshez
 Ez a rövid útmutató ismerteti, hogyan használható a [Python](https://python.org) a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz. Az SQL-utasítások használatával kérdez le, szúr be, frissít és töröl adatokat az adatbázisban a Mac OS, Ubuntu Linux és a Windows platformról. Ez a témakör azt feltételezi, hogy a Python használata terén rendelkezik fejlesztési tapasztalatokkal, de az Azure Database for MySQL használatában még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -31,8 +31,8 @@ Telepítse a [Pythont](https://www.python.org/downloads/) és a [Python MySQL-ö
 >
 
 ### <a name="windows"></a>Windows
-1. Töltse le és telepítse a Python 2.7-es verziót a [python.org](https://www.python.org/downloads/windows/) webhelyről. 
-2. A parancssor elindításával ellenőrizze a Python telepítését. Futtassa a `C:\python27\python.exe -V` parancsot a nagybetűs V kapcsolóval a verziószám megtekintéséhez.
+1. Töltse le és telepítse a Python 3,7-et a [Python.org](https://www.python.org/downloads/windows/)webhelyről. 
+2. A parancssor elindításával ellenőrizze a Python telepítését. Futtassa a `C:\python37\python.exe -V` parancsot a nagybetűs V kapcsolóval a verziószám megtekintéséhez.
 3. Telepítse a MySQL a Python verziójának megfelelő Python-összekötőjét a [mysql.com](https://dev.mysql.com/downloads/connector/python/) webhelyről.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)

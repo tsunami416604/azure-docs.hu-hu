@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 0c50a321cbeb0d07a5039038ff796df00463ac8a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 964ecca015e440439885bbbd85cb720a3abd10a9
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385671"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883518"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -43,7 +43,7 @@ A labor tulajdonosa más felhasználókat is hozzáadhat a **tesztkörnyezet lé
 2. Válassza a **Bejelentkezés** lehetőséget, és adja meg a hitelesítő adatait. Az Azure Lab Services támogatja a szervezeti fiókok és a Microsoft-fiókok használatát is. 
 3. Az **Új tesztkörnyezet** ablakban tegye a következőket: 
     1. Adjon egy **nevet** a tesztkörnyezetnek. 
-    2. A laborban található **virtuális gépek maximális számát** határozza meg. A virtuális gépek számát a tesztkörnyezet létrehozása után vagy egy meglévő laborban növelheti vagy törölheti. További információ: [virtuális gépek számának frissítése tesztkörnyezetben](how-to-configure-student-usage.md#update-number-of-virtual-machines-in-lab)
+    2. A laborban található **virtuális gépek maximális számát** határozza meg. A virtuális gépek számát a tesztkörnyezet létrehozása után vagy egy meglévő laborban növelheti vagy csökkentheti. További információ: [virtuális gépek számának frissítése tesztkörnyezetben](how-to-configure-student-usage.md#update-number-of-virtual-machines-in-lab)
     6. Kattintson a **Mentés** gombra.
 
         ![Osztályterem-tesztkörnyezet létrehozása](../media/tutorial-setup-classroom-lab/new-lab-window.png)
@@ -68,7 +68,7 @@ A labor tulajdonosa más felhasználókat is hozzáadhat a **tesztkörnyezet lé
 7. Miután a sablon konfigurálása befejeződött, az alábbi oldal jelenik meg: 
 
     ![Sablon konfigurálása oldal a folyamat befejeződése után](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
-8. A **sablon konfigurálása** lapon hajtsa végre a következő lépéseket: Ezek a lépések  nem kötelezőek az oktatóanyaghoz.
+8. A **sablon konfigurálása** lapon hajtsa végre a következő lépéseket: Ezek a lépések nem kötelezőek az oktatóanyaghoz.
     2. A **Csatlakozás** gomb kiválasztásával csatlakozzon a virtuálisgép-sablonhoz. Linux-sablonos virtuális gép esetén válassza ki, hogy SSH vagy RDP használatával szeretne-e csatlakozni (ha az RDP engedélyezve van).
     1. A virtuális gép jelszavának alaphelyzetbe állításához válassza a **jelszó** alaphelyzetbe állítása lehetőséget. 
     1. Telepítsen és konfiguráljon szoftvert a virtuálisgép-sablonon. 
@@ -92,7 +92,7 @@ A labor tulajdonosa más felhasználókat is hozzáadhat a **tesztkörnyezet lé
 1. A rendszer megjeleníti a tesztkörnyezet **irányítópultját**. 
     
     ![Az osztályterem-tesztkörnyezet irányítópultja](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
-4. Váltson a **Virtual Machines** (virtuális gépek) lapra a bal oldali menüben, vagy válassza a virtuális gépek csempét. Győződjön meg arról, hogy a nem hozzárendelt  állapotú virtuális gépek láthatók. Ezek a virtuális gépek még nincsenek diákokhoz rendelve. **Leállított** állapotban kell lenniük. Ezen a lapon indíthatja el a virtuális gépeket, csatlakozhat hozzájuk, leállíthatja, valamint törölheti őket. A virtuális gépeket elindíthatja ezen a lapon, vagy engedheti, hogy a diákjai indítsák el őket. 
+4. Váltson a **Virtual Machines** (virtuális gépek) lapra a bal oldali menüben, vagy válassza a virtuális gépek csempét. Győződjön meg arról, hogy a nem hozzárendelt állapotú virtuális gépek láthatók. Ezek a virtuális gépek még nincsenek diákokhoz rendelve. **Leállított** állapotban kell lenniük. Ezen a lapon indíthatja el a virtuális gépeket, csatlakozhat hozzájuk, leállíthatja, valamint törölheti őket. A virtuális gépeket elindíthatja ezen a lapon, vagy engedheti, hogy a diákjai indítsák el őket. 
 
     ![Leállított állapotban levő virtuális gépek](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
@@ -134,7 +134,7 @@ Ha a kvóta beállítását **0 órára konfigurálta (csak az ütemterv esetéb
     ![Ütemterv hozzáadása gomb az ütemtervek lapon](../media/how-to-create-schedules/add-schedule-button.png)
 2. Az **ütemterv hozzáadása** lapon a felülre váltson **hetente** . 
 3. Az ütemezett **napok (kötelező)** beállításnál válassza ki azokat a napokat, amelyeken az ütemterv érvénybe lép. A következő példában a hétfő-péntek beállítás van kiválasztva. 
-4. A **from (forrás** ) mezőben adja meg az **ütemezett kezdési dátumot** , vagy válasszon ki egy dátumot a **Naptár** gomb kiválasztásával. A mező kitöltése kötelező. 
+4. A **from (forrás** ) mezőben adja meg az **ütemezett kezdési dátumot** , vagy válasszon ki egy dátumot a **Naptár** gomb kiválasztásával. Ezt a mezőt kötelező kitölteni. 
 5. Az **ütemezett befejezési dátumnál**adja meg vagy válassza ki azt a befejezési dátumot, amikor a virtuális gépeket le szeretné állítani. 
 6. A **kezdési**időponthoz válassza ki azt az időpontot, amikor a virtuális gépeket el szeretné indítani. A kezdési időpontot kötelező megadni, ha a leállítási idő nincs beállítva. Válassza a **kezdési esemény eltávolítása** lehetőséget, ha csak a leállítási időt szeretné megadni. Ha a **Kezdési idő** le van tiltva, a legördülő lista melletti **indítási esemény hozzáadása** lehetőséggel engedélyezheti azt. 
 7. A **leállítási idő**beállításnál válassza ki azt az időpontot, amikor a virtuális gépeket le szeretné állítani. A leállítási idő megadása kötelező, ha a kezdési időpont nincs beállítva. Válassza a leállítási **esemény eltávolítása** lehetőséget, ha csak a kezdési időpontot szeretné megadni. Ha a **leállítási idő** le van tiltva, válassza a leállítási **esemény hozzáadása** lehetőséget a legördülő lista mellett az engedélyezéshez.
@@ -155,7 +155,7 @@ Ha a kvóta beállítását **0 órára konfigurálta (csak az ütemterv esetéb
     ![Regisztrációs hivatkozás küldése e-mailben](../media/tutorial-setup-classroom-lab/send-email.png)
 4. A **regisztrációs hivatkozás küldése e-mailben** lapon kövesse az alábbi lépéseket: 
     1. Írjon be egy **opcionális üzenetet** , amelyet el szeretne küldeni a tanulóknak. Az e-mail automatikusan tartalmazza a regisztrációs hivatkozást. 
-    2. A **regisztrációs hivatkozás küldése e-mailben** lapon válassza a **Küldés**lehetőséget. Megtekintheti a meghívó küldésének  és a meghívónak **küldött**meghívások állapotát. 
+    2. A **regisztrációs hivatkozás küldése e-mailben** lapon válassza a **Küldés**lehetőséget. Megtekintheti a meghívó küldésének és a meghívónak **küldött**meghívások állapotát. 
         
         ![Meghívások elküldése](../media/tutorial-setup-classroom-lab/invitations-sent.png)
 

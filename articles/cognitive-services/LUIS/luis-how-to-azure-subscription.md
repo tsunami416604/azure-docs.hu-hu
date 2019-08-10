@@ -1,22 +1,22 @@
 ---
 title: Előfizetés kulcsa – LUIS
 titleSuffix: Azure Cognitive Services
-description: Az ingyenes első-1000 Endpoint-lekérdezések használatához nem kell előfizetési kulcsokat létrehoznia. Ha _a hiba a_ http 403 vagy 429 formátumban érkezik, létre kell hoznia egy kulcsot, és hozzá kell rendelnie az alkalmazáshoz.
+description: Az ingyenes első-1000 Endpoint-lekérdezések használatához nem kell előfizetési kulcsokat létrehoznia. Ha a hiba a http 403 vagy 429 formátumban érkezik, létre kell hoznia egy kulcsot, és hozzá kell rendelnie az alkalmazáshoz.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: diberry
-ms.openlocfilehash: c7e23c78b5d03b834d593bd2b53958c3379c51f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1f8b84722c881cee1fe196e5a614b58cf3c19031
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560527"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932861"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Előfizetési kulcsok használata a LUIS-appal
 
