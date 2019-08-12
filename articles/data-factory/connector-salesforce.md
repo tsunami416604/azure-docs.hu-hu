@@ -306,7 +306,7 @@ Ha megadja a SOQL vagy az SQL-lekérdezést, ügyeljen a DateTime formátum kül
 * **SOQL minta**:`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
 * **SQL-minta**:`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
-### <a name="error-of-malformedquerytruncated"></a>MALFORMED_QUERY hiba: csonkolt
+### <a name="error-of-malformed_querytruncated"></a>MALFORMED_QUERY hiba: csonkolt
 
 Ha a következő hibaüzenetet találta: "MALFORMED_QUERY: Csonkolt ", általában az az oka, hogy a JunctionIdList Type oszlopa van az adathalmazban, és a Salesforce nagy számú sorral támogatja az ilyen adatmennyiséget. A megoldáshoz próbálja meg kizárni a JunctionIdList oszlopot, vagy korlátozza a másolandó sorok számát (több másolási tevékenységre is particionálhat).
 

@@ -182,7 +182,7 @@ Ahhoz, hogy a metrikák begyűjtéséhez ze sebe sama Prometheus, alkalmazza az 
 
 ## <a name="optional-deploy-example-application"></a>Nem kötelező: A példában üzembe helyezése
 
-Minden jól működik, de nincsenek metrikák források. Nyissa meg a Prometheus URL-cím (https://prom-prometheus-project.apps. *véletlenszerű azonosítót*. *régió*.azmosa.io/). Az alábbi parancs használatával találja:
+Minden jól működik, de nincsenek metrikák források. Nyissa meg a Prometheus URL-cím (https://prom-prometheus-project.apps.*véletlenszerű azonosítót*.*régió*.azmosa.io/). Az alábbi parancs használatával találja:
 
 ```
 oc get route prom -n prometheus-project
