@@ -142,7 +142,7 @@ Adatok másolása a, és az SAP BW Open Hub, állítsa be a type tulajdonság, a
 |:--- |:--- |:--- |
 | type | A type tulajdonságot állítsa **SapOpenHubTable**.  | Igen |
 | openHubDestinationName | A megnyitott Hub cél adatokat másolni a nevét. | Igen |
-| excludeLastRequest | -E zárva a legutóbbi kérés rekordjait. | Nem (alapértelmezett érték a **igaz**) |
+| excludeLastRequest | -E zárva a legutóbbi kérés rekordjait. | Nem (alapértelmezett érték a **true**) |
 | baseRequestId | A változásadatok betöltéséhez vonatkozó kérés azonosítója. Be van állítva, csak a Kérelemazonosító adatokat **nagyobb** Ez a tulajdonság értékét a rendszer lekéri.  | Nem |
 
 >[!TIP]
@@ -211,14 +211,14 @@ Az adatok másolása az SAP BW Open hubhoz, ha a következő hozzárendeléseket
 
 | SAP ABAP Type | Data factory közbenső adattípus |
 |:--- |:--- |
-| C (karakterlánc) | String |
-| I (egész szám) | Int32 |
+| C (String) | String |
+| I (integer) | Int32 |
 | F (Float) | Double |
-| D (dátum) | String |
-| T (idő) | String |
-| P (BCD csomagolt, pénznem, Decimal, mennyiség) | Decimal |
+| D (Date) | String |
+| T (Time) | String |
+| P (BCD Packed, Currency, Decimal, Qty) | Decimal |
 | N (Numc) | String |
-| X-(bináris és nyers) | String |
+| X (Binary and Raw) | String |
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
