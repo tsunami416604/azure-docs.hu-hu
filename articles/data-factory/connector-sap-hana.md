@@ -219,32 +219,32 @@ Az adatok SAP HANAból való másolása során a rendszer a következő leképez
 
 | SAP HANA adattípus | Data factory közbenső adattípus |
 | ------------------ | ------------------------------ |
-| ALPHANUM           | Karakterlánc                         |
+| ALPHANUM           | String                         |
 | BIGINT             | Int64                          |
-| BINÁRIS             | Byte[]                         |
-| BINTEXT            | Sztring                         |
+| BINARY             | Byte[]                         |
+| BINTEXT            | String                         |
 | BLOB               | Byte[]                         |
 | BOOL               | Byte                           |
-| CLOB               | Sztring                         |
-| DATE               | Datetime                       |
+| CLOB               | String                         |
+| DATE               | DateTime                       |
 | DECIMAL            | Decimal                        |
 | DOUBLE             | Double                         |
 | FLOAT              | Double                         |
-| EGÉSZ            | Int32                          |
-| NCLOB              | Sztring                         |
-| NVARCHAR           | Karakterlánc                         |
+| INTEGER            | Int32                          |
+| NCLOB              | String                         |
+| NVARCHAR           | String                         |
 | REAL               | Single                         |
-| SECONDDATE         | Datetime                       |
-| SHORTTEXT          | Sztring                         |
+| SECONDDATE         | DateTime                       |
+| SHORTTEXT          | String                         |
 | SMALLDECIMAL       | Decimal                        |
 | SMALLINT           | Int16                          |
 | STGEOMETRYTYPE     | Byte[]                         |
 | STPOINTTYPE        | Byte[]                         |
-| TEXT               | Karakterlánc                         |
-| IDŐ               | TimeSpan                       |
+| TEXT               | String                         |
+| TIME               | TimeSpan                       |
 | TINYINT            | Byte                           |
-| VARCHAR            | Sztring                         |
-| TIMESTAMP          | Datetime                       |
+| VARCHAR            | String                         |
+| TIMESTAMP          | DateTime                       |
 | VARBINARY          | Byte[]                         |
 
 ## <a name="next-steps"></a>További lépések
