@@ -7,12 +7,12 @@ ms.service: blueprints
 ms.topic: sample
 ms.date: 06/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: c5541eab6707bab12fb75f4d0eaf8bae1f025ebb
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: e1bafdaa2883afb44aa3c609c0ccba0ce9d0a4ab
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816038"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934167"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-minták
 
@@ -22,6 +22,7 @@ A következő táblázat az Azure Blueprints szolgáltatáshoz használható min
 
 |  |  |
 |---------|---------|
+|[IRS 1075](./irs-1075/index.md)| Védőkorlátokat biztosít az IRS 1075 szabványnak való megfelelőséghez.|
 | [ISO 27001](./iso27001/index.md) | Védőkorlátokat biztosít az ISO 27001 szabványnak való megfelelőséghez. |
 | [ISO 27001 – Megosztott szolgáltatások](./iso27001-shared/index.md) | Szabványoknak megfelelő infrastruktúra-minták és szabályzati védőkorlátok együttesét biztosítja, amelyek segítséget nyújtanak az ISO 27001-tanúsítvány megszerzéséhez. |
 | [ISO 27001 App Service Environment/SQL Database-számításifeladat](./iso27001-ase-sql-workload/index.md) | Kiegészítő infrastruktúrát biztosít az [ISO 27001 Megosztott szolgáltatások](./iso27001-shared/index.md) tervmintához. |

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/30/2019
+ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf5bf49538823ea50bca197a78ec54d4ddcae1ff
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: e078cb7daa787b9fe5e8bc996b36f0fef198f41c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708283"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879673"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Oktatóanyag: A Carbonite-végpont biztonsági mentésének integrálása Azure Active Directory
 
@@ -125,27 +125,35 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 ### <a name="configure-carbonite-endpoint-backup-sso"></a>A Carbonite-végpont biztonsági mentési egyszeri bejelentkezésének konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a Carbonite-végpont biztonsági mentési céges webhelyre rendszergazdaként.
+1. A Carbonite-végpont biztonsági másolatán belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
 
-1. Kattintson a **vállalatra** a bal oldali ablaktáblán.
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **Carbonite Endpoint Backup beállítása** gombra a Carbonite-végpont biztonsági mentési alkalmazásának irányításához. Itt adja meg a rendszergazdai hitelesítő adatokat a Carbonite Endpoint Backup szolgáltatásba való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-7-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+3. Ha manuálisan szeretné beállítani a Carbonite-végpont biztonsági mentését, nyisson meg egy új böngészőablakot, és jelentkezzen be a Carbonite-végpont biztonsági mentési céges webhelyre rendszergazdaként, és hajtsa végre a következő lépéseket:
+
+4. Kattintson a **vállalatra** a bal oldali ablaktáblán.
 
     ![Carbonite-végpont biztonsági mentési konfigurációja ](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
-1. Kattintson az **egyszeri bejelentkezés**lehetőségre.
+5. Kattintson az **egyszeri bejelentkezés**lehetőségre.
 
     ![Carbonite-végpont biztonsági mentési konfigurációja ](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
-1. Kattintson az **Engedélyezés** elemre, majd kattintson a **beállítások szerkesztése** elemre a konfiguráláshoz.
+6. Kattintson az **Engedélyezés** elemre, majd kattintson a **beállítások szerkesztése** elemre a konfiguráláshoz.
 
     ![Carbonite-végpont biztonsági mentési konfigurációja ](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
-1. Az **egyszeri bejelentkezési** beállítások oldalon hajtsa végre a következő lépéseket:
+7. Az **egyszeri bejelentkezési** beállítások oldalon hajtsa végre a következő lépéseket:
 
     ![Carbonite-végpont biztonsági mentési konfigurációja ](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
-    1. Az **identitás-szolgáltató neve** szövegmezőbe írja be az identitás-szolgáltató nevét (például **Microsoft Azure ad**).
+    1. Az **identitás-szolgáltató neve** szövegmezőbe illessze be azt az **Azure ad-azonosító** értéket, amelyet a Azure Portal másolt.
 
-    1. Az **identitás-szolgáltató URL-címe** szövegmezőbe illessze be az **Azure ad-azonosító** értékét, amelyet a Azure Portal másolt.
+    1. Az **Identity Provider URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet** , amelyet a Azure Portal másolt.
 
     1. Kattintson a **fájl kiválasztása** lehetőségre a letöltött **tanúsítvány (Base64)** fájljának a Azure Portal való feltöltéséhez.
 

@@ -25,6 +25,10 @@
           href: sdk-csharp-quickstart-authoring-app.md
         - name: Előrejelzési végpont lekérdezése
           href: sdk-csharp-quickstart-query-prediction-endpoint.md
+    - name: A Python SDK használata
+      items:
+        - name: Alkalmazás létrehozása és kezelése
+          href: sdk-python-quickstart-authoring-app.md
     - name: REST API-k használata
       items:
         - name: Szándék lekérése

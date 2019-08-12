@@ -1,6 +1,6 @@
 ---
-title: Az Azure Time Series Insights – előzetes környezet használatával adatokat kérdezhet le C# kód |} A Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan kérdezhet le adatokat Azure Time Series Insights-környezetből kódolása C# (C-éles) .NET nyelven írt egyéni alkalmazás által.
+title: Adatok lekérdezése Azure Time Series Insights előnézeti környezetből kód használatával C# | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan lehet lekérdezni egy Azure Time Series Insights-környezet adatait egy C# (c-Sharp) .net nyelven írt egyéni alkalmazás kódolásával.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -12,36 +12,36 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc5f35aedd52e206433afb0f556bc1cde8296232
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 8fdfd39527ccd298b78ef2c4c895d1f667d8d33b
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237480"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677617"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Az Azure Time Series Insights – előzetes környezet használatával adatokat kérdezhet leC#
+# <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Adatok lekérdezése a Azure Time Series Insights előnézet környezetből a következő használatával:C#
 
-Ez C# példa bemutatja, hogyan kérdezhet le adatokat az Azure Time Series Insights – előzetes környezetből.
+Ez C# a példa azt mutatja be, hogyan lehet lekérdezni az adatok a Azure Time Series Insights előzetes verziójának környezetét.
 
 A minta számos alapszintű példát is tartalmat a Query API használatára:
 
-1. Az előkészítő lépésben beszerezni a hozzáférési jogkivonatot az Azure Active Directory API segítségével. A token továbbítja a `Authorization` minden Query API-kérés fejlécébe. Nem interaktív alkalmazások beállításához, tekintse meg a [hitelesítési és engedélyezési](time-series-insights-authentication-and-authorization.md). Gondoskodjon arról is, a minta elején definiált összes állandók megfelelően vannak beállítva.
-1. A környezetek listáját tartalmazza, amely a felhasználó hozzáféréssel rendelkezik kapjuk meg. Az egyik környezet a környezet összesített eseményadatait van kiválasztva, és további adatok lekérdezése követi, ebben a környezetben.
+1. Előkészítési lépésként szerezze be a hozzáférési jogkivonatot a Azure Active Directory API-n keresztül. Adja át ezt a tokent minden lekérdezési API- `Authorization` kérelem fejlécében. Nem interaktív alkalmazások beállításával kapcsolatban lásd: [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md). Győződjön meg arról is, hogy a minta elején definiált összes állandó megfelelően van beállítva.
+1. Azon környezetek listája, amelyekhez a felhasználónak hozzáférése van. Az egyik környezet a fontos környezet, a további adatlekérdezések pedig erre a környezetre vannak lekérdezve.
 1. A HTTPS-kérés példájaként a rendszer lekéri az érintett környezet rendelkezésreállási adatait.
 1. A websocket-kérés példájaként a rendszer lekéri az érintett környezet összesített eseményadatait. Az adatokat a rendszer a teljes rendelkezésre állási időtartamra lekéri.
 
 > [!NOTE]
-> Ez a példa kód is érhető el: [ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample).
+> Ez a mintakód a következő címen is [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample)elérhető:.
 
-## <a name="c-example"></a>C#-példa
+## <a name="c-example"></a>C#például
 
 [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-preview-sample/DataPlaneClientSampleApp/Program.cs)]
 
 > [!NOTE]
-> A fenti kódmintában az alapértelmezett környezeti értékeinek módosítása nélkül is futtathatók.
+> A fenti mintakód az alapértelmezett környezeti értékek módosítása nélkül is futtatható.
 
 ## <a name="next-steps"></a>További lépések
 
-- Lekérdezésével kapcsolatos további tudnivalókért olvassa el a [lekérdezési API-referencia](/rest/api/time-series-insights/preview-query).
+- A lekérdezéssel kapcsolatos további információkért olvassa el a [lekérdezési API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query)-referenciát.
 
-- További ismertetés a [JavaScript egyoldalas alkalmazás csatlakoztatása](tutorial-create-tsi-sample-spa.md) a Time Series Insights.
+- Olvassa el, hogyan [csatlakozhat egy JavaScript egyoldalas alkalmazást](tutorial-create-tsi-sample-spa.md) Time Series Insightshoz.

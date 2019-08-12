@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.date: 07/29/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f4352a1f6a065d1e9be78f01bde95c8f00593a3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
-ms.translationtype: MT
+ms.openlocfilehash: 60474148d1eac6ca9d85fbc1d103ad612787aeae
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479777"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607867"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -43,7 +43,7 @@ Az Azure SAP munkaterhelés-forgatókönyvek üzemeltetése az identitás-integr
 - A ExpressRoute gyors elérési útja és Global Reach a HANA nagyméretű példányaihoz [SAP HANA (nagyméretű példányok) hálózati architektúrában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture) és kapcsolódó dokumentumokban
 - [Az Azure HANA nagyméretű példányok vezérlésének kiadása a Azure Portal](hana-li-portal.md)
 - [Magas rendelkezésre állás az SAP NetWeaver számára az Azure-beli virtuális gépeken a SUSE Linux Enterprise Server Azure NETAPP Files SAP](high-availability-guide-suse-netapp-files.md) -alkalmazásokhoz
-
+- Az [Azure NetAppFiles (ANF) bétaverziójának SAP HANA-es verziójának SAP NETWEAVER ASCS telepítése](lama-installation.md)
 
 
 

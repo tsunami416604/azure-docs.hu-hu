@@ -2,9 +2,9 @@
   href: index.yml
 - name: SQL Database-szolgáltatás
   items:
-    - name: Mi az az SQL Database?
+    - name: Mi az SQL Database?
       href: sql-database-technical-overview.md
-    - name: Azure SQL verziójának kiválasztása
+    - name: Melyik SQL-beállítást válasszam?
       href: sql-database-paas-vs-sql-server-iaas.md
     - name: Kibocsátási megjegyzések
       href: sql-database-release-notes.md
@@ -280,14 +280,18 @@
               href: sql-vulnerability-assessment.md
             - name: Fejlett fenyegetésvédelem
               href: sql-database-threat-detection-overview.md
-        - name: Kiszolgálószintű IP-tűzfalszabályok
+        - name: Hálózati biztonság
           items:
-            - name: Létrehozás és kezelés
+            - name: A hálózati hozzáférés-vezérlés áttekintése
+              href: sql-database-networkaccess-overview.md
+            - name: IP-alapú tűzfal
               href: sql-database-firewall-configure.md
-            - name: Virtuális hálózati végpontok
-              href: sql-database-vnet-service-endpoint-rule-overview.md
-            - name: Virtuális hálózati végpontok – PowerShell
-              href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: Virtuális hálózat tűzfalszabályai
+              items:
+                - name: Virtuális hálózati végpontok
+                  href: sql-database-vnet-service-endpoint-rule-overview.md
+                - name: Virtuális hálózati végpontok – PowerShell
+                  href: sql-database-vnet-service-endpoint-rule-powershell.md
         - name: Hozzáférés-vezérlés
           items:
             - name: Hozzáférés-vezérlés

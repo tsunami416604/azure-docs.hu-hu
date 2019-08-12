@@ -25,14 +25,6 @@
       href: ../hdinsight-component-versioning.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
-    - name: Hibaelhárítás
-      items:
-        - name: Az Apache HBase REST nem válaszol
-          href: ./hbase-troubleshoot-rest-not-spending.md
-        - name: Rögzített CPU egy régiós kiszolgálón
-          href: ./hbase-troubleshoot-pegged-cpu-region-server.md
-        - name: Időtúllépések „hbase hbck” paranccsal
-          href: ./hbase-troubleshoot-timeouts-hbase-hbck.md
 - name: Útmutató
   items:
     - name: Fürttároló használata
@@ -167,8 +159,25 @@
         - name: Az operációs rendszer javításai a HDInsight-fürthöz
           href: ../hdinsight-os-patching.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
     - name: Hibaelhárítás
-      href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
       items:
+        - name: Erőforrások hibaelhárítása
+          href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
+        - name: Nincsenek adatok az Apache Phoenix-nézetekben
+          href: ./hbase-troubleshoot-phoenix-no-data.md
+        - name: BindException – Használatban lévő cím
+          href: ./hbase-troubleshoot-bindexception-address-use.md
+        - name: Az Apache HBase nem indul el
+          href: ./hbase-troubleshoot-start-fails.md
+        - name: Régiókiszolgálókkal kapcsolatos problémák
+          href: ./hbase-troubleshoot-unassigned-regions.md
+        - name: Az Apache Phoenix csatlakozási problémái
+          href: ./hbase-troubleshoot-phoenix-connectivity.md
+        - name: Az Apache HBase REST nem válaszol
+          href: ./hbase-troubleshoot-rest-not-spending.md
+        - name: Rögzített CPU egy régiós kiszolgálón
+          href: ./hbase-troubleshoot-pegged-cpu-region-server.md
+        - name: Időtúllépések „hbase hbck” paranccsal
+          href: ./hbase-troubleshoot-timeouts-hbase-hbck.md
         - name: Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
         - name: Apache Hadoop HDFS-hibaelhárítás

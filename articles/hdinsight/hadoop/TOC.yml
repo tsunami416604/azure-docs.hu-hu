@@ -41,30 +41,6 @@
       href: ../hdinsight-hadoop-compare-storage-options.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: Felhasználó által hozzárendelt felügyelt identitások kezelése
       href: ../hdinsight-managed-identities.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
-    - name: Hibaelhárítás
-      items:
-        - name: Fürtlétrehozási hibák
-          href: ./hdinsight-troubleshoot-cluster-creation-fails.md
-        - name: Nincs elegendő lemezterület
-          href: ./hdinsight-troubleshoot-out-disk-space.md
-        - name: Helyreállítható zárolás – CPU
-          href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
-        - name: InvalidNetworkConfigurationErrorCode – a fürt létrehozása sikertelen
-          href: ./troubleshoot-invalidnetworkconfigurationerrorcode-cluster-creation-fails.md
-        - name: InvalidNetworkSecurityGroupSecurityRules – a fürt létrehozása sikertelen
-          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
-        - name: Nem lehet bejelentkezni egy HDInsight-fürtre
-          href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
-        - name: A csomópontok HDInsight-fürthöz való hozzáadása nem sikerült
-          href: ./hdinsight-troubleshoot-unable-add-nodes.md
-        - name: Szolgáltatásnév-tanúsítvány konvertálása
-          href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
-        - name: A helyi HDFS csökkentett üzemmódban maradt
-          href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
-        - name: Az Apache Ambari szívveréssel kapcsolatos problémái
-          href: ./apache-ambari-troubleshoot-heartbeat-issues.md
-        - name: Az Apache Ambari a leállt gazdagépeket és szolgáltatásokat jeleníti meg
-          href: ./apache-ambari-troubleshoot-down-hosts-services.md
 - name: Útmutató
   items:
     - name: Apache Hadoop-tesztkörnyezet használata
@@ -310,6 +286,30 @@
     - name: Hibaelhárítás
       href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
       items:
+        - name: Fürtlétrehozási hibák
+          href: ./hdinsight-troubleshoot-cluster-creation-fails.md
+        - name: Nincs elegendő lemezterület
+          href: ./hdinsight-troubleshoot-out-disk-space.md
+        - name: Helyreállítható zárolás – CPU
+          href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
+        - name: InvalidNetworkConfigurationErrorCode – a fürt létrehozása sikertelen
+          href: ./troubleshoot-invalidnetworkconfigurationerrorcode-cluster-creation-fails.md
+        - name: InvalidNetworkSecurityGroupSecurityRules – a fürt létrehozása sikertelen
+          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
+        - name: Nem lehet bejelentkezni egy HDInsight-fürtre
+          href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
+        - name: A csomópontok HDInsight-fürthöz való hozzáadása nem sikerült
+          href: ./hdinsight-troubleshoot-unable-add-nodes.md
+        - name: Szolgáltatásnév-tanúsítvány konvertálása
+          href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
+        - name: A helyi HDFS csökkentett üzemmódban maradt
+          href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
+        - name: Az Apache Ambari szívveréssel kapcsolatos problémái
+          href: ./apache-ambari-troubleshoot-heartbeat-issues.md
+        - name: 502-es hiba az Apache Ambari felhasználói felületén
+          href: ./apache-ambari-troubleshoot-fivezerotwo-error.md
+        - name: Az Apache Ambari a leállt gazdagépeket és szolgáltatásokat jeleníti meg
+          href: ./apache-ambari-troubleshoot-down-hosts-services.md
         - name: Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: Apache Hadoop HDFS-hibaelhárítás

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/17/2019
+ms.date: 08/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: 331a554332db8c05d4ece1a1df5d6557d6e86906
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
-ms.translationtype: MT
+ms.openlocfilehash: 7f253b71271787f7f2ef722134862ca72e0159df
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310363"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855753"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -28,22 +28,28 @@ ms.locfileid: "68310363"
 > * [Szolgáltatók hely alapján](expressroute-locations-providers.md)
 
 
-A cikkben található táblázatok információkat nyújtanak az ExpressRoute-kapcsolatszolgáltatókkal, az ExpressRoute földrajzi lefedettségével, az ExpressRoute-on támogatott Microsoft-felhőszolgáltatásokkal és az ExpressRoute-rendszerintegrátorokkal (SI) kapcsolatban.
+A cikkben szereplő táblázatok a földrajzi lefedettséggel és a ExpressRoute, a ExpressRoute és a ExpressRoute rendszerintegrátorokkal (SIs) kapcsolatos információkat tartalmaznak.
 
-## <a name="partners"></a>ExpressRoute-kapcsolatszolgáltatók
-Az ExpressRoute az összes Azure-régióban és -helyen támogatott. A következő térkép az Azure-régiók és ExpressRoute-helyek listáját tartalmazza. Az ExpressRoute-helyek azokra a helyekre utalnak, ahol a Microsoft több szolgáltatóval is társul.
+> [!Note]
+> Az Azure-régiók és a ExpressRoute két különböző fogalmat alkotnak, és a kettő közötti különbség kritikus fontosságú az Azure Hybrid Networking-kapcsolat megismeréséhez. 
+>
+>
 
-![Helyek térképe][0]
+## <a name="azure-regions"></a>Azure-régiók
+Az Azure-régiók olyan globális adatközpontok, ahol az Azure számítási, hálózati és tárolási erőforrásai találhatók. Az Azure-erőforrások létrehozásakor az ügyfélnek ki kell választania egy erőforrás-helyet. Az erőforrás helye határozza meg, hogy az erőforrás melyik Azure-adatközpontban (vagy rendelkezésre állási zónában) jön létre.
+
+## <a name="expressroute-locations"></a>ExpressRoute-helyek
+A ExpressRoute helyek (más néven a társítási helyek vagy a saját helyek) olyan közös elhelyezési létesítmények, ahol a Microsoft Enterprise Edge (MSEE) eszközei találhatók. A ExpressRoute helye a Microsoft hálózatának belépési pontja – globálisan elosztott, így az ügyfelek a világ különböző pontjain csatlakozhatnak a Microsoft hálózatához. Ezek a helyszínek, ahol a ExpressRoute-partnerek és a ExpressRoute Direct-ügyfelek a Microsoft hálózatához csatlakoznak. Általánosságban elmondható, hogy a ExpressRoute helye nem kell, hogy egyezzen az Azure-régióval. Például egy ügyfél létrehozhat egy ExpressRoute-áramkört az *USA keleti*régiójában, a *Seattle* -beli összevonási helyen.
 
 Ha legalább egy ExpressRoute-helyhez csatlakozott egy geopolitikai régióban, az adott geopolitikai régióban lévő összes régióban hozzáférhet az Azure-szolgáltatásokhoz. 
 
-### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>Az egyes geopolitikai régiókban lévő Azure-régiók és ExpressRoute-helyek
+## <a name="locations"></a>Azure-régiók egy geopolitikai régión belüli ExpressRoute
 A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és ExpressRoute-helyek térképét mutatja.
 
 | **Geopolitikai régió** | **Zóna** | **Azure-régiók** | **ExpressRoute-helyek** |
 | --- | --- | --- | --- |
 | **Ausztrália kormánya** | 1 | Ausztrália középső régiója, Ausztrália 2. középső régiója |Canberra, Canberra2 |
-| **Európa** | 1 |Közép-Franciaország, Dél-Franciaország, Észak-Európa, Nyugat-Európa, az Egyesült Királyság nyugati régiója, az Egyesült Királyság déli régiója |Amszterdam, Amsterdam2, Dublin, Frankfurt, London, London2, Marseille, Newport (Wales), Párizs, Zürich |
+| **Európa** | 1 |Közép-Franciaország, Dél-Franciaország, Észak-Európa, Nyugat-Európa, az Egyesült Királyság nyugati régiója, az Egyesült Királyság déli régiója |Amszterdam, Amsterdam2, Koppenhága, Dublin, Frankfurt, London, London2, Marseille, Newport (Wales), Párizs, Stockholm, Zürich |
 | **Észak-Amerika** | 1 |USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA 2. nyugati régiója, USA középső régiója, USA déli középső régiója, USA északi középső régiója, USA középnyugati régiója, Közép-Kanada, Kelet-Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Szilícium-völgy, szilícium-Valley2, Washington, D.C., Washington DC2, Montreal, Québec város, Toronto |
 | **Ázsia** | 2 |Kelet-Ázsia, Délkelet-Ázsia |Hongkong KKT, Kuala Lumpur, Szingapúr, Szingapúr2, Taipei |
 | **India** | 2 |Nyugat-India, Közép-India, Dél-India |Csennai, Csennai2, Mumbai, Mumbai2 |
@@ -54,7 +60,7 @@ A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és
 | **Dél-Afrika** | 3 |Dél-Afrika nyugati régiója, Dél-Afrika északi régiója |Fokváros, Johannesburg |
 | **Dél-Amerika** | 3 |Dél-Brazília |Sao Paulo |
 
-### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>A régiók és az országos felhők geopolitikai határai
+## <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>Az Azure-régiók és az országos felhők geopolitikai határai
 Az alábbi tábla a régiók és az országos felhők geopolitikai határainak információit tartalmazza.
 
 | **Geopolitikai régió** | **Azure-régiók** | **ExpressRoute-helyek** |
@@ -66,9 +72,9 @@ Az alábbi tábla a régiók és az országos felhők geopolitikai határainak i
 
 A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard ExpressRoute-termékváltozatokban. A globális kapcsolatok támogatásához engedélyeznie kell az ExpressRoute prémium bővítményt. Az országos felhőkörnyezetekhez való kapcsolódás nem támogatott. Igény esetén tájékozódjon kapcsolatszolgáltatójánál a lehetőségekről.
 
-## <a name="locations"></a>Kapcsolatszolgáltatói helyek
+## <a name="partners"></a>ExpressRoute-kapcsolatszolgáltatók
 
-Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szolgáltatók láthatók. A szolgáltatók és a szolgáltatási helyek megtekintéséhez lásd: [Helyek szolgáltatók szerint](expressroute-locations.md#locations). 
+Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szolgáltatók láthatók. A szolgáltatók és a szolgáltatási helyek megtekintéséhez lásd: [Helyek szolgáltatók szerint](expressroute-locations.md). 
 
 A **helyi Azure-régiók** olyanok, amelyek az egyes [ExpressRoute helyi](expressroute-faqs.md) helyeken is hozzáférhetnek. az **n/a** azt jelzi, hogy a ExpressRoute helyi helye nem érhető el az adott egyenrangú helyen.
 
@@ -79,7 +85,7 @@ A **helyi Azure-régiók** olyanok, amelyek az egyes [ExpressRoute helyi](expres
 | **Amszterdam** | Equinix | Nyugat-Európa | Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Interxion, KPN, IX Reach, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Telia Carrier, Verizon, Zayo |
 | **Amszterdam2** | Interxion | Nyugat-Európa | CenturyLink Cloud Connect, DE-CIX, Interxion, Vodafone |
 | **Atlanta** | Equinix | n/a | Equinix, Megaport |
-| **Auckland** | Vocus-csoport – NZ | n/a | Devoli, Kordia, Megaport, Vocus csoport NZ |
+| **Auckland** | Vocus-csoport – NZ | n/a | Devoli, Kordia, Megaport, Spark NZ, Vocus csoport, NZ |
 | **Busan** |LG CNS | Korea déli régiója | LG CNS |
 | **Canberra** | CDC | Ausztrália középső régiója | CDC |
 | **Canberra2** | CDC | Ausztrália 2. középső régiója| CDC |
@@ -87,10 +93,11 @@ A **helyi Azure-régiók** olyanok, amelyek az egyes [ExpressRoute helyi](expres
 | **Csennai** | Tata Communications | Dél-India | Global CloudXchange (GCX), SIFY, Tata Communications |
 | **Csennai2** | Airtel | Dél-India | Airtel |
 | **Chicago** | Equinix | USA északi középső régiója | Aryaka Networks hálózatok, & T NetBond, CenturyLink Cloud-kapcsolat, Cologix, Comcast, Coresite, Equinix, felhő, Internet2, level 3 Communications, Megaport, PacketFabric, PCCW globális korlátozott, sprint, Telia Carrier, Verizon, Zayo |
+| **Koppenhága** | Interxion | n/a | Interxion |
 | **Dallas** | Equinix | n/a | Aryaka Networks, AT&T NetBond, Cologix, Equinix, Internet2, Level 3 Communications, Megaport, Neutrona Networks, Telmex Uninet, Telia Carrier, Transtelco, Verizon, Zayo|
 | **Denver** | CoreSite | USA nyugati középső régiója | CoreSite, Megaport, Zayo |
-| **Dubai** | Etisalat UAE | Az Egyesült Arab Emírségek északi régiója | Etisalat UAE |
-| **Dubai2** | du datamena | Az Egyesült Arab Emírségek északi régiója | du datamena, Orixcom |
+| **Dubai** | Etisalat UAE | Egyesült Arab Emírségek északi régiója | Etisalat UAE |
+| **Dubai2** | du datamena | Egyesült Arab Emírségek északi régiója | du datamena, Orixcom |
 | **Dublin** | Equinix | Észak-Európa | Colt, eir, Equinix, Interxion, Megaport |
 | **Frankfurt** | Interxion | n/a | DE-CIX, Interxion |
 | **Hongkong (KKT)** | Equinix | Kelet-Ázsia | Aryaka Networks Networks, British Telecom, CenturyLink Cloud-kapcsolat, telekommunikáció, kínai távközlési globális, Equinix, Megaport, NTT Communications, Orange, PCCW globális korlátozott, Tata Communications, Telia Carrier, Verizon |
@@ -116,10 +123,11 @@ A **helyi Azure-régiók** olyanok, amelyek az egyes [ExpressRoute helyi](expres
 | **Sao Paulo** | Equinix | Dél-Brazília | Aryaka Networks, Ascenty Data Centers, British Telecom, Equinix, Level 3 Communications, Neutrona Networks, Orange, Tata Communications, Telefonica, UOLDIVEO |
 | **Seattle** | Equinix | USA nyugati régiója, 2. | Aryaka Networks Networks, Equinix, level 3 Communications, Megaport, Telus, Zayo |
 | **Szöul** | KINX | Korea középső régiója | KINX, LG CNS, Sejong Telecom |
-| **Szilícium-völgy** | Equinix | USA nyugati régiója | Aryaka Networks hálózatok, & T NetBond, British Telecom, CenturyLink Cloud-kapcsolat, Comcast, Coresite, Equinix, felhő, IX REACH, csomag, PacketFabric, level 3 Communications, Megaport, Orange, sprint, Tata Communications, Verizon, Zayo |
+| **Szilícium-völgy** | Equinix | USA nyugati régiója | Aryaka Networks hálózatok, & T NetBond, British Telecom, CenturyLink Cloud kapcsolatba, Comcast, Coresite, Equinix, felhő, IX REACH, csomag, PacketFabric, level 3 Communications, Megaport, Orange, sprint, Tata Communications, Telia Carrier, Verizon, Zayo |
 | **Szilícium Valley2** | Coresite | USA nyugati régiója | Coresite | 
 | **Szingapúr** | Equinix | Délkelet-Ázsia | Aryaka Networks, AT&T NetBond, British Telecom, Epsilon Global Communications, Equinix, InterCloud, Level 3 Communications, Megaport, NTT Communications, Orange, SingTel, Tata Communications, Telstra Corporation, Verizon, Vodafone |
 | **Singapore2** | Global Switch | Délkelet-Ázsia | Colt, epszilon, globális kommunikáció, Megaport, énekel |
+| **Stockholm** | Equinix | n/a | Telia-szolgáltató |
 | **Sydney** | Equinix | Kelet-Ausztrália | AARNet, & T NetBond, British Telecom, Devoli, Equinix, Kordia, Megaport, NEXTDC, NTT Communications, Optus, Orange, Spark NZ, Telstra Corporation, TPG Telecom, Verizon, Vocus csoport NZ |
 | **Taipei** | Telekommunikációs vezető | n/a | Telekommunikációs vezető, FarEasTone |
 | **Tokió** | Equinix | Kelet-Japán | Aryaka Networks, AT&T NetBond, British Telecom, CenturyLink Cloud Connect, Colt, Equinix, Internet Initiative Japan Inc. - IIJ, NTT Communications, NTT EAST, Orange, Softbank, Verizon |

@@ -1,18 +1,18 @@
 ---
 title: Felügyelheti és figyelheti SQL Server adatbázisait egy olyan Azure-beli virtuális gépen, amelyről biztonsági másolat készül Azure Backup használatával | Microsoft Docs
 description: Ez a cikk az Azure-beli virtuális gépeken futó SQL Server adatbázisok felügyeletét és figyelését ismerteti.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
-ms.author: raynew
-ms.openlocfilehash: 0a864382e54f5c8641aa6da2369eb914011c712c
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
-ms.translationtype: MT
+ms.author: dacurwin
+ms.openlocfilehash: c5f61c778849a57d9143580e0e1041c7fe992d52
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464866"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639586"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>SQL Server adatbázisok biztonsági mentésének kezelése és figyelése
 

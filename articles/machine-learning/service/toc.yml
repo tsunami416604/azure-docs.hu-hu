@@ -6,7 +6,7 @@
     - name: Mi az Azure Machine Learning szolgáltatás?
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: A szolgáltatás működése
+    - name: Architektúra és kifejezések
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
 - name: Oktatóanyagok
@@ -216,6 +216,8 @@
         - name: Az üzembe helyezés módja és helye
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
+        - name: Notebook virtuális gépek
+          href: how-to-deploy-local-container-notebook-vm.md
         - name: Azure Container Instances
           href: how-to-deploy-azure-container-instance.md
         - name: Azure Kubernetes Service
@@ -256,9 +258,9 @@
     - name: Újrahasználható munkafolyamatok létrehozása
       displayName: pipelines
       items:
-        - name: Gépi tanulási folyamat létrehozása
+        - name: 'Gépi tanulási folyamatok: kötegelés, számítások, újrafelhasználás, megosztás'
           href: how-to-create-your-first-pipeline.md
-        - name: CI/CD a gépi tanulási munkafolyamatokhoz az Azure Pipelines használatával
+        - name: Azure Pipelines a CI/CD-hez
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: Erőforráskvóták kezelése

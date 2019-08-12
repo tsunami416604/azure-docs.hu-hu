@@ -107,25 +107,25 @@
       href: Tutorials/storage-lab-tutorial.md
 - name: Alapelvek
   items:
-    - name: Képek címkézése
+    - name: Tartalomcímkék
       href: concept-tagging-images.md
-    - name: Objektumok észlelése
+    - name: Objektumészlelés
       href: concept-object-detection.md
-    - name: Márkák észlelése
+    - name: Márkaészlelés
       href: concept-brand-detection.md
     - name: Képek kategorizálása
       href: concept-categorizing-images.md
-    - name: Képek leírása
+    - name: Képleírások
       href: concept-describing-images.md
     - name: Arcfelismerés
       href: concept-detecting-faces.md
-    - name: Képek típusának észlelése
+    - name: Képtípus észlelése
       href: concept-detecting-image-types.md
-    - name: Tartományspecifikus tartalom észlelése
+    - name: Tartományspecifikus tartalom
       href: concept-detecting-domain-content.md
-    - name: Színsémák észlelése
+    - name: Színséma észlelése
       href: concept-detecting-color-schemes.md
-    - name: Miniatűrök létrehozása
+    - name: Intelligens körbevágású miniatűrök
       href: concept-generating-thumbnails.md
     - name: Nyomtatott és kézzel írt szöveg felismerése
       href: concept-recognizing-text.md

@@ -1,19 +1,18 @@
 ---
 title: Azure-fájlmegosztás használata Windowson | Microsoft Docs
 description: Az Azure-fájlmegosztások használata Windowson és Windows Serveren.
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 02a8b825a513c75ef7c037348ccaecdf5026ded2
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
-ms.translationtype: MT
+ms.openlocfilehash: d2bad808d0bcbbd5dc8052db0f8fd32fc4c1180a
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560477"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699473"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure-fájlmegosztás használata Windowson
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások zökkenőmentesen használhatóak Windowson és Windows Serveren. Ebben a cikkben az Azure-fájlmegosztások Windowson és Windows Serveren való használatának szempontjairól olvashat.
@@ -26,7 +25,7 @@ Azure-fájlmegosztásokat az Azure-beli virtuális gépeken vagy helyszínen fut
 |------------------------|-------------|-----------------------|----------------------|
 | A Windows Server 2019    | SMB 3.0 | Igen | Igen |
 | Windows 10<sup>1</sup> | SMB 3.0 | Igen | Igen |
-| A Windows Server félévi csatorna<sup>2</sup> | SMB 3.0 | Igen | Igen |
+| Windows Server féléves csatorna<sup>2</sup> | SMB 3.0 | Igen | Igen |
 | Windows Server 2016    | SMB 3.0     | Igen                   | Igen                  |
 | Windows 8.1            | SMB 3.0     | Igen                   | Igen                  |
 | Windows Server 2012 R2 | SMB 3.0     | Igen                   | Igen                  |
@@ -34,8 +33,8 @@ Azure-fájlmegosztásokat az Azure-beli virtuális gépeken vagy helyszínen fut
 | Windows 7              | SMB 2.1     | Igen                   | Nem                   |
 | Windows Server 2008 R2 | SMB 2.1     | Igen                   | Nem                   |
 
-<sup>1</sup>Windows 10, 1507-es, 1607-es, 1703-as, 1709-es, 1803 és 1809 verzió.  
-<sup>2</sup>a Windows Server 1709-es és 1803.
+<sup>1</sup> Windows 10, 1507, 1607, 1703, 1709, 1803 és 1809 verzió.  
+<sup>2</sup> Windows Server, 1709-es és 1803-es verzió.
 
 > [!Note]  
 > Javasoljuk, hogy mindig a Windows-verziójához legutóbb kiadott frissítést használja.
@@ -44,13 +43,13 @@ Azure-fájlmegosztásokat az Azure-beli virtuális gépeken vagy helyszínen fut
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek 
-* **Tárfiók neve**: Azure-fájlmegosztások csatlakoztatásához szüksége lesz a tárfiókja nevére.
+* **Storage-fiók neve**: Azure-fájlmegosztás csatlakoztatásához szüksége lesz a Storage-fiók nevére.
 
-* **Tárfiók kulcsa**: Azure-fájlmegosztások csatlakoztatásához szüksége lesz az elsődleges (vagy másodlagos) tárkulcsra. Az SAS-kulcsokkal való csatlakoztatás jelenleg nem támogatott.
+* **Storage-fiók kulcsa**: Azure-fájlmegosztás csatlakoztatásához szüksége lesz az elsődleges (vagy másodlagos) tárolási kulcsra. Az SAS-kulcsokkal való csatlakoztatás jelenleg nem támogatott.
 
-* **Győződjön meg, hogy a 445-ös port nyitva**: Az SMB protokollt igényel a TCP 445-ös megnyitni; kapcsolatok sikertelen lesz, ha a 445-ös port le van tiltva. Ellenőrizze, hogy a tűzfal nem blokkolja-e a 445-ös portot a `Test-NetConnection` parancsmaggal. Megismerkedhet a [blokkolt megoldás különféle módokon itt az 445-ös portot](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
+* **Győződjön meg arról, hogy a 445-es port nyitva van**: Az SMB protokoll megnyitásához a 445-es TCP-port szükséges. a kapcsolatok sikertelenek lesznek, ha a 445-es port le van tiltva. Ellenőrizze, hogy a tűzfal nem blokkolja-e a 445-ös portot a `Test-NetConnection` parancsmaggal. Az [445-es blokkolt port megkerülő megoldásának különböző módjairól itt](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)olvashat.
 
-    A következő PowerShell-kód feltételezi, hogy az Azure PowerShell-modul telepítve van, tekintse meg [Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) további információt. Ne felejtse el kicserélni a `<your-storage-account-name>` és a `<your-resource-group-name>` elemet a tárfiók vonatkozó neveivel.
+    A következő PowerShell-kód feltételezi, hogy telepítve van a Azure PowerShell modul, további információért lásd: [Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps) . Ne felejtse el kicserélni a `<your-storage-account-name>` és a `<your-resource-group-name>` elemet a tárfiók vonatkozó neveivel.
 
     ```powershell
     $resourceGroupName = "<your-resource-group-name>"
@@ -246,7 +245,7 @@ A következő táblázat részletes leírást ad az SMB 1 állapotáról minden 
 | Windows 7                                 | Enabled              | Letiltás a beállításjegyzékkel       | 
 
 ### <a name="auditing-smb-1-usage"></a>Az SMB 1 használatának naplózása
-> A Windows Server 2019, a Windows Server félévi csatorna (1709-es és 1803 verziók), a Windows Server 2016, a Windows 10-es (1507-es, 1607-es, 1703-as, 1709-es és 1803 verzió), a Windows Server 2012 R2 és a Windows 8.1 vonatkozik
+> A Windows Server 2019, a Windows Server féléves csatornára (1709 és 1803 verziók), a Windows Server 2016, a Windows 10 (Versions 1507, 1607, 1703, 1709 és 1803), a Windows Server 2012 R2 és a Windows 8,1 alkalmazásra vonatkozik
 
 Mielőtt eltávolítja az SMB 1-et a környezetből, naplózhatja az SMB 1 használatát, hogy nyomon tudja követni, károsodik-e bármelyik ügyfél a változtatás miatt. Ha kérelem merül fel az SMB 1-gyel rendelkező SMB-megosztásokkal kapcsolatban, a rendszer egy naplózási eseményt rögzít az eseménynaplóba az `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit` útvonalon. 
 
@@ -260,7 +259,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
 ### <a name="removing-smb-1-from-windows-server"></a>Az SMB 1 eltávolítása a Windows Serverről
-> A Windows Server 2019, a Windows Server félévi csatorna (1709-es és 1803 verzió), Windows Server 2016, Windows Server 2012 R2 rendszerre vonatkozik
+> A Windows Server 2019, a Windows Server féléves csatornára (1709 és 1803 verziók), a Windows Server 2016, a Windows Server 2012 R2 verzióra vonatkozik.
 
 Az SMB 1 Windows Server-példányról történő eltávolításához hajtsa végre a következő parancsmagot egy emelt szintű PowerShell-munkamenetből:
 

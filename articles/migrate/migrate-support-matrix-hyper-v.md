@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: raynew
-ms.openlocfilehash: 507ca6daa30a19b73848d6d3cf253390baf496af
-ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
-ms.translationtype: MT
+ms.openlocfilehash: 787bcf28a64c98f82deb0725e2362bf8144d6c4e
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68372474"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640867"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>A Hyper-V felmérésének és migrálásának támogatási mátrixa
 
@@ -36,20 +36,16 @@ A táblázat összefoglalja a Hyper-V virtuális gépek támogatott forgatókön
 **Támogatás** | **Részletek**
 --- | ---
 Azure-engedélyek | Azure Migrate projekt létrehozásához közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie az előfizetésben.
-Hyper-V virtuális gépek | Akár 10 000 Hyper-V virtuális gépet is kivizsgálhat egyetlen projektben.
+Hyper-V virtuális gépek | Akár 10 000 Hyper-V virtuális gépet is kivizsgálhat egyetlen projektben. Egy Azure-előfizetéshez több projekt is tartozhat. A projektek tartalmazhatják a VMware virtuális gépeket és a Hyper-V virtuális gépeket is, az értékelési korlátokig.
+Földrajzi hely | Azure Migrate-projekteket számos földrajzi régióban is létrehozhatja. Habár létrehozhat projekteket adott ographies, a gépeket más célhelyekre is kielemezheti vagy áttelepítheti. A projekt földrajza csak a felderített metaadatok tárolására szolgál.
 
-A projektek tartalmazhatják a VMware virtuális gépeket és a Hyper-V virtuális gépeket is, az értékelési korlátokig.
-
-**Földrajz** Több földrajzi terület is létezik, amelyekben Azure Migrate projekt hozható létre. Annak ellenére, hogy csak ezekben a földrajzi területeken hozhat létre projekteket, továbbra is felbecsülheti vagy áttelepítheti a gépeket más célhelyekre. A projekt földrajza csak a felderített metaadatok tárolására szolgál.
-
-
- **Régiócsoport** | **Metaadatok tárolási helye**
- --- | ---
- Azure Government | USA-beli államigazgatás – Virginia
- Ázsia és a Csendes-óceáni térség | Délkelet-Ázsia vagy Kelet-Ázsia
- Európa | Dél-Európa vagy Nyugat-Európa
- Egyesült Királyság | Egyesült Királyság déli régiója vagy Egyesült Királyság nyugati régiója
- Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
+  **Régiócsoport** | **Metaadatok tárolási helye**
+  --- | ---
+  Azure Government | USA-beli államigazgatás – Virginia
+  Ázsia és a Csendes-óceáni térség | Délkelet-Ázsia vagy Kelet-Ázsia
+  Európa | Dél-Európa vagy Nyugat-Európa
+  Egyesült Királyság | Egyesült Királyság déli régiója vagy Egyesült Királyság nyugati régiója
+  Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
 
 
  > [!NOTE]
@@ -74,8 +70,6 @@ A projektek tartalmazhatják a VMware virtuális gépeket és a Hyper-V virtuál
 | **Operációs rendszer** | Az Azure által támogatott összes Windows-és [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) - [alapú](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) operációs rendszer. |
 | **Engedélyek**           | Minden felmérni kívánt Hyper-V virtuális gépen rendszergazdai engedélyekkel kell rendelkeznie. |
 | **Integrációs szolgáltatások**       | Az operációs rendszer adatainak rögzítéséhez a [Hyper-V integrációs szolgáltatásoknak](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) olyan virtuális gépeken kell futniuk, amelyeket Ön értékelni fog. |
-| **Az Azure szükséges módosításai** | Előfordulhat, hogy egyes virtuális gépek módosításokat igényelnek, hogy az Azure-ban is futtathatók legyenek. A Azure Migrate a következő operációs rendszerek esetében automatikusan végrehajtja ezeket a módosításokat:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> -CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8<br/><br/> Más operációs rendszerek esetében manuálisan kell elvégezni a módosításokat az áttelepítés előtt. A kapcsolódó cikkek erre vonatkozó utasításokat tartalmaznak. |
-| **Linux rendszerű rendszerindítás**                 | Ha a/boot dedikált partíción van, akkor az operációsrendszer-lemezen kell lennie, és nem szabad több lemezre osztania.<br/> Ha a/boot a gyökér (/) partíció része, akkor a "/" partíciónak az operációsrendszer-lemezen kell lennie, és nem szabad más lemezekre kiterjednie. |
 | **UEFI-rendszerindítás**                  | Az UEFI-rendszerindítással rendelkező virtuális gépek migrálása nem támogatott. |
 | **Titkosított lemezek/kötetek**    | A titkosított lemezekkel/kötetekkel rendelkező virtuális gépek migrálása nem támogatott. |
 | **RDM/továbbító lemezek**      | Ha a virtuális gépek RDM vagy továbbító lemezzel rendelkeznek, ezek a lemezek nem replikálódnak az Azure-ba. |
@@ -90,17 +84,15 @@ Az értékeléshez Azure Migrate egy könnyű berendezést futtat a Hyper-V virt
 | **Támogatás**                | **Részletek**               
 | :-------------------       | :------------------- |
 | **Azure Migrate projekt**  |  Egy készülék egyetlen projekthez is társítható.<br/> Akár 5000 Hyper-V virtuális gépet is felfedezhet egyetlen berendezéssel.
-| **Hyper-V-korlátozások**    |  A berendezést Hyper-V virtuális gépként kell üzembe helyezni.<br/> A készülékhez megadott VM a Hyper-V VM 5,0-es verziója.<br/> A virtuális gépnek Windows Server 2012 R2 vagy újabb rendszernek kell futnia.<br/> A készülék virtuális gépe számára elegendő lemezterület szükséges a 16 GB RAM, 4 virtuális processzor és 1 külső kapcsoló lefoglalásához.<br/> A készülék statikus vagy dinamikus IP-címet, valamint internet-hozzáférést igényel.
-| **Hyper-V készülék**      |  A készülék Hyper-V virtuális gépként van beállítva.<br/> A letöltéshez megadott VHD a Hyper-V VM 5,0-es verziója.
-| **Gazdagép**                   | A berendezés virtuális gépet futtató virtuális gépnek Windows Server 2012 R2 vagy újabb rendszernek kell futnia.<br/> A készülék virtuális gépe számára elegendő lemezterület szükséges a 16 GB RAM, 4 virtuális processzor és egy külső kapcsoló lefoglalásához.<br/> A készülék statikus vagy dinamikus IP-címet, valamint internet-hozzáférést igényel. |
-| **Migrálás támogatása**      | A számítógépek replikálásának megkezdéséhez a készüléken a Migration Gateway szolgáltatásnak 1.18.7141.12919 vagy későbbinek kell lennie. A verzió vizsgálatához jelentkezzen be a készülék webalkalmazásba. |
+| **Hyper-V**    |  A berendezést Hyper-V virtuális gépként kell üzembe helyezni.<br/> A készülékhez megadott VM a Hyper-V VM 5,0-es verziója.<br/> A virtuális gépnek Windows Server 2012 R2 vagy újabb rendszernek kell futnia.<br/> A készülék virtuális gépe számára elegendő lemezterület szükséges a 16 GB RAM, 4 virtuális processzor és 1 külső kapcsoló lefoglalásához.<br/> A készülék statikus vagy dinamikus IP-címet, valamint internet-hozzáférést igényel.
+
 
 ## <a name="assessment-appliance-url-access"></a>Felmérés – készülék URL-hozzáférése
 
 A virtuális gépek felméréséhez az Azure Migrate berendezésnek internetkapcsolatra van szüksége.
 
 - A berendezés telepítésekor a Azure Migrate az alábbi táblázatban összefoglalt URL-címek kapcsolatát.
-- Ha URL-alapú tűzfal. proxyt használ, engedélyezze a hozzáférést a táblázatban lévő URL-címekhez, és győződjön meg arról, hogy a proxy feloldja az URL-címek keresésekor fogadott CNAME-rekordokat.
+- Ha URL-alapú proxyt használ, engedélyezze a hozzáférést a táblázatban lévő URL-címekhez, és győződjön meg arról, hogy a proxy feloldja az URL-címek keresése során fogadott CNAME-rekordokat.
 - Ha elfogó proxyval rendelkezik, előfordulhat, hogy importálnia kell a kiszolgálói tanúsítványt a proxykiszolgálóhoz a készülékre.
 
 
@@ -112,6 +104,9 @@ A virtuális gépek felméréséhez az Azure Migrate berendezésnek internetkapc
 management.azure.com | Azure Active Directory-alkalmazások létrehozása a berendezés és a szolgáltatások közötti kommunikációhoz.
 dc.services.visualstudio.com | Naplózás és figyelés
 *.vault.azure.net | Azure Key Vault titkok kezelése a készülék és a szolgáltatás közötti kommunikáció során.
+aka.ms/* | Hozzáférés engedélyezése az aka hivatkozásokhoz.
+https://download.microsoft.com/download/* | A letölthető fájlok letöltése a Microsoft letöltési webhelyéről.
+
 
 
 ## <a name="assessment-port-requirements"></a>Értékelés – portra vonatkozó követelmények
@@ -120,7 +115,7 @@ A következő táblázat összefoglalja az értékeléshez szükséges portokra 
 
 **Device** | **kapcsolat**
 --- | ---
-**Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával: https://< Appliance-IP-vagy-Name >: 44368<br/> A 443-es porton kimenő kapcsolatok a felderítési és teljesítményi metaadatok küldéséhez Azure Migrate.
+**Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával:``` https://<appliance-ip-or-name>:44368 ```<br/> A 443-es porton kimenő kapcsolatok a felderítési és teljesítményi metaadatok küldéséhez Azure Migrate.
 **Hyper-V-gazdagép/-fürt** | A WinRM-portok 5985 (HTTP) és 5986 (HTTPS) bejövő kapcsolatai a Hyper-V virtuális gépek konfigurációjának és teljesítményének lekéréséhez CIM (CIM) munkamenet használatával.
 
 ## <a name="migration-hyper-v-host-requirements"></a>Migrálás – a Hyper-V gazdagépre vonatkozó követelmények
@@ -140,11 +135,19 @@ A következő táblázat összefoglalja az értékeléshez szükséges portokra 
 | **Integrációs szolgáltatások**       | Az operációs rendszer adatainak rögzítéséhez a [Hyper-V integrációs szolgáltatásoknak](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) olyan virtuális gépeken kell futniuk, amelyeket Ön értékelni fog. |
 | **Az Azure szükséges módosításai** | Előfordulhat, hogy egyes virtuális gépek módosításokat igényelnek, hogy az Azure-ban is futtathatók legyenek. A Azure Migrate a következő operációs rendszerek esetében automatikusan végrehajtja ezeket a módosításokat:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> -CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8<br/><br/> Más operációs rendszerek esetében manuálisan kell elvégezni a módosításokat az áttelepítés előtt. A kapcsolódó cikkek erre vonatkozó utasításokat tartalmaznak. |
 | **Linux rendszerű rendszerindítás**                 | Ha a/boot dedikált partíción van, akkor az operációsrendszer-lemezen kell lennie, és nem szabad több lemezre osztania.<br/> Ha a/boot a gyökér (/) partíció része, akkor a "/" partíciónak az operációsrendszer-lemezen kell lennie, és nem szabad más lemezekre kiterjednie. |
-| **UEFI-rendszerindítás**                  | Az UEFI-rendszerindítással rendelkező virtuális gépek migrálása nem támogatott. |
-| **Titkosított lemezek/kötetek**    | A titkosított lemezekkel/kötetekkel rendelkező virtuális gépek migrálása nem támogatott. |
-| **RDM/továbbító lemezek**      | Ha a virtuális gépek RDM vagy továbbító lemezzel rendelkeznek, ezek a lemezek nem replikálódnak az Azure-ba. |
+| **UEFI-rendszerindítás**                  | Az UEFI-rendszerindítással rendelkező virtuális gépek migrálása nem támogatott.  |
+| **Lemez mérete**                  | 2 TB az operációsrendszer-lemez, 4 TB az adatlemezek számára.
+| **Lemez száma** | Legfeljebb 16 lemez virtuális gépenként.
+| **Titkosított lemezek/kötetek**    | Migrálás esetén nem támogatott. |
+| **RDM/továbbító lemezek**      | Migrálás esetén nem támogatott. |
+| **Megosztott lemez** | A megosztott lemezeket használó virtuális gépek migrálása nem támogatott.
 | **NFS**                        | A virtuális gépeken kötetként csatlakoztatott NFS-kötetek nem lesznek replikálva. |
+| **ISCSI**                      | Az iSCSI-tárolókkal rendelkező virtuális gépek migrálása nem támogatott.
 | **Céllemez**                | Csak felügyelt lemezekkel rendelkező Azure-beli virtuális gépekre lehet migrálni. |
+| **IPv6** | Nem támogatott.
+| **Hálózati adapterek összevonása** | Nem támogatott.
+| **Azure Site Recovery** | Ha a virtuális gép Azure Site Recovery használatával való replikálásra engedélyezve van, nem lehet replikálni Azure Migrate-kiszolgáló áttelepítésével.
+
 
 
 
@@ -171,11 +174,6 @@ A következő táblázat összefoglalja a Hyper-V-gazdagépeken és virtuális g
 Hyper-V-gazdagépek/virtuális gépek | Kimenő kapcsolatok a 443-es HTTPS-porton, hogy a virtuális gép replikációs szolgáltatásait Azure Migrate küldje el.
 
 
-## <a name="migration-vm-disk-support"></a>Migrálás – VM-lemezek támogatása
-
-**Támogatás** | **Részletek**
---- | ---
-Áttelepített lemezek | A virtuális gépeket csak felügyelt lemezekre lehet áttelepíteni (standard HHD, prémium SSD) az Azure-ban.
 
 
 ## <a name="next-steps"></a>További lépések

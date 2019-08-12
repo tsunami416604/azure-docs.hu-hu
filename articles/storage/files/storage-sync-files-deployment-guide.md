@@ -1,19 +1,18 @@
 ---
 title: Azure File Sync üzembe helyezése | Microsoft Docs
 description: Megtudhatja, hogyan helyezheti üzembe a Azure File Synct az elejétől a végéig.
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6a41830dcb7f681713db7a7802ab430581dc844f
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
-ms.translationtype: MT
+ms.openlocfilehash: 7b9c9a7639ed7a9938052197758e5796fb9fc879
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371147"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699421"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Azure File Sync átalakítja a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárba. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -25,7 +24,7 @@ Javasoljuk, hogy olvassa el a [Azure Files központi telepítésének](storage-f
     - A [régió rendelkezésre állása](storage-sync-files-planning.md#region-availability) Azure file Sync számára.
     - [Hozzon létre egy fájlmegosztást](storage-how-to-create-file-share.md) a fájlmegosztás létrehozásának lépésenkénti leírásához.
 * A Windows Server vagy a Windows Server-fürt legalább egy támogatott példánya Azure File Sync-vel való szinkronizálásra. A Windows Server támogatott verzióival kapcsolatos további információkért lásd: együttműködés [a Windows Serverrel](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability).
-* Az az PowerShell-modul a PowerShell 5,1 vagy a PowerShell 6 + használatával is használható. Használhatja az az PowerShell-modult a Azure File Synchoz bármely támogatott rendszeren, beleértve a nem Windows rendszerű rendszereket is, azonban a kiszolgáló regisztrációs parancsmagját mindig futtatni kell a regisztrálni kívánt Windows Server-példányon (ez közvetlenül vagy a PowerShellen keresztül végezhető el). távoli eljáráshívás). Windows Server 2012 R2 rendszeren ellenőrizheti, hogy legalább a PowerShell 5,1-et futtatja-e. a $PSVersionTable objektum PSVersion tulajdonságának értékét tekinti meg:   \*
+* Az az PowerShell-modul a PowerShell 5,1 vagy a PowerShell 6 + használatával is használható. Használhatja az az PowerShell-modult a Azure File Synchoz bármely támogatott rendszeren, beleértve a nem Windows rendszerű rendszereket is, azonban a kiszolgáló regisztrációs parancsmagját mindig futtatni kell a regisztrálni kívánt Windows Server-példányon (ez közvetlenül vagy a PowerShellen keresztül végezhető el). távoli eljáráshívás). Windows Server 2012 R2 rendszeren ellenőrizheti, hogy legalább a PowerShell 5,1-et futtatja-e. a $PSVersionTable objektum PSVersion tulajdonságának értékét tekinti meg: \*
 
     ```powershell
     $PSVersionTable.PSVersion

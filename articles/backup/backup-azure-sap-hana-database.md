@@ -1,81 +1,80 @@
 ---
-title: Az Azure-bA az Azure Backup egy SAP HANA-adatbázis biztonsági mentése |} A Microsoft Docs
-description: Ez az oktatóanyag azt ismerteti, hogyan egy SAP HANA-adatbázis biztonsági mentése az Azure-bA az Azure Backup szolgáltatással.
-services: backup
-author: rayne-wiselman
+title: SAP HANA-adatbázis biztonsági mentése az Azure-ba Azure Backup használatával | Microsoft Docs
+description: Ez az oktatóanyag azt ismerteti, hogyan lehet biztonsági másolatot készíteni egy SAP HANA-adatbázisról az Azure-ba a Azure Backup szolgáltatással.
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.author: raynew
-ms.openlocfilehash: 1c5c38e9af58aa9468fb0e22491327d3a35f0dda
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
-ms.translationtype: MT
+ms.author: dacurwin
+ms.openlocfilehash: f88555c6a8b3d4122a1a8ef82f58788a46dd5226
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67656663"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639839"
 ---
-# <a name="back-up-an-sap-hana-database"></a>Az SAP HANA-adatbázis biztonsági mentése
+# <a name="back-up-an-sap-hana-database"></a>SAP HANA adatbázis biztonsági mentése
 
-[Az Azure Backup](backup-overview.md) támogatja a biztonsági mentés SAP HANA-adatbázisok az Azure-bA.
+A [Azure Backup](backup-overview.md) támogatja SAP HANA adatbázisok biztonsági mentését az Azure-ba.
 
 > [!NOTE]
-> Ez a funkció jelenleg nyilvános előzetes verzióban érhető el. Jelenleg nem éles üzemre, és nem rendelkezik a garantált szolgáltatási szerződést. 
+> Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el. Jelenleg nem áll készen a gyártásra, és nem rendelkezik garantált SLA-val. 
 
-## <a name="scenario-support"></a>A forgatókönyv támogatása
+## <a name="scenario-support"></a>Forgatókönyvek támogatása
 
 **Támogatás** | **Részletek**
 --- | ---
-**Támogatott helyeken** | Délkelet-Ausztrália, Kelet-Ausztrália <br> Dél-Brazília <br> Kanada közép-India, kelet-Kanada <br> Délkelet-Ázsia, Kelet-Ázsia <br> USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA nyugati középső RÉGIÓJA, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA északi középső RÉGIÓJA, USA középső RÉGIÓJA, USA déli középső RÉGIÓJA<br> India középső régiója, Dél-India <br> Kelet-Japán, Nyugat-Japán<br> Korea középső régiója, Korea déli régiója <br> Észak-Európa, Nyugat-Európa <br> Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója
-**Virtuális gépek támogatott operációs rendszerek** | SLES 12 SP2 és SP3 verziót kell használnia.
-**HANA támogatott verziói** | A HANA SDC 1.x, on HANA MDC 2.x < = SPS03
+**Támogatott térségek** | Kelet-Ausztrália, Délkelet-Ausztrália <br> Dél-Brazília <br> Közép-Kanada, Kelet-Kanada <br> Dél-Kelet-Ázsia, Kelet-Ázsia <br> USA keleti régiója, USA 2. keleti régiója, USA nyugati középső régiója, USA nyugati régiója, USA 2. nyugati régiója, USA északi középső régiója, USA középső régiója<br> Közép-India, Dél-India <br> Kelet-Japán, Nyugat-Japán<br> Korea középső régiója, Korea déli régiója <br> Észak-Európa, Nyugat-Európa <br> Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója
+**Támogatott VM-operációs rendszerek** | SLES: 12 SP2 vagy SP3.
+**Támogatott HANA-verziók** | SDC on HANA 1. x, MDC on HANA 2. x < = SPS03
 
 ### <a name="current-limitations"></a>Aktuális korlátozások
 
-- Azure virtuális gépeken futó SAP HANA-adatbázisok csak készíteni.
-- SAP HANA biztonsági mentés csak az Azure Portalon lehet beállítani. A szolgáltatás nem állítható be a PowerShell, CLI vagy a REST API-t.
-- Vertikális Felskálázás módban lévő adatbázisok csak készíteni.
-- Biztonsági másolatot készíthet az adatbázisnaplók 15 percenként. Naplóalapú biztonsági mentések csak a flow, az adatbázis sikeres teljes biztonsági mentés befejezése után kezdődik.
-- Teljes és különbségi biztonsági másolatok is igénybe vehet. A növekményes biztonsági mentés jelenleg nem támogatott.
-- A biztonsági mentési szabályzat nem módosíthatók, az SAP HANA biztonsági mentésekhez való alkalmazása után. Ha szeretne biztonsági másolatot készíteni, eltérő beállításokkal, hozzon létre egy új szabályzatot, vagy egy másik szabályzat hozzárendelése.
-  - Hozzon létre egy új szabályzatot, a tárolóban kattintson **házirendek** > **biztonsági mentési házirendek** >  **+ Hozzáadás** > **az SAP HANA Az Azure virtuális gép**, és adja meg a házirend-beállításokat.
-  - A jelenlegi házirend nevére kattintva szabályzatot rendel egy másik, az adatbázis futó virtuális gép tulajdonságait. Ezután a a **biztonsági mentési szabályzat** lapon kiválaszthatja, hogy egy másik szabályzatot a biztonsági mentés használandó.
+- Csak Azure-beli virtuális gépeken futó SAP HANA-adatbázisok biztonsági mentését végezheti el.
+- A Azure Portalban csak SAP HANA biztonsági mentést lehet konfigurálni. A szolgáltatás nem konfigurálható a PowerShell, a CLI vagy a REST API használatával.
+- Az adatbázisok biztonsági mentését csak Felskálázási módban végezheti el.
+- Az adatbázis-naplók biztonsági mentését 15 percenként végezheti el. A naplók biztonsági mentései csak az adatbázis sikeres teljes biztonsági mentésének befejeződése után kezdődnek.
+- Teljes és különbözeti biztonsági másolatokat készíthet. A növekményes biztonsági mentés jelenleg nem támogatott.
+- A biztonsági mentési szabályzatot a SAP HANA biztonsági mentések alkalmazása után nem módosíthatja. Ha más beállításokkal szeretne biztonsági mentést készíteni, hozzon létre egy új szabályzatot, vagy rendeljen hozzá egy másik szabályzatot.
+  - Új szabályzat létrehozásához a tárolóban kattintson a **házirendek** > **biztonsági mentési házirendek** >  **+ SAP HANA hozzáadása** > **Az Azure-beli virtuális gépen**lehetőségre, és adja meg a házirend-beállításokat.
+  - Egy másik szabályzat hozzárendeléséhez az adatbázist futtató virtuális gép tulajdonságainál kattintson a jelenlegi házirend nevére. Ezután a **biztonsági mentési szabályzat** lapon kiválaszthat egy másik, a biztonsági mentéshez használni kívánt szabályzatot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Győződjön meg arról, hogy a biztonsági mentések konfigurálása előtt hajtsa végre a következőket:
+A biztonsági mentések konfigurálása előtt győződjön meg arról, hogy a következőket végzi el:
 
-1. A virtuális gépen futó SAP HANA-adatbázis, telepítse a hivatalos Microsoft [.NET Core Runtime 2.1](https://dotnet.microsoft.com/download/linux-package-manager/sles/runtime-current) csomagot. Vegye figyelembe:
-    - Csak akkor kell a **dotnet-futtatókörnyezet – 2.1** csomagot. Nem kell **aspnetcore-futtatókörnyezet – 2.1**.
-    - Ha a virtuális gép nem rendelkezik az oldal az internet eléréséhez, tükrözik, vagy adjon meg egy offline gyorsítótár dotnet-futtatókörnyezet – 2.1-es (és minden függő rpm) a Microsoft csomagból hírcsatorna megadott.
-    - Csomag telepítése során előfordulhat, hogy megkérdezi, hogy egy beállítás megadásához. Ha igen, adja meg a **megoldás 2**.
+1. A SAP HANA adatbázist futtató virtuális gépen telepítse a Microsoft [.net Core Runtime 2,1](https://dotnet.microsoft.com/download/linux-package-manager/sles/runtime-current) csomagot. Vegye figyelembe:
+    - Csak a **DotNet-Runtime-2,1** csomagra van szükség. Nincs szüksége **aspnetcore-Runtime-2,1-** re.
+    - Ha a virtuális gép nem rendelkezik internet-hozzáféréssel, tükrözött vagy offline gyorsítótárat biztosít a DotNet-Runtime-2,1 (és az összes függő RPMs) számára a lapon megadott Microsoft-csomag hírcsatornában.
+    - A csomag telepítése során előfordulhat, hogy meg kell adnia egy beállítást. Ha igen, a **2. megoldás**megadásával.
 
-        ![Csomag telepítési lehetőség](./media/backup-azure-sap-hana-database/hana-package.png)
+        ![Csomag telepítési beállítása](./media/backup-azure-sap-hana-database/hana-package.png)
 
-2. A virtuális gép telepítése és engedélyezése ODBC illesztőprogram-csomagot a hivatalos SLES csomag/adathordozó használatával a zypper használatával, az alábbiak szerint:
+2. A virtuális gépen telepítse és engedélyezze az ODBC-illesztőprogram csomagjait a hivatalos SLES-csomagból/adathordozóról a Zypper használatával, az alábbiak szerint:
 
     ```unix
     sudo zypper update
     sudo zypper install unixODBC
     ```
 
-3. Engedélyezi a csatlakozást a virtuális gépről az internethez, hogy elérheti az Azure, az eljárásban leírt módon [alább](#set-up-network-connectivity).
+3. Az [alábbi](#set-up-network-connectivity)eljárásban leírtak alapján engedélyezze a kapcsolatot a virtuális gépről az internetre, hogy az elérhető legyen az Azure-ban.
 
-4. Az előzetes regisztráció szkriptet futtathatja a virtuális gép HANA helyéül legfelső szintű felhasználóként. A parancsprogram [a portálon](#discover-the-databases) a flow-ban, és állítsa be a szükséges a [jobb gombbal az engedélyek](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions).
+4. Futtassa az előzetes regisztrációs parancsfájlt a virtuális gépen, ahol a HANA a root felhasználóként van telepítve. A parancsfájl a folyamat [portálján](#discover-the-databases) található, és a [megfelelő engedélyek](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions)beállításához szükséges.
 
-### <a name="set-up-network-connectivity"></a>Állítsa be a hálózati kapcsolat
+### <a name="set-up-network-connectivity"></a>Hálózati kapcsolat beállítása
 
-Minden műveletre a SAP HANA virtuális gép kapcsolatot kell létesítenie az Azure nyilvános IP-címeket. Virtuális gép operations (adatbázis felderítése, biztonsági mentések konfigurálása, a biztonsági mentések ütemezéséhez, helyreállítási pontok visszaállítása és így tovább) kapcsolat nélkül nem működnek. Kapcsolat létrehozása az Azure-adatközpont IP-címtartományok hozzáférést: 
+Az SAP HANA virtuális gépnek minden művelethez kapcsolódnia kell az Azure nyilvános IP-címeihez. A virtuális gépek műveletei (adatbázis-felderítés, biztonsági másolatok konfigurálása, biztonsági másolatok ütemezése, helyreállítási pontok visszaállítása stb.) nem működhetnek kapcsolat nélkül. Kapcsolat létesítése az Azure-adatközpont IP-tartományokhoz való hozzáférés engedélyezésével: 
 
-- Letöltheti a [IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653) az Azure-adatközpontokhoz, és engedje, hogy ezen IP-címek elérését.
-- Ha a hálózati biztonsági csoportok (NSG-k) használata esetén használhatja az AzureCloud [szolgáltatáscímke](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) , hogy minden Azure nyilvános IP-címek. Használhatja a [Set-AzureNetworkSecurityRule parancsmag](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurenetworksecurityrule?view=azuresmps-4.0.0) NSG-szabályok módosítása.
+- Letöltheti az Azure-adatközpontok [IP-](https://www.microsoft.com/download/details.aspx?id=41653) címtartományt, majd engedélyezheti a hozzáférést ezekhez az IP-címekhez.
+- Hálózati biztonsági csoportok (NSG) használata esetén a AzureCloud [szolgáltatás címkével](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) engedélyezheti az összes Azure-beli nyilvános IP-címet. A NSG szabályok módosításához a [set-AzureNetworkSecurityRule parancsmag](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurenetworksecurityrule?view=azuresmps-4.0.0) használható.
 
-## <a name="onboard-to-the-public-preview"></a>A nyilvános előzetes előkészítése
+## <a name="onboard-to-the-public-preview"></a>Bevezetés a nyilvános előzetes verzióba
 
-Megoldás előkészítése a nyilvános előzetes verzióban az alábbiak szerint:
+A nyilvános előzetes verzióra az alábbiak szerint kell bejelentkezni:
 
-- A portálon regisztrálja meg előfizetési Azonosítóját a Recovery Services-szolgáltató által [Ez a cikk a következő](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal). 
-- PowerShell esetén futtassa ezt a parancsmagot. Mint "Regisztrálva" teljesítéséhez.
+- A portálon regisztrálja előfizetési AZONOSÍTÓját a Recovery Services szolgáltatónak a [jelen cikkben](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal)leírtak szerint. 
+- A PowerShell esetében futtassa ezt a parancsmagot. A műveletnek "regisztrálva" kell lennie.
 
     ```powershell
     PS C:>  Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
@@ -87,104 +86,104 @@ Megoldás előkészítése a nyilvános előzetes verzióban az alábbiak szerin
 
 ## <a name="discover-the-databases"></a>Az adatbázisok felderítése
 
-1. A tárolóban lévő **első lépések**, kattintson a **biztonsági mentés**. A **a számítási feladat futtató?** válassza **SAP HANA Azure-beli virtuális gépen**.
-2. Kattintson a **felderítés indítása**. Ez elindítja a a tárolórégióban nem védett Linuxos virtuális gépek felderítése.
+1. A tárolóban **első lépések**kattintson a **biztonsági mentés**elemre. A **hol fut a**számítási feladat? területen válassza **a SAP HANA lehetőséget az Azure-beli virtuális gépen**.
+2. Kattintson a **felderítés indítása**gombra. Ez elindítja a nem védett Linux rendszerű virtuális gépek felderítését a tároló régiójában.
 
-   - Nevére és erőforráscsoportjára nem védett virtuális gépek megjelennek-e a portálon felsorolt felderítési, után.
-   - Ha egy virtuális gép nem találja a várt módon, ellenőrizze-e már biztonsági mentését egy tárolóban.
-   - Több virtuális gép is rendelkezhet ugyanazzal a névvel, de különböző erőforráscsoportokban tartoznak.
+   - A felderítést követően a nem védett virtuális gépek a portálon jelennek meg a név és az erőforráscsoport alapján.
+   - Ha a virtuális gép nem a várt módon van felsorolva, ellenőrizze, hogy már van-e biztonsági másolat egy tárolóban.
+   - Több virtuális gépnek is ugyanaz a neve, de különböző erőforráscsoportok tartoznak hozzájuk.
 
-3. A **válassza ki a virtuális gépek**, a hivatkozásra kattintva töltse le a parancsfájlt, amely engedélyeket biztosít az SAP HANA virtuális gépei az adatbázis eléréséhez az Azure Backup szolgáltatással
-4. Futtassa a szkriptet az egyes virtuális Gépeken, amelyet szeretne biztonsági másolatot készíteni az SAP HANA-adatbázisok üzemeltetéséhez.
-5. A virtuális gépeken, az a szkript futtatása után **válassza ki a virtuális gépek**, válassza ki a virtuális gépeket. Kattintson a **adatbázisok felderítése**.
-6. Az Azure Backup a virtuális gép összes SAP HANA-adatbázis deríti fel. Felderítés alatt az Azure Backup a virtuális Gépet regisztrálja a tárolóban, és a virtuális gép egy kiterjesztést telepít. Nincs ügynök telepítve van az adatbázisban.
+3. A **Virtual Machines kiválasztása lapon**kattintson a hivatkozásra azon parancsfájl letöltéséhez, amely a Azure Backup szolgáltatás számára engedélyeket biztosít a SAP HANA virtuális gépek adatbázis-felderítéshez való hozzáféréséhez.
+4. Futtassa a szkriptet minden olyan virtuális gépen, amely SAP HANA-adatbázisokat üzemeltet, amelyekről biztonsági másolatot szeretne készíteni.
+5. Miután futtatta a szkriptet a virtuális gépeken, a **Virtual Machines kiválasztása**területen válassza ki a virtuális gépeket. Ezután kattintson az **adatbázisok felderítése**elemre.
+6. Azure Backup a virtuális gépen lévő összes SAP HANA adatbázist felfedi. A felderítés során Azure Backup regisztrálja a virtuális gépet a tárolóban, és telepít egy bővítményt a virtuális gépre. Nincs ügynök telepítve az adatbázison.
 
-    ![SAP HANA-adatbázisok felderítése](./media/backup-azure-sap-hana-database/hana-discover.png)
+    ![SAP HANA adatbázisok felderítése](./media/backup-azure-sap-hana-database/hana-discover.png)
 
 ## <a name="configure-backup"></a>Biztonsági mentés konfigurálása  
 
-Most már engedélyezheti a biztonsági mentés.
+Most engedélyezze a biztonsági mentést.
 
-1. 2\. lépésben kattintson **biztonsági mentés konfigurálása**.
-2. A **készíteni kívánt elemek kiválasztása**, válassza ki a védeni kívánt összes adatbázis > **OK**.
-3. A **biztonsági mentési szabályzat** > **biztonsági mentési házirend kiválasztása**, hozzon létre egy új biztonsági mentési szabályzatot, az adatbázisok, az alábbi utasítások szerint.
-4. A szabályzat létrehozását követően a **biztonsági mentési** menüben kattintson a **biztonsági mentés engedélyezése**.
-5. A biztonsági mentési konfiguráció állapotának nyomon követéséhez a **értesítések** területén a portálon.
+1. A 2. lépésben kattintson a **biztonsági mentés konfigurálása**elemre.
+2. Az **elemek kijelölése biztonsági mentéshez**területen jelölje ki az összes védelemmel ellátni kívánt adatbázist > **az OK gombra**.
+3. A **biztonsági mentési házirendben** > **válassza a biztonsági**mentési házirend elemet, hozzon létre egy új biztonsági mentési szabályzatot az adatbázisokhoz az alábbi utasítások szerint.
+4. A szabályzat létrehozása után a **biztonsági mentés** menüben kattintson a **biztonsági mentés engedélyezése**elemre.
+5. A biztonsági mentési konfiguráció előrehaladásának nyomon követése a portál **értesítések** területén.
 
-### <a name="create-a-backup-policy"></a>A biztonsági mentési szabályzat létrehozása
+### <a name="create-a-backup-policy"></a>Biztonsági mentési szabályzat létrehozása
 
-Biztonsági mentési szabályzat határozza meg, amikor a biztonsági másolatokat készít, és mennyi ideig tartott használ.
+A biztonsági mentési szabályzat meghatározza a biztonsági másolatok készítésének idejét, valamint azt, hogy mennyi ideig őrzi meg a rendszer.
 
-- Egy szabályzat jön létre a tároló szintjén.
-- Több tárolóhoz is használhat az azonos mentési házirenddel, de a biztonsági mentési házirendet kell alkalmaznia az egyes tárolókban.
+- A rendszer a tároló szintjén hozza létre a szabályzatot.
+- Több tároló is használhatja ugyanazt a biztonsági mentési szabályzatot, de a biztonsági mentési szabályzatot minden egyes tárba alkalmaznia kell.
 
-Adja meg a szabályzat beállításai a következőképpen:
+A házirend-beállításokat a következőképpen adhatja meg:
 
-1. A **házirendnév**, adja meg az új házirend nevét.
-2. A **teljes biztonsági mentés házirend**, jelölje be a **biztonsági mentés gyakorisága**, válassza a **napi** vagy **heti**.
-   - **Napi**: Válassza ki az óra és az időzóna, amelyben a biztonsági mentési feladat kezdődik.
+1. A **Házirend neve**mezőben adja meg az új szabályzat nevét.
+2. A **teljes biztonsági mentési szabályzatban**válassza ki a **biztonsági mentés gyakoriságát**, és válassza a **naponta** vagy **hetente**lehetőséget.
+   - **Napi**: Válassza ki azt az órát és időzónát, amelyben a biztonsági mentési feladatok elindulnak.
    
-       - Egy teljes biztonsági mentést kell futtatni. Nem kapcsolhatja ki ezt a beállítást.
-       - Kattintson a **teljes biztonsági mentés** a szabályzat megtekintéséhez.
-       - Különbségi biztonsági mentés napi teljes biztonsági mentések esetén nem hozható létre.
+       - Teljes biztonsági mentést kell futtatnia. Ezt a beállítást nem lehet kikapcsolni.
+       - A szabályzat megtekintéséhez kattintson a **teljes biztonsági mentés** elemre.
+       - A napi teljes biztonsági mentésekhez nem hozhat létre különbözeti biztonsági másolatokat.
        
-   - **Heti**: Válassza ki a nap, hét, óra, és az időzóna, amelyben a biztonsági mentési feladat futtatása.
-3. A **megőrzési**, a teljes biztonsági mentés megőrzési beállításainak konfigurálása.
-    - Alapértelmezés szerint minden lehetőség ki van jelölve. Törölje a megőrzési tartomány korlátait nem kívánja használni, és állítsa be azokat, meg kell keresnie.
-    - Bármilyen típusú biztonsági mentés (teljes és különbségi/log) a minimális megőrzési ideje hét nap.
-    - Helyreállítási pontok megőrzésének a megőrzési tartomány alapján címkével vannak ellátva. Ha például napi teljes biztonsági mentést választja, csak egy teljes biztonsági mentés naponta aktiválódik.
-    - A biztonsági mentés egy adott nap címkézett és a megőrzött és alapján a hetente megőrzési beállítás.
-    - A havi és éves megőrzési időtartamok viselkedése hasonló módon.
+   - **Heti**: Válassza ki a hét azon napját, órát és időzónát, amelyben a biztonsági mentési feladatot futtatja.
+3. A **megőrzési tartomány**területen konfigurálja a teljes biztonsági mentés megőrzési beállításait.
+    - Alapértelmezés szerint minden beállítás ki van választva. Törölje az összes olyan megőrzési időtartamra vonatkozó korlátozást, amelyet nem kíván használni, és állítsa be azokat.
+    - A minimális megőrzési idő bármilyen típusú biztonsági mentés esetén (teljes/különbözeti/napló) hét nap.
+    - A helyreállítási pontok megőrzési időtartam alapján vannak címkézve. Ha például napi teljes biztonsági mentést választ, a naponta csak egy teljes biztonsági mentést indít el.
+    - Egy adott nap biztonsági másolata a heti megőrzési időtartam és a beállítás alapján van megcímkézve és megtartva.
+    - A havi és az éves adatmegőrzési tartomány hasonló módon viselkedik.
 
-4. Az a **teljes biztonsági mentés házirend** menüben kattintson a **OK** , fogadja el a beállításokat.
-5. Válassza ki **különbségi biztonsági másolat** különbözeti házirend hozzáadása.
-6. A **különbözeti biztonsági mentési szabályzat**válassza **engedélyezése** a gyakoriság és megőrzési vezérlőelemek megnyitásához.
-    - Legfeljebb napi egy különbségi biztonsági mentés is indíthat.
-    - Különbségi biztonsági másolatok megőrzésének legfeljebb 180 napra. Ha hosszabb adatmegőrzés megadásához, teljes biztonsági mentést kell használnia.
+4. A **teljes biztonsági mentési szabályzat** menüben kattintson az **OK** gombra a beállítások elfogadásához.
+5. Válasszon különbözeti **biztonsági másolatot** a különbözeti szabályzat hozzáadásához.
+6. A **különbözeti biztonsági mentési házirendben**válassza az **Engedélyezés** lehetőséget a gyakoriság és a megőrzési vezérlők megnyitásához.
+    - A legtöbb esetben naponta egy különbözeti biztonsági mentést indíthat.
+    - A különbözeti biztonsági mentések legfeljebb 180 napig tárolhatók. Ha nagyobb adatmegőrzésre van szüksége, teljes biztonsági mentést kell használnia.
 
     > [!NOTE]
     > A növekményes biztonsági mentések jelenleg nem támogatottak. 
 
-7. Kattintson a **OK** mentse a szabályzatot, és térjen vissza a fő **biztonsági mentési szabályzat** menü.
-8. Válassza ki **napló biztonsági mentési** tranzakciós napló biztonsági mentési házirend hozzáadása
-    - A **Naplóalapú biztonsági mentés**válassza **engedélyezése**.
-    - Állítsa be a gyakoriság és megőrzési szabályozza.
+7. A házirend mentéséhez kattintson az **OK** gombra, és térjen vissza a **biztonsági mentési házirend** fő menüjére.
+8. A tranzakciós napló biztonsági mentési szabályzatának hozzáadásához válassza a **napló biztonsági mentése** lehetőséget,
+    - A **napló biztonsági mentése**területen válassza az **Engedélyezés**lehetőséget.
+    - Állítsa be a gyakoriságot és a megőrzési vezérlőket.
 
     > [!NOTE]
-    > Naplóalapú biztonsági mentések csak a folyamat sikeres teljes biztonsági mentés befejezése után kezdődik.
+    > A biztonsági másolatok naplózása csak a sikeres teljes biztonsági mentés befejezése után kezdi a folyamatot.
 
-9. Kattintson a **OK** mentse a szabályzatot, és térjen vissza a fő **biztonsági mentési szabályzat** menü.
-10. Miután elvégezte a biztonsági mentési házirend meghatározása, kattintson a **OK**.
-
-
-## <a name="run-an-on-demand-backup"></a>Egy igény szerinti biztonsági mentés futtatása
-
-Biztonsági mentések futtatása a házirend-ütemezés szerint. A biztonsági mentési igény szerinti módon futtathatja:
+9. A házirend mentéséhez kattintson az **OK** gombra, és térjen vissza a **biztonsági mentési házirend** fő menüjére.
+10. Miután befejezte a biztonsági mentési szabályzat definiálását, kattintson **az OK**gombra.
 
 
-1. A tároló menüjében kattintson **biztonsági mentési elemek**.
-2. A **biztonsági másolati elemek**, válassza ki a virtuális gép futó SAP HANA-adatbázis, és kattintson **biztonsági mentés**.
-3. A **biztonsági mentés**, használja a naptárvezérlőt annak, hogy megőrződjön-e a helyreállítási pont kiválasztására. Ezután kattintson az **OK** gombra.
-4. A portál feladatértesítések figyelésére. Figyelheti a feladat előrehaladását a tároló irányítópultján > **biztonsági mentési feladatok** > folyamatban van. Az adatbázis méretétől függően a kezdeti biztonsági mentés létrehozása eltarthat egy ideig.
+## <a name="run-an-on-demand-backup"></a>Igény szerinti biztonsági mentés futtatása
 
-## <a name="run-sap-hana-studio-backup-on-a-database-with-azure-backup-enabled"></a>Az SAP HANA Studio biztonsági mentés futtatása az adatbázisok az Azure Backup engedélyezve
+A biztonsági mentések a szabályzat ütemezésével összhangban futnak. Az igény szerinti biztonsági mentést az alábbi módon futtathatja:
 
-Ha azt szeretné, hogy helyi (HANA Studio használatával) biztonsági másolatot készít egy adatbázis, amely másolat készül az Azure Backup, tegye a következőket:
 
-1. Várja meg minden olyan teljes vagy a Naplók biztonsági mentését az adatbázis befejezéséhez. Az SAP HANA Studio állapotának ellenőrzéséhez.
-2. Naplóalapú biztonsági mentések tiltása, és állítsa be a biztonságimásolat-katalógus a fájlrendszerre vonatkozó adatbázis.
-3. Ehhez kattintson duplán a **systemdb** > **konfigurációs** > **adatbázis választása** > **szűrőt (naplózás)** .
-4. Állítsa be **enable_auto_log_backup** való **nem**.
-5. Állítsa be **log_backup_using_backint** való **hamis**.
-6. Egy ad-hoc teljes biztonsági mentés, az adatbázis.
-7. Várjon, amíg a teljes biztonsági mentés és a katalógus biztonsági mentés befejeződik.
-8. Visszaállítás az előző beállítások azokra az Azure-hoz:
-    - Állítsa be **enable_auto_log_backup** való **Igen**.
-    - Állítsa be **log_backup_using_backint** való **igaz**.
+1. A tároló menüjében kattintson a **biztonsági másolati elemek elemre**.
+2. A **biztonsági másolati elemek**területen válassza ki a SAP HANA adatbázist futtató virtuális gépet, majd kattintson a **biztonsági mentés**elemre.
+3. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ezután kattintson az **OK** gombra.
+4. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > a **biztonsági mentési feladatok** > folyamatban van. Az adatbázis méretétől függően a kezdeti biztonsági mentés hosszabb időt is igénybe vehet.
+
+## <a name="run-sap-hana-studio-backup-on-a-database-with-azure-backup-enabled"></a>SAP HANA Studio Backup futtatása Azure Backup engedélyezve lévő adatbázison
+
+Ha egy olyan adatbázis helyi biztonsági másolatát kívánja használni, amelyről biztonsági mentés készül Azure Backupsal, tegye a következőket:
+
+1. Várjon, amíg befejeződik az adatbázis teljes vagy naplózott biztonsági mentése. Győződjön meg arról, hogy az állapota SAP HANA Studióban.
+2. Tiltsa le a naplók biztonsági mentését, és állítsa a biztonsági mentési katalógust a fájlrendszerre a megfelelő adatbázishoz.
+3. Ehhez kattintson duplán a **systemdb** > -**konfiguráció** > elemre, majd**válassza az adatbázis** >  **-szűrő (napló)** lehetőséget.
+4. A **enable_auto_log_backup** beállítása **nem**értékre.
+5. Állítsa a log_backup_using_backint **hamis**értékre.
+6. Készítsen ad hoc teljes biztonsági mentést az adatbázisról.
+7. Várjon, amíg befejeződik a teljes biztonsági mentés és a katalógus biztonsági mentése.
+8. A korábbi beállítások visszaállítása az Azure-ba:
+    - A **enable_auto_log_backup** beállítása **Igen**.
+    - Állítsa a log_backup_using_backint **igaz**értékre.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-[Ismerje meg](backup-azure-sap-hana-database-troubleshoot.md) közös kapcsolatos hibák elhárítása Azure virtuális gépeken futó SAP HANA biztonsági mentés használata során.
-[Ismerje meg](backup-azure-arm-vms-prepare.md) Azure virtuális gépek biztonsági mentésének.
+[](backup-azure-sap-hana-database-troubleshoot.md) A SAP HANA biztonsági mentés Azure-beli virtuális gépeken való használata során megtudhatja, hogyan lehet gyakori hibákat elhárítani.
+[Ismerje meg az](backup-azure-arm-vms-prepare.md) Azure-beli virtuális gépek biztonsági mentését.

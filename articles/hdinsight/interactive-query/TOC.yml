@@ -19,20 +19,6 @@
       href: ../hdinsight-apps-install-applications.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
     - name: Kapacitástervezés
       href: ../hdinsight-capacity-planning.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
-    - name: Hibaelhárítás
-      items:
-        - name: A szemétgyűjtés többletterhelési korlátja túllépve
-          href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
-        - name: Az Apache Ambari Tez View lassan töltődik be
-          href: ./interactive-query-troubleshoot-tez-view-slow.md
-        - name: Az Apache Hive-nézetben nem jelenik meg egy hibaüzenet
-          href: ./interactive-query-troubleshoot-error-message-hive-view.md
-        - name: Elérhetetlen Apache Hive-nézet
-          href: ./interactive-query-troubleshoot-inaccessible-hive-view.md
-        - name: ZooKeeperHiveClientException – HiveServer2-konfigurációk
-          href: ./interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
-        - name: Apache Hive LLAP-lekérdezések teljesítménye
-          href: ./interactive-query-troubleshoot-query-performance.md
 - name: Útmutató
   items:
     - name: Hive számítási feladatok migrálása HDInsight 4.0-be
@@ -204,10 +190,31 @@
           href: ../hdinsight-os-patching.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
     - name: Hibaelhárítás
       href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
-      maintainContext: true
       items:
+        - name: Az Apache Hive-nézet túllépi az időkorlátot
+          href: ./interactive-query-troubleshoot-view-time-out.md
+        - name: Engedéllyel kapcsolatos hiba a tábla létrehozásakor
+          href: ./interactive-query-troubleshoot-permission-error-create-table.md
+        - name: A szemétgyűjtés többletterhelési korlátja túllépve
+          href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: Az Apache Ambari Tez View lassan töltődik be
+          href: ./interactive-query-troubleshoot-tez-view-slow.md
+        - name: Az Apache Hive-nézetben nem jelenik meg egy hibaüzenet
+          href: ./interactive-query-troubleshoot-error-message-hive-view.md
+        - name: Elérhetetlen Apache Hive-nézet
+          href: ./interactive-query-troubleshoot-inaccessible-hive-view.md
+        - name: ZooKeeperHiveClientException – HiveServer2-konfigurációk
+          href: ./interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
+        - name: Apache Hive LLAP-lekérdezések teljesítménye
+          href: ./interactive-query-troubleshoot-query-performance.md
         - name: Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
-          href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
+          href: ../hdinsight-troubleshoot-failed-cluster.md
+        - name: Apache Hadoop HDFS-hibaelhárítás
+          href: ../hdinsight-troubleshoot-hdfs.md
+        - name: Apache HIVE-hibaelhárítás
+          href: ../hdinsight-troubleshoot-hive.md
+        - name: Apache Hadoop YARN-hibaelhárítás
+          href: ../hdinsight-troubleshoot-yarn.md
         - name: Apache Hadoop HDFS-hibaelhárítás
           href: ../hdinsight-troubleshoot-hdfs.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
         - name: Apache HIVE-hibaelhárítás

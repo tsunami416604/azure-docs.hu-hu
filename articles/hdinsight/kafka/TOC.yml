@@ -159,6 +159,8 @@
     - name: Hibaelhárítás
       href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
       items:
+        - name: Nincs elegendő tartalék tartomány
+          href: ./kafka-troubleshoot-insufficient-domains.md
         - name: Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Apache Hadoop HDFS-hibaelhárítás

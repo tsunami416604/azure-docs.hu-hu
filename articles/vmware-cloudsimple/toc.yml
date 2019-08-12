@@ -62,6 +62,8 @@
           items:
             - name: Csomópontok kiépítése
               href: create-nodes.md
+            - name: Csomópontok törlése
+              href: delete-nodes.md
         - name: Magánfelhő-erőforrások kezelése
           items:
             - name: Magánfelhő létrehozása
@@ -76,6 +78,8 @@
               href: azure-subscription-mapping.md
             - name: Jogosultságok eszkalációja
               href: escalate-private-cloud-privileges.md
+            - name: Magánfelhő törlése
+              href: delete-private-cloud.md
         - name: CloudSimple-tevékenység monitorozása
           href: 'https://docs.azure.cloudsimple.com/activity/'
         - name: Magánfelhő-hálózat beállítása

@@ -1,121 +1,121 @@
 ---
-title: Az Azure Analysis Services horizontális felskálázás |} A Microsoft Docs
-description: Horizontális felskálázás az Azure Analysis Services-kiszolgálók replikálása
+title: Kibővíthető Azure Analysis Services | Microsoft Docs
+description: Azure Analysis Services-kiszolgálók replikálása felskálázással
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5524645153db0468076cc9b567965bff79d915cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29188013b75dbefbaf80f3c59360f203ae5b5a82
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65192315"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736755"
 ---
-# <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázás
+# <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázása
 
-Horizontális felskálázás, az ügyfél lekérdezések elosztható több *lekérdezésreplikára* a egy *lekérdezési készlet*, feladatok esetén a válaszidők csökkentése. A lekérdezési készletből feldolgozásához, biztosítva az ügyfél lekérdezések nem negatívan érinti feldolgozási műveletek is egymástól. Horizontális felskálázás az Azure Portalon vagy az Analysis Services REST API használatával konfigurálhatja.
+A kibővített szolgáltatással az ügyfelek lekérdezései több lekérdezési *replika* között terjeszthetők a *lekérdezési készletekben*, így csökkentve a válaszadási időt a nagy lekérdezési számítási feladatok során. Elkülönítheti a feldolgozást a lekérdezési készletből is, így az ügyfelek lekérdezéseit nem érinti hátrányosan a feldolgozási műveletek. A felskálázás konfigurálható Azure Portal vagy a Analysis Services REST API használatával.
 
-Horizontális felskálázás kiszolgálók a standard tarifacsomagban érhető el. Minden egyes lekérdezés replika költsége megegyezik a kiszolgáló számoljuk fel. Minden lekérdezési replikák és a kiszolgáló ugyanabban a régióban jönnek létre. Az a régió, a kiszolgáló konfigurálható lekérdezési replikák száma korlátozott. További tudnivalókért lásd: [rendelkezésre állása régiónként](analysis-services-overview.md#availability-by-region). Horizontális felskálázás nem növeli a kiszolgáló rendelkezésre álló memória mennyisége. Növelje a memória, váltson magasabb szintű csomagra kell. 
+A standard szintű díjszabású kiszolgálók esetében a kibővített szolgáltatás elérhető. A lekérdezési replikák számlázása a kiszolgálóval megegyező sebességgel történik. Minden lekérdezési replika a-kiszolgálóval megegyező régióban jön létre. A beállítható lekérdezési replikák számát a kiszolgáló régiója korlátozza. További információ: [a rendelkezésre állás régiónként](analysis-services-overview.md#availability-by-region). A vertikális felskálázás nem növelheti a kiszolgáló rendelkezésre álló memóriájának mennyiségét. A memória növeléséhez frissítenie kell a csomagot. 
 
-## <a name="why-scale-out"></a>Miért érdemes kibővített?
+## <a name="why-scale-out"></a>Miért érdemes kibővíteni?
 
-Egy tipikus server központi telepítés esetén egy kiszolgáló feldolgozó kiszolgáló és a lekérdezés-kiszolgálóként is szolgál. Ha az ügyfél-lekérdezéseket futtassanak a kiszolgálón modellek száma meghaladja a lekérdezés feldolgozása egységek (QPU) csomagot a server, vagy a modell feldolgozása befejeződik, a lekérdezési számítási feladatok egy időben, a teljesítmény csökkenhet. 
+Egy tipikus kiszolgálói környezetben az egyik kiszolgáló a feldolgozó kiszolgálóként és a lekérdezési kiszolgálóként is szolgál. Ha a kiszolgálón lévő modellektől érkező ügyfél-lekérdezések száma meghaladja a kiszolgáló csomagjának lekérdezés-feldolgozási egységeit (QPU), vagy a modell feldolgozása a nagy lekérdezési számítási feladatokkal megegyező időben történik, a teljesítmény csökkenhet. 
 
-Horizontális felskálázás, létrehozhat egy lekérdezési készlet legfeljebb hét további lekérdezési replika erőforrásaival (nyolc összesen, beleértve a *elsődleges* kiszolgáló). A lekérdezési készlet QPU figyelembevételével kritikus időpontokban replikák száma is méretezheti, és elkülönítheti a lekérdezési készletből egy feldolgozó kiszolgáló bármikor. 
+A kibővített szolgáltatással legfeljebb hét további lekérdezési replika erőforrással hozhat létre egy lekérdezési készletet (ez nyolc összeg, beleértve az *elsődleges* kiszolgálót is). A lekérdezési készletben lévő replikák számát a kritikus időpontokban a QPU igényeinek megfelelően méretezheti, és bármikor elkülönítheti a feldolgozó kiszolgálót a lekérdezési készletből. 
 
-Rendelkezik az adott lekérdezési készletben lekérdezési replikák számától függetlenül tranzakciófeldolgozási nem oszlanak meg lekérdezési replikák között. A feldolgozó kiszolgáló az elsődleges kiszolgáló szolgál. Lekérdezési replikák szolgálják, csak a modell olyan adatbázisai között az elsődleges kiszolgáló és a lekérdezési készlet minden egyes replikát szinkronizálja a lekérdezéseket. 
+A lekérdezési készletekben lévő lekérdezések replikáinak számától függetlenül a feldolgozási feladatok nem oszlanak meg a lekérdezési replikák között. Az elsődleges kiszolgáló a feldolgozó kiszolgálóként szolgál. A lekérdezési replikák csak az elsődleges kiszolgáló és a lekérdezési készlet minden másodpéldánya között szinkronizált modell-adatbázisok lekérdezéseit szolgálják. 
 
-Horizontális felskálázás, ha a lekérdezési készletből növekményes hozzáadni kívánt új lekérdezési replikákra vonatkozó akár öt percet is igénybe vehet. Ha minden új lekérdezési replikák fel, és fut, az új ügyfélkapcsolatokat is a lekérdezési készlet erőforrásainak kell osztani. Meglévő ügyfélkapcsolatok nem változnak, jelenleg csatlakoznak-erőforrásból. Skálázás az, ha bármely meglévő ügyfélkapcsolatok éppen eltávolítják a lekérdezési készlet lekérdezési készlet erőforrás megszűnik. Az ügyfelek egy lekérdezési készlet fennmaradó erőforrást csatlakozhat.
+Horizontális felskálázás esetén akár öt percet is igénybe vehet, amíg az új lekérdezési replikák Növekményesen fel lesznek véve a lekérdezési készletbe. Ha az összes új lekérdezési replikát felhasználják, az új ügyfélkapcsolatok terheléselosztása a lekérdezési készlet erőforrásai között történik. A meglévő ügyfélkapcsolatok nem változnak attól az erőforrástól, amelyhez jelenleg csatlakoznak. A (z) skálázásakor a lekérdezési készlet erőforrásaiból eltávolított meglévő ügyfélkapcsolatok le lesznek szakítva. Az ügyfelek újra csatlakozhatnak egy hátralévő lekérdezési készlet erőforráshoz.
 
 ## <a name="how-it-works"></a>Működés
 
-Horizontális felskálázás az első alkalommal konfigurálásakor vannak-e az elsődleges kiszolgálón modell olyan adatbázisai *automatikusan* egy új lekérdezési készlet új replikák szinkronizálva. Automatikus szinkronizálás csak egyszer kerül sor. Automatikus szinkronizálás során az elsődleges kiszolgáló adatfájlok (titkosítása inaktív állapotban a blob storage) egy másik helyen, a blob storage-ban tárolt is titkosítva lesz másolva. A lekérdezési készlet replika van, majd *hidratált* fájlokat a második csoporton származó adatokkal. 
+A skálázás első beállításakor a *rendszer automatikusan* szinkronizálja az elsődleges kiszolgálón a modell adatbázisait új replikákkal egy új lekérdezési készletben. Az automatikus szinkronizálás csak egyszer fordul elő. Az automatikus szinkronizálás során az elsődleges kiszolgáló adatfájljait (a blob Storage-ban tárolt adatok titkosítása) egy második helyre másolják, amely a blob Storage-ban is titkosítva van. A lekérdezési készletben lévő replikák ezután hidratálva lesznek a második készletből származó adatokkal. 
 
-Az automatikus szinkronizálás esetén, horizontális felskálázás egy kiszolgáló először hajt végre, amíg manuális szinkronizálást is elvégezheti. Szinkronizálás biztosítja az adatok a lekérdezési készlet replikákon egyeznek az elsődleges kiszolgáló. Az elsődleges kiszolgálón (frissítése) modellek feldolgozásakor a szinkronizálást kell végrehajtani *után* feldolgozási műveletek befejeződtek. A szinkronizálás frissített adatokat másol az elsődleges kiszolgáló fájlok blob Storage-fájlokat a második csoporton. A lekérdezési készlet replikák majd vannak hidratált fájlok blob storage-ban a második csoporton származó frissített adatokkal. 
+Míg az automatikus szinkronizálás csak akkor történik meg, ha első alkalommal kibővít egy kiszolgálót, manuálisan is elvégezheti a szinkronizálást. A szinkronizálási funkció biztosítja, hogy a lekérdezési készletben lévő replikák megegyezzenek az elsődleges kiszolgálóval. Az elsődleges kiszolgálón végzett feldolgozási (frissítési) modellek esetében a feldolgozási műveletek befejeződése *után* szinkronizálást kell végrehajtani. Ez a szinkronizálás a blob Storage-ban lévő elsődleges kiszolgáló fájljainak frissített adatait másolja a második fájlba. A lekérdezési készletben lévő replikákat a rendszer a blob Storage-ban lévő fájlok második készletének frissített adatainak megfelelően hidratálja. 
 
-Egy későbbi horizontális felskálázási művelet végrehajtása, ha például a lekérdezési készlet két öt, a replikák számának növelése az új replikákat vannak hidratált fájlok blob storage-ban a második csoporton származó adatokkal. Nincs a Nincs szinkronizálás. Ha hajtsa végre a szinkronizálást, a horizontális skálázás, a lekérdezési készletből az új replika után kétszer - redundáns hidratálási hidratált. Egy későbbi horizontális felskálázási művelet végrehajtásakor fontos szem előtt tartani:
+Ha egy későbbi kibővített műveletet hajt végre, például a két és öt közötti replikák számának növelését, az új replikák a blob Storage-ban lévő fájlok második készletében lévő adatokkal vannak hidratálva. Nincs szinkronizálás. Ha a horizontális felskálázás után elvégezte a szinkronizálást, a lekérdezési készletben lévő új replikák kétszer is hidratálva lesznek – redundáns folyadékpótlás. Egy későbbi kibővített művelet végrehajtásakor fontos szem előtt tartani a következőket:
 
-* Hajtsa végre a szinkronizálást *a horizontális felskálázási művelet előtt* hozzáadott replikára redundáns hidratálási elkerülése érdekében. Párhuzamos szinkronizálási és a egy időben futó horizontális felskálázási műveletek nem engedélyezettek.
+* Végezzen szinkronizálást *a kibővítő művelet előtt* a hozzáadott replikák redundáns hidratációjának elkerüléséhez. Az egyidejű szinkronizálási és kibővíthető műveletek nem engedélyezettek.
 
-* Ha mindkét feldolgozási automatizálása *és* horizontális felskálázási műveletek, fontos, hogy először dolgozhatja fel az adatokat az elsődleges kiszolgálón, majd hajtsa végre a szinkronizálást, és végezze el a horizontális felskálázási művelet. Ez a sorozat további QPU- és memória-erőforrások csak minimális hatással van.
+* A feldolgozási *és a* kibővíthető műveletek automatizálásakor fontos, hogy először dolgozza fel az elsődleges kiszolgálón lévő adatok feldolgozását, majd végezzen szinkronizálást, majd végezze el a kibővített műveletet. Ez a folyamat minimális hatást biztosít a QPU és a memória erőforrásaira.
 
-* Szinkronizálás engedélyezett, akkor is, ha nincs a replikákat a lekérdezési készletben. Egy vagy több replikát az új adatokat az elsődleges kiszolgálón egy feldolgozási műveletből nulláról is kiterjesztése, ha a replika. a lekérdezési készlet először hajtsa végre a szinkronizálást, és majd horizontális felskálázás. Redundáns hidratálási az újonnan hozzáadott replikák szinkronizálása előtt horizontális felskálázás elkerülhető.
+* A szinkronizálás akkor is engedélyezett, ha nincsenek replikák a lekérdezési készletben. Ha az elsődleges kiszolgálón lévő feldolgozási műveletből egy vagy több replikára horizontális felskálázást végez, először hajtsa végre a szinkronizálást a lekérdezési készletben lévő replikák nélkül, majd a horizontális felskálázást. A horizontális felskálázás előtt a szinkronizálás elkerüli az újonnan hozzáadott replikák redundáns hidratációját.
 
-* Amikor egy modell adatbázis törlésével az elsődleges kiszolgálóról, akkor nem automatikusan törlődnek a replikákat a lekérdezési készlet. Egy szinkronizálási művelet használatával kell végrehajtania a [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell-paranccsal, amely a fájl/s az adatbázishoz tartozó távolít el a replika megosztott blob tárolási helyét, és ezután törli a modell az adatbázis a lekérdezési készlet a replikákon. Annak megállapításához, hogy egy modelladatbázissal létezik-e a replikákat a lekérdezési készlet, de nem az elsődleges kiszolgálón, győződjön meg arról a **a feldolgozó kiszolgáló elkülönítése a lekérdezési készlet** beállítás **Igen**. Ezután az SSMS használatával csatlakozzon az elsődleges kiszolgálón a `:rw` minősítő, ha az adatbázis létezik-e. Kapcsolódjon a lekérdezési készlet replikák nélküli csatlakozással a `:rw` minősítő ugyanabban az adatbázisban is van. Ha az adatbázis már létezik, a replikákat a lekérdezési készlet, de nem az elsődleges kiszolgálón, futtassa a szinkronizálási műveletet.   
+* Ha az elsődleges kiszolgálóról törli a modell-adatbázist, a rendszer nem törli automatikusan a lekérdezési készlet replikái közül. A szinkronizálási műveletet a [Sync-AzAnalysisServicesInstance PowerShell-](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) paranccsal kell végrehajtania, amely eltávolítja az adott adatbázishoz tartozó fájlt/t a replika megosztott blob Storage-helyéről, majd törli a modell-adatbázist a replikák a lekérdezési készletben. Annak megállapításához, hogy létezik-e a modell adatbázisa a lekérdezési készlet replikái között, de nem az elsődleges kiszolgálón, ügyeljen arra, hogy a **feldolgozó kiszolgáló elkülönítése** a lekérdezési készletből beállítás értéke **Igen**. Ezután a SSMS használatával kapcsolódjon az elsődleges kiszolgálóhoz a `:rw` minősítővel, és ellenőrizze, hogy létezik-e az adatbázis. Ezután kapcsolódjon a lekérdezési készlet replikái számára úgy, hogy `:rw` a minősítő nélkül csatlakozik az adatbázishoz. Ha az adatbázis létezik a lekérdezési készlet replikái között, de az elsődleges kiszolgálón nem, futtassa a szinkronizálási műveletet.   
 
-* Amikor az elsődleges kiszolgálón egy adatbázis átnevezése, van egy további lépés szükséges az adatbázis megfelelően szinkronizálva a replikákat. Átnevezése, után hajtsa végre a szinkronizálást a használatával a [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) parancs megadásával a `-Database` paraméter a régi adatbázis nevével. A szinkronizálás replikákat eltávolítja az adatbázis és a fájlok a régi nevére. Hajtsa végre egy másik szinkronizálási megadása a `-Database` paramétert az új adatbázis nevével. A második szinkronizálás az újonnan elnevezett adatbázist átmásolja a fájlokat a második csoporton és hydrates esetleges replikákat. Ezek a szinkronizálások nem hajtható végre, a portálon a szinkronizálás modell parancs használatával.
+* Ha az elsődleges kiszolgálón átnevez egy adatbázist, további lépésekre van szükség annak biztosításához, hogy az adatbázis megfelelően legyen szinkronizálva a replikákkal. Az Átnevezés után hajtson végre szinkronizálást a [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) paranccsal, és adja meg `-Database` a paramétert a régi adatbázis nevével. Ez a szinkronizálás eltávolítja az adatbázist és a fájlokat a régi névvel bármely replikáról. Ezután hajtson végre egy másik szinkronizálást a `-Database` paraméter megadásával az új adatbázis nevével. A második szinkronizálás az újonnan elnevezett adatbázist átmásolja a fájlok második készletére, és hidratálja a replikákat. Ezek a szinkronizálások nem hajthatók végre a portálon a modell szinkronizálása parancs használatával.
 
-### <a name="separate-processing-from-query-pool"></a>A lekérdezési készletből külön feldolgozása
+### <a name="separate-processing-from-query-pool"></a>Külön feldolgozás a lekérdezési készletből
 
-Maximális teljesítményt az feldolgozási és lekérdezési műveleteket is beállíthatja a lekérdezési készletből a feldolgozó kiszolgáló külön. Során elválasztott, új ügyfélgépi kapcsolatokat csak a lekérdezési készlet lekérdezési replikák vannak hozzárendelve. Ha feldolgozási műveletek csak igénybe vehetnek egy rövid idő alatt, választhat, a feldolgozó kiszolgáló csak ennyi ideig tart feldolgozás és a szinkronizálási műveletek végrehajtására, majd adja hozzá újra üzembe a lekérdezési készletből, a lekérdezési készletből külön. A lekérdezési készletből, vagy vissza a lekérdezés készletbe hozzáadása a feldolgozó kiszolgáló szétválasztása is igénybe vehet a akár öt percet a művelet befejeződik.
+A feldolgozási és a lekérdezési műveletek maximális teljesítményéhez választhatja a feldolgozó kiszolgáló elkülönítését a lekérdezési készletből is. Ha elválasztja, az új ügyfélkapcsolatok csak a lekérdezési készletben lévő lekérdezési replikák esetében lesznek hozzárendelve. Ha a feldolgozási műveletek csak rövid időt vesznek igénybe, dönthet úgy, hogy a feldolgozó kiszolgálót csak a feldolgozási és szinkronizálási műveletek elvégzéséhez szükséges ideig választja el, majd visszaadja a lekérdezési készletbe. Ha a feldolgozási kiszolgálót a lekérdezési készletből választja, vagy visszaadja a lekérdezési készletbe, a művelet befejezéséhez akár öt percet is igénybe vehet.
 
-## <a name="monitor-qpu-usage"></a>QPU-használat monitorozása
+## <a name="monitor-qpu-usage"></a>QPU-használat figyelése
 
-Annak megállapításához, ha horizontális felskálázás az a kiszolgálóra szükség, figyeli a kiszolgáló Azure Portalon metrikák használatával. A QPU rendszeresen lefoglalja ki, ha az azt jelenti,-lekérdezéseket futtassanak a modellek száma meghaladja a QPU-korlát a terv. A lekérdezési készlet feladat várólista hossza metrika is nő, ha a lekérdezési szál készlet várólistában lévő lekérdezések száma meghaladja a rendelkezésre álló QPU. 
+Annak megállapításához, hogy szükség van-e a kiszolgáló méretezésére, figyelje a kiszolgálót Azure Portal a metrikák használatával. Ha a QPU rendszeresen lefoglalja, az azt jelenti, hogy a modellekhez tartozó lekérdezések száma meghaladja a csomag QPU-korlátját. A lekérdezési készlet feladatok várólistájának hossza metrika akkor is megnő, ha a lekérdezési szál várólistáján lévő lekérdezések száma meghaladja az elérhető QPU. 
 
-Tekintse meg egy másik jól használható metrikaként átlagos QPU ServerResourceType által. Ez a metrika az elsődleges kiszolgáló, az adott a lekérdezési készletből átlagos QPU hasonlítja össze. 
+Egy másik jó mérőszámot kell figyelni a ServerResourceType átlagos QPU. Ez a metrika az elsődleges kiszolgáló átlagos QPU hasonlítja össze a lekérdezési készlettel. 
 
-![Lekérdezés horizontális felskálázási metrikák](media/analysis-services-scale-out/aas-scale-out-monitor.png)
+![Kibővíthető mérőszámok lekérdezése](media/analysis-services-scale-out/aas-scale-out-monitor.png)
 
-### <a name="to-configure-qpu-by-serverresourcetype"></a>QPU által ServerResourceType konfigurálása
-1. A metrikák grafikont, kattintson **metrika hozzáadása**. 
-2. A **erőforrás**, majd válassza ki a kiszolgálót, a **METRIKA NÉVTÉR**válassza **Analysis Services standard mérőszámok**, ezt a **METRIKA**, Válassza ki **QPU**, majd **ÖSSZESÍTÉSI**válassza **átlagos**. 
-3. Kattintson a **alkalmazni a felosztás**. 
-4. A **értékek**válassza **ServerResourceType**.  
+### <a name="to-configure-qpu-by-serverresourcetype"></a>A QPU konfigurálása a ServerResourceType szerint
+1. A mérőszámok sorában kattintson a **metrika hozzáadása**lehetőségre. 
+2. Az **erőforrás**területen válassza ki a kiszolgálót, majda metrikai névtérben válassza ki **Analysis Services standard mérőszámok**elemet, majd a **metrika**területen válassza a **QPU**lehetőséget, majd az **Összesítés**területen válassza az **AVG**elemet. 
+3. Kattintson a **felosztás alkalmazása**lehetőségre. 
+4. Az **értékek**területen válassza a **ServerResourceType**lehetőséget.  
 
 További tudnivalókért lásd: [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md).
 
 ## <a name="configure-scale-out"></a>Horizontális felskálázás konfigurálása
 
-### <a name="in-azure-portal"></a>Az Azure Portalon
+### <a name="in-azure-portal"></a>Azure Portal
 
-1. Kattintson a portál **kibővített**. A csúszka segítségével válassza ki a lekérdezés replika kiszolgálók számát. Replikák úgy dönt, az a szám, a meglévő kiszolgáló mellett.
+1. A portálon kattintson akibővítés elemre. A csúszka segítségével válassza ki a lekérdezési replika kiszolgálók számát. A kiválasztott replikák száma a meglévő kiszolgálón kívül történik.  
 
-2. A **a lekérdezési készlettől a feldolgozó kiszolgáló elkülönítése**, jelölje be a feldolgozó kiszolgáló kizárása lekérdezés kiszolgálók igen. Ügyfél [kapcsolatok](#connections) az alapértelmezett kapcsolati karakterlánc használatával (nélkül `:rw`) a lekérdezési készletből a replikákat a rendszer átirányítja. 
+2. A **feldolgozó kiszolgáló leválasztása a lekérdezési készletből**beállításnál válassza az Igen lehetőséget, ha ki szeretné zárni a feldolgozó kiszolgálót a lekérdezési kiszolgálókról. Az [](#connections) alapértelmezett kapcsolati karakterláncot (nem `:rw`) használó ügyfélkapcsolatokat a rendszer átirányítja a lekérdezési készlet replikái között. 
 
-   ![Horizontális felskálázás csúszka](media/analysis-services-scale-out/aas-scale-out-slider.png)
+   ![Felskálázási csúszka](media/analysis-services-scale-out/aas-scale-out-slider.png)
 
-3. Kattintson a **mentése** az új lekérdezés replika kiszolgálók. 
+3. A **Save (Mentés** ) gombra kattintva kiépítheti az új lekérdezés-replika kiszolgálókat. 
 
-Horizontális felskálázás egy kiszolgáló először konfigurálni, az elsődleges kiszolgálón modellek automatikusan szinkronizálva legyenek a lekérdezési készlet replikák. Automatikus szinkronizálás csak akkor történik meg, miután először konfigurálásakor egy vagy több replikát, kibővített. Az ugyanazon a kiszolgálón a replikák száma érintő későbbi változások *nem vált egy másik automatikus szinkronizálás*. Automatikus szinkronizálás nem kerül sor újra, még akkor is, ha a kiszolgálón a replikák nulla és replikák tetszőleges számú majd újra kibővített. 
+Amikor első alkalommal konfigurálja a kibővített kiszolgálót, a rendszer automatikusan szinkronizálja az elsődleges kiszolgáló modelljeit a lekérdezési készletben lévő replikákkal. Az automatikus szinkronizálás csak egyszer történik meg, amikor először konfigurálja a méretezést egy vagy több replikára. Az ugyanazon a kiszolgálón lévő replikák számának későbbi módosításai *nem indítanak el másik automatikus szinkronizálást*. Az automatikus szinkronizálás még akkor sem történik meg, ha a kiszolgáló nulla replikára van állítva, majd ismét kibővíthető tetszőleges számú replikára. 
 
-## <a name="synchronize"></a>Szinkronizálása 
+## <a name="synchronize"></a>Szinkronizálni 
 
-Szinkronizálási műveleteket kell elvégezni, manuálisan vagy a REST API-val.
+A szinkronizálási műveleteket manuálisan vagy a REST API használatával kell elvégezni.
 
-### <a name="in-azure-portal"></a>Az Azure Portalon
+### <a name="in-azure-portal"></a>Azure Portal
 
-A **áttekintése** > modell > **Synchronize modell**.
+Az **áttekintés** > modell > a **modell szinkronizálása**című témakört.
 
-![Horizontális felskálázás csúszka](media/analysis-services-scale-out/aas-scale-out-sync.png)
+![Felskálázási csúszka](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST API
 
 Használja a **szinkronizálási** műveletet.
 
-#### <a name="synchronize-a-model"></a>A modell szinkronizálása   
+#### <a name="synchronize-a-model"></a>Modell szinkronizálása   
 
 `POST https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
-#### <a name="get-sync-status"></a>Szinkronizálási állapotának beolvasása  
+#### <a name="get-sync-status"></a>Szinkronizálási állapot beolvasása  
 
 `GET https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
 
-Állapotkódok adja vissza:
+Visszatérési állapotkódok:
 
 
 |Kód  |Leírás  |
 |---------|---------|
 |-1     |  Érvénytelen       |
-|0     | Replikálása        |
+|0     | Replikáció folyamatban        |
 |1     |  Rehidratálása       |
 |2     |   Befejeződött       |
 |3     |   Meghiúsult      |
-|4     |    Véglegesítése     |
+|4     |    Véglegesítés     |
 |||
 
 
@@ -123,35 +123,39 @@ Használja a **szinkronizálási** műveletet.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-PowerShell-lel, mielőtt [telepítése vagy frissítése a legújabb Azure PowerShell-modul](/powershell/azure/install-az-ps). 
+A PowerShell használata előtt [telepítse vagy frissítse a legújabb Azure PowerShell modult](/powershell/azure/install-az-ps). 
 
-Szinkronizálási futtatásához használja [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance).
+A szinkronizálás futtatásához használja a [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance).
 
-Lekérdezési replikák száma beállításához használja [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Adja meg a választható `-ReadonlyReplicaCount` paraméter.
+A lekérdezési replikák számának beállításához használja a [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Válassza a választható `-ReadonlyReplicaCount` paramétert.
 
-A feldolgozó kiszolgáló, a lekérdezési készletből elkülönítése, használja a [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Adja meg a választható `-DefaultConnectionMode` használni kívánt paramétert `Readonly`.
+A feldolgozó kiszolgáló a lekérdezési készletből való elkülönítéséhez használja a [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Válassza ki a `-DefaultConnectionMode` használni `Readonly`kívánt választható paramétert.
 
-További tudnivalókért lásd: [egyszerű szolgáltatás használatával a Az.AnalysisServices modullal](analysis-services-service-principal.md#azmodule).
+További információ: [egyszerű szolgáltatásnév használata az az. AnalysisServices modullal](analysis-services-service-principal.md#azmodule).
 
 ## <a name="connections"></a>Kapcsolatok
 
-A kiszolgáló áttekintés oldalán a rendszer két kiszolgáló nevét. Ha még nem konfigurálta a kiszolgáló kibővített, mindkét kiszolgáló neve azonos működik. Miután konfigurálja a kiszolgáló kibővített, kell a kapcsolat típusától függően a megfelelő kiszolgáló nevének megadásához. 
+A kiszolgáló áttekintő oldalán két kiszolgálónév található. Ha még nem konfigurálta a kibővített kiszolgálót a kiszolgálókon, mindkét kiszolgálónév ugyanúgy működik. A kibővített kiszolgáló beállítása után a kapcsolódási típustól függően meg kell adnia a megfelelő kiszolgálónevet. 
 
-Például a Power BI Desktop, Excel és egyéni alkalmazások használatát a végfelhasználói ügyfélkapcsolatok **kiszolgálónév**. 
+A végfelhasználói ügyfélkapcsolatok, például az Power BI Desktop, az Excel és az egyéni alkalmazások esetében használja a **kiszolgálónév nevet**. 
 
-Az ssms-ben, az SSDT és kapcsolati karakterláncokat a PowerShell, Azure-függvényalkalmazás és az AMO, használjon **felügyeleti kiszolgáló neve**. A felügyeleti kiszolgáló nevét tartalmazza, egy speciális `:rw` (olvasás / írás) minősítője. Az összes feldolgozási műveletei fordulhat elő, a (elsődleges) felügyeleti kiszolgálón.
+A PowerShell, az Azure Function apps és az AMO SSMS, SSDT és kapcsolatok karakterláncai esetében használja a **felügyeleti kiszolgáló nevét**. A felügyeleti kiszolgáló neve egy speciális `:rw` (írható-olvasható) minősítőt tartalmaz. Az összes feldolgozási művelet az (elsődleges) felügyeleti kiszolgálón történik.
 
-![Kiszolgáló neve](media/analysis-services-scale-out/aas-scale-out-name.png)
+![Kiszolgálók nevei](media/analysis-services-scale-out/aas-scale-out-name.png)
+
+## <a name="scale-up-scale-down-vs-scale-out"></a>Vertikális felskálázás, vertikális leskálázás és Kiterjesztés
+
+Az árképzési szintet egy több replikával rendelkező kiszolgálón is módosíthatja. Ugyanez az árképzési csomag az összes replikára vonatkozik. A skálázási művelet először az összes replikát leállítja, majd az új díjszabási szinten hozza létre az összes replikát.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-**Probléma:** Felhasználók hibaüzenet **-kiszolgáló nem található "\<a kiszolgáló nevét >" példány "ReadOnly" kapcsolati módban.**
+**Probléma:** A felhasználók hibaüzenete **nem találja\<a (z) > kiszolgáló nevét a (z) "ReadOnly" csatlakoztatási módban.**
 
-**Megoldás:** Amikor kiválasztja a **a lekérdezési készlettől a feldolgozó kiszolgáló elkülönítése** beállítás, az alapértelmezett kapcsolati karakterlánc használatával Ügyfélkapcsolatok (nélkül `:rw`) lekérdezési készlet replikákat a rendszer átirányítja. A lekérdezési készlet replikák vannak nem még online hogy a szinkronizálás még nem fejeződtek be, ha az átirányított ügyfélkapcsolatok sikertelen lehet. Sikertelen kapcsolatok megelőzése érdekében kell lennie legalább két kiszolgálót a lekérdezési készletből szinkronizálás végrehajtása során. Minden kiszolgálón külön-külön szinkronizálása, míg mások is online maradnak. Ha nem rendelkezik a feldolgozási kiszolgálóval a lekérdezési készlet feldolgozása során, ha szeretné, távolítsa el a készletből feldolgozásra, és adja hozzá azt vissza a készletbe feldolgozás befejeződése után, de a szinkronizálás előtt. A memória és a QPU-metrikák használatával szinkronizálási állapotát figyeli.
+**Megoldás** Amikor kiválasztja a **feldolgozó kiszolgáló elkülönítése a lekérdezési készletből** lehetőséget, a rendszer az alapértelmezett kapcsolati karakterláncot ( `:rw`nem) használó ügyfélkapcsolatokat a lekérdezési készlet replikáinak átirányítja. Ha a lekérdezési készlet replikái még nincsenek online állapotban, mert a szinkronizálás még nem fejeződött be, az átirányított ügyfélkapcsolatok sikertelenek lehetnek. A sikertelen kapcsolatok megelőzése érdekében a lekérdezési készletben legalább két kiszolgálónak kell lennie a szinkronizálás végrehajtásához. Minden kiszolgáló külön van szinkronizálva, míg mások online állapotban maradnak. Ha úgy dönt, hogy nem rendelkezik a feldolgozási kiszolgálóval a lekérdezési készletben a feldolgozás során, dönthet úgy, hogy a készletből eltávolítja a feldolgozást, majd a feldolgozás befejezése után visszaadja azt a készletbe, de a szinkronizálás előtt. A szinkronizálási állapot figyeléséhez használja a memória és a QPU metrikáját.
 
 
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-[A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md)   
+[Kiszolgáló metrikáinak figyelése](analysis-services-monitor.md)   
 [Azure Analysis Services kezelése](analysis-services-manage.md) 

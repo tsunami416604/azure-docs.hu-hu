@@ -155,6 +155,8 @@
           items:
             - name: Hálózatkezelés előkészítése az Azure-beli virtuális gépek vészhelyreállításához
               href: azure-to-azure-about-networking.md
+            - name: A cél Azure-beli virtuális gép hálózati konfigurációjának testreszabása
+              href: azure-to-azure-customize-networking.md
             - name: Hálózatleképezés beállítása és IP-cím megőrzése feladatátvétel után
               href: azure-to-azure-network-mapping.md
             - name: IP-cím megőrzése feladatátvétel után – példák

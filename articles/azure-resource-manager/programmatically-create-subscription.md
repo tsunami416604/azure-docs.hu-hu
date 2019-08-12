@@ -1,50 +1,50 @@
 ---
-title: Az Azure Enterprise-előfizetések létrehozása programozott módon |} A Microsoft Docs
-description: Megtudhatja, hogyan további Azure Enterprise vagy a Enterprise Dev/Test-előfizetések létrehozása programozott módon.
+title: Azure Enterprise-előfizetések programozott létrehozása | Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre programozott módon további Azure Enterprise-vagy nagyvállalati fejlesztési/tesztelési előfizetéseket.
 services: azure-resource-manager
 author: jureid
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/10/2019
 ms.author: jureid
-ms.openlocfilehash: cf325b93c626e0c7f9584449154e2d531995cdc5
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
-ms.translationtype: MT
+ms.openlocfilehash: 701b35d99cb98009ec0116c23eaeab94ff967f51
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204349"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678936"
 ---
-# <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programozott módon létrehozhat az Azure Enterprise-előfizetések (előzetes verzió)
+# <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Azure Enterprise-előfizetések programozott létrehozása (előzetes verzió)
 
-Az Azure ügyfeleként [nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), és hozhat létre nagyvállalati szerződés (MS-AZR - 0017 P) nagyvállalati szerződés – fejlesztés és tesztelés (MS-AZR - 0148 P) előfizetések programozott módon. Ebből a cikkből megismerheti, hogyan hozhatnak létre előfizetéseket programozott módon az Azure Resource Manager használatával.
+[Nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)Azure-ügyfélként az EA (MS-AZR-0017P) és az EA dev/test (MS-AZR-0148P) előfizetések programozott módon hozhatók létre. Ebből a cikkből megtudhatja, hogyan hozhat létre programozott módon előfizetéseket Azure Resource Manager használatával.
 
-Az API-ból egy Azure-előfizetést hoz létre, ha ezt az előfizetést a szerződés, amely alatt a Microsofttól vagy egy meghatalmazott viszonteladói beszerzett Microsoft Azure-szolgáltatások szabályozzák. További tudnivalókért lásd: [a Microsoft Azure – jogi információk](https://azure.microsoft.com/support/legal/).
+Amikor létrehoz egy Azure-előfizetést ebből az API-ból, az előfizetést a szerződés szabályozza, amely alatt a Microsofttól vagy egy erre a szolgáltatástól kapott Microsoft Azure szolgáltatásokat. További információ: [Microsoft Azure jogi információk](https://azure.microsoft.com/support/legal/).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A regisztrációs fiók-előfizetések létrehoz egy tulajdonosi szerepkör kell rendelkeznie. Ezek a szerepkörök beolvasása a két módja van:
+Rendelkeznie kell tulajdonosi szerepkörrel azon a beléptetési fiókon, amelyhez előfizetéseket kíván létrehozni. Ezeket a szerepköröket kétféleképpen érheti el:
 
-* A regisztráció rendszergazdájához is [győződjön meg arról, hogy fióktulajdonos](https://ea.azure.com/helpdocs/addNewAccount) (bejelentkezés szükséges) ami lehetővé teszi, a regisztrációs fiók tulajdonosának. Kövesse az utasításokat a meghívó e-mailben kapott manuálisan hozzon létre egy kezdeti előfizetést. Erősítse meg a fiók tulajdonjogát, és manuálisan hozzon létre egy kezdeti, mielőtt továbblép a következő lépés a nagyvállalati szerződéses előfizetésében. Csak hozzáadása a regisztrációt a fiók nem elég.
+* A beléptetési rendszergazda elvégezheti a [fiók tulajdonosát](https://ea.azure.com/helpdocs/addNewAccount) (bejelentkezés szükséges), amely a beléptetési fiók tulajdonosát teszi lehetővé. Kövesse a meghívói e-mailben kapott utasításokat a kezdeti előfizetés manuális létrehozásához. Erősítse meg a fiók tulajdonjogát, és hozzon létre manuálisan egy kezdeti EA-előfizetést, mielőtt továbblép a következő lépésre. Ha csak a fiókot adja hozzá a regisztrációhoz, nem elég.
 
-* A regisztrációs fiók meglévő tulajdonosává is [hozzáférési](grant-access-to-create-subscription.md). Hasonlóképpen, ha azt szeretné, a nagyvállalati szerződéses előfizetésében létrehozni az egyszerű szolgáltatás használatával, meg kell [megadása egyszerű szolgáltatást az előfizetések létrehozása](grant-access-to-create-subscription.md).
+* A beléptetési fiók meglévő tulajdonosa engedélyezheti a [hozzáférést](grant-access-to-create-subscription.md). Hasonlóképpen, ha egyszerű szolgáltatásnév használatával kívánja létrehozni az EA-előfizetést, meg kell adnia, [hogy az egyszerű szolgáltatás előfizetéseket hozzon létre](grant-access-to-create-subscription.md).
 
-## <a name="find-accounts-you-have-access-to"></a>Keresse meg a fiók rendelkezik hozzáféréssel
+## <a name="find-accounts-you-have-access-to"></a>Azon fiókok keresése, amelyekhez hozzáférése van
 
--Fiók tulajdonosai Azure EA-regisztrációhoz hozzáadják, miután az Azure a fiók regisztrációjának kapcsolat segítségével határozza meg, hol számlázási, előfizetési díjai. A fiók alatt létrehozott összes előfizetés számlázása a regisztrált Nagyvállalati szerződéshez, amely a fiók felé. Előfizetések létrehozása, akkor meg kell adnia értékeket a regisztrációs fiók és a felhasználó rendszerbiztonsági tagok, az előfizetés tulajdonosa. 
+Miután hozzáadta egy Azure EA-regisztrációhoz a fiók tulajdonosaként, az Azure a fiók és a regisztrációs kapcsolat alapján határozza meg, hogy hol kell számlázni az előfizetési díjakat. A fiókban létrehozott összes előfizetés számlázása a fiókhoz tartozó EA-regisztráció felé történik. Az előfizetések létrehozásához át kell adni a beléptetési fiókra vonatkozó értékeket, valamint az előfizetéshez tartozó felhasználói rendszerbiztonsági tagokat. 
 
-Az alábbi parancsok futtatásához, meg kell bejelentkeznie a fiók tulajdonosának *kezdőkönyvtár*, azaz a címtár előfizetések alapértelmezés szerint létrehozott.
+A következő parancsok futtatásához be kell jelentkeznie a fiók tulajdonosa *kezdőkönyvtárának könyvtárába*, amely az a könyvtár, amelyet az előfizetések alapértelmezés szerint hoznak létre.
 
 ## <a name="resttabrest"></a>[REST](#tab/rest)
 
-A kérelem hozzáfér az összes regisztrációs fiókok listáját:
+Az összes olyan regisztrációs fiók listázására vonatkozó kérelem, amelyhez hozzáféréssel rendelkezik:
 
 ```json
 GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts?api-version=2018-03-01-preview
 ```
 
-Azure válaszol az hozzáfér az összes regisztrációs fiókok listáját:
+Az Azure válaszol az összes beléptetési fiók listájára:
 
 ```json
 {
@@ -69,36 +69,36 @@ Azure válaszol az hozzáfér az összes regisztrációs fiókok listáját:
 }
 ```
 
-Használja a `principalName` azonosítani a fiókot, amelyet az előfizetések kiszámlázható tulajdonságot. Másolás a `name` -fiók. Például, ha szeretne az előfizetések létrehozására a SignUpEngineering@contoso.com eszközregisztráció-fiókot, akkor másolja ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Ez a regisztrációs fiók az objektum Azonosítóját. Illessze be ezt az értéket, valahol, hogy használhatja azt, a következő lépésben `enrollmentAccountObjectId`.
+`principalName` A tulajdonsággal azonosíthatja azt a fiókot, amelyre az előfizetéseket számlázni kívánja. Másolja a `name` fiókját. Ha például a beléptetési fiókkal szeretne előfizetéseket létrehozni, másolja SignUpEngineering@contoso.com ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```a következőt:. Ez a beléptetési fiók objektumazonosító. Illessze be ezt az értéket valahova, hogy a következő lépésben `enrollmentAccountObjectId`használhatja azt.
 
 ## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Nyissa meg [Azure Cloud Shell](https://shell.azure.com/) , és válassza ki a PowerShell.
+Nyissa meg [Azure Cloud Shell](https://shell.azure.com/) és válassza a PowerShell lehetőséget.
 
-Használja a [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) parancsmag használatával listázhatja az összes regisztrációs fiókok hozzáfér.
+A [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) parancsmag használatával listázhatja az összes olyan regisztrációs fiókot, amelyhez hozzáféréssel rendelkezik.
 
 ```azurepowershell-interactive
 Get-AzEnrollmentAccount
 ```
 
-Azure fűzi hozzá van hozzáférése a regisztrációs fiókok listáját:
+Az Azure az Ön számára elérhető regisztrációs fiókok listájával válaszol:
 
 ```azurepowershell
 ObjectId                               | PrincipalName
 747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | SignUpEngineering@contoso.com
 4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
 ```
-Használja a `principalName` azonosítani a fiókot, amelyet az előfizetések kiszámlázható tulajdonságot. Másolás a `ObjectId` -fiók. Például, ha szeretne az előfizetések létrehozására a SignUpEngineering@contoso.com eszközregisztráció-fiókot, akkor másolja ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Illessze be az Objektumazonosító valahol, hogy a következő lépésben, használhatja a `enrollmentAccountObjectId`.
+`principalName` A tulajdonsággal azonosíthatja azt a fiókot, amelyre az előfizetéseket számlázni kívánja. Másolja a `ObjectId` fiókját. Ha például a beléptetési fiókkal szeretne előfizetéseket létrehozni, másolja SignUpEngineering@contoso.com ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```a következőt:. Illessze be ezt az objektumazonosítót valahova, hogy a következő lépésben `enrollmentAccountObjectId`használhassa azt.
 
 ## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Használja a [az számlázási regisztrációs-fióklista](https://aka.ms/EASubCreationPublicPreviewCLI) paranccsal listát készíthet az összes regisztrációs fiókok hozzáfér.
+Az az [Billing beléptetés-Account List](https://aka.ms/EASubCreationPublicPreviewCLI) paranccsal listázhatja az összes olyan regisztrációs fiókot, amelyhez hozzáférése van.
 
 ```azurecli-interactive 
 az billing enrollment-account list
 ```
 
-Azure fűzi hozzá van hozzáférése a regisztrációs fiókok listáját:
+Az Azure az Ön számára elérhető regisztrációs fiókok listájával válaszol:
 
 ```json
 [
@@ -117,17 +117,17 @@ Azure fűzi hozzá van hozzáférése a regisztrációs fiókok listáját:
 ]
 ```
 
-Használja a `principalName` azonosítani a fiókot, amelyet az előfizetések kiszámlázható tulajdonságot. Másolás a `name` -fiók. Például, ha szeretne az előfizetések létrehozására a SignUpEngineering@contoso.com eszközregisztráció-fiókot, akkor másolja ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Ez a regisztrációs fiók az objektum Azonosítóját. Illessze be ezt az értéket, valahol, hogy használhatja azt, a következő lépésben `enrollmentAccountObjectId`.
+`principalName` A tulajdonsággal azonosíthatja azt a fiókot, amelyre az előfizetéseket számlázni kívánja. Másolja a `name` fiókját. Ha például a beléptetési fiókkal szeretne előfizetéseket létrehozni, másolja SignUpEngineering@contoso.com ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```a következőt:. Ez a beléptetési fiók objektumazonosító. Illessze be ezt az értéket valahova, hogy a következő lépésben `enrollmentAccountObjectId`használhatja azt.
 
 ---
 
-## <a name="create-subscriptions-under-a-specific-enrollment-account"></a>A regisztrációs fiók-előfizetések létrehozására
+## <a name="create-subscriptions-under-a-specific-enrollment-account"></a>Előfizetések létrehozása egy adott beléptetési fiók alapján
 
-Az alábbi példa egy nevű előfizetést hoz létre *fejlesztői csapat előfizetés* az előző lépésben kiválasztott regisztrációs-fiókban. Az előfizetési ajánlat *MS-AZR - 0017P* (rendszeres Microsoft nagyvállalati szerződés keretében). Azt is két felhasználót ad RBAC tulajdonosként az előfizetés.
+Az alábbi példa egy *Dev Team-előfizetés* nevű előfizetést hoz létre az előző lépésben kiválasztott beléptetési fiókban. Az előfizetési ajánlat az *MS-AZR-0017P* (normál Microsoft nagyvállalati szerződés). Opcionálisan két felhasználót is hozzáadhat az előfizetéshez RBAC-tulajdonosként.
 
 # <a name="resttabrest"></a>[REST](#tab/rest)
 
-Győződjön meg arról, a következő kérelem, és cserélje le `<enrollmentAccountObjectId>` együtt a `name` az első lépésben másolt (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Ha szeretné, tulajdonosok, ismerje meg, [beszerzése a felhasználói objektum azonosítók](grant-access-to-create-subscription.md#userObjectId).
+Végezze el a következő kérelmet `<enrollmentAccountObjectId>` , `name` és cserélje le az elemet az első```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```lépésből (). Ha meg szeretné adni a tulajdonosokat, ismerkedjen meg [a felhasználói objektumok azonosítóinak](grant-access-to-create-subscription.md#userObjectId)beolvasásával.
 
 ```json
 POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-03-01-preview
@@ -148,17 +148,17 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 
 | Elem neve  | Kötelező | Típus   | Leírás                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `displayName` | Nem      | String | Az előfizetés megjelenített neve. Ha nincs megadva, van-e állítva a név az ajánlat, mint például a "Microsoft Azure Enterprise."                                 |
-| `offerType`   | Igen      | String | Az ajánlat az előfizetés. A nagyvállalati szerződéssel rendelkező két lehetőség áll rendelkezésre [MS-AZR - 0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (éles környezetben való használathoz) és [MS-AZR - 0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (fejlesztés és tesztelés, kell lennie [van kapcsolva a nagyvállalati szerződések portáljának használatával](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
-| `owners`      | Nem       | String | Azok a felhasználók, amelyet szeretne az előfizetés tulajdonosaként RBAC hozzáadása létrehozáskor, objektum azonosítója.  |
+| `displayName` | Nem      | Sztring | Az előfizetés megjelenített neve. Ha nincs megadva, az ajánlat neve (például "Microsoft Azure Enterprise") van beállítva.                                 |
+| `offerType`   | Igen      | Sztring | Az előfizetés ajánlata. Az EA két lehetőségét az [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (éles használat) és az [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/test) használatára kell [bekapcsolni az EA Portal használatával](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
+| `owners`      | Nem       | Sztring | Az előfizetésben a létrehozáskor RBAC-tulajdonosként hozzáadni kívánt felhasználó objektumazonosító.  |
 
-A válaszban szerezheti vissza egy `subscriptionOperation` figyelés objektumot. Ha az előfizetés létrehozása befejeződött, a `subscriptionOperation` objektum esetén ad vissza egy `subscriptionLink` objektum, amely rendelkezik az előfizetés azonosítóját.
+A válaszban egy `subscriptionOperation` objektumot kell visszakapnia a figyeléshez. Az előfizetés létrehozása után az `subscriptionOperation` objektum egy olyan `subscriptionLink` objektumot ad vissza, amely az előfizetés-azonosítóval rendelkezik.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Először telepítse a modul előzetes verziójának futtatásával `Install-Module Az.Subscription -AllowPrerelease`. Győződjön meg arról, hogy `-AllowPrerelease` működik, a PowerShellGet legújabb verziójának telepítése [a PowerShellGet modul beolvasása](/powershell/gallery/installing-psget).
+Először telepítse ezt az előzetes verziójú modult `Install-Module Az.Subscription -AllowPrerelease`a futtatásával. A működésének `-AllowPrerelease` biztosításához telepítse a PowerShellGet legújabb verzióját a [Get PowerShellGet modulból](/powershell/gallery/installing-psget).
 
-Futtassa a [New-AzSubscription](/powershell/module/az.subscription) parancs alatt, és cserélje le `<enrollmentAccountObjectId>` együtt a `ObjectId` gyűjti az első lépésben (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Ha szeretné, tulajdonosok, ismerje meg, [beszerzése a felhasználói objektum azonosítók](grant-access-to-create-subscription.md#userObjectId).
+Futtassa a [New-AzSubscription](/powershell/module/az.subscription) parancsot az alábbi parancsban, `ObjectId` és cserélje `<enrollmentAccountObjectId>` le az adatokat az```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```első lépésben (). Ha meg szeretné adni a tulajdonosokat, ismerkedjen meg [a felhasználói objektumok azonosítóinak](grant-access-to-create-subscription.md#userObjectId)beolvasásával.
 
 ```azurepowershell-interactive
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
@@ -166,20 +166,20 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 
 | Elem neve  | Kötelező | Típus   | Leírás                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `Name` | Nem      | String | Az előfizetés megjelenített neve. Ha nincs megadva, van-e állítva a név az ajánlat, mint például a "Microsoft Azure Enterprise."                                 |
-| `OfferType`   | Igen      | String | Az ajánlat az előfizetés. A nagyvállalati szerződéssel rendelkező két lehetőség áll rendelkezésre [MS-AZR - 0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (éles környezetben való használathoz) és [MS-AZR - 0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (fejlesztés és tesztelés, kell lennie [van kapcsolva a nagyvállalati szerződések portáljának használatával](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
-| `EnrollmentAccountObjectId`      | Igen       | String | Az eszközregisztráció-fiókot, hogy az előfizetés alatt létrehozott, és díjat pedig objektum azonosítója. Az értéket nem egy GUID Azonosítót a, a `Get-AzEnrollmentAccount`. |
-| `OwnerObjectId`      | Nem       | String | Azok a felhasználók, amelyet szeretne az előfizetés tulajdonosaként RBAC hozzáadása létrehozáskor, objektum azonosítója.  |
-| `OwnerSignInName`    | Nem       | String | Azok a felhasználók, amelyet szeretne az előfizetés tulajdonosaként RBAC hozzáadása létrehozáskor, e-mail-címét. Ez a paraméter helyett használható `OwnerObjectId`.|
-| `OwnerApplicationId` | Nem       | String | Bármely, amelyet szeretne az előfizetés tulajdonosaként RBAC hozzáadása létrehozáskor egyszerű szolgáltatás Alkalmazásazonosítója. Ez a paraméter helyett használható `OwnerObjectId`. Ez a paraméter használatakor az rendelkeznie kell az egyszerű szolgáltatás [olvasási hozzáférés a címtárhoz](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).| 
+| `Name` | Nem      | Karakterlánc | Az előfizetés megjelenített neve. Ha nincs megadva, az ajánlat neve (például "Microsoft Azure Enterprise") van beállítva.                                 |
+| `OfferType`   | Igen      | Sztring | Az előfizetés ajánlata. Az EA két lehetőségét az [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (éles használat) és az [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/test) használatára kell [bekapcsolni az EA Portal használatával](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
+| `EnrollmentAccountObjectId`      | Igen       | Karakterlánc | Annak a beléptetési fióknak az azonosítója, amelyre az előfizetést létrehozták, majd a számlázásra kerül. Ez az érték egy GUID azonosító, amelyből `Get-AzEnrollmentAccount`származik. |
+| `OwnerObjectId`      | Nem       | Sztring | Az előfizetésben a létrehozáskor RBAC-tulajdonosként hozzáadni kívánt felhasználó objektumazonosító.  |
+| `OwnerSignInName`    | Nem       | Sztring | Annak a felhasználónak az e-mail-címe, amelyet RBAC-tulajdonosként szeretne hozzáadni az előfizetéshez a létrehozásakor. Ezt a paramétert használhatja a `OwnerObjectId`helyett.|
+| `OwnerApplicationId` | Nem       | Sztring | Az előfizetésben a létrehozáskor RBAC-tulajdonosként hozzáadni kívánt egyszerű szolgáltatásnév alkalmazás-azonosítója. Ezt a paramétert használhatja a `OwnerObjectId`helyett. A paraméter használatakor az egyszerű szolgáltatásnak [olvasási hozzáféréssel](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)kell rendelkeznie a címtárhoz.| 
 
-Összes paraméter teljes listáját lásd: [New-AzSubscription](/powershell/module/az.subscription.preview).
+Az összes paraméter teljes listájának megtekintéséhez lásd: [New-AzSubscription](/powershell/module/az.subscription.preview).
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Először telepítse a előzetes bővítmény futtatásával `az extension add --name subscription`.
+Először telepítse ezt az előzetes verziójú bővítményt `az extension add --name subscription`a futtatásával.
 
-Futtassa a [az fiók létrehozása](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) parancs alatt, és cserélje le `<enrollmentAccountObjectId>` együtt a `name` az első lépésben kimásolt (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Ha szeretné, tulajdonosok, ismerje meg, [beszerzése a felhasználói objektum azonosítók](grant-access-to-create-subscription.md#userObjectId).
+Futtassa az az [Account Create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) parancsot az alábbi paranccsal `<enrollmentAccountObjectId>` , és `name` cserélje le az első lépésben lemásolt elemre (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Ha meg szeretné adni a tulajdonosokat, ismerkedjen meg [a felhasználói objektumok azonosítóinak](grant-access-to-create-subscription.md#userObjectId)beolvasásával.
 
 ```azurecli-interactive 
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
@@ -187,27 +187,26 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 
 | Elem neve  | Kötelező | Típus   | Leírás                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `display-name` | Nem      | String | Az előfizetés megjelenített neve. Ha nincs megadva, van-e állítva a név az ajánlat, mint például a "Microsoft Azure Enterprise."                                 |
-| `offer-type`   | Igen      | String | Az ajánlat az előfizetés. A nagyvállalati szerződéssel rendelkező két lehetőség áll rendelkezésre [MS-AZR - 0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (éles környezetben való használathoz) és [MS-AZR - 0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (fejlesztés és tesztelés, kell lennie [van kapcsolva a nagyvállalati szerződések portáljának használatával](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
-| `enrollment-account-object-id`      | Igen       | String | Az eszközregisztráció-fiókot, hogy az előfizetés alatt létrehozott, és díjat pedig objektum azonosítója. Az értéket nem egy GUID Azonosítót a, a `az billing enrollment-account list`. |
-| `owner-object-id`      | Nem       | String | Azok a felhasználók, amelyet szeretne az előfizetés tulajdonosaként RBAC hozzáadása létrehozáskor, objektum azonosítója.  |
-| `owner-upn`    | Nem       | String | Azok a felhasználók, amelyet szeretne az előfizetés tulajdonosaként RBAC hozzáadása létrehozáskor, e-mail-címét. Ez a paraméter helyett használható `owner-object-id`.|
-| `owner-spn` | Nem       | String | Bármely, amelyet szeretne az előfizetés tulajdonosaként RBAC hozzáadása létrehozáskor egyszerű szolgáltatás Alkalmazásazonosítója. Ez a paraméter helyett használható `owner-object-id`. Ez a paraméter használatakor az rendelkeznie kell az egyszerű szolgáltatás [olvasási hozzáférés a címtárhoz](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).| 
+| `display-name` | Nem      | Sztring | Az előfizetés megjelenített neve. Ha nincs megadva, az ajánlat neve (például "Microsoft Azure Enterprise") van beállítva.                                 |
+| `offer-type`   | Igen      | Sztring | Az előfizetés ajánlata. Az EA két lehetőségét az [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (éles használat) és az [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/test) használatára kell [bekapcsolni az EA Portal használatával](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
+| `enrollment-account-object-id`      | Igen       | Sztring | Annak a beléptetési fióknak az azonosítója, amelyre az előfizetést létrehozták, majd a számlázásra kerül. Ez az érték egy GUID azonosító, amelyből `az billing enrollment-account list`származik. |
+| `owner-object-id`      | Nem       | Sztring | Az előfizetésben a létrehozáskor RBAC-tulajdonosként hozzáadni kívánt felhasználó objektumazonosító.  |
+| `owner-upn`    | Nem       | Sztring | Annak a felhasználónak az e-mail-címe, amelyet RBAC-tulajdonosként szeretne hozzáadni az előfizetéshez a létrehozásakor. Ezt a paramétert használhatja a `owner-object-id`helyett.|
+| `owner-spn` | Nem       | Sztring | Az előfizetésben a létrehozáskor RBAC-tulajdonosként hozzáadni kívánt egyszerű szolgáltatásnév alkalmazás-azonosítója. Ezt a paramétert használhatja a `owner-object-id`helyett. A paraméter használatakor az egyszerű szolgáltatásnak [olvasási hozzáféréssel](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)kell rendelkeznie a címtárhoz.| 
 
-Összes paraméter teljes listáját lásd: [az fiók létrehozása](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create).
+Az összes paraméter teljes listájának megjelenítéséhez tekintse meg az [az Account Create (fiók létrehozása](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create)) című témakört.
 
 ---
 
-## <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Az Azure Enterprise-előfizetés létrehozása API korlátozásai
+## <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Az Azure Enterprise előfizetés-létrehozási API korlátai
 
-- Csak az Azure Enterprise-előfizetések az API használatával is létrehozható.
-- Egy kezdeti legfeljebb 50 előfizetéssel regisztrációs fiókonként, de Ön is [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) 200 korlát növelését. Ezt követően előfizetéseket csak az Account Center webhelyen keresztül lehet létrehozni.
-- Szükség van legalább egy nagyvállalati szerződés vagy nagyvállalati szerződéssel rendelkező fejlesztési és tesztelési előfizetések a fiókban, ami azt jelenti, hogy a fióktulajdonos legalább egyszer keresztülment manuális-előfizetés.
-- Felhasználók, akik nem tulajdonosai, de egy, az RBAC-n keresztül regisztrációs fiókhoz hozzáadott előfizetések Account Center használatával nem hozható létre.
-- Nem választhat ki a bérlő az előfizetés kell létrehozni. A fiók tulajdonosának saját bérlőjén mindig létrejön az előfizetés. Az előfizetés áthelyezése egy másik bérlőhöz: [előfizetés-bérlő módosítása](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+- Ezzel az API-val csak az Azure nagyvállalati előfizetéseket lehet létrehozni.
+- A regisztrációs fiókhoz legfeljebb 200 előfizetés adható meg. Ezt követően az előfizetések csak a Account Center használatával hozhatók létre. Ha több előfizetést szeretne létrehozni az API-n keresztül, hozzon létre egy másik beléptetési fiókot.
+- Azok a felhasználók, akik nem rendelkeznek a tulajdonosokkal, de a RBAC keresztül regisztráltak egy regisztrációs fiókba, nem hozhatnak létre előfizetéseket a Account Center használatával.
+- Nem választhatja ki azt a bérlőt, amelyhez az előfizetést létre kívánja hozni. Az előfizetést a rendszer mindig a fiók tulajdonosának Kezdőlap bérlője hozza létre. Az előfizetés másik bérlőre való áthelyezésével kapcsolatban lásd az [előfizetés-bérlő módosítása](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-* A .NET használatával előfizetések létrehozása egy példa: [mintát a githubon](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core).
-* Most, hogy létrehozott egy előfizetést, meg lehet adni, hogy lehetősége más felhasználók és az egyszerű szolgáltatások. További információkért lásd: [hozzáférést (előzetes verzió) az Azure Enterprise-előfizetések létrehozása](grant-access-to-create-subscription.md).
-* Nagyszámú felügyeleti csoportok használatával előfizetések kezelésével kapcsolatos további tudnivalókért lásd: [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](management-groups-overview.md)
+* Az előfizetések .NET-tel történő létrehozásával kapcsolatos példa: [mintakód a githubon](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core).
+* Most, hogy létrehozott egy előfizetést, megadhatja ezt a lehetőséget más felhasználóknak és egyszerű szolgáltatásoknak. További információ: [hozzáférés biztosítása Azure Enterprise-előfizetések létrehozásához (előzetes verzió)](grant-access-to-create-subscription.md).
+* Ha többet szeretne megtudni a nagy számú előfizetés felügyeleti csoportokkal való kezelésével kapcsolatban, tekintse meg [az erőforrások rendszerezése az Azure felügyeleti csoportok](management-groups-overview.md) segítségével című témakört.
