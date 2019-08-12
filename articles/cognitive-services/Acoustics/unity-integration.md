@@ -3,20 +3,20 @@ title: Projekt akusztikai egységének integrációja és üzembe helyezése
 titlesuffix: Azure Cognitive Services
 description: Ez az útmutató bemutatja, hogyan integrálhatja a Project akusztikai egység beépülő modulját az Unity-projektbe.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1a90f6102d35dc1a3bb97c840f2955b54f35bbad
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
-ms.translationtype: HT
+ms.openlocfilehash: 54bc98e0ddba0292c6a5dbb07f2bbdfce6a1cb45
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706646"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933145"
 ---
 # <a name="project-acoustics-unity-integration"></a>Projekt akusztikai egységének integrációja
 Ez az útmutató bemutatja, hogyan integrálhatja a Project akusztikai egység beépülő modulját az Unity-projektbe.
@@ -32,6 +32,10 @@ Importálja az akusztikai UnityPackage a projektbe.
     ![Képernyőfelvétel az egység importálási csomag menüjéről](media/import-package.png)  
 
 * Válassza a **ProjectAcoustics. unitypackage elemet.**
+
+* Kattintson az **Importálás** gombra az egység csomag projektbe való integrálásához  
+
+    ![Képernyőfelvétel az egység importálási csomag párbeszédpanelről](media/import-dialog.png)  
 
 Ha a beépülő modult egy meglévő projektbe importálja, előfordulhat, hogy a projektben már van egy **MCS. RSP** fájl a projekt gyökerében, amely C# a fordító beállításait adja meg. Egyesíteni kell a fájl tartalmát a Project Acoustics beépülő modulhoz tartozó MCS. RSP fájllal.
 

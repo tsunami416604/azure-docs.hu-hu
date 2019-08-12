@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 0a71c7ffe9040c3002b1f5378ce298a047554b15
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
-ms.translationtype: HT
+ms.openlocfilehash: 079a0721e77174215c7256eecbe9bc522256f0b8
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640188"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881485"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Adatok másolása az Oracle-ből és a rendszerből a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -208,7 +208,7 @@ Az Oracle-adatok másolásához állítsa a forrás típusát a másolási tevé
 | partitionNames | A másolandó fizikai partíciók listája. <br>Akkor alkalmazza, ha a partíciós beállítás van `PhysicalPartitionsOfTable`. Ha lekérdezést használ a forrásadatok beolvasásához, a WHERE záradékban lévő hookot `?AdfTabularPartitionName` . Példaként tekintse meg az [Oracle párhuzamos másolási](#parallel-copy-from-oracle) szakaszát. | Nem |
 | partitionColumnName | Adja meg a forrás oszlop **olyan egész típusú** nevét, amelyet a párhuzamos másolási tartomány particionálásakor fog használni. Ha nincs megadva, a rendszer automatikusan észleli a tábla elsődleges kulcsát, és a partíció oszlopként használja. <br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange`. Ha lekérdezést használ a forrásadatok beolvasásához, a WHERE záradékban lévő hookot `?AdfRangePartitionColumnName` . Példaként tekintse meg az [Oracle párhuzamos másolási](#parallel-copy-from-oracle) szakaszát. | Nem |
 | partitionUpperBound | Az adatmásolásra szolgáló partíciós oszlop maximális értéke. <br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange`. Ha lekérdezést használ a forrásadatok beolvasásához, a WHERE záradékban lévő hookot `?AdfRangePartitionUpbound` . Példaként tekintse meg az [Oracle párhuzamos másolási](#parallel-copy-from-oracle) szakaszát. | Nem |
-| PartitionLowerBound | Az adatmásolásra szolgáló partíciós oszlop minimális értéke. <br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange`. Ha lekérdezést használ a forrásadatok beolvasásához, a WHERE záradékban lévő hookot `?AdfRangePartitionLowbound` . Példaként tekintse meg az [Oracle párhuzamos másolási](#parallel-copy-from-oracle) szakaszát. | Nem |
+| partitionLowerBound | Az adatmásolásra szolgáló partíciós oszlop minimális értéke. <br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange`. Ha lekérdezést használ a forrásadatok beolvasásához, a WHERE záradékban lévő hookot `?AdfRangePartitionLowbound` . Példaként tekintse meg az [Oracle párhuzamos másolási](#parallel-copy-from-oracle) szakaszát. | Nem |
 
 **Példa: adatok másolása egy alapszintű, partíció nélküli lekérdezés használatával**
 
@@ -340,7 +340,7 @@ Amikor a és az Oracle rendszerbe másol adatokból, a következő leképezések
 |:--- |:--- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(csak Oracle 10g és újabb verziók esetén támogatott) |
-| CHAR |Karakterlánc |
+| CHAR |Sztring |
 | CLOB |Sztring |
 | DATE |Datetime |
 | FLOAT |Decimal, String (Ha a pontosság > 28) |
@@ -350,11 +350,11 @@ Amikor a és az Oracle rendszerbe másol adatokból, a következő leképezések
 | NCHAR |Sztring |
 | NCLOB |Sztring |
 | NUMBER |Decimal, String (Ha a pontosság > 28) |
-| NVARCHAR2 |Karakterlánc |
+| NVARCHAR2 |Sztring |
 | RAW |Byte[] |
-| ROWID |Karakterlánc |
+| ROWID |Sztring |
 | TIMESTAMP |Datetime |
-| TIMESTAMP WITH LOCAL TIME ZONE |Karakterlánc |
+| TIMESTAMP WITH LOCAL TIME ZONE |Sztring |
 | TIMESTAMP WITH TIME ZONE |Sztring |
 | UNSIGNED INTEGER |Number |
 | VARCHAR2 |Sztring |

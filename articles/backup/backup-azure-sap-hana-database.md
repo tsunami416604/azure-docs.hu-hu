@@ -7,14 +7,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: dacurwin
-ms.openlocfilehash: f88555c6a8b3d4122a1a8ef82f58788a46dd5226
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
-ms.translationtype: HT
+ms.openlocfilehash: f5a76ef44ebef0689ec0587434996f28ba7b7025
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639839"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735546"
 ---
-# <a name="back-up-an-sap-hana-database"></a>SAP HANA adatbázis biztonsági mentése
+# <a name="back-up-an-sap-hana-database-to-azure"></a>SAP HANA-adatbázis biztonsági mentése az Azure-ba
 
 A [Azure Backup](backup-overview.md) támogatja SAP HANA adatbázisok biztonsági mentését az Azure-ba.
 

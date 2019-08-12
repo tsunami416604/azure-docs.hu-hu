@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 1bf8c22c2c7c8e8aaab35a4663652300a341c99c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: 04c77a82d08e2559d4ce29d49d56d6b7a5edfca5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571048"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856144"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Modell üzembe helyezése Azure Container Instances
 
@@ -28,7 +28,7 @@ Az ACI-ra vonatkozó kvóta-és területi elérhetőséggel kapcsolatos informá
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az Azure Machine Learning szolgáltatás munkaterületén. További információ: [Azure Machine learning szolgáltatás munkaterületének létrehozása](setup-create-workspace.md).
+- Az Azure Machine Learning szolgáltatás munkaterületén. További információ: [Azure Machine learning szolgáltatás munkaterületének létrehozása](how-to-manage-workspace.md).
 
 - A munkaterületen regisztrált gépi tanulási modell. Ha nem rendelkezik regisztrált modellel, tekintse meg a [modellek üzembe helyezésének módját és helyét](how-to-deploy-and-where.md).
 

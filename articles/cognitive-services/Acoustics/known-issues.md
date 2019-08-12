@@ -3,20 +3,20 @@ title: A Project Acoustics beépülő modullal kapcsolatos ismert problémák
 titlesuffix: Azure Cognitive Services
 description: Előfordulhat, hogy a következő ismert problémák merülhetnek fel a Project Acoustics tervezői előzetes verziójának használatakor.
 services: cognitive-services
-author: kylestorck
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kylsto
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: df5a4ce62af0405ffab8f711fb40b3d92083a3a4
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
-ms.translationtype: HT
+ms.openlocfilehash: 37084480423de90f50beced187eda202b39f8bf1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706664"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933069"
 ---
 # <a name="project-acoustics-known-issues"></a>A projekt akusztikai ismert problémái
 Előfordulhat, hogy a következő ismert problémák merülhetnek fel a Project Acoustics tervezői előzetes verziójának használatakor.
@@ -24,10 +24,6 @@ Előfordulhat, hogy a következő ismert problémák merülhetnek fel a Project 
 ## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>Az akusztikus paraméterek elvesznek a jelenet átnevezése során
 
 Ha átnevez egy jelenetet, a jelenethez tartozó összes akusztikai paraméter nem lesz automatikusan átmásolva az új színtérre. Azonban továbbra is léteznek a régi adatfájlban. Keresse meg a **SceneName_AcousticParameters. Asset** fájlt a saját jelenet fájlja melletti **szerkesztő** könyvtárban. Nevezze át a fájlt úgy, hogy az tükrözze az új jelenet nevét.
-
-## <a name="unity-crashes-when-closing-project"></a>Az egység összeomlik a projekt bezárásakor
-
-Az Unity (2018.2 +) legújabb verzióiban létezik egy ismert hiba, amelyben az egység összeomlik a projekt lezárása után. Ezt az [egységességi probléma](https://issuetracker.unity3d.com/issues/crash-on-assetdatabase-getassetimporterversions-when-closing-a-specific-unity-project)követte nyomon.
 
 ## <a name="deploying-to-android-from-some-unity-versions"></a>Üzembe helyezés az Android rendszerbe néhány Unity-verzióból
 

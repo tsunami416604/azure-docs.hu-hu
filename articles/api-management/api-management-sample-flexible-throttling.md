@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 0e7c6fe10467bb68417172dc95fef874d37fc97b
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
-ms.translationtype: HT
+ms.openlocfilehash: f0f89275006498c0ff4883f259d7e76f723b922b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696242"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851324"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Speciális kérelmek szabályozása az Azure API Management
 A bejövő kérések szabályozása az Azure API Management kulcsfontosságú szerepe. A kérések sebességének vagy az átvitt kérelmeknek/adatoknak a szabályozásával API Management lehetővé teszi az API-szolgáltatók számára, hogy az API-kat felhasználják a visszaéléstől, és értéket hozzanak létre különböző API-termékekhez.
@@ -29,7 +29,7 @@ Az eddigi díjszabási képességeket a rendszer a Azure Portalban definiált ad
 
 ## <a name="custom-key-based-throttling"></a>Egyéni kulcs alapú szabályozás
 
-> MEGJEGYZÉS: A `rate-limit-by-key` házirend nem érhető el, ha az Azure API Management felhasználási szintjében van. 
+> MEGJEGYZÉS: A `rate-limit-by-key` és`quota-by-key` a házirendek nem érhetők el, ha az Azure API Management felhasználási szintjében van. 
 
 Az új [díjszabás – a korlátozási kulcsok](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) és a [kvóta-](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) ellenőrzési házirendek rugalmasabb megoldást biztosítanak a forgalom szabályozására. Ezek az új házirendek lehetővé teszik kifejezések meghatározását a forgalom nyomon követéséhez használt kulcsok azonosításához. Ennek a működésnek a példája a legkönnyebb illusztrálva. 
 

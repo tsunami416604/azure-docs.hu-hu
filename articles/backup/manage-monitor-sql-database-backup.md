@@ -1,5 +1,5 @@
 ---
-title: Felügyelheti és figyelheti SQL Server adatbázisait egy olyan Azure-beli virtuális gépen, amelyről biztonsági másolat készül Azure Backup használatával | Microsoft Docs
+title: SQL Server-adatbázisok kezelése és figyelése egy Azure-beli virtuális gépen Azure Backup
 description: Ez a cikk az Azure-beli virtuális gépeken futó SQL Server adatbázisok felügyeletét és figyelését ismerteti.
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dacurwin
-ms.openlocfilehash: c5f61c778849a57d9143580e0e1041c7fe992d52
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
-ms.translationtype: HT
+ms.openlocfilehash: 7cd916c8e52b40dee3ce2d63d43dc88f09001b32
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639586"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827556"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>SQL Server adatbázisok biztonsági mentésének kezelése és figyelése
 
@@ -120,7 +120,7 @@ Különböző típusú, igény szerinti biztonsági mentést is futtathat:
 * Különbségi biztonsági mentés
 * Naplóalapú biztonsági mentés
 
-Míg a csak a teljes biztonsági mentés megőrzési időtartamát kell megadnia, a más biztonsági mentési típusok megőrzési tartománya automatikusan 30 nappal az aktuális időpontra van állítva. <br/>
+Míg a csak a teljes biztonsági mentés megőrzési időtartamát kell megadnia, az ad-hoc teljes biztonsági mentés megőrzési tartománya automatikusan 45 napra lesz állítva az aktuális időpontnál. <br/>
 További információ: [SQL Server biztonsági mentési típusok](backup-architecture.md#sql-server-backup-types).
 
 ## <a name="unregister-a-sql-server-instance"></a>SQL Server példány regisztrációjának törlése

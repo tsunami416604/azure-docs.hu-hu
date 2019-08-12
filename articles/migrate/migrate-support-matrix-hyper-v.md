@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 787bcf28a64c98f82deb0725e2362bf8144d6c4e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 105cbf173a9abe1adf0999f63740d47b3da51a29
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640867"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856289"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>A Hyper-V felmérésének és migrálásának támogatási mátrixa
 
@@ -27,23 +27,27 @@ A táblázat összefoglalja a Hyper-V virtuális gépek támogatott forgatókön
 **Üzembe helyezés** | **Részletek***
 --- | ---
 **Helyszíni Hyper-V virtuális gépek felmérése** | [Állítsa be](tutorial-prepare-hyper-v.md) az első értékelést.<br/><br/> Nagy léptékű értékelés [futtatása](scale-hyper-v-assessment.md) .
-**A Hyper-V virtuális gépek migrálása az Azure-ba** | [Próbálja ki](tutorial-migrate-hyper-v.md) az Azure-ba való áttelepítést.
+**A Hyper-V virtuális gépek migrálása az Azure-ba** | [Próbálja ki](tutorial-migrate-hyper-v.md) az Azure-ba való áttelepítést. 
 
-
+A System Center Virtual Machine Manager (VMM) által felügyelt Hyper-V-kiszolgálók áttelepítése nem támogatott Azure Migrate-kiszolgáló áttelepítése esetén. 
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate projektek
 
 **Támogatás** | **Részletek**
 --- | ---
 Azure-engedélyek | Azure Migrate projekt létrehozásához közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie az előfizetésben.
-Hyper-V virtuális gépek | Akár 10 000 Hyper-V virtuális gépet is kivizsgálhat egyetlen projektben. Egy Azure-előfizetéshez több projekt is tartozhat. A projektek tartalmazhatják a VMware virtuális gépeket és a Hyper-V virtuális gépeket is, az értékelési korlátokig.
+Hyper-V virtuális gépek | Akár 35 000 Hyper-V virtuális gépet is kivizsgálhat egyetlen projektben. Egy Azure-előfizetéshez több projekt is tartozhat. A projektek tartalmazhatják a VMware virtuális gépeket és a Hyper-V virtuális gépeket is, az értékelési korlátokig.
 Földrajzi hely | Azure Migrate-projekteket számos földrajzi régióban is létrehozhatja. Habár létrehozhat projekteket adott ographies, a gépeket más célhelyekre is kielemezheti vagy áttelepítheti. A projekt földrajza csak a felderített metaadatok tárolására szolgál.
 
   **Régiócsoport** | **Metaadatok tárolási helye**
   --- | ---
   Azure Government | USA-beli államigazgatás – Virginia
-  Ázsia és a Csendes-óceáni térség | Délkelet-Ázsia vagy Kelet-Ázsia
-  Európa | Dél-Európa vagy Nyugat-Európa
+  Ázsia és a Csendes-óceáni térség | Kelet-Ázsia vagy Délkelet-Ázsia
+  Ausztrália | Kelet-Ausztrália vagy Délkelet-Ausztrália
+  Kanada | Közép-Kanada vagy Kelet-Kanada
+  Európa | Észak-Európa vagy Nyugat-Európa
+  India | Közép-India vagy Dél-India
+  Japán |  Kelet-japán vagy Nyugat-Japán
   Egyesült Királyság | Egyesült Királyság déli régiója vagy Egyesült Királyság nyugati régiója
   Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
 
@@ -84,7 +88,7 @@ Az értékeléshez Azure Migrate egy könnyű berendezést futtat a Hyper-V virt
 | **Támogatás**                | **Részletek**               
 | :-------------------       | :------------------- |
 | **Azure Migrate projekt**  |  Egy készülék egyetlen projekthez is társítható.<br/> Akár 5000 Hyper-V virtuális gépet is felfedezhet egyetlen berendezéssel.
-| **Hyper-V**    |  A berendezést Hyper-V virtuális gépként kell üzembe helyezni.<br/> A készülékhez megadott VM a Hyper-V VM 5,0-es verziója.<br/> A virtuális gépnek Windows Server 2012 R2 vagy újabb rendszernek kell futnia.<br/> A készülék virtuális gépe számára elegendő lemezterület szükséges a 16 GB RAM, 4 virtuális processzor és 1 külső kapcsoló lefoglalásához.<br/> A készülék statikus vagy dinamikus IP-címet, valamint internet-hozzáférést igényel.
+| **Hyper-V**    |  A berendezést Hyper-V virtuális gépként kell üzembe helyezni.<br/> A készülékhez megadott VM a Hyper-V VM 5,0-es verziója.<br/> A virtuális gépnek Windows Server 2012 R2 vagy újabb rendszernek kell futnia.<br/> A készülék virtuális gépe számára elegendő terület szükséges a 16 GB RAM, 8 vCPU és 1 külső kapcsoló lefoglalásához.<br/> A készülék statikus vagy dinamikus IP-címet, valamint internet-hozzáférést igényel.
 
 
 ## <a name="assessment-appliance-url-access"></a>Felmérés – készülék URL-hozzáférése

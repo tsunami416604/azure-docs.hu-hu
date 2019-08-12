@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 07/07/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: fd029c1e7b67d308e3e1fdbedbdc90ea430b4f5b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: 822b8bd1d0f5be854b6d345d68fcdb680b2ef1c4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567250"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882566"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database felügyelt példányok T-SQL eltérései SQL Server
 
@@ -25,7 +25,7 @@ Ez a cikk összefoglalja és ismerteti a Azure SQL Database felügyelt példány
 - A [rendelkezésre állás](#availability) magában foglalja a [mindig](#always-on-availability) és a [biztonsági mentések](#backup)közötti különbségeket.
 - A [Biztonság](#security) magában foglalja a [naplózás](#auditing), a [tanúsítványok](#certificates), a [hitelesítő adatok](#credential), a kriptográfiai [szolgáltatók](#cryptographic-providers), a bejelentkezések [és a felhasználók](#logins-and-users), valamint a [szolgáltatás kulcsa és a szolgáltatás](#service-key-and-service-master-key)főkulcsa közötti különbségeket.
 - A [konfiguráció](#configuration) magában foglalja a [puffer](#buffer-pool-extension)-bővítmények, a [Rendezés](#collation), a [kompatibilitási szintek](#compatibility-levels), az [adatbázis-tükrözés](#database-mirroring), az adatbázis- [Beállítások](#database-options), a [SQL Server Agent](#sql-server-agent)és a [tábla beállításainak](#tables)különbségeit.
-- A [funkciók](#functionalities) közé tartoznak a [bulk INSERT/OpenRowset](#bulk-insert--openrowset), a [CLR](#clr), a [DBCC](#dbcc), az [Elosztott tranzakciók](#distributed-transactions), a [bővített események](#extended-events), a [külső kódtárak](#external-libraries), a [FileStream és](#filestream-and-filetable)a lefoglalható, a [teljes szöveges Szemantikai keresés](#full-text-semantic-search), [csatolt kiszolgálók](#linked-servers), alapszintű, [replikálás](#replication), [](#polybase) [visszaállítás](#restore-statement), [Service Broker](#service-broker), [tárolt eljárások, függvények és eseményindítók](#stored-procedures-functions-and-triggers).
+- A [funkciók](#functionalities) közé tartozik a [bulk INSERT/OpenRowset](#bulk-insert--openrowset), a [CLR](#clr), a [DBCC](#dbcc), az [Elosztott tranzakciók](#distributed-transactions), a [bővített események](#extended-events), a [külső kódtárak](#external-libraries), a [FileStream és](#filestream-and-filetable)a lefoglalható, a [teljes szöveges Szemantikai keresés](#full-text-semantic-search), [csatolt kiszolgálók](#linked-servers), alapszintű, [replikálás](#replication), [](#polybase) [visszaállítás](#restore-statement), [Service Broker](#service-broker), [tárolt eljárások, függvények és eseményindítók](#stored-procedures-functions-and-triggers).
 - [Környezeti beállítások](#Environment) , például virtuális hálózatok és alhálózati konfigurációk.
 - [A felügyelt példányokban eltérő viselkedésű funkciók](#Changes).
 - [Ideiglenes korlátozások és ismert problémák](#Issues).
@@ -131,7 +131,7 @@ A felügyelt példányok nem férhetnek hozzá a fájlokhoz, így a titkosítás
 ### <a name="logins-and-users"></a>Bejelentkezések és felhasználók
 
 - A, `FROM CERTIFICATE` `FROM ASYMMETRIC KEY`a és`FROM SID` a használatával létrehozott SQL-bejelentkezések támogatottak. Lásd: [create login (bejelentkezés létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql)).
-- A [bejelentkezési szintaxissal](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) létrehozott Azure Active Directory (Azure ad) kiszolgálói rendszerbiztonsági tag (bejelentkezések) vagy a [felhasználó létrehozása a bejelentkezéskor [Azure ad login]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) szintaxis támogatott (nyilvános előzetes verzió). Ezek a bejelentkezések a kiszolgálói szinten jönnek létre.
+- A bejelentkezési szintaxissal létrehozott Azure Active Directory (Azure AD) kiszolgálói rendszerbiztonsági tag ( [](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) bejelentkezések) vagy a [felhasználó létrehozása a bejelentkezéskor [Azure ad login]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) szintaxis támogatott (nyilvános előzetes verzió). Ezek a bejelentkezések a kiszolgálói szinten jönnek létre.
 
     A felügyelt példány a szintaxissal `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`támogatja az Azure ad-adatbázisok résztvevőit. Ez a szolgáltatás az Azure AD-ben tárolt adatbázis-felhasználók néven is ismert.
 
@@ -320,7 +320,7 @@ A táblázatok létrehozásával és módosításával kapcsolatos további info
 
 ## <a name="functionalities"></a>Functionalities
 
-### <a name="bulk-insert--openrowset"></a>Tömeges Beszúrás/OpenRowset
+### <a name="bulk-insert--openrowset"></a>Tömeges Beszúrás/OPENROWSET
 
 A felügyelt példányok nem férnek hozzá a fájlmegosztás és a Windows-mappák eléréséhez, így a fájlokat az Azure Blob Storage-ból kell importálni:
 
@@ -395,17 +395,48 @@ Műveletek
 
 ### <a name="polybase"></a>PolyBase
 
-A HDFS vagy az Azure Blob Storage-ban található fájlokra hivatkozó külső táblák nem támogatottak. További információ a következőről [: Base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
+A HDFS vagy az Azure Blob Storage-ban található fájlokra hivatkozó külső táblák nem támogatottak. További információ a következőről: Base [](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
 
 ### <a name="replication"></a>Replikálás
 
-A [tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md) a felügyelt példány nyilvános előzetes verziójához érhető el, néhány korlátozással:
-- A replikációs résztvevők (kiadó, terjesztő, pull-előfizető és leküldéses előfizető) a felügyelt példányokon helyezhetők el, de a közzétevő és a terjesztő nem helyezhető el különböző példányokra.
-- A tranzakciós, a pillanatképek és a kétirányú replikálási típusok támogatottak. Az egyesítéses replikáció, a társközi replikálás és a frissíthető előfizetések nem támogatottak.
-- A felügyelt példány képes kommunikálni a SQL Server legújabb verzióival. Tekintse meg a [támogatott verziókat](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems).
-- A tranzakciós replikáció [további hálózati követelményekkel](sql-database-managed-instance-transactional-replication.md#requirements)rendelkezik.
+- A pillanatképek és a kétirányú replikálási típusok támogatottak. Az egyesítéses replikáció, a társ-társ replikáció és a frissíthető előfizetések nem támogatottak.
+- A [tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md) a felügyelt példány nyilvános előzetes verziójához érhető el, néhány korlátozással:
+    - A replikációs résztvevők (kiadó, terjesztő, lekéréses előfizető és leküldéses előfizető) a felügyelt példányokon helyezhetők el, de a közzétevő és a terjesztő nem helyezhető el különböző példányokra.
+    - A felügyelt példányok kommunikálhatnak a SQL Server legújabb verzióival. Tekintse meg a [](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)támogatott verziókat.
+    - A tranzakciós replikáció [további hálózati követelményekkel](sql-database-managed-instance-transactional-replication.md#requirements)rendelkezik.
 
-A replikáció konfigurálásával kapcsolatos további információkért lásd: [replikálási oktatóanyag](replication-with-sql-database-managed-instance.md).
+A replikáció konfigurálásával kapcsolatos információkért tekintse [](replication-with-sql-database-managed-instance.md)meg a replikálási oktatóanyagot.
+
+
+Ha a replikáció engedélyezve van egy [feladatátvételi csoportban](sql-database-auto-failover-group.md)lévő adatbázison, a felügyelt példány rendszergazdájának ki kell állítania a régi elsődleges összes kiadványt, és újra kell konfigurálnia azokat az új elsődleges feladatátvétel után. Ebben a forgatókönyvben a következő tevékenységek szükségesek:
+
+1. Állítsa le az adatbázison futó összes replikációs feladatot, ha vannak ilyenek.
+2. Az előfizetés metaadatainak eldobása a közzétevőtől a következő parancsfájl futtatásával a közzétevő adatbázisán:
+
+   ```sql
+   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
+   ```             
+ 
+1. Az előfizetés metaadatainak eldobása az előfizetőtől. Futtassa a következő parancsfájlt az előfizetői példány előfizetési adatbázisában:
+
+   ```sql
+   EXEC sp_subscription_cleanup
+      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
+      @publisher_db = N'<publisher database>', 
+      @publication = N'<name of publication>'; 
+   ```                
+
+1. Az összes replikációs objektum kényszerített eldobása a közzétevőtől a közzétett adatbázisban a következő parancsfájl futtatásával:
+
+   ```sql
+   EXEC sp_removedbreplication
+   ```
+
+1. Az eredeti elsődleges példánytól származó régi terjesztő kényszerített eldobása (ha a feladatátvételt egy olyan régi elsődlegesre végzi, amely a terjesztőhöz lett használva). Futtassa a következő parancsfájlt a főadatbázisban a régi terjesztő által felügyelt példányon:
+
+   ```sql
+   EXEC sp_dropdistributor 1,1
+   ```
 
 ### <a name="restore-statement"></a>VISSZAÁLLÍTÁSi utasítás 
 
@@ -467,7 +498,7 @@ A több példányban elérhető Service Broker nem támogatott:
 ## <a name="Environment"></a>Környezeti korlátozások
 
 ### <a name="subnet"></a>Subnet
-- A felügyelt példány számára fenntartott alhálózat esetében nem helyezhet el semmilyen más erőforrást (például virtuális gépeket). Helyezze ezeket az erőforrásokat a többi alhálózatba.
+-  Nem helyezhet el semmilyen más erőforrást (például virtuális gépeket) abban az alhálózatban, amelyben a felügyelt példányt telepítette. Ezeket az erőforrásokat egy másik alhálózattal telepítse.
 - Az alhálózatnak elegendő számú elérhető [IP-címmel](sql-database-managed-instance-connectivity-architecture.md#network-requirements)kell rendelkeznie. A minimum 16, míg a javaslat szerint legalább 32 IP-címmel kell rendelkeznie az alhálózatban.
 - [A szolgáltatási végpontok nem társíthatók a felügyelt példány](sql-database-managed-instance-connectivity-architecture.md#network-requirements)alhálózatához. Győződjön meg arról, hogy a szolgáltatás-végpontok beállítás le van tiltva a virtuális hálózat létrehozásakor.
 - A régiókban üzembe helyezhető virtuális mag és típusok száma bizonyos [korlátozásokkal és korlátozásokkal](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)rendelkezik.
@@ -476,7 +507,7 @@ A több példányban elérhető Service Broker nem támogatott:
 ### <a name="vnet"></a>VNET
 - A VNet az Resource Model használatával telepíthető – a VNet klasszikus modellje nem támogatott.
 - Felügyelt példány létrehozása után a felügyelt példány vagy VNet másik erőforráscsoporthoz vagy előfizetésbe való áthelyezése nem támogatott.
-- Egyes szolgáltatások, például a App Service környezetek, a Logic apps és a felügyelt példányok (földrajzi replikálás, tranzakciós replikálás vagy csatolt kiszolgálókon keresztül) nem férnek hozzá a felügyelt példányokhoz különböző régiókban, ha a virtuális hálózatok globálisan vannak csatlakoztatva [ peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Ezekhez az erőforrásokhoz a ExpressRoute vagy a VNet – VNet használatával kapcsolódhat a VNet-átjárók segítségével.
+- Egyes szolgáltatások, például a App Service környezetek, a Logic apps és a felügyelt példányok (földrajzi replikálás, tranzakciós replikálás vagy csatolt kiszolgálókon keresztül) nem férnek hozzá a felügyelt példányokhoz különböző régiókban, ha a virtuális hálózatok globálisan vannak csatlakoztatva [ peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Ezekhez az erőforrásokhoz a ExpressRoute vagy a VNet – VNet használatával csatlakozhat a VNet-átjárók segítségével.
 
 ## <a name="Changes"></a>Viselkedési változások
 
@@ -494,11 +525,11 @@ A következő változók, függvények és nézetek eltérő eredményeket adnak
 
 ### <a name="tempdb-size"></a>TEMPDB mérete
 
-A maximális fájlméret nem lehet `tempdb` nagyobb, mint 24 GB általános célú szinten. Üzletileg kritikus szinten `tempdb` a maximális méret a példány tárolási méretével van korlátozva. `tempdb`a naplófájl mérete általános célú és üzletileg kritikus szinten egyaránt 120 GB-ra van korlátozva. Az `tempdb` adatbázis mindig 12 adatfájlra van bontva. A fájlok maximális mérete nem módosítható, és az új fájlok nem adhatók hozzá `tempdb`a következőhöz:. Előfordulhat, hogy egyes lekérdezések hibát jeleznek, ha legalább 24 GB-nál nagyobb `tempdb` mennyiségre van szükségük, vagy ha több, mint 120 GB-nyi naplót hoznak létre. `tempdb`a rendszer mindig üres adatbázisként hozza létre újra, amikor a példány elindul vagy feladatátvételt végez, és a bekövetkezett változások nem őrződnek meg `tempdb` . 
+A maximális fájlméret nem lehet `tempdb` nagyobb, mint 24 GB általános célú szinten. A üzletileg kritikus `tempdb` szinten lévő maximális méretet a példány tárolási mérete korlátozza. `Tempdb`a naplófájl mérete általános célú és üzletileg kritikus szinten egyaránt 120 GB-ra van korlátozva. Az `tempdb` adatbázis mindig 12 adatfájlra van bontva. A fájlok maximális mérete nem módosítható, és az új fájlok nem adhatók hozzá `tempdb`a következőhöz:. Előfordulhat, hogy egyes lekérdezések hibát jeleznek, ha legalább 24 GB-nál több `tempdb` adatra van szükségük, vagy ha több mint 120 GB adatnaplót hoznak létre. `Tempdb`a rendszer mindig üres adatbázisként hozza létre újra, amikor a példány elindul vagy feladatátvételt végez, és a folyamatban `tempdb` lévő módosításokat nem őrzi meg a rendszer. 
 
 ### <a name="cant-restore-contained-database"></a>A tárolt adatbázis nem állítható vissza
 
-A felügyelt példány nem tudja visszaállítani a [bennük lévő adatbázisokat](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases). A meglévő foglalt adatbázisok időponthoz való visszaállítása nem működik a felügyelt példányon. Ezt a problémát hamarosan megoldják. Addig is javasoljuk, hogy távolítsa el az adattárolási lehetőséget a felügyelt példányra helyezett adatbázisokból. Ne használja a tárolás lehetőséget az éles adatbázisokhoz. 
+A felügyelt példány nem tudja visszaállítani a [bennük lévő adatbázisokat](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases). A meglévő foglalt adatbázisok időponthoz való visszaállítása nem működik a felügyelt példányon. Addig is javasoljuk, hogy távolítsa el az adattárolási lehetőséget a felügyelt példányra helyezett adatbázisokból. Ne használja a tárolás lehetőséget az éles adatbázisokhoz. 
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Kis méretű adatbázisfájlok esetén a tárterület nagyobb
 
@@ -506,7 +537,7 @@ A felügyelt példány nem tudja visszaállítani a [bennük lévő adatbázisok
 
 Az egyes általános célú felügyelt példányok esetében akár 35 TB tárterület is rendelkezésre áll az Azure Premium lemezterület számára. Minden adatbázisfájl külön fizikai lemezre kerül. A lemezek mérete 128 GB, 256 GB, 512 GB, 1 TB vagy 4 TB lehet. A lemez nem használt lemezterülete nem számít fel díjat, de az Azure Premium-lemezek teljes mérete nem haladhatja meg a 35 TB-ot. Bizonyos esetekben előfordulhat, hogy egy felügyelt példány, amely nem igényel 8 TB-ot, a belső töredezettség miatt túllépheti a 35 TB-os Azure-korlátot a tárterületen.
 
-Előfordulhat például, hogy egy általános célú felügyelt példány egy 4 TB-os lemezre helyezett, 1,2 TB méretű fájllal rendelkezik. Az is előfordulhat, hogy a 248-es fájlok mindegyike 1 GB méretű, amely külön 128 GB-os lemezekre van helyezve. Ebben a példában:
+Előfordulhat például, hogy egy általános célú felügyelt példány egy 4 TB-os lemezre helyezett, 1,2 TB méretű nagy fájllal rendelkezik. Az is előfordulhat, hogy a 248-es fájl 1 GB-os fájlokat tartalmaz, amelyek mindegyike külön 128 GB-os lemezekre van helyezve. Ebben a példában:
 
 - A lefoglalt tárterület teljes mérete 1 x 4 TB + 248 x 128 GB = 35 TB.
 - A példányon lévő adatbázisok teljes lefoglalt területe 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.
@@ -547,7 +578,7 @@ A felügyelt példányban elérhető naplók nem maradnak meg, és a méreteik n
 
 ### <a name="error-logs-are-verbose"></a>A naplók részletesek
 
-A felügyelt példányok részletes információkat helyeznek el a hibák naplóiban, és ennek jelentős része nem releváns. A naplófájlokban lévő információk mennyisége a jövőben csökkenni fog.
+A felügyelt példányok részletes információkat helyeznek el a hibák naplóiban, és ennek jelentős része nem releváns. 
 
 **Workaround** Egyéni eljárással olvashatja el a nem releváns bejegyzéseket kiszűrő hibákat. További információ: felügyelt [példány – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 

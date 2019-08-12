@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/29/2019
+ms.date: 08/05/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60474148d1eac6ca9d85fbc1d103ad612787aeae
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
-ms.translationtype: HT
+ms.openlocfilehash: 4af30a24c5913abec1c2c2287e1b0f145470f42c
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607867"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828358"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -34,20 +34,8 @@ Az Azure SAP HANA-hoz való egyedisége egy olyan ajánlat, amely az Azure-t egy
 
 Az Azure SAP munkaterhelés-forgatókönyvek üzemeltetése az identitás-integrációra és az egyszeri bejelentkezésre vonatkozó követelményeket is képes létrehozni. Ez a helyzet akkor fordulhat elő, ha Azure Active Directory (Azure AD) használatával csatlakozik a különböző SAP-összetevőkhöz és az SAP-szolgáltatásokhoz (SaaS) vagy a szolgáltatásként kínált platformokhoz. Az Azure AD-val és az SAP-entitásokkal kapcsolatos ilyen integrációs és egyszeri bejelentkezési forgatókönyvek listáját a "HRE SAP Identity Integration és az egyszeri bejelentkezés" című szakaszban ismertetjük és dokumentáljuk.
 
-## <a name="change-log"></a>Módosítási napló
-
-- Változások a [fürtben egy SAP ASCS/SCS-példány egy Windows feladatátvevő fürtön egy Azure-beli fájlmegosztás használatával](sap-high-availability-guide-wsfc-file-share.md) , amely a közvetlen tárolóhelyek Azure site Recovery szolgáltatások általi támogatását tükrözi
-- [Azure Proximity-elhelyezési csoportok kiadása az optimális hálózati késés érdekében SAP](sap-proximity-placement-scenarios.md) -alkalmazásokkal
-- Az IBM DB2 HADR új útmutatójának kiadása a [Red Hat Enterprise Serveren](high-availability-guide-rhel-ibm-db2-luw.md)
-- Az [SAP NetWeaver magas rendelkezésre állásának kiadása Red Hat Enterprise Linux Azure NETAPP Files SAP](high-availability-guide-rhel-netapp-files.md) -alkalmazásokhoz
-- A ExpressRoute gyors elérési útja és Global Reach a HANA nagyméretű példányaihoz [SAP HANA (nagyméretű példányok) hálózati architektúrában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture) és kapcsolódó dokumentumokban
-- [Az Azure HANA nagyméretű példányok vezérlésének kiadása a Azure Portal](hana-li-portal.md)
-- [Magas rendelkezésre állás az SAP NetWeaver számára az Azure-beli virtuális gépeken a SUSE Linux Enterprise Server Azure NETAPP Files SAP](high-availability-guide-suse-netapp-files.md) -alkalmazásokhoz
-- Az [Azure NetAppFiles (ANF) bétaverziójának SAP HANA-es verziójának SAP NETWEAVER ASCS telepítése](lama-installation.md)
-
-
-
-
+## <a name="changes-to-the-sap-workload-section"></a>Az SAP munkaterhelés szakasz változásai
+Az SAP on Azure munkaterhelés című szakaszban szereplő dokumentumok módosításai a cikk végén találhatók.
 
 
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA az Azure-ban (nagyméretű példányok)
@@ -132,5 +120,13 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 - [Az Azure Data Factory SAP HANA- és Business Warehouse-adatok integrációját nyújtja](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 
 
+## <a name="change-log"></a>Módosítási napló
+
+- 08/01/2019: Változások az [Azure-beli SUSE Linux Enterprise Server pacemaker beállításához](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) a módosítások integrálásához a SLES 15 esetében 
+- 07/23/2019: Változások a [fürtben egy SAP ASCS/SCS-példány egy Windows feladatátvevő fürtön egy Azure-beli fájlmegosztás használatával](sap-high-availability-guide-wsfc-file-share.md) , amely a közvetlen tárolóhelyek Azure site Recovery szolgáltatások általi támogatását tükrözi
+- 07/14/2019: [Azure Proximity-elhelyezési csoportok kiadása az optimális hálózati késés érdekében SAP](sap-proximity-placement-scenarios.md) -alkalmazásokkal
+- 07/11/2019: A HANA nagy példányokat bemutató különböző dokumentumok változásai a HANA nagy példányok 4. változatának befedéséhez
+- 07/09/2019: Az IBM DB2 HADR új útmutatójának kiadása a [Red Hat Enterprise Serveren](high-availability-guide-rhel-ibm-db2-luw.md)
+- 06/13/2019: Az [SAP NetWeaver magas rendelkezésre állásának kiadása Red Hat Enterprise Linux Azure NETAPP Files SAP](high-availability-guide-rhel-netapp-files.md) -alkalmazásokhoz
 
 

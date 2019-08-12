@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 50056d4d05d2426ff644518aea04a2c9f4d817f3
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
-ms.translationtype: HT
+ms.openlocfilehash: 3aa3176b1d6d9e5665fd3a8988b71159a4fc20c0
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667171"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735715"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Az Azure Functions – alkalmazásbeállítási referencia
 
@@ -115,6 +115,15 @@ A használatához a függvényalkalmazást a Functions futtatókörnyezetének v
 |Kulcs|Mintaérték|
 |---|------------|
 |FÜGGVÉNYEK\_BŐVÍTMÉNY\_VERZIÓ|KB. 2|
+
+## <a name="functions_worker_process_count"></a>\_FUNCTIONS\_MUNKAVÉGZŐ FOLYAMATOK\_SZÁMA
+
+Meghatározza a nyelv munkavégző folyamatainak maximális számát, alapértelmezett értékkel `1`. A megengedett `10`maximális érték:. A függvények meghívása egyenletesen oszlik meg a nyelvi munkavégző folyamatok között. A nyelv munkavégző folyamatai 10 másodpercenként jönnek létre, amíg el nem éri a\_functions\_munkavégző\_folyamatának száma. Több nyelvi feldolgozó folyamat használata nem ugyanaz, mint a [skálázás](functions-scale.md). Akkor érdemes ezt a beállítást használni, ha a számítási feladathoz CPU-kötésű és I/O-kötésű hívás is tartozik. Ez a beállítás az összes non-.NET nyelvre vonatkozik.
+
+|Kulcs|Mintaérték|
+|---|------------|
+|\_FUNCTIONS\_MUNKAVÉGZŐ FOLYAMATOK\_SZÁMA|2|
+
 
 ## <a name="functions_worker_runtime"></a>FÜGGVÉNYEK\_FELDOLGOZÓ\_MODUL
 

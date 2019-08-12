@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: e288e03b9e2c02ba963595f192dea7225c6d5762
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
-ms.translationtype: HT
+ms.openlocfilehash: d872cd78b3fd04512fcaee706e54bffa1cf9fcc1
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638983"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882091"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Csempe rétegének hozzáadása térképhez
 
 Ez a cikk bemutatja, hogyan helyezhet át egy csempe réteget a térképen. A csempe rétegek lehetővé teszik, hogy az alapszintű Térkép csempék fölé írja a képeket Azure Maps. Azure Maps csempe rendszerével kapcsolatos további információkért tekintse meg a [nagyítási szintek és](zoom-levels-and-tile-grid.md) a csempék rácsának dokumentációját.
 
-Csempe-réteg betöltése a csempék között egy kiszolgálóról. Ezeket a lemezképeket előre megjelenítheti és tárolhatja, mint bármely más rendszerkép egy kiszolgálón a csempe rétege által értelmezett elnevezési konvencióval vagy olyan dinamikus szolgáltatással, amely menet közben hozza létre a képeket. Az Azure Maps [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) osztály három különböző csempe-szolgáltatási elnevezési konvenciót támogat. 
+Egy csempe réteg tölti be a csempéket egy kiszolgálóról. Ezeket a lemezképeket előre megjelenítheti és tárolhatja, mint bármely más rendszerkép egy kiszolgálón a csempe rétege által értelmezett elnevezési konvencióval vagy olyan dinamikus szolgáltatással, amely menet közben hozza létre a képeket. Az Azure Maps [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) osztály három különböző csempe-szolgáltatási elnevezési konvenciót támogat: 
 
 * X, Y, nagyítási jelölés – a nagyítási szint alapján az x az oszlop, az Y pedig a csempén lévő csempe sor pozíciója.
 * Quadkey jelölés – x, y és nagyítási információ egyetlen karakterlánc-értékre, amely egy csempe egyedi azonosítója.
@@ -40,7 +40,7 @@ A csempe rétegbe átadott csempe URL-címének HTTP/HTTPS URL-címnek kell lenn
 
 ## <a name="add-a-tile-layer"></a>Mozaikréteg hozzáadása
 
- Ez a minta bemutatja, hogyan hozhat létre egy csempe réteget, amely az x, y, zoom csempe rendszerű csempe-készletre mutat. Ennek a csempe rétegnek a forrása az [Iowa Állami Egyetem Iowa környezeti Mesonet](https://mesonet.agron.iastate.edu/ogc/)származó időjárási radar.
+ Ez a minta bemutatja, hogyan hozhat létre egy csempe réteget, amely az x, y, zoom csempe rendszerű csempe-készletre mutat. Ennek a csempe rétegnek a forrása az [Iowa Állami Egyetem Iowa környezeti Mesonet](https://mesonet.agron.iastate.edu/ogc/)származó időjárási radar. 
 
 <br/>
 
@@ -53,7 +53,7 @@ A második blokkban a [TileLayer](https://docs.microsoft.com/javascript/api/azur
 
 ## <a name="customize-a-tile-layer"></a>Csempe rétegének testreszabása
 
-A csempe rétegnek csak számos stílusa van. Itt látható egy eszköz, amellyel kipróbálhatja őket.
+A csempe réteg osztályának számos stílusa van. Itt látható egy eszköz, amellyel kipróbálhatja őket.
 
 <br/>
 

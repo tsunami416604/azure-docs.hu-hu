@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6de348a19081eba685deafebd8a7c9b9d6556444
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
-ms.translationtype: HT
+ms.openlocfilehash: 67e5364996be2945d67aa1a95cbc3ab8137e077e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688111"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850255"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>A kívánt állapot konfigurációjának (DSC) hibáinak megoldása
 
@@ -24,16 +24,17 @@ Ez a cikk a kívánt állapot-konfigurációval (DSC) kapcsolatos hibák elhár�
 
 Ha a konfigurációk az Azure állapot-konfigurációban való fordításával vagy üzembe helyezésével kapcsolatos hibákkal rendelkezik, néhány lépés a probléma diagnosztizálásához.
 
-1. **Győződjön meg arról, hogy a konfiguráció sikeresen lefordításra került a helyi gépen:**  Az Azure állapot-konfiguráció a PowerShell DSC-re épül. A DSC nyelvét és szintaxisát a [POWERSHELL DSC docs](/powershell/dsc/overview/overview)dokumentációjában találja.
+1. **Győződjön meg arról, hogy a konfiguráció sikeresen lefordításra került a helyi gépen:**  Az Azure állapot-konfiguráció a PowerShell DSC-re épül. A DSC nyelvét és szintaxisát a [POWERSHELL DSC docs](https://docs.microsoft.com/en-us/powershell/scripting/overview)dokumentációjában találja.
 
-   A DSC-konfiguráció helyi gépen való fordításával felderítheti és megoldhatja a gyakori hibákat, például a következőket:
+   A DSC-konfiguráció helyi gépen való fordításával felderítheti és elháríthatja a gyakori hibákat, például a következőket:
 
    - **Hiányzó modulok**
    - **Szintaktikai hibák**
    - **Logikai hibák**
+
 2. **A csomóponton található DSC-naplók megtekintése:** Ha a konfiguráció sikeresen lefordítva, de a csomópontra való alkalmazása meghiúsul, részletes információkat talál a naplókban. További információ a DSC-naplók kereséséről: [Hol találhatók a DSC](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)-eseménynaplók.
 
-   A továbbá a [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) segíthet a DSC-naplók részletes adatainak elemzésében. Ha kapcsolatba lép a támogatási szolgálattal, ezek a naplók a probléma dianose szükségesek.
+   Emellett a [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) segíthet a DSC-naplók részletes adatainak elemzésében. Ha felveszi a kapcsolatot a támogatási szolgálattal, a rendszer ezeket a naplókat igényli a probléma diagnosztizálásához.
 
    A **xDscDiagnostics** -et a helyi gépen telepítheti a [STABLE verzió telepítése](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)című részben található utasítások segítségével.
 
@@ -130,7 +131,7 @@ Ha a DSC-konfigurációban `$null`a **Node** kulcsszót követő kifejezés a é
 A következő megoldások bármelyike elháríthatja a problémát:
 
 * Győződjön meg arról, hogy a konfigurációs definícióban a **csomópont** kulcsszava melletti kifejezés nem $nullra van kiértékelve.
-* Ha átadja a ConfigurationData a konfiguráció fordításakor, győződjön meg arról, hogy átadja a konfiguráció által igényelt várt értékeket a [ConfigurationData](../automation-dsc-compile.md#configurationdata).
+* Ha átadja a ConfigurationData a konfiguráció fordításakor, győződjön meg arról, hogy átadja a konfiguráció által igényelt várt értékeket a [ConfigurationData](../automation-dsc-compile.md).
 
 ### <a name="dsc-in-progress"></a>Forgatókönyv A DSC-csomópont jelentés beragad "folyamatban" állapotba
 
@@ -166,7 +167,7 @@ Egy konfigurációban használta a hitelesítő adatokat, de nem adott meg megfe
 
 #### <a name="resolution"></a>Megoldás:
 
-* Győződjön meg arról, hogy a megfelelő **ConfigurationData** adja meg, hogy a konfigurációban említett minden egyes csomópont-konfiguráció esetében a **PSDscAllowPlainTextPassword** értéke igaz legyen. További információ: [eszközök Azure Automation DSC-ben](../automation-dsc-compile.md#assets).
+* Győződjön meg arról, hogy a megfelelő **ConfigurationData** adja meg, hogy a konfigurációban említett minden egyes csomópont-konfiguráció esetében a **PSDscAllowPlainTextPassword** értéke igaz legyen. További információ: [eszközök Azure Automation DSC-ben](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
 
 ### <a name="failure-processing-extension"></a>Forgatókönyv Bevezetés a DSC-bővítményből: "hiba a bővítmény feldolgozásakor" hiba
 
@@ -199,11 +200,27 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="cause"></a>Ok
 
-Az ügyfelek azonosítottak, hogy ha a/tmp helye a nem exec értékre van állítva, a DSC jelenlegi verziója nem fogja tudni alkalmazni a konfigurációkat.
+Az ügyfelek azonosítottak `noexec`, hogy `/tmp` ha a hely be van állítva, a DSC jelenlegi verziója nem fogja tudni alkalmazni a konfigurációkat.
 
 #### <a name="resolution"></a>Megoldás:
 
-* Távolítsa el a nem futtatható beállítást a/tmp helyről.
+* Távolítsa `noexec` el a beállítást `/tmp` a helyről.
+
+### <a name="compilation-node-name-overlap"></a>Forgatókönyv Az átfedésben lévő csomópont-konfigurációs nevek hibás kiadást eredményezhetnek
+
+#### <a name="issue"></a>Probléma
+
+Ha egyetlen konfigurációs parancsfájlt használ több csomópontos konfiguráció létrehozásához, és néhány csomópont-konfigurációnak van egy olyan neve, amely mások részhalmaza, akkor a fordítási szolgáltatás egyik problémája a helytelen konfiguráció hozzárendelését eredményezheti.  Ez csak akkor történik meg, ha egyetlen parancsfájl használatával állít elő konfigurációkat egy csomóponton, és csak akkor, ha a név átfedésben van a karakterlánc elején.
+
+Például, ha egyetlen konfigurációs szkriptet használ a konfigurációk létrehozásához a parancsmagok használatával szórótábla átadott csomópont-adat alapján, és a csomópont adatai tartalmazzák a "kiszolgáló" és a "1kiszolgáló üzemmódját" nevű kiszolgálót.
+
+#### <a name="cause"></a>Ok
+
+A fordítási szolgáltatással kapcsolatos ismert probléma.
+
+#### <a name="resolution"></a>Megoldás:
+
+A legjobb megoldás a helyi vagy CI/CD-folyamat fordítása, és a MOF-fájlok feltöltése közvetlenül a szolgáltatásba.  Ha a szolgáltatás fordítása követelmény, a következő legjobb megoldás a fordítási feladatok felosztása, így nincs átfedés a nevek között.
 
 ## <a name="next-steps"></a>További lépések
 
