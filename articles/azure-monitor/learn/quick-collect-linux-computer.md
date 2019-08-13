@@ -15,16 +15,16 @@ ms.date: 06/14/2019
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: 4484269194aa3d637101a6a0b83eacb268d4c16e
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67147282"
 ---
 # <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>Log Analytics-ügynök konfigurálása Linux rendszerű számítógépekhez hibrid környezetekben
 Az [Azure Log Analytics](../platform/agent-windows.md) közvetlenül tud adatokat gyűjteni az Ön adatközpontjában vagy egyéb felhőalapú környezetében található fizikai vagy virtuális Linux-gépekről egy adattárba, részletes elemzés és összehasonlítás céljából. Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a Linux rendszerű számítógépekről történő adatgyűjtést néhány egyszerű lépésben.  Azure-beli linuxos virtuális gépek esetén lásd [az Azure-beli virtuális gépekről történő adatgyűjtést](quick-collect-azurevm.md) ismertető cikket.  
 
-A folytatás előtt először tekintse át a Log Analytics-ügynököket [áttekintése](../platform/log-analytics-agent.md) a cikkből megismerheti, milyen konfigurációk támogatottak, a [támogatott Linux operációs rendszerek](../platform/log-analytics-agent.md#supported-linux-operating-systems) és [ hálózati tűzfal-konfiguráció](../platform/log-analytics-agent.md#network-firewall-requirements). 
+A továbblépés előtt tekintse át a Log Analytics ügynök [áttekintése](../platform/log-analytics-agent.md) című cikket, amelyből megismerheti a támogatott konfigurációkat, a [támogatott Linux operációs rendszereket](../platform/log-analytics-agent.md#supported-linux-operating-systems) és a [hálózati tűzfal konfigurációját](../platform/log-analytics-agent.md#network-firewall-requirements). 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -44,7 +44,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
    * Válassza ki a **Helyet** a virtuális gépek üzembehelyezési céljaként.  További információkért tekintse meg [a Log Analytics által támogatott régiókat](https://azure.microsoft.com/regions/services/).  
    * Ha 2018. április 2. után létrehozott új előfizetésben hoz létre munkaterületet, az automatikusan a *GB-alapú* díjcsomagot használja, és a tarifacsomag kiválasztásának lehetősége nem érhető el.  Ha az április 2. előtt létrehozott meglévő előfizetéshez hoz létre munkaterületet, vagy pedig egy meglévő EA-regisztrációhoz kötött előfizetéshez, válassza ki a kívánt tarifacsomagot.  További információt az elérhető csomagokról [a Log Analytics részletes díjszabásában](https://azure.microsoft.com/pricing/details/log-analytics/) találhat.
 
-        ![A Log Analytics-erőforrás paneljének létrehozása](media/quick-collect-linux-computer/create-loganalytics-workspace-02.png)<br>  
+        ![Log Analytics-erőforrás létrehozása panel](media/quick-collect-linux-computer/create-loganalytics-workspace-02.png)<br>  
 
 3. Miután a **Log Analytics-munkaterület** panelen megadta a szükséges adatokat, kattintson az **OK** gombra.  
 

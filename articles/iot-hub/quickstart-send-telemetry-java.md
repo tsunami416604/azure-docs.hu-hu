@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Telemetria küldése az Azure IoT Hubra (Java) | Microsoft Docs
+title: 'Gyors útmutató: Telemetria küldése az Azure IoT Hub Javával'
 description: Ebben a rövid útmutatóban két Java-alkalmazást fog futtatni szimulált telemetria egy IoT Hubra való küldéséhez és telemetria az IoT Hubról, a felhőben történő feldolgozás érdekében való beolvasásához.
 author: wesmc7777
 manager: philmea
@@ -8,16 +8,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, seo-java-august2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 52e221088a7b12551636ecdc81532448f38eb26c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 15d9447d7078fd4858a7957448dd30d07049d6e9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330452"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68958625"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-java"></a>Gyors útmutató: Telemetriát küldjön az eszközről az IoT hub és a egy háttér-alkalmazással (Java), annak olvasása
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-java"></a>Gyors útmutató: Telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (Java)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -49,7 +49,7 @@ A Maven aktuális verzióját a következő paranccsal ellenőrizheti a fejleszt
 mvn --version
 ```
 
-Futtassa a következő parancsot a Microsoft Azure IoT-bővítmény hozzáadása a Cloud Shell-példány Azure CLI-hez. Az IOT-bővítmény hozzáadása Azure CLI-vel az IoT Hub, IoT Edge és IoT Device Provisioning Service (DPS) parancsok.
+A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Microsoft Azure IoT-bővítményt a Cloud Shell-példányhoz. Az IOT bővítmény a IoT Hub, IoT Edge és IoT Device kiépítési szolgáltatás (DPS) adott parancsait hozzáadja az Azure CLI-hez.
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -65,17 +65,17 @@ Töltse le a Maven-mintaprojektet a https://github.com/Azure-Samples/azure-iot-s
 
 Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a rövid útmutatóban az Azure Cloud Shell használatával regisztrál egy szimulált eszközt.
 
-1. Futtassa a következő parancsot az Azure Cloud Shellben, hozza létre az eszközidentitást.
+1. Futtassa az alábbi parancsot a Azure Cloud Shell az eszköz identitásának létrehozásához.
 
-   **YourIoTHubName**: Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
+   **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
-   **MyJavaDevice**: Ön regisztrálja az eszköz neve. Használat **MyJavaDevice** látható módon. Ha úgy dönt, hogy az eszköz egy másik nevet, meg kell során ez a cikk ezt a nevet használja, és az eszköz neve a mintaalkalmazások őket futtatása előtt.
+   **MyJavaDevice**: Annak az eszköznek a neve, amelyhez regisztrálva van. Használja a **MyJavaDevice** az ábrán látható módon. Ha más nevet választ az eszközének, ezt a nevet kell használnia ebben a cikkben, és frissítenie kell az eszköz nevét a minta alkalmazásokban a futtatása előtt.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyJavaDevice
     ```
 
-2. Futtassa az alábbi parancsokat az Azure Cloud Shellben beolvasni a _eszköz kapcsolati karakterláncának_ az imént regisztrált eszköz: ** YourIoTHubName: Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
+2. Futtassa az alábbi parancsokat a Azure Cloud Shellban az imént regisztrált eszközhöz tartozó _eszköz-kapcsolódási karakterlánc_ beszerzéséhez: * * YourIoTHubName: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyJavaDevice --output table
@@ -87,9 +87,9 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
     Ezt az értéket használni fogja a rövid útmutató későbbi részében.
 
-3. Is szükség van a _Event Hubs-kompatibilis végponthoz_, _Event Hubs-kompatibilis elérési_, és _szolgáltatás elsődleges kulcs_ engedélyezése a háttéralkalmazás az IoT hubról az IoT hub csatlakozhat, és az üzenetek beolvasása. Ezeket az értékeket a következő parancsok kérdezik le az IoT Hubhoz:
+3. A IoT hub _Event Hubs-kompatibilis végpontja_, _Event Hubs-kompatibilis útvonala_és a _szolgáltatás elsődleges kulcsa_ is szükséges ahhoz, hogy a háttér-alkalmazás csatlakozhasson az IoT hubhoz, és lekérje az üzeneteket. Ezeket az értékeket a következő parancsok kérdezik le az IoT Hubhoz:
 
-     ** YourIoTHubName: Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
+     \* * YourIoTHubName: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name YourIoTHubName
@@ -135,11 +135,11 @@ A háttéralkalmazás a szolgáltatásoldali **Események** végponthoz csatlako
 
 2. Nyissa meg az **src/main/java/com/microsoft/docs/iothub/samples/ReadDeviceToCloudMessages.java** fájlt egy tetszőleges szövegszerkesztőben. Frissítse a következő változókat, és mentse a fájlon végrehajtott módosításait.
 
-    | Változó | Érték |
+    | Változó | Value |
     | -------- | ----------- |
     | `eventHubsCompatibleEndpoint` | Cserélje le a változó értékét a korábban feljegyzett Event Hubs-kompatibilis végpontra. |
     | `eventHubsCompatiblePath`     | Cserélje le a változó értékét a korábban feljegyzett Event Hubs-kompatibilis elérési útra. |
-    | `iotHubSasKey`                | A változó értékét cserélje le a korábban végrehajtott jegyezze fel elsődleges kulcsot. |
+    | `iotHubSasKey`                | A változó értékét cserélje le a szolgáltatás elsődleges kulcsára, amelyet korábban jegyzett készített. |
 
 3. Futtassa az alábbi parancsokat a helyi terminálablakban a szükséges kódtárak telepítéséhez és a háttéralkalmazás létrehozásához:
 
@@ -168,4 +168,4 @@ Ebben a rövid útmutatóban beállított egy IoT Hubot, regisztrált egy eszkö
 Ha meg szeretné tudni, hogyan vezérelheti a szimulált eszközt egy háttéralkalmazáson keresztül, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Csatlakozik az IoT hub eszköz vezérlése](quickstart-control-device-java.md)
+> [Rövid útmutató: IoT hubhoz csatlakoztatott eszköz vezérlése](quickstart-control-device-java.md)
