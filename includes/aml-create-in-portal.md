@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 07/31/2019
-ms.openlocfilehash: 7be5b0dbe4bbfba30ea469eec662877c1ef56c7c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0a497ce506e1aa3b0f9afc47bf1ab8382c9c0405
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689605"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951429"
 ---
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a használt Azure-előfizetés hitelesítő adataival. 
 
@@ -30,7 +30,7 @@ ms.locfileid: "68689605"
 
     ![Munkaterület létrehozása](./media/aml-create-in-portal/workspace-create-main-tab.png)
 
-   Mező|Leírás
+   Mező|Leírás 
    ---|---
    Munkaterület neve |Adjon meg egy egyedi nevet, amely azonosítja a munkaterületet. Ebben a példában a **docs-ws-** t használjuk. A névnek egyedinek kell lennie az erőforráscsoport között. Használjon könnyen felhívható nevet, és a mások által létrehozott munkaterületek megkülönböztetését.  
    Subscription |Válassza ki a használni kívánt Azure-előfizetést.
@@ -44,3 +44,11 @@ ms.locfileid: "68689605"
    Ha a folyamat elkészült, megjelenik egy központi telepítés sikerességét jelző üzenet. Az értesítések szakaszban is megtalálható. Az új munkaterület megtekintéséhez válassza az **Ugrás erőforráshoz**lehetőséget.
 
    ![Munkaterület-létrehozási állapot](./media/aml-create-in-portal/notifications.png)
+
+1. Ha a kód a helyi környezetből erre a munkaterületre hivatkozik, válassza a munkaterület **Áttekintés** szakaszában a **config. JSON letöltése** lehetőséget.  
+
+   ![A config. JSON fájl letöltése](./media/aml-create-in-portal/configure.png)
+
+    Helyezze ezt a JSON-fájlt a Python-szkripteket vagy Jupyter-jegyzetfüzeteket tartalmazó címtár-struktúrába. Ez lehet ugyanabban a címtárban, egy *. azureml*nevű alkönyvtár vagy egy szülő könyvtárban.
+
+   Ha [notebookos virtuális gépet](../articles/machine-learning/service/tutorial-1st-experiment-sdk-setup.md#azure) használ, nincs szükség a fájl letöltésére, a rendszer hozzáadja a virtuális gép megfelelő könyvtárához.

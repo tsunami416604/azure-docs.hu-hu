@@ -10,10 +10,10 @@ ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017, mvc
 ms.openlocfilehash: 6c511c56ab8df14cc6ea81363772ae0fd6d61272
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68309536"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Gyors útmutató: Privát tároló-beállításjegyzék létrehozása az Azure CLI használatával
@@ -38,7 +38,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 
-Ebben a rövid útmutatóban egy  alapszintű beállításjegyzéket hozunk létre, amely egy költséghatékony megoldás a fejlesztők számára a Azure Container Registry megismeréséhez. A rendelkezésre álló szolgáltatási szintek részletes ismertetését lásd: [Container Registry SKU][container-registry-skus]-i.
+Ebben a rövid útmutatóban egy alapszintű beállításjegyzéket hozunk létre, amely egy költséghatékony megoldás a fejlesztők számára a Azure Container Registry megismeréséhez. A rendelkezésre álló szolgáltatási szintek részletes ismertetését lásd: [Container Registry SKU][container-registry-skus]-i.
 
 Hozzon létre egy ACR-példányt az [az acr create][az-acr-create] paranccsal. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az alábbi példában a *myContainerRegistry007* nevet használjuk. Ezt cserélje le egy egyedi értékre.
 

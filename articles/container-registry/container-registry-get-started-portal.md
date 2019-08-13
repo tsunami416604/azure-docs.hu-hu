@@ -10,10 +10,10 @@ ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: c9e8c7fe4d32a44e8c0831154f02eda1f82aaff3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68309469"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Gyors útmutató: Privát tároló beállításjegyzékének létrehozása a Azure Portal használatával
@@ -38,7 +38,7 @@ Adjon meg értékeket az **Adatbázis neve** és **Erőforráscsoport** mezőkbe
 
 ![Tároló-beállításjegyzék létrehozása a Azure Portal][qs-portal-03]
 
-Ebben a rövid útmutatóban egy  alapszintű beállításjegyzéket hozunk létre, amely egy költséghatékony megoldás a fejlesztők számára a Azure Container Registry megismeréséhez. A rendelkezésre álló szolgáltatási szintek részletes ismertetését lásd: [Container Registry SKU][container-registry-skus]-i.
+Ebben a rövid útmutatóban egy alapszintű beállításjegyzéket hozunk létre, amely egy költséghatékony megoldás a fejlesztők számára a Azure Container Registry megismeréséhez. A rendelkezésre álló szolgáltatási szintek részletes ismertetését lásd: [Container Registry SKU][container-registry-skus]-i.
 
 Amikor megjelenik az **üzembe helyezés sikeres** üzenet, válassza ki a tároló-beállításjegyzéket a portálon. 
 
@@ -60,7 +60,7 @@ A parancs a `Login Succeeded` üzenetet adja vissza, ha befejeződött.
 
 ## <a name="list-container-images"></a>Tárolórendszerképek listázása
 
-A beállításjegyzékben található rendszerképek listázásához navigáljon a beállításjegyzékhez a portálon, és válassza a Tárházak lehetőséget, majd válassza ki `docker push`a létrehozott tárházat.
+A beállításjegyzékben található rendszerképek listázásához navigáljon a beállításjegyzékhez a portálon,és válassza a Tárházak lehetőséget, majd válassza ki `docker push`a létrehozott tárházat.
 
 Ebben a példában a **Hello-World** tárházat választjuk, és a `v1` **címkék**alatt láthatjuk a-Tagged képet.
 

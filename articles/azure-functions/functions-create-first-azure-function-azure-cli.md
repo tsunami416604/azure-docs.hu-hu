@@ -12,12 +12,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 625fcda4b612fdeda940f9219238ac79354dd056
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4e65abdb500d61aa72b142f598a17e4cb8fb05f8
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444666"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950003"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>Az első függvény létrehozása parancssorból
 
@@ -29,7 +29,7 @@ Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató számítógép
 
 A minta futtatásához az alábbiakkal kell rendelkeznie:
 
-+ Telepítés [Azure Functions Core Tools](./functions-run-local.md#v2) 2.6.666 verzió vagy újabb.
++ Telepítse [Azure functions Core Tools](./functions-run-local.md#v2) 2.6.666 vagy újabb verziót.
 
 + Telepítse az [Azure CLI-t]( /cli/azure/install-azure-cli). Ehhez a cikkhez az Azure CLI 2.0-ás vagy újabb verziója szükséges. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Használhatja az [Azure Cloud Shellt](https://shell.azure.com/bash) is.
 
@@ -37,35 +37,9 @@ A minta futtatásához az alábbiakkal kell rendelkeznie:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-the-local-function-app-project"></a>A helyi függvényalkalmazás-projekt létrehozása
+[!INCLUDE [functions-create-function-app-cli](../../includes/functions-create-function-app-cli.md)]
 
-Futtassa a következő parancsot a parancssorból, hogy létrehozzon az aktuális helyi könyvtár `MyFunctionProj` mappájába egy függvényalkalmazás-projektet. A `MyFunctionProj` mappában egy GitHub-adattár is létrejön.
-
-```bash
-func init MyFunctionProj
-```
-
-Amikor a rendszer kéri, válasszon egy feldolgozói futtatókörnyezetet a következő nyelvi lehetőségek közül:
-
-+ `dotnet`: létrehoz egy .NET osztálytárprojektet (.csproj).
-+ `node`: létrehoz egy JavaScript-projektet.
-
-A parancs végrehajtásakor a következő kimenethez hasonlót fog látni:
-
-```output
-Writing .gitignore
-Writing host.json
-Writing local.settings.json
-Initialized empty Git repository in C:/functions/MyFunctionProj/.git/
-```
-
-Az alábbi paranccsal léphet az új `MyFunctionProj` projektmappára.
-
-```bash
-cd MyFunctionProj
-```
-
-## <a name="enable-extension-bundles"></a>Bővítmény csomagjaiból engedélyezése
+## <a name="enable-extension-bundles"></a>Bővítmény-csomagok engedélyezése
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -81,7 +55,7 @@ cd MyFunctionProj
 
 Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának biztosításához. A függvényalkalmazás szolgáltat környezetet a függvénykód kiszolgáló nélküli végrehajtásához. Lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások egyszerűbb kezelése, üzembe helyezése és megosztása érdekében. Hozzon létre egy függvényalkalmazást az [az functionapp create](/cli/azure/functionapp#az-functionapp-create) parancs használatával. 
 
-A következő parancsban a `<APP_NAME>` helyőrző helyett írjon be egy egyedi függvényalkalmazás-nevet, a `<STORAGE_NAME>` helyőrző helyett pedig a tárfiók nevét. Az `<APP_NAME>` nevet a rendszer a függvényalkalmazás alapértelmezett DNS-tartományának részeként használja, ezért annak egyedinek kell lennie az Azure összes alkalmazásában. Is be kell állítani a `<language>` futásidejű a függvényalkalmazás a `dotnet` (C#) vagy `node` (JavaScript).
+A következő parancsban a `<APP_NAME>` helyőrző helyett írjon be egy egyedi függvényalkalmazás-nevet, a `<STORAGE_NAME>` helyőrző helyett pedig a tárfiók nevét. Az `<APP_NAME>` nevet a rendszer a függvényalkalmazás alapértelmezett DNS-tartományának részeként használja, ezért annak egyedinek kell lennie az Azure összes alkalmazásában. A `<language>` Function alkalmazás `dotnet` futtatókörnyezetét a (C#) vagy `node` a (JavaScript) értékről is be kell állítania.
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --consumption-plan-location westeurope \

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7312821320084c766f5b3357fe64c061df83673b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 647ab76760d0c5ce5315a60d0a671163b902be0f
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827648"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954540"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
 
@@ -58,7 +58,7 @@ Azure Backup nemrég bejelentette a következőt: [EOS SQL Servers](https://docs
 2. A .NET-keretrendszer 4.5.2-es vagy újabb verzióját a virtuális gépre kell telepíteni
 3. Az és a tükrözött adatbázisok biztonsági mentése nem támogatott
 
-A szolgáltatás a felhasználók számára nem számít fel díjat az általánosan elérhető időpontig. Az összes többi szolgáltatásra vonatkozó [szempont és korlátozás](#feature-consideration-and-limitations) ezekre a verzióra is érvényes. Kérjük, tekintse [](backup-sql-server-database-azure-vms.md#prerequisites) át az előfeltételeket, mielőtt konfigurálja a védelmet a 2008-es és 2008 R2-es SQL-kiszolgálókon, amelyek tartalmazzák a [beállításkulcs](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration) beállítását (ez a lépés nem szükséges, ha a szolgáltatás általánosan elérhető).
+A szolgáltatás csak az általánosan elérhető idő után számítja fel a felhasználókat. Az összes többi szolgáltatásra vonatkozó [szempont és korlátozás](#feature-consideration-and-limitations) ezekre a verzióra is érvényes. Kérjük, tekintse [](backup-sql-server-database-azure-vms.md#prerequisites) át az előfeltételeket, mielőtt konfigurálja a védelmet a 2008-es és 2008 R2-es SQL-kiszolgálókon, amelyek közé tartozik a [beállításkulcs](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration) beállítása (ez a lépés nem kötelező, ha a szolgáltatás általánosan elérhető).
 
 
 ## <a name="feature-consideration-and-limitations"></a>Funkciókkal kapcsolatos szempontok és korlátozások
@@ -74,8 +74,8 @@ A szolgáltatás a felhasználók számára nem számít fel díjat az általán
 - A nagy mennyiségű fájllal rendelkező adatbázisok védelme nem biztosítható. A támogatott fájlok maximális száma **~ 1000**.  
 - Egy tárolóban akár **2000** SQL Server adatbázisra is készíthet biztonsági mentést. Több tárolót is létrehozhat abban az esetben, ha nagyobb számú adatbázisra van szüksége.
 - A biztonsági mentést akár **50** adatbázisra is konfigurálhatja egy menet közben. Ez a korlátozás segít optimalizálni a biztonsági mentési terheléseket.
-- Az adatbázisok akár **2TB** méretekben is támogatottak; ennél nagyobb méretek esetén a teljesítménnyel kapcsolatos problémák merülhetnek fel.
-- Ahhoz, hogy a kiszolgálókon hány adatbázis védhető, meg kell fontolni az olyan tényezőket, mint a sávszélesség, a virtuális gépek mérete, a biztonsági mentés gyakorisága, az adatbázis mérete stb. [Töltse le](http://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) az erőforrás-tervezőt, amely a virtuálisgép-erőforrások és a biztonsági mentési szabályzat alapján a kiszolgálónként elérhető adatbázisok hozzávetőleges számát adja meg.
+- Az adatbázisok akár **2 TB** -os méretekben is támogatottak; ennél nagyobb méretek esetén a teljesítménnyel kapcsolatos problémák merülhetnek fel.
+- Ahhoz, hogy a kiszolgálókon hány adatbázis védhető, meg kell fontolni az olyan tényezőket, mint a sávszélesség, a virtuális gépek mérete, a biztonsági mentés gyakorisága, az adatbázis mérete stb. [Töltse le](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) az erőforrás-tervezőt, amely a virtuálisgép-erőforrások és a biztonsági mentési szabályzat alapján a kiszolgálónként elérhető adatbázisok hozzávetőleges számát adja meg.
 - Rendelkezésre állási csoportok esetén a biztonsági mentések a különböző csomópontokból származnak, néhány tényező alapján. A rendelkezésre állási csoport biztonsági mentési viselkedését az alábbiakban összegzi.
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Az Always On rendelkezésre állási csoportok esetén a működés biztonsági mentése
@@ -83,7 +83,7 @@ A szolgáltatás a felhasználók számára nem számít fel díjat az általán
 Azt javasoljuk, hogy a biztonsági mentés az AG egyetlen csomópontján legyen konfigurálva. A biztonsági mentést mindig ugyanabban a régióban kell konfigurálni, mint az elsődleges csomópontot. Más szóval mindig szüksége lesz az elsődleges csomópontra abban a régióban, ahol a biztonsági mentést konfigurálja. Ha az AG összes csomópontja ugyanabban a régióban van, ahol a biztonsági mentés be van állítva, akkor nincs probléma.
 
 **Régiók közötti AG**
-- A biztonsági mentéstől függetlenül a biztonsági mentések nem azon a csomópontokon történnek, amelyek nem ugyanabban a régióban találhatók, mint ahol a biztonsági mentés be van állítva. Ennek az az oka, hogy a régiók közötti biztonsági másolatok nem támogatottak. Ha csak 2 csomóponttal rendelkezik, és a másodlagos csomópont a másik régióban található; Ebben az esetben a biztonsági mentések továbbra is az elsődleges csomópontról történnek (kivéve, ha a biztonsági mentési beállítások "másodlagosak").
+- A biztonsági mentéstől függetlenül a biztonsági mentések nem azon a csomópontokon történnek, amelyek nem ugyanabban a régióban találhatók, mint ahol a biztonsági mentés be van állítva. Ennek az az oka, hogy a régiók közötti biztonsági másolatok nem támogatottak. Ha csak két csomóponttal rendelkezik, és a másodlagos csomópont a másik régióban található; Ebben az esetben a biztonsági mentések továbbra is az elsődleges csomópontról történnek (kivéve, ha a biztonsági mentési beállítások "másodlagosak").
 - Ha egy feladatátvétel a biztonsági mentést tartalmazó régión kívül esik, a biztonsági mentések sikertelenek lesznek a feladatátvételi régió csomópontjain.
 
 A biztonsági mentési beállítások és a biztonsági másolatok típusaitól függően (teljes/különbözeti/napló/csak másolás) a biztonsági másolatok egy adott csomópontból (elsődleges/másodlagos) származnak.
@@ -190,7 +190,7 @@ Adja hozzá az **NT AUTHORITY\SYSTEM** és **NT Service\AzureWLBackupPluginSvc**
 
 7. Kattintson az OK gombra.
 8. Ismételje meg ugyanezeket a lépéseket (1-7 fent) a SQL Server-példányhoz tartozó NT Service\AzureWLBackupPluginSvc-bejelentkezés hozzáadásához. Ha a bejelentkezés már létezik, győződjön meg róla, hogy a rendszergazda kiszolgálói szerepkörrel rendelkezik, és az állapota területen a jogosultsággal rendelkezik az adatbázismotor és a bejelentkezés engedélyezettként való bekapcsolásához.
-9. Az engedély megadását követően a portálon **újra fel kell deríteni az adatbázisok** : Tár biztonsági mentési **->** infrastruktúrájának számítási feladatai az Azure-beli virtuális gépen: **->**
+9. Az engedély megadását követően a portálon **újra felfedezheti az adatbázisok** : Tár biztonsági mentési **->** infrastruktúrájának számítási feladatai az Azure-beli virtuális gépen: **->**
 
     ![A Azure Portalban lévő adatbázisok újbóli felderítése](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 

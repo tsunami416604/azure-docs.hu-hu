@@ -63,8 +63,6 @@
       href: samples-resource-manager-templates.md
 - name: Alapelvek
   items:
-    - name: Az App Service működése
-      href: app-service-how-works-readme.md
     - name: App Service-csomagok
       href: overview-hosting-plans.md
     - name: OS-funkciók

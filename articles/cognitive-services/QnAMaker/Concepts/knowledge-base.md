@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 7e40af9b2362ee52a1d00f29cdc112d3c2b9a842
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 022b16669791b9b9cce066b3dd17c70b33569cc0
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565855"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955238"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Mit jelent a QnA Maker Knowledge base?
 
@@ -26,9 +26,9 @@ A QnA Maker Tudásbázis kérdés-válasz (QnA) párok, és nem kötelező, a k�
 
 * **Kérdések** -kérdés tartalmaz szöveg, amely a legjobban jelképezi a felhasználói lekérdezés. 
 * **Válaszok** -választ a eredményül, amikor egy felhasználó lekérdezése egyezik a társított kérdés-válasz.  
-* **Metaadatok** -metaadatait egy kérdés-válasz párt társított címkék és jelentésekként jelennek meg a kulcs-érték párokat. Metaadat-címkéket segítségével szűrheti a kérdés-válasz párt, és korlátozza a készlet, melyik lekérdezésben keresztül megfelelő történik.
+* **Metaadatok** -metaadatait egy kérdés-válasz párt társított címkék és jelentésekként jelennek meg a kulcs-érték párokat. A metaadatok címkéi a QnA párok szűrésére és a lekérdezési egyeztetést végző készlet korlátozására használhatók.
 
-Egy egyetlen QnA, jelöli QnA numerikus azonosító, több változatának (alternatív kérdések) kérdést, hogy az összes leképezése egy egyetlen választ tartalmaz. Emellett minden egyes ilyen pár rendelkezhet több metaadatmezőket társítva: egy kulcs, és a egy értéket.
+Egy egyetlen QnA, jelöli QnA numerikus azonosító, több változatának (alternatív kérdések) kérdést, hogy az összes leképezése egy egyetlen választ tartalmaz. Emellett minden egyes pár több metaadat-mezővel is rendelkezhet hozzájuk: egy kulccsal és egy értékkel.
 
 ![A QnA Maker tudásbázisok](../media/qnamaker-concepts-knowledgebase/knowledgebase.png) 
 
@@ -36,28 +36,28 @@ Egy egyetlen QnA, jelöli QnA numerikus azonosító, több változatának (alter
 
 Részletes tartalom, például egy Tudásbázis képes feldolgozni, QnA Maker megkísérli a tartalom átalakításához a markdown formátumhoz. Olvasási [ez](https://aka.ms/qnamaker-docs-markdown-support) blog tudni, hogy a markdown-formátumok jelentésséma a legtöbb csevegési ügyfelek.
 
-Metaadatokat tartalmazó mezőket állnak, amelyek egy pontosvesszővel elválasztott kulcs-érték párok **(termék: aprító)** . A kulcs és az értéket csak szöveg kell lennie. A metaadat-kulcs nem tartalmazhat szóközöket. Metaadatok kulcsonként csak egy értéket támogatja.
+Metaadatokat tartalmazó mezőket állnak, amelyek egy pontosvesszővel elválasztott kulcs-érték párok **(termék: aprító)** . A kulcs és az értéket csak szöveg kell lennie. A metaadat-kulcs nem tartalmazhat szóközöket. A metaadatok csak egy értéket támogatnak a kulcsok esetében.
 
-## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Hogyan dolgozza fel a QnA Maker válassza ki a legjobb választ a felhasználó lekérdezése
+## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Hogyan dolgozza fel QnA Maker a felhasználói lekérdezéseket a legjobb válasz kiválasztásához
 
-A betanított és [közzétett](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker Tudásbázis kap egy felhasználó, egy robot vagy más ügyfélalkalmazás a [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). A következő ábra szemlélteti a folyamatot, amikor a felhasználó lekérdezése érkezik.
+A betanított és [közzétett](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker Tudásbázis felhasználói lekérdezést kap egy robottól vagy más ügyfélalkalmazástól a [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)-ban. A következő ábra a felhasználói lekérdezés fogadásának folyamatát szemlélteti.
 
 ![Felhasználói lekérdezés rangsorolási folyamata](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
 
-A folyamat az alábbi táblázat magyarázza:
+A folyamatot az alábbi táblázat ismerteti:
 
 |Lépés|Cél|
 |--|--|
-|1|Az ügyfélalkalmazás elküldi a felhasználói lekérdezés a [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
-|2|A QnA Maker alkalmazásával feldolgozza azokat a felhasználói lekérdezési nyelv észlelése, spellers és szóhatároló.|
-|3|Alter felhasználó lekérdezése a keresési eredmények elérése érdekében ajánlott az előfeldolgozási venni.|
-|4|Azure Search-Index, a módosított lekérdezés küldődik fogadása a `top` eredmények száma. Ha a helyes válasz nem a ezekkel az eredményekkel, értékének növelése `top` némileg. Általában 10 értéket `top` 90 %-a lekérdezések működik.|
-|5|A QnA Maker helyességét a lehívott Azure keresési eredmények között, a felhasználó lekérdezése meghatározásához speciális featurization vonatkozik. |
-|6|A rangsorolás betanított modell a szolgáltatás pontszám, az 5. lépést, az Azure Search eredmények rangsor használ.|
-|7|Az új eredmények visszakerülnek az ügyfélalkalmazásnak rangsorolt sorrendben.|
+|1|Az ügyfélalkalmazás elküldi a felhasználói lekérdezést a [GENERATEANSWER API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)-nak.|
+|2|A QnA-készítő a felhasználói lekérdezés előfeldolgozását a nyelvfelismerés, a helyesírás-ellenőrző és a Word-megszakítók használatával.|
+|3|Ez az előfeldolgozás a legjobb keresési eredmények felhasználói lekérdezésének megváltoztatásához szükséges.|
+|4|Ez a módosított lekérdezés Azure Search indexbe lesz küldve, amely az `top` eredmények számát fogadja. Ha a helyes válasz nem szerepel ezekben az eredményekben, növelje a `top` kis-és nagymértékű értéket. Általában a 10-es `top` érték a lekérdezések 90%-ában működik.|
+|5|A QnA Maker speciális featurization alkalmaz, hogy meghatározza a felhasználói lekérdezéshez tartozó beolvasott Azure Search eredményeinek helyességét. |
+|6|A betanított Ranger-modell az 5. lépésben a szolgáltatás pontszámát használja a Azure Search eredményeinek rangsorolásához.|
+|7|Az új eredményeket rangsorolt sorrendben adja vissza az ügyfélalkalmazás.|
 |||
 
-Használt funkciók közé tartozik, de nem érvényesülnek a word-szintű szemantikát, kifejezés szintű egy korpusz, és meghatározhatja a hasonlóság és a relevancia alapján végzett között két szöveges karakterlánc részletes megismert szemantikai modellek fontossággal bír.
+A használatban lévő funkciók közé tartozik például a Word-szintű szemantika, a nagybetűs szint fontossága egy corpusban, és a mélyebben megtanult szemantikai modellek határozzák meg a hasonlóságot és a megfelelést két szöveges karakterlánc között.
 
 
 ## <a name="next-steps"></a>További lépések

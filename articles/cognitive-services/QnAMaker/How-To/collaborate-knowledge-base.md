@@ -1,51 +1,51 @@
 ---
-title: Együttműködés a Tudásbázis – QnA Maker
+title: Együttműködés a Tudásbázisban – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: A QnA Maker lehetővé teszi, hogy több személy közösen dolgozzon a Tudásbázis. Ez a funkció az Azure szerepköralapú hozzáférés-vezérlés az van megadva.
+description: QnA Maker lehetővé teszi, hogy több személy is működjenek együtt a Tudásbázisban. Ez a szolgáltatás az Azure szerepköralapú Access Control biztosít.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: diberry
-ms.openlocfilehash: 757b791f632e6d7ecb15a0a40384061f0658a6ff
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9c5398ff7cb31698db3d4a798b6a082f9e74b99b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447519"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955137"
 ---
-# <a name="collaborate-on-your-knowledge-base"></a>A tudásbázist másokkal közös használatához
+# <a name="collaborate-on-your-knowledge-base"></a>Együttműködés a Tudásbázisban
 
-A QnA Maker lehetővé teszi, hogy több személy közösen dolgozzon a Tudásbázis. Ez a funkció az Azure-ral biztosított [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure). 
+QnA Maker lehetővé teszi, hogy több személy is működjenek együtt a Tudásbázisban. Ez a szolgáltatás az Azure [szerepköralapú Access Control](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)biztosít. 
 
-A következő lépésekkel másokkal a QnA Maker szolgáltatást:
+A következő lépések végrehajtásával ossza meg QnA Maker szolgáltatását valakivel:
 
-1. Jelentkezzen be az Azure Portalon, és a QnA Maker erőforrás megnyitása.
+1. Jelentkezzen be a Azure Portalba, és lépjen a QnA Maker-erőforráshoz.
 
     ![Rendszererőforrás-lista a QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
 
-2. Nyissa meg a **hozzáférés-vezérlés (IAM)** fülre.
+2. Lépjen a **Access Control (iam)** lapra.
 
-    ![A QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.PNG)
+    ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.PNG)
 
 3. Válassza a **Hozzáadás** lehetőséget.
 
-    ![A QnA Maker IAM hozzáadása](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
+    ![QnA Maker IAM Hozzáadás](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
 
-4. Válassza ki a **tulajdonosa** vagy a **közreműködői** szerepkör. Csak olvasható hozzáférést szerepköralapú hozzáférés-vezérlés használatával nem tudja biztosítani. Tulajdonos és közreműködő szerepkörrel rendelkezik olvasási és írási hozzáférése közvetlenül a QnA Maker szolgáltatást.
+4. Válassza ki a tulajdonost vagy a **közreműködő** szerepkört. Szerepköralapú Access Controlon keresztül nem engedélyezhető írásvédett hozzáférés. A tulajdonos és a közreműködő szerepkör írási és olvasási jogosultsággal rendelkezik QnA Maker szolgáltatáshoz.
 
-    ![A QnA Maker IAM-szerepkör hozzáadása](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
+    ![QnA Maker szerepkör hozzáadása](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
 
-5. Adja meg a kívánt megosztásához, és kattintson a Mentés, e-mailre.
+5. Adja meg a megosztani kívánt e-mail-címet, majd kattintson a Save (Mentés) gombra.
 
-    ![A QnA Maker IAM e-mail hozzáadása](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
+    ![QnA Maker e-mail-cím hozzáadása](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
 
-Most már a személynek a QnA Maker szolgáltatást a megosztott, amikor bejelentkezik a [QnA Maker portal](https://qnamaker.ai) meghatározhatják, hogy a szolgáltatás tudásbázisok.
+Most, amikor a QnA Maker szolgáltatásával megosztotta a szolgáltatást, bejelentkezik a [QnA Maker portálra](https://qnamaker.ai) , ahol az adott szolgáltatás összes tudásbázisa látható.
 
-Ne feledje, hogy a QnA Maker szolgáltatást az adott Tudásbázis nem oszthat meg. Ha azt szeretné, hogy a részletes hozzáférés-vezérlés, fontolja meg a tudásbázisok elosztása a különböző QnA Maker szolgáltatás.
+Ne feledje, hogy nem oszthat meg egy adott tudásbázist egy QnA Maker szolgáltatásban. Ha részletesebb hozzáférés-vezérlést szeretne, érdemes lehet a tudásbázist különböző QnA Maker szolgáltatásokban terjeszteni.
 
 ## <a name="next-steps"></a>További lépések
 

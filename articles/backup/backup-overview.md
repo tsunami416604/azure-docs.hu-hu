@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: a4fbfeb96d2316ce6af100cb16fcbf0d13f230f2
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 526c60916854d4918607a1fd1b887ac9d27cd1c7
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737116"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950017"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Mi a Azure Backup szolgáltatás?
 
@@ -66,7 +66,7 @@ Azure Backup a helyszíni és az Azure-beli virtuális gépekről is készíthet
 **Gép** | **Biztonsági mentés forgatókönyve**
 --- | ---
 **Helyszíni biztonsági mentés** |  1.) futtassa a Azure Backup Microsoft Azure Recovery Services (MARS) ügynököt a helyszíni Windows rendszerű számítógépeken az egyes fájlok és a rendszerállapotok biztonsági mentéséhez. <br/><br/>2.) készítsen biztonsági mentést a helyszíni gépekről egy biztonsági mentési kiszolgálóra (System Center Data Protection Manager (DPM) vagy Microsoft Azure Backup Server (MABS)), majd konfigurálja úgy a biztonsági mentési kiszolgálót, hogy biztonsági másolatot készítsen az Azure-beli Azure Backup Recovery Services-tárolóra.
-**Azure-beli virtuális gépek** | 1.) az egyes Azure-beli virtuális gépek biztonsági mentésének engedélyezése. Ha engedélyezi a biztonsági mentést, Azure Backup telepít egy bővítményt a virtuális gépen futó Azure VM-ügynökre. Az ügynök biztonsági másolatot készít a teljes virtuális gépről.<br/><br/> 2.) futtassa a MARS-ügynököt egy Azure-beli virtuális gépen. Ez akkor hasznos, ha az egyes fájlokról és mappákról szeretne biztonsági másolatot készíteni a virtuális gépen.<br/><br/> 3.) egy Azure-beli virtuális gép biztonsági mentése az Azure-ban futó DPM-kiszolgálóra vagy MABS. Ezután biztonsági mentést készíthet a DPM-kiszolgálóról/MABS egy tárolóra a Azure Backup használatával.
+**Azure-beli virtuális gépek** | 1.) az egyes Azure-beli virtuális gépek biztonsági mentésének engedélyezése. Ha engedélyezi a biztonsági mentést, Azure Backup telepít egy bővítményt a virtuális gépen futó Azure VM-ügynökre. Az ügynök biztonsági másolatot készít a teljes virtuális gépről.<br/><br/> 2.) futtassa a MARS-ügynököt egy Azure-beli virtuális gépen. Ez akkor hasznos, ha az egyes fájlokról és mappákról szeretne biztonsági másolatot készíteni a virtuális gépen.<br/><br/> 
 
 
 ## <a name="why-use-a-backup-server"></a>Miért érdemes biztonsági mentési kiszolgálót használni?
@@ -116,7 +116,7 @@ Az Azure Backup *védett példányonként* 9999 helyreállítási pontos felső 
 - A védett példányok olyan számítógépek, kiszolgálók (fizikai vagy virtuális) vagy számítási feladatok, amelyek úgy vannak konfigurálva, hogy biztonsági mentést végezzenek az Azure-ba. Az egyes példányok védelméhez biztonsági másolatot kell készíteni az adatokról.
 - Az adatok biztonsági másolata maga a védelem. Ha a forrásadatok elvesznek vagy sérülnek, a biztonsági másolatból vissza lehet állítani azokat.
 
-Az alábbi táblázat az egyes összetevők maximális biztonsági mentési gyakoriságát mutatja be. A biztonsági mentési szabályzat beállítása határozza meg, hogy milyen gyorsan használja fel a helyreállítási pontokat. Ha például minden nap létrehoz egy helyreállítási pontot, akkor 27 év után fogynának el a helyreállítási pontjai. Ha havonta csak egy helyreállítási pontot használ fel, akkor helyreállítási pontjai 833 év után fogynának el. A Backup szolgáltatás nem társít lejárati időt a helyreállítási pontokhoz.
+Az alábbi táblázat az egyes összetevők maximális biztonsági mentési gyakoriságát ismerteti. A biztonsági mentési szabályzat konfigurációja határozza meg, hogy milyen gyorsan használja fel a helyreállítási pontokat. Ha például minden nap létrehoz egy helyreállítási pontot, akkor 27 év után fogynának el a helyreállítási pontjai. Ha havonta csak egy helyreállítási pontot használ fel, akkor helyreállítási pontjai 833 év után fogynának el. A Backup szolgáltatás nem társít lejárati időt a helyreállítási pontokhoz.
 
 |  | Az Azure Backup ügynöke | System Center DPM | Azure Backup Server | Azure IaaS virtuális gép biztonsági mentése |
 | --- | --- | --- | --- | --- |

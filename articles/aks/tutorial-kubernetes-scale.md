@@ -9,32 +9,32 @@ ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 5a942aa10f36df55ac232defa610102700e3995b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67614201"
 ---
-# <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service (AKS)
+# <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások méretezése az Azure Kubernetes szolgáltatásban (ak)
 
-Ha követte az oktatóanyagokat, rendelkezik egy működő Kubernetes-fürttel az aks-ben és üzembe helyezte a mintául szolgáló Azure-szavazóalkalmazást. Ebben az oktatóanyagban, amely egy hétrészes sorozat ötödik része, horizontálisan felskálázzuk az alkalmazás podjait, továbbá kipróbáljuk a podok automatikus méretezését. Emellett megismerjük, hogyan skálázható az Azure-beli virtuális gépek csomópontjainak száma a fürt kapacitásának beállításához a számítási feladatok futtatása érdekében. Az alábbiak végrehajtásának módját ismerheti meg:
+Ha követte az oktatóanyagokat, rendelkezik egy működő Kubernetes-fürttel az AK-ban, és üzembe helyezte a minta Azure-beli szavazási alkalmazást. Ebben az oktatóanyagban, amely egy hétrészes sorozat ötödik része, horizontálisan felskálázzuk az alkalmazás podjait, továbbá kipróbáljuk a podok automatikus méretezését. Emellett megismerjük, hogyan skálázható az Azure-beli virtuális gépek csomópontjainak száma a fürt kapacitásának beállításához a számítási feladatok futtatása érdekében. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * A Kubernetes-csomópontok skálázása
 > * Az alkalmazást futtató Kubernetes-podok manuális skálázása
 > * Az alkalmazás kezelőfelületét futtató automatikus skálázású podok konfigurálása
 
-További oktatóanyagok az Azure Vote alkalmazást egy új verzióra frissül.
+A további oktatóanyagokban az Azure vote alkalmazás új verzióra frissül.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe. A rendszerképet feltöltöttük az Azure Container Registrybe, és létrehozott egy AKS-fürtöt. Az AKS-fürtöt, majd helyeztünk üzembe az alkalmazást. Ha még nem végezte el ezeket a lépéseket, és szeretné követni, kezdje [1. oktatóanyag – tárolórendszerképek létrehozása][aks-tutorial-prepare-app].
+Az előző oktatóanyagokban egy alkalmazás egy tároló-rendszerképbe van csomagolva. A rendszerkép fel lett töltve Azure Container Registryba, és létrehozott egy AK-fürtöt. Az alkalmazás ezután üzembe lett helyezve az AK-fürtön. Ha még nem tette meg ezeket a lépéseket, és követni szeretné a lépéseket, kezdje az [1. oktatóanyag – tároló lemezképek létrehozásával][aks-tutorial-prepare-app].
 
-Ehhez az oktatóanyaghoz, hogy futtat-e az Azure CLI 2.0.53 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+Ehhez az oktatóanyaghoz az Azure CLI 2.0.53 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ## <a name="manually-scale-pods"></a>Podok manuális méretezése
 
-Az előző oktatóanyagokban az Azure Vote előtérrendszerének és a Redis-példánynak a telepítésekor egyetlen replika jött létre. Száma és a fürt podok állapotának megtekintéséhez használja a [kubectl get][kubectl-get] paranccsal a következőképpen:
+Az előző oktatóanyagokban az Azure Vote előtérrendszerének és a Redis-példánynak a telepítésekor egyetlen replika jött létre. A fürtben található hüvelyek számának és állapotának megtekintéséhez használja a [kubectl Get][kubectl-get] parancsot a következő módon:
 
 ```console
 kubectl get pods
@@ -48,13 +48,13 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-A podok számát manuálisan módosíthatja a *azure-vote-front* központi telepítését, használatát a [kubectl scale][kubectl-scale] parancsot. A következő példa *5*-re növeli az előtérbeli podok számát:
+Ha manuálisan szeretné módosítani a hüvelyek számát az *Azure-vote-előtérben* üzemelő példányban, használja a [kubectl Scale][kubectl-scale] parancsot. A következő példa *5*-re növeli az előtérbeli podok számát:
 
 ```console
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-Futtatás [kubectl get pods][kubectl-get] , hogy az AKS hoz létre az újabb podok megerősítése érdekében. Hozzávetőleg egy perc elteltével az újabb podok elérhetők a fürtön:
+Futtassa újra a [kubectl][kubectl-get] , és ellenőrizze, hogy az AK létrehozza-e a további hüvelyeket. Hozzávetőleg egy perc elteltével az újabb podok elérhetők a fürtön:
 
 ```console
 $ kubectl get pods
@@ -70,20 +70,20 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>Podok automatikus méretezése
 
-Kubernetes támogatja [podok horizontális felskálázását][kubernetes-hpa] to adjust the number of pods in a deployment depending on CPU utilization or other select metrics. The [Metrics Server][metrics-server] kubernetes erőforrás-használatot biztosít és automatikusan telepítve van az AKS-fürtök 1.10 és újabb verziók. Az AKS-fürt verziójának megtekintéséhez használja a [az aks show][az-aks-show] parancsot, az alábbi példában látható módon:
+A Kubernetes támogatja a [podok horizontális felskálázását][kubernetes-hpa] az üzemi környezetekben a podok számának a processzorhasználat vagy egyéb megadott metrikák alapján való módosítása érdekében. A [metrikai kiszolgáló][metrics-server] a Kubernetes erőforrás-felhasználás biztosítására szolgál, és a rendszer automatikusan üzembe helyezi az AK-fürtök 1,10-es és újabb verzióiban. Ha szeretné megtekinteni az AK-fürt verzióját, használja az az [AK show][az-aks-show] parancsot az alábbi példában látható módon:
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
 ```
 
-Ha az AKS-fürt verziószáma *1.10*-esnél régebbi, telepítse a Metrics Servert, máskülönben hagyja ki ezt a lépést. Telepítse, klónozza a `metrics-server` GitHub-adattárat, és telepítse az Példa erőforrás-definíciókban. Ezek a YAML-definíciók tartalmának megtekintése: [Kuberenetes 1.8-as + metrikák kiszolgáló][metrics-server-github].
+Ha az AKS-fürt verziószáma *1.10*-esnél régebbi, telepítse a Metrics Servert, máskülönben hagyja ki ezt a lépést. A telepítéshez a `metrics-server` GitHub-tárház klónozása és a példaként megadott erőforrás-definíciók telepítése szükséges. A YAML-definíciók tartalmának megtekintéséhez lásd: [metrikai kiszolgáló Kuberenetes 1.8 +][metrics-server-github].
 
 ```console
 git clone https://github.com/kubernetes-incubator/metrics-server.git
 kubectl create -f metrics-server/deploy/1.8+/
 ```
 
-Az automatikus méretező használatához a podok és a podokat megszünteti az összes tárolót processzorigényét és korlátait definiálva kell rendelkeznie. Az a `azure-vote-front` a központi telepítés, az előtér-tároló már kérelmek 0,25 CPU-használat, a felső korlát pedig 0,5 Processzor. Ezen erőforrás-kérelmek és korlátozások vannak meghatározva, a következő példa kódrészletben látható módon:
+Az automéretező használatához a hüvelyben és a hüvelyben lévő összes tárolónak meg kell határoznia a CPU-kérelmeket és-korlátozásokat. `azure-vote-front` Az üzembe helyezés során az előtér-tároló már 0,25 CPU-t kér, és legfeljebb 0,5 processzorral rendelkezik. Ezek az erőforrás-kérelmek és-korlátok az alábbi kódrészletben látható módon vannak meghatározva:
 
 ```yaml
 resources:
@@ -93,7 +93,7 @@ resources:
      cpu: 500m
 ```
 
-Az alábbi példában a [kubectl autoscale][kubectl-autoscale] paranccsal automatikusan skálázzuk a podok számát az *azure-vote-front* központi telepítés. CPU-felhasználás meghaladja az 50 %-át, ha automatikus méretező növeli a podok legfeljebb *10* példányok. Legalább *3* példányok majd van definiálva a központi telepítés:
+Az alábbi példa a [kubectl autoscale][kubectl-autoscale] paranccsal a hüvelyek számát az *Azure-vote-elülső* telepítésben használja. Ha a CPU-kihasználtság meghaladja a 50%-ot, az autoskálázás legfeljebb *10* példányra növeli a hüvelyt. Ezután legalább *3* példányt definiálnak a központi telepítéshez:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
@@ -120,7 +120,7 @@ A következő példában háromra növeljük a csomópontok számát a *myAKSClu
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 ```
 
-Ha a fürt sikeresen van méretezve, a kimenet a következő példához hasonló:
+Ha a fürt méretezése sikeresen megtörtént, a kimenet a következő példához hasonló:
 
 ```
 "agentPoolProfiles": [
@@ -145,7 +145,7 @@ Ebben az oktatóanyagban különböző méretezési funkciókat használtunk a K
 > [!div class="checklist"]
 > * Az alkalmazást futtató Kubernetes-podok manuális skálázása
 > * Az alkalmazás kezelőfelületét futtató automatikus skálázású podok konfigurálása
-> * A Kubernetes-csomópontokon manuális méretezése
+> * A Kubernetes-csomópontok manuális skálázása
 
 A következő oktatóanyag azt mutatja be, hogyan frissítheti az alkalmazásokat a Kubernetesben.
 

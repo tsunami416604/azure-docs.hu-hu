@@ -258,7 +258,7 @@
     - name: Újrahasználható munkafolyamatok létrehozása
       displayName: pipelines
       items:
-        - name: 'Gépi tanulási folyamatok: kötegelés, számítások, újrafelhasználás, megosztás'
+        - name: Gépi tanulási folyamatok
           href: how-to-create-your-first-pipeline.md
         - name: Azure Pipelines a CI/CD-hez
           displayName: 'continuous, integration, delivery'

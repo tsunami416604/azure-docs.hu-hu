@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: c2e78f6925ae8ff72e7f603c886376b32e40cd94
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 03b65c71201ba125cb3924a52e8760a088374aa6
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737262"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954723"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Azure-fájlmegosztások biztonsági mentése és visszaállítása
 Ez a cikk azt ismerteti, hogyan használhatja az Azure Portalt az [Azure-fájlmegosztások](../storage/files/storage-files-introduction.md) biztonsági mentésére és visszaállítására.
@@ -188,7 +188,7 @@ A fájlmegosztás védelmének visszaállításához nyissa meg a biztonsági me
 
 ### <a name="delete-backup-data"></a>Biztonsági másolatok adatainak törlése
 
-Törölheti a fájlmegosztás biztonsági másolatát a Biztonsági mentés leállítása feladat során, vagy a védelem leállítása után bármikor. Érdemes lehet akár napokat vagy heteket is várni a helyreállítási pontok törlése előtt. A helyreállítási pontok visszaállításával ellentétben a biztonsági másolatok adatainak törlésekor nem törölhet meghatározott helyreállítási pontokat. Ha úgy dönt, hogy törli a biztonsági másolatok adatait, azzal törli az elemhez tartozó összes helyreállítási pontot is.
+A fájlmegosztás biztonsági mentését törölheti a biztonsági mentés leállítása feladatokban, vagy bármikor a védelem leállítását követően. Érdemes lehet akár napokat vagy heteket is várni a helyreállítási pontok törlése előtt. A helyreállítási pontok visszaállításával ellentétben a biztonsági másolatok adatainak törlésekor nem törölhet meghatározott helyreállítási pontokat. Ha úgy dönt, hogy törli a biztonsági másolatok adatait, azzal törli az elemhez tartozó összes helyreállítási pontot is.
 
 A következő eljárás azt feltételezi, hogy a virtuális gép biztonsági mentési feladata le lett állítva. Ha a biztonsági mentési feladatot leállítja, a Biztonsági mentés folytatása és a Biztonsági másolatok adatainak törlése lehetőségek érhetők el a Biztonsági mentési elem irányítópulton. Kattintson a Biztonsági másolatok adatainak törlése lehetőségre, és írja be a fájlmegosztás nevét a törlés megerősítéséhez. Igény szerint adjon meg egy törlési okot vagy megjegyzést.
 

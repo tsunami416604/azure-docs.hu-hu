@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6ffc8931f23835f096c99480b286422fc6e20119
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 97a4673be2a611149806855e792c5bf1f7a0942a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447620"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955170"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>A QnA Maker Tudásbázis életciklusa
 A QnA Maker legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések. 
@@ -28,14 +28,14 @@ A QnA Maker Tudásbázis (KB) végpontja biztosítja a legjobb-match válasz tar
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>Tesztelése és frissítése a Tudásbázis
 
-A Tudásbázis készen áll a tesztelésre, a rendszer kitölti tartalmat, besorolást vagy automatikus kivonása után. A QnA Maker portálon keresztül végezhető interaktív tesztelése a **teszt** panel gyakori felhasználói lekérdezések beírásával, és annak ellenőrzésére, hogy a válaszokat a helyes választ, és elegendő magabiztossági pontszámot ad vissza. 
+A Tudásbázis készen áll a tesztelésre, a rendszer kitölti tartalmat, besorolást vagy automatikus kivonása után. Az interaktív tesztelés a QnA Maker portálon keresztül végezhető el a tesztelési panelen a gyakori felhasználói lekérdezések beírásával és annak ellenőrzésével, hogy a válaszok a megfelelő válasz és a megfelelő megbízhatósági pontszám alapján lettek-e visszaküldve. 
 
-* **Alacsony megbízhatósági pontszámok megoldásához**: alternatív kérdések hozzáadása. 
-* **Ha a lekérdezés nem megfelelően adja vissza a [alapértelmezett válasz](confidence-score.md#change-default-answer)** : Adja hozzá a megfelelő kérdésekre adott válaszok új. 
+* **Az alacsony megbízhatósági pontszámok**kijavítása: alternatív kérdések hozzáadása. 
+* **Ha egy lekérdezés helytelenül adja vissza az [alapértelmezett választ](confidence-score.md#change-default-answer)** : új válaszok hozzáadása a megfelelő kérdéshez. 
 
 Ez a teszt-frissítés szoros ciklus továbbra is fennáll, addig, amíg az eredmények elégedett. Ismerje meg, hogyan [a Tudásbázis tesztelése](../How-To/test-knowledge-base.md).
 
-A nagy Tudásbázis használata automatizált teszteléshez a a [generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) és a `isTest` törzs tulajdonság azokat a lekérdezéseket a `test` Tudásbázis helyett a közzétett Tudásbázis. 
+Nagyméretű Tudásbázis esetében használja az automatikus tesztelést a [generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) -val `isTest` és a Body tulajdonsággal `test` , amely a közzétett Tudásbázis helyett a tudásbázist kérdezi le. 
 
 ```json
 {
@@ -51,7 +51,7 @@ Ha elkészült a Tudásbázis tesztelése, közzéteheti azt. A legújabb verzi�
 
 Ezzel a módszerrel végzett módosítások folyamatban van a Tudásbázis tesztelése verziója nincsenek hatással a közzétett verzió, amely egy éles alkalmazásban élő lehet.
 
-Ezek tudásbázisok mindegyike külön tesztelési megcélozhatóvá válnak. A teszt verzióját a Tudásbázis-célként az API-k használatával, `isTest` törzs generateAnswer hívásában tulajdonság.
+Ezek tudásbázisok mindegyike külön tesztelési megcélozhatóvá válnak. Az API-k használatával megcélozhatja a Tudásbázis `isTest` tesztelési verzióját a Body tulajdonsággal a generateAnswer hívásban.
 
 Ismerje meg, hogyan [közzéteheti a tudásbázist](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
 

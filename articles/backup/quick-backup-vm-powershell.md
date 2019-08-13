@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: e7a343e257a926f010b52f9833d7acb321c8aeb6
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 67e539d3c0d906685f5d05e37a6d9a838e4a014d
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639464"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951816"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Virtuális gép biztonsági mentése az Azure-ban a PowerShell használatával
 
@@ -104,7 +104,6 @@ A biztonsági mentést a következőképpen engedélyezheti:
         -Policy $policy
     ```
 
-
 ## <a name="start-a-backup-job"></a>Biztonsági mentési feladat indítása
 
 A biztonsági mentések a biztonsági mentési szabályzatban megadott ütemezés szerint futnak. Az ad hoc biztonsági mentést is futtathatja:
@@ -143,7 +142,7 @@ Futtasson egy ad hoc biztonsági mentési feladatot a következőképpen:
     ```powershell
     Get-AzRecoveryservicesBackupJob
     ```
-    A kimenet a következő példához hasonlóan jelenik meg, amely a feladatot a következőképpen **mutatja:**
+    A kimenet a következő példához hasonlóan jelenik meg, amely a feladatota következőképpen mutatja:
 
     ```
     WorkloadName   Operation         Status       StartTime              EndTime                JobID

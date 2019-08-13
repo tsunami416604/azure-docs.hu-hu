@@ -8,9 +8,12 @@
       displayName: 'loop, context, feature, action, rank, reward, developer, use case'
 - name: Gyors útmutatók
   items:
-    - name: Visszajelzési ciklusok létrehozása és használata
+    - name: 'A C# használata'
       href: csharp-quickstart-commandline-feedback-loop.md
       displayName: 'code, sample, quickstart, c#'
+    - name: A Python használata
+      href: python-quickstart-commandline-feedback-loop.md
+      displayName: 'code, sample, quickstart, python'
 - name: Alapelvek
   items:
     - name: A Personalizer működése

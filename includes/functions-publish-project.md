@@ -8,18 +8,27 @@ ms.topic: include
 ms.date: 04/24/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: fbb537c9584c948af37694b3bfc77a7c345e084d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9fefba9c79e9c58956243de8db67ca4cf316251c
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639113"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949993"
 ---
 ## <a name="deploy-the-function-app-project-to-azure"></a>A függvényalkalmazás projektjének üzembe helyezése az Azure-ban
 
-Miután létrehozta a Function alkalmazást az Azure-ban, a [`func azure functionapp publish`](../articles/azure-functions/functions-run-local.md#project-file-deployment) Core Tools paranccsal üzembe helyezheti a projekt kódját az Azure-ban. A következő parancsban cserélje le `<APP_NAME>` az elemet az alkalmazás nevére az előző lépésben.
+Miután létrehozta a Function alkalmazást az Azure-ban, a [`func azure functionapp publish`](../articles/azure-functions/functions-run-local.md#project-file-deployment) Core Tools paranccsal üzembe helyezheti a projekt kódját az Azure-ban. Ezekben a példákban cserélje `<APP_NAME>` le az alkalmazást az előző lépésből az alkalmazás nevére.
 
-```bash
+### <a name="c--javascript"></a>C\# /JavaScript
+
+```command
+func azure functionapp publish <APP_NAME>
+```
+
+### <a name="typescript"></a>TypeScript
+
+```command
+npm run build:production 
 func azure functionapp publish <APP_NAME>
 ```
 

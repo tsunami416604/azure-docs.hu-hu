@@ -7,35 +7,35 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 60a17859fd74b1972e0905a830ba984838a94ffd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a8ebd0b36c6ee8bf6762a70af9f4a7c09f6b118d
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447500"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955150"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Csevegési Chit Tudásbázis hozzáadása
 
 A robot chit csevegési hozzáadása megkönnyíti több természetes nyelvi és vonzóbbá tehetik. A QnA Maker chit csevegési funkció segítségével könnyedén adhat hozzá a felső chit csevegési, előre megadott készlete a Tudásbázis (KB). Ez a robot felhőszerepkör felel a kiindulási pont lehet, és az időt és rögzíti őket előzmények költséget takaríthat meg.  
 
-Ez az adatkészlet több személyeknek, mint például a Professional, a rövid és a Witty hanggal chit csevegési körülbelül 100 forgatókönyvek tartalmaz. Válassza ki a személy, amely leginkább megfelel a robot hangalapú. Adja meg a felhasználó lekérdezése, QnA Maker megpróbálja egyezik, a legközelebbi ismert chit csevegési QnA.  
+Ez az adatkészlet körülbelül 100 forgatókönyvet kínál a több persona, például a Professional, a barátságos és a szellemes beszélgetés hangjaként. Válassza ki a személy, amely leginkább megfelel a robot hangalapú. Adja meg a felhasználó lekérdezése, QnA Maker megpróbálja egyezik, a legközelebbi ismert chit csevegési QnA.  
 
-Az alábbiakban néhány példa a különböző személyiséghez. Láthatja, hogy az összes személyes [adatkészletek](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets) a személyiséghez részleteivel együtt.
+Néhány példa a különböző személyiségekre. A személyiségi adatkészleteket [](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets) a személyes adatokkal együtt tekintheti meg.
 
-A felhasználó lekérdezése `When is your birthday?`, minden egyes személy rendelkezik stílussal ellátott választ:
+A felhasználói lekérdezéséhez `When is your birthday?`minden személynek van egy stílusú válasza:
 
 <!-- added quotes so acrolinx doesn't score these sentences -->
-|Személy|Példa|
+|Személyiség|Példa|
 |--|--|
-|Professional|Kor valóban nekem nem vonatkozik.|
-|Rövid|Nem igazán rendelkezem-kor.|
-|Okos|Én vagyok kora ingyenes.|
-|Ápolásáért|Nem rendelkezem-kor.|
-|Lelkes|Robotprogramok, hogy ne kelljen egy kora vagyok.|
+|Professional|A kor nem igazán vonatkozik rám.|
+|Rövid|Nem igazán van kora.|
+|Szellemes|Ingyenes.|
+|Gondoskodó|Nincs életkorom.|
+|Lelkes|Robot vagyok, úgyhogy nem vagyok kora.|
 ||
 
 > [!NOTE]
@@ -56,12 +56,12 @@ Ha szerkeszti a KB-os, látni fogja a chit csevegéshez, a kiválasztott személ
 
 ![A QnA-tudásbázisok chit csevegési szerkesztése](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
-A metaadatok megtekintéséhez jelölje ki **beállításai** az eszköztáron, majd válassza ki **megjelenítése metaadatok**.
+A metaadatok megtekintéséhez válassza az eszköztár **beállítások megtekintése** elemét, majd válassza a **metaadatok megjelenítése**lehetőséget.
 
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>Adjon hozzá további chit csevegési kérdések és válaszok
 Új chit csevegési QnA, amely a készlet nem szerepel az előre meghatározott adhat hozzá. Győződjön meg arról, hogy nem másolat létrehozása egy kérdés-válasz pár chit csevegési csoportban már jelez. Minden olyan új chit csevegési QnA hozzáadásakor lekérdezi hozzáadódik a **Szerkesztői** forrás. Győződjön meg arról, hogy ez a csevegési chit a rangsorolás tudomásul veszi, adja hozzá a metaadatokat a kulcs/érték pár "Szerkesztői: chit csevegési", a következő képen látható módon:
    
-![! [Add chit csevegési QnA-tudásbázisok] (.. / media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
+![! [A Chit-Chat QnAs hozzáadása] (.. /media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>Csevegési chit töröl egy meglévő KB
 Válassza ki a KB, és keresse meg a **beállítások** lapot. Az adott chit csevegési forrás szerepel, a kiválasztott személy nevű fájl. A forrásfájl törölheti.

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: hamusa
-ms.openlocfilehash: 7b27637ca63ec69d7f4c33f05e7c037d67676b2d
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 04162f074dba05ac6492c16acb446912296cd673
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828297"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952103"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>VMware virtuális gépek felmérése Azure Migrateekkel: Server Assessment
 
@@ -180,8 +180,39 @@ Ez elindítja a felderítést. Körülbelül 15 percet vesz igénybe, hogy a fel
 
 ### <a name="scoping-discovery"></a>Hatókör felderítése
 
-A felderítés hatóköre a felderítéshez használt vCenter-fiók hozzáférésének korlátozásával lehetséges. A hatókört beállíthatja vCenter Server adatközpontok, fürtök, a fürtök, a gazdagépek, a gazdagépek mappája vagy az egyes virtuális gépek számára. 
+A felderítés hatóköre a felderítéshez használt vCenter-fiók hozzáférésének korlátozásával lehetséges. A hatókört beállíthatja vCenter Server adatközpontok, fürtök, a fürtök, a gazdagépek, a gazdagépek mappája vagy az egyes virtuális gépek számára.
 
+A hatókör beállításához a következő lépéseket kell elvégeznie:
+1.  Hozzon létre egy vCenter felhasználói fiókot.
+2.  Adjon meg egy új szerepkört a szükséges jogosultságokkal. (<em>az ügynök nélküli kiszolgáló áttelepítéséhez szükséges</em>)
+3.  Engedélyeket rendelhet a felhasználói fiókhoz a vCenter-objektumokon.
+
+**VCenter felhasználói fiók létrehozása**
+1.  Jelentkezzen be a vSphere webes ügyfélprogramba vCenter Server rendszergazdaként.
+2.  Kattintson a **felügyelet** > **SSO-felhasználók és csoportok** > **felhasználók** fülre.
+3.  Kattintson az **új felhasználó** ikonra.
+4.  Adja meg az új felhasználó létrehozásához szükséges információkat, majd kattintson **az OK gombra**.
+
+**Új szerepkör megadása a szükséges jogosultságokkal** (<em>az ügynök nélküli kiszolgáló áttelepítéséhez szükséges</em>)
+1.  Jelentkezzen be a vSphere webes ügyfelére vCenter Server rendszergazdaként.
+2.  Keresse meg az **Adminisztráció** > **szerepkör**-kezelőt.
+3.  Válassza ki a vCenter Server a legördülő menüből.
+4.  Kattintson a **szerepkör létrehozása** művelet elemre.
+5.  Adja meg az új szerepkör nevét. (például <em>Azure_Migrate</em>).
+6.  Rendelje hozzá ezeket az [engedélyeket](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) az újonnan definiált szerepkörhöz.
+7.  Kattintson az **OK** gombra.
+
+**Engedélyek kiosztása vCenter-objektumokhoz**
+
+A vCenter lévő leltári objektumokra vonatkozóan 2 megközelítés rendelhető hozzá a vCenter felhasználói fiókhoz, amelyhez hozzá van rendelve egy szerepkör.
+- A kiszolgáló-értékeléshez **csak olvasási** szerepkört kell alkalmazni az összes olyan szülőobjektum vCenter felhasználói fiókjához, ahol a felderített virtuális gépek futnak. Az összes szülőobjektum – gazdagép, gazdagép, fürt, a hierarchiában lévő fürtök mappája, amelybe az adatközpontot fel kell venni. Ezeket az engedélyeket a rendszer a hierarchiában lévő alárendelt objektumokra propagálja. 
+
+    A kiszolgálók áttelepítéséhez hasonlóan a felhasználó által definiált ( <em>Azure _Migrate</em>nevű) szerepkört is [](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) alkalmazni kell a vCenter felhasználói fiókra az összes olyan szülőobjektum esetében, ahol az áttelepíteni kívánt virtuális gépek futnak.
+
+![Engedélyek hozzárendelése](./media/tutorial-assess-vmware/assign-perms.png)
+
+- A másik megoldás, ha a felhasználói fiókot és szerepkört az adatközpont szintjén rendeli hozzá, és propagálja azokat a gyermekobjektumok számára. Ezután adja meg a fióknak, hogy ne legyen **hozzáférési** szerepkör minden olyan objektumhoz (például virtuális gépekhez), amelyet nem szeretne felderíteni vagy áttelepíteni. Ez a konfiguráció nehézkes. Lehetővé teszi a véletlen hozzáférés-vezérlést, mivel minden új gyermekobjektum automatikusan megkapja a szülőtől örökölt hozzáférést is. Ezért javasoljuk, hogy az első módszert használja.
+ 
 > [!NOTE]
 > A kiszolgáló értékelése jelenleg nem képes felderíteni a virtuális gépeket, ha a vCenter-fiókhoz hozzáférés van megadva a vCenter VM-mappa szintjén. Ha a virtuális gép mappáiban szeretné kiterjeszteni a felderítést, a vCenter-fióknak csak olvasási hozzáférése van hozzárendelve a virtuális gép szintjén.  A következő utasításokat követve teheti meg:
 >
