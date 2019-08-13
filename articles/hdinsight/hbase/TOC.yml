@@ -162,6 +162,8 @@
       items:
         - name: Erőforrások hibaelhárítása
           href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
+        - name: Tárolási kivétel a kapcsolat alaphelyzetbe állítása után
+          href: ./hbase-troubleshoot-storage-exception-reset.md
         - name: Nincsenek adatok az Apache Phoenix-nézetekben
           href: ./hbase-troubleshoot-phoenix-no-data.md
         - name: BindException – Használatban lévő cím

@@ -197,6 +197,8 @@
       items:
         - name: Alkalmazásmodell
           href: service-fabric-application-model.md
+        - name: Alkalmazásmodell-sablonok létrehozása
+          href: service-fabric-concept-resource-model.md
         - name: Alkalmazás- és szolgáltatásjegyzékek
           href: service-fabric-application-and-service-manifests.md
         - name: Példák alkalmazások és szolgáltatások jegyzékeire
@@ -350,6 +352,10 @@
           href: service-fabric-diagnostics-partners.md
     - name: Integráció az API Management szolgáltatással
       href: service-fabric-api-management-overview.md
+    - name: Alkalmazáserőforrás-modell
+      href: service-fabric-concept-resource-model.md
+    - name: Felügyelt identitás
+      href: concepts-managed-identity.md
 - name: Útmutatók
   items:
     - name: A fejlesztési környezet beállítása
@@ -741,6 +747,26 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: A helyi fürt hibaelhárítása
           href: service-fabric-troubleshoot-local-cluster-setup.md
+    - name: Felügyelt identitás használata a Service Fabric-alkalmazásokhoz
+      items:
+        - name: Fürtbeállítás
+          items:
+            - name: Meglévő fürt konfigurálása felügyelt identitással
+              href: configure-existing-cluster-enable-managed-identity-token-service.md
+            - name: Új Azure Service Fabric-fürt konfigurálása felügyelt identitással
+              href: configure-new-azure-service-fabric-enable-managed-identity.md
+        - name: Alkalmazásbeállítás
+          items:
+            - name: Alkalmazás üzembe helyezése felügyelt identitással
+              items:
+                - name: Alkalmazás üzembe helyezése rendszer által hozzárendelt felügyelt identitással
+                  href: how-to-deploy-service-fabric-application-system-assigned-managed-identity.md
+                - name: Alkalmazás üzembe helyezése felhasználó által hozzárendelt felügyelt identitással
+                  href: how-to-deploy-service-fabric-application-user-assigned-managed-identity.md
+        - name: MITS használata Service Fabric-alkalmazáskóddal
+          href: how-to-managed-identity-service-fabric-app-code.md
+        - name: Hozzáférés biztosítása más Azure-erőforrásokhoz
+          href: how-to-grant-access-other-resources.md
 - name: Referencia
   items:
     - name: Azure PowerShell

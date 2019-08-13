@@ -1,28 +1,33 @@
 - name: Alkalmazáskezelési dokumentáció
   href: index.yml
-- name: Alkalmazáskezelés és egyszeri bejelentkezés
+- name: Áttekintés
   expanded: true
   items:
-    - name: Áttekintés
-      expanded: true
-      items:
-        - name: Mi az alkalmazáskezelés?
-          href: what-is-application-management.md
-    - name: Gyors útmutatók
-      items:
-        - name: Katalógusbeli alkalmazás hozzáadása – portál
-          href: add-application-portal.md
-        - name: Bérlői alkalmazások megtekintése – portál
-          href: view-applications-portal.md
-    - name: Oktatóanyagok
-      items:
-        - name: A SaaS-alkalmazás oktatóanyagai
-          href: /azure/active-directory/saas-apps/
-    - name: Alapelvek
+    - name: Mi az a felhőalkalmazás-kezelés és az egyszeri bejelentkezés?
+      href: what-is-application-management.md
+    - name: Mi az automatikus felhasználóátadás?
+      href: user-provisioning.md
+    - name: Mi a helyszíni alkalmazások alkalmazásproxyja?
+      href: what-is-application-proxy.md
+- name: Gyors útmutatók
+  items:
+    - name: Felhőalkalmazás hozzáadása a katalógusból
+      href: add-application-portal.md
+    - name: Vállalati alkalmazások megtekintése
+      href: view-applications-portal.md
+- name: Oktatóanyagok
+  items:
+    - name: SaaS-alkalmazások oktatóanyagai
+      href: /azure/active-directory/saas-apps/
+    - name: Alkalmazásproxyval rendelkező helyszíni alkalmazás hozzáadása
+      href: application-proxy-add-on-premises-application.md
+- name: Alapelvek
+  items:
+    - name: Felhőalkalmazások és egyszeri bejelentkezés
       items:
         - name: Felhőalkalmazás-integráció megtervezése
           items:
-            - name: Mi történik egy új alkalmazás hozzáadásakor?
+            - name: Az alkalmazásintegráció első lépései
               href: plan-an-application-integration.md
             - name: Útmutatás fejlesztőknek
               href: developer-guidance-for-integrating-applications.md
@@ -56,9 +61,34 @@
               href: tenant-restrictions.md
             - name: SAML-jogkivonat titkosításának konfigurálása (előzetes verzió)
               href: howto-saml-token-encryption.md
-        - name: Végfelhasználói portálok
-          href: end-user-experiences.md
-    - name: Útmutatók
+            - name: Végfelhasználói portálok
+              href: end-user-experiences.md
+    - name: Felhasználók automatikus üzembe helyezése
+      items:
+        - name: Automatikus üzembe helyezés SCIM-kompatibilis alkalmazásokhoz
+          href: use-scim-to-provision-users-and-groups.md
+    - name: Alkalmazásproxy helyszíni alkalmazásokhoz
+      items:
+        - name: Alkalmazásproxy
+          href: application-proxy.md
+        - name: Alkalmazásproxy üzembe helyezésének megtervezése
+          href: application-proxy-deployment-plan.md
+        - name: Összekötők
+          href: application-proxy-connectors.md
+        - name: Összekötőcsoportok
+          href: application-proxy-connector-groups.md
+        - name: Biztonság
+          href: application-proxy-security.md
+        - name: Hálózati topológia
+          href: application-proxy-network-topology.md
+        - name: Magas rendelkezésre állás és terheléselosztás
+          href: application-proxy-high-availability-load-balancing.md
+        - name: Távelérési megoldások összehasonlítása
+          href: application-proxy-migration.md
+- name: Útmutatók
+  expanded: true
+  items:
+    - name: Felhőalkalmazások és egyszeri bejelentkezés
       items:
         - name: Felhőalkalmazás hozzáadása
           items:
@@ -182,36 +212,7 @@
                   href: access-panel-extension-problem-installing.md
                 - name: Hiba történt az önkiszolgáló alkalmazás-hozzáférés használata közben
                   href: access-panel-troubleshoot-self-service-access.md
-    - name: További források
-      items:
-        - name: Azure visszajelzési fórum
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: MSDN-fórum
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: Díjszabás
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: Szolgáltatási hírek
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: Videók
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
-- name: Felhasználók automatikus üzembe helyezése
-  items:
-    - name: Áttekintés
-      expanded: true
-      items:
-        - name: Mi az az üzembe helyezés?
-          href: user-provisioning.md
-    - name: Oktatóanyagok
-      items:
-        - name: A SaaS-alkalmazás oktatóanyagai
-          href: /azure/active-directory/saas-apps/
-    - name: Alapelvek
-      items:
-        - name: Automatikus üzembe helyezés SCIM-kompatibilis alkalmazásokhoz
-          href: use-scim-to-provision-users-and-groups.md
-    - name: Útmutatók
+    - name: Felhasználók automatikus üzembe helyezése
       items:
         - name: Felhasználók átadásának konfigurálása
           items:
@@ -223,8 +224,6 @@
               href: configure-automatic-user-provisioning-portal.md
             - name: Alkalmazásattribútumok testreszabása
               href: Customize-application-attributes.md
-            - name: Kifejezések írása attribútumleképezésekhez
-              href: functions-for-customizing-application-data.md
             - name: Hatókörszűrők
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Az átadási állapot ellenőrzése
@@ -245,50 +244,7 @@
               href: application-provisioning-config-problem-no-users-provisioned.md
             - name: Nem a megfelelő felhasználók lettek átadva – katalógusbeli alkalmazás
               href: application-provisioning-config-problem-wrong-users-provisioned.md
-    - name: További források
-      items:
-        - name: Azure visszajelzési fórum
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: MSDN-fórum
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: Díjszabás
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: Szolgáltatási hírek
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: Videók
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
-- name: Alkalmazásproxy helyszíni alkalmazásokhoz
-  items:
-    - name: Áttekintés
-      expanded: true
-      items:
-        - name: Mi az alkalmazásproxy?
-          href: what-is-application-proxy.md
-    - name: Oktatóanyagok
-      items:
-        - name: Helyszíni alkalmazás hozzáadása – portál
-          href: application-proxy-add-on-premises-application.md
-    - name: Alapelvek
-      items:
-        - name: Alkalmazásproxy
-          href: application-proxy.md
-        - name: Alkalmazásproxy üzembe helyezésének tervezése
-          href: application-proxy-deployment-plan.md
-        - name: Összekötők
-          href: application-proxy-connectors.md
-        - name: Összekötőcsoportok
-          href: application-proxy-connector-groups.md
-        - name: Biztonság
-          href: application-proxy-security.md
-        - name: Hálózati topológia
-          href: application-proxy-network-topology.md
-        - name: Magas rendelkezésre állás és terheléselosztás
-          href: application-proxy-high-availability-load-balancing.md
-        - name: Távelérési megoldások összehasonlítása
-          href: application-proxy-migration.md
-    - name: Útmutatók
+    - name: Alkalmazásproxy helyszíni alkalmazásokhoz
       items:
         - name: Összekötők konfigurálása
           items:
@@ -376,21 +332,27 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: CORS-problémák az alkalmazásproxyban
               href: application-proxy-understand-cors-issues.md
-    - name: Referencia
+- name: Referencia
+  items:
+    - name: Felhasználók automatikus üzembe helyezése
+      items:
+        - name: Kifejezések írása attribútumleképezésekhez
+          href: functions-for-customizing-application-data.md
+    - name: Alkalmazásproxy helyszíni alkalmazásokhoz
       items:
         - name: Alkalmazásproxy verzióelőzményei
           href: application-proxy-release-version-history.md
-    - name: További források
-      items:
-        - name: Azure visszajelzési fórum
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: MSDN-fórum
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: Díjszabás
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: Szolgáltatási hírek
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: Videók
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
+- name: További források
+  items:
+    - name: Azure visszajelzési fórum
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

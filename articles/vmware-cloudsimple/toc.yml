@@ -58,6 +58,8 @@
           href: create-cloudsimple-service.md
         - name: Hozzáférés a CloudSimple portáljához
           href: access-cloudsimple-portal.md
+        - name: Helyszíni tűzfal konfigurációja
+          href: on-premises-firewall-configuration.md
         - name: Csomópontok kezelése
           items:
             - name: Csomópontok kiépítése

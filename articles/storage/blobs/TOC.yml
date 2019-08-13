@@ -137,6 +137,8 @@
           items:
             - name: Hozzáférési szintek
               href: storage-blob-storage-tiers.md
+            - name: Adatok rehidratálása az Archive Storage-ból
+              href: storage-blob-rehydration.md
             - name: Azure Blob Storage-életciklus felügyelete
               href: storage-lifecycle-management-concepts.md
         - name: Teljesítmény és skálázás

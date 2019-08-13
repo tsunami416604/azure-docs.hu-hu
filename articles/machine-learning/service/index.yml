@@ -11,7 +11,7 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 05/14/2019
+  ms.date: 08/13/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -46,6 +46,7 @@ sections:
           - html: <a href="tutorial-1st-experiment-sdk-setup">A környezet beállítása és az első gépi tanulási kísérlet betanítása.</a>
           - html: <a href="tutorial-train-models-with-aml">Képbesorolási modellek betanítása és üzembe helyezése</a>.
           - html: <a href="tutorial-data-prep">Adatok előkészítése és automatizált gépi tanulás a taxiutak árának előrejelzéséhez</b>.</a>
+          - html: '<a href="how-to-run-batch-predictions">Kötegelt előrejelzések futtatása nagy adathalmazokon, gépi tanulási folyamatokkal</b>.</a>'
   - title: Példák
     items:
       - type: paragraph

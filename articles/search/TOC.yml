@@ -11,7 +11,7 @@
       href: search-create-service-portal.md
     - name: Portál
       items:
-        - name: Index betöltése és lekérdezése
+        - name: Index létrehozása és használata
           href: search-get-started-portal.md
         - name: Bővítés és gazdagítás mesterséges intelligenciával (kognitív keresés)
           href: cognitive-search-quickstart-blob.md

@@ -9,10 +9,14 @@
   items:
     - name: 'A C# használata'
       href: Quickstart.md
+    - name: A Swift használata (iOS)
+      href: ios-quickstart.md
 - name: Oktatóanyagok
   items:
     - name: A Modern olvasó indítása (Node.js)
       href: tutorial.md
+    - name: Kép küldése a Modern olvasónak (Swift)
+      href: ios-picture-immersive-reader-tutorial.md
 - name: Útmutató
   items:
     - name: Hitelesítés Azure Active Directory-fiókkal
@@ -21,6 +25,8 @@
   items:
     - name: SDK-referencia
       href: reference.md
+    - name: iOS SDK-referencia
+      href: ios-reference.md
 - name: További források
   items:
     - name: Azure-ütemterv
