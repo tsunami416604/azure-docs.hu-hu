@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0c762054ed0df3a3781dda7057ff8793dbf82565
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 71070a778e54e51cdb528041f746489bb64e979c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689304"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954710"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>A számítási feladatok biztonsági mentésének előkészítése az Azure-ba a System Center DPM
 
@@ -91,7 +91,7 @@ A tár hitelesítő adatait használja a DPM-kiszolgáló a tárolóban való re
 
 ### <a name="best-practices-for-vault-credentials"></a>Ajánlott eljárások a tár hitelesítő adataihoz
 
-A hitelesítő adatok beszerzéséhez töltse le a tároló hitelesítő adatait tartalmazó fájlt egy biztonságos csatornán keresztül a Azure Portal:
+A hitelesítő adatok beszerzéséhez töltse le a tároló hitelesítőadat-fájlját egy biztonságos csatornán keresztül a Azure Portal:
 
 - A tároló hitelesítő adatait csak a regisztrációs munkafolyamat során használja a rendszer.
 - Az Ön felelőssége, hogy a tár hitelesítő adatait tartalmazó fájl biztonságos legyen, és ne veszélyeztesse.

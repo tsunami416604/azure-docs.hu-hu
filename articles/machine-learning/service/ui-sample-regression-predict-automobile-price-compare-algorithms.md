@@ -1,5 +1,5 @@
 ---
-title: Regressziós Előrejelzési ár és összehasonlítási algoritmusok
+title: 'Visual Interface példa #3: regresszió az árakhoz és az algoritmusok összehasonlítása'
 titleSuffix: Azure Machine Learning service
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy összetett gépi tanulási kísérletet anélkül, hogy egyetlen sor kódot kellene írnia a vizualizáció felületének használatával. Ismerje meg, hogyan lehet több regressziós modellt betanítani és összehasonlítani, hogy az autó árát a technikai funkciók alapján Jósolja meg
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 28af7b814a8d214c3529ecb12ffe25ede78b1cb6
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d05a601196ec4a5349a0acb4763098d9716c17f5
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855941"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990007"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>2\. minta – regresszió: Előrejelzési ár és összehasonlítási algoritmusok
 

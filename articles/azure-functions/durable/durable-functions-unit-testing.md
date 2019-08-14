@@ -1,41 +1,38 @@
 ---
-title: Az Azure Durable Functions egységtesztelés
-description: Ismerje meg, hogyan egységhez Durable Functions tesztelése.
-services: functions
-author: kadimitr
-manager: jeconnoc
-keywords: ''
+title: Azure Durable Functions-egység tesztelése
+description: Ismerje meg, hogyan lehet a test Durable Functions.
+author: ggailey777
+manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.author: kadimitr
-ms.openlocfilehash: 69cf91f1448e36353f83de7a271abb3b53858bb0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: glenga
+ms.openlocfilehash: 0080365853e7a9c74d3ba0e5efb06ce5a3af2a21
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648465"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967100"
 ---
-# <a name="durable-functions-unit-testing"></a>Durable Functions egységtesztelés
+# <a name="durable-functions-unit-testing"></a>Durable Functions egység tesztelése
 
-Egységtesztelés modern szoftverfejlesztési gyakorlatban fontos része. Egységtesztek ellenőrizze az üzleti logika viselkedés, és megvédheti a maradna kompatibilitástörő változásokat bevezetése a későbbiekben. Durable Functions is könnyen egyre összetettebbé válnak hogy introducing egységteszteket parancsban történt használhatatlanná tévő elkerülése érdekében. Az alábbi szakaszok azt ismertetik, hogyan egység három függvény típusai - Vezénylési ügyfél, az Orchestrator és a tevékenység teszteljen funkciók.
+Az egység tesztelése a modern szoftverfejlesztési eljárások fontos részét képezi. Az egység-tesztek ellenőrzik az üzleti logikát és a védelemtől való megfelelést, és a jövőben nem figyelt feltörési változásokat jelentenek. A Durable Functions könnyedén növelheti a bonyolultságot, így az egységek tesztelésének bevezetésével elkerülhető a változások megszakítása. A következő szakaszokban bemutatjuk, hogyan kell tesztelni a három függvényt – a-összehangoló ügyfelet, a Orchestrator és a tevékenységi funkciókat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben a cikkben szereplő példák a következő fogalmak és keretrendszereket ismerete szükséges:
+A cikkben szereplő példák a következő fogalmakat és keretrendszerek ismeretét igénylik:
 
 * Egységtesztelés
 
-* Tartós függvények
+* Durable Functions
 
-* [xUnit](https://xunit.github.io/) -tesztelési keretrendszer
+* [xUnit](https://xunit.github.io/) – tesztelési keretrendszer
 
-* [moq](https://github.com/moq/moq4) -keretrendszer szimulálása
+* [MOQ](https://github.com/moq/moq4) -modellezési keretrendszer
 
-## <a name="base-classes-for-mocking"></a>A szimulálás alaposztályok
+## <a name="base-classes-for-mocking"></a>A modellezés alaposztályai
 
-A szimulálás támogatott három az absztrakt osztályok a Durable Functions-n keresztül:
+A kigúnyolás a Durable Functions három absztrakt osztályán keresztül támogatott:
 
 * [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html)
 
@@ -43,29 +40,29 @@ A szimulálás támogatott három az absztrakt osztályok a Durable Functions-n 
 
 * [DurableActivityContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContextBase.html)
 
-Ezeket az osztályokat is az alaposztályok [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html), [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html), és [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) definiáló Vezénylési ügyfél , Az orchestrator és a tevékenység. A mocks alaposztály módszerek várt működése állítja be, a test jednotky ellenőrizheti az üzleti logikát. Vezénylési ügyfél és az Orchestrator az üzleti logika egységtesztelés kétlépéses munkafolyamatot van:
+Ezek az osztályok a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html), a [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html)és a [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) alaposztályai, amelyek az előkészítési ügyfelet, a Orchestrator és a tevékenység módszereit határozzák meg. A kigúnyolja az alaposztály-metódusok várt viselkedését állítja be, így az egység tesztelése ellenőrizheti az üzleti logikát. Az egység kétlépéses munkafolyamata az üzleti logikát teszteli az összehangoló ügyfélben és a Orchestrator:
 
-1. Vezénylési ügyfél és a vezénylő aláírások definiálásakor használja a az alaposztályok helyett a tényleges megvalósítás.
-2. Az egységteszteket utánzása az alaposztályok viselkedését, és ellenőrizze az üzleti logikát.
+1. Az alaposztályok használata a konkrét implementáció helyett az összehangoló ügyfél és a Orchestrator aláírásának meghatározásakor.
+2. A Unit-tesztek során az alaposztályok viselkedését és az üzleti logikát kell ellenőrizni.
 
-További részleteket talál a következő bekezdések tesztelési funkciók, amelyek a vezénylési ügyfél kötést és az orchestrator-trigger kötést.
+A következő bekezdésekben talál további részleteket az előkészítési ügyfél kötését és a Orchestrator trigger kötést használó függvények teszteléséhez.
 
-## <a name="unit-testing-trigger-functions"></a>Egység tesztelési eseményindító függvények
+## <a name="unit-testing-trigger-functions"></a>Unit Testing trigger functions
 
-Ebben a szakaszban a egységtesztet ellenőrzi a következő HTTP által aktivált függvény indítása új vezénylések logikáját.
+Ebben a szakaszban az egység tesztelése ellenőrzi a következő HTTP-trigger függvény logikáját az új előkészítések elindításához.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-Az egység vizsgálati feladat lesz értékének ellenőrzése a `Retry-After` a válasz hasznos adatban megadott fejlécet. Így a egységtesztet fog utánzása néhány [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html) módszerek kiszámítható viselkedés biztosításához.
+Az egység teszt feladata a válasz adattartalomban megadott `Retry-After` fejléc értékének ellenőrzése. Így az egység tesztelése egy [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html) metódust fog kialakítani a kiszámítható működés biztosítása érdekében.
 
-Először egy helyettem az alaposztály szükség, [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html). A helyettem lehet egy új osztályt, amely megvalósítja [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html). Például egy utánzási keretrendszer használata azonban [moq](https://github.com/moq/moq4) leegyszerűsíti a folyamatot:
+Először is szükség van az alaposztály [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html). A modell lehet egy új osztály, amely megvalósítja a [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html). Azonban a [MOQ](https://github.com/moq/moq4) , például a következő modellezési keretrendszer használatával egyszerűsíti a folyamatot:
 
 ```csharp
     // Mock DurableOrchestrationClientBase
     var durableOrchestrationClientBaseMock = new Mock<DurableOrchestrationClientBase>();
 ```
 
-Ezután `StartNewAsync` metódus az utánzott vissza egy jól ismert példányok.
+Ezt `StartNewAsync` követően a rendszer kigúnyolja a metódust, hogy egy jól ismert példány azonosítóját adja vissza.
 
 ```csharp
     // Mock StartNewAsync method
@@ -74,7 +71,7 @@ Ezután `StartNewAsync` metódus az utánzott vissza egy jól ismert példányok
         ReturnsAsync(instanceId);
 ```
 
-Tovább `CreateCheckStatusResponse` utánzott mindig, lépjen vissza az üres 200-as HTTP-választ.
+A `CreateCheckStatusResponse` következő a kigúnyolva, hogy mindig üres http 200 választ ad vissza.
 
 ```csharp
     // Mock CreateCheckStatusResponse method
@@ -91,15 +88,15 @@ Tovább `CreateCheckStatusResponse` utánzott mindig, lépjen vissza az üres 20
         });
 ```
 
-`TraceWriter` akkor is utánzott:
+`ILogger`szintén kigúnyolva:
 
 ```csharp
-    // Mock TraceWriter
-    var traceWriterMock = new Mock<TraceWriter>(TraceLevel.Info);
+    // Mock ILogger
+    var loggerMock = new Mock<ILogger>();
 
 ```  
 
-Most már a `Run` metódus meghívása a egységtesztet:
+Most a `Run` metódust az egység tesztből kell hívni:
 
 ```csharp
     // Call Orchestration trigger function
@@ -111,10 +108,10 @@ Most már a `Run` metódus meghívása a egységtesztet:
         },
         durableOrchestrationClientBaseMock.Object,
         functionName,
-        traceWriterMock.Object);
+        loggerMock.Object);
  ```
 
- Az utolsó lépés, hogy összehasonlítja a várt értékkel:
+ Az utolsó lépés a kimenet összehasonlítása a várt értékkel:
 
 ```csharp
     // Validate that output is not null
@@ -124,25 +121,25 @@ Most már a `Run` metódus meghívása a egységtesztet:
     Assert.Equal(TimeSpan.FromSeconds(10), result.Headers.RetryAfter.Delta);
 ```
 
-Után minden lépést ötvöző a egységtesztet fog rendelkezni a következő kódot:
+Az összes lépés egyesítése után az egység tesztelése a következő kódot fogja tartalmazni:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HttpStartTests.cs)]
 
-## <a name="unit-testing-orchestrator-functions"></a>Az orchestrator funkciók egységtesztelés
+## <a name="unit-testing-orchestrator-functions"></a>Unit Testing Orchestrator functions
 
-Az orchestrator funkciók még egy érdekes dolgot tesztelést, mivel általában sokkal több üzleti logikai egység.
+A Orchestrator függvények még érdekesebbek az egység tesztelése során, mivel általában sokkal több üzleti logikával rendelkeznek.
 
-Ebben a szakaszban a egység tesztek kimenetét fogja ellenőrizni a `E1_HelloSequence` az Orchestrator-funkció:
+Ebben a szakaszban az egység tesztek ellenőrzik a `E1_HelloSequence` Orchestrator függvény kimenetét:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-A teszt kódját egy helyettem létrehozásával kezdődik:
+Az egység tesztelési kódja a modell létrehozásával kezdődik:
 
 ```csharp
     var durableOrchestrationContextMock = new Mock<DurableOrchestrationContextBase>();
 ```
 
-Ezután a tevékenység metódust hívja fog mocked:
+Ezt követően a tevékenység metódusának hívásait a rendszer kigúnyolja:
 
 ```csharp
     durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Tokyo")).ReturnsAsync("Hello Tokyo!");
@@ -150,13 +147,13 @@ Ezután a tevékenység metódust hívja fog mocked:
     durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "London")).ReturnsAsync("Hello London!");
 ```
 
-Ezután meghívja a egységtesztet `HelloSequence.Run` módszer:
+Ezután az egység tesztelése a következő `HelloSequence.Run` metódust fogja hívni:
 
 ```csharp
     var result = await HelloSequence.Run(durableOrchestrationContextMock.Object);
 ```
 
-És végül a kimeneti érvényesíti:
+Végül a rendszer érvényesíti a kimenetet:
 
 ```csharp
     Assert.Equal(3, result.Count);
@@ -165,25 +162,25 @@ Ezután meghívja a egységtesztet `HelloSequence.Run` módszer:
     Assert.Equal("Hello London!", result[2]);
 ```
 
-Után minden lépést ötvöző a egységtesztet fog rendelkezni a következő kódot:
+Az összes lépés egyesítése után az egység tesztelése a következő kódot fogja tartalmazni:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceOrchestratorTests.cs)]
 
-## <a name="unit-testing-activity-functions"></a>Egység tesztelési tevékenységfüggvényeket
+## <a name="unit-testing-activity-functions"></a>Unit Testing Activity functions
 
-Tevékenységfüggvényeket ugyanúgy, mint a nem tartós függvények tesztelése egység is lehet.
+A Activity functions olyan egységként is tesztelhető, mint a nem tartós függvények.
 
-Ebben a szakaszban a egységtesztet viselkedését fogja ellenőrizni a `E1_SayHello` tevékenység függvény:
+Ebben a szakaszban az egység tesztelése ellenőrzi a `E1_SayHello` tevékenységi függvény viselkedését:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-És az egységteszteket ellenőrzi, hogy a kimenet formátumát. Az egységteszteket használhatja a paramétertípusok közvetlenül vagy mock [DurableActivityContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContextBase.html) osztály:
+Az egység tesztek pedig ellenőrzik a kimenet formátumát. Az egység tesztek közvetlenül vagy Mock [DurableActivityContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContextBase.html) osztályt használhatnak:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További tudnivalók a xUnit](https://xunit.github.io/docs/getting-started-dotnet-core)
+> [További információ a xUnit](https://xunit.github.io/docs/getting-started-dotnet-core)
 > 
-> [További tudnivalók a moq](https://github.com/Moq/moq4/wiki/Quickstart)
+> [További információ a MOQ](https://github.com/Moq/moq4/wiki/Quickstart)

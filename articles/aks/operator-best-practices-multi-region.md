@@ -1,135 +1,135 @@
 ---
-title: Magas rendelkezésre állás és vészhelyreállítás recovery az Azure Kubernetes Service (AKS)
-description: Ismerje meg, hogy egy fürt operátor ajánlott eljárások az alkalmazások magas rendelkezésre állás biztosítása és vészhelyreállítás az Azure Kubernetes Service (AKS) előkészítése rendelkezésre állás elérése érdekében.
+title: Magas rendelkezésre állás és vész-helyreállítás az Azure Kubernetes szolgáltatásban (ak)
+description: Ismerje meg a fürt operátorának ajánlott eljárásait, amelyekkel maximális üzemidőt érhet el alkalmazásai számára, magas rendelkezésre állást biztosítva, és előkészítheti a vész-helyreállítást az Azure Kubernetes szolgáltatásban (ak).
 services: container-service
 author: lastcoolnameleft
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
-ms.openlocfilehash: 4d4535af1814ab1250bbd56c989b4849013adff6
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 5a0a7e59e71e51a109af0f89cbb7ba580b2b97e6
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614848"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967191"
 ---
-# <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az üzleti folytonossági és vészhelyreállítási recovery az Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az üzletmenet folytonosságához és a vész-helyreállításhoz az Azure Kubernetes szolgáltatásban (ak)
 
-Kezelheti a fürtöket az Azure Kubernetes Service (AKS), az alkalmazások hasznos üzemideje lesz fontos. Az AKS egy rendelkezésre állási csoportban több csomópont a magas rendelkezésre állást biztosít. De ezek több csomópont nem a rendszer egy régiót érintő hibákkal szembeni. A hasznos üzemidő maximalizálása tervez, üzleti folytonosság fenntartásához és felkészülés vészhelyreállításra.
+A fürtök az Azure Kubernetes szolgáltatásban (ak) való kezelésekor az alkalmazás üzemidőe fontos lesz. Az AK magas rendelkezésre állást biztosít egy rendelkezésre állási csoport több csomópontjának használatával. Ezek a csomópontok azonban nem védik a rendszerét a régió meghibásodása miatt. Az üzemidő maximalizálása érdekében előre tervezze meg az üzletmenet folytonosságát, és készüljön fel a vész-helyreállításra.
 
-Ez a cikk az üzletmenet-folytonosság és vészhelyreállítás az aks-ben tervezéséről összpontosít. Az alábbiak végrehajtásának módját ismerheti meg:
+Ebből a cikkből megtudhatja, hogyan tervezheti meg az üzleti folytonosságot és a vész-helyreállítást az AK-ban. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Tervezze meg az AKS-fürt több régióban.
-> * Az Azure Traffic Manager több fürt közötti forgalom irányítása.
-> * A kép tárolójegyzékek georeplikációt használja.
-> * Tervezze meg a alkalmazásállapot több fürt között.
-> * Tároló replikálása több régióban.
+> * Több régióban is megtervezheti az AK-fürtöket.
+> * Az Azure Traffic Manager használatával irányíthatja át a forgalmat több fürt között.
+> * Használja a Geo-replikációt a tároló képnyilvántartások számára.
+> * Tervezze meg az alkalmazás állapotát több fürt között.
+> * Tárterület replikálása több régióban.
 
-## <a name="plan-for-multiregion-deployment"></a>Többrégiós üzembe helyezés tervezése
+## <a name="plan-for-multiregion-deployment"></a>A többrégiós telepítés tervezése
 
-**Ajánlott eljárás**: Több AKS-fürt központi telepítése esetén válassza ki a régióban, ahol az AKS érhető el, és a párosított régiókat használnak.
+**Ajánlott eljárás**: Több AK-alapú fürt üzembe helyezésekor válassza ki azokat a régiókat, ahol az AK elérhető, és használja a párosított régiókat.
 
-Egy AKS-fürtöt helyezünk üzembe egy adott régióban. A rendszer régió hibákkal szembeni, különböző régióban üzembe helyezheti az alkalmazást több AKS-fürt. Ha azt tervezi, hogy hol helyezi üzembe az AKS-fürt, vegye figyelembe:
+Egy AK-fürt üzembe helyezése egyetlen régióban történik. Ha a rendszerét a régió meghibásodása miatt szeretné biztosítani, a különböző régiókban több AK-alapú fürtbe helyezheti üzembe alkalmazását. Ha az AK-fürt üzembe helyezésének helyét tervezi, vegye figyelembe a következőket:
 
-* [**AKS-régiók rendelkezésre állása**](https://docs.microsoft.com/azure/aks/quotas-skus-regions#region-availability): Válassza ki a felhasználók közel régióban. AKS új régiókba folyamatosan bővül.
-* [**Azure – párosított régiók**](https://docs.microsoft.com/azure/best-practices-availability-paired-regions): A földrajzi területen válassza a két régióban, amely a rendszer megfeleltetni egymással. Párosított régiók platform frissítéseket koordinálja, és priorizálhatja helyreállítási erőfeszítések ahol szükséges.
-* **Szolgáltatás rendelkezésre állása**: Döntse el, hogy a párosított régiókat hot/ritkáról gyakori elérésű, gyakori/közepes vagy forró/hideg legyen-e. Egy időben, az egyik régió mindkét régióban futtatni kívánt *készen* forgalmat bonyolító elindítani? Vagy az nincs ideje Felkészülés a forgalmat az egyik régió?
+* [**AK-régiók rendelkezésre állása**](https://docs.microsoft.com/azure/aks/quotas-skus-regions#region-availability): Válasszon régiókat a felhasználók számára. Az AK folyamatosan bővíti az új régiókat.
+* [**Azure párosított régiók**](https://docs.microsoft.com/azure/best-practices-availability-paired-regions): A földrajzi területhez válasszon két, egymással párosított régiót. A párosított régiók összehangolják a platform frissítéseit, és szükség esetén rangsorolják a helyreállítási erőfeszítéseket.
+* **Szolgáltatás elérhetősége**: Döntse el, hogy a párosított régiók gyakoriak-e a gyors/gyors, a meleg/meleg vagy a meleg/hideg. Egyszerre mindkét régiót szeretné futtatni, és az egyik régió *készen áll* a forgalom kiszolgálására? Vagy szeretné, hogy az egyik régió legyen ideje felkészülni a forgalom kiszolgálására?
 
-AKS-régiók rendelkezésre állása és a társított két régió bármelyikén rendszer közös veszi figyelembe. A párosított régiók, amelyek együtt kezelheti a vészhelyreállítási régióban az AKS-fürtök üzembe helyezése. Ha például az AKS érhető el az USA keleti RÉGIÓJA és USA nyugati RÉGIÓJA. Ezekben a régiókban vannak párosítva. Válassza ki a két régióra, az AKS BC/Vészhelyreállítási stratégia létrehozásakor.
+Az AK-régiók rendelkezésre állása és a párosított régiók közös szempontot jelentenek. Helyezzen üzembe az AK-fürtöket párosított régiókba, amelyek a régió vész-helyreállításának kezelésére lettek kialakítva. Például az AK az USA keleti régiójában és az USA nyugati régiójában érhető el. Ezek a régiók párosítva vannak. Válassza ezt a két régiót a BC/DR stratégia létrehozásakor.
 
-Az alkalmazás központi telepítése esetén hozzá ezek több AKS-fürt központi telepítése a CI/CD folyamatot egy újabb lépést. Ha nem frissíti a központi telepítési folyamatok, alkalmazások előfordulhat, hogy üzembe helyezve a régiók és az AKS-fürtök közül csak egyet. Ügyfél adatforgalom átirányításához egy másodlagos régióba nem kap a legújabb kódot.
+Ha üzembe helyezi az alkalmazást, adjon hozzá egy másik lépést a CI/CD-folyamathoz a több AK-alapú fürtön való üzembe helyezéshez. Ha nem frissíti az üzembe helyezési folyamatokat, előfordulhat, hogy az alkalmazások csak az egyik régióba vagy AK-beli fürtre lesznek telepítve. A másodlagos régióra irányuló ügyfél-forgalom nem kapja meg a legújabb kód-frissítéseket.
 
-## <a name="use-azure-traffic-manager-to-route-traffic"></a>Forgalom irányítása az Azure Traffic Manager használatával
+## <a name="use-azure-traffic-manager-to-route-traffic"></a>Az Azure Traffic Manager használata a forgalom irányításához
 
-**Ajánlott eljárás**: Az Azure Traffic Manager ügyfél a legközelebbi AKS-fürt és az alkalmazás-példányra irányíthatók. A legjobb teljesítményt és a redundancia a minden alkalmazás forgalom Traffic Manageren keresztül közvetlen előtt kerül az AKS-fürt.
+**Ajánlott eljárás**: Az Azure Traffic Manager az ügyfeleket a legközelebbi AK-fürthöz és alkalmazás-példányhoz irányíthatja. A legjobb teljesítmény és redundancia érdekében a Traffic Manageron keresztül irányítsa az összes alkalmazás forgalmát, mielőtt az AK-fürtre kerül.
 
-Ha különböző régiókban lévő több AKS-fürtöt, a Traffic Manager segítségével szabályozhatja, hogy az alkalmazások minden egyes fürt futtatására a forgalom adatfolyamait. [Az Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) egy DNS-alapú forgalom terheléselosztó, amely képes elosztani a hálózati forgalmat a régiók között elosztva. Használja a Traffic Manager útválasztási felhasználók fürt válaszidő alapján, vagy földrajzi hely alapján.
+Ha több AK-s fürttel rendelkezik különböző régiókban, a Traffic Manager segítségével szabályozhatja, hogy a forgalom hogyan áramlik az egyes fürtökön futó alkalmazásokkal. Az [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) egy DNS-alapú forgalmi terheléselosztó, amely a régiók közötti hálózati forgalmat terjesztheti. A Traffic Manager használatával a felhasználók a fürt válaszideje vagy földrajz alapján irányíthatók át.
 
-![Az AKS a Traffic Managerrel](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
+![AK Traffic Manager](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
 
-Általában egy AKS-fürtön rendelkező ügyfelek csatlakozni egy adott alkalmazás szolgáltatás IP- vagy DNS-neve. Multicluster telepítésben lévő ügyfelek csatlakozzon egy Traffic Manager DNS-nevet, amely a szolgáltatásokat a minden egyes AKS-fürtöt mutat. Ezek a szolgáltatások megadása a Traffic Manager-végpontok segítségével. Minden végpont a *terheléselosztó IP-szolgáltatás*. Használja ezt a konfigurációt a hálózati forgalmat az egy adott régióban Traffic Manager-végpontot a végponthoz, egy másik régióban.
+Az egyoszlopos fürttel rendelkező ügyfelek általában egy adott alkalmazás szolgáltatás IP-címéhez vagy DNS-nevéhez csatlakoznak. Többfürtes telepítés esetén az ügyfeleknek csatlakozniuk kell egy Traffic Manager DNS-névhez, amely az egyes AK-fürtök szolgáltatásaira mutat. Adja meg ezeket a szolgáltatásokat Traffic Manager végpontok használatával. Mindegyik végpont a *szolgáltatás terheléselosztó IP-címe*. Ezt a konfigurációt használva irányíthatja a hálózati forgalmat az egyik régióban lévő Traffic Manager végpontról a végpontra egy másik régióban.
 
-![Földrajzi útválasztási Traffic Manager használatával](media/operator-best-practices-bc-dr/traffic-manager-geographic-routing.png)
+![Földrajzi útválasztás Traffic Manager](media/operator-best-practices-bc-dr/traffic-manager-geographic-routing.png)
 
-A TRAFFIC Manager DNS-keresések hajt végre, és adja vissza egy felhasználó leginkább megfelelő végpontra. Beágyazott profilok rangsorolhatók is egy elsődleges helyen. Felhasználók például általában csatlakozzon a legközelebbi földrajzi régiót. Adott régióban működik, ha a Traffic Manager inkább irányítja a felhasználóknak, hogy egy másodlagos régióba. Ez a megközelítés biztosítja az ügyfelek kapcsolódhatnak alkalmazáspéldány, még akkor is, ha a legközelebbi földrajzi régióban nem érhető el.
+A Traffic Manager DNS-lekérdezéseket hajt végre, és visszaadja a felhasználó legmegfelelőbb végpontját. A beágyazott profilok prioritást élveznek az elsődleges helyen. Például a felhasználóknak általában a legközelebbi földrajzi régióhoz kell csatlakozniuk. Ha a régió problémába ütközik, Traffic Manager Ehelyett a felhasználókat egy másodlagos régióra irányítja. Ez a megközelítés biztosítja, hogy az ügyfelek akkor is csatlakozhassanak az alkalmazás-példányhoz, ha a legközelebbi földrajzi régiójuk nem érhető el.
 
-A végpontok és útválasztási beállításáról további információért lásd: [a földrajzi forgalom-útválasztási módszer konfigurálása a Traffic Manager használatával](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method).
+A végpontok és az Útválasztás beállításával kapcsolatos információkért lásd: [a földrajzi forgalom útválasztási módszerének konfigurálása Traffic Manager használatával](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method).
 
-### <a name="layer-7-application-routing-with-azure-front-door-service"></a>7\. rétegbeli alkalmazás útválasztás az Azure bejárati ajtajának szolgáltatás
+### <a name="layer-7-application-routing-with-azure-front-door-service"></a>7\. rétegbeli alkalmazás-útválasztás az Azure bejárati ajtó szolgáltatásával
 
-A TRAFFIC Manager DNS (3. réteg) alakzat forgalom használ. [Az Azure bejárati ajtajának szolgáltatás](https://docs.microsoft.com/azure/frontdoor/front-door-overview) HTTP/HTTPS (7. réteg) útválasztási lehetőséget biztosít. Az Azure bejárati ajtajának Service további szolgáltatásai többek között, SSL megszüntetése, az egyéni tartomány, webalkalmazás-tűzfal, URL-újraíró és munkamenet-affinitás. Tekintse át, melyik megoldás a legmegfelelőbb van az alkalmazás forgalmának igényeit.
+A Traffic Manager a DNS (3. réteg) használatával alakítja át a forgalmat. Az [Azure bejárati ajtó szolgáltatás](https://docs.microsoft.com/azure/frontdoor/front-door-overview) egy HTTP/HTTPS (Layer 7) útválasztási lehetőséget biztosít. Az Azure bejárati ajtó szolgáltatás további funkciói közé tartozik az SSL-lezárás, az egyéni tartomány, a webalkalmazási tűzfal, az URL-cím újraírása és a munkamenet-affinitás. Tekintse át az alkalmazás forgalmának igényeit, hogy megértse, melyik megoldás a legmegfelelőbb.
 
-## <a name="enable-geo-replication-for-container-images"></a>A tárolórendszerképek georeplikáció engedélyezéséhez
+## <a name="enable-geo-replication-for-container-images"></a>Földrajzi replikálás engedélyezése a tároló lemezképei számára
 
-**Ajánlott eljárás**: A tárolórendszerképek Store az Azure Container Registry és georeplikáció a beállításjegyzék egyes AKS régióba.
+**Ajánlott eljárás**: Tárolja a tároló lemezképeit Azure Container Registry és geo-replikálja a beállításjegyzéket az egyes AK-régiókba.
 
-Üzembe helyezéséhez, és az alkalmazások futtatásához az aks-ben, kell tárolni, és kérni a tárolórendszerképeket. Container Registry integrálható az aks-sel, így biztonságosan tárolhatja a tárolórendszerképek vagy a Helm-diagramok. Container Registry támogatja a több főkiszolgálós georeplikációs automatikusan replikálhatók a rendszerképek a világ különböző pontjain található Azure-régióban. 
+Az AK-ban lévő alkalmazások üzembe helyezéséhez és futtatásához szüksége lesz a tároló lemezképének tárolására és lekérésére. Container Registry integrálódik az AK-val, így biztonságosan tárolhatók a tároló-vagy Helm-diagramok. Container Registry támogatja a több főkiszolgálós geo-replikációt, hogy automatikusan replikálja a lemezképeket az Azure-régiókba világszerte. 
 
-Jobb teljesítmény és rendelkezésre állás érdekében a Container Registry georeplikációs használatával hozzon létre egy beállításjegyzéket az egyes régiókban, amelyekben egy AKS-fürtöt. Minden egyes AKS-fürt tárolórendszerképek majd lekéri a helyi tároló-beállításjegyzékből ugyanabban a régióban:
+A teljesítmény és a rendelkezésre állás javítása érdekében Container Registry geo-replikáció használatával hozzon létre egy beállításjegyzéket minden olyan régióban, ahol AK-fürt található. Az egyes AK-fürtök ezután lekérik a tároló lemezképeit a helyi tároló beállításjegyzékből ugyanabban a régióban:
 
-![Container Registry georeplikációja tárolórendszerképekhez](media/operator-best-practices-bc-dr/acr-geo-replication.png)
+![Container Registry geo-replikáció a tároló lemezképei számára](media/operator-best-practices-bc-dr/acr-geo-replication.png)
 
-Container Registry georeplikációs lekéréses lemezképek használja az ugyanabban a régióban, az eredmények a következők:
+Ha Container Registry geo-replikálást használ a képek ugyanarról a régióból való lekéréséhez, az eredmények a következők:
 
-* **Gyorsabb**: Lekéri képeket nagy sebességű, alacsony késleltetésű hálózati kapcsolatokat ugyanazon Azure-régióban.
-* **További megbízható**: Ha egy régió elérhetetlenné válik, az AKS-fürt lekéri a képek egy elérhető tárolóregisztrációs adatbázisból.
-* **Olcsóbb**: Nem jár hálózati kimenő forgalom adatközpontok között.
+* **Gyorsabb**: A képeket a nagy sebességű, kis késleltetésű hálózati kapcsolatokból kell lekérni ugyanazon az Azure-régión belül.
+* **Megbízhatóbb**: Ha egy régió nem érhető el, az AK-fürt lekéri a lemezképeket egy elérhető tároló-beállításjegyzékből.
+* **Olcsóbb**: Az adatközpontok közötti hálózati forgalomért nem számolunk fel díjat.
 
-Georeplikációs funkciója *prémium* tároló-beállításjegyzékek Termékváltozat. Georeplikáció konfigurálása az információkért lásd: [Container Registry georeplikációs](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication).
+A Geo-replikáció a *Premium* SKU Container nyilvántartó szolgáltatás. További információ a Geo-replikáció konfigurálásáról: [Container Registry geo-replikáció](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication).
 
-## <a name="remove-service-state-from-inside-containers"></a>Távolítsa el a szolgáltatási állapot, a tárolókon belül
+## <a name="remove-service-state-from-inside-containers"></a>Szolgáltatási állapot eltávolítása a tárolóból
 
-**Ajánlott eljárás**: Ahol lehetséges, ne tároljon szolgáltatás állapotát a tárolóban. Ehelyett használja az Azure-platform (PaaS) szolgáltatás, amely támogatja a többrégiós replikáció.
+**Ajánlott eljárás**: Ha lehetséges, ne tárolja a szolgáltatás állapotát a tárolón belül. Ehelyett használjon olyan Azure-platformot, amely támogatja a többrégiós replikálást.
 
-*Szolgáltatás állapota* a memóriában vagy a lemezen lévő adatok függvény feltétele, hogy egy szolgáltatás hivatkozik. Állapot a datové struktury és a tagváltozók, amely a szolgáltatás olvasási és írási tartalmazza. Attól függően, hogy a szolgáltatás lett tervezve az állapot is tartalmazhatnak, fájlokat vagy más erőforrásokat, amelyek a lemezen tárolja. Például az állapot tartalmazhatnak a fájlokat egy adatbázis adatait és a tranzakciós naplók tárolására használ.
+A *szolgáltatás állapota* arra a memóriára vagy lemezen tárolt adatra utal, amelyet a szolgáltatásnak működnie kell. Az állapot magában foglalja a szolgáltatás által beolvasott és írt adatstruktúrákat és a tagok változóit. A szolgáltatás tervezésének módjától függően előfordulhat, hogy az állapot a lemezen tárolt fájlokat vagy más erőforrásokat is tartalmazhat. Az állapot például tartalmazhat olyan fájlokat, amelyeket az adatbázis az adattárolók és a tranzakciós naplók tárolására használ.
 
-Állam vagy externalized vagy a kódot, amely kezeli az állapot a felhőátjárónak. Állapot általában adatbázis vagy más adattárolóbeli tárolására folyamaton kívül ugyanazon a gépen futó vagy különböző gépeken a hálózaton futó használatával externalize.
+Az állapot lehet külsőleg, vagy elhelyezhető a kóddal, amely az állapotot kezeli. Az állapotot általában egy olyan adatbázis vagy más adattár használatával Externalize, amely a hálózaton keresztül különböző gépeken fut, vagy amelyeken a folyamaton kívül fut ugyanazon a gépen.
 
-Tárolók és mikroszolgáltatások leginkább rugalmas, amikor a bennük lévő futó folyamatok nem is megőrzik állapotukat. Alkalmazások szinte mindig tartalmaz néhány állapot, mert használja egy PaaS-megoldások, például az Azure Database for MySQL, Azure Database for PostgreSQL, vagy az Azure SQL Database.
+A tárolók és a szolgáltatások a legtöbb esetben rugalmasak, ha a bennük futó folyamatok nem őrzik meg az állapotot. Mivel az alkalmazások szinte mindig tartalmaznak valamilyen állapotot, olyan Pásti-megoldást használhatnak, mint például a Azure Database for MySQL, a Azure Database for PostgreSQL vagy a Azure SQL Database.
 
-Hordozható alkalmazásokat hozhat létre, tekintse meg a következő irányelveket:
+A hordozható alkalmazások létrehozásához tekintse meg a következő irányelveket:
 
-* [A 12 tényezős alkalmazásfejlesztési módszertan](https://12factor.net/)
+* [A 12 faktoros alkalmazás módszertana](https://12factor.net/)
 * [Webalkalmazás futtatása több Azure-régióban](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region)
 
-## <a name="create-a-storage-migration-plan"></a>Hozzon létre egy tárolási migrálási tervet.
+## <a name="create-a-storage-migration-plan"></a>Storage-áttelepítési terv létrehozása
 
-**Ajánlott eljárás**: Ha az Azure Storage szolgáltatást használja, előkészítése, és a tároló áttelepítése a biztonsági mentési régió az elsődleges régióból történő teszteléséhez.
+**Ajánlott eljárás**: Ha az Azure Storage-t használja, készítse elő és tesztelje, hogyan telepítse át a tárolót az elsődleges régióból a biztonsági mentési régióba.
 
-Az alkalmazások az Azure Storage használható az adatokat. Mivel az alkalmazások vannak elosztva a különböző régiókban lévő több AKS-fürt, a storage szinkronizálva tartsa kell. Az alábbiakban a tárolók replikálásához közös kétféleképpen:
+Az alkalmazások az Azure Storage-t használhatják adataik számára. Mivel az alkalmazások különböző régiókban több AK-beli fürtön oszlanak el, meg kell őriznie a tároló szinkronizálását. Íme két gyakori módszer a tárterület replikálására:
 
-* Az aszinkron replikáció infrastruktúra-alapú
+* Infrastruktúra-alapú aszinkron replikáció
 * Alkalmazás-alapú aszinkron replikáció
 
-### <a name="infrastructure-based-asynchronous-replication"></a>Az aszinkron replikáció infrastruktúra-alapú
+### <a name="infrastructure-based-asynchronous-replication"></a>Infrastruktúra-alapú aszinkron replikáció
 
-Az alkalmazások egy pod törlése után is szükség lehet adattárolásra. A Kubernetes köteteket is használhat állandó adattároló megőrzéséhez. Állandó kötetek csatlakoztatva van a virtuális gép csomóponthoz és majd kitéve a podokat. Tartós kötet podok hajtsa végre, akkor is, ha a podok ugyanazon a fürtön belül egy másik csomópontra kerül át.
+Előfordulhat, hogy az alkalmazások a pod törlése után is állandó tárterületet igényelnek. A Kubernetes-ben az állandó kötetek használatával megtarthatja az adattárolást. Az állandó kötetek egy csomópont virtuális géphez vannak csatlakoztatva, majd a hüvelyek számára elérhetővé válnak. Az állandó kötetek akkor is követik a hüvelyeket, ha a hüvelyek ugyanazon a fürtön belül egy másik csomópontra kerülnek.
 
-A replikációs stratégiát használja attól függ, hogy a tárolási megoldás. Általános tárolási megoldások, például [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/), [Ceph](http://docs.ceph.com/docs/master/cephfs/disaster-recovery/), [bástya](https://rook.io/docs/rook/master/disaster-recovery.html), és [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) adja meg a saját vész-helyreállítási útmutatást és a replikáció.
+A használt replikációs stratégia a tárolási megoldástól függ. A gyakori tárolási megoldások, például a [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/), a [Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/), a [bástya](https://rook.io/docs/rook/master/disaster-recovery.html)és a [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) , saját útmutatást nyújtanak a vész-helyreállítással és a replikálással kapcsolatban.
 
-A tipikus stratégia, hogy egy közös tárolási pontot, ahol az alkalmazások írhat adataikat. Ezek az adatok régiók közötti replikálására, hogy és majd a helyileg elérhető.
+A tipikus stratégia egy olyan közös tárolási pont biztosítása, amelyben az alkalmazások írhatják az adatbevitelt. Ezeket az adatfájlokat a rendszer replikálja a régiók között, majd helyileg elérhetővé.
 
-![Az aszinkron replikáció infrastruktúra-alapú](media/operator-best-practices-bc-dr/aks-infra-based-async-repl.png)
+![Infrastruktúra-alapú aszinkron replikáció](media/operator-best-practices-bc-dr/aks-infra-based-async-repl.png)
 
-Ha az Azure Managed Disks szolgáltatást, választhatja a replikáció és DR megoldások, például a következő:
+Ha az Azure Managed Disks-t használja, kiválaszthatja a replikációs és DR-megoldásokat, például a következőket:
 
-* [Az Azure-ban Velero](https://github.com/heptio/velero/blob/master/site/docs/master/azure-config.md)
+* [Velero az Azure-ban](https://github.com/heptio/velero/blob/master/site/docs/master/azure-config.md)
 * [Azure Site Recovery](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
 
 ### <a name="application-based-asynchronous-replication"></a>Alkalmazás-alapú aszinkron replikáció
 
-Kubernetes jelenleg itt nem natív végrehajtására az aszinkron replikáció alkalmazásalapú. Mivel a tárolók és a Kubernetes lazán vannak összekapcsolva, bármilyen alkalmazás vagy nyelvi hagyományos megközelítés működnie kell. Általában a maguk az alkalmazások a tárolási kérelmek, majd minden egyes fürt mögöttes adattárolási írt replikálni.
+A Kubernetes jelenleg nem biztosít natív implementációt az alkalmazás-alapú aszinkron replikációhoz. Mivel a tárolók és a Kubernetes egymástól függetlenek, a hagyományos alkalmazás-vagy nyelvi megközelítésnek működnie kell. Az alkalmazások jellemzően replikálják a tárolási kérelmeket, amelyek ezután az egyes fürtök mögöttes adattárolóba lesznek írva.
 
 ![Alkalmazás-alapú aszinkron replikáció](media/operator-best-practices-bc-dr/aks-app-based-async-repl.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk az üzletmenet-folytonossági és vészhelyreállítási szempontok az AKS-fürtök összpontosít. Az AKS-fürt műveletekkel kapcsolatos további információkért tekintse meg az alábbi ajánlott eljárásokkal kapcsolatos cikkek:
+Ez a cikk az üzleti folytonossággal és a vész-helyreállítási megfontolásokkal foglalkozik az AK-fürtök esetében. Az AK-beli fürtök műveleteivel kapcsolatos további információkért tekintse meg az ajánlott eljárásokról szóló cikket:
 
-* [Több-bérlős és a fürt elkülönítés][aks-best-practices-cluster-isolation]
-* [Kubernetes-ütemezési alapszintű funkciók][aks-best-practices-scheduler]
+* [Bérlős és fürt elkülönítése][aks-best-practices-cluster-isolation]
+* [Alapszintű Kubernetes Scheduler-funkciók][aks-best-practices-scheduler]
 
 <!-- INTERNAL LINKS -->
 [aks-best-practices-scheduler]: operator-best-practices-scheduler.md

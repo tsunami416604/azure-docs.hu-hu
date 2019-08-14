@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: cdd1c8348acac37acbe8ad15199f3953bfe95a8e
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: e07a436ee18a216bab569d299e534e729996db19
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370660"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990159"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Adatfeldolgozási idő naplózása Azure Monitor
 A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. A naplózási adatok begyűjtése után elérhetővé tételével kapcsolatban gyakran merül fel kérdések. Ez a cikk a késést befolyásoló különféle tényezőket ismerteti.
@@ -90,7 +90,7 @@ A betöltési idő különböző körülmények között eltérő lehet. A napl�
 ### <a name="ingestion-latency-delays"></a>Betöltési késés késése
 Egy adott rekord késését a [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) függvény eredményének a _TimeGenerated_ tulajdonsághoz való összehasonlításával mérhetővé teheti. Ezeket az adatmennyiségeket különböző összesítésekkel lehet használni, hogy megtudja, hogyan viselkedik a betöltési késés. Vizsgálja meg a betöltési idő néhány százalékos arányát, hogy nagy mennyiségű adatot kapjon. 
 
-Például a következő lekérdezés megmutatja, hogy mely számítógépeken volt a legmagasabb betöltési idő az aktuális napon: 
+Például a következő lekérdezés megmutatja, hogy mely számítógépeken volt a legmagasabb betöltési idő az előző 8 órában: 
 
 ``` Kusto
 Heartbeat
@@ -101,7 +101,7 @@ Heartbeat
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
  
-Ha egy adott számítógép betöltési idejét egy adott időszakra vonatkozóan szeretné részletezni, használja a következő lekérdezést, amely egy gráfban lévő adatot is megjeleníti: 
+Ha egy adott számítógép betöltési idejét egy adott időszakban szeretné részletezni, használja a következő lekérdezést, amely az elmúlt nap adatait is megjeleníti egy gráfban: 
 
 ``` Kusto
 Heartbeat 

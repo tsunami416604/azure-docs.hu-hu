@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 03ad098b2f83341150a59247f47b9a4abaa1b9d2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
-ms.translationtype: HT
+ms.openlocfilehash: 86029c5617d2a3c2723e388fb5812a3947166623
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726109"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966933"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Adatok másolása a MongoDB a Azure Data Factory használatával
 
@@ -34,7 +34,7 @@ Pontosabban, ez a MongoDB **-összekötő a 3,4-ig**támogatja a verziókat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem nyilvánosan elérhető MongoDB-adatbázisból szeretne Adatmásolást végezni, állítson be egy saját üzemeltetésű Integration Runtime. A részletekért tekintse meg a saját üzemeltetésű [Integration Runtime](create-self-hosted-integration-runtime.md) cikket.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -51,7 +51,7 @@ A MongoDB társított szolgáltatás a következő tulajdonságokat támogatja:
 | type |A Type tulajdonságot a következőre kell beállítani: **MongoDbV2** |Igen |
 | connectionString |A MongoDB-kapcsolatok karakterláncának megadásához például `mongodb://[username:password@]host[:port][/[database][?options]]`:. További részletekért tekintse [meg a MongoDB Manual on kapcsolati sztringet](https://docs.mongodb.com/manual/reference/connection-string/) . <br/><br />Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
 | database | Az elérni kívánt adatbázis neve. | Igen |
-| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 **Példa**
 
@@ -109,16 +109,16 @@ Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját l
 
 ### <a name="mongodb-as-source"></a>MongoDB forrásként
 
-A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
+A következő tulajdonságok támogatottak a másolási tevékenység **source** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MongoDbV2Source** | Igen |
 | filter | Meghatározza a kiválasztási szűrőt a lekérdezési operátorok használatával. Ha egy gyűjteményben lévő összes dokumentumot vissza szeretné adni, hagyja ki ezt a paramétert{}, vagy adjon meg egy üres dokumentumot (). | Nem |
-| cursorMethods.project | Meghatározza a dokumentumokban a kivetítéshez visszaadni kívánt mezőket. Ha a megfelelő dokumentumokban lévő összes mezőt vissza szeretné adni, hagyja ki ezt a paramétert. | Nem |
-| cursorMethods.sort | Meghatározza, hogy a lekérdezés milyen sorrendben adja vissza a megfelelő dokumentumokat. Tekintse meg a [kurzor. sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nem |
-| cursorMethods.limit | A kiszolgáló által visszaadott dokumentumok maximális számát adja meg. Lásd: [kurzor. limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nem |
-| cursorMethods.skip | Meghatározza a kihagyni kívánt dokumentumok számát, valamint a MongoDB az eredmények visszaadásának helyét. Lásd: [kurzor. skip ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Nem |
+| cursorMethods. Project | Meghatározza a dokumentumokban a kivetítéshez visszaadni kívánt mezőket. Ha a megfelelő dokumentumokban lévő összes mezőt vissza szeretné adni, hagyja ki ezt a paramétert. | Nem |
+| cursorMethods. sort | Meghatározza, hogy a lekérdezés milyen sorrendben adja vissza a megfelelő dokumentumokat. Tekintse meg a [kurzor. sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nem |
+| cursorMethods. limit | A kiszolgáló által visszaadott dokumentumok maximális számát adja meg. Lásd: [kurzor. limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nem |
+| cursorMethods. skip | Meghatározza a kihagyni kívánt dokumentumok számát, valamint a MongoDB az eredmények visszaadásának helyét. Lásd: [kurzor. skip ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Nem |
 | batchSize | Meghatározza a MongoDB-példány válaszának egyes kötegében visszaadni kívánt dokumentumok számát. A legtöbb esetben a Batch méretének módosítása nem érinti a felhasználót vagy az alkalmazást. Cosmos DB korlátozza, hogy az egyes kötegek ne lépjék túl a 40MB méretét, ami a dokumentumok méretének batchSize összege, ezért csökkentse ezt az értéket, ha a dokumentum mérete nagy. | Nem<br/>(az alapértelmezett érték **100**) |
 
 >[!TIP]

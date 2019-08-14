@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b819a990b9f607aaf70bf2e16a5857de3f7306cc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 320e92e45f319e394b5a38b3f1e8ef3f314920b8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827493"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966348"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Metaadatok beolvasása tevékenység Azure Data Factory
 
@@ -138,8 +138,8 @@ Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
 Mezőlista | Felsorolja a szükséges metaadat-információk típusait. A támogatott metaadatokat a [metaadatok beállításai](#metadata-options) című szakaszban találja. | Igen 
 adatkészlet | Az a hivatkozási adatkészlet, amelynek a metaadat-tevékenységét a GetMetadata tevékenység kéri le. Tekintse meg a támogatott összekötők témakör [támogatott képességek](#supported-capabilities) szakaszát, és tekintse meg az összekötő témakört az adatkészlet szintaxisának részleteiről. | Igen
-formatSettings | A Format Type adatkészlet (Parque, DelimitedText) használatakor érvényes. | Nem
-storeSettings | A Format Type adatkészlet (Parque, DelimitedText) használatakor érvényes. | Nem
+formatSettings | Alkalmazza a Format Type adatkészlet használatakor. | Nem
+storeSettings | Alkalmazza a Format Type adatkészlet használatakor. | Nem
 
 ## <a name="sample-output"></a>Példa kimenet
 

@@ -1,6 +1,6 @@
 ---
 title: Buborék réteg hozzáadása a Azure Mapshoz | Microsoft Docs
-description: Buborék réteg hozzáadása a JavaScript-térképhez
+description: Buborék réteg hozzáadása a Azure Maps web SDK-hoz.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 516e4f35c88ae9c0e2d63e8a4ee40eb57c05ac29
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 5cc5dbdc89f629c09d47ef683b7ff7fff61d2f49
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639043"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976579"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Buborék réteg hozzáadása térképhez
 
@@ -25,31 +25,49 @@ Ez a cikk bemutatja, hogyan jelenítheti meg a pontok adatait egy adatforrásbó
 
 ## <a name="add-a-bubble-layer"></a>Buborékréteg hozzáadása
 
+A következő kód egy tömböt tölt be egy adatforrásba, és csatlakoztatja egy [buborékdiagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)-réteghez. A buborék réteg az egyes buborékok sugarának megjelenítésére szolgál öt képpontban, a fehér szín kitöltési színe, a kék színű körvonal színe, valamint a 6 képpont vastagsága. 
+
+```javascript
+//Add point locations.
+var points = [
+    new atlas.data.Point([-73.985708, 40.75773]),
+    new atlas.data.Point([-73.985600, 40.76542]),
+    new atlas.data.Point([-73.985550, 40.77900]),
+    new atlas.data.Point([-73.975550, 40.74859]),
+    new atlas.data.Point([-73.968900, 40.78859])
+];
+
+//Create a data source and add it to the map.
+var dataSource = new atlas.source.DataSource();
+map.sources.add(dataSource);
+
+//Add multiple points to the data source.
+dataSource.add(points);
+
+//Create a bubble layer to render the filled in area of the circle, and add it to the map.
+map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
+    radius: 5,
+    strokeColor: "#4288f7",
+    strokeWidth: 6, 
+    color: "white" 
+}));
+```
+
+Alább látható a fenti funkciók teljes futási kódjának mintája.
+
+<br/>
+
 <iframe height='500' scrolling='no' title='BubbleLayer adatforrása' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer</a> adatforrását Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-A fenti kódban a kód első blokkja egy Térkép objektumot hoz létre. Ehhez útmutatást a [Térkép létrehozása](./map-create.md) című témakörben találhat.
-
-A kód második blokkjában a [pont](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) objektumok tömbje van definiálva, és a rendszer hozzáadja az [adatforrás](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) -objektumhoz.
-
-A [buborék réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) az adatforrásban lévő, pont-alapú adatsorokat jeleníti meg körökként a térképen. [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) A kód utolsó blokkja egy buborék réteget hoz létre, és hozzáadja azt a térképhez. Tekintse meg a buborék réteg tulajdonságait a következő helyen: [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions).
-
-A pont objektumok, az adatforrás és a buborék réteget a rendszer létrehozza és hozzáadja a térképhez az [esemény-figyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) függvényben annak érdekében, hogy a Térkép teljes betöltését követően megjelenjen a kör.
-
 ## <a name="show-labels-with-a-bubble-layer"></a>Címkék megjelenítése buborék réteggel
+
+A következő kód azt mutatja be, hogyan lehet egy buborék réteggel megjeleníteni egy pontot a térképen és egy szimbólum réteget a címke megjelenítéséhez. A szimbólum réteg ikonjának elrejtéséhez állítsa az `image` ikon `'none'`beállításainak tulajdonságát a következőre:.
+
+<br/>
 
 <iframe height='500' scrolling='no' title='Többrétegű adatforrás' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg <a href='https://codepen.io/azuremaps/pen/rqbQXy/'></a> a toll többrétegű<a href='https://codepen.io/azuremaps'>@azuremaps</a>adatforrást Azure Maps () használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
-
-A fenti kód bemutatja, hogyan jelenítheti meg és címkézheti az adatleképezést. A fenti kód első blokkja egy Térkép objektumot hoz létre. Ehhez útmutatást a [Térkép létrehozása](./map-create.md) című témakörben találhat.
-
-A kód második blokkja egy [pont](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) objektumot hoz létre. Ezután létrehoz egy adatforrás-objektumot az [adatforrás osztály használatával](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) , és hozzáadja a pontot az adatforráshoz.
-
-A [buborék réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) az adatforrásban lévő, pont-alapú adatsorokat jeleníti meg körökként a térképen. [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) A kód harmadik blokkja egy buborék réteget hoz létre, és hozzáadja azt a térképhez. Tekintse meg a buborék réteg tulajdonságait a következő helyen: [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions).
-
-A [szimbólum-réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) szöveggel vagy ikonokkal jeleníti meg a pont-alapú adatforrásokat az adatforrásban szimbólumként a térképen. [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) A kód utolsó blokkja létrehoz és felhelyez egy szimbólum réteget a térképhez, amely megjeleníti a buborékhoz tartozó szöveg címkéjét. Tekintse meg a szimbólumok rétegének tulajdonságait a következő helyen: [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions).
-
-Az adatforrást és a rétegeket a rendszer létrehozza és hozzáadja a térképhez az [esemény-figyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) függvényben annak érdekében, hogy a Térkép teljes betöltését követően megjelenjen az adat.
 
 ## <a name="customize-a-bubble-layer"></a>Buborék-réteg testreszabása
 
@@ -73,7 +91,13 @@ További információ a cikkben használt osztályokról és módszerekről:
 Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
 
 > [!div class="nextstepaction"]
+> [Adatforrás létrehozása](create-data-source-web-sdk.md)
+
+> [!div class="nextstepaction"]
 > [Szimbólum réteg hozzáadása](map-add-pin.md)
 
 > [!div class="nextstepaction"]
 > [Adatvezérelt stílusú kifejezések használata](data-driven-style-expressions-web-sdk.md)
+
+> [!div class="nextstepaction"]
+> [Kódminták](https://docs.microsoft.com/samples/browse/?products=azure-maps)

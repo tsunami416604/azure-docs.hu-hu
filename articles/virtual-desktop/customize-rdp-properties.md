@@ -1,58 +1,58 @@
 ---
-title: A PowerShell használatával – Azure RDP tulajdonságainak testreszabása
-description: A PowerShell-parancsmagokkal RDP tulajdonságok a Windows virtuális asztal testreszabásának módját.
+title: RDP-tulajdonságok testreszabása a PowerShell használatával – Azure
+description: A Windows rendszerű virtuális asztal RDP-tulajdonságainak testreszabása PowerShell-parancsmagokkal.
 services: virtual-desktop
-author: v-hevem
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.author: v-hevem
-ms.openlocfilehash: ce14f990272fa1e70d07c0f4a1f18025b536eccc
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.author: helohr
+ms.openlocfilehash: 624edaea9a0fb56e34eb83f033dfdab64985bd5c
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618868"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950708"
 ---
-# <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Egy gazdagép készlet Remote Desktop Protocol tulajdonságainak testreszabása
+# <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Gazdagépek RDP protokoll tulajdonságainak testreszabása
 
-Testreszabás, a gazdagép-készletben Remote Desktop Protocol (RDP) tulajdonságait, például több figyelő felhasználói élményt és hang átirányítása révén a felhasználók saját igényeik szerint az optimális működés érdekében. Testre szabhatja az RDP-tulajdonságok Windows virtuális asztalok használata a **- CustomRdpProperty** paramétert a **Set-RdsHostPool** parancsmagot.
+A gazdagépek RDP protokoll (RDP) tulajdonságainak (például a többmonitoros élmény és a hangátirányítás) testreszabása lehetővé teszi, hogy a felhasználók igényei alapján optimális élményt nyújtson a felhasználóknak. Az RDP-tulajdonságokat a Windows virtuális asztalon a **set-RdsHostPool** parancsmag **-CustomRdpProperty** paraméterrel szabhatja testre.
 
-Lásd: [távoli asztal RDP-fájl beállításainak](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files) támogatott tulajdonságok és alapértelmezett értékeik teljes listáját.
+A támogatott tulajdonságok teljes listáját és alapértelmezett értékeit a [Távoli asztal RDP-fájl beállításai](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files) részben tekintheti meg.
 
-Először [letöltése és importálása a Windows virtuális asztal PowerShell-modul](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) használatához a PowerShell-munkamenetben, ha még nem tette.
+Először [töltse le és importálja a](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg.
 
-## <a name="add-or-edit-a-single-custom-rdp-property"></a>Adja hozzá, vagy egyetlen egyéni RDP-tulajdonság módosítása
+## <a name="add-or-edit-a-single-custom-rdp-property"></a>Egyetlen egyéni RDP-tulajdonság hozzáadása vagy szerkesztése
 
-Adja hozzá, vagy egy egyéni RDP-tulajdonság módosítása, futtassa a következő PowerShell-parancsmagot:
+Egyetlen egyéni RDP-tulajdonság hozzáadásához vagy szerkesztéséhez futtassa a következő PowerShell-parancsmagot:
 
 ```powershell
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty "<property>"
 ```
-![PowerShell-parancsmag képernyőképe a Get-RDSRemoteApp nevét és rövid név kiemelve.](media/singlecustomrdpproperty.png)
+![Képernyőkép a Get-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és FriendlyName ki van emelve.](media/singlecustomrdpproperty.png)
 
-## <a name="add-or-edit-multiple-custom-rdp-properties"></a>Több egyéni RDP-tulajdonságok hozzáadása vagy szerkesztése
+## <a name="add-or-edit-multiple-custom-rdp-properties"></a>Több egyéni RDP-tulajdonság hozzáadása vagy szerkesztése
 
-Tulajdonságok hozzáadása vagy szerkesztése több egyéni RDP, futtassa a következő PowerShell-parancsmagok pontosvesszővel tagolt karakterláncként RDP egyéni tulajdonságok megadásával:
+Több egyéni RDP-tulajdonság hozzáadásához vagy szerkesztéséhez futtassa az alábbi PowerShell-parancsmagokat úgy, hogy az egyéni RDP-tulajdonságokat pontosvesszővel tagolt karakterláncként adja meg:
 
 ```powershell
 $properties="<property1>;<property2>;<property3>"
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty $properties
 ```
-![PowerShell-parancsmag képernyőképe a Get-RDSRemoteApp nevét és rövid név kiemelve.](media/multiplecustomrdpproperty.png)
+![Képernyőkép a Get-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és FriendlyName ki van emelve.](media/multiplecustomrdpproperty.png)
 
 ## <a name="reset-all-custom-rdp-properties"></a>Az összes egyéni RDP-tulajdonság alaphelyzetbe állítása
 
-Visszaállíthatja az egyes egyéni RDP-tulajdonságok az alapértelmezett értékekre a következő témakör utasításait követve [hozzáadása vagy szerkesztése egyetlen egyéni RDP tulajdonság](#add-or-edit-a-single-custom-rdp-property), vagy visszaállíthatja egy gazdagép készlet összes egyéni RDP tulajdonságát a következő futtatásával PowerShell-parancsmagot:
+Az egyéni RDP-tulajdonságokat alapértékre állíthatja úgy, hogy az [Egyéni RDP-tulajdonság hozzáadása vagy szerkesztése](#add-or-edit-a-single-custom-rdp-property)lehetőségre kattint, vagy a következő PowerShell-parancsmag futtatásával alaphelyzetbe állíthatja a gazdagépek összes egyéni RDP-tulajdonságát:
 
 ```powershell
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty ""
 ```
-![PowerShell-parancsmag képernyőképe a Get-RDSRemoteApp nevét és rövid név kiemelve.](media/resetcustomrdpproperty.png)
+![Képernyőkép a Get-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és FriendlyName ki van emelve.](media/resetcustomrdpproperty.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy testre szabta a egy adott gazdagép készlet RDP tulajdonságát, bejelentkezhet egy Windows virtuális asztali ügyfélhez, tesztelje le azokat a felhasználói munkamenet részeként. Ehhez továbbra is a csatlakozás a Windows virtuális asztal útmutatók:
+Most, hogy testreszabta az adott címkészlet RDP-tulajdonságait, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, hogy egy felhasználói munkamenet részeként tesztelje őket. Ehhez folytassa a Kapcsolódás a Windows rendszerű virtuális asztali környezetekhez:
 
-- [Csatlakozás a Windows 10 és Windows 7](connect-windows-7-and-10.md)
-- [Egy webböngészőből csatlakozzon](connect-web.md)
+- [Windows 10 és Windows 7 közötti kapcsolat](connect-windows-7-and-10.md)
+- [Webböngészőből való csatlakozási szolgáltatás](connect-web.md)

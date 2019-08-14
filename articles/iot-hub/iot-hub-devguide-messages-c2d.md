@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 4b8df538110f6c0b17a1ed37a2a6063a5b89a6e4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d4a51a44b48e94669e92a9d525c1b0966df53c18
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880987"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68964129"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Felhőből az eszközre irányuló üzenetek küldése IoT-hubhoz
 
@@ -82,10 +82,6 @@ A felhőből az eszközre küldött üzenetek küldésekor a szolgáltatás az �
 
 Ha a **ACK** érték *megtelt*, és nem kap visszajelzést, az azt jelenti, hogy a visszajelzési üzenet lejárt. A szolgáltatás nem tudja, mi történt az eredeti üzenettel. A gyakorlatban a szolgáltatásnak biztosítania kell, hogy a lejárata előtt fel tudja dolgozni a visszajelzést. A maximális lejárati idő két nap, így a szolgáltatás sikertelenül fog futni, ha hiba történik.
 
-> [!NOTE]
-> Az eszköz törlésekor a függőben lévő visszajelzések is törlődnek.
->
-
 Ahogy azt a [végpontok](iot-hub-devguide-endpoints.md)ismertetik, a IoT hub visszajelzést küld a szolgáltatás felé irányuló végponton, a */messages/servicebound/feedback*, az üzenetekként. A visszajelzések fogadásának szemantikai megegyeznek a felhőből az eszközre irányuló üzenetekkel. Ha lehetséges, az üzenetek visszajelzése egyetlen üzenetbe van batch, a következő formátumban:
 
 | Tulajdonság     | Leírás |
@@ -125,6 +121,12 @@ A visszajelzési üzenet törzse a következő kódban látható:
   ...
 ]
 ```
+
+**Törlésre váró eszközök visszajelzése**
+
+Ha töröl egy eszközt, a függőben lévő visszajelzések is törlődnek. Az eszköz visszajelzéseit kötegekben küldi el a rendszer. Ha egy eszköz törölve lett a keskeny ablakban (általában 1 másodpercnél kevesebb), amikor az eszköz megerősíti az üzenet fogadását és a következő visszajelzési köteg előkészítését, a visszajelzés nem fog történni.
+
+Ezt a viselkedést úgy érheti el, ha az eszköz törlése előtt egy időszakot vár a függőben lévő visszajelzések megérkezésére. A kapcsolódó üzenetek visszajelzését az eszköz törlése után el kell fogadniuk.
 
 ## <a name="cloud-to-device-configuration-options"></a>A felhőből az eszközre történő konfigurációs beállítások
 

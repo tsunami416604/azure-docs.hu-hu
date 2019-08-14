@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49f8d0e418f43648665b95f5bf1f672e9f9dae28
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: cad2568702909274030d3c7c6469a7e4cbf670c4
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779459"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989265"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>kézikönyv: A hibrid Azure Active Directory-csatlakozás megvalósításának megtervezése
 
@@ -101,7 +101,7 @@ Előfordulhat, hogy a szervezetek a hibrid Azure AD-csatlakozás ellenőrzött �
 
 ## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>Válassza ki a forgatókönyvet az identitás-infrastruktúra alapján
 
-A hibrid Azure AD JOIN mindkét, felügyelt és összevont környezettel működik.  
+A hibrid Azure AD JOIN mindkét, felügyelt és összevont környezettel működik, attól függően, hogy az egyszerű felhasználónév irányítható vagy nem irányítható. Tekintse meg a lap alját a táblázathoz a támogatott forgatókönyvek esetében.  
 
 ### <a name="managed-environment"></a>Felügyelt környezet
 

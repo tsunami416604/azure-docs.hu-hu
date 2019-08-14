@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: b3ebd8b6f65ec86d338932579f5d4ccec6a90be3
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: e92c2e58122556f90b25f070fff9e6e6616b0257
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704736"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976851"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB table .NET Standard API: Megjegyzések letöltése és kibocsátási megjegyzései
 > [!div class="op_single_selector"]
@@ -31,8 +31,13 @@ ms.locfileid: "68704736"
 |**Gyors útmutató**|[Gyors útmutató](create-table-dotnet.md)|
 |**Oktatóanyag**|[Oktatóanyag](tutorial-develop-table-dotnet.md)|
 |**Aktuális támogatott keretrendszer**|[Microsoft .NET Standard 2,0](https://www.nuget.org/packages/NETStandard.Library)|
+|**Probléma jelentése**|[Probléma jelentése](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name104104"></a><a name="1.0.4"/>1.0.4
+* Hibajavítások
+* Adja meg a HttpClientTimeout beállítást a RestExecutorConfiguration számára.
 
 ### <a name="a-name104-preview104-preview"></a><a name="1.0.4-preview"/>1.0.4 – előzetes verzió
 * Hibajavítások
@@ -71,6 +76,7 @@ Ez a platformfüggetlen .NET Standard könyvtár a [Microsoft. Azure. Cosmos. ta
 
 | Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [1.0.4](#1.0.4) |Auguest 12, 2019 |--- |
 | [1.0.4 – előzetes verzió](#1.0.4-preview) |2019. július 26. |--- |
 | 1.0.2 – előzetes verzió |2019. május 2. |--- |
 | [1.0.1](#1.0.1) |Április 19., 2019 |--- |
@@ -86,4 +92,4 @@ Ez a platformfüggetlen .NET Standard könyvtár a [Microsoft. Azure. Cosmos. ta
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még
-Ha többet szeretne megtudni a Azure Cosmos DB Table APIról, tekintse meg a [Azure Cosmos DB Table API bemutatása](table-introduction.md)című témakört. 
+Ha többet szeretne megtudni a Azure Cosmos DB Table APIról, tekintse meg a [Azure Cosmos DB Table API bemutatása](table-introduction.md)című témakört.

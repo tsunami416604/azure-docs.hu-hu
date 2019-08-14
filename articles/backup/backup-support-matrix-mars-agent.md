@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 6d05b6ac49b372caff1bdc2f03358598fcc1afba
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 8c983772f58c1ea01db175b47225ccfafa515b96
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737086"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951983"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Támogatási mátrix a Microsoft Azure Recovery Services-(MARS-) ügynökkel való biztonsági mentéshez
 
@@ -72,8 +72,8 @@ Hálózati sávszélesség-szabályozás | Nem érhető el a Windows Server 2008
 
 A MARS-ügynök használatával biztonsági mentést készíthet közvetlenül az Azure-ba a helyszíni gépeken és az Azure-beli virtuális gépeken futó egyes operációs rendszereken. Az operációs rendszernek 64 bitesnek kell lennie, és a legújabb szervizcsomagokat és frissítéseket kell futtatnia. A következő táblázat összefoglalja ezeket az operációs rendszereket:
 
-**Operációs rendszer** | **Fájlok/mappák** | **Rendszerállapot**
---- | --- | ---
+**Operációs rendszer** | **Fájlok/mappák** | **Rendszerállapot** 
+--- | --- | --- 
 Windows 10 (Enterprise, Pro, Home) | Igen | Nem
 Windows 8,1 (Enterprise, Pro)| Igen |Nem
 Windows 8 (Enterprise, Pro) | Igen | Nem

@@ -15,13 +15,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/16/2018
-ms.openlocfilehash: 8a19f414f31c307111edad876ed973ff4027d907
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.date: 08/13/2019
+ms.openlocfilehash: 6d79bfa8f390d145bfd963b40497030140a3d135
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68591931"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013604"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Az adatelemző virtuális gép kiépítése Linux (Ubuntu)
 
@@ -86,32 +86,35 @@ Mielőtt létrehozna egy adatelemző virtuális gép Linux, Azure-előfizetésse
 Az alábbiakban a Linux-példány, az adatelemző virtuális gép létrehozásához szükséges lépéseket:
 
 1. Keresse meg a virtuális gépet, az ajánlati a [az Azure portal](https://portal.azure.com/#create/microsoft-dsvm.linux-data-science-vm-ubuntulinuxdsvmubuntu). Előfordulhat, hogy a rendszer felszólítja, hogy jelentkezzen be az Azure-fiókjába, ha még nincs bejelentkezve. 
-1. Kattintson a **létrehozás** (a lap alján) viszi, megjelenik a varázsló.![ Konfigurálja-data-adatelemzési – a virtuális gép](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
-1. A következő szakaszok a bemenet minden (a jobb oldalán az előző ábrán felsorolt) a varázsló lépéseit, a Microsoft Data Science virtuális gép létrehozásához használt. Az alábbiakban a bemeneti adatok konfigurálása az egyes lépéseket:
+1. A varázsló elindításához kattintson a **Létrehozás** gombra.
+    ![az adattudomány konfigurálása – virtuális gép](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
+1. A következő szakaszokban a Microsoft Data Science Virtual Machine létrehozásához használt varázsló egyes lépéseinek bemenetei szerepelnek. Az alábbiakban a bemeneti adatok konfigurálása az egyes lépéseket:
 
-   a. **Alapvető beállítások**:
-
-   * **Név**: A létrehozandó adatelemzési kiszolgáló neve.
-   * **VM-lemez típusa**: Ha SSD-meghajtót szeretne, válassza a **prémium SSD** lehetőséget. Ellenkező esetben válasszon **Standard HDD**. 
-   * **Felhasználónév**: Az első fiók bejelentkezési azonosítója.
-   * **Jelszó**: Első fiók jelszava (a jelszó helyett nyilvános SSH-kulcsot használhat).
-   * **Előfizetés**: Ha egynél több előfizetéssel rendelkezik, válassza ki az egyik, amelyen a gép létrehozása és a számlázás. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
-   * **Erőforráscsoport**: Létrehozhat egy új vagy egy meglévő csoportot.
-   * **Hely**: Válassza ki a legmegfelelőbb adatközpontot. Általában az adatközpont, amely tartalmazza a legtöbb az adatokat, vagy a leggyorsabb hálózati hozzáféréshez a fizikai helyéhez legközelebbi.
-
-   b. **Méret**:
-
-   * Válassza ki a kiszolgáló típusát, amely megfelel a funkcionális és a költségek megkötések. A GPU-alapú virtuálisgép-példányok esetében válasszon ki egy NC vagy ND-osztályú virtuális gépet. A [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) lap felsorolja a régiók gpu-k használatával.
-
-   c. **Beállítások**:
-
-   * A legtöbb esetben csak az alapértelmezett értékeket is használhat. Érdemes figyelembe venni, nem az alapértelmezett értékeket, a kurzort az egyes mezőkkel tájékoztató mutató hivatkozás.
-
-   d. **Összefoglalás**:
-
-   * Győződjön meg arról, hogy minden, a megadott adatok helyesek. Egy hivatkozást a használati feltételeket. A virtuális gép nem rendelkezik a kiválasztott kiszolgáló méretét a számítási túl további díjakat a **mérete** . lépés. A kiépítés indításához kattintson **létrehozás**. 
-
-A kiépítés körülbelül 5 percet vesz igénybe. A kiépítési állapota jelenik meg az Azure Portalon.
+    a. **Alapvető beállítások**:
+    
+    * **Előfizetés**: Ha egynél több előfizetéssel rendelkezik, válassza ki az egyik, amelyen a gép létrehozása és a számlázás. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
+    * **Erőforráscsoport**: Létrehozhat egy új vagy egy meglévő csoportot.
+    * **Virtuális gép neve**: A létrehozandó adatelemzési kiszolgáló neve.
+    * **Régió**: Válassza ki a legmegfelelőbb adatközpontot. Általában az adatközpont, amely tartalmazza a legtöbb az adatokat, vagy a leggyorsabb hálózati hozzáféréshez a fizikai helyéhez legközelebbi.
+    * **Rendelkezésre állási lehetőségek**: Ha ezt a virtuális gépet a rendelkezésre állási csoportokban/zónákban szeretné használni, akkor hagyja meg az alapértelmezett értéket.
+    * **Rendszerkép**: Hagyja meg az alapértelmezett értéket
+    * **Méret**: Válassza ki a kiszolgáló típusát, amely megfelel a funkcionális és a költségek megkötések. Válasszon egy NC vagy ND sorozatú virtuális gépet a GPU-alapú virtuálisgép-példányokhoz. 
+    * **Felhasználónév**: Rendszergazda felhasználóneve
+    * **Nyilvános SSH-kulcs**: RSA nyilvános kulcs Egysoros formátumban (az SSH-kulcs helyett jelszót is használhat).
+    
+    b. **Lemezek**:
+    
+    * **Operációsrendszer-lemez típusa**: Ha SSD-meghajtót szeretne, válassza a **prémium SSD** lehetőséget. Ellenkező esetben válasszon **Standard HDD**.
+    
+    c. A többi beállításhoz csak az alapértelmezett értékeket használhatja. Érdemes figyelembe venni, nem az alapértelmezett értékeket, a kurzort az egyes mezőkkel tájékoztató mutató hivatkozás.
+    
+    Végül válassza a **felülvizsgálat + létrehozás** lehetőséget
+    
+    d. **Felülvizsgálat + létrehozás**:
+    
+    * Az ellenőrzés után ellenőrizze, hogy a megadott összes adat helyes-e. Egy hivatkozást a használati feltételeket. A virtuális gép nem rendelkezik további költségekkel, mint a méret bemenetben kiválasztott kiszolgáló méretének kiszámítása. A kiépítés indításához kattintson **létrehozás**.
+    
+    A kiépítés körülbelül 5 percet vesz igénybe. A kiépítési állapota jelenik meg az Azure Portalon.
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Az adatelemző virtuális gép elérése Linux rendszeren
 

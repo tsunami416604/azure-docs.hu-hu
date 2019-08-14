@@ -1,6 +1,6 @@
 ---
-title: Az Azure MFA-kiszolgáló – az Azure Active Directory frissítése
-description: A lépések és útmutatást az Azure multi-factor Authentication-kiszolgáló frissítése újabb verzióra.
+title: Az Azure MFA-kiszolgáló frissítése – Azure Active Directory
+description: Lépések és útmutatás az Azure multi-Factor Authentication-kiszolgáló újabb verzióra való frissítéséhez.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,109 +11,109 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcafa3e2f2665e84856b80cc0911d2e83df1aa65
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 19ca6d82b80a9ed77a842b638ff8e9ff346342e8
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057340"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988542"
 ---
-# <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>A legújabb Azure multi-factor Authentication-kiszolgáló frissítése
+# <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Frissítés a legújabb Azure multi-Factor Authentication-kiszolgálóra
 
-Ez a cikk végigvezeti a folyamat frissítése az Azure multi-factor Authentication (MFA)-kiszolgáló 6.0-s vagy újabb. Ha a frissítés a PhoneFactor ügynökről régi verziója van szüksége, tekintse meg [frissítés a PhoneFactor ügynökről az Azure multi-factor Authentication-kiszolgáló](howto-mfaserver-deploy-upgrade-pf.md).
+Ez a cikk végigvezeti az Azure multi-Factor Authentication (MFA) Server 6.0-s vagy újabb verziójának frissítésének folyamatán. Ha frissítenie kell a PhoneFactor-ügynök egy korábbi verzióját, tekintse meg a [PhoneFactor-ügynök frissítése az Azure multi-Factor Authentication-kiszolgálóra](howto-mfaserver-deploy-upgrade-pf.md)című témakört.
 
-Ha frissít a 6.x-es vagy régebbi v7.x, vagy újabb, az összes összetevő váltson .NET 2.0-s .NET 4.5-ös verzióját. Az összes összetevő is frissítésére van szükség a Microsoft Visual C++ 2015 újraterjeszthető 1 vagy újabb verziója. Az MFA-kiszolgáló telepítője telepíti ezeket az összetevőket x86 és x64 verziója, ha még nincsenek telepítve. Ha a felhasználói portál és a Mobile App Web Service futtatni eltérő kiszolgálókra, azok a csomagok telepítése ezen összetevők frissítése előtt szüksége. A Microsoft Visual C++ 2015 Redistributable legfrissebb a kereshet a [Microsoft Download Center](https://www.microsoft.com/download/). 
+Ha v6. x-ről vagy régebbiről a v7. x vagy újabb verzióra frissít, az összes összetevő a .NET 2,0-ről a .NET 4,5-re vált. Az összes összetevőhöz a Microsoft C++ Visual 2015 újraterjeszthető frissítése 1 vagy újabb verzió szükséges. Az MFA-kiszolgáló telepítője az összetevők x86-os és x64-es verzióját is telepíti, ha még nincsenek telepítve. Ha a felhasználói portál és a Mobile App Web Service különálló kiszolgálókon fut, akkor az összetevők frissítése előtt telepítenie kell ezeket a csomagokat. A Microsoft letöltőközpontból megkeresheti a legújabb C++ microsoft Visual 2015 újraterjeszthető frissítést. [](https://www.microsoft.com/download/) 
 
 > [!IMPORTANT]
-> 2019\. július 1-től a Microsoft már nem szavatolnak MFA-kiszolgáló az új üzembe helyezésekhez. Új felhasználókat szeretné a felhasználóktól többtényezős hitelesítést kell használnia a felhőalapú Azure multi-factor Authentication. Meglévő ügyfeleink, akik aktiválták az MFA-kiszolgáló előtt július 1 lesz a legújabb verzió, a jövőbeli frissítések letöltéséhez és a szokásos módon aktiváló hitelesítő adatok előállítása.
+> 2019. július 1-től a Microsoft már nem kínál új, az MFA-kiszolgálót az új üzemelő példányokhoz. A többtényezős hitelesítést a felhasználóktól megkövetelő új ügyfeleknek a felhőalapú Azure multi-Factor Authentication használatát kell használniuk. Azok a meglévő ügyfelek, akik aktiválták az MFA-kiszolgálót a július 1. előtt, le tudják tölteni a legújabb verziót, a jövőbeli frissítéseket, és az aktiválási hitelesítő adatokat a szokásos módon létrehozzák.
 
-Egyetlen pillantással frissítési lépések:
+Frissítés lépéseinek áttekintése:
 
-* Az Azure MFA-kiszolgálók (beosztottak majd Master) frissítése
-* A felhasználói portál példányok frissítése
-* Az AD FS-Adapter példányok frissítése
+* Azure MFA-kiszolgálók frissítése (alárendeltek, majd főkiszolgáló)
+* A felhasználói portál példányainak frissítése
+* A AD FS-adapter példányainak frissítése
 
 ## <a name="upgrade-azure-mfa-server"></a>Az Azure MFA-kiszolgáló frissítése
 
-1. Kövesse az utasításokat a [töltse le az Azure multi-factor Authentication-kiszolgáló](howto-mfaserver-deploy.md#download-the-mfa-server) az Azure MFA-kiszolgáló telepítő legújabb verziójának beszerzéséhez.
-2. Készítsen biztonsági másolatot az MFA-kiszolgáló adatfájl található: C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (feltéve, hogy az alapértelmezett telepítési hely) a fő MFA-kiszolgálón.
-3. Ha magas rendelkezésre állás érdekében több kiszolgálón futtatja, módosítsa az ügyfélszámítógépeken, az MFA-kiszolgáló hitelesítést, hogy a forgalmat küld, amely frissíti a kiszolgálók leáll. Ha terheléselosztót használ, egy alárendelt MFA-kiszolgáló eltávolítása a terheléselosztóból, a frissítéshez és majd hozzáadja a kiszolgálót újra üzembe a farmban.
-4. Futtassa az új telepítő minden egyes MFA-kiszolgálón. Először frissíteni az alárendelt kiszolgálók, mert a régi adatok fájl a fő által replikált elolvasása.
+1. Az Azure [multi-Factor Authentication-kiszolgáló letöltése](howto-mfaserver-deploy.md#download-the-mfa-server) című cikkben található útmutatást követve hozzájuthat az Azure MFA Server telepítőjének legújabb verziójához.
+2. Készítsen biztonsági másolatot az MFA-kiszolgáló adatfájljáról a C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (feltéve, hogy ez az alapértelmezett telepítési hely) a fő MFA-kiszolgálón.
+3. Ha több kiszolgálót is futtat a magas rendelkezésre állás érdekében, módosítsa az MFA-kiszolgálóra hitelesítő ügyfélszoftvereket, hogy ne küldjenek forgalmat a frissített kiszolgálókra. Ha Load balancert használ, távolítsa el az alárendelt MFA-kiszolgálót a terheléselosztó közül, végezze el a frissítést, majd adja hozzá újra a kiszolgálót a farmhoz.
+4. Futtassa az új telepítőt az egyes MFA-kiszolgálókon. Először frissítse az alárendelt kiszolgálókat, mert elolvashatják a főkiszolgáló által replikált régi adatfájlt.
 
    > [!NOTE]
-   > Ha a kiszolgáló frissítése, el kell távolítani bármely terheléselosztás vagy forgalmat osztanak meg más MFA-kiszolgálóval.
+   > A kiszolgálók frissítésekor el kell távolítani a többi MFA-kiszolgálóval való terheléselosztás vagy forgalom megosztását.
    >
-   > Nem kell az aktuális MFA-kiszolgáló eltávolítása a telepítő futtatása előtt. A telepítő egy helyszíni frissítését végzi. A telepítési útvonalat felülettől a beállításjegyzéket a korábbi telepítésből származó, (például C:\Program Files\Multi-Factor Authentication Server) ugyanazon a helyen telepíti.
+   > A telepítő futtatása előtt nem kell eltávolítania az aktuális MFA-kiszolgálót. A telepítő helyben történő frissítést hajt végre. A telepítési útvonal a korábbi telepítésből származó beállításjegyzékből lett kiválasztva, ezért az ugyanarra a helyre települ (például C:\Program Files\Multi-Factor Authentication Server).
   
-5. Ha a Microsoft Visual C++ 2015 újraterjeszthető csomag telepítése kéri, fogadja el a rendszer. A csomag x86 és x64 verziója van telepítve.
-6. Ha a Web Service SDK-t használ, az új Web Service SDK telepítése kéri. Az új Web Service SDK telepítésekor győződjön meg arról, hogy a virtuális könyvtár neve megegyezik a korábban telepített virtuális könyvtárat (például Phonefactorwebservicesdk).
-7. Ismételje meg az összes alárendelt kiszolgálókon. A beosztottak kell az új fő egyikét léptesse, majd a régi fő kiszolgáló frissítéséhez.
+5. Ha a rendszer kéri, hogy telepítsen egy C++ Microsoft Visual 2015 újraterjeszthető frissítési csomagot, fogadja el a kérést. A csomag x86-os és x64-es verziója is telepítve van.
+6. Ha a Web Service SDK-t használja, a rendszer kéri, hogy telepítse az új Web Service SDK-t. Az új Web Service SDK telepítésekor ellenőrizze, hogy a virtuális könyvtár neve megegyezik-e a korábban telepített virtuális könyvtárral (például Phonefactorwebservicesdk).
+7. Ismételje meg a lépéseket az összes alárendelt kiszolgálón. Léptesse elő a beosztottak egyikét, hogy az új főkiszolgáló legyen, majd frissítse a régi főkiszolgáló-kiszolgálót.
 
 ## <a name="upgrade-the-user-portal"></a>A felhasználói portál frissítése
 
-Mielőtt Ez a szakasz az MFA-kiszolgáló frissítése befejeződik.
+A szakaszra való áttérés előtt fejezze be az MFA-kiszolgálók frissítését.
 
-1. Készítsen biztonsági másolatot a web.config fájlt, amely a virtuális könyvtárban, a felhasználói portál telepítési helyére (pl. C:\inetpub\wwwroot\MultiFactorAuth). Ha az alapértelmezett téma módosítások történtek, készítsen biztonsági másolatot a App_Themes\Default mappát is. Célszerűbb másolatot készít az alapértelmezett mappát, és hozzon létre egy új témát, mint a módosítsa az alapértelmezett téma.
-2. Ha a felhasználói portál a többi MFA-kiszolgáló összetevő ugyanazon a kiszolgálón fut, az MFA-kiszolgáló telepítését kéri a felhasználói portál frissítése. Fogadja el a rendszer, és a felhasználói portál frissítés telepítéséhez. Ellenőrizze, hogy a virtuális könyvtár neve megegyezik a korábban telepített virtuális könyvtárat (például a MultiFactorAuth).
-3. Ha a felhasználói portált a saját kiszolgálóján, az MFA-kiszolgálók egyikét telepítési helyére másolja a multifactorauthenticationuserportalsetup64.msi telepítőfájlt fájlt, és helyezi azt az alakzatot a felhasználói portál webkiszolgálója. Futtassa a telepítőt.
+1. Készítsen biztonsági másolatot a felhasználói portál telepítési helyének virtuális könyvtárában található web. config fájlról (például C:\inetpub\wwwroot\MultiFactorAuth). Ha bármilyen változás történt az alapértelmezett témánál, készítsen biztonsági másolatot a App_Themes\Default mappáról is. Jobb, ha létrehoz egy másolatot az alapértelmezett mappáról, és új témát hoz létre, mint az alapértelmezett téma módosításához.
+2. Ha a felhasználói portál ugyanazon a kiszolgálón fut, mint a többi MFA-kiszolgáló összetevő, az MFA-kiszolgáló telepítése arra kéri, hogy frissítse a felhasználói portált. Fogadja el a parancssort, és telepítse a felhasználói portál frissítését. Győződjön meg arról, hogy a virtuális könyvtár neve megegyezik a korábban telepített virtuális könyvtárral (például MultiFactorAuth).
+3. Ha a felhasználói portál saját kiszolgálón található, másolja a MultiFactorAuthenticationUserPortalSetup64. msi fájlt az egyik MFA-kiszolgáló telepítési helyére, és helyezze azt a felhasználói portál webkiszolgálóra. Futtassa a telepítőt.
 
-   Ha hiba lép fel azzal, "A Microsoft Visual C++ 2015 újraterjeszthető Update 1 vagy újabb szükség," töltse le és telepítse a legújabb frissítési csomagot a [Microsoft Download Center](https://www.microsoft.com/download/). Telepítse a x86 és x64 verziókat.
+   Ha hiba történik, "a Microsoft Visual C++ 2015 újraterjeszthető frissítésének 1. vagy újabb verziója szükséges," töltse le és telepítse a legújabb frissítési csomagot a [Microsoft letöltőközpontból](https://www.microsoft.com/download/). Telepítse az x86-os és x64-es verziókat is.
 
-4. A felhasználói portál frissített szoftver telepítése után, hasonlítsa össze a web.config biztonsági mentést végzett, az 1. lépés-az új web.config fájlba. Ha nincsenek új jogcímek az új Web.config, másolja át a biztonsági mentési web.config a virtuális könyvtár felülírja az újat. Egy másik lehetőség, hogy másolja és illessze be az appSettings értékeket és a Web Service SDK URL-cím a biztonsági mentési fájlból, az új web.config.
+4. A frissített felhasználói portál szoftver telepítése után hasonlítsa össze az 1. lépésben az új web. config fájllal létrehozott web. config biztonsági mentést. Ha nem található új attribútum az új web. config fájlban, másolja a Backup web. config fájlt a virtuális könyvtárba, hogy felülírja az újat. Egy másik lehetőség a appSettings és a Web Service SDK URL-címének másolása/beillesztése a Backup fájlból az új web. config fájlba.
 
-Ha a felhasználói portál több kiszolgálón, ismételje meg a telepítés összes őket.
+Ha több kiszolgálón van a felhasználói portál, ismételje meg a telepítést.
 
 ## <a name="upgrade-the-mobile-app-web-service"></a>A Mobile App Web Service frissítése
 
 > [!NOTE]
-> Ha az Azure MFA-kiszolgáló 8.0-s verziójánál régebbiről frissít 8.0-nál újabb verzióra, a mobilalkalmazás webszolgáltatását eltávolíthatja a frissítés után
+> Az 8,0-nál régebbi Azure MFA-kiszolgáló verzióról 8.0 +-ra való frissítés után a Mobile App Web Service a frissítés után is eltávolítható
 
-## <a name="upgrade-the-ad-fs-adapters"></a>Az AD FS-adapter frissítése
+## <a name="upgrade-the-ad-fs-adapters"></a>A AD FS adapterek frissítése
 
-Mielőtt Ez a szakasz az MFA-kiszolgáló és a felhasználói portál frissítése befejeződik.
+Az erre a szakaszra való áttérés előtt fejezze be az MFA-kiszolgálók és a felhasználói portál frissítését.
 
-### <a name="if-mfa-runs-on-different-servers-than-ad-fs"></a>Ha az MFA fut, mint az AD FS különböző kiszolgálókon
+### <a name="if-mfa-runs-on-different-servers-than-ad-fs"></a>Ha az MFA különböző kiszolgálókon fut, mint AD FS
 
-Ezek az utasítások csak akkor érvényesek, ha a multi-factor Authentication kiszolgáló külön-külön futtatja a parancsot az AD FS-kiszolgálók. Ha mindkét szolgáltatás ugyanazokat a kiszolgálókat futtatnia, kihagyhatja ezt a szakaszt, és nyissa meg a telepítési lépéseket. 
+Ezek az utasítások csak akkor érvényesek, ha a multi-Factor Authentication kiszolgálót külön futtatja a AD FS-kiszolgálókról. Ha mindkét szolgáltatás ugyanazon a kiszolgálón fut, ugorja át ezt a szakaszt, és folytassa a telepítési lépésekkel. 
 
-1. Mentse a MultiFactorAuthenticationAdfsAdapter.config fájlt az AD FS-ben regisztrált másolatát, vagy a konfiguráció a következő PowerShell-paranccsal exportálhatja: `Export-AdfsAuthenticationProviderConfigurationData -Name [adapter name] -FilePath [path to config file]`. Az adapter neve az "WindowsAzureMultiFactorAuthentication" vagy "AzureMfaServerAuthentication" függően a korábban telepített verzióját.
-2. Az alábbi fájlokat az MFA-kiszolgáló telepítési helyéről másolja az AD FS-kiszolgálók:
+1. Mentse a AD FSban regisztrált MultiFactorAuthenticationAdfsAdapter. config fájl másolatát, vagy exportálja a konfigurációt a következő PowerShell-parancs használatával: `Export-AdfsAuthenticationProviderConfigurationData -Name [adapter name] -FilePath [path to config file]`. Az adapter neve "WindowsAzureMultiFactorAuthentication" vagy "AzureMfaServerAuthentication" lehet a korábban telepített verziótól függően.
+2. Másolja a következő fájlokat az MFA-kiszolgáló telepítési helyéről a AD FS kiszolgálókra:
 
    * MultiFactorAuthenticationAdfsAdapterSetup64.msi
    * Register-MultiFactorAuthenticationAdfsAdapter.ps1
    * Unregister-MultiFactorAuthenticationAdfsAdapter.ps1
    * MultiFactorAuthenticationAdfsAdapter.config
 
-3. Szerkessze a Register-MultiFactorAuthenticationAdfsAdapter.ps1 parancsfájlt hozzáadásával `-ConfigurationFilePath [path]` végéhez a `Register-AdfsAuthenticationProvider` parancsot. Cserélje le *[elérési út]* a teljes elérési útját a MultiFactorAuthenticationAdfsAdapter.config fájlt vagy a konfigurációs fájlban exportálja az előző lépésben.
+3. Szerkessze a Register-MultiFactorAuthenticationAdfsAdapter. ps1 parancsfájlt `-ConfigurationFilePath [path]` úgy, hogy hozzáadja a `Register-AdfsAuthenticationProvider` parancs végéhez. Cserélje le a *[Path]* parancsot a MultiFactorAuthenticationAdfsAdapter. config fájl teljes elérési útjára, vagy az előző lépésben exportált konfigurációs fájlra.
 
-   Ellenőrizze az új MultiFactorAuthenticationAdfsAdapter.config megtekintheti, ha azok megfelelnek-e a régi konfigurációs fájl attribútumokat. Attribútumok hozzáadott vagy eltávolított az új verzióban, másolja az attribútumértékek az a régi konfigurációs fájlt az új névre, vagy módosítsa megfelelően a régi konfigurációs fájlt.
+   Ellenőrizze az új MultiFactorAuthenticationAdfsAdapter. config attribútumait, hogy megegyezzenek-e a régi konfigurációs fájllal. Ha az új verzióban bármely attribútum hozzá lett adva vagy el lett távolítva, másolja az attribútum értékeit a régi konfigurációs fájlból az újat, vagy módosítsa a régi konfigurációs fájlt az egyeztetéshez.
 
-### <a name="install-new-ad-fs-adapters"></a>Új AD FS-adapter telepítése
+### <a name="install-new-ad-fs-adapters"></a>Új AD FS adapterek telepítése
 
 > [!IMPORTANT]
-> A felhasználók nem szükséges, ez a szakasz 3 – 8. lépések során a kétlépéses hitelesítés végrehajtására. Ha az AD FS több fürtön konfigurálva van, távolítsa el, frissítése és visszaállításához a üzemszünet elkerülése érdekében a többi fürtök függetlenül a farm minden egyes fürt.
+> A felhasználók nem lesznek szükségesek kétlépéses ellenőrzés végrehajtásához a szakasz 3-8. lépésében. Ha több fürtben van AD FS konfigurálva, a leállás elkerülése érdekében a többi fürttől függetlenül eltávolíthatja, frissítheti és visszaállíthatja a farmban lévő összes fürtöt.
 
-1. Bizonyos AD FS-kiszolgálók eltávolítása a farmból. Ezek a kiszolgálók frissítse, amíg a többi továbbra is futnak.
-2. Az új AD FS-adapter telepítése eltávolítja az AD FS-farm minden egyes kiszolgálón. Ha az MFA-kiszolgáló AD FS-kiszolgálókon telepítve van, az MFA-kiszolgáló-rendszergazdai UX keresztül frissítheti Ellenkező esetben futtassa a MultiFactorAuthenticationAdfsAdapterSetup64.msi frissítése.
+1. Távolítson el néhány AD FS kiszolgálót a farmból. Frissítse ezeket a kiszolgálókat, amíg a többiek még futnak.
+2. Telepítse az új AD FS-adaptert az AD FS farmból eltávolított összes kiszolgálóra. Ha az MFA-kiszolgáló minden AD FS-kiszolgálóra telepítve van, az MFA-kiszolgáló rendszergazdai UX-en keresztül frissítheti. Ellenkező esetben frissítse a MultiFactorAuthenticationAdfsAdapterSetup64. msi fájl futtatásával.
 
-   Ha hiba lép fel azzal, "A Microsoft Visual C++ 2015 újraterjeszthető Update 1 vagy újabb szükség," töltse le és telepítse a legújabb frissítési csomagot a [Microsoft Download Center](https://www.microsoft.com/download/). Telepítse a x86 és x64 verziókat.
+   Ha hiba történik, "a Microsoft Visual C++ 2015 újraterjeszthető frissítésének 1. vagy újabb verziója szükséges," töltse le és telepítse a legújabb frissítési csomagot a [Microsoft letöltőközpontból](https://www.microsoft.com/download/). Telepítse az x86-os és x64-es verziókat is.
 
-3. Lépjen a **az AD FS** > **hitelesítési házirendek** > **globális többtényezős hitelesítési házirend szerkesztése**. Törölje a jelet **WindowsAzureMultiFactorAuthentication** vagy **AzureMFAServerAuthentication** (attól függően, a telepített aktuális verziót).
+3. Nyissa meg a **AD FS** > **hitelesítési házirendek** > **globális többtényezős hitelesítési házirend szerkesztése**lehetőséget. Törölje a **WindowsAzureMultiFactorAuthentication** vagy a **AzureMFAServerAuthentication** (a telepített aktuális verziótól függően).
 
-   Ez a lépés befejezése után a kétlépéses ellenőrzés keresztül MFA-kiszolgáló nem áll rendelkezésre a AD FS-fürt 8. lépés végrehajtásáig.
+   Ha ez a lépés elkészült, a kétlépéses ellenőrzés az MFA-kiszolgálón keresztül nem érhető el ebben a AD FS-fürtben, amíg el nem végzi a 8. lépést.
 
-4. A régebbi verzióját az AD FS-adapter regisztrációját a Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell-parancsfájl futtatásával. Ügyeljen arra, hogy a *-név* paraméter ("WindowsAzureMultiFactorAuthentication" vagy "AzureMFAServerAuthentication") megegyezik a 3. lépésben megjelenő nevét. Ez vonatkozik az ugyanazon AD FS-fürt összes kiszolgálóján, mivel a központi konfigurációs van.
-5. Az új AD FS-adapter regisztrálja a Register-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell-parancsfájl futtatásával. Ez vonatkozik az ugyanazon AD FS-fürt összes kiszolgálóján, mivel a központi konfigurációs van.
-6. Indítsa újra az AD FS szolgáltatás eltávolítja az AD FS-farm minden egyes kiszolgálón.
-7. Kiszolgálókat ad hozzá a frissített vissza az AD FS-farm, és a többi kiszolgáló eltávolítása a farmból.
-8. Lépjen a **az AD FS** > **hitelesítési házirendek** > **globális többtényezős hitelesítési házirend szerkesztése**. Ellenőrizze **AzureMfaServerAuthentication**.
-9. Ismételje meg a az AD FS-farm eltávolítottuk a kiszolgálók frissítése a 2. lépésben, és indítsa újra az AD FS szolgáltatást az adott kiszolgálókon.
-10. Vissza az AD FS-farm adja hozzá ezeket a kiszolgálókat.
+4. A Unregister-MultiFactorAuthenticationAdfsAdapter. ps1 PowerShell-parancsfájl futtatásával szüntesse meg a AD FS-adapter korábbi verziójának regisztrációját. Győződjön meg arról, hogy a *-Name* paraméter ("WindowsAzureMultiFactorAuthentication" vagy "AzureMFAServerAuthentication") megegyezik a 3. lépésben megjelenő névvel. Ez az összes olyan kiszolgálóra vonatkozik, amely ugyanabban a AD FS fürtben van, mivel központi konfiguráció van.
+5. Regisztrálja az új AD FS adaptert a Register-MultiFactorAuthenticationAdfsAdapter. ps1 PowerShell-parancsfájl futtatásával. Ez az összes olyan kiszolgálóra vonatkozik, amely ugyanabban a AD FS fürtben van, mivel központi konfiguráció van.
+6. Indítsa újra a AD FS szolgáltatást minden olyan kiszolgálón, amely el lett távolítva a AD FS farmról.
+7. Adja hozzá újra a frissített kiszolgálókat a AD FS farmhoz, és távolítsa el a többi kiszolgálót a farmból.
+8. Nyissa meg a **AD FS** > **hitelesítési házirendek** > **globális többtényezős hitelesítési házirend szerkesztése**lehetőséget. **AzureMfaServerAuthentication**-keresés.
+9. Ismételje meg a 2. lépést a AD FS farmból eltávolított kiszolgálók frissítéséhez, majd indítsa újra a AD FS szolgáltatást ezeken a kiszolgálókon.
+10. Adja hozzá ezeket a kiszolgálókat a AD FS farmhoz.
 
 ## <a name="next-steps"></a>További lépések
 
-* Példák a [speciális az Azure multi-factor Authentication és külső VPN-ekre vonatkozó forgatókönyvek](howto-mfaserver-nps-vpn.md)
+* Példák az [Azure multi-Factor Authentication és a harmadik féltől származó VPN-EK speciális forgatókönyvekre](howto-mfaserver-nps-vpn.md)
 
-* [MFA-kiszolgáló szinkronizálása a Windows Server Active Directoryval](howto-mfaserver-dir-ad.md)
+* [MFA-kiszolgáló szinkronizálása a Windows Server Active Directory](howto-mfaserver-dir-ad.md)
 
-* [Windows-hitelesítés konfigurálása](howto-mfaserver-windows.md) alkalmazásai számára
+* [Windows-hitelesítés konfigurálása](howto-mfaserver-windows.md) az alkalmazásokhoz

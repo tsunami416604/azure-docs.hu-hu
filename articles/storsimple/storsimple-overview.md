@@ -14,14 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
-ms.openlocfilehash: 5a3800cfdf36bdc2e042eec860310a508204ba11
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876448"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965117"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 sorozat: hibrid felhőalapú tárolási megoldás
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
 ## <a name="overview"></a>Áttekintés
 Üdvözli a Microsoft Azure StorSimple, amely egy integrált tárolási megoldás, amely a helyszíni eszközök és a Microsoft Azure felhőalapú tárolók közötti tárolási feladatokat kezeli. A StorSimple egy hatékony, költséghatékony és könnyen kezelhető Tárolóhálózati megoldás, amely kiküszöböli a nagyvállalati tárterülettel és az adatvédelemmel kapcsolatos számos problémát és költséget. A saját StorSimple 8000 sorozatú eszközt használja, integrálja a Cloud Services szolgáltatással, és számos felügyeleti eszközt biztosít az összes vállalati tárterület, beleértve a felhőalapú tárolást, zökkenőmentes áttekintéséhez. (A Microsoft Azure webhelyen közzétett StorSimple-telepítési információk csak a StorSimple 8000 Series-eszközökre vonatkoznak. Ha StorSimple 5000/7000 sorozatú eszközt használ, lépjen a [StorSimple súgóra](http://onlinehelp.storsimple.com/).)
 
@@ -214,8 +217,8 @@ Az alábbi táblázat a támogatott StorSimple-számítási feladatok összefogl
 | Virtualizáció |Virtual machines (Virtuális gépek) |Igen* |Csak helyileg rögzített kötetekkel támogatott |2\. frissítés és újabb |
 | Adatbázis |SQL |Igen* |Csak helyileg rögzített kötetekkel támogatott |2\. frissítés és újabb |
 | Videó-megfigyelés |Videó-megfigyelés |Igen* |Csak akkor támogatott, ha a StorSimple-eszköz csak erre a számítási feladatra van dedikált |2\. frissítés és újabb |
-| Backup |Elsődleges cél biztonsági mentése |Igen* |Csak akkor támogatott, ha a StorSimple-eszköz csak erre a számítási feladatra van dedikált |3\. frissítés és újabb |
-| Backup |Másodlagos cél biztonsági mentése |Igen* |Csak akkor támogatott, ha a StorSimple-eszköz csak erre a számítási feladatra van dedikált |3\. frissítés és újabb |
+| Tartalék |Elsődleges cél biztonsági mentése |Igen* |Csak akkor támogatott, ha a StorSimple-eszköz csak erre a számítási feladatra van dedikált |3\. frissítés és újabb |
+| Tartalék |Másodlagos cél biztonsági mentése |Igen* |Csak akkor támogatott, ha a StorSimple-eszköz csak erre a számítási feladatra van dedikált |3\. frissítés és újabb |
 
 *Igen&#42; – a megoldásra vonatkozó irányelvek és korlátozások érvényesek.*
 
@@ -226,7 +229,7 @@ A StorSimple 8000 sorozatú eszközök nem támogatják a következő munkaterhe
 * VDI
 * Oracle
 * SAP
-* Big Data
+* Big data
 * Tartalom terjesztése
 * Rendszerindítás SCSI-ről
 
@@ -244,7 +247,7 @@ A következő lista a StorSimple által támogatott infrastruktúra-összetevők
 
 A következő lista felsorolja azokat a szoftvereket, amelyeket a StorSimple a megoldások létrehozásához használ.
 
-| Munkaterhelés típusa | StorSimple használt szoftverek | Támogatott verziók|Hivatkozás a megoldási útmutatóra| 
+| Számítási feladat típusa | StorSimple használt szoftverek | Támogatott verziók|Hivatkozás a megoldási útmutatóra| 
 | --- | --- | --- | --- |
 | Biztonsági mentés célja |Veeam |Veeam v 9-es és újabb verziók |[StorSimple biztonsági mentési célként a Veaam](storsimple-configure-backup-target-veeam.md)|
 | Biztonsági mentés célja |A Veritas Backup Exec |Backup Exec 16 és újabb verziók |[StorSimple biztonsági mentési célként a Backup Exec](storsimple-configure-backup-target-using-backup-exec.md)|
@@ -273,12 +276,12 @@ A Microsoft Azure StorSimple-megoldás üzembe helyezése előtt javasoljuk, hog
 | Felhőbeli tárolás titkosítási kulcsa |A StorSimple-eszköz által az eszköz által a felhőbe továbbított titkosított adatforgalom eléréséhez használt jelszó vagy kulcs. |
 | fürtöket támogató frissítés |Szoftverfrissítések kezelése feladatátvevő fürt kiszolgálóin, hogy a frissítések minimális vagy semmilyen hatással legyenek a szolgáltatás rendelkezésre állására. |
 | datapath |Olyan funkcionális egységek gyűjteménye, amelyek egymással összekapcsolt adatfeldolgozási műveleteket hajtanak végre. |
-| inaktiválása |Állandó művelet, amely megszakítja a kapcsolatot a StorSimple-eszköz és a hozzá tartozó felhőalapú szolgáltatás között. Az eszköz Felhőbeli pillanatképei a folyamat után is megmaradnak, és klónozott vagy vész-helyreállítási felhasználható. |
+| inaktiválás |Állandó művelet, amely megszakítja a kapcsolatot a StorSimple-eszköz és a hozzá tartozó felhőalapú szolgáltatás között. Az eszköz Felhőbeli pillanatképei a folyamat után is megmaradnak, és klónozott vagy vész-helyreállítási felhasználható. |
 | lemez tükrözése |A folyamatos rendelkezésre állás biztosítása érdekében valós időben replikálja a logikai lemez köteteit külön merevlemezeken. |
 | dinamikus lemez tükrözése |Logikai lemez köteteinek replikálása dinamikus lemezeken. |
 | dinamikus lemezek |Egy lemezes kötet formátuma, amely a logikai lemezkezelő (LDM) használatával tárolja és kezeli az adatmennyiséget több fizikai lemez között. A dinamikus lemezek kinagyítható, így több szabad terület is elérhető. |
 | Kiterjesztett lemez (EBOD) – ház |A Microsoft Azure StorSimple eszköz másodlagos bekerítése, amely további merevlemez-lemezeket tartalmaz a további tároláshoz. |
-| FAT-kiépítés |Egy hagyományos tárolási kiépítés, amelyben a tárolóhelyek a várt igények alapján vannak lefoglalva (és általában az aktuális szükségleten felül). Lásd még : dinamikus kiépítés. |
+| FAT-kiépítés |Egy hagyományos tárolási kiépítés, amelyben a tárolóhelyek a várt igények alapján vannak lefoglalva (és általában az aktuális szükségleten felül). Lásd még: dinamikus kiépítés. |
 | merevlemez-meghajtó (HDD) |Egy meghajtó, amely a forgó lemezeket használja az adattároláshoz. |
 | hibrid felhőalapú tárolás |Helyi és telephelyen kívüli erőforrásokat használó tárolási architektúra, beleértve a felhőalapú tárolást. |
 | Internetes kis számítógép rendszerfelülete (iSCSI) |Az adattárolók vagy létesítmények összekapcsolására szolgáló Internet Protocol (IP)-alapú tárolási hálózatkezelési szabvány. |

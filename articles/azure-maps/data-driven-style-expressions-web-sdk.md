@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 18d8f2a974fb192578163f71a57d00824ae6b0fa
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 507af54b8b4c2e7c67538a1a25a040c7ee5fdfd5
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839457"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976315"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Adatvezérelt stílusú kifejezések (web SDK)
 
@@ -65,7 +65,8 @@ A jelen dokumentumban szereplő összes példa a következő funkcióval mutatja
         "type": "Point",
         "coordinates": [-122.13284, 47.63699]
     },
-    "properties": {     
+    "properties": { 
+        "id": 123,
         "entityType": "restaurant",
         "revenue": 12345,
         "subTitle": "Building 40", 
@@ -314,6 +315,28 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
+A következő példa egy egyezési kifejezést használ egy "in Array" vagy "Array" típusú szűrő elvégzéséhez, ebben az esetben olyan adatszűrési értékeket tartalmaz, amely az engedélyezett azonosítók listáján szereplő azonosító értékkel rendelkezik. Ha szűrőket használó kifejezéseket használ, az eredménynek logikai értéknek kell lennie.
+
+```javascript
+var layer = new atlas.layer.BubbleLayer(datasource, null, {
+    filter: [
+        'match',  
+
+        //Get the property to match.
+        ['get', 'id'],  
+
+         //List of values to match.
+        [24, 53, 98], 
+
+        //If there is a match, return true.
+        true,
+    
+        //Otherwise return false.
+        false
+    ]
+});
+```
+
 ### <a name="coalesce-expression"></a>Egyesítő kifejezés
 
 Egy `coalesce` kifejezés a kifejezések egy halmazán halad át, amíg az első nem null értéket nem szerzi be, és az értéket adja vissza. 
@@ -363,7 +386,7 @@ A Type kifejezések a különböző adattípusok (például karakterláncok, sz�
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | szín | Átalakítja a bemeneti értéket egy színre. Ha több érték van megadva, a rendszer mindegyiket kiértékeli, amíg meg nem történik az első sikeres konverzió. Ha a bemenetek egyike sem alakítható át, akkor a kifejezés hibát jelez. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | szám | Ha lehetséges, átalakítja a bemeneti értéket egy számra. Ha a bemenet `null` vagy `false`a, az eredmény 0. Ha a bemenet értéke `true`, az eredmény 1. Ha a bemenet egy karakterlánc, akkor a rendszer a ECMAScript nyelvi specifikáció [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) string függvényével egy számra konvertálja. Ha több érték van megadva, a rendszer mindegyiket kiértékeli, amíg meg nem történik az első sikeres konverzió. Ha a bemenetek egyike sem alakítható át, akkor a kifejezés hibát jelez. |
 | `['to-string', value]` | Karakterlánc | A bemeneti értéket karakterlánccá alakítja. Ha a bemenet értéke `null`, az `""`eredmény:. Ha a bemenet logikai érték, az eredmény `"true"` a vagy `"false"`a. Ha a bemenet egy szám, a rendszer a ECMAScript nyelv specifikációjának [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number függvényét használva karakterlánccá alakítja át. Ha a bemenet szín, a rendszer átalakítja a CSS RGBA színkarakterlánccá `"rgba(r,g,b,a)"`. Ellenkező esetben a rendszer a bemenetet egy karakterlánccá alakítja át a ECMAScript nyelvi specifikációjának [JSON. stringify](https://tc39.github.io/ecma262/#sec-json.stringify) funkciója segítségével. |
-| `['typeof', value]` | sztring | A megadott érték típusát leíró karakterláncot ad vissza. |
+| `['typeof', value]` | Karakterlánc | A megadott érték típusát leíró karakterláncot ad vissza. |
 
 > [!TIP]
 > Ha egy hasonló `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` hibaüzenet jelenik meg a böngésző konzolján, akkor az azt jelenti, hogy a kódban van egy olyan kifejezés, amely egy olyan tömbvel rendelkezik, amely nem rendelkezik sztringtel az első értékhez. Ha azt szeretné, hogy a kifejezés egy tömböt ad vissza, zárja be `literal` a tömböt a kifejezéssel. Az alábbi példa egy szimbólum réteg `offset` ikonját állítja be, amelynek két számot tartalmazó tömbnek kell lennie, egy `match` kifejezéssel, amely két eltolási érték közötti választást alkalmaz a pont `entityType` tulajdonságának értéke alapján. vonás.
@@ -634,7 +657,7 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 });
 ```
 
-[Lásd az élő példát](map-add-shape.md#line-stroke-gradient)
+[Lásd az élő példát](map-add-line-layer.md#line-stroke-gradient)
 
 ### <a name="text-field-format-expression"></a>Szöveg mező formázása kifejezés
 
@@ -816,8 +839,11 @@ Az alábbi cikkekben további kódokat talál a kifejezések megvalósításáho
 > [!div class="nextstepaction"] 
 > [Buborék réteg hozzáadása](map-add-bubble-layer.md)
 
-> [!div class="nextstepaction"] 
-> [Alakzatok hozzáadása](map-add-shape.md)
+> [!div class="nextstepaction"]
+> [Vonal rétegének hozzáadása](map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [Sokszög réteg hozzáadása](map-add-shape.md)
 
 > [!div class="nextstepaction"] 
 > [Heat Map-réteg hozzáadása](map-add-heat-map-layer.md)

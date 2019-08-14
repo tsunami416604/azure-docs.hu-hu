@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: f86931aad4eab697e4a0d2dfc47a6d4ff5bfc256
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a344c94561c43652e360f7da02c16877e4d70529
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61401212"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966966"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>Adatmásolás az Impala Azure Data Factory (előzetes verzió) használatával
 
@@ -30,7 +30,11 @@ Ez a cikk az Azure Data Factory másolási tevékenység használatával adatoka
 
 Másolhat adatokat Impala bármely támogatott fogadó adattárba. A másolási tevékenység által források vagy fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
- A Data Factory-kapcsolat beépített illesztőprogramot tartalmaz. Így nem kell manuálisan telepítenie az összekötő használatához illesztőprogramot.
+A Data Factory-kapcsolat beépített illesztőprogramot tartalmaz. Így nem kell manuálisan telepítenie az összekötő használatához illesztőprogramot.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -55,7 +59,7 @@ A következő tulajdonságok támogatottak az Impala-beli társított szolgálta
 | useSystemTrustStore | Megadja, hogy a Hitelesítésszolgáltatói tanúsítvány használatára, a rendszer megbízható áruházból vagy egy adott PEM-fájl. Az alapértelmezett érték **hamis**.  | Nem |
 | allowHostNameCNMismatch | Meghatározza a kiszolgáló állomásneve megfelelően, ha SSL-kapcsolaton keresztül csatlakozik egy hitelesítésszolgáltató által kiállított SSL-tanúsítvány neve kötelező legyen-e. Az alapértelmezett érték **hamis**.  | Nem |
 | allowSelfSignedServerCert | Megadja, hogy, hogy a kiszolgáló önaláírt tanúsítványokat. Az alapértelmezett érték **hamis**.  | Nem |
-| connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 **Példa**
 
@@ -90,7 +94,7 @@ Adatok másolása az Impala, állítsa be a type tulajdonság, az adatkészlet *
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **ImpalaObject** | Igen |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **ImpalaObject** | Igen |
 | tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**

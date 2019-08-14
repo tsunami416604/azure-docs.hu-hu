@@ -1,6 +1,6 @@
 ---
 title: Felugró ablak hozzáadása a Azure Mapshoz | Microsoft Docs
-description: Felugró ablak hozzáadása a JavaScript-térképhez
+description: Felugró ablak hozzáadása a Azure Maps web SDK-hoz.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: caf661faf00d1d32664b7958a14a8719a37ab36e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: cde6c745034d0963bd372e36e6e5a046113c202b
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882100"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976553"
 ---
 # <a name="add-a-popup-to-the-map"></a>Felugró ablak hozzáadása a térképhez
 
@@ -22,9 +22,61 @@ Ez a cikk bemutatja, hogyan adhat hozzá egy előugró pontot egy térképen.
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-<a id="addAPopup"></a>
-
 A következő kód egy szimbólum réteget használva hozzáadja a térképhez `description` egy pont funkciót, amely rendelkezik `name` a és a tulajdonsággal. Az [előugró osztály](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) egy példánya jön létre, de nem jelenik meg. Az egérmutató a szimbólum rétegbe kerül, és az előugró ablak megnyitására és bezárására szolgál, amikor az egérmutató a szimbólum jelölője fölé vagy lefelé mutat. Ha a jelölő szimbólum `position` látható, az előugró ablak tulajdonsága a jelölő pozíciójának megfelelően frissül, és a `content` beállítás frissül, és egy olyan `name` HTML-kódot tartalmaz, `description` amely betakarja az egérmutatót a pont funkció és tulajdonságai között. Ekkor megjelenik a felugró ablak a térképen a `open` függvény használatával.
+
+```javascript
+//Define an HTML template for a custom popup content laypout.
+var popupTemplate = '<div class="customInfobox"><div class="name">{name}</div>{description}</div>';
+
+//Create a data source and add it to the map.
+var dataSource = new atlas.source.DataSource();
+map.sources.add(dataSource);
+
+dataSource.add(new atlas.data.Feature(new atlas.data.Point([-122.1333, 47.63]), {
+  name: 'Microsoft Building 41', 
+  description: '15571 NE 31st St, Redmond, WA 98052'
+}));
+
+//Create a layer to render point data.
+var symbolLayer = new atlas.layer.SymbolLayer(dataSource);
+
+//Add the polygon and line the symbol layer to the map.
+map.layers.add(symbolLayer);
+
+//Create a popup but leave it closed so we can update it and display it later.
+popup = new atlas.Popup({
+  pixelOffset: [0, -18],
+  closeButton: false
+});
+
+//Add a hover event to the symbol layer.
+map.events.add('mouseover', symbolLayer, function (e) {
+  //Make sure that the point exists.
+  if (e.shapes && e.shapes.length > 0) {
+    var content, coordinate;
+    var properties = e.shapes[0].getProperties();
+    content = popupTemplate.replace(/{name}/g, properties.name).replace(/{description}/g, properties.description);
+    coordinate = e.shapes[0].getCoordinates();
+
+    popup.setOptions({
+      //Update the content of the popup.
+      content: content,
+
+      //Update the popup's position with the symbol's coordinate.
+      position: coordinate
+
+    });
+    //Open the popup.
+    popup.open(map);
+  }
+});
+
+map.events.add('mouseleave', symbolLayer, function (){
+  popup.close();
+});
+```
+
+Alább látható a fenti funkciók teljes futási kódjának mintája.
 
 <br/>
 
@@ -33,7 +85,7 @@ A következő kód egy szimbólum réteget használva hozzáadja a térképhez `
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>Felugró ablak újrahasználata több ponttal
 
-Ha nagy számú ponttal rendelkezik, és egyszerre csak egy előugró ablak jelenik meg, a legjobb módszer egy előugró ablak létrehozása és újbóli használata, mint az egyes pontokhoz tartozó előugró ablakok létrehozása. A felugró ablak újrafelhasználásával az alkalmazás által létrehozott DOM-elemek száma jelentősen csökkent, ami jobb teljesítményt nyújt. Az alábbi minta 3 pont funkciót hoz létre. Ha bármelyikre kattint, megjelenik egy előugró ablak, amely az adott pont funkciójának tartalmát jeleníti meg.
+Ha nagy számú ponttal rendelkezik, és egyszerre csak egy előugró ablak jelenik meg, a legjobb módszer egy előugró ablak létrehozása és újbóli használata, mint az egyes pontokhoz tartozó előugró ablakok létrehozása. A felugró ablak újrafelhasználásával az alkalmazás által létrehozott DOM-elemek száma jelentősen csökkent, ami jobb teljesítményt nyújt. Az alábbi minta 3 pontos funkciókat hoz létre. Ha bármelyikre kattint, megjelenik egy előugró ablak, amely az adott pont funkciójának tartalmát jeleníti meg.
 
 <br/>
 
@@ -79,4 +131,7 @@ A következő nagyszerű cikkekből megtudhatja a kódok teljes mintáit:
 > [HTML-jelölő hozzáadása](./map-add-custom-html.md)
 
 > [!div class="nextstepaction"]
-> [Alakzat hozzáadása](./map-add-shape.md)
+> [Vonal rétegének hozzáadása](map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [Sokszög réteg hozzáadása](map-add-shape.md)

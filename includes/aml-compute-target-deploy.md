@@ -9,18 +9,19 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 05/30/2019
-ms.openlocfilehash: 05082544830bad543d6743d016a91ef8565767f4
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: c5a6f957cd3f799f9d7eff1df22df2200779ac30
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331651"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946042"
 ---
-| Számítási célt | Használat | GPU-támogatással | FPGA-támogatás | Leírás |
+| Számítási célt | Használat | GPU-támogatás | FPGA-támogatás | Leírás |
 | ----- | ----- | ----- | ----- | ----- |
-| [Local&nbsp;web&nbsp;service](../articles/machine-learning/service/how-to-deploy-and-where.md#local) | Tesztelés és hibakeresés | Talán | &nbsp; | Megfelelő választás a korlátozott tesztelés és hibaelhárítás. A hardveres gyorsítás attól függ, a helyi rendszer kódtárak használatával.
-| [Az Azure Kubernetes Service (AKS)](../articles/machine-learning/service/how-to-deploy-and-where.md#aks) | Valós idejű következtetésekhez |  [igen](../articles/machine-learning/service/how-to-deploy-inferencing-gpus.md)  | [igen](../articles/machine-learning/service/how-to-deploy-fpga-web-service.md)   |Megfelelő választás a nagy méretű éles környezetekben üzemelő példányok. Gyors válaszidőt és automatikus skálázást és az üzemelő szolgáltatás biztosít. Fürt automatikus skálázás nem támogatott az Azure Machine Learning SDK segítségével. Ha módosítani szeretné az AKS-fürt csomópontja, a felhasználói felület használata az AKS-fürt az Azure Portalon. Az AKS csak a lehetőség érhető el a vizuális felhasználói felületet. |
-| [Az Azure Container Instances (aci Szolgáltatásban)](../articles/machine-learning/service/how-to-deploy-and-where.md#aci) | Tesztelési vagy fejlesztési | &nbsp;  | &nbsp; | Lépték esetén a CPU-alapú igénylő számítási feladatok számára hasznos < 48 GB RAM |
-| [Az Azure Machine Learning Compute](../articles/machine-learning/service/how-to-run-batch-predictions.md) | (Előzetes verzió) A batch&nbsp;következtetésekhez | igen | &nbsp;  | Futtassa a kötegelt pontozási a kiszolgáló nélküli számítási. A normál és alacsony prioritású virtuális gépeket támogatja. |
-| [Azure IoT Edge](../articles/machine-learning/service/how-to-deploy-and-where.md#iotedge) | (Előzetes verzió) IoT&nbsp;modul |  &nbsp; | &nbsp; | Üzembe helyezés, és gépi Tanulási modelleket szolgálnak az IoT-eszközökön. |
-| [Azure Data Box Edge](../articles/databox-online/data-box-edge-overview.md)   | via IoT Edge |  &nbsp; | igen | Üzembe helyezés, és gépi Tanulási modelleket szolgálnak az IoT-eszközökön. |
+| [Helyi&nbsp;webszolgáltatás&nbsp;](../articles/machine-learning/service/how-to-deploy-and-where.md#local) | Tesztelés/hibakeresés | talán | &nbsp; | Korlátozott teszteléshez és hibaelhárításhoz. A hardveres gyorsítás a helyi rendszer könyvtárainak használatával függ.
+| [Notebook VM&nbsp;webszolgáltatás&nbsp;](../articles/machine-learning/service/how-to-deploy-and-where.md#notebookvm) | Tesztelés/hibakeresés | talán | &nbsp; | Korlátozott teszteléshez és hibaelhárításhoz. 
+| [Az Azure Kubernetes Service (AKS)](../articles/machine-learning/service/how-to-deploy-and-where.md#aks) | Valós idejű következtetés |  [igen](../articles/machine-learning/service/how-to-deploy-inferencing-gpus.md)  | [igen](../articles/machine-learning/service/how-to-deploy-fpga-web-service.md)   |Megfelelő választás a nagy méretű éles környezetekben üzemelő példányok. Gyors válaszidőt és automatikus skálázást biztosít a telepített szolgáltatás számára. A fürt automatikus skálázása nem támogatott a Azure Machine Learning SDK-n keresztül. Az AK-fürt csomópontjainak módosításához használja a Azure Portalban az AK-fürt felhasználói felületét. Az egyazon lehetőség a vizualizációs felületen csak az AK-ban érhető el. |
+| [Az Azure Container Instances (aci Szolgáltatásban)](../articles/machine-learning/service/how-to-deploy-and-where.md#aci) | Tesztelés vagy fejlesztés | &nbsp;  | &nbsp; | Alacsony méretekben, CPU-alapú számítási feladatokhoz, amelyekhez < 48 GB RAM szükséges |
+| [Az Azure Machine Learning Compute](../articles/machine-learning/service/how-to-run-batch-predictions.md) | Előnézet Batch&nbsp;-következtetés | igen | &nbsp;  | Kötegelt pontozás futtatása kiszolgáló nélküli számítási feladatokhoz. A a normál és az alacsony prioritású virtuális gépeket támogatja. |
+| [Azure IoT Edge](../articles/machine-learning/service/how-to-deploy-and-where.md#iotedge) | Előnézet IoT&nbsp;modul |  &nbsp; | &nbsp; | & Üzembe helyezése IoT-eszközökön ML-modelleket szolgál ki. |
+| [Azure Data Box Edge](../articles/databox-online/data-box-edge-overview.md)   | via IoT Edge |  &nbsp; | igen | & Üzembe helyezése IoT-eszközökön ML-modelleket szolgál ki. |

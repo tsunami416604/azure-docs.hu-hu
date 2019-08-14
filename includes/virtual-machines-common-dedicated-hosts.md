@@ -8,26 +8,13 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 438f450efe207999947795878a9815fca64f45ca
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: a627592bdfcbebc3c7fcda911e31c0ae6f4a630f
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68702930"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976622"
 ---
-Az Azure dedikált gazdagép olyan szolgáltatás, amely fizikai kiszolgálókat biztosít, amelyek egy vagy több virtuális gép üzemeltetésére alkalmasak egyetlen Azure-előfizetéshez. A dedikált gazdagépek ugyanazok a fizikai kiszolgálók, amelyek az adatközpontokban, erőforrásként vannak megadva. Dedikált gazdagépeket a régión, a rendelkezésre állási zónán és a tartalék tartományon belül is kiépítheti. Ezután elhelyezheti a virtuális gépeket közvetlenül a kiépített gazdagépeken, bármilyen konfigurációban, amely a legjobban megfelel az igényeinek.
-
-> [!IMPORTANT]
-> Az Azure dedikált gazdagépek jelenleg nyilvános előzetes verzióban érhetők el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Ismert előzetes verzió korlátai**
-> - A virtuális gépek méretezési csoportjai jelenleg nem támogatottak a dedikált gazdagépeken.
-> - Az előzetes verzió kezdeti kiadása a következő virtuálisgép-sorozatot támogatja: DSv3 és ESv3. 
-> - Az előzetes verzió ideje alatt nem fogja tudni átméretezni a dedikált gazdagépre telepített virtuális gépeket.
-> - A karbantartási képességek szabályozása korlátozott előzetes verzióban érhető el. Kezdje a jelölési [felméréssel](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u) , hogy kipróbálja őket.  
-> Az előzetes verzió ideje alatt nem kínáljuk a fenntartott kapacitás lehetőségét. 
-
 ## <a name="benefits"></a>Előnyök 
 
 A teljes gazdagép megőrzése a következő előnyöket biztosítja:
@@ -90,7 +77,7 @@ A dedikált gazdagép kiosztása után az Azure hozzárendeli azt a fizikai kisz
 
 ## <a name="quotas"></a>Kvóták
 
-Az alapértelmezett kvóta 3000 vCPU a dedikált gazdagépekhez régiónként. Az üzembe helyezhető gazdagépek számát azonban a gazdagéphez használt virtuálisgép-mérethez tartozó kvóta is korlátozza. Az utólagos elszámolású **előfizetések** esetében például az USA keleti régiójában csak 10 vCPU lehet elérhető az Dsv3-méretekhez. Ebben az esetben a dedikált gazdagép üzembe helyezése előtt a kvóta növelését legalább 64 vCPU kell megadnia. Ha szükséges, kattintson a jobb felső sarokban található **kérelem növelés** gombra.
+Az alapértelmezett kvóta 3000 vCPU a dedikált gazdagépekhez régiónként. Az üzembe helyezhető gazdagépek számát azonban a gazdagéphez használt virtuálisgép-mérethez tartozó kvóta is korlátozza. Az utólagos elszámolású előfizetések esetében például az USA keleti régiójában csak 10 vCPU lehet elérhető az Dsv3-méretekhez. Ebben az esetben a dedikált gazdagép üzembe helyezése előtt a kvóta növelését legalább 64 vCPU kell megadnia. Ha szükséges, kattintson a jobb felső sarokban található **kérelem növelés** gombra.
 
 ![Képernyőkép a portál használati és kvóták oldaláról](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 

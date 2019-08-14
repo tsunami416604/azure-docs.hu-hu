@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: 62f73f17d598cb2a22ef57d3ec0bcf91b8852298
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 3b82ecfc5aef5f78f7e77c23edfdfbeb7967b333
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728788"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989970"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Tudnivalók az Azure hálózatkezelési MSP-partnereiről
 
@@ -24,9 +24,11 @@ Az Azure hálózatkezelési MSP a felügyelt szolgáltatók speciális készlete
 
 Az ügyfelek az Azure Marketplace-en vagy közvetlenül az MSP-ből vásárolhatják meg az MSP által felügyelt szolgáltatások ajánlatait. A MSP az Azure Lighthouse használatával üzembe helyezhetik és kezelhetik az Azure hálózati erőforrásait az ügyfelek előfizetései és az erőforrásai számára.
 
-## <a name="msp"></a>MSP-partnerek
+## <a name="msp"></a>Azure hálózati MSP-partnerek
 
 Az ebben a szakaszban található hivatkozásokra kattintva további információt találhat az Azure hálózati MSP-partnerek által kínált felügyelt felhőalapú hálózati szolgáltatásokról. Ha a Cloud Network Services-partner nem szerepel az alábbi szakaszban, akkor a szolgáltató vegye fel velünk a kapcsolatot. Felvehetik velünk a kapcsolatot, ha e ManagedVirtualWAN@microsoft.com-mailt küldenek a címre. 
+
+[ANS csoport, Egyesült Királyság](https://www.ans.co.uk/)
 
 [Aryaka Networks hálózatok](https://www.aryaka.com/)
 
@@ -43,6 +45,8 @@ Az ebben a szakaszban található hivatkozásokra kattintva további informáci�
 [ixreach](https://www.ixreach.com/)
 
 [Megaport](https://www.megaport.com/)
+
+[Oncore](https://oncore.cloud/)
 
 [Tata-kommunikáció](https://www.tatacommunications.com/)
 

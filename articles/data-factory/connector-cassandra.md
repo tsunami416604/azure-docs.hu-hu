@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: d0e8881607fe4dc84a7d533855dc2b9c48e5366d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: b42313a83be413a9c34a45fca946ea165f8fc9a3
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726187"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967043"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Adatok másolása a Cassandra használatával Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -40,7 +40,9 @@ Pontosabban, ez a Cassandra Connector a következőket támogatja:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Olyan Cassandra-adatbázisból származó adatok másolásához, amely nyilvánosan nem érhető el, létre kell hoznia egy saját üzemeltetésű Integration Runtime. A részletekért tekintse meg a saját üzemeltetésű [Integration Runtime](create-self-hosted-integration-runtime.md) cikket. A Integration Runtime egy beépített Cassandra-illesztőprogramot biztosít, ezért nem kell manuálisan telepítenie az összes illesztőprogramot, amikor az adatok másolása a vagy a Cassandra értékről.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
+A Integration Runtime egy beépített Cassandra-illesztőprogramot biztosít, ezért nem kell manuálisan telepítenie az összes illesztőprogramot, amikor az adatok másolása a vagy a Cassandra értékről.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -60,7 +62,7 @@ A Cassandra társított szolgáltatás a következő tulajdonságokat támogatja
 | authenticationType | A Cassandra-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők:Alapszintű és **Névtelen**. |Igen |
 | username |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha a authenticationType értéke alapszintű. |
 | password |A felhasználói fiók jelszavának megadása. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen, ha a authenticationType értéke alapszintű. |
-| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 >[!NOTE]
 >A Cassandra-hoz való kapcsolódás jelenleg SSL használatával nem támogatott.
@@ -128,7 +130,7 @@ Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját l
 
 ### <a name="cassandra-as-source"></a>Cassandra forrásként
 
-Az adatok Cassandra-ből való másolásához állítsa a forrás típusát a másolás tevékenység **CassandraSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
+Az adatok Cassandra-ből való másolásához állítsa a forrás típusát a másolás tevékenység **CassandraSource**. A következő tulajdonságok támogatottak a másolási tevékenység **source** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -174,17 +176,17 @@ Az adatok Cassandra-ből való másolása során a rendszer a következő lekép
 
 | Cassandra adattípus | Data factory közbenső adattípus |
 |:--- |:--- |
-| ASCII |Karakterlánc |
+| ASCII |Sztring |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
 | BOOLEAN |Logikai |
 | DECIMAL |Decimal |
 | DOUBLE |Double |
 | FLOAT |Single |
-| INET |Karakterlánc |
+| INET |Sztring |
 | INT |Int32 |
 | TEXT |Sztring |
-| TIMESTAMP |Datetime |
+| TIMESTAMP |DateTime |
 | TIMEUUID |Guid |
 | UUID |Guid |
 | VARCHAR |Sztring |

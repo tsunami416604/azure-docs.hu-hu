@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: 8d4a7a1b176a0c232c4461c7a8cfc2b1e3faddd6
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 08/12/2019
+ms.openlocfilehash: a01f6cbb20d084864d3a7f64aa8c90d2bc3405f2
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638372"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977069"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Replikák olvasása a Azure Database for MariaDBban
 
@@ -34,7 +34,33 @@ Mivel a replikák csak olvashatók, nem csökkentik közvetlenül az írási kap
 
 Az olvasási replika funkció aszinkron replikálást használ. A funkció nem a szinkron replikációs forgatókönyvek esetében jelent meg. A főkiszolgáló és a replika között mérhető késés lesz. A replikán lévő adatok végül konzisztensek maradnak a főkiszolgálón lévő adatokkal. Használja ezt a szolgáltatást olyan számítási feladatokhoz, amelyek alkalmasak erre a késésre.
 
-Az olvasási replikák növelhetik a vész-helyreállítási tervet. Ha van regionális katasztrófa, és a főkiszolgáló nem érhető el, akkor a számítási feladatokat egy másik régióban lévő replikára irányíthatja. Ehhez először hagyja, hogy a replika fogadja az írásokat a replikálás leállítása funkció használatával. Ezután átirányíthatja az alkalmazást a kapcsolatok karakterláncának frissítésével. További információ a [replikálás leállítása](#stop-replication) szakaszban található.
+
+## <a name="cross-region-replication"></a>Régiók közötti replikáció
+Az olvasási replikát a főkiszolgálótól eltérő régióban is létrehozhatja. A régiók közötti replikáció hasznos lehet olyan forgatókönyvek esetén, mint például a vész-helyreállítási tervezés vagy az adatok közelebb hozása a felhasználókhoz.
+
+> [!IMPORTANT]
+> A régiók közötti replikáció jelenleg nyilvános előzetes verzióban érhető el.
+
+A főkiszolgáló bármely [Azure Database for MariaDB régióban](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)elérhető.  A főkiszolgáló rendelkezhet replikával a párosított régiójában vagy az univerzális replika régiókban.
+
+### <a name="universal-replica-regions"></a>Univerzális replika-régiók
+A következő régiókban bármikor létrehozhat egy olvasási replikát, függetlenül attól, hogy hol található a főkiszolgáló. Ezek az univerzális replika-régiók:
+
+Kelet-Ausztrália, Délkelet-Ausztrália, USA középső régiója, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Dél-Korea, Dél-Korea, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa, USA nyugati régiója 2.
+
+
+### <a name="paired-regions"></a>Párosított régiók
+Az univerzális replika régión kívül egy olvasási replikát is létrehozhat a főkiszolgáló Azure párosított régiójában. Ha nem ismeri a régió pár elemét, többet is megtudhat az [Azure párosított régiókról](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)szóló cikkből.
+
+Ha régiók közötti replikákat használ a vész-helyreállítási tervezéshez, javasoljuk, hogy a többi régió helyett a párosított régióban hozza létre a replikát. A párosított régiók elkerülik az egyidejű frissítéseket, és rangsorolják a fizikai elkülönítést és az adattárolást.  
+
+Azonban a következő szempontokat kell figyelembe venni: 
+
+* Regionális elérhetőség: Azure Database for MariaDB az USA 2. nyugati régiójában, Közép-Franciaországban, Észak-Egyesült Arab Emírségekben és Közép-Németországban érhető el. A párosított régiói azonban nem érhetők el.
+    
+* UNI-irányú párok: Egyes Azure-régiók csak egy irányban vannak párosítva. Ezek a régiók közé tartoznak a Nyugat-India, Dél-Brazília és US Gov Virginia. 
+   Ez azt jelenti, hogy a Nyugat-Indiai főkiszolgáló létrehozhat egy replikát Dél-Indiában. A dél-indiai főkiszolgálók azonban nem hozhatnak létre replikát Nyugat-Indiában. Ennek az az oka, hogy Nyugat-India másodlagos régiója Dél-India, de Dél-India másodlagos régiója nem Nyugat-India.
+
 
 ## <a name="create-a-replica"></a>Replika létrehozása
 

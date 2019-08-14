@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 836a17051aee4e6a9ac3089f60da30673783e408
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a80f99bc37d3a92a794a78f1f47ce32fbaae75a3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875969"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989170"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -74,16 +74,16 @@ A monitorozási adatai csak akkor hasznosak, ha növeli a számítástechnikai k
 
 ![App Insights](media/overview/app-insights.png)
 
-### <a name="azure-monitor-for-containers"></a>Azure Monitor tárolókhoz
+### <a name="azure-monitor-for-containers"></a>Tárolókhoz készült Azure Monitor
 A [tárolók Azure monitor](insights/container-insights-overview.md) a szolgáltatás az Azure Kubernetes szolgáltatásban (ak) üzemeltetett felügyelt Kubernetes-fürtökön üzembe helyezett tároló-munkaterhelések teljesítményének figyelésére szolgál. Teljesítménybeli láthatóságot biztosít a Kubernetes által a mérőszámok API-n keresztül elérhető vezérlőkből, csomópontokból és tárolóból származó memória-és processzor-metrikák összegyűjtésével. A rendszer a tárolónaplókat is gyűjti.  Miután engedélyezte a Kubernetes-fürtök figyelését, ezeket a metrikákat és naplókat a rendszer automatikusan összegyűjti a Linux rendszerhez készült Log Analytics-ügynök egy tárolós verziójával.
 
 ![Tároló állapota](media/overview/container-insights.png)
 
-### <a name="azure-monitor-for-vms"></a>Azure Monitor virtuális gépekhez
+### <a name="azure-monitor-for-vms"></a>Virtuális gépekhez készült Azure Monitor
 [Azure monitor for VMS](insights/vminsights-overview.md) az Azure-beli virtuális gépeket (VM) a Windows-és Linux-alapú virtuális gépek teljesítményének és állapotának elemzésével, beleértve a különböző folyamatokat és a más erőforrásokkal és külső folyamatok. A megoldás támogatja a helyszíni vagy más felhőalapú szolgáltató által üzemeltetett virtuális gépek teljesítményének és alkalmazási függőségeinek figyelését.  
 
 
-![VM-ismeretek](media/overview/vm-insights.png)
+![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>Monitorozási megoldások
 A Azure Monitor [figyelési megoldásai](insights/solutions.md) olyan becsomagolt logikai készletek, amelyek betekintést nyújtanak egy adott alkalmazáshoz vagy szolgáltatáshoz. Ezek közé tartozik az alkalmazás vagy szolgáltatás figyelési adatok gyűjtésére, az adatok elemzésére szolgáló [lekérdezések](log-query/log-query-overview.md) és a vizualizációk [nézeteinek](../log-analytics/log-analytics-view-designer.md) begyűjtésére szolgáló logika. A [Microsoft](insights/solutions-inventory.md) és partnerei által kínált figyelési megoldások a különböző Azure-szolgáltatások és egyéb alkalmazások figyelését teszik lehetővé.
@@ -146,3 +146,4 @@ További információk az alábbiakról:
 * A Azure Monitor által gyűjtött adatok [metrikái és naplói](platform/data-platform.md) .
 * [](platform/data-sources.md) Adatforrások az alkalmazás különböző összetevőinek telemetria küldéséhez.
 * [Naplók lekérdezése](log-query/log-query-overview.md) az összegyűjtött adatok elemzéséhez.
+* [Ajánlott eljárások](https://docs.microsoft.com/azure/architecture/best-practices/monitoring) a felhőalapú alkalmazások és szolgáltatások monitorozásához.

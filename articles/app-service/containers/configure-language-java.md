@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 1488dbdcc042b29880560e7255de96b8d0409779
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 825379c04c22b3f13e651455c490a58ad47169d8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498510"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967160"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Linuxos Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -243,9 +243,6 @@ Ha ezeket a titkokat be szeretné szúrni a Spring vagy a Tomcat konfigurációs
 
 Ez a szakasz bemutatja, hogyan csatlakoztathatók a Linux rendszeren üzembe Azure App Service helyezett Java-alkalmazások a NewRelic és a AppDynamics Application Performance monitoring (APM) platformokkal.
 
-[Az új ereklye](#configure-new-relic)
-konfigurálása[AppDynamics](#configure-appdynamics) konfigurálása
-
 ### <a name="configure-new-relic"></a>Új ereklye konfigurálása
 
 1. NewRelic-fiók létrehozása a [NewRelic.com](https://newrelic.com/signup) -ben
@@ -257,8 +254,7 @@ konfigurálása[AppDynamics](#configure-appdynamics) konfigurálása
 7. A Azure Portal tallózással keresse meg az alkalmazást App Service és hozzon létre egy új alkalmazás-beállítást.
     - Ha az alkalmazás **Java SE**-t használ, hozzon létre egy `JAVA_OPTS` nevű környezeti változót az értékkel. `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`
     - Ha a **tomcat**-t használja, hozzon létre egy `CATALINA_OPTS` nevű környezeti változót az értékkel `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
-    - Ha a **WildFly**-t használja, az új [ereklye dokumentációjában](https://docs.newrelic.com/docs/agents/java-agent/additional-installation/wildfly-version-11-installation-java) talál útmutatást a Java-ügynök és a JBoss-konfiguráció telepítéséhez.
-    - Ha már rendelkezik környezeti változóval `JAVA_OPTS` a vagy `CATALINA_OPTS`a esetében, az `javaagent` aktuális érték végéhez fűzze hozzá a kapcsolót.
+    - Ha a **WildFly**-t használja, az új ereklye dokumentációjában talál útmutatást a Java-ügynök és a JBoss-konfiguráció telepítéséhez. [](https://docs.newrelic.com/docs/agents/java-agent/additional-installation/wildfly-version-11-installation-java)
 
 ### <a name="configure-appdynamics"></a>AppDynamics konfigurálása
 
@@ -269,7 +265,9 @@ konfigurálása[AppDynamics](#configure-appdynamics) konfigurálása
 5. A Azure Portal tallózással keresse meg az alkalmazást App Service és hozzon létre egy új alkalmazás-beállítást.
     - Ha **Java SE**-t használ, hozzon létre egy nevű `JAVA_OPTS` környezeti változót `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` , `<app-name>` amelynek értéke a app Service neve.
     - Ha a **tomcat**- `<app-name>` t használja, hozzon létre egy `CATALINA_OPTS` nevű környezeti változót, amelynek értéke `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` a app Service neve.
-    - Ha a **WildFly**-t használja, a Java-ügynök és a JBoss-konfiguráció telepítésével kapcsolatos útmutatásért tekintse [meg a](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) AppDynamics dokumentációját.
+    - Ha a **WildFly**-t használja, a Java- [](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) ügynök és a JBoss-konfiguráció telepítésével kapcsolatos útmutatásért tekintse meg a AppDynamics dokumentációját.
+
+>  Ha már rendelkezik környezeti változóval `JAVA_OPTS` a vagy `CATALINA_OPTS`a esetében, az `-javaagent:/...` aktuális érték végéhez fűzze hozzá a kapcsolót.
 
 ## <a name="configure-jar-applications"></a>JAR-alkalmazások konfigurálása
 

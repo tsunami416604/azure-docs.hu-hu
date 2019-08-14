@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 1fdaef319235b90d05dc6ddc6d8eb1c5bb7ba294
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1374f2f819c0c5704ecf01f4d8412fd78c8560c3
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720692"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966950"
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával MariaDB
 
@@ -30,6 +30,10 @@ Másolhat adatokat a MariaDB bármely támogatott fogadó adattárba. A másolá
 Az Azure Data Factory kapcsolat beépített illesztőprogramot tartalmaz, ezért nem kell manuálisan telepítenie az összes illesztőprogram ezzel az összekötővel.
 
 Ez az összekötő jelenleg a MariaDB 10.0, 10.2 verzió támogatja.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -45,7 +49,7 @@ A MariaDB-beli társított szolgáltatás a következő tulajdonságok támogato
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **MariaDB** | Igen |
 | connectionString | Az ODBC kapcsolati karakterlánc MariaDB csatlakozni. <br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A jelszót a Azure Key Vaultban is elhelyezheti, és `pwd` lekérheti a konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
-| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 **Példa:**
 

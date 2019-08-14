@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 8e24489ad2909879b035a08316e66788034e99bc
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 5ef1749217dd8980892d7bf933cbe1412929fbbd
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377195"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976980"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Az eszközről a felhőbe IoT Hub üzenetek üzenet-gazdagítása (előzetes verzió)
 
@@ -29,9 +29,9 @@ Az üzenetek dúsításának három fő eleme van:
 
 * Egy vagy több olyan [végpont](iot-hub-devguide-endpoints.md) , amelyhez a dúsítást alkalmazni kell.
 
-A kulcs bármilyen karakterlánc lehet.
+A **kulcs** egy karakterlánc. A kulcsok csak alfanumerikus karaktereket vagy a következő speciális karaktereket tartalmazhatják: kötőjel`-`(), aláhúzás`_`() és pont (`.`).
 
-Az érték az alábbi példák bármelyike lehet:
+Az **érték** az alábbi példák bármelyike lehet:
 
 * Bármilyen statikus karakterlánc. A dinamikus értékek, például a feltételek, a logika, a műveletek és a függvények nem engedélyezettek. Ha például olyan SaaS-alkalmazást fejleszt ki, amelyet számos ügyfél használ, hozzárendelhet egy azonosítót az egyes ügyfelekhez, és elérhetővé teheti az azonosítót az alkalmazásban. Az alkalmazás futtatásakor a IoT Hub lepecsételi az eszköz telemetria az ügyfél azonosítójával, így az egyes ügyfeleknél különbözőképpen dolgozhat fel az üzeneteket.
 

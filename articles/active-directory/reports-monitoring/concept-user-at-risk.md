@@ -2,7 +2,7 @@
 title: Kockázatosként megjelölt felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon | Microsoft Docs
 description: Ismerje meg az Azure Active Directory portál kockázatosként megjelölt felhasználókról szóló biztonsági jelentését
 services: active-directory
-author: MarkusVi
+author: cawrites
 manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 01/17/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 463f5c2d03cd96089342aa9b22ef85ebc05aa909
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 950d0dc2f4a1a88e0c317b3398c7492cc6c52e2a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60438130"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989837"
 ---
-# <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Megjelölt felhasználók szóló jelentés az Azure Portalon
+# <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>A Azure Portal kockázati jelentésére megjelölt felhasználók
 
-Az Azure Active Directory (Azure AD) észleli a felhasználói fiókokhoz kapcsolódó gyanús tevékenységeket. A rendszer minden egyes észlelt művelet, egy rekord nevű egy [kockázati esemény](concept-risk-events.md) jön létre.
+Azure Active Directory (Azure AD) észleli a felhasználói fiókokhoz kapcsolódó gyanús műveleteket. Minden észlelt művelethez létrejön egy [kockázati esemény](concept-risk-events.md) nevű rekord.
 
-Érheti el a biztonsági jelentések, a [az Azure portal](https://portal.azure.com) kiválasztásával a **Azure Active Directory** panelre, és ugorjon a **biztonsági** szakaszban. 
+A [Azure Portal](https://portal.azure.com) biztonsági jelentéseinek eléréséhez válassza a **Azure Active Directory** panelt, majd navigáljon a **Biztonság** szakaszra. 
 
 A rendszer az észlelt kockázati eseményeket a következők kiszámítására használja:
 
@@ -34,29 +34,29 @@ A rendszer az észlelt kockázati eseményeket a következők kiszámítására 
 
 - **Kockázatosként megjelölt felhasználók** – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. 
 
-Ismerje meg, hogyan konfigurálhatja a házirendeket a kockázati eseményeket kiváltó, lásd: [konfigurálása a felhasználói kockázati házirend](../identity-protection/howto-user-risk-policy.md). 
+A kockázati eseményeket kiváltó szabályzatok konfigurálásával kapcsolatos további információkért lásd: [a felhasználói kockázati házirend konfigurálása](../identity-protection/howto-user-risk-policy.md). 
 
 ![Kockázatos bejelentkezések](./media/concept-user-at-risk/10.png)
 
 
-## <a name="what-azure-ad-license-do-you-need-to-access-the-users-at-risk-report"></a>Milyen Azure AD-licencre van szüksége a felhasználókról szóló jelentés eléréséhez?  
+## <a name="what-azure-ad-license-do-you-need-to-access-the-users-at-risk-report"></a>Milyen Azure AD-licencre van szükség a veszélyeztetett felhasználóknak szóló jelentéshez való hozzáféréshez?  
 
 Az Azure Active Directory minden kiadása biztosítja a kockázatosként megjelölt felhasználók jelentéseit. A jelentések részletességi szintje azonban különbözik a kiadások között: 
 
-- Az a **Azure Active Directory ingyenes és alapszintű kiadásaiban**, kockázatosként megjelölt felhasználók listájának beolvasása. 
+- A **ingyenes Azure Active Directory és**az alapszintű kiadásokban megjelenik a kockázatként megjelölt felhasználók listája. 
 
-- Emellett a **Azure Active Directory Premium 1** edition lehetővé teszi, hogy megvizsgáljon néhány, amely az egyes jelentésekhez észlelt mögöttes kockázatos eseményt. 
+- Emellett a **prémium szintű Azure Active Directory 1** kiadással megvizsgálhatja az egyes jelentésekhez észlelt mögöttes kockázati eseményeket. 
 
 - Az **Azure Active Directory 2. prémium** kiadása nyújtja a legrészletesebb információkat minden mögöttes kockázatos eseményről, és lehetővé teszi olyan biztonsági szabályzatok konfigurálását, amelyek automatikusan, a konfigurált kockázati szinteknek megfelelően válaszolnak.
 
 
-## <a name="users-at-risk-report-for-azure-ad-free-and-basic-editions"></a>Felhasználókról szóló jelentés az Azure AD ingyenes és alapszintű kiadása
+## <a name="users-at-risk-report-for-azure-ad-free-and-basic-editions"></a>Az Azure AD ingyenes és alapszintű kiadásaihoz tartozó veszélyeztetett felhasználókról szóló jelentés
 
-A kockázatosként megjelölt felhasználókról szóló jelentés az Azure ad ingyenes és alapszintű kiadásai biztosít felhasználói fiókokat, előfordulhat, hogy sérült a biztonsága listáját. 
+Az Azure AD ingyenes és alapszintű kiadásaiban a kockázati jelentésre megjelölt felhasználók listáját az esetlegesen sérült felhasználói fiókok listája tartalmazza. 
 
 ![Kockázatos bejelentkezések](./media/concept-user-at-risk/03.png)
 
-Az egyes felhasználók kijelölésével biztosít a bejelentkezési adatokat. A veszélyeztetett felhasználók esetében áttekintheti a felhasználó bejelentkezési előzményeit, és szükség esetén alaphelyzetbe állíthatja a jelszót.
+A felhasználó kiválasztása bejelentkezési adatokat biztosít. A veszélyeztetett felhasználók esetében áttekintheti a felhasználó bejelentkezési előzményeit, és szükség esetén alaphelyzetbe állíthatja a jelszót.
 
 Ez a párbeszédablak a következő lehetőségeket kínálja:
 
@@ -65,11 +65,11 @@ Ez a párbeszédablak a következő lehetőségeket kínálja:
 
     ![Kockázatos bejelentkezések](./media/concept-user-at-risk/16.png)
 
-Részletesebb információkért premium licenc szükséges.
+Részletesebb tájékoztatásért prémium szintű licencre van szükség.
 
-## <a name="users-at-risk-report-for-azure-ad-premium-editions"></a>Az Azure AD prémium szintű kiadásokban szóló jelentés a felhasználók
+## <a name="users-at-risk-report-for-azure-ad-premium-editions"></a>Az Azure AD Premium kiadásait érintő kockázati jelentéssel rendelkező felhasználók
 
-Szóló jelentés az Azure AD prémium kiadásaiban a kockázatosként megjelölt felhasználókról tartalmazza:
+Az Azure AD prémium kiadásaiban a kockázati jelentésre megjelölt felhasználók a következőket biztosítják:
 
 - Egy lista azokról a felhasználói fiókokról, amelyeknek elképzelhető, hogy sérült a biztonsága 
 
@@ -101,6 +101,6 @@ Egy kockázati esemény vizsgálatához válassza ki azt a listából a kockáza
 ## <a name="next-steps"></a>További lépések
 
 - [A felhasználói kockázati házirend konfigurálása](../identity-protection/howto-user-risk-policy.md)
-- [A felhasználóikockázat-csökkentési házirend konfigurálása](../identity-protection/howto-user-risk-policy.md)
+- [A kockázatkezelési házirend konfigurálása](../identity-protection/howto-user-risk-policy.md)
 - [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
 

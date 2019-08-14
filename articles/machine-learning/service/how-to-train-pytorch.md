@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2fe3e222da265614ff64e3d913f6514398abf32b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d7ac3675ec9d90fc51bc9e3c72b76d8fb80312a8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847675"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966789"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>A Pytorch mély tanulási modelljeinek betanítása Azure Machine Learning
 
@@ -229,3 +229,4 @@ Ebben a cikkben a PyTorch-t használó, Azure Machine Learning szolgáltatáson 
 * [Metrikák futtatása a betanítás során nyomon követése](how-to-track-experiments.md)
 * [Hiperparaméterek hangolása](how-to-tune-hyperparameters.md)
 * [A betanított modell üzembe helyezése](how-to-deploy-and-where.md)
+* [Az Azure-ban elosztott Deep learning-képzés hivatkozási architektúrája](/azure/architecture/reference-architectures/ai/training-deep-learning)

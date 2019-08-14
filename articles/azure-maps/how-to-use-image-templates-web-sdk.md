@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 1ca29fafae1269b21f4e39a9d2594f84af035d25
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b9b1543ca37c636f4a82ff9ada3dfe212fa9b8d0
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856688"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976671"
 ---
-# <a name="how-to-use-image-templates"></a>A képsablonok használata
+# <a name="how-to-use-image-templates"></a>Rendszerképsablonok használata
 
 A képek HTML-jelölőket és különböző rétegeket használhatnak a Azure Maps web SDK-n belül:
 
@@ -111,7 +111,7 @@ Ha az alkalmazás ugyanazt az ikont használja különböző ikonokkal, vagy ha 
 | Name (Név) | Visszatérési típus | Leírás | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Hozzáadja az egyéni SVG-képsablont az Atlas-névtérhez. |
-|  `getImageTemplate(templateName: string, scale?: number)`| sztring | Egy SVG-sablon beolvasása név alapján. |
+|  `getImageTemplate(templateName: string, scale?: number)`| Karakterlánc | Egy SVG-sablon beolvasása név alapján. |
 | `getAllImageTemplateNames()` | karakterlánc [] |  Egy SVG-sablon beolvasása név alapján. |
 
 Az SVG-képsablonok a következő helyőrző értékeket támogatják:
@@ -203,7 +203,10 @@ A következő cikkekből megtudhatja, hogy miként használhatók a képsablonok
 > [Szimbólum réteg hozzáadása](map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Alakzat hozzáadása](map-add-shape.md)
+> [Vonal rétegének hozzáadása](map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [Sokszög réteg hozzáadása](map-add-shape.md)
 
 > [!div class="nextstepaction"]
 > [HTML-készítők hozzáadása](map-add-bubble-layer.md)

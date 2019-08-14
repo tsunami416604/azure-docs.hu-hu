@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 1af6ed2743807f75e96bed0ae67d0070aa55c0ef
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 0122b76592ce9e1179a3d65f7db681679bda6f37
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677459"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988611"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>A Azure IoT Edge futtatókörnyezet telepítése Windows rendszeren
 
@@ -202,7 +202,7 @@ Vizsgálja meg a szolgáltatási naplók az elmúlt 5 percben. Ha befejezte a Io
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Futó modulok listája. Új telepítés után az egyetlen modulnak kell megjelennie a **edgeAgent**. [IoT Edge modulok üzembe helyezése](how-to-deploy-modules-portal.md)után másokat is látni fog. 
+Futó modulok listája. Új telepítés után az egyetlen modulnak kell megjelennie a **edgeAgent**. A [IoT Edge-modulok első üzembe helyezése](how-to-deploy-modules-portal.md) után a **edgeHub**másik rendszermodulja is elindul az eszközön. 
 
 ```powershell
 iotedge list
@@ -262,6 +262,7 @@ A frissítési lehetőségekkel kapcsolatos további információkért használj
 Ha el szeretné távolítani a IoT Edge telepítését a Windows-eszközről, használja a következő parancsot egy felügyeleti PowerShell-ablakból. Ez a parancs eltávolítja a IoT Edge futtatókörnyezetet, valamint a meglévő konfigurációt és a Moby Engine-adatait. 
 
 ```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
 Uninstall-IoTEdge
 ```
 

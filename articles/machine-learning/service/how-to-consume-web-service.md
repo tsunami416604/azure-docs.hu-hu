@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a007e3adb72148cfde1590e996f7df9082159445
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 873f45a6cce85669581037c4c398a52b1ebd6d68
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840497"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966854"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Az Azure Machine Learning-modellek webszolgáltatásként üzembe helyezett felhasználása
 
@@ -80,6 +80,7 @@ A Azure Machine Learning két módszert biztosít a webszolgáltatásokhoz való
 |---|---|---|
 |Kulcs|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezve|
 |Jogkivonat| Nem érhető el| Alapértelmezés szerint letiltva |
+
 #### <a name="authentication-with-keys"></a>Hitelesítés kulcsokkal
 
 Ha engedélyezi a hitelesítést a központi telepítéshez, automatikusan létrehozza a hitelesítési kulcsokat.
@@ -98,7 +99,6 @@ print(primary)
 
 > [!IMPORTANT]
 > Ha a kulcs újragenerálása van szüksége, használja a [ `service.regen_key` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
-
 
 #### <a name="authentication-with-tokens"></a>Hitelesítés jogkivonatokkal
 
@@ -155,50 +155,17 @@ Például a modell a [Train belül notebook](https://github.com/Azure/MachineLea
             ]
         ]
 }
-``` 
+```
 
 A webszolgáltatás egy kérelem több adatkészletek tud fogadni. Egy JSON-dokumentum, amely egy tömböt adott vissza.
 
 ### <a name="binary-data"></a>Bináris adatok
 
-Ha a modell fogad bináris adatot, például egy kép, módosítania kell a `score.py` nyers HTTP-kérelmek fogadásához az üzembe helyezéshez használt fájlt. Az alábbi példa egy olyan példát `score.py` mutat be, amely a bináris adatmennyiséget fogadja el:
+További információ a szolgáltatásban található bináris adatok támogatásának engedélyezéséről: [bináris adatok](how-to-deploy-and-where.md#binary).
 
-```python
-from azureml.contrib.services.aml_request import AMLRequest, rawhttp
-from azureml.contrib.services.aml_response import AMLResponse
+### <a name="cross-origin-resource-sharing-cors"></a>Több eredetű erőforrás-megosztás (CORS)
 
-
-def init():
-    print("This is init()")
-
-
-@rawhttp
-def run(request):
-    print("This is run()")
-    print("Request: [{0}]".format(request))
-    if request.method == 'GET':
-        # For this example, just return the URL for GETs
-        respBody = str.encode(request.full_path)
-        return AMLResponse(respBody, 200)
-    elif request.method == 'POST':
-        reqBody = request.get_data(False)
-        # For a real world solution, you would load the data from reqBody
-        # and send to the model. Then return the response.
-
-        # For demonstration purposes, this example just returns the posted data as the response.
-        return AMLResponse(reqBody, 200)
-    else:
-        return AMLResponse("bad request", 500)
-```
-
-> [!IMPORTANT]
-> A `azureml.contrib` névtér gyakran változik, ahogy dolgozunk a szolgáltatás fejlesztésekor. Ennek megfelelően az ebben a névtérben található bármit előzetes verziónak kell tekinteni, és a Microsoft nem támogatja teljes mértékben.
->
-> Ha ezt a helyi fejlesztési környezetben kell tesztelni, akkor a következő paranccsal telepítheti az összetevőket a `contrib` névtérbe:
-> 
-> ```shell
-> pip install azureml-contrib-services
-> ```
+Az CORS-támogatás szolgáltatásban való engedélyezésével kapcsolatos információkért lásd: a [több eredetű erőforrás-megosztás](how-to-deploy-and-where.md#cors).
 
 ## <a name="call-the-service-c"></a>Meghívja a szolgáltatást (C#)
 
@@ -528,3 +495,7 @@ A Power BI támogatja a Azure Machine Learning webszolgáltatások felhasználá
 Ha olyan webszolgáltatást szeretne előállítani, amelyet a Power BIban való használathoz támogat, a sémának támogatnia kell a Power BI számára szükséges formátumot. [Megtudhatja, hogyan hozhat létre Power bi által támogatott sémát](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-script-with-dictionary-input-support-consumption-from-power-bi).
 
 A webszolgáltatás üzembe helyezése után Power BI adatfolyamok. [Megtudhatja, hogyan használhat Azure Machine learning](https://docs.microsoft.com/power-bi/service-machine-learning-integration)webszolgáltatást Power BIból.
+
+## <a name="next-steps"></a>További lépések
+
+A Python és a Deep learning modellek valós idejű pontozására szolgáló hivatkozási architektúra megtekintéséhez nyissa meg az [Azure Architecture centert](/azure/architecture/reference-architectures/ai/realtime-scoring-python).

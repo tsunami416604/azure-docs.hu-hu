@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33704c3392726ccd12ca0fd74f26465a54697e11
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 178f81cf42e5c57be4a0b69ada6560d46951a3a3
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722146"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942841"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Az Európai ügyfelek az Azure Active Directory Identity adattárolás
 Az identitás adatait az Azure AD tárolja földrajzi helyen a szervezete által megadott, a Microsoft online szolgáltatásokra, például az Office 365-re és az Azure-ra való feliratkozáskor. További információ a személyazonossági adatok tárolásáról: a Microsoft adatvédelmi központjának hol található az [adatai?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) szakasza.
@@ -43,6 +43,15 @@ Az Azure AD B2B a beváltási hivatkozást és az átirányítási URL-címet az
 ## <a name="microsoft-azure-active-directory-domain-services-azure-ad-ds"></a>Microsoft Azure Active Directory tartományi szolgáltatások (Azure AD DS)
 
 Az Azure AD DS ugyanott tárolja a felhasználói adatokat, ahol a felhasználó által kiválasztott Azure-beli virtuális hálózat. Tehát ha a hálózat Európán kívül van, a rendszer replikálja az adatokat, és Európán kívül tárolja.
+
+## <a name="federation-in-microsoft-exchange-server-2013"></a>Összevonás a Microsoft Exchange Server 2013
+    
+- Application Identifier (AppID) – az Azure Active Directory hitelesítési rendszer által generált egyedi szám az Exchange-szervezetek azonosítására.
+- Jóváhagyott összevont tartományok listája az alkalmazáshoz
+- Alkalmazás jogkivonat-aláírása nyilvános kulcsa 
+
+További információ a Microsoft Exchange Server [-összevonással kapcsolatban: összevonás: Exchange 2013 –](https://docs.microsoft.com/exchange/federation-exchange-2013-help) Súgó.
+
 
 ## <a name="other-considerations"></a>Egyéb szempontok
 

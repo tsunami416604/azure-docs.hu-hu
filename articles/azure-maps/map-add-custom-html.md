@@ -1,6 +1,6 @@
 ---
 title: HTML-jelölő hozzáadása a Azure Mapshoz | Microsoft Docs
-description: HTML-jelölő hozzáadása a JavaScript-térképhez
+description: HTML-jelölő hozzáadása a Azure Maps web SDK-hoz.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f8777a3d0eb9b97fff6f492f181a432d98d9341c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ff18b8646a3845d029e9826c0895b9d3eb16bdde
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849310"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976205"
 ---
 # <a name="add-html-markers-to-the-map"></a>HTML-jelölők hozzáadása a térképhez
 
@@ -28,16 +28,36 @@ Ez a cikk bemutatja, hogyan adhat hozzá egy egyéni HTML-fájlt, például egy 
 
 ## <a name="add-an-html-marker"></a>HTML-jelölő hozzáadása
 
-A HtmlMarker osztály alapértelmezett stílusú. Testreszabhatja a jelölőt a jelölő színének és szövegének megadásával. A HtmlMarker osztály alapértelmezett stílusa egy SVG-sablon, amely színes és szöveges helyőrzővel rendelkezik. A HtmlMarker beállításokban adja meg a szín és a szöveg tulajdonságokat a gyors testreszabáshoz. 
+A [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) osztály alapértelmezett stílusú. Testreszabhatja a jelölőt a jelölő színének és szövegének megadásával. A HTML-jelölő osztály alapértelmezett stílusa egy SVG-sablon, amely tartalmaz egy `{color}` és `{text}` egy helyőrzőt. A gyors testreszabáshoz adja meg a szín és a szöveg tulajdonságokat a HTML-jelölő beállításai között. 
+
+A következő kód egy HTML-jelölőt hoz létre, és a Color tulajdonságot "DodgerBlue" értékre állítja, a Text tulajdonság pedig "10". Az előugró ablak a jelölőhöz van `click` csatolva, és az esemény a felugró ablak láthatóságának váltására szolgál.
+
+```javascript
+//Create a HTML marker and add it to the map.
+var marker = new atlas.HtmlMarker({
+    color: 'DodgerBlue',
+    text: '10',
+    position: [0, 0],
+    popup: new atlas.Popup({
+        content: '<div style="padding:10px">Hello World</div>',
+        pixelOffset: [0, -30]
+    })
+});
+
+map.markers.add(marker);
+
+//Add a click event to toggle the popup.
+map.events.add('click',marker, () => {
+    marker.togglePopup();
+});
+```
+
+Alább látható a fenti funkciók teljes futási kódjának mintája.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='HTML-jelölő hozzáadása térképhez' src='//codepen.io/azuremaps/embed/MVoeVw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat egy <a href='https://codepen.io/azuremaps/pen/MVoeVw/'>HTML-jelölő hozzáadásával</a> Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
-
-A fenti kódban a kód első blokkja egy Térkép objektumot hoz létre. Ehhez útmutatást a [Térkép létrehozása](./map-create.md) című témakörben találhat.
-
-A kód második blokkja egy [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) helyez el a térképhez a [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) osztály [markerek](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#markers) tulajdonságával. A rendszer hozzáadja a HtmlMarker a térképhez az [esemény-figyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) függvényben annak érdekében, hogy a Térkép teljes terhelése után megjelenjen.
 
 ## <a name="create-svg-templated-html-marker"></a>SVG-sablon alapján létrehozott HTML-jelölő létrehozása
 
@@ -49,7 +69,7 @@ A HTML `htmlContent` -jelölő alapértelmezett értéke egy SVG-sablon, amelybe
 </iframe>
 
 > [!TIP]
-> A Azure Maps web SDK számos SVG-képsablont biztosít, amelyek HTML-jelölők használatával használhatók. További információért lásd a [képsablonok használata](how-to-use-image-templates-web-sdk.md) című dokumentumot.
+> A Azure Maps web SDK számos SVG-képsablont biztosít, amelyek HTML-jelölők használatával használhatók. További információ: a képsablonokkal kapcsolatos dokumentum [használata](how-to-use-image-templates-web-sdk.md) .
 
 ## <a name="add-a-css-styled-html-marker"></a>CSS stílusú HTML-jelölő hozzáadása
 
@@ -62,7 +82,7 @@ A HTML-jelölők egyik előnye, hogy a CSS használatával számos nagyszerű te
 
 ## <a name="draggable-html-markers"></a>Mozgatható HTML-jelölők
 
-Ez a minta bemutatja, hogyan lehet egy HTML-jelölőt áthúzni. HTML `dragstart` -jelölők `drag`támogatása és `dragend` eseményei.
+Ez a minta bemutatja, hogyan lehet egy HTML-jelölőt áthúzni. A HTML-jelölők `dragstart`támogatása `drag`, `dragend` és események.
 
 <br/>
 

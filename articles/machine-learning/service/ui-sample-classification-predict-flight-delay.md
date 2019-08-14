@@ -1,5 +1,5 @@
 ---
-title: Besorolási Repülőjáratok késéseinek előrejelzése
+title: 'Visual Interface példa #6: Besorolás a repülési késések előrejelzésére'
 titleSuffix: Azure Machine Learning service
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy gépi tanulási modellt a repülési késések előrejelzésére a fogd és vidd vizualizáció felület és az egyéni R-kód használatával.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 07/02/2019
-ms.openlocfilehash: f2ef5fd17d6c6a91fa5f3c5d62700b68c5fbca24
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 4c0a990ae3f45fc7b08c157f180d8ecf805c24e6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855963"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990025"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>6\. példa – besorolás: Repülési késések előrejelzése R használatával
 

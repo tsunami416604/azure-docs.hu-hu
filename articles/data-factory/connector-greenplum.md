@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: cdd1810ec1120e9918974e0978880aa894ff62e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50b3b04170f3544017446613a46d4c2ed6537d95
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60927592"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966527"
 ---
 # <a name="copy-data-from-greenplum-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Greenplum
 
@@ -28,6 +28,10 @@ Ez a cikk az Azure Data Factory a másolási tevékenység használatával adato
 Másolhat adatokat Greenplum bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
 Az Azure Data Factory kapcsolat beépített illesztőprogramot tartalmaz, ezért nem kell manuálisan telepítenie az összes illesztőprogram ezzel az összekötővel.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -41,11 +45,11 @@ Greenplum társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **Greenplum** | Igen |
-| connectionString | Az ODBC kapcsolati karakterlánc Greenplum csatlakozni. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Jelszó az Azure Key Vault és lekéréses is helyezheti a `pwd` konfigurációs ki a kapcsolati karakterláncot. Tekintse meg a következő minták és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. | Igen |
-| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| type | A Type tulajdonságot a következőre kell beállítani: **Greenplum** | Igen |
+| connectionString | Az ODBC kapcsolati karakterlánc Greenplum csatlakozni. <br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A jelszót a Azure Key Vaultban is elhelyezheti, és `pwd` lekérheti a konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -66,7 +70,7 @@ Greenplum társított szolgáltatás a következő tulajdonságok támogatottak:
 }
 ```
 
-**Példa: a jelszó tárolásához az Azure Key Vaultban**
+**Példa: a Jelszó tárolása Azure Key Vault**
 
 ```json
 {
@@ -103,7 +107,7 @@ Greenplum adatmásolás, állítsa be a type tulajdonság, az adatkészlet **Gre
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **GreenplumTable** | Igen |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **GreenplumTable** | Igen |
 | tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
@@ -132,7 +136,7 @@ Adatok másolása Greenplum, állítsa be a forrás típusaként a másolási te
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **GreenplumSource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **GreenplumSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**

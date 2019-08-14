@@ -5,47 +5,56 @@ services: digital-twins
 author: dsk-2015
 ms.service: digital-twins
 ms.topic: include
-ms.date: 06/28/2019
+ms.date: 08/12/2019
 ms.author: dkshir
 ms.custom: include file
-ms.openlocfilehash: 324f41055cf333081f308a3ff533ff7df6b33038
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: fc2e2fc05de66de6f428e6b8ca7c94f82003ba2a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "67479199"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012152"
 ---
 >[!NOTE]
->Ez a szakasz útmutatást nyújt a [új Azure AD-alkalmazás regisztrációjának](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app). Ha továbbra is az örökölt natív alkalmazás regisztrálása, használhatja azt is támogatott. Emellett ha valamilyen okból az új alkalmazás regisztrációs lehetőség nem működik a beállításokban, előfordulhat, hogy megpróbál létrehozni egy örökölt natív AAD-alkalmazás. Olvasási [az Azure digitális Twins alkalmazás regisztrálása az Azure Active Directory örökölt](../articles/digital-twins/how-to-use-legacy-aad.md) kapcsolatos további információkat. 
+>Ez a szakasz az [új Azure ad-alkalmazás regisztrálására](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)vonatkozó utasításokat tartalmazza. Ha továbbra is örökölt natív alkalmazás-regisztrációt használ, akkor azt használhatja, ha ez támogatott. Emellett, ha valamilyen oknál fogva az alkalmazás-regisztráció új módja nem működik a telepítőben, megpróbálhat létrehozni egy örökölt natív HRE alkalmazást. További útmutatásért olvassa el az [Azure Digital Twins-alkalmazás regisztrálása Azure Active Directory örökölt](../articles/digital-twins/how-to-use-legacy-aad.md) című témakört. 
 
-1. Az a [az Azure portal](https://portal.azure.com), nyissa meg **Azure Active Directory** a bal oldali ablaktáblán, és ezután nyissa meg a **alkalmazásregisztrációk** ablaktáblán. Válassza ki a **új regisztrációs** gombra.
+1. A [Azure Portal](https://portal.azure.com)nyissa meg **Azure Active Directory** a bal oldali ablaktáblán, majd nyissa meg a **Alkalmazásregisztrációk** ablaktáblát. Válassza az **új regisztráció** gombot.
 
-    ![Regisztrált alkalmazás](./media/digital-twins-permissions/aad-app-register.png)
+    ![Alkalmazás regisztrálva](./media/digital-twins-permissions/aad-app-register.png)
 
-1. Adjon egy rövid nevet a az alkalmazás regisztrációját a **neve** mezőbe. Alatt a **átirányítási URI-t (nem kötelező)** válassza **nyilvános ügyfél (mobil és asztali)** legördülő a bal oldalon, és adja meg `https://microsoft.com` be a szövegmezőbe, a jobb oldalon. Kattintson a **Register** (Regisztrálás) elemre.
+1. Adjon egy rövid nevet az alkalmazás regisztrálásához a **név** mezőben. Az **átirányítási URI (nem kötelező)** szakaszban válassza a **nyilvános ügyfél (mobil & asztal)** lehetőséget a bal oldali legördülő menüben, majd a `https://microsoft.com` jobb oldalon adja meg a szövegmezőt. Kattintson a **Register** (Regisztrálás) elemre.
 
-    ![Hozzon létre panel](./media/digital-twins-permissions/aad-app-reg-create.png)
+    ![Létrehozás ablaktábla](./media/digital-twins-permissions/aad-app-reg-create.png)
 
-1. Győződjön meg arról, hogy [az alkalmazás regisztrálva van egy *natív alkalmazás*](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), nyissa meg a **hitelesítési** az alkalmazás regisztrációját, és a panelen görgessen lefelé a panelen. Az a **ügyféltípus alapértelmezett** válassza **Igen** a **kezelni alkalmazás nyilvános ügyfél**. 
+1. Győződjön meg arról, hogy [az alkalmazás *natív alkalmazásként*van regisztrálva](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), nyissa meg az alkalmazás regisztrációjának **hitelesítés** paneljét, és görgessen le az ablaktáblán. Az **alapértelmezett ügyfél típusa** szakaszban válassza az **Igen** lehetőséget az **alkalmazás nyilvános ügyfélként való kezelésére**. 
 
     ![Alapértelmezett natív](./media/digital-twins-permissions/aad-app-default-native.png)
 
-1.  Nyissa meg a **áttekintése** a regisztrált alkalmazás panel és a egy ideiglenes fájlba a következő entitásokat értékeinek másolására. A mintaalkalmazás konfigurálását a következő szakaszokban ezeket az értékeket fogja használni.
+1.  Nyissa meg a regisztrált alkalmazás **Áttekintés** paneljét, és másolja az alábbi entitások értékeit egy ideiglenes fájlba. Ezeket az értékeket fogja használni a minta alkalmazás konfigurálásához a következő fejezetekben.
 
-    - **Az Alkalmazásazonosítót (ügyfél)**
-    - **(Bérlő) címtár-azonosító**
+    - **Alkalmazás (ügyfél) azonosítója**
+    - **Címtár (bérlő) azonosítója**
 
-    ![Az Azure Active Directory-alkalmazás azonosítója](./media/digital-twins-permissions/aad-app-reg-app-id.png)
+    ![Azure Active Directory alkalmazás azonosítója](./media/digital-twins-permissions/aad-app-reg-app-id.png)
 
-1. Nyissa meg a **API-engedélyek** az alkalmazás regisztrációját a panelen. Válassza ki **adjon hozzá egy engedélyt** gombra. Az a **kérelem API-engedélyek** panelen válassza a **API-k saját szervezete** lapra, és keressen rá **Azure intelligens tárolóhelyek**. Válassza ki a **Azure intelligens tárolóhelyek szolgáltatás** API-t.
+1. Nyissa meg az **API-engedélyek** panelt az alkalmazás regisztrálásához. Válassza **az engedély hozzáadása** gombot. A **kérelem API-engedélyek** ablaktáblán válassza a **saját szervezet által használt API** -k fület, majd keresse meg a következőt:
+    
+    1. **Azure digitális Twins**. Válassza ki az **Azure Digital Twins** API-t.
 
-    ![Keresési API](./media/digital-twins-permissions/aad-app-search-api.png)
+        ![Keresés az API-ban vagy az Azure Digital Twins-ban](./media/digital-twins-permissions/aad-aap-search-api-dt.png)
 
-1. A kijelölt API megjelenik-e **Azure digitális Twins** ugyanazon **kérelem API-engedélyek** ablaktáblán. Válassza ki a **olvasási (1)** legördülő lista, és válassza ki **Read.Write** jelölőnégyzetet. Válassza ki a **engedélyek hozzáadása** gombra.
+    1. Alternatív megoldásként keressen az **Azure intelligens tárhelyek**kifejezésre. Válassza ki az **Azure Smart Spaces szolgáltatás** API-ját.
+
+        ![Azure intelligens Spaces-API keresése](./media/digital-twins-permissions/aad-app-search-api.png)
+
+    > [!NOTE]
+    > A keresés során megjelenő pontos név attól függően változhat, hogy melyik Azure-bérlőhöz tartozik.
+
+1. A kiválasztott API az **Azure Digital Twins** néven jelenik meg ugyanabban a **kérelem API-engedélyek** ablaktáblán. Válassza az **olvasás (1)** legördülő listát, majd válassza az **olvasás. írás** jelölőnégyzetet. Kattintson az **engedélyek hozzáadása** gombra.
 
     ![API-engedélyek hozzáadása](./media/digital-twins-permissions/aad-app-req-permissions.png)
 
-1. Szervezeti beállítások, attól függően szükség lehet, hogy további lépések szükségesek a oszthatnak ki adminisztrátori hozzáférést az API-ra. További részletekért forduljon a rendszergazda. A rendszergazdai hozzáférés jóváhagyása, miután a **rendszergazdai jóváhagyás szükséges** oszlopa a **API-engedélyek** ablaktáblán jelennek meg az API-k számára a következőhöz hasonló:
+1. A szervezet beállításaitól függően előfordulhat, hogy további lépéseket kell tennie ahhoz, hogy rendszergazdai hozzáférést biztosítson ehhez az API-hoz. További információért forduljon a rendszergazdához. A rendszergazdai hozzáférés jóváhagyása után az **API-engedélyek** ablaktáblán a **rendszergazdai jóváhagyás szükséges** oszlop az API-khoz hasonlóan fog megjelenni:
 
     ![API-engedélyek hozzáadása](./media/digital-twins-permissions/aad-app-admin-consent.png)
 

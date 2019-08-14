@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: pabutler
-ms.openlocfilehash: fa0a88ce3f74c20ab36931a6a78f8265bdb9d8be
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 98d33dd1aad726d4da8499006166dfd2c043378f
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876241"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977154"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése
 
@@ -123,7 +123,7 @@ Ha az Azure CLI-t használja a GUID-azonosító hozzáfűzéséhez, állítsa be
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-További információ: [Go nyelvhez készült Azure SDK](https://docs.microsoft.com/go/azure/).
+További információ: [Go nyelvhez készült Azure SDK](https://docs.microsoft.com/azure/go/).
 
 ## <a name="use-terraform"></a>Terraform használata
 
@@ -279,7 +279,7 @@ Ha a piactér bevezetéséhez és/vagy az ügyfelek használati feladataihoz ál
 
 1. A **probléma típusa**területen válassza a **piactér**bevezetése elemet.
 
-1. Válassza ki **** a probléma kategóriáját:
+1. Válassza ki a probléma kategóriáját:
 
    - A használati társítással kapcsolatos problémák esetén válassza az **egyéb**lehetőséget.
    - Az Azure Marketplace CPP-vel való hozzáférési problémák esetén válassza a **hozzáférési probléma**lehetőséget.

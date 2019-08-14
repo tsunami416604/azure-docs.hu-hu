@@ -1,9 +1,9 @@
 ---
-title: Telepítése és a log analytics-nézetek használata az Azure Active Directoryhoz |} A Microsoft Docs
-description: Ismerje meg, hogyan telepítheti és használhatja a log analytics nézetei az Azure Active Directory
+title: A log Analytics-nézetek telepítése és használata Azure Active Directoryhoz | Microsoft Docs
+description: Ismerje meg, hogyan telepítheti és használhatja a log Analytics-nézeteket Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 2290de3c-2858-4da0-b4ca-a00107702e26
@@ -14,64 +14,64 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92a5d9539d254eb7d52e3277691c9d8ff5a41821
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7cb1241387144b691b76ec330a5f90b762ebc11f
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60286735"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989791"
 ---
-# <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Telepítése és a log analytics-nézetek használata az Azure Active Directory
+# <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>A log Analytics-nézetek telepítése és használata Azure Active Directory
 
-A Azure Active Directory log analytics nézetei segít elemez, és keresse az Azure AD-Tevékenységnaplók az Azure AD-bérlőben. Azure AD-tevékenység a naplófájlokban:
+A Azure Active Directory log Analytics-nézetek segítségével elemezheti és keresheti meg az Azure ad-tevékenység naplóit az Azure AD-bérlőben. Az Azure AD-tevékenységek naplói a következők:
 
-* Naplófájlok: A [naplók Tevékenységjelentés](concept-audit-logs.md) teszi elérhetővé a bérlőben végrehajtott minden tevékenység előzményeit.
-* Bejelentkezési naplók: Az a [bejelentkezési tevékenységek jelentésének](concept-sign-ins.md), megadhatja, hogy ki hajtotta végre a jelentett feladatokat, a naplók.
+* Naplók: A [naplózási tevékenység jelentés](concept-audit-logs.md) a bérlőn végrehajtott összes feladat előzményeihez biztosít hozzáférést.
+* Bejelentkezési naplók: A [bejelentkezési tevékenység jelentés](concept-sign-ins.md)segítségével meghatározhatja, hogy ki hajtotta végre a naplókban jelentett feladatokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A log analytics nézetek használatához az alábbiak szükségesek:
+A log Analytics-nézetek használatához a következőkre lesz szüksége:
 
-* Az Azure-előfizetés a Log Analytics-munkaterületet. Ismerje meg, hogyan [hozzon létre egy Log Analytics-munkaterület](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
-* Először a lépéseket követve [útvonal az Azure AD-Tevékenységnaplók Log Analytics-munkaterület az](howto-integrate-activity-logs-with-log-analytics.md).
-* Töltse le a nézeteket az [GitHub-adattár](https://aka.ms/AADLogAnalyticsviews) a helyi számítógépen.
+* Egy Log Analytics munkaterület az Azure-előfizetésében. Megtudhatja, hogyan [hozhat létre log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)munkaterületet.
+* Először végezze el az [Azure ad-tevékenység naplófájljainak a log Analytics](howto-integrate-activity-logs-with-log-analytics.md)munkaterületre történő átirányításához szükséges lépéseket.
+* Töltse le a nézeteket a [GitHub](https://aka.ms/AADLogAnalyticsviews) -tárházból a helyi számítógépre.
 
-## <a name="install-the-log-analytics-views"></a>Telepítse a log analytics nézetei
+## <a name="install-the-log-analytics-views"></a>A log Analytics-nézetek telepítése
 
-1. Keresse meg a Log Analytics-munkaterületre. Ehhez először keresse meg a [az Azure portal](https://portal.azure.com) válassza **minden szolgáltatás**. Típus **Log Analytics** a szövegmezőbe, és válassza a **Log Analytics-munkaterületek**. Válassza ki a munkaterületet, akkor irányítja a tevékenységnaplókat, az Előfeltételek részeként.
-2. Válassza ki **adatforrásnézet-tervezőből**, jelölje be **importálása** majd **fájl kiválasztása** a nézetek importálhatja a helyi számítógépről.
-3. Válassza ki az előfeltételeket, és válassza ki a letöltött nézeteket **mentése** az Importálás gombra. Tegye meg a **Azure AD-fiók kiépítési események** nézet és a **bejelentkezési események** megtekintése.
+1. Navigáljon a Log Analytics munkaterületre. Ehhez először navigáljon a [Azure Portal](https://portal.azure.com) , és válassza a **minden szolgáltatás**lehetőséget. Írja be a **log Analytics** szöveget a szövegmezőbe, és válassza a **log Analytics**munkaterületek lehetőséget. Válassza ki azt a munkaterületet, amelybe a tevékenység naplóit átirányította, az előfeltételek részeként.
+2. Válassza a **Tervező nézet**lehetőséget, válassza az **Importálás** lehetőséget, majd válassza a **fájl kiválasztása** lehetőséget a nézetek importálásához a helyi számítógépről.
+3. Válassza ki az előfeltételekből letöltött nézeteket, majd válassza a **Mentés** lehetőséget az importálás mentéséhez. Ezt az **Azure ad-fiók kiépítési eseményeinek** és a **bejelentkezési események** nézetének megváltoztatásával teheti meg.
 
 ## <a name="use-the-views"></a>A nézetek használata
 
-1. Keresse meg a Log Analytics-munkaterületre. Ehhez először keresse meg a [az Azure portal](https://portal.azure.com) válassza **minden szolgáltatás**. Típus **Log Analytics** a szövegmezőbe, és válassza a **Log Analytics-munkaterületek**. Válassza ki a munkaterületet, akkor irányítja a tevékenységnaplókat, az Előfeltételek részeként.
+1. Navigáljon a Log Analytics munkaterületre. Ehhez először navigáljon a [Azure Portal](https://portal.azure.com) , és válassza a **minden szolgáltatás**lehetőséget. Írja be a **log Analytics** szöveget a szövegmezőbe, és válassza a **log Analytics**munkaterületek lehetőséget. Válassza ki azt a munkaterületet, amelybe a tevékenység naplóit átirányította, az előfeltételek részeként.
 
-2. Ha egyszer már megkapta a munkaterületen, válassza ki a **munkaterület összefoglalás**. Az alábbi három nézet kell megjelennie:
+2. Miután megtörtént a munkaterületen, válassza a **munkaterület összegzése**elemet. A következő három nézetnek kell megjelennie:
 
-    * **Azure AD-fiók kiépítése események**: Ebben a nézetben látható a kiépítési tevékenységgel, például egy üzembe helyezett új felhasználóknak a számát, naplózás kapcsolatos jelentéseket kiépítési hibákhoz, azon felhasználók száma, frissítik és frissítési hibák és a szolgáltatáskulcs felhasználók és a megfelelő hibák számát.    
-    * **Bejelentkezési események**: Ebben a nézetben látható a leginkább releváns jelentések kapcsolódó bejelentkezési tevékenységeket, például az alkalmazás, felhasználó, eszköz, valamint nyomon követése a bejelentkezések száma idővel lemezkapacitásáról által bejelentkezések figyelése.
+    * **Azure ad-fiók kiépítési eseményei**: Ez a nézet a naplózási kiépítési tevékenységgel kapcsolatos jelentéseket jeleníti meg, például az új felhasználók kiépített és kiépítési hibáit, a frissített felhasználók számát és a frissítési hibákat, valamint a kiosztott és a hozzájuk tartozó hibák számát.    
+    * **Bejelentkezési események**: Ez a nézet a figyelési tevékenységekkel kapcsolatos legfontosabb jelentéseket mutatja be, például az alkalmazás, a felhasználó, az eszköz, valamint egy összegző nézet, amely az idő múlásával követi nyomon a bejelentkezések számát.
 
-3. Válassza ki, ezek a nézetek az Ugrás az egyes jelentések egyikét. A jelentés paramétereinek valamelyik is beállíthat riasztásokat. Például állítsa a riasztás minden alkalommal, amikor bejelentkezési hiba van. Ehhez először válassza ki a **bejelentkezési események** nézetben válassza **bejelentkezési hibák az idő függvényében** jelentést, majd **Analytics** nyissa meg a részleteket, a tényleges lekérdezést mögött a jelentést. 
+3. Válassza ki az egyes nézetek bármelyikét, hogy beugorjon az egyes jelentésekre. Riasztásokat is beállíthat a jelentési paraméterek bármelyikén. Tegyük fel például, hogy riasztást állítunk be minden alkalommal, amikor bejelentkezési hiba történt. Ehhez először jelölje ki a **bejelentkezési események** nézetet, válassza a **bejelentkezési hibák időbeli** jelentéssel lehetőséget, majd válassza az **elemzés** lehetőséget a Részletek lap megnyitásához a jelentés mögötti tényleges lekérdezéssel. 
 
     ![Részletek](./media/howto-install-use-log-analytics-views/details.png)
 
 
-4. Válassza ki **riasztási beállítása**, majd válassza ki **minden alkalommal, amikor az egyéni log Search &lt;nem definiált logika&gt;**  alatt a **riasztási feltételek** szakaszban. Mivel a kívánt riasztást, amikor egy bejelentkezési hiba, állítsa be a **küszöbérték** az alapértelmezett riasztási logika **1** , majd **kész**. 
+4. Válassza a **riasztás beállítása**lehetőséget, majd válassza ki, hogy az egyéni naplók keresésekor a riasztási **feltételek** szakaszban ne  **&lt;legyen meghatározva&gt; a logikai** érték. Mivel a bejelentkezési hiba miatt riasztást szeretnénk kapni, állítsa az alapértelmezett riasztási logika **küszöbértékét** **1-re** , majd válassza a **kész**lehetőséget. 
 
     ![Jellogika konfigurálása](./media/howto-install-use-log-analytics-views/configure-signal-logic.png)
 
-5. Adjon meg egy nevet és leírást a riasztást, és állítsa a súlyosság **figyelmeztetés**.
+5. Adja meg a riasztás nevét és leírását, és állítsa a súlyosságot **figyelmeztetésre**.
 
     ![Szabály létrehozása](./media/howto-install-use-log-analytics-views/create-rule.png)
 
-6. Válassza ki a műveletcsoport a riasztáshoz. Általánosságban elmondható vagy egy értesítendő e-mail vagy szöveges üzeneten keresztül csapat is lehet, vagy webhookok, a runbookok, a functions, a logic apps vagy a külső ITSM-megoldások használatával egy automatizált feladat lehet. Ismerje meg, hogyan [létrehozása és kezelése az Azure Portalon Műveletcsoportok](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups).
+6. Válassza ki a riasztásra felvenni kívánt műveleti csoportot. Általánosságban elmondható, hogy ez lehet egy csapat, amelyet e-mailben vagy SMS-ben szeretne értesíteni, vagy lehet egy automatizált feladat webhookok, runbookok, functions, Logic apps vagy külső ITSM-megoldások használatával. Megtudhatja, hogyan [hozhat létre és kezelhet műveleti csoportokat a Azure Portalban](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups).
 
-7. Válassza ki **riasztási szabály létrehozása** a riasztás létrehozásához. Most, értesítést kap minden alkalommal, amikor bejelentkezési hiba van.
+7. A riasztás létrehozásához válassza a **riasztási szabály létrehozása** lehetőséget. Ekkor a rendszer minden alkalommal riasztást küld, amikor bejelentkezési hiba történt.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Tevékenységnaplók az Azure Monitor-naplók elemzése](howto-analyze-activity-logs-log-analytics.md)
-* [Ismerkedés az Azure Monitor-naplók az Azure Portalon](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)
+* [A Tevékenységnaplók elemzése Azure Monitor naplókkal](howto-analyze-activity-logs-log-analytics.md)
+* [Ismerkedés a Azure Monitor-naplók Azure Portal](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)

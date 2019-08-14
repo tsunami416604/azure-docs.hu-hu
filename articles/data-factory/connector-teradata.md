@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: ce326d7284e22a8734f6be671a277795ba659522
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 6cbddfc5e529bc48e08407796024e5232d1a22e8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720531"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966366"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Adatok másolása a Teradata a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -43,7 +43,9 @@ Ez a Teradata-összekötő a következőket támogatja:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha a Teradata nem érhető el nyilvánosan, létre kell hoznia egy [saját](create-self-hosted-integration-runtime.md)üzemeltetésű integrációs modult. Az Integration Runtime a 3,18-es verziótól kezdődően beépített Teradata-illesztőprogramot biztosít. Nem kell manuálisan telepítenie az illesztőprogramot. Az illesztőprogramhoz a saját C++ üzemeltetésű Integration Runtime-gépen a "Visual Redistributable 2012 Update 4" szükséges. Ha még nincs telepítve, töltse le [innen.](https://www.microsoft.com/en-sg/download/details.aspx?id=30679)
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
+Az Integration Runtime a 3,18-es verziótól kezdődően beépített Teradata-illesztőprogramot biztosít. Nem kell manuálisan telepítenie az illesztőprogramot. Az illesztőprogramhoz a saját C++ üzemeltetésű Integration Runtime-gépen a "Visual Redistributable 2012 Update 4" szükséges. Ha még nincs telepítve, töltse le innen. [](https://www.microsoft.com/en-sg/download/details.aspx?id=30679)
 
 Az 3,18-nál korábbi, saját üzemeltetésű Integration Runtime-verziók esetében telepítse a .net-adatszolgáltatót a [Teradata](https://go.microsoft.com/fwlink/?LinkId=278886), 14-ös vagy újabb verzióra az Integration Runtime-gépen. 
 
@@ -63,7 +65,7 @@ A Teradata társított szolgáltatás a következő tulajdonságokat támogatja:
 | connectionString | Meghatározza a Teradata adatbázis-példányhoz való kapcsolódáshoz szükséges adatokat. Tekintse át a következő mintákat.<br/>A jelszót Azure Key Vaultba is helyezheti, és `password` lekérheti a konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md) című témakört. | Igen |
 | username | Adja meg a Teradata-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. Windows-hitelesítés használatakor érvényes. | Nem |
 | password | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Azt is megteheti, hogy [hivatkozik Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). <br>A Windows-hitelesítés használatakor, vagy az alapszintű hitelesítéshez Key Vault jelszóra hivatkozik. | Nem |
-| connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. A saját üzemeltetésű integrációs modulra van szükség, ahogy az [Előfeltételek](#prerequisites)között szerepel. |Igen |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Igen |
 
 **Példa egyszerű hitelesítés használatával**
 
@@ -184,11 +186,10 @@ Az adatok Teradata történő másolásához a következő tulajdonságok támog
 
 Ez a szakasz a Teradata forrás által támogatott tulajdonságok listáját tartalmazza. A tevékenységek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját lásd: [folyamatok](concepts-pipelines-activities.md). 
 
-### <a name="teradata-as-a-source-type"></a>Teradata
+### <a name="teradata-as-source"></a>Teradata forrásként
 
-> [!TIP]
->
-> Az adatok Teradata történő hatékony betöltéséhez az adatparticionálás használatával tekintse meg a [Teradata párhuzamos másolását](#parallel-copy-from-teradata) ismertető szakaszt.
+>[!TIP]
+>Az adatok Teradata történő hatékony betöltéséhez az adatparticionálás használatával tekintse meg a [Teradata párhuzamos másolását](#parallel-copy-from-teradata) ismertető szakaszt.
 
 Az adatok Teradata történő másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
@@ -293,8 +294,8 @@ Az adatok Teradata történő másolásakor a következő leképezések érvény
 | Byte |Byte[] |
 | ByteInt |Int16 |
 | Char |Sztring |
-| Clob |Karakterlánc |
-| Date |Datetime |
+| Clob |Sztring |
+| Date |DateTime |
 | Decimal |Decimal |
 | Double |Double |
 | Graphic |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
@@ -321,8 +322,8 @@ Az adatok Teradata történő másolásakor a következő leképezések érvény
 | SmallInt |Int16 |
 | Time |TimeSpan |
 | Time With Time Zone |TimeSpan |
-| Timestamp |Datetime |
-| Timestamp With Time Zone |Datetime |
+| Timestamp |DateTime |
+| Timestamp With Time Zone |DateTime |
 | VarByte |Byte[] |
 | VarChar |Sztring |
 | VarGraphic |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |

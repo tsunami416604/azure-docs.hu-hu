@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 07/23/2019
-ms.openlocfilehash: 1d2a0c9e1531ace16335ea57acaccedfe2c1a3c8
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 7ef19db472b30d82f14a5dd650cb8f4cb1f3ed3a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815894"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990080"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-train-and-deploy-your-first-classification-model-preview"></a>Oktatóanyag: Automatikus gépi tanulás használata az első besorolási modell betanításához és üzembe helyezéséhez (előzetes verzió)
 
@@ -54,7 +54,7 @@ Ez az oktatóanyag a következő feladatokat ismerteti:
 
 1. Válassza a **Létrehozás új számítás** lehetőséget, és konfigurálja a számítási környezetet a kísérlethez.
 
-    Mező| Érték
+    Mező| Value
     ---|---
     A számítás neve| Adjon meg egy egyedi nevet, amely azonosítja a számítási környezetet. Ebben a példában a **automl-számítást**használjuk.
     Virtuális gép mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz. **Standard_DS12_V2**használunk.
@@ -95,7 +95,7 @@ Ez az oktatóanyag a következő feladatokat ismerteti:
     Egyidejűség| Az egyidejű ismétlések maximális számának kiválasztásához válassza az **5** értéket.
 
    >[!NOTE]
-   > Ebben a kísérletben nem állítunk be mérőszámot vagy maximális iterációs küszöbértéket. Nem tiltjuk le az algoritmusok tesztelését is.
+   > Ebben a kísérletben nem állítunk be mérőszámok vagy Max magok másodpercenkénti küszöbértékét. Nem tiltjuk le az algoritmusok tesztelését is.
 
 1. A kísérlet futtatásához kattintson a **Start** gombra.
 

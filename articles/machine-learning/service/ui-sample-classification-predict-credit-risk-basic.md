@@ -1,5 +1,5 @@
 ---
-title: Besorolási Hitelkockázat előrejelzése
+title: 'Visual Interface példa #3: Besorolás a hitelkockázat előrejelzéséhez'
 titleSuffix: Azure Machine Learning service
 description: Megtudhatja, hogyan hozhat létre egy gépi tanulási osztályozó anélkül, hogy egyetlen sor kódot kellene írnia a vizualizáció felületének használatával.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: d1b3b8fa61492f3cf18e44e3e3046f32ea9c9b03
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7565f94910d0e926682a72af42b02059fe7295ea
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855989"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990054"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>3\. példa – besorolás: Hitelkockázat előrejelzése
 
