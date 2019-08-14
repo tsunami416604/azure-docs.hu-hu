@@ -60,7 +60,7 @@ A SQL Server társított szolgáltatás a következő tulajdonságokat támogatj
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot **SQLServer**értékre kell beállítani. | Igen |
 | connectionString |Itt adhatja meg az SQL-hitelesítés vagy a Windows-hitelesítés használatával a SQL Server-adatbázishoz való kapcsolódáshoz szükséges **ConnectionString** -információkat. Tekintse át a következő mintákat.<br/>A mező megjelölése **SecureString** -ként, hogy biztonságosan tárolja Azure Data Factoryban. A jelszó Azure Key Vaultban is elhelyezhető. Ha SQL-hitelesítéssel rendelkezik, húzza `password` ki a konfigurációt a kapcsolatok sztringből. További információ: a táblázatot követő JSON-példa és a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md). |Igen |
-| userName |Windows-hitelesítés használata esetén adja meg a felhasználónevet. Ilyen például a **tartománynév\\Felhasználónév**. |Nem |
+| userName |Windows-hitelesítés használata esetén adja meg a felhasználónevet. Ilyen például a **domainname\\username**. |Nem |
 | password |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. A mező megjelölése **SecureString** -ként, hogy biztonságosan tárolja Azure Data Factoryban. Vagy [hivatkozhat a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md)is. |Nem |
 | connectVia | Ez [](concepts-integration-runtime.md) az integrációs modul az adattárhoz való kapcsolódásra szolgál. Használhat saját üzemeltetésű integrációs modult vagy az Azure Integration runtimet, ha az adattár nyilvánosan elérhető. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime-t használja. |Nem |
 
