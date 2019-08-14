@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: dacurwin
-ms.openlocfilehash: 34484c309cb186aabec519e54269fefae316165e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 5f44e9b386f5d05b75f6fdf6cf8b55360e4c5dae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639908"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954782"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Recovery Services-tároló törlése
 
@@ -51,7 +51,7 @@ Mielőtt továbblépne, olvassa el **[ezt](#before-you-start)** a szakaszt a fü
 
 A védelem leállításához és a biztonsági mentési adatok törléséhez hajtsa végre az alábbi műveleteket:
 
-1. A portálon > **Recovery Services** > -tároló**biztonsági másolati elemeiben** válassza a felhőben védett elemeket (például AzureVirtual Machine, Azure Storage (Azure Files), SQL un Azure VM stb.).
+1. A portálon > **Recovery Services** > -tároló**biztonsági másolati elemeiben** válassza a felhőben védett elemeket (például AzureVirtual Machine, Azure Storage (Azure Files), SQL on Azure VM stb.).
 
     ![Válassza ki a biztonsági mentés típusát](./media/backup-azure-delete-vault/azure-storage-selected.png)
 
@@ -131,7 +131,7 @@ Biztonsági másolati elemek törlése a MARS felügyeleti konzolról
 
   ![Biztonsági PIN-kód](./media/backup-azure-delete-vault/security-pin.png)
 
-- A **biztonsági mentési folyamat módosítása** varázslóban látható *, hogy a törölt biztonsági mentési adat 14 napig meg fog maradni. Ez idő után véglegesen törlődik a biztonsági mentési adatvesztés.*  
+- A **biztonsági mentési folyamat módosítása** varázslóban a *törölt biztonsági mentési adat 14 napig meg fog maradni. Ez idő után véglegesen törlődik a biztonsági mentési adatvesztés.*  
 
     ![Biztonsági mentési infrastruktúra törlése](./media/backup-azure-delete-vault/deleted-backup-data.png)
 
@@ -159,7 +159,7 @@ A védett tag állapota mostantól az **elérhető inaktív replikára**módosul
 
     ![Replikák eltávolítása a lemezen és az interneten](./media/backup-azure-delete-vault/remove-replica-on-disk-and-online.png)
 
-**2. módszer** Indítsa el a **MABS felügyeleti** konzolt. Az **adatvédelmi módszer kiválasztása** szakaszban szüntesse **meg a kívánt online védelmet**.
+**2. módszer** Indítsa el a **MABS felügyeleti** konzolt. Az **adatvédelmi módszer kiválasztása** szakaszban törölje a jelölést az **online védelem lehetőség**kiválasztásához.
 
   ![adatvédelmi módszer kiválasztása](./media/backup-azure-delete-vault/data-protection-method.png)
 
@@ -181,13 +181,13 @@ Most, hogy törölte a helyszíni biztonsági mentési elemeket, hajtsa végre a
 
 A Recovery Services-tároló törlésének lehetősége csak akkor ajánlott, ha az összes függőség el lett távolítva, és atár törlési hibája továbbra is fennáll.
 
-- A tár menü **Essentials** paneljén ellenőrizze, hogy nincsenek-e **biztonsági másolati elemek**, **biztonságimásolat-kezelési kiszolgálók**vagy **replikált elemek** felsorolva. Ha vannak biztonsági másolati elemek, tekintse [át az](#before-you-start) előkészületek című szakaszt.
+- A tár menü **Essentials** paneljén ellenőrizze, hogy nincsenek-e **biztonsági másolati elemek**, **biztonságimásolat-kezelési kiszolgálók**vagy **replikált elemek** felsorolva. Ha vannak biztonsági másolati elemek, tekintse át az előkészületek című szakaszt. [](#before-you-start)
 - Próbálja meg ismét [törölni a](#delete-the-recovery-services-vault)tárolót a portálról.
-- Ha az összes függőség el lett távolítva, és továbbra is a tár törlési hibáját kapja, akkor a ARMClient eszközzel hajtsa végre az alábbi lépéseket.
+- Ha az összes függőség el lett távolítva, és továbbra is a tár *törlési hibát észlel*, akkor a ARMClient eszköz használatával hajtsa végre az alábbi lépéseket.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. Telepítse a csokoládét innen [, és a](https://chocolatey.org/) ARMClient telepítéséhez futtassa az alábbi parancsot:
+1. Telepítse a csokoládét [](https://chocolatey.org/) innen, és a ARMClient telepítéséhez futtassa az alábbi parancsot:
 
    `choco install armclient --source=https://chocolatey.org/api/v2/`
 2. Jelentkezzen be az Azure-fiókjába, és futtassa a következő parancsot:

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Security Centerben a transzparens adattitkosítás engedélyezése |} A Microsoft Docs
-description: Ez a dokumentum bemutatja, hogyan valósíthat meg az Azure Security Center javaslatait **transzparens adattitkosítás engedélyezése**.
+title: transzparens adattitkosítás engedélyezése a Azure Security Centerban | Microsoft Docs
+description: Ebből a dokumentumból megtudhatja, hogyan valósítja meg a **transzparens adattitkosítás engedélyezése**Azure Security Center ajánlást.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -15,49 +15,49 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: d5ddec40a1b20e377ec18ce871018f674557e7b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60703999"
 ---
-# <a name="enable-transparent-data-encryption-in-azure-security-center"></a>Az Azure Security Centerben a transzparens adattitkosítás engedélyezése
-Azure Security Center javasolni fogja engedélyezése transzparens adattitkosítási (TDE) az SQL-adatbázisokon Ha TDE már nem engedélyezett. TDE védi az adatokat, és segít a megfelelőségi követelmények teljesítése érdekében az alkalmazás módosítása nélkül az adatbázisban, az azokhoz kapcsolódó biztonsági mentési, és a tranzakciós naplófájlokat az inaktív titkosításával. További tudnivalókért tekintse meg [az Azure SQL Database transzparens adattitkosítási](https://msdn.microsoft.com/library/dn948096).
+# <a name="enable-transparent-data-encryption-in-azure-security-center"></a>transzparens adattitkosítás engedélyezése Azure Security Center
+Azure Security Center azt javasolja, hogy engedélyezze a transzparens adattitkosítás (TDE) szolgáltatást az SQL-adatbázisokon, ha a TDE még nincs engedélyezve. A TDE megvédi adatait, és segít a megfelelőségi követelmények teljesítésében azáltal, hogy az adatbázist, a kapcsolódó biztonsági mentéseket és a tranzakciós naplófájlokat a REST-ben titkosítja, anélkül, hogy módosítania kellene az alkalmazást. További információ: [transzparens adattitkosítás Azure SQL Database](https://msdn.microsoft.com/library/dn948096).
 
-Ez a javaslat vonatkozik; csak az Azure SQL szolgáltatásba nem tartalmazza a virtuális gépeken futó SQL.
+Ez az ajánlat csak az Azure SQL szolgáltatásra vonatkozik; nem tartalmazza a virtuális gépeken futó SQL-t.
 
 > [!NOTE]
 > Ez a dokumentum egy üzembe helyezést szemléltető példa segítségével mutatja be a szolgáltatást.  A dokumentum nem tartalmaz lépésenkénti útmutatót.
 >
 >
 
-## <a name="implement-the-recommendation"></a>A javaslatok megvalósítása
-1. Az a **javaslatok** panelen válassza ki **transzparens adattitkosítás engedélyezése**.
+## <a name="implement-the-recommendation"></a>A javaslat implementálása
+1. A **javaslatok** panelen válassza a **transzparens adattitkosítás engedélyezése**lehetőséget.
    ![Transzparens adattitkosítás engedélyezése][1]
-2. Ekkor megnyílik a **transzparens adattitkosítás engedélyezése az SQL-adatbázisokon** panelen. Válassza ki az SQL-adatbázis is engedélyezni szeretné a TDE be.
-   ![Válassza ki a TDE engedélyezése az SQL DB][2]
-3. Az a **transzparens adattitkosítás** panelen válassza ki **ON** adattitkosítás, és válassza ki a **mentése** a panel a felső szalagon.
-   ![Kapcsolja be a TDE][3]
+2. Ekkor megnyílik a **transzparens adattitkosítás engedélyezése az SQL-adatbázisok** panelen. Válasszon ki egy SQL-adatbázist a TDE engedélyezéséhez.
+   ![Válassza az SQL DB lehetőséget a TDE engedélyezéséhez][2]
+3. Az **átlátszó adattitkosítás** panelen válassza **a** be lehetőséget az adattitkosítás területen, majd a panel felső szalagján kattintson a **Mentés** elemre.
+   ![TDE bekapcsolása][3]
 
-   Miután TDE engedélyezve van a kiválasztott SQL-adatbázis a **titkosítási állapot** változik **titkosított**.    
+   Ha a TDE engedélyezve van a kiválasztott SQL-adatbázisban, a **titkosítási állapot** titkosítottraváltozik.    
 
    ![Titkosítás állapota][4]
 
 ## <a name="see-also"></a>Lásd még
-Ez a cikk láthatta, hogyan valósíthat meg a Security Center javaslatait "Transzparens adattitkosítás engedélyezése." Az SQL TDE kapcsolatos további információkért tekintse meg a következőket:
+Ez a cikk bemutatja, hogyan valósítja meg a "transzparens adattitkosítás engedélyezése" Security Center ajánlást. Az SQL TDE kapcsolatos további tudnivalókért tekintse meg a következőket:
 
-* [Az Azure SQL Database transzparens adattitkosítás](https://msdn.microsoft.com/library/dn948096)
-* [Ismerkedés a transzparens adattitkosítás (TDE)](../sql-data-warehouse/sql-data-warehouse-encryption-tde.md)
+* [transzparens adattitkosítás a Azure SQL Database](https://msdn.microsoft.com/library/dn948096)
+* [Ismerkedés a transzparens adattitkosításrel (TDE)](../sql-data-warehouse/sql-data-warehouse-encryption-tde.md)
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
-* [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
-* [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
+* [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.
+* [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md) – megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Megtudhatja, hogyan figyelheti a partnermegoldások biztonsági állapotát.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Az Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – a legújabb Azure biztonsági hírek és információ.
+* [Azure biztonsági blog](https://blogs.msdn.com/b/azuresecurity/) – a legújabb Azure biztonsági Hírek és információk beszerzése.
 
 <!--Image references-->
 [1]: ./media/security-center-enable-tde-on-sql-databases/enable-tde.png

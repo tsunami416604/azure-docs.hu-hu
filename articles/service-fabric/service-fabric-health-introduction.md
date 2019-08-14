@@ -1,6 +1,6 @@
 ---
-title: Állapotmonitorozás a Service Fabricben |} A Microsoft Docs
-description: Bevezetés az Azure Service Fabric-állapotfigyelési modell, amely a fürt és az alkalmazások és szolgáltatások figyelését teszi lehetővé.
+title: Állapot-figyelés a Service Fabricban | Microsoft Docs
+description: Bevezetés az Azure Service Fabric Health monitoring modellbe, amely a fürt és az alkalmazásai és szolgáltatásai figyelését teszi lehetővé.
 services: service-fabric
 documentationcenter: .net
 author: oanapl
@@ -15,88 +15,88 @@ ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: d0ef9f34d6b657a063e50b0f144197c41905e809
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60949164"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>A Service Fabric állapotmonitorozásának bemutatása
-Az Azure Service Fabric egy állapotmodell által biztosított a gazdag, rugalmas és bővíthető állapotának kiértékelését és a jelentéskészítés mutatja be. A modell lehetővé teszi, közel valós idejű figyelését a fürt és a benne lévő futó szolgáltatások állapotát. Egyszerűen egészségügyi információk beszerzéséhez, és kijavíthatja az esetleges problémák előtt alkalmazza, és a nagy leállások miatt. A tipikus modellben szolgáltatások küldeni a jelentéseket a saját helyi található nézetek alapján, és, hogy információt összesített értéket jelenít meg, adja meg a teljes fürt szintű megtekintése.
+Az Azure Service Fabric egy olyan egészségügyi modellt vezet be, amely gazdag, rugalmas és bővíthető egészségügyi értékelést és jelentéskészítést tesz lehetővé. A modell lehetővé teszi a fürt állapotának és a rajta futó szolgáltatásoknak a közel valós idejű figyelését. Egyszerűen beszerezhet egészségügyi információkat, és kiválaszthatja a potenciális problémákat, mielőtt lépcsőzetesen kiesést okoz. A tipikus modellben a szolgáltatások a helyi nézeteik alapján küldenek jelentéseket, és ezek az információk összesítve biztosítják a teljes fürt szintű nézetet.
 
-A Service Fabric összetevői a gazdag állapotmodell használja a jelenlegi állapotuk jelentéséhez. Használhatja ugyanazt a mechanizmust jelentés állapotába le az alkalmazásokból. Fektet a magas színvonalú állapotfigyelő jelentési, amely rögzíti az egyéni feltételek, ha észleli, és sokkal egyszerűbben futó alkalmazás megoldásának.
+Service Fabric összetevők ezt a gazdag állapotú modellt használják a jelenlegi állapotuk jelentésére. Ugyanezt a mechanizmust használhatja az alkalmazások állapotának jelentéséhez. Ha magas színvonalú állapot-jelentéskészítést végez, amely az egyéni feltételeket rögzíti, sokkal könnyebben észlelheti és javíthatja a futó alkalmazással kapcsolatos problémákat.
 
 > [!NOTE]
-> Az egészségügyi alrendszer megoldására figyelt frissítéseket kell azt elindult. A Service Fabric biztosít a figyelt alkalmazás és a fürt frissítések, amelyek a teljes rendelkezésre, leállás nélkül és minimális felhasználói beavatkozás nélküli. Ezen célok eléréséhez a frissítés állapota alapján a konfigurált frissítési szabályzatok ellenőrzi. Frissítés folytassa csak akkor, ha a health figyelembe veszi a kívánt küszöbértékeket. Ellenkező esetben a frissítés automatikusan vissza állítva vagy fel van függesztve, a segítségével a rendszergazdák és hárítsa el a problémákat. Alkalmazásfrissítések kapcsolatos további információkért lásd: [Ez a cikk](service-fabric-application-upgrade.md).
+> Elindítottuk az állapot-alrendszert a figyelt frissítések szükségességének kielégítéséhez. Service Fabric biztosít a megfigyelt alkalmazások és fürtök frissítéseit, amelyek biztosítják a teljes rendelkezésre állást, a leállás és a minimális felhasználói beavatkozás nélkül. A célok eléréséhez a frissítés a konfigurált frissítési szabályzatok alapján ellenőrzi az állapotot. A frissítés csak akkor folytatható, ha az állapot tiszteletben tartja a kívánt küszöbértékeket. Ellenkező esetben a rendszer automatikusan visszaállítja a frissítést, vagy szünetelteti a problémát, hogy a rendszergazdák egy esélyt adjanak a problémák megoldására. Az alkalmazások frissítéseivel kapcsolatos további tudnivalókért tekintse meg [ezt a cikket](service-fabric-application-upgrade.md).
 > 
 > 
 
-## <a name="health-store"></a>Health Store adatbázisban
-A health Store adatbázisban tartja entitásokról health szolgáltatással kapcsolatos információkat a fürt könnyen lekérés és értékelés céljából használják. Megvalósított módon egy Service Fabric állapotalapú szolgáltatás magas rendelkezésre állás és méretezhetőség biztosítása érdekében megőrzi. A health Store adatbázisban része a **fabric: / System** alkalmazás, és elérhető, amikor a fürt működik-e, és fut.
+## <a name="health-store"></a>Health Store
+Az állapotfigyelő szolgáltatás az állapottal kapcsolatos információkat biztosít a fürtben található entitásokról az egyszerű lekérés és értékelés céljából. Service Fabric megőrzött állapot-nyilvántartó szolgáltatásként valósul meg a magas rendelkezésre állás és a méretezhetőség biztosítása érdekében. A health Store adatbázisban része a **fabric: / System** alkalmazás, és elérhető, amikor a fürt működik-e, és fut.
 
-## <a name="health-entities-and-hierarchy"></a>Egészségügyi entitások és a hierarchia
-Az egészségügyi szervezetek logikai interakciók és a különböző entitások közötti függőségek rögzíti a hierarchiában lévő vannak rendszerezve. A health Store adatbázisban az egészségügyi szervezetek és a hierarchia a Service Fabric összetevői érkezett jelentés alapján automatikusan létrehozza.
+## <a name="health-entities-and-hierarchy"></a>Állapot entitások és hierarchia
+Az állapotú entitások logikai hierarchiába vannak rendezve, amely a különböző entitások közötti interakciókat és függőségeket rögzíti. Az állapotfigyelő szolgáltatás a Service Fabric-összetevőktől kapott jelentések alapján automatikusan létrehozza az állapot entitásokat és a hierarchiát.
 
-Az egészségügyi szervezetek a Service Fabric-entitások tükrözéséhez. (Például **egészségügyi alkalmazás entitás** megegyezik az alkalmazáspéldány üzembe helyezve, a fürt, miközben **egészségügyi csomópont entitás** megegyezik egy Service Fabric-fürt csomópontja.) A health hierarchia rögzíti a rendszer entitások interakciókat, és a speciális állapotának kiértékelését alapját. Megismerheti a Service Fabric alapfogalmak [a Service Fabric technikai áttekintése](service-fabric-technical-overview.md). Az alkalmazás további információkért lásd: [Service Fabric-alkalmazásmodell](service-fabric-application-model.md).
+Az állapot entitások az Service Fabric entitásokat tükrözik. (Az állapotfigyelő **alkalmazás entitása** például megegyezik a fürtben üzembe helyezett alkalmazás-példányokkal, míg az **állapot-csomópont entitása** megegyezik egy Service Fabric fürtcsomópont-csomóponttal.) Az állapot-hierarchia rögzíti a rendszerentitások interakcióit, és ez a fejlett állapot kiértékelésének alapja. Az [Service Fabric technikai áttekintésében](service-fabric-technical-overview.md)megismerheti a kulcsfontosságú Service Fabric fogalmakat. További információ az alkalmazásról: [Service Fabric Application Model](service-fabric-application-model.md).
 
-Az egészségügyi entitásokat és a hierarchia lehetővé teszik a fürt és az alkalmazások hatékonyan jelentett, hibakereséséhez és figyelemmel kísérni. Az állapotközpontú modellről biztosít egy pontos *részletes* állapotát, a fürt számos mozgó darab ábrázolása.
+Az állapot entitások és a hierarchia lehetővé teszik a fürt és az alkalmazások hatékony jelentését, hibakeresését és figyelését. Az állapot modellje a fürtben található számos mozgó darab állapotának pontos és részletes megjelenítését biztosítja.
 
-![Egészségügyi szervezetek.][1]
-Az egészségügyi entitásokat, a hierarchia szülő-gyermek típusú kapcsolatokat alapján vannak rendezve.
+![Állapot entitások.][1]
+Az állapotadatok a szülő-gyermek kapcsolatokon alapuló hierarchiában vannak rendezve.
 
 [1]: ./media/service-fabric-health-introduction/servicefabric-health-hierarchy.png
 
-Az egészségügyi szervezetek a következők:
+Az állapot-entitások a következők:
 
-* **Fürt**. Service Fabric-fürt állapotát jelképezi. Fürt rendszerállapot-jelentések a teljes fürtöt érintő feltételek leírása. Ezek a feltételek befolyásolja a fürt vagy a fürt, másrészt több entitás. A feltétel alapján, a jelentéskészítő nem Szűkítse le egy vagy több nem kifogástalan gyermeke a probléma. Ilyenek például az agy a fürt hálózati a particionálás és kommunikációs hibák miatt felosztásának eredménye.
-* **Csomópont**. A Service Fabric-csomópont állapotát jelképezi. Csomópont rendszerállapot-jelentések feltételeket, amelyek hatással vannak a csomópont funkcióit írja le. Azok a rajta futó összes üzembe helyezett entitás általában hatással. Ilyenek például a csomópont nincs elég szabad lemezterület (vagy más gépre kiterjedő tulajdonságok, például a memória, a kapcsolatok) és amikor a csomópont nem működik. A csomópont entitást azonosítja a csomópont neve (karakterlánc).
-* **Alkalmazás**. A fürtben futó alkalmazáspéldány állapotát jelképezi. Alkalmazás rendszerállapot-jelentések ismertetik a feltételeket, amelyek hatással vannak az alkalmazás általános állapotát. Ezek nem lehet leszűkül, hogy az egyes gyermekek (szolgáltatások vagy telepített alkalmazások). Például a végpontok közötti interakció, többek között a különböző szolgáltatások, az alkalmazás. Az alkalmazás entitást azonosítja az alkalmazás nevét (URI).
-* **Szolgáltatás**. A fürtben futó szolgáltatás állapotát jelképezi. Rendszerállapot-jelentések ismertetik a feltételeket, amelyek hatással vannak a szolgáltatás általános állapotát. A jelentéskészítő nem leszűkíteni a probléma egy sérült partíció vagy a replikát. Ilyenek például a szolgáltatás konfigurációs (például port vagy külső fájlmegosztás) tartozó összes partíció problémákat okozó. A szolgáltatás entitást azonosítja a szolgáltatás nevét (URI).
-* **Partíció**. Az állapotfigyelő szolgáltatás partíció jelöli. Partíció rendszerállapot-jelentések ismertetik a feltételeket, amelyek hatással vannak a teljes replikakészlethez. Például ha replikák száma nem éri a célként megadott száma, és a egy partíció kvórumveszteségben van. A partíció entitást azonosítja a partíció Azonosítóját (GUID).
-* **Replika**. Egy állapotalapú szolgáltatás replika- vagy egy állapotmentes szolgáltatás állapotát jelképezi. A replika nem watchdogs és a rendszer összetevőinek jelentései az alkalmazáshoz, a legkisebb egység. Az állapotalapú szolgáltatások esetében például a műveletek nem tudja replikálni a másodlagos példány hozható létre, és a lassú replikálás elsődleges replika. Állapot nélküli példány is, jelentheti a lemezén kevés a szabad erőforrás vagy kapcsolódási problémák. A replika entitás azonosítja a partíció Azonosítóját (GUID) és a replika és példány Azonosítóját (hosszú).
-* **DeployedApplication**. Állapotát jelöli egy *egy csomóponton futó alkalmazás*. Az üzembe helyezett alkalmazás rendszerállapot-jelentések ismertetik a feltételek az alkalmazáshoz nem lehet leszűkül, hogy ugyanazon a csomóponton üzembe helyezett szolgáltatáscsomagok a csomópontra. Ilyenek például a hibákat, ha a virtuálisalkalmazás-csomag nem tölthető le a csomóponton és az alkalmazás rendszerbiztonsági tagok a csomóponton beállításával kapcsolatos problémák. Az üzembe helyezett alkalmazás azonosít alkalmazás neve (URI) és a csomópont neve (karakterlánc).
-* **DeployedServicePackage**. A fürt egyik csomópontján futó szolgáltatáscsomagot állapotát jelképezi. Leírja, feltételek adott szolgáltatási csomaghoz nincsenek hatással a többi szolgáltatás csomagot ugyanazon a csomóponton ugyanahhoz az alkalmazáshoz. A kódcsomag például a csomag, amely nem indítható el és a egy csomagot, amely nem olvasható. A telepített csomag alkalmazás neve (URI), a csomópont neve (karakterlánc), a service manifest neve (karakterlánc) és a szolgáltatási csomag aktiválási azonosító (karakterlánc) azonosítja.
+* **Fürt**. Egy Service Fabric-fürt állapotát jelöli. A fürt állapotáról szóló jelentések a teljes fürtöt érintő feltételeket írják le. Ezek a feltételek a fürt vagy a fürt több entitására is hatással vannak. A feltételtől függően a jelentéskészítő nem tudja leszűkíteni a problémát egy vagy több sérült gyermekre. Ilyenek például a fürt felosztásának agya a hálózati particionálás vagy a kommunikációs problémák miatt.
+* **Csomópont**. Egy Service Fabric csomópont állapotát jelöli. A csomópontok állapotáról szóló jelentések a csomópont funkcióit érintő feltételeket írják le. Általában a rajta futó összes telepített entitásra hatással vannak. Ilyenek például a szabad lemezterület (vagy más, a memóriára, a kapcsolatokra vonatkozó egyéb tulajdonságok), valamint a csomópont leállása esetén. A csomópont entitást a csomópont neve (karakterlánc) azonosítja.
+* **Alkalmazás**. A fürtben futó alkalmazás-példány állapotát jelöli. Az alkalmazás állapotával kapcsolatos jelentések az alkalmazás általános állapotát befolyásoló feltételeket írják le. Nem szűkíthető le az egyes gyermekekre (szolgáltatások vagy központilag telepített alkalmazások). Ilyenek például az alkalmazás különböző szolgáltatásai közötti teljes körű interakciók. Az alkalmazás entitását az alkalmazás neve (URI) azonosítja.
+* **Szolgáltatás**. A fürtben futó szolgáltatás állapotát jelöli. A szolgáltatás állapotáról szóló jelentések a szolgáltatás általános állapotát befolyásoló feltételeket írják le. A jelentéskészítő nem tudja leszűkíteni a problémát egy nem megfelelő állapotú partícióra vagy replikára. Ilyenek például a szolgáltatás konfigurációja (például port vagy külső fájlmegosztás), amely az összes partícióval kapcsolatos problémákat okoz. A szolgáltatás entitását a szolgáltatás neve (URI) azonosítja.
+* **Partíció**. Egy szolgáltatás partíciójának állapotát jelöli. A partíciós állapotra vonatkozó jelentések a teljes replikakészlet-készletet érintő feltételeket írják le. Ilyenek például akkor, ha a replikák száma a cél száma alatt van, és ha egy partíció kvórum elvesztése miatt van. A partíciós entitást a partíció azonosítója (GUID) azonosítja.
+* **Replika**. Egy állapot-nyilvántartó szolgáltatás replikájának vagy állapot nélküli szolgáltatási példányának állapotát jelöli. A replika az a legkisebb egység, amelyet a watchdogok és a rendszerösszetevők jelenthetnek az alkalmazások számára. Az állapot-nyilvántartó szolgáltatások esetében a példák olyan elsődleges replikát tartalmaznak, amely nem tudja replikálni a műveleteket formátumú másodlagos zónák és lassú replikálásra. Emellett az állapot nélküli példányok is jelenthetnek jelentést, ha elfogy az erőforrások, vagy kapcsolódási problémák léptek fel. A replika entitást a partíció azonosítója (GUID) és a replika vagy a példány azonosítója (Long) azonosítja.
+* **DeployedApplication**. *Egy csomóponton futó alkalmazás*állapotát jelöli. A központilag telepített alkalmazások állapotáról szóló jelentések a csomóponton az alkalmazásra vonatkozó feltételeket írják le, amelyek nem szűkíthető le az ugyanazon a csomóponton telepített szervizcsomagokra. Ilyenek például azok a hibák, amikor az alkalmazáscsomag nem tölthető le a csomóponton, és az alkalmazás rendszerbiztonsági tagjának a csomóponton való beállításával kapcsolatos problémákat okoz. A központilag telepített alkalmazást az alkalmazásnév (URI) és a csomópont neve (karakterlánc) azonosítja.
+* **DeployedServicePackage**. A fürt egy csomópontján futó szervizcsomag állapotát jelöli. Olyan szolgáltatási csomagokra vonatkozó feltételeket ír le, amelyek nem érintik ugyanazon alkalmazás ugyanazon csomópontján lévő más szolgáltatási csomagokat. Ilyenek például a nem indítható alkalmazáscsomag, valamint a nem olvasható konfigurációs csomag. Az üzembe helyezett szervizcsomagot az alkalmazásnév (URI), a csomópont neve (karakterlánc), a szolgáltatás jegyzékfájljának neve (karakterlánc) és a szervizcsomag aktiválási azonosítója (string) azonosítja.
 
-Az állapotközpontú modellről részletességét megkönnyíti a észlelheti és javíthatja a problémákat. Például ha a szolgáltatás nem válaszol, is alkalmazható jelenti, hogy az alkalmazás-példány állapota nem megfelelő. Reporting telepítésének, hogy szint ne legyen ideális megoldás, viszont mivel a probléma előfordulhat, hogy nem kell érintő adott alkalmazásban lévő összes szolgáltatás. Ha további információkat az adott partíció mutat a jelentés a nem megfelelő állapotú szolgáltatás vagy egy adott gyermekpartíciót kell alkalmazni. Az adatok automatikusan felületeken keresztül a hierarchiában, és a egy sérült partíció láthatóvá válik szolgáltatások és alkalmazások szinten. Ez az összesítés építve, és gyorsabban oldhatók meg azok a probléma okának segítségével.
+Az állapot modell részletessége megkönnyíti a problémák észlelését és kijavítani. Ha például egy szolgáltatás nem válaszol, lehetséges, hogy az alkalmazás példánya nem kifogástalan állapotú. Az adott szinten történő jelentéskészítés nem ideális, mivel előfordulhat, hogy a probléma nem érinti az adott alkalmazáson belüli összes szolgáltatást. A jelentést a nem megfelelő állapotú szolgáltatásra vagy egy adott alárendelt partícióra kell alkalmazni, ha a partícióra további információk mutatnak. Az adatszerkezetek automatikusan felfedik a hierarchiát, és egy nem kifogástalan állapotú partíció látható a szolgáltatás és az alkalmazás szintjén. Ez az Összesítés segít a probléma gyökerének gyors meghatározásában és megoldásában.
 
-A health hierarchia szülő-gyermek típusú kapcsolatokat áll. A fürt csomópontok és alkalmazások tevődik össze. Az alkalmazások az integrációs szolgáltatások és telepített alkalmazások. A telepített alkalmazások service-csomagok üzembe. Szolgáltatások létrehozott egy partíciót, és mindegyik partíció rendelkezik egy vagy több replikát. Speciális csomópontok és a telepített entitások közötti kapcsolat áll fenn. Egy nem megfelelő állapotú csomóponti jelentése szerint a felügyeleti rendszer összetevőt, a Feladatátvevőfürt-kezelő szolgáltatás hatással van a központilag telepített alkalmazások, szolgáltatási csomagok és a replikát.
+Az állapot-hierarchia szülő-gyermek kapcsolatokból áll. A fürtök csomópontokból és alkalmazásokból állnak. Az alkalmazások rendelkeznek szolgáltatásokkal és telepített alkalmazásokkal. A központilag telepített alkalmazások telepített szervizcsomagokkal rendelkeznek. A szolgáltatások partíciókkal rendelkeznek, és mindegyik partíció egy vagy több replikával rendelkezik. A csomópontok és a központilag telepített entitások között különleges kapcsolat áll fenn. A szervezete rendszerösszetevője által jelentett, nem kifogástalan állapotú csomópont, amely Feladatátvételi felügyelő a telepített alkalmazásokat, szervizcsomagokat és a rajta telepített replikákat érinti.
 
-A rendszerállapot-hierarchiában a rendszer a legújabb rendszerállapot-jelentések alapján, vagyis majdnem valós idejű információkat legfrissebb állapotát jeleníti meg.
-Belső és külső watchdogs jelentései ugyanazokat az entitásokat a logikai alkalmazás-specifikus vagy egyéni figyelt feltételek alapján. Felhasználói jelentések megtalálhatók a jelentések segítségével.
+Az állapot-hierarchia a rendszer legújabb állapotát képviseli a legújabb állapotjelentés alapján, ami szinte valós idejű információ.
+A belső és külső watchdogok az alkalmazás-specifikus logika vagy az egyéni figyelt feltételek alapján is jelenthetik az entitásokat. A felhasználói jelentések együtt léteznek a rendszerjelentésekkel.
 
-Tervezze meg, hogy hogyan nagy méretű felhőalapú szolgáltatások tervezése során egészségügyi válaszolni, és jelentse be. A kezdeti beruházást, hibakeresés, monitorozása és működtetése megkönnyíti a szolgáltatás.
+Tervezze meg, hogyan jelentheti be és reagálhat az állapotra a nagyméretű felhőalapú szolgáltatások kialakítása során. Ez a kezdeti beruházás megkönnyíti a szolgáltatás hibakeresését, monitorozását és működését.
 
-## <a name="health-states"></a>Állapotokat
-A Service Fabric állapota háromféle írja le, hogy egy entitás kifogástalan állapotban-e vagy nem használ: OK, figyelmeztetés és hiba. A health Store adatbázisban küldött összes jelentés kell adnia ezeket az állapotokat az egyik. Az egészségügyi kiértékelésének eredménye az ezeket az állapotokat az egyik.
+## <a name="health-states"></a>Állapotok
+A Service Fabric három állapotot használ annak leírására, hogy az entitás kifogástalan-e vagy sem: OK, figyelmeztetés és hiba. Az állapotfigyelő szolgáltatásnak eljuttatott jelentéseknek ezen állapotok egyikét kell megadniuk. Az állapot kiértékelésének eredménye ezen állapotok egyike.
 
-A lehetséges [állapotokat](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate) vannak:
+A lehetséges [állapotok](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate) a következők:
 
-* **OK**. Az entitás állapota kifogástalan. Nem tartoznak ismert problémák, vagy (ha alkalmazható) gyermekre jelentett.
-* **Figyelmeztetés**. Az entitás rendelkezik néhány problémát, de továbbra is képes megfelelően működni. Ha például vannak az késleltetések, de ne okozzanak működési problémákat még. Bizonyos esetekben a figyelmeztetési feltételének előfordulhat, hogy javítsa ki magát külső beavatkozás nélkül. Ezekben az esetekben a rendszerállapot-jelentések hangsúlyozásával segítse és nyújtanak betekintést, mi történik. Más esetekben a figyelmeztetési feltételének felhasználói beavatkozás nélkül súlyos hibába ütközik, csökkenhet a.
-* **Error**. Az entitás állapota nem megfelelő. Művelet kell tenni, javítsa ki az entitás állapotát, mert nem képes megfelelően működni.
-* **Ismeretlen**. Az entitás a health Store adatbázisban nem létezik. Ez az eredmény az elosztott lekérdezések, amelyek több összetevőből származó eredmények egyesítése szerezhető. Ha például a get-csomópont listalekérdezés kerül **FailoverManager**, **ClusterManager**, és **HealthManager**; alkalmazás listalekérdezés kerül  **ClusterManager** és **HealthManager**. Ezek a lekérdezések egyesítése több rendszerösszetevők eredményeinek. Ha egy másik rendszerösszetevő ad vissza egy entitás, amely nem található a health Store adatbázisban, az egyesített eredmény rendelkezik-e az ismeretlen állapot. Egy entitás nem áll tárolóban, mivel a rendszerállapot-jelentések rendelkezik nem lett feldolgozva, vagy az entitás a törlés után eltávolította.
+* **OK**. Az entitás kifogástalan. Nincsenek ismert problémák az informatikai vagy a gyermekeik számára (ha vannak ilyenek).
+* **Figyelmeztetés**. Az entitásnak vannak problémái, de továbbra is megfelelően működhet. Például késések fordulnak elő, de még nem okoznak működési problémákat. Bizonyos esetekben a figyelmeztetési feltétel külső beavatkozás nélkül is megoldható. Ezekben az esetekben az állapot-jelentések a tudatosságot és a folyamatban lévők láthatóságát teszik lehetővé. Más esetekben előfordulhat, hogy a figyelmeztetési feltétel a felhasználói beavatkozás nélkül súlyos hibába ütközik.
+* **Error**. Az entitás állapota nem kifogástalan. Az entitás állapotának kijavításához műveletet kell végrehajtani, mert az nem működik megfelelően.
+* **Ismeretlen**. Az entitás nem létezik a Health Store-ban. Ezt az eredményt a több összetevőből származó eredményeket egyesítő elosztott lekérdezésekből lehet beszerezni. A csomópont-lista lekérése lekérdezés például a **FailoverManager**, a **ClusterManager**és a **HealthManager**; az alkalmazások listájának lekérése a **ClusterManager** és a **HealthManager**. Ezek a lekérdezések több rendszerösszetevőből egyesítik az eredményeket. Ha egy másik rendszerösszetevő olyan entitást ad vissza, amely nem szerepel az állapotfigyelő tárolóban, az egyesített eredmény ismeretlen állapottal rendelkezik. Az entitások nincsenek tárolva, mert az állapot-jelentések még nem lettek feldolgozva, vagy az entitást a törlés után törölték.
 
-## <a name="health-policies"></a>Házirendek
-A health Store adatbázisban megállapításához, hogy egy entitás kifogástalan állapotú a jelentések és annak gyermekeihez alapján a házirendek vonatkozik.
+## <a name="health-policies"></a>Állapotfigyelő házirendek
+Az állapotfigyelő az állapotadatok alapján határozza meg, hogy az entitás kifogástalan állapotú-e a jelentései és gyermekei alapján.
 
 > [!NOTE]
-> A fürtjegyzékben (a fürt és a csomópont állapota kiértékelési) vagy az alkalmazásjegyzékben (az alkalmazások kiértékelését és bármely gyermeke) állapotházirendeket adható meg. Az egyéni értékelési állapotházirendeket, amelyek csak a értékelés is átadhat értékelési rendszerállapot-kérelmek.
+> Az Állapotházirendek megadhatók a fürt jegyzékfájljában (a fürt és a csomópont állapotának kiértékeléséhez) vagy az alkalmazás jegyzékfájljában (az alkalmazás kiértékeléséhez és annak gyermekeihez). Az állapot-kiértékelési kérelmek a kizárólag az adott értékeléshez használt egyéni állapot-értékelési szabályzatokban is beadhatók.
 > 
 > 
 
-Alapértelmezés szerint a Service Fabric alkalmazza a szülő-gyermek hierarchikus kapcsolat (mindent lehet kifogástalan) szigorú szabályok. Ha még a gyermekek egyik sérült állapotot jelző esemény egy, a szülő nem megfelelő állapotúnak számít.
+Alapértelmezés szerint a Service Fabric szigorú szabályokat alkalmaz (mindennek kifogástalannak kell lennie) a szülő-gyermek hierarchikus kapcsolathoz. Ha még az egyik gyermek egy nem megfelelő állapotú eseményt tartalmaz, a szülő nem kifogástalannak minősül.
 
-### <a name="cluster-health-policy"></a>Fürt állapota házirend
-A [állapotházirend fürt](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy) segítségével értékelje ki a fürt állapotának és a csomópont állapotokat. A szabályzat a fürtjegyzék lehet definiálni. Ha nem található, használja az alapértelmezett házirend (nulla eltűrt hibák).
-A fürt állapotházirend tartalmazza:
+### <a name="cluster-health-policy"></a>Fürt állapotára vonatkozó házirend
+A [fürt](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy) állapot-házirendje a fürt állapotának és a csomópont állapotának kiértékelésére szolgál. A házirend a fürt jegyzékfájljában határozható meg. Ha nincs jelen, a rendszer az alapértelmezett szabályzatot (a tolerálatlan hibákat) használja.
+A fürt állapotára vonatkozó házirend a következőket tartalmazza:
 
-* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Itt adhatja meg, e kezelni a figyelmeztetési állapot kiderítheti hibák egészségügyi kiértékelés során. Alapértelmezett: False (hamis).
-* [MaxPercentUnhealthyApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications). Meghatározza az alkalmazásokat, amelyek nem megfelelő állapotú is lehet, mielőtt a fürt hibás számít eltűrt maximális százalékát.
-* [MaxPercentUnhealthyNodes](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes). Itt adhatja meg, amely előtt a fürt hibás lehet sérült csomópontok maximális eltűrt százalékát. Nagy fürtjein, az egyes csomópontok vannak mindig le- illetve felskálázni a javításához, így ezt a százalékos arányt, amely ugyan úgy kell konfigurálni.
-* [ApplicationTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap). Speciális alkalmazástípusokat ismerteti típusát állapotfigyelő szabályzat alkalmazástérkép használható fürt állapotának kiértékelése közben. Alapértelmezés szerint minden alkalmazás készletbe helyezzen és a MaxPercentUnhealthyApplications értékeli ki. Néhány alkalmazástípus eltérően kell kezelni, ha ezek a globális készletből elvégezhet. Ehelyett rendszer értékeli ki őket a az alkalmazás típusát, a térkép társított százalékos ellen. Például egy fürtben vannak több ezer, különböző típusú alkalmazáshoz, és néhány speciális alkalmazás típusú vezérlőelem az alkalmazáspéldányok. Az alkalmazások soha ne legyen hiba. Globális MaxPercentUnhealthyApplications 20 %-a kezelni kívánt meghibásodások bizonyos hibák, de az alkalmazás típusának "ControlApplicationType" a MaxPercentUnhealthyApplications állítsa 0-ra is megadhat. Így, ha sok alkalmazások közül néhány nem megfelelő állapotú, de a globális nem megfelelő állapotú százalékos arány alatt a fürt akkor kiértékelendő figyelmeztetés. A figyelmeztetési állapot nem befolyásolja a fürt frissítése, vagy egyéb figyelési hibaállapot váltott. De akár egy alkalmazást a hibás tenné a fürt nem kifogástalan, amely visszaállítási elindítja vagy leállítja a fürt frissítésének frissítési konfigurációjától függően.
-  Az alkalmazás-típusokkal a térképen, az összes alkalmazáspéldány kiveszik a globális készlet alkalmazások. Akkor értékeli ki az alkalmazás típusát, az adott MaxPercentUnhealthyApplications leképezés használatával az alkalmazások teljes száma alapján. Az alkalmazások az összes többi a globális készlet maradnak, és a MaxPercentUnhealthyApplications értékeli.
+* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Azt határozza meg, hogy a figyelmeztetési állapot jelentéseit hibaként kell-e kezelni az állapot értékelése során. Alapértelmezett: false.
+* [MaxPercentUnhealthyApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications). Meghatározza, hogy a fürt miért nem megfelelő állapotba kerül, mielőtt a rendszer hibát észlel.
+* [MaxPercentUnhealthyNodes](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes). Meghatározza a csomópontok maximálisan megengedett százalékos arányát, amely a fürt hibás állapotba való beszámításához szükséges. A nagyméretű fürtökben egyes csomópontok mindig kimaradnak vagy kifogynak a javításokhoz, ezért ezt a százalékos arányt úgy kell konfigurálni, hogy eltűri ezt.
+* [ApplicationTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap). A fürt állapotának kiértékelése során a speciális alkalmazások típusának leírására használhatja az állapotfigyelő állapotra vonatkozó házirend-hozzárendelést. Alapértelmezés szerint a rendszer az összes alkalmazást egy készletbe helyezi, és kiértékeli a MaxPercentUnhealthyApplications. Ha egyes alkalmazás-típusokat másképp kell kezelni, akkor kivehetők a globális készletből. Ehelyett a rendszer kiértékeli azokat a százalékokat, amelyek az alkalmazás típusa nevével vannak társítva a térképen. Egy fürtben például több ezer különböző típusú alkalmazás létezik, és a speciális alkalmazás néhány vezérlő alkalmazás-példánya. A vezérlő alkalmazásoknak soha nem lehetnek hiba. Megadhatja a globális MaxPercentUnhealthyApplications 20%-ra a hibák kihasználása érdekében, de a "ControlApplicationType" alkalmazás típusához állítsa a MaxPercentUnhealthyApplications 0-ra. Így ha a sok alkalmazás nem kifogástalan, de a globális nem kifogástalan százalék alatt van, a rendszer figyelmeztetésként értékeli ki a fürtöt. A figyelmeztetési állapot nem befolyásolja a fürt frissítését vagy a hiba állapotával indított egyéb figyelési állapotot. Egy hibás vezérlőelem-alkalmazás azonban még nem Kifogástalan állapotba állítja a fürtöt, amely a frissítés konfigurációjától függően visszaállítja vagy szünetelteti a fürt frissítését.
+  A térképen definiált alkalmazások típusai esetében az összes alkalmazás-példány kikerül a globális készletből. A kiértékelésük az alkalmazás típusú alkalmazások teljes száma alapján történik, a Térkép adott MaxPercentUnhealthyApplications használatával. Az összes többi alkalmazás a globális készletben marad, és a MaxPercentUnhealthyApplications-mel van kiértékelve.
 
-Az alábbi példa egy olyan fürt-jegyzékfájlból. Az adattípus-leképezésben bejegyzések definiálásához előtagot a paraméternév megadásához, az "ApplicationTypeMaxPercentUnhealthyApplications-", az alkalmazástípus neve követ.
+A következő példa egy fürt jegyzékfájljának kivonata. Ha bejegyzéseket szeretne megadni az Application Type Térképben, előtagként adja meg a paraméter nevét a "ApplicationTypeMaxPercentUnhealthyApplications-" kifejezéssel, amelyet az alkalmazásnév neve követ.
 
 ```xml
 <FabricSettings>
@@ -109,23 +109,23 @@ Az alábbi példa egy olyan fürt-jegyzékfájlból. Az adattípus-leképezésbe
 </FabricSettings>
 ```
 
-### <a name="application-health-policy"></a>Az alkalmazás állapotszabályzata
-A [az alkalmazás állapotszabályzata](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) ismerteti, hogyan történik, a kiértékelés az események és a gyermek-állapotok összesítés alkalmazások és ellenőrizhessék a gyermekek számára. Az alkalmazásjegyzékben definiálható **ApplicationManifest.xml**, alkalmazáscsomagban. Ha nincsenek házirendek meg van adva, a Service Fabric feltételezi, hogy az entitás nem megfelelő állapotú-e azt egy jelentés vagy egy alárendelt, figyelmeztetés vagy hibaüzenet állapota.
+### <a name="application-health-policy"></a>Alkalmazás állapotára vonatkozó házirend
+Az [alkalmazás állapotára vonatkozó házirend](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) leírja, hogyan történik az események és a gyermekek összesítésének kiértékelése az alkalmazásokhoz és a gyermekeik számára. Az alkalmazás-jegyzékfájlban, az **ApplicationManifest. xml fájlban**definiálható, az alkalmazáscsomag használatával. Ha nincsenek megadva szabályzatok, Service Fabric feltételezi, hogy az entitás nem kifogástalan állapotú, ha a figyelmeztetés vagy a hiba állapot állapota jelentésben vagy gyermeken van.
 A konfigurálható szabályzatok a következők:
 
-* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Itt adhatja meg, e kezelni a figyelmeztetési állapot kiderítheti hibák egészségügyi kiértékelés során. Alapértelmezett: False (hamis).
-* [MaxPercentUnhealthyDeployedApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications). Itt adhatja meg a központilag telepített alkalmazások, amelyek nem megfelelő állapotú előtt az alkalmazás hibás eltűrt maximális százalékos aránya. Ez a százalékérték sérült telepített alkalmazások száma felosztásával keresztül telepített alkalmazások jelenleg a fürtben található csomópontok számát. Felfelé kerekít a számítási csomópontok kis számú egy hiba elviselni. Alapértelmezett százalékos aránya: nulla.
-* [DefaultServiceTypeHealthPolicy](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy). Adja meg az alapértelmezett szolgáltatás típusa egészségügyi szabályzatot, amely felülírja az alapértelmezett házirend az összes szolgáltatás esetében az alkalmazás.
-* [ServiceTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap). Service health szabályzatokat szolgáltatástípus térképet biztosít. Ezek a szabályzatok cserélje le a házirendek alapértelmezett szolgáltatás típusa az egyes megadott szolgáltatás. Például, ha egy alkalmazásnak egy állapotmentes szolgáltatás átjárótípus és egy állapotalapú motor szolgáltatás típusa az egészségügyi házirendeket konfigurálhat a tesztelési eltérően. Szabályzat beállítása szolgáltatás típusának megadásakor szerezhet pontosabban szabályozhatja a a szolgáltatás állapotát.
+* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Azt határozza meg, hogy a figyelmeztetési állapot jelentéseit hibaként kell-e kezelni az állapot értékelése során. Alapértelmezett: false.
+* [MaxPercentUnhealthyDeployedApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications). Meghatározza a telepített alkalmazások maximálisan megengedett százalékos arányát, amely nem kifogástalan, mielőtt az alkalmazás hibát észlel. Ezt a százalékarányt úgy számítjuk ki, hogy a nem kifogástalan állapotú központilag telepített alkalmazások számát a fürtben jelenleg telepített alkalmazások csomópontjain használják. A számítások egy kis számú csomóponton fellépő meghibásodást okoznak. Alapértelmezett százalék: nulla.
+* [DefaultServiceTypeHealthPolicy](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy). Meghatározza a szolgáltatástípus alapértelmezett állapotát, amely lecseréli az alkalmazásban lévő összes szolgáltatástípus alapértelmezett állapotfigyelő házirendjét.
+* [ServiceTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap). A szolgáltatási állapot házirendjeinek egy-egy térképét adja meg. Ezek a szabályzatok az alapértelmezett szolgáltatástípus-állapotra vonatkozó házirendeket helyettesítik az egyes szolgáltatástípus-típusokhoz. Ha például egy alkalmazás állapot nélküli átjáró szolgáltatás típussal és egy állapot-nyilvántartó szolgáltatás típussal rendelkezik, a kiértékeléshez különböző állapotokra állíthatja be az állapotfigyelő házirendeket. Ha a házirendet szolgáltatási típusként adja meg, a szolgáltatás állapotának részletesebb szabályozását is megteheti.
 
-### <a name="service-type-health-policy"></a>Szolgáltatás típusa állapotházirend
-A [szolgáltatás típus állapotházirend](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy) határozza meg, hogy kiértékeléséhez, és a szolgáltatások és szolgáltatások gyermekei összesíteni. A házirend tartalmazza:
+### <a name="service-type-health-policy"></a>Szolgáltatástípus állapot-házirendje
+A [szolgáltatástípus állapot](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy) -szabályzata határozza meg, hogy miként értékelhető ki és összesíthető a szolgáltatások és a szolgáltatások gyermekei. A szabályzat a következőket tartalmazza:
 
-* [MaxPercentUnhealthyPartitionsPerService](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthypartitionsperservice). Megadja a sérült partíciók megengedett maximális százalékos aránya, mielőtt a szolgáltatás nem megfelelő állapotúnak számít. Alapértelmezett százalékos aránya: nulla.
-* [MaxPercentUnhealthyReplicasPerPartition](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyreplicasperpartition). Megadja a sérült replikák eltűrt maximális százalékos aránya, mielőtt a partíció nem megfelelő állapotúnak számít. Alapértelmezett százalékos aránya: nulla.
-* [MaxPercentUnhealthyServices](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyservices). Adja meg a nem megfelelő állapotú szolgáltatások eltűrt maximális százalékos aránya, mielőtt az alkalmazás nem megfelelő állapotúnak számít. Alapértelmezett százalékos aránya: nulla.
+* [MaxPercentUnhealthyPartitionsPerService](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthypartitionsperservice). Meghatározza a nem kifogástalan állapotú partíciók maximálisan megengedett százalékos arányát, mielőtt egy szolgáltatás nem kifogástalannak minősül. Alapértelmezett százalék: nulla.
+* [MaxPercentUnhealthyReplicasPerPartition](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyreplicasperpartition). Meghatározza a nem kifogástalan állapotú replikák maximálisan megengedett százalékos arányát, mielőtt a partíció nem megfelelőnek minősül. Alapértelmezett százalék: nulla.
+* [MaxPercentUnhealthyServices](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyservices). Meghatározza a nem kifogástalan állapotú szolgáltatások maximálisan megengedett százalékos arányát, mielőtt az alkalmazás nem megfelelőnek minősül. Alapértelmezett százalék: nulla.
 
-Az alábbi példa egy olyan alkalmazás-jegyzékfájlból:
+Az alábbi példa egy alkalmazási jegyzékből származó részlet:
 
 ```xml
     <Policies>
@@ -147,90 +147,90 @@ Az alábbi példa egy olyan alkalmazás-jegyzékfájlból:
     </Policies>
 ```
 
-## <a name="health-evaluation"></a>Állapot értékelése
-Felhasználók és az automatikus szolgáltatások bármikor képes kiértékelni minden entitás állapotát. Egy entitás állapotának értékeléséhez, a health store összesítések összes egészségügyi jelentés az entitásra, és kiértékeli az összes gyermekre (ha alkalmazható). Az egészségügyi összesítési algoritmust használ állapotházirendeket, amelyek kiértékelése a rendszerállapot-jelentések és hogyan lehet összesíteni a gyermek állapotokat (ha alkalmazható).
+## <a name="health-evaluation"></a>Állapot kiértékelése
+A felhasználók és az automatizált szolgáltatások bármikor kiértékelik az adott entitás állapotát. Egy entitás állapotának kiértékeléséhez az állapotfigyelő összesíti az entitás összes állapotjelentést, és kiértékeli az összes gyermekét (ha alkalmazható). Az állapot-összesítési algoritmus olyan állapotfigyelő házirendeket használ, amelyek meghatározzák az állapotadatok kiértékelésének és a gyermek állapotának összesítésének módját (ha alkalmazható).
 
-### <a name="health-report-aggregation"></a>Egészségügyi jelentés összesítés
-Egy entitás különböző jelentéskészítők (rendszerösszetevők vagy watchdogs) a különböző tulajdonságok által küldött több állapotjelentések rendelkezhet. Ilyenkor az összesítést a tartozó Eszközállapot házirendeket használ, különösen az alkalmazás vagy a fürt állapotházirend ConsiderWarningAsError tag. ConsiderWarningAsError adja meg a figyelmeztetéseket kiértékelése.
+### <a name="health-report-aggregation"></a>Állapotjelentés összesítése
+Az egyes entitások különböző tulajdonságokon keresztül különböző jelentéskészítők (rendszerösszetevők vagy watchdog) által elküldhető több állapotjelentést is tartalmazhatnak. Az Összesítés a társított állapotházirendek, különösen az alkalmazás vagy a fürt ConsiderWarningAsError tagja. A ConsiderWarningAsError meghatározza a figyelmeztetések kiértékelésének módját.
 
-Összesített állapotát váltja a *legrosszabb* rendszerállapot-jelentéseket az entitásra. Ha legalább egy hiba állapotjelentés, összesített állapota a hiba.
+Az összesített állapotot a rendszer az entitásban található *legrosszabb* állapotjelentés alapján indítja el. Ha van legalább egy hiba állapota jelentés, az összesített állapot hiba.
 
-![Egészségügyi jelentés összesítés a hibákat tartalmazó jelentést.][2]
+![Állapotjelentés összesítése hibajelentéssel.][2]
 
-A health entitás, amely rendelkezik egy vagy több hiba állapotjelentések hiba minősül. Ugyanez érvényes lejárt állapotjelentés, függetlenül attól, állapotába.
+Egy vagy több hibás állapotú jelentést tartalmazó állapotot a rendszer hibaként értékel ki. Ugyanez érvényes a lejárt állapotjelentés esetében is, függetlenül attól, hogy milyen állapotú.
 
 [2]: ./media/service-fabric-health-introduction/servicefabric-health-report-eval-error.png
 
-Ha nincs hibajelentések és a egy vagy több figyelmeztetés, összesített állapota, figyelmeztetés vagy hiba történt a ConsiderWarningAsError házirend jelző függően.
+Ha nincsenek hibajelentések, és egy vagy több figyelmeztetés is van, az összesített állapot figyelmeztetés vagy hiba lehet a ConsiderWarningAsError házirend-jelzőtől függően.
 
-![Egészségügyi jelentés összesítési figyelmeztetés a jelentés és ConsiderWarningAsError hamis.][3]
+![Állapotjelentés összesítése figyelmeztetési jelentéssel és hamis ConsiderWarningAsError.][3]
 
-A figyelmeztetés a jelentés és ConsiderWarningAsError egészségügyi jelentés összesítési false (alapértelmezett) értékre.
+Állapotjelentés összesítése a figyelmeztetési jelentéssel és a ConsiderWarningAsError false (alapértelmezett) értékre állítva.
 
 [3]: ./media/service-fabric-health-introduction/servicefabric-health-report-eval-warning.png
 
-### <a name="child-health-aggregation"></a>Gyermek állapotának összesítése
-Egy entitás összesített állapotát jeleníti meg a gyermek állapotokat (ha alkalmazható). Az algoritmus optimalizált gyermek állapotokat összesíti az állapotfigyelő házirendeket használ alkalmazható entitás típusa alapján.
+### <a name="child-health-aggregation"></a>Alárendelt állapot összesítése
+Az entitás összesített állapota a gyermek állapotot (ha alkalmazható) tükrözi. A gyermek állapot-állapotok összesítésére szolgáló algoritmus az entitás típusa alapján érvényes állapot-szabályzatokat használja.
 
-![Gyermek entitások állapotának összesítése.][4]
+![Alárendelt entitások állapotának összesítése][4]
 
-Gyermek összesítési egészségügyi szabályzatok alapján.
+Alárendelt összesítés az állapotfigyelő házirendek alapján.
 
 [4]: ./media/service-fabric-health-introduction/servicefabric-health-hierarchy-eval.png
 
-Miután az összes gyermekre a health Store adatbázisban kiértékelése, gyűjti azok alapján a beállított maximális százalékos aránya a gyermekek nem kifogástalan állapotúak. Ezt a százalékos arányt átveszi a rendszer a házirend entitás- és típusa alapján.
+Miután az állapotfigyelő kiértékelte az összes gyermeket, a rendszer a nem kifogástalan állapotú gyermekek beállított maximális százalékos arányán alapuló állapotot összesíti. A rendszer ezt a százalékértéket az entitás és a gyermek típusa alapján veszi át a szabályzatból.
 
-* Ha az összes gyermekre OK állapota van, a gyermek összesített állapota rendben.
-* Ha gyermek OK és a figyelmeztetési állapotok, a gyermek összesített állapota figyelmet igényel.
-* Ha gyermek hibaállapotok, amelyek túllépik a megengedett maximális százalékos aránya a sérült gyermek-, összesített szülő állapota a hiba.
-* Ha a gyermekek a hibaállapotok tiszteletben a sérült gyermek engedélyezett maximális százalékos aránya, a szülő összesített állapota figyelmet igényel.
+* Ha minden gyermek rendelkezik OK állapottal, a gyermek aggregált állapota OK.
+* Ha a gyerekek mind az OK, mind a figyelmeztetési állapottal rendelkeznek, a gyermek összesített állapota figyelmeztetés.
+* Ha vannak olyan hibákkal rendelkező gyermekek, amelyek nem veszik figyelembe a nem kifogástalan állapotú gyermekek maximálisan megengedett százalékos arányát, akkor az összesített szülő állapot hiba.
+* Ha a hibás állapotú gyermekek a nem kifogástalan állapotú gyermekek maximálisan megengedett százalékos arányát veszik figyelembe, az összesített szülő állapot figyelmeztetés.
 
-## <a name="health-reporting"></a>Állapotfigyelő jelentési
-Rendszer összetevőit, a rendszer Fabric-alkalmazások és a belső/külső watchdogs jelentheti a Service Fabric-entitások ellen. A jelentéskészítők győződjön meg arról, *helyi* meghatározás állapota, a figyelt entitásokat, a figyelt azok feltételek alapján. Nem szükséges minden olyan globális állapot vagy az összesített adatok megjelenítéséhez. A kívánt viselkedés, a jelentéskészítők egyszerű, és nem összetett szervezetekre, hogy milyen információkat küldhet célszámítógéppel sok-sok dolog meg kell hogy.
+## <a name="health-reporting"></a>Állapotadatok jelentése
+A rendszerösszetevők, a rendszerháló alkalmazások és a belső/külső watchdogok jelenthetnek Service Fabric entitásokat. A jelentéskészítők a figyelt entitások állapotának *helyi* meghatározását teszik elérhetővé a figyelés feltételei alapján. Nem kell semmilyen globális vagy összesített adatokat megvizsgálniuk. A kívánt viselkedés az egyszerű jelentéskészítők használata, és nem olyan összetett szervezetek, amelyeknek sok dolgot kell megvizsgálniuk, hogy milyen információkat kell elküldeni.
 
-Egészségügyi adatokat küldeni a health Store adatbázisban, egy riporter kell azonosítja az érintett entitásokat, és a egy jelentés létrehozása. Szeretne küldeni a jelentést, használja a [FabricClient.HealthClient.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API, API-k a közzétett jelentés állapotát a `Partition` vagy `CodePackageActivationContext` objektumok, a PowerShell-parancsmagok vagy a REST.
+Az állapotadatok az állapotfigyelő tárolóba való küldéséhez a Jelentéskészítőnek azonosítania kell az érintett entitást, és létre kell hoznia egy állapotjelentést. A jelentés elküldéséhez használja a [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API-t, a Report Health `Partition` API `CodePackageActivationContext` -kat, amelyek elérhetők a vagy az objektumok, a PowerShell-parancsmagok vagy a REST számára.
 
-### <a name="health-reports"></a>Rendszerállapot-jelentések
-A [rendszerállapot-jelentések](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthreport) minden, az entitások a fürt a következő információkat tartalmazza:
+### <a name="health-reports"></a>Állapotjelentés
+A fürt minden entitásához tartozó [Állapotjelentés](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthreport) a következő információkat tartalmazza:
 
-* **SourceId**. Egy karakterlánc, amely egyedileg azonosítja a riporter a health-esemény.
-* **Entitásazonosító**. Az entitást, ahol van alkalmazva a jelentés azonosítja. Ez eltér a [entitástípus](service-fabric-health-introduction.md#health-entities-and-hierarchy):
+* **SourceId forrásazonosító**. Egy olyan karakterlánc, amely egyedileg azonosítja az állapotadatok jelentéskészítőjét.
+* Az **entitás azonosítója**. Azonosítja azt az entitást, amelyben a jelentés alkalmazva van. Az [entitás típusa](service-fabric-health-introduction.md#health-entities-and-hierarchy)alapján különbözik:
   
-  * A fürt. Nincs.
+  * Fürt. Nincs.
   * Csomópont. Csomópont neve (karakterlánc).
-  * az alkalmazás. Alkalmazás neve (URI). A fürtben üzembe helyezett alkalmazás-példány nevét jelöli.
-  * A szolgáltatás. Szolgáltatás neve (URI). A-szolgáltatáspéldány van telepítve, a fürt nevét jelöli.
-  * A partíció. Partíció azonosítója (GUID). A partíció egyedi azonosítóját jelöli.
-  * A replika. Az állapotalapú szolgáltatás másodpéldány-azonosító vagy a stateless service-példány Azonosítóját (INT64).
-  * DeployedApplication. Alkalmazás neve (URI) és a csomópont neve (karakterlánc).
-  * DeployedServicePackage. Alkalmazás neve (URI), a csomópont neve (karakterlánc) és a service manifest neve (karakterlánc).
-* **Vlastnost**. A *karakterlánc* (nem fix enumerálási), amely lehetővé teszi, hogy a jelentéskészítő az entitás egy adott tulajdonságra vonatkozó állapottal kapcsolatos esemény csoportosítását. Például riporter A jelenthetik-e a Node01 állapotát "Tároló" tulajdonság és a B riporter jelenthetik a Node01 állapotát "Kapcsolat" tulajdonság. A health Store adatbázisban ezek a jelentések külön állapotesemények Node01 entitás kell kezelni.
-* **Leírás**. Egy karakterlánc, amely lehetővé teszi, hogy a jelentéskészítő az állapottal kapcsolatos esemény részletes információkat biztosít. **SourceId**, **tulajdonság**, és **HealthState** a jelentés teljes kell ismertetnie. A leírás ad emberek számára olvasható jelentés adatai. A szöveg megkönnyíti a rendszergazdák és felhasználók az állapotjelentés megértéséhez.
-* **HealthState**. Egy [enumerálás](service-fabric-health-introduction.md#health-states) , amely leírja, hogy a jelentés állapotát. Az elfogadott értékek a következők: OK, figyelmeztetés és hiba.
-* **Az élettartam**. Egy időtartam, amely azt jelzi, hogy mennyi ideig az állapotjelentés érvényes. Párosított **RemoveWhenExpired**, ez lehetővé teszi, hogy tudja, hogyan értékelheti ki a lejárt események, a health Store adatbázisban. Alapértelmezés szerint az érték a végtelen, és a jelentés érvényes örökre.
-* **RemoveWhenExpired**. Logikai érték beolvasása. Ha igaz értékű, az lejárt állapotjelentés automatikusan törlődik a health Store adatbázisban, és a jelentés nem érinti az entitás állapotának kiértékelését. Használható a jelentés egy megadott időtartam elteltéig csak érvényességét, és a jelentéskészítő nem kell explicit módon is kapcsolhatja ki. Jelentések törlése a health store-ból is használható (például egy figyelő módosul, és leállítja a jelentéseknek az előző forrás és tulajdonság). Egy jelentés bármely korábbi állapotba a a health store adatbázisból kiürítéséhez RemoveWhenExpired együtt egy rövid TimeToLive küldésére. Ha az értéke HAMIS, a lejárt jelentés a állapotának kiértékelését a hiba számít. A False (hamis) érték jelzi a health Store adatbázisban számára, hogy a forrás jelentést kell rendszeresen ezt a tulajdonságot. Ha nem, majd kell valamilyen hiba történt a figyelő. A figyelő állapota az esemény hibát a mérlegeli rögzített.
-* **SequenceNumber**. Pozitív egésznek kell lennie a folyamatosan növekvő konkurenciával kell, a jelentések sorrendet jelöli. Akkor használják a health Store adatbázisban észleli a hálózati késések vagy egyéb problémák miatt későn érkező elavult jelentéseket. Egy jelentés nem fogadja el, ha a feladatütemezés szám kisebb vagy egyenlő a legtöbb nemrég alkalmazva az ugyanahhoz az entitáshoz, a forrás és a tulajdonság száma. Ha nincs megadva, automatikusan létrejön a sorozatszámot. Fontos a sorozatszám csak akkor, ha a jelentéskészítési állapotváltozáskor helyezni. Ebben a helyzetben a forrás van szüksége, ne feledje, akkor küldi el a jelentéseket, és biztosíthatja az adatok a feladatátvételkor a helyreállításhoz.
+  * Alkalmazás. Az alkalmazás neve (URI). A fürtben üzembe helyezett alkalmazás példányának nevét jelöli.
+  * Szolgáltatás. Szolgáltatás neve (URI). A fürtben üzembe helyezett szolgáltatási példány nevét jelöli.
+  * Partíció. Partíció-azonosító (GUID). A partíció egyedi azonosítóját jelöli.
+  * Replika. Az állapot-nyilvántartó szolgáltatás replikájának azonosítója vagy az állapot nélküli szolgáltatás példányának azonosítója (INT64).
+  * DeployedApplication. Az alkalmazás neve (URI) és a csomópont neve (karakterlánc).
+  * DeployedServicePackage. Az alkalmazás neve (URI), a csomópont neve (karakterlánc) és a szolgáltatás jegyzékfájljának neve (karakterlánc).
+* **Tulajdonság**. Egy *karakterlánc* (nem rögzített enumerálás), amely lehetővé teszi a jelentéskészítő számára az entitás adott tulajdonságának állapotának kategorizálását. Az A Reporter például jelentést készíthet a "Storage" Node01 állapotáról, a "B" Reporter pedig a Node01 "connectivity" tulajdonságának állapotát. A Health Store-ban ezek a jelentések különálló állapotadatokként lesznek kezelve a Node01 entitás számára.
+* **Leírás**. Egy karakterlánc, amely lehetővé teszi, hogy a jelentéskészítő részletes információkat szolgáltasson az állapottal kapcsolatos eseményről. A **SourceId forrásazonosító**, a **tulajdonságnak**és a **HealthState** teljes mértékben le kell írnia a jelentést. A leírás a jelentésre vonatkozó, ember által olvasható adatokat adja meg. A szöveg megkönnyíti a rendszergazdák és a felhasználók számára az állapotjelentés megismerését.
+* **HealthState**. Egy [enumerálás](service-fabric-health-introduction.md#health-states) , amely leírja a jelentés állapotát. Az elfogadott értékek: OK, figyelmeztetés és hiba.
+* **TimeToLive**. Egy TimeSpan, amely azt jelzi, hogy mennyi ideig érvényes az állapotjelentés. A **eltávolításlejáratkor**párosulva lehetővé teszi az állapotfigyelő számára, hogy megismerje a lejárt események kiértékelését. Alapértelmezés szerint az érték végtelen, és a jelentés örökre érvényes.
+* **RemoveWhenExpired**. Egy logikai érték. Ha igaz értékre van állítva, a rendszer automatikusan eltávolítja a lejárt állapotjelentést az állapotfigyelő tárolóból, és a jelentés nem befolyásolja az entitások állapotának kiértékelését. Akkor használatos, ha a jelentés csak a megadott időszakra érvényes, és a Jelentéskészítőnek nem kell explicit módon törölnie. Emellett a jelentések törlésére is használható a Health Store áruházból (például egy watchdog megváltozása, és nem áll le az előző forrással és tulajdonsággal rendelkező jelentések küldése). A jelentés elküldhető egy rövid TimeToLive, valamint a Eltávolításlejáratkor, amelyekkel törölheti az összes korábbi állapotot az állapotfigyelő áruházból. Ha az érték false (hamis), akkor a rendszer a lejárt jelentést az állapot kiértékelése során észlelt hibaként kezeli. A hamis érték jelzi az állapot-tárolót, hogy a forrásnak rendszeresen jelentenie kell ezt a tulajdonságot. Ha nem, akkor nem kell valami baj a watchdoggal. A watchdog állapotának rögzítése az esemény hibájának figyelembevételével történik.
+* **Sorszám**. Egy pozitív egész szám, amelynek folyamatosan növekedni kell, a jelentések sorrendjét jelöli. Az állapotfigyelő szolgáltatás a hálózati késések vagy más problémák miatt későn fogadott elavult jelentések észlelésére szolgál. A rendszer elutasítja a jelentést, ha a sorozatszám kisebb vagy egyenlő, mint a legutóbb alkalmazott szám az azonos entitáshoz, forráshoz és tulajdonsághoz. Ha nincs megadva, a sorozatszám automatikusan létrejön. A sorszámot csak az állapot-átváltásokról szóló jelentések esetén kell végrehajtani. Ebben az esetben a forrásnak emlékeznie kell arról, hogy mely jelentések lettek elküldve, és őrizze meg a feladatátvételhez szükséges adatokat.
 
-Négy megtalálhatja információk – SourceId, entitásának azonosítója, tulajdonság vagy HealthState--szükségesek minden jelentés. A SourceId karakterlánc nem engedélyezett előtaggal kezdődik "**rendszer.** ", amely jelentéseket a rendszer számára van fenntartva. Ugyanahhoz az entitáshoz a ugyanolyan forráshoz és a tulajdonság csak egy jelentés van. Több jelentést is ugyanazt a forrás és tulajdonság fedjék át egymást, vagy az ügyféloldalon health (ha azok vannak kötegelni) vagy az egészségügyi ügyféloldali tárolja. A csere sorozatszámok; alapján (az újabb sorozatszámok) új jelentések lecserélik a régebbi jelentések.
+Ez a négy információ – SourceId forrásazonosító, entitás-azonosító, tulajdonság és HealthState – minden állapotjelentés esetében kötelező. A SourceId forrásazonosító karakterlánc nem kezdődhet a rendszerjelentések számára fenntartott "**System.** " előtaggal. Ugyanahhoz az entitáshoz csak egy jelentés létezik ugyanahhoz a forráshoz és tulajdonsághoz. Ugyanahhoz a forráshoz és tulajdonsághoz több jelentés is bírálható felül, akár az állapot-ügyfél oldalán (ha a kötegben vannak), vagy az állapotfigyelő oldalon. A pótlás a sorozatszámok alapján történik; az újabb jelentések (nagyobb sorszámokkal) lecserélik a régebbi jelentéseket.
 
-### <a name="health-events"></a>A Szolgáltatásállapot-események
-Belsőleg, a health Store adatbázisban tartja [hálózatállapot-események](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthevent), amelyek a jelentések, illetve további metaadatokat kapcsolatos összes információt tartalmaznak. A metaadatok lett megadva a jelentés az egészségügyi ügyfél időpontját és azt a kiszolgálói oldalon módosításának idejét tartalmazza. A Szolgáltatásállapot-események által visszaadott [állapotlekérdezések](service-fabric-view-entities-aggregated-health.md#health-queries).
+### <a name="health-events"></a>Állapotadatok
+Belsőleg az állapotfigyelő tárolja a jelentésekben szereplő összes információt és a további metaadatokat tartalmazó [állapot-eseményeket](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthevent). A metaadatok között megtalálhatók a jelentésnek az állapot-ügyfélnek adott időpontja, valamint a kiszolgáló oldalán módosított idő. Az állapotadatok visszaadását az [állapot-lekérdezések](service-fabric-view-entities-aggregated-health.md#health-queries)adják vissza.
 
-A hozzáadott metaadatokat tartalmazza:
+A hozzáadott metaadatok a következőket tartalmazzák:
 
-* **SourceUtcTimestamp**. Az idő a jelentés az egészségügyi ügyfél (egyezményes világidő) lett megadva.
-* **LastModifiedUtcTimestamp**. A jelentés a kiszolgálói oldalon (egyezményes világidő) utolsó módosításának időpontja.
-* **IsExpired**. Jelző-e a jelentés lejárt-e, ha a lekérdezést hajtott végre a health Store adatbázisban. Egy esemény is járhatott, csak akkor, ha RemoveWhenExpired false (hamis). Ellenkező esetben az esemény lekérdezés nem ad vissza, és a tároló törlődik.
-* **LastOkTransitionAt**, **LastWarningTransitionAt**, **LastErrorTransitionAt**. OK és figyelmeztetés/hiba átmenetek utolsó időpontját. Ezek a mezők ad az egészségügyi előzményeit állapotváltozási adat áramlik az esemény.
+* **SourceUtcTimestamp**. Az az idő, amikor a jelentés megkapta az állapotfigyelő ügyfelet (egyezményes világidő).
+* **LastModifiedUtcTimestamp**. A jelentés időpontjának utolsó módosításának időpontja a kiszolgáló oldalán (egyezményes világidő).
+* **IsExpired**. Egy jelző, amely jelzi, hogy a jelentés elévült-e, amikor az állapotfigyelő futtatta a lekérdezést. Egy esemény csak akkor lehet lejárt, ha a Eltávolításlejáratkor hamis. Ellenkező esetben az eseményt a lekérdezés nem adja vissza, és a rendszer eltávolítja az áruházból.
+* **LastOkTransitionAt**, **LastWarningTransitionAt**, **LastErrorTransitionAt**. Az OK/figyelmeztetés/hiba miatti váltás utolsó időpontja. Ezek a mezők az esemény állapotára váltások előzményeit adják meg.
 
-Az állapot átmeneti mezők a megalapozottabb riasztásokat vagy a "korábbi" állapotinformációkat esemény használható. A használatukkal forgatókönyvek például:
+Az állapot-átváltási mezők intelligensebb riasztásokhoz vagy "előzmények" állapotra vonatkozó információkhoz is használhatók. Olyan forgatókönyveket tesznek lehetővé, mint például:
 
-* Riasztás, ha egy tulajdonság volt, figyelmeztetés vagy hiba a több mint X perc. Ellenőrzi a feltételt egy ideig elkerülheti a riasztások a ideiglenes feltételek. Ha például egy riasztást, ha több mint öt perc alatt az állapot rendelkezik lett figyelmeztetés lefordítható (HealthState figyelmeztetés, és most - LastWarningTransitionTime == > 5 perc).
-* Csak a feltételeket, amelyek megváltoztak az utolsó riasztás X perc. Ha egy jelentés már volt, hiba történt a megadott időpont előtt, figyelmen kívül hagyható, mivel már volt korábban jelzést.
-* Ha egy tulajdonságot a figyelmeztetési és váltása, határozza meg, mennyi ideig már nem megfelelő állapotú (azaz nem OK). Ha például egy riasztást, ha a tulajdonság még nem kifogástalan állapotú öt percnél hosszabb ideig lefordítható (HealthState! = OK gombra, és most - LastOkTransitionTime > 5 perc).
+* Riasztás megjelenítése, ha egy tulajdonság több mint X percen keresztül figyelmeztetés/hiba volt. Egy adott időszak feltételének ellenőrzése elkerüli a riasztások ideiglenes feltételeit. Ha például egy riasztás, ha az állapot több mint öt percig figyelmeztetést kapott, lefordítható a következőre: (HealthState = = Warning és Now-LastWarningTransitionTime > 5 perc).
+* Riasztás csak az utolsó X percben megváltoztatott feltételeknél. Ha egy jelentés már a megadott időpont előtt hibát jelzett, figyelmen kívül hagyható, mert már korábban is jelezte.
+* Ha egy tulajdonságot a figyelmeztetés és a hiba között kapcsol be, állapítsa meg, hogy mennyi ideig tart a állapota (nem OK). Ha például egy riasztás, ha a tulajdonság több mint öt percen belül nem kifogástalan állapotú, lefordítható (HealthState! = ok és Now-LastOkTransitionTime > 5 perc).
 
-## <a name="example-report-and-evaluate-application-health"></a>Példa: Alkalmazás állapotának kiértékelése és jelentse be
-Az alábbi példa egy állapotjelentése az alkalmazást a Powershellen keresztül küld **fabric: / WordCount** a forrásból **MyWatchdog**. Az állapotjelentés az egészségügyi létre hibaállapot, végtelen TimeToLive az "availability" tulajdonság információkat tartalmaz. Ezután lekérdezi az alkalmazás állapotáról, amely összesítve egészségügyi állapot hibák és a jelentett hálózatállapot-események hálózatállapot-események listájában.
+## <a name="example-report-and-evaluate-application-health"></a>Példa: Az alkalmazás állapotának jelentése és kiértékelése
+Az alábbi példa egy állapotjelentést küld a PowerShellen keresztül az Application **Fabric:/WordCount** a forrás **MyWatchdog**. Az állapotjelentés a "rendelkezésre állás" állapot tulajdonságával kapcsolatos információkat tartalmaz egy hiba állapotában, amely végtelen TimeToLive. Ezután lekérdezi az alkalmazás állapotát, amely összesített állapotú hibákat ad vissza, valamint a jelentett egészségügyi eseményeket az állapotadatok listájában.
 
 ```powershell
 PS C:\> Send-ServiceFabricApplicationHealthReport –ApplicationName fabric:/WordCount –SourceId "MyWatchdog" –HealthProperty "Availability" –HealthState Error
@@ -297,22 +297,22 @@ HealthEvents                    :
                                   Transitions           : Ok->Error = 3/23/2016 3:27:56 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-## <a name="health-model-usage"></a>Egészségügyi modell használat
-Az állapotközpontú modellről lehetővé teszi, hogy a cloud services és az alapul szolgáló Service Fabric platform, amely méretezhető, mert figyelési és meghatározás vannak bontva a fürtön belül a különböző figyelők.
-Más rendszerek egyetlen központosított szolgáltatás rendelkezik a fürt szintjén, amely az összes elemzi a *potenciálisan* szolgáltatások által kibocsátott hasznos információkat. Ez a megközelítés akadályozza a méretezhetőséget. Még nem teszi lehetővé a őket gyűjtendő információk segítségével azonosíthatja a problémákat és a potenciális problémákról, közel a hiba okát, amennyire csak lehetséges.
+## <a name="health-model-usage"></a>Egészségügyi modell használata
+Az állapotfigyelő modell lehetővé teszi a Cloud Services és a mögöttes Service Fabric platform méretezését, mivel a figyelési és állapot-meghatározások elosztása a fürtben lévő különböző figyelők között történik.
+Más rendszerek egyetlen, központosított szolgáltatással rendelkeznek a fürt szintjén, amely elemzi a szolgáltatások által kibocsátott *esetleges* hasznos információkat. Ez a megközelítés akadályozza a méretezhetőséget. Emellett nem teszi lehetővé, hogy konkrét információkat gyűjtsön a problémák és a lehetséges problémák azonosításához a lehető leghamarabb.
 
-A monitorozási és diagnosztikai, fürtök és alkalmazások állapotának értékeléséhez és a figyelt frissítésekre az állapotközpontú modellről az erősen szolgál. Más szolgáltatások automatikus javítások végrehajtásához, fürt állapotelőzmények létrehozását, és adja ki a riasztások bizonyos feltételek a rendszerállapot-adatok használatával.
+Az állapotfigyelő modell nagy mértékben használatos figyelésre és diagnosztizálásra, a fürt és az alkalmazás állapotának kiértékeléséhez, valamint a figyelt frissítésekhez. Más szolgáltatások az állapotadatok használatával végzik el az automatikus javításokat, felépítik a fürt állapotának előzményeit, és bizonyos körülmények között riasztásokat adnak ki.
 
 ## <a name="next-steps"></a>További lépések
-[A Service Fabric-állapotjelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
+[Service Fabric állapottal kapcsolatos jelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
 
-[Hibaelhárítás rendszerállapot-jelentések használata](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+[Rendszerállapot-jelentések használata a hibaelhárításhoz](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 
-[Hogyan lehet szolgáltatási állapot jelentése és ellenőrzése](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+[A szolgáltatás állapotának jelentése és ellenõrzése](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 
-[Egyéni Service Fabric-állapotjelentések hozzáadása](service-fabric-report-health.md)
+[Egyéni Service Fabric állapotjelentés hozzáadása](service-fabric-report-health.md)
 
-[A szolgáltatások helyi monitorozása és diagnosztizálása](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+[Szolgáltatások helyi monitorozása és diagnosztizálása](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
-[Service Fabric-alkalmazás frissítése](service-fabric-application-upgrade.md)
+[Service Fabric alkalmazás frissítése](service-fabric-application-upgrade.md)
 

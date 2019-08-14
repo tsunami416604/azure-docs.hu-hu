@@ -1,6 +1,6 @@
 ---
-title: Az Azure ExpressRoute használatával magas rendelkezésre állás tervezése |} A Microsoft Docs
-description: Ezen a lapon ajánlásokkal architekturális magas rendelkezésre állás érdekében az Azure ExpressRoute használata során.
+title: Magas rendelkezésre állás tervezése az Azure ExpressRoute | Microsoft Docs
+description: Ez az oldal az Azure ExpressRoute használata során magas rendelkezésre álláshoz nyújt építészeti javaslatokat.
 documentationcenter: na
 services: networking
 author: rambk
@@ -11,85 +11,85 @@ ms.workload: infrastructure-services
 ms.date: 06/28/2019
 ms.author: rambala
 ms.openlocfilehash: 4984b30daf6170873cad9472bfed2d879af57efe
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67466650"
 ---
-# <a name="designing-for-high-availability-with-expressroute"></a>Az expressroute-tal magas rendelkezésre állás tervezése
+# <a name="designing-for-high-availability-with-expressroute"></a>Magas rendelkezésre állás tervezése a ExpressRoute
 
-Magas rendelkezésre állású szolgáltató Microsoft erőforrások szintű magánhálózati kapcsolatot biztosít ExpressRoute tervezték. Más szóval nincs nem az ExpressRoute elérési úton belül a Microsoft hálózati meghibásodási pont. A rendelkezésre állás maximalizálása érdekében, hogy az ügyfél és a service provider szegmens az ExpressRoute-kapcsolatcsoport kell is lehet tervezésnek magas rendelkezésre állás érdekében. A jelen cikk, először nézzük megvizsgáljuk a hálózati architektúra szempontjai egy ExpressRoute-tal robusztus hálózati kapcsolat létrehozásához, majd vizsgáljuk meg, a finomhangolási funkciókat, amelyek segítenek az ExpressRoute-kapcsolatcsoport a magas rendelkezésre állásának javítása érdekében.
+A ExpressRoute magas rendelkezésre állású, hogy a szolgáltatói szintű magánhálózati kapcsolatot biztosítson a Microsoft erőforrásaihoz. Más szóval, a Microsoft hálózaton belüli ExpressRoute útvonalon nem létezik egyetlen meghibásodási pont. A rendelkezésre állás maximalizálása érdekében a ExpressRoute-áramkör ügyfelének és szolgáltatói szegmensének is magas rendelkezésre állást kell megtervezni. Ebben a cikkben először nézzük meg a hálózati architektúrával kapcsolatos szempontokat a robusztus hálózati kapcsolatok ExpressRoute használatával történő kiépítéséhez, majd nézzük meg a finomhangolási funkciókat, amelyek segítenek a ExpressRoute-áramkör magas rendelkezésre állásának javításában.
 
 
-## <a name="architecture-considerations"></a>Architektúra szempontjai
+## <a name="architecture-considerations"></a>Architektúrával kapcsolatos megfontolások
 
-Az alábbi ábra az ajánlott módszer a csatlakozás ExpressRoute-kapcsolatcsoport segítségével a lehető legnagyobb ExpressRoute-kapcsolatcsoport rendelkezésre állását.
+Az alábbi ábra azt szemlélteti, hogyan lehet csatlakozni az ExpressRoute áramkör használatával a ExpressRoute-áramkör rendelkezésre állásának maximalizálása érdekében.
 
  [![1]][1]
 
-A magas rendelkezésre állás érdekében elengedhetetlen a redundancia, az ExpressRoute-kapcsolatcsoport a teljes körű hálózaton karbantartása. Más szóval, a helyszíni hálózaton belüli redundancia biztosítani kell, és nem veszélyezteti a redundancia szolgáltatás szolgáltató hálózaton belül. Kerülje a hibaérzékeny pont hálózati hibák fenntartja a redundanciát, a minimális jelenti. Redundáns tápellátás kapcsolatban, és a hálózati eszközök tovább fog hűtéssel javíthatja a magas rendelkezésre állás.
+A magas rendelkezésre állás érdekében elengedhetetlen a ExpressRoute áramkör redundanciának fenntartása a teljes körű hálózatban. Más szóval meg kell őriznie a redundanciát a helyszíni hálózaton belül, és ne veszélyeztesse a redundanciát a szolgáltatói hálózaton belül. A redundancia fenntartása minimálisan azt jelenti, hogy elkerülhetők a hálózati hibák egyetlen pontja. A hálózati eszközök redundáns tápellátása és hűtése tovább növeli a magas rendelkezésre állást.
 
-### <a name="first-mile-physical-layer-design-considerations"></a>Első mérföld fizikai réteg kialakításával kapcsolatos szempontok
+### <a name="first-mile-physical-layer-design-considerations"></a>Az első mérföldes fizikai réteg tervezési szempontjai
 
- Ha mind az elsődleges és másodlagos kapcsolatok, egy ExpressRoute-Kapcsolatcsoportok a az azonos ügyfél helyi berendezések (CPE), a helyszíni hálózaton belüli, Ön veszélyeztetése a magas rendelkezésre állás. Emellett ha az elsődleges és másodlagos kapcsolatok keresztül ugyanazt a portot egy (vagy lezárja a két különböző alkapcsolatainak kapcsolatok vagy egyesítés a két kapcsolat a partneri hálózaton belül) CPE konfigurál, kényszeríti a partner magas rendelkezésre állású, valamint a hálózati szegmensen kényszerülnie. A biztonsági sérülés az alábbi ábra mutatja be.
+ Ha leállítja egy ExpressRoute-áramkör elsődleges és másodlagos kapcsolatát ugyanazon az ügyfél-telephelyi berendezésen (CPE), akkor a helyszíni hálózaton belüli magas rendelkezésre állást is veszélyeztetné. Emellett, ha az elsődleges és a másodlagos kapcsolatokat is egy CPE-porton keresztül konfigurálja (vagy a két kapcsolat leállításával különböző alhálózatok alatt, vagy a két kapcsolat összevonásával a partner hálózaton belül), a partnert kényszeríti a magas rendelkezésre állást a hálózati szegmensen is megsértheti. Ezt a kompromisszumot az alábbi ábra mutatja be.
 
 [![2]][2]
 
-Másrészről Ha az elsődleges és másodlagos kapcsolatainak egy ExpressRoute-Kapcsolatcsoportok földrajzilag különböző helyeken, majd, sikerült kell veszélyeztetése a hálózati teljesítmény, a kapcsolat. Ha forgalom aktívan kell osztani az elsődleges és másodlagos kapcsolatok, amely földrajzilag különböző helyeken vannak befejeződött, a két útvonalon lehetséges jelentős különbség a hálózati késés optimálisnál hálózati eredményez teljesítmény. 
+Ha azonban egy ExpressRoute-áramkör elsődleges és másodlagos kapcsolatait a különböző földrajzi helyszíneken állítja le, akkor a kapcsolat hálózati teljesítménye is veszélyeztetheti. Ha a forgalom aktív terheléssel van elfoglalva az elsődleges és a különböző földrajzi helyeken leállított másodlagos kapcsolatok között, akkor a két útvonal közötti hálózati késés lehetséges jelentős eltérése az optimálisnál rosszabb hálózatot eredményez teljesítmény. 
 
-Georedundáns megtervezésével, lásd: [tervezése vészhelyreállításhoz az expressroute-tal][DR].
+A Geo-redundáns kialakítással kapcsolatos megfontolásokért lásd: a vész- [helyreállítás tervezése a ExpressRoute][DR]-mel.
 
-### <a name="active-active-connections"></a>Aktív – aktív kapcsolatok
+### <a name="active-active-connections"></a>Aktív-aktív kapcsolatok
 
-A Microsoft hálózati az aktív – aktív üzemmód az ExpressRoute-Kapcsolatcsoportok elsődleges és másodlagos kapcsolatok működésre van konfigurálva. Azonban a bejövő útvonalhirdetést keresztül kényszerítheti a redundáns kapcsolatokat, az ExpressRoute-kapcsolatcsoport, aktív-passzív módban. Hirdetési pontosabb útvonalak és BGP path előtag-Beillesztés vannak a gyakran használt módszerek, hogy a másik preferált egy elérési utat.
+A Microsoft Network a ExpressRoute-áramkörök elsődleges és másodlagos kapcsolatainak aktív-aktív módban való üzemeltetésére van konfigurálva. Az útválasztási hirdetmények segítségével azonban kényszerítheti a ExpressRoute-áramkör redundáns kapcsolatait aktív-passzív üzemmódban való működésre. A további specifikus útvonalak és BGP elérési útjaként való hirdetése a közös módszer, amellyel az egyik elérési út előnyben részesített.
 
-Magas rendelkezésre állás javítása érdekében javasoljuk, hogy a kapcsolatok egy ExpressRoute-kapcsolatcsoport aktív-aktív módban működik. Ha hagyja, hogy a kapcsolat aktív-aktív módban működik, a Microsoft hálózati fog terheléselosztásához a forgalom a kapcsolatokat, folyamat-alapon.
+A magas rendelkezésre állás javítása érdekében javasoljuk, hogy az ExpressRoute-áramkör kapcsolatait aktív-aktív módban is kezelni lehessen. Ha lehetővé teszi, hogy a kapcsolatok aktív-aktív módban működjenek, a Microsoft Network a kapcsolatokon keresztül terheléselosztást hajt végre a forgalomban.
 
-Futó ExpressRoute-Kapcsolatcsoportok elsődleges és másodlagos kapcsolatok aktív-passzív mód face aktív elérési hiba után sikertelen a kapcsolatok kockázatát. A Váltás hiba gyakori okok: aktív és kezelését, valamint a passzív kapcsolat elavult útvonalak meghirdetése passzív kapcsolat hiánya.
+Ha egy ExpressRoute áramkör elsődleges és másodlagos kapcsolatait aktív-passzív módban futtatja, azzal a kockázattal jár, hogy mindkét kapcsolat meghiúsul az aktív elérési úton történt meghibásodás után. A váltás hibájának gyakori okai a passzív kapcsolat aktív felügyeletének hiánya, a passzív kapcsolatok pedig elavult útvonalak.
 
-Azt is megteheti, aktív-aktív üzemmódban működő ExpressRoute-Kapcsolatcsoportok elsődleges és másodlagos kapcsolatok eredményezi, csak a körülbelül felét folyamatok sikertelen, és a kezdeti átirányítva, a következő ExpressRoute-kapcsolat hibát. Ebből kifolyólag aktív – aktív üzemmód jelentősen javítja a fordított időt, helyreállítása (MTTR).
+Egy ExpressRoute áramkör elsődleges és másodlagos kapcsolatainak aktív-aktív módban való futtatásával a ExpressRoute kapcsolódási hibáját követve csak a folyamatok felét, illetve az újrairányítást eredményező folyamatokat hajtja végre. Így az aktív-aktív üzemmód jelentősen segít javítani a helyreállításhoz szükséges átlagos időt (MTTR).
 
-### <a name="nat-for-microsoft-peering"></a>A Microsoft társviszony-létesítés NAT 
+### <a name="nat-for-microsoft-peering"></a>NAT a Microsoft-partnerek számára 
 
-Microsoft társviszony-létesítés nyilvános végpontok közötti kommunikációra szolgál. Ezért általában a helyszíni privát végpontok hálózati cím lefordított (gelt) rendelkező, az ügyfél vagy partner Networkben a nyilvános IP-cím előtt a Microsoft társviszony-létesítésen keresztül kommunikálnak. Ha az elsődleges és másodlagos kapcsolatok aktív-aktív módban használja, hol és hogyan, NAT hatással van milyen gyorsan helyreállítani az ExpressRoute-kapcsolatok valamelyik hiba után. Két különböző NAT-beállítások a következő ábra mutatja be:
+A Microsoft-partnerek a nyilvános végpontok közötti kommunikációra szolgálnak. Így általában a helyszíni privát végpontok hálózati címfordítást végeznek a nyilvános IP-címmel az ügyfélen vagy a partner hálózaton, mielőtt a Microsofttal kommunikálnak. Ha az elsődleges és a másodlagos kapcsolatokat is aktív-aktív módban használja, a NAT-nak a ExpressRoute-kapcsolatok egyikének meghibásodása esetén milyen gyorsan kell helyreállítani a hibát. Az alábbi ábrán két különböző NAT-beállítás látható:
 
 [![3]][3]
 
-Az 1. lehetőség, a NAT az expressroute az elsődleges és másodlagos kapcsolatok közötti forgalom felosztása után alkalmazza. Független NAT-készletek NAT állapot-nyilvántartó követelményeinek, szolgálnak az elsődleges és másodlagos eszközök között, hogy az azonos edge-eszközön, amelyen keresztül a flow egressed érkezik, a visszatérő forgalmat.
+Az 1. lehetőségnél a NAT a ExpressRoute elsődleges és másodlagos kapcsolatai közötti forgalom felosztása után lesz alkalmazva. A NAT állapot-nyilvántartó követelményeinek teljesítéséhez független NAT-készletek vannak használatban az elsődleges és a másodlagos eszközök között, így a visszaküldött forgalom ugyanarra a peremhálózati eszközre fog érkezni, amelyen keresztül a folyamat egressed.
 
-A 2. lehetőség, a közös NAT-készletet a forgalom az expressroute az elsődleges és másodlagos kapcsolatok közötti felosztásával előtt használják. Fontos, hogy nem jelenti azt, a közös NAT-készletet a forgalom felosztása előtt különbséget tenni rendszerkritikus meghibásodási ezáltal feltörheti a magas rendelkezésre állás egyetlen pont bemutatása.
+A 2. lehetőségnél általános NAT-készletet használ a ExpressRoute elsődleges és másodlagos kapcsolatai közötti forgalom felosztásához. Fontos, hogy a forgalom felosztása előtt a közös NAT-készlet megkülönböztetése ne vezessen be egypontos meghibásodást, így a magas rendelkezésre állást is veszélyeztetné.
 
-Az 1. lehetőség – a következő ExpressRoute-kapcsolat hibát a képes elérni a megfelelő NAT-készlet nem működik. Ezért a hibás folyamatok kell lennie az összes újbóli létrehozása vagy a TCP vagy a megfelelő ablak időtúllépést követően alkalmazásrétegre. Ha vagy a NAT-készletek előtéri használt a helyszíni kiszolgálók egyikén sincs, és ha a megfelelő csatlakozási meghibásodik, a helyszíni kiszolgálók nem érhetők el az Azure-ból amíg a kapcsolat nem oldódik.
+Ha a ExpressRoute kapcsolódási hibát követően az 1. lehetőséget választja, a rendszer megszakítja a megfelelő NAT-készlet elérésének lehetőségét. Ezért az összes törött folyamatot újra kell létesíteni a TCP-vagy az alkalmazási rétegben, a megfelelő időkorlátot követve. Ha a NAT-készletek bármelyike felhasználható a helyszíni kiszolgálók bármelyikére, és ha a megfelelő kapcsolat meghiúsult, a helyszíni kiszolgálók nem érhetők el az Azure-ból, amíg a kapcsolat nem rögzül.
 
-Mivel az a 2. lehetőség, a NAT érhető el elsődleges vagy másodlagos kapcsolati meghibásodás után is. Emiatt a hálózati réteg maga is irányítsa át a hiba a következő csomagok és a Súgó gyorsabb helyreállítás. 
+Míg a 2. lehetőséggel a NAT egy elsődleges vagy másodlagos kapcsolat meghibásodása után is elérhető. A hálózati réteg tehát maga is átirányíthatja a csomagokat, és a hiba után gyorsabban helyreállíthatja a helyreállítást. 
 
 > [!NOTE]
-> Ha 1 (független NAT-készletek az elsődleges és másodlagos ExpressRoute-kapcsolatok) a NAT beállítást használja, és a NAT-címkészlet egyik IP-címét, egy helyszíni kiszolgálóhoz portját, a kiszolgáló nem lehet az expressroute-on keresztül elérhető kapcsolatcsoport-Ha a megfelelő csatlakozás sikertelen lesz.
+> Ha 1. NAT-beállítást (független NAT-készletek elsődleges és másodlagos ExpressRoute-kapcsolatokhoz) használ, és az egyik NAT-készletből egy helyi kiszolgálóra rendel IP-címet, akkor a kiszolgáló nem érhető el a ExpressRoute áramkörön keresztül, ha a megfelelő a csatlakozás sikertelen.
 > 
 
-## <a name="fine-tuning-features-for-private-peering"></a>A privát társviszony-létesítés finomhangolási funkciókat
+## <a name="fine-tuning-features-for-private-peering"></a>A privát társak finomhangolásához szükséges funkciók
 
-Ebben a szakaszban mondja el (az Azure-alapú, és hogyan bizalmas Ön az MTTR) függően nem kötelező felülvizsgálati szolgáltatásokat, az ExpressRoute-kapcsolatcsoport magas rendelkezésre állásának javítása érdekében. Pontosabban tekintsük át az ExpressRoute virtuális hálózati átjárók és a kétirányú továbbítás észlelése (BFD) zóna együttműködő telepítését.
+Ebben a szakaszban a nem kötelező (az Azure-beli üzembe helyezéstől és a MTTR érzékeny adatoktól függően) áttekintését ajánljuk, amelyek segítenek a ExpressRoute-áramkör magas rendelkezésre állásának javításában. Pontosabban tekintse át a ExpressRoute virtuális hálózati átjárók és a kétirányú továbbítás észlelése (BFD) zóna-kompatibilis telepítését.
 
-### <a name="availability-zone-aware-expressroute-virtual-network-gateways"></a>Rendelkezésre állási zónában tisztában az ExpressRoute virtuális hálózati átjárók
+### <a name="availability-zone-aware-expressroute-virtual-network-gateways"></a>Rendelkezésre állási zóna – ExpressRoute virtuális hálózati átjárók
 
-Egy rendelkezésre állási zónában az Azure-régióban a tartalék tartomány és a egy frissítési tartományt. Ha úgy dönt, a zónaredundáns Azure IaaS-telepítéshez, is érdemes leállítani, ExpressRoute privát társviszony-létesítés zónaredundáns virtuális hálózati átjárók konfigurálása. További tudnivalókért lásd: [kapcsolatos zónaredundáns virtuális hálózati átjárók az Azure-beli rendelkezésre állási zónák][zone redundant vgw]. To configure zone-redundant virtual network gateway, see [Create a zone-redundant virtual network gateway in Azure Availability Zones][conf zone redundant vgw].
+Az Azure-régiók rendelkezésre állási zónái egy tartalék tartomány és egy frissítési tartomány kombinációja. Ha a IaaS-alapú Azure-beli üzembe helyezést választja, akkor érdemes lehet olyan zónában is konfigurálni a virtuális hálózati átjárókat, amelyek leállítják a ExpressRoute privát társait. További tudnivalókért tekintse meg a [virtuális hálózati átjárók a Azure Availability Zones-ben][zone redundant vgw]című témakört. A zóna-redundáns virtuális hálózati átjáró konfigurálásával kapcsolatban lásd: [zóna – redundáns virtuális hálózati átjáró létrehozása Azure Availability Zonesban][conf zone redundant vgw].
 
-### <a name="improving-failure-detection-time"></a>Észlelés ideje hiba javítása
+### <a name="improving-failure-detection-time"></a>A hiba észlelési idejének javítása
 
-Az ExpressRoute privát társviszony-létesítésen keresztül BFD támogatja. BFD csökkenti a hiba észlelés időpontja között a Microsoft vállalati peremhálózati (Msee) és a BGP-szomszédok helyszíni oldalán a 2. rétegbeli hálózaton körülbelül 3 perc (alapértelmezett) kisebb, mint egy másik. Gyors hiba észlelés ideje segít a hiba utáni helyreállítás hastening. További tudnivalókért lásd: [BFD konfigurálása expressroute-on keresztül][BFD].
+A ExpressRoute támogatja a BFD. A BFD csökkenti a hiba észlelési idejét a 2. rétegbeli hálózat között a Microsoft Enterprise Edge (Msee) és a helyi oldalon lévő BGP-szomszédok között, körülbelül 3 percen belül (alapértelmezett), és kevesebb mint egy másodpercig. A gyors észlelési idő segít felgyorsítani a sikertelen helyreállítást. További információ: [BFD konfigurálása ExpressRoute][BFD]-en keresztül.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben már volt szó hogyan tervezhető egy ExpressRoute-kapcsolatcsoport kapcsolat magas rendelkezésre állását. Egy ExpressRoute-kapcsolatcsoport társviszony-létesítési pont rögzítve van egy földrajzi helyet, és ezért sikerült negatív hatással lehet Katasztrofális hiba, amely hatással van a teljes helyre. 
+Ebben a cikkben egy ExpressRoute-áramköri kapcsolat magas rendelkezésre állásának kialakítását ismertetjük. Egy ExpressRoute-áramköri pont egy földrajzi helyre van rögzítve, ezért a teljes helyet érintő katasztrofális meghibásodás okozhatja. 
 
-Tervezési megfontolások a Microsoft gerinchálózatán keresztül, amely képes elviselni a katasztrofális hibák, amely egy teljes régióra hatással, georedundáns hálózati kapcsolat létrehozásához lásd: [vész-helyreállítási az ExpressRoute privát társviszony-létesítésitervezése][DR].
+Ahhoz, hogy tervezési megfontolások legyenek olyan geo-redundáns hálózati kapcsolatok kiépítéséhez a Microsoft-gerinchez, amelyek a teljes régiót érintő katasztrofális hibákat okozhatnak, lásd: a vész- [helyreállítás megtervezése a ExpressRoute privát][DR]társításával.
 
 <!--Image References-->
-[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "ajánlott módja a csatlakozás ExpressRoute használatával"
-[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "Suboptimal mérföld utolsó kapcsolat"
-[3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png "NAT-beállítások"
+[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png  "Ajánlott módszer a ExpressRoute használatával való kapcsolódásra"
+[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png Az  "utolsó mérföldes kapcsolat optimális" állapota
+[3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png  "NAT-beállítások"
 
 
 <!--Link References-->

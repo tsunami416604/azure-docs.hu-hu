@@ -1,6 +1,6 @@
 ---
-title: Egy videó-összefoglalás létrehozásához használja az Azure Media Videóminiatűrök |} A Microsoft Docs
-description: Videó-összefoglalás segíthet a hosszú videókról összefoglalókat készíthet az a forrás videó érdekes kódrészletek automatikusan kiválasztásával. Ez akkor hasznos, ha lehetővé szeretné tenni mire számítson hosszú videó gyors áttekintést.
+title: Videók összefoglalásának létrehozása a Azure Media Video Thumbnails használatával | Microsoft Docs
+description: A videó-összefoglalás segítségével összefoglalókat hozhat létre a hosszú videókról a forrás videóból származó érdekes kódrészletek automatikus kiválasztásával. Ez akkor hasznos, ha gyors áttekintést szeretne nyújtani arról, hogy mire számíthat egy hosszú videóban.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,37 +13,38 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: milanga;juliako;
-ms.openlocfilehash: 0fcacf68f4b41ed8945a6a40d7da125aef499947
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: milanga
+ms.openlocfilehash: e7a99ffdd42c02e5a18dc14c4774b428232b8293
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825533"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69015987"
 ---
-# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Az Azure Media Videóminiatűrök használatával hozzon létre egy videó-összefoglalás  
+# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Videók összegzésének létrehozása a Azure Media Video Thumbnails használatával  
 ## <a name="overview"></a>Áttekintés
-A **Azure Media Videóminiatűrök** médiafeldolgozót. (pont) lehetővé teszi, hogy hozzon létre egy videót, amely hasznos a felhasználóknak, akik csak az előzetes verzióra hosszú videó összegzését összegzését. Ha például ügyfeleknek érdemes egy rövid "összefoglaló videó" Lásd: amikor rámutatnak miniatűr. Által paramétereinek finomhangolása **Azure Media Videóindexképek** keresztül egy konfigurációs készletet használhatja a felügyeleti csomag hatékony képernyőkép észleléséhez és az összefűzés technológiát leíró részklip algorithmically létrehozásához.  
+A **Azure Media Video thumbnails** Media Processor (mp) lehetővé teszi egy olyan videó összegzésének létrehozását, amely olyan ügyfelek számára hasznos, akik csak egy hosszú videó összegzését szeretnék előkészíteni. Előfordulhat például, hogy az ügyfelek egy rövid "összefoglaló videót" szeretnének látni, amikor az egérmutatót egy miniatűr fölé viszi. A **Azure Media Video thumbnails** paramétereinek egy konfigurációs készleten keresztüli megcsípésével az MP hatékony shot észlelési és összefűzési technológiája segítségével algorithmically elő egy leíró alklip.  
 
-A **Azure Media Video miniatűr** felügyeleti csomag jelenleg előzetes verzióban érhető el.
+Az **Azure Media Video thumbnail** mp jelenleg előzetes verzióban érhető el.
 
-Ez a cikk kapcsolatos részleteket nyújt **Azure Media Video miniatűr** , és bemutatja, hogyan használja a Media Services SDK a .NET-hez.
+Ez a cikk részletesen ismerteti az **Azure Media Video miniatűrjét** , és bemutatja, hogyan használhatja azt a .net-hez készült Media Services SDK-val.
 
 ## <a name="limitations"></a>Korlátozások
 
-Bizonyos esetekben a videóhoz nem áll, különböző jelenetek, ha a kimenet csak akkor egyetlen jóváhagyást.
+Bizonyos esetekben, ha a videó nem különböző jelenetekből áll, a kimenet csak egyetlen lövést eredményez.
 
-## <a name="video-summary-example"></a>Videó összefoglaló példa
-Íme néhány példa az Azure Media Videóindexképek médiafeldolgozót teendők:
+## <a name="video-summary-example"></a>Videóösszegzés – példa
+Íme néhány példa arra, hogy mit tehet a Azure Media Video Thumbnails Media Processor:
 
 ### <a name="original-video"></a>Eredeti videó
 [Eredeti videó](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
 
-### <a name="video-thumbnail-result"></a>Miniatűr videó eredménye
-[Miniatűr videó eredménye](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
+### <a name="video-thumbnail-result"></a>Videó miniatűr eredménye
+[Videó miniatűr eredménye](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
-## <a name="task-configuration-preset"></a>A feladat konfigurációs (előre)
-A miniatűr videó feladat létrehozásakor **Azure Media Videóminiatűrök**, meg kell adnia egy konfigurációs készletet. A fenti miniatűr mintát a következő alapszintű JSON-konfigurációval lett létrehozva:
+## <a name="task-configuration-preset"></a>Feladat konfigurációja (előre beállított)
+Ha Azure Media Video Thumbnailskal rendelkező videó miniatűr feladatothoz létre, meg kell adnia egy konfigurációs beállításkészletet. A fenti miniatűr minta a következő alapszintű JSON-konfigurációval lett létrehozva:
 
 ```json
     {
@@ -51,22 +52,22 @@ A miniatűr videó feladat létrehozásakor **Azure Media Videóminiatűrök**, 
     }
 ```
 
-Jelenleg a következő paraméterek módosíthatja:
+Jelenleg a következő paramétereket módosíthatja:
 
 | Param | Leírás |
 | --- | --- |
-| outputAudio |Itt adhatja meg, e eredő videó bármely hangot tartalmaz. <br/>Engedélyezett értékek a következők: IGAZ vagy hamis. Alapértelmezett érték az igaz. |
-| fadeInFadeOut |Meghatározza a különálló mozgásban lévő adatoknak egyaránt miniatűrök között használt e fade értékre vált.  <br/>Engedélyezett értékek a következők: IGAZ vagy hamis.  Alapértelmezett érték az igaz. |
-| maxMotionThumbnailDurationInSecs |Egész szám, amely meghatározza, hogy mennyi ideig kell lennie a teljes eredő videó.  Alapértelmezett eredeti videó időtartama függ. |
+| outputAudio |Megadja, hogy az eredményül kapott videó tartalmaz-e hangot. <br/>Engedélyezett értékek a következők: IGAZ vagy hamis. Az alapértelmezett érték a True (igaz). |
+| fadeInFadeOut |Megadja, hogy a rendszer áttűnési átmeneteket használ-e a különálló mozgóképek bélyegképei között.  <br/>Engedélyezett értékek a következők: IGAZ vagy hamis.  Az alapértelmezett érték a True (igaz). |
+| maxMotionThumbnailDurationInSecs |Egész szám, amely azt határozza meg, hogy mennyi ideig kell a teljes eredményes videó.  Az alapértelmezett érték az eredeti videó időtartamától függ. |
 
-A következő táblázat ismerteti az alapértelmezett időtartamot, hogy amikor **maxMotionThumbnailInSecs** nincs használatban.
+Az alábbi táblázat az alapértelmezett időtartamot ismerteti, ha a **maxMotionThumbnailInSecs** nincs használatban.
 
 |  |  |  |
 | --- | --- | --- |
-| Videó időtartama |d < 3 perc |3 perccel < d < 15 perc |
-| Miniatűr időtartama |15 másodperc (2-3 jelenetek) |30 másodperc (3-5 jelenetek) |
+| Videó időtartama |d < 3 perc |3 perc < d < 15 perc |
+| Miniatűr időtartama |15 mp (2-3 jelenetek) |30 mp (3-5 jelenetek) |
 
-A következő JSON paramétereket állítja be.
+A következő JSON a rendelkezésre álló paramétereket állítja be.
 
 ```json
     {
@@ -79,12 +80,12 @@ A következő JSON paramétereket állítja be.
     }
 ```
 
-## <a name="net-sample-code"></a>.NET mintakód
+## <a name="net-sample-code"></a>.NET-mintakód
 
-A következő program mutat be, hogyan:
+A következő program a következőket mutatja be:
 
-1. Hozzon létre egy objektumot, és a egy médiafájlt feltöltése az objektumba.
-2. Létrehoz egy feladatot a következő json-készletet tartalmazó konfigurációs fájl alapján miniatűr videó feladatokkal: 
+1. Hozzon létre egy adategységet, és töltsön fel egy médiafájlt az eszközre.
+2. Egy videót tartalmazó miniatűr feladattal rendelkező feladatot hoz létre egy olyan konfigurációs fájl alapján, amely a következő JSON-beállításkészletet tartalmazza: 
     
     ```json
             {                
@@ -97,7 +98,7 @@ A következő program mutat be, hogyan:
             }
     ```
 
-3. A kimeneti fájlokat tölti le. 
+3. Letölti a kimeneti fájlokat. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
@@ -275,8 +276,8 @@ A következő program mutat be, hogyan:
     }
 ```
 
-### <a name="video-thumbnail-output"></a>Miniatűr videó kimenet
-[Miniatűr videó kimenet](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
+### <a name="video-thumbnail-output"></a>Videó miniatűr kimenete
+[Videó miniatűr kimenete](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -285,7 +286,7 @@ A következő program mutat be, hogyan:
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-[Az Azure Media Services analitikai funkcióinak áttekintése](media-services-analytics-overview.md)
+[Azure Media Services Analytics áttekintése](media-services-analytics-overview.md)
 
-[Az Azure Médiaelemzés bemutatók](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics bemutatók](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

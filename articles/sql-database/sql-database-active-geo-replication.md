@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 4b1a551ea2dd62d428fee6a7be475472235a3994
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 131333f140518f6fb2f63f17d0aa72692dc7d49a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569616"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935076"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Aktív geo-replikáció létrehozása és használata
 
@@ -76,7 +76,7 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
 > [!NOTE]
 > A napló újrajátszása késleltetve van a másodlagos adatbázisban, ha az elsődlegesen vannak séma-frissítések. Az utóbbihoz a másodlagos adatbázis sémájának zárolása szükséges.
 > [!IMPORTANT]
-> A Geo-replikálás használatával létrehozhat egy másodlagos adatbázist ugyanabban a régióban, ahol az elsődleges. Ezt a másodlagost használhatja a csak olvasási feladatok terheléselosztásához ugyanabban a régióban. Az ugyanabban a régióban található másodlagos adatbázisok azonban nem biztosítanak további hibatűrési rugalmasságot, ezért nem megfelelő feladatátvételi cél a vész-helyreállításhoz. Emellett nem garantálja a avaialability zónák elkülönítését. A avaialability zónák elkülönítéséhez használja az üzleti szempontból kritikus vagy prémium szintű szolgáltatási szintet a [zóna redundáns konfigurációjával](sql-database-high-availability.md#zone-redundant-configuration) .   
+> A Geo-replikálás használatával létrehozhat egy másodlagos adatbázist ugyanabban a régióban, ahol az elsődleges. Ezt a másodlagost használhatja a csak olvasási feladatok terheléselosztásához ugyanabban a régióban. Az ugyanabban a régióban található másodlagos adatbázisok azonban nem biztosítanak további hibatűrési rugalmasságot, ezért nem megfelelő feladatátvételi cél a vész-helyreállításhoz. Emellett a rendelkezésre állási zónák elkülönítését sem fogja garantálni. A rendelkezésre állási zónák elkülönítésének eléréséhez használja az üzleti szempontból kritikus vagy prémium szintű szolgáltatási szintet a [zóna redundáns konfigurációjával](sql-database-high-availability.md#zone-redundant-configuration) .   
 >
 
 - **Tervezett feladatátvétel**

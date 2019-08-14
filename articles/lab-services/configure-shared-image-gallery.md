@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 80610168e0d293b65626da71ee349f25e456576b
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 93b3c7671a5beb4b3a451fe0efd13b9f48e00436
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774570"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941808"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Megosztott rendszerkép-katalógus konfigurálása az Azure DevTest Labsben
 A DevTest Labs mostantól támogatja a [megosztott rendszerkép](../virtual-machines/windows/shared-image-galleries.md) -katalógus szolgáltatást. A funkcióval a tesztkörnyezet-felhasználók megosztott helyen tárolt rendszerképekhez férhetnek hozzá, amikor tesztkörnyezet-erőforrásokat hoznak létre. Emellett azt is lehetővé teszi, hogy az egyénileg felügyelt VM-rendszerképekhez struktúrát és szervezetet hozzon létre. A megosztott rendszerkép-katalógus funkció a következőket támogatja:
@@ -36,7 +36,7 @@ Ha nagy számú felügyelt lemezképet kell kezelnie, és szeretné azokat elér
 ## <a name="considerations"></a>Megfontolandó szempontok
 - Egyszerre csak egy megosztott képtárat lehet csatlakoztatni a laborhoz. Ha másik gyűjteményt szeretne csatolni, le kell választania a meglévőt, és csatolnia kell egy másikat. 
 - A DevTest Labs jelenleg nem támogatja lemezképek feltöltését a galérián a laboron keresztül. 
-- Ha a virtuális gépet megosztott képkatalógus-rendszerkép használatával hozza létre, a DevTest Labs mindig a lemezkép legújabb közzétett verzióját használja.
+- Ha a virtuális gépet megosztott képkatalógus-rendszerkép használatával hozza létre, a DevTest Labs mindig a lemezkép legújabb közzétett verzióját használja. Ha azonban egy rendszerkép több verzióval rendelkezik, a felhasználó úgy is kiválaszthatja, hogy egy korábbi verzióból hozzon létre egy gépet. Ehhez nyissa meg a speciális beállítások lapot a virtuális gép létrehozásakor.  
 - Habár a DevTest Labs automatikusan elvégzi a legjobb kísérletet annak biztosítására, hogy a megosztott képtárak replikálják a lemezképeket arra a régióra, amelyben a labor létezik, nem mindig lehetséges. Annak elkerülése érdekében, hogy a felhasználók ne hozzanak létre virtuális gépeket ezekből a lemezképekről, győződjön meg arról, hogy a lemezképek már replikálódnak a labor régiójába.
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata

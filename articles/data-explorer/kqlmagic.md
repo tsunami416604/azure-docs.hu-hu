@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 312e39ff1b699bb3c7f2baea3c66cbf8999ee44b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: ba21ec6ba82ac4984d3c51fc46f88de2cd56b2b2
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814519"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933697"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Jupyter Notebook-és Kqlmagic-bővítmény használata az Azure-ban tárolt adatelemzéshez Adatkezelő
 
@@ -39,7 +39,9 @@ A Jupyter Notebook egy nyílt forráskódú webes alkalmazás, amellyel élő k�
     ```python
     %reload_ext Kqlmagic
     ```
-
+    > [!NOTE]
+    > Módosítsa a kernel verzióját a Python 3,6-ra úgy, hogy a kernel > Change kernel > Python 3,6
+    
 ## <a name="connect-to-the-azure-data-explorer-help-cluster"></a>Kapcsolódás az Azure Adatkezelő Súgó fürthöz
 
 A következő parancs használatával csatlakozhat a *Súgó* fürtön tárolt mintaadatbázis-adatbázishoz. A nem a Microsofttól származó HRE felhasználók esetében cserélje le `Microsoft.com` a bérlő nevét a HRE-bérlőre.

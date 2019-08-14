@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91cc2707034eabf85afae70278f2448b77d3ee14
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 413df402d5acc878130a47821efd5fa3a512257d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608067"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931937"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Alapterv házirend: Örökölt hitelesítés blokkolása (előzetes verzió)
 
@@ -37,7 +37,7 @@ Mielőtt blokkolni tudja az örökölt hitelesítést a címtárban, először m
 
 1. Navigáljon a **Azure Portal** > **Azure Active Directory** > a**bejelentkezések**elemre.
 1. Ha nem látható, akkor adja hozzá az ügyfélalkalmazás oszlopot, ha az **oszlopok** > **ügyfélalkalmazás**elemre kattint.
-1. Szűrje a **Client app** > **más ügyfelei** alapján, és kattintson az **alkalmaz**gombra.
+1. Szűrők > hozzáadása az**ügyfélalkalmazás** > Válassza ki a **többi ügyfél** összes beállítását, és kattintson az **alkalmaz**gombra.
 
 A szűrés csak az örökölt hitelesítési protokollok által végrehajtott bejelentkezési kísérleteket fogja megjeleníteni. Az egyes bejelentkezési kísérletekre kattintva további részleteket is megtudhat. Az alapinformációk lapon található **ügyfélalkalmazás** mező jelzi, hogy melyik örökölt hitelesítési protokollt használta a rendszer.
 

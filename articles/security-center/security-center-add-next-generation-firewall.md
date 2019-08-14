@@ -1,6 +1,6 @@
 ---
-title: Újgenerációs tűzfal hozzáadása az Azure Security Centerben |} A Microsoft Docs
-description: Ez a dokumentum bemutatja, hogyan valósíthat meg az Azure Security Center javaslatainak **Újgenerációs tűzfal hozzáadása** és **irányíthatja a forgalmat Újgenerációs tűzfalon keresztül csak**.
+title: A következő generációs tűzfal hozzáadása a Azure Security Centerban | Microsoft Docs
+description: Ebből a dokumentumból megtudhatja, hogyan implementálhatja a Azure Security Center javaslatokat a **következő generációs tűzfal hozzáadásával** , és **csak a NGFW keresztül irányíthatja a forgalmat**.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -15,60 +15,60 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 731102037b596091b80fbdfa02a8ff3c111b556e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60706986"
 ---
-# <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Újgenerációs tűzfal hozzáadása az Azure Security Centerben
-Az Azure Security Center javasolhatja egy új generációs tűzfal (NGFW) hozzáadása egy Microsoft-partner növelheti a védelmet. Ez a dokumentum végigvezeti erre egy példát.
+# <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Új generációs tűzfal hozzáadása a Azure Security Center
+Azure Security Center javasoljuk, hogy a biztonsági védelem növeléséhez vegyen fel egy új generációs tűzfalat (NGFW) egy Microsoft-partnertől. Ez a dokumentum végigvezeti a következő példán.
 
 > [!NOTE]
 > Ez a dokumentum egy üzembe helyezést szemléltető példa segítségével mutatja be a szolgáltatást.  A dokumentum nem tartalmaz lépésenkénti útmutatót.
 >
 >
 
-## <a name="implement-the-recommendation"></a>A javaslatok megvalósítása
-1. Az a **javaslatok** panelen válassza ki **Újgenerációs tűzfal hozzáadása**.
+## <a name="implement-the-recommendation"></a>A javaslat implementálása
+1. A **javaslatok** panelen válassza a **következő generációs tűzfal hozzáadása**elemet.
    ![Újgenerációs tűzfal hozzáadása][1]
-2. Az a **Újgenerációs tűzfal hozzáadása** panelen jelöljön ki egy végpontot.
-   ![Válasszon végpontot][2]
-3. Egy második **Újgenerációs tűzfal hozzáadása** panel nyílik meg. Választhatja egy meglévő megoldás használata, ha rendelkezésre áll, vagy létrehozhat egy újat. Ebben a példában érhetők el semmilyen meglévő megoldásokat, létrehozunk egy NGFW.
-   ![Új generációs tűzfal létrehozása][3]
-4. Szeretne létrehozni egy NGFW, integrált partnereink által kínált listájából válasszon ki egy megoldást. Ebben a példában kiválasztjuk **a Check Point**.
-   ![Új generációs tűzfal-megoldás kiválasztása][4]
-5. A **a Check Point** panel nyílik meg, így a partneri megoldással kapcsolatos információkat. Válassza ki **létrehozás** az információk panelen.
-   ![Tűzfal-információk panel][5]
-6. A **hozzon létre virtuális gépet** panel nyílik meg. Itt adhatja meg az NGFW futtató virtuális gép (VM) üzembe helyezése szükséges adatokat. Kövesse a lépéseket, és adja meg az NGFW szükséges adatokat. Válassza ki az OK gombra a alkalmazni.
-   ![Újgenerációs futtató virtuális gép létrehozása][6]
+2. A **következő generációs tűzfal hozzáadása** panelen válasszon ki egy végpontot.
+   ![Végpont kiválasztása][2]
+3. Megnyílik a **következő generációs tűzfal** panel második hozzáadása. Lehetősége van meglévő megoldás használatára, ha elérhető, vagy létrehozhat egy újat is. Ebben a példában nem érhető el meglévő megoldás, ezért hozzunk létre egy NGFW.
+   ![Következő generációs tűzfal létrehozása][3]
+4. NGFW létrehozásához válasszon ki egy megoldást az integrált partnerek listájából. Ebben a példában a jelölőnégyzetetválasztjuk.
+   ![A következő generációs tűzfal megoldás kiválasztása][4]
+5. Megnyílik a **pipa** panel, amely információt nyújt a partneri megoldásról. Válassza a **Létrehozás** lehetőséget az információ panelen.
+   ![Tűzfal adatai panel][5]
+6. Megnyílik a **virtuális gép létrehozása** panel. Itt megadhatja a NGFW futtató virtuális gép (VM) üzembe helyezéséhez szükséges adatokat. Kövesse a lépéseket, és adja meg a szükséges NGFW-információkat. Válassza az OK gombot az alkalmazáshoz.
+   ![Virtuális gép létrehozása a NGFW futtatásához][6]
 
 ## <a name="route-traffic-through-ngfw-only"></a>Csak az újgenerációs tűzfalon keresztül haladjon a forgalom
-Lépjen vissza a **javaslatok** panelen. Egy új bejegyzést jött létre, miután hozzáadta az NGFW keresztül a Security Center nevű **irányíthatja a forgalmat Újgenerációs tűzfalon keresztül csak**. Ez a javaslat jön létre, csak akkor, ha telepítve az NGFW a Security Center segítségével. Ha az Internet felé néző végpontok, a Security Center javasolja, hogy konfigurálja a hálózati biztonsági csoportszabályok, amely a bejövő forgalom kényszeríti a virtuális géphez az Újgenerációs tűzfalon keresztül.
+Térjen vissza a **javaslatok** panelre. Új bejegyzés lett létrehozva, miután hozzáadta az NGFW-t a Security Centeron keresztül, és **csak NGFW keresztül irányította a forgalmat**. Ez a javaslat csak akkor jön létre, ha Security Centeron keresztül telepítette a NGFW. Ha internetes végpontokkal rendelkezik, Security Center javasolja, hogy konfigurálja a hálózati biztonsági csoportok azon szabályait, amelyek a NGFW keresztül kényszerítik a bejövő forgalmat a virtuális gépre.
 
-1. Az a **javaslatok panel**válassza **irányíthatja a forgalmat Újgenerációs tűzfalon keresztül csak**.
+1. A **javaslatok**panelen válassza a **forgalom átirányítása csak NGFW keresztül**lehetőséget.
    ![Csak az újgenerációs tűzfalon keresztül haladjon a forgalom][7]
-2. Ekkor megnyílik a panel **irányíthatja a forgalmat Újgenerációs tűzfalon keresztül csak**, irányíthatja a forgalmat a virtuális gépek listája látható. Válasszon ki egy virtuális gépet a listából.
-   ![Válasszon ki egy virtuális Gépet][8]
-3. Megnyílik egy panel, a kiválasztott virtuális géphez, kapcsolódó bejövő szabályok megjelenítése. Egy leírást nyújt a lehetséges következő lépésekről további információt. Válassza ki **bejövő szabályok szerkesztése** folytatásához egy bejövő szabály szerkesztését. Az elvárás, hogy **forrás** értéke **bármely** az Internet felé néző végpontokhoz az NGFW csatolt. A bejövő szabály tulajdonságainak kapcsolatos további információkért lásd: [biztonsági szabályok](../virtual-network/security-overview.md#security-rules).
-   ![A hozzáférés korlátozásához szabályok konfigurálása][9]
-   ![bejövő szabály szerkesztése][10]
+2. Ekkor megnyílik a NGFW-alapú forgalom, amely azokat a virtuális gépeket sorolja fel, amelyeken **át**lehet irányítani a forgalmat. Válasszon ki egy virtuális gépet a listából.
+   ![Virtuális gép kiválasztása][8]
+3. Megnyílik a kiválasztott virtuális gép panelje, amely a kapcsolódó bejövő szabályokat jeleníti meg. A Leírás további információkat tartalmaz a lehetséges következő lépésekről. Válassza a **Bejövő szabályok szerkesztése** lehetőséget a Bejövő szabály szerkesztésének folytatásához. A várt érték az, hogy a **forrás** nincs BEÁLLÍTVA a NGFW kapcsolódó internetes végpontokhoz. További információ a Bejövő szabály tulajdonságairól: [biztonsági szabályok](../virtual-network/security-overview.md#security-rules).
+   ![Szabályok konfigurálása a hozzáférés][9]
+   ![-szerkesztési Bejövő szabály korlátozásához][10]
 
 ## <a name="see-also"></a>Lásd még
-Ez a dokumentum láthatta, hogyan valósíthat meg a Security Center javaslatait "Hozzáadása egy új generációs tűzfal." NGFWs és a Check Point partnermegoldás kapcsolatos további információkért tekintse meg a következőket:
+Ebből a dokumentumból megtudhatta, hogyan valósítja meg a "következő generációs tűzfal hozzáadása" című Security Center javaslatot. A NGFWs és a ellenőrzési pont partneri megoldásával kapcsolatos további tudnivalókért tekintse meg a következőket:
 
-* [Új generációs tűzfal](https://en.wikipedia.org/wiki/Next-Generation_Firewall)
-* [A Check Point vSEC](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/checkpoint.vsec)
+* [Következő generációs tűzfal](https://en.wikipedia.org/wiki/Next-Generation_Firewall)
+* [Ellenőrzési pont vSEC](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/checkpoint.vsec)
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Center](tutorial-security-policy.md) – ismerje meg, hogyan konfigurálhat biztonsági házirendeket.
-* [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
-* [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
+* [Biztonsági szabályzatok beállítása Azure Security Centerban](tutorial-security-policy.md) – útmutató a biztonsági házirendek konfigurálásához.
+* [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.
+* [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md) – megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Megtudhatja, hogyan figyelheti a partnermegoldások biztonsági állapotát.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Az Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi.
+* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
 <!--Image references-->
 [1]: ./media/security-center-add-next-gen-firewall/add-next-gen-firewall.png

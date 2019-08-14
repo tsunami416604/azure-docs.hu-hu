@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: e14fcbd81a562b8d6451bb89a479c6675569403a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0fe893ae95b31b1b676a982a60166041a0ad964d
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854531"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015907"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Gyakran ismételt kérdések (GYIK) a Azure Filesról
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
@@ -68,7 +68,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 
 * <a id="redundancy-options"></a>
   **Milyen tárolási redundancia-beállításokat támogat a Azure Files?**  
-    Jelenleg Azure Files támogatja a helyileg redundáns tárolást (LRS), a Zone redundáns tárolást (ZRS) és a Geo-redundáns tárolást (GRS). Azt tervezzük, hogy a jövőben támogatni kell az olvasási hozzáférésű geo-redundáns (RA-GRS) tárhelyet, de nem rendelkezünk a megosztás időkeretével.
+    Jelenleg a Azure Files támogatja a helyileg redundáns tárolást (LRS), a Zone redundáns tárolást (ZRS), a Geo-redundáns tárolást (GRS) és a Geo-zóna-redundáns tárolást (GZRS) (előzetes verzió). Azt tervezzük, hogy a jövőben támogatni kell az olvasási hozzáférésű geo-redundáns (RA-GRS) tárhelyet, de nem rendelkezünk a megosztás időkeretével.
 
 * <a id="tier-options"></a>
   **Milyen tárolási rétegek támogatottak a Azure Files?**  

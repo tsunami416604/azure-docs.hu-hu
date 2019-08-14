@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/26/2019
-ms.openlocfilehash: 3a59e276c3ec9717634c8f0f3634b7337ebc47d8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9dae1e3864f5f1cf745bfe9b0872f15f61471a1c
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567709"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014502"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Adatbázis-hozzáférés szabályozása és biztosítása SQL Database és SQL Data Warehouse számára
 
@@ -43,9 +43,9 @@ Kettő rendszergazdaként működő felügyeleti fiók létezik (**Kiszolgálói
 
 - **Azure Active Directory-rendszergazda**
 
-  Egy Azure Active Directory-fiók (különálló vagy biztonságicsoport-fiók) is konfigurálható rendszergazdaként. Az Azure AD-rendszergazda konfigurálása nem kötelező, de az Azure AD **-rendszergazdát** úgy kell konfigurálni, hogy az Azure ad-fiókokkal kapcsolódjon SQL Databasehoz. Az Azure Active Directory hozzáférésének konfigurálásáról további információért lásd [az SQL Database-hez vagy az SQL Data Warehouse-hoz az Azure Active Directory-hitelesítéssel történő csatlakozást](sql-database-aad-authentication.md), illetve [az Azure AD MFA és az SQL Database, valamint az SQL Data Warehouse együttes támogatását](sql-database-ssms-mfa-authentication.md) ismertető cikket.
+  Egy Azure Active Directory-fiók (különálló vagy biztonságicsoport-fiók) is konfigurálható rendszergazdaként. Az Azure AD-rendszergazda konfigurálása nem kötelező, de az Azure AD-rendszergazdát úgy kell konfigurálni, hogy az Azure AD-fiókokkal kapcsolódjon SQL Databasehoz. Az Azure Active Directory hozzáférésének konfigurálásáról további információért lásd [az SQL Database-hez vagy az SQL Data Warehouse-hoz az Azure Active Directory-hitelesítéssel történő csatlakozást](sql-database-aad-authentication.md), illetve [az Azure AD MFA és az SQL Database, valamint az SQL Data Warehouse együttes támogatását](sql-database-ssms-mfa-authentication.md) ismertető cikket.
 
-A **kiszolgáló-rendszergazdai** és **Azure AD-rendszergazdai** fiókok az alábbi jellemzőkkel rendelkeznek:
+A **kiszolgálói rendszergazda** és az **Azure ad-rendszergazdai** fiókok jellemzői a következők:
 
 - Az egyetlen olyan fiók, amely képes automatikusan csatlakozni bármely SQL Database a kiszolgálón. (Felhasználói adatbázishoz történő csatlakozáshoz a többi fióknak vagy az adatbázis tulajdonosának kell lennie, vagy felhasználói fiókkal kell rendelkeznie az adatbázisban.)
 - Ezek a fiókok `dbo`-felhasználóként lépnek be a felhasználói adatbázisokba, és minden engedéllyel rendelkeznek az adatbázison belül. (A felhasználói adatbázis tulajdonosa szintén `dbo`-felhasználóként jelentkezik be.) 

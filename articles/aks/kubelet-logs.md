@@ -1,6 +1,6 @@
 ---
-title: Nézet kubelet-naplók az Azure Kubernetes Service (AKS)
-description: Ismerje meg, hogyan hibaelhárítási információk megjelenítése az Azure Kubernetes Service (AKS) csomópontjáról kubelet-naplók
+title: Kubelet-naplók megtekintése az Azure Kubernetes szolgáltatásban (ak)
+description: Megtudhatja, hogyan tekintheti meg a hibaelhárítási információkat a kubelet-naplókból az Azure Kubernetes Service (ak) csomópontjairól
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -8,35 +8,35 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: mlearned
 ms.openlocfilehash: 65b16b3ddc209ef5d2f6287a04cfe402c3b205c6
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67615182"
 ---
-# <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Az Azure Kubernetes Service (AKS)-fürt csomópontjának kubelet-naplók beszerzése
+# <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Kubelet-naplók beolvasása az Azure Kubernetes Service (ak) fürtcsomópontokből
 
-AKS-fürt operációs részeként szükség lehet tekintse át a naplókat a probléma elhárításához. Az Azure portal beépített rendszer azon képessége, a naplók megtekintéséhez a [AKS fő összetevőinek][aks-master-logs] or [containers in an AKS cluster][azure-container-logs]. Bizonyos esetekben szükség lehet első *kubelet* naplók hibaelhárítási célból egy AKS-csomópontból.
+Az AK-fürtök működtetésének részeként előfordulhat, hogy át kell tekintenie a naplókat a probléma elhárításához. A Azure Portal beépített funkciói lehetővé teszi a naplók megtekintését az AK-beli [fő összetevőkhöz][aks-master-logs] vagy tárolóhoz [egy AK-fürtben][azure-container-logs]. Esetenként előfordulhat, hogy hibaelhárítási célból a *kubelet* -naplókat egy AK-csomópontból kell lekérnie.
 
-Ez a cikk bemutatja, hogyan használhatja `journalctl` megtekintéséhez a *kubelet* jelentkezik be egy AKS-csomópont.
+Ez a cikk bemutatja, hogyan `journalctl` tekintheti meg a *kubelet* -naplókat egy AK-csomóponton.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-## <a name="create-an-ssh-connection"></a>Hozzon létre egy SSH-kapcsolatot
+## <a name="create-an-ssh-connection"></a>SSH-kapcsolatok létrehozása
 
-Először hozzon létre egy SSH-kapcsolatot a csomóponton, amelyen meg kell *kubelet* naplókat. Ez a művelet részleteit a a [SSH-t az Azure Kubernetes Service (AKS) fürtcsomópontok][aks-ssh] dokumentumot.
+Először hozzon létre egy SSH-kapcsolatokat azzal a csomóponttal, amelyen meg kell tekinteni a *kubelet* -naplókat. Ezt a műveletet az SSH-ban az [Azure Kubernetes Service (ak)][aks-ssh] fürtcsomópontok dokumentuma részletezi.
 
 ## <a name="get-kubelet-logs"></a>Kubelet-naplók beszerzése
 
-A csomóponthoz csatlakozás után futtassa a következő parancsot a *kubelet* naplók:
+Miután csatlakozott a csomóponthoz, futtassa a következő parancsot a *kubelet* -naplók lekéréséhez:
 
 ```console
 sudo journalctl -u kubelet -o cat
 ```
 
-Az alábbi minta kimenet megjelenítése a *kubelet* adatok:
+A következő minta kimenet a *kubelet* naplózási adatokat jeleníti meg:
 
 ```
 I0508 12:26:17.905042    8672 kubelet_node_status.go:497] Using Node Hostname from cloudprovider: "aks-agentpool-11482510-0"
@@ -64,7 +64,7 @@ I0508 12:28:58.344656    8672 kubelet_node_status.go:497] Using Node Hostname fr
 
 ## <a name="next-steps"></a>További lépések
 
-Ha további információkat talál a Kubernetes-főkiszolgálóról van szüksége, tekintse meg [megtekintheti a Kubernetes főcsomópont naplózza az aks-ben][aks-master-logs].
+Ha további hibaelhárítási információkra van szüksége a Kubernetes-főkiszolgálón, tekintse meg a következőt: [Kubernetes fő csomópontjának naplói az AK-ban][aks-master-logs]
 
 <!-- LINKS - internal -->
 [aks-ssh]: ssh.md

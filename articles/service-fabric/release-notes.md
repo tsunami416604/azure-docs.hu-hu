@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: service-fabric
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 829963cf13eb1dc1b1113b6a296fe77dadb63bc4
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 636518688aec1f514b551e34219acfc1c9e81aec
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68224932"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965381"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric kiadások
 
@@ -45,7 +45,7 @@ A Service Fabric 6,5 újdonságai:
 
 - Az állapot-nyilvántartó szolgáltatásokhoz hozzáadott [replika-Életciklus eseményei](service-fabric-diagnostics-event-generation-operational.md#replica-events) .
 
-- [A vetőmag-csomópontok állapotának jobb láthatósága](service-fabric-understand-and-troubleshoot-with-system-health-reports.md#seed-node-status), beleértve a fürtre vonatkozó figyelmeztetéseket, ha a vetőmag-csomópontok állapota nem*megfelelő (* leállítva, *eltávolítva* vagy *ismeretlen*).
+- [A vetőmag-csomópontok állapotának jobb láthatósága](service-fabric-understand-and-troubleshoot-with-system-health-reports.md#seed-node-status), beleértve a fürtre vonatkozó figyelmeztetéseket, ha avetőmag-csomópontok állapota nem megfelelő (leállítva, *eltávolítva* vagy *ismeretlen*).
 
 - [Service Fabric alkalmazás vész-helyreállítási eszköze](https://github.com/Microsoft/Service-Fabric-AppDRTool) lehetővé teszi, hogy Service Fabric állapot-nyilvántartó szolgáltatások gyorsan helyreállíthatók, amikor az elsődleges fürt vészhelyzetet tapasztal. Az elsődleges fürtből származó adatok folyamatos szinkronizálása a másodlagos készenléti alkalmazásban rendszeres biztonsági mentés és visszaállítás használatával történik.
 
@@ -59,16 +59,18 @@ További részletekért tekintse meg a [Service Fabric 6,5 kibocsátási megjegy
 
 ### <a name="service-fabric-65-releases"></a>Service Fabric 6,5 kiadás
 
-| Kiadási dátum | Kiadás | További információ |
+| Kiadás dátuma | Kiadás | További információ |
 |---|---|---|
 | Június 11.2019 | [Azure Service Fabric 6,5](https://blogs.msdn.microsoft.com/azureservicefabric/2019/06/11/azure-service-fabric-6-5-release/)  | [Kibocsátási megjegyzések](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf)|
 | 2019. július 2. | [Azure Service Fabric 6,5 frissítési kiadás](https://blogs.msdn.microsoft.com/azureservicefabric/2019/07/04/azure-service-fabric-6-5-refresh-release/)  | [Kibocsátási megjegyzések](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
+| Július 29., 2019 | [Azure Service Fabric 6,5 frissítési kiadás](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Second-Refresh-Release/ba-p/800523)  | [Kibocsátási megjegyzések](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU2.pdf)  |
+
 
 ## <a name="previous-versions"></a>Korábbi verziók
 
 ### <a name="service-fabric-64-releases"></a>Service Fabric 6,4 kiadás
 
-| Kiadási dátum | Kiadás | További információ |
+| Kiadás dátuma | Kiadás | További információ |
 |---|---|---|
 | November 30., 2018 | [Azure Service Fabric 6,4](https://blogs.msdn.microsoft.com/azureservicefabric/2018/11/30/azure-service-fabric-6-4-release/)  | [Kibocsátási megjegyzések](https://msdnshared.blob.core.windows.net/media/2018/12/Service-Fabric-6.4-Release.pdf)|
 | 2018. december 12. | [Azure Service Fabric 6,4 Windows-fürtök frissítési kiadása](https://blogs.msdn.microsoft.com/azureservicefabric/2018/12/12/azure-service-fabric-6-4-refresh-for-windows-clusters/)  | [Kibocsátási megjegyzések](https://msdnshared.blob.core.windows.net/media/2018/12/Links.pdf)  |
@@ -76,4 +78,4 @@ További részletekért tekintse meg a [Service Fabric 6,5 kibocsátási megjegy
 | 2019. március 4. | [Azure Service Fabric 6,4 frissítési kiadás](https://blogs.msdn.microsoft.com/azureservicefabric/2019/03/12/azure-service-fabric-6-4-refresh-release-2/) | [Kibocsátási megjegyzések](https://msdnshared.blob.core.windows.net/media/2019/03/Service-Fabric-6.4CU4-Release-Notes.pdf)
 | 2019. április 8. | [Azure Service Fabric 6,4 frissítési kiadás](https://blogs.msdn.microsoft.com/azureservicefabric/2019/04/08/azure-service-fabric-6-4-refresh-release-5/) | [Kibocsátási megjegyzések](https://msdnshared.blob.core.windows.net/media/2019/04/Service-Fabric-6.4CU5-ReleaseNotes3.pdf)
 | 2019. május 2. | [Azure Service Fabric 6,4 frissítési kiadás](https://blogs.msdn.microsoft.com/azureservicefabric/2019/05/02/azure-service-fabric-6-4-refresh-release-3/) | [Kibocsátási megjegyzések](https://msdnshared.blob.core.windows.net/media/2019/05/Service-Fabric-64CU6-Release-Notes-V2.pdf)
-| Május 28., 2019 | [Azure Service Fabric 6,4 frissítési kiadás](https://blogs.msdn.microsoft.com/azureservicefabric/2019/05/28/azure-service-fabric-6-4-refresh-release-4/) | [Kibocsátási megjegyzések](https://msdnshared.blob.core.windows.net/media/2019/05/Service_Fabric_64CU7_Release_Notes1.pdf)
+| 2019. május 28. | [Azure Service Fabric 6,4 frissítési kiadás](https://blogs.msdn.microsoft.com/azureservicefabric/2019/05/28/azure-service-fabric-6-4-refresh-release-4/) | [Kibocsátási megjegyzések](https://msdnshared.blob.core.windows.net/media/2019/05/Service_Fabric_64CU7_Release_Notes1.pdf)

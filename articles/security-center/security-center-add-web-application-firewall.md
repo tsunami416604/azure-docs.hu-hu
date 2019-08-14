@@ -1,6 +1,6 @@
 ---
-title: Webalkalmazási tűzfal hozzáadása az Azure Security Centerben |} A Microsoft Docs
-description: Ez a dokumentum bemutatja, hogyan valósíthat meg az Azure Security Center javaslatainak **webalkalmazási tűzfal hozzáadása** és **alkalmazásvédelem véglegesítése**.
+title: Webalkalmazási tűzfal hozzáadása a Azure Security Centerban | Microsoft Docs
+description: Ebből a dokumentumból megtudhatja, hogyan implementálhatja a Azure Security Center javaslatokat a webalkalmazási **tűzfal hozzáadása** és az **alkalmazások védelmének véglegesítése**érdekében.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -15,72 +15,72 @@ ms.workload: na
 ms.date: 12/13/2018
 ms.author: rkarlin
 ms.openlocfilehash: 63852ccab842f11f30bcbe695206fedf72931911
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60706237"
 ---
-# <a name="add-a-web-application-firewall-in-azure-security-center"></a>Webalkalmazási tűzfal hozzáadása az Azure Security Centerben
-Az Azure Security Center javasolhatja egy webalkalmazási tűzfal (WAF) hozzáadása egy Microsoft-partner, a webes alkalmazások biztonságossá tételéhez. Ez a dokumentum végigvezeti egy példát a alkalmazni ezt a javaslatot.
+# <a name="add-a-web-application-firewall-in-azure-security-center"></a>Webalkalmazási tűzfal hozzáadása Azure Security Center
+Azure Security Center javasoljuk, hogy a webalkalmazások biztonságossá tételéhez adjon hozzá egy webalkalmazási tűzfalat (WAF) egy Microsoft-partnerhez. Ez a dokumentum végigvezeti a javaslat alkalmazásának példáján.
 
-A WAF ajánlás bármely nyilvános IP-Címmel (példány szintű IP vagy Load elosztott terhelésű IP), amely rendelkezik egy társított hálózati biztonsági csoport nyílt bejövő webes porttal (80,443) jelennek meg.
+Egy WAF javaslat jelenik meg a nyilvános IP-címek (a példányok szintjének IP-címe vagy a terheléselosztási IP-cím) számára, amely egy nyitott bejövő webes porttal (80 443) rendelkező hálózati biztonsági csoporttal rendelkezik.
 
-A Security Center javasolja, hogy a WAF elleni támadásokat a webalkalmazások virtuális gépeken és a külső App Service Environment (ASE) alatt üzembe helyezett célcsoportkezelés segítségével üzembe helyezi a [elkülönített](https://azure.microsoft.com/pricing/details/app-service/windows/) service-csomag. Az Izolált csomaggal alkalmazását egy privát, dedikált Azure-környezetben üzemeltetheti, és ideális választás olyan alkalmazásokhoz, amelyeknél szempont a biztonságos kapcsolat a helyi hálózathoz, valamint a további teljesítmény és skálázhatóság. Folyamatban van egy izolált környezetben található az alkalmazás mellett az alkalmazás kell rendelkeznie a terheléselosztó külső IP-címet. ASE kapcsolatos további információkért tekintse meg a [App Service Environment dokumentációja](../app-service/environment/intro.md).
+Security Center azt javasolja, hogy egy WAF hozzon létre, amely védelmet nyújt a webalkalmazásoknak a virtuális gépeken, illetve az [elkülönített](https://azure.microsoft.com/pricing/details/app-service/windows/) szolgáltatáscsomag keretében üzembe helyezett külső app Service környezetekben való megcélzására irányuló támadások elleni védelemben. Az Izolált csomaggal alkalmazását egy privát, dedikált Azure-környezetben üzemeltetheti, és ideális választás olyan alkalmazásokhoz, amelyeknél szempont a biztonságos kapcsolat a helyi hálózathoz, valamint a további teljesítmény és skálázhatóság. Amellett, hogy az alkalmazás elszigetelt környezetben van, az alkalmazásnak rendelkeznie kell egy külső IP-cím terheléselosztó használatával. A betanító szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [app Service Environment dokumentációját](../app-service/environment/intro.md).
 
 > [!NOTE]
-> Ez a dokumentum egy üzembe helyezést szemléltető példa segítségével mutatja be a szolgáltatást.  Ez a dokumentum nem tartalmaz lépésenkénti útmutatót.
+> Ez a dokumentum egy üzembe helyezést szemléltető példa segítségével mutatja be a szolgáltatást.  Ez a dokumentum nem az útmutató lépésről lépésre.
 >
 >
 
-## <a name="implement-the-recommendation"></a>A javaslatok megvalósítása
-1. A **javaslatok**válassza **webalkalmazási tűzfallal webes alkalmazások biztonságossá tételéhez**.
-   ![Webes alkalmazás biztonságossá tétele][1]
-2. A **védelme webalkalmazási tűzfallal webalkalmazásait**, jelöljön ki egy webes alkalmazást. **Webalkalmazási tűzfal hozzáadása** nyílik meg.
+## <a name="implement-the-recommendation"></a>A javaslat implementálása
+1. A **javaslatok**területen válassza a **biztonságos webalkalmazás lehetőséget a webalkalmazási tűzfal használatával**.
+   ![Biztonságos webalkalmazás][1]
+2. A webalkalmazások **biztonságossá tétele**a webalkalmazási tűzfallal területen válassza ki a webalkalmazást. Megnyílik **egy webalkalmazási tűzfal** .
    ![Webalkalmazási tűzfal hozzáadása][2]
-3. Választhatja egy meglévő webalkalmazási tűzfalhoz használja, ha rendelkezésre áll, vagy létrehozhat egy újat. Ebben a példában érhetők el semmilyen meglévő alsóbb ezért hozunk létre, hogy a WAF.
-4. A WAF létrehozásához integrált partnereink által kínált listájából válasszon ki egy megoldást. Ebben a példában kiválasztjuk **Barracuda Web Application Firewall**.
-5. **Barracuda Web Application Firewall** nyílik meg, így a partneri megoldással kapcsolatos információkat. Kattintson a **Létrehozás** gombra.
+3. Ha elérhető, vagy létrehozhat egy újat, választhat egy meglévő webalkalmazási tűzfalat is. Ebben a példában nem érhetők el meglévő WAF, ezért hozzunk létre egy WAF.
+4. WAF létrehozásához válasszon ki egy megoldást az integrált partnerek listájából. Ebben a példában a **Barracuda webalkalmazási tűzfal**lehetőséget választjuk.
+5. A **Barracuda webalkalmazási tűzfal** megnyílik, és információt nyújt a partneri megoldásról. Kattintson a **Létrehozás** gombra.
 
-   ![Tűzfal-információk panel][3]
+   ![Tűzfal adatai panel][3]
 
-6. **Új webalkalmazási tűzfal** megnyílik, ahol hajthatja végre **Virtuálisgép-konfiguráció** lépéseit, és adja meg **WAF-információk**. Válassza ki **Virtuálisgép-konfiguráció**.
-7. A **Virtuálisgép-konfiguráció**, akkor adja meg a virtuális gépet, amely a WAF üzembe helyezése szükséges adatokat.
+6. Megnyílik az **új webalkalmazási tűzfal** , ahol elvégezheti a **virtuális** gépek konfigurálásának lépéseit, és **WAF információkat**adhat meg. Válassza ki a **virtuális gép konfigurációját**.
+7. A virtuálisgép- **konfiguráció**területen adja meg a WAF futtató virtuális gép felgyorsításához szükséges adatokat.
 
-   ![Virtuálisgép-konfiguráció][4]
+   ![Virtuális gép konfigurációja][4]
    
-8. Lépjen vissza **új webalkalmazási tűzfal** válassza **WAF-információk**. A **WAF-információk**, konfigurálja magát a WAF. 7\. lépés lehetővé teszi, hogy konfigurálja a virtuális gép, amelyen a WAF fut, és 8. lépés lehetővé teszi, hogy helyezze üzembe a WAF magát.
+8. Térjen vissza az **új** webalkalmazási tűzfalhoz, és válassza ki a **WAF adatait**. A **WAF információi**alatt saját maga is konfigurálhatja a WAF. A 7. lépés lehetővé teszi, hogy konfigurálja a virtuális gépet, amelyen a WAF fut, és a 8. lépés lehetővé teszi magának a WAF a kiépítését.
 
-## <a name="finalize-application-protection"></a>Alkalmazásvédelem véglegesítése
-1. Lépjen vissza **javaslatok**. Egy új bejegyzést jött létre, miután létrehozta a WAF nevű **alkalmazásvédelem véglegesítése**. Ez a bejegyzés jelzi, hogy ténylegesen ezzel elvégeztük a WAF az Azure virtuális hálózaton belül úgy, hogy az alkalmazás megvédheti a folyamat végrehajtásához szükséges.
+## <a name="finalize-application-protection"></a>Alkalmazás védelmének véglegesítése
+1. Visszatérés a **javaslatokhoz**. A WAF létrehozása után új bejegyzés lett létrehozva, amelynek neve az **alkalmazás-védelem véglegesítése**. Ez a bejegyzés tudatja Önnel, hogy végre kell hajtania az Azure-Virtual Networkon belüli WAF tényleges összekapcsolásának folyamatát, hogy az alkalmazás megvédje az alkalmazást.
 
-   ![Alkalmazásvédelem véglegesítése][5]
+   ![Alkalmazás védelmének véglegesítése][5]
 
-2. Válassza ki **alkalmazásvédelem véglegesítése**. Egy új panel nyílik meg. Láthatja, hogy nincs-e egy webalkalmazást, amely átirányítva a forgalom rendelkeznie kell.
-3. Válassza ki a webes alkalmazást. Megnyílik egy panel, amely a webalkalmazási tűzfal beállításának véglegesítése vonatkozó lépéseket biztosít. Hajtsa végre a lépéseket, és válassza ki **korlátozzák a forgalmat**. A Security Center majd elvégzi a háttérszolgáltatást fel.
+2. Válassza az **alkalmazás-védelem véglegesítése**lehetőséget. Megnyílik egy új panel. Láthatja, hogy van egy webalkalmazás, amelynek át kell irányítani a forgalmát.
+3. Válassza ki a webalkalmazást. Megnyílik egy panel, amely a webalkalmazási tűzfal beállításának véglegesítéséhez nyújt lépéseket. Hajtsa végre a lépéseket, majd válassza a **forgalom korlátozása**lehetőséget. Security Center ezt követően elvégezheti a kábelezést.
 
-   ![Korlátozzák a forgalmat.][6]
+   ![Forgalom korlátozása][6]
 
 > [!NOTE]
-> A Security Center több webalkalmazás védheti meg ezeket az alkalmazásokat a meglévő WAF-példányok hozzáadásával.
+> Az alkalmazások a meglévő WAF-környezetekhez való hozzáadásával Security Center több webalkalmazást is védetté tenni.
 >
 >
 
-A naplókat, hogy a WAF-ból már teljes mértékben integráltuk. A Security Center elindíthat automatikus gyűjtése és elemzése a naplókat, hogy az Ön számára fontos biztonsági riasztásokat,-kkel.
+A WAF származó naplók mostantól teljesen integráltak. Security Center elindíthatja a naplók automatikus összegyűjtését és elemzését, hogy az képes legyen a fontos biztonsági riasztások felszínére.
 
 ## <a name="next-steps"></a>További lépések
-Ez a dokumentum láthatta, hogyan valósíthat meg a Security Center javaslatait "Add a web application." Webalkalmazási tűzfal konfigurálásával kapcsolatos további tudnivalókért tekintse meg a következőket:
+Ebből a dokumentumból megtudhatta, hogyan implementálhatja a "webalkalmazás hozzáadása" Security Center javaslatot. A webalkalmazási tűzfal konfigurálásával kapcsolatos további tudnivalókért tekintse meg a következőket:
 
 * [Webalkalmazás-tűzfal (WAF) konfigurálása App Service Environment környezetben](../app-service/environment/app-service-app-service-environment-web-application-firewall.md)
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
-* [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
+* [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md) – megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
-* [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
+* [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Az Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi.
+* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
 <!--Image references-->
 [1]: ./media/security-center-add-web-application-firewall/secure-web-application.png

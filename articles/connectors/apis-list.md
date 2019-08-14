@@ -10,10 +10,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 05/08/2019
 ms.openlocfilehash: 126c3fb348b1d53769a818ae4b21fcdbbef65615
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68517238"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps-összekötők
@@ -33,7 +33,7 @@ Az összekötők beépített eseményindítók és műveletek vagy felügyelt ö
 
   > [!NOTE]
   > Az [integrációs szolgáltatási környezetben (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) belüli logikai alkalmazások közvetlenül hozzáférhetnek egy Azure-beli virtuális hálózat erőforrásaihoz.
-  > Ha ISE-t használ, beépített eseményindítók és műveletek jelennek meg, amelyek az **alapcímkét** a logikai alkalmazásokkal megegyező ISE-ben futtatják. A Logic apps, a beépített eseményindítók és a beépített műveletek, amelyek az ISE-ben futnak, a fogyasztáson alapuló díjszabási csomagtól eltérő díjszabási csomagot használnak.
+  > Ha ISE-t használ, beépített eseményindítók és műveletek jelennek meg, amelyek az alapcímkét a logikai alkalmazásokkal megegyező ISE-ben futtatják. A Logic apps, a beépített eseményindítók és a beépített műveletek, amelyek az ISE-ben futnak, a fogyasztáson alapuló díjszabási csomagtól eltérő díjszabási csomagot használnak.
   >
   > A ISEs létrehozásával kapcsolatos további információkért lásd: [Kapcsolódás Azure-beli virtuális hálózatokhoz a Azure Logic Appsból](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). 
   > További információ a díjszabásról: [Logic apps díjszabási modell](../logic-apps/logic-apps-pricing.md).
@@ -88,8 +88,8 @@ A Logic Apps beépített műveleteket biztosít a logikai alkalmazás munkafolya
 
 |   |   |   |   | 
 |---|---|---|---| 
-| [![Beépített ikon][condition-icon]<br/>feltétele][condition-doc] | Értékelje ki a feltételt, és futtasson különböző műveleteket attól függően, hogy a feltétel igaz vagy hamis. | [![Beépített][for-each-icon]</br>**ikon**][for-each-doc] | Hajtsa végre ugyanezeket a műveleteket egy tömb minden elemén. | 
-| [![Beépített ikon][scope-icon]<br/>**hatóköre**][scope-doc] | A műveletek hatókörbe való csoportosítása *, amelyek*a hatókör befejezésének befejezése után kapják meg a saját állapotukat. | [![Beépített ikon][switch-icon]</br>**kapcsoló**][switch-doc] | Olyan esetekrecsoportosíthat műveleteket, amelyek az alapértelmezett eset kivételével egyedi értékeket kapnak. Csak akkor futtassa ezt az esetet, ha a hozzárendelt érték megegyezik egy kifejezés, objektum vagy token eredményével. Ha nem létezik egyezés, futtassa az alapértelmezett esetet. | 
+| [![Beépített ikon][condition-icon]<br/>feltétele][condition-doc] | Értékelje ki a feltételt, és futtasson különböző műveleteket attól függően, hogy a feltétel igaz vagy hamis. | [![Beépített ikon][for-each-icon]</br>][for-each-doc] | Hajtsa végre ugyanezeket a műveleteket egy tömb minden elemén. | 
+| [![Beépített ikon][scope-icon]<br/>**hatóköre**][scope-doc] | A műveletek hatókörbe való csoportosítása, amelyek a hatókör befejezésének befejezése után kapják meg a saját állapotukat. | [![Beépített ikon][switch-icon]</br>**kapcsoló**][switch-doc] | Olyan esetekrecsoportosíthat műveleteket, amelyek az alapértelmezett eset kivételével egyedi értékeket kapnak. Csak akkor futtassa ezt az esetet, ha a hozzárendelt érték megegyezik egy kifejezés, objektum vagy token eredményével. Ha nem létezik egyezés, futtassa az alapértelmezett esetet. | 
 | [![Beépített ikon][terminate-icon]<br/>**leállítása**][terminate-doc] | Egy aktívan futó logikai alkalmazás munkafolyamatának leállítása. | [![Beépített ikon][until-icon]<br/>,**amíg**][until-doc] | Ismételje meg a műveleteket, amíg a megadott feltétel igaz vagy valamilyen állapot megváltozott. | 
 ||||| 
 

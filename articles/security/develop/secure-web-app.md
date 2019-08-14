@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 0683c065285a6ddf8d966bbd3d22e88c39b34d5c
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 640900458eccc36afe58cb148ffd7b94b43be879
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728803"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934915"
 ---
 # <a name="develop-a-secure-web-app"></a>Biztonságos webalkalmazás fejlesztése
 
@@ -52,16 +52,16 @@ Az alkalmazás egy tipikus n szintű alkalmazás három réteggel. Itt látható
 
 Az architektúra az alábbi összetevőkből áll:
 
-- [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/). Átjárót és tűzfalat biztosít az alkalmazás architektúrája számára.
-- [Azure Web Apps Linuxon](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro). A tároló futtatókörnyezetét biztosítja a Python-alkalmazás Linux-környezetben való futtatásához.
-- [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/). Tárolja és titkosítja az alkalmazás titkait, és felügyeli a rájuk épülő hozzáférési szabályzatok létrehozását.
+- [Azure Application Gateway](../../application-gateway/index.yml). Átjárót és tűzfalat biztosít az alkalmazás architektúrája számára.
+- [Azure Web Apps Linuxon](../../app-service/containers/app-service-linux-intro.md). A tároló futtatókörnyezetét biztosítja a Python-alkalmazás Linux-környezetben való futtatásához.
+- [Azure Key Vault](../../key-vault/index.yml). Tárolja és titkosítja az alkalmazás titkait, és felügyeli a rájuk épülő hozzáférési szabályzatok létrehozását.
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/). Biztonságosan tárolja az alkalmazás adatfájljait.
-- [Azure Security Center](https://docs.microsoft.com/azure/security-center/) és az [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Monitorozást és riasztásokat biztosít az alkalmazás működéséről.
+- [Azure Security Center](../../security-center/index.yml) és az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Monitorozást és riasztásokat biztosít az alkalmazás működéséről.
 
 ## <a name="threat-model"></a>Veszélyforrások modellje
 A veszélyforrások modellezése a potenciális biztonsági fenyegetések azonosításának folyamata a vállalat és az alkalmazás számára, majd a megfelelő kockázatcsökkentő terv biztosítása.
 
-Ez a példa a [Microsoft Threat Modeling Tool](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) használta a biztonságos minta alkalmazás veszélyforrások modellezésének megvalósítására. Az összetevők és az adatfolyamatok diagramon való kiépítésével a fejlesztési folyamat elején azonosíthatja a problémákat és a fenyegetéseket. Ez később időt és pénzt takarít meg.
+Ez a példa a [Microsoft Threat Modeling Tool](threat-modeling-tool.md) használta a biztonságos minta alkalmazás veszélyforrások modellezésének megvalósítására. Az összetevők és az adatfolyamatok diagramon való kiépítésével a fejlesztési folyamat elején azonosíthatja a problémákat és a fenyegetéseket. Ez később időt és pénzt takarít meg.
 
 Ez a minta alkalmazáshoz tartozó veszélyforrás-modell:
 
@@ -349,19 +349,19 @@ $$ LANGUAGE PLPGSQL;
 ```
 
 
-Az SSL és a hitelesítésszolgáltató (CA) PostgreSQL-ellenőrzésének beállításával kapcsolatos további információkért lásd: [az SSL-kapcsolat konfigurálása a Azure Database for PostgreSQLban](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security).
+Az SSL és a hitelesítésszolgáltató (CA) PostgreSQL-ellenőrzésének beállításával kapcsolatos további információkért lásd: [az SSL-kapcsolat konfigurálása a Azure Database for PostgreSQLban](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security).
 
 A tároló főtanúsítványt tartalmaz. A tanúsítvány beszerzésének lépései a következők:
 
-1. Töltse le a tanúsítványt a hitelesítésszolgáltatótól [.](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt)
-2. [Töltse le és telepítse az OpenSSL-](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security)t a gépén.
+1. Töltse le a tanúsítványt a hitelesítésszolgáltatótól [](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt).
+2. [Töltse le és telepítse az OpenSSL-](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)t a gépén.
 3. A tanúsítványfájl dekódolása:
 
    ```powershell
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-További információ az SSL-biztonság konfigurálása a PostgreSQL-hez itt az [SSL-kapcsolat biztonságának konfigurálása](https://docs.microsoft.com/en-gb/azure/postgresql/concepts-ssl-connection-security)című cikk nyújt tájékoztatást.
+További információ az SSL-biztonság konfigurálása a PostgreSQL-hez itt az [SSL-kapcsolat biztonságának konfigurálása](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)című cikk nyújt tájékoztatást.
 
 #### <a name="deploy-azure-web-apps-on-linux"></a>Azure-Web Apps üzembe helyezése Linux rendszeren
 A Linux-szolgáltatásokat egyszerűen hozhatja létre Azure App Service az Azure-ban a széles körben használt nyelvekhez, például a Pythonhoz, a Rubyhez és C#a Javához készült előre összeállított tárolók és képek készlete is elérhető. Az Azure támogatja az egyéni tárolókat is, amelyek lehetővé teszik, hogy gyakorlatilag minden programozási nyelv fusson a Azure App Service platformon.

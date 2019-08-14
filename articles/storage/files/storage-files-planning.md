@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: eece1520a4b7e3bf37e1d209c58b5019921fdb98
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 7591cefddd6e7217c885293a2f5c878d7a82e158
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884387"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015931"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -155,7 +155,7 @@ Az új fájlmegosztás a teljes számú Kredittel kezdődik a burst gyűjtőben.
 
 ## <a name="file-share-redundancy"></a>Fájlmegosztás-redundancia
 
-Azure Files standard szintű megosztás három adatredundancia-beállítást támogat: a helyileg redundáns tárolást (LRS), a zóna redundáns tárolását (ZRS) és a Geo-redundáns tárolást (GRS).
+Azure Files standard szintű megosztás három adatredundancia-beállítást támogat: a helyileg redundáns tárolást (LRS), a zóna redundáns tárolást (ZRS), a Geo-redundáns tárolást (GRS) és a Geo-zóna-redundáns tárolást (GZRS) (előzetes verzió).
 
 Azure Files Premium-megosztások csak a helyileg redundáns tárolást (LRS) támogatják.
 
@@ -186,6 +186,7 @@ Az elsődleges és a másodlagos régió is kezeli a replikákat a különböző
 
 Tartsa szem előtt ezeket a szempontokat, amikor dönti el, hogy melyik replikációs beállítást szeretné használni:
 
+* A Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió) biztosítja a magas rendelkezésre állást és a maximális tartósságot azáltal, hogy szinkronizálja az adatátvitelt három Azure rendelkezésre állási zónában, majd aszinkron módon replikálja az adatreplikálást a másodlagos régióba. Engedélyezheti a másodlagos régió olvasási hozzáférését is. A GZRS úgy lett kialakítva, hogy legalább 99.99999999999999%-os (16 9) tartósságot biztosítson az objektumok számára egy adott évben. További információ a GZRS-ről: [geo-Zone-redundáns tárolás a nagyfokú rendelkezésre állás és a maximális tartósság érdekében (előzetes verzió)](../common/storage-redundancy-gzrs.md).
 * A Zone-redundáns tárolás (ZRS) lehetővé teszi a szinkron replikálást a nagyfokú rendelkezésre álláshoz, és jobb választás lehet néhány forgatókönyvnél, mint a GRS. További információ a ZRS: [ZRS](../common/storage-redundancy-zrs.md).
 * Az aszinkron replikáció az adatoknak az elsődleges régióba való beírásának időpontjától számított késleltetést foglal magában, a másodlagos régióba való replikáláskor. Regionális katasztrófa esetén előfordulhat, hogy a másodlagos régióba még nem replikált módosítások elvesznek, ha az adatok nem állíthatók helyre az elsődleges régióból.
 * A GRS esetében a replika nem érhető el olvasási vagy írási hozzáféréshez, kivéve, ha a Microsoft feladatátvételt kezdeményez a másodlagos régióba. Feladatátvétel esetén a feladatátvétel befejezése után olvasási és írási hozzáféréssel fog rendelkezni az adataihoz. További információ: vész- [helyreállítási útmutató](../common/storage-disaster-recovery-guidance.md).
@@ -198,7 +199,7 @@ Ez a szakasz csak a normál fájlmegosztás esetében érvényes. A prémium szi
 
 - Az Azure előzetes verziójának [feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) a nagyméretű fájlmegosztás esetében az előzetes verzióban is érvényesek, beleértve a Azure file Sync üzemelő példányokkal való használatot is.
 - Új általános célú Storage-fiókot kell létrehoznia (a meglévő Storage-fiókok nem terjeszthetők ki).
-- A LRS/ZRS a GRS-fiók átalakítására nem lesz lehetséges az előfizetés elfogadása után létrehozott új Storage-fiókokban a nagyobb fájlmegosztás előzetes verziójára.
+- A LRS/ZRS a GRS/GZRS fiók átalakítására nem lesz lehetséges az előfizetés elfogadása után létrehozott új Storage-fiókoknál a nagyobb fájlmegosztás előzetes verziójára.
 
 
 ### <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
@@ -214,7 +215,7 @@ A standard fájlmegosztás minden régióban 5 TiB-ig elérhető. Bizonyos régi
 |Nyugat-Európa     |LRS, ZRS|Nem    |Igen|
 |USA nyugati régiója, 2.       |LRS, ZRS|Nem    |Igen|
 
-\* A portál támogatása nélküli régiók esetében továbbra is használhatja a PowerShell vagy az Azure parancssori felület (CLI) használatát 5 TiB-nál nagyobb megosztás létrehozásához. A Altenatively új megosztást hozhat létre a portálon a kvóta meghatározása nélkül. Ezzel létrehoz egy, az 100 TiB alapértelmezett mérettel rendelkező megosztást, amely később frissíthető a PowerShell vagy az Azure CLI használatával.
+\* A portál támogatása nélküli régiók esetében továbbra is használhatja a PowerShell vagy az Azure parancssori felület (CLI) használatát 5 TiB-nál nagyobb megosztás létrehozásához. Másik lehetőségként létrehozhat egy új megosztást a portálon a kvóta meghatározása nélkül. Ezzel létrehoz egy, az 100 TiB alapértelmezett mérettel rendelkező megosztást, amely később frissíthető a PowerShell vagy az Azure CLI használatával.
 
 Kérjük, töltse ki ezt a [kérdőívet](https://aka.ms/azurefilesatscalesurvey)az új régiók és szolgáltatások rangsorolása érdekében.
 

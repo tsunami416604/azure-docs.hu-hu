@@ -1,31 +1,33 @@
 ---
-title: Kézbesítetlen levelek és újrapróbálkozási szabályzatok az Azure Event Grid-előfizetések
-description: Az Event Griddel kapcsolatos esemény Kézbesítési beállítások testreszabásának módját ismerteti. A kézbesíthetetlen levelek célkiszolgálón állítsa be, és adja meg, mennyi ideig kézbesítési újra.
+title: Kézbesítetlen levelek és újrapróbálkozási szabályzatok Azure Event Grid előfizetésekhez
+description: Leírja, hogyan lehet testre szabni a Event Grid esemény-kézbesítési beállításait. Állítsa be a kézbesítetlen levél célját, és adja meg, hogy mennyi ideig próbálkozzon a kézbesítéssel.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/06/2019
 ms.author: spelluru
-ms.openlocfilehash: a1b49fd3a2a85377a56c92aefd1b0056f91895b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 63bae62ed89bd0bbc167a88274002d1fa1e9b86d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66119562"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933372"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Kézbesítetlen levelek és újrapróbálkozási szabályzatok
 
-Egy esemény-előfizetés létrehozásakor testre szabható eseménykézbesítés beállításait. Ez a cikk bemutatja, hogyan állítsa be a kézbesítetlen levelek helyét, és az újrapróbálkozási beállítások testreszabása. További információt szeretne ezekről a funkciókról: [Event Grid az üzenetek kézbesítését, és ismételje meg](delivery-and-retry.md).
+Esemény-előfizetés létrehozásakor testreszabhatja az események kézbesítésének beállításait. Ebből a cikkből megtudhatja, hogyan állíthatja be a kézbesítetlen levelek helyét, és hogyan szabhatja testre az újrapróbálkozási beállításokat. További információ ezekről a funkciókról: [Event Grid üzenet kézbesítése és újrapróbálkozás](delivery-and-retry.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="set-dead-letter-location"></a>Kézbesíthetetlen levelek helyének beállítása
+## <a name="set-dead-letter-location"></a>Kézbesítetlen levelek helyének beállítása
 
-Állítsa be a kézbesítetlen levelek helyét, szükség van egy storage-fiók rendelkezés eseményeket, amelyek a végpont nem lehet kézbesíteni. A példák egy meglévő tárfiókot erőforrás Azonosítójának lekéréséhez. Akkor hozzon létre egy esemény-előfizetést, amely a tárolót használja a tárfiók a kézbesíthetetlen levelek végpont.
+A kézbesítetlen levelek helyének beállításához olyan tárolási fiókra van szükség, amely nem kézbesíthető végpontnak. A példák egy meglévő Storage-fiók erőforrás-AZONOSÍTÓját kapják meg. Létrehoznak egy olyan esemény-előfizetést, amely egy tárolót használ az adott Storage-fiókban a kézbesítetlen levelek végpontja számára.
 
 > [!NOTE]
-> Hozzon létre egy tárfiókot és a egy blobtárolót a storage-ban Ez a cikk a parancsok futtatása előtt.
+> - A cikkben szereplő parancsok futtatása előtt hozzon létre egy Storage-fiókot és egy BLOB-tárolót a tárolóban.
+> - A Event Grid szolgáltatás blobokat hoz létre ebben a tárolóban. A Blobok nevei a Event Grid-előfizetés nevét fogják tartalmazni a nagybetűvel rendelkező összes betűvel. Ha például az előfizetés neve a My-blob-előfizetés, a kézbesítetlen levelek blobjának neve a saját BLOB-előfizetés (myblobcontainer/MY-BLOB-előfizetés/2019/8/8/5/111111111-1111-1111-1111 -111111111111. JSON) lesz. Ez a viselkedés a különböző Azure-szolgáltatások közötti adatfeldolgozások elleni védelem.
+
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -42,10 +44,10 @@ az eventgrid event-subscription create \
   --deadletter-endpoint $storageid/blobServices/default/containers/$containername
 ```
 
-Kikapcsolja a kézbesítetlen levelek kezelése, futtassa újra a parancsot az esemény-előfizetés létrehozásához, de nem ad meg értéket `deadletter-endpoint`. Az Eseményelőfizetés törlése nincs szükségünk.
+A kézbesítetlen levelek kikapcsolásához futtassa újra a parancsot az esemény-előfizetés létrehozásához, de ne adjon meg `deadletter-endpoint`értéket a következőhöz:. Nem kell törölnie az esemény-előfizetést.
 
 > [!NOTE]
-> Azure CLI-vel használ a helyi gépén, ha használja az Azure CLI verziója 2.0.56 vagy nagyobb. Az Azure CLI legújabb verziójának telepítéséről útmutatásért lásd: [az Azure CLI telepítése](/cli/azure/install-azure-cli).
+> Ha az Azure CLI-t használja a helyi gépen, használja az Azure CLI 2.0.56 vagy újabb verzióját. Az Azure CLI legújabb verziójának telepítésével kapcsolatos utasításokért lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ### <a name="powershell"></a>PowerShell
 
@@ -62,20 +64,20 @@ New-AzEventGridSubscription `
   -DeadLetterEndpoint "$storageid/blobServices/default/containers/$containername"
 ```
 
-Kikapcsolja a kézbesítetlen levelek kezelése, futtassa újra a parancsot az esemény-előfizetés létrehozásához, de nem ad meg értéket `DeadLetterEndpoint`. Az Eseményelőfizetés törlése nincs szükségünk.
+A kézbesítetlen levelek kikapcsolásához futtassa újra a parancsot az esemény-előfizetés létrehozásához, de ne adjon meg `DeadLetterEndpoint`értéket a következőhöz:. Nem kell törölnie az esemény-előfizetést.
 
 > [!NOTE]
-> Az Azure-bővítményén használja a helyi gépén, ha az Azure PowerShell 1.1.0-s verzió vagy újabb. Töltse le és telepítse az Azure PowerShell legújabb verzióját a [Azure letöltések](https://azure.microsoft.com/downloads/).
+> Ha az Azure bővítményén-t használja a helyi gépen, használja a Azure PowerShell 1.1.0-es vagy újabb verzióját. Töltse le és telepítse a legújabb Azure PowerShell az [Azure downloads](https://azure.microsoft.com/downloads/)szolgáltatásból.
 
 ## <a name="set-retry-policy"></a>Újrapróbálkozási szabályzat beállítása
 
-Event Grid-előfizetés létrehozásakor beállíthatja mennyi ideig kell próbálja az Event Grid, hogy az esemény értékeit. Alapértelmezés szerint a Event Grid 24 óra (1440 perc), illetve 30 alkalommal próbálkozik. Ezek az értékek valamelyike beállíthatja az event grid-előfizetés számára. A time-to-live event értékét 1-től 1440 egész szám lehet. Az újrapróbálkozások maximális értékét 30 1 közötti egész számnak kell lennie.
+Event Grid-előfizetés létrehozásakor megadhatja, hogy mennyi ideig Event Grid próbálkozzon az esemény kézbesítésével. Alapértelmezés szerint a Event Grid 24 órát (1440 percet) vagy 30 alkalommal próbál meg. Ezen értékek bármelyikét megadhatja az Event Grid-előfizetéshez. Az esemény élettartama értékének 1 és 1440 közötti egész számnak kell lennie. A maximális újrapróbálkozások értékének 1 és 30 közötti egész számnak kell lennie.
 
-Nem lehet konfigurálni a [újrapróbálkozási ütemezés](delivery-and-retry.md#retry-schedule-and-duration).
+Nem lehet konfigurálni az [](delivery-and-retry.md#retry-schedule-and-duration)újrapróbálkozási ütemtervet.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az esemény time-to-live 1440 perc értéktől létrehozásához használja:
+Ha az esemény élettartamát 1440 perctől eltérő értékre szeretné beállítani, használja a következőt:
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -86,7 +88,7 @@ az eventgrid event-subscription create \
   --event-ttl 720
 ```
 
-A maximális újrapróbálkozások 30-től eltérő érték beállításához használja:
+Ha a maximális újrapróbálkozást a 30-tól eltérő értékre szeretné beállítani, használja a következőt:
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -97,11 +99,11 @@ az eventgrid event-subscription create \
   --max-delivery-attempts 18
 ```
 
-Ha mind `event-ttl` és `max-deliver-attempts`, Event Grid használja az első, hogy mikor állítsa le a eseménykézbesítés lejár.
+Ha a és `max-deliver-attempts`a `event-ttl` lehetőséget is beállítja, Event Grid az elsővel jár le, hogy meghatározza, mikor kell leállítani az események kézbesítését.
 
 ### <a name="powershell"></a>PowerShell
 
-Az esemény time-to-live 1440 perc értéktől létrehozásához használja:
+Ha az esemény élettartamát 1440 perctől eltérő értékre szeretné beállítani, használja a következőt:
 
 ```azurepowershell-interactive
 $topicid = (Get-AzEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
@@ -113,7 +115,7 @@ New-AzEventGridSubscription `
   -EventTtl 720
 ```
 
-A maximális újrapróbálkozások 30-től eltérő érték beállításához használja:
+Ha a maximális újrapróbálkozást a 30-tól eltérő értékre szeretné beállítani, használja a következőt:
 
 ```azurepowershell-interactive
 $topicid = (Get-AzEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
@@ -125,11 +127,11 @@ New-AzEventGridSubscription `
   -MaxDeliveryAttempt 18
 ```
 
-Ha mind `EventTtl` és `MaxDeliveryAttempt`, Event Grid használja az első, hogy mikor állítsa le a eseménykézbesítés lejár.
+Ha a és `MaxDeliveryAttempt`a `EventTtl` lehetőséget is beállítja, Event Grid az elsővel jár le, hogy meghatározza, mikor kell leállítani az események kézbesítését.
 
 ## <a name="next-steps"></a>További lépések
 
-* Egy mintaalkalmazás, amely egy Azure-függvényalkalmazást kézbesítetlen levelek események feldolgozásához használja, lásd: [Azure Event Grid kézbesítetlen levelek minták a .NET-hez](https://azure.microsoft.com/resources/samples/event-grid-dotnet-handle-deadlettered-events/).
+* A kézbesítetlen levelek eseményeinek feldolgozására szolgáló Azure Function alkalmazást használó minta alkalmazáshoz lásd: [Azure Event Grid a .net-hez készült kézbesítetlen levelek mintáit](https://azure.microsoft.com/resources/samples/event-grid-dotnet-handle-deadlettered-events/).
 * Eseménykézbesítés és újrapróbálkozás [Event Grid az üzenetek kézbesítését, és ismételje meg](delivery-and-retry.md).
 * Az Event Grid megismeréséhez tekintse meg [az Event Grid bevezetőjét](overview.md).
 * Tekintse meg a gyors kezdéshez Event Grid használatával [az Azure Event Griddel egyéni események létrehozása és útvonal](custom-event-quickstart.md).

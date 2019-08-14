@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 10d919b21e05195e8a7b6b351a742a4f9a57ee2b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: ae9d124391a1b17187ca98964874f681352498da
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360705"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945355"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Felhőalapú szolgáltatás frissítése
 
@@ -21,7 +21,7 @@ A felhőalapú szolgáltatás frissítése, beleértve a szerepköröket és a v
 ## <a name="update-an-azure-service"></a>Azure-szolgáltatás frissítése
 Az Azure a szerepkör-példányokat a frissítési tartományok (UD) nevű logikai csoportokba rendezi. A frissítési tartományok (UD) a szerepkör-példányok olyan logikai csoportjai, amelyek csoportként frissülnek.  Az Azure egy adott időpontban frissíti a Cloud Service szolgáltatást, amely lehetővé teszi, hogy a más frissítési lévő példányok továbbra is kiszolgálják a forgalmat.
 
-A frissítési tartományok alapértelmezett száma 5. A szolgáltatás definíciós fájljában (. csdef) a upgradeDomainCount attribútumot is megadhatja a frissítési tartományok különböző számának megadásával. További információ a upgradeDomainCount attribútumról: webrole [Schema](/previous-versions/azure/reference/gg557553(v=azure.100)) vagy [WorkerRole Schema](/previous-versions/azure/reference/gg557552(v=azure.100)).
+A frissítési tartományok alapértelmezett száma 5. A szolgáltatás definíciós fájljában (. csdef) a upgradeDomainCount attribútumot is megadhatja a frissítési tartományok különböző számának megadásával. További információ a upgradeDomainCount attribútumról: [Azure Cloud Services Definition Schema (. Csdef fájl)](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file).
 
 Ha helyben frissíti a szolgáltatás egy vagy több szerepkörét, az Azure frissíti a szerepkör-példányok készletét azon frissítési tartomány szerint, amelyhez tartoznak. Az Azure frissíti az adott frissítési tartomány összes példányát – leállítja őket, frissíti őket, és online állapotba helyezi őket –, majd a következő tartományra kerül. Ha csak az aktuális frissítési tartományban futó példányokat szeretné leállítani, az Azure gondoskodik arról, hogy egy frissítés a lehető legkevesebb hatással legyen a futó szolgáltatásra. További információért lásd a cikk későbbi, [a frissítés folytatását](#howanupgradeproceeds) ismertető cikket.
 

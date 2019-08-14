@@ -1,6 +1,6 @@
 ---
 title: Csempe réteg hozzáadása a Azure Mapshoz | Microsoft Docs
-description: Csempe réteg hozzáadása a JavaScript-térképhez
+description: Csempe réteg hozzáadása a Azure Maps web SDK-hoz.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d872cd78b3fd04512fcaee706e54bffa1cf9fcc1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 3f047ec1aced55038384cbe29bd3a4b8a948dce9
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882091"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976451"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Csempe rétegének hozzáadása térképhez
 
@@ -40,16 +40,24 @@ A csempe rétegbe átadott csempe URL-címének HTTP/HTTPS URL-címnek kell lenn
 
 ## <a name="add-a-tile-layer"></a>Mozaikréteg hozzáadása
 
- Ez a minta bemutatja, hogyan hozhat létre egy csempe réteget, amely az x, y, zoom csempe rendszerű csempe-készletre mutat. Ennek a csempe rétegnek a forrása az [Iowa Állami Egyetem Iowa környezeti Mesonet](https://mesonet.agron.iastate.edu/ogc/)származó időjárási radar. 
+ Ez a minta bemutatja, hogyan hozhat létre egy csempe réteget, amely az x, y, zoom csempe rendszerű csempe-készletre mutat. Ennek a csempe rétegnek a forrása az [Iowa Állami Egyetem Iowa környezeti Mesonet](https://mesonet.agron.iastate.edu/ogc/)származó időjárási radar. A radar-információk ideális módon való megtekintésekor a felhasználók tisztán láthatják a városok feliratait, ahogy a térképen navigálnak, ami a `labels` réteg alatti csempe réteg beszúrásával végezhető el.
+
+```javascript
+//Create a tile layer and add it to the map below the label layer.
+//Weather radar tiles from Iowa Environmental Mesonet of Iowa State University.
+map.layers.add(new atlas.layer.TileLayer({
+    tileUrl: 'https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{z}/{x}/{y}.png',
+    opacity: 0.8,
+    tileSize: 256
+}), 'labels');
+```
+
+Alább látható a fenti funkciók teljes futási kódjának mintája.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='Réteg csempe X, Y és Z használatával' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/BGEQjG/'>csempe réteget X, Y és Z használatával</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) értékkel a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
-
-A fenti kódban a kód első blokkja egy Térkép objektumot hoz létre. Ehhez útmutatást a [Térkép létrehozása](./map-create.md) című témakörben találhat.
-
-A második blokkban a [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) egy formázott URL-cím átadása egy csempe-szolgáltatásba, a csempe méretére, valamint egy opacitásra, amely félig áttetszővé teszi. Emellett, amikor hozzáadja a csempe réteget a térképhez, a `labels` réteg alá kerül, hogy a feliratok továbbra is jól láthatóak legyenek.
 
 ## <a name="customize-a-tile-layer"></a>Csempe rétegének testreszabása
 

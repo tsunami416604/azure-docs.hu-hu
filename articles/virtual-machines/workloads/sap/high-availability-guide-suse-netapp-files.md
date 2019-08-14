@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
 ms.openlocfilehash: c8fcf4afa5a363d355f627be95dd7fe8131203ac
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67797970"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez SUSE Linux Enterprise Serveron Azure NetApp Files SAP-alkalmazásokhoz
@@ -153,7 +153,7 @@ A jelen cikkben bemutatott SAP NetWeaver architektúra egy Azure NetApp Files ka
 
 4. Az alhálózat delegálása az Azure NetApp-fájlokba az [alhálózat delegálása Azure NetApp Filesra](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)című részben leírtak szerint.  
 
-5. Azure NetApp Files kötetek telepítéséhez kövesse az [utasításokat, amelyekkel Azure NetApp Files kötetet hozhat létre](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Telepítse a köteteket a kijelölt Azure NetApp Files [](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)alhálózatban. Ne feledje, hogy a Azure NetApp Files erőforrásoknak és az Azure-beli virtuális gépeknek ugyanabban az Azure-Virtual Networkban vagy az Azure-beli virtuális hálózatokban kell lenniük. Például a sapmnt<b>QAS</b>, a usrsap<b>QAS</b>stb. a kötetek nevei<b>és sapmnt QAS</b>, usrsap<b>QAS</b>stb. a filepaths a Azure NetApp Files kötetek esetében.  
+5. Azure NetApp Files kötetek telepítéséhez kövesse az [utasításokat, amelyekkel Azure NetApp Files kötetet hozhat létre](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Telepítse a köteteket a kijelölt Azure NetApp Files [](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)alhálózatban. Ne feledje, hogy a Azure NetApp Files erőforrásoknak és az Azure-beli virtuális gépeknek ugyanabban az Azure-Virtual Networkban vagy az Azure-beli virtuális hálózatokban kell lenniük. Például a sapmnt<b>QAS</b>, a usrsap<b>QAS</b>stb. a kötetek nevei és sapmnt QAS<b></b>, usrsap<b>QAS</b>stb. a filepaths a Azure NetApp Files kötetek esetében.  
 
    1. kötet sapmnt<b>QAS</b> (NFS://10.1.0.4/sapmnt<b>QAS</b>)
    2. kötet usrsap<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>)
@@ -245,7 +245,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
       1. További portok a ASCS
          * Ismételje meg a fenti lépéseket a "d" alatt a 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 és TCP ASCS
       1. További portok a ASCS-ESEK számára
-         * Ismételje meg a fenti lépéseket a "d" alatt a 33**01**, 5**01**13, 5**01**14, 5**01 16 és**TCP ASCS-eseknél.
+         * Ismételje meg a fenti lépéseket a "d" alatt a 33**01**, 5**01**13, 5**01**14, 5 01 16 és TCP ASCS-eseknél.
 
 > [!IMPORTANT]
 > Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. TCP** paramétert **0-ra**_timestamps. Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek.

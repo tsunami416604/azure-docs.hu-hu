@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 14bf7dc62bb97cb14232660db6d0649e3d77d4fa
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 2c43a3c046243c4802fb433f3b755cee158002b6
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662936"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950565"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Biztonsági megoldások integrálása az Azure Security Centerbe
 Ez a dokumentum az Azure Security Centerhez már csatlakoztatott biztonsági megoldások kezelésében és újak hozzáadásában segít.
@@ -56,7 +56,7 @@ A Security Centerből üzembe helyezett Azure biztonsági megoldások automatiku
 
    ![Security Center – Áttekintés](./media/security-center-partner-integration/overview.png)
 
-A **Biztonsági megoldások** területen megtekintheti az Azure integrált biztonsági megoldásainak állapotinformációit, valamint alapszintű felügyeleti feladatokat hajthat végre. Emellett egyéb típusú biztonsági adatforrásokat is csatlakoztathat, például Common Event Format (CEF) formátumú Azure Active Directory Identity Protection-riasztásokat és tűzfalnaplókat.
+A **Biztonsági megoldások** területen megtekintheti az Azure integrált biztonsági megoldásainak állapotinformációit, valamint alapszintű felügyeleti feladatokat hajthat végre.
 
 ### <a name="connected-solutions"></a>Csatlakoztatott megoldások
 
@@ -97,8 +97,6 @@ A Security Center automatikusan felderíti az Azure-ban futó, azonban a Securit
 Az egyes megoldások alatt a **CSATLAKOZTATÁS** gombra kattintva integrálhatja azokat a Security Centerbe, és értesülhet a biztonsági riasztásokról.
 
 ![Felderített megoldások](./media/security-center-partner-integration/security-center-partner-integration-fig5.png)
-
-A Security Center az előfizetésben üzembe helyezett azon megoldásokat is felderíti, amelyek képesek Common Event Format (CEF) formátumú naplókat továbbítani. Ismerje meg, hogyan [csatlakoztathat CEF-naplókat használó biztonsági megoldásokat](quick-security-solutions.md) a Security Centerhez.
 
 ### <a name="add-data-sources"></a>Adatforrások hozzáadása
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: c3cd734380e2a3e3fbf35439ff807738c549a086
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a59b36fbbde2bf0941ee61f523555824d28a7a98
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726148"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967020"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Couchbase
 
@@ -31,6 +31,10 @@ Ez a cikk az Azure Data Factory a másolási tevékenység használatával adato
 Másolhat adatokat a Couchbase bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
 Az Azure Data Factory kapcsolat beépített illesztőprogramot tartalmaz, ezért nem kell manuálisan telepítenie az összes illesztőprogram ezzel az összekötővel.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -46,7 +50,7 @@ A Couchbase társított szolgáltatás a következő tulajdonságok támogatotta
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **Couchbase** | Igen |
 | connectionString | Az ODBC kapcsolati karakterlánc Couchbase csatlakozni. <br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A hitelesítő adatokat karakterláncot is elhelyezheti Azure Key Vaultban `credString` , és lekérheti a konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
-| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 **Példa:**
 

@@ -4,7 +4,7 @@ description: A Azure App Service hitelesítési/engedélyezési funkciójának f
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: gwallace
 editor: ''
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.service: app-service
@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 08/12/2019
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 53733774968f94ac95d9b3fea6d8fcb422b4e02c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 12ad82b0dda628c3a8cef7712322500c7a33517c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515171"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953830"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
 
@@ -119,29 +119,23 @@ Az ügyféloldali böngészők esetében a App Service automatikusan irányítha
 
 ## <a name="authorization-behavior"></a>Engedélyezési viselkedés
 
-A [Azure Portal](https://portal.azure.com)számos viselkedéssel konfigurálhatja app Service engedélyezést.
+A [Azure Portalban](https://portal.azure.com)számos viselkedést konfigurálhat app Service engedélyezéshez, ha a bejövő kérelem nincs hitelesítve.
 
 ![](media/app-service-authentication-overview/authorization-flow.png)
 
 A következő címsorok leírják a beállításokat.
 
-### <a name="allow-all-requests-default"></a>Összes kérelem engedélyezése (alapértelmezett)
+### <a name="allow-anonymous-requests-no-action"></a>Névtelen kérések engedélyezése (nincs művelet)
 
-A hitelesítést és az engedélyezést nem a App Service felügyeli (kikapcsolva). 
+Ez a beállítás elhalasztja az alkalmazás kódjához való nem hitelesített forgalom engedélyezését. A hitelesített kérések esetében App Service a HTTP-fejlécekben is továbbítja a hitelesítési adatokat. 
 
-Akkor válassza ezt a lehetőséget, ha nincs szükség hitelesítésre és engedélyezésre, vagy ha a saját hitelesítési és engedélyezési kódját szeretné írni.
+Ez a lehetőség nagyobb rugalmasságot biztosít a névtelen kérelmek kezelésére. Például lehetővé teszi, hogy [több bejelentkezési szolgáltatót nyújtson](app-service-authentication-how-to.md#use-multiple-sign-in-providers) be a felhasználók számára. Azonban kódot kell írnia. 
 
 ### <a name="allow-only-authenticated-requests"></a>Csak hitelesített kérelmek engedélyezése
 
 A beállítás a  **\<szolgáltató > bejelentkezni**. App Service átirányítja az összes névtelen kérelmet `/.auth/login/<provider>` a kiválasztott szolgáltatóhoz. Ha a névtelen kérelem egy natív mobil alkalmazásból származik, a visszaadott válasz egy `HTTP 401 Unauthorized`.
 
 Ezzel a beállítással nem kell bármilyen hitelesítési kódot írnia az alkalmazásban. A felhasználó jogcímeinek vizsgálatával a finomabb engedélyezés, például a szerepkör-specifikus hitelesítés kezelhető (lásd: [hozzáférés a felhasználói](app-service-authentication-how-to.md#access-user-claims)jogcímekhez).
-
-### <a name="allow-all-requests-but-validate-authenticated-requests"></a>Minden kérelem engedélyezése, de hitelesített kérelmek ellenőrzése
-
-A beállítás **Névtelen kérelmeket tesz lehetővé**. Ez a beállítás bekapcsolja a hitelesítést és az engedélyezést App Serviceban, de az engedélyezési döntéseket az alkalmazás kódjára elhalasztja. A hitelesített kérések esetében App Service a HTTP-fejlécekben is továbbítja a hitelesítési adatokat. 
-
-Ez a lehetőség nagyobb rugalmasságot biztosít a névtelen kérelmek kezelésére. Például lehetővé teszi, hogy [több bejelentkezési szolgáltatót nyújtson](app-service-authentication-how-to.md#use-multiple-sign-in-providers) be a felhasználók számára. Azonban kódot kell írnia. 
 
 ## <a name="more-resources"></a>További források
 

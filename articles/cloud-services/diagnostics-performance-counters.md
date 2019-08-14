@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.author: gwallace
 ms.openlocfilehash: d6b16b859b29ef835bca75c5fca0ea1a9d35a306
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68358938"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Teljesítményszámlálók gyűjtése az Azure Cloud Service-hez
@@ -236,7 +236,7 @@ Most, hogy az alkalmazás használja az egyéni számlálót, konfigurálnia kel
 
 ### <a name="application-insights"></a>Application Insights
 
-Ahogy azt korábban említettük, a Application Insights teljesítményszámlálók a **ApplicationInsights. config** fájlban vannak meghatározva. Nyissa meg a **ApplicationInsights. config** fájlt, és ****  > keresse meg a **ApplicationInsights** > **TelemetryModules** > **számláló** elemét. Hozzon `<Add>` létre egy alárendelt elemet, `PerformanceCounter` és állítsa be az attribútumot a kódban létrehozott teljesítményszámláló kategóriájára és nevére. Állítsa az `ReportAs` attribútumot egy rövid névre, amelyet látni szeretne a portálon.
+Ahogy azt korábban említettük, a Application Insights teljesítményszámlálók a **ApplicationInsights. config** fájlban vannak meghatározva. Nyissa meg a **ApplicationInsights. config** fájlt, és > keresse meg a **ApplicationInsights** > **TelemetryModules** > **számláló** elemét. Hozzon `<Add>` létre egy alárendelt elemet, `PerformanceCounter` és állítsa be az attribútumot a kódban létrehozott teljesítményszámláló kategóriájára és nevére. Állítsa az `ReportAs` attribútumot egy rövid névre, amelyet látni szeretne a portálon.
 
 ```xml
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">

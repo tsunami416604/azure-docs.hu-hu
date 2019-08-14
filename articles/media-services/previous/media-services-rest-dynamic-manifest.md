@@ -13,29 +13,30 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: juliako;cenkdin
-ms.openlocfilehash: 5b023a152cf93ec6ff688674e991ad55db215965
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewr: cenkdin
+ms.openlocfilehash: 29fef3bec90819b252b43491c08e7a5bc2b3d454
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60767812"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69014901"
 ---
-# <a name="creating-filters-with-azure-media-services-rest-api"></a>Szűrők létrehozása az Azure Media Services REST API-val 
+# <a name="creating-filters-with-azure-media-services-rest-api"></a>Szűrők létrehozása Azure Media Services REST API 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
 > * [REST](media-services-rest-dynamic-manifest.md)
 > 
 > 
 
-2\.17 kiadástól kezdve, a Media Services lehetővé teszi az eszközök szűrőket határozhat meg. Ezeket a szűrőket, amelyek lehetővé teszik az ügyfelek úgy dönteni, hogy többek között a kiszolgálóoldali szabályok: lejátszási csak egy részét (helyett egész videó lejátszásának), videó vagy hang- és verzió, amely a felhasználói eszköz képes kezelni (nem pedig csak egy részhalmazát adja meg az összes a beállításkészletben az eszközhöz társított). Ez a szűrés a eszközök archivált keresztül **dinamikus Manifest**, amelyek létrejönnek a videó továbbításához a felhasználói kérésre megadott szűrő(k) alapján.
+A 2,17-es verziótól kezdődően a Media Services lehetővé teszi az eszközökhöz tartozó szűrők megadását. Ezek a szűrők olyan kiszolgálóoldali szabályok, amelyek lehetővé teszik az ügyfelek számára a következő műveleteket: csak a videó egy szakaszának lejátszása (a teljes videó lejátszása helyett), vagy adja meg az ügyfél által kezelhető hang-és videó-kiadatások egy részhalmazát (a az eszközhöz társított összes kiadatás. Az eszközök szűrését archiváljuk a **dinamikus jegyzékfájlok**használatával, amelyek a megadott szűrő (k) alapján a videó streamre való továbbítására szolgálnak.
 
-Részletesebb szűrők és dinamikus Manifest kapcsolatos információkért lásd: [dinamikus jegyzékfájlok áttekintése](media-services-dynamic-manifest-overview.md).
+A szűrőkkel és a dinamikus Jegyzéktel kapcsolatos részletesebb információkért lásd: a [dinamikus jegyzékfájlok áttekintése](media-services-dynamic-manifest-overview.md).
 
-Ez a cikk bemutatja, hogyan lehet REST API-k segítségével létrehozása, frissítése és törlése a szűrőket. 
+Ez a cikk bemutatja, hogyan használhatók a REST API-k szűrők létrehozásához, frissítéséhez és törléséhez. 
 
 ## <a name="types-used-to-create-filters"></a>Szűrők létrehozásához használt típusok
-A következő típusok használhatók a szűrők létrehozásakor:  
+Szűrők létrehozásakor a következő típusok használatosak:  
 
 * [Szűrő](https://docs.microsoft.com/rest/api/media/operations/filter)
 * [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
@@ -44,18 +45,18 @@ A következő típusok használhatók a szűrők létrehozásakor:
 
 > [!NOTE]
 > 
-> A Media Services entitások elérésekor a be kell állítani a HTTP-kérelmekre a meghatározott fejlécmezők és értékek. További információkért lásd: [beállítása a Media Services REST API-k fejlesztését](media-services-rest-how-to-use.md).
+> A Media Servicesban lévő entitásokhoz való hozzáféréskor meg kell adnia a HTTP-kérelmekben megadott fejléc-mezőket és-értékeket. További információ: [Media Services REST API-fejlesztés beállítása](media-services-rest-how-to-use.md).
 
 ## <a name="connect-to-media-services"></a>Kapcsolódás a Media Services szolgáltatáshoz
 
-Az AMS API-t kapcsolódás információkért lásd: [eléréséhez az Azure Media Services API Azure AD-hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). 
+További információ az AMS API-hoz való kapcsolódásról: [a Azure Media Services API Azure ad-hitelesítéssel való elérése](media-services-use-aad-auth-to-access-ams-api.md). 
 
 ## <a name="create-filters"></a>Szűrők létrehozása
-### <a name="create-global-filters"></a>Hozzon létre globális szűrők
+### <a name="create-global-filters"></a>Globális szűrők létrehozása
 Globális szűrő létrehozásához használja a következő HTTP-kérelmeket:  
 
 #### <a name="http-request"></a>HTTP-kérelem
-Kérelem fejlécei
+Kérések fejlécei
 
     POST https://media.windows.net/API/Filters HTTP/1.1 
     DataServiceVersion:3.0 
@@ -105,10 +106,10 @@ A kérés törzse
     HTTP/1.1 201 Created 
 
 ### <a name="create-local-assetfilters"></a>Helyi AssetFilters létrehozása
-Hozzon létre egy helyi AssetFilter, használja a következő HTTP-kérelmeket:  
+Helyi AssetFilter létrehozásához használja a következő HTTP-kérelmeket:  
 
 #### <a name="http-request"></a>HTTP-kérelem
-Kérelem fejlécei
+Kérések fejlécei
 
     POST https://media.windows.net/API/AssetFilters HTTP/1.1 
     DataServiceVersion: 3.0 
@@ -156,9 +157,9 @@ A kérés törzse
     HTTP/1.1 201 Created 
     . . . 
 
-## <a name="list-filters"></a>Szűrők megjelenítése
-### <a name="get-all-global-filters-in-the-ams-account"></a>Első minden globális **szűrő**lévő az AMS-fiók
-Szűrők listája, használja a következő HTTP-kérelmek: 
+## <a name="list-filters"></a>Szűrők listázása
+### <a name="get-all-global-filters-in-the-ams-account"></a>Az összes globális **szűrő**lekérdezése az AMS-fiókban
+A szűrők listázásához használja az alábbi HTTP-kérelmeket: 
 
 #### <a name="http-request"></a>HTTP-kérelem
     GET https://media.windows.net/API/Filters HTTP/1.1 
@@ -170,7 +171,7 @@ Szűrők listája, használja a következő HTTP-kérelmek:
     x-ms-version: 2.17 
     Host: media.windows.net 
 
-### <a name="get-assetfilters-associated-with-an-asset"></a>Első **AssetFilter**az eszközhöz társított s
+### <a name="get-assetfilters-associated-with-an-asset"></a>Eszközhöz társított **AssetFilter**-k beolvasása
 #### <a name="http-request"></a>HTTP-kérelem
     GET https://media.windows.net/API/Assets('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592')/AssetFilters HTTP/1.1 
     DataServiceVersion: 3.0 
@@ -182,7 +183,7 @@ Szűrők listája, használja a következő HTTP-kérelmek:
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
 
-### <a name="get-an-assetfilter-based-on-its-id"></a>Get- **AssetFilter** az azonosítója alapján
+### <a name="get-an-assetfilter-based-on-its-id"></a>**AssetFilter** beolvasása az azonosító alapján
 #### <a name="http-request"></a>HTTP-kérelem
     GET https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__TestFilter') HTTP/1.1 
     DataServiceVersion: 3.0 
@@ -194,12 +195,12 @@ Szűrők listája, használja a következő HTTP-kérelmek:
     x-ms-client-request-id: 00000000
 
 
-## <a name="update-filters"></a>Frissítse a szűrőket
-Használja a javítás, PUT vagy egyesítési szűrő frissítése az új tulajdonságértékeket.  Ezek a műveletek kapcsolatos további információkért lásd: [PUT PATCH, EGYESÍTÉSE](https://msdn.microsoft.com/library/dd541276.aspx).
+## <a name="update-filters"></a>Frissítési szűrők
+Egy szűrő új tulajdonságértékek használatával történő frissítéséhez használja a PATCH, a PUT vagy az MERGE értéket.  További információ ezekről a műveletekről: [javítás, Put, Egyesítés](https://msdn.microsoft.com/library/dd541276.aspx).
 
-Frissíti egy szűrőt, ha streamvégponton szabályok frissítése akár két percet is igénybe vehet. Ha a tartalom kiszolgálása szűrővel (és a proxyk és a CDN gyorsítótárazza a gyorsítótárak), player hibák frissítése ezzel a szűrővel eredményezhet. A gyorsítótár törléséhez a szűrő frissítése után. Ha ezt a beállítást nem lehetséges, fontolja meg egy másik szűrővel.  
+Ha frissít egy szűrőt, akár két percet is igénybe vehet, amíg a streaming-végpont frissíti a szabályokat. Ha a tartalom a szűrő használatával lett kézbesítve (és gyorsítótárazva van a proxys és a CDN-gyorsítótárban), akkor a szűrő frissítése a Player meghibásodását eredményezheti. A szűrő frissítése után törölje a gyorsítótárat. Ha ez a beállítás nem lehetséges, érdemes lehet egy másik szűrőt használni.  
 
-### <a name="update-global-filters"></a>Frissítse a globális szűrőket
+### <a name="update-global-filters"></a>Globális szűrők frissítése
 Globális szűrő frissítéséhez használja a következő HTTP-kérelmeket: 
 
 #### <a name="http-request"></a>HTTP-kérelem
@@ -240,7 +241,7 @@ Kérelem törzse:
     } 
 
 ### <a name="update-local-assetfilters"></a>Helyi AssetFilters frissítése
-A helyi szűrőt frissítéséhez használja a következő HTTP-kérelmeket: 
+Helyi szűrő frissítéséhez használja a következő HTTP-kérelmeket: 
 
 #### <a name="http-request"></a>HTTP-kérelem
 Kérelem fejlécei: 
@@ -295,7 +296,7 @@ Globális szűrő törléséhez használja a következő HTTP-kérelmeket:
 
 
 ### <a name="delete-local-assetfilters"></a>Helyi AssetFilters törlése
-Egy helyi AssetFilter törléséhez használja a következő HTTP-kérelmeket:
+Helyi AssetFilter törléséhez használja a következő HTTP-kérelmeket:
 
 #### <a name="http-request"></a>HTTP-kérelem
     DELETE https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__LocalFilter') HTTP/1.1 
@@ -307,20 +308,20 @@ Egy helyi AssetFilter törléséhez használja a következő HTTP-kérelmeket:
     x-ms-version: 2.17 
     Host: media.windows.net 
 
-## <a name="build-streaming-urls-that-use-filters"></a>Build a streaming URL-címeket, a szűrők használata
-Hogyan tehet közzé, és az eszközök a további információkért lásd: [tartalom továbbítása az ügyfelek áttekintése](media-services-deliver-content-overview.md).
+## <a name="build-streaming-urls-that-use-filters"></a>Szűrőket használó streaming URL-címek összeállítása
+Az eszközök közzétételével és továbbításával kapcsolatos információkért lásd: [tartalom továbbítása az ügyfeleknek áttekintés](media-services-deliver-content-overview.md).
 
-Az alábbi példák bemutatják, hogyan szűrők felvétele a streamelési URL-címeket.
+Az alábbi példák bemutatják, hogyan adhat hozzá szűrőket a folyamatos átviteli URL-címekhez.
 
 **MPEG DASH** 
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
 
-**Apple HTTP Live Streaming (HLS) V4**
+**Apple HTTP Live Streaming (HLS) v4**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)
 
-**Apple HTTP Live Streaming (HLS) V3**
+**Apple HTTP Live Streaming (HLS) v3**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
 
@@ -336,5 +337,5 @@ Az alábbi példák bemutatják, hogyan szűrők felvétele a streamelési URL-c
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még:
-[A dinamikus jegyzékek áttekintése](media-services-dynamic-manifest-overview.md)
+[Dinamikus jegyzékfájlok áttekintése](media-services-dynamic-manifest-overview.md)
 

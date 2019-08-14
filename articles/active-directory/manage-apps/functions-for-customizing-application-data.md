@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e741e8d4d68c9862aaabffaccb86740a3e1e9b8a
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 3524f34773f4627dff478ee7cc9cbff9f674bf8e
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694179"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931767"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Az Azure Active Directoryban attribútumleképezések kifejezések írása
 Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön által megadott attribútum-leképezéshez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi, hogy a felhasználók adatokat alakíthatja, amelyek esetében a SaaS-alkalmazás több elfogadható formátumok kell írnia.
@@ -154,7 +154,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | **regexGroupName** |Optional |Karakterlánc |A csoport a nevét **regexPattern**. Csak **replacementPropertyName** használata esetén a csoport értékének kinyerése a **replacementPropertyName** **replacementValue** történik. |
 | **replacementValue** |Optional |Karakterlánc |Új értéket cserélje le a régit. |
 | **replacementAttributeName** |Optional |Sztring |A helyettesítő értékhez használandó attribútum neve |
-| **sablon** |Optional |Karakterlánc |Ha meg van adni a **sablon** értéke, megkeresjük a **OldValue** a sablonon belül, és lecseréljük a **forrás** értékre. |
+| **sablon** |Optional |Sztring |Ha meg van adni a **sablon** értéke, megkeresjük a **OldValue** a sablonon belül, és lecseréljük a **forrás** értékre. |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -250,7 +250,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **source** |Szükséges |Karakterlánc |Általában az attribútum neve, az adatforrás-objektum. |
-| **kulturális környezet** |Választható |Karakterlánc |Az RFC 4646 alapján a kulturális név formátuma *languagecode2-ország/regioncode2*, ahol a *languagecode2* a kétbetűs nyelvi kód, az *ország/regioncode2* pedig a kétbetűs alkulturális kód. Ilyenek például a japán (Japán) és az en-US angol (Egyesült Államok). Azokban az esetekben, amikor a kétbetűs nyelvi kód nem érhető el, az ISO 639-2-ből származtatott hárombetűs kód van használatban.|
+| **kulturális környezet** |Választható |Sztring |Az RFC 4646 alapján a kulturális név formátuma *languagecode2-ország/regioncode2*, ahol a *languagecode2* a kétbetűs nyelvi kód, az *ország/regioncode2* pedig a kétbetűs alkulturális kód. Ilyenek például a japán (Japán) és az en-US angol (Egyesült Államok). Azokban az esetekben, amikor a kétbetűs nyelvi kód nem érhető el, az ISO 639-2-ből származtatott hárombetűs kód van használatban.|
 
 ## <a name="examples"></a>Példák
 ### <a name="strip-known-domain-name"></a>Sáv ismert tartománynév
@@ -366,7 +366,7 @@ Alapján a felhasználó utónevét, a középső név és vezetéknevét, létr
 
     SelectUniqueValue( 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com")
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com"),
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
     )
 

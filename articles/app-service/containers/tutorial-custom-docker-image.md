@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 315e225eafc4fededcaa998560f4cdf703123aca
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6ef739b61c07dae1631a704a70a3a5543d9d8a3d
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68958676"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015607"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Oktatóanyag: Egyéni rendszerkép létrehozása és App Service futtatása privát beállításjegyzékből
 
@@ -292,20 +292,20 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
 
 * A [bejegyzési parancsfájl](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/init.sh#L5) elindítja az SSH-kiszolgálót.
 
-      ```bash
-      #!/bin/bash
-      service ssh start
+    ```bash
+    #!/bin/bash
+    service ssh start
     ```
 
-### Open SSH connection to container
+### <a name="open-ssh-connection-to-container"></a>A tároló SSH-kapcsolatának megnyitása
 
-SSH connection is available only through the Kudu site, which is accessible at `https://<app-name>.scm.azurewebsites.net`.
+Az SSH-kapcsolat csak a kudu webhelyen érhető el, amely elérhető a `https://<app-name>.scm.azurewebsites.net`következő címen:.
 
-To connect, browse to `https://<app-name>.scm.azurewebsites.net/webssh/host` and sign in with your Azure account.
+A keresse fel a következő címet: `https://<app-name>.scm.azurewebsites.net/webssh/host`, majd jelentkezzen be az Azure-fiókjával.
 
-You are then redirected to a page displaying an interactive console.
+Ezután a rendszer átirányítja egy interaktív konzolt tartalmazó oldalra.
 
-You may wish to verify that certain applications are running in the container. To inspect the container and verify running processes, issue the `top` command at the prompt.
+Érdemes lehet ellenőrizze, hogy bizonyos alkalmazások futnak-e a tárolóban. A tároló és a futó folyamatok ellenőrzéséhez adja ki a `top` parancsot a parancssorban.
 
 ```bash
 top

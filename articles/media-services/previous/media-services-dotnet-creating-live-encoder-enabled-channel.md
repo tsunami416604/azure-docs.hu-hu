@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.author: juliako;anilmur
-ms.openlocfilehash: b2ff6caa4c1b3626e4be1684976441be6ecbfe30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: anilmur
+ms.reviewer: juliako
+ms.openlocfilehash: 37969986b1d015ed08113da42a309eef42df569c
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61231468"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "69015508"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>Élő adatfolyam továbbítása az Azure Media Services használatával és többféle sávszélességű adatfolyamok létrehozása a .NET használatával
 > [!div class="op_single_selector"]
@@ -41,9 +42,9 @@ További elméleti információk a valós idejű kódolásra képes csatornákr�
 A következő lépések a gyakran használt élő adatfolyam-továbbítási alkalmazások létrehozásához elvégzendő feladatokat írják le.
 
 > [!NOTE]
-> Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@microsoft.com e-mail-címen.
+> Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amshelp@microsoft.com e-mail-címen.
 
-1. Csatlakoztasson egy videokamerát a számítógéphez. Indítsa el, és adja meg, amely a következő protokollok egy egyféle sávszélességű adatfolyamot küldhetnek kimenetet a helyszíni élő kódoló: RTMP vagy Smooth Streaming. További tudnivalók: [Azure Media Services RMTP-támogatása és valós idejű kódolók](https://go.microsoft.com/fwlink/?LinkId=532824)
+1. Csatlakoztasson egy videokamerát a számítógéphez. Indítson el és konfiguráljon egy helyszíni élő kódolót, amely a következő protokollok egyikében képes egyetlen sávszélességű adatfolyamot kimenetként: RTMP vagy Smooth Streaming. További tudnivalók: [Azure Media Services RMTP-támogatása és valós idejű kódolók](https://go.microsoft.com/fwlink/?LinkId=532824)
 
     Ezt a lépést a csatorna létrehozása után is elvégezheti.
 
@@ -96,7 +97,7 @@ Az oktatóanyag elvégzésének a következők a feltételei.
 * Egy webkamera és egy egyféle sávszélességű élő adatfolyamot küldő kódoló.
 
 ## <a name="considerations"></a>Megfontolások
-* Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@Microsoft.com e-mail-címen.
+* Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amshelp@microsoft.com e-mail-címen.
 * A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
 
 ## <a name="download-sample"></a>Minta letöltése

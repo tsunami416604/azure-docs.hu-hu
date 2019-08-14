@@ -1,34 +1,34 @@
 ---
 title: Az Azure IoT Edge-eszközök – a blokkblobok Store |} A Microsoft Docs
 description: 'Megtudhatja, hogyan használhatók a többrétegű és az élettartamú funkciók: támogatott blob Storage-műveletek és kapcsolódás a blob Storage-fiókhoz.'
-author: arduppal
+author: kgremban
 manager: mchad
-ms.author: arduppal
-ms.reviewer: arduppal
+ms.author: kgremban
+ms.reviewer: kgremban
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a40389ca378826aef1b6aa136f8f5d69783c638e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 861b5c3ee6d5661339788e7a27ba70557d0ea267
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881220"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947037"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Az Azure Blob Storage IoT Edge
 
 Az IoT Edge-ben az Azure Blob Storage biztosít egy [blokkblob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) tárolási megoldás a peremhálózaton. A IoT Edge eszközön található blob Storage-modul úgy viselkedik, mint egy Azure Block blob szolgáltatás, kivéve a blokk blobokat a IoT Edge eszközön helyileg tárolja. Ugyanazokkal a módszerekkel az Azure storage SDK-t a blobok elérése, vagy a blob API-hívás, amely már jártas letiltása. Ez a cikk ismerteti az Azure Blob Storage IoT Edge-tárolóval kapcsolatos fogalmakat, amelyek a IoT Edge eszközön futó blob-szolgáltatást futtatnak.
 
 Ez a modul a következő helyzetekben hasznos:
-* az adattárolást és a felhőbe való átadást követően helyileg kell tárolni az adattárolást. Ezen adat lehet videók, képek, pénzügyi adat, kórházi adat vagy egyéb strukturálatlan adat.
+* az adattárolást és a felhőbe való átadást követően helyileg kell tárolni az adattárolást. Ezek az adatforrások lehetnek videók, képek, pénzügyi, kórházi vagy egyéb strukturálatlan adat.
 * Ha az eszközök korlátozott kapcsolattal rendelkező helyen találhatók.
 * Ha a lehető leggyorsabban szeretné feldolgozni az adatfeldolgozást, hogy alacsony késéssel lehessen elérni az adatelérést, úgy, hogy a lehető leghamarabb reagáljon a vészhelyzetekre.
 * Ha csökkenteni kívánja a sávszélességi költségeket, és nem kívánja átvinni a felhőbe a terabájtos adatátvitelt. Az adatfeldolgozást helyileg végezheti el, és csak a feldolgozott adatbevitelt küldheti a felhőbe.
 
 Videó megtekintése a gyors bevezetéshez
-> [!VIDEO https://www.youtube.com/embed/QhCYCvu3tiM]
+> [!VIDEO https://www.youtube.com/embed/xbwgMNGB_3Y]
 
 Ez a modul a **deviceToCloudUpload** és a **deviceAutoDelete** funkciókhoz tartozik.
 

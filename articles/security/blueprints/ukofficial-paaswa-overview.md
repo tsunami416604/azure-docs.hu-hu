@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 54bf4512785941ae1d09ae1436deefc032ec0037
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: c0163b5280de942491f2174aa371fa7cc83d5984
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780660"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946519"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure Security and Compliance Blueprint: A brit hivatalos számítási feladatokhoz tartozó Péter webalkalmazás-üzemeltetés
 
@@ -27,7 +27,7 @@ Ez a Azure Security and Compliance Blueprint útmutatást és automatizálási p
 
 Ezt a tervet a brit nemzeti Cyber Security Center (NCSC) felülvizsgálta, és a NCSC 14 Felhőbeli biztonsági alapelvekhez igazodik.
 
-Az architektúra az Azure [platformot](https://azure.microsoft.com/overview/what-is-paas/) használja szolgáltatásként, amely lehetővé teszi az ügyfeleknek, hogy elkerüljék a szoftveres licencek megvásárlásának költségét és összetettségét, a mögöttes alkalmazás-infrastruktúra és a köztes alkalmazások felügyeletét, valamint a fejlesztői eszközök és egyéb erőforrások. Az ügyfelek felügyelik az általuk fejlesztett alkalmazásokat és szolgáltatásokat, és az üzleti értékek megvalósítására összpontosítanak, míg a Microsoft Azure kezeli a többi Azure-erőforrást, például a virtuális gépeket, a tárolást és a hálózatkezelést, így többek között a [ ](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility)az infrastruktúra felügyeletének felelőssége az Azure platformon. Az [Azure app Services](https://azure.microsoft.com/services/app-service/) automatikus méretezést, magas rendelkezésre állást, támogatja a Windowst és a Linuxot, és lehetővé teszi a GitHub, az Azure DevOps vagy bármely git-tárház automatikus üzembe helyezését alapértelmezett szolgáltatásként. A App Services használatával a fejlesztők az infrastruktúra kezelése nélkül koncentrálhat az üzleti értékek megvalósítására. Új Java-, PHP-, Node. js-, Python-, HTML-vagy C# webalkalmazások hozhatók létre, illetve a meglévő felhő vagy helyszíni webalkalmazások áttelepíthetők az Azure app Servicesba (bár a teljesítmény megerősítését szolgáló alapos átvilágítás és tesztelés kötelező).
+Az architektúra az Azure [platformot](https://azure.microsoft.com/overview/what-is-paas/) használja szolgáltatásként, amely lehetővé teszi az ügyfeleknek, hogy elkerüljék a szoftveres licencek megvásárlásának költségét és összetettségét, a mögöttes alkalmazás-infrastruktúra és a köztes alkalmazások felügyeletét, valamint a fejlesztői eszközök és egyéb erőforrások. Az ügyfelek felügyelik az általuk fejlesztett alkalmazásokat és szolgáltatásokat, és az üzleti értékek megvalósítására összpontosítanak, míg a Microsoft Azure kezeli a többi Azure-erőforrást, például a virtuális gépeket, a tárolást és a hálózatkezelést, így többek között a [ ](../fundamentals/paas-deployments.md)az infrastruktúra felügyeletének felelőssége az Azure platformon. Az [Azure app Services](https://azure.microsoft.com/services/app-service/) automatikus méretezést, magas rendelkezésre állást, támogatja a Windowst és a Linuxot, és lehetővé teszi a GitHub, az Azure DevOps vagy bármely git-tárház automatikus üzembe helyezését alapértelmezett szolgáltatásként. A App Services használatával a fejlesztők az infrastruktúra kezelése nélkül koncentrálhat az üzleti értékek megvalósítására. Új Java-, PHP-, Node. js-, Python-, HTML-vagy C# webalkalmazások hozhatók létre, illetve a meglévő felhő vagy helyszíni webalkalmazások áttelepíthetők az Azure app Servicesba (bár a teljesítmény megerősítését szolgáló alapos átvilágítás és tesztelés kötelező).
 
 Ez a terv egy biztonságos alapplatform kiépítésére koncentrál, amely [](https://azure.microsoft.com/overview/what-is-paas/) a nyilvános és a Back-Office-felhasználók számára szolgáltatásként szolgáló webes kezelőfelület. Ez a terv kialakítási forgatókönyve az Azure által üzemeltetett webes szolgáltatások használatát veszi figyelembe, ahol a nyilvános felhasználók biztonságosan küldhetnek, tekinthetnek és kezelhetnek bizalmas adatokat; azt is megteheti, hogy egy Back Office vagy Government-kezelő biztonságosan feldolgozza a nyilvános felhasználó által küldött bizalmas adatokat. Ebben a forgatókönyvben a következő esetekben használhatók:
 
@@ -72,18 +72,18 @@ A következő szakasz az üzembe helyezési és megvalósítási elemeket részl
 
 #### <a name="identity-and-authentication"></a>Identitás és hitelesítés
 
-Ez a terv biztosítja, hogy az erőforrásokhoz való hozzáférés a címtár-és Identitáskezelő szolgáltatásokon keresztül legyen védve. Ez az architektúra teljes mértékben kihasználja [az identitást, mint a biztonsági területet](https://docs.microsoft.com/azure/security/security-paas-deployments). 
+Ez a terv biztosítja, hogy az erőforrásokhoz való hozzáférés a címtár-és Identitáskezelő szolgáltatásokon keresztül legyen védve. Ez az architektúra teljes mértékben kihasználja [az identitást, mint a biztonsági területet](../fundamentals/paas-deployments.md). 
 
 Az alábbi technológiák az Azure-környezet Identitáskezelés-kezelési funkcióit biztosítják:
 
 - [Azure Active Directory (Azure ad)](https://azure.microsoft.com/services/active-directory/) a Microsoft több-bérlős felhőalapú címtár-és Identitáskezelés-kezelési szolgáltatása. A megoldás összes felhasználója Azure Active Directory-ban lett létrehozva, beleértve a SQL Databasehoz hozzáférő felhasználókat is.
-- Az Azure AD használatával végezheti el a hitelesítést az Azure-erőforrások felügyeletére szolgáló webalkalmazáshoz és hozzáféréshez. További információ: [alkalmazások integrálása a Azure Active Directorysal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
+- Az Azure AD használatával végezheti el a hitelesítést az Azure-erőforrások felügyeletére szolgáló webalkalmazáshoz és hozzáféréshez. További információ: [alkalmazások integrálása a Azure Active Directorysal](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
 - Az adatbázis oszlopának titkosítása az Azure AD használatával hitelesíti az alkalmazást Azure SQL Database. További információkért lásd [: Always encrypted: Bizalmas adatok védelme SQL Databaseban](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
 - Az állampolgárok felé néző webalkalmazás nyilvános hozzáférésre van konfigurálva. Ha engedélyezni szeretné a fiókok létrehozását és hitelesítését az Active Directoryn vagy a közösségi hálózati identitás-szolgáltatókon keresztül, [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) szükség esetén integrálható.
-- [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) észleli a potenciális biztonsági réseket és a kockázatos fiókokat, javaslatokat tesz a szervezete identitásának biztonsági helyzetének növelésére, az észlelt gyanús automatikus válaszokat konfigurálja. a szervezete identitásával kapcsolatos műveletek, valamint a gyanús incidensek kivizsgálására és a szükséges műveletek elvégzésére.
+- [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) észleli a potenciális biztonsági réseket és a kockázatos fiókokat, javaslatokat tesz a szervezete identitásának biztonsági helyzetének növelésére, az észlelt gyanús automatikus válaszokat konfigurálja. a szervezete identitásával kapcsolatos műveletek, valamint a gyanús incidensek kivizsgálására és a szükséges műveletek elvégzésére.
 - Az [Azure szerepköralapú Access Control (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) lehetővé teszi az Azure-hoz való, pontosan célzott hozzáférés-vezérlést. Az előfizetés-hozzáférés az előfizetés rendszergazdájára korlátozódik, és Azure Key Vault hozzáférés csak azokra a felhasználókra korlátozódik, akiknek kulcskezelő hozzáférésre van szükségük.
-- A [Azure Active Directory feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) ügyfelek általi kihasználása a környezet alkalmazásaihoz vagy felhasználóihoz való hozzáférésre vonatkozó további biztonsági ellenőrzéseket kényszeríti ki bizonyos feltételek, például a hely, az eszköz, az állapot és a bejelentkezés kockázata alapján.
-- [Azure DDoS Protection](https://docs.microsoft.com/azure/security/security-paas-deployments#security-advantages-of-a-paas-cloud-service-model) az alkalmazások kialakításával kapcsolatos ajánlott eljárásokkal kombinálva védelmet nyújt a DDOS-támadások ellen, a folyamatos forgalom figyelésével és a gyakori hálózati szintű támadások valós idejű enyhítésével. A "Péter" architektúrával az ügyfél és a platform szintjén a DDoS Protection átlátható, de fontos megjegyezni, hogy az alkalmazás biztonsági tervezési feladata az ügyfél.
+- A [Azure Active Directory feltételes hozzáférési](../../active-directory/active-directory-conditional-access-azure-portal.md) ügyfelek általi kihasználása a környezet alkalmazásaihoz vagy felhasználóihoz való hozzáférésre vonatkozó további biztonsági ellenőrzéseket kényszeríti ki bizonyos feltételek, például a hely, az eszköz, az állapot és a bejelentkezés kockázata alapján.
+- [Azure DDoS Protection](../fundamentals/paas-deployments.md#security-advantages-of-a-paas-cloud-service-model) az alkalmazások kialakításával kapcsolatos ajánlott eljárásokkal kombinálva védelmet nyújt a DDOS-támadások ellen, a folyamatos forgalom figyelésével és a gyakori hálózati szintű támadások valós idejű enyhítésével. A "Péter" architektúrával az ügyfél és a platform szintjén a DDoS Protection átlátható, de fontos megjegyezni, hogy az alkalmazás biztonsági tervezési feladata az ügyfél.
 
 #### <a name="data-in-transit"></a>Átvitt adatok
 
@@ -112,14 +112,14 @@ Ez a sablon a következő App Service szolgáltatásokat telepíti:
 - [Standard szintű](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) App Service csomag szintje
 - Több App Service [üzembe helyezési bővítőhely](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): Dev, Preview, QA, ellenőrzését és természetesen éles üzemben (alapértelmezett tárolóhely).
 - [Felügyelt identitások az Azure](https://docs.microsoft.com/azure/app-service/overview-managed-identity) -erőforrásokhoz [](https://azure.microsoft.com/services/key-vault/) a Azure Key Vaulthoz való kapcsolódáshoz (ez a szolgáltatás a [Azure SQL Databasehoz](https://azure.microsoft.com/services/sql-database/) való hozzáférés biztosítására is használható. 
-- Az [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps) integrációja a teljesítmény figyeléséhez
-- [Diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) 
-- Metrikus [riasztások](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) 
+- Az [Azure Application Insights](../../azure-monitor/app/azure-web-apps.md) integrációja a teljesítmény figyeléséhez
+- [Diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md) 
+- Metrikus [riasztások](../../azure-monitor/app/alerts.md) 
 - [Azure API Apps](https://azure.microsoft.com/services/app-service/api/) 
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 
-Az SQL Database általános célú, felügyelt relációsadatbázis-szolgáltatás a Microsoft Azure-ban, amely egyebek mellett relációs, JSON-, térbeli és XML-struktúrákat is támogat. A SQL Database felügyelt önálló SQL-adatbázisokat, felügyelt SQL-adatbázisokat biztosít [rugalmas készletekben](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool), valamint SQL [felügyelt példányokat](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) (nyilvános előzetes verzióban). [Dinamikusan méretezhető teljesítményt](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers) nyújt és olyan lehetőségeket kínál, mint az [oszlopcentrikus indexelés](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) kivételes mélységű elemzéshez és jelentéskészítéshez, és a [memóriabeli OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) a kivételesen nagy teljesítményű tranzakció-feldolgozáshoz. A Microsoft zökkenőmentesen kezeli az SQL kódbázis karbantartását és frissítését, és teljesen átveszi az alapul szolgáló infrastruktúra kezelését.
+Az SQL Database általános célú, felügyelt relációsadatbázis-szolgáltatás a Microsoft Azure-ban, amely egyebek mellett relációs, JSON-, térbeli és XML-struktúrákat is támogat. A SQL Database felügyelt önálló SQL-adatbázisokat, felügyelt SQL-adatbázisokat biztosít [rugalmas készletekben](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool), valamint SQL [felügyelt példányokat](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) (nyilvános előzetes verzióban). [Dinamikusan méretezhető teljesítményt](../../sql-database/sql-database-purchase-models.md) nyújt és olyan lehetőségeket kínál, mint az [oszlopcentrikus indexelés](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) kivételes mélységű elemzéshez és jelentéskészítéshez, és a [memóriabeli OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) a kivételesen nagy teljesítményű tranzakció-feldolgozáshoz. A Microsoft zökkenőmentesen kezeli az SQL kódbázis karbantartását és frissítését, és teljesen átveszi az alapul szolgáló infrastruktúra kezelését.
 
 Azure SQL Database ebben a tervben
 
@@ -130,7 +130,7 @@ A Azure SQL Database példány a következő adatbázis-biztonsági mértékeket
 - Az [Azure ad-hitelesítés](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)segítségével központilag kezelheti az adatbázis-felhasználók és más Microsoft-szolgáltatások identitásait egy központi helyen. A központi AZONOSÍTÓk kezelése egyetlen helyet biztosít az adatbázis-felhasználók felügyeletéhez, és egyszerűsíti az engedélyek kezelését.
 - Azure Active Directory használata adatbázis-felügyelethez
 - [Naplók naplózása](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) a Storage-fiókokba
-- A [](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) sikertelen adatbázis-kapcsolatokra vonatkozó metrikai riasztások
+- A [](../../azure-monitor/app/alerts.md) sikertelen adatbázis-kapcsolatokra vonatkozó metrikai riasztások
 - [SQL-veszélyforrások észlelése](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)
 - [Oszlopok Always Encrypted](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)
 
@@ -147,7 +147,7 @@ Ez a sablon a következő Azure Storage-összetevőket használja:
 
 #### <a name="data-at-rest"></a>Inaktív adat
 
-A [Storage Service encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) az Azure Storage-ba írt összes adatmennyiséget 256 bites AES-titkosítással titkosítja, amely az egyik legerősebb blokk titkosítási algoritmus. Használhatja a Microsoft által felügyelt titkosítási kulcsokat az SSE-mel, vagy használhat [saját titkosítási kulcsokat](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys)is.
+A [Storage Service encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) az Azure Storage-ba írt összes adatmennyiséget 256 bites AES-titkosítással titkosítja, amely az egyik legerősebb blokk titkosítási algoritmus. Használhatja a Microsoft által felügyelt titkosítási kulcsokat az SSE-mel, vagy használhat [saját titkosítási kulcsokat](../../storage/common/storage-encryption-keys-portal.md)is.
 
 A Storage-fiókok [Virtual Network szolgáltatás](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) -végpontokon keresztül biztonságossá tehetik a [virtuális hálózati szabályok](https://docs.microsoft.com/azure/storage/common/storage-network-security)használatával.
 
@@ -181,7 +181,7 @@ Az Azure Storage biztonságossá tételével kapcsolatos részletes információ
 
 #### <a name="application-insights"></a>Application Insights
 
-A [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) egy bővíthető Application Performance Management-(APM-) szolgáltatás, amely több platformon is használható webfejlesztőknek. Élő webalkalmazások figyelésére használatos, automatikusan észlelni fogja a teljesítménnyel kapcsolatos rendellenességeket, elemezheti a teljesítményt, diagnosztizálhatja a problémákat, és megismerheti, hogy a felhasználók hogyan használják az alkalmazást. A Application Insights olyan platformokon telepíthetők, mint a .NET, a Node. js és a Java EE, a helyszínen vagy a felhőben üzemeltetve. Emellett a DevOps folyamattal is integrálható, és eszközök széles köréhez rendelkezik kapcsolódási ponttal.
+A [Application Insights](../../azure-monitor/app/app-insights-overview.md) egy bővíthető Application Performance Management-(APM-) szolgáltatás, amely több platformon is használható webfejlesztőknek. Élő webalkalmazások figyelésére használatos, automatikusan észlelni fogja a teljesítménnyel kapcsolatos rendellenességeket, elemezheti a teljesítményt, diagnosztizálhatja a problémákat, és megismerheti, hogy a felhasználók hogyan használják az alkalmazást. A Application Insights olyan platformokon telepíthetők, mint a .NET, a Node. js és a Java EE, a helyszínen vagy a felhőben üzemeltetve. Emellett a DevOps folyamattal is integrálható, és eszközök széles köréhez rendelkezik kapcsolódási ponttal.
 
 #### <a name="application-insights-in-this-blueprint"></a>Application Insights ebben a tervben
 
@@ -195,7 +195,7 @@ Az [Azure-tevékenység naplójának](https://docs.microsoft.com/azure/azure-mon
 
 #### <a name="azure-monitor"></a>Azure Monitor
 
-[Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) lehetővé teszi az Azure-szolgáltatások alapszintű figyelését azáltal, hogy lehetővé teszi a metrikák, a tevékenységek naplói és a diagnosztikai naplók gyűjtését. Az Azure Monitor alapszintű infrastruktúrametrikákat és -naplókat biztosít a legtöbb Microsoft Azure-szolgáltatásról.
+[Azure monitor](../../azure-monitor/overview.md) lehetővé teszi az Azure-szolgáltatások alapszintű figyelését azáltal, hogy lehetővé teszi a metrikák, a tevékenységek naplói és a diagnosztikai naplók gyűjtését. Az Azure Monitor alapszintű infrastruktúrametrikákat és -naplókat biztosít a legtöbb Microsoft Azure-szolgáltatásról.
 
 ## <a name="threat-model"></a>Veszélyforrások modellje
 

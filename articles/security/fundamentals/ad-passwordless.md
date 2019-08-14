@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 30c2eb2964f11b729b0ffaf58c532d5189cdc2cd
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 38c850f167287fe5e1a444c8670e359c4d2b6b90
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727773"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934836"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Jelszavak nélküli globális Azure Active Directory
 
 Itt az ideje, hogy megszakítsa a kapcsolatait a jelszavakkal. A jelszavak a múltban jó számunkra, de a mai digitális munkahelyen a hackerek viszonylag egyszerű támadási vektora lett. A hackerek szeretik a jelszavakat, és nem nehéz megtekinteni, miért, ha úgy gondolja, hogy a leggyakrabban visszautasított jelszavak Azure Active Directory (Azure AD) olyan kifejezéseket tartalmaznak, mint az év, a hónap, a szezon vagy egy helyi sport csapat. Emellett a [kutatások azt mutatták](https://aka.ms/passwordguidance) , hogy a jelszó-kezelésre vonatkozó hagyományos javaslatok, például a hosszúsági követelmények, a bonyolultsági követelmények és a változási gyakoriságok az emberi természettel kapcsolatos különféle okok miatt kontraproduktív.
 
-A felhasználói fiókok elszivárgására leggyakrabban használt három típusú támadás jelszavas spray, adathalászat és szerződésszegés. Az Azure AD-funkciók, például az [intelligens zárolás](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout), a [tiltott jelszavak](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises)és a [jelszavas védelem](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) segíthetnek az ilyen típusú támadások elleni védelemben. Hasonlóképpen, a [többtényezős hitelesítés](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) (MFA) és a kétlépéses ellenőrzés megvalósítása is lehetővé teszi a további biztonságot a hitelesítés második formáját megkövetelve. Hosszú távon azonban a legbiztonságosabb hitelesítési módszer biztosításához a legjobb megoldás a jelszó nélkül.
+A felhasználói fiókok elszivárgására leggyakrabban használt három típusú támadás jelszavas spray, adathalászat és szerződésszegés. Az Azure AD-funkciók, például az [intelligens zárolás](../../active-directory/authentication/howto-password-smart-lockout.md), a [tiltott jelszavak](../../active-directory/authentication/concept-password-ban-bad-on-premises.md)és a [jelszavas védelem](../../active-directory/authentication/concept-password-ban-bad-on-premises.md) segíthetnek az ilyen típusú támadások elleni védelemben. Hasonlóképpen, a [többtényezős hitelesítés](../../active-directory/authentication/concept-mfa-howitworks.md) (MFA) és a kétlépéses ellenőrzés megvalósítása is lehetővé teszi a további biztonságot a hitelesítés második formáját megkövetelve. Hosszú távon azonban a legbiztonságosabb hitelesítési módszer biztosításához a legjobb megoldás a jelszó nélkül.
 
 Ez a cikk a Microsoft jelszavas megoldásainak megismeréséhez és megvalósításához nyújt segítséget, és segít az alábbi lehetőségek közül:
 
@@ -109,7 +109,7 @@ A vállalati Windows Hello szolgáltatással kapcsolatos egyéb helyzetekben a h
 
 A [Microsoft PIN-kód-visszaállítási szolgáltatása](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-features#pin-reset) az Azure ad egyik funkciója, amely lehetővé teszi a felhasználók számára, hogy szükség esetén visszaállítsák a PIN-kódját. A csoportházirend, Microsoft Intune vagy egy kompatibilis MDM használatával a rendszergazdák úgy konfigurálhatják a Windows 10-es eszközöket, hogy biztonságosan használják a Microsoft PIN-kód-átállítási szolgáltatását, amely lehetővé teszi, hogy a felhasználók az elfelejtett PIN-kódot a beállítások vagy a zárolási képernyő felett, anélkül, hogy újbóli regisztráció.
 
-Időnként a felhasználóknak vissza kell térniük a jelszavak használatára. Önkiszolgáló [jelszó-visszaállítás](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment) A (SSPR) egy másik Azure AD-szolgáltatás, amely lehetővé teszi a felhasználók számára a jelszavuk visszaállítását anélkül, hogy kapcsolatba kell lépnie az informatikai részleggel. A felhasználónak regisztrálnia kell az önkiszolgáló jelszó-visszaállításhoz, vagy regisztrálnia kell a szolgáltatást a szolgáltatás használata előtt. A regisztráció során a felhasználó egy vagy több, a szervezete által engedélyezett hitelesítési módszert választ. A SSPR lehetővé teszi, hogy a felhasználók gyorsan feloldják a blokkolást, és a munka helyétől függetlenül is működjenek. Azáltal, hogy a felhasználók letiltják magukat, a szervezet csökkentheti a nem produktív időt és a magas támogatási költségeket a leggyakoribb jelszóval kapcsolatos problémákhoz.
+Időnként a felhasználóknak vissza kell térniük a jelszavak használatára. Önkiszolgáló [jelszó-visszaállítás](../../active-directory/authentication/howto-sspr-deployment.md) A (SSPR) egy másik Azure AD-szolgáltatás, amely lehetővé teszi a felhasználók számára a jelszavuk visszaállítását anélkül, hogy kapcsolatba kell lépnie az informatikai részleggel. A felhasználónak regisztrálnia kell az önkiszolgáló jelszó-visszaállításhoz, vagy regisztrálnia kell a szolgáltatást a szolgáltatás használata előtt. A regisztráció során a felhasználó egy vagy több, a szervezete által engedélyezett hitelesítési módszert választ. A SSPR lehetővé teszi, hogy a felhasználók gyorsan feloldják a blokkolást, és a munka helyétől függetlenül is működjenek. Azáltal, hogy a felhasználók letiltják magukat, a szervezet csökkentheti a nem produktív időt és a magas támogatási költségeket a leggyakoribb jelszóval kapcsolatos problémákhoz.
 
 ## <a name="passwordless-sign-in-with-microsoft-authenticator"></a>Jelszó nélküli bejelentkezés Microsoft Authenticator
 
@@ -125,9 +125,9 @@ A Microsoft Authenticator alkalmazás az Azure AD-be való jelszó nélküli bej
 
 * A végfelhasználók engedélyezve vannak az Azure multi-Factor Authentication szolgáltatáshoz
 
-* A felhasználók Microsoft Intune vagy külső mobileszköz-kezelési (MDM) megoldás használatával regisztrálhatják eszközeiket
+* Javasoljuk, hogy a felhasználók Microsoft Intune vagy egy külső mobileszköz-kezelési (MDM) megoldás használatával regisztrálják eszközeiket az alkalmazás üzembe helyezésének megkönnyítéséhez
 
-Feltételezve, hogy ezek a követelmények teljesülnek, a rendszergazdák a [Windows PowerShell](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-phone-sign-in#enable-my-users) használatával engedélyezhetik a jelszó nélküli telefonos bejelentkezést a bérlőn. Ha a telefonos bejelentkezés engedélyezve van a bérlőben, a végfelhasználók a saját telefonjára is bejelentkezhetnek, ha kiválasztja a munkahelyi vagy iskolai fiókját az alkalmazás **fiókok** képernyőjén, majd kiválasztja a **telefonos bejelentkezés engedélyezése**lehetőséget.
+Feltételezve, hogy ezek a követelmények teljesülnek, a rendszergazdák a [Windows PowerShell](../../active-directory/authentication/howto-authentication-passwordless-phone.md) használatával engedélyezhetik a jelszó nélküli telefonos bejelentkezést a bérlőn. Ha a telefonos bejelentkezés engedélyezve van a bérlőben, a végfelhasználók a saját telefonjára is bejelentkezhetnek, ha kiválasztja a munkahelyi vagy iskolai fiókját az alkalmazás **fiókok** képernyőjén, majd kiválasztja a **telefonos bejelentkezés engedélyezése**lehetőséget.
 
 Ha egy rendszergazda engedélyezte a jelszó nélküli bejelentkezést, a végfelhasználóknak meg kell felelniük az alábbi követelményeknek:
 
@@ -137,9 +137,9 @@ Ha egy rendszergazda engedélyezte a jelszó nélküli bejelentkezést, a végfe
 
 * Munkahelyi vagy iskolai fiók, amely leküldéses értesítésekkel bővült az alkalmazáshoz
 
-A fiók hitelesítő adatainak a felhőbe történő [biztonsági mentéséhez](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-backup-recovery) a Microsoft Authenticator segítségével elkerülheti a fiókból való kizárni kívánt adatokat, vagy a fiókokat újra létre kell hozni egy új eszközön. A biztonsági mentést követően az alkalmazással helyreállíthatja az adatokat egy új eszközön, így elkerülhető a zárolás vagy a fiókok ismételt létrehozása.
+A fiók hitelesítő adatainak a felhőbe történő [biztonsági mentéséhez](../../active-directory/user-help/user-help-auth-app-backup-recovery.md) a Microsoft Authenticator segítségével elkerülheti a fiókból való kizárni kívánt adatokat, vagy a fiókokat újra létre kell hozni egy új eszközön. A biztonsági mentést követően az alkalmazással helyreállíthatja az adatokat egy új eszközön, így elkerülhető a zárolás vagy a fiókok ismételt létrehozása.
 
-Mivel a legtöbb felhasználó megszokta, hogy csak a jelszavakat használja a hitelesítéshez, fontos, hogy a szervezet a folyamattal kapcsolatban tájékoztassa a felhasználókat. A tájékoztató csökkenti annak a valószínűségét, hogy a felhasználók a Microsoft Authenticator [](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-phone-sign-in#known-issues) alkalmazással való bejelentkezéshez kapcsolódó esetleges problémákra meghívja az ügyfélszolgálatot.
+Mivel a legtöbb felhasználó megszokta, hogy csak a jelszavakat használja a hitelesítéshez, fontos, hogy a szervezet a folyamattal kapcsolatban tájékoztassa a felhasználókat. A tájékoztató csökkenti annak a valószínűségét, hogy a felhasználók a Microsoft Authenticator [](../../active-directory/authentication/howto-authentication-passwordless-phone.md) alkalmazással való bejelentkezéshez kapcsolódó esetleges problémákra meghívja az ügyfélszolgálatot.
 
 > [!NOTE]
 > A megoldás lehetséges meghibásodási pontja, amikor egy barangoló felhasználó olyan helyen található, ahol nincs internetkapcsolat. A FIDO2 biztonsági kulcsainak és a vállalati Windows Hello szolgáltatásnak nem ugyanaz a korlátozása.
@@ -150,9 +150,9 @@ Mivel a legtöbb felhasználó megszokta, hogy csak a jelszavakat használja a h
 
 Mielőtt a Microsoft Authenticator alkalmazás használható legyen jelszó nélküli megoldásként az Azure AD-fiókba való bejelentkezéshez, a lépéseket a rendszergazdának és a végfelhasználóknak is el kell végrehajtaniuk.
 
-Először is a rendszergazdának engedélyeznie kell [az alkalmazás használatát hitelesítő adatként](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-phone-sign-in#enable-my-users) a bérlőn a Windows PowerShell használatával. A rendszergazdának engedélyeznie kell a végfelhasználók számára az Azure multi-Factor Authentication (Azure MFA) használatát, és konfigurálnia kell az Microsoft Authenticator alkalmazást az egyik [ellenőrzési módszerként](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings#verification-methods).
+Először is a rendszergazdának engedélyeznie kell [az alkalmazás használatát hitelesítő adatként](../../active-directory/authentication/howto-authentication-passwordless-phone.md) a bérlőn a Windows PowerShell használatával. A rendszergazdának engedélyeznie kell a végfelhasználók számára az Azure multi-Factor Authentication (Azure MFA) használatát, és konfigurálnia kell az Microsoft Authenticator alkalmazást az egyik [ellenőrzési módszerként](../../active-directory/authentication/howto-mfa-mfasettings.md#verification-methods).
 
-A végfelhasználóknak le kell [tölteniük és telepíteniük](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) kell a Microsoft Authenticator alkalmazást, és [be kell állítania](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app) a fiókját, hogy a Microsoft Authenticator alkalmazást használják az ellenőrzési módszerek egyikének.
+A végfelhasználóknak le kell [tölteniük és telepíteniük](../../active-directory/user-help/user-help-auth-app-download-install.md) kell a Microsoft Authenticator alkalmazást, és [be kell állítania](../../active-directory/user-help/security-info-setup-auth-app.md) a fiókját, hogy a Microsoft Authenticator alkalmazást használják az ellenőrzési módszerek egyikének.
 
 > [!VIDEO https://www.youtube.com/embed/uWbkLuI4g30]
 
@@ -184,7 +184,7 @@ Microsoft Authenticator a jelszóval nem rendelkező hitelesítés a vállalati 
 
 #### <a name="user-manages-their-passwordless-sign-in-with-microsoft-authenticator-credentials"></a>A felhasználó Microsoft Authenticator hitelesítő adataival kezelheti a jelszó nélküli bejelentkezést
 
-A [kombinált regisztrációval](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)a felhasználók regisztrálhatják és igénybe vehetik az Azure multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás előnyeit. A felhasználók regisztrálják és kezelhetik ezeket a beállításokat a [saját profil lapon](https://aka.ms/mysecurityinfo)való navigálással. A SSPR engedélyezése mellett a kombinált regisztráció több hitelesítési módszert és műveletet is támogat.
+A [kombinált regisztrációval](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)a felhasználók regisztrálhatják és igénybe vehetik az Azure multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás előnyeit. A felhasználók regisztrálják és kezelhetik ezeket a beállításokat a [saját profil lapon](https://aka.ms/mysecurityinfo)való navigálással. A SSPR engedélyezése mellett a kombinált regisztráció több hitelesítési módszert és műveletet is támogat.
 
 ## <a name="fido2-security-keys"></a>FIDO2 biztonsági kulcsok
 
@@ -228,7 +228,7 @@ Azt is javasoljuk, hogy minden szervezet hozzon létre egy protokollt a felhaszn
 
 Habár a rendszergazdák [manuálisan](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable) is kiépíthetik a kulcsokat, és eloszthatják azokat a végfelhasználók számára, az [Intune](https://docs.microsoft.com/intune/windows-enrollment-methods)-ban az FIDO2 hitelesítő adatok szolgáltatóját a Windows 10 zárolási képernyőjén fogja támogatni. A rendszergazdáknak a [Azure Portal](https://portal.azure.com/) használatával is engedélyeznie kell a hardveres jogkivonat-eszközöket a jelszóval nem rendelkező hitelesítési módszerként.
 
-A FIDO2 biztonsági kulcsainak telepítése azt is megköveteli, hogy a felhasználók a kulcsokat a [kombinált regisztráció](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)használatával regisztrálják. A kombinált regisztrációval a felhasználók egyszer regisztrálhatnak, és az Azure multi-Factor Authentication és az egyszeri bejelentkezési jelszó alaphelyzetbe állítása (SSPR) előnyeit élvezheti.
+A FIDO2 biztonsági kulcsainak telepítése azt is megköveteli, hogy a felhasználók a kulcsokat a [kombinált regisztráció](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)használatával regisztrálják. A kombinált regisztrációval a felhasználók egyszer regisztrálhatnak, és az Azure multi-Factor Authentication és az egyszeri bejelentkezési jelszó alaphelyzetbe állítása (SSPR) előnyeit élvezheti.
 
 A hardveres token alapértelmezett multi-Factor Authentication módszerként való kiválasztásán kívül ajánlott egy további ellenőrzési lehetőség is.
 
@@ -342,5 +342,5 @@ A modern, többtényezős hitelesítési technológiák, például a biometria �
 
 ## <a name="next-steps"></a>További lépések
 
-* A [jelszó](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless) nélküli tartalom áttekintése
+* A [jelszó](../../active-directory/authentication/concept-authentication-passwordless.md) nélküli tartalom áttekintése
 * [Jelszó engedélyezése az Azure AD-ben](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)

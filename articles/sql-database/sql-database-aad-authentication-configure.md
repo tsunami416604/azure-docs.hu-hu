@@ -12,10 +12,10 @@ ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: b6414ac41b1bb43e3fe1470a7ae2b1358126003a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68569682"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Azure Active Directory hitelesítés konfigurálása és kezelése SQL-sel
@@ -351,7 +351,7 @@ Ezt a módszert akkor használja, ha Azure ad-beli egyszerű névvel csatlakozik
 Ezzel a módszerrel a natív vagy összevont Azure AD-felhasználók számára az Azure AD-vel végezhet hitelesítést az SQL DB/DW használatával. Egy natív felhasználó az Azure AD-ben explicit módon jön létre, és felhasználónévvel és jelszóval van hitelesítve, míg egy összevont felhasználó egy olyan Windows-felhasználó, amelynek tartományát az Azure AD-vel összevonták. Az utóbbi módszer (felhasználói & jelszó használata) akkor használható, ha a felhasználó Windows-hitelesítő adatait szeretné használni, de a helyi számítógép nincs csatlakoztatva a tartományhoz (például egy távelérés használatával). Ebben az esetben a Windows-felhasználó megadhatja a tartományi fiókját és jelszavát, és az összevont hitelesítő adatok használatával hitelesítheti magát az SQL DB/DW-ben.
 
 1. Indítsa el Management Studio vagy az adateszközöket, és a **Kapcsolódás a kiszolgálóhoz** (vagy a **Kapcsolódás az adatbázis**-kezelőhöz) párbeszédpanel **hitelesítés** mezőjében válassza a **Active Directory-Password**lehetőséget.
-2. A Felhasználónév **mezőbe írja** be a Azure Active Directory felhasználónevét a **Felhasználónév\@domain.com**formátumban. A felhasználónévnek a Azure Active Directory vagy egy olyan fiókból kell származnia, amely a Azure Active Directory összevonása.
+2. A Felhasználónév mezőbe írja be a Azure Active Directory felhasználónevét a **Felhasználónév\@domain.com**formátumban. A felhasználónévnek a Azure Active Directory vagy egy olyan fiókból kell származnia, amely a Azure Active Directory összevonása.
 3. A **jelszó** mezőbe írja be a Azure Active Directory fiók vagy összevont tartományi fiók felhasználói jelszavát.
 
     ![AD jelszó-hitelesítés kiválasztása][12]

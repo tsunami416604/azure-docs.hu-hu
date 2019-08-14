@@ -1,6 +1,6 @@
 ---
-title: Az Azure Security Center és Azure SQL Database szolgáltatás |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan a Security Center segíthet az Azure SQL Database-ben az adatbázisok védelmét.
+title: Azure Security Center és Azure SQL Database szolgáltatás | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan segítheti a Security Center az adatbázisok védelmét Azure SQL Databaseokban.
 services: sql-database
 documentationcenter: na
 author: rkarlin
@@ -15,97 +15,97 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: rkarlin
 ms.openlocfilehash: 0a889de79b6a5921007614dac8d610c1be0222d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60704554"
 ---
-# <a name="azure-security-center-and-azure-sql-database-service"></a>Az Azure Security Center és Azure SQL Database szolgáltatás
+# <a name="azure-security-center-and-azure-sql-database-service"></a>Azure Security Center és Azure SQL Database szolgáltatás
 [Az Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) lehetővé teszi a fenyegetések megelőzését, észlelését és kezelését. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.
 
-Ez a cikk bemutatja, hogyan a Security Center segíthet az Azure SQL Database-ben az adatbázisok védelmét.
+Ez a cikk bemutatja, hogyan segítheti a Security Center az adatbázisok védelmét Azure SQL Databaseokban.
 
 ## <a name="why-use-security-center"></a>Miért használja a Security Centert?
-Security Center segítségével védheti az adatokat SQL Database-ben azáltal, hogy a kiszolgálók és adatbázisok biztonsági. A Security Center segítségével:
+A Security Center a SQL Database az adatvédelmet segíti az összes kiszolgáló és adatbázis biztonságának biztosításával. A Security Center a következőket teheti:
 
-* SQL Database-titkosítás és naplózás házirendeket határozhat meg.
-* SQL-adatbázis-erőforrások figyelése az összes előfizetésére.
-* Gyorsan azonosíthatja és biztonsági problémák elhárítására.
-* A riasztásainak integrálása [Azure SQL Database fenyegetésészlelési](../sql-database/sql-database-threat-detection.md).
+* Szabályzatok meghatározása a SQL Database titkosításhoz és a naplózáshoz.
+* SQL Database erőforrások biztonságának figyelése az összes előfizetésében.
+* Gyorsan azonosíthatja és elháríthatja a biztonsági problémákat.
+* Riasztások integrálása [Azure SQL Database veszélyforrások észlelésével](../sql-database/sql-database-threat-detection.md).
 
-Az SQL Database-erőforrások védelmének elősegítése, a Security Center is nyújt biztonsági felügyeletében és kezelésében az Azure virtual machines, Cloud Services, alkalmazásszolgáltatások, virtuális hálózatok és több. További tudnivalók a Security Center [Itt](security-center-intro.md).
+A SQL Database erőforrásainak védelme mellett a Security Center az Azure Virtual Machines, a Cloud Services, a App Services, a Virtual Network és más rendszerek biztonsági monitorozását és kezelését is lehetővé teszi. További információ a Security Centerről. [](security-center-intro.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
-A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. A Security Center ingyenes szintjét engedélyezve van az előfizetéséhez. További információ a Security Center ingyenes és Standard szint: [Security Center díjszabását](https://azure.microsoft.com/pricing/details/security-center/).
+A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. A Security Center ingyenes szintje engedélyezve van az előfizetésében. A Security Center ingyenes és standard csomagjaival kapcsolatos további információkért tekintse meg a [Security Center díjszabását](https://azure.microsoft.com/pricing/details/security-center/).
 
-A Security Center támogatja a szerepköralapú hozzáférés. Szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-ban kapcsolatos további információkért lásd: [Azure Active Directory szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md). A Security Center – gyakori kérdések információt nyújt az [engedélyek kezelésének módja a Security Center](security-center-faq.md#permissions).
+A Security Center támogatja a szerepköralapú hozzáférést. További információ az Azure-beli szerepköralapú hozzáférés-vezérlésről (RBAC): [Azure Active Directory szerepköralapú Access Control](../role-based-access-control/role-assignments-portal.md). A Security Center GYIK információt nyújt arról [, hogy az engedélyek hogyan kezelhetők](security-center-faq.md#permissions)a Security Centerokban.
 
 ## <a name="access-security-center"></a>A Security Center elérése
-A Security Center az [Azure Portalról](https://azure.microsoft.com/features/azure-portal/) érhető el. [Jelentkezzen be a portálra](https://portal.azure.com/) , és válassza ki a **a Security Center beállítás**.
+A Security Center az [Azure Portalról](https://azure.microsoft.com/features/azure-portal/) érhető el. [Jelentkezzen be a portálra](https://portal.azure.com/) , és válassza a **Security Center lehetőséget**.
 
-![A Security Center lehetőség][1]
+![Security Center lehetőség][1]
 
-A **a Security Center** panel nyílik meg.
-![A Security Center panel][2]
+Megnyílik a **Security Center** panel.
+![Security Center panel][2]
 
 ## <a name="set-security-policy"></a>Biztonsági házirend beállítása
-Biztonsági szabályzat határozza meg, az adott előfizetésen vagy erőforráscsoporton belüli erőforrások ajánlott vezérlők. A Security Centerben az előfizetések vagy erőforráscsoportok a vállalat biztonsági igényeinek és az alkalmazások típusához vagy az egyes előfizetések adatainak érzékenysége alapján házirendeket határozhat meg.
+A biztonsági szabályzat határozza meg a megadott előfizetésben vagy erőforráscsoporthoz lévő erőforrásokhoz ajánlott vezérlők készletét. Security Center a vállalata biztonsági igényeinek és az egyes előfizetésekben szereplő alkalmazások típusának vagy az adatmennyiségnek az alapján határozza meg a szabályzatokat az előfizetésekhez vagy az erőforrás-csoportokhoz.
 
-Beállíthat egy szabályzatot, amely az SQL-naplózás és az SQL transzparens adattitkosítás (TDE) javaslatok megjelenítése.
+Beállíthat egy szabályzatot az SQL audit és az SQL transzparens adattitkosítás (TDE) javaslatainak megjelenítéséhez.
 
-* Ha bekapcsolja a **SQL-naplózás és Fenyegetésészlelés**, a Security Center javasolja, hogy az Azure Database-hozzáférések naplózása engedélyezve a megfelelés, a jobb észlelés és a támadások hatékonyabb kivizsgálásához.
-* Ha bekapcsolja a **SQL transzparens adattitkosítás**, a Security Center javasolja, hogy a titkosítás inaktív állapotban engedélyezni az Azure SQL Database, az azokhoz kapcsolódó biztonsági mentési és a tranzakciós naplófájlokat.
+* Ha bekapcsolja az **SQL-naplózást és a fenyegetések észlelését**, Security Center javasolja, hogy a megfelelőség, a speciális észlelés és a vizsgálat érdekében engedélyezze az Azure Database-hez való hozzáférés naplózását.
+* Ha bekapcsolja az **SQL transzparens**adattitkosítást, Security Center javasolja, hogy engedélyezze a titkosítást a Azure SQL Database, a társított biztonsági másolatok és a tranzakciós naplófájlok számára.
 
-Biztonsági szabályzat beállításához válassza ki a **házirend** csempe a Security Center panel. Az a **biztonsági házirend** panelen válassza ki az előfizetést, amelyen szeretné engedélyezni a biztonsági szabályzatot. Válassza ki **megelőzési szabályzat** kapcsolja **a** a biztonsági javaslatok láthatók, amelyet az előfizetésnél használni szeretne.
+Biztonsági házirend beállításához válassza ki a **szabályzat** csempét a Security Center panelen. A **biztonsági szabályzat** panelen válassza ki azt az előfizetést, amelyen engedélyezni szeretné a biztonsági házirendet. Válassza a **megelőzési szabályzat** lehetőséget, majd kapcsolja be az előfizetéshez használni kívánt biztonsági javaslatokat.
 ![Biztonsági szabályzat][3]
 
-További tudnivalókért lásd: [biztonsági szabályzatok beállítása](tutorial-security-policy.md).
+További információt a [biztonsági házirendek beállítása](tutorial-security-policy.md)című témakörben talál.
 
-## <a name="manage-security-recommendation"></a>Biztonsági javaslatok kezelése
+## <a name="manage-security-recommendation"></a>Biztonsági javaslat kezelése
 A Security Center rendszeresen elemzi az Azure-erőforrások biztonsági állapotát. A Security Center javaslatokat hoz létre, amikor lehetséges biztonsági réseket észlel. A javaslatok végigvezetik Önt a szükséges vezérlők konfigurálásának folyamatán.
 
-Biztonsági szabályzat beállítása után a Security Center elemzi a potenciális sebezhető pontokat azonosíthatja az erőforrások biztonsági állapotát. A javaslatok, minden sor egy adott javaslatot táblázatos formátumban jelennek meg. Referenciaként a következő táblázat használatával segítséget nyújtanak az Azure SQL Database, és az egyes javaslatok célja alkalmazásuk esetén azok a rendelkezésre álló kapcsolatos javaslatok megértése. Javaslat kiválasztásával megnyílik egy cikk, amely ismerteti a javaslat megvalósítása a Security Centerben.
+A biztonsági szabályzat beállítása után Security Center elemzi az erőforrások biztonsági állapotát a lehetséges sebezhetőségek azonosítása érdekében. A javaslatok táblázatos formátumban jelennek meg, ahol minden egyes sor egy adott javaslatot képvisel. A következő táblázat hivatkozásként szolgál a Azure SQL Database rendelkezésre álló javaslatainak megismeréséhez, és azt, hogy az egyes javaslatok hogyan alkalmazhatók. Egy javaslat kiválasztásával megtudhatja, hogyan valósítja meg a javaslatot a Security Centerban.
 
 | Ajánlás | Leírás |
 | --- | --- |
-| [Naplózás és Fenyegetésészlelés engedélyezése SQL-kiszolgálókon](security-center-enable-auditing-on-sql-servers.md) |Javasolja, hogy kapcsolja be a naplózás és fenyegetésészlelés az SQL Database-kiszolgálók. (Csak az SQL Database szolgáltatás. Nem tartalmazza a Microsoft SQL Server, a virtuális gépeken futó.) |
-| [Naplózás és Fenyegetésészlelés engedélyezése SQL-adatbázis](security-center-enable-auditing-on-sql-databases.md) |Javasolja, hogy kapcsolja be a naplózás és fenyegetésészlelés az SQL Database-adatbázisok. (Csak az SQL Database szolgáltatás. Nem tartalmazza a Microsoft SQL Server, a virtuális gépeken futó.) |
-| [Transzparens adattitkosítás engedélyezése](security-center-enable-transparent-data-encryption.md) |SQL-adatbázisok titkosításának engedélyezését javasolja. (Az SQL Database szolgáltatás csak.) |
+| [A naplózás és a veszélyforrások észlelésének engedélyezése az SQL-kiszolgálókon](security-center-enable-auditing-on-sql-servers.md) |Javasolja, hogy kapcsolja be SQL Database-kiszolgálók naplózását és a veszélyforrások észlelését. (Csak SQL Database szolgáltatás. Nem tartalmazza a virtuális gépeken futó Microsoft SQL Server.) |
+| [A naplózás és a veszélyforrások észlelésének engedélyezése SQL-adatbázisokon](security-center-enable-auditing-on-sql-databases.md) |Javasolja, hogy kapcsolja be SQL Database adatbázisok naplózását és a fenyegetések észlelését. (Csak SQL Database szolgáltatás. Nem tartalmazza a virtuális gépeken futó Microsoft SQL Server.) |
+| [Transzparens adattitkosítás engedélyezése](security-center-enable-transparent-data-encryption.md) |Javasolja, hogy engedélyezze az SQL-adatbázisok titkosítását. (Csak SQL Database szolgáltatás.) |
 
-Javaslatok az Azure-erőforrások megtekintéséhez válasszon a **javaslatok** csempe a Security Center panel. Az a **javaslatok** panelen válassza ki egyes javaslatokra kattintva részletesen. Ebben a példában válassza **engedélyezése naplózás és fenyegetésészlelés az SQL Server-kiszolgálók**.
+Ha szeretné megtekinteni az Azure-erőforrásokra vonatkozó javaslatokat, válassza a Security Center panel **javaslatok** csempéjét. A **javaslatok** panelen válasszon egy javaslatot a részletek megtekintéséhez. Ebben a példában válassza **a naplózás engedélyezése & veszélyforrások észlelése SQL**-kiszolgálókon lehetőséget.
 
 ![Javaslatok][4]
 
-Alább látható módon a Security Center jeleníti meg az SQL Server-kiszolgálók, naplózás és fenyegetésészlelés nincs engedélyezve. Naplózás bekapcsolása után beállíthatja a Fenyegetésészlelési beállításainak és az e-mail-beállítások biztonsági riasztást küld. A Fenyegetésészlelés riasztást küld, ha azt észleli a rendellenes adatbázis-tevékenységek, amely potenciálisan biztonsági fenyegetést az adatbázishoz. A riasztások jelennek meg a Security Center irányítópultján.
+Ahogy az alább látható, Security Center megjeleníti azokat az SQL-kiszolgálókat, amelyeken nincs engedélyezve a naplózás és a veszélyforrások észlelése. A naplózás bekapcsolását követően beállíthatja a veszélyforrások észlelési beállításait és az e-mail-beállításokat a biztonsági riasztások fogadására. A fenyegetések észlelése riasztást küld, ha rendellenes adatbázis-tevékenységeket észlel, amelyek az adatbázis potenciális biztonsági fenyegetéseit jelzik. A riasztások a Security Center irányítópulton jelennek meg.
 ![Naplózás és fenyegetésészlelés][5]
 
-Kövesse a [az Azure Portalon az SQL Database fenyegetésészlelési](../sql-database/sql-database-threat-detection-portal.md) bekapcsolása és fenyegetésészlelés konfigurálása, és konfigurálhatja a listáját, amely a rendellenes tevékenységek észlelésekor biztonsági riasztást fog kapni e-maileket.
+A fenyegetések észlelésének bekapcsolásához és konfigurálásához, valamint a rendellenes tevékenységek észlelése után a biztonsági riasztásokat fogadó e-mailek listájának konfigurálásához kövesse a SQL Database veszélyforrások észlelésének lépései című [részt a Azure Portal](../sql-database/sql-database-threat-detection-portal.md) .
 
-Javaslatok kapcsolatos további információkért lásd: [biztonsági javaslatok kezelése](security-center-recommendations.md).
+A javaslatokkal kapcsolatos további információkért lásd: [biztonsági javaslatok kezelése](security-center-recommendations.md).
 
-## <a name="monitor-security-health"></a>A biztonsági állapot figyelése
-Ha bekapcsolja az előfizetéshez tartozó erőforrásokra vonatkozó [biztonsági szabályzatokat](tutorial-security-policy.md), a Security Center elvégzi az erőforrások biztonsági elemzését, és azonosítja a potenciális sebezhető pontokat.  Az erőforrások biztonsági állapotát is megtekintheti a **erőforrás biztonsági állapota** csempére. Kattintva **adatok** a a **erőforrás biztonsági állapota** csempére a **adatforrások** panelt, amelynek SQL-javaslatok, például a naplózási és átlátható adatok nem engedélyezhető a titkosítás. Ezenfelül általános javaslatokat is talál itt az adatbázis állapotára vonatkozóan.
+## <a name="monitor-security-health"></a>Biztonsági állapot figyelése
+Ha bekapcsolja az előfizetéshez tartozó erőforrásokra vonatkozó [biztonsági szabályzatokat](tutorial-security-policy.md), a Security Center elvégzi az erőforrások biztonsági elemzését, és azonosítja a potenciális sebezhető pontokat.  Az erőforrások biztonsági állapotát az **erőforrás biztonsági** állapota csempén tekintheti meg. Amikor az **erőforrás biztonsági állapota** csempén az adatforrások elemre kattint, megnyílik az adaterőforrások panel az SQL-javaslatokkal olyan problémák esetén, mint a naplózás és az átlátható adattitkosítás. Ezenfelül általános javaslatokat is talál itt az adatbázis állapotára vonatkozóan.
 ![Erőforrás biztonsági állapota][6]
 
-További tudnivalókért lásd: [biztonsági állapotfigyelés](security-center-monitoring.md).
+További információ: [biztonsági állapot figyelése](security-center-monitoring.md).
 
-## <a name="manage-and-respond-to-security-alerts"></a>A biztonsági riasztások kezelése és a riasztásokra való válaszadás
-A Security Center automatikusan gyűjti, elemzi és integrálja naplóadatait [Azure SQL-Fenyegetésészlelés](../sql-database/sql-database-threat-detection.md), valamint a más Azure-erőforrások, a valós fenyegetések észlelése és a vakriasztások számának csökkentése érdekében. A Security Centerben megtekinthető a rangsorolt biztonsági riasztások listája, ezenkívül a probléma gyors vizsgálatára vonatkozó információk és a támadás elhárításával kapcsolatos javaslatok is megjelennek.
+## <a name="manage-and-respond-to-security-alerts"></a>Biztonsági riasztások kezelése és válaszlépések megtétele
+A Security Center automatikusan gyűjti, elemzi és integrálja az [Azure SQL Threat Detection](../sql-database/sql-database-threat-detection.md)és más Azure-erőforrások naplózási adatait a valós fenyegetések észlelése és a téves pozitív állapotok csökkentése érdekében. A Security Centerben megtekinthető a rangsorolt biztonsági riasztások listája, ezenkívül a probléma gyors vizsgálatára vonatkozó információk és a támadás elhárításával kapcsolatos javaslatok is megjelennek.
 
-Riasztások megtekintéséhez válassza ki a **biztonsági riasztások** csempe a Security Center panel. Az a **biztonsági riasztások** panelen, és válassza ki egy riasztást, további információ az események, amely kiváltotta a riasztást és mit, ha bármely, lépésről lépésre kell tennie a támadás elhárításával. Ebben a példában válassza **lehetséges SQL-injektálás**.
+A riasztások megtekintéséhez válassza a **biztonsági riasztások** csempét a Security Center panelen. A **biztonsági riasztások** panelen válassza ki a riasztást, ha többet szeretne megtudni a riasztást kiváltó eseményekről, valamint arról, hogy milyen lépéseket kell tennie a támadás kijavításához. Ebben a példában a **lehetséges SQL**-injektálást választjuk.
 ![Biztonsági riasztások][7]
 
-Alább látható módon a Security Center biztosít, amelyek áttekintést nyújtanak a célként megadott erőforrás, amikor a alkalmazni a riasztás kiváltó okáról további részleteket a forrás IP-címet, és a fenyegetés elhárítására vonatkozó javaslatok.
-![Potenciális SQL-injektálás][8]
+Ahogy az alább látható, Security Center további részleteket tartalmaz, amelyek betekintést nyújtanak a riasztás indítására, a célként megadott erőforrásra, a forrás IP-címére vonatkozó ajánlásokra, valamint a szervizeléssel kapcsolatos javaslatokra.
+![Lehetséges SQL-injektálás][8]
 
-További tudnivalókért lásd: [kezelése és válaszadás a biztonsági riasztások](security-center-managing-and-responding-alerts.md).
+További információ: [a biztonsági riasztások kezelése és válaszadás](security-center-managing-and-responding-alerts.md).
 
 ## <a name="next-steps"></a>További lépések
-* [A Security Center – gyakori kérdések](security-center-faq.md) – gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [A Security Center tervezéséhez és útmutató](security-center-planning-and-operations-guide.md) - kövesse az ismertetett lépések és feladatok optimalizálhatja a Security Center használatát a szervezet biztonsági igényeinek és felhőfelügyeleti modelljének alapján.
-* [Security Center által nyújtott adatbiztonság](security-center-data-security.md) – megtudhatja, hogyan a Security Center gyűjti és dolgozza fel az adatokat az Azure-erőforrások, például a konfigurációs adatokat, metaadatokat, eseménynaplókat, összeomlási memóriaképeket és további információ.
-* [Biztonsági incidensek kezelése](security-center-incident.md) – útmutató a Security Center a biztonsági funkcióinak használatával segítséget nyújt a biztonsági incidensek kezelése.
+* [Security Center GYIK](security-center-faq.md) – gyakori kérdések a szolgáltatás használatával kapcsolatban.
+* [Security Center tervezési és üzemeltetési útmutató](security-center-planning-and-operations-guide.md) : kövessen lépéseket és feladatokat, amelyekkel optimalizálhatja a Security Center használatát a szervezet biztonsági követelményei és a felhőalapú felügyeleti modell alapján.
+* [Security Center adatbiztonság](security-center-data-security.md) – megtudhatja, Security Center hogyan gyűjti össze és dolgozza fel az Azure-erőforrások adatait, beleértve a konfigurációs információkat, a metaadatokat, az eseménynaplókat, az összeomlási memóriaképeket és egyebeket.
+* [Biztonsági incidensek kezelése](security-center-incident.md) – megtudhatja, hogyan használhatja a Security Center biztonsági riasztási funkcióját, hogy segítséget nyújtson a biztonsági incidensek kezeléséhez.
 
 <!--Image references-->
 [1]: ./media/security-center-sql-database/security-center.png

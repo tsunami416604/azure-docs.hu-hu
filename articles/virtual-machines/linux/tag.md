@@ -1,6 +1,6 @@
 ---
-title: Egy Azure-beli Linuxos virtuális gép címkézése |} A Microsoft Docs
-description: További információ az Azure Resource Manager-alapú üzemi modellel létrehozott, egy Azure-beli Linuxos virtuális gép címkézése.
+title: Azure Linux rendszerű virtuális gép címkézése | Microsoft Docs
+description: Ismerje meg, hogyan címkézheti az Azure-ban létrehozott Azure Linux rendszerű virtuális gépeket a Resource Manager-alapú üzemi modell használatával.
 services: virtual-machines-linux
 documentationcenter: ''
 author: mmccrory
@@ -16,28 +16,28 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
 ms.openlocfilehash: 290105b4e5e3ac3337b0be1b7d437601223bdf68
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67708744"
 ---
-# <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Linux rendszerű virtuális gép címkézése Azure-ban
-Ez a cikk ismerteti a különböző módjai a Linux rendszerű virtuális gép címkézése Azure-ban a Resource Manager-alapú üzemi modellel. A címkék olyan felhasználó által definiált kulcs/érték párok, amelyeket közvetlenül az erőforrás vagy erőforráscsoport helyezhető. Az Azure jelenleg támogatja az erőforrás és erőforráscsoport legfeljebb 15 címkék. Címkék erőforrás elhelyezve a létrehozásakor vagy hozzáadni egy meglévő erőforrást. Ne feledje, csak a Resource Manager üzemi modell használatával létrehozott erőforrások címkék támogatottak.
+# <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Linux rendszerű virtuális gép címkézése az Azure-ban
+Ez a cikk az Azure-beli linuxos virtuális gépek Resource Manager-alapú üzemi modellel történő címkézésének különböző módszereit ismerteti. A címkék felhasználó által definiált kulcs/érték párok, amelyek közvetlenül egy erőforráson vagy erőforráscsoporton helyezhetők el. Az Azure jelenleg legfeljebb 15 címkét támogat erőforrás és erőforráscsoport szerint. A címkéket a létrehozáskor vagy egy meglévő erőforráshoz való hozzáadáskor lehet elhelyezni egy erőforráson. Vegye figyelembe, hogy a csak a Resource Manager-alapú üzemi modellel létrehozott erőforrások esetében támogatott a címkék használata.
 
 [!INCLUDE [virtual-machines-common-tag](../../../includes/virtual-machines-common-tag.md)]
 
-## <a name="tagging-with-azure-cli"></a>Az Azure CLI-vel címkézése
+## <a name="tagging-with-azure-cli"></a>Címkézés az Azure CLI-vel
 
-Első lépésként kell a legújabb [Azure CLI-vel](/cli/azure/install-azure-cli) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az-login).
+Első lépésként telepítenie kell a legújabb [Azure CLI](/cli/azure/install-azure-cli) -t, és be kell jelentkeznie egy Azure-fiókba az [az login](/cli/azure/reference-index#az-login)használatával.
 
-Az összes tulajdonság egy adott virtuális gép, a címkéket, beleértve a következő paranccsal tekintheti meg:
+A következő parancs használatával megtekintheti az adott virtuális gép összes tulajdonságát, beleértve a címkéket is:
 
 ```azurecli
 az vm show --resource-group MyResourceGroup --name MyTestVM
 ```
 
-Adjon hozzá egy új virtuális gép címke az Azure CLI-n keresztül, használhatja a `azure vm update` parancsot a címke paraméterrel együtt **--beállítása**:
+Ha új virtuálisgép-címkét szeretne hozzáadni az Azure CLI-n keresztül, `azure vm update` használja a parancsot a címke paraméterrel együtt – **set**:
 
 ```azurecli
 az vm update \
@@ -46,19 +46,19 @@ az vm update \
     --set tags.myNewTagName1=myNewTagValue1 tags.myNewTagName2=myNewTagValue2
 ```
 
-Címke eltávolításához használhatja a **--eltávolítása** paramétert a `azure vm update` parancsot.
+A címkék eltávolításához használhatja a **--Remove** paramétert a `azure vm update` parancsban.
 
 ```azurecli
 az vm update --resource-group MyResourceGroup --name MyTestVM --remove tags.myNewTagName1
 ```
 
-Most, hogy az erőforrások az Azure CLI és a portálon azt alkalmazott címkék, vessünk egy pillantást a használat részleteiről a számlázási portálon címkéinek megtekintéséhez.
+Most, hogy címkéket alkalmazottunk az erőforrásokhoz az Azure CLI-ben és a portálon, vessünk egy pillantást a használati adatokra, hogy megtekintsék a címkéket a számlázási portálon.
 
 [!INCLUDE [virtual-machines-common-tag-usage](../../../includes/virtual-machines-common-tag-usage.md)]
 
 ## <a name="next-steps"></a>További lépések
-* Az Azure-erőforrások címkézése kapcsolatos további információkért lásd: [Azure Resource Manager áttekintése][Azure Resource Manager Overview] and [Using Tags to organize your Azure Resources][Using Tags to organize your Azure Resources].
-* Hogyan címkék segít Önnek az Azure-erőforrások kezeléséhez, olvassa el [az Azure-elszámolások ismertetése][Understanding your Azure Bill] and [Gain insights into your Microsoft Azure resource consumption][Gain insights into your Microsoft Azure resource consumption].
+* Az Azure-erőforrások címkézésével kapcsolatos további információkért lásd: [Azure Resource Manager áttekintése][Azure Resource Manager Overview] és [címkék használata az Azure-erőforrások rendszerezéséhez][Using Tags to organize your Azure Resources].
+* Ha szeretné megtekinteni, hogyan segíthetnek az Azure-erőforrások használatának kezelésében, tekintse meg [Az Azure-számla megismerése][Understanding your Azure Bill] és [a Microsoft Azure erőforrás-felhasználás][Gain insights into your Microsoft Azure resource consumption]betekintését ismertető témakört.
 
 [Azure CLI environment]: ../../azure-resource-manager/xplat-cli-azure-resource-manager.md
 [Azure Resource Manager Overview]: ../../azure-resource-manager/resource-group-overview.md

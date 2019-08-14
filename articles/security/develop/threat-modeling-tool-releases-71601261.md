@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: jegeib
-ms.openlocfilehash: 3f857fd50fcaf926486b6ea480f87bcc4c690f45
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: d9c91752a599debcd8fda6c8396141e6a92e0f06
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727978"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928105"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>A fenyegetésmodellezési eszköz frissített kiadása: 7.1.60126.1 – 1/29/2019
 
@@ -66,7 +66,7 @@ A Windows 10 Enterprise LTSB (1507-es verzió) azon felhasználói, akik telepí
 
 ## <a name="documentation-and-feedback"></a>Dokumentáció és visszajelzés
 
-- A Threat Modeling Tool dokumentációja a [docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)található, és [az eszköz használatával](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started)kapcsolatos információkat tartalmaz.
+- A Threat Modeling Tool dokumentációja a [docs.microsoft.com](threat-modeling-tool.md)található, és [az eszköz használatával](threat-modeling-tool-getting-started.md)kapcsolatos információkat tartalmaz.
 
 ## <a name="next-steps"></a>További lépések
 

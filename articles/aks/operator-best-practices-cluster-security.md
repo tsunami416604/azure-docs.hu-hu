@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
 ms.openlocfilehash: d4a77fc1756b0fa9decb6d3a84760beb1e700863
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67614896"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások Fürtbiztonság és frissítése az Azure Kubernetes Service (AKS)
@@ -26,7 +26,7 @@ Ez a cikk az AKS-fürt biztonságossá tétele összpontosít. Az alábbiak vég
 > * A legújabb Kubernetes AKS-fürt frissítése
 > * A mai napig tartani a csomópontok frissítése, és automatikusan alkalmazza a biztonsági javítások
 
-Ajánlott eljárások is olvashatja [kép tárolókezelés][best-practices-container-image-management] and for [pod security][best-practices-pod-security].
+Olvassa el a tárolók képkezelésével [][best-practices-container-image-management] és a [Pod biztonsággal][best-practices-pod-security]kapcsolatos ajánlott eljárásokat is.
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>Biztonságos hozzáférés API-t kiszolgáló és fürt csomópontjain
 
@@ -42,26 +42,26 @@ Használja a Kubernetes RBAC és az Azure AD-integráció az API-kiszolgáló bi
 
 Az ajánlott eljárás, hogy a csoportok használatával adja meg a fájlok és mappák egyéni identitást és a hozzáférést, az Azure AD használata *csoport* kötést létrehozni a felhasználók helyett egyéni RBAC-szerepkörök tagsági *felhasználók*. A felhasználó csoporttagsági változások, mint a hozzáférési engedélyeik az AKS-fürtön szeretné módosítsa ennek megfelelően. Ha a felhasználó közvetlenül a szerepkör kötött, a feladat függvény változhatnak. Az Azure ad-ben csoporttagságok frissítené, de az AKS-fürtöt az engedélyeket, amelyek nem tükrözik. Ebben a forgatókönyvben a felhasználó említi engedély megadása a felhasználónak van szüksége több engedélyt.
 
-Az Azure AD-integrációs és RBAC kapcsolatos további információkért lásd: [gyakorlati tanácsok a hitelesítés és engedélyezés az aks-ben][aks-best-practices-identity].
+Az Azure AD-integrációval és a RBAC kapcsolatos további információkért lásd: [ajánlott eljárások a hitelesítéshez és engedélyezéshez az AK-ban][aks-best-practices-identity].
 
 ## <a name="secure-container-access-to-resources"></a>Biztonságos tároló erőforrásokhoz való hozzáférés
 
 **Ajánlott eljárásokkal kapcsolatos útmutatás** -tárolók által elvégezhető műveletek való hozzáférés korlátozásához. Adja meg a legkevésbé száma engedélyeket, és elkerülheti a legfelső szintű használatát / emelt szintű kiterjesztés.
 
-Ugyanolyan módon, hogy adja meg az felhasználókat és csoportokat a legalacsonyabb jogosultságok száma szükséges tárolókat is kell korlátozni, csak a műveletek és a szükséges folyamatokat. A támadás veszélyét minimalizálása érdekében ne konfiguráljon alkalmazásokat és tárolókat, amelyek eszkalált jogosultságokat igénylő, vagy a legfelső szintű hozzáférést. Ha például `allowPrivilegeEscalation: false` a pod-jegyzékfájlban. Ezek *pod biztonsági környezetben* beépített Kubernetes és a segítségével meghatározhatja, például a felhasználó vagy csoport futtathat, további engedélyeket, vagy milyen Linux funkciók elérhetővé. További információ az ajánlott eljárásokról,: [erőforrásokhoz való hozzáférés biztonságos pod][pod-security-contexts].
+Ugyanolyan módon, hogy adja meg az felhasználókat és csoportokat a legalacsonyabb jogosultságok száma szükséges tárolókat is kell korlátozni, csak a műveletek és a szükséges folyamatokat. A támadás veszélyét minimalizálása érdekében ne konfiguráljon alkalmazásokat és tárolókat, amelyek eszkalált jogosultságokat igénylő, vagy a legfelső szintű hozzáférést. Ha például `allowPrivilegeEscalation: false` a pod-jegyzékfájlban. Ezek *pod biztonsági környezetben* beépített Kubernetes és a segítségével meghatározhatja, például a felhasználó vagy csoport futtathat, további engedélyeket, vagy milyen Linux funkciók elérhetővé. További ajánlott eljárások: [biztonságos Pod-hozzáférés az erőforrásokhoz][pod-security-contexts].
 
-Részletesebb vezérléshez tároló műveleteket, használhatja a beépített Linux biztonsági funkciók például *AppArmor* és *seccompot*. Ezeket a funkciókat a csomópont szintjén megadott, és ezután a pod jegyzékfájl keresztül megvalósított. Beépített Linux biztonsági funkciók a Linux-csomópontok és a podok csak érhetők el.
+Részletesebb vezérléshez tároló műveleteket, használhatja a beépített Linux biztonsági funkciók például *AppArmor* és *seccompot*. Ezeket a funkciókat a csomópont szintjén megadott, és ezután a pod jegyzékfájl keresztül megvalósított. A beépített linuxos biztonsági funkciók csak Linux-csomópontokon és hüvelyeken érhetők el.
 
 > [!NOTE]
-> Kubernetes-környezetekből AKS vagy máshol, nem teljesen biztonságos megerősítve a rosszindulatú több-bérlős alkalmazásokhoz. További biztonsági szolgáltatások, például a *AppArmor*, *seccompot*, *Pod biztonsági házirendek*, vagy további részletes szerepköralapú hozzáférés-vezérlést (RBAC) csomópontok azokat kihasználó támadások ellen sokkal nehezebb. Igaz biztonsági megerősítve a rosszindulatú több-bérlős-alapú számítási feladatait, azonban a hipervizort, hogy bízzon meg biztonsági csak szintjét. A Kubernetes esetében a biztonsági tartományához lesz a teljes fürtöt, nem az egyes csomópontok. Az ilyen típusú megerősítve a rosszindulatú több-bérlős számítási feladatokhoz fizikailag elkülönített fürtök kell használnia.
+> A Kubernetes-környezetek (ak-ban vagy máshol) nem teljesen biztonságosak az ellenséges, több-bérlős használatra. A csomópontok további biztonsági funkciói, például a *AppArmor*, a *seccompot*, a *Pod biztonsági házirendek*, vagy a csomópontok részletes, SZEREPKÖRALAPÚ hozzáférés-vezérlése (RBAC) nehezebbé teszik a kiaknázást. Azonban az ellenséges, több-bérlős számítási feladatok futtatásakor a megfelelő biztonság érdekében a hypervisor az egyetlen biztonsági szint, amelyet megbízhatónak tart. A Kubernetes biztonsági tartománya a teljes fürtvé válik, nem önálló csomópontként. Az ilyen típusú ellenséges több-bérlős munkaterhelések esetében fizikailag elkülönített fürtöket kell használnia.
 
 ### <a name="app-armor"></a>Alkalmazás-motor
 
-A tárolók által elvégezhető műveletek korlátozásához használja a [AppArmor][k8s-apparmor] Linux kernel biztonsági modult. AppArmor érhető el az alapul szolgáló operációs rendszer, az AKS csomópont részeként, és alapértelmezés szerint engedélyezve van. Létrehozhat AppArmor profilok, amelyek korlátozzák a műveletek például olvasási, írási, vagy hajtsa végre, vagy a rendszer funkciók, például fájlrendszerekre csatlakoztatására. Alapértelmezett AppArmor profilok különféle való hozzáférés korlátozása `/proc` és `/sys` helyeket, és adja meg az alapul szolgáló csomópontból tárolók logikailag el azt. AppArmor azzal a Linux rendszeren, nem csak a Kubernetes-podok futó alkalmazások esetében működik.
+A tárolók által elvégezhető műveletek korlátozásához használhatja a [AppArmor][k8s-apparmor] Linux kernel biztonsági modulját. AppArmor érhető el az alapul szolgáló operációs rendszer, az AKS csomópont részeként, és alapértelmezés szerint engedélyezve van. Létrehozhat AppArmor profilok, amelyek korlátozzák a műveletek például olvasási, írási, vagy hajtsa végre, vagy a rendszer funkciók, például fájlrendszerekre csatlakoztatására. Alapértelmezett AppArmor profilok különféle való hozzáférés korlátozása `/proc` és `/sys` helyeket, és adja meg az alapul szolgáló csomópontból tárolók logikailag el azt. AppArmor azzal a Linux rendszeren, nem csak a Kubernetes-podok futó alkalmazások esetében működik.
 
 ![Az AKS-fürt tároló műveletek korlátozására használt AppArmor profilok](media/operator-best-practices-container-security/apparmor.png)
 
-Művelet AppArmor megtekintéséhez a következő példában létrehozunk egy profilt, amely megakadályozza, hogy a fájlok írása. [SSH][aks-ssh] egy AKS-csomópontra, majd hozzon létre egy fájlt *megtagadása write.profile* , és illessze be az alábbi tartalommal:
+Művelet AppArmor megtekintéséhez a következő példában létrehozunk egy profilt, amely megakadályozza, hogy a fájlok írása. [SSH][aks-ssh] -t egy AK-csomópontra, majd hozzon létre egy *deny-Write. profil* nevű fájlt, és illessze be az alábbi tartalmat:
 
 ```
 #include <tunables/global>
@@ -98,13 +98,13 @@ spec:
     command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]
 ```
 
-Üzembe helyezés a minta pod a [a kubectl a alkalmazni][kubectl-apply] parancsot:
+A minta Pod üzembe helyezése a [kubectl Apply][kubectl-apply] parancs használatával:
 
 ```console
 kubectl apply -f aks-apparmor.yaml
 ```
 
-A pod üzembe helyezve, a használatakor a [kubectl exec][kubectl-exec] parancs egy fájlba írni. A parancs nem hajtható végre, az alábbi példa kimenetében látható módon:
+Az üzembe helyezett Pod használatával a [kubectl exec][kubectl-exec] paranccsal írhat fájlba. A parancs nem hajtható végre, az alábbi példa kimenetében látható módon:
 
 ```
 $ kubectl exec hello-apparmor touch /tmp/test
@@ -113,13 +113,13 @@ touch: /tmp/test: Permission denied
 command terminated with exit code 1
 ```
 
-AppArmor kapcsolatos további információkért lásd: [AppArmor profilokat a Kubernetes][k8s-apparmor].
+További információ a AppArmor: [AppArmor-profilok a Kubernetes-ben][k8s-apparmor].
 
 ### <a name="secure-computing"></a>Biztonságos számítástechnika
 
-Amíg AppArmor működik minden olyan Linux-alkalmazás [seccompot (*mp*letek *comp*veletterv)][seccomp] a folyamat szintjén működik. Seccompot is egy Linux-kernel biztonsági modulra, és az AKS-csomópontok által használt Docker-modul által natívan támogatott. A seccompot a folyamat hívások tárolók által elvégezhető korlátozódnak. Szűrők, amelyek meghatározzák, milyen műveletek engedélyezéséhez vagy letiltásához hozzon létre, és a egy pod YAML-jegyzékfájlban jegyzetek használatával rendelje hozzá a seccompot szűrő. Ez az ajánlott eljárás szerint csak a tároló futtatásához szükséges minimális engedélyeket biztosítása, és nincs több igazítja.
+Míg a AppArmor bármely Linux-alkalmazás esetében működik, a [seccompot (*mp*ure *comp*uting)][seccomp] a folyamat szintjén működik. Seccompot is egy Linux-kernel biztonsági modulra, és az AKS-csomópontok által használt Docker-modul által natívan támogatott. A seccompot a folyamat hívások tárolók által elvégezhető korlátozódnak. Szűrők, amelyek meghatározzák, milyen műveletek engedélyezéséhez vagy letiltásához hozzon létre, és a egy pod YAML-jegyzékfájlban jegyzetek használatával rendelje hozzá a seccompot szűrő. Ez az ajánlott eljárás szerint csak a tároló futtatásához szükséges minimális engedélyeket biztosítása, és nincs több igazítja.
 
-Seccompot működés közben látni, hozzon létre egy szűrőt, amely megakadályozza, hogy a módosítás a fájl engedélyeit. [SSH][aks-ssh] egy AKS-csomópontra, majd hozzon létre nevű seccompot szűrő */var/lib/kubelet/seccomp/prevent-chmod* , és illessze be az alábbi tartalommal:
+Seccompot működés közben látni, hozzon létre egy szűrőt, amely megakadályozza, hogy a módosítás a fájl engedélyeit. [SSH][aks-ssh] -t egy AK-csomópontra, majd hozzon létre egy */var/lib/kubelet/seccomp/Prevent-chmod* nevű seccompot-szűrőt, és illessze be az alábbi tartalmat:
 
 ```
 {
@@ -154,13 +154,13 @@ spec:
   restartPolicy: Never
 ```
 
-Üzembe helyezés a minta pod a [a kubectl a alkalmazni][kubectl-apply] parancsot:
+A minta Pod üzembe helyezése a [kubectl Apply][kubectl-apply] parancs használatával:
 
 ```console
 kubectl apply -f ./aks-seccomp.yaml
 ```
 
-A podok használatával állapotának megtekintése a [kubectl get pods][kubectl-get] parancsot. A pod hibát jelez. A `chmod` parancs nem futtathatók a seccompot szűrővel az alábbi példa kimenetében látható módon:
+A hüvelyek állapotát a [kubectl Get hüvely][kubectl-get] parancs használatával tekintheti meg. A pod hibát jelez. A `chmod` parancs nem futtathatók a seccompot szűrővel az alábbi példa kimenetében látható módon:
 
 ```
 $ kubectl get pods
@@ -169,7 +169,7 @@ NAME                      READY     STATUS    RESTARTS   AGE
 chmod-prevented           0/1       Error     0          7s
 ```
 
-Elérhető szűrők kapcsolatos további információkért lásd: [Seccompot biztonsági profilok Docker][seccomp].
+További információ az elérhető szűrőkkel kapcsolatban: [seccompot biztonsági profilok a Docker-hez][seccomp].
 
 ## <a name="regularly-update-to-the-latest-version-of-kubernetes"></a>Rendszeresen frissíti a legújabb verzióra, kubernetes
 
@@ -177,43 +177,43 @@ Elérhető szűrők kapcsolatos további információkért lásd: [Seccompot biz
 
 Kubernetes-kiadások új szolgáltatások gyorsabb ütemben, mint a hagyományos infrastruktúra-platformok. Kubernetes-frissítések új funkciók és hibajavításokat és biztonsági javításokat tartalmazzák. Új funkciók általában haladjon át egy *alpha* , majd *béta* állapotát, mielőtt azok *stabil* és általánosan elérhető, és éles környezetben ajánlott. A kiadási ciklus lehetővé teszi a Kubernetes frissítése rendszeresen hajt végre, amikor a kompatibilitástörő változásokat, és a központi telepítések és sablonok módosítása nélkül.
 
-Az AKS Kubernetes négy kisebb verzióit támogatja. Ez azt jelenti, hogy amikor egy új alverzió javításverzió bemutatott, a legrégebbi kisebb verziója és a javítás kiadások támogatott kivezettük. Kubernetes kisebb frissítései rendszeres időközönként történik. Győződjön meg arról, hogy egy cégirányítási folyamat és a frissítést, mert így Ön nem esik a rendelkezésre állás támogatása szükséges. További információkért lásd: [AKS Kubernetes támogatott verziói][aks-supported-versions]
+Az AKS Kubernetes négy kisebb verzióit támogatja. Ez azt jelenti, hogy amikor egy új alverzió javításverzió bemutatott, a legrégebbi kisebb verziója és a javítás kiadások támogatott kivezettük. Kubernetes kisebb frissítései rendszeres időközönként történik. Győződjön meg arról, hogy egy cégirányítási folyamat és a frissítést, mert így Ön nem esik a rendelkezésre állás támogatása szükséges. További információ: [támogatott Kubernetes-verziók (ak][aks-supported-versions] )
 
-A fürt számára elérhető verziókról ellenőrzéséhez használja a [az aks get-frissítések][az-aks-get-upgrades] parancsot az alábbi példában látható módon:
+A fürthöz elérhető verziók ellenőrzését a következő példában látható módon tekintheti meg az az [AK Get-Upgrades][az-aks-get-upgrades] parancs használatával:
 
 ```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Ezután frissítheti az AKS fürt használata a [az aks frissítése][az-aks-upgrade] parancsot. A frissítési folyamat biztonságosan cordons és egyszerre csak egy csomópont kiüríti, ütemezi a többi csomópont podok és majd üzembe helyezi a legújabb operációs rendszer és a Kubernetes-verziókat futtató új csomópontot.
+Ezután az az [AK upgrade][az-aks-upgrade] paranccsal frissítheti az AK-fürtöt. A frissítési folyamat biztonságosan cordons és egyszerre csak egy csomópont kiüríti, ütemezi a többi csomópont podok és majd üzembe helyezi a legújabb operációs rendszer és a Kubernetes-verziókat futtató új csomópontot.
 
 ```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.11.8
 ```
 
-További információ a frissítések az aks-ben: [az aks-ben a Kubernetes támogatott verziók][aks-supported-versions] and [Upgrade an AKS cluster][aks-upgrade].
+További információ az AK-beli Frissítésekről: az [AK-ban támogatott Kubernetes-verziók][aks-supported-versions] és az AK- [fürtök frissítése][aks-upgrade].
 
-## <a name="process-linux-node-updates-and-reboots-using-kured"></a>Folyamat Linux csomópont frissíti, és újraindítja a kured használatával
+## <a name="process-linux-node-updates-and-reboots-using-kured"></a>Linux-csomópontok frissítésének és újraindításának feldolgozása a kured használatával
 
-**Ajánlott eljárásokkal kapcsolatos útmutatás** – AKS automatikusan letölti és telepíti biztonsági javításokat tartalmaz a minden egyes Linux-csomópontok, de nem automatikusan indítja újra szükség esetén. Használat `kured` tekintse meg a függőben lévő újraindul, majd biztonságosan Ez a három csomópontunk, és, hogy újraindítja a csomópontot a csomópont kiürítési, alkalmazza a frissítéseket, és az operációs rendszer megállapodást lehető legbiztonságosabb lehet. A Windows Server-csomópontok (jelenleg előzetes verzióban érhető el az aks-ben) rendszeresen hajt végre egy AKS-frissítési művelet biztonságosan Ez a három csomópontunk és kiürítési podok és frissített csomópontok üzembe helyezése.
+**Ajánlott eljárási útmutató** – az AK automatikusan letölti és telepíti a biztonsági javításokat minden Linux-csomóponton, de szükség esetén nem indul újra automatikusan. Használat `kured` tekintse meg a függőben lévő újraindul, majd biztonságosan Ez a három csomópontunk, és, hogy újraindítja a csomópontot a csomópont kiürítési, alkalmazza a frissítéseket, és az operációs rendszer megállapodást lehető legbiztonságosabb lehet. A Windows Server-csomópontok (jelenleg előzetes verzióban, az AK-ban) rendszeresen végrehajtanak egy AK-os frissítési műveletet, amely biztonságosan kiüríti a hüvelyeket, és telepíti a frissített csomópontokat
 
-Minden este, Linux-csomópontokat az aks-ben lekérése a biztonsági javítások a disztribúció frissítés csatornán keresztül érhető el. Mivel a csomópontok az AKS-fürt üzembe helyezése a rendszer automatikusan konfigurálja ezt a viselkedést. Megszakítás és a számítási feladatok lehetséges hatás minimalizálása érdekében csomópontok nem automatikusan indulnak újra, ha egy biztonsági javítás, vagy kernelfrissítés írja elő.
+Minden este az AK-ban található Linux-csomópontok a disztribúció frissítési csatornáján keresztül elérhető biztonsági javításokat kapnak. Mivel a csomópontok az AKS-fürt üzembe helyezése a rendszer automatikusan konfigurálja ezt a viselkedést. Megszakítás és a számítási feladatok lehetséges hatás minimalizálása érdekében csomópontok nem automatikusan indulnak újra, ha egy biztonsági javítás, vagy kernelfrissítés írja elő.
 
-A nyílt forráskódú [kured (démon a KUbernetes újraindítás)][kured] Weaveworks projektet figyeli a csomópont újraindítása függőben van. Egy Linux-csomópontot az újraindítást igénylő frissítések vonatkozik, amikor a csomópont biztonságosan szigetelve, és helyezze át, és a fürt többi csomópontjára a podok ütemezésének ürítve. A csomópont újraindul, miután felvettük a fürt és a Kubernetes folytatja a podok ütemezés be újra. Egyszerre csak egy csomópont leskálázáskor, újra kell indítani a megengedett `kured`.
+A nyílt forráskódú [kured (KUbernetes reboot Daemon)][kured] Project by Weaveworks figyeli a függőben lévő csomópontok újraindítását. Ha egy Linux-csomópont újraindítást igénylő frissítéseket alkalmaz, a csomópont biztonságos kiosztása és kivonása a fürt más csomópontjain lévő hüvelyek áthelyezésére és bevezetésére történik. A csomópont újraindul, miután felvettük a fürt és a Kubernetes folytatja a podok ütemezés be újra. Egyszerre csak egy csomópont leskálázáskor, újra kell indítani a megengedett `kured`.
 
 ![Az AKS csomópont újraindítási folyamatot kured használatával](media/operator-best-practices-cluster-security/node-reboot-process.png)
 
 Ha azt szeretné, hogy részletesebben időfelbontási szint vezérelheti az újraindítások mikor `kured` integrálható Prometheus, hogy az újraindítások, ha más karbantartási események vagy a fürt problémák folyamatban van. Ez az integráció további komplikációk minimálisra csökkenti a csomópontok újraindítással kapcsolatos egyéb problémák aktívan hibaelhárítás során.
 
-Csomópont újraindítása kezelése kapcsolatos további információkért lásd: [biztonsági és a kernel-frissítések alkalmazása a csomópontok az aks-ben][aks-kured].
+A csomópont-újraindítások kezelésével kapcsolatos további információkért lásd: [biztonsági és kernel-frissítések alkalmazása a csomópontokra az AK-ban][aks-kured].
 
 ## <a name="next-steps"></a>További lépések
 
 Ez a cikk az AKS-fürt biztonságossá tétele összpontosít. Néhány ilyen területet végrehajtásához a következő cikkekben talál:
 
-* [Azure Active Directory integrálása az aks-sel][aks-aad]
-* [A legújabb verzióra a kubernetes AKS-fürt frissítése][aks-upgrade]
-* [Folyamat biztonsági frissítések és a csomópont újraindul a kured][aks-kured]
+* [Azure Active Directory integrálása AK-val][aks-aad]
+* [AK-fürt frissítése a Kubernetes legújabb verziójára][aks-upgrade]
+* [Biztonsági frissítések és csomópont-újraindítások feldolgozása a kured][aks-kured]
 
 <!-- EXTERNAL LINKS -->
 [kured]: https://github.com/weaveworks/kured

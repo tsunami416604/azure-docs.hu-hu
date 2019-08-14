@@ -6,21 +6,21 @@ keywords: kódolás; kódolók; adathordozó
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 08/16/2019
+ms.date: 08/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 1f152f7f94c12beecf015d9389ed85cb310573bd
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6b9cb325f2bb7419e32efd5bde4705786c5dbeb5
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297727"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934932"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Ajánlott élő adatfolyam-kódolók
 
 Azure Media Services egy [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) (csatorna) az élő közvetítésre szánt tartalom feldolgozásához szükséges folyamatot jelöli. Az élő esemény két módon fogadja az élő bemeneti adatfolyamokat.
 
-* A helyszíni élő kódoló egy többszörös sávszélességű RTMP vagy Smooth Streaming (darabolt MP4) streamet küld az élő eseményre, amely nincs engedélyezve az élő kódolás végrehajtásához Media Services. A betöltött adatfolyamok további feldolgozás nélkül haladnak át az élő eseményeken. Ezt a metódust áteresztőnek nevezzük. Egy élő kódoló egyetlen sávszélességű streamet küldhet egy átmenő csatornára. Ez a konfiguráció nem ajánlott, mert nem teszi lehetővé az adaptív sávszélességű adatfolyam-továbbítást az ügyfél számára.
+* A helyszíni élő kódoló egy többszörös sávszélességű RTMP vagy Smooth Streaming (darabolt MP4) streamet küld az élő eseményre, amely nincs engedélyezve az élő kódolás végrehajtásához Media Services. A betöltött adatfolyamok további feldolgozás nélkül haladnak át az élő eseményeken. Ezt a metódustáteresztőnek nevezzük. Egy élő kódoló egyetlen sávszélességű streamet küldhet egy átmenő csatornára. Ez a konfiguráció nem ajánlott, mert nem teszi lehetővé az adaptív sávszélességű adatfolyam-továbbítást az ügyfél számára.
 
   > [!NOTE]
   > Az átmenő módszer használata a leggazdaságosabb módja az élő közvetítésnek.
@@ -89,7 +89,7 @@ Azure Media Services helyszíni kódoló partnerként a kódolót a nagyvállala
 2. Hozzon létre és indítsa el az **átmenő** élő eseményt. <br/> További információ: [élő események állapota és számlázása](live-event-states-billing.md).
 3. Töltse le a betöltési URL-címeket, és konfigurálja a helyszíni kódolót úgy, hogy az URL-cím használatával egy többszörös sávszélességű élő streamet küldjön Media Services.
 4. Szerezze be az előnézeti URL-címet, és annak ellenőrzéséhez, hogy a kódolóból érkező adatok fogadása ténylegesen megtörténik-e.
-5. Hozzon létre  egy új objektum objektumot.
+5. Hozzon létre egy új objektum objektumot.
 6. Hozzon létre egy **élő kimenetet** , és használja a létrehozott eszköz nevét.
 7. Hozzon létre egy **streaming** -keresőt a beépített **folyamatos átviteli házirend** -típusokkal.
 8. A **streaming-lokátor** elérési útjának listázása a használni kívánt URL-címek visszaszerzéséhez.
@@ -108,7 +108,7 @@ Azure Media Services helyszíni kódoló partnerként a kódolót a nagyvállala
 2. Hozza létre és indítsa el az élő **kódolás** élő eseményét. <br/> További információ: [élő események állapota és számlázása](live-event-states-billing.md).
 3. Szerezze be a betöltési URL-címeket, és konfigurálja a kódolót úgy, hogy egyetlen sávszélességű élő streamet továbbítson Media Services.
 4. Szerezze be az előnézeti URL-címet, és annak ellenőrzéséhez, hogy a kódolóból érkező adatok fogadása ténylegesen megtörténik-e.
-5. Hozzon létre  egy új objektum objektumot.
+5. Hozzon létre egy új objektum objektumot.
 6. Hozzon létre egy **élő kimenetet** , és használja a létrehozott eszköz nevét.
 7. Hozzon létre egy **streaming** -keresőt a beépített **folyamatos átviteli házirend** -típusokkal.
 8. A **streaming-lokátor** elérési útjának listázása a használni kívánt URL-címek visszaszerzéséhez.

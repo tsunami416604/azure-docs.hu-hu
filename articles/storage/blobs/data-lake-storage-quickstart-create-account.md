@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 07/19/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 2803b316585228fc6e4e6fd48d67f235e27f0a65
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f7c83e67c2162561aa579d38116f8ce01fceda9a
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847316"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014378"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Azure Data Lake Storage Gen2 Storage-fiók létrehozása
 
@@ -125,7 +125,7 @@ Először nyissa meg egy PowerShell-munkamenetet emelt szintű engedélyekkel.
 A Az.Storage modul telepítése
 
 ```powershell
-Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
+Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
 ```
 
 ### <a name="sign-in-to-your-azure-subscription"></a>Jelentkezzen be az Azure-előfizetésbe

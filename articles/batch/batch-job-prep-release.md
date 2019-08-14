@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: a85ced787529db7e6d607665d81632ab1c450dfe
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68466976"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Feladat-előkészítési és feladat-kiadási feladatok futtatása kötegelt számítási csomópontokon
@@ -69,7 +69,7 @@ A feladat-előkészítési feladat csak a feladat futtatására ütemezett csom�
 > 
 
 ## <a name="job-release-task"></a>Feladat kiadása tevékenység
-Ha egy feladat befejezettként van megjelölve, a feladat kiadási feladata a készlet minden olyan csomópontján fut, amely legalább egy feladatot végrehajt. A feladatot befejezettként kell megjelölni egy megszakítási kérelem kiállításával. A Batch szolgáltatás ezután a feladat állapotát leállítja *,* leállítja a feladathoz társított aktív vagy futó feladatokat, és futtatja a feladat kiadási feladatát. A feladatot ezután a *befejezett* állapotba helyezi.
+Ha egy feladat befejezettként van megjelölve, a feladat kiadási feladata a készlet minden olyan csomópontján fut, amely legalább egy feladatot végrehajt. A feladatot befejezettként kell megjelölni egy megszakítási kérelem kiállításával. A Batch szolgáltatás ezután a feladat állapotát leállítja, leállítja a feladathoz társított aktív vagy futó feladatokat, és futtatja a feladat kiadási feladatát. A feladatot ezután a *befejezett* állapotba helyezi.
 
 > [!NOTE]
 > A feladat törlése a feladat kiadási feladatát is végrehajtja. Ha azonban egy feladat már meg van szakítva, a kiadási feladat nem fut le Másodszor, ha a feladat később törlődik.

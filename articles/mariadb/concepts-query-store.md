@@ -1,181 +1,181 @@
 ---
-title: Azure Database for MariaDB a Query Store
-description: Ez a cikk ismerteti a Query Store szolgáltatás az Azure Database for MariaDB
+title: Lekérdezési tároló Azure Database for MariaDB
+description: Ez a cikk a Azure Database for MariaDB lekérdezés-tárolási szolgáltatását ismerteti.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 883f780059e38c53dedda309dd059cc714539f80
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 5d4d01f9f85c78d0e864ec9d11c1d8cd43542e57
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462092"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950632"
 ---
-# <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Azure Database monitorozása a Query Store MariaDB-teljesítmény
+# <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>A Azure Database for MariaDB teljesítményének figyelése a lekérdezési tárolóval
 
-**A következőkre vonatkozik:**  Azure Database for MariaDB 10.2
+**A következőkre vonatkozik:**  Azure Database for MariaDB 10,2
 
-> [!NOTE]
-> Query Store az előzetes verzióban.
+> [!IMPORTANT]
+> A lekérdezési tároló előzetes verzióban érhető el.
 
-A Query Store szolgáltatás Mariadb-hez készült Azure Database lehetővé teszi nyomon követheti a lekérdezési teljesítmény az idő függvényében. Query Store egyszerűbbé teszi a teljesítménnyel kapcsolatos hibaelhárítás segít gyorsan található leghosszabban futó és a leginkább erőforrás-igényes lekérdezéseket. Query Store automatikusan rögzíti a lekérdezések és a futásidejű statisztikája előzményeit, és megőrzi őket a felülvizsgálatra. Elválasztja a idő Windows adatokat, így láthatja, hogy az adatbázis használati mintái. Az összes felhasználó, adatbázisok és lekérdezések tárolódik a **mysql** séma-adatbázis az Azure Database for MariaDB-példány.
+Az Azure Database for MariaDB lekérdezés-tárolási funkciója lehetővé teszi a lekérdezési teljesítmény időbeli nyomon követését. A Query Store leegyszerűsíti a teljesítménnyel kapcsolatos hibaelhárítást, így gyorsan megtalálhatja a leghosszabb ideig futó és a legtöbb erőforrás-igényes lekérdezést. A Query Store automatikusan rögzíti a lekérdezések és a futásidejű statisztikák előzményeit, és megőrzi azokat az áttekintéshez. Elkülöníti az adatokat az időablakok alapján, hogy az adatbázis használati mintái láthatók legyenek. A rendszer az összes felhasználóra, adatbázisra és lekérdezésre vonatkozó, a Azure Database for MariaDB-példányban található **MySQL** Schema adatbázisban tárolja az összes felhasználót.
 
-## <a name="common-scenarios-for-using-query-store"></a>Általános forgatókönyvek a Query Store használata
+## <a name="common-scenarios-for-using-query-store"></a>A Query Store használatának gyakori forgatókönyvei
 
-A lekérdezéstár használható számos forgatókönyv esetében, beleértve a következőket:
+A lekérdezési tároló számos esetben használható, többek között a következőket:
 
 - Romlott lekérdezések észlelése
-- Amely meghatározza, hogy hányszor egy lekérdezést hajtott egy adott időtartományban
-- A lekérdezés átlagos végrehajtási idő összehasonlítása a különböző időtartományok nagy változásokat megtekintéséhez
+- A lekérdezések adott időintervallumban történő végrehajtása számának meghatározása
+- Lekérdezés átlagos végrehajtási idejének összevetése az időablakok között a nagy eltérések megjelenítéséhez
 
-## <a name="enabling-query-store"></a>Query Store engedélyezése
+## <a name="enabling-query-store"></a>A lekérdezési tároló engedélyezése
 
-Query Store az választható szolgáltatása, így azt nem aktív, alapértelmezés szerint a kiszolgálón. A lekérdezéstár engedélyezve van, vagy az egy adott kiszolgáló összes adatbázisára globálisan letiltani, és nem kapcsolható be- vagy kikapcsolása adatbázisonként.
+A lekérdezési tároló egy opt-in funkció, így alapértelmezés szerint nem aktív a kiszolgálón. A lekérdezési tár globálisan engedélyezett vagy le van tiltva az adott kiszolgálón lévő összes adatbázis esetében, és adatbázison nem kapcsolható be és ki.
 
-### <a name="enable-query-store-using-the-azure-portal"></a>Engedélyezze a Query Store az Azure portal használatával
+### <a name="enable-query-store-using-the-azure-portal"></a>A lekérdezési tároló engedélyezése a Azure Portal használatával
 
-1. Jelentkezzen be az Azure Portalon, és válassza ki az Azure Database for MariaDB-kiszolgáló.
-1. Válassza ki **kiszolgáló paramétereinek** a a **beállítások** a menü részét.
+1. Jelentkezzen be a Azure Portalba, és válassza ki a Azure Database for MariaDB-kiszolgálót.
+1. Válassza ki a **kiszolgáló paramétereit** a menü **Beállítások** szakaszában.
 1. Keresse meg a query_store_capture_mode paramétert.
-1. Állítsa az értékét az összes és **mentése**.
+1. Állítsa az értéket az összes értékre, és **mentse**.
 
-Várja meg a statisztika a Query Store engedélyezése:
+A várakozási statisztika engedélyezése a lekérdezési tárolóban:
 
 1. Keresse meg a query_store_wait_sampling_capture_mode paramétert.
-1. Állítsa az értékét az összes és **mentése**.
+1. Állítsa az értéket az összes értékre, és **mentse**.
 
-Lehetővé teszi az adatok megőrzéséhez a mysql-adatbázisban az első köteg akár 20 percig.
+Akár 20 percet is igénybe vehet, amíg a MySQL-adatbázisban megmarad az első köteg.
 
-## <a name="information-in-query-store"></a>A Query Store információk
+## <a name="information-in-query-store"></a>Információk a Query Store-ban
 
-Query Store két tárolók rendelkezik:
+A lekérdezési tároló két tárolót tartalmaz:
 
-- A lekérdezés-végrehajtás statisztikai adatok megőrzése tárolni egy futásidejének statisztikai adatait.
-- Várjon, amíg egy várakozási statisztika üzlet megőrzése statisztikai adatok.
+- Futásidejű statisztikai tároló a lekérdezés-végrehajtási statisztikai adatok megőrzéséhez.
+- Várakozási statisztikai tár a várakozó statisztikai adatok megőrzéséhez.
 
-Lemezterület-használat minimalizálása érdekében a futásidejű végrehajtási statisztika a futásidejű statisztikai tárolójában időkeretben egy rögzített, konfigurálható vannak összesítve. Ezekkel az áruházakkal található információk lekérdezésével a query store nézetek jelenik meg.
+A lemezterület-használat minimalizálásához a futásidejű statisztika tárolójában lévő futtatókörnyezet-végrehajtási statisztika egy rögzített, konfigurálható időablakban van összesítve. Az ezekben a tárolókban található információk láthatók a lekérdezési tár nézeteinek lekérdezésével.
 
-A következő lekérdezést a lekérdezésekkel kapcsolatos információkat a Query Store adja vissza:
+A következő lekérdezés adatokat ad vissza a lekérdezési tárolóban található lekérdezésekről:
 
 ```sql
 SELECT * FROM mysql.query_store;
 ```
 
-Vagy a lekérdezés várakozási statistics:
+Vagy a várakozási statisztikák lekérdezése:
 
 ```sql
 SELECT * FROM mysql.query_store_wait_stats;
 ```
 
-## <a name="finding-wait-queries"></a>Keresés várakozási lekérdezések
+## <a name="finding-wait-queries"></a>Várakozási lekérdezések keresése
 
-Várjon eseménytípusok különböző várakozási események egyesítendő hasonló a gyűjtőkbe. Query Store biztosít a várakozási esemény típusa, bizonyos várakozási esemény neve és a szóban forgó lekérdezés. Folyamatban van az alkalmazáslogikának, ezeket várja meg az információkat a lekérdezés futásidejű statisztikai azt jelenti, hogy mi járul hozzá, hogy a lekérdezési teljesítményt nyújt egy mélyrehatóbb ismereteket szerezhet.
+A várakozási eseménytípus hasonló módon kombinálja a különböző várakozási eseményeket a gyűjtők között. A lekérdezési tároló a várakozási esemény típusát, az adott várakozási esemény nevét és a kérdéses lekérdezést biztosítja. A várakozási idő és a lekérdezési futtatókörnyezet statisztikájának összekapcsolása azt jelenti, hogy mélyebben meg kell ismernie, hogy mi járul hozzá a teljesítmény jellemzőinek lekérdezéséhez.
 
-Az alábbiakban néhány példát, hogyan szerezhet a számítási feladatokhoz, a várakozási statisztikák a Query Store további betekintést:
+Íme néhány példa arra, hogyan szerezhet be több betekintést a számítási feladatokba a lekérdezési tároló várakozási statisztikájának használatával:
 
-| **Megfigyelés** | **Művelet** |
+| **Általi képernyőfigyelés** | **Művelet** |
 |---|---|
-|Magas zárolás várakozik | Ellenőrizze a lekérdezés szövegét az érintett lekérdezések, és a cél entitások azonosítása. Keresse meg a Query Store más lekérdezések módosítása ugyanazon entitás, amely gyakran hajtja végre, és/vagy nagy időtartama van. Ezek a lekérdezések azonosítása, után fontolja meg az alkalmazáslogika egyidejűségi javítására módosítja, vagy egy kevésbé korlátozó elkülönítési szintet használja. |
-|Magas puffer i/o-várakozások | A lekérdezések nagy számú fizikai olvasások található Query Store. Ha azok megfelelnek a lekérdezések magas i/o-vár, fontolja meg a vizsgálatok helyett az alapul szolgáló entitásra, ehhez index bemutatása kér. Ez lenne a i/o-terhelést lekérdezések minimalizálása érdekében. Ellenőrizze a **teljesítménnyel kapcsolatos javaslatok** a kiszolgáló a portálon, hogy vannak-e a kiszolgáló, amely akkor lekérdezések optimalizálásához ajánlott indexek megtekintéséhez. |
-|Magas memória vár | A felső memória-igényes lekérdezéseket a Query Store találja. Ezek a lekérdezések vannak valószínűleg késleltetése további az érintett lekérdezések előrehaladását. Ellenőrizze a **teljesítménnyel kapcsolatos javaslatok** a kiszolgáló a portálon, hogy vannak-e ezeket a lekérdezéseket szeretné optimalizálni ajánlott indexek megtekintéséhez.|
+|Magas zárolási várakozások | Jelölje be az érintett lekérdezésekhez tartozó lekérdezési szövegeket, és azonosítsa a célként megadott entitásokat. A lekérdezési tárolóban megtekintheti azokat a lekérdezéseket, amelyek ugyanazt az entitást módosítják, amely gyakran és/vagy magas időtartammal van végrehajtva. A lekérdezések azonosítása után érdemes lehet módosítani az alkalmazás logikáját, hogy javítsa a párhuzamosságot, vagy használjon kevésbé korlátozó elkülönítési szintet. |
+|Magas puffer IO-várakozások | A lekérdezési tárolóban megkeresheti a nagy számú fizikai olvasással rendelkező lekérdezéseket. Ha egyeznek a nagy i/o-várakozásokkal rendelkező lekérdezésekkel, érdemes lehet egy indexet bevezetni az alapul szolgáló entitáson, hogy a vizsgálat helyett a kereséseket végezze. Ez csökkentheti a lekérdezések i/o-terhelését. Tekintse át a kiszolgáló **teljesítményére vonatkozó javaslatokat** a portálon, és ellenőrizze, hogy vannak-e olyan indexelési javaslatok ehhez a kiszolgálóhoz, amely optimalizálja a lekérdezéseket. |
+|Nagy memória-várakozások | A lekérdezési tárolóban megkeresheti a leggyakoribb memóriát használó lekérdezéseket. Ezek a lekérdezések valószínűleg késleltetik az érintett lekérdezések további előrehaladását. Tekintse át a kiszolgáló **teljesítményére vonatkozó javaslatokat** a portálon, és ellenőrizze, hogy vannak-e olyan indexelési javaslatok, amelyek optimalizálják ezeket a lekérdezéseket.|
 
 ## <a name="configuration-options"></a>Beállítási lehetőségek
 
-Ha engedélyezve van a Query Store a 15 perces összesítési windows rendszerben legfeljebb 500 különböző lekérdezések száma ablak menti adatokat.
+Ha a lekérdezési tároló engedélyezve van, a rendszer 15 perces összesítési ablakokban tárolja az adatvesztést, és ablakban akár 500 különböző lekérdezést is beállíthat.
 
-A következő beállítások konfigurálásához a Query Store paraméterek érhetők el.
+A lekérdezési tároló paramétereinek konfigurálásához a következő beállítások érhetők el.
 
-| **A paraméter** | **Leírás** | **Alapértelmezett** | **Címtartomány** |
+| **A paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány** |
 |---|---|---|---|
-| query_store_capture_mode | Kapcsolja be a lekérdezés store szolgáltatás be-és kikapcsolása az érték alapján. Megjegyzés: Ha performance_schema OFF, query_store_capture_mode bekapcsolása bekapcsolása performance_schema és a egy részét ez a szolgáltatás számára szükséges teljesítményt séma eszközök. | AZ ÖSSZES | NINCS, AZ ÖSSZES |
-| query_store_capture_interval | A lekérdezéstár rögzítése időköz percben. Meg lehet adni az időköz, amelyben a lekérdezés metrikák összesítése | 15 | 5 - 60 |
-| query_store_capture_utility_queries | Kapcsolja be vagy ki BEÁLLÍTÁST a rendszer végrehajtja az összes segédprogram lekérdezés rögzítése. | NO | IGEN, NINCS |
-| query_store_retention_period_in_days | Ez alatt az időszak található a lekérdezéstárban az adatok megőrzése (nap). | 7 | 1 - 30 |
+| query_store_capture_mode | A lekérdezési tároló funkció be-és kikapcsolása az érték alapján. Megjegyzés: Ha a performance_schema ki van kapcsolva, a query_store_capture_mode bekapcsolása bekapcsolja a performance_schema-t és a szolgáltatáshoz szükséges teljesítmény-séma-eszközök egy részét. | Összes | NINCS, AZ ÖSSZES |
+| query_store_capture_interval | A lekérdezési tár rögzítési időköze percben kifejezve. Lehetővé teszi a lekérdezési metrikák összesítésének intervallumának megadását | 15 | 5 - 60 |
+| query_store_capture_utility_queries | Be-és kikapcsolás a rendszeren futtatott összes segédprogram-lekérdezés rögzítéséhez. | NO | IGEN, NEM |
+| query_store_retention_period_in_days | A lekérdezési tárolóban tárolt adatmegőrzési idő (nap). | 7 | 1 - 30 |
 
-A következő beállítások kifejezetten statisztika várjon vonatkoznak.
+A következő lehetőségek kifejezetten a várakozási statisztikára vonatkoznak.
 
-| **A paraméter** | **Leírás** | **Alapértelmezett** | **Címtartomány** |
+| **A paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány** |
 |---|---|---|---|
-| query_store_wait_sampling_capture_mode | Lehetővé teszi, hogy kapcsolja be / ki a várakozási statisztikák. | EGYIK SEM | NINCS, AZ ÖSSZES |
-| query_store_wait_sampling_frequency | Wait-mintavétel másodpercek alatt Alters gyakoriságát. 5 és 300 másodperc. | 30 | 5-300 |
+| query_store_wait_sampling_capture_mode | Engedélyezi a várakozási statisztika bekapcsolását vagy kikapcsolását. | NINCS | NINCS, AZ ÖSSZES |
+| query_store_wait_sampling_frequency | Megváltoztatja a várakozási mintavételezés gyakoriságát másodpercben. 5 – 300 másodperc. | 30 | 5-300 |
 
 > [!NOTE]
-> Jelenleg **query_store_capture_mode** felülírja ezt a konfigurációt, ami azt jelenti, mindkettő **query_store_capture_mode** és **query_store_wait_sampling_capture_mode** az összes várakozási statistics működéséhez engedélyezni kell. Ha **query_store_capture_mode** ki van kapcsolva, akkor várjon statisztika ki van kapcsolva, valamint óta várakozási statisztika a performance_schema engedélyezve van, és a lekérdezéstár által rögzített akkor használja.
+> Jelenleg a **query_store_capture_mode** felülírja ezt a konfigurációt, ami azt jelenti, hogy a **query_store_capture_mode** és a **query_store_wait_sampling_capture_mode** egyaránt engedélyezve kell lennie mind a várakozási statisztikák működéséhez. Ha a **query_store_capture_mode** ki van kapcsolva, a várakozási statisztikák ki vannak kapcsolva, a várakozási statisztikák pedig a performance_schema által engedélyezett és a lekérdezési tároló által rögzített query_text is használják.
 
-Használja a [az Azure portal](howto-server-parameters.md) beolvasni vagy megadni egy másik értéket a paraméterhez.
+A [Azure Portal](howto-server-parameters.md) használatával beolvashatja vagy beállíthatja a paraméterhez tartozó eltérő értéket.
 
 ## <a name="views-and-functions"></a>Nézetek és függvények
 
-Megtekintheti és kezelheti a Query Store a következő nézetek és függvények használatával. Szervezeten belül bárki a [válassza jogosultság nyilvános szerepkör](howto-create-users.md#create-additional-admin-users) ezek a nézetek segítségével a Query Store adatait. Ezek a nézetek csak állnak rendelkezésre a **mysql** adatbázis.
+A lekérdezési tárolót a következő nézetekkel és függvényekkel tekintheti meg és kezelheti. A [Select jogosultsági nyilvános szerepkörben](howto-create-users.md#create-additional-admin-users) bárki megtekintheti ezeket a nézeteket a lekérdezési tárolóban lévő információk megjelenítéséhez. Ezek a nézetek csak a **MySQL** -adatbázisban érhetők el.
 
-Lekérdezések vannak normalizált literálok és konstansok eltávolítása után azok szerkezetét megtekintésével. Ha két lekérdezést konstansértékekkel kivételével azonosak, rendelkeznek azonos a kivonata.
+A lekérdezések normalizálása úgy történik, hogy a konstansok és konstansok eltávolítása után megvizsgálják a szerkezetét. Ha két lekérdezés megegyezik a literális értékektől, akkor ugyanazzal a kivonattal fog rendelkezni.
 
-### <a name="mysqlquerystore"></a>MySQL.query_store
+### <a name="mysqlquery_store"></a>MySQL. query_store
 
-Ez a nézet az összes adat Query Store adja vissza. Az egyes különálló adatbázisok azonosító, a felhasználói Azonosítót és a lekérdezés azonosítóját. egy sor van
+Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. Minden különböző adatbázis-AZONOSÍTÓhoz, felhasználói AZONOSÍTÓhoz és lekérdezési AZONOSÍTÓhoz egy sor van.
 
 | **Name** | **Adattípus** | **IS_NULLABLE** | **Leírás** |
 |---|---|---|---|
-| `schema_name`| varchar(64) | NO | A séma neve |
-| `query_id`| bigint(20) | NO| Az adott lekérdezés jön létre, ha ugyanabból a lekérdezés végrehajtja a különböző séma, új azonosító egyedi Azonosítót hoz létre. |
-| `timestamp_id` | timestamp| NO| A Timestamp, amelyben a lekérdezés végrehajtása. Ez a konfiguráció alapján a query_store_interval|
-| `query_digest_text`| LONGTEXT| NO| Az összes literálok eltávolítása után a normalizált lekérdezés szövege|
-| `query_sample_text` | LONGTEXT| NO| A tényleges lekérdezés literálok az első megjelenés|
-| `query_digest_truncated` | bit| IGEN| Hogy a lekérdezés szövege csonkolva lettek. Ha a lekérdezés 1 KB-nál nagyobb érték lesz Igen|
-| `execution_count` | bigint(20)| NO| A lekérdezés végrehajtása van, az időbélyegző-azonosító / a konfigurált időköz időszakban száma|
-| `warning_count` | bigint(20)| NO| Ez a lekérdezés a belső során létrehozott figyelmeztetések száma|
-| `error_count` | bigint(20)| NO| A lekérdezési időköze alatt kerülne sor generált hibák száma|
-| `sum_timer_wait` | double| IGEN| A lekérdezési időköze alatt kerülne sor teljes végrehajtási idő|
-| `avg_timer_wait` | double| IGEN| A lekérdezési időköze alatt kerülne sor átlagos végrehajtási ideje|
-| `min_timer_wait` | double| IGEN| Ez a lekérdezés minimális végrehajtási ideje|
-| `max_timer_wait` | double| IGEN| Maximális végrehajtási ideje|
-| `sum_lock_time` | bigint(20)| NO| Idő telik el a lekérdezés végrehajtása során ez alatt az időszak a zárolások teljes mennyisége|
-| `sum_rows_affected` | bigint(20)| NO| Érintett sorok száma|
-| `sum_rows_sent` | bigint(20)| NO| Az ügyfélnek küldött sorok száma|
-| `sum_rows_examined` | bigint(20)| NO| Vizsgált sorok száma|
-| `sum_select_full_join` | bigint(20)| NO| Teljes JOIN illesztések számát|
-| `sum_select_scan` | bigint(20)| NO| Válassza ki a vizsgálatok száma |
-| `sum_sort_rows` | bigint(20)| NO| Rendezi a sorok száma|
-| `sum_no_index_used` | bigint(20)| NO| Ha a lekérdezés nem használta indexek hányszor|
-| `sum_no_good_index_used` | bigint(20)| NO| Ha a lekérdezést végrehajtó motor nem használja bármely megfelelő indexek hányszor|
-| `sum_created_tmp_tables` | bigint(20)| NO| Létrehozott ideiglenes táblák teljes száma|
-| `sum_created_tmp_disk_tables` | bigint(20)| NO| Lemez (állít elő, i/o) létrehozott ideiglenes táblák teljes száma|
-| `first_seen` | timestamp| NO| A első előfordulása (UTC) a lekérdezés az összesítési időszak alatt|
-| `last_seen` | timestamp| NO| A utolsó előfordulása (UTC) a lekérdezés e összesítési időszak|
+| `schema_name`| varchar (64) | NO | A séma neve |
+| `query_id`| bigint (20) | NO| Az adott lekérdezéshez generált egyedi azonosító, ha ugyanazt a lekérdezést különböző sémában hajtja végre, a rendszer új azonosítót fog generálni. |
+| `timestamp_id` | timestamp| NO| A lekérdezés végrehajtásának időbélyegzője. Ez a query_store_interval-konfiguráción alapul.|
+| `query_digest_text`| LONGTEXT| NO| A normalizált lekérdezés szövege az összes literál eltávolítása után|
+| `query_sample_text` | LONGTEXT| NO| A tényleges lekérdezés első megjelenése literálokkal|
+| `query_digest_truncated` | bit| IGEN| Azt jelzi, hogy a lekérdezés szövege csonkítva lett-e. Az érték igen, ha a lekérdezés hosszabb 1 KB-nál|
+| `execution_count` | bigint (20)| NO| A lekérdezésnek az időbélyeg-AZONOSÍTÓhoz/a beállított intervallum időszakában végrehajtott végrehajtásainak száma|
+| `warning_count` | bigint (20)| NO| A belső művelet során a lekérdezés által generált figyelmeztetések száma|
+| `error_count` | bigint (20)| NO| A lekérdezés által az intervallum során generált hibák száma|
+| `sum_timer_wait` | double| IGEN| A lekérdezés teljes végrehajtási ideje az intervallumban|
+| `avg_timer_wait` | double| IGEN| A lekérdezés átlagos végrehajtási ideje az intervallumban|
+| `min_timer_wait` | double| IGEN| A lekérdezés minimális végrehajtási ideje|
+| `max_timer_wait` | double| IGEN| Maximális végrehajtási idő|
+| `sum_lock_time` | bigint (20)| NO| A lekérdezés végrehajtásához tartozó összes zárolásra fordított teljes idő az adott időszak alatt|
+| `sum_rows_affected` | bigint (20)| NO| Érintett sorok száma|
+| `sum_rows_sent` | bigint (20)| NO| Az ügyfélnek eljuttatott sorok száma|
+| `sum_rows_examined` | bigint (20)| NO| Megvizsgált sorok száma|
+| `sum_select_full_join` | bigint (20)| NO| Teljes illesztések száma|
+| `sum_select_scan` | bigint (20)| NO| Kijelölési vizsgálatok száma |
+| `sum_sort_rows` | bigint (20)| NO| Rendezett sorok száma|
+| `sum_no_index_used` | bigint (20)| NO| Ennyi alkalommal, amikor a lekérdezés nem használ indexeket|
+| `sum_no_good_index_used` | bigint (20)| NO| Ennyi alkalommal, amikor a lekérdezés-végrehajtó motor nem használ jó indexeket|
+| `sum_created_tmp_tables` | bigint (20)| NO| A létrehozott ideiglenes táblák száma összesen|
+| `sum_created_tmp_disk_tables` | bigint (20)| NO| A lemezen létrehozott ideiglenes táblák teljes száma (I/O)|
+| `first_seen` | timestamp| NO| A lekérdezés első előfordulása (UTC) az összesítési ablakban|
+| `last_seen` | timestamp| NO| A lekérdezés utolsó előfordulása (UTC) ebben az összesítési ablakban|
 
-### <a name="mysqlquerystorewaitstats"></a>MySQL.query_store_wait_stats
+### <a name="mysqlquery_store_wait_stats"></a>MySQL. query_store_wait_stats
 
-Ez a nézet értéket ad vissza a Query Store eseményadatai várjon. Az egyes különböző adatbázis-azonosító, a felhasználói azonosító, a lekérdezés Azonosítóját és a esemény egy sor van.
+Ez a nézet visszaadja az események várakozási idejének értékét a lekérdezési tárolóban. Minden különböző adatbázis-AZONOSÍTÓhoz, felhasználói AZONOSÍTÓhoz, lekérdezési AZONOSÍTÓhoz és eseményhez egy sor van.
 
 | **Name**| **Adattípus** | **IS_NULLABLE** | **Leírás** |
 |---|---|---|---|
-| `interval_start` | timestamp | NO| Az intervallum (15 perces növekmény) kezdete|
-| `interval_end` | timestamp | NO| Intervallum (15 perces növekmény)|
-| `query_id` | bigint(20) | NO| A normalizált Query (lekérdezés áruházból) létrehozott egyedi azonosító|
-| `query_digest_id` | varchar(32) | NO| A normalizált lekérdezés szövege (a query store) literálok lehetnek eltávolítása után |
-| `query_digest_text` | LONGTEXT | NO| A tényleges lekérdezés (a query store) literálok az első megjelenés |
-| `event_type` | varchar(32) | NO| A várakozási esemény kategóriája |
-| `event_name` | varchar(128) | NO| A várakozási esemény neve |
-| `count_star` | bigint(20) | NO| A mintavétel esetében a lekérdezési időköze alatt kerülne sor várakozási események száma |
-| `sum_timer_wait_ms` | double | NO| Teljes várakozási idő (ezredmásodpercben) a lekérdezési időköze alatt kerülne sor |
+| `interval_start` | timestamp | NO| Az időköz kezdete (15 perces növekmény)|
+| `interval_end` | timestamp | NO| Az intervallum vége (15 perces növekmény)|
+| `query_id` | bigint (20) | NO| Generált egyedi azonosító a normalizált lekérdezésen (a lekérdezési tárolóból)|
+| `query_digest_id` | varchar (32) | NO| A normalizált lekérdezés szövege az összes literál eltávolítása után (a lekérdezési tárolóból) |
+| `query_digest_text` | LONGTEXT | NO| A tényleges lekérdezés első megjelenése literálokkal (a lekérdezési tárolóból) |
+| `event_type` | varchar (32) | NO| A várakozási Esemény kategóriája |
+| `event_name` | varchar (128) | NO| A várakozási esemény neve |
+| `count_star` | bigint (20) | NO| A lekérdezés intervallumában mintavétel alatt álló várakozási események száma |
+| `sum_timer_wait_ms` | double | NO| A lekérdezés teljes várakozási ideje (ezredmásodpercben) az intervallumban |
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkciók
 
 | **Name**| **Leírás** |
 |---|---|
-| `mysql.az_purge_querystore_data(TIMESTAMP)` | A megadott időbélyeg előtt az összes lekérdezés tároló adatainak kiürítése |
-| `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | Az összes pon várjon eseményadatok előtt az adott időbélyeg |
-| `mysql.az_procedure_purge_recommendation(TIMESTAMP)` | Javaslatok, amelynek érvényessége a megadott időbélyeg előtt van kiürítése |
+| `mysql.az_purge_querystore_data(TIMESTAMP)` | A lekérdezési tár összes adatának kiürítése a megadott időbélyegző előtt |
+| `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | A várakozási esemény összes adatának törlése a megadott időbélyegző előtt |
+| `mysql.az_procedure_purge_recommendation(TIMESTAMP)` | Kiüríti azokat a javaslatokat, amelyek lejárta a megadott időbélyeg előtt van |
 
 ## <a name="limitations-and-known-issues"></a>Korlátozások és ismert problémák
 
-- Ha a MariaDB-kiszolgálón a paraméter `default_transaction_read_only` , Query Store adatok rögzítése nem tudja.
-- Query Store funkciókat is lehet megszakítani, ha találkozik hosszú Unicode-lekérdezések (\>= 6000 bájt).
-- Várakozási statisztika megőrzési időtartama 24 órán keresztül.
-- Várjon statisztika használ minta ti rögzítési események töredékéért. A gyakoriság a paraméter használatával módosítható `query_store_wait_sampling_frequency`.
+- Ha a MariaDB-kiszolgáló rendelkezik a `default_transaction_read_only` paraméterrel, a Query Store nem tudja rögzíteni az adatmennyiséget.
+- A lekérdezés-tárolási funkció megszakítható, ha hosszú Unicode-lekérdezéseket\>(= 6000 bájt) tapasztal.
+- A várakozási statisztikák megőrzési időtartama 24 óra.
+- A várakozási statisztikában a példa az események töredékét rögzíti. A gyakoriság módosítható a paraméter `query_store_wait_sampling_frequency`használatával.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [lekérdezési teljesítmény Elemzéseihez](concepts-query-performance-insight.md)
+- További információ a [lekérdezési teljesítményről](concepts-query-performance-insight.md)

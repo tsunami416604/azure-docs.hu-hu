@@ -1,6 +1,6 @@
 ---
-title: Az Azure Security Center hálózati biztonsági csoportok engedélyezése |} A Microsoft Docs
-description: Ez a dokumentum bemutatja, hogyan valósíthat meg az Azure Security Center javaslatait **hálózati biztonsági csoportok engedélyezése**.
+title: Hálózati biztonsági csoportok engedélyezése a Azure Security Centerban | Microsoft Docs
+description: Ebből a dokumentumból megtudhatja, hogyan implementálhatja a Azure Security Center javaslatot a **hálózati biztonsági csoportok engedélyezéséhez**.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -15,51 +15,51 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 14b7cc8f8162574380ca21ac515af8b7d3d5ded9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60911445"
 ---
-# <a name="enable-network-security-groups-in-azure-security-center"></a>Az Azure Security Center hálózati biztonsági csoportok engedélyezése
-Az Azure Security Center javasolja, hogy egy hálózati biztonsági csoport (NSG) engedélyezése, ha egy nem engedélyezett. NSG-k, amelyek engedélyezik vagy megtagadják a hálózati forgalmat a virtuális hálózatban futó Virtuálisgép-példányokat hozzáférés-vezérlési lista (ACL) szabályok listáját tartalmazzák. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra. Emellett a forgalmat egy adott virtuális gépre is lehet korlátozni további korlátozásokat egy NSG-t közvetlenül a virtuális Gépre. További tudnivalókért tekintse meg [Mi az a hálózati biztonsági csoport (NSG)?](../virtual-network/security-overview.md)
+# <a name="enable-network-security-groups-in-azure-security-center"></a>Hálózati biztonsági csoportok engedélyezése a Azure Security Centerban
+Azure Security Center javasolja, hogy engedélyezzen egy hálózati biztonsági csoportot (NSG), ha még nincs engedélyezve az egyik. A NSG olyan Access Control lista (ACL) szabályok listáját tartalmazza, amelyek engedélyezik vagy megtagadják a Virtual Networkban lévő virtuálisgép-példányok hálózati forgalmát. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra. Emellett az egyes virtuális gépek felé irányuló forgalom tovább korlátozható egy NSG közvetlenül az adott virtuális géphez való társításával. További információ: [Mi az a hálózati biztonsági csoport (NSG)?](../virtual-network/security-overview.md)
 
-Ha nem rendelkezik NSG-k engedélyezve van, a Security Center ajánlásokat két Önnek: Hálózati biztonsági csoportok engedélyezése az alhálózatok és a hálózati biztonsági csoportok engedélyezése virtuális gépeken. Kiválaszthatja, melyik szint, alhálózatot vagy a alkalmazni az NSG-ket a virtuális gép.
+Ha nincs engedélyezve a NSG, Security Center két javaslatot nyújt Önnek: Engedélyezze a hálózati biztonsági csoportokat az alhálózatokon, és engedélyezze a hálózati biztonsági csoportokat a virtuális gépeken. Kiválaszthatja, hogy melyik szintet, alhálózatot vagy virtuális gépet kívánja alkalmazni a NSG alkalmazásához.
 
 > [!NOTE]
 > Ez a dokumentum egy üzembe helyezést szemléltető példa segítségével mutatja be a szolgáltatást.  A dokumentum nem tartalmaz lépésenkénti útmutatót.
 >
 >
 
-## <a name="implement-the-recommendation"></a>A javaslatok megvalósítása
-1. Az a **javaslatok** panelen válassza ki **hálózati biztonsági csoportok engedélyezése** alhálózatok vagy virtuális gépeken.
+## <a name="implement-the-recommendation"></a>A javaslat implementálása
+1. A **javaslatok** panelen válassza a **hálózati biztonsági csoportok engedélyezése** az alhálózatokon vagy a virtuális gépeken lehetőséget.
    ![Hálózati biztonsági csoportok engedélyezése][1]
-2. Ekkor megnyílik a panel **hiányzó hálózati biztonsági csoportok konfigurálása** alhálózatok vagy virtuális gépek, a javaslat kiválasztott függően. Válassza ki egy alhálózatot vagy egy NSG-t konfigurálhatja a virtuális gép.
+2. Ekkor megnyílik a panel, a kiválasztott javaslattól függően a **hiányzó hálózati biztonsági csoportok konfigurálása** az alhálózatokhoz vagy a virtuális gépekhez. Válasszon egy alhálózatot vagy egy virtuális gépet a NSG konfigurálásához.
 
-   ![Alhálózati NSG konfigurálása][2]
+   ![Alhálózat NSG konfigurálása][2]
 
-   ![Virtuális gép NSG konfigurálása][3]
-3. Az a **hálózati biztonsági csoport választása** panelen jelöljön ki egy létező NSG-t vagy **új létrehozása** létrehozni egy NSG-t.
+   ![A virtuális gép NSG konfigurálása][3]
+3. A **hálózati biztonsági csoport kiválasztása** panelen válasszon ki egy meglévő NSG, vagy válassza az **új létrehozása** lehetőséget egy NSG létrehozásához.
 
-   ![Hálózati biztonsági csoport választása][4]
+   ![Hálózati biztonsági csoport kiválasztása][4]
 
-Ha létrehoz egy NSG-t, kövesse a [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) hozzon létre egy NSG-t és a biztonsági szabályokat állíthat be.
+Ha létrehoz egy NSG, kövesse a [hálózati biztonsági csoport kezelése](../virtual-network/manage-network-security-group.md) NSG létrehozásához és a biztonsági szabályok megadásához szükséges lépéseket.
 
 ## <a name="see-also"></a>Lásd még
-Ez a cikk láthatta, hogyan valósíthat meg a Security Center javaslatait "A hálózati biztonsági csoportok engedélyezése" az alhálózatokra vagy virtuális gépekre. Az NSG-k használatának engedélyezésével kapcsolatos további tudnivalókért tekintse meg a következőket:
+Ez a cikk bemutatja, hogyan valósítja meg a "hálózati biztonsági csoportok engedélyezése" című Security Center ajánlást az alhálózatok vagy virtuális gépek számára. A NSG engedélyezésével kapcsolatos további tudnivalókért tekintse meg a következőket:
 
 * [Mi az a hálózati biztonsági csoport (NSG)?](../virtual-network/security-overview.md)
-* [A hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md)
+* [Hálózati biztonsági csoport kezelése](../virtual-network/manage-network-security-group.md)
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
-* [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
-* [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
+* [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.
+* [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md) – megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Megtudhatja, hogyan figyelheti a partnermegoldások biztonsági állapotát.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Az Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – a legújabb Azure biztonsági hírek és információ.
+* [Azure biztonsági blog](https://blogs.msdn.com/b/azuresecurity/) – a legújabb Azure biztonsági Hírek és információk beszerzése.
 
 <!--Image references-->
 [1]: ./media/security-center-enable-nsg/enable-nsg.png

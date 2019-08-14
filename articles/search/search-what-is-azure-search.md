@@ -1,33 +1,44 @@
 ---
 title: Azure Search-Azure Search bemutatása
-description: A Azure Search egy teljes körűen felügyelt, üzemeltetett felhőalapú keresési szolgáltatás a Microsofttól. Tekintse át a szolgáltatás leírásait, a fejlesztési munkafolyamatokat, a Azure Search más Microsoft keresési termékekkel való összehasonlítását, valamint az első lépéseket.
-manager: cgronlun
+description: A Azure Search egy teljes körűen felügyelt, üzemeltetett felhőalapú keresési szolgáltatás a Microsofttól. Tekintse át a szolgáltatás leírását, a fejlesztési munkafolyamatot, a Microsoft keresési termékeinek összehasonlítását, valamint az első lépéseket.
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 05/02/2019
+ms.date: 08/13/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 7a12c9153332e9d6fc70512bc55fe0a53f7c78fc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a48e4026ee3d7108f3b8e77dcb482d9904891cd4
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827154"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014464"
 ---
 # <a name="what-is-azure-search"></a>Mi az az Azure Search?
-Az Azure Search egy felhőalapú keresőszolgáltatás, amely olyan API-kat és eszközöket nyújt a fejlesztőknek, amelyek segítségével fejlett keresési funkciókat adhatnak hozzá a privát, heterogén tartalmak keresése érdekében a webes, mobilos és vállalati alkalmazásokhoz. A lekérdezések végrehajtása felhasználó által meghatározott indexen keresztül történik.
 
-+ Létrehozhat olyan keresési indexet, amely csak az adatokat tartalmazza, és több tartalomtípusból és platformból származik. 
+Az Azure Search egy felhőalapú keresőszolgáltatás, amely olyan API-kat és eszközöket nyújt a fejlesztőknek, amelyek segítségével fejlett keresési funkciókat adhatnak hozzá a privát, heterogén tartalmak keresése érdekében a webes, mobilos és vállalati alkalmazásokhoz. Az egyéni kód meghívja az adatfeldolgozást (indexelést), lekérdezi a lekérdezési kérelmeket, és kezeli a válaszokat. A keresési élmény az ügyfél kódjában az Azure Search funkcióinak használatával van meghatározva, és a lekérdezés végrehajtása a saját maga által létrehozott, megőrzött indexen keresztül történik. 
 
-+ Kihasználhatja a mesterséges intelligenciát a szövegek és szolgáltatások kinyeréséhez a képfájlokból, illetve a nyers szövegből származó entitásokat és fő kifejezéseket.
+![Azure Search architektúra](media/search-what-is-azure-search/azure-search-diagram.png "Azure Search architektúra")
 
-+ Intuitív keresési élmények hozhatók létre a Face navigációs és a Filters, a szinonimák, az automatikus kiegészítés és a Text Analysis kifejezéssel a "Did you Mean" értékű keresési feltételek alapján. A functions és a Logical fokozása funkcióinak finomhangolása.
-
-+ Keresési alkalmazások létrehozása adott használati esetekhez. A Geo-Search a "keresés a közelben" funkciót támogatja. A többnyelvű keresést a nyelvi elemzők támogatják a nem angol nyelvű teljes szöveges kereséshez.
+<!-- + Build a search index containing only your data, sourced from multiple content types and platforms. 
++ Leverage AI enrichments to extract text and features from image files, or entities and key phrases from raw text.
++ Create intuitive search experiences with facet navigation and filters, synonyms, autocomplete, and text analysis for "did you mean" autocorrected search terms. Get relevance tuning through functions and boosting logic.
++ Create search apps for specific use-cases. Geo-search supports a "find near me" experience. Multi-lingual search is supported through language analyzers for non-English full text search. -->
 
 A funkciókat egy egyszerű [REST API-n](/rest/api/searchservice/) vagy [.NET SDK-n](search-howto-dotnet-sdk.md) keresztül tudja elérni, mely elfedi az információk kiolvasásának mögöttes komplexitását. Az API-k mellett az Azure Portal is nyújt támogatást a felügyelethez és a tartalomkezeléshez, például eszközöket kínál prototípus-készítéshez és az indexek lekérdezéséhez. Mivel a szolgáltatás a felhőben fut, az infrastruktúrát és a rendelkezésre állást a Microsoft felügyeli.
+
+## <a name="when-to-use-azure-search"></a>Mikor kell használni a Azure Search
+
+A Azure Search a következő alkalmazási forgatókönyvek esetében kiválóan alkalmas:
+
++ Heterogén tartalmú típusok összevonása egy privát, egyetlen kereshető indexbe. A lekérdezések mindig a dokumentumokkal létrehozott és betöltött indexek felett vannak, és az index mindig a felhőben található a Azure Search szolgáltatásban. Az indexeket bármilyen forrásból vagy platformról feltöltheti a JSON-dokumentumokból származó adatfolyamokkal. Azt is megteheti, hogy az Azure-on található tartalomhoz *Indexelő* segítségével adatokat tud lekérni egy indexbe. Az index meghatározása és kezelése/tulajdonlás a Azure Search használatának egyik fő oka.
+
++ A kereséssel kapcsolatos szolgáltatások egyszerű implementálása. Azure Search API-k leegyszerűsítik a lekérdezések készítését, a sokoldalú navigációt, a szűrőket (beleértve a Geo-térbeli keresést), a szinonimák leképezését, a typeahead-lekérdezéseket és A beépített funkciók használatával a kereskedelmi webkeresőmotorokhoz hasonló keresési élményekhez is kielégítheti a végfelhasználói elvárásokat.
+
++ Strukturálatlan szöveg indexelése vagy szöveg és információk kinyerése a képfájlokból. A Azure Search kognitív keresési funkciója az AI-feldolgozást egy indexelési folyamatba helyezi. Egyes gyakori használati esetek közé tartozik az OCR a beolvasott dokumentumon keresztül, az entitások felismerése és a legfontosabb mondatok kinyerése a nagyméretű dokumentumokkal, a nyelvfelismerés és a szöveg fordításával, valamint a
+
++ A nyelvi követelmények a Azure Search egyéni és nyelvi elemzői segítségével teljesülnek. Ha nem angol nyelvű tartalommal rendelkezik, a Azure Search a Lucene-elemzőket és a Microsoft természetes nyelvi processzorait is támogatja. Az elemzőket úgy is konfigurálhatja, hogy a nyers tartalom speciális feldolgozását, például a Mellékjelek kiszűrését is lehetővé teszi.
 
 <a name="feature-drilldown"></a>
 
@@ -101,6 +112,7 @@ A legfőbb előnyök közé tartoznak az alábbiak:
 + Azure-adatintegráció (webbejárók) az indexelő rétegben
 + Azure Portal központi felügyelethez
 + Az Azure ismert méretezhetősége, megbízhatósága és világszínvonalú rendelkezésre állása
++ A nyers adatok mesterséges feldolgozásával kereshetővé válik, beleértve a képekből származó szöveget, vagy nem strukturált tartalomban talál mintákat.
 + Nyelvi és egyéni elemzési funkciók, teljes szöveges keresési elemzők 56 nyelvhez
 + [Keresésközpontú alkalmazásokban gyakran használt funkciók](#feature-drilldown): pontozás, jellemzőkezelés, javaslatok, szinonimák, földrajzi keresés és egyebek.
 

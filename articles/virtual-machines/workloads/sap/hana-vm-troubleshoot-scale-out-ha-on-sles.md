@@ -1,6 +1,6 @@
 ---
-title: Az SAP HANA 2.0 kibővített HSR-támasztja beállításának SLES 12 SP3 az Azure-beli virtuális gépek hibaelhárítása |} A Microsoft Docs
-description: Útmutató a ellenőrzése és a egy összetett SAP HANA kibővített magas rendelkezésre állású konfigurációban SAP HANA rendszer replikációs (HSR) és az Azure virtual machines szolgáltatásban futó SLES 12 SP3 támasztja alapján hibaelhárítása
+title: Az Azure Virtual Machines szolgáltatásban található SLES 12 SP3-es kibővíthető HSR-pacemaker-beállítással 2,0 SAP HANA kapcsolatos hibák megoldása | Microsoft Docs
+description: Útmutató az Azure Virtual Machines szolgáltatásban futó SLES 12 SP3 rendszerű, összetett SAP HANA kibővíthető magas rendelkezésre állási konfigurációjának vizsgálatához és hibakereséséhez SAP HANA rendszerreplikáció (HSR) és a pacemaker alapján
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermannd
@@ -14,13 +14,13 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: b794b045efa4be20a63e9996425d69f0212ae0d7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67707242"
 ---
-# <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Győződjön meg arról, és az SAP HANA kibővített magas rendelkezésre állású telepítés SLES 12 SP3 hibaelhárítása 
+# <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>A kibővíthető magas rendelkezésre állású telepítés ellenőrzése és SAP HANA megoldása a SLES 12 SP3 rendszeren 
 
 [sles-pacemaker-ha-guide]:high-availability-guide-suse-pacemaker.md
 [sles-hana-scale-out-ha-paper]:https://www.suse.com/documentation/suse-best-practices/singlehtml/SLES4SAP-hana-scaleOut-PerfOpt-12/SLES4SAP-hana-scaleOut-PerfOpt-12.html
@@ -35,75 +35,75 @@ ms.locfileid: "67707242"
 [sles-12-for-sap]:https://www.suse.com/media/white-paper/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
 
 
-Ez a cikk segít az SAP HANA horizontális felskálázás az Azure-beli virtuális gépek (VM) futtató támasztja fürtkonfigurációban ellenőrzése. A fürt beállítása az SAP HANA rendszer replikációs (HSR) együtt lehetett megtenni, és a SUSE RPM csomag SAPHanaSR – horizontális Felskálázás. Az összes teszt csak SUSE SLES 12 SP3 elkészült. A cikk szakaszok különböző területekre terjed ki, és Példaparancsok és excerpts konfigurációs fájlokból. Javasoljuk, hogy ezek a minták ellenőrizze-e, és ellenőrizze az egész fürt beállítása módszerként.
+Ebből a cikkből megtudhatja, hogy az Azure Virtual Machines (VM) szolgáltatásban futó SAP HANA kibővíthető-e a pacemaker-fürt konfigurációja. A fürt beállítása SAP HANA rendszerreplikációval (HSR) és a SUSE RPM-csomaggal (SAPHanaSR-horizontális felskálázás) együtt valósult meg. Az összes teszt csak a SUSE SLES 12 SP3 szervizcsomaggal lett végrehajtva. A cikk fejezetei különböző területekre terjednek ki, és a konfigurációs fájlokból származó minta parancsokat és kivonatokat tartalmaznak. Ezeket a mintákat ajánlott módszerként beállítani a teljes fürtkonfiguráció ellenőrzéséhez és ellenőrzéséhez.
 
 
 
 ## <a name="important-notes"></a>Fontos megjegyzések
 
-SAP HANA horizontális felskálázás az SAP HANA-Rendszerreplikálást és támasztja együtt az összes tesztelése megtörtént az SAP HANA 2.0-val csak. Az operációs rendszer verzióját az SAP-alkalmazások SUSE Linux Enterprise Server 12 SP3 volt. A legfrissebb RPM-csomagot, SAPHanaSR – horizontális Felskálázás, a SUSE, az támasztja fürt beállításához használt.
-Közzétett SUSE egy [részletes leírása a teljesítményre optimalizált telepítő][sles-hana-scale-out-ha-paper].
+A SAP HANA SAP HANA rendszer-replikációval és a pacemakerrel együtt végzett összes tesztelés csak SAP HANA 2,0-es verzióval történt. Az operációs rendszer verziószáma SUSE Linux Enterprise Server 12 SP3 az SAP-alkalmazásokhoz. A SAPHanaSR-horizontális felskálázás (SUSE) legújabb RPM-csomagja a pacemaker-fürt beállítására szolgál.
+A SUSE közzétette a [teljesítményre optimalizált telepítő részletes leírását][sles-hana-scale-out-ha-paper].
 
-Horizontális felskálázás az SAP HANA által támogatott virtuális gépek típusainak, ellenőrizze a [SAP HANA-tanúsítvánnyal rendelkező IaaS directory][sap-hana-iaas-list].
+SAP HANA kibővíthető virtuálisgép-típusok esetén tekintse meg a [SAP HANA Certified IaaS könyvtárat][sap-hana-iaas-list].
 
-Az SAP HANA horizontális felskálázás több alhálózatok és a Vnic és HSR beállításával együtt egy technikai probléma történt. A kötelező használja a legújabb javításokat a SAP HANA 2.0 ahol probléma lett kijavítva. Az alábbi SAP HANA-verziók támogatottak: 
+Technikai probléma merült fel SAP HANA több alhálózattal és Vnic, valamint a HSR beállításával együttesen felskálázással. A probléma javításához a legújabb SAP HANA 2,0-es javításokat kell használni. A következő SAP HANA verziók támogatottak: 
 
-* rev2.00.024.04 vagy újabb 
-* rev2.00.032 vagy újabb
+* rev 2.00.024.04 vagy újabb 
+* rev 2.00.032 vagy újabb
 
-SUSE támogatásra van szüksége, kövesse ezt [útmutató][suse-pacemaker-support-log-files]. Az SAP HANA magas rendelkezésre állású (HA) fürttel kapcsolatos összes információt gyűjteni, a cikkben leírtak szerint. SUSE IT-részlege ezeket az adatokat további elemzés céljából.
+Ha a SUSE támogatásra van szüksége, kövesse ezt az [útmutatót][suse-pacemaker-support-log-files]. Gyűjtsön információkat a SAP HANA magas rendelkezésre állású (HA) fürtről a cikkben leírtak szerint. A SUSE-támogatásnak további elemzés céljából szüksége van ezekre az információkra.
 
-Belső tesztjei során a fürt beállítása okozhatott, a normál virtuális gép leállításának az Azure Portalon keresztül. Ezért azt javasoljuk, hogy más módokon fürt-feladatátvétel tesztelése. Módszerekkel például újraindítás kernelpánikot, vagy állítsa le a hálózatok vagy áttelepíteni a **msl** erőforrás. Az alábbi szakaszok a részletek megtekintéséhez. Feltételezzük, hogy a standard szintű leállás történik szándékát. A legjobb példa egy szándékos leállás van a karbantartás céljából. A részleteket a [tervezett karbantartás](#planned-maintenance).
+A belső tesztelés során a fürt beállítása megzavarodott egy normál, kecses virtuális gép leállításával a Azure Portalon keresztül. Ezért azt javasoljuk, hogy más módszerekkel tesztelje a fürt feladatátvételét. Használjon olyan metódusokat, mint például a kernel-pánik kényszerítése vagy a hálózatok leállítása vagy az **MSL** -erőforrás áttelepíthetők. Tekintse meg a részleteket az alábbi részekben. Feltételezi, hogy a szokásos leállás a szándékkal történik. A szándékos leállítás legjobb példája a karbantartás. Tekintse meg a [tervezett karbantartás](#planned-maintenance)részleteit.
 
-Emellett belső tesztjei során a fürt beállítása zavart okozhatott egy manuális SAP HANA átvétele után közben a fürt karbantartási módban. Azt javasoljuk, hogy váltson át azt vissza újra manuálisan a fürt karbantartási mód leállítása előtt. Egy másik lehetőség, hogy a feladatátvétel előtt, a fürt karbantartási módba. További információkért lásd: [tervezett karbantartás](#planned-maintenance). A SUSE dokumentáció azt ismerteti, hogyan segítségével visszaállíthatja a fürt ezzel a módszerrel a **crm** parancsot. Azonban az említett módszer korábban volt belső tesztjei során a nagy teljesítményű, és soha nem kimutatta, minden olyan váratlan mellékhatással.
+Emellett a belső tesztelés során a fürt beállítása megzavarodott volt a manuális SAP HANA átvétele után, miközben a fürt karbantartási módban volt. Javasoljuk, hogy a fürt karbantartási módjának befejezése előtt manuálisan váltson vissza. Egy másik lehetőség a feladatátvétel elindítása, mielőtt a fürtöt karbantartási módba helyezné. További információ: [tervezett karbantartás](#planned-maintenance). A SUSE dokumentációja azt ismerteti, hogyan állíthatja alaphelyzetbe a fürtöt a **CRM** parancs használatával. De a korábban említett megközelítés robusztus volt a belső tesztelés során, és soha nem mutatott semmilyen váratlan mellékhatást.
 
-Ha a **crm áttelepítése** parancshoz, ügyeljen arra, hogy a fürt konfiguráció tisztítása. Hozzáadja a helyre vonatkozó megkötések, amelyek esetleg nem is tud. Ezek a korlátozások hatással lehet a fürt működését. További részletek az [tervezett karbantartás](#planned-maintenance).
-
-
-
-## <a name="test-system-description"></a>Tesztelje a rendszer leírása
-
- Az SAP HANA kibővített magas rendelkezésre ÁLLÁS ellenőrzése és a minősítési egy beállítás lett megadva. Azt a két rendszer három csomóponttal SAP HANA minden állt: egy főkiszolgálóval és két feldolgozó. A következő tábla listák virtuális gép nevét és a belső IP-címek. Hajtsa végre az összes ellenőrzés mintát elkészült ezeken a virtuális gépeken. A parancs minták ezen virtuális gépek nevét és IP-címek segítségével jobban megérthetők a parancsok és a kibocsátásukra:
+A **CRM** áttelepítési parancs használatakor ügyeljen arra, hogy törölje a fürt konfigurációját. Felveszi a helyhez tartozó korlátozásokat, amelyeket esetleg nem ismer. Ezek a korlátozások befolyásolják a fürt viselkedését. További információ a [tervezett karbantartásról](#planned-maintenance).
 
 
-| Csomópont típusa | a virtuális gép neve | IP-cím |
+
+## <a name="test-system-description"></a>Test System Description
+
+ SAP HANA kibővíthető if ellenőrzés és tanúsítás esetén a telepítőt használták. Két rendszerből áll, amelyek mindegyike három SAP HANA csomóponttal rendelkezik: egy főkiszolgálóval és két feldolgozóval. A következő táblázat a virtuális gépek nevét és belső IP-címeit sorolja fel. Az alábbi összes ellenőrző minta ezen a virtuális gépeken lett végrehajtva. Ha ezeket a virtuális gépek nevét és IP-címeit használja a parancs mintájában, jobban megismerheti a parancsokat és azok kimeneteit:
+
+
+| Csomóponttípus | a virtuális gép neve | IP-cím |
 | --- | --- | --- |
-| 1 helyet a fő csomópont | hso-hana-vm-s1-0 | 10.0.0.30 |
-| 1 1 helyet a munkavégző csomópont | hso-hana-vm-s1-1 | 10.0.0.31 |
-| A helyen 1 2 feldolgozó csomóponton | hso-hana-vm-s1-2 | 10.0.0.32 |
+| Fő csomópont az 1. helyen | hso-hana-vm-s1-0 | 10.0.0.30 |
+| 1\. munkavégző csomópont az 1. helyen | hso-hana-vm-s1-1 | 10.0.0.31 |
+| 2\. feldolgozói csomópont az 1. helyen | hso-hana-vm-s1-2 | 10.0.0.32 |
 | | | |
-| A főcsomópont 2 helyen található | hso-hana-vm-s2-0 | 10.0.0.40 |
-| 1, 2 helyen található munkavégző csomópont | hso-hana-vm-s2-1 | 10.0.0.41 |
-| A hely 2 2 feldolgozó csomóponton | hso-hana-vm-s2-2  | 10.0.0.42 |
+| Fő csomópont a 2. helyen | hso-hana-vm-s2-0 | 10.0.0.40 |
+| 1\. munkavégző csomópont a 2. helyen | hso-hana-vm-s2-1 | 10.0.0.41 |
+| 2\. munkavégző csomópont a 2. helyen | hso-hana-vm-s2-2  | 10.0.0.42 |
 | | | |
-| Csomóponttöbbséget használó készítői | hso-hana-dm | 10.0.0.13 |
-| SBD eszköz kiszolgáló | hso-hana-sbd | 10.0.0.19 |
+| Többségi gyártó csomópontja | hso-hana-dm | 10.0.0.13 |
+| SBD-eszköz kiszolgálója | hso-hana-sbd | 10.0.0.19 |
 | | | |
-| NFS-kiszolgálószolgáltatás 1 | hso-nfs-vm-0 | 10.0.0.15 |
-| NFS server 2 | hso-nfs-vm-1 | 10.0.0.14 |
+| NFS-kiszolgáló 1 | hso-nfs-vm-0 | 10.0.0.15 |
+| NFS-kiszolgáló 2 | hso-NFS-VM-1 | 10.0.0.14 |
 
 
 
-## <a name="multiple-subnets-and-vnics"></a>Alhálózatok és a rendszer
+## <a name="multiple-subnets-and-vnics"></a>Több alhálózat és Vnic
 
-SAP HANA-hálózatokra vonatkozó javaslatok, az alábbi három alhálózatot létrehozott egy Azure virtuális hálózaton belül. SAP HANA horizontális felskálázás az Azure-ban telepíthetők a makrókban módban van. Azt jelenti, hogy minden csomópont használ a helyi köteteket **/hana/adatok** és **/hana/log**. Mivel a csomópontok csak a helyi köteteken, nem elengedhetetlen egy külön alhálózatot tárolási meghatározásához:
+A következő SAP HANA hálózati javaslatok közül három alhálózat jött létre egy Azure-beli virtuális hálózaton belül. SAP HANA az Azure-ban való méretezést nem megosztott módban kell telepíteni. Ez azt jelenti, hogy minden csomópont helyi lemezes köteteket használ a **/Hana/Data** és a **/Hana/log**. Mivel a csomópontok csak a helyi lemezes köteteket használják, nem szükséges külön alhálózatot definiálni a tárolóhoz:
 
-- SAP HANA-csomópontok kommunikációhoz 10.0.2.0/24
-- az SAP HANA-Rendszerreplikálást (HSR) 10.0.1.0/24
-- minden más 10.0.0.0/24
+- 10.0.2.0/24 SAP HANA csomópontok közötti kommunikációhoz
+- 10.0.1.0/24 SAP HANA rendszer-replikáláshoz (HSR)
+- 10.0.0.0/24 minden más számára
 
-Több hálózat használatát az SAP HANA-konfigurációval kapcsolatos további információkért lásd: [SAP HANA global.ini](#sap-hana-globalini).
+További információ a több hálózat használatával kapcsolatos SAP HANA konfigurációról: [SAP HANA Global. ini](#sap-hana-globalini).
 
-A fürt minden virtuális gép rendelkezik három Vnic, amelyek megfelelnek az alhálózatok számát. [Hogyan hozhat létre Linux rendszerű virtuális gép az Azure-ban több hálózati kártyák][azure-linux-multiple-nics] describes a potential routing issue on Azure when deploying a Linux VM. This specific routing article applies only for use of multiple vNICs. The problem is solved by SUSE per default in SLES 12 SP3. For more information, see [Multi-NIC with cloud-netconfig in EC2 and Azure][suse-cloud-netconfig].
+A fürtben lévő minden virtuális gépnek három Vnic van, amelyek megfelelnek az alhálózatok számának. Linux rendszerű [virtuális gép létrehozása az Azure-ban több hálózati adapterrel][azure-linux-multiple-nics] az Azure-beli lehetséges útválasztási probléma a Linux rendszerű virtuális gépek telepítésekor. Ez a konkrét útválasztási cikk csak a több Vnic használatára vonatkozik. A problémát a SUSE alapértelmezés szerint oldja meg a SLES 12 SP3 verzióban. További információ: [multi-NIC a Cloud-netconfig a EC2 és az Azure-ban][suse-cloud-netconfig].
 
 
-Győződjön meg arról, hogy az SAP HANA megfelelően van konfigurálva több hálózat használatához, futtassa a következő parancsokat. Először ellenőrizze, hogy az összes három belső IP-címek mindhárom alhálózat aktívak az operációs rendszer szintjén. Ha másik IP-címtartományok az alhálózat definiált, a parancsok alkalmazkodni rendelkezik:
+A következő parancsok futtatásával ellenőrizheti, hogy a SAP HANA megfelelően van-e konfigurálva a több hálózat használatára. Először győződjön meg arról, hogy az operációs rendszer szintjén mindhárom belső IP-cím aktív. Ha az alhálózatokat eltérő IP-címtartományok alapján adta meg, akkor a következő parancsokat kell módosítania:
 
 <pre><code>
 ifconfig | grep "inet addr:10\."
 </code></pre>
 
-Az alábbi kimeneti példa származik, a második munkavégző csomópont 2 helyen található. Három különböző belső IP-címeket a eth0 eth1 és eth2 tekintheti meg:
+A következő minta kimenet a 2. hely második munkavégző csomópontján található. Három különböző belső IP-címet láthat a ETH0, a eth1 és a eth2 használatával:
 
 <pre><code>
 inet addr:10.0.0.42  Bcast:10.0.0.255  Mask:255.255.255.0
@@ -112,25 +112,25 @@ inet addr:10.0.2.42  Bcast:10.0.2.255  Mask:255.255.255.0
 </code></pre>
 
 
-Ezután ellenőrizze a kiszolgáló nevét és a HSR a SAP HANA-portokat. SAP HANA figyelnie kell a megfelelő alhálózatokat. SAP HANA-példányok számától függően kell igazítani a parancsokat. A példány számát volt a tesztrendszerhez **00**. Ismerje meg, milyen portokat használják a különböző módja van. 
+Ezután ellenőrizze a SAP HANA portokat a névkiszolgáló és a HSR számára. SAP HANA figyelnie kell a megfelelő alhálózatokat. A SAP HANA példány számától függően módosítania kell a parancsokat. A tesztelési rendszer esetében a példány száma **00**volt. Többféle módon is megtudhatja, hogy mely portok vannak használatban. 
 
-A következő SQL-utasítást a Példányazonosító példányszámának és egyéb információkat adja vissza:
+A következő SQL-utasítás a példány AZONOSÍTÓját, a példány számát és az egyéb információkat adja vissza:
 
 <pre><code>
 select * from "SYS"."M_SYSTEM_OVERVIEW"
 </code></pre>
 
-A megfelelő portszámokat megkereséséhez megtalálhatja, például, HANA Studio alatt **konfigurációs** vagy egy SQL-utasítás segítségével:
+A megfelelő portszámok megkereséséhez tekintse meg például a HANA Studióban a **Configuration** vagy egy SQL-utasítás segítségével:
 
 <pre><code>
 select * from M_INIFILE_CONTENTS WHERE KEY LIKE 'listen%'
 </code></pre>
 
-A SAP software kifejlesztése, amilyen az SAP HANA minden használt port megkereséséhez keressen [TCP/IP-port minden SAP-termék][sap-list-port-numbers].
+Az SAP szoftveres veremben használt összes port megkereséséhez, beleértve a SAP HANAt, az [összes SAP-termék TCP/IP-portjait][sap-list-port-numbers]keresse meg.
 
-A példány számát adott **00** a SAP HANA 2.0 teszt rendszeren, a port számát a névkiszolgáló van **30001**. A portszám HSR-metaadatok kommunikációhoz **40002**. Az egyik lehetőség, hogy jelentkezzen be a munkavégző csomópont, és ezután ellenőrizze a fő csomópont szolgáltatásokat. Ebben a cikkben azt ellenőrizni a munkavégző csomópont 2 helyen szeretne csatlakozni a fő csomóponttal, a hely 2 2.
+A SAP HANA 2,0 tesztelési rendszeren a **00** -as példányszám miatt a névkiszolgálók portszáma **30001**. A HSR metaadat-kommunikáció portszáma **40002**. Az egyik lehetőség a munkavégző csomópontba való bejelentkezés, majd a fő csomópont-szolgáltatások beadása. Ehhez a cikkhez a 2. helyen a 2. feldolgozói csomópontot próbáltuk csatlakozni a 2. helyen található fő csomóponthoz.
 
-Ellenőrizze a nevet kiszolgáló portja:
+Keresse meg a Name Server portot:
 
 <pre><code>
 nc -vz 10.0.0.40 30001
@@ -138,8 +138,8 @@ nc -vz 10.0.1.40 30001
 nc -vz 10.0.2.40 30001
 </code></pre>
 
-Hogy igazolja, hogy a csomópontok kommunikációs alhálózatot használ **10.0.2.0/24**, az eredmény az alábbi kimeneti példa hasonlóan kell kinéznie.
-Csak a keresztül alhálózati kapcsolat **10.0.2.0/24** sikeres legyen:
+Annak bizonyításához, hogy a csomópontok közötti kommunikáció a **10.0.2.0/24**alhálózatot használja, az eredménynek a következő minta kimenethez hasonlóan kell kinéznie.
+Csak a **10.0.2.0/24** alhálózaton keresztüli kapcsolatok sikeresek legyenek:
 
 <pre><code>
 nc: connect to 10.0.0.40 port 30001 (tcp) failed: Connection refused
@@ -147,7 +147,7 @@ nc: connect to 10.0.1.40 port 30001 (tcp) failed: Connection refused
 Connection to 10.0.2.40 30001 port [tcp/pago-services1] succeeded!
 </code></pre>
 
-Most ellenőrizze a HSR-portra **40002**:
+Most keresse meg a **40002**-es HSR-portot:
 
 <pre><code>
 nc -vz 10.0.0.40 40002
@@ -155,8 +155,8 @@ nc -vz 10.0.1.40 40002
 nc -vz 10.0.2.40 40002
 </code></pre>
 
-Hogy igazolja, hogy a HSR-kommunikáció alhálózatot használ **10.0.1.0/24**, az eredmény az alábbi kimeneti példa hasonlóan kell kinéznie.
-Csak a keresztül alhálózati kapcsolat **10.0.1.0/24** sikeres legyen:
+Annak bizonyításához, hogy a HSR-kommunikáció a **10.0.1.0/24**alhálózatot használja, az eredménynek a következő minta kimenetéhez hasonlóan kell kinéznie.
+Csak a **10.0.1.0/24** alhálózaton keresztüli kapcsolatok sikeresek legyenek:
 
 <pre><code>
 nc: connect to 10.0.0.40 port 40002 (tcp) failed: Connection refused
@@ -169,11 +169,11 @@ nc: connect to 10.0.2.40 port 40002 (tcp) failed: Connection refused
 ## <a name="corosync"></a>Corosync
 
 
-A **corosync** csak akkor lehet helyes, a fürtben, beleértve a csomóponttöbbség maker minden csomóponton rendelkezik a konfigurációs fájl. Ha a fürthöz való csatlakozást, a csomópont nem a várt módon működik, hozzon létre, vagy másolja **/etc/corosync/corosync.conf** manuálisan be minden csomópontján, és indítsa újra a szolgáltatást. 
+A **Corosync** konfigurációs fájljának helyesnek kell lennie a fürt minden csomópontján, beleértve a többségi készítő csomópontot is. Ha egy csomópont fürthöz való csatlakoztatása nem a várt módon működik, manuálisan hozza létre vagy másolja a **/etc/Corosync/Corosync.conf** az összes csomópontra, majd indítsa újra a szolgáltatást. 
 
-Tartalmának **corosync.conf** a vizsgálatot a rendszer egy példa.
+Egy példa a **Corosync. conf** fájl tartalmára a tesztelési rendszerből.
 
-Az első szakasz **totem**leírtak szerint [telepítési fürt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation), 11. lépés. Az érték figyelmen kívül hagyhatja **mcastaddr**. Csak tartani a meglévő bejegyzést. A bejegyzéseket **token** és **konszenzus** kell állítani a következők szerint [a Microsoft Azure az SAP HANA-dokumentáció][sles-pacemaker-ha-guide].
+Az első szakasz a **Totem**, a [fürt telepítése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation)című részben leírtak szerint, 11. lépés. Figyelmen kívül hagyhatja a **mcastaddr**értékét. Csak tartsa meg a meglévő bejegyzést. A jogkivonatra és a **konszenzusra** vonatkozó bejegyzéseket a [Microsoft Azure SAP HANA dokumentációjának][sles-pacemaker-ha-guide]megfelelően kell beállítani.
 
 <pre><code>
 totem {
@@ -203,7 +203,7 @@ totem {
 }
 </code></pre>
 
-A második szakasz **naplózás**, nem módosult az adott alapértelmezett értéket:
+A második szakasz, a **naplózás**, nem módosult a megadott alapbeállításokban:
 
 <pre><code>
 logging {
@@ -221,7 +221,7 @@ logging {
 }
 </code></pre>
 
-A harmadik szakasz azt mutatja be a **csomópontlista**. A fürt minden csomópontján kell jelenik meg a **nodeid**:
+A harmadik szakasz a **nodeList**mutatja. A fürt összes csomópontjának meg kell jelenítenie a **nodeId**:
 
 <pre><code>
 nodelist {
@@ -256,7 +256,7 @@ nodelist {
 }
 </code></pre>
 
-Az utolsó szakaszban **kvórum**, fontos, hogy értékét **expected_votes** megfelelően. Többek között a csomóponttöbbség maker csomópontok kell lennie. És az értéke **two_node** kell lennie **0**. A bejegyzés ne távolítsa el teljesen. Csak állítsa az értékét **0**.
+Az utolsó szakaszban, a **kvórumnál**fontos a **expected_votes** helyes értékének beállítása. A csomópontok számának kell lennie, beleértve a többségi készítő csomópontot. A **two_node** értékének pedig **0**értékűnek kell lennie. Ne távolítsa el teljesen a bejegyzést. Állítsa az értéket **0-ra**.
 
 <pre><code>
 quorum {
@@ -269,7 +269,7 @@ quorum {
 </code></pre>
 
 
-Indítsa újra a szolgáltatást keresztül **systemctl**:
+Indítsa újra a szolgáltatást a **systemctl**-on keresztül:
 
 <pre><code>
 systemctl restart corosync
@@ -278,11 +278,11 @@ systemctl restart corosync
 
 
 
-## <a name="sbd-device"></a>SBD eszköz
+## <a name="sbd-device"></a>SBD-eszköz
 
-Hogyan állítható be egy Azure-beli virtuális gépen egy SBD eszköz leírt [SBD szintaxiskiemeléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing).
+A SBD-eszköz Azure-beli virtuális gépen történő beállítását a [SBD-kerítés](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing)ismerteti.
 
-Ha a fürt minden csomópontján az ACL-bejegyzések először ellenőrizze a virtuális gép SBD kiszolgálón. Futtassa a következő parancsot a virtuális gép SBD kiszolgálón:
+Először is ellenőrizze a SBD-kiszolgáló virtuális gépen, hogy vannak-e ACL-bejegyzések a fürt minden csomópontja számára. Futtassa a következő parancsot a SBD-kiszolgáló virtuális gépen:
 
 
 <pre><code>
@@ -290,7 +290,7 @@ targetcli ls
 </code></pre>
 
 
-A tesztgépen a parancs kimenete az alábbi mintához hasonlóan néz ki. ACL-neveket például **iqn.2006-04.hso-db-0.local:hso-db-0** , meg kell adni a megfelelő kezdeményező nevét, a virtuális gépeken. Minden virtuális Gépnek szüksége van, egy másikat.
+A tesztelési rendszeren a parancs kimenete az alábbi példához hasonlóan néz ki. Az ACL-nevek, például a **IQN. 2006-04. hso-db-0. local: hso-db-0 értéket** kell megadni a virtuális gépek megfelelő kezdeményező neveként. Minden virtuális gépnek egy másikra van szüksége.
 
 <pre><code>
  | | o- sbddbhso ................................................................... [/sbd/sbddbhso (50.0MiB) write-thru activated]
@@ -317,13 +317,13 @@ A tesztgépen a parancs kimenete az alábbi mintához hasonlóan néz ki. ACL-ne
   |     | o- iqn.2006-04.hso-db-6.local:hso-db-6 .................................................................. [Mapped LUNs: 1]
 </code></pre>
 
-Ezután ellenőrizze, hogy a kezdeményező nevek az összes virtuális gép különböző, és felel meg a korábban bemutatott bejegyzések. Ebben a példában az 1 1 helyet a munkavégző csomópont van:
+Ezután győződjön meg arról, hogy a kezdeményezők nevei az összes virtuális gépen eltérnek, és megfelelnek a korábban megjelenített bejegyzéseknek. Ez a példa az 1. hely munkavégző csomópontjának 1:
 
 <pre><code>
 cat /etc/iscsi/initiatorname.iscsi
 </code></pre>
 
-A kimenet az alábbi mintához hasonlóan néz ki:
+A kimenet a következő példához hasonlóan néz ki:
 
 <pre><code>
 ##
@@ -339,31 +339,31 @@ A kimenet az alábbi mintához hasonlóan néz ki:
 InitiatorName=iqn.2006-04.hso-db-1.local:hso-db-1
 </code></pre>
 
-Ezután ellenőrizze, hogy a **felderítési** megfelelően működik-e. Futtassa a következő parancsot minden egyes fürtcsomóponton SBD kiszolgáló virtuális gép IP-cím használatával:
+Ezután ellenőrizze, hogy a **felderítés** megfelelően működik-e. Futtassa a következő parancsot minden fürtcsomóponton a SBD-kiszolgáló virtuális gép IP-címének használatával:
 
 <pre><code>
 iscsiadm -m discovery --type=st --portal=10.0.0.19:3260
 </code></pre>
 
-A kimenet az alábbi mintához hasonlóan kell kinéznie:
+A kimenetnek az alábbi példához hasonlóan kell kinéznie:
 
 <pre><code>
 10.0.0.19:3260,1 iqn.2006-04.dbhso.local:dbhso
 </code></pre>
 
-A következő megvalósíthatósági példában, hogy ellenőrizze, hogy a csomópont a SDB eszköz látja-e. Ellenőrizze azt minden csomóponton, beleértve a csomóponttöbbség készítő:
+A következő bizonyítási pont annak ellenőrzése, hogy a csomópont látja-e az SDB-eszközt. Győződjön meg róla, hogy minden csomóponton, beleértve a többségi készítő csomópontot:
 
 <pre><code>
 lsscsi | grep dbhso
 </code></pre>
 
-A kimenetnek az alábbi mintához hasonlóan kell kinéznie. Azonban a nevei eltérőek lehetnek. Az eszköz nevét is módosíthatja a előfordulhat, hogy a virtuális gép újraindítása után:
+A kimenetnek az alábbi példához hasonlóan kell kinéznie. A nevek azonban eltérőek lehetnek. A virtuális gép újraindítása után az eszköz neve is változhat:
 
 <pre><code>
 [6:0:0:0]    disk    LIO-ORG  sbddbhso         4.0   /dev/sdm
 </code></pre>
 
-A rendszer állapotától függően néha segít a problémák megoldása az iSCSI-szolgáltatások újraindítása. Ezután futtassa le a következő parancsokat:
+A rendszer állapotától függően időnként az iSCSI-szolgáltatások újraindítását is lehetővé teszi a problémák megoldásához. Ezután futtassa le a következő parancsokat:
 
 <pre><code>
 systemctl restart iscsi
@@ -371,13 +371,13 @@ systemctl restart iscsid
 </code></pre>
 
 
-Bármely olyan csomópontról ellenőrizheti, ha vannak-e az összes csomópont **törölje a jelet**. Győződjön meg arról, hogy egy adott csomóponton használja a megfelelő eszköz neve:
+Bármely csomópontból megtekintheti, hogy az összes csomópont **törölve**van-e. Győződjön meg arról, hogy az eszköz helyes nevét használja egy adott csomóponton:
 
 <pre><code>
 sbd -d /dev/sdm list
 </code></pre>
 
-Meg kell jelennie a kimeneti **törölje a jelet** a fürt minden csomópontján:
+A kimenetnek **egyértelműnek** kell lennie a fürt minden csomópontján:
 
 <pre><code>
 0       hso-hana-vm-s1-0        clear
@@ -390,13 +390,13 @@ Meg kell jelennie a kimeneti **törölje a jelet** a fürt minden csomópontján
 </code></pre>
 
 
-Egy másik SBD ellenőrizze-e a **memóriakép** lehetőséget a **sbd** parancsot. A mintául szolgáló parancs és a csomóponttöbbség maker kimenete az eszköznév lett **sdd**, nem **sdm**:
+Egy másik SBD-ellenőrzési lehetőség a **SBD** parancs **dump** kapcsolója. Ebben a minta-és kimenetben a többségi készítő csomópontból az eszköz neve **SDD**volt, nem **SDM**:
 
 <pre><code>
 sbd -d /dev/sdd dump
 </code></pre>
 
-A kimenet az eszköznév, szereplőkkel kell kinéznie minden csomóponton ugyanaz:
+Az eszköz neve melletti kimenetnek az összes csomóponton azonosnak kell lennie:
 
 <pre><code>
 ==Dumping header on disk /dev/sdd
@@ -411,21 +411,21 @@ Timeout (msgwait)  : 120
 ==Header on disk /dev/sdd is dumped
 </code></pre>
 
-Egy további ellenőrzési SBD a arra, hogy egy másik csomópontra való üzenetküldéshez. Egy üzenet küldéséhez 2 helyen 2 feldolgozó csomópont, futtassa a következő parancsot a munkavégző csomóponton 1 2 helyen található:
+A SBD egy további keresése arra a lehetőségre van, hogy üzenetet küldjön egy másik csomópontnak. Ha üzenetet szeretne küldeni a 2. munkavégző csomópontnak 2. helyen, futtassa a következő parancsot a (z) 2. helyen található 1. munkavégző csomóponton:
 
 <pre><code>
 sbd -d /dev/sdm message hso-hana-vm-s2-2 test
 </code></pre>
 
-A cél virtuális gép oldalán **hso-hana-virtuálisgép-s2-2** ebben a példában találja a következő bejegyzést **/var/log/messages**:
+A cél virtuális gép oldalán **hso-Hana-VM-S2-2** ebben a példában a következő bejegyzést találja a **/var/log/messages**:
 
 <pre><code>
 /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68:   notice: servant: Received command test from hso-hana-vm-s2-1 on disk /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68
 </code></pre>
 
-Ellenőrizze, hogy a bejegyzések **/etc/sysconfig/sbd** felel meg a leírását [támasztja a SUSE Linux Enterprise Server az Azure-beli beállítása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing). Ellenőrizze, hogy az indítási beállítása **/etc/iscsi/iscsid.conf** automatikusra van állítva.
+Győződjön meg arról, hogy a **/etc/sysconfig/SBD** bejegyzései megfelelnek a [pacemaker beállítása SUSE Linux Enterprise Server az Azure-ban című rész](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing)leírásában. Ellenőrizze, hogy a **/etc/iSCSI/iscsid.conf** indítási beállítása automatikus értékre van-e állítva.
 
-A következő bejegyzések fontosak az **/etc/sysconfig/sbd**. Alkalmazkodjon a **azonosító** értékét, ha szükséges:
+A **/etc/sysconfig/SBD**-ben a következő bejegyzések fontosak. Szükség esetén módosítsa az **azonosító** értékét:
 
 <pre><code>
 SBD_DEVICE="/dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68;"
@@ -435,45 +435,45 @@ SBD_WATCHDOG=yes
 </code></pre>
 
 
-Ellenőrizze az indítási beállítások **/etc/iscsi/iscsid.conf**. A kötelező beállítás azért kell történt, az alábbi **iscsiadm** parancs, a dokumentációjában leírt. Ellenőrizze és alkalmazkodnak hozzá kézzel a **vi** Ha eltérő.
+Keresse meg az indítási beállítást a **/etc/iSCSI/iscsid.conf**. A kötelező beállításnak a dokumentációban leírt következő **iscsiadm** -paranccsal kell történnie. Ellenőrizze és módosítsa manuálisan a **VI** -vel, ha ez eltér.
 
-Ez a parancs beállítja az indítási viselkedést:
+Ez a parancs az indítási viselkedést állítja be:
 
 <pre><code>
 iscsiadm -m node --op=update --name=node.startup --value=automatic
 </code></pre>
 
-Győződjön meg arról, a tételben szereplő **/etc/iscsi/iscsid.conf**:
+Tegye ezt a bejegyzést a **/etc/iSCSI/iscsid.conf**:
 
 <pre><code>
 node.startup = automatic
 </code></pre>
 
-Tesztelés és a egy virtuális gép az újraindítás után az ellenőrzés során a SBD eszköz nem jelenik többé meg bizonyos esetekben. Hiba történt az indítási beállítások és YaST2 mutatott közötti eltérést. Ellenőrizze a beállításokat, hajtsa végre az alábbi lépéseket:
+A tesztelés és az ellenőrzés során egy virtuális gép újraindítása után a SBD-eszköz bizonyos esetekben már nem látható. Eltérés történt az indítási beállítás és a YaST2 között. A beállítások megadásához hajtsa végre a következő lépéseket:
 
-1. Start YaST2.
-2. Válassza ki **hálózati szolgáltatások** bal oldalán.
-3. Görgessen le, jobb oldalán **iSCSI-kezdeményező** , és jelölje ki.
-4. A következő képernyőn alatt a **szolgáltatás** lapon egyedi kezdeményező neve a csomópont megjelenik.
-5. A kezdeményező neve felett ügyeljen arra, hogy a **szolgáltatás indítása** értéke **amikor rendszerindítását**.
-6. Ha nem érhető el, majd beállíthatja azt a **amikor rendszerindítását** helyett **manuálisan**.
-7. Ezután váltson a felső lapon **csatlakoztatott tárolók**.
-8. Az a **csatlakoztatott tárolók** képernyőn egy bejegyzés az SBD eszköz példához hasonlóan kell megjelennie: **10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**.
-9. Ellenőrizze, hogy a **indítási** értéke **az rendszerindításkor**.
-10. Ha nem, válassza a **szerkesztése** módosítsa azt.
-11. A módosítások mentéséhez és a kilépéshez YaST2.
+1. Indítsa el a YaST2.
+2. Válassza ki a **Network Services** a bal oldalon.
+3. Görgessen le a jobb oldalon az **iSCSI** -kezdeményezőre, és jelölje ki.
+4. A **szolgáltatás** lap következő képernyőjén megjelenik a csomópont egyedi kezdeményező neve.
+5. A kezdeményező neve fölött ellenőrizze, hogy a **szolgáltatás indítási** értéke a **rendszerindítás során**van-e beállítva.
+6. Ha nem, akkor állítsa be, hogy a **manuális** **Indítás** helyett
+7. Ezután váltson a felső lapra a **csatlakoztatott célokhoz**.
+8. A **csatlakoztatott célok** képernyőn megjelenik egy bejegyzés a SBD-eszközhöz, például a következő mintának: **10.0.0.19:3260 IQN. 2006-04. dbhso. local: dbhso**.
+9. Ellenőrizze, hogy az **indítási** érték be van-e állítva **a**rendszerindításra.
+10. Ha nem, válassza a **Szerkesztés** lehetőséget, és módosítsa azt.
+11. Mentse a módosításokat, és lépjen ki a YaST2.
 
 
 
-## <a name="pacemaker"></a>Támasztja
+## <a name="pacemaker"></a>Pacemaker
 
-Miután mindent megfelelően van beállítva, a minden csomóponton a támasztja szolgáltatás állapotának ellenőrzéséhez futtathatja a következő parancsot:
+Miután minden megfelelően beállította a beállításokat, a következő parancs futtatásával tekintheti meg az összes csomópontot a pacemaker szolgáltatás állapotának ellenőrzéséhez:
 
 <pre><code>
 systemctl status pacemaker
 </code></pre>
 
-Felső részén a kimenet az alábbi mintához hasonlóan kell kinéznie. Fontos, amely után az állapot **aktív** jelenik meg, mint **betöltött** és **aktív (fut)** . Miután az állapot **Loaded** láthatónak kell lennie **engedélyezve**.
+A kimenet tetején a következő mintához hasonlóan kell kinéznie. Fontos, hogy az **aktív** állapot után **betöltött** és **aktív (futó)** állapot jelenjen meg. A betöltés utáni állapotot **engedélyezve**értékként kell megjeleníteni.
 
 <pre><code>
   pacemaker.service - Pacemaker High Availability Cluster Manager
@@ -493,19 +493,19 @@ Felső részén a kimenet az alábbi mintához hasonlóan kell kinéznie. Fontos
            └─4504 /usr/lib/pacemaker/crmd
 </code></pre>
 
-Ha a beállítás értéke továbbra is **le van tiltva**, futtassa a következő parancsot:
+Ha a beállítás továbbra is **le van tiltva**, futtassa a következő parancsot:
 
 <pre><code>
 systemctl enable pacemaker
 </code></pre>
 
-Az összes konfigurált erőforrások támasztja megtekintéséhez futtassa a következő parancsot:
+A pacemaker összes konfigurált erőforrásának megtekintéséhez futtassa a következő parancsot:
 
 <pre><code>
 crm status
 </code></pre>
 
-A kimenetnek az alábbi mintához hasonlóan kell kinéznie. Azt már rendben, amely a **cln** és **msl** erőforrások jelennek meg, a legtöbb maker VM, leállította **hso-hana-dm**. Nincs a legtöbb maker csomóponton SAP HANA-telepítés nélkül. Ezért a **cln** és **msl** erőforrások látható módon leállt. Fontos, hogy látható-e a megfelelő teljes száma, a virtuális gépek **7**. A fürt részét képező összes virtuális gép szerepelnie kell a állapotú **Online**. A jelenlegi elsődleges főcsomóponton helyesen ismeri fel. Ebben a példában van **hso-hana-virtuálisgép-s1-0**:
+A kimenetnek az alábbi példához hasonlóan kell kinéznie. Nagyon fontos, hogy a **CLN** és az **MSL** -erőforrások a többségi gyártó virtuális gépen, a **hso-Hana-DM**-ben leállítottként jelenjenek meg. Nincs SAP HANA telepítés a többségi gyártó csomópontján. Így a **CLN** és az **MSL** -erőforrások leálltként jelennek meg. Fontos, hogy a virtuális gépek megfelelő teljes számát jelenítse meg, **7**. A fürt részét képező összes virtuális gépnek az **online**állapottal kell szerepelnie. Az aktuális elsődleges főcsomópontot helyesen kell azonosítani. Ebben a példában ez a **hso-Hana-VM-S1-0**:
 
 <pre><code>
 Stack: corosync
@@ -533,14 +533,14 @@ Full list of resources:
      rsc_nc_HSO_HDB00   (ocf::heartbeat:anything):      Started hso-hana-vm-s1-0
 </code></pre>
 
-Egyik fontos szolgáltatása támasztja karbantartási módban. Ebben a módban azonnali fürt művelet szikrák nélkül végezhet módosításokat. Ilyen például, a virtuális gép újraindítását. Egy tipikus használati eset lenne tervezett operációs rendszer vagy az Azure infrastruktúra-karbantartási teendők. Lásd: [tervezett karbantartás](#planned-maintenance). A következő paranccsal karbantartás módba helyezni támasztja:
+A pacemaker egyik fontos funkciója a karbantartási mód. Ebben a módban módosításokat hajthat végre a fürt azonnali futtatása nélkül. Ilyen például egy virtuális gép újraindítása. Tipikus használati eset a tervezett operációs rendszer vagy az Azure-infrastruktúra karbantartása. Lásd: [tervezett karbantartás](#planned-maintenance). A következő parancs használatával állítsa be a pacemakert karbantartási módba:
 
 <pre><code>
 crm configure property maintenance-mode=true
 </code></pre>
 
-Az ellenőrzés **crm állapot**, megfigyelheti, hogy a kimenet megjelölt összes erőforrás **nem felügyelt**. Ebben az állapotban a fürt indítása vagy leállítása az SAP HANA hasonló módosításokat nem reagál.
-A következő minta bemutatja a kimenetét a **crm állapot** parancsot, miközben a fürt karbantartási módban van:
+A **CRM állapotának**ellenőrzésekor a kimenetben láthatja, hogy az összes erőforrás nem **kezeltként**van megjelölve. Ebben az állapotban a fürt nem reagál olyan változásokra, mint a SAP HANA elindítása vagy leállítása.
+A következő minta a **CRM status** parancs kimenetét mutatja be, miközben a fürt karbantartási módban van:
 
 <pre><code>
 Stack: corosync
@@ -580,20 +580,20 @@ Full list of resources:
 </code></pre>
 
 
-Ez a parancs a minta bemutatja, hogyan a fürt karbantartási mód befejezéséhez:
+Ez a parancs a fürt karbantartási módjának befejezését mutatja be:
 
 <pre><code>
 crm configure property maintenance-mode=false
 </code></pre>
 
 
-Egy másik **crm** parancs lekéri a teljes fürtkonfiguráció-szerkesztő, így azokat. Miután menti a módosításokat, a fürt elindítja a megfelelő műveleteket:
+Egy másik **CRM** -parancs beolvassa a fürt teljes konfigurációját egy Szerkesztőbe, így szerkesztheti azt. A módosítások mentése után a fürt elindítja a megfelelő műveleteket:
 
 <pre><code>
 crm configure edit
 </code></pre>
 
-Tekintse meg a teljes fürtkonfigurációnak, használja a **crm show** lehetőséget:
+A fürt teljes konfigurációjának megkereséséhez használja a **CRM show** lehetőséget:
 
 <pre><code>
 crm configure show
@@ -601,7 +601,7 @@ crm configure show
 
 
 
-Fürterőforrások, hiba után a **crm állapot** parancs listája látható **sikertelen műveletek**. Tekintse meg a kimenet a következő mintát:
+A fürt erőforrásainak meghibásodása után a **CRM status** parancs a **sikertelen műveletek**listáját jeleníti meg. Tekintse meg a kimenet következő mintáját:
 
 
 <pre><code>
@@ -634,13 +634,13 @@ Failed Actions:
     last-rc-change='Wed Sep 12 17:01:28 2018', queued=0ms, exec=277663ms
 </code></pre>
 
-Szükség egy fürt karbantartási hiba után. Használja a **crm** újra parancsot, és a parancssori kapcsolóval **karbantartása** távolíthatja el ezeket nem sikerült a művelet bejegyzéseket. Fürt megfelelő erőforrása nevezze a következőképpen:
+A meghibásodások után a fürt tisztítása szükséges. Használja újra a **CRM** -parancsot, és használja a parancs **törlését** , hogy megszabaduljunk a sikertelen műveleti bejegyzéseket. A megfelelő fürterőforrás nevét a következőképpen adja meg:
 
 <pre><code>
 crm resource cleanup rsc_SAPHanaCon_HSO_HDB00
 </code></pre>
 
-A parancs a következő mintához hasonló kimenetnek kell visszaadnia:
+A parancsnak a következő mintához hasonló kimenetet kell visszaadnia:
 
 <pre><code>
 Cleaned up rsc_SAPHanaCon_HSO_HDB00:0 on hso-hana-dm
@@ -655,11 +655,11 @@ Waiting for 7 replies from the CRMd....... OK
 
 
 
-## <a name="failover-or-takeover"></a>Feladatátvétel vagy átvétele
+## <a name="failover-or-takeover"></a>Feladatátvétel vagy átvétel
 
-Az [fontos megjegyzések](#important-notes), a feladatátvevő fürt vagy az SAP HANA HSR átvétele teszteléséhez ne használja a standard szabályos leállítást. Ehelyett azt javasoljuk, hogy kernelpánikot aktiválása, kényszerítheti az erőforrás-migrálás, vagy esetleg állítsa le a virtuális gép operációs rendszer szint minden hálózatból elérhető. Egy másik módszer a **crm \<csomópont\> készenléti** parancsot. Tekintse meg a [SUSE dokumentum][sles-12-ha-paper]. 
+A [Fontos megjegyzések](#important-notes)szerint a fürt feladatátvételének teszteléséhez vagy SAP HANA HSR átvételéhez nem ajánlott szabványos kecses leállítást alkalmazni. Ehelyett azt javasoljuk, hogy indítson el egy kernel-pánikot, kényszerítse az erőforrások áttelepítését, vagy esetleg állítsa le az összes hálózatot a virtuális gép operációsrendszer-szintjén. Egy másik módszer a **CRM \<-\> csomópont készenléti** parancsa. Lásd a [SUSE-dokumentumot][sles-12-ha-paper]. 
 
-Az alábbi három Példaparancsok kényszerítheti a feladatátvevő fürt:
+A következő három minta parancs kényszerítheti a fürt feladatátvételét:
 
 <pre><code>
 echo c &gt /proc/sysrq-trigger
@@ -673,24 +673,24 @@ wicked ifdown eth2
 wicked ifdown eth&ltn&gt
 </code></pre>
 
-Leírtak szerint [tervezett karbantartás](#planned-maintenance), egy jó módszer a fürt tevékenységek figyelését, hogy futtassa **SAPHanaSR-showAttr** az a **watch** parancsot:
+A [tervezett karbantartás](#planned-maintenance)során a fürt tevékenységeinek figyelésére jó módszer a **SAPHanaSR-showAttr** futtatása a **Watch** paranccsal:
 
 <pre><code>
 watch SAPHanaSR-showAttr
 </code></pre>
 
-Emellett elősegíti, tekintse meg az SAP HANA fekvő állapot származó egy SAP Python-szkriptet. A fürt beállítása a keresi az állapot értékét. Akkor válik törlése, amikor egy feldolgozó csomópont leáll. Ha egy feldolgozó csomópont leáll, az SAP HANA nem ad vissza hibát a rendszer állapotát, az egész kibővített azonnal. 
+Emellett segít megtekinteni az SAP Python-szkriptből érkező SAP HANA tájképi állapotot. A fürt beállítása az állapot értékét keresi. Egyértelművé válik, ha a feldolgozó csomópont hibáját gondolja. Ha egy feldolgozó csomópont leáll, SAP HANA nem ad vissza azonnal hibát a teljes kibővíthető rendszer állapotára vonatkozóan. 
 
-Nincsenek az egyes újrapróbálkozások szükségtelen feladatátvételek elkerüléséhez. A fürt viselkedését abban az esetben csak akkor, ha az állapot változik **Ok**, visszatérési érték **4**, az **hiba**, visszatérési érték **1**. Így helyes Ha kimenete **SAPHanaSR-showAttr** jeleníti meg a állapotú virtuális gép **offline**. De még a váltás nincs tevékenység az elsődleges és másodlagos. Nincs fürt tevékenység lekéri indul el, mindaddig, amíg az SAP HANA nem ad vissza hibát.
+A szükségtelen feladatátvételek elkerülése érdekében újrapróbálkozik. A fürt csak akkor működik, ha az állapot az **OK**, a **4**. visszatérési érték, a **hiba**, az **1**. visszaadott érték változik. Ezért helyes, ha a **SAPHanaSR-showAttr** kimenete **Offline**állapotú virtuális gépet mutat be. Azonban még nincs tevékenység az elsődleges és a másodlagos váltáshoz. Nem indul el a fürt tevékenysége, amíg SAP HANA nem ad vissza hibát.
 
-Nyomon követheti az SAP HANA fekvő állapot felhasználóként  **\<HANA SID\>adm** SAP Python-szkript a következő meghívásával. Szükség lehet a alkalmazkodjon az elérési út:
+Az SAP Python-szkriptet az alábbi módon figyelheti meg a SAP HANA fekvő állapotot felhasználó  **\<\>HANA SID adm** néven. Lehetséges, hogy az elérési utat módosítania kell:
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
 </code></pre>
 
-Ez a parancs kimenete az alábbi mintához hasonlóan kell kinéznie. A **gazdagép állapota** oszlop és az **teljes állomás állapota** egyaránt fontosak. A tényleges kimenete szélesebb körű, további oszlopokat.
-Ahhoz, hogy a kimeneti tábla olvashatóbb, ez a dokumentum belül, a rendszer eltávolította a legtöbb oszlopot a jobb oldalon:
+A parancs kimenetének a következő mintához hasonlóan kell kinéznie. A **gazdagép állapota** oszlop és a **gazdagép teljes állapota** egyaránt fontos. A tényleges kimenet szélesebb, további oszlopokkal.
+Ahhoz, hogy a kimeneti tábla olvashatóbb legyen a dokumentumban, a jobb oldalon található legtöbb oszlop el lett megfosztotva:
 
 <pre><code>
 | Host             | Host   | Host   | Failover | Remove | 
@@ -705,7 +705,7 @@ overall host status: ok
 </code></pre>
 
 
-Van egy másik parancs aktuális fürt tevékenységek ellenőrzéséhez. Tekintse meg a következő parancsot, és a kimeneti végéről után az elsődleges hely a fő csomóponttal lett állítva. Átmenet műveletekhez, például a listája látható **előléptetése** a korábbi másodlagos fő csomóponttal, **hso-hana-virtuálisgép-s2-0**, az új elsődleges Master. Ha mindent rendben, és az összes tevékenység befejeződtek, ez **átmenet összefoglalás** listája tartalmaz üresnek kell lenniük.
+Van egy másik parancs a fürt aktuális tevékenységeinek vizsgálatához. Az elsődleges hely fő csomópontjának leölése után tekintse meg a következő parancsot és a kimenetet. Az új elsődleges főkiszolgálóként megtekintheti az áttérési műveletek listáját, például a korábbi másodlagos főcsomópont, a **hso-Hana-VM-S2-0**előléptetését. Ha minden tevékenység rendben van, és minden tevékenység elkészült, akkor az átváltási **összesítő** lista üresnek kell lennie.
 
 <pre><code>
  crm_simulate -Ls
@@ -725,36 +725,36 @@ Transition Summary:
 
 ## <a name="planned-maintenance"></a>Tervezett karbantartás 
 
-Esetén, a tervezett karbantartás, nincsenek különböző használati helyzetekhez. Egy kérdésre, hogy csak az infrastruktúra-karbantartási például a módosítások az operációs rendszer szintjén és a lemezkonfiguráció vagy egy HANA frissítés.
-Például a SUSE-dokumentumokban további információt is megtalálhatja [felé üzemszünet][sles-zero-downtime-paper] or [SAP HANA SR Performance Optimized Scenario][sles-12-for-sap]. Ezeket a dokumentumokat a minták azt mutatják be egy elsődleges manuális áttelepítésével is tartalmazhatnak.
+A tervezett karbantartáshoz különböző használati esetek tartoznak. Az egyik kérdés, hogy csak az infrastruktúra-karbantartás, például az operációs rendszer szintjén történt változások, a lemez konfigurációja vagy a HANA-frissítés.
+További információkat a SUSE-ben található dokumentumokban találhat, például a [nulla leállás][sles-zero-downtime-paper] vagy a [SAP HANA SR teljesítményének optimalizált forgatókönyve][sles-12-for-sap]irányába. Ezek a dokumentumok olyan mintákat is tartalmaznak, amelyek bemutatják, hogyan telepíthet át manuálisan egy elsődlegeset.
 
-Az erős belső tesztjei azért volt szükség, ellenőrizze az infrastruktúra-karbantartási használati eset. Bármely az elsődleges áttelepítésével kapcsolatos problémák elkerülése érdekében azt úgy döntött, hogy mindig egy elsődleges előtt egy fürt karbantartási módba. Ezzel a módszerrel nem elengedhetetlen, hogy a fürt elfelejtette kapcsolatos korábbi helyzet: mely side nem elsődleges és másodlagos lett.
+Intenzív belső tesztelés történt az infrastruktúra-karbantartási használati eset ellenőrzéséhez. Ha el szeretné kerülni az elsődleges áttelepítéssel kapcsolatos problémákat, úgy döntöttünk, hogy mindig áttelepíti az elsődlegest, mielőtt a fürtöt karbantartási módba helyezné. Így nem szükséges felejtsd a fürtöt arra, hogy a korábbi helyzetet felejtsen: az elsődleges és másodlagos volt.
 
-Ebben a tekintetben van két különböző helyzetekben:
+Ebben a tekintetben két különböző helyzet áll fenn:
 
-- **Tervezett karbantartás az aktuális másodlagos**. Ebben az esetben csak a fürt karbantartás módba helyezni, illetve használhat a munkát a másodlagos anélkül, hogy befolyásolná a fürtöt.
+- **Tervezett karbantartás az aktuális másodlagos oldalon**. Ebben az esetben csak karbantartási módba helyezheti a fürtöt, és a másodlagos munkát anélkül végezheti el, hogy befolyásolná a fürtöt.
 
-- **Tervezett karbantartás az aktuális elsődleges**. Hogy a felhasználók továbbra is működik a karbantartás során, akkor kell feladatátvételt kényszerít ki egy. Ezzel a módszerrel a fürt feladatátvétele támasztja és nem az SAP HANA HSR szintje indít el kell. A támasztja a telepítő automatikusan elindítja az SAP HANA átvételt. Emellett szüksége ehhez a feladatátvétel előtt, a fürt karbantartási módba.
+- **Tervezett karbantartás az aktuális elsődlegesen**. Annak érdekében, hogy a felhasználók továbbra is működőképesek legyenek a karbantartás során, kényszeríteni kell a feladatátvételt. Ezzel a módszerrel a fürt feladatátvételét a pacemakerrel kell elindítani, nem csak a SAP HANA HSR szinten. A pacemaker telepítője automatikusan elindítja a SAP HANA átvételt. A feladatátvételt még azelőtt kell végrehajtania, hogy a fürtöt karbantartási módba helyezné.
 
-A jelenlegi másodlagos helyen karbantartási eljárást a következőképpen történik:
+Az aktuális másodlagos hely karbantartásának eljárása a következő:
 
-1. A fürt karbantartás módba helyezni.
-2. A másodlagos helyen a munka elvégzéséhez. 
-3. A fürt karbantartási mód befejezéséhez.
+1. Helyezze a fürtöt karbantartási módba.
+2. A munka elvégzése a másodlagos helyen. 
+3. Fejezze be a fürt karbantartási módját.
 
-A jelenlegi elsődleges helyen karbantartási eljárást a következő összetettebb:
+Az aktuális elsődleges helyen lévő karbantartási eljárás összetettebb:
 
-1. Egy feladatátvételi vagy SAP HANA átvétel keresztül támasztja erőforrás-migrálás aktiválása manuálisan. Az alábbi részleteket.
-2. A korábbi elsődleges hely az SAP HANA lekérdezi állítsa le a fürt beállítása szerint.
-3. A fürt karbantartás módba helyezni.
-4. Miután a karbantartási munkát, regisztrálja az előző elsődleges az új másodlagos hely.
-5. A Törlés a fürt konfigurációját. Az alábbi részleteket.
-6. A fürt karbantartási mód befejezéséhez.
+1. Feladatátvétel vagy SAP HANA átvételének manuális elindítása pacemaker erőforrás-áttelepítés használatával. Tekintse meg az alábbi részleteket.
+2. A korábbi elsődleges helyen lévő SAP HANA a fürt beállítása leállítja.
+3. Helyezze a fürtöt karbantartási módba.
+4. A karbantartási munkálatok befejezése után regisztrálja a korábbi elsődlegest az új másodlagos helyként.
+5. Ürítse ki a fürtkonfiguráció konfigurációját. Tekintse meg az alábbi részleteket.
+6. Fejezze be a fürt karbantartási módját.
 
 
-Erőforrás áttelepítése bejegyzés hozzáadása a fürt konfigurációját. Például a rendszer feladatátvételt kényszerít ki. Ezek a bejegyzések karbantartási mód leállítása előtt törölni kell. Tekintse meg a következő mintát.
+Egy erőforrás áttelepítése egy bejegyzést hoz létre a fürt konfigurációjához. Ilyen például a feladatátvétel kényszerítése. Ezeket a bejegyzéseket a karbantartási mód befejezése előtt kell megtisztítania. Tekintse meg a következő mintát.
 
-Először feladatátvételt kényszerít ki egy fürt áttelepítése révén a **msl** erőforrás a jelenlegi másodlagos fő csomóponttal. Ez a parancs figyelmeztetést küld, amely egy **megkötés áthelyezése** lett létrehozva:
+Először kényszerítse ki a fürt feladatátvételét úgy, hogy áttelepíti az **MSL** -erőforrást az aktuális másodlagos főcsomópontra. Ez a parancs figyelmeztetést ad arra vonatkozóan, hogy az **áthelyezési megkötés** létrejött:
 
 <pre><code>
 crm resource migrate msl_SAPHanaCon_HSO_HDB00 force
@@ -763,13 +763,13 @@ INFO: Move constraint created for msl_SAPHanaCon_HSO_HDB00
 </code></pre>
 
 
-Ellenőrizze a parancs használatával a feladatátvételi folyamat **SAPHanaSR-showAttr**. A fürt állapotának figyelése, nyisson meg egy dedikált rendszerhéj ablakot, és indítsa el a parancsot a **watch**:
+A feladatátvételi folyamatot a **SAPHanaSR-showAttr**parancs használatával vizsgálja meg. A fürt állapotának figyeléséhez nyisson meg egy dedikált rendszerhéj-ablakot, és indítsa el a parancsot az **óra**használatával:
 
 <pre><code>
 watch SAPHanaSR-showAttr
 </code></pre>
 
-A kimenet a manuális feladatátvételt kell megjelennie. A korábbi másodlagos fő csomóponttal lett **előléptetett**, ebben a példában **hso-hana-virtuálisgép-s2-0**. A korábbi elsődleges helyén leállt, **licencszolgáltatóval** érték **1** a korábbi elsődleges főcsomópont **hso-hana-virtuálisgép-s1-0**: 
+A kimenetnek a manuális feladatátvételt kell mutatnia. A korábbi másodlagos főcsomópont **előléptetve**lett, ebben a példában a **hso-Hana-VM-S2-0**. A korábbi elsődleges hely le lett állítva, **1** . **licencszolgáltatóval** érték a korábbi elsődleges főcsomóponthoz **hso-Hana-VM-S1-0**: 
 
 <pre><code>
 Global cib-time                 prim  sec srHook sync_state
@@ -794,21 +794,21 @@ hso-hana-vm-s2-1 DEMOTED     online     slave:slave:worker:slave     -10000 HSOS
 hso-hana-vm-s2-2 DEMOTED     online     slave:slave:worker:slave     -10000 HSOS2
 </code></pre>
 
-A feladatátvevő fürt és az SAP HANA átvétele után a fürt karbantartás módba helyezni leírtak szerint [támasztja](#pacemaker).
+A fürt feladatátvétele és SAP HANA átvétele után helyezze a fürtöt karbantartási módba a [pacemakerben](#pacemaker)leírtak szerint.
 
-A parancsok **SAPHanaSR-showAttr** és **crm állapot** használatbavételben a korlátokat, az erőforrás-migrálás által létrehozott nem jelzik. Ezek a korlátozások láthatóvá az egyik lehetőség, hogy megjelenítése a teljes fürt erőforrás konfigurációját a következő paranccsal:
+A **SAPHanaSR-showAttr** és a **CRM** -alapú parancsok nem utalnak az erőforrás-áttelepítéssel létrehozott korlátozásokra. Az egyik lehetőség, hogy láthatóvá tegye ezeket a korlátozásokat, a fürt teljes erőforrás-konfigurációjának megjelenítése a következő paranccsal:
 
 <pre><code>
 crm configure show
 </code></pre>
 
-A fürtkonfiguráció között keresse meg egy új földrajzi megszorítás, a korábbi manuális erőforrás-migrálás okozta. Ez a példa a bejegyzés kezdődik **hely cli -** :
+A fürt konfigurációjában a korábbi manuális erőforrás-áttelepítés által okozott új hely megkötése található. Ez a példában szereplő bejegyzés a **CLI-** vel kezdődik:
 
 <pre><code>
 location cli-ban-msl_SAPHanaCon_HSO_HDB00-on-hso-hana-vm-s1-0 msl_SAPHanaCon_HSO_HDB00 role=Started -inf: hso-hana-vm-s1-0
 </code></pre>
 
-Sajnos az ilyen megkötések hatással lehet az általános fürt működést. Ezért kötelező távolítsa el őket újból a teljes rendszer biztonsági mentése állapotba helyezése előtt. Az a **unmigrate** parancs, lehetséges, a helyre vonatkozó megkötések előtt létrehozott karbantartása. A naming egy kicsit zavaró lehet. Azt nem próbálja meg az erőforrás telepítheti vissza az eredeti virtuális gép áttelepítése történt. Ez csupán eltávolítja a helyre vonatkozó megkötések, és is visszaküldi a megfelelő információkat, a parancs futtatásakor:
+Sajnos az ilyen megkötések befolyásolhatják a fürt általános viselkedését. Ezért a teljes rendszeren történő biztonsági mentés előtt el kell távolítani őket. A remigrálás paranccsal kiürítheti a korábban létrehozott hely megkötéseit. Előfordulhat, hogy az elnevezés kissé zavaros. Nem próbálja meg újra áttelepíteni az erőforrást arra az eredeti virtuális gépre, amelyről az áttelepítette. Csak eltávolítja a hely megkötéseit, és a parancs futtatásakor a megfelelő információkat is visszaadja:
 
 
 <pre><code>
@@ -817,32 +817,32 @@ crm resource unmigrate msl_SAPHanaCon_HSO_HDB00
 INFO: Removed migration constraints for msl_SAPHanaCon_HSO_HDB00
 </code></pre>
 
-A karbantartási munkát végén, a fürt karbantartási mód leállítása, ahogyan [támasztja](#pacemaker).
+A karbantartási munkálatok végén le kell állítania a fürt karbantartási módját a Pacemakerben látható módon. [](#pacemaker)
 
 
 
-## <a name="hbreport-to-collect-log-files"></a>naplófájlokat gyűjthet hb_report
+## <a name="hb_report-to-collect-log-files"></a>naplófájlok gyűjtésének hb_report
 
-Támasztja fürt problémák elemzéséhez, a hasznos és futtatásához SUSE-támogatást is kért legyen a **hb_report** segédprogramot. Összegyűjti az összes fontos naplófájlokat kell elemeznie, mi történt. Ez a minta-hívás egy kezdő és záró idő használ, ahol az egy adott esemény történt. További tájékoztatás [fontos megjegyzések](#important-notes):
+A pacemaker fürtökkel kapcsolatos problémák elemzéséhez hasznos és a SUSE-támogatás azt is kéri, hogy futtassa a **hb_report** segédprogramot. A rendszer összegyűjti az összes fontos naplófájlt, melyeket elemezni kell, hogy mi történt. Ez a példa egy kezdési és befejezési időpontot használ, ahol egy adott incidens történt. A [Fontos megjegyzések](#important-notes)is megjelennek:
 
 <pre><code>
 hb_report -f "2018/09/13 07:36" -t "2018/09/13 08:00" /tmp/hb_report_log
 </code></pre>
 
-A parancs arra kéri, ahová a tömörített naplófájlokat:
+A parancs megadja, hová helyezi a tömörített naplófájlokat:
 
 <pre><code>
 The report is saved in /tmp/hb_report_log.tar.bz2
 Report timespan: 09/13/18 07:36:00 - 09/13/18 08:00:00
 </code></pre>
 
-Bontsa ki az egyes fájlokat, a standard keresztül **tar** parancsot:
+Ezután kibonthatja az egyes fájlokat a szabványos **tar** parancs használatával:
 
 <pre><code>
 tar -xvf hb_report_log.tar.bz2
 </code></pre>
 
-Ha megnézi a kibontott fájlokat, keresse meg a naplófájlokat. Ezek többsége fel külön könyvtárakban a fürt minden csomópontján:
+Ha megtekinti a kibontott fájlokat, megkeresi az összes naplófájlt. A legtöbb esetben a fürt összes csomópontja külön címtárakba került:
 
 <pre><code>
 -rw-r--r-- 1 root root  13655 Sep 13 09:01 analysis.txt
@@ -861,7 +861,7 @@ drwxr-xr-x 3 root root   4096 Sep 13 09:01 hso-hana-vm-s2-2
 </code></pre>
 
 
-Az időtartomány lett megadva, a jelenlegi fő csomóponttal belül **hso-hana-virtuálisgép-s1-0** következtében leállt. Ez az esemény vonatkozó bejegyzést talál a **journal.log**:
+A megadott időtartományon belül az aktuális fő csomópont **hso-Hana-VM-S1-0** lett leállítva. Az eseményhez kapcsolódó bejegyzéseket a **Journal. log naplófájlban**találja:
 
 <pre><code>
 2018-09-13T07:38:01+0000 hso-hana-vm-s2-1 su[93494]: (to hsoadm) root on none
@@ -883,7 +883,7 @@ Az időtartomány lett megadva, a jelenlegi fő csomóponttal belül **hso-hana-
 2018-09-13T07:38:03+0000 hso-hana-vm-s2-1 su[93494]: pam_unix(su-l:session): session closed for user hsoadm
 </code></pre>
 
-Egy másik példa, a támasztja naplófájlt a másodlagos főkiszolgálón, és az új elsődleges főkiszolgáló vált. A cikkből szerint jeleníti meg, hogy az a leállítva elsődleges főcsomópont lett állítva: **offline**:
+Egy másik példa a pacemaker naplófájl a másodlagos főkiszolgálón, amely az új elsődleges főkiszolgáló lett. Ez a részlet azt mutatja, hogy a megölt elsődleges főcsomópont állapota **Offline**értékre lett állítva:
 
 <pre><code>
 Sep 13 07:38:02 [4178] hso-hana-vm-s2-0 stonith-ng:     info: pcmk_cpg_membership:      Node 3 still member of group stonith-ng (peer=hso-hana-vm-s1-2, counter=5.1)
@@ -901,10 +901,10 @@ Sep 13 07:38:02 [4184] hso-hana-vm-s2-0       crmd:     info: pcmk_cpg_membershi
 
 
 
-## <a name="sap-hana-globalini"></a>SAP HANA global.ini
+## <a name="sap-hana-globalini"></a>SAP HANA Global. ini
 
 
-A következő excerpts vannak az SAP HANA-ból **global.ini** 2 helyhez cluster-fájlt. Ez a példa bemutatja a hostname különböző hálózatokon az SAP HANA-csomópontok kommunikációs és a HSR-névfeloldási bejegyzéseket:
+A következő részletek a SAP HANA **globális. ini** fájlból származnak a 2. fürt helyén. Ez a példa az állomásnév-feloldási bejegyzéseket mutatja be különböző hálózatok használatára SAP HANA csomópontok közötti kommunikációhoz és HSR:
 
 <pre><code>
 [communication]
@@ -945,39 +945,39 @@ listeninterface = .internal
 
 ## <a name="hawk"></a>Hawk
 
-A megoldást kínál a felhasználók számára, hogy az összes parancs a rendszerhéj szintjén menük és a grafikai inkább grafikus felhasználói Felülettel egy böngésző felületet biztosít.
-A böngésző felület használatához cserélje le a **\<csomópont\>** egy tényleges SAP HANA csomóponttal, a következő URL-címben. Adja meg a fürt hitelesítő adatait (felhasználói **fürt**):
+A cluster megoldás egy böngésző felületét biztosítja, amely egy grafikus felhasználói felületet biztosít azon felhasználók számára, akik a menüket és a grafikát kedvelik a rendszerhéj szintjén lévő összes parancshoz.
+A böngésző felületének használatához cserélje le  **\<a\> csomópontot** egy tényleges SAP HANA csomópontra a következő URL-címben. Ezután adja meg a fürt hitelesítő adatait (felhasználói **fürt**):
 
 <pre><code>
 https://&ltnode&gt:7630
 </code></pre>
 
-Ezen a képernyőfelvételen a fürt irányítópultja:
+Ez a képernyőkép a fürt irányítópultját mutatja:
 
 
-![HAWK fürt irányítópultja](media/hana-vm-scale-out-HA-troubleshooting/hawk-1.png)
+![Hawk-fürt irányítópultja](media/hana-vm-scale-out-HA-troubleshooting/hawk-1.png)
 
 
-Ez a példa bemutatja a fürtáttelepítés erőforrás okozta, a helyre vonatkozó megkötések [tervezett karbantartás](#planned-maintenance):
+Ez a példa a fürterőforrás-áttelepítés által a [tervezett karbantartás](#planned-maintenance)során okozott korlátozásokat szemlélteti:
 
 
-![HAWK lista megkötései](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
+![A Hawk List korlátozásai](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-Emellett feltölthet a **hb_report** Hawk alatt a kimenetet **előzmények**, látható módon. Tekintse meg a naplófájlokat gyűjthet hb_report: 
+A **hb_report** kimenetét a Hawk ( **Előzmények**) területen is feltöltheti a következőképpen. A naplófájlok gyűjtésének hb_report lásd: 
 
-![HAWK feltöltési hb_report kimenet](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
+![Hawk feltöltése hb_report kimenete](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 
-Az a **előzmények**, majd végigjárni a szereplő összes fürt átmenet a **hb_report** kimenete:
+Az **Előzmények Explorerrel**a **hb_report** -kimenetben található összes fürt átváltását elvégezheti:
 
-![HAWK átmenetek hb_report kimenet](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
+![A Hawk-átmenetek a hb_report kimenetében](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
 
-A végső képernyőfelvételen a **részletek** egyetlen átmenet szakaszában. A fürt reagált egy elsődleges fő csomópont-összeomlás, a csomópont **hso-hana-virtuálisgép-s1-0**. Mostantól az új Master, a másodlagos csomópontra való előléptetése **hso-hana-virtuálisgép-s2-0**:
+Ez a végső képernyőkép egy átmeneti átmenet részleteit mutatja be. A fürt elsődleges főcsomópont-összeomlásra reagált, node **hso-Hana-VM-S1-0**. Mostantól a másodlagos csomópontot új főkiszolgálóként, **hso-Hana-VM-S2-0-** ként népszerűsíti:
 
-![Egyetlen átmenet HAWK](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
+![Hawk Single Transition](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a hibaelhárítási útmutató az SAP Hana magas rendelkezésre állású kibővített konfigurációban ismerteti. Az adatbázis mellett egy másik fontos egy olyan SAP-rendszeren összetevője az SAP NetWeaver-verem. Ismerje meg [magas rendelkezésre állás az SAP NetWeaver SUSE Enterprise Linux Server használó Azure virtuális gépeken][sap-nw-ha-guide-sles].
+Ez a hibaelhárítási útmutató a SAP HANA magas rendelkezésre állását ismerteti a kibővíthető konfigurációban. Az adatbázison kívül az SAP-környezet egy másik fontos összetevője az SAP NetWeaver stack. Ismerje meg az [SAP NetWeaver magas rendelkezésre állását a SUSE Enterprise Linux Servert használó Azure][sap-nw-ha-guide-sles]-beli virtuális gépeken.
 

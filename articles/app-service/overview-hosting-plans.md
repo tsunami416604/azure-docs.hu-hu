@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fef509d705d0b904586a86b7dc58decc54e7023d
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 4ea983255463080592181cda321ef6b6d1ff147f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716641"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932341"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service terv áttekintése
 
@@ -32,14 +32,13 @@ Ha egy App Service tervet hoz létre egy bizonyos régióban (például Nyugat-E
 - Régió (USA nyugati régiója, USA keleti régiója stb.)
 - Virtuálisgép-példányok száma
 - Virtuálisgép-példányok mérete (kicsi, közepes, nagy)
-- Díjszabási szint (ingyenes, közös, alapszintű, standard, prémium, PremiumV2, elkülönített, fogyasztás)
+- Díjszabási szint (ingyenes, közös, alapszintű, standard, prémium, PremiumV2, elkülönített)
 
 Egy App Service-csomag _díjszabási szintje_ határozza meg, hogy milyen app Service funkciókat kap, és mennyit fizet a csomagért. Az árképzési szintek néhány kategóriája van:
 
 - **Megosztott számítás**: Az **ingyenes** és a **közös**, két alapszintű alkalmazás ugyanazon az Azure-beli virtuális gépen futtatja az alkalmazást, mint a többi app Service alkalmazást, beleértve a többi ügyfél alkalmazásait is. Ezek a szintek CPU-kvótákat foglalnak le minden olyan alkalmazáshoz, amely a megosztott erőforrásokon fut, és az erőforrások nem méretezhetők.
 - **Dedikált számítás**: Azalapszintű, a **standard**, a **prémium**és a **PremiumV2** a dedikált Azure-beli virtuális gépeken futtatják az alkalmazásokat. Csak az azonos App Service csomagban lévő alkalmazások osztoznak ugyanazokkal a számítási erőforrásokkal. Minél nagyobb a réteg, annál több virtuálisgép-példány érhető el a kibővített felskálázáshoz.
-- **Elkülönített**: Ez a csomag dedikált Azure virtuális hálózatokon futtat dedikált Azure-beli virtuális gépeket, amelyek hálózati elkülönítést biztosítanak az alkalmazások számára a számítási elkülönítéshez. Ez biztosítja a maximális méretezési képességeket.
-- **Felhasználás**: Ez a csomag csak a [Function apps](../azure-functions/functions-overview.md)számára érhető el. A függvények dinamikusan méretezhetők a munkaterheléstől függően. További információ: [Azure functions üzemeltetési csomagok összehasonlítása](../azure-functions/functions-scale.md).
+- **Elkülönített**: Ez a szintű dedikált Azure-beli virtuális gépeket futtat dedikált Azure-beli virtuális hálózatokon. Hálózati elkülönítést biztosít az alkalmazások számára a számítási elkülönítésen. Ez biztosítja a maximális méretezési képességeket.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -80,8 +79,7 @@ Az **ingyenes** csomag kivételével a app Servicei csomagok óradíjat biztosí
 
 - A **megosztott** szinten az egyes alkalmazások CPU-percenként kapják meg a kvótát, így az _egyes alkalmazások_ ÓRADÍJat kapnak a CPU-kvótához.
 - A dedikált számítási rétegek (alapszintű, **standard**, **prémium**, **PremiumV2**) esetében az App Service-csomag határozza meg, hogy hány virtuálisgép-példányra méretezhetők az alkalmazások, így a app Service csomag minden virtuálisgép- _példánya_ óradíjas díjat számít fel. Ezek a virtuálisgép-példányok ugyanarra a számlára vonatkoznak, függetlenül attól, hogy hány alkalmazás fut rajtuk. A váratlan költségek elkerülése érdekében lásd: [app Service terv tisztítása](app-service-plan-manage.md#delete).
-- Az **elkülönített** szinten a app Service Environment meghatározza az alkalmazásokat futtató elkülönített munkavégzők számát, és _minden_ feldolgozót óránként kell fizetni. Emellett a App Service Environment futtatására óradíjat is igénybe veheti. 
-- (Csak Azure Functions) A **használati szintek dinamikusan** foglalják magukban a virtuálisgép-példányokat a Function alkalmazás számítási feladatainak kiszolgálásához, és az Azure által másodpercenként dinamikusan számítjuk fel őket. További információkért lásd: [Azure Functions árképzése](https://azure.microsoft.com/pricing/details/functions/).
+- Az **elkülönített** szinten a app Service Environment meghatározza az alkalmazásokat futtató elkülönített munkavégzők számát, és _minden_ feldolgozót óránként kell fizetni. Emellett a App Service Environment futtatására óradíjat is igénybe veheti.
 
 Nem számítunk fel díjat az Ön számára elérhető App Service szolgáltatások (egyéni tartományok, SSL-tanúsítványok, üzembe helyezési pontok, biztonsági másolatok stb.) használatára. A kivételek a következők:
 
@@ -98,7 +96,7 @@ Nem számítunk fel díjat az Ön számára elérhető App Service szolgáltatá
 
 A App Service terv bármikor felméretezhető. Ez olyan egyszerű, mint a csomag díjszabási szintjének módosítása. Először kiválaszthatja az alacsonyabb díjszabási szintet, és később felskálázást végez, ha további App Service funkciókra van szüksége.
 
-Megkezdheti például a webalkalmazás tesztelését egy **ingyenes** app Service csomaggal, és semmit sem kell fizetnie. Ha hozzá szeretné adni az [Egyéni DNS-nevet](app-service-web-tutorial-custom-domain.md) a webalkalmazáshoz, egyszerűen méretezheti a tervet a **megosztott** szinten. Később, ha [Egyéni SSL-tanúsítványt](app-service-web-tutorial-custom-ssl.md)szeretne hozzáadni, az **alapszintű** csomagra méretezheti a tervet. Ha [átmeneti környezeteket](deploy-staging-slots.md)szeretne használni, vertikálisan méretezheti a **standard** szintet. Ha további magokra, memóriára vagy tárterületre van szüksége, akkor az azonos szinten lévő nagyobb virtuálisgép-méretre méretezhető.
+Megkezdheti például a webalkalmazás tesztelését egy **ingyenes** app Service csomaggal, és semmit sem kell fizetnie. Ha hozzá szeretné adni az [Egyéni DNS-nevet](app-service-web-tutorial-custom-domain.md) a webalkalmazáshoz, egyszerűen méretezheti a tervet a **megosztott** szinten. Később, ha [Egyéni SSL-tanúsítványt](app-service-web-tutorial-custom-ssl.md)szeretne hozzáadni, az alapszintű csomagra méretezheti a tervet. Ha [átmeneti környezeteket](deploy-staging-slots.md)szeretne használni, vertikálisan méretezheti a **standard** szintet. Ha további magokra, memóriára vagy tárterületre van szüksége, akkor az azonos szinten lévő nagyobb virtuálisgép-méretre méretezhető.
 
 Ugyanez fordítva is működik. Ha úgy érzi, hogy már nincs szüksége egy magasabb szintű kapacitásra vagy funkcióra, lekicsinyítheti az alacsonyabb szintet, ami pénzt takarít meg.
 

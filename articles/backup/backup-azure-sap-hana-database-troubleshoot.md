@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0512facbdf5f2222aee1e9bb5d2be64e22bf1a69
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 00e37030417da97d2c57b0fb5872422e7048a2bc
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774633"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954452"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 
@@ -63,7 +63,7 @@ Miután kiválasztott egy adatbázist a biztonsági mentéshez, a Azure Backup s
 
 Ügyeljen a bevitelre, miközben egyetlen tároló-adatbázist (SDC) állít vissza a HANA-hoz egy másik SDC-gépre. Az adatbázis nevét kisbetűs értékkel kell megadni, és zárójelek között a "SDC" utótaggal kell kiegészíteni. A HANA-példány a fővárosokban fog megjelenni.
 
-Tegyük fel, hogy a "H21" SDC HANA-példányról biztonsági másolat készül. A biztonsági mentési elemek lapon megjelenik a biztonsági mentési elem neve **"H21 (SDC)"** néven. Ha megpróbálja visszaállítani az adatbázist egy másik cél SDC, tegyük fel, hogy a H11 a következő bemeneteket kell megadnia.
+Tegyük fel, hogy a "H21" SDC HANA-példányról biztonsági másolat készül. A biztonsági mentési elemek lapon megjelenik a biztonsági mentési elem neve **"H21 (SDC)"** néven. Ha megpróbálja visszaállítani az adatbázist egy másik cél SDC, tegyük fel, hogy a H11 a következő bemeneti adatokat kell megadni.
 
 ![SDC-visszaállítási bemenetek](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
 

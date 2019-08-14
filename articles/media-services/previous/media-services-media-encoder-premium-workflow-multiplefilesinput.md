@@ -1,6 +1,6 @@
 ---
-title: Bemeneti fájlok és a prémium szintű Encoder - Azure összetevő tulajdonságai |} A Microsoft Docs
-description: Ez a témakör ismerteti, hogyan setRuntimeProperties használatával több bemeneti fájlokat használ, és egyéni átadni a Media Encoder Premium munkafolyamat médiafeldolgozót.
+title: Több bemeneti fájl és összetevő tulajdonságai prémium szintű kódolóval – Azure | Microsoft Docs
+description: Ez a témakör azt ismerteti, hogyan használható a setRuntimeProperties több bemeneti fájl használatára és egyéni adatok továbbítására a Media Encoder Premium Workflow adathordozó-feldolgozónak.
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -13,27 +13,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: xpouyat;anilmur;juliako
-ms.openlocfilehash: 608ca4bc3b58dd3c718d6239f90260154d2f6c3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: xpouyat
+ms.reviewer: anilmur;juliako
+ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465542"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69015447"
 ---
-# <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Több bemeneti fájlok és összetevő tulajdonságai párbeszédpanel használata a prémium szintű kódoló
+# <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Több bemeneti fájl és összetevő tulajdonságainak használata prémium szintű kódolóval
 ## <a name="overview"></a>Áttekintés
-Vannak helyzetek, amelyekben szüksége lehet testreszabása összetevő tulajdonságai párbeszédpanel, adja meg a klip lista XML-tartalom, vagy több bemeneti fájlok küldése a feladat elküldésekor a **Media Encoder Premium munkafolyamat** médiafeldolgozót. Néhány példa:
+Vannak olyan helyzetek, amikor szükség lehet az összetevő tulajdonságainak testreszabására, a Képlista XML-tartalmának megadására vagy több bemeneti fájl elküldésére, amikor a **Media Encoder Premium workflow** adathordozó-processzorral elküld egy feladatot. Néhány példa:
 
-* Szöveget rajzolhat, amelyek a videó és a szöveges érték (például az aktuális dátum) beállítása az egyes bemeneti videó futásidőben.
-* Testreszabás, a klipek lista XML (adjon meg egy vagy több forrásfájlokat, vagy anélkül levágási stb.).
-* Átfedő a a bemeneti videó kattintanak, a videó kódolása közben.
-* Több többnyelvű hang kódolása.
+* Szöveg átfedése a videón, és a szöveges érték (például az aktuális dátum) beállítása futásidőben az egyes bemeneti videóknál.
+* A klipek listájának XML-fájljának testreszabása (egy vagy több forrásfájl megadásához, vágással vagy anélkül).
+* Embléma képének befedése a bemeneti videón a videó kódolásakor.
+* Több hang nyelvi kódolása.
 
-Ahhoz, hogy a **Media Encoder Premium munkafolyamat** tudja, hogy módosítja a munkafolyamat egyes tulajdonságait a feladat létrehozásakor vagy több bemeneti fájlok küldése, szükség van egy konfigurációs karakterlánc, amely tartalmazza  **setRuntimeProperties** és/vagy **transcodeSource**. Ez a témakör bemutatja, hogyan használhatja őket.
+Ahhoz, hogy a **Media Encoder Premium workflow** tudja, hogy a feladat létrehozásakor vagy több bemeneti fájl elküldésekor megváltoztatja a munkafolyamat egyes tulajdonságait, olyan konfigurációs karakterláncot kell használnia, amely tartalmazza a **setRuntimeProperties** és/vagy **a transcodeSource**. Ez a témakör a használatuk módját ismerteti.
 
-## <a name="configuration-string-syntax"></a>Konfigurációs karakterlánc szintaxisát
-A konfigurációs karakterlánc a kódolási feladat beállításához használja az XML-dokumentum, a következőhöz hasonló:
+## <a name="configuration-string-syntax"></a>Konfigurációs karakterlánc szintaxisa
+A kódolási feladatban beállított konfigurációs karakterlánc egy XML-dokumentumot használ, amely a következőképpen néz ki:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -46,7 +47,7 @@ A konfigurációs karakterlánc a kódolási feladat beállításához használj
 </transcodeRequest>
 ```
 
-Az alábbiakban a C# kódot, amely az XML-konfiguráció olvas be egy fájlt, frissítse a megfelelő videó filename, és átadja a feladat egy feladatot:
+Az alábbi C# kód egy fájlból olvassa be az XML-konfigurációt, frissítse a megfelelő videó fájlnevével, és átadja azt a feladat feladatának:
 
 ```csharp
 string premiumConfiguration = ReadAllText(@"D:\home\site\wwwroot\Presets\SetRuntime.xml").Replace("VideoFileName", myVideoFileName);
@@ -74,13 +75,13 @@ task.InputAssets.Add(video); // video asset with multiple files
 task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 ```
 
-## <a name="customizing-component-properties"></a>Összetevő tulajdonságai párbeszédpanel testreszabása
-### <a name="property-with-a-simple-value"></a>Vlastnost egyszerű
-Bizonyos esetekben hasznos lehet egy összetevő tulajdonság, és a munkafolyamat-fájlt, amelyet szeretne hajtható végre, a Media Encoder Premium munkafolyamat testreszabásához.
+## <a name="customizing-component-properties"></a>Összetevő tulajdonságainak testreszabása
+### <a name="property-with-a-simple-value"></a>Tulajdonság egyszerű értékkel
+Bizonyos esetekben hasznos lehet egy összetevő-tulajdonságot a Media Encoder Premium Workflow által végrehajtandó munkafolyamat-fájllal együtt testreszabni.
 
-Tegyük fel, készült munkafolyamat lefedi a szöveget a videóit, és a szöveg (például az aktuális dátum) kellene állítani futásidőben. Ehhez a szöveg közötti értékre lehet beállítani az átmeneti területre összetevő a text tulajdonság új értéke a kódolási feladat küldése. Ez a mechanizmus segítségével többi tulajdonság-összetevők (például pozícióját vagy az átmeneti területre színét, az átviteli sebesség a AVC kódoló stb.) a munkafolyamatban.
+Tegyük fel, hogy olyan munkafolyamatot alakított ki, amely átfedésben van egy szöveggel a videókon, és a szöveg (például az aktuális dátum) futtatását futásidőben kell beállítani. Ezt úgy teheti meg, hogy a kódolási feladatból elküldi az átfedési összetevő Text (szöveg) tulajdonságának új értékként megadott szövegét. Ezzel a mechanizmussal módosíthatja a munkafolyamat egyik összetevőjének egyéb tulajdonságait (például az átfedés pozícióját vagy színét, az AVC-kódoló bitrátáját stb.).
 
-**setRuntimeProperties** bírálja felül az összetevőket a munkafolyamat-tulajdonság segítségével.
+a **setRuntimeProperties** a munkafolyamat összetevőiben lévő tulajdonságok felülbírálására szolgál.
 
 Példa:
 
@@ -95,8 +96,8 @@ Példa:
 </transcodeRequest>
 ```
 
-### <a name="property-with-an-xml-value"></a>Egy XML tartalmazó tulajdonság
-Olyan tulajdonságot, amely vár egy XML-érték beállításához magába foglalja a `<![CDATA[ and ]]>`.
+### <a name="property-with-an-xml-value"></a>XML-értéket tartalmazó tulajdonság
+Egy XML-értéket megadó tulajdonság beállításához használja `<![CDATA[ and ]]>`a következőt:.
 
 Példa:
 
@@ -130,47 +131,47 @@ Példa:
 ```
 
 > [!NOTE]
-> Ügyeljen arra, hogy nem kocsivissza visszatérési put után csupán `<![CDATA[`.
+> Győződjön meg arról, hogy a kocsit csak utána `<![CDATA[`helyezi vissza.
 
-### <a name="propertypath-value"></a>propertyPath érték
-A propertyPath volt az előző példák "médiafájl- / bemeneti/filename" vagy "/ inactiveTimeout" vagy "clipListXml".
-Ez az általános, az összetevő neve, majd a tulajdonság nevét. Az elérési út rendelkezhet több vagy kevesebb szintek, például "/ primarySourceFile" (mivel a tulajdonság értéke a munkafolyamat gyökérmappájában) vagy "/ Video feldolgozási/kép területre/átlátszatlanság" (mert az átmeneti területre egy található).    
+### <a name="propertypath-value"></a>Propertypath szintaxisnak érték
+Az előző példákban a Propertypath szintaxisnak "/Media file input/filename" vagy "/inactiveTimeout" vagy "clipListXml" volt.
+Ez általában az összetevő neve, majd a tulajdonság neve. Az elérési útnak több vagy kevesebb szintje lehet, például a "/primarySourceFile" (mivel a tulajdonság a munkafolyamat gyökerén található) vagy "/video Processing/Graphic overlay/opacitás" (mivel az átfedés egy csoportban található).    
 
-Ellenőrizze az elérési út és a tulajdonság nevét, használja a műveletgombként jelenik, amely közvetlenül mellett minden egyes tulajdonság. A művelet gombra kattintva, és válassza ki **szerkesztése**. Ez megjeleníti a tényleges nevét, a tulajdonságot, és azonnal felett, a névteret.
+Az elérési út és a tulajdonság nevének vizsgálatához használja az egyes tulajdonságok mellett azonnal megjelenő művelet gombot. Ehhez kattintson a művelet gombra, és válassza a **Szerkesztés**lehetőséget. Ekkor megjelenik a tulajdonság tényleges neve, és közvetlenül felette a névtér.
 
-![A művelet/szerkesztése](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture6_actionedit.png)
+![Művelet/szerkesztés](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture6_actionedit.png)
 
 ![Tulajdonság](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture7_viewproperty.png)
 
-## <a name="multiple-input-files"></a>Több bemeneti fájllal
-Minden egyes elküldött feladatot a **Media Encoder Premium munkafolyamat** két eszközre van szükség:
+## <a name="multiple-input-files"></a>Több bemeneti fájl
+A **Media Encoder Premium workflow** elküldött minden feladat két eszközt igényel:
 
-* Az első egy egy *munkafolyamat eszköz* , amely tartalmaz egy munkafolyamatfájlt. Munkafolyamat-fájlok használatával is tervezhet a [munkafolyamat-tervezővel](media-services-workflow-designer.md).
-* A második érték van egy *médiaobjektum* , amely tartalmazza a kódolni kívánt médiafájl.
+* Az első egy munkafolyamat-fájlt tartalmazó *munkafolyamat-eszköz* . Munkafolyamat-fájlokat a [munkafolyamat-tervező](media-services-workflow-designer.md)használatával tervezhet.
+* A második egy olyan *média-eszköz* , amely tartalmazza a kódolni kívánt médiafájl (oka) t.
 
-Ha több médiafájlok küld a **Media Encoder Premium munkafolyamat** kódoló, a következő korlátozások vonatkoznak:
+Ha több médiafájlt küld a **Media Encoder Premium workflow** kódolónak, a következő korlátozások érvényesek:
 
-* A médiafájlokat kell lennie az egyazon *médiaobjektum*. Több médiatartalmak használata nem támogatott.
-* Az elsődleges fájlnak meg kell adni a médiaobjektum (ideális esetben ez a fő fájl, amely a kódoló felkéri, hogy feldolgozása).
-* Szükséges konfigurációs adatokat, amely tartalmazza a **setRuntimeProperties** és/vagy **transcodeSource** elem a processzor.
-  * **setRuntimeProperties** felülbírálása, a filename tulajdonság, vagy a munkafolyamat az összetevők egy másik tulajdonságot használja.
-  * **transcodeSource** klip lista XML-tartalomban meghatározására szolgál.
+* Az összes médiafájlnak ugyanabban a *média*-eszközben kell lennie. A több adathordozós eszközök használata nem támogatott.
+* Az elsődleges fájlt be kell állítania ebben az adathordozó-eszközben (ideális esetben ez a fő videofájl, amelyet a kódolónak fel kell dolgoznia).
+* A **setRuntimeProperties** és/vagy **transcodeSource** elemet tartalmazó konfigurációs adategységeket át kell adni a processzornak.
+  * a **setRuntimeProperties** a filename tulajdonság vagy más tulajdonság felülbírálására szolgál a munkafolyamat összetevőiben.
+  * a **transcodeSource** a KLIPEK XML-tartalmának megadására szolgál.
 
-A munkafolyamat kapcsolatok:
+Kapcsolatok a munkafolyamatban:
 
-* Ha egy vagy több adathordozó bemeneti fájllal összetevőt használja, és szeretné használni **setRuntimeProperties** , adja meg a fájlnevet, majd ne csatlakozzon az elsődleges fájl összetevő PIN-kód őket. Győződjön meg arról, hogy ez nem az elsődleges fájl objektum és az adathordozó fájl Input(s) között.
-* Ha inkább klip lista XML és a egy médiaforrást az összetevőt, majd együtt csatlakozzon is.
+* Ha egy vagy több médiafájl-beviteli összetevőt használ, és azt tervezi, hogy a **setRuntimeProperties** használatával adja meg a fájlnevet, akkor ne kapcsolódjon hozzájuk az elsődleges fájl-összetevő PIN-kódjához. Győződjön meg arról, hogy nincs kapcsolat az elsődleges fájl objektum és a médiafájl-bemenet (ek) között.
+* Ha inkább a klipek XML-és egy adathordozó-forrás összetevőjét szeretné használni, akkor mindkettőt összekapcsolhatja.
 
-![Nincs kapcsolat elsődleges forrásfájlból Media bemeneti fájllal](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture0_nopin.png)
+![Nincs az elsődleges forrásfájl és a médiafájl bemenete közötti kapcsolódás](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture0_nopin.png)
 
-*Ez nem az elsődleges fájlnak a Media bemeneti fájllal összetevőknek, a filename tulajdonság beállítása setRuntimeProperties használatakor.*
+*Ha a setRuntimeProperties használatával beállítja a filename tulajdonságot, az elsődleges fájl nem kapcsolódik a médiafájl bemeneti összetevőjéhez.*
 
-![A lista forrása a klip XML klip listából kapcsolat](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture1_pincliplist.png)
+![A klipek XML-fájlból a listára való kapcsolódási lista forrása](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture1_pincliplist.png)
 
-*Forrás-adathordozó klip lista XML csatlakozni, és transcodeSource használja.*
+*A legördülő lista XML-fájlját összekapcsolhatjuk a média forrásával, és transcodeSource is használhat.*
 
-### <a name="clip-list-xml-customization"></a>Grafikus lista XML testreszabása
-Megadhatja a klipek lista XML futásidőben a munkafolyamat használatával **transcodeSource** konfigurációjában XML-karakterláncot. Ehhez a klip lista XML PIN-kódot kell csatlakoztatni a munkafolyamatban a forrás-adathordozó összetevő.
+### <a name="clip-list-xml-customization"></a>Klipek listájának XML-testreszabása
+A munkafolyamatban megadhatja a klipek XML-fájlját futásidőben a **transcodeSource** használatával a konfigurációs karakterlánc XML-ben. Ehhez a klip-lista XML-PIN-kódjának csatlakoztatva kell lennie a munkafolyamat Media Source összetevőjéhez.
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>
@@ -198,7 +199,7 @@ Megadhatja a klipek lista XML futásidőben a munkafolyamat használatával **tr
   </transcodeRequest>
 ```
 
-Adja meg ezt a tulajdonságot a kimeneti fájlok nevét a "Kifejezés" a használandó /primarySourceFile szeretne, akkor azt javasoljuk, a klipek lista XML passing tulajdonságként *után* a /primarySourceFile tulajdonságot használja, a klipek ne kelljen Lista bírálható felül a /primarySourceFile beállításban.
+Ha meg szeretné adni a/primarySourceFile, hogy ez a tulajdonság a "kifejezések" használatával nevezze el a kimeneti fájlokat, akkor azt javasoljuk, hogy a klip lista XML-fájlját a/primarySourceFile tulajdonság *utáni* tulajdonságként adja át, hogy ne legyen felülbírálva a klipek listája a/primarySourceFile beállítás.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -229,7 +230,7 @@ Adja meg ezt a tulajdonságot a kimeneti fájlok nevét a "Kifejezés" a haszná
   </transcodeRequest>
 ```
 
-A további keret pontos tisztítás:
+További keretek – pontos vágás:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -268,14 +269,14 @@ A további keret pontos tisztítás:
   </transcodeRequest>
 ```
 
-## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>1\. példa: Kép a videó felett átfedő
+## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>1\. példa: Videó átfedő képe
 
 ### <a name="presentation"></a>Bemutató
-Fontolja meg egy példa, amelyben meg szeretné átfedő a a bemeneti videó kattintanak, a videó kódolása közben. Ebben a példában a bemeneti videó neve "Microsoft_HoloLens_Possibilities_816p24.mp4", és az embléma "logo.png" nevű. Az alábbi lépéseket is végre kell hajtania:
+Vegyünk egy példát arra, hogy a videó kódolásakor a bemeneti videóban lévő embléma képét szeretné átfedőként használni. Ebben a példában a bemeneti videó neve "Microsoft_HoloLens_Possibilities_816p24. mp4", és a logó neve "logo. png". A következő lépéseket kell végrehajtania:
 
-* Egy munkafolyamat-objektum létrehozása a munkafolyamat fájlja (lásd az alábbi példát).
-* Hozzon létre egy médiaobjektum, amely tartalmazza a két fájlt: Az elsődleges fájlnak és MyLogo.png MyInputVideo.mp4.
-* Feladat küldése a Media Encoder Premium munkafolyamat médiafeldolgozót. a fenti bemeneti eszközökkel, és adja meg a következő konfigurációs karakterlánc.
+* Hozzon létre egy munkafolyamat-objektumot a munkafolyamat-fájllal (lásd a következő példát).
+* Hozzon létre egy Media-objektumot, amely két fájlt tartalmaz: MyInputVideo. MP4, mint az elsődleges fájl és a MyLogo. png.
+* Küldjön egy feladatot a Media Encoder Premium Workflow adathordozó-feldolgozónak a fenti bemeneti eszközökkel, és adja meg a következő konfigurációs karakterláncot.
 
 Konfigurálás:
 
@@ -290,80 +291,80 @@ Konfigurálás:
   </transcodeRequest>
 ```
 
-A fenti példában a fájl nevét az adathordozó bemeneti fájllal összetevő és a primarySourceFile tulajdonság zajlik. Az embléma fájl neve elküldi egy másik Media bemeneti fájllal, amely a grafikus területre összetevő csatlakozik.
+A fenti példában a videofájl neve a Media file input összetevőbe és a primarySourceFile tulajdonságba lesz küldve. Az embléma nevét egy másik médiafájl-bemenetre kell elküldeni, amely a grafikus overlay összetevőhöz csatlakozik.
 
 > [!NOTE]
-> A videó fájlnév elküldi a primarySourceFile tulajdonság. Ennek az az oka, hogy ezt a tulajdonságot használja a munkafolyamat létrehozásához a megfelelő kimeneti fájl nevét kifejezések, például használatával.
+> A rendszer elküldi a videofájl nevét a primarySourceFile tulajdonságnak. Ennek az az oka, hogy ezt a tulajdonságot használja a munkafolyamatban a kimeneti fájl helyes nevének a kifejezésekkel való létrehozásához, például:.
 
-### <a name="step-by-step-workflow-creation"></a>Részletes munkafolyamat létrehozása
-A következő lépéseket egy munkafolyamatot, amely két fájlt fogadja bemeneti adatként létrehozni: egy videót és a egy képet. Ez lesz átfedő a kép a videó felett.
+### <a name="step-by-step-workflow-creation"></a>Lépésről lépésre a munkafolyamat létrehozása
+A következő lépésekkel hozhat létre egy olyan munkafolyamatot, amely két fájlt bemenetként fogad: egy videót és egy képet. A képet a videó tetején fogja átfedőként ábrázolni.
 
-Nyissa meg **munkafolyamat-tervezővel** válassza **fájl** > **új munkaterület** > **átkódolása tervezet**.
+Nyissa meg a **munkafolyamat** -tervezőt, és válassza a **fájl** > **Új munkaterület** > **átkódoló tervezet**lehetőséget.
 
-Az új munkafolyamat három elemet jeleníti meg:
+Az új munkafolyamat három elemet mutat be:
 
 * Elsődleges forrásfájl
-* Klip lista XML
-* Kimeneti fájl vagy eszköz  
+* Klipek XML-listája
+* Kimeneti fájl/eszköz  
 
-![Új kódolási munkafolyamatokat.](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture9_empty.png)
+![Új kódolási munkafolyamat](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture9_empty.png)
 
-*Új kódolási munkafolyamatokat.*
+*Új kódolási munkafolyamat*
 
-Annak érdekében, hogy fogadja a bemeneti fájlt, első lépésként adja hozzá az adathordozó fájl bemeneti összetevő. Összetevő hozzáadása a munkafolyamat, a tárház keresőmezőbe keresése, és a kívánt bejegyzést a Tervező ablaktáblán húzzon.
+A bemeneti médiafájl elfogadásához Kezdje a Media file input összetevő hozzáadásával. Ha hozzá szeretne adni egy összetevőt a munkafolyamathoz, keresse meg az adattár keresési mezőjében, és húzza a kívánt bejegyzést a tervező ablaktáblára.
 
-Ezután adja hozzá a videofájl, a munkafolyamat tervezéséhez használható. Ehhez a munkafolyamat-tervezővel háttér ablaktábláján kattintson, és keresse meg a elsődleges forrásfájl tulajdonság a jobb oldali tulajdonság panelen. A mappa ikonra, és válassza ki a megfelelő videó fájlt.
+Ezután adja hozzá a munkafolyamat tervezéséhez használni kívánt videofájl-fájlt. Ehhez kattintson a Munkafolyamat-tervező háttér paneljére, és keresse meg az elsődleges forrásfájl tulajdonságot a jobb oldali Tulajdonságok ablaktáblán. Kattintson a mappa ikonra, és válassza ki a megfelelő videofájl-fájlt.
 
 ![Elsődleges fájl forrása](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture10_primaryfile.png)
 
 *Elsődleges fájl forrása*
 
-Ezután adja meg a fájl, a Media bemeneti fájllal összetevő.   
+Ezután adja meg a videofájlokat a médiafájl bemeneti összetevőjében.   
 
-![Médiafájl bemeneti forrás](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture11_mediafileinput.png)
+![Médiafájl bemeneti forrása](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture11_mediafileinput.png)
 
-*Médiafájl bemeneti forrás*
+*Médiafájl bemeneti forrása*
 
-Amint ez megtörtént, az adathordozó bemeneti fájllal összetevőt a fájl vizsgálata, és töltse fel a kimeneti PIN-kódok, hogy a fájlt, amely azt megvizsgálni.
+Amint ez megtörtént, a médiafájl-bemeneti összetevő megvizsgálja a fájlt, és feltölti a kimeneti PIN-kód tartalmát, hogy tükrözze a megvizsgálandó fájlt.
 
-A következő lépés, hogy adjon hozzá egy "a videó adatok típusa Updater" Rec.709 szín lemezterületre megadásához. Adjon hozzá egy "a videó konverter", amely adatokat elrendezés/elrendezés típus = Síkvetület konfigurálható. A video-adatfolyamot konvertálja az átmeneti területre összetevő forrásaként elvégezhet formátumra.
+A következő lépés egy "video adattípus-frissítő" hozzáadása a REC. 709 színtér megadásához. Adja hozzá a "video Format Converter" értéket, amely adatelrendezési/elrendezési típus = konfigurálható síkbeli értékre van beállítva. Ezzel a videó streamet olyan formátumra alakítja át, amely az átfedési összetevő forrásaként is elvégezhető.
 
-![videó adatok típusa Updater és konverter](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter.png)
+![videó adattípus-Updater és Format Converter](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter.png)
 
-*videó adatok típusa Updater és konverter*
+*Videó adattípus-Updater és Format Converter*
 
-![Elrendezés típus = Síkvetület konfigurálható](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter2.png)
+![Elrendezés típusa = konfigurálható síkbeli](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter2.png)
 
-*Elrendezés típus Síkvetület konfigurálható:*
+*Az elrendezés típusa konfigurálható síkbeli*
 
-Ezután a videó átfedő összetevő hozzáadása, és csatlakozzon a (tömörítetlen) videó PIN-kód az adathordozó bemeneti fájllal (tömörítetlen) videó PIN kódját.
+Ezután adjon hozzá egy video overlay-összetevőt, és kapcsolja a (tömörítetlen) videó PIN-kódját a médiafájl bemenetének (tömörítetlen) videós PIN-kódjához.
 
-Adjon hozzá egy másik Media bemeneti fájllal (a betölteni az embléma fájlt), ez az összetevő kattintson, és nevezze át a "Media fájl bemeneti embléma", majd válassza ki a kép (.png fájlnak a példában) a fájl tulajdonságban. Csatlakozzon a tömörítetlen kép PIN-kód az átmeneti területre a tömörítetlen kép PIN-kódot.
+Adjon hozzá egy másik médiafájl-bevitelt (az embléma betöltéséhez), kattintson erre az összetevőre, és nevezze át a "Media file input logo" névre, és válasszon egy képet (például egy. png fájlt) a fájl tulajdonságban. Kapcsolja össze a kibontott képpin-kódot az átfedés tömörítetlen képpin-kódjával.
 
-![Összetevő- és képfájlok területre fájl forrása](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture13_overlay.png)
+![Átfedési összetevő és képfájl forrása](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture13_overlay.png)
 
-*Összetevő- és képfájlok területre fájl forrása*
+*Átfedési összetevő és képfájl forrása*
 
-Ha az embléma videó pozícióját a módosítani kívánt (például érdemes: 10 % engedményt a videó bal felső sarokban helyezze el), törölje a jelet az "Manuális bevitel" jelölőnégyzetből. Ezt megteheti, mert egy adathordozó bemeneti fájllal, adja meg az átmeneti területre összetevő az embléma fájlt is.
+Ha módosítani szeretné az embléma pozícióját a videón (például előfordulhat, hogy a videó bal felső sarkában 10%-ot szeretne elhelyezni), törölje a jelet a "manuális bevitel" jelölőnégyzetből. Ezt azért teheti meg, mert médiafájl-bevitelt használ, hogy megadja az embléma-fájlt az átfedésben lévő összetevőnek.
 
-![Felirat pozíciója](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture14_overlay_position.png)
+![Átfedési pozíció](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture14_overlay_position.png)
 
-*Felirat pozíciója*
+*Átfedési pozíció*
 
-A video-adatfolyamot H.264 kódolásához, adja hozzá a AVC Videókódoló és AAC kódoló összetevő a Tervező felületére. Csatlakozás a PIN-kódok.
-Állítsa be az AAC-kódoló, és válassza ki a konverziós/készlet hang formátuma: 2.0-S (L, R).
+A videó stream H. 264-re való kódolásához adja hozzá az AVC-videó Kódolóját és az AAC-kódoló összetevőit a tervező felületéhez. A PIN-kódok összekapcsolásához.
+Állítsa be az AAC-kódolót, és válassza a hangformátum átalakítása/beállításkészlet lehetőséget: 2,0 (L, R)
 
-![Audio- és kódolók](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture15_encoders.png)
+![Hang-és video-kódolók](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture15_encoders.png)
 
-*Audio- és kódolók*
+*Hang-és video-kódolók*
 
-Most adja hozzá a **ISO Mpeg-4 Multiplexer** és **kimeneti fájl** összetevőket, és kapcsolódjon az PIN-kód látható módon.
+Most adja hozzá az **ISO MPEG-4 multiplexer** és a **fájl kimeneti** összetevőit, és az ábrán látható módon kapcsolja össze a PIN-kódokat.
 
-![MP4 multiplexer és a kimeneti fájl](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture16_mp4output.png)
+![MP4 multiplexer és fájl kimenete](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture16_mp4output.png)
 
-*MP4 multiplexer és a kimeneti fájl*
+*MP4 multiplexer és fájl kimenete*
 
-Meg kell állítania a kimeneti fájl nevét. Kattintson a **kimeneti fájl** összetevő és a kifejezést a fájl szerkesztése:
+Be kell állítania a kimeneti fájl nevét. Kattintson a **fájl kimeneti** összetevőjére, és szerkessze a kifejezést a fájlhoz:
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_withoverlay.mp4
 
@@ -371,33 +372,33 @@ Meg kell állítania a kimeneti fájl nevét. Kattintson a **kimeneti fájl** ö
 
 *Fájl kimeneti neve*
 
-Helyileg, hogy ellenőrizze, hogy megfelelően fut-e a munkafolyamat futtatása.
+A munkafolyamatot helyileg is futtathatja annak ellenőrzéséhez, hogy megfelelően fut-e.
 
-Annak befejeződése után futtathatja az Azure Media Servicesben.
+A befejeződése után Azure Media Services futtathatja.
 
-Először készítsen elő egy eszköz két fájlt az Azure Media Services: a videó fájl- és az emblémát. Ehhez a .NET vagy REST API használatával. Azt is teheti az Azure portal használatával, vagy [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE).
+Először készítsen elő egy adategységet Azure Media Services két fájllal: a videofájl és az embléma. Ezt a .NET vagy a REST API használatával teheti meg. Ezt a Azure Portal vagy a [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) használatával is elvégezheti.
 
-Ez az oktatóanyag bemutatja, hogyan kezelheti az AMSE eszköz. Fájlok hozzáadása egy eszköz két módja van:
+Ebből az oktatóanyagból megtudhatja, hogyan kezelheti az eszközöket a AMSE használatával. Két módon adhat hozzá fájlokat egy eszközhöz:
 
-* Hozzon létre egy helyi mappát, másolja a két fájlt, és áthúzása a mappát a **eszköz** fülre.
-* Töltse fel a videófájlt eszközként, az eszköz adatainak megjelenítése, a fájlok lapon nyissa meg és töltse fel egy további fájlt (embléma).
+* Hozzon létre egy helyi mappát, másolja ki a két fájlt, majd húzza a mappát az **eszköz** lapra.
+* Töltse fel a videofájl eszközként való feltöltését, jelenítse meg az eszköz adatait, lépjen a fájlok lapra, és töltsön fel egy további fájlt (embléma).
 
 > [!NOTE]
-> Feltétlenül állítson be egy elsődleges fájl az eszközben (a fő videó fájlt).
+> Ügyeljen arra, hogy az adategységben (a fő videofájl) elsődleges fájl legyen megadva.
 
-![Az AMSE eszköz fájlok](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture18_assetinamse.png)
+![Adategységek fájljai a AMSE-ben](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture18_assetinamse.png)
 
-*Az AMSE eszköz fájlok*
+*Adategységek fájljai a AMSE-ben*
 
-Válassza ki a, és válassza ki a kódoláshoz a prémium szintű kódoló. Töltse fel a munkafolyamat, és válassza ki azt.
+Válassza ki az eszközt, és válassza a prémium szintű kódolóval való kódolást. Töltse fel a munkafolyamatot, és válassza ki.
 
-A gombra kattintva adatokat adnak át a processzor, és adja hozzá a következő XML formátumú futásidejű tulajdonságainak:
+Kattintson a gombra az adatfeldolgozáshoz, és adja hozzá a következő XML-kódot a futásidejű tulajdonságok beállításához:
 
-![Az AMSE prémium szintű kódoló](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture19_amsepremium.png)
+![Prémium szintű kódoló a AMSE-ben](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture19_amsepremium.png)
 
-*Az AMSE prémium szintű kódoló*
+*Prémium szintű kódoló a AMSE-ben*
 
-Ezt követően illessze be a következő XML-adatokat. Adja meg a fájl nevét az adathordozó bemeneti fájllal és a primarySourceFile kell. Adja meg túl az emblémát a fájl neve.
+Ezután illessze be a következő XML-fájlokat. Meg kell adnia a videofájl nevét a médiafájl-bevitelhez és a primarySourceFile. Adja meg a embléma fájlnevét is.
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>
@@ -414,37 +415,37 @@ Ezt követően illessze be a következő XML-adatokat. Adja meg a fájl nevét a
 
 *setRuntimeProperties*
 
-A .NET SDK használatával hozhat létre és futtathat a feladatütemezés, ha az XML-adatok a konfigurációs karakterláncból átadandó rendelkezik.
+Ha a .NET SDK használatával hozza létre és futtatja a feladatot, az XML-adatoknak a konfigurációs sztringként kell átadni.
 
 ```csharp
 public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string configuration, TaskOptions options);
 ```
 
-A feladat befejezése után a MP4-fájlt a kimeneti adategység megjeleníti az átmeneti területre!
+A feladatok befejezése után a kimeneti eszköz MP4-fájlja megjeleníti az átfedést!
 
-![Videó átfedő](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture21_resultoverlay.png)
+![Átfedés a videón](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture21_resultoverlay.png)
 
-*Videó átfedő*
+*Átfedés a videón*
 
-Letöltheti a minta munkafolyamat [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/).
+A minta munkafolyamatot letöltheti [](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/)a githubról.
 
-## <a name="example-2--multiple-audio-language-encoding"></a>2\. példa: Több többnyelvű hang kódolása
+## <a name="example-2--multiple-audio-language-encoding"></a>2\. példa: Több hang nyelvi kódolása
 
-Több többnyelvű hang kódolási munkafolyamatokat érhető el a példa [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding).
+A githubon több hang-nyelvi kódolási munkafolyamat is elérhető [](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding).
 
-Ez a mappa tartalmaz egy munkafolyamat-minta, amelyek segítségével egy többszörös MP4 fájlok eszközhöz több hangsáv MXF fájl kódolása.
+Ez a mappa egy minta munkafolyamatot tartalmaz, amely egy MXF-fájlnak több hangsávot tartalmazó több MP4-fájlba való kódolására használható.
 
-Ez a munkafolyamat feltételezi, hogy az MXF-fájl tartalmaz egy hangsávra; a további hangsáv (WAV vagy MP4...) külön hang fájlokként kell átadni.
+Ez a munkafolyamat feltételezi, hogy a MXF-fájl egyetlen hangsávot tartalmaz; a további hangsávokat külön hangfájlként kell megadni (WAV vagy MP4...).
 
-Kódolás, kövesse ezeket a lépéseket:
+A kódoláshoz kövesse az alábbi lépéseket:
 
-* Hozzon létre egy Media Services eszköz az MXF fájl- és a hangot fájlok (0 – 18 hang).
-* Győződjön meg arról, hogy az MXF-fájl elsődleges fájl van beállítva.
-* Hozzon létre egy feladatot és a egy feladatot, a prémium szintű munkafolyamat kódoló processzor használatával. A megadott munkafolyamat (MultiMP4-1080p-19audio-v1.workflow) használja.
-* Setruntime.xml továbbítja azokat a feladat (Ha használja az Azure Media Services Explorer, használja a "XML-adatokat átadni a munkafolyamat" gombot).
-  * Frissítse az XML-adatok a megfelelő fájl neve és nyelvek címkék adhatók meg.
-  * A munkafolyamat hang 18-ra Audio 1 nevű hang összetevőket tartalmazza.
-  * A nyelvi címke RFC5646 támogatott.
+* Hozzon létre egy Media Services objektumot a MXF-fájllal és a hangfájlokkal (0 – 18 hangfájl).
+* Győződjön meg arról, hogy a MXF-fájl elsődleges fájlként van beállítva.
+* Hozzon létre egy feladatot és egy feladatot a prémium szintű munkafolyamat-kódoló processzor használatával. Használja a megadott munkafolyamatot (MultiMP4-1080p-19audio-v1. workflow).
+* Adja át a setruntime. XML-adatoknak a feladatnak (ha Azure Media Services Explorert használ, használja az "XML-adatok átadása a munkafolyamatnak" gombot).
+  * Az XML-adatok frissítésével adja meg a megfelelő fájlneveket és nyelveket.
+  * A munkafolyamathoz audio-összetevők vannak elnevezve: hang 1 – audio 18.
+  * A RFC5646 a Language címke esetében támogatott.
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>
@@ -463,14 +464,14 @@ Kódolás, kövesse ezeket a lépéseket:
 </transcodeRequest>
 ```
 
-* A kódolt objektumhoz több nyelv hangsáv fogja tartalmazni, és ezek nyomon követi az Azure Media Player választható kell lennie.
+* A kódolt eszköz többnyelvű hangsávokat tartalmaz, és ezek a számok Azure Media Playerban választhatók ki.
 
 ## <a name="see-also"></a>Lásd még
-* [Introducing Premium Encoding in Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
-* [Az Azure Media Services prémium szintű Encoding használata](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
-* [Az Azure Media Services az igény szerinti tartalomterjesztésről kódolás](media-services-encode-asset.md#media-encoder-premium-workflow)
+* [Prémium szintű kódolás bemutatása Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
+* [Prémium szintű kódolás használata a Azure Media Servicesban](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
+* [Igény szerinti tartalom kódolása Azure Media Services](media-services-encode-asset.md#media-encoder-premium-workflow)
 * [A Media Encoder Premium-munkafolyamat formátumai és kodekjei](media-services-premium-workflow-encoder-formats.md)
-* [Minta munkafolyamat-fájlok](https://github.com/Azure/azure-media-services-samples)
+* [Munkafolyamat-fájlok mintája](https://github.com/Azure/azure-media-services-samples)
 * [Azure Media Services Explorer eszköz](https://aka.ms/amse)
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek

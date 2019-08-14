@@ -1,6 +1,6 @@
 ---
-title: Fájlintegritási monitorozás az Azure Security Centerben |} A Microsoft Docs
-description: " Ismerje meg, hogyan engedélyezheti a fájlintegritási Monitorozás az Azure Security Centerben. "
+title: A fájlok integritásának figyelése Azure Security Centerban | Microsoft Docs
+description: " Megtudhatja, hogyan engedélyezheti a fájlok integritásának figyelését a Azure Security Centerban. "
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -15,199 +15,199 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: v-mohabe
 ms.openlocfilehash: cc0c319357b39ddb3e88d515613273a6f7dc0867
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "65968799"
 ---
-# <a name="file-integrity-monitoring-in-azure-security-center"></a>Fájlintegritási monitorozás az Azure Security Centerben
-Ismerje meg a fájl fájlintegritási Monitorozás (FIM) konfigurálása az Azure Security Centerben, használja ezt a forgatókönyvet.
+# <a name="file-integrity-monitoring-in-azure-security-center"></a>A fájlok integritásának figyelése Azure Security Center
+Ismerje meg, hogyan konfigurálhatja a fájlok integritásának figyelését (FIM) Azure Security Center az útmutató segítségével.
 
-## <a name="what-is-fim-in-security-center"></a>Mit jelent a FIM a Security Centerben?
-Fájl fájlintegritási Monitorozás (FIM), más néven módosítása a figyelés, megvizsgálja a fájlokat és az operációs rendszer, alkalmazás és más beállításjegyzékek módosítások, amelyek esetleg jelzik a támadás. Összehasonlító metódussal segítségével határozza meg, ha a fájl aktuális állapotát eltér a legutóbbi vizsgálat a fájl. Ez az összehasonlítás meghatározni, ha a fájlok érvényes vagy gyanús módosításokat végzett használhatja.
+## <a name="what-is-fim-in-security-center"></a>Mi az a FIM in Security Center?
+A fájlok integritásának figyelése (FIM), más néven a változás figyelése, megvizsgálja az operációs rendszer, az alkalmazás szoftvere és mások által a támadásra utaló módosításokat. A rendszer összehasonlító módszert használ annak megállapítására, hogy a fájl aktuális állapota eltér-e a fájl legutóbbi vizsgálatával. Ezt az összehasonlítást kihasználva megállapíthatja, hogy érvényes vagy gyanús módosítások történtek-e a fájlokban.
 
-A Security Center a fájlintegritási Monitorozás ellenőrzi a Windows-fájlok, a Windows beállításjegyzék és a Linux-fájlok. A FIM engedélyezésével figyelt kívánt fájlok kiválasztása A Security Center figyeli a fájlok a FIM tevékenység például engedélyezve:
+Security Center a fájl integritásának figyelése ellenőrzi a Windows-fájlok, a Windows-beállításjegyzék és a Linux-fájlok integritását. A FIM engedélyezésével kiválaszthatja a figyelni kívánt fájlokat. Security Center a FIM-mel rendelkező fájlokat figyeli a következő tevékenységekkel:
 
-- Fájl- és beállításjegyzék létrehozása és eltávolítása
-- Fájlmódosítás (módosítja a fájlméret, hozzáférés-vezérlési listák és a tartalom kivonatát)
-- Beállításjegyzék-módosításokat (módosítja a mérete, hozzáférés-vezérlési listák, típusa és a tartalom)
+- Fájl-és beállításjegyzék-létrehozás és-eltávolítás
+- Fájl módosításai (a fájlméret változásai, a hozzáférés-vezérlési listán és a tartalom kivonata)
+- Beállításjegyzék-módosítások (méret módosítása, hozzáférés-vezérlési listában, típus és tartalom)
 
-Könnyen engedélyezheti a FIM az entitás figyelése, a Security Center javasolja. Megadhatja a saját FIM házirendek vagy entitások figyelése is. Ez az útmutató bemutatja, hogyan.
-
-> [!NOTE]
-> A fájl fájlintegritási Monitorozás (FIM) szolgáltatás Windows és Linux rendszerű számítógépek és virtuális gépek esetében működik, és a Security Center Standard szinten érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md). FIM feltölti az adatokat a Log Analytics-munkaterületre. Adatok díjak vonatkoznak, a feltöltött adatok mennyisége alapján. Lásd: [Log Analytics díjszabása](https://azure.microsoft.com/pricing/details/log-analytics/) további.
-
-FIM az Azure Change Tracking megoldásával követi és azonosítja a környezet változásainak használ. Ha a fájlintegritási Monitorozás engedélyezve van, akkor egy **Change Tracking** típusú erőforrás **megoldás**. Adatok gyűjtése frequency részletek: [változáskövetési adatok gyűjtemény részleteinek](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details) a Azure Change Tracking megoldásba.
+Security Center javasolja az entitások figyelését, amelyekkel egyszerűen engedélyezheti a FIM-t. Megadhatja saját FIM-házirendjeit vagy a figyelni kívánt entitásokat is. Ez az útmutató bemutatja, hogyan.
 
 > [!NOTE]
-> Ha eltávolítja a **Change Tracking** erőforrás, szolgáltatás letiltása a fájlintegritási figyelése a Security Center szolgáltatás.
+> A Windows és Linux rendszerű számítógépek és virtuális gépek esetében a fájl integritás-figyelése (FIM) szolgáltatás működik, és a standard szintű Security Center érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md). A FIM feltölti az adatokat a Log Analytics munkaterületre. Az adatforgalmi díjak a feltöltött adatok mennyiségétől függően érvényesek. További információkért tekintse meg a [log Analytics díjszabását](https://azure.microsoft.com/pricing/details/log-analytics/) .
 
-## <a name="which-files-should-i-monitor"></a>Mely fájlokat kell figyelése?
-Meg kell gondolja át a fájlokat, amelyek kritikus fontosságú a rendszer és alkalmazások, amikor kiválasztja, hogy mely fájlok figyelésére. Vegye figyelembe a tervezés nélkül módosítása nem várt fájlok kiválasztása. Gyakran változnak az alkalmazások vagy az operációs rendszer (például a naplófájlok és a szöveges fájlok) lehetőséget választva fájlok zaj, ami megnehezíti az azonosíthatjuk a támadást rengeteg hozzon létre.
+A FIM az Azure Change Tracking megoldást használja a környezet változásainak nyomon követésére és azonosítására. Ha engedélyezve van a fájl integritásának figyelése, akkor egy **megoldás**típusú **change Tracking** erőforrással rendelkezik. Az adatgyűjtés gyakoriságának részleteiért lásd: [change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details) adatgyűjtési adatok az Azure Change tracking.
 
-A Security Center javasolja, amely fájlok, célszerű figyelemmel kísérni alapértelmezés szerint a fájl- és beállításjegyzék-módosításokat tartalmazó ismert támadási mintákat.
+> [!NOTE]
+> Ha eltávolítja a **change Tracking** -erőforrást, a Security Center a fájl sértetlenségének figyelése funkciót is letiltja.
 
-## <a name="using-file-integrity-monitoring"></a>A fájlintegritási Monitorozás a fájl használatával
+## <a name="which-files-should-i-monitor"></a>Mely fájlokat kell figyelni?
+Gondolja át a rendszer és az alkalmazások szempontjából kritikus fontosságú fájlokat a figyelni kívánt fájlok kiválasztásakor. Érdemes lehet olyan fájlokat választania, amelyeket nem várható a tervezés nélkül módosítani. Az alkalmazások vagy az operációs rendszer által gyakran módosított fájlok (például a naplófájlok és szövegfájlok) kiválasztásával nagy mennyiségű zaj hozható létre, ami megnehezíti a támadás azonosítását.
+
+Security Center azt javasolja, hogy a fájl-és beállításjegyzék-módosításokat tartalmazó ismert támadási mintáknak megfelelően milyen fájlokat kell figyelni alapértelmezettként.
+
+## <a name="using-file-integrity-monitoring"></a>A fájlok integritásának figyelése
 1. Nyissa meg a **Security Center** irányítópultját.
-2. A bal oldali ablaktábla **speciális Felhővédelem**válassza **a fájlintegritási Monitorozás**.
+2. A bal oldali ablaktábla **speciális felhőalapú védelem**területén válassza a **fájl integritásának figyelése**lehetőséget.
 ![Security Center irányítópultja][1]
 
-**Fájlintegritási monitorozás** nyílik meg.
+Megnyílik a **fájl integritásának figyelése** .
   ![Security Center irányítópultja][2]
 
-A következő információkat biztosítunk az egyes munkaterületeken:
+Az egyes munkaterületek esetében az alábbi információk szerepelnek:
 
-- A múlt héten bekövetkezett változások teljes száma (kötőjel látni "-" Ha a munkaterület nem engedélyezett a FIM)
-- Számítógépek és a-munkaterületre jelentő virtuális gépek teljes száma
+- A múlt héten bekövetkezett módosítások teljes száma (egy kötőjelet láthat, ha a FIM nincs engedélyezve a munkaterületen)
+- A munkaterületnek jelentett számítógépek és virtuális gépek teljes száma
 - A munkaterület földrajzi helye
-- Azure-előfizetést, a munkaterület alatt áll
+- Az Azure-előfizetés, amelyre a munkaterület tartozik
 
-A következő gombokkal is munkaterülethez tartozó jelenhet meg:
+A következő gombok is megjelenhetnek egy munkaterülethez:
 
-- ![Ikon engedélyezése][3] Azt jelzi, hogy a FIM nincs engedélyezve a munkaterület számára. A munkaterület kiválasztása lehetővé teszi a FIM engedélyezés minden gépen a munkaterületen.
-- ![Frissítési csomag ikonja][4] a munkaterületet, vagy az előfizetés nem fut a Security Center Standard szintű jelöli. A FIM szolgáltatás használatához az előfizetés kell futnia a Standard.  A munkaterület kiválasztása lehetővé teszi a Standard. A Standard szintű és frissítésével kapcsolatos további tudnivalókért lásd: [a Security Center Standard csomagra váltásával fokozott biztonságot érhet](security-center-pricing.md).
-- Egy üres (nem jelenik meg gomb), az azt jelenti, hogy FIM már engedélyezve van a munkaterülethez.
+- ![Engedélyezés ikon][3] Azt jelzi, hogy a FIM nincs engedélyezve a munkaterületen. A munkaterület kiválasztásával engedélyezheti a FIM-t a munkaterület alá tartozó összes gépen.
+- ![A Frissítési terv][4] ikon azt jelzi, hogy a munkaterület vagy az előfizetés nem fut a Security Center Standard szint alatt. A FIM szolgáltatás használatához az előfizetésnek standard szintűnek kell lennie.  A munkaterület kiválasztása lehetővé teszi, hogy a standard szintre frissítsen. A standard csomaggal és a frissítéssel kapcsolatos további tudnivalókért tekintse meg a következő témakört: [frissítés a Security Center Standard szintjére a fokozott biztonság](security-center-pricing.md)érdekében.
+- Egy üres (nincs gomb) azt jelenti, hogy a FIM már engedélyezve van a munkaterületen.
 
-A **a fájlintegritási Monitorozás**, kiválaszthatja, hogy egy munkaterületet a FIM engedélyezheti az adott munkaterületben, és megtekintheti az adott munkaterülethez tartozó fájlintegritási Monitorozás irányítópultját vagy [frissítése](security-center-pricing.md) a standard munkaterületen.
+A **fájl integritásának figyelése**területen kiválaszthat egy munkaterületet, amely engedélyezi a FIM-t az adott munkaterülethez, megtekintheti a munkaterület fájl integritás-figyelési irányítópultját, vagy a munkaterületet a standard [szintre](security-center-pricing.md)
 
 ## <a name="enable-fim"></a>FIM engedélyezése
-A munkaterülethez FIM engedélyezése:
+A FIM engedélyezése munkaterületen:
 
-1. Alatt **a fájlintegritási Monitorozás**, válasszon ki egy munkaterületet, és a **engedélyezése** gombra.
-2. **A fájlintegritási monitorozás engedélyezése** megnyílik a megjelenítés, a Windows és Linux rendszerű gépek munkaterületen számát.
+1. A **fájl integritásának figyelése**területen válasszon ki egy munkaterületet az **Engedélyezés** gombbal.
+2. A **fájlok integritásának figyelésének engedélyezése** megnyithatja a Windows és a Linux rendszerű gépek számát a munkaterületen.
 
-   ![A fájlintegritási monitorozás engedélyezése][5]
+   ![A fájlok integritásának figyelésének engedélyezése][5]
 
-   Az ajánlott beállításokat a Windows és Linux rendszereken is megtalálhatók.  Bontsa ki a **Windows fájlok**, **beállításjegyzék**, és **Linux-fájlok** ajánlott elemek teljes listájának megtekintéséhez.
+   A Windows és a Linux ajánlott beállításai is szerepelnek a felsorolásban.  Bontsa ki a **Windows-fájlok**, a **beállításjegyzék**és a **Linux-fájlok** elemet a javasolt elemek teljes listájának megtekintéséhez.
 
-3. Törölje a jelet a javasolt entitások nem FIM a alkalmazni szeretné.
-4. Válassza ki **alkalmazni a fájlintegritási monitorozás** FIM engedélyezéséhez.
+3. Törölje azokat az ajánlott entitásokat, amelyeket nem kíván alkalmazni a FIM használatával.
+4. A FIM engedélyezéséhez válassza a **Fájlszűrő-figyelés alkalmazása** lehetőséget.
 
 > [!NOTE]
-> A beállításokat bármikor módosíthatja. Tekintse meg a szerkesztési figyelt az alábbi további entitásokat.
+> Bármikor módosíthatja a beállításokat. További információért lásd: a figyelt entitások szerkesztése.
 >
 >
 
-## <a name="view-the-fim-dashboard"></a>Az FIM-irányítópultjának megtekintése
-A **a fájlintegritási monitorozás** irányítópult munkaterületek, amelyben engedélyezve van a FIM jeleníti meg. A FIM irányítópult megnyílik a munkaterülethez, vagy amikor kiválaszt egy munkaterületet, a FIM engedélyezését követően a **a fájlintegritási Monitorozás** ablak, amely már rendelkezik a FIM engedélyezve van.
+## <a name="view-the-fim-dashboard"></a>A FIM-irányítópult megtekintése
+A **fájl integritás** -figyelési irányítópultja megjeleníti azokat a munkaterületeket, amelyeken engedélyezve van a FIM. A FIM-irányítópult megnyílik, miután engedélyezte a FIM használatát egy munkaterületen, vagy ha kiválaszt egy munkaterületet a **fájl integritásának figyelése** ablakban, amelyen már engedélyezve van a FIM.
 
-![Fájl fájlintegritási Monitorozás irányítópultját][6]
+![A fájl integritásának figyelése irányítópult][6]
 
-Egy munkaterület a FIM irányítópulton jeleníti meg a következő:
+A munkaterület FIM-irányítópultja a következőket jeleníti meg:
 
-- A munkaterülethez csatlakoztatott gépek teljes száma
-- A kijelölt időszak során fellépő változások száma
-- Egy bontása típusának módosítása (fájlokat, beállításjegyzék)
-- Kategória módosítása egy bontása (módosított, hozzáadott, eltávolított)
+- A munkaterülethez csatlakozó számítógépek teljes száma
+- A kiválasztott időszakban történt módosítások teljes száma
+- A változás típusának részletezése (fájlok, beállításjegyzék)
+- A módosítási kategória részletezése (módosított, hozzáadott, eltávolított)
 
-Az irányítópult tetején lévő szűrő kiválasztása lehetővé teszi az időtartam, amely meg szeretné tekinteni a módosítása a alkalmazni.
+Az irányítópult tetején található szűrő kiválasztásával azt az időtartamot alkalmazhatja, amelyen a módosításokat látni szeretné.
 
-![Időszűrő időszak][7]
+![Időszak szűrője][7]
 
-A **számítógépek** (lásd fent) lapon látható a jelen munkaterületnek jelentő összes gépen. Az egyes gépek az irányítópult sorolja fel:
+A **számítógépek** lap (fent látható) felsorolja a munkaterületnek jelentett összes gépet. Az irányítópultok az egyes gépeknél a következőket sorolja fel:
 
-- A kijelölt időszakban történt módosítások összesen
-- Módosítások összesen, fájl és beállításjegyzék változásainak egy bontása
+- A kiválasztott időszakban történt összes módosítás
+- A módosítások vagy a beállításjegyzék változásainak teljes változásainak részletezése
 
-**Naplóbeli keresés** megnyílik, ha a számítógép nevét adja meg a Keresés mezőbe, vagy válassza ki a számítógépek lapján felsorolt gépet. Naplók keresése a gép a kiválasztott időszakban – kezdeményezett összes módosítás jeleníti meg. További információk változását, bővítheti.
+A **naplóbeli keresés** akkor nyílik meg, amikor beírja a számítógép nevét a Keresés mezőbe, vagy kiválasztja a számítógépek lapon felsorolt gépet. A naplóbeli keresés megjeleníti a számítógép kiválasztott időszakában végrehajtott összes módosítást. További információért bontsa ki a változást.
 
 ![Naplók keresése][8]
 
-A **módosítások** (lásd alább) lapon látható a munkaterület összes módosítást a kijelölt időszakban. Az egyes entitásokhoz módosított irányítópult listák a:
+A **módosítások** lap (lásd alább) megjeleníti a munkaterület összes változását a kiválasztott időszakban. Minden módosított entitás esetében az irányítópult a következőket sorolja fel:
 
-- A módosítás történt a számítógép
-- Egy olyan változást (beállításjegyzék vagy fájl)
-- Változás típusa (módosított, hozzáadott, eltávolított)
-- Dátum és idő módosítása
+- A számítógép, amelyen a módosítás történt
+- Változás típusa (beállításjegyzék vagy fájl)
+- Változás kategóriája (módosított, hozzáadott, eltávolított)
+- A módosítás dátuma és időpontja
 
-![A munkaterületre vonatkozó módosítások][9]
+![A munkaterület módosításai][9]
 
-**Változás részletei** megnyílik, amikor változás adja meg a Keresés mezőben, vagy válasszon ki egy entitáshoz tartozó a **módosítások** fülre.
+A Change Details (módosítás **részletei** ) elemre kattintva megadhatja a keresés mezőben megjelenő változást, vagy kijelölhet egy entitást a **módosítások** lapon.
 
 ![Változás részletei][10]
 
-## <a name="edit-monitored-entities"></a>Figyelt szerkesztési entitások
+## <a name="edit-monitored-entities"></a>Figyelt entitások szerkesztése
 
-1. Lépjen vissza a **fájlintegritási Monitorozás irányítópultját** válassza **beállítások**.
+1. Térjen vissza a **fájl integritás** -figyelési irányítópultra, és válassza a **Beállítások**lehetőséget.
 
    ![Beállítások][11]
 
-   **Munkaterület-konfiguráció** megnyílik a Megjelenítés a három lappal: **Windows beállításjegyzék**, **Windows fájlok**, és **Linux-fájlok**. Minden lap, Ön által szerkeszthető, amelynek-entitásokat sorolja fel. Minden entitás szerepel, a Security Center azonosítja a FIM-e (igaz) engedélyezve van, vagy nincs engedélyezve az (hamis).  Az entitás szerkesztését teszi lehetővé engedélyezheti vagy tilthatja le a FIM.
+   A **munkaterület-konfiguráció** három lapot jelenít meg: A **Windows beállításjegyzék**, a **Windows-fájlok**és a Linux- **fájlok**. Minden lap felsorolja az adott kategóriában szerkeszthető entitásokat. Az egyes felsorolt entitások esetében Security Center azonosítja, hogy a FIM engedélyezve van-e (true) vagy nincs engedélyezve (false).  Az entitás szerkesztése lehetővé teszi a FIM engedélyezését vagy letiltását.
 
    ![Munkaterület-konfiguráció][12]
 
-2. Válassza ki az identity protection. Ebben a példában egy elem, a Windows beállításjegyzék kiválasztott. **A Change Tracking megoldásba szerkesztése** nyílik meg.
+2. Válasszon ki egy Identity Protectiont. Ebben a példában egy elemet választottunk a Windows beállításjegyzékben. Megnyílik **a Change Tracking szerkesztése** .
 
-   ![Szerkesztheti, vagy a változáskövetés][13]
+   ![Szerkesztés vagy módosítás nyomon követése][13]
 
-A **szerkesztése a Change Tracking megoldásba** is:
+**A Change Tracking szerkesztése területen a** következőket teheti:
 
-- (True) engedélyezése vagy letiltása a (hamis) a fájlintegritási monitorozás
-- Adja meg, vagy módosítani az entitás neve
-- Adja meg vagy módosítsa az értéket vagy az elérési út
-- Törölni az entitást, elveti a módosítást, vagy a módosítás mentéséhez
+- A fájl integritás-figyelésének engedélyezése (true) vagy Disable (false)
+- Adja meg vagy módosítsa az entitás nevét
+- Adja meg vagy módosítsa az értéket vagy az elérési utat
+- Törölje az entitást, vesse el a módosítást, vagy mentse a módosítást.
 
-## <a name="add-a-new-entity-to-monitor"></a>Adjon hozzá egy új entitás figyelése
-1. Lépjen vissza a **fájlintegritási monitorozás irányítópult** válassza **beállítások** tetején. **Munkaterület-konfiguráció** nyílik meg.
-2. A **munkaterület-konfiguráció**, válassza ki a lapon, hogy a hozzáadni kívánt entitás típusa: Windows beállításjegyzék, a Windows-fájlokat vagy a Linux-fájlok. Ebben a példában a kiválasztott **Linux-fájlok**.
+## <a name="add-a-new-entity-to-monitor"></a>Új entitás hozzáadása a figyeléshez
+1. Térjen vissza a **fájl integritás** -figyelési irányítópultra, és válassza a felül található **Beállítások** lehetőséget. Megnyílik a **munkaterület konfigurációja** .
+2. A **munkaterület konfigurálása**területen válassza ki a hozzáadni kívánt entitás típusának lapfülét: Windows beállításjegyzék, Windows-fájlok vagy Linux-fájlok. Ebben a példában a Linux- **fájlokat**választottuk.
 
-   ![Adjon hozzá egy új elem figyelése][14]
+   ![Új elem hozzáadása a figyeléshez][14]
 
-3. Válassza a **Hozzáadás** lehetőséget. **Adja hozzá a Change Tracking megoldásba** nyílik meg.
+3. Válassza a **Hozzáadás** lehetőséget. **A hozzáadás Change Tracking** megnyílik.
 
    ![Adja meg a kért adatokat][15]
 
-4. Az a **Hozzáadás** lapon írja be a kért adatokat, és válassza **mentése**.
+4. A **Hozzáadás** lapon írja be a kért információkat, majd válassza a **Mentés**lehetőséget.
 
-## <a name="disable-monitored-entities"></a>Tiltsa le a felügyelt entitások
-1. Lépjen vissza a **a fájlintegritási Monitorozás** irányítópultot.
-2. Válasszon egy munkaterületet, ahol jelenleg engedélyezve van a FIM. A munkaterület a FIM engedélyezve van, ha hiányzik az Engedélyezés gombra vagy a csomag frissítése gombra.
+## <a name="disable-monitored-entities"></a>Figyelt entitások letiltása
+1. Térjen vissza a **fájl integritásának figyelése** irányítópultra.
+2. Válasszon ki egy munkaterületet, ahol a FIM jelenleg engedélyezve van. Ha nincs megadva az engedélyezés gomb vagy a Frissítési terv gomb, egy munkaterület engedélyezve van a FIM-hez.
 
-   ![Válasszon ki egy munkaterületet, ahol engedélyezve van-e az FIM][16]
+   ![Válassza ki azt a munkaterületet, ahol a FIM engedélyezve van][16]
 
-3. A fájlintegritási Monitorozás, válassza a **beállítások**.
+3. A fájl integritásának figyelése területen válassza a **Beállítások**lehetőséget.
 
-   ![beállítások kiválasztása][17]
+   ![Beállítások kiválasztása][17]
 
-4. Alatt **munkaterület-konfiguráció**, válasszon ki egy csoportot, **engedélyezve** értéke igaz.
+4. A **munkaterület konfigurálása**területen válassza ki azt a csoportot, ahol az **engedélyezve** beállítás értéke TRUE (igaz).
 
-   ![Munkaterület-konfiguráció][18]
+   ![Munkaterület konfigurálása][18]
 
-5. A **szerkesztése a Change Tracking megoldásba** ablak set **engedélyezve** hamis értékre.
+5. A **szerkesztés alatt Change Tracking** az ablak értéke false (hamis) értékre **van** állítva.
 
-   ![Hamis értékre beállított engedélyezve][19]
+   ![Beállítás engedélyezve hamis értékre][19]
 
 6. Kattintson a **Mentés** gombra.
 
-## <a name="folder-and-path-monitoring-using-wildcards"></a>Mappa- és elérési út figyelési helyettesítő karakterek használatával
+## <a name="folder-and-path-monitoring-using-wildcards"></a>Mappa és elérési út figyelése helyettesítő karakterek használatával
 
-A helyettesítő karakterek használatával egyszerűsíthető a nyomon követési címtárak között. Az alábbi szabályok vonatkoznak a mappa figyelése helyettesítő konfigurálásakor:
--   A helyettesítő karakterek is szükséges a több fájlok nyomon követése.
--   Helyettesítő karaktereket csak a elérési útját, például C:\folder\file vagy /etc/*.conf utolsó szegmense használható
--   Ha egy környezeti változó tartalmaz egy elérési utat, amely nem érvényes, érvényesítés sikeres lesz, de az elérési út sikertelen lesz, ha szoftverleltár fut le.
--   Az elérési út megadásakor elkerülése érdekében az általános elérési utak, például: c:\*. * áthaladhat túl sok mappák eredményez.
+Használjon helyettesítő karaktereket a címtárak közötti nyomkövetés egyszerűsítéséhez. A következő szabályok akkor érvényesek, ha a mappák figyelését helyettesítő karakterek használatával konfigurálja:
+-   Több fájl nyomon követéséhez helyettesítő karakterek szükségesek.
+-   Helyettesítő karakterek csak az elérési út utolsó szegmensében használhatók, például C:\folder\file vagy/etc/*. conf
+-   Ha egy környezeti változó érvénytelen elérési utat tartalmaz, az érvényesítés sikeres lesz, de az elérési út sikertelen lesz a leltár futtatásakor.
+-   Az elérési út beállításakor kerülje el az általános elérési\*utakat, például a c:. * értéket, ami túl sok mappát fog áthaladni.
 
 ## <a name="disable-fim"></a>FIM letiltása
-FIM letilthatja. FIM az Azure Change Tracking megoldásával követi és azonosítja a környezet változásainak használ. FIM letiltásával eltávolítja a Change Tracking megoldás kijelölt munkaterületen.
+A FIM letiltható. A FIM az Azure Change Tracking megoldást használja a környezet változásainak nyomon követésére és azonosítására. A FIM letiltásával eltávolítja a Change Tracking megoldást a kiválasztott munkaterületről.
 
-1. FIM letiltásához adja vissza a **a fájlintegritási Monitorozás** irányítópultot.
+1. A FIM letiltásához térjen vissza a **fájl integritásának figyelése** irányítópultra.
 2. Jelöljön ki egy munkaterületet.
-3. A **a fájlintegritási Monitorozás**válassza **letiltása**.
+3. A **fájl integritásának figyelése**területen válassza a **Letiltás**lehetőséget.
 
    ![FIM letiltása][20]
 
-4. Válassza ki **eltávolítása** letiltása.
+4. A letiltáshoz válassza az **Eltávolítás** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, hogyan fájl fájlintegritási Monitorozás (FIM) a Security Center használatával. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
+Ebben a cikkben megtanulta, hogy a fájlok integritásának figyelése (FIM) használatával Security Center. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása](tutorial-security-policy.md) – ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok.
-* [Biztonsági javaslatok kezelése](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
-* [Biztonsági állapotfigyelés](security-center-monitoring.md)– útmutató az Azure-erőforrások állapotának monitorozásához.
-* [Kezelése és válaszadás a biztonsági riasztások](security-center-managing-and-responding-alerts.md)– ismerje meg, hogyan kezelése és válaszadás a biztonsági riasztásokra.
-* [Partneri megoldások monitorozása](security-center-partner-solutions.md) – útmutató a partnermegoldások állapotának monitorozásához.
-* [A Security Center – gyakori kérdések](security-center-faq.md)– gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
+* [Biztonsági házirendek beállítása](tutorial-security-policy.md) – megtudhatja, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és-erőforráscsoportok számára.
+* [Biztonsági javaslatok kezelése](security-center-recommendations.md) – megtudhatja, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.
+* [Biztonsági állapot figyelése](security-center-monitoring.md)– megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
+* [Biztonsági riasztások kezelése és válaszadás](security-center-managing-and-responding-alerts.md)– útmutató a biztonsági riasztások kezeléséhez és megválaszolásához.
+* [Partneri megoldások monitorozása](security-center-partner-solutions.md) – megtudhatja, hogyan figyelheti meg a partneri megoldások állapotát.
+* [Security Center GYIK](security-center-faq.md)– gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure biztonsági blog](https://blogs.msdn.com/b/azuresecurity/) – Tájékozódás az Azure biztonságával kapcsolatos legfrissebb hírekről és információkról.
 
 <!--Image references-->

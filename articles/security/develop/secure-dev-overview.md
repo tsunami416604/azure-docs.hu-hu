@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4df8ff8abfeb7a6ba96ec3344407e95e0a9a3b3d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c4314a0dcbbcb907ef4d6de0a2788cf04dfe1641
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728715"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934872"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Biztonságos fejlesztés – ajánlott eljárások az Azure-ban
 Ez a cikksorozat azokat a biztonsági tevékenységeket és ellenőrzéseket ismerteti, amelyeket figyelembe kell venni a Felhőbeli alkalmazások fejlesztésekor. A Microsoft biztonsági fejlesztési életciklus (SDL) és a biztonsági kérdések és fogalmak szakaszait az életciklus egyes szakaszaiban figyelembe kell venni. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket az életciklus egyes fázisaiban használhat a biztonságosabb alkalmazások tervezéséhez, fejlesztéséhez és üzembe helyezéséhez.
@@ -69,7 +69,7 @@ A [Web Application Security Project (OWASP) megnyitása](https://www.owasp.org/i
 
 A [bal oldali, például a főnök](https://code.likeagirl.io/pushing-left-like-a-boss-part-1-80f1f007da95?WT.mc_id=docs-blog-tajanca) – számos online cikk, amely az alkalmazások különböző típusú biztonsági tevékenységeit ismerteti, amelyeket a fejlesztőknek be kell fejezniük a biztonságosabb kód létrehozásához.
 
-[Microsoft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/) – a Microsoft Identity platform az Azure ad Identity Service és a fejlesztői platform fejlődése. Ez egy teljes körű funkcionalitást biztosító platform, amely egy hitelesítési szolgáltatásból, nyílt forráskódú könyvtárakból, alkalmazás-regisztrációból és-konfigurációból, teljes fejlesztői dokumentációból, kód-mintákból és más fejlesztői tartalmakból áll. A Microsoft Identity platform támogatja az iparági szabványnak megfelelő protokollokat, például a OAuth 2,0 és az OpenID connectet.
+[Microsoft Identity platform](../../active-directory/develop/index.yml) – a Microsoft Identity platform az Azure ad Identity Service és a fejlesztői platform fejlődése. Ez egy teljes körű funkcionalitást biztosító platform, amely egy hitelesítési szolgáltatásból, nyílt forráskódú könyvtárakból, alkalmazás-regisztrációból és-konfigurációból, teljes fejlesztői dokumentációból, kód-mintákból és más fejlesztői tartalmakból áll. A Microsoft Identity platform támogatja az iparági szabványnak megfelelő protokollokat, például a OAuth 2,0 és az OpenID connectet.
 
 [Ajánlott biztonsági eljárások az Azure](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/) -megoldásokhoz – az Azure-ban felhőalapú megoldások tervezésekor, üzembe helyezéséhez és kezeléséhez használt ajánlott biztonsági eljárások gyűjteménye. Ez a dokumentum az informatikai szakemberek számára készült erőforrás. Ilyenek lehetnek a biztonságos Azure-megoldások készítésére és üzembe helyezésére szolgáló tervezők, építészek, fejlesztők és tesztelők.
 

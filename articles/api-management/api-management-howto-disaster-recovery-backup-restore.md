@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 619a4de993f052f143e4117f0100ed1e0aa77b03
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: bde4572ec72286be7d845f4e83bf9c0fe3bff6f1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498594"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932399"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vész-helyreállítás implementálása a szolgáltatás biztonsági mentésével és visszaállításával az Azure-ban API Management
 
@@ -176,6 +176,7 @@ Biztonsági mentési kérelem készítésekor vegye figyelembe a következő kor
 -   A biztonsági mentés folyamatban van, így **elkerülhető a szolgáltatások kezelésének változásai** , például az SKU frissítése vagy a lefokozás, a tartománynév módosítása és egyebek.
 -   A biztonsági másolat visszaállítását csak a létrehozás időpontja óta **30 napig garantáljuk** .
 -   Az elemzési jelentések létrehozásához használt **használati adatok** **nem szerepelnek** a biztonsági mentésben. Az [Azure API Management REST API][azure api management rest api] használatával rendszeres időközönként beolvashatja az elemzési jelentéseket a megőrzéshez.
+-   Továbbá a következő elemek nem részei a biztonsági mentési adatoknak: egyéni tartományba tartozó SSL-tanúsítványok, valamint az ügyfél által feltöltött bármely közbenső vagy főtanúsítvány, valamint a fejlesztői portál tartalma és a virtuális hálózat integrációs beállításai.
 -   A szolgáltatás biztonsági másolatának elvégzéséhez használt gyakoriság a helyreállítási pontok céljára is hatással van. A lehető legkisebbre csökkentése érdekében javasoljuk, hogy a rendszeres biztonsági mentéseket és az igény szerinti biztonsági mentéseket a API Management szolgáltatás módosítása után végezze el.
 -   A szolgáltatás konfigurációjában (például az API-k, a házirendek és a fejlesztői portál megjelenésében) **végrehajtott módosítások** kizárhatók **a biztonsági mentésből, és**elvesznek.
 -   Hozzáférés **engedélyezése** a vezérlési síkon az Azure Storage-fiókba. Az ügyfélnek a biztonsági mentéshez a következő bejövő IP-címeket kell megnyitnia a Storage-fiókjában. 

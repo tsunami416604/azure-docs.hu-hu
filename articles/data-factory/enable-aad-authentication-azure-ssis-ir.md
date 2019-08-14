@@ -12,16 +12,20 @@ ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: 1e55d1878b1a5616d467f2fa27b1b20132d5e77c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 51f67667caa9e0e564709de40c145b107c619b59
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517005"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016005"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure Active Directory hitelesítés engedélyezése az Azure-SSIS Integration Runtime
 
-Ez a cikk bemutatja, hogyan engedélyezheti Azure Active Directory (Azure AD) hitelesítését a Azure Data Factory (ADF) felügyelt identitásával, és az SQL-hitelesítés helyett használja az Azure-SSIS Integration Runtime (IR) létrehozásához. A SSIS-katalógus adatbázisa (SSISDB) Azure SQL Database kiszolgáló/felügyelt példányban az Ön nevében.
+Ez a cikk bemutatja, hogyan engedélyezhető Azure Active Directory (Azure AD) hitelesítés a Azure Data Factory (ADF) felügyelt identitásával, és hogyan használható a hagyományos hitelesítési módszerek (például az SQL-hitelesítés) helyett a következőkre:
+
+- Hozzon létre egy Azure-SSIS Integration Runtime (IR), amely az Ön nevében Azure SQL Database kiszolgáló/felügyelt példány SSIS-katalógusának adatbázisát (SSISDB) fogja kiépíteni.
+
+- Csatlakozás különböző Azure-erőforrásokhoz, ha SSIS-csomagokat futtat az Azure-SSIS IR-ben.
 
 Az ADF felügyelt identitásával kapcsolatos további információkért lásd: [Data Factory felügyelt Identiy](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
@@ -214,4 +218,14 @@ Az Azure-SSIS IR PowerShell-lel való kiépítéséhez tegye a következőket:
     Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                                  -DataFactoryName $DataFactoryName `
                                                  -Name $AzureSSISName
-   ```
+    ```
+
+## <a name="run-ssis-packages-with-managed-identity-authentication"></a>SSIS-csomagok futtatása felügyelt Identitásos hitelesítéssel
+
+Ha SSIS-csomagokat futtat az Azure-SSIS IR-ben, a felügyelt identitás-hitelesítés használatával különböző Azure-erőforrásokhoz kapcsolódhat. Jelenleg már támogatott a felügyelt identitások hitelesítése a következő ügyfélkapcsolat-kezelők esetében.
+
+- [OLE DB Csatlakozáskezelő](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)
+
+- [ADO.NET-Csatlakozáskezelő](https://docs.microsoft.com/sql/integration-services/connection-manager/ado-net-connection-manager#managed-identities-for-azure-resources-authentication)
+
+- [Azure Storage-kapcsolatkezelő](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)

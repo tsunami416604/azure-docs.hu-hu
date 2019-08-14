@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: db3f5aca0240c19f67d5d0775148d5eec76daa03
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 3c4bdb3d46e4630257c2567cf2003ebede00b71e
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726989"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934772"
 ---
 # <a name="azure-network-security"></a>Azure hálózati biztonság
 
@@ -55,9 +55,9 @@ Microsoft Azure tartalmaz egy robusztus hálózati infrastruktúrát, amely tám
 
 ![Azure hálózatkezelés – nagyméretű kép](./media/network-security/azure-network-security-fig-1.png)
 
-Az [Azure hálózati infrastruktúra](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-networking-guidelines) lehetővé teszi az Azure-erőforrások biztonságos összekapcsolását a Virtual Networks (virtuális hálózatok) szolgáltatással. A VNet a saját hálózatának ábrázolása a felhőben. A VNet az előfizetéséhez dedikált Azure Cloud Network logikai elkülönítése. A virtuális hálózatok a helyszíni hálózatokhoz is csatlakoztathatók.
+Az [Azure hálózati infrastruktúra](../../virtual-machines/windows/infrastructure-example.md) lehetővé teszi az Azure-erőforrások biztonságos összekapcsolását a Virtual Networks (virtuális hálózatok) szolgáltatással. A VNet a saját hálózatának ábrázolása a felhőben. A VNet az előfizetéséhez dedikált Azure Cloud Network logikai elkülönítése. A virtuális hálózatok a helyszíni hálózatokhoz is csatlakoztathatók.
 
-Az Azure támogatja a dedikált WAN-kapcsolatot a helyszíni hálózattal és egy Azure-Virtual Network a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction). Az Azure és a webhely közötti kapcsolat olyan dedikált kapcsolatot használ, amely nem a nyilvános interneten keresztül érhető el. Ha az Azure-alkalmazás több adatközpontban fut, az [azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) segítségével a felhasználóktól érkező kéréseket intelligens módon irányíthatja át az alkalmazás példányai között. Az Azure-ban nem futó szolgáltatásokra is átirányíthatja a forgalmat, ha azok elérhetők az internetről.
+Az Azure támogatja a dedikált WAN-kapcsolatot a helyszíni hálózattal és egy Azure-Virtual Network a [ExpressRoute](../../expressroute/expressroute-introduction.md). Az Azure és a webhely közötti kapcsolat olyan dedikált kapcsolatot használ, amely nem a nyilvános interneten keresztül érhető el. Ha az Azure-alkalmazás több adatközpontban fut, az [azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) segítségével a felhasználóktól érkező kéréseket intelligens módon irányíthatja át az alkalmazás példányai között. Az Azure-ban nem futó szolgáltatásokra is átirányíthatja a forgalmat, ha azok elérhetők az internetről.
 
 ## <a name="enterprise-view-of-azure-networking-components"></a>Az Azure hálózati összetevőinek nagyvállalati nézete
 Az Azure számos hálózati összetevővel rendelkezik, amelyek a hálózati biztonsági megbeszélésekhez kapcsolódnak. leírjuk ezeket a hálózati összetevőket, és a velük kapcsolatos biztonsági problémákra koncentrálunk.
@@ -77,11 +77,11 @@ Ebben a dokumentumban a következő Azure Networking Enterprise-képességekre f
 
 ### <a name="basic-network-connectivity"></a>Alapszintű hálózati kapcsolat
 
-Az [azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) szolgáltatás lehetővé teszi az Azure-erőforrások biztonságos összekapcsolását a Virtual Networks (VNet) használatával. A VNet a saját hálózatának ábrázolása a felhőben. A VNet az előfizetéséhez dedikált Azure hálózati infrastruktúra logikai elkülönítése. A helyek közötti VPN-eket és a dedikált [WAN-kapcsolatokat](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)használva virtuális hálózatok is csatlakozhat egymáshoz és a helyszíni hálózatokhoz.
+Az [azure Virtual Network](../../virtual-network/virtual-networks-overview.md) szolgáltatás lehetővé teszi az Azure-erőforrások biztonságos összekapcsolását a Virtual Networks (VNet) használatával. A VNet a saját hálózatának ábrázolása a felhőben. A VNet az előfizetéséhez dedikált Azure hálózati infrastruktúra logikai elkülönítése. A helyek közötti VPN-eket és a dedikált [WAN-kapcsolatokat](../../expressroute/expressroute-introduction.md)használva virtuális hálózatok is csatlakozhat egymáshoz és a helyszíni hálózatokhoz.
 
 ![Alapszintű hálózati kapcsolat](./media/network-security/azure-network-security-fig-2.png)
 
-Azzal a feltétellel, hogy virtuális gépeket használ az Azure-beli kiszolgálók üzemeltetéséhez, a kérdés az, hogy ezek a virtuális gépek hogyan csatlakoznak a hálózathoz. A válasz az, hogy a virtuális gépek csatlakoznak egy [Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)-Virtual Networkhoz.
+Azzal a feltétellel, hogy virtuális gépeket használ az Azure-beli kiszolgálók üzemeltetéséhez, a kérdés az, hogy ezek a virtuális gépek hogyan csatlakoznak a hálózathoz. A válasz az, hogy a virtuális gépek csatlakoznak egy [Azure](../../virtual-network/virtual-networks-overview.md)-Virtual Networkhoz.
 
 Az Azure-beli virtuális hálózatok olyanok, mint a helyszíni virtuális hálózatok saját virtualizációs platform-megoldásokkal, például a Microsoft Hyper-V vagy a VMware használatával.
 
@@ -89,7 +89,7 @@ Az Azure-beli virtuális hálózatok olyanok, mint a helyszíni virtuális hál�
 
 Összekapcsolhatja a virtuális hálózatok egymással, és engedélyezheti, hogy a VNet kapcsolódó erőforrások a virtuális hálózatok-on keresztül kommunikáljanak egymással. A virtuális hálózatok egymáshoz való összekapcsolásához a következő lehetőségek egyikét vagy mindkettőt használhatja:
 
-- **Társviszony** Lehetővé teszi, hogy a különböző Azure-virtuális hálózatok kapcsolódó erőforrások ugyanazon az Azure-helyen kommunikáljanak egymással. A sávszélesség és a késés a VNet között ugyanaz, mint ha az erőforrások ugyanahhoz a VNet csatlakoztak. Ha többet szeretne megtudni a peering szolgáltatással kapcsolatban, olvassa el a [virtuális hálózat](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)társítása című témakört.
+- **Társviszony** Lehetővé teszi, hogy a különböző Azure-virtuális hálózatok kapcsolódó erőforrások ugyanazon az Azure-helyen kommunikáljanak egymással. A sávszélesség és a késés a VNet között ugyanaz, mint ha az erőforrások ugyanahhoz a VNet csatlakoztak. Ha többet szeretne megtudni a peering szolgáltatással kapcsolatban, olvassa el a [virtuális hálózat](../../virtual-network/virtual-network-peering-overview.md)társítása című témakört.
 
   ![Társviszony-létesítés](./media/network-security/azure-network-security-fig-3.png)
 
@@ -120,7 +120,7 @@ Amint láthatja, az Azure Virtual Network virtuális gépeket biztosít a háló
 
 **Elkülönítés**
 
-A virtuális hálózatok [](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) egymástól el vannak különítve. Létrehozhat külön virtuális hálózatok a fejlesztési, tesztelési és éles környezetekhez, amelyek ugyanazt a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) -címtartományt használják. Ezzel együtt több virtuális hálózatok is létrehozhat, amelyek különböző CIDR használnak, és összekapcsolják a hálózatokat. A VNet több alhálózatra is szegmentálhatja.
+A virtuális hálózatok [](../../virtual-network/virtual-networks-overview.md) egymástól el vannak különítve. Létrehozhat külön virtuális hálózatok a fejlesztési, tesztelési és éles környezetekhez, amelyek ugyanazt a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) -címtartományt használják. Ezzel együtt több virtuális hálózatok is létrehozhat, amelyek különböző CIDR használnak, és összekapcsolják a hálózatokat. A VNet több alhálózatra is szegmentálhatja.
 
 Az Azure belső névfeloldást biztosít a virtuális gépekhez és [Cloud Services](https://azure.microsoft.com/services/cloud-services/) VNet csatlakoztatott szerepkör-példányokhoz. Opcionálisan konfigurálhat egy VNet a saját DNS-kiszolgálók használatára, az Azure belső névfeloldásának használata helyett.
 
@@ -130,35 +130,35 @@ Az Azure-előfizetések és az [](https://docs.microsoft.com/azure/azure-glossar
 
 -   Csoportosítsa a VNet egy vagy több alhálózatra, és rendelje hozzá a VNet-címtartomány egy részét az egyes alhálózatokhoz.
 
--   Használja az Azure által biztosított névfeloldást, vagy adja meg saját DNS-kiszolgálóját a VNet csatlakoztatott erőforrások számára. Ha többet szeretne megtudni a névfeloldásról a virtuális hálózatok-ben, olvassa el a [virtuális gépek és a Cloud Services](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)névfeloldását ismertető témakört.
+-   Használja az Azure által biztosított névfeloldást, vagy adja meg saját DNS-kiszolgálóját a VNet csatlakoztatott erőforrások számára. Ha többet szeretne megtudni a névfeloldásról a virtuális hálózatok-ben, olvassa el a [virtuális gépek és a Cloud Services](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)névfeloldását ismertető témakört.
 
 **Internetkapcsolat**
 
-A VNet csatlakoztatott összes [Azure Virtual Machines (VM)](https://docs.microsoft.com/azure/virtual-machines/windows/) és Cloud Services szerepkör-példány alapértelmezés szerint elérhető az internethez. Igény szerint adott erőforrásokhoz is engedélyezheti a bejövő hozzáférést. A (VM) és Cloud Services VNet csatlakoztatott szerepkör-példányok alapértelmezés szerint az internethez férnek hozzá. Igény szerint adott erőforrásokhoz is engedélyezheti a bejövő hozzáférést.
+A VNet csatlakoztatott összes [Azure Virtual Machines (VM)](../../virtual-machines/windows/index.yml) és Cloud Services szerepkör-példány alapértelmezés szerint elérhető az internethez. Igény szerint adott erőforrásokhoz is engedélyezheti a bejövő hozzáférést. A (VM) és Cloud Services VNet csatlakoztatott szerepkör-példányok alapértelmezés szerint az internethez férnek hozzá. Igény szerint adott erőforrásokhoz is engedélyezheti a bejövő hozzáférést.
 
 A VNet csatlakozó összes erőforrás alapértelmezés szerint kimenő kapcsolattal rendelkezik az internethez. Az erőforrás magánhálózati IP-címe az Azure-infrastruktúra által a nyilvános IP-címhez lefordított forrásoldali hálózati cím (SNAT). Az alapértelmezett kapcsolatot az egyéni Útválasztás és forgalom szűrésével módosíthatja. A kimenő internetkapcsolattal kapcsolatos további tudnivalókért olvassa el a [Kimenő kapcsolatok ismertetése az Azure-ban](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakört.
 
-Ha az internetről bejövő Azure-erőforrásokat szeretne továbbítani, vagy ha SNAT nélkül szeretne kommunikálni az interneten, az erőforrásnak nyilvános IP-címet kell rendelnie. Ha többet szeretne megtudni a nyilvános IP-címekről, olvassa el a [nyilvános IP-címeket](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
+Ha az internetről bejövő Azure-erőforrásokat szeretne továbbítani, vagy ha SNAT nélkül szeretne kommunikálni az interneten, az erőforrásnak nyilvános IP-címet kell rendelnie. Ha többet szeretne megtudni a nyilvános IP-címekről, olvassa el a [nyilvános IP-címeket](../../virtual-network/virtual-network-public-ip-address.md).
 
 **Azure-erőforrás kapcsolata**
 
-Az [Azure-erőforrások](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) , például a Cloud Services és a virtuális gépek is csatlakoztathatók ugyanahhoz a VNet. Az erőforrások privát IP-címekkel csatlakozhatnak egymáshoz, még akkor is, ha különböző alhálózatokon vannak. Az Azure alapértelmezett útválasztást biztosít az alhálózatok, a virtuális hálózatok és a helyszíni hálózatok között, így nem kell konfigurálnia és kezelnie az útvonalakat.
+Az [Azure-erőforrások](../../virtual-network/virtual-networks-overview.md) , például a Cloud Services és a virtuális gépek is csatlakoztathatók ugyanahhoz a VNet. Az erőforrások privát IP-címekkel csatlakozhatnak egymáshoz, még akkor is, ha különböző alhálózatokon vannak. Az Azure alapértelmezett útválasztást biztosít az alhálózatok, a virtuális hálózatok és a helyszíni hálózatok között, így nem kell konfigurálnia és kezelnie az útvonalakat.
 
-Több Azure-erőforrást is összekapcsolhat egy VNet, például Virtual Machines (VM), Cloud Services, App Service környezettel és Virtual Machine Scale Setsokkal. A virtuális gépek egy hálózati adapteren (NIC) keresztül csatlakoznak a VNet lévő alhálózathoz. Ha többet szeretne megtudni a hálózati adapterekről, olvassa el a [hálózati adaptereket](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface).
+Több Azure-erőforrást is összekapcsolhat egy VNet, például Virtual Machines (VM), Cloud Services, App Service környezettel és Virtual Machine Scale Setsokkal. A virtuális gépek egy hálózati adapteren (NIC) keresztül csatlakoznak a VNet lévő alhálózathoz. Ha többet szeretne megtudni a hálózati adapterekről, olvassa el a [hálózati adaptereket](../../virtual-network/virtual-network-network-interface.md).
 
 **VNet-kapcsolat**
 
-A [virtuális hálózatok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) csatlakozhatnak egymáshoz, és lehetővé teszik, hogy bármely VNet kapcsolódó erőforrások bármilyen más VNet bármilyen erőforrással kommunikáljanak.
+A [virtuális hálózatok](../../virtual-network/virtual-networks-overview.md) csatlakozhatnak egymáshoz, és lehetővé teszik, hogy bármely VNet kapcsolódó erőforrások bármilyen más VNet bármilyen erőforrással kommunikáljanak.
 
 Összekapcsolhatja a virtuális hálózatok egymással, és engedélyezheti, hogy a VNet kapcsolódó erőforrások a virtuális hálózatok-on keresztül kommunikáljanak egymással. A virtuális hálózatok egymáshoz való összekapcsolásához a következő lehetőségek egyikét vagy mindkettőt használhatja:
 
-- **Társviszony** Lehetővé teszi, hogy a különböző Azure-virtuális hálózatok kapcsolódó erőforrások ugyanazon az Azure-helyen kommunikáljanak egymással. A sávszélesség és a késés a virtuális hálózatok között ugyanaz, mint ha az erőforrások ugyanahhoz a VNet.To csatlakoznak, további információ a társításról: a [virtuális hálózat](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)társításának olvasása.
+- **Társviszony** Lehetővé teszi, hogy a különböző Azure-virtuális hálózatok kapcsolódó erőforrások ugyanazon az Azure-helyen kommunikáljanak egymással. A sávszélesség és a késés a virtuális hálózatok között ugyanaz, mint ha az erőforrások ugyanahhoz a VNet.To csatlakoznak, további információ a társításról: a [virtuális hálózat](../../virtual-network/virtual-network-peering-overview.md)társításának olvasása.
 
 - **VNet – VNet kapcsolatok:** Lehetővé teszi, hogy a különböző Azure-VNet kapcsolódó erőforrások ugyanazon vagy különböző Azure-helyszíneken legyenek elérhetők. A közvetítéstől eltérően a sávszélesség korlátozott a virtuális hálózatok között, mert az adatforgalomnak egy Azure-VPN Gatewayon kell átesnie. További információ a virtuális hálózatok VNet-VNet kapcsolattal való csatlakoztatásáról. További információért olvassa el a [VNet-VNet közötti kapcsolatok konfigurálása](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal?toc=%2fazure%2fvirtual-network%2ftoc.json) című témakört.
 
 **Helyszíni kapcsolatok**
 
-A virtuális hálózatok a hálózat és az Azure közötti magánhálózati kapcsolaton keresztül, illetve az interneten keresztül helyek közötti VPN-kapcsolaton keresztül csatlakozhatnak [a](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) helyszíni hálózatokhoz.
+A virtuális hálózatok a hálózat és az Azure közötti magánhálózati kapcsolaton keresztül, illetve az interneten keresztül helyek közötti VPN-kapcsolaton keresztül csatlakozhatnak [a](../../virtual-network/virtual-networks-overview.md) helyszíni hálózatokhoz.
 
 A helyszíni hálózatot a következő lehetőségek bármely kombinációja segítségével kapcsolhatja össze egy VNet:
 
@@ -166,15 +166,15 @@ A helyszíni hálózatot a következő lehetőségek bármely kombinációja seg
 
 - **Helyek közötti VPN:** A VPN-eszköz és egy Azure-VPN Gateway között létrejött. Ez a kapcsolattípus minden olyan helyszíni erőforrást engedélyez, amelyet Ön engedélyez a VNet való hozzáféréshez. A kapcsolat egy IPsec/IKE VPN, amely titkosított kommunikációt biztosít az interneten keresztül a helyszíni eszköz és az Azure VPN Gateway között. A helyek közötti kapcsolat késése előre nem látható, mert a forgalom az interneten halad át.
 
-- **Azure ExpressRoute:** A hálózat és az Azure között egy ExpressRoute-partneren keresztül létesítettük. Ez a kapcsolat nem nyilvános. A forgalom nem haladja meg az internetet. A ExpressRoute-kapcsolatok késése előre jelezhető, mert a forgalom nem halad át az interneten. Ha többet szeretne megtudni az összes korábbi kapcsolódási lehetőségről, olvassa el a [kapcsolódási topológia diagramjait](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- **Azure ExpressRoute:** A hálózat és az Azure között egy ExpressRoute-partneren keresztül létesítettük. Ez a kapcsolat nem nyilvános. A forgalom nem haladja meg az internetet. A ExpressRoute-kapcsolatok késése előre jelezhető, mert a forgalom nem halad át az interneten. Ha többet szeretne megtudni az összes korábbi kapcsolódási lehetőségről, olvassa el a [kapcsolódási topológia diagramjait](../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 **Forgalomszűrés**
 
-A virtuális gép és a Cloud Services szerepkör példányai a [hálózati forgalom](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) a forrás IP-címe és portja, a cél IP-címe és portja, valamint a protokoll alapján szűrhető a bejövő és a kimenő.
+A virtuális gép és a Cloud Services szerepkör példányai a [hálózati forgalom](../../virtual-network/virtual-networks-overview.md) a forrás IP-címe és portja, a cél IP-címe és portja, valamint a protokoll alapján szűrhető a bejövő és a kimenő.
 
 A hálózati forgalom alhálózatok közötti szűrése az alábbi lehetőségek egyikével vagy akár mindkettővel elvégezhető:
 
-- **Hálózati biztonsági csoportok (NSG):** Mindegyik NSG több bejövő és kimenő biztonsági szabályt is tartalmazhat, amelyek lehetővé teszik a forgalom szűrését a forrás és a cél IP-címe, a port és a protokoll alapján. NSG alkalmazhat egy virtuális gép minden hálózati adapterén. NSG is alkalmazhat egy hálózati adapter vagy más Azure-erőforrás alhálózatához, amelyhez csatlakozik. Ha többet szeretne megtudni a NSG, olvassa el a [hálózati biztonsági csoportokat](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- **Hálózati biztonsági csoportok (NSG):** Mindegyik NSG több bejövő és kimenő biztonsági szabályt is tartalmazhat, amelyek lehetővé teszik a forgalom szűrését a forrás és a cél IP-címe, a port és a protokoll alapján. NSG alkalmazhat egy virtuális gép minden hálózati adapterén. NSG is alkalmazhat egy hálózati adapter vagy más Azure-erőforrás alhálózatához, amelyhez csatlakozik. Ha többet szeretne megtudni a NSG, olvassa el a [hálózati biztonsági csoportokat](../../virtual-network/virtual-network-vnet-plan-design-arm.md).
 
 - **Virtual Network berendezések:** A virtuális hálózati készülékek olyan virtuális gépek, amelyek hálózati funkciót (például tűzfalat) végrehajtó szoftvert futtatnak. Tekintse meg az elérhető NVA listáját az Azure Marketplace-en. A NVA olyanok is elérhetők, amelyek WAN-optimalizálást és más hálózati adatforgalmi funkciókat biztosítanak. A NVA általában felhasználó által definiált vagy BGP-útvonalakkal használják. NVA is használhat a virtuális hálózatok közötti adatforgalom szűrésére.
 
@@ -184,7 +184,7 @@ Opcionálisan felülbírálhatja az Azure alapértelmezett útválasztását a s
 
 Az Azure útválasztási táblákat hoz létre, amelyek lehetővé teszik, hogy bármely VNet bármely alhálózatához csatlakozó erőforrások alapértelmezés szerint kommunikálhassanak egymással. Az Azure által létrehozott alapértelmezett útvonalak felülírásához valósítsa meg az alábbi lehetőségek egyikét, vagy akár mindkettőt:
 
-- **Felhasználó által megadott útvonalak:** Létrehozhat egyéni útválasztási táblákat olyan útvonalakkal, amelyekkel szabályozható, hogy az egyes alhálózatok hová irányítsák a forgalmat. Ha többet szeretne megtudni a felhasználó által megadott útvonalakról, olvassa el a [felhasználó által megadott útvonalakat](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
+- **Felhasználó által megadott útvonalak:** Létrehozhat egyéni útválasztási táblákat olyan útvonalakkal, amelyekkel szabályozható, hogy az egyes alhálózatok hová irányítsák a forgalmat. Ha többet szeretne megtudni a felhasználó által megadott útvonalakról, olvassa el a [felhasználó által megadott útvonalakat](../../virtual-network/virtual-networks-udr-overview.md).
 
 - **BGP-útvonalak:** Ha a VNet egy Azure VPN Gateway vagy ExpressRoute-kapcsolat használatával csatlakoztatja a helyszíni hálózathoz, a BGP-útvonalakat propagálhatja a virtuális hálózatok.
 
@@ -201,12 +201,12 @@ A helyszíni hálózatot a következő lehetőségek bármely kombinációja seg
 
 #### <a name="internet-connectivity"></a>Internetkapcsolat
 
-Ahogy a neve is sugallja, az internetkapcsolat lehetővé teszi a számítási feladatok internetről való elérését azáltal, hogy a virtuális hálózaton belül élő munkaterhelésekhez különböző nyilvános végpontokat tesz elérhetővé. Ezek a számítási feladatok az internetre irányuló [Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview) használatával vagy egyszerűen egy nyilvános IP-cím kiosztásával tehetők elérhetővé a virtuális géphez. Így bármilyen módon elérhetővé válik az interneten, hogy el tudja érni a virtuális gépet, ha a gazdagép tűzfala, a [hálózati biztonsági csoportok (NSG-EK)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)és a [felhasználó által megadott útvonalak](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) lehetővé teszik, hogy megtörténjen.
+Ahogy a neve is sugallja, az internetkapcsolat lehetővé teszi a számítási feladatok internetről való elérését azáltal, hogy a virtuális hálózaton belül élő munkaterhelésekhez különböző nyilvános végpontokat tesz elérhetővé. Ezek a számítási feladatok az internetre irányuló [Load Balancer](../../load-balancer/load-balancer-overview.md#publicloadbalancer) használatával vagy egyszerűen egy nyilvános IP-cím kiosztásával tehetők elérhetővé a virtuális géphez. Így bármilyen módon elérhetővé válik az interneten, hogy el tudja érni a virtuális gépet, ha a gazdagép tűzfala, a [hálózati biztonsági csoportok (NSG-EK)](../../virtual-network/virtual-network-vnet-plan-design-arm.md)és a [felhasználó által megadott útvonalak](../../virtual-network/virtual-networks-udr-overview.md) lehetővé teszik, hogy megtörténjen.
 
 Ebben a forgatókönyvben egy olyan alkalmazást tehet közzé, amelynek nyilvánosnak kell lennie az internethez, és képesnek kell lennie arra, hogy bárhonnan vagy adott helyekről csatlakozhasson a számítási feladatok konfigurációjától függően.
 
 #### <a name="point-to-site-vpn-or-site-to-site-vpn"></a>Pont – hely típusú VPN vagy helyek közötti VPN
-Ez a kettő ugyanabba a kategóriába tartozik. Mindkettőnek szüksége van a VNet, hogy legyen egy VPN Gateway, és csatlakozni tud hozzá a munkaállomás VPN-ügyfelének használatával a [pont – hely konfiguráció](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal) részeként, vagy beállíthatja a helyszíni [VPN-eszközt](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices) , hogy képes legyen a helyek közötti kapcsolat megszakítására. VPN-. Így a helyszíni eszközök kapcsolódhatnak a VNet lévő erőforrásokhoz.
+Ez a kettő ugyanabba a kategóriába tartozik. Mindkettőnek szüksége van a VNet, hogy legyen egy VPN Gateway, és csatlakozni tud hozzá a munkaállomás VPN-ügyfelének használatával a [pont – hely konfiguráció](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) részeként, vagy beállíthatja a helyszíni [VPN-eszközt](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) , hogy képes legyen a helyek közötti kapcsolat megszakítására. VPN-. Így a helyszíni eszközök kapcsolódhatnak a VNet lévő erőforrásokhoz.
 
 A pont–hely (P2S) konfiguráció lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont–hely kapcsolat egy SSTP (Secure Socket Tunneling Protocol) használatával működő VPN-kapcsolat.
 
@@ -219,7 +219,7 @@ A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet
 ![Site-to-Site VPN](./media/network-security/azure-network-security-fig-6.png)
 
 > [!Note]
-> A pont – hely kapcsolatokkal kapcsolatos további információkért lásd a [pont – hely fa v Q-t](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal).
+> A pont – hely kapcsolatokkal kapcsolatos további információkért lásd a [pont – hely fa v Q-t](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md).
 
 A helyek közötti VPN-átjárókapcsolat használatával kapcsolat hozható létre a helyszíni hálózat és egy Azure-beli virtuális hálózat között egy IPsec/IKE (IKEv1 vagy IKEv2) VPN-alagúton keresztül.
 
@@ -230,7 +230,7 @@ Míg a helyek közötti VPN megbízható, megbízható és kialakított technol�
 Ha a létesítmények közötti kapcsolatok esetében kivételes szintű biztonsági vagy teljesítményre van szüksége, javasoljuk, hogy az Azure ExpressRoute-t használja a létesítmények közötti kapcsolathoz. A ExpressRoute egy dedikált WAN-kapcsolat a helyszíni hely vagy egy Exchange-szolgáltató között. Mivel ez egy távközlési kapcsolat, az adatai nem jutnak el az interneten keresztül, ezért nem teszik elérhetővé az internetes kommunikációban rejlő lehetséges kockázatokat.
 
 > [!Note]
-> További információ a VPN-átjárókkal kapcsolatban: tudnivalók a [VPN Gateway-](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)ről.
+> További információ a VPN-átjárókkal kapcsolatban: tudnivalók a [VPN Gateway-](../../vpn-gateway/vpn-gateway-about-vpngateways.md)ről.
 
 #### <a name="dedicated-wan-link"></a>Dedikált WAN-kapcsolat
 Microsoft Azure ExpressRoute lehetővé teszi a helyszíni hálózatok kibővítését az Azure-ba egy dedikált privát kapcsolaton keresztül, amely egy kapcsolati szolgáltató által könnyíti meg.
@@ -240,9 +240,9 @@ Az ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. Így az Ex
 ![ Dedikált WAN-kapcsolat](./media/network-security/azure-network-security-fig-7.png)
 
 > [!Note]
-> További információ a hálózatnak a Microsofthoz való csatlakoztatásáról a ExpressRoute használatával: [ExpressRoute kapcsolati modellek](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) és [ExpressRoute technikai áttekintés](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
+> További információ a hálózatnak a Microsofthoz való csatlakoztatásáról a ExpressRoute használatával: [ExpressRoute kapcsolati modellek](../../vpn-gateway/vpn-gateway-about-vpngateways.md) és [ExpressRoute technikai áttekintés](../../expressroute/expressroute-introduction.md).
 
-A helyek közötti VPN-beállításokhoz hasonlóan a ExpressRoute is lehetővé teszi, hogy olyan erőforrásokhoz kapcsolódjon, amelyek nem feltétlenül csak egy VNet vannak. Valójában az SKU-tól függően 10 virtuális hálózatok tud csatlakozni. Ha [prémium szintű bővítménye](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)van, a sávszélességtől függően akár 100 virtuális hálózatok-kapcsolat is lehetséges. Ha többet szeretne megtudni arról, hogy az ilyen típusú kapcsolatok hogyan néznek ki, olvassa el a [kapcsolati topológiai diagramok](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakört.
+A helyek közötti VPN-beállításokhoz hasonlóan a ExpressRoute is lehetővé teszi, hogy olyan erőforrásokhoz kapcsolódjon, amelyek nem feltétlenül csak egy VNet vannak. Valójában az SKU-tól függően 10 virtuális hálózatok tud csatlakozni. Ha [prémium szintű bővítménye](../../expressroute/expressroute-faqs.md)van, a sávszélességtől függően akár 100 virtuális hálózatok-kapcsolat is lehetséges. Ha többet szeretne megtudni arról, hogy az ilyen típusú kapcsolatok hogyan néznek ki, olvassa el a [kapcsolati topológiai diagramok](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakört.
 
 ### <a name="security-controls"></a>Biztonsági vezérlők
 Az Azure Virtual Network biztosít egy biztonságos, logikai hálózatot, amely más virtuális hálózatoktól el van különítve, és számos, a helyszíni hálózatokon használt biztonsági vezérlőt támogat. Az ügyfelek saját struktúrát hozhatnak létre a következő használatával: alhálózatok – saját magánhálózati IP-címtartományt használnak, útválasztási táblákat, hálózati biztonsági csoportokat, hozzáférés-vezérlési listákat (ACL-eket), átjárókat és virtuális berendezéseket használhatnak a Felhőbeli számítási feladatok futtatásához.
@@ -309,11 +309,11 @@ A kommunikáció ilyen típusú áramlása azért lehetséges, mert az Azure ren
 
 -   Két VNet között történik egy VPN-átjárón keresztül.
 
--   Egy VNet egy másik VNet a VNet-közvetítésen keresztül (a[szolgáltatás láncolása](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)).
+-   Egy VNet egy másik VNet a VNet-közvetítésen keresztül (a[szolgáltatás láncolása](../../virtual-network/virtual-network-peering-overview.md)).
 
 -   Egy VNet és a helyszíni hálózat között történik egy VPN-átjárón keresztül.
 
-Számos vállalat rendelkezik szigorú biztonsági és megfelelőségi követelményekkel, amelyek megkövetelik az összes hálózati csomag helyszíni vizsgálatát az egyes házirendek betartatása érdekében. Az Azure egy kényszerített [bújtatás](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling) nevű mechanizmust biztosít, amely a virtuális gépekről a helyszíni forgalomra irányítja az egyéni útvonal vagy [Border Gateway Protocol (BGP)](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) hirdetmények létrehozásával a ExpressRoute vagy a VPN használatával.
+Számos vállalat rendelkezik szigorú biztonsági és megfelelőségi követelményekkel, amelyek megkövetelik az összes hálózati csomag helyszíni vizsgálatát az egyes házirendek betartatása érdekében. Az Azure egy kényszerített [bújtatás](../../vpn-gateway/vpn-gateway-about-forced-tunneling.md) nevű mechanizmust biztosít, amely a virtuális gépekről a helyszíni forgalomra irányítja az egyéni útvonal vagy [Border Gateway Protocol (BGP)](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) hirdetmények létrehozásával a ExpressRoute vagy a VPN használatával.
 
 Kényszerített bújtatás az Azure-beli virtuális hálózati felhasználó által megadott útvonalak (UDR) keresztül van konfigurálva. Egy alapértelmezett útvonalat az Azure VPN gateway kifejezése egy helyszíni helyre irányítja a forgalmat.
 
@@ -369,7 +369,7 @@ Az Azure hálózati biztonsági berendezések javítják a VNet biztonsági és 
 
 #### <a name="application-gateway"></a>Alkalmazásátjáró
 
-A [Microsoft Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) egy dedikált virtuális berendezés, amely egy alkalmazás-továbbítási vezérlőt (ADC) biztosít szolgáltatásként.
+A [Microsoft Azure Application Gateway](../../application-gateway/overview.md) egy dedikált virtuális berendezés, amely egy alkalmazás-továbbítási vezérlőt (ADC) biztosít szolgáltatásként.
 
  ![Application Gateway](./media/network-security/azure-network-security-fig-11.png)
 
@@ -384,13 +384,13 @@ A Application Gateway lehetővé teszi a webfarm teljesítményének és rendelk
 -   Több webhely üzemeltetése egyetlen Application Gateway
 
 
-A [webalkalmazási tűzfal (WAF)](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) az Application Gateway részeként is elérhető. Ez védelmet nyújt a webes alkalmazásoknak a gyakori webes sebezhetőségek és a biztonsági rések ellen. Application Gateway konfigurálható internetkapcsolattal rendelkező átjáróként, csak belső átjáróként vagy mindkettő kombinációjával.
+A [webalkalmazási tűzfal (WAF)](../../application-gateway/waf-overview.md) az Application Gateway részeként is elérhető. Ez védelmet nyújt a webes alkalmazásoknak a gyakori webes sebezhetőségek és a biztonsági rések ellen. Application Gateway konfigurálható internetkapcsolattal rendelkező átjáróként, csak belső átjáróként vagy mindkettő kombinációjával.
 
 Application Gateway WAF az észlelési vagy megelőzési módban is futtatható. Gyakori használati eset a rendszergazdák számára, hogy észlelési módban fussanak a rosszindulatú minták forgalmának megfigyeléséhez. Ha a rendszer a potenciális biztonsági réseket észleli, a megelőzési mód bekapcsolásával blokkolja a gyanús bejövő forgalmat.
 
  ![Application Gateway](./media/network-security/azure-network-security-fig-12.png)
 
-Emellett a Application Gateway WAF segítségével figyelheti a webalkalmazásokat a támadások ellen olyan valós idejű WAF-napló használatával, amely integrálva van [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) és [Azure Security Center](https://azure.microsoft.com/services/security-center/) a WAF-riasztások nyomon követésére és a trendek egyszerű figyelésére.
+Emellett a Application Gateway WAF segítségével figyelheti a webalkalmazásokat a támadások ellen olyan valós idejű WAF-napló használatával, amely integrálva van [Azure monitor](../../azure-monitor/overview.md) és [Azure Security Center](https://azure.microsoft.com/services/security-center/) a WAF-riasztások nyomon követésére és a trendek egyszerű figyelésére.
 
 A JSON formátumú napló közvetlenül az ügyfél Storage-fiókjába kerül. A naplók teljes körű vezérléssel rendelkeznek, és a saját adatmegőrzési szabályzatait is alkalmazhatják.
 
@@ -402,7 +402,7 @@ A webalkalmazások egyre gyakrabban célozzák meg a kártékony támadásokat, 
 
  ![Azure webalkalmazási tűzfal (WAF)](./media/network-security/azure-network-security-fig-13.png)
 
-A központosított [webalkalmazási tűzfal (WAF)](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) védelmet nyújt a webes támadások ellen, és egyszerűbbé teszi a biztonsági felügyeletet az alkalmazások módosítása nélkül.
+A központosított [webalkalmazási tűzfal (WAF)](../../application-gateway/waf-overview.md) védelmet nyújt a webes támadások ellen, és egyszerűbbé teszi a biztonsági felügyeletet az alkalmazások módosítása nélkül.
 
 Emellett a WAF-megoldás gyorsabban képes kezelni a biztonsági fenyegetéseket azáltal, hogy kijavítja az ismert biztonsági réseket egy központi helyen, ahelyett hogy az egyes webalkalmazások védelmét biztosítaná. A meglévő alkalmazásátjárókat egyszerűen át lehet alakítani webalkalmazási tűzfallal rendelkező alkalmazásátjárókká.
 
@@ -427,9 +427,9 @@ Magas rendelkezésre állást és hálózati teljesítményt biztosít alkalmaz�
 
 A Azure Load Balancer a következőre konfigurálható:
 
--   A bejövő internetes forgalom terheléselosztása a virtuális gépekre. Ezt a konfigurációt internetre irányuló [terheléselosztásnak](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview)nevezzük.
+-   A bejövő internetes forgalom terheléselosztása a virtuális gépekre. Ezt a konfigurációt internetre irányuló [terheléselosztásnak](../../load-balancer/load-balancer-overview.md#publicloadbalancer)nevezzük.
 
--   A virtuális hálózatban lévő virtuális gépek, a Cloud Services-beli virtuális gépek, illetve a helyszíni számítógépek és a virtuális gépek közötti adatforgalom terheléselosztása egy telephelyi virtuális hálózaton. Ezt a konfigurációt [belső terheléselosztásnak](https://docs.microsoft.com/azure/load-balancer/load-balancer-internal-overview)nevezzük.
+-   A virtuális hálózatban lévő virtuális gépek, a Cloud Services-beli virtuális gépek, illetve a helyszíni számítógépek és a virtuális gépek közötti adatforgalom terheléselosztása egy telephelyi virtuális hálózaton. Ezt a konfigurációt [belső terheléselosztásnak](../../load-balancer/load-balancer-overview.md#internalloadbalancer)nevezzük.
 
 -   Külső forgalom továbbítása egy adott virtuális géphez.
 
@@ -443,15 +443,15 @@ A felhőben lévő összes erőforrásnak nyilvános IP-címmel kell rendelkezni
 
 Microsoft Azure Traffic Manager lehetővé teszi a szolgáltatás-végpontok felhasználói forgalmának a különböző adatközpontokban való elosztásának szabályozását. A Traffic Manager által támogatott szolgáltatási végpontok közé tartoznak az Azure-beli virtuális gépek, a Web Apps és a Cloud Services. A Traffic Manager külső, nem Azure-végpontokkal együtt is használható.
 
-Traffic Manager a tartománynévrendszer (DNS) használatával irányítja az ügyfelek kérelmeit a legmegfelelőbb végpontra a [forgalmi útválasztási módszer](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods) és a végpontok állapota alapján. Traffic Manager számos forgalom-útválasztási módszert kínál a különböző alkalmazási igények kielégítésére, a végpont [](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring)állapotának figyelésére és az automatikus feladatátvételre. A Traffic Manager ellenáll a meghibásodásoknak, beleértve akár egy egész Azure-régió meghibásodását is.
+Traffic Manager a tartománynévrendszer (DNS) használatával irányítja az ügyfelek kérelmeit a legmegfelelőbb végpontra a [forgalmi útválasztási módszer](../../traffic-manager/traffic-manager-routing-methods.md) és a végpontok állapota alapján. Traffic Manager számos forgalom-útválasztási módszert kínál a különböző alkalmazási igények kielégítésére, a végpont [](../../traffic-manager/traffic-manager-monitoring.md)állapotának figyelésére és az automatikus feladatátvételre. A Traffic Manager ellenáll a meghibásodásoknak, beleértve akár egy egész Azure-régió meghibásodását is.
 
 Az Azure Traffic Manager segítségével szabályozhatja az alkalmazás-végpontok forgalmának eloszlását. A végpont egy, az Azure-on kívül vagy belül üzemeltetett, internetkapcsolattal rendelkező szolgáltatás.
 
 Traffic Manager két fő előnyt biztosít:
 
--   A forgalom eloszlása a különböző [forgalom-útválasztási módszerek](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods)egyike szerint.
+-   A forgalom eloszlása a különböző [forgalom-útválasztási módszerek](../../traffic-manager/traffic-manager-routing-methods.md)egyike szerint.
 
--   [A végpont állapotának](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring) és automatikus feladatátvételének folyamatos figyelése, ha a végpontok meghiúsulnak.
+-   [A végpont állapotának](../../traffic-manager/traffic-manager-monitoring.md) és automatikus feladatátvételének folyamatos figyelése, ha a végpontok meghiúsulnak.
 
 Amikor egy ügyfél megpróbál csatlakozni egy szolgáltatáshoz, először fel kell oldania a szolgáltatás DNS-nevét egy IP-címhez. Az ügyfél ezután csatlakozik ehhez az IP-címhez a szolgáltatás eléréséhez. Traffic Manager a DNS használatával irányítja az ügyfeleket bizonyos szolgáltatási végpontokra a forgalom-útválasztási módszer szabályai alapján. Az ügyfelek közvetlenül csatlakoznak a kiválasztott végponthoz. Traffic Manager nem proxy vagy átjáró. Traffic Manager nem látja az ügyfél és a szolgáltatás közötti adatforgalmat.
 
@@ -461,11 +461,11 @@ Az Azure-hálózat ellenőrzése annak biztosítása, hogy az Azure-hálózat me
 
 Az Azure Operational Security a felhasználók számára elérhető szolgáltatásokat, vezérlőket és szolgáltatásokat jelenti a Microsoft Azureban tárolt adatok, alkalmazások és egyéb eszközök védelmére. Az Azure Operational Security egy olyan keretrendszerre épül, amely magában foglalja a Microsoft számára egyedi, a Microsoft biztonságos fejlesztési életciklusát (SDL) és a Microsoft Security Response Center programját , valamint a Cyber biztonsági fenyegetések tájképének részletes ismerete.
 
--   [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+-   [Azure Security Center](../../security-center/security-center-intro.md)
 
--   [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview)
+-   [Azure Monitor](../../azure-monitor/overview.md)
 
--   [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)
+-   [Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md)
 
 -   [Azure Storage-elemzés](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)
 
@@ -498,7 +498,7 @@ A Resource Manager számos előnyt kínál:
 -   Megtekintheti a szervezete számlázását úgy, hogy megtekinti az erőforrások megosztására szolgáló kódelemek egy csoportjának költségeit.
 
 > [!Note]
-> A Resource Manager egy új módot kínál a megoldások telepítésére és kezelésére. Ha a korábbi telepítési modellt használta, és további információkat kíván megtudni a változásokról, tekintse meg [A Resource Manager telepítés és a hagyományos telepítés ismertetése](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) című cikket.
+> A Resource Manager egy új módot kínál a megoldások telepítésére és kezelésére. Ha a korábbi telepítési modellt használta, és további információkat kíván megtudni a változásokról, tekintse meg [A Resource Manager telepítés és a hagyományos telepítés ismertetése](../../azure-resource-manager/resource-manager-deployment-model.md) című cikket.
 
 ## <a name="azure-network-logging-and-monitoring"></a>Azure hálózati naplózás és figyelés
 
@@ -512,7 +512,7 @@ Az Azure számos eszközt kínál a hálózati biztonsági események figyelés�
 
 ### <a name="network-watcher"></a>Hálózati figyelő
 
-[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) – forgatókönyv-alapú figyelés a Network Watcher szolgáltatásaival. Ez a szolgáltatás magában foglalja a csomagok rögzítését, a következő ugrást, az IP-forgalom ellenőrzését, a biztonsági csoport nézetét, a NSG folyamat naplóit. A forgatókönyvek szintjének figyelése lehetővé teszi a hálózati erőforrások teljes körű megtekintését az egyes hálózati erőforrások figyelésével szemben.
+[Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) – forgatókönyv-alapú figyelés a Network Watcher szolgáltatásaival. Ez a szolgáltatás magában foglalja a csomagok rögzítését, a következő ugrást, az IP-forgalom ellenőrzését, a biztonsági csoport nézetét, a NSG folyamat naplóit. A forgatókönyvek szintjének figyelése lehetővé teszi a hálózati erőforrások teljes körű megtekintését az egyes hálózati erőforrások figyelésével szemben.
 
  ![Network Watcher](./media/network-security/azure-network-security-fig-15.png)
 
@@ -522,7 +522,7 @@ A Network Watcher jelenleg a következő képességekkel rendelkezik:
 
 #### <a name="topology"></a>Topológia
 
-A [topológia](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview) egy virtuális hálózat hálózati erőforrásainak gráfját adja vissza. A gráf ábrázolja az erőforrások közötti kapcsolatot, amely a végpontok közötti hálózati kapcsolatot jelöli. A portálon a topológia a virtuális hálózat alapján adja vissza az erőforrás-objektumokat. A kapcsolatokat a Network Watcher régión kívüli erőforrások közötti vonalak mutatják, még akkor is, ha az erőforráscsoport nem fog megjelenni. A portál nézetben visszaadott erőforrások a hálózati összetevők egy részét képezik. A hálózati erőforrások teljes listáját a [PowerShell](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-powershell) vagy a [Rest](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-rest)segítségével tekintheti meg.
+A [topológia](../../network-watcher/view-network-topology.md) egy virtuális hálózat hálózati erőforrásainak gráfját adja vissza. A gráf ábrázolja az erőforrások közötti kapcsolatot, amely a végpontok közötti hálózati kapcsolatot jelöli. A portálon a topológia a virtuális hálózat alapján adja vissza az erőforrás-objektumokat. A kapcsolatokat a Network Watcher régión kívüli erőforrások közötti vonalak mutatják, még akkor is, ha az erőforráscsoport nem fog megjelenni. A portál nézetben visszaadott erőforrások a hálózati összetevők egy részét képezik. A hálózati erőforrások teljes listáját a [PowerShell](../../network-watcher/view-network-topology.md) vagy a [Rest](../../network-watcher/view-network-topology.md)segítségével tekintheti meg.
 
 Az erőforrások visszaadásakor a rendszer két kapcsolat között modellezi a kapcsolatot.
 
@@ -532,49 +532,49 @@ Az erőforrások visszaadásakor a rendszer két kapcsolat között modellezi a 
 
 #### <a name="variable-packet-capture"></a>Változó csomagrögzítés
 
-Network Watcher [változó csomagok rögzítése](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview) lehetővé teszi a csomagok rögzítési munkameneteinek létrehozását a virtuális gépekre irányuló és onnan érkező forgalom nyomon követéséhez. A csomagok rögzítése segít a hálózati rendellenességek reaktív és proaktív módon történő diagnosztizálásában. A többi felhasználás magában foglalja a hálózati statisztikák összegyűjtését, a hálózati behatolásokkal kapcsolatos információk megszerzését, az ügyfél és a kiszolgáló közötti kommunikáció hibakeresését.
+Network Watcher [változó csomagok rögzítése](../../network-watcher/network-watcher-packet-capture-overview.md) lehetővé teszi a csomagok rögzítési munkameneteinek létrehozását a virtuális gépekre irányuló és onnan érkező forgalom nyomon követéséhez. A csomagok rögzítése segít a hálózati rendellenességek reaktív és proaktív módon történő diagnosztizálásában. A többi felhasználás magában foglalja a hálózati statisztikák összegyűjtését, a hálózati behatolásokkal kapcsolatos információk megszerzését, az ügyfél és a kiszolgáló közötti kommunikáció hibakeresését.
 
 A csomagok rögzítése olyan virtuálisgép-bővítmény, amely Network Watcheron keresztül távolról elindult. Ez a funkció megkönnyíti a csomagok manuális futtatásának terhét a kívánt virtuális gépen, amely értékes időt takarít meg. A csomagok rögzítése a portál, a PowerShell, a CLI vagy a REST API segítségével indítható el. A csomagok rögzítésének elindításának egyik példája a virtuális gépekkel kapcsolatos riasztások.
 
 #### <a name="ip-flow-verify"></a>IP-folyamat ellenőrzése
 
-Az [IP-folyamatok ellenőrzik](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) , hogy egy csomag engedélyezett-e vagy le van-e tiltva egy virtuális gépről 5 rekordos információ alapján. Ezek az információk irányból, protokollból, helyi IP-ről, távoli IP-ről, helyi portról és távoli portról állnak. Ha a csomagot egy biztonsági csoport megtagadja, a rendszer a csomagot megtagadó szabály nevét adja vissza. Bármilyen forrás vagy cél IP-cím választható, ez a szolgáltatás segít a rendszergazdáknak gyorsan diagnosztizálni a kapcsolati problémákat az internetről, illetve a vagy a helyszíni környezetből.
+Az [IP-folyamatok ellenőrzik](../../network-watcher/network-watcher-ip-flow-verify-overview.md) , hogy egy csomag engedélyezett-e vagy le van-e tiltva egy virtuális gépről 5 rekordos információ alapján. Ezek az információk irányból, protokollból, helyi IP-ről, távoli IP-ről, helyi portról és távoli portról állnak. Ha a csomagot egy biztonsági csoport megtagadja, a rendszer a csomagot megtagadó szabály nevét adja vissza. Bármilyen forrás vagy cél IP-cím választható, ez a szolgáltatás segít a rendszergazdáknak gyorsan diagnosztizálni a kapcsolati problémákat az internetről, illetve a vagy a helyszíni környezetből.
 
 Az IP-folyamatok ellenőrzik a virtuális gép hálózati adapterét. Ezt követően a rendszer ellenőrzi, hogy a forgalmi folyamat a megadott hálózati adapterre vagy onnan érkező beállítások alapján van-e ellenőrizve. Ez a funkció akkor hasznos, ha a hálózati biztonsági csoport egyik szabálya blokkolja a virtuális gépek bejövő vagy kimenő forgalmát.
 
 #### <a name="next-hop"></a>Következő ugrás
 
-Meghatározza az Azure hálózati hálóban továbbított csomagok [következő ugrását](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) , amely lehetővé teszi a helytelenül konfigurált, felhasználó által megadott útvonalak diagnosztizálását. A virtuális gépekről érkező forgalmat a rendszer a hálózati adapterhez társított érvényes útvonalak alapján küldi el a célhelyre. A következő ugrás egy adott virtuális gépről és hálózati adapterről származó csomag következő ugrási típusát és IP-címét kérdezi le. Ez segít megállapítani, hogy a csomag a célhelyre van-e irányítva, vagy a forgalom fekete lyukban van-e.
+Meghatározza az Azure hálózati hálóban továbbított csomagok [következő ugrását](../../network-watcher/network-watcher-next-hop-overview.md) , amely lehetővé teszi a helytelenül konfigurált, felhasználó által megadott útvonalak diagnosztizálását. A virtuális gépekről érkező forgalmat a rendszer a hálózati adapterhez társított érvényes útvonalak alapján küldi el a célhelyre. A következő ugrás egy adott virtuális gépről és hálózati adapterről származó csomag következő ugrási típusát és IP-címét kérdezi le. Ez segít megállapítani, hogy a csomag a célhelyre van-e irányítva, vagy a forgalom fekete lyukban van-e.
 
 A következő ugrás a következő ugráshoz társított útválasztási táblázatot is visszaadja. Amikor egy következő ugrást kérdez le, ha az útvonal felhasználó által definiált útvonalként van definiálva, akkor a rendszer az útvonalat adja vissza. Ellenkező esetben a következő ugrás a "rendszerútvonal" értéket adja vissza.
 
 #### <a name="security-group-view"></a>Biztonságicsoport-nézet
 
-A virtuális gépen alkalmazott hatályos és alkalmazott biztonsági szabályok beolvasása. A hálózati biztonsági csoportok alhálózatok vagy hálózati ADAPTERek szintjén vannak társítva. Ha az alhálózat szintjén van társítva, az az alhálózat összes virtuálisgép-példányára vonatkozik. A hálózati [biztonsági csoport nézet](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) az összes olyan konfigurált NSG és szabályt visszaadja, amely a virtuális gép hálózati adapteréhez és alhálózatának szintjén van társítva, és betekintést nyújt a konfigurációba. Emellett az érvényes biztonsági szabályok a virtuális gépek egyes hálózati adapterei esetében is visszakerülnek. A hálózati biztonsági csoport nézet használatával olyan hálózati biztonsági réseket is felhasználhat, mint a nyitott portok. Azt is ellenőrizheti, hogy a hálózati biztonsági csoport a várt módon működik [-e a konfigurált és a hatályos biztonsági szabályok összehasonlítása](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-auditing-powershell)alapján.
+A virtuális gépen alkalmazott hatályos és alkalmazott biztonsági szabályok beolvasása. A hálózati biztonsági csoportok alhálózatok vagy hálózati ADAPTERek szintjén vannak társítva. Ha az alhálózat szintjén van társítva, az az alhálózat összes virtuálisgép-példányára vonatkozik. A hálózati [biztonsági csoport nézet](../../network-watcher/network-watcher-security-group-view-overview.md) az összes olyan konfigurált NSG és szabályt visszaadja, amely a virtuális gép hálózati adapteréhez és alhálózatának szintjén van társítva, és betekintést nyújt a konfigurációba. Emellett az érvényes biztonsági szabályok a virtuális gépek egyes hálózati adapterei esetében is visszakerülnek. A hálózati biztonsági csoport nézet használatával olyan hálózati biztonsági réseket is felhasználhat, mint a nyitott portok. Azt is ellenőrizheti, hogy a hálózati biztonsági csoport a várt módon működik [-e a konfigurált és a hatályos biztonsági szabályok összehasonlítása](../../network-watcher/network-watcher-nsg-auditing-powershell.md)alapján.
 
 #### <a name="nsg-flow-logging"></a>NSG folyamat naplózása
 
  A hálózati biztonsági csoportok folyamatábrája lehetővé teszi a csoport biztonsági szabályai által engedélyezett vagy megtagadott forgalomhoz kapcsolódó naplók rögzítését. A folyamatot 5 rekordos információ határozza meg – forrás IP-cím, célként megadott IP-cím, forrásport, célport és protokoll.
 
-A [hálózati biztonsági csoport folyamatábrái](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) a Network Watcher szolgáltatása, amely lehetővé teszi, hogy a hálózati biztonsági csoporton keresztül megtekintse a bejövő és kimenő IP-forgalomra vonatkozó információkat.
+A [hálózati biztonsági csoport folyamatábrái](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) a Network Watcher szolgáltatása, amely lehetővé teszi, hogy a hálózati biztonsági csoporton keresztül megtekintse a bejövő és kimenő IP-forgalomra vonatkozó információkat.
 
 #### <a name="virtual-network-gateway-and-connection-troubleshooting"></a>Virtuális hálózati átjáró és a kapcsolatok hibaelhárítása
 
-A Network Watcher számos képességgel rendelkezik, amelyek az Azure hálózati erőforrásainak megismeréséhez kapcsolódnak. Ezen képességek egyike az erőforrás-hibaelhárítás. Az [erőforrás](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest) -hibaelhárítást a PowerShell, a CLI vagy a REST API hívhatja. A híváskor Network Watcher megvizsgálja egy Virtual Network átjáró vagy egy kapcsolat állapotát, és visszaadja az eredményeit.
+A Network Watcher számos képességgel rendelkezik, amelyek az Azure hálózati erőforrásainak megismeréséhez kapcsolódnak. Ezen képességek egyike az erőforrás-hibaelhárítás. Az [erőforrás](../../network-watcher/network-watcher-troubleshoot-manage-rest.md) -hibaelhárítást a PowerShell, a CLI vagy a REST API hívhatja. A híváskor Network Watcher megvizsgálja egy Virtual Network átjáró vagy egy kapcsolat állapotát, és visszaadja az eredményeit.
 
 Ez a szakasz végigvezeti az erőforrás-hibaelhárításhoz jelenleg elérhető különböző felügyeleti feladatokon.
 
--   [Virtual Network átjáró hibáinak megoldása](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest)
+-   [Virtual Network átjáró hibáinak megoldása](../../network-watcher/network-watcher-troubleshoot-manage-rest.md)
 
--   [Kapcsolatok hibáinak megoldása](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest)
+-   [Kapcsolatok hibáinak megoldása](../../network-watcher/network-watcher-troubleshoot-manage-rest.md)
 
 #### <a name="network-subscription-limits"></a>Hálózati előfizetési korlátok
 
-A [hálózati előfizetések korlátai](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) a régióban lévő előfizetésben lévő egyes hálózati erőforrások használatának részleteit tartalmazzák a rendelkezésre álló erőforrások maximális száma ellenében.
+A [hálózati előfizetések korlátai](../../network-watcher/network-watcher-monitoring-overview.md) a régióban lévő előfizetésben lévő egyes hálózati erőforrások használatának részleteit tartalmazzák a rendelkezésre álló erőforrások maximális száma ellenében.
 
 #### <a name="configuring-diagnostics-log"></a>Diagnosztikai napló konfigurálása
 
-A Network Watcher [diagnosztikai naplókat](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) jelenít meg. Ez a nézet a diagnosztikai naplózást támogató összes hálózati erőforrást tartalmazza. Ebből a nézetből kényelmesen és gyorsan engedélyezheti és tilthatja le a hálózati erőforrásokat.
+A Network Watcher [diagnosztikai naplókat](../../network-watcher/network-watcher-monitoring-overview.md) jelenít meg. Ez a nézet a diagnosztikai naplózást támogató összes hálózati erőforrást tartalmazza. Ebből a nézetből kényelmesen és gyorsan engedélyezheti és tilthatja le a hálózati erőforrásokat.
 
 ### <a name="network-resource-level-monitoring"></a>Hálózati erőforrások szintjének figyelése
 
@@ -585,7 +585,7 @@ Az erőforrás szintű figyeléshez a következő funkciók érhetők el:
 A rendszer naplózza a hálózatok konfigurációjának részeként végrehajtott műveleteket. Ezek a naplók elengedhetetlenek a különböző megfelelőségi követelmények kialakításához. Ezek a naplók a Azure Portalban tekinthetők meg, vagy a Microsoft-eszközök, például Power BI vagy külső gyártótól származó eszközök használatával kérhetők le. A naplók a portálon, a PowerShellen, a CLI-n és a REST API-n keresztül érhetők el.
 
 > [!Note]
-> A naplókkal kapcsolatos további információkért lásd: [műveletek naplózása a Resource Managerrel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
+> A naplókkal kapcsolatos további információkért lásd: [műveletek naplózása a Resource Managerrel](../../azure-resource-manager/resource-group-audit.md).
 A naplók az összes hálózati erőforráson végzett műveletekhez érhetők el.
 
 
@@ -594,19 +594,19 @@ A naplók az összes hálózati erőforráson végzett műveletekhez érhetők e
 A metrikák egy adott időszakban mért teljesítmény-és számlálók. A metrikák jelenleg Application Gateway számára érhetők el. A metrikák a küszöbértékeken alapuló riasztások elindítására használhatók. Az Azure Application Gateway alapértelmezés szerint a háttér-készlet összes erőforrásának állapotát figyeli, és automatikusan eltávolítja a készletből a nem megfelelőnek ítélt erőforrásokat. Application Gateway folytatja a nem kifogástalan állapotú példányok figyelését, és visszaadja azokat az egészséges háttér-készlethez, amint elérhetővé válnak, és reagálnak az állapotra. Az Application Gateway az állapot-mintavételt ugyanazzal a porttal küldi el, mint amely a háttérbeli HTTP-beállításokban van meghatározva. Ez a konfiguráció biztosítja, hogy a mintavétel ugyanazt a portot vizsgálja, amelyet az ügyfelek a háttérhez való csatlakozáshoz használnak.
 
 > [!Note]
-> A riasztások létrehozásával kapcsolatos mérőszámok megtekintéséhez tekintse meg [Application Gateway diagnosztikát](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview) .
+> A riasztások létrehozásával kapcsolatos mérőszámok megtekintéséhez tekintse meg [Application Gateway diagnosztikát](../../application-gateway/application-gateway-probe-overview.md) .
 
 #### <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
-Az időszakos és spontán eseményeket a hálózati erőforrások és a bejelentkezett Storage-fiókok, az Event hub vagy a Azure Monitor naplók hozzák létre. Ezek a naplók betekintést nyújtanak egy erőforrás állapotára. Ezek a naplók olyan eszközökön tekinthetők meg, mint a Power BI és a Azure Monitor naplók. A diagnosztikai naplók megtekintésének megismeréséhez keresse fel [Azure monitor naplókat](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics).
+Az időszakos és spontán eseményeket a hálózati erőforrások és a bejelentkezett Storage-fiókok, az Event hub vagy a Azure Monitor naplók hozzák létre. Ezek a naplók betekintést nyújtanak egy erőforrás állapotára. Ezek a naplók olyan eszközökön tekinthetők meg, mint a Power BI és a Azure Monitor naplók. A diagnosztikai naplók megtekintésének megismeréséhez keresse fel [Azure monitor naplókat](../../azure-monitor/insights/azure-networking-analytics.md).
 
-A diagnosztikai naplók a [Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log), a [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log), az útvonalak és a [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)számára érhetők el.
+A diagnosztikai naplók a [Load Balancer](../../load-balancer/load-balancer-monitor-log.md), a [hálózati biztonsági csoportok](../../virtual-network/virtual-network-nsg-manage-log.md), az útvonalak és a [Application Gateway](../../application-gateway/application-gateway-diagnostics.md)számára érhetők el.
 
 A Network Watcher diagnosztikai naplókat jelenít meg. Ez a nézet a diagnosztikai naplózást támogató összes hálózati erőforrást tartalmazza. Ebből a nézetből kényelmesen és gyorsan engedélyezheti és tilthatja le a hálózati erőforrásokat.
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
-A [Azure monitor logs](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) szolgáltatás az Azure-ban, amely figyeli a Felhőbeli és a helyszíni környezeteket a rendelkezésre állásuk és a teljesítményük fenntartása érdekében. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson.
+A [Azure monitor logs](../../log-analytics/log-analytics-queries.md) szolgáltatás az Azure-ban, amely figyeli a Felhőbeli és a helyszíni környezeteket a rendelkezésre állásuk és a teljesítményük fenntartása érdekében. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson.
 
 Azure Monitor naplók a következő megoldásokat kínálja a hálózatok figyeléséhez:
 
@@ -617,7 +617,7 @@ Azure Monitor naplók a következő megoldásokat kínálja a hálózatok figyel
 -   Azure hálózati biztonsági csoport elemzése
 
 #### <a name="network-performance-monitor-npm"></a>Hálózati Teljesítményfigyelő (NPM)
-A [Network Performance monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor) felügyeleti megoldás egy hálózati figyelési megoldás, amely figyeli a hálózatok állapotát, rendelkezésre állását és elérhetőségét.
+A [Network Performance monitor](../../azure-monitor/insights/network-performance-monitor.md) felügyeleti megoldás egy hálózati figyelési megoldás, amely figyeli a hálózatok állapotát, rendelkezésre állását és elérhetőségét.
 
 A következők közötti kapcsolat figyelésére használható:
 
@@ -644,7 +644,7 @@ Az Application Gateway a következő metrikákat támogatja:
 
 #### <a name="azure-network-security-group-analytics-in-azure-monitor-logs"></a>Azure hálózati biztonsági csoport elemzése Azure Monitor naplókban
 
-[Hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)esetén a következő naplók támogatottak:
+[Hálózati biztonsági csoportok](../../virtual-network/virtual-network-nsg-manage-log.md)esetén a következő naplók támogatottak:
 
 - **NetworkSecurityGroupEvent:** Azokat a bejegyzéseket tartalmazza, amelyek NSG-szabályait a rendszer MAC-címen alapuló virtuális gépekre és példányokra alkalmazza. A szabályok állapotát 60 másodpercenként gyűjti a rendszer.
 
@@ -653,7 +653,7 @@ Az Application Gateway a következő metrikákat támogatja:
 ## <a name="next-steps"></a>További lépések
 A biztonságról további információt a részletes biztonsági témakörökben talál:
 
--   [Hálózati biztonsági csoportok naplóinak Azure Monitor (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
+-   [Hálózati biztonsági csoportok naplóinak Azure Monitor (NSG)](../../virtual-network/virtual-network-nsg-manage-log.md)
 
 -   [A Felhőbeli fennakadást okozó hálózatkezelési fejlesztések](https://azure.microsoft.com/blog/networking-innovations-that-drive-the-cloud-disruption/)
 

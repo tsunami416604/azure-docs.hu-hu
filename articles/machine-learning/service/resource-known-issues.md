@@ -9,14 +9,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d1bce7575272b7df185c4e261685d989f49436c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 4e7b3905295e619c5a9500f80b5c43126b919e2f
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716537"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946477"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Ismert problémák és hibaelhárítás az Azure Machine Learning szolgáltatás
 
@@ -71,7 +71,7 @@ A tenser flow automatikus gépi tanulása jelenleg nem támogatja a 1,13-es két
 
 ### <a name="experiment-charts"></a>Kísérleti diagramok
 
-A bináris besorolású diagramok (precíziós visszahívás, ROC, a nyereség görbe stb.) az automatizált ML-kísérletek ismétlései között nem jelennek meg a felhasználói felületen a 4/12 óta. A diagram ábrázolása jelenleg inverz eredményeket mutat, ahol a jobb teljesítményű modellek alacsonyabb eredményekkel jelennek meg. Egy megoldás a vizsgálat alatt áll.
+A bináris besorolási diagramok (a pontosság-visszahívás, a ROC, a nyereség görbéje stb.) az automatizált ML-kísérletek iterációjában nem megfelelően jelennek meg a felhasználói felületen a 4/12 óta. A diagram ábrázolása jelenleg inverz eredményeket mutat, ahol a jobb teljesítményű modellek alacsonyabb eredményekkel jelennek meg. Egy megoldás a vizsgálat alatt áll.
 
 ## <a name="databricks"></a>Databricks
 
@@ -134,6 +134,15 @@ Ha közvetlenül a munkaterületet egy megosztás hivatkozás az SDK-t vagy a po
 
 Egyes esetekben hasznos lehet, ha a diagnosztikai adatok segítség kérése során megadhatja. Ha meg szeretne tekinteni néhány naplót, látogasson el [Azure Portal](https://portal.azure.com) és lépjen a munkaterületre, és válassza ki a munkaterületet **> a kísérlet > > naplók futtatása**
 
+> [!NOTE]
+> Azure Machine Learning a szolgáltatás a betanítás során különböző forrásokból származó információkat naplóz, például AutoML vagy a betanítási feladatot futtató Docker-tárolót. A naplók közül sok nincs dokumentálva. Ha problémákat tapasztal, és felveszi a kapcsolatot a Microsoft ügyfélszolgálatával, előfordulhat, hogy a hibaelhárítás során ezeket a naplókat is használni tudja.
+
+## <a name="activity-logs"></a>Tevékenységnaplók
+
+A Azure Machine Learning munkaterület egyes műveletei nem naplózzák az adatokat a __tevékenység naplójába__. Például egy képzési folyamat elindítása vagy egy modell regisztrálása.
+
+A műveletek némelyike a munkaterület __tevékenységek__ területén jelenik meg, de nem jelzi, hogy ki kezdeményezte a tevékenységet.
+
 ## <a name="resource-quotas"></a>Erőforráskvóták
 
 További információ a [erőforráskvóták](how-to-manage-quotas.md) az Azure Machine Learning használata során találkozhat.
@@ -154,6 +163,6 @@ Ha például megpróbál létrehozni vagy csatolni egy számítási célt egy ol
 
 ## <a name="overloaded-azurefile-storage"></a>Túlterhelt AzureFile-tároló
 
-Ha a "nem sikerült feltölteni a Project-fájlokat a AzureFile munkakönyvtárba, mert a tárterület túl van terhelve" hibaüzenet jelenik meg, alkalmazza a következő megkerülő megoldásokat.
+Ha hibaüzenetet `Unable to upload project files to working directory in AzureFile because the storage is overloaded`kap, alkalmazza a következő megkerülő megoldásokat.
 
 Ha más számítási feladatokhoz (például adatátvitelhez) használ fájlmegosztást, a javasolt a Blobok használata, hogy a fájlmegosztás díjmentesen használható legyen a futtatások elküldéséhez. A számítási feladatok felosztása két különböző munkaterület között is lehetséges.

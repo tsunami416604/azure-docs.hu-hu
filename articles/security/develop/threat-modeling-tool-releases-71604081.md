@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: jegeib
-ms.openlocfilehash: df4eb5c247d4ec2c3da266c64899527c3ebe447d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 6992ac58ebf8976714e5a478dd7b886efab2a4b7
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727990"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934791"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool Update kiadás 7.1.60408.1-4/9/2019
 
@@ -60,7 +60,7 @@ Az eszközön belüli összes támogatási hivatkozás frissítve lett, és [tmt
 
 ## <a name="documentation-and-feedback"></a>Dokumentáció és visszajelzés
 
-- A Threat Modeling Tool dokumentációja a [docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)található, és [az eszköz használatával](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started)kapcsolatos információkat tartalmaz.
+- A Threat Modeling Tool dokumentációja a [docs.microsoft.com](threat-modeling-tool.md)található, és [az eszköz használatával](threat-modeling-tool-getting-started.md)kapcsolatos információkat tartalmaz.
 
 ## <a name="next-steps"></a>További lépések
 

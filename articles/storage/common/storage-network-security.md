@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3a49681c5c5fa081157e1264f3e9f757c3ee0e6c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: dfe27878f018dfbf5f4bdcb52d711c8727c436e0
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516964"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950705"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -357,6 +357,7 @@ Ha engedélyezi a **engedélyezése a Microsoft-szolgáltatások megbízható...
 | Azure Event Hubs         | Microsoft.EventHub         | Az Event Hubs Capture adatok archiválása. [További](/azure/event-hubs/event-hubs-capture-overview).                                                                                                                                                                                                                           |
 | Azure File Sync          | Microsoft.StorageSync      | Lehetővé teszi a helyszíni fájlkiszolgáló átalakítását az Azure-fájlmegosztás gyorsítótárába. Lehetővé teszi a többhelyes szinkronizálást, a gyors katasztrófa-helyreállítást és a Felhőbeli biztonsági mentést. [További információ](../files/storage-sync-files-planning.md)                                                                                                       |
 | Azure HDInsight          | Microsoft.HDInsight        | Az alapértelmezett fájlrendszer kezdeti tartalmának kiépítése egy új HDInsight-fürthöz. [További információk](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/).                                                                                                                                    |
+| Azure Machine Learning Service | Microsoft.MachineLearningServices | Engedélyezett Azure Machine Learning munkaterületek a kísérlet kimenetét, modelljeit és naplóit írják a blob Storage-ba. [További információk](/azure/machine-learning/service/how-to-enable-virtual-network#storage-account-for-your-workspace).                                                               
 | Azure Monitor            | Microsoft.Insights         | Lehetővé teszi, hogy a figyelési adatok biztonságos storage-fiókba írásos [további](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security).                                                                                                                                                                        |
 | Azure-hálózatok         | Microsoft.Network          | Store és a hálózati forgalom naplóinak elemzése. [További információk](/azure/network-watcher/network-watcher-packet-capture-overview).                                                                                                                                                                                                        |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | Vészhelyreállítás konfigurálása az Azure IaaS virtuális gépek replikációjának engedélyezése. Ez azért szükséges, ha a tűzfal engedélyezve van a gyorsítótár tárfiókja vagy a forrás tárfiókban vagy a célként megadott tárfiók használata.  [További információk](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |

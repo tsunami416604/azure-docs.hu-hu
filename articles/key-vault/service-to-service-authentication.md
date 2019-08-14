@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: d34c94ccca47d29afc4f3d83bec58db737be270c
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f6a95f56b7b617b42c1cec9f64aae73b88b813da
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840415"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934339"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés Azure Key Vault .NET használatával
 
@@ -270,21 +270,21 @@ Az Azure CLI használatával állítsa be az alapértelmezett előfizetést, ame
 
 #### <a name="unauthorized-access-access-denied-forbidden-etc-error"></a>Jogosulatlan hozzáférés, hozzáférés megtagadva, tiltott stb. hiba
  
-A használt rendszerbiztonsági tag nem fér hozzá az elérni próbált erőforráshoz. Adja meg a felhasználói fiókját vagy a App Service MSI "közreműködő" hozzáférését a kívánt erőforráshoz attól függően, hogy a mintát a helyi fejlesztési gépen futtatja-e, vagy az Azure-ban telepítette a App Service. Bizonyos erőforrások, például a kulcstartók is rendelkeznek saját [hozzáférési szabályzatokkal](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) , amelyeket a rendszerbiztonsági tag (felhasználók, alkalmazások, csoportok stb.) hozzáférésének biztosítására használ.
+A használt rendszerbiztonsági tag nem fér hozzá az elérni próbált erőforráshoz. Adja meg a felhasználói fiókját vagy a App Service MSI "közreműködő" hozzáférését a kívánt erőforráshoz attól függően, hogy a mintát a helyi fejlesztési gépen futtatja-e, vagy az Azure-ban telepítette a App Service. Bizonyos erőforrások, például a kulcstartók is rendelkeznek saját [hozzáférési szabályzatokkal](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) , amelyeket a rendszerbiztonsági tag (felhasználók, alkalmazások, csoportok stb.) hozzáférésének biztosítására használ.
 
 ### <a name="common-issues-when-deployed-to-azure-app-service"></a>Gyakori problémák a Azure App Service való üzembe helyezéskor
 
 #### <a name="managed-identity-is-not-setup-on-the-app-service"></a>A felügyelt identitás nincs beállítva a App Service
  
-Győződjön meg arról, hogy a MSI_ENDPOINT és a MSI_SECRET környezeti változók léteznek a [kudu hibakereső konzol](https://azure.microsoft.com/en-us/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/)használatával. Ha a környezeti változók nem léteznek, a felügyelt identitás nincs engedélyezve a App Serviceon. 
+Győződjön meg arról, hogy a MSI_ENDPOINT és a MSI_SECRET környezeti változók léteznek a [kudu hibakereső konzol](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/)használatával. Ha a környezeti változók nem léteznek, a felügyelt identitás nincs engedélyezve a App Serviceon. 
  
 ### <a name="common-issues-when-deployed-locally-with-iis"></a>Gyakori problémák az IIS-sel való helyi üzembe helyezéskor
 
 #### <a name="cant-retrieve-tokens-when-debugging-app-in-iis"></a>Nem lehet beolvasni a jogkivonatokat az IIS-alkalmazás hibakeresése során
 
 Alapértelmezés szerint a AppAuth az IIS egy másik felhasználói környezetében fut, ezért nem rendelkezik hozzáféréssel a fejlesztői identitás használatához a hozzáférési jogkivonatok lekéréséhez. Az IIS-t beállíthatja úgy, hogy a felhasználói környezettel fusson a következő két lépéssel:
-- Konfigurálja a webalkalmazás alkalmazáskészletét úgy, hogy az aktuális felhasználói fiókként fusson. További információk [itt](https://docs.microsoft.com/en-us/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities) találhatók
-- Konfigurálja a "setProfileEnvironment" értéket a "true" értékre. További információ [itt](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)található. 
+- Konfigurálja a webalkalmazás alkalmazáskészletét úgy, hogy az aktuális felhasználói fiókként fusson. További információk [itt](https://docs.microsoft.com/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities) találhatók
+- Konfigurálja a "setProfileEnvironment" értéket a "true" értékre. További információ [itt](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)található. 
 
     - Ugrás a%windir%\System32\inetsrv\config\applicationHost.config
     - Keressen rá a "setProfileEnvironment" kifejezésre. Ha "false" (hamis) értékre van állítva, módosítsa az értéket "true" értékre. Ha nincs jelen, adja hozzá attribútumként a processModel elemhez (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment), és állítsa "true" értékre.

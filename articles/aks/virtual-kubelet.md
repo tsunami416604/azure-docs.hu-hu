@@ -1,6 +1,6 @@
 ---
-title: Futtassa a Virtual Kubelet Azure Kubernetes Service (AKS)-fürtben
-description: Útmutató a Linux és Windows-tárolók futtatásához az Azure Container Instances szolgáltatásban az Azure Kubernetes Service (AKS) használatához a Virtual Kubelet.
+title: Virtuális Kubelet futtatása Azure Kubernetes szolgáltatásbeli (ak-beli) fürtben
+description: Ismerje meg, hogyan használhatja a virtuális Kubelet az Azure Kubernetes szolgáltatással (ak) Linux-és Windows-tárolók futtatásához Azure Container Instanceson.
 services: container-service
 author: mlearned
 manager: jeconnoc
@@ -9,40 +9,40 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
 ms.openlocfilehash: f18992be353d2d6cc739412d98ccd97d5e78d4c7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67613861"
 ---
-# <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Virtual Kubelet használata az Azure Kubernetes Service (AKS)
+# <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Virtuális Kubelet használata az Azure Kubernetes szolgáltatással (ak)
 
-Az Azure Container Instances (ACI) adjon meg egy üzemeltetett környezetben futó tárolók az Azure-ban. ACI használatakor nem kell a mögöttes számítási infrastruktúra kezeléséhez, az Azure végzi, a felügyeleti. Az aci Szolgáltatásban futó tárolók, amikor az egyes futó tárolók második díjkötelesek.
+Azure Container Instances (ACI) üzemeltetett környezetet biztosít a tárolók Azure-beli futtatásához. ACI használata esetén nincs szükség a mögöttes számítási infrastruktúra felügyeletére, az Azure kezeli ezt a kezelést. A tárolók ACI-ban való futtatásakor minden futó tároló esetében a második díjat kell fizetnie.
 
-A Virtual Kubelet-szolgáltató Azure Container Instances használatakor Linux- és Windows-tárolókat is ütemezhető egy tárolópéldányt, ha egy standard Kubernetes-csomópontot. Ez a konfiguráció lehetővé teszi a Kubernetes képességeit és a tárolópéldányok felügyeleti érték és a költség előnyeit is kihasználhatja.
+Ha Azure Container Instances virtuális Kubelet-szolgáltatót használ, a Linux-és Windows-tárolókat is ütemezheti egy tároló példányra, mintha az egy szabványos Kubernetes-csomópont legyen. Ez a konfiguráció lehetővé teszi, hogy kihasználhassa a Kubernetes képességeit, valamint a tároló-példányok kezelési értékét és költséghatékonyságát.
 
 > [!NOTE]
-> Az AKS most már rendelkezik beépített támogatást nyújt, a tárolók az aci-ban, nevű ütemezés *virtuális csomópontok*. Ezek a virtuális csomópontok jelenleg támogatja a Linux container Instances szolgáltatásban. Ha Windows tárolópéldányok ütemezése van szüksége, folytathatja a Virtual Kubelet használatával. Ellenkező esetben használjon virtuális csomópontok helyett a manuális Virtual Kubelet feljegyzett ebben a cikkben. A virtuális csomópontok használatával megkezdheti a [Azure CLI-vel][virtual-nodes-cli] or [Azure portal][virtual-nodes-portal].
+> Az AK-ban most már beépített támogatással rendelkezik a tárolók ütemezéséhez a *virtuális csomópontok*nevű ACI-ben. Ezek a virtuális csomópontok jelenleg támogatják a Linux Container instances-t. Ha Windows Container instances-t kell ütemeznie, továbbra is használhatja a virtuális Kubelet. Ellenkező esetben virtuális csomópontokat kell használnia a jelen cikkben ismertetett kézi virtuális Kubelet utasítás helyett. A virtuális csomópontok az [Azure CLI][virtual-nodes-cli] vagy a [Azure Portal][virtual-nodes-portal]használatával indíthatók el.
 >
-> Virtual Kubelet egy kísérleti nyílt forráskódú projekt, és így használható. Közre, fájl problémákat, és tanulmányozza részletesen virtual kubelet, tekintse meg a [Virtual Kubelet GitHub-projekt][vk-github].
+> A virtuális Kubelet egy kísérleti, nyílt forráskódú projekt, amelyet ilyenként kell használni. A következő témakörben talál további információt a virtuális kubelet: [Virtual Kubelet GitHub-projekt][vk-github], amely hozzájárul a problémák megoldásához
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Jelen dokumentum céljából feltételezzük, hogy egy AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg a [Azure Kubernetes Service (AKS) rövid][aks-quick-start].
+Ez a dokumentum feltételezi, hogy rendelkezik egy AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az [Azure Kubernetes szolgáltatás (ak)][aks-quick-start]gyors útmutatóját.
 
-Emellett az Azure CLI verziójának **2.0.65** vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Szüksége lesz az Azure CLI **2.0.65** vagy újabb verziójára is. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-Telepítse a Virtual Kubelet, telepítse és konfigurálja [Helm][aks-helm] az AKS-fürt található. Győződjön meg arról, hogy a tiller valóban [Kubernetes RBAC használatra konfigurált](#for-rbac-enabled-clusters), ha szükséges.
+A virtuális Kubelet telepítéséhez telepítse és konfigurálja a [Helm][aks-helm] -t az AK-fürtben. Szükség esetén győződjön meg arról, hogy a kormányrúd a [KUBERNETES RBAC való használatra van konfigurálva](#for-rbac-enabled-clusters).
 
 ### <a name="register-container-instances-feature-provider"></a>Container Instances szolgáltatás-szolgáltató regisztrálása
 
-Ha korábban nem használta az Azure Container Instance (ACI) szolgáltatás, regisztrálja a szolgáltatót az előfizetés. Az ACI szolgáltató regisztrációs használatával állapotát ellenőrizheti a [az identitásszolgáltató-listája][az-provider-list] parancsot, az alábbi példában látható módon:
+Ha korábban még nem használta az Azure Container instance (ACI) szolgáltatást, regisztrálja a szolgáltatót az előfizetésében. Az ACI-szolgáltató regisztrációjának állapotát az az [Provider List][az-provider-list] parancs használatával tekintheti meg, ahogy az az alábbi példában is látható:
 
 ```azurecli-interactive
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
 ```
 
-A *Microsoft.ContainerInstance* szolgáltató kell jelentse *regisztrált*, ahogy az alábbi példa kimenetében látható:
+A *Microsoft. ContainerInstance* szolgáltatónak regisztráltkéntkell jelentenie, ahogy az alábbi példában is látható:
 
 ```console
 Namespace                    RegistrationState
@@ -50,15 +50,15 @@ Namespace                    RegistrationState
 Microsoft.ContainerInstance  Registered
 ```
 
-Ha a szolgáltató állapota *NotRegistered*, regisztrálja a szolgáltatót használatával a [az provider register][az-provider-register] az alábbi példában látható módon:
+Ha a szolgáltató *NotRegistered*-ként jelenik meg, regisztrálja a szolgáltatót az az [Provider Register][az-provider-register] paranccsal az alábbi példában látható módon:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-### <a name="for-rbac-enabled-clusters"></a>A fürtök RBAC-kompatibilis
+### <a name="for-rbac-enabled-clusters"></a>RBAC-kompatibilis fürtök esetén
 
-Ha az AKS-fürt RBAC-kompatibilis, létre kell hoznia a szolgáltatásfiók és a szerepkör-kötést használja az a tiller valóban. További információkért lásd: [Helm szerepköralapú hozzáférés-vezérlés][helm-rbac]. A szolgáltatásfiók és a szerepkör kötést, hozzon létre egy fájlt *rbac virtuális kubelet.yaml* , és illessze be a következő-definíciót:
+Ha az AK-fürt RBAC-engedélyezve van, létre kell hoznia egy szolgáltatásfiókot és egy szerepkör-kötést a Kormányrúdhoz való használathoz. További információ: [Helm szerepköralapú hozzáférés-vezérlés][helm-rbac]. Szolgáltatásfiók és szerepkör-kötés létrehozásához hozzon létre egy *RBAC-Virtual-kubelet. YAML* nevű fájlt, és illessze be a következő definíciót:
 
 ```yaml
 apiVersion: v1
@@ -81,7 +81,7 @@ subjects:
     namespace: kube-system
 ```
 
-A alkalmazni a szolgáltatásfiók és a kötési [a kubectl a alkalmazni][kubectl-apply] , és adja meg a *rbac virtuális kubelet.yaml* fájljához a következő példában látható módon:
+Alkalmazza a szolgáltatásfiókot és a kötést a [kubectl alkalmazással][kubectl-apply] , és adja meg a *RBAC-Virtual-kubelet. YAML* fájlt a következő példában látható módon:
 
 ```console
 $ kubectl apply -f rbac-virtual-kubelet.yaml
@@ -89,17 +89,17 @@ $ kubectl apply -f rbac-virtual-kubelet.yaml
 clusterrolebinding.rbac.authorization.k8s.io/tiller created
 ```
 
-Helm használata a tiller valóban szolgáltatásfiók konfigurálása:
+Állítsa be a Helm-t a kormányrúd-szolgáltatásfiók használatára:
 
 ```console
 helm init --service-account tiller
 ```
 
-A Virtual Kubelet telepítése be az AKS-fürt most továbbra is.
+Most már továbbra is telepítheti a virtuális Kubelet az AK-fürtbe.
 
 ## <a name="installation"></a>Telepítés
 
-Használja a [az aks install-összekötő][aks-install-connector] paranccsal telepíthető a Virtual Kubelet. A következő példa telepíti a Linux és a Windows összekötő.
+A virtuális Kubelet telepítéséhez használja az az [AK install-Connector][aks-install-connector] parancsot. A következő példa a Linux és a Windows összekötőt is telepíti.
 
 ```azurecli-interactive
 az aks install-connector \
@@ -109,24 +109,24 @@ az aks install-connector \
     --os-type Both
 ```
 
-Ezek az argumentumok érhetők el a [az aks install-összekötő][aks-install-connector] parancsot.
+Ezek az argumentumok az az [AK install-Connector][aks-install-connector] parancshoz érhetők el.
 
-| Argumentum: | Leírás | Szükséges |
+| Argumentum | Leírás | Kötelező |
 |---|---|:---:|
-| `--connector-name` | ACI összekötő nevét.| Igen |
-| `--name` `-n` | A felügyelt fürt nevére. | Igen |
+| `--connector-name` | Az ACI-összekötő neve.| Igen |
+| `--name` `-n` | A felügyelt fürt neve. | Igen |
 | `--resource-group` `-g` | Erőforráscsoport neve. | Igen |
-| `--os-type` | Container instances operációs rendszer típusa. Megengedett értékek: Both, Linux, Windows. alapértelmezett érték: Linux. | Nem |
-| `--aci-resource-group` | Az erőforráscsoport, amelyben az ACI-tárolócsoport létrehozásához. | Nem |
-| `--location` `-l` | Az a hely az ACI-tárolócsoport létrehozásához. | Nem |
-| `--service-principal` | Az Azure API-khoz a hitelesítéshez használt egyszerű szolgáltatást. | Nem |
-| `--client-secret` | A szolgáltatásnévhez társított titkos kulcs. | Nem |
-| `--chart-url` | Egy Helm-diagram, amely telepíti az ACI összekötő URL-címe. | Nem |
-| `--image-tag` | A virtual kubelet tárolórendszerképet képcímke. | Nem |
+| `--os-type` | A Container instances operációs rendszer típusa. Megengedett értékek: Mindkettő, Linux, Windows. Alapértelmezett: Linux. | Nem |
+| `--aci-resource-group` | Az az erőforráscsoport, amelyben létre kell hozni az ACI-tároló csoportokat. | Nem |
+| `--location` `-l` | Az ACI-tároló csoportok létrehozási helye. | Nem |
+| `--service-principal` | Egyszerű szolgáltatásnév az Azure API-khoz való hitelesítéshez. | Nem |
+| `--client-secret` | Az egyszerű szolgáltatáshoz társított titkos kulcs. | Nem |
+| `--chart-url` | Az ACI-összekötőt telepítő Helm-diagram URL-címe. | Nem |
+| `--image-tag` | A virtuális kubelet-tároló rendszerképének címkéje | Nem |
 
-## <a name="validate-virtual-kubelet"></a>Virtual Kubelet ellenőrzése
+## <a name="validate-virtual-kubelet"></a>Virtuális Kubelet ellenőrzése
 
-Ellenőrizze, hogy a Virtual Kubelet telepítve van, a használt Kubernetes-csomópontok listájának lekéréséhez a [kubectl get csomópontok][kubectl-get] parancsot:
+Annak ellenőrzéséhez, hogy a virtuális Kubelet telepítve van-e, a Kubernetes-csomópontok listájának visszaadása a [kubectl Get Nodes][kubectl-get] parancs használatával:
 
 ```console
 $ kubectl get nodes
@@ -139,7 +139,7 @@ virtual-kubelet-virtual-kubelet-windows-eastus   Ready    agent   37s   v1.13.1-
 
 ## <a name="run-linux-container"></a>Linux-tároló futtatása
 
-Hozzon létre egy fájlt `virtual-kubelet-linux.yaml` másolja be a következő yaml-kódot. Jegyezze fel, amely egy [nodeSelector][node-selector] and [toleration][toleration] ütemezni a csomóponton a tárolót használ.
+Hozzon létre egy `virtual-kubelet-linux.yaml` nevű fájlt, és másolja a következő YAML. Vegye figyelembe, hogy a [nodeSelector][node-selector] és a [tolerancia][toleration] a tároló a csomóponton való beosztásához használatos.
 
 ```yaml
 apiVersion: apps/v1
@@ -172,13 +172,13 @@ spec:
         effect: NoSchedule
 ```
 
-Futtassa az alkalmazást a [kubectl létrehozása][kubectl-create] parancsot.
+Futtassa az alkalmazást a [kubectl Create][kubectl-create] paranccsal.
 
 ```console
 kubectl create -f virtual-kubelet-linux.yaml
 ```
 
-Használja a [kubectl get pods][kubectl-get] parancsot a `-o wide` argumentum a kimenetben az ütemezett csomóponttal podok listáját. Figyelje meg, hogy a `aci-helloworld` pod van ütemezve: a `virtual-kubelet-virtual-kubelet-linux` csomópont.
+Használja a [kubectl Get hüvely][kubectl-get] parancsot az `-o wide` argumentummal, amely megjeleníti a hüvelyek listáját az ütemezett csomóponttal. `aci-helloworld` Figyelje`virtual-kubelet-virtual-kubelet-linux` meg, hogy a pod ütemezve van a csomóponton.
 
 ```console
 $ kubectl get pods -o wide
@@ -189,7 +189,7 @@ aci-helloworld-7b9ffbf946-rx87g   1/1     Running   0          22s     52.224.14
 
 ## <a name="run-windows-container"></a>Windows-tárolók futtatása
 
-Hozzon létre egy fájlt `virtual-kubelet-windows.yaml` másolja be a következő yaml-kódot. Jegyezze fel, amely egy [nodeSelector][node-selector] and [toleration][toleration] ütemezni a csomóponton a tárolót használ.
+Hozzon létre egy `virtual-kubelet-windows.yaml` nevű fájlt, és másolja a következő YAML. Vegye figyelembe, hogy a [nodeSelector][node-selector] és a [tolerancia][toleration] a tároló a csomóponton való beosztásához használatos.
 
 ```yaml
 apiVersion: apps/v1
@@ -222,13 +222,13 @@ spec:
         effect: NoSchedule
 ```
 
-Futtassa az alkalmazást a [kubectl létrehozása][kubectl-create] parancsot.
+Futtassa az alkalmazást a [kubectl Create][kubectl-create] paranccsal.
 
 ```console
 kubectl create -f virtual-kubelet-windows.yaml
 ```
 
-Használja a [kubectl get pods][kubectl-get] parancsot a `-o wide` argumentum a kimenetben az ütemezett csomóponttal podok listáját. Figyelje meg, hogy a `nanoserver-iis` pod van ütemezve: a `virtual-kubelet-virtual-kubelet-windows` csomópont.
+Használja a [kubectl Get hüvely][kubectl-get] parancsot az `-o wide` argumentummal, amely megjeleníti a hüvelyek listáját az ütemezett csomóponttal. `nanoserver-iis` Figyelje`virtual-kubelet-virtual-kubelet-windows` meg, hogy a pod ütemezve van a csomóponton.
 
 ```console
 $ kubectl get pods -o wide
@@ -237,9 +237,9 @@ NAME                              READY   STATUS    RESTARTS   AGE     IP       
 nanoserver-iis-5d999b87d7-6h8s9   1/1     Running   0          47s     52.224.143.39    virtual-kubelet-virtual-kubelet-windows-eastus
 ```
 
-## <a name="remove-virtual-kubelet"></a>Távolítsa el a Virtual Kubelet
+## <a name="remove-virtual-kubelet"></a>Virtuális Kubelet eltávolítása
 
-Használja a [az aks remove-connector][aks-remove-connector] távolítsa el a Virtual Kubelet parancsot. Az argumentum értékeket cserélje le az összekötő AKS-fürt és az AKS-fürt erőforráscsoportja nevét.
+A virtuális Kubelet eltávolításához használja az az [AK Remove-Connector][aks-remove-connector] parancsot. Cserélje le az argumentum értékeit az összekötő, az AK-fürt és az AK-beli fürterőforrás-csoport nevére.
 
 ```azurecli-interactive
 az aks remove-connector \
@@ -250,13 +250,13 @@ az aks remove-connector \
 ```
 
 > [!NOTE]
-> Ha mindkét operációs rendszer összekötők eltávolítása hibákat észlel, vagy csak a Windows vagy Linux operációs rendszer összekötő eltávolítja, manuálisan megadhatja az operációs rendszer típusa. Adja hozzá a `--os-type` paramétert az előző `az aks remove-connector` parancsot, és adjon meg `Windows` vagy `Linux`.
+> Ha az operációs rendszer összekötőit nem távolítja el, vagy csak a Windows vagy Linux operációs rendszer összekötőjét szeretné eltávolítani, manuálisan is megadhatja az operációs rendszer típusát. Adja hozzá `--os-type` a paramétert az `az aks remove-connector` előző parancshoz, `Windows` és `Linux`adja meg a vagy a parancsot.
 
 ## <a name="next-steps"></a>További lépések
 
-A Virtual Kubelet lehetséges problémák, lásd: a [ismert régi stílusú és megkerülő megoldások][vk-troubleshooting]. To report problems with the Virtual Kubelet, [open a GitHub issue][vk-issues].
+A virtuális Kubelet kapcsolatos lehetséges problémákért tekintse meg az [ismert mókás és megkerülő megoldásokat][vk-troubleshooting]. A virtuális Kubelet kapcsolatos problémák jelentéséhez [Nyisson meg egy GitHub-problémát][vk-issues].
 
-További információ a Virtual Kubelet a [Virtual Kubelet GitHub-projekt][vk-github].
+További információk a virtuális Kubelet a virtuális [Kubelet GitHub][vk-github]-projektben.
 
 <!-- LINKS - internal -->
 [aks-quick-start]: ./kubernetes-walkthrough.md
