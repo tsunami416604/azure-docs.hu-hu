@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4e21fdef5be09148f001ab6f66f87dd270ccf54
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4430e2115e4282ba7bb618184139a845547a06ed
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618268"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967092"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Feladatok delegálása az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -86,7 +86,7 @@ A következő táblázat felsorolja a szerepkörök által végrehajtható felad
 | [Katalógushoz tartozó tulajdonos vagy Access Package Manager hozzáadása](#add-a-catalog-owner-or-an-access-package-manager) |  | :heavy_check_mark: |  |  |
 | [Új hozzáférési csomag létrehozása katalógusban](entitlement-management-access-package-create.md) |  | :heavy_check_mark:  | :heavy_check_mark:  |  |
 | [Erőforrás-szerepkörök kezelése egy hozzáférési csomagban](entitlement-management-access-package-edit.md) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Annak meghatározása, hogy ki igényelhet hozzáférési csomagot](entitlement-management-access-package-edit.md#add-a-new-policy) |  | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Szabályzatok létrehozása és szerkesztése](entitlement-management-access-package-edit.md#add-a-new-policy) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Felhasználó közvetlen kiosztása egy hozzáférési csomaghoz](entitlement-management-access-package-edit.md#directly-assign-a-user) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Hozzáférési csomaghoz hozzárendelt hozzárendelés megtekintése](entitlement-management-access-package-edit.md#view-who-has-an-assignment) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Hozzáférési csomag kéréseinek megtekintése](entitlement-management-access-package-edit.md#view-requests) |  | :heavy_check_mark: | :heavy_check_mark: |  |
@@ -100,7 +100,7 @@ A következő táblázat felsorolja a szerepkörök által végrehajtható felad
 
 A globális rendszergazdák hozzáadhatnak vagy eltávolíthatnak bármely csoportot (felhőalapú biztonsági csoportokat vagy felhőben létrehozott Office 365-csoportokat), alkalmazást vagy SharePoint Online-webhelyeket katalógusban. A felhasználó rendszergazdája hozzáadhat vagy eltávolíthat bármely csoportot vagy alkalmazást egy katalógusban.
 
-Olyan felhasználók esetében, akik nem globális rendszergazda vagy felhasználói rendszergazda, csoportok, alkalmazások vagy SharePoint Online-helyek katalógusba való felvételéhez a felhasználónak rendelkeznie *kell a szükséges* Azure ad-címtárbeli szerepkörrel és a katalógus tulajdonosi jogosultsági kezelési szerepkörével. A következő táblázat felsorolja azokat a szerepkör-kombinációkat, amelyek szükségesek az erőforrások katalógushoz való hozzáadásához. Az erőforrások katalógusból való eltávolításához ugyanazokat a szerepköröket kell megadnia.
+Olyan felhasználók esetében, akik nem globális rendszergazda vagy felhasználói rendszergazda, csoportok, alkalmazások vagy SharePoint Online-helyek katalógusba való felvételéhez a felhasználónak rendelkeznie kell a szükséges Azure ad-címtárbeli szerepkörrel és a katalógus tulajdonosi jogosultsági kezelési szerepkörével. A következő táblázat felsorolja azokat a szerepkör-kombinációkat, amelyek szükségesek az erőforrások katalógushoz való hozzáadásához. Az erőforrások katalógusból való eltávolításához ugyanazokat a szerepköröket kell megadnia.
 
 | Azure AD-címtárbeli szerepkör | Jogosultsági felügyeleti szerepkör | Hozzáadhat biztonsági csoportot | Office 365-csoportot adhat hozzá | Hozzáadhat alkalmazást | Hozzáadhat SharePoint Online-webhelyet |
 | --- | :---: | :---: | :---: | :---: | :---: |

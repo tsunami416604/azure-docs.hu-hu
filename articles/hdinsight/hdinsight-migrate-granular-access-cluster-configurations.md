@@ -6,13 +6,13 @@ ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 797caae3caaca14c10481cb58654c45b4bed55ae
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 08/09/2019
+ms.openlocfilehash: 1e5eb1e363ac9e282a72a9c1430c3f80c825bb91
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884320"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945081"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
 
@@ -20,8 +20,9 @@ Néhány fontos módosítást vezetünk be, hogy a bizalmas adatok beszerzése �
 
 ## <a name="what-is-changing"></a>Mi változik?
 
-Korábban a titkos kulcsokat a HDInsight API-n keresztül lehet megszerezni a tulajdonos, közreműködő vagy olvasó [RBAC szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)rendelkező felhasználók számára, mivel azok mindenki számára elérhetővé válnak `*/read` az engedéllyel.
-A `Microsoft.HDInsight/clusters/configurations/*` jövőben a titkos kulcsokhoz való hozzáféréshez engedély szükséges, ami azt jelenti, hogy a felhasználók már nem férhetnek hozzá az olvasó szerepkörrel rendelkező felhasználókhoz. A titkos kulcs olyan értékként van meghatározva, amely a felhasználó szerepkörének magasabb szintű hozzáférésének megszerzéséhez használható. Ezek közé tartoznak például a fürt átjárójának HTTP-hitelesítő adatai, a Storage-fiók kulcsainak és az adatbázis hitelesítő adatai.
+Korábban a titkos kulcsokat a HDInsight API-n keresztül lehet megszerezni a tulajdonos, közreműködő vagy olvasó [RBAC szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)rendelkező felhasználók számára, mivel azok mindenki számára elérhetővé válnak `*/read` az engedéllyel. A titkos kulcs olyan értékként van meghatározva, amely a felhasználó szerepkörének magasabb szintű hozzáférésének megszerzéséhez használható. Ezek közé tartoznak például a fürt átjárójának HTTP-hitelesítő adatai, a Storage-fiók kulcsainak és az adatbázis hitelesítő adatai.
+
+A `Microsoft.HDInsight/clusters/configurations/action` jövőben a titkos kulcsokhoz való hozzáféréshez engedély szükséges, ami azt jelenti, hogy a felhasználók már nem férhetnek hozzá az olvasó szerepkörrel rendelkező felhasználókhoz. Az ezzel az engedéllyel rendelkező szerepkörök a közreműködők, a tulajdonosok és az új HDInsight-fürt szerepkör (továbbiak az alább láthatók).
 
 Egy új [HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) -fürtszolgáltatási szerepkört is bevezetünk, amely lehetővé teszi a titkok beolvasását anélkül, hogy a közreműködő vagy a tulajdonos rendszergazdai engedélyeit kellene megadnia. Összefoglalás:
 
@@ -128,7 +129,7 @@ A Pythonhoz készült HDInsight SDK-hoz tartozó [1.0.0](https://pypi.org/projec
 
 ### <a name="sdk-for-java"></a>Javához készült SDK
 
-Frissítse a Java-hoz készült HDInsight SDK-val kapcsolatos [1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/) vagy újabb verzióra. Ha a változások által érintett módszert használ, minimális kód-módosításokra lehet szükség:
+Frissítse a Java-hoz készült HDInsight SDK-val kapcsolatos [1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) vagy újabb verzióra. Ha a változások által érintett módszert használ, minimális kód-módosításokra lehet szükség:
 
 - [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get)a **többé nem ad vissza bizalmas paramétereket** , például a tárolási kulcsokat (Core-site) vagy a http hitelesítő adatokat (Gateway).
     - Az összes konfiguráció beolvasásához, beleértve a bizalmas [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable) paramétereket is, használja a jövőt.  Vegye figyelembe, hogy az "olvasó" szerepkörrel rendelkező felhasználók nem fogják tudni használni ezt a metódust. Ez lehetővé teszi, hogy részletesen szabályozható legyen, hogy mely felhasználók férhetnek hozzá a fürt bizalmas adataihoz. 

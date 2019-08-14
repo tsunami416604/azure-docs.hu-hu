@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 4df024f9ff37121df4d9be51ae1fa540028ddd3d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 83b4f2fce3dbae2168627194a45e62a2d4479936
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727428"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934747"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Az Azure adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárásai
 Ez a cikk az adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárásokat ismerteti.
@@ -97,7 +97,7 @@ Azok a szervezetek, amelyek nem kényszerítik az adattitkosítást, jobban ki v
 
 Az adattovábbítási adatok védelmének fontos részét kell képeznie az adatvédelmi stratégiának. Mivel az adatok több helyről térnek vissza és oda, általában azt javasoljuk, hogy mindig SSL/TLS protokollt használjon az adatok különböző helyszíneken való cseréjéhez. Bizonyos esetekben érdemes lehet elkülöníteni a teljes kommunikációs csatornát a helyszíni és a felhőalapú infrastruktúrák között egy VPN használatával.
 
-A helyszíni infrastruktúra és az Azure közötti adatátvitelhez érdemes megfontolnia a megfelelő védelmet, például a HTTPS-t vagy a VPN-t. Amikor titkosított forgalmat küld egy Azure-beli virtuális hálózat és egy helyszíni hely között a nyilvános interneten keresztül, használja az [Azure VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/)-t.
+A helyszíni infrastruktúra és az Azure közötti adatátvitelhez érdemes megfontolnia a megfelelő védelmet, például a HTTPS-t vagy a VPN-t. Amikor titkosított forgalmat küld egy Azure-beli virtuális hálózat és egy helyszíni hely között a nyilvános interneten keresztül, használja az [Azure VPN Gateway](../../vpn-gateway/index.yml)-t.
 
 Az alábbiakban az Azure VPN Gateway, az SSL/TLS és a HTTPS használatára vonatkozó ajánlott eljárásokat ismertetjük.
 

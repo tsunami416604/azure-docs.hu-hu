@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 1b2e6e0aa74c06afea09a67dbdf65ca47727b72e
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: c1c7dd0bd017852144139a841ff609dabf0f1a27
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780562"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928057"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Biztonságos alkalmazások fejlesztése az Azure-ban
 Ebben a cikkben a Felhőbeli alkalmazások fejlesztésekor megfontolandó biztonsági tevékenységeket és ellenőrzéseket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) megvalósítási és ellenőrzési szakaszaiban megfontolandó biztonsági kérdések és fogalmak. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások fejlesztéséhez használhat.
@@ -89,7 +89,7 @@ Ez azt jelenti, hogy kevesebb ember fér hozzá a valós adataihoz, ami csökken
 
 A találgatásos és a szótáron alapuló találgatások elleni védelemhez erős jelszóházirend szükséges annak biztosításához, hogy a felhasználók összetett jelszót hozzanak létre (például 12 karakter hosszúságú, alfanumerikus és speciális karaktereket igénylő).
 
-A jelszó-szabályzatok létrehozásához és érvényesítéséhez használhat identitás-keretrendszert. A Azure AD B2C a [beépített szabályzatok](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows#create-a-password-reset-user-flow), az [önkiszolgáló jelszó-visszaállítás](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr)és egyéb szolgáltatások biztosításával segít a jelszavak kezelésében.
+A jelszó-szabályzatok létrehozásához és érvényesítéséhez használhat identitás-keretrendszert. A Azure AD B2C a [beépített szabályzatok](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), az [önkiszolgáló jelszó-visszaállítás](../../active-directory-b2c/active-directory-b2c-reference-sspr.md)és egyéb szolgáltatások biztosításával segít a jelszavak kezelésében.
 
 Az alapértelmezett fiókok elleni támadások elleni védelem érdekében ellenőrizze, hogy az összes kulcs és jelszó cserélhető-e, és hogy az erőforrások telepítése után létrejöttek vagy lecseréltek-e.
 
@@ -99,9 +99,9 @@ Ha az alkalmazásnak automatikusan kell létrehoznia a jelszavakat, ügyeljen ar
 
 Ha az alkalmazás lehetővé [](https://www.owasp.org/index.php/Unrestricted_File_Upload)teszi a fájlfeltöltés használatát, vegye figyelembe a kockázatos tevékenységhez szükséges óvintézkedéseket. A sok támadás első lépéseként egy rosszindulatú kód beszerzése egy támadás alatt álló rendszerbe. A fájlfeltöltés használatával a támadó elvégezheti ezt. A OWASP olyan megoldásokat kínál a fájlok érvényesítéséhez, amelyek biztosítják, hogy a feltöltött fájl biztonságos legyen.
 
-A kártevők elleni védelem segítségével azonosíthatja és eltávolíthatja a vírusokat, kémprogramokat és egyéb kártevő szoftvereket. Telepítheti a [Microsoft antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) -t vagy egy Microsoft-partner Endpoint Protection-megoldását ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)és [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)).
+A kártevők elleni védelem segítségével azonosíthatja és eltávolíthatja a vírusokat, kémprogramokat és egyéb kártevő szoftvereket. Telepítheti a [Microsoft antimalware](../fundamentals/antimalware.md) -t vagy egy Microsoft-partner Endpoint Protection-megoldását ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)és [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)).
 
-A [Microsoft antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) olyan funkciókat tartalmaz, mint a valós idejű védelem, az ütemezett vizsgálat, a kártevők szervizelése, az aláírások frissítése, a motor frissítései, a minták jelentéskészítés és a kizárási események gyűjteménye. Az üzembe helyezéshez és a beépített észlelésekhez (riasztások és incidensek) egyszerűen integrálható a Microsoft antimalware és a partneri megoldások [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) használatával.
+A [Microsoft antimalware](../fundamentals/antimalware.md) olyan funkciókat tartalmaz, mint a valós idejű védelem, az ütemezett vizsgálat, a kártevők szervizelése, az aláírások frissítése, a motor frissítései, a minták jelentéskészítés és a kizárási események gyűjteménye. Az üzembe helyezéshez és a beépített észlelésekhez (riasztások és incidensek) egyszerűen integrálható a Microsoft antimalware és a partneri megoldások [Azure Security Center](../../security-center/security-center-partner-integration.md) használatával.
 
 ### <a name="dont-cache-sensitive-content"></a>Ne gyorsítótárazza a bizalmas tartalmat
 
@@ -117,7 +117,7 @@ Az alkalmazás és a hozzá tartozó könyvtárak vizsgálatával azonosíthatja
 A [sztaniol Security](https://www.tinfoilsecurity.com/) által működtetett sebezhetőségi vizsgálat a Azure app Service Web Apps számára érhető el. A [sztaniol biztonsági vizsgálata app Service révén](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) a fejlesztők és a rendszergazdák gyorsan, integrált és gazdaságos módon tudják feltárni és kezelni a biztonsági réseket, mielőtt egy rosszindulatú színész kihasználja őket.
 
 > [!NOTE]
-> [A sztaniol biztonság az Azure ad-vel](https://docs.microsoft.com/azure/active-directory/saas-apps/tinfoil-security-tutorial)is integrálható. A sztaniol biztonság és az Azure AD integrálásával a következő előnyöket nyújtja:
+> [A sztaniol biztonság az Azure ad-vel](../../active-directory/saas-apps/tinfoil-security-tutorial.md)is integrálható. A sztaniol biztonság és az Azure AD integrálásával a következő előnyöket nyújtja:
 >  - Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a sztaniol biztonsághoz.
 >  - A felhasználók az Azure AD-fiókjaik használatával automatikusan bejelentkezhetnek a sztaniol biztonságba (egyszeri bejelentkezés).
 >  - A fiókokat egyetlen, központi helyen, a Azure Portal kezelheti.
@@ -128,7 +128,7 @@ A dinamikus Application Security Testing (Zsuzsanna) egy olyan folyamat, amely a
 
 A Zsuzsanna eltér a statikus alkalmazások biztonsági tesztelésének (17:00). A 17:00-eszközök elemzik a forráskódot vagy a kód lefordított verzióit, ha a kód nem fut a biztonsági hibák megállapítása érdekében.
 
-Zsuzsanna hajthat végre, lehetőleg egy biztonsági szakember (a penetrációs [teszter](https://docs.microsoft.com/azure/security/fundamentals/pen-testing) vagy a sebezhetőségi felmérés) segítségével. Ha egy biztonsági szakember nem érhető el, a Zsuzsanna saját kezűleg is elvégezheti egy webproxy-olvasóval és néhány betanítással. A Zsuzsanna-szkennert korán csatlakoztatva biztosíthatja, hogy ne vezessen be nyilvánvaló biztonsági problémákat a kódban. A webalkalmazási sebezhetőségi képolvasók listáját a [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) webhelyén tekintheti meg.
+Zsuzsanna hajthat végre, lehetőleg egy biztonsági szakember (a penetrációs [teszter](../fundamentals/pen-testing.md) vagy a sebezhetőségi felmérés) segítségével. Ha egy biztonsági szakember nem érhető el, a Zsuzsanna saját kezűleg is elvégezheti egy webproxy-olvasóval és néhány betanítással. A Zsuzsanna-szkennert korán csatlakoztatva biztosíthatja, hogy ne vezessen be nyilvánvaló biztonsági problémákat a kódban. A webalkalmazási sebezhetőségi képolvasók listáját a [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) webhelyén tekintheti meg.
 
 ### <a name="perform-fuzz-testing"></a>A fuzz-tesztelés végrehajtása
 
@@ -144,7 +144,7 @@ A támadási felületről az alkalmazás vizsgálatával készíthet képet. A M
 
 ### <a name="perform-security-penetration-testing"></a>Biztonsági behatolási teszt végrehajtása
 
-Győződjön meg arról, hogy az alkalmazás biztonságban van, mivel minden más funkciót tesztel. Az előkészítési és a üzembe helyezési folyamat standard részét a [behatolási teszt](https://docs.microsoft.com/azure/security/fundamentals/pen-testing) végzi. Rendszeres biztonsági tesztek és sebezhetőségi vizsgálat ütemezett végrehajtása a telepített alkalmazásokon, valamint a nyitott portok, végpontok és támadások figyelése.
+Győződjön meg arról, hogy az alkalmazás biztonságban van, mivel minden más funkciót tesztel. Az előkészítési és a üzembe helyezési folyamat standard részét a [behatolási teszt](../fundamentals/pen-testing.md) végzi. Rendszeres biztonsági tesztek és sebezhetőségi vizsgálat ütemezett végrehajtása a telepített alkalmazásokon, valamint a nyitott portok, végpontok és támadások figyelése.
 
 ### <a name="run-security-verification-tests"></a>Biztonsági ellenőrzési tesztek futtatása
 

@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 1e14e9819f4b3344d0f0155ac5c15337a45952dc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: c739a6e79cab14ecc8e5a4be23c551d2774cbbd8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828051"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933976"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Az adatáttelepítés Azure Cosmos DB Cassandra API-fiókba a Striim használatával
 
 Az Azure piactéren elérhető Striim-rendszerkép folyamatos, valós idejű adatáthelyezést biztosít az adattárházak és az adatbázisok között az Azure-ba. Az adatok áthelyezésekor elvégezhető a beágyazott denormalizálás, az adatok átalakítása, a valós idejű elemzések és az adatjelentéskészítési forgatókönyvek. Könnyen megkezdheti a Striim, hogy folyamatosan áthelyezze a vállalati adatAzure Cosmos DB Cassandra API. Az Azure egy Piactéri ajánlatot biztosít, amely megkönnyíti a Striim üzembe helyezését és az Azure Cosmos DBba való áttelepítését. 
 
-Ez a cikk bemutatja, hogyan telepíthet Striim egy **Oracle** -adatbázisból egy **Azure Cosmos db Cassnadra API**-fiókba az adatok áttelepítéséhez.
+Ez a cikk bemutatja, hogyan lehet a Striim használatával áttelepíteni az adatok egy **Oracle** -adatbázisból egy **Azure Cosmos db Cassandra API**-fiókba.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

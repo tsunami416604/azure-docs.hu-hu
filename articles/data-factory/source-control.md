@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 91c0ad260c16ac09fd764246d31f99d481f8f147
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: fd8168b5786f669de0c5c2109c9e02b43c62c582
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886831"
+ms.locfileid: "68933656"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Verziókövetés a Azure Data Factory
 
@@ -243,7 +243,7 @@ A Key Vault használata is megkönnyíti a folyamatos integrációt és üzembe 
 
 Ha a közzétételi ág nem szinkronizált a főágra, és a legutóbbi közzététel ellenére elavult erőforrásokat tartalmaz, próbálkozzon a következő lépésekkel:
 
-1. Az aktuális git-adattár eltávolítása/
+1. Az aktuális git-tárház eltávolítása
 1. Konfigurálja újra a git-t ugyanazokkal a beállításokkal, de győződjön meg arról, hogy a **meglévő Data Factory erőforrások importálása** az adattárba lehetőség van kiválasztva
 1. Az együttműködési ág összes erőforrásának törlése
 1. Lekéréses kérelem létrehozása az együttműködési ág változásainak egyesítéséhez 

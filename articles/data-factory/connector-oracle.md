@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 079a0721e77174215c7256eecbe9bc522256f0b8
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 142c99b2471a9010a00bf9b5d50549c5e84548f1
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881485"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966468"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Adatok másolása az Oracle-ből és a rendszerből a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -33,11 +33,13 @@ Az Oracle-adatbázisok adatait bármely támogatott fogadó adattárba másolhat
 Pontosabban, ez az Oracle-összekötő a következőket támogatja:
 
 - Egy Oracle-adatbázis következő verziói:
-  - Oracle 12c R1 (12,1)
-  - Oracle 11g R1, R2 (11,1, 11,2)
-  - Oracle 10g R1, R2 (10,1, 10,2)
-  - Oracle 9i R1, R2 (9.0.1, 9,2)
-  - Oracle 8i R3 (8.1.7)
+    - Oracle 18c R1 (18,1) és újabb verziók
+    - Oracle 12c R1 (12,1) és újabb verziók
+    - Oracle 11g R1 (11,1) és újabb verziók
+    - Oracle 10g R1 (10,1) és újabb
+    - Oracle 9i R2 (9,2) és újabb
+    - Oracle 8i R3 (8.1.7) és újabb verziók
+    - Oracle Database Cloud Exadata szolgáltatás
 - Adatok másolása alapszintű vagy OID hitelesítés használatával.
 - Párhuzamos másolás Oracle-forrásból. Részletekért tekintse meg az [Oracle párhuzamos másolási](#parallel-copy-from-oracle) szakaszát.
 
@@ -46,7 +48,9 @@ Pontosabban, ez az Oracle-összekötő a következőket támogatja:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem nyilvánosan elérhető Oracle-adatbázisba kívánja másolni az adatait, létre kell hoznia egy [saját](create-self-hosted-integration-runtime.md)üzemeltetésű integrációs modult. Az Integration Runtime egy beépített Oracle-illesztőprogramot biztosít. Ezért nem kell manuálisan telepítenie az illesztőprogramot, amikor a és az Oracle rendszerbe másol adatokból.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)] 
+
+Az Integration Runtime egy beépített Oracle-illesztőprogramot biztosít. Ezért nem kell manuálisan telepítenie az illesztőprogramot, amikor a és az Oracle rendszerbe másol adatokból.
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -62,7 +66,7 @@ Az Oracle társított szolgáltatás a következő tulajdonságokat támogatja:
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot az **Oracle**értékre kell beállítani. | Igen |
 | connectionString | Megadja az Oracle Database-példányhoz való kapcsolódáshoz szükséges adatokat. <br/>A mező megjelölése `SecureString` úgy, hogy biztonságosan tárolja Data Factoryban. A jelszót Azure Key Vaultba is helyezheti, és `password` lekérheti a konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja Azure Key Vault a hitelesítő adatokat](store-credentials-in-key-vault.md) . <br><br>**Támogatott kapcsolattípus**: Az adatbázis azonosításához használhatja az **Oracle SID** vagy az **Oracle szolgáltatás nevét** :<br>– Ha SID-t használ:`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>-Ha a szolgáltatás nevét használja:`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Igen |
-| connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja a saját üzemeltetésű integrációs modult vagy az Azure Integration Runtime (ha az adattár nyilvánosan elérhető). Ha nincs megadva, ez a tulajdonság az alapértelmezett Azure Integration Runtime-t használja. |Nem |
+| connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 >[!TIP]
 >Ha hibaüzenet jelenik meg, "ORA-01025: A UPI paraméter a megengedett tartományon kívül esik, és az Oracle-verziója `WireProtocolMode=1` 8i, adja hozzá a kapcsolódási karakterlánchoz. Ezután próbálkozzon újra.
@@ -191,11 +195,10 @@ Az adatok és az Oracle közötti másoláshoz állítsa az adatkészlet `Oracle
 
 Ez a szakasz az Oracle-forrás és a fogadó által támogatott tulajdonságok listáját tartalmazza. A tevékenységek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját lásd: [folyamatok](concepts-pipelines-activities.md). 
 
-### <a name="oracle-as-a-source-type"></a>Oracle forrás típusa
+### <a name="oracle-as-source"></a>Oracle forrásként
 
-> [!TIP]
->
-> Az Oracle-adatok adatparticionálással való hatékony betöltéséhez tekintse meg az [Oracle párhuzamos másolását](#parallel-copy-from-oracle)ismertető témakört.
+>[!TIP]
+>Az Oracle-adatok adatparticionálással való hatékony betöltéséhez tekintse meg az [Oracle párhuzamos másolását](#parallel-copy-from-oracle)ismertető témakört.
 
 Az Oracle-adatok másolásához állítsa a forrás típusát a másolási tevékenységbe `OracleSource`. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban.
 
@@ -242,7 +245,7 @@ Az Oracle-adatok másolásához állítsa a forrás típusát a másolási tevé
 ]
 ```
 
-### <a name="oracle-as-a-sink-type"></a>Oracle fogadó típusa
+### <a name="oracle-as-sink"></a>Oracle as mosogató
 
 Az Oracle-be történő másoláshoz állítsa a fogadó típusát a másolási tevékenységbe `OracleSink`. A másolási tevékenység fogadója szakaszban a következő tulajdonságok támogatottak.
 
@@ -341,10 +344,10 @@ Amikor a és az Oracle rendszerbe másol adatokból, a következő leképezések
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(csak Oracle 10g és újabb verziók esetén támogatott) |
 | CHAR |Sztring |
-| CLOB |Sztring |
-| DATE |Datetime |
+| CLOB |String |
+| DATE |DateTime |
 | FLOAT |Decimal, String (Ha a pontosság > 28) |
-| EGÉSZ |Decimal, String (Ha a pontosság > 28) |
+| INTEGER |Decimal, String (Ha a pontosság > 28) |
 | LONG |Sztring |
 | LONG RAW |Byte[] |
 | NCHAR |Sztring |
@@ -353,7 +356,7 @@ Amikor a és az Oracle rendszerbe másol adatokból, a következő leképezések
 | NVARCHAR2 |Sztring |
 | RAW |Byte[] |
 | ROWID |Sztring |
-| TIMESTAMP |Datetime |
+| TIMESTAMP |DateTime |
 | TIMESTAMP WITH LOCAL TIME ZONE |Sztring |
 | TIMESTAMP WITH TIME ZONE |Sztring |
 | UNSIGNED INTEGER |Number |

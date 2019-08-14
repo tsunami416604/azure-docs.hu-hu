@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1bb437511ed89de626489516ce5b06664ace6fba
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 51ef55247d3262d8707403ed09cc8643403dda23
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741844"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952973"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management megoldás az Azure-ban
 
@@ -84,6 +84,7 @@ A következő táblázat a támogatott operációs rendszerek listáját tartalm
 
 > [!NOTE]
 > Az Azure-beli virtuálisgép-méretezési csoportok a Update Management használatával kezelhetők. A Update Management a példányokon működik, nem az alapképet. A frissítéseket növekményes módon kell ütemeznie, hogy az összes virtuálisgép-példány egyszerre ne legyen frissítve.
+> VMSS-csomópontok hozzáadásához kövesse a [nem Azure-beli gép onbaord](automation-tutorial-installed-software.md#onboard-a-non-azure-machine)tartozó lépéseket.
 
 ### <a name="unsupported-client-types"></a>Nem támogatott ügyfélalkalmazás típusa
 
@@ -93,6 +94,7 @@ Az alábbi táblázat a nem támogatott operációs rendszerek:
 |---------|---------|
 |Windows-ügyfél     | Ügyféloldali operációs rendszerek (például Windows 7 és Windows 10-es) nem támogatottak.        |
 |A Windows Server 2016 Nano Server     | Nem támogatott.       |
+|Azure Kubernetes szolgáltatási csomópontok | Nem támogatott. Az [Azure Kubernetes Service (ak) által használt Linux-csomópontok biztonsági és kernel-frissítéseinek alkalmazása](../aks/node-updates-kured.md) című részletes javítási folyamat|
 
 ### <a name="client-requirements"></a>Ügyfélre vonatkozó követelmények
 
@@ -359,6 +361,10 @@ A következő címek megadása kifejezetten a Update Management. A címekkel fol
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*.azure-automation.us|
+
+Windows rendszerű gépek esetén a Windows Update által igényelt végpontokra is engedélyeznie kell a forgalmat.  A szükséges endoints frissített listáját a [http/proxy](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)szolgáltatással kapcsolatos problémákban találja. Ha helyi [Windows Update](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)-kiszolgálóval rendelkezik, engedélyeznie kell a forgalmat a [WSUS](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)-kulcsban megadott kiszolgálóra is.
+
+A Red Hat Linux rendszerű gépek esetében tekintse meg a szükséges végpontok számára a [RHUI Content Delivery Servers IP](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers) -címei című témakört. Más Linux-disztribúciók esetében tekintse meg a szolgáltatói dokumentációt.
 
 További információ a hibrid Runbook Worker által igényelt portokról: [hibrid feldolgozói szerepkör portjai](automation-hybrid-runbook-worker.md#hybrid-worker-role).
 

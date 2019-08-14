@@ -2,26 +2,22 @@
 title: Háttérben futó feladatok futtatása webjobs-Azure App Service
 description: Ismerje meg, hogyan futtathat webjobs-feladatokat Azure App Service webalkalmazásokban, API-alkalmazásokban vagy mobil alkalmazásokban a háttérben végzett feladatok futtatásához.
 services: app-service
-documentationcenter: ''
 author: ggailey777
 manager: jeconnoc
 editor: jimbe
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 55d040e96b92f73a632fd415220f9cf135335736
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 66c1b62dc94fc071d3b04fc0d4e89220df74d1f8
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851007"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945801"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Háttérben futó feladatok futtatása webjobs-feladatokkal Azure App Service
 
@@ -165,7 +161,7 @@ when making changes in one don't forget the other two.
    | **Fájlfeltöltés** | ConsoleApp.zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
    | **Típusa** | Triggerrel indított | A [webjobs-típusok](#webjob-types) leírását a cikk korábbi részében találja. |
    | **Eseményindítók** | Ütemezett | Ahhoz, hogy az ütemezés megbízhatóan működjön, engedélyezze az Always On funkciót. Az Always on csak az alapszintű, a standard és a prémium szintű díjszabásban érhető el.|
-   | **CRON kifejezés** | 0 0/20 * * * * | A [cron](#cron-expressions) -kifejezéseket a következő szakasz ismerteti. |
+   | **CRON kifejezés** | 0 0/20 * * * * | A [cron](#ncrontab-expressions) -kifejezéseket a következő szakasz ismerteti. |
 
 4. Kattintson az **OK** gombra.
 

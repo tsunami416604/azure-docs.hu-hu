@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 8aaaa6465b501cee83f4c2d8cb60729282651967
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: e44acfc66a8faf76068af9c31233e89c45ee02f7
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384852"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953168"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
@@ -33,8 +33,8 @@ Az alábbi információk a Azure Cost Management jelenleg támogatott [Microsoft
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | 2014 május<sup>1</sup> |
 | **Nagyvállalati Szerződés (EA)** | Enterprise Dev/Test                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | 2014 május<sup>1</sup> |
 | **Nagyvállalati Szerződés (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | 2014 május<sup>1</sup> |
-| **Microsoft ügyfél-szerződés** | [Microsoft Azure terv](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | – | Mar 2019<sup>3</sup> |
-| **Microsoft ügyfél-szerződés** | [Fejlesztési és tesztelési terv Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | – | Mar 2019<sup>3</sup> |
+| **Microsoft ügyfél-szerződés** | [Microsoft Azure terv](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | – | Március 2019<sup>3</sup> |
+| **Microsoft ügyfél-szerződés** | [Fejlesztési és tesztelési terv Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | – | Március 2019<sup>3</sup> |
 | **Microsoft Developer Network (MSDN)** | [MSDN platformok](https://azure.microsoft.com/offers/ms-azr-0062p) <sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | Október 2., 2018<sup>2</sup> |
 | **Pay-As-You-Go** | [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | Október 2., 2018<sup>2</sup> |
 | **Pay-As-You-Go** | [Utólagos elszámolású fejlesztési/tesztelési funkciók](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | Október 2., 2018<sup>2</sup> |
@@ -53,7 +53,7 @@ _<sup>**1**</sup> az [Azure Enterprise portálon](https://ea.azure.com)az 2014-a
 
 _<sup>**2**</sup> az 2018. október 2. előtt az adatAzure Fiókközpont [](https://account.azure.com/subscriptions)a következő címen tájékozódhat:._
 
-_<sup>**3**</sup> Microsoft-ügyfél-szerződés március 2019-én kezdődött, és ehhez a ponthoz nem tartozik korábbi adatvesztés._
+_<sup>**3**</sup> a Microsoft ügyfél-szerződések 2019 márciusában kezdődtek, és ehhez a ponthoz nem tartozik korábbi adatvesztés._
 
 _<sup>**4**</sup> a kredit-alapú és előre fizetett előfizetések korábbi adatai nem felelnek meg a számlájának. A [korábbi adatértékek nem egyeznek az](#historical-data-might-not-match-invoice) alábbi számlával._
 
@@ -96,7 +96,7 @@ A következő táblázatok a benne foglalt vagy nem Cost Managementban lévő ad
 
 _<sup>**5**</sup> az Azure-szolgáltatások használata a foglalás és az egyeztetett árakon alapul._
 
-_a <sup>**piactéren**</sup> vásárolt vásárlások jelenleg nem érhetők el az utólagos elszámolású, az MSDN és a Visual Studio-ajánlatok esetében._
+_<sup></sup> a piactéren vásárolt vásárlások jelenleg nem érhetők el az utólagos elszámolású, az MSDN és a Visual Studio-ajánlatok esetében._
 
 _<sup>**7**</sup> a foglalások beszerzése jelenleg csak NAGYVÁLLALATI szerződés (EA) fiókok esetében érhető el._
 

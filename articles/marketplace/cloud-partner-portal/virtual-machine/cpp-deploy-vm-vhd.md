@@ -1,35 +1,35 @@
 ---
-title: Virtuális gép üzembe helyezése a VHD-ből az Azure Marketplace-en
-description: Azt ismerteti, hogyan kell regisztrálni a virtuális gép Azure által üzembe helyezett virtuális merevlemezről.
+title: Virtuális gép üzembe helyezése a virtuális merevlemezekről az Azure Marketplace-en
+description: A cikk azt ismerteti, hogyan regisztrálhat egy virtuális gépet egy Azure-ban üzembe helyezett VHD-ről.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 11/30/2018
-ms.author: pabutler
-ms.openlocfilehash: a393620f28d45ec494c4e899f01e7e9a92b3ceba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/08/2019
+ms.author: evansma
+ms.openlocfilehash: 1aa946c813de41423d4fb2ba5b3aa5274db90f39
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938285"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934968"
 ---
-# <a name="deploy-a-vm-from-your-vhds"></a>Virtuális gép üzembe helyezése a VHD-ből
+# <a name="deploy-a-vm-from-your-vhds"></a>Virtuális gép üzembe helyezése a virtuális merevlemezekről
 
-Ez a szakasz azt ismerteti, hogyan helyezhet üzembe egy virtuális gépet (VM) egy Azure által üzembe helyezett virtuális merevlemezről (VHD).  Felsorolja a szükséges eszközöket és a egy felhasználói Virtuálisgép-lemezkép létrehozásához, majd üzembe helyezése az Azure-ban a PowerShell-parancsfájlok használatával.
+Ez a szakasz azt ismerteti, hogyan lehet virtuális gépet (VM) üzembe helyezni egy Azure-központilag telepített virtuális merevlemezről (VHD).  Felsorolja a szükséges eszközöket, valamint azt, hogyan használhatja őket felhasználói virtuálisgép-lemezkép létrehozásához, majd hogyan telepítheti azt az Azure-ba PowerShell-parancsfájlok használatával.
 
-Miután a virtuális merevlemezek (VHD) feltöltése – az általánosított operációs rendszer virtuális Merevlemeze és nulla vagy több lemez VHD-k – az Azure storage-fiók, regisztrálhatja azokat felhasználói Virtuálisgép-lemezképként. Ezután tesztelheti ezt a lemezképet. Az operációs rendszer virtuális Merevlemeze általánosítva van, mert Ön nem helyezheti közvetlenül üzembe a virtuális gép azáltal, hogy a virtuális merevlemez URL-CÍMÉT.
+Miután feltöltötte a virtuális merevlemezeket (VHD-k) – az általánosított operációs rendszer VHD-jét és a nulla vagy annál több adatlemezt a VHD-hez, felhasználói virtuálisgép-lemezképként regisztrálhatja őket. Ezt követően tesztelheti a rendszerképet. Mivel az operációs rendszer VHD-je általánosítva van, a virtuális gép közvetlenül nem helyezhető üzembe a VHD URL-címének megadásával.
 
-Virtuálisgép-rendszerképek kapcsolatos további információkért tekintse meg a következő blogbejegyzésekben:
+A virtuálisgép-lemezképekkel kapcsolatos további tudnivalókért tekintse meg a következő blogbejegyzéseket:
 
-- [Virtuálisgép-lemezkép](https://azure.microsoft.com/blog/vm-image-blog-post/)
-- [VM-lemezkép PowerShell "How To:](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
+- [VM-rendszerkép](https://azure.microsoft.com/blog/vm-image-blog-post/)
+- [Virtuálisgép-rendszerkép PowerShell – útmutató](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisite-install-the-necessary-tools"></a>Előfeltétel: a szükséges eszközök telepítése
 
-Ha még nem tette meg, telepítse az Azure PowerShell-lel és az Azure CLI, az alábbi utasítások szerint:
+Ha még nem tette meg, telepítse a Azure PowerShell és az Azure CLI-t az alábbi utasítások használatával:
 
 - [Az Azure PowerShell telepítése](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 - [Az Azure parancssori felület telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli)
@@ -37,50 +37,50 @@ Ha még nem tette meg, telepítse az Azure PowerShell-lel és az Azure CLI, az a
 
 ## <a name="deployment-steps"></a>A központi telepítés lépései
 
-Az alábbi lépéseket létrehozása és üzembe helyezése felhasználói Virtuálisgép-lemezkép fog használni:
+A felhasználói virtuálisgép-lemezképek létrehozásához és üzembe helyezéséhez a következő lépéseket fogja használni:
 
-1. Hozzon létre a virtuális gép rögzítése és a lemezkép általánosítása vonja maga után felhasználói lemezkép. 
-2. Tanúsítványok létrehozása és a egy új Azure Key vaultban tárolja őket. Egy tanúsítványra szükség a Rendszerfelügyeleti webszolgáltatások biztonságos kapcsolatot a virtuális géphez.  Azure Resource Manager-sablon és a egy Azure PowerShell-szkript-okat. 
-3. Telepítse a virtuális Gépet egy felhasználói Virtuálisgép-lemezkép a megadott sablon és parancsfájl használatával.
+1. Hozza létre a felhasználói virtuálisgép-rendszerképet, amely a rendszerkép rögzítését és általánosítását vonja maga után. 
+2. Hozzon létre tanúsítványokat, és tárolja őket egy új Azure Key Vaultban. A virtuális géphez biztonságos WinRM-kapcsolatok létrehozásához tanúsítvány szükséges.  A rendszer Azure Resource Manager sablont és egy Azure PowerShell parancsfájlt biztosít. 
+3. Telepítse a virtuális gépet egy felhasználói virtuálisgép-lemezképből a megadott sablonnal és parancsfájl használatával.
 
-A virtuális gép üzembe helyezését követően készen áll [igazolja, a Virtuálisgép-lemezkép](./cpp-certify-vm.md).
+A virtuális gép üzembe helyezése után készen áll a virtuálisgép- [lemezkép tanúsítására](./cpp-certify-vm.md).
 
-1. Kattintson a **új** és keressen rá a **sablonalapú telepítés**, majd **szerkesztőben saját sablon készítése**.  <br/>
-   ![Virtuális merevlemez központi telepítési sablont az Azure Portalon hozhat létre](./media/publishvm_021.png)
+1. Kattintson az **új** elemre, és keresse meg a **sablon központi telepítését**, majd válassza **a saját sablon létrehozása a szerkesztőben**lehetőséget.  <br/>
+   ![VHD központi telepítési sablon létrehozása a Azure Portalban](./media/publishvm_021.png)
 
-1. Másolja és illessze be a [JSON-sablon](./cpp-deploy-json-template.md) a szerkesztőben, majd kattintson az **mentése**. <br/>
-   ![Virtuális merevlemez üzembe helyezési sablon mentésére az Azure Portalon](./media/publishvm_022.png)
+1. Másolja és illessze be ezt a [JSON-sablont](./cpp-deploy-json-template.md) a Szerkesztőbe, majd kattintson a **Save (Mentés**) gombra. <br/>
+   ![VHD központi telepítési sablon mentése a Azure Portal](./media/publishvm_022.png)
 
-1. Adja meg a paraméter értékét a megjelenített **egyéni üzembe helyezés** tulajdonságait tartalmazó oldalakon.
+1. Adja meg a paraméterek értékeit az **Egyéni központi telepítési** tulajdonságlapon.
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
    |  **A paraméter**              |   **Leírás**                                                            |
    |  -------------              |   ---------------                                                            |
-   | Felhasználói Tárfiók neve   | Ahol a általánosított virtuális merevlemez tárfiók neve                    |
-   | Felhasználói tároló neve | Tároló neve, ahol az általánosított virtuális merevlemez                          |
-   | DNS Name for Public IP      | Public IP DNS name                                                           |
-   | Rendszergazdai felhasználónév             | Új virtuális gép rendszergazdai fiók felhasználóneve                                  |
-   | Rendszergazdai jelszó              | Új virtuális gép rendszergazdai fiók jelszavát                                  |
-   | Operációs rendszer típusa                     | Virtuális gép operációs rendszer: `Windows` \| `Linux`                                    |
+   | Felhasználói Storage-fiók neve   | A Storage-fiók neve, ahol az általánosított VHD található                    |
+   | Felhasználói tároló tárolójának neve | A tároló neve, ahol az általánosított VHD található                          |
+   | Nyilvános IP-cím DNS-neve      | Nyilvános IP-cím DNS-neve. A DNS-név a virtuális gép, ezt az Azure Portalon kell megadnia az ajánlat üzembe helyezése után.  |
+   | Rendszergazdai felhasználónév             | Rendszergazdai fiók felhasználóneve az új virtuális géphez                                  |
+   | Rendszergazdai jelszó              | Rendszergazdai fiók jelszava az új virtuális géphez                                  |
+   | Operációs rendszer típusa                     | VM operációs rendszer: `Windows` \|`Linux`                                    |
    | Előfizetés azonosítója             | A kiválasztott előfizetés azonosítója                                      |
-   | Location egység                    | Az üzembe helyezés földrajzi helye                                        |
-   | Virtuális gép mérete                     | [Az Azure Virtuálisgép-méret](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), például `Standard_A2` |
+   | Location                    | Az üzemelő példány földrajzi helye                                        |
+   | VM mérete                     | [Azure-beli virtuális gép mérete](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), például:`Standard_A2` |
    | Nyilvános IP-cím neve      | A nyilvános IP-cím neve                                               |
    | Virtuális gép neve                     | Az új virtuális gép neve                                                           |
    | Virtuális hálózat neve        | A virtuális gép által használt virtuális hálózat neve                                   |
-   | Hálózati adapter neve                    | A hálózati kártyát a virtuális hálózaton futó neve               |
-   | VHD URL                     | Hajtsa végre az operációsrendszer-lemez VHD URL-címe                                                     |
+   | Hálózati adapter neve                    | A virtuális hálózatot futtató hálózati kártya neve               |
+   | VHD URL                     | OPERÁCIÓSRENDSZER-lemez virtuális merevlemezének teljes URL-címe                                                     |
    |  |  |
             
-1. Ezeket az értékeket ad meg, miután kattintson **beszerzési**. 
+1. Az értékek megadása után kattintson a **vásárlás**elemre. 
 
-Azure megkezdődik az üzembe helyezés: a megadott felügyelt tartalmazó virtuális Merevlemezt, a megadott tárfiók elérési útja, létrehoz egy új virtuális Gépet.  Követheti a folyamat állapotát, az Azure Portalon kattintson a **virtuális gépek** a portál bal oldalán.  Amikor a virtuális gép létrejött, az állapot változik `Starting` való `Running`. 
+Az Azure megkezdi az üzembe helyezést: egy új virtuális gépet hoz létre a megadott nem felügyelt VHD-vel a megadott Storage-fiók elérési útjában.  A Azure Portal előrehaladását a portál bal oldalán található **Virtual Machines** gombra kattintva követheti nyomon.  A virtuális gép létrehozása után az állapot a-ból `Starting` értékre `Running`változik. 
 
 
-### <a name="deploy-a-vm-from-powershell"></a>Virtuális gép üzembe helyezése a PowerShell
+### <a name="deploy-a-vm-from-powershell"></a>Virtuális gép üzembe helyezése a PowerShellből
 
-Nagy virtuális gép üzembe helyezése az imént létrehozott általánosított Virtuálisgép-rendszerképek, használja a következő parancsmagokat.
+Ha nagy méretű virtuális gépet szeretne üzembe helyezni az imént létrehozott általánosított VM-rendszerképből, használja a következő parancsmagokat.
 
 ``` powershell
     $img = Get-AzureVMImage -ImageName "myVMImage"
@@ -93,5 +93,5 @@ Nagy virtuális gép üzembe helyezése az imént létrehozott általánosított
 
 ## <a name="next-steps"></a>További lépések
 
-A rendszer ezután [felhasználói Virtuálisgép-lemezkép létrehozása](cpp-create-user-image.md) a megoldáshoz.
+Ezután [létre fog hozni egy felhasználói](cpp-create-user-image.md) virtuálisgép-rendszerképet a megoldásához.
 

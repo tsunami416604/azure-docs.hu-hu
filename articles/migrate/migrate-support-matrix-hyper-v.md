@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 105cbf173a9abe1adf0999f63740d47b3da51a29
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
-ms.translationtype: HT
+ms.openlocfilehash: 00f222472a9b41c7f95ae90bdca57f13175b2b5d
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856289"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952124"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>A Hyper-V felmérésének és migrálásának támogatási mátrixa
 
@@ -61,8 +61,8 @@ Földrajzi hely | Azure Migrate-projekteket számos földrajzi régióban is lé
 | **Támogatás**                | **Részletek**               
 | :-------------------       | :------------------- |
 | **Gazdagép üzembe helyezése**       | A Hyper-V-gazdagép önálló vagy fürtben is üzembe helyezhető. |
-| **Engedélyek**           | Rendszergazdai engedélyekkel kell rendelkeznie a Hyper-V-gazdagépen. |
-| **Gazda operációs rendszer** | Windows Server 2016 vagy Windows Server 2012 R2.<br/> A Windows Server 2019 rendszert futtató Hyper-V-gazdagépeken található virtuális gépek nem mérhetők fel. |
+| **Engedélyek**           | Rendszergazdai engedélyekkel kell rendelkeznie a Hyper-V-gazdagépen. <br/> Ha nem szeretne rendszergazdai engedélyeket rendelni, hozzon létre egy helyi vagy tartományi felhasználói fiókot, és adja hozzá a felhasználót a következő csoportokhoz: távfelügyeleti felhasználók, Hyper-V-rendszergazdák és Teljesítményfigyelő felhasználók. |
+| **Gazda operációs rendszer** | Windows Server 2019, Windows Server 2016 vagy Windows Server 2012 R2.<br/> A Windows Server 2012 rendszert futtató Hyper-V-gazdagépeken található virtuális gépek nem mérhetők fel. |
 | **PowerShell távoli eljáráshívás**   | Minden gazdagépen engedélyezve kell lennie. |
 | **Hyper-V replika**       | Ha a Hyper-V replikát használja (vagy több virtuális GÉPET ugyanazzal a virtuálisgép-azonosítóval), és az eredeti és a replikált virtuális gépeket is Azure Migrate használatával észleli, előfordulhat, hogy a Azure Migrate által létrehozott értékelés nem pontos. |
 
@@ -72,13 +72,8 @@ Földrajzi hely | Azure Migrate-projekteket számos földrajzi régióban is lé
 | **Támogatás**                  | **Részletek**               
 | :----------------------------- | :------------------- |
 | **Operációs rendszer** | Az Azure által támogatott összes Windows-és [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) - [alapú](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) operációs rendszer. |
-| **Engedélyek**           | Minden felmérni kívánt Hyper-V virtuális gépen rendszergazdai engedélyekkel kell rendelkeznie. |
 | **Integrációs szolgáltatások**       | Az operációs rendszer adatainak rögzítéséhez a [Hyper-V integrációs szolgáltatásoknak](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) olyan virtuális gépeken kell futniuk, amelyeket Ön értékelni fog. |
-| **UEFI-rendszerindítás**                  | Az UEFI-rendszerindítással rendelkező virtuális gépek migrálása nem támogatott. |
-| **Titkosított lemezek/kötetek**    | A titkosított lemezekkel/kötetekkel rendelkező virtuális gépek migrálása nem támogatott. |
-| **RDM/továbbító lemezek**      | Ha a virtuális gépek RDM vagy továbbító lemezzel rendelkeznek, ezek a lemezek nem replikálódnak az Azure-ba. |
-| **NFS**                        | A virtuális gépeken kötetként csatlakoztatott NFS-kötetek nem lesznek replikálva. |
-| **Céllemez**                | Azure Migrate felmérések csak a felügyelt lemezekkel rendelkező Azure-beli virtuális gépekre való Migrálás javasoltak. |
+
 
 
 ## <a name="assessment-appliance-requirements"></a>Felmérés – készülékre vonatkozó követelmények
@@ -103,8 +98,8 @@ A virtuális gépek felméréséhez az Azure Migrate berendezésnek internetkapc
 **URL-cím** | **Részletek**  
 --- | ---
 *.portal.azure.com | Navigálás a Azure Portal
-*.windows.net | Bejelentkezés az Azure-előfizetésbe
-*.microsoftonline.com | Azure Active Directory-alkalmazások létrehozása a berendezés és a szolgáltatások közötti kommunikációhoz.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Bejelentkezés az Azure-előfizetésbe
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Azure Active Directory-alkalmazások létrehozása a berendezés és a szolgáltatások közötti kommunikációhoz.
 management.azure.com | Azure Active Directory-alkalmazások létrehozása a berendezés és a szolgáltatások közötti kommunikációhoz.
 dc.services.visualstudio.com | Naplózás és figyelés
 *.vault.azure.net | Azure Key Vault titkok kezelése a készülék és a szolgáltatás közötti kommunikáció során.
@@ -119,7 +114,7 @@ A következő táblázat összefoglalja az értékeléshez szükséges portokra 
 
 **Device** | **kapcsolat**
 --- | ---
-**Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával:``` https://<appliance-ip-or-name>:44368 ```<br/> A 443-es porton kimenő kapcsolatok a felderítési és teljesítményi metaadatok küldéséhez Azure Migrate.
+**Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával:``` https://<appliance-ip-or-name>:44368 ```<br/> Kimenő kapcsolatok a 443, 5671 és 5672 portokon a felderítési és teljesítményi metaadatok küldéséhez Azure Migrate.
 **Hyper-V-gazdagép/-fürt** | A WinRM-portok 5985 (HTTP) és 5986 (HTTPS) bejövő kapcsolatai a Hyper-V virtuális gépek konfigurációjának és teljesítményének lekéréséhez CIM (CIM) munkamenet használatával.
 
 ## <a name="migration-hyper-v-host-requirements"></a>Migrálás – a Hyper-V gazdagépre vonatkozó követelmények

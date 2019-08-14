@@ -1,29 +1,29 @@
 ---
-title: TensorFlow-modellek betanítása és regisztrálása
+title: Mély tanulási neurális hálózat betanítása a TensorFlow
 titleSuffix: Azure Machine Learning service
-description: Ez a cikk bemutatja, hogyan végezheti el a TensorFlow-modellek betanítását és regisztrálását Azure Machine Learning szolgáltatás használatával.
+description: Ismerje meg, hogyan futtathat TensorFlow-betanítási szkripteket Azure Machine Learning szolgáltatás használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
-ms.date: 06/10/2019
+ms.date: 08/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a5d281598bc905914b71f40d556cfa0b16a46485
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 41ebca7bd4ea299bda7e2d7a95edced583866527
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847651"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966795"
 ---
-# <a name="train-and-register-tensorflow-models-at-scale-with-azure-machine-learning-service"></a>TensorFlow-modellek betanítása és regisztrálása Azure Machine Learning szolgáltatással
+# <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>TensorFlow mély tanulási modellt készíthet Azure Machine Learning
 
-Ez a cikk bemutatja, hogyan végezheti el a TensorFlow-modellek betanítását és regisztrálását Azure Machine Learning szolgáltatás használatával. A szolgáltatás a népszerű [MNIST](http://yann.lecun.com/exdb/mnist/) -adatkészletet használja a kézzel írt számjegyek besorolására egy, a [TensorFlow Python-kódtár](https://www.tensorflow.org/overview)használatával létrehozott mély neurális hálózat használatával.
+Ebből a cikkből megtudhatja, hogyan futtathatja a [TensorFlow](https://www.tensorflow.org/overview) -betanítási szkripteket Azure Machine learning [TensorFlow kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) -osztályának használatával. Ez a példa egy TensorFlow-modellt vezet be, és regisztrálja a kézzel írt számjegyeket egy mély neurális hálózat (DNN) használatával.
 
-A TensorFlow egy nyílt forráskódú számítási keretrendszer, amelyet gyakran használnak mély neurális hálózatok (DNN-EK) létrehozásához. A Azure Machine Learning szolgáltatással rugalmas Felhőbeli számítási erőforrásokkal gyorsan bővítheti a nyílt forráskódú képzési feladatokat. Nyomon követheti a képzések futtatását, a verziók modelljeit, a modellek üzembe helyezését és még sok mást is.
+Akár TensorFlow-modellt fejleszt ki az alapoktól, akár egy [meglévő modellt](how-to-deploy-existing-model.md) hoz létre a felhőbe, a Azure Machine learning használatával kibővítheti a nyílt forráskódú képzési feladatokat az éles modellek létrehozásához, üzembe helyezéséhez, verziójának és figyeléséhez. .
 
-Függetlenül attól, hogy a TensorFlow-modellt fejleszti az alapoktól, vagy egy [meglévő modellt](how-to-deploy-existing-model.md) hoz létre a felhőben, Azure Machine learning a szolgáltatás segítséget nyújt a termelésre kész modellek létrehozásában.
+További információ a [Deep learning és a Machine learning](concept-deep-learning-vs-machine-learning.md)szolgáltatásról.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,7 +32,7 @@ Futtassa ezt a kódot ezen környezetek bármelyikén:
  - Azure Machine Learning notebook VM – nincs szükség letöltésre vagy telepítésre
 
      - Fejezze be [az oktatóanyagot: Az SDK-val](tutorial-1st-experiment-sdk-setup.md) és a minta adattárral előre betöltött dedikált jegyzetfüzet-kiszolgáló létrehozásához beállíthatja a környezetet és a munkaterületet.
-    - A notebook-kiszolgáló Samples (minták) mappájában keresse meg a befejezett és kibontott jegyzetfüzetet, ehhez a következő könyvtárra navigálva: **útmutató – használat – azureml > képzés – Deep-learning > Train-hiperparaméter-Tune-Deploy-with-tensorflow** Folder. 
+    - A notebook-kiszolgáló minták mély tanulási mappájában keresse meg a befejezett és kibontott jegyzetfüzetet a következő könyvtárra való navigálással: **How-to-use-azureml > Training-with-Deep-learning > Train-hiperparaméter-Tune-Deploy-with-tensorflow** mappa. 
  
  - Saját Jupyter Notebook-kiszolgáló
 
@@ -73,7 +73,7 @@ Hozzon létre egy munkaterület- `config.json` objektumot az [Előfeltételek sz
 ws = Workspace.from_config()
 ```
 
-### <a name="create-an-experiment"></a>Kísérlet létrehozása
+### <a name="create-a-deep-learning-experiment"></a>Mélyreható tanulási kísérlet létrehozása
 
 Hozzon létre egy kísérletet és egy mappát a betanítási szkriptek tárolásához. Ebben a példában hozzon létre egy "TF-mnist" nevű kísérletet.
 
@@ -292,5 +292,9 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 Ebben a cikkben egy TensorFlow-modellt oktatott és regisztrált. Ha meg szeretné tudni, hogyan helyezhet üzembe egy modellt egy GPU-t használó fürtön, folytassa a GPU-modell üzembe helyezési cikkével.
 
-[Üzembe helyezés a GPU](how-to-deploy-inferencing-gpus.md)
--val való használatra a[Tensorboard](how-to-monitor-tensorboard.md) való figyeléshez
+> [!div class="nextstepaction"]
+> [Modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)
+* [Metrikák futtatása a betanítás során nyomon követése](how-to-track-experiments.md)
+* [Hiperparaméterek hangolása](how-to-tune-hyperparameters.md)
+* [A betanított modell üzembe helyezése](how-to-deploy-and-where.md)
+* [Az Azure-ban elosztott Deep learning-képzés hivatkozási architektúrája](/azure/architecture/reference-architectures/ai/training-deep-learning)

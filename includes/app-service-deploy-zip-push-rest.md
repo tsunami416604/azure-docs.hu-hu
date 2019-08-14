@@ -2,30 +2,30 @@
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 11/03/2016
+ms.date: 08/12/2019
 ms.author: cephalin
-ms.openlocfilehash: 7aa0d232cf53eef9bd28c36b66e8fdae22a28db9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4f3236c0a167a2b6f7586c6cb5fea8e30f55a86c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178921"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954080"
 ---
-## <a name="rest"></a>A REST API-kkal ZIP-fájl telepítése 
+## <a name="rest"></a>ZIP-fájl üzembe helyezése REST API-kkal 
 
-Használhatja a [telepítési szolgáltatás REST API-k](https://github.com/projectkudu/kudu/wiki/REST-API) központi telepítése a .zip-fájlt az alkalmazás az Azure-ban. Üzembe helyezéséhez https://<app_name>.scm.azurewebsites.net/api/zipdeploy egy POST kérést küld. A POST-kérés tartalmaznia kell a .zip-fájlt, az üzenet törzsében. Az alkalmazás üzembehelyezési hitelesítő adatai a kérelemben alapszintű HTTP-hitelesítéssel vannak megadva. További információkért lásd: a [.zip leküldéses telepítési útmutató](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file). 
+A [központi telepítési szolgáltatás REST API-jai](https://github.com/projectkudu/kudu/wiki/REST-API) segítségével telepítheti a. zip-fájlt az Azure-beli alkalmazásba. A telepítéséhez küldjön POST-kérést a https://< APP_NAME >. SCM. azurewebsites. NET/API/zipdeploy. A POST kérelemnek tartalmaznia kell a. zip-fájlt az üzenet törzsében. Az alkalmazás üzembehelyezési hitelesítő adatai a kérelemben alapszintű HTTP-hitelesítéssel vannak megadva. További információ: [. zip leküldéses üzembe helyezési útmutató](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file). 
 
-Az ALAPSZINTŰ HTTP-hitelesítést az App Service-üzembehelyezési hitelesítő adatokat kell. Az üzembe helyezési hitelesítő adatok beállítása, olvassa el [beállítása és a felhasználói szintű hitelesítő adatok alaphelyzetbe állítása](../articles/app-service/deploy-configure-credentials.md#userscope).
+Az egyszerű HTTP-hitelesítéshez szükség van a App Service központi telepítési hitelesítő adataira. A központi telepítési hitelesítő adatok beállításával kapcsolatban lásd: [felhasználói szintű hitelesítő adatok beállítása és](../articles/app-service/deploy-configure-credentials.md#userscope)alaphelyzetbe állítása.
 
-### <a name="with-curl"></a>A curl használatával
+### <a name="with-curl"></a>A cURLtal
 
-Az alábbi példában a cURL eszköz üzembe helyezése egy .zip-fájlban. Cserélje le a zárójelben `<username>`, `<password>`, `<zip_file_path>`, és `<app_name>`. Amikor a cURL kéri, írja be a jelszót.
+A következő példa a cURL eszközt használja egy. zip fájl üzembe helyezéséhez. `<username>`Cserélje le a helyőrzőket `<password>` `<zip_file_path>`,, és `<app_name>`. Ha a cURL rákérdez, írja be a jelszót.
 
 ```bash
 curl -X POST -u <deployment_user> --data-binary @"<zip_file_path>" https://<app_name>.scm.azurewebsites.net/api/zipdeploy
 ```
 
-A kérés aktiválása leküldéses telepítését a feltöltött zip-fájlt. Áttekintheti az aktuális és korábbi központi telepítések segítségével a `https://<app_name>.scm.azurewebsites.net/api/deployments` végpont, a következő cURL-példában látható módon. Ezúttal is helyettesítse be `<app_name>` az alkalmazás nevével és `<deployment_user>` , amelynek az üzembehelyezési hitelesítő adatokat.
+Ez a kérelem elindítja a leküldéses telepítést a feltöltött. zip fájlból. A jelenlegi és a korábbi üzemelő példányokat a `https://<app_name>.scm.azurewebsites.net/api/deployments` végpont használatával tekintheti át, ahogy az a következő curl-példában is látható. Ismét cserélje le `<app_name>` az alkalmazást az alkalmazás nevére és `<deployment_user>` a telepítési hitelesítő adatok felhasználónevére.
 
 ```bash
 curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deployments
@@ -33,22 +33,21 @@ curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deploymen
 
 ### <a name="with-powershell"></a>A PowerShell-lel
 
-Az alábbi példában [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) küldeni egy kérelmet, amely tartalmazza a .zip-fájlt. Cserélje le a zárójelben `<deployment_user>`, `<deployment_password>`, `<zip_file_path>`, és `<app_name>`.
+A következő példa a [publish-AzWebapp](/powershell/module/az.websites/publish-azwebapp) feltölti a. zip fájlt. Cserélje le a `<group-name>`helyőrzőket `<app-name>`, és `<zip-file-path>`.
 
 ```powershell
-#PowerShell
-$username = "<deployment_user>"
-$password = "<deployment_password>"
-$filePath = "<zip_file_path>"
-$apiUrl = "https://<app_name>.scm.azurewebsites.net/api/zipdeploy"
-$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
-$userAgent = "powershell/1.0"
-Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -UserAgent $userAgent -Method POST -InFile $filePath -ContentType "multipart/form-data"
+Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <zip-file-path>
 ```
 
-A kérés aktiválása leküldéses telepítését a feltöltött zip-fájlt. Tekintse át a jelenlegi és korábbi központi telepítéseket, futtassa a következő parancsokat. Ezúttal is helyettesítse be a `<app_name>` helyőrző.
+Ez a kérelem elindítja a leküldéses telepítést a feltöltött. zip fájlból. 
+
+Az aktuális és a korábbi központi telepítések áttekintéséhez futtassa a következő parancsokat. Újra cserélje le a `<deployment-user>`, `<deployment-password>`, és `<app-name>` helyőrzőket.
 
 ```bash
-$apiUrl = "https://<app_name>.scm.azurewebsites.net/api/deployments"
+$username = "<deployment-user>"
+$password = "<deployment-password>"
+$apiUrl = "https://<app-name>.scm.azurewebsites.net/api/deployments"
+$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
+$userAgent = "powershell/1.0"
 Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -UserAgent $userAgent -Method GET
 ```

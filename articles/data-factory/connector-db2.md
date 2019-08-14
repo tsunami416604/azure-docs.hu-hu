@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory használatával DB2 adatokat másolni |} A Microsoft Docs
-description: Megtudhatja, hogyan másolhat adatokat a DB2 támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
+title: Adatok másolása DB2-ből Azure Data Factory használatával | Microsoft Docs
+description: Megtudhatja, hogyan másolhatja át az adatait a DB2-ből a támogatott fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,65 +10,67 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 797db8d0dd321676a3fa436a328a9981a3d3ca3b
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 49f86a6a8858fd0ef3085ed571f3348d33f70c8d
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312051"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966582"
 ---
-# <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Adatok másolása DB2 az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
+# <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Adatok másolása a DB2-ből Azure Data Factory használatával
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-onprem-db2-connector.md)
 > * [Aktuális verzió](connector-db2.md)
 
-Ez a cikk ismerteti az Azure Data Factory a másolási tevékenység adatokat másol egy DB2-adatbázis használata. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok DB2-adatbázisból történő másolásához. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-DB2-adatbázisból származó adatok másolhatja bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Az adatok a DB2-adatbázisból bármely támogatott fogadó adattárba másolhatók. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-Pontosabban a DB2-összekötő a következő IBM DB2-platformokat és verziókat az elosztott relációs adatbázis architektúra (DRDA) SQL Access Manager (SQLAM) 9, 10, 11 verzió támogatja:
+Pontosabban, ez a DB2-összekötő a következő IBM DB2 platformokat és verziókat támogatja az elosztott kapcsolati adatbázis-architektúra (DRDA) SQL Access Manager (SQLAM) 9-es, 10-es és 11-es verziójával:
 
-* IBM DB2 for z/OS 11.1
-* IBM DB2 for z/OS 10.1
-* Az IBM DB2-höz i 7.3
-* Az IBM DB2-höz i 7.2
-* Az IBM DB2-höz i 7.1
-* IBM DB2 LUW 11
-* IBM DB2-höz tartozó LUW 10,5
-* IBM DB2-höz tartozó LUW 10.1
+* IBM DB2 for z/OS 11,1
+* IBM DB2 for z/OS 10,1
+* IBM DB2 az i 7,3-hez
+* IBM DB2 az i 7,2-hez
+* IBM DB2 az i 7,1-hez
+* IBM DB2 a LUW 11 rendszerhez
+* IBM DB2 a LUW 10,5
+* IBM DB2 a LUW 10,1
 
 > [!TIP]
-> Ha egy hibaüzenetet küld, hogy "az SQL-utasítás végrehajtási kérelméhez tartozó csomag nem található. SQLSTATE 51002 SQLCODE =-805 = ", a hiba oka szükséges csomag nem jön az ilyen operációs rendszer normál felhasználó számára. Kövesse az alábbi utasításokat a DB2-kiszolgáló típusa szerint:
-> - A DB2 i (AS400): lehetővé teszik a kiemelt felhasználó, a másolási tevékenység használata előtt a bejelentkezési felhasználói gyűjtemény létrehozása. A parancs: `create collection <username>`
-> - A – z/OS- vagy LUW DB2: egy magas jogosultságú fiók – kiemelt felhasználói vagy a felügyeleti csomag hitelesítésszolgáltatók és a kötési, BINDADD, támogatás hajtsa végre a nyilvános engedélyeket – segítségével a másolási tevékenység futtatása után, majd a szükséges csomag másolása során automatikusan létrejön. Ezt követően válthat vissza a normál felhasználói az ezt követő másolási futtatások.
+> Ha a következő hibaüzenet jelenik meg: "az SQL-utasítás végrehajtási kérelmének megfelelő csomag nem található. SQLSTATE = 51002 SQLCODE =-805 ", ezért a szükséges csomag nem jön létre a normál felhasználó számára az adott operációs rendszeren. Kövesse az alábbi utasításokat a DB2-kiszolgáló típusa szerint:
+> - DB2 for i (AS400): hagyja, hogy a Power User a másolási tevékenység használata előtt hozzon létre gyűjteményt a bejelentkezési felhasználó számára. Parancs`create collection <username>`
+> - DB2 a z/OS-vagy LUW-hez: magas jogosultsági szintű fiók használata – Kiemelt felhasználó vagy rendszergazda a csomaggal rendelkező hatóságok és a kötés, a BINDADD, a hozzáférés engedélyezése a nyilvános engedélyekhez – a másolási tevékenység futtatásához a rendszer automatikusan létrehozza a szükséges csomagot a másolás során. Ezt követően visszaválthat a normál felhasználóra a későbbi másolási futtatásokhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Használja az adatok másolása a DB2-adatbázis, amely nem érhető el nyilvánosan, meg kell egy helyi Integration Runtime beállítása. Saját üzemeltetésű integrációs modulok kapcsolatos további információkért lásd: [helyi Integration Runtime](create-self-hosted-integration-runtime.md) cikk. Az Integration Runtime biztosít egy beépített DB2-illesztőprogramot, ezért nem kell manuálisan telepítenie az összes illesztőprogram DB2-adatok másolásakor.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
+A Integration Runtime beépített DB2-illesztőprogramot biztosít, ezért nem kell manuálisan telepítenie az illesztőprogramot az adatok DB2-ből való másolása során.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Az alábbi szakaszok nyújtanak, amelyek meghatározzák az adott Data Factory-entitások DB2-összekötő-tulajdonságokkal kapcsolatos részletekért.
+A következő szakaszokban részletesen ismertetjük a DB2-összekötőhöz tartozó Data Factory-entitások definiálásához használt tulajdonságokat.
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-DB2-beli társított szolgáltatás a következő tulajdonságok támogatottak:
+A DB2 társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **Db2** | Igen |
-| server |A DB2-kiszolgáló neve. Megadhatja, hogy a port számát, a kiszolgáló neve, pontosvesszővel elválasztva például a következő `server:port`. |Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **Db2** | Igen |
+| server |A DB2-kiszolgáló neve. Megadhatja azt a portszámot, amelyet a kiszolgáló neve a kettősponttal elválasztva, például `server:port`:. |Igen |
 | database |A DB2-adatbázis neve. |Igen |
-| authenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Megengedett értéke: **Alapszintű**. |Igen |
-| username |Adja meg a felhasználónevet, a DB2-adatbázishoz való csatlakozáshoz. |Igen |
-| password |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
-| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| authenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett érték:Alapszintű. |Igen |
+| username |Adja meg a DB2-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Igen |
+| password |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 **Példa**
 
@@ -97,14 +99,14 @@ DB2-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságainak teljes listájáért tekintse meg az adatkészletek a cikk. Ez a szakasz a DB2-adathalmaz által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listájáért tekintse meg az adatkészletek a cikk. Ez a szakasz a DB2-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatokat másol a DB2, állítsa be a type tulajdonság, az adatkészlet **RelationalTable**. A következő tulajdonságok támogatottak:
+Az adatok DB2-ből való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **RelationalTable**értékre. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **RelationalTable** | Igen |
-| tableName | A DB2-adatbázishoz a tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **RelationalTable** | Igen |
+| tableName | A tábla neve a DB2-adatbázisban. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -127,16 +129,16 @@ Adatokat másol a DB2, állítsa be a type tulajdonság, az adatkészlet **Relat
 
 Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a DB2-forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="db2-as-source"></a>Forrásként DB2
+### <a name="db2-as-source"></a>DB2 forrásként
 
-Adatok másolása a DB2, állítsa be a forrás típusaként a másolási tevékenység **RelationalSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
+Az adatok DB2-ből való másolásához állítsa a forrás típusát a másolási tevékenység **RelationalSource**. A következő tulajdonságok támogatottak a másolási tevékenység **source** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **RelationalSource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **RelationalSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -168,37 +170,37 @@ Adatok másolása a DB2, állítsa be a forrás típusaként a másolási tevék
 ]
 ```
 
-## <a name="data-type-mapping-for-db2"></a>Adattípus-leképezés DB2
+## <a name="data-type-mapping-for-db2"></a>Adattípusok leképezése DB2-hez
 
-Ha az adatok másolása a DB2, Azure Data Factory-közbenső adattípusok a következő hozzárendeléseket használtak DB2 adattípusok. Lásd: [séma és adatok írja be a hozzárendelések](copy-activity-schema-and-type-mapping.md) megismerheti, hogyan másolási tevékenység leképezi a forrás séma és adatok típusa a fogadó.
+Az adatok DB2-ből való másolása során a rendszer a következő leképezéseket használja az DB2-adattípusokból Azure Data Factory köztes adattípusokhoz. Lásd: [séma és adatok írja be a hozzárendelések](copy-activity-schema-and-type-mapping.md) megismerheti, hogyan másolási tevékenység leképezi a forrás séma és adatok típusa a fogadó.
 
 | DB2-adatbázis típusa | Data factory közbenső adattípus |
 |:--- |:--- |
 | BigInt |Int64 |
 | Binary |Byte[] |
 | Blob |Byte[] |
-| Char |String |
-| Clob |String |
+| Char |Sztring |
+| Clob |Sztring |
 | Date |Datetime |
-| DB2DynArray |String |
-| DbClob |String |
+| DB2DynArray |Sztring |
+| DbClob |Sztring |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Double |Double |
 | Float |Double |
-| Graphic |String |
+| Graphic |Sztring |
 | Integer |Int32 |
 | LongVarBinary |Byte[] |
-| LongVarChar |String |
-| LongVarGraphic |String |
+| LongVarChar |Sztring |
+| LongVarGraphic |Sztring |
 | Numeric |Decimal |
-| Real |Single |
+| Valós szám |Single |
 | SmallInt |Int16 |
 | Time |TimeSpan |
 | Timestamp |Datetime |
 | VarBinary |Byte[] |
-| VarChar |String |
-| VarGraphic |String |
+| VarChar |Sztring |
+| VarGraphic |Sztring |
 | Xml |Byte[] |
 
 

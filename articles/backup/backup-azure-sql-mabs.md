@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: 5e91d63f4479d0677c57342cb1b726e33a45bb86
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 72de5857786f284bfc4afda1db093d5343bd7a43
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689086"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954477"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>SQL Server biztonsági mentése az Azure-ba Azure Backup Server
 Ez a cikk végigvezeti a SQL Server adatbázisok Microsoft Azure Backup Server (MABS) használatával történő biztonsági mentésének konfigurációs lépésein.
@@ -44,7 +44,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy [telepítette és előkészí
     ![Adatvédelmi módszer – rövid távú lemez & online Azure](./media/backup-azure-backup-sql/pg-name.png)
 7. A **rövid távú célok megadása képernyőn adja meg** a szükséges bemeneteket a lemezre történő biztonsági mentési pontok létrehozásához.
 
-    Itt láthatjuk, hogy az adatmegőrzési **tartomány** értéke *5 nap*, a **szinkronizálás gyakorisága** pedig *15 percenként* van beállítva, ami a biztonsági mentés gyakorisága. Az **expressz teljes biztonsági mentés** *8:00 P. M*értékre van állítva.
+    Itt láthatjuk, hogy az adatmegőrzési **tartomány** értéke *5 nap*, a **szinkronizálás gyakorisága** pedig *15 percenként*van beállítva, ami a biztonsági mentés gyakorisága. Az **expressz teljes biztonsági mentés** *8:00 P. M*értékre van állítva.
 
     ![Rövid távú célok](./media/backup-azure-backup-sql/pg-shortterm.png)
 
@@ -129,7 +129,7 @@ Míg az előző lépések létrehozott egy biztonsági mentési szabályzatot, a
 ## <a name="recover-a-sql-server-database-from-azure"></a>SQL Server-adatbázis helyreállítása az Azure-ból
 A következő lépések szükségesek egy védett entitás (SQL Server adatbázis) Azure-ból történő helyreállításához.
 
-1. Nyissa meg a DPM-kiszolgáló felügyeleti konzolját. Navigáljon a **helyreállítási** munkaterületre, ahol megtekintheti a DPM által biztonsági mentés alatt lévő kiszolgálókat. Tallózással keresse meg a szükséges adatbázist (ebben az esetben a reportserver $ MSDPM2012). Válassza ki a helyreállítást, amely **online**állapottal ér véget.
+1. Nyissa meg a DPM-kiszolgáló felügyeleti konzolját. Navigáljon a **helyreállítási** munkaterületre, ahol megtekintheti a DPM által biztonsági mentés alatt lévő kiszolgálókat. Tallózással keresse meg a szükséges adatbázist (ebben az esetben a reportserver $ MSDPM2012). Válassza ki a **helyreállítást az** **online**állapottal végződő időpontból.
 
     ![Helyreállítási pont kiválasztása](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
 2. Kattintson a jobb gombbal az adatbázis nevére, és kattintson a **helyreállítás**elemre.

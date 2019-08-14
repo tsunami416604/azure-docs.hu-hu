@@ -1,33 +1,33 @@
 ---
 title: Kapcsolatos az ExpressRoute közvetlen – Azure |} A Microsoft Docs
-description: Ez az oldal ExpressRoute közvetlen áttekintést nyújt.
+description: Ez az oldal áttekintést nyújt a ExpressRoute Directről
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 08/12/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e598cc03a1b7b4999719152540866c7168130e03
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: a294c444f10719f69716b25b97cd137874a3e0be
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807482"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954151"
 ---
 # <a name="about-expressroute-direct"></a>Az ExpressRoute Direct ismertetése
 
-Az ExpressRoute közvetlen lehetőséget nyújt a közvetlenül a Microsoft társviszony-létesítési helyszínek stratégiai a világ különböző pontjain található globális hálózatának csatlakoztathatnak. Az ExpressRoute közvetlen kettős 100 GB/s és 10 GB/s sebességű kapcsolatot, amely támogatja az aktív/aktív kapcsolat ipari méretekben biztosít.
+Az ExpressRoute közvetlen lehetőséget nyújt a közvetlenül a Microsoft társviszony-létesítési helyszínek stratégiai a világ különböző pontjain található globális hálózatának csatlakoztathatnak. A ExpressRoute Direct kettős 100 GB/s vagy 10 GB/s kapcsolatot biztosít, amely támogatja az aktív/aktív kapcsolatot a skálán.
 
 Az ExpressRoute közvetlen biztosít fő funkcióját tartalmazza, de nem korlátozódik:
 
 * Nagy mennyiségű adat betöltése az olyan szolgáltatásokba, mint például a Storage és az Cosmos DB
-* Szabályozott módon, és például dedikált és elkülönített kapcsolatot igénylő iparágakban a fizikai elszigetelése: Banki szolgáltatások, kormányzati és kereskedelmi
+* Az olyan iparágak fizikai elkülönítése, amelyek szabályozottak és dedikált és elkülönített kapcsolatokat igényelnek, például: Banki, kormányzati és kereskedelmi
 * A kapcsolatcsoportok elosztásának üzleti egységen alapuló, részletes szabályzása
 
-## <a name="onboard-to-expressroute-direct"></a>Az ExpressRoute közvetlen előkészítése
+## <a name="onboard-to-expressroute-direct"></a>Közvetlen ExpressRoute
 
-Mielőtt használná az ExpressRoute közvetlen, először regisztrálnia kell az előfizetés. E-mail küldése a regisztrációhoz <ExpressRouteDirect@microsoft.com> meg előfizetési azonosítóját, beleértve az alábbiakat:
+A ExpressRoute Direct használata előtt először regisztrálnia kell az előfizetését. E-mail küldése a regisztrációhoz <ExpressRouteDirect@microsoft.com> meg előfizetési azonosítóját, beleértve az alábbiakat:
 
 * Szeretne elvégezni a forgatókönyvek **ExpressRoute közvetlen**
 * Hely beállításai – lásd: [partnerek és társviszony-létesítési helyszínek](expressroute-locations-providers.md) teljes listáját az összes hely
@@ -38,10 +38,10 @@ Mielőtt használná az ExpressRoute közvetlen, először regisztrálnia kell a
 
 | **Az ExpressRoute-szolgáltató használatával** | **Az ExpressRoute közvetlen** | 
 | --- | --- |
-| Már használja a szolgáltatók számára a gyors bevezetése és a meglévő infrastruktúra kapcsolat engedélyezése | 100 GB/s/10 GB/s-infrastruktúra és az összes réteg teljes felügyeleti igényel
+| Már használja a szolgáltatók számára a gyors bevezetése és a meglévő infrastruktúra kapcsolat engedélyezése | 100 Gbps/10 GB/s infrastruktúra és az összes réteg teljes felügyeletét igényli
 | Integrálható a több száz, többek között mpls virtuális Magánhálózat és az Ethernet-szolgáltatók | A szabályozott iparágakban és nagyméretű adatfeldolgozás közvetlen/dedikált kapacitás |
-| Kapcsolatcsoportok termékváltozatot 50 MB/s a 10 GB/s | Ügyfél lehet, hogy a következő termékváltozatok 100 GB/s expressroute kapcsolatcsoport kombinációját közvetlen kiválasztása: <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 GB/s</li><li>100 GB/s</li></ul> Ügyfél lehet, hogy a következő termékváltozatok a 10 GB/s az ExpressRoute kapcsolatcsoport kombinációját közvetlen kiválasztása:<ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
-| Egyetlen bérlő optimalizálva | Egyetlen bérlő/Felhőbeli szolgáltatók optimalizált / több üzleti egység
+| Kapcsolatcsoportok termékváltozatot 50 MB/s a 10 GB/s | Az ügyfél a következő áramköri SKU kombinációját választhatja a 100 GB/s ExpressRoute Direct-on: <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 GB/s</li><li>100 GB/s</li></ul> Az ügyfél a következő áramköri SKU kombinációját választhatja 10 GB/s ExpressRoute Direct-on:<ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
+| Egyetlen bérlő optimalizálva | Egyetlen bérlőre optimalizált több üzleti egységgel és több munkahelyi környezettel
 
 ## <a name="expressroute-direct-circuits"></a>Közvetlen ExpressRoute-Kapcsolatcsoportok
 
@@ -53,28 +53,28 @@ A legtöbb esetben a funkció megegyezik, amelyek használatához az ExpressRout
 
 ## <a name="circuit-skus"></a>Kapcsolatcsoport SKU-k
 
-Az ExpressRoute közvetlen támogatja az adatmennyiség nagymértékű Adatbetöltési forgatókönyveket az Azure storage és más big Data típusú adatok szolgáltatásokba. Az ExpressRoute-Kapcsolatcsoportok a 100 GB/s az ExpressRoute közvetlen most is támogatja a **40 GB/s** és **100 GB/s** kapcsolatcsoport SKU-k. A fizikai port pár **100 és 10 GB/s** csak és több virtuális kapcsolatok is rendelkezhet. Kapcsolatcsoport méretek:
+Az ExpressRoute közvetlen támogatja az adatmennyiség nagymértékű Adatbetöltési forgatókönyveket az Azure storage és más big Data típusú adatok szolgáltatásokba. Az 100 GB/s ExpressRoute Direct ExpressRoute-áramkörök mostantól támogatják az **40 Gbps** -es és a **100 Gbps** -es adatközpontot is. A fizikai port pár **100 vagy 10 GB/s** , és több virtuális áramkör is lehet. Áramköri méretek:
 
-| **Az ExpressRoute közvetlen 100 GB/s** | **Az ExpressRoute közvetlen 10 GB/s** | 
+| **100 GB/s ExpressRoute Direct** | **10 GB/s ExpressRoute Direct** | 
 | --- | --- |
-| **Az előfizetett sávszélesség**: 200 Gbps | **Az előfizetett sávszélesség**: 20 GB/s |
+| **Előfizetett sávszélesség**: 200 GB/s | **Előfizetett sávszélesség**: 20 GB/s |
 | <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 GB/s</li><li>100 GB/s</li></ul> | <ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
 
 ## <a name="technical-requirements"></a>Technikai követelmények
 
-* A Microsoft Enterprise peremhálózati útválasztóhoz (MSEE) felületek:
-    * Kettős 10 vagy 100 Gigabit Ethernet portok csak pár útválasztó között
-    * Egyetlen mód LR Fiber-kapcsolat
+* Microsoft Enterprise Edge router (MSEE) interfészek:
+    * Kettős 10 vagy 100 Gigabit Ethernet-portok csak az útválasztó párok között
+    * Single Mode LR Fiber-kapcsolat
     * IPv4 és IPv6
-    * IP MTU 1500 bytes
+    * IP-MTU 1500 bájt
 
-* Kapcsoló-vagy útválasztó rétegbeli 2/Layer 3 kapcsolatot:
-    * Támogatnia kell a 1 802.1Q (Dot1Q) vagy két kód (QinQ) 802.1Q címkét beágyazás
-    * Ethertype = 0x8100
-    * Fel kell vennie a külső VLAN-címke (STAG) – a Microsoft által megadott VLAN-azonosító alapján *QinQ csak a alkalmazni*
-    * Támogatnia kell több BGP-munkamenetek (VLAN) port- és eszköz
-    * IPv4 és IPv6-kapcsolatok. *Az IPv6 nincs további alárendelt felület jön létre. IPv6-címet fogja hozzáadni meglévő alárendelt felület*. 
-    * Nem kötelező: [Kétirányú továbbítás észlelése (BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) támogatja, amelyen konfigurálva van az összes privát társviszony létesítése az ExpressRoute-Kapcsolatcsoportok alapértelmezés szerint
+* Switch/router 2. réteg/3. rétegbeli kapcsolata:
+    * 1 802.1 Q (Dot1Q) vagy két tag 802.1 Q (QinQ) címke beágyazását kell támogatnia
+    * EtherType = 0x8100
+    * Hozzá kell adnia a külső VLAN-címkét (STAG) a Microsoft által megadott VLAN-azonosító alapján – *csak a QinQ*
+    * Egy porton és eszközön több BGP-munkamenetet (VLAN) kell támogatnia
+    * IPv4-és IPv6-kapcsolat. *Az IPv6 esetében nem jön létre további alkapcsolat. Az IPv6-cím hozzá lesz adva a meglévő alkapcsolathoz*. 
+    * Nem kötelező: [Kétirányú továbbítási észlelés (BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) támogatása, amely alapértelmezés szerint a ExpressRoute-áramkörök összes privát társán konfigurálva van
 
 ## <a name="vlan-tagging"></a>VLAN-címkézés
 
@@ -86,7 +86,7 @@ Az ExpressRoute közvetlen támogatja QinQ és a Dot1Q VLAN-címkézést.
 
 ## <a name="workflow"></a>Munkafolyamat
 
-[![A munkafolyamat](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
+[![munkafolyamat](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
 
 ## <a name="sla"></a>SLA
 

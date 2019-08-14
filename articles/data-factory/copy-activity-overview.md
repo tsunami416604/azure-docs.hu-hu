@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: ae8b2bb7cce545ab9c0aa0c9d4d682089cc482ab
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a8265496c475566ec7a87a19eab6d975838e9da4
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827485"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966394"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Az Azure Data Factory másolási tevékenysége
 
@@ -33,7 +33,7 @@ Az Azure Data Factory a másolási tevékenység használatával között adatok
 
 A másolási tevékenység végrehajtása a- [Integration Runtime](concepts-integration-runtime.md). A különböző adatmásolási forgatókönyvek esetében a Integration Runtime különböző ízeket használhat:
 
-* Adatok közötti másolást tárolja, hogy mindkettő nyilvánosan elérhető, a másolási tevékenység által is infógrafikát **Azure integrációs modul**, biztonságos, megbízható, méretezhető, azaz és [globálisan elérhető](concepts-integration-runtime.md#integration-runtime-location).
+* Ha olyan adattárak között másol adattárolókat, amelyek az interneten keresztül nyilvánosan elérhetők bármely IP-címről, a másolási tevékenység **Azure Integration Runtime**, amely biztonságos, megbízható, méretezhető és [globálisan elérhető](concepts-integration-runtime.md#integration-runtime-location).
 * Ha a helyszíni adatok másolása Azure blobból vagy az adattárakban található, vagy egy hálózati hozzáférés-vezérléssel (például az Azure virtuális hálózat), állítsa be kell egy **saját üzemeltetésű integrált futásidejű** megjelenő új adatok másolását.
 
 Az Integration Runtime kell lennie minden forrás- és fogadó adattár társítva. További részleteket az másolási tevékenység [meghatározza a használandó integrációs modul](concepts-integration-runtime.md#determining-which-ir-to-use).
@@ -193,7 +193,7 @@ A másolási tevékenység végrehajtásának részletei és a teljesítménnyel
 | usedDataIntegrationUnits | A hatékony integrációs adategységek másolása során. | Int32 érték |
 | usedParallelCopies | A hatékony parallelCopies másolása során. | Int32 érték |
 | redirectRowPath | A blob storage "redirectIncompatibleRowSettings" területen konfigurálja a rendszer kihagyta inkompatibilis sorok a napló elérési útja. Lásd az alábbi példában. | Szöveg (karakterlánc) |
-| executionDetails | További részleteket a szakasz a másolási tevékenység halad végig, és a megfelelő lépéseket, időtartam, használt konfigurációk stb. Nem javasoljuk ebben a szakaszban elemezni, előfordulhat, hogy módosítása esetén.<br/><br/>Az ADF azt is jelenti, hogy a részletes időtartam (másodpercben) a következő `detailedDurations`részekben foglalt lépésekből áll:<br/>- **Üzenetsor** -kezelő időtartama (`queuingDuration`): Az az idő, ameddig a másolási tevékenység ténylegesen nem indul el az integrációs modulban. Ha saját üzemeltetésű integrációs modult használ, és ez az érték nagy, javasoljuk, hogy ellenőrizze az IR-kapacitást és a használatot, és a számítási feladatok alapján felskálázást és kicsinyítést. <br/>- **Parancsfájl-másolás előtti idő** (`preCopyScriptDuration`): A fogadó adattárba való másolás előtti parancsfájl végrehajtásának ideje. A másolás előtti parancsfájl konfigurálásakor alkalmazandó. <br/>- **Az első bájtig eltelt idő** (`timeToFirstByte`): Az az időpont, ameddig az integrációs modul megkapja az első bájtot a forrás adattárból. Alkalmazás nem fájl alapú forrásra. Ha ez az érték nagy, javasoljuk, hogy ellenőrizze és optimalizálja a lekérdezést vagy a kiszolgálót.<br/>- **Átvitel időtartama** (`transferDuration`): Az az idő, amellyel az integrációs modul az összes, a forrásról a fogadóra irányuló adatátvitelt az első bájt beszerzése után | Array |
+| executionDetails | További részleteket a szakasz a másolási tevékenység halad végig, és a megfelelő lépéseket, időtartam, használt konfigurációk stb. Nem javasoljuk ebben a szakaszban elemezni, előfordulhat, hogy módosítása esetén.<br/><br/>Az ADF azt is jelenti, hogy a részletes időtartam (másodpercben), amely `detailedDurations`a (z) rendszerben a megfelelő lépésekkel telt el. A lépések időtartama kizárólagos, és csak a megadott másolási tevékenység futtatására vonatkozó műveletek jelennek meg:<br/>- **Üzenetsor** -kezelő időtartama (`queuingDuration`): Az az eltelt idő, amíg a másolási tevékenység ténylegesen nem indul el az integrációs modulban. Ha saját üzemeltetésű integrációs modult használ, és ez az érték nagy, javasoljuk, hogy ellenőrizze az IR-kapacitást és a használatot, és a számítási feladatok alapján felskálázást és kicsinyítést. <br/>- **Parancsfájl-másolás előtti idő** (`preCopyScriptDuration`): A másolási tevékenység és a másolási tevékenység közötti eltelt idő a fogadó adattárban lévő előmásolási parancsfájl végrehajtásának befejezése után. A másolás előtti parancsfájl konfigurálásakor alkalmazandó. <br/>- **Az első bájtig eltelt idő** (`timeToFirstByte`): Az előző lépés vége és a forrás-adattár első bájtját fogadó IR közötti eltelt idő. Alkalmazás nem fájl alapú forrásra. Ha ez az érték nagy, javasoljuk, hogy ellenőrizze és optimalizálja a lekérdezést vagy a kiszolgálót.<br/>- **Átvitel időtartama** (`transferDuration`): Az előző lépés vége és a forrás és a fogadó közötti összes adatok átvitele között eltelt idő. | Array |
 | perfRecommendation | Teljesítmény-finomhangolási tippek másolása. A részletekért lásd a [teljesítmény és hangolás](#performance-and-tuning) szakaszt. | Array |
 
 ```json

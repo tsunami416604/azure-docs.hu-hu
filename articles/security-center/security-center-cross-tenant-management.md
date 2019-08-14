@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/04/2019
+ms.date: 08/11/2019
 ms.author: v-mohabe
-ms.openlocfilehash: b8d27178a75cb39c7d7769f2db6a193292a3f9f1
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: d6b5b528c3021bfb62bc30ad5910524db36e7e95
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782539"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950555"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Több-bérlős felügyelet a Security Center
 
@@ -27,9 +27,7 @@ A több-bérlős felügyelet lehetővé teszi, hogy az Azure-beli [delegált er�
 
 - A szolgáltatók több ügyfél számára is kezelhetik az erőforrások biztonsági állapotát, a saját bérlőn belül.
 
-- A több Bérlővel rendelkező szervezetek biztonsági csoportjai egyetlen helyről tekinthetik meg és kezelhetik biztonsági állapotát
-
-  ![Több-bérlős felügyelet](./media/security-center-cross-tenant-management/cross-tenant-security-center.png)
+- A több Bérlővel rendelkező szervezetek biztonsági csoportjai egyetlen helyről tekinthetik meg és kezelhetik biztonsági állapotát.
 
 ## <a name="set-up-cross-tenant-management"></a>A több-bérlős felügyelet beállítása
 
@@ -48,22 +46,13 @@ A felső menüsorban kattintson a szűrő ikonra, és válassza ki az előfizet�
 
 A nézetek és a műveletek alapvetően azonosak. Néhány példa:
 
-- **Biztonsági házirendek kezelése**: Az egyik nézetből számos erőforrás biztonsági állapotát kezelheti a szabályzatokkal [](tutorial-security-policy.md), biztonsági javaslatokat tehet a műveletekre, valamint biztonsági adatokat gyűjthet és kezelhet. Az alábbi ábrán például négy különböző bérlő könyvtára található (Doug. Lora, Microsoft, SSO, Wilde Company), és mindegyik bérlő rendelkezik előfizetésekkel. A különböző bérlők kiválasztott előfizetései szerepelnek ebben a házirend-kezelési listán.
-
-     ![A házirendek több-bérlős kezelése](./media/security-center-cross-tenant-management/cross-tenant-policy.png)
-
-- **A biztonságos pontszám és a megfelelőségi testhelyzet javítása**: A több-bérlős láthatóság lehetővé teszi, hogy megtekintse az összes bérlő teljes biztonsági állapotát, valamint azt, hogy hol és hogyan lehet legjobban [](security-center-compliance-dashboard.md) javítani a [biztonságos pontszámot](security-center-secure-score.md) és a megfelelőségi állapotot mindegyiknél, ahogy az az alábbi képen is látható.
-
-     ![Biztonsági pontszám](./media/security-center-cross-tenant-management/cross-tenant-secure-score.png)
-
-- **Javaslatok szervizelése**: A különböző bérlők számos erőforrására vonatkozó [javaslat](security-center-recommendations.md) figyelése és szervizelése egyszerre (az alábbi képen látható módon). Ezután azonnal megoldhatja azokat a biztonsági réseket, amelyek a legnagyobb kockázatot jelentik az összes bérlő esetében.
-
-  ![A javaslatok több-bérlős kezelése](./media/security-center-cross-tenant-management/cross-tenant-recommendation.png)
-
+- **Biztonsági házirendek kezelése**: Az egyik nézetből számos erőforrás biztonsági állapotát kezelheti a szabályzatokkal [](tutorial-security-policy.md), biztonsági javaslatokat tehet a műveletekre, valamint biztonsági adatokat gyűjthet és kezelhet.
+- **A biztonságos pontszám és a megfelelőségi testhelyzet javítása**: A több-bérlős láthatóság lehetővé teszi, hogy megtekintse az összes bérlő teljes biztonsági állapotát, valamint azt, hogy hol és hogyan lehet a lehető legjobban javítani a [biztonságos pontszám](security-center-secure-score.md) és a [megfelelőségi testhelyzetet](security-center-compliance-dashboard.md) .
+- **Javaslatok szervizelése**: A különböző bérlők számos erőforrására vonatkozó [javaslat](security-center-recommendations.md) figyelése és szervizelése egyszerre. Ezután azonnal megoldhatja azokat a biztonsági réseket, amelyek a legnagyobb kockázatot jelentik az összes bérlő esetében.
 - **Riasztások kezelése**: [Riasztások](security-center-alerts-overview.md) észlelése a különböző bérlők között. Tegyen lépéseket olyan erőforrásokra, amelyek nem felelnek meg a [](security-center-managing-and-responding-alerts.md)gyakorlatban használható szervizelési lépéseknek.
 
 - **A Cloud Defense speciális szolgáltatásainak kezelése és egyéb funkciók**: Kezelheti a veszélyforrások észlelési és védelmi szolgáltatásait, például az igény szerinti [(JIT)](security-center-just-in-time.md)virtuálisgép-hozzáférést, az [adaptív hálózat megerősítését](security-center-adaptive-network-hardening.md), az [adaptív alkalmazások vezérlését](security-center-adaptive-application.md)és egyebeket.
-
+ 
 ## <a name="next-steps"></a>További lépések
 Ez a cikk bemutatja, hogyan működik a több-bérlős felügyelet a Security Centerban. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 

@@ -1,6 +1,6 @@
 ---
 title: Térkép létrehozása Azure Mapssal | Microsoft Docs
-description: JavaScript-Térkép létrehozása
+description: Térkép létrehozása a Azure Maps web SDK-val.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/26/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9f1188fcf2aa24791ca5181f5c94a1b0f6b15dc1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 932c244ff41e757413a05cde019ee7ee1a82232d
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882069"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976126"
 ---
 # <a name="create-a-map"></a>Térkép létrehozása
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre térképet és animálhat eg
 
 ## <a name="loading-a-map"></a>Térkép betöltése
 
-A Térkép betöltéséhez hozzon létre egy új, a [map osztály](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)egy példányát. A térképnek a DIV-elem AZONOSÍTÓjának inicializálásakor a Térkép és a leképezés betöltéséhez használni kívánt beállítások megadása után kell megadni a leképezést. Ha a `atlas` névtérben nincs megadva az alapértelmezett hitelesítési információ, ezeket az adatokat a térképi beállításokban kell megadni a Térkép betöltésekor. A Térkép a teljesítmény érdekében aszinkron módon több erőforrást is betölt. Ilyenkor a Map-példány létrehozása után csatoljon egy `ready` vagy `load` egy eseményt a térképhez, majd adja hozzá az eseménykezelő térképéhez kapcsolódó további kódokat. Az `ready` esemény akkor következik be, amikor a térképnek elegendő erőforrása van betöltve a programozott módon való interakcióhoz. Az `load` esemény akkor következik be, amikor a Térkép kezdeti nézete befejeződött. 
+A Térkép betöltéséhez hozzon létre egy új, a [map osztály](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)egy példányát. A Térkép inicializálásakor egy DIV-elem AZONOSÍTÓját, amely megjeleníti a térképet és a leképezés betöltéséhez használni kívánt beállításokat. Ha a `atlas` névtérben nincs megadva az alapértelmezett hitelesítési információ, ezeket az adatokat a térképi beállításokban kell megadni a Térkép betöltésekor. A Térkép a teljesítmény érdekében aszinkron módon több erőforrást is betölt. Ilyenkor a Map-példány létrehozása után csatoljon egy `ready` vagy `load` egy eseményt a térképhez, majd adja hozzá az eseménykezelő térképéhez kapcsolódó további kódokat. Az `ready` esemény akkor következik be, amikor a térképnek elegendő erőforrása van betöltve a programozott módon való interakcióhoz. Az `load` esemény akkor következik be, amikor a Térkép kezdeti nézete befejeződött. 
 
 <br/>
 
@@ -51,7 +51,7 @@ A Térkép megjelenített területét kétféleképpen állíthatja be a kamera 
 
 ### <a name="set-the-camera"></a>A kamera beállítása
 
-A következő kódban létrejön egy [leképezési objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) , és a középpont és a nagyítási beállítások vannak megadva. A Térkép tulajdonságai, például a középpont és a nagyítási szint a [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)részei.
+A következő kódban létrejön egy [leképezési objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) , és a középpont és a nagyítási beállítások vannak megadva. A Térkép tulajdonságai, például a központ és a nagyítási szint a [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)részei.
 
 <br/>
 
@@ -104,3 +104,6 @@ Az alkalmazás funkcióinak hozzáadásához tekintse meg a kód példáit:
 
 > [!div class="nextstepaction"]
 > [Vezérlőelemek hozzáadása a térképhez](map-add-controls.md)
+
+> [!div class="nextstepaction"]
+> [Kódminták](https://docs.microsoft.com/samples/browse/?products=azure-maps)

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 309dc8e1fd15ae4088ed6ee87bdbb8aa4d636951
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8fecc00a970f0e706dc6240eaec593fd54968ff8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848573"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934196"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box és Azure Data Box Heavy követése és eseménynaplózása
 
@@ -197,7 +197,7 @@ Az AJ-vagy MANIFEST-fájlokat a rendszer az Azure Storage-fiókba is másolja. A
 
 Az Azure-ba történő adatfeltöltés során létrejön egy másolási napló.
 
-### <a name="copylog"></a>Copylog
+### <a name="copy-log"></a>Napló másolása
 
 A Data Box szolgáltatás minden feldolgozott rendeléshez létrehoz egy másolási naplót a társított Storage-fiókban. A másolási naplóban szerepel a feltöltött fájlok teljes száma, valamint a Data Boxról az Azure Storage-fiókba való Adatmásolás során hibás fájlok száma.
 
@@ -252,6 +252,8 @@ A feltöltés az Azure-ba hibákkal is elvégezhető.
 ### <a name="upload-completed-with-warnings"></a>A feltöltés figyelmeztetésekkel fejeződött be
 
 Az Azure-ba való feltöltés figyelmeztetésekkel fejeződött be, ha az adatok olyan tároló/blob/fájlnévvel rendelkeznek, amelyek nem feleltek meg az Azure elnevezési konvencióinak, és a nevek módosultak az adatok Azure-ba való feltöltéséhez.
+
+![Elérési út a másolási napló áttekintés paneljén, ha figyelmeztetésekkel fejeződött be](media/data-box-logs/copy-log-path-3.png)
 
 Íme egy példa arra a másolási naplóra, amelyben az Azure elnevezési konvenciókkal nem egyező tárolók át lettek nevezve az Azure-ba történő adatfeltöltés során.
 

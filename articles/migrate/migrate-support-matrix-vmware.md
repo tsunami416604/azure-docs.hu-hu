@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: ed7e53570127f12dbe41932481a3286a78865dde
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 70107311b189e1692b902812c4ccbbd91c3695a1
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828282"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952120"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>A VMware felmérésének és migrálásának támogatási mátrixa
 
@@ -90,8 +90,8 @@ Az Azure Migrate berendezésnek internetkapcsolatra van szüksége.
 **URL-cím** | **Részletek**  
 --- | --- |
 *.portal.azure.com  | Navigáljon a Azure Portal Azure Migrate.
-*.windows.net | Jelentkezzen be az Azure-előfizetésébe.
-*.microsoftonline.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com | Jelentkezzen be az Azure-előfizetésébe.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
 management.azure.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
 dc.services.visualstudio.com | A belső figyeléshez használt alkalmazás-naplók feltöltése.
 *.vault.azure.net | A Azure Key Vault titkainak kezelése.
@@ -104,7 +104,7 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 
 **Device** | **kapcsolat**
 --- | ---
-Berendezés | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/><br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával:```https://<appliance-ip-or-name>:44368``` <br/><br/>A 443-es porton kimenő kapcsolatok a felderítési és teljesítményi metaadatok küldéséhez Azure Migrate.
+Berendezés | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/><br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával:```https://<appliance-ip-or-name>:44368``` <br/><br/>A 443-es, 5671-as és 5672-es porton kimenő kapcsolatok a felderítési és a teljesítménybeli metaadatok küldésére Azure Migrate.
 vCenter Server | A 443-es TCP-porton bejövő kapcsolatok lehetővé teszik, hogy a berendezés konfigurációs és teljesítménybeli metaadatokat gyűjtsön az értékelésekhez. <br/><br/> A készülék alapértelmezés szerint az 443-as porton csatlakozik a vCenter-hez. Ha a vCenter-kiszolgáló egy másik portot figyel, akkor a felderítés beállításakor módosíthatja a portot.
 
 
@@ -175,8 +175,8 @@ Az Azure Migrate berendezésnek internetkapcsolatra van szüksége az internethe
 **URL-cím** | **Részletek**  
 --- | ---
 *.portal.azure.com | Navigáljon a Azure Portal Azure Migrate.
-*.windows.net | Jelentkezzen be az Azure-előfizetésébe.
-*.microsoftonline.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Jelentkezzen be az Azure-előfizetésébe.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
 management.azure.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
 dc.services.visualstudio.com | A belső figyeléshez használt alkalmazás-naplók feltöltése.
 *.vault.azure.net | A Azure Key Vault titkainak kezelése.

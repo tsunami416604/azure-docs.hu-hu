@@ -9,12 +9,12 @@ ms.date: 07/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 80ab896e1393d6c68b22a61d1b96acd507aa6994
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: d6a85d0f9480418bd840786e17ee258dbdb90c48
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249891"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985216"
 ---
 # <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Azure CLI-vagy PowerShell-parancsok futtatása Azure AD-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez
 
@@ -82,15 +82,17 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy tárolót egy új Storage-
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ha a Azure PowerShell használatával szeretne bejelentkezni, és az Azure Storage-ban az Azure Storage-ban további műveleteket hajt végre az Azure ad-beli hitelesítő adatokkal `-UseConnectedAccount` , hozzon létre egy tárolási környezetet a Storage-fiókra való hivatkozáshoz,
+Ha a Azure PowerShell használatával szeretne bejelentkezni, és az Azure Storage-ban az Azure Storage-ban további műveleteket hajt végre, hozzon létre egy tárolási környezetet a Storage `-UseConnectedAccount` -fiókra való hivatkozáshoz, és adja meg a paramétert.
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy tárolót egy új Storage-fiókban Azure PowerShell az Azure AD-beli hitelesítő adataival. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
 
-1. Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és kövesse a képernyőn megjelenő utasításokat az Azure ad-beli hitelesítő adatok megadásához: 
+1. Jelentkezzen be az Azure-fiókjába a [Kapcsolódás-AzAccount](/powershell/module/az.accounts/connect-azaccount) paranccsal:
 
     ```powershell
     Connect-AzAccount
     ```
+
+    További információ az Azure-ba történő bejelentkezésről a PowerShell használatával: [bejelentkezés Azure PowerShellsal](/powershell/azure/authenticate-azureps).
 
 1. Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)hívásával. 
 

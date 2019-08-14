@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Azure Data Factory használatával az ODBC-források |} A Microsoft Docs
-description: 'Útmutató: adatok másolása az OData-források a támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.'
+title: Adatok másolása ODBC-forrásokból Azure Data Factory használatával | Microsoft Docs
+description: Megtudhatja, hogyan másolhat OData-forrásokból származó adatokból támogatott fogadó adattárakat egy Azure Data Factory folyamat másolási tevékenységének használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,56 +10,56 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: f14c8f8ef9f0e59ac35dd7346bf37cc07f2cfb19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ee0f4ccfcd75504be6bb636e7ee54a845a10280
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711458"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966921"
 ---
-# <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>A kezdő és a ODBC-adattárak Azure Data Factory használatával az adatok másolása
-> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
+# <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Adatok másolása és átmásolása az ODBC-adattárakba Azure Data Factory használatával
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-odbc-connector.md)
 > * [Aktuális verzió](connector-odbc.md)
 
-Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factoryban az adatok másolásához a kezdő és a egy ODBC data store. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok és az ODBC-adattárba való másolásához. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-Adatok másolása az ODBC-forráshoz a bármely támogatott fogadó adattárba, vagy bármely támogatott forrásadattárból ODBC fogadó másolja. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Az ODBC-forrásból származó adatok bármely támogatott fogadó adattárba másolhatók, vagy bármely támogatott forrásból származó adattárból másolhatók az ODBC-tárolóba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-Pontosabban az ODBC-összekötő támogatja az Azure blobból vagy az adatok másolását **bármely ODBC-kompatibilis adattárak** használatával **alapszintű** vagy **névtelen** hitelesítést.
+Ez az ODBC-összekötő az alapszintű vagy a **Névtelen** hitelesítés használatával támogatja az adatok másolását **bármely ODBC-kompatibilis adattárba** .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ODBC-összekötő használatához meg kell:
+Az ODBC-összekötő használatához a következőket kell tennie:
 
-- Egy helyi Integration Runtime beállítása. Lásd: [helyi Integration Runtime](create-self-hosted-integration-runtime.md) részleteivel.
-- Telepítse az ODBC-illesztő az adattár a saját üzemeltetésű integrációs gépen.
+- Saját üzemeltetésű Integration Runtime beállítása. Lásd: [helyi Integration Runtime](create-self-hosted-integration-runtime.md) részleteivel.
+- Telepítse az adattárakhoz tartozó ODBC-illesztőt a Integration Runtime gépen.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Az alábbi szakaszok nyújtanak, amelyek meghatározzák az adott Data Factory-entitások ODBC-összekötő-tulajdonságokkal kapcsolatos részletekért.
+A következő szakaszokban részletesen ismertetjük az ODBC-összekötőhöz tartozó Data Factory entitások definiálásához használt tulajdonságokat.
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-ODBC-beli társított szolgáltatás a következő tulajdonságok támogatottak:
+Az ODBC társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **Odbc** | Igen |
-| connectionString | A kapcsolati karakterlánc, hitelesítő adat rész. Például a minta segítségével adható meg a kapcsolati karakterlánc `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, vagy használja a rendszer DSN (adatforrás neve), állítsa be, az Integration Runtime gép `"DSN=<name of the DSN on IR machine>;"` (meg kell továbbra is adja meg a hitelesítő adatok rész társított szolgáltatásban ennek megfelelően).<br>Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md).| Igen |
-| authenticationType | Az ODBC-adattárban való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű** és **névtelen**. | Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **Odbc** | Igen |
+| connectionString | A hitelesítő adatok kivételével a kapcsolatok karakterlánca. Megadhatja a kapcsolati karakterláncot, `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`mint például a `"DSN=<name of the DSN on IR machine>;"` (z), vagy használhatja a Integration Runtime gépen beállított rendszeradatforrás-nevet (az adatforrás nevét) a következővel: (a hitelesítő adatoknak a társított szolgáltatásban való megadása ennek megfelelően történik)<br>Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md).| Igen |
+| authenticationType | Az ODBC-adattárhoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: Alapszintű és **Névtelen**. | Igen |
 | userName | Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. | Nem |
-| password | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
-| credential | A hozzáférési hitelesítő adatok része, a kapcsolati karakterláncot a megadott illesztőprogram-specifikus tulajdonság-érték formátuma. Példa: `"RefreshToken=<secret refresh token>;"`. Ez a mező jelölhetnek egy SecureString. | Nem |
-| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Egy helyi Integration Runtime szükség, az említett [Előfeltételek](#prerequisites). |Igen |
+| password | Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
+| credential | Az illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő része. Példa: `"RefreshToken=<secret refresh token>;"`. A mező megjelölése SecureString. | Nem |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
 
-**1. példa: alapszintű hitelesítést használ.**
+**1. példa: egyszerű hitelesítés használata**
 
 ```json
 {
@@ -86,7 +86,7 @@ ODBC-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 }
 ```
 
-**2. példa: névtelen hitelesítés használatával**
+**2. példa: Névtelen hitelesítés használata**
 
 ```json
 {
@@ -116,12 +116,12 @@ ODBC-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listájáért tekintse meg az adatkészletek a cikk. Ez a szakasz az ODBC-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása Azure blobból vagy ODBC-kompatibilis adattárba, állítsa be a type tulajdonság, az adatkészlet **RelationalTable**. A következő tulajdonságok támogatottak:
+Az adatok ODBC-kompatibilis adattárba való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **RelationalTable**értékre. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **RelationalTable** | Igen |
-| tableName | A tábla az ODBC-adattár neve. | Nincs forrás (Ha a tevékenység forrása "le" van megadva);<br/>Igen, a fogadó |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **RelationalTable** | Igen |
+| tableName | Az ODBC-adattárban található tábla neve. | Nem forrásként (ha a "Query" a tevékenység forrásában van megadva);<br/>Igen a fogadó számára |
 
 **Példa**
 
@@ -143,18 +143,18 @@ Adatok másolása Azure blobból vagy ODBC-kompatibilis adattárba, állítsa be
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz az ODBC-adatforrás által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz az ODBC-forrás által támogatott tulajdonságok listáját tartalmazza.
 
 ### <a name="odbc-as-source"></a>ODBC forrásként
 
-Az adatok másolása az ODBC-kompatibilis adatokat az adattárból, állítsa be a forrás típusaként a másolási tevékenység **RelationalSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
+Az adatok ODBC-kompatibilis adattárból való másolásához állítsa a forrás típusát a másolás tevékenység **RelationalSource**. A következő tulajdonságok támogatottak a másolási tevékenység **source** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **RelationalSource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **RelationalSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -186,21 +186,21 @@ Az adatok másolása az ODBC-kompatibilis adatokat az adattárból, állítsa be
 ]
 ```
 
-### <a name="odbc-as-sink"></a>ODBC pedig a fogadó
+### <a name="odbc-as-sink"></a>ODBC mint fogadó
 
-ODBC-kompatibilis a másolhatja az adatokat, állítsa a fogadó típusa a másolási tevékenység **OdbcSink**. A következő tulajdonságok támogatottak a másolási tevékenység **fogadó** szakaszban:
+Az Adatmásolás ODBC-kompatibilis adattárba való másolásához a másolási tevékenységben állítsa be a fogadó típusát a **OdbcSink**értékre. A következő tulajdonságok támogatottak a másolási tevékenység **fogadó** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani: **OdbcSink** | Igen |
-| writeBatchTimeout |Várjon, amíg a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot.<br/>Engedélyezett értékek a következők: időtartam. Példa: "00: 30:00" (30 perc). |Nem |
-| writeBatchSize |Amikor a puffer mérete eléri a writeBatchSize adatok beszúrása SQL-táblát.<br/>Engedélyezett értékek a következők: egész szám (sorok száma). |Nem (alapértelmezés szerint a 0 – automatikus észlelt) |
-| preCopyScript |Adjon meg egy másolási tevékenység végrehajtása előtt minden egyes Futtatás data store-bA írja az adatokat SQL-lekérdezést. Ez a tulajdonság segítségével törölje az előre betöltött adatokat. |Nem |
+| type | A másolási tevékenység fogadójának Type tulajdonságát a következőre kell beállítani: **OdbcSink** | Igen |
+| writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt.<br/>Az engedélyezett értékek a következők: TimeSpan. Példa: "00:30:00" (30 perc). |Nem |
+| writeBatchSize |Beilleszti az adatmennyiséget az SQL-táblába, ha a puffer mérete eléri a writeBatchSize.<br/>Az engedélyezett értékek: Integer (sorok száma). |Nem (alapértelmezett érték: 0 – automatikusan észlelve) |
+| preCopyScript |Adja meg az SQL-lekérdezést a másolási tevékenység végrehajtásához, mielőtt az egyes futtatásokban az adattárba írja az adattárban. Ezt a tulajdonságot használhatja az előre betöltött adatértékek törléséhez. |Nem |
 
 > [!NOTE]
-> "WriteBatchSize", a nincs beállítva (automatikusan észlelt), ha a másolási tevékenység először észleli, hogy az illesztőprogram támogatja a kötegelt műveletek, és beállíthatja azt a 10000, ha létezik, vagy állítsa 1-re, ha nem. Ha explicit módon az érték a 0 kivételével, a másolási tevékenység figyelembe veszi az értéket, és a futásidőben sikertelen lesz, ha az illesztőprogram nem támogatja a kötegelt műveletek.
+> Ha nincs beállítva a "writeBatchSize" (automatikusan észlelt) beállítás, a másolási tevékenység először észleli, hogy az illesztőprogram támogatja-e a Batch-műveleteket, majd állítsa 10000-re, ha nem. Ha a 0 érték helyett explicit módon állítja be a értéket, a másolási tevékenység kiértékeli az értéket, és futás közben meghiúsul, ha az illesztőprogram nem támogatja a Batch-műveleteket.
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -232,93 +232,19 @@ ODBC-kompatibilis a másolhatja az adatokat, állítsa a fogadó típusa a máso
 ]
 ```
 
-## <a name="ibm-informix-source"></a>IBM Informix-forrás
-
-IBM Informix-adatbázisból az általános ODBC-összekötő segítségével adatokat másolja.
-
-A data store-hozzáféréssel rendelkező gépen helyi Integration Runtime beállítása. Az integrációs modul használ az ODBC-illesztő az Informix rendszerhez kapcsolódni az adattárhoz. Ha ugyanazon a számítógépen már nincs telepítve, ezért telepítse az illesztőprogram. Ha például illesztőprogram "IBM INFORMIX ODBC-illesztőprogram (64 bites) is használhatja. Lásd: [Előfeltételek](#prerequisites) című szakasz részletezi.
-
-Az Informix forrás egy Data Factory-megoldás használatához ellenőrizze, hogy az integrációs modul az adattárban található utasításokat követve csatlakozhat [kapcsolati hibák elhárításához](#troubleshoot-connectivity-issues) szakaszban.
-
-Hozzon létre egy ODBC-társított szolgáltatást, az IBM Informix-adattár egy Azure data factory az alábbi példában látható módon:
-
-```json
-{
-    "name": "InformixLinkedService",
-    "properties": {
-        "type": "Odbc",
-        "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "<Informix connection string or DSN>"
-            },
-            "authenticationType": "Basic",
-            "userName": "<username>",
-            "password": {
-                "type": "SecureString",
-                "value": "<password>"
-            }
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
-```
-
-Olvassa el a cikk részletes áttekintést az elejétől ODBC-adatokat a forrás/fogadó adattárak a másolási műveletek tárolja.
-
-## <a name="microsoft-access-source"></a>Microsoft Access-forrás
-
-Microsoft Access-adatbázisból az általános ODBC-összekötő segítségével adatokat másolja.
-
-A data store-hozzáféréssel rendelkező gépen helyi Integration Runtime beállítása. Az integrációs modul az ODBC-illesztő a Microsoft Access számára az adattárban való kapcsolódáshoz használ. Ha ugyanazon a számítógépen már nincs telepítve, ezért telepítse az illesztőprogram. Lásd: [Előfeltételek](#prerequisites) című szakasz részletezi.
-
-Előtt használja a Microsoft Access-forrás egy Data Factory-megoldás az, ellenőrizze, hogy az integrációs modul az adattárban található utasításokat követve csatlakozhat [kapcsolati hibák elhárításához](#troubleshoot-connectivity-issues) szakaszban.
-
-Hozzon létre egy ODBC-beli társított szolgáltatást, egy Microsoft Access-adatbázis egy Azure data factory a következő példában látható módon:
-
-```json
-{
-    "name": "MicrosoftAccessLinkedService",
-    "properties": {
-        "type": "Odbc",
-        "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=<path to your DB file e.g. C:\\mydatabase.accdb>;"
-            },
-            "authenticationType": "Basic",
-            "userName": "<username>",
-            "password": {
-                "type": "SecureString",
-                "value": "<password>"
-            }
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
-```
-
-Olvassa el a cikk részletes áttekintést az elejétől ODBC-adatokat a forrás/fogadó adattárak a másolási műveletek tárolja.
-
 ## <a name="sap-hana-sink"></a>SAP HANA fogadó
 
 >[!NOTE]
->Adatok másolása az SAP HANA-adattár, tekintse meg natív [SAP HANA-összekötő](connector-sap-hana.md). Adatok másolása az SAP HANA, kövesse ezeket az utasításokat az ODBC-összekötő használatára. Megjegyzés: a társított szolgáltatások, a SAP HANA-összekötő és az ODBC-összekötő rendelkező más típusú, ezért nem használható fel újra.
+>Az adatok SAP HANA adattárból történő másolásához tekintse meg a natív [SAP HANA](connector-sap-hana.md)-összekötőt. Az adatSAP HANAba való másolásához kövesse ezt az utasítást az ODBC-összekötő használatához. Figyelje meg, hogy SAP HANA összekötőhöz társított szolgáltatások és az ODBC-összekötő eltérő típusú, ezért nem használható fel újra.
 >
 
-Az SAP HANA-adatbázis az általános ODBC-összekötő segítségével adatokat másolja.
+Az általános ODBC-összekötő használatával másolhatja az adatSAP HANA-adatbázisba.
 
-A data store-hozzáféréssel rendelkező gépen helyi Integration Runtime beállítása. Az integrációs modul az SAP Hana ODBC-illesztő az adattárban való kapcsolódáshoz használ. Ha ugyanazon a számítógépen már nincs telepítve, ezért telepítse az illesztőprogram. Lásd: [Előfeltételek](#prerequisites) című szakasz részletezi.
+Saját üzemeltetésű Integration Runtime beállítása egy olyan gépen, amely hozzáféréssel rendelkezik az adattárhoz. A Integration Runtime a SAP HANA ODBC-illesztőjét használja az adattárhoz való kapcsolódáshoz. Ezért telepítse az illesztőprogramot, ha még nincs telepítve ugyanarra a gépre. Részletekért lásd az [Előfeltételek](#prerequisites) című szakaszt.
 
-Előtt használja a Data Factory-megoldás az SAP HANA fogadó, ellenőrizze, hogy az integrációs modul az adattárban található utasításokat követve csatlakozhat [kapcsolati hibák elhárításához](#troubleshoot-connectivity-issues) szakaszban.
+A SAP HANA fogadó Data Factory megoldásban való használata előtt ellenőrizze, hogy a Integration Runtime tud-e csatlakozni az adattárhoz a kapcsolódási [problémák elhárítása](#troubleshoot-connectivity-issues) szakasz útmutatásai alapján.
 
-Hozzon létre egy ODBC-beli társított szolgáltatást, egy SAP HANA-adattár egy Azure data factory a következő példában látható módon:
+Hozzon létre egy ODBC-társított szolgáltatást egy SAP HANA adattár egy Azure-beli adattárolóhoz való összekapcsolásához az alábbi példában látható módon:
 
 ```json
 {
@@ -345,17 +271,17 @@ Hozzon létre egy ODBC-beli társított szolgáltatást, egy SAP HANA-adattár e
 }
 ```
 
-Olvassa el a cikk részletes áttekintést az elejétől ODBC-adatokat a forrás/fogadó adattárak a másolási műveletek tárolja.
+A másolási művelet során olvassa el a következő cikket: az ODBC-adattárak forrás/fogadó adattárként való használatának részletes áttekintése.
 
-## <a name="troubleshoot-connectivity-issues"></a>Kapcsolódási problémák elhárításához
+## <a name="troubleshoot-connectivity-issues"></a>Kapcsolódási problémák elhárítása
 
-A kapcsolati hibák elhárításához, használja a **diagnosztikai** lapján **Integration Runtime konfigurációkezelőjének**.
+A kapcsolódási problémák elhárításához használja **Integration Runtime Configuration Manager** **diagnosztika** lapját.
 
-1. Indítsa el a **Integration Runtime konfigurációkezelőjének**.
-2. Váltson a **diagnosztikai** fülre.
-3. A "Kapcsolat tesztelése" szakasz alatt válassza ki a **típus** adatok tárolására (társított szolgáltatás).
-4. Adja meg a **kapcsolati karakterlánc** , amelynek használatával az adattár csatlakozni, válassza ki a **hitelesítési** , és adja meg **felhasználónév**, **jelszó**, és/vagy **hitelesítő adatok**.
-5. Kattintson a **kapcsolat tesztelése** az adattár a kapcsolat ellenőrzéséhez.
+1. **Integration Runtime Configuration Manager**elindítása.
+2. Váltson a **diagnosztika** lapra.
+3. A "kapcsolat tesztelése" szakaszban válassza ki az adattár **típusát** (társított szolgáltatás).
+4. Adja meg az adattárhoz való kapcsolódáshoz használt kapcsolati karakterláncot, válassza ki a **hitelesítést** , és írja be a felhasználónevet, a **jelszót**és/vagy a **hitelesítő adatokat**.
+5. Kattintson a **Kapcsolódás tesztelése** elemre az adattárhoz való kapcsolódás teszteléséhez.
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).

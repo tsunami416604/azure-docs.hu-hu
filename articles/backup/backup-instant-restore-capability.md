@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0f31320a638dd4741d940d0b459575b66149b829
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: f2485786f323bc6d19d39f4da6ffa7cab14bbb4c
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698413"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951836"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentési és visszaállítási teljesítmény Azure Backup azonnali visszaállítási képességgel
 
@@ -24,7 +24,7 @@ Az azonnali visszaállítás új modellje a következő funkciókat biztosítja:
 
 * A helyreállításhoz elérhető biztonsági mentési feladatok részeként készített pillanatképek használatának lehetősége anélkül, hogy a tárolóba való adatátvitelre kellene várni. Ez csökkenti a várakozási időt a pillanatképek másolásához a tárolóba a visszaállítás elindítása előtt.
 * Csökkenti a biztonsági mentési és visszaállítási időt a pillanatképek helyi megőrzésével, alapértelmezés szerint két napig. Ez az alapértelmezett pillanatkép-megőrzési érték 1 és 5 nap közötti értékre állítható be.
-* A legfeljebb 4 TB méretű lemezeket támogat. Azure Backup nem javasolja a lemezek átméretezését.
+* A legfeljebb 4 TB méretű lemezeket támogat. A lemezek átméretezését Azure Backup nem ajánlott. A 4 TB-nál nagyobb lemezek Azure Backup nagyméretű lemezes támogatásának korlátozott nyilvános előzetes verziójára és akár 30 TB-os méretre való regisztráláshoz tekintse meg az [Azure virtuális gépek biztonsági mentésének áttekintését](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 * A standard SSD lemezeket standard HDD lemezekkel és prémium SSD lemezekkel együtt támogatja.
 * A nem felügyelt virtuális gépek eredeti Storage-fiókjai (lemezenként) való használatának lehetősége a visszaállításkor. Ez a képesség akkor is fennáll, ha a virtuális gépnek vannak olyan lemezek, amelyek a Storage-fiókok között oszlanak el. A rendszer a virtuálisgép-konfigurációk széles körére felgyorsítja a visszaállítási műveleteket.
 * A Premium Storage szolgáltatást használó virtuális gépek biztonsági mentését azonnali visszaállítással ajánlott kiosztani a teljes lefoglalt tárterület *50%-os* szabad területét, amely **csak** az első biztonsági mentéshez szükséges. Az első biztonsági mentés befejezése után az 50%-os szabad terület nem követelmény a biztonsági mentéshez.

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e31db74807b850b3d8cb8fc057e94e98db18fca2
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 87acc6e8c561349b734bd9cd98300b65e730abe7
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780626"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928073"
 ---
 # <a name="design-secure-applications-on-azure"></a>Biztonságos alkalmazások tervezése az Azure-ban
 Ebben a cikkben a Felhőbeli alkalmazások tervezésekor megfontolandó biztonsági tevékenységeket és vezérlőket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) követelményei és tervezési szakaszaiban figyelembe venni kívánt biztonsági kérdések és fogalmak betanítása, valamint az erőforrások képzése. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások kialakításához használhat.
@@ -36,7 +36,7 @@ A betanítási fázisban a következő erőforrásokkal megismerkedhet a fejlesz
 
   - Az [Azure fejlesztői útmutatója](https://azure.microsoft.com/campaigns/developer-guide/) bemutatja, hogyan kezdheti meg az Azure-t. Az útmutató bemutatja, hogy mely szolgáltatásokat használhatja az alkalmazások futtatásához, az adatok tárolásához, az intelligenciához, a IoT-alkalmazások készítéséhez és a megoldások hatékonyabb és biztonságos megoldásához.
 
-  - Az [első lépések útmutatója az Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide) -fejlesztőknek alapvető információkat nyújt azokról a fejlesztőknek, akik az Azure platform fejlesztési igényeiknek való használatának megkezdéséhez keresnek.
+  - Az [első lépések útmutatója az Azure](../../guides/developer/azure-developer-guide.md) -fejlesztőknek alapvető információkat nyújt azokról a fejlesztőknek, akik az Azure platform fejlesztési igényeiknek való használatának megkezdéséhez keresnek.
 
   - Az [SDK-k és eszközök](https://docs.microsoft.com/azure/index#pivot=sdkstools) az Azure-ban elérhető eszközöket írják le.
 
@@ -66,7 +66,7 @@ Tegye fel a következő biztonsági kérdéseket:
 
   - Az alkalmazásom bizalmas adatokat tartalmaz?
 
-  - Az alkalmazás olyan adatokat gyűjt vagy tárol, amelyeknek meg kell felelniük az iparági szabványoknak és a megfelelőségi programoknak, mint például a [szövetségi pénzügyi intézmény-típusvizsgálati Tanács (FFIEC)](https://docs.microsoft.com/azure/security/blueprints/ffiec-analytics-overview) vagy a [Payment Card Industry adatbiztonsági szabványai (PCI DSS) ](https://docs.microsoft.com/azure/security/blueprints/pcidss-analytics-overview)?
+  - Az alkalmazás olyan adatokat gyűjt vagy tárol, amelyeknek meg kell felelniük az iparági szabványoknak és a megfelelőségi programoknak, mint például a [szövetségi pénzügyi intézmény-típusvizsgálati Tanács (FFIEC)](../blueprints/ffiec-analytics-overview.md) vagy a [Payment Card Industry adatbiztonsági szabványai (PCI DSS) ](../blueprints/pcidss-analytics-overview.md)?
 
   - Az alkalmazásom bizalmas személyes vagy vásárlói adatokat gyűjt vagy tartalmaz, amelyek akár saját, akár egyéb információkkal is használhatók egy személy azonosítására, kapcsolatfelvételére vagy megkeresésére?
 
@@ -129,13 +129,13 @@ Kihasználhatja a fejlett hibakeresési képességekkel és beépített Azure-t�
 A Microsoft számos különböző [nyelvet, keretrendszert és eszközt](https://docs.microsoft.com/azure/index#pivot=sdkstools&panel=sdkstools-all) kínál az Azure-beli alkalmazások fejlesztéséhez. Ilyen például az [Azure .net-és .net Core-fejlesztőknek](https://docs.microsoft.com/dotnet/azure/). Az általunk kínált nyelvekhez és keretrendszerekhez rövid útmutatók, oktatóanyagok és API-referenciák találhatók, amelyek segítenek a gyors kezdésben.
 
 Az Azure számos szolgáltatást kínál, amelyekkel webhelyeket és webalkalmazásokat futtathat. Ezek a szolgáltatások lehetővé teszik a fejlesztést kedvenc nyelvén, legyen az .NET, .NET Core, Java, Ruby, Node. js, PHP vagy Python.
-[Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (Web Apps) ezen szolgáltatások egyike.
+[Azure App Service Web Apps](../../app-service/overview.md) (Web Apps) ezen szolgáltatások egyike.
 
 Web Apps a Microsoft Azure erejét hozzáadja az alkalmazáshoz. Ez magában foglalja a biztonságot, a terheléselosztást, az automatikus skálázást és az automatizált felügyeletet. Emellett kihasználhatja Web Apps DevOps funkcióit, például a csomagkezelő, az átmeneti környezetek, az egyéni tartományok, az SSL/TLS-tanúsítványok és az Azure DevOps, a GitHub, a Docker hub és más források folyamatos üzembe helyezését.
 
 Az Azure más szolgáltatásokat is kínál, amelyek segítségével webhelyeket és webalkalmazásokat futtathat. A legtöbb forgatókönyvhöz a Webalkalmazások a legjobb választás. A Micro Service-architektúra esetében érdemes megfontolni az [Azure-Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric).
 Ha a kódot futtató virtuális gépek nagyobb mértékű felügyeletére van szüksége, akkor érdemes megfontolnia az [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) használatát.
-További információ az Azure-szolgáltatások közötti választásról: [Azure app Service, Virtual Machines, Service Fabric és Cloud Services összehasonlítása](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm).
+További információ az Azure-szolgáltatások közötti választásról: [Azure app Service, Virtual Machines, Service Fabric és Cloud Services összehasonlítása](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ### <a name="apply-updates-to-components"></a>Frissítések alkalmazása összetevőkön
 
@@ -147,18 +147,18 @@ Tekintse meg a [Web Application Security Project (OWASP) megnyitása](https://ww
 
 A veszélyforrások modellezése a potenciális biztonsági fenyegetések azonosításának folyamata a vállalat és az alkalmazás számára, majd a megfelelő enyhítések biztosítása. Az SDL azt adja meg, hogy a csapatok a tervezési fázisban a veszélyforrások modellezését veszik igénybe, amikor a lehetséges problémák megoldása viszonylag egyszerű és költséghatékony. A veszélyforrások modellezése a tervezési fázisban nagy mértékben csökkentheti a teljes fejlesztési költségeket.
 
-A veszélyforrások modellezési folyamatának elősegítése érdekében az [SDL](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) -Threat Modeling Toolt a nem biztonsági szakértők szem előtt tartásával alakítottuk ki. Ez az eszköz megkönnyíti a veszélyforrások modellezését minden fejlesztő számára azáltal, hogy egyértelmű útmutatást biztosít a veszélyforrások létrehozásához és elemzéséhez.
+A veszélyforrások modellezési folyamatának elősegítése érdekében az [SDL](threat-modeling-tool.md) -Threat Modeling Toolt a nem biztonsági szakértők szem előtt tartásával alakítottuk ki. Ez az eszköz megkönnyíti a veszélyforrások modellezését minden fejlesztő számára azáltal, hogy egyértelmű útmutatást biztosít a veszélyforrások létrehozásához és elemzéséhez.
 
 Az alkalmazások megtervezése és enumerálása, a hamisítás, a hamisítás, a Megtagadás, az információ-közzététel, a szolgáltatásmegtagadás és a jogosultságok megemelése – az összes megbízhatósági határ tekintetében hatékony módszert jelent a tervezési hibák észlelésére. [](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) korán. A következő táblázat felsorolja a Stride-fenyegetéseket, és példákat tartalmaz az Azure által biztosított szolgáltatások használatára. Ezek a enyhítések nem fognak működni minden helyzetben.
 
 | Threat | Biztonsági tulajdonság | Az Azure platform lehetséges enyhítése |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Hamisítási               | Authentication        | [HTTPS-kapcsolatok](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio)megkövetelése. |
-| Módosítás              | Integritás             | Ellenőrizze az SSL/TLS-tanúsítványokat. Az SSL/TLS protokollt használó alkalmazásoknak teljes mértékben ellenőriznie kell azon entitások X. 509 tanúsítványait, amelyekhez csatlakoznak. [A x509-tanúsítványok kezeléséhez](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)használjon Azure Key Vault tanúsítványokat. |
+| Módosítás              | Integritás             | Ellenőrizze az SSL/TLS-tanúsítványokat. Az SSL/TLS protokollt használó alkalmazásoknak teljes mértékben ellenőriznie kell azon entitások X. 509 tanúsítványait, amelyekhez csatlakoznak. [A x509-tanúsítványok kezeléséhez](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)használjon Azure Key Vault tanúsítványokat. |
 | Letagadhatóság            | Letagadhatatlanság       | Az Azure [monitorozásának és diagnosztizálásának](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)engedélyezése.|
-| Információfelfedés | Titoktartási       | Bizalmas adatok titkosítása [a nyugalmi](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) [állapotban és az átvitel során](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit). |
-| Szolgáltatásmegtagadás      | Rendelkezésre állás          | Teljesítmény-mérőszámok figyelése a szolgáltatási feltételek esetleges megtagadásához. A kapcsolatok szűrőinek implementálása. Az [Azure DDoS Protection](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps)az alkalmazás-tervezési ajánlott eljárásokkal együtt védelmet nyújt a DDoS-támadásokkal szemben.|
-| Jogok kiterjesztése | Authorization         | Azure Active Directory <span class="underline"></span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)használata.|
+| Információfelfedés | Titoktartási       | Bizalmas adatok titkosítása [a nyugalmi](../fundamentals/encryption-atrest.md) [állapotban és az átvitel során](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
+| Szolgáltatásmegtagadás      | Rendelkezésre állás          | Teljesítmény-mérőszámok figyelése a szolgáltatási feltételek esetleges megtagadásához. A kapcsolatok szűrőinek implementálása. Az [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md#next-steps)az alkalmazás-tervezési ajánlott eljárásokkal együtt védelmet nyújt a DDoS-támadásokkal szemben.|
+| Jogok kiterjesztése | Authorization         | Azure Active Directory <span class="underline"></span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)használata.|
 
 ### <a name="reduce-your-attack-surface"></a>A támadási felület csökkentése
 
@@ -203,21 +203,21 @@ A webalkalmazások fejlesztéséhez szükséges identitás-központú megközel�
 
 #### <a name="enforce-multi-factor-authentication-for-users"></a>A többtényezős hitelesítés betartatása a felhasználók számára
 
-Használjon kétfaktoros hitelesítést. A kétfaktoros hitelesítés a jelenlegi szabvány a hitelesítéshez és az engedélyezéshez, mivel elkerüli a felhasználónévvel és a hitelesítéshez használt jelszó-típusokkal járó biztonsági gyengeségeket. Az Azure felügyeleti felületek (Azure Portal/távoli PowerShell) és az ügyfelek felé irányuló szolgáltatások elérését az [Azure multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)használatára kell tervezni és konfigurálni.
+Használjon kétfaktoros hitelesítést. A kétfaktoros hitelesítés a jelenlegi szabvány a hitelesítéshez és az engedélyezéshez, mivel elkerüli a felhasználónévvel és a hitelesítéshez használt jelszó-típusokkal járó biztonsági gyengeségeket. Az Azure felügyeleti felületek (Azure Portal/távoli PowerShell) és az ügyfelek felé irányuló szolgáltatások elérését az [Azure multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)használatára kell tervezni és konfigurálni.
 
 #### <a name="use-strong-authentication-and-authorization-platforms"></a>Erős hitelesítési és engedélyezési platformok használata
 
-Egyéni kód helyett platform által biztosított hitelesítési és engedélyezési mechanizmusokat használhat. Ennek az az oka, hogy az egyéni hitelesítési kód fejlesztése a hibákra is hajlamos lehet. A kereskedelmi kódokat (például a Microsofttól) gyakran részletesen áttekintjük a biztonság érdekében. A [Azure Active Directory (Azure ad)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) az identitás-és hozzáférés-kezeléshez használható Azure-megoldás. Ezek az Azure AD-eszközök és-szolgáltatások segítenek a biztonságos fejlesztésben:
+Egyéni kód helyett platform által biztosított hitelesítési és engedélyezési mechanizmusokat használhat. Ennek az az oka, hogy az egyéni hitelesítési kód fejlesztése a hibákra is hajlamos lehet. A kereskedelmi kódokat (például a Microsofttól) gyakran részletesen áttekintjük a biztonság érdekében. A [Azure Active Directory (Azure ad)](../../active-directory/fundamentals/active-directory-whatis.md) az identitás-és hozzáférés-kezeléshez használható Azure-megoldás. Ezek az Azure AD-eszközök és-szolgáltatások segítenek a biztonságos fejlesztésben:
 
-- Az [Azure ad Identity platform (a fejlesztők számára készült Azure ad)](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) egy felhőalapú identitás-szolgáltatás, amellyel a fejlesztők biztonságosan jelentkezhetnek be a felhasználókba. Az Azure AD segít a több-bérlős alkalmazások fejlesztését végző egybérlős, üzletági (LOB) alkalmazások és fejlesztők létrehozásában. Az alapszintű bejelentkezésen felül az Azure AD-vel létrehozott alkalmazások meghívhatják a Microsoft API-kat és az Azure AD platformra épülő egyéni API-kat. Az Azure AD Identity platform olyan iparági szabványnak megfelelő protokollokat támogat, mint a OAuth 2,0 és az OpenID Connect.
+- Az [Azure ad Identity platform (a fejlesztők számára készült Azure ad)](../../active-directory/develop/about-microsoft-identity-platform.md) egy felhőalapú identitás-szolgáltatás, amellyel a fejlesztők biztonságosan jelentkezhetnek be a felhasználókba. Az Azure AD segít a több-bérlős alkalmazások fejlesztését végző egybérlős, üzletági (LOB) alkalmazások és fejlesztők létrehozásában. Az alapszintű bejelentkezésen felül az Azure AD-vel létrehozott alkalmazások meghívhatják a Microsoft API-kat és az Azure AD platformra épülő egyéni API-kat. Az Azure AD Identity platform olyan iparági szabványnak megfelelő protokollokat támogat, mint a OAuth 2,0 és az OpenID Connect.
 
-- A [Azure Active Directory B2C (Azure ad B2C)](https://docs.microsoft.com/azure/active-directory-b2c/) egy Identitáskezelő szolgáltatás, amellyel testreszabhatja és szabályozhatja, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik a profiljaikat, amikor az alkalmazásaikat használják. Ide tartoznak a többek között az iOS, az Android és a .NET rendszerhez fejlesztett alkalmazások is. A Azure AD B2C engedélyezi ezeket a műveleteket az ügyfelek identitásának védelme mellett.
+- A [Azure Active Directory B2C (Azure ad B2C)](../../active-directory-b2c/index.yml) egy Identitáskezelő szolgáltatás, amellyel testreszabhatja és szabályozhatja, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik a profiljaikat, amikor az alkalmazásaikat használják. Ide tartoznak a többek között az iOS, az Android és a .NET rendszerhez fejlesztett alkalmazások is. A Azure AD B2C engedélyezi ezeket a műveleteket az ügyfelek identitásának védelme mellett.
 
 #### <a name="apply-the-principle-of-least-privilege"></a>A legalacsonyabb jogosultsági szint elvét alkalmazza
 
 A [legalacsonyabb jogosultsági](https://en.wikipedia.org/wiki/Principle_of_least_privilege) szint fogalma azt jelenti, hogy a felhasználóknak a munkájuk elvégzéséhez és a feladatok végrehajtásához szükséges pontos hozzáférési szintű hozzáférésre és felügyeletre van szükségük.
 
-Szeretné, hogy a szoftverfejlesztők tartományi rendszergazdai jogokkal rendelkeznek? Szüksége lenne egy felügyeleti asszisztensnek a személyes számítógépén lévő rendszergazdai ellenőrzésekhez? A szoftverhez való hozzáférés kiértékelése nem különbözik. Ha [szerepköralapú hozzáférés-vezérlést (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) használ, hogy a felhasználók különböző képességeket és jogosultságokat biztosítanak a felhasználóknak az alkalmazásban, mindenki számára egyáltalán nem fog hozzáférni. Az egyes szerepkörökhöz szükséges hozzáférés korlátozásával korlátozható a biztonsági problémák kockázata.
+Szeretné, hogy a szoftverfejlesztők tartományi rendszergazdai jogokkal rendelkeznek? Szüksége lenne egy felügyeleti asszisztensnek a személyes számítógépén lévő rendszergazdai ellenőrzésekhez? A szoftverhez való hozzáférés kiértékelése nem különbözik. Ha [szerepköralapú hozzáférés-vezérlést (RBAC)](../../role-based-access-control/overview.md) használ, hogy a felhasználók különböző képességeket és jogosultságokat biztosítanak a felhasználóknak az alkalmazásban, mindenki számára egyáltalán nem fog hozzáférni. Az egyes szerepkörökhöz szükséges hozzáférés korlátozásával korlátozható a biztonsági problémák kockázata.
 
 Győződjön meg arról, hogy az [](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications) alkalmazás a legkevesebb jogosultságot alkalmazza a hozzáférési szokásaik során.
 
@@ -226,7 +226,7 @@ Győződjön meg arról, hogy az [](https://docs.microsoft.com/windows-server/id
 
 #### <a name="implement-just-in-time-access"></a>Igény szerinti hozzáférés megvalósítása
 
-Igény szerinti (JIT) hozzáférés megvalósítása a jogosultságok expozíciós idejének további csökkentése érdekében. [Azure ad Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#stage-3-build-visibility-and-take-full-control-of-admin-activity) használata a következőhöz:
+Igény szerinti (JIT) hozzáférés megvalósítása a jogosultságok expozíciós idejének további csökkentése érdekében. [Azure ad Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-build-visibility-and-take-full-control-of-admin-activity) használata a következőhöz:
 
 - Adja meg a felhasználóknak azokat az engedélyeket, amelyekre csak JIT szükséges.
 - A lerövidített időtartamhoz rendeljen hozzá szerepköröket úgy, hogy a jogosultságok automatikusan visszavonásra kerülnek.
@@ -242,7 +242,7 @@ Az ilyen típusú támadásokkal szembeni védekezés legjobb módja, ha megkér
 
 A kulcsok és a hitelesítő adatok elvesztése gyakori probléma. A kulcsok és a hitelesítő adatok elvesztésekor az egyetlen dolog rosszabb, mint a jogosulatlan felek hozzáférése. A támadók kihasználhatják az automatizált és manuális technikákat, hogy megtalálják a kód-adattárakban, például a GitHubban tárolt kulcsokat és titkokat. A kulcsokat és a titkokat ne helyezze el ezekben a nyilvános programkódokban vagy más kiszolgálókon.
 
-A kulcsokat, tanúsítványokat, titkokat és a kapcsolatok karakterláncait mindig a kulcskezelő megoldásba helyezi. Használhat olyan központosított megoldást, amelyben a kulcsok és a titkos kulcsokat hardveres biztonsági modulok (HSM-EK) tárolják. Az Azure a [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)segítségével a felhőben található HSM-t biztosít.
+A kulcsokat, tanúsítványokat, titkokat és a kapcsolatok karakterláncait mindig a kulcskezelő megoldásba helyezi. Használhat olyan központosított megoldást, amelyben a kulcsok és a titkos kulcsokat hardveres biztonsági modulok (HSM-EK) tárolják. Az Azure a [Azure Key Vault](../../key-vault/key-vault-whatis.md)segítségével a felhőben található HSM-t biztosít.
 
 A Key Vault *titkos tároló*: ez egy központi felhőalapú szolgáltatás az alkalmazási titkok tárolásához. Key Vault a bizalmas adatok biztonsága érdekében az alkalmazás titkos adatait egyetlen, központi helyen tárolhatja, és biztonságos hozzáférést, engedélyek vezérlését és hozzáférés-naplózást biztosít.
 
@@ -267,7 +267,7 @@ Az adatformátumok tervezésekor az összes vonatkozó adat megkülönböztethet
 #### <a name="use-encryption"></a>Titkosítás használata
 
 Az adatok védelmének fontos részét kell képeznie a biztonsági stratégiának.
-Ha az adatok egy adatbázisban vannak tárolva, vagy ha a hely között oda-vissza mozog, használja az inaktív [adatok](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) titkosítását (az adatbázisban) és az adatátviteli adattitkosítást (a felhasználó, az adatbázis, az API vagy a szolgáltatási végpont felé). [](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit) Javasoljuk, hogy mindig használjon SSL/TLS protokollokat az adatcseréhez. Győződjön meg arról, hogy a TLS legújabb verzióját használja a titkosításhoz (jelenleg ez a 1,2-es verzió).
+Ha az adatok egy adatbázisban vannak tárolva, vagy ha a hely között oda-vissza mozog, használja az inaktív [adatok](../fundamentals/encryption-atrest.md) titkosítását (az adatbázisban) és az adatátviteli adattitkosítást (a felhasználó, az adatbázis, az API vagy a szolgáltatási végpont felé). [](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit) Javasoljuk, hogy mindig használjon SSL/TLS protokollokat az adatcseréhez. Győződjön meg arról, hogy a TLS legújabb verzióját használja a titkosításhoz (jelenleg ez a 1,2-es verzió).
 
 #### <a name="avoid-hard-coding"></a>A nehezen megfejthető kódolás elkerülése
 
@@ -277,7 +277,7 @@ Amikor megjegyzéseket helyez el a kódban, ügyeljen arra, hogy ne mentsen biza
 
 Alapvetően feltételezhető, hogy a fejlesztési projektben minden a központilag köztudottan fog megjelenni. Kerülje a projekt bármilyen típusú bizalmas adatát.
 
-Korábban megbeszéltük [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis). A Key Vault használhatók a titkos kódok, például a kulcsok és a jelszavak tárolására, a titkosítás helyett. Ha a Key Vault az Azure-erőforrások felügyelt identitásával együtt használja, az Azure-webalkalmazás könnyen és biztonságosan férhet hozzá a titkos konfigurációs értékekhez anélkül, hogy bármilyen titkot nem tárol a verziókövetés vagy a konfigurációban. További információ: [a titkok kezelése a kiszolgálói alkalmazásokban a Azure Key Vault](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)használatával.
+Korábban megbeszéltük [Azure Key Vault](../../key-vault/key-vault-whatis.md). A Key Vault használhatók a titkos kódok, például a kulcsok és a jelszavak tárolására, a titkosítás helyett. Ha a Key Vault az Azure-erőforrások felügyelt identitásával együtt használja, az Azure-webalkalmazás könnyen és biztonságosan férhet hozzá a titkos konfigurációs értékekhez anélkül, hogy bármilyen titkot nem tárol a verziókövetés vagy a konfigurációban. További információ: [a titkok kezelése a kiszolgálói alkalmazásokban a Azure Key Vault](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)használatával.
 
 ### <a name="implement-fail-safe-measures"></a>Nem biztonságos mértékek implementálása
 
@@ -299,7 +299,7 @@ Győződjön meg arról, hogy:
 
 - A rendszer naplózza a kivételeket, és elegendő információt biztosít a kriminalisztikai vagy az incidensi csapatoknak a vizsgálathoz.
 
-A [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) egy első osztályú élményt biztosít a függő rendszerek által okozott [hibák és kivételek kezeléséhez](https://docs.microsoft.com/azure/logic-apps/logic-apps-exception-handling) . A Logic Apps használatával munkafolyamatokat hozhat létre, amelyekkel automatizálhatja a vállalatok és a szervezetek alkalmazásait, adatait, rendszereit és szolgáltatásait integráló feladatokat és folyamatokat.
+A [Azure Logic apps](../../logic-apps/logic-apps-overview.md) egy első osztályú élményt biztosít a függő rendszerek által okozott [hibák és kivételek kezeléséhez](../../logic-apps/logic-apps-exception-handling.md) . A Logic Apps használatával munkafolyamatokat hozhat létre, amelyekkel automatizálhatja a vállalatok és a szervezetek alkalmazásait, adatait, rendszereit és szolgáltatásait integráló feladatokat és folyamatokat.
 
 ### <a name="use-logging-and-alerting"></a>Naplózás és riasztás használata
 

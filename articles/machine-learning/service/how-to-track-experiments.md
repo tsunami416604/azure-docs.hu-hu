@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: f7cd0125de886eed4b3e5c31503fdd4b7cbb76dd
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7b14ed2c18c1106477e21062afaa4cc8f672c203
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847826"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946388"
 ---
-# <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>A betanítási metrikák a Azure Machine Learningban való futtatásakor
+# <a name="log-metrics-during-training-runs"></a>Naplózási mérőszámok a betanítási futtatások során
 
 A kísérletek és a monitorozási mérőszámok nyomon követésével növelheti a modell létrehozásának folyamatát. Ebből a cikkből megtudhatja, hogyan veheti fel a naplózást a betanítási parancsfájlba, hogyan küldhet el egy kísérletet, hogyan figyelheti a futtatást, és hogyan tekintheti meg a futtatások eredményeit Azure Machine Learning szolgáltatásban.
+
+> [!NOTE]
+> A Azure Machine Learning szolgáltatás a betanítás során más forrásokból is naplózhat adatokat, például AutoML vagy a betanítási feladatot futtató Docker-tárolót. Ezek a naplók nincsenek dokumentálva. Ha problémákat tapasztal, és felveszi a kapcsolatot a Microsoft ügyfélszolgálatával, előfordulhat, hogy a hibaelhárítás során ezeket a naplókat is használni tudja.
 
 ## <a name="list-of-training-metrics"></a>Képzési mérőszámok listája 
 
@@ -221,7 +224,7 @@ Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel b
 
 ## <a name="manage-a-run"></a>Futtatás kezelése
 
-A [tanítási futtatások indítása, figyelése és megszakítása című](how-to-manage-runs.md) cikk a kísérletek kezelésével kapcsolatos konkrét Azure Machine learning munkafolyamatokat emeli ki.
+A [képzések indítása, figyelése és megszakítása című](how-to-manage-runs.md) cikk kiemeli a kísérletek kezeléséhez kapcsolódó Azure Machine learning munkafolyamatokat.
 
 ## <a name="view-run-details"></a>Futtatás részletei nézet
 

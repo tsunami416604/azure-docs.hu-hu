@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: b4f2bf5c762b6f93c2d23714d860e8261f6756d1
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e7646330d9d89d5257a991b5095b7b6814aa3ba9
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847693"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966818"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning-service"></a>Kerasz besorolási modell betanítása és regisztrálása Azure Machine Learning szolgáltatással
 
@@ -207,3 +207,7 @@ Ebben a cikkben a Azure Machine Learning Service-ben betanított és regisztrál
 
 > [!div class="nextstepaction"]
 > [Modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)
+* [Metrikák futtatása a betanítás során nyomon követése](how-to-track-experiments.md)
+* [Hiperparaméterek hangolása](how-to-tune-hyperparameters.md)
+* [A betanított modell üzembe helyezése](how-to-deploy-and-where.md)
+* [Az Azure-ban elosztott Deep learning-képzés hivatkozási architektúrája](/azure/architecture/reference-architectures/ai/training-deep-learning)

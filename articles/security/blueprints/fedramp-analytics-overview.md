@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: 61f0b42731f98dc772a588e5840af6e8535af118
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 7b07fee46bce4c7b80346eb0b4c0fccd5245d87f
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781094"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946874"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Azure Security and Compliance Blueprint: FedRAMP-elemzés
 
@@ -44,7 +44,7 @@ Azure SQL Database általában SQL Server Management Studio (SSMS) használatáv
 ![A FedRAMP] -referenciák architektúrájának diagramja (images/fedramp-analytics-reference-architecture.png?raw=true "A FedRAMP") -referenciák architektúrájának diagramja
 
 ### <a name="roles"></a>Szerepkörök
-Az elemzési terv három általános felhasználói típussal rendelkező forgatókönyvet vázol fel: az operatív felhasználót, az SQL/adatkezelőt és a rendszermérnöket. Az Azure szerepköralapú Access Control (RBAC) lehetővé teszi a pontos hozzáférés-kezelés megvalósítását a beépített egyéni szerepkörök használatával. A [szerepköralapú Access Control](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) konfigurálásához és az [előre definiált szerepkörök](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)megvalósításához és végrehajtásához rendelkezésre álló erőforrások.
+Az elemzési terv három általános felhasználói típussal rendelkező forgatókönyvet vázol fel: az operatív felhasználót, az SQL/adatkezelőt és a rendszermérnöket. Az Azure szerepköralapú Access Control (RBAC) lehetővé teszi a pontos hozzáférés-kezelés megvalósítását a beépített egyéni szerepkörök használatával. A [szerepköralapú Access Control](../../role-based-access-control/role-assignments-portal.md) konfigurálásához és az [előre definiált szerepkörök](../../role-based-access-control/built-in-roles.md)megvalósításához és végrehajtásához rendelkezésre álló erőforrások.
 
 #### <a name="systems-engineer"></a>Rendszermérnök
 A rendszermérnök az Azure-hoz készült ügyfél-előfizetést használja, és az Azure Portalon konfigurálja a megoldás üzembe helyezését.
@@ -80,11 +80,11 @@ A következő szakasz részletesen ismerteti a fejlesztési és megvalósítási
 **Power bi**: A [Power bi](https://docs.microsoft.com/power-bi/service-azure-and-power-bi) elemzési és jelentéskészítési funkciókat biztosít az ügyfeleknek az adatfeldolgozási erőfeszítéseik jobb megismerésére.
 
 ### <a name="networking"></a>Hálózat
-**Hálózati biztonsági csoportok**: A [NSG](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) úgy vannak beállítva, hogy az üzembe helyezett erőforrásokra és szolgáltatásokra irányuló forgalmat kezeljék. A hálózati biztonsági csoportok egy megtagadási alapértelmezett sémára vannak beállítva, és csak az előre konfigurált Access Control listán (ACL) található forgalmat engedélyezik.
+**Hálózati biztonsági csoportok**: A [NSG](../../virtual-network/virtual-network-vnet-plan-design-arm.md) úgy vannak beállítva, hogy az üzembe helyezett erőforrásokra és szolgáltatásokra irányuló forgalmat kezeljék. A hálózati biztonsági csoportok egy megtagadási alapértelmezett sémára vannak beállítva, és csak az előre konfigurált Access Control listán (ACL) található forgalmat engedélyezik.
 
 Mindegyik NSG meg van nyitva bizonyos portok és protokollok, hogy a megoldás biztonságosan és megfelelően működjön. Emellett a következő konfigurációk is engedélyezve vannak az egyes NSG:
   - A [diagnosztikai naplók és események](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) engedélyezve vannak, és Storage-fiókban tárolódnak
-  - [Azure monitor naplók](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics) a NSG diagnosztikai naplóihoz vannak csatlakoztatva.
+  - [Azure monitor naplók](../../azure-monitor/insights/azure-networking-analytics.md) a NSG diagnosztikai naplóihoz vannak csatlakoztatva.
 
 ### <a name="data-at-rest"></a>Inaktív adat
 Az architektúra titkosítva, adatbázis-naplózással és egyéb mértékekkel védi a nyugalmi állapotban lévő adatok védelmét.
@@ -93,38 +93,38 @@ Az architektúra titkosítva, adatbázis-naplózással és egyéb mértékekkel 
  - Az adatreplikálás alapértelmezett beállítása a **geo-redundáns tárolás (GRS)** , amely aszinkron módon tárolja az ügyféladatokat az elsődleges régión kívüli különálló adatközpontban. Ez biztosítja az adathelyreállítást az elsődleges adatközponthoz tartozó összes veszteségi esemény során.
  - A **helyileg redundáns tárolást (LRS)** az Azure Storage-fiók használatával is konfigurálhatja. A LRS olyan tárolási méretezési egységen belül replikálja az adatmennyiséget, amely ugyanabban a régióban található, mint amelyben az ügyfél létrehozza a fiókját. Az összes adattal párhuzamosan replikálódik, így biztosítva, hogy a rendszer ne veszítse el a biztonsági mentési adatmennyiséget az elsődleges tárolási skálázási egység meghibásodásakor.
 
-**Azure Storage** A titkosított adatoknak a nyugalmi követelmények kielégítése érdekében az ebben a viszonyítási architektúrában üzembe helyezett összes szolgáltatás kihasználja az [Azure Storage](https://azure.microsoft.com/services/storage/)-t, amely az adatok [Storage Service Encryptionekkel](https://docs.microsoft.com/azure/storage/storage-service-encryption)való tárolását
+**Azure Storage** A titkosított adatoknak a nyugalmi követelmények kielégítése érdekében az ebben a viszonyítási architektúrában üzembe helyezett összes szolgáltatás kihasználja az [Azure Storage](https://azure.microsoft.com/services/storage/)-t, amely az adatok [Storage Service Encryptionekkel](../../storage/common/storage-service-encryption.md)való tárolását
 
 AzureDiskEncryption
-[Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) a Windows BitLocker szolgáltatásával biztosítja a kötetek titkosítását az operációs rendszer és az adatlemezek számára. A megoldás integrálva van Azure Key Vaultekkel a lemezes titkosítási kulcsok szabályozása és kezelése érdekében.
+[Azure Disk Encryption](../azure-security-disk-encryption-overview.md) a Windows BitLocker szolgáltatásával biztosítja a kötetek titkosítását az operációs rendszer és az adatlemezek számára. A megoldás integrálva van Azure Key Vaultekkel a lemezes titkosítási kulcsok szabályozása és kezelése érdekében.
 
 **Azure SQL Database** A Azure SQL Database példány a következő adatbázis-biztonsági mértékeket használja:
 -   Az [AD-hitelesítés és-engedélyezés](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) lehetővé teszi az adatbázis-felhasználók és más Microsoft-szolgáltatások identitásának kezelését egy központi helyen.
--   Az [SQL Database naplózása](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) nyomon követi az adatbázis eseményeit, és egy Azure Storage-fiókban lévő naplóba írja azokat.
+-   Az [SQL Database naplózása](../../sql-database/sql-database-auditing.md) nyomon követi az adatbázis eseményeit, és egy Azure Storage-fiókban lévő naplóba írja azokat.
 -   A SQL Database [transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)használatára van konfigurálva, amely az adatok és naplófájlok valós idejű titkosítását és visszafejtését hajtja végre a további információk védelme érdekében. A TDE biztosítja, hogy a tárolt adataik nem érvényesek a jogosulatlan hozzáférésre.
 -   A [Tűzfalszabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) megakadályozzák az adatbázis-kiszolgálók hozzáférését a megfelelő engedélyek megadása előtt. A tűzfal biztosítja az adatbázisokhoz való hozzáférést az egyes kérések kiindulási IP-címe alapján.
--   Az [SQL](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started) -veszélyforrások észlelése lehetővé teszi az észlelést és a reagálást a potenciális fenyegetésekre, mivel ezek a hibák a gyanús adatbázis-tevékenységek, a potenciális sebezhetőségek, az SQL-injektálási támadások és a rendellenes adatbázis-hozzáférési minták esetében
+-   Az [SQL](../../sql-database/sql-database-threat-detection.md) -veszélyforrások észlelése lehetővé teszi az észlelést és a reagálást a potenciális fenyegetésekre, mivel ezek a hibák a gyanús adatbázis-tevékenységek, a potenciális sebezhetőségek, az SQL-injektálási támadások és a rendellenes adatbázis-hozzáférési minták esetében
 -   [Always encrypted oszlopok](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) biztosítják, hogy a bizalmas adatok soha ne jelenjenek meg egyszerű szövegként az adatbázis-rendszeren belül. Az adattitkosítás engedélyezése után csak az ügyfélalkalmazások vagy az alkalmazások férhetnek hozzá a kulcsokhoz.
 -   [SQL Database a dinamikus adatmaszkolás](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) a hivatkozási architektúra telepítése után végezhető el. Az ügyfeleknek módosítaniuk kell a dinamikus adatmaszkolási beállításokat az adatbázis-sémájuk betartásához.
 
 ### <a name="logging-and-audit"></a>Naplózás és naplózás
-A [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) a figyelési adatok (például a tevékenységek naplói, metrikák és diagnosztikai adatok) teljes megjelenítését állítja elő, így az ügyfelek teljes rendszerállapot-képet hozhatnak létre.  
-[Azure monitor naplók](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) széles körű naplózást biztosítanak a rendszer és a felhasználók tevékenységéről, valamint a rendszer állapotáról. Az Azure-ban és a helyszíni környezetekben található erőforrások által generált adatokat gyűjti és elemzi.
-- **Tevékenységek naplói**: A [tevékenységek naplói](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) betekintést nyújtanak az előfizetésben lévő erőforrásokon végrehajtott műveletekre.
-- **Diagnosztikai naplók**: A [diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-események rendszernaplóit és az Azure Blob Storage, Tables és üzenetsor-naplókat tartalmazzák.
+A [Azure monitor](../../azure-monitor/overview.md) a figyelési adatok (például a tevékenységek naplói, metrikák és diagnosztikai adatok) teljes megjelenítését állítja elő, így az ügyfelek teljes rendszerállapot-képet hozhatnak létre.  
+[Azure monitor naplók](../azure-security-disk-encryption-overview.md) széles körű naplózást biztosítanak a rendszer és a felhasználók tevékenységéről, valamint a rendszer állapotáról. Az Azure-ban és a helyszíni környezetekben található erőforrások által generált adatokat gyűjti és elemzi.
+- **Tevékenységek naplói**: A [tevékenységek naplói](../../azure-monitor/platform/activity-logs-overview.md) betekintést nyújtanak az előfizetésben lévő erőforrásokon végrehajtott műveletekre.
+- **Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-események rendszernaplóit és az Azure Blob Storage, Tables és üzenetsor-naplókat tartalmazzák.
 - **Tűzfal naplófájljai**: A Application Gateway teljes körű diagnosztikai és hozzáférési naplókat biztosít. A WAF-kompatibilis Application Gateway erőforrásai számára elérhetők a tűzfalak.
 - **Napló archiválása**: Az összes diagnosztikai napló egy központi és titkosított Azure Storage-fiókba írja az archiválást, amely a megadott megőrzési időtartam 2 nap. Ezek a naplók Azure Monitor naplókat csatlakoznak a feldolgozáshoz, tároláshoz és irányítópult-jelentéskészítéshez.
 
 Emellett az alábbi figyelési megoldások is részét képezik ennek az architektúrának:
 -   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): A Azure Automation megoldás tárolja, futtatja és felügyeli a runbookok.
--   [Security and Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): A Security and Audit irányítópult magas szintű betekintést nyújt az erőforrások biztonsági állapotára azáltal, hogy mérőszámokat biztosít a biztonsági tartományokra, a jelentős problémákra, az észlelésekre, a fenyegetések felderítésére és az általános biztonsági lekérdezésekre.
--   [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Az SQL Health-ellenőrzési megoldás rendszeres időközönként kivizsgálja a kiszolgálói környezetek kockázatait és állapotát, és az ügyfelek számára az üzembe helyezett kiszolgáló-infrastruktúrára jellemző ajánlások rangsorolt listáját biztosítja.
--   [Azure-tevékenység naplói](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Az Activity Log Analytics-megoldás segítséget nyújt az Azure-tevékenységek naplóinak elemzéséhez az ügyfelek összes Azure-előfizetése között.
+-   [Security and Audit](../../security-center/security-center-intro.md): A Security and Audit irányítópult magas szintű betekintést nyújt az erőforrások biztonsági állapotára azáltal, hogy mérőszámokat biztosít a biztonsági tartományokra, a jelentős problémákra, az észlelésekre, a fenyegetések felderítésére és az általános biztonsági lekérdezésekre.
+-   [SQL Assessment](../../azure-monitor/insights/sql-assessment.md): Az SQL Health-ellenőrzési megoldás rendszeres időközönként kivizsgálja a kiszolgálói környezetek kockázatait és állapotát, és az ügyfelek számára az üzembe helyezett kiszolgáló-infrastruktúrára jellemző ajánlások rangsorolt listáját biztosítja.
+-   [Azure-tevékenység naplói](../../azure-monitor/platform/collect-activity-logs.md): Az Activity Log Analytics-megoldás segítséget nyújt az Azure-tevékenységek naplóinak elemzéséhez az ügyfelek összes Azure-előfizetése között.
 
 ### <a name="identity-management"></a>Identitáskezelés
--   Az alkalmazáshoz való hitelesítés az Azure AD használatával történik. További információ: [alkalmazások integrálása a Azure Active Directorysal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Emellett az adatbázis oszlopának titkosítása az Azure AD használatával hitelesíti az alkalmazást Azure SQL Database. További információ: a [bizalmas adatok védelme SQL Databaseban](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
--   [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) észleli a szervezet identitásait érintő lehetséges biztonsági réseket, automatikus válaszokat konfigurál a szervezet identitásával kapcsolatos gyanús műveletekre, és megvizsgálja a gyanús incidensek, hogy megtegye a megfelelő lépéseket a megoldásához.
--   Az [Azure szerepköralapú Access Control (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) lehetővé teszi a célzott hozzáférés-kezelést az Azure-hoz. Az előfizetés-hozzáférés az előfizetés rendszergazdájára korlátozódik.
+-   Az alkalmazáshoz való hitelesítés az Azure AD használatával történik. További információ: [alkalmazások integrálása a Azure Active Directorysal](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md). Emellett az adatbázis oszlopának titkosítása az Azure AD használatával hitelesíti az alkalmazást Azure SQL Database. További információ: a [bizalmas adatok védelme SQL Databaseban](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
+-   [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) észleli a szervezet identitásait érintő lehetséges biztonsági réseket, automatikus válaszokat konfigurál a szervezet identitásával kapcsolatos gyanús műveletekre, és megvizsgálja a gyanús incidensek, hogy megtegye a megfelelő lépéseket a megoldásához.
+-   Az [Azure szerepköralapú Access Control (RBAC)](../../role-based-access-control/role-assignments-portal.md) lehetővé teszi a célzott hozzáférés-kezelést az Azure-hoz. Az előfizetés-hozzáférés az előfizetés rendszergazdájára korlátozódik.
 
 Ha többet szeretne megtudni a Azure SQL Database biztonsági funkcióinak használatáról, tekintse meg a [contoso Clinic bemutató alkalmazás](https://github.com/Microsoft/azure-sql-security-sample) mintáját.
 
@@ -137,7 +137,7 @@ Ha többet szeretne megtudni a Azure SQL Database biztonsági funkcióinak haszn
 A [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a biztonságos VPN-alagutat úgy kell konfigurálni, hogy biztonságosan létesítsen kapcsolatot az adatelemzési hivatkozási architektúra részeként üzembe helyezett erőforrásokkal. Mivel a ExpressRoute-kapcsolatok nem az interneten keresztül haladnak át, ezek a kapcsolatok megbízhatóbbak, gyorsabbak, kisebb késések és nagyobb biztonságot biztosítanak, mint a szokásos kapcsolatok az interneten keresztül. A ExpressRoute vagy a VPN megfelelő beállításával az ügyfelek hozzáadhatnak egy védelmi réteget az átvitelhez.
 
 ### <a name="azure-active-directory-setup"></a>Azure Active Directory telepítő
-[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) elengedhetetlen az üzembe helyezés kezeléséhez és a környezettel kommunikáló személyzethez való hozzáféréshez. Egy meglévő Windows Server-Active Directory [négy kattintással](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express)integrálható a HRE. Az ügyfelek az üzembe helyezett Active Directory infrastruktúrát (tartományvezérlőket) egy meglévő HRE is összeállíthatják azáltal, hogy az üzembe helyezett Active Directory-infrastruktúrát egy HRE-erdő altartományának teszi.
+[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) elengedhetetlen az üzembe helyezés kezeléséhez és a környezettel kommunikáló személyzethez való hozzáféréshez. Egy meglévő Windows Server-Active Directory [négy kattintással](../../active-directory/hybrid/how-to-connect-install-express.md)integrálható a HRE. Az ügyfelek az üzembe helyezett Active Directory infrastruktúrát (tartományvezérlőket) egy meglévő HRE is összeállíthatják azáltal, hogy az üzembe helyezett Active Directory-infrastruktúrát egy HRE-erdő altartományának teszi.
 
 ### <a name="additional-services"></a>További szolgáltatások
 #### <a name="iaas---vm-considerations"></a>IaaS – virtuális gépekkel kapcsolatos megfontolások
@@ -149,11 +149,11 @@ Ez a Pásti-megoldás nem tartalmaz Azure IaaS virtuális gépeket. Egy ügyfél
 - **Recovery Services**tároló: Az [Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) -tároló a biztonsági mentési és az Azure-Virtual Machines összes konfigurációját védi ebben az architektúrában. Recovery Services-tárolóval az ügyfelek a teljes virtuális gép visszaállítása nélkül állíthatják vissza a fájlokat és mappákat egy IaaS virtuális gépről, így a gyorsabb visszaállítási idő is megadható.
 
 ##### <a name="monitoring-solutions"></a>Monitorozási megoldások
--   [Ad Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): A Active Directory Health-ellenőrzési megoldás rendszeres időközönként kivizsgálja a kiszolgálói környezetek kockázatait és állapotát, és rangsorolja a telepített kiszolgálói infrastruktúrára jellemző ajánlásokat.
--   [Antimalware Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): Az antimalware-megoldás a kártevők, fenyegetések és védelem állapotáról nyújt jelentéseket.
--   [Update Management](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): Az Update Management megoldás lehetővé teszi az operációs rendszer biztonsági frissítéseinek az ügyfelek általi felügyeletét, beleértve az elérhető frissítések állapotát, valamint a szükséges frissítések telepítésének folyamatát.
--   [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Az Agent Health-megoldás jelentést készít, hogy hány ügynök van üzembe helyezve, valamint a földrajzi eloszlásuk, valamint a nem válaszoló ügynökök száma, valamint az operatív adatküldés alatt álló ügynökök száma.
--   [Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking): A Change Tracking megoldás lehetővé teszi, hogy az ügyfelek könnyedén azonosítsák a környezet változásait.
+-   [Ad Assessment](../../azure-monitor/insights/ad-assessment.md): A Active Directory Health-ellenőrzési megoldás rendszeres időközönként kivizsgálja a kiszolgálói környezetek kockázatait és állapotát, és rangsorolja a telepített kiszolgálói infrastruktúrára jellemző ajánlásokat.
+-   [Antimalware Assessment](../../security-center/security-center-install-endpoint-protection.md): Az antimalware-megoldás a kártevők, fenyegetések és védelem állapotáról nyújt jelentéseket.
+-   [Update Management](../../automation/automation-update-management.md): Az Update Management megoldás lehetővé teszi az operációs rendszer biztonsági frissítéseinek az ügyfelek általi felügyeletét, beleértve az elérhető frissítések állapotát, valamint a szükséges frissítések telepítésének folyamatát.
+-   [Agent Health](../../monitoring/monitoring-solution-agenthealth.md): Az Agent Health-megoldás jelentést készít, hogy hány ügynök van üzembe helyezve, valamint a földrajzi eloszlásuk, valamint a nem válaszoló ügynökök száma, valamint az operatív adatküldés alatt álló ügynökök száma.
+-   [Change Tracking](../../automation/change-tracking.md): A Change Tracking megoldás lehetővé teszi, hogy az ügyfelek könnyedén azonosítsák a környezet változásait.
 
 ##### <a name="security"></a>Biztonság
 - **Kártevők elleni védelem**: A Virtual Machines rendszerhez készült [Microsoft antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) olyan valós idejű védelmi képességet biztosít, amely lehetővé teszi a vírusok, kémprogramok és más kártékony szoftverek azonosítását és eltávolítását, amelyekkel konfigurálható riasztások állíthatók be, ha az ismert kártékony vagy nemkívánatos szoftverek megkísérlik Telepítsen vagy futtasson védett virtuális gépeken.

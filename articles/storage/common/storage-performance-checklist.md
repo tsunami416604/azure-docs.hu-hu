@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ee216bd4d6994179e347465c30039f2f8e293c85
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 48a5484e2b2b663d0046fc628c02e656c5bd7a25
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233022"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985168"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Teljesítmény-és méretezhetőségi ellenőrzőlista Microsoft Azure Storage
 
@@ -28,7 +28,7 @@ Ez a cikk a bevált eljárásokat a következő csoportokba rendezi. Bevált elj
 * Az összes Azure Storage-szolgáltatás (Blobok, táblák, várólisták és fájlok)
 * Blobok
 * Táblák
-* Üzenetsorok  
+* Várólisták  
 
 | Kész | Terület | Category | Kérdés |
 | --- | --- | --- | --- |
@@ -72,13 +72,13 @@ Ez a cikk a bevált eljárásokat a következő csoportokba rendezi. Bevált elj
 | &nbsp; | Táblák |Beszúrás/frissítés/törlés |[Elkerüli az entitások beolvasását, hogy megtörténjen a Beszúrás vagy a frissítés meghívása?](#subheading36) |
 | &nbsp; | Táblák |Beszúrás/frissítés/törlés |[Vannak olyan adatsorozatok, amelyek gyakran egy entitásban lesznek beolvasva több entitás helyett tulajdonságokként?](#subheading37) |
 | &nbsp; | Táblák |Beszúrás/frissítés/törlés |[Azokat az entitásokat, amelyek mindig együtt lesznek lekérdezve, és kötegekben (például idősorozat-adatsorokban) is írhatók, a táblázatok helyett blobokat használtak?](#subheading38) |
-| &nbsp; | Üzenetsorok |Méretezhetőségi célok |[Közeledik a másodpercenkénti üzenetek skálázhatósági céljaihoz?](#subheading39) |
-| &nbsp; | Üzenetsorok |Konfiguráció |[Kikapcsolta a kis-és nagyvállalati kérelmek teljesítményének növelését?](#subheading40) |
-| &nbsp; | Üzenetsorok |Üzenet mérete |[Az üzenetek tömörítve vannak az üzenetsor teljesítményének növelése érdekében?](#subheading41) |
-| &nbsp; | Üzenetsorok |Tömeges beolvasás |[Több üzenet beolvasása egyetlen "Get" művelettel történik?](#subheading42) |
-| &nbsp; | Üzenetsorok |Lekérdezés gyakorisága |[Elég gyakran lekérdezni az alkalmazást, hogy csökkentse az alkalmazás észlelt késését?](#subheading43) |
-| &nbsp; | Üzenetsorok |Üzenet frissítése |[A UpdateMessage használatával tárolja az üzenetek feldolgozási folyamatát, így nem kell újradolgoznia a teljes üzenetet, ha hiba történik?](#subheading44) |
-| &nbsp; | Üzenetsorok |Architektúra |[Olyan várólistákat használ, amelyekkel a teljes alkalmazás jobban méretezhető a hosszú távú munkaterhelések kiszámításával a kritikus elérési útról és a méretezéstől függetlenül?](#subheading45) |
+| &nbsp; | Várólisták |Méretezhetőségi célok |[Közeledik a másodpercenkénti üzenetek skálázhatósági céljaihoz?](#subheading39) |
+| &nbsp; | Várólisták |Konfiguráció |[Kikapcsolta a kis-és nagyvállalati kérelmek teljesítményének növelését?](#subheading40) |
+| &nbsp; | Várólisták |Üzenet mérete |[Az üzenetek tömörítve vannak az üzenetsor teljesítményének növelése érdekében?](#subheading41) |
+| &nbsp; | Várólisták |Tömeges beolvasás |[Több üzenet beolvasása egyetlen "Get" művelettel történik?](#subheading42) |
+| &nbsp; | Várólisták |Lekérdezés gyakorisága |[Elég gyakran lekérdezni az alkalmazást, hogy csökkentse az alkalmazás észlelt késését?](#subheading43) |
+| &nbsp; | Várólisták |Üzenet frissítése |[A UpdateMessage használatával tárolja az üzenetek feldolgozási folyamatát, így nem kell újradolgoznia a teljes üzenetet, ha hiba történik?](#subheading44) |
+| &nbsp; | Várólisták |Architektúra |[Olyan várólistákat használ, amelyekkel a teljes alkalmazás jobban méretezhető a hosszú távú munkaterhelések kiszámításával a kritikus elérési útról és a méretezéstől függetlenül?](#subheading45) |
 
 ## <a name="allservices"></a>Minden szolgáltatás
 
@@ -172,7 +172,7 @@ Mindkét technológia segíthet elkerülni a webalkalmazás szükségtelen terhe
 
 #### <a name="useful-resources"></a>Hasznos források
 
-További információ az SAS- [vel kapcsolatban: közös hozzáférésű aláírások, 1. rész: Az SAS-modell](../storage-dotnet-shared-access-signature-part-1.md)megismerése.  
+Az SAS-vel kapcsolatos további információkért lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférési aláírások (SAS) használatával](storage-sas-overview.md).  
 
 A CORS kapcsolatos további információkért lásd: [Az Azure Storage szolgáltatásainak az adatforrások közötti megosztása (CORS) támogatása](https://msdn.microsoft.com/library/azure/dn535601.aspx).  
 
@@ -429,7 +429,7 @@ A Batch-tranzakciók az Azure Storage-ban az Entity Group Transactions (ETG SZOL
 
 ##### <a name="subheading36"></a>Upsert
 
-Ha csak lehet, használja a Table **Upsert** -műveleteket. Kétféle **Upsert**létezik, amelyek közül mindkettő hatékonyabb lehet, mint egy hagyományos beszúrási és **** **frissítési** művelet:  
+Ha csak lehet, használja a Table **Upsert** -műveleteket. Kétféle **Upsert**létezik, amelyek közül mindkettő hatékonyabb lehet, mint egy hagyományos beszúrási és **frissítési** művelet:  
 
 * **InsertOrMerge**: Akkor használja, ha az entitás tulajdonságainak egy részhalmazát szeretné feltölteni, de nem biztos benne, hogy az entitás már létezik-e. Ha az entitás létezik, a hívás frissíti a **Upsert** műveletben foglalt tulajdonságokat, és az összes meglévő tulajdonságot elhagyja, ha az entitás nem létezik, beszúrja az új entitást. Ez hasonló a lekérdezésekben a leképezések használatához, hogy csak a változó tulajdonságokat kell feltöltenie.
 * **InsertOrReplace**: Akkor használja ezt a lehetőséget, ha egy teljesen új entitást szeretne feltölteni, de nem biztos benne, hogy már létezik-e. Ezt csak akkor kell használnia, ha tudja, hogy az újonnan feltöltött entitás teljesen helyes, mert teljesen felülírja a régi entitást. Például szeretné frissíteni a felhasználó aktuális helyét tároló entitást, függetlenül attól, hogy az alkalmazás korábban tárolta-e a felhasználó tartózkodási helyét. az új hely entitás elkészült, és semmilyen információt nem kell megadnia az előző entitásokról.
@@ -444,7 +444,7 @@ Azt is megteheti, hogy az alkalmazás minden órában a CPU-használatot külön
 
 Időnként úgy érzi, hogy a strukturált adatmennyiség táblákba kerül, de az entitások tartománya mindig együtt lesz lekérdezve, és kötegelt beilleszthető lehet.  Jó példa erre a naplófájlra.  Ebben az esetben több perces naplót is beállíthat, beszúrhatja őket, majd egyszerre több perces naplót is beolvashat.  Ebben az esetben a teljesítmény érdekében jobb, ha táblázatok helyett blobokat használ, mivel jelentősen csökkentheti a megírt/visszaadott objektumok számát, valamint általában a szükséges kérelmek számát.  
 
-## <a name="queues"></a>Üzenetsorok
+## <a name="queues"></a>Várólisták
 
 Az összes korábban ismertetett [szolgáltatás](#allservices) bevált eljárásai mellett a következő bevált eljárások kifejezetten az üzenetsor-szolgáltatásra vonatkoznak.  
 

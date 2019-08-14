@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 9bf90c9d3ce593ba5bf6339cd9cec31bb49f14f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3c179cfbf86c2dddfb34b46540aba8898038751
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61399927"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966495"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Netezza adatokat másol az Azure Data Factory használatával
 
@@ -28,6 +28,10 @@ Ez a cikk az Azure Data Factory másolási tevékenység használatával adatoka
 Másolhat adatokat Netezza bármely támogatott fogadó adattárba. Az adatok listáját tárolja, hogy a másolási tevékenység támogatja a forrásként és fogadóként, lásd: [támogatott adattárak és formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Az Azure Data Factory-kapcsolat beépített illesztőprogramot tartalmaz. Nem kell manuálisan telepítenie az összes illesztőprogram az összekötő használatához.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -42,14 +46,14 @@ A következő tulajdonságok támogatottak a Netezza társított szolgáltatást
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** tulajdonságot állítsa **Netezza**. | Igen |
-| connectionString | Az ODBC kapcsolati karakterlánc Netezza csatlakozni. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Jelszó az Azure Key Vault és lekéréses is helyezheti a `pwd` konfigurációs ki a kapcsolati karakterláncot. Tekintse meg a következő minták és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. | Igen |
-| connectVia | A [Integration Runtime](concepts-integration-runtime.md) kapcsolódni az adattárhoz. Választhat egy saját üzemeltetésű integrációs modulok vagy az Azure integrációs modul (ha az adattár nyilvánosan elérhető). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| connectionString | Az ODBC kapcsolati karakterlánc Netezza csatlakozni. <br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A jelszót a Azure Key Vaultban is elhelyezheti, és `pwd` lekérheti a konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) kapcsolódni az adattárhoz. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 Egy tipikus kapcsolati karakterlánc `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. A következő táblázat ismerteti, amely lehet további tulajdonságok:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| SecurityLevel | Az adattárban való csatlakozáshoz használja az illesztőprogram (SSL/TLS) biztonsági szintjét. Példa: `SecurityLevel=preferredSecured`. Támogatott értékei a következők:<br/>- **Csak nem biztonságos** (**onlyUnSecured**): Az illesztőprogram nem használ SSL.<br/>- **Előnyben részesített nem biztonságos (preferredUnSecured) (alapértelmezett)** : Ha a kiszolgáló lehetővé teszi a választást, az illesztőprogram az SSL használatára nem. <br/>- **Előnyben részesített (preferredSecured) biztonságos**: Ha a kiszolgáló lehetővé teszi a választást, az illesztőprogram az SSL. <br/>- **Csak a (onlySecured) védett**: Az illesztőprogram nem kapcsolatot, ha SSL-kapcsolat nem érhető el. | Nem |
+| SecurityLevel | Az adattárban való csatlakozáshoz használja az illesztőprogram (SSL/TLS) biztonsági szintjét. Példa: `SecurityLevel=preferredSecured`. Támogatott értékei a következők:<br/>- **Csak nem biztonságos** (**onlyUnSecured**): Az illesztőprogram nem használ SSL-t.<br/>- **Előnyben részesített nem védett (preferredUnSecured) (alapértelmezett)** : Ha a kiszolgáló választási lehetőséget biztosít, az illesztőprogram nem használ SSL-t. <br/>- **Előnyben részesített biztonságos (preferredSecured)** : Ha a kiszolgáló választási lehetőséget biztosít, az illesztőprogram SSL-t használ. <br/>- **Csak biztonságos (onlySecured)** : Az illesztőprogram nem csatlakozik, ha nem érhető el SSL-kapcsolat. | Nem |
 | CaCertFile | A kiszolgáló által használt SSL-tanúsítvány teljes elérési útja. Például: `CaCertFile=<cert path>;`| Igen, ha SSL engedélyezve van |
 
 **Példa**
@@ -73,7 +77,7 @@ Egy tipikus kapcsolati karakterlánc `Server=<server>;Port=<port>;Database=<data
 }
 ```
 
-**Példa: a jelszó tárolásához az Azure Key Vaultban**
+**Példa: a Jelszó tárolása Azure Key Vault**
 
 ```json
 {
@@ -112,7 +116,7 @@ Adatok másolása Netezza, állítsa be a **típusa** tulajdonság, az adatkész
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **NetezzaTable** | Igen |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **NetezzaTable** | Igen |
 | tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**

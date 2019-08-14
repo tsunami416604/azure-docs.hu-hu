@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 8d6cc131c0c2baf7cc0a6600946870615d99e030
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: a6fa08596f5778b2c188fe3402801cf487b32ae4
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839806"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966988"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Adatok másolása HTTP-végpontból Azure Data Factory használatával
 
@@ -46,6 +46,10 @@ Ezt a HTTP-összekötőt a következő célra használhatja:
 > [!TIP]
 > Ha a HTTP-összekötő Data Factoryban való konfigurálása előtt szeretne tesztelni egy HTTP-kérelmet az adatlekérdezéshez, ismerkedjen meg a fejléc és a törzs követelményeivel kapcsolatos API-specifikációval. Az érvényesítéshez használhatja a Poster vagy a webböngésző eszközeit.
 
+## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
 ## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -62,7 +66,7 @@ A HTTP társított szolgáltatás a következő tulajdonságokat támogatja:
 | url | A webkiszolgáló alap URL-címe. | Igen |
 | enableServerCertificateValidation | Itt adhatja meg, hogy engedélyezi-e a kiszolgáló SSL-tanúsítványának érvényesítését egy HTTP-végponthoz való csatlakozáskor. Ha a HTTPS-kiszolgáló önaláírt tanúsítványt használ, állítsa **hamis**értékre a tulajdonságot. | Nem<br /> (az alapértelmezett érték **igaz**) |
 | authenticationType | Megadja a hitelesítési típust. Az engedélyezett értékek: névtelen, alapszintű, **kivonatoló**, **Windows**és **ClientCertificate**. <br><br> A következő szakaszokban találhat további tulajdonságokat és JSON-mintákat a fenti hitelesítési típusokhoz. | Igen |
-| connectVia | A [Integration Runtime](concepts-integration-runtime.md) kapcsolódni az adattárhoz. Használhatja a Azure Integration Runtime vagy a saját üzemeltetésű Integration Runtime (ha az adattár egy magánhálózaton található). Ha nincs megadva, ez a tulajdonság az alapértelmezett Azure Integration Runtime használja. |Nem |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) kapcsolódni az adattárhoz. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>Alapszintű, kivonatoló vagy Windows-hitelesítés használata
 

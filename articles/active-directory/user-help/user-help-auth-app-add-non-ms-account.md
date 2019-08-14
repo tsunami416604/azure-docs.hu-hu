@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d7a039f25339d91d77d5b6924674ea36a16c15b
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e1521d2b3d47667466636a1ac15f107826e40942
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880817"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942935"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>A nem Microsoft-fiókok hozzáadása
 
@@ -33,6 +33,9 @@ Az összes személyes fiók esetében általában a következőket kell tennie:
 1. Jelentkezzen be a fiókjába, majd kapcsolja be a kétfaktoros ellenőrzést az eszköz vagy a számítógép használatával.
 
 2. Vegye fel a fiókot a Microsoft Authenticator alkalmazásba. Előfordulhat, hogy a folyamat részeként a rendszer megkéri a QR-kód bevizsgálatát.
+
+    >[!Note]
+    >Ha első alkalommal állítja be a Microsoft Authenticator alkalmazást, megkérdezheti, hogy engedélyezi-e az alkalmazásnak a kamera (iOS) elérését, vagy hogy az alkalmazás képeket készítsen, és videót rögzítsen (Android). Az **Engedélyezés lehetőséget** kell választania, hogy a hitelesítő alkalmazás hozzáférhessen a kamerához, hogy a következő lépésben képet készítsen a QR-kódból. Ha nem engedélyezi a kamerát, akkor továbbra is beállíthatja a hitelesítő alkalmazást, de a kód adatait manuálisan kell hozzáadnia. A kód manuális hozzáadásával kapcsolatos további információkért lásd: [fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md).
 
 Itt biztosítjuk a Facebook-, Google-, GitHub-és Amazon-fiókokra vonatkozó folyamatot, de ez a folyamat ugyanaz, mint bármely más alkalmazás, például a Instagram, a Netflix vagy az Adobe.
 
@@ -168,9 +171,6 @@ A kétfaktoros ellenőrzés bekapcsolásával adja hozzá az Amazon-fiókját, m
     Az oldal úgy változik, hogy megmutassa a QR-kódot. Ne zárjuk be ezt a lapot.
 
 5. Nyissa meg a Microsoft Authenticator alkalmazást, válassza a jobb felső sarokban található **Testreszabás és vezérlés** ikonban a **fiók hozzáadása** lehetőséget, majd válassza az **egyéb fiók (Google, Facebook stb.)** lehetőséget.
-
-    >[!Note]
-    >Ha első alkalommal állítja be a Microsoft Authenticator alkalmazást, megkérdezheti, hogy engedélyezi-e az alkalmazásnak a kamera (iOS) elérését, vagy hogy az alkalmazás képeket készítsen, és videót rögzítsen (Android). Az **Engedélyezés lehetőséget** kell választania, hogy a hitelesítő alkalmazás hozzáférhessen a kamerához, hogy a következő lépésben képet készítsen a QR-kódból. Ha nem engedélyezi a kamerát, akkor továbbra is beállíthatja a hitelesítő alkalmazást, de a kód adatait manuálisan kell hozzáadnia. A kód manuális hozzáadásával kapcsolatos további információkért lásd: [fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md).
 
 6. Az eszköz kamerájának használatával beszkennelheti a QR-kódot a számítógépén a **kódok fogadásának kiválasztása** lapon.
 

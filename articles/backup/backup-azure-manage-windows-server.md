@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 4ce6ef67c24bd623a4162329442693ed1628dae2
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7e7312f942103125217c1f61ae8fe8007a49529b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639881"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954767"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-tárolók figyelése és kezelése
 
@@ -175,7 +175,7 @@ A virtuális gépek listája hasznos adatokkal rendelkezik: a társított erőfo
 
 A tároló irányítópultján a **biztonsági mentési feladatok** csempén látható, hogy hány feladat van folyamatban, vagy az elmúlt 24 órában sikertelen volt. A csempe betekintést nyújt a biztonsági mentési feladatok menübe.
 
-![Biztonsági másolati elemek a beállításokból](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
+![Elemek biztonsági mentése a beállításokból](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
 
 Ha meg szeretné tekinteni a feladatok további részleteit, kattintson **a folyamatban** vagy a **nem sikerült** megnyitni a biztonsági mentési feladatok menüt az adott állapotra szűrve.
 
@@ -185,11 +185,11 @@ A **biztonsági mentési feladatok** menü megjeleníti az elem típusát, a mű
 
 A biztonsági mentési feladatok menü megnyitásához a tároló főmenüjében kattintson a **biztonsági mentési feladatok**elemre.
 
-![Biztonsági másolati elemek a beállításokból](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
+![Elemek biztonsági mentése a beállításokból](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
 
 Megnyílik a biztonsági mentési feladatok listája.
 
-![Biztonsági másolati elemek a beállításokból](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
+![Elemek biztonsági mentése a beállításokból](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
 
 A biztonsági mentési feladatok menü az elmúlt 24 órában megjeleníti az összes művelet állapotát az összes biztonsági mentési típusnál. **Szűrő** használatával módosítsa a szűrőket. A szűrőket a következő részben ismertetjük.
 
@@ -197,11 +197,11 @@ A szűrők módosítása:
 
 1. A tároló biztonsági mentési feladatok menüjében kattintson a **szűrő**elemre.
 
-   ![Biztonsági másolati elemek a beállításokból](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
+   ![Elemek biztonsági mentése a beállításokból](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
 
     Megnyílik a szűrő menü.
 
-   ![Biztonsági másolati elemek a beállításokból](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
+   ![Elemek biztonsági mentése a beállításokból](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
 
 2. Válassza ki a szűrő beállításait, majd kattintson a **kész**gombra. A szűrt lista az új beállítások alapján frissül.
 

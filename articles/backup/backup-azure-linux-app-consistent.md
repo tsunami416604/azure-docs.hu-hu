@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/12/2018
 ms.author: dacurwin
-ms.openlocfilehash: dae2268abc3771e43d717c65c19eed37b9f48e8e
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: bb764cfa14b4bc8e53f25629961a1baecd6a6c1f
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689257"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954694"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Az Azure Linux rendszerű virtuális gépek alkalmazásának konzisztens biztonsági mentése
 
@@ -24,7 +24,7 @@ A virtuális gépek biztonsági mentési pillanatképének készítésekor az al
 
 A keretrendszer lehetővé teszi, hogy a VM-pillanatképek készítése közben egyéni parancsfájlok futtatását és a parancsfájlok utáni parancsfájlokat is futtasson. A virtuális gép pillanatképének megkezdése előtt a parancsfájlok futtatása előtt futtassa a parancsfájlokat, és a szkriptek azonnal futnak a virtuális gép pillanatképének elkészítése után. A parancsfájlok előtti és utáni parancsfájlok lehetővé teszik az alkalmazás és a környezet szabályozását, miközben a virtuális gépek pillanatképeit futtatja.
 
-A parancsfájl-előkészítők natív Application API-kat indítanak, amelyek fokozatos leválasztása az IOs-et, és a memóriában lévő tartalmakat a lemezre ürítik. Ezek a műveletek biztosítják, hogy a pillanatkép alkalmazás konzisztens legyen. A szkriptek a natív alkalmazás API-kat használják az IOs kiolvasztására, ami lehetővé teszi, hogy az alkalmazás a virtuális gép pillanatképe után is folytassa a normál műveleteket.
+A parancsfájl-előkészítők natív Application API-kat indítanak, amelyek fokozatos leválasztása az IOs-et, és a memóriában lévő tartalmakat a lemezre ürítik. Ezek a műveletek biztosítják, hogy a pillanatkép alkalmazás konzisztens legyen. A szkriptek a natív alkalmazás API-kat használják az IOs kiolvasztására, ami lehetővé teszi, hogy az alkalmazás a virtuális gép pillanatképe után folytassa a normál műveleteket.
 
 ## <a name="steps-to-configure-pre-script-and-post-script"></a>A parancsfájl előtti és utáni parancsfájl konfigurálásának lépései
 

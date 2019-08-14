@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 7/13/2019
+ms.date: 08/10/2019
 ms.author: victorh
-ms.openlocfilehash: 7d20ef750aa4556a73852982631423d3d08271f5
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 4f9a42f3d054becfed0b0a6acbf92cdf1e421c16
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854116"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946948"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Elosztott terhelésű Azure Web Apps a zóna csúcsán
 
@@ -52,23 +52,23 @@ Hozzon létre két webes App Service sémát az erőforráscsoporthoz az alábbi
 
 Hozzon létre két webalkalmazást, egyet az egyes App Service-csomagokban.
 
-1. Az Azure Portal lap bal felső sarkában kattintson az **erőforrás létrehozása**elemre.
-2. Írja  be a webalkalmazás kifejezést a keresősávba, majd nyomja le az ENTER billentyűt.
-3. Kattintson a webalkalmazás elemre.
-4. Kattintson a **Create** (Létrehozás) gombra.
+1. Az Azure Portal lap bal felső sarkában válassza az **erőforrás létrehozása**lehetőséget.
+2. Írja be a webalkalmazás kifejezést a keresősávba, majd nyomja le az ENTER billentyűt.
+3. Válasszaa webalkalmazás lehetőséget.
+4. Kattintson a **Létrehozás** gombra.
 5. Fogadja el az alapértelmezett értékeket, és a következő táblázat segítségével konfigurálja a két webalkalmazást:
 
-   |Name (Név)<br>(a. azurewebsites.net belül egyedinek kell lennie)|Erőforráscsoport |App Service csomag/hely
-   |---------|---------|---------|
-   |App-01|Meglévő használata<br>Válassza ki az erőforráscsoportot|ASP-01 (az USA keleti régiója)|
-   |App-02|Meglévő használata<br>Válassza ki az erőforráscsoportot|ASP-02 (USA középső régiója)|
+   |Name (Név)<br>(a. azurewebsites.net belül egyedinek kell lennie)|Erőforráscsoport |Futásidejű verem|Régió|App Service csomag/hely
+   |---------|---------|-|-|-------|
+   |App-01|Meglévő használata<br>Válassza ki az erőforráscsoportot|.NET Core 2.2|East US|ASP-01 (D1)|
+   |App-02|Meglévő használata<br>Válassza ki az erőforráscsoportot|.NET Core 2.2|USA középső régiója|ASP-02 (D1)|
 
 ### <a name="gather-some-details"></a>Részletek összegyűjtése
 
-Most fel kell jegyeznie az alkalmazások IP-címét és állomásnevét.
+Most fel kell jegyeznie a webalkalmazások IP-címét és állomásnevét.
 
-1. Nyissa meg az erőforráscsoportot, és kattintson az első alkalmazásra (ebben a példában az**app-01** elemre).
-2. A bal oldali oszlopban kattintson a **Tulajdonságok**elemre.
+1. Nyissa meg az erőforráscsoportot, és válassza ki az első webalkalmazását (ebben a példában az**app-01** fájl).
+2. A bal oldali oszlopban válassza a **Tulajdonságok**lehetőséget.
 3. Jegyezze fel az **URL**-cím alatti címet, és a **kimenő IP-címek** területen jegyezze fel a lista első IP-címét. Ezt az információt később a Traffic Manager végpontok konfigurálásakor fogja használni.
 4. Ismételje meg az **app-02-** et.
 
@@ -82,9 +82,9 @@ Traffic Manager profil létrehozásával kapcsolatos információkért lásd: gy
 
 Most már létrehozhatja a két webalkalmazáshoz tartozó végpontokat.
 
-1. Nyissa meg az erőforráscsoportot, és kattintson a Traffic Manager profilra.
-2. A bal oldali oszlopban kattintson a **végpontok**elemre.
-3. Kattintson a **Hozzáadás**lehetőségre.
+1. Nyissa meg az erőforráscsoportot, és válassza ki a Traffic Manager-profilt.
+2. A bal oldali oszlopban válassza a **végpontok**lehetőséget.
+3. Válassza a **Hozzáadás** lehetőséget.
 4. A végpontok konfigurálásához használja a következő táblázatot:
 
    |Type  |Name (Név)  |Target  |Location  |Egyéni fejléc beállításai|
@@ -96,31 +96,46 @@ Most már létrehozhatja a két webalkalmazáshoz tartozó végpontokat.
 
 Egy meglévő DNS-zónát is használhat teszteléshez, vagy létrehozhat egy új zónát is. Új DNS-zóna létrehozásához és delegálásához az Azure [-ban: oktatóanyag: A tartomány üzemeltetése Azure DNS](dns-delegate-domain-azure-dns.md).
 
-### <a name="add-the-alias-record-set"></a>Az alias-rekord hozzáadása
+## <a name="add-a-txt-record-for-custom-domain-validation"></a>TXT-rekord hozzáadása az egyéni tartomány érvényesítéséhez
 
-Ha a DNS-zóna elkészült, hozzáadhat egy alias-rekordot a zóna csúcsához.
+Ha egyéni állomásnevet ad hozzá a webalkalmazásokhoz, az egy adott TXT-rekordot fog keresni a tartomány érvényesítéséhez.
 
-1. Nyissa meg az erőforráscsoportot, és kattintson a DNS-zónára.
-2. Kattintson a **Rekordhalmaz** gombra.
+1. Nyissa meg az erőforráscsoportot, és válassza ki a DNS-zónát.
+2. Válassza a **Rekordhalmaz** elemet.
+3. Adja hozzá a rekordot a következő táblázat használatával. Az értéknél használja a korábban rögzített webalkalmazás URL-címét:
+
+   |Name (Név)  |Típus  |Value|
+   |---------|---------|-|
+   |@     |TXT|App-01.azurewebsites.net|
+
+
+## <a name="add-a-custom-domain"></a>Egyéni tartomány hozzáadása
+
+Adjon hozzá egy egyéni tartományt mindkét webalkalmazáshoz.
+
+1. Nyissa meg az erőforráscsoportot, és válassza ki az első webalkalmazását.
+2. A bal oldali oszlopban válassza az **Egyéni tartományok**elemet.
+3. Az **Egyéni tartományok**területen válassza az **egyéni tartomány hozzáadása**elemet.
+4. Az **egyéni tartomány**területen adja meg az egyéni tartomány nevét. Például: contoso.com.
+5. Válassza az **Érvényesítés** lehetőséget.
+
+   A tartománynak át kell adnia az érvényesítést, és zöld pipa jeleket kell megadnia az **állomásnév elérhetősége** és a **tartomány tulajdonjoga**mellett.
+5. Válassza az **Egyéni tartomány hozzáadása** lehetőséget.
+6. Ha meg szeretné tekinteni az új gazdagépet a **helyhez rendelt állomásnevek**alatt, frissítse a böngészőt. A lapon lévő frissítés nem mindig azonnal mutatja a módosításokat.
+7. Ismételje meg ezt az eljárást a második webalkalmazás esetében.
+
+## <a name="add-the-alias-record-set"></a>Az alias-rekord hozzáadása
+
+Most adjon hozzá egy alias-rekordot a zóna csúcsához.
+
+1. Nyissa meg az erőforráscsoportot, és válassza ki a DNS-zónát.
+2. Válassza a **Rekordhalmaz** elemet.
 3. Adja hozzá a rekordot a következő táblázat használatával:
 
    |Name (Név)  |Type  |Alias-rekord készlete  |Alias típusa  |Azure-erőforrás|
    |---------|---------|---------|---------|-----|
-   |@     |A|Igen|Azure-erőforrás|Traffic Manager – a profil|
+   |@     |J|Igen|Azure-erőforrás|Traffic Manager – a profil|
 
-## <a name="add-custom-hostnames"></a>Egyéni állomásnevek hozzáadása
-
-Egyéni állomásnév hozzáadása a web appshez.
-
-1. Nyissa meg az erőforráscsoportot, és kattintson az első webalkalmazásra.
-2. A bal oldali oszlopban kattintson az **Egyéni tartományok**elemre.
-3. Kattintson az **állomásnév hozzáadása**lehetőségre.
-4. A hostname (állomásnév) területen írja be a tartomány nevét. Például: contoso.com.
-
-   A tartománynak át kell adnia az érvényesítést, és zöld pipa jeleket kell megadnia az **állomásnév elérhetősége** és a **tartomány tulajdonjoga**mellett.
-5. Kattintson az **állomásnév hozzáadása**lehetőségre.
-6. Ha meg szeretné tekinteni az új gazdagépet a **helyhez rendelt állomásnevek**alatt, frissítse a böngészőt. A lapon lévő frissítés nem mindig azonnal mutatja a módosításokat.
-7. Ismételje meg ezt az eljárást a második webalkalmazás esetében.
 
 ## <a name="test-your-web-apps"></a>Webes alkalmazások tesztelése
 

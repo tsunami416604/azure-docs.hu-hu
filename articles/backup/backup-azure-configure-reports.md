@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: 169ce73ead52d6a275f13f084c681e14c89ab606
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 293af600f4bd58efe8383d019ca3d17f724f242c
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689358"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933326"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 Ez a cikk azokat a lépéseket ismerteti, amelyekkel Recovery Services-tároló használatával konfigurálhatja a Azure Backup jelentéseit. Azt is bemutatja, hogyan férhet hozzá a jelentésekhez Power BI használatával. A lépések elvégzése után közvetlenül a Power BI megtekintheti, testreszabhatja és létrehozhatja a jelentéseket.
@@ -37,7 +37,7 @@ A probléma elkerüléséhez töltse le a legújabb alkalmazást (1,8-es verzió
 - Regisztrálja az erőforrás-szolgáltatót a **Microsoft.** ininsights szolgáltatásban, ha még nincs regisztrálva. Használja a Storage-fiók és a Recovery Services-tároló előfizetéseit, hogy a jelentéskészítési adatforgalom a Storage-fiókba. Ehhez a lépéshez lépjen a Azure Portal, válassza az **előfizetés** > **erőforrás-szolgáltatók**lehetőséget, és keresse meg a szolgáltatót a regisztráláshoz.
 
 ## <a name="configure-storage-account-for-reports"></a>Tárolási fiók konfigurálása a jelentésekhez
-Az alábbi lépéseket követve konfigurálhatja a Recovery Services-tárolóhoz tartozó Storage-fiókot a Azure Portal használatával. Ez egy egyszeri konfiguráció. A Storage-fiók konfigurálása után közvetlenül a Power BIra léphet a Content Pack megtekintéséhez és a jelentések használatához.
+Az alábbi lépéseket követve konfigurálhatja a Recovery Services-tárolóhoz tartozó Storage-fiókot a Azure Portal használatával. Ez egy egyszeri konfiguráció. A Storage-fiók konfigurálása után közvetlenül a Power BI megtekintheti a sablon alkalmazást, és jelentéseket is használhat.
 
 1. Ha már nyitva van egy Recovery Services-tároló, folytassa a következő lépéssel. Ha nincs megnyitva Recovery Services-tároló, a Azure Portal válassza a **minden szolgáltatás**lehetőséget.
 
@@ -80,11 +80,11 @@ Miután egy Recovery Services-tároló használatával konfigurálta a jelentés
 Ha testre szeretné szabni és megosztani a jelentést, hozzon létre egy munkaterületet, és hajtsa végre a következő lépéseket
 
 1. [Jelentkezzen](https://powerbi.microsoft.com/landing/signin/) be Power BIba.
-2. Válassza az **Adatok lekérése** lehetőséget. A **saját tartalmak létrehozásával kapcsolatban további lehetőségek**közül választhat a **szervizcsomagok**. A szolgáltatáshoz való kapcsolódáshoz kövesse az [Power bi dokumentációjának](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/)lépéseit.
+2. Navigáljon az **alkalmazásokhoz > további alkalmazásokat kaphat a Microsoft Appsource**. A szolgáltatáshoz való kapcsolódáshoz kövesse az [Power bi dokumentációjának](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/)lépéseit.
 
 3. A **keresősáv** mezőbe írja be **Azure Backup** , majd válassza a **Letöltés most**lehetőséget.
 
-      ![Content Pack letöltése](./media/backup-azure-configure-reports/content-pack-get.png)
+      ![Sablon alkalmazásának beolvasása](./media/backup-azure-configure-reports/template-app-get.png)
 4. Adja meg az előző lépésben konfigurált Storage-fiók nevét, majd kattintson a **tovább**gombra.
 
     ![A tárfiók nevének megadása](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
@@ -96,11 +96,11 @@ Ha testre szeretné szabni és megosztani a jelentést, hozzon létre egy munkat
 
     ![Content Pack importálása](./media/backup-azure-configure-reports/content-pack-importing-data.png) <br/>
 
-    Az importálás befejezése után megjelenik egy **sikeres** értesítés. Ha a Storage-fiókban lévő adatmennyiség nagy, akkor a csomag importálása valamivel hosszabb időt is igénybe vehet.
+    Az importálás befejezése után megjelenik egy **sikeres** értesítés. Ha a Storage-fiókban lévő adatmennyiség nagy, akkor a sablon alkalmazás importálása valamivel hosszabb időt is igénybe vehet.
 
     ![Sikeres importálási csomag](./media/backup-azure-configure-reports/content-pack-import-success.png) <br/>
 
-7. Az adatimportálás sikeres elvégzése után a **Azure Backup** Content Pack látható az alkalmazásokban a navigációs ablaktáblán. Az **irányítópultok**, **jelentések**és adatkészletek területen a lista most megjeleníti a Azure Backup.
+7. Az adatimportálás sikeres elvégzése után a **Azure Backup** sablon alkalmazás látható az alkalmazásokban a navigációs ablaktáblán. Az **irányítópultok**, **jelentések**és adatkészletek területen a lista most megjeleníti a Azure Backup.
 
 8. Az **irányítópultok**területen válassza a **Azure Backup**lehetőséget, amely rögzített kulcsú jelentések készletét jeleníti meg.
 
@@ -117,10 +117,10 @@ Ha testre szeretné szabni és megosztani a jelentést, hozzon létre egy munkat
 | Hiba részletei | Megoldás: |
 | --- | --- |
 | Miután beállította a Storage-fiókot a biztonsági mentési jelentésekhez, a **Storage-fiók** továbbra **sincs konfigurálva**. | Ha sikeresen konfigurálta a Storage-fiókot, a jelentéskészítési folyamat a probléma ellenére meghalad. A probléma megoldásához lépjen a Azure Portalre, és válassza a **minden szolgáltatás** > **diagnosztikai beállítások** > **Recovery Services** > tár**szerkesztési beállítás**elemet. Törölje az előzőleg konfigurált beállítást, és hozzon létre egy új beállítást ugyanazon a panelen. Ezúttal a **név** mezőben válassza a **szolgáltatás**elemet. Ekkor megjelenik a konfigurált Storage-fiók. |
-|A Power BI Azure Backup tartalmának importálása után a "404-Container nem található" hibaüzenet jelenik meg. | Ahogy azt korábban említettük, 24 órát kell várnia, miután konfigurálta a jelentéseket a Recovery Services-tárolóban, hogy megfelelően megjelenjenek a Power BIban. Ha 24 óra előtt próbál hozzáférni a jelentésekhez, ez a hibaüzenet jelenik meg, mivel a teljes adathalmazok még nem jelennek meg az érvényes jelentések megjelenítéséhez. |
+|A Azure Backup sablon alkalmazásnak a Power BIban való importálása után a "404-Container nem található" hibaüzenet jelenik meg. | Ahogy azt korábban említettük, 24 órát kell várnia, miután konfigurálta a jelentéseket a Recovery Services-tárolóban, hogy megfelelően megjelenjenek a Power BIban. Ha 24 óra előtt próbál hozzáférni a jelentésekhez, ez a hibaüzenet jelenik meg, mivel a teljes adathalmazok még nem jelennek meg az érvényes jelentések megjelenítéséhez. |
 
 ## <a name="next-steps"></a>További lépések
-A Storage-fiók konfigurálása és a Azure Backup-csomag importálása után a következő lépés a jelentések testreszabása és a jelentéskészítési adatmodell használata jelentések létrehozásához. További információt a következő cikkekben talál.
+A Storage-fiók konfigurálása és a Azure Backup sablon alkalmazás importálása után a következő lépés a jelentések testreszabása és a jelentéskészítési adatmodell használata jelentések létrehozásához. További információt a következő cikkekben talál.
 
 * [Azure Backup jelentéskészítési adatmodell használata](backup-azure-reports-data-model.md)
 * [Jelentések szűrése Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)

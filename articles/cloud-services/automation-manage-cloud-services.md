@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Services, Azure Automation használata kezelheti |} A Microsoft Docs
-description: Ismerje meg hogyan az Azure Automation szolgáltatás segítségével kezelheti az Azure cloud services ipari méretekben.
+title: Azure-Cloud Services kezelése Azure Automation használatával | Microsoft Docs
+description: Ismerje meg, hogyan használható a Azure Automation szolgáltatás az Azure Cloud Services nagy léptékű kezeléséhez.
 services: cloud-services, automation
 documentationcenter: ''
 author: jodoglevy
@@ -10,38 +10,37 @@ ms.assetid: 3789810a-2892-4eef-bf29-c781c1b5af48
 ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: b3660901c86dd644369e6d1913e825cbd5ea316b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1fc1ac9668454578ee137a2ddd1b85319fea0a28
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60623204"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945505"
 ---
-# <a name="managing-azure-cloud-services-using-azure-automation"></a>Kezelés az Azure Cloud Services, Azure Automation használatával
-Ez az útmutató vezet be, az Azure Automation szolgáltatást, és hogyan használható az Azure cloud Services kezelésének egyszerűsítéséhez.
+# <a name="managing-azure-cloud-services-using-azure-automation"></a>Az Azure Cloud Services kezelése Azure Automation használatával
+Ez az útmutató bemutatja a Azure Automation szolgáltatást, valamint azt, hogy miként használható az Azure Cloud Services kezelésének egyszerűbbé tételéhez.
 
 ## <a name="what-is-azure-automation"></a>Mi az Azure Automation?
-[Az Azure Automation](https://azure.microsoft.com/services/automation/) leegyszerűsíti a felhőfelügyelet a folyamatok automatizálása révén az Azure-szolgáltatások. Az Azure Automationnel, hosszan futó, manuális, sok hibalehetőséget rejtő és gyakran ismételt feladatok automatizálható a megbízhatóság, hatékonyságot és a szervezet teljesítések idejét.
+[Azure Automation](https://azure.microsoft.com/services/automation/) egy Azure-szolgáltatás, amely egyszerűbbé teszi a felhőalapú felügyeletet a folyamatok automatizálásával. A Azure Automation, a hosszan futó, a manuális, a hibákra hajlamos és a gyakran ismétlődő feladatok használatával automatizálható a szervezet megbízhatóságának, hatékonyságának és időpontjának növelése.
 
-Az Azure Automation segítségével egy rendkívül megbízható és magas rendelkezésre állású munkafolyamat-végző összetevőjével, amely az igényeinek, ha a szervezet növekedésével skálázható. Az Azure Automation szolgáltatás folyamatokat is lehet kezdődjön manuálisan, 3. rendszerekben, vagy rendszeres időközönként, hogy a feladatok fordulhat elő, pontosan akkor, ha szükséges.
+A Azure Automation egy nagyon megbízható és jól elérhető munkafolyamat-végrehajtó motort biztosít, amely a szervezet növekedésének megfelelően méretezhető. Azure Automation a folyamatokat manuálisan, harmadik féltől származó rendszerek vagy ütemezett időközök alapján lehet kiváltani, hogy a feladatok a szükségesnél pontosan megtörténjenek.
 
-Csökkentheti üzemeltetési terheit és szabadítson fel informatikai fejlesztési és üzemeltetési csapatának munkára, így üzleti érték a felhőfelügyeleti feladatokat automatikusan Azure Automation által futtatandó való váltással.
+Csökkentse a működési terhelést, és szabadítson fel informatikai/DevOps-személyzetet, hogy az üzleti értékeket felhasználva a Felhőbeli felügyeleti feladatok automatikus futtatásával Azure Automation.
 
-## <a name="how-can-azure-automation-help-manage-azure-cloud-services"></a>Hogyan segít az Azure Automation kezelése az Azure cloud services?
-Az Azure cloud services elérhető PowerShell-parancsmagok segítségével kezelhetők az Azure Automationben a [Azure PowerShell-eszközök](/powershell/). Az Azure Automation a ezek cloud service elérhető PowerShell-parancsmagokkal, beépített rendelkezik, így a szolgáltatásban a felhőszolgáltatás-felügyeleti feladatok is végrehajthatja. Ezek a parancsmagok az Azure Automation parancsmagjaival más Azure-szolgáltatások, az összetett feladatok automatizálása Azure-szolgáltatások és a 3. fél rendszerek párosítása is történik.
+## <a name="how-can-azure-automation-help-manage-azure-cloud-services"></a>Hogyan segíthet Azure Automation az Azure Cloud Services kezelése?
+Az Azure Cloud Services Azure Automation a [Azure PowerShell eszközökben](/powershell/)elérhető PowerShell-parancsmagok használatával kezelhetők. Azure Automation a Cloud Service PowerShell-parancsmagok elérhetők a dobozból, így az összes felhőalapú szolgáltatás-felügyeleti feladatot elvégezheti a szolgáltatáson belül. Ezeket a parancsmagokat Azure Automation is párosíthatja más Azure-szolgáltatások parancsmagokkal, így összetett feladatokat automatizálhat az Azure-szolgáltatások és a külső gyártók rendszerei között.
 
-Az Azure Cloud Services kezelése az Azure Automation néhány példa használati módjai:
+Néhány példa a Azure Automation használatára az Azure Cloud Services kezeléséhez:
 
-* [Folyamatos üzembe helyezés frissítésekor cscfg vagy cspkg az Azure Blob storage-felhőszolgáltatás](https://gallery.technet.microsoft.com/scriptcenter/Continuous-Deployment-of-A-eeebf3a6)
-* [Párhuzamosan, egyszerre több frissítési tartományt Felhőszolgáltatás-példányok újraindítása](https://gallery.technet.microsoft.com/scriptcenter/Reboot-Cloud-Service-PaaS-b337a06d)
+* [Felhőalapú szolgáltatás folyamatos üzembe helyezése, amikor a cscfg vagy a cspkg frissül az Azure Blob Storage-ban](https://gallery.technet.microsoft.com/scriptcenter/Continuous-Deployment-of-A-eeebf3a6)
+* [Cloud Service-példányok újraindítása párhuzamosan, egyszerre egy frissítési tartomány](https://gallery.technet.microsoft.com/scriptcenter/Reboot-Cloud-Service-PaaS-b337a06d)
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megismerte az alapokat, az Azure Automationben, és hogyan használható az Azure cloud services kezelése, az alábbi hivatkozásokból tudhat meg többet az Azure Automationben.
+Most, hogy megismerte a Azure Automation alapjait és az Azure Cloud Services felügyeletének módját, az alábbi hivatkozásokat követve további információkat tudhat meg a Azure Automationról.
 
 * [Azure Automation áttekintése](../automation/automation-intro.md)
 * [Az első runbookom](../automation/automation-first-runbook-graphical.md)
-* [Az Azure Automation tanulási térkép](https://azure.microsoft.com/documentation/learning-paths/automation/)
+* [Azure Automation tanulási Térkép](https://azure.microsoft.com/documentation/learning-paths/automation/)

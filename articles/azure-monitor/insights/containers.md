@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 98b7e99e5e9d25c6708b92b02e609ad38a971054
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 5f48b1b1c8568c4f60d012797634b844a276b1bb
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381583"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951962"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Tároló-figyelési megoldás a Azure Monitor
 
@@ -202,11 +202,11 @@ Ez a szakasz ismerteti a Log Analytics-ügynököket telepítse az OpenShift dé
 2. A következő parancsok futtatásával hozzon létre egy projektet a Azure Monitorhoz, és állítsa be a felhasználói fiókot.
 
     ```
-    oadm new-project omslogging --node-selector='zone=default'
+    oc adm new-project omslogging --node-selector='zone=default'
     oc project omslogging  
     oc create serviceaccount omsagent  
-    oadm policy add-cluster-role-to-user cluster-reader   system:serviceaccount:omslogging:omsagent  
-    oadm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
+    oc adm policy add-cluster-role-to-user cluster-reader   system:serviceaccount:omslogging:omsagent  
+    oc adm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
     ```
 
 3. A démon-set üzembe helyezéséhez futtassa a következőt:
@@ -241,11 +241,11 @@ Ha azt szeretné, titkos kulcsok használatával védeni kell a Log Analytics-mu
 2. A következő parancsok futtatásával hozzon létre egy projektet a Azure Monitorhoz, és állítsa be a felhasználói fiókot. A Log Analytics-munkaterület Azonosítójára kéri a titkos kulcs parancsfájljának `<WSID>` és az elsődleges kulcs `<KEY>` és a befejezéskor az ocp-secret.yaml fájlt hoz létre.  
 
     ```
-    oadm new-project omslogging --node-selector='zone=default'  
+    oc adm new-project omslogging --node-selector='zone=default'  
     oc project omslogging  
     oc create serviceaccount omsagent  
-    oadm policy add-cluster-role-to-user cluster-reader   system:serviceaccount:omslogging:omsagent  
-    oadm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
+    oc adm policy add-cluster-role-to-user cluster-reader   system:serviceaccount:omslogging:omsagent  
+    oc adm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
     ```
 
 3. A titkos kód fájlját telepítése a következő futtatásával:
@@ -557,7 +557,7 @@ Az alábbi táblázat a Tárolómonitorozási megoldás és a naplókeresések m
 Címkék hozzáfűzi *PodLabel* adattípusok a következők a saját egyéni címkék. A hozzáfűzött PodLabel címkék táblázatban szereplő példák. Tehát `PodLabel_deployment_s`, `PodLabel_deploymentconfig_s`, `PodLabel_docker_registry_s` lesz a környezet adatkészlet különböznek egymástól, és általános csúcsos `PodLabel_yourlabel_s`.
 
 ## <a name="monitor-containers"></a>Tárolók figyelése
-Miután engedélyezte a megoldást a Azure Portalban, a containers (tárolók **) csempén** a tároló gazdagépek és a gazdagépeken futó tárolók összegző információi láthatók.
+Miután engedélyezte a megoldást a Azure Portalban, a containers (tárolók) csempén a tároló gazdagépek és a gazdagépeken futó tárolók összegző információi láthatók.
 
 ![Tárolókkal csempére](./media/containers/containers-title.png)
 

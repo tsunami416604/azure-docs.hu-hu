@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/05/2019
 ms.author: asgang
-ms.openlocfilehash: 5ed57c93f73eb9a9e972a683f1068692a5963e54
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 8e1350a22554bab257e8c99954c2beaa357de2ff
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816964"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934523"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Az Azure – Azure virtuálisgép-hálózat csatlakozási problémáinak elhárítása
 
@@ -28,7 +28,7 @@ login.microsoftonline.com | Az engedélyezéshez és a hitelesítéshez szüksé
 *.hypervrecoverymanager.windowsazure.com | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja a virtuális gépről is megtörténjen. Ha a tűzfal proxyja támogatja az IP-címeket, használhatja a megfelelő "Site Recovery IP-címet".
 *.servicebus.windows.net | Szükséges, hogy a Site Recovery monitorozási és diagnosztikai adatok a virtuális gépről is írhatók legyenek. Ha a tűzfal proxyja támogatja az IP-címeket, használhatja a megfelelő "Site Recovery figyelési IP-címet".
 
-# <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>A Site Recovery URL-címek vagy IP-címtartományokat (hibakód: 151037 vagy 151072) kimenő kapcsolatok
+## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>A Site Recovery URL-címek vagy IP-címtartományokat (hibakód: 151037 vagy 151072) kimenő kapcsolatok
 
 ## <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>1. probléma: Nem sikerült regisztrálni az Azure-beli virtuális gépet Site Recovery (151195) </br>
 - **Lehetséges ok** </br>

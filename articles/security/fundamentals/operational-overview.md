@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: d863edba17b3dc688624e7095ee09744ca07192d
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 31e59f913fa29c92bc1b97029d8712bbd9b68ab8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780534"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934661"
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – áttekintés
 
@@ -87,7 +87,7 @@ A [virtuális gép (VM) adatai védelme](/azure/security-center/security-center-
 - Lemez titkosításának ellenőrzése.
 - Hálózati támadások.
 
-A Security Center [szerepköralapú Access Control (RBAC)](/azure/role-based-access-control/role-assignments-portal)használ. A RBAC olyan [beépített szerepköröket](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) biztosít, amelyek a felhasználókhoz, csoportokhoz és szolgáltatásokhoz rendelhetők az Azure-ban.
+A Security Center [szerepköralapú Access Control (RBAC)](/azure/role-based-access-control/role-assignments-portal)használ. A RBAC olyan [beépített szerepköröket](../../role-based-access-control/built-in-roles.md) biztosít, amelyek a felhasználókhoz, csoportokhoz és szolgáltatásokhoz rendelhetők az Azure-ban.
 
 A Security Center a biztonsági problémák és biztonsági rések azonosításához erőforrásán konfiguráció értékeli. Security Center az erőforrásokhoz kapcsolódó információkat csak akkor látja, ha a tulajdonos, közreműködő vagy olvasó szerepkörét rendelte hozzá ahhoz az előfizetéshez vagy erőforráscsoporthoz, amelyhez az erőforrás tartozik.
 

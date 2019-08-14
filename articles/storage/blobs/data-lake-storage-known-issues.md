@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: bacb677b8354c0b0e219ce7483a1446a96c28288
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 369069ef9a9c562ef6ba88a46dc0ef82c4debba1
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855527"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950685"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 ismert problémái
 
@@ -100,7 +100,7 @@ A következő táblázat felsorolja az összes olyan funkciót és eszközt, ame
 | **Blobfuse** |Még nem támogatott|
 | **Egyéni tartományok** |Még nem támogatott|
 | **Fájlrendszer Explorer** | Korlátozott támogatás |
-| **Diagnosztikai naplózás** |A diagnosztikai naplók csak akkor támogatottak, ha Data Lake Storage előzetes verzióban regisztrál a [több protokollos hozzáférésre](data-lake-storage-multi-protocol-access.md) . <br><br>A naplók engedélyezése a Azure Portal jelenleg nem támogatott. Az alábbi példa bemutatja, hogyan engedélyezheti a naplókat a PowerShell használatával. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzureStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Ügyeljen arra, hogy `Blob` a `-ServiceType` paraméter értékeként az ebben a példában látható módon legyen megadva. 
+| **Diagnosztikai naplózás** |A diagnosztikai naplók csak akkor támogatottak, ha Data Lake Storage előzetes verzióban regisztrál a [több protokollos hozzáférésre](data-lake-storage-multi-protocol-access.md) . <br><br>A naplók engedélyezése a Azure Portal jelenleg nem támogatott. Az alábbi példa bemutatja, hogyan engedélyezheti a naplókat a PowerShell használatával. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Ügyeljen arra, hogy `Blob` a `-ServiceType` paraméter értékeként az ebben a példában látható módon legyen megadva. 
 | **Megváltoztathatatlan tároló** |Még nem támogatott <br><br>A nem módosítható tárterület lehetővé teszi az adattárolást egy [féregben (egyszer írható, olvasható)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) állapottal.|
 | **Objektum szintű szintek** |A ritka elérésű és az archiválási rétegek csak akkor támogatottak, ha Data Lake Storage előzetes verzióban regisztrál a [multi-Protocol hozzáférésre](data-lake-storage-multi-protocol-access.md) . <br><br> Az összes többi hozzáférési szintet még nem támogatja a rendszer.|
 | **A PowerShell és a parancssori felület támogatása** | Korlátozott funkcionalitás <br><br>A felügyeleti műveletek, például a fiókok létrehozása is támogatottak. Az adatsík-műveletek, például a fájlok feltöltése és letöltése nyilvános előzetes verzióban érhető el [Data Lake Storage a többprotokollos hozzáférés](data-lake-storage-multi-protocol-access.md)részeként. A címtárak használata és a hozzáférés-vezérlési listák (ACL-ek) beállítása még nem támogatott. |

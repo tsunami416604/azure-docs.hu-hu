@@ -1,5 +1,5 @@
 ---
-title: Az Azure Cloud Services def NetworkTrafficRules séma |} A Microsoft Docs
+title: Azure Cloud Services def. NetworkTrafficRules séma | Microsoft Docs
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -10,26 +10,26 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 351b369f-365e-46c1-82ce-03fc3655cc88
 caps.latest.revision: 17
-author: jpconnock
-ms.author: jeconnoc
-manager: timlt
-ms.openlocfilehash: 8925943b0a5d151d55adedcfe3f01b5a14c63c1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+author: georgewallace
+ms.author: gwallace
+manager: gwallace
+ms.openlocfilehash: e99b9f0f601841fe6ff32eba0a43bfafd652e941
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60613885"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945936"
 ---
-# <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure Cloud Services – definíciós NetworkTrafficRules séma
-A `NetworkTrafficRules` csomópont egy nem kötelező eleme a szolgáltatásdefiníciós fájlt, amely meghatározza, milyen szerepkörök kommunikálnak egymással. Mely szerepkörök hozzáférhet az adott szerepkör a belső végpontok korlátozza. A `NetworkTrafficRules` nem egy önálló elemet; a szolgáltatásdefiníciós fájlban két vagy több szerepkör kombinálva.
+# <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure Cloud Services Definition NetworkTrafficRules séma
+A `NetworkTrafficRules` csomópont egy opcionális elem a szolgáltatás-definíciós fájlban, amely megadja, hogy a szerepkörök hogyan kommunikáljanak egymással. Ez korlátozza, hogy mely szerepkörök férhetnek hozzá az adott szerepkör belső végpontjaihoz. A `NetworkTrafficRules` nem önálló elem; a szolgáltatás definíciós fájljában kettő vagy több szerepkörrel együtt.
 
-Az alapértelmezett kiterjesztése a szolgáltatásdefiníciós fájl .csdef esetében.
+A szolgáltatás definíciós fájljának alapértelmezett kiterjesztése. csdef.
 
 > [!NOTE]
->  A `NetworkTrafficRules` csomópont csak az elérhető az Azure SDK verzióval 1.3-as vagy újabb.
+>  A `NetworkTrafficRules` csomópont csak az Azure SDK 1,3-es vagy újabb verziójának használatával érhető el.
 
-## <a name="basic-service-definition-schema-for-the-network-traffic-rules"></a>Alapszintű szolgáltatásdefiníciós sémában a hálózati forgalomra vonatkozó szabályok
-A hálózati forgalom definíciókat tartalmazó szolgáltatásdefiníciós fájl alapvető formátuma a következő.
+## <a name="basic-service-definition-schema-for-the-network-traffic-rules"></a>Alapszintű szolgáltatás-definíciós séma a hálózati forgalom szabályaihoz
+A hálózati forgalmi definíciókat tartalmazó szolgáltatási definíciós fájlok alapformátuma a következő.
 
 ```xml
 <ServiceDefinition …>
@@ -48,15 +48,15 @@ A hálózati forgalom definíciókat tartalmazó szolgáltatásdefiníciós fáj
 ```
 
 ## <a name="schema-elements"></a>Séma elemei
-A `NetworkTrafficRules` a szolgáltatásdefiníciós fájlt a csomópont tartalmazza ezeket az elemeket, ez a témakör későbbi részeiben részletesen ismertetjük:
+A szolgáltatás definíciós fájljának csomópontjatartalmazzaezeketazelemeket,amelyeketajelentémakörkövetkezőrészeibentalál:`NetworkTrafficRules`
 
 [NetworkTrafficRules elem](#NetworkTrafficRules)
 
-[OnlyAllowTrafficTo Element](#OnlyAllowTrafficTo)
+[OnlyAllowTrafficTo elem](#OnlyAllowTrafficTo)
 
-[Célok elem](#Destinations)
+[Célhelyek elem](#Destinations)
 
-[RoleEndpoint Element](#RoleEndpoint)
+[RoleEndpoint elem](#RoleEndpoint)
 
 AllowAllTraffic elem
 
@@ -64,39 +64,39 @@ AllowAllTraffic elem
 
 [FromRole elem](#FromRole)
 
-##  <a name="NetworkTrafficRules"></a> NetworkTrafficRules elem
-A `NetworkTrafficRules` elem azt határozza meg, mely szerepkörök képes kommunikálni egy másik szerepkör melyik végponthoz. Egy szolgáltatás egyet tartalmazhat `NetworkTrafficRules` definíciója.
+##  <a name="NetworkTrafficRules"></a>NetworkTrafficRules elem
+Az `NetworkTrafficRules` elem határozza meg, hogy mely szerepkörök kommunikálhatnak egymással egy másik szerepkörhöz tartozó végponttal. Egy szolgáltatás egy `NetworkTrafficRules` definíciót is tartalmazhat.
 
-##  <a name="OnlyAllowTrafficTo"></a> OnlyAllowTrafficTo elem
-A `OnlyAllowTrafficTo` elem cél végpontok és a velük kommunikáló szerepkörök gyűjteménye, írja le. Megadhatja, hogy több `OnlyAllowTrafficTo` csomópontok.
+##  <a name="OnlyAllowTrafficTo"></a>OnlyAllowTrafficTo elem
+Az `OnlyAllowTrafficTo` elem ismerteti a cél végpontok gyűjteményét, valamint azokat a szerepköröket, amelyek kommunikálni tudnak velük. Több `OnlyAllowTrafficTo` csomópontot is megadhat.
 
-##  <a name="Destinations"></a> Célok elem
-A `Destinations` elem RoleEndpoints gyűjteménye írja le, mint a továbbíthatók.
+##  <a name="Destinations"></a>Célhelyek elem
+Az `Destinations` elem a RoleEndpoints gyűjteményét írja le, amely a használatával kommunikálhat.
 
-##  <a name="RoleEndpoint"></a> RoleEndpoint elem
-A `RoleEndpoint` elem az a végpont egy engedélyezik a kommunikációt a szerepkör írja le. Megadhatja, hogy több `RoleEndpoint` elemeket, ha vannak a szerepkör több végpont.
+##  <a name="RoleEndpoint"></a>RoleEndpoint elem
+Az `RoleEndpoint` elem egy olyan szerepkörhöz tartozó végpontot ismertet, amely lehetővé teszi a kommunikációt a szolgáltatással. Több `RoleEndpoint` elemet is megadhat, ha a szerepkörhöz több végpont is van.
 
-| Attribútum      | Típus     | Leírás |
+| Attribútum      | Type     | Leírás |
 | -------------- | -------- | ----------- |
-| `endpointName` | `string` | Kötelező. Engedélyezi az adatforgalmat a végpont neve.|
-| `roleName`     | `string` | Kötelező. Engedélyezi a kommunikációt, a webes szerepkör neve.|
+| `endpointName` | `string` | Kötelező. Annak a végpontnak a neve, amely engedélyezi a forgalmat.|
+| `roleName`     | `string` | Kötelező. Annak a webes szerepkörnek a neve, amely lehetővé teszi a kommunikációt.|
 
 ## <a name="allowalltraffic-element"></a>AllowAllTraffic elem
-A `AllowAllTraffic` elem egy szabályt, amely lehetővé teszi, hogy az összes szerepkör a meghatározott végpontok kommunikálni a `Destinations` csomópont.
+Az `AllowAllTraffic` elem egy olyan szabály, amely lehetővé teszi, hogy az összes szerepkör kommunikáljon a `Destinations` csomópontban definiált végpontokkal.
 
-##  <a name="WhenSource"></a> WhenSource elem
-A `WhenSource` elem szerepkörök gyűjteménye írja le, és a meghatározott végpontok közötti kommunikációhoz, mint a `Destinations` csomópont.
+##  <a name="WhenSource"></a>WhenSource elem
+Az `WhenSource` elem olyan szerepkörök gyűjteményét írja le, amelyek nem tudnak kommunikálni a `Destinations` csomópontban definiált végpontokkal.
 
-| Attribútum | Típus     | Leírás |
+| Attribútum | Type     | Leírás |
 | --------- | -------- | ----------- |
-| `matches` | `string` | Kötelező. Megadja a szabály a alkalmazni, ha engedélyezi a kommunikációt. Jelenleg az egyetlen érvényes érték `AnyRule`.|
+| `matches` | `string` | Kötelező. Meghatározza a kommunikáció engedélyezésekor alkalmazandó szabályt. Az egyetlen érvényes érték jelenleg `AnyRule`.|
   
-##  <a name="FromRole"></a> FromRole elem
-A `FromRole` elem azt határozza meg a szerepköröket, amely képes kommunikálni a meghatározott végpontok a `Destinations` csomópont. Megadhatja, hogy több `FromRole` elemeket, ha több szerepkör, amely képes kommunikálni a végpontok.
+##  <a name="FromRole"></a>FromRole elem
+Az `FromRole` elem meghatározza azokat a szerepköröket, amelyek kommunikálhatnak a `Destinations` csomópontban definiált végpontokkal. Több `FromRole` elemet is megadhat, ha több olyan szerepkör is van, amely képes kommunikálni a végpontokkal.
 
-| Attribútum  | Típus     | Leírás |
+| Attribútum  | Type     | Leírás |
 | ---------- | -------- | ----------- |
-| `roleName` | `string` | Kötelező. Szerepkör, amely engedélyezi a kommunikációt a nevét.|
+| `roleName` | `string` | Kötelező. Annak a szerepkörnek a neve, amelyről engedélyezni szeretné a kommunikációt.|
 
 ## <a name="see-also"></a>Lásd még:
 [Cloud Service (klasszikus) definíciós séma](schema-csdef-file.md)

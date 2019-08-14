@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 08/09/2019
 ms.author: victorh
-ms.openlocfilehash: 89b50cff2d46f8c92c09653aeaac49551c97e9c6
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 9a3cdb846921c2d73dd2cca5d679663c1ba9e192
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314465"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946896"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS alias rekordok áttekintése
 
@@ -20,7 +20,7 @@ Azure DNS az alias-rekordok egy DNS-rekordhalmaz minősítései. A DNS-zónán b
 
 Egy Azure DNS zónában a következő bejegyzéstípusok esetében támogatott az alias-rekord: 
 
-- A
+- J
 - AAAA
 - CNAME
 
@@ -29,7 +29,7 @@ Egy Azure DNS zónában a következő bejegyzéstípusok esetében támogatott a
 
 ## <a name="capabilities"></a>Funkciók
 
-- **Mutasson egy nyilvános IP-erőforrásra egy DNS-A/AAAA-rekorddal.** Létrehozhat egy egy/AAAA-rekordot, és egy alias-rekordot állíthat be úgy, hogy egy nyilvános IP-erőforrásra mutasson. A DNS-rekordtípus automatikusan megváltozik, ha a nyilvános IP-cím megváltozik vagy törölve lett. A helytelen IP-címekre mutató DNS-rekordokat nem lehet elkerülni.
+- **Mutasson egy nyilvános IP-erőforrásra egy DNS-A/AAAA-rekorddal.** Létrehozhat egy/AAAA-rekordot, és egy alias-rekordot állíthat be úgy, hogy egy nyilvános IP-erőforrásra mutasson (standard vagy alapszintű). A DNS-rekordtípus automatikusan megváltozik, ha a nyilvános IP-cím megváltozik vagy törölve lett. A helytelen IP-címekre mutató DNS-rekordokat nem lehet elkerülni.
 
    A jelenlegi határérték 20 alias-rekordhalmazt állít be erőforrásként.
 

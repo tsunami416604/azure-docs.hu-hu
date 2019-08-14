@@ -1,5 +1,5 @@
 ---
-title: 'Folyamatok: gépi tanulási munkafolyamatok optimalizálása'
+title: Mi az a ML-folyamat?
 titleSuffix: Azure Machine Learning service
 description: Ebben a cikkben megismerkedhet a machine learning-folyamatokat hozhat létre Azure Machine Learning-SDK-val a Python és a folyamatok használatának előnye. Machine learning (gépi tanulás) folyamatok segítségével az adatszakértők hozhat létre, optimalizálhat és kezelhet a machine learning-munkafolyamatokat.
 services: machine-learning
@@ -11,18 +11,16 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9965dbbca939f566048312af921061a188ee50d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 22d1da4c194b392993b37b16ab20673120c3362e
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884244"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951798"
 ---
-# <a name="build-reusable-ml-pipelines-in-azure-machine-learning-service"></a>Újrafelhasználható ML-folyamatok létrehozása Azure Machine Learning szolgáltatásban
+# <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Mik a Azure Machine Learning-szolgáltatásban található ML-folyamatok?
 
-Ebben a cikkben megismerheti a Pythonhoz készült Azure Machine Learning SDK-val felépíthető gépi tanulási folyamatokat, valamint a folyamatok használatának előnyeit.
-
-## <a name="what-are-machine-learning-pipelines"></a>Mik azok a machine learning-folyamatokat?
+Megtudhatja, hogyan hozhat létre és kezelhet Azure Machine Learning szolgáltatással felépíthető gépi tanulási folyamatokat. 
 
 Machine learning (gépi tanulás) folyamatok, az adatszakértők, adatmérnökök és informatikai szakemberek számára használatával közösen dolgozhatnak a lépéseit:
 + Adat-előkészítés, például normalizations és átalakítások
@@ -30,7 +28,7 @@ Machine learning (gépi tanulás) folyamatok, az adatszakértők, adatmérnökö
 + Modell értékelése
 + Környezet
 
-Az alábbi ábrán egy példa folyamat látható:
+Ismerje meg, hogyan [az első folyamat létrehozása](how-to-create-your-first-pipeline.md).
 
 ![Gépi tanulási folyamatok Azure Machine Learning szolgáltatásban](./media/concept-ml-pipelines/pipeline-flow.png)
 
@@ -47,9 +45,7 @@ Az Azure-felhő számos más folyamatot is biztosít, amelyek mindegyike más c�
 
 ## <a name="why-build-pipelines-with-azure-machine-learning"></a>Miért érdemes létrehozni az Azure Machine Learning folyamatok?
 
-A Pythonhoz készült [Azure Machine learning SDK](#the-python-sdk-for-pipelines) -val ml-folyamatokat hozhat létre, valamint elküldheti és nyomon követheti az egyes folyamatok futtatásait.
-
-A folyamatok optimalizálhatja a munkafolyamatot az egyszerűség, gyorsabb, hordozhatósága és újból. Azure Machine Learningekkel rendelkező folyamatok létrehozásakor az infrastruktúra és az automatizálás helyett a szakértelemre, a gépi tanulásra koncentrálhat.
+A gépi tanulási folyamatok gyorsabbá, hordozhatóságot és újrahasznosítást tesznek jobbá a munkafolyamatban, így az infrastruktúra és az automatizálás helyett a szaktudásra, a gépi tanulásra koncentrálhat.
 
 A folyamatok több lépésből állnak, amelyek a folyamat különböző számítási egységei. Az egyes lépések egymástól függetlenül futtathatók, és elkülönített számítási erőforrásokat is használhatnak. Ez lehetővé teszi, hogy egyszerre több adatszakértő is működjön ugyanazon a folyamaton, és ne legyenek túlterhelt számítási erőforrások, és az egyes lépésekhez egyszerűen különböző számítási típusokat/méreteket kell használni.
 
@@ -73,20 +69,20 @@ A gépi tanulási munkafolyamatok folyamatainak használatának fő előnyei a k
 
 ## <a name="the-python-sdk-for-pipelines"></a>A Python SDK folyamatok
 
-A Python használatával a gépi Tanulási folyamatokat hozhat létre. Az Azure Machine Learning SDK alkalmazás-előkészítés és-folyamatok lépéseit párhuzamosan futtatni, amikor nincs függőség nem található imperatív szerkezeteket kínál. Használhatja a Jupyter-jegyzetfüzetekben vagy más előnyben részesített IDE-ben.
+A [PYTHON SDK használatával](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) hozza létre a ml-folyamatokat az előnyben részesített ide-vagy Jupyter-jegyzetfüzetekben. Az Azure Machine Learning SDK alkalmazás-előkészítés és-folyamatok lépéseit párhuzamosan futtatni, amikor nincs függőség nem található imperatív szerkezeteket kínál. 
 
-Deklaratív adatok-függőségek használatával, optimalizálhatja a feladatokat. Az SDK a gyakori feladatokhoz, például az adatátvitelhez és a modell-közzétételhez készült előre összeállított modulok keretrendszerét tartalmazza. Kiterjesztheti a keretrendszert a saját konvenciók modellezésére úgy, hogy olyan egyéni lépéseket valósít meg, amelyek felhasználhatók a folyamatok között. A számítási célokat és a tárolási erőforrásokat közvetlenül az SDK-ból is kezelheti.
+Deklaratív adatok-függőségek használatával, optimalizálhatja a feladatokat. Az SDK a gyakori feladatokhoz, például az adatátvitelhez és a modell-közzétételhez készült előre összeállított modulok keretrendszerét tartalmazza. A keretrendszert kiterjesztheti úgy, hogy saját konvenciókat modellez, és a folyamatokon belül egyéni lépéseket is felhasználhat. A számítási célokat és a tárolási erőforrásokat közvetlenül az SDK-ból is kezelheti.
 
-A folyamatokat sablonként mentheti, és egy REST-végpontra telepítheti, így kötegelt pontozási vagy átképzési feladatokat ütemezhet.
+Mentse a folyamatokat sablonként, és telepítse őket egy REST-végpontra a Batch-pontozási vagy átképzési feladatokhoz.
 
-Ha szeretné megtudni, hogyan hozhat létre sajátt, tekintse meg a folyamatok és a jegyzetfüzetek [PYTHON SDK](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) -dokumentációját a következő szakaszban.
-
-## <a name="example-notebooks"></a>Példa notebookok
-
-A következő notebookok folyamatokat az Azure Machine Learning bemutatása: [how-to-use-azureml/machine-learning-pipelines](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines).
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
+Két Python-csomag található a Azure Machine Learning: [azureml-pipeline-Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) és a azureml-pipeline- [lépéseket](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/?view=azure-ml-py)tartalmazó folyamatokhoz.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan [az első folyamat létrehozása](how-to-create-your-first-pipeline.md).
++ Ismerje meg, hogyan [az első folyamat létrehozása](how-to-create-your-first-pipeline.md).
+
++ Megtudhatja, hogyan [futtathat batch-előrejelzéseket nagy mennyiségű adattal](how-to-run-batch-predictions.md).
+
++ A [folyamatok SDK](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) -dokumentációjának elolvasása
+
++ Próbálja ki például a [Azure Machine learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)-folyamatokat bemutató Jupyter notebookokat. Útmutató jegyzetfüzetek [futtatásához a szolgáltatás megismeréséhez](samples-notebooks.md).

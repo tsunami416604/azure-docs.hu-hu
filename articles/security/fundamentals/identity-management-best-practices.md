@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 46850ad430aa5fb8ad25a71515bdd640855350c2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 371c3b9fde17bba33fb6f2526be68fe89aec6b01
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727265"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934695"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure Identity Management és a hozzáférés-vezérlés biztonsága – ajánlott eljárások
 Ebben a cikkben az Azure Identity Management és a hozzáférés-vezérléssel kapcsolatos ajánlott biztonsági eljárások gyűjteményét tárgyaljuk. Ezek az ajánlott eljárások az [Azure ad](../../active-directory/fundamentals/active-directory-whatis.md) -vel és az ügyfelek, például saját felhasználói élményekkel kapcsolatos tapasztalataiból származnak.
@@ -84,8 +84,8 @@ További információ: jelszó- [kivonatolási szinkronizálás implementálása
 **Részletek**: A hitelesítés támogatásához használja a megfelelő képességeket:
 
   - Azure AD az alkalmazottak számára
-  - [Azure ad B2B](https://docs.microsoft.com/azure/active-directory/b2b/) vendég felhasználók és külső partnerek számára
-  - [Azure ad B2C](https://docs.microsoft.com/azure/active-directory-b2c/) annak szabályozásához, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik a profiljaikat az alkalmazások használatakor
+  - [Azure ad B2B](../../active-directory/b2b/index.yml) vendég felhasználók és külső partnerek számára
+  - [Azure ad B2C](../../active-directory-b2c/index.yml) annak szabályozásához, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik a profiljaikat az alkalmazások használatakor
 
 Azok a szervezetek, amelyek nem integrálják a helyszíni identitást a Felhőbeli identitással, nagyobb terheléssel rendelkezhetnek a fiókok kezelésében. Ez a terhelés növeli a hibák és a biztonsági rések valószínűségét.
 

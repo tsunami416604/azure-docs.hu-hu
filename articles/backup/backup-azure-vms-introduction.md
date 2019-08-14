@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: dacurwin
-ms.openlocfilehash: 07faf03ee9b12d1bf4a200de47d6df714c2248d9
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 72ab33cd280892ac6de827986e21e04672e58960
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737148"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951849"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Az Azure virtuális gépek biztonsági mentésének áttekintése
 
@@ -138,6 +138,50 @@ Helyi/ideiglenes lemez | 135 GB | 5 GB (nem tartalmazza a biztonsági mentést)
 2\. adatlemez | 4095 GB | 0 GB
 
 Ebben az esetben a virtuális gép tényleges mérete 17 GB + 30 GB + 0 GB = 47 GB. Ez a védett példány mérete (47 GB) lesz a havi számla alapja. Ahogy a virtuális gépen lévő adatmennyiség növekszik, a számlázáshoz használt védett példány mérete megegyezik.
+
+<a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
+## <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Korlátozott nyilvános előzetes verzió: A virtuális gép biztonsági mentése 30 TB-ig terjedő méretű lemezekkel
+
+Azure Backup mostantól támogatja a nagyobb és nagyobb teljesítményű Azure- [Managed Disks](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) korlátozott nyilvános előzetes verzióját, amely akár 30 TB méretű is lehet. Ez az előzetes verzió a felügyelt virtuális gépek termelési szintű támogatását biztosítja.
+
+A folyamatban lévő biztonsági mentésekre gyakorolt hatás nélkül is zökkenőmentesen regisztrálhat az előzetes verzióra. Miután az előfizetés regisztrálva van az előzetes verzióban, az összes olyan virtuális gépet, amelynek a mérete legfeljebb 30 TB, sikeresen biztonsági mentést kell készíteni. Regisztrálás az előzetes verzióban:
+ 
+Hajtsa végre a következő parancsmagokat egy emelt szintű PowerShell-terminálról:
+
+1. Jelentkezzen be Azure-fiókjába.
+
+    ```powershell
+    PS C:> Login-AzureRmAccount
+    ```
+
+2. Válassza ki azt az előfizetést, amelyet regisztrálni szeretne a frissítéshez:
+
+    ```powershell
+    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+    ```
+3. Az előfizetés regisztrálása az előzetes programban: 
+
+    ```powershell
+    PS C:> Register-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices
+    ```
+
+    Várjon 30 percet, amíg az előfizetés regisztrálva lesz az előzetes verzióban. 
+
+ 4. Az állapot ellenõrzéséhez futtassa a következő parancsmagokat:
+
+    ```powershell
+    PS C:> Get-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices 
+    ```
+5. Ha az előfizetés regisztráltként jelenik meg, futtassa a következő parancsot:
+    
+    ```powershell
+    PS C:> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+    ```
+
+> [!NOTE]
+> Ez az előzetes verzió nem támogatja a 4 TB-nál nagyobb méretű lemezekkel rendelkező titkosított virtuális gépeket.
+
+
 
 ## <a name="next-steps"></a>További lépések
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07c035f4823ea8c8eaa96ca9bda22450246811cd
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1cb4d3e35ae743dbae4c049f515d61b3042e7efe
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779627"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952806"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD jelszavas védelem – hibaelhárítás
 
@@ -41,6 +41,8 @@ Ennek a problémának a fő tünete a DC-ügynök rendszergazdai eseménynaplój
 1. A proxykiszolgáló blokkolja a proxy szolgáltatás által figyelt RPC-végponthoz (dinamikus vagy statikus) való hozzáférést.
 
    Az Azure AD jelszavas védelmi proxy telepítője automatikusan létrehoz egy Windows tűzfal bejövő szabályt, amely lehetővé teszi az Azure AD jelszavas védelmi proxy szolgáltatás által figyelt bejövő portok elérését. Ha ezt a szabályt később törli vagy letiltja, a DC-ügynökök nem tudnak kommunikálni a proxy szolgáltatással. Ha a beépített Windows tűzfal egy másik tűzfal-termék helyett le van tiltva, akkor a tűzfalat úgy kell beállítania, hogy engedélyezze a hozzáférést az Azure AD jelszavas védelmi proxy szolgáltatás által figyelt bejövő portokhoz. Ez a konfiguráció konkrétabb lehet, ha a proxy szolgáltatás úgy van konfigurálva, hogy egy adott statikus RPC-portot figyeljen (a `Set-AzureADPasswordProtectionProxyConfiguration` parancsmag használatával).
+
+1. A proxykiszolgáló nem engedélyezi, hogy a tartományvezérlők képesek legyenek bejelentkezni a gépre. Ezt a viselkedést a "számítógép elérése a hálózatról" felhasználói jogosultságok kiosztása vezérli. Ezt a jogosultságot az erdő összes tartományának összes tartományvezérlőjén meg kell adni. Ezt a beállítást gyakran egy nagyobb hálózati megerősítési tevékenység részeként korlátozzák.
 
 ## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>A proxy szolgáltatás nem tud kommunikálni az Azure-ban
 

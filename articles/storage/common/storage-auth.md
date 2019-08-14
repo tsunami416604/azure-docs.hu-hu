@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a0717785f4f9c1c21a18d081d157a6cdc8c12f18
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 3cdbb6587871b970c0188c0b8f510cc9f1f4fe07
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371183"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985177"
 ---
 # <a name="authorizing-access-to-azure-storage"></a>Hozzáférés engedélyezése az Azure Storage-hoz
 
@@ -24,11 +24,11 @@ Az alábbi táblázat azokat a lehetőségeket ismerteti, amelyeket az Azure Sto
 
 |  |Megosztott kulcs (Storage-fiók kulcsa)  |Közös hozzáférésű jogosultságkód (SAS)  |Azure Active Directory (Azure AD)  |Névtelen nyilvános olvasási hozzáférés  |
 |---------|---------|---------|---------|---------|
-|Azure Blobs     |[Támogatott](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Támogatott](storage-dotnet-shared-access-signature-part-1.md)         |[Támogatott](storage-auth-aad.md)         |[Támogatott](../blobs/storage-manage-access-to-resources.md)         |
+|Azure Blobs     |[Támogatott](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Támogatott](storage-sas-overview.md)         |[Támogatott](storage-auth-aad.md)         |[Támogatott](../blobs/storage-manage-access-to-resources.md)         |
 |Azure Files (SMB)     |[Támogatott](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |Nem támogatott         |[Támogatott, csak a HRE tartományi szolgáltatásokkal](../files/storage-files-active-directory-overview.md)         |Nem támogatott         |
-|Azure Files (REST)     |[Támogatott](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Támogatott](storage-dotnet-shared-access-signature-part-1.md)         |Nem támogatott         |Nem támogatott         |
-|Azure-üzenetsorok     |[Támogatott](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Támogatott](storage-dotnet-shared-access-signature-part-1.md)         |[Támogatott](storage-auth-aad.md)         |Nem támogatott         |
-|Azure-táblák     |[Támogatott](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Támogatott](storage-dotnet-shared-access-signature-part-1.md)         |Nem támogatott         |Nem támogatott         |
+|Azure Files (REST)     |[Támogatott](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Támogatott](storage-sas-overview.md)         |Nem támogatott         |Nem támogatott         |
+|Azure-üzenetsorok     |[Támogatott](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Támogatott](storage-sas-overview.md)         |[Támogatott](storage-auth-aad.md)         |Nem támogatott         |
+|Azure-táblák     |[Támogatott](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Támogatott](storage-sas-overview.md)         |Nem támogatott         |Nem támogatott         |
 
 Az egyes engedélyezési beállítások rövid ismertetését az alábbiakban találja:
 
@@ -37,7 +37,7 @@ Az egyes engedélyezési beállítások rövid ismertetését az alábbiakban ta
 - A fájlok **Azure ad Domain Services (DS) integrációja (előzetes verzió)** . Azure Files támogatja az identitás-alapú hitelesítést az Azure AD DS keresztül az SMB protokollon keresztül. Ezzel a RBAC részletesen szabályozhatja az ügyfelek hozzáférését egy Storage-fiók erőforrásaihoz. További információ az Azure AD-integrációról a tartományi szolgáltatásokkal való fájlokhoz: [Azure Files Azure Active Directory tartományi szolgáltatás (HRE DS) hitelesítési támogatásának áttekintése az SMB-hozzáféréshez (előzetes verzió)](../files/storage-files-active-directory-overview.md).
 
 - A Blobok, a fájlok, a várólisták és a táblák **megosztott kulcsos hitelesítése** . A megosztott kulcsot használó ügyfelek minden, a Storage-fiók elérési kulcsával aláírt kérelemmel továbbítanak egy fejlécet. További információ: [Engedélyezés megosztott kulccsal](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/).
-- A blobokhoz, fájlokhoz, várólistákhoz és táblákhoz tartozó **közös hozzáférésű aláírások** . A közös hozzáférésű aláírások (SAS) korlátozott delegált hozzáférést biztosítanak egy Storage-fiók erőforrásaihoz. Korlátozásokat adhat hozzá az aláírás érvényességi időintervallumához vagy az általa biztosított engedélyekhez, és rugalmasságot biztosít a hozzáférés kezelésében. További információ: Shared [Access Signatures (SAS) használata](storage-dotnet-shared-access-signature-part-1.md).
+- A blobokhoz, fájlokhoz, várólistákhoz és táblákhoz tartozó **közös hozzáférésű aláírások** . A közös hozzáférésű aláírások (SAS) korlátozott delegált hozzáférést biztosítanak egy Storage-fiók erőforrásaihoz. Korlátozásokat adhat hozzá az aláírás érvényességi időintervallumához vagy az általa biztosított engedélyekhez, és rugalmasságot biztosít a hozzáférés kezelésében. További információ: Shared [Access Signatures (SAS) használata](storage-sas-overview.md).
 - **Névtelen nyilvános olvasási hozzáférés** tárolók és Blobok számára. Az engedélyezés nem szükséges. További információkért lás a [tárolók és blobok névtelen olvasási hozzáférésének kezelésével](../blobs/storage-manage-access-to-resources.md) foglalkozó témakört.  
 
 Alapértelmezés szerint az Azure Storage összes erőforrása védett, és csak a fiók tulajdonosa számára érhető el. Habár a fentiekben ismertetett engedélyezési stratégiák bármelyikét felhasználhatja az ügyfelek számára a Storage-fiók erőforrásaihoz való hozzáférés biztosítására, a Microsoft az Azure AD használatát javasolja, ha lehetséges a maximális biztonság és a könnyű használat. 

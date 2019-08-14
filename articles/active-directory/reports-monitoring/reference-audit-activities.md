@@ -3,7 +3,7 @@ title: Az Azure Active Directory (Azure AD) naplózott tevékenységeire vonatko
 description: Tekintse át az Azure Active Directoryban (Azure AD) naplókban rögzíthető tevékenységeket.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 01/24/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66dd017e8f78f1e93c96262b42dc084c165cdef7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a687823d1344ca11864523cb9187f48d7373fd41
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60285492"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989637"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD naplózott tevékenységekre vonatkozó referencia
 
-A jelentések az Azure Active Directory (Azure AD) megtekintheti az adatokat, meg kell határoznia, hogy a környezet működésébe.
+A Azure Active Directory-(Azure AD-) jelentésekkel megtekintheti a környezete működésének meghatározásához szükséges információkat.
 
 Az Azure AD jelentéskészítési architektúrája a következő elemekből áll:
 
-- **Tevékenységjelentések** 
-    - [Bejelentkezések](concept-sign-ins.md) – arról nyújt tájékoztatást, a használati felügyelt alkalmazások és a felhasználó bejelentkezési tevékenységek
+- **Tevékenységgel kapcsolatos jelentések** 
+    - [Bejelentkezések](concept-sign-ins.md) – információkat biztosít a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról
     - [Auditnaplók](concept-audit-logs.md) – az Azure AD-n belül különböző szolgáltatások által végrehajtott összes módosításra vonatkozó nyomkövetési naplókat biztosít. 
     
 - **Biztonsági jelentések** 
@@ -57,19 +57,19 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Hozzáférési felülvizsgálatok|Azure AD hozzáférési felülvizsgálatok előkészítése|
 |Hozzáférési felülvizsgálatok|Felülvizsgáló eltávolítása a hozzáférési felülvizsgálatból|
 |Hozzáférési felülvizsgálatok|Felülvizsgálat leállításának kérése|
-|Hozzáférési felülvizsgálatok|Felülvizsgálat-alkalmazás eredményének kérése|
+|Hozzáférési felülvizsgálatok|Felülvizsgálati eredmény alkalmazásának kérése|
 |Hozzáférési felülvizsgálatok|RBAC-szerepkörtagság felülvizsgálata|
 |Hozzáférési felülvizsgálatok|Alkalmazás-hozzárendelés felülvizsgálata|
 |Hozzáférési felülvizsgálatok|Csoporttagság felülvizsgálata|
 |Hozzáférési felülvizsgálatok|Kérelem-jóváhagyási kérelem felülvizsgálata|
 |Hozzáférési felülvizsgálatok|Programvezérlő leválasztása|
 |Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat frissítése|
-|Hozzáférési felülvizsgálatok|Azure AD hozzáférési felülvizsgálatok előkészítése állapotának frissítése|
-|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati e-mail-értesítési beállításainak frissítése|
-|Hozzáférési felülvizsgálatok|Frissítés hozzáférési felülvizsgálat ismétlődésszámot beállítása|
-|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat ismétlődési időtartama napokban frissítése|
-|Hozzáférési felülvizsgálatok|Frissítés hozzáférési felülvizsgálati ismétlődés záró típusa beállítása|
-|Hozzáférési felülvizsgálatok|Frissítés hozzáférési felülvizsgálat ismétlődés típusa beállítása|
+|Hozzáférési felülvizsgálatok|Az Azure AD hozzáférési felülvizsgálatok bevezetési állapotának frissítése|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati e-mail-értesítés beállításainak frissítése|
+|Hozzáférési felülvizsgálatok|A hozzáférési felülvizsgálathoz tartozó ismétlődésszám beállításának frissítése|
+|Hozzáférési felülvizsgálatok|A hozzáférési felülvizsgálathoz tartozó ismétlődési időtartam (nap) beállításának frissítése|
+|Hozzáférési felülvizsgálatok|A hozzáférési felülvizsgálathoz tartozó ismétlődési befejezési típus beállításának frissítése|
+|Hozzáférési felülvizsgálatok|A hozzáférési felülvizsgálathoz tartozó ismétlődési típus beállításának frissítése|
 |Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati emlékeztető beállításainak frissítése|
 |Hozzáférési felülvizsgálatok|Program frissítése|
 |Hozzáférési felülvizsgálatok|Kérelem-jóváhagyás frissítése|
@@ -135,117 +135,117 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Alkalmazáskezelés|AdminPolicyDatas-SetResources|
 |Alkalmazáskezelés|AdminUserJourneys-GetResources|
 |Alkalmazáskezelés|AdminUserJourneys-RemoveResources|
-|Hitelesítés|AdminUserJourneys-SetResources|
-|Hitelesítés|IdentityProvider létrehozása|
-|Hitelesítés|V1 alkalmazás létrehozása|
-|Hitelesítés|V2 alkalmazás létrehozása|
-|Hitelesítés|Egyéni tartomány létrehozása a bérlőben|
-|Engedélyezés|Új AdminUserJourney létrehozása|
-|Engedélyezés|Honosított json-erőforrás létrehozása|
-|Engedélyezés|Új egyéni identitásszolgáltató létrehozása|
-|Engedélyezés|Új identitásszolgáltató létrehozása|
-|Engedélyezés|B2C címtárerőforrás létrehozása vagy frissítése|
-|Engedélyezés|Szabályzat létrehozása|
-|Engedélyezés|trustFramework szabályzat létrehozása|
-|Engedélyezés|Konfigurálható előtaggal rendelkező trustFramework szabályzat létrehozása|
-|Engedélyezés|Felhasználói attribútum létrehozása|
-|Engedélyezés|CreateTrustFrameworkPolicy|
-|Engedélyezés|Új AdminUserJourney létrehozása vagy frissítése|
-|Engedélyezés|Identitásszolgáltató törlése|
-|Engedélyezés|IdentityProvider törlése|
-|Engedélyezés|V1 alkalmazás törlése|
-|Engedélyezés|V2 alkalmazás törlése|
-|Engedélyezés|V2 alkalmazás engedélymegadásának törlése|
-|Engedélyezés|B2C címtárerőforrás törlése|
-|Engedélyezés|CPIM-kulcstároló törlése|
-|Engedélyezés|trustFramework szabályzat törlése|
-|Engedélyezés|Felhasználói attribútum törlése|
-|Engedélyezés|B2C funkció engedélyezése|
-|Engedélyezés|Előfizetéshez tartozó B2C címtárerőforrások lekérése|
-|Engedélyezés|Egyéni identitásszolgáltató lekérése|
-|Engedélyezés|Identitásszolgáltató lekérése|
-|Engedélyezés|V1 és V2 alkalmazások lekérése|
-|Engedélyezés|V1 alkalmazás lekérése|
-|Engedélyezés|V1 alkalmazások lekérése|
-|Engedélyezés|V2 alkalmazás lekérése|
-|Engedélyezés|V2 alkalmazások lekérése|
-|Engedélyezés|B2C címtárerőforrás lekérése|
-|Engedélyezés|A bérlőben lévő egyéni tartományok listájának lekérése|
-|Engedélyezés|Felhasználói út lekérése|
-|Engedélyezés|A felhasználói út engedélyezett alkalmazásjogcímeinek lekérése|
-|Engedélyezés|A felhasználói út engedélyezett önellenőrzött jogcímeinek lekérése|
-|Engedélyezés|A szabályzat engedélyezett önellenőrzött jogcímeinek lekérése|
-|Engedélyezés|Elérhető kimeneti jogcímek listájának lekérése|
-|Engedélyezés|A felhasználói út tartalomdefinícióinak lekérése|
-|Engedélyezés|Adott rendszergazdai folyamathoz tartozó identitásszolgáltatók lekérése|
-|Engedélyezés|Kulcstároló aktív kulcsaihoz tartozó metaadatok lekérése JWK-ban|
-|Engedélyezés|Az összes rendszergazdai folyamat|
-|Engedélyezés|Az összes felhasználó összes rendszergazdai folyamatához tartozó címkék listájának lekérése|
-|Engedélyezés|Felhasználó bérlői listájának lekérése|
-|Engedélyezés|Helyi fiókok önellenőrző jogcímeinek lekérése|
-|Engedélyezés|Honosított json-erőforrás lekérése|
-|Engedélyezés|A Microsoft.AzureActiveDirectory erőforrás-szolgáltató műveleteinek lekérése|
-|Engedélyezés|Szabályzatok lekérése|
-|Engedélyezés|Szabályzat lekérése|
-|Engedélyezés|Bérlő erőforrás-tulajdonságainak lekérése|
-|Engedélyezés|Támogatott identitásszolgáltatók listájának lekérése|
-|Engedélyezés|A felhasználói út támogatott identitásszolgáltatói listájának lekérése|
-|Engedélyezés|Bérlői adatok lekérése|
-|Engedélyezés|Bérlő számára engedélyezett funkciók lekérése|
-|Engedélyezés|Bérlő által definiált egyéni identitásszolgáltatók listájának lekérése|
-|Engedélyezés|Bérlő által definiált identitásszolgáltatók listájának lekérése|
-|Engedélyezés|Bérlő által definiált helyi identitásszolgáltató-lista lekérése|
-|Engedélyezés|Felhasználó bérlői információinak lekérése erőforrások létrehozásához|
-|Engedélyezés|Bérlők listájának lekérése|
-|Engedélyezés|tenantDomains lekérése|
-|Engedélyezés|A CPIM alapértelmezett támogatott kultúrájának lekérése|
-|Engedélyezés|Rendszergazdai folyamathoz tartozó információk lekérése|
-|Engedélyezés|A bérlőhöz tartozó UserJourneys lista lekérése|
-|Engedélyezés|A CPIM-hez tartozó elérhető, támogatott kultúrák készletének lekérése|
-|Engedélyezés|TrustFramework szabályzat lekérése|
-|Engedélyezés|TrustFramework szabályzat lekérése xml-ként|
-|Engedélyezés|Felhasználói attribútum lekérése|
-|Engedélyezés|Felhasználói attribútumok lekérése|
-|Engedélyezés|Felhasználói utak listájának lekérése|
-|Engedélyezés|GetIEFPolicies|
-|Engedélyezés|GetIdentityProviders|
-|Engedélyezés|GetTrustFrameworkPolicy|
-|Engedélyezés|Lekérdez egy CPIM-kulcstárolót jwk formátumban|
-|Engedélyezés|Lekérdezi a bérlőben lévő kulcstárolók listáját|
-|Engedélyezés|Lekérdezi a bérlő típusát|
-|Engedélyezés|MigrateTenantMetadata|
-|Engedélyezés|IdentityProvider javítása|
-|Engedélyezés|PutTrustFrameworkPolicy|
-|Engedélyezés|PutTrustFrameworkpolicy|
-|Engedélyezés|Felhasználói út eltávolítása|
-|Engedélyezés|CPIM-kulcstároló biztonsági másolatának visszaállítása|
-|Engedélyezés|V2 alkalmazás engedélymegadásainak beolvasása|
-|Engedélyezés|V2 alkalmazások szolgáltatásnevének lekérése az aktuális bérlőben|
-|Engedélyezés|Egyéni identitásszolgáltató frissítése|
-|Engedélyezés|Identitásszolgáltató frissítése|
-|Engedélyezés|Helyi identitásszolgáltató frissítése|
-|Engedélyezés|V1 alkalmazás frissítése|
-|Engedélyezés|V2 alkalmazás frissítése|
-|Engedélyezés|V2 alkalmazás engedélymegadásának frissítése|
-|Engedélyezés|Szabályzat frissítése|
-|Engedélyezés|Felhasználói attribútum frissítése|
-|Engedélyezés|CPIM titkosított kulcs feltöltése|
-|Engedélyezés|Felhasználó engedélyezése: API le van tiltva a bérlő funkciókészletéhez|
-|Engedélyezés|Felhasználó engedélyezése: Felhasználó hozzáférést "Bérlői rendszergazdaként"|
-|Engedélyezés|Felhasználó engedélyezése: Felhasználó kapott hitelesített felhasználók hozzáférési jogosultságok|
-|Engedélyezés|B2C funkció engedélyezésének ellenőrzése|
-|Engedélyezés|Győződjön meg arról, hogy engedélyezve van-e a szolgáltatás|
-|Engedélyezés|Program létrehozása|
-|Engedélyezés|Program törlése|
-|Engedélyezés|Programvezérlő csatolása|
-|Engedélyezés|Azure AD hozzáférési felülvizsgálatok előkészítése|
-|Engedélyezés|Programvezérlő leválasztása|
-|Engedélyezés|Program frissítése|
-|Engedélyezés|Asztali egyszeri bejelentkezés letiltása|
-|Engedélyezés|Asztali egyszeri bejelentkezés letiltása adott tartományon|
-|Engedélyezés|Alkalmazásproxy letiltása|
-|Engedélyezés|Átmenő hitelesítés letiltása|
-|Engedélyezés|Asztali egyszeri bejelentkezés engedélyezése|
+|Authentication|AdminUserJourneys-SetResources|
+|Authentication|IdentityProvider létrehozása|
+|Authentication|V1 alkalmazás létrehozása|
+|Authentication|V2 alkalmazás létrehozása|
+|Authentication|Egyéni tartomány létrehozása a bérlőben|
+|Authorization|Új AdminUserJourney létrehozása|
+|Authorization|Honosított json-erőforrás létrehozása|
+|Authorization|Új egyéni identitásszolgáltató létrehozása|
+|Authorization|Új identitásszolgáltató létrehozása|
+|Authorization|B2C címtárerőforrás létrehozása vagy frissítése|
+|Authorization|Szabályzat létrehozása|
+|Authorization|trustFramework szabályzat létrehozása|
+|Authorization|Konfigurálható előtaggal rendelkező trustFramework szabályzat létrehozása|
+|Authorization|Felhasználói attribútum létrehozása|
+|Authorization|CreateTrustFrameworkPolicy|
+|Authorization|Új AdminUserJourney létrehozása vagy frissítése|
+|Authorization|Identitásszolgáltató törlése|
+|Authorization|IdentityProvider törlése|
+|Authorization|V1 alkalmazás törlése|
+|Authorization|V2 alkalmazás törlése|
+|Authorization|V2 alkalmazás engedélymegadásának törlése|
+|Authorization|B2C címtárerőforrás törlése|
+|Authorization|CPIM-kulcstároló törlése|
+|Authorization|trustFramework szabályzat törlése|
+|Authorization|Felhasználói attribútum törlése|
+|Authorization|B2C funkció engedélyezése|
+|Authorization|Előfizetéshez tartozó B2C címtárerőforrások lekérése|
+|Authorization|Egyéni identitásszolgáltató lekérése|
+|Authorization|Identitásszolgáltató lekérése|
+|Authorization|V1 és V2 alkalmazások lekérése|
+|Authorization|V1 alkalmazás lekérése|
+|Authorization|V1 alkalmazások lekérése|
+|Authorization|V2 alkalmazás lekérése|
+|Authorization|V2 alkalmazások lekérése|
+|Authorization|B2C-címtár erőforrásának beolvasása|
+|Authorization|A bérlőben lévő egyéni tartományok listájának lekérése|
+|Authorization|Felhasználói út lekérése|
+|Authorization|A felhasználói út engedélyezett alkalmazásjogcímeinek lekérése|
+|Authorization|A felhasználói út engedélyezett önellenőrzött jogcímeinek lekérése|
+|Authorization|A szabályzat engedélyezett önellenőrzött jogcímeinek lekérése|
+|Authorization|Elérhető kimeneti jogcímek listájának lekérése|
+|Authorization|A felhasználói út tartalomdefinícióinak lekérése|
+|Authorization|Adott rendszergazdai folyamathoz tartozó identitásszolgáltatók lekérése|
+|Authorization|Kulcstároló aktív kulcsaihoz tartozó metaadatok lekérése JWK-ban|
+|Authorization|Az összes rendszergazdai folyamat|
+|Authorization|Az összes felhasználó összes rendszergazdai folyamatához tartozó címkék listájának lekérése|
+|Authorization|Felhasználó bérlői listájának lekérése|
+|Authorization|Helyi fiókok önellenőrző jogcímeinek lekérése|
+|Authorization|Honosított json-erőforrás lekérése|
+|Authorization|A Microsoft.AzureActiveDirectory erőforrás-szolgáltató műveleteinek lekérése|
+|Authorization|Szabályzatok lekérése|
+|Authorization|Szabályzat lekérése|
+|Authorization|Bérlő erőforrás-tulajdonságainak lekérése|
+|Authorization|Támogatott identitásszolgáltatók listájának lekérése|
+|Authorization|A felhasználói út támogatott identitásszolgáltatói listájának lekérése|
+|Authorization|Bérlői adatok lekérése|
+|Authorization|Bérlő számára engedélyezett funkciók lekérése|
+|Authorization|Bérlő által definiált egyéni identitásszolgáltatók listájának lekérése|
+|Authorization|Bérlő által definiált identitásszolgáltatók listájának lekérése|
+|Authorization|Bérlő által definiált helyi identitásszolgáltató-lista lekérése|
+|Authorization|Felhasználó bérlői információinak lekérése erőforrások létrehozásához|
+|Authorization|Bérlők listájának lekérése|
+|Authorization|tenantDomains lekérése|
+|Authorization|A CPIM alapértelmezett támogatott kultúrájának lekérése|
+|Authorization|Rendszergazdai folyamathoz tartozó információk lekérése|
+|Authorization|A bérlőhöz tartozó UserJourneys lista lekérése|
+|Authorization|A CPIM-hez tartozó elérhető, támogatott kultúrák készletének lekérése|
+|Authorization|TrustFramework szabályzat lekérése|
+|Authorization|TrustFramework szabályzat lekérése xml-ként|
+|Authorization|Felhasználói attribútum lekérése|
+|Authorization|Felhasználói attribútumok lekérése|
+|Authorization|Felhasználói utak listájának lekérése|
+|Authorization|GetIEFPolicies|
+|Authorization|GetIdentityProviders|
+|Authorization|GetTrustFrameworkPolicy|
+|Authorization|Lekérdez egy CPIM-kulcstárolót jwk formátumban|
+|Authorization|Lekérdezi a bérlőben lévő kulcstárolók listáját|
+|Authorization|Lekérdezi a bérlő típusát|
+|Authorization|MigrateTenantMetadata|
+|Authorization|IdentityProvider javítása|
+|Authorization|PutTrustFrameworkPolicy|
+|Authorization|PutTrustFrameworkpolicy|
+|Authorization|Felhasználói út eltávolítása|
+|Authorization|CPIM-kulcstároló biztonsági másolatának visszaállítása|
+|Authorization|V2 alkalmazás engedélymegadásainak beolvasása|
+|Authorization|V2 alkalmazások szolgáltatásnevének lekérése az aktuális bérlőben|
+|Authorization|Egyéni identitásszolgáltató frissítése|
+|Authorization|Identitásszolgáltató frissítése|
+|Authorization|Helyi IDP frissítése|
+|Authorization|V1 alkalmazás frissítése|
+|Authorization|V2 alkalmazás frissítése|
+|Authorization|V2 alkalmazás engedélymegadásának frissítése|
+|Authorization|Szabályzat frissítése|
+|Authorization|Felhasználói attribútum frissítése|
+|Authorization|CPIM titkosított kulcs feltöltése|
+|Authorization|Felhasználói hitelesítés: Az API le van tiltva a bérlői featureset|
+|Authorization|Felhasználói hitelesítés: A felhasználó bérlői Admin' kapott hozzáférést|
+|Authorization|Felhasználói hitelesítés: A felhasználó "hitelesített felhasználók" hozzáférési jogosultságokat kapott|
+|Authorization|B2C funkció engedélyezésének ellenőrzése|
+|Authorization|Annak ellenőrzése, hogy a szolgáltatás engedélyezve van-e|
+|Authorization|Program létrehozása|
+|Authorization|Program törlése|
+|Authorization|Programvezérlő csatolása|
+|Authorization|Azure AD hozzáférési felülvizsgálatok előkészítése|
+|Authorization|Programvezérlő leválasztása|
+|Authorization|Program frissítése|
+|Authorization|Asztali egyszeri bejelentkezés letiltása|
+|Authorization|Asztali egyszeri bejelentkezés letiltása adott tartományon|
+|Authorization|Alkalmazásproxy letiltása|
+|Authorization|Átmenő hitelesítés letiltása|
+|Authorization|Asztali egyszeri bejelentkezés engedélyezése|
 |Címtárkezelés|Asztali egyszeri bejelentkezés engedélyezése adott tartományhoz|
 |Címtárkezelés|Alkalmazásproxy engedélyezése|
 |Címtárkezelés|Átmenő hitelesítés engedélyezése|
@@ -258,7 +258,7 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Címtárkezelés|tenantDomains lekérése|
 |Kulcs|Lekérdezi a bérlő típusát|
 |Kulcs|B2C funkció engedélyezésének ellenőrzése|
-|Kulcs|Győződjön meg arról, hogy engedélyezve van-e a szolgáltatás|
+|Kulcs|Annak ellenőrzése, hogy a szolgáltatás engedélyezve van-e|
 |Kulcs|Partner hozzáadása vállalathoz|
 |Kulcs|Nem ellenőrzött tartomány hozzáadása|
 |Kulcs|Ellenőrzött tartomány hozzáadása|
@@ -288,7 +288,7 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Resource|Rights Management tulajdonságainak beállítása|
 |Resource|Vállalat frissítése|
 |Resource|Vállalati beállítások frissítése|
-|Resource|Frissítési tartomány|
+|Resource|Tartomány frissítése|
 |Resource|Tartomány ellenőrzése|
 |Resource|E-mailek ellenőrzött tartományának ellenőrzése|
 |Resource|Előkészítés|
@@ -325,7 +325,7 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Resource|Életciklus-kezelési szabályzat létrehozása|
 |Resource|Csoporthoz való csatlakoztatásra vonatkozó, függő kérelem törlése|
 |Resource|Csoporthoz való csatlakoztatásra vonatkozó, függő kérelem elutasítása|
-|Resource|Csoport megújítása|
+|Resource|A csoport megújítása|
 |Resource|Csoporttagság kérése|
 |Resource|Dinamikus csoport tulajdonságainak beállítása|
 |Resource|Életciklus-kezelési szabályzat frissítése|
@@ -356,8 +356,8 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Alkalmazáskezelés|Feldolgozott kötegelt meghívók|
 |Alkalmazáskezelés|Kötegelt meghívók feltöltve|
 |Alkalmazáskezelés|Tulajdonos hozzáadása szabályzathoz|
-|Alkalmazáskezelés|Házirend hozzáadása|
-|Alkalmazáskezelés|Szabályzat törlése|
+|Alkalmazáskezelés|Szabályzat hozzáadása|
+|Alkalmazáskezelés|Házirend törlése|
 |Alkalmazáskezelés|Szabályzat hitelesítő adatainak eltávolítása|
 |Alkalmazáskezelés|Szabályzat frissítése|
 |Alkalmazáskezelés|Az MFA regisztrációs szabályzatának beállítása|
@@ -398,7 +398,7 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Címtárkezelés|Előfizetéshez tartozó B2C címtárerőforrások lekérése|
 |Címtárkezelés|Egyéni identitásszolgáltató lekérése|
 |Címtárkezelés|Identitásszolgáltató lekérése|
-|Címtárkezelés|B2C címtárerőforrás lekérése|
+|Címtárkezelés|B2C-címtár erőforrásának beolvasása|
 |Címtárkezelés|Felhasználói út lekérése|
 |Címtárkezelés|A felhasználói út engedélyezett alkalmazásjogcímeinek lekérése|
 |Címtárkezelés|A felhasználói út engedélyezett önellenőrzött jogcímeinek lekérése|
@@ -440,7 +440,7 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Resource|Felhasználói út eltávolítása|
 |Resource|Egyéni identitásszolgáltató frissítése|
 |Resource|Identitásszolgáltató frissítése|
-|Resource|Helyi identitásszolgáltató frissítése|
+|Resource|Helyi IDP frissítése|
 |Resource|B2C címtárerőforrás frissítése|
 |Resource|Szabályzat frissítése|
 |Resource|Előfizetés állapotának frissítése|
@@ -464,7 +464,7 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Felhasználókezelés|Szerepkör hozzáadása sablonból|
 |Felhasználókezelés|Hatókörön belüli tag hozzáadása a szerepkörhöz|
 |Felhasználókezelés|Jogosult tag eltávolítása a szerepkörből|
-|Felhasználókezelés|Tag eltávolítása szerepkörből|
+|Felhasználókezelés|Tag eltávolítása a szerepkörből|
 |Felhasználókezelés|Szerepkör-hozzárendelés eltávolítása a szerepkör-definícióból|
 |Felhasználókezelés|Hatókörön belüli tag eltávolítása a szerepkörből|
 |Felhasználókezelés|Szerepkör frissítése|
@@ -504,7 +504,7 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Egyéb|Kérelem-jóváhagyás létrehozása|
 |Egyéb|Hozzáférési felülvizsgálat törlése|
 |Felhasználókezelés|Felülvizsgáló eltávolítása a hozzáférési felülvizsgálatból|
-|Felhasználókezelés|Felülvizsgálat-alkalmazás eredményének kérése|
+|Felhasználókezelés|Felülvizsgálati eredmény alkalmazásának kérése|
 |Felhasználókezelés|Felülvizsgálat leállításának kérése|
 |Felhasználókezelés|Alkalmazás-hozzárendelés felülvizsgálata|
 |Felhasználókezelés|Csoporttagság felülvizsgálata|
@@ -517,11 +517,11 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |---|---|
 |Csoportkezelés|Kérelem-jóváhagyási kérelem felülvizsgálata|
 |Csoportkezelés|Hozzáférési felülvizsgálat frissítése|
-|Csoportkezelés|Hozzáférési felülvizsgálati e-mail-értesítési beállításainak frissítése|
-|Csoportkezelés|Frissítés hozzáférési felülvizsgálat ismétlődésszámot beállítása|
-|Csoportkezelés|Hozzáférési felülvizsgálat ismétlődési időtartama napokban frissítése|
-|Felhasználókezelés|Frissítés hozzáférési felülvizsgálati ismétlődés záró típusa beállítása|
-|Felhasználókezelés|Frissítés hozzáférési felülvizsgálat ismétlődés típusa beállítása|
+|Csoportkezelés|Hozzáférési felülvizsgálati e-mail-értesítés beállításainak frissítése|
+|Csoportkezelés|A hozzáférési felülvizsgálathoz tartozó ismétlődésszám beállításának frissítése|
+|Csoportkezelés|A hozzáférési felülvizsgálathoz tartozó ismétlődési időtartam (nap) beállításának frissítése|
+|Felhasználókezelés|A hozzáférési felülvizsgálathoz tartozó ismétlődési befejezési típus beállításának frissítése|
+|Felhasználókezelés|A hozzáférési felülvizsgálathoz tartozó ismétlődési típus beállításának frissítése|
 
 
 
@@ -546,7 +546,7 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |PIM|Szerepkör-beállítások módosításai|
 |PIM|ScanAlertsNow|
 |PIM|Regisztráció|
-|PIM|Hozzárendelésének megszüntetése|
+|PIM|Szüntesse|
 |PIM|Jogosultságszint csökkentése|
 |PIM|UpdateAlertSettings|
 |PIM|UpdateCurrentState|
@@ -590,17 +590,17 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Használati feltételek|Használati feltételek elfogadása|
 |Használati feltételek|Használati feltételek létrehozása|
 |Használati feltételek|Használati feltételek elutasítása|
-|Használati feltételek|Jóváhagyás törlése|
+|Használati feltételek|Törlési engedély|
 |Használati feltételek|Használati feltételek törlése|
 |Használati feltételek|Használati feltételek szerkesztése|
-|Használati feltételek|Használati feltételek lejár|
-|Használati feltételek|Használati feltételek rögzített Delete|
+|Használati feltételek|Használati feltételek lejárta|
+|Használati feltételek|A használati feltételek nehezen törölhető|
 |Használati feltételek|Használati feltételek közzététele|
 |Használati feltételek|Használati feltételek közzétételének visszavonása|
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure AD-jelentések áttekintése](overview-reports.md).
-- [Naplók jelentés](concept-audit-logs.md). 
-- [Az Azure AD-jelentések programozás alapú hozzáférést](concept-reporting-api.md)
+- [Azure ad-jelentések – áttekintés](overview-reports.md).
+- [Naplózott jelentés](concept-audit-logs.md). 
+- [Programozott hozzáférés az Azure AD-jelentésekhez](concept-reporting-api.md)

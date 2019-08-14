@@ -1,6 +1,6 @@
 ---
-title: Az Azure Security Center biztonsági kapcsolattartói adatok megadása |} A Microsoft Docs
-description: Ez a dokumentum bemutatja, hogyan lehet az Azure Security Center biztonsági kapcsolattartói adatok megadása.
+title: Biztonsági kapcsolattartási adatok megadása a Azure Security Centerban | Microsoft Docs
+description: Ebből a dokumentumból megtudhatja, hogyan biztosíthat biztonsági kapcsolattartási adatokat a Azure Security Centerban.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -12,58 +12,58 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/9/2018
+ms.date: 08/09/2019
 ms.author: rkarlin
-ms.openlocfilehash: b6babf7d5d5a0f5796efa9418044366c6a135ed9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae7c130df40ea0553bd9e3ae117534fe98466f26
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60909278"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68934890"
 ---
-# <a name="provide-security-contact-details-in-azure-security-center"></a>Az Azure Security Center biztonsági kapcsolattartói adatok megadása
-Az Azure Security Center javasolni fogja, hogy Ön biztonsági kapcsolattartói adatok megadása az Azure-előfizetése, ha még nem tette. A Microsoft arra használja ezt az információt, hogy kapcsolatba lépjen Önnel, ha a Microsoft Security Response Center (MSRC) azt észleli, hogy egy jogosulatlan vagy illetéktelen fél hozzáfért az Ön ügyféladataihoz. MSRC hajt végre, válassza ki a biztonsági figyelése az Azure-hálózat és az infrastruktúra, és harmadik felektől származó threat intelligence és visszaélések panaszok kap.
+# <a name="provide-security-contact-details-in-azure-security-center"></a>Biztonsági kapcsolattartási adatok megadása Azure Security Center
+Azure Security Center azt javasolja, hogy ha még nem tette meg, az Azure-előfizetéséhez adja meg a biztonsági kapcsolattartási adatait. A Microsoft arra használja ezt az információt, hogy kapcsolatba lépjen Önnel, ha a Microsoft Security Response Center (MSRC) azt észleli, hogy egy jogosulatlan vagy illetéktelen fél hozzáfért az Ön ügyféladataihoz. A MSRC az Azure-hálózat és-infrastruktúra biztonsági monitorozását választja, és a fenyegetésekkel kapcsolatos intelligenciát és a harmadik felektől érkező visszaéléseket fogad.
 
 A rendszer a nagyon súlyos riasztások napi első előfordulásakor e-mailes értesítést küld. Az e-mail-beállítások kizárólag előfizetési szabályok esetében konfigurálhatóak. Az előfizetésben lévő erőforráscsoportok megöröklik ezeket a beállításokat. 
 
 A riasztási e-mail értesítések küldésére vonatkozó szabályok:
 - Csak a magas súlyosságú riasztások esetében
 - Naponta egyetlen e-mail-címzettnek riasztástípusonként  
-- Legfeljebb 3 e-mail-üzeneteket egyetlen fogadó érkeznek egy egyetlen nap alatt
+- Legfeljebb 3 e-mail-üzenet küldése egyetlen címzettnek egyetlen nap alatt
 - Mindegyik e-mail-üzenet egyetlen riasztást tartalmaz, nem a riasztások összesítését.
  
 Ha például egy RDP-támadásról már kapott e-mail-üzenetet, RDP-támadásokról aznap már nem kap majd riasztást, még ha egy újabb riasztás aktiválódik is. 
- 
 
 > [!NOTE]
 > Ez a dokumentum egy üzembe helyezést szemléltető példa segítségével mutatja be a szolgáltatást.  A dokumentum nem tartalmaz lépésenkénti útmutatót.
->
->
 
-## <a name="implement-the-recommendation"></a>A javaslatok megvalósítása
-1. A **javaslatok**válassza **biztonsági kapcsolattartói adatok megadása**.
-   ![Adja meg a biztonsági kapcsolattartó][1]
-2. Válassza ki az Azure-előfizetés a adja meg a kapcsolattartási adatokat.
-3. Ez megnyitja **E-mail-értesítések**.
+## Értesítő e-mail-értesítések beállítása<a name="email"></a>
+
+1. A portálon válassza a **díjszabás & beállítások**lehetőséget.
+1. Kattintson az előfizetésre.
+1. Kattintson az **e-mail értesítések**lehetőségre.
+
+> [!NOTE]
+> Ha javaslatot valósít meg, akkor a **javaslatok**területen válassza a **biztonsági kapcsolattartási adatok megadása**lehetőséget, majd válassza ki az Azure-előfizetést, amely a kapcsolattartási adatokat adja meg. Ekkor megnyílik az **e-mail-értesítések**.
 
    ![Biztonsági kapcsolattartói adatok megadása][2]
 
-   * Adja meg a biztonsági kapcsolattartói e-mail címet vagy címeket vesszővel elválasztva. Nem áll adhat meg e-mail-címek száma korlátozva.
-   * Adjon meg egy biztonsági kapcsolattartó nemzetközi telefonszám.
-   * A magas súlyossági szintű riasztások e-maileket kapni, kapcsolja be a beállítást **küldése e-mailt küld riasztásokról**.
-   * A jövőben kell arra, hogy az előfizetés-tulajdonosokat e-mail értesítések küldéséhez. Ez a beállítás jelenleg szürkén jelenik meg.
-   * Válassza ki **mentése** biztonsági kapcsolattartási alkalmazni az előfizetéshez.
+   * Adja meg a biztonsági kapcsolattartási e-mail címet vagy a címeket vesszővel elválasztva. Nincs korlátozva a megadható e-mail-címek száma.
+   * Adjon meg egy biztonsági kapcsolattartó nemzetközi telefonszámot.
+   * Ha a nagy súlyosságú riasztásokra vonatkozó e-maileket szeretne kapni, kapcsolja be a **riasztások küldése e-mailben**című lehetőséget.
+   * A jövőben lehetősége lesz e-mail értesítések küldésére az előfizetés tulajdonosainak. Ez a beállítás jelenleg szürkén jelenik meg.
+   * Válassza a **Mentés** lehetőséget a biztonsági kapcsolattartási adatok előfizetésre való alkalmazásához.
 
 ## <a name="see-also"></a>Lásd még
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
-* [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
-* [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
+* [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.
+* [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md) – megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Megtudhatja, hogyan figyelheti a partnermegoldások biztonsági állapotát.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Az Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – a legújabb Azure biztonsági hírek és információ.
+* [Azure biztonsági blog](https://blogs.msdn.com/b/azuresecurity/) – a legújabb Azure biztonsági Hírek és információk beszerzése.
 
 <!--Image references-->
 [1]: ./media/security-center-provide-security-contacts/provide-contacts.png

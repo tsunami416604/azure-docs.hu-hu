@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c38b11ceda010c122e17a7fad3df1684e0a1cf42
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2a6c63c4ae58079c79a9d344f1e2550e4768088f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696274"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932240"
 ---
 # <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és-felhasználók kezelése
 
@@ -26,7 +26,7 @@ A szerepkör engedélyei a következők:
 *  **Folyamat** – a felhasználók csatlakozhatnak az adatbázishoz, és elvégezhetik a folyamatokat, és elemezhetik a modell adatbázis-adataikat.
 *  **Olvasási** – a felhasználók egy ügyfélalkalmazás segítségével csatlakozhatnak a modell adatbázis-adatbázisaihoz, és elemezhetik azokat.
 
-Táblázatos modell projekt létrehozásakor szerepköröket hozhat létre, és felhasználókat vagy csoportokat adhat hozzá ezekhez a szerepkörökhöz SQL Server Data Tools (SSDT) szerepkör-kezelő használatával. A kiszolgálókon való üzembe helyezéskor SQL Server Management Studio (SSMS), [Analysis Services PowerShell](/sql/analysis-services/powershell/analysis-services-powershell-reference)-parancsmagok vagy táblázatos [modell parancsnyelv](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL) használatával adhat hozzá vagy távolíthat el szerepköröket és felhasználói tagokat.
+Táblázatos modell projekt létrehozásakor szerepköröket hozhat létre, és felhasználókat vagy csoportokat adhat hozzá ezekhez a szerepkörökhöz SQL Server Data Tools (SSDT) szerepkör-kezelő használatával. A kiszolgálókon való üzembe helyezéskor SQL Server Management Studio (SSMS), [Analysis Services PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)-parancsmagok vagy táblázatos [modell parancsnyelv](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) használatával adhat hozzá vagy távolíthat el szerepköröket és felhasználói tagokat.
 
 A **biztonsági csoportoknak** e- `True` [mail-kompatibilisnek](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) kell lenniük a `MailEnabled` tulajdonsághoz beállított tulajdonsággal. A csoportok e-mail-cím `obj:groupid@tenantid`szerinti megadásakor.
 
@@ -86,7 +86,7 @@ Szerepkörök és felhasználók egy központilag telepített modell-adatbázish
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Szerepkörök és felhasználók hozzáadása TMSL-parancsfájl használatával
 
-A TMSL parancsfájlt a SSMS XMLA ablakában vagy a PowerShell használatával futtathatja. Használja a [CreateOrReplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) parancsot és a [roles](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-objects/roles-object-tmsl) objektumot.
+A TMSL parancsfájlt a SSMS XMLA ablakában vagy a PowerShell használatával futtathatja. Használja a [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) parancsot és a [roles](https://docs.microsoft.com/bi-reference/tmsl/roles-object-tmsl) objektumot.
 
 **Példa TMSL-parancsfájlra**
 
@@ -120,13 +120,13 @@ Ebben a példában egy B2B külső felhasználót és egy csoportot adnak hozzá
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>Szerepkörök és felhasználók hozzáadása a PowerShell használatával
 
-A [SQLServer](/sql/analysis-services/powershell/analysis-services-powershell-reference) modul a feladat-specifikus adatbázis-kezelési parancsmagokat és az általános célú meghívó-ASCmd parancsmagot biztosít, amely egy táblázatos modell parancsnyelv-(TMSL-) lekérdezését vagy parancsfájlját fogadja el. Az adatbázis-szerepkörök és a felhasználók kezeléséhez a következő parancsmagok használhatók.
+A [SQLServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) modul a feladat-specifikus adatbázis-kezelési parancsmagokat és az általános célú meghívó-ASCmd parancsmagot biztosít, amely egy táblázatos modell parancsnyelv-(TMSL-) lekérdezését vagy parancsfájlját fogadja el. Az adatbázis-szerepkörök és a felhasználók kezeléséhez a következő parancsmagok használhatók.
   
 |A parancsmag|Leírás|
 |------------|-----------------| 
-|[Add-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Vegyen fel egy tagot egy adatbázis-szerepkörbe.| 
-|[Remove-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Egy tag eltávolítása egy adatbázis-szerepkörből.|   
-|[Invoke-ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|TMSL-szkript végrehajtása.|
+|[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Vegyen fel egy tagot egy adatbázis-szerepkörbe.| 
+|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Egy tag eltávolítása egy adatbázis-szerepkörből.|   
+|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|TMSL-szkript végrehajtása.|
 
 ## <a name="row-filters"></a>Sorok szűrői  
 
@@ -152,5 +152,5 @@ A sorok szűrői a megadott sorokra és a kapcsolódó sorokra vonatkoznak. Ha e
 
   [Kiszolgáló-rendszergazdák kezelése](analysis-services-server-admins.md)   
   [Azure Analysis Services kezelése a PowerShell-lel](analysis-services-powershell.md)  
-  [Táblázatos modell programozási nyelv (TMSL) – dokumentáció](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
+  [Táblázatos modell programozási nyelv (TMSL) – dokumentáció](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)
 

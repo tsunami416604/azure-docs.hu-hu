@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: fe71f4e89fb7e1b6ff3e4f59894a933fbb011692
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 02ad74e5b1f8b86a0072b413db2a572f8ed92781
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881413"
+ms.locfileid: "68932151"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
 A Application Insights .NET SDK számos NuGet-csomagot tartalmaz. Az [alapcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights) biztosítja az API-t, amely telemetria küld a Application Insightsnak. A [további csomagok](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) telemetria *modulokat* és *inicializáló* csomagokat biztosítanak az alkalmazás és a környezet telemetria automatikus nyomon követéséhez. A konfigurációs fájl módosításával engedélyezheti vagy letilthatja a telemetria-modulokat és-inicializálók beállításait, és beállíthat paramétereket.
 
-A konfigurációs fájl neve `ApplicationInsights.config` vagy `ApplicationInsights.xml`, az alkalmazás típusától függően. A rendszer automatikusan hozzáadja a projekthez [az SDK legtöbb verziójának telepítésekor][start]. Az SDK létrehozza a `ApplicationInsights.config` fájlt a projekt gyökérkönyvtárában, és amikor a rendszer átmásolja a megfelelést a bin mappába. Emellett egy webalkalmazáshoz is hozzá lesz adva [Állapotmonitor egy IIS-kiszolgálón][redfield]. A konfigurációs fájlt a rendszer figyelmen [](azure-web-apps.md) kívül hagyja, ha az Azure-beli virtuális [gép és a virtuálisgép-méretezési csoport](azure-vm-vmss-apps.md) bővítményét használja.
+A konfigurációs fájl neve `ApplicationInsights.config` vagy `ApplicationInsights.xml`, az alkalmazás típusától függően. A rendszer automatikusan hozzáadja a projekthez [az SDK legtöbb verziójának telepítésekor][start]. Alapértelmezés szerint, ha a Visual Studio-sablon olyan projektjeiből származó automatizált élményt használ, amelyek támogatják a **> Application Insights telemetria hozzáadását**, akkor a ApplicationInsights. config fájl a projekt gyökérkönyvtárában jön létre, és amikor a rendszer átmásolja a megfelelést a következőre: bin mappa. Emellett egy webalkalmazáshoz is hozzá lesz adva [Állapotmonitor egy IIS-kiszolgálón][redfield]. A konfigurációs fájlt a rendszer figyelmen [](azure-web-apps.md) kívül hagyja, ha az Azure-beli virtuális [gép és a virtuálisgép-méretezési csoport](azure-vm-vmss-apps.md) bővítményét használja.
 
 Nem található megfelelő fájl az [SDK-nak egy weblapon][client]való vezérléséhez.
 

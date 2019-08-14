@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 9b1f0042f501cefc99343d53bbf2ad39f0ae1f4c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9a6b3a538304f2d09941650e3087130c21422dc0
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640469"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946347"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hub használatával a MQTT protokollal
 
@@ -36,7 +36,7 @@ Az eszközök a MQTT protokoll használatával csatlakozhatnak egy IoT hubhoz az
 
 ## <a name="using-the-device-sdks"></a>Az eszköz SDK-k használata
 
-A MQTT protokollt támogató [eszközök SDK](https://github.com/Azure/azure-iot-sdks) -k Java, Node. js, C, C#és Python rendszerekhez érhetők el. Az eszköz SDK-k a standard IoT Hub kapcsolati karakterláncot használják az IoT hub-kapcsolat létesítéséhez. Az MQTT protokoll használatához a **MQTT**értékre kell állítani az ügyfél protokoll paraméterét. Alapértelmezés szerint az eszköz SDK-k egy, a **CleanSession** jelzővel rendelkező IoT hubhoz csatlakoznak **, és az** IoT hub használatával történő üzenetváltáshoz a **QoS 1** eszközt használják.
+A MQTT protokollt támogató [eszközök SDK](https://github.com/Azure/azure-iot-sdks) -k Java, Node. js, C, C#és Python rendszerekhez érhetők el. Az eszköz SDK-k a standard IoT Hub kapcsolati karakterláncot használják az IoT hub-kapcsolat létesítéséhez. Az MQTT protokoll használatához a **MQTT**értékre kell állítani az ügyfél protokoll paraméterét. Alapértelmezés szerint az eszköz SDK-k egy, a **CleanSession** jelzővel rendelkező IoT hubhoz csatlakoznak, és az IoT hub használatával történő üzenetváltáshoz a **QoS 1** eszközt használják.
 
 Ha egy eszköz egy IoT-hubhoz csatlakozik, az eszköz SDK-k olyan metódusokat biztosítanak, amelyek lehetővé teszik, hogy az eszköz üzeneteket cseréljen az IoT hub-ra.
 
@@ -77,7 +77,7 @@ Ha egy eszköz nem tudja használni az eszköz SDK-kat, akkor továbbra is csatl
   `SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`
 
   > [!NOTE]
-  > Ha X. 509 tanúsítványalapú hitelesítést használ, az SAS-jogkivonat jelszavai nem szükségesek. További információ: az [X. 509 Biztonság beállítása az Azure-ban IoT hub](iot-hub-security-x509-get-started.md)
+  > Ha X. 509 tanúsítványalapú hitelesítést használ, az SAS-jogkivonat jelszavai nem szükségesek. További információkért lásd: [az X. 509 Biztonság beállítása az Azure-IoT hub](iot-hub-security-x509-get-started.md) , és kövesse az [alábbi](#tlsssl-configuration)kód utasításait.
 
   Az SAS-tokenek létrehozásával kapcsolatos további információkért tekintse meg a [IoT hub biztonsági jogkivonatok használata](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)című témakör eszközét.
 
@@ -113,7 +113,7 @@ Ha egy eszköz nem tudja használni az eszköz SDK-kat, akkor továbbra is csatl
 
 A MQTT csatlakoztatásához és a csomagok leválasztásához IoT Hub a **műveletek figyelése** csatornán eseményt ad ki. Ez az esemény további információkat tartalmaz, amelyek segíthetnek a kapcsolódási problémák elhárításában.
 
-Az alkalmazás megadhat **egy üzenetet** a csatlakoztatási csomagban . Az alkalmazásnak `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` a téma nevének meg kell egyeznie, hogy a **rendszer** telemetria üzenetként továbbítsa az üzeneteket. Ebben az esetben, ha a hálózati kapcsolat be van zárva, de a leválasztási csomag korábban nem érkezett meg az eszközről, a IoT hub elküldi a telemetria csatornához a kapcsolódási csomagban **megadott üzenetet.** Az telemetria csatorna az alapértelmezett **események** végpontja vagy IoT hub útválasztás által definiált egyéni végpont lehet. Az üzenet a **iothub-MessageType** tulajdonsággal rendelkezik, amelynek a értéke hozzá **lesz** rendelve.
+Az alkalmazás megadhat egy üzenetet a csatlakoztatási csomagban . Az alkalmazásnak `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` a téma nevének meg kell egyeznie, hogy a **rendszer** telemetria üzenetként továbbítsa az üzeneteket. Ebben az esetben, ha a hálózati kapcsolat be van zárva, de a leválasztási csomag korábban nem érkezett meg az eszközről, a IoT hub elküldi a telemetria csatornához a **kapcsolódási** csomagban megadott üzenetet. Az telemetria csatorna az alapértelmezett **események** végpontja vagy IoT hub útválasztás által definiált egyéni végpont lehet. Az üzenet a **iothub-MessageType** tulajdonsággal rendelkezik, amelynek a értéke hozzá **lesz** rendelve.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>A MQTT protokoll használata közvetlenül (modulként)
 
@@ -147,7 +147,7 @@ pip install paho-mqtt
 
 Ezután implementálja az ügyfelet egy Python-parancsfájlban. Cserélje le a helyőrzőket a következőképpen:
 
-* `<local path to digicert.cer>`egy helyi fájl elérési útja, amely a DigiCert Baltimore főtanúsítványát tartalmazza. Ezt a fájlt úgy is létrehozhatja, hogy átmásolja a tanúsítvány információit a [c-hez](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) készült Azure IoT SDK-ból `-----BEGIN CERTIFICATE-----` . `-----END CERTIFICATE-----`a sorok tartalmazzák `"` a sorokat, és eltávolítja a jeleket az egyes sorok elején és végén, és eltávolítja a `\r\n`minden sor végén lévő karakterek.
+* `<local path to digicert.cer>`egy helyi fájl elérési útja, amely a DigiCert Baltimore főtanúsítványát tartalmazza. Ezt a fájlt úgy is létrehozhatja, hogy átmásolja a tanúsítvány információit a c-hez készült Azure IoT SDK-ból `-----BEGIN CERTIFICATE-----` . a sorok tartalmazzák `"` a sorokat, és `-----END CERTIFICATE-----`eltávolítja a jeleket az egyes sorok elején és végén, és eltávolítja a [](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) `\r\n`minden sor végén lévő karakterek.
 
 * `<device id from device registry>`az IoT hub-hoz hozzáadott eszköz azonosítója.
 
@@ -159,7 +159,7 @@ Ezután implementálja az ügyfelet egy Python-parancsfájlban. Cserélje le a h
 from paho.mqtt import client as mqtt
 import ssl
 
-path_to_root_cert = "<local path to digicert.cer>"
+path_to_root_cert = "<local path to digicert.cer file>"
 device_id = "<device id from device registry>"
 sas_token = "<generated SAS token>"
 iot_hub_name = "<iot hub name>"
@@ -199,6 +199,26 @@ client.loop_forever()
 Az előfeltételek a következő telepítési utasításokkal rendelkeznek.
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+
+Az eszköz tanúsítványának használatával történő hitelesítéshez frissítse a fenti kódrészletet a következő módosításokkal (lásd: [X. 509 hitelesítésszolgáltatói tanúsítvány](./iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate) beszerzése a tanúsítványalapú hitelesítés előkészítéséhez):
+
+```python
+# Create the client as before
+# ...
+
+# Set the username but not the password on your client
+client.username_pw_set(username=iot_hub_name+".azure-devices.net/" +
+                       device_id + "/?api-version=2018-06-30", password=None)
+
+# Set the certificate and key paths on your client
+cert_file = "<local path to your certificate file>"
+key_file = "<local path to your device key file>"
+client.tls_set(ca_certs=path_to_root_cert, certfile=cert_file, keyfile=key_file,
+               cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1, ciphers=None)
+
+# Connect as before
+client.connect(iot_hub_name+".azure-devices.net", port=8883)
+```
 
 ## <a name="sending-device-to-cloud-messages"></a>Eszközről a felhőbe irányuló üzenetek küldése
 

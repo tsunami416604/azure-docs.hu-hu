@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: 554e3259fb386abbdaebc167c852f88cb63bf50a
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ce5f2b5541da3b3a3db046ba0dc768e3fbe2431e
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728141"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928118"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA kiadás 7.1.50911.2-9/12/2018
 
@@ -97,7 +97,7 @@ Igen, lehet! Az [Azure stencil-készlet a githubon érhető el](https://github.c
 
 ## <a name="documentation-and-feedback"></a>Dokumentáció és visszajelzés
 
-- A Threat Modeling Tool dokumentációja a [docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)található, és [az eszköz használatával](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started)kapcsolatos információkat tartalmaz.
+- A Threat Modeling Tool dokumentációja a [docs.microsoft.com](threat-modeling-tool.md)található, és [az eszköz használatával](threat-modeling-tool-getting-started.md)kapcsolatos információkat tartalmaz.
 
 ## <a name="next-steps"></a>További lépések
 

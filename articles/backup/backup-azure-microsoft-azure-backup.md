@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: d815b471b0a1d7842118c7ac0b5e1665b8fb3c1e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0f7d9961b41ece23630584146e4eb777969e771a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879944"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954739"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server telepítése és frissítése
 > [!div class="op_single_selector"]
@@ -155,7 +155,7 @@ Ha a kinyerési folyamat befejeződött, jelölje be a jelölőnégyzetet, hogy 
 1. Kattintson **Microsoft Azure Backup** a telepítővarázsló elindításához.
 
     ![Microsoft Azure Backup telepítővarázslója](./media/backup-azure-microsoft-azure-backup/launch-screen2.png)
-2. Az üdvözlő képernyőn kattintson a **tovább** gombra. Ekkor megjelenik az *Előfeltételek ellenőrzése* szakasz. Ezen a képernyőn kattintson az **ellenőrzés** elemre annak megállapításához, hogy teljesülnek-e a Azure Backup Server hardver-és szoftver-előfeltételei. Ha minden előfeltétel teljesült, megjelenik egy üzenet, amely jelzi, hogy a gép megfelel a követelményeknek. Kattintson a **tovább** gombra.
+2. Az üdvözlőképernyőn kattintson a **tovább** gombra. Ekkor megjelenik az *Előfeltételek ellenőrzése* szakasz. Ezen a képernyőn kattintson az **ellenőrzés** elemre annak megállapításához, hogy teljesülnek-e a Azure Backup Server hardver-és szoftver-előfeltételei. Ha minden előfeltétel teljesült, megjelenik egy üzenet, amely jelzi, hogy a gép megfelel a követelményeknek. Kattintson a **tovább** gombra.
 
     ![Azure Backup Server – Üdvözöljük és Előfeltételek ellenőrzése](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
 3. Microsoft Azure Backup a kiszolgálónak SQL Server Enterprise szükséges. Továbbá a Azure Backup Server telepítőcsomag a megfelelő SQL Server bináris fájljaival is együtt jár, ha nem kívánja saját SQL-t használni. Új Azure Backup Server telepítésének megkezdésekor válassza a **SQL Server új példányának telepítése** ezzel a telepítővel lehetőséget, majd kattintson az **ellenőrzések és telepítés** gombra. Az előfeltételek sikeres telepítése után kattintson a **tovább**gombra.

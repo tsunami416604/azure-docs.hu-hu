@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20d5131c773e2a9f7b6830725ccd934786d6dd67
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a5fff27094881ffbada2bda7937fa714ffc07133
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880950"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954354"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>A biztonsági adatok (előzetes verzió) beállítása a hitelesítő alkalmazás használatára
 
@@ -78,7 +78,7 @@ A szervezet beállításaitól függően előfordulhat, hogy egy hitelesítési 
 
     A hitelesítő alkalmazásnak sikeresen hozzá kell adnia a munkahelyi vagy iskolai fiókját anélkül, hogy további adatokat kellene megadnia. Ha azonban a QR-kód olvasója nem tudja beolvasni a kódot, akkor a **nem tudja beolvasni a QR-kód hivatkozást** , és manuálisan adja meg a kódot és az URL-címet a Microsoft Authenticator alkalmazásban. A kódok manuális hozzáadásával kapcsolatos további információkért lásd: [fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md).
 
-9. Válassza a **tovább** lehetőséget a **QR-kód vizsgálata** oldalon.
+9. Kattintson a **Tovább gombra** a **QR-kód vizsgálata** lapon a számítógépen.
 
     A rendszer értesítést küld a mobileszközön lévő Microsoft Authenticator alkalmazásnak, hogy tesztelje a fiókját.
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: c08acaf65cd42abd9db97fab1267ce5628595b78
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0f9c2d1d2081ec22898ed3a4fbc73305ff0995e3
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689270"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954679"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Az Azure Backup Server hibaelhárítása
 
@@ -55,13 +55,13 @@ Javasoljuk, hogy a Microsoft Azure Backup Server (MABS) hibaelhárítása előtt
 
 | Művelet | Hibaüzenet részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Visszaállítás | **Hibakód**: CBPServerRegisteredVaultDontMatchWithCurrent/Vault Credentials Error: 100110 <br/> <br/>**Hibaüzenet**: A tár megadott hitelesítő adatai eltérnek a kiszolgáló által regisztrált tárolótól | **Ok**: Ez a probléma akkor fordul elő, ha az eredeti kiszolgálóról a külső DPM-helyreállítási lehetőség használatával kívánja visszaállítani a fájlokat a másodlagos kiszolgálóra, és ha a helyreállított kiszolgáló, illetve az az eredeti kiszolgáló, ahonnan az adatok biztonsági mentése történik, nincs társítva Recovery Service-tároló.<br/> <br/>**Áthidaló megoldás** A probléma megoldásához ellenőrizze, hogy az eredeti és az alternatív kiszolgáló is regisztrálva van-e ugyanahhoz a tárolóhoz.|
+| Visszaállítás | **Hibakód**: CBPServerRegisteredVaultDontMatchWithCurrent/Vault Credentials Error: 100110 <br/> <br/>**Hibaüzenet**: A tár megadott hitelesítő adatai eltérnek a kiszolgáló által regisztrált tárolótól | **Ok**: Ez a probléma akkor fordul elő, ha az eredeti kiszolgálóról a külső DPM-helyreállítási lehetőség használatával kívánja visszaállítani a fájlokat a másodlagos kiszolgálóra, és ha a helyreállított kiszolgáló és az az eredeti kiszolgáló, ahonnan az adatok biztonsági mentése történik, nincs társítva ugyanahhoz a művelethez. Recovery Service-tároló.<br/> <br/>**Áthidaló megoldás** A probléma megoldásához ellenőrizze, hogy az eredeti és az alternatív kiszolgáló is regisztrálva van-e ugyanahhoz a tárolóhoz.|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>A VMware virtuális gép online helyreállítási pontjának létrehozási feladatai sikertelenek
 
 | Művelet | Hibaüzenet részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Tartalék | A VMware virtuális gép online helyreállítási pontjának létrehozási feladatai sikertelenek. A DPM a VMware hibába ütközött, miközben megpróbálta beolvasni a változáskövetési-információkat. ErrorCode - FileFaultFault (ID 33621 ) |  <ol><li> Állítsa alaphelyzetbe a VMware-CTK az érintett virtuális gépeken.</li> <li>Győződjön meg arról, hogy a független lemez nem áll helyre a VMware-en.</li> <li>Állítsa le az érintett virtuális gépek védelmét, majd a **frissítés** gomb megnyomásával óvja újra a védelmet. </li><li>Egy CC futtatása az érintett virtuális gépekhez.</li></ol>|
+| Tartalék | A VMware virtuális gép online helyreállítási pontjának létrehozási feladatai sikertelenek. A DPM a VMware hibába ütközött, miközben megpróbálta beolvasni a változáskövetési-információkat. ErrorCode-FileFaultFault (azonosító: 33621) |  <ol><li> Állítsa alaphelyzetbe a VMware-CTK az érintett virtuális gépeken.</li> <li>Győződjön meg arról, hogy a független lemez nem áll helyre a VMware-en.</li> <li>Állítsa le a védelmet az érintett virtuális gépek számára, és a refresh ( **frissítés** ) gombbal tegye meg újra a védelmet. </li><li>Egy CC futtatása az érintett virtuális gépekhez.</li></ol>|
 
 
 ## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Az ügynök művelete sikertelen volt, mert kommunikációs hiba történt a DPM-ügynök koordinátori szolgáltatásával a kiszolgálón
@@ -102,7 +102,7 @@ Javasoljuk, hogy a Microsoft Azure Backup Server (MABS) hibaelhárítása előtt
 | Tartalék | Váratlan hiba történt a feladat futása közben. Az eszköz nem áll készen. | **Ha a termékben bemutatott javasolt művelet nem működik, hajtsa végre a következő lépéseket:** <br> <ul><li>Állítsa az árnyékmásolat tárolóhelyét korlátlanra a védelmi csoport elemeinél, majd futtassa a konzisztencia-ellenőrzés parancsot.<br></li> VAGY <li>Próbálja meg törölni a meglévő védelmi csoportot, és hozzon létre több új csoportot. Minden új védelmi csoportnak külön elemmel kell rendelkeznie.</li></ul> |
 | Tartalék | Ha csak a rendszerállapotról készít biztonsági másolatot, ellenőrizze, hogy van-e elegendő szabad hely a védett számítógépen a rendszerállapot biztonsági másolatának tárolásához. | <ol><li>Ellenőrizze, hogy a Windows Server biztonsági másolat telepítve van-e a védett gépen.</li><li>Ellenőrizze, hogy van-e elegendő hely a védett számítógépen a rendszerállapothoz. Ennek a legegyszerűbb módja a védett számítógép megnyitása, a Windows Server biztonsági másolat megnyitása, a kijelölések átadása, majd a BMR kiválasztása. A felhasználói felület ekkor megadja, hogy mekkora lemezterületre van szükség. Nyissa meg a **WSB** > **helyi biztonsági mentési** > **ütemtervét** > ,**válassza a biztonsági mentési konfiguráció** > **teljes kiszolgáló** elemet (a méret megjelenik). Az ellenőrzéshez használja ezt a méretet.</li></ol>
 | Tartalék | A BMR biztonsági mentése sikertelen | Ha a BMR mérete nagyméretű, helyezzen át néhány alkalmazást az operációsrendszer-meghajtóra, és próbálkozzon újra. |
-| Tartalék | A VMware virtuális gépek új Microsoft Azure Backup-kiszolgálón történő ismételt védelemmel való ellátásának lehetősége nem jelenik meg a hozzáadáshoz elérhetőként. | A VMware-tulajdonságokat a Microsoft Azure Backup kiszolgáló egy régi, kivont példánya irányítja. A probléma megoldása:<br><ol><li>A VCenter (SC-VMM egyenértékű) lapon lépjen az **Összefoglalás** lapra, majd az **Egyéni attribútumok**elemre.</li>  <li>Törölje a régi Microsoft Azure Backup-kiszolgáló nevét a **DPMServer** értékből.</li>  <li>Térjen vissza az új Microsoft Azure Backup-kiszolgálóra, és módosítsa a PG-t.  A **frissítés** gomb kiválasztását követően a virtuális gép a védelemhez való hozzáadáshoz elérhető jelölőnégyzettel jelenik meg.</li></ol> |
+| Tartalék | A VMware virtuális gépek új Microsoft Azure Backup-kiszolgálón történő ismételt védetté tétele nem érhető el a hozzáadáshoz. | A VMware-tulajdonságokat a Microsoft Azure Backup kiszolgáló egy régi, kivont példánya irányítja. A probléma megoldása:<br><ol><li>A VCenter (SC-VMM egyenértékű) lapon lépjen az **Összefoglalás** lapra, majd az **Egyéni attribútumok**elemre.</li>  <li>Törölje a régi Microsoft Azure Backup-kiszolgáló nevét a **DPMServer** értékből.</li>  <li>Térjen vissza az új Microsoft Azure Backup-kiszolgálóra, és módosítsa a PG-t.  A **frissítés** gomb kiválasztását követően a virtuális gép a védelemhez való hozzáadáshoz elérhető jelölőnégyzettel jelenik meg.</li></ol> |
 | Tartalék | Hiba történt a fájlok/megosztott mappák elérésekor | Próbálja meg módosítani a vírusvédelmi beállításokat a TechNet-cikkben javasolt módon a [DPM-kiszolgálón futó víruskereső szoftver futtatásával](https://technet.microsoft.com/library/hh757911.aspx).|
 
 
@@ -148,4 +148,4 @@ A forrásoldali kötet pillanatképe nem sikerült, mert inkonzisztens adatforr�
 
 Hibaüzenet | Javasolt művelet |
 -- | --
-A biztonsági mentés nem sikerült, mert a lemezes biztonsági másolat replikájának klónozása sikertelen volt.| Győződjön meg arról, hogy az összes korábbi lemezes biztonsági másolat másodpéldány-fájlja (. vhdx) le van választva, és nincs folyamatban lemezről lemezre történő biztonsági mentés az online biztonsági mentések során.
+A biztonsági mentés nem sikerült, mert a lemez biztonsági másolati replikáját nem lehetett klónozni.| Győződjön meg arról, hogy az összes korábbi lemezes biztonsági másolat másodpéldány-fájlja (. vhdx) le van választva, és nincs folyamatban lemezről lemezre történő biztonsági mentés az online biztonsági mentések során.

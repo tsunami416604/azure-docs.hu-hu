@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 6e1d1852660b598b8d780f3240edb3468010fb58
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: e078c75911a332c7e70f3a578723735729b9e6b6
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735489"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954486"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>SQL-adatbázisok biztonsági mentése és visszaállítása az Azure-beli virtuális gépeken a PowerShell-lel
 
@@ -247,7 +247,7 @@ Ha nem szeretné, hogy az új adatbázisok manuálisan is észlelhetők legyenek
 
 A felhasználók úgy is konfigurálhatják a biztonsági mentést, hogy a jövőben hozzáadott összes adatbázis automatikusan védve legyen egy adott házirenddel. Az autoprotection engedélyezéséhez használja az [enable-AzRecoveryServicesBackupAutoProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupAutoProtection?view=azps-1.5.0) PS parancsmagot.
 
-Mivel az útmutató az összes jövőbeli adatbázisok biztonsági mentése, a művelet SQLInstance szinten történik.
+Mivel az utasítás az összes jövőbeli adatbázisok biztonsági mentését végzi, a művelet SQLInstance szinten történik.
 
 ```powershell
 $SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"
@@ -302,7 +302,7 @@ $FullRP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $tar
 
 #### <a name="fetch-point-in-time-recovery-point"></a>Időponthoz tartozó helyreállítási pont lekérése
 
-Ha a felhasználó egy adott időpontban szeretné visszaállítani az adatbázist, használja a [Get-AzRecoveryServicesBackupRecoveryLogChain](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupRecoveryLogChain?view=azps-1.5.0) PS parancsmagot. A parancsmag olyan dátumok listáját adja vissza, amelyek egy nem törött, folyamatos naplózási lánc kezdési és befejezési időpontját jelölik az adott SQL biztonsági mentési elemhez. A kívánt időpontnak ezen a tartományon belül kell lennie.
+Ha a felhasználó egy adott időpontban szeretné visszaállítani az adatbázist, használja a [Get-AzRecoveryServicesBackupRecoveryLogChain](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupRecoveryLogChain?view=azps-1.5.0) PS parancsmagot. A parancsmag olyan dátumok listáját adja vissza, amelyek az SQL biztonsági mentési elemhez tartozó nem törött, folyamatos naplózási lánc kezdő és befejező időpontját jelölik. A kívánt időpontnak ezen a tartományon belül kell lennie.
 
 ```powershell
 Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -Item -VaultId $targetVault.ID

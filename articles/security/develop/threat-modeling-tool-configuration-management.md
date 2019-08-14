@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: dbe3526444bc35815dd4323a3a5290696619e3f9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 986bed758229d639bb40d0803f7be4a89a0f6e49
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728350"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934812"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Biztonsági keret: Konfigurálási felügyelet | Enyhítését 
 | Termék vagy szolgáltatás | Cikk |
@@ -563,7 +563,7 @@ Egy vezérlő vagy művelet CORS letiltásához használja a [DisableCors] attri
 | **SDL Phase**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | Átjáró választása – Azure IoT Hub |
-| **Hivatkozik**              | [IoT hub eszközkezelés áttekintése](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), [az eszköz belső vezérlőprogram frissítése](https://docs.microsoft.com/azure/iot-hub/tutorial-firmware-update) |
+| **Hivatkozik**              | [IoT hub eszközkezelés áttekintése](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), [az eszköz belső vezérlőprogram frissítése](../../iot-hub/tutorial-firmware-update.md) |
 | **Lépések** | A LWM2M a IoT-eszközök felügyeletének nyílt mobil Szövetségének protokollja. Az Azure IoT-eszközkezelés lehetővé teszi, hogy az eszköz feladataival kommunikáljon a fizikai eszközökkel. Győződjön meg arról, hogy a felhőalapú átjáró olyan folyamatot valósít meg, amely az Azure IoT Hub-eszközkezelés használatával rendszeresen megtartja az eszköz és az egyéb konfigurációs adatok naprakészen tartását. |
 
 ## <a id="controls-policies"></a>Győződjön meg arról, hogy az eszközökön szervezeti házirendként konfigurált végponti biztonsági vezérlők vannak konfigurálva
