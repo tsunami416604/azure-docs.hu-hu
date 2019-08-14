@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 5a03c377a275fff489f1fb8371f9905411b67960
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e4b792a04b4926fdb56f37c089e73b90cde905d3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881546"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990147"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>A Azure Active Directory-(Azure AD-) hitelesítés használata a magától ellátott olvasó szolgáltatással
 
@@ -134,5 +134,7 @@ Másik lehetőségként az egyszerű szolgáltatás hitelesítése tanúsítván
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse [](./tutorial.md) meg az oktatóanyagot, amelyből megtudhatja, hogy mit tehet a magával az olvasói SDK-val
+* Tekintse meg a [Node. js](./tutorial-nodejs.md) -oktatóanyagot, amelyből megtudhatja, hogy a Node. js használatával milyen egyéb műveleteket végezhet el az olvasói SDK-val
+* Tekintse meg a [Python](./tutorial-python.md) -oktatóanyagot, amelyből megtudhatja, hogy mit tehet a részletes olvasó SDK-val a Python használatával
+* Tekintse meg a [Swift](./tutorial-ios-picture-immersive-reader.md) -oktatóanyagot, amelyből megtudhatja, mit tehet a gyors
 * Ismerkedjen meg a magára az [olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK](./reference.md) -referenciával

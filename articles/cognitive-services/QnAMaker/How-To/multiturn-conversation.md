@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: diberry
-ms.openlocfilehash: 264d9e89d22b30b83821f691e134d032eb4220f5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 585dc03503a61ff6666d3da3374586287e24283f
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563137"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966702"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Követő kérések használata egy beszélgetés több fordulatának létrehozásához
 
@@ -38,7 +38,7 @@ A többszörös bekapcsolással a csevegési bot a felhasználóval folytatott b
 
 ![Egy Többablakos párbeszédpanel, amely a felhasználóknak egy beszélgetésen keresztül útmutatást nyújt.](../media/conversational-context/conversation-in-bot.png)
 
-Az előző képen egy felhasználó elindított egy beszélgetést a fiókom **beírásával**. A Tudásbázis három csatolt kérdés-válasz párral rendelkezik. A válasz pontosításához a felhasználó kiválasztja a Tudásbázis három választási lehetőségének egyikét. A kérdés (#1) három utólagos figyelmeztetést tartalmaz, amelyek a csevegési robotban három lehetőségként jelennek meg (#2). 
+Az előző képen egy felhasználó elindított egy beszélgetést a fiókom beírásával. A Tudásbázis három csatolt kérdés-válasz párral rendelkezik. A válasz pontosításához a felhasználó kiválasztja a Tudásbázis három választási lehetőségének egyikét. A kérdés (#1) három utólagos figyelmeztetést tartalmaz, amelyek a csevegési robotban három lehetőségként jelennek meg (#2). 
 
 Ha a felhasználó kiválaszt egy beállítást (#3), a rendszer a finomítási beállítások (#4) következő listáját mutatja be. Ez a folyamat addig folytatódik (#5), amíg a felhasználó nem határozza meg a helyes, végleges választ (#6).
 

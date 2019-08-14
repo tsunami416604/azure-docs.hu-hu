@@ -1,41 +1,41 @@
 ---
-title: Engedélyek biztosítása nagyobb számos alkalmazás egy Azure key vault – Azure Key Vault eléréséhez |} A Microsoft Docs
-description: Ismerje meg, hogyan biztosítson engedélyt számú alkalmazás részére egy kulcstartó eléréséhez
+title: Engedélyek engedélyezése számos alkalmazás számára az Azure Key Vault eléréséhez – Azure Key Vault | Microsoft Docs
+description: Megtudhatja, hogyan biztosíthat engedélyt számos alkalmazás számára egy kulcstartó eléréséhez
 services: key-vault
 author: amitbapat
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 01/07/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: b1d0b0948e089d41f460ac2a54150ee51333f87c
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 07ee544057ffeb0a5859cc771b124523ec79c9c0
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64721994"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976401"
 ---
-# <a name="grant-several-applications-access-to-a-key-vault"></a>A key vault több alkalmazások hozzáférés biztosítása
+# <a name="grant-several-applications-access-to-a-key-vault"></a>Több alkalmazás megadása a kulcstartóhoz
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Hozzáférés-vezérlési házirend segítségével számos alkalmazások hozzáférést egy kulcstartót. Egy hozzáférés-vezérlési szabályzat legfeljebb 1024 alkalmazásokat, és konfigurációja a következő:
+A hozzáférés-vezérlési szabályzat használatával több alkalmazás is biztosítható a kulcstartóhoz. Egy hozzáférés-vezérlési házirend akár 1024 alkalmazást is képes támogatni, és a következőképpen van konfigurálva:
 
 1. Hozzon létre egy Azure Active Directory biztonsági csoportot. 
-2. Az alkalmazás összes társított az egyszerű szolgáltatások a biztonsági csoport hozzáadása.
-3. A Key Vault a biztonsági csoport hozzáférési jogot.
+2. Adja hozzá az összes alkalmazáshoz társított egyszerű szolgáltatást a biztonsági csoporthoz.
+3. Adja meg a biztonsági csoport hozzáférését a Key Vaulthoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Előfeltételek a következők:
+Az előfeltételek a következők:
 * [Telepítse az Azure PowerShellt](/powershell/azure/overview).
-* [Az Azure Active Directory V2 PowerShell modul telepítése](https://www.powershellgallery.com/packages/AzureAD).
-* Csoportok az Azure Active Directory-bérlő létrehozása/szerkesztése jogosultság. Ha nem rendelkezik engedélyekkel, szükség lehet az Azure Active Directory-rendszergazdától. Lásd: [kapcsolatos Azure Key Vault-kulcsok, titkos kulcsok és tanúsítványok](about-keys-secrets-and-certificates.md) részleteiről a Key Vault hozzáférési házirend engedélyek.
+* [Telepítse a Azure Active Directory v2 PowerShell](https://www.powershellgallery.com/packages/AzureAD)-modult.
+* A csoportok létrehozásához és szerkesztéséhez szükséges engedélyek a Azure Active Directory bérlőben. Ha nem rendelkezik megfelelő engedélyekkel, előfordulhat, hogy kapcsolatba kell lépnie Azure Active Directory rendszergazdájával. Key Vault hozzáférési házirend engedélyeivel kapcsolatos részletekért tekintse meg a [Azure Key Vault kulcsok, titkok és tanúsítványok](about-keys-secrets-and-certificates.md) című témakört.
 
-## <a name="granting-key-vault-access-to-applications"></a>Alkalmazásokhoz való hozzáférést a Key Vault
+## <a name="granting-key-vault-access-to-applications"></a>Key Vault hozzáférés biztosítása az alkalmazásokhoz
 
-A PowerShellben futtassa a következő parancsokat:
+Futtassa a következő parancsokat a PowerShellben:
 
 ```powershell
 # Connect to Azure AD 
@@ -60,8 +60,8 @@ Set-AzKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.Objec
 # Of course you can adjust the permissions as required 
 ```
 
-Ha különböző engedélykészletet az alkalmazások azon csoportját, biztosítania kell, hozzon létre egy külön Azure Active Directory biztonsági csoportot az ilyen alkalmazásokhoz.
+Ha más engedélyeket kell biztosítania az alkalmazások egy csoportjára, hozzon létre külön Azure Active Directory biztonsági csoportot az ilyen alkalmazásokhoz.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan [kulcstartó védelme](key-vault-secure-your-key-vault.md).
+További információ a [Key Vault biztonságossá](key-vault-secure-your-key-vault.md)tételéről.

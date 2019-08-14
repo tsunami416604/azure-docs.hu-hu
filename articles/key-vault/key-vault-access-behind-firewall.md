@@ -1,24 +1,24 @@
 ---
-title: Key Vault elérése az Azure Key Vault - tűzfal mögül |} A Microsoft Docs
+title: Hozzáférés Key Vault tűzfal mögött – Azure Key Vault | Microsoft Docs
 description: Megtudhatja, hogyan lehet elérni a tűzfal mögötti Azure Key Vaultot egy alkalmazásból
 services: key-vault
 author: amitbapat
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 01/07/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: bc6315f5ab264108369410b73a667fa1e07e1e44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57c5e3f2741f81bce2eff2d5ef2b0f2d029096e3
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64689937"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976389"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Az Azure Key Vault elérése tűzfal mögött
 
-## <a name="what-ports-hosts-or-ip-addresses-should-i-open-to-enable-my-key-vault-client-application-behind-a-firewall-to-access-key-vault"></a>Milyen portokat, állomásokat vagy IP-címek kell megnyitnom engedélyezéséhez a kulcstároló ügyfélalkalmazásomnak tűzfal mögött található a key vault eléréséhez?
+## <a name="what-ports-hosts-or-ip-addresses-should-i-open-to-enable-my-key-vault-client-application-behind-a-firewall-to-access-key-vault"></a>Milyen portokat, gazdagépeket vagy IP-címeket kell megnyitnia a Key Vault-ügyfélalkalmazás tűzfal mögötti engedélyezéséhez a Key Vault eléréséhez?
 
 A kulcstároló eléréséhez a kulcstároló-ügyfélalkalmazásnak a különféle funkciók biztosításához képesnek kell lennie több végpont elérésére:
 
@@ -32,7 +32,7 @@ A konfigurációtól és a környezettől függően lehetnek bizonyos eltérése
 
 Mindhárom funkció (a hitelesítés, a felügyelet és az adatsíkhoz való hozzáférés) Key Vault felé irányuló összes forgalma a 443-as HTTPS-porton keresztül zajlik. A CRL használata esetén azonban alkalmanként HTTP-forgalom is előfordul (a 80-as porton keresztül). Az OCSP protokollhoz hozzáférő ügyfeleknek nem szabad elérniük a CRL-t, azonban alkalmanként elérhetik a [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl) címet.  
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 A Key Vault-ügyfélalkalmazásoknak a hitelesítés érdekében hozzá kell férniük az Azure Active Directory-végpontokhoz. A használt végpont függ az Azure AD bérlői konfigurációjától, valamint a név típusától (felhasználói név, szolgáltatásnév), illetve a fiók típusától (pl. Microsoft-fiók vagy munkahelyi/iskolai fiók).  
 

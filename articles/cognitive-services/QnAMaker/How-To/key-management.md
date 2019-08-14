@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b9be1db9be1d4dd57994e101c07ed430425a5912
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b0b82f37b76a6bca6d84a05bc48b7ae9986fb76b
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447425"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967687"
 ---
 # <a name="how-to-manage-keys-in-qna-maker"></a>A QnA Maker kulcsok kezelése
 
@@ -24,9 +24,9 @@ A QnA Maker szolgáltatás kezelje a kulcs, kétféle **előfizetési kulcsok** 
 
 ![Kulcskezelés](../media/qnamaker-how-to-key-management/key-management.png)
 
-1. **Előfizetői azonosítók**: Ezekkel a kulcsokkal való hozzáférést a [QnA Maker management szolgáltatás API-k](https://go.microsoft.com/fwlink/?linkid=2092179). Ezen API-k lehetővé teszik a Tudásbázis szerkesztéséhez.  
+1. **Előfizetési kulcsok**: Ezek a kulcsok a [QnA Maker Management szolgáltatás API-jai](https://go.microsoft.com/fwlink/?linkid=2092179)elérésére szolgálnak. Ezek az API-k lehetővé teszik a Tudásbázis szerkesztését.  
 
-2. **Végpont kulcsok**: Ezekkel a kulcsokkal kapott választ a felhasználó kérdés Tudásbázis-végpontot. Általában akkor érdemes használnia ezt a végpontot a csevegőrobot, vagy az ügyfél alkalmazáskóddal, amelyhez a QnA Maker szolgáltatást használ fel.
+2. **Végponti kulcsok**: Ezek a kulcsok a Tudásbázis-végpont elérésére szolgálnak a felhasználói kérdések megválaszolásához. Ezt a végpontot általában a csevegési robotjában vagy a QnA Maker szolgáltatást használó ügyfélalkalmazás kódjában érdemes használni.
  
 ## <a name="subscription-keys"></a>Előfizetői azonosítók
 Megtekintheti, és az előfizetési kulcsok az Azure Portalon, ahol létrehozta a QnA Maker erőforrás alaphelyzetbe állítása. 
@@ -42,7 +42,7 @@ Megtekintheti, és az előfizetési kulcsok az Azure Portalon, ahol létrehozta 
 
 Végpont kulcsok kezelhető a [QnA Maker portal](https://qnamaker.ai).
 
-1. Jelentkezzen be a [QnA Maker portal](https://qnamaker.ai), nyissa meg a profil, és kattintson **Szolgáltatásbeállítások**.
+1. Jelentkezzen be a [QnA Maker portálra](https://qnamaker.ai), nyissa meg a profilt, majd kattintson a **szolgáltatás beállításai**elemre.
 
     ![Végponti kulcs](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
 
@@ -51,7 +51,7 @@ Végpont kulcsok kezelhető a [QnA Maker portal](https://qnamaker.ai).
     ![Endpoint-kezelő](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
 
     >[!NOTE]
-    >Frissítse a kulcsokat, ha úgy érzi, hogy sérült a biztonsága. Ez lehet szükség az ügyfélalkalmazás vagy a robot kód a megfelelő módosításokat.
+    >Frissítse a kulcsokat, ha úgy érzi, hogy sérült a biztonsága. Ehhez szükség lehet az ügyfélalkalmazás vagy a robot kódjának megfelelő módosítására.
 
 ## <a name="next-steps"></a>További lépések
 

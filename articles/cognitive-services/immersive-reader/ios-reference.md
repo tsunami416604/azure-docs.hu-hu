@@ -9,18 +9,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
 ms.author: t-meroa
-ms.openlocfilehash: 47c2d772a3428594c84d3fe5e18262b5e5ab86f4
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: acdaaf0bf08644053e86343ae4b002002fee6a84
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951012"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966594"
 ---
 # <a name="immersive-reader-sdk-reference"></a>A részletes olvasó SDK-referenciája
 
 A lebilincselő olvasó iOS SDK egy gyors CocoaPod, amely lehetővé teszi, hogy az iOS-alkalmazásba integrálja a magával ragadó olvasót.
 
-## <a name="functions"></a>Funkciók
+## <a name="functions"></a>Functions
 
 Az SDK egyetlen függvényt `launchImmersiveReader(navController, token, subdomain, content, options, onSuccess, onFailure)`tesz elérhetővé.
 
@@ -102,5 +102,5 @@ Az iOS 9,0-es vagy újabb verzióban az olvasói iOS-SDK az iPaden és az iPhone
 
 ## <a name="next-steps"></a>További lépések
 
-* Fedezze fel az [olvasói iOS SDK](https://github.com/microsoft/immersive-reader-sdk/iOS) -t a githubon
+* Fedezze fel az [olvasói iOS SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS) -t a githubon
 * [Rövid útmutató: Hozzon létre egy iOS-alkalmazást, amely elindítja a részletes olvasót (Swift)](./ios-quickstart.md)

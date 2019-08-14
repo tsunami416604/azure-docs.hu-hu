@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 08/01/2019
-ms.openlocfilehash: a834c3c20f11ee4dbf070ae7c836f302c82c9def
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 854760ea0158d356cc5449c9f1fdab6161588640
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950288"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976864"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Gyors útmutató: Azure Data Catalog létrehozása
 
@@ -36,7 +36,7 @@ Szervezetenként (Azure Active Directory-tartományonként) mindössze egy adatk
 
 1. Lépjen a [Azure Portal](https://portal.azure.com) > **erőforrás létrehozása** elemre, és válassza a **Data Catalog**lehetőséget.
 
-    ![Data Catalog létrehozása](media/data-catalog-get-started/data-catalog-create.png)
+    ![Azure Data Catalog létrehozás gomb](media/data-catalog-get-started/data-catalog-create.png)
 
 2. Adja meg a adatkatalógus **nevét** , a használni kívánt előfizetést, a katalógus **helyét** és az **árképzési szintet**. Ezután kattintson a **Létrehozás** elemre.
 

@@ -1,119 +1,119 @@
 ---
-title: Tudásbázis – QnA Maker javítása
+title: Tudásbázis fejlesztése – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Aktív tanulás lehetővé teszi a Tudásbázis minősége javítható feltünteti alternatív kérdése van, a felhasználó-beküldés, a a kérdés és válasz párt alapján. Ezeket a javaslatokat tekintse át, vagy a hozzá meglévő kérdések vagy visszautasítja őket. A Tudásbázis automatikusan nem változik. El kell fogadnia a vonatkozó javaslatok bármely módosítás érvénybe léptetéséhez. Ezek a javaslatok kérdések hozzáadása nem, de módosítsa vagy törölje a meglévő kérdéseket is.
+description: Az aktív tanulás lehetővé teszi a Tudásbázis minőségének javítását azáltal, hogy alternatív kérdéseket tesz fel a felhasználói beadványok alapján a kérdés és a válasz párok számára. Ezeket a javaslatokat megtekintheti, vagy hozzáadhatja őket a meglévő kérdésekhez, vagy elutasíthatja őket. A Tudásbázis nem változik automatikusan. A módosítások érvénybe léptetéséhez el kell fogadnia a javaslatokat. Ezek a javaslatok kérdéseket tesznek fel, de nem módosítják vagy nem távolítják el a meglévő kérdéseket.
 author: diberry
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: diberry
-ms.openlocfilehash: b73884e544ea1b8ee76c8a891048e6a8e17d6ab3
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 577bf7f157eb89da360fa6cbdd4d22c1054f234f
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204096"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966708"
 ---
-# <a name="use-active-learning-to-improve-your-knowledge-base"></a>Aktív tanulás használatával javíthatja a Tudásbázis
+# <a name="use-active-learning-to-improve-your-knowledge-base"></a>Az aktív tanulás használata a Tudásbázis fejlesztéséhez
 
-Aktív tanulás lehetővé teszi a Tudásbázis minősége javítható feltünteti alternatív kérdése van, a felhasználó-beküldés, a a kérdés és válasz párt alapján. Ezeket a javaslatokat tekintse át, vagy a hozzá meglévő kérdések vagy visszautasítja őket. 
+Az aktív tanulás lehetővé teszi a Tudásbázis minőségének javítását azáltal, hogy alternatív kérdéseket tesz fel a felhasználói beadványok alapján a kérdés és a válasz párok számára. Ezeket a javaslatokat megtekintheti, vagy hozzáadhatja őket a meglévő kérdésekhez, vagy elutasíthatja őket. 
 
-A Tudásbázis automatikusan nem változik. Ahhoz, hogy bármilyen módosítás érvénybe léptetéséhez el kell fogadnia a vonatkozó javaslatok. Ezek a javaslatok kérdések hozzáadása nem, de módosítsa vagy törölje a meglévő kérdéseket is.
+A Tudásbázis nem változik automatikusan. A módosítások érvénybe léptetéséhez el kell fogadnia a javaslatokat. Ezek a javaslatok kérdéseket tesznek fel, de nem módosítják vagy nem távolítják el a meglévő kérdéseket.
 
-## <a name="what-is-active-learning"></a>Mi az aktív tanulás?
+## <a name="what-is-active-learning"></a>Mi az az aktív tanulás?
 
-A QnA Maker megtanulja az implicit és explicit visszajelzés új kérdést változata.
+A QnA Maker implicit és explicit visszajelzéssel tanulja meg az új kérdések változatait.
  
-* [Implicit visszajelzés](#how-qna-makers-implicit-feedback-works) – a rangsorolás tisztában van azzal, ha egy felhasználó kérdést rendelkezik-e több választ, amelyek a nagyon közeli pontszámok a, és ezt tekinti, visszajelzés. Nem kell semmit, hogy ez.
-* [Explicit visszajelzés](#how-you-give-explicit-feedback-with-the-train-api) – Ha a pontszámok kis változat több választ ad vissza a Tudásbázis az ügyfélalkalmazás kéri a felhasználó mely kérdése a megfelelő kérdést. A felhasználónak explicit módon visszajelzést küld a QnA Maker a [Train API](#train-api). 
+* [Implicit visszajelzés](#how-qna-makers-implicit-feedback-works) – a Ranger tudomásul veszi, hogy ha egy felhasználó kérdése több választ tartalmaz, és a pontszámok nagyon közel vannak, és ezt visszajelzésnek tekinti. Ehhez semmit nem kell tennie.
+* [Explicit visszajelzés](#how-you-give-explicit-feedback-with-the-train-api) – ha a Tudásbázisban több, kis eltéréssel rendelkező válasz érkezik, az ügyfélalkalmazás megkérdezi a felhasználót, hogy melyik kérdés a helyes kérdés. A rendszer elküldi a felhasználó explicit visszajelzését QnA Maker a [Train API](#train-api)-val. 
 
-A két módszert biztosítanak a rangsorolás fürtözöttek hasonló lekérdezésekkel.
+Mindkét módszer biztosítja a rangsort a fürtözött hasonló lekérdezésekkel.
 
-## <a name="how-active-learning-works"></a>Hogyan aktív tanulás működése
+## <a name="how-active-learning-works"></a>Az aktív tanulás működése
 
-Aktív tanulás akkor aktiválódik, a felső néhány válaszokat a QnA Maker által visszaadott eredmények alapján. Ha a pontszám különbségek egy kis tartományon belülre esik, majd a lekérdezés nem lehetséges javaslat (mint egy másik kérdést) minden lehetséges kérdés-válasz párt. Miután elfogadja a javasolt kérdést egy adott QnA párhoz, a többi párokhoz elutasítva. Mentse és betanítást, beküldhetők javaslatok után ne felejtse el kell.
+Az aktív tanulás a QnA Maker által visszaadott leggyakoribb válaszok pontszámai alapján aktiválódik. Ha a pontszám eltérései egy kis tartományon belül vannak, akkor a lekérdezés a lehetséges QnA pár lehetséges javaslatának minősül (alternatív kérdésként). Miután elfogadta a javasolt kérdést egy adott QnA pár esetében, a rendszer elutasítja a többi párt. A javaslatok elfogadása után emlékezni kell a mentésre és a betanításra.
 
-Aktív tanulás azokban az esetekben, ahol a végpontok egy ésszerű, illetve a különböző használati lekérdezések kihozhatják a lehetséges legjobb javaslatokat nyújt. 5 vagy több hasonló lekérdezések fürtözöttek, 30 percenként, QnA Maker javasolja a Tudásbázis designer elfogadja vagy elutasítja a felhasználó-alapú kérdések. Az összes javaslat listája együtt fürtözöttek és felső javaslatokat alternatív kérdések jelennek meg a végfelhasználók számára az adott lekérdezések gyakorisága alapján.
+Az aktív tanulás a lehető legjobb javaslatokat kínálja azokban az esetekben, amikor a végpontok ésszerű mennyiségű és sokféle használati lekérdezést kapnak. Ha 5 vagy több hasonló lekérdezés van csoportosítva, 30 percenként QnA Maker javasolja, hogy a Tudásbázis tervezője a felhasználó-alapú kérdéseket fogadja el vagy utasítsa el. Az összes javaslat összevonása hasonló módon történik, és az alternatív kérdések leggyakoribb javaslatai a végfelhasználók által megadott lekérdezések gyakorisága alapján jelennek meg.
 
-Miután kérdések a QnA Maker Portal használata javasolt, tekintse át és fogadja el vagy elutasítása szólhatnak kell. API-t javaslatok kezelése nem áll rendelkezésre.
+Ha kérdése van a QnA Maker portálon, tekintse át és fogadja el ezeket a javaslatokat. Nincs API a javaslatok kezeléséhez.
 
-## <a name="how-qna-makers-implicit-feedback-works"></a>Hogyan működik a QnA Maker implicit visszajelzés
+## <a name="how-qna-makers-implicit-feedback-works"></a>QnA Maker implicit visszajelzésének működése
 
-A QnA Maker implicit visszajelzés pontszám közelségi határozza meg, majd győződjön meg arról, aktív tanulás javaslatok algoritmust használ. Egy egyszerű számítási közelségi meghatározni az algoritmus nem áll. Az alábbi példában a tartományokat nem jelentenek ki kell javítani, de alapján az algoritmus csak hatásának megértéséhez kell használni.
+QnA Maker implicit visszajelzése egy algoritmus használatával határozza meg a pontszám közelségét, majd aktív tanulási javaslatokat tesz. A közelség megállapításának algoritmusa nem egyszerű számítás. A következő példában szereplő tartományokat nem szabad kijavítani, hanem útmutatóként kell használni az algoritmus hatásának megismeréséhez.
 
-Ha egy kérdést pontszám magas biztosabb, például a 80 %-os, a pontszámok, aktív tanulás vegye figyelembe a tartomány széles, körülbelül 10 % belül. A megbízhatósági pontszám csökken, mint a 40 %-os, mivel pontszámok számos, megközelítőleg 4 % belül csökken. 
+Ha egy kérdés pontszáma nagyon magabiztos, például 80%, akkor az aktív tanuláshoz tartozó pontszámok köre nagyjából 10%-ban. Mivel a megbízhatósági pontszám csökken, például 40%, a pontszámok köre is csökken, körülbelül 4%-kal. 
 
-## <a name="how-you-give-explicit-feedback-with-the-train-api"></a>Hogyan, visszajelzés explicit Train API-val
+## <a name="how-you-give-explicit-feedback-with-the-train-api"></a>A Train API-val kapcsolatos explicit visszajelzések
 
-Fontos, hogy a QnA Maker lekérdezi explicit visszajelzés arról, hogy mely válaszokat volt a legjobb választ. Hogyan határozza meg, a legjobb választ Öntől, és képes a következők:
+Fontos, hogy QnA Maker explicit visszajelzést kapjon arról, hogy a válaszok közül melyik a legjobb válasz. A legjobb válasz meghatározása az alábbiak szerint történik:
 
-* Felhasználói visszajelzések, ha kiválaszt egy adott válaszokat.
-* Üzleti logika, amely meghatározza, hogy egy elfogadható például tartomány pontozása.  
-* Mindkét felhasználói visszajelzések és az üzleti logika kombinációját.
+* Felhasználói visszajelzések, kiválasztva az egyik választ.
+* Üzleti logika, például egy elfogadható pontszám tartományának meghatározása.  
+* A felhasználói visszajelzések és az üzleti logika kombinációja.
 
-## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>Aktív tanulás használata modul frissítéséhez
+## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>A futtatókörnyezet verziójának frissítése az aktív tanulás használatára
 
-Aktív tanulás a verze modulu runtime 4.4.0 vagy újabb támogatott. Ha a Tudásbázis egy korábbi verzióval készült [a futtatókörnyezet frissítése](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates) a funkció használatához. 
+Az aktív tanulást a futtatókörnyezet 4.4.0 és újabb verziói támogatják. Ha a Tudásbázis egy korábbi verzión lett létrehozva, [frissítse a futtatókörnyezetet](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates) a szolgáltatás használatára. 
 
-## <a name="turn-on-active-learning-to-see-suggestions"></a>Kapcsolja be a learning javaslatok megtekintéséhez
+## <a name="turn-on-active-learning-to-see-suggestions"></a>A javaslatok megjelenítéséhez kapcsolja be az aktív tanulást
 
-Aktív tanulás alapértelmezés szerint ki van kapcsolva. Kapcsolja be a javasolt kérdések talál. Aktív tanulás bekapcsolása után kell az ügyfélalkalmazás adatokat küld a QnA Maker. További információkért lásd: [architekturális folyamata GenerateAnswer és Train API-k alapján a robot](#architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot).
+Az aktív tanulás alapértelmezés szerint ki van kapcsolva. A javasolt kérdések megtekintéséhez kapcsolja be a következőt:. Az aktív tanulás bekapcsolását követően el kell küldenie az adatokat az ügyfélalkalmazástól a QnA Maker. További információ: [építészeti folyamat a GenerateAnswer és a Train API-k egy robotból való használatához](#architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot).
 
-1. Válassza ki **közzététel** a Tudásbázis közzététele. Aktív tanulás lekérdezéseket a rendszer a végpontról GenerateAnswer API előrejelzési csak gyűjti. A teszt panelt a QnA Maker Portal, a lekérdezések nem érinti a aktív tanulás.
+1. A Tudásbázis közzétételéhez válassza a **Közzététel** lehetőséget. Az aktív tanulási lekérdezések csak a GenerateAnswer API-előrejelzési végpontról lesznek összegyűjtve. A QnA Maker portál teszt ablaktáblájára irányuló lekérdezések nem érintik az aktív tanulást.
 
-1. Lépjen be a QnA Maker Portal learning aktív-e, a jobb felső sarokban, válassza ki a **neve**, lépjen a [ **Szolgáltatásbeállítások**](https://www.qnamaker.ai/UserSettings).  
+1. Az aktív tanulás bekapcsolásához a QnA Maker-portálon nyissa meg a jobb felső sarokban, válassza ki a **nevét**, és lépjen a [**Szolgáltatásbeállítások**](https://www.qnamaker.ai/UserSettings)menüpontra.  
 
-    ![Aktív tanulás javasolt kérdést alternatíva a szolgáltatás beállításai lapon kapcsolja. Válassza ki a felhasználónevet a jobb felső menüben, majd válassza a szolgáltatás beállításait.](../media/improve-knowledge-base/Endpoint-Keys.png)
+    ![Kapcsolja be az aktív tanulás javasolt kérdéseit a szolgáltatás beállításai lapról. Válassza ki a felhasználónevét a jobb felső menüben, majd válassza a Szolgáltatásbeállítások elemet.](../media/improve-knowledge-base/Endpoint-Keys.png)
 
 
-1. Keresse meg a QnA Maker szolgáltatást, majd váltsa át **aktív tanulás**. 
+1. Keresse meg a QnA Maker szolgáltatást, majd állítsa be az **aktív tanulást**. 
 
-    [![A szolgáltatás beállításai lapon kapcsolja be a aktív tanulás szolgáltatást. Ha nem tudja váltsa át a szolgáltatást, szükség lehet a szolgáltatás frissítése.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+    [![A szolgáltatás beállításai lapon kapcsolja be az aktív tanulási funkciót. Ha nem tudja váltani a szolgáltatást, előfordulhat, hogy frissítenie kell a szolgáltatást.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
-    Egyszer **aktív tanulás** van engedélyezve, a Tudásbázis javasol új kérdéseket rendszeres időközönként, felhasználó által beküldött kérdések alapján. Letilthatja a **aktív tanulás** beállítás átállításával újra.
+    Az **aktív tanulás** engedélyezése után a Tudásbázis rendszeres időközönként új kérdéseket javasol a felhasználó által benyújtott kérdések alapján. Az **aktív tanulást** letilthatja a beállítás újbóli bekapcsolásával.
 
-## <a name="accept-an-active-learning-suggestion-in-the-knowledge-base"></a>Fogadja el a Tudásbázis egy aktív tanulás javaslat
+## <a name="accept-an-active-learning-suggestion-in-the-knowledge-base"></a>Aktív tanulási javaslat elfogadása a Tudásbázisban
 
-1. Annak érdekében, hogy a javasolt kérdések, tekintse meg a **szerkesztése** Tudásbázis lapon jelölje be **beállításai**, majd **aktív tanulás javaslatok megjelenítése**. 
+1. A javasolt kérdések megtekintéséhez a Tudásbázis **szerkesztése** lapon válassza a **megtekintési beállítások**, majd az **aktív tanulási javaslatok megjelenítése**lehetőséget. 
 
-    [![A portál a szerkesztése területen jelölje be javaslatok megjelenítése az aktív tanulás új kérdést alternatívák láthatók.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
+    [![A portál szerkesztés szakaszában válassza a javaslatok megjelenítése lehetőséget, hogy megtekintse az aktív tanulás új kérdéseit.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
-1. A kérdés és válasz párok kiválasztásával csak javaslatok megjelenítése a Tudásbázis szűrése **javaslatok szűrés**.
+1. A tudásbázist a kérdések és válaszok párok alapján szűrheti, hogy csak a javaslatok jelenjenek meg a **szűrési javaslatok**lehetőség kiválasztásával.
 
-    [![Javaslatok bekapcsolásához a szűrő használatával csak az aktív tanulás javasolt kérdést alternatívák megtekintéséhez.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
+    [![A szűrés javaslatok szerint váltógomb csak az aktív tanulás javasolt kérdéseit jeleníti meg.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
-1. Minden kérdés-válasz párt javasolja az új kérdést a jelölőnégyzet be van jelölve, az alternatív megoldások `✔` , fogadja el a kérdést, vagy egy `x` elutasítása a javaslatok. Válassza ki a pipa jelre a kérdés hozzáadása. 
+1. Minden QnA pár az új kérdéses alternatívákat javasolja a pipa jelzéssel `✔` , a kérdés elfogadásához `x` vagy a javaslatok elutasításához. Jelölje be a jelölőnégyzetet a kérdés hozzáadásához. 
 
-    [![Válassza ki, vagy utasítsa el aktív tanulás javasolt kérdést alternatíva a zöld pipa, vagy a vörös törlés osztás kiválasztásával.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [![Válassza ki vagy utasítsa el az aktív tanulás javasolt kérdésének alternatívákat a zöld pipa vagy a vörös törlés jelölésének kiválasztásával.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
-    Hozzáadhat és törölhet _minden javaslat_ kiválasztásával **adja hozzá az összes** vagy **az összes elutasítása** a környezetfüggő eszköztáron.
+    Az összes _javaslat_ hozzáadásához vagy törléséhez kattintson az összes **hozzáadása** vagy az **összes** elutasítása lehetőségre a környezetfüggő eszköztáron.
 
-1. Válassza ki **mentéséhez és a vonat** a Tudásbázis következő, a módosítások mentéséhez.
+1. Válassza a **Mentés és** a betanítás lehetőséget a Tudásbázis módosításainak mentéséhez.
 
-1. Válassza ki **közzététel** , hogy a módosítások is elérhetők lesznek a [GenerateAnswer API](metadata-generateanswer-usage.md#generateanswer-request-configuration).
+1. Válassza a **Közzététel** lehetőséget, hogy a módosítások elérhetők legyenek a [GenerateAnswer API](metadata-generateanswer-usage.md#generateanswer-request-configuration)-ból.
 
-    5 vagy több hasonló lekérdezések fürtözöttek, 30 percenként, QnA Maker javasolja az alternatív kérdéseket, amelyeket elfogadására vagy elutasítására.
+    Ha 5 vagy több hasonló lekérdezés van csoportosítva, 30 percenként QnA Maker javasolja az elfogadására vagy elutasítására vonatkozó alternatív kérdéseket.
 
 
 <a name="#score-proximity-between-knowledge-base-questions"></a>
 
-### <a name="architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot"></a>A robot GenerateAnswer és Train API-k használatával architekturális folyamata
+### <a name="architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot"></a>Építészeti folyamat a GenerateAnswer és a Train API-k egy robotból való használatához
 
-A robot vagy más ügyfélalkalmazás kell használnia a következő architekturális folyamat aktív tanulás használata:
+A bot vagy más ügyfélalkalmazás a következő építészeti folyamatot használja az aktív tanulás használatához:
 
-* A robot [olvas be a választ a Tudásbázis](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) a GenerateAnswer API-val használatával a `top` válaszok számának tulajdonság.
-* A robot explicit visszajelzés határozza meg:
-    * Használja a saját [egyéni üzleti logika](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user), szűrje ki alacsony pontszámokat.
-    * A robot vagy ügyfélalkalmazás lehetséges válaszokat a felhasználó listájának megjelenítéséhez, és a felhasználó kiválasztott válasz lekérése.
-* A robot [küld vissza a QnA Maker kijelölt válasz](#bot-framework-sample-code) az a [Train API](#train-api).
+* A robot a GenerateAnswer API-val beolvassa [a Tudásbázisból](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) a választ `top` , és a tulajdonság használatával számos választ kaphat.
+* A bot explicit visszajelzést határoz meg:
+    * A saját [egyéni üzleti logikájának](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)használatával kiszűrheti az alacsony pontszámot.
+    * A bot vagy az ügyfél alkalmazásban a lehetséges válaszok megjelenítése a felhasználó számára, és a felhasználó kiválasztott válaszának beolvasása.
+* A robot a betanítási [API](#train-api)használatával visszaküldi a [kiválasztott választ](#bot-framework-sample-code) a QnA Makerra.
 
 
-### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>A felső tulajdonság használatával a GenerateAnswer kérelem több egyező válaszok
+### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>A GenerateAnswer kérelemben szereplő Top tulajdonsággal több egyező választ kaphat
 
-Amikor a választ, QnA Maker, kérdés elküldése a `top` JSON-törzse a tulajdonság határozza meg a visszaadandó válaszok száma. 
+Ha egy kérdés beküldésekor QnA Maker választ, a `top` JSON-törzs tulajdonsága beállítja a visszaadott válaszok számát. 
 
 ```json
 {
@@ -123,9 +123,9 @@ Amikor a választ, QnA Maker, kérdés elküldése a `top` JSON-törzse a tulajd
 }
 ```
 
-### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>A pontszám tulajdonság segítségével üzleti logika és megjelenítése a felhasználónak adott válaszokat tartalmazó lista beolvasása
+### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>A score (pontszám) tulajdonság és az üzleti logika használata a felhasználók számára megjelenített válaszok listájának lekéréséhez
 
-Ha az ügyfélalkalmazás (például csevegőrobotot) megkapja a választ, a rendszer 3 feltett legnépszerűbb kérdésekre adja vissza. Használja a `score` tulajdonság a pontszámok között könnyen elemezheti. Ez a közelségi tartomány saját üzleti logikája határozza meg. 
+Ha az ügyfélalkalmazás (például egy csevegési robot) megkapja a választ, a rendszer az első 3 kérdést adja vissza. `score` A tulajdonság használatával elemezheti a pontszámok közötti közelséget. A közelségi tartományt a saját üzleti logikája határozza meg. 
 
 ```json
 {
@@ -164,15 +164,15 @@ Ha az ügyfélalkalmazás (például csevegőrobotot) megkapja a választ, a ren
 }
 ```
 
-## <a name="client-application-follow-up-when-questions-have-similar-scores"></a>Kérdése van hasonló pontszámok ügyfél alkalmazás nyomon követése
+## <a name="client-application-follow-up-when-questions-have-similar-scores"></a>Ügyfélalkalmazás követése, ha a kérdések hasonló pontszámokkal rendelkeznek
 
-Az ügyfélalkalmazás jeleníti meg a kérdéseket, és válassza ki a felhasználó lehetőség _egyetlen kérdésre_ , hogy a legtöbb szándékát jelöli. 
+Az ügyfélalkalmazás megjeleníti azokat a kérdéseket, amelyekkel a felhasználó kiválaszthatja a céljuknak leginkább megfelelő _egyetlen kérdést_ . 
 
-Miután a felhasználó kiválaszt egy meglévő kérdések, az ügyfélalkalmazás küldi a felhasználó által választott visszajelzés a QnA Maker Train API-val. A visszajelzés befejezi az aktív tanulás visszajelzési hurkot. 
+Miután a felhasználó kiválasztja az egyik meglévő kérdést, az ügyfélalkalmazás a QnA Maker 's Train API-val visszajelzést küld a felhasználónak. Ez a visszajelzés befejezi az aktív tanulási visszajelzési ciklust. 
 
-## <a name="train-api"></a>Train API
+## <a name="train-api"></a>API betanítása
 
-Aktív tanulás visszajelzést küld a vonat API POST-kérés a QnA Maker. Az API-aláírás a következő:
+Az aktív tanulási visszajelzéseket a rendszer a Train API POST kérelemmel QnA Maker küldi el. Az API-aláírás:
 
 ```http
 POST https://<QnA-Maker-resource-name>.azurewebsites.net/qnamaker/knowledgebases/<knowledge-base-ID>/train
@@ -181,24 +181,24 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP-kérelem tulajdonság|Name (Név)|Típus|Cél|
+|HTTP-kérelem tulajdonsága|Name (Név)|Type|Cél|
 |--|--|--|--|
-|URL-cím útvonal-paraméter|Tudásbázis-azonosító|string|A Tudásbázis GUID azonosítója.|
-|Host subdomain|QnAMaker erőforrás neve|string|A QnA Maker, az Azure-előfizetésében az állomásnevet. Ez érhető el a beállítások lapon a Tudásbázis közzététele után. |
-|Fejléc|Content-Type|string|Az API-nak küldött törzs médiatípusa. Alapértelmezett érték a következő: `application/json`|
-|Fejléc|Engedélyezés|string|A végpont kulcs (EndpointKey: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
-|Bejegyzés törzse|JSON-objektum|JSON|A képzési visszajelzés|
+|URL-útvonal paraméter|Tudásbázis-azonosító|Karakterlánc|A Tudásbázis GUID azonosítója.|
+|Host subdomain|QnAMaker-erőforrás neve|Karakterlánc|Az Azure-előfizetésben lévő QnA Maker állomásneve. Ez a Tudásbázis közzététele után a beállítások lapon érhető el. |
+|Fejléc|Content-Type|Karakterlánc|Az API-nak eljuttatott törzs adathordozó-típusa. Az alapértelmezett érték:`application/json`|
+|Fejléc|Authorization|Karakterlánc|A végpont kulcsa (EndpointKey XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).|
+|Post törzs|JSON-objektum|JSON|A betanítási visszajelzés|
 
-JSON-törzse többféle beállításokkal rendelkezik:
+A JSON-törzs több beállítással rendelkezik:
 
-|JSON-törzse tulajdonság|Típus|Cél|
+|JSON-törzs tulajdonság|Type|Cél|
 |--|--|--|--|
-|`feedbackRecords`|array|Visszajelzés listája.|
-|`userId`|string|A felhasználói azonosító, annak a személynek a javasolt kérdések elfogadásával. Felhasználói azonosító formátuma szerint strukturálhatja. Például egy e-mail-cím lehet a felhasználói azonosító érvénytelen az architektúrához. Választható.|
-|`userQuestion`|string|A felhasználó lekérdezése pontos szövege. Kötelező.|
-|`qnaID`|szám|Kérdés, talált azonosító a [GenerateAnswer válasz](metadata-generateanswer-usage.md#generateanswer-response-properties). |
+|`feedbackRecords`|array|Visszajelzések listája.|
+|`userId`|Karakterlánc|A javasolt kérdéseket elfogadó személy felhasználói azonosítója. A felhasználói azonosító formátuma. Például egy e-mail-cím lehet érvényes felhasználói azonosító az architektúrában. Választható.|
+|`userQuestion`|Karakterlánc|A felhasználó lekérdezésének pontos szövege. Kötelező.|
+|`qnaID`|szám|A [GenerateAnswer válaszban](metadata-generateanswer-usage.md#generateanswer-response-properties)található kérdés azonosítója. |
 
-Egy példa JSON-törzse hasonlóan néz ki:
+A JSON-törzs például a következőképpen néz ki:
 
 ```json
 {
@@ -212,13 +212,13 @@ Egy példa JSON-törzse hasonlóan néz ki:
 }
 ```
 
-A sikeres válasz egy 204, és nincs JSON-válasz törzsében állapotát adja vissza. 
+A sikeres válasz 204 állapotot ad vissza, és nem a JSON-válasz törzsét. 
 
-### <a name="batch-many-feedback-records-into-a-single-call"></a>Batch-számos visszajelzés rekord egyetlen hívással történő
+### <a name="batch-many-feedback-records-into-a-single-call"></a>Batch – sok visszajelzési rekord egyetlen hívásba
 
-Az ügyféloldali alkalmazás-robot esetén például az adatok tárolásához, majd küldje el sok rekordot egy egyetlen JSON-törzs az a `feedbackRecords` tömb. 
+Az ügyféloldali alkalmazásban, például egy robotban tárolhatja az adatokat, majd több rekordot is küldhet egyetlen JSON-törzsbe a `feedbackRecords` tömbben. 
 
-Egy példa JSON-törzse hasonlóan néz ki:
+A JSON-törzs például a következőképpen néz ki:
 
 ```json
 {
@@ -246,18 +246,18 @@ Egy példa JSON-törzse hasonlóan néz ki:
 
 <a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>
 
-## <a name="bot-framework-sample-code"></a>Bot framework mintakód
+## <a name="bot-framework-sample-code"></a>Robot Framework-mintakód
 
-A bot framework-kód kell az Train API-t, ha a felhasználó lekérdezése aktív tanulás kell használni. Nincsenek két kódrészletek írni:
+A robot Framework kódjának meg kell hívnia a Train API-t, ha a felhasználó lekérdezését az aktív tanuláshoz kell használni. A kód kétféleképpen írható:
 
-* Határozza meg, ha a lekérdezés kell használni aktív tanulás
-* Lekérdezés küldi vissza a QnA Maker Train API aktív tanulás
+* Annak megállapítása, hogy kell-e lekérdezést használni az aktív tanuláshoz
+* Lekérdezés küldése vissza a QnA Maker Train API-nak az aktív tanuláshoz
 
-Az a [Azure Bot minta](https://aka.ms/activelearningsamplebot), mindkét programozni. 
+Az [Azure bot Sample](https://aka.ms/activelearningsamplebot)-ben mindkét tevékenység programozása megtörtént. 
 
-### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>Példa C# Train API a Bot Framework kódját 4.x
+### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>Példa C# kód a Train API-hoz a robot Framework 4. x használatával
 
-Az alábbi kód bemutatja, hogyan adatok küldése a QnA Maker Train API-val. Ez [teljes körű Kódmintát](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-activelearning/csharp_dotnetcore) elérhető a Githubon.
+Az alábbi kód bemutatja, hogyan küldhet vissza adatokat QnA Makerra a Train API-val. Ez a [teljes mintakód](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-activelearning/csharp_dotnetcore) a githubon érhető el.
 
 ```csharp
 public class FeedbackRecords
@@ -318,9 +318,9 @@ public async static void CallTrain(string host, FeedbackRecords feedbackRecords,
 }
 ```
 
-### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Példa Node.js-kód Train API a Bot keretrendszer 4.x verziója 
+### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Példa Node. js-kód a Train API-hoz a robot Framework 4. x használatával 
 
-Az alábbi kód bemutatja, hogyan adatok küldése a QnA Maker Train API-val. Ez [teljes körű Kódmintát](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs) elérhető a Githubon.
+Az alábbi kód bemutatja, hogyan küldhet vissza adatokat QnA Makerra a Train API-val. Ez a [teljes mintakód](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs) a githubon érhető el.
 
 ```javascript
 async callTrain(stepContext){
@@ -361,11 +361,11 @@ async callTrain(stepContext){
 }
 ```
 
-## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Aktív tanulás a rendszer menti az exportált Tudásbázis
+## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Az aktív tanulás az exportált Tudásbázisban lett mentve
 
-Ha az alkalmazás rendelkezik aktív tanulás engedélyezve van, és exportálja az alkalmazás a `SuggestedQuestions` oszlop a tsv-fájl az aktív tanulás adatait őrzi meg. 
+Ha az alkalmazás aktív tanulási lehetőséggel rendelkezik, és exportálja az alkalmazást, `SuggestedQuestions` a TSV-fájlban lévő oszlop megőrzi az aktív tanulási adatait. 
 
-A `SuggestedQuestions` oszlop egy JSON-objektum adatainak implicit, `autosuggested`, és csak explicit módon, `usersuggested` visszajelzést. A JSON-objektum egyetlen felhasználó által beküldött kérdés, például `help` van:
+Az `SuggestedQuestions` oszlop az implicit, `autosuggested`a és a kifejezett `usersuggested` visszajelzések JSON-objektuma. Példa erre a JSON-objektumra egyetlen felhasználó által beküldött kérdés `help` esetén:
 
 ```JSON
 [
@@ -384,13 +384,13 @@ A `SuggestedQuestions` oszlop egy JSON-objektum adatainak implicit, `autosuggest
 ]
 ```
 
-Ha Ön importálja újra az alkalmazást, az aktív tanulás továbbra is információkat gyűjthet, és javasolja a Tudásbázis javaslatokat. 
+Ha újraimportálja az alkalmazást, az aktív tanulás továbbra is gyűjti az adatokat, és javaslatokat javasol a tudásbázishoz. 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Aktív tanulás használata esetén ajánlott eljárásokat lásd: [ajánlott eljárások](../Concepts/best-practices.md#active-learning).
+Az aktív tanulás használata esetén ajánlott eljárások: [ajánlott eljárások](../Concepts/best-practices.md#active-learning).
 
 ## <a name="next-steps"></a>További lépések
  
 > [!div class="nextstepaction"]
-> [Metaadatok használata GenerateAnswer API-val](metadata-generateanswer-usage.md)
+> [Metaadatok használata a GenerateAnswer API-val](metadata-generateanswer-usage.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a Salesforce-szel | Microsoft Docs'
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Salesforce | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Salesforce között.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/31/2019
+ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1b49c84c242144764ff3770512f130091e97968
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ea87c1e0b6379afac6a9433adb0e301626e27811
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880282"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986182"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Oktatóanyag: Azure Active Directory integráció a Salesforce
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Salesforce
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Salesforce a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az Salesforce-t az Azure AD-vel, a következőket teheti:
 
@@ -63,20 +63,20 @@ A Salesforce Azure AD-be való integrálásának konfigurálásához hozzá kell
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Salesforce** kifejezést a keresőmezőbe.
 1. Válassza ki a **Salesforce** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on-for-salesforce"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Salesforce
 
 Konfigurálja és tesztelje az Azure AD SSO-t a Salesforce a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Salesforce-ben.
 
 Az Azure AD SSO és a Salesforce konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 2. **[SALESFORCE SSO konfigurálása](#configure-salesforce-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-5. **[Hozzon létre Salesforce-teszt felhasználót](#create-salesforce-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-Salesforce rendelkezik.
-6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+    1. **[Hozzon létre Salesforce-teszt felhasználót](#create-salesforce-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-Salesforce rendelkezik.
+3. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
@@ -115,7 +115,37 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="configure-salesforce-sso"></a>Salesforce SSO konfigurálása
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Create** (Létrehozás) gombra.
+
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Salesforce.
+
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **Salesforce**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+
+## <a name="configure-salesforce-sso"></a>Salesforce SSO konfigurálása
 
 1. Nyisson meg egy új fület a böngészőben, és jelentkezzen be a Salesforce rendszergazdai fiókjába.
 
@@ -165,41 +195,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > Ha egynél több hitelesítési szolgáltatás van kiválasztva, a rendszer a felhasználókat arra kéri, hogy válassza ki, hogy melyik hitelesítési szolgáltatást szeretnék bejelentkezni a Salesforce-környezetbe való egyszeri bejelentkezés kezdeményezése során. Ha nem szeretné, hogy megtörténjen, az **összes többi hitelesítési szolgáltatást ne jelölje be**.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
-
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
-
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza ki **új felhasználó** a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
-   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
-
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
-
-Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Salesforce.
-
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Salesforce**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
-
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
-
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
-
 ### <a name="create-salesforce-test-user"></a>Salesforce-tesztelési felhasználó létrehozása
 
 Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a Salesforce-ben. A Salesforce támogatja az igény szerinti üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a Salesforce-ben, akkor létrejön egy új, amikor megpróbál hozzáférni a Salesforce. A Salesforce az automatikus felhasználó-kiépítés használatát is támogatja, további részleteket [itt](salesforce-provisioning-tutorial.md) talál az automatikus felhasználó-kiépítés konfigurálásával kapcsolatban.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -236,3 +236,5 @@ Ha a hozzáférési panelen a Salesforce csempére kattint, automatikusan be kel
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [A felhasználók üzembe helyezésének konfigurálása](salesforce-provisioning-tutorial.md)
+
+- [A Salesforce kipróbálása az Azure AD-vel](https://aad.portal.azure.com)

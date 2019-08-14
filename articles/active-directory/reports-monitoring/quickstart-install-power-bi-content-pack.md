@@ -3,7 +3,7 @@ title: Az Azure AD Power BI-tartalomcsomag telepítése | Microsoft Docs
 description: Az Azure AD Power BI-tartalomcsomag telepítésének módja
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 ms.assetid: fd5604eb-1334-4bd8-bfb5-41280883e2b5
 ms.service: active-directory
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69a69732d8cb42c248fa954ef9047e5876f40837
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f088c8b49fa6485a21b630738149078b7ff45b7d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60285966"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988106"
 ---
-# <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>Gyors útmutató: Az Azure Active Directory Power BI tartalom csomag telepítése
+# <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>Gyors útmutató: Azure Active Directory Power BI csomag telepítése
 
 |  |
 |--|
 |Az Azure AD Power BI-tartalomcsomag jelenleg az Azure AD Graph API-jaival kéri le az adatokat az Azure AD-bérlőről. Ezért a tartalomcsomagban elérhető adatok, valamint a [jelentéskészítési Microsoft Graph API-k](concept-reporting-api.md) által lekért adatok között lehet némi eltérés. |
 |  |
 
-Az Azure Active Directory (Azure AD) a Power BI-tartalomcsomag teszi lehetővé a környezet a jelentési adatok vizualizálásához. Az előre összeállított tartalomcsomag letöltésével jelentést készíthet a címtárban zajló tevékenységekről a Power BI gazdag vizualizációs képességeivel. Emellett létrehozhat saját irányítópultot is, és könnyedén megoszthatja szervezete bármely tagjával. 
+A Azure Active Directory (Azure AD) Power BI tartalomkezelő szolgáltatása lehetővé teszi a jelentéskészítési adatok megjelenítését a környezetből. Az előre összeállított tartalomcsomag letöltésével jelentést készíthet a címtárban zajló tevékenységekről a Power BI gazdag vizualizációs képességeivel. Emellett létrehozhat saját irányítópultot is, és könnyedén megoszthatja szervezete bármely tagjával. 
 
 Ebből a rövid útmutatóból elsajátíthatja a tartalomcsomag telepítését.
 
@@ -40,7 +40,7 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 * Egy Power BI-fiók. Ez megegyezik az O365- vagy Azure AD-fiókjával. 
 * Az Azure AD-bérlő azonosítója. Ez a címtár **címtár-azonosítója**, amely az Azure Portal [tulajdonságok oldalán](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) található.
-* Egy Azure AD Prémium- (P1/P2) licenc. Lásd: [Ismerkedés az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) az Azure Active Directory-kiadás frissítése.
+* Egy Azure AD Prémium- (P1/P2) licenc. A Azure Active Directory kiadásának frissítéséhez tekintse meg a [prémium szintű Azure Active Directory első lépéseivel foglalkozó](../fundamentals/active-directory-get-started-premium.md) témakört.
 
 ## <a name="install-azure-ad-power-bi-content-pack"></a>Az Azure AD Power BI-tartalomcsomag telepítése 
 

@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 79302fc0f9addc70461d21c03b02416d15a6fa6c
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 45f5e21e05cf627d418cb66418cf305833a73891
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814940"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965093"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Azure Cosmos DB SQL API-erőforrások kezelése a PowerShell használatával
 
@@ -87,7 +87,7 @@ Az Azure Cosmos-fiókok IP-tűzfallal és Virtual Network szolgáltatásbeli vé
 
 ### <a id="list-accounts"></a>Az előfizetésben lévő összes Azure Cosmos-fiók listázása
 
-Ez a parancs lehetővé teszi az összes Azure Cosmos-fiók listázását egy előfizetésben.
+Ezzel a paranccsal listázhatja az előfizetésben lévő összes Azure Cosmos-fiókot.
 
 ```azurepowershell-interactive
 # List Azure Cosmos Accounts
@@ -116,16 +116,15 @@ Ez a parancs lehetővé teszi az Azure Cosmos DB-adatbázis fiók tulajdonságai
 
 * Régiók hozzáadása vagy eltávolítása
 * Alapértelmezett konzisztencia-házirend módosítása
-* Feladatátvételi szabályzat módosítása
 * IP-címtartomány módosítása
 * Virtual Network konfigurációk módosítása
 * Több főkiszolgáló engedélyezése
 
 > [!NOTE]
-> Ez a parancs lehetővé teszi, hogy hozzá és távolíthat el a régióban, de nem engedélyezi, hogy módosítsa a feladatátvételi prioritások. A feladatátvételi prioritás módosításához tekintse meg az [Azure Cosmos-fiók feladatátvételi prioritásának módosítása](#modify-failover-priority)című témakört.
+> Ezzel a paranccsal hozzáadhat és eltávolíthat régiókat, de nem teszi lehetővé a feladatátvételi prioritások módosítását vagy a régió `failoverPriority=0`módosítását a következővel:. A feladatátvételi prioritás módosításához tekintse meg az [Azure Cosmos-fiók feladatátvételi prioritásának módosítása](#modify-failover-priority)című témakört.
 
 ```azurepowershell-interactive
-# Update an Azure Cosmos Account and set Consistency level to Session
+# Get an Azure Cosmos Account (assume it has two regions currently West US 2 and East US 2) and add a third region
 
 $resourceGroupName = "myResourceGroup"
 $accountName = "myaccountname"
@@ -133,9 +132,13 @@ $accountName = "myaccountname"
 $account = Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Name $accountName
 
-$consistencyPolicy = @{ "defaultConsistencyLevel"="Session" }
+$locations = @(
+    @{ "locationName"="West US 2"; "failoverPriority"=0 },
+    @{ "locationName"="East US 2"; "failoverPriority"=1 },
+    @{ "locationName"="South Central US"; "failoverPriority"=2 }
+)
 
-$account.Properties.consistencyPolicy = $consistencyPolicy
+$account.Properties.locations = $locations
 $CosmosDBProperties = $account.Properties
 
 Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
@@ -235,9 +238,9 @@ Select-Object $keys
 
 ### <a id="modify-failover-priority"></a>Feladatátvétel prioritásának módosítása
 
-A többrégiós adatbázis-fiókok esetében megváltoztathatja azt a sorrendet, amelyben a Cosmos-fiók előlépteti a másodlagos olvasási replikákat, ha az elsődleges írási replika helyi feladatátvételt végez. Ha a régió `failoverPriority=0` módosítva van, ezzel a paranccsal a vész-helyreállítási terv tesztelésére is elindíthatja a vész-helyreállítási gyakorlatot.
+A többrégiós adatbázis-fiókok esetében megváltoztathatja azt a sorrendet, amelyben a Cosmos-fiók előlépteti a másodlagos olvasási replikákat, ha az elsődleges írási replika helyi feladatátvételt végez. A `failoverPriority=0` módosítással vészhelyzeti helyreállítást is indíthat a vész-helyreállítási terv teszteléséhez.
 
-Az alábbi példában feltételezzük, hogy a fiók aktuális feladatátvételi prioritása a westus = 0 és a eastus = 1, és a régiók tükrözése.
+Az alábbi példában feltételezzük, hogy a fiók aktuális feladatátvételi prioritásával `West US 2 = 0` `East US 2 = 1` rendelkezik, és megfordítja a régiókat.
 
 > [!CAUTION]
 > A `locationName` szolgáltatásra való `failoverPriority=0` váltáskor a rendszer manuális feladatátvételt indít el egy Azure Cosmos-fiókhoz. A többi prioritási változás nem indít el feladatátvételt.
@@ -248,10 +251,14 @@ Az alábbi példában feltételezzük, hogy a fiók aktuális feladatátvételi 
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"
 
-$failoverPolicies = @(
-    @{ "locationName"="East US"; "failoverPriority"=0 },
-    @{ "locationName"="West US"; "failoverPriority"=1 }
+$failoverRegions = @(
+    @{ "locationName"="East US 2"; "failoverPriority"=0 },
+    @{ "locationName"="West US 2"; "failoverPriority"=1 }
 )
+
+$failoverPolicies = @{
+    "failoverPolicies"= $failoverRegions
+}
 
 Invoke-AzResourceAction -Action failoverPriorityChange `
     -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" `

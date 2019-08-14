@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – üzembe helyezés a GitHubról Azure App Service a Jenkins használatával
+title: 'Oktatóanyag: Üzembe helyezés a GitHubról Azure App Service a Jenkins használatával'
 description: A a GitHub és a folyamatos üzembe helyezés (CD) és a Java-webalkalmazások Azure App Serviceához készült Jenkins beállítása a folyamatos integrációhoz (CI)
 services: jenkins
 ms.service: jenkins
@@ -8,12 +8,13 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 51ca9602ff155bf61eb28a59a97faa7a06322c7a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: seo-java-august2019
+ms.openlocfilehash: 955ce9724d576e56766ab3d87a374a65e4ca5c0e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855175"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967127"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Oktatóanyag: Üzembe helyezés a GitHubról Azure App Service a Jenkins folyamatos integrációja és üzembe helyezése révén
 

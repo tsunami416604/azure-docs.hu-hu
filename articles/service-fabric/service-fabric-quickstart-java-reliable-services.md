@@ -1,5 +1,5 @@
 ---
-title: Java-alkalmazás létrehozása a Service Fabricben az Azure-ban | Microsoft Docs
+title: 'Gyors útmutató: Java-alkalmazás létrehozása az Azure Service Fabric'
 description: Ez a rövid útmutató azt ismerteti, hogyan lehet Java-alkalmazást létrehozni az Azure-ban a Service Fabric Reliable Services mintaalkalmazásának használatával.
 services: service-fabric
 documentationcenter: java
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 656ebed78aab1ad078eb7e9410cb01876159cf13
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: mvc, devcenter, seo-java-august2019
+ms.openlocfilehash: a69590adc329361ac1c2191e7a984757af4f69af
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845803"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977110"
 ---
 # <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>Gyors útmutató: Java megbízható Services-alkalmazás üzembe helyezése Service Fabric
 

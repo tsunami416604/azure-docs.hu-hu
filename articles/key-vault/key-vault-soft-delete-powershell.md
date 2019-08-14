@@ -1,58 +1,62 @@
 ---
-title: Az Azure Key Vault - helyreállítható törlés használata a PowerShell-lel
-description: Kis példák a helyreállítható törlés funkciójának használata PowerShell-kódrészletek
+title: Azure Key Vault – a Soft-delete használata a PowerShell használatával
+description: Példák a helyreállítható törlésre a PowerShell-kódrészletek használatával
+services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 03/19/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ecc87e03a80ce10bedbe26b3ebb452ec704eefcb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6a24f2dd52c3ac3c51df54bf5c01c7b31ca16147
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60461365"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985752"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>A Key Vault helyreállítható törlés használata a PowerShell-lel
 
-Az Azure Key Vault helyreállítható törlési funkció lehetővé teszi, hogy a törölt tárolók és a tároló objektumok. Pontosabban a helyreállítható törlés címeket a következő esetekben:
+Azure Key Vault Soft delete funkciója lehetővé teszi a törölt tárolók és tároló objektumok helyreállítását. A Soft-Delete a következő forgatókönyvekkel foglalkozik:
 
-- A key vault helyreállítható törlés támogatása
-- A key vault-objektumokon; helyreállítható törlés támogatása a kulcsok, titkos kódok, és tanúsítványok
+- Key Vault helyreállítható törlésének támogatása
+- A Key Vault-objektumok helyreállítható törlésének támogatása; kulcsok, titkos kódok és tanúsítványok
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- Az Azure PowerShell 1.0.0 vagy újabb – Ha nem rendelkezik már ebben a telepítő, az Azure PowerShell telepítése, és társíthatja azt az Azure-előfizetése, lásd: [telepítése és konfigurálása az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview). 
+- Azure PowerShell 1.0.0 vagy újabb verzió – ha nem rendelkezik ezzel a beállítással, telepítse Azure PowerShell és társítsa az Azure-előfizetéséhez, lásd: [a Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/overview). 
 
 >[!NOTE]
-> Elavult verziójának használatát a Key Vault PowerShell-kimeneti formázás a fájlt, amely van **előfordulhat, hogy** kell betölteni a környezet helyett a megfelelő verziót. Azt is várhatóan frissített sémaverzióját tartalmazza a szükséges javítási a kimeneti formázás a PowerShell, és ez a témakör ekkor frissül. Az aktuális Áthidaló megoldásként kell tapasztal a formázási probléma van:
-> - A következő lekérdezést, ha nem látja a helyreállítható törlés engedélyezve van a jelen témakörben ismertetett tulajdonság használatát: `$vault = Get-AzKeyVault -VaultName myvault; $vault.EnableSoftDelete`.
+> A Key Vault PowerShell kimeneti formázó fájl elavult változata, amely a megfelelő verzió helyett a környezetbe tölthető be. A PowerShell frissített verziója arra készül, hogy tartalmazza a kimeneti formázáshoz szükséges korrekciót, és hogy a témakört a későbbiekben frissíti. A jelenlegi megkerülő megoldás, ha ezt a formázási problémát tapasztalja, a következő:
+> - Ha azt észleli, hogy a következő lekérdezés nem jelenik meg a jelen témakörben ismertetett, nem kötelező törlés engedélyezve `$vault = Get-AzKeyVault -VaultName myvault; $vault.EnableSoftDelete`tulajdonság:.
 
 
-A Key Vault műveletekre vonatkozó specifikus információkat PowerShell, lásd: [Azure Key Vault PowerShell-referencia](/powershell/module/az.keyvault).
+A PowerShell-hez Key Vault konkrét referenciáért lásd: [Azure Key Vault PowerShell-útmutató](/powershell/module/az.keyvault).
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
-Key Vault-műveletek külön-külön módon felügyelt keresztül szerepköralapú hozzáférés-vezérlés (RBAC) engedélyekkel:
+A Key Vault műveleteket a szerepköralapú hozzáférés-vezérlési (RBAC) engedélyekkel külön kezelik a következők szerint:
 
-| Művelet | Leírás | Felhasználói engedélyek |
+| Művelet | Leírás | Felhasználói engedély |
 |:--|:--|:--|
-|Lista|Listák törölt kulcstartók.|Microsoft.KeyVault/deletedVaults/read|
-|Helyreállítás|Visszaállít egy törölt kulcstartó.|Microsoft.KeyVault/vaults/write|
-|Véglegesen töröl|Véglegesen töröl egy törölt kulcstartó és annak teljes tartalmát.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
+|List|Felsorolja a törölt kulcstartókat.|Microsoft.KeyVault/deletedVaults/read|
+|Helyreállítás|Visszaállítja a törölt kulcstartót.|Microsoft.KeyVault/vaults/write|
+|Véglegesen töröl|Véglegesen eltávolítja a törölt kulcstartót és annak teljes tartalmát.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
-Engedélyek és hozzáférés-vezérlés további információkért lásd: [kulcstartó védelme](key-vault-secure-your-key-vault.md).
+Az engedélyekkel és a hozzáférés-vezérléssel kapcsolatos további információkért lásd a [kulcstartó biztonságossá](key-vault-secure-your-key-vault.md)tételét ismertető témakört.
 
-## <a name="enabling-soft-delete"></a>Helyreállítható Törlés engedélyezése
+## <a name="enabling-soft-delete"></a>Törlés engedélyezése
 
-Engedélyezi a "helyreállítható törlés" törölt kulcstartó, vagy a key vaultban tárolt objektumok megbízotti.
+A "Soft-Delete" lehetővé teszi a törölt kulcstartó vagy a kulcstartóban tárolt objektumok helyreállítását.
 
-### <a name="existing-key-vault"></a>Meglévő kulcstároló
+> [!IMPORTANT]
+> A "Soft Delete" engedélyezése a Key vaulton visszafordíthatatlan művelet. Ha a Soft-delete tulajdonság értéke "true" (igaz), akkor nem módosítható és nem távolítható el.  
 
-Egy meglévő kulcstartón ContosoVault nevű, a helyreállítható törlés engedélyezéséhez a következő. 
+### <a name="existing-key-vault"></a>Meglévő kulcstartó
+
+Egy ContosoVault nevű meglévő kulcstartó esetén a következő módon engedélyezze a Soft delete törlését. 
 
 ```powershell
 ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
@@ -62,70 +66,70 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 
 ### <a name="new-key-vault"></a>Új kulcstartó
 
-Az új key vault helyreállítható Törlés engedélyezése létrehozáskor hozzáadásával történik, a helyreállítható törlés funkciójának engedélyezése jelzőt a create paranccsal.
+Az új kulcstartó törlésének engedélyezése a létrehozáskor történik, ha hozzáadja a Soft-delete Enable jelzőt a Create parancshoz.
 
 ```powershell
 New-AzKeyVault -Name "ContosoVault" -ResourceGroupName "ContosoRG" -Location "westus" -EnableSoftDelete
 ```
 
-### <a name="verify-soft-delete-enablement"></a>Ellenőrizze a helyreállítható Törlés engedélyezése
+### <a name="verify-soft-delete-enablement"></a>Helyreállítható törlési engedélyezés ellenőrzése
 
-Győződjön meg arról, hogy a key vault helyreállítható törlés engedélyezve van, futtassa a *megjelenítése* parancsot, és keresse meg a "helyreállítható törlés engedélyezve?" attribútum:
+Annak ellenőrzéséhez, hogy a kulcstárolóban engedélyezve van-e a helyreállítható törlés, futtassa a *show* parancsot, és keresse meg a "Soft delete enabled?" lehetőséget. attribútum
 
 ```powershell
 Get-AzKeyVault -VaultName "ContosoVault"
 ```
 
-## <a name="deleting-a-soft-delete-protected-key-vault"></a>A key vault helyreállítható törlés törlése védett.
+## <a name="deleting-a-soft-delete-protected-key-vault"></a>A védett kulcstartó törlésének törlése
 
-A parancs törli a viselkedése attól függően, hogy a helyreállítható törlés funkciójának engedélyezve van-e a key vault változásai.
+Az a parancs, amellyel törölheti a kulcstartót, attól függően, hogy engedélyezve van-e a helyreállítható törlés.
 
 > [!IMPORTANT]
->Ha futtatja a következő parancsot a key vault helyreállítható Törlés engedélyezése nem rendelkező, azzal végleg törli ezt a kulcstartót és a tartalmára nincs helyreállítási lehetőségeket!
+>Ha olyan kulcstartóhoz futtatja a következő parancsot, amely nem rendelkezik a helyreállítható törléssel, véglegesen törli ezt a kulcstartót és annak összes tartalmát a helyreállítás lehetőség nélkül.
 
 ```powershell
 Remove-AzKeyVault -VaultName 'ContosoVault'
 ```
 
-### <a name="how-soft-delete-protects-your-key-vaults"></a>Hogyan védje a helyreállítható törlés a a kulcstartók
+### <a name="how-soft-delete-protects-your-key-vaults"></a>A Soft-delete védi a kulcstartókat
 
-Helyreállítható törlési engedélyezve:
+A helyreállítható törlés engedélyezve:
 
-- Egy törölt kulcstartó távolítva az erőforráscsoport és a helyet, ahol létrehozták társított fenntartott névtérben helyezi. 
-- Törölt objektumok, például a kulcsok, titkos kódok és tanúsítványok, elérhetetlenné válnak, amennyiben azok tartalmazó kulcstartó a törölt állapotban van. 
-- A DNS-név, a törölt kulcstartó van fenntartva, meggátolja, hogy egy azonos nevű új kulcstartó létrehozása folyamatban.  
+- A rendszer eltávolítja a Deleted Key vaultot az erőforráscsoporthoz, és egy fenntartott névtérbe helyezi, amely ahhoz a helyhez van társítva, ahol létrehozták. 
+- A törölt objektumok (például kulcsok, titkos kódok és tanúsítványok) nem érhetők el, amíg a kulcstárolót tartalmazó kulcstartó törölve állapotban van. 
+- A törölt kulcstartó DNS-neve fenntartva, megakadályozva, hogy egy új kulcstároló ugyanazzal a névvel legyen létrehozva.  
 
-Előfordulhat, hogy megtekintheti az állapot törölt kulcstartók, az Ön előfizetéséhez rendelve az alábbi paranccsal:
+Az előfizetéshez társított törölt állapotú kulcstartók a következő paranccsal tekinthetők meg:
 
 ```powershell
 Get-AzKeyVault -InRemovedState 
 ```
 
-- *ID* helyreállítása vagy végleges törlése az erőforrás azonosítására használható. 
-- *Erőforrás-azonosító* ebben a tárban annak az eredeti erőforrás azonosítója. A kulcstartó most már törölt állapotban van, mivel nincs erőforrás létezik-e az adott erőforrás-azonosítója. 
-- *Ütemezett dátum kiürítése* akkor, ha a tároló véglegesen törölve lesz, ha nem tesz. Az alapértelmezett megőrzési időtartamot, kiszámításához használt a *végleges törlés dátuma ütemezett*, 90 nap.
+- Az *azonosító* használatával lehet azonosítani az erőforrást a helyreállítás vagy a kiürítés során. 
+- Az *erőforrás-azonosító* a tár eredeti erőforrás-azonosítója. Mivel ez a kulcstartó már törölt állapotban van, nem létezik erőforrás az erőforrás-AZONOSÍTÓval. 
+- Az *ütemezett kiürítési dátum* az, amikor a tároló véglegesen törölve lesz, ha nincs művelet. Az *ütemezett kiürítési dátum*kiszámításához használt alapértelmezett megőrzési időtartam 90 nap.
 
-## <a name="recovering-a-key-vault"></a>Key vault helyreállítása
+## <a name="recovering-a-key-vault"></a>Kulcstartó helyreállítása
 
-Key vault szeretné használni, adja meg a kulcstartó nevét, erőforráscsoportot és helyet. Vegye figyelembe a hely és az erőforráscsoport, a törölt key vault, a helyreállítási folyamat és igény szerint.
+Kulcstartó helyreállításához meg kell adnia a kulcstároló nevét, az erőforráscsoportot és a helyet. Jegyezze fel a törölt kulcstartó helyét és erőforrás-csoportját, ahogy a helyreállítási folyamathoz szükség van rájuk.
 
 ```powershell
 Undo-AzKeyVaultRemoval -VaultName ContosoVault -ResourceGroupName ContosoRG -Location westus
 ```
 
-Amikor a key vault helyreállítása után egy új erőforrás jön létre a key vault az eredeti erőforrás azonosítóval. Ha eltávolít az eredeti erőforráscsoportot, egy kell létrehozni ugyanazzal a névvel rendelkező helyreállítási megkísérlése előtt.
+Kulcstartó helyreállításakor a Key Vault eredeti erőforrás-azonosítójával létrejön egy új erőforrás. Ha az eredeti erőforráscsoport el lett távolítva, a helyreállítás megkísérlése előtt egyet kell létrehoznia ugyanazzal a névvel.
 
-## <a name="deleting-and-purging-key-vault-objects"></a>Key vault-objektumokon törléshez és törlése
+## <a name="deleting-and-purging-key-vault-objects"></a>Key Vault-objektumok törlése és törlése
 
-A következő parancs törli a "ContosoFirstKey" kulcsot, a key vault neve "ContosoVault", ami helyreállítható törlés engedélyezve van:
+A következő parancs törli a "ContosoFirstKey" kulcsot a (z) "ContosoVault" nevű kulcstartóban, amelynél engedélyezve van a helyreállítható törlés:
 
 ```powershell
 Remove-AzKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey
 ```
 
-A key vault helyreállítható törlés funkciójának engedélyezve a törölt kulcsot továbbra is megjelenik törölni kell, kivéve, ha explicit módon listában törölt kulcsok. Egy kulcsot a törölt állapotban a legtöbb művelet sikertelen lesz, kivéve listázása, visszaállítása, egy törölt kulcs törlése. 
+Ha a kulcstartó engedélyezve van a helyreállítható törléshez, a törölt kulcs továbbra is törölve lesz, kivéve, ha kifejezetten a törölt kulcsokat listázza. A törölt állapotban lévő egyik kulcson végrehajtott műveletek többsége sikertelen lesz, kivéve a listát, a helyreállítást, a törölt kulcs törlését. 
 
-Ha például a következő parancs felsorolja a "ContosoVault" key vaultban lévő kulcsok törlése:
+Például a következő parancs felsorolja a törölt kulcsokat a "ContosoVault" kulcstartóban:
 
 ```powershell
 Get-AzKeyVaultKey -VaultName ContosoVault -InRemovedState
@@ -133,116 +137,116 @@ Get-AzKeyVaultKey -VaultName ContosoVault -InRemovedState
 
 ### <a name="transition-state"></a>Átmeneti állapot 
 
-Ha töröl egy kulcsot a key vault helyreállítható törlési engedélyezve van, igénybe vehet néhány másodpercet, amíg az áttérés befejezéséhez. Ez a váltás során, előfordulhat, hogy jelennek meg, hogy a kulcs nem szerepel az aktív állapot vagy a törölt állapotból. 
+Ha töröl egy kulcsot egy kulcstartóban, és engedélyezve van a helyreállítható törlés, eltarthat néhány másodpercig, amíg az áttérés be nem fejeződik. A váltás során előfordulhat, hogy a kulcs nem aktív állapotban van, vagy a törölt állapotban van. 
 
-### <a name="using-soft-delete-with-key-vault-objects"></a>Helyreállítható törlés használata a key vault-objektumokon
+### <a name="using-soft-delete-with-key-vault-objects"></a>A Soft delete használata a Key Vault-objektumokkal
 
-Kulcstartók, mint egy törölt kulcs, a titkos kulcsot vagy a tanúsítvány, állapotban marad a törölt legfeljebb 90 napig, kivéve, ha a helyreállítást, vagy végleges törlése. 
+Csakúgy, mint a Key vaultok, a törölt kulcsok, titkos kódok vagy tanúsítványok, akár 90 napig törölve maradnak, hacsak nem állítja helyre vagy nem törli azt. 
 
 #### <a name="keys"></a>Kulcsok
 
-Helyreállíthatóan törölt kulcs helyreállítása:
+Helyreállítható kulcs helyreállítása:
 
 ```powershell
 Undo-AzKeyVaultKeyRemoval -VaultName ContosoVault -Name ContosoFirstKey
 ```
 
-Végleg törölni kívánja (más néven végleges törlése) a helyreállíthatóan törölt kulcs:
+Ha véglegesen törölni kívánja (más néven öblítést), a rendszer egy helyreállított kulcsot is töröl:
 
 > [!IMPORTANT]
-> Kulcs törlése véglegesen törli azt, és nem lesz helyreállítható. 
+> A kulcsok végleges törlése véglegesen törli azt, és nem állítható vissza. 
 
 ```powershell
 Remove-AzKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey -InRemovedState
 ```
 
-A **helyreállítása** és **kiürítése** műveletek rendelkezik saját a kulcstartó hozzáférési házirendben tartozó engedélyeket. Egy felhasználó vagy szolgáltatásnév lehessen végrehajtani egy **helyreállítása** vagy **kiürítése** műveletet, a kulcs vagy titkos kód a megfelelő engedéllyel kell rendelkezniük. Alapértelmezés szerint **kiürítése** nem a kulcstartó-hozzáférési házirend, amikor megjelenik az "all" helyi összes engedélyek megadására szolgál. Kifejezetten biztosítania kell **kiürítése** engedéllyel. 
+A **helyreállítás** és **Törlés** műveletekhez saját engedélyek tartoznak a Key Vault hozzáférési házirendjében. Ahhoz, hogy egy felhasználó vagy egy egyszerű szolgáltatásnév végrehajtson egy **helyreállítási** vagy kitakarítási műveletet, rendelkeznie kell a megfelelő engedélyekkel az adott kulcshoz vagy titokhoz. Alapértelmezés szerint a **kiürítés** nincs hozzáadva a kulcstartó hozzáférési házirendjéhez, ha az összes engedély megadására az "all" (összes) parancsikont használja. Kifejezetten meg kell adnia a kiürítési engedélyt. 
 
-#### <a name="set-a-key-vault-access-policy"></a>A kulcstartó-hozzáférési házirend beállítása
+#### <a name="set-a-key-vault-access-policy"></a>Key Vault hozzáférési szabályzatának beállítása
 
-A következő parancsot a biztosít user@contoso.com használja a kulcsok több műveletre engedélyt *ContosoVault* beleértve **kiürítése**:
+A következő parancs engedélyt user@contoso.com ad arra, hogy több műveletet használjon a kulcsokon a *ContosoVault* , beleértve a **kiürítést**:
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@contoso.com -PermissionsToKeys get,create,delete,list,update,import,backup,restore,recover,purge
 ```
 
 >[!NOTE] 
-> Ha egy meglévő kulcstároló, amely még csak helyreállítható törlés engedélyezve van, előfordulhat, hogy nem rendelkezik **helyreállítása** és **kiürítése** engedélyeket.
+> Ha már van olyan kulcstartója, amelynél engedélyezve van a helyreállított törlés, akkor előfordulhat, hogy nem rendelkezik **helyreállítási** és **törlési** engedélyekkel.
 
 #### <a name="secrets"></a>Titkos kulcsok
 
-Például a kulcsok titkos kulcsok kezelt saját parancsokkal:
+A kulcsokhoz hasonlóan a titkos kódok is a saját parancsaikkal kezelhetők:
 
-- SQLPassword nevű titkos kulcs törlése: 
+- SQLPassword nevű titkos kód törlése: 
   ```powershell
   Remove-AzKeyVaultSecret -VaultName ContosoVault -name SQLPassword
   ```
 
-- Összes törölt key vault titkos kulcsainak listázása: 
+- A Key Vault összes törölt titkának listázása: 
   ```powershell
   Get-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState
   ```
 
-- Helyreállítás törölt állapotban titkos kulcs: 
+- Titkos kód helyreállítása törölt állapotban: 
   ```powershell
   Undo-AzKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
   ```
 
-- Törölt állapotban titkos kulcs törlése: 
+- Titkos kód törlése törölt állapotban: 
 
   > [!IMPORTANT]
-  > Titkos kulcs törlése véglegesen törli azt, és nem lesz helyreállítható.
+  > A titkos kód végleges törlésével véglegesen törlődik, és nem lesz helyreállítható.
 
   ```powershell
   Remove-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
   ```
 
-## <a name="purging-a-soft-delete-protected-key-vault"></a>A key vault helyreállítható törlés kiürítése védett
+## <a name="purging-a-soft-delete-protected-key-vault"></a>Védett kulcstartó törlésének végleges törlése
 
 > [!IMPORTANT]
-> Key vault vagy a benne tárolt objektum-ürítést, véglegesen törli, ami azt jelenti, nem lesz helyreállítható!
+> Egy kulcstartó vagy egy benne lévő objektum kiürítése véglegesen törölve lesz, ami azt jelenti, hogy nem lesz helyreállítható.
 
-A végleges törlése funkció segítségével véglegesen törli a kulcstartó-objektum vagy egy teljes key vault, amely lett korábban helyreállíthatóan törölt. Ahogyan az az előző szakaszban, a helyreállítható törlési funkció engedélyezve van, az a key vaultban tárolt objektumok végigveheti több állapota:
+A kiürítési függvény használatával véglegesen törölhető egy kulcstároló-objektum vagy egy teljes kulcstartó, amelyet korábban már töröltek. Ahogy az előző szakaszban is látható, a Key vaultban tárolt objektumok, amelyeken engedélyezve van a Soft delete funkció, több állapotba is léphetnek:
 - **Aktív**: törlés előtt.
-- **Helyreállíthatóan törölt**: törlés, a felsorolt és aktív állapotba helyreállítása után.
-- **Véglegesen törli**: után végleges törlése nem sikerült helyreállítani.
+- **Soft-Deleted**: törlés után a rendszer képes a listára, és helyreállítani az aktív állapotot.
+- **Véglegesen törölve**: törlés után nem lehet helyreállítani.
 
 
-Ugyanez igaz a kulcstartó. Annak érdekében, hogy véglegesen törli a helyreállíthatóan törölt kulcstartó és annak tartalmát, véglegesen törli magát a kulcstartót.
+Ugyanez érvényes a Key Vault esetében is. Ha véglegesen törölni szeretné a helyreállított kulcstartót és annak tartalmát, akkor magát a kulcstartót kell kiürítenie.
 
-### <a name="purging-a-key-vault"></a>Kulcstartó végleges törlése
+### <a name="purging-a-key-vault"></a>Kulcstartó törlése
 
-Amikor a key vault törölve van, a teljes tartalmát véglegesen törlődnek, beleértve a kulcsok, titkos kódok és tanúsítványok. Helyreállíthatóan törölt kulcstartó végleges törlése, használja a `Remove-AzKeyVault` parancsot a lehetőséggel `-InRemovedState` , és adja meg a törölt kulcstartó helye a `-Location location` argumentum. A parancs egy törölt tároló helyét annak `Get-AzKeyVault -InRemovedState`.
+Ha töröl egy kulcstartót, a teljes tartalma véglegesen törlődik, beleértve a kulcsokat, a titkokat és a tanúsítványokat is. A helyreállítható kulcstartó törléséhez használja `Remove-AzKeyVault` a parancsot a kapcsolóval `-InRemovedState` , és a törölt kulcstartó helyét megadhatja az `-Location location` argumentummal. A törölt tároló helyét a parancs `Get-AzKeyVault -InRemovedState`használatával találja meg.
 
 ```powershell
 Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
 ```
 
-### <a name="purge-permissions-required"></a>Szükséges engedélyek törlése
-- A törölt kulcstartó végleges törlése, a felhasználónak az RBAC-engedély van szüksége a *Microsoft.KeyVault/locations/deletedVaults/purge/action* műveletet. 
-- Egy törölt kulcstárolót listázásához, a felhasználónak az RBAC-engedély van szüksége a *Microsoft.KeyVault/deletedVaults/read* műveletet. 
-- Alapértelmezés szerint csak egy előfizetés-rendszergazda rendelkezik ezekkel az engedélyekkel. 
+### <a name="purge-permissions-required"></a>Törlési engedélyek szükségesek
+- A törölt kulcstartó kiürítéséhez a felhasználónak RBAC engedéllyel kell rendelkeznie a *Microsoft. kulcstartó/Locations/deletedVaults/Purge/Action* művelethez. 
+- A törölt kulcstartók listázásához a felhasználónak RBAC engedéllyel kell rendelkeznie a *Microsoft. kulcstartó/deletedVaults/Read* művelethez. 
+- Alapértelmezés szerint csak az előfizetések rendszergazdái rendelkeznek ezekkel az engedélyekkel. 
 
-### <a name="scheduled-purge"></a>Ütemezett végleges törlése
+### <a name="scheduled-purge"></a>Ütemezett kiürítés
 
-Törölt key vault-objektumokon ajánlati is bemutatja, amikor még a Key Vault kiürítse ütemezett. *Ütemezett dátum kiürítése* azt jelzi, hogy amikor a key vaulttal objektum véglegesen törölve lesz, ha nem tesz. Alapértelmezés szerint a törölt kulcstartó objektum megőrzési időtartama a 90 nap.
+A törölt Key Vault-objektumok listázása azt is jelzi, hogy mikor Key Vault a rendszer az ütemezett törlést ütemezi. Az *ütemezett kiürítési dátum* azt jelzi, hogy a Key Vault-objektumok véglegesen törlődnek-e, ha nem végeznek műveletet. Alapértelmezés szerint a törölt Key Vault-objektum megőrzési időtartama 90 nap.
 
 >[!IMPORTANT]
->A tár törölve objektum, által aktivált annak *végleges törlés dátuma ütemezett* mezőben, az véglegesen törlődni fog. Már nem helyreállítható!
+>A rendszer véglegesen törli az *ütemezett kiürítési dátum* mező által aktivált, kiürített tár objektumot. Nem helyreállítható!
 
-## <a name="enabling-purge-protection"></a>Végleges törlés elleni védelem engedélyezése
+## <a name="enabling-purge-protection"></a>A kiürítési védelem engedélyezése
 
-Végleges törlés elleni védelem bekapcsolásakor, a tároló vagy az objektum törölt állapotban nem törölhető, amíg a 90 napos megőrzési időszak letelte. Az ilyen tár vagy az objektum még mindig lehet helyreállítani. Ez a funkció lehetővé teszi a hozzáadott garancia, amely egy tároló vagy az objektum nem lehet véglegesen töröl, amíg a megőrzési időszak letelte.
+Ha a védelem kitisztítása be van kapcsolva, a tároló vagy a törölt állapotú objektum nem törölhető, amíg a 90 napos megőrzési idő el nem telt. Ilyen tár vagy objektum továbbra is helyreállítható. Ez a funkció biztosítja, hogy egy tár vagy egy objektum soha nem törölhető véglegesen, amíg a megőrzési időszak el nem telik.
 
-Engedélyezheti a végleges törlés elleni védelem csak akkor, ha a helyreállítható törlés is engedélyezve van. 
+Csak akkor engedélyezheti a kiürítést, ha a Soft-delete is engedélyezve van. 
 
-Kapcsolja be a mindkét helyreállítható törlés és a végleges törlése a védelmi tároló létrehozása során használja a [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) parancsmagot:
+A Soft delete és a Purge Protection-tár a tár létrehozásakor történő bekapcsolásához használja a [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) parancsmagot:
 
 ```powershell
 New-AzKeyVault -Name ContosoVault -ResourceGroupName ContosoRG -Location westus -EnableSoftDelete -EnablePurgeProtection
 ```
 
-Végleges törlés elleni védelem hozzáadása egy meglévő tároló (már rendelkező engedélyezhető a helyreállítható törlés), használja a [Get-AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault?view=azps-1.5.0), [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-1.5.0), és [Set-AzResource](/powershell/module/az.resources/set-azresource?view=azps-1.5.0) parancsmagok:
+Ha egy meglévő tárolóhoz kívánja hozzáadni a kiürítési védelmet (amely már rendelkezik az engedélyezett törlési lehetőséggel), használja a [Get-AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault?view=azps-1.5.0), a [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-1.5.0)és a [set-AzResource](/powershell/module/az.resources/set-azresource?view=azps-1.5.0) parancsmagot:
 
 ```
 ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true"
@@ -252,5 +256,5 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 
 ## <a name="other-resources"></a>Egyéb erőforrások
 
-- A Key Vault helyreállítható törlés funkciójának áttekintéséhez lásd: [Azure Key Vault helyreállítható törlés áttekintése](key-vault-ovw-soft-delete.md).
-- Az Azure Key Vault használatának általános áttekintéséért lásd: [Mi az Azure Key Vault?](key-vault-overview.md). mai napig = sikeres}
+- A Key Vault-törlési funkció áttekintését lásd: Azure Key Vault- [Törlés – áttekintés](key-vault-ovw-soft-delete.md).
+- A Azure Key Vault használatának általános áttekintését a [Mi az Azure Key Vault?](key-vault-overview.md)című témakörben tekintheti meg. megevett = sikeres}

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 4d80755cdf49246a8772cca82e2a71c6cccbf13a
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 45c5be8b203daf21697f3cb6dad4ecadb6449339
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371214"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976516"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Oktatóanyag: Azure-Blob Storage elérése Azure Databricks használatával Azure Key Vault
 
@@ -32,7 +32,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Ez az oktatóanyag nem hajtható végre az ingyenes Azure próbaverziós előfizetés használatával. A fürt létrehozása előtt lépjen a profilba, és változtassa meg az előfizetését az utólagos elszámolású verzióra. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+
+> [!Note]
+> Ez az oktatóanyag nem hajtható végre az **Azure ingyenes próbaverziós**előfizetésével.
+> Ha ingyenes fiókkal rendelkezik, lépjen a profilba, és változtassa meg azelőfizetését az utólagos elszámolású verzióra. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket. Ezután [távolítsa el a](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)költségkeretet, és [igényeljen kvóta-növekedést](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) a régiójában lévő vCPU. A Azure Databricks munkaterületének létrehozásakor kiválaszthatja a **próbaverzió (prémium-14 napos ingyenes dBu)** díjszabását, hogy a munkaterület 14 napig elérhető legyen az ingyenes prémium Azure Databricks dBu.
 
 ## <a name="create-a-storage-account-and-blob-container"></a>Storage-fiók és blob-tároló létrehozása
 
@@ -46,7 +50,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Ez az oktatóany
 
 3. Ha az ellenőrzés sikertelen, oldja meg a problémákat, és próbálkozzon újra. Ha az ellenőrzés sikeres, válassza a **Létrehozás** lehetőséget, és várja meg a Storage-fiók létrehozását.
 
-4. Navigáljon az újonnan létrehozott Storage-fiókhoz, **és kattintson a** **szolgáltatások** elemre az **Áttekintés** oldalon. Ezután válassza a **+ tároló** lehetőséget, és adja meg a tároló nevét. Kattintson az **OK** gombra.
+4. Navigáljon az újonnan létrehozott Storage-fiókhoz , és kattintson a **szolgáltatások** elemre az **Áttekintés** oldalon. Ezután válassza a **+ tároló** lehetőséget, és adja meg a tároló nevét. Kattintson az **OK** gombra.
 
    ![Új tároló létrehozása](./media/store-secrets-azure-key-vault/create-blob-storage-container.png)
 
@@ -89,7 +93,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Ez az oktatóany
 
    |Tulajdonság|Value|
    |--------|-----------|
-   |Feltöltési beállítások|Manuális|
+   |Feltöltési beállítások|Kézi|
    |Name (Név)|A Storage-fiók kulcsa rövid neve.|
    |Value|key1.|
 

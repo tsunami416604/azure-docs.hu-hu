@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 8a12c9e5d569092440552958554681c0b1d79590
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f77a95af1edcd37043ea1e067560577140a81a04
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552540"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967592"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>Az egyéni hang – első virtuális asszisztensek előzetes verziója
 
@@ -36,14 +36,25 @@ A közvetlen vonalas beszéd és a hozzá tartozó funkciók az egyéni hangalap
 |[Szöveg – beszéd](text-to-speech.md) | A robotból érkező szöveges válaszokat az Azure Speech Servicesből származó [szöveg-beszéd](text-to-speech.md) használatával készíti elő. Ezt a szintézist ezután az ügyfélalkalmazás fogja elérhetővé tenni egy hangadatfolyamként. A Microsoft lehetőséget nyújt saját, kiváló minőségű neurális TTS-hang létrehozására, amely hangvételt biztosít a márka számára, hogy további kapcsolatfelvételt tudjon meg [velünk](mailto:mstts@microsoft.com).
 |[Közvetlen vonalas beszéd](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | A bot Framework csatornán belül a közvetlen vonalas beszéd zökkenőmentes és zökkenőmentes kapcsolatot biztosít az ügyfélalkalmazás, a kompatibilis robot és az Azure Speech Services képességei között. A bot Direct line Speech Channel használatára való konfigurálásával kapcsolatos további információkért tekintse meg [az oldalát a bot Framework dokumentációjában](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
+## <a name="get-started-with-virtual-assistants"></a>Ismerkedés a virtuális asszisztensekkel
+
+Olyan gyors útmutatókat is kínálunk, amelyek kevesebb, mint 10 perc alatt futtatják a kódot. Ez a táblázat a hang-első virtuális asszisztensi rövid útmutatók listáját tartalmazza, nyelv szerint rendezve.
+
+| Első lépések | Platform | API-referencia |
+|------------|----------|---------------|
+| C#, UWP | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Tallózás](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Tallózás](https://aka.ms/csspeech/javaref) |
+
 ## <a name="sample-code"></a>Mintakód
 
 A hang-első virtuális asszisztens létrehozásához használt mintakód a GitHubon érhető el. Ezek a minták lefedik az ügyfélalkalmazás számára a robothoz való csatlakozást számos népszerű programozási nyelven.
 
 * [Hang – első virtuális asszisztensi minták (SDK)](https://aka.ms/csspeech/samples)
-* [Gyors útmutató: hang – első virtuális asszisztens (C#)](quickstart-virtual-assistant-csharp-uwp.md)
-* [Gyors útmutató: hang – első virtuális asszisztens (Java)](quickstart-virtual-assistant-java-jre.md)
-* [Közvetlen vonalas beszédfelismerési ügyfélC#(, WPF)](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client)
+* [Oktatóanyag: Hang engedélyezése a robotnak a Speech SDK-valC#](tutorial-voice-enable-your-bot-speech-sdk.md)
+
+## <a name="tutorial"></a>Oktatóanyag
+Egy oktatóanyag, amely bemutatja, hogyan engedélyezheti a [robotot a SPEECH SDK és a Direct line Speech Channel használatával](tutorial-voice-enable-your-bot-speech-sdk.md).
 
 ## <a name="customization"></a>Testreszabás
 

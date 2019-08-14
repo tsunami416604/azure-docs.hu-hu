@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/29/2019
+ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37eb989f49593570aa9fcc2ee6f2e5863b59fbc1
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: fe57c0655cf01f8dfa0f9cd0d75584fd4f130c0a
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637765"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976110"
 ---
 # <a name="tutorial-integrate-expensify-with-azure-active-directory"></a>Oktatóanyag: A drága integrálása Azure Active Directory
 
@@ -36,7 +36,7 @@ Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrál�
 
 Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [itt](https://azure.microsoft.com/pricing/free-trial/)kérhet egy hónapos ingyenes próbaverziót.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 * Drága egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
@@ -56,20 +56,20 @@ A drága Azure AD-be való integrálásának konfigurálásához hozzá kell adn
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **drága** kifejezést a keresőmezőbe.
 1. Válassza ki a **drága** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on-for-expensify"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a drága
 
 Konfigurálja és tesztelje az Azure AD SSO-t a drága a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a drága-ben.
 
 Az Azure AD SSO és a drága konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 2. **[Drága SSO konfigurálása](#configure-expensify-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-5. **[Hozzon létre drága-teszt felhasználót](#create-expensify-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-drága rendelkezik.
+    1. **[Hozzon létre drága-teszt felhasználót](#create-expensify-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-drága rendelkezik.
 6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
@@ -83,10 +83,12 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:`https://www.expensify.com/authentication/saml/login`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://www.<companyname>.expensify.com`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet:`https://www.expensify.com`
+
+    c. b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://www.expensify.com/authentication/saml/loginCallback?domain=<yourdomain>`
 
     > [!NOTE]
-    > Az azonosító értéke nem valódi. Frissítse ezt az értéket a tényleges azonosítóval. Az érték beszerzéséhez lépjen kapcsolatba a [drága](mailto:help@expensify.com) ügyfélszolgálatával. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > A válasz URL-cím értéke nem valódi. Frissítse ezt az értéket a tényleges válasz URL-címével. Az érték beszerzéséhez lépjen kapcsolatba a [drága](mailto:help@expensify.com) ügyfélszolgálatával. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **metaadatok XML** -fájlját, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
@@ -95,20 +97,6 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 1. A **drága beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
-
-### <a name="configure-expensify-sso"></a>Drága SSO konfigurálása
-
-Ha engedélyezni szeretné az egyszeri bejelentkezést a drága-ben, először engedélyeznie kell a **tartomány** -vezérlést az alkalmazásban. Az alkalmazásban az [itt](https://help.expensify.com/domain-control)felsorolt lépéseket követve engedélyezheti a tartomány-vezérlést. További támogatásért a [drága ügyfél-támogatási csapatával](mailto:help@expensify.com)dolgozhat. Miután engedélyezte a tartomány vezérlését, kövesse az alábbi lépéseket:
-
-![Egyszeri bejelentkezés konfigurálása](./media/expensify-tutorial/tutorial_expensify_51.png)
-
-1. Jelentkezzen be a drága alkalmazásba.
-
-2. A bal oldali panelen kattintson a **Beállítások** lehetőségre, és navigáljon az **SAML**elemre.
-
-3. Az **SAML bejelentkezési** beállítás bekapcsolása **engedélyezettként**.
-
-4. Nyissa meg a letöltött összevonási metaadatokat az Azure AD-ből a Jegyzettömbben, másolja ki a tartalmat, majd illessze be az **Identity Provider metaadatok** szövegmezőbe.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -140,11 +128,25 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
+## <a name="configure-expensify-sso"></a>Drága SSO konfigurálása
+
+Ha engedélyezni szeretné az egyszeri bejelentkezést a drága-ben, először engedélyeznie kell a **tartomány** -vezérlést az alkalmazásban. Az alkalmazásban az [itt](https://help.expensify.com/domain-control)felsorolt lépéseket követve engedélyezheti a tartomány-vezérlést. További támogatásért a [drága ügyfél-támogatási csapatával](mailto:help@expensify.com)dolgozhat. Miután engedélyezte a tartomány vezérlését, kövesse az alábbi lépéseket:
+
+![Egyszeri bejelentkezés konfigurálása](./media/expensify-tutorial/tutorial_expensify_51.png)
+
+1. Jelentkezzen be a drága alkalmazásba.
+
+2. A bal oldali panelen kattintson a **Beállítások** lehetőségre, és navigáljon az **SAML**elemre.
+
+3. Az **SAML bejelentkezési** beállítás bekapcsolása **engedélyezettként**.
+
+4. Nyissa meg a letöltött összevonási metaadatokat az Azure AD-ből a Jegyzettömbben, másolja ki a tartalmat, majd illessze be az **Identity Provider metaadatok** szövegmezőbe.
+
 ### <a name="create-expensify-test-user"></a>Drága-tesztelési felhasználó létrehozása
 
 Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a drága-ben. A [drága ügyfél-támogatási csapattal](mailto:help@expensify.com) együttműködve veheti fel a felhasználókat a drága-platformba.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

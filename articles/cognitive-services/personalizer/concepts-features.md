@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 08/13/2019
 ms.author: diberry
-ms.openlocfilehash: 1960856ce2f15945d1b1bfa093f349771d481ffc
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: db54a71a6bd252c1ca60ae356cbf340bc660d142
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663846"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989089"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>A funkciók a műveletekkel és környezettel kapcsolatos információk
 
@@ -25,7 +25,7 @@ A személyre szabott **funkciók**az **aktuális környezettel** kapcsolatos inf
 
 Előfordulhat például, hogy a következő **funkcióval** rendelkezik:
 
-* A _felhasználó_ , például a `UserID`. 
+* A _felhasználó persona_ , például `Sports_Shopper`a. Ez nem lehet egyedi felhasználói azonosító. 
 * A _tartalom_ , például ha egy videó az a `Documentary`, a `Movie`vagy a `TV Series`, vagy hogy elérhető-e egy kereskedelmi elem a tárolóban.
 * Az _aktuális_ idő, például a hét napja.
 
@@ -150,7 +150,7 @@ Számos más [Azure-Cognitive Services](https://www.microsoft.com/cognitive-serv
 
 Minden művelet:
 
-* Rendelkezik AZONOSÍTÓval.
+* _Eseményazonosító_ . Ha már van eseményazonosító, küldje el a következőt:. Ha nem rendelkezik eseményazonosító, akkor ne küldjön egyet, a személyre szabott lehetőséggel létrehoz egyet, és visszaadja azt a rangsor kérésének válaszában. Az azonosító a Range eseményhez van társítva, nem a felhasználóhoz. Ha létrehoz egy azonosítót, a GUID a legjobban működik. 
 * A funkciók listáját tartalmazza.
 * A szolgáltatások listája nagy (száz) lehet, de javasoljuk, hogy a funkciók hatékonyságának értékelésével távolítsa el azokat a funkciókat, amelyek nem járulnak hozzá a jutalmak beszerzéséhez. 
 * Előfordulhat, hogy a **műveletek** funkciói nem rendelkeznek a személyre szabott **környezet** által használt szolgáltatásokkal való korrelációval.
@@ -184,7 +184,7 @@ A következő példák a műveletek funkcióinak megfelelő példáit mutatják 
 
 * Funkciók a műveletek jellemzőivel. Például film vagy TV-sorozat?
 * Azon funkciók, amelyekkel a felhasználók a múltban is felhasználhatták ezt a műveletet. Például ezt a filmet többnyire az A vagy B demográfiai személyek látják, általában csak egyszer játszanak egyszerre.
-* A *felhasználók által* a műveletek végrehajtásának jellemzőit ismertető funkciók. Például a miniatűrben látható film posztere arcok, autók vagy tájak?
+* A felhasználók által a műveletek végrehajtásának jellemzőit ismertető funkciók. Például a miniatűrben látható film posztere arcok, autók vagy tájak?
 
 ### <a name="load-actions-from-the-client-application"></a>Műveletek betöltése az ügyfélalkalmazás alapján
 

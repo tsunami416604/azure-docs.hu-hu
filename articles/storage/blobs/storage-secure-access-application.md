@@ -9,12 +9,12 @@ ms.date: 05/30/2018
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.custom: mvc
-ms.openlocfilehash: 8e56b02b84c0324f723ead1bbf156c847edbbeb5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2cd7a83b597d656ddbb0210aacfe96f6c056248b
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787987"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986695"
 ---
 # <a name="secure-access-to-an-applications-data-in-the-cloud"></a>Biztonságos hozzáférés egy alkalmazás adataihoz a felhőben
 
@@ -27,11 +27,11 @@ A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 > * Kiszolgálóoldali titkosítás bekapcsolása
 > * Csak HTTPS-protokollal történő átvitel engedélyezése
 
-Az [Azure Blob Storage](../common/storage-introduction.md#blob-storage) stabil szolgáltatást biztosít az alkalmazások fájljainak tárolásához. Az oktatóanyag kibővíti [az előző témakört][previous-tutorial], hogy bemutassa, hogyan teheti biztonságossá a tárfiókhoz való hozzáférést egy webalkalmazásból. Az oktatóanyag elvégzése után a rendszer titkosítja a képeket, és a webalkalmazás biztonságos SAS-jogkivonatok segítségével fér hozzá a miniatűr képekhez.
+Az [Azure Blob Storage](../common/storage-introduction.md#blob-storage) stabil szolgáltatást biztosít az alkalmazások fájljainak tárolásához. Ez az oktatóanyag kibővíti [az előző témakört][previous-tutorial] , amely azt mutatja be, hogyan lehet biztonságossá tenni a Storage-fiókjához való hozzáférést egy webalkalmazásból. Az oktatóanyag elvégzése után a rendszer titkosítja a képeket, és a webalkalmazás biztonságos SAS-jogkivonatok segítségével fér hozzá a miniatűr képekhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez el kell végeznie az előző tárolási oktatóanyagot: [Event Grid használatával feltöltött képek átméretezésének automatizálása][previous-tutorial]. 
+Az oktatóanyag elvégzéséhez el kell végeznie az előző tárolási oktatóanyagot: [A feltöltött képek átméretezésének automatizálása Event Grid használatával][previous-tutorial]. 
 
 ## <a name="set-container-public-access"></a>A tároló nyilvános hozzáférésének beállítása
 
@@ -49,7 +49,7 @@ az storage container set-permission \ --account-name $blobStorageAccount \ --acc
 
 ## <a name="configure-sas-tokens-for-thumbnails"></a>SAS-jogkivonatok konfigurálása miniatűr képekhez
 
-Az oktatóanyag-sorozat első részében a webalkalmazás egy nyilvános tárolóból származó képeket jelenített meg. A sorozat ezen részében a [közös hozzáférésű jogosultságkód (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md#what-is-a-shared-access-signature) jogkivonatai segítségével kérjük le a miniatűr képeket. A SAS-jogkivonatok segítségével korlátozott hozzáférést biztosíthat egy tárolóhoz vagy blobhoz IP-cím, protokoll, időintervallum vagy engedélyezett jogosultságok alapján.
+Az oktatóanyag-sorozat első részében a webalkalmazás egy nyilvános tárolóból származó képeket jelenített meg. A sorozat ezen részében a közös hozzáférésű aláírások (SAS) jogkivonatok segítségével kérheti le a miniatűr lemezképeket. A SAS-jogkivonatok segítségével korlátozott hozzáférést biztosíthat egy tárolóhoz vagy blobhoz IP-cím, protokoll, időintervallum vagy engedélyezett jogosultságok alapján. Az SAS-vel kapcsolatos további információkért lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférési aláírások (SAS) használatával](../common/storage-sas-overview.md).
 
 A példában a forráskód adattára a `sasTokens` ágat használja, amely egy frissített kódmintát tartalmaz. Törölje a meglévő GitHub-telepítést az [az webapp deployment source delete](/cli/azure/webapp/deployment/source) parancs segítségével. Azután konfigurálja a GitHub-telepítést a webalkalmazásba az [az webapp deployment source config](/cli/azure/webapp/deployment/source) parancs segítségével.  
 
@@ -128,7 +128,7 @@ public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _stor
 
 Az előző feladatban használt osztályok, tulajdonságok és metódusok a következők:
 
-|Osztály  |Tulajdonságok| Metódusok  |
+|Osztály  |properties| Metódusok  |
 |---------|---------|---------|
 |[StorageCredentials](/dotnet/api/microsoft.azure.cosmos.table.storagecredentials)    |         |
 |[CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount)     | |[CreateCloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient)        |

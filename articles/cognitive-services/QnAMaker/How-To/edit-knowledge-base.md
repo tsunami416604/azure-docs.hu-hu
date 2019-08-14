@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 006170b2030b6511ba732a1b12aa5b5b811d8900
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1342616a0d32d8ac68965bc04f1fd3ca60146369
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447478"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966768"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>A QnA Maker Tudásbázis szerkesztése
 
@@ -54,7 +54,7 @@ A QnA Maker lehetővé teszi a Tudásbázis tartalmát kezelését azáltal, hog
 
 ## <a name="add-a-qna-pair"></a>Kérdés-válasz pár hozzáadása
 
-Az a **beállítások** lapon jelölje be **hozzáadása kérdés-válasz párt** hozzáadása egy új sort a Tudásbázis tábla.
+A **Beállítások** lapon válassza a **QnA pár hozzáadása** lehetőséget egy új sor hozzáadásához a Tudásbázis-táblához.
 
 ![A QnA pár hozzáadása](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 
@@ -72,7 +72,7 @@ Alternatív kérdések hozzáadása egy meglévő QnA pár annak lehetőségét,
 
 ## <a name="add-metadata"></a>metaadatok hozzáadása
 
-Adja hozzá a metaadatokat párok első kiválasztásával **beállítások megtekintéséhez**, kiválasztja az **megjelenítése metaadatok**. Ez megjeleníti a metaadat-oszlopot. Ezután válassza ki a **+** bejelentkezni egy metaadat-pár hozzáadása. Ez a páros egy kulcs és a egy értéke áll.
+Adja hozzá a metaadatokat úgy, hogy először kiválasztja a **megtekintési beállításokat**, majd kiválasztja a **metaadatok megjelenítése**lehetőséget. Ekkor megjelenik a metaadatok oszlop. Ezután válassza ki a **+** jelet egy metaadat-pár hozzáadásához. Ez a pár egy kulcsból és egy értékből áll.
 
 ![Metaadatok hozzáadása](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
@@ -81,17 +81,17 @@ Adja hozzá a metaadatokat párok első kiválasztásával **beállítások megt
 
 ## <a name="manage-large-knowledge-bases"></a>Nagy tudásbázisok kezelése
 
-* **Adatforrás-csoportok**: A QnA-tudásbázisok az adatforrás, amelyből könyvtárban találhatók szerint vannak csoportosítva. Bontsa ki, vagy az adatforrás összecsukása.
+* **Adatforrás-csoportok**: A QnAs azon adatforrás szerint vannak csoportosítva, amelyből kinyerték őket. Bontsa ki, vagy az adatforrás összecsukása.
 
-    ![A QnA Maker adatsáv forrás használatával összecsukása, és bontsa ki a data source kérdések és válaszok](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
+    ![Az adatforrással kapcsolatos kérdések és válaszok összecsukása és kibontása a QnA Maker adatforrás-sávjának használatával](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
 
-* **Tudásbázisban**: A Tudásbázis tábla tetején a szövegmezőbe írja be a Tudásbázis kereshet. Kattintson a kérdés válasz metaadat-tartalom, vagy a kereséshez adja meg. Kattintson az X ikont a keresési szűrő eltávolításához.
+* **Keresés**az Tudásbázisban: A Tudásbázisban a Tudásbázis tábla tetején található szövegmezőbe írja be a keresést. Kattintson a kérdés válasz metaadat-tartalom, vagy a kereséshez adja meg. Kattintson az X ikont a keresési szűrő eltávolításához.
 
-    ![A QnA Maker keresőmezőbe írja felett a kérdések és válaszok használatával csökkentheti a szűrő egyező elemek csak a nézet](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![A kérdések és válaszok fölötti QnA Maker keresőmező használatával csökkentse a nézetet csak a szűrővel egyező elemek](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
 
-* **Tördelés**: Gyorsan mozoghat adatforrások nagy tudásbázisok kezelése
+* **Tördelés**: Az adatforrások gyors áthelyezése a nagyméretű tudásbázisok kezelésére
 
-    ![Váltás a lapok kérdések és válaszok a QnA Maker tördelés funkciókat a fenti kérdések és válaszok használata](../media/qnamaker-how-to-edit-kb/pagination.png)
+    ![A kérdések és válaszok lapokon való áthelyezéséhez használja a QnA Maker tördelési funkcióit.](../media/qnamaker-how-to-edit-kb/pagination.png)
 
 ## <a name="delete-knowledge-bases"></a>Tudásbázisok törlése
 

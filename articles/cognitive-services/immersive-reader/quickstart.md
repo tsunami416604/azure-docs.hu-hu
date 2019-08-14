@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 978b56f5c38a154c79544c7deb5d49396b1deff9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0d67385975db13539c28745eede4fb288a0daedd
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688864"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989143"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Gyors útmutató: Hozzon létre egy webalkalmazást, amely elindítja aC#lebilincselő olvasót ()
 
 A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
 
-Ebben a rövid útmutatóban egy webalkalmazást hoz létre a semmiből, és integrálja a magával ragadó olvasót a saját olvasó SDK használatával. Ebben a [rövid útmutatóban](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)egy teljes körű működő minta érhető el.
+Ebben a rövid útmutatóban egy webalkalmazást hoz létre a semmiből, és integrálja a magával ragadó olvasót a saját olvasó SDK használatával. Ebben a rövid útmutatóban egy teljes körű működő [](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)minta érhető el.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -223,5 +223,7 @@ Ha a "magára olvasó" gombra kattint, megjelenik a megjelenő, az oldalon talá
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse [](./tutorial.md) meg az oktatóanyagot, amelyből megtudhatja, hogy mit tehet a magával az olvasói SDK-val
+* Tekintse meg a [Node. js](./tutorial-nodejs.md) -oktatóanyagot, amelyből megtudhatja, hogy a Node. js használatával milyen egyéb műveleteket végezhet el az olvasói SDK-val
+* Tekintse meg a [Python](./tutorial-python.md) -oktatóanyagot, amelyből megtudhatja, hogy mit tehet a részletes olvasó SDK-val a Python használatával
+* Tekintse meg az [iOS](./tutorial-ios-picture-immersive-reader.md) -oktatóanyagot, amelyből megtudhatja, mit tehet a gyors
 * Ismerkedjen meg a magára az [olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK](./reference.md) -referenciával

@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 07/30/2019
 ms.author: laobri
-ms.openlocfilehash: 3a0b5706b41bdc51a4fe6e49b20296d3824b717c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 41ad5aed975f30250d53d746e7590f88e375b6e9
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947122"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977214"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-nodejs"></a>Gyors útmutató: Azure Search index létrehozása a Node. js-ben
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "68947122"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Hozzon létre egy Node. js-alkalmazást, amely egy Azure Search indexet hoz létre, tölt be és kérdez le. Ez a cikk bemutatja, hogyan hozhatja létre az alkalmazást lépésről lépésre. Másik lehetőségként [letöltheti a forráskódot és](https://github.com/Azure-Samples/azure-search-javascript-samples/quickstart/) az adatforrást, és futtathatja az alkalmazást a parancssorból.
+Hozzon létre egy Node. js-alkalmazást, amely egy Azure Search indexet hoz létre, tölt be és kérdez le. Ez a cikk bemutatja, hogyan hozhatja létre az alkalmazást lépésről lépésre. Másik lehetőségként [letöltheti a forráskódot és](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/) az adatforrást, és futtathatja az alkalmazást a parancssorból.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -36,7 +36,7 @@ Ebben a rövid útmutatóban a következő szolgáltatásokat, eszközöket és 
 
 + [Node.js](https://nodejs.org).
 + A [NPM](https://www.npmjs.com) -et a Node. js-nek kell telepítenie.
-+ Ebben a cikkben vagy a tárházban a minta index struktúrája és a megfelelő dokumentumok [](https://github.com/Azure-Samples/azure-search-javascript-samples/quickstart/)szerepelnek.
++ Ebben a cikkben vagy a tárház rövid útmutató [ könyvtárában](https://github.com/Azure-Samples/azure-search-javascript-samples/)talál egy minta-index struktúrát és a megfelelő dokumentumokat.
 + [Hozzon létre egy Azure Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat.
 
 Ajánlott
@@ -126,7 +126,7 @@ Cserélje le `[SERVICE_NAME]` az értéket a keresési szolgáltatás nevére. C
 
 Hozzon létre egy **hotels_quickstart_index. JSON**fájlt.  Ez a fájl határozza meg, hogy a Azure Search hogyan működik a következő lépésben betöltés alatt álló dokumentumokkal. Az egyes mezők azonosítása a `name` és a megadott `type`értékkel történik. Az egyes mezők több index-attribútummal is rendelkeznek, amelyek megadják, hogy Azure Search kereshet, szűrheti, rendezheti és részletezheti a mezőt. A mezők többsége egyszerű adattípusú, néhány például `AddressType` olyan összetett típus, amely lehetővé teszi, hogy gazdag adatstruktúrákat hozzon létre az indexében.  További információt a [támogatott](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) adattípusokról és az [index attribútumairól](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)itt olvashat. 
 
-Adja hozzá a következőt a **hotels_quickstart_index. JSON** fájlhoz, vagy [töltse le a fájlt](https://github.com/Azure-Samples/azure-search-javascript-samples/quickstart/blob/master/hotels_quickstart_index.json). 
+Adja hozzá a következőt a **hotels_quickstart_index. JSON** fájlhoz, vagy [töltse le a fájlt](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json). 
 
 ```json
 {
@@ -286,14 +286,14 @@ module.exports = AzureSearchClient;
 
 Az osztály első feladata, hogy megtudja, hogyan hozhat létre olyan URL-címeket, amelyekhez a különböző kéréseket küldeni szeretné. Ezeket az URL-címeket olyan példány-metódusokkal hozza létre, amelyek az osztály konstruktorának átadott konfigurációs adathalmazt használják. Figyelje meg, hogy az általuk létrehozott URL-cím egy API-verzióra vonatkozik, és rendelkeznie kell egy olyan argumentummal, `2019-05-06`amely megadja az adott verziót (ebben az alkalmazásban). 
 
-Adja hozzá a következő metódust az osztály törzsében:
+Az első ilyen módszer az index URL-címét fogja visszaadni. Adja hozzá a következő metódust az osztály törzsében:
 
 ```javascript
-    getIndexUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}?api-version=${this.apiVersion}`; }
+getIndexUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}?api-version=${this.apiVersion}`; }
 
 ```
 
-A következő felelősség egy aszinkron kérelmet készít a beolvasási API-val. Az aszinkron statikus metódus `request` egy URL-címet, egy karakterláncot ad meg, amely megadja a http-metódust ("Get", "put", "post", "Delete"), a kérelemben használandó kulcsot, valamint egy opcionális JSON-objektumot. A `headers` változó leképezi az `queryKey` (akár a rendszergazdai kulcsot, akár az írásvédett lekérdezési kulcsot) az "API-Key" http-kérelem fejlécére. A kérések beállításai mindig tartalmazzák `method` a használni kívánt és a `headers`. Ha `bodyJson` `bodyJson`nem `null`, a HTTP-kérelem törzse a karakterlánc-ábrázolására van beállítva. A `request` a beolvasás API meghívását adja vissza a HTTP-kérelem végrehajtásához.
+A következő feladata `AzureSearchClient` , hogy aszinkron kérelmet küldjön a fetch API-val. Az aszinkron statikus metódus `request` egy URL-címet, egy karakterláncot ad meg, amely megadja a http-metódust ("Get", "put", "post", "Delete"), a kérelemben használandó kulcsot, valamint egy opcionális JSON-objektumot. A `headers` változó leképezi az `queryKey` (akár a rendszergazdai kulcsot, akár az írásvédett lekérdezési kulcsot) az "API-Key" http-kérelem fejlécére. A kérések beállításai mindig tartalmazzák `method` a használni kívánt és a `headers`. Ha `bodyJson` `bodyJson`nem `null`, a HTTP-kérelem törzse a karakterlánc-ábrázolására van beállítva. A `request` metódus a beolvasás API ígéretét adja vissza a HTTP-kérelem végrehajtásához.
 
 ```javascript
 static async request(url, method, apiKey, bodyJson = null) {
@@ -325,51 +325,51 @@ static async request(url, method, apiKey, bodyJson = null) {
 }
 ```
 
-Bemutató céljára csak akkor fogunk kivételt okozni, ha a HTTP-kérelem nem sikeres. Egy valós alkalmazásban valószínűleg elvégezheti a http- `response` állapotkód naplózását és diagnosztizálását a keresési szolgáltatás kérelmében. 
+Bemutató céljára csak akkor dobjon kivételt, ha a HTTP-kérelem nem sikeres. Egy valós alkalmazásban valószínűleg elvégezheti a http- `response` állapotkód naplózását és diagnosztizálását a keresési szolgáltatás kérelmében. 
     
 ```javascript
-    static throwOnHttpError(response) {
+static throwOnHttpError(response) {
     const statusCode = response.status;
     if (statusCode >= 300){
         console.log(`Request failed: ${JSON.stringify(response, null, 4)}`);
         throw new Error(`Failure in request. HTTP Status was ${statusCode}`);
     }
-    }
+}
 ```
 
-Végül adja hozzá a Azure Search index észleléséhez, törléséhez és létrehozásához szükséges metódusokat. Ezek a metódusok mind ugyanazzal a struktúrával rendelkeznek:
+Végül adja hozzá a metódusokat a Azure Search index észleléséhez, törléséhez és létrehozásához. Ezek a metódusok mind ugyanazzal a struktúrával rendelkeznek:
 
 * Szerezze be azt a végpontot, amelyhez a kérést el szeretné végezni.
-* A kérelem előállítása a megfelelő végponttal, HTTP-művelettel, API-kulccsal és törzstel. `queryAsync()`a lekérdezési kulcsot használja, ellenkező esetben a rendszer a rendszergazdai kulcsot használja.
+* A kérést a megfelelő végponttal, HTTP-művelettel, API-kulccsal, és ha szükséges, egy JSON-törzstel kell előállítani. `indexExistsAsync()`és `deleteIndexAsync()` nem rendelkezik JSON-törzstel, de `createIndexAsync(definition)` nem.
 * `await`a kérelemre adott válasz.  
 * A válasz állapotkód alapján járjon el.
 * Egy megfelelő érték (Boolean, `this`vagy lekérdezési eredmények) ígéretének visszaadása. 
 
 ```javascript
-    async indexExistsAsync() { 
-        console.log("\n Checking if index exists...");
-        const endpoint = this.getIndexUrl();
-        const response = await AzureSearchClient.request(endpoint, "GET", this.queryKey);
-        // Success has a few likely status codes: 200 or 204 (No Content), but accept all in 200 range...
-        const exists = response.status >= 200 && response.status < 300;
-        return exists;
-    }
-    
-    async deleteIndexAsync() {
-        console.log("\n Deleting existing index...");
-        const endpoint = this.getIndexUrl();
-        const response = await AzureSearchClient.request(endpoint, "DELETE", this.adminKey);
-        AzureSearchClient.throwOnHttpError(response);
-        return this;
-    }
-    
-    async createIndexAsync(definition) {
-        console.log("\n Creating index...");
-        const endpoint = this.getIndexUrl();
-        const response = await AzureSearchClient.request(endpoint, "PUT", this.adminKey, definition);
-        AzureSearchClient.throwOnHttpError(response);
-        return this;
-    }
+async indexExistsAsync() { 
+    console.log("\n Checking if index exists...");
+    const endpoint = this.getIndexUrl();
+    const response = await AzureSearchClient.request(endpoint, "GET", this.adminKey);
+    // Success has a few likely status codes: 200 or 204 (No Content), but accept all in 200 range...
+    const exists = response.status >= 200 && response.status < 300;
+    return exists;
+}
+
+async deleteIndexAsync() {
+    console.log("\n Deleting existing index...");
+    const endpoint = this.getIndexUrl();
+    const response = await AzureSearchClient.request(endpoint, "DELETE", this.adminKey);
+    AzureSearchClient.throwOnHttpError(response);
+    return this;
+}
+
+async createIndexAsync(definition) {
+    console.log("\n Creating index...");
+    const endpoint = this.getIndexUrl();
+    const response = await AzureSearchClient.request(endpoint, "PUT", this.adminKey, definition);
+    AzureSearchClient.throwOnHttpError(response);
+    return this;
+}
 ```
 
 Győződjön meg arról, hogy a metódusok az osztályban belül vannak, és hogy az osztályt exportálja. A **AzureSearchClient. js** legkülső hatókörének a következőket kell tartalmaznia:
@@ -384,7 +384,7 @@ class AzureSearchClient {
 module.exports = AzureSearchClient;
 ```
 
-Egy objektumorientált osztály jó választás volt az esetlegesen újrafelhasználható **AzureSearchClient. js** -modulhoz, de a főprogramhoz nem szükséges, amelyet az **index. js**nevű fájlba helyezünk. 
+Egy objektumorientált osztály jó választás volt az esetlegesen újrafelhasználható **AzureSearchClient. js** -modulhoz, de a főprogramhoz nem szükséges, amelyet az **index. js**nevű fájlba kell helyezni. 
 
 Hozza létre az **index. js fájlt** , és kezdje a következőket:
 
@@ -399,13 +399,13 @@ const indexDefinition = require('./hotels_quickstart_index.json');
 const AzureSearchClient = require('./AzureSearchClient.js');
 ```
 
-A [ **NConf** csomag](https://github.com/indexzero/nconf) lehetővé teszi, hogy különböző formátumokban (például környezeti változókban vagy a parancssorban) megadhatja a konfigurációs adatmennyiséget. A **NConf** alapszintű módon fogjuk használni a **azure_search_config. JSON** fájl olvasásához és a fájl tartalmának a szótárként való visszaküldéséhez. A **NConf** `get(key)` funkciójának használatával gyorsan megtekintheti, hogy a konfigurációs adatok megfelelően vannak-e testreszabva. Végül visszaállítjuk a konfigurációt:
+A [ **NConf** csomag](https://github.com/indexzero/nconf) lehetővé teszi, hogy különböző formátumokban (például környezeti változókban vagy a parancssorban) megadhatja a konfigurációs adatmennyiséget. Ez a példa alapszintű **NConf** használ a **azure_search_config. JSON** fájl olvasásához és a fájl tartalmának szótárként való visszaküldéséhez. A **NConf** `get(key)` funkciójának használatával gyorsan megtekintheti, hogy a konfigurációs adatok megfelelően vannak-e testreszabva. Végül a függvény a konfigurációt adja vissza:
 
 ```javascript
 function getAzureConfiguration() {
     const config = nconf.file({ file: 'azure_search_config.json' });
     if (config.get('serviceName') === '[SEARCH_SERVICE_NAME' ) {
-    throw new Error("You have not set the values in your azure_search_config.json file. Change them to match your search service's values.");
+        throw new Error("You have not set the values in your azure_search_config.json file. Change them to match your search service's values.");
     }
     return config;
 }
@@ -414,11 +414,9 @@ function getAzureConfiguration() {
 A `sleep` függvény létrehoz egy `Promise` , a megadott idő után feloldható megoldást. A függvény használata lehetővé teszi, hogy az alkalmazás szüneteltethető legyen, miközben várakozik az aszinkron indexelési műveletek befejezésére, és elérhetővé válik. Ilyen késleltetés hozzáadására általában csak a demók, tesztek és példák esetében van szükség.
 
 ```javascript
-function sleep(ms)
-{
+function sleep(ms) {
     return(
-        new Promise(function(resolve, reject)
-        {
+        new Promise(function(resolve, reject) {
             setTimeout(function() { resolve(); }, ms);
         })
     );
@@ -431,8 +429,6 @@ Végül írja be és hívja meg a fő `run` aszinkron függvényt. Ez a függvé
 * Hozzon létre `AzureSearchClient` egy új példányt, amely átadja a konfiguráció értékeit
 * Ellenőrizze, hogy az index létezik-e, és ha igen, törölje
 * Index létrehozása a `indexDefinition` betöltött **hotels_quickstart_index. JSON** használatával
-* Adja hozzá a **Hotels. JSON** fájlból betöltött szállodákhoz tartozó dokumentumokat.
-* A Azure Search index lekérdezése az `doQueriesAsync()` Ön által írt módszer használatával
 
 ```javascript
 const run = async () => {
@@ -444,7 +440,6 @@ const run = async () => {
         await exists ? client.deleteIndexAsync() : Promise.resolve();
         // Deleting index can take a few seconds
         await sleep(2000);
-        const indexDefinition = require('./hotels_quickstart_index.json');
         await client.createIndexAsync(indexDefinition);
     } catch (x) {
         console.log(x);
@@ -468,13 +463,13 @@ A következő parancsokhoz használjon egy terminál-ablakot.
 1. Telepítse a minta `npm install`csomagjait a következővel:.  Ez a parancs letölti a csomagokat, amelyeken a kód függ.
 1. Futtassa a programot a `node index.js`alkalmazással.
 
-A program által végrehajtott műveleteket ismertető üzenetnek kell megjelennie. Ha szeretné megtekinteni a kérések részletesebb ismertetését, a **AzureSearchClient. js** [ `AzureSearchClient.request()` metódusban](https://github.com/Azure-Samples/azure-search-javascript-samples/quickstart/blob/master/AzureSearchClient.js#LL20-LL26) megadhatja a metódus elején található sorokat. 
+A program által végrehajtott műveleteket ismertető üzenetnek kell megjelennie. Ha szeretné megtekinteni a kérések részletesebb ismertetését, a **AzureSearchClient. js**fájlban megadhatja a [sorok `AzureSearchClient.request()` a metódus https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/AzureSearchClient.js#L21-L27) kezdetén] megjegyzést. 
 
 Nyissa meg a keresési szolgáltatás áttekintését a Azure Portal. Válassza ki az indexek lapot. Az alábbihoz hasonló kimenet jelenik meg:
 
 ![Képernyőkép a Azure Portalről, Search Service áttekintése, indexek lap](media/search-get-started-nodejs/create-index-no-data.png)
 
-A következő lépésben felvesszük az adatindexbe. 
+A következő lépésben hozzá kell adnia az adatindexhez. 
 
 ## <a name="2---load-documents"></a>2 – dokumentumok betöltése 
 
@@ -496,7 +491,7 @@ async postDataAsync(hotelsData) {
 }
 ```
 
- A dokumentumok bemenetei lehetnek egy adatbázisban lévő sorok, a blob Storage-ban található Blobok, vagy a példában szereplő JSON-dokumentumok a lemezen. Töltse le a [Hotels. JSON](https://github.com/Azure-Samples/azure-search-javascript-samples/quickstart/blob/master/hotels.json) fájlt, vagy hozzon létre saját **Hotels. JSON** fájlt a következő tartalommal:
+ A dokumentumok bemenetei lehetnek egy adatbázisban lévő sorok, a blob Storage-ban található Blobok, vagy a példában szereplő JSON-dokumentumok a lemezen. Töltse le a [Hotels. JSON](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels.json) fájlt, vagy hozzon létre saját **Hotels. JSON** fájlt a következő tartalommal:
 
 ```json
 {
@@ -605,11 +600,11 @@ const run = async () => {
 }
 ```
 
-Futtassa újra `node index.js`a programot a alkalmazással. Az 1. lépésben látott, némileg eltérő üzeneteket kell látnia. Ebben az esetben az index létezik, és a törölt törléssel kapcsolatos üzenetnek kell megjelennie, mielőtt az alkalmazás létrehozza az új indexet, és beküldi az adatait. 
+Futtassa újra `node index.js`a programot a alkalmazással. Az 1. lépésben látott, némileg eltérő üzeneteket kell látnia. Ebben az esetben az index létezik, és az alkalmazás törlésével kapcsolatos üzenetnek kell megjelennie, mielőtt az alkalmazás létrehozza az új indexet, és az adatait közzéteszi. 
 
 ## <a name="3---search-an-index"></a>3 – Keresés az indexekben
 
-Térjen vissza az **indexek** lapra a Azure Portal keresési szolgáltatásának **áttekintésében** . Az index most négy dokumentumot tartalmaz, és bizonyos mennyiségű tárterületet használ (ez eltarthat néhány percig, hogy a felhasználói felület megfelelően tükrözze az index mögöttes állapotát). Kattintson az index nevére a **keresési tallózóhoz**. Ez a lap lehetővé teszi az adatlekérdezésekkel való kísérletezést. Próbáljon meg lekérdezési karakterláncot `*&$count=true` keresni, és az összes dokumentumot és az eredmények számát vissza kell kérnie. Próbálja ki a lekérdezési `historic&highlight=Description&$filter=Rating gt 4` karakterláncot, és készítsen vissza egyetlen dokumentumot, amelynek a szövege a "Historic" `<em></em>` címkével van becsomagolva. További információ a [lekérdezések összeállításáról Azure Searchban](https://docs.microsoft.com/azure/search/search-query-overview). 
+Térjen vissza az **indexek** lapra a Azure Portal keresési szolgáltatásának **áttekintésében** . Az index most négy dokumentumot tartalmaz, és bizonyos mennyiségű tárterületet használ (ez eltarthat néhány percig, amíg a felhasználói felület megfelelően tükrözi az index mögöttes állapotát). Kattintson az index nevére a **keresési tallózóhoz**. Ez a lap lehetővé teszi az adatlekérdezésekkel való kísérletezést. Próbáljon meg lekérdezési karakterláncot `*&$count=true` keresni, és az összes dokumentumot és az eredmények számát vissza kell kérnie. Próbálja ki a lekérdezési `historic&highlight=Description&$filter=Rating gt 4` karakterláncot, és készítsen vissza egyetlen dokumentumot, amelynek a szövege a "Historic" `<em></em>` címkével van becsomagolva. További információ a [lekérdezések összeállításáról Azure Searchban](https://docs.microsoft.com/azure/search/search-query-overview). 
 
 A lekérdezéseket a kódban az **index. js** megnyitásával, majd a kód felülre történő hozzáadásával reprodukálhatja.
 
@@ -620,7 +615,7 @@ const queries = [
 ];
 ```
 
-Ugyanebben az **index. js** fájlban írja be az `doQueries()` alább látható függvényt. Ez a függvény egy `AzureSearchClient` objektumot vesz igénybe `AzureSearchClient.queryAsync` , és a metódust alkalmazza a `queries` tömbben lévő összes értékre. A `Promise.all()` függvény használatával egyetlen `Promise` műveletet ad vissza, amely csak akkor oldódik fel, ha az összes lekérdezés megoldódott. A lekérdezési `JSON.stringify(body, null, 4)` eredmény olvashatóbbként való formázásának meghívása.
+Ugyanebben az **index. js** fájlban írja be az `doQueriesAsync()` alább látható függvényt. Ez a függvény egy `AzureSearchClient` objektumot vesz igénybe `AzureSearchClient.queryAsync` , és a metódust alkalmazza a `queries` tömbben lévő összes értékre. A `Promise.all()` függvény használatával egyetlen `Promise` műveletet ad vissza, amely csak akkor oldódik fel, ha az összes lekérdezés megoldódott. A lekérdezési `JSON.stringify(body, null, 4)` eredmény olvashatóbbként való formázásának meghívása.
 
 ```javascript
 async function doQueriesAsync(client) {
@@ -660,7 +655,7 @@ const run = async () => {
 }
 ```
 
-A megvalósításhoz `AzureSearchClient.queryAsync(query)`szerkessze a **AzureSearchClient. js**fájlt. A kereséshez eltérő végpont szükséges, ezért a függvényt `getSearchUrl(searchTerm)` `getPostDataUrl()` a `getIndexUrl()` már megírt módszerek mellett adja hozzá.
+A megvalósításhoz `AzureSearchClient.queryAsync(query)`szerkessze a **AzureSearchClient. js**fájlt. A kereséshez eltérő végpontra van szükség, és a keresési kifejezések URL-argumentumok lesznek `getSearchUrl(searchTerm)` , így `getIndexUrl()` a `getPostDataUrl()` függvényt a már megírt metódusokkal együtt adja hozzá.
 
 ```javascript
 getSearchUrl(searchTerm) { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs?api-version=${this.apiVersion}&search=${searchTerm}&searchMode=all`; }
@@ -678,7 +673,7 @@ async queryAsync(searchTerm) {
 }
 ```
 
-A keresés a "GET" művelettel és a törzs nélkül történik, mivel a keresési kifejezés az URL részét képezi. Figyelje meg, hogy a használt `this.adminKey` `queryAsync(searchTerm)` többi függvénytől eltérően a `this.queryKey`használ. A lekérdezési kulcsok, ahogy a név is jelenti, csak az index lekérdezésére használható, és nem használható az index bármilyen módon történő módosítására. A lekérdezési kulcsok ezért biztonságosabbá tétele az ügyfélalkalmazások számára történő terjesztéshez.
+A keresés a "GET" művelettel és a törzs nélkül történik, mivel a keresési kifejezés az URL részét képezi. Figyelje meg `queryAsync(searchTerm)` , `this.queryKey`hogy a a-t használja, ellentétben a felügyeleti kulcsot használó többi függvénnyel. A lekérdezési kulcsok, ahogy a név is jelenti, csak az index lekérdezésére használható, és nem használható az index bármilyen módon történő módosítására. A lekérdezési kulcsok ezért biztonságosabbá tétele az ügyfélalkalmazások számára történő terjesztéshez.
 
 Futtassa a programot a `node index.js`alkalmazással. Az előző lépéseken kívül a rendszer elküldi a lekérdezéseket és a konzolra írt eredményeket.
 

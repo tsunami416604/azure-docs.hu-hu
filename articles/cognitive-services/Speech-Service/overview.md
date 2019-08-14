@@ -1,7 +1,7 @@
 ---
-title: Mi az a Speech Service?
+title: Mi az a Speech Services?
 titleSuffix: Azure Cognitive Services
-description: A beszédfelismerési szolgáltatás a beszéd-szöveg, a szöveg-beszéd és a beszéd fordításának egységesítése egyetlen Azure-előfizetésbe. Egyszerűen felveheti az alkalmazásokat, eszközöket és eszközöket a Speech SDK, a Speech Devices SDK vagy a REST API-k használatával. Beszédfelismerési funkciókat adhat hozzá egy meglévő csevegési robothoz, szöveg-beszéd átalakítást alakíthat át egy fordítási alkalmazásban, vagy nagy mennyiségű Call Center-adat átírásával.
+description: A Speech Services a beszéd-szöveg, a szöveg és a beszéd egyesítése és a beszéd fordítása egyetlen Azure-előfizetésbe. Egyszerűen felveheti az alkalmazásokat, eszközöket és eszközöket a Speech SDK, a Speech Devices SDK vagy a REST API-k használatával. Beszédfelismerési funkciókat adhat hozzá egy meglévő csevegési robothoz, szöveg-beszéd átalakítást alakíthat át egy fordítási alkalmazásban, vagy nagy mennyiségű Call Center-adat átírásával.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1d722d7e2886008aa5aa3acff8095fcf35ac38d8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4ea6f04dbfd18a6e561a255988ba0465b9e017be
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554185"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967609"
 ---
 # <a name="what-are-the-speech-services"></a>Mi az a Speech Services?
 
-Az Azure Speech Services a beszéd-szöveg, a szöveg és a beszéd egyesítése, valamint a beszédfelismerés egyetlen Azure-előfizetésbe való fordítása. A Speech [SDK](speech-sdk-reference.md), a [SPEECH Devices SDK](https://aka.ms/sdsdk-quickstart)vagy a [REST API](rest-apis.md)-k segítségével egyszerűen elvégezheti az alkalmazások, eszközök és eszközök használatát.
+A Speech Services a beszéd-szöveg, a szöveg és a beszéd egyesítése, valamint a beszédfelismerés egyetlen Azure-előfizetésbe való fordítása. A Speech [SDK](speech-sdk-reference.md), a [SPEECH Devices SDK](https://aka.ms/sdsdk-quickstart)vagy a [REST API](rest-apis.md)-k segítségével egyszerűen elvégezheti az alkalmazások, eszközök és eszközök használatát.
 
 > [!IMPORTANT]
 > A Speech Services Bing Speech API, Translator Speech és Custom Speech váltotta fel. Tekintse át az áttelepítési utasítások *>* áttelepítési útmutatókat.
@@ -41,14 +41,14 @@ Ezek a funkciók alkotják az Azure Speech Services szolgáltatást. Az ebben a 
 
 Ismerje meg az Azure Speech Services újdonságait.
 
+* Augusztus 2019
+  * **Új oktatóanyag**: [Hang engedélyezése a robotnak a Speech SDK-valC#](tutorial-voice-enable-your-bot-speech-sdk.md)
 * Június 2019
-    * Megjelent a Speech SDK 1.6.0. A frissítések, fejlesztések és ismert problémák teljes listáját a [kibocsátási megjegyzések](releasenotes.md)című részben tekintheti meg.
+  * Megjelent a Speech SDK 1.6.0. A frissítések, fejlesztések és ismert problémák teljes listáját a [kibocsátási megjegyzések](releasenotes.md)című részben tekintheti meg.
 * Május 2019 – a dokumentáció már elérhető a [beszélgetés](conversation-transcription-service.md)átírásához, a [Call Center](call-center-transcription.md)átírásához és a hangvezérelt [virtuális asszisztensekhez](voice-first-virtual-assistants.md).
 * 2019. május
-    * Megjelent Speech SDK 1.5.1. A frissítések, fejlesztések és ismert problémák teljes listáját a [kibocsátási megjegyzések](releasenotes.md)című részben tekintheti meg.
-    * Megjelent Speech SDK 1.5.0. A frissítések, fejlesztések és ismert problémák teljes listáját a [kibocsátási megjegyzések](releasenotes.md)című részben tekintheti meg.
-* Április 2019 – megjelent a Speech SDK 1.4.0 C++, amely támogatja a (z), C#és a Java-t a Windows és Linux rendszeren. Emellett az SDK mostantól támogatja az C++ MP3 és az Opus/OGG hangformátumot a és C# a Linux rendszeren. A frissítések, fejlesztések és ismert problémák teljes listáját a [kibocsátási megjegyzések](releasenotes.md)című részben tekintheti meg.
-* Március 2019 – egy új, szöveg-beszéd (TTS) végpont, amely egy adott régióban elérhető hangok teljes listáját adja vissza. Emellett az új régiók már támogatottak a TTS-ben. További információ: [text-to-SPEECH API-referenciák (REST)](rest-text-to-speech.md).
+  * Megjelent Speech SDK 1.5.1. A frissítések, fejlesztések és ismert problémák teljes listáját a [kibocsátási megjegyzések](releasenotes.md)című részben tekintheti meg.
+  * Megjelent Speech SDK 1.5.0. A frissítések, fejlesztések és ismert problémák teljes listáját a [kibocsátási megjegyzések](releasenotes.md)című részben tekintheti meg.
 
 ## <a name="try-speech-services"></a>A Speech Services kipróbálása
 
@@ -67,6 +67,7 @@ A legnépszerűbb programozási nyelveken gyors útmutatókat ajánlunk, amelyek
 A Speech Services használatának lehetősége után próbálja ki az oktatóanyagot, amely bemutatja, hogyan ismerheti fel a beszédfelismerési szándékokat a Speech SDK és a LUIS használatával.
 
 * [Oktatóanyag: Beszédfelismerési szándék felismerése a Speech SDK és a LUIS használatávalC#](how-to-recognize-intents-from-speech-csharp.md)
+* [Oktatóanyag: Hang engedélyezése a robotnak a Speech SDK-valC#](tutorial-voice-enable-your-bot-speech-sdk.md)
 * [Oktatóanyag: Hozzon létre egy lombik-alkalmazást a szöveg fordításához, a hangulat elemzéséhez és a lefordított szöveg kiépítéséhez beszédre, REST-re](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 
 ## <a name="get-sample-code"></a>Mintakód letöltése
@@ -76,6 +77,7 @@ A mintakód minden Azure Speech Services esetében elérhető a GitHubon. Ezek a
 * [Beszéd – szöveg, szöveg-beszéd és beszéd fordítási minták (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 * [Batch-átírási minták (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 * [Szöveg – beszéd minták (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+* [Hang – első virtuális asszisztensi minták (SDK)](https://aka.ms/csspeech/samples)
 
 ## <a name="customize-your-speech-experience"></a>A beszédfelismerési élmény testreszabása
 

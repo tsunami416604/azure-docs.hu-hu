@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86c9368785bb28f27df599c8b9cbe09c1fa5dee2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 705e3818aef0338d9b34da7b0320b99594573fca
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880780"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985983"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>A biztonsági adatok (előzetes verzió) beállítása a bejelentkezési oldal parancssorában
 
@@ -68,7 +68,7 @@ A következő lépésekkel állíthatja be a munkahelyi vagy iskolai fiókjához
 
 6. Az 5. lépésben a munkahelyi vagy iskolai fiók létrehozása után a megadott kód beolvasásával megjelentek a Microsoft Authenticator alkalmazás QR-kód olvasója, amely megjelent a mobileszközön.
 
-    A hitelesítő alkalmazásnak sikeresen hozzá kell adnia a munkahelyi vagy iskolai fiókját anélkül, hogy további adatokat kellene megadnia. Ha azonban a QR-kód olvasója nem tudja beolvasni a kódot, akkor a **nem tudja beolvasni a QR-kód hivatkozást** , és manuálisan adja meg a kódot és az URL-címet a Microsoft Authenticator alkalmazásban. A kódok manuális hozzáadásával kapcsolatos további információkért lásd: [fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md).
+    A hitelesítő alkalmazásnak sikeresen hozzá kell adnia a munkahelyi vagy iskolai fiókját anélkül, hogy további adatokat kellene megadnia. Ha azonban a QR-kód olvasója nem tudja beolvasni a kódot, akkor a **nem tudja beolvasni a QR** -rendszerképet, és manuálisan adja meg a kódot és az URL-címet a Microsoft Authenticator alkalmazásban. A kódok manuális hozzáadásával kapcsolatos további információkért lásd: [fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md).
 
 7. Kattintson a **Tovább gombra** a **QR-kód vizsgálata** lapon a számítógépen.
 

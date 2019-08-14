@@ -9,18 +9,18 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 08/01/2019
 ms.author: t-meroa
-ms.openlocfilehash: 4b2bdc1a2babadbe5cb7f12135de0eaef8557a97
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 64b3cab857a541d0bede88e7fdf21c00526b9a43
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950799"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965149"
 ---
 # <a name="quickstart-create-an-ios-app-that-launches-the-immersive-reader-swift"></a>Gyors útmutató: Hozzon létre egy iOS-alkalmazást, amely elindítja a részletes olvasót (Swift)
 
 A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
 
-Ebben a rövid útmutatóban egy iOS-alkalmazást hoz létre a semmiből, és integrálja a magával ragadó olvasót a saját olvasó SDK használatával. Ebben a rövid útmutatóban egy teljes körű működő [](https://github.com/microsoft/immersive-reader-sdk/iOS/samples/quickstart-swift)minta érhető el.
+Ebben a rövid útmutatóban egy iOS-alkalmazást hoz létre a semmiből, és integrálja a magával ragadó olvasót a saját olvasó SDK használatával. Ebben a rövid útmutatóban egy teljes körű működő [](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/samples/quickstart-swift)minta érhető el.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -43,7 +43,7 @@ Válassza az egynézetes **alkalmazás**lehetőséget.
 A részletes olvasói SDK a CocoaPods-on keresztül a legkönnyebben használható. Telepítés a Cocoapods-on keresztül:
 1. A [Cocoapods telepítése](http://guides.cocoapods.org/using/getting-started.html) – kövesse az első lépéseket ismertető útmutatót a Cocoapods telepítéséhez.
 2. Hozzon létre egy cocoapods `pod init` a Xcode projekt gyökérkönyvtárában való futtatásával.
-3.  A hozzáadásával `pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/iOS/immersive-reader-sdk'`adja hozzá a CocoaPod a cocoapods. A pofile a következőhöz hasonlóan kell kinéznie, és a cél neve a gyors üzembe helyezés:
+3.  A hozzáadásával `pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'`adja hozzá a CocoaPod a cocoapods. A pofile a következőhöz hasonlóan kell kinéznie, és a cél neve a gyors üzembe helyezés:
  ```ruby
   platform :ios, '9.0'
 
@@ -102,4 +102,4 @@ Ha a "magára olvasó" gombra kattint, a rendszer az alkalmazásban található 
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg a [lebilincselő olvasó iOS SDK](https://github.com/microsoft/immersive-reader-sdk/iOS) -t és a részletes [olvasó iOS SDK](./ios-reference.md) -referenciát
+* Ismerje meg a [lebilincselő olvasó iOS SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS) -t és a részletes [olvasó iOS SDK](./ios-reference.md) -referenciát

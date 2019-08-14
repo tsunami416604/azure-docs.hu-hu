@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 08/12/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: ca42532fe6ba954180ce06ed0e3561e42f1fb447
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9e3159a083d21e4a7a81df2fcf7a7d5db882b757
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424233"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976919"
 ---
 ::: zone target="docs"
 
@@ -87,7 +87,7 @@ Ha az eszközt Európa-ban adja vissza, hajtsa végre a következő lépéseket.
     
 3. Adja meg a fuvarlevél számát, és kattintson a **Futárrendelés** gombra a csomagfelvétel lefoglalásához.
 
-      ![Átvétel ütemezése](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
+      ![Csomagfelvétel ütemezése](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
 
 ### <a name="pick-up-in-asia-pacific-region"></a>Felvétel az ázsiai-csendes-óceáni régióban
 
@@ -109,12 +109,9 @@ Az Ausztráliában található Azure-adatközpontok további biztonsági értes�
 1. Adja meg a cég nevét és a címadatokat a küldeményre vonatkozó információként a küldő adatai alapján.
 2. E-mail-Quantium-megoldás a következő e-mail-sablon használatával.
 
-    - Ha a Japan post Chakubarai-fuvarlevél nem tartalmazott vagy hiányzik, jegyezze fel ezt az e-mailt. A Quantium-megoldások Japán a postán kérik a küldeményt, hogy vegye fel a figyelmét a felvételre.
-    - Ha több megrendelés is van, e-mailben gondoskodhat az egyéni felvételről.
-
     ```
     To: Customerservice.JP@quantiumsolutions.com
-    Subject: Pickup request for Azure Data Box Disk｜Job Name： 
+    Subject: Pickup request for Microsoft Azure Data Box Disk｜Job Name： 
     Body: 
     - Japan Post Yu-Pack tracking number (reference number)：
     - Requested pickup date：mmdd (Select a requested time slot from below).
@@ -123,6 +120,9 @@ Az Ausztráliában található Azure-adatközpontok további biztonsági értes�
         c. 15：00-17：00 
         d. 17：00-19：00 
     ```
+    - **Ha az osakaban**végez beszedést, akkor módosítsa a tárgyat az e-mail sablonban `Pickup request for Microsoft Azure OSA`a következőre:.
+    - Ha a Japan post Chakubarai-fuvarlevél nem tartalmazott vagy hiányzik, jegyezze fel ezt az e-mailt. A Quantium-megoldások Japán a postán kérik a küldeményt, hogy vegye fel a figyelmét a felvételre.
+    - Ha több megrendelés is van, e-mailben gondoskodhat az egyéni felvételről.
 
 3. A Quantium-megoldásoktól kapott e-mail-visszaigazolást, miután elkönyvelt egy felvételt. Az e-mail-visszaigazolás a Chakubarai-szállítmány megjegyzésével kapcsolatos információkat is tartalmaz.
 
@@ -183,7 +183,7 @@ A másolás végeztével a rendelés állapota **Befejezve** értéke vált.
 
 Ha a másolás hibákkal fejeződött be, tekintse meg a [feltöltési hibák elhárítása](data-box-disk-troubleshoot-upload.md)című témakört.
 
-Mielőtt törölné az eszközről az adatokat, ellenőrizze, hogy azok megtalálhatók-e a tárfiók(ok)ban. Az adatai a következőket vehetik fel:
+Ellenőrizze, hogy az adatok jelen vannak-e a tárfiók(ok)ban, mielőtt törölné azokat a forrásról. Az adatai a következőket vehetik fel:
 
 - Azure Storage-fiókja (ke) t. A Data Boxra másolt adatok a típusuktól függően a következő elérési utak egyikére lesznek feltöltve az Azure Storage-fiókban.
 

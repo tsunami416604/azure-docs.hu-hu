@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 4bc40c0d4d44ea4dd809f59965ec5d1107be8541
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f30b55eda4a02cfb3e961c0019128e4fe686cf53
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439767"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967670"
 ---
 # <a name="create-a-qna-maker-service"></a>A QnA Maker szolgáltatás létrehozása
 
@@ -24,11 +24,11 @@ Mielőtt bármilyen QnA Maker tudásbázisok hozhat létre, először be kell á
 
 ## <a name="create-a-new-service"></a>Új szolgáltatás létrehozása
 
-Ez az eljárás néhány Azure-erőforrások üzembe helyezése. Ezeket az erőforrásokat együtt kezelheti a Tudásbázis-tartalmat, és kérdés-válasz képességeket biztosít, mintha a végpont.
+Ez az eljárás üzembe helyez néhány Azure-erőforrást. Ezeket az erőforrásokat együtt kezelheti a Tudásbázis-tartalmat, és kérdés-válasz képességeket biztosít, mintha a végpont.
 
-1. Jelentkezzen be az Azure Portalon, és [hozzon létre egy QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) erőforrás.
+1. Jelentkezzen be a Azure Portalba, és [hozzon létre egy QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) -erőforrást.
 
-1. Válassza ki **létrehozás** a feltételek és kikötések elolvasása után.
+1. A feltételek és kikötések elolvasása után válassza a **Létrehozás** lehetőséget.
 
     ![Hozzon létre egy új QnA Maker szolgáltatást](../media/qnamaker-how-to-setup-service/create-new-resource-button.png)
 
@@ -38,9 +38,9 @@ Ez az eljárás néhány Azure-erőforrások üzembe helyezése. Ezeket az erőf
 
     * Töltse ki a **neve** a QnA Maker szolgáltatás azonosítására, egyedi névvel. Ez a név is azonosítja a QnA Maker végpontot, amelyhez a tudásbázisok lesz társítva.
     * Válassza ki a **előfizetés** a QnA Maker erőforrás meg lesz telepítve.
-    * Válassza ki a **tarifacsomag** a QnA Maker szolgáltatásokhoz (a portál és a felügyeleti API-k). Lásd: [Itt](https://aka.ms/qnamaker-pricing) az SKU-k, a díjszabással kapcsolatos információkért.
-    * Hozzon létre egy új **erőforráscsoport** (ajánlott), vagy használjon egy meglévőt, melyben szeretné üzembe helyezni a QnA Maker erőforrás. A QnA Maker létrehoz több Azure-erőforrások; létrehozott egy erőforráscsoportot, amely tárolja ezeket az erőforrásokat, megtalálhatja, kezelése és törlése ezeket az erőforrásokat az erőforráscsoport neve alapján.
-    * Válassza ki a **erőforráscsoport helye**.
+    * Válassza ki a QnA Maker felügyeleti szolgáltatások (portál és felügyeleti API-k) **díjszabási szintjét** . Lásd: [Itt](https://aka.ms/qnamaker-pricing) az SKU-k, a díjszabással kapcsolatos információkért.
+    * Hozzon létre egy új **erőforráscsoport** (ajánlott), vagy használjon egy meglévőt, melyben szeretné üzembe helyezni a QnA Maker erőforrás. QnA Maker több Azure-erőforrást hoz létre; Amikor létrehoz egy erőforráscsoportot az erőforrások tárolásához, egyszerűen megkeresheti, kezelheti és törölheti ezeket az erőforrásokat az erőforráscsoport neve alapján.
+    * Válassza ki az **erőforráscsoport helyét**.
     * Válassza ki a **tarifacsomag keresési** az Azure Search szolgáltatás. Ha látja az ingyenes szint lehetőség szürkén jelenik meg, az azt jelenti, már rendelkezik egy ingyenes Azure Search szolgáltatásréteg, az előfizetésében üzembe helyezve. Ebben az esetben szüksége lesz az alapszintű Azure Search szolgáltatásréteg kezdődhet. Részletek megtekintése az Azure search díjszabása [Itt](https://azure.microsoft.com/pricing/details/search/).
     * Válassza ki a **hely keresése** hol szeretné üzembe helyezni az Azure Search-adatok. Ahol a vásárlói adatokat tárolni kell a korlátozások tájékoztatja a helyet úgy dönt, az Azure search.
     * Nevezze el az App Service- **alkalmazásnév**.
@@ -52,17 +52,17 @@ Ez az eljárás néhány Azure-erőforrások üzembe helyezése. Ezeket az erőf
 
     * Válassza ki, hogy engedélyezni szeretné **Application Insights** vagy sem. Ha **Application Insights** van engedélyezve, QnA Maker telemetriát gyűjt a forgalom, a csevegési naplók és a hibákat.
     * Válassza ki a **alkalmazáselemzések helye** ahol Application Insights-erőforrás üzembe helyezve.
-    * Költség megtakarítás mértékek, is [megosztása](upgrade-qnamaker-service.md?#share-existing-services-with-qna-maker) némelyikét, de nem minden Azure-erőforrások készült a QnA Maker. 
+    * A költségmegtakarítási mértékek esetében megoszthat néhányat, de nem minden QnA Makerhoz létrehozott Azure-erőforrást. [](upgrade-qnamaker-service.md?#share-existing-services-with-qna-maker) 
 
-1. Miután az összes mező érvényesítése után kiválaszthatja **létrehozás** ezek a szolgáltatások központi telepítésének elindítása az előfizetésében. Néhány percet vesz igénybe.
+1. Az összes mező ellenőrzése után a **Létrehozás** gombra kattintva megkezdheti ezeknek a szolgáltatásoknak az előfizetésében való üzembe helyezését. Néhány percet vesz igénybe.
 
 1. Ha végzett az üzembe helyezés, látni fogja az alábbi, az előfizetésben létrehozott erőforrásokat.
 
     ![Létrehozott egy új QnA Maker szolgáltatás-erőforrást](../media/qnamaker-how-to-setup-service/resources-created.png)
 
-## <a name="region-of-management-service"></a>Felügyeleti szolgáltatás régió
+## <a name="region-of-management-service"></a>Felügyeleti szolgáltatás régiója
 
-A QnA Maker, csak akkor használja, a portál és a kezdeti adatok feldolgozásához, a felügyeleti szolgáltatás csak az USA nyugati Régiójában érhető el. Nincs a vásárlói adatokat az USA nyugati RÉGIÓJA szolgáltatás tárolódik.
+A QnA Maker felügyeleti szolgáltatása, amelyet csak a portál & a kezdeti adatfeldolgozáshoz használ, csak az USA nyugati régiójában érhető el. Ebben a Nyugat-amerikai szolgáltatásban nem tárolunk ügyféladatokat.
 
 ## <a name="next-steps"></a>További lépések
 
