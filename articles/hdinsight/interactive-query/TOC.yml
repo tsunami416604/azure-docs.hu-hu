@@ -191,6 +191,12 @@
     - name: Hibaelhárítás
       href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
       items:
+        - name: Az Apache Tez alkalmazás lefagy
+          href: ./interactive-query-troubleshoot-tez-hangs.md
+        - name: Apache Hive LLAP-lekérdezések teljesítménye
+          href: ./interactive-query-troubleshoot-query-performance.md
+        - name: Lassú csökkentő
+          href: ./interactive-query-troubleshoot-slow-reducer.md
         - name: Az Apache Hive-nézet túllépi az időkorlátot
           href: ./interactive-query-troubleshoot-view-time-out.md
         - name: Engedéllyel kapcsolatos hiba a tábla létrehozásakor

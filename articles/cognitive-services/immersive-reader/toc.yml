@@ -14,9 +14,11 @@
 - name: Oktatóanyagok
   items:
     - name: A Modern olvasó indítása (Node.js)
-      href: tutorial.md
+      href: tutorial-nodejs.md
+    - name: A Modern olvasó indítása (Python)
+      href: tutorial-python.md
     - name: Kép küldése a Modern olvasónak (Swift)
-      href: ios-picture-immersive-reader-tutorial.md
+      href: tutorial-ios-picture-immersive-reader.md
 - name: Útmutató
   items:
     - name: Hitelesítés Azure Active Directory-fiókkal

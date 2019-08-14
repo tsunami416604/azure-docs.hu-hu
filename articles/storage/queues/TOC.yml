@@ -38,12 +38,12 @@
         - name: Engedélyezés
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
           items:
-            - name: Hitelesítés az Azure AD-vel
+            - name: Hitelesítés és engedélyezés az Azure AD-vel
               href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Engedélyezés megosztott kulccsal
               href: /rest/api/storageservices/authorize-with-shared-key
             - name: Engedélyezés megosztott SAS-sel
-              href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+              href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Speciális fenyegetésvédelem
           href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Gyakori Azure-beli biztonsági attribútumok
@@ -118,11 +118,11 @@
                   href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: Azure CLI
                   href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Hitelesítés az Azure AD-vel
+            - name: Hitelesítés és engedélyezés az Azure AD-vel
               items:
-                - name: Hitelesítés felügyelt identitással
+                - name: Engedélyezés felügyelt identitással
                   href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: Hitelesítés egy alkalmazásból
+                - name: Engedélyezés egy alkalmazásból
                   href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Engedélyezés megosztott kulccsal
               items:

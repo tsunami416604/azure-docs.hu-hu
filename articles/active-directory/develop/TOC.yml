@@ -295,6 +295,8 @@
               href: v2-oauth2-device-code.md
             - name: Oauth 2.0-erőforrástulajdonos jelszavas hitelesítési adatainak megadása
               href: v2-oauth-ropc.md
+            - name: OAuth 2.0 SAML tulajdonosi tényfolyamat
+              href: v2-saml-bearer-assertion.md
             - name: Aláírókulcs-váltás
               href: active-directory-signing-key-rollover.md
             - name: Azonosító jogkivonatok

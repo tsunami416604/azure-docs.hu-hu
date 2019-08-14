@@ -58,6 +58,12 @@
   items:
     - name: ESP-fürtök létrehozása és szinkronizálás a helyszíni rendszerrel
       href: apache-domain-joined-create-configure-enterprise-security-cluster.md
+    - name: Hibaelhárítás
+      items:
+        - name: Hitelesítési problémák
+          href: ./domain-joined-authentication-issues.md
+        - name: Nem sikerült bejelentkezni a Zeppelinbe
+          href: ./domain-joined-zeppelin-signin.md
 - name: Referencia
   items:
     - name: Kódminták

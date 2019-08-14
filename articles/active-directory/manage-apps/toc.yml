@@ -284,6 +284,8 @@
                   href: application-proxy-configure-single-sign-on-on-premises-apps.md
             - name: Közzétételi útmutatók
               items:
+                - name: Integrálás a Power BI-jal
+                  href: application-proxy-integrate-with-power-bi.md
                 - name: Integrálás a Cloud App Security alkalmazással
                   href: application-proxy-integrate-with-microsoft-cloud-application-security.md
                 - name: Integrálás a Távoli asztallal

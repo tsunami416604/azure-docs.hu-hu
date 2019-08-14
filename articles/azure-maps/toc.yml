@@ -91,23 +91,27 @@
               href: choose-map-style.md
             - name: Vezérlőelemek hozzáadása a térképhez
               href: map-add-controls.md
+            - name: Adatforrás létrehozása
+              href: create-data-source-web-sdk.md
             - name: Szimbólumréteg hozzáadása
               href: map-add-pin.md
-            - name: Előugró ablak hozzáadása
-              href: map-add-popup.md
             - name: Buborékréteg hozzáadása
               href: map-add-bubble-layer.md
-            - name: Alakzatok hozzáadása
+            - name: Vonalréteg hozzáadása
+              href: map-add-line-layer.md
+            - name: Sokszögréteg hozzáadása
               href: map-add-shape.md
             - name: Hőtérképréteg hozzáadása
               href: map-add-heat-map-layer.md
+            - name: Előugró ablak hozzáadása
+              href: map-add-popup.md
             - name: Fürt pontadatai
               href: clustering-point-data-web-sdk.md
             - name: Adatvezérelt stíluskifejezések használata
               href: data-driven-style-expressions-web-sdk.md
             - name: Rendszerképsablonok használata
               href: how-to-use-image-templates-web-sdk.md
-            - name: Kép átfedése
+            - name: Rendszerképréteg hozzáadása
               href: map-add-image-layer.md
             - name: Csemperétegek hozzáadása
               href: map-add-tile-layer.md
@@ -139,6 +143,8 @@
           href: how-to-add-symbol-to-android-map.md
         - name: Alakzatok hozzáadása
           href: how-to-add-shapes-to-android-map.md
+        - name: Funkcióinformációk megjelenítése
+          href: display-feature-information-android.md
         - name: Mozaikréteg hozzáadása
           href: how-to-add-tile-layer-android-map.md
 - name: Referencia
