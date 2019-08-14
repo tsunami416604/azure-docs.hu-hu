@@ -83,7 +83,7 @@
             - name: Magánfelhő törlése
               href: delete-private-cloud.md
         - name: CloudSimple-tevékenység monitorozása
-          href: 'https://docs.azure.cloudsimple.com/activity/'
+          href: monitor-activity.md
         - name: Magánfelhő-hálózat beállítása
           items:
             - name: Virtuális helyi hálózatok és alhálózatok létrehozása és kezelése
