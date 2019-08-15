@@ -5,34 +5,34 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/11/2019
-ms.author: adgera
+ms.date: 08/12/2019
+ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: ac6b008597b6d6e557a0cc412c00c2202231bc3d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f9b1b32775393196a77bef3aa2257f6fb66afdcb
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179759"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012154"
 ---
 > [!NOTE]
-> Több részből álló kérelmeket általában a művelethez három adatra van szükség:
-> * A **Content-Type** fejléc:
+> A többrészes kérelmek általában három darabot igényelnek:
+> * Egy **Content-Type** fejléc:
 >   * `application/json; charset=utf-8`
 >   * `multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`
-> * A **tartalomtípus-szabályozó**:
+> * Egy **Content-hajlam**:
 >   * `form-data; name="metadata"`
-> * A feltöltendő fájl tartalma
+> * A feltölteni kívánt fájl tartalma
 >
-> **A Content-Type** és **tartalomtípus-szabályozó** használat forgatókönyvének függően változhat.
+> A **tartalom típusa** és a tartalomra való **hajlam** a használati forgatókönyvtől függően változhat.
 
-Több részből álló kéréseket programozott módon lehet tenni (keresztül C#), egy REST-ügyféllel, vagy az eszköz, például [Postman](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#multi). Előfordulhat, hogy a REST-ügyféleszköz különböző szintű összetett többrészes kérelmek támogatása. Konfigurációs beállítások is eltérőek lehetnek némileg az eszköz az eszköz. Ellenőrizze, hogy melyik eszköz számára az igényeinek a leginkább megfelelő-e.
+A többrészes kérelmek programozott módon (átmenő C#), Rest-ügyféllel vagy más eszközzel (például [Poster](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#multi)) hozhatók létre. A REST-ügyfél eszközei eltérő szintű támogatást nyújthatnak az összetett többrészes kérelmekhez. A konfigurációs beállítások az eszköztől az eszköztől némileg eltérőek lehetnek. Ellenőrizze, hogy melyik eszköz megfelel az igényeinek.
 
 > [!IMPORTANT]
-> Több részből álló érkező kérelmeket az Azure digitális Twins felügyeleti API-k általában van két részből áll:
-> * BLOB metaadatai (például egy kapcsolódó MIME-típus), amely nem deklarál **Content-Type** és/vagy **tartalom-törlése**
-> * BLOB tartalmát, többek között a strukturálatlan tartalmát egy feltölteni kívánt fájlt
+> Az Azure digitális Twins felügyeleti API-khoz küldött többrészes kérelmek általában két részből állnak:
+> * A blob metaadatainak (például a hozzá tartozó MIME-típus), amelyet a **tartalom típusa** és/vagy a **tartalom-elrendezés** deklarál
+> * A feltölteni kívánt fájl strukturálatlan tartalmát tartalmazó blob tartalma
 >
-> A két részből egyike sem nem szükséges **javítására** kérelmeket. Mindkettő szükséges **POST** vagy -létrehozási műveletek.
+> A **javítási** kérelmek esetében a két rész egyikének sem kell lennie. Mindkettő szükséges a **post** vagy a Create műveletekhez.
 
-A [foglaltsága rövid forráskód](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/api/update.cs) tartalmazza a teljes C# példa bemutatja, hogyan lehet, hogy az Azure digitális Twins felügyeleti API-k többrészes kérelmeket.
+A [Foglaltság](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/api/update.cs) gyors üzembe helyezési forráskódja olyan teljes C# példákat tartalmaz, amelyek bemutatják, hogyan lehet többrészes kérelmeket készíteni az Azure digitális Twins felügyeleti API-

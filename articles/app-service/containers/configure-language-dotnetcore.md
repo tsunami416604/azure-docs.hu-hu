@@ -1,84 +1,101 @@
 ---
-title: Az ASP.NET Core-alkalmazások – az Azure App Service konfigurálása |} A Microsoft Docs
-description: Ismerje meg, hogyan működik az Azure App Service-ben az ASP.NET Core-alkalmazások konfigurálása
+title: ASP.NET Core-alkalmazások konfigurálása – Azure App Service | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhatja ASP.NET Core alkalmazások működését Azure App Service
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: jpconnock
+manager: gwallace
 editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 08/13/2019
 ms.author: cephalin
-ms.openlocfilehash: f2781e3cc2433f73ba7ff33e5c452e29de746adf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b05120148d3b82829c465effbcdc948da950aaf0
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956199"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990261"
 ---
-# <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Linux konfigurálása az Azure App Service az ASP.NET Core-alkalmazás
+# <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Linux ASP.NET Core-alkalmazás konfigurálása Azure App Servicehoz
 
-ASP.NET Core-alkalmazások lefordított bináris fájljai, telepíteni kell. A Visual Studio közzétételi eszköz követően felépíti a megoldást, és majd üzembe helyezi a lefordított bináris fájlokat közvetlenül, mivel az App Service üzembe helyezési motorban először üzembe helyezi a kódtárat, és ezután lefordítja a bináris fájlokat.
+ASP.NET Core alkalmazásokat lefordított bináris fájlként kell telepíteni. A Visual Studio közzétételi eszköze létrehozza a megoldást, majd közvetlenül telepíti a lefordított bináris fájlokat, míg a App Service üzembe helyezési motor először a kódrészletet telepíti, majd lefordítja a bináris fájlokat.
 
-Ez az útmutató alapfogalmakat és útmutatást nyújt az ASP.NET Core App Service-ben egy beépített Linux-tárolót használó fejlesztők számára. Ha korábban nem használta az Azure App Service, kövesse a [ASP.NET Core rövid](quickstart-dotnetcore.md) és [ASP.NET Core és SQL Database-oktatóanyag](tutorial-dotnetcore-sqldb-app.md) első.
+Ez az útmutató a App Service beépített Linux-tárolóját használó ASP.NET Core fejlesztők számára biztosít főbb fogalmakat és útmutatást. Ha még soha nem használta a Azure App Servicet, először kövesse a [ASP.net Core](quickstart-dotnetcore.md) rövid útmutató és a [ASP.net Core SQL Database oktatóanyagot](tutorial-dotnetcore-sqldb-app.md) .
 
-## <a name="show-net-core-version"></a>.NET Core-verzió megjelenítése
+## <a name="show-net-core-version"></a>.NET Core verzió megjelenítése
 
-A jelenlegi verzió a .NET Core megjelenítéséhez futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com):
+Az aktuális .NET Core-verzió megjelenítéséhez futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-Minden támogatott .NET Core-verziók megjelenítéséhez futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com):
+Az összes támogatott .NET Core-verzió megjelenítéséhez futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp list-runtimes --linux | grep DOTNETCORE
 ```
 
-## <a name="set-net-core-version"></a>.NET Core-verzió beállítása
+## <a name="set-net-core-version"></a>A .NET Core verziójának beállítása
 
-Futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com) , 2.1-es verzióját szeretné a .NET Core-verzió:
+Futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com) a .net Core verzió 2,1-re való beállításához:
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|2.1"
 ```
 
-## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
+## <a name="access-environment-variables"></a>Hozzáférési környezeti változók
 
-Az App Service-ben is [állítsa be az alkalmazásbeállításokat](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) kívül a kódját. Ezután elérheti azokat az ASP.NET szokásos mintájának használatával:
+App Service az [Alkalmazásbeállítások](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) az alkalmazás kódján kívül is megadhatók. Ezt követően bármely osztályban elérheti őket a standard ASP.NET Core függőségi befecskendezési minta használatával:
 
 ```csharp
 include Microsoft.Extensions.Configuration;
-// retrieve App Service app setting
-System.Configuration.ConfigurationManager.AppSettings["MySetting"]
-// retrieve App Service connection string
-Configuration.GetConnectionString("MyDbConnection")
+
+namespace SomeNamespace 
+{
+    public class SomeClass
+    {
+        private IConfiguration _configuration;
+    
+        public SomeClass(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+    
+        public SomeMethod()
+        {
+            // retrieve App Service app setting
+            var myAppSetting = _configuration["MySetting"];
+            // retrieve App Service connection string
+            var myConnString = _configuration.GetConnectionString("MyDbConnection");
+        }
+    }
+}
 ```
 
-Ha ilyen nevű App Service-ben és a egy alkalmazásbeállításhoz konfigurálja *Web.config*, az App Service-ben elsőbbséget élvez a Web.config érték. A Web.config érték lehetővé teszi az alkalmazás helyi hibakeresése, de az App Service-ben érték lehetővé teszi, hogy a Futtatás éles beállításokkal termékben az alkalmazást. Kapcsolati karakterláncok ugyanúgy működik. Így megtarthatja a titkos alkalmazáskulcsok kívül a kódtárat, és a kód módosítása nélkül férhetnek hozzá a megfelelő értékeket.
+Ha például a App Service és a *appSettings. JSON*fájlban azonos nevű Alkalmazásbeállítás van konfigurálva, akkor a app Service érték elsőbbséget élvez a *appSettings. JSON* értékkel szemben. A helyi *appSettings. JSON* érték lehetővé teszi az alkalmazás helyi hibakeresését, de a app Service érték lehetővé teszi az alkalmazás futtatását a termékben éles beállításokkal. A kapcsolatok karakterláncai ugyanúgy működnek. Így megtarthatja az alkalmazási titkokat a Code repositoryn kívül, és a kód módosítása nélkül is elérheti a megfelelő értékeket.
 
-## <a name="get-detailed-exceptions-page"></a>Részletes kivételek lapját beolvasása
+## <a name="get-detailed-exceptions-page"></a>Részletes kivételek oldalának beolvasása
 
-Ha az ASP.NET-alkalmazást a Visual Studio hibakereső funkcióját kivételt hoz létre, a böngésző egy részletes kivétel oldalát jeleníti meg, de az App Service lap váltotta fel egy általános **HTTP 500-as** hiba vagy **hiba történt, miközben a kérelem feldolgozása.** az üzenet. A részletes kivétel lap megjelenítéséhez az App Service-ben, adja hozzá a `ASPNETCORE_ENVIRONMENT` alkalmazásbeállítást az alkalmazásához a következő parancs futtatásával a <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
+Ha a ASP.NET-alkalmazás kivételt hoz létre a Visual Studio debuggerben, a böngésző egy részletes kivétel lapot jelenít meg, de App Service a lapot általános **HTTP 500** -hiba váltja fel, vagy **hiba történt a kérelem feldolgozása során.** üzenetet. A app Service részletes kivétel lapjának megjelenítéséhez adja hozzá az `ASPNETCORE_ENVIRONMENT` alkalmazás beállításait az alkalmazáshoz a következő parancs futtatásával a <a target="_blank" href="https://shell.azure.com" >Cloud Shellban</a>.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
 ```
 
-## <a name="detect-https-session"></a>Észleli a HTTPS-KAPCSOLATON keresztül
+## <a name="detect-https-session"></a>HTTPS-munkamenet észlelése
 
-Az App Service-ben [SSL-lezárást](https://wikipedia.org/wiki/TLS_termination_proxy) történik, ha a hálózati terheléselosztók, így az összes HTTPS-kérelmek elérni az alkalmazás nem titkosított HTTP-kérések. Ha az alkalmazáslogika tudnia kell, ha a felhasználó kér vagy nem titkosítottak, konfigurálja a továbbított fejlécek közbenső szoftver az *Startup.cs*:
+App Service az [SSL-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében történik, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának tudnia kell, hogy a felhasználói kérések titkosítva vannak-e, vagy sem, konfigurálja a továbbított fejlécek middleware-t a *Startup.cs*-ben:
 
-- Az a közbenső szoftver konfigurálása [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) továbbítsa a `X-Forwarded-For` és `X-Forwarded-Proto` a fejlécek `Startup.ConfigureServices`.
-- Adja hozzá a magánhálózati IP-címtartományok a ismert hálózatok úgy, hogy az a közbenső szoftver az App Service-ben load balancer megbízható.
-- Meghívása a [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) metódus az `Startup.Configure` más middlewares hívása előtt.
+- Konfigurálja a middleware-t a [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) , `X-Forwarded-For` hogy `X-Forwarded-Proto` továbbítsa `Startup.ConfigureServices`a és a fejléceket a alkalmazásban.
+- Adjon hozzá magánhálózati IP-címtartományt az ismert hálózatokhoz, hogy a köztes kapcsolat megbízható legyen a App Service Load balancerben.
+- A [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) metódus `Startup.Configure` meghívása az egyéb köztes közbenső funkciók meghívása előtt.
 
-Az összes három elem bármik lehetnek, a kód hasonlít az alábbi példában:
+A három elem együttes elhelyezésével a kód a következő példához hasonlóan néz ki:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -105,26 +122,26 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-További információkért lásd: [konfigurálhatja az ASP.NET Core proxykiszolgálók és terheléselosztók](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
+További információkért lásd: [a ASP.net Core konfigurálása a proxykiszolgáló és a](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer)terheléselosztó működéséhez.
 
-## <a name="deploy-multi-project-solutions"></a>Több projektet megoldások üzembe helyezése
+## <a name="deploy-multi-project-solutions"></a>Több projektből álló megoldások üzembe helyezése
 
-Telepítésekor meg kell adnia egy ASP.NET-tárházban, a telepítési motor az egy *.csproj* fájlt a gyökérkönyvtárban, az összetevő telepíti a projektet. Amikor telepít egy ASP.NET-tárunkat, ahol egy *.sln* fájlt a gyökérkönyvtárban a motor kiválasztja az első webhely vagy webalkalmazás projekt úgy találja, mint az App Service-alkalmazás. A motor nem válassza ki a kívánt projekt lehetőség.
+Amikor egy ASP.NET-tárházat telepít a központi telepítési motorba egy *. csproj* fájllal a gyökérkönyvtárban, a motor üzembe helyezi a projektet. Ha egy ASP.NET-tárházat telepít egy *. SLN* fájllal a gyökérkönyvtárban, a motor kiválasztja az első webhelyt vagy webalkalmazás-projektet, amelyet app Service alkalmazásként talál. Lehetséges, hogy a motor nem válassza ki a kívánt projektet.
 
-Megoldás üzembe helyezése több projektet, adja meg a projektet az App Service-ben két különböző módon használhatja:
+Többprojektes megoldás üzembe helyezéséhez két különböző módon adhatja meg a App Service használandó projektet:
 
-### <a name="using-deployment-file"></a>.Deployment fájl használatával
+### <a name="using-deployment-file"></a>A. Deployment fájl használata
 
-Adjon hozzá egy *.deployment* fájlt az adattár gyökérkönyvtárában, és adja hozzá a következő kódot:
+Adjon hozzá egy *. Deployment* fájlt az adattár gyökeréhez, és adja hozzá a következő kódot:
 
 ```
 [config]
 project = <project-name>/<project-name>.csproj
 ```
 
-### <a name="using-app-settings"></a>Alkalmazásbeállítások használatával
+### <a name="using-app-settings"></a>Alkalmazásbeállítások használata
 
-Az a <a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>, az Alkalmazásbeállítás hozzáadása az App Service-alkalmazást a következő CLI-parancs futtatásával. Cserélje le  *\<alkalmazás-neve >* ,  *\<erőforrás-csoport-neve >* , és  *\<projekt-neve >* a megfelelő értékekkel .
+A <a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>az alábbi CLI-parancs futtatásával adjon hozzá egy alkalmazást az App Service alkalmazáshoz. Cserélje le  *\<az alkalmazás neve >* ,  *\<az erőforrás-csoport neve >* és  *\<a projekt neve >* a megfelelő értékekre.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -134,14 +151,14 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="open-ssh-session-in-browser"></a>Nyissa meg böngészőben SSH-munkamenet
+## <a name="open-ssh-session-in-browser"></a>SSH-munkamenet megnyitása böngészőben
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Az ASP.NET Core-alkalmazás és SQL Database](tutorial-dotnetcore-sqldb-app.md)
+> [Oktatóanyag: Alkalmazás ASP.NET Core SQL Database](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
-> [Az App Service Linux – gyakori kérdések](app-service-linux-faq.md)
+> [App Service Linux – gyakori kérdések](app-service-linux-faq.md)

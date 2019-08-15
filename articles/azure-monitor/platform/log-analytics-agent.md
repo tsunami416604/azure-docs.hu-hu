@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 08/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 653355af7dcb0b30c3deb444fcfe4b4ff76e7e77
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6c8f9c98d645f60ea9281d1ca2aa15731c9c1e80
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424114"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954992"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>A Log Analytics ügynökkel gyűjti a naplózási adatokat
 
@@ -34,13 +34,21 @@ Az összegyűjtött adatok elemzése előtt először telepítenie és csatlakoz
 
 A Linux-és Windows-ügynök a 443-as TCP-porton keresztül kommunikál a Azure Monitor szolgáltatással, és ha a gép tűzfalon vagy proxykiszolgálón keresztül csatlakozik az interneten keresztül, tekintse át az alábbi követelményeket a hálózati konfiguráció megismeréséhez. szükséges. Ha az IT-biztonsági szabályzatok nem engedélyezik a hálózaton lévő számítógépek számára az internethez való kapcsolódást, beállíthat egy [log Analytics](gateway.md) -átjárót, majd beállíthatja az ügynököt, hogy az átjárón keresztül kapcsolódjon Azure monitor naplókhoz. Az ügynök ezután fogadhatja a konfigurációs adatokat, és az összegyűjtött adatokat attól függően, hogy milyen adatgyűjtési szabályok és figyelési megoldások vannak engedélyezve a munkaterületen. 
 
-Ha System Center Operations Manager 2012 R2 vagy újabb rendszerű számítógép figyelését végzi, a Azure Monitor-szolgáltatással többhelyes lehet az adatok gyűjtésére és a szolgáltatásba való továbbítására, és a [Operations Manager](../../azure-monitor/platform/om-agents.md)általi figyelésre is. A Linux rendszerű számítógépek esetében az ügynök nem tartalmaz állapotfigyelő szolgáltatás-összetevőt, mivel a Windows-ügynök nem működik, és az adatokat egy felügyeleti kiszolgáló a nevében gyűjti és dolgozza fel. Mivel a Linux rendszerű számítógépeket a Operations Manager eltérően figyelik, nem kapják meg a konfigurációt, és nem gyűjtenek közvetlenül adatokat, és továbbítják azokat a felügyeleti csoporton keresztül, mint a Windows ügynök által felügyelt rendszer. Ennek eredményeképpen ez a forgatókönyv nem támogatott olyan linuxos számítógépek esetében, amelyek Operations Managernak jelentenek, és a Linux rendszerű számítógépet úgy kell konfigurálni, hogy két lépésben egy [Operations Manager felügyeleti csoportnak](../platform/agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group) és egy log Analytics munkaterületnek jelentsen.
+Ha a Log Analytics ügynököket használja az adatok gyűjtésére, az ügynök üzembe helyezésének megtervezéséhez a következőket kell megismernie:
 
-A Windows-ügynök legfeljebb négy Log Analytics-munkaterületek, jelentheti a közben csak támogatja a Linux-ügynök, egy egyetlen-munkaterületre jelentő.  
+* A Windows-ügynököktől származó adatok összegyűjtéséhez beállíthatja, hogy az [egyes ügynökök egy vagy több](agent-windows.md)munkaterületnek jelentsenek, még akkor is, ha System Center Operations Manager felügyeleti csoportnak jelentenek jelentést. A Windows-ügynök legfeljebb négy munkaterületet tud jelenteni.
+* A Linux-ügynök nem támogatja a többsoros vezérlést, és csak egyetlen munkaterületre tud jelentést készíteni.
+
+Ha System Center Operations Manager 2012 R2 vagy újabb verziót használ:
+
+* Az egyes Operations Manager felügyeleti csoportok [csak egy](om-agents.md)munkaterülethez csatlakoztathatók.
+* A felügyeleti csoportnak jelentést küldő linuxos számítógépeket úgy kell konfigurálni, hogy közvetlenül egy Log Analytics munkaterületre jelentsenek. Ha a Linux rendszerű számítógépek már közvetlenül egy munkaterületre vannak bejelentve, és Operations Manager szeretné figyelni őket, kövesse az alábbi lépéseket [egy Operations Manager felügyeleti csoportnak](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)való jelentéskészítéshez.
+* Telepítheti a Log Analytics Windows-ügynököt a Windows rendszerű számítógépre, és jelentést készíthet mind a munkaterülettel integrált Operations Manager, mind pedig egy másik munkaterületről.
 
 A Linux és a Windows rendszerhez készült ügynök nem csak a Azure Monitorhoz való csatlakozáshoz használható, Azure Automation a hibrid Runbook-feldolgozói szerepkör és egyéb szolgáltatások, például a [change Tracking](../../automation/change-tracking.md), a [Update Management](../../automation/automation-update-management.md)és a Azure Security Center üzemeltetéséhez. [ ](../../security-center/security-center-intro.md). A hibrid forgatókönyv-feldolgozói szerepkör kapcsolatos további információkért lásd: [Azure Automation hibrid Runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="supported-windows-operating-systems"></a>A támogatott Windows operációs rendszerek
+
 A Windows-ügynök hivatalosan támogatott a Windows operációs rendszer következő verziói:
 
 * A Windows Server 2019

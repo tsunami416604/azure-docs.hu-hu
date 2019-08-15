@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: 336552c142e504ae7296314512f00688e30d032e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: willzhan
+ms.reviewer: kilroyh;yanmf;juliako
+ms.openlocfilehash: 6004e08f5f30c7f3c63bb87437147db15da5e335
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466478"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016764"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>A hozzáférés-vezérlés az Azure Media Services content protection rendszer tervezése 
 
@@ -130,11 +131,11 @@ Miért fontosak ezeket a szempontokat?
 
 Ha licencekkel történő kézbesítés használ a nyilvános felhő, állandó és nem állandó licencek közvetlen hatást license delivery költséget. A következő két különböző kialakítási esetben műveletek mutatja be:
 
-* Havi előfizetés: Használjon egy állandó licenc és az 1-a-többhöz tartalom kulcs eszköz hozzárendelést. Például a gyermekek filmekhez, használjuk egy egyetlen titkosítási tartalomkulcsot. Ebben az esetben:
+* Havi előfizetés: Használjon állandó licencet és egy-a-többhöz a tartalom kulcs – eszköz leképezését. Például a gyermekek filmekhez, használjuk egy egyetlen titkosítási tartalomkulcsot. Ebben az esetben:
 
     Lekéri az összes gyerek filmek/eszköz licencek teljes száma = 1
 
-* Havi előfizetés: Használja a nonpersistent licenc és 1-1 leképezés tartalomkulcs és eszköz közötti. Ebben az esetben:
+* Havi előfizetés: Használjon nem állandó licencet és 1 – 1 leképezést a tartalmi kulcs és az eszköz között. Ebben az esetben:
 
     Lekéri az összes gyerek filmek/eszköz licencek teljes száma = [nézte filmek száma] x [munkamenetek száma]
 
@@ -256,7 +257,7 @@ Használja a következő hibaelhárítási információk megvalósítási probl�
 
 * Támogatási csoport tagsági jogosultságokat jogcímek. Ellenőrizze, hogy az Azure ad-ben Alkalmazásjegyzék-fájl a következő szerepel: 
 
-    "groupMembershipClaims": "All" (az alapértelmezett érték null értékű)
+    "groupMembershipClaims": "All" (az alapértelmezett érték null)
 
 * Állítsa be a megfelelő TokenType, eszközkorlátozásokra vonatkozó követelmények létrehozásakor.
 
@@ -335,7 +336,7 @@ Regisztrálta és konfigurálta az egérmutatót alkalmazást az Azure ad-ben, a
 
 2. Adjon hozzá egy új kulcsot az erőforrás-alkalmazás számára.
 
-3. Az alkalmazás-jegyzékfájl frissítése, így groupMembershipClaims tulajdonság értéke "groupMembershipClaims": "All".
+3. Frissítse az alkalmazás jegyzékfájlját úgy, hogy a groupMembershipClaims tulajdonság értéke "groupMembershipClaims": "All".
 
 4. Az Azure AD-alkalmazás, amely a lejátszó web app, a szakaszban szereplő **egyéb alkalmazások engedélyei**, adja hozzá az erőforrás-alkalmazás, amely az 1. lépésben lett hozzáadva. A **delegált engedély**válassza **hozzáférés [resource_name]** . Ez a beállítás hozzáférést biztosít a webes alkalmazás létrehozásához szükséges engedéllyel hozzáférési jogkivonatok, amelyek az erőforrás-alkalmazás elérésére. Erre a webalkalmazás helyi és a telepített verziójához, ha a Visual Studio és az Azure-webalkalmazás fejlesztése.
 
@@ -367,13 +368,13 @@ Egy egyéni STS használata esetén két módosításokat kell végrehajtani:
 
 Biztonsági kulcsok két típusa van:
 
-* Szimmetrikus kulcs: Ugyanazt a kulcsot létrehozni, és ellenőrizheti a jwt-t használja.
-* Az aszimmetrikus kulcs: Egy nyilvános-titkos kulcspárt egy X509 a tanúsítványt használja, a titkos kulcs titkosításához/készítése a jwt-t és ellenőrizni a jogkivonatot a nyilvános kulccsal.
+* Szimmetrikus kulcs: A rendszer ugyanazt a kulcsot használja a JWT létrehozásához és ellenőrzéséhez.
+* Aszimmetrikus kulcs: Az X509-tanúsítványban található nyilvános titkos kulcspár titkos kulccsal van ellátva a JWT titkosításához/létrehozásához, valamint a nyilvános kulccsal a jogkivonat ellenőrzéséhez.
 
 > [!NOTE]
 > Ha .NET-keretrendszer / C#, a fejlesztési platform, a X509 az aszimmetrikus kulcs használt tanúsítványnak rendelkeznie kell legalább 2048 bites kulcshosszt használ. Ez az osztály a .NET-keretrendszer System.IdentityModel.Tokens.X509AsymmetricSecurityKey mindenképpen szükséges. Ellenkező esetben a következő kivétel történt:
 > 
-> IDX10630: Az aláíráshoz "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" nem lehet kisebb, mint "2048" bits.
+> IDX10630: Az aláíráshoz használt "System. IdentityModel. tokens. X509AsymmetricSecurityKey" nem lehet kisebb, mint "2048" bit.
 
 ## <a name="the-completed-system-and-test"></a>A befejezett rendszer és a teszt
 Ez a szakasz végigvezeti a következő esetekben a befejezett rendszerben teljes körű, hogy viselkedésének általános képet előtt megjelenik egy bejelentkezési fiókot használhat:
@@ -407,15 +408,15 @@ Egy fiók létrehozásakor vagy hozzáadva, hogy a szerzők bármelyikét fordul
 
 Az alábbi képernyőfelvételnek megfelelően eltérő bejelentkezési lapok ugyanaz a tartományi fiókok által használt megjelenítése:
 
-**Egyéni Azure AD-bérlő tartományi fiók**: A testre szabott bejelentkezési oldala, az egyéni Azure AD bérlői tartomány.
+**Egyéni Azure ad-bérlői tartományi fiók**: Az egyéni Azure AD-bérlői tartomány testreszabott bejelentkezési lapja.
 
 ![Egyéni Azure AD-bérlő tartományi fiók](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
-**Tartományi fiókot a Microsoft intelligens kártyás**: A bejelentkezési oldal, testre szabott Microsoft vállalati IT-modernizálás a kétfaktoros hitelesítés.
+**Microsoft tartományi fiók intelligens kártyával**: A Microsoft vállalat által a két faktoros hitelesítéssel testreszabott bejelentkezési oldal.
 
 ![Egyéni Azure AD-bérlő tartományi fiók](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
-**Microsoft-fiók**: A bejelentkezési oldal a Microsoft-fiók a fogyasztók számára.
+**Microsoft-fiók**: A felhasználók Microsoft-fiók bejelentkezési lapja.
 
 ![Egyéni Azure AD-bérlő tartományi fiók](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain3.png)
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 189e4f280e8aba28c4d1af449aa8a3428e303911
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 4aa8f9a7c6807a2f9505559ea13fb0b4f410346d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298411"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987171"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Eszközök hibaelhárítása a dsregcmd parancs használatával
 
@@ -198,7 +198,7 @@ Ez a szakasz csak akkor jelenik meg, ha az eszköz tartományhoz csatlakozik, é
 
 Ez a szakasz különböző teszteket hajt végre a csatlakozási hibák diagnosztizálásához. Ez a szakasz az előző (?) részleteit is tartalmazza. Ez az információ tartalmazza a hiba fázisát, a hibakódot, a kiszolgálói kérelem AZONOSÍTÓját, a kiszolgáló válaszának http-állapotát, a kiszolgálói válasz hibaüzenetét.
 
-- **Felhasználói környezet:** – az a környezet, amelyben a diagnosztika fut. Lehetséges értékek: RENDSZER, nem EMELt szintű felhasználó, EMELt szintű felhasználó. 
+- **Felhasználói környezet:** – az a környezet, amelyben a diagnosztika fut. Érvényes értékek: RENDSZER, nem EMELt szintű felhasználó, EMELt szintű felhasználó. 
 
    > [!NOTE]
    > Mivel a tényleges illesztés a rendszerkörnyezetben történik, a diagnosztika futtatása a rendszerkörnyezetben a legközelebb esik a tényleges illesztési forgatókönyvhöz. A diagnosztika a rendszerkörnyezetben való futtatásához a dsregcmd/status parancsot egy rendszergazda jogú parancssorból kell futtatni.
@@ -295,6 +295,9 @@ Ez a szakasz a felhőhöz csatlakoztatott eszközön elvégzett, józan ész-ell
 ## <a name="ngc-prerequisite-check"></a>NGC Előfeltételek ellenőrzése
 
 Ez a szakasz az NGC-kulcsok kiépítési előfeltételek-ellenőrzéseit végzi. 
+
+> [!NOTE]
+> Ha a felhasználó már sikeresen konfigurálta az NGC hitelesítő adatokat, előfordulhat, hogy a dsregcmd/status nem látja az NGC előfeltétel-ellenőrzési részleteit.
 
 ### <a name="sample-ngc-prerequisite-check-output"></a>Az NGC előfeltétel-ellenőrzési kimenetének mintája
 

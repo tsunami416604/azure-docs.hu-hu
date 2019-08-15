@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: a8196370a93a6ce8eed83002397c2f09efbc777f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 276699b9316a0c4fd428038f2c967bdf934f449c
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358587"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016049"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS-teljesítési API-k, 2-es verzió 
 
@@ -282,7 +282,7 @@ Response Body:
           "term": { //This gives the free trial term start and end date
             "startDate": "2019-05-31",
             "endDate": "2019-06-29",
-            "termUnit": "P1M"
+            "termUnit": "P1M" //where P1M: Monthly, P1Y: Yearly 
         },
 }
 ```
@@ -790,6 +790,8 @@ Kód: 500<br> Belső kiszolgálóhiba.
 
 A közzétevőnek be kell vezetnie egy webhookot ebben az SaaS-szolgáltatásban, hogy proaktívan értesítse a felhasználókat a szolgáltatás változásairól. Az SaaS szolgáltatásnak meg kell hívnia az operatív API-t az ellenőrzéshez és az engedélyezéshez, mielőtt lépéseket hozna a webhook értesítésére.
 
+A biztonságos kommunikáció biztosítása érdekében a Microsoft a hívás részeként tartalmazza a Azure Active Directory JWT tokent az engedélyezési fejlécben. Az SaaS-szolgáltatókat arra javasoljuk, hogy ellenőrizze a JWT tokent a [Microsoft Identity platform hozzáférési](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) jogkivonatok című cikkben leírtak szerint, hogy csak az érvényes hívásokat fogadják el.
+
 ```json
 {
   "id": "<this is a GUID operation id, you can call operations API with this to get status>",
@@ -819,7 +821,7 @@ Ahol az állapot a következők egyike lehet:
 - **Sikertelen** <br>
 - **Ütközés** <br>
 
-Egy webhook-értesítésben a végrehajtható állapotok sikeresek  és sikertelenek **voltak**. A művelet életciklusa a **NotStarted** -ből olyan terminál-állapotba történik, mint a **sikeres**, **sikertelen**vagy **ütközés**. Ha **NotStarted** **vagy**inaktivitást kap, folytassa az állapot LEkérése az API-val, amíg a művelet el nem éri a terminál állapotát a művelet megkezdése előtt. 
+Egy webhook-értesítésben a végrehajtható állapotok sikeresek és sikertelenek **voltak**. A művelet életciklusa a **NotStarted** -ből olyan terminál-állapotba történik, mint a **sikeres**, **sikertelen**vagy **ütközés**. Ha **NotStarted** vagy inaktivitást kap, folytassa az állapot lekérése az API-val, amíg a művelet el nem éri a terminál állapotát a művelet megkezdése előtt. 
 
 ## <a name="mock-apis"></a>Modell API-k
 

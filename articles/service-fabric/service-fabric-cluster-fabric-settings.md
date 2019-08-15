@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/12/2019
 ms.author: atsenthi
-ms.openlocfilehash: c20e782423c60985adb9e18e275fde59e57e00a2
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 08864d6a965921f7f6d284dc53bd2586d30fedd1
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599878"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014432"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric fürt beállításainak testreszabása
 Ez a cikk a Service Fabric-fürthöz testreszabható különböző háló-beállításokat ismerteti. Az Azure-ban üzemeltetett fürtök esetében a beállításokat a [Azure Portal](https://portal.azure.com) vagy egy Azure Resource Manager sablon segítségével szabhatja testre. További információ: Azure- [fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Önálló fürtök esetében testreszabhatja a beállításokat a *ClusterConfig. JSON* fájl frissítésével és a fürtön végzett konfigurációs frissítés elindításával. További információ: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -28,7 +28,7 @@ Három különböző frissítési szabályzat létezik:
 
 - **Dinamikus** – a dinamikus konfiguráció módosításai nem okozzák a Service Fabric folyamatok vagy a szolgáltatás-gazdagép folyamatainak újraindítását. 
 - **Statikus** – a statikus konfiguráció módosításai a Service Fabric csomópont újraindítását eredményezik a módosítás felhasználása érdekében. A csomópontok szolgáltatásai újra lesznek indítva.
-- Nincs feldolgozva **– ezek** a beállítások nem módosíthatók. Ezeknek a beállításoknak a módosításához a fürtöt meg kell semmisíteni, és létre kell hozni egy új fürtöt. 
+- Nincs feldolgozva – ezek a beállítások nem módosíthatók. Ezeknek a beállításoknak a módosításához a fürtöt meg kell semmisíteni, és létre kell hozni egy új fürtöt. 
 
 Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-beállításokat sorolja fel.
 
@@ -141,7 +141,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |FailuresOnlyHttpTelemetry | Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus | Ha engedélyezve van a HTTP-telemetria rögzítése; csak a sikertelen kérelmek rögzítése. Ez segít csökkenteni a telemetria által generált események számát. |
 |HttpTelemetryCapturePercentage | int, alapértelmezett érték 50 | Dinamikus | Ha engedélyezve van a HTTP-telemetria rögzítése; csak a kérések véletlenszerű százalékos arányának rögzítése. Ez segít csökkenteni a telemetria által generált események számát. |
 |MaxDiskQuotaInMB |Int, alapértelmezett érték 65536 | Dinamikus |Windows Fabric naplófájlok esetében a lemezkvóta MB-ban. |
-|ProducerInstances |Karakterlánc | Dinamikus |A DCA-előállító példányainak listája. |
+|ProducerInstances |Sztring | Dinamikus |A DCA-előállító példányainak listája. |
 
 ## <a name="dnsservice"></a>DnsService
 | **A paraméter** | **Megengedett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
@@ -411,6 +411,11 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |WriteBufferMemoryPoolMaximumInKB | Int, az alapértelmezett érték 0 |Dinamikus|A KB-ban megadott szám, amely lehetővé teszi az írási puffer memória-készletének növelését. A 0 értékkel jelezze a nem korlátot. |
 |WriteBufferMemoryPoolMinimumInKB |Int, alapértelmezett érték 8388608 |Dinamikus|Az írási pufferbeli memória-készlethez először lefoglalni kívánt KB-os szám. A 0 érték megadásával jelezheti, hogy az alapértelmezett korlátnak nem kell konzisztensnek lennie az alábbi SharedLogSizeInMB. |
 
+## <a name="managedidentitytokenservice"></a>ManagedIdentityTokenService
+| **A paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| --- | --- | --- | --- |
+|isEnabled|bool, az alapértelmezett érték FALSE|Statikus tartalom|A felügyelt identitási jogkivonat szolgáltatás jelenlétének és állapotának szabályozása a fürtben; ez az előfeltétel a Service Fabric alkalmazások felügyelt identitási funkciójának használatához.|
+
 ## <a name="management"></a>Kezelés
 
 | **A paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
@@ -501,7 +506,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 
 | **A paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|Teljesítményszámlálók |Karakterlánc | Dinamikus |A gyűjteni kívánt teljesítményszámlálók vesszővel tagolt listája. |
+|Teljesítményszámlálók |Sztring | Dinamikus |A gyűjteni kívánt teljesítményszámlálók vesszővel tagolt listája. |
 |isEnabled |Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus |A jelző jelzi, hogy engedélyezve van-e a teljesítményszámláló gyűjteménye a helyi csomóponton. |
 |MaxCounterBinaryFileSizeInMB |Int, az alapértelmezett érték 1 | Dinamikus |A teljesítményszámláló bináris fájljainak maximális mérete (MB). |
 |NewCounterBinaryFileCreationIntervalInMinutes |Int, az alapértelmezett érték 10 | Dinamikus |Az új teljesítményszámláló bináris fájljának létrehozása utáni maximális időköz (másodpercben). |
@@ -610,7 +615,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |RunAsAccountType|karakterlánc, az alapértelmezett érték: "" |Dinamikus|A futtató fiók típusát jelzi. Erre azért van szükség, mert a RunAs szakasz érvényes értékei a következők: "DomainUser/NetworkService/ManagedServiceAccount/LocalSystem".|
 |RunAsPassword|karakterlánc, az alapértelmezett érték: "" |Dinamikus|Azt jelzi, hogy a futtató fiók jelszava. Erre csak a "DomainUser" fióktípus esetében van szükség. |
 
-## <a name="runasdca"></a>RunAs_DCA
+## <a name="runas_dca"></a>RunAs_DCA
 
 | **A paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
@@ -618,7 +623,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |RunAsAccountType|karakterlánc, az alapértelmezett érték: "" |Dinamikus|A futtató fiók típusát jelzi. Erre azért van szükség, mert a RunAs szakasz érvényes értékei a következők: "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
 |RunAsPassword|karakterlánc, az alapértelmezett érték: "" |Dinamikus|Azt jelzi, hogy a futtató fiók jelszava. Erre csak a "DomainUser" fióktípus esetében van szükség. |
 
-## <a name="runasfabric"></a>RunAs_Fabric
+## <a name="runas_fabric"></a>RunAs_Fabric
 
 | **A paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
@@ -626,7 +631,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |RunAsAccountType|karakterlánc, az alapértelmezett érték: "" |Dinamikus|A futtató fiók típusát jelzi. Erre azért van szükség, mert a RunAs szakasz érvényes értékei a következők: "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
 |RunAsPassword|karakterlánc, az alapértelmezett érték: "" |Dinamikus|Azt jelzi, hogy a futtató fiók jelszava. Erre csak a "DomainUser" fióktípus esetében van szükség. |
 
-## <a name="runashttpgateway"></a>RunAs_HttpGateway
+## <a name="runas_httpgateway"></a>RunAs_HttpGateway
 
 | **A paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
@@ -825,9 +830,9 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |ContainerNetworkName|karakterlánc, az alapértelmezett érték: ""| Statikus tartalom |A hálózati név, amelyet a Container Network beállításakor kell használni.|
 |ContainerNetworkSetup|bool, az alapértelmezett érték FALSE| Statikus tartalom |Azt határozza meg, hogy a tároló hálózatot kell-e beállítani.|
 |FabricDataRoot |Sztring | Nem engedélyezett |Service Fabric az adatgyökérkönyvtárat. Az Azure alapértelmezett értéke d:\svcfab |
-|FabricLogRoot |Karakterlánc | Nem engedélyezett |Service Fabric-napló gyökérkönyvtára. Itt vannak elhelyezve az SF-naplók és-Nyomkövetések. |
+|FabricLogRoot |Sztring | Nem engedélyezett |Service Fabric-napló gyökérkönyvtára. Itt vannak elhelyezve az SF-naplók és-Nyomkövetések. |
 |NodesToBeRemoved|karakterlánc, az alapértelmezett érték: ""| Dinamikus |Azok a csomópontok, amelyeket el kell távolítani a konfiguráció frissítésének részeként. (Csak önálló telepítés esetén)|
-|ServiceRunAsAccountName |Karakterlánc | Nem engedélyezett |Annak a fióknak a neve, amelyben a Fabric Host szolgáltatás futtatására kerül sor. |
+|ServiceRunAsAccountName |Sztring | Nem engedélyezett |Annak a fióknak a neve, amelyben a Fabric Host szolgáltatás futtatására kerül sor. |
 |SkipContainerNetworkResetOnReboot|bool, az alapértelmezett érték FALSE|NotAllowed|Megadhatja, hogy kihagyja-e a Container Network újraindítását.|
 |SkipFirewallConfiguration |Bool, az alapértelmezett érték false | Nem engedélyezett |Megadja, hogy a tűzfal beállításait a rendszeren kell-e beállítani. Ez csak akkor érvényes, ha a Windows tűzfalat használja. Ha harmadik féltől származó tűzfalakat használ, akkor meg kell nyitnia a rendszer és a használni kívánt alkalmazások portját. |
 

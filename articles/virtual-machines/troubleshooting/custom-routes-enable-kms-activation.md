@@ -1,6 +1,6 @@
 ---
-title: Az Azure egyéni útvonalat használja a KMS-aktiválást, ha a kényszerített bújtatás engedélyezése |} A Microsoft Docs
-description: KMS-aktiválás engedélyezéséhez, ha a kényszerített bújtatás az Azure-ban használata az Azure egyéni útvonalak használatát szemlélteti.
+title: A KMS-Aktiválás kényszerített bújtatással való engedélyezése az egyéni Azure-útvonalak használatával | Microsoft Docs
+description: Bemutatja, hogyan használhatók az Azure egyéni útvonalak a KMS-Aktiválás engedélyezéséhez a kényszerített bújtatás használatakor az Azure-ban.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 6557649eb1b97ad4d88876906737f8249e18b958
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2877fae66584ec24fb6e62b20d66ded36157b824
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399803"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990355"
 ---
-# <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Windows-aktiválás sikertelen, a kényszerített bújtatás forgatókönyvben
+# <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>A Windows aktiválása sikertelen a kényszerített bújtatási forgatókönyvben
 
-Ez a cikk ismerteti a KMS aktiválási problémát, hogy Ön is szembesülhet, ha engedélyezi a kényszerített bújtatás helyek közötti VPN-kapcsolat vagy ExpressRoute-forgatókönyvek a megoldását.
+Ez a cikk azt ismerteti, hogyan oldható meg a KMS-aktiválási probléma, amely akkor fordulhat elő, ha engedélyezi a kényszerített bújtatást a helyek közötti VPN-kapcsolaton vagy ExpressRoute forgatókönyvekben.
 
 ## <a name="symptom"></a>Jelenség
 
-Engedélyezi a [kényszerített bújtatás](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) az Azure-ban az internetre irányuló összes forgalmat a virtuális hálózat alhálózataiban biztonsági a helyszíni hálózathoz. Ebben a forgatókönyvben az Azure virtuális gépeket (VM), amely a Windows Server 2012 R2 (vagy a Windows újabb verziói), sikeresen az aktiválást Windows. Azonban a Windows korábbi verzióit futtató virtuális gépek Windows aktiválása sikertelen.
+A [kényszerített bújtatást](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) az Azure-beli virtuális hálózati alhálózatokon engedélyezheti, hogy az összes internetes forgalmat visszairányítsa a helyszíni hálózatra. Ebben a forgatókönyvben a Windows Server 2012 R2-t (vagy a Windows újabb verzióit) futtató Azure-beli virtuális gépek (VM-EK) sikeresen aktiválni tudják a Windowst. A Windows korábbi verzióját futtató virtuális gépek azonban nem tudják aktiválni a Windowst.
 
 ## <a name="cause"></a>Ok
 
-Az Azure Windows virtuális gépek az Azure KMS-kiszolgálóhoz Windows-aktiválás csatlakoznia kell. Az aktiválás szükséges, hogy az aktiválási kérelem származnak-e az Azure nyilvános IP-cím. A kényszerített bújtatás forgatókönyvben az aktiválás sikertelen, mert az aktiválási kérelem származik, a helyszíni hálózat az Azure nyilvános IP-cím helyett.
+Az Azure Windows rendszerű virtuális gépeknek csatlakozniuk kell az Azure KMS-kiszolgálóhoz a Windows aktiválásához. Az aktiváláshoz az aktiválási kérelemnek egy Azure nyilvános IP-címről kell származnia. A kényszerített bújtatási forgatókönyvben az aktiválás sikertelen, mert az aktiválási kérelem a helyszíni hálózatról származik, és nem egy Azure nyilvános IP-címről.
 
 ## <a name="solution"></a>Megoldás
 
-A probléma megoldásához használja az Azure egyéni útvonalat az útvonal aktiválási adatforgalom Azure KMS-kiszolgálón.
+A probléma megoldásához használja az Azure egyéni útvonalát az aktiválási forgalom Azure KMS-kiszolgálóra történő átirányításához.
 
-Az Azure globális felhőalapú a KMS-kiszolgáló IP-cím 23.102.135.246 áll. Its DNS name is kms.core.windows.net. Ha például az Azure Germany más az Azure platformon használja, a megfelelő KMS-kiszolgáló IP-címét kell használnia. További információkért lásd az alábbi táblázatot:
+Az Azure globális felhőhöz tartozó KMS-kiszolgáló IP-címe 23.102.135.246. Its DNS name is kms.core.windows.net. Ha más Azure-platformokat, például az Azure Germany-t használja, akkor a megfelelő KMS-kiszolgáló IP-címét kell használnia. További információkért tekintse meg a következő táblázatot:
 
 |Platform| KMS DNS|KMS IP|
 |------|-------|-------|
-|Azure Global|kms.core.windows.net|23.102.135.246|
+|Azure globális|kms.core.windows.net|23.102.135.246|
 |Azure Germany|kms.core.cloudapi.de|51.4.143.248|
 |Amerikai Egyesült Államok kormánya által használt Azure|kms.core.usgovcloudapi.net|23.97.0.13|
 |Azure China 21Vianet|kms.core.chinacloudapi.cn|42.159.7.249|
@@ -49,11 +49,14 @@ Az Azure globális felhőalapú a KMS-kiszolgáló IP-cím 23.102.135.246 áll. 
 
 Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
 
-### <a name="for-resource-manager-vms"></a>Resource Manager-beli virtuális gépek
+### <a name="for-resource-manager-vms"></a>Resource Manager-alapú virtuális gépek esetén
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-1. Nyissa meg az Azure Powershellt, majd [jelentkezzen be az Azure-előfizetés](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+> [!NOTE] 
+> Az aktiválás nyilvános IP-címeket használ, és egy szabványos SKU Load Balancer konfiguráció fogja érinteni. A követelmények megismeréséhez körültekintően tekintse át a [kimenő kapcsolatokat az Azure-ban](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) .
+
+1. Nyissa meg Azure PowerShell, majd jelentkezzen be az [Azure-](https://docs.microsoft.com/powershell/azure/authenticate-azureps)előfizetésbe.
 2. Futtassa az alábbi parancsot:
 
     ```powershell
@@ -75,15 +78,15 @@ Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
 
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
-3. Nyissa meg a virtuális gép, amely rendelkezik az aktiválással kapcsolatos problémák. Használat [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) azt is eléri a KMS-kiszolgáló teszteléséhez:
+3. Lépjen az aktiválási problémákkal rendelkező virtuális gépre. A [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) használatával ellenőrizze, hogy a KMS-kiszolgáló elérheti-e a következőt:
 
         psping kms.core.windows.net:1688
 
-4. Próbálja meg a Windows aktiválása és a probléma megoldódott.
+4. Próbálja meg aktiválni a Windowst, és ellenőrizze, hogy megoldódott-e a probléma.
 
-### <a name="for-classic-vms"></a>A klasszikus virtuális gépek
+### <a name="for-classic-vms"></a>Klasszikus virtuális gépek esetén
 
-1. Nyissa meg az Azure Powershellt, majd [jelentkezzen be az Azure-előfizetés](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Nyissa meg Azure PowerShell, majd jelentkezzen be az [Azure-](https://docs.microsoft.com/powershell/azure/authenticate-azureps)előfizetésbe.
 2. Futtassa az alábbi parancsot:
 
     ```powershell
@@ -101,15 +104,15 @@ Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
     -RouteTableName "VNet-DM-KmsRouteTable"
     ```
 
-3. Nyissa meg a virtuális gép, amely rendelkezik az aktiválással kapcsolatos problémák. Használat [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) azt is eléri a KMS-kiszolgáló teszteléséhez:
+3. Lépjen az aktiválási problémákkal rendelkező virtuális gépre. A [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) használatával ellenőrizze, hogy a KMS-kiszolgáló elérheti-e a következőt:
 
         psping kms.core.windows.net:1688
 
-4. Próbálja meg a Windows aktiválása és a probléma megoldódott.
+4. Próbálja meg aktiválni a Windowst, és ellenőrizze, hogy megoldódott-e a probléma.
 
 ## <a name="next-steps"></a>További lépések
 
 - [KMS-ügyfél telepítési kulcsai](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
 )
-- [Tekintse meg és jelölje be az aktiválási módszerek](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
+- [Aktiválási módszerek áttekintése és kiválasztása](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
 )

@@ -1,26 +1,26 @@
 ---
-title: Hozzon létre egy storage-fiók – Azure Storage
-description: Az útmutató a cikkben megismerheti hozzon létre egy tárfiókot, az Azure Portalon, az Azure PowerShell vagy az Azure CLI használatával. Az Azure Storage-fiók egyedi névteret biztosít a Microsoft Azure-ban a létrehozott Azure Storage-adatobjektumok tárolásához és eléréséhez.
+title: Storage-fiók létrehozása – Azure Storage
+description: Ebben a útmutatóban megtudhatja, hogyan hozhat létre egy Storage-fiókot a Azure Portal, a Azure PowerShell vagy az Azure CLI használatával. Az Azure Storage-fiók egyedi névteret biztosít a Microsoft Azure-ban a létrehozott Azure Storage-adatobjektumok tárolásához és eléréséhez.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/28/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8375f4c54dc436ecf0694ec5f629c81d3591594d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e72f8c3ed0658765827c4a9b0669c08fefd9044f
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234175"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016334"
 ---
 # <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Egy Azure storage-fiókot tartalmazza az összes az Azure Storage-adatobjektumok: blobok, fájlok, üzenetsorok, táblák és lemezek. A tárfiók egy egyedi névteret biztosít az Azure Storage-adatok által elérhető, bárhol a világon HTTP vagy HTTPS. Az Azure storage-fiókja adatai tartós és magas rendelkezésre állású, biztonságos és rugalmasan méretezhető.
+Egy Azure Storage-fiók tartalmazza az összes Azure Storage-adatobjektumot: blobokat, fájlokat, várólistákat, táblákat és lemezeket. A Storage-fiók egy egyedi névteret biztosít az Azure Storage-adatok számára, amely a világon bárhonnan elérhető HTTP-vagy HTTPS-kapcsolaton keresztül. Az Azure Storage-fiókban tárolt adatai tartósak, a biztonságos és a nagy mértékben méretezhetők.
 
-Az útmutató a cikkből megtudhatja, hozzon létre egy tárolási fiókot a [az Azure portal](https://portal.azure.com/), [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview), [Azure CLI-vel](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), vagy egy [Azure Resource Manager sablon](../../azure-resource-manager/resource-group-overview.md).  
+Ebben a útmutatóban megtudhatja, hogyan hozhat létre egy Storage-fiókot a [Azure Portal](https://portal.azure.com/), a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview), az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)vagy egy [Azure Resource Manager sablon](../../azure-resource-manager/resource-group-overview.md)használatával.  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -34,28 +34,28 @@ Nincs.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-A cikkben található útmutató az Azure PowerShell-modul Az 0,7 vagy újabb verziója szükséges. Az aktuális verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
+Ennek a cikknek a használatához a Azure PowerShell modul az 0,7-es vagy újabb verziója szükséges. Az aktuális verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Jelentkezzen be az Azure-ba, és az Azure CLI parancsainak futtatásához a két módszer egyikével:
+Jelentkezzen be az Azure-ba, és futtassa az Azure CLI-parancsokat kétféleképpen:
 
-- Az Azure Cloud Shellben futtathatja a CLI-parancsok az Azure Portalon.
-- A CLI telepítése, és a helyi CLI-parancsok futtatásához.
+- A CLI-parancsokat a Azure Cloud Shell Azure Portal belül is futtathatja.
+- Telepítheti a CLI-t, és helyileg is futtathatja a CLI-parancsokat.
 
 ### <a name="use-azure-cloud-shell"></a>Az Azure Cloud Shell használata
 
-Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. Az Azure CLI-vel előre telepítve és a fiókjával való használat konfigurálva van. Kattintson a **Cloud Shell** az Azure portal jobb felső részén a menü gombra:
+Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. Az Azure CLI előre telepítve és konfigurálva van a fiókjával való használatra. Kattintson a **Cloud Shell** gombra a Azure Portal jobb felső részén található menüben:
 
 [![Cloud Shell](./media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
 
-A gombra kattintva jelenik, amely segítségével útmutató ebben a cikkben ismertetett lépések futtassa interaktív shell:
+A gomb egy interaktív felületet indít el, amelyet a jelen útmutatóban ismertetett lépések futtatására használhat:
 
 [![Képernyőkép a Portalon lévő Cloud Shell-ablakról](./media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
 
 ### <a name="install-the-cli-locally"></a>A parancssori felület helyi telepítése
 
-Az Azure CLI-t helyben is telepítheti és használhatja. A cikkben található útmutató megköveteli, hogy futnak-e az Azure CLI 2.0.4-es vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+Az Azure CLI-t helyben is telepítheti és használhatja. Ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
 # <a name="templatetabtemplate"></a>[Sablon](#tab/template)
 
@@ -79,9 +79,9 @@ Connect-AzAccount
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Az Azure Cloud Shell indításához jelentkezzen be a [az Azure portal](https://portal.azure.com).
+Azure Cloud Shell indításához jelentkezzen be a Azure Portalba [](https://portal.azure.com).
 
-Jelentkezzen be a parancssori felület helyi telepítésen, futtassa a [az bejelentkezési](/cli/azure/reference-index#az-login) parancsot:
+A CLI helyi telepítésére való bejelentkezéshez futtassa az az [login](/cli/azure/reference-index#az-login) parancsot:
 
 ```cli
 az login
@@ -99,7 +99,7 @@ Ezzel készen áll a tárfiók létrehozására.
 
 Minden tárfióknak egy Azure-erőforráscsoporthoz kell tartoznia. Az erőforráscsoport egy logikai tároló az Azure-szolgáltatások csoportosításához. A tárfiók létrehozásakor lehetősége van létrehozni egy új erőforráscsoportot, vagy választhat egy meglévő erőforráscsoportot. Ez a cikk bemutatja, hogyan hozhat létre egy új erőforráscsoportot.
 
-Az **általános célú v2**-tárfiókok az összes Azure Storage-szolgáltatáshoz (blobokhoz, fájlokhoz, üzenetsorokhoz, táblákhoz és lemezekhez) hozzáférést biztosítanak. Az itt leírt lépéseket egy általános célú v2-tárfiók létrehozása, de bármilyen típusú storage-fiók létrehozásának lépései is hasonlóak.
+Az **általános célú v2**-tárfiókok az összes Azure Storage-szolgáltatáshoz (blobokhoz, fájlokhoz, üzenetsorokhoz, táblákhoz és lemezekhez) hozzáférést biztosítanak. Az itt leírt lépések egy általános célú v2-es Storage-fiókot hoznak létre, de a bármilyen típusú Storage-fiók létrehozásának lépései hasonlóak.
 
 # <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
@@ -107,7 +107,7 @@ Az **általános célú v2**-tárfiókok az összes Azure Storage-szolgáltatás
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Először hozzon létre egy új erőforráscsoportot a PowerShell a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot:
+Először hozzon létre egy új erőforráscsoportot a PowerShell használatával a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal:
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -116,14 +116,14 @@ $resourceGroup = "storage-resource-group"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-Ha nem biztos abban, hogy melyik régiót kell megadnia a `-Location` paramétert, kérheti a támogatott régiók listáját az előfizetéséhez tartozó a [Get-AzLocation](/powershell/module/az.resources/get-azlocation) parancsot:
+Ha nem biztos abban, hogy melyik régiót kell megadnia a `-Location` paraméterhez, az előfizetéshez tartozó támogatott régiók listáját a [Get-AzLocation](/powershell/module/az.resources/get-azlocation) paranccsal kérheti le:
 
 ```powershell
 Get-AzLocation | select Location
 $location = "westus"
 ```
 
-Ezután hozzon létre egy általános célú v2-tárfiók az írásvédett georedundáns tárolás (RA-GRS) használatával a [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) parancsot. Ne feledje, hogy a tárfiók nevére egyedinek kell lenniük Azure-ban, így zárójelben a helyőrző értékét cserélje le a saját egyedi érték:
+Következő lépésként hozzon létre egy általános célú v2-es Storage-fiókot a [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) parancs használatával a Read-Access geo-redundáns tárolással (ra-GRS). Ne feledje, hogy a Storage-fiók nevének egyedinek kell lennie az Azure-ban, ezért a helyőrző értékét zárójelek között a saját egyedi értékkel kell helyettesítenie:
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName $resourceGroup `
@@ -133,14 +133,16 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Kind StorageV2 
 ```
 
-Egy másik replikációs beállítással egy általános célú v2-tárfiók létrehozásához illessze be a kívánt értéket az alábbi táblázat a **SkuName** paraméter.
+Egy másik replikációs lehetőséggel rendelkező általános célú v2 Storage-fiók létrehozásához helyettesítse be a kívánt értéket az alábbi táblázatban az **SkuName** paraméterhez.
 
 |Replikációs beállítás  |SkuName paraméter  |
 |---------|---------|
-|Helyileg redundáns tárolás (LRS)     |Standard_LRS         |
+|Helyileg redundáns tárolás (LRS)     |Standard szintű LRS         |
 |Zónaredundáns tárolás (ZRS)     |Standard_ZRS         |
 |Georedundáns tárolás (GRS)     |Standard_GRS         |
 |Írásvédett georedundáns tárolás (GRS)     |Standard_RAGRS         |
+|Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió)    |Standard_GZRS         |
+|Olvasási hozzáférésű geo-Zone-redundáns tárolás (RA-GZRS) (előzetes verzió)    |Standard_RAGZRS         |
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -160,7 +162,7 @@ az account list-locations \
     --out table
 ```
 
-Ezután hozzon létre egy általános célú v2-tárfiók az írásvédett georedundáns tárolás használatával az [az tárfiók létrehozása](/cli/azure/storage/account#az_storage_account_create) parancsot. Ne feledje, hogy a tárfiók nevére egyedinek kell lenniük Azure-ban, így zárójelben a helyőrző értékét cserélje le a saját egyedi érték:
+Ezután hozzon létre egy általános célú v2-es Storage-fiókot az az [Storage Account Create](/cli/azure/storage/account#az_storage_account_create) paranccsal az olvasási hozzáférésű geo-redundáns tárolással. Ne feledje, hogy a Storage-fiók nevének egyedinek kell lennie az Azure-ban, ezért a helyőrző értékét zárójelek között a saját egyedi értékkel kell helyettesítenie:
 
 ```azurecli-interactive
 az storage account create \
@@ -171,18 +173,20 @@ az storage account create \
     --kind StorageV2
 ```
 
-Egy másik replikációs beállítással egy általános célú v2-tárfiók létrehozásához illessze be a kívánt értéket az alábbi táblázat a **termékváltozat** paraméter.
+Egy másik replikációs lehetőséggel rendelkező általános célú v2 Storage-fiók létrehozásához helyettesítse be a kívánt értéket az alábbi táblázatban az **SKU** paraméterhez.
 
 |Replikációs beállítás  |sku paraméter  |
 |---------|---------|
-|Helyileg redundáns tárolás (LRS)     |Standard_LRS         |
+|Helyileg redundáns tárolás (LRS)     |Standard szintű LRS         |
 |Zónaredundáns tárolás (ZRS)     |Standard_ZRS         |
 |Georedundáns tárolás (GRS)     |Standard_GRS         |
 |Írásvédett georedundáns tárolás (GRS)     |Standard_RAGRS         |
+|Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió)    |Standard_GZRS         |
+|Olvasási hozzáférésű geo-Zone-redundáns tárolás (RA-GZRS) (előzetes verzió)    |Standard_RAGZRS         |
 
 # <a name="templatetabtemplate"></a>[Sablon](#tab/template)
 
-Azure Powershell vagy az Azure CLI használatával hozzon létre egy tárfiókot a Resource Manager-sablon üzembe helyezése. Az útmutató a cikkben használt sablon [Azure Resource Manager gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/101-storage-account-create/). A parancsfájlok futtatásához válassza **kipróbálás** az Azure Cloud shell megnyitásához. Illessze be a parancsfájlt, kattintson a jobb gombbal a rendszerhéjat, és válassza **illessze be**.
+Az Azure PowerShell vagy az Azure CLI használatával üzembe helyezhet egy Resource Manager-sablont egy Storage-fiók létrehozásához. Az ebben a útmutatóban használt sablon [Azure Resource Manager Gyorsindítás sablonokból](https://azure.microsoft.com/resources/templates/101-storage-account-create/)származik. A parancsfájlok futtatásához válassza a **kipróbálás** lehetőséget az Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**lehetőséget.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -201,11 +205,11 @@ az group create --name $resourceGroupName --location "$location" &&
 az group deployment create --resource-group $resourceGroupName --template-file "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
-Sablonok létrehozásával kapcsolatban lásd:
+A sablonok létrehozásával kapcsolatos további információkért lásd:
 
-- [Az Azure Resource Manager dokumentációja](/azure/azure-resource-manager/).
-- [Storage-fiók sablonreferenciában](/azure/templates/microsoft.storage/allversions).
-- [További tárolási fiók sablonminták](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage).
+- [Azure Resource Manager dokumentáció](/azure/azure-resource-manager/).
+- A [Storage-fiók sablonjának referenciája](/azure/templates/microsoft.storage/allversions).
+- [További](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage), a Storage-fiók sablonjának mintái.
 
 ---
 
@@ -213,7 +217,7 @@ Az elérhető replikációs beállításokkal kapcsolatban további információ
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha szeretné a cikkben található útmutató által létrehozott erőforrásokat, törölheti az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó tárfiók, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
+Ha meg szeretné tisztítani a jelen útmutatóban létrehozott erőforrásokat, törölheti az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó tárfiók, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 
 # <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
@@ -225,7 +229,7 @@ Erőforráscsoport eltávolítása az Azure Portallal:
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Eltávolítható az erőforráscsoport és az összes kapcsolódó erőforrás, beleértve az új tárfiókot is a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot:
+Az erőforráscsoport és a hozzá tartozó erőforrások eltávolításához, beleértve az új Storage-fiókot is, használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot:
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
@@ -241,7 +245,7 @@ az group delete --name storage-resource-group
 
 # <a name="templatetabtemplate"></a>[Sablon](#tab/template)
 
-Azure PowerShell vagy az Azure CLI használatával távolítsa el az erőforráscsoportot és az összes kapcsolódó erőforrás, beleértve az új tárfiókot is.
+Ha el szeretné távolítani az erőforráscsoportot és a hozzá tartozó erőforrásokat, beleértve az új Storage-fiókot, használja a Azure PowerShell vagy az Azure CLI-t.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -258,7 +262,7 @@ az group delete --name $resourceGroupName
 
 ## <a name="next-steps"></a>További lépések
 
-Az útmutató a cikkben létrehozott egy általános célú v2 standard szintű tárfiókot. Megtudhatja, hogyan fel-és letölteni az BLOB storage-fiókjában, folytassa a Blob storage rövid útmutatók egyik.
+Ebben a útmutatóban egy általános célú v2 standard Storage-fiókot hozott létre. Ha meg szeretné tudni, hogyan tölthet fel és tölthet le blobokat a Storage-fiókjába, folytassa a blob Storage egyik rövid útmutatójának használatával.
 
 # <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
@@ -273,7 +277,7 @@ Az útmutató a cikkben létrehozott egy általános célú v2 standard szintű 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!div class="nextstepaction"]
-> [Az Azure CLI-vel blobok használata](../blobs/storage-quickstart-blobs-cli.md)
+> [Blobok használata az Azure parancssori felületének használatával](../blobs/storage-quickstart-blobs-cli.md)
 
 # <a name="templatetabtemplate"></a>[Sablon](#tab/template)
 

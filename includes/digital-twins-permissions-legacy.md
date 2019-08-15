@@ -5,44 +5,44 @@ services: digital-twins
 author: alinamstanciu
 ms.service: digital-twins
 ms.topic: include
-ms.date: 06/26/2019
+ms.date: 08/12/2019
 ms.author: alinast
 ms.custom: include file
-ms.openlocfilehash: 9a5b3b04287a8b732d01bd8fe4610e073332da0d
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 9f4bf6fb92b590e274e8880b5f900e5469f85727
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478965"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012156"
 ---
-1. Az a [az Azure portal](https://portal.azure.com), nyissa meg **Azure Active Directory** a bal oldali ablaktáblán, és ezután nyissa meg a **tulajdonságok** ablaktáblán. Másolja ki a **Címtár-azonosítót** egy ideiglenes fájlba. A mintaalkalmazás konfigurálását a következő szakaszban ezt az értéket fogja használni.
+1. A [Azure Portal](https://portal.azure.com)nyissa meg **Azure Active Directory** a bal oldali ablaktáblán, majd nyissa meg a **Tulajdonságok** ablaktáblát. Másolja ki a **Címtár-azonosítót** egy ideiglenes fájlba. Ezt az értéket fogja használni egy minta alkalmazás következő szakaszban való konfigurálásához.
 
-    ![Az Azure Active Directory címtár-azonosító](./media/digital-twins-permissions-legacy/aad-app-reg-tenant.png)
+    ![Azure Active Directory Directory-azonosító](./media/digital-twins-permissions-legacy/aad-app-reg-tenant.png)
 
-1. Az a [az Azure portal](https://portal.azure.com), nyissa meg **Azure Active Directory** a bal oldali ablaktáblán, és ezután nyissa meg a **alkalmazásregisztrációk (örökölt)** ablaktáblán. Válassza ki a **új alkalmazásregisztráció** gombra.
+1. A [Azure Portal](https://portal.azure.com)nyissa meg **Azure Active Directory** a bal oldali ablaktáblán, majd nyissa meg a **Alkalmazásregisztrációk (örökölt)** ablaktáblát. Válassza az **új alkalmazás regisztrálása** gombot.
 
-1. Adjon egy rövid nevet a az alkalmazás regisztrációját a **neve** mezőbe. Válasszon **alkalmazástípus** , **natív**, és **átirányítási URI-t** , `https://microsoft.com`. Kattintson a **Létrehozás** gombra.
+1. Adjon egy rövid nevet az alkalmazás regisztrálásához a **név** mezőben. Válassza az **alkalmazás típusa** **natívként**lehetőséget, majd az `https://microsoft.com`átirányítási **URI** -t. Kattintson a **Létrehozás** gombra.
 
-    ![Hozzon létre panel](./media/digital-twins-permissions-legacy/aad-app-reg-create.png)
+    ![Létrehozás ablaktábla](./media/digital-twins-permissions-legacy/aad-app-reg-create.png)
 
-1.  Nyissa meg a regisztrált alkalmazást, és másolja az értékét a **Alkalmazásazonosító** mezőt egy ideiglenes fájlba. Ez az érték azonosítja az Azure Active Directory-alkalmazást. A mintaalkalmazás konfigurálását az alábbi szakaszok az Alkalmazásazonosítót fogja használni.
+1.  Nyissa meg a regisztrált alkalmazást, és másolja az **Application ID** mező értékét egy ideiglenes fájlba. Ez az érték azonosítja a Azure Active Directory alkalmazást. Az alkalmazás-azonosító segítségével konfigurálja a minta alkalmazását a következő fejezetekben.
 
-    ![Az Azure Active Directory-alkalmazás azonosítója](./media/digital-twins-permissions-legacy/aad-app-reg-app-id.png)
+    ![Azure Active Directory alkalmazás azonosítója](./media/digital-twins-permissions-legacy/aad-app-reg-app-id.png)
 
-1. Az alkalmazás regisztrációs panel megnyitásához. Válassza ki **beállítások** > **szükséges engedélyek**, majd:
+1. Nyissa meg az alkalmazás regisztráció ablaktábláját. Válassza a **Beállítások** > **szükséges engedélyek**lehetőséget, majd a következőket:
 
-   a. Válassza ki **Hozzáadás** megnyitásához a bal felső a **API-hozzáférés hozzáadása** ablaktáblán.
+   a. A bal felső sarokban található **Hozzáadás** gombra kattintva nyissa meg az **API-hozzáférés hozzáadása** panelt.
 
-   b. Válassza ki **API kiválasztása** és keressen rá a **Azure digitális Twins**. Ha a keresés nem találja meg az API-t, keressen inkább az **Azure Smart Spaces** kifejezésre.
+   b. Válassza **az API kiválasztása** lehetőséget, és keressen az **Azure Digital ikrek**kifejezésre. Ha a keresés nem találja meg az API-t, keressen inkább az **Azure Smart Spaces** kifejezésre.
 
-   c. Válassza ki a **Azure digitális Twins (Azure intelligens tárolóhelyek szolgáltatása)** lehetőséget, majd válassza a **kiválasztása**.
+   c. Válassza ki az **Azure digitális Twins (Azure Smart Spaces szolgáltatás)** lehetőséget, és válassza a **kiválasztás**elemet.
 
-   d. Válasszon **engedélyek kiválasztása**. Válassza ki a **olvasási/írási hozzáférést** delegált engedélyeket jelölőnégyzetet, majd válassza a **kiválasztása**.
+   d. Válassza az **engedélyek kiválasztása**lehetőséget. Jelölje be az **olvasási/írási hozzáférés** delegált engedélyek jelölőnégyzetet, majd válassza a **kiválasztás**lehetőséget.
 
-   e. Válassza ki **kész** a a **API-hozzáférés hozzáadása** ablaktáblán.
+   e. Válassza a **kész** lehetőséget az **API-hozzáférés hozzáadása** panelen.
 
-   f. Az a **szükséges engedélyek** panelen válassza a **engedélyeket** gombra, és fogadja el a visszaigazolás, amely akkor jelenik meg. Ha az engedély nem rendelkezik az API-hoz, forduljon a rendszergazdához.
+   f. A **szükséges engedélyek** ablaktáblán válassza az **engedélyek megadása** gombot, és fogadja el a megjelenő nyugtát. Ha ehhez az API-hoz nem kap engedélyt, forduljon a rendszergazdához.
 
-      ![Szükséges engedélyek panelen](./media/digital-twins-permissions-legacy/aad-app-req-permissions.png)
+      ![Szükséges engedélyek panel](./media/digital-twins-permissions-legacy/aad-app-req-permissions.png)
 
  

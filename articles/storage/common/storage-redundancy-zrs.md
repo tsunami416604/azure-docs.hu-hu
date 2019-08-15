@@ -5,21 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5fefe469bfac4816a67c6ceb344f12c1e52de60c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f4e36edf86823453e663ed875c7d5e4ffdc2e524
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68550447"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016433"
 ---
-# <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Zóna – redundáns tárolás (ZRS): Magasan elérhető Azure Storage-alkalmazások
+# <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zone-redundáns tárolás (ZRS) a magasan elérhető Azure Storage-alkalmazások létrehozásához
+
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
 
 ## <a name="support-coverage-and-regional-availability"></a>A lefedettség és a regionális rendelkezésre állás támogatása
+
 A ZRS jelenleg támogatja a standard általános célú v2-fiókok típusát. További információ a Storage-fiókok típusairól: az [Azure Storage-fiók áttekintése](storage-account-overview.md).
 
 A ZRS a Blobok, a nem lemezes Blobok, a fájlok, a táblák és a várólisták számára érhető el.
@@ -45,6 +47,7 @@ A Microsoft továbbra is engedélyezi a ZRS további Azure-régiókban. Az új r
 - A felügyelt lemezek nem támogatják a ZRS. A standard SSD-Managed Disks pillanatképeit és lemezképeit standard HDD tárolóban tárolhatja, és [választhat a LRS és a ZRS lehetőségek](https://azure.microsoft.com/pricing/details/managed-disks/)közül.
 
 ## <a name="what-happens-when-a-zone-becomes-unavailable"></a>Mi történik, ha egy zóna elérhetetlenné válik?
+
 Az adatok továbbra is elérhetők olvasási és írási műveletekhez, még akkor is, ha egy zóna elérhetetlenné válik. A Microsoft azt javasolja, hogy folytassa az átmeneti hibák kezelésére szolgáló eljárások követésével. Ezek a gyakorlatok az újrapróbálkozási szabályzatok exponenciális biztonsági mentéssel történő megvalósítását foglalják magukban.
 
 Ha egy zóna nem érhető el, az Azure hálózati frissítéseket végez, például a DNS-átállítást. Ezek a frissítések hatással lehetnek az alkalmazásra, ha a frissítések befejeződése előtt hozzáfér az adataihoz.
@@ -52,6 +55,7 @@ Ha egy zóna nem érhető el, az Azure hálózati frissítéseket végez, péld�
 Előfordulhat, hogy a ZRS nem nyújt védelmet olyan regionális katasztrófák ellen, ahol a rendszer több zónát tartósan érint. Ehelyett a ZRS rugalmasságot biztosít az adatai számára, ha átmenetileg elérhetetlenné válik. A regionális katasztrófák elleni védelem érdekében a Microsoft a Geo-redundáns tárolást (GRS) javasolja. A GRS kapcsolatos további információkért lásd [: Geo-redundáns tárolás (GRS): Régiók közötti replikáció az Azure Storage](storage-redundancy-grs.md)-ban.
 
 ## <a name="converting-to-zrs-replication"></a>Átalakítás ZRS replikálásra
+
 A LRS, GRS és RA-GRS-re való Migrálás egyszerű. A fiók redundancia-típusának módosításához használja a Azure Portal vagy a Storage erőforrás-szolgáltató API-ját. Az Azure ezeket az adatait ennek megfelelően replikálja. 
 
 Az ZRS-re történő áttelepítéshez egy másik stratégia szükséges. A ZRS migrálása magában foglalja az adatok fizikai áthelyezését egyetlen tárolási bélyegzőből egy adott régióban található több bélyegre.
@@ -61,14 +65,14 @@ Két elsődleges lehetőség van a ZRS való áttelepítésre:
 - Az adatok manuális másolása vagy áthelyezése egy új ZRS-fiókból egy meglévő fiókból.
 - Élő áttelepítés kérése.
 
-A Microsoft nyomatékosan javasolja, hogy manuális áttelepítést végezzen. A manuális áttelepítés nagyobb rugalmasságot biztosít, mint az élő áttelepítés. A manuális áttelepítéssel szabályozhatja az időzítést.
+Ha az áttelepítést egy meghatározott dátummal kell végrehajtania, érdemes lehet manuális áttelepítést végeznie. A manuális áttelepítés nagyobb rugalmasságot biztosít, mint az élő áttelepítés. A manuális áttelepítéssel szabályozhatja az időzítést.
 
 Manuális áttelepítés végrehajtásához a következő lehetőségek közül választhat:
 - Olyan meglévő eszközöket használhat, mint például a AzCopy, az egyik Azure Storage ügyféloldali kódtára vagy a megbízható külső eszközök.
 - Ha már ismeri a Hadoop vagy a HDInsight, csatolja a forrás és a cél (ZRS) fiókot a fürthöz. Ezután integrálással az adatmásolási folyamatot egy olyan eszközzel, mint a DistCp.
 - Saját eszközkészletet hozhat létre az egyik Azure Storage ügyféloldali kódtár használatával.
 
-A manuális áttelepítés az alkalmazás leállását eredményezheti. Ha az alkalmazás magas rendelkezésre állást igényel, a Microsoft élő áttelepítési lehetőséget is biztosít. Az élő áttelepítés helyben történő áttelepítés. 
+A manuális áttelepítés az alkalmazás leállását eredményezheti. Ha az alkalmazás magas rendelkezésre állást igényel, a Microsoft élő áttelepítési lehetőséget is biztosít. Az élő áttelepítés egy helyben történő áttelepítés állásidő nélkül. 
 
 Az élő áttelepítés során használhatja a Storage-fiókot, miközben az adatokat a forrás-és a cél tárolási bélyegzők között telepíti át. Az áttelepítési folyamat során a szokásosnál azonos mértékű tartóssági és rendelkezésre állási SLA van.
 
@@ -137,9 +141,9 @@ A klasszikus ZRS csak az általános célú v1-(GPv1-) Storage-fiókokban lévő
 
 A ZRS-fiók adatainak manuális áttelepítéséhez egy LRS, a klasszikus, a GRS vagy az RA-GRS fiókból a következő eszközök egyikét használja: AzCopy, Azure Storage Explorer, Azure PowerShell vagy Azure CLI. Saját áttelepítési megoldást is létrehozhat az Azure Storage ügyféloldali kódtárainak egyikével.
 
-A ZRS klasszikus fiók (ok) ZRS is frissítheti a portálon, vagy Azure PowerShell vagy Azure CLI-t használhat azokban a régiókban, ahol a ZRS elérhető.
+A ZRS klasszikus fiók (ok) ZRS is frissítheti a portálon, vagy Azure PowerShell vagy Azure CLI-t használhat azokban a régiókban, ahol a ZRS elérhető. A Azure Portal ZRS való frissítéséhez navigáljon a fiók **konfiguráció** szakaszára, és válassza a **frissítés**lehetőséget:
 
-A portál ZRS való frissítéséhez lépjen a fiók konfiguráció szakaszába, és válassza a frissítés lehetőséget:![A ZRS klasszikus frissítése ZRS a portálon](media/storage-redundancy-zrs/portal-zrs-classic-upgrade.jpg)
+![A ZRS klasszikus frissítése ZRS a portálon](media/storage-redundancy-zrs/portal-zrs-classic-upgrade.png)
 
 Ha az ZRS-re szeretne frissíteni a PowerShell-lel, hívja meg a következő parancsot:
 ```powershell

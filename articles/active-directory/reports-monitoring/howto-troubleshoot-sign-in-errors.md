@@ -1,9 +1,9 @@
 ---
-title: Jelentkezzen be kapcsolatos hibák elhárítása Azure Active Directory-jelentések segítségével |} A Microsoft Docs
-description: Ismerje meg, jelentkezzen be kapcsolatos hibák elhárítása Azure Active Directory-jelentések használata az Azure Portalon
+title: Bejelentkezési hibák elhárítása Azure Active Directory jelentésekkel | Microsoft Docs
+description: A bejelentkezéssel kapcsolatos hibák elhárítása Azure Active Directory jelentések használatával a Azure Portal
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,57 +11,57 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db68ad2a29dcaa53d219b679b9e0f24a50a6f576
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c901395436c8ed660c50b7342a804143d57db3c
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60286532"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988170"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Útmutató: Jelentkezzen be kapcsolatos hibák elhárítása Azure Active Directory-jelentések segítségével
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Útmutató: Bejelentkezési hibák elhárítása Azure Active Directory jelentések használatával
 
-A [bejelentkezésekre](concept-sign-ins.md) az Azure Active Directory (Azure AD) lehetővé teszi a szervezeten belül, az alkalmazásokhoz való hozzáférés kezelése körül kérdésekre adott válaszok többek között:
+A Azure Active Directory (Azure AD) [bejelentkezési jelentései](concept-sign-ins.md) lehetővé teszik a szervezet alkalmazásaihoz való hozzáférés kezelésével kapcsolatos kérdésekre adott válaszok megkeresését, beleértve a következőket:
 
 - Milyen egy adott felhasználó bejelentkezési mintázata?
 - Hány felhasználó jelentkezett be egy adott héten?
 - Milyen állapotúak ezek a bejelentkezések?
 
 
-Emellett a bejelentkezési jelentések is segíthet a szervezet felhasználói bejelentkezési hibák elhárítása. Ebben az útmutatóban megismerheti, hogyan bejelentkezési hiba történt a bejelentkezések jelentés elkülönítésére, és ennek segítségével a hiba alapvető okának megismeréséhez.
+A bejelentkezési jelentés továbbá segítséget nyújt a cégen belüli felhasználók bejelentkezési hibáinak elhárításához. Ebből az útmutatóból megtudhatja, hogyan különíthető el a bejelentkezési hiba a bejelentkezési jelentésben, és hogyan használható a hiba kiváltó okának megismerésére.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A következők szükségesek:
 
-* Prémium verzió (P1 vagy P2) licenccel rendelkező Azure AD-bérlővel. Lásd: [Ismerkedés az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) az Azure Active Directory-kiadás frissítése.
-* A felhasználó, aki az a **globális rendszergazdai**, **biztonsági rendszergazda**, **biztonsági olvasó**, vagy **jelentést olvasó** szerepkör a bérlő számára. Emellett bármely felhasználó hozzáférhet a saját bejelentkezések. 
+* Egy prémium szintű (P1/P2) licenccel rendelkező Azure AD-bérlő. A Azure Active Directory kiadásának frissítéséhez tekintse meg a [prémium szintű Azure Active Directory első lépéseivel foglalkozó](../fundamentals/active-directory-get-started-premium.md) témakört.
+* Egy felhasználó, aki a **globális rendszergazda**, a **biztonsági rendszergazda**, a **biztonsági olvasó**vagy a **jelentéskészítő olvasó** szerepkörben található a bérlőhöz. Emellett a felhasználók hozzáférhetnek a saját bejelentkezésekhez is. 
 
-## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>A bejelentkezések jelentés használatával bejelentkezési hibák elhárítása
+## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>Bejelentkezési hibák elhárítása a bejelentkezési jelentés használatával
 
-1. Keresse meg a [az Azure portal](https://portal.azure.com) válassza ki azt a címtárat.
-2. Válassza ki **Azure Active Directory** válassza **bejelentkezések** származó a **figyelés** szakaszban. 
-3. A megadott szűrők segítségével leszűkítheti a hiba, a felhasználónév vagy objektumazonosító, az alkalmazás nevét vagy a dátum. Ezenkívül válassza **hiba** a a **állapota** legördülő csak a sikertelen bejelentkezések megjelenítéséhez. 
+1. Navigáljon a [Azure Portal](https://portal.azure.com) , és válassza ki a címtárat.
+2. Válassza a **Azure Active Directory** lehetőséget, majd a **figyelés** szakaszban válassza a **bejelentkezések** lehetőséget. 
+3. A megadott szűrők segítségével Szűkítse le a hibát a Felhasználónév vagy az objektumazonosító, az alkalmazás neve vagy a dátum alapján. Emellett válassza az **állapot** legördülő lista **meghibásodás** elemét, hogy csak a sikertelen bejelentkezéseket jelenítse meg. 
 
     ![Szűrés eredményei](./media/howto-troubleshoot-sign-in-errors/filters.png)
         
-4. Azonosítsa a sikertelen bejelentkezési vizsgálni kívánt. Válassza ki azt a sikertelen bejelentkezési kapcsolatos további információkat a további részletei ablak megnyitásához. Jegyezze fel a **bejelentkezési hiba kódja** és **a hiba oka**. 
+4. Azonosítsa a vizsgálni kívánt sikertelen bejelentkezést. Válassza ki azt a további részletek ablak megnyitásához, ahol további információ található a sikertelen bejelentkezésről. Jegyezze fel a **bejelentkezéshez** tartozó hibakódot és a **hiba okát**. 
 
     ![Rekord kiválasztása](./media/howto-troubleshoot-sign-in-errors/sign-in-failures.png)
         
-5. Ezt az információt is megtalálhatja a **hibaelhárítás és támogatás** a részleteket megjelenítő lapon.
+5. Ezeket az információkat a részletek ablak **Hibaelhárítás és támogatás** lapján tekintheti meg.
 
     ![Hibaelhárítás és támogatás](./media/howto-troubleshoot-sign-in-errors/troubleshooting-and-support.png)
 
-6. A hiba okának leírja a hibát. Például ebben az esetben, a hiba oka van **érvénytelen felhasználónév vagy jelszó vagy érvénytelen helyszíni felhasználónév vagy jelszó**. A javítás, hogy egyszerűen csak jelentkezzen be újra a helyes felhasználónevet és jelszót.
+6. A hiba oka a hibát mutatja. A fenti forgatókönyvben például a hiba oka **érvénytelen Felhasználónév vagy jelszó, vagy érvénytelen a helyszíni Felhasználónév vagy jelszó**. A javítás a helyes felhasználónévvel és jelszóval való újbóli bejelentkezés.
 
-7. További információt a szervizeléshez, így a hibakódot, keressen rá **50126** ebben a példában a a [bejelentkezések hibakódjai referencia](reference-sign-ins-error-codes.md). 
+7. További információkat, például a Szervizelési ötleteket is megkeresheti, ha az ebben a példában szereplő **50126** -as hibakódot keresi, a [bejelentkezések hibakód-referenciájában](reference-sign-ins-error-codes.md). 
 
-8. Ha semmi más nem, vagy a probléma továbbra is fennáll, annak ellenére, hogy a javasolt művelet kurzust [hozzon létre egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) leírt lépések végrehajtásával a **hibaelhárítás és támogatás** fülre. 
+8. Ha az összes kötél meghibásodik, vagy ha a probléma továbbra is fennáll, az ajánlott művelet végrehajtása előtt [Nyisson meg egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a **Hibaelhárítás és támogatás** lapon leírt lépések követésével. 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Bejelentkezések hibakódok hivatkozhat.](reference-sign-ins-error-codes.md)
-* [Bejelentkezések jelentés – áttekintés](concept-sign-ins.md)
+* [Bejelentkezések hibakód-referenciája](reference-sign-ins-error-codes.md)
+* [A bejelentkezések jelentésének áttekintése](concept-sign-ins.md)

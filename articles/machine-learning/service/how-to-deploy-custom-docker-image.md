@@ -1,5 +1,5 @@
 ---
-title: Modellek üzembe helyezése egyéni Docker-lemezképpel
+title: Modellek üzembe helyezése egyéni Docker-rendszerkép használatával
 titleSuffix: Azure Machine Learning service
 description: Megtudhatja, hogyan használhat egyéni Docker-rendszerképet a Azure Machine Learning szolgáltatási modelljeinek üzembe helyezése során. A betanított modell telepítésekor a rendszer létrehoz egy Docker-rendszerképet, amely a szolgáltatás futtatásához szükséges lemezképet, webkiszolgálót és egyéb összetevőket tárolja. Míg Azure Machine Learning szolgáltatás alapértelmezett rendszerképet biztosít Önnek, saját rendszerkép is használható.
 services: machine-learning
@@ -10,16 +10,16 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/11/2019
-ms.openlocfilehash: 0025f488f6a9b0af4e05a8bdf3ddf36c089d4d9f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f41ccef7803366e63247e6862c59ddb983527d26
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856119"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990537"
 ---
-# <a name="deploy-a-model-using-a-custom-docker-image"></a>Modell üzembe helyezése egyéni Docker-rendszerkép használatával
+# <a name="deploy-a-model-by-using-a-custom-docker-image"></a>Modell üzembe helyezése egyéni Docker-rendszerkép használatával
 
-Megtudhatja, hogyan használhat egyéni Docker-rendszerképet a betanított modellek a Azure Machine Learning szolgáltatással való üzembe helyezése során.
+Megtudhatja, hogyan használhat egyéni Docker-rendszerképet a betanított modellek a Azure Machine Learning szolgáltatással történő telepítésekor.
 
 Ha egy webszolgáltatáshoz vagy IoT Edge eszközhöz helyez üzembe egy betanított modellt, a rendszer létrehoz egy Docker-rendszerképet. Ez a rendszerkép tartalmazza a modell, a Conda-környezet és a modell használatához szükséges eszközöket. Továbbá tartalmaz egy webkiszolgálót, amely a beérkező kérelmeket webszolgáltatásként való üzembe helyezéskor kezeli, és az Azure IoT Hub való együttműködéshez szükséges összetevőket.
 
@@ -98,6 +98,8 @@ Ha már betanított vagy telepített modelleket a Azure Machine Learning szolgá
     ```azurecli-interactive
     az ml workspace show -w <myworkspace> -g <resourcegroup> --query containerRegistry
     ```
+
+    [!INCLUDE [install extension](../../../includes/machine-learning-service-install-extension.md)]
 
     A visszaadott információ az alábbi szöveghez hasonló:
 

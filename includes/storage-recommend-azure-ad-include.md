@@ -8,14 +8,16 @@ ms.topic: include
 ms.date: 06/20/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 44d4078fa5f48531a660f6d2ed981407fb1f230f
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 825a9f5668cc80f1306d74623db2ea54614ba4a3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302328"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985388"
 ---
 > [!TIP]
-> Az Azure Storage támogatja az Azure Active Directory (Azure AD) Blob és üzenetsor-tárolási erőforrásokhoz való hozzáférés engedélyezése. Engedélyezése a felhasználók vagy alkalmazások az Azure AD által visszaadott OAuth 2.0 token használatával felső szintű biztonság és a könnyű használat biztosít megosztott kulcsot engedélyezési keresztül, és a közös hozzáférésű jogosultságkódot (SAS). Az Azure AD-hiba esetén nem kell tárolni a kódot és a kockázati potenciális biztonsági réseket a fiók elérési kulcsot.
+> Az Azure Storage a Azure Active Directory (Azure AD) használatával támogatja a blob-és üzenetsor-tárolásra vonatkozó kérések engedélyezését. Az Azure AD által visszaadott OAuth 2,0 tokent használó felhasználók vagy alkalmazások engedélyezése a jobb biztonságot és a könnyű használatot teszi lehetővé a megosztott kulcsos hitelesítésnél. Az Azure AD-ben nem szükséges a fiókhoz tartozó hozzáférési kulcs tárolása a kóddal és a potenciális biztonsági rések kockázatával.
 >
-> A Microsoft azt javasolja, hogy az Azure AD használata az Azure Storage-alkalmazások, amikor csak lehetséges. További információkért lásd: [hozzáférés engedélyezése az Azure a blobok és üzenetsorok az Azure Active Directory használatával](../articles/storage/common/storage-auth-aad.md).
+> Az Azure Storage Emellett támogatja a felhasználói delegálás megosztott hozzáférésének aláírását (SAS) a blob Storage-hoz. A felhasználói delegálás SAS-je Azure AD-beli hitelesítő adatokkal van aláírva. Ha az alkalmazás kialakításához közös hozzáférésű aláírásokra van szükség a blob Storage-hoz való hozzáféréshez, az Azure AD-beli hitelesítő adatok használatával hozzon létre egy felhasználói delegálási SAS-t a felettes
+>
+> A Microsoft azt javasolja, hogy ha lehetséges, az Azure AD-t használja az Azure Storage-alkalmazásokkal. További információ: az [Azure-blobok és-várólisták hozzáférésének engedélyezése Azure Active Directory használatával](../articles/storage/common/storage-auth-aad.md).

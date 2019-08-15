@@ -4,17 +4,17 @@ description: Ismerje meg, melyik operációs rendszerek futtathatók az Azure Io
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/22/2019
+ms.date: 08/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9b9acac829fd128a66e3ceea603bb804adf2a88b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: fdecc34b49b853c34624cabf4688e0387c303a16
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598588"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985805"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Az Azure IoT Edge által támogatott rendszerek
 
@@ -67,7 +67,7 @@ A Microsoft a következő táblázatban felsorolt rendszereket támogatja: álta
 | Windows 10 IoT Enterprise, Build 17763 | ![Windows 10 IoT Enterprise + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | Windows Server 2019, 17763-es Build | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | Windows Server IoT 2019, Build 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| Windows 10 IoT Core, Build 17763 | Nyilvános előzetes |  |  |
+| Windows 10 IoT Core, Build 17763 | ![Windows IoT Core + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 
 
 A fent felsorolt Windows operációs rendszerek a Windows-tárolókat futtató eszközökre vonatkozó követelmények. Ez a konfiguráció az egyetlen támogatott konfiguráció az éles környezetben. A Windows Azure IoT Edge telepítési csomagjai lehetővé teszik a Linux-tárolók használatát Windows rendszeren; Ez a konfiguráció azonban csak fejlesztési és tesztelési célokra használható. A Linux-tárolók használata a Windows rendszeren nem támogatott konfiguráció az éles környezetben. Ehhez a fejlesztési forgatókönyvhöz a Windows 10 Build 14393-es vagy újabb verziója, valamint a Windows Server 2016-es vagy újabb verziói is használhatók.

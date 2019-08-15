@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/31/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: db16a2f122da1bf6c767e0a47c93c22f1882c406
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 154d71c9cbc109834a5854b46c3e6584dcefa7eb
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817221"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968880"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>Szabályzat: A címtárban lévő felhasználók számára
 
@@ -35,7 +35,7 @@ Kövesse az alábbi lépéseket, ha azt szeretné, hogy a házirend a címtár a
 
 ### <a name="policy-for-users-not-in-your-directory"></a>Szabályzat: A címtárban nem szereplő felhasználók számára
 
-Kövesse az alábbi lépéseket, ha azt szeretné, hogy a házirend olyan felhasználók számára legyen, akik nem a címtárban vannak, és amelyekre ezt a hozzáférési csomagot kérhetik. A **címtárban lévő felhasználók** egy másik Azure ad-címtárban lévő felhasználókra hivatkoznak, és előfordulhat, hogy még nem kérték a címtárba.  A címtárakat úgy kell konfigurálni, hogy engedélyezve legyenek a **szervezeti kapcsolatok együttműködési korlátozásai** beállításokban.
+Kövesse az alábbi lépéseket, ha azt szeretné, hogy a házirend olyan felhasználók számára legyen, akik nem a címtárban vannak, és amelyekre ezt a hozzáférési csomagot kérhetik. A **címtárban lévő felhasználók** egy másik Azure ad-címtárban lévő felhasználókra hivatkoznak, és előfordulhat, hogy még nem kérték a címtárba. Jelenleg csak az Azure AD-t használó szervezetekhez adhat hozzá felhasználókat. A címtárakat úgy kell konfigurálni, hogy engedélyezve legyenek a **szervezeti kapcsolatok együttműködési korlátozásai** beállításokban.
 
 > [!NOTE]
 > Egy vendég külső felhasználói fiók jön létre egy olyan felhasználó számára, aki még nem szerepel a címtárban, amelynek a kérelmét jóváhagyták vagy automatikusan jóváhagyták. A vendég meghívásra kerül, de nem kap meghívót e-mailben. Ehelyett e-mailt kapnak a hozzáférési csomag hozzárendelésének megérkezése után. Alapértelmezés szerint később, amikor a vendég felhasználó már nem rendelkezik hozzáférési csomagbeli hozzárendelésekkel, mert az utolsó hozzárendelésük lejárt vagy meg lett szakítva, a vendég felhasználói fiók le lesz tiltva a bejelentkezésből, és azt követően törlődik. Ha azt szeretné, hogy a vendég felhasználók határozatlan ideig maradjanak a címtárban, akkor is, ha nem rendelkeznek hozzáférési csomag hozzárendeléseivel, módosíthatja a jogosultsági felügyeleti konfiguráció beállításait.

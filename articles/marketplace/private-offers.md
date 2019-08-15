@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: pabutler
-ms.openlocfilehash: dcba2b40bdcf4558f7a06f7e14d0ce654a9c1ec1
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 35134d828098af0cff3d585dee600ee1808b00c4
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876069"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013638"
 ---
-# <a name="private-offers"></a>Privát ajánlatok
+# <a name="private-offers"></a>Saját ajánlatok
 
 A [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) privát ajánlatai lehetővé teszik a kiadók számára, hogy csak a megrendelt ügyfelek számára látható SKU-ket hozzanak létre.
 
@@ -49,9 +49,6 @@ A privát ajánlatok csak a Azure Portalon keresztül érhetők [](https://azure
 ![[Privát ajánlatok]](./media/marketplace-publishers-guide/private-offer.png)
 
 A privát ajánlatok is megjelennek a keresési eredmények között. Csak tekintse meg a "Private" jelvényt.
-
-> [!Note]
-> A nyilvános ajánlatok nem támogatottak a Cloud Solution Provider program (CSP) viszonteladóján keresztül létesített előfizetésekkel.
 
 ## <a name="next-steps"></a>További lépések
 

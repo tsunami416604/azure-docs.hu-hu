@@ -2,19 +2,18 @@
 title: Peremhálózati eszközeit kapcsolat nélküli – Azure IoT Edge |} A Microsoft Docs
 description: Ismerje meg, hogyan IoT Edge-eszközök és a modulok működhet a hosszabb ideig internetkapcsolat nélkül, és hogyan engedélyezheti a IoT Edge a szokásos IoT-eszközök túl kapcsolat nélküli módban működjön.
 author: kgremban
-manager: philmea
 ms.author: kgremban
-ms.date: 06/04/2019
+ms.date: 08/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4a46128d3b0e77ff7921e1f4875c318a95309769
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6d82b353f8b485b4441853b7ff8e70e7d69f4d6a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598603"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986986"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>A IoT Edge eszközök, modulok és alárendelt eszközök kibővített offline képességeinek megismerése
 
@@ -137,43 +136,71 @@ Ez a beállítás a IoT Edge hub kívánt tulajdonsága, amelyet a különálló
 }
 ```
 
-### <a name="additional-offline-storage"></a>További offline tárolás
+### <a name="host-storage-for-system-modules"></a>Host Storage rendszermodulokhoz
 
-Az üzenetek tárolása alapértelmezés szerint az IoT Edge hub tároló fájlrendszerében történik. A tárterület mérete nem elegendő az offline igényeinek, ha az IoT Edge-eszközön a helyi tároló használhat. Hozzon létre egy környezeti változót az IoT Edge hub számára, amely a tároló egyik tárolási mappájára mutat. Ezután használja a létrehozási lehetőségek kötést létrehozni a tároló mappát egy mappát a gazdagépen. 
+Az üzenetek és a modul állapotára vonatkozó információk alapértelmezés szerint az IoT Edge hub helyi tárolójában tárolódnak. A jobb megbízhatóság érdekében, különösen a kapcsolat nélküli üzemmódban, a gazdagép IoT Edge eszközön is kioszthatja a tárolót.
 
-A környezeti változókat és a IoT Edge hub-modul létrehozási beállításait a **speciális Edge-futtatókörnyezet beállításainak konfigurálása** szakaszban állíthatja be a Azure Portal. Vagy beállíthatja, közvetlenül a manifest nasazení. 
+A gazdagéprendszer tárolójának beállításához hozzon létre környezeti változókat az IoT Edge hub számára, és IoT Edge-ügynököt, amely a tároló egyik tárolási mappájára mutat. Ezután használja a létrehozási lehetőségek kötést létrehozni a tároló mappát egy mappát a gazdagépen. 
+
+A környezeti változókat és a IoT Edge hub-modul létrehozási beállításait a **speciális Edge-futtatókörnyezet beállításainak konfigurálása** szakaszban állíthatja be a Azure Portal. 
+
+1. A IoT Edge hub és a IoT Edge Agent esetében is adjon hozzá egy **storageFolder** nevű környezeti változót, amely a modul egyik könyvtárára mutat.
+1. A IoT Edge hub és a IoT Edge ügynök esetében adja hozzá a kötéseket, hogy a gazdagépen lévő helyi könyvtárat összekapcsolja a modul egyik könyvtárába. Példa: 
+
+   ![Létrehozási beállítások és környezeti változók hozzáadása a helyi tárolóhoz](./media/offline-capabilities/offline-storage.png)
+
+A helyi tárolót közvetlenül a telepítési jegyzékben is konfigurálhatja. Példa: 
 
 ```json
-"edgeHub": {
-    "type": "docker",
-    "settings": {
-        "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": {
-            "HostConfig": {
-                "Binds": ["<HostStoragePath>:<ModuleStoragePath>"],
-                "PortBindings": {
-                    "8883/tcp": [{"HostPort":"8883"}],
-                    "443/tcp": [{"HostPort":"443"}],
-                    "5671/tcp": [{"HostPort":"5671"}]
+"systemModules": {
+    "edgeAgent": {
+        "settings": {
+            "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+            "createOptions": {
+                "HostConfig": {
+                    "Binds":["<HostStoragePath>:<ModuleStoragePath>"]
                 }
+            }
+        },
+        "type": "docker",
+        "env": {
+            "storageFolder": {
+                "value": "<ModuleStoragePath>"
             }
         }
     },
-    "env": {
-        "storageFolder": {
-            "value": "<ModuleStoragePath>"
-        }
-    },
-    "status": "running",
-    "restartPolicy": "always"
+    "edgeHub": {
+        "settings": {
+            "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+            "createOptions": {
+                "HostConfig": {
+                    "Binds":["<HostStoragePath>:<ModuleStoragePath"],
+                    "PortBindings":{"5671/tcp":[{"HostPort":"5671"}],"8883/tcp":[{"HostPort":"8883"}],"443/tcp":[{"HostPort":"443"}]}}}
+        },
+        "type": "docker",
+        "env": {
+            "storageFolder": {
+                "value": "<ModuleStoragePath>"
+            }
+        },
+        "status": "running",
+        "restartPolicy": "always"
+    }
 }
 ```
 
-Cserélje le `<HostStoragePath>` és `<ModuleStoragePath>` a gazdagép és a modul tároló elérési útja; gazdagép és a modul. tárolási elérési útja abszolút elérési útnak kell lennie. A létrehozási beállítások között kösse össze a gazdagép és a modul tárolási útvonalait. Ezután hozzon létre egy környezeti változót, amely a modul tárolási útvonalára mutat.  
+Cserélje `<HostStoragePath>` le `<ModuleStoragePath>` a és a értéket a gazdagép és a modul tárolási útjára; mindkét értéknek abszolút elérési útnak kell lennie. 
 
 Például azt jelenti `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` , hogy a gazdagép **/etc/iotedge/Storage** lévő címtár a tároló **/iotedge/Storage/** van leképezve. Vagy egy másik példa a Windows rendszerekre `"Binds":["C:\\temp:C:\\contemp"]` : a gazdagépen lévő **c:\\Temp** könyvtárat a rendszer a tárolón lévő **c\\:** . könyvtárba rendeli. 
 
-További részleteket a Docker- [dokumentumok](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)létrehozási lehetőségeiről is talál.
+Linux-eszközök esetén győződjön meg arról, hogy az IoT Edge hub felhasználói profilja, UID 1000, olvasási, írási és végrehajtási engedélyekkel rendelkezik a gazdagép rendszerkönyvtárához. Ezek az engedélyek azért szükségesek, hogy az IoT Edge hub képes legyen üzeneteket tárolni a címtárban, és később beolvasni őket. (A IoT Edge ügynök root-ként működik, ezért nincs szükség további engedélyekre.) A Linux rendszereken több módon is kezelhetők a címtár-engedélyek, például `chown` a használatával módosíthatja a címtár tulajdonosát `chmod` , majd módosíthatja az engedélyeket. Példa:
+
+```bash
+sudo chown 1000 <HostStoragePath>
+sudo chmod 700 <HostStoragePath>
+```
+
+További részleteket a [Docker docs](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)szolgáltatásbeli létrehozási lehetőségekről talál.
 
 ## <a name="next-steps"></a>További lépések
 
