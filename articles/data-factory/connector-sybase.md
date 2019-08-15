@@ -57,7 +57,7 @@ Sybase-beli társított szolgáltatás a következő tulajdonságok támogatotta
 | type | A type tulajdonságot kell beállítani: **Sybase** | Igen |
 | server | A Sybase-kiszolgáló neve. |Igen |
 | database | A Sybase-adatbázis neve. |Igen |
-| authenticationType | A Sybase-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű**, és **Windows**. |Igen |
+| authenticationType | A Sybase-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Basic**, és **Windows**. |Igen |
 | username | Adja meg a felhasználónevet a Sybase-adatbázishoz való csatlakozáshoz. |Igen |
 | password | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Egy helyi Integration Runtime szükség, az említett [Előfeltételek](#prerequisites). |Igen |
