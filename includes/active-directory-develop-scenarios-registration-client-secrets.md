@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/18/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: cd37880be6d518105e880b93a0bd748f7c729d88
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8f98808aa0f8a2c32e2117447824114747091a82
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68286185"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912385"
 ---
 ## <a name="registration-of-secrets-or-certificates"></a>Titkok vagy tanúsítványok regisztrálása
 
@@ -29,7 +29,7 @@ A bizalmas ügyfélalkalmazások esetében hasonlóan regisztrálnia kell egy ti
 
 Az ügyfél hitelesítő adatainak kezelése a **tanúsítványok & Secrets** oldalon történik egy alkalmazáshoz:
 
-![image](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets-expanded.png)
+![image](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
 
 - Az Azure AD a bizalmas ügyfélalkalmazás regisztrálása során létrehozta az alkalmazás titkos kulcsát (más néven az ügyfél titkát). Ez a létrehozás akkor történik meg, amikor **új ügyfél-titkos kulcsot**választ. Ezen a ponton a **Save (Mentés) gombra**kattintva a vágólapon lévő titkos karakterláncot kell átmásolnia az alkalmazásban való használathoz. Ez a karakterlánc többé nem jelenik meg.
 - a tanúsítvány feltöltése az alkalmazás regisztrálásával történik a **tanúsítvány feltöltése** gomb használatával. Az Azure AD csak az alkalmazásban közvetlenül regisztrált tanúsítványokat támogatja, és nem követi a tanúsítványkezelőket.

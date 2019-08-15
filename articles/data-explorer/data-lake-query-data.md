@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: cd53e1386d9d6f2a38beb1661554c8cc9116169d
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: ef4dfc4370c71eac1978a6f3535b571a5e6009b5
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494866"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950142"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Azure Data Lake lekérdezése az Azure Adatkezelő használatával (előzetes verzió)
 
@@ -45,8 +45,11 @@ Az Azure Adatkezelő integrálható az Azure Blob Storage és Azure Data Lake St
     dataformat=csv (h@'http://storageaccount.blob.core.windows.net/container1;secretKey') 
     with (compressed = true)  
     ```
-
-    Ez a lekérdezés a következő napi partíciókat hozza létre: *container1/éééé/hh/nn/all_exported_blobs. csv*. Nagyobb teljesítmény várható részletesebb particionálással. Többek között a napi partíciókat (például a fentieket) tartalmazó külső táblák lekérdezése jobb teljesítményt nyújt, mint a havonta particionált táblákkal rendelkező lekérdezések.
+    
+    > [!NOTE]
+    > * Nagyobb teljesítmény várható részletesebb particionálással. Többek között a napi partíciókat tartalmazó külső táblák lekérdezései jobb teljesítményt kapnak, mint a havonta particionált táblákkal rendelkező lekérdezések.
+    > * Ha partíciót tartalmazó külső táblát határoz meg, a tárolási struktúra megegyeznek.
+Ha például a tábla egy DateTime partícióval van definiálva éééé/hh/nn formátumban (alapértelmezett), az URI-tár elérési útja csak *container1/éééé/hh/nn/all_exported_blobs*lehet. 
 
 1. A külső tábla látható a webes felhasználói felület bal oldali ablaktábláján.
 
@@ -195,7 +198,7 @@ A *TaxiRides* -minta adatkészlete New York-i taxi-adathalmazt tartalmaz a [NYC 
 
 ### <a name="query-taxirides-external-table-data"></a>Külső *TaxiRides* lekérdezése 
 
-A TaxiRides külső tábla lekérdezéséhez jelentkezzen be.  [https://dataexplorer.azure.com/clusters/help/databases/Samples](https://dataexplorer.azure.com/clusters/help/databases/Samples) 
+A TaxiRides külső tábla lekérdezéséhez jelentkezzen be. [https://dataexplorer.azure.com/clusters/help/databases/Samples](https://dataexplorer.azure.com/clusters/help/databases/Samples) 
 
 #### <a name="query-taxirides-external-table-without-partitioning"></a>Külső tábla lekérdezése particionálás nélkül *TaxiRides*
 

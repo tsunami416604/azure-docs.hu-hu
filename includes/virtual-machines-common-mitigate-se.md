@@ -5,97 +5,97 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/04/2019
+ms.date: 08/08/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 169e25aeb8503a11f768a2a3062022eef51a76b8
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: b13b809b04f6cf878d68311b756ed2ca826f9697
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659820"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935306"
 ---
-**Utolsó dokumentum-frissítés**: 4. június 2019 3:00 PM PST.
+**Utolsó dokumentum frissítése**: 9 augusztus 2019 10:00 AM PST.
 
-Közzétételét egy [új osztályt a CPU biztonsági rések](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) néven ismert spekulatív végrehajtás kockázatának csökkentése ügyféloldali-csatorna támadások eredményezte az egyértelműség érdekében további kérő ügyfelek a kérdéseket.  
+Az [új CPU-sebezhetőségi biztonsági rések](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) , mint a spekulatív végrehajtási oldalsó csatornák elleni támadások, az ügyfelektől származó kérdésekkel kapcsolatos kérdéseket eredményeztek.  
 
-A Microsoft minden felhőszolgáltatásában megoldások telepítve van. Az infrastruktúra, amely Azure fut, és elkülöníti egymástól ügyfél munkaterheléseinek védelme alatt áll. Ez azt jelenti, hogy a lehetséges támadóknak ugyanazon az infrastruktúrán használatával nem támadásokkal szemben az alkalmazás a biztonsági rések használatával.
+A Microsoft az összes felhőalapú szolgáltatásban üzembe helyezte a megoldásait. Az Azure-t futtató infrastruktúra és az ügyfelek munkaterhelésének elkülönítése védett. Ez azt jelenti, hogy az azonos infrastruktúrát használó lehetséges támadók nem tudják megtámadni az alkalmazást ezen biztonsági rések használatával.
 
-Az Azure által használt [karbantartás megőrzése memória](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-that-doesnt-require-a-reboot) , amikor csak lehetséges, az ügyfél gyakorolt hatás minimalizálása érdekében, és szükségtelenné teszi az újraindítások. Azure továbbra is élvezhetik ezen módszerek előnyeit, amikor telepítenek frissítéseket a gazdagépre, és a elkövettünk ügyfeleink védelme.
+Ha lehetséges, az Azure-ban [memóriát](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-that-doesnt-require-a-reboot) használ a karbantartáshoz, hogy minimálisra csökkentse az ügyfelek hatásait, és szükségtelenné váljon az újraindítások szükségessége. Az Azure továbbra is felhasználja ezeket a metódusokat, amikor rendszerszintű-frissítéseket készít a gazdagépre, és megóvja ügyfeleinket.
 
-További információ a security hogyan integrált az Azure platformba érhető el a [Azure Security dokumentációja](https://docs.microsoft.com/azure/security/) hely. 
+További információ arról, hogy az Azure minden aspektusa hogyan integrálható a biztonsággal az [Azure Security dokumentációs](https://docs.microsoft.com/azure/security/) webhelyén. 
 
 > [!NOTE] 
-> Ez a dokumentum először lett közzétéve, mivel ez az osztály biztonsági rések több változatának közzétették. A Microsoft erősen az ügyfeleink védelme, és útmutatást nyújtunk a befektettek továbbra is. Ezen a lapon frissül, továbbra is, hogy további javításokat kiadás. 
+> A dokumentum első közzétételét követően a sebezhetőségi osztály több változata is közzé lett téve. A Microsoft továbbra is nagy mértékben befektetve biztosítja az ügyfelek védelmét és útmutatást nyújt. A rendszer frissíti a lapot, mivel továbbra is további javításokat szabadít fel. 
 > 
-> A 2019. május 14. [nyilvánosságra Intel](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html) spekulatív végrehajtás kockázatának csökkentése ügyféloldali csatorna biztonsági rés ismert mikroarchitekturális adat-mintavételezés új készletét (MDS, tekintse meg a Microsoft biztonsági útmutatója [ADV190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)), amely hozzá lett rendelve több CVEs: 
-> - CVE – a 2019-11091 - mikroarchitekturális adatok mintavételezésének Uncacheable memória (MDSUM)
-> - CVE – 2018-12126 - mikroarchitekturális Store puffer adatok mintavételezésének (MSBDS) 
-> - CVE – 2018-12127 - mikroarchitekturális terhelés Port adatok mintavételezésének (MLPDS)
-> - CVE – 2018-12130 - mikroarchitekturális kitöltés puffer adatok mintavételezésének (MFBDS)
+> 2019. május 14-én az [Intel feltárta](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html) a spekulációs végrehajtási oldalsó csatorna új biztonsági réseit (az MDS a Microsoft biztonsági útmutató [ADV190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)), amely több CVEs van hozzárendelve: 
+> - CVE-2019-11091 – a architektúrában tárolt adatmintavételezés nem gyorsítótárazható memória (MDSUM)
+> - CVE-2018-12126-a architektúrán tárolt pufferek adatmintavételezése (MSBDS) 
+> - CVE-2018-12127 – architektúrán belüli betöltési port adatmintavételezése (MLPDS)
+> - CVE-2018-12130 – architektúra-kitöltési puffer adatmintavételezése (MFBDS)
 >
-> Ez a hiba érinti az Intel® Core® processzorok és az Intel® Xeon® processzorok.  Microsoft Azure közzétette az operációs rendszer frissítéseit, és üzembe helyezése új mikrokód módon elérhetővé Intel, a felhasználók új biztonsági rések elleni védelme érdekében a flotta során.   Azure szorosan dolgoznak Intel tesztelése és ellenőrzése az új mikrokód a platform a hivatalos kiadás előtt. 
+> Ez a biztonsági rés az Intel® Core® processzorait és az Intel® Xeon® processzorokat érinti.  Microsoft Azure kiadta az operációs rendszer frissítéseit, és új, az Intel által elérhetővé tett, az új biztonsági rések elleni védelem érdekében a flottán keresztül elérhetővé teszi az ügyfeleket.   Az Azure szorosan együttműködik az Inteltel az új programkód teszteléséhez és érvényesítéséhez a platform hivatalos kiadása előtt. 
 >
-> **Nem megbízható futtató ügyfelek code belül a virtuális gép** kell venni a biztonsági rések elleni védelmét összes spekulatív végrehajtás kockázatának csökkentése ügyféloldali-csatorna biztonsági rés (Microsoft tanácsadók ADV további útmutatást alább olvasási művelet [180002](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002), [180018](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/adv180018), és [190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)).
+> **Azok a felhasználók, akik nem megbízható kódot futtatnak a virtuális gépen** , lépéseket kell tenniük a biztonsági rések elleni védelemhez, ha további útmutatásra van szüksége az összes spekulációs végrehajtási oldal-csatornás biztonsági réssel kapcsolatban (Microsoft ADVISORs ADV [ 180002](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002), [180018](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/adv180018)és [190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)).
 >
-> Más ügyfelek kell a mélység perspektíva biztonsági rések értékelése, és fontolja meg a választott konfigurációs biztonsági és teljesítménybeli következményekkel járhat.
+> A többi ügyfélnek alaposan meg kell vizsgálnia ezeket a biztonsági réseket a védelemből, és figyelembe kell vennie a kiválasztott konfiguráció biztonsági és teljesítménybeli következményeit is.
 
 
 
-## <a name="keeping-your-operating-systems-up-to-date"></a>Az operációs rendszerek frissítése
+## <a name="keeping-your-operating-systems-up-to-date"></a>Az operációs rendszerek naprakészen tartása
 
-Operációsrendszer-frissítés nem szükséges az Azure-ügyfeleink az Azure-ban futtatott alkalmazások elkülönítése, miközben, mindig célszerű a szoftver naprakészen tartásához. A legújabb biztonsági frissítések a Windows több spekulatív végrehajtás kockázatának csökkentése ügyféloldali csatorna biztonsági rés megoldások tartalmaznak. Hasonlóképpen Linux-disztribúciók kiadott több frissítéseket, a biztonsági rések. Íme a javasolt műveleteket frissíteni az operációs rendszer:
+Habár az operációs rendszer frissítése nem szükséges az Azure-ban más Azure-ügyfelektől futtatott alkalmazások elkülönítéséhez, mindig ajánlott a szoftver naprakészen tartásához. A Windows rendszerhez készült legújabb biztonsági összesítések számos spekulatív végrehajtási oldalsó csatorna biztonsági rések enyhítését tartalmazzák. Hasonlóképpen, a Linux-disztribúciók több frissítést is kiadtak a biztonsági rések kezeléséhez. Az operációs rendszer frissítésének javasolt lépései:
 
-| Ajánlat | Javasolt művelet  |
+| Ajánlat | Ajánlott művelet  |
 |----------|---------------------|
-| Azure Cloud Services  | Engedélyezése [automatikus frissítést](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal) vagy ellenőrizze, hogy a legújabb vendég operációs rendszer futtatja. |
-| Azure-beli Linuxos virtuális gépek | Frissítések telepítése az operációs rendszer-szolgáltatótól. További információkért lásd: [Linux](#linux) dokumentum későbbi részében. |
-| Az Azure Windows virtuális gépek  | Telepítse a legújabb biztonsági kumulatív frissítést.
-| Más Azure PaaS-szolgáltatások | Nem tartoznak ezeket a szolgáltatásokat használó ügyfelek számára szükséges műveletek. Az Azure automatikusan biztosítja, hogy az operációs rendszer verziója naprakész. |
+| Azure Cloud Services  | Engedélyezze az [automatikus frissítést](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal) , vagy győződjön meg arról, hogy a legújabb vendég operációs rendszert futtatja. |
+| Azure Linux Virtual Machines | Telepítse a frissítéseket az operációs rendszer szolgáltatójából. További információkért lásd a jelen dokumentum [Linux](#linux) című részében. |
+| Azure-Windows Virtual Machines  | Telepítse a legújabb biztonsági összesítést.
+| Egyéb Azure Pásti-szolgáltatások | Ezen szolgáltatásokat használó ügyfelek esetében nincs szükség beavatkozásra. Az Azure automatikusan naprakészen tartja az operációs rendszer verzióját. |
 
-## <a name="additional-guidance-if-you-are-running-untrusted-code"></a>További útmutatást a nem megbízható kód futtatásakor 
+## <a name="additional-guidance-if-you-are-running-untrusted-code"></a>További útmutatás, ha nem megbízható kódot futtat 
 
-Ügyfelek, akik nem megbízható felhasználók tetszőleges kódot lehet, hogy szeretne valósít meg bizonyos további biztonsági funkciókat az Azure Virtual Machines vagy Cloud Services belül. Ezek a funkciók számos spekulatív végrehajtás kockázatának csökkentése biztonsági leíró on belüli folyamat nyilvánosságra vektorok ellen.
+Azok az ügyfelek, akik lehetővé teszik, hogy a nem megbízható felhasználók tetszőleges programkódot hajtsanak végre, további biztonsági funkciókat kívánnak megvalósítani az Azure-Virtual Machines vagy Cloud Services. Ezek a funkciók a folyamaton belüli közzétételi vektorokkal szembeni védelmet biztosítanak, amelyek számos spekulációs végrehajtási sebezhetőséget ismertetnek.
 
-Ha további biztonsági funkciók használata ajánlott példaforgatókönyvek:
+Példák olyan esetekre, amikor további biztonsági funkciók használata javasolt:
 
-- Engedélyezi a kódot, amely nem megbízható futtatásához a virtuális Gépen belül.  
-    - *Például lehetővé teszi az ügyfeleknek a bináris feltöltése vagy parancsfájlt, amikor, majd hajtsa végre az alkalmazáson belül egyik*. 
-- Lehetővé teszi a felhasználóknak, amely nem bízik meg bejelentkezni a virtuális Gépre való alacsony jogosultságú fiókot lát.   
-    - *Például engedélyezi egy alacsony jogosultsági szintű felhasználó bejelentkezni a virtuális gépek közül távoli asztali vagy SSH használatával*.  
-- Engedélyezi a nem megbízható felhasználóknak hozzáférést a beágyazott virtualizálás implementálása virtuális gépekhez.  
-    - *Például a Hyper-V-gazdagép irányítása, de a virtuális gépek lefoglalása nem megbízható felhasználók*. 
+- Engedélyezheti a virtuális gépen belül nem megbízhatónak ítélt kódokat.  
+    - *Tegyük fel például, hogy az egyik ügyfél feltölt egy bináris vagy parancsfájlt, amelyet aztán végrehajt az alkalmazáson belül*. 
+- Lehetővé teszi a felhasználók számára, hogy alacsony jogosultsági szintű fiókok használatával jelentkezzen be a virtuális gépre.   
+    - *Tegyük fel például, hogy egy alacsony jogosultsági szintű felhasználó bejelentkezik az egyik virtuális gépre a távoli asztal vagy az SSH használatával*.  
+- Lehetővé teszi a nem megbízható felhasználók számára a beágyazott virtualizálás használatával megvalósított virtuális gépek elérését.  
+    - *Például beállíthatja a Hyper-V-gazdagépet, de a virtuális gépeket nem megbízható felhasználók számára is*kioszthatja. 
 
-Ügyfelek, akik nem valósítják meg a nem megbízható kód használata esetén ez a forgatókönyv nem kell a további biztonsági funkciók engedélyezéséhez. 
+Azok a felhasználók, akik nem nem megbízható programkódot alkalmaznak, nem szükséges engedélyezni ezeket a további biztonsági funkciókat. 
 
 ## <a name="enabling-additional-security"></a>További biztonság engedélyezése 
 
-Nem megbízható kód futtatásakor engedélyezheti a további biztonsági szolgáltatások a virtuális gép vagy Felhőszolgáltatás belül. Párhuzamosan győződjön meg arról az operációs rendszer naprakészen belül a virtuális gép vagy Felhőszolgáltatás biztonsági szolgáltatások engedélyezése
+Ha nem megbízható kódot futtat, a virtuális gépen vagy a Cloud Service-ben is engedélyezheti a további biztonsági funkciókat. Párhuzamosan gondoskodjon arról, hogy az operációs rendszer naprakész legyen, hogy lehetővé tegye a biztonsági funkciók használatát a virtuális gépen vagy a felhőalapú szolgáltatáson belül
 
 ### <a name="windows"></a>Windows 
 
-A cél operációs rendszer a további biztonsági funkciók engedélyezéséhez naprakész állapotban kell lennie. Számos spekulatív végrehajtás kockázatának csökkentése ügyféloldali csatorna megoldások alapértelmezés szerint engedélyezve vannak, amíg az itt leírt további funkciókat engedélyezni kell a manuális és teljesítménycsökkenést okozhat. 
+A cél operációs rendszernek naprakésznek kell lennie a további biztonsági funkciók engedélyezéséhez. Habár számos spekulációs végrehajtási oldali csatorna-megoldás alapértelmezés szerint engedélyezve van, az itt ismertetett további funkciókat manuálisan kell engedélyezni, és a teljesítményre gyakorolt hatást okozhatnak. 
 
 
-**1. lépés: Tiltsa le a hyper-Threading technológiát a virtuális gép** -ügyfeleknek a többszálú virtuális gépeken futó nem megbízható kód kell tiltsa le a hyper-Threading technológiát, vagy helyezze át a virtuális gép nem – a hyper-threaded méretét. Hivatkozás [feljegyzett](https://docs.microsoft.com/azure/virtual-machines/windows/acu) a hyper-threaded Virtuálisgép-méretek (ahol vcpu-t mag arány, 2:1). Ellenőrizze, hogy a virtuális gép rendelkezik-e a hyper-threading engedélyezve van, tekintse meg az alábbi szkriptet a parancssorból Windows, a virtuális gépen.
+**1. lépés: A Hyper-Threading szolgáltatás letiltása a** virtuális gépen – a nem megbízható programkódot futtató ügyfeleken le kell tiltania a Hyper-Threading szolgáltatást, vagy a nem Hyper-threadd VM-méretre kell lépnie. [Ez a dokumentum](https://docs.microsoft.com/azure/virtual-machines/windows/acu) a Hyper-threaded VM-méretek listájára hivatkozik (ahol a vCPU és a mag aránya 2:1). Annak vizsgálatához, hogy a virtuális gép rendelkezik-e Hyper-Threading szolgáltatással, tekintse meg az alábbi szkriptet a virtuális gépen található Windows-parancssor használatával.
 
-Típus `wmic` , adja meg az interaktív felületét. Írja be az alábbi fizikai mennyisége megtekintéséhez és a logikai processzorok, a virtuális gépen.
+Írja `wmic` be az interaktív interfészt. Ezután írja be az alábbit a virtuális gépen található fizikai és logikai processzorok mennyiségének megtekintéséhez.
 
 ```console
 CPU Get NumberOfCores,NumberOfLogicalProcessors /Format:List
 ```
 
-Ha a logikai processzorok száma nagyobb, mint a fizikai processzor (magok), majd a hyper-threading engedélyezve van.  Ha egy hyper-threaded virtuális Gépet futtat, kérjük [Azure támogatási](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) lekérése hyper-threading le van tiltva.  A hyper-threading le van tiltva, miután **támogatási lesz szükség a teljes virtuális gép újraindítását**. Tekintse meg [magos száma](#core-count) tudni, miért érdemes a Virtuálisgép-magok száma csökkent.
+Ha a logikai processzorok száma nagyobb, mint a fizikai processzor (mag), akkor a Hyper-Threading engedélyezve van.  Ha Hyper-threaded virtuális gépet futtat, [forduljon az Azure támogatási szolgálatához](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) a Hyper-Threading letiltásához.  Ha a Hyper-Threading le van tiltva, **a támogatáshoz teljes virtuális gép újraindítására lesz szükség**. Tekintse meg az [alapvető darabszámot](#core-count) , és Ismerje meg, hogy miért csökkent a VM-mag darabszáma.
 
 
-**2. lépés**: 1. lépés párhuzamosan, kövesse a [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) védelmet engedélyezve vannak a használatával ellenőrizheti a [SpeculationControl](https://aka.ms/SpeculationControlPS) PowerShell-modult.
+**2. lépés**: Az 1. lépéssel párhuzamosan a [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) utasításait követve ellenőrizze, hogy a védelem engedélyezve van-e a [SpeculationControl](https://aka.ms/SpeculationControlPS) PowerShell-modul használatával.
 
 > [!NOTE]
-> Ha ez a modul korábban letöltötte, szüksége lesz a legújabb verzió telepítéséhez.
+> Ha korábban már letöltötte ezt a modult, akkor telepítenie kell a legújabb verziót.
 >
 
 
-A PowerShell-parancsprogram kimenetéből rendelkeznie kell az alábbi értékek ellenőrzése engedélyezve van a biztonsági rések elleni védelmet:
+A PowerShell-parancsfájl kimenetének az alábbi értékekkel kell rendelkeznie az engedélyezett védelem ellenőrzéséhez a biztonsági rések ellen:
 
 ```
 Windows OS support for branch target injection mitigation is enabled: True
@@ -105,32 +105,32 @@ Windows OS support for L1 terminal fault mitigation is enabled: True
 Windows OS support for MDS mitigation is enabled: True
 ```
 
-A kimenet látható `MDS mitigation is enabled: False`, kérjük [Azure támogatási](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) elérhető kockázatcsökkentési lehetőségek.
+Ha a kimenet látható `MDS mitigation is enabled: False`, [forduljon az Azure támogatási szolgálatához](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) a rendelkezésre álló kockázatcsökkentő lehetőségekért.
 
 
 
-**3. lépés**: Kernel virtuális cím árnyékozása (KVAS) és a fiókiroda cél injektálási (BTI) operációs rendszer támogatás engedélyezéséhez kövesse a [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) ahhoz, hogy védelmet használ a `Session Manager` beállításkulcsok. Egy újraindításra szükség.
+**3. lépés**: A kernel virtuális IP-KVAS és az `Session Manager` ág-cél injekciós (KTF) operációs rendszer támogatásának engedélyezéséhez kövesse a [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) utasításait a beállításkulcsok használatával történő védelem engedélyezéséhez. Újraindítás szükséges.
 
 
-**4. lépés**: Az üzemelő példányok által használt [beágyazott virtualizálás](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) (D3 és E3 csak): Ezek az utasítások érvényesek, a virtuális gép a Hyper-V-gazdagépként használja.
+**4. lépés**: [Beágyazott virtualizálási](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) szolgáltatást használó központi telepítések esetén (csak D3 és E3 esetén): Ezek az utasítások a Hyper-V-gazdagépként használt virtuális gépen belül érvényesek.
 
-1.  Kövesse a [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) ahhoz, hogy védelmet használ a `MinVmVersionForCpuBasedMitigations` beállításkulcsok.
-2.  A hipervizor scheduler típusa `Core` utasításokat követve [Itt](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types).
+1.  Kövesse a [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) utasításait a védelem engedélyezéséhez a `MinVmVersionForCpuBasedMitigations` beállításkulcsok használatával.
+2.  Adja meg a hypervisor Scheduler típusát `Core` a következő útmutatás szerint [](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types):.
 
 
 ### <a name="linux"></a>Linux
 
-<a name="linux"></a>További biztonsági funkciók belül engedélyezése megköveteli, hogy a cél operációs rendszer teljes mértékben naprakész. Bizonyos megoldások alapértelmezés szerint engedélyezve lesz. Az alábbi szakasz az a Funkciók, amelyek vannak kapcsolva, alapértelmezés szerint, illetve tartománybeli hardvertámogatásra (mikrokód). Ezek a szolgáltatások engedélyezését okozhat teljesítménycsökkenést. Az operációs rendszer szolgáltató referenciadokumentációt további útmutatás
+<a name="linux"></a>A további biztonsági funkciók készletének engedélyezéséhez a cél operációs rendszernek teljesen naprakésznek kell lennie. Bizonyos enyhítések alapértelmezés szerint engedélyezve lesznek. A következő szakasz azokat a funkciókat ismerteti, amelyek alapértelmezés szerint ki vannak kapcsolva, és/vagy a hardveres támogatásra támaszkodnak. A funkciók engedélyezése hatással lehet a teljesítményre. További útmutatást az operációs rendszer szolgáltatójának dokumentációja tartalmaz.
 
 
-**1. lépés: Tiltsa le a hyper-Threading technológiát a virtuális gép** -ügyfeleknek a többszálú virtuális gépeken futó nem megbízható kód kell letiltja a hyper-Threading technológiát, vagy áthelyezés nem – a többszálú virtuális Gépre.  Hivatkozás [feljegyzett](https://docs.microsoft.com/azure/virtual-machines/linux/acu) a hyper-threaded Virtuálisgép-méretek (ahol vcpu-t mag arány, 2:1). Ellenőrizze, hogy a hyper-threaded virtuális gép fut-e, futtassa a `lscpu` parancsot a Linux rendszerű virtuális gépen. 
+**1. lépés: A Hyper-Threading szolgáltatás letiltása a** virtuális gépen – a nem megbízható programkódot futtató, Hyper-threaded virtuális gépen futó ügyfeleknek le kell tiltaniuk a Hyper-Threading szolgáltatást, vagy át kell térniük egy nem Hyper-szálas virtuális gépre.  [Ez a dokumentum](https://docs.microsoft.com/azure/virtual-machines/linux/acu) a Hyper-threaded VM-méretek listájára hivatkozik (ahol a vCPU és a mag aránya 2:1). A `lscpu` parancs futtatásával ellenőrizze, hogy fut-e Hyper-threaded virtuális gép. 
 
-Ha `Thread(s) per core = 2`, majd a hyper-threading engedélyezve van. 
+Ha `Thread(s) per core = 2`a, a Hyper-Threading engedélyezve lett. 
 
-Ha `Thread(s) per core = 1`, majd a hyper-threading le van tiltva. 
+Ha `Thread(s) per core = 1`a, a Hyper-Threading le lett tiltva. 
 
  
-Egy virtuális Gépet a hyper-threading engedélyezve van a példa a kimenetre: 
+Minta kimenete egy virtuális gép számára, amelyen engedélyezve van a Hyper-Threading: 
 
 ```console
 CPU Architecture:      x86_64
@@ -145,40 +145,41 @@ NUMA node(s):          1
 
 ```
 
-Ha egy hyper-threaded virtuális Gépet futtat, kérjük [Azure támogatási](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) lekérése hyper-threading le van tiltva.  A hyper-threading le van tiltva, miután **támogatási lesz szükség a teljes virtuális gép újraindítását**. Tekintse meg [magos száma](#core-count) tudni, miért érdemes a Virtuálisgép-magok száma csökkent.
+Ha Hyper-threaded virtuális gépet futtat, [forduljon az Azure támogatási szolgálatához](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) a Hyper-Threading letiltásához.  Ha a Hyper-Threading le van tiltva, **a támogatáshoz teljes virtuális gép újraindítására lesz szükség**. Tekintse meg az [alapvető darabszámot](#core-count) , és Ismerje meg, hogy miért csökkent a VM-mag darabszáma.
 
 
 
-**2. lépés**: Bármely csökkentése érdekében az alábbi spekulatív végrehajtás kockázatának csökkentése ügyféloldali-csatorna biztonsági résekről, tekintse meg az operációs rendszer konfigurációszolgáltató dokumentációját:   
+**2. lépés**: Az operációs rendszer szolgáltatójának dokumentációjában az alábbi spekulációs, spekulatív végrehajtással kapcsolatos biztonsági rések elleni védelem érdekében tájékozódhat:   
  
-- [Redhat and CentOS](https://access.redhat.com/security/vulnerabilities) 
+- [RedHat és CentOS](https://access.redhat.com/security/vulnerabilities) 
 - [SUSE](https://www.suse.com/support/kb/?doctype%5B%5D=DT_SUSESDB_PSDB_1_1&startIndex=1&maxIndex=0) 
 - [Ubuntu](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/) 
 
 
 ### <a name="core-count"></a>Magok száma
 
-A többszálú virtuális gép létrehozásakor a Azure lefoglal magonként 2 hozzászólásláncot adott találatul – ezek az úgynevezett vcpu-k. Ha a hyper-threading le van tiltva, az Azure eltávolítja a szálak és a felszínre hozza be egyetlen szálon futó mag (fizikai mag). A Processzor vcpu-t aránya 2:1, így egyszer a hyper-threading le van tiltva, a Processzor száma a virtuális gép megjelenik a felére csökkent. Ha például egy D8_v3 virtuális gép 8 Vcpu (2 core x 4 magok szálak) futó hyper-threaded VM.  Ha a hyper-threading le van tiltva, a rendszer eldobja a processzorokat, 4 fizikai maggal és magonként 1 szálat. 
+Egy Hyper-threaded virtuális gép létrehozásakor az Azure 2 szálat foglal le a Core-ban, ezek neve vCPU. Ha a Hyper-Threading szolgáltatás le van tiltva, az Azure eltávolítja a szálat, és felfedi az egyszálas magok (fizikai magok) felszínét. A vCPU és a CPU közötti arány 2:1, így a Hyper-Threading letiltását követően a virtuális gépen lévő CPU-szám a felére csökken. A D8_v3 virtuális gép például egy 8 vCPU futó Hyper-threadd VM (2 szál/mag x 4 mag).  Ha a Hyper-Threading szolgáltatás le van tiltva, a processzorok 4 fizikai magot vesznek, és az összes mag 1 szálat. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk útmutatást nyújt a spekulatív végrehajtás kockázatának csökkentése ügyféloldali-csatorna támadások számos modern processzorok befolyásoló alábbi:
+Ez a cikk útmutatást nyújt az alábbi, spekulatív végrehajtást biztosító, számos modern processzort érintő támadásokról:
 
-[A spectre Meltdown](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180002):
-- CVE – 2017-5715 - ág cél injektálási (BTI)  
-- CVE – 2017-5754 - Kernel lap tábla elkülönítési (KPTI)
-- CVE-2018-3639 – spekulatív Store Mellőzés (KPTI) 
+A [fantom összeomlása](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180002):
+- CVE-2017-5715 – ág céljának befecskendezése (KTF)  
+- CVE-2017-5754 – kernel-lapok elkülönítése (KPTI)
+- CVE-2018-3639 – spekulatív tároló megkerülése (KPTI) 
+- [CVE-2019-1125](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1125) – Windows kernel Information – a kísértet 1. változatának változata
  
-[L1 A Terminálszolgáltatások tartalék (L1TF)](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180018):
-- CVE – 2018-3615 - Intel Guard Szoftverbővítmények (Intel SGX)
-- CVE – 2018-3620 – operációs rendszer (OS) és a rendszer felügyeleti mód (SMM)
-- CVE – 2018-3646 – hatással van a Virtual Machine Manager (VMM)
+[L1 terminál-hiba (L1TF)](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180018):
+- CVE-2018-3615-Intel Software Guard-bővítmények (Intel SGX ENKLÁVÉHOZ)
+- CVE-2018-3620 – operációs rendszerek (OS) és rendszerfelügyeleti mód (SMM)
+- CVE-2018-3646 – hatások Virtual Machine Manager (VMM)
 
-[Mikroarchitekturális adat-mintavételezés](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190013): 
-- CVE – a 2019-11091 - mikroarchitekturális adatok mintavételezésének Uncacheable memória (MDSUM)
-- CVE – 2018-12126 - mikroarchitekturális Store puffer adatok mintavételezésének (MSBDS)
-- CVE – 2018-12127 - mikroarchitekturális terhelés Port adatok mintavételezésének (MLPDS)
-- CVE – 2018-12130 - mikroarchitekturális kitöltés puffer adatok mintavételezésének (MFBDS)
+A [architektúrában tárolt adatmintavétel](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190013): 
+- CVE-2019-11091 – a architektúrában tárolt adatmintavételezés nem gyorsítótárazható memória (MDSUM)
+- CVE-2018-12126-a architektúrán tárolt pufferek adatmintavételezése (MSBDS)
+- CVE-2018-12127 – architektúrán belüli betöltési port adatmintavételezése (MLPDS)
+- CVE-2018-12130 – architektúra-kitöltési puffer adatmintavételezése (MFBDS)
 
 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 23386139364a72b0275936cdc458c8cd2a5771c9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 0e3f996ab2a42057198368759c75f10e911d5f54
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386889"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68936820"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN Gateway SKU-n támogatott a BGP?
 Nem, a BGP-t az Azure **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** és **Nagy teljesítményű** VPN-átjárók támogatják. Az **alapszintű** SKU NEM támogatott.
@@ -39,6 +39,13 @@ Ezeket az ASN-eket nem adhatja meg a helyszíni VPN-eszközök számára, amikor
 Igen, a következő ASN-eket [az IANA fenntartja](http://www.iana.org/assignments/iana-as-numbers-special-registry/iana-as-numbers-special-registry.xhtml), és ezért nem állíthatók be az Azure VPN Gateway átjárón:
 
 23456, 64496–64511, 65535–65551 és 429496729
+
+### <a name="what-private-asns-can-i-use"></a>Milyen privát ASN használhatok?
+A használható privát ASN használható tartománya:
+
+* 64512-65514, 65521-65534
+
+Ezeket a ASN az IANA vagy az Azure nem foglalja le használatra, ezért használható az Azure-VPN Gatewayhoz való hozzárendeléshez.
 
 ### <a name="can-i-use-the-same-asn-for-both-on-premises-vpn-networks-and-azure-vnets"></a>Használhatom ugyanazt az ASN-t a helyszíni VPN-hálózatokhoz és az Azure VNetekhez?
 Nem, a helyszíni hálózatokhoz és az Azure VNetekhez különböző ASN-eket kell hozzárendelnie, ha BGP-vel kapcsolja össze őket. Az Azure VPN Gatewayek alapértelmezett hozzárendelt ASN-je a 65515, függetlenül attól, hogy a BGP engedélyezve van-e a létesítmények közötti kapcsolathoz. Ezt az alapértelmezett értéket felülírhatja, ha a VPN Gateway létrehozása során egy eltérő ASN-t rendel hozzá, vagy ha az átjáró létrehozása után módosítja az ASN-t. A helyszíni ASN-eket a megfelelő Azure helyi hálózati átjáróhoz kell hozzárendelni.

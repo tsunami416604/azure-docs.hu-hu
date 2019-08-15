@@ -1,6 +1,6 @@
 ---
-title: SAP HANA-infrastruktúra konfigurációi és a műveletek az Azure-ban |} A Microsoft Docs
-description: Üzemeltetési útmutató a SAP HANA-rendszerek üzembe helyezett Azure-beli virtuális gépeken.
+title: Infrastruktúra-konfigurációk és-műveletek SAP HANA az Azure-ban | Microsoft Docs
+description: Az Azure Virtual Machines szolgáltatásban üzembe helyezett SAP HANA rendszerek üzemeltetési útmutatója.
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -16,263 +16,263 @@ ms.workload: infrastructure
 ms.date: 06/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b1591f4f1e96bbb2bffb80a2c652963faa5dca5b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4b55e979c3056f89eb76a1d2c86f9a770d2d3e05
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077646"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935395"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban
-Ez a dokumentum útmutatást nyújt az Azure-infrastruktúra konfigurálása és SAP HANA rendszereit az Azure-beli natív virtuális gépek (VM) üzembe helyezett működő. A dokumentum az SAP HANA kibővített M128s VM-termékváltozat konfigurációs információkat is tartalmaz. Ez a dokumentum nem célja, hogy cserélje le a standard szintű SAP dokumentációját, amely magában foglalja az alábbi tartalommal:
+Ez a dokumentum útmutatást nyújt az Azure-infrastruktúra és az Azure natív virtuális gépeken üzembe helyezett operációs SAP HANA rendszerek konfigurálásához. A dokumentum a M128s virtuális gép SKU-jának SAP HANA kibővíthető konfigurációs adatait is tartalmazza. Ez a dokumentum nem helyettesíti a szabványos SAP-dokumentációt, amely a következő tartalmakat tartalmazza:
 
-- [Az SAP-felügyeleti útmutató](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/330e5550b09d4f0f8b6cceb14a64cd22.html)
-- [SAP telepítési útmutatóinak](https://service.sap.com/instguides)
+- [SAP felügyeleti útmutató](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/330e5550b09d4f0f8b6cceb14a64cd22.html)
+- [SAP telepítési útmutatók](https://service.sap.com/instguides)
 - [SAP-megjegyzések](https://sservice.sap.com/notes)
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató használatához az alábbi Azure-összetevők alapszintű ismeretét szüksége:
+Az útmutató használatához a következő Azure-összetevők alapszintű ismerete szükséges:
 
 - [Azure-alapú virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
-- [Az Azure-hálózatok és virtuális hálózatok](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
+- [Azure-Hálózatkezelés és virtuális hálózatok](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 - [Azure Storage](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
 
-SAP NetWeaver és más Azure-beli SAP összetevők kapcsolatos további információkért tekintse meg a [Azure-beli SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) szakaszában a [Azure dokumentációja](https://docs.microsoft.com/azure/).
+Az SAP NetWeaver és az Azure-beli SAP-összetevőkkel kapcsolatos további információkért tekintse meg az [Azure dokumentációjának](https://docs.microsoft.com/azure/) [SAP on Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) című szakaszát.
 
-## <a name="basic-setup-considerations"></a>Az alapszintű kapcsolatos szempontok
-A következő szakaszok ismertetik az alapszintű üzembe helyezéséhez Azure virtuális gépeken SAP HANA rendszereit szempontjai.
+## <a name="basic-setup-considerations"></a>Alapszintű telepítési szempontok
+Az alábbi szakaszok a SAP HANA rendszerek Azure-beli virtuális gépeken való üzembe helyezésének alapvető telepítési szempontjait ismertetik.
 
-### <a name="connect-into-azure-virtual-machines"></a>Az Azure-beli virtuális gépek csatlakoztatása
-Leírtak szerint a [tervezési útmutatója az Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide), két módszerrel alapszintű Azure virtuális gépeken való csatlakozáshoz:
+### <a name="connect-into-azure-virtual-machines"></a>Kapcsolódjon az Azure Virtual Machines szolgáltatáshoz
+Az [Azure Virtual Machines tervezési útmutatójában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)leírtaknak megfelelően két alapszintű módszer áll rendelkezésre az Azure-beli virtuális gépekhez való csatlakozáshoz:
 
-- Kapcsolódás az internethez és a nyilvános végpontokat a Jump virtuális gép vagy a virtuális gépen futó SAP HANA keresztül.
-- Csatlakozhat egy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) vagy az Azure [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
+- Kapcsolódjon az interneten és a nyilvános végpontokon egy Jump VM vagy SAP HANA rendszert futtató virtuális gépen.
+- Csatlakozás [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) -vagy Azure- [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
-Hely – hely kapcsolatok VPN- vagy ExpressRoute szükség a termelési forgatókönyvekhez. Ez a kapcsolattípus is szükség van, amely termelési forgatókönyvekhez, ahol SAP software használják, nem éles környezethez. Az alábbi képen egy példa a webhelyek közötti kapcsolat látható:
+A helyek közötti kapcsolat VPN-en vagy ExpressRoute szükséges az éles környezetekben. Az ilyen típusú kapcsolatok olyan nem éles környezetekben is szükségesek, amelyek olyan éles környezetbe kerülnek, ahol az SAP szoftver használatban van. Az alábbi képen egy példa látható a helyek közötti kapcsolatra:
 
-![Webhelyek közötti kapcsolat](media/virtual-machines-shared-sap-planning-guide/300-vpn-s2s.png)
+![Helyek közötti kapcsolat](media/virtual-machines-shared-sap-planning-guide/300-vpn-s2s.png)
 
 
-### <a name="choose-azure-vm-types"></a>Válassza ki az Azure-beli Virtuálisgép-típusok
-A termelési forgatókönyvekhez használható Azure-beli Virtuálisgép-típusok szerepelnek a [IAAS SAP dokumentációjában](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html). Nem éles környezethez natív Azure-beli Virtuálisgép-típusok választéka áll rendelkezésére.
+### <a name="choose-azure-vm-types"></a>Azure-beli virtuális gépek típusának kiválasztása
+Az éles környezetekben használható Azure-beli virtuálisgép-típusok listáját a [IAAS SAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)-dokumentációja tartalmazza. A nem éles környezetekben a natív Azure-beli virtuálisgép-típusok szélesebb választéka érhető el.
 
 >[!NOTE]
-> Nem éles környezethez, használja a virtuális gépek típusai, amelyek szerepelnek a [SAP-jegyzetnek #1928533](https://launchpad.support.sap.com/#/notes/1928533). Az Azure virtuális gépek használata a termelési forgatókönyvekhez, ellenőrizze az SAP HANA-tanúsítvánnyal rendelkező virtuális gépeket a közzétett SAP [Certified IaaS platformok listájához](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure).
+> Nem éles környezetekben használja az [SAP-megjegyzés #1928533ban](https://launchpad.support.sap.com/#/notes/1928533)felsorolt virtuálisgép-típusokat. Az Azure-beli virtuális gépek éles környezetekben való használatához tekintse meg a hitelesített virtuális gépek SAP HANA az SAP published [Certified IaaS Platforms listán](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure).
 
-Üzembe helyezése az Azure-beli virtuális gépek használatával:
+A virtuális gépek üzembe helyezése az Azure-ban a használatával:
 
-- Az Azure Portalon.
-- Az Azure PowerShell-parancsmagokat.
-- Az Azure parancssori felület.
+- A Azure Portal.
+- Azure PowerShell parancsmagok.
+- Az Azure CLI-vel.
 
-Az Azure virtuális gép Services révén teljes telepített SAP HANA-platform is telepítheti a [SAP-felhőplatform](https://cal.sap.com/). A telepítés menetét a [üzembe helyezése az SAP S/4HANA vagy BW/4hana-t az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) vagy az automation kiadott [Itt](https://github.com/AzureCAT-GSI/SAP-HANA-ARM).
+Az [SAP Cloud platformon](https://cal.sap.com/)üzembe helyezhet egy teljes körűen telepített SAP HANA platformot is az Azure-beli virtuálisgép-szolgáltatásokhoz. A telepítési folyamat az [SAP S/4HANA vagy a BW/4HANA üzembe helyezése az Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) -ban, illetve az [itt](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)megjelent Automation szolgáltatásban olvasható.
 
 >[!IMPORTANT]
-> M208xx_v2 virtuális gépeket használ, ügyeljen arra, a SUSE Linux-rendszerképek kiválasztása az Azure-beli Virtuálisgép-lemezkép-katalógus kell. Annak érdekében, hogy olvassa el a részleteket, olvassa el a cikket [memóriahasználatra optimalizált virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series). Red Hat még nem támogatott a virtuális gépek Mv2 termékcsalád HANA használata. Az, hogy támogatást nyújt a Red Hat-verziók HANA futtatásához az a 4. kérdés/CY2019 Mv2 Virtuálisgép-család az aktuális tervezése 
+> A M208xx_v2 virtuális gépek használatához körültekintően kell kiválasztania a SUSE Linux-rendszerképet az Azure virtuálisgép-rendszerkép-katalógusból. A részletek olvasásához olvassa el a [memória-optimalizált virtuális gépek méretét](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)ismertető cikket. A Red Hat még nem támogatott a HANA on Mv2 Family virtuális gépeken való használatához. A jelenlegi tervezés célja, hogy támogatást nyújtson a HANA-t futtató Red Hat-verziókhoz a Mv2 VM-családban (Q4/CY2019) 
 > 
 
 
-### <a name="storage-configuration-for-sap-hana"></a>Az SAP Hana tárolási konfigurációt
-A tárolási konfigurációk és az SAP HANA az Azure-ban használandó tárolási típus, olvassa el a dokumentumot [SAP HANA az Azure virtuális gépek tárolási konfigurációk](./hana-vm-operations-storage.md)
+### <a name="storage-configuration-for-sap-hana"></a>SAP HANA tárolási konfigurációja
+Az Azure-ban SAP HANA használható tárolási konfigurációk és tárolási típusok esetén olvassa el a dokumentumot az [Azure-beli virtuális gépek tárolási konfigurációjának SAP HANA](./hana-vm-operations-storage.md)
 
 
-### <a name="set-up-azure-virtual-networks"></a>Az Azure virtuális hálózatok beállítása
-Ha helyek közötti kapcsolat az Azure-ba, VPN vagy ExpressRoute-n keresztül, rendelkeznie kell legalább egy Azure virtuális hálózat, amely a VPN- vagy ExpressRoute-kapcsolatcsoporthoz virtuális átjárón keresztül csatlakozik. Egyszerű üzembe a virtuális átjáró is telepíthető, az Azure virtuális hálózat (VNet), valamint az SAP HANA-példányok üzemeltető alhálózatán. Az SAP HANA telepítése, hozzon létre az Azure virtuális hálózatban két további alhálózatokat. Egy alhálózatot a virtuális gépek futtatásához az SAP HANA-példányok üzemelteti. A többi alhálózat Jumpbox vagy a felügyeleti virtuális gépek üzemeltetéséhez, SAP, HANA Studio, a más felügyeleti szoftverek vagy az alkalmazás szoftver fut.
+### <a name="set-up-azure-virtual-networks"></a>Azure-beli virtuális hálózatok beállítása
+Ha a helyek közötti kapcsolatot VPN-en vagy ExpressRoute keresztül csatlakoztatja az Azure-hoz, rendelkeznie kell legalább egy olyan Azure-beli virtuális hálózattal, amely virtuális átjárón keresztül csatlakozik a VPN-vagy ExpressRoute-áramkörhöz. Az egyszerű telepítések során a virtuális átjáró üzembe helyezhető az Azure Virtual Network (VNet) azon alhálózatán is, amely az SAP HANA példányokat is üzemelteti. SAP HANA telepítéséhez két további alhálózatot hoz létre az Azure virtuális hálózaton belül. Az egyik alhálózat tárolja a virtuális gépeket az SAP HANA példányok futtatásához. A másik alhálózat Jumpbox-vagy felügyeleti virtuális gépeket futtat SAP HANA Studio, más felügyeleti szoftver vagy az alkalmazás szoftverének üzemeltetéséhez.
 
 > [!IMPORTANT]
-> Kívül funkciókat, de további fontos kívül teljesítménybeli megfontolások miatt nem támogatott konfigurálása [Azure hálózati virtuális berendezések](https://azure.microsoft.com/solutions/network-appliances/) a az SAP-alkalmazás és a egy SAP NetWeaver DBMS rétege közötti kommunikációs útvonal Hybris vagy S/4HANA-alapú SAP-rendszerhez. A SAP alkalmazás réteget és az adatbázis-kezelő réteg közötti kommunikáció egy közvetlen van szükség. A korlátozás nem tartalmaz [Azure Alkalmazásbiztonsági és NSG-szabályok](https://docs.microsoft.com/azure/virtual-network/security-overview) mindaddig, amíg ezek Alkalmazásbiztonsági és NSG-t szabályok engedélyezik a közvetlen kommunikáció. További forgatókönyvek, ahol az nva-k nem támogatottak, amelyek Linux támasztja fürtcsomópontokat és SBD eszközök leírtak szerint az Azure virtuális gépek közötti kommunikációs útvonalak vannak [magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure virtuális gépeken az SAP-alkalmazások](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse). Vagy a kommunikációs elérési utak között az Azure virtuális gépek és a Windows Server SOFS akár leírtak szerint [egy SAP ASCS/SCS példányhoz Windows feladatátvevő fürtre a fürt az Azure-beli fájlmegosztás használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share). Kommunikációs útvonalak is nva-t egyszerűen duplán két kommunikációs partnerek között a hálózati késést, korlátozhatja a kritikus útvonalakat az SAP alkalmazásrétegre és az adatbázis-kezelő réteg közötti átviteli sebesség. Bizonyos esetekben megfigyelhető az ügyfelekkel az nva-k okozhat azokban az esetekben, ahol a Linux támasztja fürtcsomópontok közti kommunikációra kell kommunikálniuk nva-n keresztül SBD eszközére sikertelen támasztja Linux-fürtöket.  
+> A funkcionalitás, de még ennél is fontosabb, hogy az [Azure hálózati virtuális berendezések](https://azure.microsoft.com/solutions/network-appliances/) konfigurálása a SAP-alkalmazás és az SAP NetWeaver, Hybris vagy S/4HANA alapú SAP adatbázis-kezelői rétege közötti kommunikációs útvonalon nem támogatott. rendszer. Az SAP-alkalmazás réteg és az adatbázis-kezelő réteg közötti kommunikációnak közvetlennek kell lennie. A korlátozás nem tartalmazza az [Azure ASG és a NSG szabályokat](https://docs.microsoft.com/azure/virtual-network/security-overview) , amennyiben ezek a ASG-és NSG-szabályok közvetlen kommunikációt tesznek lehetővé. További forgatókönyvek, amelyek esetében a NVA nem támogatottak olyan Azure-beli virtuális gépek közötti kommunikációs útvonalakban, amelyek a Linux pacemaker-fürtcsomópontok és a SBD-eszközök magas rendelkezésre állását mutatják be az Azure-beli [virtuális SUSE Linux Enterprise Server gépeken az SAP NetWeaver szolgáltatásban alkalmazások](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse). Vagy az Azure-beli virtuális gépek és a Windows Server-SOFS közötti kommunikációs útvonalakban az Azure-beli [fájlmegosztás használatával a Windows feladatátvevő fürtben a fürt SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)-példányának beállítása című témakörben leírtak szerint. A kommunikációs elérési utak NVA könnyedén megduplázhatja a két kommunikációs partner közötti hálózati késést, így az SAP-alkalmazási réteg és az adatbázis-kezelő réteg közötti kritikus útvonalakon korlátozhatja az átviteli sebességet. Az ügyfelekkel megfigyelt egyes forgatókönyvekben a NVA a pacemaker linuxos fürtök meghibásodását okozhatják abban az esetben, ha a Linux pacemaker-fürtcsomópontok közötti kommunikációnak egy NVA keresztül kell kommunikálnia a SBD-eszközzel.  
 > 
 
 > [!IMPORTANT]
-> Egy másik Tervező, amely **nem** az SAP alkalmazásrétegre és az adatbázis-kezelő réteg elkülönítése különböző Azure virtuális hálózatokra, amelyek nem támogatott a [társviszonyba](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) egymással. Javasoljuk, hogy elkülönítse a SAP alkalmazás réteg és a egy Azure virtuális hálózatban lévő alhálózat használatával más Azure virtuális hálózatok használata helyett az adatbázis-kezelő réteg. Ha nem kívánja a javasolt, és ehelyett elkülönítse a két réteg más virtuális hálózatban, a két virtuális hálózat kell lennie [társviszonyba](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). Vegye figyelembe, hogy a hálózati forgalmat két közötti [társviszonyban](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) Azure virtuális hálózatok az adatátviteli költségek tartoznak. Több terabájt, a SAP alkalmazás réteg és a DBMS réteg között cserélődő található jelentős adatmennyiség az jelentős költségekkel jár is összegyűjthetők meg, ha az SAP alkalmazásréteg és adatbázis-kezelő réteg van elkülönített két Azure virtuális társhálózatok között. 
+> Egy másik kialakítás, amely **nem** támogatott, az SAP-alkalmazás rétegének és az adatbázis-kezelő rétegnek a különböző Azure- [beli](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuális hálózatokra való elkülönítése, amelyek nincsenek egymással társítva. Azt javasoljuk, hogy a különböző Azure-beli virtuális hálózatok használata helyett az SAP-alkalmazás rétegét és az adatbázis-kezelő réteget az Azure virtuális hálózatban lévő alhálózatok használatával különítse el. Ha úgy dönt, hogy nem követi a javaslatot, és ehelyett elkülöníti a két réteget a különböző virtuális hálózatok között, a két virtuális hálózatnak [egyenrangúnak](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)kell lennie. Vegye figyelembe, hogy a két, egymástól független Azure- [beli](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuális hálózat közötti hálózati forgalom az átvitel költségeinek hatálya alá tartozik. Az SAP-alkalmazási réteg és az adatbázis-kezelő réteg jelentős költségeinek kiváltásával az SAP-alkalmazás rétegében és az adatbázis-kezelő rétegben a nagy mennyiségű adatmennyiség felhalmozható. 
 
-SAP HANA futtatásához a virtuális gépek telepítésekor a virtuális gépek van szükség:
+Ha a virtuális gépeket a SAP HANA futtatására telepíti, a virtuális gépeknek a következőkre van szükségük:
 
-- Telepítve van, a két virtuális hálózati adapter: szeretne csatlakozni a felügyeleti alhálózat egy hálózati adapter és a példányhoz való kapcsolódáshoz a helyszíni hálózat vagy a más hálózatokból, az SAP HANA az Azure-beli virtuális gépen több hálózati Adapterrel.
-- Statikus magánhálózati IP-címek mindkét virtuális hálózati adapterek vannak telepítve.
+- Két virtuális hálózati adapter van telepítve: egy hálózati adaptert a felügyeleti alhálózathoz, és egy hálózati adaptert a helyszíni hálózatról vagy más hálózatokról az Azure-beli virtuális gép SAP HANA példányához való kapcsolódáshoz.
+- Statikus magánhálózati IP-címek, amelyek mindkét virtuális hálózati adapterhez telepítve vannak.
 
 > [!NOTE]
-> Segítségével Azure azt jelenti, hogy statikus IP-címeket kell rendel az egyes Vnic. A vendég operációs rendszeren belül a statikus IP-címek nem egy virtuális hálózati adaptert kell hozzárendelése. Egyes Azure-szolgáltatásokhoz hasonlóan az Azure Backup szolgáltatás támaszkodhat, hogy legalább az elsődleges virtuális hálózati adapter van beállítva, a DHCP és a statikus IP-címeket. Lásd még a dokumentum [elhárítása Azure virtuális gépek biztonsági mentésének](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking). Ha több statikus IP-cím hozzárendelése virtuális Géphez van szüksége, több virtuális hálózati adapter hozzárendelése virtuális Géphez szeretné.
+> Statikus IP-címeket kell hozzárendelni az Azure-ban az egyes Vnic. Ne rendeljen statikus IP-címeket a vendég operációs rendszeren belül egy vNIC. Bizonyos Azure-szolgáltatások, például a Azure Backup-szolgáltatás arra támaszkodnak, hogy legalább az elsődleges vNIC DHCP-re van beállítva, és nem statikus IP-címekre. Tekintse meg az [Azure-beli virtuális gépek biztonsági mentését](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking)ismertető dokumentumot is. Ha több statikus IP-címet kell hozzárendelni egy virtuális géphez, több Vnic kell hozzárendelnie egy virtuális géphez.
 >
 >
 
-Azonban, amelyek támpontul telepítések esetén szeretne létrehozni egy virtuális adatközpont hálózati architektúra az Azure-ban. Ez az architektúra az Azure virtuális hálózat átjáró, amely csatlakozik egy külön Azure vnetbe helyszíni szétválasztása javasolja. A virtuális hálózattal külön kell futtatni a forgalmat, hogy helyszíni vagy vagy az interneten. Ez a megközelítés lehetővé teszi a vizsgálati és naplózási forgalmat, amely a virtuális adatközpont belép az Azure-ban a külön agyi virtuális hálózat szoftvereket telepíthet. Ezért kell egy virtuális hálózat, amelyen a szoftverek és konfigurációk, hogy az Azure-alapú in - és kimenő adatforgalom vonatkozik.
+A tartós üzembe helyezések esetében azonban létre kell hoznia egy virtuális adatközpont-hálózati architektúrát az Azure-ban. Ez az architektúra javasolja az Azure VNet-átjáró elkülönítését, amely a helyszíni rendszerhez csatlakozik egy különálló Azure-VNet. Ez a különálló VNet az összes olyan forgalmat üzemelteti, amely a helyszíni vagy az internet felé irányul. Ez a módszer lehetővé teszi szoftver központi telepítését az Azure-beli virtuális adatközpontba bekerülő forgalom naplózására és naplózására ebben a különálló hub-VNet. Tehát van egy VNet, amely az Azure-beli üzembe helyezéshez kapcsolódó összes szoftvert és konfigurációt üzemelteti.
 
-A cikkek [Azure Virtual Datacenter: A hálózati nézőpont](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) és [Azure Virtual Datacenter és a vállalati Vezérlősík](https://docs.microsoft.com/azure/architecture/vdc/) adjon további információ a virtual datacenter megközelítésével és a kapcsolódó Azure-beli virtuális Tervező.
+Az Azure [Virtual Datacenter cikkei: A hálózati perspektíva](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) és [Az Azure Virtual Datacenter és a nagyvállalati vezérlési sík](https://docs.microsoft.com/azure/architecture/vdc/) további információkat biztosít a virtuális adatközpontok megközelítéséről és a kapcsolódó Azure VNet kialakításáról.
 
 
 >[!NOTE]
->Agyi virtuális hálózat és küllő virtuális hálózat használatával közötti forgalom [Azure virtuális hálózatok közötti társviszony-létesítés](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) további tárgya [költségek](https://azure.microsoft.com/pricing/details/virtual-network/). Azok a költségek alapján, szüksége lehet tervezhet a feltörések közötti szigorú küllős hálózati kialakítások fut, és több [Azure ExpressRoute-átjáró](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways) , hogy csatlakozni "küllők" annak érdekében, hogy a virtuális hálózatok közötti társviszony megkerülése. Azonban az Azure ExpressRoute-átjáró bevezetése további [költségek](https://azure.microsoft.com/pricing/details/vpn-gateway/) is. Emellett használhatja a hálózati forgalom logging, naplózás és figyelés harmadik féltől származó szoftverek számára további költségek merülhetnek fel. A költségek az adatcseréhez oldalán és további Azure ExpressRoute-átjáró és a egy másik szoftver licencek által létrehozott virtuális hálózatok közötti társviszony útján függ, dönthet úgy mikroszegmentációt egy Vneten belül az elkülönítési egység alhálózatok segítségével helyett virtuális hálózatok.
+>A hub-VNet és az [Azure VNet](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) -VNet használó küllős közötti forgalom további [költségek](https://azure.microsoft.com/pricing/details/virtual-network/)alá esik. A költségek alapján előfordulhat, hogy meg kell fontolnia, hogy a szigorú elosztó és a küllős hálózati kialakítás futtatása során felmerülő kompromisszumok között a VNet-társítás megkerülése érdekében több [Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways) -átjárót is futtat, amelyekhez a küllők csatlakoznak. Az Azure ExpressRoute-átjárók azonban további [költségeket](https://azure.microsoft.com/pricing/details/vpn-gateway/) is bevezetnek. A hálózati forgalom naplózásához, naplózásához és figyeléséhez használt harmadik féltől származó szoftverek további költségei is előfordulhatnak. Az adatcsere költségeitől függ az egyoldalas VNet keresztül, valamint a további Azure ExpressRoute-átjárók és a további szoftverlicenc által létrehozott költségektől függően, ha az alhálózatok elkülönítési egységként való használatát is eldöntheti, dönthet az egyes VNet belüli Virtuális hálózatok helyett.
 
 
-Az IP-címet rendelni különböző módszerek áttekintését lásd: [IP-címtípusokat és foglalási módszereket az Azure-ban](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm). 
+Az IP-címek hozzárendelésének különböző módszereiről az [IP-címek típusai és a foglalási módszerek az Azure-ban](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)című cikk nyújt áttekintést. 
 
-A virtuális gépeken futó SAP HANA együttműködve kell hozzárendelt statikus IP-címeket. Oka, hogy néhány konfigurációs attribútum Hana hivatkozhatnak az IP-címeket.
+SAP HANA rendszert futtató virtuális gépek esetén a hozzárendelt statikus IP-címekkel kell működnie. Ennek oka, hogy a HANA-hivatkozások IP-címeinek néhány konfigurációs attribútuma.
 
-[Az Azure hálózati biztonsági csoportok (NSG-k)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) forgalmat, annak biztosítására, hogy az SAP HANA-példányt, vagy a jumpbox irányíthatók. Az NSG-t, és végül [az alkalmazásbiztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups) társítva az SAP HANA-alhálózat és a felügyeleti alhálózaton.
+Az [Azure hálózati biztonsági csoportok (NSG-k)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) az SAP HANA-példányhoz vagy a Jumpbox irányított forgalom irányítására szolgálnak. A NSG és a végül az [alkalmazás biztonsági csoportjai](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups) a SAP HANA alhálózathoz és a felügyeleti alhálózathoz vannak társítva.
 
-Az alábbi képen egy durva telepítési séma áttekintése az SAP Hana egy küllős topológiájú architektúránk VNet a következő:
+Az alábbi képen egy központi telepítési séma áttekintése látható, amely a hub és a küllős VNet architektúrát követően SAP HANA:
 
-![Nyers telepítési séma az SAP Hana-hoz](media/hana-vm-operations/hana-simple-networking.PNG)
+![A SAP HANA durva üzembe helyezési sémája](media/hana-vm-operations/hana-simple-networking.PNG)
 
-Az Azure-beli SAP HANA telepítése egy helyek közötti kapcsolat nélkül, továbbra is szeretné védelme biztosítható az SAP HANA-példány a nyilvános interneten keresztül és a egy továbbítói proxy mögött elrejtéséhez. Ez a alapvető forgatókönyvben az üzembe helyezés Azure beépített DNS-szolgáltatások gazdanév feloldása támaszkodik. Egy összetettebb telepítésben lévő nyilvános IP-címeket használja, az Azure beépített DNS-szolgáltatások különösen fontosak. Azure NSG-k és [Azure az nva-k](https://azure.microsoft.com/solutions/network-appliances/) szabályozhatja, az Útválasztás az internetről az Azure VNet-architektúra az Azure-ban történő figyeléséhez. Az alábbi képen látható, az SAP HANA telepítése egy küllős architektúra virtuális hálózat a helyek közötti kapcsolat nélkül hozzávetőleges sémát:
+Ha helyek közötti kapcsolat nélkül szeretné üzembe helyezni SAP HANA az Azure-ban, akkor továbbra is a nyilvános internetről kell elvégeznie a SAP HANA példány védelmét, és el kell rejtenie egy továbbító proxy mögött. Ebben az alapvető forgatókönyvben az üzemelő példány az Azure beépített DNS-szolgáltatásaiban támaszkodik az állomásnevek feloldására. A nyilvános IP-címeket használó összetettebb üzembe helyezésnél különösen fontos az Azure beépített DNS-szolgáltatásai. Az Azure NSG és az [Azure NVA](https://azure.microsoft.com/solutions/network-appliances/) segítségével felügyelheti az internetről érkező útválasztást az Azure-beli Azure VNet-architektúrában. Az alábbi képen egy durva séma látható, amellyel SAP HANA helyezhetők üzembe helyek közötti kapcsolat nélkül egy központhoz és küllő VNet architektúrához:
   
-![Nyers telepítési séma az SAP Hana-hoz egy helyek közötti kapcsolat nélkül](media/hana-vm-operations/hana-simple-networking2.PNG)
+![Durva üzembe helyezési séma SAP HANA helyek közötti kapcsolat nélkül](media/hana-vm-operations/hana-simple-networking2.PNG)
  
 
-Egy másik Azure az nva-k eléréséhez használt szabályozhatja és figyelheti az internetes anélkül, hogy a hub és küllő virtuális hálózatok közötti architektúra talál a cikk [magas rendelkezésre állású hálózati virtuális berendezések üzembe helyezése](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha).
+Egy másik leírás arról, hogyan használható az Azure NVA az internetről a hub és a küllő VNet architektúra nélküli hozzáférés vezérlésére és figyelésére a következő cikkben: a [nagymértékben elérhető hálózati virtuális berendezések üzembe helyezése](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha).
 
 
-## <a name="configuring-azure-infrastructure-for-sap-hana-scale-out"></a>SAP HANA horizontális felskálázás az Azure-infrastruktúra konfigurálása
-A Microsoft egy M-sorozat Virtuálisgép-Termékváltozat, amely egy SAP HANA kibővített konfigurációs minősítéssel rendelkezik. A virtuális gép M128s típusa van megkapta az egy kibővített legfeljebb 16 csomóponttal. Az Azure virtuális gépeken SAP HANA-kibővített minősítések módosításokat, ellenőrizze [Certified IaaS platformok listájához](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure).
+## <a name="configuring-azure-infrastructure-for-sap-hana-scale-out"></a>Az Azure-infrastruktúra konfigurálása SAP HANA kibővíthető
+A Microsoft egy M sorozatú VM SKU-t tartalmaz, amely SAP HANA kibővített konfigurációhoz van hitelesítve. A virtuális gép típusa legfeljebb 16 csomópont M128s kapott. Az Azure-beli virtuális gépeken SAP HANA kibővíthető minősítések változásainál tekintse meg a [Certified IaaS-platformok listáját](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure).
 
-A minimális operációsrendszer-kiadások kibővített konfigurációkhoz az Azure-beli virtuális gépek üzembe helyezéséhez a következők:
+A kibővített konfigurációk Azure-beli virtuális gépeken való üzembe helyezéséhez szükséges minimális operációsrendszer-verziók a következők:
 
 - SUSE Linux 12 SP3
-- Red hat Linux 7.4
+- Red Hat Linux 7,4
 
-A 16 csomópont kibővített minősítés
+A 16 csomópontos Felskálázási tanúsítvány
 
-- Egy csomópont a fő csomópont
-- Legfeljebb 15 csomópontok a munkavégző csomópontok
+- Az egyik csomópont a fő csomópont
+- A munkavégző csomópontok legfeljebb 15 csomópontot használnak
 
 >[!NOTE]
->Az Azure-beli Virtuálisgép-bővítő telepítés nincs lehetőség a készenléti csomópont használata
+>Az Azure-beli virtuális gépek kibővíthető üzembe helyezése esetén nem lehet készenléti csomópontot használni
 >
 
-Nem tudja készenléti csomópontok konfigurálásához az az oka rendszer kétszeres:
+A készenléti csomópont konfigurálásának oka kettős:
 
-- Az Azure ezen a ponton rendelkezik egyetlen natív NFS-szolgáltatás. Ennek eredményeképpen NFS-megosztások konfigurálni kell a külső funkciók segítségével.
-- A külső NFS konfigurációk sem képes eleget tenni a tárolási késés feltételek az üzembe helyezett Azure-beli megoldásuk az SAP Hana-hoz.
+- Az Azure ezen a ponton nem rendelkezik natív NFS-szolgáltatással. Ennek eredményeképpen az NFS-megosztásokat harmadik féltől származó funkciók segítségével kell konfigurálni.
+- A harmadik féltől származó NFS-konfigurációk egyike sem tudja teljesíteni az Azure-ban üzembe helyezett megoldásokkal SAP HANA tárolási késési feltételeit.
 
-Ennek eredményeképpen **/hana/adatok** és **/hana/log** kötetek nem oszthatók meg. Nem oszt meg ezeket a köteteket egyetlen csomópont, megakadályozza, hogy az SAP HANA készenléti csomópont kibővített konfigurációban használatát.
+Ennek eredményeképpen a **/Hana/Data** és a **/Hana/log** kötetek nem oszthatók meg. Ha nem osztja meg ezeket a köteteket az egyes csomópontokon, meggátolja egy SAP HANA készenléti csomópont használatát egy kibővíthető konfigurációban.
 
-Ennek eredményeképpen az alapvető tervezési kibővített konfigurációban egy csomópont esetén a következő módon történik:
+Ennek eredményeképpen a kibővíthető konfiguráció egyetlen csomópontjának alapszintű kialakítása a következőhöz fog hasonlítani:
 
-![Horizontális felskálázás alapjait egyetlen csomópont](media/hana-vm-operations/scale-out-basics.PNG)
+![Egyetlen csomópont kibővíthető alapjai](media/hana-vm-operations/scale-out-basics.PNG)
 
-Az alapkonfiguráció egy virtuális gép csomópont SAP HANA kibővített hasonlóan néz ki:
+A SAP HANA kibővíthető virtuálisgép-csomópontok alapszintű konfigurációja a következőhöz hasonlóan néz ki:
 
-- A **/hana/megosztott**, akkor építse ki az NFS magas rendelkezésre állású fürt SUSE Linux 12 SP3 alapján. A fürt állomásai a **/hana/megosztott** NFS megosztás(ok) a kibővített konfigurációs és az SAP NetWeaver vagy BW/4HANA Central Services. Hozhat létre ilyen konfiguráció dokumentáció áll rendelkezésre az a cikkben [magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
-- Az összes többi lemez kötetek **nem** között a különböző csomópontokon és a megosztott **nem** NFS alapján. Telepítési beállítások és lépések a horizontális felskálázás HANA telepítések a nem megosztott **/hana/adatok** és **/hana/log** biztosított lejjebb ebben a dokumentumban.
+- A **/Hana/Shared**a SUSE Linux 12 SP3-alapú, magasan elérhető NFS-fürtöt épít ki. Ez a fürt tárolja a kibővíthető konfiguráció és az SAP NetWeaver vagy a BW/4HANA központi szolgáltatások **/Hana/Shared** NFS-megosztását. Az ilyen konfiguráció létrehozásához szükséges dokumentáció az [NFS magas rendelkezésre állása az Azure-beli virtuális gépeken SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
+- Az összes többi lemez mennyisége **nem** oszlik meg a különböző csomópontok között, és **nem** az NFS-en alapul. A nem megosztott **/Hana/Data** és **/Hana/log** rendelkező, kibővíthető HANA-példányok telepítési konfigurációi és lépései a jelen dokumentum további részében olvashatók.
 
 >[!NOTE]
->Az NFS magas rendelkezésre állású fürt, amennyiben jelenik meg a grafikus elemek az SUSE Linux csak támogatott. Red hat-alapú NFS magas rendelkezésre állású megoldások felhasználóitevékenység-később fogja.
+>Az eddig a grafikában megjelenő, nagy rendelkezésre állású NFS-fürt csak SUSE Linux rendszeren támogatott. A Red Hat-on alapuló, magasan elérhető NFS-megoldást később fogjuk tájékoztatni.
 
-A csomópontok a kötetek méretezése a ugyanaz, mint a vertikális felskálázás kivételével **/hana/megosztott**. A virtuális gép M128s termékváltozat a javasolt méretek és -típusok kinéznie:
+A csomópontok köteteinek méretezése ugyanaz, mint a **/Hana/Shared**, kivéve a méretezést. A M128s VM SKU esetében a javasolt méretek és típusok a következőképpen néznek ki:
 
-| A VM-TERMÉKVÁLTOZATOK | RAM | Legfeljebb VIRTUÁLIS GÉP I/O<br /> Teljesítmény | /hana/data | / hana/log | / root kötet | /usr/sap | Hana/biztonsági mentés |
+| VM SKU | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /hana/data | /hana/log | /root-kötet | /usr/sap | Hana/Backup |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | M128s | 2000 GiB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P6 | 1 x P6 | 2 x P40 |
 
 
-Ellenőrizze, hogy a különböző javasolt kötetek a tárterületek átviteli sebességének megfelel-e futtatni kívánt számítási feladatokra. Ha a munkaterhelés igényel nagyobb kötetek **/hana/adatok** és **/hana/log**, növelje az Azure Premium Storage virtuális merevlemezeket kell. Méretezési egy további virtuális merevlemezeket, mint a felsorolt növeli az IOPS-kötettel és i/o-teljesítmény az Azure virtuális gép típusát keretein belül. Is vonatkoznak az Azure Írásgyorsító lemezek alkotó a **/hana/log** kötet.
+Győződjön meg arról, hogy a különböző javasolt kötetek tárolási átviteli sebessége megfelel-e a futtatni kívánt munkaterhelésnek. Ha a munkaterhelés nagyobb köteteket igényel a **/Hana/Data** és a **/Hana/log**számára, növelje az Azure Premium Storage VHD-k számát. Az Azure-beli virtuálisgép-típus korlátain belül a kötetek méretezése a IOPS és az I/O-átviteli sebesség növelésével növekszik. Az Azure írásgyorsító is alkalmazza a **/Hana/log** kötetet alkotó lemezekre.
  
-A dokumentum [SAP HANA TDI tárhellyel kapcsolatos követelmények](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html), a képlet neve, amely meghatározza a mérete a **/hana/megosztott** köteten a horizontális felskálázás egy négy munkavégző csomópontok egyetlen feldolgozó csomópontonkénti memória méretének.
+A (z) [SAP HANA TDI tárolási követelményei](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)című dokumentum egy nevű képletet határoz meg, amely meghatározza, hogy a **/Hana/Shared** -kötet mekkora méretű legyen a felskálázáshoz, mivel a memória mérete egy feldolgozói csomópont számára négy feldolgozó csomóponton.
 
-Ha az SAP HANA kibővített minősített M128s Azure virtuális gép nagyjából 2 TB memóriával is, az SAP javaslatokat például lehet összegezni:
+Ha feltételezi, hogy az Azure-beli, nagyjából 2 TB-os memóriával rendelkező SAP HANA kibővített tanúsítvánnyal rendelkező M128s, az SAP-javaslatok a következőképpen foglalhatók össze:
 
-- Egy fő csomópontot és négy munkavégző csomópont, akár a **/hana/megosztott** köteten kell lennie 2 TB-os méret. 
-- Egy fő csomópontot és öt és nyolc munkavégző csomópontok méretét **/hana/megosztott** 4 TB-ig kell lennie. 
-- Egy fő csomópontot és 9 és 12 feldolgozó csomópontokat, a 6 TB méret **/hana/megosztott** lenne szükséges. 
-- Egy fő csomópontot és 12 és 15 munkavégző csomópontok közötti használ, akkor szükség egy **/hana/megosztott** kötet, amely 8 TB méretig.
+- Egy főcsomópontnak és legfeljebb négy feldolgozó csomópontnak, a **/Hana/Shared** kötetnek 2 TB méretűnek kell lennie. 
+- Az egyik főcsomópontnak és öt – nyolc feldolgozó csomópontnak a **/Hana/Shared** mérete 4 TB. 
+- Egy főcsomópont és 9 – 12 feldolgozó csomópont, a **/Hana/Shared** 6 TB-os méretre lesz szükség. 
+- Egy főcsomópont, és 12 és 15 feldolgozó csomópont között kell megadnia a 8 TB méretű **/Hana/Shared** -kötetet.
 
-A többi fontos kialakítási, a képeket a horizontális felskálázás SAP HANA virtuális gép egyetlen csomópont-konfiguráció megjelenített a virtuális hálózat vagy jobban az alhálózati konfigurációt. SAP erősen ajánlja az ügyfélalkalmazás/irányuló forgalom elkülönítése, a HANA-csomópontok közötti kommunikáció. Mint a grafikák, a cél a virtuális Géphez csatlakoztatott két különböző Vnic küszöbölni érhető el. Mindkét Vnic külön alhálózatokon vannak, a két különböző IP-címet. Ezután szabályozhatja a forgalom útválasztási szabályokat az NSG-k vagy felhasználó által megadott útvonalak segítségével.
+A kibővíthető SAP HANA virtuális gép egycsomópontos konfigurációjának grafikájában megjelenő másik fontos kialakítás a VNet, vagy jobb az alhálózat konfigurációja. Az SAP kifejezetten azt ajánlja, hogy a HANA-csomópontok közötti kommunikációból elkülönítse az ügyfél/alkalmazás felé irányuló forgalmat. Ahogy az ábrán is látható, ezt a célt úgy érheti el, hogy két különböző Vnic van csatlakoztatva a virtuális géphez. Mindkét Vnic különböző alhálózatokban van, két különböző IP-címmel rendelkezik. Ezután a NSG vagy a felhasználó által megadott útvonalak használatával szabályozhatja az útválasztási szabályok forgalmának áramlását.
 
-Az Azure-ban, különösen nincsenek azt jelenti, hogy és módszerek kényszerítéséhez a szolgáltatás és az adott Vnic kvótái minőségét. Ennek eredményeképpen ügyfélalkalmazás/irányuló és a hitelesítést a csomóponton belüli kommunikáció szétválasztása nem nyitható meg minden olyan lehetőségeket a forgalmat egy stream rangsorolhatja a másikhoz képest. Ehelyett a elválasztása a hitelesítést a csomóponton belüli kommunikációhoz a horizontális felskálázás konfigurációk védelmi biztonsági intézkedés marad.  
+Különösen az Azure-ban nincs mód a szolgáltatás minőségének és a kvótáknak az adott Vnic való betartatására. Ennek eredményeképpen az ügyfél/alkalmazás és a csomóponton belüli kommunikáció elkülönítése nem nyit meg semmilyen lehetőséget, hogy az egyik forgalmi adatfolyamot a másikon rangsorolja. Ehelyett a szétválasztás a biztonság mértéke marad a kibővíthető konfigurációk csomóponton belüli kommunikációjának védelmében.  
 
 >[!IMPORTANT]
->SAP erősen ajánlja, megadhat, az ügyfélalkalmazás/részére a hálózati forgalom és a hitelesítést a csomóponton belüli forgalom ebben a dokumentumban leírtak szerint. Ezért üzembe az architektúra helyen, ahogyan az az utolsó grafikus erősen ajánlott.
+>Az SAP azt javasolja, hogy a jelen dokumentumban leírtak szerint elkülönítse a hálózati forgalmat az ügyfél, az alkalmazás és a csomóponton belüli forgalom között. Ezért a rendszer a legutóbbi ábrán látható módon helyez üzembe egy architektúrát, és kifejezetten ajánlott.
 >
 
-Egy hálózati szempontból a minimálisan szükséges hálózati architektúra módon jelenik meg:
+A hálózati szempontból a minimálisan szükséges hálózati architektúra az alábbihoz hasonló lesz:
 
-![Horizontális felskálázás alapjait egyetlen csomópont](media/hana-vm-operations/scale-out-networking-overview.PNG)
+![Egyetlen csomópont kibővíthető alapjai](media/hana-vm-operations/scale-out-networking-overview.PNG)
 
-Eddig támogatott határértékeket 15 feldolgozó további a egy fő csomóponttal.
+Az eddig támogatott korlátok az egyetlen főcsomóponton további 15 feldolgozó.
 
-A tároló szempontjából a tároló-architektúra módon jelenik meg:
+A tárolási architektúra a következőhöz hasonlóan néz ki:
 
 
-![Horizontális felskálázás alapjait egyetlen csomópont](media/hana-vm-operations/scale-out-storage-overview.PNG)
+![Egyetlen csomópont kibővíthető alapjai](media/hana-vm-operations/scale-out-storage-overview.PNG)
 
-A **/hana/megosztott** köteten található az NFS-megosztás magas rendelkezésre állású konfigurációban. Mivel az összes többi meghajtók "helyi" csatlakoztatva vannak az egyes virtuális gépekhez. 
+A **/Hana/Shared** kötet a rendelkezésre álló NFS-megosztási konfigurációban található. Míg az összes többi meghajtó "helyileg" van csatlakoztatva az egyes virtuális gépekhez. 
 
-### <a name="highly-available-nfs-share"></a>Magas rendelkezésre állású az NFS-megosztások
-Az NFS magas rendelkezésre állású fürt, amennyiben dolgoznak SUSE Linux csak. A dokumentum [magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs) ismerteti, hogyan állítsa be. Ha más HANA konfigurációs kívül az azure virtuális hálózat, amely futtatja az SAP HANA-példányok nem osztjuk meg az NFS-fürt, telepítse ugyanazon a vneten. Telepítse a saját alhálózatán található, és győződjön meg arról, hogy nem minden tetszőleges forgalom hozzáférhet az alhálózat. Ehelyett szeretné korlátozni a forgalom arra az alhálózatra, az IP-címek a virtuális gép által végrehajtása forgalom **/hana/megosztott** kötet.
+### <a name="highly-available-nfs-share"></a>Kiválóan elérhető NFS-megosztás
+A nagy rendelkezésre állású NFS-fürt eddig csak SUSE Linux rendszeren működik. Az Azure-beli [virtuális gépeken a SUSE Linux Enterprise Server az NFS magas rendelkezésre állását](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs) ismertető dokumentum azt ismerteti, hogyan lehet beállítani. Ha nem osztja meg az NFS-fürtöt minden olyan HANA-konfigurációval, amely az SAP HANA példányokat futtató Azure-VNet kívül esik, akkor ugyanazt a VNet kell telepítenie. Telepítse a saját alhálózatán, és győződjön meg arról, hogy nem minden tetszőleges forgalom fér hozzá az alhálózathoz. Ehelyett korlátozni szeretné az adott alhálózatra irányuló forgalmat azon virtuális gép IP-címére, amely a **/Hana/Shared** -kötetre irányuló forgalmat hajtja végre.
 
-HANA horizontális felskálázás a virtuális gépek, amelyek kell irányítani a virtuális hálózati adapter kapcsolódik a **/hana/megosztott** forgalom, a javaslatok láthatók:
+A **/Hana/Shared** -forgalmat átirányító HANA kibővíthető virtuális gép vNIC kapcsolatos javaslatok a következők:
 
-- Forgalom óta **/hana/megosztott** az üzletmenetre gyakorolt közepes, irányítja át a virtuális hálózati adapter, amely az ügyfél-hálózatot is a minimális konfigurációs van rendelve
-- Végül a felé irányuló forgalom **/hana/megosztott**, üzembe helyezése a harmadik alhálózat a SAP HANA horizontális felskálázás konfigurálása és hozzárendelése egy harmadik virtuális hálózati adapter az alhálózatban lévő üzemeltetett telepítése a virtuális hálózaton. A harmadik virtuális hálózati adapter és a társított IP-címet használja az NFS-megosztások a forgalmat. Ezután külön hozzáférés és alkalmazhat útválasztási szabályokat.
+- Mivel a **/Hana/Shared** felé irányuló forgalom mérsékelt, a minimális konfigurációban az ügyfél-hálózathoz rendelt vNIC irányítja át.
+- Végül a **/Hana/Shared**irányuló adatforgalom esetén helyezzen üzembe egy harmadik alhálózatot a SAP HANA VNet, és rendeljen hozzá egy harmadik, az alhálózaton üzemeltetett vNIC. Használja a harmadik vNIC és a hozzá tartozó IP-címet az NFS-megosztás forgalmához. Ezután alkalmazhat külön hozzáférési és útválasztási szabályokat is.
 
 >[!IMPORTANT]
->Az SAP HANA üzembe helyezett kibővíthető módon rendelkező virtuális gépeken és a magas rendelkezésre állású NFS közötti hálózati forgalom előfordulhat, hogy semmilyen körülmények között útválasztása egy [NVA](https://azure.microsoft.com/solutions/network-appliances/) vagy hasonló virtuális készülékek. Mivel az NSG-k Azure nincs ilyen típusú eszközök. Ellenőrizze az útválasztási szabályokat annak érdekében, hogy az nva-k vagy hasonló virtuális berendezéseken detoured mikor elérje a virtuális gépeken futó SAP HANA a magas rendelkezésre állású NFS-megosztás.
+>A hálózati forgalom olyan virtuális gépek között, amelyek kibővíthető módon vannak SAP HANAve, és a rendelkezésre álló NFS-eszközök semmilyen körülmények között nem irányíthatók át [NVA](https://azure.microsoft.com/solutions/network-appliances/) vagy hasonló virtuális készülékeken keresztül. Míg az Azure NSG nincsenek ilyen eszközök. Ellenőrizze az útválasztási szabályokat, hogy megbizonyosodjon arról, hogy a NVA vagy hasonló virtuális berendezések le vannak-e hajtva, amikor a SAP HANA rendszert futtató virtuális gépekről fér hozzá a rendelkezésre álló NFS-megosztáshoz.
 > 
 
-Ha szeretné megosztani a magas rendelkezésre állású NFS fürt között az SAP HANA-konfigurációk, helyezze át minden HANA konfigurációkat ugyanazon a Vneten. 
+Ha meg szeretné osztani a magasan elérhető NFS-fürtöt SAP HANA konfigurációk között, helyezze át az összes HANA-konfigurációt ugyanabba a VNet. 
  
 
-### <a name="installing-sap-hana-scale-out-n-azure"></a>Horizontális felskálázás n Azure SAP HANA telepítése
-Horizontális felskálázás SAP konfiguráció telepítése, kell elvégeznie a nyers lépéseit:
+### <a name="installing-sap-hana-scale-out-n-azure"></a>SAP HANA kibővíthető n Azure telepítése
+A kibővíthető SAP-konfiguráció telepítése során a következők részletes lépéseit kell végrehajtania:
 
-- Új vagy az új Azure-beli virtuális infrastruktúra gyakorlatainak
-- Az Azure által felügyelt prémium szintű Storage köteteket használó új virtuális gépek üzembe helyezéséhez
-- Üzembe helyezése egy új vagy meglévő magas rendelkezésre állású NFS fürt alakítása a
-- Alkalmazkodjon a hálózati útválasztást, győződjön meg arról, hogy, például hitelesítést a csomóponton belüli virtuális gépek közötti kommunikáció nem infrastruktúráján halad át, egy [NVA](https://azure.microsoft.com/solutions/network-appliances/). Ugyanez vonatkozik a virtuális gépek és az NFS magas rendelkezésre állású fürt közötti forgalom.
-- Telepítse a SAP HANA fő csomóponttal.
-- Alkalmazkodjon a SAP HANA-főcsomópont konfigurációs paraméterek
-- Folytassa a telepítést, a SAP HANA munkavégző csomópontok
+- Új vagy meglévő Azure VNet-infrastruktúra átalakítása
+- Az új virtuális gépek üzembe helyezése az Azure Managed Premium Storage kötetek használatával
+- Új vagy meglévő, magasan elérhető NFS-fürt üzembe helyezése
+- Igazítsa a hálózati útválasztást, és győződjön meg róla, hogy például a virtuális gépek közötti csomóponton belüli kommunikáció nem egy [NVA](https://azure.microsoft.com/solutions/network-appliances/)keresztül van átirányítva. Ugyanez érvényes a virtuális gépek és a magasan rendelkezésre álló NFS-fürt közötti forgalomra.
+- Telepítse a SAP HANA fő csomópontot.
+- A SAP HANA fő csomópont konfigurációs paramétereinek igazítása
+- Folytassa a SAP HANA munkavégző csomópontok telepítésével
 
-#### <a name="installation-of-sap-hana-in-scale-out-configuration"></a>Horizontális felskálázás a konfigurációban az SAP HANA telepítése
-Helyezünk üzembe az Azure-beli Virtuálisgép-infrastruktúra, és minden egyéb előkészített történik, ahogy az alábbi lépéseket az SAP HANA kibővített konfigurációkhoz telepítenie kell:
+#### <a name="installation-of-sap-hana-in-scale-out-configuration"></a>SAP HANA telepítése kibővíthető konfigurációban
+Az Azure-beli virtuálisgép-infrastruktúrák üzembe helyezése és az egyéb előkészületek elvégzése után a következő lépésekben telepítenie kell a SAP HANA kibővítő konfigurációit:
 
-- Telepítse az SAP HANA főcsomópont SAP dokumentáció alapján
-- **A telepítés után kell a global.ini fájl módosítása, és adja hozzá a paraméter "basepath_shared = nem", a global.ini**. Ez a paraméter lehetővé teszi, hogy az SAP HANA futtatása nélkül "shared" kibővített **/hana/adatok** és **/hana/log** köteteket a csomópontok között. Részletek vannak dokumentálva [SAP Megjegyzés #2080991](https://launchpad.support.sap.com/#/notes/2080991).
-- Miután megváltoztatta a global.ini paraméter, indítsa újra az SAP HANA-példány
-- Adja hozzá a további feldolgozó csomópontokat. Lásd még: <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html>. Adja meg az SAP HANA-csomópontok közötti kommunikáció során telepítését vagy ezután használ, például, a helyi hdblcm a belső hálózathoz. További részletes dokumentációt: is [SAP Megjegyzés #2183363](https://launchpad.support.sap.com/#/notes/2183363). 
+- Az SAP HANA fő csomópont telepítése az SAP dokumentációjának megfelelően
+- **A telepítés után módosítania kell a Global. ini fájlt, és hozzá kell adnia a "basepath_shared = No" paramétert a Global. ini fájlhoz**. Ez a paraméter lehetővé teszi, hogy a SAP HANA a "Shared" **/Hana/Data** és a csomópontok közötti **/Hana/log** -kötetek nélkül fusson. A részleteket az [SAP Note #2080991](https://launchpad.support.sap.com/#/notes/2080991)dokumentációja ismerteti.
+- A Global. ini paraméter módosítása után indítsa újra a SAP HANA példányt
+- További munkavégző csomópontok hozzáadása. Lásd még:. <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html> Itt adhatja meg a belső hálózatot SAP HANA csomópontok közötti kommunikációhoz a telepítés során, vagy később, például a helyi hdblcm használatával. Részletesebb dokumentáció: [SAP-megjegyzés #2183363](https://launchpad.support.sap.com/#/notes/2183363). 
 
-A telepítő rutin a következő futtatásához használja a nem megosztott lemezeket a kibővített konfigurációs telepített fog **/hana/adatok** és **/hana/log**. Mivel a **/hana/megosztott** kötetre kell helyezni a magas rendelkezésre állású fogja az NFS-megosztások.
+A beállítási rutin után a telepített kibővítő konfiguráció a **/Hana/Data** és a **/Hana/log**futtatásához nem megosztott lemezeket fog használni. A **/Hana/Shared** -kötetet a rendszer a magasan elérhető NFS-megosztásra helyezi.
 
 
-## <a name="sap-hana-dynamic-tiering-20-for-azure-virtual-machines"></a>Az SAP HANA dinamikus Rétegezést 2.0-beli virtuális gépek
+## <a name="sap-hana-dynamic-tiering-20-for-azure-virtual-machines"></a>Az Azure Virtual Machines szolgáltatáshoz készült 2,0-es dinamikus előSAP HANA
 
-Az M-sorozatú Azure virtuális gépeken SAP HANA-tanúsítvánnyal, mellett a Microsoft Azure-on is támogatott az SAP HANA dinamikus Rétegezést 2.0 (lásd az SAP HANA dinamikus Rétegezést dokumentációs hivatkozások lejjebb). Nincs különbség a termék telepítése vagy működő azt ugyan, például SAP HANA vezérlőpultja egy Azure virtuális gépen belüli keresztül nincsenek néhány fontos elem, amely megadása kötelező a hivatalos támogatást az Azure-ban. Alábbi alapvető szempontokat az alábbiakban tekintheti át. A cikk során a rövidítést "DT 2.0" helyett a teljes fájlvisszaállítási név dinamikus Rétegezést 2.0 történik.
+Az Azure M sorozatú virtuális gépeken SAP HANA minősítéseken kívül SAP HANA a dinamikus rétegek 2,0 is támogatott a Microsoft Azureban (lásd: SAP HANA dinamikus rétegű dokumentációs hivatkozások lejjebb). Habár nem különbözik a termék telepítésének vagy működtetésének, például SAP HANA pilótafülke egy Azure-beli virtuális gépen belül, néhány fontos elem van, amelyek kötelezőek az Azure hivatalos támogatásához. Ezeket a főbb pontokat alább találja. A cikk során a "DT 2,0" rövidítést a rendszer a teljes név, a dinamikus és a 2,0-es érték helyett használni fogja.
 
-Az SAP HANA dinamikus Rétegezést 2.0 SAP BW vagy S4HANA által nem támogatott. Főbb alkalmazási helyzetek most olyan natív HANA-alkalmazásokat.
+SAP BW vagy S4HANA nem támogatja SAP HANA a dinamikus rétegek 2,0ét. A fő használati esetek mostantól natív HANA-alkalmazások.
 
 
 ### <a name="overview"></a>Áttekintés
 
-Az alábbi képen áttekintést kapcsolatos DT 2.0 támogatása a Microsoft Azure-ban. Nincs kötelező követelmények, egy készletét, amely kell követni a hivatalos hitelesítésszolgáltató ahhoz, hogy rendelkezik:
+Az alábbi kép áttekintést nyújt a DT 2,0 támogatásáról Microsoft Azureon. A kötelező követelmények egy készlete, amelyet követni kell a hivatalos minősítés betartása érdekében:
 
-- DT 2.0 egy dedikált Azure virtuális Gépen kell telepíteni. Előfordulhat, hogy nem futnak a ugyanazon virtuális gép, ahol fut, az SAP HANA
-- SAP HANA és DT 2.0-s virtuális gépeket telepíteni kell az azonos Azure virtuális hálózaton belül
-- Az SAP HANA és DT 2.0-s virtuális gépeket kell üzembe helyezni az Azure gyorsított hálózatkezelés engedélyezett
-- Tárolási típus DT 2.0-alapú virtuális gépek kell lennie az Azure Premium Storage
-- Több Azure-lemezek kell csatolni a DT 2.0-s virtuális gép
-- Ez szükséges, hozzon létre egy szoftverfrissítési raid / csíkozott kötetek (akár lvm vagy mdadm) használatával szétosztottsága befolyásolhatja az Azure-lemezek között
+- A DT 2,0-et dedikált Azure-beli virtuális gépre kell telepíteni. Előfordulhat, hogy nem ugyanazon a virtuális gépen fut, amelyen SAP HANA fut
+- A SAP HANA és a DT 2,0 virtuális gépeket ugyanazon Azure-vnet belül kell telepíteni
+- A SAP HANA és a DT 2,0 virtuális gépeket az Azure gyorsított hálózatkezelés beállítással kell telepíteni
+- A DT 2,0 virtuális gépek tárolási típusának Azure-Premium Storage kell lennie
+- Több Azure-lemezt kell csatlakoztatni a DT 2,0 virtuális géphez
+- A szoftveres RAID/csíkozott kötet (LVM vagy mdadm használatával) létrehozásához az Azure-lemezeken keresztüli csíkozás szükséges.
 
-További részleteket a következő szakaszokban magyarázza fog.
+További részleteket a következő szakaszban talál.
 
-![Az SAP HANA DT 2.0-s architektúrájának áttekintése](media/hana-vm-operations/hana-dt-20.PNG)
+![SAP HANA DT 2,0 architektúrájának áttekintése](media/hana-vm-operations/hana-dt-20.PNG)
 
 
 
-### <a name="dedicated-azure-vm-for-sap-hana-dt-20"></a>Az SAP HANA DT 2.0 dedikált Azure virtuális gép
+### <a name="dedicated-azure-vm-for-sap-hana-dt-20"></a>Dedikált Azure-beli virtuális gép SAP HANA DT 2,0
 
-Az Azure IaaS-DT 2.0 csak egy dedikált virtuális gépeken támogatott. Az azonos Azure virtuális gépen, ahol a HANA-példány fut. DT 2.0 futtatása nem engedélyezett. Az SAP HANA DT 2.0-val használható kezdetben két virtuális gép típusa:
+Az Azure IaaS-on a DT 2,0 csak dedikált virtuális gépen támogatott. A DT 2,0-es verzióját nem lehet ugyanazon az Azure-beli virtuális gépen futtatni, amelyen a HANA-példány fut. Kezdetben két virtuálisgép-típust lehet használni SAP HANA DT 2,0-es futtatásához:
 
 - M64-32ms 
 - E32sv3 
 
-Tekintse meg a virtuális gép típusának leírása [Itt](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
+Lásd a virtuális gép [](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) típusának leírását
 
-Az alapszintű elgondolásra épül, DT 2.0-s, amely ahhoz, hogy a költségek "meleg" adatok költségszempontok megadott érdemes használni a megfelelő Virtuálisgép-méretek. Bár a lehetséges kombinációkra kapcsolatos, nincs szigorú szabály. Ez függ az adott ügyfél számítási feladata.
+A 2,0-es DT alapgondolata miatt a "meleg" adatok kiszervezése a költségek megtakarítása érdekében ésszerű a megfelelő virtuálisgép-méretek használata. A lehetséges kombinációkkal kapcsolatban azonban nincs szigorú szabály. Ez az adott ügyfél munkaterheléstől függ.
 
-Ajánlott konfigurációkat a következő lesz:
+Az ajánlott konfigurációk a következőek:
 
-| SAP HANA virtuális gép típusa | DT 2.0-s virtuális gép típusa |
+| SAP HANA virtuális gép típusa | DT 2,0 virtuális gép típusa |
 | --- | --- | 
 | M128ms | M64-32ms |
 | M128s | M64-32ms |
@@ -280,93 +280,93 @@ Ajánlott konfigurációkat a következő lesz:
 | M64s | E32sv3 |
 
 
-M sorozatú virtuális gépek az SAP HANA-tanúsítvánnyal rendelkező támogatott DT 2.0-alapú virtuális gépekhez (M64-32ms és E32sv3) minden kombinációja is előfordulhatnak.
+A SAP HANA-tanúsítvánnyal rendelkező M sorozatú virtuális gépek összes kombinációja támogatott DT 2,0 virtuális gépekkel (M64-32ms és E32sv3) lehetséges.
 
 
-### <a name="azure-networking-and-sap-hana-dt-20"></a>Az Azure-hálózatok és az SAP HANA DT 2.0
+### <a name="azure-networking-and-sap-hana-dt-20"></a>Azure Networking és SAP HANA DT 2,0
 
-A DT 2.0-s virtuális gép és az SAP HANA virtuális GÉPE legalább 10 Gb közötti hálózati átviteli sebesség DT 2.0 telepítését egy dedikált virtuális gépen van szükség. Ezért azt kötelező az azonos Azure virtuális hálózaton belüli összes virtuális gép elhelyezése, illetve az Azure gyorsított hálózatkezelés engedélyezéséhez.
+A DT 2,0 dedikált virtuális gépen való telepítéséhez hálózati átviteli sebességre van szükség a DT 2,0 virtuális gép és a SAP HANA 10 GB-os virtuális gép között. Ezért a virtuális gépeket az Azure-vnet belül kell elhelyezni, és engedélyezni kell az Azure gyorsított hálózatkezelését.
 
-További információ az Azure gyorsított hálózatkezelés [Itt](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)
+Az Azure gyorsított hálózatkezeléssel kapcsolatos további információk [itt](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) találhatók
 
-### <a name="vm-storage-for-sap-hana-dt-20"></a>Az SAP HANA DT 2.0 Virtuálisgép-tároló
+### <a name="vm-storage-for-sap-hana-dt-20"></a>VM Storage SAP HANA DT 2,0
 
-Megfelelően DT 2.0 ajánlott eljárásokkal kapcsolatos útmutatás a lemez i/o-teljesítmény minimális 50 MB/s fizikai magonként kell lennie. Megnézzük a feldolgozása a két Azure-beli Virtuálisgép-típusok, amely támogatja a maximális lemez IO átviteli sebességhatár a virtuális gép meg, például DT 2.0:
+A DT 2,0 ajánlott eljárási útmutatója alapján a lemez i/o-átviteli sebességének legalább 50 MB/s-nak kell lennie a fizikai mag esetében. Tekintse meg a két Azure-beli virtuálisgép-típusra vonatkozó SPECT, amelyek a DT 2,0-as verziójával támogatottak
 
-- E32sv3:   768 MB/mp (nem gyorsítótárazott), ami azt jelenti, hogy 48 MB/mp / fizikai mag arány
-- M64-32MS:  1000 MB/mp (nem gyorsítótárazott), ami azt jelenti, hogy a fizikai magonként 62,5 MB/mp-es
+- E32sv3 :   768 MB/s (nem gyorsítótárazott), ami a fizikai mag 48 MB/s arányát jelenti.
+- M64-32ms :  1000 MB/s (nem gyorsítótárazott), ami a fizikai mag 62,5 MB/s arányát jelenti.
 
-Szükség van, több Azure-lemezek csatolása a DT 2.0-s virtuális gép, és hozzon létre egy szoftverfrissítési raid (csíkozást) az operációs rendszer szintjén adatátviteli sebességet maximális korlátját eléréséhez. Egyetlen Azure lemez nem biztosítja az átviteli sebesség érhető el ebben a tekintetben a virtuális gép maximumértéket. Az Azure Premium storage szolgáltatás kötelező DT 2.0-val. 
+Több Azure-lemez csatlakoztatására van szükség a DT 2,0 virtuális géphez, és az operációs rendszer szintjén létre kell hoznia egy szoftveres RAID-t (csíkozást), hogy a maximálisan engedélyezett legyen a lemez sebessége virtuális gépenként. Egyetlen Azure-lemez nem tudja biztosítani az átviteli sebességet a virtuális gép maximális korlátjának eléréséhez. Az Azure Premium Storage használata kötelező a DT 2,0 futtatásához. 
 
-- Elérhető Azure-lemeztípusokkal kapcsolatos információk találhatók [Itt](../../windows/disks-types.md)
-- Szoftver raid keresztül mdadm létrehozásával kapcsolatos információk találhatók [Itt](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid)
-- Maximális átviteli sebesség találja a csíkozott kötetek létrehozásához LVM konfigurálása részleteit [Itt](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)
+- Az elérhető Azure-lemezekre vonatkozó részletek [itt](../../windows/disks-types.md) találhatók
+- A szoftveres RAID mdadm használatával történő létrehozásával kapcsolatos részletek [itt](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid) találhatók
+- [Itt](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm) talál részletes információt az LVM konfigurálásáról egy csíkozott kötet létrehozásához a maximális átviteli sebesség érdekében
 
-Méret követelményeitől függően különböző lehetőség van a virtuális gépek maximális átviteli sebesség eléréséhez. Az alábbiakban a lehetséges kötet lemezkonfigurációja VM átviteli sebesség felső korlátjának elérése érdekében minden DT 2.0-s VM-típus. Virtuális gép E32sv3 kell tekinteni egy bejegyzés szint kisebb számítási feladatokhoz. Abban az esetben, kapcsolja, hogy azt ne legyen gyors elég lehet átméretezni a virtuális gép M64-32ms szükséges.
-A M64-32ms virtuális gépen sok memóriát, ahogy az az i/o-terhelést nem előfordulhat, hogy eléri a korlátot, különösen a olvasási intenzív számítási feladatokhoz. Ezért a stripe-csoportban kevesebb lemezeket is elegendő lehet az ügyfél adott számítási feladatra függően. De a biztonság kedvéért kell a lemez az alábbi konfigurációk választottak, a maximális átviteli sebesség biztosításához:
+A méretre vonatkozó követelményektől függően különböző lehetőségek érhetők el egy virtuális gép maximális átviteli sebességének eléréséhez. Az alábbi lehetséges adatmennyiség-lemezes konfigurációk minden DT 2,0 virtuálisgép-típus esetében elérhetők a virtuális gép maximális átviteli sebességének eléréséhez. A E32sv3 virtuális gépet a kisebb munkaterhelések belépési szintjére kell tekinteni. Ha úgy gondolja, hogy nem elég gyors, szükséges lehet a virtuális gép átméretezése a M64-32ms.
+Mivel a M64-32ms virtuális gép sok memóriát tartalmaz, előfordulhat, hogy az i/o-terhelés nem éri el a korlátot, különösen az olvasási igényű számítási feladatok esetében. Emiatt a Stripe-készlet kevesebb lemeze is elegendő lehet az ügyfél-specifikus munkaterheléstől függően. A biztonságos oldalon azonban az alábbi lemez-konfigurációk garantálják a maximális átviteli sebességet:
 
 
-| A VM-TERMÉKVÁLTOZATOK | Lemezkonfiguráció 1 | Lemezkonfiguráció 2 | Lemezkonfiguráció 3 | Lemez konfigurálása 4 | Lemezkonfiguráció 5 | 
+| VM SKU | Lemez konfigurációja 1 | Lemez konfigurációja 2 | Lemez konfigurációja 3 | 4\. lemez konfigurációja | Lemez konfigurációja 5 | 
 | ---- | ---- | ---- | ---- | ---- | ---- | 
-| M64-32ms | 4 x P50 -> 16 TB | 4 x P40 -> 8 TB | 5 x P30 -> 5 TB | 7 x P20 -> 3,5 TB | 8 x P15 -> 2 TB | 
-| E32sv3 | 3 x P50 -> 12 TB | 3 x P40 -> 6 TB | 4 x P30 -> 4 TB | 5 x P20 -> 2,5 TB | 6 x P15 -> 1.5 TB | 
+| M64-32ms | 4 x P50 -> 16 TB | 4 x P40 – > 8 TB | 5 x P30 – > 5 TB | 7 x P20 – > 3,5 TB | 8 x P15 -> 2 TB | 
+| E32sv3 | 3 x P50 -> 12 TB | 3 x P40 – > 6 TB | 4 x P30 – 4 TB > | 5 x P20 – > 2,5 TB | 6 x P15 – > 1,5 TB | 
 
 
-Különösen abban az esetben a számítási feladatok olvasási-intenzív, IO-teljesítmény "csak olvasható" adatbázis szoftver adatmennyiség ajánlott Azure-beli gazdagéppel gyorsítótár bekapcsolása sikerült növelése. Mivel a tranzakció "none" log Azure-beli gazdagéppel lemezgyorsítótár kell lennie. 
+Különösen abban az esetben, ha a munkaterhelés olvasása intenzív, az i/o-teljesítmény növelése érdekében az Azure-gazdagép gyorsítótárának "írásvédett" értékre való bekapcsolásához ajánlott az adatbázis-szoftverek adatmennyiségének használata. Míg a tranzakciónapló Azure-gazdagépének gyorsítótára "None" lehet. 
 
-A naplózási kötet méretének vonatkozó ajánlott kiindulási pontot a heurisztika az adatok mérete 15 %-os. A naplózási kötet létrehozása a különböző Azure-lemeztípusokkal költségek és az átviteli sebesség követelményeitől függően használatával valósítható meg. A naplózási kötet magas i/o-teljesítmény szükség.  A virtuális gép esetén írja be a M64 32ms engedélyezése erősen ajánlott [Írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator). Azure Write Accelerator biztosít optimális lemez írási késése, a tranzakciós napló (csak M-sorozat érhető el). Nincsenek megfontolandó, ha például a Virtuálisgép-típusonként lemezek maximális számát. Írásgyorsító kapcsolatos információk találhatók [Itt](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+A naplózási kötet méretével kapcsolatban javasolt kiindulási pont az adatméret 15%-a. A naplózási kötet létrehozása a költségeket és az átviteli sebességre vonatkozó követelményektől függően különböző Azure-lemezek használatával végezhető el. A naplózási kötet magas I/O-átviteli sebességére van szükség.  A M64-32ms virtuális gép típusának használata esetén erősen ajánlott a [írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)engedélyezése. Az Azure írásgyorsító a tranzakciós napló optimális lemez-írási késését biztosítja (csak az M sorozat esetében érhető el). Néhány elemet figyelembe kell venni, bár a virtuális gépek maximális száma a virtuálisgép-típusok esetében. A írásgyorsító részletei [itt](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) találhatók
 
 
-Íme néhány példa a naplózási kötet méretezése kapcsolatban:
+Íme néhány példa a naplózási kötet méretezésére:
 
-| adatok kötet méretét és a lemez típusa | lemez és a naplózási kötet írja be a konfiguráció 1 | lemez és a naplózási kötet írja be a konfigurációs 2 |
+| az adatmennyiség mérete és a lemez típusa | a naplózási kötet és a lemez típusa konfiguráció 1 | naplózási kötet és lemez típusa 2. konfiguráció |
 | --- | --- | --- |
-| 4 x P50 -> 16 TB | 5 x P20 -> 2,5 TB | 3 x P30 -> 3 TB |
-| 6 x P15 -> 1.5 TB | 4 x P6 -> 256 GB | 1 x P15 -> 256 GB |
+| 4 x P50 -> 16 TB | 5 x P20 – > 2,5 TB | 3 x P30 – > 3 TB |
+| 6 x P15 – > 1,5 TB | 4 x P6 – > 256 GB | 1 x P15 -> 256 GB |
 
 
-Például az SAP HANA kibővíthető a /hana/shared címtár rendelkezik az SAP HANA virtuális gép és a DT 2.0-s virtuális gép közötti megosztását. Az azonos architektúra, mint az SAP HANA-t használó kibővített dedikált virtuális gépek, amely proxyként egy magas rendelkezésre állású NFS-kiszolgáló használata javasolt. Annak érdekében, hogy egy közös biztonsági mentési mennyiségi, az azonos tervezési is használható. De az ügyfél legfeljebb Ha magas rendelkezésre ÁLLÁSÚ lenne szükség, vagy ha elegendő csupán használata egy dedikált virtuális gép elegendő tárolókapacitással egy biztonsági mentési kiszolgálóként.
-
-
-
-### <a name="links-to-dt-20-documentation"></a>DT 2.0 parancssori felületdokumentációját mutató hivatkozások 
-
-- [Az SAP HANA dinamikus Rétegezést telepítési és frissítési útmutató](https://help.sap.com/viewer/88f82e0d010e4da1bc8963f18346f46e/2.0.03/en-US)
-- [Az SAP HANA dinamikus Rétegezést oktatóanyagok és források](https://help.sap.com/viewer/fb9c3779f9d1412b8de6dd0788fa167b/2.0.03/en-US)
-- [Az SAP HANA dinamikus rétegezési PoC](https://blogs.sap.com/2017/12/08/sap-hana-dynamic-tiering-delivering-on-low-tco-with-impressive-performance/)
-- [Az SAP HANA 2.0 Szervizcsomagok 02 dinamikus rétegezési fejlesztései](https://blogs.sap.com/2017/07/31/sap-hana-2.0-sps-02-dynamic-tiering-enhancements/)
+A SAP HANA skálázáshoz hasonlóan a/Hana/Shared könyvtárat is meg kell osztani a SAP HANA virtuális gép és a DT 2,0 virtuális gép között. Ugyanazt az architektúrát használja, mint a SAP HANA kibővíthető dedikált virtuális gépekkel, amelyek egy magasan elérhető NFS-kiszolgálóként működnek. A megosztott biztonsági mentési kötetek megadásához az azonos kialakítás is használható. Az ügyfél azonban akkor is igénybe vehető, ha szükség lenne rá, vagy ha elég, hogy csak egy dedikált virtuális gépet használjon, amely elegendő tárolókapacitással rendelkezik ahhoz, hogy biztonsági mentési kiszolgálóként működjön.
 
 
 
+### <a name="links-to-dt-20-documentation"></a>Hivatkozások a DT 2,0 dokumentációra 
 
-## <a name="operations-for-deploying-sap-hana-on-azure-vms"></a>Operations for SAP HANA az Azure virtuális gépek üzembe helyezése
-A következő szakaszok ismertetik az Azure virtuális gépeken futó SAP HANA rendszereit telepítésével kapcsolatos műveleteket.
+- [SAP HANA a dinamikus rétegek telepítési és frissítési útmutatója](https://help.sap.com/viewer/88f82e0d010e4da1bc8963f18346f46e/2.0.03/en-US)
+- [A dinamikus rétegek SAP HANA oktatóanyagok és erőforrások](https://help.sap.com/viewer/fb9c3779f9d1412b8de6dd0788fa167b/2.0.03/en-US)
+- [SAP HANA dinamikus rétegű PoC](https://blogs.sap.com/2017/12/08/sap-hana-dynamic-tiering-delivering-on-low-tco-with-impressive-performance/)
+- [SAP HANA 2,0 SPS 02 dinamikus rétegek fejlesztései](https://blogs.sap.com/2017/07/31/sap-hana-2.0-sps-02-dynamic-tiering-enhancements/)
 
-### <a name="back-up-and-restore-operations-on-azure-vms"></a>Biztonsági mentése és helyreállítása Azure virtuális gépeken való műveletek
-A következő dokumentumok bemutatják, hogyan biztonsági mentése és visszaállítása az SAP HANA üzembe:
+
+
+
+## <a name="operations-for-deploying-sap-hana-on-azure-vms"></a>SAP HANA Azure-beli virtuális gépeken való üzembe helyezésének műveletei
+A következő szakaszok ismertetik az Azure-beli virtuális gépeken SAP HANA rendszerek üzembe helyezésével kapcsolatos műveleteket.
+
+### <a name="back-up-and-restore-operations-on-azure-vms"></a>Azure-beli virtuális gépek biztonsági mentésével és visszaállításával kapcsolatos műveletek
+A következő dokumentumok azt ismertetik, hogyan lehet biztonsági másolatot készíteni és visszaállítani a SAP HANA üzembe helyezését:
 
 - [SAP HANA biztonsági mentés áttekintése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
-- [SAP HANA fájlszintű biztonsági mentés](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
-- [SAP HANA tárolási pillanatkép teljesítményteszt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
+- [SAP HANA fájl szintű biztonsági mentés](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
+- [SAP HANA tárolási Pillanatképek teljesítményteszte](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
 
 
-### <a name="start-and-restart-vms-that-contain-sap-hana"></a>Indítsa el, és indítsa újra a virtuális gépek, amelyek tartalmazzák az SAP HANA
-Az Azure nyilvános felhő kiemelkedő funkciója, hogy díjkötelesek csak a számítási perc. Például az SAP HANA rendszerű virtuális gép leállításakor díjköteles csak a tárolási költségeket ebben az időszakban. Egy másik szolgáltatás a statikus IP-címek a virtuális gépek számára az első központi telepítésben megadása esetén érhető el. Ha újraindítja a virtuális gép, amely rendelkezik az SAP HANA, a virtuális gép újraindul, a korábbi IP-címmel. 
+### <a name="start-and-restart-vms-that-contain-sap-hana"></a>SAP HANAt tartalmazó virtuális gépek elindítása és újraindítása
+Az Azure nyilvános felhő Kiemelt funkciója, hogy csak a számítástechnikai percért kell fizetnie. Ha például egy SAP HANA rendszert futtató virtuális gépet állít le, akkor az adott idő alatt csak a tárolási költségekért kell fizetnie. Egy másik funkció akkor érhető el, ha statikus IP-címeket ad meg a virtuális gépekhez a kezdeti üzembe helyezés során. SAP HANAt tartalmazó virtuális gép újraindításakor a virtuális gép a korábbi IP-címeivel indul újra. 
 
 
-### <a name="use-saprouter-for-sap-remote-support"></a>SAP távoli támogatáshoz SAProuter használja
-Ha helyszíni helyhez és az Azure között helyek közötti kapcsolatot, és futtatja az SAP-összetevőket, majd már valószínűleg futtat SAProuter. Ebben az esetben hajtsa végre a következő elemek távoli támogatás:
+### <a name="use-saprouter-for-sap-remote-support"></a>A SAProuter használata az SAP távoli támogatásához
+Ha helyek közötti kapcsolattal rendelkezik a helyszíni helyek és az Azure között, és SAP-összetevőket futtat, akkor valószínűleg már fut a SAProuter. Ebben az esetben végezze el a következő elemeket a távoli támogatáshoz:
 
-- A magán- és statikus IP-cím a virtuális gép a SAProuter konfigurációban futtató SAP HANA kezelése.
-- Az NSG-t, amelyen a HANA virtuális Gépet a TCP/IP-port 3299 engedélyezett a forgalom az alhálózat megadása
+- Tartsa karban a SAProuter-konfigurációban SAP HANA üzemeltető virtuális gép magánhálózati és statikus IP-címét.
+- Konfigurálja a HANA virtuális gépet üzemeltető alhálózat NSG a 3299-es TCP/IP-porton keresztüli forgalom engedélyezéséhez.
 
-Ha Azure-t az internethez csatlakozik, és a egy SAP-útválasztó nem rendelkezik a virtuális gép az SAP HANA, majd szeretné telepíteni az összetevőt. Telepítse a SAProuter egy külön virtuális gépre, a felügyeleti alhálózaton található. Az alábbi képen látható, az SAP HANA telepítése nélkül a helyek közötti kapcsolat és SAProuter hozzávetőleges sémát:
+Ha az internetről csatlakozik az Azure-hoz, és nem rendelkezik SAP HANA-vel rendelkező virtuális géphez tartozó SAP-útválasztóval, akkor telepítenie kell az összetevőt. Telepítse a SAProuter-t egy különálló virtuális gépen a felügyeleti alhálózaton. Az alábbi képen egy durva séma látható a SAP HANA helyek közötti kapcsolat és a SAProuter nélküli üzembe helyezéséhez:
 
-![Üzembe helyezés séma nyers az SAP Hana-hoz egy helyek közötti kapcsolat és SAProuter nélkül](media/hana-vm-operations/hana-simple-networking3.PNG)
+![Durva üzembe helyezési séma SAP HANA helyek közötti kapcsolat és SAProuter nélkül](media/hana-vm-operations/hana-simple-networking3.PNG)
 
-Mindenképp SAProuter telepítsen egy külön virtuális gépre, és nem a Jumpbox virtuális Géphez. A különálló virtuális gép statikus IP-címmel kell rendelkeznie. A SAProuter csatlakozni az SAP által futtatott SAProuter, lépjen kapcsolatba az SAP egy IP-címet. (Az SAP által futtatott SAProuter a többszörözi a virtuális Gépen telepít SAProuter példány.) Az SAP-IP-cím segítségével konfigurálhatja a SAProuter példány. A konfigurációs beállításokat a csak a szükséges port TCP-port 3299.
+Ügyeljen arra, hogy a SAProuter külön virtuális gépre telepítse, és ne a Jumpbox virtuális gépén. A különálló virtuális gépnek statikus IP-címmel kell rendelkeznie. A SAProuter az SAP által üzemeltetett SAProuter való összekapcsolásához forduljon az SAP-hoz egy IP-cím használatával. (Az SAP által üzemeltetett SAProuter a virtuális gépre telepített SAProuter-példány párja.) A SAProuter-példány konfigurálásához használja az SAP IP-címét. A konfigurációs beállításokban az egyetlen szükséges port a 3299-as TCP-port.
 
-Állítsa be, és távoli támogatási kapcsolatok keresztül SAProuter felügyeletével kapcsolatban lásd: a [SAP dokumentációjában](https://support.sap.com/en/tools/connectivity-tools/remote-support.html).
+A SAProuter-en keresztüli távoli támogatási kapcsolatok beállításával és karbantartásával kapcsolatos további információkért tekintse meg az [SAP dokumentációját](https://support.sap.com/en/tools/connectivity-tools/remote-support.html).
 
-### <a name="high-availability-with-sap-hana-on-azure-native-vms"></a>Magas rendelkezésre állás az SAP HANA az Azure natív virtuális gépein
-SUSE Linux Enterprise Server SAP alkalmazások 12 SP1 vagy újabb rendszert használ, ha egy támasztja fürt STONITH eszközökkel is létrehozhat. Az eszközök segítségével egy SAP HANA-konfigurációt, amely a szinkron replikációt használ a HANA-Rendszerreplikálást és automatikus feladatátvételi beállítása. A telepítési eljárás kapcsolatos további információkért lásd: [SAP HANA magas rendelkezésre állású útmutató az Azure-beli virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).
+### <a name="high-availability-with-sap-hana-on-azure-native-vms"></a>Magas rendelkezésre állás a SAP HANA Azure-beli natív virtuális gépeken
+Ha a SUSE Linux Enterprise Server for SAP Applications 12 SP1 vagy újabb rendszert futtat, létrehozhat egy pacemaker-fürtöt STONITH-eszközökkel. Az eszközök használatával olyan SAP HANA konfigurációt állíthat be, amely szinkron replikációt használ a HANA rendszerreplikációval és az automatikus feladatátvételsel. További információ a telepítési eljárásról: [SAP HANA magas rendelkezésre állású útmutató az Azure Virtual Machines szolgáltatáshoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).

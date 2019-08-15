@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 928b0bcfb32d1a319c811d00fc84a37f85702895
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c163e3cce862640d43f8696dca4eeef29f2ae12a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68857401"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912389"
 ---
 Az alábbi táblázat az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)-ra vonatkozó kvótákat és korlátozásokat sorolja fel. További információ a Event Hubs díjszabásáról: [Event Hubs díjszabása](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-| Korlát | Scope | Megjegyzések | Érték |
+| Korlát | Scope | Megjegyzések | Value |
 | --- | --- | --- | --- |
 | Event Hubs névterek száma/előfizetés |Subscription |- |100 |
 | Az Event hubok száma névtérben |Névtér |Az új Event hub létrehozására vonatkozó további kérelmeket a rendszer elutasítja. |10 |
@@ -36,6 +36,8 @@ Az alábbi táblázat az [Azure Event Hubs](https://azure.microsoft.com/services
 | Fogyasztói csoportok száma az Event hub-ban |Entitás | - |1 |20 |
 | AMQP-kapcsolatok száma névtérben |Névtér |A további kapcsolatokra vonatkozó további kérelmeket a rendszer elutasítja, és a hívási kód kivételt kap. |100 |5,000|
 | Esemény-adatok maximális megőrzési ideje |Entitás | - |1 nap |1-7 nap |
+|Apache Kafka engedélyezett névtér|Névtér |Event Hubs névteret használó alkalmazások a Kafka protokoll használatával |Nem | Igen |
+|Rögzítés |Entitás | Ha engedélyezve van, a mikro-kötegek ugyanazon az adatfolyamon |Nem |Igen |
 
 
 ### <a name="event-hubs-dedicated---quotas-and-limits"></a>Dedikált Event Hubs – kvóták és korlátok

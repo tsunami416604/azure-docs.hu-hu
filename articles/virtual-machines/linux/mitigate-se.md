@@ -1,27 +1,27 @@
 ---
-title: Útmutató a spekulatív végrehajtás kockázatának csökkentése az Azure-ban |} A Microsoft Docs
-description: Útmutató a problémák enyhítését célzó spekulatív végrehajtás kockázatának csökkentése ügyféloldali-csatorna biztonsági résekről, az Azure-ban.
+title: Útmutató a spekulatív végrehajtás enyhítéséhez az Azure-ban | Microsoft Docs
+description: Útmutató az Azure-beli spekulatív végrehajtással kapcsolatos biztonsági rések enyhítéséhez.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
-keywords: a spectre, meltdown, specter
+keywords: kísértet, Meltdown, kísértet
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 08/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 26fbc6dff5ae98812f38225a17534d51b406e270
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 918fc15565d735e0872e783d90149c8e417e0df0
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671249"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935294"
 ---
-# <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities-in-azure"></a>Útmutató a problémák enyhítését célzó spekulatív végrehajtás kockázatának csökkentése ügyféloldali-csatorna biztonsági résekről, az Azure-ban
+# <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities-in-azure"></a>Útmutató az Azure-beli spekulatív végrehajtással kapcsolatos biztonsági rések enyhítéséhez
 
 [!INCLUDE [virtual-machines-common-mitigate-se](../../../includes/virtual-machines-common-mitigate-se.md)]

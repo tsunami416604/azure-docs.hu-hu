@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 13f80b42ef6dfd0c70067a3ecf5f3e172527a63f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6bb3be3805243bba4d11037b180e7f8418a84014
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846532"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947223"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profiltárolók és Azure Files
 
@@ -77,7 +77,7 @@ A beszerzés óta a Microsoft megkezdte a meglévő felhasználói profil-megold
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure Files integráció Azure Active Directory tartományi szolgáltatással
 
-A FSLogix-profil tárolóinak teljesítménye és funkciói kihasználják a felhő előnyeit. 2019. augusztus 7-én Microsoft Azure fájlok Azure Files hitelesítés általános elérhetőségét jelentették be [Azure Active Directory tartományi szolgáltatással (AD DS)](/articles/storage/files/storage-files-active-directory-overview.md). A költségek és az adminisztrációs terhelések kezelésével az Azure AD DS-hitelesítéssel Azure Files a Windows virtuális asztali szolgáltatás felhasználói profiljainak prémium szintű megoldása.
+A FSLogix-profil tárolóinak teljesítménye és funkciói kihasználják a felhő előnyeit. 2019. augusztus 7-én Microsoft Azure fájlok Azure Files hitelesítés általános elérhetőségét jelentették be [Azure Active Directory tartományi szolgáltatással (AD DS)](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-overview). A költségek és az adminisztrációs terhelések kezelésével az Azure AD DS-hitelesítéssel Azure Files a Windows virtuális asztali szolgáltatás felhasználói profiljainak prémium szintű megoldása.
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Ajánlott eljárások a Windows rendszerű virtuális asztali gépekhez
 

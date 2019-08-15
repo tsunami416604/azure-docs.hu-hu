@@ -2,19 +2,18 @@
 title: A Azure Data Factory hibáinak megoldása | Microsoft Docs
 description: Megtudhatja, hogyan lehet elhárítani a Azure Data Factory külső vezérlési tevékenységeit.
 services: data-factory
-author: abnarain
-manager: craigg
+author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 6/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: c76242c176ba4f4c9ffc0d6934f6b645743d77f4
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 1995ce2a91bfbc115f80c99687cc84b52ef614ec
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234586"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950112"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Hibakeresés Azure Data Factory
 
@@ -47,7 +46,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 | Hibakód         | Hibaüzenet                                                | Leírás                                          | Ajánlás                            |
 | -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 2709                 | A hozzáférési jogkivonat nem a megfelelő bérlőtől származik.                    | Helytelen Azure Active Directory (Azure AD) bérlő.                                         | Az Azure Data Lake Analyticshoz való hozzáféréshez használt egyszerű szolgáltatásnév egy másik Azure AD-bérlőhöz tartozik. Hozzon létre egy új szolgáltatásnevet ugyanabban a bérlőben, mint a Data Lake Analytics fiókot. |
-| 2711, 2705, 2704 | Tilos. Az ACL ellenőrzése nem sikerült. Vagy az erőforrás nem létezik, vagy a felhasználó nem jogosult a kért művelet végrehajtására.<br/><br/>A felhasználó nem fér hozzá Data Lake Storehoz.  <br/><br/>A felhasználó nem rendelkezik jogosultsággal a Data Lake Analytics használatára. | Az egyszerű szolgáltatásnév vagy tanúsítvány nem fér hozzá a fájlhoz a tárolóban. | Győződjön meg arról, hogy a felhasználó által Data Lake Analytics feladatokhoz megadott egyszerű szolgáltatásnév vagy tanúsítvány hozzáfér-e a Data Lake Analytics fiókhoz és a gyökérmappa alapértelmezett Data Lake Storage példányához. |
+| 2711, 2705, 2704 | Tilos. Az ACL-ellenőrzés sikertelen volt. Vagy az erőforrás nem létezik, vagy a felhasználó nem jogosult a kért művelet végrehajtására.<br/><br/>A felhasználó nem fér hozzá Data Lake Storehoz.  <br/><br/>A felhasználó nem rendelkezik jogosultsággal a Data Lake Analytics használatára. | Az egyszerű szolgáltatásnév vagy tanúsítvány nem fér hozzá a fájlhoz a tárolóban. | Győződjön meg arról, hogy a felhasználó által Data Lake Analytics feladatokhoz megadott egyszerű szolgáltatásnév vagy tanúsítvány hozzáfér-e a Data Lake Analytics fiókhoz és a gyökérmappa alapértelmezett Data Lake Storage példányához. |
 | 2711                 | Nem található a (z) "Azure Data Lake Store" fájl vagy mappa.       | Az U-SQL-fájl elérési útja helytelen, vagy a társított szolgáltatás hitelesítő adatai nem rendelkeznek hozzáféréssel. | Ellenőrizze a társított szolgáltatásban megadott elérési utat és hitelesítő adatokat. |
 | 2707                 | Nem oldható fel a AzureDataLakeAnalytics fiókja. Tekintse meg a "AccountName" és a "DataLakeAnalyticsUri". | A társított szolgáltatás Data Lake Analytics fiókja nem megfelelő.                  | Ellenőrizze, hogy a megfelelő fiók van-e megadva.             |
 | 2703                 | Hiba azonosítója: E_CQO_SYSTEM_INTERNAL_ERROR (vagy bármely olyan hiba, amely a következővel kezdődik: "Error ID:"). | A hiba Data Lake Analytics.                                    | A példához hasonló hiba azt jelenti, hogy a feladatot elküldték Data Lake Analyticsba, és a szkript sikertelen volt. Data Lake Analytics vizsgálata. A portálon lépjen a Data Lake Analytics fiókra, és keresse meg a feladatot a Data Factory tevékenység futtatási AZONOSÍTÓjának használatával (nem a folyamat futtatási AZONOSÍTÓját). A feladattal kapcsolatban további információ található a hibával kapcsolatban, és segítséget nyújt a hibák megoldásához. Ha a megoldás nem egyértelmű, lépjen kapcsolatba a Data Lake Analytics támogatási csapatával, és adja meg a feladatokhoz tartozó URL-címet, amely tartalmazza a fiók nevét és a AZONOSÍTÓJÚ feladatot. |

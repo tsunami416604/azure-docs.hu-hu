@@ -6,14 +6,14 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 4223d310bc747a518abaeadbbb467aa44871578f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 04ac6c2bf0137289221a4ae6ed58d5a71ad21739
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882516"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950217"
 ---
-# <a name="data-profile-data-sources"></a>Adatforrások adatprofiljának készítése
+# <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Adatprofil adatforrásai Azure Data Catalog
 
 ## <a name="introduction"></a>Bevezetés
 

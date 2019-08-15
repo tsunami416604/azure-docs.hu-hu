@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 554a77b65b1baab980d765c69a5bffaeacb483d9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 850d580d4eb1ca41932a28005d3375ced709db60
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855402"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016377"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Frissítse big data Analytics-megoldásait Azure Data Lake Storage Gen1ról Azure Data Lake Storage Gen2
 
@@ -82,7 +82,7 @@ Ez a szakasz ismerteti, amelyek jelenleg a Data Lake Storage Gen2 Data Lake Stor
 | |Optimalizált teljesítménygyűjtési párhuzamos elemzési számítási feladatokhoz. Nagy átviteli sebességű és iops-t. | Optimalizált teljesítménygyűjtési párhuzamos elemzési számítási feladatokhoz. Nagy átviteli sebességű és iops-t. | *Már elérhető* |
 | Virtual Network (VNet) támogatása  | [Virtual Network integráció használata](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-network-security)  | [Szolgáltatási végpont használata az Azure Storage-hoz](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) | *Már elérhető* |
 | Blobméretének korlátjai | A fiókok méretének, a fájlok méretét vagy a fájlok száma korlátlan | A fiókok méretének vagy fájlok száma korlátlan. A fájl legfeljebb 5 TB-os méret. | *Már elérhető*|
-| Georedundancia| Helyileg redundáns (LRS) | Helyileg redundáns (LRS) zónaredundáns (ZRS) (GRS) írásvédett globálisan redundáns globálisan redundáns (RA-GRS) lásd [Itt](https://docs.microsoft.com/azure/storage/common/storage-redundancy) további információ| *Már elérhető* |
+| Georedundancia| Helyileg redundáns (LRS) | Helyileg redundáns (LRS) zóna redundáns (ZRS), Geo-redundáns (GRS) olvasási hozzáférés geo-redundáns (RA-GRS) további információért lásd [itt](https://docs.microsoft.com/azure/storage/common/storage-redundancy) .| *Már elérhető* |
 | Régiónkénti rendelkezésre állás | Lásd: [Itt](https://azure.microsoft.com/regions/) | Az összes [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/)                                                                                                                                                                                                                                                                                                                                       | *Már elérhető*                                                                                                                           |
 | Ár                                       | Lásd: [díjszabása](https://azure.microsoft.com/pricing/details/data-lake-store/)                                                                            | Lásd: [díjszabása](https://azure.microsoft.com/pricing/details/storage/data-lake/)                                                                                                                                                                                                                                                                                                                                         |                                                                                                                                           |
 | SLA szerinti rendelkezésre állás                            | [Tekintse meg a szolgáltatásiszint-szerződés](https://azure.microsoft.com/support/legal/sla/data-lake-store/v1_0/)                                                                   | [Tekintse meg a szolgáltatásiszint-szerződés](https://azure.microsoft.com/support/legal/sla/storage/v1_3/)                                                                                                                                                                                                                                                                                                                                                | *Már elérhető*                                                                                                                           |

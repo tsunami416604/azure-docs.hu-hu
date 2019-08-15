@@ -1,6 +1,6 @@
 ---
-title: Set átirányítási URL-ek a b2clogin.com-on – Azure Active Directory B2C |} A Microsoft Docs
-description: További információ a b2clogin.com használata az átirányítási URL-címek az Azure Active Directory B2C-t.
+title: Átirányítási URL-címek beállítása b2clogin.com – Azure Active Directory B2C | Microsoft Docs
+description: Ismerje meg, hogyan használhatja a b2clogin.com-t a Azure Active Directory B2C átirányítási URL-címeiben.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,43 +10,46 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4d70fe3f3f19723cd37080ae09dce97bfd8f3d34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 080c1933f88d9e824969a42212de2eacd0f62e14
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511692"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927283"
 ---
-# <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Set átirányítási URL-címek a b2clogin.com-on Azure Active Directory B2C-vel
+# <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Átirányítási URL-címek beállítása b2clogin.com Azure Active Directory B2C
 
-Az identitásszolgáltató-előfizetés, és jelentkezzen be az Azure Active Directory (Azure AD) B2C alkalmazásban beállításakor szüksége egy átirányítási URL-címet. A múltban login.microsoftonline.com használták, most kell a b2clogin.com használata.
+Ha a Azure Active Directory-(Azure AD-) B2C-alkalmazásban regisztrál és bejelentkezik egy identitás-szolgáltatót, meg kell adnia egy átirányítási URL-címet. A múltban a login.microsoftonline.com használta, most pedig az b2clogin.com-t kell használnia.
 
-A b2clogin.com használata lehetővé teszi további előnyökkel, például:
+> [!NOTE]
+> A b2clogin.com-ben használhat JavaScript ügyféloldali kódot (jelenleg előzetes verzióban). Ha a login.microsoftonline.com-t használja, a JavaScript-kód törlődik az egyéni lapról. A rendszer további biztonsági korlátozásokat is alkalmaz a login.microsoftonline.com, például a HTML-űrlapok elemeinek eltávolítását az egyéni lapról. 
 
-- A cookie-k fejlécében a Microsoft-szolgáltatások által felhasznált terület csökken.
-- Az URL-címek már nem a Microsoft hivatkozást tartalmaz. Például: `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp`.
+A b2clogin.com használata további előnyöket biztosít, például a következőket:
 
->[!NOTE]
-> Használhatja a bérlő nevével és a bérlő GUID módon:
-> * `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` (amely még mindig hivatkozik `onmicrosoft.com`)
-> * `https://your-tenant-name.b2clogin.com/your-tenant-guid` (ebben az esetben nincs nem Microsoft mutató hivatkozás egyáltalán)
+- A Microsoft-szolgáltatások cookie-fejlécében felhasznált lemezterület csökken.
+- Az URL-címek már nem tartalmaznak hivatkozást a Microsoftnak. Például: `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp`.
+
+> [!NOTE]
+> A bérlő nevét és a bérlői GUID-t a következőképpen is használhatja:
+> * `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`(amely továbbra is `onmicrosoft.com`a következőre hivatkozik)
+> * `https://your-tenant-name.b2clogin.com/your-tenant-guid`(ebben az esetben a Microsoft egyáltalán nem hivatkozik rá)
 >
-> Azonban nem használható egy _egyéni tartomány_ az Azure Active Directory B2C-bérlőben, pl. `https://your-tenant-name.b2clogin.com/your-custom-domain-name` lenne _nem_ működik.
+> Azonban nem használhat _Egyéni tartományt_ a Azure Active Directory B2C bérlőhöz, például `https://your-tenant-name.b2clogin.com/your-custom-domain-name` _nem_ fog működni.
 
-Vegye figyelembe ezeket a beállításokat, előfordulhat, hogy módosítania kell a b2clogin.com használata esetén:
+Ezeket a beállításokat érdemes lehet módosítani a b2clogin.com használatakor:
 
-- Állítsa be az átirányítási URL-címek az identity provider alkalmazásokban a b2clogin.com használata. 
-- Az Azure AD B2C-alkalmazás a b2clogin.com használata a felhasználói folyamat hivatkozások és a token végpontok beállítása. 
-- Az MSAL használatakor be kell a **ValidateAuthority** tulajdonságot `false`.
-- Győződjön meg arról, hogy módosítja, **engedélyezett eredetek** CORS beállításaiban megadott [felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom-dynamic.md).  
+- Állítsa be az átirányítási URL-címeket az Identity Provider alkalmazásaiban a b2clogin.com használatára. 
+- Állítsa be Azure AD B2C alkalmazást a b2clogin.com használatára a felhasználói folyamatok hivatkozásai és a jogkivonat-végpontok számára. 
+- Ha a MSAL-t használja, be kell állítania a **ValidateAuthority** tulajdonságot `false`a következőre:.
+- Győződjön meg arról, hogy a [felhasználói felület testreszabásához](active-directory-b2c-ui-customization-custom-dynamic.md)tartozó CORS-beállításokban meghatározott összes **engedélyezett eredetet** módosítja.  
 
-## <a name="change-redirect-urls"></a>Változás átirányítási URL-címek
+## <a name="change-redirect-urls"></a>Átirányítási URL-címek módosítása
 
-Szeretne használni a b2clogin.com, az identity provider alkalmazás beállításait, keresse meg és megbízható URL-címének átirányítása az Azure AD B2C-vel listája.  Jelenleg, valószínűleg nincs beállítva néhány login.microsoftonline.com hely visszairányítja. 
+A b2clogin.com használatához az Identity Provider alkalmazás beállításainál keresse meg és módosítsa a megbízható URL-címek listáját, amelyeket vissza szeretne irányítani Azure AD B2Cre.  Jelenleg valószínűleg úgy állította be, hogy visszairányítson egy bizonyos login.microsoftonline.com-webhelyre. 
 
-Módosítsa az átirányítási URL-címet kell, hogy `your-tenant-name.b2clogin.com` jogosult. Cserélje le `your-tenant-name` neve az Azure AD B2C-bérlőben, és távolítsa el `/te` Ha az URL-cím létezik. Kisebb-változatok vannak az URL-címet minden egyes identitásszolgáltató ezért ellenőrizze a megfelelő lapon, a pontos URL-Címének lekéréséhez.
+Módosítania kell az átirányítási URL-címet, `your-tenant-name.b2clogin.com` hogy az engedélyezve legyen. Ügyeljen arra, hogy `your-tenant-name` a helyére írja a Azure ad B2C bérlő nevét, és `/te` távolítsa el, ha az szerepel az URL-címben. Az URL-címek kis mértékben eltérnek az egyes identitás-szolgáltatóknál, ezért a megfelelő oldalon tekintse meg a pontos URL-címet.
 
-Identitás-szolgáltatóktól telepítési adatait a következő cikkekben találja meg:
+A következő cikkekben talál információt az identitás-szolgáltatók számára:
 
 - [Microsoft-fiók](active-directory-b2c-setup-msa-app.md)
 - [Facebook](active-directory-b2c-setup-fb-app.md)
@@ -63,22 +66,22 @@ Identitás-szolgáltatóktól telepítési adatait a következő cikkekben talá
 
 ## <a name="update-your-application"></a>Az alkalmazás frissítése
 
-Az Azure AD B2C-alkalmazást valószínűleg hivatkozik `login.microsoftonline.com` több helyen, például a felhasználói folyamat hivatkozások és a jogkivonat-végpont.  Győződjön meg arról, hogy az engedélyezési végpont, a jogkivonat-végpont és a kiállító használatára frissítve lett-e `your-tenant-name.b2clogin.com`.  
+A Azure ad B2C alkalmazás valószínűleg több helyen `login.microsoftonline.com` hivatkozik, például a felhasználói folyamatok hivatkozásaira és a jogkivonat-végpontokra.  Győződjön meg arról, hogy az engedélyezési végpont, a jogkivonat-végpont és a kiállító frissítve lett `your-tenant-name.b2clogin.com`a használatra.  
 
-## <a name="set-the-validateauthority-property"></a>A ValidateAuthority tulajdonsága
+## <a name="set-the-validateauthority-property"></a>A ValidateAuthority tulajdonság beállítása
 
-Ha MSAL használ, állítsa be a **ValidateAuthority** tulajdonságot `false`. Amikor **ValidateAuthority** értékre van állítva `false`, átirányítja a b2clogin.com számára engedélyezett. 
+Ha a MSAL-t `false`használja, állítsa a **ValidateAuthority** tulajdonságot a következőre:. Ha a `false`ValidateAuthority értékre van állítva, a rendszer átirányítja a b2clogin.com. 
 
-Az alábbi példa bemutatja, hogyan lehet, hogy a tulajdonság értéke:
+Az alábbi példa bemutatja, hogyan állíthatja be a tulajdonságot:
 
-A [a .NET-hez az MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet):
+A [.net-MSAL esetében](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet):
 
 ```CSharp
  ConfidentialClientApplication client = new ConfidentialClientApplication(...); // can also be PublicClientApplication
  client.ValidateAuthority = false;
 ```
 
-Majd a [JavaScript az MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-js):
+És a [MSAL for JavaScript](https://github.com/AzureAD/microsoft-authentication-library-for-js):
 
 ```Javascript
 this.clientApplication = new UserAgentApplication(

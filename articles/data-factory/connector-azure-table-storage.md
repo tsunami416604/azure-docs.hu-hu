@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: c4ea3c93daac1ebb88bae2b8cb01485d955be2bb
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: bf28fb69d35256d65fdfd2c092ad48d0ad1281f9
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726200"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986003"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Adatok másolása az Azure Table Storage-ba és onnan az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -112,7 +112,7 @@ Létrehozhat egy megosztott elérési aláírással rendelkező Storage-beli tá
 Közös hozzáférésű jogosultságkód a tárfiókban található erőforrások delegált hozzáférést biztosít. Ezzel a beállítással engedélyezheti az ügyfél számára a Storage-fiókban lévő objektumokra vonatkozó korlátozott engedélyeket egy adott időtartamra és a megadott engedélyekkel. Nem kell megosztani a fiók hozzáférési kulcsait. A közös hozzáférésű jogosultságkód URI, amely a lekérdezési paraméterek magában foglalja a tárolási erőforrásokhoz való hitelesített hozzáférés szükséges összes információt. A közös hozzáférésű jogosultságkód-adattároló erőforrások elérésére, az ügyfél csak kell a megfelelő konstruktor vagy a metódus a közös hozzáférésű jogosultságkód adja át. A közös hozzáférésű aláírásokkal kapcsolatos további információkért [lásd: közös hozzáférésű aláírások: A közös hozzáférésű aláírás modelljének](../storage/common/storage-dotnet-shared-access-signature-part-1.md)megismerése.
 
 > [!NOTE]
-> A Data Factory mostantól támogatja mindkét **szolgáltatás közös hozzáférésű jogosultságkódot** és **fiók közös hozzáférésű jogosultságkód**. Két, és hogyan kell őket összeállítani kapcsolatos további információkért lásd: [közös hozzáférésű jogosultságkódok típusú](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures). 
+> A Data Factory mostantól támogatja mindkét **szolgáltatás közös hozzáférésű jogosultságkódot** és **fiók közös hozzáférésű jogosultságkód**. A közös hozzáférésű aláírásokkal kapcsolatos további információkért lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../storage/common/storage-sas-overview.md). 
 
 > [!TIP]
 > A tárfiók szolgáltatás közös hozzáférési aláírásokat létrehozni, hajtsa végre a következő PowerShell-parancsokat. Cserélje le a zárójelben, és a szükséges engedélyeket.
@@ -335,7 +335,7 @@ Amikor az Azure Table-be vagy az-ba helyezi át az adatátvitelt, az [Azure Tabl
 |:--- |:--- |:--- |
 | Edm.Binary |bájt [] |Legfeljebb 64 KB méretű bájtok tömbje. |
 | Edm.Boolean |bool |Logikai érték. |
-| Edm.DateTime |Datetime |64 bites érték, amely egyezményes világidő (UTC) szerint van kifejezve. A támogatott DateTime tartomány kezdete éjfél, január 1-től 1601 A.D. (CE), UTC. A tartomány 9999. december 31-ig ér véget. |
+| Edm.DateTime |DateTime |64 bites érték, amely egyezményes világidő (UTC) szerint van kifejezve. A támogatott DateTime tartomány kezdete éjfél, január 1-től 1601 A.D. (CE), UTC. A tartomány 9999. december 31-ig ér véget. |
 | Edm.Double |double |64 bites lebegőpontos érték. |
 | Edm.Guid |Guid |Egy 128 bites globálisan egyedi azonosító. |
 | Edm.Int32 |Int32 |32 bites egész szám. |

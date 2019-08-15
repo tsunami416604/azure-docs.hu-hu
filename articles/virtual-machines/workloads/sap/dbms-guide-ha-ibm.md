@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: 754eb063f82344e72bece8fb0ac5708dbc8ab791
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0da426a9302ce72b5359df15d3f8e244fc1766a0
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249130"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935355"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -133,7 +133,7 @@ A telepítés végrehajtása előtt fejezze be a tervezési folyamatot. A tervez
 | Virtuális hálózat/alhálózat definíciója | Ahol az IBM DB2 és Azure Load Balancer rendszerű virtuális gépek üzembe helyezése folyamatban van. Lehet létező vagy újonnan létrehozott. |
 | IBM DB2-LUW üzemeltető virtuális gépek | VM-méret, tárterület, hálózatkezelés, IP-cím. |
 | Virtuális gazdagép neve és virtuális IP-címe az IBM DB2-adatbázishoz| Az SAP-alkalmazáskiszolgáló csatlakoztatásához használt virtuális IP-cím vagy állomásnév. **db-virt-hostname**, **db-virt-IP**. |
-| Azure-kerítés | Azure-kerítés vagy SBD-kerítés (kifejezetten ajánlott). Megakadályozható a felosztott agyi helyzetek elkerülésének módszere. |
+| Azure-kerítés | Azure-kerítés vagy SBD-kerítés (kifejezetten ajánlott). Módszer a felosztott agyi helyzetek elkerülésére. |
 | SBD VM | SBD virtuális gép mérete, tárterülete, hálózata. |
 | Azure Load Balancer | Alapszintű vagy standard (ajánlott), mintavételi port a DB2-adatbázishoz (javaslat 62500) mintavételi **port**. |
 | Névfeloldás| A névfeloldás működése a környezetben. A DNS-szolgáltatás használata kifejezetten ajánlott. A helyi gazdagépek fájlja használható. |
@@ -202,7 +202,7 @@ Az elsődleges IBM DB2 LUW adatbázis-példány beállítása:
 
 Ha a készenléti adatbázis-kiszolgálót az SAP homogén rendszermásolási eljárással szeretné beállítani, hajtsa végre a következő lépéseket:
 
-1. Válassza a  rendszermásolási lehetőség > a **célként kijelölt rendszerek** > **elosztott** > **adatbázis**-példányát.
+1. Válassza a rendszermásolási lehetőség > a **célként kijelölt rendszerek** > **elosztott** > **adatbázis**-példányát.
 1. Másolási módszerként válassza a **homogén rendszer** lehetőséget, hogy a biztonsági mentés használatával visszaállítsa a biztonsági mentést a készenléti kiszolgáló példányán.
 1. Amikor eléri a kilépési lépést az adatbázis homogén rendszermásolásra való visszaállításához, lépjen ki a telepítőből. Állítsa vissza az adatbázist az elsődleges gazdagép biztonsági másolatából. Az összes további telepítési fázis már végre lett hajtva az elsődleges adatbázis-kiszolgálón.
 1. HADR beállítása az IBM DB2-hez.
@@ -404,10 +404,10 @@ sudo crm configure property maintenance-mode=false</pre></code>
 # <a name="full-list-of-resources"></a>Erőforrások teljes listája:
 
 #  <a name="stonith-sbd----stonithexternalsbd-started-azibmdb02"></a>stonith-SBD (stonith: külső/SBD): Azibmdb02 elindítva
-#  <a name="resource-group-gipdb2ptrptr"></a>Erőforráscsoport: g_ip_db2ptr_PTR
-#      <a name="rscipdb2ptrptr--ocfheartbeatipaddr2-------started-azibmdb02"></a>rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):       Azibmdb02 elindítva
-#      <a name="rscncdb2ptrptr--ocfheartbeatanything------started-azibmdb02"></a>rsc_nc_db2ptr_PTR (OCF:: szívverés: bármi):      Azibmdb02 elindítva
-#  <a name="masterslave-set-msldb2db2ptrptr-rscdb2db2ptrptr"></a>Master/slave set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
+#  <a name="resource-group-g_ip_db2ptr_ptr"></a>Erőforráscsoport: g_ip_db2ptr_PTR
+#      <a name="rsc_ip_db2ptr_ptr--ocfheartbeatipaddr2-------started-azibmdb02"></a>rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):       Azibmdb02 elindítva
+#      <a name="rsc_nc_db2ptr_ptr--ocfheartbeatanything------started-azibmdb02"></a>rsc_nc_db2ptr_PTR (OCF:: szívverés: bármi):      Azibmdb02 elindítva
+#  <a name="masterslave-set-msl_db2_db2ptr_ptr-rsc_db2_db2ptr_ptr"></a>Master/slave set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
 #      <a name="masters--azibmdb02-"></a>Főkiszolgálók: [azibmdb02]
 #      <a name="slaves--azibmdb01-"></a>Rabszolgák: [azibmdb01]
 </pre>
@@ -425,7 +425,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    b. Adja meg az új előtér-IP-készlet nevét (például **DB2-kapcsolatok**).
 
-   c. Állítsa a  hozzárendelést **statikus**értékre, és adja meg az elején megadott IP **-cím virtuális IP-** címét.
+   c. Állítsa a hozzárendelést **statikus**értékre, és adja meg az elején megadott IP **-cím virtuális IP-** címét.
 
    d. Kattintson az **OK** gombra.
 

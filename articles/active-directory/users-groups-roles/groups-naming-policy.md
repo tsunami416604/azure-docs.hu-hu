@@ -1,6 +1,6 @@
 ---
-title: Az Office 365-csoportok – Azure Active Directory csoportelnevezési házirend kényszerítése |} A Microsoft Docs
-description: Office 365-csoportok az Azure Active Directoryban elnevezési szabályzat beállítása
+title: Csoport elnevezési szabályzatának érvénybe léptetése az Office 365-csoportokban – Azure Active Directory | Microsoft Docs
+description: Az Office 365-csoportok elnevezési szabályzatának beállítása Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,90 +15,90 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c13b95028975c5463217455c940bb84c3867899
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12bb01abadaf5bc9e7e1b221763ae38890922145
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734783"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013414"
 ---
-# <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Az Office 365-csoportok az Azure Active Directoryban elnevezési szabályzat kényszerítése
+# <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Elnevezési szabályzat érvénybe léptetése az Office 365-csoportokban Azure Active Directory
 
-Az Office 365-csoportokat a felhasználók által létrehozott vagy módosított egységes elnevezési konvenciók kényszerítéséhez állítsa be a csoportelnevezési házirend a bérlők számára az Azure Active Directoryban (Azure AD). Például használhatja a kiosztási szabályzat való kommunikációra, a függvény egy csoport, a tagsági, a földrajzi régióban, vagy ki hozta létre a csoportot. A kiosztási szabályzat kategorizálása a címjegyzékben csoportok segítségével is használhat. A házirend segítségével adott szó azoktól van használatban a csoporthoz tartozó nevek és aliasok letiltása.
+A felhasználók által létrehozott vagy szerkesztett Office 365-csoportok konzisztens elnevezési konvencióinak betartatásához állítson be egy csoport elnevezési szabályzatot a bérlők számára Azure Active Directory (Azure AD). Az elnevezési házirend segítségével például a csoport, a tagság, a földrajzi régió vagy a csoport létrehozásával kommunikálhat. Használhatja az elnevezési házirendet is a címjegyzékben lévő csoportok kategorizálásához. A szabályzat használatával letilthat bizonyos szavakat a csoportok neveiben és az Aliasokban.
 
 > [!IMPORTANT]
-> Azure AD-kiosztási szabályzat használata az Office 365-csoportok igényel, hogy rendelkezik, de nem feltétlenül hozzárendelése egy Azure Active Directory Premium P1 licenc- vagy Azure AD alapszintű EDU licencet mindegyik egyedi felhasználói, amely legalább egy Office 365-csoportok tagjai.
+> Az Office 365-csoportok Azure AD elnevezési házirendjének használata megköveteli, hogy rendelkezzen, de nem feltétlenül rendeljen hozzá egy prémium szintű Azure Active Directory P1-licencet vagy alapszintű Azure AD EDU-licencet minden olyan egyedi felhasználóhoz, amely egy vagy több Office 365-csoport tagja.
 
-A kiosztási szabályzat létrehozásakor és szerkesztésekor számítási feladatokhoz (például az Outlook, a Microsoft Teams, SharePoint, Exchange vagy Planner) létrehozott csoportok vonatkozik. Ez a csoport nevét és a csoport aliasa is érvényes. Az Azure ad-ben a kiosztási szabályzat beállításához, és egy meglévő Exchange-csoportelnevezési házirend, ha a szervezet az Azure AD-elnevezési szabályzatában foglalt lép érvénybe.
+A rendszer az elnevezési házirendet alkalmazza a munkaterhelések között létrehozott csoportok létrehozására vagy szerkesztésére (például Outlook, Microsoft Teams, SharePoint, Exchange vagy Planner). A csoport nevére és a csoport aliasnevére is vonatkozik. Ha az Azure AD-ben beállítja az elnevezési szabályzatot, és rendelkezik egy meglévő Exchange-csoport elnevezési házirenddel, az Azure AD elnevezési szabályzata kényszerítve lesz a szervezetében.
 
-## <a name="naming-policy-features"></a>Kiosztási szabályzat funkciói
+## <a name="naming-policy-features"></a>Elnevezési házirend funkciói
 
-Két különböző módon kényszerítheti a csoportokra vonatkozó elnevezési szabályzat:
+Két különböző módon kényszerítheti ki a csoportok elnevezési szabályzatát:
 
-- **Előtag-utótag csoportelnevezési házirend** meghatározhatja az előtagok vagy utótagok, majd automatikusan hozzáadott kényszeríteni a csoportok elnevezési (például a csoport nevét a "csoport\_japán\_saját csoport\_ Engineering", csoport\_japán\_ előtagja, és \_mérnöki pedig utótag). 
+- **Előtag – utótag elnevezési házirend** Megadhatja azokat az előtagokat vagy utótagokat, amelyeket a rendszer automatikusan hozzáad a csoportok elnevezési konvenciójának érvényesítéséhez (\_például a "GRP japán\_My Group\_Engineering" csoportban)\_, a GRP Japánban\_ az előtag, \_a mérnöki érték pedig az utótag. 
 
-- **Egyéni letiltott szavakat** letiltott szavakat meghatározott készletét feltöltheti a szervezet számára, a felhasználók (például "CEO, Bérszámfejtés, HR") által létrehozott csoportok letiltása.
+- **Egyéni tiltott szavak** Feltölthet olyan tiltott szavakat is, amelyek a szervezet számára jellemzőek, hogy a felhasználók által létrehozott csoportokban le legyenek tiltva (például "VEZÉRIGAZGATÓ, bérszámfejtés, HR").
 
-### <a name="prefix-suffix-naming-policy"></a>Előtag-utótag csoportelnevezési házirend
+### <a name="prefix-suffix-naming-policy"></a>Előtag – utótag elnevezési házirend
 
-Általános elnevezési struktúráját "Előtag [GroupName] utótag". Meghatározhatja, hogy több előtagokat és utótagot, miközben csak rendelkezhet egy példányát a [GroupName] beállításban. Az előtagok vagy utótagok lehet rögzített karakterláncok vagy a felhasználói attribútumok például \[részleg\] , amely alapján a felhasználó, aki a csoport létrehozása helyettesítik. A kombinált előtagokkal és utótagokkal karakterláncok karakter megengedett száma 53 karakter. 
+Az elnevezési konvenció általános szerkezete a "prefix [csoportnév] utótag". Míg több előtagot és utótagot is meghatározhat, a beállításban csak a [csoportnév] egyetlen példánya lehet. Az előtagok vagy az utótagok lehetnek rögzített karakterláncok vagy felhasználói attribútumok, \[például részlegek\] , amelyek a csoportot létrehozó felhasználó alapján helyettesíthetők. Az előtag és az utótag sztringek teljes megengedett száma 53 karakter. 
 
-Előtagok és utótagok tartalmazhat speciális karaktereket, amelyek támogatottak a csoport nevét és a csoport aliasa. Az összes karaktert a-előtag vagy utótag által nem támogatott a csoport aliasa továbbra is a csoport nevét a alkalmazni, de a csoport aliasa távolítva. A korlátozás miatt az előtagok és utótagokat a alkalmazni a csoport neve eltérő lehet a alkalmazni a csoport aliasa állók közül. 
+Az előtagok és az utótagok olyan speciális karaktereket tartalmazhatnak, amelyek a csoport neve és a csoport aliasában is támogatottak. Az előtag vagy utótag azon karaktereit, amelyeket a csoport aliasa nem támogat, továbbra is a csoport nevében lesznek alkalmazva, de a csoport aliasa el lesz távolítva. Ennek a korlátozásnak a miatt a csoport nevére alkalmazott előtagok és utótagok eltérőek lehetnek a csoport aliasán alkalmazott értékekkel. 
 
 #### <a name="fixed-strings"></a>Rögzített karakterláncok
 
-Karakterláncok könnyebb vizsgálata és a globális címlista és a bal oldali navigációs hivatkozások csoport számítási feladatok a csoportok megkülönböztetésére használható. A közös előtagok néhány kulcsszavakra, mint "csoport\_neve", "\#neve","\_neve"
+A karakterláncok segítségével könnyebben vizsgálhatja és megkülönböztetheti a csoportokat a globális címlistában, valamint a csoportos munkaterhelések bal oldali navigációs hivatkozásait. Néhány gyakori előtagok olyan kulcsszavak, mint például a "\_GRP neve",\#a "Name"\_, a "Name"
 
 #### <a name="user-attributes"></a>Felhasználói attribútumok
 
-Attribútumok, amelyek segítségével is használhatja, és a felhasználók azonosítására, melyik részleg, az office vagy a földrajzi régióban, amely a csoport létrehozásának. Például, ha a csoportelnevezési házirend, megadhat `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"`, és `User’s department = Engineering`, akkor lehet, hogy az érvényben levő csoport neve "Csoport saját csoport mérnöki." Támogatott az Azure AD-attribútumok vannak \[részleg\], \[vállalati\], \[Office\], \[StateOrProvince\], \[CountryOrRegion \], \[Cím\]. Nem támogatott felhasználói attribútumok rögzített karakterláncként kell kezelni. például "\[postalCode\]". A bővítményattribútumok és egyéni attribútumok nem támogatottak.
+Használhatja azokat az attribútumokat, amelyek segítségével a felhasználók megadhatják, hogy melyik részleget, irodát vagy földrajzi régiót hozta létre a csoport. Ha például a (z) és `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"` `User’s department = Engineering`a (z) elnevezési házirendet definiálja, akkor a kényszerített csoport neve lehet "a csoportom megtervezése". A támogatott Azure ad- \[attribútumok\]az \[részleg\], a vállalat \[, \[az \[Office\], a StateOrProvince\], a CountryorRegion \] ,\[Cím.\] A nem támogatott felhasználói attribútumok rögzített karakterláncként vannak kezelve; például: "\[irányítószám\]". A bővítmény attribútumai és az egyéni attribútumok nem támogatottak.
 
-Azt javasoljuk, hogy használja-e az attribútumokat, amelyek kitölti a rendszer az összes felhasználó számára a cégnél értékeket, és ne használja az attribútumokat, amelyek hosszú értékeket.
+Javasoljuk, hogy a szervezet összes felhasználója számára kitöltött értékeket tartalmazó attribútumokat használjon, és ne használjon hosszú értékeket tartalmazó attribútumokat.
 
-### <a name="custom-blocked-words"></a>Egyéni letiltott szavakat
+### <a name="custom-blocked-words"></a>Egyéni tiltott szavak
 
-Letiltott szó listáját az kifejezéseket a csoporthoz tartozó nevek és aliasok egytől vesszővel tagolt listája. Nincs karakterláncrészletet keresések történik. A csoport nevét, és a egy vagy több egyéni letiltott szó között pontos egyezés szükséges aktiválása sikertelen. Részleges karakterlánc-keresés nem történik meg, hogy a felhasználók használhatják a gyakori szavakat, például a "Class", akkor is, ha "osztály" tiltott szót.
+A tiltott szólisták a csoportok neveiben és Aliasokban blokkolni kívánt kifejezések vesszővel tagolt listája. Nem végeznek alkarakterlánc-kereséseket. A hiba kiváltásához pontosan egyeznie kell a csoport neve és egy vagy több egyéni blokkolt szó között. Az alkarakterlánc-keresés nem hajtható végre, így a felhasználók a "class" kifejezéseket is használhatják, például ha a "lány" egy letiltott szó.
 
-Letiltott szó lista szabályok:
+Tiltott szólisták szabályai:
 
-- Letiltott szavakat nagybetűk nem számítanak.
-- Amikor a felhasználó egy letiltott szó egy csoport nevének részeként, megjelenik egy hibaüzenet jelenik meg a letiltott szó.
-- Nincsenek letiltott szavakat a karakter korlátozások.
-- Nincs konfigurálható a letiltott szavakat listában 5000 kifejezések közül egy felső korlátot. 
+- A tiltott szavak nem bizalmasak.
+- Ha a felhasználó egy csoport neve részeként letiltott szót ad meg, a rendszer hibaüzenetet jelenít meg a letiltott Szóval.
+- A letiltott szavakat nem korlátozzák a karakterek.
+- A letiltott szavak listájában legfeljebb 5000 kifejezés állítható be. 
 
-### <a name="administrator-override"></a>Rendszergazdai felülbírálása
+### <a name="administrator-override"></a>Rendszergazdai felülbírálás
 
-Kijelölt rendszergazdák kivonhatók a ezek a házirendek összes csoport számítási feladatok és végpontok, úgy, hogy miképpen hozhatnak létre csoportokat a letiltott szavakat használ, és a saját elnevezési konvenciókat. Az alábbiakban a csoportelnevezési házirend alól rendszergazdai szerepkörök listája.
+A kiválasztott rendszergazdák mentesülnek a szabályzatokból, az összes csoportos munkaterhelésre és végpontra vonatkozóan, így a csoportok a letiltott szavak és a saját elnevezési konvencióik alapján hozhatók létre. A következő lista a csoport elnevezési házirendjé alól mentesített rendszergazdai szerepkörök listáját tartalmazza.
 
 - Globális rendszergazda
-- 1\. szintű Partnertámogatás
-- 2\. szintű Partnertámogatás
+- 1\. partneri szintű támogatás
+- 2\. partneri szintű támogatás
 - Felhasználói adminisztrátor
 - Címtárírók
 
-## <a name="configure-naming-policy-in-azure-portal"></a>Kiosztási szabályzat konfigurálása az Azure Portalon
+## <a name="configure-naming-policy-in-azure-portal"></a>Elnevezési házirend konfigurálása a Azure Portalban
 
-1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com) rendszergazdai felhasználói fiókkal.
-1. Válassza ki **csoportok**, majd **elnevezési szabályzatában foglalt** elnevezési szabályzat lapjának megnyitásához.
+1. Jelentkezzen be az [Azure ad felügyeleti](https://aad.portal.azure.com) központba globális rendszergazdai fiókkal.
+1. Válassza a **csoportok**lehetőséget, majd válassza az **elnevezési házirend** elemet az elnevezési házirend lap megnyitásához.
 
-    ![Nyissa meg az elnevezési szabályzat oldalt a felügyeleti központ](./media/groups-naming-policy/policy.png)
+    ![az elnevezési szabályzat lap megnyitása a felügyeleti központban](./media/groups-naming-policy/policy.png)
 
-### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Zobrazí nebo upraví az előtag-utótag csoportelnevezési házirend
+### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Az előtag-utótag elnevezési házirend megtekintése vagy szerkesztése
 
-1. Az a **elnevezési szabályzatában foglalt** lapon jelölje be **elnevezési csoportházirend**.
-1. Megtekintheti vagy szerkesztheti a jelenlegi előtag vagy utótag házirendek külön-külön elnevezési az attribútumok vagy karakterláncok kényszeríteni a kiosztási szabályzat részeként szeretné kiválasztásával.
-1. Elő- vagy utótag eltávolítása a listából, válassza ki a előtag vagy utótag, majd jelölje ki **törlése**. Egyszerre több elem is lehet törölni.
-1. Mentse a módosításokat az új házirend érvénybe kiválasztásával megnyithatja az **mentése**.
+1. Az **elnevezési házirend** lapon válassza a **csoport elnevezési házirend**elemet.
+1. Az aktuális előtag-vagy utótag-elnevezési házirendeket egyenként tekintheti meg vagy szerkesztheti. Ehhez válassza ki azokat az attribútumokat vagy karakterláncokat, amelyeket az elnevezési szabályzat részeként szeretne kikényszeríteni.
+1. Ha el szeretne távolítani egy előtagot vagy utótagot a listából, válassza ki az előtagot vagy utótagot, majd válassza a **Törlés**lehetőséget. Egyszerre több elem is törölhető.
+1. Mentse az új szabályzat módosításait, hogy a **Mentés**gombra kattintva lépjen életbe.
 
-### <a name="edit-custom-blocked-words"></a>Egyéni letiltott szavakat szerkesztése
+### <a name="edit-custom-blocked-words"></a>Egyéni tiltott szavak szerkesztése
 
-1. Az a **elnevezési szabályzatában foglalt** lapon jelölje be **letiltott szavakat**.
+1. A **névadási házirend** lapon válassza a **tiltott szavak**elemet.
 
-    ![szerkesztése és feltöltése az elnevezési szabályzatában foglalt letiltott szavakat listázása](./media/groups-naming-policy/blockedwords.png)
+    ![tiltott szavak listájának szerkesztése és feltöltése elnevezési házirendhez](./media/groups-naming-policy/blockedwords.png)
 
-1. Zobrazí nebo upraví egyéni letiltott szavakat aktuális listájának kiválasztásával **letöltése**.
-1. A fájl ikonra kattintva töltse fel az új egyéni letiltott szavak listáját.
-1. Mentse a módosításokat az új házirend érvénybe kiválasztásával megnyithatja az **mentése**.
+1. A **Letöltés**lehetőség kiválasztásával megtekintheti vagy szerkesztheti az egyéni tiltott szavak aktuális listáját.
+1. Töltse fel az egyéni tiltott szavak új listáját a fájl ikon kiválasztásával.
+1. Mentse az új szabályzat módosításait, hogy a **Mentés**gombra kattintva lépjen életbe.
 
 ## <a name="install-powershell-cmdlets"></a>PowerShell-parancsmagok telepítése
 
@@ -117,11 +117,11 @@ A PowerShell-parancsok futtatása előtt mindenképpen távolítsa el a Windows 
    Install-Module AzureADPreview
    ```
 
-   Ha egy nem megbízható adattár elérése kéri, adja meg a **Y**. Az új modul telepítése igénybe vehet néhány percet.
+   Ha a rendszer felszólítja a nem megbízható adattár elérésére, írja be az **Y**értéket. Az új modul telepítése igénybe vehet néhány percet.
 
-## <a name="configure-naming-policy-in-powershell"></a>A PowerShellben elnevezési szabályzat konfigurálása
+## <a name="configure-naming-policy-in-powershell"></a>Elnevezési házirend konfigurálása a PowerShellben
 
-1. Nyisson meg egy Windows PowerShell-ablakot a számítógépen. Azt is nyissa meg emelt szintű jogosultságok nélkül.
+1. Nyisson meg egy Windows PowerShell-ablakot a számítógépen. Emelt szintű jogosultságok nélkül is megnyithatja.
 
 1. Futtassa a következő parancsokat a parancsmagok futtatásának előkészítéséhez.
   
@@ -134,9 +134,9 @@ A PowerShell-parancsok futtatása előtt mindenképpen távolítsa el a Windows 
 
 1. Kövesse az [Azure Active Directory-parancsmagok a csoportbeállítások konfigurálásához](groups-settings-cmdlets.md) című rész lépéseit a bérlő csoportbeállításainak létrehozásához.
 
-### <a name="view-the-current-settings"></a>Az aktuális beállítások megtekintése
+### <a name="view-the-current-settings"></a>Aktuális beállítások megtekintése
 
-1. Beolvassa az aktuális csoportelnevezési házirend, a jelenlegi beállítások megtekintéséhez.
+1. Az aktuális névhasználati házirend beolvasása a jelenlegi beállítások megtekintéséhez.
   
    ``` PowerShell
    $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
@@ -148,9 +148,9 @@ A PowerShell-parancsok futtatása előtt mindenképpen távolítsa el a Windows 
    $Setting.Values
    ```
   
-### <a name="set-the-naming-policy-and-custom-blocked-words"></a>Adja meg a csoportelnevezési házirend és egyéni letiltott szavakat
+### <a name="set-the-naming-policy-and-custom-blocked-words"></a>Az elnevezési házirend és az egyéni tiltott szavak beállítása
 
-1. Állítsa be a csoportnév előtagjait és utótagjait az Azure AD PowerShellben. A funkció megfelelő működéséhez [GroupName] szerepelnie kell a beállítást.
+1. Állítsa be a csoportnév előtagjait és utótagjait az Azure AD PowerShellben. Ahhoz, hogy a szolgáltatás megfelelően működjön, [csoportnév] szerepelnie kell a beállításban.
   
    ``` PowerShell
    $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
@@ -162,26 +162,26 @@ A PowerShell-parancsok futtatása előtt mindenképpen távolítsa el a Windows 
    $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
    ```
   
-1. Mentse a beállításokat az új házirend a lép érvénybe, mint például az alábbi példában.
+1. Mentse az új szabályzat beállításait, hogy azok érvénybe lépjenek, például a következő példában.
   
    ``` PowerShell
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
   
-Ennyi az egész. Hogy a kiosztási szabályzat beállítása és a letiltott szavakat hozzáadva.
+Ennyi az egész. Beállította az elnevezési házirendet, és hozzáadta a blokkolt szavakat.
 
-## <a name="export-or-import-custom-blocked-words"></a>Exportál vagy importál egyéni letiltott szavakat
+## <a name="export-or-import-custom-blocked-words"></a>Egyéni tiltott szavak exportálása vagy importálása
 
-További információkért tekintse meg a cikket [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](groups-settings-cmdlets.md).
+További információ: Azure Active Directory parancsmagok a [csoportházirend-beállítások konfigurálásához](groups-settings-cmdlets.md).
 
-Íme egy példa a PowerShell-parancsfájl exportálása letiltott szavakat több:
+Íme egy példa egy PowerShell-szkriptre több blokkolt szó exportálásához:
 
 ``` PowerShell
 $Words = (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value CustomBlockedWordsList -EQ 
 Add-Content "c:\work\currentblockedwordslist.txt" -Value $words.value.Split(",").Replace("`"","")  
 ```
 
-Íme egy példa a PowerShell-parancsprogram több letiltott szó importálása:
+Íme egy példa a több blokkolt szó importálására szolgáló PowerShell-szkriptre:
 
 ``` PowerShell
 $BadWords = Get-Content "C:\work\currentblockedwordslist.txt"
@@ -196,22 +196,22 @@ $Settings["CustomBlockedWordsList"] = $BadWords
 Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings 
 ```
 
-## <a name="remove-the-naming-policy"></a>A kiosztási szabályzat eltávolítása
+## <a name="remove-the-naming-policy"></a>Az elnevezési házirend eltávolítása
 
-### <a name="remove-the-naming-policy-using-azure-portal"></a>Távolítsa el a csoportelnevezési házirend, az Azure portal használatával
+### <a name="remove-the-naming-policy-using-azure-portal"></a>Az elnevezési házirend eltávolítása Azure Portal használatával
 
-1. Az a **elnevezési szabályzatában foglalt** lapon jelölje be **házirend törlése**.
-1. Miután meggyőződött a törlés, a kiosztási szabályzat törlődik a, beleértve az összes előtag-utótag elnevezési házirend és egyéni letiltott szavakat.
+1. Az **elnevezési házirend** lapon válassza a **házirend törlése**lehetőséget.
+1. A Törlés megerősítése után a rendszer eltávolítja az elnevezési házirendet, beleértve az összes előtag-utótag elnevezési házirendet és az egyéni letiltott szavakat is.
 
-### <a name="remove-the-naming-policy-using-azure-ad-powershell"></a>Távolítsa el a kiosztási szabályzat Azure AD PowerShell-lel
+### <a name="remove-the-naming-policy-using-azure-ad-powershell"></a>Az elnevezési házirend eltávolítása az Azure AD PowerShell használatával
 
-1. A csoport előtagok és az Azure AD PowerShell utótagok üres.
+1. Ürítse ki az Azure AD PowerShell csoport neve előtagjait és utótagját.
   
    ``` PowerShell
    $Setting["PrefixSuffixNamingRequirement"] =""
    ```
   
-1. Az egyéni letiltott szavakat üres.
+1. Ürítse ki az egyéni letiltott szavakat.
   
    ``` PowerShell
    $Setting["CustomBlockedWordsList"]=""
@@ -223,42 +223,42 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
 
-## <a name="experience-across-office-365-apps"></a>Office 365-alkalmazások élmény
+## <a name="experience-across-office-365-apps"></a>Az Office 365-alkalmazások közötti élmény
 
-Miután beállította a csoportelnevezési házirend az Azure ad-ben, amikor egy felhasználó létrehoz egy csoportot az Office 365 alkalmazásokban láthatják:
+Miután beállította a csoport elnevezési szabályzatát az Azure AD-ben, amikor egy felhasználó létrehoz egy csoportot egy Office 365-alkalmazásban, a következőket látják:
 
-- A előzetes verziója a nevét (a előtagot és utótagot), a csoportelnevezési házirend szerint, amint a felhasználó begépeli a csoport neve
-- Ha a felhasználó sikeresen megadja a letiltott szavakat, megjelennek egy hibaüzenet, eltávolíthatják a letiltott szavakat.
+- A név előnézete az elnevezési szabályzatnak megfelelően (előtagokkal és utótagokkal), amint a felhasználó típusa szerepel a csoport nevében.
+- Ha a felhasználó letiltott szavakat ír be, hibaüzenet jelenik meg, hogy el tudják távolítani a blokkolt szavakat.
 
 Számítási feladat | Megfelelőség
 ----------- | -------------------------------
-Az Azure Active Directory portálok | Az Azure ad-ben és a hozzáférési Panel portálhoz az elnevezési szabályzat érvénybe léptetését nevének megjelenítése, amikor a felhasználó egy csoportnevet létrehozása vagy egy csoport szerkesztése során. Amikor a felhasználó egy egyéni letiltott szó, egy hibaüzenet jelenik meg a letiltott szó jelenik meg, hogy a felhasználó el is távolíthatja.
-Outlook Web Access (OWA) | Az Outlook Web Access jeleníti meg, a csoportelnevezési házirend kényszerítve a neve, amikor a felhasználó egy csoport neve vagy a csoport aliasa. Amikor egy felhasználó egyéni tiltott szót, egy hibaüzenet jelenik meg a felhasználói felület és a letiltott szó, hogy a felhasználó távolíthatja el.
-Az asztali Outlook | Az asztali Outlook létrehozott csoportok megfeleljenek a kiosztási házirend-beállításokat. Asztali Outlook alkalmazás még nem jeleníti meg az előzetes verziója az érvényben levő csoport nevét, és a letiltott szó egyéni hibákat nem ad vissza, ha a felhasználó megadja a csoport nevét. Azonban a rendszer automatikusan alkalmazza a kiosztási szabályzat létrehozásakor vagy szerkesztésekor egy csoportot, és a felhasználók hibaüzeneteket látják, van-e a csoport nevét vagy aliasát egyéni letiltott szavakat.
-Microsoft Teams | Microsoft Teams, a csoportelnevezési kényszerített házirend neve, amikor a felhasználó a csoport nevét jeleníti meg. Amikor a felhasználó egy egyéni letiltott szó, egy hibaüzenet jelenik meg együtt a letiltott szó, hogy a felhasználó el is távolíthatja.
-SharePoint  |  A SharePoint az elnevezési szabályzat érvénybe léptetését neve jelenik meg, amikor a felhasználó begépeli a hely neve, vagy a csoport e-mail-cím. Amikor egy felhasználó ír be egy egyéni letiltott szó, egy hibaüzenet jelenik meg, és a letiltott szó, hogy a felhasználó távolíthatja el.
-Microsoft Stream | Microsoft Stream a csoportelnevezési kényszerített házirend neve, amikor a felhasználó egy csoport nevét vagy e-mail-alias jeleníti meg. Amikor egy felhasználó egyéni tiltott szót, egy hibaüzenet mellett látható a letiltott szó, a felhasználó távolíthatja el.
-Az Outlook iOS és Android-alkalmazás | Az Outlook alkalmazásokat létrehozott csoportok megfelelnek a konfigurált kiosztási szabályzattal. Az Outlook mobilalkalmazás előzetes verziójának a kiosztási szabályzat érvénybe léptetését neve még nem jeleníti meg, és egyéni letiltott szó hibák nem ad vissza, ha a felhasználó megadja a csoport nevét. Azonban a rendszer automatikusan alkalmazza a csoportelnevezési házirend gombra való kattintás után létrehozása/szerkesztése, és a felhasználók hibaüzeneteket látják, van-e a csoport nevét vagy aliasát egyéni letiltott szavakat.
-Csoportok mobilalkalmazás | A csoportok mobilalkalmazásban létrehozott csoportok megfeleljenek az elnevezési szabályzat. Csoportok mobilalkalmazás előzetes verziójának a kiosztási szabályzat nem jelenik meg, és nem ad vissza egyéni letiltott szó hibákat, amikor a felhasználó megadja a csoport nevét. De rendszer automatikusan alkalmazza a kiosztási szabályzat létrehozásakor vagy szerkesztésekor a csoport, és felhasználók egyike megfelelő hibák van-e a csoport nevét vagy aliasát egyéni letiltott szavakat.
-Planner | Planner a szabályzatnak megfelelő elnevezési. A csomagnév megadása Planner mutatja az elnevezési policy előzetes verziójára. Amikor a felhasználó egy egyéni letiltott szó, egy hibaüzenet jelenik meg a csomag létrehozásakor.
-Dynamics 365 for Customer Engagement | Dynamics 365 for Customer Engagement a szabályzatnak megfelelő elnevezési. Dynamics 365 a kiosztási szabályzat érvénybe léptetését neve jelenik meg, amikor a felhasználó egy csoport nevét vagy e-mail-alias. Amikor a felhasználó egy egyéni letiltott szó, egy hibaüzenet mellett látható a letiltott szó, a felhasználó távolíthatja el.
-School Data Sync (SDS) | Az SDS segítségével létrehozott csoportok megfelelnek a kiosztási szabályzat, de a kiosztási szabályzat automatikusan nem alkalmazza. SDS rendszergazdák rendelkeznek az előtagok és utótagok hozzáfűzni kívánt osztály nevét, amelynek csoportokat kell létrehozni és SDS majd feltölteni. Csoport létrehozása vagy szerkesztése ellenkező esetben sikertelen lesz.
-Az Outlook Customer Managerbe (OCM) | Az Outlook Customer Managerbe a szabályzatnak megfelelő elnevezési, amely a rendszer automatikusan alkalmazza az Outlook Customer Manager létrehozta a csoportot. Ha egyéni tiltott szót észlel, csoport létrehozása a OCM le van tiltva, és a felhasználó blokkolva van a OCM alkalmazással.
-Az osztályterem alkalmazás | Az osztályterem alkalmazással létrehozott csoportok megfelelnek a csoportelnevezési házirend, de a kiosztási szabályzat nem alkalmazza automatikusan, és az elnevezési policy előzetes verziójára nem jelenik meg a felhasználók számára a tanterem csoportnév beírása közben. A kényszerített osztályterem csoportnév előtagot és utótagot kell megadni. Ha nem, akkor az osztályterem-csoport létrehozása vagy szerkesztése a művelet sikertelen lesz, és a hibák.
-Power BI | A Power BI-munkaterületek megfeleljenek az elnevezési szabályzat.    
-Yammer | Amikor egy felhasználó bejelentkezett az Azure Active Directory-fiókját a Yammer egy csoportot hoz létre, vagy szerkeszti a csoport nevét, a csoport nevének köteles betartani elnevezési szabályzatában foglalt. Ez vonatkozik a csatlakoztatott Office 365-csoportokat és más Yammer-csoportok.<br>Ha egy Office 365-höz csatlakoztatott csoport lett létrehozva, mielőtt a csoportelnevezési házirend van beállítva, a csoport neve nem automatikusan követi az elnevezési szabályait. Amikor egy felhasználó szerkeszti a csoport nevét, kéri, adja hozzá az előtagot és utótagot.
-StaffHub  | StaffHub-csapatok ne hajtsa végre a csoportelnevezési házirend, azonban az alapul szolgáló Office 365-csoport nem lehetséges. StaffHub Csapatnév nem vonatkozik az előtagok és utótagot, és nem ellenőrzi az egyéni letiltott szavakat. De StaffHub nem alkalmazza az előtagok és utótagok és a letiltott szavakat távolít el az alapul szolgáló Office 365-csoportot.
-Exchange PowerShell | Exchange PowerShell-parancsmagok megfeleljenek az elnevezési szabályzat. A felhasználók megfelelő hibaüzeneteket a javasolt előtag- és utótagok és a letiltott szavakat egyéni kapnak, ha azok nem követi a csoportelnevezési házirend, a csoport nevét és a csoport aliasa (mailNickname).
-Az Azure Active Directory PowerShell-parancsmagok | Az Azure Active Directory PowerShell-parancsmagok felelnek meg a kiosztási szabályzat. A felhasználók megfelelő hibaüzeneteket a javasolt előtag- és utótagok és a letiltott szavakat egyéni kapnak, ha azok nem követi az elnevezési szabályt követik a csoport nevét és a csoport aliasa.
-Az Exchange felügyeleti központban | Az Exchange felügyeleti központban az elnevezési szabályzatában foglalt felelnek. A felhasználók megfelelő hibaüzeneteket a javasolt előtag- és utótagok és a letiltott szavakat egyéni kapnak, ha azok nem követi az elnevezési szabályt követik a csoport nevét és a csoport aliasa.
-Microsoft 365 admin center | A Microsoft 365 felügyeleti központ az elnevezési szabályzatában foglalt felelnek. Amikor egy felhasználó hoz létre vagy módosításokat a csoportneveket, a csoportelnevezési házirend a rendszer automatikusan alkalmazza és felhasználók megfelelő hibák lépnek fel, amikor belép az egyéni letiltott szavakat. A Microsoft 365 felügyeleti központ előzetes verziója a kiosztási szabályzat még nem jeleníti meg, és egyéni letiltott szó hibák nem ad vissza, ha a felhasználó megadja a csoport nevét.
+Azure Active Directory portálok | Az Azure AD-portál és a hozzáférési panel portálon az elnevezési szabályzat kényszerített neve jelenik meg, amikor a felhasználó a csoport nevében egy csoport létrehozásakor vagy szerkesztésekor begépeli a nevet. Ha a felhasználó egy egyéni letiltott szót ad meg, a rendszer hibaüzenetet jelenít meg a letiltott Szóval, hogy a felhasználó el tudja távolítani.
+Outlook Web Access (OWA) | Az Outlook Web Access megjeleníti az elnevezési házirend kényszerített nevét, ha a felhasználó egy csoportnév vagy egy csoport aliasnevét adja meg. Amikor egy felhasználó egyéni letiltott szót ad meg, hibaüzenet jelenik meg a felhasználói felületen a blokkolt Szóval együtt, hogy a felhasználó el tudja távolítani.
+Outlook asztal | Az Outlook Desktopban létrehozott csoportok megfelelnek a névadási házirend beállításainak. Az Outlook asztali alkalmazás még nem jeleníti meg a kényszerített csoport nevét, és nem adja vissza az egyéni blokkolt Word-hibákat, amikor a felhasználó megadja a csoport nevét. Az elnevezési házirendet azonban automatikusan alkalmazza a rendszer a csoportok létrehozásakor vagy szerkesztésekor, a felhasználók pedig hibaüzeneteket látnak, ha a csoport neve vagy aliasa egyéni letiltott szavakat tartalmaz.
+Microsoft Teams | A Microsoft Teams a csoport elnevezési szabályzatának kikényszerített nevét jeleníti meg, amikor a felhasználó beírja a csapat nevét. Ha egy felhasználó egyéni letiltott szót ad meg, hibaüzenet jelenik meg a letiltott Szóval együtt, hogy a felhasználó el tudja távolítani.
+SharePoint  |  A SharePoint megjeleníti az elnevezési házirend kényszerített nevét, ha a felhasználó a hely nevét vagy a csoport e-mail-címét adja meg. Ha egy felhasználó egy egyéni letiltott szót ad meg, hibaüzenet jelenik meg a letiltott Szóval együtt, hogy a felhasználó el tudja távolítani.
+Microsoft Stream | Microsoft Stream megjeleníti a csoport elnevezési szabályzatának kikényszerített nevét, ha a felhasználó a csoport nevét vagy a csoport e-mail aliasát adja meg. Ha egy felhasználó egyéni letiltott szót ad meg, a rendszer hibaüzenetet jelenít meg a letiltott Szóval, így a felhasználó el tudja távolítani.
+Outlook iOS-és Android-alkalmazás | Az Outlook-alkalmazásokban létrehozott csoportok megfelelnek a konfigurált elnevezési házirendnek. Az Outlook Mobile alkalmazás még nem jeleníti meg az elnevezési szabályzat által kényszerített név előnézetét, és nem ad vissza egyéni blokkolt Word-hibákat, amikor a felhasználó belép a csoport nevébe. Az elnevezési házirendet azonban automatikusan alkalmazza a létrehozás/szerkesztés és a felhasználók a hibaüzenetek megjelenítéséhez, ha a csoport neve vagy aliasa egyéni letiltott szavakat tartalmaz.
+A Mobile App csoportok | A groups Mobile alkalmazásban létrehozott csoportok megfelelnek az elnevezési házirendnek. A groups Mobile App nem jeleníti meg az elnevezési házirend előnézetét, és nem ad vissza egyéni blokkolt Word-hibákat, amikor a felhasználó belép a csoport nevére. Az elnevezési házirendet azonban automatikusan alkalmazza a rendszer a csoportok létrehozásakor vagy szerkesztésekor, és a felhasználók a megfelelő hibákkal jelennek meg, ha a csoport neve vagy aliasa egyéni tiltott szavakat tartalmaz.
+Planner | A Planner megfelel az elnevezési házirendnek. A Planner megjeleníti a névadási házirend előzetes verzióját a csomag nevének megadásakor. Ha egy felhasználó egyéni letiltott szót ad meg, a terv létrehozásakor hibaüzenet jelenik meg.
+Dynamics 365 for Customer Engagement | A Dynamics 365 for Customer engagement megfelel az elnevezési házirendnek. A Dynamics 365 megjeleníti az elnevezési szabályzatot, amely akkor lép érvénybe, ha a felhasználó a csoport nevét vagy a csoport e-mail aliasát adja meg. Ha a felhasználó egy egyéni letiltott szót ad meg, hibaüzenet jelenik meg a letiltott Szóval, így a felhasználó el tudja távolítani.
+School Data Sync (SDS) | Az SDS használatával létrehozott csoportok megtartják az elnevezési házirendet, de az elnevezési házirend nincs automatikusan alkalmazva. Az SDS-rendszergazdáknak hozzá kell fűzni az előtagokat és az utótagokat azokhoz a csoportokhoz, amelyekhez létre kell hozni, majd fel kell tölteni őket az SDS-be. A csoport létrehozása vagy szerkesztése másként nem fog működni.
+Outlook Customer Manager (VÁLASZTHATÓÖSSZETEVŐ) | Az Outlook Customer Manager megfelel az elnevezési házirendnek, amely automatikusan az Outlook Customer Managerben létrehozott csoportra lesz alkalmazva. Ha a rendszer egy egyéni blokkolt szót észlel, a VÁLASZTHATÓÖSSZETEVŐ-ben való csoportos létrehozás le van tiltva, és a felhasználó le van tiltva a VÁLASZTHATÓÖSSZETEVŐ alkalmazás használatával.
+Tantermi alkalmazás | Az osztályterem alkalmazásban létrehozott csoportok megfelelnek az elnevezési házirendnek, de az elnevezési házirend nem lesz automatikusan alkalmazva, és az elnevezési szabályzat előzetes verziója nem jelenik meg a felhasználók számára az osztályterem csoport nevének megadásakor. A felhasználóknak meg kell adniuk a kényszerített osztályterem csoport nevét előtagokkal és utótagokkal. Ha nem, az osztályterem csoport létrehozás vagy szerkesztés művelete hibákkal meghiúsul.
+Power BI | Power BI munkaterületek megfelelnek az elnevezési házirendnek.    
+Yammer | Amikor egy felhasználó a Yammer-be bejelentkezett a Azure Active Directory-fiókjával, létrehoz egy csoportot, vagy szerkeszti a csoport nevét, a csoportnév megfelel az elnevezési házirendnek. Ez mind az Office 365 csatlakoztatott csoportjaira, mind a többi Yammer-csoportra vonatkozik.<br>Ha az Office 365 Connected Group létrejött az elnevezési házirend előtt, a csoport neve nem követi automatikusan a névadási házirendeket. Amikor egy felhasználó szerkeszti a csoport nevét, a rendszer kérni fogja, hogy adja hozzá az előtagot és utótagot.
+StaffHub  | A StaffHub csapatok nem követik az elnevezési szabályzatot, de az alapul szolgáló Office 365-csoport nem. A StaffHub-csoport neve nem alkalmazza az előtagokat és az utótagokat, és nem keres egyéni tiltott szavakat. A StaffHub azonban alkalmazza az előtagokat és az utótagokat, és eltávolítja a letiltott szavakat a mögöttes Office 365-csoportból.
+Exchange PowerShell | Az Exchange PowerShell-parancsmagok megfelelnek az elnevezési házirendnek. A felhasználók a javasolt előtagokkal és utótagokkal, illetve az egyéni blokkolt szavak esetén kapják meg a megfelelő hibaüzeneteket, ha nem követik az elnevezési házirendet a csoport neve és a csoport aliasában (mailNickname).
+PowerShell-parancsmagok Azure Active Directory | Azure Active Directory PowerShell-parancsmagok megfelelnek az elnevezési házirendnek. A felhasználók a javasolt előtagokkal és utótagokkal, illetve az egyéni blokkolt szavak esetén kapják meg a megfelelő hibaüzeneteket, ha nem követik az elnevezési konvenciót a csoportok neveiben és a csoport aliasnevében.
+Exchange felügyeleti központ | Az Exchange felügyeleti központ megfelel az elnevezési házirendnek. A felhasználók a javasolt előtagokkal és utótagokkal, illetve az egyéni blokkolt szavak esetén kapják meg a megfelelő hibaüzeneteket, ha nem követik az elnevezési konvenciót a csoport neve és a csoport aliasában.
+Microsoft 365 felügyeleti központ | Microsoft 365 felügyeleti központ megfelel az elnevezési házirendnek. Amikor egy felhasználó létrehoz vagy szerkeszt egy csoportnevet, a rendszer automatikusan alkalmazza az elnevezési házirendet, és a felhasználók a megfelelő hibákat kapják meg, amikor egyéni tiltott szavakat hoznak létre. A Microsoft 365 felügyeleti központ még nem jeleníti meg az elnevezési házirend előnézetét, és nem ad vissza egyéni blokkolt Word-hibákat, amikor a felhasználó belép a csoport nevére.
 
 ## <a name="next-steps"></a>További lépések
 
-E cikkekben további információk az Azure AD-csoportokat.
+Ezek a cikkek további információkat nyújtanak az Azure AD-csoportokról.
 
 - [Meglévő csoportok megtekintése](../fundamentals/active-directory-groups-view-azure-portal.md)
-- [Elévülési szabályzatot, az Office 365-csoportok](groups-lifecycle.md)
+- [Az Office 365-csoportok elévülési szabályzata](groups-lifecycle.md)
 - [Csoportbeállítások kezelése](../fundamentals/active-directory-groups-settings-azure-portal.md)
 - [Csoporttagok kezelése](../fundamentals/active-directory-groups-members-azure-portal.md)
 - [Csoporttagságok kezelése](../fundamentals/active-directory-groups-membership-azure-portal.md)

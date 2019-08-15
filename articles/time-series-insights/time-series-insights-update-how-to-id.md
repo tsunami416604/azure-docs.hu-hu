@@ -1,6 +1,6 @@
 ---
 title: Ajánlott eljárások a Time Series ID döntöttek az Azure Time Series Insights – előzetes |} A Microsoft Docs
-description: Ajánlott eljárások ismertetése, ha úgy dönt, a Time Series-azonosító az Azure Time Series Insights előzetes verziója.
+description: Az idősorozat-azonosító Azure Time Series Insights előzetes verzióban való kiválasztásakor ajánlott eljárások ismertetése.
 author: ashannon7
 ms.author: dpalled
 ms.workload: big-data
@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: af540267e4afc1b248b66b1c6f4989b832c38b58
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7057ce27cbbba8d70835493fc91a88ad823369bb
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237580"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947204"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>A Time Series ID kiválasztására vonatkozó ajánlott eljárások
 
@@ -42,7 +42,7 @@ Továbbá kiválaszthat akár *három* (3) kulcstulajdonságok, mint a Time Seri
 
 A következő esetekben ismertetik a Time Series azonosító egynél több kulcstulajdonság kiválasztása:  
 
-### <a name="scenario-one"></a>Első forgatókönyv
+### <a name="scenario-one"></a>Egy forgatókönyv
 
 * Örökölt flották az eszközök, minden egyes egyedi kulccsal rendelkezik.
 * Ha például egy flotta egyedileg azonosítja a tulajdonság *deviceId* és a egy másik, az egyedi tulajdonság *objectId*. Sem a flotta a flotta egyedi tulajdonság tartalmazza. Ebben a példában a kiválasztott két kulcsot, az eszközazonosító és objectId, egyedi kulcsként.

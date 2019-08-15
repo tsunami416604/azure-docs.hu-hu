@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 710d64b445953ae3124830931c8cbb9315d32b83
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 3594d9670e8fb94b053479352fb88997caa16db6
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875711"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016480"
 ---
 # <a name="execute-r-script"></a>R-szkript végrehajtása
 
@@ -76,8 +76,7 @@ A Visual Interface-ben tárolt adatkészletek automatikusan egy R-adatkeretre le
 
 1.  Adja hozzá az **R-szkript végrehajtása** modult a kísérlethez.
 
-    > [!NOTE]
-    > A rendszer az r- **parancsfájl-végrehajtási** modulnak átadott összes adatértéket R `data.frame` formátumra konvertálja.
+  
 
 1. Csatlakoztasson a parancsfájlhoz szükséges összes bemenetet. A bemenetek nem kötelezőek, és tartalmazhatnak adatokat és további R-kódokat is.
 
@@ -90,10 +89,33 @@ A Visual Interface-ben tárolt adatkészletek automatikusan egy R-adatkeretre le
 1. Az **r-szkript** szövegmezőbe írja be vagy illessze be az érvényes R-szkriptet.
 
     Az első lépésekhez az R- **szkript** szövegmező előre ki van töltve a mintakód segítségével, amelyet szerkeszthet vagy lecserélheti.
+    
+```R
+# R version: 3.5.1
+# The script MUST contain a function named azureml_main
+# which is the entry point for this module.
 
-    * A szkriptnek tartalmaznia kell egy nevű `azureml_main`függvényt, amely a modul belépési pontja.
+# The entry point function can contain up to two input arguments:
+#   Param<dataframe1>: a R DataFrame
+#   Param<dataframe2>: a R DataFrame
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
 
-    * A belépési pont függvény legfeljebb két bemeneti argumentumot tartalmazhat: `Param<dataframe1>` és`Param<dataframe2>`
+  # If a zip file is connected to the third input port, it is
+  # unzipped under "./Script Bundle". This directory is added
+  # to sys.path.
+
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
+ * A szkriptnek tartalmaznia kell egy nevű `azureml_main`függvényt, amely a modul belépési pontja.
+
+ * A belépési pont függvény legfeljebb két bemeneti argumentumot tartalmazhat: `Param<dataframe1>` és`Param<dataframe2>`
+ 
+   > [!NOTE]
+    > Az **R-szkript végrehajtása** modulnak átadott adatok a következőre `dataframe2`hivatkoznak `dataframe1` : és, amely `dataset1`eltér a Azure Machine learning Studiotól ( `dataset2`Studio-hivatkozás:). Győződjön meg arról, hogy a bemeneti adatok megfelelően vannak referneced a szkriptben.  
  
     > [!NOTE]
     >  Előfordulhat, hogy a meglévő R-kódnak kisebb módosításokra van szüksége a Visual Interface-kísérletben való futtatáshoz. Például a CSV formátumban megadott bemeneti adatokat explicit módon át kell alakítani egy adatkészletbe, mielőtt használni lehetne a kódban. Az R nyelvben használt adatok és oszlopok különböző módokon különböznek a vizualizációs felületen használt adatok és oszlopok típusaitól.
@@ -243,8 +265,8 @@ A használható előre telepített R-csomagok aktuális listája:
 | kötés        | 0.1.1      | 
 | bindrcpp     | 0.2.2      | 
 | bitops       | 1.0 – 6      | 
-| indítás         | 1.3 – 22     | 
-| Seprű        | 0.5.2      | 
+| rendszerindítás         | 1.3 – 22     | 
+| seprű        | 0.5.2      | 
 | hívó        | 3.2.0      | 
 | kalap jel        | 6.0 – 84     | 
 | caTools      | 1.17.1.2   | 
@@ -280,7 +302,7 @@ A használható előre telepített R-csomagok aktuális listája:
 | gplots       | 3.0.1.1    | 
 | grafikus     | 3.5.1      | 
 | grDevices    | 3.5.1      | 
-| rács         | 3.5.1      | 
+| grid         | 3.5.1      | 
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
 | tevékenységnaplóiban        | 2.1.0      | 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: f0f00745f2f7781bda0e636167b1cf1a4045f7cd
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 481e6c5f2271651627577af3d03f9dd4da725146
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881375"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949910"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools használata
 
@@ -93,7 +93,7 @@ A következő lépések a Homebrew-t használják a fő eszközök macOS rendsze
 
 Az alábbi lépések segítségével [](https://wiki.debian.org/Apt) telepítheti az alapvető eszközöket az Ubuntu/Debian Linux-disztribúción. Más Linux-disztribúciók esetében tekintse meg az [alapvető eszközök readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux)című témakört.
 
-1. Regisztrálja megbízhatóként a Microsoft-termékkulcsot:
+1. Telepítse a Microsoft Package repository GPG kulcsot a csomag integritásának ellenőrzéséhez:
 
     ```bash
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -135,15 +135,19 @@ func init MyFunctionProj
 ```
 
 Amikor megadja a projekt nevét, létrejön egy új, a névvel ellátott mappa, amely inicializálva van. Ellenkező esetben az aktuális mappa inicializálása megtörtént.  
-A 2. x verzióban a parancs futtatásakor ki kell választania egy futtatókörnyezetet a projekthez. Ha a JavaScript-függvények fejlesztését tervezi, válassza a **csomópont**:
+A 2. x verzióban a parancs futtatásakor ki kell választania egy futtatókörnyezetet a projekthez. 
 
 ```output
 Select a worker runtime:
 dotnet
 node
+python (preview)
+powershell (preview)
 ```
 
-A fel/le nyílbillentyűk használatával válassza ki a nyelvet, majd nyomja le az ENTER billentyűt. A kimenet a következő példához hasonlít egy JavaScript-projekthez:
+A fel/le nyílbillentyűk használatával válassza ki a nyelvet, majd nyomja le az ENTER billentyűt. Ha JavaScript-vagy írógéppel-függvények fejlesztését tervezi, válassza a **csomópont**lehetőséget, majd válassza ki a nyelvet. Az írógéppel [néhány további követelményt](functions-reference-node.md#typescript)is tartalmaz. 
+
+A kimenet a következő példához hasonlít egy JavaScript-projekthez:
 
 ```output
 Select a worker runtime: node
@@ -269,15 +273,40 @@ func new --template "Queue Trigger" --name QueueTriggerJS
 
 ## <a name="start"></a>Függvények helyi futtatása
 
-Functions-projekt futtatásához futtassa a functions gazdagépet. A gazdagép a projekt összes funkciója számára engedélyezi az eseményindítókat:
+Functions-projekt futtatásához futtassa a functions gazdagépet. A gazdagép lehetővé teszi az eseményindítók használatát a projektben lévő összes függvénynél. 
 
-```bash
+### <a name="version-2x"></a>2-es verzió. x
+
+A futtatókörnyezet 2. x verziójában a Start parancs a projekt nyelvétől függően változhat.
+
+#### <a name="c"></a>C\#
+
+```command
+func start --build
+```
+
+#### <a name="javascript"></a>JavaScript
+
+```command
+func start
+```
+
+#### <a name="typescript"></a>TypeScript
+
+```command
+npm install
+npm start     
+```
+
+### <a name="version-1x"></a>1\. x verzió
+
+A functions Runtime 1. x verziójának a `host` parancs futtatására van szüksége, ahogy az alábbi példában is látható:
+
+```command
 func host start
 ```
 
-A `host` parancs csak az 1. x verzióban szükséges.
-
-`func host start`a a következő lehetőségeket támogatja:
+`func start`a a következő lehetőségeket támogatja:
 
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
@@ -293,8 +322,6 @@ A `host` parancs csak az 1. x verzióban szükséges.
 | **`--script-root --prefix`** | A futtatni vagy telepíteni kívánt Function alkalmazás gyökeréhez tartozó elérési út megadására szolgál. Ez olyan lefordított projektek esetében használatos, amelyek a projektfájlok almappában hozhatók elő. Ha például létrehoz egy C# Class Library-projektet, a Host. JSON, a local. Settings. JSON és a function. JSON fájlok egy olyan *gyökérkönyvtárban* jönnek létre, amelynek elérési `MyProject/bin/Debug/netstandard2.0`útja hasonló. Ebben az esetben állítsa az előtagot `--script-root MyProject/bin/Debug/netstandard2.0`a következőre:. Ez a Function alkalmazás gyökere, ha az Azure-ban fut. |
 | **`--timeout -t`** | A függvények gazdagépének időtúllépése másodpercben. Alapértelmezett: 20 másodperc.|
 | **`--useHttps`** | Kötés helyett a következőhöz `http://localhost:{port}`: `https://localhost:{port}` . Alapértelmezés szerint ez a beállítás megbízható tanúsítványt hoz létre a számítógépen.|
-
-Az C# osztályazonosítók (. csproj) esetében meg kell `--build` adnia a Library. dll előállításának lehetőségét.
 
 A functions-gazdagép indításakor a HTTP-triggert függvények URL-címét adja meg:
 

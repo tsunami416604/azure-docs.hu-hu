@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2b961b855c7a0bb08c31b4e7ea8deb7f82ebb77c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: fb13cd65142214ccf852c591ae081e7e633e1a4d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846193"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935330"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>SQL Server virtuális gép licencelési modelljének módosítása az Azure-ban
 Ez a cikk azt ismerteti, hogyan változtatható meg egy SQL Server virtuális gép (VM) licencelési modellje az Azure-ban az új SQL VM erőforrás-szolgáltató, a **Microsoft. SqlVirtualMachine**használatával.
@@ -52,7 +52,7 @@ Az SQL virtuális gép erőforrás-szolgáltatójának használatához a SQL Ser
 
 ## <a name="change-the-license-for-vms-already-registered-with-the-resource-provider"></a>Az erőforrás-szolgáltatónál már regisztrált virtuális gépek licencének módosítása 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
@@ -66,7 +66,7 @@ A licencelési modellt közvetlenül a portálról is módosíthatja:
 ![Azure Hybrid Benefit a portálon](media/virtual-machines-windows-sql-ahb/ahb-in-portal.png)
 
 
-# <a name="azure-clitabbash"></a>[Azure CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Az Azure CLI használatával módosíthatja a licenc modelljét.  
 
@@ -88,7 +88,7 @@ Az alábbi kódrészlet a saját licences modellre vált az utólagos elszámol�
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 A PowerShell segítségével módosíthatja a licenc modelljét.
 
 A következő kódrészlet bekapcsolja az utólagos elszámolású licencelési modellt a saját licenc használatára (vagy a Azure Hybrid Benefit használatával):

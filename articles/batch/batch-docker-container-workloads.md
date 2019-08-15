@@ -8,15 +8,15 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 11/19/2018
+ms.date: 08/09/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: edf4ce2be451672ecbd4f732c3110617dc122ca0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a7de2ba66ccfb5e3f3bce688e68698d90fe2eaf6
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323586"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941333"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Tároló-alkalmazások futtatása Azure Batch
 
@@ -228,7 +228,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 Ha tároló-feladatot szeretne futtatni egy tárolót használó készleten, adja meg a tárolóra vonatkozó beállításokat. A beállítások közé tartozik a használni kívánt rendszerkép, a beállításjegyzék és a tároló futtatási beállításai.
 
-* A feladattípusok `ContainerSettings` tulajdonságával konfigurálhatja a tárolóra vonatkozó beállításokat. Ezeket a beállításokat a [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) osztály határozza meg.
+* A feladattípusok `ContainerSettings` tulajdonságával konfigurálhatja a tárolóra vonatkozó beállításokat. Ezeket a beállításokat a [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) osztály határozza meg. Vegye figyelembe, `--rm` hogy a tároló beállítás nem igényel `--runtime` további beállítást, mert a Batch által gondoskodik. 
 
 * Ha tároló lemezképeken futtat feladatokat, a [Cloud Task](/dotnet/api/microsoft.azure.batch.cloudtask) és a Feladatkezelő [feladat](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) tároló-beállításokat igényel. Azonban a [Start tevékenység](/dotnet/api/microsoft.azure.batch.starttask), a [feladat-előkészítési feladat](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)és a [feladat kiadása feladat](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) nem igényli a tárolók beállításait (azaz a tároló környezetben vagy közvetlenül a csomóponton futhatnak).
 

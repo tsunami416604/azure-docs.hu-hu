@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: barclayn
-ms.openlocfilehash: 5e449ae33b19b27c3ea50d982ed84f681a0beb8f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c04d5fc5b455c798ffc8cb4a88948deaea0cf348
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727269"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927933"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
 Ez a cikk a virtuális gépek és operációs rendszerek ajánlott biztonsági eljárásait ismerteti.
@@ -79,7 +79,7 @@ A kártevők elleni védelmet a vírusok, kémprogramok és más kártevő szoft
 
 A Microsoft antimalware olyan funkciókat tartalmaz, mint a valós idejű védelem, az ütemezett vizsgálat, a kártevők szervizelése, az aláírások frissítése, a motor frissítései, a minták jelentéskészítés és a kizárási események gyűjteménye. Az éles környezettől függetlenül üzemeltetett környezetekben a virtuális gépek és a Cloud Services elleni védelem érdekében antimalware-bővítményt használhat.
 
-Az üzembe helyezéshez és a beépített észlelésekhez (riasztások és incidensek) egyszerűen integrálható a Microsoft antimalware és a partneri megoldások [Azure Security Center](https://docs.microsoft.com/azure/security-center/) használatával.
+Az üzembe helyezéshez és a beépített észlelésekhez (riasztások és incidensek) egyszerűen integrálható a Microsoft antimalware és a partneri megoldások [Azure Security Center](../../security-center/index.yml) használatával.
 
 **Ajánlott eljárás**: Kártevők elleni védelemre szolgáló antimalware-megoldás telepítése.   
 **Részletek**: [Microsoft partneri megoldás vagy Microsoft antimalware telepítése](../../security-center/security-center-install-endpoint-protection.md)

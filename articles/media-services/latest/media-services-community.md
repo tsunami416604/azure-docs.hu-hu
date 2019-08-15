@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services-Közösség – áttekintés |} A Microsoft Docs
-description: Az Azure Media Services közösségi oldalai különböző módon tehet fel kérdéseket, küldje el visszajelzését, és tudnivalók a Media Services-frissítések ismerteti.
+title: Azure Media Services Közösség áttekintése | Microsoft Docs
+description: Ez a Azure Media Services közösségi oldal a különböző módszereket tárgyalja, amelyekkel kérdéseket tehet fel, visszajelzést adhat, és frissítéseket kaphat a Media Servicesról.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -11,54 +11,45 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/19/2019
+ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: 6a3c02c1f14c37317a03cb6ebe63bcddc92f3253
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8d3a26d015c129a04e54ba9633aa5d1ccfcacf8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710165"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "69016110"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services-közösség  
 
-Az Azure Media Services közösségi oldalai különböző módon tehet fel kérdéseket, küldje el visszajelzését, és tudnivalók a Media Services-frissítések ismerteti.
+Ez a Azure Media Services közösségi oldal a különböző módszereket tárgyalja, amelyekkel kérdéseket tehet fel, visszajelzést adhat, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="provide-feedback-and-make-suggestions"></a>Visszajelzést, és javaslatokat
+## <a name="provide-feedback-and-make-suggestions"></a>Visszajelzés küldése és javaslatok készítése
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="discussion"></a>Vitafórum
+## <a name="discussion"></a>Hozzászólások
 
 ### <a name="twitter"></a>Twitter
 
-Használhatja a [ @MSFTAzureMedia ](https://twitter.com/MSFTAzureMedia) twitter-leírót, lépjen kapcsolatba velünk, vagy hajtsa végre a frissítéseket a Twitteren. Használja a [ @AzureSupport ](https://twitter.com/azuresupport) twitter-leírót kérjen támogatást a Twitteren.  
+A [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) Twitter-leíró használatával kapcsolatba léphet velünk, vagy követheti a Twitteren lévő frissítéseket. A [@AzureSupport](https://twitter.com/azuresupport) Twitter-leíró használatával támogatást kérhet a Twitteren.  
 
 ### <a name="online-forums"></a>Online fórumok
 
-A következő fórumok aktuális termékekkel és szolgáltatásokkal kapcsolatos kérdések feltevéséhez használható.
+Az alábbi fórumok az aktuális termékekkel és szolgáltatásokkal kapcsolatos kérdéseket tehetnek fel.
 
-Jelenleg az MSDN a Media Services team elsődleges közösségi fórum.
+Az MSDN jelenleg Media Services csapat elsődleges közösségi fóruma.
 
 [![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
-A csapat is figyeli a Stack overflow oldalon az "azure-media-services" címkével ellátott kérdések.
+A csapat az Azure-Media-Services szolgáltatással Stack Overflow címkézett kérdéseket is figyeli.
 
-[![Stackoverflow-n](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
+[![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="contact-the-team"></a>Vegye fel a kapcsolatot a csapattal
 
-Az Azure Media Services az elsődleges támogatási e-mail cím: **amshelp\@microsoft.com**.
-
-Az alábbi táblázat a funkció a sub csoportos e-mail:
-
-| Funkció | E-mail |
-| --- | --- |
-| Azure Media Player |ampinfo@microsoft.com |
-| Azure Media Explorer |amse@microsoft.com |
-| A munkafolyamat-tervezővel |mepd@microsoft.com |
-| Élő Streaming és becsomagolásához |amslived@microsoft.com |
+Azure Media Services elsődleges támogatási e-mail-cím: **amshelp\@Microsoft.com**.
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure Media Services áttekintése](media-services-overview.md)
+[Azure Media Services áttekintése](media-services-overview.md)

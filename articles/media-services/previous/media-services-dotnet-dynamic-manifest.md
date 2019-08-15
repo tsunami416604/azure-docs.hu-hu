@@ -13,39 +13,40 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;cenkdin
-ms.openlocfilehash: 05b899658b5c58e15b2f30ab759eb49319979fee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: cenkdin
+ms.openlocfilehash: c60b223f91a151bf63cabc5e95816f2545022503
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465558"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016608"
 ---
-# <a name="creating-filters-with-media-services-net-sdk"></a>Szűrők létrehozása a Media Services .NET SDK használatával 
+# <a name="creating-filters-with-media-services-net-sdk"></a>Szűrők létrehozása Media Services .NET SDK-val 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
 > * [REST](media-services-rest-dynamic-manifest.md)
 > 
 > 
 
-2\.17 kiadástól kezdve, a Media Services lehetővé teszi az eszközök szűrőket határozhat meg. Ezeket a szűrőket, amelyek lehetővé teszik az ügyfelek úgy dönteni, hogy többek között a kiszolgálóoldali szabályok: lejátszási csak egy részét (helyett egész videó lejátszásának), videó vagy hang- és verzió, amely a felhasználói eszköz képes kezelni (nem pedig csak egy részhalmazát adja meg az összes a beállításkészletben az eszközhöz társított). Ez a szűrés az eszközök a gazdafájlon keresztül **dinamikus Manifest**, amelyek létrejönnek a videó továbbításához a felhasználói kérésre megadott szűrő(k) alapján.
+A 2,17-es verziótól kezdődően a Media Services lehetővé teszi az eszközökhöz tartozó szűrők megadását. Ezek a szűrők olyan kiszolgálóoldali szabályok, amelyek lehetővé teszik az ügyfelek számára a következő műveleteket: csak a videó egy szakaszának lejátszása (a teljes videó lejátszása helyett), vagy adja meg az ügyfél által kezelhető hang-és videó-kiadatások egy részhalmazát (a az eszközhöz társított összes kiadatás. Az eszközök szűrése az ügyfél által a megadott szűrő (k) alapján a videó streamre való továbbítására szolgáló **dinamikus jegyzékfájlon**keresztül érhető el.
 
-Részletesebb szűrők és dinamikus Manifest kapcsolatos információkért lásd: [dinamikus jegyzékfájlok áttekintése](media-services-dynamic-manifest-overview.md).
+A szűrőkkel és a dinamikus Jegyzéktel kapcsolatos részletesebb információkért lásd: a [dinamikus jegyzékfájlok áttekintése](media-services-dynamic-manifest-overview.md).
 
-Ez a cikk bemutatja, hogyan létrehozása, frissítése és törlése a szűrők a Media Services .NET SDK használatával. 
+Ez a cikk bemutatja, hogyan használhatók a Media Services .NET SDK szűrők létrehozásához, frissítéséhez és törléséhez. 
 
-Vegye figyelembe, ha frissíti a szűrőt, streamvégpont szabályok frissítése akár két percet is igénybe vehet. Ha a tartalom kiszolgálása szűrővel (és a proxyk és a CDN gyorsítótárazza a gyorsítótárak), player hibák frissítése ezzel a szűrővel eredményezhet. Mindig törölje a gyorsítótárat a szűrő frissítése után. Ha ezt a beállítást nem lehetséges, fontolja meg egy másik szűrővel. 
+Megjegyzés: Ha frissít egy szűrőt, akár két percet is igénybe vehet, amíg a streaming-végpont frissíti a szabályokat. Ha a tartalom a szűrő használatával lett kézbesítve (és gyorsítótárazva van a proxys és a CDN-gyorsítótárban), akkor a szűrő frissítése a Player meghibásodását eredményezheti. A szűrő frissítése után mindig törölje a gyorsítótárat. Ha ez a beállítás nem lehetséges, érdemes lehet egy másik szűrőt használni. 
 
 ## <a name="types-used-to-create-filters"></a>Szűrők létrehozásához használt típusok
-A következő típusok használhatók a szűrők létrehozásakor: 
+Szűrők létrehozásakor a következő típusok használatosak: 
 
-* **IStreamingFilter**.  Ez a típus a következő REST API alapján [szűrő](https://docs.microsoft.com/rest/api/media/operations/filter)
-* **IStreamingAssetFilter**. Ez a típus a következő REST API alapján [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* **PresentationTimeRange**. Ez a típus a következő REST API alapján [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* **FilterTrackSelectStatement** és **IFilterTrackPropertyCondition**. Ezek a típusok alapján a következő REST API-k [FilterTrackSelect és FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* **IStreamingFilter**.  Ez a típus a következő REST API szűrőn [](https://docs.microsoft.com/rest/api/media/operations/filter) alapul.
+* **IStreamingAssetFilter**. Ez a típus a következő REST API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter) alapul.
+* **PresentationTimeRange**. Ez a típus a következő REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange) alapul.
+* **FilterTrackSelectStatement** és **IFilterTrackPropertyCondition**. Ezek a típusok a következő REST API-k [FilterTrackSelect és FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect) alapulnak.
 
 ## <a name="createupdatereaddelete-global-filters"></a>Globális szűrők létrehozása/frissítése/olvasása/törlése
-A következő kód bemutatja, hogyan .NET létrehozása, frissítése, olvassa el, és törölni az eszközintelligencia szűrők.
+A következő kód bemutatja, hogyan használható a .NET az eszközök szűrőinek létrehozásához, frissítéséhez, olvasásához és törléséhez.
 
 ```csharp
     string filterName = "GlobalFilter_" + Guid.NewGuid().ToString();
@@ -74,8 +75,8 @@ A következő kód bemutatja, hogyan .NET létrehozása, frissítése, olvassa e
     filter.Delete();
 ```
 
-## <a name="createupdatereaddelete-asset-filters"></a>Szűrők létrehozása/frissítése/olvasása és törlése eszköz
-A következő kód bemutatja, hogyan .NET létrehozása, frissítése, olvassa el, és törölni az eszközintelligencia szűrők.
+## <a name="createupdatereaddelete-asset-filters"></a>Eszköz-szűrők létrehozása/frissítése/olvasása/törlése
+A következő kód bemutatja, hogyan használható a .NET az eszközök szűrőinek létrehozásához, frissítéséhez, olvasásához és törléséhez.
 
 ```csharp
     string assetName = "AssetFilter_" + Guid.NewGuid().ToString();
@@ -106,20 +107,20 @@ A következő kód bemutatja, hogyan .NET létrehozása, frissítése, olvassa e
 ```
 
 
-## <a name="build-streaming-urls-that-use-filters"></a>Build a streaming URL-címeket, a szűrők használata
-Hogyan tehet közzé, és az eszközök a további információkért lásd: [tartalom továbbítása az ügyfelek áttekintése](media-services-deliver-content-overview.md).
+## <a name="build-streaming-urls-that-use-filters"></a>Szűrőket használó streaming URL-címek összeállítása
+Az eszközök közzétételével és továbbításával kapcsolatos információkért lásd: [tartalom továbbítása az ügyfeleknek áttekintés](media-services-deliver-content-overview.md).
 
-Az alábbi példák bemutatják, hogyan szűrők felvétele a streamelési URL-címeket.
+Az alábbi példák bemutatják, hogyan adhat hozzá szűrőket a folyamatos átviteli URL-címekhez.
 
 **MPEG DASH** 
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
 
-**Apple HTTP Live Streaming (HLS) V4**
+**Apple HTTP Live Streaming (HLS) v4**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)
 
-**Apple HTTP Live Streaming (HLS) V3**
+**Apple HTTP Live Streaming (HLS) v3**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
 
@@ -135,5 +136,5 @@ Az alábbi példák bemutatják, hogyan szűrők felvétele a streamelési URL-c
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még:
-[A dinamikus jegyzékek áttekintése](media-services-dynamic-manifest-overview.md)
+[Dinamikus jegyzékfájlok áttekintése](media-services-dynamic-manifest-overview.md)
 

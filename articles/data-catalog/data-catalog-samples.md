@@ -6,18 +6,18 @@ author: JasonWHowell
 ms.author: jasonh
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: cdf90029d02680de4ce55e33b3ed0fe810d70b4c
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 7d0e27802745dda62f87e412053650907e9b812c
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775247"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950161"
 ---
 # <a name="azure-data-catalog-developer-samples"></a>Azure Data Catalog fejlesztői minták
 
 Ismerkedjen meg Azure Data Catalog alkalmazások fejlesztésével a Data Catalog REST API használatával. A Data Catalog REST API egy REST-alapú API, amely programozott hozzáférést biztosít Data Catalog erőforrásokhoz az adategységek programozott módon történő regisztrálásához, feliratozásához és kereséséhez.
 
-Íme a GitHubon található minták:
+## <a name="samples-available-on-githubcom"></a>GitHub.com elérhető minták
 
 * [Ismerkedés az Azure Data Catalog szolgáltatással](https://github.com/Azure-Samples/data-catalog-dotnet-get-started/)
   

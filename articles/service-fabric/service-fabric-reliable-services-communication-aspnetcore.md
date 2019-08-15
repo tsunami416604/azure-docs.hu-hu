@@ -1,6 +1,6 @@
 ---
-title: Kommunikáció az ASP.NET Core-szolgáltatás |} A Microsoft Docs
-description: Ismerje meg, hogyan használhatja az ASP.NET Core az állapot nélküli és állapotalapú Reliable Services.
+title: A szolgáltatással folytatott kommunikáció a ASP.NET Coreval | Microsoft Docs
+description: Ismerje meg, hogyan használható a ASP.NET Core állapot nélküli és állapot-nyilvántartó Reliable Servicesokban.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,106 +14,106 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 638c06e1854504dcb7ff34b1d9df56694556c421
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9648307bb7278f36686d8a53be90c2d9ef7159e1
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939793"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016711"
 ---
-# <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Az ASP.NET Core, az Azure Service Fabric Reliable Services
+# <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core az Azure Service Fabric Reliable Services
 
-ASP.NET Core egy olyan nyílt forráskódú és platformfüggetlen keretrendszer. Ezt a keretrendszert, amely felhőalapú, internetkapcsolattal rendelkező alkalmazások, például az IoT-alkalmazások, webalkalmazások,-mobil háttérrendszer.
+A ASP.NET Core egy nyílt forráskódú és platformfüggetlen keretrendszer. Ez a keretrendszer felhőalapú, internetkapcsolattal rendelkező alkalmazások, például webalkalmazások, IoT-alkalmazások és mobil-háttérrendszer létrehozására szolgál.
 
-Ez a cikk egy részletes útmutató ASP.NET Core való tárolása a Service Fabric Reliable Services használatával a rendszer a **Microsoft.ServiceFabric.AspNetCore.** NuGet-csomagok gyűjteménye.
+Ez a cikk részletesen ismerteti, hogy a **Microsoft. ServiceFabric. AspNetCore** segítségével hogyan ASP.net Core üzemeltetheti a Service Fabric Reliable Services-szolgáltatásait. NuGet-csomagok készlete.
 
-Egy bevezető oktatóanyag a Service Fabric ASP.NET Core-on és a fejlesztési környezet beállítása beszerzésével kapcsolatban lásd: [oktatóanyag: Hozzon létre és telepíthet egy alkalmazást egy ASP.NET Core Web API kezelőfelületi szolgáltatás és a egy állapotalapú háttérszolgáltatás](service-fabric-tutorial-create-dotnet-app.md).
+A fejlesztői környezet beállításával kapcsolatos útmutatásért tekintse [meg a Service Fabric és a ASP.net Core című bevezető oktatóanyagot: oktatóanyag: Hozzon létre és helyezzen üzembe egy ASP.NET Core webes API előtér-szolgáltatással és egy állapot-visszaállítási szolgáltatással](service-fabric-tutorial-create-dotnet-app.md)rendelkező alkalmazást.
 
-Ez a cikk többi része feltételezi, hogy Ön már ismeri az ASP.NET Core használatával. Ha nem, olvassa a [ASP.NET Core alapjai](https://docs.microsoft.com/aspnet/core/fundamentals/index).
+A cikk további része feltételezi, hogy már ismeri a ASP.NET Core. Ha nem, olvassa el a [ASP.net Core alapjaival](https://docs.microsoft.com/aspnet/core/fundamentals/index)kapcsolatos tudnivalókat.
 
-## <a name="aspnet-core-in-the-service-fabric-environment"></a>ASP.NET Core a Service Fabric-környezetben
+## <a name="aspnet-core-in-the-service-fabric-environment"></a>ASP.NET Core a Service Fabric környezetben
 
-ASP.NET Core és a Service Fabric-alkalmazásokat a .NET Core vagy a teljes .NET-keretrendszer is futtathatja. ASP.NET Core a Service Fabric két különböző módon használhatja:
- - **A Vendég futtatható üzemeltetett**. Ezzel a módszerrel elsősorban meglévő ASP.NET Core-alkalmazások futtatását a Service Fabric programkód módosítása nélkül.
- - **A reliable Services belül futó**. Így lehetővé teszi, hogy a Service Fabric-futtatókörnyezet jobb integrációt, és lehetővé teszi az állapotalapú ASP.NET Core szolgáltatások.
+A ASP.NET Core és Service Fabric alkalmazások is futtathatók a .NET Core-ban vagy a teljes .NET-keretrendszerben. A ASP.NET Core a Service Fabric két különböző módon használható:
+ - **Vendég végrehajtható fájlként futtatva**. Így elsősorban a meglévő ASP.NET Core-alkalmazások futtatására használatos Service Fabric a kód módosítása nélkül.
+ - **Megbízható szolgáltatáson belül fut**. Így jobb integrációt tesz lehetővé a Service Fabric futtatókörnyezettel, és lehetővé teszi az állapot-nyilvántartó ASP.NET Core szolgáltatások használatát.
 
-Ez a cikk ismerteti, hogyan ASP.NET Core egy megbízható szolgáltatást, az ASP.NET Core a Service Fabric SDK integrációs összetevők keresztül belül.
+A cikk további része azt ismerteti, hogyan használható a ASP.NET Core egy megbízható szolgáltatáson belül az Service Fabric SDK-val szállított ASP.NET Core integrációs összetevőkkel.
 
-## <a name="service-fabric-service-hosting"></a>A Service Fabric-szolgáltatás üzemeltetéséhez
+## <a name="service-fabric-service-hosting"></a>Service Fabric szolgáltatás üzemeltetése
 
-A Service Fabric, egy vagy több példány és/vagy a szolgáltatás replikák futtassa egy *gazdafolyamat szolgáltatás*: egy végrehajtható fájlt, amely a szolgáltatás-kódját. A szolgáltatás szerző saját a gazdagép-folyamat, és a Service Fabric aktiválja, és monitorozza az Ön számára.
+Service Fabric a szolgáltatás egy vagy több példánya és/vagy replikája egy *Service Host*-folyamaton fut: egy végrehajtható fájl, amely a szolgáltatási kódot futtatja. Ön, mint szolgáltatás szerzője, a szolgáltatás gazdagépének tulajdonosa, és Service Fabric aktiválja és figyeli.
 
-(Max. MVC 5) hagyományos ASP.NET szorosan összekapcsolt IIS System.Web.dll keresztül. ASP.NET Core egy a webkiszolgáló és a webes alkalmazások elkülönítése biztosít. Ez a fajta elkülönítés lehetővé teszi, hogy a webes alkalmazásokat, hogy a hordozható különböző webkiszolgálók között. Azt is lehetővé teszi a webkiszolgálók *saját üzemeltetésű*. Ez azt jelenti, hogy egy webkiszolgáló elkezdheti saját folyamat helyett egy dedikált web server szoftverek, például az IIS tulajdonában lévő folyamat.
+A hagyományos ASP.NET (az MVC 5-ig) szorosan kapcsolódik az IIS-hez a System. Web. dll fájlon keresztül. ASP.NET Core a webkiszolgáló és a webalkalmazás közötti elkülönítést biztosít. Ez a szétválasztás lehetővé teszi, hogy a webalkalmazások a különböző webkiszolgálók között legyenek hordozhatóek. Azt is lehetővé teszi, hogy a webkiszolgálók *önállóan üzemeltetve*legyenek. Ez azt jelenti, hogy elindíthat egy webkiszolgálót a saját folyamatában, nem pedig egy dedikált webkiszolgáló szoftver (például az IIS) tulajdonában álló folyamattal szemben.
 
-Úgy, hogy a Service Fabric-szolgáltatást és az ASP.NET, vagy egy Vendég futtatható, vagy egy megbízható szolgáltatás az ASP.NET elindíthatja a szolgáltatás gazdafolyamat belül kell lennie. ASP.NET Core, helyi üzemeltetés lehetővé teszi, hogy ez.
+A Service Fabric szolgáltatás és a ASP.NET összevonásához vendég végrehajtható fájlként vagy megbízható szolgáltatásként el kell tudnia indítani a ASP.NET a szolgáltatás-gazdagépen belül. ASP.NET Core az önálló üzemeltetés lehetővé teszi ezt.
 
-## <a name="hosting-aspnet-core-in-a-reliable-service"></a>Üzemeltetési ASP.NET Core reliable service-ben
-Általában helyi ASP.NET Core-alkalmazások létrehozása a WebHost a belépési pont egy alkalmazás, például a `static void Main()` metódus az `Program.cs`. Ebben az esetben a WebHost életciklusának életciklusa alatt, a folyamat van kötve.
+## <a name="hosting-aspnet-core-in-a-reliable-service"></a>ASP.NET Core üzemeltetése megbízható szolgáltatásban
+A saját üzemeltetésű ASP.net Core alkalmazások általában az alkalmazás belépési pontjaiban hoznak létre egy jogcímet, `static void Main()` például a `Program.cs`metódusban. Ebben az esetben az WebHost életciklusa a folyamat életciklusához van kötve.
 
-![Hosting ASP.NET Core in a process][0]
+![ASP.NET Core üzemeltetése folyamatban][0]
 
-De az alkalmazás belépési pont nem hoz létre a WebHost egy megbízható szolgáltatásban jó helyen. Ennek oka az, a belépési pontja van csak való regisztrálásához használt egy bizonyos szolgáltatástípusként a Service Fabric-futtatókörnyezet, úgy, hogy az adott szolgáltatás típusú példányok tud létrehozni. A WebHost létre kell hozni egy megbízható szolgáltatás. A szolgáltatás gazdagép folyamaton belül szolgáltatáspéldányok és/vagy a replikák végigveheti több életciklusait. 
+Az alkalmazás belépési pontja azonban nem a megfelelő hely ahhoz, hogy megbízható szolgáltatásként hozzon létre egy jogcímet. Ennek az az oka, hogy az alkalmazás belépési pontja csak a szolgáltatás típusának a Service Fabric futtatókörnyezettel való regisztrálására szolgál, így az adott szolgáltatástípus példányai is létrehozhatók. A webszolgáltatást egy megbízható szolgáltatásban kell létrehozni. A Service Host folyamaton belül a szolgáltatás példányai és/vagy replikái több életcikluson keresztül is eltérhetnek. 
 
-A szolgáltatás osztály kapcsolatból származtatott kapcsolatot képviseli egy Reliable Services-példányt `StatelessService` vagy `StatefulService`. A kommunikációs verem szolgáltatás szerepel egy `ICommunicationListener` megvalósítása a service osztályban. A `Microsoft.ServiceFabric.AspNetCore.*` NuGet-csomagok megvalósítása tartalmaz `ICommunicationListener` , indítsa el, és felügyelheti az ASP.NET Core Webhostot a Kestrel vagy a HTTP.sys egy reliable service-ben.
+A szolgáltatási osztály a `StatelessService` vagy `StatefulService`a szolgáltatásból származó megbízható szolgáltatási példányt képvisel. A szolgáltatás kommunikációs veremét a szolgáltatási osztály egy `ICommunicationListener` implementációja tárolja. A `Microsoft.ServiceFabric.AspNetCore.*` NuGet-csomagok olyan implementációkat `ICommunicationListener` tartalmaznak, amelyek elindítják és felügyelik az ASP.net Core webhost-t a vércse vagy a http. sys számára egy megbízható szolgáltatásban.
 
-![Diagram üzemeltetéséhez az ASP.NET Core reliable service-ben][1]
+![A megbízható szolgáltatásban ASP.NET Core üzemeltetésének diagramja][1]
 
-## <a name="aspnet-core-icommunicationlisteners"></a>Az ASP.NET Core ICommunicationListeners
-A `ICommunicationListener` Kestrel és a HTTP.sys megvalósítások az `Microsoft.ServiceFabric.AspNetCore.*` NuGet-csomagok hasonló felhasználási minták rendelkezik. Azonban azok minden webkiszolgálóhoz adott némileg különböző műveleteket végezni. 
+## <a name="aspnet-core-icommunicationlisteners"></a>ASP.NET Core ICommunicationListeners
+A NuGet`Microsoft.ServiceFabric.AspNetCore.*` -csomagokban a vércse és a http. sys implementációjahasonló`ICommunicationListener` használati mintákat tartalmaz. Azonban az egyes webkiszolgálókon némileg eltérő műveleteket hajtanak végre. 
 
-Mindkét kommunikációs figyelőket adjon meg egy konstruktort, amely a következő argumentumot:
- - **`ServiceContext serviceContext`** : Ez a `ServiceContext` objektum, amely a futó szolgáltatással kapcsolatos információkat tartalmazza.
- - **`string endpointName`** : Azt a nevet, egy `Endpoint` ServiceManifest.xml a konfigurációt. Azt az elsősorban, ahol a két kommunikációs figyelőket eltérőek. A HTTP.sys *igényel* egy `Endpoint` konfigurációs, míg a Kestrel nem.
- - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`** : Ez az egy lambda, amely alkalmazza, a hozhatja létre, és adja vissza egy `IWebHost`. Ez lehetővé teszi, hogy konfigurálását `IWebHost` azt szokásosan tenné az ASP.NET Core alkalmazás módja. A lambda biztosít egy URL-címet, amely akkor jön létre az Ön számára, attól függően, a Service Fabric integrációs lehetőségeket használja, és a `Endpoint` konfigurációs adnia. Majd módosíthatja vagy adott URL-cím használatával a webkiszolgáló elindításához.
+Mindkét kommunikációs figyelő olyan konstruktort biztosít, amely a következő argumentumokat veszi igénybe:
+ - **`ServiceContext serviceContext`** : Ez az az `ServiceContext` objektum, amely a futó szolgáltatással kapcsolatos információkat tartalmaz.
+ - **`string endpointName`** : Ez a ServiceManifest. xml fájlban `Endpoint` található konfiguráció neve. Elsősorban a két kommunikációs figyelő különbözik. A`Endpoint` http. sys konfigurációt *igényel* , míg a vércse nem.
+ - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`** : Ez az Ön által megvalósított lambda, amelyben létrehoz és visszaad egy `IWebHost`. Lehetővé teszi, hogy a `IWebHost` szokásos módon konfigurálja a ASP.net Core alkalmazásban. A lambda olyan URL-címet biztosít Önnek, amely az Ön által használt Service Fabric integrációs lehetőségektől és az `Endpoint` Ön által megadott konfigurációtól függ. Ezt követően módosíthatja vagy használhatja ezt az URL-címet a webkiszolgáló elindításához.
 
-## <a name="service-fabric-integration-middleware"></a>A Service Fabric-integráció közbenső
-A `Microsoft.ServiceFabric.AspNetCore` NuGet-csomag tartalmazza a `UseServiceFabricIntegration` metódust a `IWebHostBuilder` , amely hozzáadja a Service Fabric – figyelembe közbenső szoftverek. A közbenső szoftver konfigurálja a Kestrel vagy a HTTP.sys `ICommunicationListener` regisztrálni egy egyedi URL-címe a Service Fabric elnevezési szolgáltatásban. Ezután ellenőrzi a ügyfélkérések győződjön meg, hogy az ügyfelek csatlakoznak a megfelelő szolgáltatást. 
+## <a name="service-fabric-integration-middleware"></a>Service Fabric Integration middleware
+A `Microsoft.ServiceFabric.AspNetCore` NuGet csomag tartalmazza a `UseServiceFabricIntegration` bővítmény metódusát `IWebHostBuilder` , amely a Service Fabric-Aware köztes middleware-t adja meg. Ez a middleware úgy konfigurálja a vércse vagy a http `ICommunicationListener` . sys-t, hogy egy egyedi szolgáltatás URL-címét regisztrálja a Service Fabric elnevezési szolgáltatás. Ezután ellenőrzi, hogy az ügyfelek csatlakoznak-e a megfelelő szolgáltatáshoz. 
 
-Ez a lépés szükség, hogy megakadályozza a véletlenül a nem megfelelő szolgáltatáshoz való csatlakozás. Amely azért, mert az állomás megosztott környezetekben, például a Service Fabric, több webalkalmazás az azonos fizikai vagy virtuális gépen futtatható, de ne használjon egyedi állomásneveket. Ebben a forgatókönyvben a következő szakaszban részletesen ismertetjük.
+Ez a lépés azért szükséges, hogy megakadályozza, hogy az ügyfelek véletlenül csatlakozzanak a helytelen szolgáltatáshoz. Ennek oka, hogy egy megosztott gazdagépi környezetben, például a Service Fabric-ben több webalkalmazás futhat ugyanazon a fizikai vagy virtuális gépen, de nem használhat egyedi állomásnevet. Ezt a forgatókönyvet részletesebben a következő szakaszban ismertetjük.
 
-### <a name="a-case-of-mistaken-identity"></a>Egy esetet, tehát a helytelen identitás
-Szolgáltatás replikákat, függetlenül attól, protokoll, egyedi IP:port együttes figyelése. Replika szolgáltatás megkezdte a figyelést IP:port a végpont, miután a végpont címe és jelentéseket küldeni a Service Fabric elnevezési szolgáltatásban. Itt ügyfelek vagy más szolgáltatások felderíthesse azt. Szolgáltatások dinamikusan hozzárendelt alkalmazás portok használatára, ha egy szolgáltatás replika webkiszolgálóikat ugyanazon IP:port végpontja: egy másik szolgáltatást korábban a azonos fizikai vagy virtuális gép használhatnak. Emiatt egy ügyfél véletlenül szolgáltatáshoz való csatlakozáshoz a nem megfelelő. Ebben a forgatókönyvben okozhat, ha a következő eseményekre kerül sor:
+### <a name="a-case-of-mistaken-identity"></a>A téves identitás esete
+A szolgáltatás replikái – a protokolltól függetlenül – figyeljen egy egyedi IP-címet: Port kombinációt. Miután egy szolgáltatási replika megkezdte a figyelést egy IP: Port végponton, a Service Fabric elnevezési szolgáltatás a végponti címet jelenti. Ott az ügyfelek vagy más szolgáltatások is felfedezhetik. Ha a szolgáltatások dinamikusan hozzárendelt alkalmazás-portokat használnak, akkor a szolgáltatás replikái ugyanazon a fizikai vagy virtuális gépen lévő másik szolgáltatás ugyanazon IP: Port végpontját használhatják. Ez azt eredményezheti, hogy az ügyfél véletlenül nem tud kapcsolódni a helytelen szolgáltatáshoz. Ez a forgatókönyv a következő eseménysorozat esetén eredményezhet:
 
- 1. A szolgáltatás a 10.0.0.1:30000 figyeli, HTTP protokollon keresztül. 
- 2. Ügyfél oldja fel a szolgáltatás, valamint lekéri a cím 10.0.0.1:30000.
- 3. A szolgáltatás helyez át egy másik csomópont.
- 4. B szolgáltatás el van helyezve 10.0.0.1 és webkiszolgálóikat használja ugyanazt a portot 30000.
- 5. Ügyfél próbál kapcsolódni a szolgáltatáshoz A gyorsítótárazott cím 10.0.0.1:30000 használata.
- 6. Ügyfél most már sikeresen csatlakozott a B szolgáltatás, nem működnek együtt, csatlakozik-e a megfelelő szolgáltatást.
+ 1. A szolgáltatás figyeli a 10.0.0.1:30000-et HTTP-n keresztül. 
+ 2. A-ügyfél feloldja az A szolgáltatást, és lekéri A 10.0.0.1:30000-es címeket.
+ 3. Az A szolgáltatás egy másik csomópontra lép.
+ 4. A B szolgáltatás a 10.0.0.1-re van helyezve, és egyidejűleg ugyanazt a 30000-es portot használja.
+ 5. Az ügyfél megpróbál csatlakozni az A szolgáltatáshoz a gyorsítótárazott 10.0.0.1:30000.
+ 6. Az ügyfél sikeresen csatlakozott a B szolgáltatáshoz, nem pedig a nem megfelelő szolgáltatáshoz csatlakozik.
 
-Hibák diagnosztizálása nehezen véletlenszerű időpontokban léphetnek föl.
+Ez véletlenszerű időpontokban is okozhat hibákat, amelyeket nehéz lehet diagnosztizálni.
 
-### <a name="using-unique-service-urls"></a>Egyedi szolgáltatási URL-címek használata
-Ezek a hibák megelőzése érdekében szolgáltatások is közzététele egy végpontot az elnevezési szolgáltatásban, az egyedi azonosítóját és, hogy egyedi azonosító érvényesítése során az ügyfelek kéréseit. Ez az egy együttműködési művelet megbízható környezetben nem megerősítve a rosszindulatú-bérlői szolgáltatások között. Ez nem biztosít a biztonságos szolgáltatás hitelesítési megerősítve a rosszindulatú bérlős környezetben.
+### <a name="using-unique-service-urls"></a>Egyedi szolgáltatás URL-címeinek használata
+A hibák megelőzése érdekében a szolgáltatások egy egyedi azonosítóval küldhetnek végpontot a elnevezési szolgáltatásra, majd az ügyfél kérésére ellenőrizhetik az egyedi azonosítót. Ez egy együttműködési művelet a szolgáltatások között egy nem ellenséges – bérlői megbízható környezetben. Nem biztosít biztonságos szolgáltatás-hitelesítést egy ellenséges bérlői környezetben.
 
-Megbízható környezetben, a közbenső szoftver által hozzáadott a `UseServiceFabricIntegration` metódus automatikusan hozzáfűzi a cím az elnevezési szolgáltatásban közzétett egyedi azonosítója. Azt ellenőrzi, hogy minden kérelemnél azonosítója. Ha az azonosító nem egyezik, a közbenső szoftver, az azonnal HTTP 410 Megszűnt választ adja vissza.
+Megbízható környezetben a `UseServiceFabricIntegration` metódus által hozzáadott middleware automatikusan hozzáfűz egy egyedi azonosítót a elnevezési szolgáltatás közzétett címnek. Ellenőrzi, hogy az azonosító minden kérelemre érvényes-e. Ha az azonosító nem egyezik, a middleware azonnal visszaadja a HTTP 410-es válaszát.
 
-Szolgáltatásokat használó egy dinamikusan hozzárendelt portot kell, használja a közbenső szoftverek.
+A dinamikusan hozzárendelt portot használó szolgáltatásoknak ezt a middleware-t kell használniuk.
 
-Egy rögzített egyedi portot használó szolgáltatások a probléma nem szerepel egy együttműködési környezet. Egy rögzített egyedi port használatos általában kívülről elérhető szolgáltatásokról, amelyek egy jól ismert portot, az ügyfélalkalmazások számára, hogy csatlakozni kell. A legtöbb internet felé néző webes alkalmazások például használja a 80-as vagy 443-as port webes böngésző kapcsolatokhoz. Ebben az esetben nem lehet engedélyezni az egyedi azonosítója.
+A rögzített egyedi portot használó szolgáltatások nem rendelkeznek ezzel a problémával egy együttműködési környezetben. A kifelé irányuló olyan szolgáltatások esetében, amelyeknek jól ismert portra van szükségük ahhoz, hogy az ügyfélalkalmazások csatlakozni tudjanak, egy rögzített egyedi portot használnak. Például a legtöbb internetre irányuló webalkalmazás a 80-as vagy a 443-es portot fogja használni a webböngésző kapcsolataihoz. Ebben az esetben az egyedi azonosítót nem szabad engedélyezni.
 
-Az alábbi ábrán látható, a kérelem folyamat a közbenső szoftver engedélyezve:
+Az alábbi ábrán a kérelmek folyamata látható a middleware-mel engedélyezve:
 
-![Service Fabric ASP.NET Core-integráció][2]
+![Service Fabric ASP.NET Core integráció][2]
 
-A Kestrel és a HTTP.sys `ICommunicationListener` pontosan ugyanúgy használják ezt a mechanizmust. Bár a HTTP.sys belsőleg tudja különböztetni kérelmek használatával az alapul szolgáló egyedi URL-cím elérési utak alapján **HTTP.sys** port megosztása funkció, amely a funkció *nem* a HTTP.sys általhasznált`ICommunicationListener`végrehajtására. Ez azt eredményezi, a korábban ismertetett forgatókönyvben HTTP 503-as és a HTTP 404-es hiba állapotkódok mert. Amely viszont azt nehezíti meg szándékának azonosítása a hiba, hogy az ügyfelek HTTP 503-as és a HTTP 404-es gyakran használt egyéb hibákat. 
+A vércse és a http. `ICommunicationListener` sys implementációja pontosan ugyanúgy használja ezt a mechanizmust. Bár a http. sys belső módon megkülönböztetheti a kérelmeket az egyedi URL-elérési utak alapján, a mögöttes **http. sys** port megosztási funkciójával, a http. sys `ICommunicationListener` implementáció *nem* használja ezt a funkciót. Ennek oka az, hogy a HTTP 503 és a HTTP 404 hibakódokat a korábban ismertetett forgatókönyvben eredményezi. Ezzel megnehezíti az ügyfelek számára a hiba szándékának meghatározását, mivel a HTTP 503 és a HTTP 404 általában más hibák jelzésére szolgál. 
 
-Ennélfogva a Kestrel és a HTTP.sys `ICommunicationListener` implementáció által biztosított közbenső egységesen ezeket a `UseServiceFabricIntegration` metódust. Ezért az ügyfelek csak kell szolgáltatási végpont újra feloldani műveletet végrehajtani a HTTP 410 válaszokat.
+Így a vércse és a http. sys `ICommunicationListener` implementációk a `UseServiceFabricIntegration` kiterjesztési módszer által biztosított middleware-ben is szabványosítva vannak. Ezért az ügyfeleknek csak egy szolgáltatási végpontot kell végrehajtaniuk a HTTP 410-válaszokon.
 
-## <a name="httpsys-in-reliable-services"></a>A Reliable Services HTTP.sys
-Importálja a Reliable Services HTTP.sys is használhatja a **Microsoft.ServiceFabric.AspNetCore.HttpSys** NuGet-csomagot. Ez a csomag tartalmaz `HttpSysCommunicationListener`, megvalósítását `ICommunicationListener`. `HttpSysCommunicationListener` lehetővé teszi, hogy hozzon létre egy ASP.NET Core Webhostot egy reliable Services belül a webkiszolgáló a HTTP.sys segítségével.
+## <a name="httpsys-in-reliable-services"></a>HTTP. sys a Reliable Servicesban
+A HTTP. sys Reliable Services a **Microsoft. ServiceFabric. AspNetCore. httpsys kiszolgálón** NuGet csomag importálásával is használható. Ez a csomag `HttpSysCommunicationListener`a következő `ICommunicationListener`implementációját tartalmazza:. `HttpSysCommunicationListener`lehetővé teszi, hogy a HTTP. sys használatával webkiszolgálóként hozzon létre egy ASP.NET Coret a megbízható szolgáltatáson belül.
 
-A HTTP.sys épül a [Windows HTTP-kiszolgáló API](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx). Az API-t használ a **HTTP.sys** kernel-illesztőprogram dolgozza fel a HTTP-kérelmekre, és irányíthatja a webes alkalmazások futó folyamatok. Ez lehetővé teszi az ugyanazon fizikai vagy virtuális gépen a webalkalmazások üzemeltetéséhez ugyanazt a portot, vagy egy egyedi URL-cím elérési út vagy a gazdagép neve szerint használatát több folyamatot. Ezek a funkciók hasznosak lehetnek a Service Fabric ugyanazon fürt több webhely üzemeltetésére.
+A HTTP. sys a [Windows HTTP Server API](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx)-ra épül. Ez az API a **http. sys** kernel-illesztőprogram használatával dolgozza fel a http-kérelmeket, és továbbítja azokat a webalkalmazásokat futtató folyamatoknak. Ez lehetővé teszi, hogy ugyanazon a fizikai vagy virtuális gépen több folyamat is üzemelteti a webalkalmazásokat ugyanazon a porton, disambiguated egyedi URL-cím vagy állomásnév alapján. Ezek a funkciók hasznosak lehetnek Service Fabric több webhely üzemeltetéséhez ugyanabban a fürtben.
 
 >[!NOTE]
->A HTTP.sys végrehajtása csak Windows-platformon működik.
+>A HTTP. sys implementációja csak a Windows platformon működik.
 
-A következő diagram azt ábrázolja, hogyan használja a HTTP.sys a **HTTP.sys** kernel-illesztőprogram a Windows-port megosztása számára:
+A következő ábra azt szemlélteti, hogyan használja a HTTP. sys a **http. sys** kernel-illesztőprogramot a Windowsban a portok megosztásához:
 
-![A HTTP.sys diagramja][3]
+![HTTP. sys diagram][3]
 
-### <a name="httpsys-in-a-stateless-service"></a>A HTTP.sys az állapotmentes szolgáltatás
-Használandó `HttpSys` az állapotmentes szolgáltatás, bírálja felül a `CreateServiceInstanceListeners` metódust, és lépjen vissza a `HttpSysCommunicationListener` példány:
+### <a name="httpsys-in-a-stateless-service"></a>HTTP. sys egy állapot nélküli szolgáltatásban
+Állapot nélküli `HttpSys` szolgáltatásban való használathoz bírálja felül `CreateServiceInstanceListeners` a metódust, `HttpSysCommunicationListener` és adja vissza a példányt:
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -136,17 +136,17 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-### <a name="httpsys-in-a-stateful-service"></a>A HTTP.sys egy állapotalapú szolgáltatásban
+### <a name="httpsys-in-a-stateful-service"></a>HTTP. sys egy állapot-nyilvántartó szolgáltatásban
 
-`HttpSysCommunicationListener` jelenleg nem arra készült, az állapotalapú szolgáltatások miatt a az alapul szolgáló komplikációk használatra **HTTP.sys** port megosztása funkció. További információkért tekintse meg a következő szakasz a HTTP.sys a dinamikus port lefoglalását. Az állapotalapú szolgáltatások esetében a Kestrel a javasolt webkiszolgáló.
+`HttpSysCommunicationListener`jelenleg nem használható állapot-nyilvántartó szolgáltatásokban a mögöttes **http. sys** port megosztási funkciójával kapcsolatos szövődmények miatt. További információkért lásd a dinamikus portok kiosztása a HTTP. sys-sel című szakaszt. Az állapot-nyilvántartó szolgáltatások esetében a vércse a javasolt webkiszolgáló.
 
-### <a name="endpoint-configuration"></a>Végpont-konfiguráció
+### <a name="endpoint-configuration"></a>Végpont konfigurációja
 
-Egy `Endpoint` konfigurációra szükség a Windows HTTP Server API-t használó, beleértve a HTTP.sys webkiszolgálók számára. A Windows HTTP Server API-t használó webkiszolgálók először le kell az URL-CÍMÉT, a HTTP.sys (általában mindez a [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) eszközt). 
+`Endpoint` Konfiguráció szükséges a Windows HTTP Server API-t használó webkiszolgálók számára, beleértve a http. sys-t is. A Windows HTTP Server API-t használó webkiszolgálóknak először le kell foglalniuk az URL-címet a HTTP. sys használatával (ezt általában a [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) eszközzel lehet elérni). 
 
-Ehhez a művelethez emelt szintű jogosultságokkal, amelyek a szolgáltatás alapértelmezés szerint nem rendelkeznek. A "http" vagy "https" beállításait a `Protocol` tulajdonságát a `Endpoint` konfigurációját a ServiceManifest.xml segítségével kifejezetten kérje meg a Service Fabric-futtatókörnyezet regisztrálni egy URL-címet a HTTP.sys az Ön nevében. Használatával hajtja végre ezt a [ *erős helyettesítő* ](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) URL-előtagot.
+Ehhez a művelethez olyan emelt szintű jogosultságok szükségesek, amelyeket a szolgáltatásai alapértelmezés szerint nem rendelkeznek. A ServiceManifest. xml fájlban található `Protocol` `Endpoint` konfiguráció tulajdonságának "http" vagy "https" beállításai kifejezetten arra szolgálnak, hogy a Service Fabric futtatókörnyezetet az Ön nevében regisztrálják a http. sys-ben. Ezt az [*erős helyettesítő karakteres*](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) URL-előtag használatával végezheti el.
 
-Foglaljon le például `http://+:80` egy szolgáltatáshoz, az alábbi konfigurációt használja a ServiceManifest.xml:
+Egy szolgáltatás foglalásához `http://+:80` például használja a következő konfigurációt a ServiceManifest. xml fájlban:
 
 ```xml
 <ServiceManifest ... >
@@ -160,7 +160,7 @@ Foglaljon le például `http://+:80` egy szolgáltatáshoz, az alábbi konfigur�
 </ServiceManifest>
 ```
 
-A végpont neve adható át, és a `HttpSysCommunicationListener` konstruktort:
+És a végpont nevét át kell adni a `HttpSysCommunicationListener` konstruktornak:
 
 ```csharp
  new HttpSysCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) =>
@@ -173,8 +173,8 @@ A végpont neve adható át, és a `HttpSysCommunicationListener` konstruktort:
  })
 ```
 
-#### <a name="use-httpsys-with-a-static-port"></a>A HTTP.sys használata a statikus port
-A HTTP.sys statikus port használatára, adja meg a port számát, a `Endpoint` konfiguráció:
+#### <a name="use-httpsys-with-a-static-port"></a>HTTP. sys használata statikus porttal
+Ha a http. sys használatával statikus portot szeretne használni, adja meg a portszámot `Endpoint` a konfigurációban:
 
 ```xml
   <Resources>
@@ -184,8 +184,8 @@ A HTTP.sys statikus port használatára, adja meg a port számát, a `Endpoint` 
   </Resources>
 ```
 
-#### <a name="use-httpsys-with-a-dynamic-port"></a>A HTTP.sys használata a dinamikus port
-A HTTP.sys egy dinamikusan hozzárendelt port használatára, hagyja ki ezt a `Port` tulajdonságot a `Endpoint` konfiguráció:
+#### <a name="use-httpsys-with-a-dynamic-port"></a>A HTTP. sys használata dinamikus porttal
+Ha dinamikusan hozzárendelt portot szeretne használni a http. sys használatával, `Port` hagyja ki a `Endpoint` tulajdonságot a konfigurációban:
 
 ```xml
   <Resources>
@@ -195,17 +195,17 @@ A HTTP.sys egy dinamikusan hozzárendelt port használatára, hagyja ki ezt a `P
   </Resources>
 ```
 
-Foglalva dinamikus portot egy `Endpoint` a konfiguráció csak egyetlen portot biztosít *gazdagép folyamatonként*. Az aktuális Service Fabric üzemeltetési modell lehetővé teszi, hogy több szolgáltatáspéldányok és/vagy replikák ugyanabban a folyamatban lehet üzemeltetni. Ez azt jelenti, hogy mindegyikhez meg fogja osztani ugyanazt a portot keresztül kiosztása során a `Endpoint` konfigurációja. Több **HTTP.sys** példányok megoszthat egy portot az alapul szolgáló használatával **HTTP.sys** port megosztása funkció. Nem érhető el, de `HttpSysCommunicationListener` miatt a komplikációk azt mutatja be, az ügyféli kérelmek részére. A dinamikus port használatra a Kestrel a javasolt webkiszolgáló.
+Egy `Endpoint` konfiguráció által lefoglalt dinamikus port csak egy portot biztosít a *gazdagépek*számára. A jelenlegi Service Fabric üzemeltetési modell lehetővé teszi, hogy több szolgáltatás példánya és/vagy replikája ugyanabban a folyamatban legyen tárolva. Ez azt jelenti, hogy mindegyik ugyanazt a portot fogja megosztani, amikor `Endpoint` a konfiguráción keresztül lefoglalja őket. Több **http. sys** -példány is megoszthat egy portot a mögöttes **http. sys** port megosztási szolgáltatás használatával. Ez azonban nem támogatott az ügyfélalkalmazások `HttpSysCommunicationListener` által bevezetett szövődmények miatt. A dinamikus port használata esetén a vércse a javasolt webkiszolgáló.
 
-## <a name="kestrel-in-reliable-services"></a>A Reliable Services kestrel
-Importálja a Reliable Services Kestrel is használhatja a **Microsoft.ServiceFabric.AspNetCore.Kestrel** NuGet-csomagot. Ez a csomag tartalmaz `KestrelCommunicationListener`, megvalósítását `ICommunicationListener`. `KestrelCommunicationListener` lehetővé teszi, hogy hozzon létre egy ASP.NET Core Webhostot belül egy reliable Services Kestrel használják, mint a webkiszolgálón.
+## <a name="kestrel-in-reliable-services"></a>Vércse Reliable Services
+A Reliable Services a a **Microsoft. ServiceFabric. AspNetCore. vércse** NuGet-csomag importálásával használhatja. Ez a csomag `KestrelCommunicationListener`a következő `ICommunicationListener`implementációját tartalmazza:. `KestrelCommunicationListener`lehetővé teszi, hogy egy ASP.NET Core webkiszolgálót hozzon létre egy megbízható szolgáltatáson belül a vércse használatával webkiszolgálóként.
 
-A kestrel, az ASP.NET Core platformfüggetlen webkiszolgáló libuv, a platformok közötti aszinkron i/o-tár alapján. A HTTP.sys, ellentétben a Kestrel egy központosított endpoint-kezelő nem használ. Is HTTP.sys, ellentétben a Kestrel nem támogatja a-port megosztása több folyamat között. A Kestrel minden példánya egy egyedi portot kell használnia.
+A vércse egy többplatformos webkiszolgáló ASP.NET Core libuv, többplatformos aszinkron I/O-kódtár alapján. A HTTP. sys-től eltérően a vércse nem használ központosított Endpoint Managert. A HTTP. sys-vel ellentétben a vércse nem támogatja a portok több folyamat közötti megosztását. A vércse minden példányának egyedi portot kell használnia.
 
-![A kestrel diagramja][4]
+![Vércse-diagram][4]
 
-### <a name="kestrel-in-a-stateless-service"></a>A kestrel stateless service-ben
-Használandó `Kestrel` az állapotmentes szolgáltatás, bírálja felül a `CreateServiceInstanceListeners` metódust, és lépjen vissza a `KestrelCommunicationListener` példány:
+### <a name="kestrel-in-a-stateless-service"></a>A vércse egy állapot nélküli szolgáltatásban
+Állapot nélküli `Kestrel` szolgáltatásban való használathoz bírálja felül `CreateServiceInstanceListeners` a metódust, `KestrelCommunicationListener` és adja vissza a példányt:
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -229,8 +229,8 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-### <a name="kestrel-in-a-stateful-service"></a>A kestrel egy állapotalapú szolgáltatásban
-Használandó `Kestrel` egy állapotalapú szolgáltatásban bírálja felül a `CreateServiceReplicaListeners` metódust, és lépjen vissza a `KestrelCommunicationListener` példány:
+### <a name="kestrel-in-a-stateful-service"></a>A vércse egy állapot-nyilvántartó szolgáltatásban
+Ha állapot `Kestrel` -nyilvántartó szolgáltatásban szeretné használni, bírálja felül a `CreateServiceReplicaListeners` metódust, és adja vissza a `KestrelCommunicationListener` példányt:
 
 ```csharp
 protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -255,12 +255,12 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 }
 ```
 
-Ebben a példában egy egypéldányos példányát `IReliableStateManager` a WebHost függőségi injektálási tároló számára. Ez nem feltétlenül szükséges, de ez lehetővé teszi, hogy `IReliableStateManager` és az MVC-vezérlő műveletmetódusokhoz a Reliable Collections.
+Ebben a példában egy egyedi példányt `IReliableStateManager` adnak meg a webhost függőségi injektáló tárolóhoz. Ez nem feltétlenül szükséges, de lehetővé teszi a és a `IReliableStateManager` megbízható gyűjtemények használatát az MVC-vezérlő műveleti módszereiben.
 
-Egy `Endpoint` -konfiguráció nevét *nem* megadott `KestrelCommunicationListener` egy állapotalapú service-ben. Ennek a magyarázatát részletesebben a következő szakaszban.
+Az állapot `KestrelCommunicationListener` -nyilvántartó szolgáltatás *nem* biztosít konfigurációsnevet.`Endpoint` Ezt részletesebben a következő szakasz ismerteti.
 
 ### <a name="configure-kestrel-to-use-https"></a>A Kestrel konfigurálása HTTPS használatára
-A szolgáltatás a Kestrel HTTPS engedélyezésekor szüksége több figyelési beállításainak megadása. Frissítés a `ServiceInstanceListener` használata egy *Végponthttps* végpont és a figyelő egy adott portot (például a 443-as porton). A webes állomást, hogy a Kestrel webkiszolgáló konfigurálásakor konfigurálnia kell az összes hálózati adapter IPv6-címek figyelésére a Kestrel: 
+Ha a szolgáltatásban a HTTPS-t a vércse használatával engedélyezi, több figyelési beállítást is be kell állítania. Frissítse a `ServiceInstanceListener` t *végponthttps* -végpont használatára, és figyelje egy adott portot (például 443-es port). Ha úgy konfigurálja a webállomást, hogy a vércse webkiszolgálót használja, a vércse-t úgy kell konfigurálnia, hogy figyelje az IPv6-címeket az összes hálózati adapteren: 
 
 ```csharp
 new ServiceInstanceListener(
@@ -300,18 +300,18 @@ serviceContext =>
         }))
 ```
 
-Az oktatóanyag egy teljes példa: [Kestrel konfigurálása HTTPS használatára](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#configure-kestrel-to-use-https).
+Az oktatóanyagban megjelenő teljes példa: a [vércse konfigurálása HTTPS használatára](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#configure-kestrel-to-use-https).
 
 
-### <a name="endpoint-configuration"></a>Végpont-konfiguráció
-Egy `Endpoint` konfigurációs Kestrel használatához nem szükséges. 
+### <a name="endpoint-configuration"></a>Végpont konfigurációja
+A vércse használatához nincs szükség konfigurációra.`Endpoint` 
 
-A kestrel egy egyszerű különálló webkiszolgálót. Ellentétben a HTTP.sys (vagy HttpListener), nincs szüksége egy `Endpoint` konfigurációját a ServiceManifest.xml mert megkezdése előtt regisztrációs URL-cím nincs szükség. 
+A vércse egy egyszerű, különálló webkiszolgáló. A http. sys (vagy a HttpListener) szolgáltatástól eltérően nem `Endpoint` szükséges konfigurálni a ServiceManifest. xml fájlt, mert a Kezdés előtt nem szükséges az URL-regisztráció. 
 
-#### <a name="use-kestrel-with-a-static-port"></a>A Kestrel használata a statikus port
-Konfigurálhatja a statikus portot a `Endpoint` ServiceManifest.xml konfigurációját a Kestrel való használatra. Bár ez nem feltétlenül szükséges, két lehetséges előnyt kínál:
- - Ha a port nem esik az alkalmazás porttartományából, nyitja meg, az operációs rendszer tűzfalon keresztül a Service Fabric.
- - Az URL-cím keresztül biztosított `KestrelCommunicationListener` ezt a portot fogja használni.
+#### <a name="use-kestrel-with-a-static-port"></a>A vércse használata statikus porttal
+A ServiceManifest. XML `Endpoint` konfigurációjában statikus portot is beállíthat a vércse használatával való használatra. Bár ez nem feltétlenül szükséges, a két lehetséges előnyt kínál:
+ - Ha a port nem az alkalmazás portszáma alá esik, a Service Fabric az operációs rendszer tűzfalán keresztül nyitja meg.
+ - Az Ön `KestrelCommunicationListener` számára megadott URL-cím ezt a portot fogja használni.
 
 ```xml
   <Resources>
@@ -321,32 +321,32 @@ Konfigurálhatja a statikus portot a `Endpoint` ServiceManifest.xml konfiguráci
   </Resources>
 ```
 
-Ha egy `Endpoint` van konfigurálva, a nevét kell kell megkérnie az `KestrelCommunicationListener` konstruktort: 
+Ha be `KestrelCommunicationListener` van állítva, a nevet át kell adni a konstruktornak: `Endpoint` 
 
 ```csharp
 new KestrelCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) => ...
 ```
 
-Ha nem használja a ServiceManifest.xml egy `Endpoint` konfigurációs, hagyja ki a nevét a `KestrelCommunicationListener` konstruktor. Ebben az esetben dinamikus portot fogja használni. További információ a következő szakaszban talál.
+Ha a ServiceManifest. xml fájl nem `Endpoint` használ konfigurációt, hagyja ki a `KestrelCommunicationListener` nevet a konstruktorban. Ebben az esetben dinamikus portot fog használni. Erről további információt a következő szakaszban talál.
 
-#### <a name="use-kestrel-with-a-dynamic-port"></a>A Kestrel használata a dinamikus port
-A kestrel munkafeladatait automatikus port nem használható a `Endpoint` konfigurációját a ServiceManifest.xml. Ez azért, az automatikus hozzárendelés a port egy `Endpoint` konfigurációs rendeli hozzá egy egyedi portját *folyamaton*, és a egy egyetlen gazdafolyamat Kestrel több példány is tartalmazhat. A Kestrel ez nem dolgozhat, mert nem támogatja a-port megosztása. Ezért a Kestrel mindegyiknek egy egyedi portot kell megnyitni.
+#### <a name="use-kestrel-with-a-dynamic-port"></a>A vércse használata dinamikus porttal
+A vércse nem használhatja az automatikus port-hozzárendelést a `Endpoint` ServiceManifest. xml fájlban található konfigurációból. Ennek az az oka, hogy az automatikus `Endpoint` port-hozzárendelés egy konfiguráció alapján egyedi portot rendel a *gazdagéphez*, és egyetlen gazdagép-folyamat több vércse-példányt is tartalmazhat. Ez nem működik a vércse szolgáltatással, mert nem támogatja a portok megosztását. Ezért az egyes vércse-példányokat egyedi porton kell megnyitni.
 
-A Kestrel dinamikus porthozzárendelés használni, hagyja ki ezt a `Endpoint` konfigurációját a ServiceManifest.xml teljesen, és a végpont neve nem adja át a `KestrelCommunicationListener` konstruktor, az alábbiak szerint:
+Ha a dinamikus port-hozzárendelést a vércse használatával `Endpoint` szeretné használni, hagyja ki teljesen a ServiceManifest. xml fájlban a konfigurációt, `KestrelCommunicationListener` és ne adja át a végpont nevét a konstruktornak, a következőképpen:
 
 ```csharp
 new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 ```
 
-Ebben a konfigurációban `KestrelCommunicationListener` automatikusan választja ki egy nem használt portot az alkalmazás porttartományából.
+Ebben a konfigurációban `KestrelCommunicationListener` a automatikusan kijelöl egy nem használt portot az alkalmazás portszáma alapján.
 
-## <a name="service-fabric-configuration-provider"></a>A Service Fabric konfigurációszolgáltató
-Alkalmazások konfigurálása az ASP.NET Core a konfigurációszolgáltató által létrehozott kulcs-érték párok alapján. Olvasási [konfiguráció az ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/) további on általános ASP.NET Core konfigurációs támogatási megértéséhez.
+## <a name="service-fabric-configuration-provider"></a>Service Fabric konfigurációs szolgáltató
+ASP.NET Core alkalmazás-konfigurációja a konfigurációs szolgáltató által létesített kulcs-érték párokon alapul. Az általános ASP.NET Core-konfiguráció támogatásával kapcsolatos további információkért olvassa el [ASP.net Core konfigurációját](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/) .
 
-Ez a szakasz ismerteti a Service Fabric-konfigurációszolgáltató együttműködéséről az ASP.NET Core konfigurációs importálásával a `Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet-csomagot.
+Ez a szakasz azt ismerteti, hogyan integrálható a Service Fabric konfigurációs szolgáltató ASP.net Core- `Microsoft.ServiceFabric.AspNetCore.Configuration` konfigurációval a NuGet-csomag importálásával.
 
 ### <a name="addservicefabricconfiguration-startup-extensions"></a>AddServiceFabricConfiguration indítási bővítmények
-Miután importálta a `Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet-csomagjára, regisztrálnia kell a Service Fabric konfigurálása forrás API ASP.NET Core-konfigurációval. Ezt az ellenőrzést **AddServiceFabricConfiguration** bővítményei a `Microsoft.ServiceFabric.AspNetCore.Configuration` elleni névtér `IConfigurationBuilder`.
+A `Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet-csomag importálása után regisztrálnia kell a Service Fabric konfigurációs forrását ASP.net Core Configuration API-val. Ezt a **AddServiceFabricConfiguration** -bővítmények a `Microsoft.ServiceFabric.AspNetCore.Configuration` névtérben `IConfigurationBuilder`való ellenőrzésével végezheti el.
 
 ```csharp
 using Microsoft.ServiceFabric.AspNetCore.Configuration;
@@ -365,7 +365,7 @@ public Startup(IHostingEnvironment env)
 public IConfigurationRoot Configuration { get; }
 ```
 
-Most már az ASP.NET Core-szolgáltatás is elérhető a Service Fabric konfigurációs beállítások, csakúgy, mint bármely más nastavení aplikace. A beállítások minta használatával például típusos objektumokba betölteni a beállításokat.
+Most a ASP.NET Core szolgáltatás elérheti a Service Fabric konfigurációs beállításait, ugyanúgy, mint bármely más Alkalmazásbeállítások. A beállítások minta használatával például a beállításokat erősen gépelt objektumokká töltheti be.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -374,13 +374,13 @@ public void ConfigureServices(IServiceCollection services)
     services.AddMvc();
 }
 ```
-### <a name="default-key-mapping"></a>Alapértelmezett kulcsok leképezés
-Alapértelmezés szerint a Service Fabric-konfigurációszolgáltató tartalmaz, a csomag nevét, a szakasz nevét és a tulajdonság neve. Együtt ezek alkotják az ASP.NET Core konfigurációs kulcsot a következő:
+### <a name="default-key-mapping"></a>Alapértelmezett kulcs leképezése
+Alapértelmezés szerint a Service Fabric konfiguráció szolgáltatója tartalmazza a csomag nevét, a szakasz nevét és a tulajdonság nevét. Ezek együtt a ASP.NET Core konfigurációs kulcsot alkotják, a következőképpen:
 ```csharp
 $"{this.PackageName}{ConfigurationPath.KeyDelimiter}{section.Name}{ConfigurationPath.KeyDelimiter}{property.Name}"
 ```
 
-Ha például van egy nevű csomagot `MyConfigPackage` az alábbi tartalommal, majd a konfigurációs érték elérhető lesz az ASP.NET Core `IConfiguration` keresztül *MyConfigPackage:MyConfigSection:MyParameter*.
+Ha például rendelkezik egy nevű `MyConfigPackage` konfigurációs csomaggal a következő tartalommal, akkor a konfigurációs érték ASP.net Core `IConfiguration` a *MyConfigPackage: MyConfigSection: MyParameter*használatával lesz elérhető.
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">  
@@ -389,23 +389,23 @@ Ha például van egy nevű csomagot `MyConfigPackage` az alábbi tartalommal, ma
   </Section>  
 </Settings>
 ```
-### <a name="service-fabric-configuration-options"></a>A Service Fabric-konfigurációs beállítások
-A Service Fabric-konfigurációszolgáltató is támogatja a `ServiceFabricConfigurationOptions` módosíthatja a kulcs leképezés alapértelmezett viselkedését.
+### <a name="service-fabric-configuration-options"></a>Service Fabric konfigurációs beállítások
+A Service Fabric-konfiguráció szolgáltatója `ServiceFabricConfigurationOptions` szintén támogatja a kulcs-hozzárendelés alapértelmezett viselkedésének módosítását.
 
-#### <a name="encrypted-settings"></a>Titkosított beállításai
-A Service Fabric támogatja a titkosított beállításait, mint a Service Fabric konfigurációszolgáltatót. A titkosított beállításai nem visszafejteni az ASP.NET Core `IConfiguration` alapértelmezés szerint. A titkosított értékek ott tárolt helyette. De ha visszafejteni az értéket, az ASP.NET Core IConfiguration tárolni szeretné, beállíthatja a *DecryptValue* jelző false értékűre a `AddServiceFabricConfiguration` bővítmény, az alábbiak szerint:
+#### <a name="encrypted-settings"></a>Titkosított beállítások
+Service Fabric támogatja a titkosított beállításokat, akárcsak a Service Fabric-konfigurációs szolgáltató. Alapértelmezés szerint a titkosított beállítások nem lettek `IConfiguration` visszafejtve ASP.net Corera. Ehelyett a titkosított értékeket tárolja a rendszer. Ha azonban a ASP.net Core IConfiguration tárolni kívánt értéket kívánja visszafejteni, a *DecryptValue* jelzőt false `AddServiceFabricConfiguration` értékre állíthatja a bővítményben a következőképpen:
 
 ```csharp
 public Startup()
 {
     ICodePackageActivationContext activationContext = FabricRuntime.GetActivationContext();
     var builder = new ConfigurationBuilder()        
-        .AddServiceFabricConfiguration(activationContext, (options) => options.DecryptValue = true); // set flag to decrypt the value
+        .AddServiceFabricConfiguration(activationContext, (options) => options.DecryptValue = false); // set flag to decrypt the value
     Configuration = builder.Build();
 }
 ```
 #### <a name="multiple-configuration-packages"></a>Több konfigurációs csomag
-Service Fabric támogatja a több konfigurációs csomagokat. Alapértelmezés szerint a csomag neve szerepel a konfigurációs kulcs. Beállíthatja, de a `IncludePackageName` jelző FALSE, a következő:
+Service Fabric több konfigurációs csomagot is támogat. Alapértelmezés szerint a csomag neve szerepel a konfigurációs kulcsban. A `IncludePackageName` jelzőt azonban false (hamis) értékre állíthatja, a következőképpen:
 ```csharp
 public Startup()
 {
@@ -416,10 +416,10 @@ public Startup()
     Configuration = builder.Build();
 }
 ```
-#### <a name="custom-key-mapping-value-extraction-and-data-population"></a>Egyéni kulcs leképezés értékének kinyerése és adatokkal való feltöltés
-A Service Fabric-konfigurációszolgáltató is támogatja a legfontosabb leképezésénél testreszabása speciális forgatókönyvek `ExtractKeyFunc` és egyéni kinyerni az értékek `ExtractValueFunc`. A teljes folyamat az ASP.NET Core-konfiguráció a Service Fabric konfigurációs adatainak feltöltése használatával módosíthatja `ConfigAction`.
+#### <a name="custom-key-mapping-value-extraction-and-data-population"></a>Egyéni kulcs-hozzárendelés, érték kinyerése és adatpopuláció
+A Service Fabric-konfiguráció szolgáltatója emellett fejlettebb forgatókönyveket is támogat, amelyekkel `ExtractKeyFunc` testre szabhatja a kulcs-hozzárendelést, és az `ExtractValueFunc`értékeket kibonthatja a használatával. Az adatok Service Fabric konfigurációból való feltöltésének teljes folyamatát akár ASP.NET Core konfigurációra is módosíthatja a használatával `ConfigAction`.
 
-Az alábbi példák bemutatják, hogyan használható `ConfigAction` adatokkal való feltöltés testreszabása:
+Az alábbi példák bemutatják, hogyan `ConfigAction` használható az adatpopulációk testreszabása:
 ```csharp
 public Startup()
 {
@@ -453,37 +453,37 @@ public Startup()
 }
 ```
 
-### <a name="configuration-updates"></a>Konfiguráció frissítéseit
-A Service Fabric-konfigurációszolgáltató konfigurációfrissítések is támogatja. Használhatja az ASP.NET Core `IOptionsMonitor` a változási értesítéseket fogadni, és hogyan `IOptionsSnapshot` frissítse a konfigurációs adatokat. További információkért lásd: [ASP.NET Core-beállítások](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options).
+### <a name="configuration-updates"></a>Konfigurációs frissítések
+A Service Fabric konfigurációs szolgáltató is támogatja a konfigurációs frissítéseket. A ASP.net Core `IOptionsMonitor` a módosítási értesítések fogadására, majd a konfigurációs `IOptionsSnapshot` adatfrissítésre használható. További információ: [ASP.net Core beállítások](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options).
 
-Ezek a beállítások alapértelmezés szerint támogatott. Kódolás további konfigurációs frissítések engedélyezéséhez szükséges.
+Alapértelmezés szerint ezek a beállítások támogatottak. A konfigurációs frissítések engedélyezéséhez nincs szükség további kódolásra.
 
-## <a name="scenarios-and-configurations"></a>A forgatókönyvek és konfigurációk
-Ez a szakasz tartalmazza a webalkalmazás-kiszolgáló, port konfigurációja, a Service Fabric-integráció beállításai és hibaelhárítás a következő esetekben javasoljuk, hogy egyéb beállítások kombinációja:
- - Kívülről elérhetővé tett ASP.NET Core állapotmentes szolgáltatások
- - Csak belső ASP.NET Core állapotmentes szolgáltatások
- - Csak belső ASP.NET Core állapotalapú szolgáltatások
+## <a name="scenarios-and-configurations"></a>Forgatókönyvek és konfigurációk
+Ez a szakasz a webkiszolgáló, a port konfigurációja, a Service Fabric integrációs lehetőségek és a különböző beállítások együttes használatát ismerteti, amelyeket a következő esetekben ajánlott elhárítani:
+ - Külsőleg elérhető ASP.NET Core állapot nélküli szolgáltatások
+ - Csak belső ASP.NET Core állapot nélküli szolgáltatások
+ - Csak belső ASP.NET Core állapot-nyilvántartó szolgáltatások
 
-Egy **kívülről elérhetővé tett szolgáltatás** , amelyik tesz elérhetővé egy végpontot, amely általában a terheléselosztón keresztül, a fürtön kívülről meghívni.
+A **külsőleg kitett szolgáltatás** egy olyan végpont, amely a fürtön kívülről, általában egy terheléselosztó által meghívott végpontot tesz elérhetővé.
 
-Egy **csak belső** szolgáltatás az egyik amelynek végpont csak meghívása a fürtön belül.
+Egy csak **belső** szolgáltatás, amelynek végpontját csak a fürtön belül hívja meg a rendszer.
 
 > [!NOTE]
-> Állapot-nyilvántartó Szolgáltatásvégpontok általánosan nem közzétéve az interneten. Fürtök mögött, amelyek nem tudnak a Service Fabric service megoldás, például az Azure Load Balancer terheléselosztók nem tudja az állapotalapú szolgáltatások. Ennek oka az, a terheléselosztó nem tudják megkeresni és irányíthatja a forgalmat a megfelelő állapot-nyilvántartó szolgáltatási replikára. 
+> Az állapot-nyilvántartó szolgáltatási végpontok általában nem tehetők elérhetővé az interneten. A terheléselosztó mögötti fürtök, amelyek nem ismerik Service Fabric szolgáltatás-feloldást, például Azure Load Balancer, nem lesznek elérhető állapot-nyilvántartó szolgáltatások. Ennek oka, hogy a terheléselosztó nem fogja tudni megkeresni és irányítani a forgalmat a megfelelő állapot-nyilvántartó szolgáltatás replikájának. 
 
-### <a name="externally-exposed-aspnet-core-stateless-services"></a>Kívülről elérhetővé tett ASP.NET Core állapotmentes szolgáltatások
-A kestrel az előtérbeli szolgáltatásokhoz, amelyek külső, az internetre irányuló HTTP-végpontokat tesznek közzé a javasolt webkiszolgáló. A Windows a HTTP.sys port megosztási képesség, amely lehetővé teszi ugyanazokat a csomópontok ugyanazt a portot használja a webes szolgáltatásokat biztosít. Ebben a forgatókönyvben a webes szolgáltatások különbözteti meg a gazdagép neve vagy elérési útja, mindehhez nincs szüksége egy előtér-proxy vagy az átjáró a HTTP-útválasztást.
+### <a name="externally-exposed-aspnet-core-stateless-services"></a>Külsőleg elérhető ASP.NET Core állapot nélküli szolgáltatások
+A vércse a javasolt webkiszolgáló az előtér-szolgáltatásokhoz, amelyek külső, Internetes elérésű HTTP-végpontokat tesznek elérhetővé. Windows rendszeren a HTTP. sys lehetővé teszi a portok megosztását, így több webszolgáltatást is tárolhat ugyanazon a csomópontokon ugyanazon a porton keresztül. Ebben az esetben a webszolgáltatások az állomásnév vagy az elérési út alapján különböztethetők meg, anélkül, hogy az előtér-proxyra vagy átjáróra kellene támaszkodnia a HTTP-útválasztás biztosításához.
  
-Amikor az interneten vannak kitéve, állapotmentes szolgáltatás használja egy jól ismert és állandó végpontot, amely a terheléselosztón keresztül érhető el. Az URL-címet az alkalmazás felhasználók képzésben. Azt javasoljuk, hogy a következő konfigurációt:
+Ha az internetre van kitéve, az állapot nélküli szolgáltatásnak olyan jól ismert és stabil végpontot kell használnia, amely egy terheléselosztó használatával érhető el. Ezt az URL-címet meg kell adnia az alkalmazás felhasználói számára. A következő konfigurációt javasoljuk:
 
 |  |  | **Megjegyzések** |
 | --- | --- | --- |
-| Webkiszolgáló | Kestrel | A kestrel az előnyben részesített webkiszolgáló, mert különböző Windows és Linux támogatott. |
-| Port konfigurálása | Statikus | A jól ismert statikus port lehet beállítani a `Endpoints` ServiceManifest.xml, például a 80-as HTTP vagy HTTPS-hez a 443-as konfigurációját. |
-| ServiceFabricIntegrationOptions | None | Használja a `ServiceFabricIntegrationOptions.None` lehetőséget a Service Fabric-integráció közbenső szoftverek, konfigurálásakor, hogy a szolgáltatás nem próbálja meg egy egyedi azonosítót a bejövő kérelmeket. Az alkalmazás külső felhasználók nem fognak ismerni az egyedi azonosító adatokat, amely az közbenső szoftvert használ. |
-| Példányszám | -1 | A tipikus használati esetek, a példányok száma beállítást kell megadni *-1*. Ez történik, hogy az egy példány érhető el az összes csomóponton, hogy a forgalom fogadására a terheléselosztótól. |
+| Webkiszolgáló | Kestrel | A vércse az előnyben részesített webkiszolgáló, mivel a Windows és a Linux rendszeren is támogatott. |
+| Port konfigurációja | statikus | Jól ismert statikus portot kell konfigurálni a `Endpoints` ServiceManifest. XML konfigurációjában, például: 80 for http vagy 443 for HTTPS. |
+| ServiceFabricIntegrationOptions | Nincsenek | Használja a `ServiceFabricIntegrationOptions.None` Service Fabric Integration middleware konfigurálásának lehetőségét, hogy a szolgáltatás ne próbálja érvényesíteni a beérkező kéréseket egy egyedi azonosítóhoz. Az alkalmazás külső felhasználói nem fogják tudni, hogy a middleware milyen egyedi azonosító adatokat használ. |
+| Példányszám | -1 | Tipikus használati esetekben a példányszám beállításának *-1*értékűnek kell lennie. Erre azért van szükség, hogy egy példány minden olyan csomóponton elérhető legyen, amely egy terheléselosztó által forgalmazott forgalmat fogad. |
 
-Ha több kívülről elérhetővé tett szolgáltatások ugyanazokat a csomópontok, a HTTP.sys egy egyedi, de stabil URL-cím használható. Ez a IWebHost konfigurálásakor megadott URL-Címének módosításával végezheti el. Vegye figyelembe, hogy ez vonatkozik a HTTP.sys csak.
+Ha több külsőleg feltett szolgáltatás is ugyanazokat a csomópontokat használja, a HTTP. sys egyedi, de állandó URL-címmel is használható. Ezt a IWebHost konfigurálásakor megadott URL-cím módosításával végezheti el. Vegye figyelembe, hogy ez csak a HTTP. sys fájlra vonatkozik.
 
  ```csharp
  new HttpSysCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) =>
@@ -498,24 +498,24 @@ Ha több kívülről elérhetővé tett szolgáltatások ugyanazokat a csomópon
  })
  ```
 
-### <a name="internal-only-stateless-aspnet-core-service"></a>Csak belső állapot nélküli ASP.NET Core-szolgáltatás
-Állapotmentes szolgáltatások, amelyek a fürtön belül csak meghívni a egyedi URL-címeket kell használnia, és dinamikusan kiosztott porttartományt, hogy több szolgáltatások közötti együttműködést. Azt javasoljuk, hogy a következő konfigurációt:
+### <a name="internal-only-stateless-aspnet-core-service"></a>Csak belső állapot nélküli ASP.NET Core szolgáltatás
+A csak a fürtön belül hívott állapot nélküli szolgáltatások egyedi URL-címeket és dinamikusan hozzárendelt portokat használnak a több szolgáltatás közötti együttműködés biztosításához. A következő konfigurációt javasoljuk:
 
 |  |  | **Megjegyzések** |
 | --- | --- | --- |
-| Webkiszolgáló | Kestrel | Bár a HTTP.sys belső állapotmentes szolgáltatások esetében, a Kestrel az a legjobb kiszolgáló, hogy egy gazdagép megosztani több szolgáltatáspéldány.  |
-| Port konfigurálása | dinamikusan kiosztott | Állapotalapú szolgáltatás több replika előfordulhat, hogy ossza meg egy gazdafolyamat vagy a gazda operációs rendszer, és így kell egyedi portokat. |
-| ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Dinamikus portok hozzárendelés Ez a beállítás megakadályozza, hogy a korábban ismertetett garanciafeltételeknek identitás probléma. |
-| InstanceCount | Bármely | A beállítás példányszám állítható bármilyen érték a szolgáltatás működtetéséhez szükséges. |
+| Webkiszolgáló | Kestrel | Habár a HTTP. sys-t a belső állapot nélküli szolgáltatásokhoz is használhatja, a vércse a legjobb kiszolgáló, amely lehetővé teszi, hogy több szolgáltatási példány ossza meg a gazdagépet.  |
+| Port konfigurációja | dinamikusan hozzárendelve | Egy állapot-nyilvántartó szolgáltatás több replikája megoszthatja a gazdagép vagy a gazdagép operációs rendszerét, így egyedi portokra lesz szüksége. |
+| ServiceFabricIntegrationOptions | UseUniqueServiceUrl | A dinamikus port hozzárendelésével ez a beállítás megakadályozza a korábban ismertetett, téves identitás problémáját. |
+| InstanceCount | bármilyen | A példányok számának beállítása a szolgáltatás üzemeltetéséhez szükséges bármely értékre beállítható. |
 
-### <a name="internal-only-stateful-aspnet-core-service"></a>Csak belső állapotalapú ASP.NET Core-szolgáltatás
-Állapotalapú szolgáltatások, amelyek a fürtön belül csak meghívni a dinamikusan hozzárendelt portok segítségével biztosítja több szolgáltatások közötti együttműködést. Azt javasoljuk, hogy a következő konfigurációt:
+### <a name="internal-only-stateful-aspnet-core-service"></a>Csak belső állapot-nyilvántartó ASP.NET Core szolgáltatás
+A csak a fürtön belül hívott állapot-nyilvántartó szolgáltatásoknak dinamikusan hozzárendelt portokat kell használniuk a több szolgáltatás közötti együttműködés biztosításához. A következő konfigurációt javasoljuk:
 
 |  |  | **Megjegyzések** |
 | --- | --- | --- |
-| Webkiszolgáló | Kestrel | A `HttpSysCommunicationListener` nem az állapotalapú szolgáltatások, amelyben a replikák megosztani egy gazdafolyamaton használatra terveztek. |
-| Port konfigurálása | dinamikusan kiosztott | Állapotalapú szolgáltatás több replika előfordulhat, hogy ossza meg egy gazdafolyamat vagy a gazda operációs rendszer, és így kell egyedi portokat. |
-| ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Dinamikus portok hozzárendelés Ez a beállítás megakadályozza, hogy a korábban ismertetett garanciafeltételeknek identitás probléma. |
+| Webkiszolgáló | Kestrel | A `HttpSysCommunicationListener` nem olyan állapot-nyilvántartó szolgáltatások általi használatra készült, amelyekben a replikák megosztják a gazdagép folyamatát. |
+| Port konfigurációja | dinamikusan hozzárendelve | Egy állapot-nyilvántartó szolgáltatás több replikája megoszthatja a gazdagép vagy a gazdagép operációs rendszerét, így egyedi portokra lesz szüksége. |
+| ServiceFabricIntegrationOptions | UseUniqueServiceUrl | A dinamikus port hozzárendelésével ez a beállítás megakadályozza a korábban ismertetett, téves identitás problémáját. |
 
 ## <a name="next-steps"></a>További lépések
 [Service Fabric-alkalmazás hibakeresése a Visual Studióval](service-fabric-debugging-your-application.md)

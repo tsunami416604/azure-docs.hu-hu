@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: c4d01c3c72669f7fbfd5b2d8df0678cc0675ccde
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7f890ddf7aff63189a720f3d604b00610af7a933
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639560"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949848"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Támogatási mátrix a Microsoft Azure Backup Server vagy System Center DPM való biztonsági mentéshez
 
@@ -55,7 +55,7 @@ További információk:
 **Forgatókönyv** | **Ügynök** | **Location**
 --- | --- | ---
 **Helyszíni gépek/munkaterhelések biztonsági mentése** | A DPM/MABS védelmi ügynök azon gépeken fut, amelyekről biztonsági másolatot szeretne készíteni.<br/><br/> A MARS-ügynök a DPM/MABS-kiszolgálón.<br/> A szolgáltatás engedélyezéséhez szükséges Microsoft Azure Recovery Services ügynök vagy Azure Backup ügynök minimális verziója 2.0.8719.0.  | A DPM/MABS a helyszínen kell futnia.
-**Azure-beli virtuális gépek/munkaterhelések biztonsági mentése** | DPM/MABS védelmi ügynök a védett gépen.<br/><br/> A MARS-ügynök a DPM/MABS-kiszolgálón. | Az DPM/MABS Azure-beli virtuális gépen kell futnia.
+
 
 ## <a name="supported-deployments"></a>Támogatott központi telepítések
 
@@ -166,9 +166,9 @@ Az alábbi táblázat összefoglalja, hogy milyen biztonsági mentés készíthe
 **Windows Server 2012 R2 (Datacenter és standard)**<br/><br/> 64/32 bites | MABS v3, v2 | Helyszíni/Azure-beli virtuális gép. | Helyszíni **védelem**: Kötet/megosztás/mappa/fájl; rendszerállapot/operációs rendszer nélküli.<br/><br/> **Azure-VMprotection**: Kötet/megosztás/mappa/fájl.<br/><br/> A deduplikált kötetek támogatottak. |
 **Windows Server 2012 SP1 (Datacenter és standard)**<br/><br/> 64/32 bites | MABS v3, v2 <br/><br/> Telepíteni kell a [Windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855) alkalmazást. | Helyszíni/Azure-beli virtuális gép. | Helyszíni **védelem**: Kötet/megosztás/mappa/fájl; rendszerállapot/operációs rendszer nélküli.<br/><br/> **Azure**-beli virtuális gépek védelme: Kötet/megosztás/mappa/fájl.<br/><br/> A deduplikált kötetek támogatottak. |
 **Windows 2008 R2 SP1 (standard és Enterprise)**<br/><br/> 64/32 bites | Támogatja a MABS v3, v2.<br/><br/> Telepíteni kell a [Windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855) alkalmazást. | Helyszíni/Azure-beli virtuális gép. |   Helyszíni **védelem**: Kötet/megosztás/mappa/fájl; rendszerállapot/operációs rendszer nélküli.<br/><br/> **Azure**-beli virtuális gépek védelme: Kötet/megosztás/mappa/fájl.<br/><br/> A deduplikált kötetek támogatottak. |
-**Windows 2008 R2 (standard és Enterprise)**<br/><br/> 64/32 bites | A MABS v2/V3 esetében az operációs rendszernek SP1 verziót kell futtatnia. | Helyszíni/Azure-beli virtuális gép. | Helyszíni **védelem**: Kötet/megosztás/mappa/fájl; rendszerállapot/operációs rendszer nélküli.<br/><br/> **Azure**-beli virtuális gépek védelme: Kötet/megosztás/mappa/fájl.<br/><br/> A deduplikált kötetek támogatottak. |
-**Windows Server 2008 SP2**<br/><br/> 64/32 bites | MABS v2, v3 | A MABS v2, v3 verziója támogatott, ha a MABS VMware virtuális gépként van telepítve.<br/><br/> Az Azure-beli virtuális gépen futó MABS nem támogatott. | Kötet/megosztás/mappa/fájl; rendszerállapot/operációs rendszer nélküli. |
-**Windows Storage Server 2008** | MABS v2, v3 | MABS helyszíni fizikai kiszolgálóként vagy Hyper-V virtuális géphez. <br/><br/> Az Azure-beli virtuális gépen futó MABS nem támogatott. | Kötet/megosztás/mappa/fájl; rendszerállapot/operációs rendszer nélküli.
+**Windows 2008 R2 (standard és Enterprise)**<br/><br/> 64/32 bites | A MABS V3 esetében az operációs rendszernek SP1 verziót kell futtatnia. | Helyszíni/Azure-beli virtuális gép. | Helyszíni **védelem**: Kötet/megosztás/mappa/fájl; rendszerállapot/operációs rendszer nélküli.<br/><br/> **Azure**-beli virtuális gépek védelme: Kötet/megosztás/mappa/fájl.<br/><br/> A deduplikált kötetek támogatottak. |
+**Windows Server 2008 SP2**<br/><br/> 64/32 bites | MABS v3, v2 | A MABS v2, v3 verziója támogatott, ha a MABS VMware virtuális gépként van telepítve.<br/><br/> Az Azure-beli virtuális gépen futó MABS nem támogatott. | Kötet/megosztás/mappa/fájl; rendszerállapot/operációs rendszer nélküli. |
+**Windows Storage Server 2008** | MABS v3, v2 | MABS helyszíni fizikai kiszolgálóként vagy Hyper-V virtuális géphez. <br/><br/> Az Azure-beli virtuális gépen futó MABS nem támogatott. | Kötet/megosztás/mappa/fájl; rendszerállapot/operációs rendszer nélküli.
 **SQL Server 2017** | MABS v3 | Helyszíni/Azure-beli virtuális gép.| SQL Server adatbázis biztonsági mentése.<br/><br/> SQL Server fürt biztonsági mentése támogatott.<br/><br/>A CSV tárolt adatbázisok nem támogatottak. |
 **2016/2016 SQL Server SP1** | MABS v3, v2 | Helyszíni/Azure-beli virtuális gép.| SQL Server adatbázis biztonsági mentése.<br/><br/> SQL Server fürt biztonsági mentése támogatott.<br/><br/>A CSV tárolt adatbázisok nem támogatottak. |
 **SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | MABS v3, v2 | Helyszíni/Azure-beli virtuális gép.| SQL Server adatbázis biztonsági mentése.<br/><br/> SQL Server fürt biztonsági mentése támogatott.<br/><br/>A CSV tárolt adatbázisok nem támogatottak. |
@@ -195,7 +195,7 @@ Az alábbi táblázat összefoglalja, hogy milyen biztonsági mentés készíthe
 **Windows 2008 R2 (standard és Enterprise)**<br/><br/> 64/32 bites | Helyszíni.<br/><br/> A DPM nem telepíthető VMware virtuális gépként.<br/><br/> Az Azure-beli virtuális gépen futó DPM nem támogatott. | Helyszíni **védelem**: Kötet/megosztás/mappa/fájl; rendszerállapot/operációs rendszer nélküli.
 **Windows Server 2008 SP2**<br/><br/> 64/32 bites | Csak a helyszínen.<br/><br/> A DPM VMware virtuális gépként való futtatása esetén támogatott. Fizikai kiszolgálóként vagy Hyper-V virtuális gépenként való futtatás nem támogatott. | Kötet/megosztás/mappa/fájl; rendszerállapot/operációs rendszer nélküli.
 **Windows Storage Server 2008** | A helyszíni DPM fizikai kiszolgálóként vagy Hyper-V virtuális gépenként fut. | Kötet/megosztás/mappa/fájl; rendszerállapot/operációs rendszer nélküli.
-**SQL Server 2017** | DPM SAC; A DPM 2016 5 vagy újabb verziójú frissítést futtat.<br/><br/> Helyszíni/Azure-beli virtuális gép.| SQL Server adatbázis biztonsági mentése.<br/><br/> SQL Server fürt biztonsági mentése támogatott.<br/><br/>A CSV tárolt adatbázisok nem támogatottak.
+**SQL Server 2017** | DPM SAC; Az 5. vagy újabb kumulatív frissítést futtató DPM 2016.<br/><br/> Helyszíni/Azure-beli virtuális gép.| SQL Server adatbázis biztonsági mentése.<br/><br/> SQL Server fürt biztonsági mentése támogatott.<br/><br/>A CSV tárolt adatbázisok nem támogatottak.
 **2016 SQL Server SP1** | A DPM 2012 R2 esetében nem támogatott; Támogatott a 4. vagy újabb kumulatív frissítéssel rendelkező DPM SAC DPM 2016.<br/><br/> Helyszíni/Azure-beli virtuális gép.| SQL Server adatbázis biztonsági mentése.<br/><br/> SQL Server fürt biztonsági mentése támogatott.<br/><br/>A CSV tárolt adatbázisok nem támogatottak.
 **SQL Server 2016** | A DPM 2012 R2 esetében nem támogatott. A 2. vagy újabb kumulatív frissítéssel rendelkező DPM SAC esetében támogatott a DPM 2016.<br/><br/> Helyszíni/Azure-beli virtuális gép.| SQL Server adatbázis biztonsági mentése.<br/><br/> SQL Server fürt biztonsági mentése támogatott.<br/><br/>A CSV tárolt adatbázisok nem támogatottak.
 **SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | SQL Server 2014, DPM 2012 R2, 4. kumulatív frissítéssel vagy újabb verzióval.<br/><br/> Helyszíni/Azure-beli virtuális gép.| SQL Server adatbázis biztonsági mentése.<br/><br/> SQL Server fürt biztonsági mentése támogatott.<br/><br/>A CSV tárolt adatbázisok nem támogatottak.

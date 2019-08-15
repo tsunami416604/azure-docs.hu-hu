@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: barclayn
-ms.openlocfilehash: bc305938801a4edcf32e36ce57f76079f33c5bf8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c91c8de35dcf3f1bc8fd5f41bd2356336c3fe450
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727399"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927969"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-beli adatok titkosítása – Rest
 
@@ -161,7 +161,7 @@ A titkosítási kulcsokat használó műveletek esetében a szolgáltatás ident
 Az adatok titkosítása vagy visszafejtése során használt kulcs beszerzéséhez a Resource Manager-szolgáltatás példányának futtatásához szükséges UnwrapKey (a visszafejtési kulcs lekérése) és a WrapKey (kulcs behelyezése a Key vaultba új kulcs létrehozásakor).
 
 >[!NOTE]
->Az Key Vault engedélyezésével kapcsolatos további információkért tekintse meg a [Azure Key Vault dokumentációjában](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)a Key Vault biztonságossá tétele című oldalt.
+>Az Key Vault engedélyezésével kapcsolatos további információkért tekintse meg a [Azure Key Vault dokumentációjában](../../key-vault/key-vault-secure-your-key-vault.md)a Key Vault biztonságossá tétele című oldalt.
 
 **Előnyei**
 
@@ -237,14 +237,14 @@ Microsoft Azure szolgáltatások a REST-modellekben egy vagy több titkosítást
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Az Azure-alapú infrastruktúra-szolgáltatás (IaaS) funkcióit használó bármely ügyfél a IaaS-alapú virtuális gépek és Azure Disk Encryption lemezek számára is lehetővé teheti a titkosítást. Az Azure Disk Encryption szolgáltatással kapcsolatos további információkért tekintse meg a [Azure Disk Encryption dokumentációját](https://docs.microsoft.com/azure/security/azure-security-disk-encryption).
+Az Azure-alapú infrastruktúra-szolgáltatás (IaaS) funkcióit használó bármely ügyfél a IaaS-alapú virtuális gépek és Azure Disk Encryption lemezek számára is lehetővé teheti a titkosítást. Az Azure Disk Encryption szolgáltatással kapcsolatos további információkért tekintse meg a [Azure Disk Encryption dokumentációját](../azure-security-disk-encryption-overview.md).
 
 #### <a name="azure-storage"></a>Azure Storage tárterület
 
 Az összes Azure Storage-szolgáltatás (blob Storage, üzenetsor-tárolás, Table Storage és Azure Files) támogatja a kiszolgálóoldali titkosítást a nyugalmi állapotban; néhány szolgáltatás emellett az ügyfél által felügyelt kulcsokat és az ügyféloldali titkosítást is támogatja. 
 
-- Kiszolgálóoldali: Az összes Azure Storage-szolgáltatás alapértelmezés szerint a szolgáltatás által felügyelt kulcsok használatával engedélyezi a kiszolgálóoldali titkosítást, amely transzparens az alkalmazás számára. További információ: [Azure Storage Service encryption for](https://docs.microsoft.com/azure/storage/storage-service-encryption)inaktív adatok. Az Azure Blob Storage és a Azure Files támogatja az RSA 2048 bites ügyfél által felügyelt kulcsokat Azure Key Vault. További információ: [Storage Service encryption ügyfél által felügyelt kulcsok használata Azure Key Vaultban](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys).
-- Ügyféloldali: Az Azure-Blobok,-táblák és-várólisták támogatják az ügyféloldali titkosítást. Az ügyféloldali titkosítás használatakor az ügyfelek titkosítják az adataikat, és feltöltik az adataikat titkosított blobként. A kulcskezelőt az ügyfél végzi. További információ: [ügyféloldali titkosítás és Azure Key Vault Microsoft Azure Storagehoz](https://docs.microsoft.com/azure/storage/storage-client-side-encryption).
+- Kiszolgálóoldali: Az összes Azure Storage-szolgáltatás alapértelmezés szerint a szolgáltatás által felügyelt kulcsok használatával engedélyezi a kiszolgálóoldali titkosítást, amely transzparens az alkalmazás számára. További információ: [Azure Storage Service encryption for](../../storage/common/storage-service-encryption.md)inaktív adatok. Az Azure Blob Storage és a Azure Files támogatja az RSA 2048 bites ügyfél által felügyelt kulcsokat Azure Key Vault. További információ: [Storage Service encryption ügyfél által felügyelt kulcsok használata Azure Key Vaultban](../../storage/common/storage-encryption-keys-portal.md).
+- Ügyféloldali: Az Azure-Blobok,-táblák és-várólisták támogatják az ügyféloldali titkosítást. Az ügyféloldali titkosítás használatakor az ügyfelek titkosítják az adataikat, és feltöltik az adataikat titkosított blobként. A kulcskezelőt az ügyfél végzi. További információ: [ügyféloldali titkosítás és Azure Key Vault Microsoft Azure Storagehoz](../../storage/common/storage-client-side-encryption.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 
