@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 07/05/2019
-ms.openlocfilehash: 16ed52aa2b56a97469ae8fc47299f09593b19c45
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: d6a0fec6e2efbd943a9b240df0db2c270a1b7e45
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668347"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955572"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Kereskedelmi piactér-fiók létrehozása a partner Centerben
 
@@ -71,7 +71,7 @@ Köszönjük, hogy létrehoz egy fiókot a partner Centerben! Ekkor megjelenik a
 
 Ha a fiókja át lett telepítve a [Cloud Partner Portalból (CPP)](https://cloudpartner.azure.com), nem kell létrehoznia egy új partner Center-fiókot, de az új partner Center-fiókra vonatkozó testreszabott hivatkozást kapott e-mailben, és egy szalagcím-értesítésben is megjelenik Jelentkezzen be a meglévő CPP-fiókjába.
 
-Miután engedélyezte az új partner Center-fiókot a testreszabott hivatkozás meglátogatásával, visszatérhet a fiókjához, ha meglátogatja a partner Center [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/commercial-marketplace/) .
+Miután engedélyezte az új partner Center-fiókot a testreszabott hivatkozás meglátogatásával, visszatérhet a fiókjához, ha meglátogatja a partner Center [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) .
 
 A közzétételi szerződés és a vállalati profil adatai átkerülnek az új partner Center-fiókjába, valamint a fiókhoz korábban beállított kifizetési profilokra vonatkozó információk, felhasználói fiókok és engedélyek, valamint a CPP-fiókhoz társított aktív ajánlatok. 
 

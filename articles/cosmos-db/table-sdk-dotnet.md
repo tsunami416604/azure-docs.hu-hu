@@ -1,5 +1,5 @@
 ---
-title: Az Azure Cosmos DB Table API .NET SDK-t és az erőforrások
+title: Azure Cosmos DB Table API .NET SDK &-erőforrások
 description: Mindent megtudhat az Azure Cosmos DB Table API többek között a kiadási dátum, használatból való kivonást egyaránt dátumok és minden verzió között végrehajtott módosítások.
 author: wmengmsft
 ms.author: wmeng
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: db7cc556525ab57f14984232bf1797764865fca3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cbab92c85e5791e43e9d7f60de975c27a77c62d3
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606255"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013803"
 ---
-# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Az Azure Cosmos DB Table .NET API: Töltse le és kibocsátási megjegyzések
+# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB table .NET API: Megjegyzések letöltése és kibocsátási megjegyzései
 
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
@@ -27,13 +27,13 @@ ms.locfileid: "65606255"
 |   |   |
 |---|---|
 |**SDK letöltése**|[NuGet](https://aka.ms/acdbtablenuget)|
-|**API-dokumentáció**|[.NET API dokumentációja](https://aka.ms/acdbtableapiref)|
-|**Gyors útmutató**|[Azure Cosmos DB: .NET-tel és a Table API-alkalmazás létrehozása](create-table-dotnet.md)|
-|**Oktatóanyag**|[Azure Cosmos DB: Fejlesztés a Table API a .NET használatával](tutorial-develop-table-dotnet.md)|
-|**Aktuális támogatott keretrendszer**|[A Microsoft .NET-keretrendszer 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
+|**API-dokumentáció**|[.NET API dokumentációja](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table?view=azure-dotnet)|
+|**Gyors útmutató**|[Azure Cosmos DB: Alkalmazás létrehozása a .NET-tel és a Table API](create-table-dotnet.md)|
+|**Oktatóanyag**|[Azure Cosmos DB: Fejlesztés a .NET-Table APIokkal](tutorial-develop-table-dotnet.md)|
+|**Aktuális támogatott keretrendszer**|[Microsoft .NET-keretrendszer 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
 > [!IMPORTANT]
-> A .NET-keretrendszer SDK [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) van a karbantartás mód, és hamarosan el fognak évülni. Frissítsen az új .NET Standard kódtár [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) továbbra is a legújabb funkciók, a Table API által támogatott.
+> A .NET-keretrendszer SDK [Microsoft. Azure. CosmosDB. table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) karbantartási módban van, és hamarosan elavulttá válik. Frissítsen a [Microsoft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) új .NET Standard Library webhelyre, és folytassa a Table API által támogatott legújabb funkciók beszerzésével.
 
 > Ha az előzetes verzióban hozta létre a Table API-fiókot, hozzon létre egy [új Table API-fiókot](create-table-dotnet.md#create-a-database-account), amely használható az általánosan elérhető Table API SDK-kkal.
 >
@@ -46,73 +46,73 @@ ms.locfileid: "65606255"
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
 
-* A hozzáadott többrégiós írási támogatása
-* Rögzített Microsoft.Azure.DocumentDB, Microsoft.OData.Core, Microsoft.OData.Edm, Microsoft.Spatial NuGet-csomagfüggőségeket
+* Többrégiós írási támogatás hozzáadva
+* Rögzített NuGet-csomagok függőségei a Microsoft. Azure. DocumentDB, a Microsoft. OData. Core, a Microsoft. OData. EDM, a Microsoft. térbeli
 
 ### <a name="a-name113113"></a><a name="1.1.3"/>1.1.3
 
-* Rögzített NuGet-csomagfüggőségeket Microsoft.Azure.Storage.Common és Microsoft.Azure.DocumentDB.
-* A tábla szerializálási JsonConvert.DefaultSettings konfigurálásakor hibajavításokat tartalmaz.
+* Rögzített NuGet-csomagok függőségei a Microsoft. Azure. Storage. Common és a Microsoft. Azure. DocumentDB.
+* Hibajavítások a tábla szerializálásakor, ha a JsonConvert. DefaultSettings konfigurálva van.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
 
-* A hozzáadott érvényesítése helytelen ETag közvetlen módban.
-* LINQ lekérdezés hiba kijavítva átjáró módban.
-* Szinkron API-k most futtassa a szálkészlet SynchronizationContext együtt.
+* A helytelenül formázott Etagek való ellenőrzésének hozzáadása közvetlen módban.
+* Rögzített LINQ lekérdezési hiba az átjáró módban.
+* A szinkron API-k mostantól a SynchronizationContext tulajdonságot segítségével futnak a szál készletében.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 
-* Add TableQueryMaxItemCount, TableQueryEnableScan, TableQueryMaxDegreeOfParallelism, and TableQueryContinuationTokenLimitInKb to TableRequestOptions
+* TableQueryMaxItemCount, TableQueryEnableScan, TableQueryMaxDegreeOfParallelism és TableQueryContinuationTokenLimitInKb hozzáadása a TableRequestOptions
 * Hibajavítások
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 
 * Általánosan elérhető kiadások
 
-### <a name="a-name010-preview090-preview"></a><a name="0.1.0-preview"/>0.9.0-Preview
+### <a name="a-name010-preview090-preview"></a><a name="0.1.0-preview"/>0.9.0 – előzetes verzió
 
 * Kezdeti előzetes kiadás
 
-## <a name="release-and-retirement-dates"></a>Kiadás és kivezetési dátuma
+## <a name="release-and-retirement-dates"></a>Kiadási és nyugdíjazási dátumok
 
-A Microsoft biztosít értesítési legalább **12 hónapig** kivonása egy SDK-t kiegyenlítse az a és újabb támogatott verzióra váltás előtt.
+A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra.
 
-A `Microsoft.Azure.CosmosDB.Table` függvénytár jelenleg elérhető .NET-keretrendszer csak, és a karbantartási módban van, és hamarosan elavulttá válik. Új szolgáltatások és funkciók és optimalizálási lehetőségek csak hozzáadódnak a .NET Standard kódtár [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table), mert az ilyen frissítése a javasolt [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table).
+A `Microsoft.Azure.CosmosDB.Table` függvénytár jelenleg csak a .net-keretrendszerhez érhető el, és karbantartási üzemmódban van, és hamarosan elavulttá válik. Új funkciók és funkciók és optimalizálások csak a .NET Standard Library [Microsoft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)számára vehetők fel, ezért azt javasoljuk, hogy frissítsen a [Microsoft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)verzióra.
 
-A [WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) előzetes csomag elavult. 2018\. November 15. a WindowsAzure.Storage-PremiumTable SDK-t kivezetjük, mely arra kéri, a kivont SDK nem fog tudni. 
+A [WindowsAzure. Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) előzetes verziója elavult. A WindowsAzure. Storage-PremiumTable SDK 2018 november 15-én megszűnik, amikor a kivont SDK-ra irányuló kérések nem lesznek engedélyezve. 
 
-Az Azure Cosmos DB egy kivont SDK használatával bármilyen kérelmeket a szolgáltatás által a rendszer elutasítja.
+A szolgáltatás elutasítja a kivont SDK használatával Azure Cosmos DB kérelmeket.
 <br/>
 
 | Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [2.1.0](#2.1.0) |2019\. január 22.|2020\. április 01. |
-| [2.0.0](#2.0.0) |2018\. szeptember 26.|2020\. március 01. |
-| [1.1.3](#1.1.3) |2018\. július 17.|2019\. december 01. |
-| [1.1.1](#1.1.1) |2018\. március 26.|2019\. december 01. |
-| [1.1.0](#1.1.0) |2018\. február 21.|2019\. december 01. |
-| [1.0.0](#1.0.0) |2017\. november 15.|2019\. november 15. |
-| 0.9.0-Preview |2017\. november 11. |2019\. november 11. |
+| [2.1.0](#2.1.0) |2019. január 22.|Április 01., 2020 |
+| [2.0.0](#2.0.0) |Szeptember 26., 2018|Március 01., 2020 |
+| [1.1.3](#1.1.3) |Július 17., 2018|December 01., 2019 |
+| [1.1.1](#1.1.1) |Március 26., 2018|December 01., 2019 |
+| [1.1.0](#1.1.0) |2018. február 21.|December 01., 2019 |
+| [1.0.0](#1.0.0) |2017. november 15.|November 15., 2019 |
+| 0.9.0 – előzetes verzió |November 11., 2017 |November 11., 2019 |
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha megjelenik a hibaüzenet 
+Ha a hibaüzenet jelenik meg 
 
 ```
 Unable to resolve dependency 'Microsoft.Azure.Storage.Common'. Source(s) used: 'nuget.org', 
 'CliFallbackFolder', 'Microsoft Visual Studio Offline Packages', 'Microsoft Azure Service Fabric SDK'`
 ```
 
-használja a Microsoft.Azure.CosmosDB.Table NuGet-csomagot próbál, ha a probléma megoldásához két lehetősége van:
+a Microsoft. Azure. CosmosDB. table NuGet-csomag használatának megkísérlése során két lehetőség közül választhat a probléma megoldásához:
 
-* Csomag kezelése konzol segítségével telepítse a Microsoft.Azure.CosmosDB.Table csomagot és annak függőségeit. Ehhez írja be a következőt a Csomagkezelői konzol a megoldáshoz. 
+* A csomag kezelése konzollal telepítse a Microsoft. Azure. CosmosDB. table csomagot és annak függőségeit. Ehhez írja be a következőt a megoldáshoz tartozó Package Manager konzolon. 
 
     ```powershell
     Install-Package Microsoft.Azure.CosmosDB.Table -IncludePrerelease
     ```
 
     
-* Az előnyben részesített NuGet Csomagkezelő eszközt használja, telepítse a Microsoft.Azure.Storage.Common NuGet-csomag Microsoft.Azure.CosmosDB.Table telepítése előtt.
+* Az előnyben részesített NuGet csomagkezelő eszköz használatával telepítse a Microsoft. Azure. Storage. Common NuGet csomagot a Microsoft. Azure. CosmosDB. table telepítése előtt.
 
 ## <a name="faq"></a>GYIK
 
@@ -120,4 +120,4 @@ használja a Microsoft.Azure.CosmosDB.Table NuGet-csomagot próbál, ha a probl�
 
 ## <a name="see-also"></a>Lásd még
 
-Az Azure Cosmos DB Table API kapcsolatos további információkért lásd: [bemutatása az Azure Cosmos DB Table API](table-introduction.md). 
+Ha többet szeretne megtudni a Azure Cosmos DB Table APIról, tekintse meg a [Azure Cosmos DB Table API bemutatása](table-introduction.md)című témakört. 

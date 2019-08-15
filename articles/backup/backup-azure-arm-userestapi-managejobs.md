@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: a8ba5727dea214343e7696ff3193aba13922be03
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: b10283c2946d01101b941d53b6bf03be3a12e99e
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689458"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954918"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Biztonsági mentési és visszaállítási feladatok nyomon követése REST API használatával
 
-Azure Backup szolgáltatás elindítja a háttérben futó feladatokat olyan különböző forgatókönyvekben, mint például a biztonsági mentés elindítása, a visszaállítási műveletek, a biztonsági mentés letiltása. Ezek a feladatok az azonosítóik használatával követhetők nyomon.
+Azure Backup szolgáltatás olyan feladatokat indít el, amelyek a háttérben futnak különböző forgatókönyvekben, például a biztonsági mentés elindítása, a visszaállítási műveletek, a biztonsági mentés letiltása. Ezek a feladatok az azonosítóik használatával követhetők nyomon.
 
 ## <a name="fetch-job-information-from-operations"></a>Feladatok adatainak beolvasása a műveletből
 
-Egy művelet, például a biztonsági mentés elindítása mindig jobID ad vissza. Például: A [trigger biztonsági mentési REST API műveletének](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) utolsó válasza a következő:
+Egy művelet, például a biztonsági mentés elindítása mindig jobID ad vissza. Példa: A [trigger biztonsági mentési REST API műveletének](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) utolsó válasza a következő:
 
 ```http
 {

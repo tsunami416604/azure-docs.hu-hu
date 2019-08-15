@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: c41381dd3e53c80e74da3dc0d0a08e1ac83daec6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 415a25dbe63b8942509827cd8434cc0f50fde87a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827632"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954818"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – gyakran ismételt kérdések
 Ez a cikk a Azure Backup szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
@@ -54,7 +54,7 @@ Nem. A Recovery Services-tárolók csak a biztonsági másolatok tárolása elő
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>Hol találhatok gyakori kérdéseket az Azure-beli virtuális gépek biztonsági mentésének Azure Backup ügynökével kapcsolatban?
 
 - Az Azure-beli virtuális gépeken futó ügynök esetén olvassa el ezt a [gyakori kérdéseket](backup-azure-vm-backup-faq.md).
-- Az Azure file Folders biztonsági mentésére szolgáló ügynök esetében olvassa el ezt a [gyakori kérdéseket](backup-azure-file-folder-backup-faq.md).
+- Az Azure file Folders biztonsági mentésére használt ügynök esetében olvassa el ezt a [gyakori kérdéseket](backup-azure-file-folder-backup-faq.md).
 
 
 ## <a name="general-backup"></a>Általános biztonsági mentés
@@ -125,7 +125,7 @@ Nem. A tárolóba a biztonsági mentési feladat megszakítása előtt továbbí
 
 - Az Azure Backup egy ellenőrzőpont-alapú mechanizmust használ, így a biztonsági mentés közben esetenként ellenőrzőpontokat ad az adatok biztonsági másolatához.
 - Mivel ellenőrzőpontok vannak az adatok biztonsági másolatában, a következő biztonsági mentési folyamat ellenőrizni tudja a fájlok épségét.
-- A következő biztonsági mentési feladat a korábban már mentett adatokra épülő növekményes mentés lesz. A növekményes mentések csak az új vagy módosított adatok átvitelét jelentik, így a sávszélesség-használat optimalizálható.
+- A következő biztonsági mentési feladat a korábban már mentett adatokra épülő növekményes mentés lesz. A növekményes biztonsági mentések csak az új vagy módosított adatok átvitelét jelentik, ami a sávszélesség jobb kihasználtságának felel meg.
 
 Ha megszakítja egy Azure virtuális gép valamely biztonsági mentését, a rendszer a már átvitt adatokat figyelmen kívül hagyja. A következő biztonsági mentési feladat az utolsó sikeres biztonsági mentéshez képest végzi el az adatok növekményes mentését.
 
@@ -138,7 +138,7 @@ Igen, mindkettő napi, heti, havi és éves adatmegőrzési szabályzattal rende
 Igen, testreszabhatja a szabályzatokat. Beállíthatja például a heti és a napi adatmegőrzési követelményeket, de nem évenként és havonta.
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>Használhatok különböző időpontokat a biztonsági mentési ütemezési és adatmegőrzési szabályzatokhoz?
-Nem. Megtartási házirendeket csak biztonsági mentési pontokon lehet alkalmazni. Ez a kép például egy adatmegőrzési szabályzatot mutat be a 12am és 18:00-nál készített biztonsági mentésekhez.
+Nem. Megtartási házirendeket csak biztonsági mentési pontokon lehet alkalmazni. Ez a rendszerkép például egy adatmegőrzési szabályzatot jelenít meg a 12am és 18:00-kor készített biztonsági mentésekhez.
 
 ![Biztonsági mentés és megtartás ütemezése](./media/backup-azure-backup-faq/Schedule.png)
 

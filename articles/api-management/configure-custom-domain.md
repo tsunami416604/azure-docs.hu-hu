@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b3513ab2583939943ff188b582f57f49530e5ded
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 45e1ad6bd757ec5acaf784c94e4cfb5e487ce9ba
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736260"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68975737"
 ---
 # <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév konfigurálása
 
@@ -34,7 +34,8 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 -   Egy API Management példány. További információ: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
--   Az Ön tulajdonában álló egyéni tartománynév. A használni kívánt egyéni tartománynevet külön kell beszerezni, és egy DNS-kiszolgálón kell tárolni. Ez a témakör nem ad útmutatást az Egyéni tartománynév üzemeltetéséhez.
+-   Az Ön vagy a szervezete tulajdonában álló egyéni tartománynév. Ez a témakör nem nyújt útmutatást az Egyéni tartománynév beszerzéséhez.
+-   Egy DNS-kiszolgálón tárolt CNAME rekord, amely az egyéni tartománynevet az API Management-példány alapértelmezett tartománynevére képezi le. Ez a témakör nem nyújt útmutatást a CNAME rekordok üzemeltetéséhez.
 -   Rendelkeznie kell egy nyilvános és titkos kulccsal rendelkező érvényes tanúsítvánnyal (. PFX). A tulajdonos vagy a tulajdonos alternatív neve (SAN) meg kell egyeznie a tartománynévvel (Ez lehetővé teszi API Management példány számára az SSL protokollon keresztüli URL-címek biztonságos megjelenítését).
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Egyéni tartománynév beállítása a Azure Portal használatával
@@ -52,13 +53,17 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
     > [!NOTE]
     > A felhasználási szinten csak a rendelkezésre álló **átjáró** -végpont használható a konfigurációhoz.
     > Frissítheti az összes végpontot vagy azok némelyikét. Általában az ügyfelek Update **Gateway** (ez az URL-cím a API Management) és a portálon ( a fejlesztői portál URL-címe) elérhetővé tett API meghívására szolgál.
-    > A **felügyeleti** és az **SCM** -végpontokat csak a API Management példány tulajdonosai használják, így ritkábban rendelnek hozzá egyéni tartománynevet. A **prémium** szint támogatja több állomásnév beállítását az **átjáró** végpontja számára.
+    > A **felügyeleti** és az **SCM** -végpontokat csak a API Management példány tulajdonosai használják, így ritkábban rendelnek hozzá egyéni tartománynevet.
+    > A **prémium** szint támogatja több állomásnév beállítását az **átjáró** végpontja számára.
 
 1. Válassza ki a frissíteni kívánt végpontot.
 1. A jobb oldali ablakban kattintson az **Egyéni**elemre.
 
-    - Az **egyéni tartomány neve**mezőben adja meg a használni kívánt nevet. Például: `api.contoso.com`. A helyettesítő tartománynevek (például \*. domain.com) is támogatottak.
+    - Az **egyéni tartomány neve**mezőben adja meg a használni kívánt nevet. Például: `api.contoso.com`.
     - A **tanúsítványban**válasszon ki egy tanúsítványt Key Vault. Egy érvényes is feltölthető. PFX-fájl, és adja meg a **jelszavát**, ha a tanúsítvány jelszavas védelemmel van ellátva.
+
+    > [!NOTE]
+    > A helyettesítő tartománynevek, például `*.contoso.com` az összes szinten támogatottak, kivéve a felhasználási szintet.
 
     > [!TIP]
     > Javasoljuk, hogy használjon Azure Key Vault a tanúsítványok kezeléséhez, és állítsa be őket az autoforgatáshoz.
@@ -71,7 +76,7 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
 1. Kattintson az Alkalmaz gombra.
 
     > [!NOTE]
-    > A tanúsítvány hozzárendelésének folyamata az üzembe helyezés méretétől függően 15 vagy több percet is igénybe vehet. A fejlesztői SKU állásidővel rendelkezik, az alapszintű és a magasabb SKU-k nem rendelkeznek állásidővel.
+    > A tanúsítvány hozzárendelésének folyamata az üzembe helyezés méretétől függően 15 vagy több percet is igénybe vehet. A fejlesztői SKU állásidővel rendelkezik, az alapszintű és a magasabb SKU-ban nincs leállás.
 
 [!INCLUDE [api-management-custom-domain](../../includes/api-management-custom-domain.md)]
 
@@ -79,8 +84,8 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
 
 Ha az egyéni tartománynévhez konfigurálja a DNS-t, két lehetőség közül választhat:
 
-- Állítson be egy olyan CNAME rekordot, amely a konfigurált Egyéni tartománynév végpontján mutat.
-- Konfiguráljon egy olyan rekordot, amely a API Management átjáró IP-címére mutat.
+-   Állítson be egy olyan CNAME rekordot, amely a konfigurált Egyéni tartománynév végpontján mutat.
+-   Konfiguráljon egy olyan rekordot, amely a API Management átjáró IP-címére mutat.
 
 > [!NOTE]
 > Bár az API Management-példány IP-címe statikus, néhány esetben változhat. Ezért javasoljuk, hogy használjon CNAME-t az egyéni tartomány konfigurálásakor. A DNS-konfigurációs módszer kiválasztásakor vegye figyelembe a figyelmet. További információk az [API-Mananagement – gyakori kérdések](https://docs.microsoft.com/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules).

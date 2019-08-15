@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/15/2019
+ms.date: 07/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2d0697567bfd2fcf95a1fe6ebf246646af5650c3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0f1c66126a1aa9a6ebf6f78ac6fb1ba37ba41829
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564884"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985410"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Blobok és várólisták hozzáférésének engedélyezése Azure Active Directory és felügyelt identitásokkal az Azure-erőforrásokhoz
 
@@ -50,17 +50,7 @@ A RBAC szerepköreinek hozzárendelésével kapcsolatos további információké
 
 A Code példa bemutatja, hogyan szerezhet be egy OAuth 2,0-tokent az Azure AD-ből, és hogyan engedélyezheti a blokkos Blobok létrehozásához szükséges kérelmeket. A példa működésének megkezdéséhez kövesse az előző szakaszokban ismertetett lépéseket.
 
-A .NET-hez készült [Microsoft Azure app Authentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ügyféloldali kódtára (előzetes verzió) leegyszerűsíti a jogkivonat beszerzésének és megújításának folyamatát a kódból. Az alkalmazás-hitelesítési ügyféloldali kódtár automatikusan kezeli a hitelesítést. A könyvtár a fejlesztő hitelesítő adatait használja a helyi fejlesztés során végzett hitelesítéshez. A fejlesztői hitelesítő adatok használata a helyi fejlesztés során biztonságosabb, mert nem kell létrehoznia Azure AD-beli hitelesítő adatokat, vagy meg kell osztania a hitelesítő adatokat a fejlesztők között. Ha a megoldást később üzembe helyezi az Azure-ban, a könyvtár automatikusan az alkalmazás hitelesítő adatait használja.
-
-### <a name="install-packages"></a>Csomagok telepítése
-
-Az alkalmazás-hitelesítési függvénytár Azure Storage-alkalmazásban való használatához telepítse a legújabb előzetes csomagot a [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)-ból, valamint az [Azure Storage közös .net-hez készült ügyféloldali kódtára](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/) és az [Azure Blob Storage ügyféloldali kódtára legújabb verzióját. a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/). Adja hozzá a következő **using** utasításokat a kódhoz:
-
-```csharp
-using Microsoft.Azure.Services.AppAuthentication;
-using Microsoft.Azure.Storage.Auth;
-using Microsoft.Azure.Storage.Blob;
-```
+[!INCLUDE [storage-app-auth-lib-include](../../../includes/storage-app-auth-lib-include.md)]
 
 ### <a name="add-the-callback-method"></a>Visszahívási módszer hozzáadása
 

@@ -1,5 +1,5 @@
 ---
-title: Batch-előrejelzések futtatunk nagy mennyiségű adat
+title: Kötegelt előrejelzések futtatása nagy mennyiségű adatfolyamatokkal
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan előrejelzéseket batch aszinkron módon történik a nagy mennyiségű adat Azure Machine Learning szolgáltatás használatával.
 services: machine-learning
@@ -10,16 +10,16 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: 689ee003e0923a65d3ca3f2d13c1a2d05c299dbd
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 97b66bff0e6413b7774a054a01a0dc73649c9cce
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358727"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68962988"
 ---
-# <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-service"></a>Batch-előrejelzések futó nagy méretű adatkészleteket az Azure Machine Learning szolgáltatással
+# <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>A Batch-előrejelzések futtatása Azure Machine Learning folyamatokkal rendelkező nagyméretű adatkészleteken
 
-Ebből a cikkből megtudhatja, hogyan hajthat végre nagy mennyiségű adattal kapcsolatos előrejelzéseket aszinkron módon a Azure Machine Learning szolgáltatás használatával.
+Ebből a cikkből megtudhatja, hogyan hajthat végre nagy mennyiségű adattal kapcsolatos előrejelzéseket aszinkron módon a ML-folyamatok Azure Machine Learning szolgáltatással való használatával.
 
 A Batch-előrejelzés (vagy a kötegelt pontozás) költséghatékony következtetést biztosít, és az aszinkron alkalmazások esetében páratlan átviteli sebességgel rendelkezik. Batch-előrejelzési folyamatok üzemi környezetben elérhető adatokat több terabájtnyi következtetésekhez végrehajtásához méretezheti. A Batch-előrejelzés nagy adatgyűjtési sebességre, valamint a nagy adatgyűjtemények felébresztésére és előrejelzésére van optimalizálva.
 
@@ -358,7 +358,4 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="next-steps"></a>További lépések
 
-A teljes körű működés megjelenítéséhez próbálkozzon a Batch pontozási jegyzetfüzettel a Githubban. [](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
-
+A teljes körű működés megjelenítéséhez próbálja ki a Batch pontozási jegyzetfüzetet a Githubban [](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines), vagy lépjen az [Azure architektúra](/azure/architecture/reference-architectures/ai/batch-scoring-python) központba, és tekintse meg a minta megoldás architektúráját.

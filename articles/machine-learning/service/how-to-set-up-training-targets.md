@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 267872f2036a0e697f4b2da65064805a0cfbd2b7
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 72155e072acb8006b48f6951fc60081126c80691
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358736"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990466"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak 
 
@@ -47,7 +47,7 @@ Azure Machine Learning szolgáltatás különböző számítási célokban elté
 
 A betanítás során gyakori, hogy a helyi számítógépen indul el, és később a betanítási szkriptet más számítási célra futtatja. A Azure Machine Learning szolgáltatással különböző számítási célokból futtathat parancsfájlokat anélkül, hogy módosítani kellene a parancsfájlt. 
 
-Mindössze annyit kell tennie, hogy a futtatási konfigurációval határozza meg az egyes számítási célkitűzések környezetét.  Ha ezt követően egy másik számítási célra szeretné futtatni a betanítási kísérletet, adja meg az adott számítás futtatási konfigurációját. 
+Mindössze annyit kell tennie, hogy a futtatási konfigurációval határozza meg az egyesszámítási célkitűzések környezetét.  Ha ezt követően egy másik számítási célra szeretné futtatni a betanítási kísérletet, adja meg az adott számítás futtatási konfigurációját.
 
 További információ a [kísérletek](#submit) elküldéséről a cikk végén.
 
@@ -74,7 +74,26 @@ A felhasználó által felügyelt környezetek esetében Ön felelős a környez
 Az alábbi kód egy, a felhasználó által felügyelt környezethez tartozó képzési futtatások konfigurálására mutat példát:
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
-  
+
+## <a name="whats-an-estimator"></a>Mi az a kalkulátor?
+
+A népszerű keretrendszerek használatával történő modell-képzés elősegítése érdekében a Azure Machine Learning Python SDK egy alternatív, magasabb szintű absztrakciót, a kalkulátor osztályt biztosít. Ez az osztály lehetővé teszi a futtatási konfigurációk egyszerű összeállítását. Létrehozhat és használhat általános becslést olyan [](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) képzési parancsfájlok beküldéséhez, amelyek bármely kiválasztott tanulási keretrendszert (például scikit-Learn) használnak.
+
+A PyTorch, a TensorFlow és a láncolási feladatok esetében a Azure Machine Learning a megfelelő [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)és [láncolási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) becslések is biztosít, hogy egyszerűbbé váljon ezen keretrendszerek használata.
+
+További információ: ML- [modellek betanítása a becslések](how-to-train-ml-models.md).
+
+## <a name="whats-an-ml-pipeline"></a>Mi az a ML-folyamat?
+
+A ML-folyamatok segítségével optimalizálhatja a munkafolyamatot egyszerűséggel, gyorsasággal, hordozhatósággal és újbóli használattal. Azure Machine Learningekkel rendelkező folyamatok létrehozásakor az infrastruktúra és az automatizálás helyett a szakértelemre, a gépi tanulásra koncentrálhat.
+
+A ML-folyamatok több lépésbőlállnak, amelyek a folyamat különböző számítási egységei. Az egyes lépések egymástól függetlenül futtathatók, és elkülönített számítási erőforrásokat is használhatnak. Ez lehetővé teszi, hogy egyszerre több adatszakértő is működjön ugyanazon a folyamaton, és ne legyenek túlterhelt számítási erőforrások, és az egyes lépésekhez egyszerűen különböző számítási típusokat/méreteket kell használni.
+
+> [!TIP]
+> A ML-folyamatok a modellek betanításakor használhatnak futtatási konfigurációt vagy becslések.
+
+Míg a ML-folyamatok képesek betanítani a modelleket, a betanítás előtt is előkészítheti a modelleket, és üzembe helyezheti a modelleket. A folyamatok egyik elsődleges használati esete a Batch pontozása. További információkért lásd [: folyamatok: Optimalizálja a gépi tanulási munkafolyamatokat](concept-ml-pipelines.md).
+
 ## <a name="set-up-in-python"></a>Beállítás a Pythonban
 
 Az alábbi lépésekkel konfigurálhatja ezeket a számítási célokat:
@@ -315,7 +334,7 @@ Az előző lépések végrehajtásával tekintheti meg a számítási célok lis
     >[!NOTE]
     >Azure Machine Learning a számítás az egyetlen felügyelt számítási erőforrás, amelyet a Azure Portal hozhat létre.  Az összes többi számítási erőforrás csatolható a létrehozásuk után.
 
-1. Töltse ki az űrlapot. Adja meg a szükséges tulajdonságokat, különösen a virtuálisgép-családot, valamint a számítás felgyorsításához használni kívánt **csomópontok maximális** értékét.  
+1. Töltse ki az űrlapot. Adja meg a szükséges tulajdonságokat, különösen avirtuálisgép-családot, valamint a számítás felgyorsításához használni kívánt **csomópontok maximális** értékét.  
 
     ![Űrlap kitöltése](./media/how-to-set-up-training-targets/add-compute-form.png) 
 
@@ -340,7 +359,7 @@ A számítási célok listájának megtekintéséhez kövesse a fentebb ismertet
 
 1. Számítási cél hozzáadásához válassza a pluszjelet (+). 
 1. Adja meg a számítási cél nevét. 
-1. Válassza ki a betanításhoz csatolni kívánt számítási típust:
+1. Válassza ki a betanításhoz csatolni kívánt számításitípust:
 
     > [!IMPORTANT]
     > Nem minden számítási típus csatlakoztatható a Azure Portal. A képzéshez jelenleg használható számítási típusok a következők:

@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Edge a Linux rendszerre telepíthető Windows |} A Microsoft Docs
-description: A Windows 10-es, a Windows Server és a Windows IoT Core Linux-tárolókhoz az Azure IoT Edge telepítési utasításokat
+title: A Linux rendszerhez készült Azure IoT Edge telepítése Windows rendszeren | Microsoft Docs
+description: A Linux-tárolók telepítési útmutatója a Windows 10, a Windows Server és a Windows IoT Core rendszeren Azure IoT Edge
 author: kgremban
 manager: philmea
 ms.reviewer: veyalla
@@ -9,92 +9,92 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: b7386cbbe18d7e05c2fbffb96f6214b468956192
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d3586c571c2d70034f10cb3e1efd9242d6a1023
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66151700"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986963"
 ---
-# <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Windows, Linux-tárolókat futtathat IoT Edge használata
+# <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>A Windows IoT Edge használata Linux-tárolók futtatásához
 
-Tesztelje IoT Edge-modulok Windows gépen a Linux rendszerű eszközök számára. 
+Windows rendszerű számítógépeken tesztelheti a Linux-eszközökhöz készült IoT Edge modulokat. 
 
-Éles forgatókönyvekben Windows-eszközök csak Windows-tárolók futtatni. Viszont fejlesztési gyakran előfordul, hogy egy Windows-számítógép segítségével hozhat létre az IoT Edge-modulokat Linux rendszerű eszközök. Az IoT Edge-futtatókörnyezet, a Windows lehetővé teszi, hogy a Linux-tárolókat futtathat **teszteléshez és fejlesztéshez** céljából. 
+Éles környezetben a Windows-eszközök csak Windows-tárolókat futtathatnak. Egy gyakori fejlesztési forgatókönyv azonban egy Windows-számítógép használata IoT Edge modulok Linux-eszközökhöz való létrehozásához. A Windows IoT Edge Runtime lehetővé teszi, hogy Linux-tárolókat futtasson **tesztelési és fejlesztési** célokra. 
 
-Ez a cikk a Linux-tárolók használata a Windows x64 (Intel vagy AMD) az Azure IoT Edge-futtatókörnyezet telepítésének lépéseit sorolja fel rendszer. További információ az IoT Edge telepítője, beleértve a telepítési paraméterek részleteit: [telepítse az Azure IoT Edge-futtatókörnyezet Windows](how-to-install-iot-edge-windows.md).
+Ez a cikk azokat a lépéseket ismerteti, amelyekkel telepítheti a Azure IoT Edge futtatókörnyezetet Linux-tárolók használatával a Windows x64 (AMD/Intel) rendszeren. Ha többet szeretne megtudni a IoT Edge Runtime telepítőről, beleértve az összes telepítési paraméter részleteit, tekintse meg [a Azure IoT Edge futtatókörnyezet telepítése Windows](how-to-install-iot-edge-windows.md)rendszeren című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben a szakaszban használja, tekintse át, hogy a Windows-eszköz IoT Edge is támogatják-e, és előkészítéséhez, telepítés előtt egy tároló-motor. 
+Ebből a szakaszból megtekintheti, hogy a Windows-eszköz támogatja-e a IoT Edget, és hogy a telepítés előtt előkészítse-e a tároló motorját. 
 
 ### <a name="supported-windows-versions"></a>Támogatott Windows-verziók
 
-Az Azure IoT Edge a Linux-tárolók futtassa az alábbi Windows-verziók: 
-* A Windows 10 Évfordulós frissítés (build 14393) vagy újabb
+A Linux-tárolók Azure IoT Edge a Windows következő verzióin futtathatók: 
+* Windows 10 évfordulós frissítés (14393-es Build) vagy újabb
 * Windows Server 2016 vagy újabb
 
-Mit tartalmaz az IoT Edge a legújabb verzióra további információ: [Azure IoT Edge-kiadások](https://github.com/Azure/azure-iotedge/releases).
+A IoT Edge legújabb verziójában található további tudnivalókat lásd: [Azure IoT Edge kiadások](https://github.com/Azure/azure-iotedge/releases).
 
-Ha szeretné telepíteni az IoT Edge egy virtuális gépen, beágyazott virtualizálás engedélyezése, és legalább 2 GB memóriát lefoglalni. Beágyazott virtualizálás engedélyezése hogyan eltér attól függően, a hipervizor használatát. A Hyper-V a 2. generációs virtuális gépek beágyazott virtualizálás alapértelmezés szerint engedélyezve. A VMWare van egy ki-/ bekapcsolása a virtuális gépen a funkció engedélyezéséhez. 
+Ha virtuális gépen szeretné telepíteni a IoT Edget, engedélyezze a beágyazott virtualizációt, és foglaljon le legalább 2 GB memóriát. A beágyazott virtualizálás engedélyezése a használt hypervisortól függően eltérő. A Hyper-V esetében a 2. generációs virtuális gépekhez alapértelmezés szerint engedélyezve van a beágyazott virtualizálás. A VMWare esetében van egy váltógomb, amely engedélyezi a szolgáltatást a virtuális gépen. 
 
-### <a name="prepare-the-container-engine"></a>A tároló motor előkészítése 
+### <a name="prepare-the-container-engine"></a>A tároló motorjának előkészítése 
 
-Az Azure IoT Edge támaszkodik egy [OCI-kompatibilis](https://www.opencontainers.org/) container-motor. A legnagyobb konfiguráció közötti különbség Windows és Linux-tárolókat futtat egy Windows-gép, hogy az IoT Edge telepítése magában foglalja egy Windows-tároló modult, de meg kell adnia a saját futásidejű Linux-tárolók esetén az IoT Edge telepítése előtt. 
+A Azure IoT Edge egy [OCI-kompatibilis](https://www.opencontainers.org/) tároló motorra támaszkodik. A Windows-és Linux-tárolók Windows-gépen való futtatása közötti legnagyobb különbség az, hogy a IoT Edge telepítés tartalmaz egy Windows Container Runtime-t, de a IoT Edge telepítése előtt meg kell adnia a Linux-tárolók saját futtatókörnyezetét. 
 
-Egy Windows-gép fejlesztéséhez és teszteléséhez a tárolók a Linux rendszerű eszközök beállításához használhatja [Docker asztali](https://www.docker.com/docker-windows) a tároló motorként. Telepítheti a Dockert, és konfigurálja úgy, hogy kell [Linux-tárolók használata](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers) IoT Edge telepítése előtt.  
+Egy Windows rendszerű gép létrehozásához és a Linux-eszközökhöz készült tárolók teszteléséhez [](https://www.docker.com/docker-windows) használhatja a Docker Desktopot a tároló motorként. A IoT Edge telepítése előtt telepítenie kell a Docker-t, és konfigurálnia kell a [Linux-tárolók használatát](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers) .  
 
-Ha az IoT Edge-eszközt egy Windows-számítógépen, ellenőrizze, hogy megfelel-e a [rendszerkövetelmények](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) Hyper-V.
+Ha a IoT Edge eszköz egy Windows rendszerű számítógép, ellenőrizze, hogy az [](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) megfelel-e a Hyper-V rendszerkövetelményeinek.
 
-## <a name="install-iot-edge-on-a-new-device"></a>IoT Edge egy új eszköz telepítése
+## <a name="install-iot-edge-on-a-new-device"></a>IoT Edge telepítése új eszközre
 
 >[!NOTE]
 >Az Azure IoT Edge szoftvercsomagok feltételei vonatkoznak rá a licencet (a címtárban licenccel) a csomagokban található. Kérjük, olvassa el a licencfeltételeket, a csomag használata előtt. Az üzembe helyezése és használata a csomag jelent a feltételek elfogadása. Ha nem fogadja el a licencfeltételeket, ne használja a csomag.
 
-Egy PowerShell-szkript letölti és telepíti az Azure IoT Edge biztonsági démon. A biztonsági démon ezután elindítja az első két futásidejű modulok, az IoT Edge ügynök, amely lehetővé teszi az egyéb modulok távoli telepítések. 
+A PowerShell-parancsfájlok letöltik és telepítik a Azure IoT Edge biztonsági démont. A biztonsági démon ezután elindítja az első két futásidejű modult, a IoT Edge ügynököt, amely lehetővé teszi más modulok távoli központi telepítését. 
 
-Ha egy eszköz először telepíti az IoT Edge-futtatókörnyezet, kell biztosítsa az eszköz IoT hubról identitást. Egy adott IoT Edge-eszköz kiépítése az IoT hub által biztosított eszközök kapcsolatok karakterlánc segítségével manuálisan. Másik lehetőségként használhatja a Device Provisioning Service-eszközök automatikus kiépítésére, amely akkor hasznos, ha sok eszköz beállításához van. 
+Amikor első alkalommal telepíti a IoT Edge futtatókörnyezetet az eszközön, az eszközt egy IoT hub identitásával kell kiépíteni. Egy IoT Edge eszköz manuálisan is kiépíthető az IoT hub által biztosított eszköz-kapcsolati karakterlánc használatával. Vagy az eszközök kiépítési szolgáltatásával automatikusan kiépítheti az eszközöket, ami hasznos lehet, ha több eszköz is be van állítva. 
 
-További információ a különböző telepítési lehetőségei és a paraméterek a cikk [telepítse az Azure IoT Edge-futtatókörnyezet Windows](how-to-install-iot-edge-windows.md). Miután telepítette és konfigurálta a Linux-tárolók Docker Desktop, a telepítés fő különbség a Linux-nyilatkozik a **- ContainerOs** paraméter. Példa: 
+A különböző telepítési lehetőségekről és paraméterekről további információt a [Azure IoT Edge futtatókörnyezet telepítése Windows rendszeren](how-to-install-iot-edge-windows.md)című cikkben talál. Miután telepítette és konfigurálta a Docker Desktopot a Linux-tárolók számára, a fő telepítési különbség a Linux és a **-ContainerOs** paraméter deklarálása. Példa: 
 
-1. Ha még nem tette, egy új IoT Edge-eszköz regisztrálása, és az eszköz kapcsolati karakterláncának lekérése. Másolja a kapcsolati karakterláncot, ez a rész későbbi használat céljából. Ezt a lépést a következő eszközök használatával is elvégezheti:
+1. Ha még nem tette meg, regisztráljon egy új IoT Edge eszközt, és kérje le az eszköz csatlakoztatási karakterláncát. Másolja a kapcsolódási karakterláncot a szakasz későbbi részében való használatra. Ezt a lépést a következő eszközök használatával végezheti el:
 
    * [Azure Portal](how-to-register-device-portal.md)
    * [Azure CLI](how-to-register-device-cli.md)
    * [Visual Studio Code](how-to-register-device-vscode.md)
 
-2. Futtassa a Powershellt rendszergazdaként.
+2. Futtassa a PowerShellt rendszergazdaként.
 
    >[!NOTE]
-   >PowerShell AMD64 munkamenet használata IoT Edge segítségével, nem (x86) PowerShell telepítéséhez. Ha nem biztos abban, hogy melyik munkamenet típusa használ, futtassa a következő parancsot:
+   >A PowerShell AMD64-munkamenetének használatával telepítse a IoT Edge, nem a PowerShellt (x86). Ha nem biztos abban, hogy melyik munkamenet-típust használja, futtassa a következő parancsot:
    >
    >```powershell
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
    >```
 
-3. A **üzembe helyezés – IoTEdge** parancs ellenőrzi, hogy a Windows-gépen valamelyik támogatott verzióra, bekapcsolja a tárolók funkciót, és ezután letölti az moby modul (amely nem használható Linux-tárolók) és az IoT Edge-futtatókörnyezet. Windows-tárolók, a parancs alapértelmezés szerint Linux így deklarálható mint a kívánt operációs rendszer. 
+3. Az **Deploy-IoTEdge** parancs ellenőrzi, hogy a Windows rendszerű számítógép támogatott verzióban van-e, bekapcsolja a tárolók szolgáltatást, majd letölti a Moby Runtime (amely nem a Linux-tárolók esetében használatos) és a IoT Edge futtatókörnyezet. A parancs alapértelmezés szerint a Windows-tárolókat állítja be, ezért deklarálja a Linux-t a kívánt tároló operációs rendszerként. 
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge -ContainerOs Linux
    ```
 
-4. Ezen a ponton IoT Core-eszközök automatikus újraindítását. Egyéb Windows 10-es vagy Windows Server-eszközök késztethetik, újra kell indítani. Ha igen, most indítsa újra az eszközt. Ha az eszköz készen áll, PowerShell futtatása rendszergazdaként újra.
+4. Ezen a ponton a IoT Core-eszközök automatikusan újraindulnak. Előfordulhat, hogy a Windows 10 vagy Windows Server rendszerű eszközök újraindítását kérik. Ha igen, indítsa újra az eszközt. Ha az eszköz elkészült, futtassa újra a PowerShellt rendszergazdaként.
 
-5. A **Initialize-IoTEdge** parancsot az IoT Edge-futtatókörnyezet konfigurálása a gépen. A parancs alapértelmezés szerint az eszköz kapcsolati karakterlánc manuális kiépítési. Deklarálja Linux, a kívánt operációs rendszer újra. 
+5. Az **inicializálás-IoTEdge** parancs konfigurálja a IoT Edge futtatókörnyezetet a gépen. A parancs alapértelmezett értéke a manuális kiépítés egy eszköz-kapcsolódási karakterlánccal. A Linux-t a kívánt tároló operációs rendszer megadásával deklaráljuk. 
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -ContainerOs Linux
    ```
 
-6. Amikor a rendszer kéri, adja meg az eszköz kapcsolati karakterláncát, amely az 1. lépésben lekért. Az eszköz kapcsolati karakterláncának társítja a fizikai eszköz az IoT Hub-Eszközazonosító. 
+6. Ha a rendszer kéri, adja meg az 1. lépésben lekért eszköz-kapcsolódási karakterláncot. Az eszköz-csatlakoztatási karakterlánc a fizikai eszközt a IoT Hub eszköz-azonosítójával társítja. 
 
-   Az eszköz kapcsolati karakterláncának formátuma a következő vesz igénybe, és nem tartalmazhat idézőjelek közé: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   Az eszköz-kapcsolatok karakterlánca a következő formátumot veszi figyelembe, és nem tartalmazhat idézőjeleket:`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
 ## <a name="verify-successful-installation"></a>A sikeres telepítésének ellenőrzése
 
-Ellenőrizze az IoT Edge-szolgáltatás állapotát. Futtatásával kell szerepelnie.  
+Ellenőrizze az IoT Edge-szolgáltatás állapotát. A lista futtatásaként kell szerepelnie.  
 
 ```powershell
 Get-Service iotedge
@@ -106,7 +106,8 @@ Vizsgálja meg a szolgáltatási naplók az elmúlt 5 percben.
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Futó modulok listája. Egy új telepítést követően a futó van megjelennie csak modul **edgeAgent**. Miután [üzembe helyezése IoT Edge-modulok](how-to-deploy-modules-portal.md), mások láthatja. 
+Futó modulok listája. Új telepítés után az egyetlen modulnak kell megjelennie a **edgeAgent**. A [IoT Edge-modulok első üzembe helyezése](how-to-deploy-modules-portal.md) után a **edgeHub**másik rendszermodulja is elindul az eszközön. 
+
 
 ```powershell
 iotedge list
@@ -116,6 +117,6 @@ iotedge list
 
 Most, hogy az IoT Edge-eszköz kiosztva a modul telepítve van, [üzembe helyezése IoT Edge-modulok](how-to-deploy-modules-portal.md).
 
-Ha az IoT Edge megfelelően telepítése problémák merülnek fel, tekintse meg a [hibaelhárítási](troubleshoot.md) lapot.
+Ha nem sikerül a IoT Edge megfelelően telepíteni, tekintse meg a [hibaelhárítási](troubleshoot.md) oldalt.
 
-Egy meglévő telepítéshez az IoT Edge a legújabb verzióra frissítéséhez lásd [az IoT Edge biztonsági démon és a futtatókörnyezet frissítése](how-to-update-iot-edge.md).
+Ha egy meglévő telepítést szeretne frissíteni a IoT Edge legújabb verziójára, tekintse meg [a IoT Edge biztonsági démon és futtatókörnyezet frissítése](how-to-update-iot-edge.md)című témakört.

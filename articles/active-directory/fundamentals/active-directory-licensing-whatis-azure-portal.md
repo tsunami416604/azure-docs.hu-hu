@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a89443062f7d5cc697e83cc4039d0f3a47ad3077
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a455f0e1959ad496a04f531cc0c3ece240c757ad
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561853"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987153"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Mit jelent a Csoportalapú licencelés az Azure Active Directoryban?
 
@@ -32,7 +32,7 @@ Ezen kihívások kezelésére biztosítja az Azure AD a csoportalapú licencelé
 ## <a name="licensing-requirements"></a>Licencelési követelmények
 A csoport alapú licencelés használatához a következő licencek egyike szükséges:
 
-- Fizetős vagy próbaverziós előfizetés alapszintű Azure AD és újabb verziókhoz
+- Fizetős vagy próbaverziós előfizetés prémium szintű Azure AD P1 és újabb rendszerekhez
 
 - Fizetős vagy próbaverziós Office 365 Enterprise E3 vagy Office 365 a3 vagy Office 365 GCC G3 vagy újabb verzió
 

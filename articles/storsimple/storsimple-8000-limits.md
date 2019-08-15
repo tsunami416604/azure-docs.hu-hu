@@ -1,6 +1,6 @@
 ---
-title: A StorSimple 8000 sorozat rendszer korlátok |} A Microsoft Docs
-description: Ismerteti a rendszer korlátok és az ajánlott méreteket a StorSimple 8000 sorozat összetevők és -kapcsolatokhoz.
+title: StorSimple 8000 sorozatú rendszerkorlátok | Microsoft Docs
+description: Leírja a rendszerkorlátokat és az ajánlott méreteket a StorSimple 8000 sorozat összetevőihez és kapcsolataihoz.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,49 +15,51 @@ ms.workload: TBD
 ms.date: 03/28/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0053f950b36351b06d08630cbf9977f53f2ed47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 70f2d9542082ddf7ecf1d1e7361b0ecdb14c5ef8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721694"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963375"
 ---
-# <a name="what-are-storsimple-8000-series-system-limits"></a>Mik a StorSimple 8000 sorozat rendszer korlátai?
+# <a name="what-are-storsimple-8000-series-system-limits"></a>Mi a StorSimple 8000 Series rendszer korlátai?
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>Áttekintés
 
-A StorSimple méretezhető és rugalmas tárolási nyújt az adatközpontban. Azonban bizonyos korlátozások érvényesek, amelyek akkor érdemes szem előtt tartani, tervezése, telepítése és üzemeltetése a StorSimple-megoldásokra. Az alábbi táblázat ismerteti ezeket a korlátokat, és javaslatokat is tartalmaz, hogy kihasználhassa a StorSimple-megoldásokra is kap.
+A StorSimple méretezhető és rugalmas tárolási lehetőséget biztosít az adatközpont számára. A StorSimple-megoldás megtervezésekor, üzembe helyezése és üzemeltetése során azonban bizonyos korlátokat kell szem előtt tartania. A következő táblázat ismerteti ezeket a korlátozásokat, és néhány javaslatot tartalmaz, hogy a lehető legtöbbet hozza ki a StorSimple-megoldásból.
 
 | Korlátazonosító | Korlát | Megjegyzések |
 | --- | --- | --- |
-| Tárfiók hitelesítő adatainak maximális száma |64 | |
-| Kötettárolók maximális száma |64 | |
+| A Storage-fiók hitelesítő adatainak maximális száma |64 | |
+| Mennyiségi tárolók maximális száma |64 | |
 | Kötetek maximális száma |255 | |
-| A gyors helyi kötetek maximális száma |32 | |
-| Az ütemezések sávszélességsablon / maximális száma |168 |Óránként, naponta, a hét (24 * 7) ütemezését. |
-| A fizikai eszközökön a rétegzett kötetek maximális mérete |A 8100-as és 8600-as 64 TB |8100-as és 8600-as olyan fizikai eszközöket. |
-| Az Azure-beli virtuális eszközökön a rétegzett kötetek maximális mérete |30 TB for 8010 <br></br> A 8020-64 TB |8010 és 8020 a virtuális eszközök az Azure-ban, illetve használó Standard Storage és a Premium Storage. |
-| A fizikai eszközökön helyileg rögzített kötetet maximális mérete |A 8100-as 8,5 TB <br></br> A 8600-as 22,5 TB |8100-as és 8600-as olyan fizikai eszközöket. |
+| A helyileg rögzített kötetek maximális száma |32 | |
+| Az ütemtervek maximális száma sávszélesség-sablon alapján |168 |Minden órában, a hét minden napján (24 * 7) ütemezett ütemterv. |
+| A rétegű kötetek maximális mérete fizikai eszközökön |64 TB 8100 és 8600 |8100 és 8600 fizikai eszközök. |
+| Rétegekből álló kötetek maximális mérete az Azure-ban virtuális eszközökön |30 TB for 8010 <br></br> 64 TB 8020 |a 8010-es és a 8020-es virtuális eszközök az Azure-ban standard szintű tárolást és Premium Storage-t használnak. |
+| Egy helyileg rögzített kötet maximális mérete fizikai eszközökön |8,5 TB 8100 <br></br> 22,5 TB 8600 |8100 és 8600 fizikai eszközök. |
 | ISCSI-kapcsolatok maximális száma |512 | |
-| Az iSCSI kezdeményezők kapcsolatok maximális száma |512 | |
-| Eszközönként hozzáférés-vezérlési rekordok maximális száma |64 | |
-| Legfeljebb ennyi kötet biztonsági mentési házirend szerint |20 | |
-| (A biztonsági mentési szabályzat) ütemezés szerint megőrzött biztonsági mentések maximális száma |64 | |
-| Biztonsági mentési házirend szerint ütemezések maximális száma |10 | |
-| A megtartható kötetenként bármilyen típusú pillanatképek maximális száma |256 |Ez a szám magában a helyi pillanatképeket és felhőbeli pillanatképeket. |
-| Bármilyen eszközön használható a pillanatképek maximális száma |10,000 | |
-| Biztonsági mentési és visszaállítási esetében a párhuzamosan feldolgozható, vagy a klónozáshoz kötetek maximális számát |16 |<ul><li>Ha több mint 16 köteteket, azok feldolgozása sorrendben történik amint elérhetővé válnak a feldolgozási tárolóhelyek.</li><li>Új biztonsági másolatot egy klónozott vagy visszaállított a rétegzett kötetek nem fordulhat elő, amíg a művelet be nem fejeződik. Egy helyi kötet, azonban biztonsági mentések engedélyezettek után a kötet online állapotban.</li></ul> |
-| Visszaállítás és helyreállítás ideje a rétegzett kötetek klónozása |< 2 perc |<ul><li>A kötet visszaállítási vagy -klónozási művelet, függetlenül a kötet mérete 2 percen belül legyen elérhető.</li><li>A kötet teljesítmény kezdetben lehet lassabb, mint a szokásos módon az adatokat és a metaadatokat a legtöbb továbbra is a felhőben található. Teljesítmény, a StorSimple-eszközre a felhőből adatfolyamok növelhető.</li><li>Metaadatok letöltése teljes ideje a kiosztott kötet méretétől függ. A háttérben a díj 5 perc TB-nyi lefoglalt kötet adatait az eszköz automatikusan megadhatjuk a metaadatokat. Ez a díjszabás hatással lehet a felhőbe internetes sávszélességet.</li><li>A visszaállítás vagy a Klónozás befejeződött, az eszközön lévő összes metaadatot esetén.</li><li>Biztonsági mentési művelet nem hajtható végre, amíg a visszaállítás vagy Klónozás teljesen kész. |
-| Helyreállítás ideje a gyors helyi kötetek visszaállítása |< 2 perc |<ul><li>A köteten a visszaállítási művelet, függetlenül a kötet mérete 2 percen belül legyen elérhető.</li><li>A kötet teljesítmény kezdetben lehet lassabb, mint a szokásos módon az adatokat és a metaadatokat a legtöbb továbbra is a felhőben található. Teljesítmény, a StorSimple-eszközre a felhőből adatfolyamok növelhető.</li><li>Metaadatok letöltése teljes ideje a kiosztott kötet méretétől függ. A háttérben a díj 5 perc TB-nyi lefoglalt kötet adatait az eszköz automatikusan megadhatjuk a metaadatokat. Ez a díjszabás hatással lehet a felhőbe internetes sávszélességet.</li><li>Ellentétben a rétegzett kötetek, a helyileg rögzített kötetekhez a kötet adatait is tölt le helyileg az eszközön. A visszaállítási művelet befejeződött, ha a kötet adatait a rendszer visszaállította az eszközön.</li><li>A visszaállítási műveleteket hosszú lehet. A visszaállítás elvégzéséhez szükséges teljes idő függ az üzembe helyezett helyi kötet, az internetes sávszélességet és az eszközön a meglévő adatok méretét. A helyileg rögzített kötetet a biztonsági mentési műveletek engedélyezettek, amíg a visszaállítási művelet folyamatban van. |
-| A felhőbeli pillanatképekkel feldolgozási sebessége |15 perc/TB |<ul><li>Minimális idő a felhő a pillanatkép-feltöltéshez, biztonsági mentéshez lefoglalt adatmennyiség TB / kész. </li><li> Ezúttal a pillanatkép feltöltési időpontot, amely hatással van az internetes sávszélesség a felhőbe való hozzáadásával teljes felhőbeli pillanatkép idő kiszámítása. |
-| Maximális írási/olvasási átviteli sebesség (ha az SSD-réteg által szolgáltatott) * |920/720 MB/s az egyetlen 10 GbE hálózati adapter |Legfeljebb 2 x az MPIO-t, és két hálózati adaptert. |
-| Maximális írási/olvasási átviteli sebesség (Ha a HDD-réteg által szolgáltatott) * |120/250 MB/s | |
-| Maximális írási/olvasási átviteli sebesség (Ha a felhő szintjén szolgáltatja) * Update 3 és újabb ** |40/60 MB/s a rétegzett kötet<br><br>60/80 MB/s a rétegzett köteteket a kötet létrehozása során a archiválási jelölőnégyzetet |Olvasás átviteli ügyfelek létrehozása és karbantartása elegendő i/o-várólistamélységének függ. <br><br>A sebesség érhető el az alapul szolgáló használt tárfiók sebességétől függ. |
+| A kezdeményezők által létesített iSCSI-kapcsolatok maximális száma |512 | |
+| Hozzáférés-vezérlési rekordok maximális száma eszközönként |64 | |
+| Kötetek maximális száma biztonsági mentési házirend szerint |20 | |
+| Az ütemezés szerint megőrzött biztonsági másolatok maximális száma (biztonsági mentési házirendben) |64 | |
+| Ütemezett biztonsági mentési szabályzatok maximális száma |10 | |
+| A köteten megőrzött bármilyen típusú Pillanatképek maximális száma |256 |Ez a szám helyi pillanatképeket és Felhőbeli pillanatképeket tartalmaz. |
+| Bármely eszközön megtalálható Pillanatképek maximális száma |10,000 | |
+| A biztonsági mentéshez, visszaállításhoz vagy klónozáshoz párhuzamosan feldolgozható kötetek maximális száma |16 |<ul><li>Ha a rendszer több mint 16 kötetet használ fel, a feldolgozási pontok válnak elérhetővé.</li><li>A klónozott vagy visszaállított kötetek új biztonsági mentései nem végezhetők el, amíg a művelet be nem fejeződik. Helyi kötet esetén azonban a biztonsági mentések a kötet online állapotának engedélyezése után engedélyezettek.</li></ul> |
+| A biztonsági mentés és a klónozás visszaszerzési ideje a többplatformos kötetek esetében |< 2 perc |<ul><li>A kötet a visszaállítási vagy a klónozási művelettől számított 2 percen belül elérhetővé válik, a kötet méretétől függetlenül.</li><li>A kötet teljesítménye kezdetben lassabb lehet a normál értéknél, mivel a legtöbb adat és metaadatok a felhőben maradnak. A teljesítmény növelheti a felhőből a StorSimple-eszközre irányuló adatforgalmat.</li><li>A metaadatok letöltésének teljes ideje a lefoglalt kötet méretétől függ. A metaadatokat a rendszer automatikusan a háttérbe helyezi az eszközön, a lefoglalt mennyiségi adatokhoz tartozó TB-onként 5 perces sebességgel. Ezt a sebességet a felhőre irányuló internetes sávszélesség is érintheti.</li><li>A visszaállítási vagy klónozási művelet akkor fejeződik be, amikor az összes metaadat az eszközön található.</li><li>A biztonsági mentési műveletek nem hajthatók végre, amíg a visszaállítási vagy a klónozási művelet teljesen be nem fejeződik. |
+| A helyreállítás ideje a helyileg rögzített kötetek esetében |< 2 perc |<ul><li>A kötet a visszaállítási művelettől számított 2 percen belül elérhetővé válik, a kötet méretétől függetlenül.</li><li>A kötet teljesítménye kezdetben lassabb lehet a normál értéknél, mivel a legtöbb adat és metaadatok a felhőben maradnak. A teljesítmény növelheti a felhőből a StorSimple-eszközre irányuló adatforgalmat.</li><li>A metaadatok letöltésének teljes ideje a lefoglalt kötet méretétől függ. A metaadatokat a rendszer automatikusan a háttérbe helyezi az eszközön, a lefoglalt mennyiségi adatokhoz tartozó TB-onként 5 perces sebességgel. Ezt a sebességet a felhőre irányuló internetes sávszélesség is érintheti.</li><li>A többhelyes kötetektől eltérően a helyileg rögzített kötetek esetében a köteten tárolt adatmennyiségek is helyileg letöltődnek az eszközön. A visszaállítási művelet akkor fejeződik be, amikor az összes kötetre vonatkozó adattal bekerült az eszközre.</li><li>Előfordulhat, hogy a visszaállítási műveletek hosszúak. A visszaállítás befejezésének teljes ideje a kiépített helyi kötet méretétől, az internetes sávszélességtől és az eszközön lévő adatoktól függ. Ha a visszaállítási művelet folyamatban van, a helyileg rögzített köteten lévő biztonsági mentési műveletek engedélyezettek. |
+| Felhőbeli Pillanatképek feldolgozási sebessége |15 perc/TB |<ul><li>A Felhőbeli pillanatkép feltöltésre való felkészülésének minimális ideje, a biztonsági mentésben foglalt mennyiségi adatok száma (TB). </li><li> A Felhőbeli pillanatképek teljes időpontját a rendszer a pillanatkép feltöltési idejére való hozzáadásával számítja ki, amelyet az Internet-sávszélesség a felhőben érint. |
+| Az ügyfél olvasási/írási sebességének maximális sebessége (az SSD-szintjéről kiszolgált) * |920/720 MB/s egyetlen 10 GbE hálózati adapterrel |Legfeljebb 2x az MPIO-vel és két hálózati adapterrel. |
+| Az ügyfél olvasási/írási sebességének maximális sebessége (a HDD-szinten kiszolgált) * |120/250 MB/s | |
+| Az ügyfél olvasási/írási sebességének maximális sebessége (a felhő szintjéről kiszolgált) * a 3. és újabb verziók esetében * * |40/60 MB/s a lépcsőzetes kötetek esetében<br><br>60/80 MB/s a kötet létrehozásakor kiválasztott archiválási lehetőséggel rendelkező, lépcsőzetes kötetek esetében |Az olvasási sebesség a megfelelő I/O-várólista mélységét generáló és fenntartó ügyfelektől függ. <br><br>Az elért sebesség a mögöttes Storage-fiók sebességétől függ. |
 
-&#42;Maximális átviteli sebesség i/o-típusonként 100 %-os olvasási és írási 100 %-os forgatókönyvek mérték. Tényleges átviteli sebesség lehet alacsonyabb, és függ az i/o használhatók vegyesen és hálózati feltételek.
+&#42;Az I/O-típusok maximális átviteli sebességét 100%-os olvasási és 100 százalékos írási forgatókönyvek alapján mérjük. A tényleges átviteli sebesség lehet alacsonyabb, és az I/O-vegyes és a hálózati feltételektől függ.
 
-&#42;&#42;3. frissítés előtti teljesítményszámokhoz alacsonyabb lehet.
+&#42;&#42;Előfordulhat, hogy a 3. frissítés előtti teljesítmények száma alacsonyabb.
 
 ## <a name="next-steps"></a>További lépések
-Tekintse át a [StorSimple követelményei](storsimple-8000-system-requirements.md).
+Tekintse át a [StorSimple](storsimple-8000-system-requirements.md)rendszerkövetelményeit.
 

@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 3ad599182191e41ea43d38260692a7ab46e1af6f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f3386d04cd3316b38a094524d0d5d4f3c5ab36bb
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844998"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986841"
 ---
 # <a name="use-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>Az egyéni tartományokkal rendelkező Blobok elérése a Azure CDN használatával HTTPS-kapcsolaton keresztül
 
@@ -40,7 +40,7 @@ Ha engedélyezni szeretné a HTTPS-t az egyéni blob Storage-végponthoz, tegye 
 
 ## <a name="shared-access-signatures"></a>Közös hozzáférésű aláírások
 
-Alapértelmezés szerint a blob Storage-végpontok nem engedélyezik a névtelen olvasási hozzáférést. Ha a blob Storage-végpont úgy van konfigurálva, hogy a névtelen olvasási hozzáférés ne legyen engedélyezve, adjon meg egy [közös hozzáférési aláírási](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) jogkivonatot az egyéni tartományhoz tartozó minden kérelemben. További információkért lás a [tárolók és blobok névtelen olvasási hozzáférésének kezelésével](storage-manage-access-to-resources.md) foglalkozó témakört.
+Alapértelmezés szerint a blob Storage-végpontok nem engedélyezik a névtelen olvasási hozzáférést. Ha a blob Storage-végpont úgy van konfigurálva, hogy a névtelen olvasási hozzáférés ne legyen engedélyezve, adjon meg egy [közös hozzáférési aláírási](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) jogkivonatot az egyéni tartományhoz tartozó minden kérelemben. További információkért lás a [tárolók és blobok névtelen olvasási hozzáférésének kezelésével](storage-manage-access-to-resources.md) foglalkozó témakört.
 
 A Azure CDN nem veszi figyelembe a közös hozzáférésű aláírási jogkivonathoz hozzáadott korlátozásokat. Például az összes megosztott hozzáférés aláírási jogkivonata lejár. Továbbra is elérheti a tartalmakat egy lejárt közös hozzáférési aláírással, amíg a tartalmat el nem távolítja az Azure CDN peremhálózati csomópontokból. A gyorsítótár válaszfejlécének beállításával szabályozható, hogy a rendszer meddig tárolja az adatokat az Azure CDN-ben. További információ: az [Azure Storage-Blobok lejáratának kezelése Azure CDNban](../../cdn/cdn-manage-expiration-of-blob-content.md).
 
