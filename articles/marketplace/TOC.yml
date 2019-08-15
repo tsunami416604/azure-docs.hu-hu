@@ -461,6 +461,8 @@
               href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
             - name: SaaS Fulfillment API-k – GYIK
               href: ./partner-center-portal/saas-fulfillment-apis-faq.md
+        - name: Az ajánlat kipróbálása
+          href: ./partner-center-portal/test-drive.md
     - name: Közzététel állapota
       href: ./partner-center-portal/publishing-status.md
     - name: Létező ajánlatok frissítése

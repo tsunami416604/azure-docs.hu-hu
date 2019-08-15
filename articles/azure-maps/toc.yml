@@ -25,6 +25,8 @@
       items:
         - name: Geokerítés beállítása
           href: tutorial-geofence.md
+        - name: Térelemzés
+          href: tutorial-iot-hub-maps.md
 - name: Alapelvek
   items:
     - name: Hitelesítés az Azure Maps használatával

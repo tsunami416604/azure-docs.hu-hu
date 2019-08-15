@@ -20,10 +20,14 @@
       displayName: RBAC
     - name: Az Automation-fiók áthelyezése egy másik előfizetésbe
       href: how-to/move-account.md
+    - name: Az Automation-szolgáltatások előkészítésének automatizálása
+      href: /azure/architecture/cloud-adoption/operations/azure-server-management/onboarding-automation
 - name: Folyamatautomatizálás
   items:
     - name: Hibrid runbook-feldolgozó áttekintése
       href: automation-hybrid-runbook-worker.md
+    - name: Runbook-katalógus
+      href: automation-runbook-gallery.md
     - name: Alapelvek
       items:
         - name: Runbook-típusok
@@ -297,8 +301,6 @@
   items:
     - name: E-mail küldése runbookból a SendGrid használatával
       href: automation-send-email.md
-    - name: Runbook-katalógus
-      href: automation-runbook-gallery.md
     - name: Runbookok monitorozása metrikariasztásokkal
       href: automation-alert-metric.md
     - name: Runbook indítása Azure-riasztásokból

@@ -310,6 +310,8 @@
           href: ./apache-ambari-troubleshoot-fivezerotwo-error.md
         - name: Az Apache Ambari a leállt gazdagépeket és szolgáltatásokat jeleníti meg
           href: ./apache-ambari-troubleshoot-down-hosts-services.md
+        - name: A Data Lake-fájlok nem érhetők el
+          href: ./hdinsight-troubleshoot-data-lake-files.md
         - name: Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: Apache Hadoop HDFS-hibaelhárítás
