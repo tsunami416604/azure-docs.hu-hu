@@ -11,21 +11,21 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 7e88b99cf0ecede64d75b36eafdcc88798e2e4a4
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: a92cb0f3da5058e7ffeee6f47e8cfa26ae291005
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840444"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990564"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
-Megtudhatja, hogyan helyezheti üzembe a gépi tanulási modellt webszolgáltatásként az Azure-felhőben, vagy IoT Edge eszközöket. 
+Megtudhatja, hogyan helyezheti üzembe a gépi tanulási modellt webszolgáltatásként az Azure-felhőben, vagy IoT Edge eszközöket.
 
 A munkafolyamat hasonló, függetlenül attól, hogy [Hol helyezi üzembe](#target) a modellt:
 
 1. Regisztrálja a modellt.
-1. Felkészülés az üzembe helyezésre (az eszközök, a használat, a számítási cél meghatározása)
+1. Felkészülés az üzembe helyezésre (az eszközök, a használat, a számítási cél meghatározása).
 1. A modell üzembe helyezése a számítási célra.
 1. Tesztelje az üzembe helyezett modellt, más néven webszolgáltatást.
 
@@ -33,26 +33,57 @@ Az üzembe helyezési munkafolyamatban részt vevő fogalmakkal kapcsolatos tov�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+- Az Azure Machine Learning szolgáltatás munkaterületén. További információ: [Azure Machine learning szolgáltatás munkaterületének létrehozása](how-to-manage-workspace.md).
+
 - A modell. Ha nem rendelkezik betanított modellel, az oktatóanyagban szereplő & függőségi fájlok modelljét is használhatja [](https://aka.ms/azml-deploy-cloud).
 
 - Az [Azure CLI-bővítmény Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), [Azure Machine learning Python SDK](https://aka.ms/aml-sdk)-hoz vagy a [Azure Machine learning Visual Studio Code bővítményhez](how-to-vscode-tools.md).
 
+## <a name="connect-to-your-workspace"></a>Kapcsolódás a munkaterülethez
+
+A következő kód bemutatja, hogyan csatlakozhat egy Azure Machine Learning szolgáltatási munkaterülethez a helyi fejlesztési környezetbe gyorsítótárazott információk használatával:
+
+**Az SDK használata**
+
+```python
+from azureml.core import Workspace
+ws = Workspace.from_config(path=".file-path/ws_config.json")
+```
+
+Az SDK munkaterülethez való kapcsolódásával kapcsolatos további információkért tekintse meg a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace)-t.
+
+**A parancssori felület használata**
+
+A parancssori felület használatakor `-w` a vagy `--workspace-name` a paraméterrel adhatja meg a parancs munkaterületét.
+
+**A VS Code használata**
+
+A VS Code használatakor a munkaterület grafikus felületen van kiválasztva. További információ: [modellek üzembe helyezése és kezelése](how-to-vscode-tools.md#deploy-and-manage-models) a vs Code bővítmény dokumentációjában.
+
 ## <a id="registermodel"></a>A modell regisztrálása
 
-Egy regisztrált modell logikai tárolója egy vagy több, a modellt alkotó fájlhoz. Ha például több fájlban tárolt modell van, akkor egyetlen modellként regisztrálhatja őket a munkaterületen. A regisztráció után letöltheti vagy telepítheti a regisztrált modellt, és megkapja az összes regisztrált fájlt.
+A regisztrált modell a modellt alkotó egy vagy több fájl logikai tárolója. Ha például több fájlban tárolt modell van, akkor egyetlen modellként regisztrálhatja őket a munkaterületen. A regisztráció után letöltheti vagy telepítheti a regisztrált modellt, és megkapja az összes regisztrált fájlt.
 
-A gépi tanulási modellek regisztrálva vannak a Azure Machine Learning munkaterületen. A modell Azure Machine Learning vagy máshonnan is származhat. Az alábbi példák bemutatják, hogyan regisztrálhat egy modellt a fájlból:
+> [!TIP]
+> Modell regisztrálása esetén a Felhőbeli hely (betanítási Futtatás) vagy egy helyi könyvtár elérési útját adja meg. Ez az elérési út csak a feltöltéshez szükséges fájlok megkeresése a regisztrációs folyamat részeként; nem kell megegyeznie a bejegyzési parancsfájlban használt elérési úttal. További információ: [What is get_model_path](#what-is-get_model_path).
+
+A gépi tanulási modellek regisztrálva vannak a Azure Machine Learning munkaterületen. A modell Azure Machine Learning vagy máshonnan is származhat. Az alábbi példák bemutatják, hogyan regisztrálhat egy modellt:
 
 ### <a name="register-a-model-from-an-experiment-run"></a>Modell regisztrálása kísérlet futtatásával
 
-+ **Scikit – példa az SDK használatával**
+Az ebben a szakaszban szereplő kódrészletek bemutatják, hogyan regisztrálhat egy modellt egy képzési futtatásból:
+
+> [!IMPORTANT]
+> Ezek a kódrészletek feltételezik, hogy korábban már elvégezte a betanítást `run` , és hozzáfér az objektumhoz (SDK-példa) vagy a futtatási azonosító értékét (CLI-példa). A modellek betanításával kapcsolatos további információkért lásd: [számítási célok létrehozása és használata a modell](how-to-set-up-training-targets.md)betanításához.
+
++ **Az SDK használata**
+
   ```python
   model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
   print(model.name, model.id, model.version, sep='\t')
   ```
 
-  > [!TIP]
-  > Ha több fájlt szeretne felvenni a modell-regisztrációba, állítsa `model_path` a fájlokat tartalmazó könyvtárba.
+  A `model_path` a modell Felhőbeli helyét jelöli. Ebben a példában egyetlen fájl elérési útját használjuk. Ha több fájlt szeretne felvenni a modell-regisztrációba, állítsa `model_path` a fájlokat tartalmazó könyvtárba.
 
 + **A parancssori felület használata**
 
@@ -60,42 +91,47 @@ A gépi tanulási modellek regisztrálva vannak a Azure Machine Learning munkate
   az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --run-id myrunid
   ```
 
-  > [!TIP]
-  > Ha több fájlt szeretne felvenni a modell-regisztrációba, állítsa `--asset-path` a fájlokat tartalmazó könyvtárba.
+  [!INCLUDE [install extension](../../../includes/machine-learning-service-install-extension.md)]
+
+  A `--asset-path` a modell Felhőbeli helyét jelöli. Ebben a példában egyetlen fájl elérési útját használjuk. Ha több fájlt szeretne felvenni a modell-regisztrációba, állítsa `--asset-path` a fájlokat tartalmazó könyvtárba.
 
 + **A VS Code használata**
 
   A [vs Code](how-to-vscode-tools.md#deploy-and-manage-models) kiterjesztésű modell-fájlokkal vagy-mappákkal regisztrálja a modelleket.
 
-### <a name="register-an-externally-created-model"></a>Külsőleg létrehozott modell regisztrálása
+### <a name="register-a-model-from-a-local-file"></a>Modell regisztrálása helyi fájlból
+
+A modellhez a modell **helyi elérési útját** biztosítva regisztrálhat. Egy mappát vagy egyetlen fájlt is megadhat. Ezzel a módszerrel regisztrálhatja Azure Machine Learning szolgáltatással betanított modelleket, majd letöltheti vagy Azure Machine Learningn kívül betanított modelleket is.
 
 [!INCLUDE [trusted models](../../../includes/machine-learning-service-trusted-model.md)]
 
-A modell **helyi elérési útját** biztosítva regisztrálhat egy külsőleg létrehozott modellt. Egy mappát vagy egyetlen fájlt is megadhat.
-
 + **ONNX példa a Python SDK-val:**
-  ```python
-  onnx_model_url = "https://www.cntk.ai/OnnxModels/mnist/opset_7/mnist.tar.gz"
-  urllib.request.urlretrieve(onnx_model_url, filename="mnist.tar.gz")
-  !tar xvzf mnist.tar.gz
-  
-  model = Model.register(workspace = ws,
-                         model_path ="mnist/model.onnx",
-                         model_name = "onnx_mnist",
-                         tags = {"onnx": "demo"},
-                         description = "MNIST image classification CNN from ONNX Model Zoo",)
-  ```
 
-  > [!TIP]
-  > Ha több fájlt szeretne felvenni a modell-regisztrációba, állítsa `model_path` a fájlokat tartalmazó könyvtárba.
+    ```python
+    import os
+    import urllib.request
+    from azureml.core import Model
+    # Download model
+    onnx_model_url = "https://www.cntk.ai/OnnxModels/mnist/opset_7/mnist.tar.gz"
+    urllib.request.urlretrieve(onnx_model_url, filename="mnist.tar.gz")
+    os.system('tar xvzf mnist.tar.gz')
+    # Register model
+    model = Model.register(workspace = ws,
+                            model_path ="mnist/model.onnx",
+                            model_name = "onnx_mnist",
+                            tags = {"onnx": "demo"},
+                            description = "MNIST image classification CNN from ONNX Model Zoo",)
+    ```
+
+  Ha több fájlt szeretne felvenni a modell-regisztrációba, állítsa `model_path` a fájlokat tartalmazó könyvtárba.
 
 + **A parancssori felület használata**
+
   ```azurecli-interactive
   az ml model register -n onnx_mnist -p mnist/model.onnx
   ```
 
-  > [!TIP]
-  > Ha több fájlt szeretne felvenni a modell-regisztrációba, állítsa `-p` a fájlokat tartalmazó könyvtárba.
+  Ha több fájlt szeretne felvenni a modell-regisztrációba, állítsa `-p` a fájlokat tartalmazó könyvtárba.
 
 **Becsült idő**: Körülbelül 10 másodperc.
 
@@ -157,7 +193,7 @@ A séma-létrehozás használatához foglalja bele `inference-schema` a csomagot
 
 ##### <a name="example-dependencies-file"></a>Példa a függőségek fájlra
 
-Az alábbi YAML egy Conda-függőségi fájlra mutat példát.
+A következő YAML egy példa a Conda függőségeinek fájlra:
 
 ```YAML
 name: project_environment
@@ -214,7 +250,7 @@ def run(data):
         return error
 ```
 
-Az alábbi példa bemutatja, hogyan határozhatja meg a bemeneti adatokat `<key: value>` szótárként a Dataframe használatával. Ez a módszer a központilag telepített webszolgáltatás Power BI való felhasználására használható (További információ a webszolgáltatásnak[a Power BIból](https://docs.microsoft.com/power-bi/service-machine-learning-integration)történő használatáról):
+Az alábbi példa bemutatja, hogyan határozhatja meg a bemeneti adatokat `<key: value>` szótárként a Dataframe használatával. Ez a módszer a központilag telepített webszolgáltatás Power BI való felhasználására használható (További információ[a webszolgáltatás Power BIból](https://docs.microsoft.com/power-bi/service-machine-learning-integration)való felhasználásáról):
 
 ```python
 import json
@@ -269,7 +305,97 @@ További példák a parancsfájlokra:
 * TensorFlow[https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
 * Kerasz[https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
 * ONNX[https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
-* A bináris adatértékek pontozása: [Webszolgáltatás felhasználása](how-to-consume-web-service.md)
+
+<a id="binary"></a>
+
+#### <a name="binary-data"></a>Bináris adatok
+
+Ha a modell fogad bináris adatot, például egy kép, módosítania kell a `score.py` nyers HTTP-kérelmek fogadásához az üzembe helyezéshez használt fájlt. A nyers adat elfogadásához használja `AMLRequest` az osztályt a bejegyzési parancsfájlban `@rawhttp` , és adja hozzá `run()` a bedekorációt a függvényhez.
+
+Az alábbi példa egy olyan példát `score.py` mutat be, amely a bináris adatmennyiséget fogadja el:
+
+```python
+from azureml.contrib.services.aml_request import AMLRequest, rawhttp
+from azureml.contrib.services.aml_response import AMLResponse
+
+
+def init():
+    print("This is init()")
+
+
+@rawhttp
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        # For this example, just return the URL for GETs
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        # For a real world solution, you would load the data from reqBody
+        # and send to the model. Then return the response.
+
+        # For demonstration purposes, this example just returns the posted data as the response.
+        return AMLResponse(reqBody, 200)
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> Az `AMLRequest` osztály a `azureml.contrib` névtérben található. A névtérben lévő dolgok gyakran változnak, ahogy dolgozunk a szolgáltatás fejlesztésekor. Ennek megfelelően az ebben a névtérben található bármit előzetes verziónak kell tekinteni, és a Microsoft nem támogatja teljes mértékben.
+>
+> Ha ezt a helyi fejlesztési környezetben kell tesztelni, akkor a következő paranccsal telepítheti az összetevőket:
+>
+> ```shell
+> pip install azureml-contrib-services
+> ```
+
+<a id="cors"></a>
+
+#### <a name="cross-origin-resource-sharing-cors"></a>Több eredetű erőforrás-megosztás (CORS)
+
+Az eltérő eredetű erőforrás-megosztás lehetővé teszi, hogy egy weblapon lévő erőforrásokat egy másik tartománytól lehessen kérni. A CORS az ügyfél kérelmével elküldött HTTP-fejlécek alapján működik, és a szolgáltatás válaszával tért vissza. A CORS és az érvényes fejlécekkel kapcsolatos további információkért lásd: az [idegen eredetű erőforrások megosztása](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) a wikipedia-ben.
+
+A modell telepítésének a CORS támogatására való konfigurálásához használja `AMLResponse` a osztályt a bejegyzési parancsfájlban. Ez az osztály lehetővé teszi a fejlécek beállítását a válasz objektumon.
+
+A következő példa a bejegyzési parancsfájlból származó válasz `Access-Control-Allow-Origin` fejlécét állítja be:
+
+```python
+from azureml.contrib.services.aml_response import AMLResponse
+
+def init():
+    print("This is init()")
+
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        # For this example, just return the URL for GETs
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        # For a real world solution, you would load the data from reqBody
+        # and send to the model. Then return the response.
+
+        # For demonstration purposes, this example
+        # adds a header and returns the request body
+        resp = AMLResponse(reqBody, 200)
+        resp.headers['Access-Control-Allow-Origin'] = "http://www.example.com"
+        return resp
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> Az `AMLResponse` osztály a `azureml.contrib` névtérben található. A névtérben lévő dolgok gyakran változnak, ahogy dolgozunk a szolgáltatás fejlesztésekor. Ennek megfelelően az ebben a névtérben található bármit előzetes verziónak kell tekinteni, és a Microsoft nem támogatja teljes mértékben.
+>
+> Ha ezt a helyi fejlesztési környezetben kell tesztelni, akkor a következő paranccsal telepítheti az összetevőket:
+>
+> ```shell
+> pip install azureml-contrib-services
+> ```
 
 ### <a name="2-define-your-inferenceconfig"></a>2. A InferenceConfig meghatározása
 
@@ -324,11 +450,11 @@ Az alábbi táblázat az egyes számítási célkitűzések központi telepíté
 
 ## <a name="deploy-to-target"></a>Üzembe helyezés célhelyre
 
-Az üzembe helyezés során a rendszer a modell (ek) üzembe helyezéséhez használja a következtetések konfigurációjának központi telepítési konfigurációját. A telepítési folyamat a számítási céltól függetlenül hasonló. Az AK-ra való üzembe helyezés némileg eltér, mivel meg kell adnia az AK-fürtre mutató hivatkozást.
+Az üzemelő példány a konfiguráció központi telepítési konfigurációjának használatával helyezi üzembe a modelleket. A telepítési folyamat a számítási céltól függetlenül hasonló. Az AK-ra való üzembe helyezés némileg eltér, mivel meg kell adnia az AK-fürtre mutató hivatkozást.
 
 ### <a id="local"></a>Helyi telepítés
 
-A helyileg történő üzembe helyezéshez a Docker-t **telepíteni** kell a helyi gépre.
+A helyileg történő üzembe helyezéshez a Docker-t telepíteni kell a helyi gépre.
 
 #### <a name="using-the-sdk"></a>Az SDK használata
 
@@ -352,6 +478,10 @@ az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.js
 [!INCLUDE [aml-local-deploy-config](../../../includes/machine-learning-service-local-deploy-config.md)]
 
 További információ: az [ml Model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) Reference.
+
+### <a id="notebookvm"></a>NotebookVM webszolgáltatás (DEVTEST)
+
+Lásd: [modell üzembe helyezése notebook virtuális gépeken](how-to-deploy-local-container-notebook-vm.md).
 
 ### <a id="aci"></a>Azure Container Instances (DEVTEST)
 
@@ -580,7 +710,10 @@ Az [Azure DevOps](https://azure.microsoft.com/services/devops/)Machine learning-
 
     ![enable-model-trigger](media/how-to-deploy-and-where/set-modeltrigger.png)
 
-Példaként tekintse meg [a MLOps](https://github.com/Microsoft/MLOps) -tárházat és példákat.
+További példákért tekintse meg a következő mintát:
+
+* [https://github.com/Microsoft/MLOps](https://github.com/Microsoft/MLOps)
+* [https://github.com/Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Az üzembe helyezett webszolgáltatáshoz törölheti `service.delete()`.

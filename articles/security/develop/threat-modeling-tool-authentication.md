@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: d7fb9fadcfac0b57fb98dc54f40ff0d2f07c6827
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: eb4f0e26d1795abc3392e9736e71093fab79aae2
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728394"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967936"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Biztonsági keret: Hitelesítés | Enyhítését 
 
@@ -435,7 +435,7 @@ Vegye figyelembe, hogy a konfiguráció hatékonyságának teszteléséhez jelen
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozik**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
-| **Lépések** | <p>Az Azure AD Authentication Library (ADAL) lehetővé teszi az ügyfélalkalmazások fejlesztői számára, hogy egyszerűen hitelesítsék a felhasználókat a felhőben vagy a helyszíni Active Directoryban (AD), majd hozzáférési jogkivonatokat kapjanak az API-hívások biztonságossá tételéhez.</p><p>A ADAL számos funkcióval rendelkezik, amelyek megkönnyítik a hitelesítést a fejlesztők számára, például az aszinkron támogatást, a hozzáférési jogkivonatokat tároló konfigurálható jogkivonat-gyorsítótárat, az automatikus jogkivonat-frissítést a hozzáférési token érvényességének lejárta és a frissítési jogkivonat elérhetővé tétele esetén, valamint További.</p><p>A ADAL a legtöbb összetettségtel segíti a fejlesztőket az alkalmazás üzleti logikájának, valamint az erőforrások egyszerű biztonsága nélkül. Külön könyvtárak érhetők el a .NET, a JavaScript (Client és Node. js), az iOS, az Android és a Java rendszerekhez.</p>|
+| **Lépések** | <p>Az Azure AD Authentication Library (ADAL) lehetővé teszi az ügyfélalkalmazások fejlesztői számára, hogy egyszerűen hitelesítsék a felhasználókat a felhőben vagy a helyszíni Active Directoryban (AD), majd hozzáférési jogkivonatokat kapjanak az API-hívások biztonságossá tételéhez.</p><p>A ADAL számos funkcióval rendelkezik, amelyek megkönnyítik a hitelesítést a fejlesztők számára, például az aszinkron támogatást, a hozzáférési jogkivonatokat tároló konfigurálható jogkivonat-gyorsítótárat, az automatikus jogkivonat-frissítést a hozzáférési token érvényességének lejárta és a frissítési jogkivonat elérhetővé tétele esetén, valamint További.</p><p>A ADAL a legtöbb összetettségtel segíti a fejlesztőket az alkalmazás üzleti logikájának, valamint az erőforrások egyszerű biztonsága nélkül. Külön könyvtárak érhetők el a .NET, a JavaScript (Client és Node. js), a Python, az iOS, az Android és a Java rendszerekhez.</p>|
 
 ## <a id="authn-devices-field"></a>A Field Gatewayhez csatlakozó eszközök hitelesítése
 

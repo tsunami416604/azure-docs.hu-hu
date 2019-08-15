@@ -1,6 +1,6 @@
 ---
-title: Azure-előfizetés tulajdonjogának beolvasása számlázás
-description: Útmutató az Azure-előfizetések számlázási tulajdonjogának kérhet más felhasználókkal.
+title: Azure-előfizetések számlázási tulajdonjogának beolvasása
+description: Megtudhatja, hogyan kérheti az Azure-előfizetések számlázási tulajdonjogát más felhasználóktól.
 author: amberbhargava
 manager: amberb
 editor: banders
@@ -12,181 +12,181 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 4c9a8c866a157757121e6a9dd07a0a8559937c5e
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 110bd975de1d865c2aa3d3b088c98cdc8b9e45ad
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490838"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019563"
 ---
-# <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Első számlázási tulajdonosi jogokat, más fiókok az Azure-előfizetések
+# <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Más fiókoktól származó Azure-előfizetések számlázási tulajdonjogának beolvasása
 
-Ha a meglévő számlázási tulajdonosi elhagyja a szervezet, vagy az Ön számlázási fiókjához fizethet fizetni szeretne Azure-előfizetés tulajdonjogának átvétele érdemes. A fiók-előfizetések számlázási felelőssége saját tulajdonba továbbítja.
+Előfordulhat, hogy az Azure-előfizetések tulajdonjogát szeretné átvenni, ha a meglévő számlázási tulajdonos elhagyja a szervezetet, vagy az előfizetéseket a számlázási fiókján keresztül szeretné fizetni. A tulajdonjog átadásával a fiókra vonatkozó előfizetések számlázási feladatai vannak.
 
-Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellenőrizze, hogy egy Microsoft Ügyfélszerződéséhez hozzáférést](#check-for-access).
+Ez a cikk egy Microsoft-ügyfél szerződéshez tartozó számlázási fiókra vonatkozik. [Ellenőrizze, hogy van-e hozzáférése Microsoft-ügyfél szerződéshez](#check-for-access).
 
-A számlázási tulajdonjog igénylése, rendelkeznie kell egy **számla szakasz tulajdonosa** vagy **számla szakasz közreműködői**. További tudnivalókért lásd: [szakasz szerepkörök feladatok számlázása](billing-understand-mca-roles.md#invoice-section-roles-and-tasks).
+A számlázási tulajdonjog igényléséhez a **számla szakasz tulajdonosának** vagy a **számla szakaszának közreműködőnek**kell lennie. További információ: a [számla szakasz szerepköreinek feladatai](billing-understand-mca-roles.md#invoice-section-roles-and-tasks).
 
-## <a name="request-billing-ownership"></a>A számlázási tulajdonosi kérése
+## <a name="request-billing-ownership"></a>Számlázási tulajdonos igénylése
 
-1. Jelentkezzen be a [az Azure portal](http://portal.azure.com) számla szakasz tulajdonosa vagy a Microsoft vevői szerződés számlázási fiók.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) számla szakaszának tulajdonosaként vagy közreműködőként a Microsoft Customer szerződéshez tartozó számlázási fiókhoz.
 
-2. Keresse meg **Cost Management és számlázás**.
+2. Keressen rá **Cost Management + számlázásra**.
 
-   ![Költségkezelés + számlázás az Azure portál keresési bemutató képernyőkép](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
+   ![A Cost Management + számlázás Azure Portal keresését bemutató képernyőkép](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. Válassza ki **szakaszok számlázása** bal oldalán. A hozzáférést, attól függően szükség lehet jelöljön ki egy számlázási fiók vagy a számlázási profilja. Válassza ki a számlázási fiók vagy profil **szakaszok számlázása**.
+3. Válassza ki a **számla szakaszt** a bal oldali oldalon. A hozzáféréstől függően előfordulhat, hogy ki kell választania egy számlázási fiókot vagy számlázási profilt. A Számlázási fiók vagy profil területen válassza a **Számlázási csoportok**lehetőséget.
    
-   ![Képernyőkép a kiválasztásával szakaszok számlázása](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)        
+   ![A számla fejezeteinek kijelölését bemutató képernyőkép](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)        
 
-4. Válasszon ki egy számla szakasz a listából. Az előfizetés tulajdonjogának átvétele, miután azok díját számla ebben a szakaszban.
+4. Válasszon ki egy számla szakaszt a listából. Az előfizetések tulajdonjogának átvétele után a számlázás a számla szakaszba kerül.
 
-5. Válassza ki **irányuló kérelmek** a bal alsó oldalán, és válassza ki a **Hozzáadás**.
+5. Válassza az **átvitel kérések** lehetőséget a bal alsó részen, majd válassza a **Hozzáadás**lehetőséget.
  
-   ![Képernyőfelvétel bemutatja adatátviteli kérések kiválasztása](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests.png)
+   ![Az adatátviteli kérelmek kiválasztását bemutató képernyőkép](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests.png)
 
-6. Adja meg a számlázási tulajdonosi jogokat a kért felhasználó e-mail-címét. A felhasználó fiókja rendszergazda a Microsoft Online Service Program számlázási fiók vagy a nagyvállalati szerződésben a fiók tulajdonosa kell lennie. További információkért lásd: [a számlázási fiókok megtekintése az Azure Portalon](billing-view-all-accounts.md). Válassza ki **küldési átadására irányuló kérelmet**.
+6. Adja meg annak a felhasználónak az e-mail-címét, akinek a számlázási tulajdonjogát kéri. A felhasználónak rendszergazdai fiókkal kell rendelkeznie a Microsoft Online Services program számlázási fiókjához, vagy egy Nagyvállalati Szerződés fiók tulajdonosa. További információ: [a számlázási fiókok megtekintése Azure Portalban](billing-view-all-accounts.md). Válassza az átadási **kérelem küldése**lehetőséget.
 
-   ![Képernyőkép a átadási kérelem elküldése](./media/billing-mca-request-billing-ownership/mca-send-transfer-requests.png)
+   ![Az átadási kérelem küldését bemutató képernyőkép](./media/billing-mca-request-billing-ownership/mca-send-transfer-requests.png)
 
-7. A felhasználó kap egy e-mailt, tekintse át az átadási kérelem utasításokat tartalmazó.
+7. A felhasználó egy e-mailt kap, amely útmutatást nyújt az adatátviteli kérelem áttekintéséhez.
 
-   ![Képernyőkép, hogy mutat be tekintse át az átviteli kérelem e-mail](./media/billing-mca-request-billing-ownership/mca-review-transfer-request-email.png)
+   ![A felülvizsgálati kérelem e-mail-címét bemutató képernyőkép](./media/billing-mca-request-billing-ownership/mca-review-transfer-request-email.png)
 
-8. Az átadási kérelem jóváhagyása, a felhasználó kiválasztja a hivatkozásra az e-mailben, és utasításokat.
+8. Az adatátviteli kérelem jóváhagyásához a felhasználó kiválasztja az e-mailben szereplő hivatkozást, és követi az utasításokat.
 
-    ![Képernyőkép, hogy mutat be tekintse át az átviteli kérelem e-mail](./media/billing-mca-request-billing-ownership/mca-review-transfer-request.png)
+    ![A felülvizsgálati kérelem e-mail-címét bemutató képernyőkép](./media/billing-mca-request-billing-ownership/mca-review-transfer-request.png)
 
-## <a name="check-the-transfer-request-status"></a>Az átadási kérelem állapotának ellenőrzése
+## <a name="check-the-transfer-request-status"></a>Az átadási kérelem állapotának keresése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Keresse meg **Cost Management és számlázás**.
+2. Keressen rá **Cost Management + számlázásra**.
 
-   ![Költségkezelés + számlázás az Azure portál keresési bemutató képernyőkép](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
+   ![A Cost Management + számlázás Azure Portal keresését bemutató képernyőkép](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
 
-3. Válassza ki **szakaszok számlázása** bal oldalán. A hozzáférést, attól függően szükség lehet jelöljön ki egy számlázási fiók vagy a számlázási profilja. Válassza ki a számlázási fiók vagy profil **szakaszok számlázása**.
+3. Válassza ki a **számla szakaszt** a bal oldali oldalon. A hozzáféréstől függően előfordulhat, hogy ki kell választania egy számlázási fiókot vagy számlázási profilt. A Számlázási fiók vagy profil területen válassza a **Számlázási csoportok**lehetőséget.
    
-   ![Képernyőkép a kiválasztásával szakaszok számlázása](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)        
+   ![A számla fejezeteinek kijelölését bemutató képernyőkép](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)        
 
-4. Válassza ki a számlát a szakasz a listából, amelynek az átadási kérelem elküldve.
+4. Válassza ki a számla szakaszt abból a listából, amelyhez az átadási kérelmet elküldte.
 
-5. Válassza ki **irányuló kérelmek** bal alsó oldalán. Az átvitel kérelmeket tartalmazó lapot az alábbi információkat jeleníti meg:
+5. Válassza ki az átadási kérelmeket a bal alsó oldalon. Az adatátviteli kérelmek lap a következő információkat jeleníti meg:
 
-    ![Adatátviteli kérések listáját bemutató képernyőkép](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)
+    ![Az adatátviteli kérelmek listáját megjelenítő képernyőkép](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)
 
    |Oszlop|Meghatározás|
    |---------|---------|
-   |Kérelem dátuma|Ha az átviteli kérelem elküldésének dátuma|
-   |Címzett|A felhasználót, hogy a számlázási tulajdonosi kérelmet küldött e-mail-címe|
-   |Lejárat dátuma|A dátum, amikor a kérelem lejár|
-   |Állapot|Az átadási kérelem állapota|
+   |Kérelem dátuma|Az átadási kérelem elküldésének dátuma|
+   |Címzett|Annak a felhasználónak az e-mail-címe, akinek a számlázási tulajdonjogának átadására irányuló kérelmet elküldte|
+   |Lejárati dátum|A kérelem lejáratának dátuma|
+   |Állapot|Az adatátviteli kérelem állapota|
 
-    Az átadási kérelem a következő állapotok egyike lehet:
+    Az átviteli kérelem a következő állapotok egyikével rendelkezhet:
 
    |Állapot|Meghatározás|
    |---------|---------|
-   |Folyamatban van|A felhasználó még nem fogadja az átviteli kérelem|
-   |Feldolgozás|A felhasználó az átviteli kérelem jóváhagyva. A felhasználó által kiválasztott előfizetések számlázási első átkerülnek a számla szakasz|
-   |Befejeződött| A számlázás a felhasználó által kiválasztott előfizetések átkerül a számla szakasz|
-   |Befejeződött hibákkal|A vonatkozó kérelem befejeződött, de az egyes előfizetések, a felhasználó által kiválasztott számlázási nem helyezhető át.|
-   |Elévült|A felhasználó nem fogadja el a kérelmet az idő és lejárt|
-   |Megszakítva|Valaki hozzáférő az átviteli kérelem a kérelem meg lett szakítva|
-   |Elutasított|A felhasználó elutasította az átviteli kérelem|
+   |Folyamatban|A felhasználó nem fogadta el az áthelyezési kérelmet|
+   |Feldolgozás|A felhasználó jóváhagyta az adatátviteli kérést. A felhasználó által kiválasztott előfizetések számlázása a számla szakaszba kerül|
+   |Befejeződött| A felhasználó által kiválasztott előfizetések számlázása a számla szakaszba kerül|
+   |Hibákkal fejeződött be|A kérelem befejeződött, de a felhasználó által kiválasztott előfizetések számlázása nem sikerült|
+   |Elévült|A felhasználó nem fogadta el időben a kérést, és lejárt|
+   |Megszakítva|Az adatátviteli kérelemhez hozzáféréssel rendelkező valaki megszakította a kérelmet|
+   |Elutasítva|A felhasználó elutasította az áthelyezési kérelmet|
 
-7. Válassza ki a átviteli kérést, a részletek megtekintéséhez. Az átviteli részleteit megjelenítő oldalon az alábbi információkat jeleníti meg:
+7. Válasszon egy átadási kérelmet a részletek megtekintéséhez. Az átvitel részletei oldalon az alábbi információk jelennek meg:
    
-   ![Átvitt előfizetések listáját bemutató képernyőkép](./media/billing-mca-request-billing-ownership/mca-transfer-completed.png)
+   ![Az átvitt előfizetések listáját megjelenítő képernyőkép](./media/billing-mca-request-billing-ownership/mca-transfer-completed.png)
     
    |Oszlop  |Meghatározás|
    |---------|---------|
-   |Átadási kérelem azonosítója|Az átadási kérelem egyedi azonosítója. Küldjön egy támogatási kérést, ha az azonosító megoszthatja a támogatási kérelem gyorsíthatja fel az Azure-támogatás|
-   |Az átadási kérelem időpontja|Ha az átviteli kérelem elküldésének dátuma|
-   |Az átadási kérelem szerint|Az átviteli kérelmet küldő felhasználó e-mail-címe|
-   |Az átadási kérelem lejárata| A dátum, amikor az átadási kérelem lejárata|
-   |Címzett e-mail-címe|A felhasználót, hogy a számlázási tulajdonosi kérelmet küldött e-mail-címe|
-   |Címzett a rendszer elküldte a hivatkozást|A felhasználó, tekintse át az átviteli kérelmet küldött az URL-cím|
+   |Adatátviteli kérelem azonosítója|Az adatátviteli kérelem egyedi azonosítója. Ha támogatási kérelmet küld, ossza meg az azonosítót az Azure-támogatással a támogatási kérés felgyorsításához|
+   |Átvitel kérelmezve|Az átadási kérelem elküldésének dátuma|
+   |A kért átvitel|Az átadási kérelmet küldő felhasználó e-mail-címe|
+   |Az áthelyezési kérelem lejár| Az átadási kérelem lejáratának dátuma|
+   |Címzett e-mail-címe|Annak a felhasználónak az e-mail-címe, akinek a számlázási tulajdonjogának átadására irányuló kérelmet elküldte|
+   |Átvitt hivatkozás küldése a címzettnek|Az átadási kérelem áttekintésére a felhasználónak elküldött URL-cím|
 
-## <a name="supported-subscription-types"></a>Támogatott előfizetéstípusok
+## <a name="supported-subscription-types"></a>Támogatott előfizetési típusok
 
-Az alábbiakban a számlázási tulajdonosi jogait a előfizetéstípusok igényelhet.
+Az alább felsorolt előfizetési típusok számlázási tulajdonjogát kérheti le.
 
-- [A művelet csomag](https://azure.microsoft.com/offers/ms-azr-0025p/)\* 
-- [Azure in Open licencprogram](https://azure.microsoft.com/offers/ms-azr-0111p/)\*
-- [Azure Pass-szponzorálás](https://azure.microsoft.com/offers/azure-pass/)\*
-- [Nagyvállalati fejlesztés és tesztelés](https://azure.microsoft.com/offers/ms-azr-0148p/)
+- [Action Pack](https://azure.microsoft.com/offers/ms-azr-0025p/)\* 
+- [Azure in Open-licencelés](https://azure.microsoft.com/offers/ms-azr-0111p/)\*
+- [Azure Pass szponzorálás](https://azure.microsoft.com/offers/azure-pass/)\*
+- [Enterprise dev/test](https://azure.microsoft.com/offers/ms-azr-0148p/)
 - [Ingyenes próbaverzió](https://azure.microsoft.com/offers/ms-azr-0044p/)\*
 - [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p/) 
-- [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)
-- [A Microsoft Azure-csomagot](https://azure.microsoft.com/offers/ms-azr-0017g/)\*\*
-- [Támogatott Microsoft Azure-ajánlat](https://azure.microsoft.com/offers/ms-azr-0036p/)\*
+- [Utólagos elszámolású fejlesztési/tesztelési funkciók](https://azure.microsoft.com/offers/ms-azr-0023p/)
+- [Microsoft Azure terv](https://azure.microsoft.com/offers/ms-azr-0017g/)\*\*
+- [Microsoft Azure szponzorált ajánlat](https://azure.microsoft.com/offers/ms-azr-0036p/)\*
 - [Microsoft nagyvállalati szerződés](https://azure.microsoft.com/pricing/enterprise-agreement/)
-- [A Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)\*
-- [MSDN-platformok](https://azure.microsoft.com/offers/ms-azr-0062p/)\*
-- [A Visual Studio Enterprise (BizSpark) előfizetők](https://azure.microsoft.com/offers/ms-azr-0064p/)\*
+- [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)\*
+- [MSDN platformok](https://azure.microsoft.com/offers/ms-azr-0062p/)\*
+- [Visual Studio Enterprise-(BizSpark-) előfizetők](https://azure.microsoft.com/offers/ms-azr-0064p/)\*
 - [A Visual Studio Enterprise (MPN) előfizetők](https://azure.microsoft.com/offers/ms-azr-0029p/)\*
-- [A Visual Studio Enterprise-előfizetők](https://azure.microsoft.com/offers/ms-azr-0063p/)\*
+- [Visual Studio Enterprise-előfizetők](https://azure.microsoft.com/offers/ms-azr-0063p/)\*
 - [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)\*
-- [A Visual Studio Test Professional-előfizetők](https://azure.microsoft.com/offers/ms-azr-0060p/)\*
+- [Visual Studio test Professional-előfizetők](https://azure.microsoft.com/offers/ms-azr-0060p/)\*
 
-\* Elérhető az előfizetés kreditegyenlege nem lesz elérhető az új fiókot az átadást követően.
+\*Az előfizetés után az előfizetésben elérhető kreditek az átvitel után nem lesznek elérhetők az új fiókban.
 
-\*\* Csak a támogatott során létrehozott előfizetések az Azure-webhelyen regisztrálhat.
+\*\*Csak az Azure webhelyre való regisztráció során létrehozott fiókokban támogatott.
 
 
 ## <a name="additional-information"></a>További információ
 
-A következő szakasz az előfizetések átvitele további információkat tartalmaz.
+A következő szakasz további információkat tartalmaz az előfizetések átviteléről.
 
-### <a name="no-service-downtime"></a>A szolgáltatás leállása nélkül
+### <a name="no-service-downtime"></a>Nincs szolgáltatás leállása
 
-Az előfizetés Azure-szolgáltatások folyamatosan futó megszakítás nélkül. A Microsoft csak a számlázást, a felhasználó által átvitele Azure-előfizetések átmenet.
+Az előfizetésben található Azure-szolgáltatások megszakítás nélkül futnak. Csak a felhasználó által az átvitelre kiválasztott Azure-előfizetések számlázási kapcsolatát fogjuk áttérni.
 
-### <a name="disabled-subscriptions"></a>Letiltott előfizetés
+### <a name="disabled-subscriptions"></a>Letiltott előfizetések
 
-Letiltott előfizetésekbe nem helyezhető át. Az előfizetések a számlázási tulajdonosi aktív állapotban kell lennie.
+A letiltott előfizetések nem vihetők át. Az előfizetésnek aktív állapotban kell lennie, hogy átvigye a számlázási tulajdonjogát.
 
-### <a name="azure-resources-transfer"></a>Azure-erőforrások átvitel
+### <a name="azure-resources-transfer"></a>Azure-erőforrások átvitele
 
-Az előfizetések közül az összes erőforrások, például a virtuális gépek, a lemezek és a websites adatforgalom.
+Az előfizetések, például a virtuális gépek, a lemezek és a webhelyek átvitelének összes erőforrása.
 
-### <a name="azure-marketplace-products-transfer"></a>Az Azure Marketplace-en termékek átvitel
+### <a name="azure-marketplace-products-transfer"></a>Azure Marketplace-termékek átvitele
 
-Azure Marketplace-termékekkel és a megfelelő előfizetések átvitele.
+Az Azure Marketplace-termékek a megfelelő előfizetésekkel együtt továbbítanak.
 
-### <a name="azure-reservations-transfer"></a>Az Azure foglalások átvitel
+### <a name="azure-reservations-transfer"></a>Azure Reservations átvitel
 
-Azure foglalások automatikusan előfizetések nem változik. [Lépjen kapcsolatba az Azure-támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) foglalások áthelyezni.
+Azure Reservations a rendszer nem helyezi át automatikusan az előfizetéseket. A foglalások áthelyezéséhez [forduljon az Azure támogatási szolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
 
-### <a name="access-to-azure-services"></a>Az Azure-szolgáltatásokhoz való hozzáférés
+### <a name="access-to-azure-services"></a>Hozzáférés az Azure-szolgáltatásokhoz
 
-Hozzáférés a meglévő felhasználók, csoportok vagy az egyszerű szolgáltatások használatával (az Azure RBAC (szerepköralapú hozzáférés-vezérlés)) hozzárendelt [... /Role-based-Access-Control/overview.md] nincs hatással a váltás során.
+Hozzáférés meglévő felhasználókhoz, csoportokhoz vagy egyszerű szolgáltatásokhoz (Azure RBAC (szerepköralapú hozzáférés-vezérlés)) [.. a/role-based-Access-Control/Overview.MD] nem érinti az áttérést.
 
 ### <a name="azure-support-plan"></a>Azure támogatási csomagot
 
-Az Azure-támogatás az előfizetés nem vesz át. Ha a felhasználói adatforgalom az összes Azure-előfizetéssel, kérje a támogatási csomag lemondása.
+Az Azure-támogatás nem továbbítja az előfizetéseket. Ha a felhasználó az összes Azure-előfizetést átviszi, kérje meg őket, hogy szakítsák meg a támogatási csomagot.
 
-### <a name="charges-for-transferred-subscription"></a>Átvitt előfizetési díjai
+### <a name="charges-for-transferred-subscription"></a>Az átvitt előfizetés díjai
 
-Az előfizetés számlázási eredeti tulajdonosa felelős, amely a jelzett addig a pontig, hogy befejeződött-e az adatátviteli díjakat. Jelentett idő adatátviteli és újabb verziók esetében a díjak a számla szakasz feladata. Előfordulhat, hogy néhány díjak került sor átvitele előtt, de ezt követően lett jelentve. Ezek a díjak a számla szakaszban jelennek meg.
+Az előfizetések eredeti számlázási tulajdonosa felelős minden olyan költségért, amelyet az átvitel befejezésének időpontjáig jelentettek. A számla szakasz felelős az átvitel időpontjában jelentett díjakért. Előfordulhat, hogy az átvitel előtt már történtek díjak, de ezt követően jelent meg. Ezek a díjak a számla szakaszban jelennek meg.
 
-### <a name="cancel-a-transfer-request"></a>Egy átviteli kérelem visszavonása
+### <a name="cancel-a-transfer-request"></a>Adatátviteli kérelem megszakítása
 
-Az átadási kérelem vonhatja vissza addig, amíg a kérelem jóváhagyása vagy próbálkozásai sikertelenek lesznek. Az átadási kérelem megszüntetéséhez nyissa meg a [átviteli részleteit megjelenítő oldalon](#check-the-transfer-request-status) és válassza a lap alján.
+A kérelem jóváhagyása vagy elutasítása után megszakíthatja az adatátviteli kérést. Az átadási kérelem megszakításához lépjen az [átvitel adatai lapra](#check-the-transfer-request-status) , és válassza a Mégse lehetőséget az oldal alján.
 
-### <a name="software-as-a-service-saas-transfer"></a>A szoftverszolgáltatások (SaaS) átvitel szoftver
+### <a name="software-as-a-service-saas-transfer"></a>Szolgáltatott szoftver (SaaS) átvitele
 
-SaaS-termékek az előfizetés átadása nem történik. Kérje meg a felhasználót, hogy [forduljon az Azure-támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) számlázási tulajdonjogának SaaS-termékek. Együtt a számlázási tulajdonosi jogokat a felhasználó is átadhatja tulajdonjogát. Erőforrás-tulajdonosi lehetővé teszi a felügyeleti műveleteket, például a Törlés és a termék részleteinek megtekintése. Felhasználói erőforrás tulajdonjogának a Szolgáltatottszoftver-termék az erőforrás tulajdonosának kell lennie.
+Az SaaS-termékek nem vihetők át az előfizetésekre. Kérje meg a felhasználót, hogy [lépjen kapcsolatba az Azure támogatási szolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) az SaaS-termékek számlázási tulajdonjogának átadásához. A számlázási tulajdonossal együtt a felhasználó is átviheti az erőforrás-tulajdonjogot. Az erőforrás-tulajdonos lehetővé teszi a kezelési műveletek végrehajtását, például a termék adatainak törlését és megtekintését. A felhasználónak az SaaS-termék erőforrás-tulajdonosának kell lennie az erőforrás tulajdonjogának átadásához.
 
-## <a name="check-for-access"></a>Hozzáférés-ellenőrzés
+## <a name="check-for-access"></a>Hozzáférés keresése
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 
-Ha segítségre van szüksége, kell [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
+Ha segítségre van szüksége, [forduljon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) az ügyfélszolgálathoz a probléma gyors megoldása érdekében.
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure-előfizetések számlázási tulajdonjogának kerül a számlán szakaszban. Nyomon követheti, ezek a szolgáltatások díjai a [az Azure portal](https://portal.azure.com).
-- Engedélyek megtekintése és kezelése a számlázási ezekért az előfizetésekért biztosítása másokkal. További információkért lásd: [szakasz szerepkörök és feladatok számla](billing-understand-mca-roles.md#invoice-section-roles-and-tasks).
+- Az Azure-előfizetések számlázási tulajdonjoga a számla szakaszba kerül. Kövesse nyomon az előfizetések díját a Azure Portalban [](https://portal.azure.com).
+- Adja meg másoknak az előfizetések számlázásának megtekintését és kezelését. További információ: a [számla szakasz szerepkörei és feladatai](billing-understand-mca-roles.md#invoice-section-roles-and-tasks).

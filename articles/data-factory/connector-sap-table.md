@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 18b5b941716fd2c6664c37f9e7c1ab2a37d07a88
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: da7dbdee4a376d88219a7a621ed7e3867873a37c
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720647"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967392"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Adatok másolása SAP-táblából Azure Data Factory használatával
 
@@ -201,7 +201,7 @@ Az adatoknak a és a SAP BW Open hub társított szolgáltatásba való másolá
 
 A tevékenységek definiálási szakaszainak és tulajdonságainak teljes listáját lásd: [folyamatok](concepts-pipelines-activities.md). A következő szakasz az SAP-táblázat forrása által támogatott tulajdonságokat tartalmazza.
 
-### <a name="sap-table-as-a-source"></a>SAP-tábla forrásként
+### <a name="sap-table-as-source"></a>SAP-táblázat forrásként
 
 Az adatok SAP-táblából történő másolásához a következő tulajdonságok támogatottak:
 
@@ -223,7 +223,7 @@ Az adatok SAP-táblából történő másolásához a következő tulajdonságok
 <br/>
 >`maxPartitionsNumber` `partitionLowerBound` `partitionUpperBound` Például az egyes partíciókban lévő sorok számát a következő képlettel számítjuk ki: (a és a közötti összes sor)/. `partitionOption` `partitionOnInt`<br/>
 <br/>
->Ha párhuzamosan szeretné futtatni a partíciókat a másolás felgyorsításához, `maxPartitionsNumber` javasoljuk, hogy a `parallelCopies` tulajdonság értékének többszörösét végezze el. További információ: [párhuzamos másolás](copy-activity-performance.md#parallel-copy).
+>Ha párhuzamosan szeretné betölteni az adatpartíciókat a másolás felgyorsításához, a párhuzamos mértéket a másolási tevékenység [`parallelCopies`](copy-activity-performance.md#parallel-copy) beállításai vezérlik. Ha például négyre van állítva `parallelCopies` , Data Factory egyidejűleg létrehoz és futtat négy lekérdezést a megadott partíciós beállítás és beállítások alapján, és mindegyik lekérdezés az adatok egy részét kéri le az SAP-táblából. Javasoljuk, hogy `maxPartitionsNumber` a `parallelCopies` tulajdonság értékének többszörösét végezze el.
 
 A `rfcTableOptions`alkalmazásban a következő általános SAP-lekérdezési operátorokkal szűrheti a sorokat:
 
@@ -269,7 +269,8 @@ A `rfcTableOptions`alkalmazásban a következő általános SAP-lekérdezési op
             },
             "sink": {
                 "type": "<sink type>"
-            }
+            },
+            "parallelCopies": 4
         }
     }
 ]

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5f44e9b386f5d05b75f6fdf6cf8b55360e4c5dae
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 9c63170b60a871182042acab8a35e505c603f260
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954782"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018890"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Recovery Services-tároló törlése
 
@@ -51,11 +51,11 @@ Mielőtt továbblépne, olvassa el **[ezt](#before-you-start)** a szakaszt a fü
 
 A védelem leállításához és a biztonsági mentési adatok törléséhez hajtsa végre az alábbi műveleteket:
 
-1. A portálon > **Recovery Services** > -tároló**biztonsági másolati elemeiben** válassza a felhőben védett elemeket (például AzureVirtual Machine, Azure Storage (Azure Files), SQL on Azure VM stb.).
+1. A portálon > **Recovery Services** > tároló**biztonsági másolati elemei**közül válassza a felhőben található védett elemeket (például AzureVirtual Machine, Azure Storage (Azure Files), SQL az Azure virtuális gépen stb.).
 
     ![Válassza ki a biztonsági mentés típusát](./media/backup-azure-delete-vault/azure-storage-selected.png)
 
-2. Kattintson a jobb gombbal a biztonsági mentési elemre attól függően, hogy a biztonsági mentési elem védett-e, vagy sem a menü megjeleníti a biztonsági mentés **leállítása** vagy a **biztonsági mentési információk törlése**beállítást.
+2. Kattintson a jobb gombbal a biztonsági másolat elemre. Attól függően, hogy a biztonsági másolati elem védett-e, vagy sem, a menü megjeleníti a biztonsági mentés **leállítása** vagy a **biztonsági mentési információk törlése**beállítást.
 
     - A **biztonsági mentés leállítása**beállításnál válassza a **biztonsági másolat adatainak törlése** lehetőséget a legördülő menüből. Adja meg a biztonsági másolati elem **nevét** (kis-és nagybetűk megkülönböztetése), válasszon ki egy **okot**, írjon be **megjegyzéseket**, majd kattintson a **biztonsági mentés leállítása**elemre.
 
@@ -126,7 +126,7 @@ Biztonsági másolati elemek törlése a MARS felügyeleti konzolról
 - A rendszer a biztonsági PIN-kód megadását kéri. A PIN-kód létrehozásához hajtsa végre az alábbi lépéseket:
   - Jelentkezzen be az Azure portálra.
   - Tallózással keresse meg **Recovery Services** > tár**Beállítások** > **tulajdonságait**.
-  - A **biztonsági PIN**-kódalatt kattintson a előállítás elemre. Másolja ezt a PIN-kódot. (Ez a PIN-kód csak öt percig érvényes)
+  - A **biztonsági PIN**-kódalatt kattintson a előállítás elemre. Másolja ezt a PIN-kódot. (Ez a PIN-kód csak öt percig érvényes.)
 - A felügyeleti konzolon (ügyfélalkalmazás) illessze be a PIN-kódot, és kattintson az **OK**gombra.
 
   ![Biztonsági PIN-kód](./media/backup-azure-delete-vault/security-pin.png)
@@ -202,12 +202,12 @@ A ARMClient paranccsal kapcsolatos további információkért tekintse meg ezt a
 
 1. Futtassa az alábbi parancsot az előfizetés-azonosító, az erőforráscsoport neve és a tár neve használatával. A parancs futtatásakor törli a tárolót, ha nem rendelkezik függőségekkel.
 
-   ```
+   ```azurepowershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
    ```
 2. Ha a tár nem üres, a "tár nem törölhető, mert a tárolóban már vannak erőforrások." hibaüzenet jelenik meg. Védett elemek/tárolók egy tárolón belüli eltávolításához tegye a következőket:
 
-   ```
+   ```azurepowershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
 

@@ -1,33 +1,33 @@
 ---
-title: Egyéni optimalizálása a magasabb rendelkezésre állás és teljesítmény az Azure Cosmos DB-szinkronizálás megvalósítása
-description: Ismerje meg, hogyan optimalizálható a magasabb rendelkezésre állás és teljesítmény az Azure Cosmos DB egyéni-szinkronizálás megvalósítása.
+title: Egyéni szinkronizálás megvalósítása az Azure Cosmos DB magasabb rendelkezésre állásának és teljesítményének optimalizálása érdekében
+description: Ismerje meg, hogyan valósítható meg az egyéni szinkronizálás, hogy jobbá legyen a magasabb rendelkezésre állás és a teljesítmény a Azure Cosmos DBban.
 author: rimman
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: rimman
-ms.openlocfilehash: de66149a2ea3e01e62aa8e33ea5a99121a21524f
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 0f630c2139d1d7d391d6c5578e5e7f378e56dcb4
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986081"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013787"
 ---
-# <a name="implement-custom-synchronization-to-optimize-for-higher-availability-and-performance"></a>A magasabb rendelkezésre állás és teljesítmény optimalizálása érdekében egyéni-szinkronizálás megvalósítása
+# <a name="implement-custom-synchronization-to-optimize-for-higher-availability-and-performance"></a>Egyéni szinkronizálás megvalósítása a magasabb rendelkezésre állás és a teljesítmény optimalizálása érdekében
 
-Az Azure Cosmos DB-ajánlatok [öt jól definiált konzisztenciaszintet](consistency-levels.md) választhat a konzisztencia, a teljesítmény és a rendelkezésre állási közötti elosztása érdekében. Erős konzisztencia lehetővé teszi, hogy adatokat szinkronban replikálva lettek, és minden régióban, ahol érhető el az Azure Cosmos-fiók tartósan tárolja. Ez a konfiguráció biztosítja a legnagyobb szintű tartósságot biztosítja, de a megoldás a teljesítmény és rendelkezésre állás. Ha azt szeretné, hogy az alkalmazás szabályozhatja, vagy az adatok megőrzését enyhíteni az alkalmazás igényeinek megfelelően kell rendelkezésre állási veszélyeztetése nélkül, akkor használhatja *egyéni szinkronizálási* az alkalmazási rétegben a tartóssági szintjének eléréséhez, szeretné.
+A Azure Cosmos DB [öt jól meghatározott konzisztencia-szintet](consistency-levels.md) kínál a konzisztencia, a teljesítmény és a rendelkezésre állás közötti kompromisszum kiegyensúlyozásához. Az erős konzisztencia segít biztosítani, hogy az adatkezelés szinkronban legyen, és tartósan minden olyan régióban, ahol az Azure Cosmos-fiók elérhető. Ez a konfiguráció biztosítja a legmagasabb szintű tartósságot, de a teljesítmény és a rendelkezésre állás költségeit is tartalmazza. Ha azt szeretné, hogy az alkalmazás a rendelkezésre állás veszélyeztetése nélkül szabályozza vagy kihasználhassa az adattartósságot, az alkalmazás rétegében *Egyéni szinkronizálást* használhat a kívánt tartósság eléréséhez.
 
-Az alábbi képen vizuálisan ábrázolja az egyéni szinkronizálási modell:
+Az alábbi ábra vizuálisan ábrázolja az egyéni szinkronizálási modellt:
 
-![Egyéni szinkronizálási](./media/how-to-custom-synchronization/custom-synchronization.png)
+![Egyéni szinkronizálás](./media/how-to-custom-synchronization/custom-synchronization.png)
 
-Ebben a forgatókönyvben egy Azure Cosmos-tárolóhoz replikál a rendszer globálisan számos régióban lévő több kontinensen. Erős konzisztencia használata ebben a forgatókönyvben minden régió esetében befolyásolja a teljesítményt. Nélkül veszélyeztetése írási késés magasabb szintű az adatok tartóssága érdekében az alkalmazás két olyan ügyfelek, amelyek azonos használható [tokenu relace](how-to-manage-consistency.md#utilize-session-tokens).
+Ebben az esetben az Azure Cosmos-tárolót világszerte több régióban replikálja a rendszer, több kontinensen. Az ebben a forgatókönyvben található összes régió esetében erős konzisztencia-használat befolyásolja a teljesítményt. Annak érdekében, hogy az írási késleltetés veszélyeztetése nélkül magasabb szintű adattartósságot biztosítson, az alkalmazás két olyan ügyfelet használhat, amelyek ugyanazt a [munkamenet](how-to-manage-consistency.md#utilize-session-tokens)-tokent használják.
 
-Az első ügyfél tudjon adatokat írni a helyi régió (például USA nyugati régiója). A második ügyfél (például az USA keleti régiója) olvasási ügyfél, amely a szinkronizálás biztosítja. Által a munkamenet-jogkivonat a következő olvasási, írási válaszból áramló, az olvasási biztosítja a szinkronizálást az írását az USA keleti régiójában. Az Azure Cosmos DB biztosítja, hogy az írási műveletek láthatók-e legalább egy régió szerint. Hogy garantáltan stabilitást biztosít egy regionális kimaradás, ha az eredeti írási régió leáll. Ebben a forgatókönyvben minden írási szinkronizálva van az USA keleti régiójához, így csökkentve az erős konzisztencia alkalmazó minden régióban. Több főkiszolgálós forgatókönyvekben, ahol írási minden régióban történik, ez a modell párhuzamosan több régióban való szinkronizálása bővítheti.
+Az első ügyfél írhat adatbevitelt a helyi régióba (például USA nyugati régiója). A második ügyfél (például az USA keleti régiójában) egy olvasási ügyfél, amely a szinkronizálás biztosítására szolgál. Ha a munkamenet-tokent az írási válaszból a következő olvasásra hajtja végre, az olvasás biztosítja az USA keleti régióba való írások szinkronizálását. Azure Cosmos DB biztosítja, hogy az írások legalább egy régióban láthatók legyenek. Ha az eredeti írási régió leáll, a rendszer a regionális kimaradást is megmaradja. Ebben a forgatókönyvben minden írás szinkronizálva van az USA keleti régiójában, így csökkentve a késést az összes régióban való erős konzisztencia alkalmazása során. Több főkiszolgálós forgatókönyv esetén, ahol az írások minden régióban megtörténnek, kiterjesztheti a modellt úgy, hogy párhuzamosan szinkronizáljon több régióval.
 
 ## <a name="configure-the-clients"></a>Az ügyfelek konfigurálása
 
-Az alábbi mintában látható, amely két ügyfelek egyéni szinkronizálási példányosítja adatelérési réteg:
+Az alábbi minta egy adatelérési réteget mutat be, amely két ügyfelet hoz létre az egyéni szinkronizáláshoz:
 
 ### <a name="net-v2-sdk"></a>.Net V2 SDK
 ```csharp
@@ -84,14 +84,14 @@ class MyDataAccessLayer
 
 
         writeClient = new CosmosClient(accountEndpoint, key, writeConnectionOptions);
-        writeClient = new CosmosClient(accountEndpoint, key, writeConnectionOptions);
+        readClient = new CosmosClient(accountEndpoint, key, readConnectionOptions);
     }
 }
 ```
 
 ## <a name="implement-custom-synchronization"></a>Egyéni szinkronizálás implementálása
 
-Után az ügyfelek inicializálása, az alkalmazás elvégezhet a helyi régió (USA nyugati régiója) és a kényszerített-szinkronizálási írási műveletek a írását az USA keleti régiójában módon.
+Az ügyfelek inicializálását követően az alkalmazás elvégezheti az írásokat a helyi régióban (USA nyugati régiója), és a következő módon kényszerítheti az írásokat az USA keleti régiójába.
 
 ### <a name="net-v2-sdk"></a>.Net V2 SDK
 ```csharp
@@ -127,13 +127,13 @@ class MyDataAccessLayer
 }
 ```
 
-Szinkronizálni kívánt párhuzamosan több régióban a modell bővítheti.
+A modellt kiterjesztheti párhuzamosan több régióba való szinkronizálásra is.
 
 ## <a name="next-steps"></a>További lépések
 
-Globális terjesztés és konzisztencia az Azure Cosmos DB kapcsolatos további információkért olvassa el ezeket a cikkeket:
+Ha többet szeretne megtudni a Azure Cosmos DB globális eloszlásáról és konzisztenciájáról, olvassa el a következő cikkeket:
 
-* [Válassza ki a megfelelő konzisztenciaszint Azure Cosmos DB-ben](consistency-levels-choosing.md)
-* [Konzisztencia, a rendelkezésre állás és a teljesítmény és kompromisszumot kínál a Azure Cosmos DB-ben](consistency-levels-tradeoffs.md)
-* [Az Azure Cosmos DB konzisztencia kezelése](how-to-manage-consistency.md)
-* [Particionálás és az adatok terjesztési Azure Cosmos DB-ben](partition-data.md)
+* [Válassza ki a megfelelő konzisztencia-szintet Azure Cosmos DB](consistency-levels-choosing.md)
+* [A konzisztencia, a rendelkezésre állás és a teljesítménybeli kompromisszumok Azure Cosmos DB](consistency-levels-tradeoffs.md)
+* [Konzisztencia kezelése Azure Cosmos DBban](how-to-manage-consistency.md)
+* [Particionálás és Adatelosztás a Azure Cosmos DBban](partition-data.md)

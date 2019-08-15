@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08be09f7bee3aa17ff9d1baae4271e994fa235cb
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3b7265f8d5ec4b7336253787e9cb881900a52b79
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248882"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963449"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory
 
@@ -31,11 +31,11 @@ Ez a cikk azt feltételezi, hogy már ismeri az alábbi fogalmakat és terminol�
 
 Új szabályzat létrehozásakor nincsenek kiválasztva felhasználók, csoportok, alkalmazások vagy hozzáférés-vezérlések.
 
-![Felhőalapú alkalmazások](./media/best-practices/02.png)
+![Felhőalkalmazások](./media/best-practices/02.png)
 
 A szabályzat működéséhez konfigurálnia kell a következőket:
 
-| Mi           | Hogyan                                  | miért |
+| Mi:           | Hogyan                                  | miért |
 | :--            | :--                                  | :-- |
 | **Felhőalapú alkalmazások** |Válasszon ki egy vagy több alkalmazást.  | A feltételes hozzáférési szabályzat célja, hogy lehetővé tegye annak szabályozását, hogy a jogosult felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz.|
 | **Felhasználók és csoportok** | Válasszon ki legalább egy olyan felhasználót vagy csoportot, amely jogosult a kiválasztott felhőalapú alkalmazások elérésére. | A rendszer soha nem indít olyan feltételes hozzáférési szabályzatot, amely nem rendelkezik hozzárendelt felhasználókkal és csoportokkal. |
@@ -50,7 +50,8 @@ Egy felhőalapú alkalmazáshoz való hozzáféréskor több feltételes hozzáf
 Az összes házirend kikényszerítve két fázisban:
 
 - Az **első** fázisban az összes házirend ki lesz értékelve, és a rendszer minden olyan hozzáférés-vezérlőt begyűjt, amely nem teljesül. 
-- A **második** szakaszban a rendszer felszólítja a nem teljesített követelmények kielégítésére. Ha a házirendek bármelyike blokkolja a hozzáférést, a rendszer letiltja, és nem kéri más szabályzat-vezérlők kielégítésére. Ha a szabályzatok letiltják, a rendszer a következő sorrendben kéri az egyéb szabályzat-ellenőrzéseknek való megfelelést:
+
+- A **második** szakaszban a rendszer felszólítja a nem teljesített követelmények kielégítésére. Ha a házirendek bármelyike blokkolja a hozzáférést, a rendszer letiltja, és nem kéri más szabályzat-vezérlők kielégítésére. Ha a szabályzatok egyike sincs megtiltva, a rendszer a következő sorrendben kéri az egyéb házirend-vezérlők kielégítését:
 
    ![Rendelés](./media/best-practices/06.png)
     

@@ -1,9 +1,9 @@
 ---
-title: 'Hibaelhárítás: Hiányzó adatok a letöltött Azure Active Directory-Tevékenységnaplókban |} A Microsoft Docs'
+title: Hibaelhárítás Hiányzó adatértékek a letöltött Azure Active Directory tevékenység naplójában | Microsoft Docs
 description: A letöltött Azure Active Directory-tevékenységnaplókból hiányzó adatok problémájára nyújt megoldást.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: ffce7eb1-99da-4ea7-9c4d-2322b755c8ce
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2200a9c75b371ed72ffefe6900367e698101e0fe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f120c1b86efe94f4ff6316e6116b9049582b07e9
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60437098"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987986"
 ---
-# <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>Nem találhatók adatok az Azure Active Directory-tevékenységnaplókban letöltöttem
+# <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>Nem találom az összes olyan adatnaplót, amelyet Letöltöttem a letöltött Azure Active Directory
 
 ## <a name="symptoms"></a>Probléma
 
-Letöltöttem a tevékenységnaplókat (audit vagy bejelentkezési), és nem látom a kiválasztott időre vonatkozó összes rekordot. Hogy miért? 
+Letöltöttem a tevékenységnaplókat (audit vagy bejelentkezési), és nem látom a kiválasztott időre vonatkozó összes rekordot. Miért? 
 
  ![Jelentéskészítés](./media/troubleshoot-missing-data-download/01.png)
  
 ## <a name="cause"></a>Ok
 
-Az Azure Portalon tevékenységnaplókat tölt le, amikor azt korlátozza a méretezési csoport 250 000 rekordot legutóbbi van legelöl szerint rendezve. 
+Amikor letölti a tevékenység naplóit a Azure Portalban, a skálázást 250 000 rekordra korlátozzuk, a legutóbbiek szerint rendezve. 
 
 ## <a name="resolution"></a>Megoldás:
 
@@ -42,5 +42,5 @@ Az [Azure AD Reporting API-kkal](concept-reporting-api.md) akár egymillió reko
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Active Directory-jelentések – gyakori kérdések](reports-faq.md)
+* [Azure Active Directory jelentések – gyakori kérdések](reports-faq.md)
 

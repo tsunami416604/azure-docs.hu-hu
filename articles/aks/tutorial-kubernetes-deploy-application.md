@@ -8,51 +8,51 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: be4d3fd298a7c08aa640585beb741bad18a840ef
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 85471323a7f8918d80b7c0944fe5c255e9fa836a
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614329"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018924"
 ---
-# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások futtatása az Azure Kubernetes Service (AKS)
+# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások futtatása az Azure Kubernetes szolgáltatásban (ak)
 
 A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Ön hozz létre és helyezi üzembe saját alkalmazásait és szolgáltatásait a Kubernetes-fürtön, a rendelkezésre állást és a kapcsolatokat pedig a fürt kezeli. Ebben az oktatóanyagban, amely egy hétrészes sorozat negyedik része, egy alkalmazást helyezünk üzembe egy Kubernetes-fürtön. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Kubernetes-jegyzékfájl frissítése
+> * Kubernetes manifest-fájl frissítése
 > * Alkalmazás futtatása a Kubernetesben
 > * Az alkalmazás tesztelése
 
-Ezt az alkalmazást a további oktatóanyagokban horizontálisan felskálázott és frissítése.
+A további oktatóanyagokban az alkalmazás méretezése és frissítése megtörtént.
 
-A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára vonatkozó alapvető ismeretekkel. További információkért lásd: [Kubernetes alapvető fogalmait Azure Kubernetes Service (AKS)][kubernetes-concepts].
+A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára vonatkozó alapvető ismeretekkel. További információ: [Az Azure Kubernetes Service (ak) Kubernetes][kubernetes-concepts]alapfogalmai.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe, a rendszerképet feltöltöttük az Azure Container Registrybe, és létrehoztunk egy Kubernetes-fürtöt.
 
-Az oktatóanyag teljesítéséhez szüksége lesz az előzőleg létrehozott `azure-vote-all-in-one-redis.yaml` Kubernetes-jegyzékfájlra. Ezt a fájlt az alkalmazás forráskódjával együtt egy korábbi oktatóanyagban letöltöttük. Ellenőrizze, hogy Ön már az adattár klónja létrejött, valamint, hogy Ön könyvtárakat átállította a klónozott adattárra. Ha még nem végezte el ezeket a lépéseket, és szeretné követni, kezdje [1. oktatóanyag – tárolórendszerképek létrehozása][aks-tutorial-prepare-app].
+Az oktatóanyag teljesítéséhez szüksége lesz az előzőleg létrehozott `azure-vote-all-in-one-redis.yaml` Kubernetes-jegyzékfájlra. Ezt a fájlt az alkalmazás forráskódjával együtt egy korábbi oktatóanyagban letöltöttük. Ellenőrizze, hogy klónozotta-e a tárházat, és hogy módosította-e a címtárakat a klónozott tárházban. Ha még nem tette meg ezeket a lépéseket, és követni szeretné a lépéseket, kezdje az [1. oktatóanyag – tároló lemezképek létrehozásával][aks-tutorial-prepare-app].
 
-Ehhez az oktatóanyaghoz, hogy futtat-e az Azure CLI 2.0.53 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+Ehhez az oktatóanyaghoz az Azure CLI 2.0.53 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ## <a name="update-the-manifest-file"></a>A jegyzékfájl frissítése
 
 Ezekben az oktatóanyagokban egy Azure Container Registry- (ACR-) példány tárolja a mintaalkalmazáshoz való tároló rendszerképét. Az alkalmazás üzembe helyezéséhez frissíteni kell a rendszerkép nevét a Kubernetes-jegyzékfájlban úgy, hogy magában foglalja az ACR bejelentkezési kiszolgálójának nevét.
 
-Az ACR bejelentkezési kiszolgáló nevének használatával lekérése a [az acr list][az-acr-list] paranccsal a következőképpen:
+Töltse le az ACR bejelentkezési kiszolgáló nevét az az [ACR List][az-acr-list] paranccsal az alábbiak szerint:
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Az első oktatóanyagban klónozott, Git-adattárból származó mintajegyzékfájl a *microsoft* bejelentkezési kiszolgálónevet használja. Győződjön meg arról, hogy használja-e a klónozott *azure-szavazóalkalmazás – alkalmazás-redis* könyvtárat, majd nyissa meg a jegyzékfájl-fájlt egy szövegszerkesztőben, például `vi`:
+Az első oktatóanyagban klónozott, Git-adattárból származó mintajegyzékfájl a *microsoft* bejelentkezési kiszolgálónevet használja. Győződjön meg arról, hogy a klónozott *Azure-szavazó-app-Redis* könyvtárban van, majd nyissa meg a jegyzékfájlt egy szövegszerkesztővel, például `vi`:
 
 ```console
 vi azure-vote-all-in-one-redis.yaml
 ```
 
-Helyettesítse be a *microsoft* nevet az Ön ACR bejelentkezési kiszolgálójának nevével. A rendszerkép nevének a jegyzékfájl 51 sorában található. Az alábbi példa az alapértelmezett rendszerképnevet mutatja:
+Helyettesítse be a *microsoft* nevet az Ön ACR bejelentkezési kiszolgálójának nevével. A rendszerkép neve a jegyzékfájl 51. sorában található. Az alábbi példa az alapértelmezett rendszerképnevet mutatja:
 
 ```yaml
 containers:
@@ -68,17 +68,17 @@ containers:
   image: <acrName>.azurecr.io/azure-vote-front:v1
 ```
 
-Mentse és zárja be a fájlt. A `vi`, használjon `:wq`.
+Mentse és zárja be a fájlt. A `vi`alkalmazásban `:wq`használja a t.
 
 ## <a name="deploy-the-application"></a>Az alkalmazás központi telepítése
 
-Az alkalmazás üzembe helyezéséhez használja a [a kubectl a alkalmazni][kubectl-apply] parancsot. A parancs elemzi jegyzékfájlt, és létrehozza a meghatározott Kubernetes-objektumokat. Adja meg a mintajegyzékfájlt a következő példa szerint:
+Az alkalmazás üzembe helyezéséhez használja a [kubectl Apply][kubectl-apply] parancsot. A parancs elemzi jegyzékfájlt, és létrehozza a meghatározott Kubernetes-objektumokat. Adja meg a mintajegyzékfájlt a következő példa szerint:
 
 ```console
 kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
-Az alábbi példa kimenetében látható, az AKS-fürtöt a sikeresen létrehozott erőforrásokat:
+A következő példa kimenetében az AK-fürt sikeresen létrehozott erőforrásai láthatók:
 
 ```
 $ kubectl apply -f azure-vote-all-in-one-redis.yaml
@@ -91,7 +91,7 @@ service "azure-vote-front" created
 
 ## <a name="test-the-application"></a>Az alkalmazás tesztelése
 
-Az alkalmazás futtatásakor egy Kubernetes-szolgáltatást mutatja meg az alkalmazás előtér az internethez. A folyamat eltarthat pár percig.
+Az alkalmazás futtatásakor a Kubernetes szolgáltatás az előtér-alkalmazást az internethez teszi elérhetővé. A folyamat eltarthat pár percig.
 
 A folyamat állapotának monitorozásához használja [kubectl get service][kubectl-get] parancsot a `--watch` argumentummal.
 
@@ -99,27 +99,27 @@ A folyamat állapotának monitorozásához használja [kubectl get service][kube
 kubectl get service azure-vote-front --watch
 ```
 
-Kezdetben a *EXTERNAL-IP* számára a *azure-vote-front* szolgáltatás jelenik meg, mint *függőben lévő*:
+Kezdetben az *Azure-vote-elülső* szolgáltatás *külső IP-címe* az alábbi módon jelenikmeg:
 
 ```
-azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
+azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
-Ha a *EXTERNAL-IP* -cím módosul a *függőben lévő* egy tényleges nyilvános IP-címet használja `CTRL-C` leállítani a `kubectl` tekintse meg a folyamatot. Az alábbi példa kimenetében látható, érvényes nyilvános IP-címet rendel hozzá a szolgáltatáshoz:
+Ha a *külső IP-* cím függőben állapotról tényleges nyilvános IP-címről változik, `CTRL-C` akkor a `kubectl` figyelési folyamat leállításához használja a következőt:. A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
 
 ```
-azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
+azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
 ```
 
-Az alkalmazás működésének megtekintéséhez nyissa meg a szolgáltatás külső IP-címét egy webböngészőben:
+Az alkalmazás működés közbeni megtekintéséhez nyisson meg egy webböngészőt a szolgáltatás külső IP-címére:
 
 ![Egy Azure-beli Kubernetes-fürt képe](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-Ha az alkalmazás nem töltődött be, a regisztrációs adatbázisba egy engedélyezési problémája miatt lehet. A tárolók állapotának megtekintéséhez használja a `kubectl get pods` parancsot. Ha nem a tárolórendszerképeket le kell kérnie, [hozzáférést ad a Container Registry és a egy Kubernetes titkos](https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret).
+Ha az alkalmazás nem töltődött be, lehetséges, hogy az a rendszerkép-beállításjegyzékkel kapcsolatos hitelesítési probléma oka. A tárolók állapotának megtekintéséhez használja a `kubectl get pods` parancsot. Ha a tároló lemezképeit nem lehet lehúzni, tekintse [meg a hozzáférés engedélyezése Container Registry Kubernetes titkos kulccsal](https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy mintaalkalmazást az Azure vote az aks-ben a Kubernetes-fürtön helyeztünk üzembe. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban egy Azure vote-alkalmazást telepítettünk egy AK-beli Kubernetes-fürtre. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Kubernetes-jegyzékfájlok frissítése

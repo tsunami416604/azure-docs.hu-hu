@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: dd703420f6a02dba589d8e5ace20cbd1e384adfb
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 72b15d77baedae318d4503f2d481b08202730459
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727444"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927993"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure-beli adatbázis-biztonság – ajánlott eljárások
 Ez a cikk az adatbázis-biztonsággal kapcsolatos ajánlott eljárásokat ismerteti.
@@ -28,7 +28,7 @@ Ez a cikk az adatbázis-biztonsággal kapcsolatos ajánlott eljárásokat ismert
 Az ajánlott eljárások a vélemények konszenzusán alapulnak, és a jelenlegi Azure platform-képességekkel és-szolgáltatásokkal működnek. A vélemények és technológiák idővel változnak, és ez a cikk rendszeresen frissül, hogy tükrözze ezeket a módosításokat.
 
 ## <a name="secure-databases"></a>Biztonságos adatbázisok
-A biztonság az adatbázisok kezelésének egyik legfőbb szempontja, és mindig a [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/)prioritása. Az adatbázisok szorosan biztonságossá teszik a legtöbb szabályozási vagy biztonsági követelményt, például a HIPAA, az ISO 27001/27002-et és az 1. PCI DSS szintet. A biztonsági megfelelőségi tanúsítványok aktuális listája a [Microsoft Trust Center webhelyen](https://azure.microsoft.com/support/trust-center/services/)érhető el. Azt is megteheti, hogy az adatbázisokat meghatározott Azure-adatközpontokban helyezi el szabályozási követelmények alapján.
+A biztonság az adatbázisok kezelésének egyik legfőbb szempontja, és mindig a [Azure SQL Database](../../sql-database/index.yml)prioritása. Az adatbázisok szorosan biztonságossá teszik a legtöbb szabályozási vagy biztonsági követelményt, például a HIPAA, az ISO 27001/27002-et és az 1. PCI DSS szintet. A biztonsági megfelelőségi tanúsítványok aktuális listája a [Microsoft Trust Center webhelyen](https://azure.microsoft.com/support/trust-center/services/)érhető el. Azt is megteheti, hogy az adatbázisokat meghatározott Azure-adatközpontokban helyezi el szabályozási követelmények alapján.
 
 ## <a name="use-firewall-rules-to-restrict-database-access"></a>Tűzfalszabályok használata az adatbázis-hozzáférés korlátozásához
 A Microsoft Azure SQL Database az Azure-hoz és más internetalapú alkalmazásokhoz is biztosít egy, a kapcsolatot biztosító adatbázis-szolgáltatást. A hozzáférés biztonsága érdekében SQL Database szabályozza a hozzáférést a következőhöz:

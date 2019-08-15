@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: 75916655f1b46cd1b84220cba9db441d54486927
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 875c2002d477a95b44ad1491cb716e2ef70697e7
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735666"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954854"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>SharePoint-farm biztonsági mentése az Azure-ba a DPM használatával
 A SharePoint-farmról biztonsági mentést készíthet a System Center Data Protection Manager (DPM) szolgáltatással való Microsoft Azureére, ugyanúgy, mint az egyéb adatforrások biztonsági mentése. Azure Backup rugalmasságot biztosít a biztonsági mentési ütemezésben napi, heti, havi vagy éves biztonsági mentési pontok létrehozásához, és adatmegőrzési házirend-beállításokat biztosít a különböző biztonsági mentési pontokhoz. A DPM lehetővé teszi a helyi lemezek másolását a gyors helyreállítási idejű célkitűzésekhez (RTO), valamint a másolatok Azure-ba történő tárolását gazdaságos, hosszú távú adatmegőrzésre.
@@ -43,7 +43,7 @@ A DPM LocalSystem fiókként fut. SQL Server adatbázisok biztonsági mentéséh
 Ha a SharePoint-farm SQL Server SQL Server aliasokkal konfigurált adatbázisokkal rendelkezik, akkor telepítse a SQL Server ügyféloldali összetevőit azon az előtér-webkiszolgálón, amelyet a DPM véd.
 
 ### <a name="sharepoint-server"></a>SharePoint Server
-Míg a teljesítmény számos tényezőtől függ, például a SharePoint-farm méretétől, általános útmutatásként az egyik DPM-kiszolgáló egy 25 TB-os SharePoint-farmot is képes védelemmel ellátni.
+Míg a teljesítmény számos tényezőtől függ, például a SharePoint-farm méretétől, általános útmutatásként az egyik DPM-kiszolgáló képes a 25 TB-os SharePoint-farmok elleni védelemre.
 
 ### <a name="dpm-update-rollup-5"></a>5\. kumulatív frissítés DPM
 A SharePoint-farmok Azure-ba való védelmének megkezdéséhez telepítenie kell az 5. vagy újabb kumulatív frissítés DPM. Az 5. kumulatív frissítés lehetővé teszi a SharePoint-farmok Azure-ba való védelmének lehetőségét, ha a Farm az SQL AlwaysOn használatával van konfigurálva.

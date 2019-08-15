@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 80a04333260b7aa710c1598b64a414ce53a1037a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1dea5e174c66685f889595ab15b3edf57dd02493
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883314"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018231"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás?
 
@@ -49,15 +49,15 @@ Indítsa el a képzést a helyi gépen a <a href="https://aka.ms/aml-sdk" target
 
 Az SDK segítségével [automatizálhatja a modell betanítását és finomhangolását](tutorial-auto-train-models.md) is.
 
-### <a name="code-free--low-code-experience"></a>Kód – ingyenes/alacsony kódú élmény
+### <a name="ui-based-low-code-experience"></a>Felhasználói felület-alapú, alacsony kódú élmény
 
 A kód nélküli képzéshez próbálkozzon az alábbiakkal:
 
-+ A drag-n-drop-kísérletezés és-telepítés vizuális felülete
++ [AUTOMATIZÁLT ml-kísérletek](tutorial-first-experiment-automated-ml.md) létrehozása a könnyen használható felületen.
++ A [drag-n-drop kísérletezés a vizualizációs felületen](ui-tutorial-automobile-price-train-score.md).
+  ![Azure Machine Learning szolgáltatás vizuális felülete](media/overview-what-is-azure-ml/visual-interface.png)
 
-    ![Azure Machine Learning szolgáltatás vizuális felülete](media/overview-what-is-azure-ml/visual-interface.png)
 
-+ Az automatikus ML-kísérletek Azure Portali beállítása
 
 ### <a name="operationalization-mlops"></a>Operacionalizálási (MLOps)
 
@@ -69,10 +69,10 @@ Ezeket a modelleket felhasználhatja, és [valós időben](how-to-consume-web-se
 
 A fejlett [gépi tanulási folyamatokkal](concept-ml-pipelines.md)pedig az üzembe helyezés során az adatok előkészítése, a modell betanítása és a kiértékelés egyes lépésein is dolgozhat. A folyamatok a következőket teszik lehetővé:
 
-* a teljes körű gépi tanulási folyamat automatizálása a felhőben
-* összetevők újrafelhasználása, és csak akkor futtassa újra a lépéseket, ha szükséges
-* különböző számítási erőforrások használata az egyes lépésekben
-* batch-pontozási feladatok futtatása
+* A teljes körű gépi tanulási folyamat automatizálása a felhőben
+* Összetevők újbóli felhasználása, és szükség esetén csak a lépések újrafuttatása
+* Különböző számítási erőforrások használata az egyes lépésekben
+* Batch-pontozási feladatok futtatása
 
 A Azure Machine Learning szolgáltatás használatának megkezdéséhez tekintse meg a [következő lépéseket](#next-steps).
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ef739a7053fffdd45c6d5e144ae736429597a4f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 5daa1cf04e04507174fa480c785bd15b656541a1
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850491"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019106"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Runbook és modul-galériák Azure Automation
 
@@ -99,6 +99,15 @@ A Python-Runbookok a [Script Center](https://gallery.technet.microsoft.com/scrip
 ## <a name="requesting-a-runbook-or-module"></a>Runbook vagy modul igénylése
 
 A [felhasználói hangra](https://feedback.azure.com/forums/246290-azure-automation/)vonatkozó kéréseket küldhet.  Ha segítségre van szüksége egy runbook írásához vagy a PowerShell-lel kapcsolatos kérdésben, tegye fel kérdéseit a [fórumba](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).
+
+## <a name="common-solutions-available-in-the-runbook-gallery"></a>A runbook-katalógusban elérhető gyakori megoldások
+
+Az alábbi lista néhány olyan runbookok tartalmaz, amely a gyakori forgatókönyvekhez nyújt megoldásokat. Az Azure Automation csapat által létrehozott runbookok teljes listáját lásd: [AzureAutomationTeam-profil](https://www.powershellgallery.com/profiles/AzureAutomationTeam).
+
+* [Update-ModulesInAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/) – az Automation-fiók összes moduljának PowerShell-Galéria legújabb verzióját importálja.
+* [Enable-AzureDiagnostics](https://www.powershellgallery.com/packages/Enable-AzureDiagnostics/) – ez a parancsfájl Azure Diagnostics és log Analyticst konfigurál a feladatok állapotát és a feladatokat tartalmazó naplók Azure Automation fogadásához.
+* [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemFromAzureVM/) – ez a runbook egy távoli fájlt másol egy Windows Azure-beli virtuális gépről.
+* [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) – a runbook egy helyi fájlt másol egy Azure-beli virtuális gépre.
 
 ## <a name="next-steps"></a>További lépések
 

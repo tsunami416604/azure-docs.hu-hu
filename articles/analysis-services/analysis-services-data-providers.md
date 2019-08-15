@@ -1,96 +1,96 @@
 ---
-title: Az Azure Analysis Services történő csatlakozáshoz szükséges klienskódtárak |} A Microsoft Docs
-description: Ismerteti a szükséges ügyfél-alkalmazások és az eszközök csatlakozni az Azure Analysis Services ügyfélkódtárak
+title: Azure Analysis Serviceshoz való csatlakozáshoz szükséges ügyféloldali kódtárak | Microsoft Docs
+description: Az ügyfélalkalmazások és eszközök kapcsolódásához szükséges ügyféloldali kódtárakat ismerteti Azure Analysis Services
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 06/05/2019
+ms.date: 08/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: db2557bd34cace220b1c9e5f7e6932dd63d9f89c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7f90c5ecb3c53792ca819eeba98b5f21f548473
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734537"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987499"
 ---
-# <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Kapcsolódás az Azure Analysis Services ügyfélkódtárak
+# <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Az Azure Analysis Serviceshoz való csatlakozáshoz használható ügyféloldali kódtárak
 
-Ügyféloldali függvénytárak is ügyfél alkalmazások és eszközök Analysis Services-kiszolgálókhoz való kapcsolódáshoz szükséges. Microsoft-ügyfélalkalmazások, mint a Power BI Desktop, Excel, az SQL Server Management Studio (SSMS), és az SQL Server Data Tools (SSDT) telepítése mindhárom ügyfélkódtárat, és frissítse azokat rendszeres alkalmazásfrissítéseknél együtt. Bizonyos esetekben szükség lehet a klienskódtárak újabb verzióját telepítse. Egyéni ügyfélalkalmazások számára is szükséges, ügyféloldali függvénytárak telepítve vannak.
+Az ügyfélalkalmazások és eszközök Analysis Services kiszolgálókhoz való kapcsolódáshoz szükségesek. A Microsoft-ügyfélalkalmazások, például az Power BI Desktop, az Excel, a SQL Server Management Studio (SSMS) és a SQL Server Data Tools (SSDT) mind a három ügyféloldali kódtárat telepítik, és a rendszeres alkalmazás-frissítésekkel együtt frissítik azokat. Bizonyos esetekben előfordulhat, hogy az ügyféloldali kódtárak újabb verzióit kell telepítenie. Az egyéni ügyfélalkalmazások esetében az ügyféloldali kódtárak is telepítve vannak.
 
-## <a name="download-the-latest-client-libraries-windows-installer"></a>Töltse le a legújabb klienskódtárak (Windows Installer)  
+## <a name="download-the-latest-client-libraries-windows-installer"></a>A legújabb ügyféloldali kódtárak letöltése (Windows Installer)  
 
-|Letöltés  |Termékverzió  | 
+|Letöltés  |Termék verziószáma  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.24.20    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.24.20      |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   16.3.0.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    16.3.0.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.33.23    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.33.23      |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.0.2.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.0.2.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO és ADOMD (NuGet-csomagok)
 
-Analysis Services Management Objects (AMO) és ADOMD ügyféloldali függvénytárak is telepíthető csomagokat az elérhető [NuGet.org](https://www.nuget.org/). Ajánlott NuGet hivatkozások helyett a Windows Installer használatával telepíti át. 
+A Analysis Services Management Objects (AMO) és a ADOMD ügyféloldali kódtárak telepíthető csomagokként érhetők el a [NuGet.org](https://www.nuget.org/). Javasoljuk, hogy a Windows Installer használata helyett NuGet referenciákat telepítsen. 
 
-|Csomag  | Termékverzió  | 
+|Csomag  | Termék verziószáma  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    16.3.0     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   16.3.0      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.0.2     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.0.2      |
 
-NuGet-csomag szerelvények AssemblyVersion Szemantikus verziószámozást kövesse: MAJOR.MINOR.PATCH. NuGet-hivatkozásokat a várt verzió betölteni, akkor is, ha van egy másik verziója (MSI telepítése eredő) a GAC-ban. JAVÍTÁS értéke akkor növekszik, egyes kiadásaihoz. AMO és ADOMD-verziók őrzi meg a szinkronizálva.
+NuGet-csomag szerelvények AssemblyVersion a szemantikai verziószámozás követése: FŐ. KISEBB. JAVÍTÁS. A NuGet-hivatkozások akkor is betöltik a várt verziót, ha a GAC-ban (az MSI telepítése miatt) egy másik verziója van. A javítás minden kiadásnál növekszik. Az AMO-és ADOMD-verziók szinkronban vannak tárolva.
 
-## <a name="understanding-client-libraries"></a>Ügyfélkódtárak ismertetése
+## <a name="understanding-client-libraries"></a>Az ügyféloldali kódtárak ismertetése
 
-Analysis Services használatához három ügyfél szalagtárakban adatszolgáltatók néven is ismert. ADOMD.NET és az Analysis Services Management Objects (AMO) olyan felügyelt klienskódtárak. Az Analysis Services OLE DB-szolgáltató (MSOLAP DLL) egy natív ügyféloldali kódtár. Általában három telepített egy időben. **Az Azure Analysis Services igényel minden három kódtárak legújabb verzióit**. 
+A Analysis Services három ügyféloldali kódtárat (más néven adatszolgáltatót) használ. A ADOMD.NET és a Analysis Services Felügyeleti objektumok (AMO) felügyelt ügyféloldali kódtárak. A Analysis Services OLE DB-szolgáltató (MSOLAP DLL) egy natív ügyféloldali kódtár. Általában mindhárom telepítése egyszerre történik. **Azure Analysis Services a mindhárom függvénytár legújabb verzióit igényli**. 
 
-A Microsoft ügyfélalkalmazások, mint a Power BI Desktop és az Excel mindhárom ügyfélkódtárat telepítse, és frissítse azokat, ha elérhetővé válik az új verziók. A verzió vagy a frissítések gyakoriságát, attól függően néhány ügyfélkódtárai nem lehet a legújabb, az Azure Analysis Services használatához szükséges verzió. Ugyanez vonatkozik az egyéni alkalmazásokra vagy olyan egyéb felületekre, mint például az AsCmd, a TOM vagy az ADOMD.NET. Ezekhez az alkalmazásokhoz igényelnek, manuálisan vagy programon keresztül telepíti a kódtárakat. A klienskódtárak manuális telepítéséhez SQL Server funkciócsomagok terjeszthető csomag megtalálhatók. Azonban ezen klienskódtárak vannak társítva, az SQL Server-verzióra, és nem lehet a legújabb.  
+A Microsoft ügyfélalkalmazások, például a Power BI Desktop és az Excel mind a három ügyféloldali kódtárat telepítik, és új verziók esetén frissítik azokat. A verziótól vagy a frissítések gyakoriságtól függően előfordulhat, hogy egyes ügyféloldali kódtárak nem a Azure Analysis Services által igényelt legújabb verziók. Ugyanez vonatkozik az egyéni alkalmazásokra vagy olyan egyéb felületekre, mint például az AsCmd, a TOM vagy az ADOMD.NET. Ezeknek az alkalmazásoknak manuálisan vagy programozott módon kell telepíteniük a kódtárakat. A manuális telepítéshez szükséges ügyféloldali kódtárak a SQL Server szervizcsomagok terjeszthető csomagként szerepelnek. Ezek az ügyféloldali kódtárak azonban a SQL Server verziójához vannak kötve, és előfordulhat, hogy nem a legújabbak.  
 
-Ügyfélkapcsolatok ügyféloldali függvénytárak is adatforrásként az Azure Analysis Services-kiszolgáló eléréséhez szükséges adatszolgáltatóktól származó különböző. Adatforrás-kapcsolatok kapcsolatos további információkért lásd: [adatforrás-kapcsolatok](analysis-services-datasource.md).
+Az ügyfélkapcsolatok ügyféloldali kódtárai eltérnek a Azure Analysis Services kiszolgálóról az adatforráshoz való csatlakozáshoz szükséges adatszolgáltatóktól. További információ a DataSource-kapcsolatokról: [adatforrás-kapcsolatok](analysis-services-datasource.md).
 
-## <a name="client-library-types"></a>Ügyféloldali kódtár típusok
+## <a name="client-library-types"></a>Ügyféloldali függvénytár-típusok
 
 ### <a name="analysis-services-ole-db-provider-msolap"></a>Analysis Services OLE DB-szolgáltató (MSOLAP) 
 
- Analysis Services OLE DB szolgáltató (MSOLAP) a natív ügyféloldali kódtár, az Analysis Services-adatbázis-kapcsolat. Használható közvetve ADOMD.NET és AMO, az adatszolgáltató a kapcsolati kérelmek delegálása is. Az OLE DB-szolgáltató közvetlenül az alkalmazás kódja is meghívható.  
+ A Analysis Services OLE DB-szolgáltató (MSOLAP) a natív ügyféloldali kódtár Analysis Services adatbázis-kapcsolatokhoz. Ezt a ADOMD.NET és az AMO is használja, és a kapcsolódási kérelmeket az adatszolgáltatóhoz delegálja. A OLE DB szolgáltatót közvetlenül az alkalmazás kódjából is meghívhatja.  
   
- Az Analysis Services OLE DB-szolgáltató automatikusan települ a legtöbb eszközök és az Analysis Services-adatbázis eléréséhez használt ügyfél-alkalmazások. Analysis Services-adatok elérésére használt számítógépekre kell telepíteni.  
+ A Analysis Services OLE DB-szolgáltató a legtöbb eszköz és a Analysis Services adatbázisok eléréséhez használt ügyfélalkalmazások által automatikusan települ. A Analysis Services-adateléréshez használt számítógépeken telepítve kell lennie.  
   
- Kapcsolati karakterláncok OLE DB-szolgáltatók gyakran meg van adva. Egy Analysis Services-kapcsolati sztringet, tekintse meg az OLE DB-szolgáltató különböző elnevezéseket használja: MSOLAP. \<verzió > .dll.
+ A OLE DB szolgáltatók gyakran vannak megadva a kapcsolatok karakterláncokban. Egy Analysis Services kapcsolódási karakterlánc egy másik nómenklatúrát használ, amely a OLE DB szolgáltatóra hivatkozik: MSOLAP. \<a >. dll verziója.
 
 ### <a name="amo"></a>AMO  
 
- AMO egy felügyeleti kiszolgáló és az adatok meghatározása használt felügyelt klienskódtár. Eszközök és az ügyfélalkalmazások által használt, és telepítve. Például az SQL Server Management Studio (SSMS) AMO Analysis Serviceshez való csatlakozáshoz használ. Egy AMO használatával kapcsolat általában minimális, amely `"data source=\<servername>"`. A kapcsolat létrejötte után az API-t használhatja az adatbázis-gyűjtemények és főobjektumok használata. Az SSDT és az SSMS AMO használatával csatlakozhat egy Analysis Services-példányhoz.  
+ Az AMO a kiszolgálók felügyeletéhez és az adatdefinícióhoz használt felügyelt ügyféloldali kódtár. Az eszközök és ügyfélalkalmazások telepítik és használják. Például SQL Server Management Studio (SSMS) az AMO-t használja a Analysis Serviceshoz való kapcsolódáshoz. Az AMO-t használó kapcsolatok jellemzően minimálisak, `"data source=\<servername>"`amely a-ból áll. A kapcsolatok létrehozása után az API-val dolgozhat az adatbázis-gyűjtemények és a főbb objektumok használatával. A SSDT és a SSMS egyaránt az AMO használatával csatlakozhat egy Analysis Services-példányhoz.  
 
   
 ### <a name="adomd"></a>ADOMD
 
- ADOMD.NET egy felügyelt adatok ügyféloldali kódtár Analysis Services-adatok lekérdezésekhez használja fel. Eszközök és az ügyfélalkalmazások által használt, és telepítve. 
+ A ADOMD.NET egy felügyelt adatügyfél-függvénytár Analysis Services-adatlekérdezéshez. Az eszközök és ügyfélalkalmazások telepítik és használják. 
   
- Ha csatlakozik egy adatbázishoz, a kapcsolati karakterlánc tulajdonságai az összes három szalagtárra hasonlóak. Szinte bármilyen kapcsolati karakterlánc használatával tartozó ADOMD.NET meghatározása [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) AMO és az Analysis Services OLE DB szolgáltató (MSOLAP) is működik. További tudnivalókért lásd: [kapcsolati karakterlánc tulajdonságai &#40;Analysis Services&#41;](https://docs.microsoft.com/sql/analysis-services/instances/connection-string-properties-analysis-services).  
+ Adatbázishoz való kapcsolódáskor a kapcsolati sztring tulajdonságai mindhárom könyvtárhoz hasonlóak. Szinte minden, a [Microsoft. AnalysisServices. AdomdClient. AdomdConnection. ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) használatával ADOMD.net definiált kapcsolati karakterlánc az amo és a ANALYSIS Services OLE DB-szolgáltató (MSOLAP) esetében is működik. További információ: a [kapcsolódási karakterlánc tulajdonságai &#40;Analysis Services&#41;](https://docs.microsoft.com/analysis-services/instances/connection-string-properties-analysis-servicess).  
 
   
-##  <a name="bkmk_LibUpdate"></a> Szalagtár ügyfélverzió meghatározása   
+##  <a name="bkmk_LibUpdate"></a>Az ügyféloldali kódtár verziójának meghatározása   
   
 ### <a name="oleddb-msolap"></a>OLEDDB (MSOLAP)  
   
-1.  Nyissa meg a következőt: `C:\Program Files\Microsoft Analysis Services\AS OLEDB\`. Ha egynél több mappát, válassza ki a nagyobb számra.
+1.  Nyissa meg a következőt: `C:\Program Files\Microsoft Analysis Services\AS OLEDB\`. Ha egynél több mappával rendelkezik, válassza a nagyobb számot.
   
-2.  Kattintson a jobb gombbal **msolap.dll** > **tulajdonságok** > **részletek**. Ha a fájlnév msolap140.dll, régebbi, mint a legújabb verzióra, és frissíteni kell.
+2.  Kattintson a jobb gombbal a **MSOLAP. dll** > **Tulajdonságok** > **részletei**elemre. Ha a fájlnév a msolap140. dll, a legújabb verziónál régebbi, és frissíteni kell.
     
-    ![Ügyfél-könyvtár részletei](media/analysis-services-data-providers/aas-msolap-details.png)
+    ![Ügyféloldali kódtár részletei](media/analysis-services-data-providers/aas-msolap-details.png)
     
   
 ### <a name="amo"></a>AMO
 
-1. Nyissa meg a következőt: `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\`. Ha egynél több mappát, válassza ki a nagyobb számra.
-2. Kattintson a jobb gombbal **Microsoft.AnalysisServices** > **tulajdonságok** > **részletek**.  
+1. Nyissa meg a következőt: `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\`. Ha egynél több mappával rendelkezik, válassza a nagyobb számot.
+2. Kattintson a jobb gombbal a **Microsoft. AnalysisServices** > **Tulajdonságok** > **részletei**elemre.  
 
 ### <a name="adomd"></a>ADOMD
 
-1. Nyissa meg a következőt: `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\`. Ha egynél több mappát, válassza ki a nagyobb számra.
-2. Kattintson a jobb gombbal **Microsoft.AnalysisServices.AdomdClient** > **tulajdonságok** > **részletek**.  
+1. Nyissa meg a következőt: `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\`. Ha egynél több mappával rendelkezik, válassza a nagyobb számot.
+2. Kattintson a jobb gombbal a **Microsoft. AnalysisServices. AdomdClient** > **Tulajdonságok** > **részletei**elemre.  
 
 
 ## <a name="next-steps"></a>További lépések
-[Csatlakozás az Excellel](analysis-services-connect-excel.md)    
+[Az Excelben való kapcsolat](analysis-services-connect-excel.md)    
 [Kapcsolódás PowerBI-jal](analysis-services-connect-pbi.md)

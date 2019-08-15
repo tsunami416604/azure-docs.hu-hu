@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
-ms.date: 07/07/2019
+ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 822b8bd1d0f5be854b6d345d68fcdb680b2ef1c4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1581a62f0999cf502feaad31d2c884f4d171e770
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882566"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019657"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database felügyelt példányok T-SQL eltérései SQL Server
 
@@ -146,7 +146,7 @@ A felügyelt példányok nem férhetnek hozzá a fájlokhoz, így a titkosítás
 - Egy Azure ad-csoportra leképezett Azure AD-bejelentkezés beállítása, mivel az adatbázis tulajdonosa nem támogatott.
 - Az Azure AD-kiszolgáló rendszerbiztonsági tagjainak más Azure AD-rendszerbiztonsági tag használatával történő megszemélyesítése támogatott, például a [Execute as](/sql/t-sql/statements/execute-as-transact-sql) záradékkal. A végrehajtás korlátozásként:
 
-  - Az Azure AD-felhasználók nem támogatják a (z) rendszerbeli VÉGREHAJTÁSt, ha a név eltér a bejelentkezési névvel. Ilyen eset például, amikor a felhasználó létrehozása a [myAadUser] szintaxissal történik a login [john@contoso.com] típusból, és a megszemélyesítést a User = _myAadUser_ exec használatával kísérli meg. Amikor létrehoz egy **felhasználót** egy Azure ad-kiszolgálói rendszerbiztonsági tag (login) alapján, a felhasználónévvel azonos login_name kell megadnia a **bejelentkezéshez**.
+  - Az Azure AD-felhasználók nem támogatják a (z) rendszerbeli VÉGREHAJTÁSt, ha a név eltér a bejelentkezési névvel. Ilyen eset például, amikor a felhasználó létrehozása a [myAadUser] szintaxissal történik a login [john@contoso.com] típusból, és a megszemélyesítést a User = _myAadUser_exec használatával kísérli meg. Amikor létrehoz egy **felhasználót** egy Azure ad-kiszolgálói rendszerbiztonsági tag (login) alapján, a felhasználónévvel azonos login_name kell megadnia a **bejelentkezéshez**.
   - Csak a `sysadmin` szerepkör részét képező SQL Server szintű rendszerbiztonsági tag (login) futhat a következő, az Azure ad-résztvevőket megcélzó műveletek:
 
     - VÉGREHAJTÁS FELHASZNÁLÓKÉNT
@@ -309,12 +309,12 @@ További információ a SQL Server Agentről: [SQL Server Agent](https://docs.mi
 
 ### <a name="tables"></a>Táblák
 
-A következő táblázatok nem támogatottak:
+A következő táblázat típusok nem támogatottak:
 
-- `FILESTREAM`
-- `FILETABLE`
-- `EXTERNAL TABLE`
-- `MEMORY_OPTIMIZED` 
+- [FILESTREAM](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server)
+- [FILETABLE](https://docs.microsoft.com/sql/relational-databases/blob/filetables-sql-server)
+- [külső tábla](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) Polybase
+- [MEMORY_OPTIMIZED](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables) (csak általános célú szinten támogatott)
 
 A táblázatok létrehozásával és módosításával kapcsolatos további információkért lásd: [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) és [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
 
@@ -468,10 +468,13 @@ A következő adatbázis-beállítások vannak beállítva vagy felülbírálva,
 
 Korlátozások 
 
+- Előfordulhat, hogy a sérült adatbázisok biztonsági másolatait a rendszer a sérülés típusától függően visszaállítja, az automatikus biztonsági mentések azonban nem lesznek elvégezve, amíg a sérülés nem lesz kijavítva. Győződjön meg arról, hogy `DBCC CHECKDB` a forrás példányon fut, és `WITH CHECKSUM` használja a biztonsági mentést a probléma megelőzése érdekében.
+- A dokumentumban ismertetett korlátozásokat ( `FILESTREAM` például vagy `FILETABLE` objektumokat) tartalmazó adatbázis fájljánakvisszaállításanemállíthatóvisszaafelügyeltpéldányon.`.BAK`
 - `.BAK`a több biztonságimásolat-készletet tartalmazó fájlok nem állíthatók vissza. 
 - `.BAK`a több naplófájlt tartalmazó fájlok nem állíthatók vissza.
-- A visszaállítás sikertelen, ha a `FILESTREAM` . bak tartalmaz egy adatkészletet.
-- Az aktív memóriában lévő objektumokkal rendelkező adatbázisokat tartalmazó biztonsági másolatok nem állíthatók vissza általános célú példányon. További információ a visszaállítási utasításokról: [Restore utasítások](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
+- A 8TB tárhely-nél nagyobb adatbázisok, aktív memóriában lévő OLTP-objektumok vagy több mint 280-es fájlok tárolására szolgáló biztonsági másolatok nem állíthatók vissza általános célú példányon. 
+- A 4TB vagy memóriában lévő OLTP-objektumoknál nagyobb méretű adatbázisokat tartalmazó biztonsági másolatok az [erőforrás](sql-database-managed-instance-resource-limits.md) -korlátokban leírt méretnél nagyobb teljes mérettel nem állíthatók vissza üzletileg kritikus példányon.
+További információ a visszaállítási utasításokról: [Restore utasítások](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
 
 ### <a name="service-broker"></a>Service Broker
 
@@ -548,11 +551,6 @@ Ebben a példában a meglévő adatbázisok továbbra is működőképesek marad
 
 [A fennmaradó fájlok számát](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) a rendszernézetek használatával is meghatározhatja. Ha eléri ezt a korlátot, próbálja meg [üresen hagyni, és töröljön néhány kisebb fájlt a DBCC SHRINKFILE utasítás használatával](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) , vagy váltson a [üzletileg kritikus szintjére, amely nem rendelkezik ezzel](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)a korláttal.
 
-### <a name="incorrect-configuration-of-the-sas-key-during-database-restore"></a>Az SAS-kulcs konfigurációja helytelen az adatbázis-visszaállítás során
-
-`RESTORE DATABASE`Előfordulhat, hogy a. bak fájl olvasása folyamatosan újra próbálkozik a. bak fájl olvasásával, és hosszú idő elteltével hibát ad vissza, ha a megosztott hozzáférés aláírása `CREDENTIAL` helytelen. Az adatbázis visszaállítása előtt futtassa a VISSZAÁLLÍTÁSi HEADERONLY, és győződjön meg arról, hogy az SAS-kulcs helyes.
-Győződjön meg arról, hogy eltávolítja a `?` vezetőt a Azure Portal használatával létrehozott sas-kulcsból.
-
 ### <a name="tooling"></a>Eszközök
 
 Előfordulhat, hogy a SQL Server Management Studio és SQL Server Data Tools bizonyos problémákba ütközik a felügyelt példányokhoz való hozzáférés során.
@@ -624,11 +622,6 @@ A felügyelt példányba helyezett CLR-modulok, valamint az aktuális példányr
 Nem hajtható végre `BACKUP DATABASE ... WITH COPY_ONLY` olyan adatbázis, amely a szolgáltatás által felügyelt transzparens adattitkosítással (TDE) van titkosítva. A szolgáltatás által felügyelt TDE a biztonsági mentések belső TDE-kulccsal lesznek titkosítva. A kulcs nem exportálható, így a biztonsági mentés nem állítható vissza.
 
 **Workaround** Használjon automatikus biztonsági mentést és időponthoz való visszaállítást, vagy használja helyette az [ügyfél által felügyelt (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) . Emellett letilthatja a titkosítást az adatbázison.
-
-### <a name="point-in-time-restore-follows-time-by-the-time-zone-set-on-the-source-instance"></a>Az időponthoz való visszaállítás a forrás példányon beállított időzóna szerinti időt követi.
-
-Az időponthoz való visszaállítás jelenleg a forrás példány következő időzónáját követi az UTC szerint.
-További részletekért lásd a [felügyelt példány időzónájának ismert problémáit](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone#known-issues) .
 
 ## <a name="next-steps"></a>További lépések
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: zarhoads
-ms.openlocfilehash: a9cf3db3a15fab5a2f067a146950e02923a20379
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4e234d3849e09bd8c57a8c33bb378ab801ce0f6d
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "67476808"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019467"
 ---
 # <a name="preview---use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Előzetes verzió – szabványos SKU Load Balancer használata az Azure Kubernetes Service-ben (ak)
 
@@ -92,6 +92,7 @@ A következő korlátozások érvényesek a terheléselosztó és a *szabványos
 
 * A terheléselosztó *szabványos* SKU-jának használatakor engedélyeznie kell a nyilvános címeket, és el kell kerülnie az IP-létrehozást megtiltó Azure Policy létrehozását. Az AK-fürt automatikusan létrehoz egy *szabványos* SKU nyilvános IP-címet ugyanabban az erőforráscsoporthoz, amely az AK-fürthöz lett létrehozva, amely általában a *MC_* elején szerepel. Az AK a nyilvános IP-címet a *standard* SKU Load Balancerhez rendeli. A nyilvános IP-cím szükséges ahhoz, hogy engedélyezi a kimenő forgalmat az AK-fürtről. Ez a nyilvános IP-cím a vezérlési sík és az ügynök csomópontjai közötti kapcsolat fenntartásához is szükséges, valamint az AK korábbi verzióival való kompatibilitás fenntartásához.
 * A terheléselosztó *szabványos* SKU-jának használatakor a Kubernetes 1.13.5 vagy újabb verzióját kell használnia.
+* Ha a [Node nyilvános IP-szolgáltatást](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool) standard terheléselosztó használatával használja, BEÁLLÍTHAT egy SLB kimenő szabályt vagy egy nyilvános IP-címet a csomóponthoz. Ki kell választania egyet vagy a másikat, mert egy virtuális gép nem csatlakoztatható egyszerre egy SLB kimenő szabályhoz és egy nyilvános IP-címhez.
 
 Habár ez a funkció előzetes verzióban érhető el, a következő további korlátozások érvényesek:
 
@@ -135,7 +136,6 @@ az aks create \
     --name myAKSCluster \
     --enable-vmss \
     --node-count 1 \
-    --kubernetes-version 1.14.0 \
     --load-balancer-sku standard \
     --generate-ssh-keys
 ```
@@ -166,7 +166,7 @@ A következő példakimenet az előző lépésekben létrehozott csomópontot mu
 
 ```
 NAME                       STATUS   ROLES   AGE     VERSION
-aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.14.0
+aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.13.9
 ```
 
 ## <a name="verify-your-cluster-uses-the-standard-sku"></a>Ellenőrizze, hogy a fürt a *szabványos* SKU-t használja-e

@@ -1,6 +1,6 @@
 ---
-title: Service Fabric szolgáltatási végpontjainak megadása |} A Microsoft Docs
-description: Hogyan leírására végpont erőforrások szolgáltatásjegyzékben, illetve a HTTPS-végpontok beállítása
+title: Service Fabric szolgáltatási végpontok meghatározása | Microsoft Docs
+description: A végponti erőforrások leírása a szolgáltatás jegyzékfájljában, beleértve a HTTPS-végpontok beállítását is
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,19 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 8707a9cb90afe1bf72f3aef6377f8ada409a1c64
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82b6e701a5f76aa4c2cea78417ca9bcbeeb10308
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837759"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927695"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Erőforrások meghatározása szolgáltatásjegyzékben
 ## <a name="overview"></a>Áttekintés
-A szolgáltatásjegyzék lehetővé teszi, hogy a deklarált vagy módosítani kell a lefordított kód módosítása nélkül a szolgáltatás által használt erőforrások. Az Azure Service Fabric támogatja a végpont erőforrások a szolgáltatás. A szolgáltatásjegyzék megadott erőforrásokhoz való hozzáférés a SecurityGroup az alkalmazásjegyzékben keresztül lehet irányítani. A nyilatkozat az erőforrások ezekhez az erőforrásokhoz való módosítható üzembe helyezéskor, ami azt jelenti, a szolgáltatás nem szükséges, vezessen be egy új konfigurációs mechanizmusa lehetővé teszi. Az objektumhoz a ServiceManifest.xml fájlban sémadefiníciója telepítve van a Service Fabric SDK és -eszközök *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
+A szolgáltatás jegyzékfájlja lehetővé teszi, hogy a szolgáltatás a lefordított kód módosítása nélkül deklarálja/módosítsa a szolgáltatás által használt erőforrásokat. Az Azure Service Fabric támogatja a végponti erőforrások konfigurációját a szolgáltatáshoz. A szolgáltatás jegyzékfájljában megadott erőforrásokhoz való hozzáférést az alkalmazás jegyzékfájljának SecurityGroup keresztül lehet szabályozni. Az erőforrások deklarációja lehetővé teszi, hogy ezeket az erőforrásokat a központi telepítési időpontra módosítsák, ami azt jelenti, hogy a szolgáltatásnak nincs szüksége új konfigurációs mechanizmus bevezetésére. A ServiceManifest. xml fájl sémájának definíciója a *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*Service Fabric SDK-val és-eszközökkel együtt települ.
 
 ## <a name="endpoints"></a>Végpontok
-A szolgáltatásjegyzék-végponti erőforrás van definiálva, amikor a Service Fabric rendeli hozzá a portokat a fenntartott tartománya, ha a port nincs megadva explicit módon. Például, tekintse meg a végpont *ServiceEndpoint1* a fürtjegyzék kódrészlete a bekezdés utáni nyújtott megadott. Ezenkívül szolgáltatások is kérheti egy erőforrás egy adott portot. Különböző fürtcsomóponton futó szolgáltatás replikára rendelhetők különböző portszámokat, miközben ugyanazon a csomóponton futó szolgáltatás replikák megosztása a portot. A szolgáltatás replikák használhatja ezeket a portokat szükséges replikáció és a figyelő az ügyféli kérelmek részére.
+Ha egy végponti erőforrás van definiálva a szolgáltatás jegyzékfájljában, akkor Service Fabric a fenntartott alkalmazás-porttartomány portjait rendeli hozzá, ha nincs explicit módon megadva port. Tekintse meg például az ezen bekezdés után megadott manifest-kódrészletben megadott végpont *ServiceEndpoint1* . Emellett a szolgáltatások egy adott portot is igényelhetnek egy adott erőforrásban. A különböző fürtcsomópontokon futó szolgáltatási replikák különböző portszámokhoz rendelhetők, míg az ugyanazon a csomóponton futó szolgáltatás replikái megoszthatják a portot. A szolgáltatási replikák ezt követően igény szerint használhatják ezeket a portokat a replikáláshoz és az ügyfelek kéréseinek figyeléséhez.
+
+> [!WARNING] 
+> A statikus portok megtervezése nem fedi át a ClusterManifest megadott alkalmazási porttartomány tartományát. Ha statikus portot ad meg, az alkalmazás-porttartomány kívülre rendeli, ellenkező esetben a port ütközéseket eredményez. A Release 6.5 CU2 esetében az ütközés észlelése után **Figyelmeztetés** jelenik meg, de az üzemelő példány szinkronizálása a szállított 6,5-viselkedéssel folytatódik. Előfordulhat azonban, hogy az alkalmazás központi telepítését a következő jelentős kiadásokból meggátoljuk.
+>
 
 ```xml
 <Resources>
@@ -38,7 +42,7 @@ A szolgáltatásjegyzék-végponti erőforrás van definiálva, amikor a Service
 </Resources>
 ```
 
-Ha több kódcsomagok egyetlen szolgáltatási csomagban vannak, akkor a kódcsomag is meg lehet hivatkozni a **végpontok** szakaszban.  Például ha **ServiceEndpoint2a** és **ServiceEndpoint2b** a ugyanazon csomag hivatkozik másik kódot csomagok, a megfelelő végpontot kódcsomag végpontjainak van pontosítva az alábbiak szerint:
+Ha egyetlen szervizcsomagban több kód is található, akkor azt is a **végpontok** szakaszban kell hivatkozni.  Ha például a **ServiceEndpoint2a** és a **ServiceEndpoint2b** azonos szervizcsomagból származó végpontok eltérő kódú csomagokra hivatkoznak, akkor az egyes végpontoknak megfelelő programkódot a következőképpen pontosítjuk:
 
 ```xml
 <Resources>
@@ -49,12 +53,12 @@ Ha több kódcsomagok egyetlen szolgáltatási csomagban vannak, akkor a kódcso
 </Resources>
 ```
 
-Tekintse meg [állapotalapú Reliable Services konfigurálása](service-fabric-reliable-services-configuration.md) olvasható további információ a konfigurációs csomag beállítások végpontok hivatkozó fájlt (settings.xml).
+Tekintse át az [állapot-nyilvántartó Reliable Services konfigurálását](service-fabric-reliable-services-configuration.md) , ha többet szeretne megtudni a végpontokról a konfigurációs csomag beállítási fájljáról (Settings. xml).
 
-## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Példa: Adjon meg egy HTTP-végpontot a szolgáltatáshoz
-A következő Szolgáltatásjegyzék meghatározza egy TCP-végpont erőforrás és a két HTTP-végpont erőforrást a &lt;erőforrások&gt; elemet.
+## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Példa: HTTP-végpont megadása a szolgáltatáshoz
+A következő szolgáltatási jegyzékfájl egy TCP-végponti erőforrást és két http-végponti&gt; erőforrást határoz meg az &lt;erőforrások elemben.
 
-HTTP-végpontokat a program automatikusan ACL-t a Service Fabric által lenne.
+A HTTP-végpontok Service Fabric automatikusan ACL-t kapnak.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -100,18 +104,18 @@ HTTP-végpontokat a program automatikusan ACL-t a Service Fabric által lenne.
 </ServiceManifest>
 ```
 
-## <a name="example-specifying-an-https-endpoint-for-your-service"></a>Példa: a szolgáltatás HTTPS-végpont megadása
-A HTTPS protokollt kiszolgálói hitelesítést biztosít, és ügyfél – kiszolgáló kommunikáció titkosítására is használja. A Service Fabric-szolgáltatás a HTTPS engedélyezéséhez adja meg, a protokoll a *erőforrás -> Végpontok -> Endpoint* a szolgáltatásjegyzék, ahogy ezt korábban a végpont szakaszában *ServiceEndpoint3*.
+## <a name="example-specifying-an-https-endpoint-for-your-service"></a>Példa: HTTPS-végpont megadása a szolgáltatáshoz
+A HTTPS protokoll kiszolgáló-hitelesítést biztosít, és az ügyfél-kiszolgáló kommunikáció titkosítására is használható. Ha engedélyezni szeretné a HTTPS-t a Service Fabric szolgáltatáson, adja meg a protokollt a szolgáltatás jegyzékfájljának *erőforrások-> végpontok-> végpont* szakaszában, ahogy azt a végpont *ServiceEndpoint3*korábban is mutatja.
 
 > [!NOTE]
-> A szolgáltatás-protokoll nem módosítható az alkalmazásfrissítés során. Ha a frissítés során módosul, használhatatlanná tévő változást.
+> A szolgáltatás protokollja nem módosítható az alkalmazások frissítése közben. Ha a frissítés során módosul, akkor ez a változás megszakítása.
 > 
 
 > [!WARNING] 
-> HTTPS használata esetén ne használjon port és a különböző szolgáltatáspéldányok (amely független az alkalmazás) ugyanazon a csomóponton telepített tanúsítványt. Két különböző szolgáltatások, a különböző alkalmazáspéldányok ugyanazt a portot használja a frissítés frissítési hibát eredményez. További információkért lásd: [frissítése több alkalmazás, a HTTPS-végpontok ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
+> HTTPS használata esetén ne használja ugyanazt a portot és tanúsítványt az azonos csomópontra telepített különböző szolgáltatási példányokhoz (az alkalmazástól függetlenül). Ha két különböző szolgáltatást frissít a különböző alkalmazás-példányok ugyanazon portjával, a frissítés sikertelen lesz. További információ: [több alkalmazás frissítése HTTPS ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints)-végpontokkal.
 >
 
-Íme egy példa ApplicationManifest, be kell állítania a HTTPS-hez. A tanúsítvány ujjlenyomatát kötelező megadni. A EndpointRef eszköztáblára mutató hivatkozás EndpointResource a ServiceManifest, amelynek beállítása a HTTPS protokollt. Egynél több EndpointCertificate adhat hozzá.  
+Íme egy példa a HTTPS-re vonatkozó ApplicationManifest. Meg kell adni a tanúsítvány ujjlenyomatát. A EndpointRef a ServiceManifest EndpointResource mutató hivatkozás, amelyhez a HTTPS protokollt be kell állítani. Egyszerre több EndpointCertificate is hozzáadhat.  
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -153,16 +157,16 @@ A HTTPS protokollt kiszolgálói hitelesítést biztosít, és ügyfél – kisz
 </ApplicationManifest>
 ```
 
-A Linux-fürtök esetén a **MY** tárolja a mappát az alapértelmezett érték **/var/lib/sfcerts**.
+Linux-fürtök esetén a **saját** áruház alapértelmezett értéke a **/var/lib/sfcerts**mappa.
 
 
-## <a name="overriding-endpoints-in-servicemanifestxml"></a>A ServiceManifest.xml végpontok felülbírálása
+## <a name="overriding-endpoints-in-servicemanifestxml"></a>Végpontok felülbírálása a ServiceManifest. xml fájlban
 
-Az az applicationmanifest fájlban adja hozzá egy ResourceOverrides szakaszt, ami egy testvér ConfigOverrides szakaszra. Ebben a szakaszban megadhatja a végpontok szakaszának szolgáltatásjegyzékben megadott erőforrások szakaszában a felülbírálást. Végpontok felülbírálása támogatott a futtatókörnyezeti 5.7.217/SDK 2.7.217 és újabb verzióit.
+A ApplicationManifest adjon hozzá egy ResourceOverrides szakaszt, amely a testvér – ConfigOverrides szakasz lesz. Ebben a szakaszban megadhatja a végpontok szakaszának felülbírálását a szolgáltatás jegyzékfájljában megadott erőforrások szakaszban. A felülbírálási végpontok a Runtime 5.7.217/SDK 2.7.217 és újabb verziókban támogatottak.
 
-Annak érdekében, hogy a felülbírálás végpont a ServiceManifest ApplicationParameters módosítása az ApplicationManifest használata a következőképpen:
+A végpontnak a ServiceManifest-ben való felülbírálásához a ApplicationParameters használatával módosítsa a ApplicationManifest a következőképpen:
 
-A ServiceManifestImport területen adja hozzá a "ResourceOverrides" című új szakasszal.
+A ServiceManifestImport szakaszban adjon hozzá egy új "ResourceOverrides" szakaszt.
 
 ```xml
 <ServiceManifestImport>
@@ -180,7 +184,7 @@ A ServiceManifestImport területen adja hozzá a "ResourceOverrides" című új 
   </ServiceManifestImport>
 ```
 
-A Paraméterek hozzáadása alatt:
+Adja meg az alábbi paramétereket:
 
 ```xml
   <Parameters>
@@ -192,17 +196,17 @@ A Paraméterek hozzáadása alatt:
   </Parameters>
 ```
 
-Az alkalmazás üzembe helyezése során ApplicationParameters, az ezeket az értékeket adhat át.  Példa:
+Az alkalmazás telepítése során ezeket az értékeket ApplicationParameters-ként adhatja át.  Példa:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-Megjegyzés: Az értékeket ad meg, a ApplicationParameters érték üres, ha most visszalépünk a megfelelő Végpontneve rendszerképnevet a servicemanifest elemben megadott alapértelmezett érték.
+Megjegyzés: Ha a ApplicationParameters megadott értékek üresek, térjen vissza a megfelelő Végpontneve ServiceManifest megadott alapértelmezett értékre.
 
 Példa:
 
-Ha a ServiceManifest elemben megadott
+Ha a megadott ServiceManifest
 
 ```xml
   <Resources>
@@ -212,6 +216,6 @@ Ha a ServiceManifest elemben megadott
   </Resources>
 ```
 
-És Port1 és Protocol1 alkalmazás paraméter értéke null vagy üres. A port még ServiceFabric határozza meg. És a protokoll lesz tcp.
+Az alkalmazás paramétereinek Port1 és Protocol1 értéke null vagy üres. A portot a ServiceFabric továbbra is eldönti. A protokoll pedig a TCP protokollt fogja kimutatni.
 
-Tegyük fel, adjon meg egy megfelelő értéket. Például a porthoz megadott karakterlánc-érték "Foo" helyett egy: egész szám.  Új ServiceFabricApplication parancs sikertelen lesz, és hiba: Felülbírálás neve 'ServiceEndpoint1' attribútummal rendelkező "Port1" szakasz "ResourceOverrides" Érvénytelen paraméter. A megadott érték "Foo" és "int" Required (kötelező).
+Tegyük fel, hogy helytelen értéket ad meg. A porthoz hasonlóan a "foo" sztring értéket adta meg egy int helyett.  A New-ServiceFabricApplication parancs hibával meghiúsul: A (z) "ResourceOverrides" szakasz "Port1" nevű "ServiceEndpoint1" attribútumát tartalmazó felülbírálási paraméter érvénytelen. A megadott érték a "foo" és a Required értéke "int".

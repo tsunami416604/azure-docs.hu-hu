@@ -1,6 +1,6 @@
 ---
-title: Egy egyféle sávszélességű élő adatfolyamot küldeni a FMLE kódoló konfigurálása |} A Microsoft Docs
-description: Ez a témakör bemutatja, hogyan konfigurálhatja a Flash Media Live Encoder (FMLE) kódoló egyféle sávszélességű adatfolyamot küldeni a valós idejű kódolásra képes csatornák AMS.
+title: A FMLE Encoder beállítása egyetlen bitráta élő stream küldésére | Microsoft Docs
+description: Ez a témakör bemutatja, hogyan konfigurálhatja a Flash Media Live Encoder (FMLE) kódolót úgy, hogy egyetlen sávszélességű adatfolyamot küldjön az élő kódoláshoz engedélyezett AMS-csatornákra.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 01bb628a6520488dcebf49a1e868213b955abc31
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: cenkdin;anilmur
+ms.openlocfilehash: 09d9bdffefe9204e9f58b8f07af5b21228269f6c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466012"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016755"
 ---
-# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Használja az egyféle sávszélességű élő adatfolyamot küldeni FMLE kódoló 
+# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Egyetlen bitráta élő stream küldése a FMLE Encoder használatával 
 > [!div class="op_single_selector"]
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
@@ -29,11 +30,11 @@ ms.locfileid: "61466012"
 >
 >
 
-Ez a cikk bemutatja, hogyan konfigurálhatja a [Flash Media Live Encoder](https://www.adobe.com/products/flash-media-encoder.html) (FMLE) kódoló egy egyfajta sávszélességű adatfolyamot AMS-csatorna is küldhet az élő kódolás engedélyezve vannak. További információk: [Az Azure Media Services segítségével élő kódolásra képes csatornák használata](media-services-manage-live-encoder-enabled-channels.md)
+Ez a cikk bemutatja, hogyan konfigurálhatja a [Flash Media Live Encoder](https://www.adobe.com/products/flash-media-encoder.html) (FMLE) kódolót úgy, hogy egyetlen sávszélességű adatfolyamot küldjön az élő kódoláshoz engedélyezett AMS-csatornákra. További információk: [Az Azure Media Services segítségével élő kódolásra képes csatornák használata](media-services-manage-live-encoder-enabled-channels.md)
 
 Ez az oktatóanyag bemutatja, hogyan kezelheti az Azure Media Services (AMS) az Azure Media Services Explorer (AMSE) eszközzel. Ez az eszköz csak akkor Windows-számítógépen fog futni. Ha Mac vagy Linux rendszeren, az Azure portal használatával hozzon létre [csatornák](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) és [programok](media-services-portal-creating-live-encoder-enabled-channel.md).
 
-Ebben az oktatóanyagban az AAC használatát ismerteti. Ugyanakkor az FMLE nem támogatja az AAC alapértelmezés szerint. Meg kell vásárolni egy beépülő modult kiadottat AAC kódolással, például: [Az AAC-beépülő modul](https://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
+Ez az oktatóanyag az AAC használatát ismerteti. A FMLE azonban alapértelmezés szerint nem támogatja az AAC-t. Az AAC-kódoláshoz olyan beépülő modult kell vásárolnia, mint például a MainConcept: [AAC beépülő modul](https://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Az Azure Media Services-fiók létrehozása](media-services-portal-create-account.md)
@@ -67,69 +68,69 @@ Ebben az oktatóanyagban az AAC használatát ismerteti. Ugyanakkor az FMLE nem 
 A csatorna indítása folyamatban van, amíg is [a kódoló](media-services-configure-fmle-live-encoder.md).
 
 > [!IMPORTANT]
-> Vegye figyelembe, hogy a számlázási elindul, amint a csatorna üzemkész állapotba kerül. További információkért lásd: [csatorna állapotok](media-services-manage-live-encoder-enabled-channels.md#states).
+> Vegye figyelembe, hogy a számlázás azonnal elindul, amint a csatorna üzemkész állapotba kerül. További információkért lásd: [csatorna állapotok](media-services-manage-live-encoder-enabled-channels.md#states).
 >
 >
 
-## <a id=configure_fmle_rtmp></a>A FMLE kódoló
+## <a id=configure_fmle_rtmp></a>A FMLE-kódoló konfigurálása
 Ebben az oktatóanyagban a következő kimeneti beállításokat használják. Ez a szakasz a többi konfigurációs lépések részletesebben ismerteti.
 
 **A videó**:
 
-* Kodek: H.264
-* Profil: Nagy (4.0-s szint)
-* Átviteli sebesség: 5000 KB/s
-* Kulcsképkocka: 2 másodperc (60 másodperc)
-* Képkockasebesség: 30
+* Codec H.264
+* Profil Magas (4,0-as szint)
+* Sávszélességű 5000 kbps
+* Keyframe 2 másodperc (60 másodperc)
+* Keret sebessége: 30
 
 **Hang**:
 
-* Kodek: AAC (LC)
-* Átviteli sebesség: 192 Kb/s
-* Mintavételi gyakoriság: 44,1 kHz
+* Codec AAC (LC)
+* Sávszélességű 192 kbps
+* Mintavételezési arány: 44,1 kHz
 
 ### <a name="configuration-steps"></a>Konfigurációs lépések
-1. Keresse meg a gép, használja a kapcsolat a Flash Media Live Encoder a (FMLE).
+1. Navigáljon a Flash Media Live Encoder (FMLE) felületére a használt gépen.
 
-    A felület egy fő lapján, beállítások esetén. Jegyezze fel a következő ajánlott beállítások streamelési funkciójával FMLE használatának megkezdéséhez.
+    Az illesztőfelület a beállítások egyik fő lapja. Jegyezze fel a következő ajánlott beállításokat a streaming használatának megkezdéséhez a FMLE használatával.
 
-   * Formátum: Képkockasebesség H.264: 30.00
+   * Formátum: H. 264 keret sebessége: 30,00
    * Bemeneti méret: 1280 x 720
-   * Átviteli sebesség: 5000 KB/s (módosítható hálózati korlátai alapján)  
+   * Átviteli sebesség: 5000 kbps (a hálózati korlátozások alapján módosítható)  
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle3.png)
 
-     Ha források segítségével váltakozó, kérjük, pipa az "összefűzés lehetőség" beállítás
-2. Válassza ki a formátumot melletti csavarkulcs ikont, a következő további beállításokat kell:
+     Összefűzött források használata esetén jelölje be a "deinterlace" beállítást.
+2. A formátum mellett válassza a csavarkulcs ikont, a további beállítások a következők:
 
-   * Profil: Fő
+   * Profil Elsődleges
    * Szint: 4.0
-   * Kulcsképkocka gyakorisága: 2 másodperc
+   * Kulcsképek gyakorisága: 2 másodperc
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle4.png)
-3. Állítsa be a következő fontos hang beállítást:
+3. Állítsa be a következő fontos hangbeállítást:
 
    * Formátum: AAC
-   * Mintavételi gyakoriság: 44100 Hz
-   * Átviteli sebesség: 192 Kb/s
+   * Mintavételezési arány: 44100 Hz
+   * Sávszélességű 192 kbps
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle5.png)
-4. A csatorna Get bemeneti URL-címet annak érdekében, hogy rendelje hozzá a FMLE **RTMP végpont**.
+4. Szerezze be a csatorna bemeneti URL-címét a FMLE **RTMP**-végponthoz való hozzárendeléséhez.
 
     Lépjen vissza az AMSE eszköz, és a csatorna befejezési állapotának ellenőrzéséhez. Miután állapota megváltozott **indítása** való **futó**, a bemeneti URL-címet kap.
 
     Ha a csatorna fut, kattintson a jobb gombbal a csatorna nevét, vigye fölé navigáljon **példány bemeneti URL-CÍMÉT a vágólapra** majd **elsődleges bemeneti URL-cím**.  
 
     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle6.png)
-5. Illessze be ezt az információt a **FMS URL-cím** mezőjét, a kimeneti szakaszban, és a egy replikációsstream-név hozzárendelése.
+5. Illessze be ezt az információt a kimenet szakasz **FMS URL** mezőjébe, és rendeljen hozzá egy stream-nevet.
 
     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle7.png)
 
-    A további redundancia biztosítása érdekében ismételje meg ezeket a lépéseket a másodlagos bemeneti URL-CÍMÉT.
+    Az extra redundancia érdekében ismételje meg ezeket a lépéseket a másodlagos bemeneti URL-címmel.
 6. Kattintson a **Csatlakozás** gombra.
 
 > [!IMPORTANT]
-> Gombra való kattintás előtt **Connect**, hogy **kell** győződjön meg arról, hogy készen áll-e a csatornát.
+> Mielőtt a **kapcsolat**elemre kattint, meg **kell** győződnie arról, hogy a csatorna készen áll.
 > Bizonyosodjon meg róla, hogy ne maradjon a csatorna egy kész állapotú > 15 percnél hosszabb ideig hírcsatorna egy bemeneti hozzájárulás nélkül.
 >
 >
@@ -148,7 +149,7 @@ Ha hibaüzenet érkezik, a csatornát kell állítani, és kódoló beállítás
 1. Csatorna lejátszási ellenőrzése után hozzon létre egy programot. Alatt a **élő** az AMSE eszköz lapra, kattintson a jobb gombbal a program területen belül, és válassza **új Program létrehozása**.  
 
     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle9.png)
-2. Nevezze el a programot, és ha szükséges, módosítsa a **archiválási időszak hossza** (amely alapértelmezés szerint 4 óra). Adjon meg egy tárolási helyet is, vagy hagyja meg az alapértelmezett.  
+2. Adja meg a program nevét, és ha szükséges, állítsa be az archiválási időszak hosszát (amely alapértelmezés szerint 4 óra). Adjon meg egy tárolási helyet is, vagy hagyja meg az alapértelmezett.  
 3. Ellenőrizze a **indítsa el a Program most** mezőbe.
 4. Kattintson a **Program létrehozásához, amely**.  
 

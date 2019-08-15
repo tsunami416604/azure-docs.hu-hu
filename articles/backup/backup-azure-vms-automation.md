@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1cbd0f649bd5e89c1ed424604697afa179964175
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 23492133035f27aa3e1217269022565e0ff217a9
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689021"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018757"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése és visszaállítása a PowerShell-lel
 
@@ -279,7 +279,7 @@ A védelmi szabályzat módosításához a [set-AzRecoveryServicesBackupProtecti
 
 #### <a name="modifying-scheduled-time"></a>Ütemezett idő módosítása
 
-Védelmi szabályzat létrehozásakor alapértelmezés szerint a rendszer a kezdő időpontot rendeli hozzá. Az alábbi példák azt mutatják be, hogyan lehet módosítani a védelmi szabályzatok kezdési idejét.
+Védelmi szabályzat létrehozásakor alapértelmezés szerint a rendszer a kezdő időpontot rendeli hozzá. Az alábbi példák bemutatják, hogyan módosíthatja a védelmi szabályzatok kezdési idejét.
 
 ````powershell
 $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
@@ -340,7 +340,7 @@ V2VM              Backup              InProgress          4/23/2016             
 
 ### <a name="change-policy-for-backup-items"></a>Biztonsági mentési elemek szabályzatának módosítása
 
-A felhasználó módosíthatja a meglévő szabályzatot, vagy megváltoztathatja a biztonsági másolatban szereplő elem házirendjét a Házirend1 és a Policy2 között. Ha egy biztonsági másolati elemhez szeretne házirendeket váltani, egyszerűen olvassa le a megfelelő házirendet, és készítsen biztonsági másolatot az elemről, és használja az [enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) parancsot a Backup elem paraméterként.
+A felhasználó módosíthatja a meglévő szabályzatot, vagy megváltoztathatja a biztonsági másolatban szereplő elem házirendjét a Házirend1 és a Policy2 között. Ha egy biztonsági másolati elemhez szeretne házirendeket váltani, olvassa be a vonatkozó házirendet, és készítsen biztonsági másolatot az elemről, és használja az [enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) parancsot a biztonsági mentési elemmel paraméterként.
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -511,7 +511,7 @@ A lemezek visszaállítása után a következő lépésekkel hozza létre és ko
 > [!NOTE]
 > A lemezek visszaállítása után már beszerezheti a központi telepítési sablont, amelyet közvetlenül használhat új virtuális gép létrehozásához. Nincs több különböző PS-parancsmag olyan felügyelt/nem felügyelt virtuális gépek létrehozásához, amelyek titkosított/nem titkosítottak.
 
-Az eredő feladatok részleteit a sablon URI-ja adja meg, amely lekérdezhető és telepíthető.
+Az eredő feladatok részletei megadják a sablon URI-JÁT, amely lekérdezhető és telepíthető.
 
 ```powershell
    $properties = $details.properties
@@ -806,7 +806,7 @@ OsType  Password        Filename
 Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc543c489f1974d33659fed07a6e0c2e08740.exe
 ```
 
-Futtassa a parancsfájlt azon a gépen, amelyen helyre kívánja állítani a fájlokat. A szkript végrehajtásához meg kell adnia a megadott jelszót. A lemezek csatolása után a Windows fájlkezelővel keresse meg az új köteteket és fájlokat. További információkért tekintse meg a biztonsági mentésről szóló cikket, és [állítson helyre fájlokat az Azure-beli virtuális gépek biztonsági mentéséről](backup-azure-restore-files-from-vm.md).
+Futtassa a parancsfájlt azon a gépen, amelyen helyre kívánja állítani a fájlokat. A szkript végrehajtásához meg kell adnia a megadott jelszót. A lemezek csatolása után a Windows fájlkezelővel keresse meg az új köteteket és fájlokat. További információ: Backup (biztonsági mentés) című cikk, [fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából](backup-azure-restore-files-from-vm.md).
 
 ### <a name="unmount-the-disks"></a>Lemezek leválasztása
 

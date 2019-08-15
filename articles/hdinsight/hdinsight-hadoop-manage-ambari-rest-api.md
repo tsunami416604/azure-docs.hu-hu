@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: hrasheed
-ms.openlocfilehash: 301ad4f940e6bd4eedb3a4df64e4740d29effe03
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5836dda186c7bd9baeafa193052b0b75d63e291b
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406224"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019606"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>HDInsight-fürtök kezelése az Apache Ambari REST API használatával
 
@@ -42,6 +42,8 @@ Az [Apache Ambari](https://ambari.apache.org) megkönnyíti a Hadoop-fürtök fe
 ## <a name="authentication"></a>Authentication
 
 A HDInsight Ambari-hez való csatlakozáshoz HTTPS szükséges. Használja a rendszergazdai fiók nevét (az alapértelmezett a **rendszergazda**) és a jelszót, amelyet a fürt létrehozásakor adott meg.
+
+Enterprise Security Package-fürtök esetében a helyett `admin`használjon egy teljesen minősített felhasználónevet, `username@domain.onmicrosoft.com`például:.
 
 ## <a name="examples"></a>Példák
 

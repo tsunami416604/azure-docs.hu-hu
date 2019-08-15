@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 3f991d90dfdd5d31d1a7cf7119356f40458e7614
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7e5c33577a2d926266ae45057509b112dc27ce7b
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568231"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985722"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Funkciók összehasonlítása: Azure SQL Database versus SQL Server
 
@@ -35,7 +35,7 @@ A következő táblázat felsorolja a SQL Server főbb funkcióit, és informác
 
 | **SQL-szolgáltatás** | **Önálló adatbázisok és rugalmas készletek** | **Felügyelt példányok** |
 | --- | --- | --- |
-| [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Igen [– lásd a](sql-database-always-encrypted.md) tanúsítványtárolót és a [Key vaultot](sql-database-always-encrypted-azure-key-vault.md) | Igen [– lásd a](sql-database-always-encrypted.md) tanúsítványtárolót és a [Key vaultot](sql-database-always-encrypted-azure-key-vault.md) |
+| [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Igen – lásd [](sql-database-always-encrypted.md) a tanúsítványtárolót és a [Key vaultot](sql-database-always-encrypted-azure-key-vault.md) | Igen – lásd [](sql-database-always-encrypted.md) a tanúsítványtárolót és a [Key vaultot](sql-database-always-encrypted-azure-key-vault.md) |
 | [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | A [magas rendelkezésre állás](sql-database-high-availability.md) minden adatbázishoz tartozik. A vész-helyreállítást az [üzletmenet folytonosságának áttekintése Azure SQL Database](sql-database-business-continuity.md) | A [magas rendelkezésre állást](sql-database-high-availability.md) minden adatbázis tartalmazza, és a [felhasználók nem kezelhetik](sql-database-managed-instance-transact-sql-information.md#always-on-availability). A vész-helyreállítást az [üzletmenet folytonosságának áttekintése Azure SQL Database](sql-database-business-continuity.md) |
 | [Adatbázis csatolása](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | Nem | Nem |
 | [Alkalmazási szerepkörök](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/application-roles) | Igen | Igen |
@@ -84,7 +84,7 @@ A következő táblázat felsorolja a SQL Server főbb funkcióit, és informác
 | [Teljes szöveges keresés (FTS)](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  Igen, de a harmadik féltől származó Word-megszakítók nem támogatottak | Igen, de [a harmadik féltől származó Word-megszakítók nem támogatottak](sql-database-managed-instance-transact-sql-information.md#full-text-semantic-search) |
 | [Functions](https://docs.microsoft.com/sql/t-sql/functions/functions) | A legtöbb esetben – lásd az egyes függvényeket | Igen – lásd: [tárolt eljárások, függvények, eseményindítók eltérései](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) |
 | [Gráf feldolgozása](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Igen | Igen |
-| [Memóriabeli optimalizálás](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Igen – [prémium és üzletileg kritikus szintű](sql-database-in-memory.md) csomag | Igen – [csak üzletileg kritikus réteg](sql-database-managed-instance.md) |
+| [Memóriabeli optimalizálás](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Igen – a [prémium és a üzletileg kritikus szint csak](sql-database-in-memory.md) korlátozott mértékben támogatja a nem állandó memóriabeli objektumokat, például a táblák típusát | Igen – [csak üzletileg kritikus réteg](sql-database-managed-instance.md) |
 | [JSON-adattámogatás](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Igen](sql-database-json-features.md) | [Igen](sql-database-json-features.md) |
 | [Nyelvi elemek](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | A legtöbb esetben – lásd az egyes elemeket |  Igen – lásd: a [T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md) |
 | [Csatolt kiszolgálók](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nem – lásd: [rugalmas lekérdezés](sql-database-elastic-query-horizontal-partitioning.md) | Igen. Csak [SQL Server és SQL Database](sql-database-managed-instance-transact-sql-information.md#linked-servers) elosztott tranzakciók nélkül. |

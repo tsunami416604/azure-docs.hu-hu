@@ -1,6 +1,6 @@
 ---
-title: Problémák diagnosztizálása és hibaelhárítása lekérdezés Azure Cosmos DB használata esetén
-description: Ismerje meg, hogyan azonosíthatja, diagnosztizálása és hibaelhárítása az Azure Cosmos DB SQL-lekérdezés problémák.
+title: Lekérdezési problémák diagnosztizálása és hibaelhárítása Azure Cosmos DB használatakor
+description: Ismerje meg, hogyan azonosíthatja, diagnosztizálhatja és elháríthatja a Azure Cosmos DB SQL-lekérdezéssel kapcsolatos problémákat.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: troubleshooting
@@ -8,62 +8,66 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 079e8677febfe6683d4f0e60a0e7ba6b06ea549d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: a713ed69dc9c35e16b1cc5d9ad9819d53e2e1efe
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835831"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986170"
 ---
-# <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Az Azure Cosmos DB lekérdezési teljesítmény hibaelhárítása
-Ez a cikk bemutatja, hogyan azonosíthatja, diagnosztizálása és hibaelhárítása az Azure Cosmos DB SQL-lekérdezés problémák. Azure Cosmos DB-lekérdezéseket az optimális teljesítmény elérése érdekében kövesse az alábbi hibaelhárítási lépéseket. 
+# <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Azure Cosmos DB lekérdezési teljesítményének megoldása
+Ez a cikk a Azure Cosmos DB SQL-lekérdezési problémák azonosítását, diagnosztizálását és hibaelhárítását ismerteti. Az Azure Cosmos DB lekérdezések optimális teljesítményének elérése érdekében kövesse az alábbi hibaelhárítási lépéseket. 
 
-## <a name="collocate-clients-in-same-azure-region"></a>Ugyanazon Azure-régióban lévő ügyfelek elhelyezésének engedélyezése 
-A lehető legkisebb késleltetést úgy, hogy a hívó alkalmazás megtalálható az üzembe helyezett Azure Cosmos DB-végpontként az azonos Azure-régióban érhető el. Az elérhető régiók listáját lásd: [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/#services) cikk.
+## <a name="collocate-clients-in-same-azure-region"></a>Rézvezetékes végezhet-ügyfelek ugyanabban az Azure-régióban 
+A lehető legalacsonyabb késést úgy érheti el, hogy a hívó alkalmazás ugyanabban az Azure-régióban található, mint a kiépített Azure Cosmos DB végpont. Az elérhető régiók listáját az [Azure Regions](https://azure.microsoft.com/global-infrastructure/regions/#services) című cikkben találja.
 
-## <a name="check-consistency-level"></a>Ellenőrizze a konzisztenciaszint
-[Konzisztenciaszint](consistency-levels.md) befolyásolhatja a teljesítményt és a költségek. Ellenőrizze, hogy a konzisztencia szintjét az adott esethez megfelelő. További információ: [Konzisztenciaszint kiválasztása](consistency-levels-choosing.md).
+## <a name="check-consistency-level"></a>Konzisztencia-ellenőrzés
+A [konzisztencia szintje](consistency-levels.md) hatással lehet a teljesítményre és a költségekre. Győződjön meg arról, hogy a konzisztencia szintje megfelel az adott forgatókönyvnek. További részleteket a [konzisztencia szintjének kiválasztása](consistency-levels-choosing.md)című témakörben talál.
 
-## <a name="log-query-metrics"></a>Napló lekérdezés metrikák
-Használat `QueryMetrics` lassú vagy drága lekérdezések hibaelhárítása. 
+## <a name="log-sql-query-in-storage-account"></a>SQL-lekérdezés naplózása a Storage-fiókban
+A [diagnosztikai naplókon keresztüli SQL API-lekérdezési naplók](logging.md#turn-on-logging-in-the-azure-portal) lehetővé teszik a kihasználható lekérdezés naplózását egy tetszőleges Storage-fiókban. Így megtekintheti a diagnosztikai naplókat, és megkeresheti a lekérdezést további RUs használatával, és a tevékenység azonosítóját használhatja a QueryRuntimeStatistics való megfeleléshez. 
 
-  * Állítsa be `FeedOptions.PopulateQueryMetrics = true` rendelkeznie `QueryMetrics` a válaszban.
-  * `QueryMetrics` osztály rendelkezik egy túlterhelt `.ToString()` -függvény, amely karakteres formáját is lekérhető `QueryMetrics`. 
-  * A metrikák, amellyel hozzájut a következő, többek között: 
+
+## <a name="log-query-metrics"></a>Napló lekérdezési metrikái
+Lassú `QueryMetrics` vagy költséges lekérdezések hibakeresésére használható. 
+
+  * Úgy `FeedOptions.PopulateQueryMetrics = true` van beállítva `QueryMetrics` , hogy a válaszban legyen.
+  * `QueryMetrics`az osztály túlterhelt `.ToString()` függvényt tartalmaz, amely meghívja a sztring `QueryMetrics`megjelenítését. 
+  * A metrikák a következő, többek között az alábbi adatok kinyerésére használhatók: 
   
-      * A lekérdezési folyamat bármely adott összetevőjét e rendellenes sokáig végrehajtásához (ezredmásodpercben, vagy több száz sorrendben). 
+      * Azt határozza meg, hogy a lekérdezési folyamat adott összetevője rendellenesen hosszú ideig tartott-e (több száz ezredmásodperc vagy több). 
 
-          * Tekintse meg `TotalExecutionTime`.
-          * Ha a `TotalExecutionTime` a lekérdezés nem éri el a teljes körű végrehajtási idő, akkor az ügyfél oldalán vagy a hálózati van folyamatban töltött idő. Ellenőrizze, hogy az ügyfél és az Azure-régióban vannak közös elhelyezésű.
+          * Tekintse `TotalExecutionTime`meg a következőt:.
+          * `TotalExecutionTime` Ha a lekérdezés kevesebb, mint a végpontok közötti végrehajtási idő, akkor az idő az ügyfél oldalán vagy a hálózaton lesz elköltve. Ellenőrizze, hogy az ügyfél és az Azure-régió közös elhelyezésű-e.
       
-      * E vakriasztások voltak-e a dokumentumok elemzése (Ha kimeneti dokumentumok száma sokkal kisebb, mint a lekért dokumentumok száma).  
+      * Az elemzett dokumentumokban hamis pozitívak voltak-e (ha a kimeneti dokumentumok száma jóval kevesebb, mint a lekért dokumentumok száma).  
 
-          * Tekintse meg `Index Utilization`.
-          * `Index Utilization` = (Visszaadott dokumentumok száma / betöltött száma dokumentumok)
-          * Ha a visszaadott dokumentumok száma sokkal kisebb, mint a betöltött, majd vakriasztások elemzése van folyamatban.
-          * Szűkebb szűrőket lekérése folyamatban dokumentumok számának korlátozásához.  
+          * Tekintse `Index Utilization`meg a következőt:.
+          * `Index Utilization`= (Visszaadott dokumentumok száma/betöltött dokumentumok száma)
+          * Ha a visszaadott dokumentumok száma jóval kisebb a betöltött számnál, akkor a rendszer a hamis pozitív értékeket elemzi.
+          * Korlátozza a lekérdezett dokumentumok számát a szűkebb szűrők használatával.  
 
-      * Egyes üzenetváltások fared (lásd a `Partition Execution Timeline` a karakteres formáját `QueryMetrics`). 
-      * A lekérdezés e nagy kérelem díj használja fel. 
+      * Az egyes ciklikus utak díjszabása (lásd a `Partition Execution Timeline` karakterlánc- `QueryMetrics`ábrázolását). 
+      * Azt jelzi, hogy a lekérdezés magas szintű kérelmeket használ-e. 
 
-További információ: [beszerzése az SQL-lekérdezés végrehajtási metrikák](profile-sql-api-query.md) cikk.
+További részletekért lásd az [SQL-lekérdezések végrehajtási metrikáinak](profile-sql-api-query.md) beszerzéséről szóló cikket.
       
-## <a name="tune-query-feed-options-parameters"></a>Hírcsatorna beállításai lekérdezésparamétereket hangolása 
-A lekérdezési teljesítmény hangolásával a kérelem használatával [hírcsatorna beállításai](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions?view=azure-dotnet) paramétereket. Próbálja meg a beállítás az alábbi beállításokat:
+## <a name="tune-query-feed-options-parameters"></a>Lekérdezési csatorna beállítási paramétereinek hangolása 
+A lekérdezési teljesítményt a kérés [Csatornabeállítások](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions?view=azure-dotnet) paramétereivel tudja hangolni. Próbálja beállítani az alábbi paramétereket:
 
-  * Állítsa be `MaxDegreeOfParallelism` -1 első, majd hasonlítsa össze teljesítmény különböző értékek között. 
-  * Állítsa be `MaxBufferedItemCount` -1 első, majd hasonlítsa össze teljesítmény különböző értékek között. 
-  * Állítsa be `MaxItemCount` 1 értéket ad.
+  * Először `MaxDegreeOfParallelism` állítsa be az-1 értéket, majd hasonlítsa össze a teljesítményt a különböző értékek között. 
+  * Először `MaxBufferedItemCount` állítsa be az-1 értéket, majd hasonlítsa össze a teljesítményt a különböző értékek között. 
+  * Állítsa `MaxItemCount` a-1 értékre.
 
-Összehasonlítja a különböző értékek teljesítményét, próbálja meg értékek, mint 2, 4, 8, 16 és mások.
+Amikor a különböző értékek szerinti teljesítményt hasonlítja össze, olyan értékekkel próbálkozzon, mint a 2, 4, 8, 16 stb.
  
-## <a name="read-all-results-from-continuations"></a>Minden eredmény olvasni continuations
-Ha úgy véli, hogy nem jelennek meg az összes eredmény, ügyeljen arra, hogy teljes mértékben kiürítési fenntartása. Más szóval folyamatosan eredmények olvasása, míg a folytatási token több dokumentum eddig is számtalan előnyét.
+## <a name="read-all-results-from-continuations"></a>Olvassa le az összes eredményt a folytatásokból
+Ha úgy gondolja, hogy nem minden eredményt kap meg, gondoskodjon róla, hogy a folytatást teljes mértékben kiürítse. Más szóval olvassa tovább az eredményeket, amíg a folytatási kód további dokumentumokat eredményez.
 
-Teljes mértékben a kiürítés érhető el a következő minták egyikét:
+A teljes kiürítést a következő minták követésével lehet elérni:
 
-  * Továbbra is feldolgozási eredményeket, amíg a folytatási nem üres.
-  * Továbbra is, míg a lekérdezési eredmények feldolgozása. 
+  * Folytassa a feldolgozás eredményeit, miközben a folytatás nem üres.
+  * A feldolgozás folytatása, amíg a lekérdezés több eredményt is tartalmaz. 
 
     ```csharp
     // using AsDocumentQuery you get access to whether or not the query HasMoreResults
@@ -79,16 +83,16 @@ Teljes mértékben a kiürítés érhető el a következő minták egyikét:
     }
     ```
 
-## <a name="choose-system-functions-that-utilize-index"></a>Válassza ki az indexet használó rendszer funkciók
-Ha a kifejezés karakterlánc-értékek számos lefordítható, majd azt képes használni az index; Ellenkező esetben nem érhető el. 
+## <a name="choose-system-functions-that-utilize-index"></a>Válasszon ki olyan rendszerfunkciókat, amelyek indexet használnak
+Ha a kifejezés lefordítható különböző sztringértékekre, akkor használhat indexet. Ellenkező esetben nem. 
 
-A következő karakterlánc-függvények, amelyek használhatják az indexet listája: 
+Íme az indexet használó sztringfüggvények listája: 
     
-  * STARTSWITH (str_expr, str_expr) 
-  * LEFT (str_expr, num_expr) = str_expr 
-  * KARAKTERLÁNCRÉSZLET (str_expr, num_expr, num_expr) = str_expr, de csak ha az első num_expr 0 
+  * STARTSWITH(str_expr, str_expr) 
+  * LEFT(str_expr, num_expr) = str_expr 
+  * SUBSTRING(str_expr, num_expr, num_expr) = str_expr, but only if first num_expr is 0 
     
-    Az alábbiakban néhány lekérdezést példát: 
+    Íme néhány példa a lekérdezésekre: 
     
     ```sql
 
@@ -108,9 +112,9 @@ A következő karakterlánc-függvények, amelyek használhatják az indexet lis
 
     ```
 
-  * Elkerülése érdekében a rendszer függvények a szűrő (vagy a WHERE záradékban), amely nem az index által kiszolgált. Az ilyen rendszer funkciók például tartalmazza, a felső, alsó.
+  * Kerülje a System functions funkciót a szűrőben (vagy a WHERE záradékban), amelyet nem az index szolgáltat. Néhány példa az ilyen rendszerfunkciókra: tartalmazza a következőket: felső, alsó.
   * Ha lehetséges, a lekérdezések írása partíciókulcs-szűrő használatával történjen.
-  * Nagy teljesítményű eléréséhez lekérdezések kerülje a felső és alsó hívja meg a szűrő. Ehelyett normalizálása kis-és nagybetűhasználatának értékeket a szolgáltatás. Az egyes értékek beszúrása a megfelelő kis-és értékét, vagy is az eredeti értékre, és az értéket a megfelelő kis-és beszúrása. 
+  * Az elvégezhető lekérdezések elérésének elkerülése érdekében a szűrőben ne legyenek meghívók a felső/alacsonyabb érték. Ehelyett a beszúráskor normalizálja az értékek házát. Minden értéknél illessze be az értéket a kívánt burkolattal, vagy szúrja be az eredeti értéket és az értéket a kívánt burkolattal. 
 
     Példa:
     
@@ -120,9 +124,9 @@ A következő karakterlánc-függvények, amelyek használhatják az indexet lis
 
     ```
     
-    Ebben az esetben a "JÁNOS" kezdőbetűnek vagy az adattárban tárolni a "János" az eredeti érték és a "JÁNOS". 
+    Ebben az esetben a "Joe" kifejezést a "Joe" kifejezéssel vagy az eredeti "Joe" értékkel együtt tároljuk. 
     
-    Ha a JSON-adatok kis-és van normalizálva a lekérdezés válik:
+    Ha a JSON-adattároló normalizálva van, a lekérdezés a következőket válik:
     
     ```sql
 
@@ -130,45 +134,45 @@ A következő karakterlánc-függvények, amelyek használhatják az indexet lis
 
     ```
 
-    A második lekérdezés lesz további nagy teljesítményű, mivel nem igényel átalakításokat végez az egyes értékek annak érdekében, hogy a "JÁNOS", az értékek összehasonlítása.
+    A második lekérdezés nagyobb teljesítményt nyújt, mivel az értékek összehasonlításához nem szükséges az egyes értékek átalakításának elvégzése a "JOE" értékkel.
 
-Részletek: több rendszer függvény [rendszerfunkciók](sql-query-system-functions.md) cikk.
+A rendszerfunkciók további részleteiért [](sql-query-system-functions.md) lásd: rendszerfunkciók című cikk.
 
-## <a name="check-indexing-policy"></a>Indexelési házirend ellenőrzése
-Ellenőrizze, hogy az aktuális [indexelési szabályzata](index-policy.md) optimális:
+## <a name="check-indexing-policy"></a>Indexelési szabályzat keresése
+Ellenőrizze, hogy az aktuális [indexelési szabályzat](index-policy.md) optimálisan van-e beállítva:
 
-  * Győződjön meg arról, a lekérdezésekben használt JSON elérési utak szerepelnek az indexelési házirendet az gyorsabb olvasásokhoz.
-  * További nagy teljesítményű írások a lekérdezésekben nem használt elérési utak kizárása.
+  * Győződjön meg arról, hogy a lekérdezésekben használt összes JSON-útvonal szerepel az indexelési szabályzatban a gyorsabb olvasás érdekében.
+  * A lekérdezésekben nem használt útvonalak kizárása a több elvégezhető íráshoz.
 
-További információ: [hogyan való kezelése indexelési szabályzata](how-to-manage-indexing-policy.md) cikk.
+További részletekért lásd az [indexelési szabályzat kezelése](how-to-manage-indexing-policy.md) című cikket.
 
-## <a name="spatial-data-check-ordering-of-points"></a>Térbeli adatok: Ellenőrizze a pontok rendezése
+## <a name="spatial-data-check-ordering-of-points"></a>Térbeli adatértékek: Pontok rendezésének ellenõrzése
 Sokszög belül pontok óramutató járásával ellentétes irányban sorrendben kell adni. Egy megadott óramutató sorrendben sokszög benne a régió inverzét jelöli.
 
-## <a name="optimize-join-expressions"></a>Csatlakozás kifejezések optimalizálása
-`JOIN` kifejezések nagy közötti termékekbe bővítheti. Ha lehetséges, a lekérdezéshez kisebb keresés lemezterület-keresztül egy sokkal szűkebb szűrőt.
+## <a name="optimize-join-expressions"></a>ILLESZTÉSi kifejezések optimalizálása
+`JOIN`a kifejezések nagy mennyiségű termékre bővíthetők. Ha lehetséges, szűkítse a lekérdezést egy kisebb keresési területtel egy szűkebb szűrő használatával.
 
-Többértékű segédlekérdezések optimalizálhatja `JOIN` kifejezések predikátumok küldésével, minden egyes kiválasztása – több kifejezés után, nem pedig minden cross-illesztéseket után a `WHERE` záradékban. Részletes példa: [csatlakozzon kifejezések optimalizálása](https://docs.microsoft.com/azure/cosmos-db/sql-query-subquery#optimize-join-expressions) cikk.
+A többértékű allekérdezések `JOIN` úgy optimalizálják a kifejezéseket, hogy az egyes Select-sok kifejezés után leküldi a predikátumokat, nem pedig a `WHERE` záradékban lévő összes illesztést. A részletes példákat lásd: [illesztési kifejezések optimalizálása](https://docs.microsoft.com/azure/cosmos-db/sql-query-subquery#optimize-join-expressions) cikk.
 
-## <a name="optimize-order-by-expressions"></a>ORDER BY kifejezésnek optimalizálása 
-`ORDER BY` a lekérdezési teljesítmény romolhat, ha a mezők ritka, vagy nem része az index szabályzat.
+## <a name="optimize-order-by-expressions"></a>ORDER BY kifejezések optimalizálása 
+`ORDER BY`a lekérdezési teljesítmény akkor csökkenhet, ha a mezők ritkák vagy nem szerepelnek az index házirendben.
 
-  * A ritka mezők, például idő csökkentse a lehető legnagyobb mértékben keresési terület szűrőket. 
-  * Egyetlen tulajdonság `ORDER BY`, a tulajdonság tartalmazza a index házirendben. 
-  * Több tulajdonság `ORDER BY` kifejezések, adja meg egy [összetett index](https://docs.microsoft.com/azure/cosmos-db/index-policy#composite-indexes) rendezi mező alapján.  
+  * A ritka mezők (például az idő) esetében a szűréshez a lehető legnagyobb mértékben csökkentse a keresési területet. 
+  * Egyetlen tulajdonság `ORDER BY`esetében adja meg a tulajdonságot a tárgymutató-házirendben. 
+  * Több tulajdonság `ORDER BY` kifejezés esetén Definiáljon egy [összetett indexet](https://docs.microsoft.com/azure/cosmos-db/index-policy#composite-indexes) a rendezés alatt álló mezőkhöz.  
 
-## <a name="many-large-documents-being-loaded-and-processed"></a>Számos nagyméretű dokumentumok betöltése és feldolgozása
-Az idő és a egy lekérdezés által igényelt RUs nem csak a válaszok méretétől függ, azokat is függnek a munkát, a lekérdezés-feldolgozási folyamat végzi el. Idő és a fenntartott egységek nőhet arányosan a teljes lekérdezés-feldolgozási folyamat által végzett munka mennyisége. További munkát végez a nagy dokumentumok, így több időt és kérelemegység szükséges betölteni és feldolgozni a nagy dokumentumok.
+## <a name="many-large-documents-being-loaded-and-processed"></a>Számos nagy méretű dokumentum betöltése és feldolgozása
+A lekérdezésekhez szükséges idő és RUs nem csak a válasz méretétől függ, hanem attól is függ, hogy milyen munkát végez a lekérdezés feldolgozási folyamata. Az idő és az RUs arányosan növekszik a teljes lekérdezés-feldolgozási folyamat által elvégzett munka mennyiségével. A nagyméretű dokumentumok nagyobb mennyiségű munkát végeznek, így a nagyméretű dokumentumok betöltéséhez és feldolgozásához több idő és RUs szükséges.
 
-## <a name="low-provisioned-throughput"></a>Kevés a létesített átviteli sebesség
-Győződjön meg arról, kiosztott átviteli sebesség számítási feladatot képes kezelni. Növelje az érintett gyűjtemény RU költségvetés.
+## <a name="low-provisioned-throughput"></a>Alacsony kiosztott átviteli sebesség
+Gondoskodjon arról, hogy a kiépített átviteli sebesség képes legyen a munkaterhelés kezelésére. Növelje az érintett gyűjtemények RU-költségvetését.
 
-## <a name="try-upgrading-to-the-latest-sdk-version"></a>Próbálja ki az SDK legújabb verziójára
-Meghatározni a legújabb SDK lásd [SDK letöltése és a kibocsátási megjegyzések](sql-api-sdk-dotnet.md) cikk.
+## <a name="try-upgrading-to-the-latest-sdk-version"></a>Próbálja meg frissíteni a legújabb SDK-verziót
+A legújabb SDK-val kapcsolatban lásd az [SDK letöltési és kibocsátási megjegyzéseit](sql-api-sdk-dotnet.md) ismertető cikket.
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg az lekérdezésenként fenntartott egységek mérése, a végrehajtási statisztika a lekérdezéseket és más finomhangolása való alábbi dokumentumokat:
+Az alábbi dokumentumokban megtekintheti, hogyan mérjük le a lekérdezéseket, és hogyan végezhet végrehajtási statisztikát a lekérdezések finomhangolásához, és így tovább:
 
-* [Első SQL-lekérdezés végrehajtási metrikák .NET SDK használatával](profile-sql-api-query.md)
+* [SQL-lekérdezés végrehajtási metrikáinak lekérése a .NET SDK használatával](profile-sql-api-query.md)
 * [A lekérdezési teljesítmény finomhangolása az Azure Cosmos DB-vel](sql-api-sql-query-metrics.md)
-* [A .NET SDK a teljesítménnyel kapcsolatos tippek](performance-tips.md)
+* [Teljesítménnyel kapcsolatos tippek .NET SDK-hoz](performance-tips.md)

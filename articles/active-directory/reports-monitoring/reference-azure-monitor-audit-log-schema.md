@@ -1,9 +1,9 @@
 ---
-title: Az Azure Active Directory naplózási séma az Azure monitorban értelmezése |} A Microsoft Docs
-description: Az Azure AD naplózási log séma használható az Azure Monitor leírása
+title: A Azure Active Directory naplózási napló sémájának értelmezése Azure Monitorban | Microsoft Docs
+description: Az Azure AD napló sémájának leírása a Azure Monitor való használatra
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7f75af14e388626a9ebbb54d43079f30dcfdd98a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60437073"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987953"
 ---
-# <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Az Azure Monitor (előzetes verzió) az Azure AD naplózási naplók séma értelmezése
+# <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Az Azure AD napló sémájának értelmezése Azure Monitor (előzetes verzió)
 
-Ez a cikk ismerteti az Azure Active Directory (Azure AD) naplózási séma az Azure monitorban. Minden egyes naplóbejegyzés szövegként tárolt és formázott JSON-blobként, a következő két példa látható módon: 
+Ez a cikk a Azure Monitor Azure Active Directory (Azure AD) napló sémáját ismerteti. Minden egyes naplóbejegyzés szövegként tárolódik, és JSON-blobként van formázva, ahogy az alábbi két példa is mutatja: 
 
 ```json
 { 
@@ -145,36 +145,36 @@ Ez a cikk ismerteti az Azure Active Directory (Azure AD) naplózási séma az Az
 
 ```
 
-## <a name="field-and-property-descriptions"></a>A mező és a tulajdonság leírása
+## <a name="field-and-property-descriptions"></a>Mező és tulajdonság leírása
 
-| Mező neve | Leírás |
+| Mezőnév | Leírás |
 |------------|-------------|
-| time       | Dátuma és időpontja (UTC). |
+| time       | A dátum és idő (UTC). |
 | operationName | A művelet neve. |
 | operationVersion | Az ügyfél által kért REST API-verzió. |
-| category | Jelenleg *naplózási* az egyetlen támogatott érték van. |
-| tenantId | GUID, a naplók társított tenant. |
-| resultType | A művelet eredményét. Az eredmény lehet *sikeres* vagy *hiba*. |
-| resultSignature |  Ez a mező nem leképezett, és biztonságosan figyelmen kívül hagyhatja azt. | 
-| resultDescription | Az eredmény további leírását, ha elérhetők. | 
-| durationMs |  Ez a mező nem leképezett, és biztonságosan figyelmen kívül hagyhatja azt. |
-| callerIpAddress | A kérést leadó ügyfél IP-címét. | 
-| correlationId | Egy nem kötelező GUID, amely az ügyfél által átadott. Kiszolgálóoldali műveletek összevetését ügyféloldali műveletek megkönnyíti, és ez akkor hasznos, ha követi nyomon, amelyek szolgáltatások naplók. |
-| identity | Az identitás a tokenben szereplő leadta a kérelmet. Az identitás lehet egy felhasználói fiókot, rendszerfiók vagy egyszerű szolgáltatást. |
-| szint | Az üzenet típusa. A vizsgálati naplók, szintje mindig *tájékoztató*. |
-| location | Az Adatközpont helyét. |
-| properties | Az auditnapló kapcsolódó támogatott tulajdonságok listája. További információkért tekintse meg a következő táblázat. | 
+| category | Jelenleg a *naplózás* az egyetlen támogatott érték. |
+| tenantId | A naplókhoz társított bérlői GUID. |
+| resultType | A művelet eredménye. Az eredmény lehet *sikeres* vagy *sikertelen*. |
+| resultSignature |  Ez a mező nincs leképezve, és nyugodtan figyelmen kívül hagyhatja. | 
+| resultDescription | Az eredmény további leírása, ahol elérhető. | 
+| durationMs |  Ez a mező nincs leképezve, és nyugodtan figyelmen kívül hagyhatja. |
+| callerIpAddress | Annak az ügyfélnek az IP-címe, amely a kérelmet elvégezte. | 
+| correlationId | Az ügyfél által átadott opcionális GUID. Segít az ügyféloldali műveleteknek a kiszolgálóoldali műveletekkel való összekapcsolásában, és hasznos lehet a szolgáltatásokra kiterjedő naplók nyomon követése során. |
+| identity | A kérelem elküldésekor bemutatott jogkivonat identitása. Az identitás lehet felhasználói fiók, rendszerfiók vagy egyszerű szolgáltatásnév. |
+| level | Az üzenet típusa. A naplózási naplók esetében a szint mindig *tájékoztató jellegű*. |
+| location | Az adatközpont helye. |
+| properties | A naplóhoz kapcsolódó támogatott tulajdonságok felsorolása. További információt a következő táblázatban talál. | 
 
 <br>
 
 | Tulajdonság neve | Leírás |
 |---------------|-------------|
-| AuditEventCategory | A naplózási esemény típusa. Ez lehet *felhasználókezelés*, *Alkalmazáskezelés*, vagy más típusú.|
-| Azonosító típusa | A típus lehet *alkalmazás* vagy *felhasználói*. |
-| Művelettípus | A típus lehet *Hozzáadás*, *frissítés*, *törlése*. vagy *más*. |
-| Célerőforrás típusa | Megadja a célerőforrás típusa, amely a művelet meg lett végrehajtva. A típus lehet *alkalmazás*, *felhasználói*, *szerepkör*, *házirend* | 
-| Cél erőforrás neve | A célként megadott erőforrás neve. Az alkalmazás nevét, a szerepkör nevét, egy egyszerű felhasználónév vagy szolgáltatásnév lehet. |
-| additionalTargets | Megjeleníti az adott műveletek esetében minden egyéb tulajdonságot. Ha például egy frissítési művelet a régi és az új értékek vannak felsorolva *targetUpdatedProperties*. | 
+| AuditEventCategory | A naplózási esemény típusa. Ez lehet a *felhasználók felügyelete*, az *Alkalmazások kezelése*vagy más típusú.|
+| Identitás típusa | A típus lehet *alkalmazás* vagy *felhasználó*. |
+| Művelet típusa | A típus lehet *Hozzáadás*, *frissítés*, *Törlés*. vagy *más*. |
+| Célerőforrás típusa | Meghatározza azt a célként megadott erőforrás-típust, amelyen a művelet végre lett hajtva. A típus lehet *alkalmazás*, *felhasználó*, *szerepkör*, *házirend* | 
+| Cél erőforrás neve | A célként megadott erőforrás neve. Ez lehet egy alkalmazás neve, egy szerepkör neve, egy egyszerű felhasználónév vagy egy egyszerű szolgáltatásnév. |
+| additionalTargets | Az adott műveletekhez tartozó további tulajdonságok felsorolása. Egy frissítési művelet esetében például a régi értékek és az új értékek a *targetUpdatedProperties*területen jelennek meg. | 
 
 ## <a name="next-steps"></a>További lépések
 

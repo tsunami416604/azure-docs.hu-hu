@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: dacurwin
-ms.openlocfilehash: c53e2c383739b717a5ce94c872b4616bbd1b3f26
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9ae21e2bf71789d0b0dd19e3dd7a65ad10fae241
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639938"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018973"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek biztonsági mentése a Azure Backup Server
 
@@ -38,7 +38,7 @@ Alapértelmezés szerint a Azure Backup Server HTTPS-kapcsolaton keresztül komm
 
 ### <a name="before-you-start"></a>Előkészületek
 
-- Ha nem szeretné használni a HTTPS-t, [Tiltsa le a https-tanúsítvány érvényesítését az összes VMware-kiszolgálón](backup-azure-backup-server-vmware.md#disable-https-certificate-validation).
+- Ha nem szeretné a HTTPS-t használni, [Tiltsa le a https-tanúsítvány érvényesítését az összes VMware-kiszolgálón](backup-azure-backup-server-vmware.md#disable-https-certificate-validation).
 - Általában a vSphere webes ügyfélprogram használatával kapcsolódhat a vCenter/ESXi-kiszolgálóhoz a Azure Backup Server gép böngészőjében. Az első alkalommal, amikor ezt megteszi, a kapcsolat nem biztonságos, és a következőt jeleníti meg.
 - Fontos megérteni, hogyan kezeli a Azure Backup Server a biztonsági mentéseket.
     - Első lépésként Azure Backup Server az adatbiztonsági mentést a helyi lemezes tárhelyre. Azure Backup Server egy tárolót használ, amely lemezeket és köteteket tartalmaz, amelyeken Azure Backup Server tárolja a lemez helyreállítási pontjait a védett adatbázisokhoz. A Storage-készlet lehet közvetlenül csatlakoztatott tároló (DAS), Fibre Channel SAN vagy iSCSI tárolóeszköz vagy SAN. Fontos, hogy elegendő tárterületet biztosítson a VMware VM-adatai helyi biztonsági mentéséhez.
@@ -102,10 +102,10 @@ A következőképpen állíthatja be a biztonságos csatornát:
 
 ### <a name="disable-https-certificate-validation"></a>HTTPS-tanúsítvány ellenőrzésének letiltása
 
-Ha a szervezeten belül biztonságos határok vannak, és nem szeretné a VMware-kiszolgálók és a Azure Backup Server gép közötti HTTPS protokollt használni, tiltsa le a HTTPS-t a következőképpen: u
+Ha a szervezeten belül biztonságos határok vannak, és nem szeretné a VMware-kiszolgálók és a Azure Backup Server gép közötti HTTPS protokollt használni, tiltsa le a HTTPS-t a következőképpen: 
 1. Másolja és illessze be az alábbi szöveget egy. txt fájlba.
 
-      ```
+      ```text
       Windows Registry Editor Version 5.00
       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
       "IgnoreCertificateValidation"=dword:00000001
@@ -221,7 +221,7 @@ A **globális engedélyek** panel **kezelés** lapján az új felhasználói fi�
 
     ![Azure Backup Server hitelesítő adatok kezelése párbeszédpanel](./media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
 
-4. A **hitelesítő adatok hozzáadása** lapon adja meg az új hitelesítő adat nevét és leírását, majd adja meg a VMware-kiszolgálón megadott felhasználónevet és jelszót. A *contoso vCenter hitelesítő adatai* a hitelesítő adatok azonosítására szolgálnak ebben az eljárásban. Ha a VMware-kiszolgáló és a Azure Backup Server nem ugyanabban a tartományban van, adja meg a tartományt a felhasználónévben.
+4. A **hitelesítő adatok hozzáadása**lapon adja meg az új hitelesítő adat nevét és leírását, majd adja meg a VMware-kiszolgálón megadott felhasználónevet és jelszót. A *contoso vCenter hitelesítő adatai* a hitelesítő adatok azonosítására szolgálnak ebben az eljárásban. Ha a VMware-kiszolgáló és a Azure Backup Server nem ugyanabban a tartományban van, adja meg a tartományt a felhasználónévben.
 
     ![Azure Backup Server hitelesítő adat hozzáadása párbeszédpanel](./media/backup-azure-backup-server-vmware/mabs-add-credential-dialog2.png)
 
@@ -286,10 +286,10 @@ VMware virtuális gépek hozzáadása a biztonsági mentéshez. A védelmi csopo
 
 1. A **védelmi csoport típusának kiválasztása** lapon válassza a **kiszolgálók** elemet, majd kattintson a **tovább**gombra. Megjelenik a **csoporttagok kiválasztása** lap.
 
-1. A **csoporttagok kiválasztása** > Válassza ki azokat a virtuális gépeket (vagy virtuálisgép-mappákat), amelyekről biztonsági másolatot szeretne készíteni. Ezután kattintson a **Next** (Tovább) gombra.
+1. A **csoporttagok kiválasztása**területen válassza ki azokat a virtuális gépeket (vagy virtuálisgép-mappákat), amelyekről biztonsági másolatot szeretne készíteni. Ezután kattintson a **Next** (Tovább) gombra.
 
     - Ha kijelöl egy mappát, vagy a mappában található virtuális gépek vagy mappák is ki vannak választva a biztonsági mentéshez. Törölheti azokat a mappákat vagy virtuális gépeket, amelyekről nem kíván biztonsági másolatot készíteni.
-1. Ha már folyamatban van egy virtuális gép vagy mappa biztonsági mentése, azt nem lehet kijelölni. Ezzel biztosíthatja, hogy a rendszer duplikált helyreállítási pontokat hozzon létre egy virtuális géphez. .
+1. Ha már folyamatban van egy virtuális gép vagy mappa biztonsági mentése, azt nem lehet kijelölni. Ez biztosítja, hogy a rendszer duplikált helyreállítási pontokat hozzon létre egy virtuális géphez.
 
      ![Csoporttagok kiválasztása](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
@@ -301,7 +301,7 @@ VMware virtuális gépek hozzáadása a biztonsági mentéshez. A védelmi csopo
 1. A **rövid távú célok megadása**területen határozza meg, hogy mennyi ideig szeretné megőrizni a lemezre történő biztonsági mentést.
    - A **megőrzési tartomány**mezőben határozza meg, hogy hány nap elteltével kell megőrizni a lemezes helyreállítási pontokat.
    - A **szinkronizálás gyakorisága**mezőben határozza meg, hogy milyen gyakran történjen lemezes helyreállítási pont.
-       - Ha nem szeretné beállítani a biztonsági mentés időközét, **közvetlenül egy helyreállítási pont előtt** is megtekintheti, hogy a biztonsági mentés az egyes helyreállítási pontok ütemezése előtt fusson.
+       - Ha nem szeretné beállítani a biztonsági mentés időközét, akkor **közvetlenül egy helyreállítási pont előtt** is megtekintheti, hogy a biztonsági mentés az egyes helyreállítási pontok ütemezése előtt fusson.
        - A rövid távú biztonsági mentések teljes biztonsági mentést biztosítanak, és nem növekményes.
        - A rövid távú biztonsági mentések időpontjának és dátumának módosításához kattintson a **módosítás** gombra.
 
@@ -354,7 +354,7 @@ VMware virtuális gépek hozzáadása a biztonsági mentéshez. A védelmi csopo
 
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6,7
 
-A vSphere 6,7 biztonsági mentéséhez tegye a következőket:
+A 6,7-es vSphere biztonsági mentéséhez tegye a következőket:
 
 - A TLS 1,2 engedélyezése a DPM-kiszolgálón
   >[!Note]

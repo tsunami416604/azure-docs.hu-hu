@@ -1,6 +1,6 @@
 ---
-title: A médiafájlokat az Azure Media Indexerrel
-description: Az Azure Media Indexer lehetővé teszi a médiafájlok tartalom kereshetővé és a egy lezárt a feliratozás és a kulcsszavak teljes szövegű átiratot létrehozása érdekében. Ez a témakör bemutatja, hogyan használja a Media Indexer.
+title: Médiafájlok indexelése Azure Media Indexer
+description: Azure Media Indexer lehetővé teszi, hogy a médiafájlokat kereshetővé tegye, és teljes szöveges átiratot hozzon a kódolt feliratok és kulcsszavak számára. Ez a témakör a Media Indexer használatát mutatja be.
 services: media-services
 documentationcenter: ''
 author: Asolanki
@@ -13,47 +13,48 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: adsolank;juliako;johndeu
-ms.openlocfilehash: a11ae0414d6737f1588515ec19524bcf499f0c74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: johndeu
+ms.openlocfilehash: a51774a1db76086440742abd5aedce3fbd26c270
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61215805"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016089"
 ---
-# <a name="indexing-media-files-with-azure-media-indexer"></a>A médiafájlokat az Azure Media Indexerrel
-Az Azure Media Indexer lehetővé teszi a médiafájlok tartalom kereshetővé és a egy lezárt a feliratozás és a kulcsszavak teljes szövegű átiratot létrehozása érdekében. Feldolgozható egyetlen médiafájl is, vagy egy kötegben több médiafájl is.  
+# <a name="indexing-media-files-with-azure-media-indexer"></a>Médiafájlok indexelése Azure Media Indexer
+Azure Media Indexer lehetővé teszi, hogy a médiafájlokat kereshetővé tegye, és teljes szöveges átiratot hozzon a kódolt feliratok és kulcsszavak számára. Feldolgozható egyetlen médiafájl is, vagy egy kötegben több médiafájl is.  
 
 > [!IMPORTANT]
-> Ha a tartalom indexelése, ügyeljen arra, hogy egyértelmű speech (nélkül háttér zene, zaj, hatások vagy mikrofon hiss) rendelkező médiafájlokat használó. Néhány példa a megfelelő tartalom: értekezletek, előadások vagy bemutatók rögzíti. A következő tartalmat nem lehet megfelelő, az indexelés: filmek, tévéműsorok karaktereket a vegyes hang és a hatást, rosszul rögzíti a tartalmat, a háttérzaj (hiss).
+> Tartalom indexelése esetén ügyeljen arra, hogy a tiszta beszédtel (háttérzene, zaj, effektusok vagy mikrofon nélkül sziszegve) médiafájlokat használjon. Néhány példa a megfelelő tartalomra: rögzített értekezletek, előadások vagy bemutatók. Előfordulhat, hogy az alábbi tartalmak nem alkalmasak indexelésre: filmek, TV-műsorok, bármilyen kevert hang-és hanghatások, a rosszul rögzített tartalom (sziszegés).
 > 
 > 
 
-Egy indexelési feladat a következő kimenetek hozhat létre:
+Az indexelési feladatok a következő kimeneteket hozhatják elő:
 
-* Az alábbi formátumokban feliratfájlok: **SZÁMI**, **TTML**, és **WebVTT**.
+* A kódolt képfeliratok fájljai a következő formátumokban vannak: **Számi**, **TTML**és **WebVTT**.
   
-    Feliratfájlok Recognizability, mely egy indexelési feladat alapján hogyan ismerhető fel a beszéd, a forrás-videóban pontszámok nevű címke tartalmazza.  Recognizability értékét segítségével képernyő kimeneti fájlok megkönnyítettük a használatát. Alacsony pontszámmal minőségi hang miatt gyenge indexelési eredmények azt.
-* Kulcsszófájl (XML).
-* Hang blobfájlra (AIB) indexelő az SQL server való használatra.
+    A kódolt feliratos fájlok közé tartozik a felismerhetőség nevű címke, amely a forrás videójában található beszéd felismerhetővé módját mutatja.  Használhatja a felismerhetőség értékét a felhasználhatóságra szolgáló kimeneti fájlok megjelenítéséhez. Az alacsony pontszám a hangminőség miatt gyenge indexelési eredményeket jelent.
+* Kulcsszóválasztó fájl (XML).
+* Az SQL Serverrel való használatra szolgáló AIB-fájl.
   
-    További információkért lásd: [AIB-fájlok használata az Azure Media Indexer és az SQL Server](https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/).
+    További információ: [AIB-fájlok használata Azure Media Indexer és SQL Server](https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/).
 
-Ez a cikk bemutatja, hogyan hozhat létre az indexelési feladatok **adategység Index** és **Index több fájlra**.
+Ez a cikk bemutatja, hogyan hozhat létre indexelési feladatokat **egy eszköz indexeléséhez** és **több fájl indexeléséhez**.
 
-A legújabb Azure Media Indexer frissítésekkel kapcsolatban lásd: [Media Services-blogok](#preset).
+A legújabb Azure Media Indexer frissítésekkel kapcsolatban lásd: [Media Services Blogok](#preset).
 
-## <a name="using-configuration-and-manifest-files-for-indexing-tasks"></a>Az indexelési feladatok konfigurációs és a jegyzék használatával
-Megadhat további részleteket az indexelési feladatok egy feladat konfiguráció használatával. Megadhatja például, mely a médiafájl használandó metaadatok. A metaadatok segítségével a nyelv motor bontsa ki a szöveg szóhasználati, és jelentősen csökkenti a beszédfelismerés pontosságát.  Emellett is tudja adja meg a kívánt kimeneti fájlokat.
+## <a name="using-configuration-and-manifest-files-for-indexing-tasks"></a>Konfigurációs és MANIFEST-fájlok használata az indexelési feladatokhoz
+Az indexelési feladatokhoz több részletet is megadhat a feladatok konfigurációjának használatával. Megadhatja például, hogy mely metaadatokat szeretné használni a médiafájlhoz. Ezt a metaadatokat a nyelvi motor használja a szókincs kibontásához, és nagy mértékben javítja a beszédfelismerés pontosságát.  A kívánt kimeneti fájlokat is meg tudja adni.
 
-Több médiafájl egyszerre is fel Alkalmazásjegyzék-fájl használatával.
+Egy jegyzékfájl használatával egyszerre több médiafájl is feldolgozható.
 
-További információkért lásd: [feladat készletet az Azure Media Indexer](https://msdn.microsoft.com/library/dn783454.aspx).
+További információ: [Azure Media Indexer feladatának előre definiálása](https://msdn.microsoft.com/library/dn783454.aspx).
 
-## <a name="index-an-asset"></a>Egy eszköz indexelése
-A következő metódust feltölt egy médiafájlt eszközként, és létrehoz egy feladatot az adategység indexelése.
+## <a name="index-an-asset"></a>Eszköz indexelése
+A következő módszer egy médiafájlt tölt fel egy eszközként, és létrehoz egy feladatot az eszköz indexeléséhez.
 
-Ha nincsenek konfigurációs fájl van megadva, a médiafájl indexelt az összes alapértelmezett beállítást.
+Ha nincs megadva konfigurációs fájl, a rendszer az összes alapértelmezett beállítással indexeli a médiafájlt.
 
 ```csharp
     static bool RunIndexingJob(string inputMediaFilePath, string outputFolder, string configurationFile = "")
@@ -146,23 +147,23 @@ Ha nincsenek konfigurációs fájl van megadva, a médiafájl indexelt az össze
 
 <!-- __ -->
 ### <a id="output_files"></a>Kimeneti fájlok
-Alapértelmezés szerint egy indexelési feladat a következő kimeneti fájlokat hoz létre. A fájlok az első kimeneti adategység vannak tárolva.
+Alapértelmezés szerint az indexelési feladatok a következő kimeneti fájlokat generálják. A fájlokat az első kimeneti eszköz tárolja.
 
-Ha egynél több bemeneti fájllal, az indexelő a jegyzékfájlt a feladatkimenetek "JobResult.txt" nevű számára hoz létre. Az egyes bemeneti médiafájl, az eredményül kapott AIB, SZÁMI, TTML, WebVTT kulcsszó fájlok, egymás után számozott és elnevezni az "Alias."
+Ha egynél több bemeneti médiafájl található, az indexelő egy jegyzékfájlt hoz létre a feladatok kimenetéhez, amelynek neve "JobResult. txt". Minden bemeneti médiafájl esetében az eredményül kapott AIB, SAMI, TTML, WebVTT és keyword fájlok egymás után sorszámozással és névvel vannak elnevezve az "alias" használatával.
 
 | Fájlnév | Leírás |
 | --- | --- |
-| **InputFileName.aib** |Az indexelő a blob hangfájl. <br/><br/> Hangfájl indexelő a Blob (aib) formájában egy bináris fájl, amely a Microsoft SQL server teljes szöveges kereséssel lehet keresni.  AIB-fájl sokkal hatékonyabb, mint az egyszerű feliratfájlok, mert az alternatív megoldások minden egyes szó, így sokkal gazdagabb keresési funkciókat tartalmaz. <br/> <br/>Azt kell az indexelő az SQL-bővítményt a gépen futó Microsoft SQL server 2008 vagy újabb verzióját. Keresés a AIB használatával a Microsoft SQL server teljes szöveges keresés pontosabb keresési eredmények WAMI által generált feliratfájlok keresés, mint biztosít. Ennek az oka a AIB word alternatíva, amely hasonló hang, mivel a feliratfájlok tartalmaz minden egyes szegmens a hanganyag hosszának végéig a legmagasabb megbízhatósági szót tartalmaz. Ha a videóban elhangzó szövegre keressenek keresése upmost jelentőségű, akkor javasoljuk, hogy a AIB az együttes használata a Microsoft SQL Server.<br/><br/> A bővítmény letöltése a <a href="https://aka.ms/indexersql">Azure Media Indexer SQL bővítmény</a>. <br/><br/>Használják a más keresőmotor, például az Apache Lucene/Solr egyszerűen indexelése a videó akadálymentes felirat és XML-fájlok kulcsszó alapján lehetőség arra is, de ez kevésbé pontos keresés eredménye eredményez. |
-| **InputFileName.smi**<br/>**InputFileName.ttml**<br/>**InputFileName.vtt** |SZÁMI, TTML és WebVTT formátumú lezárt felirata (CC) fájlokat.<br/><br/>Elérhetővé a hang- és videofájlok, a hallás fogyatékkal személyek használható.<br/><br/>Lezárt feliratfájlok tartalmaznak nevű címke <b>Recognizability</b> amely pontszámmodell alapján hogyan ismerhető fel a beszéd, a forrás-videóban egy indexelési feladat.  Használhatja a értékét <b>Recognizability</b> képernyő kimeneti fájlok megkönnyítettük a használatát. Alacsony pontszámmal minőségi hang miatt gyenge indexelési eredmények azt. |
-| **InputFileName.kw.xml<br/>InputFileName.info** |Kulcsszó információkat és fájlok. <br/><br/>Kulcsszó fájlja egy XML-fájlt, amely gyakorisági és eltérési információkkal együtt a beszédtartalomból kinyert kulcsszavakat tartalmazza. <br/><br/>A fájl adatait egy egyszerű szöveges fájlt, amely minden kifejezéshez ismerhető fel a részletes információkat tartalmaz. Az első sor speciális, és a Recognizability pontszámot tartalmaz. Minden egyes további sor az az alábbi adatok tabulátorral tagolt listája: Indítsa el az idő, befejezési időpontja, szó vagy kifejezés, a megbízhatóság. A időtartamok másodpercek alatt, és magabiztosan számként van megadva a 0-1. <br/><br/>Példa vonal: "a 1.20 1.45 word-0.67." <br/><br/>Ezek a fájlok lehetnek használt különböző célokra, például a beszéd elemzését, vagy keresőmotorok, mint például a Bing, a Google vagy a Microsoft SharePoint a médiafájlok könnyebben felfedezhetővé teheti, vagy akár több megfelelő ads biztosításához használt vannak kitéve. |
-| **JobResult.txt** |Kimeneti jegyzékfájl, jelenik meg, csak akkor, ha az indexelés több fájlt, amely tartalmazza a következő információkat:<br/><br/><table border="1"><tr><th>Bemeneti_fájl</th><th>Alias</th><th>MediaLength</th><th>Hiba</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
+| **InputFileName.aib** |Az audio-indexelési blob-fájl. <br/><br/> A hangindexelési blob (AIB) fájl egy bináris fájl, amely a teljes szöveges keresés használatával kereshető a Microsoft SQL Serverben.  A AIB-fájl nagyobb teljesítményű, mint az egyszerű képaláírás-fájl, mivel az egyes szavakra vonatkozó alternatívákat tartalmaz, így sokkal gazdagabb keresési élmény érhető el. <br/> <br/>Az indexelő SQL-bővítmény telepítését igényli a Microsoft SQL Server 2008-es vagy újabb verzióját futtató gépen. A AIB való keresés a Microsoft SQL Server teljes szöveges keresési funkciójával pontosabb keresési eredményeket biztosít, mint a WAMI által generált zárt feliratú fájlok keresése. Ennek az az oka, hogy a AIB olyan Word-alternatívákat tartalmaz, amelyek hasonlóak, míg a lezárt képaláírás-fájlok a legmagasabb megbízhatósági szót tartalmazzák a hang egyes szegmensei esetében. Ha a kimondottan felhasználható szavakat keresik, akkor azt javasoljuk, hogy a AIB együtt használja a Microsoft SQL Server.<br/><br/> A bővítmény letöltéséhez kattintson <a href="https://aka.ms/indexersql">Azure Media INDEXER SQL-bővítmény</a>elemre. <br/><br/>Más keresőmotorokat is használhat, például az Apache Lucene/Solr-t, hogy egyszerűen indexelje a videót a kódolt felirat és a kulcsszó XML-fájlja alapján, de ez kevésbé pontos keresési eredményeket fog eredményezni. |
+| **InputFileName.smi**<br/>**InputFileName.ttml**<br/>**InputFileName.vtt** |Lezárt feliratú (CC) fájlok a SAMI, a TTML és a WebVTT formátumban.<br/><br/>Használhatók a hang-és videofájlok elérhetővé tételéhez a fogyatékkal élők számára.<br/><br/>A kódolt feliratú fájlok közé tartozik <b></b> egy felismerhetőség nevű címke, amely a forrás videójában található beszéd felismerhetővé módját mutatja.  Használhatja a felismerhetőség értékét a <b></b> felhasználhatóságra szolgáló kimeneti fájlok megjelenítéséhez. Az alacsony pontszám a hangminőség miatt gyenge indexelési eredményeket jelent. |
+| **InputFileName.kw.xml<br/>InputFileName.info** |Kulcsszó-és információs fájlok. <br/><br/>A Kulcsszóválasztó fájl egy XML-fájl, amely a beszédfelismerési tartalomból kinyert kulcsszavakat tartalmazza a gyakorisággal és az eltolással kapcsolatos információkkal. <br/><br/>Az információs fájl egy egyszerű szöveges fájl, amely részletes információkat tartalmaz az egyes felismert feltételekről. Az első sor speciális, és tartalmazza a felismerhetőség pontszámát. Minden további sor a következő adatok tabulátorral tagolt listája: kezdési idő, befejezési idő, szó/kifejezés, megbízhatóság. A rendszer másodpercek alatt adja meg az időpontokat, és a megbízhatóságot a 0-1-es számként adja meg. <br/><br/>Példa sor: "1,20 1,45 Word 0,67" <br/><br/>Ezek a fájlok számos célra használhatók, például a beszédfelismerési elemzések elvégzéséhez, vagy a keresőprogramok, például a Bing, a Google vagy a Microsoft SharePoint használatával, hogy a médiafájlok könnyebben felderíthetők legyenek, vagy akár több releváns hirdetés nyújtására is használhatók. |
+| **JobResult.txt** |Kimeneti jegyzékfájl, amely csak több fájl indexelése esetén jelenik meg, a következő információkat tartalmazza:<br/><br/><table border="1"><tr><th>InputFile</th><th>Alias</th><th>MediaLength</th><th>Hiba</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
 
-Ha nem az összes bemeneti médiafájlok indexelése sikeresen, 4000 kóddal meghiúsul az indexelési feladatot. További információkért lásd: [hibakódok](#error_codes).
+Ha nem az összes bemeneti médiafájl indexelve lett, az indexelési feladatok a 4000 hibakód miatt meghiúsulnak. További információ: hibakódok [](#error_codes).
 
-## <a name="index-multiple-files"></a>Több fájlok indexelése
-A következő metódust feltölt több médiafájl eszközként, és létrehoz egy feladatot, ezeket a fájlokat egy kötegbe indexelése.
+## <a name="index-multiple-files"></a>Több fájl indexelése
+A következő módszer több médiafájlt tölt fel egy eszközként, és létrehoz egy feladatot, amely az összes fájlt egy kötegben indexeli.
 
-Egy ".lst" kiterjesztésű jegyzékfájl létrehozása és feltöltése az objektumba. A jegyzékfájl az adategység-fájlok listáját tartalmazza. További információkért lásd: [feladat készletet az Azure Media Indexer](https://msdn.microsoft.com/library/dn783454.aspx).
+A rendszer létrehoz egy ". lst" kiterjesztésű jegyzékfájlt, és feltölti az eszközre. A manifest-fájl tartalmazza az összes objektum fájljának listáját. További információ: [Azure Media Indexer feladatának előre definiálása](https://msdn.microsoft.com/library/dn783454.aspx).
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -239,38 +240,38 @@ Egy ".lst" kiterjesztésű jegyzékfájl létrehozása és feltöltése az objek
     }
 ```
 
-### <a name="partially-succeeded-job"></a>Részben sikeres feladat
-Ha nem az összes bemeneti médiafájlok indexelése sikeresen, akkor az indexelési feladatot 4000-es hibakód sikertelen. További információkért lásd: [hibakódok](#error_codes).
+### <a name="partially-succeeded-job"></a>Részben sikeres feladatok
+Ha nem az összes bemeneti médiafájl indexelve lett, az indexelési feladat sikertelen lesz, hibakód: 4000. További információ: hibakódok [](#error_codes).
 
-Az azonos kimenetek (a sikeres feladat) jönnek létre. A kimeneti jegyzékfájl megtudhatja, mely bemeneti fájlok meghibásodott, a hiba oszlop értékei alapján is hivatkozunk. A bemeneti fájlokat nem sikerült, az eredményül kapott AIB, SZÁMI, TTML, WebVTT és kulcsszó fájlok nem jön létre.
+Ugyanezek a kimenetek (a sikeres feladatok) jönnek létre. Tekintse át a kimeneti jegyzékfájlt, és ellenőrizze, hogy mely bemeneti fájlok sikertelenek, a hiba oszlop értékeinek megfelelően. A sikertelen bemeneti fájlok esetében az eredményül kapott AIB, SAMI, TTML, WebVTT és keyword fájlok nem lesznek létrehozva.
 
-### <a id="preset"></a> Az Azure Media Indexer az előre beállított feladat
-Az Azure Media Indexer a feldolgozás testre szabható azáltal, hogy egy választható feladat mellett a feladat előbeállítást.  A következő ismerteti a konfigurációs xml formátuma.
+### <a id="preset"></a>Azure Media Indexer feladatának beállítása
+A Azure Media Indexerból történő feldolgozás testreszabható úgy, hogy a feladattal együtt egy opcionális feladattal is rendelkezik.  Az alábbiakban a konfigurációs XML formátumát ismertetjük.
 
 | Name (Név) | Kötelező | Leírás |
 | --- | --- | --- |
-| **Bemenet** |false |Az eszközintelligencia fájl, amelyet szeretne indexelni.</p><p>Az Azure Media Indexer a következő fájl médiaformátumok támogatja: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>Megadhatja a fájl neve (s) a **neve** vagy **lista** attribútuma a **bemeneti** elem (ahogy az alább látható). Ha nem ad meg melyik adategységfájlon indexre, az elsődleges fájl kivétele történik. Ha nincsenek elsődleges eszközfájl van beállítva, az első fájl a bemeneti objektuma indexelve van.</p><p>Az eszköz nevét adja meg explicit módon, hajtsa végre:<br/>`<input name="TestFile.wmv">`<br/><br/>Több eszköz fájlok egyszerre (legfeljebb 10) indexelésére is használhatja. Ehhez tegye a következőket:<br/><br/><ol class="ordered"><li><p>Hozzon létre egy szövegfájlt (Alkalmazásjegyzék-fájl), és adjon meg egy .lst bővítmény. </p></li><li><p>A bemeneti adategység adja hozzá az összes eszközintelligencia-nevek listája az Alkalmazásjegyzék-fájl. </p></li><li><p>Adja hozzá az eszköz (feltöltés) a jegyzékfájl fájlt.  </p></li><li><p>A bemeneti lista attribútum adja meg a jegyzékfájl neve.<br/>`<input list="input.lst">`</li></ol><br/><br/>Megjegyzés: Ha több mint 10 fájlokat ad hozzá a jegyzékfájlt, az indexelési feladatot 2006 hibakóddal sikertelen lesz. |
-| **metadata** |false |A megadott eszköz fájl(ok) adaptálásához használt metaadatait.  Hasznos készíti elő az indexelő nem szabványos szókincsből eredőket szavakat, például a tulajdonnevek felismerni.<br/>`<metadata key="..." value="..."/>` <br/><br/>Megadhat **értékek** az előre meghatározott **kulcsok**. Jelenleg a következő kulcsok támogatottak:<br/><br/>"title" és "description" - használt adaptálásához módosítania a nyelvi modell a feladat, és beszédfelismerés pontosságának javítása.  Az értékek ültet be internetes keresés található kontextusban megfelelő szöveg-dokumentumok, a tartalmát, mivel megvédi a belső szótárához az indexelési feladat időtartama.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
-| **Szolgáltatások** <br/><br/> Az 1.2-es verziójában hozzáadva. Az egyetlen támogatott szolgáltatás jelenleg a beszédfelismerés ("ASR"). |false |A beszédfelismerés funkció az alábbi beállítások kulcsok rendelkezik:<table><tr><th><p>Kulcs</p></th>        <th><p>Leírás</p></th><th><p>Példaérték</p></th></tr><tr><td><p>Nyelv</p></td><td><p>A multimédiás fájlban ismeri fel a természetes nyelv.</p></td><td><p>Angol, spanyol</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>a kívánt kimeneti felirat formátumok (ha vannak) pontosvesszővel tagolt listája</p></td><td><p>ttml;sami;webvtt</p></td></tr><tr><td><p>GenerateAIB</p></td><td><p>Egy logikai jelzőt megadó AIB-fájl-e szükséges (az SQL Server és az ügyfél az indexelő ifilterrel való használatra).  További információkért lásd: <a href="https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/">AIB-fájlok használata az Azure Media Indexer és az SQL Server</a>.</p></td><td><p>True; False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>Egy logikai jelzőt megadó-e egy kulcsszót XML-fájl megadása kötelező.</p></td><td><p>Igaz FALSE (hamis). </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>Egy logikai jelzőt megadó e teljes feliratok (függetlenül a megbízhatósági szint) kényszerítése.  </p><p>Alapértelmezett érték FALSE (hamis), ebben az esetben szavak és kifejezések, amelyek rendelkeznek egy kisebb, mint 50 %-os megbízhatósági szintet kimarad a az utolsó felirat kimenetek és helyébe a három pontot ("...").  A három pontra hasznosak felirat minőség-ellenőrzés és naplózás.</p></td><td><p>Igaz FALSE (hamis). </p></td></tr></table> |
+| **bemeneti** |false |Az indexelni kívánt adatfájl (ok).</p><p>A Azure Media Indexer a következő médiafájl-formátumokat támogatja: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>Megadhatja a fájl nevét (ke) t a **bemeneti** elem **Name** vagy **List** attribútumában (az alább látható módon). Ha nem határozza meg, hogy melyik adatfájlt szeretné indexelni, az elsődleges fájl lesz kiválasztva. Ha nincs beállítva elsődleges adatfájl, a bemeneti eszköz első fájlja indexelve lesz.</p><p>Ha explicit módon meg szeretné adni az eszköz fájljának nevét, tegye a következőket:<br/>`<input name="TestFile.wmv">`<br/><br/>Egyszerre több adatfájlt is indexelheti (legfeljebb 10 fájlt). Ehhez tegye a következőket:<br/><br/><ol class="ordered"><li><p>Hozzon létre egy szövegfájlt (manifest-fájlt), és adjon meg egy. lst kiterjesztést. </p></li><li><p>Adja meg a bemeneti objektumban található összes adatfájl nevét ebbe a jegyzékfájlba. </p></li><li><p>Adja hozzá (feltölti) a jegyzékfájlt az objektumhoz.  </p></li><li><p>Adja meg a jegyzékfájl nevét a bemenet List attribútumában.<br/>`<input list="input.lst">`</li></ol><br/><br/>Megjegyzés: Ha több mint 10 fájlt ad hozzá a jegyzékfájlhoz, az indexelési feladat sikertelen lesz az 2006-es hibakód miatt. |
+| **metadata** |false |A szókincs-átalakításhoz használt megadott adatfájl (ok) metaadatai.  Az indexelő előkészítése hasznos lehet a nem szabványos szókincs-szavak, például a megfelelő főnevek felismerésére.<br/>`<metadata key="..." value="..."/>` <br/><br/>Megadhatja az előre definiált **kulcsok**értékeit. Jelenleg a következő kulcsok támogatottak:<br/><br/>"title" és "Description" – a szókincs adaptációja a feladatokhoz használt nyelvi modell finomhangolásához és a beszédfelismerés pontosságának javításához.  Az értékek a mag internetes keresésével keresik a kontextusban releváns szöveges dokumentumokat, a tartalom használatával kiegészítik a belső szótárt az indexelési feladat időtartamára.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
+| **szolgáltatások** <br/><br/> Az 1,2-es verzióban lett hozzáadva. Jelenleg az egyetlen támogatott funkció a beszédfelismerés ("ASR"). |false |A beszédfelismerési funkció a következő beállítások kulcsokkal rendelkezik:<table><tr><th><p>Kulcs</p></th>        <th><p>Leírás</p></th><th><p>Példaérték</p></th></tr><tr><td><p>Nyelv</p></td><td><p>A multimédiás fájlban felismerhető természetes nyelv.</p></td><td><p>Angol, Spanyol</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>a kívánt kimeneti felirat formátumának pontosvesszővel tagolt listája (ha van ilyen)</p></td><td><p>ttml;sami;webvtt</p></td></tr><tr><td><p>GenerateAIB</p></td><td><p>Logikai jelző, amely meghatározza, hogy szükség van-e AIB-fájlra (a SQL Server és a Customer indexelő IFilter szolgáltatással való használatra).  További információ: <a href="https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/">AIB-fájlok használata Azure Media Indexer és SQL Server</a>.</p></td><td><p>Igaz Hamis</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>Logikai jelző, amely meghatározza, hogy szükség van-e egy kulcsszó XML-fájlra.</p></td><td><p>Igaz Hamis. </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>Logikai jelző, amely meghatározza, hogy a teljes feliratok (a megbízhatósági szinttől függetlenül) legyenek kényszerítve.  </p><p>Az alapértelmezett érték false (hamis), amelyben az olyan szavak és kifejezések, amelyek 50%-nál kevesebb megbízhatósági szinttel rendelkeznek, kimaradnak a végső képaláírás-kimenetből, és az ellipszisek ("...") helyébe lépnek.  Az ellipszisek hasznosak a feliratok minőségének ellenőrzéséhez és a naplózáshoz.</p></td><td><p>Igaz Hamis. </p></td></tr></table> |
 
 ### <a id="error_codes"></a>Hibakódok
-Egy hiba esetén az Azure Media Indexer jelentést kell biztonsági másolatot a következő hibakódok egyikét:
+Hiba esetén Azure Media Indexer a következő hibakódok egyikét kell jelentenie:
 
 | Kód | Name (Név) | Lehetséges okok |
 | --- | --- | --- |
 | 2000 |Érvénytelen konfiguráció |Érvénytelen konfiguráció |
-| 2001 |Érvénytelen bemeneti eszközök |Hiányzik a bemeneti eszközök, illetve üres eszköz. |
-| 2002 |Érvénytelen a jegyzékfájl. |Jegyzékfájl üres vagy jegyzékfájlja érvénytelen elemet tartalmaz. |
-| 2003 |Nem sikerült letölteni a médiafájl |Érvénytelen URL-cím-jegyzékfájl. |
-| 2004 |Protokoll nem támogatott |Médiafájl URL-címe, protokoll nem támogatott. |
-| 2005 |Nem támogatott fájltípus. |Bemeneti fájl típusa nem támogatott. |
-| 2006 |Túl sok a bemeneti fájl |Több mint 10 fájlok vannak a bemeneti jegyzékfájlban. |
-| 3000 |Nem sikerült dekódolni a médiafájl |Nem támogatott adathordozó kodek <br/>vagy<br/> Sérült médiafájl <br/>vagy<br/> Nincs a bemeneti audio stream. |
-| 4000 |Részlegesen sikerült a Batch-indexelő |Egyes bemeneti fájlokat nem sikerült indexelhetők. További információkért lásd: <a href="#output_files">kimeneti fájlok</a>. |
-| egyéb |Belső hiba |Forduljon az ügyfélszolgálathoz. indexer@microsoft.com |
+| 2001 |Érvénytelen bemeneti eszközök |Hiányzó bemeneti eszközök vagy üres eszköz. |
+| 2002 |Érvénytelen jegyzékfájl |A jegyzékfájl üres, vagy a jegyzékfájl érvénytelen elemeket tartalmaz. |
+| 2003 |A médiafájl letöltése nem sikerült |Érvénytelen URL-cím a jegyzékfájlban. |
+| 2004 |Nem támogatott protokoll |A Media URL-cím protokollja nem támogatott. |
+| 2005 |Nem támogatott fájltípus. |A bemeneti médiafájl típusa nem támogatott. |
+| 2006 |Túl sok bemeneti fájl |A bemeneti jegyzékfájlban több mint 10 fájl található. |
+| 3000 |Nem sikerült dekódolni a médiafájlt |Nem támogatott adathordozó-kodek <br/>vagy<br/> Sérült médiafájl <br/>vagy<br/> Nincs hangadatfolyam a bemeneti adathordozón. |
+| 4000 |A kötegelt indexelés részben sikerült |A bemeneti médiafájlok némelyikét nem sikerült indexelni. További információ: <a href="#output_files">kimeneti fájlok</a>. |
+| egyéb |Belső hibák |Forduljon a támogatási csoporthoz. [https://doi.org/10.13012/J8PN93H8](indexer@microsoft.com) |
 
 ## <a id="supported_languages"></a>Támogatott nyelvek
-Jelenleg az angol és spanyol nyelven támogatottak. További információkért lásd: [az 1.2-es verzió kibocsátási blogbejegyzés](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/).
+Jelenleg az angol és a spanyol nyelv támogatott. További információ: [a v 1.2 kiadási blogbejegyzést](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/).
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -279,9 +280,9 @@ Jelenleg az angol és spanyol nyelven támogatottak. További információkért 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-[Az Azure Media Services analitikai funkcióinak áttekintése](media-services-analytics-overview.md)
+[Azure Media Services Analytics áttekintése](media-services-analytics-overview.md)
 
-[AIB-fájl, és az Azure Media Indexer és az SQL Server használatával](https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/)
+[AIB-fájlok használata Azure Media Indexer és SQL Server](https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/)
 
-[Médiafájlokat az Azure Media Indexer 2 előzetes verzió](media-services-process-content-with-indexer2.md)
+[Médiafájlok indexelése Azure Media Indexer 2 előzetes verzióval](media-services-process-content-with-indexer2.md)
 

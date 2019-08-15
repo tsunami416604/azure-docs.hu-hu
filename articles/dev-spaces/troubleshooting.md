@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 2434507ac89d631bb96ae9633403075801879a37
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 6ab2e0866c4e6c5cc8f89cb490504f6ca6a076fc
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277406"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019651"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -32,7 +32,7 @@ A parancssori felületen, a további információk a parancs végrehajtása sor�
 
 ## <a name="debugging-services-with-multiple-instances"></a>Több példányával szolgáltatások hibakeresésekor
 
-Jelenleg az Azure dev Spaces a legmegfelelőbben működik egyetlen példány vagy Pod hibakereséséhez. A azds. YAML fájl egy olyan beállítást tartalmaz , amely a Kubernetes által futtatott hüvelyek számát jelzi. Ha úgy módosítja a replicaCount, hogy úgy konfigurálja az alkalmazást, hogy több hüvelyt futtasson egy adott szolgáltatáshoz, akkor a hibakereső az első hüvelyhez csatlakozik, amikor betűrendbe van sorolva. A hibakereső egy másik Pod-hoz csatlakozik, amikor az eredeti Pod újrahasznosítja, ami valószínűleg váratlan viselkedést eredményez.
+Jelenleg az Azure dev Spaces a legmegfelelőbben működik egyetlen példány vagy Pod hibakereséséhez. A azds. YAML fájl egy olyan beállítást tartalmaz, amely a Kubernetes által futtatott hüvelyek számát jelzi. Ha úgy módosítja a replicaCount, hogy úgy konfigurálja az alkalmazást, hogy több hüvelyt futtasson egy adott szolgáltatáshoz, akkor a hibakereső az első hüvelyhez csatlakozik, amikor betűrendbe van sorolva. A hibakereső egy másik Pod-hoz csatlakozik, amikor az eredeti Pod újrahasznosítja, ami valószínűleg váratlan viselkedést eredményez.
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>"Nem sikerült létrehozni az Azure fejlesztési tárolóhelyek vezérlő" hiba
 
@@ -125,7 +125,7 @@ azds list-uris
 
 Ha egy URL-cím a *függőben lévő* állapot, amely azt jelenti, hogy fejlesztői, szóközök még mindig várakozik DNS-regisztráció végrehajtásához. Egyes esetekben regisztráció befejezése néhány percet vesz igénybe. Fejlesztői szóközöket is megnyílik a localhost alagút minden egyes szolgáltatás, amellyel DNS-regisztráció történő várakozás során.
 
-Ha egy URL-cím 5  percnél hosszabb ideig marad a függőben lévő állapotban, akkor a külső DNS-Pod-mel kapcsolatos problémát jelezhet, amely létrehozza a nyilvános végpontot vagy az Nginx bemenő vezérlő Pod-t, amely a nyilvános végpontot szerzi be. A következő parancsokat használhatja ezeket a podok törlése. Az AK automatikusan újra létrehozza a törölt hüvelyeket.
+Ha egy URL-cím 5 percnél hosszabb ideig marad a függőben lévő állapotban, akkor a külső DNS-Pod-mel kapcsolatos problémát jelezhet, amely létrehozza a nyilvános végpontot vagy az Nginx bemenő vezérlő Pod-t, amely a nyilvános végpontot szerzi be. A következő parancsokat használhatja ezeket a podok törlése. Az AK automatikusan újra létrehozza a törölt hüvelyeket.
 
 ```cmd
 kubectl delete pod -n kube-system -l app=addon-http-application-routing-external-dns
@@ -250,7 +250,7 @@ Mit kell tenni:
 Talál példát: https://github.com/sgreenmsft/buildcontextsample
 
 ## <a name="microsoftdevspacesregisteraction-authorization-error"></a>"Microsoft.DevSpaces/register/action" engedélyezési hiba
-Az Azure  fejlesztői tárhelyek kezeléséhez tulajdonosi vagy *közreműködői* hozzáférésre van szüksége az Azure-előfizetésben. Ez a hiba akkor fordulhat elő, ha a fejlesztői helyeket szeretné kezelni, és nem rendelkezik *tulajdonosi* vagy *közreműködői* hozzáféréssel a társított Azure-előfizetéshez.
+Az Azure fejlesztői tárhelyek kezeléséhez tulajdonosi vagy *közreműködői* hozzáférésre van szüksége az Azure-előfizetésben. Ez a hiba akkor fordulhat elő, ha a fejlesztői helyeket szeretné kezelni, és nem rendelkezik *tulajdonosi* vagy *közreműködői* hozzáféréssel a társított Azure-előfizetéshez.
 `The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.`
 
 ### <a name="reason"></a>Reason
@@ -342,7 +342,7 @@ A probléma ideiglenes megkerülő megoldásként növelje az *FS. inotify. max 
 
 ### <a name="reason"></a>Reason
 
-A Kubernetes inicializáló nem tudja alkalmazni a PodSpec az új hüvelyek esetében, mert a fürtben a *fürt-rendszergazdai* szerepkör RBAC engedélyei változnak. Az új Pod is rendelkezhet érvénytelen PodSpec, például a pod-hoz társított szolgáltatásfiók már nem létezik. Az inicializálási probléma miatt függőben lévő  állapotban lévő hüvelyek megtekintéséhez használja az `kubectl get pods` parancsot:
+A Kubernetes inicializáló nem tudja alkalmazni a PodSpec az új hüvelyek esetében, mert a fürtben a *fürt-rendszergazdai* szerepkör RBAC engedélyei változnak. Az új Pod is rendelkezhet érvénytelen PodSpec, például a pod-hoz társított szolgáltatásfiók már nem létezik. Az inicializálási probléma miatt függőben lévő állapotban lévő hüvelyek megtekintéséhez használja az `kubectl get pods` parancsot:
 
 ```bash
 kubectl get pods --all-namespaces --include-uninitialized
@@ -445,7 +445,14 @@ Frissítse az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) te
 
 ### <a name="reason"></a>Reason
 
-Amikor egy szolgáltatást egy fejlesztői térben futtat, a szolgáltatás Pod-je [további tárolókkal](how-dev-spaces-works.md#prepare-your-aks-cluster)lesz befecskendezve a rendszerállapothoz. Ezek a tárolók nem rendelkeznek erőforrás-kérelmekkel vagy-korlátozásokkal, ami azt eredményezi, hogy a vízszintes Pod automéretező le lesz tiltva a pod számára.
+Ha egy fejlesztési térben futtat egy szolgáltatást, a szolgáltatás Pod-je [további tárolókkal](how-dev-spaces-works.md#prepare-your-aks-cluster) van befecskendezve, és a pod összes tárolójának erőforrás-korláttal és kérelmekkel kell rendelkeznie a vízszintes Pod automatikus skálázáshoz. 
+
+
+A befecskendezett tároló (devspaces) esetében az erőforrás-kérelmek és a korlátozások alkalmazhatók, `azds.io/proxy-resources` Ha hozzáadja a jegyzetet a pod spechoz. Az értéket egy olyan JSON-objektumra kell beállítani, amely a proxyhoz tartozó tároló specifikációjának erőforrások szakaszát jelképezi.
 
 ### <a name="try"></a>Kipróbálás
-Futtassa a vízszintes Pod automéretezőt olyan névtérben, amelyben nincs engedélyezve a dev Spaces.
+
+Alább látható egy példa arra a proxy-erőforrások jegyzetre, amelyet alkalmazni kell a pod spec-ra.
+```
+azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"},\"Requests\": {\"cpu\": \"150m\",\"memory\": \"200Mi\"}}"
+```

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 7/25/2019
-ms.openlocfilehash: 3d4bab4558ebfd0f6031ef00a0b67bb0d5b61120
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.date: 08/09/2019
+ms.openlocfilehash: 28d635dc5042799790d032ef4b46bf28118cb326
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501444"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947168"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Támogatott Azure Database for MySQL Server-verziók
 
@@ -38,8 +38,8 @@ Tekintse meg a MySQL [kibocsátási megjegyzéseit](https://dev.mysql.com/doc/re
 
 ## <a name="mysql-version-80"></a>MySQL 8,0-es verzió
 
-> [!NOTE]
-> A MySQL 8,0 jelenleg előzetes verzióban érhető el. Ha nem látja a MySQL 8,0-et a Azure Portalban, előfordulhat, hogy az üzemelő példány nem fejeződött be a régióban. 
+> [!IMPORTANT]
+> A MySQL 8,0 jelenleg előzetes verzióban érhető el.
 
 Hibajavítási kiadás: 8.0.15
 

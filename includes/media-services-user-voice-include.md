@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 5c7686d8501baf17a63a5317f0d136adb6ac7812
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179203"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014685"
 ---
 A [User Voice](https://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409) fórumon visszajelzést adhat az Azure Media Services szolgáltatásról, és javaslatokat tehet annak javítására. Közvetlenül be is léphet az alábbi kategóriák valamelyikébe:
 

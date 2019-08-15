@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/02/2019
-ms.openlocfilehash: a5db2c1c40c9c6f5c05205b9b2c652d2e23cf229
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2f6d45613120d02dd96a9fe0a14ce388d20cf0c6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848247"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990581"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Automatikus gépi tanulási kísérletek létrehozása, feltárása és üzembe helyezése a Azure Portalban (előzetes verzió)
 
@@ -66,6 +66,10 @@ Válassza a **kísérlet létrehozása** lehetőséget, és töltse fel az **új
 1. Válasszon egy tárolót.
 
 1. Válasszon ki egy adatfájlt a tárolóból, vagy töltsön fel egy fájlt a helyi számítógépről a tárolóba. A nyilvános előzetes verzió csak a helyi fájlok feltöltését és az Azure Blob Storage fiókokat támogatja.
+    >[!Important]
+    > A betanítási adatgyűjtésre vonatkozó követelmények:
+    >* Az adatokat táblázatos formában kell megadni.
+    >* A megjósolni kívánt értéknek (célként megadott oszlopnak) jelen kell lennie az adatsorokban.
 
     [![Adatfájl kiválasztása](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
 

@@ -5,20 +5,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 11/04/2018
+ms.date: 06/28/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: d25efa8c666fa91c7bd652a7cf931ea6ca379aa2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9326e6dac88fa23a7bb2bc489064aca5ef52980b
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133597"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015939"
 ---
-Zónaredundáns tárolás (ZRS) replikálja az adatokat három tárolási fürtöket egy régió között. Minden egyes tárolási fürt fizikailag elkülönül a többi, és a saját (AZ) rendelkezésre állási zónában található. Egyes rendelkezésre állási zónában&mdash;és a benne lévő ZRS fürt&mdash;önálló, és külön segédprogramok és hálózati funkciókat tartalmaz. A ZRS tárfiókok írási kérés sikeresen visszaadja, csak azt követően az adatok írása az összes replika a három fürtök között.
+A Zone-redundáns tárolás (ZRS) egy régióban három tárolási fürtön párhuzamosan replikálja az adatait. Minden egyes tárolási fürt fizikailag el van különítve a többitől, és a saját rendelkezésre állási zónájában (AZ) található. Az egyes rendelkezésre&mdash;állási zónák és a ZRS&mdash;-fürt autonóm, és külön segédprogramokat és hálózatkezelési funkciókat tartalmaz. A ZRS Storage-fiók írási kérelme csak akkor ad vissza sikeres értéket, ha az adatok a három fürt összes replikáján át lettek írva.
 
-Ha az adatok a storage-fiókban a ZRS-replikációval, akkor továbbra is hozzá és felügyelhesse az adatokat, ha egy rendelkezésre állási zóna nem érhető el. A ZRS biztosít kiváló teljesítménye és kis késleltetése. Zrs-t kínál azonos [teljesítménycélokat](../articles/storage/common/storage-scalability-targets.md) , [helyileg redundáns tárolás (LRS)](../articles/storage/common/storage-redundancy-lrs.md).
+Ha az adatait ZRS-replikáció használatával tárolja Storage-fiókban, továbbra is elérheti és kezelheti az adatait, ha a rendelkezésre állási zónák elérhetetlenné válnak. A ZRS kiváló teljesítményt és kis késleltetést biztosít. A ZRS ugyanazokat a [méretezhetőségi célokat](../articles/storage/common/storage-scalability-targets.md) kínálja, mint a [helyileg REDUNDÁNS tárolás (LRS)](../articles/storage/common/storage-redundancy-lrs.md).
 
-A zrs konzisztencia, tartósság és magas rendelkezésre állást igénylő forgatókönyvek esetén. Akkor is, ha a leállás vagy természeti katasztrófából megjelenik a rendelkezésre állási zóna nem érhető el, zrs-t biztosít a tárolt objektumok legalább 99,9999999999 %-os számára (12 9-es) éves.
+Érdemes lehet olyan forgatókönyveket ZRS, amelyek következetességet, tartósságot és magas rendelkezésre állást igényelnek. Ha a rendelkezésre állási zóna nem érhető el, akkor is, ha az adatkimaradás vagy a természeti katasztrófa elérhetetlenné válik, a ZRS az adott évben legalább 99,9999999999%-os (12 9) tárolási objektumok számára biztosít tartósságot.
 
-Rendelkezésre állási zónákkal kapcsolatos további információkért lásd: [rendelkezésre állási zónák áttekintésének](https://docs.microsoft.com/azure/availability-zones/az-overview).
+A Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió) az elsődleges régióban három Azure-beli rendelkezésre állási zónában replikálja az adatait, majd aszinkron módon replikálja az adatait a másodlagos régióba. A GZRS biztosítja a magas rendelkezésre állást, valamint a maximális tartósságot. A GZRS úgy lett kialakítva, hogy legalább 99.99999999999999%-os (16 9) tartósságot biztosítson az objektumok számára egy adott évben. Ha olvasási hozzáférést szeretne a másodlagos régióban lévő adathozzáféréshez, engedélyezze az olvasási hozzáférésű geo-Zone-redundáns tárolást (RA-GZRS). További információ a GZRS: [geo-Zone-redundáns tárolás a nagyfokú rendelkezésre állás és a maximális tartósság érdekében (előzetes verzió)](../articles/storage/common/storage-redundancy-lrs.md).
+
+További információ a rendelkezésre állási zónákról: [Availability Zones Overview (áttekintés](https://docs.microsoft.com/azure/availability-zones/az-overview)).

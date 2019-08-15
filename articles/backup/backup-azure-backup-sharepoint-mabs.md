@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: dacurwin
-ms.openlocfilehash: 7a19b97e36bc28e5e629391f799b69370cf0fa38
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: e31c875f31f118716feea0c73bc2ca70a4ecd9a5
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737279"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954826"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>SharePoint-farm biztonsági mentése az Azure-ba a MABS használatával
 A SharePoint-farmok biztonsági mentését úgy végezheti el, hogy a Microsoft Azure Backup Server (MABS) használatával ugyanúgy Microsoft Azure a biztonsági mentést, mint az egyéb adatforrások. Azure Backup rugalmasságot biztosít a biztonsági mentési ütemezésben napi, heti, havi vagy éves biztonsági mentési pontok létrehozásához, és adatmegőrzési házirend-beállításokat biztosít a különböző biztonsági mentési pontokhoz. Lehetővé teszi továbbá a helyi lemezek másolását a gyors helyreállítási idejű célkitűzések (RTO) számára, valamint a másolatok Azure-ba történő tárolását gazdaságos, hosszú távú adatmegőrzés céljából.
@@ -43,7 +43,7 @@ Azure Backup Server LocalSystem fiókként fut. SQL Server adatbázisok biztons�
 Ha a SharePoint-farm SQL Server SQL Server aliasokkal konfigurált adatbázisokkal rendelkezik, akkor telepítse a SQL Server ügyféloldali összetevőit azon az előtér-webkiszolgálón, amelyet a MABS véd.
 
 ### <a name="sharepoint-server"></a>SharePoint Server
-Míg a teljesítmény számos tényezőtől függ, például a SharePoint-farm méretétől, általános útmutatásként az egyik MABS a 25 TB-os SharePoint-farmot is képes védelemmel ellátni.
+Míg a teljesítmény számos tényezőtől függ, például a SharePoint-farm méretétől, általános útmutatásként az egyik MABS egy 25 TB-os SharePoint-farmot is képes védelemmel ellátni.
 
 ### <a name="whats-not-supported"></a>Nem támogatott műveletek
 * A SharePoint-farmokat védő MABS nem védik a keresési indexeket vagy az Application Service-adatbázisokat. Ezen adatbázisok védelmét külön kell konfigurálnia.

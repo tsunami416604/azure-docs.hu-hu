@@ -5,50 +5,50 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: ccc2b574ea054a1b0ecf32a1e59691050fb66fcf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67179059"
 ---
-## <a name="tagging-a-virtual-machine-through-templates"></a>Sablonok virtuális gép címkézése
-Először is lássuk a sablonokban történő címkézése. [Ez a sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) címkék helyez el az alábbi forrásanyagokat: (Virtuális gép) számítási, tárolási (Tárfiók), és (nyilvános IP-cím, virtuális hálózatot és hálózati adapter). Ez a sablon egy Windows virtuális gép számára, de alkalmazható Linux rendszerű virtuális gépekhez.
+## <a name="tagging-a-virtual-machine-through-templates"></a>Virtuális gép címkézése sablonok használatával
+Először tekintsük át a címkézést sablonok használatával. [Ez a sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) címkéket helyez el a következő erőforrásokon: Számítás (virtuális gép), tárterület (Storage-fiók) és hálózat (nyilvános IP-cím, Virtual Network és hálózati adapter). Ez a sablon egy Windows rendszerű virtuális gép esetében használható, de Linux rendszerű virtuális gépekhez is adaptálható.
 
-Kattintson a **üzembe helyezés az Azure** gombra a [sablon hivatkozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags). Ez nyitja meg a [az Azure portal](https://portal.azure.com/) ahol telepítheti ezt a sablont.
+Kattintson az **üzembe helyezés az Azure** -ban gombra a [sablon hivatkozásán](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags). Ekkor megnyílik a [Azure Portal](https://portal.azure.com/) , ahol üzembe helyezheti a sablont.
 
-![Egyszerű üzembe helyezés, a címkék használatával](./media/virtual-machines-common-tag/deploy-to-azure-tags.png)
+![Egyszerű üzembe helyezés címkékkel](./media/virtual-machines-common-tag/deploy-to-azure-tags.png)
 
-Ez a sablon tartalmazza a következő címkékkel: *Részleg*, *alkalmazás*, és *által létrehozott*. Akkor is hozzáadása/szerkesztése ezekkel a címkékkel, közvetlenül a sablonban Ha szeretné, hogy különböző tartalmaznak a címkenevek.
+Ez a sablon a következő címkéket tartalmazza: *Részleg*, *alkalmazás*és *létrehozta*. Ezeket a címkéket közvetlenül a sablonban is hozzáadhatja vagy szerkesztheti, ha különböző címkéket szeretne megadni.
 
-![A sablonokban Azure címkék](./media/virtual-machines-common-tag/azure-tags-in-a-template.png)
+![Azure-címkék sablonban](./media/virtual-machines-common-tag/azure-tags-in-a-template.png)
 
-Amint láthatja, a címkéket kulcs/érték párok, egy kettőspontot (:) elválasztva vannak meghatározva. A címkék definiálni kell a következő formátumban:
+Amint láthatja, a címkék kulcs/érték párokként vannak definiálva, kettősponttal elválasztva (:). A címkéket a következő formátumban kell megadni:
 
         “tags”: {
             “Key1” : ”Value1”,
             “Key2” : “Value2”
         }
 
-Mentse a sablonfájlt, miután befejezte a szerkesztést, a címkék a választott.
+Mentse a sablonfájlt a Szerkesztés befejezése után az Ön által választott címkékkel.
 
-Ezután a **paraméterek szerkesztése** szakaszban kitöltheti az értékeket a címkék.
+Ezután a **Paraméterek szerkesztése** szakaszban kitöltheti a címkék értékeit.
 
-![Címkék szerkesztése az Azure Portalon](./media/virtual-machines-common-tag/edit-tags-in-azure-portal.png)
+![Címkék szerkesztése a Azure Portalban](./media/virtual-machines-common-tag/edit-tags-in-azure-portal.png)
 
-Kattintson a **létrehozás** a címkeértékeket az a sablon üzembe helyezésére.
+Kattintson a **Létrehozás** gombra a sablon a címke értékeivel való telepítéséhez.
 
-## <a name="tagging-through-the-portal"></a>A portálon keresztül címkézése
-Miután létrehozta az erőforrások címkékkel rendelkező, megtekintheti, adja hozzá, és törli a címkét a portálon.
+## <a name="tagging-through-the-portal"></a>Címkézés a portálon keresztül
+Az erőforrások címkékkel való létrehozása után megtekintheti, hozzáadhatja és törölheti a címkéket a portálon.
 
-A címkék ikonra a címkék megtekintéséhez:
+A címkék ikon kiválasztásával megtekintheti a címkéket:
 
-![A címkék ikonra az Azure Portalon](./media/virtual-machines-common-tag/azure-portal-tags-icon.png)
+![Címkék ikon a Azure Portal](./media/virtual-machines-common-tag/azure-portal-tags-icon.png)
 
-A portálon keresztül új címke hozzáadása a saját kulcs/érték pár definiálásával, és mentse azt.
+Adjon hozzá egy új címkét a portálon a saját kulcs/érték párok definiálásával, és mentse azt.
 
-![Új címke hozzáadása az Azure Portalon](./media/virtual-machines-common-tag/azure-portal-add-new-tag.png)
+![Új címke hozzáadása a Azure Portal](./media/virtual-machines-common-tag/azure-portal-add-new-tag.png)
 
-Az új címke most meg kell jelennie az erőforráshoz tartozó címkék listája.
+Az új címke ekkor megjelenik az erőforráshoz tartozó címkék listájában.
 
-![Új címke mentése az Azure Portalon](./media/virtual-machines-common-tag/azure-portal-saved-new-tag.png)
+![Új címke mentve Azure Portal](./media/virtual-machines-common-tag/azure-portal-saved-new-tag.png)
 

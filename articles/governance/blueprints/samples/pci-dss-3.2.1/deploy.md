@@ -1,6 +1,6 @@
 ---
-title: Minta - PCI-DSS v3.2.1 tervezet - telepítés lépéseit
-description: Helyezze üzembe a fizetési Card Industry Data Security Standard v3.2.1 tervezet minta lépéseket.
+title: Minta-PCI-DSS v 3.2.1 terv – lépések üzembe helyezése
+description: Üzembe helyezheti a Payment Card Industry adatbiztonsági standard v 3.2.1 terv mintájának lépéseit.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,109 +8,109 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b4e9435e5f569a076fc5beb6441b9da935b87f3a
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 237444cde6e9ccd709f61d13669da03094e5be10
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561370"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019426"
 ---
-# <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v3.2.1 tervezet minta üzembe helyezése
+# <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v 3.2.1 terv üzembe helyezése minta
 
-Az Azure tervezetek PCI-DSS v3.2.1 tervezet minta üzembe helyezéséhez az alábbi lépéseket kell tenni:
+Az Azure-tervrajzok PCI-DSS v 3.2.1 Blueprint-minta üzembe helyezéséhez a következő lépéseket kell végrehajtani:
 
 > [!div class="checklist"]
-> - Hozzon létre egy új tervezet arról a minta
-> - Jelölje meg a mintát, másolatának **közzétett**
-> - A másolatát a tervezet hozzárendelése egy meglévő előfizetés
+> - Új terv létrehozása a mintából
+> - A minta másolatának megjelölése **közzétettként**
+> - A terv másolatának kiosztása meglévő előfizetéshez
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-blueprint-from-sample"></a>Tervrajz létrehozása mintából
+## <a name="create-blueprint-from-sample"></a>Terv létrehozása mintából
 
-Először meg a tervezet minta létrehoz egy új tervezet alapszintű, a minta az környezet.
+Először is implementálja a terv mintáját úgy, hogy létrehoz egy új tervet a környezetben a minta kezdőként való használatával.
 
-1. Válassza ki **minden szolgáltatás** , és keresse meg és válassza **házirend** a bal oldali panelen. Az a **házirend** lapon jelölje be **tervezetek**.
+1. Válassza a **minden szolgáltatás** lehetőséget, és keresse meg és válassza ki a **házirend** elemet a bal oldali ablaktáblán. A **szabályzat** lapon válassza a **tervrajzok**lehetőséget.
 
-1. Az a **bevezetés** oldal bal oldalán válassza a **létrehozás** gomb alatt _tervrajz létrehozása_.
+1. A bal oldali **első lépések** lapon kattintson a **Létrehozás** gombra a _terv létrehozása_területen.
 
-1. Keresse meg a **PCI-DSS v3.2.1** tervezet minta alapján _egyéb minták_ válassza **a minta használata**.
+1. Keresse meg a **PCI-DSS v 3.2.1** terv mintát _más minták_ alatt, és válassza **a minta használata**lehetőséget.
 
-1. Adja meg a _alapjai_ a tervezet-minta:
+1. Adja meg a tervezet mintájának alapjait:
 
-   - **Tervrajz neve**: Adja meg a PCI-DSS v3.2.1 tervezet minta a példányának nevét.
-   - **Definíció helye**: Használja a három pontra, és válassza ki a felügyeleti csoport a minta másolatának mentése.
+   - **Terv neve**: Adja meg a PCI-DSS v 3.2.1 Blueprint minta példányának nevét.
+   - **Definíció helye**: Használja a három pontot, és válassza ki a felügyeleti csoportot, és mentse a minta másolatát a következőre:.
 
-1. Válassza ki a _összetevők_ fülre az oldal tetején lévő vagy **tovább: Összetevők** az oldal alján.
+1. Válassza ki az összetevők fület a lap tetején, vagy **a következőt:**  Az oldal alján található összetevők.
 
-1. Tekintse át a tervezet minta alkotó összetevők listáját. Az összetevők számos rendelkezik, paraméterek, amelyeket később fogunk meghatározni. Válassza ki **Piszkozat mentése** amikor befejezte a tervezet-minta áttekintése.
+1. Tekintse át a terv mintáját alkotó összetevők listáját. Számos összetevőhöz vannak olyan paraméterek, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor befejezte a tervezet mintájának áttekintését.
 
-## <a name="publish-the-sample-copy"></a>A minta másolási közzététele
+## <a name="publish-the-sample-copy"></a>A minta másolatának közzététele
 
-A tervezet minta másolatának létrehozása megtörtént a környezetben. A létrehozást **Draft** módban kell lennie, és **közzétett** előtt az hozzárendelve, és telepítve. A tervezet minta másolatát is beállítható, hogy a környezet és az igényeinek, azonban, hogy a módosítás lehet, hogy esniük, a standard szintű PCI-DSS v3.2.1.
+A terv mintájának másolata már létre lett hozva a környezetében. A rendszer **Piszkozat** módban jön létre, és **közzé** kell tenni ahhoz, hogy hozzá lehessen rendelni és telepíteni lehessen. A terv mintájának másolata testreszabható a környezet és a szükséges igények alapján, de ez a módosítás a PCI-DSS v 3.2.1 standard csomagból is áthelyezhető.
 
-1. Válassza ki **minden szolgáltatás** , és keresse meg és válassza **házirend** a bal oldali panelen. Az a **házirend** lapon jelölje be **tervezetek**.
+1. Válassza a **minden szolgáltatás** lehetőséget, és keresse meg és válassza ki a **házirend** elemet a bal oldali ablaktáblán. A **szabályzat** lapon válassza a **tervrajzok**lehetőséget.
 
-1. Válassza ki a **definíciók tervezetet** a bal oldalon. A szűrők segítségével keresse meg a tervezet minta példányát, és válassza ki azt.
+1. Válassza a bal oldali **terv** -definíciók lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
 
-1. Válassza ki **közzététel tervezet** az oldal tetején. A jobb oldalon az új lap, adja meg egy **verzió** a tervezet-minta a másolatát. Ez a tulajdonság hasznos Ha később egy módosítása. Adja meg **megjegyzések módosítása** például az "első verziója eltér a PCI-DSS v3.2.1 tervezet közzétett." Válassza ki **közzététel** az oldal alján.
+1. Válassza a **terv közzététele** lehetőséget az oldal tetején. A jobb oldalon található új lapon adjon meg egy **verziót** a tervezet mintájának másolatához. Ez a tulajdonság akkor hasznos, ha később módosítja a módosítást. Adjon meg olyan **módosítási megjegyzéseket** , mint például az "első verzió a PCI-DSS v 3.2.1 tervből" című példa. Ezután válassza a **Közzététel** elemet az oldal alján.
 
-## <a name="assign-the-sample-copy"></a>A minta másolási hozzárendelése
+## <a name="assign-the-sample-copy"></a>A minta másolatának kiosztása
 
-Miután a tervezet minta másolata sikeresen megtörtént **közzétett**, előfizetésre történő mentése felügyeleti csoporton belül is hozzárendelhető. Ez a lépés nem, melyekben a paraméterek vannak-e adva az, hogy az egyes telepítések a példány a tervezet minta egyedi.
+Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ezzel a lépéssel megadhatja, hogy az egyes központi telepítések egyediek legyenek-e.
 
-1. Válassza ki **minden szolgáltatás** , és keresse meg és válassza **házirend** a bal oldali panelen. Az a **házirend** lapon jelölje be **tervezetek**.
+1. Válassza a **minden szolgáltatás** lehetőséget, és keresse meg és válassza ki a **házirend** elemet a bal oldali ablaktáblán. A **szabályzat** lapon válassza a **tervrajzok**lehetőséget.
 
-1. Válassza ki a **definíciók tervezetet** a bal oldalon. A szűrők segítségével keresse meg a tervezet minta példányát, és válassza ki azt.
+1. Válassza a bal oldali **terv** -definíciók lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
 
-1. Válassza ki **tervezet hozzárendelése** a tervrajz-definíció lap tetején.
+1. Válassza a terv kiosztása elemet a terv definíciója oldal tetején.
 
-1. Adja meg a paraméter értékét a tervezet-hozzárendelést:
+1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
    - Alapvető beállítások
 
-     - **Előfizetések**: Válasszon ki egy vagy több az előfizetéseket, amelyek a felügyeleti csoportban, a tervezet minta másolatának mentése. Ha egynél több előfizetéssel, hozzárendelést a megadott paraméterek használatával hozható létre.
-     - **Hozzárendelés neve**: Az Ön a tervrajz neve alapján előre megadott név.
-       Szükség szerint változtassa meg, vagy hagyja üresen, mivel.
-     - **Hely**: Válassza ki a régiót, a felügyelt identitás kell létrehozni. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Tervrajz-definíció verziója**: Válasszon ki egy **közzétett** a tervezet minta másolatának verzióját.
+     - **Előfizetések**: Válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, a terv mintájának másolatát a következőre mentette:. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
+     - **Hozzárendelés neve**: A név előre ki van töltve a terv neve alapján.
+       Szükség szerint módosítsa a változást, vagy hagyja a következőt:.
+     - **Hely**: Válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Terv definíciójának verziója**: Válasszon egy **közzétett** verziót a tervezet mintájának másolatáról.
 
-   - Zárolási hozzárendelés
+   - Hozzárendelés zárolása
 
-     Válassza ki a tervezet zárolás, a környezet beállítása. További információkat talál a [terv-erőforrások zárolásáról](../../concepts/resource-locking.md) szóló cikkben.
+     Válassza ki a környezethez tartozó terv zárolási beállítását. További információkat talál a [terv-erőforrások zárolásáról](../../concepts/resource-locking.md) szóló cikkben.
 
    - Felügyelt identitás
 
-     Hagyja meg az alapértelmezett _rendszerhez rendelt_ felügyelt identitás lehetőséget.
+     Hagyja meg az alapértelmezett _rendszerhez rendelt_ felügyelt identitás beállítást.
 
-   - Összetevő-paraméterek
+   - Összetevő paraméterei
 
-     A lehívandó összetevő definiálva van ebben a szakaszban definiált paraméterek érvényesek. Ezek a paraméterek [dinamikus paraméterek](../../concepts/parameters.md#dynamic-parameters) mivel azok van megadva a a tervezet-hozzárendelés során. A teljes listát vagy összetevő paraméterek és ezek leírását: [összetevő paramétereket tartalmazó](#artifact-parameters-table).
+     Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. A teljes listát vagy az összetevő paramétereit és azok leírását lásd: összetevő- [Paraméterek táblázata](#artifact-parameters-table).
 
-1. Után minden paraméter van megadva, válassza a **hozzárendelése** az oldal alján. A tervezet-hozzárendelést jön létre, és összetevő telepítési kezdődik. Üzembe helyezés eltarthat nagyjából egy óra. Üzembe helyezés állapotának ellenőrzéséhez nyissa meg a tervezet-hozzárendelést.
+1. Az összes paraméter megadása után válassza a lap alján található **hozzárendelés** elemet. A terv-hozzárendelés létrejött, és az összetevő üzembe helyezése megkezdődik. Az üzembe helyezés nagyjából egy órát vesz igénybe. Az üzembe helyezés állapotának megtekintéséhez nyissa meg a terv-hozzárendelést.
 
 > [!WARNING]
-> Az Azure-tervek szolgáltatás és a beépített tervezet minták **díjmentes**. Az Azure-erőforrások [termék díjszabása](https://azure.microsoft.com/pricing/). Használja a [díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) a tervezet minta által üzembe helyezett erőforrások futtatásával járó költségeket megbecsülheti.
+> Az Azure BluePrints szolgáltatás és a beépített tervrajzi minták díjmentesek. Az Azure-erőforrások [díjszabása termékenként](https://azure.microsoft.com/pricing/)történik. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával megbecsülheti a tervrajzi minta által üzembe helyezett erőforrások futtatásának költségeit.
 
-## <a name="artifact-parameters-table"></a>Összetevő paraméterek táblában
+## <a name="artifact-parameters-table"></a>Összetevő-paraméterek táblázata
 
-A következő táblázat felsorolja a tervezet összetevő paraméterek:
+A következő táblázat a tervrajz-összetevő paramétereinek listáját tartalmazza:
 
-|Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
+|Elemnév|Összetevő típusa|Paraméternév|Leírás|
 |-|-|-|-|
-|[Előzetes verzió]: PCI v3.2.1:2018 vezérlők naplózása és naplózási követelmények támogatására adott Virtuálisgép-bővítmények telepítése|Szabályzat-hozzárendelés|Erőforrástípusok listája | A kiválasztott erőforrástípusok diagnosztikai beállításának naplózása. Alapértelmezett érték az összes erőforrást jelölt ki:| 
-|Engedélyezett helyek|Szabályzat-hozzárendelés|Engedélyezett helyek listája|Minden erőforrás üzembe helyezve az engedélyezett data center helyek listája. Ez a lista globálisan testre szabható, a kívánt Azure-helyen. Válassza ki az engedélyezni kívánt helyeket.| 
-|Engedélyezett helyek erőforráscsoportok|Szabályzat-hozzárendelés |Engedélyezett helye |Ez a szabályzat lehetővé teszi, hogy korlátozni azon helyeket, a szervezete létrehozhat az erőforráscsoportokat. Használja a földrajzi megfelelőségi követelmények kényszerítésére.| 
-|Az SQL Server-kiszolgálók üzembe helyezése a naplózás|Szabályzat-hozzárendelés|Adatmegőrzési napok|Adatok rentention hány napon belül. Alapértelmezett érték: 180, de PCI 365 igényel.| 
-|Az SQL Server-kiszolgálók üzembe helyezése a naplózás|Szabályzat-hozzárendelés|Storage-fiók erőforráscsoportjának neve|Naplózási adatbázis felvezeti ezeket egy naplófájlba, jelentkezzen be az Azure Storage-fiók (storage-fiók létrejön az egyes régiókban, ahol jön létre egy SQL Server által az adott régióban található összes kiszolgáló megosztott).| 
+|\[Előzetes\] naplózási PCI v 3.2.1:2018 – a naplózási követelmények támogatásához szükséges virtuálisgép-bővítmények ellenőrzése és üzembe helyezése|Szabályzat-hozzárendelés|Erőforrástípusok listája | A kiválasztott erőforrástípusok diagnosztikai beállításainak naplózása. Az alapértelmezett érték minden erőforrás van kiválasztva| 
+|Engedélyezett helyek|Szabályzat-hozzárendelés|Engedélyezett helyszínek listája|A alkalmazásba telepítendő összes erőforráshoz engedélyezett adatközpont-helyszínek listája. Ez a lista globálisan testreszabható a kívánt Azure-helyen. Válassza ki az engedélyezni kívánt helyet.| 
+|Erőforráscsoportok engedélyezett helyei|Szabályzat-hozzárendelés |Engedélyezett hely |Ez a szabályzat lehetővé teszi, hogy korlátozza a szervezete által az erőforráscsoportok létrehozásához szükséges helyet. A Geo-megfelelőségi követelmények betartatására használható.| 
+|Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|Megőrzési napok|Az adatmennyiség napok száma megőrzése. Az alapértelmezett érték 180, de a PCI esetében 365.| 
+|Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|A Storage-fiók erőforráscsoport-neve|A naplózás az adatbázis-eseményeket egy naplóba írja az Azure Storage-fiókban (a Storage-fiók minden régióban létrejön, ahol létrejön egy SQL Server, amelyet az adott régióban lévő összes kiszolgáló megoszt majd).| 
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy áttekintette a PCI-DSS v3.2.1 tervezet minta üzembe helyezése a lépéseket, keresse fel a áttekintése és a vezérlő leképezés a következő cikkeket:
+Most, hogy áttekintette a PCI-DSS v 3.2.1 Blueprint minta üzembe helyezésének lépéseit, tekintse meg az alábbi cikkeket az Áttekintés és a vezérlés leképezésének megismeréséhez:
 
 > [!div class="nextstepaction"]
-> [PCI-DSS v3.2.1 tervezet - áttekintés](./index.md)
-> [PCI-DSS v3.2.1 tervezet - vezérlő leképezés](./control-mapping.md)
+> [PCI-DSS v 3.2.1 terv – áttekintés](./index.md)
+> a[PCI-DSS v 3.2.1 tervről – vezérlés leképezése](./control-mapping.md)
 
 További cikkek a tervekről és azok használatáról:
 

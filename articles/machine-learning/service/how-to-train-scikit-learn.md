@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: e76a747f7e1d7ca7056edf5b69df0677aeff96a1
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 5c44f4ed5cd6488520bf6dd99f502f33049b9b17
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856003"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963001"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning-service"></a>Scikit-modellek készítése Azure Machine Learning szolgáltatással méretezéssel
 
@@ -192,12 +192,12 @@ model = run.register_model(model_name='sklearn-iris', model_path='model.joblib')
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben a gépi tanulás és a besorolási modell betanítása és regisztrálása a scikit használatával című témakörben Azure Machine Learning szolgáltatáson keresztül.
 
-* A modellek üzembe helyezésének megismeréséhez folytassa a [modell üzembe](how-to-deploy-and-where.md) helyezésével kapcsolatos cikket.
+Ebben a cikkben a Azure Machine Learning Service-ben betanított és regisztrált egy kerasz modellt. A modellek üzembe helyezésének megismeréséhez folytassa a modell üzembe helyezésével kapcsolatos cikket.
 
-* [Hiperparaméterek beállítása hangolása](how-to-tune-hyperparameters.md).
-
-* A [futtatási metrikák nyomon követése a betanítás során](how-to-track-experiments.md).
-
-* További információ a [Deep learning és a Machine learning](concept-deep-learning-vs-machine-learning.md)szolgáltatásról.
+> [!div class="nextstepaction"]
+> [Modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)
+* [Metrikák futtatása a betanítás során nyomon követése](how-to-track-experiments.md)
+* [Hiperparaméterek hangolása](how-to-tune-hyperparameters.md)
+* [A betanított modell üzembe helyezése](how-to-deploy-and-where.md)
+* [Az Azure-ban elosztott Deep learning-képzés hivatkozási architektúrája](/azure/architecture/reference-architectures/ai/training-deep-learning)

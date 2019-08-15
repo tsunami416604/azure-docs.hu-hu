@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: eb49649e9c92416fc674c032b9dc6a613a34dd77
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b99dbd403de0de948527fbe74b7e1205316822c0
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569659"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019679"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Azure Active Directory hitelesítés használata SQL-alapú hitelesítéshez
 
@@ -98,7 +98,7 @@ A Azure SQL Database, felügyelt példányban vagy SQL Data Warehouseban tárolt
   - `SUSER_ID(<admin name>)`
   - `SUSER_SID(<admin name>)`
 
-### <a name="manage-instances"></a>Példányok kezelése
+### <a name="managed-instances"></a>Felügyelt példányok
 
 - Az Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések) és a felhasználók előzetes verziójú szolgáltatásként támogatottak a [felügyelt példányok](sql-database-managed-instance.md)számára.
 - A felügyelt példányok nem támogatják az olyan Azure ad-kiszolgálói rendszerbiztonsági azonosítók (bejelentkezések) beállítását [](sql-database-managed-instance.md), amelyek adatbázis-tulajdonosként vannak leképezve.

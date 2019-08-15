@@ -1,20 +1,22 @@
 ---
 title: Az Azure Data Catalog billentyűparancsai
-description: Ez a cikk a Azure Data Catalog billentyűparancsait mutatja be.
+description: Ez a cikk a Azure Data Catalog használható billentyűparancsok listáját tartalmazza.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 499067f33bddbede6510f61e2cb5da3fb33a5e7c
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 72d1ce0ded61b1143f99769319892981f3cd1c10
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736305"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014453"
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>Az Azure Data Catalog billentyűparancsai
+
 ## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Billentyűparancsok a Data Catalog adatforrás-regisztrációs eszközhöz
+
 ### <a name="general-keyboard-shortcuts"></a>Általános billentyűparancsok
 | Művelet | Nyomja le ENTER |
 | --- | --- |

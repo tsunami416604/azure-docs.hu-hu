@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 4e33b22c5bc931685f5848db55fc4b9b8fc6eafe
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: c7a31337888dcdc2a8f8b95c5203cc659882b038
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780608"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927874"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure komplex veszélyforrások észlelése
 
@@ -30,7 +30,7 @@ Az Azure számos lehetőséget kínál a biztonsági beállítások konfigurál�
 
 ## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
-A [Azure ad Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) egy [prémium szintű Azure Active Directory P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) kiadási funkció, amely áttekintést nyújt a szervezet identitásait érintő kockázati eseményekről és lehetséges sebezhetőségekről. Az Identity Protection meglévő Azure AD-anomália-észlelési képességeket használ, amelyek az [Azure ad rendellenes tevékenységi jelentéseiben](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports)érhetők el, és új kockázati események típusait észlelik, amelyek valós idejű rendellenességek észlelésére képesek.
+A [Azure ad Identity Protection](../../active-directory/identity-protection/overview.md) egy [prémium szintű Azure Active Directory P2](../../active-directory/active-directory-whatis.md) kiadási funkció, amely áttekintést nyújt a szervezet identitásait érintő kockázati eseményekről és lehetséges sebezhetőségekről. Az Identity Protection meglévő Azure AD-anomália-észlelési képességeket használ, amelyek az [Azure ad rendellenes tevékenységi jelentéseiben](../../active-directory/active-directory-reporting-azure-portal.md)érhetők el, és új kockázati események típusait észlelik, amelyek valós idejű rendellenességek észlelésére képesek.
 
 ![Azure AD Identity Protection diagram](./media/threat-detection/azure-threat-detection-fig1.png)
 
@@ -38,7 +38,7 @@ Az Identity Protection adaptív gépi tanulási algoritmusokat és heurisztikus 
 
 Azure Active Directory Identity Protection több, mint egy figyelési és jelentéskészítési eszköz. A kockázati események alapján az Identity Protection kiszámítja az egyes felhasználókra vonatkozó felhasználói kockázati szintet, így a kockázatkezelési házirendek konfigurálásával automatikusan védetté teheti a szervezet identitásait.
 
-Ezek a kockázatalapú házirendek a Azure Active Directory és az [EMS](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access)által biztosított egyéb [feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) -vezérlések mellett automatikusan letilthatják vagy felhasználhatják az olyan adaptív szervizelési műveleteket, amelyek jelszavas alaphelyzetbe állítást és több tényezőt tartalmaznak hitelesítés kényszerítése.
+Ezek a kockázatalapú házirendek a Azure Active Directory és az [EMS](../../active-directory/active-directory-conditional-access-azure-portal.md)által biztosított egyéb [feltételes hozzáférés](../../active-directory/active-directory-conditional-access-azure-portal.md) -vezérlések mellett automatikusan letilthatják vagy felhasználhatják az olyan adaptív szervizelési műveleteket, amelyek jelszavas alaphelyzetbe állítást és több tényezőt tartalmaznak hitelesítés kényszerítése.
 
 ### <a name="identity-protection-capabilities"></a>Identity Protection-képességek
 
@@ -46,25 +46,25 @@ Azure Active Directory Identity Protection több, mint egy figyelési és jelent
 
 Néhány példa az Azure Identity Protection által a fiókok és identitások biztonságossá tételéhez:
 
-[Kockázati események és kockázatos fiókok észlelése](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection#detection)
+[Kockázati események és kockázatos fiókok észlelése](../../active-directory/identity-protection/overview.md)
 -   Hat kockázati esemény típusának észlelése gépi tanulási és heurisztikus szabályok használatával.
 -   Felhasználói kockázati szintek kiszámítása.
 -   A biztonsági rések kiemelésével egyéni ajánlásokat adhat meg az általános biztonsági testhelyzet javításához.
 
-[Kockázati események kivizsgálása](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection#investigation)
+[Kockázati események kivizsgálása](../../active-directory/identity-protection/overview.md)
 -   Értesítés küldése a kockázati eseményekről.
 -   A kockázati események vizsgálata a releváns és a környezetfüggő információk használatával.
 -   Alapvető munkafolyamatok biztosítása a vizsgálatok nyomon követéséhez.
 -   Könnyű hozzáférést biztosít a javítási műveletekhez, például a jelszó-visszaállításhoz.
 
-[Kockázatalapú, feltételes hozzáférési szabályzatok](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
+[Kockázatalapú, feltételes hozzáférési szabályzatok](../../active-directory/identity-protection/overview.md)
 -   A kockázatos bejelentkezések enyhítése a bejelentkezések blokkolásával vagy a többtényezős hitelesítési kihívások megkövetelésével.
 -   Kockázatos felhasználói fiókok blokkolása vagy biztonságossá tétele.
 -   A többtényezős hitelesítés regisztrálásának megkövetelése a felhasználóknak.
 
 ### <a name="azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management
 
-A [Azure Active Directory Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)segítségével felügyelheti, vezérelheti és figyelheti a szervezeten belüli hozzáférését. Ez a funkció magában foglalja az Azure AD-ban és más Microsoft-online szolgáltatásokban található erőforrásokhoz való hozzáférést, például az Office 365-et vagy Microsoft Intune.
+A [Azure Active Directory Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md)segítségével felügyelheti, vezérelheti és figyelheti a szervezeten belüli hozzáférését. Ez a funkció magában foglalja az Azure AD-ban és más Microsoft-online szolgáltatásokban található erőforrásokhoz való hozzáférést, például az Office 365-et vagy Microsoft Intune.
 
 ![Azure AD Privileged Identity Management diagram](./media/threat-detection/azure-threat-detection-fig2.png)
 
@@ -78,13 +78,13 @@ A PIM a következőket teszi lehetővé:
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
-A [Azure monitor naplók](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) egy olyan Microsoft felhőalapú informatikai felügyeleti megoldás, amely segít a helyszíni és a Felhőbeli infrastruktúra felügyeletében és kezelésében. Mivel Azure Monitor naplókat felhőalapú szolgáltatásként implementálják, az infrastruktúra-szolgáltatások minimális beruházásainak köszönhetően gyorsan üzembe helyezhető. Az új biztonsági funkciók automatikusan, a folyamatos karbantartási és frissítési költségek megtakarításával lesznek elérhetők.
+A [Azure monitor naplók](../../azure-monitor/index.yml) egy olyan Microsoft felhőalapú informatikai felügyeleti megoldás, amely segít a helyszíni és a Felhőbeli infrastruktúra felügyeletében és kezelésében. Mivel Azure Monitor naplókat felhőalapú szolgáltatásként implementálják, az infrastruktúra-szolgáltatások minimális beruházásainak köszönhetően gyorsan üzembe helyezhető. Az új biztonsági funkciók automatikusan, a folyamatos karbantartási és frissítési költségek megtakarításával lesznek elérhetők.
 
 Amellett, hogy az értékes szolgáltatásokat saját maga is biztosítja, Azure Monitor naplók integrálható a System Center-összetevőkkel [](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/), például System Center Operations managerekkel, hogy kiterjessze a meglévő biztonsági felügyeleti beruházásokat a felhőbe. A System Center és a Azure Monitor naplók együtt használhatók teljes hibrid felügyeleti élmény biztosításához.
 
 ### <a name="holistic-security-and-compliance-posture"></a>Holisztikus biztonsági és megfelelőségi testhelyzet
 
-A [Log Analytics Security and Audit irányítópult](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) átfogó áttekintést nyújt a szervezet informatikai biztonsági állapotáról, és beépített keresési lekérdezéseket tartalmaz a jelentős problémákra, amelyek szükségesek a beavatkozáshoz. A Security and Audit irányítópult a Azure Monitor naplókban a biztonsággal kapcsolatos összes adathoz tartozó kezdőképernyő. Magas szintű betekintést tesz lehetővé a számítógépek biztonsági állapotába. Az elmúlt 24 óra, 7 nap vagy bármely más egyéni időkeret alapján is megtekintheti az összes eseményt.
+A [Log Analytics Security and Audit irányítópult](../../security-center/security-center-intro.md) átfogó áttekintést nyújt a szervezet informatikai biztonsági állapotáról, és beépített keresési lekérdezéseket tartalmaz a jelentős problémákra, amelyek szükségesek a beavatkozáshoz. A Security and Audit irányítópult a Azure Monitor naplókban a biztonsággal kapcsolatos összes adathoz tartozó kezdőképernyő. Magas szintű betekintést tesz lehetővé a számítógépek biztonsági állapotába. Az elmúlt 24 óra, 7 nap vagy bármely más egyéni időkeret alapján is megtekintheti az összes eseményt.
 
 Azure Monitor naplók segítségével gyorsan és könnyen megismerheti bármely környezet általános biztonsági állapotát, mindezt az IT-műveletek kontextusában, beleértve a szoftverfrissítés értékelését, a kártevők értékelését és az alapkonfigurációkat. A biztonsági naplókra vonatkozó adatszolgáltatások könnyen elérhetők a biztonsági és megfelelőségi naplózási folyamatok egyszerűsítése érdekében.
 
@@ -103,7 +103,7 @@ A Log Analytics Security and Audit irányítópult négy fő kategóriába van r
 -   **Gyakori biztonsági lekérdezések**: Felsorolja a környezet figyeléséhez használható leggyakoribb biztonsági lekérdezéseket. Ha bármelyik lekérdezést kiválasztja, megnyílik a keresés ablaktábla, és megjeleníti a lekérdezés eredményét.
 
 ### <a name="insight-and-analytics"></a>Betekintés és elemzés
-[Azure monitor naplók](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) középpontjában az Azure által üzemeltetett adattár található.
+[Azure monitor naplók](../../log-analytics/log-analytics-queries.md) középpontjában az Azure által üzemeltetett adattár található.
 
 ![Insight and Analytics diagram](./media/threat-detection/azure-threat-detection-fig4.png)
 
@@ -115,9 +115,9 @@ Az egyes adatforrások és megoldások külön bejegyzéstípusokat hoznak létr
 
 
 A Azure Monitor naplókkal való interakciójának nagy része az a Azure Portal, amely bármely böngészőben fut, és hozzáférést biztosít a konfigurációs beállításokhoz és több eszközhöz, amelyekkel elemezheti és kezelheti az összegyűjtött adatokat. A portálról a következőket használhatja:
-* [](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches) A naplóban megkeresi a gyűjtött adatok elemzéséhez szükséges lekérdezéseket.
-* [Irányítópultok](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards), amelyek a legértékesebb keresések grafikus nézeteivel testreszabhatók.
-* [Megoldások](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions), amelyek további funkciókat és elemzési eszközöket biztosítanak.
+* [](../../log-analytics/log-analytics-queries.md) A naplóban megkeresi a gyűjtött adatok elemzéséhez szükséges lekérdezéseket.
+* [Irányítópultok](../../azure-monitor/learn/tutorial-logs-dashboards.md), amelyek a legértékesebb keresések grafikus nézeteivel testreszabhatók.
+* [Megoldások](../../monitoring/monitoring-solutions.md), amelyek további funkciókat és elemzési eszközöket biztosítanak.
 
 ![Elemzési eszközök](./media/threat-detection/azure-threat-detection-fig6.png)
 
@@ -135,7 +135,7 @@ Létrehozhatja és kezelheti az Azure-ban üzemeltetett DSC-erőforrásokat, és
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center segíti az Azure-erőforrások megóvását. Integrált biztonsági monitorozást és házirend-kezelést biztosít az Azure-előfizetések között. A szolgáltatáson belül az Azure-előfizetések és- [erőforráscsoportok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) esetében is meghatározhatja a szabályzatokat.
+Azure Security Center segíti az Azure-erőforrások megóvását. Integrált biztonsági monitorozást és házirend-kezelést biztosít az Azure-előfizetések között. A szolgáltatáson belül az Azure-előfizetések és- [erőforráscsoportok](../../azure-resource-manager/manage-resources-portal.md) esetében is meghatározhatja a szabályzatokat.
 
 ![Azure Security Center diagram](./media/threat-detection/azure-threat-detection-fig8.png)
 
@@ -216,7 +216,7 @@ Ezek az összetett erőfeszítések új és továbbfejlesztett észlelésekkel z
 
 ### <a name="virtual-machines-microsoft-antimalware"></a>Virtuális gépek: Microsoft antimalware
 
-Az Azure-hoz készült [Microsoft antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) egyetlen ügynökből álló megoldás az alkalmazások és a bérlői környezetek számára, amelyeket emberi beavatkozás nélkül lehet a háttérben futtatni. A védelmet az alkalmazás számítási feladatainak igényei szerint helyezheti üzembe, amely alapszintű biztonsági vagy speciális konfigurációval rendelkezik, beleértve a kártevő szoftverek figyelését is. Az Azure antimalware egy biztonsági lehetőség az Azure-beli virtuális gépekhez, amelyeket az Azure-beli virtuális gépeken automatikusan telepítenek.
+Az Azure-hoz készült [Microsoft antimalware](antimalware.md) egyetlen ügynökből álló megoldás az alkalmazások és a bérlői környezetek számára, amelyeket emberi beavatkozás nélkül lehet a háttérben futtatni. A védelmet az alkalmazás számítási feladatainak igényei szerint helyezheti üzembe, amely alapszintű biztonsági vagy speciális konfigurációval rendelkezik, beleértve a kártevő szoftverek figyelését is. Az Azure antimalware egy biztonsági lehetőség az Azure-beli virtuális gépekhez, amelyeket az Azure-beli virtuális gépeken automatikusan telepítenek.
 
 #### <a name="microsoft-antimalware-core-features"></a>Microsoft antimalware Core-funkciók
 
@@ -268,7 +268,7 @@ SQL Database fenyegetések észlelése a következő észlelési módszerek egyi
 
 ### <a name="application-gateway-web-application-firewall"></a>Webalkalmazási tűzfal Application Gateway
 
-A webalkalmazási [tűzfal (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) az [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-webapplicationfirewall-overview) szolgáltatása, amely védelmet nyújt az Application Gatewayt használó webalkalmazások számára a szabványos [alkalmazások kézbesítés](https://kemptechnologies.com/in/application-delivery-controllers) -vezérlési funkcióihoz. A webalkalmazási tűzfal ezt azáltal védi, hogy az [Open Web Application Security Project (OWASP) Top 10 leggyakoribb webes biztonsági rései](https://www.owasp.org/index.php/Top_10_2010-Main)közül a legtöbbat megvédi.
+A webalkalmazási [tűzfal (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) az [Azure Application Gateway](../../application-gateway/application-gateway-web-application-firewall-overview.md) szolgáltatása, amely védelmet nyújt az Application Gatewayt használó webalkalmazások számára a szabványos [alkalmazások kézbesítés](https://kemptechnologies.com/in/application-delivery-controllers) -vezérlési funkcióihoz. A webalkalmazási tűzfal ezt azáltal védi, hogy az [Open Web Application Security Project (OWASP) Top 10 leggyakoribb webes biztonsági rései](https://www.owasp.org/index.php/Top_10_2010-Main)közül a legtöbbat megvédi.
 
 ![Application Gateway webalkalmazási tűzfal diagramja](./media/threat-detection/azure-threat-detection-fig13.png)
 
@@ -302,7 +302,7 @@ Az WAF konfigurálása az Application gatewayben a következő előnyöket bizto
 
 A rendellenesség-észlelési API egy olyan API, amely számos rendellenes mintázat észlelésére használható az idősorozat-adataiban. Az API egy anomália-pontszámot rendel az idősorozat minden adatpontjához, amely riasztások generálására, irányítópultokon keresztüli figyelésre vagy a jegyrendszer-szolgáltatásokhoz való csatlakozásra használható.
 
-A [rendellenesség-észlelési API](https://docs.microsoft.com/azure/machine-learning/machine-learning-apps-anomaly-detection-api) a következő típusú rendellenességek észlelésére képes az idősorozat-adatmennyiségek esetében:
+A [rendellenesség-észlelési API](../../machine-learning/team-data-science-process/apps-anomaly-detection-api.md) a következő típusú rendellenességek észlelésére képes az idősorozat-adatmennyiségek esetében:
 
 -   **Tüskék és dips**: Ha egy adott szolgáltatáshoz vagy egy e-kereskedelmi helyen lévő pénztárak számához tartozó bejelentkezési hibák számát figyeli, a szokatlan tüskék vagy a dips a biztonsági támadásokat vagy a szolgáltatás megszakadását jelezheti.
 
@@ -384,6 +384,6 @@ Példa az Azure Marketplace-en elérhető webalkalmazási tűzfalakra: [BARRACUD
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure Security Center észlelési képességek](https://docs.microsoft.com/azure/security-center/security-center-detection-capabilities): Segít azonosítani az Azure-erőforrásokat célozó aktív fenyegetéseket, és biztosítja a gyors reagáláshoz szükséges megállapításokat.
+- [Azure Security Center észlelési képességek](../../security-center/security-center-detection-capabilities.md): Segít azonosítani az Azure-erőforrásokat célozó aktív fenyegetéseket, és biztosítja a gyors reagáláshoz szükséges megállapításokat.
 
 - [Azure SQL Database fenyegetések észlelése](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/): Segít a lehetséges fenyegetésekkel kapcsolatos problémáinak megoldásában az adatbázisokban.
