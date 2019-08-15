@@ -16,12 +16,12 @@ ms.date: 08/12/2019
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 12ad82b0dda628c3a8cef7712322500c7a33517c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: d01994dc4d01baed71bb3de56e069fac5597dc77
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953830"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030845"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
 
@@ -136,6 +136,9 @@ Ez a lehetőség nagyobb rugalmasságot biztosít a névtelen kérelmek kezelés
 A beállítás a  **\<szolgáltató > bejelentkezni**. App Service átirányítja az összes névtelen kérelmet `/.auth/login/<provider>` a kiválasztott szolgáltatóhoz. Ha a névtelen kérelem egy natív mobil alkalmazásból származik, a visszaadott válasz egy `HTTP 401 Unauthorized`.
 
 Ezzel a beállítással nem kell bármilyen hitelesítési kódot írnia az alkalmazásban. A felhasználó jogcímeinek vizsgálatával a finomabb engedélyezés, például a szerepkör-specifikus hitelesítés kezelhető (lásd: [hozzáférés a felhasználói](app-service-authentication-how-to.md#access-user-claims)jogcímekhez).
+
+> [!CAUTION]
+> A hozzáférés ezen a módon való korlátozása az alkalmazás összes hívására vonatkozik, ami nem kívánatos, ha az alkalmazások nyilvánosan elérhető kezdőlapot szeretnének, például sok egyoldalas alkalmazásban.
 
 ## <a name="more-resources"></a>További források
 

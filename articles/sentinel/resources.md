@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 8/14/2019
 ms.author: rkarlin
-ms.openlocfilehash: b5aae5f8e7195cfea7817b9e40e6f28d47fc3eff
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 138efd7cba80e288c4f8831b45272f4e46c8ee3f
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780404"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036237"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>Hasznos források az Azure Sentinel előzetes verziójával való használathoz
 
@@ -41,8 +41,12 @@ Azure Logic Apps összekötők:<https://docs.microsoft.com/connectors/>
 | PaloAlto| CEF konfigurálása| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
 | PluralSight | Kusto lekérdezési nyelv tanfolyama| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
 
+## <a name="blogs-and-forums"></a>Blogok és fórumok
+
+Tegye fel kérdéseit az Azure Sentinel [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) -területére.
+
+Tekintse meg az Azure Sentinel blogbejegyzéseit a [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) és a [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/).
+
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban az Azure Sentinel használatakor hasznos erőforrások listáját olvashatja. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következőket:
-
-* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+Ebben a dokumentumban az Azure Sentinel használatakor hasznos erőforrások listáját olvashatja. Az Azure biztonságával és megfelelőségével kapcsolatos további információkat a [Microsoft Azure biztonsági és megfelelőségi blogjában](https://blogs.msdn.com/b/azuresecurity/)talál.

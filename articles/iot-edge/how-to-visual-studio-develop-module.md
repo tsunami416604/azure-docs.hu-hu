@@ -9,12 +9,12 @@ ms.date: 07/22/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 0ed7d65601465a197cb4d7f92f500e1bf29ad8c2
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7296760a177b949d2f921e11b28105ca6eb67fee
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839671"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036291"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge-modulok fejlesztése és hibakeresése a Visual Studio 2019 használatával
 
@@ -31,7 +31,7 @@ Ez a cikk bemutatja, hogyan használhatja a Visual Studio 2019 Azure IoT Edge-es
   
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy egy számítógép vagy a Windows rendszerű fejlesztői gépen, virtuális gép használja. Az IoT Edge-eszközt egy másik fizikai eszköz lehet.
+Ez a cikk feltételezi, hogy egy számítógép vagy a Windows rendszerű fejlesztői gépen, virtuális gép használja. Windows rendszerű számítógépeken Windows-és Linux-modulokat is fejleszthet. Windows-modulok fejlesztéséhez használjon 1809/Build 17763 vagy újabb verziót futtató Windows-számítógépet. Linux-modulok fejlesztéséhez használjon olyan Windows-számítógépet, amely megfelel a [Docker Desktop követelményeinek](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install). 
 
 Mivel ez a cikk a Visual Studio 2019-et használja fő fejlesztői eszközként, telepítse a Visual studiót. Ügyeljen rá, hogy a Visual Studio 2019-es verziójában a számítási feladatokkal  **C++ együtt** tartalmazza az **Azure fejlesztési** és asztali fejlesztését. A [Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2019) a szükséges számítási feladatok hozzáadásához is módosítható.
 

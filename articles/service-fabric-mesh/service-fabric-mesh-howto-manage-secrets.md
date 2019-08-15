@@ -1,39 +1,39 @@
 ---
-title: Az Azure Service Fabric háló titkos Alkalmazáskulcsok kezelése |} A Microsoft Docs
-description: Titkos Alkalmazáskulcsok kezelése, így biztonságosan létrehozása és üzembe helyezése Service Fabric-háló.
+title: Azure Service Fabric Mesh-alkalmazás titkainak kezelése | Microsoft Docs
+description: Az alkalmazási titkokat felügyelheti, így biztonságosan hozhat létre és helyezhet üzembe egy Service Fabric Mesh-alkalmazást.
 services: service-fabric-mesh
-keywords: Titkos kulcsok
-author: aljo-microsoft
-ms.author: aljo
+keywords: titkos kódok
+author: athinanthny
+ms.author: atsenthi
 ms.date: 4/2/2019
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chackdan
-ms.openlocfilehash: c2548ea3cf892ebe1a56cbb0909bfa5d5e805acf
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: ef3f04437aca7b6ad9aab8806d54e65d00159d87
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503317"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036169"
 ---
-# <a name="manage-service-fabric-mesh-application-secrets"></a>Service Fabric háló titkos Alkalmazáskulcsok kezelése
-Titkos kódok Service Fabric-háló támogatja az Azure-erőforrások. Service Fabric-háló titkos lehet például a storage kapcsolati karakterláncok, jelszavak és egyéb értékek, amelyek tárolása és biztonságosan továbbítani kell bizalmas információkat. Ez a cikk bemutatja, hogyan használhatja a Service Fabric biztonságos Store szolgáltatás üzembe helyezése és karbantartása a titkos kulcsok.
+# <a name="manage-service-fabric-mesh-application-secrets"></a>Service Fabric Mesh-alkalmazás titkainak kezelése
+Service Fabric Mesh a titkokat Azure-erőforrásokként támogatja. A Service Fabric Mesh titkos kulcsa lehet bármilyen bizalmas szöveges információ, például a tárolási kapcsolatok sztringje, jelszava vagy más olyan érték, amelyet biztonságosan kell tárolni és továbbítani. Ez a cikk bemutatja, hogyan helyezheti üzembe és kezelheti a titkokat a Service Fabric Biztonságos tár szolgáltatás használatával.
 
-A háló alkalmazás titkos kulcs áll:
-* A **titkok** erőforrás, amely egy tároló, amely tárolja a szöveg titkos kulcsok. Tárolt titkos kulcsok a **titkok** erőforrás tárolása és biztonságosan továbbítani.
-* Egy vagy több **titkos kulcsok/értékek** tárolt erőforrások a **titkok** az erőforrás-tárolónak. Minden egyes **titkos kulcsok/értékek** erőforrás van megkülönböztető verziószámmal. Egy verziója nem módosítható egy **titkos kulcsok/értékek** erőforrás, csak fűzze hozzá az új verzióra.
+A háló alkalmazás titkos kulcsa a következőkből áll:
+* A **titkok** erőforrása, amely egy olyan tároló, amely a szöveges titkokat tárolja. A **titkok** erőforrásban található titkos kódok tárolása és továbbítása biztonságos.
+* Egy vagy több **titok/érték** erőforrás, amely a **titkok** erőforrás-tárolóban van tárolva. Az egyes **titkok/értékek** erőforrásait a verziószáma különbözteti meg. A **Secret/Values** erőforrás verziószáma nem módosítható, csak új verzió hozzáfűzése.
 
-A következő lépésekből áll, titkos kódok kezelése:
-1. Deklarálja a háló **titkok** egy Azure Resource modell YAML- vagy JSON-táblázatot inlinedValue kind és SecretsStoreRef contentType definíciók-erőforrást.
-2. Deklarálja a háló **titkos kulcsok/értékek** erőforrásokat egy lesz tárolva az Azure Resource modell YAML- vagy JSON-fájlban a **titkok** erőforrás (az 1. lépés).
-3. Módosítsa a háló alkalmazást való hivatkozáshoz háló titkos értékkel.
-4. Üzembe helyezése vagy működés közbeni frissítése a háló alkalmazás titkos értékkel felhasználásához.
-5. Az Azure "az" parancssori felület parancsai biztonságos Store szolgáltatás életciklus-felügyelet.
+A titkok kezelése a következő lépésekből áll:
+1. A Mesh Secrets -erőforrás deklarálása egy Azure Resource Model-YAML vagy JSON-fájlban a inlinedValue-típus és a SecretsStoreRef ContentType-definíciók használatával.
+2. A Secrets **/Values** típusú erőforrások deklarálása egy Azure Resource Model-YAML vagy JSON-fájlban, amelyet a **titkok** erőforrása tárol (az 1. lépésből).
+3. Mesh-alkalmazás módosítása a rácsvonalak titkos értékeire való hivatkozáshoz.
+4. A Mesh alkalmazás üzembe helyezése vagy működés közbeni frissítése a titkos értékek felhasználása érdekében.
+5. Használja az Azure "az" CLI-parancsait Biztonságos tár szolgáltatás életciklus-felügyelethez.
 
-## <a name="declare-a-mesh-secrets-resource"></a>Deklarálja a háló titkok erőforrás
-Titkos kódok háló erőforrás deklarálva van egy Azure Resource modell JSON vagy inlinedValue altípus definíció YAML-fájlt. A háló titkok erőforrás támogatja-e biztonságos Store szolgáltatás forráskódú titkos kulcsok. 
+## <a name="declare-a-mesh-secrets-resource"></a>A Mesh Secrets erőforrás deklarálása
+A Mesh Secrets erőforrást egy Azure-beli erőforrás-modell JSON-vagy YAML-fájljában deklaráljuk a inlinedValue típus definíciójának használatával. A Mesh Secrets erőforrás a Biztonságos tár szolgáltatás forrásból származó titkokat támogatja. 
 >
-A következő egy példa bemutatja, hogyan egy JSON-fájlt a háló titkok erőforrások deklarálásához:
+Az alábbi példa bemutatja, hogyan deklarálhatja a Mesh Secrets-erőforrásokat egy JSON-fájlban:
 
 ```json
 {
@@ -70,7 +70,7 @@ A következő egy példa bemutatja, hogyan egy JSON-fájlt a háló titkok erőf
   ]
 }
 ```
-A következő egy példa bemutatja, hogyan egy YAML-fájlt a háló titkok erőforrások deklarálásához:
+Az alábbi példa bemutatja, hogyan deklarálhatja a Mesh Secrets-erőforrásokat egy YAML-fájlban:
 ```yaml
     services:
       - name: helloWorldService
@@ -98,13 +98,13 @@ A következő egy példa bemutatja, hogyan egy YAML-fájlt a háló titkok erőf
       - name: mynetwork
 ```
 
-## <a name="declare-mesh-secretsvalues-resources"></a>Deklarálja a titkos kulcsok/értékek háló-erőforrások
-Háló titkos kulcsok/értékek erőforrások függőségi viszonyban az előző lépésben meghatározott erőforrásokat használja a háló titkos kulcsok vannak.
+## <a name="declare-mesh-secretsvalues-resources"></a>A Mesh Secrets/Values típusú erőforrások deklarálása
+A Mesh Secrets/Values erőforrásai az előző lépésben meghatározott rácsvonal-titkok erőforrásaitól függenek.
 
-"Resources" szakasz közötti kapcsolat vonatkozó "érték:" és "neve:" mezők: második része a "név:" karakterlánca kettősponttal elválasztva a verziószám használni egy titkos kulcsot, és a neve, mielőtt a vessző után meg kell felelnie a háló titkos érték, amelynek van egy függőség. Például az elem ```name: mysecret:1.0```, a verziószám az 1.0-s és a név ```mysecret``` meg kell egyeznie a korábban meghatározott ```"value": "mysecret"```.
+A "Resources" (erőforrások) szakasz "Value:" és "Name:" mezők közötti kapcsolata esetén: a "Name:" karakterlánc második része, amely kettősponttal van elválasztva, a titkos kulcshoz használt verziószám, valamint a kettőspontnak meg kell egyeznie a háló titkos értékével, amelynek a neve függőségi. Az elem ```name: mysecret:1.0```esetében például a verziószám 1,0, a névnek ```mysecret``` pedig meg kell egyeznie a korábban definiált ```"value": "mysecret"```értékkel.
 
 >
-A következő egy példa bemutatja, hogyan egy JSON-fájlt a háló titkos kulcsok/értékek erőforrások deklarálásához:
+Az alábbi példa bemutatja, hogyan deklarálhatja a Mesh Secrets/Values-erőforrásokat egy JSON-fájlban:
 
 ```json
 {
@@ -153,7 +153,7 @@ A következő egy példa bemutatja, hogyan egy JSON-fájlt a háló titkos kulcs
   ],
 }
 ```
-A következő egy példa bemutatja, hogyan egy YAML-fájlt a háló titkos kulcsok/értékek erőforrások deklarálásához:
+Az alábbi példa bemutatja, hogyan deklarálhatja a Mesh Secrets/Values erőforrásait egy YAML-fájlban:
 ```yaml
     services:
       - name: helloWorldService
@@ -186,67 +186,67 @@ A következő egy példa bemutatja, hogyan egy YAML-fájlt a háló titkos kulcs
       - name: mynetwork
 ```
 
-## <a name="modify-mesh-application-to-reference-mesh-secret-values"></a>Háló alkalmazás hivatkozni a háló titkos kulcs-érték módosítása
-Service Fabric-háló alkalmazásokat kell vegye figyelembe a következő két karakterláncot felhasználhatja a biztonságos Store szolgáltatás titkos kulcs-értékeket:
-1. Microsoft.ServiceFabricMesh/Secrets.name tartalmazza a fájl nevét, és egyszerű szövegként a titkos értéket tartalmazza.
-2. A Windows vagy Linux-alapú környezeti változó "Fabric_SettingPath" tartalmazza a könyvtár elérési útja, ahol Store szolgáltatás titkok biztonságos értékeket tartalmazó fájlok lesznek elérhetők. Ez a "C:\Settings" Windows-ban üzemeltetett és a "/ var /" a háló Linux-ban üzemeltetett alkalmazások beállításait jelölik.
+## <a name="modify-mesh-application-to-reference-mesh-secret-values"></a>Rácsvonal-alkalmazás módosítása a rácsvonalak titkos értékeinek hivatkozásához
+Service Fabric Mesh-alkalmazásoknak a következő két karakterláncot kell figyelembe venniük Biztonságos tár szolgáltatás titkos értékek felhasználása érdekében:
+1. A Microsoft. ServiceFabricMesh/Secrets. name a fájl nevét tartalmazza, és a Secrets értéket fogja tartalmazni szöveges formátumban.
+2. A "Fabric_SettingPath" Windows vagy Linux környezeti változó tartalmazza annak a könyvtárnak az elérési útját, ahol a Biztonságos tár szolgáltatás titkok értékeit tartalmazó fájlok elérhetők lesznek. Ez a "C:\Settings" a Windows által üzemeltetett és "/var/Settings" a Linux által üzemeltetett Mesh-alkalmazásokhoz.
 
-## <a name="deploy-or-use-a-rolling-upgrade-for-mesh-application-to-consume-secret-values"></a>Telepítse, vagy használja a működés közbeni frissítés háló alkalmazás titkos értékkel felhasználásához
-Titkos kódok és/vagy a verzióval ellátott titkos kulcsok/értékek létrehozása központi telepítések deklarált erőforrásmodell korlátozva. Az egyetlen módja az erőforrások létrehozásához, egy erőforrás modell JSON- vagy YAM fájl használatával átadásával a **az háló üzembe helyezési** paranccsal a következőképpen:
+## <a name="deploy-or-use-a-rolling-upgrade-for-mesh-application-to-consume-secret-values"></a>A Mesh-alkalmazás működés közbeni frissítésének üzembe helyezése vagy használata a titkos értékek felhasználása érdekében
+A titkos kulcsok és/vagy a verzióval ellátott titkok/értékek létrehozása az erőforrás-modell által deklarált központi telepítésekre korlátozódik. Ezeknek az erőforrásoknak a létrehozásához az alábbi módon kell átadnia egy erőforrás-modell JSON-vagy YAML-fájlját az az **Mesh Deployment** parancs használatával:
 
 ```azurecli-interactive
 az mesh deployment create –-<template-file> or --<template-uri>
 ```
 
-## <a name="azure-cli-commands-for-secure-store-service-lifecycle-management"></a>Biztonságos Store szolgáltatás-életciklus kezelésének Azure parancssori felület parancsai
+## <a name="azure-cli-commands-for-secure-store-service-lifecycle-management"></a>Azure CLI-parancsok Biztonságos tár szolgáltatás életciklus-felügyelethez
 
-### <a name="create-a-new-secrets-resource"></a>Új titkos kulcsok létrehozása
+### <a name="create-a-new-secrets-resource"></a>Új titkok erőforrásának létrehozása
 ```azurecli-interactive
 az mesh deployment create –-<template-file> or --<template-uri>
 ```
-Adja át vagy **-sablonfájl** vagy **sablon-uri** (de nem mindkettőt).
+Adja át a **template-file** vagy a **template-URI elemet** (de ne mindkettőt).
 
 Példa:
-- az mesh deployment create --c:\MyMeshTemplates\SecretTemplate1.txt
-- az háló központi telepítés létrehozása – https:\//www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
+- az Mesh Deployment Create--c:\MyMeshTemplates\SecretTemplate1.txt
+- az Mesh Deployment Create--https:\//www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
 
 ### <a name="show-a-secret"></a>Titkos kód megjelenítése
-A leírás, a titkos kulcsot (de nem a értéket) adja vissza.
+A titok leírását adja vissza (de nem az értéket).
 ```azurecli-interactive
 az mesh secret show --Resource-group <myResourceGroup> --secret-name <mySecret>
 ```
 
-### <a name="delete-a-secret"></a>Titkos kulcs törlése
+### <a name="delete-a-secret"></a>Titkos kód törlése
 
-- Titkos kulcs nem törölhető, amíg a háló alkalmazások hivatkozott.
-- Titkos kódok erőforrás törlésével törli az összes titkos kódok és erőforrások verzió.
+- A titkos kód nem törölhető, amíg egy háló alkalmazás hivatkozik rá.
+- A titkok erőforrásának törlése törli az összes titkot/erőforrás-verziót.
   ```azurecli-interactive
   az mesh secret delete --Resource-group <myResourceGroup> --secret-name <mySecret>
   ```
 
-### <a name="list-secrets-in-subscription"></a>Előfizetés titkos kulcsainak listázása
+### <a name="list-secrets-in-subscription"></a>Az előfizetéshez tartozó titkos kódok listázása
 ```azurecli-interactive
 az mesh secret list
 ```
-### <a name="list-secrets-in-resource-group"></a>Erőforráscsoport titkos kulcsainak listázása
+### <a name="list-secrets-in-resource-group"></a>Az erőforráscsoport titkainak listázása
 ```azurecli-interactive
 az mesh secret list -g <myResourceGroup>
 ```
-### <a name="list-all-versions-of-a-secret"></a>Az összes titkos kulcs verzióinak listázása
+### <a name="list-all-versions-of-a-secret"></a>A titkos kulcs összes verziójának listázása
 ```azurecli-interactive
 az mesh secretvalue list --Resource-group <myResourceGroup> --secret-name <mySecret>
 ```
 
-### <a name="show-secret-version-value"></a>Titkos kód verziója érték megjelenítése
+### <a name="show-secret-version-value"></a>Titkos verzió értékének megjelenítése
 ```azurecli-interactive
 az mesh secretvalue show --Resource-group <myResourceGroup> --secret-name <mySecret> --version <N>
 ```
 
-### <a name="delete-secret-version-value"></a>Titkos kód verziója érték törlése
+### <a name="delete-secret-version-value"></a>Titkos verzió értékének törlése
 ```azurecli-interactive
 az mesh secretvalue delete --Resource-group <myResourceGroup> --secret-name <mySecret> --version <N>
 ```
 
 ## <a name="next-steps"></a>További lépések 
-Service Fabric-háló kapcsolatos további információkért olvassa el a áttekintése:
-- [Service Fabric-háló áttekintése](service-fabric-mesh-overview.md)
+Ha többet szeretne megtudni a Service Fabric Meshról, olvassa el az áttekintést:
+- [Service Fabric Mesh – áttekintés](service-fabric-mesh-overview.md)

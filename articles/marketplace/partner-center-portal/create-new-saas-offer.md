@@ -1,18 +1,18 @@
 ---
 title: Új SaaS-ajánlat létrehozása a kereskedelmi piactéren
 description: Az Azure Marketplace-en, a AppSource-on vagy a Cloud Solution Provider (CSP) programon keresztüli, a Microsoft partner Center webhelyen található kereskedelmi Piactéri portál használatával új, szolgáltatásként nyújtott szoftveres (SaaS-) ajánlat létrehozásához.
-author: mattwojo
+author: qianw211
 manager: evansma
-ms.author: mattwoj
+ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: 6bf22bce28972e1f3a43efea3b33446ab2a81761
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.date: 08/14/2019
+ms.openlocfilehash: 3d3fc1541fb99d8d1219392158c3b87cd6ff99aa
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019602"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033532"
 ---
 # <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 
@@ -22,7 +22,7 @@ A szolgáltatott szoftver (SaaS)-ajánlatok létrehozásának megkezdéséhez el
 
 Válassza ki az + **új ajánlatot...** gombra, majd válassza ki a **szoftvert szolgáltatásként** menüpontot. 
 
-Ha kijelöl egy másik ajánlat típusát, a rendszer átirányítja a régebbi [Cloud Partner Portalra](https://cloudpartner.azure.com/).  Jelenleg csak SaaS-ajánlatok érhetők el a partner Center kereskedelmi piactér portálján. 
+Ha más ajánlat típusát választja, akkor a rendszer átirányítja a régebbi Cloud Partner Portalra [](https://cloudpartner.azure.com/). Jelenleg csak a SaaS-és Dynamics 365-ajánlatok érhetők el a partner Center kereskedelmi piactér portálján.
 
 ![Ajánlati ablak létrehozása a partner Centerben](./media/new-offer-click.png)
 

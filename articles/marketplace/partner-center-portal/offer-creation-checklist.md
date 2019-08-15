@@ -1,165 +1,165 @@
 ---
-title: Ajánlat létrehozása feladatlista - kereskedelmi Marketplace-en az Azure-hoz
-description: Az adatokat, megadhatja a ajánlat létrehozási folyamat során. – Azure Marketplace kereskedelmi
+title: SaaS-ajánlat létrehozása ellenőrzőlista – kereskedelmi piactér az Azure-hoz
+description: Az SaaS-ajánlat létrehozási folyamatában megadható részletek. -Kereskedelmi piactér az Azure-hoz
 author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: eb824eb67e84ec4bdb93bc355ac6a6afa844ceb9
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.date: 08/14/2019
+ms.openlocfilehash: 66c28039f9126ed9e3f56c3ac15b1b3d82279b64
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701154"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036372"
 ---
-# <a name="offer-creation-checklist"></a>Ajánlat-létrehozási ellenőrzőlista
+# <a name="saas-offer-creation-checklist"></a>SaaS-ajánlat létrehozási ellenőrzőlistája
 
-Az ajánlat létrehozási folyamata megoldáscsomagra oldalai között. Az alábbiakban megadhatja, hogy minden oldalon, ha többet szeretne megtudni az egyes elemek mutató hivatkozásokat tartalmaz.
+Az SaaS-ajánlat létrehozási folyamata több oldalt is igénybe vesz. Az egyes lapokon megadható részletek az egyes elemekre mutató hivatkozásokat tartalmaznak.
 
-Adja meg, vagy adjon meg kell elemek alatti jeleztük. Néhány területe nem kötelező, vagy az alapértelmezett értékeket a megadott, hogy igény szerint módosíthatja. Nem kell működését az ezekben a szakaszokban a itt megadott sorrendben.
+Az alább megadott vagy megadható elemek szerepelnek. Bizonyos területek nem kötelezőek, vagy a megadott alapértelmezett értékekkel rendelkeznek, amelyeket igény szerint módosíthat. Ezeket a részeket az itt felsorolt sorrendben nem kell feldolgoznia.
 
 | **Elem**    | **Cél**  |
 | :---------- | :-------------------|
-| [**Új ajánlat modális paneljére**](#new-offer-modal) | Gyűjti a azonosító adatok kínálnak.  |
-| [Az ajánlat beállítása lapon](#offer-setup-page) | Részvétel a legfontosabb funkcióit használja, és válassza ki, hogy az ajánlat keretében a Microsoft hogyan teszi lehetővé.  |
-| [Tulajdonságok lap](#properties-page) | Adja meg a kategóriák és csoportosíthatók az ajánlat a piactér, a jogi szerződések, az ajánlat és az alkalmazás verziójának támogatása az iparágban. |
-| [Ajánlat ajánlatuk információs oldalán](#offer-listing-page) | Adja meg a Marketplace-en, beleértve az ajánlat leírásának és marketing-eszközök megjeleníteni az ajánlat részleteit. |
-| [Előzetes verziójú szolgáltatásainak weblapján](#preview-page) | Korlátozott előzetes verzió közönség számára ad ki az ajánlatot, a piactér szélesebb körű audience(s) élő ajánlat közzététele előtt határozza meg. |
-| [Ajánlat műszaki konfigurációs lapja](#technical-configuration-page)  | Csak akkor érhető el, ha kiválasztja, hogy az ajánlat keretében a Microsoft. Adja meg a technikai részleteket (URL-cím, webhookot, bérlő azonosítója és alkalmazás azonosítója) az ajánlat való kapcsolódáshoz használt. |
-| [**Új csomag modális paneljére**](#plan-identity-modal) | Gyűjti a azonosító adatok megtervezése.  |
-| [Ajánlatuk információs oldalán olyan megtervezése](#plan-listing-page)  | Csak akkor érhető el, ha kiválasztja, hogy az ajánlat keretében a Microsoft. A terv a Marketplace-en használható részleteinek megadása.  |
-| [Tarifacsomag és rendelkezésre állás](#plan-pricing--availability-page)  | Csak akkor érhető el, ha kiválasztja, hogy az ajánlat keretében a Microsoft.  Gyűjti az üzleti jellemzői (díjszabási modell), a célközönség és piaci rendelkezésre állásának minden csomag (verzió) az Ön ajánlatát.  |
-| [Test Drive ajánlatuk információs oldalán](#test-drive-listing-page)  | Csak akkor érhető el, ha az ajánlat az ajánlat próbálja ki. A teszt a Marketplace-en meghajtó listájához használt részleteinek megadása.  |
-| Teszt meghajtó technikai konfiguráció lap  | Csak akkor érhető el, ha az ajánlat az ajánlat próbálja ki. Adja meg a technikai részleteket a bemutató (vagy "próbálja ki a"), amely lehetővé teszi az ügyfeleknek az ajánlat végrehajtása előtt meg kell vásárolnia, próbálkozzon.  |
-| [Tekintse át, és tegye közzé az oldalon](#review-and-publish-page)  | Válassza ki a szükséges módosításokat közzétételéhez, megnézheti az állapotukat minden lapon, és adjon meg jegyzeteket a tanúsítvány csapatának.  |
+| [**Új ajánlat – modális**](#new-offer-modal) | Az ajánlatok azonosító adatait gyűjti.  |
+| [Ajánlat beállítása lap](#offer-setup-page) | Lehetővé teszi, hogy belépjen a főbb funkciók használatára, és válassza ki, hogyan értékesítheti ajánlatát a Microsofton keresztül.  |
+| [Tulajdonságok lap](#properties-page) | Adja meg az ajánlatnak a piactéren való csoportosításához használt kategóriákat és iparágakat, az ajánlatát támogató jogi szerződéseket és az alkalmazás verzióját. |
+| [Ajánlati lista lapja](#offer-listing-page) | Adja meg a piactéren megjelenítendő ajánlat részleteit, beleértve az ajánlat és a marketing-eszközök leírását. |
+| [Előnézet lap](#preview-page) | Az ajánlat közzétételét megelőzően korlátozott előzetes célközönséget adhat meg az ajánlat közzététele előtt a nagyobb Piactéri közönségnek. |
+| [Ajánlat – technikai konfiguráció lap](#technical-configuration-page)  | Csak akkor érhető el, ha az ajánlatot a Microsofton keresztül adja el. Adja meg az ajánlathoz való kapcsolódáshoz használt technikai adatokat (URL-cím, webhook, bérlői azonosító és alkalmazás-azonosító). |
+| [**Új modális csomag**](#plan-identity-modal) | Gyűjti a terv azonosító adatait.  |
+| [A lista megtervezése lap](#plan-listing-page)  | Csak akkor érhető el, ha az ajánlatot a Microsofton keresztül adja el. A tervnek a piactéren való listázásához használt részletek meghatározása.  |
+| [A díjszabási & rendelkezésre állási oldalának megtervezése](#plan-pricing--availability-page)  | Csak akkor érhető el, ha az ajánlatot a Microsofton keresztül adja el.  Összegyűjti az üzleti jellemzőit (díjszabási modell), a célközönséget és a piac rendelkezésre állását az ajánlat minden egyes csomagjában (verzióban).  |
+| [A tesztoldal listázása lap](#test-drive-listing-page)  | Csak akkor érhető el, ha kijelöli az ajánlata tesztelésére szolgáló meghajtót. Adja meg a piactéren a tesztelési meghajtó listázásához használt adatokat.  |
+| A test Drive technikai konfigurációjának lapja  | Csak akkor érhető el, ha kijelöli az ajánlata tesztelésére szolgáló meghajtót. Adja meg a bemutató (vagy a "teszt meghajtó") technikai részleteit, amelyek lehetővé teszik az ügyfelek számára, hogy a megvásárlása előtt kipróbálják az ajánlatot.  |
+| [Áttekintés és közzététel oldal](#review-and-publish-page)  | Válassza ki a közzétenni kívánt módosításokat, tekintse meg az egyes lapok állapotát, és adjon meg megjegyzéseket a minősítési csapatnak.  |
 
 
-## <a name="new-offer-modal"></a>Új ajánlat modális 
+## <a name="new-offer-modal"></a>Új ajánlat – modális 
 
-Az első adatok megadását kéri egy azonosító és az alias az ajánlatban. 
+Az elsőként megjelenő információ az ajánlat AZONOSÍTÓját és aliasát adja meg. 
 
 | **Mező neve**    | **Megjegyzések**   |  
 | :---------------- | :-----------| 
-| Ajánlat azonosítója  | Szükséges, a létrehozás után nem módosítható. Legfeljebb 50 karakter hosszú lehet, és kell állnia csak kisbetűket, alfanumerikus karaktereket, kötőjeleket és aláhúzást tartalmazhatnak. |
-| Az ajánlat alias  | Kötelező. |
+| Ajánlat azonosítója  | Kötelező, a létrehozás után nem módosítható. Max 50 karakter, és csak kisbetűkből, alfanumerikus karakterekből, kötőjelből vagy aláhúzásokból állhat. |
+| Ajánlat aliasa  | Kötelező. |
 
-## <a name="offer-setup-page"></a>Az ajánlat beállítása lapon
+## <a name="offer-setup-page"></a>Ajánlat beállítása lap
 
-Az ajánlat beállítása lap, ahol meg is mekkorák a különböző csatornákon és értékesítési mozdulatok, valamint deklarálja a legfontosabb funkcióit, például a tesztverziós és az ügyfél használatát az érdeklődők. 
+Az ajánlat beállítása oldalon különböző csatornákat és mozgásokat lehet használni, valamint deklarálhatja a főbb funkciók, például a tesztelési meghajtó és az ügyfél-érdeklődők használatát. 
 
 | **Mező neve**    | **Megjegyzések**   | 
 | :---------------- | :-----------|  
-| Szeretne Microsoft keresztül?  | Kötelező. alapértelmezett érték: Igen |
-| Hogyan szeretne lehetséges ügyfeleink számára, hogy az ajánlat keretében bejegyzés? (A műveleti hívás)  | Ha nem a Microsoft értékesítési szükséges. alapértelmezett érték: Ingyenes próbaverzió, beállítások: "Letöltés most", "Ingyenes próbaverzió", "Velem a kapcsolatot." |
-| Próbaverziós URL-címe  | Szükséges, ha az "Ingyenes próbaverzió" van kijelölve, így ügyfeleink az működik együtt az ajánlat listáján. |
-| Az ajánlat URL-címe  | Szükséges, ha a "Get most" van kijelölve, így ügyfeleink az működik együtt az ajánlat listaelem |
-| Csatornák  | Választható. alapértelmezett érték: A kriptográfiai Szolgáltató (viszonteladói) csatorna nem jelentkezett.  |
-| Tesztverzió | Választható. alapértelmezett érték: Nincs tesztverziós engedélyezve van.  |
-| Test Drive típusa | Ha engedélyezve van a tesztverziós szükséges. alapértelmezett érték: Egy elem sincs kijelölve. Beállítások: Az Azure Resource Manager, a Dynamics 365 for Business központi, a Dynamics 365 for Customer Engagement, Dynamics 365, a műveletek logikai alkalmazást, a Power bi-ban.  |
-| Felügyeleti vezető – egy CRM-rendszerrel connect | Szükséges a Microsoft értékesítési, vagy ha listaelem kínál, mint a "Velem a kapcsolatot." Alapértelmezés: nincs csatlakoztatva CRM-rendszerrel. CRM-beállítások: Az Azure table HTTPs' végpont, a Marketo, a Salesforce, az Azure blob, a Dynamics CRM online,  |
+| Szeretné eladni a Microsoftot?  | Kötelező. Alapértelmezett: Igen |
+| Hogyan kívánja használni a potenciális ügyfeleket az ajánlati listán? (Művelet meghívása)  | Kötelező, ha nem a Microsofton keresztül forgalmaz. Alapértelmezett: Ingyenes próbaverzió, beállítások: "Letöltés most", "ingyenes próbaverzió", "Kapcsolatfelvétel". |
+| Próbaverzió URL-címe  | Kötelező, ha az "ingyenes próbaverzió" van kiválasztva, így az ügyfeleknek az ajánlati listához kell lépniük. |
+| Ajánlat URL-címe  | Kötelező, ha a "Letöltés most" lehetőség van kiválasztva, mivel az ügyfeleknek az ajánlati listához kell lépniük |
+| Csatornák  | Nem kötelező. Alapértelmezett: Nincs bekapcsolva a CSP (viszonteladói) csatornára.  |
+| Kipróbálás | Nem kötelező. Alapértelmezett: Nincs engedélyezve a tesztelési meghajtó.  |
+| A tesztelési meghajtó típusa | A tesztelési meghajtó engedélyezése kötelező. Alapértelmezett: Egy elem sincs kiválasztva Beállítások Azure Resource Manager, Dynamics 365 for Business Central, Dynamics 365 a Customer engagement, a Dynamics 365 for Operations, a Logic apps, a Power BI.  |
+| Érdeklődők felügyelete – kapcsolódás CRM rendszerhez | Akkor szükséges, ha a Microsofton keresztül forgalmaz, vagy ha a lista a "Kapcsolatfelvétel" lehetőséget kínálja. Alapértelmezett: nincs csatlakoztatva CRM-rendszer. CRM-beállítások: Azure Table, Azure Blob, Dynamics CRM Online, HTTPs végpont, Marketo, Salesforce  |
 
 ## <a name="properties-page"></a>Tulajdonságok lap
 
-A Tulajdonságok lap, ahol megadhatja a kategóriák és csoportosíthatók az ajánlat a piactér, a jogi szerződések, az ajánlat és az alkalmazás verziójának támogatása az iparágban. Mindenképpen adja meg a teljes és pontos adatait ajánlata ezen a lapon, hogy megfelelően jelenik meg, majd a megfelelő készletét az ügyfelek számára. 
+A Tulajdonságok lapon megadhatja az ajánlatnak a piactéren való csoportosításához használt kategóriákat és iparágakat, az ajánlatot támogató jogi szerződéseket és az alkalmazás verzióját. Ügyeljen arra, hogy az Ön ajánlatának teljes és pontos részleteit ezen a lapon lássuk el, hogy az megfelelően jelenjen meg, és a megfelelő ügyfelek számára is elérhető legyen. 
 
 | **Mező neve**    | **Megjegyzések**   | 
 | :---------------- | :-----------|  
-| Kategória és alkategóriája | 1 és legfeljebb 3 szükséges. alapértelmezett érték: Egy elem sincs kijelölve. |
-| Iparágakban és subindustries | Választható. legfeljebb 2 L1 ágazatok, valamint a maximális 2 subindustries belül minden egyes L1 iparági, alapértelmezett: Nincs kiválasztva egy sem |
-| Az alkalmazás verziója  | Választható. alapértelmezett érték: Nincs. |
-| Általános szerződési használata  | Választható. Alapértelmezés: nincs bejelölve.  | |
-| Használati feltételek  | Szükséges, ha a standard szintű szerződés nincs bejelölve.  |
+| Kategória és Alkategória | Kötelező 1 és Max 3. Alapértelmezett: Egy elem sincs kiválasztva |
+| Iparágak és alágazatok | Nem kötelező. minden egyes L1 iparágban legfeljebb 2 L1 iparág és legfeljebb 2 alágazat található, alapértelmezés szerint: Nincs kiválasztott |
+| Az alkalmazás verziója  | Nem kötelező. Alapértelmezett: Nincs. |
+| Normál szerződés használata  | Nem kötelező. Alapértelmezett: nincs kiválasztva.  | |
+| Használati feltételek  | Kötelező, ha nincs bejelölve a standard szerződés.  |
 
-## <a name="offer-listing-page"></a>Ajánlatuk információs oldalán
+## <a name="offer-listing-page"></a>Ajánlati lista lapja
 
-A rendszer a ajánlatuk információs oldalán kell megadni a szöveg és képek, amelyeket a felhasználók a piactéren az ajánlat listaelem megtekintésekor. 
+A tőzsdei oldalon megadhatja, hogy az ügyfelek milyen szövegeket és képeket láthassanak, amikor megtekintik az ajánlatát a piactéren. 
 
 | **Mező neve**    | **Megjegyzések**   |
 | :---------------- | :-----------| 
-| Name (Név)  | Szükséges, legfeljebb 50 karakter hosszúságú. |
-| Összegzés  | Szükséges, legfeljebb 100 karakter. | 
-| Leírás  | Kötelező, maximum 3000 karakter. |
-| Első lépések útmutató  | Kötelező, maximum 3000 karakter. |
-| Első lépések útmutató  | Kötelező, maximum 3000 karakter. |
-| Kulcsszavak keresése  | Ajánlott, legfeljebb 3 kulcsszavak nem kötelező. |
+| Name (Név)  | Kötelező, Max 50 karakter. |
+| Összegzés  | Kötelező, Max 100 karakter. | 
+| Leírás  | Kötelező, Max 3000 karakter. |
+| Első lépések utasítások  | Kötelező, Max 3000 karakter. |
+| Első lépések utasítások  | Kötelező, Max 3000 karakter. |
+| Kulcsszavak keresése  | Nem kötelező, ajánlott, legfeljebb 3 kulcsszó. |
 | Adatvédelmi szabályzat URL-címe  | Kötelező. |
-| CSP Program Marketing anyagok URL-címe  | Választható. |
-| Hasznos oldalak címének + URL-címe  | Választható. |
-| Cím + fájl támogató dokumentumok  | Szükség esetén 1 perc és legfeljebb 3. A PDF formátumú kell lennie. |
-| Képernyőképek  | Szükség esetén a képernyőképen 1 perc és legfeljebb 5; négy vagy több javasolt. 1280 X 720 a PNG formátumúnak kell lenniük. |
-| Emblémák Store (kicsi, közepes, nagy, teljes Hero)  | Kicsi (48 X 48) és a nagy méretű (216 X 216) szükséges; További méretek nem kötelező, de javasolt: Közepes (90 x 90) Wide (255 x 115), a Hero (815 x 290). PNG formátumúnak kell lennie. |
-| Videó neve + URL-cím + miniatűrje  | Nem kötelező, ajánlott, max. 4 videókat. Miniatűr 1280 x 720 PNG formátumúnak kell lennie. A videó YouTube vagy Vimeo kiszolgálón kell futnia. |
-| Névjegyek (CSP Program, mérnöki támogatás)  | Mérnöki és támogatási kapcsolattartó szükséges (név, e-mail és telefonszám); Nem kötelező, de ajánlott a CSP Program forduljon. |
-| Adresa URL  | Kötelező. |
+| CSP program marketing-anyagok URL-címe  | Nem kötelező. |
+| Hasznos hivatkozások címe + URL-cím  | Nem kötelező. |
+| Támogató dokumentumok cím + fájl  | Kötelező, minimum 1 és Max 3. PDF-fájlformátumnak kell lennie. |
+| Képernyőképek  | Kötelező, min. 1 képernyőfelvétel és max. 5; négy vagy több ajánlott. PNG formátumban 1280 X 720 értéknek kell lennie. |
+| Emblémák tárolása (kicsi, közepes, nagy, széles, hős)  | Kicsi (48 X 48) és nagy (216 X 216) szükséges; Egyéb méretek nem kötelező, de ajánlott: Közepes (90 x 90), Wide (255 x 115), Hero (815 x 290). PNG formátumúnak kell lennie. |
+| Videók neve + URL + miniatűr  | Opcionális, ajánlott, legfeljebb 4 videó. A miniatűr 1280 x 720 PNG formátumúnak kell lennie. A videót a YouTube vagy a Vimeo szolgáltatásban kell tárolni. |
+| Névjegyek (CSP program, mérnöki, támogatás)  | Mérnöki és támogatási Kapcsolatfelvétel szükséges (név, e-mail és telefonszám); A CSP program elérhetősége nem kötelező, de ajánlott. |
+| Támogatási URL-cím  | Kötelező. |
 
-## <a name="preview-page"></a>Előzetes verziójú szolgáltatásainak weblapján
+## <a name="preview-page"></a>Előnézet lap
 
-Az előzetes verziójú szolgáltatásainak weblapján adhatja meg a célközönséget hozzáférése legyen az ajánlat előzetes verziójára, ellenőrizze, hogy az ajánlat az összes követelményének megfelel, mielőtt élő kerül. 
-
-| **Mező neve**    | **Megjegyzések**   | 
-| :---------------- | :-----------| 
-| Aad-ben/MSA e-mail + leírása | Szükség esetén 1 perc és legfeljebb 10 megadása manuálisan, vagy pedig akár 20, ha egy CSV-fájl feltöltése. |
-
-## <a name="technical-configuration-page"></a>Technikai konfigurációs lapja 
-
-Technikai konfiguráció lap, amelyben meghatározhatja azokat a technikai részleteket csatlakozhat a Microsoft az ajánlat. Ezen a lapon nincs az Ön számára láthatók, ha Ön úgy döntött, hogy nem értékesítsen rajuk keresztül a Microsoft.
-
-| **Mező neve**    | **Megjegyzések**   |  
-| :---------------- | :-----------| 
-| Kezdőlap URL-címe | Ha a Microsoft értékesítési szükséges. |
-| Connection webhook | Ha a Microsoft értékesítési szükséges. |
-| Azure AD-bérlő azonosítója | Ha a Microsoft értékesítési szükséges. |
-| Azure AD app ID | Ha a Microsoft értékesítési szükséges. |
-
-## <a name="plan-identity-modal"></a>Identitás modális megtervezése
-
-Az első információt kell adnia egy nevet és a csomag Azonosítóját. Ezen a lapon nincs az Ön számára láthatók, ha úgy döntött, nem Microsoft keresztül.
-
-| **Mező neve**    | **Megjegyzések**   |  
-| :---------------- | :-----------| 
-| Csomagazonosító  | Ha a Microsoft értékesítési szükséges. Létrehozás után nem módosítható. Legfeljebb 50 karakter hosszú lehet, és kell állnia csak kisbetűket, alfanumerikus karaktereket, kötőjeleket és aláhúzást tartalmazhatnak. |
-| Csomag neve  | Ha a Microsoft értékesítési szükséges. Egyedinek kell lennie az ajánlat csomagokról. Max. 50 karakter lehet. |
-
-## <a name="plan-listing-page"></a>Csomag ajánlatuk információs oldalán
-
-A terv felsoroló lap, ahol meg kell hogy látni, amikor a csomagot a piactéren az ügyfelek a szöveget. Ezen a lapon nincs az Ön számára láthatók, ha Ön úgy döntött, hogy nem értékesítsen rajuk keresztül a Microsoft.
-
-| **Mező neve**    | **Megjegyzések**   |  
-| :---------------- | :-----------| 
-| Csomag leírása   | Ha a Microsoft értékesítési szükséges. Maximális száma 500 karakter. | |
-
-## <a name="plan-pricing--availability-page"></a>Díjszabás és a rendelkezésre állási lap megtervezése
-
-Csomag díjszabása és a rendelkezésre állási lap, amikor Ön határozza meg az üzleti jellemzőit, célközönség és a piaci minden csomaghoz (verzió) az Ön ajánlatát. Ezen a lapon nincs az Ön számára láthatók, ha Ön úgy döntött, hogy nem értékesítsen rajuk keresztül a Microsoft.
+Az Előnézet lapon megadhatja, hogy az ajánlat előzetes verziójához milyen célközönség férhet hozzá, így ellenőrizheti, hogy az ajánlat megfelel-e az összes követelménynek az azonnali működéshez. 
 
 | **Mező neve**    | **Megjegyzések**   | 
 | :---------------- | :-----------| 
-| Piaci rendelkezésre állása  | Szükség esetén 1 perc, valamint a maximális 141. |
-| Díjszabási modell  | Kötelező. alapértelmezett érték: Alapján, átalánydíjjal. Beállítások: Alapján, átalánydíjjal, felhasználónként. |
-| Minimális és maximális munkaállomások  | Nem kötelező, csak érhető el, ha a munkaállomás-alapú díjszabási modellje kiválasztva. |
-| Számlázási időszak  | Kötelező. alapértelmezett érték: Havi. Beállítások: Havi, éves. |
-| Ár  | Szükséges USD / hó, ha a havi számlázási időszak-e jelölve. vagy, ha a kijelölt feltétel számlázási éves évenként USD. |
-| Célközönség megtervezése  | Választható. alapértelmezett érték: Nyilvános tervet. Beállítások: Nyilvános, magán a bérlői azonosító alapján |
-| Csomag korlátozott közönség (bérlő azonosítója + leírása)  | Szükséges, ha személyes terv kiválasztva. 1 perc és legfeljebb 10 bérlőazonosítók Ha manuálisan. 20000 maximális száma, ha a CSV-fájl importálása. |
+| HRE/MSA e-mail és leírás | Kötelező, minimum 1 és legfeljebb 10, ha manuálisan van megadva, vagy legfeljebb 20, ha CSV-fájlt tölt fel. |
 
-## <a name="test-drive-listing-page"></a>Test Drive ajánlatuk információs oldalán
+## <a name="technical-configuration-page"></a>Technikai konfiguráció lap 
 
-Csak akkor érhető el, ha az ajánlat az ajánlat próbálja ki. A teszt a Marketplace-en meghajtó listájához használt részleteinek megadása.
+A technikai konfiguráció lapon megadhatja a Microsoft által az ajánlathoz való kapcsolódáshoz használt technikai részleteket. Ez az oldal nem látható, ha úgy döntött, hogy nem értékesíti a Microsoftot.
+
+| **Mező neve**    | **Megjegyzések**   |  
+| :---------------- | :-----------| 
+| Kezdőlap URL-címe | A Microsofton keresztüli értékesítés esetén kötelező. |
+| Kapcsolat webhook | A Microsofton keresztüli értékesítés esetén kötelező. |
+| Azure AD-bérlő azonosítója | A Microsofton keresztüli értékesítés esetén kötelező. |
+| Azure AD-alkalmazás azonosítója | A Microsofton keresztüli értékesítés esetén kötelező. |
+
+## <a name="plan-identity-modal"></a>Identity modális csomag
+
+A megadható első információ a csomag neve és azonosítója. Ez a lap nem látható, ha úgy döntött, hogy nem értékesíti a Microsoftot.
+
+| **Mező neve**    | **Megjegyzések**   |  
+| :---------------- | :-----------| 
+| Csomag azonosítója  | A Microsofton keresztüli értékesítés esetén kötelező. A létrehozás után nem módosítható. Max 50 karakter, és csak kisbetűkből, alfanumerikus karakterekből, kötőjelből vagy aláhúzásokból állhat. |
+| Csomag neve  | A Microsofton keresztüli értékesítés esetén kötelező. Egyedinek kell lennie az ajánlat összes csomagján. Legfeljebb 50 karakter. |
+
+## <a name="plan-listing-page"></a>A lista megtervezése lap
+
+A csomag listázása lapon megadhatja, hogy a rendszer mikor tekintse meg az ügyfelek számára a terv megtekintését a piactéren. Ez az oldal nem látható, ha úgy döntött, hogy nem értékesíti a Microsoftot.
+
+| **Mező neve**    | **Megjegyzések**   |  
+| :---------------- | :-----------| 
+| Csomag leírása   | A Microsofton keresztüli értékesítés esetén kötelező. Legfeljebb 500 karakter. | |
+
+## <a name="plan-pricing--availability-page"></a>A díjszabási & rendelkezésre állási oldalának megtervezése
+
+A csomag díjszabása és rendelkezésre állása lapon meghatározhatja az ajánlat minden egyes csomagjának (verziójának) üzleti jellemzőit, a célközönséget és a piacra való rendelkezésre állást. Ez az oldal nem látható, ha úgy döntött, hogy nem értékesíti a Microsoftot.
+
+| **Mező neve**    | **Megjegyzések**   | 
+| :---------------- | :-----------| 
+| Piac rendelkezésre állása  | Kötelező, minimum 1 és Max 141. |
+| Díjszabási modell  | Kötelező. Alapértelmezett: Átalány. Beállítások Átalány, felhasználónként. |
+| Minimális és maximális számú ülőhely  | Nem kötelező, csak akkor érhető el, ha ki van választva az ülőhely-alapú díjszabási modell. |
+| Számlázási időszak  | Kötelező. Alapértelmezett: Havi. Beállítások Havonta, évente. |
+| Ár  | Havonta szükséges USD, ha a havi számlázási időszak van kiválasztva; vagy USD/év, ha az éves számlázási időszak van kiválasztva. |
+| Célközönség megtervezése  | Nem kötelező. Alapértelmezett: Nyilvános csomag. Beállítások Nyilvános, privát bérlő azonosítója |
+| Korlátozott csomag célközönsége (bérlő azonosítója + Leírás)  | Kötelező, ha a saját csomag van kiválasztva. Ha kézzel van megadva, min. 1 és legfeljebb 10 bérlői azonosítót kell megadni. Maximális 20000, ha a CSV-fájl importálása megtörténjen. |
+
+## <a name="test-drive-listing-page"></a>A tesztoldal listázása lap
+
+Csak akkor érhető el, ha kijelöli az ajánlata tesztelésére szolgáló meghajtót. Adja meg a piactéren a tesztelési meghajtó listázásához használt adatokat.
 
 | **Mező neve**    | **Megjegyzések**   | 
 | :---------------- | :-----------| 
 | Leírás  | Kötelező. |
-| Felhasználónév manuális + fájl  | Kötelező, maximum 1 doc. PDF formátumban kell lennie. |
-| Videó neve, URL-cím + miniatűrje  | Nem kötelező, ajánlott. Miniatűr 533 x 324 JPGP vagy PNG formátumúnak kell lennie. A videó YouTube vagy Vimeo kiszolgálón kell futnia. |
+| Felhasználói manuális név + fájl  | Kötelező, legfeljebb 1 doc. PDF-formátumúnak kell lennie. |
+| Videó neve, URL + miniatűr  | Nem kötelező, ajánlott. A miniatűrnek 533 x 324 JPGP vagy PNG formátumúnak kell lennie. A videót a YouTube vagy a Vimeo szolgáltatásban kell tárolni. |
 
-## <a name="review-and-publish-page"></a>Tekintse át, és tegye közzé az oldalon
+## <a name="review-and-publish-page"></a>Áttekintés és közzététel oldal
 
 | **Mező neve**    | **Megjegyzések**   | 
 | :---------------- | :-----------| 
-| Minősítési megjegyzései  | Választható. |
+| Megjegyzések a minősítéshez  | Nem kötelező. |
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hozzon létre egy új SaaS-ajánlat](./create-new-saas-offer.md)
+- [Új SaaS-ajánlat létrehozása](./create-new-saas-offer.md)

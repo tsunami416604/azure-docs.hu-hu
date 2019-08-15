@@ -10,14 +10,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 04/23/2019
+ms.date: 08/13/2019
 ms.author: lahugh
-ms.openlocfilehash: 2b9d6832422b98c1064a4e9e99774c4788e801e5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4770c0bfd9c6fe6effa9cdf200d89ca7ff6eb768
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68323653"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036667"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch futtatókörnyezet környezeti változói
 
@@ -51,7 +51,7 @@ A számítási csomópontokon végzett feladatok által végrehajtott parancssor
 | AZ_BATCH_ACCOUNT_URL            | A Batch-fiók URL-címe. | Minden feladat. | `https://myaccount.westus.batch.azure.com` |
 | AZ_BATCH_APP_PACKAGE            | Az alkalmazáscsomag környezeti változóinak előtagja. Ha például a "foo" "1" verziójú alkalmazás egy készletre van telepítve, a környezeti változó AZ_BATCH_APP_PACKAGE_FOO_1. A AZ_BATCH_APP_PACKAGE_FOO_1 arra a helyre mutat, amelyre a csomag le lett töltve (egy mappa). | A társított alkalmazáscsomag feladatainak egyike. Az összes feladathoz is elérhető, ha a csomópontnak van alkalmazáscsomag. | AZ_BATCH_APP_PACKAGE_FOO_1 |
 | AZ_BATCH_AUTHENTICATION_TOKEN   | Egy hitelesítési jogkivonat, amely hozzáférést biztosít a Batch szolgáltatási műveleteinek korlátozott készletéhez. Ez a környezeti változó csak akkor jelenik meg, ha a [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) be van állítva a [feladat hozzáadásakor](/rest/api/batchservice/task/add#request-body). A jogkivonat értékét a Batch API-k hitelesítő adatként használják a Batch-ügyfél létrehozásához, például a [BatchClient. Open () .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_)-ban. | Minden feladat. | OAuth2 hozzáférési token |
-| AZ_BATCH_CERTIFICATES_DIR       | Egy könyvtár a [feladat][files_dirs] munkakönyvtárában, amelyben a rendszer a Linux számítási csomópontjain tárolja a tanúsítványokat. Vegye figyelembe, hogy ez a környezeti változó nem vonatkozik a Windows számítási csomópontjaira.                                                  | Minden feladat.   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
+| AZ_BATCH_CERTIFICATES_DIR       | Egy könyvtár a [feladat][files_dirs] munkakönyvtárában, amelyben a rendszer a Linux számítási csomópontjain tárolja a tanúsítványokat. Ez a környezeti változó nem vonatkozik a Windows számítási csomópontjaira.                                                  | Minden feladat.   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_HOST_LIST              | A többpéldányos [feladat][multi_instance] számára a formátumban `nodeIP,nodeIP`lefoglalt csomópontok listája. | Több példányos elsődleges és alfeladatok. | `10.0.0.4,10.0.0.5` |
 | AZ_BATCH_IS_CURRENT_NODE_MASTER | Megadja, hogy az aktuális csomópont a többpéldányos [feladat][multi_instance]fő csomópontja-e. A lehetséges értékek `true` a `false`következők: és.| Több példányos elsődleges és alfeladatok. | `true` |
 | AZ_BATCH_JOB_ID                 | Annak a fióknak az azonosítója, amelyhez a feladat tartozik. | Minden feladat, kivéve a kezdési feladatot. | batchjob001 |
@@ -61,6 +61,7 @@ A számítási csomópontokon végzett feladatok által végrehajtott parancssor
 | AZ_BATCH_NODE_ID                | Annak a csomópontnak az azonosítója, amelyhez a feladat hozzá van rendelve. | Minden feladat. | tvm-1219235766_3-20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | Ha `true`az aktuális csomópont egy dedikált csomópont. Ha `false`ez egy [alacsony prioritású csomópont](batch-low-pri-vms.md). | Minden feladat. | `true` |
 | AZ_BATCH_NODE_LIST              | A többpéldányos [feladat][multi_instance] számára a formátumban `nodeIP;nodeIP`lefoglalt csomópontok listája. | Több példányos elsődleges és alfeladatok. | `10.0.0.4;10.0.0.5` |
+| AZ_BATCH_NODE_MOUNTS_DIR        | A csomópont szintű [fájlrendszer csatlakoztatási](virtual-file-mount.md) helyének teljes elérési útja, ahol az összes csatlakoztatási könyvtár található. A Windows-fájlmegosztás meghajtóbetűjelet használ, így a Windows esetében a csatlakoztatási meghajtó az eszközök és meghajtók részét képezi.  |  Minden feladat, beleértve az indítási feladatot, hozzáférhet a felhasználóhoz, mivel a felhasználó ismeri a csatlakoztatott könyvtár csatlakoztatási engedélyeit. | Az Ubuntuban például a hely a következő:`/mnt/batch/tasks/fsmounts` |
 | AZ_BATCH_NODE_ROOT_DIR          | A csomóponton lévő összes [Batch-könyvtár][files_dirs] gyökerének teljes elérési útja. | Minden feladat. | C:\user\tasks |
 | AZ_BATCH_NODE_SHARED_DIR        | A csomóponton a [megosztott könyvtár][files_dirs] teljes elérési útja. A csomóponton végrehajtandó összes feladat olvasási/írási hozzáféréssel rendelkezik ehhez a címtárhoz. A más csomópontokon végrehajtandó feladatok nem rendelkeznek távoli hozzáféréssel ehhez a címtárhoz (nem "megosztott" hálózati könyvtár). | Minden feladat. | C:\user\tasks\shared |
 | AZ_BATCH_NODE_STARTUP_DIR       | A csomóponton a [Start feladat könyvtárának][files_dirs] teljes elérési útja. | Minden feladat. | C:\user\tasks\startup |

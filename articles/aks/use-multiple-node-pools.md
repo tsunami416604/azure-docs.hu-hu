@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: ffdb11420e239125ac3320964a7071c2ab2bdc7e
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: e6ba6aeaeadb2359c4b30efa35471ca62dcc6b41
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019123"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033969"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Előzetes verzió – több Node-készlet létrehozása és kezelése az Azure Kubernetes Service-ben (ak)
 
@@ -24,7 +24,7 @@ Az Azure Kubernetes szolgáltatásban (ak) az azonos konfiguráció csomópontja
 Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet több Node-készletet egy AK-fürtben. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
 > [!IMPORTANT]
-> Az AK előzetes verziójának funkciói önkiszolgáló, választhatók. A felhasználók visszajelzéseket és hibákat biztosítanak a Közösségtől. Az előzetes verzióban ezek a szolgáltatások éles használatra nem használhatók. A nyilvános előzetes verzió funkciói a "legjobb erőfeszítés" támogatás alatt állnak. Az AK technikai támogatási csapatának segítsége csak a munkaidőn kívüli időzóna (PST) időpontjában érhető el. További információkért tekintse meg a következő támogatási cikkeket:
+> Az AK előzetes verziójának funkciói önkiszolgáló opt-in. Az előzetes verziók az "adott állapotban" és "ahogy elérhető" módon vannak kizárva, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A következő részben az ügyfélszolgálat a lehető leghatékonyabban foglalkozik. Ezért ezeket a funkciókat nem éles használatra szánták. További részletekért tekintse meg a következő támogatási cikkeket:
 >
 > * [AK-támogatási szabályzatok][aks-support-policies]
 > * [Azure-támogatás – gyakori kérdések][aks-faq]

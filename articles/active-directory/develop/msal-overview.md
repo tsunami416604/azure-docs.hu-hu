@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 897eff7eb77ce9f2a2795bfe534cc03076e59649
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b09f5c3fffe73b399fd02f74166f1c52fc90accd
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853233"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032367"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>A Microsoft Authentication Library (MSAL) áttekintése
 A Microsoft Authentication Library (MSAL) lehetővé teszi a [](developer-glossary.md#security-token) fejlesztők számára a tokenek beszerzését a Microsoft Identity platform-végpontból a biztonságos webes API-k eléréséhez. Ezek a webes API-k lehetnek a Microsoft Graph, más Microsoft API-k, harmadik féltől származó webes API-k vagy a saját webes API-jai. A MSAL olyan .NET-, JavaScript-, Android-és iOS-eszközökhöz érhető el, amelyek számos különböző alkalmazás-architektúrát és platformot támogatnak.
@@ -58,6 +58,7 @@ A MSAL számos alkalmazási helyzetben használható, többek között az alább
 | ![MSAL.js](media/sample-v2-code/logo_js.png) <br/>[MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript/írógéppel keretrendszerek, mint például a AngularJS, az ember. js vagy a Durante. js|
 | ![MSAL Android rendszerhez](media/sample-v2-code/logo_Android.png) <br/>[MSAL for Android (előzetes verzió)](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
 | ![MSAL iOS rendszerhez](media/sample-v2-code/logo_iOS.png) <br/>[MSAL. Objective-C (előzetes verzió)](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS|
+| ![MSAL4J](media/sample-v2-code/logo_java.png) <br/>[MSAL4J előzetes verzió](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Java|
 
 ## <a name="differences-between-adal-and-msal"></a>ADAL és MSAL közötti különbségek
 Active Directory-hitelesítési tár (ADAL) integrálható az Azure AD for Developers (v 1.0) végponttal, ahol a MSAL a Microsoft Identity platform (v 2.0) végponttal integrálódik. A v 1.0 végpont támogatja a munkahelyi fiókokat, a személyes fiókokat azonban nem. A 2.0-s végpont a személyes Microsoft-fiókok és-munkahelyi fiókok egységesítése egyetlen hitelesítési rendszerbe. Emellett a MSAL-mel is beszerezhetők a Azure AD B2C hitelesítései.

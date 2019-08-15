@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 06/28/2019
+ms.date: 08/14/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 79d00d39903b6fb3891ee7c0ccc4743763043568
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 1a5d80d6cd31621f8c3931b1845050f0a212ef08
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015620"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036610"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>A magasan elérhető alkalmazások tervezése olvasási hozzáférésű geo-redundáns tárolással
 
@@ -150,7 +150,7 @@ Három fő lehetősége van az újrapróbálkozások gyakoriságának figyelés�
 
 * Adjon hozzá egy kezelőt [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) az újrapróbálkozási eseményhez a Storage-kérelmeknek átadott [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) objektumban – ez a jelen cikkben és a kísérő mintában használt metódus. Ezek az események akkor következnek be, amikor az ügyfél újrapróbálkozik egy kéréssel, így nyomon követheti, hogy az ügyfél milyen gyakran találkozik az újrapróbálkozást lehetővé tevő hibákkal egy elsődleges végponton.
 
-    ```csharp 
+    ```csharp
     operationContext.Retrying += (sender, arguments) =>
     {
         // Retrying in the primary region
@@ -219,7 +219,13 @@ A PowerShell vagy az Azure CLI használatával lekérheti a legutóbbi szinkroni
 
 ### <a name="powershell"></a>PowerShell
 
-Ha a PowerShell használatával szeretné lekérni a Storage-fiók utolsó szinkronizálási idejét, tekintse meg a Storage-fiók **GeoReplicationStats. LastSyncTime** tulajdonságát. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire:
+Ha a PowerShell használatával szeretné lekérni a Storage-fiók utolsó szinkronizálási idejét, telepítsen egy Azure Storage Preview-modult, amely támogatja a Geo-replikálási statisztikák beszerzését. Példa:
+
+```powershell
+Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
+```
+
+Ezután keresse meg a Storage-fiók **GeoReplicationStats. LastSyncTime** tulajdonságát. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire:
 
 ```powershell
 $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `

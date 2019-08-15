@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric reliable services-alkalmazás-jegyzékfájl példák |} A Microsoft Docs
-description: 'Útmutató: alkalmazás konfigurálása és a Service Fabric reliable services-alkalmazás jegyzékfájl beállításait.'
+title: Azure Service Fabric megbízható szolgáltatások alkalmazásának jegyzékfájlja – példák | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhatja az alkalmazások és szolgáltatások jegyzékfájljának beállításait egy megbízható szolgáltatások Service Fabric alkalmazáshoz.
 services: service-fabric
 documentationcenter: na
 author: peterpogorski
@@ -8,31 +8,30 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: xml
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 6c4c8f0ee6aa12c58e02f71b42312cd6872076aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5678b4c4c0f7a9d8d3f3cf6e838580de2059a8f
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60719159"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035639"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Példák Reliable Services-alkalmazások és szolgáltatások jegyzékeire
-A következő példák egy ASP.NET Core webes előtérrendszert és egy állapotalapú háttérszolgáltatás a Service Fabric-alkalmazás az alkalmazás és szolgáltatás jegyzékfájljainak. Ezekben a példákban az a célja, hogy milyen beállítások érhetők el, és azok használatát. Ezen alkalmazás és jegyzékek alapulnak a [Service Fabric .NET – rövid útmutató](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) jegyzékfájlok.
+A következő példák a Service Fabric alkalmazás alkalmazás-és szolgáltatási jegyzékfájlait ASP.NET Core webes kezelőfelülettel és állapot-nyilvántartó háttérrel rendelkeznek. A példák célja, hogy megmutassa, milyen beállítások érhetők el, és hogyan használhatja őket. Ezek az alkalmazások és szolgáltatások jegyzékfájli a [Service Fabric .net](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) gyors üzembe helyezési jegyzékeken alapulnak.
 
 A következő funkciók jelennek meg:
 
-|Jegyzék|Szolgáltatások|
+|Jegyzékfájl|Szolgáltatások|
 |---|---|
-|[Alkalmazásjegyzék](#application-manifest)| [Erőforrás-szabályozás](service-fabric-resource-governance.md), [szolgáltatás futtatása egy helyi rendszergazdai fiók](service-fabric-application-runas-security.md), [egy alapértelmezett házirend alkalmazása minden szolgáltatás kódcsomagok](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages), [hozzon létre felhasználói és rendszerbiztonsági tagok](service-fabric-application-runas-security.md), egy adatcsomag, szolgáltatáspéldányok közötti megosztása [Szolgáltatásvégpontok felülbírálása](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
-|FrontEndService szolgáltatásjegyzékben| [Parancsfájl futtatása a szolgáltatás indításakor](service-fabric-run-script-at-service-startup.md), [HTTPS-végpont meghatározása](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 
-|BackEndService szolgáltatásjegyzékben| [Deklarálja a konfigurációs csomag](service-fabric-application-and-service-manifests.md), [deklaráljon egy adatcsomag](service-fabric-application-and-service-manifests.md), [végpont konfigurálása](service-fabric-service-manifest-resources.md)| 
+|[Alkalmazásjegyzék](#application-manifest)| [erőforrás-szabályozás](service-fabric-resource-governance.md), [helyi rendszergazdai fiókkal futtatott szolgáltatás](service-fabric-application-runas-security.md), [alapértelmezett házirend alkalmazása az összes szolgáltatási kód csomagra](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages), a [felhasználó és a csoport létrehozása](service-fabric-application-runas-security.md), az adatcsomag megosztása a szolgáltatási példányok között, a [szolgáltatás felülbírálása végpontok](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
+|FrontEndService szolgáltatás jegyzékfájlja| [Parancsfájl futtatása a szolgáltatás indításakor](service-fabric-run-script-at-service-startup.md), [Definiáljon egy https](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) -végpontot | 
+|BackEndService szolgáltatás jegyzékfájlja| [Konfigurációs csomag deklarálása](service-fabric-application-and-service-manifests.md), [adatcsomag deklarálása](service-fabric-application-and-service-manifests.md), [végpont konfigurálása](service-fabric-service-manifest-resources.md)| 
 
-Lásd: [Application manifest elemek](#application-manifest-elements), [VotingWeb service manifest elemek](#votingweb-service-manifest-elements), és [VotingData service manifest elemek](#votingdata-service-manifest-elements) megadott XML-további információ elemek.
+Az adott XML-elemekkel kapcsolatos további információkért lásd: az [alkalmazás jegyzékfájljának elemei](#application-manifest-elements), a [VotingWeb](#votingweb-service-manifest-elements)és a [VotingData szolgáltatás jegyzékfájljának](#votingdata-service-manifest-elements) elemei.
 
 ## <a name="application-manifest"></a>Alkalmazásjegyzék
 
@@ -168,7 +167,7 @@ Lásd: [Application manifest elemek](#application-manifest-elements), [VotingWeb
 
 ```
 
-## <a name="votingweb-service-manifest"></a>VotingWeb szolgáltatásjegyzékben
+## <a name="votingweb-service-manifest"></a>VotingWeb szolgáltatás jegyzékfájlja
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -232,7 +231,7 @@ Lásd: [Application manifest elemek](#application-manifest-elements), [VotingWeb
 
 ```
 
-## <a name="votingdata-service-manifest"></a>VotingData szolgáltatásjegyzékben
+## <a name="votingdata-service-manifest"></a>VotingData szolgáltatás jegyzékfájlja
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -280,190 +279,190 @@ Lásd: [Application manifest elemek](#application-manifest-elements), [VotingWeb
 
 ```
 
-## <a name="application-manifest-elements"></a>Alkalmazás-jegyzékfájl elemek
+## <a name="application-manifest-elements"></a>Az alkalmazás jegyzékfájljának elemei
 ### <a name="applicationmanifest-element"></a>ApplicationManifest elem
-Deklaratív ismerteti az alkalmazás típusát és verzióját. Egy vagy több szolgáltatásjegyzékek a különböző szolgáltatások hivatkozott alkalmazástípus írása. Konfigurációs beállítások a különböző szolgáltatások paraméteres Alkalmazásbeállítások bírálható felül. Alapértelmezés szerint a szolgáltatások, a szolgáltatássablonok, rendszerbiztonsági tagok, szabályzatok, diagnosztikai beállítás és az alkalmazás szintjén is deklarálva tanúsítványokat is. További információkért lásd: [ApplicationManifest elem](service-fabric-service-model-schema-elements.md#ApplicationManifestElementApplicationManifestTypeComplexType)
+A deklaratív leírja az alkalmazás típusát és verzióját. A rendszer egy vagy több szolgáltatási jegyzékfájlt hivatkozik az alkalmazás típusának összeállítására. Az összetevő-szolgáltatások konfigurációs beállításai felülbírálják a paraméteres Alkalmazásbeállítások használatát. Az alapértelmezett szolgáltatások, a szolgáltatási sablonok, a rendszerbiztonsági tag, a házirendek, a diagnosztika beállítása és a tanúsítványok az alkalmazás szintjén is deklarálva lehetnek. További információ: [ApplicationManifest elem](service-fabric-service-model-schema-elements.md#ApplicationManifestElementApplicationManifestTypeComplexType)
 
 ### <a name="parameters-element"></a>Paraméterek elem
-Deklarálja a paramétereket, az alkalmazásjegyzékben. Ezek a paraméterek értéke lehet biztosítani, az alkalmazás van példányosítva és az alkalmazás vagy szolgáltatás konfigurációs beállítások felülbírálása használható. További információkért lásd: [paraméterek elem](service-fabric-service-model-schema-elements.md#ParametersElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
+Az alkalmazás jegyzékfájljában használt paraméterek deklarálása. Ezeknek a paramétereknek az értéke megadható az alkalmazás példányának létrehozásakor, és az alkalmazás vagy szolgáltatás konfigurációs beállításainak felülbírálására használható. További információ: [Paraméterek elem](service-fabric-service-model-schema-elements.md#ParametersElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
 
-### <a name="parameter-element"></a>A paraméter eleme
-Egy alkalmazás használható paraméter azonosítására a jegyzékfájlban. A paraméter értéke módosítható alkalmazás történt, vagy ha nincs érték van megadva az alapértelmezett érték lesz érvényben. További információkért lásd: [Paraméterelem](service-fabric-service-model-schema-elements.md#ParameterElementanonymouscomplexTypeComplexTypeDefinedInParameterselement)
+### <a name="parameter-element"></a>Paraméter elem
+A jegyzékfájlban használandó alkalmazás-paraméter. A paraméter értéke megváltoztatható az alkalmazás létrehozásakor, vagy ha nincs megadva érték, a rendszer az alapértelmezett értéket használja. További információ: [paraméter elem](service-fabric-service-model-schema-elements.md#ParameterElementanonymouscomplexTypeComplexTypeDefinedInParameterselement)
 
 ### <a name="servicemanifestimport-element"></a>ServiceManifestImport elem
-A szolgáltatásjegyzék, a szolgáltatás fejlesztő által létrehozott importálja. A szolgáltatásjegyzék, az alkalmazás minden egyes megvalósítani a bennük foglalt szolgáltatás kell importálni. Konfiguráció felülírja, és a szabályzatok a szolgáltatásjegyzék számára deklarálható. További információkért lásd: [ServiceManifestImport elem](service-fabric-service-model-schema-elements.md#ServiceManifestImportElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
+A szolgáltatás-fejlesztő által létrehozott szolgáltatási jegyzékfájl importálása. Az alkalmazás egyes összetevőihez szolgáltatásbeli jegyzékfájlt kell importálni. A konfigurációs felülbírálások és házirendek deklarálása a szolgáltatás jegyzékfájljában lehetséges. További információ: [ServiceManifestImport elem](service-fabric-service-model-schema-elements.md#ServiceManifestImportElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
 
 ### <a name="servicemanifestref-element"></a>ServiceManifestRef elem
-Importálja a szolgáltatásjegyzék hivatkozással. Jelenleg a szolgáltatás jegyzékfájlját (ServiceManifest.xml) kell lennie a build csomagban megtalálható. További információkért lásd: [ServiceManifestRef elem](service-fabric-service-model-schema-elements.md#ServiceManifestRefElementServiceManifestRefTypeComplexTypeDefinedInServiceManifestImportelement)
+A szolgáltatás jegyzékfájljának importálása hivatkozással. Jelenleg a szolgáltatás jegyzékfájljának (ServiceManifest. xml) jelen kell lennie a Build csomagban. További információ: [ServiceManifestRef elem](service-fabric-service-model-schema-elements.md#ServiceManifestRefElementServiceManifestRefTypeComplexTypeDefinedInServiceManifestImportelement)
 
 ### <a name="resourceoverrides-element"></a>ResourceOverrides elem
-Adja meg a végpontok szolgáltatásjegyzéki erőforrások deklarált erőforrás felülbírálásokat. További információkért lásd: [ResourceOverrides elem](service-fabric-service-model-schema-elements.md#ResourceOverridesElementResourceOverridesTypeComplexTypeDefinedInServiceManifestImportelement)
+Meghatározza a szolgáltatás jegyzékfájljának erőforrásaiban deklarált végpontok erőforrás-felülbírálásait. További információ: [ResourceOverrides elem](service-fabric-service-model-schema-elements.md#ResourceOverridesElementResourceOverridesTypeComplexTypeDefinedInServiceManifestImportelement)
 
-### <a name="endpoints-element"></a>Végpontok elem
-A végpont felülbírálása. További információkért lásd: [végpontok elem](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourceOverridesTypecomplexType)
+### <a name="endpoints-element"></a>Végpontok eleme
+A felülbírálni kívánt végpont (ok). További információ: végpontok [eleme](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourceOverridesTypecomplexType)
 
-### <a name="endpoint-element"></a>Végpont elem
-A végpont felülbírálása a szolgáltatásjegyzékben deklarálva. További információkért lásd: [végpont elem](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
+### <a name="endpoint-element"></a>Végpont eleme
+A felülbíráláshoz a szolgáltatás jegyzékfájljában deklarált végpont. További információ: [végpont elem](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
 
-### <a name="policies-element"></a>Házirendek elem
-Az importált Szolgáltatásjegyzék a alkalmazni (végponti kötést, a csomag megosztási, a futtató és a biztonság hozzáférés) házirendeket ismerteti. További információkért lásd: [házirendek elem](service-fabric-service-model-schema-elements.md#PoliciesElementServiceManifestImportPoliciesTypeComplexTypeDefinedInServiceManifestImportelement)
+### <a name="policies-element"></a>Szabályzatok elem
+A szabályzatok (a végponti kötés, a csomagok megosztása, a futtatási és a biztonsági hozzáférés) ismertetése az importált szolgáltatás jegyzékfájlján. További információ: szabályzatok [elem](service-fabric-service-model-schema-elements.md#PoliciesElementServiceManifestImportPoliciesTypeComplexTypeDefinedInServiceManifestImportelement)
 
 ### <a name="servicepackageresourcegovernancepolicy-element"></a>ServicePackageResourceGovernancePolicy Element
-A teljes szolgáltatási csomag szintjén alkalmazzák-erőforrás-szabályozási házirend határozza meg. További információkért lásd: [ServicePackageResourceGovernancePolicy elem](service-fabric-service-model-schema-elements.md#ServicePackageResourceGovernancePolicyElementServicePackageResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInServicePackageTypecomplexType)
+Meghatározza a teljes szolgáltatáscsomag szintjén alkalmazott erőforrás-irányítási házirendet. További információ: [ServicePackageResourceGovernancePolicy elem](service-fabric-service-model-schema-elements.md#ServicePackageResourceGovernancePolicyElementServicePackageResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInServicePackageTypecomplexType)
 
 ### <a name="resourcegovernancepolicy-element"></a>ResourceGovernancePolicy elem
-Itt adható meg erőforráskorlátok a codepackage a. További információkért lásd: [ResourceGovernancePolicy elem](service-fabric-service-model-schema-elements.md#ResourceGovernancePolicyElementResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelementDefinedInDigestedEndpointelement)
+Meghatározza az codepackage erőforrás-korlátozásait. További információ: [ResourceGovernancePolicy elem](service-fabric-service-model-schema-elements.md#ResourceGovernancePolicyElementResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelementDefinedInDigestedEndpointelement)
 
 ### <a name="packagesharingpolicy-element"></a>PackageSharingPolicy Element
-Azt jelzi, ha a code, config vagy data csomag azonos típusú szolgáltatás szolgáltatási példányai között lehetnek megosztva. További információkért lásd: [PackageSharingPolicy elem](service-fabric-service-model-schema-elements.md#PackageSharingPolicyElementPackageSharingPolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexType)
+Azt jelzi, hogy meg kell-e osztani egy kódot, egy konfigurációt vagy egy adatcsomagot ugyanazon szolgáltatástípus szolgáltatási példányai között. További információ: [Packagesharingpolicy objektumnak elem](service-fabric-service-model-schema-elements.md#PackageSharingPolicyElementPackageSharingPolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexType)
 
-### <a name="securityaccesspolicy-element"></a>SecurityAccessPolicy Element
-A hozzáférési a szolgáltatásjegyzékben definiált engedélyek egy egyszerű erőforrás (például egy végpont). Általában nagyon hasznos ellenőrzése és-szolgáltatások elérésének korlátozása különböző erőforrások minimalizálása érdekében a biztonsági kockázatokat. Ez akkor különösen fontos, ha az alkalmazást a létrehozása a gyűjteményből, a marketplace-ről szolgáltatásokat, amelyek különböző fejlesztők által fejlesztett. További információkért lásd: [SecurityAccessPolicy elem](service-fabric-service-model-schema-elements.md#SecurityAccessPolicyElementSecurityAccessPolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInSecurityAccessPolicieselementDefinedInDigestedEndpointelement)
+### <a name="securityaccesspolicy-element"></a>SecurityAccessPolicy elem
+Hozzáférési engedélyeket ad egy rendszerbiztonsági tag számára egy szolgáltatási jegyzékfájlban definiált erőforráshoz (például egy végponthoz). A biztonsági kockázatok csökkentése érdekében általában nagyon hasznos a szolgáltatások különböző erőforrásokhoz való hozzáférésének szabályozása és korlátozása. Ez különösen akkor fontos, ha az alkalmazást egy olyan piactérből származó szolgáltatásból építették, amelyet különböző fejlesztők fejlesztettek ki. További információ: [SecurityAccessPolicy elem](service-fabric-service-model-schema-elements.md#SecurityAccessPolicyElementSecurityAccessPolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInSecurityAccessPolicieselementDefinedInDigestedEndpointelement)
 
 ### <a name="runaspolicy-element"></a>RunAsPolicy elem
-Megadja a helyi felhasználói vagy a helyi rendszer fiók, amely a szolgáltatások fognak futni. A Windows Server-telepítéseket, hol érhető el az Azure Active Directory tartományi fiókok támogatottak. Alapértelmezés szerint az alkalmazások, amely a Fabric.exe folyamatban fut, a fiók alatt futnak. Alkalmazásokat is futtathat más fiókok, amelyek a rendszerbiztonsági tagok szakaszt deklarálni kell. Ha egy futtató házirend vonatkozik egy szolgáltatás, és a szolgáltatásjegyzék deklarálja a HTTP protokollt végpont erőforrások, meg kell adni egy SecurityAccessPolicy annak érdekében, hogy a portok számára lefoglalt ezeket a végpontokat megfelelően-e hozzáférés-vezérlési értékében jelenik meg a Futtatás mint a szolgáltatás fut, a felhasználói fiók. HTTPS-végpontokat meg kell adnia egy EndpointBindingPolicy térjen vissza az ügyfél a tanúsítvány nevének is. További információkért lásd: [RunAsPolicy elem](service-fabric-service-model-schema-elements.md#RunAsPolicyElementRunAsPolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelement)
+Azt a helyi felhasználót vagy helyi rendszerfiókot határozza meg, amelyet a szolgáltatási kód csomagja futtat. A tartományi fiókok olyan Windows Server-példányokon támogatottak, ahol Azure Active Directory érhető el. Alapértelmezés szerint az alkalmazások a Fabric. exe folyamat alatt futó fiók alatt futnak. Az alkalmazások más fiókokként is futtathatók, amelyeket a rendszerbiztonsági tag szakaszban kell deklarálni. Ha futtató házirendet alkalmaz egy szolgáltatásra, és a szolgáltatás jegyzékfájlja deklarálja a végponti erőforrásokat a HTTP protokollal, meg kell adnia egy SecurityAccessPolicy, amely biztosítja, hogy az ezekhez a végpontokhoz lefoglalt portok helyesen legyenek hozzáférés-vezérlési listához a RunAs számára a szolgáltatás által futtatott felhasználói fiók. HTTPS-végpont esetén meg kell határoznia egy EndpointBindingPolicy, amely jelzi a tanúsítvány nevét, hogy visszatérjen az ügyfélhez. További információ: [RunAsPolicy elem](service-fabric-service-model-schema-elements.md#RunAsPolicyElementRunAsPolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelement)
 
 ### <a name="defaultservices-element"></a>DefaultServices elem
-Deklarálja a szolgáltatáspéldány, amely automatikusan létrejön, amikor egy alkalmazás van példányosítva tento typ aplikace ellen. További információkért lásd: [DefaultServices elem](service-fabric-service-model-schema-elements.md#DefaultServicesElementDefaultServicesTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInApplicationInstanceTypecomplexType)
+Azokat a szolgáltatási példányokat deklarálja, amelyek automatikusan létrejönnek, amikor egy alkalmazás ezen az alkalmazási típuson jön létre. További információ: [DefaultServices elem](service-fabric-service-model-schema-elements.md#DefaultServicesElementDefaultServicesTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInApplicationInstanceTypecomplexType)
 
-### <a name="service-element"></a>Szolgáltatás-elem
-Deklarálja a szolgáltatás automatikusan létrejön, amikor létrejön az alkalmazás. További információkért lásd: [szolgáltatás elem](service-fabric-service-model-schema-elements.md#ServiceElementanonymouscomplexTypeComplexTypeDefinedInDefaultServicesTypecomplexType)
+### <a name="service-element"></a>Szolgáltatási elem
+Az alkalmazás példányainak létrehozásakor automatikusan létrehozandó szolgáltatás deklarálása. További információ: [szolgáltatási elem](service-fabric-service-model-schema-elements.md#ServiceElementanonymouscomplexTypeComplexTypeDefinedInDefaultServicesTypecomplexType)
 
-### <a name="statefulservice-element"></a>Elem statefulservice-ből
-Az állapotalapú szolgáltatások határozza meg. További információkért lásd: [statefulservice-ből elem](service-fabric-service-model-schema-elements.md#StatefulServiceElementStatefulServiceTypeComplexTypeDefinedInServiceTemplatesTypecomplexTypeDefinedInServiceelement)
+### <a name="statefulservice-element"></a>StatefulService elem
+Meghatároz egy állapot-nyilvántartó szolgáltatást. További információ: [StatefulService elem](service-fabric-service-model-schema-elements.md#StatefulServiceElementStatefulServiceTypeComplexTypeDefinedInServiceTemplatesTypecomplexTypeDefinedInServiceelement)
 
-### <a name="statelessservice-element"></a>StatelessService Element
-Állapotmentes szolgáltatás határozza meg. További információkért lásd: [StatelessService elem](service-fabric-service-model-schema-elements.md#StatelessServiceElementStatelessServiceTypeComplexTypeDefinedInServiceTemplatesTypecomplexTypeDefinedInServiceelement)
+### <a name="statelessservice-element"></a>StatelessService elem
+Állapot nélküli szolgáltatást definiál. További információ: [StatelessService elem](service-fabric-service-model-schema-elements.md#StatelessServiceElementStatelessServiceTypeComplexTypeDefinedInServiceTemplatesTypecomplexTypeDefinedInServiceelement)
 
-### <a name="principals-element"></a>Rendszerbiztonsági tagok elem
-Azt ismerteti, hogy a rendszerbiztonsági tagok (felhasználók, csoportok) szükséges az alkalmazás futtatásához, szolgáltatások és biztonságos erőforrásokhoz. A szabályzatok szakaszban hivatkozott rendszerbiztonsági tagok. További információkért lásd: [rendszerbiztonsági tagok elem](service-fabric-service-model-schema-elements.md#PrincipalsElementSecurityPrincipalsTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInEnvironmentTypecomplexType)
+### <a name="principals-element"></a>Rendszerbiztonsági tag elem
+Azokat a rendszerbiztonsági tagokat (felhasználókat, csoportokat) ismerteti, amelyek szükségesek ahhoz, hogy az alkalmazás a szolgáltatásokat és a biztonságos erőforrásokat futtassa. A rendszerbiztonsági tag hivatkozásokat tartalmaz a szabályzatok szakaszban. További információ: principals [elem](service-fabric-service-model-schema-elements.md#PrincipalsElementSecurityPrincipalsTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInEnvironmentTypecomplexType)
 
 ### <a name="groups-element"></a>Csoportok elem
-Deklarálja csoportokat, biztonsági házirendeket lehet hivatkozni rendszerbiztonsági tagok. Csoportok hasznosak, ha több felhasználó számára a különböző belépési pontok, és szükségük van bizonyos közös jogosultságok, amely a csoport szintjén érhető el. További információkért lásd: [csoportok elem](service-fabric-service-model-schema-elements.md#GroupsElementanonymouscomplexTypeComplexTypeDefinedInSecurityPrincipalsTypecomplexType)
+Csoportokat deklarál rendszerbiztonsági tagként, amely a házirendekben hivatkozhat. A csoportok akkor hasznosak, ha több felhasználó van a különböző szolgáltatási belépési pontokhoz, és szükségük van bizonyos, a csoport szintjén elérhető általános jogosultságokra. További információ: groups [Element](service-fabric-service-model-schema-elements.md#GroupsElementanonymouscomplexTypeComplexTypeDefinedInSecurityPrincipalsTypecomplexType)
 
-### <a name="group-element"></a>Csoportelemhez
-Deklarálja a rendszerbiztonsági tag, mint egy csoportot, amely a házirendeket lehet hivatkozni. További információkért lásd: [Csoportelemhez](service-fabric-service-model-schema-elements.md#GroupElementanonymouscomplexTypeComplexTypeDefinedInGroupselement)
+### <a name="group-element"></a>Csoport elem
+Egy csoport deklarálása rendszerbiztonsági tagként, amely hivatkozhat a szabályzatokban. További információ: [csoport elem](service-fabric-service-model-schema-elements.md#GroupElementanonymouscomplexTypeComplexTypeDefinedInGroupselement)
 
-### <a name="membership-element"></a>Tagság elem
- További információkért lásd: [tagsági elem](service-fabric-service-model-schema-elements.md#MembershipElementanonymouscomplexTypeComplexTypeDefinedInGroupelement)
+### <a name="membership-element"></a>Tagsági elem
+ További információ: tagsági [elem](service-fabric-service-model-schema-elements.md#MembershipElementanonymouscomplexTypeComplexTypeDefinedInGroupelement)
 
-### <a name="systemgroup-element"></a>SystemGroup Element
- További információkért lásd: [SystemGroup elem](service-fabric-service-model-schema-elements.md#SystemGroupElementanonymouscomplexTypeComplexTypeDefinedInMembershipelement)
+### <a name="systemgroup-element"></a>SystemGroup elem
+ További információ: [SystemGroup elem](service-fabric-service-model-schema-elements.md#SystemGroupElementanonymouscomplexTypeComplexTypeDefinedInMembershipelement)
 
-### <a name="users-element"></a>Felhasználók elem
-Deklarálja a felhasználók egy csoportja, biztonsági házirendeket lehet hivatkozni rendszerbiztonsági tagok. További információkért lásd: [felhasználók elem](service-fabric-service-model-schema-elements.md#UsersElementanonymouscomplexTypeComplexTypeDefinedInSecurityPrincipalsTypecomplexType)
+### <a name="users-element"></a>Felhasználói elem
+Felhasználók csoportjának deklarálása rendszerbiztonsági tagként, amely hivatkozhat a szabályzatokra. További információ: Users ( [felhasználók) elem](service-fabric-service-model-schema-elements.md#UsersElementanonymouscomplexTypeComplexTypeDefinedInSecurityPrincipalsTypecomplexType)
 
 ### <a name="user-element"></a>Felhasználói elem
-A felhasználó egyszerű, biztonsági házirendeket lehet hivatkozni, amely deklarálja. További információkért lásd: [felhasználói elem](service-fabric-service-model-schema-elements.md#UserElementanonymouscomplexTypeComplexTypeDefinedInUserselement)
+Deklarál egy felhasználót rendszerbiztonsági tagként, amely a házirendekben hivatkozhat. További információ: [felhasználói elem](service-fabric-service-model-schema-elements.md#UserElementanonymouscomplexTypeComplexTypeDefinedInUserselement)
 
-### <a name="memberof-element"></a>Tagja(Pénzügy) elem
-Felhasználók bármely meglévő tagságcsoportot hozzáadhatók, így is a tulajdonságok és biztonsági beállításait a csoportházirend is örököl. A csoportházirend segítségével különböző szolgáltatásokat, vagy ugyanazt a szolgáltatást (egy másik gépen) elérésének igénylő külső erőforrások védelmét. További információkért lásd: [tagja(Pénzügy) elem](service-fabric-service-model-schema-elements.md#MemberOfElementanonymouscomplexTypeComplexTypeDefinedInUserelement)
+### <a name="memberof-element"></a>MemberOf elem
+A felhasználók hozzáadhatók bármely meglévő tagsági csoporthoz, így az adott tagsági csoport összes tulajdonságát és biztonsági beállítását örökölheti. A tagsági csoport a különböző szolgáltatások vagy ugyanazon szolgáltatás (egy másik gépen) által elérhető külső erőforrások biztonságossá tételére használható. További információ: [memberof elem](service-fabric-service-model-schema-elements.md#MemberOfElementanonymouscomplexTypeComplexTypeDefinedInUserelement)
 
-### <a name="systemgroup-element"></a>SystemGroup Element
-Adja hozzá a felhasználót a rendszer csoport.  A rendszer csoport a csoportok szakaszban kell definiálni. További információkért lásd: [SystemGroup elem](service-fabric-service-model-schema-elements.md#SystemGroupElementanonymouscomplexTypeComplexTypeDefinedInMemberOfelement)
+### <a name="systemgroup-element"></a>SystemGroup elem
+Az a Rendszercsoport, amelyhez hozzá kívánja adni a felhasználót.  A rendszercsoportot a csoportok szakaszban kell meghatározni. További információ: [SystemGroup elem](service-fabric-service-model-schema-elements.md#SystemGroupElementanonymouscomplexTypeComplexTypeDefinedInMemberOfelement)
 
-### <a name="group-element"></a>Csoportelemhez
-Adja hozzá a felhasználót, hogy a csoport.  A csoport a csoportok szakaszban kell definiálni. További információkért lásd: [Csoportelemhez](service-fabric-service-model-schema-elements.md#GroupElementanonymouscomplexTypeComplexTypeDefinedInMemberOfelement)
+### <a name="group-element"></a>Csoport elem
+A csoport, amelyhez hozzá kívánja adni a felhasználót.  A csoportot a csoportok szakaszban kell meghatározni. További információ: [csoport elem](service-fabric-service-model-schema-elements.md#GroupElementanonymouscomplexTypeComplexTypeDefinedInMemberOfelement)
 
-### <a name="policies-element"></a>Házirendek elem
-Popisuje zásady (naplógyűjtés, alapértelmezett futtató, egészségügyi és biztonsági access) az alkalmazás szintjén alkalmazható. További információkért lásd: [házirendek elem](service-fabric-service-model-schema-elements.md#PoliciesElementApplicationPoliciesTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInEnvironmentTypecomplexType)
+### <a name="policies-element"></a>Szabályzatok elem
+Ismerteti a szabályzatokat (a naplózási gyűjteményt, az alapértelmezett futtatást, az állapotot és a biztonsági hozzáférést) az alkalmazás szintjén. További információ: szabályzatok [elem](service-fabric-service-model-schema-elements.md#PoliciesElementApplicationPoliciesTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInEnvironmentTypecomplexType)
 
-### <a name="defaultrunaspolicy-element"></a>DefaultRunAsPolicy Element
-Adja meg az összes szolgáltatás kód csomagokat, amelyek nem rendelkeznek egy adott RunAsPolicy az ServiceManifestImport szakaszban meghatározott alapértelmezett felhasználói fiók. További információkért lásd: [DefaultRunAsPolicy elem](service-fabric-service-model-schema-elements.md#DefaultRunAsPolicyElementanonymouscomplexTypeComplexTypeDefinedInApplicationPoliciesTypecomplexType)
-
-
+### <a name="defaultrunaspolicy-element"></a>DefaultRunAsPolicy elem
+Olyan alapértelmezett felhasználói fiókot határozzon meg minden olyan szolgáltatási kód csomaghoz, amely nem rendelkezik meghatározott RunAsPolicy a ServiceManifestImport szakaszban. További információ: [DefaultRunAsPolicy elem](service-fabric-service-model-schema-elements.md#DefaultRunAsPolicyElementanonymouscomplexTypeComplexTypeDefinedInApplicationPoliciesTypecomplexType)
 
 
-## <a name="votingweb-service-manifest-elements"></a>VotingWeb service manifest elemek
-### <a name="servicemanifest-element"></a>ServiceManifest elemben
-Szolgáltatás típusa és verziója deklaratív ismerteti. A egymástól függetlenül frissíthető kód, a konfiguráció és az adatok csomagokat, amelyek együttesen egy service-csomag egy vagy több szolgáltatás típusainak listáját. Erőforrások, a diagnosztikai beállítások és a szolgáltatás típusa, egészségügyi tulajdonságok és terheléselosztási mérőszámokat, például a szolgáltatás metaadatai is meg van adva. További információkért lásd: [ServiceManifest elemben](service-fabric-service-model-schema-elements.md#ServiceManifestElementServiceManifestTypeComplexType)
+
+
+## <a name="votingweb-service-manifest-elements"></a>VotingWeb szolgáltatás jegyzékfájljának elemei
+### <a name="servicemanifest-element"></a>ServiceManifest elem
+A szolgáltatás típusának és verziójának deklaratív leírása. Felsorolja a különállóan frissíthető kód-, konfigurációs és adatcsomagokat, amelyek együtt alkotnak egy szervizcsomagot egy vagy több szolgáltatás típusának támogatásához. Az erőforrások, a diagnosztikai beállítások és a szolgáltatás metaadatainak, például a szolgáltatástípus, az állapot tulajdonságai és a terheléselosztás metrikái is meg vannak adva. További információ: [ServiceManifest elem](service-fabric-service-model-schema-elements.md#ServiceManifestElementServiceManifestTypeComplexType)
 
 ### <a name="servicetypes-element"></a>ServiceTypes Element
-Határozza meg, milyen szolgáltatástípusok támogatottak a CodePackage a jegyzékfájlban. Amikor egy szolgáltatás létrejön az említett szolgáltatás ellen, a jegyzékfájlban deklarált összes kódcsomagok a rendszer a belépési pontok futtatásával aktiválja. Szolgáltatástípusok deklarált a jegyzékfájl szintjén, és nem a kód szintű csomag. További információkért lásd: [ServiceTypes elem](service-fabric-service-model-schema-elements.md#ServiceTypesElementServiceAndServiceGroupTypesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
+Meghatározza, hogy a CodePackage milyen szolgáltatási típusokat támogat a jegyzékfájlban. Ha egy szolgáltatás egy ilyen típusú szolgáltatáshoz van létrehozva, az ebben a jegyzékfájlban deklarált összes kód-csomagot a rendszer a belépési pontok futtatásával aktiválja. A szolgáltatások típusai a jegyzékfájl szintjén vannak deklarálva, nem a kód csomag szintjén. További információ: [ServiceTypes elem](service-fabric-service-model-schema-elements.md#ServiceTypesElementServiceAndServiceGroupTypesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
 
 ### <a name="statelessservicetype-element"></a>StatelessServiceType Element
-Egy állapotmentes szolgáltatás típusának leírása. További információkért lásd: [StatelessServiceType elem](service-fabric-service-model-schema-elements.md#StatelessServiceTypeElementStatelessServiceTypeTypeComplexTypeDefinedInServiceAndServiceGroupTypesTypecomplexTypeDefinedInServiceTypesTypecomplexType)
+Az állapot nélküli szolgáltatástípus leírása. További információ: [StatelessServiceType elem](service-fabric-service-model-schema-elements.md#StatelessServiceTypeElementStatelessServiceTypeTypeComplexTypeDefinedInServiceAndServiceGroupTypesTypecomplexTypeDefinedInServiceTypesTypecomplexType)
 
 ### <a name="codepackage-element"></a>CodePackage elem
-Ismerteti egy kódcsomaghoz, amely támogatja a megadott szolgáltatási típusa. Amikor egy szolgáltatás létrejön az említett szolgáltatás ellen, a jegyzékfájlban deklarált összes kódcsomagok a rendszer a belépési pontok futtatásával aktiválja. Az amiatt végbemenő folyamatok várhatóan a támogatott szolgáltatástípusok regisztrálja a futási időben. Ha több kódcsomagok, az összes aktiválás, amikor a rendszer figyeli a nem a deklarált szolgáltatás típusok közül. További információkért lásd: [CodePackage elem](service-fabric-service-model-schema-elements.md#CodePackageElementCodePackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedCodePackageelement)
+Egy meghatározott szolgáltatástípus használatát támogató programkódot ismertet. Ha egy szolgáltatás egy ilyen típusú szolgáltatáshoz van létrehozva, az ebben a jegyzékfájlban deklarált összes kód-csomagot a rendszer a belépési pontok futtatásával aktiválja. Az eredményül kapott folyamatokat a rendszer futási időben regisztrálja a támogatott szolgáltatások típusait. Ha több kódrészlet is van, akkor azok mind aktiválva lesznek, amikor a rendszer a deklarált szolgáltatások bármelyikének valamelyik típusát keresi. További információ: [CodePackage elem](service-fabric-service-model-schema-elements.md#CodePackageElementCodePackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedCodePackageelement)
 
-### <a name="setupentrypoint-element"></a>SetupEntryPoint Element
-Egy emelt szintű belépési pont, amely alapértelmezés szerint a Service Fabric (általában a NETWORKSERVICE fiókot) bármely más belépési pont előtt azonos hitelesítő adatokkal futtatja. A belépési pont által megadott végrehajtható fájlt az általában a hosszú ideig futó szolgáltatás gazdagép. Egy külön szolgáltatásbeállítás belépési pontjának jelenléte elkerülhető, hogy nem kell futtatni a szolgáltatásgazda magas szintű jogosultságokkal rendelkező huzamosabb ideig. További információkért lásd: [SetupEntryPoint elem](service-fabric-service-model-schema-elements.md#SetupEntryPointElementanonymouscomplexTypeComplexTypeDefinedInCodePackageTypecomplexType)
+### <a name="setupentrypoint-element"></a>SetupEntryPoint elem
+A rendszerjogosultságú belépési pont alapértelmezés szerint ugyanazzal a hitelesítő adatokkal fut, mint a Service Fabric (jellemzően a NETWORKSERVICE fiók) a többi belépési pont előtt. A BelépésiPont által megadott végrehajtható fájl általában a hosszan futó szolgáltatás gazdagépe. Egy különálló telepítési belépési pont jelenléte elkerüli, hogy a szolgáltatási gazdagépet hosszú ideig magas jogosultságokkal futtassa. További információ: [SetupEntryPoint elem](service-fabric-service-model-schema-elements.md#SetupEntryPointElementanonymouscomplexTypeComplexTypeDefinedInCodePackageTypecomplexType)
 
 ### <a name="exehost-element"></a>ExeHost elem
- További információkért lásd: [ExeHost elem](service-fabric-service-model-schema-elements.md#ExeHostElementExeHostEntryPointTypeComplexTypeDefinedInSetupEntryPointelement)
+ További információ: [ExeHost elem](service-fabric-service-model-schema-elements.md#ExeHostElementExeHostEntryPointTypeComplexTypeDefinedInSetupEntryPointelement)
 
-### <a name="program-element"></a>Program elem
-A végrehajtható fájl nevét.  Ha például a "MySetup.bat" vagy "MyServiceHost.exe" lehetőséget. További információkért lásd: [Program elem](service-fabric-service-model-schema-elements.md#ProgramElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+### <a name="program-element"></a>Program eleme
+A végrehajtható fájl neve.  Például: "MySetup. bat" vagy "MyServiceHost. exe". További információ: [program elem](service-fabric-service-model-schema-elements.md#ProgramElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="arguments-element"></a>Argumentumok elem
- További információkért lásd: [argumentumok elem](service-fabric-service-model-schema-elements.md#ArgumentsElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+ További információ: argumentumok [elem](service-fabric-service-model-schema-elements.md#ArgumentsElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="workingfolder-element"></a>WorkingFolder Element
-A folyamat a kódcsomag a fürtcsomópontra, ahol az alkalmazás központi telepítése a munkakönyvtár. Három értékeket adhat meg: Munkahelyi (alapértelmezett), a CodePackage vagy a kódbázis. Kódbázis Megadja, hogy a munkakönyvtárban arra a könyvtárra, amelyben az EXE a kódcsomag van definiálva van-e beállítva. CodePackage beállítja a munkakönyvtárból abba a kódcsomag, függetlenül attól, hol van definiálva az EXE a kód adatcsomag-könyvtár gyökerében lehet. Munka a munkahelyi könyvtár a csomóponton létrehozott egyedi mappát állítja be.  Ez a mappa megegyezik a teljes alkalmazás-példány. Alapértelmezés szerint az összes folyamat, az alkalmazás a munkakönyvtárban értéke az alkalmazás munkahelyi mappa. Ez az, ahol a folyamatok adatokat írni. Adatok írása a kódcsomag vagy kódbázis nem ajánlott, mivel sikerült a különböző alkalmazáspéldányok között megosztott mappákat, és előfordulhat, hogy törli. További információkért lásd: [WorkingFolder elem](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+A folyamat munkakönyvtára azon a fürtcsomóponton, amelyben az alkalmazás telepítve van. Három értéket is megadhat: Működik (az alapértelmezett), a CodePackage vagy a kód. A kód azt adja meg, hogy a munkakönyvtár azon könyvtárra van beállítva, amelyben az EXE a Code csomagban van definiálva. A CodePackage úgy állítja be a munkakönyvtárat, hogy a programkód gyökerét adja meg, függetlenül attól, hogy az EXE hol van definiálva a Code Package könyvtárban. A Work könyvtár a csomóponton létrehozott egyedi mappára állítja be a munkahelyi könyvtárat.  Ez a mappa megegyezik a teljes alkalmazás példányával. Alapértelmezés szerint az alkalmazásban lévő összes folyamat munkakönyvtára az alkalmazás munkahelyi mappájára van beállítva. Ebben az esetben a folyamatok írhatják az adatbevitelt. A kód vagy a kód alapja nem ajánlott, mert ezek a mappák megoszthatók a különböző alkalmazás-példányok között, és előfordulhat, hogy törölve lettek. További információ: [WorkingFolder elem](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="consoleredirection-element"></a>ConsoleRedirection Element
 
 > [!WARNING]
-> Konzol-átirányítás használata az éles alkalmazásokban, ne csak a helyi fejlesztés és hibakeresés használja. Átirányítja a konzol kimenete az indítási szkript a kimeneti fájl látható az alkalmazás mappájában "log" nevű a fürtcsomópontra, ahol az alkalmazás üzembe helyezését és futtatását. További információkért lásd: [ConsoleRedirection elem](service-fabric-service-model-schema-elements.md#ConsoleRedirectionElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+> Ne használja a konzol átirányítását éles alkalmazásban, csak helyi fejlesztéshez és hibakereséshez használja. Átirányítja a konzol kimenetét az indítási parancsfájlból egy kimeneti fájlba az alkalmazás mappa "log" nevű mappájából, ahol az alkalmazás telepítve van és fut. További információ: [ConsoleRedirection elem](service-fabric-service-model-schema-elements.md#ConsoleRedirectionElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
-### <a name="entrypoint-element"></a>EntryPoint Element
-A belépési pont által megadott végrehajtható fájlt az általában a hosszú ideig futó szolgáltatás gazdagép. Egy külön szolgáltatásbeállítás belépési pontjának jelenléte elkerülhető, hogy nem kell futtatni a szolgáltatásgazda magas szintű jogosultságokkal rendelkező huzamosabb ideig. A belépési pont által megadott végrehajtható fájl SetupEntryPoint sikeres kilépés után futtatott. Az eredményül kapott folyamat figyel, és (kezdődő újra SetupEntryPoint) újraindul, ha valaha leáll vagy összeomlik. További információkért lásd: [BelépésiPont-elem](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType)
+### <a name="entrypoint-element"></a>BelépésiPont elem
+A BelépésiPont által megadott végrehajtható fájl általában a hosszan futó szolgáltatás gazdagépe. Egy különálló telepítési belépési pont jelenléte elkerüli, hogy a szolgáltatási gazdagépet hosszú ideig magas jogosultságokkal futtassa. A BelépésiPont által megadott végrehajtható fájl futtatása a SetupEntryPoint sikeres bezárása után történik. Az eredményül kapott folyamat figyelése és újraindítása (a SetupEntryPoint-vel kezdődően kezdődik), ha még leáll vagy összeomlik. További információ: [BelépésiPont elem](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType)
 
 ### <a name="exehost-element"></a>ExeHost elem
- További információkért lásd: [ExeHost elem](service-fabric-service-model-schema-elements.md#ExeHostElementanonymouscomplexTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
+ További információ: [ExeHost elem](service-fabric-service-model-schema-elements.md#ExeHostElementanonymouscomplexTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
-### <a name="configpackage-element"></a>ConfigPackage Element
-Deklarálja a mappát, a Name attribútum alatt PackageRoot Settings.xml fájlt tartalmaz. Ezt a fájlt a felhasználó által definiált, a kulcs-érték párt a beállításokat, amelyeket a folyamat futási időben vissza tudja olvasni szakaszokat tartalmazza. Frissítés alatt Ha csak a ConfigPackage verziója megváltozott, majd a futó folyamat nem indítja újra. Ehelyett egy visszahívást, amely a konfigurációs beállításai megváltoztak, így azok dinamikusan kell tölteni a folyamat értesítést küld. További információkért lásd: [ConfigPackage elem](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
+### <a name="configpackage-element"></a>ConfigPackage elem
+Deklarálja a Name attribútum által elnevezett mappát a Settings. xml fájlt tartalmazó PackageRoot alatt. Ez a fájl a felhasználó által definiált kulcs-érték párokat tartalmazó részeket tartalmazza, amelyeket a folyamat futási időben tud visszaolvasni. Ha a frissítés során csak a ConfigPackage verziója módosult, akkor a futó folyamat nem indul újra. Ehelyett a visszahívás értesíti a konfigurációs beállítások megváltozásának folyamatát, hogy azok dinamikusan is újratölthetők legyenek. További információ: [ConfigPackage elem](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
 ### <a name="resources-element"></a>Erőforrások elem
-Ezt a szolgáltatást, amely lefordított kód módosítása nélkül deklarálva, és módosítani, ha a szolgáltatás telepítése által használt erőforrások ismerteti. Ezekhez az erőforrásokhoz való hozzáférésének a rendszerbiztonsági tagok és a szabályzatok szakaszok az alkalmazás-jegyzékfájl. További információkért lásd: [erőforrások elem](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
+Ismerteti a szolgáltatás által használt erőforrásokat, amelyek a lefordított kód módosítása nélkül deklarálható, és a szolgáltatás telepítésekor módosulnak. Az ehhez az erőforrásokhoz való hozzáférést az alkalmazás jegyzékfájljának rendszerbiztonsági tagjai és házirendjei szakaszban találja. További információ: Resources [Element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
 
-### <a name="endpoints-element"></a>Végpontok elem
-Végpontok a szolgáltatás határozza meg. További információkért lásd: [végpontok elem](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
+### <a name="endpoints-element"></a>Végpontok eleme
+Meghatározza a szolgáltatáshoz tartozó végpontokat. További információ: végpontok [eleme](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
 
-### <a name="endpoint-element"></a>Végpont elem
-A végpont felülbírálása a szolgáltatásjegyzékben deklarálva. További információkért lásd: [végpont elem](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
+### <a name="endpoint-element"></a>Végpont eleme
+A felülbíráláshoz a szolgáltatás jegyzékfájljában deklarált végpont. További információ: [végpont elem](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
 
 
 
-## <a name="votingdata-service-manifest-elements"></a>VotingData service manifest elemek
-### <a name="servicemanifest-element"></a>ServiceManifest elemben
-Szolgáltatás típusa és verziója deklaratív ismerteti. A egymástól függetlenül frissíthető kód, a konfiguráció és az adatok csomagokat, amelyek együttesen egy service-csomag egy vagy több szolgáltatás típusainak listáját. Erőforrások, a diagnosztikai beállítások és a szolgáltatás típusa, egészségügyi tulajdonságok és terheléselosztási mérőszámokat, például a szolgáltatás metaadatai is meg van adva. További információkért lásd: [ServiceManifest elemben](service-fabric-service-model-schema-elements.md#ServiceManifestElementServiceManifestTypeComplexType)
+## <a name="votingdata-service-manifest-elements"></a>VotingData szolgáltatás jegyzékfájljának elemei
+### <a name="servicemanifest-element"></a>ServiceManifest elem
+A szolgáltatás típusának és verziójának deklaratív leírása. Felsorolja a különállóan frissíthető kód-, konfigurációs és adatcsomagokat, amelyek együtt alkotnak egy szervizcsomagot egy vagy több szolgáltatás típusának támogatásához. Az erőforrások, a diagnosztikai beállítások és a szolgáltatás metaadatainak, például a szolgáltatástípus, az állapot tulajdonságai és a terheléselosztás metrikái is meg vannak adva. További információ: [ServiceManifest elem](service-fabric-service-model-schema-elements.md#ServiceManifestElementServiceManifestTypeComplexType)
 
 ### <a name="servicetypes-element"></a>ServiceTypes Element
-Határozza meg, milyen szolgáltatástípusok támogatottak a CodePackage a jegyzékfájlban. Amikor egy szolgáltatás létrejön az említett szolgáltatás ellen, a jegyzékfájlban deklarált összes kódcsomagok a rendszer a belépési pontok futtatásával aktiválja. Szolgáltatástípusok deklarált a jegyzékfájl szintjén, és nem a kód szintű csomag. További információkért lásd: [ServiceTypes elem](service-fabric-service-model-schema-elements.md#ServiceTypesElementServiceAndServiceGroupTypesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
+Meghatározza, hogy a CodePackage milyen szolgáltatási típusokat támogat a jegyzékfájlban. Ha egy szolgáltatás egy ilyen típusú szolgáltatáshoz van létrehozva, az ebben a jegyzékfájlban deklarált összes kód-csomagot a rendszer a belépési pontok futtatásával aktiválja. A szolgáltatások típusai a jegyzékfájl szintjén vannak deklarálva, nem a kód csomag szintjén. További információ: [ServiceTypes elem](service-fabric-service-model-schema-elements.md#ServiceTypesElementServiceAndServiceGroupTypesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
 
 ### <a name="statefulservicetype-element"></a>StatefulServiceType Element
-Egy állapotalapú szolgáltatás típusának leírása. További információkért lásd: [StatefulServiceType elem](service-fabric-service-model-schema-elements.md#StatefulServiceTypeElementStatefulServiceTypeTypeComplexTypeDefinedInServiceAndServiceGroupTypesTypecomplexTypeDefinedInServiceTypesTypecomplexType)
+Egy állapot-nyilvántartó szolgáltatás típusát írja le. További információ: [StatefulServiceType elem](service-fabric-service-model-schema-elements.md#StatefulServiceTypeElementStatefulServiceTypeTypeComplexTypeDefinedInServiceAndServiceGroupTypesTypecomplexTypeDefinedInServiceTypesTypecomplexType)
 
 ### <a name="codepackage-element"></a>CodePackage elem
-Ismerteti egy kódcsomaghoz, amely támogatja a megadott szolgáltatási típusa. Amikor egy szolgáltatás létrejön az említett szolgáltatás ellen, a jegyzékfájlban deklarált összes kódcsomagok a rendszer a belépési pontok futtatásával aktiválja. Az amiatt végbemenő folyamatok várhatóan a támogatott szolgáltatástípusok regisztrálja a futási időben. Ha több kódcsomagok, az összes aktiválás, amikor a rendszer figyeli a nem a deklarált szolgáltatás típusok közül. További információkért lásd: [CodePackage elem](service-fabric-service-model-schema-elements.md#CodePackageElementCodePackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedCodePackageelement)
+Egy meghatározott szolgáltatástípus használatát támogató programkódot ismertet. Ha egy szolgáltatás egy ilyen típusú szolgáltatáshoz van létrehozva, az ebben a jegyzékfájlban deklarált összes kód-csomagot a rendszer a belépési pontok futtatásával aktiválja. Az eredményül kapott folyamatokat a rendszer futási időben regisztrálja a támogatott szolgáltatások típusait. Ha több kódrészlet is van, akkor azok mind aktiválva lesznek, amikor a rendszer a deklarált szolgáltatások bármelyikének valamelyik típusát keresi. További információ: [CodePackage elem](service-fabric-service-model-schema-elements.md#CodePackageElementCodePackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedCodePackageelement)
 
-### <a name="entrypoint-element"></a>EntryPoint Element
-A belépési pont által megadott végrehajtható fájlt az általában a hosszú ideig futó szolgáltatás gazdagép. Egy külön szolgáltatásbeállítás belépési pontjának jelenléte elkerülhető, hogy nem kell futtatni a szolgáltatásgazda magas szintű jogosultságokkal rendelkező huzamosabb ideig. A belépési pont által megadott végrehajtható fájl SetupEntryPoint sikeres kilépés után futtatott. Az eredményül kapott folyamat figyel, és (kezdődő újra SetupEntryPoint) újraindul, ha valaha leáll vagy összeomlik. További információkért lásd: [BelépésiPont-elem](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType)
+### <a name="entrypoint-element"></a>BelépésiPont elem
+A BelépésiPont által megadott végrehajtható fájl általában a hosszan futó szolgáltatás gazdagépe. Egy különálló telepítési belépési pont jelenléte elkerüli, hogy a szolgáltatási gazdagépet hosszú ideig magas jogosultságokkal futtassa. A BelépésiPont által megadott végrehajtható fájl futtatása a SetupEntryPoint sikeres bezárása után történik. Az eredményül kapott folyamat figyelése és újraindítása (a SetupEntryPoint-vel kezdődően kezdődik), ha még leáll vagy összeomlik. További információ: [BelépésiPont elem](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType)
 
 ### <a name="exehost-element"></a>ExeHost elem
- További információkért lásd: [ExeHost elem](service-fabric-service-model-schema-elements.md#ExeHostElementanonymouscomplexTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
+ További információ: [ExeHost elem](service-fabric-service-model-schema-elements.md#ExeHostElementanonymouscomplexTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
-### <a name="program-element"></a>Program elem
-A végrehajtható fájl nevét.  Ha például a "MySetup.bat" vagy "MyServiceHost.exe" lehetőséget. További információkért lásd: [Program elem](service-fabric-service-model-schema-elements.md#ProgramElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+### <a name="program-element"></a>Program eleme
+A végrehajtható fájl neve.  Például: "MySetup. bat" vagy "MyServiceHost. exe". További információ: [program elem](service-fabric-service-model-schema-elements.md#ProgramElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="workingfolder-element"></a>WorkingFolder Element
-A folyamat a kódcsomag a fürtcsomópontra, ahol az alkalmazás központi telepítése a munkakönyvtár. Három értékeket adhat meg: Munkahelyi (alapértelmezett), a CodePackage vagy a kódbázis. Kódbázis Megadja, hogy a munkakönyvtárban arra a könyvtárra, amelyben az EXE a kódcsomag van definiálva van-e beállítva. CodePackage beállítja a munkakönyvtárból abba a kódcsomag, függetlenül attól, hol van definiálva az EXE a kód adatcsomag-könyvtár gyökerében lehet. Munka a munkahelyi könyvtár a csomóponton létrehozott egyedi mappát állítja be.  Ez a mappa megegyezik a teljes alkalmazás-példány. Alapértelmezés szerint az összes folyamat, az alkalmazás a munkakönyvtárban értéke az alkalmazás munkahelyi mappa. Ez az, ahol a folyamatok adatokat írni. Adatok írása a kódcsomag vagy kódbázis nem ajánlott, mivel sikerült a különböző alkalmazáspéldányok között megosztott mappákat, és előfordulhat, hogy törli. További információkért lásd: [WorkingFolder elem](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+A folyamat munkakönyvtára azon a fürtcsomóponton, amelyben az alkalmazás telepítve van. Három értéket is megadhat: Működik (az alapértelmezett), a CodePackage vagy a kód. A kód azt adja meg, hogy a munkakönyvtár azon könyvtárra van beállítva, amelyben az EXE a Code csomagban van definiálva. A CodePackage úgy állítja be a munkakönyvtárat, hogy a programkód gyökerét adja meg, függetlenül attól, hogy az EXE hol van definiálva a Code Package könyvtárban. A Work könyvtár a csomóponton létrehozott egyedi mappára állítja be a munkahelyi könyvtárat.  Ez a mappa megegyezik a teljes alkalmazás példányával. Alapértelmezés szerint az alkalmazásban lévő összes folyamat munkakönyvtára az alkalmazás munkahelyi mappájára van beállítva. Ebben az esetben a folyamatok írhatják az adatbevitelt. A kód vagy a kód alapja nem ajánlott, mert ezek a mappák megoszthatók a különböző alkalmazás-példányok között, és előfordulhat, hogy törölve lettek. További információ: [WorkingFolder elem](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
-### <a name="configpackage-element"></a>ConfigPackage Element
-Deklarálja a mappát, a Name attribútum alatt PackageRoot Settings.xml fájlt tartalmaz. Ezt a fájlt a felhasználó által definiált, a kulcs-érték párt a beállításokat, amelyeket a folyamat futási időben vissza tudja olvasni szakaszokat tartalmazza. Frissítés alatt Ha csak a ConfigPackage verziója megváltozott, majd a futó folyamat nem indítja újra. Ehelyett egy visszahívást, amely a konfigurációs beállításai megváltoztak, így azok dinamikusan kell tölteni a folyamat értesítést küld. További információkért lásd: [ConfigPackage elem](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
+### <a name="configpackage-element"></a>ConfigPackage elem
+Deklarálja a Name attribútum által elnevezett mappát a Settings. xml fájlt tartalmazó PackageRoot alatt. Ez a fájl a felhasználó által definiált kulcs-érték párokat tartalmazó részeket tartalmazza, amelyeket a folyamat futási időben tud visszaolvasni. Ha a frissítés során csak a ConfigPackage verziója módosult, akkor a futó folyamat nem indul újra. Ehelyett a visszahívás értesíti a konfigurációs beállítások megváltozásának folyamatát, hogy azok dinamikusan is újratölthetők legyenek. További információ: [ConfigPackage elem](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
-### <a name="datapackage-element"></a>DataPackage elem
-Deklarálja a mappát, a Name attribútum PackageRoot, amely tartalmazza a futási időben a folyamat által használt statikus adatfájlok alatt. A Service Fabric exe, és a szolgáltatásjegyzékben szereplő adatok csomagok frissítésekor a gazdagép és a támogatási csomag megadott DLLHOSTs fog újrahasznosítása. További információkért lásd: [DataPackage elem](service-fabric-service-model-schema-elements.md#DataPackageElementDataPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedDataPackageelement)
+### <a name="datapackage-element"></a>Datapackage szakaszából elem
+A Name attribútum által elnevezett mappa deklarálása a PackageRoot alatt, amely a folyamat futási idején felhasználható statikus adatfájlokat tartalmazza. Service Fabric újrahasznosítja a gazdagépen és a támogatási csomagokban megadott összes EXEs és DLLHOSTs, ha a szolgáltatás jegyzékfájljában felsorolt adatcsomagok bármelyike frissül. További információ: [Datapackage szakaszából elem](service-fabric-service-model-schema-elements.md#DataPackageElementDataPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedDataPackageelement)
 
 ### <a name="resources-element"></a>Erőforrások elem
-Ezt a szolgáltatást, amely lefordított kód módosítása nélkül deklarálva, és módosítani, ha a szolgáltatás telepítése által használt erőforrások ismerteti. Ezekhez az erőforrásokhoz való hozzáférésének a rendszerbiztonsági tagok és a szabályzatok szakaszok az alkalmazás-jegyzékfájl. További információkért lásd: [erőforrások elem](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
+Ismerteti a szolgáltatás által használt erőforrásokat, amelyek a lefordított kód módosítása nélkül deklarálható, és a szolgáltatás telepítésekor módosulnak. Az ehhez az erőforrásokhoz való hozzáférést az alkalmazás jegyzékfájljának rendszerbiztonsági tagjai és házirendjei szakaszban találja. További információ: Resources [Element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
 
-### <a name="endpoints-element"></a>Végpontok elem
-Végpontok a szolgáltatás határozza meg. További információkért lásd: [végpontok elem](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
+### <a name="endpoints-element"></a>Végpontok eleme
+Meghatározza a szolgáltatáshoz tartozó végpontokat. További információ: végpontok [eleme](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
 
-### <a name="endpoint-element"></a>Végpont elem
-A végpont felülbírálása a szolgáltatásjegyzékben deklarálva. További információkért lásd: [végpont elem](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
+### <a name="endpoint-element"></a>Végpont eleme
+A felülbíráláshoz a szolgáltatás jegyzékfájljában deklarált végpont. További információ: [végpont elem](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
 

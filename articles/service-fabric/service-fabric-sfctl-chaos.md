@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric parancssori felület - sfctl-káosz |} A Microsoft Docs
-description: Ismerteti a Service Fabric parancssori felület sfctl-káosz parancsokat.
+title: Azure Service Fabric CLI – sfctl káosz | Microsoft Docs
+description: Ismerteti a Service Fabric CLI-sfctl Chaos-parancsait.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,136 +8,135 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: b584ec301f0f4841c8df8fbbafb410abf645c373
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 27178b2f26086bf693dc9cda342c66f7d47a34d7
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837351"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035095"
 ---
 # <a name="sfctl-chaos"></a>sfctl-káosz
-Indítása, leállítása és a chaos jelentés tesztelheti a szolgáltatást.
+Indítsa el, állítsa le és jelentse a Chaos test Service-t.
 
 ## <a name="subgroups"></a>Alcsoportok
 |Alcsoport|Leírás|
 | --- | --- |
-| [schedule](service-fabric-sfctl-chaos-schedule.md) | GET, és a chaos ütemezés beállításához. |
+| [schedule](service-fabric-sfctl-chaos-schedule.md) | A Chaos-ütemterv beolvasása és beállítása. |
 ## <a name="commands"></a>Parancsok
 
 |Parancs|Leírás|
 | --- | --- |
-| események | A Chaos események a folytatási token vagy időtartomány alapján a következő szegmens beolvasása. |
-| Get | A Chaos állapotának lekéréséhez. |
-| start | A Chaos elindítja a fürtben. |
-| állj | Leállítja a káosz, ha a fürt fut, és helyezze a Chaos ütemezés leállított állapotban. |
+| események | Beolvassa a Chaos-események következő szegmensét a folytatási jogkivonat vagy az időtartomány alapján. |
+| Get | A káosz állapotának beolvasása. |
+| start | Elindítja a káoszt a fürtben. |
+| állj | Leállítja a káoszt, ha fut a fürtben, és leállított állapotba helyezi a Chaos-ütemtervet. |
 
-## <a name="sfctl-chaos-events"></a>sfctl-káosz események
-A Chaos események a folytatási token vagy időtartomány alapján a következő szegmens beolvasása.
+## <a name="sfctl-chaos-events"></a>sfctl Chaos-események
+Beolvassa a Chaos-események következő szegmensét a folytatási jogkivonat vagy az időtartomány alapján.
 
-A következő szegmenst a Chaos események beolvasása, megadhatja a continuationtoken argumentumot használja. Egy számára új szegmensben káosz események kezdetét lekéréséhez megadhatja az időtartományt StartTimeUtc és EndTimeUtc. Az adott hívásban nem adható meg mind a continuationtoken argumentumot használja, és az időtartományt. Ha több mint 100 káosz események, a Chaos események több szegmensben, ha egy szegmens tartalmazza: 100-nál több káosz események, valamint hogy a következő szegmensben adja vissza, győződjön meg arról, az API-hoz a folytatási kód hívása.
-
-### <a name="arguments"></a>Argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --continuation-token | A folytatási token paraméter eredmények következő készletét beszerzésére használatos. Az eredményeket a rendszer nem férnek el egyetlen válasz egy folytatási tokent egy nem üres értékkel szerepel az API-válasz. Ha ez az érték átadott, a következő API-hívás az API-t az eredmények tovább készletet ad vissza. Ha nincsenek további eredmények, a folytatási token neobsahuje értéket. Ez a paraméter értéke nem lehet URL-kódolású. |
-| --end-time-utc | A Windows fájl jelölő az időtartomány, amelynek a Chaos jelentést generáló van befejezésének időpontja. Tekintse meg [DateTime.ToFileTimeUtc metódus](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) részleteiről. |
-| --max-results | A lapozható lekérdezés részeként visszaadandó eredmények maximális száma. Ez a paraméter határozza meg, visszaadott eredmények számának felső határnál. Az eredmények vissza is lehet kisebb, mint a megadott maximális eredményeket, ha azok nem férnek el megfelelően az üzenetek maximális mérete korlátozások az üzenetben a konfigurációban meghatározott. Ha ez a paraméter értéke nulla, vagy nincs megadva, a lapozható lekérdezés annyi eredmények, amelyek illeszkednek az visszaadott üzenet a lehető tartalmazza. |
-| --start-time-utc | A Windows fájl az időtartományt, amelyhez a Chaos jelentést, hogy jöjjön létre, kezdési idejét jelölő időpontja. Tekintse meg [DateTime.ToFileTimeUtc metódus](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) részleteiről. |
-| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
-
-### <a name="global-arguments"></a>Globális argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
-
-## <a name="sfctl-chaos-get"></a>sfctl-káosz get
-A Chaos állapotának lekéréséhez.
-
-A Chaos jelzi-e a Chaos fut, a Chaos paraméterek, a Chaos ütemezés állapota- és Káosztesztek futtatásához használt állapotának lekéréséhez.
+A Chaos-események következő szegmensének beszerzéséhez megadhatja a Continuationtoken argumentumot használja. A Chaos-események új szegmensének megkezdéséhez megadhatja az időtartományt a StartTimeUtc és a EndTimeUtc használatával. A Continuationtoken argumentumot használja és az időtartomány nem adható meg ugyanabban a hívásban. Több mint 100 Chaos-esemény esetén a rendszer több szegmensben adja vissza a káosz eseményeit, ahol egy szegmens nem tartalmaz több mint 100 Chaos-eseményt, és a következő szegmens beszerzéséhez meghívja ezt az API-t a folytatási jogkivonattal.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
+| --Folytatás-token | A folytatási jogkivonat paraméter az eredmények következő készletének beszerzésére szolgál. Egy nem üres értékkel rendelkező folytatási token szerepel az API válaszában, ha a rendszer eredményei nem illeszkednek egyetlen válaszhoz. Ha ezt az értéket átadja a következő API-hívásnak, az API az eredmények következő készletét adja vissza. Ha nincs további eredmény, akkor a folytatási jogkivonat nem tartalmaz értéket. A paraméter értéke nem lehet URL-kódolású. |
+| --end-time-utc | Az az időtartomány záró időpontját jelképező Windows-fájl, amelyre vonatkozóan létrejön egy Chaos-jelentés. A részletekért forduljon a [DateTime. ToFileTimeUtc metódushoz](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) . |
+| --max-results | A lapozható lekérdezések részeként visszaadott eredmények maximális száma. Ez a paraméter a visszaadott eredmények számának felső határát határozza meg. A visszaadott eredmények a megadott maximális eredményeknél kisebbek lehetnek, ha nem férnek hozzá az üzenethez, mint a konfigurációban definiált maximális üzenet méretére vonatkozó korlátozások. Ha a paraméter értéke nulla vagy nincs megadva, a lapozható lekérdezés a visszaadott üzenetben szereplő lehető legtöbb eredményt tartalmazza. |
+| --start-time-utc | A Windows-fájl azon időtartományának kezdési időpontját jelképező idő, amelynél a Chaos-jelentés készül. A részletekért forduljon a [DateTime. ToFileTimeUtc metódushoz](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) . |
+| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-chaos-start"></a>sfctl-káosz indítása
-A Chaos elindítja a fürtben.
+## <a name="sfctl-chaos-get"></a>sfctl Chaos Get
+A káosz állapotának beolvasása.
 
-A Chaos már nem fut a fürtben, ha először a Chaos az átadott a Chaos paraméterek. A Chaos már fut, ha a kérés érkezett, ha a hívás sikertelen lesz, a következő hibakóddal: FABRIC_E_CHAOS_ALREADY_RUNNING.
+A káosz állapotának lekérése, amely azt jelzi, hogy a káosz fut-e, a káosz futtatásához használt Chaos-paramétereket és a Chaos-ütemterv állapotát.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --app-type-health-policy-map | JSON kódolású a sérült alkalmazások maximális százalékos aránya a konkrét alkalmazástípusokat list. Mindegyik bejegyzés kulcsként az alkalmazás típusát, és a egy egész számot jelölő értékeli ki a megadott alkalmazástípus az alkalmazásokat, hogy MaxPercentUnhealthyApplications százalékos értékként adja meg. <br><br> Meghatározza egy leképezés sérült alkalmazások maximális százalékos aránya az adott alkalmazás esetében. Minden bejegyzés adja meg a kulcs az alkalmazás típusát és a egy egész számot jelölő értékeli ki a megadott alkalmazástípus az alkalmazásokat, hogy MaxPercentUnhealthyApplications százalékos értékként. Speciális alkalmazástípusokat ismerteti típusát állapotfigyelő szabályzat alkalmazástérkép használható fürt állapotának kiértékelése közben. Az alkalmazás-típust, a térkép tartalmaz a térképen, és nem a globális MaxPercentUnhealthyApplications a fürt állapotának házirendben meghatározott a megadott százalék alapján értékeli ki. Az alkalmazások a leképezésben megadott alkalmazástípusok nem számítanak a globális készlet alkalmazások ellen. Például kritikus fontosságú bizonyos típusú alkalmazások esetén a fürt rendszergazdája is adjon hozzá egy bejegyzést a térképen, hogy az alkalmazás típusához, és rendelje hozzá egy értéket 0 %-os (vagyis nem lekérés hibákat). Minden más alkalmazást a 20 %-os értékre van állítva, az alkalmazáspéldányok a több ezer kívül bizonyos hibák ugyan MaxPercentUnhealthyApplications kiértékelése. Típusát állapotfigyelő szabályzat alkalmazástérkép csak akkor, ha a fürtjegyzék lehetővé teszi, hogy az alkalmazás típusának állapotának kiértékelését a konfigurációs bejegyzés használatával HealthManager/EnableApplicationTypeHealthEvaluation szolgál. |
-| --chaos-target-filter | JSON kódolású szótár két karakterlánc típusú kulcsokkal. A két kulcs a NodeTypeInclusionList is és az ApplicationInclusionList is. Mindkét ezeket a kulcsokat értékek listáját. chaos_target_filter határozza meg az összes szűrőt a megcélzott káosz hibák, például csak az egyes csomóponttípusok hibás, vagy csak bizonyos alkalmazások hibás. <br><br> Chaos_target_filter nem használatos, ha a Chaos hibákat az összes fürt entitásokat. Chaos_target_filter használata esetén a Chaos hibákat csak azokat az entitásokat, amelyek megfelelnek a chaos_target_filter specifikációnak. A NodeTypeInclusionList is és az ApplicationInclusionList lehetővé teszik a union szemantikáját. Nem alkalmas a NodeTypeInclusionList is és az ApplicationInclusionList metszetét adja meg. Ha például nincs lehetőség adja meg a "hiba az alkalmazás csak akkor, ha be van kapcsolva a csomópont típusa." Miután egy entitás tartalmazza a NodeTypeInclusionList vagy ApplicationInclusionList, entitás nem zárható ki – egyidejűleg használatával. Akkor is, ha az ApplicationInclusionList applicationX nem jelenik meg, néhány káosz ismétléskor applicationX is hibás történik a kell egy olyan csomópontján, amely megtalálható a NodeTypeInclusionList nodeTypeY, mert. Ha üres a NodeTypeInclusionList is és az ApplicationInclusionList is, egy ArgumentException fordul elő. Minden típusú hibák (csomópont újraindítása, indítsa újra a kódcsomag, távolítsa el a replika, indítsa újra a replikát, helyezze át az elsődleges és másodlagos áthelyezése) a következő csomópont típusú csomópontok engedélyezve vannak. Ha a csomópont típusa (például NodeTypeX) nem jelenik meg a NodeTypeInclusionList majd soha nem lesznek engedélyezve NodeTypeX csomópontjait csomópont szolgáltatói hibák (például NodeRestart), de a kód csomag és a replika hibákat továbbra is engedélyezhető a NodeTypeX, ha az alkalmazás a ApplicationInclusionList történik a NodeTypeX csomópontján találhatók. Legfeljebb 100 csomópont típusnevek felvehetők a listában, ezt a számot növelheti, a konfiguráció frissítése a MaxNumberOfNodeTypesInChaosEntityFilter konfigurációhoz szükség. Ezekhez az alkalmazásokhoz, szolgáltatásokhoz tartozó összes replika replika hibák (újraindítás replika, távolítsa el a replika, áthelyezés elsődleges és áthelyezése másodlagos) káosz által kezelhető. A Chaos előfordulhat, hogy indítsa újra a egy kódcsomaghoz csak akkor, ha a kódcsomag replikák csak ezeket az alkalmazásokat futtatja. Ha egy alkalmazás nem jelenik meg ebben a listában, azt is továbbra is hibás néhány káosz ismétléskor, ha az alkalmazás egy olyan csomópontján, a csomópont típusa, amely megtalálható a NodeTypeInclusionList is említi. Azonban ha applicationX kötődik elhelyezési korlátozások és applicationX nodeTypeY hiányzik az ApplicationInclusionList és nodeTypeY hiányzik a NodeTypeInclusionList, majd applicationX soha nem hibás lesz. Legfeljebb 1000 alkalmazásnevek felvehetők a listában, ezt a számot növelheti, a konfiguráció frissítése a MaxNumberOfApplicationsInChaosEntityFilter konfigurációhoz szükség. |
-| – környezet | (String, string) JSON-kódolású térkép írja be a kulcs-érték párokat. A térkép segítségével rögzíti a Chaos Futtatás kapcsolatos információt. Nem lehet több mint 100 ilyen párok, és mindegyik sztring (kulcs vagy érték), legfeljebb 4095 karakter hosszú lehet. Ezen a térképen az alapszintű, a káosz, futtassa a környezetben a meghatározott Futtatás tárolását állítja be. |
-| --disable-move-replica-faults | Letiltja az áthelyezési elsődleges és másodlagos hibák áthelyezni. |
-| --max-cluster-stabilization | A maximális mennyisége, és megvárja, hogy a fürt összes entitást stabillá és kifogástalan állapotú.  Alapértelmezett\: 60. <br><br> Iterációban végrehajtja a káosz, és minden egyes ismétléskor elején fürt entitások állapotát ellenőrzi. Érvényesítése során Ha egy fürt entitás nem stabil és kifogástalan állapotú MaxClusterStabilizationTimeoutInSeconds, belül káosz állít elő egy érvényesítése sikertelen esemény. |
-| --max-concurrent-faults | Egyidejű hibák maximális száma száma az iteráció által kiváltott. Iterációban végrehajtja a káosz, és két egymást követő ismétlések egy érvényesítési fázist vannak elválasztva. Minél nagyobb az egyidejűséget, az agresszívabb injektálás hibák – hogy összetettebb sorozatát állapotot, és hibák elemzése révén. A javaslat, hogy kezdje a egy értéke 2 vagy 3 valamint körültekintéssel áthelyezése közben.  Alapértelmezett\: 1. |
-| --max-percent-unhealthy-apps | Során káosz fürt állapotának kiértékelésekor a maximálisan engedélyezett sérült alkalmazások százaléka előtt egy hibát jelez. <br><br> A maximálisan engedélyezett sérült alkalmazások százaléka előtt egy hibát jelez. Ahhoz, hogy 10 %-a nem megfelelő állapotú, hogy az alkalmazások, például ez az érték lenne 10. A százalékos eltűrt maximális százalékos aránya, amely előtt a fürt hibás lehet nem megfelelő alkalmazások jelöli. Ha a százalékos tiszteletben tartják, de legalább egy sérült alkalmazás, az egészségügyi figyelmeztetés minősül. Ez kiszámítása a nem megfelelő állapotú alkalmazások száma teljes száma a fürtben, kivéve az alkalmazásokat, amelyek szerepelnek a ApplicationTypeHealthPolicyMap alkalmazástípusok alkalmazáspéldányok keresztül. A számítási kerekít egy sikertelen kérelmek kis számú működését. Alapértelmezett százalékos értéke nulla. |
-| --max-percent-unhealthy-nodes | A Chaos során fürt állapotának kiértékelésekor a maximálisan engedélyezett sérült csomópontok aránya reporting a hiba előtt. <br><br> A maximálisan engedélyezett százalékos arányát sérült csomópontok előtt egy hibát jelez. Ahhoz, hogy sérült csomópontok 10 %-át, például ez az érték lenne 10. A százalékos eltűrt maximális százalékos aránya, amely előtt a fürt hibás lehet nem megfelelő állapotú csomópontokat jelöli. Ha a százalékos tiszteletben tartják, de legalább egy nem megfelelő állapotú csomóponti, az egészségügyi figyelmeztetés minősül. Százalékos kiszámítása a nem megfelelő állapotú csomópontok számát a fürtben található csomópontok száma keresztül. Felfelé kerekít a számítási csomópontok kis számú egy hiba elviselni. Alapértelmezett százalékos értéke nulla. Nagy fürtjein található egyes csomópontok minden esetben le- illetve felskálázni a javításához, ezért ezt a százalékos arányt, amely ugyan úgy kell konfigurálni. |
-| --time-to-run | Teljes időtartam (másodpercben), amelynek a Chaos automatikusan leállítása előtt fog futni. A maximális megengedett értéke 4 294 967 295 (System.UInt32.MaxValue).  Alapértelmezett\: 4294967295. |
-| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
-| --wait-time-between-faults | Várakozási idő (másodpercben) belül egyetlen iteráció egymást követő hibák között.  Alapértelmezett\: 20. <br><br> Minél nagyobb az értéke, annál kisebb az átfedő hibák és az egyszerűbb közötti állapot sorozatát értékre vált, amely a fürt halad át. A javaslat, hogy kezdje mozgatása 1 és 5 és a gyakorlatban körültekintő közötti értéket. |
-| --wait-time-between-iterations | Idő-elkülönülését (másodpercben) a Chaos két egymást követő ismétlésének. Minél nagyobb az érték, annál alacsonyabbra tartalék injektálási sebessége.  Alapértelmezett\: 30. |
-| --warning-as-error | Azt jelzi, hogy e figyelmeztetések az azonos súlyossági hibákként kell kezelni. |
+| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-chaos-stop"></a>sfctl-káosz stop
-Leállítja a káosz, ha a fürt fut, és helyezze a Chaos ütemezés leállított állapotban.
+## <a name="sfctl-chaos-start"></a>sfctl Chaos – első lépések
+Elindítja a káoszt a fürtben.
 
-A Chaos leállítja a végrehajtás alatt álló új hibát. Hajtsa végre, amíg azokat el teljes átvitel közben hibák továbbra is. Az aktuális káosz ütemezés egy leállított állapotba kerül. Ütemezés leállítását követően azt fog leállított állapotban marad, és új futtatásának káosz ütemezés káosz nem használhatók. Ütemezés folytatása érdekében állítson be egy új Chaos kimutatást.
+Ha a káosz még nem fut a fürtben, elindul a káosz az átadott Chaos-paraméterekkel. Ha a káosz már fut a híváskor, a hívás sikertelen lesz a hibakód FABRIC_E_CHAOS_ALREADY_RUNNING.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
+| --app-type-health-policy-map | JSON-kódolású lista, amely nem kifogástalan állapotú alkalmazásokat biztosít adott típusú alkalmazásokhoz. Az egyes bejegyzések kulcsként határozzák meg az alkalmazás típusának nevét és értékként egy egész számot, amely a megadott MaxPercentUnhealthyApplications százalékos arányát jelöli. <br><br> Egy olyan térképet határoz meg, amely a nem kifogástalan állapotú alkalmazásokat egy adott alkalmazás típusára vonatkozóan határozza meg. Minden egyes bejegyzés az alkalmazás típusának és értékének a kulcsát adja meg, amely a megadott MaxPercentUnhealthyApplications százalékos arányát jelöli. A fürt állapotának kiértékelése során a speciális alkalmazások típusának leírására használhatja az állapotfigyelő állapotra vonatkozó házirend-hozzárendelést. A térképen szereplő alkalmazások típusai a térképen megadott százalékos arányban vannak kiértékelve, és nem a fürt állapot-házirendjében definiált globális MaxPercentUnhealthyApplications. A térképen megadott alkalmazások típusai nem számítanak bele az alkalmazások globális készletéből. Ha például egy típus egyes alkalmazásai kritikus fontosságúak, akkor a fürt rendszergazdája hozzáadhat egy bejegyzést az adott alkalmazáshoz tartozó térképhez, és hozzárendelheti a 0%-os értéket (azaz nem tűri el a hibákat). Az összes többi alkalmazás 20%-ra kiértékelhető úgy, hogy a MaxPercentUnhealthyApplications több ezer alkalmazás-példányon is eltűrik. Az alkalmazás típusának állapotára vonatkozó házirend-leképezés csak akkor használható, ha a fürt jegyzékfájlja lehetővé teszi az alkalmazás típus állapotának kiértékelését a HealthManager/EnableApplicationTypeHealthEvaluation konfigurációs bejegyzésének használatával. |
+| --chaos-target-filter | JSON-kódolású szótár két karakterlánc típusú kulccsal. A két kulcs a Chaostargetfilter és a ApplicationInclusionList. Mindkét kulcs értékei a sztringek listája. a chaos_target_filter meghatározza az összes szűrőt a megcélozott Káoszi hibákhoz, például csak bizonyos csomópont-típusokat, vagy csak bizonyos alkalmazások meghibásodását. <br><br> Ha a chaos_target_filter nincs használatban, a Chaos hibát jelzett a fürt összes entitása esetében. Ha chaos_target_filter használ, a Chaos csak azokat az entitásokat használja, amelyek megfelelnek a chaos_target_filter specifikációjának. A Chaostargetfilter és a ApplicationInclusionList csak a Union szemantikai használatát teszi lehetővé. Nem lehet megadni a Chaostargetfilter és a ApplicationInclusionList metszetét. Például nem adható meg "az alkalmazás hibája csak akkor, ha az adott csomópont típusa van." Ha egy entitást a Chaostargetfilter vagy a ApplicationInclusionList tartalmaz, az entitás nem zárható ki a ChaosTargetFilter használatával. Ha a applicationX nem jelenik meg a ApplicationInclusionList-ben, néhány Chaos iterációs applicationX hibát okozhat, mert az a Chaostargetfilter részét képező nodeTypeY csomópontján történik. Ha a Chaostargetfilter és a ApplicationInclusionList egyaránt üres, akkor egy ArgumentException kerül. A különböző típusú hibák (csomópont újraindítása, kód újraindítása, replika eltávolítása, replika újraindítása, elsődleges áthelyezése és másodlagos áthelyezés) engedélyezve vannak ezen csomópont-típusok csomópontjain. Ha a csomópont típusa (Say NodeTypeX) nem jelenik meg a Chaostargetfilter, akkor a csomópont-szintű hibák (például a NodeRestart) soha nem lesznek engedélyezve a NodeTypeX csomópontjain, de a kód-és replika-hibák továbbra is engedélyezhetők a NodeTypeX, ha a A ApplicationInclusionList a NodeTypeX csomópontján történik. Ezen a listán legfeljebb 100 csomópont típusú név szerepelhet, így a szám növeléséhez a MaxNumberOfNodeTypesInChaosEntityFilter konfigurálásához szükség van egy konfigurációs frissítésre. Az alkalmazások szolgáltatásaihoz tartozó összes replika a replika hibáira (a replika újraindítására, a replika eltávolítására, az elsődleges áthelyezésre és a másodlagos áthelyezésre) irányul. A káosz csak akkor indítható el, ha a kód csak az alkalmazások replikáit tárolja. Ha egy alkalmazás nem jelenik meg ezen a listán, akkor is hibás lehet az egyes Chaos-iterációkban, ha az alkalmazás egy csomópont típusú csomóponton végződik, amely a Chaostargetfilter része. Ha azonban a applicationX az elhelyezési korlátozásokon keresztül nodeTypeY, és a applicationX hiányzik a ApplicationInclusionList, és a nodeTypeY hiányzik a chaostargetfilter, akkor a applicationX soha nem fog hibát okozni. Ebben a listában legfeljebb 1000 alkalmazás neve szerepelhet a MaxNumberOfApplicationsInChaosEntityFilter-konfigurációhoz szükséges konfigurációk frissítéséhez. |
+| --környezet | A JSON kódolású leképezése (karakterlánc, karakterlánc) típusú kulcs-érték párok. A Térkép használatával rögzítheti a káosz futtatásával kapcsolatos információkat. Nem lehet több mint 100 ilyen pár, és mindegyik sztring (kulcs vagy érték) legfeljebb 4095 karakter hosszúságú lehet. Ezt a leképezést a Chaos Run indítója állítja be, hogy opcionálisan tárolja a környezetet az adott futtatásról. |
+| --disable-move-replica-faults | Letiltja az elsődleges áthelyezést és a másodlagos hibák áthelyezését. |
+| --Max-cluster-stabilizáció | Az a maximális időtartam, ameddig az összes fürt entitása stabil és kifogástalan lesz.  Alapértelmezett\: 60. <br><br> A Chaos iterációkban hajtja végre az egyes iterációk állapotát, és ellenőrzi a fürt entitásait. Az érvényesítés során, ha egy fürtcsomópont nem stabil és kifogástalan állapotú a MaxClusterStabilizationTimeoutInSeconds belül, a Chaos egy érvényesítési sikertelen eseményt hoz létre. |
+| --max-concurrent-faults | Az egyidejű hibák maximális száma iteráció alapján. A káosz ismétléseket hajt végre, és két egymást követő iterációt egy ellenőrzési fázis választja el egymástól. Minél nagyobb a párhuzamosság, annál agresszívebb a hibák injekciója – ami összetettebb adatsorozatokat eredményez a hibák kijavítása érdekében. Javasoljuk, hogy a 2. vagy 3. értékkel kezdjen, és körültekintően járjon el.  Alapértelmezett\: 1. |
+| --max-percent-unhealthy-apps | A fürt állapotának a káoszban való kiértékelése során a hibák bejelentése előtt a nem kifogástalan állapotú alkalmazások maximálisan megengedett százalékos aránya. <br><br> A nem kifogástalan állapotú alkalmazások maximálisan megengedett százaléka a hiba jelentése előtt. Ha például engedélyezni szeretné, hogy az alkalmazások 10%-a nem kifogástalan állapotú legyen, ez az érték 10. A százalékos érték azt jelenti, hogy az alkalmazások maximálisan tolerálható hányada sérült, mielőtt a fürt hibásnak minősül. Ha a százalékos arányt figyelembe veszi, de legalább egy nem kifogástalan állapotú alkalmazás van, az állapot figyelmeztetésként lesz kiértékelve. Ezt úgy számítja ki, hogy a nem kifogástalan állapotú alkalmazásokat a fürtben lévő összes alkalmazás példánya fölé osztja, kivéve azokat az alkalmazásokat, amelyek nem szerepelnek a ApplicationTypeHealthPolicyMap. A számítások egy kis mennyiségű alkalmazás meghibásodását okozják. Az alapértelmezett százalék nulla. |
+| --max-percent-unhealthy-nodes | A fürt állapotának a káoszban való kiértékelése során a hiba bejelentése előtt a nem kifogástalan állapotú csomópontok maximálisan megengedett százalékos aránya. <br><br> A nem kifogástalan állapotú csomópontok megengedett százalékos aránya a hiba jelentése előtt. Ha például engedélyezni szeretné, hogy a csomópontok 10%-a nem kifogástalan állapotú legyen, ez az érték 10. A százalékos érték a csomópontok maximálisan megengedett százalékos arányát jelöli, mielőtt a fürt hibásnak minősül. Ha a százalékos arányt figyelembe veszi, de legalább egy nem megfelelő állapotú csomópont van, az állapot figyelmeztetésként lesz kiértékelve. A százalékos arányt úgy számítjuk ki, hogy a nem kifogástalan állapotú csomópontok számát a fürtben lévő csomópontok teljes száma fölé osztja. A számítások egy kis számú csomóponton fellépő meghibásodást okoznak. Az alapértelmezett százalék nulla. A nagyméretű fürtökben egyes csomópontok mindig le-vagy kimaradnak a javításokhoz, ezért ezt a százalékos arányt úgy kell konfigurálni, hogy eltűri ezt. |
+| --time-to-run | Teljes idő (másodpercben), ameddig a rendszer a káoszt az automatikus leállítás előtt futtatja. A maximálisan megengedett érték 4 294 967 295 (System. UInt32. MaxValue).  Alapértelmezett\: 4294967295. |
+| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
+| --wait-time-between-faults | Az egymást követő hibák közötti várakozási idő (másodpercben) egyetlen iteráción belül.  Alapértelmezett\: érték: 20. <br><br> Minél nagyobb az érték, annál kisebb a hibák közötti átfedés, és egyszerűbb a fürt által áthaladó állapot-váltások folyamata. Az ajánlásnak 1 és 5 közötti értékkel kell kezdődnie, és körültekintően kell eljárnia. |
+| --wait-time-between-iterations | A káosz két egymást követő ismétlése között eltelt idő (másodpercben). Minél nagyobb az érték, annál alacsonyabb a hibák befecskendezési sebessége.  Alapértelmezett\: érték: 30. |
+| --warning-as-error | Azt jelzi, hogy a figyelmeztetések a hibákkal azonos súlyossággal vannak-e kezelve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+
+## <a name="sfctl-chaos-stop"></a>sfctl káosz leállítása
+Leállítja a káoszt, ha fut a fürtben, és leállított állapotba helyezi a Chaos-ütemtervet.
+
+Leállítja a káoszt új hibák végrehajtásával. A repülés közbeni hibák a befejezésig továbbra is végre lesznek hajtva. A jelenlegi Chaos-ütemterv leállított állapotba kerül. Az ütemterv leállítását követően a leállított állapotban marad, és nem használható a Chaos új futtatásainak megadására. Az ütemezés folytatásához meg kell adni egy új Chaos-ütemezést.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
 ## <a name="next-steps"></a>További lépések
-- [A telepítő](service-fabric-cli.md) a Service Fabric parancssori felület.
-- Ismerje meg, hogyan használható a Service Fabric parancssori felület használatával a [-szkript minták](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Állítsa](service-fabric-cli.md) be a Service Fabric CLI-t.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: barclayn
-ms.openlocfilehash: c91c8de35dcf3f1bc8fd5f41bd2356336c3fe450
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 89acc86526d1017e97efbf1812e02cfb6a240953
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927969"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035421"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-beli adatok titkosítása – Rest
 
@@ -298,7 +298,7 @@ A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always enc
 | Event Grid                       | Igen                | -                  | -                  |
 | API Management                   | Igen                | -                  | -                  |
 | **IoT szolgáltatások**                 |                    |                    |                    |
-| IoT Hub                          | -                  | -                  | Igen                |
+| IoT Hub                          | Igen                | -                  | Igen                |
 | **Felügyelet és irányítás**    |                    |                    |                    |
 | Azure Site Recovery              | Igen                | Igen, RSA 2048-bit  | Igen                |
 | **Media**                        |                    |                    |                    |

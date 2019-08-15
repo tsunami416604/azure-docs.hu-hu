@@ -1,6 +1,6 @@
 ---
-title: Twitter-hitelesítés – az Azure App Service konfigurálása
-description: Ismerje meg, hogyan konfigurálhatja az App Services-alkalmazás Twitter-hitelesítést.
+title: Twitter-hitelesítés konfigurálása – Azure App Service
+description: Megtudhatja, hogyan konfigurálhatja a Twitter-hitelesítést a App Services alkalmazáshoz.
 services: app-service
 documentationcenter: ''
 author: mattchenderson
@@ -15,45 +15,49 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 51a2ac93fd2d863855c820ba147418c5397c2a89
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 590be42d5ba96133739d511b5a0a6b3e5a5634ff
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60851541"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033623"
 ---
-# <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>Twitter-bejelentkezés használatához App Service-alkalmazás konfigurálása
+# <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>A App Service alkalmazás konfigurálása a Twitter-bejelentkezés használatára
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Ez a témakör bemutatja, hogyan konfigurálhatja az Azure App Service egy hitelesítésszolgáltató Twitter használandó.
+Ez a témakör bemutatja, hogyan konfigurálhatja a Azure App Servicet a Twitter hitelesítési szolgáltatóként való használatához.
 
-Ebben a témakörben az eljárás végrehajtásához egy hitelesített e-mail címét és telefonszámát számot tartalmazó Twitter-fiók kell rendelkeznie. Új Twitter-fiók létrehozásához lépjen a <a href="https://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a>.
+A jelen témakörben ismertetett eljárás végrehajtásához olyan Twitter-fiókkal kell rendelkeznie, amely ellenőrzött e-mail-címmel és telefonszámmal rendelkezik. Új Twitter-fiók létrehozásához nyissa meg a <a href="https://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">Twitter.com</a>.
 
-## <a name="register"> </a>Az alkalmazás regisztrálása a Twitterrel
-1. Jelentkezzen be a [Azure Portal], és keresse meg az alkalmazást. Másolás a **URL-cím**. A Twitter-alkalmazás konfigurálása akkor fogja használni.
-2. Keresse meg a [Twitter-fejlesztők számára] webhelyét, jelentkezzen be a Twitter-fiókja hitelesítő adataival, majd kattintson a **új alkalmazás létrehozása**.
-3. Írja be a **neve** és a egy **leírás** az új alkalmazás. Illessze be az alkalmazás **URL-cím** számára a **webhely** értéket. Ezután a **visszahívási URL-Címének**, illessze be a **visszahívási URL-Címének** korábban vágólapra másolt. Ez az a Mobile App gateway hozzáfűzi az az elérési út */.auth/login/twitter/callback*. Például: `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Győződjön meg arról, hogy használja a HTTPS-sémát.
-4. A lap alsó olvassa el és fogadja el a feltételeket. Kattintson a **Twitter-alkalmazás létrehozása**. Ez regisztrálja az alkalmazás megjelenik az alkalmazás részletei.
-5. Kattintson a **beállítások** lapon jelölje **telepítésének engedélyezése az alkalmazás segítségével jelentkezzen be Twitter**, majd kattintson a **beállítások**.
-6. Válassza ki a **kulcsok és hozzáférési tokenek** fülre. Jegyezze fel a értékeit **fogyasztói kulcs (API-kulcs)** és **fogyasztói titkos kulcs (API titkos kódot)** .
+## <a name="register"> </a>Alkalmazás regisztrálása a Twitteren
+1. Jelentkezzen be a [Azure Portal], és navigáljon az alkalmazáshoz. Másolja az **URL-címet**. Ezt fogja használni a Twitter-alkalmazás konfigurálásához.
+2. Navigáljon a [Twitter-fejlesztők] webhelyre, jelentkezzen be a Twitter-fiókja hitelesítő adataival, és kattintson az **új alkalmazás létrehozása**elemre.
+3. Írja be az új alkalmazás **nevét** és **leírását** . Illessze be az alkalmazás **URL-címét** a **webhely** értékéhez. Ezután a visszahívási **URL-címhez**illessze be a korábban átmásolt visszahívási **URL-címet** . Ez a Mobile App Gateway a */.auth/login/Twitter/callback*elérési úttal van hozzáfűzve. Például: `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Győződjön meg arról, hogy a HTTPS-sémát használja.
+4. A lap alján olvassa el és fogadja el a feltételeket. Ezután kattintson **a Twitter-alkalmazás létrehozása**elemre. Ez regisztrálja az alkalmazást, és megjeleníti az alkalmazás részleteit.
+5. Kattintson a **Beállítások** lapra, jelölje be az **alkalmazás használatának engedélyezése**a Twitterrel való bejelentkezéshez lehetőséget, majd kattintson a **beállítások frissítése**elemre.
+6. Válassza a **kulcsok és hozzáférési tokenek** fület. Jegyezze fel a **fogyasztói kulcs (API-kulcs)** és a **fogyasztói titok (API-titok)** értékeit.
    
    > [!NOTE]
-   > A fogyasztói titkos kulcs egy fontos biztonsági hitelesítő adat. Ne a titkos kulcs bárkivel megoszthatja vagy osztja el az alkalmazást.
+   > A fogyasztói titok egy fontos biztonsági hitelesítő adat. Ezt a titkos kódot Ne ossza meg senkivel, vagy ossza meg az alkalmazásával.
    > 
    > 
 
 ## <a name="secrets"> </a>Twitter-információk hozzáadása az alkalmazáshoz
-1. Térjen vissza a [Azure Portal], keresse meg az alkalmazást. Kattintson a **beállítások**, majd **hitelesítési / engedélyezési**.
-2. Ha a hitelesítés / engedélyezés funkció nincs engedélyezve, kapcsolja be a kapcsolót **a**.
-3. Kattintson a **Twitter**. Illessze be az alkalmazás azonosítója és az alkalmazás titkos kulcsát a értékek, amelyek korábban beszerzett. Ezután kattintson az **OK** gombra.
+1. Térjen vissza a [Azure Portal], navigáljon az alkalmazáshoz. Kattintson a **Beállítások**, majd a **hitelesítés/engedélyezés**elemre.
+2. Ha a hitelesítés/engedélyezés funkció nincs engedélyezve, kapcsolja be a kapcsolót **a**következőre:.
+3. Kattintson a **Twitter**elemre. Illessze be az alkalmazás AZONOSÍTÓját és a korábban beszerzett alkalmazás titkos értékeit. Ezután kattintson az **OK** gombra.
    
    ![][1]
    
-   Alapértelmezés szerint az App Service-ben hitelesítést biztosít, de a webhely tartalmát és API-k nem korlátozza a hitelesített hozzáférést. Felhasználók engedélyeznie kell az alkalmazás kódjában.
-4. (Nem kötelező) A hozzáférés korlátozása csak a Twitter által hitelesített felhasználók a helyet, állítsa be **elvégzendő művelet, ha a kérés nincs hitelesítve** való **Twitter**. Ehhez az szükséges, hogy minden kérelmet hitelesíteni, és az összes nem hitelesített kérelmek Twitter-rendszer átirányítja a hitelesítéshez.
+   Alapértelmezés szerint a App Service hitelesítést biztosít, de nem korlátozza a webhely tartalmához és API-khoz való jogosult hozzáférést. Engedélyezni kell a felhasználókat az alkalmazás kódjában.
+4. Választható Ha a webhelyhez való hozzáférést csak a Twitter által hitelesített felhasználókra szeretné korlátozni, állítsa be a **végrehajtandó műveletet, ha a kérés nincs hitelesítve** a **Twitteren**. Ehhez minden kérelmet hitelesíteni kell, és az összes nem hitelesített kérést a rendszer átirányítja a Twitterre a hitelesítéshez.
+
+> [!CAUTION]
+> A hozzáférés ezen a módon való korlátozása az alkalmazás összes hívására vonatkozik, ami nem kívánatos, ha az alkalmazások nyilvánosan elérhető kezdőlapot szeretnének, például sok egyoldalas alkalmazásban. Ilyen alkalmazások esetén **engedélyezze a névtelen kérelmeket (nincs művelet)** előnyben részesített, ha az alkalmazás manuálisan indítja el a bejelentkezést, az [itt](overview-authentication-authorization.md#authentication-flow)leírtak szerint.
+
 5. Kattintson a **Save** (Mentés) gombra.
 
-Most már készen áll a Twitteren az alkalmazásban hitelesítéshez használandó.
+Most már készen áll a Twitter használatára a hitelesítéshez az alkalmazásban.
 
 ## <a name="related-content"> </a>Related Content
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
@@ -65,6 +69,6 @@ Most már készen áll a Twitteren az alkalmazásban hitelesítéshez használan
 
 <!-- URLs. -->
 
-[Twitter-fejlesztők számára]: https://go.microsoft.com/fwlink/p/?LinkId=268300
+[Twitter-fejlesztők]: https://go.microsoft.com/fwlink/p/?LinkId=268300
 [Azure Portal]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md

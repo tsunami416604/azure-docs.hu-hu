@@ -10,25 +10,25 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 4a0aab2ca2f0bbcee07f09124e68c3623d16004d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6949f46345a5520ec3e09508b6d81994f9a7deb5
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848147"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036209"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Modell üzembe helyezése Azure Kubernetes Service-fürtön
 
 Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként az Azure Kubernetes szolgáltatásban (ak) a Azure Machine Learning szolgáltatás használatával. Az Azure Kubernetes szolgáltatás kiválóan alkalmas a nagy léptékű éles környezetekben való üzembe helyezésre. Ha a következő lehetőségek közül egyet vagy többet szeretne használni, használja az Azure Kubernetes szolgáltatást:
 
-- __Gyors válaszidő__ .
+- __Gyors válaszidő__.
 - A telepített szolgáltatás automatikus skálázása.
 - __Hardveres gyorsítási__ lehetőségek, például GPU és mező – programozható Gate-tömbök (FPGA).
 
 > [!IMPORTANT]
 > A fürttípus skálázás nem érhető el a Azure Machine Learning SDK-n keresztül. Az AK-fürtök csomópontjainak méretezésével kapcsolatos további információkért lásd: a csomópontok számának skálázása [egy AK-fürtben](../../aks/scale-cluster.md).
 
-Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a munkaterülethez __csatlakoztatott__ AK-fürtbe helyezi üzembe a szolgáltatást. Az AK-fürtök kétféleképpen csatlakoztathatók a munkaterülethez:
+Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a munkaterülethez __csatlakoztatott__AK-fürtbe helyezi üzembe a szolgáltatást. Az AK-fürtök kétféleképpen csatlakoztathatók a munkaterülethez:
 
 * Hozza létre az AK-fürtöt a Azure Machine Learning Service SDK, a Machine Learning parancssori felület vagy a Azure Portal használatával. Ez a folyamat automatikusan csatlakoztatja a fürtöt a munkaterülethez.
 * Csatoljon egy meglévő AK-fürtöt a Azure Machine Learning szolgáltatás munkaterületéhez. A fürtök csatlakoztathatók a Azure Machine Learning Service SDK-val, Machine Learning parancssori felülettel vagy a Azure Portalsal.
@@ -60,7 +60,7 @@ Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a munkaterületh
 
 Egy AK-fürt létrehozása vagy csatolása egy egyszeri folyamat a munkaterülethez. Újból felhasználhatja a fürt több telepítéshez. Ha törli a fürtöt vagy az azt tartalmazó erőforráscsoportot, létre kell hoznia egy új fürtöt, amikor legközelebb telepítenie kell. A munkaterülethez több AK-alapú fürtök is tartozhatnak.
 
-Ha AK-fürtöt kíván létrehozni a __fejlesztéshez__ , az __ellenőrzéshez__ és a __teszteléshez__ az éles környezet helyett, megadhatja a __fürt célját__ a __fejlesztői teszthez__ .
+Ha AK-fürtöt kíván létrehozni a __fejlesztéshez__, az __ellenőrzéshez__és a __teszteléshez__ az éles környezet helyett, megadhatja a __fürt célját__ a __fejlesztői teszthez__.
 
 > [!WARNING]
 > Ha be van `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`állítva, a létrehozott fürt nem alkalmas a termelési szint forgalmára, és növelheti a következtetési időt. A fejlesztési és tesztelési fürtök szintén nem garantálják a hibatűrést. Legalább 2 virtuális processzort ajánlunk fejlesztési és tesztelési fürtökhöz.
@@ -177,7 +177,7 @@ További információ: az [ml computetarget Attach AK](https://docs.microsoft.co
 
 ## <a name="deploy-to-aks"></a>Üzembe helyezés az AKS-ben
 
-Ha modellt szeretne üzembe helyezni az Azure Kubernetes szolgáltatásban, hozzon létre egy __központi telepítési konfigurációt__ , amely leírja a szükséges számítási erőforrásokat. Például a magok és a memória száma. Szüksége lesz egy __következtetésre__ is, amely leírja a modell és a webszolgáltatás üzemeltetéséhez szükséges környezetet. A következtetések konfigurációjának létrehozásáról további információt a [modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)című témakörben talál.
+Ha modellt szeretne üzembe helyezni az Azure Kubernetes szolgáltatásban, hozzon létre egy __központi telepítési konfigurációt__ , amely leírja a szükséges számítási erőforrásokat. Például a magok és a memória száma. Szüksége lesz egy __következtetésre__is, amely leírja a modell és a webszolgáltatás üzemeltetéséhez szükséges környezetet. A következtetések konfigurációjának létrehozásáról további információt a [modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)című témakörben talál.
 
 ### <a name="using-the-sdk"></a>Az SDK használata
 
@@ -212,12 +212,56 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 További információ: az [ml Model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) Reference. 
 
-## <a name="using-vs-code"></a>A VS Code használata
+### <a name="using-vs-code"></a>A VS Code használata
 
 A VS Code használatával kapcsolatos információkért lásd: [üzembe helyezés az AK-n keresztül a vs Code bővítménnyel](how-to-vscode-tools.md#deploy-and-manage-models).
 
 > [!IMPORTANT] 
 > A VS code-on keresztül történő üzembe helyezéshez az AK-fürt létrehozása vagy a munkaterülethez való csatolása szükséges.
+
+## <a name="web-service-authentication"></a>Webszolgáltatás-hitelesítés
+
+Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a __kulcs alapú__ hitelesítés alapértelmezés szerint engedélyezve van. Engedélyezheti a __jogkivonat__ -hitelesítést is. A jogkivonat-hitelesítés megköveteli, hogy az ügyfelek egy Azure Active Directory fiókot használjanak a hitelesítési jogkivonat igényléséhez, amely a központilag telepített szolgáltatásra irányuló kérések elvégzésére szolgál.
+
+A hitelesítés letiltásához állítsa `auth_enabled=False` be a paramétert a központi telepítési konfiguráció létrehozásakor. Az alábbi példa az SDK használatával letiltja a hitelesítést:
+
+```python
+deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, auth_enabled=False)
+```
+
+Az ügyfélalkalmazások általi hitelesítéssel kapcsolatos információkért tekintse meg a webszolgáltatásként [üzembe helyezett Azure Machine learning modell](how-to-consume-web-service.md)felhasználását ismertető témakört.
+
+### <a name="authentication-with-keys"></a>Hitelesítés kulcsokkal
+
+Ha a kulcsos hitelesítés engedélyezve van, a metódussal kérheti le az `get_keys` elsődleges és a másodlagos hitelesítési kulcsot:
+
+```python
+primary, secondary = service.get_keys()
+print(primary)
+```
+
+> [!IMPORTANT]
+> Ha újra kell létrehoznia egy kulcsot, használja a következőt[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
+
+### <a name="authentication-with-tokens"></a>Hitelesítés jogkivonatokkal
+
+A jogkivonat-hitelesítés engedélyezéséhez állítsa `token_auth_enabled=True` be a paramétert egy központi telepítés létrehozásakor vagy frissítésekor. Az alábbi példa lehetővé teszi a jogkivonat-hitelesítés használatát az SDK-val:
+
+```python
+deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, token_auth_enabled=True)
+```
+
+Ha engedélyezve van a jogkivonat-hitelesítés, a `get_token` metódus használatával kérhet le egy JWT-tokent és a jogkivonat lejárati idejét:
+
+```python
+token, refresh_by = service.get_token()
+print(token)
+```
+
+> [!IMPORTANT]
+> A jogkivonat `refresh_by` időpontját követően új jogkivonatot kell kérnie.
+>
+> A Microsoft nyomatékosan javasolja, hogy a Azure Machine Learning munkaterületet ugyanabban a régióban hozza létre, mint az Azure Kubernetes Service-fürtöt. A webszolgáltatások tokenekkel történő hitelesítéséhez a webszolgáltatás meghívja a Azure Machine Learning munkaterület létrehozásához használt régiót. Ha a munkaterület régiója nem érhető el, akkor sem fogja tudni lehívni a webszolgáltatáshoz tartozó jogkivonatot, ha a fürt a munkaterülettől eltérő régióban található. Ez az Azure AD-hitelesítés gyakorlatilag nem érhető el, amíg a munkaterület régiója újra elérhetővé nem válik. Emellett minél nagyobb a távolság a fürt régiója és a munkaterület régiója között, annál hosszabb ideig tart a token beolvasása.
 
 ## <a name="update-the-web-service"></a>A web service frissítése
 

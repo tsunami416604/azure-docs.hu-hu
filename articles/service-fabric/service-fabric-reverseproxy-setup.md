@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/13/2018
 ms.author: chackdan
-ms.openlocfilehash: df25c52e7a3f35355eb52bd95a39f55852adfcae
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 826e7e953bd713bb623ec469b45c56012601490b
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876579"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030814"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Fordított proxy beállítása és konfigurálása az Azure-ban Service Fabric
 A fordított proxy egy opcionális Azure Service Fabric szolgáltatás, amely segít a Service Fabric-fürtökön futó, a http-végpontokkal rendelkező más szolgáltatásokkal való kommunikációban. További információ: [fordított proxy az Azure Service Fabricban](service-fabric-reverseproxy.md). Ez a cikk bemutatja, hogyan állíthatja be és konfigurálhatja a fordított proxykat a fürtben. 
@@ -256,7 +255,7 @@ Ha a fordított proxyt nyilvánosan szeretné kiterjeszteni egy önálló fürth
 2. Ha hozzá szeretne adni egy állapot-mintavételt a fordított proxyhoz, a terheléselosztó ablak bal oldali ablaktábláján, a **Beállítások**területen kattintson az **állapot**-mintavételek elemre. Ezután kattintson az **Add (Hozzáadás** ) gombra az állapot-mintavételi ablak tetején, és adja meg a fordított proxykiszolgáló részleteit, majd kattintson **az OK**gombra. Alapértelmezés szerint a fordított proxy portja 19081, hacsak nem módosította a fürt létrehozásakor.
 
    ![Fordított proxy állapot-mintavételének konfigurálása](./media/service-fabric-reverseproxy-setup/lb-rp-probe.png)
-3. Ha Load Balancer szabályt szeretne hozzáadni a fordított proxy portjának megjelenítéséhez, a terheléselosztó ablak bal oldali ablaktábláján, a **Beállítások**területen kattintson a terheléselosztási **szabályok**elemre. Ezután kattintson a **Hozzáadás** gombra a terheléselosztási szabályok ablak tetején, és adja meg a fordított proxy portszámának részleteit. Győződjön meg arról, hogy a **port értékét arra** a portra állítja be, amelyben a fordított proxy elérhetővé válik, a **háttér port** értéke a fordított proxy engedélyezésekor beállított portra, az **állapot** mintavételi értéke pedig az előző lépésben konfigurált állapot-mintavételi értékre. Szükség szerint adja meg a többi mezőt, majd kattintson **az OK**gombra.
+3. Ha Load Balancer szabályt szeretne hozzáadni a fordított proxy portjának megjelenítéséhez, a terheléselosztó ablak bal oldali ablaktábláján, a **Beállítások**területen kattintson a terheléselosztási **szabályok**elemre. Ezután kattintson a **Hozzáadás** gombra a terheléselosztási szabályok ablak tetején, és adja meg a fordított proxy portszámának részleteit. Győződjön meg arról, hogy a port értékét arra a portra állítja be, amelyben a fordított proxy elérhetővé válik, a **háttér port** értéke a fordított proxy engedélyezésekor beállított portra, az **állapot** mintavételi értéke pedig az előző lépésben konfigurált állapot-mintavételi értékre. Szükség szerint adja meg a többi mezőt, majd kattintson **az OK**gombra.
 
    ![Terheléselosztó szabály konfigurálása fordított proxyhoz](./media/service-fabric-reverseproxy-setup/lb-rp-rule.png)
 

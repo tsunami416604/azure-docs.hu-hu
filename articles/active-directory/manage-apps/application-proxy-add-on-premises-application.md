@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2019
+ms.date: 08/14/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c890288539a8abebe688ca4571ffa6c152e992ee
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: aefa6d21488b617b26ddefe5fa4fc61cdd203f96
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694053"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032538"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: Helyszíni alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory
 
@@ -96,7 +96,7 @@ A következő URL-címek elérésének engedélyezése:
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Az Azure ezeket az URL-címeket használja a tanúsítványok ellenőrzéséhez. |
 | login.windows.net<br>login.microsoftonline.com<br>secure.aadcdn.microsoftonline-p.com  | Az összekötő ezeket az URL-címeket használja a regisztrációs folyamat során. |
 
-Engedélyezheti a \*. msappproxy.net és \*a. servicebus.Windows.net kapcsolatait, ha a tűzfal vagy a proxy lehetővé teszi a DNS-engedélyezési listák konfigurálását. Ha nem, engedélyeznie kell az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653)való hozzáférést. Az IP-címtartományok hetente frissülnek.
+Engedélyezheti a \*. msappproxy.net és \*a. servicebus.Windows.net kapcsolatait, ha a tűzfal vagy a proxy lehetővé teszi a DNS-engedélyezési listák konfigurálását. Ha nem, engedélyeznie kell az [Azure IP-címtartományok és a szolgáltatás-címkék nyilvános felhőhöz](https://www.microsoft.com/download/details.aspx?id=56519)való hozzáférését. Az IP-címtartományok hetente frissülnek.
 
 ## <a name="install-and-register-a-connector"></a>Összekötő telepítése és regisztrálása
 
@@ -178,12 +178,12 @@ Most, hogy előkészítette a környezetet, és telepített egy összekötőt, k
 
     | Mező | Leírás |
     | :---- | :---------- |
-    | **Háttérbeli alkalmazások időtúllépése** | **Csak akkor** állítsa be ezt az értéket, ha az alkalmazása lassú a hitelesítéshez és a kapcsolódáshoz. Alapértelmezés szerint a háttérbeli alkalmazás időkorlátja 85 másodpercnél hosszabb. Ha hosszú értékre van állítva, a háttérbeli időtúllépés 180 másodpercre nő. |
+    | **Háttérbeli alkalmazások időtúllépése** | Csak akkor állítsa be ezt az értéket, ha az alkalmazása lassú a hitelesítéshez és a kapcsolódáshoz. Alapértelmezés szerint a háttérbeli alkalmazás időkorlátja 85 másodpercnél hosszabb. Ha hosszú értékre van állítva, a háttérbeli időtúllépés 180 másodpercre nő. |
     | **Csak HTTP-cookie használata** | Állítsa ezt az értéket **Igen** értékre, ha az alkalmazásproxy-cookie-k tartalmazzák a HTTPOnly jelzőt a http-válasz fejlécében. Távoli asztali szolgáltatások használata esetén a **nem**értékre állítsa ezt az értéket.|
     | **Biztonságos cookie használata**| Állítsa **Igen** értékre a cookie-k biztonságos csatornán keresztüli továbbításához, például egy titkosított HTTPS-kéréshez.
-    | **Állandó cookie használata**| Ezt az értéket ne értékre **állítsa.** Csak ezt a beállítást használja olyan alkalmazásokhoz, amelyek nem oszthatnak meg sütiket a folyamatok között. A cookie-beállításokkal kapcsolatos további információkért lásd: [cookie-beállítások](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)a helyszíni alkalmazások eléréséhez Azure Active Directoryban.
+    | **Állandó cookie használata**| Ezt az értéket ne értékre állítsa. Csak ezt a beállítást használja olyan alkalmazásokhoz, amelyek nem oszthatnak meg sütiket a folyamatok között. A cookie-beállításokkal kapcsolatos további információkért lásd: [cookie-beállítások](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)a helyszíni alkalmazások eléréséhez Azure Active Directoryban.
     | **URL-címek lefordítása a fejlécekben** | Tartsa meg ezt az értéket **Igen** , kivéve, ha az alkalmazásnak a hitelesítési kérelemben az eredeti állomásfejléc-fejlécet kellett volna megadnia. |
-    | **URL-címek fordítása az alkalmazás törzsében** | Ezt az értéket ne csak akkor tartsa **meg, ha** hardcoded HTML-hivatkozásokat más helyszíni alkalmazásokhoz, és ne használjon egyéni tartományokat. További információ: [a fordítás összekapcsolása az alkalmazásproxy szolgáltatással](application-proxy-configure-hard-coded-link-translation.md).<br><br>Ezt az értéket állítsa **Igen** értékre, ha azt tervezi, hogy Microsoft Cloud app Security (MCAS) használatával figyeli az alkalmazást. További információ: [valós idejű alkalmazás-hozzáférés figyelésének konfigurálása Microsoft Cloud app Security és Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
+    | **URL-címek fordítása az alkalmazás törzsében** | Ezt az értéket ne csak akkor tartsa meg, ha hardcoded HTML-hivatkozásokat más helyszíni alkalmazásokhoz, és ne használjon egyéni tartományokat. További információ: [a fordítás összekapcsolása az alkalmazásproxy szolgáltatással](application-proxy-configure-hard-coded-link-translation.md).<br><br>Ezt az értéket állítsa **Igen** értékre, ha azt tervezi, hogy Microsoft Cloud app Security (MCAS) használatával figyeli az alkalmazást. További információ: [valós idejű alkalmazás-hozzáférés figyelésének konfigurálása Microsoft Cloud app Security és Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
 1. Válassza a **Hozzáadás** lehetőséget.
 

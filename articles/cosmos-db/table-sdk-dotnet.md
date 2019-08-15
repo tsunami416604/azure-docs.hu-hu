@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: cbab92c85e5791e43e9d7f60de975c27a77c62d3
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: aa9752cdc2148036b3edff8a6002dc81ebff6312
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013803"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036302"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB table .NET API: Megjegyzések letöltése és kibocsátási megjegyzései
 
@@ -27,7 +27,6 @@ ms.locfileid: "69013803"
 |   |   |
 |---|---|
 |**SDK letöltése**|[NuGet](https://aka.ms/acdbtablenuget)|
-|**API-dokumentáció**|[.NET API dokumentációja](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table?view=azure-dotnet)|
 |**Gyors útmutató**|[Azure Cosmos DB: Alkalmazás létrehozása a .NET-tel és a Table API](create-table-dotnet.md)|
 |**Oktatóanyag**|[Azure Cosmos DB: Fejlesztés a .NET-Table APIokkal](tutorial-develop-table-dotnet.md)|
 |**Aktuális támogatott keretrendszer**|[Microsoft .NET-keretrendszer 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|

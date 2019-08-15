@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 39d6090b14a16f505413154df2a78d42b3fb3f3c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 5b451378fcc14106cb8731a89bcf6ccf415d0a92
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333715"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035479"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager forgalomáttekintő
 
@@ -44,6 +44,8 @@ A forgalmi nézet adatfrissítésének gyakorisága több belső szolgáltatási
 ## <a name="visual-overview"></a>Vizuális áttekintés
 
 Ha a Traffic Manager oldal **forgalomáttekintő** szakaszára navigál, egy földrajzi Térkép jelenik meg, amely forgalomáttekintői bepillantást tartalmaz. A Térkép információt nyújt a Traffic Manager profiljához tartozó felhasználói bázisról és végpontokról.
+
+![Traffic Manager forgalomáttekintő földrajzi nézet][1]
 
 ### <a name="user-base-information"></a>Felhasználói alapinformációk
 
@@ -94,3 +96,5 @@ Forgalomáttekintő használatakor a számlázás a bemutatott elemzések létre
 - További információ a Traffic Manager által támogatott [forgalom-útválasztási módszerekről](traffic-manager-routing-methods.md)
 - Megtudhatja, hogyan [hozhat létre Traffic Manager-profilt](traffic-manager-create-profile.md)
 
+<!--Image references-->
+[1]: ./media/traffic-manager-traffic-view-overview/trafficview.png

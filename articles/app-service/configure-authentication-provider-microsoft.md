@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 17410db91f55a053e5ec208492649157bb0b5034
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 729c235ee51a904714358221389703632fd8296c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881111"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033639"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>A App Service alkalmazás konfigurálása a Microsoft-fiók bejelentkezési használatára
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -61,6 +61,9 @@ Ebből a témakörből megtudhatja, hogyan konfigurálhatja a Azure App Servicet
     Alapértelmezés szerint a App Service hitelesítést biztosít, de nem korlátozza a webhely tartalmához és API-khoz való jogosult hozzáférést. Engedélyezni kell a felhasználókat az alkalmazás kódjában.
 
 4. Választható Ha korlátozni szeretné Microsoft-fiók felhasználók hozzáférését, állítsa be **a végrehajtandó műveletet, ha a kérés nincs hitelesítve** a Microsoft-fiókkal való **bejelentkezéshez**. Ehhez minden kérést hitelesíteni kell, és az összes nem hitelesített kérelem át lesz irányítva a hitelesítéshez Microsoft-fiók.
+
+> [!CAUTION]
+> A hozzáférés ezen a módon való korlátozása az alkalmazás összes hívására vonatkozik, ami nem kívánatos, ha az alkalmazások nyilvánosan elérhető kezdőlapot szeretnének, például sok egyoldalas alkalmazásban. Ilyen alkalmazások esetén **engedélyezze a névtelen kérelmeket (nincs művelet)** előnyben részesített, ha az alkalmazás manuálisan indítja el a bejelentkezést, az [itt](overview-authentication-authorization.md#authentication-flow)leírtak szerint.
 
 5. Kattintson a **Save** (Mentés) gombra.
 

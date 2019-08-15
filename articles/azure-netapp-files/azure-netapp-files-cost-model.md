@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp fájlok költségű modell |} A Microsoft Docs
-description: A témakör ismerteti a költségmodell Azure NetApp fájlok költségek kezeléséhez a szolgáltatásból.
+title: Cost Model a Azure NetApp Fileshoz | Microsoft Docs
+description: A szolgáltatás költségeinek kezeléséhez szükséges Azure NetApp Files költség modelljét ismerteti.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,81 +14,81 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: b-juche
-ms.openlocfilehash: b06e3366224b90899dd3f9f9439edf897de82794
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 563416418b3f387f103fddc88b3ba9ad4c93fdd4
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65524220"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030789"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Az Azure NetApp Files költségmodellje 
 
-A költségmodell ismertetése a NetApp Azure-fájlok segítségével kezelheti a költségeket a szolgáltatás.
+A Azure NetApp Filesi cost modell megismerése segít a szolgáltatás költségeinek kezelésében.
 
-## <a name="calculation-of-capacity-consumption"></a>A számítási kapacitás felhasználását
+## <a name="calculation-of-capacity-consumption"></a>A kapacitás felhasználásának kiszámítása
 
-NetApp Azure Files üzembe helyezett tárolási kapacitás díjszabását.  Kiosztott kapacitást lefoglalt kapacitás-címkészletek létrehozásával.  A kapacitás készletek díjszabása $/ kiépített-GB/hó óránkénti növekményekben alapul. Egyetlen kapacitás készlet minimális mérete 4 Tib-ra, és a kapacitás készletek 1-TiB lépésekben ezt követően bővíthetők. Kötetek kapacitása készletek belül jönnek létre.  Minden egyes kötethez hozzárendelt kvóta, hogy a készletek kiosztott kapacitás csökkentésére. A kvóta rendelhető kötetek címtartományok 92 Tib-ra legfeljebb 100 GiB közötti.  
+Azure NetApp Files számlázása a kiépített tárolókapacitás alapján történik.  A kiépített kapacitás kapacitás-készletek létrehozásával van lefoglalva.  A kapacitási készletek számlázása a $/provisioned-GiB/month alapján, óránkénti növekedéssel történik. Egy adott kapacitású készlet minimális mérete 4 TiB, a kapacitási készletek pedig 1 TiB-os szinten bővíthetők. A kötetek a kapacitási készleteken belül jönnek létre.  Minden kötethez hozzá van rendelve egy kvóta, amely csökkenti a készletek által kiosztott kapacitást. A kötetekhez hozzárendelhető kvóta legalább 100 GiB-ig, legfeljebb 100 TiB-ig adható meg.  
 
-Egy aktív kötet kapacitásfogyasztásának kvótába logikai (tényleges) kapacitás alapul.
+Aktív kötet esetén a kapacitás-felhasználás a kvóta alapján logikai (tényleges) kapacitáson alapul.
 
-Ha a kötet tényleges kapacitásfogyasztásának tárolási kvótát túllépi, a kötet továbbra is növekszik. Írási műveletek továbbra is engedélyezhető, mindaddig, amíg a kötet tényleges mérete kisebb, mint a rendszerben meghatározott korlátot (100 TiB).  
+Ha egy kötet tényleges kapacitása meghaladja a tárolási kvótáját, a kötet továbbra is növekedhet. Az írások továbbra is engedélyezve lesznek, ha a tényleges kötet mérete kisebb, mint a rendszer korlátja (100 TiB).  
 
-A teljes felhasznált kapacitás ellen a kiépített összeg kapacitás készletben összege nagyobb, mint a hozzárendelt kvótát vagy tényleges fogyasztásnál a készletben lévő összes kötet: 
+A kapacitás készletben lévő teljes kapacitása a kiépített mennyiségtől a hozzárendelt kvóta vagy a készletben lévő összes kötet tényleges felhasználásának összege. 
 
-   ![Teljes felhasznált kapacitás kiszámítása](../media/azure-netapp-files/azure-netapp-files-total-used-capacity.png)
+   ![Felhasznált kapacitás teljes kiszámítása](../media/azure-netapp-files/azure-netapp-files-total-used-capacity.png)
 
-Az alábbi ábra azt szemlélteti, hogy ezek a fogalmak.  
-* Összeállítottunk egy kapacitás-készletet, a kiosztott kapacitás 4 Tib-ra.  A készlet három-köteteket tartalmazza.  
-    * 1 kötet hozzá van rendelve egy kvótáját 2 Tib-ra és a felhasználás 800 GB.  
-    * Kötet 2 hozzá van rendelve egy kvótáját 1 Tib-ra és a felhasználás 100 GB.  
-    * Kötet (3) van hozzárendelve, 500 GB-kvótát, de 800 GB-felhasználás (kerettúllépés) rendelkezik.  
-* A kapacitás a készlet kapacitásának (a kiépített összeg) 4 Tib-ra a forgalmi díjas.  
-    3.8 felhasznált kapacitás Tib-ra (2 Tib-ra, és 1 Tib-ra kvóta kötetek 1. és 2 és 3. kötet tényleges fogyasztás 800 GB). És a kapacitás 200 GB szabad van.
+Az alábbi ábra szemlélteti ezeket a fogalmakat.  
+* A kapacitása 4 TiB kiosztott kapacitással rendelkezik.  A készlet három kötetet tartalmaz.  
+    * Az 1. kötethez 2 TiB-os kvóta van hozzárendelve, és 800 GiB használat.  
+    * A 2. kötethez 1 TiB-os kvóta van hozzárendelve, és 100 GiB használat.  
+    * A 3. kötethez 500 GiB kvóta van hozzárendelve, de 800 GiB (túlhasználat).  
+* A kapacitási készlet 4 TiB-kapacitásra (a kiosztott mennyiségre) van kiszámlázva.  
+    3,8 TiB-kapacitás használatban van (2 TiB és 1 TiB az 1. és 2. kötetből származó kvótával, és 800 GiB a tényleges fogyasztás 3. köteten). És 200 GiB kapacitás megmarad.
 
-   ![A kapacitás címkészlet, amely három kötetek](../media/azure-netapp-files/azure-netapp-files-capacity-pool-with-three-vols.png)
+   ![Kapacitási készlet három kötettel](../media/azure-netapp-files/azure-netapp-files-capacity-pool-with-three-vols.png)
 
-## <a name="overage-in-capacity-consumption"></a>Kapacitás felhasználását – kerettúllépés  
+## <a name="overage-in-capacity-consumption"></a>Túlterhelési kapacitás-felhasználás  
 
-Egy készlet kapacitásának használatakor az összes meghaladja a kiosztott kapacitást, az adatírásért továbbra is engedélyezi.  A türelmi időszak (1 óra) után, ha a használt kapacitás a készlet továbbra is meghaladja a kiosztott kapacitást, majd a készlet méretét automatikusan nő 1 Tib-ra egységnyi növekményekben mindaddig, amíg a kiosztott kapacitás értéke nagyobb, mint a teljes felhasznált kapacitás.  Például a fenti ábrán kötet 3 fejlesztéseiről és a tényleges használat eléri a 1.2-es Tib-ra, majd a türelmi időszak után a készlet program automatikusan átméretezze-e 5 Tib-ra.  Az eredménye, hogy az üzembe helyezett tárolókészlet-kapacitást (5 TiB) meghaladja a felhasznált kapacitás (4.2 TiB).  
+Ha egy készlet teljes felhasznált kapacitása meghaladja a kiosztott kapacitást, az adatírások továbbra is engedélyezettek.  Ha a türelmi időszak (egy óra) után a készlet felhasznált kapacitása továbbra is meghaladja a kiosztott kapacitást, akkor a készlet mérete automatikusan 1 TiB-onként növekedik, amíg a kiépített kapacitás nagyobb a teljes felhasznált kapacitásnál.  Például a fenti ábrán, ha a 3. kötet továbbra is nő, és a tényleges fogyasztás eléri a 1,2 TiB-t, a türelmi időszak után a készlet automatikusan 5 TiB-ra lesz méretezve.  Ennek eredményeképpen a kiépített készlet kapacitása (5 TiB) meghaladja a felhasznált kapacitást (4,2 TiB).  
 
-## <a name="manual-changes-of-the-pool-size"></a>A készlet méretét a manuális módosítások  
+## <a name="manual-changes-of-the-pool-size"></a>A készlet méretének manuális módosítása  
 
-Manuálisan növelheti vagy csökkentheti a készlet méretét. Azonban a következő korlátozások vonatkoznak:
-* Szolgáltatás minimális és maximális értékeket.  
-    Tekintse meg a cikket [erőforráskorlátok](azure-netapp-files-resource-limits.md).
-* A kezdeti 4-TiB minimális vásárlás után egy 1 – Tib-ra növelése
-* Egy egyórás minimális számlázási növekmény
-* A kiépített készlet mérete nem csökkenthető kisebb, mint az összes használt kapacitás a készletben.
+Manuálisan növelheti vagy csökkentheti a készlet méretét. A következő megkötések azonban érvényesek:
+* Szolgáltatás minimális és maximális korlátai  
+    Tekintse meg az [erőforrás](azure-netapp-files-resource-limits.md)-korlátozásokról szóló cikket.
+* 1 – TiB-növekmény a kezdeti 4 – TiB minimális vásárlás után
+* Egy órás minimális számlázási növekmény
+* Előfordulhat, hogy a kiépített készlet mérete nem csökkenthető a készlet teljes felhasznált kapacitásával.
 
-## <a name="behavior-of-maximum-size-pool-overage"></a>Viselkedés a maximális méretű készlet – kerettúllépés   
+## <a name="behavior-of-maximum-size-pool-overage"></a>A maximális méretet túllépő készlet viselkedése   
 
-A kapacitás, amely lehet létrehozni és méretezze át a készlet maximális mérete 500 Tib-ra.  Használatakor a teljes kapacitás a készlet kapacitásának meghaladja az 500 Tib-ra, a következő helyzetek:
-* Az adatírásért továbbra is lesz engedélyezett a (Ha a kötet nem éri el a rendszer legfeljebb 100 TiB).
-* Az egyórás türelmi időszak után a készlet program automatikusan átméretezze 1-TiB lépésekben, mindaddig, amíg az üzembe helyezett tárolókészlet-kapacitást meghaladja a teljes felhasznált kapacitás.
-* A további kiépített, a díjat a tárolókészlet-kapacitást meghaladó 500 TiB köteten kvóta hozzárendelése nem használható. Azt is csak akkor használható, bontsa ki a QoS teljesítménykorlátok.  
-    Lásd: [szolgáltatásszintek](azure-netapp-files-service-levels.md) teljesítménykorlátok és a QoS osztályozás.
+Egy olyan kapacitási készlet maximális mérete, amelyet létrehozhat vagy átméretezheti a 500 TiB-ra.  Ha a kapacitási készlet teljes felhasznált kapacitása meghaladja a 500 TiB-t, a következő helyzetek történnek:
+* Az adatírások továbbra is engedélyezettek lesznek (ha a kötet a rendszer maximális 100 TiB-nál alacsonyabb).
+* Az egyórás türelmi időszak után a rendszer automatikusan átméretezi a készletet 1 – TiB-onként, amíg a készlet kiépített kapacitása meghaladja a teljes felhasznált kapacitást.
+* A további kiépített és számlázott készlet kapacitása meghaladja a 500 TiB-t, ezért nem használható mennyiségi kvóta hozzárendelésére. Emellett nem használható a teljesítmény-QoS-korlátok kibontására.  
+    Lásd a [szolgáltatási szinteket](azure-netapp-files-service-levels.md) a teljesítmény korlátairól és a QoS méretezéséről.
 
-Az alábbi ábra mutatja be, hogy ezek a fogalmak:
-* Összeállítottunk egy kapacitás-készlet egy prémium szintű storage és a egy 500-TiB kapacitással. A készlet kilenc-köteteket tartalmazza.
-    * 1 – 8 kötetek vannak rendelve 60 TiB-kvótát.  Teljes felhasznált kapacitása 480 Tib-ra.  
-        Minden kötet esetében a QoS 3,75 GB/s átviteli sebesség (60 TiB * 64 MiB/s).  
-    * Kötet 9 hozzá van rendelve egy 20 TiB kvótáját.  
-        Kötetnek 1,25 GB/s átviteli QoS legfeljebb 9 (60 TiB * 64 MiB/s).
-* 9 lemez egy kerettúllépési forgatókönyvet. A tényleges fogyasztás 25 TiB rendelkezik.  
-    * Az egyórás türelmi időszak után a kapacitás készlet 505 Tib-ra lesz méretezhetők.  
-        Azt jelenti, az összes használt kapacitás 8 * 60 =-kötetek 1 – 8 és a tényleges fogyasztás kötet 9 25 TiB TiB kvótát.
-    * Számlázott kapacitása 505 Tib-ra.
-    * Kötet 9 kötet kvótája nem növelhető, (mivel a készlet az összes hozzárendelt kvóta nem haladhatja meg az 500 TiB).
-    * További QoS átviteli sebesség (mivel a készlet az összes QoS továbbra is alapján 500 TiB) nem lehet hozzárendelni.
+Az alábbi ábra a következő fogalmakat szemlélteti:
+* Egy prémium szintű Storage-réteggel és egy 500-TiB kapacitással rendelkező kapacitási készlettel rendelkezünk. A készlet kilenc kötetet tartalmaz.
+    * Az 1 és 8 közötti kötetek a 60 TiB kvótáját kapják meg.  A teljes felhasznált kapacitás 480 TiB.  
+        Minden kötethez az átviteli sebesség (60 TiB * 64 MiB/s) QoS-korlátja 3,75 GiB/s.  
+    * A 9-es kötethez 20 TiB-os kvóta van rendelve.  
+        A 9-es köteten az átviteli sebesség (60 TiB * 64 MiB/s) QoS-korlátja 1,25 GiB/s.
+* A 9-es kötet túlhasználatos forgatókönyv. A tényleges fogyasztás 25 TiB-vel rendelkezik.  
+    * Az egyórás türelmi időszak után a rendszer átméretezi a kapacitási készletet a 505 TiB-ra.  
+        Ez a teljes kapacitás = 8 * 60-TiB kvóta az 1 – 8. kötethez, valamint 25 TiB a tényleges fogyasztásról a 9-es kötethez.
+    * A számlázott kapacitás 505 TiB.
+    * A 9-es kötethez tartozó mennyiségi kvóta nem növelhető (mivel a készlethez hozzárendelt teljes kvóta nem haladhatja meg a 500 TiB-t).
+    * A további QoS-átviteli sebesség nem rendelhető hozzá (mivel a készlet teljes QoS-értéke továbbra is 500 TiB-on alapul).
 
-   ![A kapacitás készlet nine kötetén](../media/azure-netapp-files/azure-netapp-files-capacity-pool-with-nine-vols.png)
+   ![Kapacitási készlet kilenc kötettel](../media/azure-netapp-files/azure-netapp-files-capacity-pool-with-nine-vols.png)
 
-## <a name="capacity-consumption-of-snapshots"></a>A pillanatképek kapacitás felhasználása 
+## <a name="capacity-consumption-of-snapshots"></a>A pillanatképek kapacitásának felhasználása 
 
-Az Azure NetApp fájlokban pillanatképek kapacitás felhasználását a kvótába, a szülő kötet kell fizetnie.  Ennek eredményeképpen közös számlázási költsége megegyezik a kapacitás-készlet, amely a kötet tartozik.  Azonban az aktív kötet eltérően pillanatkép felhasználását mérjük felhasznált növekményes függ.  Az Azure NetApp fájlok pillanatképei különbözeti jellegűek. Az adatok változási, attól függően a pillanatképek gyakran sokkal kisebb, mint az aktív kötet logikai kapacitásának kapacitás használnak fel. Vegyük például, hogy csak azokat a különbözeti adatok 10 GB 500 GiB kötetre pillanatképét. A kapacitást, amelyhez a pillanatkép a köteten kvóta van terhelve 10 GB, nem az 500 GB lenne. 
+Azure NetApp Files a pillanatképek kapacitásának felhasználását a fölérendelt kötet kvótája alapján számítjuk fel.  Ennek eredményeképpen ugyanazzal a számlázási sebességgel osztozik, mint a kötethez tartozó kapacitási készlet.  Az aktív kötettől eltérően azonban a pillanatkép-felhasználás a felhasznált növekményes kapacitás alapján mérhető.  Azure NetApp Files Pillanatképek eltérő jellegűek. Az adatváltozási aránytól függően a pillanatképek gyakran sokkal kevesebb kapacitást használnak, mint az aktív kötet logikai kapacitása. Tegyük fel például, hogy van egy 500-GiB kötet pillanatképe, amely csak 10 GiB különbözeti adatokból áll. A pillanatképre vonatkozó mennyiségi kvóta alapján felszámított kapacitás 10 GiB, nem 500 GiB. 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure-díjszabást ismertető oldalon NetApp fájlok](https://azure.microsoft.com/pricing/details/storage/netapp/)
-* [Szolgáltatási szintek a NetApp Azure-fájlok](azure-netapp-files-service-levels.md)
+* [Azure NetApp Files díjszabási oldala](https://azure.microsoft.com/pricing/details/storage/netapp/)
+* [Azure NetApp Files szolgáltatási szintjei](azure-netapp-files-service-levels.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)

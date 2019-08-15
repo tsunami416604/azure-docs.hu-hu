@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: b088b4d0e21819411c7329f3cb1e6ca9761665fd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: ebb9028aab8626554d0f5fede15129c141d441cb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610202"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035340"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -67,9 +67,11 @@ Igen. A nyilvános IP-címtartományok részletes ismertetését lásd: [virtuá
 Igen. További részletekért lásd az [Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) -korlátokat. Az alhálózati címek nem lehetnek átfedésben egymással.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Vannak korlátozások az IP-címek ezen alhálózatokon belüli használatára?
-Igen. Az Azure minden alhálózaton lefoglal 5 IP-címet. Ezek az x. x. x. 0-x. x. x. 3 és az alhálózat utolsó címe.    
-- az x. x. x. 0 és az alhálózat utolsó címe a protokoll-megfelelőség számára van fenntartva.
-- az x. x. x. 1 – x. x. x. 3 Az Azure-szolgáltatások minden alhálózatán le van foglalva.
+Igen. Az Azure minden alhálózaton lefoglal 5 IP-címet. Ezek az x. x. x. 0-x. x. x. 3 és az alhálózat utolsó címe. az x. x. x. 1 – x. x. x. 3 Az Azure-szolgáltatások minden alhálózatán le van foglalva.   
+- x. x. x. 0: Hálózati címe
+- x. x. x. 1: Az Azure által az alapértelmezett átjáró számára fenntartott
+- x. x. x. 2, x. x. x. 3: Az Azure által fenntartott Azure DNS IP-címek leképezése a VNet-területre
+- x. x. x. 255: Hálózati szórási címe
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Milyen kicsi és mekkora lehet a virtuális hálózatok és az alhálózatok mérete?
 A legkisebb támogatott alhálózat a/29, a legnagyobb pedig/8 (CIDR alhálózati definíciók használatával).
@@ -326,7 +328,7 @@ Bizonyos szolgáltatások (például az SQL és a CosmosDB) engedélyezik a kiv�
 
 ### <a name="do-all-azure-services-reside-in-the-azure-virtual-network-provided-by-the-customer-how-does-vnet-service-endpoint-work-with-azure-services"></a>Az Azure-szolgáltatások az ügyfél által biztosított Azure-beli virtuális hálózaton találhatók? Hogyan működik az VNet-szolgáltatás végpontja az Azure-szolgáltatásokkal?
 
-Nem, nem minden Azure-szolgáltatás található az ügyfél virtuális hálózatában. Az Azure-beli adatszolgáltatások, például az Azure Storage, az Azure SQL és a Azure Cosmos DB többsége több-bérlős szolgáltatás, amely nyilvános IP-címeken keresztül érhető el. Az Azure [-szolgáltatások Virtual](virtual-network-for-azure-services.md)Network Integration szolgáltatásával kapcsolatos további információkért tekintse meg a következőt:. 
+Nem, nem minden Azure-szolgáltatás található az ügyfél virtuális hálózatában. Az Azure-beli adatszolgáltatások, például az Azure Storage, az Azure SQL és a Azure Cosmos DB többsége több-bérlős szolgáltatás, amely nyilvános IP-címeken keresztül érhető el. Az Azure-szolgáltatások Virtual Network Integration szolgáltatásával kapcsolatos [](virtual-network-for-azure-services.md)további információkért tekintse meg a következőt:. 
 
 Ha a VNet szolgáltatás-végpontok funkciót használja (bekapcsolja a VNet szolgáltatás végpontját a hálózati oldalon, és beállítja a megfelelő VNet ACL-eket az Azure-szolgáltatás oldalán), az Azure-szolgáltatásokhoz való hozzáférés egy engedélyezett VNet és alhálózatra korlátozódik.
 

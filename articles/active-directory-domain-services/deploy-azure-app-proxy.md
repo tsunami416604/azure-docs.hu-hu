@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: b3fb5d665380bc15b61d3b4b7913a992915f9afb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 35211d6f832033a2bb16c495ebab839b7f740445
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853839"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69031028"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure-AD Application Proxy üzembe helyezése Azure AD Domain Services felügyelt tartományon
 A Azure Active Directory (AD) alkalmazásproxy segítséget nyújt a távoli dolgozók támogatásához azáltal, hogy közzéteszi a helyszíni alkalmazásokat az interneten keresztül. A Azure AD Domain Services segítségével mostantól a helyszínen futó örökölt alkalmazások áthelyezhetők az Azure-infrastruktúra szolgáltatásaiba. Ezeket az alkalmazásokat az Azure AD Application Proxy használatával teheti közzé, így biztonságos távoli hozzáférést biztosíthat a szervezet felhasználói számára.
@@ -34,7 +34,7 @@ A cikkben felsorolt feladatok elvégzéséhez a következőkre lesz szüksége:
 
 1. Érvényes **Azure-előfizetés**.
 2. Egy **Azure ad-címtár** – szinkronizálva van egy helyszíni címtárral vagy egy csak felhőalapú címtárral.
-3. Az Azure-AD Application Proxy használatához **alapszintű Azure ad vagy prémium** szintű licencre van szükség.
+3. Az Azure-AD Application Proxy használatához **prémium szintű Azure ad licencre** van szükség.
 4. **Azure ad Domain Services** engedélyezni kell az Azure ad-címtárat. Ha még nem tette meg, kövesse az [első lépések útmutatóban](create-instance.md)ismertetett összes feladatot.
 
 <br>

@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 312f6746cb02aa66b0e7f8b47cb10e52558fa542
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 118a36587667c815489ddad03426b5cfcfee7382
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323165"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036685"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -67,9 +67,10 @@ A Batch szolgáltatás által beállított további korlátok. Az [erőforrás](
 | --- | --- |
 | [Egyidejű feladatok](batch-parallel-node-tasks.md) /számítási csomópontok | 4 x csomópont-magok száma |
 | [Alkalmazások](batch-application-packages.md) batch-fiókkal | 20 |
-| Alkalmazás-csomagok eszközönként | 40 |
+| Alkalmazáscsomagok alkalmazásonként | 40 |
 | Alkalmazáscsomag/készlet | 10 |
 | Feladat maximális élettartama | 180 nap<sup>1</sup> |
+| [Csatlakoztatások](virtual-file-mount.md) /számítási csomópontok | 10 |
 
 <sup>1</sup> a feladat maximális élettartama, amikor a feladat bekerül a feladatba, 180 nap. A Befejezett feladatok hét napig fennmaradnak; a maximális élettartamon belül nem befejezett feladatok adatai nem érhetők el.
 
@@ -78,7 +79,7 @@ A Batch szolgáltatás által beállított további korlátok. Az [erőforrás](
 A Batch-fiók kvótáinak megtekintése [][portal]a Azure Portalban.
 
 1. Válassza a **Batch-fiókok** lehetőséget a portálon, majd válassza ki azt a Batch-fiókot, amelyre kíváncsi.
-1. Válassza **** a kvóták lehetőséget a Batch-fiók menüjében.
+1. Válassza a kvóták lehetőséget a Batch-fiók menüjében.
 1. A Batch-fiókra jelenleg alkalmazott kvóták megtekintése
 
     ![Batch-fiókok kvótái][account_quotas]
@@ -117,7 +118,7 @@ Kövesse az alábbi lépéseket a kvóta növeléséhez a Batch-fiókjához vagy
 
     Az alacsony prioritású kvóta egyetlen érték az összes virtuálisgép-sorozaton belül. Ha korlátozott SKU-ra van szüksége, ki kell választania az **alacsony prioritású magok** elemet, és fel kell vennie a lekéréses virtuálisgép-családokat.
 
-    b. Válasszon ki **** egy súlyosságot az [üzleti hatásnak][support_sev]megfelelően.
+    b. Válasszon ki egy súlyosságot az [üzleti hatásnak][support_sev]megfelelően.
 
     Kattintson a **Tovább** gombra.
 

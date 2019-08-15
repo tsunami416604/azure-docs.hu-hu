@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1688651466ba6748e1254c9d33bb24435602868b
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 76ba284ec1a30322a24c762a1829b399f2583c6c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489169"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032925"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management-preview"></a>Oktatóanyag: Az első hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -44,7 +44,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Bemutatjuk, hogyan kérheti a belső felhasználó a hozzáférési csomagot
 > * Hozzáférési kérelem jóváhagyása
 
-Ha nem rendelkezik prémium szintű Azure AD P2 vagy Enterprise Mobility + Security E5 licenccel, hozzon létre egy ingyenes [Enterprise Mobility + Security E5 próbaverziót](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1).
+Az Azure Active Directory jogosultságok felügyeletének üzembe helyezési folyamatának lépésenkénti bemutatásához, beleértve az első hozzáférési csomag létrehozását is, tekintse meg a következő videót:
+
+>[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -52,6 +54,8 @@ Az Azure AD-jogosultságok felügyeletének (előzetes verzió) használatához 
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5-licenc
+
+Ha nem rendelkezik prémium szintű Azure AD P2 vagy Enterprise Mobility + Security E5 licenccel, hozzon létre egy ingyenes [Enterprise Mobility + Security E5 próbaverziót](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1).
 
 ## <a name="step-1-set-up-users-and-group"></a>1\. lépés: Felhasználók és csoportok beállítása
 
@@ -80,7 +84,7 @@ Egy erőforrás-címtárhoz egy vagy több megosztani kívánt erőforrás tarto
 
 ## <a name="step-2-create-an-access-package"></a>2\. lépés: Hozzáférési csomag létrehozása
 
-A *hozzáférési csomag* az összes olyan erőforrás kötegét képezi, amelyet a felhasználónak egy projekten kell dolgoznia, vagy feladatait kell végrehajtania. A hozzáférési csomagok a katalógusok nevű tárolókban vannak meghatározva. Ebben a lépésben létrehoz egy **webes projekt-hozzáférési csomagot** az **általános** katalógusban.
+A *hozzáférési csomag* az összes olyan erőforrás kötegét képezi, amelyet a felhasználónak egy projekten kell dolgoznia, vagy feladatait kell végrehajtania. A hozzáférési csomagok a katalógusok nevűtárolókban vannak meghatározva. Ebben a lépésben létrehoz egy **webes projekt-hozzáférési csomagot** az **általános** katalógusban.
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda vagy felhasználói rendszergazda
 
@@ -144,7 +148,7 @@ A *hozzáférési csomag* az összes olyan erőforrás kötegét képezi, amelye
 
 ## <a name="step-3-create-a-policy"></a>3\. lépés: Házirend létrehozása
 
-A *szabályzatok határozzák* meg a hozzáférési csomag elérésére vonatkozó szabályokat vagy guardrails. Ebben a lépésben egy olyan házirendet hoz létre, amely lehetővé teszi egy adott felhasználó számára az erőforrás-címtárban a hozzáférési csomag kérését. Azt is megadhatja, hogy a kéréseket jóvá kell hagyni, és ki lesz a jóváhagyó.
+A szabályzatok határozzák meg a hozzáférési csomag elérésére vonatkozó szabályokat vagy guardrails. Ebben a lépésben egy olyan házirendet hoz létre, amely lehetővé teszi egy adott felhasználó számára az erőforrás-címtárban a hozzáférési csomag kérését. Azt is megadhatja, hogy a kéréseket jóvá kell hagyni, és ki lesz a jóváhagyó.
 
 ![Hozzáférési csomag szabályzatának létrehozása](./media/entitlement-management-access-package-first/elm-access-package-policy.png)
 
@@ -218,7 +222,7 @@ Ebben a lépésben a lépéseket a **belső kérelmezőnek** kell elvégeznie, �
 
 1. Az **adott időszakra vonatkozó kérést** állítsa **Igen**értékre.
 
-1. Állítsa a **kezdő dátumot** a mai napra  és a befejezési dátumra a holnap értékre.
+1. Állítsa a **kezdő dátumot** a mai napra és a befejezési dátumra a holnap értékre.
 
     ![Hozzáférési portál – hozzáférés kérése](./media/entitlement-management-shared/my-access-request-access.png)
 
@@ -298,7 +302,7 @@ Ebben a lépésben eltávolítja az elvégzett módosításokat, és törli a **
 
 1. Nyissa meg a **webes projekt-hozzáférési csomagot**.
 
-1. Kattintson a hozzárendelések elemre.
+1. Kattintsona hozzárendelések elemre.
 
 1. A **Requestor1**kattintson a három pontra ( **...** ), majd a **hozzáférés eltávolítása**elemre.
 

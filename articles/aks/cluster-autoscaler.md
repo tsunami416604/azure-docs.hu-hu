@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: ef3e9a9c68ca524b7f7f86c92130a10952a9f065
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: dc5e862109a766f708338ebddb91a75ffc550306
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949608"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69031922"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Előzetes verzió – a fürt automatikus méretezése az alkalmazások igényeinek kielégítéséhez az Azure Kubernetes Service-ben (ak)
 
@@ -21,7 +21,7 @@ Az alkalmazások az Azure Kubernetes szolgáltatásban (ak) való megtartásáho
 Ez a cikk bemutatja, hogyan engedélyezheti és kezelheti a fürt automéretezőjét egy AK-fürtben. A fürt automéretezőjét csak előzetes verzióban kell tesztelni az AK-fürtökön.
 
 > [!IMPORTANT]
-> Az AK előzetes verziójának funkciói önkiszolgáló, választhatók. A felhasználók visszajelzéseket és hibákat biztosítanak a Közösségtől. Az előzetes verzióban ezek a szolgáltatások éles használatra nem használhatók. A nyilvános előzetes verzió funkciói a "legjobb erőfeszítés" támogatás alatt állnak. Az AK technikai támogatási csapatának segítsége csak a munkaidőn kívüli időzóna (PST) időpontjában érhető el. További információkért tekintse meg a következő támogatási cikkeket:
+> Az AK előzetes verziójának funkciói önkiszolgáló opt-in. Az előzetes verziók az "adott állapotban" és "ahogy elérhető" módon vannak kizárva, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A következő részben az ügyfélszolgálat a lehető leghatékonyabban foglalkozik. Ezért ezeket a funkciókat nem éles használatra szánták. További részletekért tekintse meg a következő támogatási cikkeket:
 >
 > * [AK-támogatási szabályzatok][aks-support-policies]
 > * [Azure-támogatás – gyakori kérdések][aks-faq]

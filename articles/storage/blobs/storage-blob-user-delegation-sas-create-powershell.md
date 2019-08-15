@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 5412b83d8dfe92c6a24e717fb371c8963b808566
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 86b5e4b6bcf65c2174fa3d3743551813ce2f8b1b
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990792"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034742"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Felhasználói delegálási SAS létrehozása egy tárolóhoz vagy blobhoz a PowerShell (előzetes verzió) használatával
 
@@ -32,11 +32,6 @@ Ha a PowerShell használatával szeretne felhasználói delegálási SAS-t létr
 
     - Távolítsa el a Azure PowerShell korábbi telepítését a Windows rendszerből a **Beállítások**területen található **alkalmazások & szolgáltatások** beállítással.
     - Távolítsa el az összes `%Program Files%\WindowsPowerShell\Modules`Azure-modult.
-    - Mivel a PowerShell alapértelmezés szerint betölti a legújabb az. Storage modult, előfordulhat, hogy a konzol indításakor explicit módon be kell töltenie a 1.3.1-Preview modult. Az előzetes verziójú modul explicit betöltéséhez futtassa az [import-Module](/powershell/module/microsoft.powershell.core/import-module) parancsot:
-
-        ```powershell
-        Import-Module Az.Storage -RequiredVersion 1.3.1
-        ```
 
 1. Győződjön meg arról, hogy a PowerShellGet legújabb verziója van telepítve. Nyisson meg egy Windows PowerShell-ablakot, és futtassa a következő parancsot a legújabb verzió telepítéséhez:
 
@@ -55,10 +50,21 @@ Ha a PowerShell használatával szeretne felhasználói delegálási SAS-t létr
 1. Telepítsen egy Azure Storage Preview-modult, amely támogatja a felhasználói delegálás SAS-t:
 
     ```powershell
-    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.3.1-preview –AllowPrerelease –AllowClobber –Force
+    Install-Module Az.Storage `
+        –Repository PSGallery `
+        -RequiredVersion 1.3.1-preview `
+        –AllowPrerelease `
+        –AllowClobber `
+        –Force
     ```
 
 1. Zárjuk be és nyissa meg újra a PowerShell ablakot.
+
+Mivel a PowerShell alapértelmezés szerint betölti a legújabb az. Storage modult, előfordulhat, hogy a konzol indításakor explicit módon be kell töltenie a 1.3.1-Preview modult. Az előzetes verziójú modul explicit betöltéséhez futtassa az [import-Module](/powershell/module/microsoft.powershell.core/import-module) parancsot:
+
+```powershell
+Import-Module Az.Storage -RequiredVersion 1.3.1
+```
 
 További információ a Azure PowerShell telepítéséről: [Azure PowerShell telepítése a PowerShellGet](/powershell/azure/install-az-ps).
 
@@ -142,8 +148,7 @@ New-AzStorageBlobSASToken -Context $ctx `
 A felhasználói delegálás SAS URI-ja a következőhöz hasonló lesz:
 
 ```
-https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?sv=2018-11-09&sr=b&sig=4f6QzTteEZmrEMXWn7iEeI27vHrX13zVmL6rk2MbiyA%3D&skoid=e5981635-dcf0-4279-ab7b-ca1cbdf4a5c7&sktid=72f988bf-86f1-41af-91ab
--2d7cd011db47&skt=2019-08-06T21%3A16%3A54Z&ske=2019-08-07T07%3A00%3A00Z&sks=b&skv=2018-11-09&se=2019-08-07T07%3A00%3A00Z&sp=racwd
+https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?sv=2018-11-09&sr=b&sig=<sig>&skoid=<skoid>&sktid=<sktid>&skt=2019-08-06T21%3A16%3A54Z&ske=2019-08-07T07%3A00%3A00Z&sks=b&skv=2018-11-09&se=2019-08-07T07%3A00%3A00Z&sp=racwd
 ```
 
 > [!NOTE]
@@ -160,7 +165,7 @@ Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
     -StorageAccountName <storage-account>
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>További lépések
 
 - [Felhasználói delegálási SAS létrehozása (REST API)](/rest/api/storageservices/create-a-user-delegation-sas)
 - [Felhasználói delegálási kulcs műveletének beolvasása](/rest/api/storageservices/get-user-delegation-key)

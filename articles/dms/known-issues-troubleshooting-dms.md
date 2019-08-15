@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 06/18/2019
-ms.openlocfilehash: a35e0496c7e36d42e28a64fef438fe56713d3c78
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a72a0e26c2af34942faaa6a7e62feef86082e196
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855002"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034818"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Gyakori Azure Database Migration Service problémák és hibák elhárítása
 
@@ -98,9 +98,9 @@ Amikor az Azure Database Migration Service projektvarázslóban próbál csatlak
 | ------------- | ------------- |
 | A [ExpressRoute](https://azure.microsoft.com/services/expressroute/)használatakor Azure Database Migration Service a szolgáltatáshoz társított Virtual Network alhálózaton három szolgáltatási végpontot [kell](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) kiépíteni:<br> – Service Bus végpont<br> – Tárolási végpont<br> – Céladatbázis végpontja (például SQL-végpont, Cosmos DB végpont)<br><br><br><br><br> | [Engedélyezze](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) a szükséges szolgáltatási végpontokat a forrás-és a Azure Database Migration Service közötti ExpressRoute-kapcsolathoz. <br><br><br><br><br><br><br><br> |
 
-## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>Időtúllépési hiba történt egy MySQL-adatbázisnak a MySQL-hez készült Azure DB-re való áttelepítésekor
+## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>Zárolási várakozási időtúllépési hiba történt a MySQL-adatbázis MySQL-adatbázisba való áttelepítésekor
 
-Ha Azure Database Migration Service használatával telepít át egy MySQL-adatbázist egy Azure Database for MySQL példányra, az áttelepítés a következő időtúllépési hiba miatt meghiúsul:
+Ha Azure Database Migration Service használatával telepít át egy MySQL-adatbázist egy Azure Database for MySQL-példányra, az áttelepítés a zárolási várakozási időkorlát következő hibája miatt meghiúsul:
 
 * **Hiba**: Adatbázis-áttelepítési hiba – nem sikerült betölteni a fájlt – nem sikerült elindítani a (z) n RetCode fájl betöltési folyamatát: SQL_ERROR SqlState: HY000 NativeError: 1205 üzenet: [MySQL] [ODBC-illesztő] [mysqld] zárolási várakozási idő túllépve; próbálja meg újraindítani a tranzakciót
 

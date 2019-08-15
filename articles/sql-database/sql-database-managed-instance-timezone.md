@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 08/12/2019
-ms.openlocfilehash: 515e971214244cdd14955cc269a5f005cb93734f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.date: 08/14/2019
+ms.openlocfilehash: a02709ffde144e7bd5e4d05fcd0e07c5d84a15fb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967920"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035830"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példány időzónái
 
@@ -83,7 +83,10 @@ Visszaállíthat egy biztonságimásolat-fájlt, vagy importálhat egy felügyel
 
 ### <a name="point-in-time-restore"></a>Adott időpontnak megfelelő helyreállítás
 
-Ha időponthoz tartozó visszaállítást végez, a visszaállítási idő UTC-időként lesz értelmezve. Így elkerülhetők a nyári időszámítások és a lehetséges változások miatti esetleges kétségek.
+<del>Ha időponthoz tartozó visszaállítást végez, a visszaállítási idő UTC-időként lesz értelmezve. Így elkerülhetők a nyári időszámítások és a lehetséges változások miatti esetleges kétségek.<del>
+
+ >[!WARNING]
+  > A jelenlegi viselkedés nem áll összhangban a fenti utasítással, és a visszaállításhoz szükséges idő a forrás felügyelt példányának időzónája szerint van értelmezve, ahol az automatikus adatbázis-biztonsági mentések származnak. Dolgozunk azon, hogy kijavítsuk ezt a viselkedést, hogy az adott időpontot UTC-idő szerint értelmezze.
 
 ### <a name="auto-failover-groups"></a>Automatikus feladatátvételi csoportok
 

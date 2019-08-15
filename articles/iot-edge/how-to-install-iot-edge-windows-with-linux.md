@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 7d3586c571c2d70034f10cb3e1efd9242d6a1023
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9e9028d0c9aeff19dc221b81defa5e2057927fa6
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986963"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034198"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>A Windows IoT Edge használata Linux-tárolók futtatásához
 
@@ -30,9 +30,7 @@ Ebből a szakaszból megtekintheti, hogy a Windows-eszköz támogatja-e a IoT Ed
 
 ### <a name="supported-windows-versions"></a>Támogatott Windows-verziók
 
-A Linux-tárolók Azure IoT Edge a Windows következő verzióin futtathatók: 
-* Windows 10 évfordulós frissítés (14393-es Build) vagy újabb
-* Windows Server 2016 vagy újabb
+A Linux-tárolókkal rendelkező Azure IoT Edge a Windows bármely olyan verzióját futtathatja, amely megfelel a [Docker Desktop követelményeinek](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) .
 
 A IoT Edge legújabb verziójában található további tudnivalókat lásd: [Azure IoT Edge kiadások](https://github.com/Azure/azure-iotedge/releases).
 

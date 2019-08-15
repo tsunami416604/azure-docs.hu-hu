@@ -1,5 +1,5 @@
 ---
-title: Mi az Azure AD-jogosultságok kezelése? (Előzetes verzió) – Azure Active Directory
+title: Mi az az Azure AD-jogosultságkezelés? (Előzetes verzió) – Azure Active Directory
 description: Áttekintés a Azure Active Directory jogosultságok kezeléséről, valamint arról, hogy miként kezelheti a csoportokhoz, alkalmazásokhoz és SharePoint Online-webhelyekhez való hozzáférést a belső és külső felhasználók számára.
 services: active-directory
 documentationCenter: ''
@@ -16,14 +16,14 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12452b4e9cc6caa64d4c81a310fbccb5d1717817
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: d93a20494886bb7d563439e2699f60bedb646dcd
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678162"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032556"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>Mi az Azure AD-jogosultságok kezelése? (Előzetes verzió)
+# <a name="what-is-azure-ad-entitlement-management-preview"></a>Mi az az Azure AD-jogosultságkezelés? (Előzetes verzió)
 
 > [!IMPORTANT]
 > A Azure Active Directory (Azure AD) jogosultság-kezelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
@@ -33,6 +33,10 @@ ms.locfileid: "68678162"
 A szervezet alkalmazottainak a feladatuk elvégzéséhez különböző csoportokhoz, alkalmazásokhoz és webhelyekhez kell hozzáférnie. A hozzáférés kezelése kihívást jelent. A legtöbb esetben nem létezik a projekthez felhasználói igényeknek megfelelő összes erőforrást tartalmazó rendezett lista. A projektmenedzser jól ismeri a szükséges erőforrásokat, az érintett személyeket, és azt, hogy mennyi ideig tart a projekt. A projektmenedzsernek azonban általában nincs engedélye a mások számára való hozzáférés engedélyezésére vagy megadására. Ez a forgatókönyv bonyolultabb lehet, ha külső személyeket vagy vállalatokat próbál meg dolgozni.
 
 A Azure Active Directory (Azure AD) jogosultságok kezelése segítséget nyújt a csoportokhoz, alkalmazásokhoz és SharePoint Online-webhelyekhez való hozzáférés kezeléséhez a belső felhasználók és a szervezeten kívüli felhasználók számára egyaránt.
+
+Ez a videó áttekintést nyújt a jogosultságok kezeléséről és az üzleti értékéről:
+
+>[!VIDEO https://www.youtube.com/embed/_Lss6bFrnQ8]
 
 ## <a name="why-use-entitlement-management"></a>Miért érdemes használni a jogosultság-kezelést?
 

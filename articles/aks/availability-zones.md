@@ -2,17 +2,17 @@
 title: Availability Zones használata az Azure Kubernetes szolgáltatásban (ak)
 description: Megtudhatja, hogyan hozhat létre olyan fürtöt, amely a csomópontokat a rendelkezésre állási zónák között osztja el az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
-ms.author: iainfou
-ms.openlocfilehash: 52df1438913983a80ece487b49d0d6bd7821b636
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.author: mlearned
+ms.openlocfilehash: 4c2058072df4fcb068257c3e265dfe365c6d7e65
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019436"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033136"
 ---
 # <a name="preview---create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Előzetes verzió – az Availability Zonest használó Azure Kubernetes Service (ak) fürt létrehozása
 
@@ -23,7 +23,7 @@ Az alkalmazások magasabb szintű rendelkezésre állásának biztosítása érd
 Ez a cikk bemutatja, hogyan hozhat létre egy AK-fürtöt, és hogyan oszthatja szét a csomópont-összetevőket a rendelkezésre állási zónák között. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
 > [!IMPORTANT]
-> Az AK előzetes verziójának funkciói önkiszolgáló, választhatók. A felhasználók visszajelzéseket és hibákat biztosítanak a Közösségtől. Az előzetes verzióban ezek a szolgáltatások éles használatra nem használhatók. A nyilvános előzetes verzió funkciói a "legjobb erőfeszítés" támogatás alatt állnak. Az AK technikai támogatási csapatának segítsége csak a munkaidőn kívüli időzóna (PST) időpontjában érhető el. További információkért tekintse meg a következő támogatási cikkeket:
+> Az AK előzetes verziójának funkciói önkiszolgáló opt-in. Az előzetes verziók az "adott állapotban" és "ahogy elérhető" módon vannak kizárva, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A következő részben az ügyfélszolgálat a lehető leghatékonyabban foglalkozik. Ezért ezeket a funkciókat nem éles használatra szánták. További részletekért tekintse meg a következő támogatási cikkeket:
 >
 > * [AK-támogatási szabályzatok][aks-support-policies]
 > * [Azure-támogatás – gyakori kérdések][aks-faq]

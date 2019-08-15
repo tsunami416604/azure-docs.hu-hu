@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4e7b3905295e619c5a9500f80b5c43126b919e2f
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 74d345249e1cbaeb45a1a35d3c3d2f61a4c0b9cf
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946477"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032974"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Ismert problémák és hibaelhárítás az Azure Machine Learning szolgáltatás
 
@@ -48,6 +48,14 @@ A Pythonhoz készült Azure Machine Learning SDK: A PyYAML egy distutils telepí
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
+
+**Hibaüzenet:`ERROR: No matching distribution found for azureml-dataprep-native`**
+
+A anaconda Python 3.7.4-eloszlása olyan hibát tartalmaz, amely megszakítja a azureml-SDK telepítését. Ezt a problémát ebben a [GitHub-probléma](https://github.com/ContinuumIO/anaconda-issues/issues/11195) tárgyalja: ezt a parancsot a következő paranccsal hozhatja létre egy új Conda-környezet használatával:
+```bash
+conda create -n <env-name> python=3.7.3
+```
+Amely a Python 3.7.3 használatával hoz létre egy Conda-környezetet, amely nem rendelkezik a 3.7.4-ben lévő telepítési hibával.
 
 ## <a name="trouble-creating-azure-machine-learning-compute"></a>Hiba történt az Azure Machine Learning Compute létrehozása
 

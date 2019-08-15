@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/18/2019
-ms.openlocfilehash: 5d79edc4db07a2c5916725efc312d9f94fe985dc
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 05e16a67e6b01ce3bd1f03f0649baa1358414ea7
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640092"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035069"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 
@@ -133,9 +133,13 @@ A feladatátvételi csoport feladatátvételéhez írási hozzáféréssel kell 
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Ajánlott eljárások a feladatátvételi csoportok használatáról önálló adatbázisokkal és rugalmas készletekkel
 
-Az automatikus feladatátvételi csoportot az elsődleges SQL Database-kiszolgálón kell konfigurálni, és azt egy másik Azure-régióban lévő másodlagos SQL Database-kiszolgálóhoz kell kapcsolni.  A csoportok tartalmazhatják a kiszolgálók összes vagy néhány adatbázisát. A következő ábra egy geo-redundáns felhőalapú alkalmazás tipikus konfigurációját mutatja be, amely több adatbázist és automatikus feladatátvételi csoportot használ.
+Az automatikus feladatátvételi csoportot az elsődleges SQL Database-kiszolgálón kell konfigurálni, és azt egy másik Azure-régióban lévő másodlagos SQL Database-kiszolgálóhoz kell kapcsolni. A csoportok tartalmazhatják a kiszolgálók összes vagy néhány adatbázisát. A következő ábra egy geo-redundáns felhőalapú alkalmazás tipikus konfigurációját mutatja be, amely több adatbázist és automatikus feladatátvételi csoportot használ.
 
 ![automatikus feladatátvétel](./media/sql-database-auto-failover-group/auto-failover-group.png)
+
+> [!NOTE]
+> Az önálló adatbázis feladatátvételi csoportba való felvételével kapcsolatos részletes oktatóanyagért lásd: [egyetlen adatbázis hozzáadása feladatátvételi csoporthoz](sql-database-single-database-failover-group-tutorial.md) . 
+
 
 Az üzletmenet folytonosságát szem előtt tartva az alábbi általános irányelvek szerint járjon el:
 
@@ -167,12 +171,17 @@ Az üzletmenet folytonosságát szem előtt tartva az alábbi általános irány
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Ajánlott eljárások a feladatátvételi csoportok használatáról felügyelt példányokkal
 
-Az automatikus feladatátvételi csoportot az elsődleges példányon kell konfigurálni, és egy másik Azure-régióban található másodlagos példánnyal kell csatlakoznia.  A példány összes adatbázisa replikálva lesz a másodlagos példányra. A következő ábra egy geo-redundáns felhőalapú alkalmazás tipikus konfigurációját szemlélteti, amely felügyelt példányt és automatikus feladatátvételi csoportot használ.
+> [!IMPORTANT]
+> A felügyelt példányok automatikus feladatátvételi csoportjai nyilvános előzetes verzióban érhetők el.
+
+Az automatikus feladatátvételi csoportot az elsődleges példányon kell konfigurálni, és egy másik Azure-régióban található másodlagos példánnyal kell csatlakoznia.  A példány összes adatbázisa replikálva lesz a másodlagos példányra. 
+
+A következő ábra egy geo-redundáns felhőalapú alkalmazás tipikus konfigurációját szemlélteti, amely felügyelt példányt és automatikus feladatátvételi csoportot használ.
 
 ![automatikus feladatátvétel](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
 
-> [!IMPORTANT]
-> A felügyelt példányok automatikus feladatátvételi csoportjai nyilvános előzetes verzióban érhetők el.
+> [!NOTE]
+> Tekintse meg a felügyelt [példány hozzáadása feladatátvételi csoporthoz](sql-database-managed-instance-failover-group-tutorial.md) című témakört, amely részletesen ismerteti a felügyelt példányok feladatátvételi csoport használatára való hozzáadásának lépéseit. 
 
 Ha az alkalmazás felügyelt példányt használ adatcsomagként, kövesse az alábbi általános irányelveket az üzletmenet folytonosságának tervezésekor:
 
@@ -367,6 +376,10 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 ## <a name="next-steps"></a>További lépések
 
+- Részletes oktatóanyagok:
+    - [Önálló adatbázis hozzáadása egy feladatátvételi csoporthoz](sql-database-single-database-failover-group-tutorial.md)
+    - [Rugalmas készlet hozzáadása feladatátvételi csoporthoz](sql-database-elastic-pool-failover-group-tutorial.md)
+    - [Felügyelt példány hozzáadása feladatátvételi csoporthoz](sql-database-managed-instance-failover-group-tutorial.md)
 - A minta parancsfájlokat lásd:
   - [A PowerShell használatával konfigurálhatja az aktív földrajzi replikálást egyetlen adatbázishoz Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
   - [A PowerShell használatával konfigurálhatja az aktív földrajzi replikálást egy készletezett adatbázishoz Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)

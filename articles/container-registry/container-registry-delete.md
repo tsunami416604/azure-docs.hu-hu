@@ -1,21 +1,21 @@
 ---
 title: Rendszerkép-erőforrások törlése a Azure Container Registry
-description: Részletek a beállításjegyzék méretének hatékony kezeléséhez a tároló képadatainak törlésével.
+description: A beállításjegyzék méretének hatékony kezeléséről a tároló képadatainak Azure CLI-parancsokkal történő törlésével foglalkozó témakörben olvashat.
 services: container-registry
 author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 06/17/2019
+ms.date: 07/31/2019
 ms.author: danlep
-ms.openlocfilehash: eaf3b3e591ca2ddbd29fd5547d334ef90b24fc5e
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 12c1b5f9fa9620622b31f22c701d58ae237bcbf2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309649"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035145"
 ---
-# <a name="delete-container-images-in-azure-container-registry"></a>Tároló lemezképének törlése Azure Container Registry
+# <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Azure Container Registry tároló lemezképének törlése az Azure CLI használatával
 
 Az Azure Container Registry méretének megőrzése érdekében rendszeresen törölnie kell az elavult képadatokat. Míg az éles környezetben üzembe helyezett egyes tároló-lemezképek hosszabb távú tárolást igényelhetnek, másokat általában gyorsabban lehet törölni. Egy automatizált Build-és tesztelési forgatókönyvben például a beállításjegyzék gyorsan kitöltheti azokat a lemezképeket, amelyek soha nem helyezhetők üzembe, és a létrehozási és tesztelési menet befejezése után nem sokkal törölhetők.
 
@@ -54,7 +54,7 @@ Are you sure you want to continue? (y/n): y
 ```
 
 > [!TIP]
-> A címkével *való törlés nem* tévesztendő össze a címkék törlésével (címkézés törlése). A címkét törölheti az Azure CLI-parancs az [ACR repository jelölését][az-acr-repository-untag]használatával. A rendszer nem szabadít fel lemezterületet, ha jelölését egy képet [](container-registry-concepts.md#manifest) , mert a jegyzékfájlja és a rétegbeli adatok megmaradnak a beállításjegyzékben. Csak a címke hivatkozását törli a rendszer.
+> A címkével való törlés nem tévesztendő össze a címkék törlésével (címkézés törlése). A címkét törölheti az Azure CLI-parancs az [ACR repository jelölését][az-acr-repository-untag]használatával. A rendszer nem szabadít fel lemezterületet, ha jelölését egy képet [](container-registry-concepts.md#manifest) , mert a jegyzékfájlja és a rétegbeli adatok megmaradnak a beállításjegyzékben. Csak a címke hivatkozását törli a rendszer.
 
 ## <a name="delete-by-manifest-digest"></a>Törlés a manifest Digest használatával
 
@@ -113,7 +113,7 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 Az elavult jegyzékfájl-kivonatok azonosítása után a következő bash-szkripttel törölheti a megadott időbélyegnél régebbi jegyzékfájl-kivonatokat. Ehhez az Azure CLI és a **xargs**szükséges. Alapértelmezés szerint a parancsfájl nem végez törlést. A rendszerkép `ENABLE_DELETE` törlésének `true` engedélyezéséhez módosítsa az értéket.
 
 > [!WARNING]
-> A következő minta-parancsfájlt körültekintően kell használni – a törölt képadatok nem állíthatók helyre. Ha olyan rendszerekkel rendelkezik, amelyekben a manifest Digest (a rendszerkép neve helyett) lekéri a képeket, ne futtassa ezeket a parancsfájlokat. A jegyzékfájl-kivonatok törlésével megakadályozhatja, hogy ezek a rendszerek a lemezképeket a beállításjegyzékből húzza. A jegyzékfájlok helyett érdemes lehet egy *egyedi címkézési* sémát alkalmazni, amely [ajánlott eljárás][tagging-best-practices]. 
+> A következő minta-parancsfájlt körültekintően kell használni – a törölt képadatok nem állíthatók helyre. Ha olyan rendszerekkel rendelkezik, amelyekben a manifest Digest (a rendszerkép neve helyett) lekéri a képeket, ne futtassa ezeket a parancsfájlokat. A jegyzékfájl-kivonatok törlésével megakadályozhatja, hogy ezek a rendszerek a lemezképeket a beállításjegyzékből húzza. A jegyzékfájlok helyett érdemes lehet egy *egyedi címkézési* sémát alkalmazni, amely [ajánlott eljárás](container-registry-image-tag-version.md). 
 
 ```bash
 #!/bin/bash
@@ -148,7 +148,7 @@ fi
 
 ## <a name="delete-untagged-images"></a>Címkézetlen lemezképek törlése
 
-Ahogy azt a [manifest Digest](container-registry-concepts.md#manifest-digest) szakaszban is említettük, a módosított rendszerkép egy **meglévő címkével** való kihagyása a korábban lenyomott képpel, amely árva (vagy "lógó") képet eredményezett. A korábban leküldett rendszerkép jegyzékfájlja – és a rétegbeli adatok – a beállításjegyzékben maradnak. Vegye figyelembe a következő eseménysorozat-sorozatot:
+Ahogy azt a [manifest Digest](container-registry-concepts.md#manifest-digest) szakaszban is említettük, a módosított rendszerkép egy meglévő címkével való kihagyása a korábban lenyomott képpel, amely árva (vagy "lógó") képet eredményezett. A korábban leküldett rendszerkép jegyzékfájlja – és a rétegbeli adatok – a beállításjegyzékben maradnak. Vegye figyelembe a következő eseménysorozat-sorozatot:
 
 1. Leküldéses képek *ACR – HelloWorld* a címkével **legújabb**:`docker push myregistry.azurecr.io/acr-helloworld:latest`
 1. A repository *ACR-HelloWorld*ellenőrzési jegyzékfájljának megtekintése:
@@ -201,7 +201,7 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 Ha ezt a parancsot egy parancsfájlban használja, törölheti az összes címkézetlen lemezképet egy adattárból.
 
 > [!WARNING]
-> A következő minta-parancsfájlok körültekintő használata – a törölt képadatok nem állíthatók helyre. Ha olyan rendszerekkel rendelkezik, amelyekben a manifest Digest (a rendszerkép neve helyett) lekéri a képeket, ne futtassa ezeket a parancsfájlokat. A címkézetlen lemezképek törlésével megakadályozhatja, hogy ezek a rendszerek kihúzzanak a lemezképeket a beállításjegyzékből. A jegyzékfájlok helyett érdemes lehet egy *egyedi címkézési* sémát alkalmazni, amely [ajánlott eljárás][tagging-best-practices].
+> A következő minta-parancsfájlok körültekintő használata – a törölt képadatok nem állíthatók helyre. Ha olyan rendszerekkel rendelkezik, amelyekben a manifest Digest (a rendszerkép neve helyett) lekéri a képeket, ne futtassa ezeket a parancsfájlokat. A címkézetlen lemezképek törlésével megakadályozhatja, hogy ezek a rendszerek kihúzzanak a lemezképeket a beállításjegyzékből. A jegyzékfájlok helyett érdemes lehet egy *egyedi címkézési* sémát alkalmazni, amely [ajánlott eljárás](container-registry-image-tag-version.md).
 
 **Azure CLI a Bashben**
 
@@ -260,6 +260,10 @@ if ($enableDelete) {
 }
 ```
 
+## <a name="automatically-purge-tags-and-manifests-preview"></a>Címkék és jegyzékfájlok automatikus kiürítése (előzetes verzió)
+
+Az Azure parancssori felület parancsainak alternatívájaként egy igény szerinti vagy ütemezett ACR-feladat futtatásával törölheti az összes olyan címkét, amely egy adott időtartamnál régebbi, vagy megfelel a megadott szűrőnek. További információ: lemezképek [automatikus törlése az Azure Container registryből](container-registry-auto-purge.md).
+
 ## <a name="next-steps"></a>További lépések
 
 További információ a Azure Container Registry található képtárolóról: [tároló képtárolója Azure Container Registry](container-registry-storage.md).
@@ -270,7 +274,6 @@ További információ a Azure Container Registry található képtárolóról: [
 <!-- LINKS - External -->
 [docker-manifest-inspect]: https://docs.docker.com/edge/engine/reference/commandline/manifest/#manifest-inspect
 [portal]: https://portal.azure.com
-[tagging-best-practices]: https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/
 
 <!-- LINKS - Internal -->
 [az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete

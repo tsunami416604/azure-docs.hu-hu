@@ -1,6 +1,6 @@
 ---
-title: Ügyfél által felügyelt kulcsok az Azure CLI Azure Storage-titkosítás konfigurálása
-description: Útmutató az Azure CLI használatával az ügyfél által felügyelt kulcsok az Azure Storage-titkosítás konfigurálása. Ügyfél által felügyelt kulcsokat hozhat létre, elforgatása, tiltsa le, és visszavonhatja a hozzáférés-vezérlés lehetővé teszik.
+title: Ügyfél által felügyelt kulcsok konfigurálása Azure Storage-titkosításhoz az Azure CLI-ből
+description: Ismerje meg, hogyan konfigurálhatja az Azure Storage-titkosításhoz az ügyfél által felügyelt kulcsokat az Azure CLI használatával. Az ügyfél által felügyelt kulcsok lehetővé teszik a hozzáférés-vezérlések létrehozását, elforgatását, letiltását és visszavonását.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,24 +9,28 @@ ms.date: 06/24/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 925b69e064e260a78a102a068f052ad7d396c380
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 837e3be209da1fe42ced9e4a23a75c46612cebd2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357058"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036632"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Ügyfél által felügyelt kulcsok az Azure CLI Azure Storage-titkosítás konfigurálása
+# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Ügyfél által felügyelt kulcsok konfigurálása Azure Storage-titkosításhoz az Azure CLI-ből
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Ez a cikk bemutatja, hogyan konfigurálása a key vault Azure parancssori felületével ügyfél által felügyelt kulcsokkal.
+Ez a cikk bemutatja, hogyan konfigurálhat egy Key vaultot az ügyfél által felügyelt kulcsokkal az Azure CLI használatával.
 
-## <a name="assign-an-identity-to-the-storage-account"></a>Identitás hozzárendelése a storage-fiók
+> [!IMPORTANT]
+> Az ügyfél által felügyelt kulcsok Azure Storage-titkosítással való használata megköveteli, hogy a Key Vault két szükséges tulajdonsággal rendelkezzen, a helyreállítható törléssel és a **kiürítéssel**. Ezek a tulajdonságok alapértelmezés szerint engedélyezve vannak, amikor új kulcstartót hoz létre a Azure Portal. Ha azonban egy meglévő kulcstartón kell engedélyeznie ezeket a tulajdonságokat, akkor a PowerShellt vagy az Azure CLI-t kell használnia.
+> Csak az RSA-kulcsok és a 2048-es kulcs mérete támogatott.
 
-Ahhoz, hogy az ügyfél által felügyelt kulcsokat a tárfiók, először hozzárendel egy rendszer által hozzárendelt felügyelt identitás a storage-fiókba. A tárolási fiók szükséges engedélyek biztosítása a kulcstartó elérését a felügyelt identitást fogja használni.
+## <a name="assign-an-identity-to-the-storage-account"></a>Identitás kiosztása a Storage-fiókhoz
 
-Rendelje hozzá egy felügyelt identitás, az Azure CLI-vel, hívja meg [storage-fiók frissítése az](/cli/azure/storage/account#az-storage-account-update). Ne felejtse el a zárójeleket helyőrzőértékeket cserélje le a saját értékeire.
+Ha engedélyezni szeretné az ügyfél által felügyelt kulcsokat a Storage-fiókhoz, először rendeljen hozzá egy rendszerhez rendelt felügyelt identitást a Storage-fiókhoz. Ezt a felügyelt identitást fogja használni a Storage-fiók engedélyeinek megadásához a kulcstartó eléréséhez.
+
+Felügyelt identitás az Azure CLI-vel való hozzárendeléséhez hívja [az az Storage Account Update](/cli/azure/storage/account#az-storage-account-update)lehetőséget. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
 
 ```azurecli-interactive
 az account set --subscription <subscription-id>
@@ -37,13 +41,13 @@ az storage account update \
     --assign-identity
 ```
 
-Felügyelt identitások alapértelmezett konfigurálása az Azure CLI-vel kapcsolatos további információkért lásd: [konfigurálása felügyelt identitások az Azure-erőforrások egy Azure virtuális gépen az Azure CLI-vel](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md).
+A rendszerhez rendelt felügyelt identitások Azure CLI-vel való konfigurálásával kapcsolatos további információkért lásd: felügyelt identitások konfigurálása Azure-beli virtuális gépeken az Azure [CLI használatával](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md).
 
 ## <a name="create-a-new-key-vault"></a>Új kulcstartó létrehozása
 
-A key vaultban, ügyfél által felügyelt kulcsok tárolására, az Azure Storage-titkosítás kell rendelkeznie a két kulcs védelme beállítás engedélyezve van, amellyel **a helyreállítható Törlés** és **tegye végleges törlés**. Hozzon létre egy új kulcstartót, PowerShell vagy az Azure CLI használatával az ezekkel a beállításokkal, hajtsa végre a következő parancsokat. Ne felejtse el a zárójeleket helyőrzőértékeket cserélje le a saját értékeire. 
+Az Azure Storage-titkosításhoz az ügyfél által felügyelt kulcsok tárolásához használt kulcstartónak engedélyezve kell lennie két kulcsfontosságú védelmi beállítás, a helyreállítható törlés és a **nem végleges** **Törlés** . Ha a PowerShell vagy az Azure CLI használatával szeretne új kulcstartót létrehozni ezekkel a beállításokkal, hajtsa végre a következő parancsokat. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire. 
 
-Hozzon létre egy új kulcstartót, Azure CLI-vel, hívja meg [az keyvault létrehozása](/cli/azure/keyvault#az-keyvault-create). Ne felejtse el a zárójeleket helyőrzőértékeket cserélje le a saját értékeire.
+Ha új kulcstartót szeretne létrehozni az Azure CLI használatával, hívja [az az kulcstartó Create](/cli/azure/keyvault#az-keyvault-create). Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
 
 ```azurecli-interactive
 az keyvault create \
@@ -54,11 +58,11 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-## <a name="configure-the-key-vault-access-policy"></a>A kulcstartó-hozzáférési házirend konfigurálása
+## <a name="configure-the-key-vault-access-policy"></a>A Key Vault hozzáférési szabályzatának konfigurálása
 
-Ezután konfigurálja a kulcstartó hozzáférési házirendje, úgy, hogy a tárfiók engedélyeket az eléréséhez. Ebben a lépésben a felügyelt identitás, amelyet korábban a tárfiókhoz rendelt fogja használni.
+Ezután konfigurálja a Key Vault hozzáférési házirendjét, hogy a Storage-fióknak hozzáférési jogosultsága legyen az eléréséhez. Ebben a lépésben a korábban a Storage-fiókhoz rendelt felügyelt identitást fogja használni.
 
-A kulcstartó hozzáférési házirend beállítása, hívja [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy). Ne felejtse el a zárójeleket helyőrzőértékeket cserélje le a saját értékeire.
+A Key Vault hozzáférési házirendjének beállításához hívja az [az kulcstartó set-Policy](/cli/azure/keyvault#az-keyvault-set-policy). Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
 
 ```azurecli-interactive
 storage_account_principal=$(az storage account show \
@@ -75,7 +79,7 @@ az keyvault set-policy \
 
 ## <a name="create-a-new-key"></a>Új kulcs létrehozása
 
-Ezután hozzon létre egy kulcsot a kulcstartóban. A kulcs létrehozásához hívja [az keyvault key létrehozása](/cli/azure/keyvault/key#az-keyvault-key-create). Ne felejtse el a zárójeleket helyőrzőértékeket cserélje le a saját értékeire.
+Ezután hozzon létre egy kulcsot a Key vaultban. A kulcs létrehozásához hívja [az az kulcstartó kulcs létrehozása](/cli/azure/keyvault/key#az-keyvault-key-create)lehetőséget. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
 
 ```azurecli-interactive
 az keyvault key create
@@ -83,11 +87,11 @@ az keyvault key create
     --vault-name <key-vault>
 ```
 
-## <a name="configure-encryption-with-customer-managed-keys"></a>Ügyfél által felügyelt kulcsokkal titkosítás konfigurálása
+## <a name="configure-encryption-with-customer-managed-keys"></a>Titkosítás konfigurálása az ügyfél által felügyelt kulcsokkal
 
-Alapértelmezés szerint az Azure Storage-titkosítás használja a Microsoft által felügyelt kulcsokkal. Az Azure Storage-fiók felhasználó által kezelt kulcsokkal konfigurálja, és adja meg a, a storage-fiókhoz társít.
+Alapértelmezés szerint az Azure Storage-titkosítás a Microsoft által felügyelt kulcsokat használja. Konfigurálja az Azure Storage-fiókot az ügyfél által felügyelt kulcsokhoz, és adja meg a Storage-fiókhoz társítandó kulcsot.
 
-Titkosítási beállítások a storage-fiók frissítéséhez hívja meg [storage-fiók frissítése az](/cli/azure/storage/account#az-storage-account-update). Ebben a példában is lekérdezi a key vault URI és kulcs verziója, mely értékeket a kulcs társítása a storage-fiók szükséges. Ne felejtse el a zárójeleket helyőrzőértékeket cserélje le a saját értékeire.
+A Storage-fiók titkosítási beállításainak frissítéséhez hívja az [az Storage Account Update](/cli/azure/storage/account#az-storage-account-update)menüpontot. Ez a példa a Key Vault URI-JÁT és a kulcs verziószámát is lekérdezi, és mindkét értékre szükség van ahhoz, hogy a kulcsot társítsa a Storage-fiókhoz. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -109,11 +113,11 @@ az storage account update
     --encryption-key-vault $key_vault_uri
 ```
 
-## <a name="update-the-key-version"></a>Frissítés a kulcs verziója
+## <a name="update-the-key-version"></a>A kulcs verziójának frissítése
 
-Amikor létrehoz egy kulcs új verziója, szüksége frissíteni a tárfiókot, hogy az új verziót használja. Első lépésként lekérdezni a key vault URI-t a meghívásával [az keyvault show](/cli/azure/keyvault#az-keyvault-show), és a kulcs verzióját is meghívásával [az keyvault key list-versions](/cli/azure/keyvault/key#az-keyvault-key-list-versions). Ezután hívja meg [storage-fiók frissítése az](/cli/azure/storage/account#az-storage-account-update) frissíteni a tárfiók titkosítási beállítások használatához a kulcs új verziója, az előző szakaszban látható módon.
+A kulcsok új verziójának létrehozásakor frissítenie kell a Storage-fiókot az új verzió használatára. Első lépésként a Key Vault URI-JÁT az [az kulcstartó show](/cli/azure/keyvault#az-keyvault-show)paranccsal hívhatja meg, és a kulcs verziószámát az az [kulcstartó Key List-Versions](/cli/azure/keyvault/key#az-keyvault-key-list-versions)paranccsal hívja meg. Ezt követően az az [Storage Account Update](/cli/azure/storage/account#az-storage-account-update) paranccsal frissítse a Storage-fiók titkosítási beállításait úgy, hogy az az előző szakaszban látható módon használják a kulcs új verzióját.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Inaktív adatok az Azure Storage-titkosítás](storage-service-encryption.md) 
+- [Azure Storage-titkosítás a REST-adatokhoz](storage-service-encryption.md) 
 - [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?

@@ -1,21 +1,21 @@
 ---
-title: Azure Batch készlet kiépítése egyéni rendszerképből | Microsoft Docs
-description: Hozzon létre egy batch-készletet egy egyéni rendszerképből olyan számítási csomópontok kiépítéséhez, amelyek tartalmazzák az alkalmazáshoz szükséges szoftvereket és adatadatokat. Az egyéni lemezképek hatékony módszer a számítási csomópontok konfigurálására a Batch-munkaterhelések futtatásához.
+title: Hozzon létre egy készletet a megosztott rendszerkép-katalógus használatával – Azure Batch | Microsoft Docs
+description: Hozzon létre egy batch-készletet a megosztott rendszerkép-katalógusban, hogy egyéni rendszerképeket építsen ki az alkalmazásához szükséges szoftvereket és adatokból álló számítási csomópontok számára. Az egyéni lemezképek hatékony módszer a számítási csomópontok konfigurálására a Batch-munkaterhelések futtatásához.
 services: batch
 author: laurenhughes
 manager: gwallace
 ms.service: batch
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 08/14/2019
 ms.author: lahugh
-ms.openlocfilehash: d8bda817231ec0a5a733d5e586e49639c62ea177
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 00da17512cbc2e713955ea83c7d9fa7517958169
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882827"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036696"
 ---
-# <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Egyéni rendszerkép használata virtuális gépek készletének létrehozásához
+# <a name="use-the-shared-image-gallery-to-create-a-pool"></a>Készlet létrehozása a megosztott képtára használatával
 
 Ha Azure Batch-készletet hoz létre a virtuális gép konfigurációjával, meg kell adnia egy virtuálisgép-rendszerképet, amely a készlet minden számítási csomópontja számára biztosítja az operációs rendszert. Létrehozhatja a virtuális gépek készletét vagy egy támogatott Azure Marketplace-lemezképpel, vagy létrehozhat egy egyéni rendszerképet a [megosztott](../virtual-machines/windows/shared-image-galleries.md)képkatalógus használatával.
 

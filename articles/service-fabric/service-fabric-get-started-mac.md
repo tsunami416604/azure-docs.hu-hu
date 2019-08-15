@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
-ms.devlang: linux
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 84d1f52b5fb8f18d3578bad28930f74534b1409f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ce8d944e7334b071a4a48f38f8c4fafaeff4c47
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60947592"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035283"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>A fejlesztési környezet beállítása Mac OS X-en
 > [!div class="op_single_selector"]
@@ -53,11 +52,11 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    Ezeket a beállításokat közvetlenül a Docker telepítési útvonalán található daemon.json fájlban frissítheti. Módosíthatja a démon konfigurációs beállításainak a Dockerben közvetlenül. Válassza a **Docker ikonját**, majd válassza a **Preferences (Beállítások)**  > **Daemon (Démon)**  > **Advanced (Speciális)** lehetőséget.
+    Ezeket a beállításokat közvetlenül a Docker telepítési útvonalán található daemon.json fájlban frissítheti. Közvetlenül módosíthatja a démon konfigurációs beállításait a Docker-ben. Válassza a **Docker ikonját**, majd válassza a **Preferences (Beállítások)**  > **Daemon (Démon)**  > **Advanced (Speciális)** lehetőséget.
     
     >[!NOTE]
     >
-    >Ajánlott a közvetlenül a Docker-démont módosítása azért, mert a daemon.json fájl helye gépenként változhat. Például: ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
+    >A démon közvetlenül a Docker-ben való módosítása javasolt, mert a Daemon. JSON fájl helye változhat a gép és a gép között. Például: ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
     >
 
     >[!TIP]
@@ -110,7 +109,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
     >
 
-5. A fürt elindításához egy kis időt vesz igénybe. Ha fut, megtekinthetők a naplófájlok a következő paranccsal, vagy Ugrás az irányítópultra, a fürt állapotának [ http://localhost:19080 ](http://localhost:19080):
+5. A fürt eltarthat egy kis ideig. Ha fut, a következő parancs használatával megtekintheti a naplókat, vagy az irányítópultra ugorhat a fürtök állapotának [http://localhost:19080](http://localhost:19080)megtekintéséhez:
 
     ```bash 
     docker logs sftestcluster
@@ -118,7 +117,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
 
 
 
-6. Állítsa le és tisztíthatja meg a tárolót használja az alábbi parancsot. Azonban fogjuk használni ezt a tárolót a következő lépésben.
+6. A tároló leállításához és törléséhez használja a következő parancsot. Ezt a tárolót azonban a következő lépésben fogjuk használni.
 
     ```bash 
     docker rm -f sftestcluster
@@ -174,8 +173,9 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyekkel S
     brew install gradle
     ```
 
-    >[!TIP]
-    > Mindenképpen ellenőrizze a JDK telepítve megfelelő verziójával rendelkezik. 
+    > [!IMPORTANT]
+    > Előfordulhat, hogy `brew cask install java` a jelenlegi verziói a JDK újabb verzióját telepítik.
+    > Ügyeljen arra, hogy a JDK 8 telepítse.
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>Alkalmazás telepítése Mac gépen a terminálból
 

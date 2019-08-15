@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d33b4751b421f5af1536af9a88d15e060ab59bdb
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 2420fc25795ec74939649fb8a17ead7c8cfdd1df
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489061"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032440"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management-preview"></a>Jelentések és naplók megtekintése az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -29,6 +29,12 @@ ms.locfileid: "68489061"
 > A Azure Active Directory (Azure AD) jogosultság-kezelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+A felhasználó-hozzárendelési jelentés és a Azure Active Directory napló további részleteket biztosít a címtárban lévő felhasználókról. Rendszergazdaként megtekintheti azokat az erőforrásokat, amelyekkel a felhasználók naplózási célból férhetnek hozzá a kérelmek naplóihoz, illetve megtekinthetik a felhasználói kérések állapotát. Ez a cikk bemutatja, hogyan használhatja a felhasználói hozzárendelések jelentést és az Azure AD-naplókat.
+
+Tekintse meg az alábbi videót, amelyből megtudhatja, hogyan használhatja a jogosultság-kezelést a Azure Active Directory felhasználók hozzáférésének kezeléséhez:
+
+>[!VIDEO https://www.youtube.com/embed/omtNJ7ySjS0]
 
 ## <a name="view-resources-a-user-has-access-to"></a>Azon erőforrások megtekintése, amelyekhez a felhasználónak hozzáférése van
 
@@ -72,7 +78,7 @@ Az Azure AD további naplózási rekordokat fog írni, amíg a kérelem folyamat
 
 Amikor egy felhasználóhoz hozzáférési hozzáférés van rendelve, az Azure ad egy naplózási `EntitlementManagement` rekordot ír a kategóriába a **tevékenységgel** `Fulfill access package assignment`.  Az **ActorUserPrincipalName** mező azonosítja a hozzáférést fogadó felhasználót.
 
-Ha a hozzáférés nem lett hozzárendelve, akkor az Azure ad egy naplózási `EntitlementManagement` rekordot ír  a tevékenység `Deny access package assignment request`kategóriába, ha a kérést egy jóváhagyó megtagadta `Access package assignment request timed out (no approver action taken)`, vagy ha a kérelem túllépte az időkorlátot a jóváhagyó jóváhagyása előtt.
+Ha a hozzáférés nem lett hozzárendelve, akkor az Azure ad egy naplózási `EntitlementManagement` rekordot ír a tevékenység `Deny access package assignment request`kategóriába, ha a kérést egy jóváhagyó megtagadta `Access package assignment request timed out (no approver action taken)`, vagy ha a kérelem túllépte az időkorlátot a jóváhagyó jóváhagyása előtt.
 
 Ha a felhasználó hozzáférési csomagjának hozzárendelése lejár, a felhasználó megszakította vagy eltávolítja a rendszergazdát, akkor az Azure ad naplózási rekordot ír a `EntitlementManagement` **tevékenységgel** `Remove access package assignment`rendelkező kategóriához.
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/09/2019
+ms.date: 08/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: bd0ed971b84baae3b85badfcc669bbad657d1551
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: ae397c077ac87618b646883f9125c9da2df81bfd
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018955"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036572"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -101,7 +101,7 @@ A **helyi Azure-régiók** olyanok, amelyek az egyes [ExpressRoute helyi](expres
 | **Dublin** | Equinix | Észak-Európa | Colt, eir, Equinix, Interxion, Megaport |
 | **Frankfurt** | Interxion | n/a | DE-CIX, Interxion, narancs |
 | **Hongkong (KKT)** | Equinix | Kelet-Ázsia | Aryaka Networks Networks, British Telecom, CenturyLink Cloud-kapcsolat, telekommunikáció, kínai távközlési globális, Equinix, Megaport, NTT Communications, Orange, PCCW globális korlátozott, Tata Communications, Telia Carrier, Verizon |
-| **Johannesburg** | Teraco | Dél-Afrika északi régiója | British Telecom, internetes megoldások – felhőalapú kapcsolat, Liquid Telecom, Teraco |
+| **Johannesburg** | Teraco | Dél-Afrika északi régiója | British Telecom, Internet Solutions – Cloud-kapcsolat, Liquid Telecom, Orange, Teraco |
 | **Kuala Lumpur** | TIME dotCom | n/a | TIME dotCom |
 | **Las Vegas** | Kapcsoló | n/a | CenturyLink Cloud Connect, Megaport |
 | **London** | Equinix | Az Egyesült Királyság déli régiója | AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions – Cloud Connect, Interxion, Jisc, Level 3 Communications, Megaport, MTN, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Telehouse – KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |

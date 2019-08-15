@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 2efda0e506cf0525b1a8ea868acca48a929f8f41
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b63b68b7721dd848e6a72b3b7d9cfa38bf031b23
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848282"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035084"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Modulok fejlesztése és hibakeresése a Visual Studio Code használatával Azure IoT Edge
 
@@ -30,7 +30,7 @@ Ez a cikk a modulok különböző nyelveken történő fejlesztéséhez és hiba
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Fejlesztői számítógépként egy Windows, macOS vagy Linux rendszerű számítógépet vagy virtuális gépet is használhat. Egy IoT Edge eszköz lehet egy másik fizikai eszköz.
+Fejlesztői számítógépként egy Windows, macOS vagy Linux rendszerű számítógépet vagy virtuális gépet is használhat. Windows rendszerű számítógépeken Windows-és Linux-modulokat is fejleszthet. Windows-modulok fejlesztéséhez használjon 1809/Build 17763 vagy újabb verziót futtató Windows-számítógépet. Linux-modulok fejlesztéséhez használjon olyan Windows-számítógépet, amely megfelel a [Docker Desktop követelményeinek](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install). 
 
 Először telepítse a [Visual Studio Code](https://code.visualstudio.com/) -ot, majd adja hozzá a következő bővítményeket:
 

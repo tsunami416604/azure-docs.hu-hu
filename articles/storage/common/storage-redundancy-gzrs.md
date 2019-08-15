@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 1b5a9eb9f91469e6e25c5d90bfeb4aa0213009bc
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
-ms.translationtype: MT
+ms.openlocfilehash: 2e97a734a4730e4341614019e3ca1ecaa81420a7
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017295"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035987"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Hosszú rendelkezésre állású Azure Storage-alkalmazások kiépítése a Geo-Zone-redundáns tárolással (GZRS) (előzetes verzió)
 
@@ -30,7 +30,6 @@ Csak az általános célú v2 tároló-fiókok támogatják a GZRS és az RA-GZR
 A GZRS és az RA-GZRS jelenleg előzetes verzióként érhető el a következő régiókban:
 
 - USA keleti régiója
-- Nyugat-Európa
 
 A Microsoft továbbra is engedélyezi a GZRS és az RA-GZRS további Azure-régiókban. A támogatott régiókkal kapcsolatos információkért olvassa el rendszeresen az [Azure szolgáltatás frissítéseinek](https://azure.microsoft.com/updates/) oldalát.
 

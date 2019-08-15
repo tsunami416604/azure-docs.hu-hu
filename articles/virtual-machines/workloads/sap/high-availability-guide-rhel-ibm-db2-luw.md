@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/10/2019
 ms.author: juergent
-ms.openlocfilehash: 232468d9b3466759d7af2b7be68a1f553ced6e6d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: c649b93284a48df705d389f4de728d83f793af04
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68348639"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036641"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -517,11 +517,11 @@ Ha a telepítést a DB2 HADR-konfiguráció létrehozása előtt végezte el, v�
 A J2EE konfigurációs eszköz használatával megvizsgálhatja vagy frissítheti a JDBC URL-címet. Mivel a J2EE konfigurációs eszköz egy grafikus eszköz, telepítenie kell az X Servert:
  
 1. Jelentkezzen be a J2EE-példány elsődleges alkalmazáskiszolgáló kiszolgálójára, és hajtsa végre a következőt:
-     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>
+     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
 1.A bal oldali keretben válassza a **biztonsági tároló**elemet.
 1.A jobb oldali keretben válassza a JDBC/Pool/\<SAPSID>/URL.
 1.Módosítsa az állomásnév nevét a JDBC URL-címében a virtuális állomásnévre.
-     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>
+     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
 1.Válassza a **Hozzáadás**lehetőséget.
 1.A módosítások mentéséhez válassza a bal felső sarokban található lemez ikont.
 1.A konfigurációs eszköz bezárásához.

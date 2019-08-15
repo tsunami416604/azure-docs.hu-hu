@@ -1,6 +1,6 @@
 ---
-title: Adattárházegységek (dwu-k, cDWUs) az Azure SQL Data Warehouse |} A Microsoft Docs
-description: Javaslatok az adattárházegységek (dwu-k, cDWUs) ár és a teljesítmény-, és módosítása az egységek számát az ideális számot kiválasztása.
+title: Adatraktár-egységek (DWU, cDWUs) a Azure SQL Data Warehouseban | Microsoft Docs
+description: Javaslatok az adatraktár-egységek (DWU, cDWUs) ideális számának kiválasztásához az árak és a teljesítmény optimalizálásához, valamint az egységek számának módosításához.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -11,42 +11,42 @@ ms.date: 05/30/2019
 ms.author: martinle
 ms.reviewer: igorstan
 mscustom: sqlfreshmay19
-ms.openlocfilehash: d20a600951a0fe586e981adf12127072df1b744c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 282fab70e3b6d1fcf81814b2dd599259e2396fb3
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428008"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036044"
 ---
-# <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Az Adattárházegységek (Dwu) és számítási Adattárházegység (cDWUs)
+# <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Adatraktár-egységek (DWU-EK) és számítási adattárház-egységek (cDWUs-EK)
 
-Javaslatok az adattárházegységek (dwu-k, cDWUs) ár és a teljesítmény-, és módosítása az egységek számát az ideális számot kiválasztása.
+Javaslatok az adatraktár-egységek (DWU, cDWUs) ideális számának kiválasztásához az árak és a teljesítmény optimalizálásához, valamint az egységek számának módosításához.
 
-## <a name="what-are-data-warehouse-units"></a>Mik azok az Adattárházegységek
+## <a name="what-are-data-warehouse-units"></a>Mik az adatraktár-egységek
 
-Az Azure SQL Data Warehouse CPU, memória és IO az Adattárházegységek (Dwu) nevű számítási skálázási egységek vannak csoportosítva. A DWU-absztrakt, normalizált mérték számítási erőforrások és a teljesítmény jelöli. A szolgáltatási szint módosítását a rendszer, amely ezután beállítja a teljesítmény és a költség, a rendszer rendelkezésre álló dwu-k számának változtatja.
+Azure SQL Data Warehouse a CPU, a memória és az IO az adattárház-egységek (DWU-EK) által kiszámított számítási léptékű egységbe van csomagolva. A DWU a számítási erőforrások és a teljesítmény absztrakt, normalizált mértékét jelöli. A szolgáltatási szint módosítása megváltoztatja a rendszer számára elérhető DWU számát, ami viszont a teljesítmény és a szolgáltatás költségeit is módosítja.
 
-Nagyobb teljesítményt az adattárházegységek számát lehet növelni. Kisebb teljesítményt csökkentheti a adattárházegységek. Adattárházegységek módosítása nem érinti a tárolási költségek, tárolási és számítási költségeit külön-külön számlázzuk.
+A nagyobb teljesítmény érdekében növelheti az adatraktár-egységek számát. Kevesebb teljesítmény esetén csökkentse az adatraktár-egységeket. A tárolási és a számítási költségek számlázása külön történik, így az adatraktár-egységek módosítása nem befolyásolja a tárolási költségeket.
 
-A teljesítményt az adattárházegységek data warehouse számítási feladatok metrikák alapján:
+Az adatraktár-egységek teljesítménye a következő adatraktár-számítási feladatok mérőszámán alapul:
 
-- Milyen gyors egy standard adatraktározási lekérdezésre a sok sort, és hajtsa végre a komplex összesítést készít. Tato operace je i/o- és CPU-igényes.
-- Az adatraktár gyorsasága betöltheti az adatokat az Azure Storage BLOB vagy az Azure Data Lake. Tato operace je, hálózat- és CPU-igényes.
-- Milyen gyors a [ `CREATE TABLE AS SELECT` ](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL parancsot másolhat egy táblát. Ez a művelet magában foglalja az adatok beolvasása a tárfiókból, szétosztása a készülék csomópontjai között és tárfiókba történő újbóli írása. Tato operace je CPU, IO és nagy számításigényű hálózati.
+- A szabványos adattárház-lekérdezések gyors vizsgálata nagy mennyiségű sort vizsgál, majd összetett összesítést hajt végre. Ez a művelet I/O-és CPU-igényes.
+- Az adattárház az Azure Storage-Blobokból vagy Azure Data Lakeokból származó adatok betöltésének gyorsasága. A művelet a hálózati és a CPU-igényes.
+- A [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL-parancs által a tábla másolásának gyorsasága. A művelet magában foglalja az adatok tárolásból való beolvasását, a berendezés csomópontjain való terjesztését és a tárolóba való írást. Ez a művelet CPU-, IO-és hálózati igényű.
 
-A dwu-k növelése:
+Növekvő DWU:
 
-- Lineárisan módosítja a vizsgálatokat, összesítések és a CTAS utasítások a rendszer teljesítményét
-- Növeli az olvasók és a PolyBase betöltési műveletek írók számát
-- Növeli a párhuzamos lekérdezések és egyidejű hely maximális számát.
+- A rendszer lineárisan módosítja a vizsgálatok, összesítések és CTAS utasításokhoz tartozó rendszerek teljesítményét
+- Növeli az olvasók és az írók számát a kiinduló betöltési műveletekhez
+- Növeli az egyidejű lekérdezések és a párhuzamossági bővítőhelyek maximális számát.
 
 ## <a name="service-level-objective"></a>Szolgáltatási szint célkitűzése
 
-A szolgáltatási szint célkitűzést (SLO) a méretezhetőség beállítása, amely meghatározza, hogy a költség- és az adatraktár szintjét. A szolgáltatási szintek, a Gen2 számítási kiosztása az adattárházegységekkel (cDWU), például DW2000c mérése történik. A dwu-k, például DW2000 Gen1 szolgáltatási szintek mérése történik.
+A szolgáltatási szint célkitűzése (SLO) a méretezhetőségi beállítás, amely meghatározza az adattárház költségeit és teljesítményét. A Gen2 szolgáltatási szintjeit számítási adattárház-egységek (cDWU-EK) mérik, például DW2000c. A Gen1 szolgáltatási szintjei a DWU-ben vannak mérve, például DW2000.
   > [!NOTE]
-  > Az Azure SQL Data Warehouse Gen2 nemrégiben kiegészítő skálázási lehetőségeket a compute csomag akár 100 cDWU is támogatja. A korábbi adattárházak jelenleg a Gen1 igénylő, az alacsonyabb rétegek számítási most már frissítheti a régióban jelenleg elérhető, további költségektől Gen2-re.  Ha még nem támogatott a régióban továbbra is frissíthet egy támogatott régióban. További információkért lásd: [frissítés Gen2-re](upgrade-to-latest-generation.md).
+  > Azure SQL Data Warehouse Gen2 a közelmúltban hozzáadott további méretezési képességeket a számítási rétegek támogatásához, amely a 100-cDWU alacsony. A jelenleg a Gen1-on található meglévő adattárházak, amelyek az alacsonyabb számítási szinteket igénylik, mostantól a Gen2-ra frissíthetik azokat a régiókat, amelyek jelenleg elérhetők a további díjak nélkül.  Ha a régiója még nem támogatott, akkor továbbra is frissíthet egy támogatott régióra. További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.md).
 
-A T-SQL a service_objective paraméter beállítás határozza meg, a szolgáltatási szint és az adatraktár teljesítményszintjét.
+A T-SQL-ben a SERVICE_OBJECTIVE beállítás határozza meg az adattárház szolgáltatási szintjét és teljesítményét.
 
 ```sql
 --Gen1
@@ -58,56 +58,56 @@ WITH
 
 --Gen2
 CREATE DATABASE myComputeSQLDW
-WITH
-(    SERVICE_OBJECTIVE = 'DW1000c'
+(Edition = 'Datawarehouse'
+ ,SERVICE_OBJECTIVE = 'DW1000c'
 )
 ;
 ```
 
-## <a name="performance-tiers-and-data-warehouse-units"></a>Teljesítményszintek és kiosztása az Adattárházegységekkel
+## <a name="performance-tiers-and-data-warehouse-units"></a>Teljesítmény szintjei és adattárház-egységek
 
-Mindegyik teljesítményszint egy némileg eltérő mértékegysége az adattárházegységek használ. Ez a különbség is megjelenik a számlán a skálázási egység közvetlen számlázás fog vonatkozni fordítja le.
+Minden teljesítményszint némileg eltérő mértékegységet használ az adattárház-egységek számára. Ez a különbség a számlán jelenik meg, mivel a skálázási egység közvetlenül a számlázásra van lefordítva.
 
-- Az Adattárházegységek (Dwu) Gen1 data warehouse-adattárházak mérése történik.
-- Gen2 data warehouse-adattárházak mérése történik, a számítási az Adattárházegységek (cDWUs).
+- A Gen1 adattárházak mérése adatraktár-egységekben történik (DWU).
+- A Gen2 adattárházak mérése számítási adattárház-egységekben történik (cDWUs).
 
-A dwu-k és a cDWUs támogatja méretezésű számítások felfelé és lefelé, és nem kell használnia az adattárház felfüggesztése számítási. Ezeket a műveleteket a rendszer az összes igény szerinti. Gen2 egy helyi lemez alapú gyorsítótárat használ a számítási csomópontokon teljesítmény javítása érdekében. Méretezhető vagy szüneteltetheti a rendszer, a gyorsítótár érvénytelenné válik, és így gyorsítótár előkészítése időszak előtt el kell végezni optimális teljesítmény akkor érhető el.  
+Mind a DWU, mind a cDWUs támogatja a méretezési számítási kapacitást, és szünetelteti a számítást, ha nem kell használnia az adattárházat. Ezek a műveletek mind igény szerint használhatók. A Gen2 egy helyi lemezes gyorsítótárat használ a számítási csomópontokon a teljesítmény javítása érdekében. A rendszer skálázása vagy szüneteltetése után a gyorsítótár érvénytelenné válik, így az optimális teljesítmény elérése előtt szükség van egy gyorsítótár-felmelegedésre.  
 
-Adattárházegységek növelésével, lineárisan növeli a számítási erőforrások. Gen2 a legjobb lekérdezési teljesítmény és a legmagasabb méretezési biztosít. Gen2 rendszerek győződjön meg a legtöbb használatát a gyorsítótár is.
+Az adatraktár-egységek növelése során lineárisan növelheti a számítástechnikai erőforrásokat. A Gen2 a legjobb lekérdezési teljesítményt és a legmagasabb szintű méretezést biztosítja. A Gen2 rendszerek a gyorsítótár legtöbbjét is használják.
 
 ### <a name="capacity-limits"></a>Kapacitási korlátok
 
-Minden SQL-kiszolgáló (például a myserver.database.windows.net) rendelkezik egy [adatbázis tranzakciós egységek (DTU)](../sql-database/sql-database-what-is-a-dtu.md) kvóta, amely lehetővé teszi, hogy egy bizonyos számú adattárházegységek. További információkért lásd: a [számítási feladat felügyeleti kapacitáskorlátait](sql-data-warehouse-service-capacity-limits.md#workload-management).
+Minden SQL-kiszolgáló (például myserver.database.windows.net) rendelkezik egy [adatbázis-tranzakciós egység (DTU)](../sql-database/sql-database-what-is-a-dtu.md) kvótával, amely egy adott számú adattárház-egységet engedélyez. További információ: [munkaterhelés-kezelési kapacitás korlátai](sql-data-warehouse-service-capacity-limits.md#workload-management).
 
-## <a name="how-many-data-warehouse-units-do-i-need"></a>Hány adattárházegységek van szükségem
+## <a name="how-many-data-warehouse-units-do-i-need"></a>Hány adatraktár-egységre van szükségem
 
-Az ideális számot adattárházegységek nagyban függ a számítási feladatok és a rendszer betöltött adatok mennyiségét.
+Az adatraktár-egységek ideális száma nagy mértékben függ a munkaterheléstől és a rendszerbe betöltött adatok mennyiségétől.
 
-A legjobb DWU kereséséhez a számítási feladathoz szükséges lépéseket:
+A számítási feladatok legjobb DWU megkeresésének lépései:
 
-1. Először egy kisebb DWU kiválasztásával.
-2. Az alkalmazás teljesítményének figyelése tesztelése adatterhelések a rendszer megfigyelte teljesítményének képest kiválasztott dwu-k számának észlelt problémát.
-3. A rendszeres tevékenységcsúcsokat azonosítsa az esetleges további követelményeket. Azt mutatják be, jelentős számítási feladatokat csúcsaira, és a tevékenység csatornák előfordulhat, hogy gyakran lehet méretezni kell.
+1. Először válasszon kisebb DWU.
+2. Az alkalmazások teljesítményének figyelése az adatterhelések a rendszeren való tesztelésekor, a kiválasztott DWU számának megjelölésével.
+3. Azonosítsa a maximális tevékenység időszakos időszakára vonatkozó további követelményeket. Előfordulhat, hogy a jelentős csúcsokat és a tevékenységekben lévő vályúkat bemutató munkaterheléseket gyakran kell méretezni.
 
-Az SQL Data Warehouse kibővített rendszer építhető ki a nagy mennyiségű számítási és a lekérdezés jelentős mennyiségű adatot. Lehetőségeit méretezését, különösen nagyobb dwu-k mellett azt javasoljuk az adatkészlet skálázásra, méretezhető, gondoskodjon arról, hogy elég adatot ahhoz, hogy a CPU-hírcsatorna. Méretezési csoport teszteléséhez, azt javasoljuk, legalább 1 TB.
+A SQL Data Warehouse egy kibővíthető rendszer, amely nagy mennyiségű számítási és lekérdezési kapacitást tud kiépíteni. Ha szeretné megtekinteni a skálázás valódi képességeit, különösen nagyobb DWU esetében, javasoljuk, hogy az adatkészletet méretezéssel méretezheti, hogy elegendő mennyiségű adattal rendelkezzen a processzorok megadásához. A méretezési teszteléshez legalább 1 TB-ot ajánlott használni.
 
 > [!NOTE]
 >
-> A lekérdezési teljesítmény csak további folyamatokkal növeli, ha a munkahelyi oszthatóak számítási csomópontok. Ha azt tapasztalja, hogy méretezés nem módosul a teljesítményt, szükség lehet a Táblatervezés és/vagy a Lekérdezések finomhangolása. A lekérdezés finomhangolási útmutató, lásd: [felhasználói lekérdezések kezelése](sql-data-warehouse-overview-manage-user-queries.md).
+> A lekérdezési teljesítmény csak akkor nő további párhuzamos, ha a munka felosztható a számítási csomópontok között. Ha azt tapasztalja, hogy a méretezés nem változik a teljesítményen, előfordulhat, hogy a tábla kialakítását és/vagy a lekérdezéseit is meg kell adnia. A lekérdezések hangolásával kapcsolatos útmutatásért lásd: [felhasználói lekérdezések kezelése](sql-data-warehouse-overview-manage-user-queries.md).
 
 ## <a name="permissions"></a>Engedélyek
 
-Az ismertetett engedélyekkel módosítja az adattárházegységek kell [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql).
+Az adatraktár-egységek módosításához az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql)utasításban ismertetett engedélyek szükségesek.
 
-Az Azure-erőforrások, például az SQL DB Contributor és az SQL Server Közreműködője beépített szerepkörök DWU beállításait módosíthatja.
+Az Azure-erőforrások, például az SQL-adatbázis közreműködői és SQL Server közreműködők beépített szerepkörei módosíthatják a DWU beállításait.
 
-## <a name="view-current-dwu-settings"></a>Aktuális nézet DWU-beállítást
+## <a name="view-current-dwu-settings"></a>Aktuális DWU-beállítások megtekintése
 
 Az aktuális DWU-beállítás megtekintése:
 
-1. Nyissa meg az SQL Server Object Explorerben a Visual Studióban.
-2. Csatlakozzon a master adatbázishoz tartozó SQL Database logikai kiszolgáló.
-3. Válassza ki a sys.database_service_objectives dinamikus felügyeleti nézetből. Például:
+1. Nyissa meg SQL Server Object Explorer a Visual Studióban.
+2. Kapcsolódjon a logikai SQL Database kiszolgálóhoz társított Master adatbázishoz.
+3. Válasszon a sys. database_service_objectives dinamikus felügyeleti nézetből. Például:
 
 ```sql
 SELECT  db.name [Database]
@@ -118,15 +118,15 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 ;
 ```
 
-## <a name="change-data-warehouse-units"></a>Adattárházegységek módosítása
+## <a name="change-data-warehouse-units"></a>Adatraktár-egységek módosítása
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A dwu-k vagy cDWUs módosítása:
+DWU vagy cDWUs módosítása:
 
-1. Nyissa meg a [az Azure portal](https://portal.azure.com), nyissa meg az adatbázishoz, és kattintson a **méretezési**.
+1. Nyissa meg a [Azure Portal](https://portal.azure.com), nyissa meg az adatbázist, és kattintson a **skálázás**elemre.
 
-2. A **méretezési**, a csúszka bal vagy jobb gombbal a DWU-beállítást.
+2. A **skála**alatt mozgassa a csúszkát balra vagy jobbra a DWU beállítás módosításához.
 
 3. Kattintson a **Save** (Mentés) gombra. Megjelenik egy megerősítő üzenet. Kattintson az **igen** gombra a megerősítéshez vagy a **nem** gombra az elvetéshez.
 
@@ -134,22 +134,22 @@ A dwu-k vagy cDWUs módosítása:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A dwu-k vagy cDWUs módosításához használja a [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell-parancsmagot. A következő példa a szolgáltatási szint célkitűzésének dw1000 értékre állítja a MyServer kiszolgáló üzemeltetett MySQLDW adatbázishoz.
+A DWU vagy a cDWUs módosításához használja a [set-AzSqlDatabase PowerShell-](/powershell/module/az.sql/set-azsqldatabase) parancsmagot. A következő példa beállítja a szolgáltatási szint célkitűzését, hogy DW1000 a Server MyServer üzemeltetett adatbázis-MySQLDW.
 
 ```Powershell
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
 ```
 
-További információkért lásd: [PowerShell-parancsmagok az SQL Data warehouse-hoz](sql-data-warehouse-reference-powershell-cmdlets.md)
+További információ: PowerShell- [parancsmagok a SQL Data Warehousehoz](sql-data-warehouse-reference-powershell-cmdlets.md)
 
 ### <a name="t-sql"></a>T-SQL
 
-T-SQL az aktuális DWU vagy cDWU-beállítások megtekintése, módosítsa a beállításokat, és ellenőrizze a folyamat állapotát.
+A T-SQL használatával megtekintheti az aktuális DWU-vagy cDWU-beállításokat, módosíthatja a beállításokat, és megtekintheti a folyamatot.
 
-A dwu-k vagy cDWUs módosítása:
+A DWU vagy a cDWUs módosítása:
 
-1. Csatlakozzon a master adatbázisban az SQL Database logikai kiszolgálóhoz társított.
-2. Használja a [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL utasítást. Az alábbi példa a szolgáltatási szint célkitűzésének beállítja az adatbázis MySQLDW dw1000 értékre.
+1. Kapcsolódjon a logikai SQL Database kiszolgálóhoz társított Master adatbázishoz.
+2. Használja az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql) TSQL utasítást. A következő példa a szolgáltatási szint célkitűzését állítja be a DW1000 adatbázis-MySQLDW.
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -159,7 +159,7 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 
 ### <a name="rest-apis"></a>REST API-k
 
-A dwu-k módosításához használja a [létrehozás vagy frissítés adatbázis](/rest/api/sql/databases/createorupdate) REST API-t. A következő példa a szolgáltatási szint célkitűzésének dw1000 értékre állítja az adatbázis MySQLDW, amely a MyServer kiszolgáló üzemel. A kiszolgáló egy Azure-erőforráscsoportot ResourceGroup1 szerepel.
+A DWU módosításához használja az [adatbázis létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate) REST API. A következő példa a szolgáltatási szint célkitűzését állítja be a DW1000 adatbázis-MySQLDW, amely a kiszolgáló MyServer található. A kiszolgáló egy ResourceGroup1 nevű Azure-erőforráscsoport.
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -172,20 +172,20 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-REST API-val kapcsolatos további példákért lásd [REST API-k, az SQL Data Warehouse](sql-data-warehouse-manage-compute-rest-api.md).
+További REST API példákat a [SQL Data Warehouse REST API](sql-data-warehouse-manage-compute-rest-api.md)-k című témakörben talál.
 
-## <a name="check-status-of-dwu-changes"></a>DWU-módosítások állapotának ellenőrzése
+## <a name="check-status-of-dwu-changes"></a>DWU-változások állapotának ellenõrzése
 
-DWU-módosítások több percet is igénybe vehet. Ha az automatikus méretezés, vegye fontolóra logikát, győződjön meg arról, hogy bizonyos műveletek befejeződtek-e egy másik művelet végrehajtása előtt.
+A DWU módosításai több percet is igénybe vehetnek. Ha automatikusan méretezést végez, érdemes megfontolnia a logikát, hogy a művelet végrehajtása előtt bizonyos műveleteket végre lehessen hajtani.
 
-Az adatbázis állapotát a különböző végpontok ellenőrzése lehetővé teszi, hogy megfelelően implementálását az automation. A portál értesítési befejezését követően egy művelet és az adatbázisok aktuális állapot biztosít, de nem engedélyezi a programozott-ellenőrzési állapot.
+Az adatbázis állapotának ellenőrzése különböző végpontokon keresztül lehetővé teszi az automatizálás megfelelő megvalósítását. A portál értesítést küld egy művelet és az adatbázisok aktuális állapotának befejezéséről, de nem teszi lehetővé az állapot programozott ellenőrzését.
 
-Az adatbázis állapotát, és az Azure portal horizontális felskálázási műveletek nem tudja ellenőrizni.
+A kibővíthető műveletekhez tartozó adatbázis-állapot nem ellenőrizhető a Azure Portal.
 
-A DWU-módosítások állapotának ellenőrzéséhez:
+A DWU változásainak állapotának ellenõrzése:
 
-1. Csatlakozzon a master adatbázisban az SQL Database logikai kiszolgálóhoz társított.
-2. A következő lekérdezést küld az adatbázis állapotának ellenőrzéséhez.
+1. Kapcsolódjon a logikai SQL Database kiszolgálóhoz társított Master adatbázishoz.
+2. Az adatbázis állapotának vizsgálatához küldje el a következő lekérdezést.
 
 ```sql
 SELECT    *
@@ -193,7 +193,7 @@ FROM      sys.databases
 ;
 ```
 
-1. Küldje el a következő lekérdezést a művelet állapotának ellenőrzése
+1. A művelet állapotának vizsgálatához küldje el a következő lekérdezést
 
 ```sql
 SELECT    *
@@ -203,15 +203,15 @@ AND       major_resource_id = 'MySQLDW'
 ;
 ```
 
-A DMV különböző műveletek az SQL Data Warehouse, például a művelet és a művelet, amely IN_PROGRESS, vagy befejeződött állapotát az adatait adja vissza.
+Ez a DMV információt ad vissza a SQL Data Warehouse különböző kezelési műveleteiről, például a műveletről és a művelet állapotáról, amely vagy IN_PROGRESS, vagy befejeződött.
 
-## <a name="the-scaling-workflow"></a>A méretezési munkafolyamat
+## <a name="the-scaling-workflow"></a>A skálázási munkafolyamat
 
-Amikor elindít egy skálázási művelet, a rendszer először megszakítja minden nyitott munkamenet, konzisztens állapotú biztosításához nyílt tranzakciók visszaállítása. A méretezési műveletek méretezés csak akkor történik meg a tranzakciós visszaállítás befejezése után.  
+Amikor elindít egy méretezési műveletet, a rendszer először az összes nyitott munkamenetet megöli, és minden nyitott tranzakciót visszagörget, hogy konzisztens állapotot biztosítson. A skálázási műveletek esetében a méretezés csak a tranzakciós visszaállítás befejeződése után történik meg.  
 
-- Vertikális felskálázás művelet esetén a rendszer leválasztja az összes számítási csomópontok, kiosztja a számítási csomópontot, és ezután újracsatlakoztatja a tárolási réteg.
-- Skálázási művelet esetén a rendszer leválasztja az összes számítási csomópontot, és ezután újracsatlakoztatja a tárolási réteg csak a szükséges csomópontok.
+- A skálázási műveletek esetében a rendszer leválasztja az összes számítási csomópontot, kiépíti a további számítási csomópontokat, majd újracsatlakoztatja a tárolási réteghez.
+- A leskálázási művelethez a rendszer leválasztja az összes számítási csomópontot, majd csak a szükséges csomópontokat csatlakoztatja a tárolási réteghez.
 
 ## <a name="next-steps"></a>További lépések
 
-A teljesítmény kezelése kapcsolatos további információkért lásd: [erőforrásosztályok számítási feladatok kezeléséhez](resource-classes-for-workload-management.md) és [memória- és egyidejűségi korlátok](memory-and-concurrency-limits.md).
+A teljesítmény kezelésével kapcsolatos további információkért lásd: [erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md) , valamint a [memória és a Egyidejűség korlátai](memory-and-concurrency-limits.md).

@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 968ee4c8bb5d7e09ef3c345c46f6c7b839e0e25a
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 2eab6fa75e4adbbde7bcf20f18301a1e516235c2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67990038"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035347"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Naplók és események valós idejű megtekintése (előzetes verzió)
-A tárolók Azure Monitor tartalmaz egy olyan funkciót, amely jelenleg előzetes verzióban érhető el, amely élő nézetet biztosít az Azure Kubernetes szolgáltatásbeli (ak) tároló-naplókhoz (StdOut/stderr) és az eseményekhez anélkül, hogy kubectl parancsokat kellene futtatnia. Ha bármelyik lehetőséget választja, egy új ablaktábla jelenik meg a csomópontokon, **vezérlőkön**és tárolók nézetben a teljesítményadatok  tábla alatt. Az élő naplózást és a tárolórendszer által létrehozott eseményeket jeleníti meg, hogy a hibák elhárítása valós időben további segítséget nyújtson.
+A tárolók Azure Monitor tartalmaz egy olyan funkciót, amely jelenleg előzetes verzióban érhető el, amely élő nézetet biztosít az Azure Kubernetes szolgáltatásbeli (ak) tároló-naplókhoz (StdOut/stderr) és az eseményekhez anélkül, hogy kubectl parancsokat kellene futtatnia. Ha bármelyik lehetőséget választja, egy új ablaktábla jelenik meg a csomópontokon, **vezérlőkön**éstárolók nézetben a teljesítményadatok tábla alatt. Az élő naplózást és a tárolórendszer által létrehozott eseményeket jeleníti meg, hogy a hibák elhárítása valós időben további segítséget nyújtson.
 
 >[!NOTE]
 >A szolgáltatás működéséhez **közreműködői** hozzáférés szükséges a fürterőforrás számára.
@@ -72,7 +72,7 @@ Ha engedélyezte a Kubernetes RBAC-hitelesítés, szüksége lesz a alkalmazni a
 
 Az AKS beállítható úgy, hogy a felhasználók hitelesítéséhez az Azure Active Directory (AD) használja. Ha első alkalommal konfigurálja, tekintse meg az [Azure Active Directory integrálása az Azure Kubernetes szolgáltatással](../../aks/azure-ad-integration.md)című témakört. Az [ügyfélalkalmazás](../../aks/azure-ad-integration.md#create-the-client-application)létrehozásának lépései során a következőket kell megadnia:
 
-- **Átirányítási URI (nem kötelező)** : Ez egy **webalkalmazás típusa** , és az alap URL-cím értékének a következőnek kell lennie `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`:.
+-  **Átirányítási URI**: Két webalkalmazás-típust kell létrehozni. Az első alap URL-címnek a `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` értéknek kell lennie, a második `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`URL-címnek pedig az értéknek kell lennie.
 - Az alkalmazás regisztrálását követően az **Áttekintés** oldalon válassza a **hitelesítés** lehetőséget a bal oldali ablaktáblán. A **hitelesítés** lapon, a **Speciális beállítások** területen a **hozzáférési tokenek** és **azonosító tokenek** implicit megadása, majd a módosítások mentése.
 
 >[!NOTE]
@@ -83,7 +83,7 @@ Az AKS beállítható úgy, hogy a felhasználók hitelesítéséhez az Azure Ac
 
 ## <a name="view-live-logs-and-events"></a>Élő naplók és események megtekintése
 
-A valós idejű naplózási eseményeket úgy tekintheti meg, ahogy a tároló motorja hozza létre a csomópontok, a **vezérlők**és a **tárolók** nézetből. A Tulajdonságok panelen válassza az **élő adatok megtekintése (előzetes verzió)** lehetőséget, és egy ablaktábla jelenik meg a teljesítményadatok tábla alatt, ahol a naplókat és az eseményeket egy folyamatos adatfolyamban tekintheti meg.
+A valós idejű naplózási eseményeket úgy tekintheti meg, ahogy a tároló motorja hozza létrea csomópontok, a **vezérlők**és a **tárolók** nézetből. A Tulajdonságok panelen válassza az **élő adatok megtekintése (előzetes verzió)** lehetőséget, és egy ablaktábla jelenik meg a teljesítményadatok tábla alatt, ahol a naplókat és az eseményeket egy folyamatos adatfolyamban tekintheti meg.
 
 ![Csomópont tulajdonságai ablaktábla élő naplók megtekintése lehetőség](./media/container-insights-live-logs/node-properties-live-logs-01.png)  
 
@@ -94,7 +94,7 @@ A log és az Event üzenet a nézetben kiválasztott erőforrástípus alapján 
 | Csomópontok | Csomópont | Esemény | Ha egy csomópontot jelölt ki, a rendszer nem szűri és nem jeleníti meg a fürtre kiterjedő Kubernetes eseményeket. A panel címe a fürt nevét jeleníti meg. |
 | Csomópontok | Pod | Esemény | Ha egy Pod van kiválasztva, a rendszer szűri az eseményeket a névterében. A panel címe a pod névterét jeleníti meg. | 
 | Vezérlők | Pod | Esemény | Ha egy Pod van kiválasztva, a rendszer szűri az eseményeket a névterében. A panel címe a pod névterét jeleníti meg. |
-| Vezérlők | Tartományvezérlő | Esemény | Ha a vezérlőt kiválasztotta, a rendszer szűri az eseményeket a névterében. A panel címe a vezérlő névterét jeleníti meg. |
+| Vezérlők | Vezérlő | Esemény | Ha a vezérlőt kiválasztotta, a rendszer szűri az eseményeket a névterében. A panel címe a vezérlő névterét jeleníti meg. |
 | Csomópontok/vezérlők/tárolók | Tároló | Logs | A panel címe annak a pod-nek a nevét mutatja, amelybe a tároló van csoportosítva. |
 
 Ha az AKS-fürtöt az egyszeri bejelentkezési AAD használatával van konfigurálva, a böngésző-munkamenet során először használ hitelesítésre kéri. Válassza ki a fiókot és a hitelesítés befejezéséhez az Azure-ral.  

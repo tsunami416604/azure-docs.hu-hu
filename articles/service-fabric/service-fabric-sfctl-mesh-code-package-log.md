@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric parancssori felület - sfctl háló code-package-log |} A Microsoft Docs
-description: Ismerteti a Service Fabric parancssori felület sfctl háló code-package-log-parancsokat.
+title: Azure Service Fabric CLI-sfctl Mesh Code-Package-log | Microsoft Docs
+description: Ismerteti a Service Fabric CLI sfctl Mesh Code-Package-log parancsokat.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,54 +8,53 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: e7bc8491071946eaa2e322517e5d36d681a49130
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1949f87dcdb1e3d9fe8e7fd08d8d8ba3b8203a0
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837640"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036443"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh kódcsomagnaplója
-A naplók lekérése a tároló a megadott kód csomag az adott szolgáltatás replika.
+Szerezze be a naplófájlokat az adott szolgáltatás replikájának megadott csomagjának tárolójában.
 
 ## <a name="commands"></a>Parancsok
 
 |Parancs|Leírás|
 | --- | --- |
-| Get | A naplók lekérdezi a tárolóból. |
+| Get | Lekéri a tárolóból a naplókat. |
 
-## <a name="sfctl-mesh-code-package-log-get"></a>sfctl-háló code-package-log get
-A naplók lekérdezi a tárolóból.
+## <a name="sfctl-mesh-code-package-log-get"></a>sfctl Mesh Code-Package-log Get
+Lekéri a tárolóból a naplókat.
 
-Beolvassa a naplókat a tárolót a megadott kód csomag a service replika.
+Beolvassa a szolgáltatás replikájának megadott kódjának tárolóját tartalmazó naplókat.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --app-name --application-name [Required] | Az alkalmazás neve. |
-| – [kötelező] code-package-neve | Kódcsomag a szolgáltatás neve. |
-| – [kötelező] replika neve | A Service Fabric-replika nevét. |
-| – [kötelező] szolgáltatás neve | A szolgáltatás neve. |
-| --tail | A naplók végéről sorok száma. Alapértelmezett érték 100. az "összes" a teljes körű naplók megjelenítése. |
+| --App-Name--Application-Name [kötelező] | Az alkalmazás neve. |
+| --Code-Package-Name [kötelező] | A szolgáltatás kódjának neve. |
+| --replika-név [kötelező] | Service Fabric replika neve. |
+| – szolgáltatásnév [kötelező] | A szolgáltatás neve. |
+| – farok | A naplók végétől megjelenítendő sorok száma. Az alapértelmezett érték a 100. az "all" (összes) a teljes naplókat jeleníti meg. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
 ## <a name="next-steps"></a>További lépések
-- [Állítsa be a](service-fabric-cli.md) a Service Fabric parancssori felület.
-- Ismerje meg, hogyan használható a Service Fabric parancssori felület használatával a [-szkript minták](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
